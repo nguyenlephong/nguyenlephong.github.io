@@ -1,0 +1,60 @@
+.footer-list {
+    text-align: left;
+    list-style-image: url('../img/arrowRight.png');
+}
+
+.footer-list>li:hover {
+    list-style-image: url('../img/arrowRight.png');
+    margin-left: 3px;
+}
+
+section {
+    margin: 0 auto;
+}
+
+
+.contact-list-item>li:hover {
+    margin-left: 15px;
+}
+
+i {
+    margin-right: 5px;
+}
+
+.header-of-footer{
+    min-height: 40px;
+}
+
+.content-of-footer{
+    margin-top:20px;
+    /* border:1px solid red; */
+    padding:10px;
+}
+.footer-all{
+    padding: 20px;
+}
+.contact-list-item>li, .footer-list>li{
+    cursor: pointer;
+    line-height: 1.75;
+}
+
+.btn-circle>i {
+    margin: 1px auto;
+}
+li>span>i{
+    margin-right: 5px;
+    width: 20px;
+}
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    border: none;
+    margin: 10px;
+}
+
+.btn-circle:hover {
+    background-color: yellowgreen;
+}
+
