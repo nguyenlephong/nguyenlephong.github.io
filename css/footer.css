@@ -5,7 +5,7 @@
 
 .footer-list>li:hover {
     list-style-image: url('../img/arrowRight.png');
-    margin-left: 3px;
+    margin-left: 33px;
 }
 
 section {
@@ -33,7 +33,12 @@ i {
 .footer-all{
     padding: 20px;
 }
-.contact-list-item>li, .footer-list>li{
+ .footer-list>li{
+    cursor: pointer;
+    line-height: 1.75;
+    margin-left:20px;
+}
+.contact-list-item>li{
     cursor: pointer;
     line-height: 1.75;
 }
