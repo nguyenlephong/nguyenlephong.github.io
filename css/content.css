@@ -243,3 +243,23 @@ row 2 section 2
         margin-top: -20%;
     }
 }
+
+
+/*row 4 section 4*/
+.figureClient {
+    position: relative;
+    width: 100%;
+    padding-top: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.figureCircle {
+    position: absolute;
+    width: 50%;
+    padding-top: 50%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
