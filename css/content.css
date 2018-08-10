@@ -1,0 +1,245 @@
+.ss-all {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.page-content {
+    margin-top: 10px;
+    margin-bottom: 100px;
+    width: 100%;
+}
+
+.img-content {
+    padding:0 15px;
+    position: relative;
+    border-radius: 5px;
+    background-image: url("../img/bg2.jpg");
+    padding-top:70%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.secction-col{
+    margin-top:30px;
+}
+.container-form-img{
+    margin:20px;
+}
+
+.content1 {
+    margin: 100px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+/*
+row 2 section 2
+*/
+
+.header-section {
+    background-image: url("../img/section-title-bg.png");
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 200px;
+    background-position: center;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.content-section {
+    background-image: url("../img/top-destination-area-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 440px;
+    background-position: center;
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.header-section>h1 {
+    padding-top: 40px;
+    font-family: "Dancing Script";
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.header-section>h3 {
+    font-family: "Nunito";
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1100px){
+    .bottom-left>h2 {
+        display: inline;
+        position: absolute;
+        top:-290%;
+    }
+}
+@media screen and (max-width: 900px){
+    .bottom-left>h2 {
+        display: inline;
+        position: absolute;
+        top:-300%;
+    }
+}
+@media screen and (max-width: 800px){
+    .bottom-left>h2 {
+        display: none;
+    }
+}
+@media screen and (max-width: 570px){
+    .bottom-left>h2 {
+        display: inline;
+        position: absolute;
+        top:-20%;  
+        margin:20px;
+    }
+}
+
+.flex-display{
+    display: flex;
+
+}
+
+.responsive-content-sea{
+    padding:0 auto;
+    margin:0 auto;
+    display: inline-block;
+    border:1px solid red;
+    /* width:100%; */
+    text-align: center;
+    
+}
+.container{
+    text-align: center;
+    position: relative;
+}
+
+.item-img-1 {
+    margin: 15px auto;
+}
+
+.item-img-1:hover {
+    /* box-shadow: rgb(180, 183, 185) 20px 20px; */
+    /* background-color:rgb(180, 183, 185); */
+    background-color: #F5F5F5;
+    box-shadow: #ddd;
+    border-radius: 15px;
+}
+
+@media screen and (max-width:1200px){
+    .bottom-left-text>h2{
+        display: none;  
+    }
+}
+@media screen and (max-width:767px){
+    .bottom-left-text>h2{
+        display: block;  
+    }
+}
+
+.evaluation-tour {
+    padding:2%;
+    display: flex;
+}
+.evaluation-tour>.col-md-4{
+    padding:0;
+}
+
+.icon-count-view {
+    display: flex;
+    position: relative;
+    top:-14%;
+    bottom: 0;
+    text-align: center;
+    margin: auto 80px;
+}
+
+.icon-view {
+    position: relative;
+    background-color: #fff;
+    background-size: cover;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 5px;
+}
+
+.text-on-img {
+    position: absolute;
+    /* top: 210px; */
+    color: black;
+    opacity: 1;
+    z-index: 2;
+    padding-left:80px;
+}
+.text-on-img>h1 {
+    font-family: "Dancing Script";
+    font-size: 50px;
+    font-weight: bold;
+}
+.figureFull {
+    position: relative;
+    display: inline-block;
+    background: gray;
+    width: 100%;
+    padding-top: 20%;
+    min-height: 550px;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    opacity: 0.9;
+}
+
+
+@media screen and (max-width:784px){
+    .icon-view{
+        flex-direction: column;
+        position: relative;
+        top:0;
+        bottom:0;
+        margin-top:100px;
+    }
+    .icon-count-view{
+        position: absolute;
+        width: 70%;
+        top: 65%;
+    }
+    .icon-view >h5{
+        margin-top:0;
+        margin:0 auto;
+    }
+}
+@media screen and (max-width:780px){
+    .icon-view{
+        position: relative;
+        top:0;
+        bottom:0;
+    }
+    .icon-count-view{
+        flex-direction: column;
+        position: relative;
+        top:-12%;
+        bottom:0;
+        margin:0 80px;
+        width: 100%;
+    }
+}
+@media screen and (max-width:600px){
+    .icon-view{
+        position: relative;
+        margin-top:0%;
+    }
+    .text-on-img{
+        padding-left:50px;
+    }
+    .icon-count-view{
+        margin:0 50px;
+        width: 100%;
+        margin-top: -20%;
+    }
+}
