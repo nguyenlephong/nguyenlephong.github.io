@@ -22,9 +22,9 @@
         <div class="header">
             <div class="nav-menu">
                 <div class="container-menu">
-                    <a class="logo" href=""><img src="img/logo.png"  alt="" style="width:100%;height:auto; margin:10px"></a>
+                    <a class="logo" href=""><img src="img/logo.png"  alt="" style="width:100%;height:auto;"></a>
                     <div class"navbar">
-                        <ul class="main-menu" id="myTopnav">
+                        <ul class="main-menu" id="">
                             <li>Menu 1
                                 <ul class="sub-menu">
                                     <li>Menu * 1</li>
@@ -68,12 +68,28 @@
                             
                         </ul>
                     </div>
-                    <a href="javascript:void(0);" class="icon" onclick="myFunction()" style="position: absolute;right: 0;"> 
-                        <i class="fa fa-bars"></i>
-                    </a>
+                    
                 </div>
                 <div class="container-menu-mobile">
-
+                    <div class="topnav" id="myTopnav">
+                        <div class="home-active"><a href="#home" style="width: 100px;height: 40px;" class="logo-menu-mobile"></a></div>
+                        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+                        <div class="nav-content">
+                            <a href="#news">News</a>
+                            <a href="#contact">Contact</a>
+                            <div class="dropdown">
+                              <button class="dropbtn">Dropdown 
+                                <i class="fa fa-caret-down"></i>
+                              </button>
+                              <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                              </div>
+                            </div> 
+                            <a href="#about">About</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="info-header">
@@ -89,18 +105,17 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
                                 <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <br>
                                 <div class="row" >
-                                    <div class="col-md-6 col-sm-12 col-12">
+                                    <div class="col-md-6 col-sm-6 col-12">
                                         <input class="form-control"/>
                                     </div>
                                     <br>
-                                    <div class="col-md-6 col-sm-12 col-12">
+                                    <div class="col-md-6 col-sm-6 col-12">
                                         <select class="custom-select">
                                             <option selected>Open this select menu</option>
                                             <option value="1">One</option>
@@ -111,7 +126,7 @@
                                 </div>
                                 <br>
                                 <div class="row" >
-                                    <div class="col-md-6 col-sm-12 col-12">
+                                    <div class="col-md-6 col-sm-6 col-12">
                                         <select class="custom-select">
                                             <option selected>Open this select menu</option>
                                             <option value="1">One</option>
@@ -120,17 +135,17 @@
                                         </select>
                                     </div>
                                     <br>
-                                    <div class="col-md-6 col-sm-12 col-12">
+                                    <div class="col-md-6 col-sm-6 col-12">
                                         <input class="form-control" type="date"  />
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row" >
-                                    <div class="col-md-6 col-sm-12 col-12">
+                                    <div class="col-md-6 col-sm-6 col-12">
                                         <input class="form-control"/>
                                     </div>
                                     <br>
-                                    <div class="col-md-6 col-sm-12 col-12">
+                                    <div class="col-md-6 col-sm-6 col-12">
                                         <select class="custom-select">
                                             <option selected>Open this select menu</option>
                                             <option value="1">One</option>
@@ -141,7 +156,7 @@
                                 </div>
                                 <br>
                                 <div class="row" >
-                                    <div class="col-md-6 col-sm-12 col-12">
+                                    <div class="col-md-6 col-sm-6 col-12">
                                         <select class="custom-select">
                                             <option selected>Open this select menu</option>
                                             <option value="1">One</option>
@@ -150,7 +165,7 @@
                                         </select>
                                     </div>
                                     <br>
-                                    <div class="col-md-6 col-sm-12 col-12">
+                                    <div class="col-md-6 col-sm-6 col-12">
                                         <select class="custom-select">
                                             <option selected>Open this select menu</option>
                                             <option value="1">One</option>
@@ -160,134 +175,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade show" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                <div class="row" >
-                                        <div class="col-sm-6">
-                                            <input class="form-control"/>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select class="custom-select">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row" >
-                                        <div class="col-sm-6">
-                                            <select class="custom-select">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <input class="form-control" type="date"  />
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row" >
-                                        <div class="col-sm-6">
-                                            <input class="form-control"/>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select class="custom-select">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row" >
-                                        <div class="col-sm-6">
-                                            <select class="custom-select">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select class="custom-select">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="tab-pane fade show" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                <div class="row" >
-                                        <div class="col-sm-6">
-                                            <input class="form-control"/>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select class="custom-select">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row" >
-                                        <div class="col-sm-6">
-                                            <select class="custom-select">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <input class="form-control" type="date"  />
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row" >
-                                        <div class="col-sm-6">
-                                            <input class="form-control"/>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select class="custom-select">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="row" >
-                                        <div class="col-sm-6">
-                                            <select class="custom-select">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <select class="custom-select">
-                                                <option selected>Open this select menu</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                            </div>
+                            
                         </div>
                 </div>
                 <br>
-                <div class="col-md-6 col-sm-12 col-12" style="height: 100%; width: 100%" >
+                <div class="col-md-6 col-sm-12 col-12" style="margin-top:25px" >
                     <div class="img-content"></div>
                 </div>
             </div>  
@@ -473,7 +365,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="text-bottom-icon-frame" style="position: absolute; margin-top:22%;padding:25px">
+                                        <div class="text-bottom-icon-frame" style="position: absolute; margin-top:24%;padding:25px">
                                             <p>Seconds because, when I came to again I was still la
                                                     ughing at Jonah timothy Simons the actor who plays 
                                                     Jonah responded on Twitter hahahahahahaha oh my 
@@ -492,8 +384,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="text-bottom-icon-frame" style="position: absolute; margin-top:22%;padding:25px">
-                                            <p>     Seconds because, when I came to again I was still la
+                                        <div class="text-bottom-icon-frame" style="position: absolute; margin-top:24%;padding:25px">
+                                            <p>Seconds because, when I came to again I was still la
                                                     ughing at Jonah timothy Simons the actor who plays 
                                                     Jonah responded on Twitter hahahahahahaha oh my 
                                                     god oh my god He promised. </p>
@@ -512,8 +404,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="text-bottom-icon-frame" style="position: absolute; margin-top:22%;padding:25px;">
-                                            <p> Seconds because, when I came to again I was still la
+                                        <div class="text-bottom-icon-frame" style="position: absolute; margin-top:24%;padding:25px;">
+                                            <p>Seconds because, when I came to again I was still la
                                                     ughing at Jonah timothy Simons the actor who plays 
                                                     Jonah responded on Twitter hahahahahahaha oh my 
                                                     god oh my god He promised. </p>
@@ -598,12 +490,24 @@
 </body>
 <script>
     function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "main-menu") {
-        x.className += " responsive";
-    } else {
-        x.className = "main-menu";
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
     }
-}
+</script>
+<script>
+    window.onscroll = function() {handleScrollMenuHide()};
+    
+    function handleScrollMenuHide() {
+        var x = document.getElementById("myTopnav");
+        if (!x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
 </script>
 </html>
