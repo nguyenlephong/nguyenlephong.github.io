@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.cv-container {
+    width: 100vw;
+    height: 100vh;
+    background: #0e8c8c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.heading {
+
+}
+
+.title {
+    font-size: 24px;
+    line-height: 1.2em;
+    font-weight: bold;
+}
