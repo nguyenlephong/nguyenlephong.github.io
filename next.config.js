@@ -16,7 +16,6 @@ module.exports = withPlugins([
     images: {
       disableStaticImages: true,
       domain: "https://nguyenlephong.github.io/",
-      
       // path: `/_next/image`,
     },
     eslint: {

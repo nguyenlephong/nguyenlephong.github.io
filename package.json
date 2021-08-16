@@ -5,10 +5,10 @@
   "author": {
     "email": "nguyenlephong1997@gmail.com",
     "name": "Nguyễn Lê Phong",
-    "url": "https://nguyenlephong.github.io/dom-profile"
+    "url": "https://nguyenlephong.github.io"
   },
-  "repository": "https://github.com/nguyenlephong/dom-profile",
-  "homepage": "https://nguyenlephong.github.io/dom-profile",
+  "repository": "https://github.com/nguyenlephong",
+  "homepage": "https://nguyenlephong.github.io",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -70,7 +70,7 @@
     {
       "name": "Nguyen Le Phong",
       "email": "nguyenlephong@primedata.ai",
-      "url": "https://nguyenlephong.github.io/dom-profile"
+      "url": "https://nguyenlephong.github.io"
     }
   ],
   "browser": {
