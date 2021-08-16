@@ -1,0 +1,89 @@
+$break-point-default: 1920px;
+
+/**
+ * font-size: 36px;
+ * line-height: 48px;
+ * (font-size / break-point-default) * 100 => 1.875vw
+ * (line-height / font-size) => 1.33em
+ */
+
+//36B
+$f36-font-size: 36px;
+$f36-line-height: 48px;
+//$f36-font-size: 1.875vw;
+//$f36-line-height: 1.33em;
+@mixin font-36 {
+  font-size: $f36-font-size;
+  line-height: $f36-line-height;
+  @media screen and (min-width: 1921px) {
+    font-size: 36px;
+  }
+}
+
+
+//24B
+$f24-font-size: 24px;
+$f24-line-height: 32px;
+//$f24-font-size: 1.25vw;
+//$f24-line-height: 1.33em;
+@mixin font-24 {
+  font-size: $f24-font-size;
+  line-height: $f24-line-height;
+  @media screen and (min-width: 1921px) {
+    font-size: 24px;
+  }
+}
+
+//20B
+$f20-font-size: 20px;
+$f20-line-height: 26px;
+//$f20-font-size: 1.041666667vw;
+//$f20-line-height: 1.3em;
+@mixin font-20 {
+  font-size: $f20-font-size;
+  line-height: $f20-line-height;
+  @media screen and (min-width: 1921px) {
+    font-size: 20px;
+  }
+}
+
+//16B1
+$f16-font-size: 16px;
+$f16-line-height: 1.375em;
+//$f16-font-size: 0.8333333333vw;
+//$f16-line-height: 1.375em;
+$f16-paragraph-spacing: 0.5em;
+@mixin font-16 {
+  font-size: $f16-font-size;
+  line-height: $f16-line-height;
+  @media screen and (min-width: 1921px) {
+    font-size: 16px;
+  }
+}
+
+//14B
+$f14-font-size: 14px;
+//$f14-font-size: 0.7291666667vw;
+$f14-line-height: 0.875em;
+@mixin font-14 {
+  font-size: $f14-font-size;
+  line-height: $f14-line-height;
+  @media screen and (min-width: 1921px) {
+    font-size: 14px;
+  }
+}
+
+//12B-caps
+$f12-caps-font-size: 12px;
+//$f12-caps-font-size: 0.625vw;
+$f12-caps-line-height: 1.5em;
+$f12-caps-letter-spacing: 0.06em;
+@mixin font-12 {
+  font-size: $f12-caps-font-size;
+  line-height: $f12-caps-line-height;
+  letter-spacing: $f12-caps-letter-spacing;
+  @media screen and (min-width: 1921px) {
+    font-size: 12px;
+  }
+}
+

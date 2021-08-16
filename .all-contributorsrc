@@ -1,0 +1,28 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "nguyenlephong",
+      "name": "Nguyen Le Phong",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25582949?v=4",
+      "profile": "http://nguyenlephong.github.io",
+      "contributions": [
+        "code",
+        "doc",
+        "design",
+        "maintenance",
+        "ideas"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "dom-profile",
+  "projectOwner": "nguyenlephong",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
