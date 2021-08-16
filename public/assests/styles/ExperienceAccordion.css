@@ -1,0 +1,30 @@
+.experience-accord {
+  margin: 50px;
+}
+
+.accord-panel {
+  font-family: "Google Sans Regular";
+}
+
+@media (max-width: 768px) {
+  .experience-accord {
+    margin: 20px;
+  }
+}
+
+[data-theme='compact'] .site-collapse-custom-collapse .site-collapse-custom-panel,
+.site-collapse-custom-collapse .site-collapse-custom-panel {
+  margin-bottom: 24px;
+  overflow: hidden;
+  background: #f7f7f7;
+  border: 0px;
+  border-radius: 2px;
+}
+
+.site-collapse-custom-collapse .ant-collapse-header {
+  padding: 12px 24px;
+}
+
+.site-collapse-custom-collapse .ant-collapse-content-box {
+  padding: 12px 24px;
+}

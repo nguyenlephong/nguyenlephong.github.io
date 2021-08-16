@@ -1,0 +1,466 @@
+{
+  "data": [
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
+      "name": "dom-profile",
+      "createdAt": "2021-05-16T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/dom-profile",
+      "description": "The complete portfolio website hosted using github pages (gh-pages). Visit the website here : ",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "HTML",
+          "iconifyClass": "logos-html-5"
+        },
+        {
+          "name": "CSS",
+          "iconifyClass": "logos-css-3"
+        },
+        {
+          "name": "JavaScript",
+          "iconifyClass": "logos-javascript"
+        },
+        {
+          "name": "React",
+          "iconifyClass": "logos-react"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyNjkwNzUwMjM=",
+      "name": "Customer Data Platform",
+      "createdAt": "2020-07-15T09:00:00Z",
+      "url": "https://github.com/primedata/kits",
+      "description": "PrimeData is the end-to-end customer data analytics & omni-channel experience marketing hub for researchers, marketers, and business applications.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "HTML",
+          "iconifyClass": "logos-html-5"
+        },
+        {
+          "name": "CSS",
+          "iconifyClass": "logos-css-3"
+        },
+        {
+          "name": "JavaScript",
+          "iconifyClass": "logos-javascript"
+        },
+        {
+          "name": "React",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "Go",
+          "iconifyClass": "logos-go"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvenkyNjkwNzUwNjN=",
+      "name": "Mira App",
+      "createdAt": "2020-04-20T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/mira",
+      "description": "In this project, I have managed a team of 3 members, I used kotlin to build the mobile app's UI and used java spring boot to build the API on the BE side.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "Java",
+          "iconifyClass": "logos-java"
+        },
+        {
+          "name": "Spring Boot",
+          "iconifyClass": "logos-spring"
+        },
+        {
+          "name": "My SQL",
+          "iconifyClass": "logos-mysql"
+        },
+        {
+          "name": "Android",
+          "iconifyClass": "logos-android-icon"
+        },
+        {
+          "name": "Kotlin",
+          "iconifyClass": "logos-kotlin"
+        },
+        {
+          "name": "iOS",
+          "iconifyClass": "logos-apple"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyNjkwNzUwNjN=",
+      "name": "Catalog",
+      "createdAt": "2020-03-01T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/catalog",
+      "description": "In this project, I take on the role of building commons components for the team. I built automation of the deployment process and supported other members in the process of working with OutSystem.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "HTML",
+          "iconifyClass": "logos-html-5"
+        },
+        {
+          "name": "CSS",
+          "iconifyClass": "logos-css-3"
+        },
+        {
+          "name": "JavaScript",
+          "iconifyClass": "logos-javascript"
+        },
+        {
+          "name": "Vue",
+          "iconifyClass": "logos-vue"
+        },
+        {
+          "name": "Java",
+          "iconifyClass": "logos-java"
+        },
+        {
+          "name": "Spring Boot",
+          "iconifyClass": "logos-spring"
+        },
+        {
+          "name": "My SQL",
+          "iconifyClass": "logos-mysql"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyNjkwNzUwMjM=",
+      "name": "BankTool - ReactJS - Spring boot",
+      "createdAt": "2019-12-09T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/bank-tool",
+      "description": "This is the first project I work on alone, for me it is very difficult, but I have perfected it from project creation to deployment. For me it was a step up after more than a year of work.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "HTML",
+          "iconifyClass": "logos-html-5"
+        },
+        {
+          "name": "CSS",
+          "iconifyClass": "logos-css-3"
+        },
+        {
+          "name": "JavaScript",
+          "iconifyClass": "logos-javascript"
+        },
+        {
+          "name": "React",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "Java",
+          "iconifyClass": "logos-java"
+        },
+        {
+          "name": "Spring Boot",
+          "iconifyClass": "logos-spring"
+        },
+        {
+          "name": "My SQL",
+          "iconifyClass": "logos-mysql"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyNjkwNzUwMjM=",
+      "name": "WAT - React Typescript - Spring boot",
+      "createdAt": "2019-09-01T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/wat",
+      "description": "I am one of the key members of this project, an application for teachers who use to prepare lessons. Through this project, I have accumulated a lot of experience in software development, time management, and deployment on a linux server.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "HTML",
+          "iconifyClass": "logos-html-5"
+        },
+        {
+          "name": "CSS",
+          "iconifyClass": "logos-css-3"
+        },
+        {
+          "name": "JavaScript",
+          "iconifyClass": "logos-javascript"
+        },
+        {
+          "name": "TypeScript",
+          "iconifyClass": "logos-typescript"
+        },
+        {
+          "name": "React",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "Java",
+          "iconifyClass": "logos-java"
+        },
+        {
+          "name": "Spring Boot",
+          "iconifyClass": "logos-spring"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyNjkwNzUwMjM=",
+      "name": "Savyu - ReactNative",
+      "createdAt": "2019-05-01T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/savyu",
+      "description": "I was fortunate to trust and work for Synova, where I had the opportunity to use the ReactNative language that I learned, which helped me to become more proficient through this project. I have developed the application for 4 months. Here is the link describing it: https://www.savyu.com/",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "JavaScript",
+          "iconifyClass": "logos-javascript"
+        },
+        {
+          "name": "ReactNative",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "Android",
+          "iconifyClass": "logos-android-icon"
+        },
+        {
+          "name": "iOS",
+          "iconifyClass": "logos-apple"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyNzM1MTI1NTE=",
+      "name": "Froodini - ReactJS",
+      "createdAt": "2019-03-01T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/froodini",
+      "description": "This is the first project when I joined Splus - Software. It uses ReactJS to build UI and uses NodeJS with MongoDB to build API on BE side. This is A project for German customers, the application allows users to choose food and drink to organize events. Here is the link to the product of this project: https://froodini.com/",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "HTML",
+          "iconifyClass": "logos-html-5"
+        },
+        {
+          "name": "CSS",
+          "iconifyClass": "logos-css-3"
+        },
+        {
+          "name": "JavaScript",
+          "iconifyClass": "logos-javascript"
+        },
+        {
+          "name": "TypeScript",
+          "iconifyClass": "logos-typescript"
+        },
+        {
+          "name": "React",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "NodeJS",
+          "iconifyClass": "logos-nodejs"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkxNTU5NTE3NTk=",
+      "name": "Build flycam devices",
+      "createdAt": "2019-03-01T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/Stock-Prediction-using-LSTM",
+      "description": "This is a project for me that really marks a milestone in the university. My team and I have built a flying device (similar to flycam) capable of recognizing people through images and videos taken from the device. I have built this device with a socket-controlled mobile app and a web app for data management. Besides, I have to build and use a lot of servers and services from third parties to complete this project. And I got a 9.4, some pretty impressive score. Below is the video of the day I defended this thesis.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "Python",
+          "iconifyClass": "logos-python"
+        },
+        {
+          "name": "HTML",
+          "iconifyClass": "logos-html-5"
+        },
+        {
+          "name": "CSS",
+          "iconifyClass": "logos-css-3"
+        },
+        {
+          "name": "JavaScript",
+          "iconifyClass": "logos-javascript"
+        },
+        {
+          "name": "ReactNative",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "React",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "NodeJS",
+          "iconifyClass": "logos-nodejs"
+        },
+        {
+          "name": "My SQL",
+          "iconifyClass": "logos-mysql"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkyMDIxNDc4ODA=",
+      "name": "Car rental web application",
+      "createdAt": "2019-01-21T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/car-rental",
+      "description": "This course project aims to write an application that uses online payment services, and build a wrong business model that brings profit. This is a project for e-commerce subjects.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "HTML",
+          "iconifyClass": "logos-html-5"
+        },
+        {
+          "name": "CSS",
+          "iconifyClass": "logos-css-3"
+        },
+        {
+          "name": "JavaScript",
+          "iconifyClass": "logos-javascript"
+        },
+        {
+          "name": "React",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "C#",
+          "iconifyClass": "logos-c-sharp"
+        },
+        {
+          "name": "Microsoft SQL",
+          "iconifyClass": "simple-icons:microsoftsqlserver"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkxODIxMjk3NTQ=",
+      "name": "Student attendance application with face recognition",
+      "createdAt": "2019-01-11T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/roll-call-app",
+      "description": "This application is written in ReactNative language running tests on android to serve the Programming subject project on mobile devices. It is one of my favorite projects. This is the video that I went back to the functions of the application.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "C#",
+          "iconifyClass": "logos-c-sharp"
+        },
+        {
+          "name": "ReactNative",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "React",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "Microsoft SQL",
+          "iconifyClass": "simple-icons:microsoftsqlserver"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkxOEIxMjk3NTQ=",
+      "name": "Proptech Tools",
+      "createdAt": "2018-07-01T00:00:00Z",
+      "url": "https://github.com/proptech-plus/app",
+      "description": "This is the first real project in my career. I started coding ReactJS from here. It's an app that caters to the real estate industry. I have to work more than 15 hours a day to study and work at the same time. It gives me a lot of lessons.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "HTML",
+          "iconifyClass": "logos-html-5"
+        },
+        {
+          "name": "CSS",
+          "iconifyClass": "logos-css-3"
+        },
+        {
+          "name": "JavaScript",
+          "iconifyClass": "logos-javascript"
+        },
+        {
+          "name": "ReactJS",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "C#",
+          "iconifyClass": "logos-c-sharp"
+        },
+        {
+          "name": "MongoDB",
+          "iconifyClass": "simple-icons:mongodb"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkxODIxMjk3NTQ=",
+      "name": "Games chess",
+      "createdAt": "2018-08-06T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/chess-games",
+      "description": "This project is the final project of the introductory course of artificial intelligence. The purpose of this project is to apply algorithms, search algorithms from basic to high level in games, games can be played with machines and players with many different algorithms.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "Java",
+          "iconifyClass": "logos-java"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkxODIxMjk3NTQ=",
+      "name": "Smartphone shopping websites",
+      "createdAt": "2016-01-01T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/mobile-shops",
+      "description": "This project is the final project of the 4-member Web Programming course and I'm the leader. It was great when our team got all 10 points. This video link recorded the moment I reported.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "HTML",
+          "iconifyClass": "logos-html-5"
+        },
+        {
+          "name": "CSS",
+          "iconifyClass": "logos-css-3"
+        },
+        {
+          "name": "JavaScript",
+          "iconifyClass": "logos-javascript"
+        },
+        {
+          "name": "Java",
+          "iconifyClass": "logos-java"
+        },
+        {
+          "name": "JSP Servlet",
+          "iconifyClass": "logos-java"
+        },
+        {
+          "name": "Microsoft SQL",
+          "iconifyClass": "simple-icons:microsoftsqlserver"
+        }
+      ]
+    },
+    {
+      "id": "MDEwOlJlcG9zaXRvcnkxODIxMjk3NTQ=",
+      "name": "Games boom",
+      "createdAt": "2016-01-01T00:00:00Z",
+      "url": "https://github.com/nguyenlephong/boom-games",
+      "description": "This is a game programmed in java language, this project was completed by our team of 4 people, and I am the school team. The game is programmed according to object orientation.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "Java",
+          "iconifyClass": "logos-java"
+        }
+      ]
+    }
+  ]
+}
