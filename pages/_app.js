@@ -10,6 +10,7 @@ import * as ga from "../lib/ga"
 import "react-tiny-fab/dist/styles.css";
 
 import "../public/assests/styles/Header.css";
+import "../public/assests/styles/404.scss";
 import "../public/assests/styles/ToggleSwitch.scss";
 import "../public/assests/styles/Footer.css";
 import "../public/assests/styles/TopButton.css";
@@ -105,6 +106,7 @@ export default function MyApp(props) {
         <meta charSet="utf-8" />
         <link rel="icon" href="https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom220.png" />
         <link rel="manifest" href="../manifest.json" />
+        
         <meta
           name="description"
           content="Nguyễn Lê Phong - FullStack Software Engineer. A passionate individual who always thrives to work on end-to-end products which develop sustainable and scalable social and technical systems to create impact."
@@ -121,7 +123,6 @@ export default function MyApp(props) {
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         />
   
-       
       </Head>
       <ReduxProvider store={store}>
         <PersistGate loading={<React.Fragment/>} persistor={persistor}>
