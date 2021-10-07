@@ -16,7 +16,7 @@ const resources = {
   }
 };
 
-const env = process.env.REACT_APP_NODE_ENV;
+const env = process.env.NEXT_PUBLIC_ENV;
 const optsDetection = {
   // order and from where user language should be detected
   // order: ['path', 'querystring', 'cookie', 'localStorage', 'sessionStorage', 'navigator', 'htmlTag',  'subdomain'],
