@@ -28,6 +28,15 @@ export default function Greeting(props) {
               <SocialMedia theme={theme} />
               <div className="portfolio-repo-btn-div">
                 <Button
+                  onClick={() => {
+                    let track = {
+                      "route": window.location.href,
+                      "page": window.document.title,
+                      "name": 'Star Me On Github',
+                      "description": 'Star Me On Github',
+                    }
+                    window.follower.track('cdp_button_click', track)
+                  }}
                   text="⭐ Star Me On Github"
                   newTab={true}
                   href={greeting.portfolio_repository}
