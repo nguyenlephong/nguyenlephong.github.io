@@ -10,7 +10,7 @@
   "repository": "https://github.com/nguyenlephong",
   "homepage": "https://nguyenlephong.github.io",
   "scripts": {
-    "dev": "next dev",
+    "dev": "PORT=3001 next dev",
     "build": "next build",
     "start": "next start",
     "commit": "sh scripts/commit.sh",

@@ -45,6 +45,9 @@ class Contact extends Component {
                 <SocialMedia theme={theme} />
                 <div className="resume-btn-div">
                   <Button
+                    onClick={() => {
+                      window.follower.identity('nguyenlephong1997@gmail.com', {email: "nguyenlephong1997@gmail.com", 'first_name': "Nguyen Le Phong"})
+                    }}
                     text="See My Resume"
                     newTab={true}
                     href={greeting.resumeLink}
