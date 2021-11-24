@@ -66,19 +66,12 @@ export const TypeSegmentStyle = {
 }
 
 export const CLASS_CSS_PREFIX = {
-  
+
   // common page
   SIDEBAR_PREFIX: ScssVariables['sidebarPrefix'],
   TOPBAR_PREFIX: ScssVariables['topbarPrefix'],
   BLOCK_CONDITION: ScssVariables['cdpBlockCondition'],
-  CDP_MODAL: ScssVariables['cdpModal'],
-  
-  // global page
-  CDP_SINGIN_PAGE: ScssVariables['cdpSignInPage'],
-  CDP_ABOUT_CONSTRUCTION_PAGE: ScssVariables['cdpAboutConstructionPage'],
-  CDP_CONTACT_US_CONSTRUCTION_PAGE: ScssVariables['cdpContactUsConstructionPage'],
-  CDP_DASHBOARD_PAGE: ScssVariables['cdpDashBoardPage'],
-  
+
   STR_UTIL_PAGE: ScssVariables['strUtilPage'],
   EXCEL_TOOL_PAGE: ScssVariables['excelToolPage'],
   MAPPING_OBJECT_KEY_VALUE_TOOL: ScssVariables['mappingObjKValuePage'],
