@@ -27,7 +27,7 @@
     "@reduxjs/toolkit": "^1.6.1",
     "antd": "^4.17.1",
     "apollo-boost": "^0.4.4",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "baseui": "^9.65.3",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
