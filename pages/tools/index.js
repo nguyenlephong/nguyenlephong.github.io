@@ -5,7 +5,7 @@ import BIRDS_EFFECT from "vanta/dist/vanta.birds.min";
 import WARES_EFFECT from "vanta/dist/vanta.waves.min";
 import GLOBE_EFFECT from "vanta/dist/vanta.globe.min";
 import DOTS_EFFECT from "vanta/dist/vanta.dots.min";
-import CLOUDS_EFFECT from "vanta/dist/vanta.clouds.min";
+// import CLOUDS_EFFECT from "vanta/dist/vanta.clouds.min";
 import FOG_EFFECT from "vanta/dist/vanta.fog.min";
 import { useWindowSize } from "react-use";
 import ListOfToolContainer from "../../components/containers/tools/ListOfToolContainer";
@@ -84,7 +84,7 @@ export default function wrapperToolsPage() {
         })
 
       case 6:
-        return CLOUDS_EFFECT({
+        return GLOBE_EFFECT({
           el: refToolPageDetail.current,
           mouseControls: true,
           touchControls: true,
