@@ -56,6 +56,9 @@ import "../public/assests/styles/Talks.css";
 import "../public/assests/styles/App.scss";
 import "../public/assests/styles/index.css";
 import "../public/assests/font-awesome/css/all.css";
+import "../public/assests/styles/ToolsPage.scss";
+// tools style
+import "../components/containers/tools/tool_003/MappingObjectJsonKeyValueTool.style.scss";
 
 const progress = new ProgressBar({
   size: 2,
@@ -71,20 +74,20 @@ Router.events.on("routeChangeError", progress.finish);
 export default function MyApp(props) {
   const { Component, pageProps } = props;
   const router = useRouter()
-  
+
   useEffect(() => {
     const handleRouteChange = (url) => {
       ga.pageview(url)
     }
     //When the component is mounted, subscribe to router changes and log those page views
     router.events.on('routeChangeComplete', handleRouteChange)
-    
+
     // If the component is unmounted, unsubscribe from the event with the `off` method
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [router.events])
-  
+
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -92,8 +95,8 @@ export default function MyApp(props) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-  
-  
+
+
   return (
     <>
       <Head>
@@ -106,7 +109,7 @@ export default function MyApp(props) {
         <meta charSet="utf-8" />
         <link rel="icon" href="https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom220.png" />
         <link rel="manifest" href="../manifest.json" />
-        
+
         <meta
           name="description"
           content="Nguyễn Lê Phong - FullStack Software Engineer. A passionate individual who always thrives to work on end-to-end products which develop sustainable and scalable social and technical systems to create impact."
@@ -114,15 +117,16 @@ export default function MyApp(props) {
         <meta property="og:title" content="Nguyen Le Phong | FullStack Software Engineer" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://nguyenlephong.github.io/dom-profile" />
-  
+
         <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
-  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r119/three.min.js"></script>
+
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         />
-  
+
       </Head>
       <ReduxProvider store={store}>
         <PersistGate loading={<React.Fragment/>} persistor={persistor}>

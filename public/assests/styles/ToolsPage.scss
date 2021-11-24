@@ -1,0 +1,25 @@
+#tools-page-wrap {
+  position: unset !important;
+  width: 100%;
+  height: 100%;
+}
+
+.tools-page {
+  width: 100%;
+  height: 100%;
+}
+
+.tool-card-item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+
+}
+
+body {
+  max-width: unset;
+  div {
+    width: 100%;
+    height: 100%;
+  }
+}

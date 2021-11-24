@@ -30,12 +30,12 @@ class Header extends Component {
                 <span style={{ color: theme.text }}>/&gt;</span>
               </div>
             </Link>
-  
+
             <input className="menu-btn" type="checkbox" id="menu-btn" />
             <label className="menu-icon" htmlFor="menu-btn">
               <span className="navicon" />
             </label>
-  
+
             <ul className="menu" style={{ backgroundColor: theme.body }}>
               <li>
                 <Link href="/home">
@@ -49,7 +49,7 @@ class Header extends Component {
                   </div>
                 </Link>
               </li>
-    
+
               <li>
                 <Link href="/about">
                   <div
@@ -62,7 +62,7 @@ class Header extends Component {
                   </div>
                 </Link>
               </li>
-    
+
               <li>
                 <Link href="/education">
                   <div
@@ -75,7 +75,7 @@ class Header extends Component {
                   </div>
                 </Link>
               </li>
-    
+
               <li>
                 <Link href="/experience">
                   <div
@@ -101,6 +101,19 @@ class Header extends Component {
                 </Link>
               </li>
 
+                <li>
+                  <Link href="/tools">
+                    <div
+                      className={"menu-nav-link-item"}
+                      style={{ color: theme.text }}
+                      onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
+                      onMouseOut={(event) => onMouseOut(event)}
+                    >
+                      Tools
+                    </div>
+                  </Link>
+                </li>
+
               {false && (
                 <li>
                   <Link
@@ -116,7 +129,7 @@ class Header extends Component {
                   </Link>
                 </li>
               )}
-    
+
               <li>
                 <Link href="/contact">
                   <div

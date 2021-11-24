@@ -1,0 +1,9 @@
+$mapping-obj-key-val-tool-page: mapping-obj-key-val-tool-page;
+
+.#{$mapping-obj-key-val-tool-page} {
+  padding: 24px;
+
+  .#{$mapping-obj-key-val-tool-page}__field--item {
+    height: 100%;
+  }
+}

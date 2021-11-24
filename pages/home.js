@@ -3,6 +3,8 @@ import WrapperProvider from "../components/WrapperProvider";
 import { useSelector } from "../src/reduxs/store";
 import Head from "next/head";
 import React from "react";
+import { Layout } from "antd";
+const {Content} = Layout;
 
 export default function wrapperHomePage() {
   const chosenThemeInit = useSelector(store => store.themes).currentThemes;
@@ -16,7 +18,11 @@ export default function wrapperHomePage() {
           content="Nguyễn Lê Phong - FullStack Software Engineer. A passionate individual who always thrives to work on end-to-end products which develop sustainable and scalable social and technical systems to create impact."
         />
       </Head>
-      <HomePage theme={chosenThemeInit}/>
+      <Layout>
+        <Content>
+          <HomePage theme={chosenThemeInit}/>
+        </Content>
+      </Layout>
     </WrapperProvider>
   )
 };
