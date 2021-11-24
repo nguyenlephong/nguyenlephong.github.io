@@ -8,6 +8,7 @@ import { persistor, store } from "../src/reduxs/store";
 import { PersistGate } from "redux-persist/lib/integration/react";
 import * as ga from "../lib/ga"
 import "react-tiny-fab/dist/styles.css";
+import "react-bubble-ui/dist/index.css";
 
 import "../public/assests/styles/Header.css";
 import "../public/assests/styles/404.scss";
@@ -57,6 +58,7 @@ import "../public/assests/styles/App.scss";
 import "../public/assests/styles/index.css";
 import "../public/assests/font-awesome/css/all.css";
 import "../public/assests/styles/ToolsPage.scss";
+
 // tools style
 import "../components/containers/tools/tool_003/MappingObjectJsonKeyValueTool.style.scss";
 
