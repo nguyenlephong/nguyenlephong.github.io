@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  border: 1px solid #d9dbdf;
+  /*border: 1px solid #d9dbdf;*/
   border-radius: 5px;
   box-shadow: 5px 5px 5px #d9dbdf;
   margin-bottom: 30px;
@@ -14,6 +14,9 @@
 .cert-header {
   margin: 0px;
   border-radius: 5px 5px 0px 0px;
+  display: flex;
+  justify-content: center;
+  padding: 4px 0;
 }
 
 .logo_img {

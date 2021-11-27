@@ -39,7 +39,7 @@
 
 .greeting-nickname {
   font-size: 30px;
-  line-height: 0px;
+  line-height: 48px;
   font-family: "Google Sans Bold Italic";
 }
 
@@ -76,6 +76,7 @@
   .greeting-nickname {
     font-size: 25px;
     text-align: center;
+    line-height: 48px;
   }
   .greeting-text-p {
     font-size: 16px;

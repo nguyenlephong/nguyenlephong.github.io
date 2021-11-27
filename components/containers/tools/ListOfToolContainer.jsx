@@ -50,6 +50,9 @@ const ListOfToolContainer = props => {
     <Box sx={{ padding: 2, width: "100%", height: "100%" }}>
       <Grid container spacing={2}>
         <Grid item>
+          <Link href={"/"}><Button variant="outlined" ><Typography sx={{color: "#fff"}}>Back to my CV</Typography></Button></Link>
+        </Grid>
+        <Grid item>
           <Button onClick={() => setTypeDisplay("list")} variant="contained">List</Button>
         </Grid>
         <Grid item>
@@ -66,11 +69,11 @@ const ListOfToolContainer = props => {
         <Grid container spacing={2}>
           {toolsData.map(tool => {
             return (
-                <Link key={tool?.id}  href={`/tools/${tool.slug}`}>
-              <Grid item xs={12} md={6} lg={4}>
+              <Link key={tool?.id} href={`/tools/${tool.slug}`}>
+                <Grid item xs={12} md={6} lg={4}>
                   <ToolCardItem data={tool} />
-              </Grid>
-                </Link>
+                </Grid>
+              </Link>
             );
           })}
         </Grid>
@@ -123,59 +126,59 @@ const ChildBubbleElement = props => {
   return (
     <Link href={`/tools/${props.slug}`}>
 
-    <Box
-      title={props.description}
-      style={{
-        backgroundColor: props.backgroundColor
-      }}
-      className={"companyBubble"}
-    >
-
       <Box
+        title={props.description}
         style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          transition: "opacity 0.1s ease",
-          opacity: props.bubbleSize > 50 ? 1 : 0,
-          pointerEvents: "none"
+          backgroundColor: props.backgroundColor
         }}
+        className={"companyBubble"}
       >
-        <img
-          src={`./companyLogos/${props.symbol}.svg`}
-          alt=""
+
+        <Box
           style={{
-            width: 50,
-            borderRadius: `50%`,
-            marginBottom: 10
-          }}
-        />
-        <Typography
-          style={{
-            color: props.textColor,
-            fontSize: 14,
-            marginBottom: 6,
-            fontWeight: 1000,
-            maxWidth: 150,
-            textAlign: "center"
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+            transition: "opacity 0.1s ease",
+            opacity: props.bubbleSize > 50 ? 1 : 0,
+            pointerEvents: "none"
           }}
         >
-          {props.name}
-        </Typography>
-        <Typography
-          style={{
-            color: props.textColor,
-            fontSize: 14,
-            marginBottom: 5,
-            maxWidth: 100,
-            opacity: 0.5
-          }}
-        >
-          {props.key}
-        </Typography>
+          <img
+            src={`./companyLogos/${props.symbol}.svg`}
+            alt=""
+            style={{
+              width: 50,
+              borderRadius: `50%`,
+              marginBottom: 10
+            }}
+          />
+          <Typography
+            style={{
+              color: props.textColor,
+              fontSize: 14,
+              marginBottom: 6,
+              fontWeight: 1000,
+              maxWidth: 150,
+              textAlign: "center"
+            }}
+          >
+            {props.name}
+          </Typography>
+          <Typography
+            style={{
+              color: props.textColor,
+              fontSize: 14,
+              marginBottom: 5,
+              maxWidth: 100,
+              opacity: 0.5
+            }}
+          >
+            {props.key}
+          </Typography>
+        </Box>
       </Box>
-    </Box>
 
     </Link>
   );
