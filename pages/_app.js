@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import Router, { useRouter } from "next/router";
@@ -6,9 +6,10 @@ import ProgressBar from "@badrap/bar-of-progress";
 import { Provider as ReduxProvider } from "react-redux";
 import { persistor, store } from "../src/reduxs/store";
 import { PersistGate } from "redux-persist/lib/integration/react";
-import * as ga from "../lib/ga"
+import * as ga from "../lib/ga";
 import "react-tiny-fab/dist/styles.css";
 import "react-bubble-ui/dist/index.css";
+// import "react-command-palette/dist/themes/sublime.css";
 
 import "../public/assests/styles/Header.css";
 import "../public/assests/styles/404.scss";
@@ -58,7 +59,11 @@ import "../public/assests/styles/App.scss";
 import "../public/assests/styles/index.css";
 import "../public/assests/font-awesome/css/all.css";
 import "../public/assests/styles/ToolsPage.scss";
-import 'tailwindcss/tailwind.css';
+import "tailwindcss/tailwind.css";
+import { Box } from "@mui/material";
+import CommandPalette from "react-command-palette";
+import { tools } from "../lib/tools";
+import SublimeCommand from "../components/components/search-command/SublimeCommand";
 
 const progress = new ProgressBar({
   size: 2,
@@ -73,20 +78,43 @@ Router.events.on("routeChangeError", progress.finish);
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
-  const router = useRouter()
+  const router = useRouter();
+  const [commands, setCommands] = useState([]);
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      ga.pageview(url)
-    }
+      ga.pageview(url);
+    };
     //When the component is mounted, subscribe to router changes and log those page views
-    router.events.on('routeChangeComplete', handleRouteChange)
+    router.events.on("routeChangeComplete", handleRouteChange);
 
     // If the component is unmounted, unsubscribe from the event with the `off` method
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
+  const initSearchCommand = () => {
+    let commandsTool = [];
+    tools.forEach(tool => {
+      commandsTool.push({
+        name: tool.name,
+        command() {
+          document.location.href = `/tools/${tool.slug}`;
+        }
+      });
+    });
+    commandsTool.push({
+      id: 1,
+      shortcut: "⌘ Esc",
+      name: "Close panel",
+      category: "Drawer",
+      command() {
+        // do something
+      }
+    });
+    setCommands(commandsTool);
+  };
 
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -94,6 +122,9 @@ export default function MyApp(props) {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
+
+    initSearchCommand();
+
   }, []);
 
 
@@ -129,8 +160,43 @@ export default function MyApp(props) {
 
       </Head>
       <ReduxProvider store={store}>
-        <PersistGate loading={<React.Fragment/>} persistor={persistor}>
+        <PersistGate loading={<React.Fragment />} persistor={persistor}>
           <Component {...pageProps} />
+
+          <Box>
+            <CommandPalette
+              hotKeys="command+k"
+              placeholder="Try typing '?st', '>st' or 'st'"
+              defaultInputValue=">"
+              // theme={{
+              //   modal: "sublime-modal",
+              //   overlay: "sublime-overlay",
+              //   container: "sublime-container",
+              //   header: "sublime-header",
+              //   content: "sublime-content",
+              //   containerOpen: "sublime-containerOpen",
+              //   input: "sublime-input",
+              //   inputOpen: "sublime-inputOpen",
+              //   inputFocused: "sublime-inputFocused",
+              //   spinner: "sublime-spinner",
+              //   suggestionsContainer: "sublime-suggestionsContainer",
+              //   suggestionsContainerOpen: "sublime-suggestionsContainerOpen",
+              //   suggestionsList: "sublime-suggestionsList",
+              //   suggestion: "sublime-suggestion",
+              //   suggestionFirst: "sublime-suggestionFirst",
+              //   suggestionHighlighted: "sublime-suggestionHighlighted",
+              //   trigger: "sublime-trigger"
+              // }}
+              // renderCommand={SublimeCommand}
+              filterSearchQuery={inputValue => {
+                // strip action keys "? or >" from input before searching commands, ex:
+                // "?something" or ">something" should search using "something" as the query
+                return inputValue.replace(/^(>|\?)/g, "");
+              }}
+              trigger={(<React.Fragment/>)}
+              maxDisplayed={20}
+              commands={commands} />
+          </Box>
         </PersistGate>
       </ReduxProvider>
     </>

@@ -13,10 +13,10 @@ import ListOfToolContainer from "../../components/containers/tools/ListOfToolCon
 export default function wrapperToolsPage() {
   const [vantaEffect, setVantaEffect] = useState(0);
   const refToolPageDetail = useRef(null);
-  const {width, height} = useWindowSize();
+  const { width, height } = useWindowSize();
 
   const getBackgroundEffectRandom = () => {
-    let randomNumb = Math.floor(Math.random() * 6) + 1
+    let randomNumb = Math.floor(Math.random() * 6) + 1;
     switch (randomNumb) {
       case 1:
         return HALO_EFFECT({
@@ -25,8 +25,8 @@ export default function wrapperToolsPage() {
           touchControls: true,
           gyroControls: false,
           minHeight: height,
-          minWidth: width,
-        })
+          minWidth: width
+        });
 
       case 2:
         return BIRDS_EFFECT({
@@ -45,7 +45,7 @@ export default function wrapperToolsPage() {
           separation: 37.00,
           alignment: 1.00,
           cohesion: 41.00
-        })
+        });
 
       case 3:
         return WARES_EFFECT({
@@ -56,8 +56,8 @@ export default function wrapperToolsPage() {
           minHeight: height,
           minWidth: width,
           scale: 1.00,
-          scaleMobile: 1.00,
-        })
+          scaleMobile: 1.00
+        });
 
       case 4:
         return GLOBE_EFFECT({
@@ -68,8 +68,8 @@ export default function wrapperToolsPage() {
           minHeight: height,
           minWidth: width,
           scale: 1.00,
-          scaleMobile: 1.00,
-        })
+          scaleMobile: 1.00
+        });
 
       case 5:
         return DOTS_EFFECT({
@@ -80,8 +80,8 @@ export default function wrapperToolsPage() {
           minHeight: height,
           minWidth: width,
           scale: 1.00,
-          scaleMobile: 1.00,
-        })
+          scaleMobile: 1.00
+        });
 
       case 6:
         return GLOBE_EFFECT({
@@ -92,8 +92,8 @@ export default function wrapperToolsPage() {
           minHeight: height,
           minWidth: width,
           scale: 1.00,
-          scaleMobile: 1.00,
-        })
+          scaleMobile: 1.00
+        });
 
       case 7:
         return FOG_EFFECT({
@@ -104,8 +104,8 @@ export default function wrapperToolsPage() {
           minHeight: height,
           minWidth: width,
           scale: 1.00,
-          scaleMobile: 1.00,
-        })
+          scaleMobile: 1.00
+        });
 
       default:
         return HALO_EFFECT({
@@ -114,11 +114,11 @@ export default function wrapperToolsPage() {
           touchControls: true,
           gyroControls: false,
           minHeight: height,
-          minWidth: width,
-        })
+          minWidth: width
+        });
 
     }
-  }
+  };
 
   useEffect(() => {
     if (!vantaEffect) {
@@ -142,8 +142,9 @@ export default function wrapperToolsPage() {
       </Head>
       <div className={"tools-page"}>
         <div ref={refToolPageDetail} id={"tools-page-wrap"} className={"tools-page-wrap"}>
-            <ListOfToolContainer/>
+          <ListOfToolContainer />
         </div>
+
       </div>
     </React.Fragment>
   );
