@@ -8,6 +8,7 @@ import WrapperProvider from "../../../components/WrapperProvider";
 import Head from "next/head";
 import MappingObjectJsonKeyValueTool from "../../../components/containers/tools/tool_003/MappingObjectJsonKeyValueTool";
 import { Fade } from "react-bootstrap";
+import Router from 'next/router'
 
 const ToolDetailPage = (props) => {
   const chosenThemeInit = useSelector(store => store.themes).currentThemes;
@@ -30,6 +31,7 @@ const ToolDetailPage = (props) => {
         break;
       default:
         setToolData(null);
+        Router.push('/coming-soon')
         break;
     }
   };
