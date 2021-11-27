@@ -1,14 +1,53 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Box, Grid, Button } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Box, Grid, Button, Typography } from "@mui/material";
 import { tools } from "../../../lib/tools";
 import BubbleUI from "react-bubble-ui";
 import "react-bubble-ui/dist/index.css";
+import Link from "next/link";
 
 const ListOfToolContainer = props => {
   const [typeDisplay, setTypeDisplay] = useState("bubble");
+  const [toolsData, setToolsData] = useState(tools);
+  const changeContrast = () => {
+    let toolsUpdate = [];
+    let R, G, B, C, L;
+
+    tools.forEach(tool => {
+      R = (Math.floor(Math.random() * 256));
+      G = (Math.floor(Math.random() * 256));
+      B = (Math.floor(Math.random() * 256));
+      tool.backgroundColor = "rgb(" + R + "," + G + "," + B + ")";
+
+      C = [R / 255, G / 255, B / 255];
+
+      for (let i = 0; i < C.length; ++i) {
+        if (C[i] <= 0.03928) {
+          C[i] = C[i] / 12.92;
+        } else {
+          C[i] = Math.pow((C[i] + 0.055) / 1.055, 2.4);
+        }
+      }
+
+      L = 0.2126 * C[0] + 0.7152 * C[1] + 0.0722 * C[2];
+
+      if (L > 0.179) {
+        tool.textColor = "#000";
+      } else {
+        tool.textColor = "#fff";
+      }
+
+      toolsUpdate.push(tool);
+    });
+
+    setToolsData(toolsUpdate);
+  };
+
+  useEffect(() => {
+    changeContrast();
+  }, []);
+
   return (
-    <Box sx={{ padding: 2, width: "100%", height: "100%", }}>
+    <Box sx={{ padding: 2, width: "100%", height: "100%" }}>
       <Grid container spacing={2}>
         <Grid item>
           <Button onClick={() => setTypeDisplay("list")} variant="contained">List</Button>
@@ -25,11 +64,13 @@ const ListOfToolContainer = props => {
         mt: 2
       }}>
         <Grid container spacing={2}>
-          {tools.map(tool => {
+          {toolsData.map(tool => {
             return (
-              <Grid key={tool?.id} item xs={12} md={6} lg={4}>
-                <ToolCardItem data={tool} />
+                <Link key={tool?.id}  href={`/tools/${tool.slug}`}>
+              <Grid item xs={12} md={6} lg={4}>
+                  <ToolCardItem data={tool} />
               </Grid>
+                </Link>
             );
           })}
         </Grid>
@@ -51,8 +92,10 @@ const ListOfToolContainer = props => {
           compact: true,
           gravitation: 5
         }}>
-          {tools.map((company, i) => {
-            return <ChildBubbleElement {...company} key={i} />;
+          {toolsData.map((tool, i) => {
+            return (
+              <ChildBubbleElement key={i} {...tool} />
+            );
           })}
         </BubbleUI>
 
@@ -78,14 +121,17 @@ export const ToolCardItem = (props) => {
 
 const ChildBubbleElement = props => {
   return (
-    <div
+    <Link href={`/tools/${props.slug}`}>
+
+    <Box
+      title={props.description}
       style={{
-        backgroundColor: props.backgroundColor + "d0"
+        backgroundColor: props.backgroundColor
       }}
       className={"companyBubble"}
     >
 
-      <div
+      <Box
         style={{
           display: "flex",
           justifyContent: "center",
@@ -105,7 +151,7 @@ const ChildBubbleElement = props => {
             marginBottom: 10
           }}
         />
-        <p
+        <Typography
           style={{
             color: props.textColor,
             fontSize: 14,
@@ -116,8 +162,8 @@ const ChildBubbleElement = props => {
           }}
         >
           {props.name}
-        </p>
-        <p
+        </Typography>
+        <Typography
           style={{
             color: props.textColor,
             fontSize: 14,
@@ -127,8 +173,10 @@ const ChildBubbleElement = props => {
           }}
         >
           {props.key}
-        </p>
-      </div>
-    </div>
+        </Typography>
+      </Box>
+    </Box>
+
+    </Link>
   );
 };

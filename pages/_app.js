@@ -58,6 +58,7 @@ import "../public/assests/styles/App.scss";
 import "../public/assests/styles/index.css";
 import "../public/assests/font-awesome/css/all.css";
 import "../public/assests/styles/ToolsPage.scss";
+import 'tailwindcss/tailwind.css';
 
 // tools style
 import "../components/containers/tools/tool_003/MappingObjectJsonKeyValueTool.style.scss";

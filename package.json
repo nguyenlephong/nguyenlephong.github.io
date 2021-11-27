@@ -67,12 +67,15 @@
     "styled-components": "^5.1.1",
     "styletron-engine-atomic": "^1.4.6",
     "styletron-react": "^5.2.7",
+    "tailwindcss": "^2.2.19",
     "uuid": "^8.3.2",
     "vanta": "^0.5.21"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.0",
     "babel-plugin-styled-components": "^1.13.2",
     "next-sitemap": "^1.6.140",
+    "postcss": "^8.4.3",
     "serve": "^12.0.0"
   },
   "contributors": [
