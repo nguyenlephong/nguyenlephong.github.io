@@ -19,9 +19,8 @@ const ToolDetailPage = (props) => {
 
 
   const getToolContentPageByToolId = (toolSlug) => {
-    console.log('log::12 getToolContentPageByToolId', toolSlug)
     switch (toolSlug) {
-      case "translate-json":
+      case "translate-data-json-i18n-to-another-language":
         setToolData({
           id: 3,
           title: "Amulet Store | Translate Json i18n to another language",

@@ -65,3 +65,41 @@ body {
     opacity: 0.5;
   }
 }
+
+.btn-shares {
+
+  .button_share__some-network {
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+  }
+
+  .button_share__some-network__share-count {
+    display: inline-flex;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: visible;
+    width: 0;
+    margin-top: 3px;
+    font-size: 12px;
+  }
+
+  .button_share__some-network__share-button {
+    cursor: pointer;
+  }
+
+  .button_share__some-network__share-button:hover:not(:active) {
+    opacity: 0.75;
+  }
+
+  .button_share__some-network__custom-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .mask {
+    color: #021d1d;
+    opacity: 0.7;
+  }
+}
