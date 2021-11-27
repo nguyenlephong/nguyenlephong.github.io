@@ -60,9 +60,6 @@ import "../public/assests/font-awesome/css/all.css";
 import "../public/assests/styles/ToolsPage.scss";
 import 'tailwindcss/tailwind.css';
 
-// tools style
-import "../components/containers/tools/tool_003/MappingObjectJsonKeyValueTool.style.scss";
-
 const progress = new ProgressBar({
   size: 2,
   color: "#18A0FB",

@@ -1,11 +1,8 @@
-
 import React, { useState } from "react";
 import { copyToClipboardLargeData } from "../../../../src/shared/utils/DomUtils";
-import { NOTIFICATION_MESSAGE } from "../../../../lib/config/config-app";
-import {Button, Row,Col } from "react-bootstrap";
-import { ThumbsUp } from "phosphor-react";
-
-const prefixCss = "mapping-obj-key-val-tool-page";
+import { Box, TextField, Grid, Button, Stack, Alert, Snackbar } from "@mui/material";
+import { Copy } from "phosphor-react";
+import ToolDetailFooter from "../../../../components/components/ToolDetailFooter";
 
 const generateID = () => {
   // I generate the UID from two parts here
@@ -66,6 +63,8 @@ const MappingKeyValueTool = () => {
 
   const [isActiveMapping, setIsActiveMapping] = useState(true);
 
+  const [openSnackbar, setOpenSnackbar] = useState(null);
+
   const [objOrigin, setObjOrigin] = useState(null);
   const [objTranslate, setObjTranslate] = useState(null);
   const [objMapping, setObjMapping] = useState(null);
@@ -74,6 +73,10 @@ const MappingKeyValueTool = () => {
 
   const fillDataOrigin = () => {
     setObjOrigin(fillOriginExample);
+  };
+
+  const onCloseSnackbar = () => {
+    setOpenSnackbar(null);
   };
 
   const fillDataTranslate = () => {
@@ -91,12 +94,7 @@ const MappingKeyValueTool = () => {
 
   const onPrepareData = () => {
     if (!objOrigin) {
-      message.error({
-        content: "You not yet paste data handle!",
-        duration: NOTIFICATION_MESSAGE.duration,
-        className: "pd__message--error",
-        icon: <ClosedIcon fill={"#863a32"} className={"pd__message--error"} />
-      });
+      setOpenSnackbar({ type: "error", message: "You not yet paste data handle!" });
       return;
     }
 
@@ -124,23 +122,13 @@ const MappingKeyValueTool = () => {
 
     setKeyMapping(dataKeyMap);
     copyToClipboardLargeData(JSON.stringify(objCopyToTrans, null, 2));
-    message.success({
-      content: "Copy data handle before translate success!",
-      duration: NOTIFICATION_MESSAGE.duration,
-      className: "pd__message--success",
-      icon: <ThumbsUp size={24} />
-    });
 
+    setOpenSnackbar({ type: "success", message: "Copy data handle before translate success!" });
   };
 
   const onMappingData = () => {
     if (!objTranslate) {
-      message.error({
-        content: "You not yet paste data translate!",
-        duration: NOTIFICATION_MESSAGE.duration,
-        className: "pd__message--error",
-        icon: <ClosedIcon fill={"#863a32"} className={"pd__message--error"} />
-      });
+      setOpenSnackbar({ type: "error", message: "You not yet paste data translate!" });
       return;
     }
 
@@ -165,102 +153,100 @@ const MappingKeyValueTool = () => {
     });
 
     setObjMapping(objectMappingUpdate);
-    message.success({
-      content: "Great! Mapping data success!",
-      duration: NOTIFICATION_MESSAGE.duration,
-      className: "pd__message--success",
-      icon: <ThumbsUp size={24} />
-    });
+    setOpenSnackbar({ type: "success", message: "Great! Mapping data success!" });
   };
 
   return (
 
     <div className={"fw fh"}>
-
-
-      <Row gutter={[24, 24]}>
-        <Col xs={12}>
-          <Row className={`${prefixCss}__field--item`}>
-            <Col xs={12} style={{ height: 80 }}>
-
-              <Space align={"center"} className={"pd-flex-between"}>
-                <Title level={3} className={`${prefixCss}__title`}>
-                  Object JSON Origin
-                </Title>
-                <Button variant="success" onClick={fillDataOrigin}>Fill data example</Button>
-              </Space>
-            </Col>
-
-            <Col xs={12}>
-              <TextArea
-                autoFocus={true}
+      <Box sx={{ padding: 2, width: "100%", height: "100%" }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} lg={6}>
+            <Stack spacing={2}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <Button sx={{ width: "100%" }} variant={"outlined"} onClick={fillDataOrigin}>Fill data
+                    (example)</Button>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Button sx={{ width: "100%" }} variant={"contained"} color={"info"} onClick={onPrepareData}>Copy Data
+                    Custom</Button>
+                </Grid>
+              </Grid>
+              <TextField
+                id="objOrigin"
+                label="Object JSON Origin"
+                multiline
+                rows={12}
+                fullWidth
                 value={objOrigin}
+                variant="filled"
                 onChange={(e) => onChangeObjText(e.target.value, "ORIGIN")}
-                id={"text-obj-origin"} rows={14} />
-            </Col>
-          </Row>
-        </Col>
+              />
+            </Stack>
 
-        <Col xs={12}>
-          <Row className={`${prefixCss}__field--item`}>
-            <Col xs={12} style={{ height: 80 }}>
-              <Space align={"center"} className={"pd-flex-between"}>
-                <Title level={3} className={`${prefixCss}__title`}>
-                  Data translate from https://translate.google.com/
-                </Title>
-                <Button variant="success" disabled={!objOrigin} onClick={fillDataTranslate}>Fill
-                  data after translate</Button>
-              </Space>
-            </Col>
+          </Grid>
 
-            <Col xs={12}>
-              <TextArea
+          <Grid item xs={12} lg={6}>
+            <Stack spacing={2}>
+              <Button disabled={!objOrigin} onClick={fillDataTranslate} variant={"outlined"}>Fill data after
+                translate (example)</Button>
+              <TextField
+                id="objTranslate"
+                label="Data translate from https://translate.google.com/"
+                multiline
+                fullWidth
+                rows={12}
                 value={objTranslate}
+                variant="filled"
                 onChange={(e) => {
                   setIsActiveMapping(false);
                   onChangeObjText(e.target.value, "TRANSLATE");
                 }}
-                id={"text-obj-trans"} rows={14} />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+              />
 
-      <Row gutter={[24, 24]}>
-        <Col xs={12} className={"pd-flex-between"}>
-          <Button variant="success" onClick={onPrepareData}>Copy Data Custom</Button>
-          <Button
-            variant="success"
-            disabled={isActiveMapping}
-            onClick={onMappingData}>Mapping</Button>
-        </Col>
+            </Stack>
+          </Grid>
 
-        <Col xs={12}>
-          <div className={`${prefixCss}__field--item`}>
-            <Space className={"pd-flex-between"}>
-              <Title level={2} className={`${prefixCss}__title`}>
-                This is a data mapping
+          <Grid item xs={12}>
+            <Stack spacing={2}>
+              <Button disabled={isActiveMapping} sx={{ width: "100%" }} variant={"contained"} color={"success"}
+                      onClick={onMappingData}>Mapping Data</Button>
+              <TextField
+                id="objMapping"
+                label="This is a data mapping"
+                multiline
+                fullWidth
+                rows={12}
+                value={objMapping}
+                variant="filled"
+              />
+              <Button
+                startIcon={<Copy />}
+                sx={{ width: "100%" }} variant={"contained"} color={"success"}
+                onClick={() => {
+                  copyToClipboardLargeData(objMapping);
+                  setOpenSnackbar({type: "success", message: "Copy data result after mapping success!"})
+                }}>Copy result</Button>
+            </Stack>
+          </Grid>
 
-              </Title>
-              <Button variant="success"
-                      onClick={() => copyToClipboardLargeData(objMapping)}>Copy</Button>
-            </Space>
-            <TextArea
-              value={objMapping}
-              onChange={(e) => onChangeObjText(e.target.value, "ORIGIN")}
-              id={"text-obj-mapping"}
-              rows={14} />
 
-            <TextField
-              id="outlined-multiline-static"
-              label="Multiline"
-              multiline
-              rows={4}
-              defaultValue="Default Value"
-            />
-          </div>
-        </Col>
-      </Row>
+        </Grid>
+      </Box>
+
+      {openSnackbar &&
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        open={!!openSnackbar} autoHideDuration={6000} onClose={onCloseSnackbar}>
+        <Alert onClose={onCloseSnackbar} severity={openSnackbar?.type} sx={{ width: "100%" }}>
+          {openSnackbar.message}
+        </Alert>
+      </Snackbar>}
+
+      <Box sx={{ padding: 2, width: "100%"}}>
+        <ToolDetailFooter/>
+      </Box>
     </div>
 
   );
