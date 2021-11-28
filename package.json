@@ -62,6 +62,7 @@
     "react-scripts": "3.2.0",
     "react-share": "^4.4.0",
     "react-spring": "^8.0.27",
+    "react-swipeable-views": "^0.14.0",
     "react-tiny-fab": "^4.0.3",
     "react-use": "^17.3.1",
     "redux": "^4.1.0",
