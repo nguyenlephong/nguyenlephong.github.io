@@ -28,8 +28,8 @@ const ToolDetailPage = (props) => {
       case "translate-data-json-i18n-to-another-language":
         setToolData({
           id: 3,
-          title: "Amulet Store | Translate Json i18n to another language",
-          description: "Amulet Store | Translate Json i18n to another language",
+          title: "Tools For Developer | Translate Json i18n to another language",
+          description: "Tools For Developer | Translate Json i18n to another language",
           component: <MappingObjectJsonKeyValueTool/>
         });
         break;
@@ -37,8 +37,8 @@ const ToolDetailPage = (props) => {
       case "search-param-url":
         setToolData({
           id: 9,
-          title: "Amulet Store | Get all param from url to JSON object",
-          description: "Amulet Store | Get all param from url to JSON object, tools",
+          title: "Tools For Developer | Get all param from url to JSON object",
+          description: "Tools For Developer | Get all param from url to JSON object, tools",
           component: <SearchParamURLPage/>
         });
         break;
@@ -46,8 +46,8 @@ const ToolDetailPage = (props) => {
       case "detect-browser-using-javascript":
         setToolData({
           id: 11,
-          title: "Amulet Store | Detect browser using javascript",
-          description: "Amulet Store | Detect browser using javascript, tools",
+          title: "Tools For Developer | Detect browser using javascript",
+          description: "Tools For Developer | Detect browser using javascript, tools",
           component: <DetectBrowserPage/>
         });
         break;
@@ -55,8 +55,8 @@ const ToolDetailPage = (props) => {
       case "react-live-coding":
         setToolData({
           id: 12,
-          title: "Amulet Store | React live - Component coding online",
-          description: "Amulet Store | React live - Component coding online, tools",
+          title: "Tools For Developer | React live - Component coding online",
+          description: "Tools For Developer | React live - Component coding online, tools",
           component: <LiveReactEditorPage/>
         });
         break;
@@ -64,8 +64,8 @@ const ToolDetailPage = (props) => {
       case "qr-code-js":
         setToolData({
           id: 15,
-          title: "Amulet Store | Create QR code JS",
-          description: "Amulet Store | qr code js, create QR code, tools",
+          title: "Tools For Developer | Create QR code JS",
+          description: "Tools For Developer | qr code js, create QR code, tools",
           component: <QRCodeJsPage/>
         });
         break;
@@ -73,8 +73,8 @@ const ToolDetailPage = (props) => {
       case "roadmap-developer":
         setToolData({
           id: 16,
-          title: "Amulet Store | Roadmap for developer, reactjs, frontend, backend, tools",
-          description: "Amulet Store | Roadmap for developer, reactjs, frontend, backend, tools",
+          title: "Tools For Developer | Roadmap for developer, reactjs, frontend, backend, tools",
+          description: "Tools For Developer | Roadmap for developer, reactjs, frontend, backend, tools",
           component: <RoadMapPage/>
         });
         break;
