@@ -12,6 +12,7 @@ import { Fade } from "react-bootstrap";
 import Router from 'next/router'
 import DetectBrowserPage from "../../../components/containers/tools/tool_011/DetectBrowserPage";
 import RoadMapPage from "../../../components/containers/tools/tool_016/RoadMapPage";
+import LiveReactEditorPage from "../../../components/containers/tools/tool_012/LiveReactEditorPage";
 
 const ToolDetailPage = (props) => {
   const chosenThemeInit = useSelector(store => store.themes).currentThemes;
@@ -47,6 +48,15 @@ const ToolDetailPage = (props) => {
           title: "Amulet Store | Detect browser using javascript",
           description: "Amulet Store | Detect browser using javascript, tools",
           component: <DetectBrowserPage/>
+        });
+        break;
+
+      case "react-live-coding":
+        setToolData({
+          id: 12,
+          title: "Amulet Store | React live - Component coding online",
+          description: "Amulet Store | React live - Component coding online, tools",
+          component: <LiveReactEditorPage/>
         });
         break;
 
