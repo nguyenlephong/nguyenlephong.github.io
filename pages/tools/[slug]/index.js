@@ -13,6 +13,7 @@ import Router from 'next/router'
 import DetectBrowserPage from "../../../components/containers/tools/tool_011/DetectBrowserPage";
 import RoadMapPage from "../../../components/containers/tools/tool_016/RoadMapPage";
 import LiveReactEditorPage from "../../../components/containers/tools/tool_012/LiveReactEditorPage";
+import QRCodeJsPage from "../../../components/containers/tools/tool_015/QRCodeJsPage";
 
 const ToolDetailPage = (props) => {
   const chosenThemeInit = useSelector(store => store.themes).currentThemes;
@@ -57,6 +58,15 @@ const ToolDetailPage = (props) => {
           title: "Amulet Store | React live - Component coding online",
           description: "Amulet Store | React live - Component coding online, tools",
           component: <LiveReactEditorPage/>
+        });
+        break;
+
+      case "qr-code-js":
+        setToolData({
+          id: 15,
+          title: "Amulet Store | Create QR code JS",
+          description: "Amulet Store | qr code js, create QR code, tools",
+          component: <QRCodeJsPage/>
         });
         break;
 
