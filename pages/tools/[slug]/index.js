@@ -10,6 +10,7 @@ import MappingObjectJsonKeyValueTool from "../../../components/containers/tools/
 import SearchParamURLPage from "../../../components/containers/tools/tool_009/SearchParamURLPage";
 import { Fade } from "react-bootstrap";
 import Router from 'next/router'
+import DetectBrowserPage from "../../../components/containers/tools/tool_011/DetectBrowserPage";
 
 const ToolDetailPage = (props) => {
   const chosenThemeInit = useSelector(store => store.themes).currentThemes;
@@ -38,6 +39,16 @@ const ToolDetailPage = (props) => {
           component: <SearchParamURLPage/>
         });
         break;
+
+      case "detect-browser-using-javascript":
+        setToolData({
+          id: 11,
+          title: "Amulet Store | Detect browser using javascript",
+          description: "Amulet Store | Detect browser using javascript, tools",
+          component: <DetectBrowserPage/>
+        });
+        break;
+
       default:
         setToolData(null);
         Router.push('/coming-soon')

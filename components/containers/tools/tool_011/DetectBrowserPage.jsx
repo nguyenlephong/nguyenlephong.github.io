@@ -4,61 +4,50 @@ import ToolDetailFooter from "../../../components/ToolDetailFooter";
 import { Copy } from "phosphor-react";
 import { copyToClipboardLargeData } from "shared/utils/DomUtils";
 
-let exampleURL = `https://wp.primedata.ai/2020/11/05/testing-campaign-analytics/?utm_campaign=ARPU%20Increase%20Experiment&utm_content=30%25%20Discount&utm_promotion=Free%20shipping&utm_source=Facebook&utm_channel_tactic=Landing%20Page%20Views&utm_medium=cpc&author=nguyentlt`;
+const DetectBrowserPage = props => {
 
-const SearchParamURLPage = props => {
-
-  const [urlParam, setUrlParam] = useState(exampleURL);
   const [result, setResult] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(null);
 
-  const onGetParamObjectJSON = () => {
-    const queryString = urlParam.substring(urlParam.indexOf("?"), urlParam.length);
+  const onDetectBrowser = () => {
+    let isOpera = (!!window.opr && !!window.opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 
-    const urlParams = new URLSearchParams(queryString);
+    // Firefox 1.0+
+    let isFirefox = typeof InstallTrigger !== 'undefined';
 
-    const
-      keys = urlParams.keys(),
-      values = urlParams.values(),
-      entries = urlParams.entries();
+    // Safari 3.0+ "[object HTMLElementConstructor]"
+    let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) {
+      return p.toString() === "[object SafariRemoteNotification]";
+    })(!window['safari'] || (typeof safari !== 'undefined' && window.safari.pushNotification));
 
-    for (const key of keys) console.log(key);
+    // Internet Explorer 6-11
+    let isIE = /*@cc_on!@*/!!document.documentMode;
 
-    for (const value of values) console.log(value);
+    // Edge 20+
+    let isEdge = !isIE && !!window.StyleMedia;
 
-    let objectJson = {};
-    for (const entry of entries) {
-      objectJson[entry[0]] = entry[1];
-    }
-    setResult(objectJson);
-    return objectJson;
-  };
+    // Chrome 1 - 71
+    let isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+
+    // Blink engine detection
+    let isBlink = (isChrome || isOpera) && !!window.CSS;
+
+    setResult({isBlink, isChrome, isOpera, isEdge, isFirefox, isSafari})
+  }
 
   return (
     <div className={"fw fh"}>
-      <Typography variant={"h2"} px={2} >Get all param from url to JSON object</Typography>
+      <Typography variant={"h2"} px={2} >Detect browser using javascript</Typography>
       <Box sx={{ padding: 2, width: "100%", height: "100%" }}>
         <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              id="urlParam"
-              label="Paste URL to here:"
-              multiline
-              rows={12}
-              fullWidth
-              value={urlParam}
-              variant="filled"
-              onChange={e => setUrlParam(e.target.value)}
-            />
-          </Grid>
-
           <Grid item xs={12}>
             <Button
               sx={{ width: "100%" }}
               variant={"contained"}
               color={"info"}
-              onClick={onGetParamObjectJSON}>Extract search param</Button>
+              onClick={onDetectBrowser}>Detected browser current</Button>
           </Grid>
+
 
           <Grid item xs={12}>
             <Stack spacing={2}>
@@ -80,8 +69,8 @@ const SearchParamURLPage = props => {
                 }}>Copy result</Button>
             </Stack>
           </Grid>
-
         </Grid>
+
         {openSnackbar &&
         <Snackbar
           anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -90,8 +79,8 @@ const SearchParamURLPage = props => {
             {openSnackbar.message}
           </Alert>
         </Snackbar>}
-
       </Box>
+
       <Box sx={{ padding: 2, width: "100%" }}>
         <ToolDetailFooter />
       </Box>
@@ -99,6 +88,8 @@ const SearchParamURLPage = props => {
   );
 };
 
-SearchParamURLPage.propTypes = {};
+DetectBrowserPage.propTypes = {
 
-export default SearchParamURLPage;
+};
+
+export default DetectBrowserPage;
