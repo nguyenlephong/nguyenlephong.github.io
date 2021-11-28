@@ -11,6 +11,7 @@ import SearchParamURLPage from "../../../components/containers/tools/tool_009/Se
 import { Fade } from "react-bootstrap";
 import Router from 'next/router'
 import DetectBrowserPage from "../../../components/containers/tools/tool_011/DetectBrowserPage";
+import RoadMapPage from "../../../components/containers/tools/tool_016/RoadMapPage";
 
 const ToolDetailPage = (props) => {
   const chosenThemeInit = useSelector(store => store.themes).currentThemes;
@@ -46,6 +47,15 @@ const ToolDetailPage = (props) => {
           title: "Amulet Store | Detect browser using javascript",
           description: "Amulet Store | Detect browser using javascript, tools",
           component: <DetectBrowserPage/>
+        });
+        break;
+
+      case "roadmap-developer":
+        setToolData({
+          id: 16,
+          title: "Amulet Store | Roadmap for developer, reactjs, frontend, backend, tools",
+          description: "Amulet Store | Roadmap for developer, reactjs, frontend, backend, tools",
+          component: <RoadMapPage/>
         });
         break;
 
