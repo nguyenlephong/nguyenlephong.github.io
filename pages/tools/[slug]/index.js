@@ -7,6 +7,7 @@ import { useSelector } from "reduxs/store";
 import WrapperProvider from "../../../components/WrapperProvider";
 import Head from "next/head";
 import MappingObjectJsonKeyValueTool from "../../../components/containers/tools/tool_003/MappingObjectJsonKeyValueTool";
+import SearchParamURLPage from "../../../components/containers/tools/tool_009/SearchParamURLPage";
 import { Fade } from "react-bootstrap";
 import Router from 'next/router'
 
@@ -26,6 +27,15 @@ const ToolDetailPage = (props) => {
           title: "Amulet Store | Translate Json i18n to another language",
           description: "Amulet Store | Translate Json i18n to another language",
           component: <MappingObjectJsonKeyValueTool/>
+        });
+        break;
+
+      case "search-param-url":
+        setToolData({
+          id: 9,
+          title: "Amulet Store | Get all param from url to JSON object",
+          description: "Amulet Store | Get all param from url to JSON object, tools",
+          component: <SearchParamURLPage/>
         });
         break;
       default:
