@@ -7,9 +7,21 @@ import { Provider as ReduxProvider } from "react-redux";
 import { persistor, store } from "../src/reduxs/store";
 import { PersistGate } from "redux-persist/lib/integration/react";
 import * as ga from "../lib/ga";
+import { Box } from "@mui/material";
+import CommandPalette from "react-command-palette";
+import { tools } from "../lib/tools";
+
 import "react-tiny-fab/dist/styles.css";
 import "react-bubble-ui/dist/index.css";
 // import "react-command-palette/dist/themes/sublime.css";
+// import "react-command-palette/dist/themes/chrome.css";
+
+// import SublimeCommand from "../components/components/search-command/SublimeCommand";
+import HeaderCommand from "../components/components/search-command/HeaderCommand";
+// import ChromeCommand from "../components/components/search-command/ChromeCommand";
+import CustomRenderCommand from "../components/components/search-command/CustomRenderCommand";
+// import { chromeCommandThemes } from "../lib/theme";
+
 
 import "../public/assests/styles/Header.css";
 import "../public/assests/styles/404.scss";
@@ -60,10 +72,8 @@ import "../public/assests/styles/index.css";
 import "../public/assests/font-awesome/css/all.css";
 import "../public/assests/styles/ToolsPage.scss";
 import "tailwindcss/tailwind.css";
-import { Box } from "@mui/material";
-import CommandPalette from "react-command-palette";
-import { tools } from "../lib/tools";
-import SublimeCommand from "../components/components/search-command/SublimeCommand";
+import "../public/assests/styles/SearchCommand.style.scss";
+
 
 const progress = new ProgressBar({
   size: 2,
@@ -101,14 +111,15 @@ export default function MyApp(props) {
         name: tool.name,
         command() {
           document.location.href = `/tools/${tool.slug}`;
-        }
+        },
+        category: "Tools"
       });
     });
     commandsTool.push({
       id: 1,
       shortcut: "⌘ Esc",
       name: "Close panel",
-      category: "Drawer",
+      category: "System",
       command() {
         // do something
       }
@@ -168,25 +179,10 @@ export default function MyApp(props) {
               hotKeys="command+k"
               placeholder="Try typing '?st', '>st' or 'st'"
               defaultInputValue=">"
-              // theme={{
-              //   modal: "sublime-modal",
-              //   overlay: "sublime-overlay",
-              //   container: "sublime-container",
-              //   header: "sublime-header",
-              //   content: "sublime-content",
-              //   containerOpen: "sublime-containerOpen",
-              //   input: "sublime-input",
-              //   inputOpen: "sublime-inputOpen",
-              //   inputFocused: "sublime-inputFocused",
-              //   spinner: "sublime-spinner",
-              //   suggestionsContainer: "sublime-suggestionsContainer",
-              //   suggestionsContainerOpen: "sublime-suggestionsContainerOpen",
-              //   suggestionsList: "sublime-suggestionsList",
-              //   suggestion: "sublime-suggestion",
-              //   suggestionFirst: "sublime-suggestionFirst",
-              //   suggestionHighlighted: "sublime-suggestionHighlighted",
-              //   trigger: "sublime-trigger"
-              // }}
+              options={{
+                keys: ["name", "category"]
+              }}
+              // theme={chromeCommandThemes}
               // renderCommand={SublimeCommand}
               filterSearchQuery={inputValue => {
                 // strip action keys "? or >" from input before searching commands, ex:
@@ -195,6 +191,8 @@ export default function MyApp(props) {
               }}
               trigger={(<React.Fragment/>)}
               maxDisplayed={20}
+              renderCommand={CustomRenderCommand}
+              header={<HeaderCommand/>}
               commands={commands} />
           </Box>
         </PersistGate>
