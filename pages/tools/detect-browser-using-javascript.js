@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import Head from "next/head";
 import Header from "../../components/components/Header";
 import { Fade } from "react-bootstrap";
@@ -6,15 +6,14 @@ import Footer from "../../components/components/Footer";
 import TopButton from "../../components/components/TopButton";
 import WrapperProvider from "../../components/WrapperProvider";
 import { useSelector } from "reduxs/store";
-import SearchParamURLPage from "../../components/containers/tools/tool_009/SearchParamURLPage";
+import DetectBrowserPage from "../../components/containers/tools/tool_011/DetectBrowserPage";
 
-const Tool009 = props => {
+const Tool011 = props => {
   const chosenThemeInit = useSelector(store => store.themes).currentThemes;
-
   return (
     <WrapperProvider>
       <Head>
-        <title>{ "Tools For Developer | Get all param from url to JSON object"}</title>
+        <title>Tools For Developer | Detect browser using javascript</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
@@ -24,7 +23,7 @@ const Tool009 = props => {
       <div>
         <Header theme={chosenThemeInit} />
         <Fade bottom duration={2000} distance="40px">
-          <SearchParamURLPage/>
+          <DetectBrowserPage/>
         </Fade>
         <Footer theme={chosenThemeInit} />
         <TopButton theme={chosenThemeInit} />
@@ -33,8 +32,8 @@ const Tool009 = props => {
   );
 };
 
-Tool009.propTypes = {
+Tool011.propTypes = {
 
 };
 
-export default Tool009;
+export default Tool011;
