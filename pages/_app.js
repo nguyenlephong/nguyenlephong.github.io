@@ -110,7 +110,8 @@ export default function MyApp(props) {
       commandsTool.push({
         name: tool.name,
         command() {
-          document.location.href = `/tools/${tool.slug}`;
+          // router.push(`/tools/${tool.slug}`);
+          document.location.href = `/tools/${tool.slug}`
         },
         category: "Tools"
       });
@@ -178,10 +179,12 @@ export default function MyApp(props) {
             <CommandPalette
               hotKeys="command+k"
               placeholder="Try typing '?st', '>st' or 'st'"
-              defaultInputValue=">"
+              defaultInputValue=""
               options={{
                 keys: ["name", "category"]
               }}
+              spinner={false}
+              showSpinnerOnSelect={false}
               // theme={chromeCommandThemes}
               // renderCommand={SublimeCommand}
               filterSearchQuery={inputValue => {
