@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../../components/components/Header";
-import Footer from "../../../components/components/Footer";
-import TopButton from "../../../components/components/TopButton";
+import Header from "../../components/components/Header";
+import Footer from "../../components/components/Footer";
+import TopButton from "../../components/components/TopButton";
 import { useRouter } from 'next/router'
 import { useSelector } from "reduxs/store";
-import WrapperProvider from "../../../components/WrapperProvider";
+import WrapperProvider from "../../components/WrapperProvider";
 import Head from "next/head";
-import MappingObjectJsonKeyValueTool from "../../../components/containers/tools/tool_003/MappingObjectJsonKeyValueTool";
-import SearchParamURLPage from "../../../components/containers/tools/tool_009/SearchParamURLPage";
+import MappingObjectJsonKeyValueTool from "../../components/containers/tools/tool_003/MappingObjectJsonKeyValueTool";
+import SearchParamURLPage from "../../components/containers/tools/tool_009/SearchParamURLPage";
 import { Fade } from "react-bootstrap";
 import Router from 'next/router'
-import DetectBrowserPage from "../../../components/containers/tools/tool_011/DetectBrowserPage";
-import RoadMapPage from "../../../components/containers/tools/tool_016/RoadMapPage";
-import LiveReactEditorPage from "../../../components/containers/tools/tool_012/LiveReactEditorPage";
-import QRCodeJsPage from "../../../components/containers/tools/tool_015/QRCodeJsPage";
+import DetectBrowserPage from "../../components/containers/tools/tool_011/DetectBrowserPage";
+import RoadMapPage from "../../components/containers/tools/tool_016/RoadMapPage";
+import LiveReactEditorPage from "../../components/containers/tools/tool_012/LiveReactEditorPage";
+import QRCodeJsPage from "../../components/containers/tools/tool_015/QRCodeJsPage";
 
 const ToolDetailPage = (props) => {
   const chosenThemeInit = useSelector(store => store.themes).currentThemes;
