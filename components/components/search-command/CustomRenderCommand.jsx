@@ -20,7 +20,7 @@ const CustomRenderCommand = props => {
         dangerouslySetInnerHTML={{ __html: highlight[1] || category }}
         className={`custom-render-command-category ${category}`}
       />
-      <span dangerouslySetInnerHTML={{ __html: highlight[0] || name }} />
+      <span className={"custom-render-command-label"} dangerouslySetInnerHTML={{ __html: highlight[0] || name }} />
       <kbd className="custom-render-command-shortcut">{shortcut}</kbd>
     </div>
   );
