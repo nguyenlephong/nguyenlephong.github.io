@@ -177,7 +177,7 @@ export default function MyApp(props) {
 
           <Box>
             <CommandPalette
-              hotKeys="command+k"
+              hotKeys={["command+k", "ctrl+k"]}
               placeholder="Try typing '?st', '>st' or 'st'"
               defaultInputValue=""
               options={{
