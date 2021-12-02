@@ -26,6 +26,7 @@
     "@monaco-editor/react": "^4.3.1",
     "@mui/material": "^5.1.1",
     "@mui/styles": "^5.2.2",
+    "@mui/x-data-grid": "^5.0.1",
     "@reduxjs/toolkit": "^1.6.1",
     "@uiw/react-md-editor": "^3.8.3",
     "ace-builds": "1.4.12",
@@ -86,7 +87,8 @@
     "styletron-react": "^5.2.7",
     "tailwindcss": "^2.2.19",
     "uuid": "^8.3.2",
-    "vanta": "^0.5.21"
+    "vanta": "^0.5.21",
+    "xlsx": "^0.17.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
