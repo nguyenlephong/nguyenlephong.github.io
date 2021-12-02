@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>https://nguyenlephong.github.io/home.html</loc>
+    </url>
+    <url>
+        <loc>https://nguyenlephong.github.io/about.html</loc>
+<!--        <image:image>-->
+<!--            <image:loc>http://example.com/picture.jpg</image:loc>-->
+<!--            <image:caption>A funny picture of a cat eating cabbage</image:caption>-->
+<!--            <image:geo_location>Lyon, France</image:geo_location>-->
+<!--            <image:title>Cat vs Cabbage</image:title>-->
+<!--            <image:license>http://example.com/image-license</image:license>-->
+<!--        </image:image>-->
+    </url>
+    <url>
+        <loc>https://nguyenlephong.github.io/education.html</loc>
+    </url>
+    <url>
+        <loc>https://nguyenlephong.github.io/experience.html</loc>
+    </url>
+    <url>
+        <loc>https://nguyenlephong.github.io/projects.html</loc>
+    </url>
+    <url>
+        <loc>https://nguyenlephong.github.io/tools.html</loc>
+    </url>
+    <url>
+        <loc>https://nguyenlephong.github.io/contact.html</loc>
+        <image:image>
+            <image:loc>https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom.png</image:loc>
+        </image:image>
+    </url>
+</urlset>
