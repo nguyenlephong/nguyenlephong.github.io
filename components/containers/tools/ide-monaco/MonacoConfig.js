@@ -14,6 +14,7 @@ export const IDEMonacoOptions = {
   disableMonospaceOptimizations: false,
   dragAndDrop: false,
   fixedOverflowWidgets: false,
+  lineNumbers: "off",
   folding: true,
   foldingStrategy: 'auto',
   fontLigatures: false,
