@@ -1,6 +1,8 @@
 @import "../../../src/shared/assets/styles/global.style";
 @import "../../../components/containers/about/abouts.style";
-
+// tool markdown-live-editor
+@import '@uiw/react-md-editor/markdown-editor.css';
+@import '@uiw/react-markdown-preview/markdown.css';
 
 .App {
   text-align: center;
