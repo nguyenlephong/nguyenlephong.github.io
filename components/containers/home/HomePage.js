@@ -3,7 +3,6 @@ import Header from "../../components/Header";
 import Greeting from "../../components/Greeting";
 import Skills from "../../components/Skills";
 import Footer from "../../components/Footer";
-import TopButton from "../../components/TopButton";
 
 class HomePage extends Component {
   render() {
@@ -13,7 +12,6 @@ class HomePage extends Component {
         <Greeting theme={this.props.theme} />
         <Skills theme={this.props.theme} />
         <Footer theme={this.props.theme} />
-        <TopButton theme={this.props.theme} />
       </div>
     );
   }

@@ -9,13 +9,13 @@ import { setCurrentThemesSuccess } from "../src/reduxs/slices/themes";
 const WrapperProvider = props => {
   const chosenThemeInit = useSelector(store => store.themes);
   const dispatch = useDispatch();
-  
+
   const onChangeThemes = (theme) => {
-    document.body.style.background = theme.body
-    document.body.style.color = theme.text
+    document.body.style.background = theme.body;
+    document.body.style.color = theme.text;
     dispatch(setCurrentThemesSuccess(theme));
   };
-  
+
   return (
     <BaseProvider theme={LightTheme}>
       <ThemeProvider theme={chosenThemeInit}>
@@ -27,6 +27,10 @@ const WrapperProvider = props => {
             mainButtonStyles={{ backgroundColor: "#e74c3c" }}
             icon={<i className="fas fa-eye" />}
             alwaysShowTitle={true}
+            style={{
+              bottom: 0,
+              left: 0
+            }}
           >
             {themes.map((t) => {
               return (

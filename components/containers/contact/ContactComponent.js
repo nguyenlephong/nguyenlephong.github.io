@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import TopButton from "../../components/TopButton";
 import SocialMedia from "../../components/SocialMedia";
 import Button from "../../components/Button";
 import BlogsImg from "./BlogsImg";
@@ -123,7 +122,6 @@ class Contact extends Component {
           </Fade>
         </div>
         <Footer theme={this.props.theme} onToggle={this.props.onToggle} />
-        <TopButton theme={this.props.theme} />
       </div>
     );
   }

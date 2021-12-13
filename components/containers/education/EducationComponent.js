@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import TopButton from "../../components/TopButton";
 import Educations from "../../components/Educations";
 import Certifications from "../../components/Certifications";
 import CompetitiveSites from "../../components/CompetitiveSites";
@@ -40,7 +39,6 @@ class Education extends Component {
           <Certifications theme={this.props.theme} />
         </div>
         <Footer theme={this.props.theme} />
-        <TopButton theme={this.props.theme} />
       </div>
     );
   }

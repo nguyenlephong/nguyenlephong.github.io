@@ -3,6 +3,7 @@ import WrapperProvider from "../components/WrapperProvider";
 import { useSelector } from "../src/reduxs/store";
 import Head from "next/head";
 import React from "react";
+import TopButton from "../components/components/TopButton";
 
 export default function wrapperContactPage() {
   const chosenThemeInit = useSelector(store => store.themes).currentThemes;
@@ -17,6 +18,7 @@ export default function wrapperContactPage() {
         />
       </Head>
       <ContactPage theme={chosenThemeInit}/>
+      <TopButton theme={chosenThemeInit} />
     </WrapperProvider>
   )
 };

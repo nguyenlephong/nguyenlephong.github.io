@@ -16,13 +16,13 @@ export default function TopButton({ theme }) {
       document.getElementById("topButton").style.visibility = "hidden";
     }
   }
-  
+
   if (typeof window !== "undefined") {
     window.onscroll = function () {
       scrollFunction();
     };
   }
-  
+
 
   const onMouseEnter = (color, bgColor) => {
     /* For the button */
@@ -56,6 +56,11 @@ export default function TopButton({ theme }) {
         color: theme.body,
         backgroundColor: theme.text,
         border: `solid 1px ${theme.text}`,
+        width: 56,
+        height: 56,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
       title="Go up"
       onMouseEnter={() => onMouseEnter(theme.text, theme.body)}

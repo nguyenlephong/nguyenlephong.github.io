@@ -2,7 +2,6 @@ import React, { useCallback, useState } from "react";
 import Gallery from "react-photo-gallery";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import TopButton from "../../components/TopButton";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { photos, summaries, videos } from "../../../lib/about-data";
 import ListOfVideosComponent from "./ListOfVideosComponent";
@@ -70,7 +69,6 @@ const AboutPage = (props) => {
         <ListOfVideosComponent videos={videos} />
       </div>
       <Footer theme={props.theme} onToggle={props.onToggle} />
-      <TopButton theme={props.theme} />
     </div>
   );
 };
