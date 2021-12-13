@@ -1,5 +1,5 @@
 /**
- *
+ * generateID
  * @returns {string}
  */
 export const generateID = () => {
@@ -7,7 +7,7 @@ export const generateID = () => {
 }
 
 /**
- *
+ * uuid
  * @returns {string}
  */
 export const uuid = () => {
@@ -15,7 +15,7 @@ export const uuid = () => {
 }
 
 /**
- *
+ * uuidByte
  * @returns {string}
  */
 export const uuidByte = () => {
