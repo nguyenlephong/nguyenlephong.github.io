@@ -29,7 +29,7 @@
 - My dream: `while(sleeping){money++;}`
 - 📫 How to reach me: nguyenlephong1997@gmail.com
 - 📫 CV: https://nguyenlephong.github.io/
-- 📫 My Tools: http://amuletstore.net/
+- 📫 My Tools: https://nguyenlephong.github.io/tools
 - 📫 Youtube Channel: https://www.youtube.com/channel/UCVT2aPzoLT4Qj64VpDBvxuw
 
 ### 🛠 &nbsp;Languages and Tools
@@ -180,8 +180,7 @@
 
 ## App Link
 
-- [Profile Page](https://dom.amuletstore.net)
-- [CV Page](https://nguyenlephong.github.io)
+- [Profile Page](https://nguyenlephong.github.io)
 
 ## Environment Settings
 
@@ -196,7 +195,7 @@
 
 **_Run step-by-step list of command below:_**
 
-1.  `cd <path-to-project>/kits`
-2.  `git checkout develop`
+1.  `cd <path-to-project>/nguyenlephong.github.io`
+2.  `git checkout master`
 3.  `yarn`
-4.  `yarn start-[env=dev|test|stag|prod]`
+4.  `yarn dev`
