@@ -3,7 +3,6 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import GithubRepoCard from "../../components/GithubRepoCard";
 import Button from "../../components/Button";
-import TopButton from "../../components/TopButton";
 import { Fade } from "react-reveal";
 import { projectsHeader } from "../../../lib/portfolio.js";
 import ProjectsData from "../../../src/shared/opensource/projects.json";
@@ -51,7 +50,6 @@ class Projects extends Component {
           theme={theme}
         />
         <Footer theme={this.props.theme} onToggle={this.props.onToggle} />
-        <TopButton theme={this.props.theme} />
       </div>
     );
   }

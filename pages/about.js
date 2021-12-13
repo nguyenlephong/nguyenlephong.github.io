@@ -3,6 +3,7 @@ import AboutPage from "../components/containers/about/AboutPage";
 import WrapperProvider from "../components/WrapperProvider";
 import { useSelector } from "../src/reduxs/store";
 import { Helmet } from "react-helmet";
+import TopButton from "../components/components/TopButton";
 
 
 export default function wrapperAboutPage() {
@@ -18,6 +19,7 @@ export default function wrapperAboutPage() {
         />
       </Helmet>
       <AboutPage theme={chosenThemeInit}/>
+      <TopButton theme={chosenThemeInit} />
     </WrapperProvider>
   )
 };

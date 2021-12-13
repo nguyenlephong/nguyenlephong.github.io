@@ -3,6 +3,7 @@ import { useSelector } from "../src/reduxs/store";
 import WrapperProvider from "../components/WrapperProvider";
 import HomePage from "../components/containers/home/HomePage";
 import Head from "next/head";
+import TopButton from "../components/components/TopButton";
 
 export default function wrapperHomePage() {
   const chosenThemeInit = useSelector(store => store.themes).currentThemes;
@@ -17,6 +18,7 @@ export default function wrapperHomePage() {
         />
       </Head>
       <HomePage theme={chosenThemeInit}/>
+      <TopButton theme={chosenThemeInit} />
     </WrapperProvider>
   )
 };
