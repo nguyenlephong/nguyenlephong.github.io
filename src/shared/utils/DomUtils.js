@@ -19,6 +19,7 @@ export const scrollCheckLoadMore = (ref, x, y, bottomRefs) => {
     return true;
   }
 };
+
 export const copyToClipboardLargeData = (value) => {
   let contentToCopy;
 
@@ -41,6 +42,7 @@ export const copyToClipboardLargeData = (value) => {
 
   copy(value);
 }
+
 export const copyToClipboard = (value) => {
   const el = document.createElement('textarea');
   el.value = value;

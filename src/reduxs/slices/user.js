@@ -56,24 +56,8 @@ export function getUser() {
   return async dispatch => {
     dispatch(slice.actions.startLoading());
     try {
-      const responseMe = await axios.get(`/users/me`);
-      const response = await axios.get(`/users/${responseMe.data.id}`);
+      const response = await axios.get(`/users`);
       dispatch(slice.actions.getUserByIdSuccess(response.data));
-    } catch (error) {
-      dispatch(slice.actions.hasError(error));
-    }
-  };
-}
-
-// ----------------------------------------------------------------------
-
-export function getUserPartner() {
-  return async dispatch => {
-    dispatch(slice.actions.startLoading());
-    try {
-      const responseMe = await axios.get(`/users/me`);
-      const response = await axios.get(`/partner-members?user.id=${responseMe.data.id}`);
-      dispatch(slice.actions.getUserPartnersSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
     }
