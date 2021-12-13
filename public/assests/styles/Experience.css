@@ -85,3 +85,12 @@
     text-align: center;
   }
 }
+
+
+.card-title {
+  padding-left: 1.2em !important;
+}
+
+.card-sub-title {
+  padding-left: 1.3em !important;
+}

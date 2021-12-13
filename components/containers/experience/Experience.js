@@ -5,6 +5,7 @@ import ExperienceAccordion from "../../components/ExperienceAccordion.js";
 import { experience } from "../../../lib/portfolio.js";
 import { Fade } from "react-reveal";
 import ExperienceImg from "./ExperienceImg";
+import ExperienceTimeline from "../../components/ExperienceTimeline";
 
 const Experience = (props) => {
   const theme = props.theme;
@@ -40,7 +41,8 @@ const Experience = (props) => {
           </div>
         </Fade>
       </div>
-      <ExperienceAccordion sections={experience["sections"]} theme={theme} />
+      {/*<ExperienceAccordion sections={experience["sections"]} theme={theme} />*/}
+      <ExperienceTimeline timelines={experience["timelines"]} theme={theme} />
       <Footer theme={props.theme} onToggle={props.onToggle} />
     </div>
   );

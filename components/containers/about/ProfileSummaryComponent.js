@@ -1,32 +1,37 @@
 import React from "react";
+import { Box, Typography } from "@mui/material";
 
 const ProfileSummary = (props) => {
   const { summaries, theme } = props;
   return (
-    <div>
+    <Box>
       {summaries.map((item) => {
         return (
-          <div key={`sm_${item.id}`} id={`sm_${item.id}`} className={""}>
-            <div className={"pf-summary__title"} style={{ color: theme.text }}>
-              <i className="far fa-hand-point-right" /> {item.categories}
-            </div>
+          <Box key={`sm_${item.id}`} id={`sm_${item.id}`} className={""}>
+            <Box className={"pf-summary__title"} style={{ color: theme.text }}>
+              <Typography
+                sx={{ fontWeight: 600 }}>
+                <i className="far fa-hand-point-right" /> {item.categories}
+              </Typography>
+            </Box>
 
-            <div className={"pf-summary__block_description"}>
+            <Box className={"pf-summary__block_description"}>
               {item.descriptions.map((des, ind) => {
                 return (
-                  <div
+                  <Box
                     className={"pf-summary__title-description"}
                     key={`des_${ind}`}
                   >
-                    <i className="fas fa-check" /> {des}
-                  </div>
+
+                    <Typography><i className="fas fa-check" /> {des}</Typography>
+                  </Box>
                 );
               })}
-            </div>
-          </div>
+            </Box>
+          </Box>
         );
       })}
-    </div>
+    </Box>
   );
 };
 
