@@ -79,6 +79,8 @@
 
 .custom-render-command-category.System {
   background: rgb(76, 174, 80);
+  font-weight: 600;
+  padding: 4px;
 }
 
 .custom-render-command-category.Network {
@@ -94,10 +96,61 @@
 }
 
 .custom-render-command-category.Tools {
-  background: rgb(0, 149, 136);
+  background: #069356;
+  font-weight: 600;
+  padding: 4px;
 }
 
 .custom-render-command-label {
   color: #fff;
   font-weight: 600;
+}
+
+
+.atom-modal {
+  background-color: #ecfef3 !important;
+
+  .atom-suggestionsContainerOpen {
+    border-top: 1px solid #eaeaeb;
+    border-bottom: 1px solid #eaeaeb;
+  }
+
+  .atom-suggestion b {
+    color: #1606fd;
+  }
+
+  .atom-input {
+    background-color: #fff !important;
+    border: 1px solid #33343d;
+    height: 40px;
+    width: 100%;
+    color: #000;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.2em;
+  }
+
+  .atom-suggestionsContainerOpen {
+    overflow: auto;
+  }
+
+  .atom-suggestionsList {
+    .atom-suggestion {
+      background: #f4f4f5;
+      border-bottom: 1px solid #eaeaeb;
+      border-left: 1px solid #eaeaeb;
+      border-right: 1px solid #eaeaeb;
+      .custom-render-command-label {
+        color: #000;
+      }
+    }
+
+    .atom-suggestionFirst {
+      background: #90ddb5;
+    }
+
+    .atom-suggestionHighlighted {
+      background: #c9f2d5;
+    }
+  }
 }
