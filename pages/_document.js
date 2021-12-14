@@ -4,14 +4,19 @@ import { ServerStyleSheet } from "styled-components";
 import configs from "../lib/config/app-config";
 
 export default class MyDocument extends Document {
-  
+
   render() {
     return (
       <Html lang="en">
         <Head>
           {/*Global site tag (gtag.js) - Google Analytics*/}
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-RLXNC58343"></script>
-    
+
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2196929070546836"
+            crossOrigin="anonymous"></script>
+
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -25,10 +30,10 @@ export default class MyDocument extends Document {
             }}
           />
         </Head>
-        
+
         <body>
-          <Main />
-          <NextScript />
+        <Main />
+        <NextScript />
         </body>
       </Html>
     );
@@ -38,8 +43,8 @@ export default class MyDocument extends Document {
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with server-side generation (SSG).
 MyDocument.getInitialProps = async (ctx) => {
-  const sheet = new ServerStyleSheet()
-  
+  const sheet = new ServerStyleSheet();
+
   // Resolution order
   //
   // On the server:
@@ -64,21 +69,21 @@ MyDocument.getInitialProps = async (ctx) => {
 
   // Render app and page and get the context of the page with collected side effects.
   const originalRenderPage = ctx.renderPage;
-  
+
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+      enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />)
     });
 
   const initialProps = await Document.getInitialProps(ctx);
 
-  
+
   return {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [
       ...React.Children.toArray(initialProps.styles),
       sheet.getStyleElement()
-    ],
+    ]
   };
 };
