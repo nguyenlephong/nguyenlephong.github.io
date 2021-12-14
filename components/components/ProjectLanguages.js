@@ -1,41 +1,31 @@
-import React, { Component } from "react";
-import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import React  from "react";
+import { Box, Tooltip, Typography } from "@mui/material";
 
-class ProjectLanguages extends Component {
-  render() {
-    return (
-      <div>
-        <div className="software-skills-main-div">
-          <ul className="dev-icons-languages">
-            {this.props.logos.map((logo) => {
-              return (
-                <OverlayTrigger
-                  key={logo.name}
-                  placement={"top"}
-                  overlay={
-                    <Tooltip id={`tooltip-top`}>
-                      <strong>{logo.name}</strong>
-                    </Tooltip>
-                  }
-                >
-                  <li
-                    className="software-skill-inline-languages"
-                    name={logo.skillName}
-                  >
-                    <span
-                      className="iconify"
-                      data-icon={logo.iconifyClass}
-                      data-inline="false"
-                    ></span>
-                  </li>
-                </OverlayTrigger>
-              );
-            })}
-          </ul>
-        </div>
+const ProjectLanguages = (props) => {
+  return (
+    <Box>
+      <div className="software-skills-main-div">
+        <Box sx={{
+          display: "flex",
+          alignItems: "center",
+
+        }}>
+          {props.logos.map((logo) => {
+            return (
+              <Tooltip title={logo.name} key={logo.name}>
+                <Typography
+                  sx={{ fontSize: 32, ml: 2, mt: 2 }}
+                  className="iconify"
+                  data-icon={logo.iconifyClass}
+                  data-inline="false"
+                />
+              </Tooltip>
+            );
+          })}
+        </Box>
       </div>
-    );
-  }
-}
+    </Box>
+  );
+};
 
 export default ProjectLanguages;

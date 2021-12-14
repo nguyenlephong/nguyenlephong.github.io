@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Fade } from "react-reveal";
 import { certifications } from "../../lib/portfolio";
 import CertificationCard from "./CertificationCard";
+import { Box } from "@mui/material";
 
 class Certifications extends Component {
   render() {
@@ -15,11 +16,12 @@ class Certifications extends Component {
             </h1>
           </Fade>
         </div>
-        <div className="certs-body-div">
+
+        <Box sx={{pt: 2}} className="certs-body-div">
           {certifications.certifications.map((cert) => {
             return <CertificationCard certificate={cert} theme={theme} />;
           })}
-        </div>
+        </Box>
       </div>
     );
   }
