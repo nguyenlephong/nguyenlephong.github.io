@@ -2,9 +2,10 @@
   color: rgb(88, 96, 105);
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 30px -15px;
-  padding: 2rem;
+  /*padding: 2rem;*/
   cursor: pointer;
 }
+
 .repo-card-div:hover {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px -10px;
 }
@@ -67,9 +68,9 @@
 }
 
 .repo-description {
-  overflow: hidden;
+  /*overflow: hidden;*/
   text-align: left;
-  display: -webkit-box;
+  /*display: -webkit-box;*/
   font-family: "Google Sans Regular";
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
