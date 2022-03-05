@@ -2,10 +2,22 @@ import React, { Component } from "react";
 import XLSX from "xlsx";
 import { make_cols } from "./MakeColumns";
 import { SheetJSFT } from "./types";
-import { Avatar, Box, Button, Grid, Icon, Stack, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent, DialogContentText,
+  DialogTitle, FormControl, FormHelperText,
+  Grid,
+  Icon, InputLabel, Select,
+  Stack, MenuItem,
+  Typography
+} from "@mui/material";
 import { Calculator, Copy, Upload } from "phosphor-react";
 import { DataGrid } from "@mui/x-data-grid";
-import { copyToClipboardLargeData } from "../../../../src/shared/utils/DomUtils";
+import { copyToClipboardLargeData } from "shared/utils/DomUtils";
 
 class ExportExcelTool extends Component {
   constructor(props) {
@@ -18,8 +30,11 @@ class ExportExcelTool extends Component {
       columns: [],
       dataSource: [],
       spinning: false,
+      key: "",
+      value: "",
       isHiddenUploadBtn: false,
-      isHiddenHandleBtn: false
+      isHiddenHandleBtn: false,
+      openDialogConfirm: false
     };
     this.handleFile = this.handleFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -128,6 +143,27 @@ class ExportExcelTool extends Component {
     }
   };
 
+  onCopyJSONMessageType = () => {
+    let key = this.state.key
+    let value = this.state.value
+    let data = this.state.dataSource
+
+    let results = {}
+    data.forEach(item => {
+      if(item[value]) results[item[key]] = item[value]
+    })
+    copyToClipboardLargeData(JSON.stringify(results));
+    this.onCloseDialogConfirmCopyJSONAction()
+    this.props.setOpenSnackbar({
+      message: "Copy into clipboard success!",
+      type: "success"
+    });
+  }
+
+  onCloseDialogConfirmCopyJSONAction = () => {
+    this.setState({openDialogConfirm: false})
+  }
+
   getRowPerPageList = () => {
     let size = this.state.data.length;
     if(size < 10) return [5]
@@ -213,6 +249,18 @@ class ExportExcelTool extends Component {
                     <Icon type="save" /> Copy Data
                   </Button>
                 }
+
+                {
+                  this.state.data.length > 0 &&
+                  <Button
+                    variant={"contained"}
+                    color={"success"}
+                    onClick={() => {this.setState({openDialogConfirm: true})}}
+                    startIcon={<Copy size={24} />}
+                  >
+                    <Icon type="save" /> Copy JSON With Key/Value Message
+                  </Button>
+                }
               </Stack>
             </Grid>
           }
@@ -236,6 +284,63 @@ class ExportExcelTool extends Component {
             </Grid>
           }
         </Grid>
+
+        <Dialog open={this.state.openDialogConfirm} onClose={this.onCloseDialogConfirmCopyJSONAction}>
+          <DialogTitle>Choose Key and Value to create JSON </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Choose two columns to mapping JSON {`<key>:<value>`}
+            </DialogContentText>
+
+            <Stack>
+              <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <InputLabel id="select-key-label">KEY</InputLabel>
+                <Select
+                  labelId="select-key-label"
+                  id="select-key"
+                  value={this.state.key}
+                  label="KEY"
+                  onChange={e => this.setState({key: e.target.value})}
+                >
+
+                  {
+                    this.state.columns.map(col => {
+                      return (
+                          <MenuItem key={col.key} value={col.key}>{col.key}</MenuItem>
+                        )
+                    })
+                  }
+                </Select>
+                <FormHelperText>Key of message</FormHelperText>
+              </FormControl>
+
+              <FormControl sx={{ m: 1, minWidth: 120 }}>
+                <InputLabel id="select-value-label">Value</InputLabel>
+                <Select
+                  labelId="select-value-label"
+                  id="select-value"
+                  value={this.state.value}
+                  label="Value"
+                  onChange={e => this.setState({value: e.target.value})}
+                >
+
+                  {
+                    this.state.columns.map(col => {
+                      return (
+                        <MenuItem key={col.key} value={col.key}>{col.key}</MenuItem>
+                      )
+                    })
+                  }
+                </Select>
+                <FormHelperText>Value of key</FormHelperText>
+              </FormControl>
+            </Stack>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.onCloseDialogConfirmCopyJSONAction}>Cancel</Button>
+            <Button onClick={this.onCopyJSONMessageType}>Copy</Button>
+          </DialogActions>
+        </Dialog>
 
       </Stack>
     );
