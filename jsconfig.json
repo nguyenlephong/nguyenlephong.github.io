@@ -1,22 +1,24 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react",
-    "baseUrl": "src",
-    "paths": {
-      "*": [
-        "src/*"
-      ]
-    }
+    "jsx": "react-jsx",
+    "baseUrl": "./src"
   },
   "include": [
     "**/*.jsx",
     "**/*.js",
+    "**/*.ts",
+    "**/*.tsx",
     "**/*.json",
     "**/*.scss"
   ],
@@ -24,6 +26,7 @@
     ".next",
     "dist",
     "build",
-    "node_modules"
+    "node_modules",
+    "**/*.stories.*"
   ]
 }
