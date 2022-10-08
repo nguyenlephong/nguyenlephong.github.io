@@ -11,12 +11,13 @@
   "homepage": "https://nguyenlephong.github.io",
   "scripts": {
     "dev": "PORT=3001 next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "commit": "sh scripts/commit.sh",
     "predeploy": "npm run build",
     "export": "next export",
-    "deploy": "gh-pages -b gh-pages -d build"
+    "gh-deploy": "gh-pages -b gh-pages -d build",
+    "deploy": "yarn build && firebase deploy"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
