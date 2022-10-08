@@ -10,11 +10,6 @@ class DegreeCard extends Component {
         <Flip left duration={2000}>
           <div className="card-img">
             <img
-              style={{
-                maxWidth: "100%",
-                maxHeight: "100%",
-                transform: "scale(50%, 50%)",
-              }}
               src={`${degree.logo_path}`}
               alt={degree.alt_name}
             />
@@ -27,7 +22,7 @@ class DegreeCard extends Component {
               style={{ backgroundColor: theme.headerColor }}
             >
               <div className="body-header-title">
-                <h2 className="card-title" style={{ color: theme.text }}>
+                <h2 className="no-padding card-title " style={{ color: theme.text }}>
                   {degree.title}
                 </h2>
                 <h3 className="card-subtitle" style={{ color: theme.text }}>

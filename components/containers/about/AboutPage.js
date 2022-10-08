@@ -33,27 +33,30 @@ const AboutPage = (props) => {
       <div className="basic-contact ">
         <div className={"about"}>
           <h1 className="skills-header" style={{ color: theme.text }}>
-            Abouts
+            About
           </h1>
 
           <ProfileSummaryComponent summaries={summaries} theme={theme} />
         </div>
 
         <h1 className="skills-header" style={{ color: theme.text }}>
-          My Gallery
+          Some Activities
         </h1>
 
         <ImageList variant="masonry" cols={width > 1368 ? 3 : width < 768 ? 1 : 2} gap={12}>
-          {photos.map((item) => (
-            <ImageListItem key={item.src} sx={{borderRadius: 8}}>
-              <img
-                src={`${item.src}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.src}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                alt={item.alt}
-                loading="lazy"
-              />
-            </ImageListItem>
-          ))}
+          {photos.map((item) => {
+            if(item.hide) return <React.Fragment key={item.src} />
+            return (
+              <ImageListItem key={item.src} sx={{borderRadius: 8}}>
+                <img
+                  src={`${item.src}?w=248&fit=crop&auto=format`}
+                  srcSet={`${item.src}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  alt={item.alt}
+                  loading="lazy"
+                />
+              </ImageListItem>
+            )
+          })}
         </ImageList>
 
         {/*<Gallery*/}
@@ -80,7 +83,7 @@ const AboutPage = (props) => {
         {/*</ModalGateway>*/}
 
         <h1 className="skills-header" style={{ color: theme.text }}>
-          My Videos
+          Some Videos
         </h1>
         <ListOfVideosComponent videos={videos} />
       </div>
