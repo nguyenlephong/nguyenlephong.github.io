@@ -43,16 +43,8 @@ class Contact extends Component {
                 </p>
                 <SocialMedia theme={theme} />
                 <div className="resume-btn-div" >
-                  <div style={{marginRight: 12}}>
-                    <Button
-                      text="See My CV Portrait"
-                      newTab={true}
-                      href={greeting.resumeLink}
-                      theme={theme}
-                    />
-                  </div>
                   <Button
-                    text="See My CV Landscape"
+                    text="Curriculum Vitae"
                     newTab={true}
                     href={greeting.cvLink}
                     theme={theme}

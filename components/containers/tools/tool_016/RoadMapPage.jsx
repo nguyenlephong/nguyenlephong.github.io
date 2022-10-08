@@ -8,7 +8,7 @@ import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
-function TabPanel(props) {
+export function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -34,7 +34,7 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-function a11yProps(index) {
+export function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
     'aria-controls': `full-width-tabpanel-${index}`,
