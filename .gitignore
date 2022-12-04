@@ -3,6 +3,7 @@
 .idea
 .next
 .vscode
+.yarn
 
 # dependencies
 /node_modules
