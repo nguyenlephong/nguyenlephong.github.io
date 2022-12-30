@@ -36,6 +36,7 @@ export default class MyDocument extends Document {
             posthog.init('phc_Ti11bWc5cshVoQe8AI7SuY56FMFP7Fhc9WyymdOGVSw',{api_host:'https://app.posthog.com'})`
             }}
           />
+          <script src={"/prime-sdk.js"} async={false}/>
         </Head>
 
         <body>

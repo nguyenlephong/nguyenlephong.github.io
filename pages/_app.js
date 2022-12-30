@@ -148,18 +148,28 @@ export default function MyApp(props) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no"
         />
+        <meta httpEquiv="content-language" content="vi" />
+        <meta name="google" content="nositelinkssearchbox" />
         <meta name="theme-color" content="#000000" />
         <meta charSet="utf-8" />
-        <link rel="icon" href="https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom220.png" />
-        <link rel="manifest" href="../manifest.json" />
 
+
+        <meta
+          name="title"
+          content="Nguyễn Lê Phong - CV - FullStack Software Engineer"
+        />
         <meta
           name="description"
           content="Nguyễn Lê Phong - FullStack Software Engineer. A passionate individual who always thrives to work on end-to-end products which develop sustainable and scalable social and technical systems to create impact."
         />
+        <meta name="robots" content="noodp,index,follow" />
+        <meta name="revisit-after" content="1 days" />
         <meta property="og:title" content="Nguyen Le Phong | FullStack Software Engineer" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://nguyenlephong.github.io/dom-profile" />
+
+        <link rel="icon" href="https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom220.png" />
+        <link rel="manifest" href="../manifest.json" />
 
         <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
