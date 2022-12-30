@@ -1,0 +1,105 @@
+#tools-page-wrap {
+  position: unset !important;
+  width: 100%;
+  height: 100%;
+}
+
+.tools-page {
+  width: 100%;
+  height: 100%;
+}
+
+.tool-card-item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+}
+
+body {
+  max-width: unset;
+
+  #__next {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.bubbleUI {
+  position: relative;
+  //background-color: rgba(0, 0, 0, 0) !important;
+  width: 100%;
+  height: calc(100vh - 100px);
+  border-radius: 50px;
+  //background-color: white !important;
+  overflow: hidden !important;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+
+  margin-bottom: 10px;
+
+
+  .companyBubble {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.1s ease;
+  }
+
+  .companyBubble:hover {
+    opacity: 0.5;
+  }
+}
+
+.btn-shares {
+
+  .button_share__some-network {
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+  }
+
+  .button_share__some-network__share-count {
+    display: inline-flex;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: visible;
+    width: 0;
+    margin-top: 3px;
+    font-size: 12px;
+  }
+
+  .button_share__some-network__share-button {
+    cursor: pointer;
+  }
+
+  .button_share__some-network__share-button:hover:not(:active) {
+    opacity: 0.75;
+  }
+
+  .button_share__some-network__custom-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .mask {
+    color: #021d1d;
+    opacity: 0.7;
+  }
+}
