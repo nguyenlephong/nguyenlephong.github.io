@@ -143,7 +143,7 @@ export default function MyApp(props) {
   return (
     <>
       <Head>
-        <title>Nguyễn Lê Phong - CV - FullStack Software Engineer</title>
+        <title>Nguyễn Lê Phong - CV - Full-stack Software Engineer</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no"
@@ -156,15 +156,15 @@ export default function MyApp(props) {
 
         <meta
           name="title"
-          content="Nguyễn Lê Phong - CV - FullStack Software Engineer"
+          content="Nguyễn Lê Phong - CV - Full-stack Software Engineer"
         />
         <meta
           name="description"
-          content="Nguyễn Lê Phong - FullStack Software Engineer. A passionate individual who always thrives to work on end-to-end products which develop sustainable and scalable social and technical systems to create impact."
+          content="Nguyễn Lê Phong - Full-stack Software Engineer. A passionate individual who always thrives to work on end-to-end products which develop sustainable and scalable social and technical systems to create impact."
         />
         <meta name="robots" content="noodp,index,follow" />
         <meta name="revisit-after" content="1 days" />
-        <meta property="og:title" content="Nguyen Le Phong | FullStack Software Engineer" />
+        <meta property="og:title" content="Nguyen Le Phong | Full-stack Software Engineer" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://nguyenlephong.github.io/dom-profile" />
 

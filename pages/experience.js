@@ -10,7 +10,7 @@ export default function wrapperExperiencePage() {
   return (
     <WrapperProvider>
       <Head>
-        <title>Experience page - Nguyễn Lê Phong | FullStack Software Engineer</title>
+        <title>Experience page - Nguyễn Lê Phong | Full-stack Software Engineer</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="I have worked with two product startups and one longtime outsourcing company. So I have a lot of experience in Frontend Development profession. Besides, I am also considered as a project mercenary of the outsourcing company. I have grown from such diverse projects. It also gives me confidence as a freelancer to receive projects from partners in my network of contacts. And I'm getting more and more experienced." />
       </Head>

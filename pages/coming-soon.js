@@ -7,11 +7,11 @@ const ComingSoonPage = props => {
   return (
     <React.Fragment>
       <Head>
-        <title>Coming soon - Nguyễn Lê Phong | FullStack Software Engineer</title>
+        <title>Coming soon - Nguyễn Lê Phong | Full-stack Software Engineer</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="Coming soon. Nguyễn Lê Phong | FullStack Software Engineer"
+          content="Coming soon. Nguyễn Lê Phong | Full-stack Software Engineer"
         />
       </Head>
       <div className="coming-soon-page hero bg-gray-100 py-16">

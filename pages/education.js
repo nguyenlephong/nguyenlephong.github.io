@@ -10,11 +10,11 @@ export default function wrapperEducationPage() {
   return (
     <WrapperProvider>
       <Head>
-        <title>Education page - Nguyễn Lê Phong | FullStack Software Engineer</title>
+        <title>Education page - Nguyễn Lê Phong | Full-stack Software Engineer</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="Nguyễn Lê Phong - FullStack Software Engineer. I received an excellent diploma (runner-up - 2019) from my esteemed principal for consistently having the best academic performance."
+          content="Nguyễn Lê Phong - Full-stack Software Engineer. I received an excellent diploma (runner-up - 2019) from my esteemed principal for consistently having the best academic performance."
         />
       </Head>
       <EducationPage theme={chosenThemeInit}/>

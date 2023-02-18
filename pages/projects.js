@@ -10,11 +10,11 @@ export default function wrapperProjectsPage() {
   return (
     <WrapperProvider>
       <Head>
-        <title>Projects page - Nguyễn Lê Phong | FullStack Software Engineer</title>
+        <title>Projects page - Nguyễn Lê Phong | Full-stack Software Engineer</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="Nguyễn Lê Phong - FullStack Software Engineer. My projects make use of a vast variety of latest technology tools. My best experience is to using ReactJS to build a website as a Single Page Application (SPA)."
+          content="Nguyễn Lê Phong - Full-stack Software Engineer. My projects make use of a vast variety of latest technology tools. My best experience is to using ReactJS to build a website as a Single Page Application (SPA)."
         />
       </Head>
       <ProjectsPage theme={chosenThemeInit}/>

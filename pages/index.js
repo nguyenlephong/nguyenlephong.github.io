@@ -10,11 +10,11 @@ export default function wrapperHomePage() {
   return (
     <WrapperProvider>
       <Head>
-        <title>Home page - Nguyễn Lê Phong | FullStack Software Engineer</title>
+        <title>Home page - Nguyễn Lê Phong | Full-stack Software Engineer</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="Nguyễn Lê Phong - FullStack Software Engineer. A passionate individual who always thrives to work on end-to-end products which develop sustainable and scalable social and technical systems to create impact."
+          content="Nguyễn Lê Phong - Full-stack Software Engineer. A passionate individual who always thrives to work on end-to-end products which develop sustainable and scalable social and technical systems to create impact."
         />
       </Head>
       <HomePage theme={chosenThemeInit}/>

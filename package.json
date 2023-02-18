@@ -17,7 +17,8 @@
     "predeploy": "npm run build",
     "export": "next export",
     "gh-deploy": "gh-pages -b gh-pages -d build",
-    "deploy": "yarn build && firebase deploy"
+    "deploy": "yarn build && firebase deploy",
+    "install": "yarn"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",

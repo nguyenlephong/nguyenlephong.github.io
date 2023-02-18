@@ -21,7 +21,7 @@
     <img alt="followers" title="Follow me on Github" src="https://img.shields.io/github/followers/nguyenlephong?color=236ad3&labelColor=1155ba&style=for-the-badge&logo=github&label=Follow"/></a>
 </p>
 
-- 🔭 I’m currently a FullStack Software Engineer of PrimeDATA.ai
+- 🔭 I’m currently a Full-stack Software Engineer of PrimeDATA.ai
 - 🌱 I’m currently staying at home with my family and enjoy coding our Platform
 - 👯 I’m looking to collaborate on Marketing-science based Data Platform
 - 💬 Ask me about Consultant: Java, NodeJS, ReactJS, ReactNative
