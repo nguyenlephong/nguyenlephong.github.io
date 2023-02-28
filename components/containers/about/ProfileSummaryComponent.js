@@ -23,7 +23,10 @@ const ProfileSummary = (props) => {
                     key={`des_${ind}`}
                   >
 
-                    <Typography><i className="fas fa-check" /> {des}</Typography>
+                    <Typography>
+                      <i className="fas fa-check" />
+                      <span style={{paddingLeft: 8}} dangerouslySetInnerHTML={{ __html: des }}></span>
+                    </Typography>
                   </Box>
                 );
               })}
