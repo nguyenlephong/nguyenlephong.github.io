@@ -17,8 +17,7 @@
     "predeploy": "yarn build",
     "export": "next export",
     "gh-deploy": "gh-pages -b gh-pages -d build",
-    "deploy": "firebase deploy",
-    "install": "yarn"
+    "deploy": "firebase deploy"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
@@ -112,9 +111,9 @@
   "browser": {
     "fs": false,
     "net": false,
-    "tls": false,
+    "os": false,
     "path": false,
-    "os": false
+    "tls": false
   },
   "bugs": {
     "url": "https://github.com/nguyenlephong/dom-profile/issues",
