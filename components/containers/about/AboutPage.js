@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from "react";
-// import Gallery from "react-photo-gallery";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Carousel, { Modal, ModalGateway } from "react-images";
@@ -8,6 +7,7 @@ import ListOfVideosComponent from "./ListOfVideosComponent";
 import ProfileSummaryComponent from "./ProfileSummaryComponent";
 import { ImageList, ImageListItem } from "@mui/material";
 import { useWindowSize } from "react-use";
+// import Gallery from "react-photo-gallery";
 
 const AboutPage = (props) => {
   const {width} = useWindowSize()
