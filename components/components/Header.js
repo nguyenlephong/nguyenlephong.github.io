@@ -142,18 +142,20 @@ class Header extends Component {
                   </div>
                 </Link>
               </li>
-              <li>
-                <Link href="/cv">
-                  <div
-                    className={"menu-nav-link-item"}
-                    style={{ color: theme.text }}
-                    onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
-                    onMouseOut={(event) => onMouseOut(event)}
-                  >
-                    CV
-                  </div>
-                </Link>
-              </li>
+              {false && (
+                <li>
+                  <Link href="/cv">
+                    <div
+                      className={"menu-nav-link-item"}
+                      style={{ color: theme.text }}
+                      onMouseEnter={(event) => onMouseEnter(event, theme.highlight)}
+                      onMouseOut={(event) => onMouseOut(event)}
+                    >
+                      CV
+                    </div>
+                  </Link>
+                </li>
+              )}
             </ul>
           </header>
         </div>
