@@ -14,10 +14,10 @@
     "build": "next build && next export",
     "start": "next start",
     "commit": "sh scripts/commit.sh",
-    "predeploy": "npm run build",
+    "predeploy": "yarn build",
     "export": "next export",
     "gh-deploy": "gh-pages -b gh-pages -d build",
-    "deploy": "yarn build && firebase deploy",
+    "deploy": "firebase deploy",
     "install": "yarn"
   },
   "dependencies": {
