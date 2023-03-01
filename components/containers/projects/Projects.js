@@ -31,7 +31,7 @@ class Projects extends Component {
                   {projectsHeader.title}
                 </h1>
                 <Typography
-
+                  variant={"h5"}
                   className="projects-header-detail-text subTitle"
                   sx={{ color: theme.secondaryText, pt: 2 }}
                 >

@@ -11,7 +11,7 @@ const ExperienceTimeline = props => {
       display: "flex",
       justifyContent: "center"
     }}>
-      <Box sx={ width > 1680 ? { width: 1024 } : {}}>
+      <Box sx={ width > 1680 ? { width: 1424 } : {}}>
         <Chrono
           useReadMore={false}
           items={props.timelines}
