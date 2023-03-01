@@ -9,7 +9,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import SwipeableViews from "react-swipeable-views";
 import ToolDetailFooter from "../../components/ToolDetailFooter";
-import { TabPanel, a11yProps } from "../../containers/tools/tool_016/RoadMapPage";
+import { TabPanel, a11yProps } from "../tools/tool_016/RoadMapPage";
 import { greeting } from "../../../lib/portfolio";
 
 class CurriculumVitaePage extends Component {
@@ -66,8 +66,9 @@ const CVContainer = (props) => {
               allowScrollButtonsMobile
               aria-label="road-map-tab"
             >
-              <Tab label="CV Landscape" {...a11yProps(0)} />
+              <Tab label="CV SVG" {...a11yProps(0)} />
               <Tab label="CV Portrait" {...a11yProps(1)} />
+              <Tab label="CV Landscape" {...a11yProps(2)} />
             </Tabs>
           </AppBar>
 
@@ -76,11 +77,12 @@ const CVContainer = (props) => {
             index={value}
             onChangeIndex={handleChangeIndex}
           >
+
             <TabPanel value={value} index={0} dir={theme.direction}>
               <CardMedia
                 component="img"
                 alt="green iguana"
-                image={greeting.cv_landscape}
+                image={greeting.cv_svg}
               />
             </TabPanel>
             <TabPanel value={value} index={1} dir={theme.direction}>
@@ -88,6 +90,14 @@ const CVContainer = (props) => {
                 component="img"
                 alt="green iguana"
                 image={greeting.cv_portrait}
+              />
+            </TabPanel>
+
+            <TabPanel value={value} index={2} dir={theme.direction}>
+              <CardMedia
+                component="img"
+                alt="green iguana"
+                image={greeting.cv_landscape}
               />
             </TabPanel>
 
