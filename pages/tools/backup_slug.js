@@ -70,6 +70,24 @@ const ToolDetailPage = (props) => {
         });
         break;
 
+      case "chat-with-ai":
+        setToolData({
+          id: 15,
+          title: "Tools For Developer | Chat with AI",
+          description: "Tools For Developer | chatGPT, openAI, chat with ai",
+          component: <QRCodeJsPage/>
+        });
+        break;
+
+      case "image-generation":
+        setToolData({
+          id: 15,
+          title: "Tools For Developer | Image Generation with AI",
+          description: "Tools For Developer | chatGPT, openAI, get image generation using ai",
+          component: <QRCodeJsPage/>
+        });
+        break;
+
       case "roadmap-developer":
         setToolData({
           id: 16,
