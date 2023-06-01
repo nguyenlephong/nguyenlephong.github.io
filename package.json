@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "author": {
-    "email": "nguyenlephong1997@gmail.com",
+    "email": "phongnguyen.itengineer@gmail.com",
     "name": "Nguyễn Lê Phong",
     "url": "https://nguyenlephong.github.io"
   },
@@ -118,6 +118,6 @@
   },
   "bugs": {
     "url": "https://github.com/nguyenlephong/dom-profile/issues",
-    "email": "nguyenlephong1997@gmail.com"
+    "email": "phongnguyen.itengineer@gmail.com"
   }
 }

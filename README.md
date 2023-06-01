@@ -27,7 +27,7 @@
 - 💬 Ask me about Consultant: Java, NodeJS, ReactJS, ReactNative
 - ⚡ Fun fact: enjoy life with coding is real
 - My dream: `while(sleeping){money++;}`
-- 📫 How to reach me: nguyenlephong1997@gmail.com
+- 📫 How to reach me: phongnguyen.itengineer@gmail.com
 - 📫 CV: https://nguyenlephong.github.io/
 - 📫 My Tools: https://nguyenlephong.github.io/tools
 - 📫 Youtube Channel: https://www.youtube.com/channel/UCVT2aPzoLT4Qj64VpDBvxuw
@@ -165,7 +165,7 @@
 <p>
 <!-- <a href="https://www.nguyenlephong.com"><img src="https://img.shields.io/badge/-adityavsingh.com-3423A6?style=for-the-badge&logo=Google-Chrome&logoColor=white"/></a> -->
 <a href="https://www.linkedin.com/in/phong-nguyen-0107"><img src="https://img.shields.io/badge/-nguyenlephong-0077B5?style=flat&logo=Linkedin&logoColor=white"/></a>
-<a href="mailto:nguyenlephong1997@gmail.com"><img src="https://img.shields.io/badge/-nguyenlephong1997@gmail.com-D14836?style=flat&logo=Gmail&logoColor=white"/></a>
+<a href="mailto:phongnguyen.itengineer@gmail.com"><img src="https://img.shields.io/badge/-phongnguyen.itengineer@gmail.com-D14836?style=flat&logo=Gmail&logoColor=white"/></a>
 </p>
 <!-- <p align="center"><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=nguyenlephong&" alt="nguyenlephong" /></p> -->
 
