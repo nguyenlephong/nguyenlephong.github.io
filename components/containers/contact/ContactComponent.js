@@ -25,7 +25,7 @@ class Contact extends Component {
               <div className="contact-heading-img-div">
                 <img
                   src={`${ContactData["profile_image_path"]}`}
-                  alt="Nguyễn Lê Phong - Dom Profile - CV"
+                  alt="Nguyễn Lê Phong - Software Engineer - CV"
                 />
               </div>
               <div className="contact-heading-text-div">
