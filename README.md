@@ -169,7 +169,7 @@
 </p>
 <!-- <p align="center"><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=nguyenlephong&" alt="nguyenlephong" /></p> -->
 
-# Nguyễn Lê Phong - DOM - My Profile
+# Nguyễn Lê Phong - Front-end Software Engineer
 
 # Project Info
 
@@ -180,7 +180,7 @@
 
 ## App Link
 
-- [Profile Page](https://nguyenlephong.github.io)
+- [Front-end Software Engineer Profile](https://nguyenlephong.github.io)
 
 ## Environment Settings
 
