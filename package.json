@@ -9,11 +9,12 @@
     "lint": "next lint",
     "predeploy": "bun run build",
     "export": "next export",
-    "gh-deploy": "gh-pages -b gh-pages -d build",
+    "gh-deploy": "gh-pages -b gh-pages -d out",
     "deploy": "firebase deploy"
   },
   "dependencies": {
     "@react-pdf-viewer/core": "3.12.0",
+    "gh-pages": "^6.1.1",
     "next": "14.1.1",
     "pdfjs-dist": "3.4.120",
     "react": "^18",
