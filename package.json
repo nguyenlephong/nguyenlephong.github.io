@@ -9,8 +9,8 @@
     "lint": "next lint",
     "predeploy": "bun run build",
     "export": "next export",
-    "gh-deploy": "gh-pages -b gh-pages -d out",
-    "deploy": "firebase deploy"
+    "fb-deploy": "firebase deploy",
+    "deploy": "touch ./out/.nojekyll && gh-pages -d out -t true"
   },
   "dependencies": {
     "@react-pdf-viewer/core": "3.12.0",
