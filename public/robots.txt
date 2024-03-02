@@ -1,5 +1,0 @@
-# https://www.robotstxt.org/robotstxt.html
-Sitemap: https://nguyenlephong.github.io/sitemap.xml
-User-agent: *
-Allow: /
-Disallow

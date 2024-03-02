@@ -1,1 +1,0 @@
-importScripts("https://dev.primedata.ai/cdn/sdk/posjs-worker.js");
