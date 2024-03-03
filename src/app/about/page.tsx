@@ -1,6 +1,13 @@
 import {profileInfo} from "@/app/app.const";
 import {FaHandPointRight} from "react-icons/fa";
 import {GoDotFill} from "react-icons/go";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Bachelor's degree in Software Engineering, awarded with a very good classification. GPA 8.11",
+};
+
 
 export default function AboutPage () {
   return (

@@ -1,6 +1,13 @@
 import {profileInfo} from "@/app/app.const";
 import Image from "next/image"
 import Link from "next/link";
+import {Metadata} from "next";
+
+export const metadata: Metadata = {
+  title: "Gallery",
+  description: "Enjoy watching movies (movies can bring life skills enhancement lessons), singing on weekends, holidays with friends and relatives.",
+};
+
 export default function GalleryPage() {
   return (
     <main className={"about-page"}>

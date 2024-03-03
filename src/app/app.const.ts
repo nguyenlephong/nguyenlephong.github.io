@@ -8,14 +8,15 @@ export const APP_ROUTE = {
 }
 
 export const SEO = {
-  title: "Nguyễn Lê Phong | Front-end Software Engineer",
+  title: "Nguyen Le Phong | Front-end Software Engineer",
   description:
-    "A passionate individual who always thrives to work on end-to-end products which develop sustainable and scalable social and technical systems to create impact.",
+    "As a front-end software engineer with over five years of experience, I specialize in designing and implementing user-friendly web applications. Proficient in HTML, CSS, JavaScript, and React, my expertise extends to optimizing website performance to accommodate a large user base. My commitment to creating visually appealing and efficient interfaces has led to successful project deliveries across diverse industries.",
   og: {
     title: "Nguyễn Lê Phong | Software Engineer",
     type: "website",
     url: "https://nguyenlephong.github.io",
   },
+  title_tail: "Nguyen Le Phong | Front-end Software Engineer"
 };
 
 export const profileInfo = {
