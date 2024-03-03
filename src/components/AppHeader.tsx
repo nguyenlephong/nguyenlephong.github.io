@@ -30,6 +30,12 @@ export default function AppHeader() {
           </div>
         </Link>
       
+        <Link href={APP_ROUTE.CV_PDF} target={"_blank"}>
+          <div className={"menu-item"}>
+            <span>CV Download</span>
+          </div>
+        </Link>
+      
       </nav>
     </header>
   )
