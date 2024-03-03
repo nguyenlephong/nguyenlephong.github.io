@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {APP_ROUTE} from "@/app/app.const";
 
-export default function AppHeader (){
+export default function AppHeader() {
   return (
     <header className={"app-header"}>
       <nav className={"main-menu"}>
@@ -11,13 +11,17 @@ export default function AppHeader (){
           </div>
         </Link>
         
-        {1 < 0 && (
-          <Link href={APP_ROUTE.ABOUT}>
-            <div className={"menu-item"}>
-              <span>About</span>
-            </div>
-          </Link>
-        )}
+        <Link href={APP_ROUTE.ABOUT}>
+          <div className={"menu-item"}>
+            <span>About</span>
+          </div>
+        </Link>
+        
+        <Link href={APP_ROUTE.GALLERY}>
+          <div className={"menu-item"}>
+            <span>Gallery</span>
+          </div>
+        </Link>
         
         
         <Link href={APP_ROUTE.CV}>

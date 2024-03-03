@@ -92,6 +92,16 @@ body {
 
 
 /*==================Common component==================*/
+.centered {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.align-centered {
+  vertical-align: middle;
+}
+
 .section-container {
   display: flex;
   justify-content: center;
@@ -161,6 +171,7 @@ body {
 
 .menu-item {
   padding: 6px 12px;
+  font-weight: bold;
 }
 
 .menu-item:hover {
@@ -281,3 +292,22 @@ a {
 }
 
 /*==================TagItem component==================*/
+
+/*==================about-page==================*/
+.about-page {
+  margin-top: 60px;
+
+}
+
+/*==================about-page==================*/
+
+/*==================gallery-page==================*/
+.grid-item_wrapper {
+  padding: 24px 0;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+}
+/*==================gallery-page==================*/
