@@ -110,6 +110,9 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
 }
 
 .h-title {
@@ -117,8 +120,14 @@ body {
   font-weight: bold;
 }
 
+.headline {
+  font-size: 32px;
+  font-weight: bold;
+}
+
 .list-none {
   list-style-type: none;
+  margin: 12px 0;
 }
 
 .list-none li {
@@ -126,11 +135,102 @@ body {
   text-align: left;
 }
 
+.app-header {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px;
+  background: #fafafa;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+
+}
+
+.main-menu {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.menu-item {
+  padding: 6px 12px;
+}
+
+.menu-item:hover {
+  background: greenyellow;
+  border-radius: 8px;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.app-footer {
+  text-align: center;
+  padding: 12px;
+  word-break: break-word;
+  white-space: break-spaces;
+}
 /*==================Common component==================*/
+
+/*==================Profile Info component==================*/
+.information-section {
+  padding: 24px 0;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-wrap: wrap;
+  word-break: break-word;
+  white-space: break-spaces;
+}
+
+.social-block {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.social-item {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #d6d6d7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-item:hover {
+  background: #bcc8b9;
+  border-color: green;
+  color: green;
+}
+/*==================Profile Info component==================*/
+
 
 /*==================Experience component==================*/
 .experience-item, .education-item,  .achievement-item{
   margin: 24px 0;
+  padding: 0 24px;
 }
 
 /*==================Experience component==================*/
@@ -147,10 +247,11 @@ body {
   text-transform: uppercase;
   font-size: 28px;
   font-weight: 700;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .box-info {
-  padding: 12px 0;
+  padding: 12px 24px;
 }
 
 .box-item-text {

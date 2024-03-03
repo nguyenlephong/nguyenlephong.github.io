@@ -1,5 +1,32 @@
+import Link from "next/link";
+import {APP_ROUTE} from "@/app/app.const";
+
 export default function AppHeader (){
   return (
-    <header>App Header</header>
+    <header className={"app-header"}>
+      <nav className={"main-menu"}>
+        <Link href={APP_ROUTE.HOME}>
+          <div className={"menu-item"}>
+            <span>Home</span>
+          </div>
+        </Link>
+        
+        {1 < 0 && (
+          <Link href={APP_ROUTE.ABOUT}>
+            <div className={"menu-item"}>
+              <span>About</span>
+            </div>
+          </Link>
+        )}
+        
+        
+        <Link href={APP_ROUTE.CV}>
+          <div className={"menu-item"}>
+            <span>CV PDF</span>
+          </div>
+        </Link>
+      
+      </nav>
+    </header>
   )
 }

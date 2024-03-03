@@ -1,3 +1,9 @@
+export const APP_ROUTE = {
+  HOME: "/",
+  ABOUT: "/about",
+  CV: "/cv"
+}
+
 export const SEO = {
   title: "Nguyễn Lê Phong | Front-end Software Engineer",
   description:
@@ -317,7 +323,7 @@ export const profileInfo = {
       school: "Nong Lam University",
       description: ["Bachelor of Information Technology, Minor in Software Engineering"],
       GPA: 3.36,
-      duration: "Sep. 2015 -- Dec 2019"
+      duration: "Sep. 2015 - Dec 2019"
     }
   ],
   references: [

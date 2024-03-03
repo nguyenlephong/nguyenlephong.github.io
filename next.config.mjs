@@ -6,7 +6,7 @@ const nextConfig = {
     config.resolve.alias.encoding = false;
     return config;
   },
-
+  images: {unoptimized: true}
 };
 
 export default nextConfig;

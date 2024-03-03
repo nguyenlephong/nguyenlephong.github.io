@@ -15,7 +15,7 @@ export default function ExperienceBox(props: ExperienceBoxIProps){
             <div key={ex.company} className={"experience-item"}>
               
               <div className={"txt-line-full"}>
-                <h4 className="company-title">{ex.company}</h4>
+                <h4 className="h-title">{ex.company}</h4>
                 <p>{ex.location}</p>
               </div>
               
