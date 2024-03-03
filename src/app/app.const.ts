@@ -104,6 +104,7 @@ export const profileInfo = {
     ]
   },
   technical_skill: {
+    title: "Technical Skills",
     languages: ["Java", "JavaScript", "TypeScript", "HTML/CSS"],
     frameworks: ["Spring Boot", "Node.js", "Next.js", "Ant Design"],
     developerTools: ["Git", "Docker", "Jenkins", "Travis CI"],
@@ -130,7 +131,7 @@ export const profileInfo = {
       jobs: [
         {
           title: "Senior Front-end Engineer",
-          duration: "Oct 2023 -- Present",
+          duration: "Oct 2023 - Present",
           responsibilities: [
             "Championed the architectural blueprint and construction of the front-end and server-side project base, cultivating a meticulously organized and structured codebase. Elevated code maintainability and fostered seamless collaboration among cross-functional teams.",
             "Developed a web application for mathematical review using Next.js and Ant Design. Integrated Mathjax for displaying mathematical expressions, ensuring a seamless and visually appealing user experience.",
@@ -148,7 +149,7 @@ export const profileInfo = {
       jobs: [
         {
           title: "Senior Front-end Engineer",
-          duration: "Mar. 2022 -- Apr. 2024",
+          duration: "Mar. 2022 - Apr. 2024",
           responsibilities: [
             "Strategically influenced the product roadmap by championing and executing impactful user experience enhancements.",
             "Led and motivated a cohesive team of 4 members, employing effective leadership strategies to ensure successful project completion. Emphasized teamwork, aligning individual strengths with project goals, and cultivated a culture of shared success and professional growth.",
@@ -176,7 +177,7 @@ export const profileInfo = {
       jobs: [
         {
           title: "Java Developer",
-          duration: "Mar 2019 -- July 2020",
+          duration: "Mar 2019 - July 2020",
           responsibilities: [
             "Delivered a diverse range of projects, including websites, mobile apps, and internal tools, for prestigious Japanese and American partners.",
             "Flourished in an outsourcing environment, honing cross-cultural communication and collaboration skills while engaging with clients from diverse backgrounds.",
@@ -194,7 +195,7 @@ export const profileInfo = {
       jobs: [
         {
           title: "Fresher Front-end Developer",
-          duration: "May 2018 -- Jan 2019",
+          duration: "May 2018 - Jan 2019",
           responsibilities: [
             "Embarked on my professional journey as a Fresher Front-end Developer, actively contributed to the development and maintenance of the primary web app, gaining foundational skills and practical insights into web development.",
             "Delved deep into React JS, mastering associated technologies, libraries like axios, redux, middleware, ..., laying the groundwork for modern web development.",
@@ -208,7 +209,7 @@ export const profileInfo = {
     {
       name: "Digital SAT Math",
       technologies: ["Next.js", "React", "React Native", "Antdesign", "Docker", "GCP"],
-      duration: "Oct 2023 -- Present",
+      duration: "Oct 2023 - Present",
       description: [],
       accomplishment: [
         "Architected the project and implemented all the UI/UX features on the project.",
@@ -222,7 +223,7 @@ export const profileInfo = {
     {
       name: "CDP",
       technologies: ["React", "Next.js", "Antdesign", "React Native", "WordPress", "Docker"],
-      duration: "July 2020 -- Present",
+      duration: "July 2020 - Present",
       description: [],
       accomplishment: [
         "Led the architecture and implementation of the CDP project, focusing on UI/UX features.",
@@ -314,7 +315,7 @@ export const profileInfo = {
   education: [
     {
       school: "Nong Lam University",
-      degree: "Bachelor of Information Technology, Minor in Software Engineering",
+      description: ["Bachelor of Information Technology, Minor in Software Engineering"],
       GPA: 3.36,
       duration: "Sep. 2015 -- Dec 2019"
     }
