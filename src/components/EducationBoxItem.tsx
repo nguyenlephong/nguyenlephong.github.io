@@ -14,7 +14,7 @@ export default function EducationBoxItem(props: IProps) {
           return (
             <div key={achievement.school} className={"education-item"}>
               <div className={"txt-line-full"}>
-                <p>{achievement.school}. <strong>(GPA {achievement.GPA})</strong></p>
+                <p className={"h-title"}>{achievement.school}. <strong>(GPA {achievement.GPA})</strong></p>
                 <p>{achievement.duration}</p>
               </div>
               

@@ -14,7 +14,7 @@ export default function AchievementBoxItem(props: IProps) {
           return (
             <div key={achievement.title} className={"achievement-item"}>
               <div className={"txt-line-full"}>
-                <p>{achievement.title}</p>
+                <p className={"h-title"}>{achievement.title}</p>
                 <p>{achievement.year}</p>
               </div>
               

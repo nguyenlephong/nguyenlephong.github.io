@@ -121,10 +121,15 @@ body {
   list-style-type: none;
 }
 
+.list-none li {
+  margin: 4px 0;
+  text-align: left;
+}
+
 /*==================Common component==================*/
 
 /*==================Experience component==================*/
-.experience-item {
+.experience-item, .education-item,  .achievement-item{
   margin: 24px 0;
 }
 
