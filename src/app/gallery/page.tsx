@@ -1,5 +1,6 @@
 import {profileInfo} from "@/app/app.const";
 import Image from "next/image"
+import Link from "next/link";
 export default function GalleryPage() {
   return (
     <main className={"about-page"}>
@@ -14,7 +15,9 @@ export default function GalleryPage() {
             {profileInfo.photos.map((photo) => {
               return (
                 <div key={photo.src} id={"photo-" + photo.src}>
-                  <Image src={photo.src} alt={photo.alt} width={232} height={232} style={{objectFit: "cover"}}/>
+                  <Link href={photo.src} target={"_blank"}>
+                    <Image src={photo.src} alt={photo.alt} width={232} height={232} style={{objectFit: "cover"}}/>
+                  </Link>
                 </div>
               )
             })}
