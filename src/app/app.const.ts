@@ -1,6 +1,9 @@
+import {CDN_PATH} from "@/app/app.conf";
+
 export const APP_ROUTE = {
   HOME: "/",
   ABOUT: "/about",
+  GALLERY: "/gallery",
   CV: "/cv"
 }
 
@@ -16,6 +19,168 @@ export const SEO = {
 };
 
 export const profileInfo = {
+  photos: [
+    {
+      src: CDN_PATH + "/images/me/best_rookie.jpeg",
+      alt: "Nguyen Le Phong - Software Engineer - Best rookie of the year",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      width: 3,
+      height: 4
+    },
+    {
+      src: CDN_PATH + "/images/me/score_board.JPG",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - Score board",
+      width: 3,
+      height: 4
+    },
+    {
+      src: CDN_PATH + "/images/me/certificate-test.JPG",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - Tester certificate",
+      width: 3,
+      height: 4
+    },
+    {
+      src: CDN_PATH + "/images/me/certificate_splus.jpeg",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - Splus Certificate",
+      width: 4,
+      height: 3
+    },
+    
+    {
+      src: CDN_PATH + "/images/me/essay-group.JPG",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - my essay",
+      width: 4,
+      height: 3
+    },
+    {
+      src: CDN_PATH + "/images/me/drone.JPG",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - My team to implement essay",
+      width: 4,
+      height: 3
+    },
+    {
+      src: CDN_PATH + "/images/project/chess_games.jpg",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - Chess games project",
+      width: 4,
+      height: 3
+    },
+    
+    {
+      src: CDN_PATH + "/images/project/wat_overview.png",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - Wat project at splus software",
+      width: 4,
+      height: 3
+    },
+    {
+      src: CDN_PATH + "/images/me/award_prime.jpeg",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - Award at PrimeData",
+      width: 4,
+      height: 3
+    },
+    {
+      src: CDN_PATH + "/images/me/drone_dev.jpeg",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - drone applications",
+      width: 4,
+      height: 3
+    },
+    {
+      src: CDN_PATH + "/images/me/view-0.jpg",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - me",
+      width: 3,
+      height: 4,
+      hide: true,
+    },
+    {
+      src: CDN_PATH + "/images/me/view-1.jpg",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - me",
+      width: 3,
+      height: 4,
+      hide: true,
+    },
+    {
+      src: CDN_PATH + "/images/me/view-2.jpg",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - me",
+      width: 3,
+      height: 4,
+      hide: true,
+    },
+    
+    {
+      src: CDN_PATH + "/images/me/standup.jpg",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - me",
+      width: 3,
+      height: 4,
+      hide: true,
+    },
+    
+    {
+      src: CDN_PATH + "/images/me/sit-down.jpg",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - me",
+      width: 3,
+      height: 4,
+      hide: true,
+    },
+    {
+      src: CDN_PATH + "/images/me/DSC_1507.JPG",
+      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      alt: "Nguyen Le Phong - Software Engineer - desk working",
+      width: 4,
+      height: 3
+    }
+  ],
+  videos: [
+    
+    {
+      id: "v0",
+      title: "[Bài 01] - Giới thiệu khóa học hoàn thành dự án Frontend ReactJS - Next.JS",
+      url: "https://www.youtube.com/embed/ehiiZ-JvxWc",
+    },
+    {
+      id: "v6",
+      title: "[Review] - ChatGPT Có thực sự \"ngon\" không?",
+      url: "https://www.youtube.com/embed/BE4vA3JN-e8",
+    },
+    {
+      id: "v1",
+      title: "[Kỷ Niệm] - Bảo Vệ Luận Văn Tốt Nghiệp",
+      url: "https://bit.ly/3jgaQAx",
+    },
+    {
+      id: "v2",
+      title:
+        "[Mobile Devices Programming]- Ứng Dụng Điểm Danh Sinh Viên Nhận Diện Khuôn Mặt",
+      url: "https://bit.ly/3jb5qqo",
+    },
+    {
+      id: "v3",
+      title: "Kỷ Niệm Báo Cáo Data Warehouse In Real Time",
+      url: "https://bit.ly/3ftshg6",
+    },
+    {
+      id: "v4",
+      title: "Báo cáo cuối kỳ 2016-2017-Lập trình web",
+      url: "https://bit.ly/3fqgE9J",
+    },
+    {
+      id: "v5",
+      title: "[Thương Mại Điện Tử ]- Báo Cáo Giữa Kỳ- CMS-WORDPRESS",
+      url: "https://bit.ly/2VuDeXD",
+    },
+  ],
   contact: {
     email: "phongnguyen.itengineer@gmail.com",
     phone: "(+84)98-549-0107",
@@ -32,12 +197,12 @@ export const profileInfo = {
       id: "Skills and Experience",
       categories: "Skills and Experience",
       descriptions: [
-        "Bachelor's degree in <strong>Information Technology</strong>. Degree classification: <strong>Very good</strong>.",
-        "<strong>4+ years</strong> of experience in front-end development",
+        "Bachelor's degree in <strong>Information Technology</strong>. Degree classification: <strong>Very good</strong>. <strong>(GPA: 3.36)</strong>",
+        "<strong>5+ years</strong> of experience in front-end development",
         "Strong proficiency in <strong>JavaScript, DOM, HTML5, LESS, SASS/CSS3</strong>",
         "Understanding of <strong>SEO</strong> principles.",
         "Experienced in <strong>UI/UX design, performance optimization, testing, design pattern</strong>, etc",
-        `Experience with front-end frameworks such as <strong>React, Vue.js</strong>`,
+        `Experience with front-end frameworks such as <strong>React, Next.js</strong>`,
         "Understanding the nature of <strong>asynchronous programing</strong>",
         "Familiarity with back-end technologies such as <strong>Node.js, Java</strong>",
         "Good knowledge of data structures and algorithms.",
