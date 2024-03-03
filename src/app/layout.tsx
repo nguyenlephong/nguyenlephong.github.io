@@ -1,16 +1,74 @@
-import type { Metadata } from "next";
+import type {Metadata, Viewport} from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { SEO } from "@/app/app.const";
+import {profileInfo, SEO} from "@/app/app.const";
 import Script from "next/script";
 import AppHeader from "@/components/AppHeader";
 import AppFooter from "@/components/AppFooter";
+import {Organization, WithContext} from "schema-dts";
+import React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: SEO.title,
   description: SEO.description,
+  title: {
+    template: "%s | " + SEO.title_tail,
+    default: SEO.title
+  },
+  metadataBase: new URL(`https://nguyenlephong.github.io`),
+  openGraph: {
+    siteName: "Nguyen Le Phong - Front-end Software Engineer",
+    url: `https://nguyenlephong.github.io`,
+    images: [
+      {
+        url: "https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom.png",
+        width: 320,
+        height: 320,
+        alt: "As a front-end software engineer with over five years of experience, I specialize in designing and implementing user-friendly web applications. Proficient in HTML, CSS, JavaScript, and React, my expertise extends to optimizing website performance to accommodate a large user base. My commitment to creating visually appealing and efficient interfaces has led to successful project deliveries across diverse industries."
+      },
+    ],
+    locale: "en_US",
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [
+      "https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom.png"
+    ]
+  }
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  viewportFit: "cover",
+  userScalable: true,
+  initialScale: 1,
+  maximumScale: 5
+  // Also supported by less commonly used
+  // interactiveWidget: 'resizes-visual',
+};
+
+const jsonLD: WithContext<Organization> = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `https://nguyenlephong.github.io/#identity`,
+  name: SEO.title,
+  alternateName: `Front-end Engineer - ${SEO.description}`,
+  url: "https://nguyenlephong.github.io",
+  image: `https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom.png`,
+  logo: `https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom.png`,
+  sameAs: [
+    profileInfo.contact.linkedin,
+    profileInfo.contact.twitter,
+    profileInfo.contact.github,
+    profileInfo.contact.leetcode,
+    profileInfo.contact.youtube,
+    profileInfo.contact.facebook,
+    profileInfo.contact.instagram,
+  ],
+  description: `${SEO.description} | ${SEO.title}`,
+  email: profileInfo.contact.email
 };
 
 export default function RootLayout({
@@ -20,6 +78,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+    
+    <head>
+      <script
+        key="nguyenlephong-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
+      />
+    </head>
+    
     {/*Global site tag (gtag.js) - Google Analytics*/}
     <Script strategy={"afterInteractive"} id={"GTM"} src="https://www.googletagmanager.com/gtag/js?id=G-RLXNC58343" />
 
@@ -51,7 +118,7 @@ export default function RootLayout({
     />
       <body className={inter.className} suppressHydrationWarning={true}>
       <AppHeader/>
-      {children}
+        {children}
       <AppFooter/>
       </body>
     </html>
