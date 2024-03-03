@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { SEO } from "@/app/app.const";
 import Script from "next/script";
+import AppHeader from "@/components/AppHeader";
+import AppFooter from "@/components/AppFooter";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,7 +49,11 @@ export default function RootLayout({
             posthog.init('phc_Ti11bWc5cshVoQe8AI7SuY56FMFP7Fhc9WyymdOGVSw',{api_host:'https://app.posthog.com'})`,
       }}
     />
-      <body className={inter.className} suppressHydrationWarning={true}>{children}</body>
+      <body className={inter.className} suppressHydrationWarning={true}>
+      <AppHeader/>
+      {children}
+      <AppFooter/>
+      </body>
     </html>
   );
 }

@@ -4,7 +4,7 @@ const PDFResumeViewer = dynamic(() => import("@/components/PDFResumeViewer"));
 
 export default function CVPage() {
   return (
-    <main>
+    <main style={{marginTop: 60}}>
       <PDFResumeViewer />
     </main>
   );
