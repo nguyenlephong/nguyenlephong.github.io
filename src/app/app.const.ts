@@ -192,7 +192,8 @@ export const profileInfo = {
     linkedin: "https://www.linkedin.com/in/phong-nguyen-0107/",
     twitter: "https://twitter.com/nguyenlephong17",
     facebook: "https://www.facebook.com/NguyenLePhong0107/",
-    instagram: "https://www.instagram.com/anhmap0107/"
+    instagram: "https://www.instagram.com/anhmap0107/",
+    cv_pdf: "https://www.overleaf.com/read/sbqsdsgkpbzv#f46329"
   },
   about: [
     {
