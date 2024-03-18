@@ -312,7 +312,9 @@ export const profileInfo = {
             "Collaborated with cross-functional teams to align with user needs and optimized application performance, showcasing expertise in front-end development and a commitment to delivering innovative solutions.",
             "Implemented and maintained an automated email flow for customer care, triggered by specific user segments, enhancing user engagement and satisfaction.",
             "Monitored and collected user behavior data for analysis and statistics. Utilized insights to execute targeted marketing campaigns, resulting in improved DAU, WAU, and MAU metrics."
-          ]
+          ],
+          skills: ["ReactJs", "Next.js", "Antdesign", "React Native", "Typescript", "Docker", "GCP"]
+          
         }
       ]
      
@@ -331,7 +333,8 @@ export const profileInfo = {
             "Collaborated closely with designers and stakeholders to bridge the gap between design and technical implementation. Translated UI/UX wireframes into functional and visually appealing front-end components.",
             "Integrated third-party platform reports and data visualizations into the system, implementing secure authentication for external systems to uphold data security standards.",
             "Leveraged my expertise in code optimization and load time reduction, ensuring the application's efficiency and responsiveness met the highest standards."
-          ]
+          ],
+          skills: ["ReactJs", "Next.js", "Typescript", "Wordpress", "SDK",  "Antdesign", "Team Leadership"]
         },
         {
           title: "Full-stack Software Engineer",
@@ -340,7 +343,8 @@ export const profileInfo = {
             "Built and maintained websites for running seasonal, event-specific, or new brand branch campaigns. Implemented robust data tracking mechanisms to gather insights for customer care and marketing strategies.",
             "Designed and developed SDKs and application sets to complement the core application, providing crucial support for development, testing, and marketing teams.",
             "Led the development of the entire front-end code base from scratch for various applications, including the Customer Data Platform (CDP) app, shop app, bank app, tools, WordPress, Magento, and mobile app. Ensured comprehensive features catering to common user needs in all applications."
-          ]
+          ],
+          skills: ["ReactJs", "Node.js", "React Native", "Java", "Typescript",  "Antdesign", "Wordpress", "Docker", "Team Leadership", "My SQL", "Firebase"]
         }
       ]
       
@@ -359,7 +363,8 @@ export const profileInfo = {
             "Contributed to both front-end and back-end code development using Java, Spring, and React. Adhered rigorously to software development best practices and principles, emphasizing code quality, testing, and documentation.",
             "Demonstrated exceptional problem-solving skills and meticulous attention to detail while collaborating with a dynamic team of developers and project managers. Ensured the completion of all projects to the highest standards of quality.",
             "Served as an onsite representative for Mobivi and Synova Solutions, exhibiting stellar communication and collaboration skills with clients and internal teams. Consistently delivered high-quality projects, making significant contributions to the company's growth and success."
-          ]
+          ],
+          skills: ["ReactJs", "Java", "Node.js", "React Native", "My SQL", "Antdesign", "Realm DB"]
         }
       ]
     },
@@ -374,7 +379,8 @@ export const profileInfo = {
             "Embarked on my professional journey as a Fresher Front-end Developer, actively contributed to the development and maintenance of the primary web app, gaining foundational skills and practical insights into web development.",
             "Delved deep into React JS, mastering associated technologies, libraries like axios, redux, middleware, ..., laying the groundwork for modern web development.",
             "Collaborated on responsive designs for property listing pages, showcasing a commitment to delivering an exceptional user experience."
-          ]
+          ],
+          skills: ["ReactJs", "Javascript", "Wordpress", "Material UI"]
         }
       ]
     }

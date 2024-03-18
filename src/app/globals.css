@@ -87,16 +87,16 @@ body {
 
 
 body {
-  /*color: rgb(var(--foreground-rgb));*/
-  /*background: rgb(var(--background-start-rgb)) linear-gradient(*/
-  /*  to bottom,*/
-  /*  transparent,*/
-  /*  rgb(var(--background-end-rgb))*/
-  /*) no-repeat;*/
-  background-image:url("/assets/full-bg.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb)) linear-gradient(
+    to bottom,
+    transparent,
+    rgb(var(--background-end-rgb))
+  ) no-repeat;
+  /*background-image:url("/assets/full-bg.svg");*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: cover;*/
+  /*background-position: bottom;*/
 
 }
 
@@ -176,7 +176,7 @@ body {
 
 }
 
-.main-menu {
+.main-menu, .m-main-menu {
   width: 100%;
   max-width: 1024px;
   display: flex;
@@ -189,6 +189,8 @@ body {
 .menu-item {
   padding: 6px 12px;
   font-weight: bold;
+  user-select: none;
+  cursor: pointer;
 }
 
 .menu-item:hover {
@@ -296,6 +298,8 @@ a {
   gap: 12px;
   flex-wrap: wrap;
   padding: 12px 0;
+  align-items: center;
+  align-content: center;
 }
 
 .tag-item {
@@ -308,12 +312,15 @@ a {
   color: #fff;
 }
 
+.title-for-line {
+  font-weight: bold;
+}
+
 /*==================TagItem component==================*/
 
 /*==================about-page==================*/
 .about-page {
   margin-top: 60px;
-
 }
 
 /*==================about-page==================*/
@@ -328,3 +335,51 @@ a {
 
 }
 /*==================gallery-page==================*/
+/*==================mobile menu==================*/
+
+.m-main-menu {
+  display: none;
+}
+
+.mobile-popover-menu {
+  padding: 4px 0;
+  display: none;
+  width: 100%;
+}
+
+
+.m-main-menu .menu-item:hover .mobile-popover-menu {
+  display: block;
+  position: absolute;
+  top: 52px;
+  right: 0;
+  background: #fff;
+}
+
+.m-menu-list {
+  list-style-type: none;
+}
+
+.m-menu-item {
+  padding: 8px 12px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.m-menu-item:hover {
+  background: greenyellow;
+}
+
+@media only screen and (max-width: 526px){
+  .m-main-menu {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .main-menu {
+    display: none;
+  }
+}
+/*==================mobile menu==================*/
