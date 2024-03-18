@@ -1,4 +1,5 @@
 import {ExperienceItemType, JobType} from "@/app/app.type";
+import Tag from "@/components/Tag";
 
 type ExperienceBoxIProps = {
   data: ExperienceItemType[]
@@ -36,6 +37,15 @@ export default function ExperienceBox(props: ExperienceBoxIProps){
                           )
                         })}
                       </ul>
+                      
+                      <div className={"tags-container"}>
+                        <p className={"title-for-line"}>Top skills</p>
+                        {job.skills.map((skill: string) => {
+                          return (
+                            <Tag value={skill} key={skill}/>
+                          )
+                        })}
+                      </div>
                     </div>
                   )
                 })

@@ -8,6 +8,7 @@ export type JobType = {
   title: string;
   duration: string;
   responsibilities: string[]
+  skills: string[]
 }
 
 export type ProjectType = {
