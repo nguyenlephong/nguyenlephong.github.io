@@ -80,10 +80,11 @@ export default function RootLayout({
     <html lang="en">
     
     <head>
+      <meta name="google-adsense-account" content="ca-pub-2196929070546836"/>
       <script
         key="nguyenlephong-structured-data"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
+        dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLD)}}
       />
     </head>
     
