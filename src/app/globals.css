@@ -383,3 +383,7 @@ a {
   }
 }
 /*==================mobile menu==================*/
+
+.t-up {
+  text-transform: uppercase;
+}
