@@ -299,26 +299,26 @@ export const profileInfo = {
     ]
   },
   experience: [
-    {
-      company: "Math99th",
-      location: "Remote",
-      jobs: [
-        {
-          title: "Senior Front-end Engineer",
-          duration: "Oct 2023 - Present",
-          responsibilities: [
-            "Championed the architectural blueprint and construction of the front-end and server-side project base, cultivating a meticulously organized and structured codebase. Elevated code maintainability and fostered seamless collaboration among cross-functional teams.",
-            "Developed a web application for mathematical review using Next.js and Ant Design. Integrated Mathjax for displaying mathematical expressions, ensuring a seamless and visually appealing user experience.",
-            "Collaborated with cross-functional teams to align with user needs and optimized application performance, showcasing expertise in front-end development and a commitment to delivering innovative solutions.",
-            "Implemented and maintained an automated email flow for customer care, triggered by specific user segments, enhancing user engagement and satisfaction.",
-            "Monitored and collected user behavior data for analysis and statistics. Utilized insights to execute targeted marketing campaigns, resulting in improved DAU, WAU, and MAU metrics."
-          ],
-          skills: ["ReactJs", "Next.js", "Antdesign", "React Native", "Typescript", "Docker", "GCP"]
-          
-        }
-      ]
-     
-    },
+    // {
+    //   company: "Math99th",
+    //   location: "Remote",
+    //   jobs: [
+    //     {
+    //       title: "Senior Front-end Engineer",
+    //       duration: "Oct 2023 - Present",
+    //       responsibilities: [
+    //         "Championed the architectural blueprint and construction of the front-end and server-side project base, cultivating a meticulously organized and structured codebase. Elevated code maintainability and fostered seamless collaboration among cross-functional teams.",
+    //         "Developed a web application for mathematical review using Next.js and Ant Design. Integrated Mathjax for displaying mathematical expressions, ensuring a seamless and visually appealing user experience.",
+    //         "Collaborated with cross-functional teams to align with user needs and optimized application performance, showcasing expertise in front-end development and a commitment to delivering innovative solutions.",
+    //         "Implemented and maintained an automated email flow for customer care, triggered by specific user segments, enhancing user engagement and satisfaction.",
+    //         "Monitored and collected user behavior data for analysis and statistics. Utilized insights to execute targeted marketing campaigns, resulting in improved DAU, WAU, and MAU metrics."
+    //       ],
+    //       skills: ["ReactJs", "Next.js", "Antdesign", "React Native", "Typescript", "Docker", "GCP"]
+    //
+    //     }
+    //   ]
+    //
+    // },
     {
       company: "PrimeData VN",
       location: "Binh Thanh",
