@@ -406,6 +406,18 @@ a {
   .main-menu {
     display: none;
   }
+
+  .box-info {
+    padding: 12px 0;
+  }
+
+  .experience-item {
+    padding: 0;
+  }
+
+  .normal-text, .box-item-text {
+    text-align: unset;
+  }
 }
 /*==================mobile menu==================*/
 

@@ -20,13 +20,17 @@ export default function ProjectBox(props: ProjectBoxIProps) {
                 <p>{ex.duration}</p>
               </div>
               
-              <div className={"tags-container"}>
+              <p><i>Key techs:</i> {ex.technologies.join(", ")}</p>
+              
+              {1 < 0 && (
+                <div className={"tags-container"}>
                 {ex.technologies.map((stack: string) => {
                   return (
                     <Tag value={stack} key={stack}/>
                   )
                 })}
-              </div>
+                </div>
+              )}
               
               <ul className={"list-none"}>
                 {
