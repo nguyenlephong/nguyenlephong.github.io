@@ -32,7 +32,7 @@ export default function ProjectBox(props: ProjectBoxIProps) {
                 {
                   ex.accomplishment.map((item: string) => {
                     return (
-                      <li key={item} dangerouslySetInnerHTML={{__html: "👉 " + item}}/>
+                      <li className={"normal-text"} key={item} dangerouslySetInnerHTML={{__html: "👉 " + item}}/>
                     )
                   })
                 }

@@ -87,12 +87,12 @@ body {
 
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-start-rgb)) linear-gradient(
-    to bottom,
-    transparent,
-    rgb(var(--background-end-rgb))
-  ) no-repeat;
+  /*color: rgb(var(--foreground-rgb));*/
+  /*background: rgb(var(--background-start-rgb)) linear-gradient(*/
+  /*  to bottom,*/
+  /*  transparent,*/
+  /*  rgb(var(--background-end-rgb))*/
+  /*) no-repeat;*/
   /*background-image:url("/assets/full-bg.svg");*/
   /*background-repeat: no-repeat;*/
   /*background-size: cover;*/
@@ -144,7 +144,12 @@ body {
 
 .h-title {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 500;
+}
+
+.job-title {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .headline {
@@ -159,7 +164,6 @@ body {
 
 .list-none li {
   margin: 4px 0;
-  text-align: left;
 }
 
 .app-header {
@@ -276,17 +280,31 @@ a {
 .box-title {
   text-transform: uppercase;
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 500;
   border-bottom: 1px solid #e5e5e5;
+  letter-spacing: 2px;
 }
 
 .box-info {
   padding: 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.box-list-info {
+  margin-left: 24px;
+  list-style-type: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .box-item-text {
   word-break: break-word;
   white-space: break-spaces;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /*==================BoxItem component==================*/
@@ -314,6 +332,13 @@ a {
 
 .title-for-line {
   font-weight: bold;
+}
+
+.normal-text {
+  word-break: break-word;
+  white-space: break-spaces;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /*==================TagItem component==================*/
