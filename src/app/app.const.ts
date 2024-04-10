@@ -5,7 +5,7 @@ export const APP_ROUTE = {
   ABOUT: "/about",
   GALLERY: "/gallery",
   CV: "/cv",
-  CV_PDF: "/NguyenLePhong_0985490107_Front_end.pdf"
+  CV_PDF: "/Frontend_NguyenLePhong_0985490107.pdf" || "/NguyenLePhong_0985490107_Front_end.pdf"
 }
 
 export const SEO = {
@@ -274,7 +274,16 @@ export const profileInfo = {
   summary: {
     title: "Summary",
     description: [
-      "As a front-end software engineer with over five years of experience, I specialize in designing and implementing user-friendly web applications. Proficient in HTML, CSS, JavaScript, and React, my expertise extends to optimizing website performance to accommodate a large user base. My commitment to creating visually appealing and efficient interfaces has led to successful project deliveries across diverse industries."
+      `Possessing a Bachelor’s degree in <b>Information Technology</b>, with a minor in <b>Software Engineering</b>, and achieving a commendable classification (<b>GPA 3.36</b>), I have cultivated over five years of dedicated experience as a front-end software engineer.` ,
+      `Specializing in the design and implementation of user-friendly web applications, I bring proficiency in HTML, CSS, JavaScript, and <b>React</b>, coupled with a keen expertise in optimizing website performance to accommodate large user bases. My commitment to crafting visually engaging and efficient interfaces has consistently led to successful project deliveries across diverse industries.`,
+      `<i>Here are my recent focused hard skills over the past few years:</i>`
+    ],
+    skills: [
+      `<b>Back-end</b>: Competent in <b>Java</b> with the Spring Framework and <b>Node.js</b> with a working knowledge of the Express framework.`,
+      `<b>Front-end</b>: Proficient in <b>React</b>, utilizing TypeScript, JavaScript, and the <b>Next.js</b> framework, and <b>React Native</b> with a working knowledge of the Expo platform, as well as proficiency in vanilla JavaScript`,
+      `<b>Libraries</b>: Seasoned in <b>Firebase</b>, Strapi, Directus, React Flow, <b>Redux</b>, React Query, and G2plot.`,
+      `<b>Testing</b>: Skilled in <b>Jest, Cucumber, Puppeteer</b>, and Testing Library.`,
+      `<b>Other</b>: In addition, familiar with <b>Micro-frontend</b> architecture, Proficiency in Responsive Design, Cross-Browser Compatibility, <b>SEO</b>, and GraphQL.`,
     ]
   },
   technical_skill: {
@@ -325,7 +334,23 @@ export const profileInfo = {
       jobs: [
         {
           title: "Senior Front-end Engineer",
-          duration: "Mar. 2022 - Apr. 2024",
+          duration: "July 2020 - Apr. 2024",
+          summaries: [
+            `The company builds a so-called CDxP product. In brief, it is a data platform that tailor-made to host and process customer profiles (the keystone solution is how would you able to identify and unify your customers data from heterogeneous schemas and formats from diverged services and systems).`,
+          ],
+          key_contribution: [
+            `Led Front-end team, delivering <b>10+ projects</b> including CDxP app, Magento & WordPress demos, JS SDKs, mobile SDKs, and more.`,
+            `Managed team of <b>4 members</b>, aligning with product roadmap to satisfy multiple major partners, enhancing UI/UX and implementing advanced features like 360 profiles and campaign builders.`,
+            `Developed lightweight JS SDK with full functionalities (<b><200kb, <150ms</b> load time), facilitating seamless integration across projects.`,
+            `Demonstrated rapid <b>problem-solving</b>, ensuring swift feature demonstrations to impress clients and investors.`,
+          ],
+          key_techs: ["ReactJs", "Next.js", "Typescript", "Wordpress", "SDK",  "Antdesign", "Team Leadership", "React Native", "Nodejs"],
+        },
+      ],
+      jobs_bk: [
+        {
+          title: "Senior Front-end Engineer",
+          duration: "Mar 2022 - Apr. 2024",
           responsibilities: [
             "Strategically influenced the product roadmap by championing and executing impactful user experience enhancements.",
             "Led and motivated a cohesive team of 4 members, employing effective leadership strategies to ensure successful project completion. Emphasized teamwork, aligning individual strengths with project goals, and cultivated a culture of shared success and professional growth.",
@@ -356,6 +381,21 @@ export const profileInfo = {
         {
           title: "Java Developer",
           duration: "Mar 2019 - July 2020",
+          summaries: [
+            `An out-sourcing company. Most projects revolve around <b>mobile and web apps</b>.`,
+          ],
+          key_contribution: [
+            `With expertise in the <b>end-to-end software production process</b>, I <b>led a small team</b>, mastering the phases from requirements gathering to project security, laying the groundwork for future leadership roles.`,
+            `Engaging in <b>8+</b> diverse projects across <b>education, food and drink, banking,</b> and <b>e-commerce</b> domains, I gained invaluable insights into both web and mobile application development.`,
+            `As a project mercenary, I secured significant projects like Savyu and Bank Tool, generating over <b>$20,000</b> in revenue and earning recognition as the <b>Best Rookie of the Year</b> for my impactful contributions.`,
+          ],
+          key_techs: [ "Java", "Spring Framework", "ReactJs", "Next.js", "Typescript", "React Native", "My SQL", "Antdesign", "Realm DB", "Wordpress", "Node.js",]
+        },
+      ],
+      jobs_bk: [
+        {
+          title: "Java Developer",
+          duration: "Mar 2019 - July 2020",
           responsibilities: [
             "Delivered a diverse range of projects, including websites, mobile apps, and internal tools, for prestigious Japanese and American partners.",
             "Flourished in an outsourcing environment, honing cross-cultural communication and collaboration skills while engaging with clients from diverse backgrounds.",
@@ -375,6 +415,19 @@ export const profileInfo = {
         {
           title: "Fresher Front-end Developer",
           duration: "May 2018 - Jan 2019",
+          summaries: [
+            `A <b>real estate-domain</b> startup. I was one of the founding engineers.`,
+          ],
+          key_contribution: [
+            `Initiated involvement in primary web app development as a Front-end Developer. Obtained foundational web development skills, with a specialization in <b>React JS</b> and related technologies. Collaborated on responsive design projects, prioritizing enhancements for user experience.`,
+          ],
+          key_techs: ["ReactJs", "Javascript", "Wordpress", "Material UI"]
+        },
+      ],
+      jobs_bk: [
+        {
+          title: "Fresher Front-end Developer",
+          duration: "May 2018 - Jan 2019",
           responsibilities: [
             "Embarked on my professional journey as a Fresher Front-end Developer, actively contributed to the development and maintenance of the primary web app, gaining foundational skills and practical insights into web development.",
             "Delved deep into React JS, mastering associated technologies, libraries like axios, redux, middleware, ..., laying the groundwork for modern web development.",
@@ -388,16 +441,14 @@ export const profileInfo = {
   projects: [
     {
       name: "Digital SAT Math",
-      technologies: ["Next.js", "React", "React Native", "Antdesign", "Docker", "GCP"],
+      technologies: ["Next.js", "React", "React Native", "Antdesign", "Docker", "GCP", "Directus"],
       duration: "Oct 2023 - Present",
       description: [],
       accomplishment: [
-        "Architected the project and implemented all the UI/UX features on the project.",
-        "Utilized Brevo in conjunction with business flow to construct an email flow, creating email templates aligned with trigger automation. Optimized content for various customer segments, enhancing user interaction and driving DAU, WAU, MAU metrics.",
-        "Boosted Google search rankings, optimized SEO, and improved performance, successfully positioning the product to compete with industry peers within 2 months.",
-        "Integrated GA4/GTM analytics and used Posthog for data visualization, tracking, and analysis. Built target segments for campaigns and marketing efforts.",
-        "Initiated the development of a proof-of-concept (POC) mobile app using React Native and Expo, laying the groundwork for a future app for the product.",
-        "Integrated the Stripe payment gateway, ensuring secure and smooth financial transactions within the application. Additionally, implemented a donation feature to enhance user engagement and support."
+        `Orchestrated product development spanning UI/UX design, product engineering, and user behavior analysis, resulting in a global user base exceeding <b>10,000</b> visits and <b>3,000</b> signups within two months.`,
+        `Elevated Google search rankings through strategic SEO initiatives, including proficiency in <b>parasite SEO</b> techniques. These efforts led to significant performance enhancements and effective positioning of the product in alignment with industry peers.`,
+        `Demonstrated efficiency and resource optimization in front-end application development by leveraging a single Cloud Run instance with <b>1 CPU</b> and a memory limit of <b>256 MiB</b>.`,
+        `Spearheaded the development of a mobile app with a <b>mobile-first</b> approach, enabling rapid deployment to app stores within <b>two days</b>. Additionally, ensured seamless <b>PWA</b> installation across all devices, enhancing accessibility and user experience.`,
       ]
     },
     {
@@ -406,18 +457,15 @@ export const profileInfo = {
       duration: "July 2020 - Present",
       description: [],
       accomplishment: [
-        "Led the architecture and implementation of the CDP project, focusing on UI/UX features.",
-        "Implemented Data Visualization using G2plot Chart and Apex Chart, collaborating closely with the Design team for UI/UX enhancement.",
-        "Managed large-scale data integration from multiple APIs and conducted Unit testing, E2E testing, and BDD testing.",
-        "Architected and implemented UI/UX features for the CDP project, including a drag-and-drop journey campaign builder tool.",
-        "Developed a feature flag for runtime toggling, enabling A/B testing and feature grouping based on customer segments.",
-        "Applied Higher Order Components (HOC) for effective Role-Based Access Control (RBAC) management.",
-        "Built Slash command & attribute template features, facilitating editor-supported email/channel template delivery.",
-        "Implemented cron jobs to sync event data to FBE, enhancing data synchronization.",
-        "Configured nested routers, maintained a scalable project structure, and demonstrated strong knowledge of ES6, Typescript, and data types.",
-        "Acquired domain expertise and excelled in testing methodologies, including BDD, unit testing, and E2E testing.",
-        "Documented components for clarity and ease of maintenance.",
-        "Effectively tracked errors, and enhancements, and provided support for bug fixes, ensuring the project's stability."
+        `Led the architecture and implementation of the CDxP project, focusing on <b>UI/UX</b> features, which enhanced the overall user experience and increased user engagement.`,
+        `Configured nested routers, maintained a <b>scalable</b> project structure and demonstrated strong knowledge of ES6, Typescript, and data types, which <b>improved code maintainability</b> and reduced code-related issues.`,
+        `Effectively <b>tracked errors</b>, and enhancements, and provided support for bug fixes, ensuring the project’s <b>stability</b>, which improved system reliability and reduced system downtime.`,
+        `Implemented <b>RBAC</b> hooks to verify authorization for accessing components in adaptive client configurations. Additionally, I have built over <b>20 reusable utility features</b> that can be shared across different projects thanks to their modular design.`,
+        `Engineered <b>10+ advanced features</b> such as profiles, campaigns, analytics, and more.`,
+        `Established robust testing flow, covering core CDP features with <b>100+ scenarios</b> and <b>1000+ test cases</b>.`,
+        `Acquired domain expertise and excelled in testing methodologies, including BDD, unit testing, and <b>E2E testing</b>, which improved test coverage and reduced software bugs by <b>30%</b>.`,
+        `Developed a <b>feature flag</b> for runtime toggling, enabling A/B testing and feature grouping based on customer segments, which optimized feature delivery and increased feature adoption.`,
+        `<b>Documented</b> components for clarity and ease of maintenance, which improved code readability and reduced maintenance time.`,
       ]
     },
     {

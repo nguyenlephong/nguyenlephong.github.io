@@ -8,12 +8,17 @@ import {FaXTwitter} from "react-icons/fa6";
 import {SiLeetcode} from "react-icons/si";
 import Link from "next/link";
 
-export default function MainPage() {
+export default function Home() {
   return (
     <main>
       <section className={"section-container"}>
         <article className={"section-wrapper"}>
           <div className={"information-section"}>
+            
+            {/*<div className="avatar-group">*/}
+            {/*  <Image src={"https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom.png"}*/}
+            {/*         width={200} height={200} alt={"Nguyen Le Phong - Front-end Software Engineer"}/>*/}
+            {/*</div>*/}
             
             <div className="info-group" style={{textAlign: "center"}}>
               <h1 className={"headline t-up"}>Nguyen Le Phong</h1>
@@ -84,28 +89,82 @@ export default function MainPage() {
         <div className={"section-wrapper"}>
           <h2 className={"box-title"}>{profileInfo.summary.title}</h2>
           
-          <div className={"box-info"} style={{gap: 8}}>
+          <div className={"box-info"}>
             {profileInfo.summary.description.map((it: string) => {
               return (
                 <p key={it} dangerouslySetInnerHTML={{__html: it}} className={"box-item-text"}/>
               )
             })}
-            
-            <ul className={"box-list-info"}>
-              {profileInfo.summary.skills.map((it: string) => {
-                return (
-                  <li key={it}>
-                    <p dangerouslySetInnerHTML={{__html: it}} className={"box-item-text"}/>
-                  </li>
-                
-                )
-              })}
-            </ul>
           </div>
         </div>
       </section>
       
-      
+      <section className={"section-container"}>
+        <div className={"section-wrapper"}>
+          <h2 className={"box-title"}>{profileInfo.technical_skill.title}</h2>
+          <div className={"box-info"}>
+            <div className={"text-line-item"} style={{marginTop: 12}}>
+              <strong>Languages</strong>:{" "}
+              
+              {profileInfo.technical_skill.languages.map((k: string, ind: number) => {
+                const separator = ind === profileInfo.technical_skill.languages.length - 1 ? "." : ", "
+                return <span dangerouslySetInnerHTML={{__html: k + separator}} key={k}/>
+              })}
+            
+            </div>
+            
+            <div className={"text-line-item"}>
+              <strong>Frameworks</strong>:{" "}
+              
+              {profileInfo.technical_skill.frameworks.map((k: string, ind: number) => {
+                const separator = ind === profileInfo.technical_skill.frameworks.length - 1 ? "." : ", "
+                return <span dangerouslySetInnerHTML={{__html: k + separator}} key={k}/>
+              })}
+            
+            </div>
+            
+            <div className={"text-line-item"}>
+              <strong>Developer Tools</strong>:{" "}
+              
+              {profileInfo.technical_skill.developerTools.map((k: string, ind: number) => {
+                const separator = ind === profileInfo.technical_skill.developerTools.length - 1 ? "." : ", "
+                return <span dangerouslySetInnerHTML={{__html: k + separator}} key={k}/>
+              })}
+            
+            </div>
+            
+            <div className={"text-line-item"}>
+              <strong>Libraries</strong>:{" "}
+              
+              {profileInfo.technical_skill.libraries.map((k: string, ind: number) => {
+                const separator = ind === profileInfo.technical_skill.libraries.length - 1 ? "." : ", "
+                return <span dangerouslySetInnerHTML={{__html: k + separator}} key={k}/>
+              })}
+            
+            </div>
+            
+            <div className={"text-line-item"}>
+              <strong>Testing</strong>: {" "}
+              
+              {profileInfo.technical_skill.testing.map((k: string, ind: number) => {
+                const separator = ind === profileInfo.technical_skill.testing.length - 1 ? "." : ", "
+                return <span dangerouslySetInnerHTML={{__html: k + separator}} key={k}/>
+              })}
+            
+            </div>
+            
+            <div className={"text-line-item"}>
+              <strong>Other</strong>:{" "}
+              
+              {profileInfo.technical_skill.other.map((k: string, ind: number) => {
+                const separator = ind === profileInfo.technical_skill.other.length - 1 ? "." : ", "
+                return <span dangerouslySetInnerHTML={{__html: k + separator}} key={k}/>
+              })}
+            
+            </div>
+          </div>
+        </div>
+      </section>
       
       <section className={"section-container"}>
         <ExperienceBox data={profileInfo.experience}/>
