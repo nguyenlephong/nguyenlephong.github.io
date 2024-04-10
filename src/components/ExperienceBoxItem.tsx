@@ -46,13 +46,18 @@ export default function ExperienceBox(props: ExperienceBoxIProps){
                       </ul>
                       
                       <div className={"tags-container"}>
-                        <p><i>Key techs:</i></p>
-                        {job.key_techs.map((skill: string) => {
-                          return (
-                            <Tag value={skill} key={skill}/>
-                          )
-                        })}
+                        <p><i>Key techs:</i> {job.key_techs.join(", ")}</p>
                       </div>
+                      {1 < 0 && (
+                        <div className={"tags-container"}>
+                          <p><i>Key techs:</i></p>
+                          {job.key_techs.map((skill: string) => {
+                            return (
+                              <Tag value={skill} key={skill}/>
+                            )
+                          })}
+                      </div>
+                      )}
                     </div>
                   )
                 })
