@@ -344,7 +344,7 @@ export const profileInfo = {
             `Developed lightweight JS SDK with full functionalities (<b><200kb, <150ms</b> load time), facilitating seamless integration across projects.`,
             `Demonstrated rapid <b>problem-solving</b>, ensuring swift feature demonstrations to impress clients and investors.`,
           ],
-          key_techs: ["ReactJs", "Next.js", "Typescript", "Wordpress", "SDK",  "Antdesign", "Team Leadership", "React Native", "Nodejs"],
+          key_techs: ["ReactJs", "Next.js", "Typescript", "WordPress", "SDK",  "Antdesign", "Team Leadership", "React Native", "Nodejs"],
         },
       ],
       jobs_bk: [
@@ -359,7 +359,7 @@ export const profileInfo = {
             "Integrated third-party platform reports and data visualizations into the system, implementing secure authentication for external systems to uphold data security standards.",
             "Leveraged my expertise in code optimization and load time reduction, ensuring the application's efficiency and responsiveness met the highest standards."
           ],
-          skills: ["ReactJs", "Next.js", "Typescript", "Wordpress", "SDK",  "Antdesign", "Team Leadership"]
+          skills: ["ReactJs", "Next.js", "Typescript", "WordPress", "SDK",  "Antdesign", "Team Leadership"]
         },
         {
           title: "Full-stack Software Engineer",
@@ -454,7 +454,7 @@ export const profileInfo = {
     {
       name: "CDP",
       technologies: ["React", "Next.js", "Antdesign", "React Native", "WordPress", "Docker"],
-      duration: "July 2020 - Present",
+      duration: "July 2020 - Apr 2024",
       description: [],
       accomplishment: [
         `Led the architecture and implementation of the CDxP project, focusing on <b>UI/UX</b> features, which enhanced the overall user experience and increased user engagement.`,
@@ -469,57 +469,70 @@ export const profileInfo = {
       ]
     },
     {
+      name: "Event Tracking Web SDK",
+      technologies: ["Vanilla JS", "Socket.io", "Web Worker", "Firebase"],
+      duration: "May 2021 - Jan 2024",
+      description: [],
+      accomplishment: [
+        `Successfully developed over <b>5 modules</b>, incorporating more than <b>10 advanced features</b> using <b>vanilla JS</b>. Achieved an impressive bundle size of <b><200kb and a load time of <150ms</b> (metrics measured prior to employing all optimization techniques for the bundle).`,
+        `Utilized <b>web workers and service workers</b> to facilitate multitasking in the background, effectively managing complex functionalities and handling <b>multiple edge cases</b>, such as simultaneous multi-tab usage.`,
+        `Additionally, designed and implemented a <b>personalized recommendation feature</b> using a <b>micro-frontend</b> architecture, specifically a carousel block showcasing products users may love, thereby enhancing user experience and engagement.`,
+        `Among the various advanced features built are web pop-ups, web push notifications, <b>web component embedding</b>, Socket.IO integration, and management of annoying pop-ups across multiple tabs.`,
+        `Furthermore, leveraged <b>JS Closure</b> to organize module structures, enabling seamless feature export or <b>data encapsulation</b>, thereby <b>avoid conflicts</b> within the global scope.`,
+      ]
+    },
+    {
       name: "Vietnam Australia Center",
       technologies: ["React", "Firebase", "Next.js"],
       duration: "May 2023",
       description: [],
       accomplishment: [
-        "Took on the responsibility of teaching a Front-end Project course at Vietnam Australia Center.",
-        "Designed and delivered engaging lectures, providing hands-on guidance to students on front-end development projects.",
-        "Focused on fostering a collaborative learning environment, encouraging teamwork, and aligning coursework with industry best practices.",
-        "Provided personalized feedback and mentoring, supporting students in overcoming challenges and ensuring a comprehensive understanding of the course material."
+        `Took on the responsibility of <b>teaching</b>b> a <b>Front-end Project</b> course at Vietnam Australia Center.`,
+        `Designed and delivered <b>engaging lectures</b>, providing hands-on guidance to students on front-end development projects.`,
+        `Focused on fostering a <b>collaborative</b> learning environment, encouraging <b>teamwork</b> for <b>12 students</b>, and aligning coursework with industry best practices.`,
+        `Provided personalized <b>feedback</b> and <b>mentoring</b>, supporting students in <b>overcoming challenges</b> and ensuring a comprehensive understanding of the course material.`
       ]
     },
-    {
-      name: "SmartR.co",
-      technologies: ["React", "Next.js", "Chart.js", "Material UI"],
-      duration: "Aug 2022",
-      description: [],
-      accomplishment: [
-        "Contributed to a project as a freelancer, focusing on developing a CMS website using Next.js and Strapi headless CMS."
-      ]
-    },
+    // {
+    //   name: "SmartR.co",
+    //   technologies: ["React", "Next.js", "Chart.js", "Material UI"],
+    //   duration: "Aug 2022",
+    //   description: [],
+    //   accomplishment: [
+    //     "Contributed to a project as a freelancer, focusing on developing a CMS website using Next.js and Strapi headless CMS."
+    //   ]
+    // },
     {
       name: "House Management - Mona House",
-      technologies: ["React Native", "Realm DB"],
+      technologies: ["React Native", "Realm DB", "Figma"],
       duration: "Feb 2020 - May 2020",
       description: [],
       accomplishment: [
-        "Developed a comprehensive mobile application, Mona House, using React Native and Realm DB for efficient house management.",
-        "Specialized in creating cross-platform apps with a focus on reusable components, smooth animations, and seamless integration with native modules.",
-        "Demonstrated strong problem-solving and troubleshooting skills, swiftly identifying and resolving complex issues through advanced debugging tools and performance profiling.",
-        "Exhibited adaptability and a quick learning curve for new technologies, allowing seamless implementation of new frameworks, programming languages, or tools to ensure project completion."
+        `Developed a comprehensive mobile application, Mona House, using <b>React Native</b> and Realm DB for efficient house management.`,
+        `Specialized in creating cross-platform apps with a focus on <b>reusable components</b>, smooth animations, and seamless integration with native modules.`,
+        `Demonstrated strong <b>problem-solving</b> and <b>troubleshooting</b> skills, swiftly identifying and resolving complex issues through advanced debugging tools and performance profiling.`,
+        `Exhibited <b>adaptability</b> and a <b>quick learning curve</b> for new technologies, allowing seamless implementation of new frameworks, programming languages, or tools to ensure project completion.`
       ]
     },
     {
       name: "Bank tool - Mobivi",
-      technologies: ["React", "Java Spring Boot", "MySQL"],
+      technologies: ["React", "Java", "Spring Boot", "MySQL", "Redux"],
       duration: "Dec 2019",
       description: [],
       accomplishment: [
-        "Developed a full-stack web application at Mobivi, focusing on ingesting and processing data over 20 Excel files, each containing over 20,000 records.",
-        "The application was designed to efficiently handle progressively calculated transactional data from users, ensuring accurate and reliable reporting."
+        "Developed a <b>full-stack web application</b> at Mobivi, focusing on ingesting and processing data over <b>20 Excel files</b>, each containing over <b>20,000 records</b>.",
+        "The application was designed to efficiently handle progressively calculated transactional data from users, <b>ensuring accurate and reliable reporting</b>."
       ]
     },
     {
       name: "Savyu - Synova Solutions",
-      technologies: ["React Native", "React", "Node.js"],
+      technologies: ["React Native", "React", "Node.js", "Firebase", "Redux"],
       duration: "May 2019",
       description: [],
       accomplishment: [
-        "Played a pivotal role in the development of two mobile applications at Synova - one catering to merchants and the other targeting consumers.",
-        "Contributed to the creation of a web application empowering administrators to efficiently manage user data.",
-        "Demonstrated proficiency in mobile app development, collaborating with cross-functional teams to ensure the successful delivery of intuitive and high-performing applications."
+        "Played a pivotal role in the development of <b>two mobile</b> applications at Synova - one catering to merchants and the other targeting consumers.",
+        "Contributed to the creation of a <b>web application</b> empowering administrators to efficiently manage user data.",
+        "Demonstrated <b>proficiency in mobile app</b> development, collaborating with cross-functional teams to ensure the successful delivery of <b>intuitive</b> and <b>high-performing</b> applications."
       ]
     }
   ],
