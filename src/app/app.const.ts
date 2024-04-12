@@ -189,7 +189,7 @@ export const profileInfo = {
     github: "https://github.com/nguyenlephong",
     youtube: "https://www.youtube.com/@NguyenLePhong",
     leetcode: "https://leetcode.com/nguyenlephong/",
-    linkedin: "https://www.linkedin.com/in/phong-nguyen-0107/",
+    linkedin: "https://www.linkedin.com/in/phongnguyen-it/",
     twitter: "https://twitter.com/nguyenlephong17",
     facebook: "https://www.facebook.com/NguyenLePhong0107/",
     instagram: "https://www.instagram.com/anhmap0107/",
@@ -469,15 +469,15 @@ export const profileInfo = {
       ]
     },
     {
-      name: "Event Tracking Web SDK",
-      technologies: ["Vanilla JS", "Socket.io", "Web Worker", "Firebase"],
+      name: "Event Tracking - Web SDK",
+      technologies: ["Vanilla JS", "WebSocket", "Web Worker", "Firebase"],
       duration: "May 2021 - Jan 2024",
       description: [],
       accomplishment: [
         `Successfully developed over <b>5 modules</b>, incorporating more than <b>10 advanced features</b> using <b>vanilla JS</b>. Achieved an impressive bundle size of <b><200kb and a load time of <150ms</b> (metrics measured prior to employing all optimization techniques for the bundle).`,
         `Utilized <b>web workers and service workers</b> to facilitate multitasking in the background, effectively managing complex functionalities and handling <b>multiple edge cases</b>, such as simultaneous multi-tab usage.`,
         `Additionally, designed and implemented a <b>personalized recommendation feature</b> using a <b>micro-frontend</b> architecture, specifically a carousel block showcasing products users may love, thereby enhancing user experience and engagement.`,
-        `Among the various advanced features built are web pop-ups, web push notifications, <b>web component embedding</b>, Socket.IO integration, and management of annoying pop-ups across multiple tabs.`,
+        `Among the various advanced features built are web pop-ups, web push notifications, <b>web component embedding</b>, WebSocket integration, and management of annoying pop-ups across multiple tabs.`,
         `Furthermore, leveraged <b>JS Closure</b> to organize module structures, enabling seamless feature export or <b>data encapsulation</b>, thereby <b>avoid conflicts</b> within the global scope.`,
       ]
     },
