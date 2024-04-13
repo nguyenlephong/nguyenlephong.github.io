@@ -441,7 +441,7 @@ export const profileInfo = {
   projects: [
     {
       name: "Digital SAT Math",
-      technologies: ["Next.js", "React", "React Native", "Antdesign", "Docker", "GCP", "Directus"],
+      technologies: ["Next.js", "React", "React Native", "Antdesign", "Docker", "GCP", "Directus", "Google Ads", "Stripe"],
       duration: "Oct 2023 - Present",
       description: [],
       accomplishment: [
@@ -449,6 +449,7 @@ export const profileInfo = {
         `Elevated Google search rankings through strategic SEO initiatives, including proficiency in <b>parasite SEO</b> techniques. These efforts led to significant performance enhancements and effective positioning of the product in alignment with industry peers.`,
         `Demonstrated efficiency and resource optimization in front-end application development by leveraging a single Cloud Run instance with <b>1 CPU</b> and a memory limit of <b>256 MiB</b>.`,
         `Spearheaded the development of a mobile app with a <b>mobile-first</b> approach, enabling rapid deployment to app stores within <b>two days</b>. Additionally, ensured seamless <b>PWA</b> installation across all devices, enhancing accessibility and user experience.`,
+        `Developed <b>monetization features</b>, including the integration of <b>Google Ads</b> and the implementation of the <b>Stripe</b> payment flow, to enhance revenue generation. `
       ]
     },
     {
