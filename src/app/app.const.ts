@@ -488,7 +488,7 @@ export const profileInfo = {
       duration: "May 2023",
       description: [],
       accomplishment: [
-        `Took on the responsibility of <b>teaching</b>b> a <b>Front-end Project</b> course at Vietnam Australia Center.`,
+        `Took on the responsibility of <b>teaching</b> a <b>Front-end Project</b> course at Vietnam Australia Center.`,
         `Designed and delivered <b>engaging lectures</b>, providing hands-on guidance to students on front-end development projects.`,
         `Focused on fostering a <b>collaborative</b> learning environment, encouraging <b>teamwork</b> for <b>12 students</b>, and aligning coursework with industry best practices.`,
         `Provided personalized <b>feedback</b> and <b>mentoring</b>, supporting students in <b>overcoming challenges</b> and ensuring a comprehensive understanding of the course material.`
