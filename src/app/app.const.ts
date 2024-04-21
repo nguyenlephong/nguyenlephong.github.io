@@ -21,6 +21,10 @@ export const SEO = {
 };
 
 export const profileInfo = {
+  gallery: {
+    certificates: [],
+    activities: []
+  },
   photos: [
     {
       src: CDN_PATH + "/images/me/best_rookie.jpeg",
