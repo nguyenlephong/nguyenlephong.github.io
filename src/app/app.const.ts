@@ -22,132 +22,156 @@ export const SEO = {
 
 export const profileInfo = {
   gallery: {
-    certificates: [],
-    activities: []
+    certificates: [
+      
+      {
+        src: "/assets/photos/cert.jpeg",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - Certificate",
+        width: 3,
+        height: 4
+      },
+      {
+        src: "/assets/photos/cert_verygood.JPG",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - Very good",
+        width: 3,
+        height: 4
+      },
+      {
+        src: "/assets/photos/scoreboard.jpeg",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - Score board",
+        width: 3,
+        height: 4
+      },
+      {
+        src: CDN_PATH + "/images/me/certificate-test.JPG",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - Tester certificate",
+        width: 3,
+        height: 4
+      },
+    ],
+    activities: [
+      
+      
+      // {
+      //   src: CDN_PATH + "/images/me/view-0.jpg",
+      //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      //   alt: "Nguyen Le Phong - Software Engineer - me",
+      //   width: 3,
+      //   height: 4,
+      //   hide: true,
+      // },
+      // {
+      //   src: CDN_PATH + "/images/me/view-1.jpg",
+      //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      //   alt: "Nguyen Le Phong - Software Engineer - me",
+      //   width: 3,
+      //   height: 4,
+      //   hide: true,
+      // },
+      // {
+      //   src: CDN_PATH + "/images/me/view-2.jpg",
+      //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      //   alt: "Nguyen Le Phong - Software Engineer - me",
+      //   width: 3,
+      //   height: 4,
+      //   hide: true,
+      // },
+      
+      // {
+      //   src: CDN_PATH + "/images/me/standup.jpg",
+      //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      //   alt: "Nguyen Le Phong - Software Engineer - me",
+      //   width: 3,
+      //   height: 4,
+      //   hide: true,
+      // },
+      //
+      // {
+      //   src: CDN_PATH + "/images/me/sit-down.jpg",
+      //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      //   alt: "Nguyen Le Phong - Software Engineer - me",
+      //   width: 3,
+      //   height: 4,
+      //   hide: true,
+      // },
+      {
+        src: CDN_PATH + "/images/me/DSC_1507.JPG",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - desk working",
+        width: 4,
+        height: 3
+      }
+    ],
+    awards: [
+      {
+        src: CDN_PATH + "/images/me/best_rookie.jpeg",
+        alt: "Nguyen Le Phong - Software Engineer - Best rookie of the year",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        width: 3,
+        height: 4
+      },
+      
+      {
+        src: CDN_PATH + "/images/me/certificate_splus.jpeg",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - Splus Certificate",
+        width: 4,
+        height: 3
+      },
+      
+      {
+        src: CDN_PATH + "/images/me/award_prime.jpeg",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - Award at PrimeData",
+        width: 4,
+        height: 3
+      },
+    ],
+    projects: [
+      {
+        src: CDN_PATH + "/images/project/chess_games.jpg",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - Chess games project",
+        width: 4,
+        height: 3
+      },
+      
+      {
+        src: CDN_PATH + "/images/project/wat_overview.png",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - Wat project at splus software",
+        width: 4,
+        height: 3
+      },
+      
+      {
+        src: CDN_PATH + "/images/me/essay-group.JPG",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - my essay",
+        width: 4,
+        height: 3
+      },
+      {
+        src: CDN_PATH + "/images/me/drone.JPG",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - My team to implement essay",
+        width: 4,
+        height: 3
+      },
+      
+      {
+        src: CDN_PATH + "/images/me/drone_dev.jpeg",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - drone applications",
+        width: 4,
+        height: 3
+      },
+    ],
   },
-  photos: [
-    {
-      src: CDN_PATH + "/images/me/best_rookie.jpeg",
-      alt: "Nguyen Le Phong - Software Engineer - Best rookie of the year",
-      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      width: 3,
-      height: 4
-    },
-    {
-      src: CDN_PATH + "/images/me/score_board.JPG",
-      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      alt: "Nguyen Le Phong - Software Engineer - Score board",
-      width: 3,
-      height: 4
-    },
-    {
-      src: CDN_PATH + "/images/me/certificate-test.JPG",
-      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      alt: "Nguyen Le Phong - Software Engineer - Tester certificate",
-      width: 3,
-      height: 4
-    },
-    {
-      src: CDN_PATH + "/images/me/certificate_splus.jpeg",
-      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      alt: "Nguyen Le Phong - Software Engineer - Splus Certificate",
-      width: 4,
-      height: 3
-    },
-    
-    {
-      src: CDN_PATH + "/images/me/essay-group.JPG",
-      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      alt: "Nguyen Le Phong - Software Engineer - my essay",
-      width: 4,
-      height: 3
-    },
-    {
-      src: CDN_PATH + "/images/me/drone.JPG",
-      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      alt: "Nguyen Le Phong - Software Engineer - My team to implement essay",
-      width: 4,
-      height: 3
-    },
-    {
-      src: CDN_PATH + "/images/project/chess_games.jpg",
-      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      alt: "Nguyen Le Phong - Software Engineer - Chess games project",
-      width: 4,
-      height: 3
-    },
-    
-    {
-      src: CDN_PATH + "/images/project/wat_overview.png",
-      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      alt: "Nguyen Le Phong - Software Engineer - Wat project at splus software",
-      width: 4,
-      height: 3
-    },
-    {
-      src: CDN_PATH + "/images/me/award_prime.jpeg",
-      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      alt: "Nguyen Le Phong - Software Engineer - Award at PrimeData",
-      width: 4,
-      height: 3
-    },
-    {
-      src: CDN_PATH + "/images/me/drone_dev.jpeg",
-      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      alt: "Nguyen Le Phong - Software Engineer - drone applications",
-      width: 4,
-      height: 3
-    },
-    // {
-    //   src: CDN_PATH + "/images/me/view-0.jpg",
-    //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-    //   alt: "Nguyen Le Phong - Software Engineer - me",
-    //   width: 3,
-    //   height: 4,
-    //   hide: true,
-    // },
-    // {
-    //   src: CDN_PATH + "/images/me/view-1.jpg",
-    //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-    //   alt: "Nguyen Le Phong - Software Engineer - me",
-    //   width: 3,
-    //   height: 4,
-    //   hide: true,
-    // },
-    // {
-    //   src: CDN_PATH + "/images/me/view-2.jpg",
-    //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-    //   alt: "Nguyen Le Phong - Software Engineer - me",
-    //   width: 3,
-    //   height: 4,
-    //   hide: true,
-    // },
-    
-    // {
-    //   src: CDN_PATH + "/images/me/standup.jpg",
-    //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-    //   alt: "Nguyen Le Phong - Software Engineer - me",
-    //   width: 3,
-    //   height: 4,
-    //   hide: true,
-    // },
-    //
-    // {
-    //   src: CDN_PATH + "/images/me/sit-down.jpg",
-    //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-    //   alt: "Nguyen Le Phong - Software Engineer - me",
-    //   width: 3,
-    //   height: 4,
-    //   hide: true,
-    // },
-    {
-      src: CDN_PATH + "/images/me/DSC_1507.JPG",
-      sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      alt: "Nguyen Le Phong - Software Engineer - desk working",
-      width: 4,
-      height: 3
-    }
-  ],
   videos: [
     
     {
