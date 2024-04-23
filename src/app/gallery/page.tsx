@@ -13,13 +13,58 @@ export default function GalleryPage() {
     <main className={"about-page"}>
       <section className={"section-container"}>
         <h1 style={{textAlign: "center", fontSize: 32, padding: 24}}>
-          Front-end Software Engineer
+          Software Engineer
         </h1>
         
         <div className={"section-wrapper"}>
-          <h2 className={"box-title"}>Photos</h2>
+          <h2 className={"box-title"}>Certifications</h2>
           <div className="grid-item_wrapper">
-            {profileInfo.photos.map((photo) => {
+            {profileInfo.gallery.certificates.map((photo) => {
+              return (
+                <div key={photo.src} id={"photo-" + photo.src}>
+                  <Link href={photo.src} target={"_blank"}>
+                    <Image src={photo.src} alt={photo.alt} width={232} height={232} style={{objectFit: "cover"}}/>
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+        
+        <div className={"section-wrapper"}>
+          <h2 className={"box-title"}>Projects</h2>
+          <div className="grid-item_wrapper">
+            {profileInfo.gallery.projects.map((photo) => {
+              return (
+                <div key={photo.src} id={"photo-" + photo.src}>
+                  <Link href={photo.src} target={"_blank"}>
+                    <Image src={photo.src} alt={photo.alt} width={232} height={232} style={{objectFit: "cover"}}/>
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+        
+        <div className={"section-wrapper"}>
+          <h2 className={"box-title"}>Awards</h2>
+          <div className="grid-item_wrapper">
+            {profileInfo.gallery.awards.map((photo) => {
+              return (
+                <div key={photo.src} id={"photo-" + photo.src}>
+                  <Link href={photo.src} target={"_blank"}>
+                    <Image src={photo.src} alt={photo.alt} width={232} height={232} style={{objectFit: "cover"}}/>
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+        
+        <div className={"section-wrapper"}>
+          <h2 className={"box-title"}>Activities</h2>
+          <div className="grid-item_wrapper">
+            {profileInfo.gallery.activities.map((photo) => {
               return (
                 <div key={photo.src} id={"photo-" + photo.src}>
                   <Link href={photo.src} target={"_blank"}>

@@ -20,12 +20,6 @@ export default function AppHeader() {
           </Link>
         )}
         
-        <Link href={APP_ROUTE.GALLERY}>
-          <div className={"menu-item"}>
-            <span>Gallery</span>
-          </div>
-        </Link>
-        
         
         {1 < 0 && (
           <Link href={APP_ROUTE.CV}>
@@ -38,6 +32,12 @@ export default function AppHeader() {
         <Link href={APP_ROUTE.CV_PDF} target={"_blank"}>
           <div className={"menu-item"}>
             <span>PDF Download</span>
+          </div>
+        </Link>
+        
+        <Link href={APP_ROUTE.GALLERY}>
+          <div className={"menu-item"}>
+            <span>Gallery</span>
           </div>
         </Link>
       
