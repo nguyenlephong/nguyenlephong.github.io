@@ -35,11 +35,13 @@ export default function AppHeader() {
           </div>
         </Link>
         
-        <Link href={APP_ROUTE.GALLERY}>
-          <div className={"menu-item"}>
-            <span>Gallery</span>
-          </div>
-        </Link>
+        {1 < 2 && (
+          <Link href={APP_ROUTE.GALLERY}>
+            <div className={"menu-item"}>
+              <span>Gallery</span>
+            </div>
+          </Link>
+        )}
       
       </nav>
       
