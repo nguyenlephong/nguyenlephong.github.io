@@ -24,13 +24,13 @@ export const profileInfo = {
   gallery: {
     certificates: [
       
-      {
-        src: "/assets/photos/cert.jpeg",
-        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-        alt: "Nguyen Le Phong - Software Engineer - Certificate",
-        width: 3,
-        height: 4
-      },
+      // {
+      //   src: "/assets/photos/cert.jpeg",
+      //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+      //   alt: "Nguyen Le Phong - Software Engineer - Certificate",
+      //   width: 3,
+      //   height: 4
+      // },
       {
         src: "/assets/photos/cert_verygood.JPG",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],

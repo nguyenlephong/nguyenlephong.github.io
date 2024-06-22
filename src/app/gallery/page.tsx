@@ -76,31 +76,33 @@ export default function GalleryPage() {
           </div>
         </div>
         
-        <div className={"section-wrapper"}>
-          <h2 className={"box-title"}>Videos</h2>
-          <div className="grid-item_wrapper">
-            {profileInfo.videos.map((item, ind) => {
-              return (
-                <div
-                  key={item.id}
-                  id={`score_board-video_${ind}`}
-                  className="item_videos"
-                >
-                  <iframe
-                    width="100%"
-                    height="315"
-                    title={item.title}
-                    src={`${item.url}`}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-              );
-            })}
-          
+        {1 < 0 && (
+          <div className={"section-wrapper"}>
+            <h2 className={"box-title"}>Videos</h2>
+            <div className="grid-item_wrapper">
+              {profileInfo.videos.map((item, ind) => {
+                return (
+                  <div
+                    key={item.id}
+                    id={`score_board-video_${ind}`}
+                    className="item_videos"
+                  >
+                    <iframe
+                      width="100%"
+                      height="315"
+                      title={item.title}
+                      src={`${item.url}`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                );
+              })}
+            
+            </div>
           </div>
-        </div>
+        )}
       </section>
     </main>
   )
