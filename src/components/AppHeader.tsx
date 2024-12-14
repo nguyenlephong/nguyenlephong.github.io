@@ -1,6 +1,8 @@
 import Link from "next/link";
 import {APP_ROUTE} from "@/app/app.const";
 import {IoMenu} from "react-icons/io5";
+import React from "react";
+
 
 export default function AppHeader() {
   return (
@@ -73,8 +75,7 @@ export default function AppHeader() {
           </div>
         </div>
       </nav>
-    
-    
+      
     </header>
   )
 }

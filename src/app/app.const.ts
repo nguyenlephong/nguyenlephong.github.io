@@ -354,8 +354,8 @@ export const profileInfo = {
           key_techs: ["ReactJs", "Node.js", "Electron", "Typescript"]
 
         }
-      ]
-
+      ],
+      jobs_bk: []
     },
     // {
     //   company: "Math99th",
