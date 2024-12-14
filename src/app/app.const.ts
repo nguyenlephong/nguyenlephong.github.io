@@ -344,11 +344,11 @@ export const profileInfo = {
           title: "Senior Software Engineer",
           duration: "May 2024 - Present",
           summaries: [
-            "Core developer for a cross-platform chat app (web, macOS, Windows) serving <b>15M+ DAU</b>. Delivered features like dark mode, dynamic theming, and user behavior tracking. Built promotion flows and a design system for <b>50+ developers</b>, enabling the VAS team to generate <b>100 billion VND</b> in revenue within a year. Optimized performance, ensured maintainability, and contributed to business growth through scalable solutions."
+            "Core developer for a cross-platform chat app (web, macOS, Windows) serving <b>15M+ DAU</b>. Delivered features like dark mode, dynamic theming, and user behavior tracking. Built promotion flows and a design system for <b>50+ developers</b>. Optimized performance, ensured maintainability, and contributed to business growth through scalable solutions."
           ],
           key_contribution: [
-            "Delivering over <b>10 features</b>, including dark mode, a download module, log tracking, and more, for <b>15 million</b> daily active users (DAU).",
-            "Developed a promotion flow integrated with tracking and monitoring systems to ensure activation feature success across <b>15M active users</b>.",
+            "Delivering over <b>10 features</b>, including dark mode, a download module, log tracking, and more, for <b>15M+</b> DAU.",
+            "Developed a promotion flow integrated with tracking and monitoring systems to ensure activation feature success across <b>15M+ DAU</b>.",
             "Led the development of a robust <b>design system</b> using Storybook, facilitating consistent UI components for a team of over <b>50 developers</b>."
           ],
           key_techs: ["ReactJs", "Node.js", "Electron", "Typescript"]
