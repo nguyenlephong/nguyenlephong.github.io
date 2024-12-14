@@ -7,8 +7,13 @@ import AppHeader from "@/components/AppHeader";
 import AppFooter from "@/components/AppFooter";
 import {Organization, WithContext} from "schema-dts";
 import React from "react";
+import dynamic from "next/dynamic";
 
 const inter = Inter({ subsets: ["latin"] });
+const AppTheme = dynamic(
+  () => import ("@/components/theme/ThemeSwitcher"),
+  {ssr: false}
+)
 
 export const metadata: Metadata = {
   description: SEO.description,
@@ -121,6 +126,7 @@ export default function RootLayout({
       <AppHeader/>
         {children}
       <AppFooter/>
+      <AppTheme/>
       </body>
     </html>
   );
