@@ -68,6 +68,14 @@
   --accent-blue-icon-subtle: #C7E0FF;
   --accent-blue-icon: #005AE0;
   --accent-blue-icon-bold: #002B6B;
+  
+  /**
+   * @tokens Shadow
+   * @presenter Shadow
+   */
+  --shadow-overlay: 0px 0px 1px 0px rgba(21, 39, 71, 0.30), 0px 8px 12px 0px rgba(21, 39, 71, 0.15);
+  --shadow-overflow: 0px 0px 1px 0px rgba(21, 39, 71, 0.12), 0px 0px 8px 0px rgba(21, 39, 71, 0.15);
+
 }
 
 /* Apply dark theme variables */
@@ -134,6 +142,13 @@
   --accent-blue-icon-subtle: #001029;
   --accent-blue-icon: #0068FF;
   --accent-blue-icon-bold: #ADD1FF;
+
+  /**
+  * @tokens Shadow
+  * @presenter Shadow
+  */
+  --shadow-overlay: 0px 0px 1px 0px rgba(3, 4, 4, 0.50), 0px 8px 12px 0px rgba(3, 4, 4, 0.35), 0px 0px 0px 1px rgba(188, 214, 240, 0.08) inset;
+  --shadow-overflow: 0px 0px 1px 0px rgba(3, 4, 4, 0.50), 0px 0px 12px 0px rgba(3, 4, 4, 0.56);
 }
 
 * {
@@ -535,7 +550,9 @@ a:visited {
   position: absolute;
   top: 52px;
   right: 0;
-  background: #fff;
+  background: var(--layer-background);
+  box-shadow: var(--shadow-overlay);
+  /*border:1px solid var(--border-subtle);*/
 }
 
 .m-menu-list {
@@ -551,7 +568,7 @@ a:visited {
 }
 
 .m-menu-item:hover {
-  background: greenyellow;
+  background: var(--layer-background-hover);
 }
 
 @media only screen and (max-width: 526px){
