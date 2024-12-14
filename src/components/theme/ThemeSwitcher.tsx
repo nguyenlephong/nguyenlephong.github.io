@@ -42,10 +42,12 @@ const ThemeSwitcher: React.FC = () => {
   );
 };
 
-const AppTheme: React.FC = () => (
+const AppTheme = () => {
+  return (
   <ThemeProvider>
     <ThemeSwitcher/>
   </ThemeProvider>
-);
+  )
+};
 
 export default AppTheme;
