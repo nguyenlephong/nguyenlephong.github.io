@@ -309,7 +309,7 @@ export const profileInfo = {
     skills: [
       `<b>Back-end</b>: Competent in <b>Java</b> with the Spring Framework and <b>Node.js</b> with a working knowledge of the Express framework.`,
       `<b>Front-end</b>: Proficient in <b>React</b>, utilizing TypeScript, JavaScript, and the <b>Next.js</b> framework, and <b>React Native</b> with a working knowledge of the Expo platform, as well as proficiency in vanilla JavaScript`,
-      `<b>Libraries</b>: Seasoned in <b>Firebase</b>, Strapi, Directus, React Flow, <b>Redux</b>, React Query, and G2plot.`,
+      `<b>Libraries</b>: Seasoned in <b>Firebase</b>, Strapi, Directus, React Flow, Webpack, <b>Redux</b>, React Query, and G2plot.`,
       `<b>Testing</b>: Skilled in <b>Jest, Cucumber, Puppeteer</b>, and Testing Library.`,
       `<b>Other</b>: In addition, familiar with <b>Micro-frontend</b> architecture, Proficiency in Responsive Design, Cross-Browser Compatibility, <b>SEO</b>, and GraphQL.`,
     ]
@@ -336,6 +336,27 @@ export const profileInfo = {
     ]
   },
   experience: [
+    {
+      company: "Zalo PC - VNG Corp",
+      location: "VNG Campus",
+      jobs: [
+        {
+          title: "Senior Software Engineer",
+          duration: "May 2024 - Present",
+          summaries: [
+            "Core developer for a cross-platform chat app (web, macOS, Windows) serving <b>15M+ DAU</b>. Delivered features like dark mode, dynamic theming, and user behavior tracking. Built promotion flows and a design system for <b>50+ developers</b>, enabling the VAS team to generate <b>100 billion VND</b> in revenue within a year. Optimized performance, ensured maintainability, and contributed to business growth through scalable solutions."
+          ],
+          key_contribution: [
+            "Delivering over <b>10 features</b>, including dark mode, a download module, log tracking, and more, for <b>15 million</b> daily active users (DAU).",
+            "Developed a promotion flow integrated with tracking and monitoring systems to ensure activation feature success across <b>15M active users</b>.",
+            "Led the development of a robust <b>design system</b> using Storybook, facilitating consistent UI components for a team of over <b>50 developers</b>."
+          ],
+          key_techs: ["ReactJs", "Node.js", "Electron", "Typescript"]
+
+        }
+      ]
+
+    },
     // {
     //   company: "Math99th",
     //   location: "Remote",
@@ -343,14 +364,15 @@ export const profileInfo = {
     //     {
     //       title: "Senior Front-end Engineer",
     //       duration: "Oct 2023 - Present",
-    //       responsibilities: [
+    //       summaries: [],
+    //       key_contribution: [
     //         "Championed the architectural blueprint and construction of the front-end and server-side project base, cultivating a meticulously organized and structured codebase. Elevated code maintainability and fostered seamless collaboration among cross-functional teams.",
     //         "Developed a web application for mathematical review using Next.js and Ant Design. Integrated Mathjax for displaying mathematical expressions, ensuring a seamless and visually appealing user experience.",
     //         "Collaborated with cross-functional teams to align with user needs and optimized application performance, showcasing expertise in front-end development and a commitment to delivering innovative solutions.",
     //         "Implemented and maintained an automated email flow for customer care, triggered by specific user segments, enhancing user engagement and satisfaction.",
     //         "Monitored and collected user behavior data for analysis and statistics. Utilized insights to execute targeted marketing campaigns, resulting in improved DAU, WAU, and MAU metrics."
     //       ],
-    //       skills: ["ReactJs", "Next.js", "Antdesign", "React Native", "Typescript", "Docker", "GCP"]
+    //       key_techs: ["ReactJs", "Next.js", "Antdesign", "React Native", "Typescript", "Docker", "GCP"]
     //
     //     }
     //   ]
@@ -372,7 +394,7 @@ export const profileInfo = {
             `Developed lightweight JS SDK with full functionalities (<b><200kb, <150ms</b> load time), facilitating seamless integration across projects.`,
             `Demonstrated rapid <b>problem-solving</b>, ensuring swift feature demonstrations to impress clients and investors.`,
           ],
-          key_techs: ["ReactJs", "Next.js", "Typescript", "WordPress", "SDK",  "Antdesign", "Team Leadership", "React Native", "Nodejs"],
+          key_techs: ["ReactJs", "Next.js", "Typescript", "WordPress", "SDK",  "Antdesign", "Team Leadership", "React Native", "Node.js"],
         },
       ],
       jobs_bk: [

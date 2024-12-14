@@ -20,7 +20,7 @@ export default function ProjectBox(props: ProjectBoxIProps) {
                 <p>{ex.duration}</p>
               </div>
               
-              <p><i>Key techs:</i> {ex.technologies.join(", ")}</p>
+              <p><i className={'txt-sec'}>Key techs:</i> {ex.technologies.join(", ")}</p>
               
               {1 < 0 && (
                 <div className={"tags-container"}>

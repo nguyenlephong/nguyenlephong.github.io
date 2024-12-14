@@ -18,10 +18,10 @@ export default function MainPage() {
             <div className="info-group" style={{textAlign: "center"}}>
               <h1 className={"headline t-up"}>Nguyen Le Phong</h1>
               
-              <ul className={"list-none"} style={{display: "flex", gap: 24, flexWrap: "wrap"}}>
+              <ul className={"list-none social-link"} style={{display: "flex", gap: 24, flexWrap: "wrap"}}>
                 <li>👨🏻‍💻 Front-end Software Engineer</li>
-                <li>✉️ {profileInfo.contact.email}</li>
-                <li>📞 {profileInfo.contact.phone}</li>
+                <li><a href={`mailto:${profileInfo.contact.email}`}>✉️ {profileInfo.contact.email}</a></li>
+                <li><a href={`tel:${profileInfo.contact.phone}`}>📞 {profileInfo.contact.phone}</a></li>
               </ul>
               
               <div className={"social-block"} style={{display: "flex", justifyContent: "center"}}>

@@ -25,7 +25,7 @@ export default function Home() {
               
               <ul className={"list-none"} style={{display: "flex", gap: 24, flexWrap: "wrap"}}>
                 <li>👨🏻‍💻 Front-end Software Engineer</li>
-                <li>✉️ {profileInfo.contact.email}</li>
+                <li>✉️ <a href={`mailto:${profileInfo.contact.email}`}>{profileInfo.contact.email}</a></li>
                 <li>📞 {profileInfo.contact.phone}</li>
               </ul>
               
