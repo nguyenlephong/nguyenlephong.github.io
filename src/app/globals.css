@@ -38,6 +38,55 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+
+  /**
+   * @tokens Background
+   * @presenter Color
+   */
+  --section-bar: #E5E7EB;
+  --layer-background: #FFFFFF;
+  --layer-background-hover: #F1F2F4;
+  --layer-background-selected: #DBEBFF;
+  --layer-background-disabled: #F1F2F4;
+
+  /**
+   * @tokens Typography: Text
+   * @presenter Color
+   */
+  --text-primary: #081B3A;
+  --text-secondary: #5A6981;
+  --text-placeholder: #77859C;
+  --text-disabled: #8B96A7;
+
+  /**
+   * @tokens Border: Border
+   * @presenter Color
+   */
+  --border: rgba(0, 0, 0, 0.1);
+  --border-subtle: rgba(0, 0, 0, 0.15);
+
+  /**
+   * @tokens Border: Divider
+   * @presenter Color
+   */
+  --divider: rgba(0, 0, 0, 0.15);
+  --divider-subtle: rgba(0, 0, 0, 0.05);
+  --divider-bold: rgba(0, 0, 0, 0.15);
+
+  /**
+   * @tokens Colors: Icon
+   * @presenter Color
+   */
+  --icon-primary: #081B3A;
+  --icon-secondary: #5A6981;
+  --icon-disabled: #8B96A7;
+  --icon-on-disabled-color: #AFB5C1;
+  --icon-on-color: #FFFFFF;
+  --icon-errors: #C31818;
+  --icon-success: #37B361;
+  --icon-warning: #E0AC00;
+  --icon-information: #005AE0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -70,6 +119,53 @@
     --callout-border-rgb: 108, 108, 108;
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
+    
+    
+    --section-bar: #16191D;
+    --layer-background: #22262B;
+
+    --layer-background-hover: rgba(255, 255, 255, 0.05);
+    --layer-background-disabled: #1D2025;
+    --layer-background-selected: rgba(8, 27, 58, 0.5);
+    
+    /**
+     * @tokens Typography: Text
+     * @presenter Color
+     */
+    --text-primary: #DFE2E7;
+    --text-secondary: #9FACBC;
+    --text-placeholder: #738296;
+    --text-disabled: #596473;
+
+    /**
+     * @tokens Border: Border
+     * @presenter Color
+     */
+    --border: rgba(255, 255, 255, 0.1);
+    --border-subtle: rgba(255, 255, 255, 0.2);
+
+    /**
+     * @tokens Border: Divider
+     * @presenter Color
+     */
+    --divider: rgba(255, 255, 255, 0.1);
+    --divider-subtle: rgba(255, 255, 255, 0.05);
+    --divider-bold: rgba(255, 255, 255, 0.3);
+    --divider-on-color: rgba(0, 0, 0, 0.5);
+
+    /**
+     * @tokens Icon
+     * @presenter Color
+     */
+    --icon-primary: #DFE2E7;
+    --icon-secondary: #9FACBC;
+    --icon-disabled: #596473;
+    --icon-on-disabled-color: #38404A;
+    --icon-on-color: #FFFFFF;
+    --icon-errors: #E94949;
+    --icon-success: #6acd8b;
+    --icon-warning: #FFCD29;
+    --icon-information: #66A6FF;
   }
 }
 
@@ -97,6 +193,9 @@ body {
   /*background-repeat: no-repeat;*/
   /*background-size: cover;*/
   /*background-position: bottom;*/
+  
+  background: var(--layer-background);
+  color: var(--text-primary);
 
 }
 
@@ -113,6 +212,10 @@ body {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.txt-sec {
+  color: var(--text-secondary);
 }
 
 .align-centered {
@@ -173,7 +276,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   padding: 12px;
-  background: #fafafa;
+  background: var(--section-bar);
   position: fixed;
   width: 100%;
   z-index: 2;
@@ -198,9 +301,14 @@ body {
 }
 
 .menu-item:hover {
-  background: greenyellow;
+  background: var(--layer-background-hover);
   border-radius: 8px;
 }
+
+.menu-item:active {
+  background: var(--layer-background-selected);
+  border-radius: 8px;
+} 
 
 a {
   text-decoration: none;
@@ -212,6 +320,7 @@ a {
   padding: 12px;
   word-break: break-word;
   white-space: break-spaces;
+  background-color: var(--section-bar);
 }
 /*==================Common component==================*/
 
@@ -243,20 +352,24 @@ a {
   align-items: center;
 }
 
+.social-link li a {
+  color: unset;
+}
+
 .social-item {
   border-radius: 50%;
   width: 48px;
   height: 48px;
-  border: 1px solid #d6d6d7;
+  border: 1px solid var(--border-subtle);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .social-item:hover {
-  background: #bcc8b9;
-  border-color: green;
-  color: green;
+  background: var(--layer-background-hover);
+  border-color: var(--border);
+  color: var(--icon-primary);
 }
 /*==================Profile Info component==================*/
 

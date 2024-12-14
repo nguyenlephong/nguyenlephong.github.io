@@ -36,7 +36,7 @@ export default function ExperienceBox(props: ExperienceBoxIProps){
                         )
                       })}
                       
-                      <p style={{marginTop: 12}}><i>Key Contribution</i>:</p>
+                      <p style={{marginTop: 12}}><i className={'txt-sec'}>Key Contribution</i>:</p>
                       <ul className={"list-none"}>
                         {job.key_contribution.map((item: string) => {
                           return (
@@ -46,7 +46,7 @@ export default function ExperienceBox(props: ExperienceBoxIProps){
                       </ul>
                       
                       <div className={"tags-container"}>
-                        <p><i>Key techs:</i> {job.key_techs.join(", ")}</p>
+                        <p><i className={'txt-sec'}>Key techs:</i> {job.key_techs.join(", ")}</p>
                       </div>
                       {1 < 0 && (
                         <div className={"tags-container"}>
