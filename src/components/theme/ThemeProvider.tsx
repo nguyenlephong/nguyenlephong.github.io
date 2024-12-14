@@ -1,10 +1,10 @@
 'use client'
-import React, { createContext, useContext, useEffect } from "react";
+import React, {createContext, PropsWithChildren, useContext, useEffect} from "react";
 import {useThemeSetting} from "@/components/theme/hooks/useThemeSetting";
 
 const ThemeContext = createContext<ReturnType<typeof useThemeSetting> | null>(null);
 
-export const ThemeProvider: React.FC = ({ children }) => {
+export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const theme = useThemeSetting();
   
   useEffect(() => {
