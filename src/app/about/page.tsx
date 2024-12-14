@@ -20,7 +20,7 @@ export default function AboutPage () {
         {profileInfo.about.map((item) => {
           return (
             <div key={`sm_${item.id}`} id={`sm_${item.id}`} className={"section-wrapper"}>
-              <h2 className={"box-title"} style={{color: "blue"}}>
+              <h2 className={"box-title"} >
                 <FaHandPointRight size={24}/> {item.categories}
               </h2>
               
