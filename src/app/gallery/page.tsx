@@ -19,11 +19,20 @@ export default function GalleryPage() {
         <div className={"section-wrapper"}>
           <h2 className={"box-title"}>Certifications</h2>
           <div className="grid-item_wrapper">
-            {profileInfo.gallery.certificates.map((photo) => {
+            {profileInfo.gallery.certificates.map((photo: any) => {
               return (
                 <div key={photo.src} id={"photo-" + photo.src}>
-                  <Link href={photo.src} target={"_blank"}>
-                    <Image src={photo.src} alt={photo.alt} width={232} height={232} style={{objectFit: "cover"}}/>
+                  <Link href={photo?.refs || photo.src} target={"_blank"}>
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt} width={232} height={232}
+                      style={{
+                        objectFit: "cover",
+                        width: photo.width > 100 ? photo.width : '',
+                        height: photo.height > 100 ? photo.height : '',
+                        borderRadius: 12
+                      }}
+                    />
                   </Link>
                 </div>
               )
@@ -38,7 +47,13 @@ export default function GalleryPage() {
               return (
                 <div key={photo.src} id={"photo-" + photo.src}>
                   <Link href={photo.src} target={"_blank"}>
-                    <Image src={photo.src} alt={photo.alt} width={232} height={232} style={{objectFit: "cover"}}/>
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt} width={232} height={232}
+                      style={{
+                        objectFit: "cover",
+                        borderRadius: 12
+                      }}/>
                   </Link>
                 </div>
               )
@@ -53,7 +68,14 @@ export default function GalleryPage() {
               return (
                 <div key={photo.src} id={"photo-" + photo.src}>
                   <Link href={photo.src} target={"_blank"}>
-                    <Image src={photo.src} alt={photo.alt} width={232} height={232} style={{objectFit: "cover"}}/>
+                    <Image
+                      src={photo.src} alt={photo.alt} width={232} height={232}
+                      style={{
+                        objectFit: "cover",
+                        width: photo.width > 100 ? photo.width : '',
+                        height: photo.height > 100 ? photo.height : '',
+                        borderRadius: 12
+                      }}/>
                   </Link>
                 </div>
               )
@@ -68,7 +90,13 @@ export default function GalleryPage() {
               return (
                 <div key={photo.src} id={"photo-" + photo.src}>
                   <Link href={photo.src} target={"_blank"}>
-                    <Image src={photo.src} alt={photo.alt} width={232} height={232} style={{objectFit: "cover"}}/>
+                    <Image
+                      src={photo.src} alt={photo.alt}
+                      width={232} height={232}
+                      style={{
+                        objectFit: "cover",
+                        borderRadius: 12
+                      }}/>
                   </Link>
                 </div>
               )

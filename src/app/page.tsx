@@ -19,7 +19,7 @@ export default function MainPage() {
               <h1 className={"headline t-up"}>Nguyen Le Phong</h1>
               
               <ul className={"list-none social-link"} style={{display: "flex", gap: 24, flexWrap: "wrap"}}>
-                <li>👨🏻‍💻 Front-end Software Engineer</li>
+                <li>👨🏻‍💻 Software Engineer</li>
                 <li><a href={`mailto:${profileInfo.contact.email}`}>✉️ {profileInfo.contact.email}</a></li>
                 <li><a href={`tel:${profileInfo.contact.phone}`}>📞 {profileInfo.contact.phone}</a></li>
               </ul>

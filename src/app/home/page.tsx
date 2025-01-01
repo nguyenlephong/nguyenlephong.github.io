@@ -24,7 +24,7 @@ export default function Home() {
               <h1 className={"headline t-up"}>Nguyen Le Phong</h1>
               
               <ul className={"list-none"} style={{display: "flex", gap: 24, flexWrap: "wrap"}}>
-                <li>👨🏻‍💻 Front-end Software Engineer</li>
+                <li>👨🏻‍💻 Software Engineer</li>
                 <li>✉️ <a href={`mailto:${profileInfo.contact.email}`}>{profileInfo.contact.email}</a></li>
                 <li>📞 {profileInfo.contact.phone}</li>
               </ul>

@@ -17,7 +17,7 @@ export default function ExperienceBox(props: ExperienceBoxIProps){
               
               <div className={"txt-line-full"}>
                 <h3 className="h-title">{ex.company}</h3>
-                <p>{ex.location}</p>
+                <p className={'txt-sec'}>{ex.location}</p>
               </div>
               
               {
