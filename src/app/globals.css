@@ -529,8 +529,9 @@ a:visited {
   gap: 24px;
   flex-wrap: wrap;
   justify-content: flex-start;
-
 }
+
+
 /*==================gallery-page==================*/
 /*==================mobile menu==================*/
 
@@ -591,6 +592,15 @@ a:visited {
 
   .normal-text, .box-item-text {
     text-align: unset;
+  }
+  
+  .grid-item_wrapper {
+    justify-content: center;
+  }
+
+  .grid-item_wrapper img {
+    width: 90vw !important;
+    height: auto !important;
   }
 }
 /*==================mobile menu==================*/

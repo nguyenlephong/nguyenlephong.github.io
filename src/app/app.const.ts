@@ -35,22 +35,38 @@ export const profileInfo = {
         src: "/assets/photos/cert_verygood.JPG",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - Very good",
-        width: 3,
+        width: 320,
         height: 4
       },
       {
         src: "/assets/photos/scoreboard.jpeg",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - Score board",
-        width: 3,
+        width: 320,
         height: 4
       },
       {
         src: CDN_PATH + "/images/me/certificate-test.JPG",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - Tester certificate",
-        width: 3,
+        width: 282,
         height: 4
+      },
+      {
+        src: "/assets/photos/ComplianceRefreshTraining.png",
+        refs: "https://coursera.org/verify/78B9OXN1FMDG",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - Compliance Refresh Training certificate",
+        width: 320,
+        height: 232
+      },
+      {
+        src: "/assets/photos/CybersecurityRefreshTraining.png",
+        refs: "https://coursera.org/verify/MO66Y2JRPCLE",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Software Engineer - Cybersecurity Refresh Training certificate",
+        width: 320,
+        height: 232
       },
     ],
     activities: [
@@ -129,6 +145,20 @@ export const profileInfo = {
         alt: "Nguyen Le Phong - Software Engineer - Award at PrimeData",
         width: 4,
         height: 3
+      },
+      {
+        src: "/assets/photos/medal_uprace.jpeg",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - UpRace - Medal 21km, Medal 10km, Medal 5km",
+        width: 3,
+        height: 4
+      },
+      {
+        src: "/assets/photos/uprace_cert.PNG",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - UpRace Certificate 323km",
+        width: 420,
+        height: 279
       },
     ],
     projects: [
@@ -338,7 +368,7 @@ export const profileInfo = {
   experience: [
     {
       company: "Zalo PC - VNG Corp",
-      location: "VNG Campus",
+      location: "VNG Campus - District 7",
       jobs: [
         {
           title: "Senior Software Engineer",
