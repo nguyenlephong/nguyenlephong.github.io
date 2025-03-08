@@ -5,7 +5,7 @@ import {useThemeSetting} from "@/components/theme/hooks/useThemeSetting";
 const ThemeContext = createContext<ReturnType<typeof useThemeSetting> | null>(null);
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
-  const theme = useThemeSetting();
+  const theme = useThemeSetting(); 
   
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme.themeSetting.theme);
