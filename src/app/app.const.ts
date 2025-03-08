@@ -374,15 +374,17 @@ export const profileInfo = {
           title: "Senior Software Engineer",
           duration: "May 2024 - Present",
           summaries: [
-            "Core developer for a cross-platform chat app (web, macOS, Windows) serving <b>15M+ DAU</b>. Delivered features like dark mode, dynamic theming, and user behavior tracking. Built promotion flows and a design system for <b>50+ developers</b>. Optimized performance, ensured maintainability, and contributed to business growth through scalable solutions."
+            "Core developer for the cross-platform <b>Zalo PC</b> (Web, macOS, Windows), serving <b>15M+ MAU</b>. Delivered key features such as dark mode, dynamic theming, and user behavior tracking. Spearheaded the development of a promotion flow and a scalable <b>design system</b> for <b>50+ developers</b>. Optimized performance, enhanced maintainability, and contributed to business growth through robust and efficient solutions.",
+            "Actively maintained and improved <b>Zalo’s Android</b> mobile app, ensuring the <b>stability</b> and <b>performance</b> of critical features for nearly <b>80 million users</b>."
           ],
           key_contribution: [
-            "Delivering over <b>10 features</b>, including dark mode, a download module, log tracking, and more, for <b>15M+</b> DAU.",
-            "Developed a promotion flow integrated with tracking and monitoring systems to ensure activation feature success across <b>15M+ DAU</b>.",
-            "Led the development of a robust <b>design system</b> using Storybook, facilitating consistent UI components for a team of over <b>50 developers</b>."
+            "Delivered over <b>10 features</b>, including dark mode, a download module, log tracking, and more, improving UX and engagement.",
+            "Developed a <b>promotion flow</b> with integrated tracking and monitoring systems, driving activation success across <b>15M+ MAU</b>.",
+            "Led the development of a scalable <b>design system</b> using Storybook, ensuring UI consistency and efficiency for <b>50+ developers</b>.",
+            "Proactively supported <b>50+ client users</b>, swiftly resolving issues with <b>dedication</b> and <b>effective problem-solving</b>, earning strong positive feedback.",
+            "Maintained and improved <b>5+</b> features in <b>Zalo’s Android</b> app, focusing on <b>stability</b>, <b>performance</b>, and seamless user experience for nearly <b>80 million users</b>."
           ],
-          key_techs: ["ReactJs", "Node.js", "Electron", "Typescript"]
-
+          key_techs: ["ReactJs", "Node.js", "Electron", "Typescript", "Kotlin"]
         }
       ],
       jobs_bk: []
