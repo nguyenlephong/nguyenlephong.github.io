@@ -5,7 +5,7 @@ export const APP_ROUTE = {
   ABOUT: "/about",
   GALLERY: "/gallery",
   CV: "/cv",
-  CV_PDF: "/Frontend_NguyenLePhong_0985490107.pdf" || "/NguyenLePhong_0985490107_Front_end.pdf"
+  CV_PDF: 1 > 0 ? "/Frontend_NguyenLePhong_0985490107.pdf" : "/NguyenLePhong_0985490107_Front_end.pdf"
 }
 
 export const SEO = {
@@ -157,6 +157,13 @@ export const profileInfo = {
         src: "/assets/photos/uprace_cert.PNG",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - UpRace Certificate 323km",
+        width: 420,
+        height: 279
+      },
+      {
+        src: "/assets/photos/trekking_penang_hill.jpeg",
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - Trekking Penang Hill - Malaysia Certificate 11km",
         width: 420,
         height: 279
       },
@@ -332,16 +339,26 @@ export const profileInfo = {
   summary: {
     title: "Summary",
     description: [
-      `Possessing a Bachelor’s degree in <b>Information Technology</b>, with a minor in <b>Software Engineering</b>, and achieving a commendable classification (<b>GPA 3.36</b>), I have cultivated over five years of dedicated experience as a front-end software engineer.` ,
-      `Specializing in the design and implementation of user-friendly web applications, I bring proficiency in HTML, CSS, JavaScript, and <b>React</b>, coupled with a keen expertise in optimizing website performance to accommodate large user bases. My commitment to crafting visually engaging and efficient interfaces has consistently led to successful project deliveries across diverse industries.`,
+      `Possessing a Bachelor's degree in Information Technology (minor in Software Engineering, <b>GPA 3.36</b>) with nearly <b>8 years of experience</b> in full-stack software development, including <b>3+ years</b> contributing to technical leadership, architectural decision-making, and delivery coordination across teams.` ,
+      `Hands-on experience in designing, building, and operating end-to-end systems—from front-end applications and backend services to CI/CD pipelines, release workflows, and production infrastructure—with a strong emphasis on automation, operational clarity, and reliable delivery.`,
       `<i>Here are my recent focused hard skills over the past few years:</i>`
     ],
     skills: [
+      `<b>Back-end</b>: Strong hands-on experience with <b>Node.js</b>, <b>Java (Spring)</b>; designing REST/GraphQL APIs with clear contracts, authentication and encryption mechanisms, backward compatibility, and resilience for enterprise and third-party integrations.`,
+      `<b>Front-end</b>: Solid experience building and maintaining complex client applications using <b>React</b> (TypeScript, Next.js), <b>React Native</b>, and Angular-based Micro-Frontend hosts; applying performance optimization, state management, and scalable UI architecture patterns.`,
+      `<b>Databases</b>: Deep practical experience with <b>MySQL</b>, focusing on schema and data-model design, indexing strategies, query optimization, transaction boundaries, migration planning, and consistency trade-offs in distributed and high-throughput systems.`,
+      `<b>Infrastructure & Platform Engineering</b>: Hands-on with <b>Docker</b> and <b>Kubernetes</b> across multiple environments; experience operating managed clusters (<b>AKS</b>, <b>EKS</b>), GitOps-based deployments with <b>ArgoCD</b>, CI/CD pipelines, environment configuration, and domain/SSL management.`,
+      `<b>Architecture & Delivery Practices</b>: Experience applying Micro-Frontend and multi-tenant architectures, feature-flag-driven rollouts, progressive delivery strategies, and observability practices to support safe releases and production diagnostics.`,
+      `<b>Testing</b>: Practical use of Jest, Cucumber, Puppeteer, and Testing Library to ensure regression safety, release confidence, and production readiness across services and applications.`,
+      `<b>Libraries</b>: Seasoned in <b>Firebase</b>, Strapi, Directus, React Flow, Webpack, <b>Redux</b>, React Query, and G2plot.`,
+      `<b>Other</b>: In addition, familiar with <b>Micro-frontend</b> architecture, Proficiency in Responsive Design, Cross-Browser Compatibility, <b>SEO</b>, GraphQL, and Electron.`,
+    ],
+    skills_bk: [
       `<b>Back-end</b>: Competent in <b>Java</b> with the Spring Framework and <b>Node.js</b> with a working knowledge of the Express framework.`,
-      `<b>Front-end</b>: Proficient in <b>React</b>, utilizing TypeScript, JavaScript, and the <b>Next.js</b> framework, and <b>React Native</b> with a working knowledge of the Expo platform, as well as proficiency in vanilla JavaScript`,
+      `<b>Front-end</b>: Proficient in <b>React</b>, utilizing TypeScript, JavaScript, and the <b>Next.js</b> framework, and <b>React Native</b> with a working knowledge of the Expo platform, as well as proficiency in vanilla JavaScript.`,
       `<b>Libraries</b>: Seasoned in <b>Firebase</b>, Strapi, Directus, React Flow, Webpack, <b>Redux</b>, React Query, and G2plot.`,
       `<b>Testing</b>: Skilled in <b>Jest, Cucumber, Puppeteer</b>, and Testing Library.`,
-      `<b>Other</b>: In addition, familiar with <b>Micro-frontend</b> architecture, Proficiency in Responsive Design, Cross-Browser Compatibility, <b>SEO</b>, and GraphQL.`,
+      `<b>Other</b>: In addition, familiar with <b>Micro-frontend</b> architecture, Proficiency in Responsive Design, Cross-Browser Compatibility, <b>SEO</b>, GraphQL, and Electron.`,
     ]
   },
   technical_skill: {
@@ -367,18 +384,46 @@ export const profileInfo = {
   },
   experience: [
     {
+      company: "NDSVN JSC",
+      location: "Ho Chi Minh City, Vietnam",
+      jobs: [
+        {
+          title: "Senior Software Engineer Lead",
+          duration: "Aug 2025 - Present",
+          summaries: [
+            "Owned product delivery and technical direction post-CTO transition, leading architecture decisions, rollout systems, enterprise-grade integrations, and cross-team alignment while managing a delivery team of 8 developers (including 4 seniors) and 3 QC engineers.",
+          ],
+          key_contribution: [
+            "Engineered a .NET Core multi-tenant feature flag system <b>(30+ tenants, ~40k users)</b> with a priority rule engine, percentage rollout (tenant/segment/env), JSON-config values, and stateless runtime evaluation—powering mobile/web apps and enabling controlled, progressive production releases across high-traffic tenants.",
+            "Built secure integrations with <b>Gtel & Napas</b>: RSA-4096 handshake, AES-256 payload encryption, <b>mTLS</b> mutual authentication, certificate pinning, retry queues, idempotent API contracts, and ACK-driven monitoring for unstable third-party services.",
+            "Implemented <b>Micro-Frontend</b> architecture (Angular host + React modules) enabling independent deploy cycles and feature isolation—reducing regression surface and deployment coupling across teams.",
+            "Introduced observability stack (PostHog + metrics pipeline + workflow) for rollout impact, feature adoption, anomaly detection, and regression tracing—cut debugging/analysis time significantly across release cycles.",
+            "Assumed ownership of inherited infrastructure and kept the organization moving—quietly absorbing production fires, pipeline failures, cluster quirks, and integration instability so the product and teams never stalled; shaping ArgoCD, CI/CD, domains/SSL, and <b>AKS/FKE/QTSC/EKS</b> clusters into systems that are <b>diagnosable, recoverable, and stable instead of recurring unknowns</b>.",
+            "Built <b>AI agents</b> supporting code review, deployment assistant, service-quota validation, API health monitoring, and release analysis; shortened decision & delivery loops across product teams.",
+            "Developed integration simulations and sandbox/demo modules to handle unstable partners and secure pre-contract validation with third-party ecosystems.",
+            "<b>Re-structured engineering organization</b> after leadership transition: defined org chart, competency matrix, workload routing, and ownership boundaries—unlocking autonomy and reducing lead-time on technical decisions.",
+            "Established a unified engineering playbook: branch strategy, commit convention, release tagging, rollout criteria, API/integration rules, and technical spec repository (RFCs, runbooks, troubleshooting guides).",
+            "Led hiring and capability growth loops: structured interviews (QC/Fullstack), onboarding path, 1:1 coaching, performance review cycles, and cross-team conflict resolution to keep delivery collaborative and output-focused.",
+            "Maintained delivery quality through documentation-first culture and process guardrails (checklists, handover rules, rollback readiness), ensuring predictable release cadences during scaling."
+          ],
+          key_techs: ["React.js", "Angular", "Node.js", "Flutter", ".NET", "AKS/FKE/QTSC/EKS"]
+        }
+      ],
+      jobs_bk: []
+    },
+    {
       company: "Zalo PC - VNG Corp",
       location: "VNG Campus - District 7",
       jobs: [
         {
           title: "Senior Software Engineer",
-          duration: "May 2024 - Present",
+          duration: "May 2024 - Aug 2025",
           summaries: [
             "Core developer for the cross-platform <b>Zalo PC</b> (Web, macOS, Windows), serving <b>15M+ MAU</b>. Delivered key features such as dark mode, dynamic theming, and user behavior tracking. Spearheaded the development of a promotion flow and a scalable <b>design system</b> for <b>50+ developers</b>. Optimized performance, enhanced maintainability, and contributed to business growth through robust and efficient solutions.",
             "Actively maintained and improved <b>Zalo’s Android</b> mobile app, ensuring the <b>stability</b> and <b>performance</b> of critical features for nearly <b>80 million users</b>."
           ],
           key_contribution: [
-            "Delivered over <b>10 features</b>, including dark mode, a download module, log tracking, and more, improving UX and engagement.",
+            "Delivered over <b>10 features</b>, including dark mode, a download module, kiki bot, log tracking, and more, improving UX and engagement.",
             "Developed a <b>promotion flow</b> with integrated tracking and monitoring systems, driving activation success across <b>15M+ MAU</b>.",
             "Led the development of a scalable <b>design system</b> using Storybook, ensuring UI consistency and efficiency for <b>50+ developers</b>.",
             "Proactively supported <b>50+ client users</b>, swiftly resolving issues with <b>dedication</b> and <b>effective problem-solving</b>, earning strong positive feedback.",
