@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default function sitemapBk(): MetadataRoute.Sitemap {
   return [
     {
       url: `https://nguyenlephong.github.io`,
