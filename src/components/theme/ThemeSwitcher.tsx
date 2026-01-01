@@ -10,7 +10,7 @@ import {THEME_OPTS} from "@/components/theme/hooks/useThemeSetting";
 
 const ThemeSwitcher: React.FC = () => {
   const {themeSetting, updateTheme} = useTheme();
-  if(1 > 0 ) return <React.Fragment/>
+  if (1 > 0 ) return <React.Fragment/>
   return (
     <div className={'app-theme'}>
       <div className="float-button">

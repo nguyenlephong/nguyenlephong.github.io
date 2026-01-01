@@ -1,6 +1,5 @@
 import type {Metadata, Viewport} from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import {profileInfo, SEO} from "@/app/app.const";
 import Script from "next/script";
 import AppHeader from "@/components/AppHeader";
@@ -8,12 +7,13 @@ import AppFooter from "@/components/AppFooter";
 import {Organization, WithContext} from "schema-dts";
 import React from "react";
 import dynamic from "next/dynamic";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
-const AppTheme = dynamic(
-  () => import ("@/components/theme/ThemeSwitcher"),
-  {ssr: false}
-)
+// const AppTheme = dynamic(
+//   () => import ("@/components/theme/ThemeSwitcher"),
+//   // {ssr: false}
+// )
 
 export const metadata: Metadata = {
   description: SEO.description,
@@ -126,7 +126,7 @@ export default function RootLayout({
       <AppHeader/>
         {children}
       <AppFooter/>
-      <AppTheme/>
+      {/*<AppTheme/>*/}
       </body>
     </html>
   );

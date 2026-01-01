@@ -1,6 +1,9 @@
 'use client'
 import {useEffect, useState} from "react";
 
+var window = global?.window;
+var localStorage = global?.localStorage;
+
 export const MODE_MEDIA_QUERY = '(prefers-color-scheme: dark)';
 export const THEME = { DARK: 'dark', LIGHT: 'light' };
 export const THEME_OPTS = { DARK: 'dark', LIGHT: 'light', SYSTEM: 'system' };
@@ -14,7 +17,7 @@ export type ThemeSettingData = {
 const THEME_STORAGE_KEY = 'theme_preference';
 
 export const useThemeSetting = () => {
-  const mediaQuery = window.matchMedia(MODE_MEDIA_QUERY);
+  const mediaQuery = window?.matchMedia(MODE_MEDIA_QUERY);
   
   const getInitialThemeSetting = (): ThemeSettingData => {
     const storedSetting = localStorage.getItem(THEME_STORAGE_KEY);
