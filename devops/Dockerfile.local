@@ -1,0 +1,18 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install dependencies based on the preferred package manager
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+# Copy the rest of the application code
+# Note: For strict "local-like" behavior with hot-reload, you usually mount the volume at runtime.
+# However, copying here ensures the image works standalone too.
+COPY . .
+
+# Expose the listening port
+EXPOSE 3000
+
+# Run in development mode
+CMD ["npm", "run", "dev"]
