@@ -70,6 +70,7 @@ Owned product delivery and technical direction post-CTO transition, leading arch
 
 **Key techs:** .NET Core, Node.js, Flutter, React, Angular MFE, PostHog, Coolify, AKS/FKE/QTSC/EKS
 
+---
 ### Senior Software Engineer | Zalo PC, VNG Corp, VNG Campus | May. 2024 - Aug. 2025
 Senior engineer contributing to Zalo’s core desktop cross-platform apps (Zalo PC) and mobile (Android), delivering impactful features at scale to over **75 million users**.
 
@@ -82,6 +83,7 @@ Senior engineer contributing to Zalo’s core desktop cross-platform apps (Zalo 
 
 *Key techs:* React.js, Node.js, Typescript, Electron, Kotlin
 
+---
 ### Senior Front-end Engineer | PrimeData VN, Binh Thanh | July. 2020 - Apr. 2024
 
 The company builds a so-called CDxP product. In brief, it is a data platform that tailor-made to host and process customer profiles (the keystone solution is how would you able to identify and unify your customers data from heterogeneous schemas and formats from diverged services and systems). </br>
