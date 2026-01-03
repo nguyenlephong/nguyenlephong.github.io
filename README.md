@@ -10,21 +10,65 @@
   <a href="https://github.com/DenverCoder1/readme-typing-svg"><img src="https://readme-typing-svg.herokuapp.com?color=0E81F7&lines=Welcome%2C+nice+to+meet+you!;Good+morning.+It%E2%80%99s+a+beautiful+day.;Dear+friend.+I+wish+you+all+the+best+on+this+day.)](https://git.io/typing-svg"></a>
 </p>
 
-# Summary
+## Summary
 
-Possessing a Bachelor's degree in Information Technology, with a minor in Software Engineering, and achieving a commendable classification (**GPA 3.36**), I have cultivated **over seven years** of dedicated experience as a **software engineer**. </br>
+Bachelor's degree in Information Technology (minor in Software Engineering, **GPA 3.36**) with **7+ years of experience** in full-stack software development, including **2+ years** contributing to technical leadership, architectural decision-making, and delivery coordination across teams.
 
-Specializing in the design and implementation of user-friendly web applications, I bring proficiency in HTML, CSS, JavaScript, and React, coupled with a keen expertise in optimizing website performance to accommodate large user bases. My commitment to crafting visually engaging and efficient interfaces has consistently led to successful project deliveries across diverse industries.</br>
+Hands-on experience in designing, building, and operating end-to-end systems — from front-end applications and backend services to CI/CD pipelines, release workflows, and production infrastructure — with a strong emphasis on automation, operational clarity, and reliable delivery.
 
-*Here are my recent focused hard skills over the past few years:*</br>
-  👉 **Back-end**: Competent in **Java** with the Spring Framework and **Node.js** with a working knowledge of the Express framework.</br>
-  👉 **Front-end**: Proficient in **React**, utilizing TypeScript, JavaScript, and the **Next.js** framework, and **React Native** with a working knowledge of the Expo platform, as well as proficiency in **vanilla JavaScript**.</br>
-  👉 **Libraries**: Seasoned in **Firebase**, Strapi, Directus, React Flow, Redux, React Query, and G2plot.</br>
-  👉 **Testing**: Skilled in **Jest**, **Cucumber**, **Puppeteer**, and Testing Library.</br>
-  👉 **Other**: In addition, familiar with **Micro-frontend** architecture, Proficiency in Responsive Design, Cross-Browser Compatibility, **SEO**, and GraphQL.</br>
+*Here are my recent focused hard skills over the past few years:*
 
+- **Backend**: Strong hands-on experience with **Node.js**; designing REST/GraphQL APIs with clear contracts, authentication and encryption mechanisms, backward compatibility, and resilience for enterprise and third-party integrations.
 
-# Work Experiences
+- **Databases**: Deep practical experience with **MySQL**, focusing on schema and data-model design, indexing strategies, query optimization, transaction boundaries, migration planning, and consistency trade-offs in distributed and high-throughput systems.
+
+- **Frontend**: Solid experience building and maintaining complex client applications using **React** (TypeScript, Next.js), **React Native**, and **Micro-Frontend** architectures; applying performance optimization, state management, and scalable UI patterns.
+
+- **Infrastructure & Platform Engineering**: Hands-on with **Docker** and **Kubernetes** across multiple environments; experience operating managed clusters (**FKE**, **AKS**, **EKS**), GitOps-based deployments with **ArgoCD**, CI/CD pipelines, and domain/SSL management.
+
+- **Architecture & Delivery Practices**: Experience applying Micro-Frontend and multi-tenant architectures, feature-flag-driven rollouts, progressive delivery strategies, and observability practices to support safe releases and production diagnostics.
+
+- **Testing & Quality Engineering**: Practical use of Jest, Cucumber, Puppeteer, and Testing Library to ensure regression safety, release confidence, and production readiness across services and applications.
+
+---
+
+## Work Experiences
+
+### Senior Software Engineer Lead
+**NDSVN — Ho Chi Minh City, Vietnam**  
+*Aug. 2025 – Present*
+
+Owned product delivery and technical direction post-CTO transition, leading architecture decisions, rollout systems, enterprise-grade integrations, and cross-team alignment while managing a delivery team of **8 developers (including 4 seniors)** and **3 QC engineers**.
+
+#### Technical Impact & System Scale
+
+- Engineered a **.NET Core multi-tenant feature flag system** (**30+ tenants, ~40k users**) with a priority-based rule engine, percentage rollout (tenant/segment/env), JSON-config values, and stateless runtime evaluation — powering mobile/web apps and enabling controlled, progressive production releases across high-traffic tenants.
+
+- Built secure integrations with **Gtel & Napas**: RSA-4096 handshake, AES-256 payload encryption, **mTLS** mutual authentication, certificate pinning, retry queues, idempotent API contracts, and ACK-driven monitoring for unstable third-party services.
+
+- Implemented **Micro-Frontend** architecture (Angular host + React modules), enabling independent deploy cycles and feature isolation — reducing regression surface and deployment coupling across teams.
+
+- Introduced an observability stack (PostHog + metrics pipeline + workflows) for rollout impact tracking, feature adoption analysis, anomaly detection, and regression tracing — significantly cutting debugging and analysis time across release cycles.
+
+- Assumed ownership of inherited infrastructure and kept the organization moving — quietly absorbing production fires, pipeline failures, cluster quirks, and integration instability so teams never stalled; shaping **ArgoCD**, **CI/CD**, **domains/SSL**, and **AKS/FKE/QTSC/EKS** clusters into systems that are **diagnosable, recoverable, and stable instead of recurring unknowns**.
+
+#### AI-driven Productivity
+
+- Built **AI agents** supporting code review, deployment assistance, service-quota validation, API health monitoring, and release analysis — shortening decision and delivery loops across product teams.
+
+- Developed integration simulations and sandbox/demo modules to handle unstable partners and secure pre-contract technical validation within third-party ecosystems.
+
+#### Leadership & Team Enablement
+
+- **Re-structured the engineering organization** after leadership transition: defined org chart, competency matrix, workload routing, and ownership boundaries — unlocking autonomy and reducing lead-time on technical decisions.
+
+- Established a unified engineering playbook: branch strategy, commit conventions, release tagging, rollout criteria, API/integration rules, and a technical specification repository (RFCs, runbooks, troubleshooting guides).
+
+- Led hiring and capability growth loops: structured interviews (QC/Fullstack), onboarding paths, 1:1 coaching, performance review cycles, and cross-team conflict resolution to keep delivery collaborative and output-focused.
+
+- Maintained delivery quality through a documentation-first culture and process guardrails (checklists, handover rules, rollback readiness), ensuring predictable release cadence during scaling phases.
+
+**Key techs:** .NET Core, Node.js, Flutter, React, Angular MFE, PostHog, Coolify, AKS/FKE/QTSC/EKS
 
 ### Senior Software Engineer | Zalo PC, VNG Corp, VNG Campus | May. 2024 - Aug. 2025
 Senior engineer contributing to Zalo’s core desktop cross-platform apps (Zalo PC) and mobile (Android), delivering impactful features at scale to over **75 million users**.
@@ -76,7 +120,7 @@ A real estate-domain startup. I was one of the founding engineers.</br>
 
 🎯 Email: phongnguyen.itengineer@gmail.com </br>
 🎯 CV: [https://nguyenlephong.github.io](https://nguyenlephong.github.io) </br>
-🎯 CV (pdf): [https://www.overleaf.com/read/vmsnqmnmbhsy#1b4635](https://www.overleaf.com/read/vmsnqmnmbhsy#1b4635) </br>
+🎯 CV (pdf): [https://www.overleaf.com/read/frxhzzvkgqtk#229227](https://www.overleaf.com/read/frxhzzvkgqtk#229227) </br>
 🎯 Youtube Channel: [https://www.youtube.com/@nguyenlephong](https://www.youtube.com/@nguyenlephong) </br>
 🎯 Leetcode: [https://leetcode.com/nguyenlephong/](https://leetcode.com/nguyenlephong/) </br>
 🎯 [Buy me a coffee](https://www.buymeacoffee.com/phongnguyen.it) </br>
@@ -98,7 +142,7 @@ A real estate-domain startup. I was one of the founding engineers.</br>
 <!-- GitHub Readme Streak Stats - https://github.com/DenverCoder1/github-readme-streak-stats -->
 <p align="center">
   <a href="https://github.com/nguyenlephong/github-readme-streak-stats">
-    <img title="🔥 Get streak stats for your profile at git.io/streak-stats" alt="Dom's streak" src="https://github-readme-streak-stats.herokuapp.com/?user=nguyenlephong&theme=monokai-metallian&hide_border=true"/>
+    <img title="🔥 Get streak stats for your profile at git.io/streak-stats" alt="Phong's streak" src="https://github-readme-streak-stats.herokuapp.com/?user=nguyenlephong&theme=monokai-metallian&hide_border=true"/>
   </a>
   <p align="center">🔥 Get streak stats for your profile at <a href="https://git.io/streak-stats">git.io/streak-stats</a></p>
 </p>
