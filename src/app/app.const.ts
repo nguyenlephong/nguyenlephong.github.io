@@ -9,15 +9,15 @@ export const APP_ROUTE = {
 }
 
 export const SEO = {
-  title: "Nguyen Le Phong | Front-end Software Engineer",
+  title: "Nguyen Le Phong | Software Engineer",
   description:
-    "As a front-end software engineer with over five years of experience, I specialize in designing and implementing user-friendly web applications. Proficient in HTML, CSS, JavaScript, and React, my expertise extends to optimizing website performance to accommodate a large user base. My commitment to creating visually appealing and efficient interfaces has led to successful project deliveries across diverse industries.",
+    "As a front-end software engineer with over seven years of experience, I specialize in designing and implementing user-friendly web applications. Proficient in HTML, CSS, JavaScript, and React, my expertise extends to optimizing website performance to accommodate a large user base. My commitment to creating visually appealing and efficient interfaces has led to successful project deliveries across diverse industries.",
   og: {
     title: "Nguyễn Lê Phong | Software Engineer",
     type: "website",
     url: "https://nguyenlephong.github.io",
   },
-  title_tail: "Nguyen Le Phong | Front-end Software Engineer"
+  title_tail: "Nguyen Le Phong | Software Engineer"
 };
 
 export const profileInfo = {
@@ -348,7 +348,7 @@ export const profileInfo = {
       `<b>Back-end</b>: Strong hands-on experience with <b>Node.js</b>, <b>Java (Spring)</b>; designing REST/GraphQL APIs with clear contracts, authentication and encryption mechanisms, backward compatibility, and resilience for enterprise and third-party integrations.`,
       `<b>Front-end</b>: Solid experience building and maintaining complex client applications using <b>React</b> (TypeScript, Next.js), <b>React Native</b>, and Angular-based Micro-Frontend hosts; applying performance optimization, state management, and scalable UI architecture patterns.`,
       `<b>Databases</b>: Deep practical experience with <b>MySQL</b>, focusing on schema and data-model design, indexing strategies, query optimization, transaction boundaries, migration planning, and consistency trade-offs in distributed and high-throughput systems.`,
-      `<b>Infrastructure & Platform Engineering</b>: Hands-on with <b>Docker</b> and <b>Kubernetes</b> across multiple environments; experience operating managed clusters (<b>AKS</b>, <b>EKS</b>), GitOps-based deployments with <b>ArgoCD</b>, CI/CD pipelines, environment configuration, and domain/SSL management.`,
+      `<b>Infrastructure & Platform Engineering</b>: Hands-on with <b>Docker</b> and <b>Kubernetes</b> across multiple environments; experience operating managed clusters (<b>AKS</b>, <b>EKS</b>, <b>FKE</b>, <b>K3S</b>), GitOps-based deployments with <b>ArgoCD</b>, CI/CD pipelines, environment configuration, and domain/SSL management.`,
       `<b>Architecture & Delivery Practices</b>: Experience applying Micro-Frontend and multi-tenant architectures, feature-flag-driven rollouts, progressive delivery strategies, and observability practices to support safe releases and production diagnostics.`,
       `<b>Testing</b>: Practical use of Jest, Cucumber, Puppeteer, and Testing Library to ensure regression safety, release confidence, and production readiness across services and applications.`,
       `<b>Libraries</b>: Seasoned in <b>Firebase</b>, Strapi, Directus, React Flow, Webpack, <b>Redux</b>, React Query, and G2plot.`,
@@ -399,7 +399,7 @@ export const profileInfo = {
             "Built secure integrations with <b>Gtel & Napas</b>: RSA-4096 handshake, AES-256 payload encryption, <b>mTLS</b> mutual authentication, certificate pinning, retry queues, idempotent API contracts, and ACK-driven monitoring for unstable third-party services.",
             "Implemented <b>Micro-Frontend</b> architecture (Angular host + React modules) enabling independent deploy cycles and feature isolation—reducing regression surface and deployment coupling across teams.",
             "Introduced observability stack (PostHog + metrics pipeline + workflow) for rollout impact, feature adoption, anomaly detection, and regression tracing—cut debugging/analysis time significantly across release cycles.",
-            "Assumed ownership of inherited infrastructure and kept the organization moving—quietly absorbing production fires, pipeline failures, cluster quirks, and integration instability so the product and teams never stalled; shaping ArgoCD, CI/CD, domains/SSL, and <b>AKS/FKE/QTSC/EKS</b> clusters into systems that are <b>diagnosable, recoverable, and stable instead of recurring unknowns</b>.",
+            "Assumed ownership of inherited infrastructure and kept the organization moving—quietly absorbing production fires, pipeline failures, cluster quirks, and integration instability so the product and teams never stalled; shaping ArgoCD, CI/CD, domains/SSL, and <b>AKS/FKE/K3S/EKS</b> clusters into systems that are <b>diagnosable, recoverable, and stable instead of recurring unknowns</b>.",
             "Built <b>AI agents</b> supporting code review, deployment assistant, service-quota validation, API health monitoring, and release analysis; shortened decision & delivery loops across product teams.",
             "Developed integration simulations and sandbox/demo modules to handle unstable partners and secure pre-contract validation with third-party ecosystems.",
             "<b>Re-structured engineering organization</b> after leadership transition: defined org chart, competency matrix, workload routing, and ownership boundaries—unlocking autonomy and reducing lead-time on technical decisions.",
@@ -407,7 +407,7 @@ export const profileInfo = {
             "Led hiring and capability growth loops: structured interviews (QC/Fullstack), onboarding path, 1:1 coaching, performance review cycles, and cross-team conflict resolution to keep delivery collaborative and output-focused.",
             "Maintained delivery quality through documentation-first culture and process guardrails (checklists, handover rules, rollback readiness), ensuring predictable release cadences during scaling."
           ],
-          key_techs: ["React.js", "Angular", "Node.js", "Flutter", ".NET", "AKS/FKE/QTSC/EKS"]
+          key_techs: ["React.js", "Angular", "Node.js", "Flutter", ".NET", "AKS/FKE/K3S/EKS"]
         }
       ],
       jobs_bk: []
@@ -428,7 +428,7 @@ export const profileInfo = {
             "Developed a <b>promotion flow</b> with integrated tracking and monitoring systems, driving activation success across <b>15M+ MAU</b>.",
             "Led the development of a scalable <b>design system</b> using Storybook, ensuring UI consistency and efficiency for <b>50+ developers</b>.",
             "Proactively supported <b>50+ client users</b>, swiftly resolving issues with <b>dedication</b> and <b>effective problem-solving</b>, earning strong positive feedback.",
-            "Maintained and improved <b>5+</b> features in <b>Zalo’s Android</b> app, focusing on <b>stability</b>, <b>performance</b>, and seamless user experience for nearly <b>80 million users</b>."
+            "Maintained and improved <b>3+</b> features in <b>Zalo’s Android</b> app, focusing on <b>stability</b>, <b>performance</b>, and seamless user experience for nearly <b>80 million users</b>."
           ],
           key_techs: ["ReactJs", "Node.js", "Electron", "Typescript", "Kotlin"]
         }
