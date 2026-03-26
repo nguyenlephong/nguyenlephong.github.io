@@ -1,0 +1,204 @@
+%-------------------------
+% Author: Nguyen Thi Yen Nhi
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{fontawesome}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+%----------FONT OPTIONS----------
+% \usepackage[sfdefault]{roboto}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generated pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape NGUYEN THI YEN NHI} \\ \vspace{4pt}
+    \small
+    \faicon{phone} (+84) 326-583-876 $|$
+    \href{mailto:nhiyen.engineer@gmail.com}{\faicon{envelope} nhiyen.engineer@gmail.com} $|$
+    \href{https://github.com/nguyenlephong}{\faicon{github} nhiney} $|$
+    \href{https://www.linkedin.com/in/nhi-yen-410b2a2b7/}{\faicon{linkedin} nhi-yen-0906}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Summary}
+  \resumeSubHeadingListStart
+    \resumeItem{
+      Fourth-year Information Technology student at Ho Chi Minh City University of Industry and Trade (\textbf{GPA 3.34/4.0}), on track to graduate in 2027. Seeking a \textbf{Software Engineer Intern} role to contribute to backend services and cloud platform development while growing under senior mentorship.
+    }
+    \resumeItem{
+      Consistently takes the \textbf{team lead role} in academic projects — responsible for requirement analysis, system design, task breakdown, and delivery coordination across teams of 3--5 members. Delivered \textbf{4+ full-stack systems} covering e-commerce, bookings, and healthcare domains.
+    }
+    \resumeItem{
+      Strong foundation in \textbf{backend development}, \textbf{RESTful API design}, \textbf{OOP principles}, \textbf{relational database design}, and \textbf{software testing}. Comfortable in Git-based collaborative workflows and driven by an engineering mindset focused on correctness, performance, and maintainability.
+    }
+  \resumeSubHeadingListEnd
+
+\vspace{4pt}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{
+    \item \textbf{Languages:} C\#, PHP, JavaScript/TypeScript, Python, Dart, SQL
+    \item \textbf{Backend Frameworks:} ASP.NET MVC, Laravel (PHP), Node.js (basic), Firebase Cloud Functions
+    \item \textbf{Frontend:} ReactJS, Next.js, Blade Templates, Bootstrap, HTML5, CSS3
+    \item \textbf{Databases:} SQL Server, MySQL, MongoDB, Redis, Firebase Firestore
+    \item \textbf{Database Concepts:} Stored Procedures, Triggers, Transactions, ERD Design, Normalization, Indexing
+    \item \textbf{Tools \& Platforms:} Git, GitHub, Docker (basic), VS Code, JetBrains Rider, Laragon, Postman
+    \item \textbf{Practices:} RESTful API Design, MVC Architecture, Role-Based Access Control, OOP, Software Testing
+    }
+\end{itemize}
+
+\vspace{4pt}
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+
+      \resumeProjectHeading
+        {\textbf{Smart Medical Appointment Booking Application} $|$ \emph{Flutter, Firebase, Cloud Functions, Google Maps API}}{\emph{2024 -- Present}}
+        \resumeItemListStart
+            \resumeItem{Led a team of \textbf{4 members} to design and develop a mobile healthcare platform connecting patients and doctors, delivering \textbf{20+ features} including appointment scheduling, medical record management, and doctor search.}
+            \resumeItem{Architected the \textbf{Firestore} data model for users, schedules, appointments, and medical records, ensuring data consistency across concurrent operations.}
+            \resumeItem{Implemented \textbf{Firebase Authentication} with secure login and \textbf{role-based access control} (Patient / Doctor / Admin).}
+            \resumeItem{Developed \textbf{Cloud Functions} to handle backend logic: appointment confirmation workflows, push notifications, and server-side data validation.}
+            \resumeItem{Integrated \textbf{Google Maps API} for clinic/hospital discovery and navigation support.}
+            \resumeItem{Wrote \textbf{150+ test cases} covering authentication flows, booking workflows, and edge cases; achieved stable demo delivery with zero critical bugs.}
+        \resumeItemListEnd
+
+      \vspace{6pt}
+
+      \resumeProjectHeading
+        {\textbf{Shoe Shop Management System} $|$ \emph{ASP.NET MVC, SQL Server, Entity Framework, Razor, Bootstrap}}{\emph{2023}}
+        \resumeItemListStart
+            \resumeItem{Designed and implemented a full-stack e-commerce system following \textbf{MVC architecture}, delivering complete product, order, and admin management modules.}
+            \resumeItem{Engineered a normalized relational database with \textbf{CHECK, UNIQUE, DEFAULT constraints}; implemented \textbf{Stored Procedures, Triggers, and Transactions} to enforce business rules and ensure data integrity.}
+            \resumeItem{Built \textbf{role-based authorization (Admin/Customer)} with secure authentication, password hashing, and SQL Injection prevention.}
+            \resumeItem{Delivered end-to-end e-commerce workflows: product catalog, search \& filtering, shopping cart, order processing (COD), and revenue reporting dashboards.}
+            \resumeItem{Applied server-side validation and AJAX interactions for responsive user experience; received \textbf{high commendation from instructors} for code quality and system completeness.}
+        \resumeItemListEnd
+
+      \vspace{6pt}
+
+      \resumeProjectHeading
+        {\textbf{Sports Field Booking Management System} $|$ \emph{Laravel, PHP, MySQL, Blade, Bootstrap}}{\emph{2023}}
+        \resumeItemListStart
+            \resumeItem{Built a full-stack booking platform using \textbf{Laravel (MVC)}, implementing RESTful routing, \textbf{Eloquent ORM}, Migrations, and Seeders for structured, maintainable data management.}
+            \resumeItem{Implemented \textbf{authentication and role-based authorization (Admin/User)} using Laravel Auth and Middleware; secured all sensitive endpoints.}
+            \resumeItem{Developed complete \textbf{CRUD modules} for users, fields, schedules, bookings, and payments with server-side validation and pagination.}
+            \resumeItem{Applied \textbf{OOP principles} and RESTful design standards throughout; collaborated with 3 teammates using Git/GitHub with milestone-based delivery.}
+            \resumeItem{Wrote \textbf{80+ functional test cases} ensuring booking conflict detection and payment flow correctness before submission.}
+        \resumeItemListEnd
+
+      \vspace{6pt}
+
+      \resumeProjectHeading
+        {\textbf{English Vocabulary Learning Application} $|$ \emph{Python, Tkinter, JSON}}{\emph{2022}}
+        \resumeItemListStart
+            \resumeItem{Designed and built a desktop application applying \textbf{OOP principles} for a clean, maintainable architecture with full \textbf{CRUD} vocabulary management.}
+            \resumeItem{Implemented external data enrichment via \textbf{API integration and web crawling}; built user authentication with role-based access control (Admin/User).}
+            \resumeItem{Packaged the application into a standalone executable for cross-platform deployment; received a \textbf{perfect practical score} in the course assessment.}
+        \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+\vspace{4pt}
+
+%-----------EDUCATION-----------
+\section{Education}
+    \resumeSubHeadingListStart
+      \resumeSubheading
+        {Ho Chi Minh City University of Industry and Trade}{Ho Chi Minh City, Vietnam}
+        {Bachelor of Information Technology $|$ GPA: \textbf{3.34 / 4.0}}{Expected: 2027}
+        \resumeItemListStart
+            \resumeItem{Relevant coursework: Data Structures \& Algorithms, Database Systems, Software Engineering, Web Development, Object-Oriented Programming, Computer Networks.}
+            \resumeItem{Actively participated in \textbf{2 scientific research competitions} as a technical engineer, contributing to system design and backend implementation of research prototypes.}
+            \resumeItem{Frequently appointed as \textbf{team lead} in academic projects, coordinating cross-functional delivery across design, development, and testing phases.}
+        \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}
