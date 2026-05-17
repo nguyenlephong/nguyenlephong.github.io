@@ -1,137 +1,47 @@
-import {profileInfo} from "@/app/app.const";
-import Image from "next/image"
-import Link from "next/link";
-import {Metadata} from "next";
+import { Metadata } from 'next'
+import Link from 'next/link'
+import { profileInfo, APP_ROUTE } from '@/app/app.const'
+import GalleryGrid from '@/components/gallery/GalleryGrid'
 
 export const metadata: Metadata = {
-  title: "Gallery",
-  description: "Enjoy watching movies (movies can bring life skills enhancement lessons), singing on weekends, holidays with friends and relatives.",
-};
+  title: 'Gallery',
+  description:
+    'Certifications, awards, projects, and activities — a visual record of Nguyen Le Phong as a software engineer.',
+  openGraph: {
+    title: 'Gallery · Nguyen Le Phong',
+    description:
+      'Certifications, awards, projects, and activities — a visual record of Nguyen Le Phong as a software engineer.',
+    type: 'website',
+  },
+}
 
 export default function GalleryPage() {
+  const categories = [
+    { id: 'certificates', label: 'Certifications', items: profileInfo.gallery.certificates },
+    { id: 'awards', label: 'Awards', items: profileInfo.gallery.awards },
+    { id: 'projects', label: 'Projects', items: profileInfo.gallery.projects },
+    { id: 'activities', label: 'Activities', items: profileInfo.gallery.activities },
+  ].filter((c) => c.items.length > 0)
+
   return (
-    <main className={"about-page"}>
-      <section className={"section-container"}>
-        <h1 style={{textAlign: "center", fontSize: 32, padding: 24}}>
-          Software Engineer
-        </h1>
-        
-        <div className={"section-wrapper"}>
-          <h2 className={"box-title"}>Certifications</h2>
-          <div className="grid-item_wrapper">
-            {profileInfo.gallery.certificates.map((photo: any) => {
-              return (
-                <div key={photo.src} id={"photo-" + photo.src}>
-                  <Link href={photo?.refs || photo.src} target={"_blank"}>
-                    <Image
-                      src={photo.src}
-                      alt={photo.alt} width={232} height={232}
-                      style={{
-                        objectFit: "cover",
-                        width: photo.width > 100 ? photo.width : '',
-                        height: photo.height > 100 ? photo.height : '',
-                        borderRadius: 12
-                      }}
-                    />
-                  </Link>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-        
-        <div className={"section-wrapper"}>
-          <h2 className={"box-title"}>Projects</h2>
-          <div className="grid-item_wrapper">
-            {profileInfo.gallery.projects.map((photo) => {
-              return (
-                <div key={photo.src} id={"photo-" + photo.src}>
-                  <Link href={photo.src} target={"_blank"}>
-                    <Image
-                      src={photo.src}
-                      alt={photo.alt} width={232} height={232}
-                      style={{
-                        objectFit: "cover",
-                        borderRadius: 12
-                      }}/>
-                  </Link>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-        
-        <div className={"section-wrapper"}>
-          <h2 className={"box-title"}>Awards</h2>
-          <div className="grid-item_wrapper">
-            {profileInfo.gallery.awards.map((photo) => {
-              return (
-                <div key={photo.src} id={"photo-" + photo.src}>
-                  <Link href={photo.src} target={"_blank"}>
-                    <Image
-                      src={photo.src} alt={photo.alt} width={232} height={232}
-                      style={{
-                        objectFit: "cover",
-                        width: photo.width > 100 ? photo.width : '',
-                        height: photo.height > 100 ? photo.height : '',
-                        borderRadius: 12
-                      }}/>
-                  </Link>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-        
-        <div className={"section-wrapper"}>
-          <h2 className={"box-title"}>Activities</h2>
-          <div className="grid-item_wrapper">
-            {profileInfo.gallery.activities.map((photo) => {
-              return (
-                <div key={photo.src} id={"photo-" + photo.src}>
-                  <Link href={photo.src} target={"_blank"}>
-                    <Image
-                      src={photo.src} alt={photo.alt}
-                      width={232} height={232}
-                      style={{
-                        objectFit: "cover",
-                        borderRadius: 12
-                      }}/>
-                  </Link>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-        
-        {1 < 0 && (
-          <div className={"section-wrapper"}>
-            <h2 className={"box-title"}>Videos</h2>
-            <div className="grid-item_wrapper">
-              {profileInfo.videos.map((item, ind) => {
-                return (
-                  <div
-                    key={item.id}
-                    id={`score_board-video_${ind}`}
-                    className="item_videos"
-                  >
-                    <iframe
-                      width="100%"
-                      height="315"
-                      title={item.title}
-                      src={`${item.url}`}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                );
-              })}
-            
-            </div>
-          </div>
-        )}
-      </section>
+    <main>
+      <div className="container">
+        <header className="page-header">
+          <span className="eyebrow">
+            <span className="eyebrow-dot" aria-hidden="true" /> Gallery
+          </span>
+          <h1 className="page-title">A record of the work</h1>
+          <p className="page-sub">
+            Certificates, awards, projects, and a few off-screen moments.
+            Click any item to open the full image or its verification link.
+          </p>
+          <Link href={APP_ROUTE.HOME} className="page-back">
+            ← Back to CV
+          </Link>
+        </header>
+
+        <GalleryGrid categories={categories} />
+      </div>
     </main>
   )
 }
