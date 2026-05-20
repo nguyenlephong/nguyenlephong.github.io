@@ -389,7 +389,7 @@ export const profileInfo = {
       location: "Ho Chi Minh City, Vietnam",
       jobs: [
         {
-          title: "Senior Software Engineer Lead",
+          title: "Head of Tech",
           duration: "Aug 2025 - Present",
           summaries: [
             "Owned product delivery and technical direction post-CTO transition, leading architecture decisions, rollout systems, enterprise-grade integrations, and cross-team alignment while managing a delivery team of 8 developers (including 4 seniors) and 3 QC engineers.",
