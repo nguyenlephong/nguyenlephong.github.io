@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+Disallow: /private/
+Disallow: /api/
+
+Host: https://nguyenlephong.github.io
+Sitemap: https://nguyenlephong.github.io/sitemap.xml
