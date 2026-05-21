@@ -1,4 +1,5 @@
 import {profileInfo} from "@/app/app.const";
+import {Metadata} from "next";
 import ExperienceBox from "@/components/ExperienceBoxItem";
 import ProjectBox from "@/components/ProjectBoxItem";
 import AchievementBoxItem from "@/components/AchievementBoxItem";
@@ -7,10 +8,35 @@ import {FaFacebookSquare, FaGithub, FaInstagram, FaLinkedin, FaYoutube} from "re
 import {FaXTwitter} from "react-icons/fa6";
 import {SiLeetcode} from "react-icons/si";
 import Link from "next/link";
+import {PAGE_SEO, absoluteUrl} from "@/app/seo.config";
+import PageTracker from "@/components/analytics/PageTracker";
+import HomeSocialTracker from "@/components/analytics/HomeSocialTracker";
+
+const seo = PAGE_SEO.homeAlt;
+
+export const metadata: Metadata = {
+  title: seo.title,
+  description: seo.description,
+  keywords: seo.keywords,
+  alternates: { canonical: seo.path },
+  openGraph: {
+    title: seo.title,
+    description: seo.description,
+    url: absoluteUrl(seo.path),
+    type: "profile",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: seo.title,
+    description: seo.description,
+  },
+};
 
 export default function Home() {
   return (
     <main>
+      <PageTracker page="home_alt" eventName="home_view" />
+      <HomeSocialTracker />
       <section className={"section-container"}>
         <article className={"section-wrapper"}>
           <div className={"information-section"}>

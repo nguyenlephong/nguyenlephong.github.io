@@ -5,6 +5,8 @@ import Script from 'next/script'
 import AppHeader from '@/components/AppHeader'
 import AppFooter from '@/components/AppFooter'
 import ThemeScript from '@/components/theme/ThemeScript'
+import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
+import { SITE_URL, PAGE_SEO } from '@/app/seo.config'
 import { Person, WithContext } from 'schema-dts'
 import React from 'react'
 import './globals.css'
@@ -21,16 +23,15 @@ const jbMono = JetBrains_Mono({
   display: 'swap',
 })
 
-const SITE_URL = 'https://nguyenlephong.github.io'
-const OG_IMAGE =
+const PROFILE_AVATAR =
   'https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom.png'
 
 export const metadata: Metadata = {
   title: {
     template: '%s · ' + SEO.title_tail,
-    default: SEO.title,
+    default: PAGE_SEO.home.title,
   },
-  description: SEO.description,
+  description: PAGE_SEO.home.description,
   metadataBase: new URL(SITE_URL),
   applicationName: 'Nguyen Le Phong — CV',
   authors: [{ name: 'Nguyen Le Phong', url: SITE_URL }],
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
     'Resume',
     'Portfolio',
   ],
-  alternates: { canonical: SITE_URL },
+  alternates: { canonical: '/' },
   category: 'technology',
   robots: {
     index: true,
@@ -67,29 +68,20 @@ export const metadata: Metadata = {
   },
   openGraph: {
     siteName: 'Nguyen Le Phong — Software Engineer',
-    title: SEO.title,
-    description: SEO.description,
+    title: PAGE_SEO.home.title,
+    description: PAGE_SEO.home.description,
     url: SITE_URL,
     locale: 'en_US',
     type: 'profile',
     firstName: 'Phong',
     lastName: 'Nguyen Le',
     username: 'nguyenlephong',
-    images: [
-      {
-        url: OG_IMAGE,
-        width: 1200,
-        height: 630,
-        alt: 'Nguyen Le Phong — Senior Software Engineer & Tech Lead',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: SEO.title,
-    description: SEO.description,
+    title: PAGE_SEO.home.title,
+    description: PAGE_SEO.home.description,
     creator: '@nguyenlephong17',
-    images: [OG_IMAGE],
   },
   icons: {
     icon: '/favicon.ico',
@@ -118,9 +110,9 @@ const personSchema: WithContext<Person> = {
   name: 'Nguyen Le Phong',
   alternateName: ['Nguyễn Lê Phong', 'Phong Nguyen'],
   url: SITE_URL,
-  image: OG_IMAGE,
-  jobTitle: 'Senior Software Engineer · Tech Lead',
-  description: SEO.description,
+  image: PROFILE_AVATAR,
+  jobTitle: 'Head of Tech · Senior Software Engineer · Tech Lead',
+  description: PAGE_SEO.home.description,
   email: `mailto:${profileInfo.contact.email}`,
   telephone: profileInfo.contact.phone,
   address: {
@@ -165,7 +157,7 @@ const websiteSchema = {
   '@id': `${SITE_URL}/#website`,
   url: SITE_URL,
   name: 'Nguyen Le Phong — Senior Software Engineer',
-  description: SEO.description,
+  description: PAGE_SEO.home.description,
   inLanguage: 'en-US',
   author: { '@id': `${SITE_URL}/#person` },
 }
@@ -232,6 +224,7 @@ export default function RootLayout({
       />
 
       <body suppressHydrationWarning>
+        <WebVitalsReporter />
         <AppHeader />
         {children}
         <AppFooter />

@@ -48,7 +48,7 @@ export default function GalleryGrid({ categories }: Props) {
           active={active === ALL}
           onClick={() => {
             setActive(ALL)
-            track('cv_nav_click', { target: 'gallery_filter', filter: 'all' })
+            track('gallery_tab_click', { filter: 'all', total: totalCount })
           }}
         />
         {categories.map((c) => (
@@ -59,7 +59,7 @@ export default function GalleryGrid({ categories }: Props) {
             active={active === c.id}
             onClick={() => {
               setActive(c.id)
-              track('cv_nav_click', { target: 'gallery_filter', filter: c.id })
+              track('gallery_tab_click', { filter: c.id, count: c.items.length })
             }}
           />
         ))}
@@ -158,7 +158,13 @@ function PhotoCard({
         rel={external ? 'noopener noreferrer' : undefined}
         className="gallery-card"
         onClick={() =>
-          track('cv_external_link', { surface: 'gallery', category, target: href })
+          track('gallery_item_click', {
+            category,
+            target: href,
+            is_external: external,
+            alt: photo.alt,
+            position: index + 1,
+          })
         }
       >
         <figure className="gallery-figure">

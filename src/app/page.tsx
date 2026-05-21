@@ -6,11 +6,13 @@ import Experience from '@/components/cv/Experience'
 import Projects from '@/components/cv/Projects'
 import ContactCTA from '@/components/cv/ContactCTA'
 import PageViewTracker from '@/components/PageViewTracker'
+import PageTracker from '@/components/analytics/PageTracker'
 
 export default function MainPage() {
   return (
     <main>
       <PageViewTracker />
+      <PageTracker page="home" eventName="page_view" section="cv_main" />
       <div className="container">
         <Hero />
 
