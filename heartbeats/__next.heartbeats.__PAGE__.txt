@@ -1,0 +1,7 @@
+1:"$Sreact.fragment"
+2:I[24013,["/_next/static/chunks/16b2075a9340c7d6.js","/_next/static/chunks/cc23a71290a77868.js","/_next/static/chunks/f37acf5d3f7f8d06.js","/_next/static/chunks/ab9497f543f2f8e9.js"],"default"]
+3:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/7340adf74ff47ec0.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+:HL["/_next/static/chunks/81dfe9e07ad8a2ca.css","style"]
+0:{"buildId":"O4bgjLLS-Vp7frE0X4Yya","rsc":["$","$1","c",{"children":[["$","$L2",null,{"members":[{"name":"Nguyễn Lê Phong","alias":"Me","dob":"1997-07-01","relation":"Bản thân"},{"name":"Nguyễn Thị Yến Nhi","alias":"Em Út","dob":"2005-06-09","relation":"Em gái"},{"name":"Nguyễn Thanh Xuân","alias":"Ba","dob":"1976-11-18","relation":"Cha"},{"name":"Lê Thị Thanh Hương","alias":"Mẹ","dob":"1976-02-19","relation":"Mẹ"},{"name":"Nguyễn Thị Cái","alias":"Nội Bà","dob":"1939-04-20","relation":"Bà nội"},{"name":"Nguyễn Thị Bích Hương","alias":"Cô Út","dob":"1983-03-02","relation":"Cô"},{"name":"Lê Văn Măng","alias":"Ngoại Ông","dob":"1944-05-02","relation":"Ông ngoại"},{"name":"Nguyễn Thị Mười","alias":"Ngoại Bà","dob":"1946-04-02","relation":"Bà ngoại"}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/81dfe9e07ad8a2ca.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/ab9497f543f2f8e9.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+5:null
