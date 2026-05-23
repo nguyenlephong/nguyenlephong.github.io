@@ -64,7 +64,7 @@ export default function AppFooter() {
           </li>
         </ul>
 
-        <p className="footer-copy">© {year} Nguyen Le Phong. Built with Next.js.</p>
+        <p className="footer-copy">© {year} Nguyen Le Phong.</p>
       </div>
     </footer>
   )

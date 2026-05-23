@@ -1,0 +1,669 @@
+.heartbeats-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  padding: clamp(2rem, 2rem + 3vw, 5rem) clamp(1rem, 1rem + 2vw, 3rem);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ─── Aurora (drifting halo background) ────────────── */
+.heartbeats-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heartbeats-aurora::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1px 1px at 20% 30%, oklch(70% 0.05 250 / 0.4) 50%, transparent),
+    radial-gradient(1px 1px at 60% 70%, oklch(70% 0.05 250 / 0.3) 50%, transparent),
+    radial-gradient(1px 1px at 80% 20%, oklch(70% 0.05 250 / 0.35) 50%, transparent),
+    radial-gradient(1px 1px at 30% 80%, oklch(70% 0.05 250 / 0.25) 50%, transparent);
+  background-size: 220px 220px, 180px 180px, 260px 260px, 200px 200px;
+  opacity: 0.5;
+}
+
+.heartbeats-aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  will-change: transform;
+}
+
+.heartbeats-aurora-blob.b1 {
+  width: 520px;
+  height: 520px;
+  top: -160px;
+  left: -120px;
+  background: radial-gradient(closest-side, oklch(70% 0.20 305 / 0.45), transparent 70%);
+  animation: hb-aurora-1 26s ease-in-out infinite;
+}
+
+.heartbeats-aurora-blob.b2 {
+  width: 580px;
+  height: 580px;
+  top: 8%;
+  right: -180px;
+  background: radial-gradient(closest-side, oklch(72% 0.22 20 / 0.4), transparent 70%);
+  animation: hb-aurora-2 34s ease-in-out infinite;
+}
+
+.heartbeats-aurora-blob.b3 {
+  width: 460px;
+  height: 460px;
+  bottom: -140px;
+  left: 22%;
+  background: radial-gradient(closest-side, oklch(72% 0.20 252 / 0.42), transparent 70%);
+  animation: hb-aurora-3 30s ease-in-out infinite;
+}
+
+.heartbeats-aurora-blob.b4 {
+  width: 380px;
+  height: 380px;
+  top: 45%;
+  left: 40%;
+  background: radial-gradient(closest-side, oklch(74% 0.18 145 / 0.32), transparent 70%);
+  animation: hb-aurora-4 38s ease-in-out infinite;
+}
+
+[data-theme='dark'] .heartbeats-aurora-blob.b1 {
+  background: radial-gradient(closest-side, oklch(60% 0.22 305 / 0.5), transparent 70%);
+}
+[data-theme='dark'] .heartbeats-aurora-blob.b2 {
+  background: radial-gradient(closest-side, oklch(62% 0.24 20 / 0.45), transparent 70%);
+}
+[data-theme='dark'] .heartbeats-aurora-blob.b3 {
+  background: radial-gradient(closest-side, oklch(62% 0.22 252 / 0.48), transparent 70%);
+}
+[data-theme='dark'] .heartbeats-aurora-blob.b4 {
+  background: radial-gradient(closest-side, oklch(60% 0.20 145 / 0.38), transparent 70%);
+}
+
+@keyframes hb-aurora-1 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33%      { transform: translate(140px, 90px) scale(1.18) rotate(40deg); }
+  66%      { transform: translate(60px, 180px) scale(0.9) rotate(-20deg); }
+}
+
+@keyframes hb-aurora-2 {
+  0%, 100% { transform: translate(0, 0) scale(1.05); }
+  50%      { transform: translate(-130px, 120px) scale(0.92); }
+}
+
+@keyframes hb-aurora-3 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50%      { transform: translate(100px, -150px) scale(1.12) rotate(30deg); }
+}
+
+@keyframes hb-aurora-4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%      { transform: translate(-80px, 40px) scale(1.1); }
+  75%      { transform: translate(70px, -60px) scale(0.95); }
+}
+
+.heartbeats-shell {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ─── Header ───────────────────────────────────────── */
+.heartbeats-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--fg-subtle);
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--bg-elevated);
+}
+
+.heartbeats-eyebrow .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: oklch(65% 0.20 20);
+  box-shadow: 0 0 0 4px oklch(70% 0.20 20 / 0.22);
+  animation: hb-beat 1.2s ease-in-out infinite;
+}
+
+.heartbeats-title {
+  margin: 1.2rem 0 0.6rem;
+  font-size: clamp(2.4rem, 1.6rem + 3vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  color: var(--fg);
+}
+
+.heartbeats-title em {
+  font-style: normal;
+  background: linear-gradient(135deg, oklch(65% 0.20 20), oklch(70% 0.18 305));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.heartbeats-lead {
+  max-width: 56ch;
+  color: var(--fg-muted);
+  font-size: var(--text-lg);
+  line-height: 1.6;
+}
+
+.heartbeats-meta {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.2rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--fg-subtle);
+}
+
+.heartbeats-meta span strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+/* ─── Heartbeat animation (only for the seconds pulse) ─ */
+@keyframes hb-beat {
+  0%, 28%, 70%, 100% { transform: scale(1); }
+  14% { transform: scale(1.22); }
+  42% { transform: scale(1.1); }
+}
+
+/* ─── Grid ─────────────────────────────────────────── */
+.heartbeats-grid {
+  margin-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+  gap: 1.4rem;
+}
+
+/* ─── Tier palette ─────────────────────────────────── */
+.hb-tier-elder    { --tier-hue: 50;  --tier-chroma: 0.16; }
+.hb-tier-parent   { --tier-hue: 145; --tier-chroma: 0.14; }
+.hb-tier-sibling  { --tier-hue: 305; --tier-chroma: 0.18; }
+.hb-tier-self     { --tier-hue: 252; --tier-chroma: 0.18; }
+
+/* ─── Card ─────────────────────────────────────────── */
+.hb-card {
+  position: relative;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem 1.7rem 1.5rem;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform var(--d-base) var(--ease),
+              border-color var(--d-base) var(--ease),
+              box-shadow var(--d-base) var(--ease);
+}
+
+.hb-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    oklch(70% var(--tier-chroma) var(--tier-hue) / 0.65),
+    oklch(70% var(--tier-chroma) var(--tier-hue) / 0) 60%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hb-card-glow {
+  position: absolute;
+  inset: -40% -10% auto auto;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    oklch(70% var(--tier-chroma) var(--tier-hue) / 0.26),
+    transparent 70%
+  );
+  filter: blur(24px);
+  opacity: 0.55;
+  transition: opacity var(--d-base) var(--ease),
+              transform var(--d-base) var(--ease);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hb-card:hover {
+  transform: translateY(-4px);
+  border-color: oklch(60% var(--tier-chroma) var(--tier-hue) / 0.55);
+  box-shadow:
+    0 20px 50px -20px oklch(40% var(--tier-chroma) var(--tier-hue) / 0.32),
+    var(--shadow-md);
+}
+
+.hb-card:hover .hb-card-glow {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.hb-card > *:not(.hb-card-glow) {
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Card head ────────────────────────────────────── */
+.hb-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.hb-card-id {
+  min-width: 0;
+  flex: 1;
+}
+
+.hb-card-alias {
+  font-size: clamp(1.5rem, 1.3rem + 0.5vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.2rem;
+  color: var(--fg);
+  line-height: 1.1;
+}
+
+.hb-card-name {
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hb-card-dob {
+  margin: 0.5rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+  letter-spacing: 0.02em;
+}
+
+.hb-card-dob-icon {
+  width: 13px;
+  height: 13px;
+  color: oklch(55% var(--tier-chroma) var(--tier-hue));
+  flex-shrink: 0;
+}
+
+[data-theme='dark'] .hb-card-dob-icon {
+  color: oklch(78% var(--tier-chroma) var(--tier-hue));
+}
+
+.hb-card-dob time {
+  color: var(--fg-muted);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Tier badge ───────────────────────────────────── */
+.hb-card-relation {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 0.4rem 0.8rem 0.4rem 0.55rem;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-weight: 600;
+  color: oklch(35% var(--tier-chroma) var(--tier-hue));
+  background: oklch(94% var(--tier-chroma) var(--tier-hue) / 0.7);
+  border: 1px solid oklch(75% var(--tier-chroma) var(--tier-hue) / 0.5);
+}
+
+[data-theme='dark'] .hb-card-relation {
+  color: oklch(86% var(--tier-chroma) var(--tier-hue));
+  background: oklch(28% var(--tier-chroma) var(--tier-hue) / 0.4);
+  border-color: oklch(48% var(--tier-chroma) var(--tier-hue) / 0.5);
+}
+
+.hb-relation-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: oklch(55% var(--tier-chroma) var(--tier-hue));
+  box-shadow: 0 0 0 3px oklch(70% var(--tier-chroma) var(--tier-hue) / 0.25);
+}
+
+/* ─── Age hero (clean, no heart) ───────────────────── */
+.hb-age-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--divider);
+  margin-bottom: 0.9rem;
+}
+
+.hb-age-num {
+  font-family: var(--font-mono);
+  font-size: clamp(3.6rem, 2.8rem + 2vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  color: var(--fg);
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+
+.hb-age-label {
+  font-size: clamp(1rem, 0.9rem + 0.3vw, 1.2rem);
+  color: var(--fg-muted);
+  font-weight: 500;
+}
+
+/* ─── Stats flow (2-col, label-above, full-row modifier) ─ */
+.hb-stats-flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.1rem;
+  row-gap: 0.45rem;
+}
+
+.hb-stat-line {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  min-width: 0;
+  padding: 0.2rem 0 0.25rem;
+  border-bottom: 1px dashed transparent;
+  transition: border-color var(--d-fast) var(--ease);
+}
+
+.hb-stat-line.is-full {
+  grid-column: 1 / -1;
+}
+
+.hb-stat-line:hover {
+  border-bottom-color: oklch(70% var(--tier-chroma) var(--tier-hue) / 0.4);
+}
+
+.hb-stat-line-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--fg-subtle);
+  font-weight: 600;
+}
+
+.hb-stat-line-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.hb-stat-line-icon {
+  width: 16px;
+  height: 16px;
+  color: oklch(55% var(--tier-chroma) var(--tier-hue));
+  flex-shrink: 0;
+}
+
+[data-theme='dark'] .hb-stat-line-icon {
+  color: oklch(78% var(--tier-chroma) var(--tier-hue));
+}
+
+.hb-stat-line-value {
+  font-family: var(--font-mono);
+  font-size: clamp(1.05rem, 0.9rem + 0.4vw, 1.25rem);
+  font-weight: 700;
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hb-stat-line.is-full .hb-stat-line-value {
+  font-size: clamp(1.2rem, 1rem + 0.5vw, 1.45rem);
+}
+
+/* Live cell (Giây) ─ only place where pulse exists */
+.hb-stat-line.is-live .hb-stat-line-icon {
+  color: oklch(60% 0.22 20);
+  animation: hb-beat 1.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+[data-theme='dark'] .hb-stat-line.is-live .hb-stat-line-icon {
+  color: oklch(78% 0.22 20);
+}
+
+.hb-stat-line.is-live .hb-stat-line-value {
+  color: oklch(50% 0.22 20);
+}
+
+[data-theme='dark'] .hb-stat-line.is-live .hb-stat-line-value {
+  color: oklch(82% 0.22 20);
+}
+
+.hb-stat-line.is-live .hb-stat-line-label {
+  color: oklch(50% 0.22 20);
+}
+
+[data-theme='dark'] .hb-stat-line.is-live .hb-stat-line-label {
+  color: oklch(80% 0.22 20);
+}
+
+/* ─── Footer ───────────────────────────────────────── */
+.hb-card-footer {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--divider);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: nowrap;
+}
+
+.hb-birthday {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--fg-muted);
+  font-size: var(--text-sm);
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hb-birthday-icon {
+  width: 16px;
+  height: 16px;
+  color: oklch(60% 0.18 30);
+}
+
+[data-theme='dark'] .hb-birthday-icon {
+  color: oklch(80% 0.18 50);
+}
+
+.hb-birthday-soon .hb-birthday-icon {
+  color: oklch(60% 0.22 20);
+}
+
+[data-theme='dark'] .hb-birthday-soon .hb-birthday-icon {
+  color: oklch(80% 0.22 20);
+}
+
+.hb-birthday strong {
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-base);
+}
+
+.hb-birthday-soon {
+  color: oklch(60% 0.22 20);
+}
+
+.hb-birthday-soon strong {
+  color: oklch(60% 0.22 20);
+}
+
+[data-theme='dark'] .hb-birthday-soon,
+[data-theme='dark'] .hb-birthday-soon strong {
+  color: oklch(78% 0.22 20);
+}
+
+/* ─── Upcoming birthday highlight (top 3) ──────────── */
+.hb-card.is-upcoming {
+  --upcoming-warm: oklch(70% 0.20 30);
+  --upcoming-pink: oklch(75% 0.18 350);
+  --upcoming-gold: oklch(78% 0.16 80);
+}
+
+.hb-card.is-upcoming::before {
+  background: linear-gradient(
+    135deg,
+    var(--upcoming-warm) 0%,
+    var(--upcoming-pink) 35%,
+    var(--upcoming-gold) 70%,
+    var(--upcoming-warm) 100%
+  );
+  background-size: 200% 200%;
+  padding: 1.5px;
+  animation: hb-sheen 6s linear infinite;
+}
+
+@keyframes hb-sheen {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.hb-card.is-upcoming .hb-card-glow {
+  background: radial-gradient(
+    closest-side,
+    oklch(75% 0.20 30 / 0.35),
+    transparent 70%
+  );
+  opacity: 0.85;
+}
+
+/* Confetti dots in background */
+.hb-card.is-upcoming::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, oklch(75% 0.20 30 / 0.45) 1px, transparent 1.5px),
+    radial-gradient(circle, oklch(75% 0.18 305 / 0.35) 1px, transparent 1.5px),
+    radial-gradient(circle, oklch(80% 0.16 80 / 0.5) 1px, transparent 1.5px);
+  background-size: 60px 60px, 80px 80px, 100px 100px;
+  background-position: 12px 18px, 38px 52px, 70px 24px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Inline chip beside birthday footer */
+.hb-upcoming-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: oklch(100% 0 0);
+  background: linear-gradient(
+    135deg,
+    oklch(60% 0.22 20),
+    oklch(65% 0.20 350),
+    oklch(72% 0.16 70)
+  );
+  background-size: 220% 220%;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 3px 10px -2px oklch(55% 0.22 20 / 0.45);
+  animation: hb-sheen 4s linear infinite;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.hb-upcoming-chip svg {
+  width: 11px;
+  height: 11px;
+}
+
+/* Rank-specific accents */
+.hb-card.hb-upcoming-1 .hb-card-glow {
+  opacity: 1;
+  filter: blur(28px);
+}
+
+.hb-card.hb-upcoming-1 .hb-upcoming-chip {
+  font-size: 0.66rem;
+  padding: 0.32rem 0.75rem;
+  box-shadow: 0 4px 14px -2px oklch(55% 0.22 20 / 0.55);
+}
+
+.hb-card.is-upcoming:hover {
+  box-shadow:
+    0 24px 60px -20px oklch(50% 0.22 20 / 0.4),
+    var(--shadow-md);
+}
+
+@media (max-width: 520px) {
+  .hb-stats-flow { grid-template-columns: 1fr; }
+  .hb-stat-line.is-full { grid-column: 1; }
+  .hb-card { padding: 1.5rem 1.3rem 1.3rem; }
+  .hb-card-footer { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heartbeats-eyebrow .dot,
+  .hb-stat-line.is-live .hb-stat-line-icon,
+  .hb-card.is-upcoming::before,
+  .hb-upcoming-chip,
+  .heartbeats-aurora-blob { animation: none; }
+  .hb-card, .hb-stat-line { transition: none; }
+}
