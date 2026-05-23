@@ -462,7 +462,7 @@ export const profileInfo = {
       location: "Binh Thanh",
       jobs: [
         {
-          title: "Senior Front-end Engineer",
+          title: "Senior Full-stack Software Engineer",
           duration: "July 2020 - Apr. 2024",
           summaries: [
             `The company builds a so-called CDxP product. In brief, it is a data platform that tailor-made to host and process customer profiles (the keystone solution is how would you able to identify and unify your customers data from heterogeneous schemas and formats from diverged services and systems).`,
@@ -478,7 +478,7 @@ export const profileInfo = {
       ],
       jobs_bk: [
         {
-          title: "Senior Front-end Engineer",
+          title: "Senior Full-stack Software Engineer",
           duration: "Mar 2022 - Apr. 2024",
           responsibilities: [
             "Strategically influenced the product roadmap by championing and executing impactful user experience enhancements.",
