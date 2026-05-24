@@ -1123,18 +1123,21 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
 .footer-social a:hover { color: var(--fg); background: var(--bg-muted); }
 .footer-bottom {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.625rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.875rem;
   justify-self: end;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .footer-copy {
   font-size: var(--text-xs);
   color: var(--fg-subtle);
   margin: 0;
+  white-space: nowrap;
 }
 @media (max-width: 720px) {
-  .footer-bottom { align-items: center; justify-self: center; }
+  .footer-bottom { justify-self: center; justify-content: center; }
 }
 
 /* =========================================================
