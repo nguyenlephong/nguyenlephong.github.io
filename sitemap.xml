@@ -1,32 +1,302 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <url>
-<loc>https://nguyenlephong.github.io/</loc>
-<lastmod>2026-05-24T02:15:36.857Z</lastmod>
+<loc>https://nguyenlephong.github.io/en</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 <url>
-<loc>https://nguyenlephong.github.io/apps</loc>
-<lastmod>2026-05-24T02:15:36.857Z</lastmod>
+<loc>https://nguyenlephong.github.io/vi</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/zh</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/ja</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/ko</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/en/apps</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/apps" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/apps" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/apps" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/apps" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/apps" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/apps" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.9</priority>
 </url>
 <url>
-<loc>https://nguyenlephong.github.io/about</loc>
-<lastmod>2026-05-24T02:15:36.857Z</lastmod>
+<loc>https://nguyenlephong.github.io/vi/apps</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/apps" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/apps" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/apps" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/apps" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/apps" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/apps" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/zh/apps</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/apps" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/apps" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/apps" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/apps" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/apps" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/apps" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/ja/apps</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/apps" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/apps" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/apps" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/apps" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/apps" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/apps" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/ko/apps</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/apps" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/apps" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/apps" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/apps" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/apps" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/apps" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/en/about</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/about" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/about" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/about" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/about" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/about" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/about" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
 <url>
-<loc>https://nguyenlephong.github.io/cv</loc>
-<lastmod>2026-05-24T02:15:36.857Z</lastmod>
+<loc>https://nguyenlephong.github.io/vi/about</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/about" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/about" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/about" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/about" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/about" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/about" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
 <url>
-<loc>https://nguyenlephong.github.io/gallery</loc>
-<lastmod>2026-05-24T02:15:36.857Z</lastmod>
+<loc>https://nguyenlephong.github.io/zh/about</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/about" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/about" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/about" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/about" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/about" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/about" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/ja/about</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/about" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/about" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/about" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/about" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/about" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/about" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/ko/about</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/about" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/about" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/about" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/about" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/about" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/about" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/en/cv</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/cv" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/cv" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/cv" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/cv" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/cv" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/cv" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/vi/cv</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/cv" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/cv" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/cv" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/cv" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/cv" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/cv" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/zh/cv</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/cv" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/cv" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/cv" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/cv" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/cv" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/cv" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/ja/cv</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/cv" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/cv" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/cv" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/cv" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/cv" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/cv" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/ko/cv</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/cv" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/cv" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/cv" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/cv" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/cv" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/cv" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/en/gallery</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/gallery" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/gallery" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/gallery" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/gallery" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/gallery" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/gallery" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/vi/gallery</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/gallery" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/gallery" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/gallery" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/gallery" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/gallery" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/gallery" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/zh/gallery</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/gallery" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/gallery" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/gallery" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/gallery" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/gallery" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/gallery" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/ja/gallery</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/gallery" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/gallery" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/gallery" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/gallery" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/gallery" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/gallery" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://nguyenlephong.github.io/ko/gallery</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://nguyenlephong.github.io/en/gallery" />
+<xhtml:link rel="alternate" hreflang="vi" href="https://nguyenlephong.github.io/vi/gallery" />
+<xhtml:link rel="alternate" hreflang="zh" href="https://nguyenlephong.github.io/zh/gallery" />
+<xhtml:link rel="alternate" hreflang="ja" href="https://nguyenlephong.github.io/ja/gallery" />
+<xhtml:link rel="alternate" hreflang="ko" href="https://nguyenlephong.github.io/ko/gallery" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://nguyenlephong.github.io/en/gallery" />
+<lastmod>2026-05-24T05:09:44.633Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
