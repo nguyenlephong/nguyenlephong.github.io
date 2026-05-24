@@ -1,5 +1,9 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
+import { setRequestLocale } from 'next-intl/server'
+import { hasLocale } from 'next-intl'
+import { notFound } from 'next/navigation'
+import { routing } from '@/i18n/routing'
 import { APP_ROUTE } from '@/app/app.const'
 import { PAGE_SEO, absoluteUrl } from '@/app/seo.config'
 import { apps } from './apps.data'
@@ -9,22 +13,31 @@ import AppsLinkTracker from '@/components/analytics/AppsLinkTracker'
 
 const seo = PAGE_SEO.apps
 
-export const metadata: Metadata = {
-  title: seo.title,
-  description: seo.description,
-  keywords: seo.keywords,
-  alternates: { canonical: seo.path },
-  openGraph: {
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+type Props = { params: Promise<{ locale: string }> }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return {
     title: seo.title,
     description: seo.description,
-    url: absoluteUrl(seo.path),
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: seo.title,
-    description: seo.description,
-  },
+    keywords: seo.keywords,
+    alternates: { canonical: `/${locale}${seo.path}` },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: absoluteUrl(`/${locale}${seo.path}`),
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: seo.title,
+      description: seo.description,
+    },
+  }
 }
 
 const appsItemListLd = {
@@ -47,7 +60,10 @@ const appsItemListLd = {
   })),
 }
 
-export default function AppsPage() {
+export default async function AppsPage({ params }: Props) {
+  const { locale } = await params
+  if (!hasLocale(routing.locales, locale)) notFound()
+  setRequestLocale(locale)
   return (
     <main className="apps-page">
       <script

@@ -1,5 +1,6 @@
 'use client'
 import type { IconType } from 'react-icons'
+import { useTranslations } from 'next-intl'
 import {
   LuLayers,
   LuToggleRight,
@@ -9,78 +10,55 @@ import {
   LuBot,
   LuCheck,
 } from 'react-icons/lu'
-import { profileInfo } from '@/app/app.const'
 import { Stagger, StaggerItem } from '@/components/motion/Reveal'
 
 type PillarTone = 'amber' | 'violet' | 'sky' | 'emerald' | 'rose' | 'cyan'
 
+type PillarKey = 'endToEnd' | 'multiTenant' | 'leadership' | 'fintech' | 'mfe' | 'ai'
+
 type Pillar = {
   icon: IconType
-  title: string
-  body: string
-  chip: string
+  key: PillarKey
   tone: PillarTone
 }
 
 const pillars: Pillar[] = [
-  {
-    icon: LuLayers,
-    title: 'End-to-end engineer',
-    body: 'Front-end, backend, CI/CD, release, and production infra — one owner across the full lifecycle.',
-    chip: 'FE · BE · Infra',
-    tone: 'sky',
-  },
-  {
-    icon: LuToggleRight,
-    title: 'Multi-tenant platforms',
-    body: 'Feature flags, RBAC, percentage/segment rollouts, JSON-config values, stateless runtime evaluation.',
-    chip: '30+ tenants live',
-    tone: 'violet',
-  },
-  {
-    icon: LuLeadIcon,
-    title: 'Delivery leadership',
-    body: 'Lead 11+ engineers — hiring, org design, RFCs, runbooks, rollout playbooks, 1:1 coaching.',
-    chip: 'Team of 11',
-    tone: 'amber',
-  },
-  {
-    icon: LuShieldCheck,
-    title: 'Secure fintech integrations',
-    body: 'RSA-4096 handshake, AES-256 payload, mTLS, certificate pinning, idempotent contracts, retry queues.',
-    chip: 'Gtel · Napas',
-    tone: 'emerald',
-  },
-  {
-    icon: LuBoxes,
-    title: 'Micro-frontend & SDKs',
-    body: 'Angular host + React modules for independent deploys. JS SDK shipped <200KB, <150ms load.',
-    chip: 'MFE · <150ms',
-    tone: 'rose',
-  },
-  {
-    icon: LuBot,
-    title: 'AI-first engineering',
-    body: 'Built AI agents for code review, deploy assistance, service quotas, API health, and release analysis.',
-    chip: 'Agents in prod',
-    tone: 'cyan',
-  },
+  { icon: LuLayers, key: 'endToEnd', tone: 'sky' },
+  { icon: LuToggleRight, key: 'multiTenant', tone: 'violet' },
+  { icon: LuLeadIcon, key: 'leadership', tone: 'amber' },
+  { icon: LuShieldCheck, key: 'fintech', tone: 'emerald' },
+  { icon: LuBoxes, key: 'mfe', tone: 'rose' },
+  { icon: LuBot, key: 'ai', tone: 'cyan' },
 ]
 
+const skillKeys = [
+  'backend',
+  'frontend',
+  'databases',
+  'infra',
+  'architecture',
+  'testing',
+  'libraries',
+  'other',
+] as const
+
+const introKeys = ['intro1', 'intro2', 'intro3'] as const
+
 export default function Summary() {
-  const { description, skills } = profileInfo.summary
+  const t = useTranslations('Summary')
+
   return (
     <>
       <Stagger className="prose" stagger={0.06}>
-        {description.map((html) => (
-          <StaggerItem key={html}>
-            <p className="prose-p" dangerouslySetInnerHTML={{ __html: html }} />
+        {introKeys.map((k) => (
+          <StaggerItem key={k}>
+            <p className="prose-p" dangerouslySetInnerHTML={{ __html: t.raw(k) }} />
           </StaggerItem>
         ))}
       </Stagger>
 
       <div className="vision-header" role="presentation">
-        <span className="vision-eyebrow">How I work</span>
+        <span className="vision-eyebrow">{t('visionEyebrow')}</span>
         <span className="vision-rule" aria-hidden="true" />
       </div>
 
@@ -90,7 +68,7 @@ export default function Summary() {
           return (
             <StaggerItem
               as="li"
-              key={p.title}
+              key={p.key}
               className={`vision-card vision-tone-${p.tone}`}
             >
               <span className="vision-glow" aria-hidden="true" />
@@ -98,31 +76,30 @@ export default function Summary() {
                 <span className="vision-icon" aria-hidden="true">
                   <Icon size={16} />
                 </span>
-                <span className="vision-chip">{p.chip}</span>
+                <span className="vision-chip">{t(`pillars.${p.key}.chip`)}</span>
               </div>
-              <h3 className="vision-title">{p.title}</h3>
-              <p className="vision-body">{p.body}</p>
+              <h3 className="vision-title">{t(`pillars.${p.key}.title`)}</h3>
+              <p className="vision-body">{t(`pillars.${p.key}.body`)}</p>
             </StaggerItem>
           )
         })}
       </Stagger>
 
       <div className="vision-header" role="presentation">
-        <span className="vision-eyebrow">Hard skills</span>
+        <span className="vision-eyebrow">{t('hardSkillsEyebrow')}</span>
         <span className="vision-rule" aria-hidden="true" />
       </div>
 
       <Stagger as="ul" className="skill-list" stagger={0.05}>
-        {skills.map((html) => (
-          <StaggerItem
-            as="li"
-            key={html}
-            className="skill-list-item"
-          >
+        {skillKeys.map((k) => (
+          <StaggerItem as="li" key={k} className="skill-list-item">
             <span className="skill-check" aria-hidden="true">
               <LuCheck size={12} strokeWidth={3} />
             </span>
-            <span className="skill-text" dangerouslySetInnerHTML={{ __html: html }} />
+            <span
+              className="skill-text"
+              dangerouslySetInnerHTML={{ __html: t.raw(`skills.${k}`) }}
+            />
           </StaggerItem>
         ))}
       </Stagger>

@@ -8,31 +8,47 @@ import {FaFacebookSquare, FaGithub, FaInstagram, FaLinkedin, FaYoutube} from "re
 import {FaXTwitter} from "react-icons/fa6";
 import {SiLeetcode} from "react-icons/si";
 import Link from "next/link";
+import {setRequestLocale} from "next-intl/server";
+import {hasLocale} from "next-intl";
+import {notFound} from "next/navigation";
+import {routing} from "@/i18n/routing";
 import {PAGE_SEO, absoluteUrl} from "@/app/seo.config";
 import PageTracker from "@/components/analytics/PageTracker";
 import HomeSocialTracker from "@/components/analytics/HomeSocialTracker";
 
 const seo = PAGE_SEO.homeAlt;
 
-export const metadata: Metadata = {
-  title: seo.title,
-  description: seo.description,
-  keywords: seo.keywords,
-  alternates: { canonical: seo.path },
-  openGraph: {
-    title: seo.title,
-    description: seo.description,
-    url: absoluteUrl(seo.path),
-    type: "profile",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: seo.title,
-    description: seo.description,
-  },
-};
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
-export default function Home() {
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
+    alternates: { canonical: `/${locale}${seo.path}` },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: absoluteUrl(`/${locale}${seo.path}`),
+      type: "profile",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo.title,
+      description: seo.description,
+    },
+  };
+}
+
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+  setRequestLocale(locale);
   return (
     <main>
       <PageTracker page="home_alt" eventName="home_view" />

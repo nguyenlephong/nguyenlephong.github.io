@@ -1,11 +1,13 @@
 'use client'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { APP_ROUTE } from '@/app/app.const'
 import ThemeToggle from '@/components/theme/ThemeToggle'
 import { track } from '@/lib/analytics'
 
 export default function AppHeader() {
+  const t = useTranslations('Nav')
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -15,11 +17,11 @@ export default function AppHeader() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const sections: { id: string; label: string }[] = [
-    { id: 'about', label: 'About' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' },
+  const sections: { id: string; key: 'about' | 'experience' | 'projects' | 'contact' }[] = [
+    { id: 'about', key: 'about' },
+    { id: 'experience', key: 'experience' },
+    { id: 'projects', key: 'projects' },
+    { id: 'contact', key: 'contact' },
   ]
 
   return (
@@ -42,7 +44,7 @@ export default function AppHeader() {
               className="nav-link"
               onClick={() => track('cv_nav_click', { target: s.id })}
             >
-              {s.label}
+              {t(s.key)}
             </Link>
           ))}
           <Link
@@ -50,20 +52,21 @@ export default function AppHeader() {
             className="nav-link"
             onClick={() => track('cv_nav_click', { target: 'gallery' })}
           >
-            Gallery
+            {t('gallery')}
           </Link>
         </nav>
 
         <div className="nav-actions">
           <ThemeToggle />
-          <Link
+          <a
             href={APP_ROUTE.CV_PDF}
             target="_blank"
+            rel="noopener noreferrer"
             className="btn btn-primary btn-sm"
             onClick={() => track('cv_resume_download', { source: 'nav' })}
           >
-            Résumé
-          </Link>
+            {t('resume')}
+          </a>
         </div>
       </div>
     </header>

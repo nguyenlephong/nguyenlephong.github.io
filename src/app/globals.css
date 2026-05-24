@@ -1121,13 +1121,81 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   transition: color var(--d-fast), background var(--d-fast);
 }
 .footer-social a:hover { color: var(--fg); background: var(--bg-muted); }
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.625rem;
+  justify-self: end;
+}
 .footer-copy {
   font-size: var(--text-xs);
   color: var(--fg-subtle);
   margin: 0;
-  justify-self: end;
 }
-@media (max-width: 720px) { .footer-copy { justify-self: center; } }
+@media (max-width: 720px) {
+  .footer-bottom { align-items: center; justify-self: center; }
+}
+
+/* Locale switcher */
+.locale-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.625rem 0.35rem 0.55rem;
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  color: var(--fg-muted);
+  font-size: var(--text-xs);
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color var(--d-fast), color var(--d-fast), background var(--d-fast);
+}
+.locale-switcher:hover {
+  border-color: var(--fg-muted);
+  color: var(--fg);
+  background: var(--bg-muted);
+}
+.locale-switcher-icon {
+  display: inline-flex;
+  color: var(--fg-subtle);
+}
+.locale-switcher-flag {
+  font-size: 0.95em;
+  line-height: 1;
+}
+.locale-switcher-select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0 1rem 0 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+}
+.locale-switcher::after {
+  content: '';
+  position: absolute;
+  right: 0.55rem;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-65%) rotate(45deg);
+  pointer-events: none;
+  opacity: 0.55;
+}
+.locale-switcher-select:focus-visible {
+  outline: 2px solid var(--fg-muted);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 
 /* =========================================================
    Page header (gallery, about, cv routes)

@@ -1,11 +1,13 @@
 'use client'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
+import { useTranslations } from 'next-intl'
 import { m, useReducedMotion } from 'framer-motion'
 import { LuMail, LuDownload, LuArrowUpRight } from 'react-icons/lu'
 import { profileInfo, APP_ROUTE } from '@/app/app.const'
 import { track } from '@/lib/analytics'
 
 export default function ContactCTA() {
+  const t = useTranslations('CTA')
   const c = profileInfo.contact
   const reduced = useReducedMotion()
   const reveal = reduced
@@ -19,14 +21,11 @@ export default function ContactCTA() {
   return (
     <section className="cta" aria-labelledby="cta-title">
       <m.div className="cta-inner" {...reveal}>
-        <p className="cta-eyebrow">Let&apos;s build something</p>
+        <p className="cta-eyebrow">{t('eyebrow')}</p>
         <h2 id="cta-title" className="cta-title">
-          Have a hard problem worth shipping?
+          {t('title')}
         </h2>
-        <p className="cta-body">
-          I&apos;m most useful where products are scaling fast, teams need clarity,
-          and infrastructure has to behave under load. Reach out — I read every message.
-        </p>
+        <p className="cta-body">{t('body')}</p>
 
         <div className="cta-actions">
           <a
@@ -34,16 +33,17 @@ export default function ContactCTA() {
             className="btn btn-primary btn-lg"
             onClick={() => track('cv_contact_click', { channel: 'email', source: 'cta' })}
           >
-            <LuMail size={18} aria-hidden="true" /> Email me
+            <LuMail size={18} aria-hidden="true" /> {t('emailMe')}
           </a>
-          <Link
+          <a
             href={APP_ROUTE.CV_PDF}
             target="_blank"
+            rel="noopener noreferrer"
             className="btn btn-ghost btn-lg"
             onClick={() => track('cv_resume_download', { source: 'cta' })}
           >
-            <LuDownload size={18} aria-hidden="true" /> Résumé (PDF)
-          </Link>
+            <LuDownload size={18} aria-hidden="true" /> {t('resumePdf')}
+          </a>
           <Link
             href={c.linkedin}
             target="_blank"
@@ -51,7 +51,7 @@ export default function ContactCTA() {
             className="btn btn-ghost btn-lg"
             onClick={() => track('cv_social_click', { platform: 'linkedin', source: 'cta' })}
           >
-            <LuArrowUpRight size={18} aria-hidden="true" /> LinkedIn
+            <LuArrowUpRight size={18} aria-hidden="true" /> {t('linkedin')}
           </Link>
         </div>
       </m.div>

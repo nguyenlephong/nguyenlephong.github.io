@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
-import { AppShowcaseItem } from '@/app/apps/apps.data'
+import { AppShowcaseItem } from '@/app/[locale]/apps/apps.data'
 import GlanceVisual from './GlanceVisual'
 import { track } from '@/lib/analytics'
 

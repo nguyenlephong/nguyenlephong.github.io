@@ -1,20 +1,23 @@
 'use client'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
+import { useTranslations } from 'next-intl'
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
 import { profileInfo } from '@/app/app.const'
 import { track } from '@/lib/analytics'
+import LocaleSwitcher from '@/components/LocaleSwitcher'
 
 const year = new Date().getFullYear()
 
 export default function AppFooter() {
+  const t = useTranslations('Footer')
   const c = profileInfo.contact
   return (
     <footer className="app-footer">
       <div className="app-footer-inner">
         <div className="footer-meta">
           <p className="footer-name">Nguyen Le Phong</p>
-          <p className="footer-tag">Senior Software Engineer · Tech Lead</p>
+          <p className="footer-tag">{t('tag')}</p>
         </div>
 
         <ul className="footer-social" aria-label="Social profiles">
@@ -64,7 +67,10 @@ export default function AppFooter() {
           </li>
         </ul>
 
-        <p className="footer-copy">© {year} Nguyen Le Phong.</p>
+        <div className="footer-bottom">
+          <p className="footer-copy">{t('copy', { year })}</p>
+          <LocaleSwitcher />
+        </div>
       </div>
     </footer>
   )

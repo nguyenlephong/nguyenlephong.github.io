@@ -1,7 +1,15 @@
 import type { Metadata } from 'next'
+import { setRequestLocale } from 'next-intl/server'
+import { hasLocale } from 'next-intl'
+import { notFound } from 'next/navigation'
+import { routing } from '@/i18n/routing'
 import HeartbeatsClient from './HeartbeatsClient'
 import { familyMembers } from './family.data'
 import './heartbeats.css'
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
 
 export const metadata: Metadata = {
   title: 'Heartbeats',
@@ -24,6 +32,11 @@ export const metadata: Metadata = {
   twitter: undefined,
 }
 
-export default function HeartbeatsPage() {
+type Props = { params: Promise<{ locale: string }> }
+
+export default async function HeartbeatsPage({ params }: Props) {
+  const { locale } = await params
+  if (!hasLocale(routing.locales, locale)) notFound()
+  setRequestLocale(locale)
   return <HeartbeatsClient members={familyMembers} />
 }
