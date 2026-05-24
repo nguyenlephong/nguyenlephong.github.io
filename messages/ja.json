@@ -236,6 +236,18 @@
     "cv": { "title": "Software Engineer" },
     "about": { "heading": "私について" },
     "apps": { "heading": "アプリ" },
-    "gallery": { "heading": "ギャラリー" }
+    "gallery": {
+      "eyebrow": "ギャラリー",
+      "title": "仕事の記録",
+      "sub": "証明書、受賞、プロジェクト、そして舞台裏の瞬間。アイテムをクリックすると、原画または認証リンクが開きます。",
+      "back": "← 履歴書へ戻る",
+      "all": "すべて",
+      "categories": {
+        "certificates": "証明書",
+        "awards": "受賞",
+        "projects": "プロジェクト",
+        "activities": "アクティビティ"
+      }
+    }
   }
 }

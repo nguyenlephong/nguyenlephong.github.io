@@ -236,6 +236,18 @@
     "cv": { "title": "Software Engineer" },
     "about": { "heading": "About me" },
     "apps": { "heading": "Apps" },
-    "gallery": { "heading": "Gallery" }
+    "gallery": {
+      "eyebrow": "Gallery",
+      "title": "A record of the work",
+      "sub": "Certificates, awards, projects, and a few off-screen moments. Click any item to open the full image or its verification link.",
+      "back": "← Back to CV",
+      "all": "All",
+      "categories": {
+        "certificates": "Certifications",
+        "awards": "Awards",
+        "projects": "Projects",
+        "activities": "Activities"
+      }
+    }
   }
 }

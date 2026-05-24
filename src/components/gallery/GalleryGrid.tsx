@@ -2,6 +2,7 @@
 import { useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { m, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { LuExternalLink } from 'react-icons/lu'
 import { track } from '@/lib/analytics'
@@ -27,6 +28,7 @@ type Props = {
 const ALL = '__all__'
 
 export default function GalleryGrid({ categories }: Props) {
+  const t = useTranslations('Pages.gallery')
   const [active, setActive] = useState<string>(ALL)
 
   const buckets = useMemo(() => {
@@ -43,7 +45,7 @@ export default function GalleryGrid({ categories }: Props) {
     <>
       <div className="gallery-filter" role="tablist" aria-label="Gallery categories">
         <FilterChip
-          label="All"
+          label={t('all')}
           count={totalCount}
           active={active === ALL}
           onClick={() => {

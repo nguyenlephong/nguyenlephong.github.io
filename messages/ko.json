@@ -236,6 +236,18 @@
     "cv": { "title": "Software Engineer" },
     "about": { "heading": "소개" },
     "apps": { "heading": "앱" },
-    "gallery": { "heading": "갤러리" }
+    "gallery": {
+      "eyebrow": "갤러리",
+      "title": "작업의 기록",
+      "sub": "자격증, 수상, 프로젝트, 그리고 무대 뒤의 순간들. 항목을 클릭하면 원본 이미지나 인증 링크가 열립니다.",
+      "back": "← 이력서로 돌아가기",
+      "all": "전체",
+      "categories": {
+        "certificates": "자격증",
+        "awards": "수상",
+        "projects": "프로젝트",
+        "activities": "활동"
+      }
+    }
   }
 }

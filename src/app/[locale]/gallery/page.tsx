@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import { Link } from '@/i18n/navigation'
-import { setRequestLocale } from 'next-intl/server'
+import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
@@ -42,11 +42,12 @@ export default async function GalleryPage({ params }: Props) {
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+  const t = await getTranslations({ locale, namespace: 'Pages.gallery' })
   const categories = [
-    { id: 'certificates', label: 'Certifications', items: profileInfo.gallery.certificates },
-    { id: 'awards', label: 'Awards', items: profileInfo.gallery.awards },
-    { id: 'projects', label: 'Projects', items: profileInfo.gallery.projects },
-    { id: 'activities', label: 'Activities', items: profileInfo.gallery.activities },
+    { id: 'certificates', label: t('categories.certificates'), items: profileInfo.gallery.certificates },
+    { id: 'awards', label: t('categories.awards'), items: profileInfo.gallery.awards },
+    { id: 'projects', label: t('categories.projects'), items: profileInfo.gallery.projects },
+    { id: 'activities', label: t('categories.activities'), items: profileInfo.gallery.activities },
   ].filter((c) => c.items.length > 0)
 
   const galleryLd = {
@@ -75,15 +76,12 @@ export default async function GalleryPage({ params }: Props) {
       <div className="container">
         <header className="page-header">
           <span className="eyebrow">
-            <span className="eyebrow-dot" aria-hidden="true" /> Gallery
+            <span className="eyebrow-dot" aria-hidden="true" /> {t('eyebrow')}
           </span>
-          <h1 className="page-title">A record of the work</h1>
-          <p className="page-sub">
-            Certificates, awards, projects, and a few off-screen moments.
-            Click any item to open the full image or its verification link.
-          </p>
+          <h1 className="page-title">{t('title')}</h1>
+          <p className="page-sub">{t('sub')}</p>
           <Link href={APP_ROUTE.HOME} className="page-back">
-            ← Back to CV
+            {t('back')}
           </Link>
         </header>
 

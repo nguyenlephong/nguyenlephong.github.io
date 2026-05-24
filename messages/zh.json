@@ -236,6 +236,18 @@
     "cv": { "title": "Software Engineer" },
     "about": { "heading": "关于我" },
     "apps": { "heading": "应用" },
-    "gallery": { "heading": "作品集" }
+    "gallery": {
+      "eyebrow": "作品集",
+      "title": "工作的印记",
+      "sub": "证书、奖项、项目以及一些幕后瞬间。点击任意项目可查看原图或验证链接。",
+      "back": "← 返回简历",
+      "all": "全部",
+      "categories": {
+        "certificates": "证书",
+        "awards": "奖项",
+        "projects": "项目",
+        "activities": "活动"
+      }
+    }
   }
 }

@@ -236,6 +236,18 @@
     "cv": { "title": "Software Engineer" },
     "about": { "heading": "Về tôi" },
     "apps": { "heading": "Ứng dụng" },
-    "gallery": { "heading": "Bộ sưu tập" }
+    "gallery": {
+      "eyebrow": "Bộ sưu tập",
+      "title": "Dấu ấn công việc",
+      "sub": "Chứng chỉ, giải thưởng, dự án và vài khoảnh khắc đời thường. Bấm vào ảnh để xem bản gốc hoặc link xác thực.",
+      "back": "← Quay lại CV",
+      "all": "Tất cả",
+      "categories": {
+        "certificates": "Chứng chỉ",
+        "awards": "Giải thưởng",
+        "projects": "Dự án",
+        "activities": "Hoạt động"
+      }
+    }
   }
 }
