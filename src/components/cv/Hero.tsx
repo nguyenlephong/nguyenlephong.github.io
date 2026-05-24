@@ -3,16 +3,101 @@ import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
-import { LuMail, LuPhone, LuDownload, LuMapPin } from 'react-icons/lu'
+import {
+  LuMail,
+  LuPhone,
+  LuDownload,
+  LuMapPin,
+  LuCalendarClock,
+  LuCode2,
+  LuUsers,
+  LuCrown,
+  LuBuilding2,
+  LuLayers,
+  LuShieldCheck,
+  LuRocket,
+} from 'react-icons/lu'
+import type { IconType } from 'react-icons'
 import { profileInfo, APP_ROUTE } from '@/app/app.const'
 import { track } from '@/lib/analytics'
 import CountUp from '@/components/motion/CountUp'
 
-const stats = [
-  { label: 'Years of experience', value: '8+' },
-  { label: 'Engineers led', value: '12+' },
-  { label: 'MAU served', value: '15M+' },
-  { label: 'Domains delivered', value: '20+' },
+type StatTone = 'amber' | 'violet' | 'sky' | 'emerald' | 'rose' | 'cyan' | 'indigo' | 'lime'
+
+type Stat = {
+  icon: IconType
+  value: string
+  label: string
+  caption: string
+  tone: StatTone
+  spark: number[]
+}
+
+const stats: Stat[] = [
+  {
+    icon: LuCalendarClock,
+    value: '8+',
+    label: 'Years shipping',
+    caption: 'Production code, day in day out',
+    tone: 'amber',
+    spark: [3, 4, 5, 6, 7, 8, 9, 10],
+  },
+  {
+    icon: LuCode2,
+    value: '9K+',
+    label: 'Hours coding',
+    caption: 'Tracked via WakaTime since 2021',
+    tone: 'violet',
+    spark: [4, 5, 7, 6, 8, 9, 10, 12],
+  },
+  {
+    icon: LuUsers,
+    value: '80M+',
+    label: 'Users touched',
+    caption: 'Zalo · CDP · fintech scale',
+    tone: 'sky',
+    spark: [2, 3, 4, 6, 8, 9, 11, 12],
+  },
+  {
+    icon: LuCrown,
+    value: '12+',
+    label: 'Engineers led',
+    caption: 'Devs · QC · cross-functional',
+    tone: 'emerald',
+    spark: [2, 3, 4, 5, 7, 8, 10, 11],
+  },
+  {
+    icon: LuBuilding2,
+    value: '30+',
+    label: 'Tenants powered',
+    caption: 'Multi-tenant feature flags',
+    tone: 'rose',
+    spark: [1, 2, 4, 5, 6, 8, 9, 11],
+  },
+  {
+    icon: LuLayers,
+    value: '20+',
+    label: 'Domains delivered',
+    caption: 'Fintech · CDP · realestate · edu',
+    tone: 'cyan',
+    spark: [3, 4, 4, 5, 6, 7, 9, 10],
+  },
+  {
+    icon: LuRocket,
+    value: '30+',
+    label: 'Projects launched',
+    caption: 'SDKs · platforms · mobile apps',
+    tone: 'indigo',
+    spark: [2, 3, 4, 5, 6, 7, 9, 10],
+  },
+  {
+    icon: LuShieldCheck,
+    value: '1K+',
+    label: 'Test cases authored',
+    caption: 'BDD · E2E · regression safety',
+    tone: 'lime',
+    spark: [1, 2, 3, 4, 6, 8, 9, 11],
+  },
 ]
 
 const ease = [0.16, 1, 0.3, 1] as const
@@ -121,21 +206,37 @@ export default function Hero() {
             visible: { transition: { staggerChildren: 0.08, delayChildren: 0.35 } },
           }}
         >
-          {stats.map((s) => (
-            <motion.div
-              key={s.label}
-              className="stat-card"
-              variants={{
-                hidden: { opacity: 0, y: 14 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
-              }}
-            >
-              <div className="stat-value">
-                <CountUp value={s.value} />
-              </div>
-              <div className="stat-label">{s.label}</div>
-            </motion.div>
-          ))}
+          {stats.map((s) => {
+            const Icon = s.icon
+            const max = Math.max(...s.spark)
+            return (
+              <motion.div
+                key={s.label}
+                className={`stat-card stat-tone-${s.tone}`}
+                variants={{
+                  hidden: { opacity: 0, y: 14 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
+                }}
+              >
+                <span className="stat-glow" aria-hidden="true" />
+                <div className="stat-head">
+                  <span className="stat-icon" aria-hidden="true">
+                    <Icon size={16} />
+                  </span>
+                  <span className="stat-spark" aria-hidden="true">
+                    {s.spark.map((v, i) => (
+                      <span key={i} style={{ height: `${(v / max) * 100}%` }} />
+                    ))}
+                  </span>
+                </div>
+                <div className="stat-value">
+                  <CountUp value={s.value} />
+                </div>
+                <div className="stat-label">{s.label}</div>
+                <div className="stat-caption">{s.caption}</div>
+              </motion.div>
+            )
+          })}
         </motion.aside>
       </div>
     </section>

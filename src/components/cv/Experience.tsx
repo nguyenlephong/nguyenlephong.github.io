@@ -1,8 +1,38 @@
 'use client'
+import { LuMapPin, LuCalendarDays } from 'react-icons/lu'
 import { ExperienceItemType, JobType } from '@/app/app.type'
 import { Stagger, StaggerItem } from '@/components/motion/Reveal'
 
 type Props = { data: ExperienceItemType[] }
+
+const FEATURED_TECHS = new Set([
+  'react',
+  'reactjs',
+  'react.js',
+  'react native',
+  'next.js',
+  'nextjs',
+  'node.js',
+  'nodejs',
+  'node',
+  'typescript',
+  'javascript',
+  'java',
+  'spring framework',
+  'spring boot',
+  'angular',
+  'kotlin',
+  'flutter',
+  'docker',
+  '.net',
+  'electron',
+  'aks/fke/k3s/eks',
+  'kubernetes',
+])
+
+function isFeatured(tech: string): boolean {
+  return FEATURED_TECHS.has(tech.trim().toLowerCase())
+}
 
 export default function Experience({ data }: Props) {
   return (
@@ -17,14 +47,20 @@ export default function Experience({ data }: Props) {
           <div className="timeline-content">
             <header className="timeline-head">
               <h3 className="timeline-company">{ex.company}</h3>
-              <span className="timeline-location">{ex.location}</span>
+              <span className="meta-tag" title="Location">
+                <LuMapPin size={12} aria-hidden="true" />
+                <span>{ex.location}</span>
+              </span>
             </header>
 
             {ex.jobs.map((job: JobType) => (
               <article key={job.title} className="role">
                 <header className="role-head">
                   <h4 className="role-title">{job.title}</h4>
-                  <span className="role-duration">{job.duration}</span>
+                  <span className="meta-tag meta-tag-mono" title="Duration">
+                    <LuCalendarDays size={12} aria-hidden="true" />
+                    <span>{job.duration}</span>
+                  </span>
                 </header>
 
                 {job.summaries.map((s) => (
@@ -48,7 +84,10 @@ export default function Experience({ data }: Props) {
 
                 <div className="tech-row" aria-label="Key technologies">
                   {job.key_techs.map((t) => (
-                    <span key={t} className="tech-chip">
+                    <span
+                      key={t}
+                      className={`tech-chip${isFeatured(t) ? ' tech-chip-featured' : ''}`}
+                    >
                       {t}
                     </span>
                   ))}
