@@ -84,8 +84,16 @@ export const metadata: Metadata = {
     creator: '@nguyenlephong17',
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+      { url: '/favicon/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
   },
   verification: {
     google: undefined,
