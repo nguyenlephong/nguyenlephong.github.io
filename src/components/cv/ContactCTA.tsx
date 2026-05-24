@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { LuMail, LuDownload, LuArrowUpRight } from 'react-icons/lu'
 import { profileInfo, APP_ROUTE } from '@/app/app.const'
 import { track } from '@/lib/analytics'
@@ -18,7 +18,7 @@ export default function ContactCTA() {
       }
   return (
     <section className="cta" aria-labelledby="cta-title">
-      <motion.div className="cta-inner" {...reveal}>
+      <m.div className="cta-inner" {...reveal}>
         <p className="cta-eyebrow">Let&apos;s build something</p>
         <h2 id="cta-title" className="cta-title">
           Have a hard problem worth shipping?
@@ -54,7 +54,7 @@ export default function ContactCTA() {
             <LuArrowUpRight size={18} aria-hidden="true" /> LinkedIn
           </Link>
         </div>
-      </motion.div>
+      </m.div>
     </section>
   )
 }

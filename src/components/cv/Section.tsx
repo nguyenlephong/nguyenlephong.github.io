@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { track } from '@/lib/analytics'
 
 type SectionProps = {
@@ -46,12 +46,12 @@ export default function Section({ id, eyebrow, title, children }: SectionProps) 
 
   return (
     <section ref={ref} id={id} className="cv-section" aria-labelledby={`${id}-title`}>
-      <motion.header className="cv-section-head" {...reveal}>
+      <m.header className="cv-section-head" {...reveal}>
         <span className="cv-section-eyebrow">{eyebrow}</span>
         <h2 id={`${id}-title`} className="cv-section-title">
           {title}
         </h2>
-      </motion.header>
+      </m.header>
       <div className="cv-section-body">{children}</div>
     </section>
   )

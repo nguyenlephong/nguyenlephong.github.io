@@ -5,6 +5,7 @@ import Script from 'next/script'
 import AppHeader from '@/components/AppHeader'
 import AppFooter from '@/components/AppFooter'
 import ThemeScript from '@/components/theme/ThemeScript'
+import MotionProvider from '@/components/motion/MotionProvider'
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
 import { SITE_URL, PAGE_SEO } from '@/app/seo.config'
 import { Person, WithContext } from 'schema-dts'
@@ -178,8 +179,13 @@ export default function RootLayout({
       <head>
         <ThemeScript />
         <meta name="google-adsense-account" content="ca-pub-2196929070546836" />
-        <link rel="preconnect" href="https://app.posthog.com" />
+        {/* Preconnect to all third-party origins used post-load so the
+            TCP/TLS handshakes happen in parallel with first paint. */}
+        <link rel="preconnect" href="https://app.posthog.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://app.posthog.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
@@ -190,20 +196,22 @@ export default function RootLayout({
         />
       </head>
 
+      {/* All marketing/analytics scripts deferred to lazyOnload so they
+          never compete with FCP/LCP/TBT. */}
       <Script
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         id="GTM"
         src="https://www.googletagmanager.com/gtag/js?id=G-RLXNC58343"
       />
       <Script
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         id="adsbygoogle"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2196929070546836"
         crossOrigin="anonymous"
       />
       <Script
         id="GTM_datalayer"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
@@ -215,15 +223,18 @@ export default function RootLayout({
       />
       <Script
         id="POSTHOG"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+            // autocapture: false — disables the per-click DOM walker that
+            // ships ~30KB and hurts INP. We still get pageview + manual events.
             posthog.init('phc_Ti11bWc5cshVoQe8AI7SuY56FMFP7Fhc9WyymdOGVSw',{
               api_host:'https://app.posthog.com',
               capture_pageview: true,
               capture_pageleave: true,
-              autocapture: true,
+              autocapture: false,
+              disable_session_recording: true,
               persistence: 'localStorage+cookie'
             });
             posthog.register({ site: 'nguyenlephong.github.io', surface: 'cv' });
@@ -232,10 +243,12 @@ export default function RootLayout({
       />
 
       <body suppressHydrationWarning>
-        <WebVitalsReporter />
-        <AppHeader />
-        {children}
-        <AppFooter />
+        <MotionProvider>
+          <WebVitalsReporter />
+          <AppHeader />
+          {children}
+          <AppFooter />
+        </MotionProvider>
       </body>
     </html>
   )

@@ -1,5 +1,5 @@
 'use client'
-import { motion, useReducedMotion, type Variants } from 'framer-motion'
+import { m, useReducedMotion, type Variants } from 'framer-motion'
 import React, { type ReactNode } from 'react'
 
 type RevealProps = {
@@ -23,7 +23,7 @@ export default function Reveal({
   as = 'div',
 }: RevealProps) {
   const reduced = useReducedMotion()
-  const MotionTag = motion[as] as typeof motion.div
+  const MotionTag = m[as] as typeof m.div
 
   if (reduced) {
     const Tag = as as keyof React.JSX.IntrinsicElements
@@ -58,7 +58,7 @@ export function Stagger({
   as = 'div',
 }: StaggerProps) {
   const reduced = useReducedMotion()
-  const MotionTag = motion[as] as typeof motion.div
+  const MotionTag = m[as] as typeof m.div
 
   if (reduced) {
     const Tag = as as keyof React.JSX.IntrinsicElements
@@ -95,7 +95,7 @@ export function StaggerItem({
   onMouseEnter,
 }: StaggerItemProps) {
   const reduced = useReducedMotion()
-  const MotionTag = motion[as] as typeof motion.div
+  const MotionTag = m[as] as typeof m.div
 
   if (reduced) {
     const Tag = as as keyof React.JSX.IntrinsicElements

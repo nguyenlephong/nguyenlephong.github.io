@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { motion, useReducedMotion } from 'framer-motion'
+import { m, useReducedMotion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
 import {
@@ -120,24 +120,24 @@ export default function Hero() {
       <div className="hero-bleed" aria-hidden="true" />
       <div className="hero-grid">
         <div className="hero-meta">
-          <motion.span className="eyebrow" {...fade(0)}>
+          <m.span className="eyebrow" {...fade(0)}>
             <span className="status-dot" aria-hidden="true" /> Open to senior / lead opportunities
-          </motion.span>
-          <motion.h1 id="hero-heading" className="hero-name" {...fade(0.08)}>
+          </m.span>
+          <m.h1 id="hero-heading" className="hero-name" {...fade(0.08)}>
             Nguyen <span className="accent">Le Phong</span>
-          </motion.h1>
-          <motion.p className="hero-role" {...fade(0.16)}>
+          </m.h1>
+          <m.p className="hero-role" {...fade(0.16)}>
             Senior Software Engineer · Tech Lead<br />
             <span className="hero-role-sub">Full-stack · Platform engineering · Delivery leadership</span>
-          </motion.p>
+          </m.p>
 
-          <motion.p className="hero-bio" {...fade(0.24)}>
+          <m.p className="hero-bio" {...fade(0.24)}>
             I design and operate end-to-end systems — front-end apps, backend services, CI/CD pipelines,
             release workflows, and production infrastructure. Lately I lead an 11-person team shipping
             multi-tenant platforms, secure financial integrations, and Micro-Frontend architectures.
-          </motion.p>
+          </m.p>
 
-          <motion.ul className="hero-contact" {...fade(0.3)}>
+          <m.ul className="hero-contact" {...fade(0.3)}>
             <li>
               <LuMapPin size={16} aria-hidden="true" />
               <span>Ho Chi Minh City, Vietnam</span>
@@ -160,9 +160,9 @@ export default function Hero() {
                 <span>{c.phone}</span>
               </a>
             </li>
-          </motion.ul>
+          </m.ul>
 
-          <motion.div className="hero-cta" {...fade(0.36)}>
+          <m.div className="hero-cta" {...fade(0.36)}>
             <Link
               href={APP_ROUTE.CV_PDF}
               target="_blank"
@@ -178,9 +178,9 @@ export default function Hero() {
             >
               Get in touch
             </a>
-          </motion.div>
+          </m.div>
 
-          <motion.ul className="social-row" aria-label="Social profiles" {...fade(0.42)}>
+          <m.ul className="social-row" aria-label="Social profiles" {...fade(0.42)}>
             <SocialIcon href={c.linkedin} label="LinkedIn" platform="linkedin">
               <FaLinkedin size={18} />
             </SocialIcon>
@@ -193,10 +193,10 @@ export default function Hero() {
             <SocialIcon href={c.youtube} label="YouTube" platform="youtube">
               <FaYoutube size={18} />
             </SocialIcon>
-          </motion.ul>
+          </m.ul>
         </div>
 
-        <motion.aside
+        <m.aside
           className="hero-stats"
           aria-label="Career highlights"
           initial={reduced ? false : 'hidden'}
@@ -210,7 +210,7 @@ export default function Hero() {
             const Icon = s.icon
             const max = Math.max(...s.spark)
             return (
-              <motion.div
+              <m.div
                 key={s.label}
                 className={`stat-card stat-tone-${s.tone}`}
                 variants={{
@@ -234,10 +234,10 @@ export default function Hero() {
                 </div>
                 <div className="stat-label">{s.label}</div>
                 <div className="stat-caption">{s.caption}</div>
-              </motion.div>
+              </m.div>
             )
           })}
-        </motion.aside>
+        </m.aside>
       </div>
     </section>
   )

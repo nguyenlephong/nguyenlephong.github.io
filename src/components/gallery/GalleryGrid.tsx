@@ -2,7 +2,7 @@
 import { useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { m, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { LuExternalLink } from 'react-icons/lu'
 import { track } from '@/lib/analytics'
 
@@ -66,7 +66,7 @@ export default function GalleryGrid({ categories }: Props) {
       </div>
 
       <AnimatePresence mode="wait">
-        <motion.div
+        <m.div
           key={active}
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -100,7 +100,7 @@ export default function GalleryGrid({ categories }: Props) {
               </div>
             </section>
           ))}
-        </motion.div>
+        </m.div>
       </AnimatePresence>
     </>
   )
@@ -146,7 +146,7 @@ function PhotoCard({
   const delay = reduced ? 0 : Math.min(index * 0.04, 0.45)
 
   return (
-    <motion.div
+    <m.div
       initial={reduced ? false : { opacity: 0, y: 14 }}
       whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '0px 0px -40px 0px' }}
@@ -182,6 +182,6 @@ function PhotoCard({
           </figcaption>
         </figure>
       </Link>
-    </motion.div>
+    </m.div>
   )
 }
