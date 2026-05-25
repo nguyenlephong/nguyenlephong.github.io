@@ -12,6 +12,8 @@ Disallow: /ja/heartbeats
 Disallow: /ja/heartbeats/
 Disallow: /ko/heartbeats
 Disallow: /ko/heartbeats/
+Disallow: /fr/heartbeats
+Disallow: /fr/heartbeats/
 
 Host: https://nguyenlephong.github.io
 Sitemap: https://nguyenlephong.github.io/sitemap.xml
