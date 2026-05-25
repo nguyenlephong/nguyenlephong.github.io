@@ -37,6 +37,7 @@ const LOCALE_OG_MAP: Record<Locale, string> = {
   zh: 'zh_CN',
   ja: 'ja_JP',
   ko: 'ko_KR',
+  fr: 'fr_FR',
 }
 
 export function generateStaticParams() {
