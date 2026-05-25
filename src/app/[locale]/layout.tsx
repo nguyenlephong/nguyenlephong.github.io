@@ -8,6 +8,7 @@ import Script from 'next/script'
 import AppHeader from '@/components/AppHeader'
 import AppFooter from '@/components/AppFooter'
 import ThemeScript from '@/components/theme/ThemeScript'
+import ThemeSync from '@/components/theme/ThemeSync'
 import MotionProvider from '@/components/motion/MotionProvider'
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
 import { SITE_URL } from '@/app/seo.config'
@@ -285,6 +286,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
       <body suppressHydrationWarning>
         <NextIntlClientProvider>
+          <ThemeSync />
           <MotionProvider>
             <WebVitalsReporter />
             <AppHeader />
