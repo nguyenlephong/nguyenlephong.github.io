@@ -6,7 +6,7 @@ export const APP_ROUTE = {
   GALLERY: "/gallery",
   APPS: "/apps",
   CV: "/cv",
-  CV_PDF: 1 > 0 ? "SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf" : "/SoftwareEngineer_NguyenLePhong_0985490107.pdf"
+  CV_PDF: "/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf"
 }
 
 export const SEO = {
