@@ -1,0 +1,7 @@
+{
+  "slug": "work-messages-aggressive-bias",
+  "title": "Thiên kiến hung hăng trong tin nhắn công việc",
+  "html": "<p>Khác với nói chuyện trực tiếp, tin nhắn thường bị cảm nhận với một mức độ thù địch cao hơn (có lẽ do thiếu biểu cảm khuôn mặt và ngôn ngữ cơ thể).</p>\n<p>Vì vậy tốt nhất là cả hai phía nên có \"offset\". Với người gửi: hãy lịch sự hơn mức bình thường một chút. Với người đọc: hãy hạ vài bậc trong cách diễn giải xem một tin nhắn \"hung hăng\" đến đâu. Mặc định <a href=\"https://www.linkedin.com/pulse/why-assuming-positive-intent-can-only-benefit-you-yuval-atsmon/\">giả định ý tốt</a>.</p>\n<p><em>(Cùng thiên kiến này cũng áp dụng cho các hình thức giao tiếp viết khác. Ví dụ như review PR trên GitHub. Riêng email thì người ta thường đã quá lịch sự sẵn rồi.)</em></p>",
+  "backlinks": [],
+  "maturity": "seed"
+}

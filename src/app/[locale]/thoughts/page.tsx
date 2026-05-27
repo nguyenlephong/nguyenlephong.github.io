@@ -31,7 +31,7 @@ export default async function ThoughtsIndexPage({ params }: Props) {
   setRequestLocale(locale)
 
   const t = await getTranslations({ locale, namespace: 'Pages.thoughts' })
-  const graph = loadGraph()
+  const graph = loadGraph(locale)
   const thoughts = Object.values(graph.thoughts).sort(
     (a, b) => (maturityOrder[a.maturity] ?? 2) - (maturityOrder[b.maturity] ?? 2),
   )

@@ -1,0 +1,13 @@
+{
+  "slug": "programming-beacons",
+  "title": "Những ngọn hải đăng lập trình",
+  "html": "<p>Beacon là những manh mối kích hoạt một số giả định về code, mà phần lớn lại đúng — nhờ vậy bạn tiết kiệm được một ít \"chi phí\" tinh thần.</p>\n<p>Beacon có thể là một cách đặt tên phổ biến. Ví dụ nếu một biến tên là \"node\", nhiều khả năng nó là phần tử của một cây hoặc một kiểu collection liên kết nào đó.</p>\n<p>Bạn có thể làm code của mình giàu beacon hơn bằng cách rải chúng trong comment, nếu khó nhét vào trong chính câu lệnh.</p>\n<p>Mặc dù vậy, <a href=\"/thoughts/code-run-on-people\">Code có còn chạy trên con người?</a>.</p>",
+  "backlinks": [
+    {
+      "slug": "vocabulary-as-api-for-second-brain",
+      "title": "Vốn từ phong phú, nhất quán là API tốt nhất cho bộ não thứ hai",
+      "context": "<ul>\n<li><a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Kỹ năng diễn đạt</a> - <a href=\"/thoughts/programming-beacons\">Những ngọn hải đăng lập trình</a> - <a href=\"/thoughts/code-run-on-people\">Code có còn chạy trên con người?</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "seed"
+}

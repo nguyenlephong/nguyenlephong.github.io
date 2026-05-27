@@ -1,0 +1,13 @@
+{
+  "slug": "human-vs-ai-brain-elasticity",
+  "title": "Ưu thế nền tảng của con người so với AI",
+  "html": "<p>Một thứ mà các mô hình AI dưới dạng phần mềm còn thua xa não người là: bộ \"wetware\" này được trang bị một ưu thế sinh học mang tên <strong>tính dẻo (elasticity)</strong>.</p>\n<p>Các mô hình AI không học liên tục. Không có gì tương tự khả năng \"neuron nào kích hoạt cùng nhau thì kết nối với nhau\" của tâm trí.</p>\n<p>Bên trong ta là một cỗ máy hoá-sinh phức tạp tự \"fine-tune\" sau mỗi lần suy luận. Các mẫu thông tin được mã hoá và trừu tượng hoá thành các \"chunk\" hiệu quả một cách tự động. LLM thì bắt đầu lại từ con số không, bất kể chúng đã dành bao nhiêu thời gian xử lý cùng một vấn đề.</p>\n<p>Hành vi agentic của LLM tạo các liên kết ngữ cảnh thông qua sự tương đồng ngữ nghĩa của từ. Tâm trí con người thì hiểu và tạo liên kết dựa trên các quan hệ đã trừu tượng hoá — thực chất đang vận hành ở một chiều tư duy cao hơn.</p>",
+  "backlinks": [
+    {
+      "slug": "23cd8fda-6959-439f-800a-6d4eea5bd681",
+      "title": "AI làm giảm đặc quyền thông tin",
+      "context": "<ul>\n<li><a href=\"/thoughts/human-vs-ai-brain-elasticity\">Ưu thế nền tảng của con người so với AI</a> - <a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Kỹ năng diễn đạt</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "seed"
+}

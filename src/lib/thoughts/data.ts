@@ -1,21 +1,69 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { routing } from '@/i18n/routing'
 import type { ThoughtApiResponse, ThoughtGraphFile } from './types'
 
 const DATA_DIR = path.join(process.cwd(), 'public', 'thoughts-data')
 
 const EMPTY_GRAPH: ThoughtGraphFile = { thoughts: {}, edges: [] }
 
-export function loadGraph(): ThoughtGraphFile {
-  const file = path.join(DATA_DIR, '_graph.json')
-  if (!fs.existsSync(file)) return EMPTY_GRAPH
-  return JSON.parse(fs.readFileSync(file, 'utf-8')) as ThoughtGraphFile
+function readJson<T>(file: string): T | null {
+  if (!fs.existsSync(file)) return null
+  return JSON.parse(fs.readFileSync(file, 'utf-8')) as T
 }
 
-export function loadThought(slug: string): ThoughtApiResponse | null {
-  const file = path.join(DATA_DIR, 'thoughts', `${slug}.json`)
-  if (!fs.existsSync(file)) return null
-  return JSON.parse(fs.readFileSync(file, 'utf-8')) as ThoughtApiResponse
+/**
+ * Loads the canonical graph and, when a per-locale override exists, swaps in
+ * translated titles (and any translated backlink titles/contexts) on top of
+ * the canonical edges. Untranslated thoughts keep their English title so the
+ * graph remains complete instead of going blank.
+ */
+export function loadGraph(locale?: string): ThoughtGraphFile {
+  const base = readJson<ThoughtGraphFile>(path.join(DATA_DIR, '_graph.json'))
+  if (!base) return EMPTY_GRAPH
+
+  if (!locale || locale === routing.defaultLocale) return base
+
+  const overrideFile = path.join(DATA_DIR, locale, '_graph.json')
+  const override = readJson<ThoughtGraphFile>(overrideFile)
+  if (!override) return base
+
+  const merged: ThoughtGraphFile = {
+    edges: base.edges,
+    thoughts: { ...base.thoughts },
+  }
+  for (const [slug, baseThought] of Object.entries(base.thoughts)) {
+    const o = override.thoughts[slug]
+    merged.thoughts[slug] = {
+      ...baseThought,
+      title: o?.title ?? baseThought.title,
+      backlinks: o?.backlinks ?? baseThought.backlinks,
+    }
+  }
+  return merged
+}
+
+export function loadThought(
+  slug: string,
+  locale?: string,
+): ThoughtApiResponse | null {
+  const base = readJson<ThoughtApiResponse>(
+    path.join(DATA_DIR, 'thoughts', `${slug}.json`),
+  )
+  if (!base) return null
+  if (!locale || locale === routing.defaultLocale) return base
+
+  const override = readJson<Partial<ThoughtApiResponse>>(
+    path.join(DATA_DIR, locale, 'thoughts', `${slug}.json`),
+  )
+  if (!override) return base
+
+  return {
+    ...base,
+    title: override.title ?? base.title,
+    html: override.html ?? base.html,
+    backlinks: override.backlinks ?? base.backlinks,
+  }
 }
 
 export function listThoughtSlugs(): string[] {

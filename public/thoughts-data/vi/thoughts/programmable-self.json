@@ -1,0 +1,23 @@
+{
+  "slug": "programmable-self",
+  "title": "Bản thân có thể lập trình",
+  "html": "<h2>Tư duy</h2>\n<p>Cứ làm, cứ cảm, được giải phóng khỏi việc phải tin vào hệ thống của mình.\nNhớ rằng kết quả hữu hình cần thời gian và kiên nhẫn.</p>\n<h2>Các thành phần</h2>\n<p>Có một vài thành phần \"kiểu lập trình\" của MindOS:</p>\n<ul>\n<li><strong>Calendar</strong> là <strong>process scheduler</strong>.</li>\n<li><strong>To-do list</strong> là <strong>wait queue</strong>.</li>\n<li>Tất cả các mental model: <strong>Identity</strong>, <strong>Principle</strong>, <strong>Mental Model</strong>, <strong>Operation Modes/Contexts</strong> đều chỉ là framework cài đặt.</li>\n</ul>\n<h2>Các kiểu process</h2>\n<ul>\n<li><strong>Programs</strong>: nên có tính preemptive với timer.</li>\n<li><strong>Reflection</strong>: một meta-program ở đầu và cuối mỗi chu kỳ. Đây là nguồn của tính dẻo của MindOS.</li>\n</ul>\n<h2>Các phẩm chất</h2>\n<ul>\n<li><strong>Reliability</strong>: mức độ tuân thủ các \"chỉ thị\". Nói cách khác là kỷ luật.</li>\n</ul>\n<hr>\n<ul>\n<li><a href=\"/thoughts/life-running-digital-engine\">Cuộc sống vận hành như cỗ máy số</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "life-running-digital-engine",
+      "title": "Cuộc sống vận hành như cỗ máy số",
+      "context": "<ul>\n<li><a href=\"/thoughts/programmable-self\">Bản thân có thể lập trình</a></li>\n</ul>"
+    },
+    {
+      "slug": "modal-thinking",
+      "title": "Tư duy theo chế độ — tách quyết định khỏi thực thi",
+      "context": "<ul>\n<li><a href=\"/thoughts/programmable-self\">Bản thân có thể lập trình</a></li>\n</ul>"
+    },
+    {
+      "slug": "trust",
+      "title": "Niềm tin",
+      "context": "<ul>\n<li><a href=\"/thoughts/programmable-self\">Bản thân có thể lập trình</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "budding"
+}

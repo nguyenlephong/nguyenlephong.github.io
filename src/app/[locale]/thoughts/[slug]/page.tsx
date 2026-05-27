@@ -19,8 +19,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-  const thought = loadThought(slug)
+  const { locale, slug } = await params
+  const thought = loadThought(slug, locale)
   return {
     title: thought?.title ?? 'Thought',
     robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
@@ -33,7 +33,7 @@ export default async function ThoughtPage({ params }: Props) {
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
 
-  const thought = loadThought(slug)
+  const thought = loadThought(slug, locale)
   if (!thought) notFound()
 
   const t = await getTranslations({ locale, namespace: 'Pages.thoughts' })
