@@ -20,6 +20,10 @@
   },
   "dependencies": {
     "@react-pdf-viewer/core": "3.12.0",
+    "d3-drag": "^3.0.0",
+    "d3-force": "^3.0.0",
+    "d3-selection": "^3.0.0",
+    "d3-transition": "^3.0.1",
     "dayjs": "^1.11.13",
     "eslint-config-prettier": "9.1.0",
     "framer-motion": "^12.9.4",
@@ -34,6 +38,10 @@
     "schema-dts": "^1.1.2"
   },
   "devDependencies": {
+    "@types/d3-drag": "^3.0.7",
+    "@types/d3-force": "^3.0.10",
+    "@types/d3-selection": "^3.0.11",
+    "@types/d3-transition": "^3.0.9",
     "@types/node": "20",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",

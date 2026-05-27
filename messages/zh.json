@@ -233,9 +233,15 @@
     }
   },
   "Pages": {
-    "cv": { "title": "Software Engineer" },
-    "about": { "heading": "关于我" },
-    "apps": { "heading": "应用" },
+    "cv": {
+      "title": "Software Engineer"
+    },
+    "about": {
+      "heading": "关于我"
+    },
+    "apps": {
+      "heading": "应用"
+    },
     "gallery": {
       "eyebrow": "作品集",
       "title": "工作的印记",
@@ -248,6 +254,20 @@
         "projects": "项目",
         "activities": "活动"
       }
+    },
+    "thoughts": {
+      "eyebrow": "思想花园",
+      "title": "随想",
+      "intro": "一个不断生长的小笔记图谱。点击任意标题阅读全文。",
+      "empty": "暂无内容。",
+      "backToIndex": "返回列表",
+      "backlinks": "反向链接",
+      "maturity": {
+        "seed": "种子",
+        "budding": "萌芽",
+        "evergreen": "常青"
+      },
+      "credit": "灵感来自并镜像 <link>huylenq.github.io</link>。笔记原作归属于原作者；本镜像为私有并注明出处。"
     }
   }
 }

@@ -233,9 +233,15 @@
     }
   },
   "Pages": {
-    "cv": { "title": "Software Engineer" },
-    "about": { "heading": "Về tôi" },
-    "apps": { "heading": "Ứng dụng" },
+    "cv": {
+      "title": "Software Engineer"
+    },
+    "about": {
+      "heading": "Về tôi"
+    },
+    "apps": {
+      "heading": "Ứng dụng"
+    },
     "gallery": {
       "eyebrow": "Bộ sưu tập",
       "title": "Dấu ấn công việc",
@@ -248,6 +254,20 @@
         "projects": "Dự án",
         "activities": "Hoạt động"
       }
+    },
+    "thoughts": {
+      "eyebrow": "Vườn ý nghĩ",
+      "title": "Suy nghĩ",
+      "intro": "Một mảnh vườn nhỏ chứa các ghi chú đang lớn dần. Bấm vào bất kỳ tựa nào để đọc thêm.",
+      "empty": "Chưa có suy nghĩ nào.",
+      "backToIndex": "Về danh sách",
+      "backlinks": "Liên kết ngược",
+      "maturity": {
+        "seed": "Mầm",
+        "budding": "Nẩy mầm",
+        "evergreen": "Trưởng thành"
+      },
+      "credit": "Lấy cảm hứng và hiện đang phản chiếu ý nghĩ từ <link>huylenq.github.io</link>. Các ghi chú thuộc về anh ấy; bản mirror này riêng tư và có ghi nguồn."
     }
   }
 }

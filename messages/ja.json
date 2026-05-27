@@ -233,9 +233,15 @@
     }
   },
   "Pages": {
-    "cv": { "title": "Software Engineer" },
-    "about": { "heading": "私について" },
-    "apps": { "heading": "アプリ" },
+    "cv": {
+      "title": "Software Engineer"
+    },
+    "about": {
+      "heading": "私について"
+    },
+    "apps": {
+      "heading": "アプリ"
+    },
     "gallery": {
       "eyebrow": "ギャラリー",
       "title": "仕事の記録",
@@ -248,6 +254,20 @@
         "projects": "プロジェクト",
         "activities": "アクティビティ"
       }
+    },
+    "thoughts": {
+      "eyebrow": "思考の庭",
+      "title": "思考",
+      "intro": "成長中のノートの小さなグラフ。タイトルをクリックして読んでください。",
+      "empty": "まだありません。",
+      "backToIndex": "一覧に戻る",
+      "backlinks": "バックリンク",
+      "maturity": {
+        "seed": "種",
+        "budding": "芽生え",
+        "evergreen": "常緑"
+      },
+      "credit": "<link>huylenq.github.io</link> から着想を得て、現在ミラーしています。ノートは原作者のものです。"
     }
   }
 }

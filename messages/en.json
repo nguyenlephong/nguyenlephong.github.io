@@ -233,9 +233,15 @@
     }
   },
   "Pages": {
-    "cv": { "title": "Software Engineer" },
-    "about": { "heading": "About me" },
-    "apps": { "heading": "Apps" },
+    "cv": {
+      "title": "Software Engineer"
+    },
+    "about": {
+      "heading": "About me"
+    },
+    "apps": {
+      "heading": "Apps"
+    },
     "gallery": {
       "eyebrow": "Gallery",
       "title": "A record of the work",
@@ -248,6 +254,20 @@
         "projects": "Projects",
         "activities": "Activities"
       }
+    },
+    "thoughts": {
+      "eyebrow": "Thought garden",
+      "title": "Thoughts",
+      "intro": "A small, living graph of notes. Some are ripe; most are still seedlings. Click any title to read more.",
+      "empty": "No thoughts yet.",
+      "backToIndex": "Back to thoughts",
+      "backlinks": "Backlinks",
+      "maturity": {
+        "seed": "Seed",
+        "budding": "Budding",
+        "evergreen": "Evergreen"
+      },
+      "credit": "Inspired by and currently mirroring thoughts from <link>huylenq.github.io</link>. These notes are his; the mirror is private and credited."
     }
   }
 }

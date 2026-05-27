@@ -233,9 +233,15 @@
     }
   },
   "Pages": {
-    "cv": { "title": "Software Engineer" },
-    "about": { "heading": "소개" },
-    "apps": { "heading": "앱" },
+    "cv": {
+      "title": "Software Engineer"
+    },
+    "about": {
+      "heading": "소개"
+    },
+    "apps": {
+      "heading": "앱"
+    },
     "gallery": {
       "eyebrow": "갤러리",
       "title": "작업의 기록",
@@ -248,6 +254,20 @@
         "projects": "프로젝트",
         "activities": "활동"
       }
+    },
+    "thoughts": {
+      "eyebrow": "생각의 정원",
+      "title": "생각",
+      "intro": "자라나는 작은 노트 그래프입니다. 제목을 클릭해 읽어보세요.",
+      "empty": "아직 없습니다.",
+      "backToIndex": "목록으로",
+      "backlinks": "역링크",
+      "maturity": {
+        "seed": "씨앗",
+        "budding": "새싹",
+        "evergreen": "상록"
+      },
+      "credit": "<link>huylenq.github.io</link> 의 노트에서 영감을 받아 현재 미러링하고 있습니다. 출처를 명시합니다."
     }
   }
 }

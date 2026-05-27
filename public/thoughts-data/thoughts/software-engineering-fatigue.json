@@ -1,0 +1,7 @@
+{
+  "slug": "software-engineering-fatigue",
+  "title": "Software engineering fatigue",
+  "html": "<p>Making software is like assembling Lego bricks.</p>\n<p>At first, you learn the fundamental bricks. Gradually, you learn the precomposed blocks from those fundamental bricks, the abstractions built by others.</p>\n<p>More and more, where systems grow more complicated, people compose blocks from other blocks built by others.</p>\n<p>Eventually, you stray afar from the fundamental bricks. The cost of finding out what bricks are there became impractical (for building sellable software). Your learning turned from “understanding things” to \"how to use things.” You don’t learn the bricks anymore but accept the blocks as they are from others. They are incidental; they feel artificial.</p>\n<p>To put it into perspective, learning physics will make you boil down to the truth of the universe, while learning software engineering nowadays makes you learn arbitrary inventions from others. They are not compounds.</p>\n<hr>\n<ul>\n<li><a href=\"/thoughts/6e9a5e59-4c26-4d67-bc3a-c8d404445b2e\">Perfect-tools syndrome</a></li>\n</ul>",
+  "backlinks": [],
+  "maturity": "budding"
+}

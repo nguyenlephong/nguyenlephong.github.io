@@ -233,9 +233,15 @@
     }
   },
   "Pages": {
-    "cv": { "title": "Software Engineer" },
-    "about": { "heading": "À propos de moi" },
-    "apps": { "heading": "Applications" },
+    "cv": {
+      "title": "Software Engineer"
+    },
+    "about": {
+      "heading": "À propos de moi"
+    },
+    "apps": {
+      "heading": "Applications"
+    },
     "gallery": {
       "eyebrow": "Galerie",
       "title": "Le journal de mes travaux",
@@ -248,6 +254,20 @@
         "projects": "Projets",
         "activities": "Activités"
       }
+    },
+    "thoughts": {
+      "eyebrow": "Jardin de pensées",
+      "title": "Pensées",
+      "intro": "Un petit graphe vivant de notes. Cliquez sur un titre pour en lire plus.",
+      "empty": "Aucune pensée pour l’instant.",
+      "backToIndex": "Retour à la liste",
+      "backlinks": "Rétroliens",
+      "maturity": {
+        "seed": "Graine",
+        "budding": "Bourgeon",
+        "evergreen": "Persistant"
+      },
+      "credit": "Inspiré de et actuellement miroir des notes de <link>huylenq.github.io</link>. Crédit à l’auteur original."
     }
   }
 }

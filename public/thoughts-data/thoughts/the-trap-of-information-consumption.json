@@ -1,0 +1,18 @@
+{
+  "slug": "the-trap-of-information-consumption",
+  "title": "The trap of information consumption without action",
+  "html": "<p>A common failure mode in learning where we accumulate knowledge without progressing through the <span class=\"private-link\">KUB - Three stages of comprehension</span> framework.</p>\n<h3>Symptoms</h3>\n<ul>\n<li>Constantly reading new books/articles without applying insights</li>\n<li>Feeling knowledgeable but unable to demonstrate competence</li>\n<li>Collecting information as a form of productive procrastination</li>\n<li>Mistaking recognition for understanding</li>\n</ul>\n<h3>Why it happens</h3>\n<ul>\n<li>Information feels like progress (dopamine from novelty)</li>\n<li>Action requires vulnerability and risk of failure</li>\n<li>Knowledge hoarding feels safer than practice</li>\n<li>Modern information abundance makes consumption endless</li>\n</ul>\n<h3>Breaking the trap</h3>\n<ul>\n<li>Set implementation intentions before consuming content</li>\n<li>Practice \"just-in-time\" learning vs \"just-in-case\" learning</li>\n<li>Create friction for consumption, remove friction for practice</li>\n<li>Track actions taken, not information consumed</li>\n</ul>\n<h3>Related concepts</h3>\n<ul>\n<li><span class=\"private-link\">Why thinking?</span> - Purposeful vs busy thinking</li>\n<li><span class=\"private-link\">States of Mind</span> - Balance contemplation with flow/action</li>\n</ul>\n<hr>\n<ul>\n<li><a href=\"/thoughts/thinking-excuses\">When thinking becomes the excuse</a></li>\n<li><span class=\"private-link\">What is the line between Knowledge and Skill?</span></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "purpose-of-highlights",
+      "title": "Purpose of of highlights",
+      "context": "<ul>\n<li><a href=\"/thoughts/a-reading-system\">A Reading System</a> - <a href=\"/thoughts/the-trap-of-information-consumption\">The trap of information consumption without action</a></li>\n</ul>"
+    },
+    {
+      "slug": "thinking-excuses",
+      "title": "When thinking becomes the excuse",
+      "context": "<ul>\n<li><a href=\"/thoughts/thinking-and-doing-rhythm\">Thinking and Doing Rhythm</a> - <a href=\"/thoughts/the-trap-of-information-consumption\">The trap of information consumption without action</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "evergreen"
+}

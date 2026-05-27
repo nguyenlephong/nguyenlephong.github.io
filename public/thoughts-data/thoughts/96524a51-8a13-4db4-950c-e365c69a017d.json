@@ -1,0 +1,23 @@
+{
+  "slug": "96524a51-8a13-4db4-950c-e365c69a017d",
+  "title": "§ Articulation skill",
+  "html": "<p>Articulation is the ultimate validation of thinking. If you cannot put an idea into words, in writing, in speech, in a prompt to an LLM, it means either the thought was never concluded or you haven’t truly understood it yet. The act of verbalizing forces precision: vague intuitions must become concrete claims, and the gaps reveal themselves. This is why writing is thinking, not merely its record. It is also why a rich and consistent vocabulary matters, it is the interface through which your mind retrieves and connects what it knows.</p>\n<hr>\n<ul>\n<li><span class=\"private-link\">The friction of verbalizing abstract ideas into LLM prompts</span></li>\n<li><a href=\"/thoughts/recognizable-patterns-of-valuable-thoughts\">Are there recognizable patterns or signals of valuable thoughts</a></li>\n<li><a href=\"/thoughts/vocabulary-as-api-for-second-brain\">Your rich and consistent vocabulary is the best API for your second brain</a></li>\n<li><a href=\"/thoughts/different-purposes-of-writing\">Different purposes of writing</a></li>\n<li><a href=\"/thoughts/how-i-write-notes\">How I Write Notes</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "23cd8fda-6959-439f-800a-6d4eea5bd681",
+      "title": "AI reduces the information privilege",
+      "context": "<ul>\n<li><a href=\"/thoughts/human-vs-ai-brain-elasticity\">The fundamental advantages of human vs AI</a> - <a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Articulation skill</a></li>\n</ul>"
+    },
+    {
+      "slug": "how-i-write-notes",
+      "title": "How I Write Notes",
+      "context": "<ul>\n<li><a href=\"/thoughts/516f2efb-2e65-4809-81e6-ed40c245d331\">Why taking notes?</a> - <a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Articulation skill</a></li>\n</ul>"
+    },
+    {
+      "slug": "vocabulary-as-api-for-second-brain",
+      "title": "Your rich and consistent vocabulary is the best API for your second brain",
+      "context": "<ul>\n<li><a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Articulation skill</a> - <a href=\"/thoughts/programming-beacons\">Programming beacons</a> - <a href=\"/thoughts/code-run-on-people\">Does code still run on people?</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "budding"
+}
