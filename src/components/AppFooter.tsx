@@ -6,6 +6,7 @@ import { SiLeetcode } from 'react-icons/si'
 import { profileInfo } from '@/app/app.const'
 import { track } from '@/lib/analytics'
 import LocaleSwitcher from '@/components/LocaleSwitcher'
+import FontSwitcher from '@/components/font/FontSwitcher'
 
 const year = new Date().getFullYear()
 
@@ -69,7 +70,10 @@ export default function AppFooter() {
 
         <div className="footer-bottom">
           <p className="footer-copy">{t('copy', { year })}</p>
-          <LocaleSwitcher />
+          <div className="footer-controls">
+            <FontSwitcher placement="up" />
+            <LocaleSwitcher />
+          </div>
         </div>
       </div>
     </footer>

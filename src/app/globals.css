@@ -1152,8 +1152,14 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   margin: 0;
   white-space: nowrap;
 }
+.footer-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 @media (max-width: 720px) {
   .footer-bottom { justify-self: center; justify-content: center; }
+  .footer-controls { justify-content: center; }
 }
 
 /* =========================================================
@@ -2149,7 +2155,6 @@ kbd, .app-card-hotkey-keys kbd {
 }
 .font-switcher__menu {
   position: absolute;
-  top: calc(100% + 8px);
   right: 0;
   min-width: 240px;
   padding: 0.5rem;
@@ -2158,6 +2163,12 @@ kbd, .app-card-hotkey-keys kbd {
   border-radius: 12px;
   box-shadow: var(--shadow-lg);
   z-index: 60;
+}
+.font-switcher--down .font-switcher__menu {
+  top: calc(100% + 8px);
+}
+.font-switcher--up .font-switcher__menu {
+  bottom: calc(100% + 8px);
 }
 .font-switcher__title {
   margin: 0.25rem 0.5rem 0.5rem;

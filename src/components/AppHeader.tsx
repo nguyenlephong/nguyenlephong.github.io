@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { APP_ROUTE } from '@/app/app.const'
 import ThemeToggle from '@/components/theme/ThemeToggle'
-import FontSwitcher from '@/components/font/FontSwitcher'
 import { track } from '@/lib/analytics'
 
 export default function AppHeader() {
@@ -58,7 +57,6 @@ export default function AppHeader() {
         </nav>
 
         <div className="nav-actions">
-          <FontSwitcher />
           <ThemeToggle />
           <a
             href={APP_ROUTE.CV_PDF}

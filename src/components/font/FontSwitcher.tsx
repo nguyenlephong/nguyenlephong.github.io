@@ -61,7 +61,12 @@ function applyFont(font: ReadingFont) {
   }
 }
 
-export default function FontSwitcher() {
+interface FontSwitcherProps {
+  /** Direction the menu opens. Use 'up' in the footer. */
+  placement?: 'down' | 'up'
+}
+
+export default function FontSwitcher({ placement = 'down' }: FontSwitcherProps) {
   const t = useTranslations('Nav.font')
   const [mounted, setMounted] = useState(false)
   const [current, setCurrent] = useState<ReadingFont>('inter')
@@ -105,7 +110,10 @@ export default function FontSwitcher() {
   const ariaLabel = `${t('label')}: ${currentMeta.label}`
 
   return (
-    <div className="font-switcher" ref={ref}>
+    <div
+      className={`font-switcher font-switcher--${placement}`}
+      ref={ref}
+    >
       <button
         type="button"
         className="font-switcher__trigger"
