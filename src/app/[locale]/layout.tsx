@@ -1,5 +1,12 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import {
+  Inter,
+  JetBrains_Mono,
+  Source_Sans_3,
+  IBM_Plex_Sans,
+  Atkinson_Hyperlegible,
+  Lora,
+} from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
@@ -9,6 +16,7 @@ import AppHeader from '@/components/AppHeader'
 import AppFooter from '@/components/AppFooter'
 import ThemeScript from '@/components/theme/ThemeScript'
 import ThemeSync from '@/components/theme/ThemeSync'
+import FontScript from '@/components/font/FontScript'
 import MotionProvider from '@/components/motion/MotionProvider'
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
 import { SITE_URL } from '@/app/seo.config'
@@ -28,6 +36,40 @@ const jbMono = JetBrains_Mono({
   variable: '--font-mono',
   display: 'swap',
 })
+
+const sourceSans = Source_Sans_3({
+  subsets: ['latin'],
+  variable: '--font-reading-source',
+  display: 'swap',
+})
+
+const plexSans = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-reading-plex',
+  display: 'swap',
+})
+
+const atkinson = Atkinson_Hyperlegible({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-reading-atkinson',
+  display: 'swap',
+})
+
+const lora = Lora({
+  subsets: ['latin'],
+  variable: '--font-reading-lora',
+  display: 'swap',
+})
+
+const FONT_VARIABLES = [
+  jbMono.variable,
+  sourceSans.variable,
+  plexSans.variable,
+  atkinson.variable,
+  lora.variable,
+].join(' ')
 
 const PROFILE_AVATAR =
   'https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom.png'
@@ -223,9 +265,10 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   }
 
   return (
-    <html lang={locale} className={`${inter.variable} ${jbMono.variable}`} suppressHydrationWarning>
+    <html lang={locale} className={`${inter.variable} ${FONT_VARIABLES}`} suppressHydrationWarning>
       <head>
         <ThemeScript />
+        <FontScript />
         <meta name="google-adsense-account" content="ca-pub-2196929070546836" />
         <link rel="preconnect" href="https://app.posthog.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://app.posthog.com" />

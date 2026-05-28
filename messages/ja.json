@@ -5,7 +5,12 @@
     "projects": "プロジェクト",
     "contact": "連絡先",
     "gallery": "ギャラリー",
-    "resume": "履歴書"
+    "resume": "履歴書",
+    "font": {
+      "label": "本文フォント",
+      "sans": "サンセリフ",
+      "serif": "セリフ"
+    }
   },
   "Footer": {
     "tag": "シニアソフトウェアエンジニア · テックリード",

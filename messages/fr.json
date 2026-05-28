@@ -5,7 +5,12 @@
     "projects": "Projets",
     "contact": "Contact",
     "gallery": "Galerie",
-    "resume": "CV"
+    "resume": "CV",
+    "font": {
+      "label": "Police de lecture",
+      "sans": "Sans-serif",
+      "serif": "Serif"
+    }
   },
   "Footer": {
     "tag": "Senior Software Engineer · Tech Lead",

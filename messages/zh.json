@@ -5,7 +5,12 @@
     "projects": "项目",
     "contact": "联系",
     "gallery": "作品集",
-    "resume": "简历"
+    "resume": "简历",
+    "font": {
+      "label": "阅读字体",
+      "sans": "无衬线",
+      "serif": "衬线"
+    }
   },
   "Footer": {
     "tag": "高级软件工程师 · 技术负责人",

@@ -5,7 +5,12 @@
     "projects": "프로젝트",
     "contact": "연락처",
     "gallery": "갤러리",
-    "resume": "이력서"
+    "resume": "이력서",
+    "font": {
+      "label": "본문 글꼴",
+      "sans": "산세리프",
+      "serif": "세리프"
+    }
   },
   "Footer": {
     "tag": "시니어 소프트웨어 엔지니어 · 테크 리드",
