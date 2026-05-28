@@ -18,7 +18,7 @@ export interface PageSEO {
 }
 
 export const PAGE_SEO: Record<
-  'home' | 'about' | 'cv' | 'gallery' | 'apps' | 'homeAlt',
+  'home' | 'about' | 'cv' | 'gallery' | 'apps' | 'homeAlt' | 'thoughts',
   PageSEO
 > = {
   home: {
@@ -106,6 +106,32 @@ export const PAGE_SEO: Record<
     ],
     ogAlt: 'Apps Showroom — tiny, crafted open-source tools',
   },
+  thoughts: {
+    title: 'Thoughts — A Living Knowledge Graph of Notes & Essays',
+    description:
+      'A small, living graph of notes on reading, writing, software craft, decision making, and learning. Mirrored with credit from huylenq.github.io and progressively translated.',
+    path: '/thoughts',
+    keywords: [
+      'knowledge graph',
+      'digital garden',
+      'evergreen notes',
+      'second brain',
+      'Obsidian thoughts',
+      'note taking',
+      'software engineering essays',
+      'Nguyen Le Phong thoughts',
+    ],
+    ogAlt: 'Thoughts — a living knowledge graph of notes and essays',
+  },
+}
+
+// Original source of the mirrored thoughts. Used for schema.org isBasedOn
+// citations and visible attribution.
+export const THOUGHTS_SOURCE = {
+  name: 'huylenq.github.io',
+  author: 'Huy Le',
+  homepage: 'https://huylenq.github.io',
+  thoughtUrl: (slug: string) => `https://huylenq.github.io/thoughts/${slug}`,
 }
 
 export function absoluteUrl(path: string): string {

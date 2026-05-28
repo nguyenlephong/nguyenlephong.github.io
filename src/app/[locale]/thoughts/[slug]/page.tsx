@@ -3,7 +3,18 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { routing } from '@/i18n/routing'
+import { routing, type Locale } from '@/i18n/routing'
+import {
+  SITE,
+  SITE_URL,
+  THOUGHTS_SOURCE,
+} from '@/app/seo.config'
+import {
+  OG_LOCALE_MAP,
+  buildDescription,
+  canonicalFor,
+  localeAlternates,
+} from '@/lib/thoughts/seo'
 import { listThoughtSlugs, loadThought } from '@/lib/thoughts/data'
 import ThoughtContent from '@/components/thoughts/ThoughtContent'
 import Backlinks from '@/components/thoughts/Backlinks'
@@ -21,10 +32,48 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params
   const thought = loadThought(slug, locale)
+  if (!thought) {
+    return { title: 'Thought not found' }
+  }
+
+  const title = thought.title
+  const description = buildDescription(thought.html)
+  const canonical = canonicalFor(locale, `/thoughts/${slug}`)
+  const languages = localeAlternates(`/thoughts/${slug}`)
+
   return {
-    title: thought?.title ?? 'Thought',
-    robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
-    alternates: { canonical: null },
+    title,
+    description,
+    alternates: { canonical, languages },
+    openGraph: {
+      type: 'article',
+      url: canonical,
+      title,
+      description,
+      siteName: SITE.name,
+      locale: OG_LOCALE_MAP[locale as Locale] ?? OG_LOCALE_MAP.en,
+      alternateLocale: routing.locales
+        .filter((l) => l !== locale)
+        .map((l) => OG_LOCALE_MAP[l]),
+      authors: [SITE_URL],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      site: SITE.twitter,
+      creator: SITE.twitter,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
   }
 }
 
@@ -37,9 +86,45 @@ export default async function ThoughtPage({ params }: Props) {
   if (!thought) notFound()
 
   const t = await getTranslations({ locale, namespace: 'Pages.thoughts' })
+  const canonical = canonicalFor(locale, `/thoughts/${slug}`)
+  const description = buildDescription(thought.html)
+  const originalUrl = THOUGHTS_SOURCE.thoughtUrl(slug)
+
+  const articleLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': canonical + '#article',
+    headline: thought.title,
+    description,
+    inLanguage: locale,
+    url: canonical,
+    mainEntityOfPage: canonical,
+    isBasedOn: originalUrl,
+    sameAs: [originalUrl],
+    isPartOf: {
+      '@type': 'CollectionPage',
+      '@id': canonicalFor(locale, '/thoughts') + '#collection',
+    },
+    author: {
+      '@type': 'Person',
+      name: THOUGHTS_SOURCE.author,
+      url: THOUGHTS_SOURCE.homepage,
+    },
+    publisher: {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#person`,
+      name: 'Nguyen Le Phong',
+      url: SITE_URL,
+    },
+    creditText: `Originally published at ${THOUGHTS_SOURCE.name}`,
+  }
 
   return (
     <main className="thought-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
       <Link href={`/${locale}/thoughts`} className="thought-page__back">
         ← {t('backToIndex')}
       </Link>
@@ -55,11 +140,7 @@ export default async function ThoughtPage({ params }: Props) {
       <p className="thoughts-page__credit">
         {t.rich('credit', {
           link: (chunks) => (
-            <a
-              href={`https://huylenq.github.io/thoughts/${slug}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={originalUrl} target="_blank" rel="noopener noreferrer">
               {chunks}
             </a>
           ),

@@ -9,21 +9,12 @@ export default function robots(): MetadataRoute.Robots {
     `/${l}/heartbeats`,
     `/${l}/heartbeats/`,
   ])
-  const thoughtsBlocks = routing.locales.flatMap((l) => [
-    `/${l}/thoughts`,
-    `/${l}/thoughts/`,
-  ])
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: [
-          '/private/',
-          '/api/',
-          ...heartbeatsBlocks,
-          ...thoughtsBlocks,
-        ],
+        disallow: ['/private/', '/api/', ...heartbeatsBlocks],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

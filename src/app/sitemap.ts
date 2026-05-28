@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URL } from '@/app/seo.config'
 import { routing } from '@/i18n/routing'
+import { listThoughtSlugs } from '@/lib/thoughts/data'
 
 export const dynamic = 'force-static'
 
@@ -10,13 +11,18 @@ const PATHS: Array<{ path: string; priority: number; freq: 'weekly' | 'monthly' 
   { path: '/about', priority: 0.8, freq: 'monthly' },
   { path: '/cv', priority: 0.8, freq: 'monthly' },
   { path: '/gallery', priority: 0.7, freq: 'monthly' },
+  { path: '/thoughts', priority: 0.85, freq: 'weekly' },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
   const entries: MetadataRoute.Sitemap = []
 
-  for (const { path, priority, freq } of PATHS) {
+  const pushPath = (
+    path: string,
+    priority: number,
+    freq: 'weekly' | 'monthly',
+  ) => {
     const languages: Record<string, string> = {}
     for (const locale of routing.locales) {
       languages[locale] = `${SITE_URL}/${locale}${path}`
@@ -32,6 +38,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         alternates: { languages },
       })
     }
+  }
+
+  for (const { path, priority, freq } of PATHS) pushPath(path, priority, freq)
+
+  // Per-thought entries: one per (locale, slug) with hreflang cluster
+  for (const slug of listThoughtSlugs()) {
+    pushPath(`/thoughts/${slug}`, 0.7, 'monthly')
   }
 
   return entries
