@@ -19,9 +19,9 @@ export default async function OgImage() {
         theme="ocean"
         eyebrow="Thoughts"
         title="A living knowledge graph."
-        subtitle="Notes on reading, writing, software craft, decision making, and learning — mirrored with credit and progressively translated."
+        subtitle="Notes on reading, writing, software craft, decision making, and learning — curated and progressively translated."
         chips={['Digital garden', 'Evergreen notes', 'Knowledge graph', '40+ thoughts']}
-        badge={{ label: 'Source', value: 'huylenq.github.io' }}
+        badge={{ label: 'Format', value: 'Knowledge graph' }}
       />
     ),
     { ...size },

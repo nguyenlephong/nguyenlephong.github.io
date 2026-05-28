@@ -99,16 +99,15 @@ export default async function ThoughtPage({ params }: Props) {
     inLanguage: locale,
     url: canonical,
     mainEntityOfPage: canonical,
-    isBasedOn: originalUrl,
-    sameAs: [originalUrl],
     isPartOf: {
       '@type': 'CollectionPage',
       '@id': canonicalFor(locale, '/thoughts') + '#collection',
     },
     author: {
       '@type': 'Person',
-      name: THOUGHTS_SOURCE.author,
-      url: THOUGHTS_SOURCE.homepage,
+      '@id': `${SITE_URL}/#person`,
+      name: 'Nguyen Le Phong',
+      url: SITE_URL,
     },
     publisher: {
       '@type': 'Person',
@@ -116,7 +115,6 @@ export default async function ThoughtPage({ params }: Props) {
       name: 'Nguyen Le Phong',
       url: SITE_URL,
     },
-    creditText: `Originally published at ${THOUGHTS_SOURCE.name}`,
   }
 
   return (

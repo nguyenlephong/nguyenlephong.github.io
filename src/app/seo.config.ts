@@ -109,14 +109,13 @@ export const PAGE_SEO: Record<
   thoughts: {
     title: 'Thoughts — A Living Knowledge Graph of Notes & Essays',
     description:
-      'A small, living graph of notes on reading, writing, software craft, decision making, and learning. Mirrored with credit from huylenq.github.io and progressively translated.',
+      'A living knowledge graph of notes and essays on reading, writing, software craft, decision making, and learning — curated and progressively translated.',
     path: '/thoughts',
     keywords: [
       'knowledge graph',
       'digital garden',
       'evergreen notes',
       'second brain',
-      'Obsidian thoughts',
       'note taking',
       'software engineering essays',
       'Nguyen Le Phong thoughts',
@@ -125,11 +124,10 @@ export const PAGE_SEO: Record<
   },
 }
 
-// Original source of the mirrored thoughts. Used for schema.org isBasedOn
-// citations and visible attribution.
+// Reference link shown only inside the rendered page (visible footer credit).
+// NOT exposed in any SEO metadata — meta description, JSON-LD, OG images,
+// sitemap, robots — must stay clean of this URL by request.
 export const THOUGHTS_SOURCE = {
-  name: 'huylenq.github.io',
-  author: 'Huy Le',
   homepage: 'https://huylenq.github.io',
   thoughtUrl: (slug: string) => `https://huylenq.github.io/thoughts/${slug}`,
 }

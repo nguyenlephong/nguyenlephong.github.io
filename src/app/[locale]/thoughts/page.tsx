@@ -92,7 +92,6 @@ export default async function ThoughtsIndexPage({ params }: Props) {
     description: seo.description,
     url: canonicalFor(locale, '/thoughts'),
     inLanguage: locale,
-    isBasedOn: THOUGHTS_SOURCE.homepage,
     isPartOf: { '@type': 'WebSite', '@id': `${SITE_URL}/#website` },
     author: { '@type': 'Person', '@id': `${SITE_URL}/#person` },
     hasPart: thoughts.map((th) => ({

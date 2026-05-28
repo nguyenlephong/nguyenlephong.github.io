@@ -60,7 +60,7 @@ export default async function OgImage({ params }: { params: Promise<Params> }) {
         chips={[
           MATURITY_LABEL[thought.maturity] ?? 'Note',
           'Knowledge graph',
-          'Mirrored from huylenq.github.io',
+          'Thoughts',
         ]}
         badge={{ label: 'Maturity', value: MATURITY_LABEL[thought.maturity] ?? 'Note' }}
       />
