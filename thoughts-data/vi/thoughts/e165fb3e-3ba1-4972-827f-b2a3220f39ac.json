@@ -1,0 +1,18 @@
+{
+  "slug": "e165fb3e-3ba1-4972-827f-b2a3220f39ac",
+  "title": "Những quy luật vật lý của cuộc sống",
+  "html": "<p>Những quy luật phổ quát có thể áp dụng cho nhiều lĩnh vực, nhiều khía cạnh trong đời sống.</p>\n<h3>Quán tính / Định luật I (Momentum / Inertia)</h3>\n<p>Ma sát để bắt đầu luôn lớn hơn ma sát để duy trì. Bắt đầu một thói quen, một dự án, một cuộc trò chuyện bạn vẫn né tránh: phần khó nhất là cú đẩy đầu tiên. Khi đã chuyển động, \"bánh đà\" sẽ cuốn bạn đi. Đây là lý do <a href=\"/thoughts/the-cost-of-delayed-action\">Cái giá của việc trì hoãn hành động</a> cộng dồn theo cấp số nhân, và là lý do các hành động token quan trọng hơn các kế hoạch hoành tráng.</p>\n<h3>Hấp dẫn / Nguyên lý Goldilocks (Gravity / Goldilocks)</h3>\n<p>Mọi thứ đều có lực kéo tự nhiên về một điểm cân bằng. Quá ít thử thách thì bạn thoái hoá vì chán. Quá nhiều thì bạn sụp đổ vì quá tải. Điểm ngọt là vùng mà nỗ lực gặp được sự tăng trưởng — trục \"thử thách vs kỹ năng\". Hãy tôn trọng lực hấp dẫn của khả năng hiện tại của bạn.</p>\n<h3>Entropy / Định luật II nhiệt động học</h3>\n<p>Để mặc, mọi thứ tan rã. Các mối quan hệ, codebase, thói quen, sức khoẻ. Trật tự đòi hỏi liên tục bơm năng lượng vào. Đừng ngạc nhiên khi hỗn loạn len lỏi vào; hãy ngạc nhiên khi nó không. Kỷ luật không nằm ở việc xây hệ thống một lần, mà ở việc duy trì nó chống lại lực kéo không ngừng của hỗn loạn.</p>\n<h3><span class=\"private-link\">Lý thuyết cuộc đời như sóng</span></h3>\n<p>Phần lớn thay đổi xảy ra theo sóng, không theo đường thẳng. Bạn cảm thấy tràn năng lượng vì có lúc bạn từng mệt. Bạn cảm thấy hạnh phúc vì có lúc bạn từng buồn. Cái thấp chính là cái cho phép cái cao tồn tại. Hãy trân trọng khi đang ở đáy sóng — đó là cái làm nên đỉnh sóng.</p>\n<hr>\n<ul>\n<li><a href=\"/thoughts/the-cost-of-delayed-action\">Cái giá của việc trì hoãn hành động</a></li>\n<li><a href=\"/thoughts/start-new-behaviors-in-boring-easy-mode\">Khi tập thói quen mới, hãy bắt đầu ở chế độ 'dễ và chán'</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "the-cost-of-delayed-action",
+      "title": "Cái giá của việc trì hoãn hành động",
+      "context": "<ul>\n<li><a href=\"/thoughts/start-new-behaviors-in-boring-easy-mode\">Khi tập thói quen mới, hãy bắt đầu ở chế độ 'dễ và chán'</a> - <a href=\"/thoughts/e165fb3e-3ba1-4972-827f-b2a3220f39ac\">Những quy luật vật lý của cuộc sống</a></li>\n</ul>"
+    },
+    {
+      "slug": "start-new-behaviors-in-boring-easy-mode",
+      "title": "Khi tập thói quen mới, hãy bắt đầu ở chế độ 'dễ và chán'",
+      "context": "<ul>\n<li><a href=\"/thoughts/the-cost-of-delayed-action\">Cái giá của việc trì hoãn hành động</a> - <a href=\"/thoughts/e165fb3e-3ba1-4972-827f-b2a3220f39ac\">Những quy luật vật lý của cuộc sống</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "budding"
+}

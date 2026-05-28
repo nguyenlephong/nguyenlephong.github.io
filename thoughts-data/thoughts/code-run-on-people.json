@@ -1,0 +1,18 @@
+{
+  "slug": "code-run-on-people",
+  "title": "Does code still run on people?",
+  "html": "<blockquote>\n<p>“Programs must be written for people to read, and only incidentally for machines to execute.”\n﹣Harold Abelson, Structure and Interpretation of Computer Programs</p>\n</blockquote>\n<p>This used to be gospel. Now it's genuinely funny. As AI coding agents write and read most of the code, and engineers increasingly orchestrate in English rather than in syntax, who exactly is the code “running on”? The machines are writing for machines. Meanwhile, the human's job shifted from reading code to writing clear intent in natural language. Abelson's quote might still hold, just not in the way he meant: the “program” people now write for other people to read is the prompt, the spec, the architectural decision, not the code itself.</p>",
+  "backlinks": [
+    {
+      "slug": "programming-beacons",
+      "title": "Programming beacons",
+      "context": "<p>Though, <a href=\"/thoughts/code-run-on-people\">Does code still run on people?</a>.</p>"
+    },
+    {
+      "slug": "vocabulary-as-api-for-second-brain",
+      "title": "Your rich and consistent vocabulary is the best API for your second brain",
+      "context": "<ul>\n<li><a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Articulation skill</a> - <a href=\"/thoughts/programming-beacons\">Programming beacons</a> - <a href=\"/thoughts/code-run-on-people\">Does code still run on people?</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "budding"
+}

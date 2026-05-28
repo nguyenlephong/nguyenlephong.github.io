@@ -14,6 +14,18 @@ Disallow: /ko/heartbeats
 Disallow: /ko/heartbeats/
 Disallow: /fr/heartbeats
 Disallow: /fr/heartbeats/
+Disallow: /en/thoughts
+Disallow: /en/thoughts/
+Disallow: /vi/thoughts
+Disallow: /vi/thoughts/
+Disallow: /zh/thoughts
+Disallow: /zh/thoughts/
+Disallow: /ja/thoughts
+Disallow: /ja/thoughts/
+Disallow: /ko/thoughts
+Disallow: /ko/thoughts/
+Disallow: /fr/thoughts
+Disallow: /fr/thoughts/
 
 Host: https://nguyenlephong.github.io
 Sitemap: https://nguyenlephong.github.io/sitemap.xml

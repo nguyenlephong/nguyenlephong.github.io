@@ -1,0 +1,18 @@
+{
+  "slug": "feel-the-sensation",
+  "title": "Cảm nhận",
+  "html": "<p>Cái chúng ta sống vì, dù có nghĩ ra mục đích cao xa thế nào, rốt cuộc cũng là tìm kiếm và trải nghiệm các cảm giác.</p>\n<p>Các cảm giác xúc cảm — những cảm giác \"tốt\" cốt lõi mà (đến một mức nào đó) bạn có thể chủ ý chọn để theo đuổi — là lực hút từ <span class=\"private-link\">La bàn của tôi</span>. Với tôi, đó là:</p>\n<ul>\n<li>\n<p>Sự viên mãn của khoảnh khắc \"<strong>chính là đây</strong>\". Khi tôi tận hưởng cuộc sống đúng như nó đang là. Khi hiện tại là tất cả những gì tôi có, và như vậy là đủ.</p>\n</li>\n<li>\n<p>Cảm giác <strong>đang tiến lên</strong>, biết rằng sứ mệnh còn rất xa — thậm chí hướng đi, hay cái gì ở đích, vẫn chưa rõ — nhưng tôi biết mình đang tiến lên (thường còn hơn cả mức tôi cảm thấy).</p>\n</li>\n<li>\n<p>Thanh thản — tin rằng mọi thứ vẫn ổn, tôi đang ổn. Phần lớn cảm giác này đến từ <a href=\"/thoughts/life-running-digital-engine\">Cuộc sống vận hành như cỗ máy số</a>.</p>\n<ul>\n<li>Bạn cảm được khi sự mất cân bằng đang xảy ra. Theo bản năng, bạn cảm thấy thôi thúc khôi phục lại cân bằng — bạn thích mọi thứ cân bằng.</li>\n<li>Bạn cảm được các \"nợ\" đang tích lại, và bạn thích giải phóng chúng.</li>\n<li><strong>Ở đâu có kỳ vọng, ở đó có nợ</strong>.</li>\n</ul>\n</li>\n</ul>\n<hr>\n<ul>\n<li><a href=\"/thoughts/sense\">Trực giác</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "sense",
+      "title": "Trực giác",
+      "context": "<ul>\n<li><a href=\"/thoughts/feel-the-sensation\">Cảm nhận</a></li>\n</ul>"
+    },
+    {
+      "slug": "the-heuristics-for-what-to-do-now",
+      "title": "Những heuristic cho câu hỏi 'bây giờ làm gì'",
+      "context": "<ul>\n<li><a href=\"/thoughts/feel-the-sensation\">Cảm nhận</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "budding"
+}

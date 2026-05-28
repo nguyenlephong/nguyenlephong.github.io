@@ -1,0 +1,23 @@
+{
+  "slug": "the-cost-of-delayed-action",
+  "title": "Cái giá của việc trì hoãn hành động",
+  "html": "<p>Hay còn gọi là <strong>todo list</strong>. Tôi thích gọi nó bằng một cái tên khác: \"nghịch lý của todo có-quản-lý\". Todo ở đây gồm các app todo list, các task trong daily notes, hay bất kỳ kiểu mục todo nào bị hoãn lại.</p>\n<p>Todo list là một cách gần như bất khả tranh cãi để tổ chức và tối ưu năng suất. Nhưng cũng không hiếm khi nghe thuật ngữ \"nghĩa địa todo\" bay quanh.</p>\n<h2>Vì sao nó tốn kém</h2>\n<p>Khi ý nảy ra cũng là lúc động lực hữu cơ cao nhất, và động lực đó phân rã theo thời gian.</p>\n<p>Ngoài ra, càng hoãn lâu thì càng tích thêm:</p>\n<ul>\n<li><strong>Cảm giác nghĩa vụ</strong>. Người-đã-muốn-điều-đó là một người khác với người-hiện-tại. Càng cách xa nhau về thời gian, hai con người đó càng xa lạ.</li>\n<li><strong>Trí nhớ phai</strong>. Việc nạp lại context — gồm \"tại sao\" và \"như thế nào\" — càng tốn kém.</li>\n</ul>\n<h2>Cách giảm thiểu</h2>\n<p>Thực hiện <strong><mark>hành động token</mark></strong>. Một hành động token là bước nhỏ nhất có thể, đưa task từ ý định trừu tượng sang tiến triển cụ thể. Viết một dòng code. Gửi email. Mở file lên. Mục tiêu không phải là hoàn thành — mà là phá vỡ ma sát tĩnh. Một khi task đã có chỗ bám trong thực tại, động lực hữu cơ có gì đó để bám vào thay vì phân rã trong một danh sách.</p>\n<hr>\n<ul>\n<li><a href=\"/thoughts/start-new-behaviors-in-boring-easy-mode\">Khi tập thói quen mới, hãy bắt đầu ở chế độ 'dễ và chán'</a></li>\n<li><a href=\"/thoughts/e165fb3e-3ba1-4972-827f-b2a3220f39ac\">Những quy luật vật lý của cuộc sống</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "how-i-write-notes",
+      "title": "Cách tôi viết ghi chú",
+      "context": "<p>...in your vault. That means if an idea belongs to the Vault, do not dump it down to the interim ephemeral notes. Avoid <a href=\"/thoughts/the-cost-of-delayed-action\">Cái giá của việc trì hoãn hành động</a>.</p>"
+    },
+    {
+      "slug": "e165fb3e-3ba1-4972-827f-b2a3220f39ac",
+      "title": "Những quy luật vật lý của cuộc sống",
+      "context": "<p>...is the first push. Once moving, the flywheel carries you. This is why <a href=\"/thoughts/the-cost-of-delayed-action\">Cái giá của việc trì hoãn hành động</a> compounds, and why token actions matter more than grand plans.</p>"
+    },
+    {
+      "slug": "start-new-behaviors-in-boring-easy-mode",
+      "title": "Khi tập thói quen mới, hãy bắt đầu ở chế độ 'dễ và chán'",
+      "context": "<ul>\n<li><a href=\"/thoughts/the-cost-of-delayed-action\">Cái giá của việc trì hoãn hành động</a> - <a href=\"/thoughts/e165fb3e-3ba1-4972-827f-b2a3220f39ac\">Những quy luật vật lý của cuộc sống</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "evergreen"
+}

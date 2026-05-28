@@ -1,0 +1,13 @@
+{
+  "slug": "vocabulary-as-api-for-second-brain",
+  "title": "Vốn từ phong phú, nhất quán là API tốt nhất cho bộ não thứ hai",
+  "html": "<p>Vault của bạn là một đồ thị, nhưng bạn điều hướng nó qua các từ. Khi tôi gõ <code>[[</code> trong Obsidian, cái nảy ra trong đầu sẽ quyết định cái gì được link. Nếu trước đây tôi gọi một thứ là \"information overload\" và sau gọi là \"consumption trap\", hai ghi chú đó sẽ không bao giờ gặp nhau. API đã hỏng. Vốn từ nhất quán chính là dây nối nhất quán. Đây là phiên bản con-người của một API contract ổn định: đổi tên endpoint là mọi client gãy.</p>\n<p>Vốn từ phong phú còn làm được nhiều hơn việc giúp truy xuất. Nó định hình những thứ bạn <em>có thể</em> nghĩ. Nếu bạn có từ chính xác cho những khác biệt tinh tế, bạn có thể lập luận về những khác biệt đó. Một lập trình viên chỉ có \"list\" không thể nghĩ trong khái niệm \"stack\" vs \"queue\" vs \"deque\". Nguyên tắc tương tự áp dụng cho tri thức cá nhân. Cách đặt tên càng phong phú và chính xác, bạn càng có nhiều chiều để tư duy.</p>\n<hr>\n<ul>\n<li><a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Kỹ năng diễn đạt</a></li>\n<li><a href=\"/thoughts/programming-beacons\">Những ngọn hải đăng lập trình</a></li>\n<li><a href=\"/thoughts/code-run-on-people\">Code có còn chạy trên con người?</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "96524a51-8a13-4db4-950c-e365c69a017d",
+      "title": "§ Kỹ năng diễn đạt",
+      "context": "<p>...- <a href=\"/thoughts/vocabulary-as-api-for-second-brain\">Vốn từ phong phú, nhất quán là API tốt nhất cho bộ não thứ hai</a> - [Different purposes of...</p>"
+    }
+  ],
+  "maturity": "budding"
+}

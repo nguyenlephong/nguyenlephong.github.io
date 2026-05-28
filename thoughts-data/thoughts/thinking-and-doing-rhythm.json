@@ -1,0 +1,13 @@
+{
+  "slug": "thinking-and-doing-rhythm",
+  "title": "Thinking and Doing Rhythm",
+  "html": "<p>We think faster and more than what we can do. The mind races ahead, mapping possibilities, while the hands are still on step one. This mismatch is the source of most productivity anxiety: you feel behind because your thoughts are already three moves ahead of your actions.</p>\n<p>The practical rhythm is to think <em>just enough</em> to act, then act, then think again with what you learned. One cycle of think-act teaches more than ten cycles of think-think-think. Thinking ahead too much breaks the rhyme. The plan diverges from reality with every unvalidated assumption, and you end up replanning instead of progressing.</p>\n<p>Thinking without acting is imagination. Acting without thinking is impulse. The two are inseparable. Agency is the unity of both, in rhythm.</p>\n<hr>\n<ul>\n<li><a href=\"/thoughts/thinking-excuses\">When thinking becomes the excuse</a></li>\n<li><a href=\"/thoughts/modal-thinking\">Modal thinking - Separate decision making and execution</a></li>\n<li><span class=\"private-link\">Balancing optimization and direct action?</span></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "thinking-excuses",
+      "title": "When thinking becomes the excuse",
+      "context": "<ul>\n<li><a href=\"/thoughts/thinking-and-doing-rhythm\">Thinking and Doing Rhythm</a> - <a href=\"/thoughts/the-trap-of-information-consumption\">The trap of information consumption without action</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "budding"
+}

@@ -1,0 +1,40 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:T5b3,<p>A common failure mode in learning where we accumulate knowledge without progressing through the <span class="private-link">KUB - Three stages of comprehension</span> framework.</p>
+<h3>Symptoms</h3>
+<ul>
+<li>Constantly reading new books/articles without applying insights</li>
+<li>Feeling knowledgeable but unable to demonstrate competence</li>
+<li>Collecting information as a form of productive procrastination</li>
+<li>Mistaking recognition for understanding</li>
+</ul>
+<h3>Why it happens</h3>
+<ul>
+<li>Information feels like progress (dopamine from novelty)</li>
+<li>Action requires vulnerability and risk of failure</li>
+<li>Knowledge hoarding feels safer than practice</li>
+<li>Modern information abundance makes consumption endless</li>
+</ul>
+<h3>Breaking the trap</h3>
+<ul>
+<li>Set implementation intentions before consuming content</li>
+<li>Practice "just-in-time" learning vs "just-in-case" learning</li>
+<li>Create friction for consumption, remove friction for practice</li>
+<li>Track actions taken, not information consumed</li>
+</ul>
+<h3>Related concepts</h3>
+<ul>
+<li><span class="private-link">Why thinking?</span> - Purposeful vs busy thinking</li>
+<li><span class="private-link">States of Mind</span> - Balance contemplation with flow/action</li>
+</ul>
+<hr>
+<ul>
+<li><a href="/thoughts/thinking-excuses">When thinking becomes the excuse</a></li>
+<li><span class="private-link">What is the line between Knowledge and Skill?</span></li>
+</ul>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/zh/thoughts","className":"thought-page__back","children":["← ","返回列表"]}],["$","h1",null,{"className":"thought-page__title","children":"The trap of information consumption without action"}],["$","div",null,{"className":"thought-page__maturity","children":"常青"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[{"slug":"purpose-of-highlights","title":"Purpose of of highlights","context":"<ul>\n<li><a href=\"/thoughts/a-reading-system\">A Reading System</a> - <a href=\"/thoughts/the-trap-of-information-consumption\">The trap of information consumption without action</a></li>\n</ul>"},{"slug":"thinking-excuses","title":"When thinking becomes the excuse","context":"<ul>\n<li><a href=\"/thoughts/thinking-and-doing-rhythm\">Thinking and Doing Rhythm</a> - <a href=\"/thoughts/the-trap-of-information-consumption\">The trap of information consumption without action</a></li>\n</ul>"}]}],["$","p",null,{"className":"thoughts-page__credit","children":["灵感来自并镜像 ",["$","a","link0",{"href":"https://huylenq.github.io/thoughts/the-trap-of-information-consumption","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}],"。笔记原作归属于原作者；本镜像为私有并注明出处。"]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+8:null

@@ -1,0 +1,31 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:T4b0,<h2>Tư duy</h2>
+<p>Cứ làm, cứ cảm, được giải phóng khỏi việc phải tin vào hệ thống của mình.
+Nhớ rằng kết quả hữu hình cần thời gian và kiên nhẫn.</p>
+<h2>Các thành phần</h2>
+<p>Có một vài thành phần "kiểu lập trình" của MindOS:</p>
+<ul>
+<li><strong>Calendar</strong> là <strong>process scheduler</strong>.</li>
+<li><strong>To-do list</strong> là <strong>wait queue</strong>.</li>
+<li>Tất cả các mental model: <strong>Identity</strong>, <strong>Principle</strong>, <strong>Mental Model</strong>, <strong>Operation Modes/Contexts</strong> đều chỉ là framework cài đặt.</li>
+</ul>
+<h2>Các kiểu process</h2>
+<ul>
+<li><strong>Programs</strong>: nên có tính preemptive với timer.</li>
+<li><strong>Reflection</strong>: một meta-program ở đầu và cuối mỗi chu kỳ. Đây là nguồn của tính dẻo của MindOS.</li>
+</ul>
+<h2>Các phẩm chất</h2>
+<ul>
+<li><strong>Reliability</strong>: mức độ tuân thủ các "chỉ thị". Nói cách khác là kỷ luật.</li>
+</ul>
+<hr>
+<ul>
+<li><a href="/thoughts/life-running-digital-engine">Cuộc sống vận hành như cỗ máy số</a></li>
+</ul>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/vi/thoughts","className":"thought-page__back","children":["← ","Về danh sách"]}],["$","h1",null,{"className":"thought-page__title","children":"Bản thân có thể lập trình"}],["$","div",null,{"className":"thought-page__maturity","children":"Nẩy mầm"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[{"slug":"life-running-digital-engine","title":"Cuộc sống vận hành như cỗ máy số","context":"<ul>\n<li><a href=\"/thoughts/programmable-self\">Bản thân có thể lập trình</a></li>\n</ul>"},{"slug":"modal-thinking","title":"Tư duy theo chế độ — tách quyết định khỏi thực thi","context":"<ul>\n<li><a href=\"/thoughts/programmable-self\">Bản thân có thể lập trình</a></li>\n</ul>"},{"slug":"trust","title":"Niềm tin","context":"<ul>\n<li><a href=\"/thoughts/programmable-self\">Bản thân có thể lập trình</a></li>\n</ul>"}]}],["$","p",null,{"className":"thoughts-page__credit","children":["Lấy cảm hứng và hiện đang phản chiếu ý nghĩ từ ",["$","a","link0",{"href":"https://huylenq.github.io/thoughts/programmable-self","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}],". Các ghi chú thuộc về anh ấy; bản mirror này riêng tư và có ghi nguồn."]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+8:null

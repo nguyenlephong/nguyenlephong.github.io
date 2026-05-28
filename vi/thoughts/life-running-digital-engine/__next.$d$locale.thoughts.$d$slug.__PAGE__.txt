@@ -1,0 +1,47 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+a:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:Tcb9,<p>Một tổng hợp toàn diện gồm các sub-system cho cách tôi vận hành hầu hết các khía cạnh của đời sống mà ở đó có thể áp dụng một hệ kiểu rule-engine.</p>
+<p>Cách triển khai tổng thể của hệ thống này rất ưu tiên dùng app. Lý do là để tận dụng <strong>notification</strong> của app cùng với <span class="private-link">Nguyên lý First-screen</span>, qua đó giảm thuế tâm trí cho việc ra quyết định và sự lo lắng triền miên về "làm cái đúng".</p>
+<p>Phía trên tất cả các sub-system là tư duy chi phối việc thực thi chúng. Mô hình hiện tại đang theo là <span class="private-link">States of Mind</span>.</p>
+<h3>Driver Todo System</h3>
+<p>Bạn ngồi ghế tài xế.</p>
+<p>App: <strong>Things</strong></p>
+<p>Mọi task và project đều là một cơ hội để nhặt lên. Chúng có một kết quả mong muốn <em>tích cực</em> để theo đuổi. Mỗi tiến triển đẩy cuộc sống của bạn tiến về phía trước.</p>
+<p>Hiệu suất không được preallocate, không được lên lịch theo giờ. <strong>Tâm thế</strong> khi xử lý backlog ở ghế tài xế là gấp gáp: "tôi có thể làm xong cái này trong thời gian tối thiểu không?", hay "tôi có thể làm tốt nhất việc này trong 30 phút không?". <em>Tôi đạt được kết quả càng nhanh càng tốt</em>.</p>
+<p>Loại trừ các task định kỳ, lên lịch. Hệ todo-mục-tiêu này chứa cơ hội, không phải nghĩa vụ (có một video YouTube của Ali Abdaal nói về việc này).</p>
+<p>Liên quan: <span class="private-link">Healthy todo backlog</span></p>
+<h3>Accountability Todo System</h3>
+<p>Không thoả thuận lại, thực thi không tốn chu kỳ tâm trí nào — đó là cái đẹp của hệ thống.</p>
+<p>Apps: <strong>Calendar</strong> + <strong>Reminders</strong> + <strong>Streaks</strong></p>
+<p>Hệ thống quản lý các <em>nghĩa vụ</em> và <em>routine</em> mà tôi cứ thế làm không cần nghĩ. Phần lớn được lên lịch theo giờ hoặc có context thực thi rất rõ.</p>
+<p>Quy luật "<strong>khi nào làm</strong>":</p>
+<ul>
+<li>Khi đến hạn — buổi tối với task theo ngày, đúng lúc xuất hiện với task theo giờ.</li>
+<li>Theo context (địa điểm, thiết bị). Hiện chỉ có duy nhất một context:
+<ul>
+<li><em>Đi chợ</em>: khi tôi đang ở một cửa hàng tạp hoá.</li>
+</ul>
+</li>
+</ul>
+<h3>Nhịp Reflection</h3>
+<p>Nhịp reflection là <strong>động lực</strong> của sự tiến hoá tự-ổn-định của hệ thống. Các phiên reflection được làm thường xuyên, theo lịch lặp.</p>
+<p>Có ba chu kỳ: <strong>ngày</strong>, <strong>tuần</strong>, và <strong>tháng</strong>. Chúng được lên lịch với chi tiết ghi trong app Reminders:</p>
+<ul>
+<li><span class="private-link">The Day</span></li>
+<li><span class="private-link">Weekly Reflection</span></li>
+<li><span class="private-link">Monthly Reflection</span></li>
+</ul>
+<hr>
+<ul>
+<li><a href="/thoughts/programmable-self">Bản thân có thể lập trình</a></li>
+</ul>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/vi/thoughts","className":"thought-page__back","children":["← ","Về danh sách"]}],["$","h1",null,{"className":"thought-page__title","children":"Cuộc sống vận hành như cỗ máy số"}],["$","div",null,{"className":"thought-page__maturity","children":"Trưởng thành"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[{"slug":"feel-the-sensation","title":"Cảm nhận","context":"<p>...is fine, I'm doing fine. A big part of this comes from <a href=\"/thoughts/life-running-digital-engine\">Cuộc sống vận hành như cỗ máy số</a>. \t- You can feel the imbalance happening. You by instinct, feel...</p>"},{"slug":"programmable-self","title":"Bản thân có thể lập trình","context":"<ul>\n<li><a href=\"/thoughts/life-running-digital-engine\">Cuộc sống vận hành như cỗ máy số</a></li>\n</ul>"}]}],"$L6"]}],["$L7","$L8"],"$L9"]}],"loading":null,"isPartial":false}
+6:["$","p",null,{"className":"thoughts-page__credit","children":["Lấy cảm hứng và hiện đang phản chiếu ý nghĩ từ ",["$","a","link0",{"href":"https://huylenq.github.io/thoughts/life-running-digital-engine","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}],". Các ghi chú thuộc về anh ấy; bản mirror này riêng tư và có ghi nguồn."]}]
+7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]
+9:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

@@ -1,0 +1,56 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+a:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:Tb54,<p>I've been maintaining a personal knowledge vault in Obsidian for a few years now. These are the principles I've settled on — not a system I planned upfront, but habits that survived contact with reality.</p>
+<h2>Write when</h2>
+<ul>
+<li>In the writing window time.</li>
+<li><strong>Recognizing connections</strong> — while writing other notes, or when a real-life situation triggers an idea that lives in the vault.
+<ul>
+<li>This comes from habits built outside of writing sessions: an intimate mental mapping of your vault, and the ability to recognize links between fleeting thoughts and the ideas already living there.</li>
+</ul>
+</li>
+</ul>
+<h2>Write with</h2>
+<ol>
+<li>
+<p>(<em>Quite radical and (still in) experimental</em>): write <strong>directly</strong> and <strong>immediately</strong> in your vault. That means if an idea belongs to the Vault, do not dump it down to the interim ephemeral notes. Avoid <a href="/thoughts/the-cost-of-delayed-action">The cost of delayed action</a>.</p>
+</li>
+<li>
+<p>Write with the <strong>quality</strong> as if I am about to show it to someone. Writing in prose potentially (I don’t know for sure) comes with the cost of being too elaborated for efficient reread. This can be mitigated by <strong>bolding</strong> the keywords.</p>
+</li>
+<li>
+<p><strong>Make connections</strong> <em>relentlessly</em>:</p>
+<ul>
+<li>Be mindful of three linkage mechanisms: wiki links for network thoughts; topic/ tags to build up topic indices; and Obsidian <strong>Canvas</strong> to synthesize perspectives</li>
+<li>From the parked relations that haven’t yet been incorporated into the main text.</li>
+<li>From the orphan and loosely connected notes in Obsidian graph view.</li>
+<li>From your mind, of course.</li>
+</ul>
+</li>
+<li>
+<p>Don't write the words down out of tiredness and fear of loss if they don't make sense. The cost of maintaining them outweighs the risk of losing valuable (which is a doubt in this case) thoughts. Don't turn your Vault into a garbage dump.</p>
+</li>
+</ol>
+<h2>Vault hygiene</h2>
+<ul>
+<li>Leverage Raycast AI Commands to fix spelling and improve writing.</li>
+<li>Use Obsidian Local Graph (with adjustable depth) to discover (sometimes surprising) transitive connections.</li>
+<li>Don't be afraid of <strong>deleting bullshits</strong>. Remember that the Vault is not an additive collection for dumping notes, but a palace for ideas to be consolidated.</li>
+</ul>
+<h2>The enjoyment of writing</h2>
+<p>Writing in the vault is its own reward. The collection of <strong>intermediate artifacts</strong> grows over time. Ideas solidify, become <strong>tangible</strong> — and the fragmented starts forming into a holistic whole.</p>
+<hr>
+<ul>
+<li><a href="/thoughts/516f2efb-2e65-4809-81e6-ed40c245d331">Why taking notes?</a></li>
+<li><a href="/thoughts/96524a51-8a13-4db4-950c-e365c69a017d">§ Articulation skill</a></li>
+</ul>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/zh/thoughts","className":"thought-page__back","children":["← ","返回列表"]}],["$","h1",null,{"className":"thought-page__title","children":"How I Write Notes"}],["$","div",null,{"className":"thought-page__maturity","children":"常青"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[{"slug":"516f2efb-2e65-4809-81e6-ed40c245d331","title":"Why taking notes?","context":"<ul>\n<li><a href=\"/thoughts/how-i-write-notes\">How I Write Notes</a></li>\n</ul>"},{"slug":"96524a51-8a13-4db4-950c-e365c69a017d","title":"§ Articulation skill","context":"<p>...API for your second brain](/thoughts/vocabulary-as-api-for-second-brain) - <a href=\"/thoughts/different-purposes-of-writing\">Different purposes of writing</a> - <a href=\"/thoughts/how-i-write-notes\">How I Write Notes</a></p>"}]}],"$L6"]}],["$L7","$L8"],"$L9"]}],"loading":null,"isPartial":false}
+6:["$","p",null,{"className":"thoughts-page__credit","children":["灵感来自并镜像 ",["$","a","link0",{"href":"https://huylenq.github.io/thoughts/how-i-write-notes","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}],"。笔记原作归属于原作者；本镜像为私有并注明出处。"]}]
+7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]
+9:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

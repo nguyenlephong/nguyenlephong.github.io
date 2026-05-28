@@ -1,0 +1,38 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:T5d9,<p>Có lẽ dễ hơn là nhận diện những suy nghĩ ít giá trị:</p>
+<ul>
+<li>Tua lại quá khứ chỉ vì việc tua lại.</li>
+<li>Tưởng tượng tương lai chỉ vì việc tưởng tượng.</li>
+<li>Tự dựng hình ảnh / tôn vinh bản thân — qua quá khứ hay tương lai.</li>
+<li>Lặp đi lặp lại các vấn đề mà không có hành động khả thi nào.</li>
+<li>Einstellung
+<ul>
+<li>Suy nghĩ lặp đi lặp lại mà không có insight mới</li>
+<li>Có thể là một vấn đề không thể xử lý <span class="private-link">Đối phó với vấn đề mơ hồ</span></li>
+</ul>
+</li>
+<li>Vấn đề không nằm trong tầm kiểm soát của bạn</li>
+</ul>
+<p>Cách thoát khỏi đoàn tàu suy nghĩ đi xuống vực:</p>
+<ul>
+<li>Tĩnh lặng nội tâm (một trong hai phương pháp — góc nhìn "bên trong" và góc nhìn "bên ngoài/para...gì đó").</li>
+</ul>
+<p>Những suy nghĩ có thể có giá trị:</p>
+<ul>
+<li>Có khả năng dẫn tới hành động hoặc sự thấu hiểu mới.</li>
+<li>Ví dụ:
+<ul>
+<li>Củng cố / tụng lại / công thức hoá những gì bạn vừa học.
+Vấn đề có lẽ nằm ở kỷ luật để cho những suy nghĩ vô giá trị trôi qua. Tin vào chính mình trong việc biết cái gì đáng để nghĩ.</li>
+</ul>
+</li>
+</ul>
+<h2>Tham khảo</h2>
+<p><a href="https://youtube.com/shorts/78KYzwhiNok?si=s3RFQdBuuNpL00az">Steve Jobs nói về Signal</a></p>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/vi/thoughts","className":"thought-page__back","children":["← ","Về danh sách"]}],["$","h1",null,{"className":"thought-page__title","children":"Liệu có khuôn mẫu nhận biết được của những suy nghĩ giá trị?"}],["$","div",null,{"className":"thought-page__maturity","children":"Nẩy mầm"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[{"slug":"96524a51-8a13-4db4-950c-e365c69a017d","title":"§ Kỹ năng diễn đạt","context":"<p>...ideas into LLM prompts</span> - <a href=\"/thoughts/recognizable-patterns-of-valuable-thoughts\">Liệu có khuôn mẫu nhận biết được của những suy nghĩ giá trị?</a> - [Your rich and consistent vocabulary...</p>"}]}],["$","p",null,{"className":"thoughts-page__credit","children":["Lấy cảm hứng và hiện đang phản chiếu ý nghĩ từ ",["$","a","link0",{"href":"https://huylenq.github.io/thoughts/recognizable-patterns-of-valuable-thoughts","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}],". Các ghi chú thuộc về anh ấy; bản mirror này riêng tư và có ghi nguồn."]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+8:null

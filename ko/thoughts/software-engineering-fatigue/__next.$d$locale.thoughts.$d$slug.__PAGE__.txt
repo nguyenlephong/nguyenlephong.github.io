@@ -1,0 +1,17 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:T408,<p>Making software is like assembling Lego bricks.</p>
+<p>At first, you learn the fundamental bricks. Gradually, you learn the precomposed blocks from those fundamental bricks, the abstractions built by others.</p>
+<p>More and more, where systems grow more complicated, people compose blocks from other blocks built by others.</p>
+<p>Eventually, you stray afar from the fundamental bricks. The cost of finding out what bricks are there became impractical (for building sellable software). Your learning turned from “understanding things” to "how to use things.” You don’t learn the bricks anymore but accept the blocks as they are from others. They are incidental; they feel artificial.</p>
+<p>To put it into perspective, learning physics will make you boil down to the truth of the universe, while learning software engineering nowadays makes you learn arbitrary inventions from others. They are not compounds.</p>
+<hr>
+<ul>
+<li><a href="/thoughts/6e9a5e59-4c26-4d67-bc3a-c8d404445b2e">Perfect-tools syndrome</a></li>
+</ul>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/ko/thoughts","className":"thought-page__back","children":["← ","목록으로"]}],["$","h1",null,{"className":"thought-page__title","children":"Software engineering fatigue"}],["$","div",null,{"className":"thought-page__maturity","children":"새싹"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[]}],["$","p",null,{"className":"thoughts-page__credit","children":[["$","a","link0",{"href":"https://huylenq.github.io/thoughts/software-engineering-fatigue","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}]," 의 노트에서 영감을 받아 현재 미러링하고 있습니다. 출처를 명시합니다."]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+8:null

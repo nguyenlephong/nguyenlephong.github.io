@@ -1,0 +1,18 @@
+{
+  "slug": "start-new-behaviors-in-boring-easy-mode",
+  "title": "Khi tập thói quen mới, hãy bắt đầu ở chế độ 'dễ và chán'",
+  "html": "<p>Rất dễ bị hưng phấn quá mức. Cơn hype ban đầu khiến bạn đánh giá thấp lực ma sát của việc duy trì thói quen mới khi hype đã qua.</p>\n<p>Hãy ép mình về một mục tiêu dễ: 10 phút tập guitar, 10 flashcard, 1 ghi chú ôn lại mỗi ngày. Cái \"ngứa ngáy\" muốn làm thêm là cố ý — hãy để bản thân còn đói cho ngày mai.</p>\n<hr>\n<ul>\n<li><a href=\"/thoughts/the-cost-of-delayed-action\">Cái giá của việc trì hoãn hành động</a></li>\n<li><a href=\"/thoughts/e165fb3e-3ba1-4972-827f-b2a3220f39ac\">Những quy luật vật lý của cuộc sống</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "the-cost-of-delayed-action",
+      "title": "Cái giá của việc trì hoãn hành động",
+      "context": "<ul>\n<li><a href=\"/thoughts/start-new-behaviors-in-boring-easy-mode\">Khi tập thói quen mới, hãy bắt đầu ở chế độ 'dễ và chán'</a> - <a href=\"/thoughts/e165fb3e-3ba1-4972-827f-b2a3220f39ac\">Những quy luật vật lý của cuộc sống</a></li>\n</ul>"
+    },
+    {
+      "slug": "e165fb3e-3ba1-4972-827f-b2a3220f39ac",
+      "title": "Những quy luật vật lý của cuộc sống",
+      "context": "<ul>\n<li><a href=\"/thoughts/the-cost-of-delayed-action\">Cái giá của việc trì hoãn hành động</a> - <a href=\"/thoughts/start-new-behaviors-in-boring-easy-mode\">Khi tập thói quen mới, hãy bắt đầu ở chế độ 'dễ và chán'</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "seed"
+}

@@ -1,0 +1,18 @@
+{
+  "slug": "life-running-digital-engine",
+  "title": "Cuộc sống vận hành như cỗ máy số",
+  "html": "<p>Một tổng hợp toàn diện gồm các sub-system cho cách tôi vận hành hầu hết các khía cạnh của đời sống mà ở đó có thể áp dụng một hệ kiểu rule-engine.</p>\n<p>Cách triển khai tổng thể của hệ thống này rất ưu tiên dùng app. Lý do là để tận dụng <strong>notification</strong> của app cùng với <span class=\"private-link\">Nguyên lý First-screen</span>, qua đó giảm thuế tâm trí cho việc ra quyết định và sự lo lắng triền miên về \"làm cái đúng\".</p>\n<p>Phía trên tất cả các sub-system là tư duy chi phối việc thực thi chúng. Mô hình hiện tại đang theo là <span class=\"private-link\">States of Mind</span>.</p>\n<h3>Driver Todo System</h3>\n<p>Bạn ngồi ghế tài xế.</p>\n<p>App: <strong>Things</strong></p>\n<p>Mọi task và project đều là một cơ hội để nhặt lên. Chúng có một kết quả mong muốn <em>tích cực</em> để theo đuổi. Mỗi tiến triển đẩy cuộc sống của bạn tiến về phía trước.</p>\n<p>Hiệu suất không được preallocate, không được lên lịch theo giờ. <strong>Tâm thế</strong> khi xử lý backlog ở ghế tài xế là gấp gáp: \"tôi có thể làm xong cái này trong thời gian tối thiểu không?\", hay \"tôi có thể làm tốt nhất việc này trong 30 phút không?\". <em>Tôi đạt được kết quả càng nhanh càng tốt</em>.</p>\n<p>Loại trừ các task định kỳ, lên lịch. Hệ todo-mục-tiêu này chứa cơ hội, không phải nghĩa vụ (có một video YouTube của Ali Abdaal nói về việc này).</p>\n<p>Liên quan: <span class=\"private-link\">Healthy todo backlog</span></p>\n<h3>Accountability Todo System</h3>\n<p>Không thoả thuận lại, thực thi không tốn chu kỳ tâm trí nào — đó là cái đẹp của hệ thống.</p>\n<p>Apps: <strong>Calendar</strong> + <strong>Reminders</strong> + <strong>Streaks</strong></p>\n<p>Hệ thống quản lý các <em>nghĩa vụ</em> và <em>routine</em> mà tôi cứ thế làm không cần nghĩ. Phần lớn được lên lịch theo giờ hoặc có context thực thi rất rõ.</p>\n<p>Quy luật \"<strong>khi nào làm</strong>\":</p>\n<ul>\n<li>Khi đến hạn — buổi tối với task theo ngày, đúng lúc xuất hiện với task theo giờ.</li>\n<li>Theo context (địa điểm, thiết bị). Hiện chỉ có duy nhất một context:\n<ul>\n<li><em>Đi chợ</em>: khi tôi đang ở một cửa hàng tạp hoá.</li>\n</ul>\n</li>\n</ul>\n<h3>Nhịp Reflection</h3>\n<p>Nhịp reflection là <strong>động lực</strong> của sự tiến hoá tự-ổn-định của hệ thống. Các phiên reflection được làm thường xuyên, theo lịch lặp.</p>\n<p>Có ba chu kỳ: <strong>ngày</strong>, <strong>tuần</strong>, và <strong>tháng</strong>. Chúng được lên lịch với chi tiết ghi trong app Reminders:</p>\n<ul>\n<li><span class=\"private-link\">The Day</span></li>\n<li><span class=\"private-link\">Weekly Reflection</span></li>\n<li><span class=\"private-link\">Monthly Reflection</span></li>\n</ul>\n<hr>\n<ul>\n<li><a href=\"/thoughts/programmable-self\">Bản thân có thể lập trình</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "feel-the-sensation",
+      "title": "Cảm nhận",
+      "context": "<p>...is fine, I'm doing fine. A big part of this comes from <a href=\"/thoughts/life-running-digital-engine\">Cuộc sống vận hành như cỗ máy số</a>. \t- You can feel the imbalance happening. You by instinct, feel...</p>"
+    },
+    {
+      "slug": "programmable-self",
+      "title": "Bản thân có thể lập trình",
+      "context": "<ul>\n<li><a href=\"/thoughts/life-running-digital-engine\">Cuộc sống vận hành như cỗ máy số</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "evergreen"
+}

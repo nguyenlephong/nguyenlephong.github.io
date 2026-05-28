@@ -1,0 +1,38 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+7:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+8:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:Tc5d,<p>Có vài "rule of thumb" mà tôi thấy phổ quát, áp dụng được cho nhiều ngóc ngách của đời sống. "Mặc định là tin" là một trong số đó.</p>
+<h3>Tại sao niềm tin quan trọng?</h3>
+<p>Nó là một <em>heuristic</em> để giải phóng dung lượng tâm trí. Nó cho bạn nền tảng để khám phá và để xây tiếp.</p>
+<p>Vì không có cách nào khác để sống. Mặc định nghi ngờ mọi thứ sẽ làm bạn quá tải tới mức gãy. Tận đáy của nó, có một lằn ranh bạn buộc phải vạch ra để "cho lợi thế nghi ngờ" cho nhiều thứ nằm bên kia lằn ranh đó.</p>
+<h3>Tôi tin gì?</h3>
+<ul>
+<li>Quản lý task cá nhân — tôi tin hệ thống GTD của mình.</li>
+<li>Tiến hoá một codebase — tôi tin các bộ unit test.</li>
+<li>Làm việc trong một team có tổ chức — tôi tin quy trình.</li>
+<li>Làm việc với con người — tôi mặc định tin họ.</li>
+<li>Học — tôi tin hệ SRS của mình sẽ giữ lại các facts.</li>
+</ul>
+<p>Tôi tin vào triết lý âm-dương: mọi quy luật đều có ngoại lệ (ngữ pháp các ngôn ngữ là ví dụ điển hình):</p>
+<ul>
+<li>Đôi khi bỏ qua chu kỳ GTD cũng ổn nếu bạn đang tận hưởng việc mình đang làm.</li>
+<li>Bạn không nên dựa vào unit test như tấm lưới an toàn duy nhất.</li>
+<li>Đừng tuân theo quy trình một cách kiêu ngạo.</li>
+<li>Có lẽ không nên giao việc quan trọng cho người lạ.</li>
+<li>Bạn nên sẵn sàng nghi ngờ những gì mình đã biết.</li>
+<li>Tôi không tin các thông tin sẽ dẫn tới một quyết định mà chưa được kiểm chứng.</li>
+</ul>
+<h3>Vậy chẳng phải lại về vạch xuất phát?</h3>
+<p>Vậy là ở góc của mỗi niềm tin đều có một chút nghi ngờ. Vậy bài viết này về cơ bản có vô nghĩa không?</p>
+<p>Nếu có câu trả lời dứt khoát cho việc tin một thứ hay không, cuộc đời sẽ dễ. Cũng sẽ nhàm. Đến cả nguyên tử cũng không phải bất khả phân. Có rất nhiều thành phần trong một "thứ". Có rất nhiều ý tưởng trong một cuốn sách, rất nhiều người trong một team, rất nhiều nguyên tắc trong một phương pháp luận.</p>
+<p>Chúng ta sẽ rất muốn có một góc nhìn nhất quán và toàn diện cho mọi thứ có thể được gọi bằng một cái tên, <a href="https://www.goodreads.com/quotes/103022-you-can-know-the-name-of-a-bird-in-all#:~:text=Sign%20Up%20Now-,You%20can%20know%20the%20name%20of%20a%20bird%20in%20all,of%20something%20and%20knowing%20something.">một "con chim" có phải là con chim?</a>. Một niềm tin bất di bất dịch là — theo lời Ralph Waldo Emerson — "yêu tinh của những tâm trí nhỏ bé". Cuộc đời thú vị chính theo cách đó, một fractal vô tận để khám phá, ta không thể tuyệt đối tin rằng mình đúng.</p>
+<hr>
+<ul>
+<li><a href="/thoughts/programmable-self">Bản thân có thể lập trình</a></li>
+</ul>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/vi/thoughts","className":"thought-page__back","children":["← ","Về danh sách"]}],["$","h1",null,{"className":"thought-page__title","children":"Niềm tin"}],["$","div",null,{"className":"thought-page__maturity","children":"Trưởng thành"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[]}],["$","p",null,{"className":"thoughts-page__credit","children":["Lấy cảm hứng và hiện đang phản chiếu ý nghĩ từ ",["$","a","link0",{"href":"https://huylenq.github.io/thoughts/trust","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}],". Các ghi chú thuộc về anh ấy; bản mirror này riêng tư và có ghi nguồn."]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]],"$L6"]}],"loading":null,"isPartial":false}
+6:["$","$L7",null,{"children":["$","$8",null,{"name":"Next.MetadataOutlet","children":"$@9"}]}]
+9:null

@@ -1,0 +1,28 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:T5dc,<ol>
+<li>Phát triển <strong>hệ thống</strong> của riêng mình.</li>
+<li>Chủ nghĩa hoàn hảo là có hại — cuộc đời là về việc tiến về phía trước.</li>
+<li>Những bài học quý giá nhất nằm ngay trong đời sống thường nhật.</li>
+<li>Cái Tôi (Ego) của bạn không phải là bạn.</li>
+<li><span class="private-link">Đừng tự đóng khung chính mình</span>.</li>
+<li>Hãy bao dung với thất bại, chừa chỗ cho người khác và cho chính mình được học.</li>
+<li>Bạn không thể tính toán hết mọi thứ. Đôi khi bạn phải ra quyết định với rất ít thông tin trong tay, và chịu trách nhiệm cho nó.</li>
+<li>Tính cách được chứng minh trong chiến tranh, không phải trong hoà bình.</li>
+</ol>
+<h2>Liên quan:</h2>
+<h3><a href="https://bronnieware.com/blog/regrets-of-the-dying/">Những điều hối tiếc của người sắp ra đi</a></h3>
+<p>Trong đó họ liệt kê 5 điều hối tiếc chính:</p>
+<ol>
+<li>Tôi ước mình đã có đủ can đảm để sống cuộc đời thật với chính mình, không phải cuộc đời người khác kỳ vọng.</li>
+<li>Tôi ước mình đã không làm việc quá nhiều.</li>
+<li>Tôi ước mình đã có can đảm bày tỏ cảm xúc của mình.</li>
+<li>Tôi ước mình đã giữ liên lạc với bạn bè.</li>
+<li>Tôi ước mình đã cho phép bản thân được hạnh phúc hơn.</li>
+</ol>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/vi/thoughts","className":"thought-page__back","children":["← ","Về danh sách"]}],["$","h1",null,{"className":"thought-page__title","children":"Tôi sẽ nói gì với chính mình ở tuổi 20"}],["$","div",null,{"className":"thought-page__maturity","children":"Mầm"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[]}],["$","p",null,{"className":"thoughts-page__credit","children":["Lấy cảm hứng và hiện đang phản chiếu ý nghĩ từ ",["$","a","link0",{"href":"https://huylenq.github.io/thoughts/letter-to-my-20s","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}],". Các ghi chú thuộc về anh ấy; bản mirror này riêng tư và có ghi nguồn."]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+8:null

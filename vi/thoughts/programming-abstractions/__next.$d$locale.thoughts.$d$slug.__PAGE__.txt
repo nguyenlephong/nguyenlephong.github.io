@@ -1,0 +1,28 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+a:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+b:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+c:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:Tdef,<p>Một câu sáo rỗng: "Mọi thứ đều là trade-off". Trừu tượng hoá (abstraction) không là ngoại lệ. Cách phổ biến nhất trong OOP design là trừu tượng những thứ có thể đặt tên: "Tôi sẽ cần gửi một message, đẻ ra cái <em>message service</em>; ồ còn <em>message factory</em>; ồ còn <em>message dispatcher</em>; ồ thêm cái …; cứ thế tiếp …<em>"</em>. Có khi nó work, có khi nó mang lại nhiều cái dở hơn cả giá trị nó tạo ra.</p>
+<h2><strong>Mỗi abstraction là một canh bạc</strong></h2>
+<p>Nếu bạn <em><strong>thắng</strong></em>, sẽ dễ và nhanh hơn để đặt các thay đổi tiếp lên trên nó.<br>
+Nếu bạn <em><strong>thua</strong></em>, bạn có một premature abstraction, và mọi thay đổi đặt lên trên đều có mùi. Và cuối cùng, khi có thêm các thay đổi đặt lên trên các thay đổi đó, nó sẽ giống ván Jenga mà ai cũng đoán được kết cục cuối.</p>
+<p>Vậy nên abstraction <em>không miễn phí</em>. Cảm giác rất thoả mãn khi bạn có thể đặt tên cho mọi thứ và áp dụng được một design pattern vừa học. Nhưng nhớ rằng đó là cờ bạc, và thường thì xác suất nghiêng về phía thua. Phần mềm đã rối và phức tạp đến đâu, tỉ lệ thắng của bạn càng co lại.</p>
+<h2><strong>Chi phí dễ hiểu</strong></h2>
+<p>Một abstraction dù ngữ nghĩa và có ý nghĩa đến đâu, vẫn nhiều khả năng khó hiểu hơn một bản tương đương trực tiếp. Người đọc càng phải đi qua nhiều tầng trung gian, càng tốn tâm trí và nhận thức — đặc biệt là người khác, những người không chia sẻ cùng mức độ thân thuộc với kiến thức về cài đặt của bạn. Người khác ở đây có khi chính là bạn sau vài tháng.</p>
+<p>Đó là điều <strong>K.I.S.S.</strong> nói đến: giữ mọi thứ ngu-ngốc-trực-tiếp, để ai cũng có thể Ctrl/Command+Click và mô phỏng được bước tiếp theo của runtime execution.</p>
+<p>Nhớ rằng bạn luôn có thể quay lại refactor/abstract về sau nếu tính năng <em>có lúc nào đó</em> tiến hoá. Khi bạn cần refactor, khả năng cao là bạn đã hiểu sâu hơn vì đã trải qua một số "reality check" với code hiện tại. <strong>Refactor/khái quát hoá một đoạn code chuyên biệt luôn dễ hơn làm theo chiều ngược lại</strong> — sửa một đoạn code over-engineered/abstracted với những dependent đã xây sẵn lên trên.</p>
+<p>Hãy hình dung codebase như một thực thể sống. Nó có vòng đời và cách tiến hoá riêng. Nó không phải là sản phẩm bạn giao một-lần-cho-xong. Hãy ghi nhớ điều đó﹣rằng luôn có <strong>rủi ro abstraction sai</strong> và <strong>chi phí dễ hiểu</strong>﹣khi biện minh các quyết định trong thiết kế, cài đặt (của bạn hay của người khác), và khi review code.</p>
+<hr>
+<h1>Đọc thêm</h1>
+<p><a href="https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction">https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction</a></p>
+<p><a href="https://rachelbythebay.com/w/2021/09/05/clever/">https://rachelbythebay.com/w/2021/09/05/clever/</a></p>
+<p><a href="https://www.csc.gov.sg/articles/how-to-build-good-software">https://www.csc.gov.sg/articles/how-to-build-good-software</a></p>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/vi/thoughts","className":"thought-page__back","children":["← ","Về danh sách"]}],["$","h1",null,{"className":"thought-page__title","children":"Các tầng trừu tượng trong lập trình"}],["$","div",null,{"className":"thought-page__maturity","children":"Trưởng thành"}],["$","$L3",null,{"html":"$4"}],"$L5","$L6"]}],["$L7","$L8"],"$L9"]}],"loading":null,"isPartial":false}
+5:["$","$La",null,{"items":[]}]
+6:["$","p",null,{"className":"thoughts-page__credit","children":["Lấy cảm hứng và hiện đang phản chiếu ý nghĩ từ ",["$","a","link0",{"href":"https://huylenq.github.io/thoughts/programming-abstractions","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}],". Các ghi chú thuộc về anh ấy; bản mirror này riêng tư và có ghi nguồn."]}]
+7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]
+9:["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]
+d:null

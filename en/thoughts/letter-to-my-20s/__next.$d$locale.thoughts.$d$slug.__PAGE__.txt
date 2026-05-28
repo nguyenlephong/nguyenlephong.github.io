@@ -1,0 +1,28 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:T407,<ol>
+<li>Develop your <strong>system</strong>.</li>
+<li>Perfectionism is harmful, life is about moving forward.</li>
+<li>Most precious lessons are in your every life</li>
+<li>Your Ego is not you.</li>
+<li><span class="private-link">Don't stereotype yourself</span>.</li>
+<li>Tolerate failures, leave rooms for others and yourself to learn.</li>
+<li>You cannot calculate it all. Sometimes you just have to make decisions with little information at hands, and take responsibility for it.</li>
+<li>Character is proven in wars, not in peace.</li>
+</ol>
+<h2>Related:</h2>
+<h3><a href="https://bronnieware.com/blog/regrets-of-the-dying/">Regrets of the Dying</a></h3>
+<p>In which they listed out 5 main regrets:</p>
+<ol>
+<li>I wish I’d had the courage to live a life true to myself, not the life others expected of me.</li>
+<li>I wish I hadn't worked so hard.</li>
+<li>I wish I'd had the courage to express my feelings.</li>
+<li>I wish I had stayed in touch with my friends.</li>
+<li>I wish that I had let myself be happier.</li>
+</ol>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/en/thoughts","className":"thought-page__back","children":["← ","Back to thoughts"]}],["$","h1",null,{"className":"thought-page__title","children":"What will I tell my 20s"}],["$","div",null,{"className":"thought-page__maturity","children":"Seed"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[]}],["$","p",null,{"className":"thoughts-page__credit","children":["Inspired by and currently mirroring thoughts from ",["$","a","link0",{"href":"https://huylenq.github.io/thoughts/letter-to-my-20s","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}],". These notes are his; the mirror is private and credited."]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+8:null

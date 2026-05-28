@@ -1,0 +1,37 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:T9c0,<p>There are some rules of thumb that I find universal and applicable to many corners of life. "Trust by default" is one of them.</p>
+<h3>Why does trust matter?</h3>
+<p>It is a <em>heuristic</em> to free your mental capacity. It gives you the basis to explore and to build upon.</p>
+<p>Because there is no other way to live. Doubting everything by default will overwhelm you to a broken point. At the bottom of it, there's a line you must draw to give the benefit of the doubt to many things beyond that line.</p>
+<h3>What do I trust?</h3>
+<ul>
+<li>Personal task management, I trust my GTD system.</li>
+<li>Evolving a code base, I trust the unit test suites.</li>
+<li>Working in an organized team, I trust the process.</li>
+<li>Working with people, I trust them by default.</li>
+<li>Learning, I trust my SRS will retain the facts.</li>
+</ul>
+<p>I trust the yin-yang philosophy, that is, there are exceptions to every rule (languages' grammar is a prominent example):</p>
+<ul>
+<li>It's okay to skip your GTD cycles sometimes if you enjoy whatever you're doing.</li>
+<li>You shouldn't rely on unit tests as the sole means for a safety net.</li>
+<li>Don't follow a process arrogantly.</li>
+<li>You probably shouldn't entrust strangers with important matters.</li>
+<li>You should be ready to doubt what you've known.</li>
+<li>I don't trust information that will eventually drive a decision without validating.</li>
+</ul>
+<h3>Back to square one, aren't we?</h3>
+<p>So there is doubt in the corner of every given trust. Isn't this writing basically pointless?</p>
+<p>If there's a definite answer to whether to trust a thing or not, life would be easy. It will also be boring. Even an atom is not indivisible. There are many components in a "thing". There are many ideas in a book, there are many people in a team, and there are many principles in a methodology.</p>
+<p>We would love to have a consistent and holistic view over everything that would make a word, <a href="https://www.goodreads.com/quotes/103022-you-can-know-the-name-of-a-bird-in-all#:~:text=Sign%20Up%20Now-,You%20can%20know%20the%20name%20of%20a%20bird%20in%20all,of%20something%20and%20knowing%20something.">a "bird" is a bird?</a>. A blindly unbending trust is--in the words of Ralph Waldo Emerson--"the hobgoblin of little minds". Life is just fascinating that way, an endless fractal to uncover, we cannot absolutely trust that we are right.</p>
+<hr>
+<ul>
+<li><a href="/thoughts/programmable-self">Programmable Self</a></li>
+</ul>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/ja/thoughts","className":"thought-page__back","children":["← ","一覧に戻る"]}],["$","h1",null,{"className":"thought-page__title","children":"Trust"}],["$","div",null,{"className":"thought-page__maturity","children":"常緑"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[]}],["$","p",null,{"className":"thoughts-page__credit","children":[["$","a","link0",{"href":"https://huylenq.github.io/thoughts/trust","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}]," から着想を得て、現在ミラーしています。ノートは原作者のものです。"]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+8:null

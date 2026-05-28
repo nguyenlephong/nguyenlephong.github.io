@@ -1,0 +1,47 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+a:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:Tad6,<p>Comprehensively composed of all the sub-systems for how I run most aspects of my life where a rule-engine system is employable.</p>
+<p>This system's overall implementation strongly prefers using apps. The reason being to leverage app <strong>notifications</strong> along with the <span class="private-link">First-screen Principle</span> to alleviate the mental tax of decision making and the constant anxiety of “doing the right thing”.</p>
+<p>Above all of the sub-systems is the mindset that govern their execution. The current model to adhere to is <span class="private-link">States of Mind</span>.</p>
+<h3>Driver Todo System</h3>
+<p>You take the driver seat.</p>
+<p>App: <strong>Things</strong></p>
+<p>Every task and project is an opportunity to pick up. They have a <em>positive</em> desirable outcome to pursue. Every progress pushes your life forward.</p>
+<p>The performance is not preallocated, not time-scheduled. The <strong>mentality</strong> when executing the task backlog when you are in the driver sea is with high urgency: "could I done this with the minimal time?", or "could I done the best job for this in 30 minutes?". <em>The faster I accomplish the outcome, the better</em>.</p>
+<p>Excluded of routine, scheduled tasks. This goal-todo system contains opportunities, not obligations (there's a YouTube video from Ali Abdaal regarding this).</p>
+<p>Related: <span class="private-link">Healthy todo backlog</span></p>
+<h3>Accountability Todo System</h3>
+<p>Non-negotiable, execute with no wasted mental cycle, that is the beauty of the system.</p>
+<p>Apps: <strong>Calendar</strong> + <strong>Reminders</strong> + <strong>Streaks</strong></p>
+<p>The system manage <em>obligations</em> and <em>routines</em> that I just mindlessly do. Most of them are time-scheduled or have a very clear do-able context.</p>
+<p>The "<strong>when to do it</strong>" rule:</p>
+<ul>
+<li>When it is due, evening for date-scheduled, when it appears for datetime-scheduled.</li>
+<li>In context (location, equipment). There's only a single context now:
+<ul>
+<li><em>Groceries</em>: when I'm at a grocery store.</li>
+</ul>
+</li>
+</ul>
+<h3>Reflection Cadence</h3>
+<p>Reflection cadence is the system <strong>dynamic</strong> of evolution of self-stabilizing.  Reflection sessions are performed routinely, on recurrent schedules.</p>
+<p>There are three cycles, <strong>daily</strong>, <strong>weekly</strong> and <strong>monthly</strong>. They are scheduled with noted details within the Reminders app:</p>
+<ul>
+<li><span class="private-link">The Day</span></li>
+<li><span class="private-link">Weekly Reflection</span></li>
+<li><span class="private-link">Monthly Reflection</span></li>
+</ul>
+<hr>
+<ul>
+<li><a href="/thoughts/programmable-self">Programmable Self</a></li>
+</ul>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/ja/thoughts","className":"thought-page__back","children":["← ","一覧に戻る"]}],["$","h1",null,{"className":"thought-page__title","children":"Life Running Digital Engine"}],["$","div",null,{"className":"thought-page__maturity","children":"常緑"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[{"slug":"feel-the-sensation","title":"Feel the Sensation","context":"<p>...is fine, I'm doing fine. A big part of this comes from <a href=\"/thoughts/life-running-digital-engine\">Life Running Digital Engine</a>. \t- You can feel the imbalance happening. You by instinct, feel...</p>"},{"slug":"programmable-self","title":"Programmable Self","context":"<ul>\n<li><a href=\"/thoughts/life-running-digital-engine\">Life Running Digital Engine</a></li>\n</ul>"}]}],"$L6"]}],["$L7","$L8"],"$L9"]}],"loading":null,"isPartial":false}
+6:["$","p",null,{"className":"thoughts-page__credit","children":[["$","a","link0",{"href":"https://huylenq.github.io/thoughts/life-running-digital-engine","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}]," から着想を得て、現在ミラーしています。ノートは原作者のものです。"]}]
+7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]
+9:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

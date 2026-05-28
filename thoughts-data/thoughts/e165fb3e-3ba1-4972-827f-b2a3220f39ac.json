@@ -1,0 +1,18 @@
+{
+  "slug": "e165fb3e-3ba1-4972-827f-b2a3220f39ac",
+  "title": "The physics laws of life",
+  "html": "<p>Universal laws that are applicable across many areas and fields in life.</p>\n<h3>Momentum / Law of Inertia</h3>\n<p>The friction of getting started is always larger than keeping going. Starting a habit, a project, a conversation you've been avoiding: the hardest part is the first push. Once moving, the flywheel carries you. This is why <a href=\"/thoughts/the-cost-of-delayed-action\">The cost of delayed action</a> compounds, and why token actions matter more than grand plans.</p>\n<h3>Gravity / Goldilocks Principle</h3>\n<p>Everything has a natural pull toward an equilibrium. Too little challenge and you decay from boredom. Too much and you collapse from overwhelm. The sweet spot is the zone where effort meets growth, the “challenge vs skill” axes. Respect the gravity of your current capacity.</p>\n<h3>Entropy / Second Law of Thermodynamics</h3>\n<p>Left alone, things fall apart. Relationships, codebases, habits, health. Order requires continuous energy input. Don't be surprised when chaos creeps in; be surprised when it doesn't. The discipline is not in building the system once but in maintaining it against the constant pull of disorder.</p>\n<h3><span class=\"private-link\">Wave Life Theory</span></h3>\n<p>Most change happens in waves, not in straight lines. You feel energetic because once you felt tired. You feel happy because once you were sad. The low is what enables the high. Appreciate being in the trough, it is what makes the crest possible.</p>\n<hr>\n<ul>\n<li><a href=\"/thoughts/the-cost-of-delayed-action\">The cost of delayed action</a></li>\n<li><a href=\"/thoughts/start-new-behaviors-in-boring-easy-mode\">When forming a new behavior, start in boring easy mode</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "the-cost-of-delayed-action",
+      "title": "The cost of delayed action",
+      "context": "<ul>\n<li><a href=\"/thoughts/start-new-behaviors-in-boring-easy-mode\">When forming a new behavior, start in boring easy mode</a> - <a href=\"/thoughts/e165fb3e-3ba1-4972-827f-b2a3220f39ac\">The physics laws of life</a></li>\n</ul>"
+    },
+    {
+      "slug": "start-new-behaviors-in-boring-easy-mode",
+      "title": "When forming a new behavior, start in boring easy mode",
+      "context": "<ul>\n<li><a href=\"/thoughts/the-cost-of-delayed-action\">The cost of delayed action</a> - <a href=\"/thoughts/e165fb3e-3ba1-4972-827f-b2a3220f39ac\">The physics laws of life</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "budding"
+}

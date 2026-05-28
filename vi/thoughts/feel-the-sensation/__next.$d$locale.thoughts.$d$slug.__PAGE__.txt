@@ -1,0 +1,30 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:T652,<p>Cái chúng ta sống vì, dù có nghĩ ra mục đích cao xa thế nào, rốt cuộc cũng là tìm kiếm và trải nghiệm các cảm giác.</p>
+<p>Các cảm giác xúc cảm — những cảm giác "tốt" cốt lõi mà (đến một mức nào đó) bạn có thể chủ ý chọn để theo đuổi — là lực hút từ <span class="private-link">La bàn của tôi</span>. Với tôi, đó là:</p>
+<ul>
+<li>
+<p>Sự viên mãn của khoảnh khắc "<strong>chính là đây</strong>". Khi tôi tận hưởng cuộc sống đúng như nó đang là. Khi hiện tại là tất cả những gì tôi có, và như vậy là đủ.</p>
+</li>
+<li>
+<p>Cảm giác <strong>đang tiến lên</strong>, biết rằng sứ mệnh còn rất xa — thậm chí hướng đi, hay cái gì ở đích, vẫn chưa rõ — nhưng tôi biết mình đang tiến lên (thường còn hơn cả mức tôi cảm thấy).</p>
+</li>
+<li>
+<p>Thanh thản — tin rằng mọi thứ vẫn ổn, tôi đang ổn. Phần lớn cảm giác này đến từ <a href="/thoughts/life-running-digital-engine">Cuộc sống vận hành như cỗ máy số</a>.</p>
+<ul>
+<li>Bạn cảm được khi sự mất cân bằng đang xảy ra. Theo bản năng, bạn cảm thấy thôi thúc khôi phục lại cân bằng — bạn thích mọi thứ cân bằng.</li>
+<li>Bạn cảm được các "nợ" đang tích lại, và bạn thích giải phóng chúng.</li>
+<li><strong>Ở đâu có kỳ vọng, ở đó có nợ</strong>.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><a href="/thoughts/sense">Trực giác</a></li>
+</ul>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/vi/thoughts","className":"thought-page__back","children":["← ","Về danh sách"]}],["$","h1",null,{"className":"thought-page__title","children":"Cảm nhận"}],["$","div",null,{"className":"thought-page__maturity","children":"Nẩy mầm"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[{"slug":"sense","title":"Trực giác","context":"<ul>\n<li><a href=\"/thoughts/feel-the-sensation\">Cảm nhận</a></li>\n</ul>"},{"slug":"the-heuristics-for-what-to-do-now","title":"Những heuristic cho câu hỏi 'bây giờ làm gì'","context":"<ul>\n<li><a href=\"/thoughts/feel-the-sensation\">Cảm nhận</a></li>\n</ul>"}]}],["$","p",null,{"className":"thoughts-page__credit","children":["Lấy cảm hứng và hiện đang phản chiếu ý nghĩ từ ",["$","a","link0",{"href":"https://huylenq.github.io/thoughts/feel-the-sensation","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}],". Các ghi chú thuộc về anh ấy; bản mirror này riêng tư và có ghi nguồn."]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+8:null

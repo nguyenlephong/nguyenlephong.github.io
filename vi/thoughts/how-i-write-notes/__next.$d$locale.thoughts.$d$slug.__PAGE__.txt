@@ -1,0 +1,56 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+a:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:Td83,<p>Tôi đã duy trì một knowledge vault cá nhân trong Obsidian được vài năm nay. Đây là các nguyên tắc tôi chốt lại — không phải hệ thống tôi lên kế hoạch trước, mà là những thói quen sống sót sau khi va vào thực tế.</p>
+<h2>Viết khi nào</h2>
+<ul>
+<li>Trong khung giờ viết.</li>
+<li><strong>Nhận ra các kết nối</strong> — trong khi đang viết các note khác, hoặc khi một tình huống đời thực kích hoạt một ý tưởng đang sống trong vault.
+<ul>
+<li>Cái này đến từ thói quen xây dựng bên ngoài các phiên viết: một bản đồ tâm trí thân thuộc về vault của bạn, và khả năng nhận ra liên kết giữa các suy nghĩ thoáng qua với các ý tưởng đã sẵn ở đó.</li>
+</ul>
+</li>
+</ul>
+<h2>Viết với</h2>
+<ol>
+<li>
+<p>(<em>Khá cực đoan và (vẫn đang) thử nghiệm</em>): viết <strong>trực tiếp</strong> và <strong>ngay lập tức</strong> vào vault. Nghĩa là nếu một ý thuộc về Vault, đừng đổ nó vào các note trung gian, phù du. Tránh <a href="/thoughts/the-cost-of-delayed-action">Cái giá của việc trì hoãn hành động</a>.</p>
+</li>
+<li>
+<p>Viết với <strong>chất lượng</strong> như thể tôi sắp đưa cho ai đó xem. Viết kiểu văn xuôi tiềm ẩn (tôi không chắc chắn) cái giá là quá dài dòng để đọc lại hiệu quả. Có thể giảm bằng cách <strong>bôi đậm</strong> từ khoá.</p>
+</li>
+<li>
+<p><strong>Tạo kết nối</strong> <em>không ngừng nghỉ</em>:</p>
+<ul>
+<li>Lưu ý ba cơ chế liên kết: wiki link cho các suy nghĩ dạng mạng; topic/tag để xây các chỉ mục theo chủ đề; và <strong>Canvas</strong> của Obsidian để tổng hợp các góc nhìn.</li>
+<li>Từ các quan hệ đang "đỗ tạm" mà chưa được tích hợp vào nội dung chính.</li>
+<li>Từ các note mồ côi và liên kết lỏng lẻo trong graph view của Obsidian.</li>
+<li>Tất nhiên là từ tâm trí của bạn.</li>
+</ul>
+</li>
+<li>
+<p>Đừng viết chữ ra chỉ vì mệt và vì sợ mất, nếu chúng không có nghĩa. Cái giá để duy trì chúng lớn hơn rủi ro đánh mất những suy nghĩ giá trị (mà ở đây đang là một nghi ngờ). Đừng biến Vault thành bãi rác.</p>
+</li>
+</ol>
+<h2>Vệ sinh Vault</h2>
+<ul>
+<li>Tận dụng Raycast AI Commands để sửa chính tả và cải thiện văn phong.</li>
+<li>Dùng Obsidian Local Graph (với depth điều chỉnh được) để phát hiện ra các kết nối bắc cầu (đôi khi bất ngờ).</li>
+<li>Đừng sợ <strong>xoá những thứ vô nghĩa</strong>. Nhớ rằng Vault không phải là một collection cộng dồn để dump note, mà là một cung điện để các ý tưởng được củng cố.</li>
+</ul>
+<h2>Niềm vui của việc viết</h2>
+<p>Viết trong vault tự nó là phần thưởng. Bộ sưu tập các <strong>artifact trung gian</strong> lớn dần theo thời gian. Ý tưởng đông đặc lại, trở nên <strong>hữu hình</strong> — và những mảnh rời rạc bắt đầu hình thành một tổng thể.</p>
+<hr>
+<ul>
+<li><a href="/thoughts/516f2efb-2e65-4809-81e6-ed40c245d331">Tại sao phải ghi chú?</a></li>
+<li><a href="/thoughts/96524a51-8a13-4db4-950c-e365c69a017d">§ Kỹ năng diễn đạt</a></li>
+</ul>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/vi/thoughts","className":"thought-page__back","children":["← ","Về danh sách"]}],["$","h1",null,{"className":"thought-page__title","children":"Cách tôi viết ghi chú"}],["$","div",null,{"className":"thought-page__maturity","children":"Trưởng thành"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[{"slug":"516f2efb-2e65-4809-81e6-ed40c245d331","title":"Tại sao phải ghi chú?","context":"<ul>\n<li><a href=\"/thoughts/how-i-write-notes\">Cách tôi viết ghi chú</a></li>\n</ul>"},{"slug":"96524a51-8a13-4db4-950c-e365c69a017d","title":"§ Kỹ năng diễn đạt","context":"<p>...API for your second brain](/thoughts/vocabulary-as-api-for-second-brain) - <a href=\"/thoughts/different-purposes-of-writing\">Những mục đích khác nhau của việc viết</a> - <a href=\"/thoughts/how-i-write-notes\">Cách tôi viết ghi chú</a></p>"}]}],"$L6"]}],["$L7","$L8"],"$L9"]}],"loading":null,"isPartial":false}
+6:["$","p",null,{"className":"thoughts-page__credit","children":["Lấy cảm hứng và hiện đang phản chiếu ý nghĩ từ ",["$","a","link0",{"href":"https://huylenq.github.io/thoughts/how-i-write-notes","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}],". Các ghi chú thuộc về anh ấy; bản mirror này riêng tư và có ghi nguồn."]}]
+7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]
+9:["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]
+c:null

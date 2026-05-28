@@ -1,0 +1,24 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+5:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:T615,<p>Aka the <strong>todo list</strong>. I like to call this with another name “the paradox of managed todo”. Todo here includes todo list apps, tasks in daily notes, or any kind of postponed todo items.</p>
+<p>Todo lists are a practically indisputable way of organizing and optimizing productivity. But it is also not uncommon to hear the term “todo graveyard” flying around.</p>
+<h2>Why is it costly</h2>
+<p>When the idea occurs is when the organic motivation is highest, and this motivation decays over time.</p>
+<p>Also, the longer the delaying is, the building up of:</p>
+<ul>
+<li><strong>Obligation feeling</strong>. The person who wanted that is a different person of the present. The farther apart in time they are, the more distant those two people become.</li>
+<li><strong>Memory fade</strong>. More costly reloading of the context, including why and how.</li>
+</ul>
+<h2>How to mitigate</h2>
+<p>Take <strong><mark>token actions</mark></strong>. A token action is the smallest possible step that moves the task from abstract intention to concrete progress. Write one line of code. Send the email. Open the document. The point isn't completion — it's breaking static friction. Once the task has a foothold in reality, the organic motivation has something to grip onto instead of decaying in a list.</p>
+<hr>
+<ul>
+<li><a href="/thoughts/start-new-behaviors-in-boring-easy-mode">When forming a new behavior, start in boring easy mode</a></li>
+<li><a href="/thoughts/e165fb3e-3ba1-4972-827f-b2a3220f39ac">The physics laws of life</a></li>
+</ul>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/fr/thoughts","className":"thought-page__back","children":["← ","Retour à la liste"]}],["$","h1",null,{"className":"thought-page__title","children":"The cost of delayed action"}],["$","div",null,{"className":"thought-page__maturity","children":"Persistant"}],["$","$L3",null,{"html":"$4"}],["$","$L5",null,{"items":[{"slug":"how-i-write-notes","title":"How I Write Notes","context":"<p>...in your vault. That means if an idea belongs to the Vault, do not dump it down to the interim ephemeral notes. Avoid <a href=\"/thoughts/the-cost-of-delayed-action\">The cost of delayed action</a>.</p>"},{"slug":"e165fb3e-3ba1-4972-827f-b2a3220f39ac","title":"The physics laws of life","context":"<p>...is the first push. Once moving, the flywheel carries you. This is why <a href=\"/thoughts/the-cost-of-delayed-action\">The cost of delayed action</a> compounds, and why token actions matter more than grand plans.</p>"},{"slug":"start-new-behaviors-in-boring-easy-mode","title":"When forming a new behavior, start in boring easy mode","context":"<ul>\n<li><a href=\"/thoughts/the-cost-of-delayed-action\">The cost of delayed action</a> - <a href=\"/thoughts/e165fb3e-3ba1-4972-827f-b2a3220f39ac\">The physics laws of life</a></li>\n</ul>"}]}],["$","p",null,{"className":"thoughts-page__credit","children":["Inspiré de et actuellement miroir des notes de ",["$","a","link0",{"href":"https://huylenq.github.io/thoughts/the-cost-of-delayed-action","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}],". Crédit à l’auteur original."]}]]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+8:null

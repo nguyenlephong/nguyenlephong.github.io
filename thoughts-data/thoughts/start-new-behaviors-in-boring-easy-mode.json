@@ -1,0 +1,18 @@
+{
+  "slug": "start-new-behaviors-in-boring-easy-mode",
+  "title": "When forming a new behavior, start in boring easy mode",
+  "html": "<p>It is easy to over enthusiastic, the initial hype causes you to underestimate the friction of adopting new habit once the hype is over.</p>\n<p>Constraint yourself to an easy target: 10 minute of guitar practice, 10 flashcards, 1 note review per day. The itch is intentional, leave yourself hunger for the next day.</p>\n<hr>\n<ul>\n<li><a href=\"/thoughts/the-cost-of-delayed-action\">The cost of delayed action</a></li>\n<li><a href=\"/thoughts/e165fb3e-3ba1-4972-827f-b2a3220f39ac\">The physics laws of life</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "the-cost-of-delayed-action",
+      "title": "The cost of delayed action",
+      "context": "<ul>\n<li><a href=\"/thoughts/start-new-behaviors-in-boring-easy-mode\">When forming a new behavior, start in boring easy mode</a> - <a href=\"/thoughts/e165fb3e-3ba1-4972-827f-b2a3220f39ac\">The physics laws of life</a></li>\n</ul>"
+    },
+    {
+      "slug": "e165fb3e-3ba1-4972-827f-b2a3220f39ac",
+      "title": "The physics laws of life",
+      "context": "<ul>\n<li><a href=\"/thoughts/the-cost-of-delayed-action\">The cost of delayed action</a> - <a href=\"/thoughts/start-new-behaviors-in-boring-easy-mode\">When forming a new behavior, start in boring easy mode</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "seed"
+}

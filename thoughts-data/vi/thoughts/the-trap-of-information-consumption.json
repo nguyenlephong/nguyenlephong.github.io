@@ -1,0 +1,18 @@
+{
+  "slug": "the-trap-of-information-consumption",
+  "title": "Cái bẫy của việc tiêu thụ thông tin mà không hành động",
+  "html": "<p>Một kiểu thất bại thường gặp trong việc học, nơi ta tích luỹ kiến thức mà không tiến qua được framework <span class=\"private-link\">KUB - Ba giai đoạn của sự thấu hiểu</span>.</p>\n<h3>Triệu chứng</h3>\n<ul>\n<li>Liên tục đọc sách/bài viết mới mà không áp dụng insight nào</li>\n<li>Cảm thấy hiểu biết nhưng không thể chứng minh được năng lực</li>\n<li>Thu thập thông tin như một hình thức trì hoãn có-vẻ-năng-suất</li>\n<li>Lầm tưởng \"nhận ra\" là \"hiểu\"</li>\n</ul>\n<h3>Tại sao xảy ra</h3>\n<ul>\n<li>Thông tin tạo cảm giác đang tiến bộ (dopamine từ sự mới mẻ)</li>\n<li>Hành động đòi hỏi sự dễ tổn thương và rủi ro thất bại</li>\n<li>Tích trữ tri thức cảm thấy an toàn hơn là luyện tập</li>\n<li>Sự dồi dào thông tin hiện đại khiến việc tiêu thụ không có điểm dừng</li>\n</ul>\n<h3>Phá bẫy</h3>\n<ul>\n<li>Đặt ý định triển khai trước khi tiêu thụ nội dung</li>\n<li>Học \"just-in-time\" thay vì \"just-in-case\"</li>\n<li>Tạo ma sát cho việc tiêu thụ, gỡ ma sát cho việc luyện tập</li>\n<li>Đo số hành động đã làm, không phải số thông tin đã tiêu thụ</li>\n</ul>\n<h3>Khái niệm liên quan</h3>\n<ul>\n<li><span class=\"private-link\">Tại sao phải nghĩ?</span> — Suy nghĩ có mục đích vs suy nghĩ bận rộn</li>\n<li><span class=\"private-link\">States of Mind</span> — Cân bằng giữa chiêm nghiệm và flow/hành động</li>\n</ul>\n<hr>\n<ul>\n<li><a href=\"/thoughts/thinking-excuses\">Khi suy nghĩ trở thành cái cớ</a></li>\n<li><span class=\"private-link\">Đâu là ranh giới giữa Kiến thức và Kỹ năng?</span></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "purpose-of-highlights",
+      "title": "Mục đích của highlight",
+      "context": "<ul>\n<li><a href=\"/thoughts/a-reading-system\">Một hệ thống đọc sách</a> - <a href=\"/thoughts/the-trap-of-information-consumption\">Cái bẫy của việc tiêu thụ thông tin mà không hành động</a></li>\n</ul>"
+    },
+    {
+      "slug": "thinking-excuses",
+      "title": "Khi suy nghĩ trở thành cái cớ",
+      "context": "<ul>\n<li><a href=\"/thoughts/thinking-and-doing-rhythm\">Nhịp giữa suy nghĩ và hành động</a> - <a href=\"/thoughts/the-trap-of-information-consumption\">Cái bẫy của việc tiêu thụ thông tin mà không hành động</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "evergreen"
+}

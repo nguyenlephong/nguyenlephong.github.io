@@ -1,0 +1,100 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],""]
+3:I[80258,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+a:I[96618,["/_next/static/chunks/19d8e2a2251e8344.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/b6d0c1c45eeb6080.js","/_next/static/chunks/55a240c576dfeb1d.js","/_next/static/chunks/6f455a17dbc67bc9.js","/_next/static/chunks/46cd3386407002db.js"],"default"]
+b:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+c:"$Sreact.suspense"
+:HL["/_next/static/chunks/2438b635d86af466.css","style"]
+4:T134e,<p>If I founded a software company tomorrow, these are the principles I'd encode into its DNA before writing a single line of code.</p>
+<p>Before founding a company, the prerequisite is knowing why it should exist: establish <strong>the mission</strong>.</p>
+<h2>Culture &#x26; Values</h2>
+<h3>Core Values</h3>
+<ul>
+<li><strong>Default to Open</strong> - Share work early and often. Radical transparency in decisions.
+<ul>
+<li>Learn in public - Document failures and learnings openly</li>
+</ul>
+</li>
+<li><strong>Strong opinions, loosely held</strong> - Advocate fiercely, but pivot quickly with new data.</li>
+<li><strong>"Ship daily"</strong> - Bias toward action and visible progress over perfect planning</li>
+</ul>
+<h3>Decision-Making Framework</h3>
+<ul>
+<li><strong>Type 1 vs. Type 2 decisions</strong> - reversible decisions made quickly by individuals, and irreversible ones with group input
+(Jeff Bezos mentioned this as "one-way" vs. "two-way" doors.)</li>
+<li><strong>Disagree and commit</strong> - One decision made, full team alignment regardless of initial position</li>
+<li><strong>Data-informed, not data-driven</strong> - Use metrics as input but <em>trust intuition</em> for innovation</li>
+</ul>
+<h3>Cultural Principles</h3>
+<ul>
+<li><strong>No brilliant jerks</strong> - Competence never excuses poor collaboration</li>
+<li><strong>Work-life integration</strong> not balance - Flexible boundaries, results over hours</li>
+<li><strong>Celebration of craft</strong> - Take pride in elegant solutions and beautiful code</li>
+<li><strong>Yes, and...</strong> culture - Build on ideas rather than shooting them down</li>
+</ul>
+<h2>Team Structure &#x26; Hiring</h2>
+<h3>Hiring Philosophy</h3>
+<ul>
+<li><strong>Builder-first mentality</strong> - Every hire should be capable of shipping something independently within the first week.</li>
+<li><strong>Cultural add, not cultural fit</strong> - (for founding hires) The person should add net positive to the company culture.</li>
+</ul>
+<p>References: https://x.com/zfellows/status/1824443390244594000?s=46</p>
+<h3>Core Competencies</h3>
+<p>These criteria are assessed in interviews and contract-to-hire projects:</p>
+<ul>
+<li><strong>AI utilization skill</strong> is expected - Leverage and augment AI usage into your produced values</li>
+<li><strong>Excellent writer</strong> - I don't believe someone can be a good thinker and a bad writer</li>
+<li><strong>Fluent in English</strong>, especially in writing - This is a proxy skill requirement, it proves that you are an intrinsic learner</li>
+<li><strong>Autonomous and high agency</strong> - They spot out the problem before me. They come up with solution and execute it even if I don't ask for it</li>
+</ul>
+<h3>Team Composition Strategy</h3>
+<ul>
+<li>
+<p><strong>Small pods</strong> (2-3 people max) - with full ownership of specific products/features</p>
+</li>
+<li>
+<p><strong>No middle management</strong> - flat hierarchy with direct communication</p>
+</li>
+<li>
+<p><strong>Rotating leadership</strong> - Different people lead different initiatives based on expertise</p>
+</li>
+<li>
+<p><strong>Two-pizza teams</strong> - 6-8 people on a team is the sweet spot.</p>
+</li>
+</ul>
+<h3>Growth Plans</h3>
+<ul>
+<li>
+<p><strong>Slow hiring</strong> - the first 10 hires over 12-18 months. Each one raising the bar.</p>
+</li>
+<li>
+<p><strong>Contract-to-hire</strong> - Test compatibility through Project work first. Interviews are capricious, projects are the best litmus tests.</p>
+<ul>
+<li>Case study: Kepano got hired as Obsidian CEO through contractor works.</li>
+<li>Evaluation: I have to be <strong>amazed</strong> by the output to consider hiring the person.</li>
+</ul>
+</li>
+</ul>
+<h2>Performance Evaluation Framework</h2>
+<ul>
+<li><strong>Glory list</strong> - Each member is obliged to jot down their list, revised with me (on 1-1). The list will be the primary input factor for performance evaluation. That means no predefined OKR / KPI. Planning and direction get pivot all the times, rendering those performance framework volatile and inefficient.</li>
+</ul>
+<h2>Tool stack</h2>
+<ul>
+<li>Notion as primary company knowledge base</li>
+<li>Slack as the main means of communication - No internal emails</li>
+</ul>
+<h2>Communication Protocol</h2>
+<ul>
+<li>Treat mentioned chat messages as mail inbox. Process them in a cadence, address each of them accordingly. Treat non-mentioned as broadcast bulletin board information, read them as news.</li>
+<li>If a message <em>should</em> be seen by a person, mention their name</li>
+<li>If a message <em>must</em> be seen by a person, write <code>ackp</code> (acknowledge please) in the message.</li>
+<li>Replying to either should or must level when you saw it is a decent etiquette to maintain, especially when it has an action to take.</li>
+<li>If synchronous communication or immediate action is required, pat the other back or use phone call. Synchronize sparingly.</li>
+</ul>0:{"buildId":"wTSMinWJARHWwgOp22Dwu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"thought-page","children":[["$","$L2",null,{"href":"/ko/thoughts","className":"thought-page__back","children":["← ","목록으로"]}],["$","h1",null,{"className":"thought-page__title","children":"What if I found a startup"}],["$","div",null,{"className":"thought-page__maturity","children":"상록"}],["$","$L3",null,{"html":"$4"}],"$L5","$L6"]}],["$L7","$L8"],"$L9"]}],"loading":null,"isPartial":false}
+5:["$","$La",null,{"items":[]}]
+6:["$","p",null,{"className":"thoughts-page__credit","children":[["$","a","link0",{"href":"https://huylenq.github.io/thoughts/what-if-i-found-a-startup","target":"_blank","rel":"noopener noreferrer","children":["huylenq.github.io"]}]," 의 노트에서 영감을 받아 현재 미러링하고 있습니다. 출처를 명시합니다."]}]
+7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2438b635d86af466.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/46cd3386407002db.js","async":true}]
+9:["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]
+d:null

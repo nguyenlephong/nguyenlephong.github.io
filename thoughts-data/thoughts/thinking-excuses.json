@@ -1,0 +1,23 @@
+{
+  "slug": "thinking-excuses",
+  "title": "When thinking becomes the excuse",
+  "html": "<p>I have had a delusional belief that thinking <strong><em>is the</em></strong> <em>solution to everything.</em> It is an even more toxic form of thinking \"<strong><em>to find</em></strong> <em>the solution to everything</em>.\"</p>\n<p>Thinking became my excuse to avoid action, <strong>procrastinate</strong> in my comfort zone, fantasize with thoughts, or sit down with a computer pouring words while making no change in the world.</p>\n<p>Here is the uncomfortable arithmetic: <strong><mark>additional ideas lose their weight</mark></strong> when the current one sits untested. Every hour spent imagining a better approach is an hour the existing approach sits untested. The thinker gets to feel productive — connections made, frameworks compared, possibilities mapped — while the scoreboard remains unchanged.</p>\n<p>It is seductive because thinking carries no risk of failure. In your head, the idea stays pristine. The moment you act, it meets friction, ugliness, compromise. So you retreat to the drawing board — not because the plan needs more work, but because the drawing board is comfortable.</p>\n<p>I still catch myself doing it. The awareness doesn't cure the habit; it just makes the procrastination less comfortable. Which, perhaps, is enough to tip the balance toward doing something.</p>\n<hr>\n<ul>\n<li><a href=\"/thoughts/thinking-and-doing-rhythm\">Thinking and Doing Rhythm</a></li>\n<li><a href=\"/thoughts/the-trap-of-information-consumption\">The trap of information consumption without action</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "play-the-game",
+      "title": "Play the game",
+      "context": "<ul>\n<li><a href=\"/thoughts/thinking-excuses\">When thinking becomes the excuse</a></li>\n</ul>"
+    },
+    {
+      "slug": "the-trap-of-information-consumption",
+      "title": "The trap of information consumption without action",
+      "context": "<ul>\n<li><a href=\"/thoughts/thinking-excuses\">When thinking becomes the excuse</a> - <span class=\"private-link\">What is the line between Knowledge and Skill?</span></li>\n</ul>"
+    },
+    {
+      "slug": "thinking-and-doing-rhythm",
+      "title": "Thinking and Doing Rhythm",
+      "context": "<ul>\n<li><a href=\"/thoughts/thinking-excuses\">When thinking becomes the excuse</a> - <a href=\"/thoughts/modal-thinking\">Modal thinking - Separate decision making and execution</a> - <span class=\"private-link\">Balancing...</li>\n</ul>"
+    }
+  ],
+  "maturity": "evergreen"
+}

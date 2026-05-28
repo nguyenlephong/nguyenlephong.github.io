@@ -1,0 +1,18 @@
+{
+  "slug": "life-running-digital-engine",
+  "title": "Life Running Digital Engine",
+  "html": "<p>Comprehensively composed of all the sub-systems for how I run most aspects of my life where a rule-engine system is employable.</p>\n<p>This system's overall implementation strongly prefers using apps. The reason being to leverage app <strong>notifications</strong> along with the <span class=\"private-link\">First-screen Principle</span> to alleviate the mental tax of decision making and the constant anxiety of “doing the right thing”.</p>\n<p>Above all of the sub-systems is the mindset that govern their execution. The current model to adhere to is <span class=\"private-link\">States of Mind</span>.</p>\n<h3>Driver Todo System</h3>\n<p>You take the driver seat.</p>\n<p>App: <strong>Things</strong></p>\n<p>Every task and project is an opportunity to pick up. They have a <em>positive</em> desirable outcome to pursue. Every progress pushes your life forward.</p>\n<p>The performance is not preallocated, not time-scheduled. The <strong>mentality</strong> when executing the task backlog when you are in the driver sea is with high urgency: \"could I done this with the minimal time?\", or \"could I done the best job for this in 30 minutes?\". <em>The faster I accomplish the outcome, the better</em>.</p>\n<p>Excluded of routine, scheduled tasks. This goal-todo system contains opportunities, not obligations (there's a YouTube video from Ali Abdaal regarding this).</p>\n<p>Related: <span class=\"private-link\">Healthy todo backlog</span></p>\n<h3>Accountability Todo System</h3>\n<p>Non-negotiable, execute with no wasted mental cycle, that is the beauty of the system.</p>\n<p>Apps: <strong>Calendar</strong> + <strong>Reminders</strong> + <strong>Streaks</strong></p>\n<p>The system manage <em>obligations</em> and <em>routines</em> that I just mindlessly do. Most of them are time-scheduled or have a very clear do-able context.</p>\n<p>The \"<strong>when to do it</strong>\" rule:</p>\n<ul>\n<li>When it is due, evening for date-scheduled, when it appears for datetime-scheduled.</li>\n<li>In context (location, equipment). There's only a single context now:\n<ul>\n<li><em>Groceries</em>: when I'm at a grocery store.</li>\n</ul>\n</li>\n</ul>\n<h3>Reflection Cadence</h3>\n<p>Reflection cadence is the system <strong>dynamic</strong> of evolution of self-stabilizing.  Reflection sessions are performed routinely, on recurrent schedules.</p>\n<p>There are three cycles, <strong>daily</strong>, <strong>weekly</strong> and <strong>monthly</strong>. They are scheduled with noted details within the Reminders app:</p>\n<ul>\n<li><span class=\"private-link\">The Day</span></li>\n<li><span class=\"private-link\">Weekly Reflection</span></li>\n<li><span class=\"private-link\">Monthly Reflection</span></li>\n</ul>\n<hr>\n<ul>\n<li><a href=\"/thoughts/programmable-self\">Programmable Self</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "feel-the-sensation",
+      "title": "Feel the Sensation",
+      "context": "<p>...is fine, I'm doing fine. A big part of this comes from <a href=\"/thoughts/life-running-digital-engine\">Life Running Digital Engine</a>. \t- You can feel the imbalance happening. You by instinct, feel...</p>"
+    },
+    {
+      "slug": "programmable-self",
+      "title": "Programmable Self",
+      "context": "<ul>\n<li><a href=\"/thoughts/life-running-digital-engine\">Life Running Digital Engine</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "evergreen"
+}
