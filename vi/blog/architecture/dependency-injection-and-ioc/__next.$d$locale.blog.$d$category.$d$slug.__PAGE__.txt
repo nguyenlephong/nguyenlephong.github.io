@@ -1,0 +1,355 @@
+1:"$Sreact.fragment"
+3:I[77105,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+f:I[63047,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+11:I[35757,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+12:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+13:"$Sreact.suspense"
+:HL["/_next/static/chunks/00a3e9f86731f1d1.css","style"]
+2:T550,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/vi/blog/architecture/dependency-injection-and-ioc#article","headline":"Dependency Injection & Inversion of Control, Không Có Phép Thuật","description":"DI container thoạt nghe như phù phép cho đến khi bạn thấy ý tưởng đơn giản ở phía dưới: đừng để code tự tạo ra dependency của chính nó, hãy đưa chúng vào từ bên ngoài. Hướng dẫn từ đầu, với ví dụ thực tế và lợi ích trong kiểm thử.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/blog/architecture/dependency-injection-and-ioc","mainEntityOfPage":"https://nguyenlephong.github.io/vi/blog/architecture/dependency-injection-and-ioc","datePublished":"2026-05-29","dateModified":"2026-05-29","keywords":"Kiến trúc phần mềm, Dependency Injection, Inversion of Control, SOLID, Kiểm thử, Design Patterns","articleSection":"Mã nguồn & Kiến trúc","isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/vi/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"FtClDM2AMZLtdO-QThMuu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/vi/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Mã nguồn & Kiến trúc\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Dependency Injection & Inversion of Control, Không Có Phép Thuật\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture/dependency-injection-and-ioc\"}]}"}}],["$","div",null,{"className":"blog-article__main","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$L3",null,{"href":"/vi/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$L3",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Mã nguồn & Kiến trúc"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Nền tảng Kiến trúc Phần mềm",["$","span",null,{"aria-hidden":"true","children":" · "}],"Phần 3/6"]}],["$","h1",null,{"className":"blog-article__title","children":"Dependency Injection & Inversion of Control, Không Có Phép Thuật"}],["$","p",null,{"className":"blog-article__summary","children":"DI container thoạt nghe như phù phép cho đến khi bạn thấy ý tưởng đơn giản ở phía dưới: đừng để code tự tạo ra dependency của chính nó, hãy đưa chúng vào từ bên ngoài. Hướng dẫn từ đầu, với ví dụ thực tế và lợi ích trong kiểm thử."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Bởi Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-05-29","children":"29 tháng 5, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"14 phút đọc"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Kiến trúc phần mềm",{"children":"Kiến trúc phần mềm"}],["$","li","Dependency Injection",{"children":"Dependency Injection"}],"$L4","$L5","$L6","$L7"]}]]}],"$L8","$L9","$La"]}],"$Lb"]}],["$Lc","$Ld"],"$Le"]}],"loading":null,"isPartial":false}
+4:["$","li","Inversion of Control",{"children":"Inversion of Control"}]
+5:["$","li","SOLID",{"children":"SOLID"}]
+6:["$","li","Kiểm thử",{"children":"Kiểm thử"}]
+7:["$","li","Design Patterns",{"children":"Design Patterns"}]
+10:T7e9a,<p>Ở một thời điểm nào đó, mọi developer đều đụng phải cùng một bức tường. Bạn muốn viết test cho một đoạn code, nhưng code đó bí mật gọi <code>new Database()</code> bên trong chính nó. Dù bạn làm gì, một kết nối database thật vẫn bật lên. Bạn muốn thay đổi email provider, nhưng email SDK đang bị chôn vùi ba lớp sâu. Bạn muốn chạy cùng logic cho cả HTTP request lẫn scheduled job, nhưng framework được gắn chặt đến mức gần như không thể.</p>
+<p>Đây là các triệu chứng của một nguyên nhân gốc rễ duy nhất: code <strong>tự tạo ra dependency của chính nó</strong>. Cách sửa có một cái tên chính thức — <em>Dependency Injection</em> — nhưng ý tưởng đằng sau nó thực ra rất đơn giản đến đáng ngạc nhiên. Bạn ngừng để code tự tìm kiếm collaborator, và <em>đưa chúng vào từ bên ngoài</em>. Chỉ vậy thôi. Mọi thứ khác — IoC container, DI framework, injection token — chỉ là cơ chế xây dựng trên một ý tưởng duy nhất đó.</p>
+<p>Hướng dẫn này giải thích từ đầu: vấn đề, nguyên tắc, pattern, và lợi nhuận thực tế trong test. TypeScript được dùng xuyên suốt vì nó đọc rõ ràng cho các kỹ sư đến từ bất kỳ background web hay server nào.</p>
+
+<h2 id="the-problem">Dependency cứng nhắc: khi code tự gọi <code>new</code></h2>
+<p>Đây là một service xử lý đơn hàng. Nhìn bề ngoài có vẻ hợp lý:</p>
+<pre><code><span class="cmt">// order-service.ts — phiên bản "trước"</span>
+<span class="kw">class</span> OrderService {
+  <span class="kw">async</span> placeOrder(cart: Cart): Promise&lt;Order&gt; {
+    <span class="kw">const</span> db     = <span class="kw">new</span> PostgresClient(process.env.DATABASE_URL!)  <span class="cmt">// DB cứng nhắc</span>
+    <span class="kw">const</span> stripe = <span class="kw">new</span> Stripe(process.env.STRIPE_SECRET_KEY!)        <span class="cmt">// vendor cứng nhắc</span>
+    <span class="kw">const</span> mailer = <span class="kw">new</span> SendGridMailer(process.env.SENDGRID_KEY!)    <span class="cmt">// vendor cứng nhắc</span>
+
+    <span class="kw">const</span> order = Order.fromCart(cart)
+    <span class="kw">await</span> stripe.charges.create({ amount: order.total, source: cart.token })
+    <span class="kw">await</span> db.query(<span class="str">'INSERT INTO orders …'</span>, [order])
+    <span class="kw">await</span> mailer.send({ to: cart.email, template: <span class="str">'order-confirmed'</span> })
+    <span class="kw">return</span> order
+  }
+}</code></pre>
+<p>Ba vấn đề hiện ra ngay khi bạn cố làm việc với đoạn này:</p>
+<ul>
+  <li><strong>Không thể test trong cô lập.</strong> Bạn không thể chạy <code>placeOrder</code> trong unit test mà không cần credential thật, database thật, và Stripe sandbox thật. Mọi test mặc định là một integration test chậm và dễ vỡ.</li>
+  <li><strong>Ràng buộc cứng nhắc với các hiện thực cụ thể.</strong> Nếu business chuyển từ Stripe sang Adyen, bạn mở file này ra mổ xẻ. Nếu staging cần một dummy mailer, không có cách sạch nào để cắm vào.</li>
+  <li><strong>Dependency ẩn.</strong> Người đọc signature của class thấy <code>placeOrder(cart)</code> và không biết method đó bí mật cần ba external service. Dependency vô hình cho đến khi bạn đọc từng dòng.</li>
+</ul>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Pattern cần nhận ra</span><p>Mỗi khi bạn thấy <code>new SomeExternalThing()</code> <em>bên trong</em> body của method hay constructor — không phải ở composition root — đó là một dependency cứng nhắc. Class vừa chịu trách nhiệm làm việc của chính nó <em>vừa</em> tìm kiếm và xây dựng các công cụ cần thiết. Đó là hai việc, và chúng kéo theo hướng ngược nhau.</p></div>
+
+<h2 id="inversion-of-control">Inversion of Control: ai chịu trách nhiệm tạo ra?</h2>
+<p>Trước khi giải quyết vấn đề bằng code, hãy đặt tên cho nguyên tắc liên quan. <strong>Inversion of Control</strong> (IoC) là ý tưởng rằng một đoạn code không nên chịu trách nhiệm tự lấy dependency của mình. Thay vào đó, thứ gì đó bên ngoài — một framework, một test harness, một composition root — đảm nhận việc tạo ra và đưa chúng vào.</p>
+<p>Bạn có thể đã nghe gọi là <em>Hollywood Principle</em>: <strong>"Đừng gọi cho chúng tôi, chúng tôi sẽ gọi cho bạn."</strong> Trong code mệnh lệnh cổ điển, logic nghiệp vụ gọi dependency trực tiếp — nó với tay lấy một database. Với IoC, dependency đến với bạn. Quyền kiểm soát mối quan hệ đó bị đảo ngược: bạn không còn quyết định khi nào hay làm thế nào để lấy collaborator; thế giới bên ngoài quyết định và giao chúng.</p>
+<p>IoC là một nguyên tắc rộng, không phải một kỹ thuật cụ thể. Các framework hiện thực nó theo nhiều cách:</p>
+<ul>
+  <li><strong>Dependency Injection (DI)</strong> — truyền collaborator như constructor argument hay method parameter. Dạng phổ biến và rõ ràng nhất.</li>
+  <li><strong>Service Locator</strong> — một registry toàn cục mà code gọi để lấy dependency theo tên. (Sẽ nói thêm tại sao đây là anti-pattern.)</li>
+  <li><strong>Template Method</strong> — một base class gọi các hook method mà subclass override, nên base kiểm soát luồng và subclass điền vào chỗ trống.</li>
+  <li><strong>Event / Observer</strong> — các component publish event; framework định tuyến chúng đến subscriber. Không bên nào biết bên kia tồn tại.</li>
+</ul>
+<p>Trong số này, <strong>Dependency Injection là minh bạch nhất và dễ test nhất</strong>. Đây cũng là cái thường bị đồng nhất với IoC, đó là lý do cần phân biệt hai thuật ngữ: IoC là <em>nguyên tắc</em>, DI là một <em>cách hiện thực</em> nguyên tắc đó.</p>
+
+<h2 id="dependency-injection">Dependency Injection: truyền dependency vào</h2>
+<p>Cơ chế của DI gần như đơn giản đến khó tin khi bạn nhìn thấy. Thay vì khởi tạo collaborator bên trong class, bạn khai báo chúng như parameter và để người gọi cung cấp chúng.</p>
+<p>Có ba phong cách — nhưng một người chiến thắng rõ ràng trong hầu hết tình huống:</p>
+<h3 id="constructor-injection">Constructor injection (ưu tiên)</h3>
+<p>Dependency được khai báo trong constructor. Đây là lựa chọn chuẩn: mọi dependency đều hiện thị trong signature của class, bắt buộc lúc khởi tạo, và có thể đặt <code>readonly</code> để không gì gán lại sau này.</p>
+<pre><code><span class="cmt">// order-service.ts — phiên bản "sau" với constructor injection</span>
+<span class="kw">interface</span> PaymentGateway { charge(amount: Money, token: string): Promise&lt;Receipt&gt; }
+<span class="kw">interface</span> OrderRepository { save(order: Order): Promise&lt;void&gt; }
+<span class="kw">interface</span> Mailer          { send(to: string, template: string): Promise&lt;void&gt; }
+
+<span class="kw">class</span> OrderService {
+  <span class="kw">constructor</span>(
+    <span class="kw">private readonly</span> payments: PaymentGateway,
+    <span class="kw">private readonly</span> orders:   OrderRepository,
+    <span class="kw">private readonly</span> mailer:   Mailer,
+  ) {}
+
+  <span class="kw">async</span> placeOrder(cart: Cart): Promise&lt;Order&gt; {
+    <span class="kw">const</span> order = Order.fromCart(cart)                   <span class="cmt">// quy tắc nghiệp vụ thuần</span>
+    <span class="kw">await</span> <span class="kw">this</span>.payments.charge(order.total, cart.token)
+    <span class="kw">await</span> <span class="kw">this</span>.orders.save(order)
+    <span class="kw">await</span> <span class="kw">this</span>.mailer.send(cart.email, <span class="str">'order-confirmed'</span>)
+    <span class="kw">return</span> order
+  }
+}</code></pre>
+<p>Đọc to signature của constructor: "Để tạo một <code>OrderService</code> bạn cần một payment gateway, một order repository, và một mailer." Đó là một hợp đồng, viết bằng code thuần, có thể thấy mà không cần đọc từng dòng method body.</p>
+<h3 id="setter-injection">Setter / method injection (dùng khi cần)</h3>
+<p>Dependency được đặt thông qua một method sau khi khởi tạo. Hữu ích cho collaborator tùy chọn hoặc cho các framework khởi tạo object theo hai giai đoạn. Dùng tiết kiệm — nó cho phép object tồn tại ở trạng thái cấu hình nửa vời, đây là nguồn bug tinh tế.</p>
+<pre><code><span class="cmt">// setter injection — chỉ dùng khi không thể đấu nối lúc khởi tạo</span>
+<span class="kw">class</span> ReportGenerator {
+  <span class="kw">private</span> formatter: ReportFormatter = <span class="kw">new</span> DefaultFormatter()
+
+  setFormatter(f: ReportFormatter) { <span class="kw">this</span>.formatter = f }  <span class="cmt">// ghi đè tùy chọn</span>
+
+  generate(data: ReportData): string {
+    <span class="kw">return this</span>.formatter.format(data)
+  }
+}</code></pre>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Quy tắc đơn giản</span><p>Mặc định dùng <strong>constructor injection</strong>. Mọi dependency mà class <em>luôn luôn</em> cần đều thuộc về constructor. Chỉ với tới setter injection khi dependency thực sự tùy chọn, hoặc khi framework bắt buộc. Đừng bao giờ dùng setter injection như lối thoát để tránh phải suy nghĩ về dependency graph.</p></div>
+
+<h2 id="composition-root">Composition root: một nơi duy nhất để đấu nối tất cả</h2>
+<p>Một khi bạn inject dependency qua constructor, câu hỏi mới xuất hiện: <em>ai thực sự gọi <code>new</code> và đấu nối các mảnh ghép lại?</em> Câu trả lời là <strong>composition root</strong>: một nơi duy nhất tại entry point của ứng dụng nơi mọi object thật được khởi tạo và inject vào nhau.</p>
+<p>Hãy nghĩ nó như nơi duy nhất trong toàn bộ codebase nơi <code>new ConcreteImplementation()</code> được phép xuất hiện tự do. Mọi thứ khác nói chuyện bằng interface. Composition root là seam giữa "hệ thống trừu tượng" và "thế giới thực".</p>
+<pre><code><span class="cmt">// composition-root.ts — nơi duy nhất các thứ thật được đấu nối</span>
+<span class="kw">import</span> { PostgresOrderRepository } <span class="kw">from</span> <span class="str">'./adapters/postgres-order-repository'</span>
+<span class="kw">import</span> { StripePaymentGateway }    <span class="kw">from</span> <span class="str">'./adapters/stripe-payment-gateway'</span>
+<span class="kw">import</span> { SendGridMailer }          <span class="kw">from</span> <span class="str">'./adapters/sendgrid-mailer'</span>
+<span class="kw">import</span> { OrderService }            <span class="kw">from</span> <span class="str">'./domain/order-service'</span>
+<span class="kw">import</span> { OrderController }         <span class="kw">from</span> <span class="str">'./http/order-controller'</span>
+
+<span class="kw">export function</span> buildApp() {
+  <span class="cmt">// 1. Xây dựng dependency lá trước (không có dependency riêng)</span>
+  <span class="kw">const</span> db      = <span class="kw">new</span> PostgresOrderRepository(process.env.DATABASE_URL!)
+  <span class="kw">const</span> stripe  = <span class="kw">new</span> StripePaymentGateway(process.env.STRIPE_SECRET_KEY!)
+  <span class="kw">const</span> mailer  = <span class="kw">new</span> SendGridMailer(process.env.SENDGRID_KEY!)
+
+  <span class="cmt">// 2. Xây dựng service, inject dependency vào</span>
+  <span class="kw">const</span> orderSvc = <span class="kw">new</span> OrderService(stripe, db, mailer)
+
+  <span class="cmt">// 3. Xây dựng lớp delivery, inject service vào</span>
+  <span class="kw">const</span> orderCtrl = <span class="kw">new</span> OrderController(orderSvc)
+
+  <span class="kw">return</span> orderCtrl
+}</code></pre>
+<p>Chú ý composition root đọc gần như một công thức: "làm những nguyên liệu này, kết hợp chúng thành service, đặt service vào controller." Chỉ có một nơi trong toàn bộ codebase bạn đến để hiểu <em>mọi thứ kết nối thế nào</em>. Đó là tài sản vô giá khi onboard kỹ sư mới, hay khi cần hoán đổi một nguyên liệu.</p>
+<p>Trong test, bạn viết một <em>test-specific composition root</em> — tương đương nhỏ gọn đấu nối fake thay vì adapter thật:</p>
+<pre><code><span class="cmt">// trong file test — cùng service, collaborator giả</span>
+<span class="kw">const</span> fakePayments = <span class="kw">new</span> InMemoryPaymentGateway()
+<span class="kw">const</span> fakeOrders   = <span class="kw">new</span> InMemoryOrderRepository()
+<span class="kw">const</span> fakeMailer   = <span class="kw">new</span> NoOpMailer()
+
+<span class="kw">const</span> svc = <span class="kw">new</span> OrderService(fakePayments, fakeOrders, fakeMailer)
+<span class="cmt">// chạy trong mili-giây; không mạng, không database</span></code></pre>
+
+<h2 id="by-hand-vs-container">DI thủ công vs DI container — điều gì thay đổi và khi nào quan trọng</h2>
+<p>Tất cả những gì ở trên là <em>manual DI</em>, còn gọi là <em>Pure DI</em>. Bạn tự viết code đấu nối. Với nhiều project — đặc biệt là nhỏ — đây là lựa chọn đúng: là code thuần, không có phép thuật, debug ngay lập tức, và developer mới có thể hiểu toàn bộ đấu nối bằng cách đọc một file.</p>
+<p>Khi ứng dụng lớn lên, cách thủ công bắt đầu gây khó chịu. DI container (đôi khi gọi là IoC container) tự động hóa việc đăng ký và giải quyết dependency, và thêm quản lý lifetime.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 860 440" role="img" aria-labelledby="dgm-di-title">
+    <title id="dgm-di-title">Sơ đồ đảo ngược kiểm soát: trước (class với tay lấy dependency) so với sau (composition root inject dependency vào).</title>
+    <defs>
+      <marker id="diAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="diRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+      </marker>
+    </defs>
+
+    <!-- LEFT PANEL: BEFORE -->
+    <rect class="dgm-surface" x="20" y="20" width="380" height="400" rx="16" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="210" y="50" text-anchor="middle" font-size="12">TRƯỚC — class với tay ra ngoài</text>
+
+    <rect class="dgm-core" x="120" y="70" width="180" height="56" rx="10" stroke-width="2"/>
+    <text class="dgm-t-strong" x="210" y="100" text-anchor="middle" font-size="15">OrderService</text>
+    <text class="dgm-t-muted" x="210" y="118" text-anchor="middle" font-size="11">gọi new() bên trong</text>
+
+    <rect class="dgm-driven" x="55" y="195" width="140" height="46" rx="9"/>
+    <text x="125" y="223" text-anchor="middle" font-size="13">PostgresClient</text>
+
+    <rect class="dgm-driven" x="222" y="195" width="140" height="46" rx="9"/>
+    <text x="292" y="223" text-anchor="middle" font-size="13">Stripe SDK</text>
+
+    <rect class="dgm-driven" x="138" y="310" width="145" height="46" rx="9"/>
+    <text x="210" y="338" text-anchor="middle" font-size="13">SendGrid SDK</text>
+
+    <!-- outward arrows (problematic) -->
+    <path d="M155,126 L125,192" stroke="#d97706" stroke-width="1.8" fill="none" marker-end="url(#diRed)"/>
+    <path d="M265,126 L292,192" stroke="#d97706" stroke-width="1.8" fill="none" marker-end="url(#diRed)"/>
+    <path d="M210,126 L210,307" stroke="#d97706" stroke-width="1.8" fill="none" marker-end="url(#diRed)"/>
+
+    <text x="210" y="390" text-anchor="middle" font-size="11" fill="#d97706">dep tạo trong class — không test được</text>
+
+    <!-- RIGHT PANEL: AFTER -->
+    <rect class="dgm-surface" x="460" y="20" width="380" height="400" rx="16" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="650" y="50" text-anchor="middle" font-size="12">SAU — composition root inject vào trong</text>
+
+    <rect class="dgm-adapter" x="560" y="68" width="180" height="46" rx="9"/>
+    <text x="650" y="96" text-anchor="middle" font-size="13">Composition Root</text>
+    <text class="dgm-t-muted" x="650" y="112" text-anchor="middle" font-size="10">gọi new() — chỉ ở đây</text>
+
+    <rect class="dgm-core" x="560" y="185" width="180" height="56" rx="10" stroke-width="2"/>
+    <text class="dgm-t-strong" x="650" y="215" text-anchor="middle" font-size="15">OrderService</text>
+    <text class="dgm-t-muted" x="650" y="233" text-anchor="middle" font-size="11">chỉ nhận interface</text>
+
+    <rect class="dgm-driven" x="480" y="315" width="120" height="46" rx="9"/>
+    <text x="540" y="343" text-anchor="middle" font-size="12">Postgres</text>
+
+    <rect class="dgm-driven" x="616" y="315" width="120" height="46" rx="9"/>
+    <text x="676" y="343" text-anchor="middle" font-size="12">Stripe</text>
+
+    <!-- inward arrows (correct) -->
+    <path class="dgm-flow" d="M650,114 L650,182" marker-end="url(#diAcc)"/>
+    <path class="dgm-flow" d="M590,241 L540,312" marker-end="url(#diAcc)"/>
+    <path class="dgm-flow" d="M710,241 L676,312" marker-end="url(#diAcc)"/>
+
+    <text class="dgm-t-accent" x="650" y="390" text-anchor="middle" font-size="11">dep chảy VÀO — dễ hoán đổi, dễ test</text>
+  </svg>
+  <figcaption>Bên trái, <code>OrderService</code> với tay <em>ra ngoài</em> để tạo dependency — mỗi mũi tên là một coupling nằm trong body của class. Bên phải, một composition root khởi tạo các object cụ thể và inject chúng <em>vào trong</em>. Các mũi tên đảo ngược. Service chỉ biết về interface; các kiểu cụ thể là chi tiết ở rìa.</figcaption>
+</figure>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Câu hỏi</th><th>Manual / Pure DI</th><th>DI Container (NestJS, InversifyJS, tsyringe…)</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Các kiểu được đăng ký thế nào?</th>
+      <td>Bạn viết đấu nối rõ ràng trong composition root.</td>
+      <td>Decorator, token, hay metadata — container quét và đăng ký tự động.</td>
+    </tr>
+    <tr>
+      <th>Instance được giải quyết thế nào?</th>
+      <td>Bằng cách tự gọi <code>new</code>, theo đúng thứ tự.</td>
+      <td>Hỏi container về một kiểu; nó xây dựng toàn bộ graph đệ quy.</td>
+    </tr>
+    <tr>
+      <th>Quản lý lifetime / scope</th>
+      <td>Bạn quyết định: một instance mỗi module, mỗi request, hay transient — và bạn giữ tham chiếu.</td>
+      <td>Khai báo: <code>@Singleton()</code>, <code>@RequestScoped()</code>, v.v. Container xử lý việc giải phóng.</td>
+    </tr>
+    <tr>
+      <th>Khả năng debug</th>
+      <td>Mọi thứ là code thuần — đặt breakpoint bất kỳ đâu, theo call stack.</td>
+      <td>Việc giải quyết diễn ra bên trong container; "tại sao tôi nhận instance này?" cần hiểu container nội bộ.</td>
+    </tr>
+    <tr>
+      <th>Boilerplate</th>
+      <td>Cao với graph lớn — đấu nối thủ công app 50 class là dài dòng.</td>
+      <td>Thấp — container duyệt cây dependency và tự động xây dựng tất cả.</td>
+    </tr>
+    <tr>
+      <th>An toàn lúc build</th>
+      <td>TypeScript bắt constructor arg bị thiếu lúc compile.</td>
+      <td>Tùy container; hệ thống dựa trên token có thể lỗi lúc runtime nếu thiếu binding.</td>
+    </tr>
+    <tr>
+      <th>Phù hợp nhất cho</th>
+      <td>App nhỏ-vừa, team mới làm quen DI, microservice với scope tập trung.</td>
+      <td>App lớn với nhiều service, team muốn convention-over-configuration, framework như NestJS nơi DI là trung tâm.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Ngưỡng mà container bắt đầu đáng công thay đổi tùy tình huống, nhưng hướng dẫn sơ bộ: nếu composition root của bạn cảm thấy đang trở thành gánh nặng bảo trì riêng — bạn luôn phải cuộn nó, quên thêm binding mới, hay chiến đấu với object lifetime — đó là tín hiệu nên với tới container. Cho đến lúc đó, phiên bản thuần túy dễ hiểu và debug hơn.</p>
+
+<h2 id="testing">Lợi ích trong kiểm thử: inject fake, có test nhanh</h2>
+<p>Lý do DI đáng học — hơn bất kỳ sự thanh lịch kiến trúc nào — là những gì nó làm cho bộ test của bạn. Khi mọi dependency đến qua constructor, viết test nghĩa là viết một composition root nhỏ với fake thay vì adapter thật. Không database, không mạng, không vendor sandbox. Test chạy trong mili-giây và không bao giờ lỗi vì tài khoản Stripe staging có rate limit.</p>
+<pre><code><span class="cmt">// order-service.test.ts</span>
+<span class="kw">class</span> InMemoryPaymentGateway <span class="kw">implements</span> PaymentGateway {
+  receipts: Receipt[] = []
+  <span class="kw">async</span> charge(amount: Money, token: string): Promise&lt;Receipt&gt; {
+    <span class="kw">const</span> r = { id: <span class="str">'fake-receipt'</span>, amount }
+    <span class="kw">this</span>.receipts.push(r)
+    <span class="kw">return</span> r
+  }
+}
+
+<span class="kw">class</span> InMemoryOrderRepository <span class="kw">implements</span> OrderRepository {
+  store: Order[] = []
+  <span class="kw">async</span> save(order: Order) { <span class="kw">this</span>.store.push(order) }
+}
+
+<span class="kw">class</span> SpyMailer <span class="kw">implements</span> Mailer {
+  sent: string[] = []
+  <span class="kw">async</span> send(to: string) { <span class="kw">this</span>.sent.push(to) }
+}
+
+<span class="cmt">// Bản thân test thì thuần túy, nhanh, tất định:</span>
+<span class="kw">it</span>(<span class="str">'xác nhận đơn hàng và thông báo cho khách'</span>, <span class="kw">async</span> () =&gt; {
+  <span class="kw">const</span> payments = <span class="kw">new</span> InMemoryPaymentGateway()
+  <span class="kw">const</span> repo     = <span class="kw">new</span> InMemoryOrderRepository()
+  <span class="kw">const</span> mailer   = <span class="kw">new</span> SpyMailer()
+
+  <span class="kw">const</span> svc   = <span class="kw">new</span> OrderService(payments, repo, mailer)
+  <span class="kw">const</span> order = <span class="kw">await</span> svc.placeOrder(testCart)
+
+  expect(payments.receipts).toHaveLength(1)
+  expect(repo.store).toContainEqual(order)
+  expect(mailer.sent).toContain(testCart.email)
+})</code></pre>
+<p>Đây là cùng một nhận thức ở trung tâm của <a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a> — in-memory fake chỉ là adapter lúc test, còn hiện thực Stripe hay Postgres thật là production adapter. DI là cơ chế làm cho sự hoán đổi trở nên khả thi; ports &amp; adapters là pattern kiến trúc làm cho ranh giới trở nên có chủ đích và rõ ràng.</p>
+<p>Cũng đáng dừng lại ở SOLID ở đây. Chữ "D" là <strong>Dependency Inversion Principle</strong>: các module cấp cao không nên phụ thuộc vào module cấp thấp; cả hai nên phụ thuộc vào abstraction. Các interface ở trên (<code>PaymentGateway</code>, <code>OrderRepository</code>, <code>Mailer</code>) là những abstraction đó. <code>OrderService</code> là module cấp cao. <code>StripePaymentGateway</code> và <code>PostgresOrderRepository</code> là module cấp thấp. Không bên nào biết trực tiếp về bên kia — chúng gặp nhau tại interface, và composition root nối chúng lại.</p>
+
+<h2 id="pitfalls">Anti-pattern: những cách DI đi sai đường</h2>
+<p>Ý tưởng đơn giản, nhưng có một vài cách quen thuộc để làm hỏng nó.</p>
+<h3 id="service-locator">Service Locator</h3>
+<p>Service Locator là registry toàn cục mà code gọi để lấy dependency lúc runtime:</p>
+<pre><code><span class="cmt">// anti-pattern: Service Locator — trông như DI nhưng không phải</span>
+<span class="kw">class</span> OrderService {
+  <span class="kw">async</span> placeOrder(cart: Cart) {
+    <span class="kw">const</span> payments = ServiceLocator.get&lt;PaymentGateway&gt;(<span class="str">'PaymentGateway'</span>)
+    <span class="kw">const</span> repo     = ServiceLocator.get&lt;OrderRepository&gt;(<span class="str">'OrderRepository'</span>)
+    <span class="cmt">// … tiếp tục</span>
+  }
+}</code></pre>
+<p>Điều này trông sạch hơn <code>new Stripe()</code> inline, nhưng đang che giấu cùng vấn đề. Dependency vẫn vô hình trong signature. Test phải cấu hình registry toàn cục trước khi chạy. Và class có thể yêu cầu <em>bất cứ thứ gì</em> ở bất kỳ thời điểm nào — bạn đã mất đi sự rõ ràng làm cho DI có giá trị.</p>
+<h3 id="over-injection">Over-injection (constructor 10 tham số)</h3>
+<p>Khi constructor tích lũy bảy, tám, hay mười tham số, đó thường là dấu hiệu class đang làm quá nhiều việc — không phải DI là công cụ sai. Cách sửa là phân rã class thành các collaborator nhỏ hơn, tập trung hơn, mỗi cái có danh sách dependency ngắn. Độ dài constructor là chỉ số sức khỏe hữu ích.</p>
+<h3 id="hidden-globals">Container toàn cục ẩn</h3>
+<p>Truy cập DI container trực tiếp từ trong service — thay vì chỉ ở composition root — là pattern Service Locator dưới tên khác. Quy tắc nghiêm ngặt: chỉ composition root mới nói chuyện với container. Service chỉ nói chuyện với interface được inject.</p>
+<h3 id="magic-you-cant-trace">Phép thuật bạn không thể truy vết</h3>
+<p>Một số framework đấu nối dependency qua decorator và reflect metadata theo cách thực sự khó theo khi có gì đó hỏng. Nếu bạn đang dành nhiều thời gian đọc tài liệu container hơn là đọc logic nghiệp vụ của chính mình, đó là dấu hiệu nên chuyển sang cách đơn giản hơn — hoặc ít nhất thêm một composition root được ghi chú rõ ràng nêu ra các binding chính.</p>
+
+<h2 id="by-company-size">Liều lượng DI phù hợp: từ project solo đến enterprise</h2>
+<p>Như hầu hết các ý tưởng kiến trúc, DI tăng theo vấn đề. Mục tiêu luôn như nhau — code testable, changeable — nhưng cơ chế phù hợp để đạt được thay đổi khi team và codebase lớn lên.</p>
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Giai đoạn công ty</th><th>Cách tiếp cận gợi ý</th><th>Hình dạng điển hình</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Solo / startup giai đoạn đầu</th>
+      <td>Manual DI với một file composition root duy nhất.</td>
+      <td>Một hàm <code>buildApp()</code>; khoảng 10–20 dòng. Nhanh viết, dễ đọc.</td>
+    </tr>
+    <tr>
+      <th>Team nhỏ (5–20 kỹ sư)</th>
+      <td>Vẫn manual DI, có thể chia thành domain module, mỗi cái có hàm đấu nối riêng.</td>
+      <td><code>buildOrderModule()</code>, <code>buildBillingModule()</code> — mỗi cái tự chứa, được compose một lần lúc khởi động.</td>
+    </tr>
+    <tr>
+      <th>Scale-up đang lớn (20–100 kỹ sư)</th>
+      <td>Container nhẹ bắt đầu đáng công. Cân nhắc <em>tsyringe</em>, <em>InversifyJS</em>, hoặc container tích hợp trong framework.</td>
+      <td>Decorator trên class, container cấu hình theo module; request-scoped service cho web app.</td>
+    </tr>
+    <tr>
+      <th>Enterprise / nền tảng lớn</th>
+      <td>Framework DI đầy đủ gần như cần thiết. NestJS, Spring Boot, hay ASP.NET Core được xây quanh ý tưởng này ở quy mô lớn.</td>
+      <td>Convention-over-configuration, lifecycle hook, module import/export, multi-tenant scoping.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>Một startup fintech có thể bắt đầu với composition root 30 dòng đấu nối ba service. Hai năm sau, cùng codebase có 60 service: đấu nối thủ công tự trở thành tác vụ bảo trì, và team với tới NestJS hay InversifyJS để xử lý graph tự động. Việc chuyển đổi đơn giản vì <em>pattern cốt lõi</em> — constructor injection, interface, composition root rõ ràng — vẫn như cũ. Container chỉ là trợ lý cơ học, không phải một ý tưởng khác.</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Lời khuyên thực tế</span><p>Bắt đầu với manual DI và một composition root. Bạn có thể giới thiệu container bất cứ lúc nào file đấu nối trở thành gánh nặng, và việc chuyển đổi là cơ học: bạn thay các lời gọi <code>new</code> rõ ràng bằng registration. Không có gì trong domain, service, hay test phải thay đổi — chỉ có composition root.</p></div>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Những điều cốt lõi cần nhớ</h3>
+<ul>
+  <li><strong>Nguyên nhân gốc rễ</strong> của code cứng nhắc, không test được là class tự gọi <code>new</code> với dependency. Cách sửa là truyền chúng vào.</li>
+  <li><strong>Inversion of Control</strong> là nguyên tắc (người khác chịu trách nhiệm cung cấp dependency). <strong>Dependency Injection</strong> là cách rõ ràng và dễ test nhất để hiện thực nó.</li>
+  <li><strong>Constructor injection</strong> là lựa chọn mặc định. Dependency hiện thị trong signature, bắt buộc lúc khởi tạo, và dễ hoán đổi trong test.</li>
+  <li><strong>Composition root</strong> là nơi duy nhất trong codebase nơi object thật được đấu nối. Mọi thứ khác nói chuyện qua interface.</li>
+  <li><strong>Manual DI</strong> đơn giản và debug dễ hơn với codebase nhỏ. <strong>DI container</strong> đáng công khi composition root tự trở thành gánh nặng bảo trì.</li>
+  <li><strong>Lợi ích trong kiểm thử</strong> là ngay lập tức: inject fake trong test, bỏ qua mạng và database, chạy hàng nghìn ca trong vài giây.</li>
+  <li>Đây cũng là <strong>Dependency Inversion Principle</strong> (chữ "D" trong SOLID) trong thực tế: module cấp cao và cấp thấp đều phụ thuộc vào abstraction, không bao giờ phụ thuộc trực tiếp lẫn nhau.</li>
+  <li>Tránh <strong>Service Locator</strong> (registry toàn cục ẩn), over-injection (constructor mười tham số), và truy cập container bên ngoài composition root.</li>
+</ul>
+</div>
+
+<p>Với hiểu biết vững chắc về cách dependency chảy, câu hỏi tự nhiên tiếp theo là cách <em>tổ chức file</em>. Trong phần tiếp theo của loạt này chúng ta xem xét chính xác điều đó: <a href="/blog/architecture/structuring-code-feature-vs-layer">Cấu trúc Codebase: Theo Tính năng hay Theo Lớp</a> — và tại sao câu trả lời phụ thuộc vào hình dạng team của bạn không kém gì hình dạng code.</p>8:["$","$Lf",null,{"html":"$10"}]
+9:["$","nav",null,{"className":"blog-series-nav","aria-label":"Nền tảng Kiến trúc Phần mềm","children":[["$","$L3",null,{"href":"/vi/blog/architecture/clean-vs-onion-vs-hexagonal","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Clean, Onion & Hexagonal Architecture: Một Ngôi Sao Phương Bắc, Ba Cái Tên"}]]}],["$","$L3",null,{"href":"/vi/blog/architecture/structuring-code-feature-vs-layer","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Bài tiếp theo"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Cấu trúc Codebase: Theo Lớp, Theo Tính năng, hay Theo Domain?"}]]}]]}]
+a:["$","footer",null,{"className":"blog-article__footer","children":["$","$L3",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Về Mã nguồn & Kiến trúc"]}]}]
+b:["$","aside",null,{"className":"blog-article__toc","children":["$","$L11",null,{"label":"Trong bài này"}]}]
+c:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/00a3e9f86731f1d1.css","precedence":"next"}]
+d:["$","script","script-0",{"src":"/_next/static/chunks/192c27563089a763.js","async":true}]
+e:["$","$L12",null,{"children":["$","$13",null,{"name":"Next.MetadataOutlet","children":"$@14"}]}]
+14:null

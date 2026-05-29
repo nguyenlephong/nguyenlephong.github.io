@@ -26,7 +26,104 @@
         "Dependency Inversion"
       ],
       "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 1,
       "featured": true
+    },
+    {
+      "slug": "clean-vs-onion-vs-hexagonal",
+      "category": "architecture",
+      "title": "Clean, Onion & Hexagonal Architecture: One North Star, Three Names",
+      "summary": "They look like three rival architectures. They are really the same idea — dependencies pointing inward, frameworks at the edge — drawn three ways. Here is what each one actually adds, and which to reach for.",
+      "date": "2026-05-29",
+      "readingMinutes": 15,
+      "tags": [
+        "Software Architecture",
+        "Clean Architecture",
+        "Onion Architecture",
+        "Hexagonal Architecture",
+        "System Design",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "dependency-injection-and-ioc",
+      "category": "architecture",
+      "title": "Dependency Injection & Inversion of Control, Without the Magic",
+      "summary": "DI containers feel like wizardry until you see the plain idea underneath: stop letting code create its own dependencies, and hand them in instead. A from-scratch guide, with real examples and the testing payoff.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "Software Architecture",
+        "Dependency Injection",
+        "Inversion of Control",
+        "SOLID",
+        "Testing",
+        "Design Patterns"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "structuring-code-feature-vs-layer",
+      "category": "architecture",
+      "title": "Structuring a Codebase: By Layer, By Feature, or By Domain?",
+      "summary": "Should your top-level folders be controllers/services/models, or orders/billing/auth? The choice quietly shapes how your codebase grows. A practical tour of by-layer, by-feature, and screaming architecture — with the trade-offs at each company size.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "Software Architecture",
+        "Project Structure",
+        "Screaming Architecture",
+        "Modularity",
+        "Code Organization",
+        "Monorepo"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "monolith-to-microservices",
+      "category": "architecture",
+      "title": "Monolith, Modular Monolith, Microservices: An Honest Decision Guide",
+      "summary": "Microservices are a tax you pay for organisational scale — not a starting point. A no-hype walk from monolith to modular monolith to microservices, with the signals that tell you when (and whether) to split.",
+      "date": "2026-05-29",
+      "readingMinutes": 16,
+      "tags": [
+        "Software Architecture",
+        "Microservices",
+        "Modular Monolith",
+        "System Design",
+        "Distributed Systems",
+        "Scalability"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 5
+    },
+    {
+      "slug": "micro-frontends-when-why-and-cost",
+      "category": "architecture",
+      "title": "Micro-Frontends: When They're Worth It, and What They Cost",
+      "summary": "Splitting the frontend into independently deployable pieces can free teams — or bury you in complexity. Written from shipping an Angular-host + React-modules setup at scale: when micro-frontends pay off, and the bill they come with.",
+      "date": "2026-05-29",
+      "readingMinutes": 15,
+      "tags": [
+        "Software Architecture",
+        "Micro-Frontends",
+        "Frontend Architecture",
+        "Module Federation",
+        "Scalability",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 6
     }
   ]
 }

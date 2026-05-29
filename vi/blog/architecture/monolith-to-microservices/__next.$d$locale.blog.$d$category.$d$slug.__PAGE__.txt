@@ -1,0 +1,250 @@
+1:"$Sreact.fragment"
+3:I[77105,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+e:I[63047,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+10:I[35757,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+11:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+12:"$Sreact.suspense"
+:HL["/_next/static/chunks/00a3e9f86731f1d1.css","style"]
+2:T54d,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/vi/blog/architecture/monolith-to-microservices#article","headline":"Monolith, Modular Monolith, Microservices: Hướng dẫn Quyết định Thành thật","description":"Microservices là cái giá bạn trả cho quy mô tổ chức — không phải điểm khởi đầu. Hành trình không màu mè từ monolith đến modular monolith đến microservices, với các tín hiệu cho bạn biết khi nào (và liệu có nên) tách ra.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/blog/architecture/monolith-to-microservices","mainEntityOfPage":"https://nguyenlephong.github.io/vi/blog/architecture/monolith-to-microservices","datePublished":"2026-05-29","dateModified":"2026-05-29","keywords":"Kiến trúc phần mềm, Microservices, Modular Monolith, Thiết kế hệ thống, Hệ phân tán, Khả năng mở rộng","articleSection":"Mã nguồn & Kiến trúc","isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/vi/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"FtClDM2AMZLtdO-QThMuu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/vi/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Mã nguồn & Kiến trúc\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Monolith, Modular Monolith, Microservices: Hướng dẫn Quyết định Thành thật\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture/monolith-to-microservices\"}]}"}}],["$","div",null,{"className":"blog-article__main","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$L3",null,{"href":"/vi/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$L3",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Mã nguồn & Kiến trúc"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Nền tảng Kiến trúc Phần mềm",["$","span",null,{"aria-hidden":"true","children":" · "}],"Phần 5/6"]}],["$","h1",null,{"className":"blog-article__title","children":"Monolith, Modular Monolith, Microservices: Hướng dẫn Quyết định Thành thật"}],["$","p",null,{"className":"blog-article__summary","children":"Microservices là cái giá bạn trả cho quy mô tổ chức — không phải điểm khởi đầu. Hành trình không màu mè từ monolith đến modular monolith đến microservices, với các tín hiệu cho bạn biết khi nào (và liệu có nên) tách ra."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Bởi Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-05-29","children":"29 tháng 5, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"16 phút đọc"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Kiến trúc phần mềm",{"children":"Kiến trúc phần mềm"}],["$","li","Microservices",{"children":"Microservices"}],["$","li","Modular Monolith",{"children":"Modular Monolith"}],"$L4","$L5","$L6"]}]]}],"$L7","$L8","$L9"]}],"$La"]}],["$Lb","$Lc"],"$Ld"]}],"loading":null,"isPartial":false}
+4:["$","li","Thiết kế hệ thống",{"children":"Thiết kế hệ thống"}]
+5:["$","li","Hệ phân tán",{"children":"Hệ phân tán"}]
+6:["$","li","Khả năng mở rộng",{"children":"Khả năng mở rộng"}]
+f:T7e34,<p>Đây là một cảnh diễn ra thường xuyên hơn mức cần thiết: một startup ba người quyết định, ngay từ ngày đầu, xây dựng microservices. Sáu tháng sau họ có mười lăm service, một Kafka cluster mà không ai hiểu hoàn toàn, và một bug đòi hỏi truy vết một request qua tám service để tái hiện. Team kiệt sức. Sản phẩm làm xong được một nửa. Và ở đâu đó trong một Slack thread có người gõ <em>chúng ta về cơ bản đã xây một distributed monolith.</em></p>
+<p>Microservices thực sự mạnh mẽ — ở quy mô phù hợp, với team phù hợp, vì lý do phù hợp. Nhưng chúng là <strong>cái giá bạn trả cho quy mô tổ chức, không phải điểm khởi đầu</strong>. Hướng dẫn này đi qua thành thật cả ba hình dạng kiến trúc — monolith, modular monolith, và microservices — và cho bạn các tín hiệu để biết khi nào (và liệu có nên) di chuyển giữa chúng.</p>
+
+<h2 id="monolith">Monolith: một deployable cai quản tất cả</h2>
+<p>Monolith là một đơn vị có thể deploy duy nhất. Một build, một binary (hoặc một tập asset đã compile), một bước deployment. Mọi tính năng, mọi module, mọi database query đều sống trong cùng một process.</p>
+<p>Nghe có vẻ hạn chế, và bản thân từ này đã có chút âm thanh đáng xấu hổ — như thể thừa nhận bạn có một monolith là thừa nhận bạn chưa bắt kịp kỹ thuật hiện đại. Cách diễn đạt đó sai, và nó đã gây ra rất nhiều nỗi đau không cần thiết.</p>
+<p><strong>Monolith là mặc định đúng đắn.</strong> Lý do:</p>
+<ul>
+  <li><strong>Lời gọi cục bộ miễn phí.</strong> Một lời gọi hàm trong một process chỉ vài nano-giây. Một lời gọi mạng giữa các service là mili-giây — và nó có thể lỗi, timeout, trả về kết quả một phần, hay mất hẳn. Bạn không chịu độ phức tạp đó cho đến khi cần.</li>
+  <li><strong>Transaction dễ dàng.</strong> Một relational database cho bạn ACID transaction trên toàn bộ data model. Trong monolith, chuyển tiền từ tài khoản A sang B là một transaction. Trong microservices, nó trở thành distributed transaction hay saga — những vấn đề thực sự khó với các failure mode thực.</li>
+  <li><strong>Debug đơn giản.</strong> Một process, một log stream, một stack trace. Bạn tìm ra vấn đề. Trong hệ phân tán, một hành động người dùng có thể sinh ra hàng chục operation bất đồng bộ trên nhiều service, và tương quan chúng đòi hỏi công cụ observability được xây đặc biệt.</li>
+  <li><strong>Deployment đơn giản.</strong> Một artefact, một pipeline, một chiến lược rollback. Bạn có thể ship tự tin từ ngày đầu.</li>
+  <li><strong>Các công ty lớn ship monolith lớn.</strong> Shopify chạy Rails monolith nhiều năm ở quy mô khổng lồ. Stack Overflow phục vụ hàng triệu request mỗi ngày từ một vài server chạy monolith. Monolith không ngăn bạn scale — nó chỉ scale khác đi.</li>
+</ul>
+<p>Những nỗi đau thực sự của monolith là có thực, nhưng chúng đến muộn hơn người ta nghĩ. <strong>Thời gian build</strong> tăng khi codebase lớn — rebuild đầy đủ mất hai phút ở 50k dòng mất mười hai phút ở 500k. <strong>Ma sát merge</strong> tăng khi hai mươi kỹ sư đều sửa cùng codebase; branch sống lâu và conflict trở thành nghi lễ hàng ngày. <strong>Deployment coupling</strong> có nghĩa mọi team deploy cùng nhau — một thay đổi rủi ro của team này có thể ghìm lại release của mọi người khác.</p>
+<p>Những nỗi đau này là có thực. Nhưng chúng là nỗi đau của <em>thành công</em>, và chúng đến muộn hơn nhiều so với hype gợi ý. Hầu hết team nên may mắn mà gặp được chúng.</p>
+
+<h2 id="modular-monolith">Modular monolith: điểm ngọt mà hầu hết team bỏ qua</h2>
+<p>Modular monolith vẫn là một đơn vị deploy — nhưng bên trong được tổ chức thành các module với <strong>ranh giới được thực thi</strong>. Các module giao tiếp qua interface rõ ràng. Một module không được phép trực tiếp với tay vào nội bộ của module khác: không import class private từ anh em, không chia sẻ table database, không gọi hàm helper nội bộ qua ranh giới module.</p>
+<p>Nghe như một kỷ luật nhỏ, nhưng nó thay đổi cuộc chơi đáng kể.</p>
+<p>Hãy nghĩ nó như bình đồ của một ngôi nhà. Monolith không có module là căn hộ studio: một phòng lớn mở nơi mọi thứ ở khắp nơi. Modular monolith cho bạn các phòng có tường — bạn vẫn sống trong một ngôi nhà, vẫn dùng chung ống nước và cửa trước, nhưng bếp và phòng ngủ có mục đích riêng biệt rõ ràng và bạn không nấu ăn trên giường.</p>
+<p>Các module ánh xạ tự nhiên sang <strong>bounded context</strong> từ Domain-Driven Design: module <code>Billing</code>, module <code>Inventory</code>, module <code>Notifications</code>. Mỗi cái sở hữu logic domain riêng và phần schema database riêng. Chúng expose public interface (service facade hay tập hàm public) và giữ mọi thứ khác private.</p>
+<p>Lợi ích thực tế là đáng kể:</p>
+<ul>
+  <li><strong>Lý luận độc lập.</strong> Developer làm việc trên <code>Billing</code> có thể hiểu và sửa nó mà không cần giữ toàn bộ codebase trong đầu.</li>
+  <li><strong>Refactor an toàn.</strong> Bạn có thể viết lại nội bộ của module miễn là public interface được giữ nguyên — phần còn lại của app không hay biết.</li>
+  <li><strong>Quyền sở hữu rõ ràng.</strong> Các team nhận module. Code review được tập trung. Onboard developer mới có nghĩa đưa cho họ một module, không phải codebase 200k dòng.</li>
+  <li><strong>Seam sẵn sàng di trú.</strong> Nếu bạn cần trích xuất một service, ranh giới đã được vẽ sẵn. Module trở thành service. Interface trở thành API. Công việc đáng kể, nhưng là công việc đã biết, không phải phẫu thuật thám hiểm.</li>
+</ul>
+<p>Modular monolith là kiến trúc mà hầu hết team bỏ qua thẳng, vội vàng từ monolith rối rắm sang microservices mà không dừng lại đây. Đó là sai lầm. Với đại đa số product team — dưới 100 kỹ sư, service chỉ vài con số, một hoặc hai deployment pipeline — một modular monolith được duy trì tốt là nơi sống hiệu quả nhất.</p>
+
+<h2 id="microservices">Microservices: thứ bạn thực sự mua</h2>
+<p>Microservices phân rã hệ thống thành các service có thể deploy độc lập. Mỗi service sở hữu process riêng, deployment pipeline riêng, và — quan trọng là — data store riêng. Các service nói chuyện với nhau qua mạng: HTTP, gRPC, message queue, event stream.</p>
+<p>Khi microservices hoạt động tốt, chúng mang lại bốn thứ mà không gì khác có thể sánh kịp ở quy mô:</p>
+<ul>
+  <li><strong>Deployment độc lập.</strong> Team payments có thể ship thay đổi cho payments service vào chiều thứ Ba mà không cần phối hợp với team recommendations, team tìm kiếm, hay team thông báo. Ở công ty có hàng trăm kỹ sư, điều này thay đổi tất cả — là sự khác biệt giữa deploy mỗi tuần và deploy một trăm lần mỗi ngày.</li>
+  <li><strong>Scale độc lập.</strong> Nếu service <code>ImageProcessing</code> cần bốn mươi CPU core trong giờ cao điểm và service <code>UserProfile</code> cần hai, bạn có thể scale chúng riêng. Trong monolith, bạn scale toàn bộ — bạn mua bốn mươi core cho mọi tính năng dù nó có cần hay không.</li>
+  <li><strong>Tự chủ của team.</strong> Mỗi service là một sản phẩm nhỏ tự chứa. Một team năm kỹ sư có thể sở hữu một service hoàn toàn: chọn ngôn ngữ, database, cadence deployment. Đây là siêu năng lực tổ chức của microservices — Định luật Conway làm việc cho bạn thay vì chống lại.</li>
+  <li><strong>Cô lập lỗi.</strong> Memory leak trong <code>RecommendationEngine</code> làm sập <code>RecommendationEngine</code>, không phải checkout. Bạn có thể degraded gracefully — cửa hàng vẫn hoạt động, chỉ là sản phẩm không có gợi ý cá nhân. Trong monolith, exception chưa được bắt trong bất kỳ module nào có thể làm sập toàn bộ process.</li>
+</ul>
+<p>Chú ý pattern: mọi thứ trong danh sách đó đều về <em>quy mô tổ chức</em> và <em>vận hành</em>. Đây không phải là những mối quan tâm áp dụng cho một team tám người đang xây một sản phẩm chưa tìm được product-market fit.</p>
+
+<h2 id="the-tax">Bạn thực sự trả gì: thuế hệ phân tán</h2>
+<p>Microservices không miễn phí. Mọi lợi ích ở trên đều có chi phí tương ứng, và các chi phí không hề nhỏ. Đánh giá thấp chúng là cách các team kết thúc trong tình trạng kiệt sức và chậm tiến độ.</p>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Cảnh báo distributed monolith</span><p>Kết quả tệ nhất không phải microservices hay monolith — mà là <strong>distributed monolith</strong>: các microservices ràng buộc chặt chẽ đến mức phải deploy cùng nhau, chia sẻ database, hay cùng lỗi. Bạn trả mọi chi phí của microservices mà không nhận được lợi ích nào. Điều này xảy ra khi team tách theo lớp kỹ thuật thay vì domain nghiệp vụ, hay khi service gọi nhau đồng bộ trong chuỗi dài. Nếu <code>ServiceA</code> chỉ có thể deploy sau <code>ServiceB</code>, bạn đã xây một distributed monolith.</p></div>
+
+<p>Đây là thuế đầy đủ:</p>
+<ul>
+  <li><strong>Lời gọi mạng thất bại.</strong> Lời gọi hàm không thể lỗi (trừ bug). Lời gọi mạng có thể lỗi, timeout, trả về giá trị cached cũ, hay thành công khi retry sau khi lần đầu đã có side effect. Bạn phải xử lý partial failure ở mọi nơi, liên tục.</li>
+  <li><strong>Eventual consistency.</strong> Các service sở hữu data riêng. Giữ data nhất quán qua ranh giới service đòi hỏi thiết kế cẩn thận — pattern event-driven, saga, idempotent operation, compensating transaction. Giải thích cho product manager tại sao người dùng có thể đặt đơn hàng nhưng không ngay lập tức thấy trong lịch sử là điều khó xử.</li>
+  <li><strong>Distributed transaction rất khó.</strong> Giao thức two-phase commit tồn tại và rất đau khổ. Hầu hết team dùng Saga pattern thay thế, chuyển độ phức tạp từ database sang application code. Cả hai đều phức tạp hơn đáng kể so với <code>BEGIN; UPDATE; COMMIT;</code>.</li>
+  <li><strong>Debug là kỹ năng khác.</strong> Stack trace không còn cho bạn biết điều gì sai. Bạn cần distributed tracing (Jaeger, Zipkin, Honeycomb), correlation ID trong mọi dòng log, service mesh, và dashboard tương quan sự kiện qua các service. Xây và duy trì cơ sở hạ tầng observability này là công việc kỹ thuật thực.</li>
+  <li><strong>Overhead ops nhân lên.</strong> Một service cần Dockerfile, Kubernetes deployment, ingress rule, health check endpoint, giới hạn CPU và memory, cấu hình log aggregation, và alert rule. Nhân với ba mươi service. Overhead này tăng tuyến tính theo số service; headcount kỹ thuật không tăng theo.</li>
+  <li><strong>Test khó hơn.</strong> Unit test vẫn dễ. Nhưng integration test span qua ranh giới service đòi hỏi chạy nhiều service đồng thời, quản lý phiên bản và cấu hình, và xử lý test data qua nhiều database. Contract testing (Pact, v.v.) giúp nhưng thêm kỷ luật riêng cần học.</li>
+</ul>
+<p>Không chi phí nào trong số này là không thể giải quyết — ngành đã có công cụ trưởng thành cho tất cả. Điểm mấu chốt là chúng là <em>chi phí thực</em> phải trả mỗi ngày, và không đáng trả cho đến khi lợi ích chúng mở khóa thực sự cần thiết.</p>
+
+<h2 id="signals">Tín hiệu: khi nào nên tách (và khi nào không)</h2>
+<p>Vậy làm sao bạn biết khi nào đã vượt ngưỡng mà microservices đáng công? Đây là những tín hiệu thực sự chỉ ra đã đến lúc:</p>
+<ul>
+  <li><strong>Nhu cầu scale độc lập là thực và tốn kém.</strong> Bạn có thể chỉ ra một component cụ thể cần tài nguyên gấp 10 lần phần còn lại, và bạn đang trả tiền cho tài nguyên đó trên toàn bộ monolith. Tách ra sẽ tiết kiệm tiền thực hoặc cải thiện hiệu năng thực.</li>
+  <li><strong>Tranh giành deploy là mãn tính.</strong> Các team thường xuyên bị chặn khỏi việc ship bởi thay đổi đang thực hiện của team khác. Chi phí phối hợp deployment chung đo được đang làm chậm bạn — không chỉ thỉnh thoảng, mà là sự khó chịu hàng tuần hay hàng ngày.</li>
+  <li><strong>Số lượng team đòi hỏi vậy.</strong> Bạn có nhiều team năm hay hơn kỹ sư làm trên domain nghiệp vụ khác biệt với cadence deployment khác nhau, ưu tiên công nghệ khác nhau, và roadmap thực sự độc lập. Định luật Conway dự đoán kiến trúc bạn sẽ có — bạn có thể lên kế hoạch cho nó.</li>
+  <li><strong>Một component có yêu cầu reliability hay security khác biệt cơ bản.</strong> Payments, authentication, và lưu trữ PII thường cần cô lập không phải vì lý do hiệu năng mà vì tuân thủ, giảm blast radius, và khả năng audit độc lập.</li>
+  <li><strong>Một module đã thực sự tách biệt.</strong> Nó không có shared state với phần còn lại của hệ thống, chỉ giao tiếp qua event hay API được định nghĩa rõ, và một team khác sở hữu nó. Seam tổ chức đã tồn tại — biến nó thành ranh giới service là hình thức hóa điều đã thực sự đúng.</li>
+</ul>
+<p>Và đây là các tín hiệu bạn đang tách quá sớm:</p>
+<ul>
+  <li>Toàn bộ tổ chức kỹ thuật của bạn dưới hai mươi người.</li>
+  <li>Bạn tách vì nó có vẻ scalable hơn chứ không phải vì bạn đã gặp giới hạn cụ thể.</li>
+  <li>Các service bạn đang lên kế hoạch sẽ cần deploy cùng nhau để hoạt động.</li>
+  <li>Bạn chưa thể vẽ ranh giới sạch nơi mỗi service sở hữu data riêng mà không có table chung.</li>
+  <li>Team bạn chưa có cơ sở hạ tầng observability (distributed tracing, centralized logging, alerting) để debug hệ phân tán.</li>
+  <li>Lý do chính là microservices có trong job description hay marketing copy của công ty.</li>
+</ul>
+
+<h2 id="how-to-split">Cách tách tốt: seam, strangler fig, và quyền sở hữu data</h2>
+<p>Nếu các tín hiệu ở trên chỉ ra nên tách, <em>cách</em> quan trọng cực kỳ. Tách tệ tạo ra distributed monolith được mô tả ở trên. Tách tốt tạo ra các service thực sự độc lập tự trả công.</p>
+<p><strong>Tách theo bounded context, không theo lớp kỹ thuật.</strong> Đừng tạo <code>DatabaseService</code> hay <code>ValidationService</code> — đó là mối quan tâm kỹ thuật, không phải nghiệp vụ. Tạo <code>OrderService</code>, <code>BillingService</code>, <code>InventoryService</code> — đơn vị năng lực nghiệp vụ với ý nghĩa rõ ràng, ổn định trong domain của bạn. Bounded context là phần domain nơi một model cụ thể áp dụng và ngôn ngữ nhất quán. Đó là nơi ranh giới service thuộc về.</p>
+<p><strong>Dùng strangler-fig pattern.</strong> Được đặt tên theo loại cây leo dần dần bao vây cây chủ, strangler-fig pattern cho phép bạn trích xuất service dần dần thay vì tất cả cùng lúc. Bạn dựng service mới song song với monolith, định tuyến một phần lưu lượng cụ thể sang nó, xác minh hoạt động, rồi xóa code tương ứng khỏi monolith. Monolith thu nhỏ theo thời gian; nó không bao giờ bị viết lại. Đây là an toàn hơn, có thể đảo ngược hơn, và ít có khả năng kết thúc trong migration big-bang sáu tháng không bao giờ kết thúc.</p>
+<p><strong>Trích xuất một service một lần.</strong> Mỗi lần trích xuất dạy bạn điều gì đó. Lần thứ hai sẽ tốt hơn lần đầu. Cố gắng trích xuất năm service đồng thời phân phối việc học và nhân rủi ro.</p>
+<p><strong>Quyền sở hữu data là ràng buộc không thể thương lượng.</strong> Service chia sẻ table database với service khác không phải là service — nó là module với overhead mạng thêm. Mỗi service phải sở hữu data riêng. Nếu hai service cần cùng data, một cái là thẩm quyền và cái kia lấy qua API hay đồng bộ qua event. Ràng buộc này khó thiết lập và khó duy trì, nhưng đây là thứ cho bạn khả năng deploy độc lập và cô lập lỗi mà bạn đến đây để tìm.</p>
+<p><strong>Dùng port để định nghĩa seam trước khi trích xuất.</strong> Nếu bạn đã theo cách tiếp cận <a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a> trong modular monolith, việc trích xuất gần như cơ học: port định nghĩa API, adapter đằng sau nó trở thành service client. Logic domain không thay đổi — chỉ có cơ chế delivery. Đây là một trong những lập luận thực tế mạnh mẽ nhất để xây với port ngay từ đầu: chúng cho bạn seam sẵn sàng trích xuất miễn phí.</p>
+
+<h2 id="comparison">So sánh đối chiếu</h2>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Chiều đánh giá</th>
+      <th>Monolith</th>
+      <th>Modular Monolith</th>
+      <th>Microservices</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Đơn vị deploy</th>
+      <td>Một process, một pipeline</td>
+      <td>Một process, một pipeline</td>
+      <td>Nhiều process, nhiều pipeline độc lập</td>
+    </tr>
+    <tr>
+      <th>Quyền sở hữu data</th>
+      <td>Database chung; mọi code có thể chạm mọi table</td>
+      <td>Database chung; module sở hữu vùng schema theo quy ước</td>
+      <td>Mỗi service sở hữu database riêng; không có table chung</td>
+    </tr>
+    <tr>
+      <th>Failure mode</th>
+      <td>Một process crash làm sập toàn bộ app</td>
+      <td>Một process crash làm sập toàn bộ app</td>
+      <td>Lỗi service bị cô lập; các service khác degraded gracefully</td>
+    </tr>
+    <tr>
+      <th>Phù hợp với team</th>
+      <td>Tốt nhất cho 1–3 team; ma sát tăng theo số team</td>
+      <td>Tốt nhất cho 2–8 team; module căn chỉnh với quyền sở hữu team</td>
+      <td>Cần thiết cho 5+ team ship theo cadence độc lập</td>
+    </tr>
+    <tr>
+      <th>Chi phí vận hành</th>
+      <td>Thấp: một deployment, một log stream, một bộ alert</td>
+      <td>Thấp: footprint ops giống monolith thường</td>
+      <td>Cao: observability, container orchestration, service mesh, CI/CD mỗi service</td>
+    </tr>
+    <tr>
+      <th>Mô hình transaction</th>
+      <td>ACID transaction đầy đủ dễ dàng</td>
+      <td>ACID transaction đầy đủ dễ dàng</td>
+      <td>Saga hay eventual consistency; distributed transaction rất khó</td>
+    </tr>
+    <tr>
+      <th>Khi nào dùng</th>
+      <td>Sản phẩm mới, team nhỏ, domain chưa biết</td>
+      <td>Sản phẩm đang lớn với ranh giới domain rõ ràng, 10–100 kỹ sư</td>
+      <td>Nhiều team tự chủ, domain model đã được kiểm chứng, nhu cầu scale độc lập thực</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="by-company-size">Góc nhìn thành thật theo quy mô công ty</h2>
+<p>Lời khuyên kiến trúc có xu hướng đến từ các công ty đã vượt ngưỡng mà microservices có ý nghĩa — vì đó là những công ty có engineering blog, conference talk, và tài nguyên viết post-mortem chi tiết. Điều đó tạo ra survivorship bias. Đây là bản đồ thành thật hơn:</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 900 340" role="img" aria-labelledby="dgm-evo">
+    <title id="dgm-evo">Ba giai đoạn tiến hóa: Monolith, Modular Monolith, và Microservices hiển thị từ trái sang phải với mũi tên giữa chúng.</title>
+    <defs>
+      <marker id="evoAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-muted dgm-t-mono" x="130" y="30" text-anchor="middle" font-size="11">GIAI ĐOẠN 1</text>
+    <text class="dgm-t-muted dgm-t-mono" x="450" y="30" text-anchor="middle" font-size="11">GIAI ĐOẠN 2</text>
+    <text class="dgm-t-muted dgm-t-mono" x="780" y="30" text-anchor="middle" font-size="11">GIAI ĐOẠN 3</text>
+    <rect class="dgm-surface" x="30" y="48" width="200" height="180" rx="14" stroke-width="2"/>
+    <text class="dgm-t-strong" x="130" y="82" text-anchor="middle" font-size="16">Monolith</text>
+    <text class="dgm-t-muted" x="130" y="102" text-anchor="middle" font-size="11">Một deployable</text>
+    <rect class="dgm-core" x="58" y="118" width="144" height="80" rx="10"/>
+    <text x="130" y="153" text-anchor="middle" font-size="13">Tất cả Code</text>
+    <text class="dgm-t-muted" x="130" y="172" text-anchor="middle" font-size="11">một process</text>
+    <ellipse class="dgm-driven" cx="130" cy="248" rx="36" ry="10" stroke-width="1.5"/>
+    <rect class="dgm-driven" x="94" y="248" width="72" height="28" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="130" cy="276" rx="36" ry="10" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="130" y="300" text-anchor="middle" font-size="11">DB chung</text>
+    <path class="dgm-flow" d="M234,138 H308" marker-end="url(#evoAcc)" stroke-width="2"/>
+    <text class="dgm-t-accent" x="271" y="130" text-anchor="middle" font-size="11">thực thi</text>
+    <text class="dgm-t-accent" x="271" y="143" text-anchor="middle" font-size="11">ranh giới</text>
+    <rect class="dgm-surface" x="312" y="48" width="276" height="180" rx="14" stroke-width="2"/>
+    <text class="dgm-t-strong" x="450" y="82" text-anchor="middle" font-size="16">Modular Monolith</text>
+    <text class="dgm-t-muted" x="450" y="102" text-anchor="middle" font-size="11">Một deployable · module nội bộ</text>
+    <rect class="dgm-adapter" x="328" y="118" width="72" height="44" rx="8"/>
+    <text x="364" y="144" text-anchor="middle" font-size="12">Billing</text>
+    <rect class="dgm-adapter" x="414" y="118" width="72" height="44" rx="8"/>
+    <text x="450" y="144" text-anchor="middle" font-size="12">Orders</text>
+    <rect class="dgm-adapter" x="500" y="118" width="72" height="44" rx="8"/>
+    <text x="536" y="144" text-anchor="middle" font-size="12">Thông báo</text>
+    <line class="dgm-line" x1="400" y1="118" x2="400" y2="162" stroke-dasharray="4 3" stroke-width="1.2"/>
+    <line class="dgm-line" x1="486" y1="118" x2="486" y2="162" stroke-dasharray="4 3" stroke-width="1.2"/>
+    <ellipse class="dgm-driven" cx="450" cy="248" rx="36" ry="10" stroke-width="1.5"/>
+    <rect class="dgm-driven" x="414" y="248" width="72" height="28" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="450" cy="276" rx="36" ry="10" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="450" y="300" text-anchor="middle" font-size="11">DB chung · schema riêng</text>
+    <path class="dgm-flow" d="M592,138 H656" marker-end="url(#evoAcc)" stroke-width="2"/>
+    <text class="dgm-t-accent" x="624" y="130" text-anchor="middle" font-size="11">tách tại</text>
+    <text class="dgm-t-accent" x="624" y="143" text-anchor="middle" font-size="11">seam</text>
+    <rect class="dgm-adapter" x="660" y="58" width="100" height="50" rx="10" stroke-width="1.5"/>
+    <text x="710" y="88" text-anchor="middle" font-size="13">Billing</text>
+    <ellipse class="dgm-driven" cx="710" cy="122" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="688" y="122" width="44" height="18" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="710" cy="140" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-core" x="774" y="138" width="100" height="50" rx="10" stroke-width="1.5"/>
+    <text x="824" y="168" text-anchor="middle" font-size="13">Orders</text>
+    <ellipse class="dgm-driven" cx="824" cy="202" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="802" y="202" width="44" height="18" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="824" cy="220" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="660" y="218" width="100" height="50" rx="10" stroke-width="1.5"/>
+    <text x="710" y="248" text-anchor="middle" font-size="13">Thông báo</text>
+    <ellipse class="dgm-driven" cx="710" cy="282" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="688" y="282" width="44" height="18" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="710" cy="300" rx="22" ry="7" stroke-width="1.2"/>
+    <path class="dgm-flow" d="M760,83 C 790,83 780,158 778,158" marker-end="url(#evoAcc)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <path class="dgm-flow" d="M760,243 C 790,243 840,218 828,192" marker-end="url(#evoAcc)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <path class="dgm-flow" d="M710,108 L710,214" marker-end="url(#evoAcc)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <text class="dgm-t-muted" x="780" y="320" text-anchor="middle" font-size="11">DB riêng · lời gọi mạng</text>
+  </svg>
+  <figcaption>Ba giai đoạn kiến trúc. Giai đoạn 1: một hộp, mọi thứ cùng nhau. Giai đoạn 2: một hộp với ranh giới module nội bộ được thực thi (đường nét đứt). Giai đoạn 3: các hộp riêng biệt kết nối bằng lời gọi mạng (mũi tên nét đứt), mỗi cái có cylinder database riêng. Bạn có thể dừng ở bất kỳ giai đoạn nào — hình dạng phù hợp phụ thuộc vào team bạn, không phải vào điều gì đang thịnh hành.</figcaption>
+</figure>
+
+<p><strong>Startup (1–15 kỹ sư).</strong> Xây monolith. Bạn chưa biết phần nào của hệ thống sẽ cần scale, tính năng nào sẽ sống sót, hay ranh giới domain nào là thực. Phân rã sớm khóa chặt các quyết định trước khi bạn có đủ thông tin để đưa ra chúng. Shopify, GitHub, và Basecamp đều bắt đầu là Rails monolith. Twitter cũng vậy, và họ chạy nó nhiều năm ở quy mô đáng kể trước khi phân rã dưới tải thực.</p>
+<p><strong>Scale-up (15–80 kỹ sư, đang lớn).</strong> Đây là nơi modular monolith đáng công. Bạn đã có đủ kỹ sư đến mức tăng trưởng không kiểm soát trong một codebase duy nhất gây ma sát thực, nhưng bạn vẫn deploy như một team và overhead của microservices đầy đủ sẽ giết chết velocity. Đầu tư vào ranh giới module, quyền sở hữu team, và interface sạch. Giữ tùy chọn trích xuất service, nhưng chưa thực thi trừ khi nhu cầu scale cụ thể bắt buộc bàn tay.</p>
+<p><strong>Enterprise / tổ chức lớn (80+ kỹ sư, nhiều team tự chủ).</strong> Microservices có chọn lọc có ý nghĩa ở đây — nhưng có chọn lọc là từ khóa. Các kiến trúc quy mô lớn hiệu quả nhất không phải là monolith thuần túy hay biển service giống nhau: chúng là sự pha trộn suy nghĩ kỹ. Vài service lõi cho các năng lực mang tải nhiều nhất, domain-critical nhất, modular monolith cho phần middle vận hành, và vài service chuyên biệt nơi scale độc lập hay tuân thủ thực sự đòi hỏi. Amazon không phân rã mọi thứ cùng lúc; họ xác định các seam dưới tải và trích xuất từng cái một.</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Bài học thực từ Netflix và Amazon</span><p>Khi Netflix và Amazon mô tả hành trình microservices của họ, phần được trích dẫn là sơ đồ kiến trúc với hàng trăm service. Phần bị bỏ qua là họ bắt đầu là monolith, chạy chúng cho đến khi nỗi đau không thể phủ nhận, rồi đầu tư nhiều năm và nỗ lực kỹ thuật khổng lồ vào quá trình chuyển đổi — bao gồm xây phần lớn công cụ hiện làm microservices khả thi. Họ đang nói với bạn nơi họ đến, không phải nơi bạn nên bắt đầu.</p></div>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Những điều cốt lõi cần nhớ</h3>
+<ul>
+  <li><strong>Monolith là mặc định đúng đắn.</strong> Đơn giản để xây, dễ debug, transaction tầm thường. Những nỗi đau đến muộn hơn hype gợi ý và chỉ ở quy mô thực.</li>
+  <li><strong>Modular monolith là tùy chọn được dùng ít nhất.</strong> Ranh giới được thực thi giữa các module nội bộ cho bạn sự rõ ràng team, refactor an toàn, và seam sẵn sàng trích xuất — mà không có bất kỳ độ phức tạp hệ phân tán nào.</li>
+  <li><strong>Microservices là thuế, không phải tính năng.</strong> Bạn trả bằng lỗi mạng, eventual consistency, distributed tracing, và overhead ops. Lợi nhuận — deployment độc lập, scale độc lập, tự chủ team — là thực nhưng chỉ ở quy mô đòi hỏi vậy.</li>
+  <li><strong>Distributed monolith là kết quả tệ nhất.</strong> Service ràng buộc chặt phải deploy cùng nhau cho bạn mọi chi phí của microservices mà không có lợi ích nào. Tách theo bounded context, không theo lớp kỹ thuật.</li>
+  <li><strong>Quyền sở hữu data là ràng buộc cứng.</strong> Service chia sẻ database với service khác không phải là service. Mỗi service phải sở hữu data riêng; nhất quán qua ranh giới đòi hỏi thiết kế rõ ràng.</li>
+  <li><strong>Dùng strangler-fig pattern để tách dần dần.</strong> Trích xuất một bounded context mỗi lần. Mỗi lần trích xuất dạy bạn điều gì đó và có thể đảo ngược. Đừng bao giờ làm decomposition big-bang.</li>
+  <li><strong>Kiến trúc phù hợp với quy mô team, không phải khát vọng.</strong> Startup: monolith. Scale-up: modular monolith. Team tự chủ lớn: microservices có chọn lọc nơi thực sự cần thiết.</li>
+</ul>
+</div>
+
+<p>Quyết định kiến trúc lan rộng về phía trước theo thời gian và cộng dồn. Câu hỏi tiếp theo nhiều team đối mặt sau khi quyết định tách là phải làm gì về frontend — liệu có phục vụ một UI thống nhất hay phân rã nó nữa. Câu hỏi đó được khám phá trong <a href="/blog/architecture/micro-frontends-when-why-and-cost">Micro-Frontends: Khi Nào, Tại Sao, và Chi Phí Thực</a>.</p>7:["$","$Le",null,{"html":"$f"}]
+8:["$","nav",null,{"className":"blog-series-nav","aria-label":"Nền tảng Kiến trúc Phần mềm","children":[["$","$L3",null,{"href":"/vi/blog/architecture/structuring-code-feature-vs-layer","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Cấu trúc Codebase: Theo Lớp, Theo Tính năng, hay Theo Domain?"}]]}],["$","$L3",null,{"href":"/vi/blog/architecture/micro-frontends-when-why-and-cost","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Bài tiếp theo"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Micro-Frontends: Khi Nào Xứng Đáng, và Chi Phí Là Gì"}]]}]]}]
+9:["$","footer",null,{"className":"blog-article__footer","children":["$","$L3",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Về Mã nguồn & Kiến trúc"]}]}]
+a:["$","aside",null,{"className":"blog-article__toc","children":["$","$L10",null,{"label":"Trong bài này"}]}]
+b:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/00a3e9f86731f1d1.css","precedence":"next"}]
+c:["$","script","script-0",{"src":"/_next/static/chunks/192c27563089a763.js","async":true}]
+d:["$","$L11",null,{"children":["$","$12",null,{"name":"Next.MetadataOutlet","children":"$@13"}]}]
+13:null

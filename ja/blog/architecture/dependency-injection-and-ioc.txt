@@ -1,0 +1,416 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"default"]
+3:I[37457,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"ViewportBoundary"]
+b:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"MetadataBoundary"]
+d:I[68027,[],"default"]
+:HL["/_next/static/chunks/1928531976a6db18.css","style"]
+:HL["/_next/static/media/03fc1b4a8d284b5e-s.p.af4fcd24.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/47df9ba1c7236d3b-s.p.7bbb93ea.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/70bc3e132a0a741e-s.p.15008bfb.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/89ea96820aa96980-s.p.cd67f43d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/8c2eb9ceedecfc8e-s.p.21935807.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/ed5f1f9bced69653-s.p.c75d0046.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/00a3e9f86731f1d1.css","style"]
+0:{"P":null,"b":"FtClDM2AMZLtdO-QThMuu","c":["","ja","blog","architecture","dependency-injection-and-ioc"],"q":"","i":false,"f":[[["",{"children":[["locale","ja","d"],{"children":["blog",{"children":[["category","architecture","d"],{"children":[["slug","dependency-injection-and-ioc","d"],{"children":["__PAGE__",{}]}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1928531976a6db18.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/b1dacca048b168d9.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/adda4f8d284f61f5.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/_next/static/chunks/b9004a9a2c3ef441.js","async":true,"nonce":"$undefined"}],["$","script","script-3",{"src":"/_next/static/chunks/fc0560b29860090b.js","async":true,"nonce":"$undefined"}],["$","script","script-4",{"src":"/_next/static/chunks/c1c09076be4c9467.js","async":true,"nonce":"$undefined"}],["$","script","script-5",{"src":"/_next/static/chunks/920b11be92c50b6e.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/00a3e9f86731f1d1.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/192c27563089a763.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+17:I[63047,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+e:T58e,{"@context":"https://schema.org","@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","alternateName":["Nguyễn Lê Phong","Phong Nguyen"],"url":"https://nguyenlephong.github.io","image":"https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom.png","jobTitle":"Head of Tech · Senior Software Engineer · Tech Lead","description":"8 年以上の経験を持つシニアソフトウェアエンジニア兼 Head of Tech。プロダクト構築、デリバリーリード、マイクロフロントエンド、Kubernetes、ロールアウトシステムのアーキテクチャ設計を担当。情報技術学士 — Very Good(GPA 3.36)。","email":"mailto:phongnguyen.itengineer@gmail.com","telephone":"(+84)98-549-0107","address":{"@type":"PostalAddress","addressLocality":"Ho Chi Minh City","addressCountry":"VN"},"knowsAbout":["React","Next.js","TypeScript","Node.js","Java","Spring Framework","Micro-Frontend Architecture","Kubernetes","ArgoCD","CI/CD","System Design","Engineering Leadership"],"worksFor":{"@type":"Organization","name":"NDSVN JSC"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Information Technology — Bachelor (GPA 3.36)"},"sameAs":["https://www.linkedin.com/in/phongnguyen-it/","https://github.com/nguyenlephong","https://leetcode.com/nguyenlephong/","https://www.youtube.com/@NguyenLePhong","https://twitter.com/nguyenlephong17"]}4:["$","html",null,{"lang":"ja","className":"inter_fd091ad6-module__giF-bG__variable jetbrains_mono_b4e9f13-module__5zzpyq__variable source_sans_3_1fe423d2-module__TTNI_q__variable ibm_plex_sans_888939e2-module__7zuP8W__variable atkinson_hyperlegible_b8f5e8ea-module__7sJiSq__variable lora_4aca033c-module__UGhRpG__variable","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n(function() {\n  try {\n    var key = 'theme_preference';\n    var stored = localStorage.getItem(key);\n    var pref = stored ? JSON.parse(stored).theme_setting : 'system';\n    var dark = pref === 'dark' || (pref === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);\n    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');\n  } catch (e) {\n    document.documentElement.setAttribute('data-theme', 'dark');\n  }\n})();\n"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n(function() {\n  try {\n    var key = 'reading_font_preference';\n    var allowed = [\"inter\",\"source\",\"plex\",\"atkinson\",\"lora\"];\n    var stored = localStorage.getItem(key);\n    var value = allowed.indexOf(stored) >= 0 ? stored : 'inter';\n    document.documentElement.setAttribute('data-reading-font', value);\n  } catch (e) {\n    document.documentElement.setAttribute('data-reading-font', 'inter');\n  }\n})();\n"}}],["$","meta",null,{"name":"google-adsense-account","content":"ca-pub-2196929070546836"}],["$","link",null,{"rel":"preconnect","href":"https://app.posthog.com","crossOrigin":""}],["$","link",null,{"rel":"dns-prefetch","href":"https://app.posthog.com"}],["$","link",null,{"rel":"preconnect","href":"https://www.googletagmanager.com","crossOrigin":""}],["$","link",null,{"rel":"dns-prefetch","href":"https://www.googletagmanager.com"}],["$","link",null,{"rel":"dns-prefetch","href":"https://pagead2.googlesyndication.com"}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$e"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://nguyenlephong.github.io/#website\",\"url\":\"https://nguyenlephong.github.io\",\"name\":\"Nguyen Le Phong — Senior Software Engineer\",\"description\":\"8 年以上の経験を持つシニアソフトウェアエンジニア兼 Head of Tech。プロダクト構築、デリバリーリード、マイクロフロントエンド、Kubernetes、ロールアウトシステムのアーキテクチャ設計を担当。情報技術学士 — Very Good(GPA 3.36)。\",\"inLanguage\":\"ja\",\"author\":{\"@id\":\"https://nguyenlephong.github.io/#person\"}}"}}]]}],"$Lf","$L10","$L11","$L12","$L13"]}]
+14:T585,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc#article","headline":"Dependency Injection と Inversion of Control——魔法なしで理解する","description":"DIコンテナは、根底にあるシンプルなアイデアを見るまで魔法のように感じられます：コードが自分で依存を作るのをやめ、外から受け取るようにする、それだけです。初歩から始めるガイドで、実例とテストの恩恵をお届けします。","inLanguage":"ja","url":"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc","mainEntityOfPage":"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc","datePublished":"2026-05-29","dateModified":"2026-05-29","keywords":"ソフトウェアアーキテクチャ, Dependency Injection, Inversion of Control, SOLID, テスト, デザインパターン","articleSection":"ソースコード & アーキテクチャ","isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/ja/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}18:T8dae,<p>ある時点ですべての開発者は同じ壁にぶつかります。コードの一部をテストしたいのに、そのコードが内部で <code>new Database()</code> を呼んでいます。何をしても、本物のデータベース接続が起動します。メールプロバイダーを交換したいのに、メールSDKが三層も深くに埋まっています。同じロジックをHTTPリクエストとスケジュールジョブの両方で動かしたいのに、フレームワークがあまりにもがっちりとボルトで締まっていて、実質的に不可能です。</p>
+<p>これらはすべて、一つの根本的な原因の症状です：<strong>自分自身の依存を作るコード</strong>。解決策には正式な名前があります――<em>Dependency Injection</em>――ですが、その根底にあるアイデアは拍子抜けするほどシンプルです。コードが自分で協調者を見つけるのをやめて、<em>外から渡す</em>ようにします。それだけです。他のすべて――IoCコンテナ・DIフレームワーク・インジェクショントークン――はその一つのアイデアの上に構築された仕組みにすぎません。</p>
+<p>このガイドでは初めからほぐしていきます：問題、原則、パターン、そしてテストにおける実践的な恩恵。TypeScript を全体で使用します。あらゆるWebまたはサーバーバックグラウンドを持つエンジニアにとって読みやすいからです。</p>
+
+<h2 id="the-problem">ハードワイヤードな依存：コードが自分で <code>new</code> を呼ぶとき</h2>
+<p>注文を処理するサービスがあります。一見すると完全に合理的に見えます：</p>
+<pre><code><span class="cmt">// order-service.ts — 「修正前」バージョン</span>
+<span class="kw">class</span> OrderService {
+  <span class="kw">async</span> placeOrder(cart: Cart): Promise&lt;Order&gt; {
+    <span class="kw">const</span> db     = <span class="kw">new</span> PostgresClient(process.env.DATABASE_URL!)  <span class="cmt">// ハードワイヤードなDB</span>
+    <span class="kw">const</span> stripe = <span class="kw">new</span> Stripe(process.env.STRIPE_SECRET_KEY!)        <span class="cmt">// ハードワイヤードなベンダー</span>
+    <span class="kw">const</span> mailer = <span class="kw">new</span> SendGridMailer(process.env.SENDGRID_KEY!)    <span class="cmt">// ハードワイヤードなベンダー</span>
+
+    <span class="kw">const</span> order = Order.fromCart(cart)
+    <span class="kw">await</span> stripe.charges.create({ amount: order.total, source: cart.token })
+    <span class="kw">await</span> db.query(<span class="str">'INSERT INTO orders …'</span>, [order])
+    <span class="kw">await</span> mailer.send({ to: cart.email, template: <span class="str">'order-confirmed'</span> })
+    <span class="kw">return</span> order
+  }
+}</code></pre>
+<p>これを使おうとした瞬間、三つの問題が明確になります：</p>
+<ul>
+  <li><strong>単独でテスト不可能。</strong>本物のクレデンシャル・ライブのデータベース・ライブのStripeサンドボックスなしに <code>placeOrder</code> をユニットテストで実行できません。デフォルトで、すべてのテストが遅くて壊れやすいインテグレーションテストになります。</li>
+  <li><strong>特定の実装に硬くカップリングされている。</strong>ビジネスが Stripe から Adyen に移行するとき、このファイルを開いて手術をします。ステージングにダミーのメーラーが必要なとき、プラグインする明確な方法がありません。</li>
+  <li><strong>隠れた依存。</strong>クラスのシグネチャを読む人は <code>placeOrder(cart)</code> を見て、このメソッドが秘密裡に三つの外部サービスを必要とすることを知りません。依存はすべての行を読むまで見えません。</li>
+</ul>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">注目すべきパターン</span><p>メソッドやコンストラクター本体の<em>内部</em>で <code>new SomeExternalThing()</code> を見るたびに――コンポジションルートではなく――それはハードワイヤードな依存です。クラスは自分の仕事をすることと、その仕事に必要なツールを見つけて構築することの両方に責任を負っています。これは二つの仕事であり、互いに反対方向に引っ張ります。</p></div>
+
+<h2 id="inversion-of-control">Inversion of Control：誰が作成を管理するか？</h2>
+<p>コードで問題を解決する前に、関連する原則を名前で呼ぶことが役立ちます。<strong>Inversion of Control</strong>（IoC）は、コードが自分自身の依存を取得することに責任を負うべきではないというアイデアです。その代わりに、外部のもの――フレームワーク・テストハーネス・コンポジションルート――が物を作って渡すことを担います。</p>
+<p>いわゆる<em>ハリウッド原則</em>を聞いたことがあるかもしれません：<strong>「こちらから電話しないで、向こうから電話するから。」</strong>古典的な命令型コードでは、ビジネスロジックが依存を直接呼び出します――データベースに手を伸ばして掴みます。IoCでは、依存があなたのところに来ます。その関係の制御が逆転します：いつどのように協調者を取得するかをあなたが決めるのではなく、外の世界が決めて届けます。</p>
+<p>IoC は広い原則であり、特定の技術ではありません。フレームワークはさまざまな方法でそれを実装しています：</p>
+<ul>
+  <li><strong>Dependency Injection（DI）</strong>――協調者をコンストラクター引数またはメソッドパラメーターとして渡す。最も一般的で最も明示的な形式。</li>
+  <li><strong>Service Locator</strong>――コードが実行時に名前で依存を取得するグローバルレジストリ。（後でこれがアンチパターンである理由について触れます。）</li>
+  <li><strong>Template Method</strong>――基底クラスがサブクラスがオーバーライドするフックメソッドを呼び出すので、基底クラスがフローを制御し、サブクラスが空白を埋めます。</li>
+  <li><strong>Event / Observer</strong>――コンポーネントがイベントを発行し、フレームワークがそれをサブスクライバーにルートします。どちらの側も相手の存在を知りません。</li>
+</ul>
+<p>これらの中で、<strong>Dependency Injection は最も透明でテストしやすいものです</strong>。またIoC自体と最もよく混同されるものでもあります。だから二つの用語をほぐす価値があります：IoCは<em>原則</em>であり、DIはその原則の一つの<em>実装</em>です。</p>
+
+<h2 id="dependency-injection">Dependency Injection：依存を受け取る</h2>
+<p>DIの仕組みは、一度見れば恥ずかしいほどシンプルです。クラスの内部で協調者を構築するのではなく、パラメーターとして宣言し、呼び出し側に提供させます。</p>
+<p>三つの種類がありますが、ほとんどの状況で一つの明確な勝者があります：</p>
+<h3 id="constructor-injection">コンストラクターインジェクション（推奨）</h3>
+<p>依存はコンストラクターで宣言されます。これが標準的な選択です：すべての依存がクラスのシグネチャに見え、構築時に必要とされ、後で何かが再代入できないように <code>readonly</code> にできます。</p>
+<pre><code><span class="cmt">// order-service.ts — コンストラクターインジェクションを使った「修正後」バージョン</span>
+<span class="kw">interface</span> PaymentGateway { charge(amount: Money, token: string): Promise&lt;Receipt&gt; }
+<span class="kw">interface</span> OrderRepository { save(order: Order): Promise&lt;void&gt; }
+<span class="kw">interface</span> Mailer          { send(to: string, template: string): Promise&lt;void&gt; }
+
+<span class="kw">class</span> OrderService {
+  <span class="kw">constructor</span>(
+    <span class="kw">private readonly</span> payments: PaymentGateway,
+    <span class="kw">private readonly</span> orders:   OrderRepository,
+    <span class="kw">private readonly</span> mailer:   Mailer,
+  ) {}
+
+  <span class="kw">async</span> placeOrder(cart: Cart): Promise&lt;Order&gt; {
+    <span class="kw">const</span> order = Order.fromCart(cart)                   <span class="cmt">// 純粋なビジネスルール</span>
+    <span class="kw">await</span> <span class="kw">this</span>.payments.charge(order.total, cart.token)
+    <span class="kw">await</span> <span class="kw">this</span>.orders.save(order)
+    <span class="kw">await</span> <span class="kw">this</span>.mailer.send(cart.email, <span class="str">'order-confirmed'</span>)
+    <span class="kw">return</span> order
+  }
+}</code></pre>
+<p>そのコンストラクターのシグネチャを声に出して読んでください：「<code>OrderService</code> を作るには、決済ゲートウェイ・注文リポジトリ・メーラーが必要です。」これは、メソッド本体を一行も読まずにプレーンなコードで書かれた見える契約です。</p>
+<h3 id="setter-injection">セッター / メソッドインジェクション（時々使用）</h3>
+<p>依存は構築後にメソッド経由で設定されます。オプションの協調者や、二段階でオブジェクトを構築するフレームワーク（例：一部のテストフレームワーク・一部のIoCコンテナ）に役立ちます。控えめに使いましょう――オブジェクトが部分的に設定された状態で存在することを許可し、これが微妙なバグの元になります。</p>
+<pre><code><span class="cmt">// セッターインジェクション — 構築時の配線が不可能な場合のみ使用</span>
+<span class="kw">class</span> ReportGenerator {
+  <span class="kw">private</span> formatter: ReportFormatter = <span class="kw">new</span> DefaultFormatter()
+
+  setFormatter(f: ReportFormatter) { <span class="kw">this</span>.formatter = f }  <span class="cmt">// オプションの上書き</span>
+
+  generate(data: ReportData): string {
+    <span class="kw">return this</span>.formatter.format(data)
+  }
+}</code></pre>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">シンプルな経験則</span><p>デフォルトで<strong>コンストラクターインジェクション</strong>を使いましょう。クラスが<em>常に</em>必要とするすべての依存はコンストラクターに属します。依存が本当にオプションの場合、またはフレームワークが強制する場合のみセッターインジェクションを使いましょう。依存グラフについて考えることを避けるための逃げ道としてセッターインジェクションを使わないでください。</p></div>
+
+<h2 id="composition-root">コンポジションルート：すべてを一つの場所でつなぐ</h2>
+<p>コンストラクターを通じて依存を注入すると、新しい質問が生まれます：<em>実際に誰が <code>new</code> を呼んでピースをつなぎ合わせるのか？</em>答えは<strong>コンポジションルート</strong>です：アプリケーションのエントリーポイントにある、すべての本物のオブジェクトが構築されてお互いに注入される単一の場所。</p>
+<p>コードベース全体で <code>new ConcreteImplementation()</code> を自由に書いても良い唯一の場所だと考えてください。他のすべてはインターフェースの言葉で話します。コンポジションルートは「抽象システム」と「現実の世界」の間のシームです。</p>
+<pre><code><span class="cmt">// composition-root.ts — 本物のものが配線される唯一の場所</span>
+<span class="kw">import</span> { PostgresOrderRepository } <span class="kw">from</span> <span class="str">'./adapters/postgres-order-repository'</span>
+<span class="kw">import</span> { StripePaymentGateway }    <span class="kw">from</span> <span class="str">'./adapters/stripe-payment-gateway'</span>
+<span class="kw">import</span> { SendGridMailer }          <span class="kw">from</span> <span class="str">'./adapters/sendgrid-mailer'</span>
+<span class="kw">import</span> { OrderService }            <span class="kw">from</span> <span class="str">'./domain/order-service'</span>
+<span class="kw">import</span> { OrderController }         <span class="kw">from</span> <span class="str">'./http/order-controller'</span>
+
+<span class="kw">export function</span> buildApp() {
+  <span class="cmt">// 1. 最初に末端の依存を構築する（依存を持たないもの）</span>
+  <span class="kw">const</span> db      = <span class="kw">new</span> PostgresOrderRepository(process.env.DATABASE_URL!)
+  <span class="kw">const</span> stripe  = <span class="kw">new</span> StripePaymentGateway(process.env.STRIPE_SECRET_KEY!)
+  <span class="kw">const</span> mailer  = <span class="kw">new</span> SendGridMailer(process.env.SENDGRID_KEY!)
+
+  <span class="cmt">// 2. サービスを構築し、依存を注入する</span>
+  <span class="kw">const</span> orderSvc = <span class="kw">new</span> OrderService(stripe, db, mailer)
+
+  <span class="cmt">// 3. デリバリーレイヤーを構築し、サービスを注入する</span>
+  <span class="kw">const</span> orderCtrl = <span class="kw">new</span> OrderController(orderSvc)
+
+  <span class="kw">return</span> orderCtrl
+}</code></pre>
+<p>コンポジションルートがほぼレシピのように読めることに気づいてください：「これらの材料を作り、サービスに組み合わせ、サービスをコントローラーに入れます。」コードベース全体で<em>すべてがどうつながっているか</em>を理解するために行く場所が一つあります。これは新しいエンジニアをオンボーディングするとき、または材料を交換する必要があるときに非常に貴重な財産です。</p>
+<p>テストでは、<em>テスト固有のコンポジションルート</em>を書きます――本物のアダプターの代わりにフェイクを配線する小さな同等物：</p>
+<pre><code><span class="cmt">// テストファイルで — 同じサービス、フェイクの協調者</span>
+<span class="kw">const</span> fakePayments = <span class="kw">new</span> InMemoryPaymentGateway()
+<span class="kw">const</span> fakeOrders   = <span class="kw">new</span> InMemoryOrderRepository()
+<span class="kw">const</span> fakeMailer   = <span class="kw">new</span> NoOpMailer()
+
+<span class="kw">const</span> svc = <span class="kw">new</span> OrderService(fakePayments, fakeOrders, fakeMailer)
+<span class="cmt">// ミリ秒で実行；ネットワークなし、データベースなし</span></code></pre>
+
+<h2 id="by-hand-vs-container">手動DIとDIコンテナ――何が変わり、いつそれが重要か</h2>
+<p>上記のすべては<em>手動DI</em>、またの名を<em>Pure DI</em>です。配線コードを自分で書きます。多くのプロジェクト――特に小さなもの――では、これが正しい選択です：プレーンなコードで、魔法がなく、すぐにデバッグ可能で、新しい開発者が一つのファイルを読むだけで配線全体を理解できます。</p>
+<p>アプリケーションが成長するにつれ、手動アプローチは摩擦を生じさせます。DIコンテナ（IoCコンテナと呼ばれることもある）は依存の登録と解決を自動化し、その上にライフタイム管理を追加します。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 860 440" role="img" aria-labelledby="dgm-di-title">
+    <title id="dgm-di-title">制御逆転の図：修正前（クラスが自分の依存に手を伸ばす）と修正後（コンポジションルートが依存を内向きに注入する）の比較。</title>
+    <defs>
+      <marker id="diAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="diRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+      </marker>
+    </defs>
+
+    <!-- LEFT PANEL: BEFORE -->
+    <rect class="dgm-surface" x="20" y="20" width="380" height="400" rx="16" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="210" y="50" text-anchor="middle" font-size="12">BEFORE — class reaches out</text>
+
+    <rect class="dgm-core" x="120" y="70" width="180" height="56" rx="10" stroke-width="2"/>
+    <text class="dgm-t-strong" x="210" y="100" text-anchor="middle" font-size="15">OrderService</text>
+    <text class="dgm-t-muted" x="210" y="118" text-anchor="middle" font-size="11">calls new() internally</text>
+
+    <rect class="dgm-driven" x="55" y="195" width="140" height="46" rx="9"/>
+    <text x="125" y="223" text-anchor="middle" font-size="13">PostgresClient</text>
+
+    <rect class="dgm-driven" x="222" y="195" width="140" height="46" rx="9"/>
+    <text x="292" y="223" text-anchor="middle" font-size="13">Stripe SDK</text>
+
+    <rect class="dgm-driven" x="138" y="310" width="145" height="46" rx="9"/>
+    <text x="210" y="338" text-anchor="middle" font-size="13">SendGrid SDK</text>
+
+    <!-- outward arrows (problematic) -->
+    <path d="M155,126 L125,192" stroke="#d97706" stroke-width="1.8" fill="none" marker-end="url(#diRed)"/>
+    <path d="M265,126 L292,192" stroke="#d97706" stroke-width="1.8" fill="none" marker-end="url(#diRed)"/>
+    <path d="M210,126 L210,307" stroke="#d97706" stroke-width="1.8" fill="none" marker-end="url(#diRed)"/>
+
+    <text x="210" y="390" text-anchor="middle" font-size="11" fill="#d97706">deps created inside the class — untestable</text>
+
+    <!-- RIGHT PANEL: AFTER -->
+    <rect class="dgm-surface" x="460" y="20" width="380" height="400" rx="16" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="650" y="50" text-anchor="middle" font-size="12">AFTER — composition root injects in</text>
+
+    <rect class="dgm-adapter" x="560" y="68" width="180" height="46" rx="9"/>
+    <text x="650" y="96" text-anchor="middle" font-size="13">Composition Root</text>
+    <text class="dgm-t-muted" x="650" y="112" text-anchor="middle" font-size="10">calls new() — only here</text>
+
+    <rect class="dgm-core" x="560" y="185" width="180" height="56" rx="10" stroke-width="2"/>
+    <text class="dgm-t-strong" x="650" y="215" text-anchor="middle" font-size="15">OrderService</text>
+    <text class="dgm-t-muted" x="650" y="233" text-anchor="middle" font-size="11">accepts interfaces only</text>
+
+    <rect class="dgm-driven" x="480" y="315" width="120" height="46" rx="9"/>
+    <text x="540" y="343" text-anchor="middle" font-size="12">Postgres</text>
+
+    <rect class="dgm-driven" x="616" y="315" width="120" height="46" rx="9"/>
+    <text x="676" y="343" text-anchor="middle" font-size="12">Stripe</text>
+
+    <!-- inward arrows (correct) -->
+    <path class="dgm-flow" d="M650,114 L650,182" marker-end="url(#diAcc)"/>
+    <path class="dgm-flow" d="M590,241 L540,312" marker-end="url(#diAcc)"/>
+    <path class="dgm-flow" d="M710,241 L676,312" marker-end="url(#diAcc)"/>
+
+    <text class="dgm-t-accent" x="650" y="390" text-anchor="middle" font-size="11">deps flow IN — easy to swap, easy to test</text>
+  </svg>
+  <figcaption>左側では <code>OrderService</code> が<em>外向き</em>に手を伸ばして自分の依存を構築しています――各矢印はクラス本体に焼き付けられたカップリングです。右側では、コンポジションルートが具体的なオブジェクトを構築して<em>内向き</em>に注入しています。矢印が逆転します。サービスはインターフェースについてだけ知っています；具体的な型は端の詳細です。</figcaption>
+</figure>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>質問</th><th>手動 / Pure DI</th><th>DI コンテナ（NestJS・InversifyJS・tsyringe…）</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>型はどうやって登録する？</th>
+      <td>コンポジションルートで明示的に配線コードを書く。</td>
+      <td>デコレーター・トークン・またはメタデータ――コンテナがスキャンして自動登録。</td>
+    </tr>
+    <tr>
+      <th>インスタンスはどうやって解決する？</th>
+      <td>正しい順序で自分で <code>new</code> を呼ぶ。</td>
+      <td>型をコンテナに要求すると、完全なグラフを再帰的に構築する。</td>
+    </tr>
+    <tr>
+      <th>ライフタイム / スコープ管理</th>
+      <td>自分で決める：モジュールごと・リクエストごと・またはトランジェント――参照を保持する。</td>
+      <td>宣言的：<code>@Singleton()</code>・<code>@RequestScoped()</code> など。コンテナが廃棄を処理。</td>
+    </tr>
+    <tr>
+      <th>デバッグ性</th>
+      <td>すべてがプレーンなコード――どこでもブレークポイントを設置し、コールスタックを追える。</td>
+      <td>解決はコンテナ内部で起きる；「なぜこのインスタンスを得たのか？」はコンテナの内部を理解する必要がある。</td>
+    </tr>
+    <tr>
+      <th>ボイラープレート</th>
+      <td>大きなグラフでは高い――50クラスのアプリを手動で配線するのは冗長。</td>
+      <td>低い――コンテナが依存ツリーを歩いてすべてを自動的に構築する。</td>
+    </tr>
+    <tr>
+      <th>ビルド時の安全性</th>
+      <td>TypeScript がコンパイル時に不足しているコンストラクター引数を検出する。</td>
+      <td>コンテナによる；トークンベースのシステムはバインディングが不足している場合、実行時に失敗することがある。</td>
+    </tr>
+    <tr>
+      <th>最適なケース</th>
+      <td>小〜中規模アプリ・DI初心者チーム・焦点を絞ったスコープのマイクロサービス。</td>
+      <td>多くのサービスを持つ大規模アプリ・設定より規約を望むチーム・DIが中心の NestJS のようなフレームワーク。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>コンテナが見返りを得るしきい値は様々ですが、大まかな目安として：コンポジションルート自体がメンテナンスの負担になり始めた感じ――常にスクロールしていて、新しいバインディングを追加し忘れたり、オブジェクトのライフタイムと格闘したりしている――それがコンテナに手を伸ばすシグナルです。それまでは、プレーンなバージョンの方が理解しやすくデバッグしやすいです。</p>
+
+<h2 id="testing">テストの恩恵：フェイクを注入して高速テストを得る</h2>
+<p>DI を学ぶ価値がある理由は、アーキテクチャの優雅さよりも、テストスイートにもたらすものです。すべての依存がコンストラクターを通じて届くとき、テストを書くことはフェイクを使った小さなコンポジションルートを書くことを意味します。データベースなし・ネットワークなし・ベンダーサンドボックスなし。テストはミリ秒で実行され、ステージング Stripe アカウントのレートリミットが理由で失敗することはありません。</p>
+<pre><code><span class="cmt">// order-service.test.ts</span>
+<span class="kw">class</span> InMemoryPaymentGateway <span class="kw">implements</span> PaymentGateway {
+  receipts: Receipt[] = []
+  <span class="kw">async</span> charge(amount: Money, token: string): Promise&lt;Receipt&gt; {
+    <span class="kw">const</span> r = { id: <span class="str">'fake-receipt'</span>, amount }
+    <span class="kw">this</span>.receipts.push(r)
+    <span class="kw">return</span> r
+  }
+}
+
+<span class="kw">class</span> InMemoryOrderRepository <span class="kw">implements</span> OrderRepository {
+  store: Order[] = []
+  <span class="kw">async</span> save(order: Order) { <span class="kw">this</span>.store.push(order) }
+}
+
+<span class="kw">class</span> SpyMailer <span class="kw">implements</span> Mailer {
+  sent: string[] = []
+  <span class="kw">async</span> send(to: string) { <span class="kw">this</span>.sent.push(to) }
+}
+
+<span class="cmt">// テスト自体は純粋で、高速で、決定論的：</span>
+<span class="kw">it</span>(<span class="str">'注文を確認して顧客に通知する'</span>, <span class="kw">async</span> () =&gt; {
+  <span class="kw">const</span> payments = <span class="kw">new</span> InMemoryPaymentGateway()
+  <span class="kw">const</span> repo     = <span class="kw">new</span> InMemoryOrderRepository()
+  <span class="kw">const</span> mailer   = <span class="kw">new</span> SpyMailer()
+
+  <span class="kw">const</span> svc   = <span class="kw">new</span> OrderService(payments, repo, mailer)
+  <span class="kw">const</span> order = <span class="kw">await</span> svc.placeOrder(testCart)
+
+  expect(payments.receipts).toHaveLength(1)
+  expect(repo.store).toContainEqual(order)
+  expect(mailer.sent).toContain(testCart.email)
+})</code></pre>
+<p>これは <a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a> の中心にある洞察と同じです――インメモリのフェイクはテスト時のアダプターにすぎず、本物の Stripe または Postgres の実装は本番アダプターです。DIはスワップを可能にするメカニズムです；Ports &amp; Adapters はバウンダリーを意図的で明示的にするアーキテクチャパターンです。</p>
+<p>ここで SOLID についても触れる価値があります。「D」は<strong>依存性逆転の原則</strong>を意味します：高レベルモジュールは低レベルモジュールに依存すべきではなく、両方が抽象に依存すべきです。上記のインターフェース（<code>PaymentGateway</code>・<code>OrderRepository</code>・<code>Mailer</code>）がその抽象です。<code>OrderService</code> が高レベルモジュールです。<code>StripePaymentGateway</code> と <code>PostgresOrderRepository</code> が低レベルモジュールです。どちらも相手のことを直接知りません――インターフェースで出会い、コンポジションルートがそれらを組み合わせます。</p>
+
+<h2 id="pitfalls">アンチパターン：DIが間違った方向に行く方法</h2>
+<p>アイデアはシンプルですが、それを損なうよく踏まれた方法がいくつかあります。</p>
+<h3 id="service-locator">Service Locator</h3>
+<p>Service Locator は、コードが実行時に依存を取得するために呼び出すグローバルレジストリです：</p>
+<pre><code><span class="cmt">// アンチパターン：Service Locator — DIのように見えるがそうではない</span>
+<span class="kw">class</span> OrderService {
+  <span class="kw">async</span> placeOrder(cart: Cart) {
+    <span class="kw">const</span> payments = ServiceLocator.get&lt;PaymentGateway&gt;(<span class="str">'PaymentGateway'</span>)
+    <span class="kw">const</span> repo     = ServiceLocator.get&lt;OrderRepository&gt;(<span class="str">'OrderRepository'</span>)
+    <span class="cmt">// … 続く</span>
+  }
+}</code></pre>
+<p>これはインラインの <code>new Stripe()</code> よりクリーンに感じられますが、同じ問題を隠しています。依存はシグネチャに見えません。テストは実行前にグローバルレジストリを設定しなければなりません。クラスはいつでも何でも要求できます――DIを価値あるものにする明示性を失っています。</p>
+<h3 id="over-injection">過剰なインジェクション（10引数コンストラクター）</h3>
+<p>コンストラクターが七つ・八つ・または十のパラメーターを蓄積するとき、それは通常、DIが間違ったツールではなく、クラスがやりすぎているサインです。修正はクラスをより小さく焦点を絞った協調者に分解することで、それぞれが短い依存リストを持ちます。コンストラクターの長さは有用な健全性の指標です。</p>
+<h3 id="hidden-globals">隠れたグローバルコンテナ</h3>
+<p>サービス内から直接DIコンテナにアクセスすること――コンポジションルートでのみではなく――は、別の名前のService Locatorパターンです。ルールは厳格です：コンポジションルートだけがコンテナと話します。サービスは注入されたインターフェースとだけ話します。</p>
+<h3 id="magic-you-cant-trace">追跡できない魔法</h3>
+<p>一部のフレームワークはデコレーターとリフレクトメタデータを通じて依存を配線しますが、何かが壊れたときに本当に追いかけにくい方法でそれを行います。コンテナのドキュメントを読む時間が自分のビジネスロジックを読む時間より多ければ、それよりシンプルなアプローチを使うサインです――あるいは少なくとも主要なバインディングを明示的に書き出したよくドキュメント化されたコンポジションルートを追加すること。</p>
+
+<h2 id="by-company-size">DIの適切なサイズ：ソロプロジェクトからエンタープライズまで</h2>
+<p>ほとんどのアーキテクチャのアイデアと同様に、DIは問題に合わせてスケールします。目標は常に同じ――テストしやすく変更しやすいコード――ですが、そこに到達するための適切な仕組みは、チームとコードベースの成長に合わせて変わります。</p>
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>会社のステージ</th><th>推奨アプローチ</th><th>典型的な形</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ソロ / 初期スタートアップ</th>
+      <td>単一のコンポジションルートファイルを使った手動DI。</td>
+      <td>一つの <code>buildApp()</code> 関数；おそらく10〜20行。書くのが速く、読みやすい。</td>
+    </tr>
+    <tr>
+      <th>小規模チーム（5〜20人のエンジニア）</th>
+      <td>まだ手動DI。おそらくドメインモジュールに分割し、各モジュールが独自の配線関数を持つ。</td>
+      <td><code>buildOrderModule()</code>・<code>buildBillingModule()</code>――それぞれ自己完結し、起動時に一度組み合わせる。</td>
+    </tr>
+    <tr>
+      <th>成長中のスケールアップ（20〜100人のエンジニア）</th>
+      <td>軽量なコンテナが見返りを得始める。<em>tsyringe</em>・<em>InversifyJS</em>・またはフレームワーク組み込みのコンテナを検討。</td>
+      <td>クラスのデコレーター、モジュールごとのコンテナ設定；Webアプリのリクエストスコープサービス。</td>
+    </tr>
+    <tr>
+      <th>エンタープライズ / 大規模プラットフォーム</th>
+      <td>フルDIフレームワークがほぼ必須。NestJS・Spring Boot・または ASP.NET Core はこのアイデアをスケールの中心に据えて構築されている。</td>
+      <td>設定より規約、ライフサイクルフック、モジュールのインポート/エクスポート、マルチテナントスコーピング。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>フィンテックスタートアップは三つのサービスを配線する30行のコンポジションルートから始めるかもしれません。二年後、同じコードベースに60のサービスがあります：手動配線がそれ自体メンテナンスの作業になり、チームはグラフを自動的に処理するために NestJS か InversifyJS を使うようになります。<em>基盤となるパターン</em>――コンストラクターインジェクション・インターフェース・明確なコンポジションルート――が同じままであるため、スイッチは簡単です。コンテナは機械的なアシスタントであり、異なるアイデアではありません。</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">実践的なアドバイス</span><p>手動DIとコンポジションルートから始めましょう。配線ファイルが負担になったらいつでもコンテナを導入でき、移行は機械的です：明示的な <code>new</code> 呼び出しを登録に置き換えるだけです。ドメイン・サービス・テストの何も変える必要はありません――コンポジションルートだけが変わります。</p></div>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">まとめ</h3>
+<ul>
+  <li><strong>根本的な原因</strong>は、クラスが自分の依存に対して <code>new</code> を呼ぶことです。修正は外から渡すことです。</li>
+  <li><strong>Inversion of Control</strong> は原則（依存を提供することに責任を持つのは他の誰か）。<strong>Dependency Injection</strong> はそれを実装する最も明示的でテストしやすい方法です。</li>
+  <li><strong>コンストラクターインジェクション</strong>がデフォルトの選択です。依存はシグネチャに見え、構築時に必要とされ、テストで簡単に交換できます。</li>
+  <li><strong>コンポジションルート</strong>は、コードベースで本物のオブジェクトが配線される唯一の場所です。他のすべてはインターフェースを通じて話します。</li>
+  <li><strong>手動DI</strong>は小さなコードベースにとってよりシンプルでデバッグしやすいです。<strong>DIコンテナ</strong>はコンポジションルート自体がメンテナンスの負担になったときに見返りを得ます。</li>
+  <li><strong>テストの恩恵</strong>は即座です：テストでフェイクを注入し、ネットワークとデータベースをスキップし、何千ものケースを秒単位で実行します。</li>
+  <li>これはまた SOLIDの <strong>依存性逆転の原則</strong>（「D」）の実践でもあります：高レベルモジュールと低レベルモジュールは両方が抽象に依存し、互いに直接依存しません。</li>
+  <li><strong>Service Locator</strong>（隠れたグローバルレジストリ）・過剰なインジェクション（10引数コンストラクター）・コンポジションルートの外でのコンテナアクセスを避けましょう。</li>
+</ul>
+</div>
+
+<p>依存がどのように流れるかをしっかり理解したうえで、次の自然な質問は<em>ファイル自体をどう整理するか</em>です。このシリーズの次のパートでまさにそれを見ていきます：<a href="/blog/architecture/structuring-code-feature-vs-layer">コードベースの構成：フィーチャーフォルダー対レイヤー</a>――その答えが、コードの形と同じくらいチームの形に依存する理由です。</p>5:["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$14"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"ブログ\",\"item\":\"https://nguyenlephong.github.io/ja/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"ソースコード & アーキテクチャ\",\"item\":\"https://nguyenlephong.github.io/ja/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Dependency Injection と Inversion of Control——魔法なしで理解する\",\"item\":\"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc\"}]}"}}],["$","div",null,{"className":"blog-article__main","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":["$L15",["$","span",null,{"aria-hidden":"true","children":"/"}],"$L16"]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["ソフトウェアアーキテクチャの基礎",["$","span",null,{"aria-hidden":"true","children":" · "}],"全 6 回中第 3 回"]}],["$","h1",null,{"className":"blog-article__title","children":"Dependency Injection と Inversion of Control——魔法なしで理解する"}],["$","p",null,{"className":"blog-article__summary","children":"DIコンテナは、根底にあるシンプルなアイデアを見るまで魔法のように感じられます：コードが自分で依存を作るのをやめ、外から受け取るようにする、それだけです。初歩から始めるガイドで、実例とテストの恩恵をお届けします。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"著者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-05-29","children":"2026年5月29日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"14 分で読めます"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","ソフトウェアアーキテクチャ",{"children":"ソフトウェアアーキテクチャ"}],["$","li","Dependency Injection",{"children":"Dependency Injection"}],["$","li","Inversion of Control",{"children":"Inversion of Control"}],["$","li","SOLID",{"children":"SOLID"}],["$","li","テスト",{"children":"テスト"}],["$","li","デザインパターン",{"children":"デザインパターン"}]]}]]}],["$","$L17",null,{"html":"$18"}],"$L19","$L1a"]}],"$L1b"]}]
+1c:I[79520,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],""]
+22:I[35757,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+f:["$","$L1c",null,{"strategy":"lazyOnload","id":"GTM","src":"https://www.googletagmanager.com/gtag/js?id=G-RLXNC58343"}]
+10:["$","$L1c",null,{"strategy":"lazyOnload","id":"adsbygoogle","src":"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2196929070546836","crossOrigin":"anonymous"}]
+11:["$","$L1c",null,{"id":"GTM_datalayer","strategy":"lazyOnload","dangerouslySetInnerHTML":{"__html":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'G-RLXNC58343', { page_path: window.location.pathname });\n          "}}]
+1d:T56e,
+            !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+            posthog.init('phc_Ti11bWc5cshVoQe8AI7SuY56FMFP7Fhc9WyymdOGVSw',{
+              api_host:'https://app.posthog.com',
+              capture_pageview: true,
+              capture_pageleave: true,
+              autocapture: false,
+              disable_session_recording: true,
+              persistence: 'localStorage+cookie'
+            });
+            posthog.register({ site: 'nguyenlephong.github.io', surface: 'cv', locale: "ja" });
+          12:["$","$L1c",null,{"id":"POSTHOG","strategy":"lazyOnload","dangerouslySetInnerHTML":{"__html":"$1d"}}]
+13:["$","body",null,{"suppressHydrationWarning":true,"children":"$L1e"}]
+19:["$","nav",null,{"className":"blog-series-nav","aria-label":"ソフトウェアアーキテクチャの基礎","children":["$L1f","$L20"]}]
+1a:["$","footer",null,{"className":"blog-article__footer","children":"$L21"}]
+1b:["$","aside",null,{"className":"blog-article__toc","children":["$","$L22",null,{"label":"目次"}]}]
+23:I[77105,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+15:["$","$L23",null,{"ref":"$undefined","href":"/ja/blog","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ブログ"}]
+16:["$","$L23",null,{"ref":"$undefined","href":"/ja/blog/architecture","locale":"$undefined","localeCookie":"$15:props:localeCookie","children":"ソースコード & アーキテクチャ"}]
+1f:["$","$L23",null,{"ref":"$undefined","href":"/ja/blog/architecture/clean-vs-onion-vs-hexagonal","locale":"$undefined","localeCookie":"$15:props:localeCookie","className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","前の記事"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Clean・Onion・Hexagonal Architecture：一つの北極星、三つの名前"}]]}]
+20:["$","$L23",null,{"ref":"$undefined","href":"/ja/blog/architecture/structuring-code-feature-vs-layer","locale":"$undefined","localeCookie":"$15:props:localeCookie","className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["次の記事"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"コードベースの構成：レイヤー・フィーチャー・ドメイン、どれを選ぶ？"}]]}]
+21:["$","$L23",null,{"ref":"$undefined","href":"/ja/blog/architecture","locale":"$undefined","localeCookie":"$15:props:localeCookie","className":"blog-back","children":["← ","ソースコード & アーキテクチャに戻る"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover"}],["$","meta","2",{"name":"theme-color","media":"(prefers-color-scheme: light)","content":"#fafafa"}],["$","meta","3",{"name":"theme-color","media":"(prefers-color-scheme: dark)","content":"#0f1115"}]]
+24:I[75696,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],"default"]
+1e:["$","$L24",null,{"formats":"$undefined","locale":"ja","messages":{"Nav":{"about":"概要","experience":"経歴","projects":"プロジェクト","contact":"連絡先","gallery":"ギャラリー","blog":"ブログ","resume":"履歴書","font":{"label":"本文フォント","sans":"サンセリフ","serif":"セリフ"}},"Footer":{"tag":"シニアソフトウェアエンジニア · テックリード","copy":"© {year} Nguyen Le Phong.","language":"言語"},"Hero":{"eyebrow":"シニア / リードのポジションを募集中","role":"シニアソフトウェアエンジニア · テックリード","roleSub":"フルスタック · プラットフォームエンジニアリング · デリバリーリード","bio":"フロントエンドアプリ、バックエンドサービス、CI/CD パイプライン、リリースワークフロー、本番インフラまでエンドツーエンドでシステムを設計・運用しています。現在は 11 名のチームを率い、マルチテナントプラットフォーム、セキュアな金融連携、マイクロフロントエンドアーキテクチャを構築しています。","location":"ベトナム・ホーチミン市","downloadResume":"履歴書ダウンロード","getInTouch":"お問い合わせ","careerHighlights":"キャリアハイライト","socialProfiles":"ソーシャルプロフィール","stats":{"yearsShipping":"出荷年数","yearsShippingCaption":"毎日プロダクションコードを","hoursCoding":"コーディング時間","hoursCodingCaption":"2021 年以降 WakaTime で計測","usersTouched":"関わったユーザー数","usersTouchedCaption":"Zalo · CDP · 金融規模","engineersLed":"率いたエンジニア","engineersLedCaption":"開発 · QC · クロスファンクショナル","tenantsPowered":"稼働中のテナント","tenantsPoweredCaption":"マルチテナント・フィーチャーフラグ","domainsDelivered":"対応ドメイン","domainsDeliveredCaption":"フィンテック · CDP · 不動産 · 教育","projectsLaunched":"ローンチ済みプロジェクト","projectsLaunchedCaption":"SDK · プラットフォーム · モバイル","testCasesAuthored":"作成したテストケース","testCasesAuthoredCaption":"BDD · E2E · 回帰防止"}},"Sections":{"aboutEyebrow":"プロフィール","aboutTitle":"私自身と仕事の進め方について","experienceEyebrow":"キャリア","experienceTitle":"これまでの出荷先","projectsEyebrow":"ワーク","projectsTitle":"主要プロジェクト"},"Summary":{"intro1":"情報技術学士(ソフトウェア工学副専攻、<b>GPA 3.36</b>)を取得し、約 <b>8 年間</b>のフルスタックソフトウェア開発経験を持ち、そのうち <b>3 年以上</b>は技術リード、アーキテクチャ意思決定、チーム横断のデリバリー調整に従事しています。","intro2":"フロントエンドアプリやバックエンドサービスから CI/CD パイプライン、リリースワークフロー、本番インフラまで、エンドツーエンドでシステムを設計・構築・運用してきました。自動化、運用の明確化、信頼性のあるデリバリーを重視しています。","intro3":"<i>近年フォーカスしているハードスキルは以下のとおりです:</i>","visionEyebrow":"私の働き方","hardSkillsEyebrow":"ハードスキル","pillars":{"endToEnd":{"title":"エンドツーエンドエンジニア","body":"フロントエンド、バックエンド、CI/CD、リリース、本番インフラまで全ライフサイクルを 1 人で担当。","chip":"FE · BE · インフラ"},"multiTenant":{"title":"マルチテナント基盤","body":"フィーチャーフラグ、RBAC、パーセンテージ/セグメントロールアウト、JSON 設定値、ステートレス実行時評価。","chip":"30+ テナント稼働中"},"leadership":{"title":"デリバリーリード","body":"11 名以上のエンジニアを率いる — 採用、組織設計、RFC、Runbook、ロールアウト手順、1:1 コーチング。","chip":"11 名チーム"},"fintech":{"title":"セキュアな金融連携","body":"RSA-4096 ハンドシェイク、AES-256 ペイロード、mTLS、証明書ピンニング、冪等契約、リトライキュー。","chip":"Gtel · Napas"},"mfe":{"title":"マイクロフロントエンドと SDK","body":"Angular ホスト + React モジュールで独立デプロイ。JS SDK は <200KB、<150ms。","chip":"MFE · <150ms"},"ai":{"title":"AI ファーストなエンジニアリング","body":"コードレビュー、デプロイ支援、サービスクォータ、API ヘルス、リリース分析向けの AI エージェントを構築。","chip":"本番稼働中"}},"skills":{"backend":"<b>バックエンド</b>:<b>Node.js</b>、<b>Java (Spring)</b> に深い実務経験。REST/GraphQL API を明確な契約、認証・暗号化機構、後方互換性、エンタープライズおよびサードパーティ連携の堅牢性を持って設計。","frontend":"<b>フロントエンド</b>:<b>React</b>(TypeScript、Next.js)、<b>React Native</b>、Angular ベースのマイクロフロントエンドホストを使った複雑なクライアントアプリの構築・保守経験。パフォーマンス最適化、状態管理、スケール可能な UI 設計を実践。","databases":"<b>データベース</b>:<b>MySQL</b> に深い実務経験。スキーマ/データモデル設計、インデックス戦略、クエリ最適化、トランザクション境界、マイグレーション計画、分散・高スループット環境での整合性のトレードオフに精通。","infra":"<b>インフラ & プラットフォームエンジニアリング</b>:<b>Docker</b> と <b>Kubernetes</b> を複数環境で実運用。<b>AKS</b>、<b>EKS</b>、<b>FKE</b>、<b>K3S</b> のマネージドクラスタ、<b>ArgoCD</b> による GitOps デプロイ、CI/CD パイプライン、環境設定、ドメイン/SSL 管理を経験。","architecture":"<b>アーキテクチャ & デリバリー</b>:マイクロフロントエンドおよびマルチテナントアーキテクチャ、フィーチャーフラグ駆動のロールアウト、プログレッシブデリバリー、可観測性を活用し、安全なリリースと本番診断を支援。","testing":"<b>テスト</b>:Jest、Cucumber、Puppeteer、Testing Library を実務で活用し、回帰の安全性、リリースの信頼性、本番準備状況を担保。","libraries":"<b>ライブラリ</b>:<b>Firebase</b>、Strapi、Directus、React Flow、Webpack、<b>Redux</b>、React Query、G2plot に習熟。","other":"<b>その他</b>:<b>マイクロフロントエンド</b>アーキテクチャ、レスポンシブデザイン、クロスブラウザ対応、<b>SEO</b>、GraphQL、Electron に精通。"}},"Experience":{"labels":{"location":"勤務地","duration":"期間","keyContributions":"主な貢献","keyTechnologies":"主な技術"},"ndsvn":{"summary":"CTO 交代後にプロダクトデリバリーと技術方針を引き受け、アーキテクチャ決定、ロールアウトシステム、エンタープライズ連携、チーム横断の調整を主導。8 名の開発者(うち 4 名がシニア)と 3 名の QC エンジニアからなるデリバリーチームを管理。","contributions":[".NET Core 製のマルチテナント・フィーチャーフラグシステム <b>(30+ テナント、約 40k ユーザー)</b> を設計。優先度ルールエンジン、パーセンテージロールアウト(テナント/セグメント/環境)、JSON 設定値、ステートレス実行時評価を備え、モバイル/Web アプリを駆動し、高トラフィックテナントでの制御されたプログレッシブリリースを実現。","<b>Gtel と Napas</b> とのセキュア連携を構築:RSA-4096 ハンドシェイク、AES-256 ペイロード暗号化、<b>mTLS</b> 相互認証、証明書ピンニング、リトライキュー、冪等 API 契約、不安定なサードパーティ向けの ACK 駆動モニタリング。","<b>マイクロフロントエンド</b>アーキテクチャ(Angular ホスト + React モジュール)を導入し、独立したデプロイサイクルと機能分離を実現 — チーム間の回帰範囲とデプロイ結合を削減。","可観測性スタック(PostHog + メトリクスパイプライン + ワークフロー)を導入し、ロールアウト影響、機能採用、異常検知、回帰追跡を可能に — リリースサイクル全体でデバッグ/分析時間を大幅に削減。","引き継いだインフラのオーナーシップを担い、組織を止めない — 本番障害、パイプライン失敗、クラスタの癖、連携の不安定さを静かに吸収し、プロダクトとチームを停滞させない。ArgoCD、CI/CD、ドメイン/SSL、<b>AKS/FKE/K3S/EKS</b> クラスタを<b>診断可能、復旧可能、安定したシステム</b>へと整備。","コードレビュー、デプロイ支援、サービスクォータ検証、API ヘルス監視、リリース分析を支援する <b>AI エージェント</b>を構築 — 意思決定とデリバリーのループを短縮。","連携シミュレーションや sandbox/demo モジュールを開発し、不安定なパートナー対応と契約前検証を実現。","リーダーシップ移行後に<b>エンジニアリング組織を再構築</b>:組織図、能力マトリクス、業務ルーティング、オーナーシップ境界を定義 — 自律性を解放し、技術意思決定のリードタイムを短縮。","統一されたエンジニアリングプレイブックを策定:ブランチ戦略、コミット規約、リリースタグ付け、ロールアウト基準、API/連携ルール、技術仕様リポジトリ(RFC、Runbook、トラブルシューティングガイド)。","採用と育成のループを主導:構造化面接(QC/Fullstack)、オンボーディング、1:1 コーチング、評価サイクル、チーム間の対立解消で、協調的かつ成果志向のデリバリーを維持。","ドキュメント優先文化とプロセスガードレール(チェックリスト、引き継ぎルール、ロールバック準備)でデリバリー品質を維持し、スケール期にも予測可能なリリース頻度を実現。"]},"zalo":{"summary1":"クロスプラットフォーム <b>Zalo PC</b>(Web、macOS、Windows)のコア開発者として <b>15M+ MAU</b> にサービス提供。ダークモード、ダイナミックテーマ、ユーザー行動トラッキングなど主要機能を提供。<b>50+ 開発者</b>向けにプロモーションフローとスケーラブルな<b>デザインシステム</b>を主導。堅牢で効率的なソリューションでパフォーマンスを最適化し、保守性を向上、事業成長に貢献。","summary2":"<b>Zalo Android</b> モバイルアプリを積極的に保守・改善し、約 <b>8000 万ユーザー</b>向けに重要機能の<b>安定性</b>と<b>パフォーマンス</b>を確保。","contributions":["ダークモード、ダウンロードモジュール、Kiki Bot、ログトラッキングなど <b>10 機能以上</b>を提供し、UX とエンゲージメントを向上。","トラッキングとモニタリングシステムを統合した<b>プロモーションフロー</b>を開発し、<b>15M+ MAU</b> での活性化成功を牽引。","Storybook を用いてスケーラブルな<b>デザインシステム</b>の開発をリードし、<b>50+ 開発者</b>向けに UI 一貫性と効率を確保。","<b>50+ クライアントユーザー</b>を積極的にサポートし、<b>献身</b>と<b>効果的な問題解決</b>で迅速に問題を解消し、強いポジティブな評価を獲得。","<b>Zalo Android</b> アプリで <b>3 機能以上</b>を保守・改善し、約 <b>8000 万ユーザー</b>向けの<b>安定性</b>、<b>パフォーマンス</b>、シームレスな UX に注力。"]},"primedata":{"summary":"同社は CDxP と呼ばれる製品を構築。簡潔に言えば、顧客プロファイルをホスト・処理するためのカスタムメイドデータプラットフォームで、異なるサービスやシステムから来る異種スキーマと形式の顧客データを識別し統一する点が肝となるソリューション。","contributions":["フロントエンドチームを率い、CDxP アプリ、Magento と WordPress のデモ、JS SDK、モバイル SDK など <b>10 件以上のプロジェクト</b>を提供。","<b>4 名のチーム</b>を管理し、複数の主要パートナーを満足させる製品ロードマップに合わせ、UI/UX を強化、360 プロファイルやキャンペーンビルダーなどの高度な機能を実装。","フル機能の軽量 JS SDK(<b><200kb、<150ms</b> ロード時間)を開発し、プロジェクト横断でのシームレスな連携を実現。","迅速な<b>問題解決</b>を発揮し、クライアントと投資家を魅了するための機能デモを素早く完了。"]},"splus":{"summary":"アウトソーシング企業。大半のプロジェクトは<b>モバイルおよび Web アプリ</b>を中心に展開。","contributions":["<b>エンドツーエンドのソフトウェア生産プロセス</b>に精通し、<b>小規模チームを率い</b>、要件収集からプロジェクトセキュリティまでの各フェーズを習得し、将来のリーダーシップの基盤を築いた。","<b>教育、F&B、銀行</b>、<b>EC</b> など多様な領域の <b>8 件以上</b>のプロジェクトに参画し、Web とモバイル双方の開発に対する貴重な洞察を獲得。","プロジェクト傭兵として Savyu や Bank Tool などの重要プロジェクトを獲得し、<b>$20,000</b> 以上の収益を生み出し、貢献により<b>Best Rookie of the Year</b> を受賞。"]},"propman":{"summary":"<b>不動産領域</b>のスタートアップ。創業エンジニアの一人。","contributions":["フロントエンド開発者として主要 Web アプリ開発に参画。基本的な Web 開発スキル、特に <b>React JS</b> と関連技術に習熟。レスポンシブデザインのプロジェクトでも協業し、ユーザー体験の向上を最優先。"]}},"Projects":{"sat":{"accomplishments":["UI/UX デザイン、プロダクトエンジニアリング、ユーザー行動分析にわたる製品開発を統括し、2 か月間で <b>10,000 件</b>を超える訪問と <b>3,000 件</b>のサインアップを獲得。","<b>parasite SEO</b> を含む戦略的 SEO 施策により Google 検索順位を向上。これによりパフォーマンスを大幅に強化し、業界内での製品ポジショニングを効果的に実現。","<b>1 CPU</b> および <b>256 MiB</b> のメモリ上限を持つ単一の Cloud Run インスタンスでフロントエンドアプリ開発を行い、効率性とリソース最適化を実現。","<b>モバイルファースト</b>のアプローチでモバイルアプリ開発を主導し、<b>2 日以内</b>にアプリストアへ迅速にデプロイ。さらにすべてのデバイスで <b>PWA</b> インストールをシームレスに実現し、アクセシビリティと UX を向上。","<b>Google Ads</b> 連携と <b>Stripe</b> 決済フローを含む<b>マネタイズ機能</b>を開発し、収益創出を強化。"]},"cdp":{"accomplishments":["CDxP プロジェクトのアーキテクチャと実装を主導し、<b>UI/UX</b> 機能に注力することで全体的な UX とエンゲージメントを向上。","ネストルータを構成し、<b>スケーラブル</b>なプロジェクト構造を維持。ES6、Typescript、データ型への深い知識を発揮し、<b>コードの保守性を向上</b>させ、コード関連の問題を削減。","<b>エラーや改善点</b>を効果的にトラッキングし、バグ修正を支援。プロジェクトの<b>安定性</b>を確保し、システム信頼性を向上、ダウンタイムを削減。","アダプティブなクライアント構成でのコンポーネントアクセス認可を検証する <b>RBAC</b> フックを実装。さらにモジュラー設計により、複数プロジェクト間で共有可能な <b>20 以上の再利用ユーティリティ</b>を構築。","プロファイル、キャンペーン、分析など <b>10 以上の高度な機能</b>を開発。","<b>100 以上のシナリオ</b>と <b>1000 以上のテストケース</b>で CDP コア機能をカバーする堅牢なテストフローを確立。","BDD、ユニットテスト、<b>E2E テスト</b>などのテスト手法に精通し、テストカバレッジを向上、ソフトウェアバグを <b>30%</b> 削減。","実行時切り替え用の<b>フィーチャーフラグ</b>を開発し、A/B テストと顧客セグメント別の機能グルーピングを実現。機能配信を最適化し、採用率を向上。","コンポーネントを明確かつ保守しやすい形で<b>文書化</b>し、コードの可読性を向上、保守時間を短縮。"]},"sdk":{"accomplishments":["<b>vanilla JS</b> を使い <b>5 以上のモジュール</b>を成功裏に開発し、<b>10 以上の高度な機能</b>を組み込み。<b><200kb のバンドルサイズと <150ms</b> のロード時間を達成(バンドルへの全最適化前の計測)。","バックグラウンドのマルチタスクのために <b>Web Worker と Service Worker</b> を活用し、複雑な機能を効果的に管理。複数タブ同時使用などの<b>エッジケース</b>に対応。","さらに <b>マイクロフロントエンド</b>アーキテクチャで<b>パーソナライズドレコメンド機能</b>を設計・実装。ユーザーが好みそうな商品を表示するカルーセルブロックにより、UX とエンゲージメントを向上。","構築した高度機能には Web ポップアップ、Web プッシュ通知、<b>Web コンポーネント埋め込み</b>、WebSocket 連携、複数タブ間の煩わしいポップアップ管理を含む。","さらに <b>JS Closure</b> を活用してモジュール構造を整理し、シームレスな機能エクスポートや<b>データカプセル化</b>を実現。グローバルスコープでの<b>競合を回避</b>。"]},"vac":{"accomplishments":["Vietnam Australia Center で <b>Front-end Project</b> 講座を<b>教える</b>役割を担当。","<b>魅力的な講義</b>を設計・実施し、学生に対しフロントエンド開発プロジェクトの実践指導を提供。","<b>協調的な</b>学習環境を育み、<b>12 名の学生</b>に<b>チームワーク</b>を促し、業界のベストプラクティスとカリキュラムを整合。","個別の<b>フィードバック</b>と<b>メンタリング</b>を提供し、学生が<b>課題を克服</b>し、教材の全体理解を確実にできるよう支援。"]},"mona":{"accomplishments":["<b>React Native</b> と Realm DB を用いた包括的なモバイルアプリ Mona House を開発し、効率的な住居管理を実現。","<b>再利用可能なコンポーネント</b>、滑らかなアニメーション、ネイティブモジュールとのシームレスな連携を重視したクロスプラットフォームアプリ開発に特化。","高度なデバッグツールとパフォーマンスプロファイリングで複雑な問題を迅速に特定・解決する強い<b>問題解決</b>と<b>トラブルシュート</b>能力を発揮。","新しい技術への<b>適応力</b>と<b>素早い学習曲線</b>を示し、新フレームワーク、プログラミング言語、ツールの実装をシームレスに行い、プロジェクトを完了。"]},"mobivi":{"accomplishments":["Mobivi で <b>20 個以上の Excel ファイル</b>(各 <b>20,000 件以上のレコード</b>)を取り込み・処理する<b>フルスタック Web アプリ</b>を開発。","ユーザーからの累積的に計算される取引データを効率的に処理し、<b>正確で信頼性のあるレポート</b>を保証するよう設計。"]},"savyu":{"accomplishments":["Synova で<b>2 つのモバイル</b>アプリ開発で重要な役割を果たした — 1 つは加盟店向け、もう 1 つは消費者向け。","管理者がユーザーデータを効率的に管理できる<b>Web アプリ</b>の作成に貢献。","<b>モバイルアプリ開発</b>に精通し、クロスファンクショナルチームと協力して<b>直感的</b>かつ<b>高性能</b>なアプリを成功裏に提供。"]}},"CTA":{"eyebrow":"一緒に作りませんか","title":"出荷する価値のある難題、ありますか?","body":"プロダクトが急速にスケールし、チームに明瞭さが求められ、インフラが負荷下で安定すべき場面で最も役立てます。お気軽にご連絡を — すべてのメッセージに目を通します。","emailMe":"メールを送る","resumePdf":"履歴書 (PDF)","linkedin":"LinkedIn"},"SEO":{"home":{"title":"Nguyen Le Phong — シニアソフトウェアエンジニア & テックリード","description":"8 年以上の経験を持つシニアソフトウェアエンジニア兼 Head of Tech。プロダクト構築、デリバリーリード、マイクロフロントエンド、Kubernetes、ロールアウトシステムのアーキテクチャ設計を担当。情報技術学士 — Very Good(GPA 3.36)。"}},"Pages":{"cv":{"title":"Software Engineer"},"about":{"heading":"私について"},"apps":{"heading":"アプリ"},"gallery":{"eyebrow":"ギャラリー","title":"仕事の記録","sub":"証明書、受賞、プロジェクト、そして舞台裏の瞬間。アイテムをクリックすると、原画または認証リンクが開きます。","back":"← 履歴書へ戻る","all":"すべて","categories":{"certificates":"証明書","awards":"受賞","projects":"プロジェクト","activities":"アクティビティ"}},"thoughts":{"eyebrow":"思考の庭","title":"思考","intro":"成長中のノートの小さなグラフ。タイトルをクリックして読んでください。","empty":"まだありません。","backToIndex":"一覧に戻る","backlinks":"バックリンク","maturity":{"seed":"種","budding":"芽生え","evergreen":"常緑"},"credit":"<link>huylenq.github.io</link> から着想を得て、現在ミラーしています。ノートは原作者のものです。"},"blog":{"eyebrow":"記事","title":"ブログ","intro":"ソフトウェアアーキテクチャとソースコードの構造についての詳しい解説。初心者にも分かりやすく、それでいて大規模に開発するチームにも役立つように書いています。図解と実例つき、曖昧な説明はしません。","categoriesHeading":"トピックで探す","latestHeading":"最新の記事","empty":"まだ記事がありません——最初の記事をまもなく公開します。","backToBlog":"ブログに戻る","backToCategory":"{category}に戻る","readingTime":"{minutes} 分で読めます","articleCount":"{count, plural, other {# 件の記事}}","writtenBy":"著者：{author}","onThisPage":"目次","partOf":"全 {total} 回中第 {part} 回","nextUp":"次の記事","previously":"前の記事","seriesNames":{"foundations":"ソフトウェアアーキテクチャの基礎"}}}},"now":"$undefined","timeZone":"Asia/Saigon","children":["$L25","$L26"]}]
+27:I[34416,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],"default"]
+28:I[92130,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],"default"]
+29:I[25727,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],"default"]
+2a:I[26564,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],"default"]
+2b:I[84845,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],"default"]
+25:["$","$L27",null,{}]
+26:["$","$L28",null,{"children":[["$","$L29",null,{}],["$","$L2a",null,{}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L2b",null,{}]]}]
+8:null
+c:[["$","title","0",{"children":"Dependency Injection と Inversion of Control——魔法なしで理解する · Nguyen Le Phong | Software Engineer"}],["$","meta","1",{"name":"description","content":"DIコンテナは、根底にあるシンプルなアイデアを見るまで魔法のように感じられます：コードが自分で依存を作るのをやめ、外から受け取るようにする、それだけです。初歩から始めるガイドで、実例とテストの恩恵をお届けします。"}],["$","meta","2",{"name":"application-name","content":"Nguyen Le Phong — CV"}],["$","link","3",{"rel":"author","href":"https://nguyenlephong.github.io"}],["$","meta","4",{"name":"author","content":"Nguyen Le Phong"}],["$","meta","5",{"name":"keywords","content":"ソフトウェアアーキテクチャ,Dependency Injection,Inversion of Control,SOLID,テスト,デザインパターン"}],["$","meta","6",{"name":"creator","content":"Nguyen Le Phong"}],["$","meta","7",{"name":"publisher","content":"Nguyen Le Phong"}],["$","meta","8",{"name":"robots","content":"index, follow"}],["$","meta","9",{"name":"googlebot","content":"index, follow, max-image-preview:large, max-snippet:-1"}],["$","meta","10",{"name":"category","content":"technology"}],["$","link","11",{"rel":"canonical","href":"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc"}],["$","link","12",{"rel":"alternate","hrefLang":"en","href":"https://nguyenlephong.github.io/en/blog/architecture/dependency-injection-and-ioc"}],["$","link","13",{"rel":"alternate","hrefLang":"vi","href":"https://nguyenlephong.github.io/vi/blog/architecture/dependency-injection-and-ioc"}],["$","link","14",{"rel":"alternate","hrefLang":"zh","href":"https://nguyenlephong.github.io/zh/blog/architecture/dependency-injection-and-ioc"}],["$","link","15",{"rel":"alternate","hrefLang":"ja","href":"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc"}],["$","link","16",{"rel":"alternate","hrefLang":"ko","href":"https://nguyenlephong.github.io/ko/blog/architecture/dependency-injection-and-ioc"}],["$","link","17",{"rel":"alternate","hrefLang":"fr","href":"https://nguyenlephong.github.io/fr/blog/architecture/dependency-injection-and-ioc"}],["$","link","18",{"rel":"alternate","hrefLang":"x-default","href":"https://nguyenlephong.github.io/en/blog/architecture/dependency-injection-and-ioc"}],["$","meta","19",{"property":"og:title","content":"Dependency Injection と Inversion of Control——魔法なしで理解する"}],["$","meta","20",{"property":"og:description","content":"DIコンテナは、根底にあるシンプルなアイデアを見るまで魔法のように感じられます：コードが自分で依存を作るのをやめ、外から受け取るようにする、それだけです。初歩から始めるガイドで、実例とテストの恩恵をお届けします。"}],["$","meta","21",{"property":"og:url","content":"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc"}],["$","meta","22",{"property":"og:site_name","content":"Nguyen Le Phong — Senior Software Engineer"}],["$","meta","23",{"property":"og:locale","content":"ja_JP"}],["$","meta","24",{"property":"og:image:alt","content":"Blog post — Nguyen Le Phong"}],["$","meta","25",{"property":"og:image:type","content":"image/png"}],["$","meta","26",{"property":"og:image","content":"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc/opengraph-image?3b6b4f6dde67be31"}],["$","meta","27",{"property":"og:image:width","content":"1200"}],["$","meta","28",{"property":"og:image:height","content":"630"}],["$","meta","29",{"property":"og:locale:alternate","content":"en_US"}],["$","meta","30",{"property":"og:locale:alternate","content":"vi_VN"}],["$","meta","31",{"property":"og:locale:alternate","content":"zh_CN"}],["$","meta","32",{"property":"og:locale:alternate","content":"ko_KR"}],["$","meta","33",{"property":"og:locale:alternate","content":"fr_FR"}],["$","meta","34",{"property":"og:type","content":"article"}],["$","meta","35",{"property":"article:published_time","content":"2026-05-29"}],["$","meta","36",{"property":"article:modified_time","content":"2026-05-29"}],["$","meta","37",{"property":"article:author","content":"https://nguyenlephong.github.io"}],["$","meta","38",{"property":"article:tag","content":"ソフトウェアアーキテクチャ"}],["$","meta","39",{"property":"article:tag","content":"Dependency Injection"}],["$","meta","40",{"property":"article:tag","content":"Inversion of Control"}],["$","meta","41",{"property":"article:tag","content":"SOLID"}],"$L2c","$L2d","$L2e","$L2f","$L30","$L31","$L32","$L33","$L34","$L35","$L36","$L37","$L38","$L39","$L3a","$L3b","$L3c","$L3d","$L3e","$L3f"]
+40:I[27201,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"IconMark"]
+2c:["$","meta","42",{"property":"article:tag","content":"テスト"}]
+2d:["$","meta","43",{"property":"article:tag","content":"デザインパターン"}]
+2e:["$","meta","44",{"name":"twitter:card","content":"summary_large_image"}]
+2f:["$","meta","45",{"name":"twitter:site","content":"@nguyenlephong17"}]
+30:["$","meta","46",{"name":"twitter:creator","content":"@nguyenlephong17"}]
+31:["$","meta","47",{"name":"twitter:title","content":"Dependency Injection と Inversion of Control——魔法なしで理解する"}]
+32:["$","meta","48",{"name":"twitter:description","content":"DIコンテナは、根底にあるシンプルなアイデアを見るまで魔法のように感じられます：コードが自分で依存を作るのをやめ、外から受け取るようにする、それだけです。初歩から始めるガイドで、実例とテストの恩恵をお届けします。"}]
+33:["$","meta","49",{"name":"twitter:image:alt","content":"Blog post — Nguyen Le Phong"}]
+34:["$","meta","50",{"name":"twitter:image:type","content":"image/png"}]
+35:["$","meta","51",{"name":"twitter:image","content":"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc/opengraph-image?3b6b4f6dde67be31"}]
+36:["$","meta","52",{"name":"twitter:image:width","content":"1200"}]
+37:["$","meta","53",{"name":"twitter:image:height","content":"630"}]
+38:["$","link","54",{"rel":"shortcut icon","href":"/favicon.ico"}]
+39:["$","link","55",{"rel":"icon","href":"/favicon.ico?favicon.44bce1b2.ico","sizes":"48x48","type":"image/x-icon"}]
+3a:["$","link","56",{"rel":"icon","href":"/favicon.ico","sizes":"any"}]
+3b:["$","link","57",{"rel":"icon","href":"/icon.png","type":"image/png","sizes":"512x512"}]
+3c:["$","link","58",{"rel":"icon","href":"/favicon/favicon-32x32.png","type":"image/png","sizes":"32x32"}]
+3d:["$","link","59",{"rel":"icon","href":"/favicon/favicon-16x16.png","type":"image/png","sizes":"16x16"}]
+3e:["$","link","60",{"rel":"apple-touch-icon","href":"/apple-icon.png","sizes":"180x180","type":"image/png"}]
+3f:["$","$L40","61",{}]

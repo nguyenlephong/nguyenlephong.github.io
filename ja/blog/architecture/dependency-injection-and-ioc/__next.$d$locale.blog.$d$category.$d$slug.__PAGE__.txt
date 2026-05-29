@@ -1,0 +1,350 @@
+1:"$Sreact.fragment"
+3:I[77105,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+4:I[63047,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+c:I[35757,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+d:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+:HL["/_next/static/chunks/00a3e9f86731f1d1.css","style"]
+2:T585,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc#article","headline":"Dependency Injection と Inversion of Control——魔法なしで理解する","description":"DIコンテナは、根底にあるシンプルなアイデアを見るまで魔法のように感じられます：コードが自分で依存を作るのをやめ、外から受け取るようにする、それだけです。初歩から始めるガイドで、実例とテストの恩恵をお届けします。","inLanguage":"ja","url":"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc","mainEntityOfPage":"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc","datePublished":"2026-05-29","dateModified":"2026-05-29","keywords":"ソフトウェアアーキテクチャ, Dependency Injection, Inversion of Control, SOLID, テスト, デザインパターン","articleSection":"ソースコード & アーキテクチャ","isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/ja/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}5:T8dae,<p>ある時点ですべての開発者は同じ壁にぶつかります。コードの一部をテストしたいのに、そのコードが内部で <code>new Database()</code> を呼んでいます。何をしても、本物のデータベース接続が起動します。メールプロバイダーを交換したいのに、メールSDKが三層も深くに埋まっています。同じロジックをHTTPリクエストとスケジュールジョブの両方で動かしたいのに、フレームワークがあまりにもがっちりとボルトで締まっていて、実質的に不可能です。</p>
+<p>これらはすべて、一つの根本的な原因の症状です：<strong>自分自身の依存を作るコード</strong>。解決策には正式な名前があります――<em>Dependency Injection</em>――ですが、その根底にあるアイデアは拍子抜けするほどシンプルです。コードが自分で協調者を見つけるのをやめて、<em>外から渡す</em>ようにします。それだけです。他のすべて――IoCコンテナ・DIフレームワーク・インジェクショントークン――はその一つのアイデアの上に構築された仕組みにすぎません。</p>
+<p>このガイドでは初めからほぐしていきます：問題、原則、パターン、そしてテストにおける実践的な恩恵。TypeScript を全体で使用します。あらゆるWebまたはサーバーバックグラウンドを持つエンジニアにとって読みやすいからです。</p>
+
+<h2 id="the-problem">ハードワイヤードな依存：コードが自分で <code>new</code> を呼ぶとき</h2>
+<p>注文を処理するサービスがあります。一見すると完全に合理的に見えます：</p>
+<pre><code><span class="cmt">// order-service.ts — 「修正前」バージョン</span>
+<span class="kw">class</span> OrderService {
+  <span class="kw">async</span> placeOrder(cart: Cart): Promise&lt;Order&gt; {
+    <span class="kw">const</span> db     = <span class="kw">new</span> PostgresClient(process.env.DATABASE_URL!)  <span class="cmt">// ハードワイヤードなDB</span>
+    <span class="kw">const</span> stripe = <span class="kw">new</span> Stripe(process.env.STRIPE_SECRET_KEY!)        <span class="cmt">// ハードワイヤードなベンダー</span>
+    <span class="kw">const</span> mailer = <span class="kw">new</span> SendGridMailer(process.env.SENDGRID_KEY!)    <span class="cmt">// ハードワイヤードなベンダー</span>
+
+    <span class="kw">const</span> order = Order.fromCart(cart)
+    <span class="kw">await</span> stripe.charges.create({ amount: order.total, source: cart.token })
+    <span class="kw">await</span> db.query(<span class="str">'INSERT INTO orders …'</span>, [order])
+    <span class="kw">await</span> mailer.send({ to: cart.email, template: <span class="str">'order-confirmed'</span> })
+    <span class="kw">return</span> order
+  }
+}</code></pre>
+<p>これを使おうとした瞬間、三つの問題が明確になります：</p>
+<ul>
+  <li><strong>単独でテスト不可能。</strong>本物のクレデンシャル・ライブのデータベース・ライブのStripeサンドボックスなしに <code>placeOrder</code> をユニットテストで実行できません。デフォルトで、すべてのテストが遅くて壊れやすいインテグレーションテストになります。</li>
+  <li><strong>特定の実装に硬くカップリングされている。</strong>ビジネスが Stripe から Adyen に移行するとき、このファイルを開いて手術をします。ステージングにダミーのメーラーが必要なとき、プラグインする明確な方法がありません。</li>
+  <li><strong>隠れた依存。</strong>クラスのシグネチャを読む人は <code>placeOrder(cart)</code> を見て、このメソッドが秘密裡に三つの外部サービスを必要とすることを知りません。依存はすべての行を読むまで見えません。</li>
+</ul>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">注目すべきパターン</span><p>メソッドやコンストラクター本体の<em>内部</em>で <code>new SomeExternalThing()</code> を見るたびに――コンポジションルートではなく――それはハードワイヤードな依存です。クラスは自分の仕事をすることと、その仕事に必要なツールを見つけて構築することの両方に責任を負っています。これは二つの仕事であり、互いに反対方向に引っ張ります。</p></div>
+
+<h2 id="inversion-of-control">Inversion of Control：誰が作成を管理するか？</h2>
+<p>コードで問題を解決する前に、関連する原則を名前で呼ぶことが役立ちます。<strong>Inversion of Control</strong>（IoC）は、コードが自分自身の依存を取得することに責任を負うべきではないというアイデアです。その代わりに、外部のもの――フレームワーク・テストハーネス・コンポジションルート――が物を作って渡すことを担います。</p>
+<p>いわゆる<em>ハリウッド原則</em>を聞いたことがあるかもしれません：<strong>「こちらから電話しないで、向こうから電話するから。」</strong>古典的な命令型コードでは、ビジネスロジックが依存を直接呼び出します――データベースに手を伸ばして掴みます。IoCでは、依存があなたのところに来ます。その関係の制御が逆転します：いつどのように協調者を取得するかをあなたが決めるのではなく、外の世界が決めて届けます。</p>
+<p>IoC は広い原則であり、特定の技術ではありません。フレームワークはさまざまな方法でそれを実装しています：</p>
+<ul>
+  <li><strong>Dependency Injection（DI）</strong>――協調者をコンストラクター引数またはメソッドパラメーターとして渡す。最も一般的で最も明示的な形式。</li>
+  <li><strong>Service Locator</strong>――コードが実行時に名前で依存を取得するグローバルレジストリ。（後でこれがアンチパターンである理由について触れます。）</li>
+  <li><strong>Template Method</strong>――基底クラスがサブクラスがオーバーライドするフックメソッドを呼び出すので、基底クラスがフローを制御し、サブクラスが空白を埋めます。</li>
+  <li><strong>Event / Observer</strong>――コンポーネントがイベントを発行し、フレームワークがそれをサブスクライバーにルートします。どちらの側も相手の存在を知りません。</li>
+</ul>
+<p>これらの中で、<strong>Dependency Injection は最も透明でテストしやすいものです</strong>。またIoC自体と最もよく混同されるものでもあります。だから二つの用語をほぐす価値があります：IoCは<em>原則</em>であり、DIはその原則の一つの<em>実装</em>です。</p>
+
+<h2 id="dependency-injection">Dependency Injection：依存を受け取る</h2>
+<p>DIの仕組みは、一度見れば恥ずかしいほどシンプルです。クラスの内部で協調者を構築するのではなく、パラメーターとして宣言し、呼び出し側に提供させます。</p>
+<p>三つの種類がありますが、ほとんどの状況で一つの明確な勝者があります：</p>
+<h3 id="constructor-injection">コンストラクターインジェクション（推奨）</h3>
+<p>依存はコンストラクターで宣言されます。これが標準的な選択です：すべての依存がクラスのシグネチャに見え、構築時に必要とされ、後で何かが再代入できないように <code>readonly</code> にできます。</p>
+<pre><code><span class="cmt">// order-service.ts — コンストラクターインジェクションを使った「修正後」バージョン</span>
+<span class="kw">interface</span> PaymentGateway { charge(amount: Money, token: string): Promise&lt;Receipt&gt; }
+<span class="kw">interface</span> OrderRepository { save(order: Order): Promise&lt;void&gt; }
+<span class="kw">interface</span> Mailer          { send(to: string, template: string): Promise&lt;void&gt; }
+
+<span class="kw">class</span> OrderService {
+  <span class="kw">constructor</span>(
+    <span class="kw">private readonly</span> payments: PaymentGateway,
+    <span class="kw">private readonly</span> orders:   OrderRepository,
+    <span class="kw">private readonly</span> mailer:   Mailer,
+  ) {}
+
+  <span class="kw">async</span> placeOrder(cart: Cart): Promise&lt;Order&gt; {
+    <span class="kw">const</span> order = Order.fromCart(cart)                   <span class="cmt">// 純粋なビジネスルール</span>
+    <span class="kw">await</span> <span class="kw">this</span>.payments.charge(order.total, cart.token)
+    <span class="kw">await</span> <span class="kw">this</span>.orders.save(order)
+    <span class="kw">await</span> <span class="kw">this</span>.mailer.send(cart.email, <span class="str">'order-confirmed'</span>)
+    <span class="kw">return</span> order
+  }
+}</code></pre>
+<p>そのコンストラクターのシグネチャを声に出して読んでください：「<code>OrderService</code> を作るには、決済ゲートウェイ・注文リポジトリ・メーラーが必要です。」これは、メソッド本体を一行も読まずにプレーンなコードで書かれた見える契約です。</p>
+<h3 id="setter-injection">セッター / メソッドインジェクション（時々使用）</h3>
+<p>依存は構築後にメソッド経由で設定されます。オプションの協調者や、二段階でオブジェクトを構築するフレームワーク（例：一部のテストフレームワーク・一部のIoCコンテナ）に役立ちます。控えめに使いましょう――オブジェクトが部分的に設定された状態で存在することを許可し、これが微妙なバグの元になります。</p>
+<pre><code><span class="cmt">// セッターインジェクション — 構築時の配線が不可能な場合のみ使用</span>
+<span class="kw">class</span> ReportGenerator {
+  <span class="kw">private</span> formatter: ReportFormatter = <span class="kw">new</span> DefaultFormatter()
+
+  setFormatter(f: ReportFormatter) { <span class="kw">this</span>.formatter = f }  <span class="cmt">// オプションの上書き</span>
+
+  generate(data: ReportData): string {
+    <span class="kw">return this</span>.formatter.format(data)
+  }
+}</code></pre>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">シンプルな経験則</span><p>デフォルトで<strong>コンストラクターインジェクション</strong>を使いましょう。クラスが<em>常に</em>必要とするすべての依存はコンストラクターに属します。依存が本当にオプションの場合、またはフレームワークが強制する場合のみセッターインジェクションを使いましょう。依存グラフについて考えることを避けるための逃げ道としてセッターインジェクションを使わないでください。</p></div>
+
+<h2 id="composition-root">コンポジションルート：すべてを一つの場所でつなぐ</h2>
+<p>コンストラクターを通じて依存を注入すると、新しい質問が生まれます：<em>実際に誰が <code>new</code> を呼んでピースをつなぎ合わせるのか？</em>答えは<strong>コンポジションルート</strong>です：アプリケーションのエントリーポイントにある、すべての本物のオブジェクトが構築されてお互いに注入される単一の場所。</p>
+<p>コードベース全体で <code>new ConcreteImplementation()</code> を自由に書いても良い唯一の場所だと考えてください。他のすべてはインターフェースの言葉で話します。コンポジションルートは「抽象システム」と「現実の世界」の間のシームです。</p>
+<pre><code><span class="cmt">// composition-root.ts — 本物のものが配線される唯一の場所</span>
+<span class="kw">import</span> { PostgresOrderRepository } <span class="kw">from</span> <span class="str">'./adapters/postgres-order-repository'</span>
+<span class="kw">import</span> { StripePaymentGateway }    <span class="kw">from</span> <span class="str">'./adapters/stripe-payment-gateway'</span>
+<span class="kw">import</span> { SendGridMailer }          <span class="kw">from</span> <span class="str">'./adapters/sendgrid-mailer'</span>
+<span class="kw">import</span> { OrderService }            <span class="kw">from</span> <span class="str">'./domain/order-service'</span>
+<span class="kw">import</span> { OrderController }         <span class="kw">from</span> <span class="str">'./http/order-controller'</span>
+
+<span class="kw">export function</span> buildApp() {
+  <span class="cmt">// 1. 最初に末端の依存を構築する（依存を持たないもの）</span>
+  <span class="kw">const</span> db      = <span class="kw">new</span> PostgresOrderRepository(process.env.DATABASE_URL!)
+  <span class="kw">const</span> stripe  = <span class="kw">new</span> StripePaymentGateway(process.env.STRIPE_SECRET_KEY!)
+  <span class="kw">const</span> mailer  = <span class="kw">new</span> SendGridMailer(process.env.SENDGRID_KEY!)
+
+  <span class="cmt">// 2. サービスを構築し、依存を注入する</span>
+  <span class="kw">const</span> orderSvc = <span class="kw">new</span> OrderService(stripe, db, mailer)
+
+  <span class="cmt">// 3. デリバリーレイヤーを構築し、サービスを注入する</span>
+  <span class="kw">const</span> orderCtrl = <span class="kw">new</span> OrderController(orderSvc)
+
+  <span class="kw">return</span> orderCtrl
+}</code></pre>
+<p>コンポジションルートがほぼレシピのように読めることに気づいてください：「これらの材料を作り、サービスに組み合わせ、サービスをコントローラーに入れます。」コードベース全体で<em>すべてがどうつながっているか</em>を理解するために行く場所が一つあります。これは新しいエンジニアをオンボーディングするとき、または材料を交換する必要があるときに非常に貴重な財産です。</p>
+<p>テストでは、<em>テスト固有のコンポジションルート</em>を書きます――本物のアダプターの代わりにフェイクを配線する小さな同等物：</p>
+<pre><code><span class="cmt">// テストファイルで — 同じサービス、フェイクの協調者</span>
+<span class="kw">const</span> fakePayments = <span class="kw">new</span> InMemoryPaymentGateway()
+<span class="kw">const</span> fakeOrders   = <span class="kw">new</span> InMemoryOrderRepository()
+<span class="kw">const</span> fakeMailer   = <span class="kw">new</span> NoOpMailer()
+
+<span class="kw">const</span> svc = <span class="kw">new</span> OrderService(fakePayments, fakeOrders, fakeMailer)
+<span class="cmt">// ミリ秒で実行；ネットワークなし、データベースなし</span></code></pre>
+
+<h2 id="by-hand-vs-container">手動DIとDIコンテナ――何が変わり、いつそれが重要か</h2>
+<p>上記のすべては<em>手動DI</em>、またの名を<em>Pure DI</em>です。配線コードを自分で書きます。多くのプロジェクト――特に小さなもの――では、これが正しい選択です：プレーンなコードで、魔法がなく、すぐにデバッグ可能で、新しい開発者が一つのファイルを読むだけで配線全体を理解できます。</p>
+<p>アプリケーションが成長するにつれ、手動アプローチは摩擦を生じさせます。DIコンテナ（IoCコンテナと呼ばれることもある）は依存の登録と解決を自動化し、その上にライフタイム管理を追加します。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 860 440" role="img" aria-labelledby="dgm-di-title">
+    <title id="dgm-di-title">制御逆転の図：修正前（クラスが自分の依存に手を伸ばす）と修正後（コンポジションルートが依存を内向きに注入する）の比較。</title>
+    <defs>
+      <marker id="diAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="diRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+      </marker>
+    </defs>
+
+    <!-- LEFT PANEL: BEFORE -->
+    <rect class="dgm-surface" x="20" y="20" width="380" height="400" rx="16" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="210" y="50" text-anchor="middle" font-size="12">BEFORE — class reaches out</text>
+
+    <rect class="dgm-core" x="120" y="70" width="180" height="56" rx="10" stroke-width="2"/>
+    <text class="dgm-t-strong" x="210" y="100" text-anchor="middle" font-size="15">OrderService</text>
+    <text class="dgm-t-muted" x="210" y="118" text-anchor="middle" font-size="11">calls new() internally</text>
+
+    <rect class="dgm-driven" x="55" y="195" width="140" height="46" rx="9"/>
+    <text x="125" y="223" text-anchor="middle" font-size="13">PostgresClient</text>
+
+    <rect class="dgm-driven" x="222" y="195" width="140" height="46" rx="9"/>
+    <text x="292" y="223" text-anchor="middle" font-size="13">Stripe SDK</text>
+
+    <rect class="dgm-driven" x="138" y="310" width="145" height="46" rx="9"/>
+    <text x="210" y="338" text-anchor="middle" font-size="13">SendGrid SDK</text>
+
+    <!-- outward arrows (problematic) -->
+    <path d="M155,126 L125,192" stroke="#d97706" stroke-width="1.8" fill="none" marker-end="url(#diRed)"/>
+    <path d="M265,126 L292,192" stroke="#d97706" stroke-width="1.8" fill="none" marker-end="url(#diRed)"/>
+    <path d="M210,126 L210,307" stroke="#d97706" stroke-width="1.8" fill="none" marker-end="url(#diRed)"/>
+
+    <text x="210" y="390" text-anchor="middle" font-size="11" fill="#d97706">deps created inside the class — untestable</text>
+
+    <!-- RIGHT PANEL: AFTER -->
+    <rect class="dgm-surface" x="460" y="20" width="380" height="400" rx="16" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="650" y="50" text-anchor="middle" font-size="12">AFTER — composition root injects in</text>
+
+    <rect class="dgm-adapter" x="560" y="68" width="180" height="46" rx="9"/>
+    <text x="650" y="96" text-anchor="middle" font-size="13">Composition Root</text>
+    <text class="dgm-t-muted" x="650" y="112" text-anchor="middle" font-size="10">calls new() — only here</text>
+
+    <rect class="dgm-core" x="560" y="185" width="180" height="56" rx="10" stroke-width="2"/>
+    <text class="dgm-t-strong" x="650" y="215" text-anchor="middle" font-size="15">OrderService</text>
+    <text class="dgm-t-muted" x="650" y="233" text-anchor="middle" font-size="11">accepts interfaces only</text>
+
+    <rect class="dgm-driven" x="480" y="315" width="120" height="46" rx="9"/>
+    <text x="540" y="343" text-anchor="middle" font-size="12">Postgres</text>
+
+    <rect class="dgm-driven" x="616" y="315" width="120" height="46" rx="9"/>
+    <text x="676" y="343" text-anchor="middle" font-size="12">Stripe</text>
+
+    <!-- inward arrows (correct) -->
+    <path class="dgm-flow" d="M650,114 L650,182" marker-end="url(#diAcc)"/>
+    <path class="dgm-flow" d="M590,241 L540,312" marker-end="url(#diAcc)"/>
+    <path class="dgm-flow" d="M710,241 L676,312" marker-end="url(#diAcc)"/>
+
+    <text class="dgm-t-accent" x="650" y="390" text-anchor="middle" font-size="11">deps flow IN — easy to swap, easy to test</text>
+  </svg>
+  <figcaption>左側では <code>OrderService</code> が<em>外向き</em>に手を伸ばして自分の依存を構築しています――各矢印はクラス本体に焼き付けられたカップリングです。右側では、コンポジションルートが具体的なオブジェクトを構築して<em>内向き</em>に注入しています。矢印が逆転します。サービスはインターフェースについてだけ知っています；具体的な型は端の詳細です。</figcaption>
+</figure>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>質問</th><th>手動 / Pure DI</th><th>DI コンテナ（NestJS・InversifyJS・tsyringe…）</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>型はどうやって登録する？</th>
+      <td>コンポジションルートで明示的に配線コードを書く。</td>
+      <td>デコレーター・トークン・またはメタデータ――コンテナがスキャンして自動登録。</td>
+    </tr>
+    <tr>
+      <th>インスタンスはどうやって解決する？</th>
+      <td>正しい順序で自分で <code>new</code> を呼ぶ。</td>
+      <td>型をコンテナに要求すると、完全なグラフを再帰的に構築する。</td>
+    </tr>
+    <tr>
+      <th>ライフタイム / スコープ管理</th>
+      <td>自分で決める：モジュールごと・リクエストごと・またはトランジェント――参照を保持する。</td>
+      <td>宣言的：<code>@Singleton()</code>・<code>@RequestScoped()</code> など。コンテナが廃棄を処理。</td>
+    </tr>
+    <tr>
+      <th>デバッグ性</th>
+      <td>すべてがプレーンなコード――どこでもブレークポイントを設置し、コールスタックを追える。</td>
+      <td>解決はコンテナ内部で起きる；「なぜこのインスタンスを得たのか？」はコンテナの内部を理解する必要がある。</td>
+    </tr>
+    <tr>
+      <th>ボイラープレート</th>
+      <td>大きなグラフでは高い――50クラスのアプリを手動で配線するのは冗長。</td>
+      <td>低い――コンテナが依存ツリーを歩いてすべてを自動的に構築する。</td>
+    </tr>
+    <tr>
+      <th>ビルド時の安全性</th>
+      <td>TypeScript がコンパイル時に不足しているコンストラクター引数を検出する。</td>
+      <td>コンテナによる；トークンベースのシステムはバインディングが不足している場合、実行時に失敗することがある。</td>
+    </tr>
+    <tr>
+      <th>最適なケース</th>
+      <td>小〜中規模アプリ・DI初心者チーム・焦点を絞ったスコープのマイクロサービス。</td>
+      <td>多くのサービスを持つ大規模アプリ・設定より規約を望むチーム・DIが中心の NestJS のようなフレームワーク。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>コンテナが見返りを得るしきい値は様々ですが、大まかな目安として：コンポジションルート自体がメンテナンスの負担になり始めた感じ――常にスクロールしていて、新しいバインディングを追加し忘れたり、オブジェクトのライフタイムと格闘したりしている――それがコンテナに手を伸ばすシグナルです。それまでは、プレーンなバージョンの方が理解しやすくデバッグしやすいです。</p>
+
+<h2 id="testing">テストの恩恵：フェイクを注入して高速テストを得る</h2>
+<p>DI を学ぶ価値がある理由は、アーキテクチャの優雅さよりも、テストスイートにもたらすものです。すべての依存がコンストラクターを通じて届くとき、テストを書くことはフェイクを使った小さなコンポジションルートを書くことを意味します。データベースなし・ネットワークなし・ベンダーサンドボックスなし。テストはミリ秒で実行され、ステージング Stripe アカウントのレートリミットが理由で失敗することはありません。</p>
+<pre><code><span class="cmt">// order-service.test.ts</span>
+<span class="kw">class</span> InMemoryPaymentGateway <span class="kw">implements</span> PaymentGateway {
+  receipts: Receipt[] = []
+  <span class="kw">async</span> charge(amount: Money, token: string): Promise&lt;Receipt&gt; {
+    <span class="kw">const</span> r = { id: <span class="str">'fake-receipt'</span>, amount }
+    <span class="kw">this</span>.receipts.push(r)
+    <span class="kw">return</span> r
+  }
+}
+
+<span class="kw">class</span> InMemoryOrderRepository <span class="kw">implements</span> OrderRepository {
+  store: Order[] = []
+  <span class="kw">async</span> save(order: Order) { <span class="kw">this</span>.store.push(order) }
+}
+
+<span class="kw">class</span> SpyMailer <span class="kw">implements</span> Mailer {
+  sent: string[] = []
+  <span class="kw">async</span> send(to: string) { <span class="kw">this</span>.sent.push(to) }
+}
+
+<span class="cmt">// テスト自体は純粋で、高速で、決定論的：</span>
+<span class="kw">it</span>(<span class="str">'注文を確認して顧客に通知する'</span>, <span class="kw">async</span> () =&gt; {
+  <span class="kw">const</span> payments = <span class="kw">new</span> InMemoryPaymentGateway()
+  <span class="kw">const</span> repo     = <span class="kw">new</span> InMemoryOrderRepository()
+  <span class="kw">const</span> mailer   = <span class="kw">new</span> SpyMailer()
+
+  <span class="kw">const</span> svc   = <span class="kw">new</span> OrderService(payments, repo, mailer)
+  <span class="kw">const</span> order = <span class="kw">await</span> svc.placeOrder(testCart)
+
+  expect(payments.receipts).toHaveLength(1)
+  expect(repo.store).toContainEqual(order)
+  expect(mailer.sent).toContain(testCart.email)
+})</code></pre>
+<p>これは <a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a> の中心にある洞察と同じです――インメモリのフェイクはテスト時のアダプターにすぎず、本物の Stripe または Postgres の実装は本番アダプターです。DIはスワップを可能にするメカニズムです；Ports &amp; Adapters はバウンダリーを意図的で明示的にするアーキテクチャパターンです。</p>
+<p>ここで SOLID についても触れる価値があります。「D」は<strong>依存性逆転の原則</strong>を意味します：高レベルモジュールは低レベルモジュールに依存すべきではなく、両方が抽象に依存すべきです。上記のインターフェース（<code>PaymentGateway</code>・<code>OrderRepository</code>・<code>Mailer</code>）がその抽象です。<code>OrderService</code> が高レベルモジュールです。<code>StripePaymentGateway</code> と <code>PostgresOrderRepository</code> が低レベルモジュールです。どちらも相手のことを直接知りません――インターフェースで出会い、コンポジションルートがそれらを組み合わせます。</p>
+
+<h2 id="pitfalls">アンチパターン：DIが間違った方向に行く方法</h2>
+<p>アイデアはシンプルですが、それを損なうよく踏まれた方法がいくつかあります。</p>
+<h3 id="service-locator">Service Locator</h3>
+<p>Service Locator は、コードが実行時に依存を取得するために呼び出すグローバルレジストリです：</p>
+<pre><code><span class="cmt">// アンチパターン：Service Locator — DIのように見えるがそうではない</span>
+<span class="kw">class</span> OrderService {
+  <span class="kw">async</span> placeOrder(cart: Cart) {
+    <span class="kw">const</span> payments = ServiceLocator.get&lt;PaymentGateway&gt;(<span class="str">'PaymentGateway'</span>)
+    <span class="kw">const</span> repo     = ServiceLocator.get&lt;OrderRepository&gt;(<span class="str">'OrderRepository'</span>)
+    <span class="cmt">// … 続く</span>
+  }
+}</code></pre>
+<p>これはインラインの <code>new Stripe()</code> よりクリーンに感じられますが、同じ問題を隠しています。依存はシグネチャに見えません。テストは実行前にグローバルレジストリを設定しなければなりません。クラスはいつでも何でも要求できます――DIを価値あるものにする明示性を失っています。</p>
+<h3 id="over-injection">過剰なインジェクション（10引数コンストラクター）</h3>
+<p>コンストラクターが七つ・八つ・または十のパラメーターを蓄積するとき、それは通常、DIが間違ったツールではなく、クラスがやりすぎているサインです。修正はクラスをより小さく焦点を絞った協調者に分解することで、それぞれが短い依存リストを持ちます。コンストラクターの長さは有用な健全性の指標です。</p>
+<h3 id="hidden-globals">隠れたグローバルコンテナ</h3>
+<p>サービス内から直接DIコンテナにアクセスすること――コンポジションルートでのみではなく――は、別の名前のService Locatorパターンです。ルールは厳格です：コンポジションルートだけがコンテナと話します。サービスは注入されたインターフェースとだけ話します。</p>
+<h3 id="magic-you-cant-trace">追跡できない魔法</h3>
+<p>一部のフレームワークはデコレーターとリフレクトメタデータを通じて依存を配線しますが、何かが壊れたときに本当に追いかけにくい方法でそれを行います。コンテナのドキュメントを読む時間が自分のビジネスロジックを読む時間より多ければ、それよりシンプルなアプローチを使うサインです――あるいは少なくとも主要なバインディングを明示的に書き出したよくドキュメント化されたコンポジションルートを追加すること。</p>
+
+<h2 id="by-company-size">DIの適切なサイズ：ソロプロジェクトからエンタープライズまで</h2>
+<p>ほとんどのアーキテクチャのアイデアと同様に、DIは問題に合わせてスケールします。目標は常に同じ――テストしやすく変更しやすいコード――ですが、そこに到達するための適切な仕組みは、チームとコードベースの成長に合わせて変わります。</p>
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>会社のステージ</th><th>推奨アプローチ</th><th>典型的な形</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ソロ / 初期スタートアップ</th>
+      <td>単一のコンポジションルートファイルを使った手動DI。</td>
+      <td>一つの <code>buildApp()</code> 関数；おそらく10〜20行。書くのが速く、読みやすい。</td>
+    </tr>
+    <tr>
+      <th>小規模チーム（5〜20人のエンジニア）</th>
+      <td>まだ手動DI。おそらくドメインモジュールに分割し、各モジュールが独自の配線関数を持つ。</td>
+      <td><code>buildOrderModule()</code>・<code>buildBillingModule()</code>――それぞれ自己完結し、起動時に一度組み合わせる。</td>
+    </tr>
+    <tr>
+      <th>成長中のスケールアップ（20〜100人のエンジニア）</th>
+      <td>軽量なコンテナが見返りを得始める。<em>tsyringe</em>・<em>InversifyJS</em>・またはフレームワーク組み込みのコンテナを検討。</td>
+      <td>クラスのデコレーター、モジュールごとのコンテナ設定；Webアプリのリクエストスコープサービス。</td>
+    </tr>
+    <tr>
+      <th>エンタープライズ / 大規模プラットフォーム</th>
+      <td>フルDIフレームワークがほぼ必須。NestJS・Spring Boot・または ASP.NET Core はこのアイデアをスケールの中心に据えて構築されている。</td>
+      <td>設定より規約、ライフサイクルフック、モジュールのインポート/エクスポート、マルチテナントスコーピング。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>フィンテックスタートアップは三つのサービスを配線する30行のコンポジションルートから始めるかもしれません。二年後、同じコードベースに60のサービスがあります：手動配線がそれ自体メンテナンスの作業になり、チームはグラフを自動的に処理するために NestJS か InversifyJS を使うようになります。<em>基盤となるパターン</em>――コンストラクターインジェクション・インターフェース・明確なコンポジションルート――が同じままであるため、スイッチは簡単です。コンテナは機械的なアシスタントであり、異なるアイデアではありません。</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">実践的なアドバイス</span><p>手動DIとコンポジションルートから始めましょう。配線ファイルが負担になったらいつでもコンテナを導入でき、移行は機械的です：明示的な <code>new</code> 呼び出しを登録に置き換えるだけです。ドメイン・サービス・テストの何も変える必要はありません――コンポジションルートだけが変わります。</p></div>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">まとめ</h3>
+<ul>
+  <li><strong>根本的な原因</strong>は、クラスが自分の依存に対して <code>new</code> を呼ぶことです。修正は外から渡すことです。</li>
+  <li><strong>Inversion of Control</strong> は原則（依存を提供することに責任を持つのは他の誰か）。<strong>Dependency Injection</strong> はそれを実装する最も明示的でテストしやすい方法です。</li>
+  <li><strong>コンストラクターインジェクション</strong>がデフォルトの選択です。依存はシグネチャに見え、構築時に必要とされ、テストで簡単に交換できます。</li>
+  <li><strong>コンポジションルート</strong>は、コードベースで本物のオブジェクトが配線される唯一の場所です。他のすべてはインターフェースを通じて話します。</li>
+  <li><strong>手動DI</strong>は小さなコードベースにとってよりシンプルでデバッグしやすいです。<strong>DIコンテナ</strong>はコンポジションルート自体がメンテナンスの負担になったときに見返りを得ます。</li>
+  <li><strong>テストの恩恵</strong>は即座です：テストでフェイクを注入し、ネットワークとデータベースをスキップし、何千ものケースを秒単位で実行します。</li>
+  <li>これはまた SOLIDの <strong>依存性逆転の原則</strong>（「D」）の実践でもあります：高レベルモジュールと低レベルモジュールは両方が抽象に依存し、互いに直接依存しません。</li>
+  <li><strong>Service Locator</strong>（隠れたグローバルレジストリ）・過剰なインジェクション（10引数コンストラクター）・コンポジションルートの外でのコンテナアクセスを避けましょう。</li>
+</ul>
+</div>
+
+<p>依存がどのように流れるかをしっかり理解したうえで、次の自然な質問は<em>ファイル自体をどう整理するか</em>です。このシリーズの次のパートでまさにそれを見ていきます：<a href="/blog/architecture/structuring-code-feature-vs-layer">コードベースの構成：フィーチャーフォルダー対レイヤー</a>――その答えが、コードの形と同じくらいチームの形に依存する理由です。</p>0:{"buildId":"FtClDM2AMZLtdO-QThMuu","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"ブログ\",\"item\":\"https://nguyenlephong.github.io/ja/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"ソースコード & アーキテクチャ\",\"item\":\"https://nguyenlephong.github.io/ja/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Dependency Injection と Inversion of Control——魔法なしで理解する\",\"item\":\"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc\"}]}"}}],["$","div",null,{"className":"blog-article__main","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$L3",null,{"href":"/ja/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ブログ"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$L3",null,{"href":"/ja/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ソースコード & アーキテクチャ"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["ソフトウェアアーキテクチャの基礎",["$","span",null,{"aria-hidden":"true","children":" · "}],"全 6 回中第 3 回"]}],["$","h1",null,{"className":"blog-article__title","children":"Dependency Injection と Inversion of Control——魔法なしで理解する"}],["$","p",null,{"className":"blog-article__summary","children":"DIコンテナは、根底にあるシンプルなアイデアを見るまで魔法のように感じられます：コードが自分で依存を作るのをやめ、外から受け取るようにする、それだけです。初歩から始めるガイドで、実例とテストの恩恵をお届けします。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"著者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-05-29","children":"2026年5月29日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"14 分で読めます"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","ソフトウェアアーキテクチャ",{"children":"ソフトウェアアーキテクチャ"}],["$","li","Dependency Injection",{"children":"Dependency Injection"}],["$","li","Inversion of Control",{"children":"Inversion of Control"}],["$","li","SOLID",{"children":"SOLID"}],["$","li","テスト",{"children":"テスト"}],["$","li","デザインパターン",{"children":"デザインパターン"}]]}]]}],["$","$L4",null,{"html":"$5"}],"$L6","$L7"]}],"$L8"]}],["$L9","$La"],"$Lb"]}],"loading":null,"isPartial":false}
+6:["$","nav",null,{"className":"blog-series-nav","aria-label":"ソフトウェアアーキテクチャの基礎","children":[["$","$L3",null,{"href":"/ja/blog/architecture/clean-vs-onion-vs-hexagonal","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","前の記事"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Clean・Onion・Hexagonal Architecture：一つの北極星、三つの名前"}]]}],["$","$L3",null,{"href":"/ja/blog/architecture/structuring-code-feature-vs-layer","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["次の記事"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"コードベースの構成：レイヤー・フィーチャー・ドメイン、どれを選ぶ？"}]]}]]}]
+7:["$","footer",null,{"className":"blog-article__footer","children":["$","$L3",null,{"href":"/ja/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","ソースコード & アーキテクチャに戻る"]}]}]
+8:["$","aside",null,{"className":"blog-article__toc","children":["$","$Lc",null,{"label":"目次"}]}]
+9:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/00a3e9f86731f1d1.css","precedence":"next"}]
+a:["$","script","script-0",{"src":"/_next/static/chunks/192c27563089a763.js","async":true}]
+b:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

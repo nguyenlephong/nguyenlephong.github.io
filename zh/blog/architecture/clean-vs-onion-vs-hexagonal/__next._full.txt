@@ -1,0 +1,272 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"default"]
+3:I[37457,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"ViewportBoundary"]
+b:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"MetadataBoundary"]
+d:I[68027,[],"default"]
+:HL["/_next/static/chunks/1928531976a6db18.css","style"]
+:HL["/_next/static/media/03fc1b4a8d284b5e-s.p.af4fcd24.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/47df9ba1c7236d3b-s.p.7bbb93ea.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/70bc3e132a0a741e-s.p.15008bfb.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/89ea96820aa96980-s.p.cd67f43d.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/8c2eb9ceedecfc8e-s.p.21935807.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/ed5f1f9bced69653-s.p.c75d0046.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/00a3e9f86731f1d1.css","style"]
+0:{"P":null,"b":"FtClDM2AMZLtdO-QThMuu","c":["","zh","blog","architecture","clean-vs-onion-vs-hexagonal"],"q":"","i":false,"f":[[["",{"children":[["locale","zh","d"],{"children":["blog",{"children":[["category","architecture","d"],{"children":[["slug","clean-vs-onion-vs-hexagonal","d"],{"children":["__PAGE__",{}]}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1928531976a6db18.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/b1dacca048b168d9.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/adda4f8d284f61f5.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/_next/static/chunks/b9004a9a2c3ef441.js","async":true,"nonce":"$undefined"}],["$","script","script-3",{"src":"/_next/static/chunks/fc0560b29860090b.js","async":true,"nonce":"$undefined"}],["$","script","script-4",{"src":"/_next/static/chunks/c1c09076be4c9467.js","async":true,"nonce":"$undefined"}],["$","script","script-5",{"src":"/_next/static/chunks/920b11be92c50b6e.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/00a3e9f86731f1d1.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/192c27563089a763.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+17:I[63047,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+e:T50f,{"@context":"https://schema.org","@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","alternateName":["Nguyễn Lê Phong","Phong Nguyen"],"url":"https://nguyenlephong.github.io","image":"https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom.png","jobTitle":"Head of Tech · Senior Software Engineer · Tech Lead","description":"拥有 8+ 年产品构建、交付领导以及微前端、Kubernetes 与发布系统架构经验的高级软件工程师与技术总监。信息技术学士 — 优秀(GPA 3.36)。","email":"mailto:phongnguyen.itengineer@gmail.com","telephone":"(+84)98-549-0107","address":{"@type":"PostalAddress","addressLocality":"Ho Chi Minh City","addressCountry":"VN"},"knowsAbout":["React","Next.js","TypeScript","Node.js","Java","Spring Framework","Micro-Frontend Architecture","Kubernetes","ArgoCD","CI/CD","System Design","Engineering Leadership"],"worksFor":{"@type":"Organization","name":"NDSVN JSC"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Information Technology — Bachelor (GPA 3.36)"},"sameAs":["https://www.linkedin.com/in/phongnguyen-it/","https://github.com/nguyenlephong","https://leetcode.com/nguyenlephong/","https://www.youtube.com/@NguyenLePhong","https://twitter.com/nguyenlephong17"]}4:["$","html",null,{"lang":"zh","className":"inter_fd091ad6-module__giF-bG__variable jetbrains_mono_b4e9f13-module__5zzpyq__variable source_sans_3_1fe423d2-module__TTNI_q__variable ibm_plex_sans_888939e2-module__7zuP8W__variable atkinson_hyperlegible_b8f5e8ea-module__7sJiSq__variable lora_4aca033c-module__UGhRpG__variable","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n(function() {\n  try {\n    var key = 'theme_preference';\n    var stored = localStorage.getItem(key);\n    var pref = stored ? JSON.parse(stored).theme_setting : 'system';\n    var dark = pref === 'dark' || (pref === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);\n    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');\n  } catch (e) {\n    document.documentElement.setAttribute('data-theme', 'dark');\n  }\n})();\n"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n(function() {\n  try {\n    var key = 'reading_font_preference';\n    var allowed = [\"inter\",\"source\",\"plex\",\"atkinson\",\"lora\"];\n    var stored = localStorage.getItem(key);\n    var value = allowed.indexOf(stored) >= 0 ? stored : 'inter';\n    document.documentElement.setAttribute('data-reading-font', value);\n  } catch (e) {\n    document.documentElement.setAttribute('data-reading-font', 'inter');\n  }\n})();\n"}}],["$","meta",null,{"name":"google-adsense-account","content":"ca-pub-2196929070546836"}],["$","link",null,{"rel":"preconnect","href":"https://app.posthog.com","crossOrigin":""}],["$","link",null,{"rel":"dns-prefetch","href":"https://app.posthog.com"}],["$","link",null,{"rel":"preconnect","href":"https://www.googletagmanager.com","crossOrigin":""}],["$","link",null,{"rel":"dns-prefetch","href":"https://www.googletagmanager.com"}],["$","link",null,{"rel":"dns-prefetch","href":"https://pagead2.googlesyndication.com"}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$e"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://nguyenlephong.github.io/#website\",\"url\":\"https://nguyenlephong.github.io\",\"name\":\"Nguyen Le Phong — Senior Software Engineer\",\"description\":\"拥有 8+ 年产品构建、交付领导以及微前端、Kubernetes 与发布系统架构经验的高级软件工程师与技术总监。信息技术学士 — 优秀(GPA 3.36)。\",\"inLanguage\":\"zh\",\"author\":{\"@id\":\"https://nguyenlephong.github.io/#person\"}}"}}]]}],"$Lf","$L10","$L11","$L12","$L13"]}]
+14:T4fd,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal#article","headline":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字","description":"它们看起来像是三种相互竞争的架构，实则是同一个思想——依赖指向内部，框架置于边缘——用三种方式画出来。本文讲清楚每种方案真正增加了什么，以及应该选哪一个。","inLanguage":"zh","url":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal","mainEntityOfPage":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal","datePublished":"2026-05-29","dateModified":"2026-05-29","keywords":"软件架构, Clean Architecture, Onion Architecture, Hexagonal Architecture, 系统设计, Dependency Inversion","articleSection":"源码与架构","isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/zh/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}18:T4bfb,<p>如果你花时间读过软件架构方面的文章，一定见过反复出现的三个名字：<strong>Hexagonal Architecture</strong>、<strong>Onion Architecture</strong> 和 <strong>Clean Architecture</strong>。它们各有自己的图示、自己的术语，以及各自热情的拥趸。一口气读完三篇，感觉就像在看三个人争论用哪种方式说同一句话。</p>
+<p>诚实的版本是这样的：它们是同一个思想，在不同时期被独立发现，用略有不同的图形画出来。每一种方案都在另外两种没有大声强调的地方增加了一点细微的差别。一旦你看到共同的北极星，差异就变得显而易见——你可以选择团队已经最熟悉的那套词汇。</p>
+
+<h2 id="same-idea">三者共享的同一个思想</h2>
+<p>这三种架构都建立在同一条规则之上，有时被称为<strong>依赖规则</strong>：<em>源码中的依赖关系必须永远指向内部，指向业务规则，而不是指向外部的框架、数据库或 I/O</em>。</p>
+<p>可以把它想象成重力。你的 domain——让产品值得使用的核心逻辑——坐落在中心。围绕它的一切（数据库、Web 框架、支付 SDK、邮件服务商、CLI 工具）都运行在外圈。外层被允许知道内层的存在。内层则被严格禁止知道外层的存在。</p>
+<p>为什么这很重要？因为变化最频繁的东西恰恰在外面：你更换支付服务商、迁移到新数据库、重写前端、增加移动端。如果业务规则与这些细节纠缠在一起，每次变化都会涟漪式地波及你最在乎的代码。如果它们被隔离，一次供应商更换就是边缘处的局部替换——核心根本不会察觉。</p>
+<p>Alistair Cockburn、Jeffrey Palermo 和 Robert C. Martin 各自从不同角度发现了这个模式。Cockburn 画了一个六边形，把连接点叫做“ports”。Palermo 画了同心圆环，称之为“layers”。Martin 画了同心圆，并为每层起了严格的名字。每张图中的箭头方向都指向同一个方向：内部。</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">那条唯一的规则</span><p><strong>源码依赖指向内部。</strong>Domain 定义接口；外部世界实现它们。在任何地方翻转这个方向，架构就被破坏了——无论你用的是哪个名字。</p></div>
+
+<h2 id="hexagonal">Hexagonal Architecture（Ports &amp; Adapters）</h2>
+<p>Alistair Cockburn 于 2005 年以 <em>Ports &amp; Adapters</em> 为别名提出了 Hexagonal Architecture。核心洞见是对称性：你的应用有<em>两类</em>外部——驱动它的东西（用户点击按钮、测试运行器、定时任务）和被它驱动的东西（数据库、邮件服务商、支付 API）。两侧都通过 <strong>ports</strong>——domain 拥有的接口——以及 <strong>adapters</strong>——把真实技术连接到这些接口的具体实现——进行通信。六边形的形状只是一个视觉提示：应用有<em>很多</em>这样的 port，而不仅仅是“上面”和“下面”。如果你想了解 ports、adapters、主/次两侧和代码示例的完整讲解，本系列的上一篇——<a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a>——从第一原理开始讲透了这些内容。这里的核心结论是：Hexagonal 是三者中最<em>对称</em>的：它以同等的严格程度对待传入调用和传出调用，它的词汇（port、adapter、driving、driven）也是最具体、最机械的。</p>
+
+<h2 id="onion">Onion Architecture</h2>
+<p>Jeffrey Palermo 于 2008 年描述了 Onion Architecture。他保留了同样的依赖指向内部的规则，但选择了不同的图形：<strong>同心圆环</strong>，就像洋葱的层次。最内圈是 <strong>Domain Model</strong>——你的核心实体和值对象，纯粹的业务概念，没有任何技术痕迹。围绕它的是 <strong>Domain Services</strong> 圈，这里存放协调多个 domain 对象的逻辑，但仍然对外部世界一无所知。再往外是 <strong>Application Services</strong> 圈，use case 在这里存活，编排工作在这里发生。最外层是基础设施和 UI 细节——数据库、Web 框架、外部 API。</p>
+<p>Onion 强调了另外两种方案没有大声说出的一点：<em>domain model 与 domain services 的区分</em>。Palermo 是为 .NET 团队写的，这些团队经常混淆“代表一个 Order 的东西”和“处理 Orders 的 service”——这是一个真正有用的分离。Onion 也让分层变得非常直观：你可以看一眼任何类的 import 列表，立即根据它允许 import 的内容判断它属于哪个圈。如果一个 domain service 试图 import 一个数据库库，它显然待错了地方。</p>
+
+<h2 id="clean">Clean Architecture</h2>
+<p>Robert C. Martin（Uncle Bob）于 2017 年发表了 Clean Architecture，综合了他多年来一直在完善的思想。他画了同样的同心圆，但给每一个圆起了明确的名字和明确的用途。从内到外：<strong>Entities</strong>（企业级业务规则——即使没有计算机也依然成立的东西）、<strong>Use Cases</strong>（应用特定的业务规则——软件究竟要为用户做什么）、<strong>Interface Adapters</strong>（controllers、presenters、gateways——在 use case 世界和外部世界之间做转换的代码）、<strong>Frameworks &amp; Drivers</strong>（最外圈——数据库、Web 框架、UI 库、设备驱动）。</p>
+<p>Clean Architecture 最显著的补充是明确命名的 <strong>Use Cases</strong> 层。在许多代码库中，“use case”是一个非正式的概念——你可能有一个做十件事情的 <code>UserService</code>。Martin 坚持把每个 use case 做成一个一等的、命名的产物：一个类或函数，其名称字面上就说明它做什么（<code>PlaceOrder</code>、<code>RegisterUser</code>、<code>GenerateInvoice</code>）。他把这称为“尖叫式架构”——当新开发者打开项目结构时，他们应该立刻看到系统<em>做什么</em>，而不是它用了什么框架。Martin 还正式化了 <strong>Boundaries</strong> 的概念——每个圈之间都有明确的接口边界——以及跨越边界的数据必须是可序列化的、简单的数据结构，而不是携带隐藏行为的富 domain 对象。</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">尖叫式架构</span><p>Martin 的“尖叫式架构”这个短语表达了一个简单的愿望：打开项目中的任何一个文件夹，你应该立刻理解<em>业务意图</em>，而不是技术栈。一个叫 <code>use-cases/</code> 的文件夹里放着 <code>PlaceOrder.ts</code> 和 <code>RegisterUser.ts</code>，它的意图在尖叫。而一个叫 <code>controllers/</code> 的文件夹装着其他所有东西，什么也没说出来。</p></div>
+
+<h2 id="side-by-side">并排比较：词汇对照表</h2>
+<p>读完这三种方案后最大的实际障碍，是它们用不同的词指代重叠的概念。以下是翻译对照表：</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>概念</th>
+      <th>Hexagonal（Cockburn）</th>
+      <th>Onion（Palermo）</th>
+      <th>Clean（Martin）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>最内层的核心</th>
+      <td>Domain（没有具体圈名）</td>
+      <td>Domain Model 圈</td>
+      <td>Entities 圈</td>
+    </tr>
+    <tr>
+      <th>业务 use case</th>
+      <td>六边形内部的应用逻辑</td>
+      <td>Application Services 圈</td>
+      <td>Use Cases 圈（明确命名）</td>
+    </tr>
+    <tr>
+      <th>转换层</th>
+      <td>Adapters（driving + driven）</td>
+      <td>Infrastructure 圈</td>
+      <td>Interface Adapters 圈</td>
+    </tr>
+    <tr>
+      <th>最外层技术</th>
+      <td>六边形外部（HTTP、DB 等）</td>
+      <td>UI / Infrastructure 圈</td>
+      <td>Frameworks &amp; Drivers 圈</td>
+    </tr>
+    <tr>
+      <th>连接缝</th>
+      <td>Port（由 domain 拥有的接口）</td>
+      <td>每个圈边界处的隐式接口</td>
+      <td>Boundary（每个跨越处的显式接口）</td>
+    </tr>
+    <tr>
+      <th>主要强调</th>
+      <td>对称 port；可测试性；每个 adapter 的可替换性</td>
+      <td>分层圆环；domain model 与 domain services 的区分</td>
+      <td>明确命名的 use case；尖叫式结构；严格的数据边界</td>
+    </tr>
+    <tr>
+      <th>最适合……</th>
+      <td>有大量集成需要独立替换的场景</td>
+      <td>有非平凡服务编排的富 domain model</td>
+      <td>需要共享词汇和“尖叫式”文件夹结构的大型团队</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="differences">它们在实践中真正不同的地方</h2>
+<p>共同规则掩盖了真实的侧重差异，这些差异在你坐下来写代码时会显现出来。</p>
+<p><strong>Hexagonal 是最机械的。</strong>它给你精确的、命名的槽位：这里是驱动型 adapter，这里是它调用的 port，这里是处理它的 use case，这里是 output port，这里是被驱动型 adapter。如果你忠实地遵循这些槽位，结构几乎会自动生成——而且因为两侧是对称的，防止数据库悄悄进入 domain 的规则，与防止 domain 泄漏到 HTTP 层的规则是同一套。代价是 Hexagonal 不告诉你如何组织六边形的内部——它对核心是否应该有子层（如 domain model 与 domain services）保持沉默。</p>
+<p><strong>Onion 是最有层次感的。</strong>Hexagonal 画一道边界（六边形内部与外部），Onion 在核心内部画了好几圈。当你的 domain 足够大、需要自己的内部结构时，这很有价值——区分纯实体、协调它们的 domain services，以及编排 use case 的 application services。圆环的比喻在视觉上很直观，但要严格遵守它就需要更多的自律：赶进度时很容易跨圈取巧，而 Onion 没有像 Hexagonal 的 port/adapter 词汇那样给你机械性的检验。</p>
+<p><strong>Clean 是最规范的。</strong>Martin 给每一层和每一个概念都起了名字，这既是优点，也是争议的来源。优点在于团队共享了无歧义的词汇——当两位工程师讨论“use case boundary”时，每个人都知道那是什么意思。争议的来源在于，规定好的结构对小型应用来说可能显得繁重：为每个功能创建明确的 <code>InputBoundary</code>、<code>OutputBoundary</code> 和 <code>UseCase</code> 接口，在构建原型时仪式感太重了。Clean Architecture 还坚持在每个圈边界处使用纯数据传输对象（DTO），这增加了代码量，但让边界非常清晰。规模扩大后，当防止“富对象跨层泄漏”成为真实问题而不是假设时，回报才会显现。</p>
+<p>简而言之：Hexagonal 给你最清晰的<em>机械指导</em>，告诉你如何连接各部分。Onion 给你最清晰的 domain<em>内部分层</em>。Clean 给你最清晰的<em>词汇</em>和最有主张的文件夹结构。现实世界的大多数代码库在不知不觉中混合了三者。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 700 460" role="img" aria-labelledby="dgm-rings-title">
+    <title id="dgm-rings-title">同一个依赖指向内部的思想，用同心圆环画出——与第一篇的六边形完全相同，只是形状不同。</title>
+
+    <defs>
+      <marker id="ringsAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+
+    <!-- outermost ring: Frameworks & Drivers / Infrastructure / Adapters -->
+    <ellipse class="dgm-surface" cx="350" cy="228" rx="318" ry="208" stroke-width="1.5"/>
+
+    <!-- middle ring: Interface Adapters / Application Services / Application -->
+    <ellipse class="dgm-port" cx="350" cy="228" rx="228" ry="148" stroke-width="1.5"/>
+
+    <!-- inner ring: Use Cases / Domain Services -->
+    <ellipse class="dgm-driven" cx="350" cy="228" rx="142" ry="92" stroke-width="1.5"/>
+
+    <!-- core: Entities / Domain Model / Domain -->
+    <ellipse class="dgm-core" cx="350" cy="228" rx="66" ry="44" stroke-width="2"/>
+    <text class="dgm-t-strong" x="350" y="224" text-anchor="middle" font-size="15">Domain</text>
+    <text class="dgm-t-muted dgm-t-mono" x="350" y="243" text-anchor="middle" font-size="10">Entities / Model</text>
+
+    <!-- inner ring label -->
+    <text x="350" y="154" text-anchor="middle" font-size="12" class="dgm-t-muted dgm-t-mono">Use Cases / Domain Services</text>
+
+    <!-- middle ring label -->
+    <text x="350" y="93" text-anchor="middle" font-size="12" class="dgm-t-muted dgm-t-mono">Adapters / Interface Adapters / Application Services</text>
+
+    <!-- outer ring label -->
+    <text x="350" y="36" text-anchor="middle" font-size="12" class="dgm-t-muted dgm-t-mono">Frameworks · Databases · UI · External APIs</text>
+
+    <!-- dependency arrows pointing inward -->
+    <path class="dgm-flow" d="M350,420 L350,320" marker-end="url(#ringsAcc)"/>
+    <path class="dgm-flow" d="M350,303 L350,276" marker-end="url(#ringsAcc)"/>
+    <path class="dgm-flow" d="M350,272 L350,248" marker-end="url(#ringsAcc)"/>
+
+    <!-- left side arrows -->
+    <path class="dgm-flow" d="M42,228 L122,228" marker-end="url(#ringsAcc)"/>
+    <path class="dgm-flow" d="M126,228 L208,228" marker-end="url(#ringsAcc)"/>
+    <path class="dgm-flow" d="M212,228 L280,228" marker-end="url(#ringsAcc)"/>
+
+    <!-- arrow label -->
+    <text class="dgm-t-accent" x="350" y="450" text-anchor="middle" font-size="12">依赖关系永远指向内部——与第一篇中的六边形规则完全相同。</text>
+  </svg>
+  <figcaption>三种架构画的都是同一张图：最内层的 domain 不受技术侵染，被向外添加细节的圆环包围，每条依赖箭头都<strong>指向内部</strong>。Hexagonal 把它画成带标记 port 的六边形；Onion 和 Clean 把它画成带命名圆环的同心圆。形状在变；箭头的方向从不改变。</figcaption>
+</figure>
+
+<h2 id="which-one">该选哪一个</h2>
+<p>因为三者共享相同的核心规则，在它们之间做选择实际上是词汇、团队规模和具体场景需要哪种细微差别的问题。</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>团队与阶段</th>
+      <th>建议方案</th>
+      <th>原因</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>独立开发者 / 早期创业</th>
+      <td><strong>Hexagonal，轻量应用。</strong>围绕数据库和最易变的供应商建立一两个 port。</td>
+      <td>速度比完整性更重要。几个接口带来快速测试和替换路径；完整的仪式可以等等。</td>
+    </tr>
+    <tr>
+      <th>小团队，成长期（约 Series A）</th>
+      <td><strong>Onion 或 Hexagonal</strong>，对所有 I/O 使用明确的 port 接口。</td>
+      <td>测试开始成为瓶颈，新员工需要快速理解 domain。圆环标签（或 port 名称）让结构一目了然。</td>
+    </tr>
+    <tr>
+      <th>中型（多个小队）</th>
+      <td>以 <strong>Clean Architecture 词汇</strong>作为团队间的共同契约。</td>
+      <td>边界模糊时小队会相互踩脚。给每个 use case 和每条边界命名，让团队能够在清晰的缝合处独立工作。</td>
+    </tr>
+    <tr>
+      <th>大型企业</th>
+      <td><strong>三者结合</strong>，有明确边界、版本化契约，以及每个 port 对应多个 adapter。</td>
+      <td>监管要求、遗留系统和多供应商采购，都需要只有完整 Clean + Hexagonal 边界才能提供的明确性。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>几个与这张表对应的真实场景：</p>
+<p><strong>一家金融科技初创公司</strong>（8 名工程师）使用了两个 port——<code>PaymentGateway</code> 和 <code>LedgerRepository</code>——其他一切都直接调用。十八个月后他们更换了支付服务商，只需要写一个新的 adapter 类和改一行连接代码。其余代码库未受影响。这就是 Hexagonal 最精简、最有效的样子。</p>
+<p><strong>一家中型 SaaS 公司</strong>（60 名工程师）把 Onion 圆环标签作为代码审查规则：“domain model 圈里的任何东西都不允许 import 圈外的东西，没有例外”。新工程师在第一次 PR 审查时就理解了边界策略。圆环词汇成为了一种快捷语——“你在这里跨圈了”就是一条完整的审查意见，人人都懂。</p>
+<p><strong>一家企业级银行</strong>（数百名工程师，20 年历史的代码库）使用了完整的 Clean Architecture 词汇，有命名的 <code>UseCase</code> 接口、每个圈之间明确的 DTO 对象，以及每个 output port 两个 adapter（旧主机 + 新核心银行系统并行运行）。仪式感很重，但审计员和合规团队可以像读规格说明书一样读懂架构，各小队可以独立部署，因为边界是代码中真实的缝合处。</p>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">不要混用词汇却没有词汇表</span><p>唯一真正糟糕的结果是在同一个团队中混用三个名字，却没有共同的词汇表。如果一半人叫它“port”，另一半叫它“boundary”，代码审查就变成了翻译练习。选一套词汇，写下来，坚持用。底层规则——依赖指向内部——才是最重要的。</p></div>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">核心要点</h3>
+<ul>
+  <li><strong>一条规则，三张图。</strong>Hexagonal、Onion 和 Clean Architecture 都在执行同一条依赖规则：源码依赖指向内部，指向业务规则，而不是指向框架或 I/O。</li>
+  <li><strong>Hexagonal</strong>（Cockburn，2005）给你最机械的指导：ports 和 adapters，对称的 driving 侧和 driven 侧。有大量集成需要替换时最适用。</li>
+  <li><strong>Onion</strong>（Palermo，2008）在 domain 内部增加了明确的同心圆环，将 domain model 与 domain services 和 application services 分开。domain 足够大、需要内部结构时最适用。</li>
+  <li><strong>Clean</strong>（Martin，2017）给每一层命名，让 use case 成为一等产物。增加了“尖叫式架构”——文件夹结构声明业务意图。需要共享词汇和每个边界处严格 DTO 的大型团队最适用。</li>
+  <li><strong>它们是叠加的，不是竞争的。</strong>大多数成熟的代码库混合了三者：Hexagonal 的 port/adapter 接线、Onion 的 domain 内部圆环规律、Clean 的 application 层 use case 命名。</li>
+  <li><strong>按需取用。</strong>两个 port 的 Hexagonal 设置对初创公司已足够。完整的 Clean 仪式在企业规模下才物有所值。不要为还不需要的词汇付出代价。</li>
+  <li><strong>每个团队选一套词汇</strong>并写下来。名字本身不如一致性重要。</li>
+</ul>
+</div>
+<p>本系列的下一篇文章将深入探讨让这三种方案成为可能的机制：<a href="/blog/architecture/dependency-injection-and-ioc">Dependency Injection &amp; Inversion of Control</a>——在运行时把 adapter 连接到 port 的实际接线，而无需 domain 触及任何框架。</p>5:["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$14"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"博客\",\"item\":\"https://nguyenlephong.github.io/zh/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"源码与架构\",\"item\":\"https://nguyenlephong.github.io/zh/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字\",\"item\":\"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal\"}]}"}}],["$","div",null,{"className":"blog-article__main","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":["$L15",["$","span",null,{"aria-hidden":"true","children":"/"}],"$L16"]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["软件架构基础",["$","span",null,{"aria-hidden":"true","children":" · "}],"第 2 篇，共 6 篇"]}],["$","h1",null,{"className":"blog-article__title","children":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字"}],["$","p",null,{"className":"blog-article__summary","children":"它们看起来像是三种相互竞争的架构，实则是同一个思想——依赖指向内部，框架置于边缘——用三种方式画出来。本文讲清楚每种方案真正增加了什么，以及应该选哪一个。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"作者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-05-29","children":"2026年5月29日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"15 分钟阅读"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","软件架构",{"children":"软件架构"}],["$","li","Clean Architecture",{"children":"Clean Architecture"}],["$","li","Onion Architecture",{"children":"Onion Architecture"}],["$","li","Hexagonal Architecture",{"children":"Hexagonal Architecture"}],["$","li","系统设计",{"children":"系统设计"}],["$","li","Dependency Inversion",{"children":"Dependency Inversion"}]]}]]}],["$","$L17",null,{"html":"$18"}],"$L19","$L1a"]}],"$L1b"]}]
+1c:I[79520,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],""]
+22:I[35757,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+f:["$","$L1c",null,{"strategy":"lazyOnload","id":"GTM","src":"https://www.googletagmanager.com/gtag/js?id=G-RLXNC58343"}]
+10:["$","$L1c",null,{"strategy":"lazyOnload","id":"adsbygoogle","src":"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2196929070546836","crossOrigin":"anonymous"}]
+11:["$","$L1c",null,{"id":"GTM_datalayer","strategy":"lazyOnload","dangerouslySetInnerHTML":{"__html":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'G-RLXNC58343', { page_path: window.location.pathname });\n          "}}]
+1d:T56e,
+            !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+            posthog.init('phc_Ti11bWc5cshVoQe8AI7SuY56FMFP7Fhc9WyymdOGVSw',{
+              api_host:'https://app.posthog.com',
+              capture_pageview: true,
+              capture_pageleave: true,
+              autocapture: false,
+              disable_session_recording: true,
+              persistence: 'localStorage+cookie'
+            });
+            posthog.register({ site: 'nguyenlephong.github.io', surface: 'cv', locale: "zh" });
+          12:["$","$L1c",null,{"id":"POSTHOG","strategy":"lazyOnload","dangerouslySetInnerHTML":{"__html":"$1d"}}]
+13:["$","body",null,{"suppressHydrationWarning":true,"children":"$L1e"}]
+19:["$","nav",null,{"className":"blog-series-nav","aria-label":"软件架构基础","children":["$L1f","$L20"]}]
+1a:["$","footer",null,{"className":"blog-article__footer","children":"$L21"}]
+1b:["$","aside",null,{"className":"blog-article__toc","children":["$","$L22",null,{"label":"本页内容"}]}]
+23:I[77105,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+15:["$","$L23",null,{"ref":"$undefined","href":"/zh/blog","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"博客"}]
+16:["$","$L23",null,{"ref":"$undefined","href":"/zh/blog/architecture","locale":"$undefined","localeCookie":"$15:props:localeCookie","children":"源码与架构"}]
+1f:["$","$L23",null,{"ref":"$undefined","href":"/zh/blog/architecture/ports-and-adapters","locale":"$undefined","localeCookie":"$15:props:localeCookie","className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","上一篇"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Ports & Adapters（六边形架构），简单讲清楚"}]]}]
+20:["$","$L23",null,{"ref":"$undefined","href":"/zh/blog/architecture/dependency-injection-and-ioc","locale":"$undefined","localeCookie":"$15:props:localeCookie","className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["下一篇"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Dependency Injection 与 Inversion of Control，去掉魔法讲清楚"}]]}]
+21:["$","$L23",null,{"ref":"$undefined","href":"/zh/blog/architecture","locale":"$undefined","localeCookie":"$15:props:localeCookie","className":"blog-back","children":["← ","返回 源码与架构"]}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover"}],["$","meta","2",{"name":"theme-color","media":"(prefers-color-scheme: light)","content":"#fafafa"}],["$","meta","3",{"name":"theme-color","media":"(prefers-color-scheme: dark)","content":"#0f1115"}]]
+24:I[75696,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],"default"]
+1e:["$","$L24",null,{"formats":"$undefined","locale":"zh","messages":{"Nav":{"about":"关于","experience":"经验","projects":"项目","contact":"联系","gallery":"作品集","blog":"博客","resume":"简历","font":{"label":"阅读字体","sans":"无衬线","serif":"衬线"}},"Footer":{"tag":"高级软件工程师 · 技术负责人","copy":"© {year} Nguyen Le Phong.","language":"语言"},"Hero":{"eyebrow":"正在寻找高级 / Lead 机会","role":"高级软件工程师 · 技术负责人","roleSub":"全栈 · 平台工程 · 交付管理","bio":"我设计并运维端到端的系统 — 前端应用、后端服务、CI/CD 流水线、发布流程和生产基础设施。目前带领一支 11 人团队,交付多租户平台、安全的金融系统集成和微前端架构。","location":"越南胡志明市","downloadResume":"下载简历","getInTouch":"联系我","careerHighlights":"职业亮点","socialProfiles":"社交主页","stats":{"yearsShipping":"交付年数","yearsShippingCaption":"每天交付生产代码","hoursCoding":"编码时长","hoursCodingCaption":"自 2021 年由 WakaTime 追踪","usersTouched":"服务用户数","usersTouchedCaption":"Zalo · CDP · 金融级规模","engineersLed":"带领工程师","engineersLedCaption":"开发 · QC · 跨职能","tenantsPowered":"支持租户","tenantsPoweredCaption":"多租户特性开关","domainsDelivered":"业务领域","domainsDeliveredCaption":"金融 · CDP · 房地产 · 教育","projectsLaunched":"已上线项目","projectsLaunchedCaption":"SDK · 平台 · 移动应用","testCasesAuthored":"编写测试用例","testCasesAuthoredCaption":"BDD · E2E · 回归保障"}},"Sections":{"aboutEyebrow":"简介","aboutTitle":"关于我和我的工作方式","experienceEyebrow":"职业","experienceTitle":"我交付过的地方","projectsEyebrow":"作品","projectsTitle":"精选项目"},"Summary":{"intro1":"拥有信息技术学士学位(软件工程辅修,<b>GPA 3.36</b>),拥有近 <b>8 年</b>全栈软件开发经验,其中 <b>3+ 年</b>参与技术领导、架构决策与跨团队交付协调。","intro2":"亲手设计、构建并运维端到端系统 — 从前端应用、后端服务到 CI/CD 流水线、发布流程和生产基础设施 — 高度强调自动化、运维清晰度和可靠交付。","intro3":"<i>以下是我近几年专注的硬技能:</i>","visionEyebrow":"我的工作方式","hardSkillsEyebrow":"硬技能","pillars":{"endToEnd":{"title":"端到端工程师","body":"前端、后端、CI/CD、发布与生产基础设施 — 一人贯穿整个生命周期。","chip":"FE · BE · 基础设施"},"multiTenant":{"title":"多租户平台","body":"特性开关、RBAC、按比例/分群发布、JSON 配置值、无状态运行时评估。","chip":"30+ 租户在线"},"leadership":{"title":"交付领导","body":"带领 11+ 工程师 — 招聘、组织设计、RFC、Runbook、发布手册、1:1 辅导。","chip":"11 人团队"},"fintech":{"title":"安全金融集成","body":"RSA-4096 握手、AES-256 负载、mTLS、证书锁定、幂等契约、重试队列。","chip":"Gtel · Napas"},"mfe":{"title":"微前端与 SDK","body":"Angular 宿主 + React 模块独立部署。JS SDK 小于 200KB,加载小于 150ms。","chip":"MFE · <150ms"},"ai":{"title":"AI 优先工程","body":"构建 AI 代理用于代码审查、部署辅助、服务配额、API 健康监控与发布分析。","chip":"生产环境代理"}},"skills":{"backend":"<b>后端</b>:<b>Node.js</b> 与 <b>Java (Spring)</b> 深度实战经验;设计 REST/GraphQL API,提供清晰契约、身份验证与加密机制、向后兼容性,并为企业级和第三方集成提供韧性。","frontend":"<b>前端</b>:使用 <b>React</b>(TypeScript、Next.js)、<b>React Native</b> 以及基于 Angular 的微前端宿主构建并维护复杂客户端应用;应用性能优化、状态管理与可扩展的 UI 架构模式。","databases":"<b>数据库</b>:在 <b>MySQL</b> 上有深厚实战经验,专注于 schema 与数据模型设计、索引策略、查询优化、事务边界、迁移规划以及分布式与高吞吐系统的一致性权衡。","infra":"<b>基础设施与平台工程</b>:在多个环境中实际使用 <b>Docker</b> 与 <b>Kubernetes</b>;运维托管集群(<b>AKS</b>、<b>EKS</b>、<b>FKE</b>、<b>K3S</b>)、<b>ArgoCD</b> GitOps 部署、CI/CD 流水线、环境配置以及域名/SSL 管理。","architecture":"<b>架构与交付实践</b>:应用微前端与多租户架构、特性开关驱动的发布、渐进式交付策略以及可观测性实践以支持安全发布和生产诊断。","testing":"<b>测试</b>:实际使用 Jest、Cucumber、Puppeteer 与 Testing Library,确保跨服务和应用的回归安全、发布信心和生产就绪。","libraries":"<b>类库</b>:熟练运用 <b>Firebase</b>、Strapi、Directus、React Flow、Webpack、<b>Redux</b>、React Query 与 G2plot。","other":"<b>其他</b>:熟悉 <b>微前端</b>架构、响应式设计、跨浏览器兼容性、<b>SEO</b>、GraphQL 与 Electron。"}},"Experience":{"labels":{"location":"地点","duration":"时长","keyContributions":"关键贡献","keyTechnologies":"关键技术"},"ndsvn":{"summary":"在 CTO 交接后承担产品交付与技术方向,主导架构决策、发布系统、企业级集成与跨团队协同,管理由 8 名开发(含 4 名 senior)与 3 名 QC 工程师组成的交付团队。","contributions":["设计 .NET Core 多租户特性开关系统 <b>(30+ 租户,~40k 用户)</b>,具备优先级规则引擎、百分比发布(租户/分群/环境)、JSON 配置值与无状态运行时评估 — 驱动移动/Web 应用,并在高流量租户上实现可控的渐进式生产发布。","与 <b>Gtel 和 Napas</b> 建立安全集成:RSA-4096 握手、AES-256 负载加密、<b>mTLS</b> 双向认证、证书锁定、重试队列、幂等 API 契约和 ACK 驱动的不稳定第三方服务监控。","实现 <b>微前端</b> 架构(Angular 宿主 + React 模块),实现独立部署周期与特性隔离 — 减少回归面与跨团队的部署耦合。","引入可观测性栈(PostHog + 指标管道 + 工作流)用于发布影响、特性采用、异常检测与回归追踪 — 显著缩短调试/分析时间。","接手继承的基础设施并保持组织运转 — 默默处理生产事故、流水线故障、集群异常与集成不稳定,使产品和团队不停滞;将 ArgoCD、CI/CD、域名/SSL 与 <b>AKS/FKE/K3S/EKS</b> 集群塑造为<b>可诊断、可恢复、稳定的系统,而不是反复出现的未知问题</b>。","构建 <b>AI 代理</b>,支持代码审查、部署助手、服务配额校验、API 健康监控和发布分析;缩短产品团队的决策与交付循环。","开发集成模拟与 sandbox/demo 模块,处理不稳定合作伙伴并确保与第三方生态的合同前安全验证。","在领导层交接后<b>重组工程组织</b>:定义组织架构、能力矩阵、工作路由与所有权边界 — 释放自主性并缩短技术决策的交付时间。","建立统一的工程手册:分支策略、提交规范、发布打标签、发布标准、API/集成规则与技术规范库(RFC、Runbook、故障排查指南)。","主导招聘与能力增长循环:结构化面试(QC/Fullstack)、入职路径、1:1 辅导、绩效评审与跨团队冲突解决,使交付保持协作与产出导向。","通过文档优先文化和流程护栏(检查表、交接规则、回滚就绪)维持交付质量,在扩张期间保持可预测的发布节奏。"]},"zalo":{"summary1":"跨平台 <b>Zalo PC</b>(Web、macOS、Windows)的核心开发者,服务 <b>15M+ MAU</b>。交付了暗黑模式、动态主题、用户行为追踪等关键功能。主导开发了促销流程和面向 <b>50+ 开发者</b>的可扩展<b>设计系统</b>。通过稳健高效的方案,优化性能、提升可维护性,并推动业务增长。","summary2":"积极维护并改进 <b>Zalo Android</b> 移动端,为近 <b>8000 万用户</b>确保关键功能的<b>稳定性</b>与<b>性能</b>。","contributions":["交付了 <b>10+ 个功能</b>,包括暗黑模式、下载模块、Kiki Bot、日志追踪等,改善 UX 与用户活跃度。","开发了带有集成追踪与监控系统的<b>促销流程</b>,在 <b>15M+ MAU</b> 上推动激活成功。","使用 Storybook 主导构建可扩展的<b>设计系统</b>,为 <b>50+ 开发者</b>确保 UI 一致性与效率。","主动支持 <b>50+ 客户端用户</b>,以<b>专注</b>和<b>有效的问题解决</b>能力迅速处理问题,获得强烈的正面反馈。","在 <b>Zalo Android</b> 应用中维护并改进了 <b>3+</b> 个功能,聚焦<b>稳定性</b>、<b>性能</b>以及近 <b>8000 万用户</b>的无缝体验。"]},"primedata":{"summary":"公司构建了所谓的 CDxP 产品。简而言之,这是一个定制化的数据平台,用于托管和处理客户档案(关键解决方案是如何从不同服务和系统的异构 schema 与格式中识别并统一客户数据)。","contributions":["带领前端团队交付 <b>10+ 个项目</b>,包括 CDxP 应用、Magento 与 WordPress 演示、JS SDK、移动 SDK 等。","管理 <b>4 人团队</b>,与产品路线图保持一致以满足多个主要合作伙伴,提升 UI/UX 并实现 360 档案与 campaign builder 等高级功能。","开发轻量级 JS SDK,功能完整(<b><200kb,<150ms</b> 加载时间),促进跨项目的无缝集成。","展现快速<b>解决问题</b>的能力,确保迅速完成功能演示以打动客户和投资人。"]},"splus":{"summary":"一家外包公司。多数项目围绕<b>移动端与 Web 应用</b>。","contributions":["凭借<b>软件端到端生产流程</b>的专业能力,我<b>带领一支小团队</b>,精通从需求收集到项目安全的各个阶段,为后续的领导角色奠定基础。","在<b>教育、餐饮、银行</b>与<b>电商</b>等领域参与了 <b>8+</b> 个多元化项目,获得了关于 Web 与移动应用开发的宝贵洞察。","作为项目佣兵,我赢得了 Savyu 与 Bank Tool 等重要项目,创造了超过 <b>$20,000</b> 的收入,并因卓越贡献被评为<b>年度最佳新人</b>。"]},"propman":{"summary":"一家<b>房地产领域</b>创业公司。我是创始工程师之一。","contributions":["作为前端开发者首次参与主要 Web 应用开发。获得了基础的 Web 开发技能,专注 <b>React JS</b> 及相关技术。在响应式设计项目上协作,优先提升用户体验。"]}},"Projects":{"sat":{"accomplishments":["统筹从 UI/UX 设计、产品工程到用户行为分析的产品开发,在两个月内取得超过 <b>10,000</b> 次访问与 <b>3,000</b> 次注册的全球用户基础。","通过战略性 SEO 举措(包括 <b>parasite SEO</b> 技术)提升 Google 搜索排名。这些努力带来了显著的性能提升,并使产品在行业中得到有效定位。","通过仅使用一个具有 <b>1 CPU</b> 与 <b>256 MiB</b> 内存上限的 Cloud Run 实例,展示前端应用开发中的效率与资源优化。","以<b>移动优先</b>方式主导开发移动应用,在<b>两天内</b>快速上架应用商店。同时确保所有设备上的 <b>PWA</b> 安装无缝,提升可达性与用户体验。","开发<b>变现功能</b>,包括 <b>Google Ads</b> 集成与 <b>Stripe</b> 支付流程,增强营收能力。"]},"cdp":{"accomplishments":["主导 CDxP 项目的架构与实现,专注于 <b>UI/UX</b> 功能,从而提升了整体用户体验与用户参与度。","配置嵌套路由,维持<b>可扩展</b>的项目结构,展示对 ES6、Typescript 与数据类型的深厚知识,从而<b>提升代码可维护性</b>并减少代码相关问题。","有效<b>追踪错误</b>与改进,支持 bug 修复,确保项目的<b>稳定性</b>,从而提升系统可靠性并减少停机时间。","实现 <b>RBAC</b> Hook 用于验证自适应客户端配置中组件访问的授权。此外,基于模块化设计,构建了超过 <b>20 个可重用的工具功能</b>。","构建 <b>10+ 高级功能</b>,例如档案、活动、分析等。","建立健壮的测试流程,覆盖核心 CDP 功能,包含 <b>100+ 场景</b>与 <b>1000+ 测试用例</b>。","掌握领域专业并精通测试方法,包括 BDD、单元测试与 <b>E2E 测试</b>,提升测试覆盖率,减少软件 bug <b>30%</b>。","开发用于运行时切换的<b>特性开关</b>,支持 A/B 测试与基于客户分群的功能分组,优化功能交付并提升采用率。","为清晰与易于维护对组件进行<b>文档化</b>,提升代码可读性并减少维护时间。"]},"sdk":{"accomplishments":["使用 <b>vanilla JS</b> 成功开发了超过 <b>5 个模块</b>,集成超过 <b>10 个高级功能</b>。实现了 <b><200kb 的 bundle 大小与 <150ms</b> 的加载时间(在采用全部 bundle 优化技术之前测得的数据)。","利用 <b>web worker 与 service worker</b> 在后台进行多任务处理,有效管理复杂功能并处理<b>多种边界情况</b>,例如同时多标签使用。","此外,使用<b>微前端</b>架构设计并实现了<b>个性化推荐功能</b>,具体是展示用户可能喜欢产品的轮播块,从而提升体验与参与度。","构建的高级功能包括 Web 弹窗、Web 推送通知、<b>Web 组件嵌入</b>、WebSocket 集成,以及多标签下烦人弹窗的管理。","进一步利用 <b>JS Closure</b> 组织模块结构,实现无缝功能导出或<b>数据封装</b>,从而<b>避免</b>在全局作用域内的冲突。"]},"vac":{"accomplishments":["在 Vietnam Australia Center 承担<b>教授</b> <b>Front-end Project</b> 课程的责任。","设计并交付<b>引人入胜的讲座</b>,为学生提供前端开发项目的实践指导。","聚焦营造<b>协作</b>学习环境,鼓励 <b>12 名学生</b><b>团队合作</b>,并使课程与行业最佳实践对齐。","提供个性化<b>反馈</b>与<b>指导</b>,支持学生<b>克服挑战</b>并确保对课程内容的全面理解。"]},"mona":{"accomplishments":["使用 <b>React Native</b> 与 Realm DB 开发了一款全面的移动应用 Mona House,用于高效的住所管理。","专注于创建跨平台应用,重点是<b>可重用组件</b>、流畅动画以及与原生模块的无缝集成。","展示出强大的<b>问题解决</b>与<b>故障排查</b>能力,通过高级调试工具与性能剖析迅速识别并解决复杂问题。","展示出对新技术的<b>适应性</b>与<b>快速学习曲线</b>,使新框架、编程语言或工具的无缝实现成为可能,以确保项目完成。"]},"mobivi":{"accomplishments":["在 Mobivi 开发了一个<b>全栈 Web 应用</b>,专注于摄取并处理超过 <b>20 个 Excel 文件</b>,每个文件包含超过 <b>20,000 条记录</b>。","应用旨在高效处理用户的渐进式计算事务数据,<b>确保准确可靠的报表</b>。"]},"savyu":{"accomplishments":["在 Synova 开发<b>两款移动</b>应用中发挥关键作用 - 一款面向商户,另一款面向消费者。","参与创建一个<b>Web 应用</b>,使管理员能高效管理用户数据。","展示<b>移动应用开发</b>的精通,与跨职能团队协作,确保成功交付<b>直观</b>且<b>高性能</b>的应用。"]}},"CTA":{"eyebrow":"一起做点什么","title":"有值得交付的硬核问题吗?","body":"我最擅长的是产品快速扩张、团队需要清晰方向、基础设施必须在高负载下稳定运行的场景。请联系我 — 我会阅读每一条消息。","emailMe":"发邮件","resumePdf":"简历 (PDF)","linkedin":"LinkedIn"},"SEO":{"home":{"title":"Nguyen Le Phong — 高级软件工程师与技术负责人","description":"拥有 8+ 年产品构建、交付领导以及微前端、Kubernetes 与发布系统架构经验的高级软件工程师与技术总监。信息技术学士 — 优秀(GPA 3.36)。"}},"Pages":{"cv":{"title":"Software Engineer"},"about":{"heading":"关于我"},"apps":{"heading":"应用"},"gallery":{"eyebrow":"作品集","title":"工作的印记","sub":"证书、奖项、项目以及一些幕后瞬间。点击任意项目可查看原图或验证链接。","back":"← 返回简历","all":"全部","categories":{"certificates":"证书","awards":"奖项","projects":"项目","activities":"活动"}},"thoughts":{"eyebrow":"思想花园","title":"随想","intro":"一个不断生长的小笔记图谱。点击任意标题阅读全文。","empty":"暂无内容。","backToIndex":"返回列表","backlinks":"反向链接","maturity":{"seed":"种子","budding":"萌芽","evergreen":"常青"},"credit":"灵感来自并镜像 <link>huylenq.github.io</link>。笔记原作归属于原作者；本镜像为私有并注明出处。"},"blog":{"eyebrow":"文章","title":"博客","intro":"关于软件架构与源码结构的深度文章——写得让初学者也能读懂，同时对大规模交付的团队同样有用。配有图示、真实案例，绝不空谈。","categoriesHeading":"按主题浏览","latestHeading":"最新文章","empty":"暂无文章——第一篇即将发布。","backToBlog":"返回博客","backToCategory":"返回 {category}","readingTime":"{minutes} 分钟阅读","articleCount":"{count, plural, other {# 篇文章}}","writtenBy":"作者：{author}","onThisPage":"本页内容","partOf":"第 {part} 篇，共 {total} 篇","nextUp":"下一篇","previously":"上一篇","seriesNames":{"foundations":"软件架构基础"}}}},"now":"$undefined","timeZone":"Asia/Saigon","children":["$L25","$L26"]}]
+27:I[34416,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],"default"]
+28:I[92130,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],"default"]
+29:I[25727,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],"default"]
+2a:I[26564,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],"default"]
+2b:I[84845,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js"],"default"]
+25:["$","$L27",null,{}]
+26:["$","$L28",null,{"children":[["$","$L29",null,{}],["$","$L2a",null,{}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L2b",null,{}]]}]
+8:null
+c:[["$","title","0",{"children":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字 · Nguyen Le Phong | Software Engineer"}],["$","meta","1",{"name":"description","content":"它们看起来像是三种相互竞争的架构，实则是同一个思想——依赖指向内部，框架置于边缘——用三种方式画出来。本文讲清楚每种方案真正增加了什么，以及应该选哪一个。"}],["$","meta","2",{"name":"application-name","content":"Nguyen Le Phong — CV"}],["$","link","3",{"rel":"author","href":"https://nguyenlephong.github.io"}],["$","meta","4",{"name":"author","content":"Nguyen Le Phong"}],["$","meta","5",{"name":"keywords","content":"软件架构,Clean Architecture,Onion Architecture,Hexagonal Architecture,系统设计,Dependency Inversion"}],["$","meta","6",{"name":"creator","content":"Nguyen Le Phong"}],["$","meta","7",{"name":"publisher","content":"Nguyen Le Phong"}],["$","meta","8",{"name":"robots","content":"index, follow"}],["$","meta","9",{"name":"googlebot","content":"index, follow, max-image-preview:large, max-snippet:-1"}],["$","meta","10",{"name":"category","content":"technology"}],["$","link","11",{"rel":"canonical","href":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal"}],["$","link","12",{"rel":"alternate","hrefLang":"en","href":"https://nguyenlephong.github.io/en/blog/architecture/clean-vs-onion-vs-hexagonal"}],["$","link","13",{"rel":"alternate","hrefLang":"vi","href":"https://nguyenlephong.github.io/vi/blog/architecture/clean-vs-onion-vs-hexagonal"}],["$","link","14",{"rel":"alternate","hrefLang":"zh","href":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal"}],["$","link","15",{"rel":"alternate","hrefLang":"ja","href":"https://nguyenlephong.github.io/ja/blog/architecture/clean-vs-onion-vs-hexagonal"}],["$","link","16",{"rel":"alternate","hrefLang":"ko","href":"https://nguyenlephong.github.io/ko/blog/architecture/clean-vs-onion-vs-hexagonal"}],["$","link","17",{"rel":"alternate","hrefLang":"fr","href":"https://nguyenlephong.github.io/fr/blog/architecture/clean-vs-onion-vs-hexagonal"}],["$","link","18",{"rel":"alternate","hrefLang":"x-default","href":"https://nguyenlephong.github.io/en/blog/architecture/clean-vs-onion-vs-hexagonal"}],["$","meta","19",{"property":"og:title","content":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字"}],["$","meta","20",{"property":"og:description","content":"它们看起来像是三种相互竞争的架构，实则是同一个思想——依赖指向内部，框架置于边缘——用三种方式画出来。本文讲清楚每种方案真正增加了什么，以及应该选哪一个。"}],["$","meta","21",{"property":"og:url","content":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal"}],["$","meta","22",{"property":"og:site_name","content":"Nguyen Le Phong — Senior Software Engineer"}],["$","meta","23",{"property":"og:locale","content":"zh_CN"}],["$","meta","24",{"property":"og:image:alt","content":"Blog post — Nguyen Le Phong"}],["$","meta","25",{"property":"og:image:type","content":"image/png"}],["$","meta","26",{"property":"og:image","content":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal/opengraph-image?3b6b4f6dde67be31"}],["$","meta","27",{"property":"og:image:width","content":"1200"}],["$","meta","28",{"property":"og:image:height","content":"630"}],["$","meta","29",{"property":"og:locale:alternate","content":"en_US"}],["$","meta","30",{"property":"og:locale:alternate","content":"vi_VN"}],["$","meta","31",{"property":"og:locale:alternate","content":"ja_JP"}],["$","meta","32",{"property":"og:locale:alternate","content":"ko_KR"}],["$","meta","33",{"property":"og:locale:alternate","content":"fr_FR"}],["$","meta","34",{"property":"og:type","content":"article"}],["$","meta","35",{"property":"article:published_time","content":"2026-05-29"}],["$","meta","36",{"property":"article:modified_time","content":"2026-05-29"}],["$","meta","37",{"property":"article:author","content":"https://nguyenlephong.github.io"}],["$","meta","38",{"property":"article:tag","content":"软件架构"}],["$","meta","39",{"property":"article:tag","content":"Clean Architecture"}],["$","meta","40",{"property":"article:tag","content":"Onion Architecture"}],["$","meta","41",{"property":"article:tag","content":"Hexagonal Architecture"}],["$","meta","42",{"property":"article:tag","content":"系统设计"}],["$","meta","43",{"property":"article:tag","content":"Dependency Inversion"}],"$L2c","$L2d","$L2e","$L2f","$L30","$L31","$L32","$L33","$L34","$L35","$L36","$L37","$L38","$L39","$L3a","$L3b","$L3c","$L3d"]
+3e:I[27201,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"IconMark"]
+2c:["$","meta","44",{"name":"twitter:card","content":"summary_large_image"}]
+2d:["$","meta","45",{"name":"twitter:site","content":"@nguyenlephong17"}]
+2e:["$","meta","46",{"name":"twitter:creator","content":"@nguyenlephong17"}]
+2f:["$","meta","47",{"name":"twitter:title","content":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字"}]
+30:["$","meta","48",{"name":"twitter:description","content":"它们看起来像是三种相互竞争的架构，实则是同一个思想——依赖指向内部，框架置于边缘——用三种方式画出来。本文讲清楚每种方案真正增加了什么，以及应该选哪一个。"}]
+31:["$","meta","49",{"name":"twitter:image:alt","content":"Blog post — Nguyen Le Phong"}]
+32:["$","meta","50",{"name":"twitter:image:type","content":"image/png"}]
+33:["$","meta","51",{"name":"twitter:image","content":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal/opengraph-image?3b6b4f6dde67be31"}]
+34:["$","meta","52",{"name":"twitter:image:width","content":"1200"}]
+35:["$","meta","53",{"name":"twitter:image:height","content":"630"}]
+36:["$","link","54",{"rel":"shortcut icon","href":"/favicon.ico"}]
+37:["$","link","55",{"rel":"icon","href":"/favicon.ico?favicon.44bce1b2.ico","sizes":"48x48","type":"image/x-icon"}]
+38:["$","link","56",{"rel":"icon","href":"/favicon.ico","sizes":"any"}]
+39:["$","link","57",{"rel":"icon","href":"/icon.png","type":"image/png","sizes":"512x512"}]
+3a:["$","link","58",{"rel":"icon","href":"/favicon/favicon-32x32.png","type":"image/png","sizes":"32x32"}]
+3b:["$","link","59",{"rel":"icon","href":"/favicon/favicon-16x16.png","type":"image/png","sizes":"16x16"}]
+3c:["$","link","60",{"rel":"apple-touch-icon","href":"/apple-icon.png","sizes":"180x180","type":"image/png"}]
+3d:["$","$L3e","61",{}]
