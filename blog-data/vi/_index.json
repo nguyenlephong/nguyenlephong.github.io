@@ -7,6 +7,14 @@
       "description": "Những bài phân tích sâu, thân thiện với người mới về kiến trúc phần mềm và cách tổ chức mã nguồn — từ Ports & Adapters, Clean Architecture cho tới quản lý phụ thuộc, ranh giới module và những đánh đổi đằng sau mỗi lựa chọn. Dựa trên sơ đồ, ví dụ thực tế và những bài học áp dụng được từ dự án cá nhân tới hệ thống enterprise.",
       "accent": "ocean",
       "order": 1
+    },
+    {
+      "slug": "culture",
+      "title": "Văn hoá Kỹ thuật",
+      "tagline": "Phía con người của việc xây dựng phần mềm — review, phản hồi, cố vấn và những nhóm nuôi dưỡng con người thay vì đốt cháy họ.",
+      "description": "Những bài viết thực tế, đặt con người lên trước về văn hoá kỹ thuật: cách chạy review code khiến cả code lẫn con người tốt hơn, đưa ra và nhận phản hồi tốt, viết pull request mà reviewer thích, cố vấn kỹ sư trở thành senior, và xây dựng những nhóm tử tế, tin tưởng cao. Các kịch bản thực tế, ví dụ và bài học có thể áp dụng từ startup hai người đến tổ chức nghìn kỹ sư.",
+      "accent": "violet",
+      "order": 2
     }
   ],
   "posts": [
@@ -124,6 +132,102 @@
       "author": "Nguyen Le Phong",
       "series": "foundations",
       "seriesOrder": 6
+    },
+    {
+      "slug": "how-to-review-code-kindly",
+      "category": "culture",
+      "title": "Nghệ thuật Review Code: Nhận xét mà không làm người ta chùn bước",
+      "summary": "Review code là nơi văn hoá nhóm được tạo ra hoặc tan vỡ. Hướng dẫn thực tế để review code sao cho sản phẩm tốt hơn VÀ tác giả trở lại mạnh mẽ hơn — cách diễn đạt cụ thể, checklist cho reviewer, và những thói quen âm thầm biến review thành độc tố.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "Code Review",
+        "Pull Requests",
+        "Phản hồi",
+        "Cộng tác nhóm",
+        "Cố vấn"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "how-to-be-a-kind-engineer",
+      "category": "culture",
+      "title": "Kind Engineering: Tại sao Tử tế giúp bạn trở thành Kỹ sư Tốt hơn",
+      "summary": "Tử tế không phải là dễ chịu, và không phải mềm yếu. Đó là bộ khuếch đại — phản hồi rõ ràng hơn, sự cố an toàn hơn, đồng đội phát triển nhanh hơn. 'Kind engineering' thực sự có nghĩa là gì, và cách thực hành trong review code, sự cố, và công việc hàng ngày.",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "Kind Engineering",
+        "An toàn tâm lý",
+        "Đồng cảm",
+        "Cộng tác nhóm",
+        "Lãnh đạo"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "how-to-write-a-great-pull-request",
+      "category": "culture",
+      "title": "Cách viết Pull Request mà mọi người thực sự thích Review",
+      "summary": "Một pull request xuất sắc là món quà cho reviewer: nhỏ gọn, mô tả tốt, dễ nói có. Giải phẫu của một PR có thể review được — kích thước, tiêu đề, mô tả, vệ sinh commit, và self-review — kèm ví dụ trước/sau cụ thể.",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "Pull Requests",
+        "Code Review",
+        "Git",
+        "Cộng tác nhóm",
+        "Năng suất lập trình viên"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "giving-and-receiving-feedback",
+      "category": "culture",
+      "title": "Phản hồi Đánh Đúng Chỗ: Đưa ra và Tiếp nhận Phê bình như một Kỹ sư",
+      "summary": "Hầu hết kỹ sư chưa bao giờ được dạy cách đưa ra phản hồi — hay cách tiếp nhận nó. Cẩm nang thực địa cho phản hồi cụ thể, tử tế, hành động được, và cách giữ thái độ cởi mở khi là bên nhận, kèm các kịch bản sẵn sàng dùng.",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "Phản hồi",
+        "Giao tiếp",
+        "An toàn tâm lý",
+        "Cố vấn",
+        "Cộng tác nhóm"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "mentoring-engineers",
+      "category": "culture",
+      "title": "Cố vấn Kỹ sư: Cách Phát triển Junior thành Senior",
+      "summary": "Các nhóm giỏi được nuôi dưỡng, không chỉ được tuyển dụng. Từ kinh nghiệm dẫn dắt nhóm kỹ thuật: cách cố vấn để mọi người lên level nhanh — pairing, review code như một kênh dạy học, stretch task phù hợp, và những thay đổi tư duy biến junior thành người bạn có thể tin giao bất cứ điều gì.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "Cố vấn",
+        "Phát triển sự nghiệp",
+        "Lãnh đạo",
+        "Cộng tác nhóm",
+        "Code Review"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 5
     }
   ]
 }

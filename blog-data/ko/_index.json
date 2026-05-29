@@ -7,6 +7,14 @@
       "description": "소프트웨어 아키텍처와 소스 코드 조직에 관한 실용적이고 초보자 친화적인 심층 분석 — Ports & Adapters, Clean Architecture부터 의존성 관리, 모듈 경계, 각 선택지에 따른 트레이드오프까지. 다이어그램, 실제 예제, 그리고 개인 프로젝트부터 엔터프라이즈 시스템까지 적용할 수 있는 교훈을 바탕으로 작성되었습니다.",
       "accent": "ocean",
       "order": 1
+    },
+    {
+      "slug": "culture",
+      "title": "엔지니어링 문화",
+      "tagline": "소프트웨어 구축의 인간적 측면 — 리뷰, 피드백, 멘토십, 그리고 사람을 성장시키는 팀.",
+      "description": "엔지니어링 문화에 관한 실용적이고 사람 중심의 글: 코드와 사람을 모두 더 낫게 만드는 코드 리뷰 진행 방법, 피드백을 잘 주고 받는 방법, 리뷰어들이 좋아하는 pull request 작성법, 엔지니어를 시니어로 멘토링하는 방법, 그리고 친절하고 높은 신뢰의 팀을 구축하는 방법. 두 명의 스타트업부터 천 명 규모의 조직까지 적용할 수 있는 실제 스크립트, 예제, 교훈.",
+      "accent": "violet",
+      "order": 2
     }
   ],
   "posts": [
@@ -124,6 +132,102 @@
       "author": "Nguyen Le Phong",
       "series": "foundations",
       "seriesOrder": 6
+    },
+    {
+      "slug": "how-to-review-code-kindly",
+      "category": "culture",
+      "title": "코드 리뷰의 기술: 사람을 무너뜨리지 않고 코드를 비평하는 방법",
+      "summary": "코드 리뷰는 팀 문화가 만들어지거나 무너지는 곳입니다. 코드가 더 잘 배포되고 작성자도 더 강해져서 돌아오도록 리뷰하는 실용적인 가이드 — 구체적인 표현, 리뷰어 체크리스트, 그리고 리뷰를 조용히 독성으로 만드는 습관들.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "엔지니어링 문화",
+        "코드 리뷰",
+        "Pull Requests",
+        "피드백",
+        "팀 협업",
+        "멘토링"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "how-to-be-a-kind-engineer",
+      "category": "culture",
+      "title": "Kind Engineering: 친절함이 더 나은 엔지니어를 만드는 이유",
+      "summary": "친절함은 상냥함이 아니고, 약함도 아닙니다. 친절함은 힘을 배가시키는 것입니다 — 더 명확한 피드백, 더 안전한 장애 대응, 더 빠르게 성장하는 팀원들. '엔지니어링에서의 친절함'이 실제로 무엇을 의미하는지, 그리고 코드 리뷰, 장애 대응, 일상 업무에서 어떻게 실천하는지.",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "엔지니어링 문화",
+        "Kind Engineering",
+        "심리적 안전감",
+        "공감",
+        "팀 협업",
+        "리더십"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "how-to-write-a-great-pull-request",
+      "category": "culture",
+      "title": "사람들이 실제로 즐겁게 리뷰하는 Pull Request 작성하는 방법",
+      "summary": "훌륭한 pull request는 리뷰어에게 주는 선물입니다: 작고, 잘 설명되어 있으며, 쉽게 승인할 수 있습니다. 리뷰 가능한 PR의 해부학 — 크기, 제목, 설명, 커밋 위생, 그리고 셀프 리뷰 — 구체적인 before/after 예제와 함께.",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "엔지니어링 문화",
+        "Pull Requests",
+        "코드 리뷰",
+        "Git",
+        "팀 협업",
+        "개발 생산성"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "giving-and-receiving-feedback",
+      "category": "culture",
+      "title": "잘 전달되는 피드백: 엔지니어로서 비평을 주고받는 방법",
+      "summary": "대부분의 엔지니어들은 피드백을 주는 방법을 배운 적이 없습니다 — 받는 방법도 마찬가지입니다. 구체적이고, 친절하며, 실행 가능한 피드백에 대한 실전 가이드, 그리고 받는 입장에서 열린 자세를 유지하는 방법 — 바로 쓸 수 있는 스크립트와 함께.",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "엔지니어링 문화",
+        "피드백",
+        "커뮤니케이션",
+        "심리적 안전감",
+        "멘토링",
+        "팀 협업"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "mentoring-engineers",
+      "category": "culture",
+      "title": "엔지니어 멘토링: 주니어를 시니어로 성장시키는 방법",
+      "summary": "훌륭한 팀은 채용만으로는 만들어지지 않습니다. 엔지니어링 팀을 이끌어 본 경험에서: 사람들이 빠르게 레벨업하도록 멘토링하는 방법 — 페어링, 가르침으로서의 코드 리뷰, 적절한 크기의 스트레치 과제, 그리고 주니어를 무엇이든 믿고 맡길 수 있는 사람으로 만드는 마인드셋의 전환.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "엔지니어링 문화",
+        "멘토링",
+        "커리어 성장",
+        "리더십",
+        "팀 협업",
+        "코드 리뷰"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 5
     }
   ]
 }

@@ -7,6 +7,14 @@
       "description": "深入浅出地讲解软件架构与代码组织方式——从 Ports & Adapters、Clean Architecture，到依赖管理、模块边界，以及每种方案背后的权衡取舍。内容基于图解、真实示例和可落地的经验，适用于从个人项目到企业级系统的各种规模。",
       "accent": "ocean",
       "order": 1
+    },
+    {
+      "slug": "culture",
+      "title": "工程文化",
+      "tagline": "构建软件的人性一面——代码评审、反馈、带新人，以及培养人而非消耗人的团队。",
+      "description": "关于工程文化的实用、以人为本的文章：如何做让代码和人都变得更好的代码评审、如何恰当地给予与接受反馈、如何写出评审者乐于评审的拉取请求、如何把初级工程师培养成资深工程师，以及如何打造友善而高信任的团队。配有真实话术与示例，从两人创业团队到千人组织都适用。",
+      "accent": "violet",
+      "order": 2
     }
   ],
   "posts": [
@@ -124,6 +132,102 @@
       "author": "Nguyen Le Phong",
       "series": "foundations",
       "seriesOrder": 6
+    },
+    {
+      "slug": "how-to-review-code-kindly",
+      "category": "culture",
+      "title": "代码审查的艺术：如何批评代码而不打击人",
+      "summary": "代码审查是团队文化成败的关键所在。这是一份实用指南，教你如何在让代码更好的同时，也让作者越来越强——具体的措辞、审查者清单，以及那些悄悄让审查变成毒药的习惯。",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "工程文化",
+        "代码审查",
+        "Pull Requests",
+        "反馈",
+        "团队协作",
+        "指导"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "how-to-be-a-kind-engineer",
+      "category": "culture",
+      "title": "善意工程：为什么善意让你成为更好的工程师",
+      "summary": "善意不是温和，也不是软弱，而是力量倍增器——更清晰的反馈、更安全的事故响应、成长更快的队友。“善意工程”真正的含义，以及如何在代码审查、事故处理和日常工作中实践它。",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "工程文化",
+        "Kind Engineering",
+        "心理安全",
+        "同理心",
+        "团队协作",
+        "领导力"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "how-to-write-a-great-pull-request",
+      "category": "culture",
+      "title": "如何写一个让人真正乐于审查的 Pull Request",
+      "summary": "一个出色的 pull request 是给审查者的礼物：简小、描述清晰、容易说是。可审查 PR 的解剖学——大小、标题、描述、提交卫生和自审——附具体的前后对比示例。",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "工程文化",
+        "Pull Requests",
+        "代码审查",
+        "Git",
+        "团队协作",
+        "开发效率"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "giving-and-receiving-feedback",
+      "category": "culture",
+      "title": "有效的反馈：作为工程师给出和接受批评",
+      "summary": "大多数工程师从未被教过如何给出反馈——或者如何接受反馈。这是一本关于具体、善意、可操作反馈的实战手册，以及如何在接受批评时保持开放——附即可使用的对话脚本。",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "工程文化",
+        "反馈",
+        "沟通",
+        "心理安全",
+        "指导",
+        "团队协作"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "mentoring-engineers",
+      "category": "culture",
+      "title": "指导工程师：如何把初级工程师培养成资深工程师",
+      "summary": "优秀的团队是培养出来的，不只是招聘来的。来自领导工程团队的实战经验：如何通过结对编程、代码审查、恰当的拉伸任务，以及那些把初级工程师变成你愿意托付一切的人的思维转变，让人快速成长。",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "工程文化",
+        "指导",
+        "职业成长",
+        "领导力",
+        "团队协作",
+        "代码审查"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 5
     }
   ]
 }

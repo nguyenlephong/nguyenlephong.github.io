@@ -1,0 +1,234 @@
+1:"$Sreact.fragment"
+9:I[77105,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+a:I[63047,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+f:I[35757,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+10:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+11:"$Sreact.suspense"
+:HL["/_next/static/chunks/b0ec84467ea2406e.css","style"]
+2:T4d9,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/en/blog/culture/how-to-review-code-kindly#article","headline":"The Art of Code Review: How to Critique Code Without Crushing People","description":"Code review is where team culture is made or broken. A practical guide to reviewing code so it ships better AND the author comes back stronger — concrete phrasing, a reviewer's checklist, and the habits that quietly turn reviews toxic.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/blog/culture/how-to-review-code-kindly","mainEntityOfPage":"https://nguyenlephong.github.io/en/blog/culture/how-to-review-code-kindly","datePublished":"2026-05-29","dateModified":"2026-05-29","keywords":"Engineering Culture, Code Review, Pull Requests, Feedback, Team Collaboration, Mentorship","articleSection":"Engineering Culture","isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/en/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:Ta4c,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/en/blog/culture/how-to-review-code-kindly#faq","mainEntity":[{"@type":"Question","name":"How long should a code review take?","acceptedAnswer":{"@type":"Answer","text":"For a well-scoped PR under 200 lines, plan on 15–45 minutes of focused attention. Acknowledging a review request within a few hours and completing it within one business day is a healthy target. Reviews that drag past 48 hours become a bottleneck that slows the whole team — timeliness is part of review quality."}},{"@type":"Question","name":"What should I look for in a code review?","acceptedAnswer":{"@type":"Answer","text":"Focus on correctness (will this work in production, including edge cases?), design (does it fit the architecture cleanly?), readability (will a teammate understand this in six months?), tests (are they meaningful and covering the important cases?), and security (is user input validated, any injection risk?). Skip formatting issues that your linter already catches — that attention is better spent on what only a human can judge."}},{"@type":"Question","name":"How do I give code review feedback without sounding harsh?","acceptedAnswer":{"@type":"Answer","text":"The most effective technique is to ask questions instead of issuing verdicts, and to always explain why something matters. \"Why did you choose X here?\" invites dialogue; \"you should use Y\" closes it. Labelling comment severity (nit / suggestion / blocking) also helps — it separates \"this is a blocker\" from \"this is a preference\", so the author doesn't have to guess."}},{"@type":"Question","name":"Should I block a pull request over style nitpicks?","acceptedAnswer":{"@type":"Answer","text":"No. Blocking a PR means a correctness bug, a security issue, or a clear violation of agreed team standards — things that would cause real problems if merged. Style preferences and minor formatting points should be labelled as nit and left to the author's discretion. Once all blocking comments are resolved, approve with comments and let the author handle the rest."}},{"@type":"Question","name":"How big should a pull request be?","acceptedAnswer":{"@type":"Answer","text":"Under 200 changed lines is the sweet spot for high-quality reviews. At this size, a reviewer can hold the change in working memory and spot subtle issues. PRs over 500 lines see sharply declining review quality — reviewers skim, fatigue sets in, and critical issues get missed. For large features, use stacked PRs: a series of small, self-contained changes that each tell one clear story."}}]}0:{"buildId":"hgOgYV9IopzBeg68k9UUI","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--violet","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/en/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Engineering Culture\",\"item\":\"https://nguyenlephong.github.io/en/blog/culture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"The Art of Code Review: How to Critique Code Without Crushing People\",\"item\":\"https://nguyenlephong.github.io/en/blog/culture/how-to-review-code-kindly\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4","$L5"]}],["$L6","$L7"],"$L8"]}],"loading":null,"isPartial":false}
+b:T5c47,<p>Picture this: you open your pull request on a Monday morning, proud of the cleanest code you've written in months. By afternoon, a single comment has you dreading every future deploy. Not because the feedback was wrong — it wasn't — but because of <em>how</em> it was delivered. "This is needlessly complex. Why would you do it this way?" Seven words. Zero actionable guidance. And somehow your whole week tastes worse for it.</p>
+<p>Code review is the highest-leverage ritual in any engineering team. Done well, it ships better software, grows engineers faster, and quietly cements a culture of trust. Done poorly, it burns people out, slows delivery, and drives your best engineers toward teams where they don't feel like they're defending themselves every pull request. This guide is about doing it well — concrete phrasings, a reviewer's checklist, the habits that quietly turn reviews toxic, and what to do when you're the one receiving the comments.</p>
+
+<h2 id="why-it-matters">Code review is culture, not just bug-catching</h2>
+<p>There is a common misunderstanding about what code review is <em>for</em>. The technical goal — finding bugs before they reach production — is real and valuable. But it's only part of the story.</p>
+<p>Every comment you leave teaches something. It teaches the author about the codebase, about tradeoffs, about the standards the team cares about. Over hundreds of reviews, you are the team's collective memory, made explicit. New engineers learn what "good" means here by reading your comments. Junior engineers become seniors by internalising the questions reviewers consistently ask. Seniors stay sharp by articulating the "why" behind their instincts.</p>
+<p>Reviews also set norms invisibly. A team that consistently leaves kind, specific, curious comments becomes a place where it's psychologically safe to ship something imperfect and learn from it. A team that leaves blunt, dismissive, or cryptic comments becomes a place where people over-engineer in silence to avoid criticism, delay opening PRs, or stop asking questions.</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">The real cost of bad review culture</span><p>When engineers dread opening pull requests, they batch work into larger and larger changesets to minimise the number of reviews. Larger PRs are harder to review well, so review quality drops, feedback becomes harsher, and the cycle deepens. The antidote isn't less rigour — it's more kindness alongside the rigour.</p></div>
+<p>None of this means code review should be soft or toothless. The most effective reviewers are deeply honest. They flag problems clearly. They hold the line on things that genuinely matter. But they do it in a way that leaves the author feeling like they've gained a collaborator, not faced a judge.</p>
+
+<h2 id="what-to-look-for">What to actually review — and what to leave alone</h2>
+<p>One of the most common review mistakes is reviewing <em>everything with equal weight</em>. The reviewer who blocks a PR over a missing trailing comma carries the same veto power as one flagging a SQL injection. That asymmetry erodes trust fast. Start by being clear in your own head about what genuinely matters:</p>
+<ul>
+  <li><strong>Correctness:</strong> Does this code do what it's supposed to? Are edge cases handled? Could this fail in production in a way the tests don't cover?</li>
+  <li><strong>Design:</strong> Does this change fit naturally into the existing architecture? Does it introduce unnecessary coupling? Is there a simpler approach that solves the same problem?</li>
+  <li><strong>Readability:</strong> Will a teammate who didn't write this understand it in six months? Are names clear? Is the flow easy to follow?</li>
+  <li><strong>Tests:</strong> Are the tests meaningful? Do they cover the happy path, the edge cases, and the failure modes? Would a test failure actually tell you something useful?</li>
+  <li><strong>Security:</strong> Is user input validated? Could this introduce a data leak, a privilege escalation, or an injection? (If yes, treat it as a blocker.)</li>
+</ul>
+<p>What to <em>not</em> spend review energy on:</p>
+<ul>
+  <li><strong>Formatting and style</strong> that your linter or formatter enforces automatically. If your CI catches it, you don't need to. The human review slot is expensive — don't spend it on what a machine handles.</li>
+  <li><strong>Personal preferences</strong> that aren't team standards. "I would have named it differently" is not a review comment. "This name doesn't match the ubiquitous language in the rest of the domain" sometimes is.</li>
+  <li><strong>Architecture debates</strong> in a PR comment thread. If you have a fundamental disagreement about direction, that's a design conversation, not a code review. Have it separately and collaboratively before the next PR starts.</li>
+</ul>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">A useful filter</span><p>Before writing a comment, ask: "If the author made this exact change, would the code be meaningfully better?" If the answer is "a little" or "maybe", consider whether it's worth their time and yours. If the answer is "yes, and here's why", write it — but write it kindly.</p></div>
+
+<h2 id="how-to-phrase-it">How to phrase comments kindly — and still honestly</h2>
+<p>The single biggest lever in code review is word choice. The same concern, delivered two different ways, produces entirely different responses in the person reading it. Here's the practical toolkit:</p>
+<ul>
+  <li><strong>Ask questions instead of issuing verdicts.</strong> "Why did you choose X over Y here?" invites a conversation. "You should have used Y" closes one. The question might reveal context you didn't have — and even if it doesn't, the author arrives at the same conclusion without feeling accused.</li>
+  <li><strong>Explain the why, not just the what.</strong> "Can we move this logic into a service?" is weaker than "Can we move this logic into a service? Keeping it in the controller makes it harder to test in isolation, and we'd have to duplicate it if a cron job ever needs the same behaviour." The why teaches; the what just directs.</li>
+  <li><strong>Offer a suggestion, not just a critique.</strong> If you see a problem, show what you'd do instead — or at least the shape of it. "I'm not sure about this, but something like…" is far more useful than "this doesn't seem right."</li>
+  <li><strong>Praise good code explicitly.</strong> "This error handling is really clean — I'm going to steal this pattern" takes ten seconds to type and costs nothing. It anchors the author's confidence, it reinforces the pattern as a team standard, and it makes the critical comments land better when they come.</li>
+  <li><strong>Use "we" and "our" where honest.</strong> "Our convention is to keep this near the repository" is softer than "you've put this in the wrong place" without being less accurate.</li>
+</ul>
+
+<h3 id="phrasing-table">Harsh vs kind: the same point, two ways</h3>
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Harsh (but technically correct)</th>
+      <th>Kind — and still honest</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>"This is wrong. You need to handle the null case."</td>
+      <td>"This will throw if <code>user</code> is null — can we add a guard here or document that the caller guarantees it's non-null?"</td>
+    </tr>
+    <tr>
+      <td>"Why would you do it this way? This is needlessly complex."</td>
+      <td>"I'm finding this hard to follow — is there a simpler way to express this? I might be missing some context, happy to chat if helpful."</td>
+    </tr>
+    <tr>
+      <td>"This function is doing too much. Break it up."</td>
+      <td>"This function is handling both the validation and the persistence — splitting those responsibilities might make each piece easier to test independently. What do you think?"</td>
+    </tr>
+    <tr>
+      <td>"You clearly didn't test this."</td>
+      <td>"I didn't see a test for the empty-input case — is that intentional, or shall I open a follow-up ticket for it?"</td>
+    </tr>
+    <tr>
+      <td>"Use <code>const</code> here, not <code>let</code>."</td>
+      <td>"nit: <code>const</code> here since it's never reassigned — makes the intent clearer."</td>
+    </tr>
+    <tr>
+      <td>"This is a security hole."</td>
+      <td>"blocking: this input is user-supplied and goes straight into the query — that's an injection risk. Can we parameterise it before merging?"</td>
+    </tr>
+    <tr>
+      <td>"Wrong abstraction."</td>
+      <td>"I wonder if this abstraction is pulling in the right direction — it feels like it might make the next feature harder. Worth a quick sync?"</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>Notice what the "kind" column is not: soft, vague, or dishonest. The security issue is still flagged as a blocker. The null case still needs fixing. The function still needs splitting. Kindness here means: <em>specific, explained, and delivered as a person talking to another person, not a judge issuing a ruling.</em></p>
+
+<h2 id="nitpicks-and-blocking">Nitpicks, suggestions, and blockers — label them</h2>
+<p>One of the most practical things you can do for your review culture is <strong>label the severity of every comment</strong>. Without labels, the author has to guess whether each comment means "merge is blocked" or "just a thought". That guessing costs energy and often produces the wrong answer.</p>
+<p>A simple convention used by many teams (popularised as <a href="https://conventionalcomments.org">Conventional Comments</a>):</p>
+<ul>
+  <li><strong>nit:</strong> a minor style or preference point — fix it or don't, the author decides. "nit: trailing comma here matches the rest of the file."</li>
+  <li><strong>suggestion:</strong> something that would improve the code but isn't a blocker. "suggestion: could extract this into a helper — not required for this PR though."</li>
+  <li><strong>blocking:</strong> the PR should not merge until this is addressed. Reserve this for correctness bugs, security issues, and clear violations of team standards.</li>
+  <li><strong>question:</strong> you're genuinely asking, not implying a change is needed. "question: does this run on the background worker too, or only the web process?"</li>
+  <li><strong>praise:</strong> explicit, genuine positive feedback. Counts. Don't skip it.</li>
+</ul>
+<p>When all your blocking issues are resolved, <strong>approve with comments</strong>. This is a habit that matters. It means: "I trust you to handle the remaining nits; you don't need another round from me." It unblocks your colleague, it signals trust, and it keeps the review loop from becoming a bottleneck. The alternative — holding approval until every minor point is addressed — is one of the slow toxins in review culture.</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">The "approve with comments" habit</span><p>Once all blocking items are resolved, approve and let the author decide on the rest. Holding a PR hostage to nits teaches people that reviews are an obstacle, not a collaboration. If you <em>really</em> care about a non-blocking point, say so explicitly — "I do care about this one, but it's your call" — so the author has full information.</p></div>
+
+<h2 id="as-the-author">The author's side: receiving feedback without taking it personally</h2>
+<p>Being reviewed is its own skill, and most engineering culture writing focuses only on the reviewer. But the author's behaviour shapes review culture just as much.</p>
+<p><strong>Assume good intent by default.</strong> A blunt comment is almost always a busy person who wrote quickly, not someone trying to wound you. Before you read tone into a comment, ask whether there's a neutral or positive interpretation. Usually there is.</p>
+<p><strong>Respond to every comment.</strong> Even if you disagree. A ✅ or "done" on implemented feedback, and an explanation on anything you're pushing back on, closes the loop and shows the reviewer their time was valued. Silence reads as passive aggression whether you intend it that way or not.</p>
+<p><strong>Push back when you genuinely disagree — clearly and calmly.</strong> "I see the concern, but here's why I made this choice: [reason]. Happy to discuss if you still feel strongly." This is not the same as defending every decision reflexively. The goal is to have a real conversation, not to win. Sometimes the reviewer is right. Sometimes you are. Sometimes the right answer is "let's take this to the team."</p>
+<p><strong>Don't over-explain your own code in the PR description.</strong> If your code needs a wall of text to justify every decision, that's a signal to improve the code, the names, or the inline comments — not to write longer PR descriptions. The best PRs are self-evident with a good description of context and intent.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 640 480" role="img" aria-labelledby="dgm-quadrant">
+    <title id="dgm-quadrant">A 2x2 quadrant mapping review feedback quality. The ideal quadrant is Kind and Specific.</title>
+    <defs>
+      <marker id="qAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+
+    <!-- axes -->
+    <line class="dgm-line" x1="320" y1="40" x2="320" y2="440" stroke-width="1.5"/>
+    <line class="dgm-line" x1="40" y1="240" x2="600" y2="240" stroke-width="1.5"/>
+
+    <!-- axis arrows -->
+    <path class="dgm-flow" d="M320,440 L320,44" marker-end="url(#qAcc)"/>
+    <path class="dgm-flow" d="M40,240 L596,240" marker-end="url(#qAcc)"/>
+
+    <!-- axis labels -->
+    <text class="dgm-t-muted dgm-t-mono" x="320" y="28" text-anchor="middle" font-size="12">KIND</text>
+    <text class="dgm-t-muted dgm-t-mono" x="320" y="462" text-anchor="middle" font-size="12">UNKIND</text>
+    <text class="dgm-t-muted dgm-t-mono" x="26" y="244" text-anchor="middle" font-size="12" transform="rotate(-90,26,244)">VAGUE</text>
+    <text class="dgm-t-muted dgm-t-mono" x="614" y="244" text-anchor="middle" font-size="12" transform="rotate(-90,614,244)">SPECIFIC</text>
+
+    <!-- Q1: Kind + Vague (top-left) — highlighted but not goal -->
+    <rect class="dgm-surface" x="44" y="44" width="270" height="190" rx="12" opacity="0.6"/>
+    <text x="179" y="104" text-anchor="middle" font-size="15" font-weight="600">Kind + Vague</text>
+    <text class="dgm-t-muted" x="179" y="126" text-anchor="middle" font-size="12">Feels nice but doesn't</text>
+    <text class="dgm-t-muted" x="179" y="144" text-anchor="middle" font-size="12">help you improve.</text>
+    <text class="dgm-t-muted" x="179" y="168" text-anchor="middle" font-size="12">"Looks good overall!"</text>
+
+    <!-- Q2: Kind + Specific (top-right) — the GOAL, highlighted with accent -->
+    <rect class="dgm-core" x="326" y="44" width="270" height="190" rx="12" stroke-width="2"/>
+    <text class="dgm-t-strong" x="461" y="90" text-anchor="middle" font-size="16">Kind + Specific</text>
+    <text class="dgm-t-accent" x="461" y="112" text-anchor="middle" font-size="13">✦ The goal ✦</text>
+    <text x="461" y="138" text-anchor="middle" font-size="12">Clear, actionable, respectful.</text>
+    <text x="461" y="158" text-anchor="middle" font-size="12">Teaches and ships faster.</text>
+    <text x="461" y="180" text-anchor="middle" font-size="12">"nit: extract this helper —</text>
+    <text x="461" y="198" text-anchor="middle" font-size="12">easier to test in isolation."</text>
+
+    <!-- Q3: Unkind + Vague (bottom-left) -->
+    <rect class="dgm-surface" x="44" y="246" width="270" height="190" rx="12" opacity="0.6"/>
+    <text x="179" y="306" text-anchor="middle" font-size="15" font-weight="600">Unkind + Vague</text>
+    <text class="dgm-t-muted" x="179" y="328" text-anchor="middle" font-size="12">The most damaging.</text>
+    <text class="dgm-t-muted" x="179" y="348" text-anchor="middle" font-size="12">Demoralises without guiding.</text>
+    <text class="dgm-t-muted" x="179" y="372" text-anchor="middle" font-size="12">"This is a mess."</text>
+
+    <!-- Q4: Unkind + Specific (bottom-right) -->
+    <rect class="dgm-surface" x="326" y="246" width="270" height="190" rx="12" opacity="0.6"/>
+    <text x="461" y="306" text-anchor="middle" font-size="15" font-weight="600">Unkind + Specific</text>
+    <text class="dgm-t-muted" x="461" y="328" text-anchor="middle" font-size="12">Technically useful but</text>
+    <text class="dgm-t-muted" x="461" y="348" text-anchor="middle" font-size="12">erodes trust over time.</text>
+    <text class="dgm-t-muted" x="461" y="372" text-anchor="middle" font-size="12">"You should have used X,</text>
+    <text class="dgm-t-muted" x="461" y="390" text-anchor="middle" font-size="12">this is obviously wrong."</text>
+  </svg>
+  <figcaption>The 2×2 of review feedback. <strong>Kind + Specific</strong> (top-right, highlighted) is the goal: feedback that is both honest and respectful. Kind + Vague feels safe but teaches nothing. Unkind + Specific works short-term but erodes trust. Unkind + Vague — the worst quadrant — demoralises without guiding.</figcaption>
+</figure>
+
+<h2 id="speed-and-size">Review speed and PR size — two levers with outsized impact</h2>
+<p>The quality of a code review is strongly predicted by two things that have nothing to do with the reviewer's skill: <strong>how quickly</strong> they review and <strong>how big</strong> the PR is.</p>
+<p><strong>Review promptly.</strong> A pull request waiting for review is a person waiting to move on. When reviews take days, work batches up — engineers open the next task to stay productive, context switches multiply, and by the time the review comes back the author has forgotten what they were thinking. A good rule of thumb: acknowledge a PR within a few hours of being tagged (even if just "I'll get to this by end of day"), and complete the review within one business day whenever feasible.</p>
+<p><strong>Smaller PRs get dramatically better reviews.</strong> This is well-documented and also just obvious in practice. A 100-line PR gets close attention on every line. A 1,000-line PR gets rubber-stamped, skimmed, or reviewed so slowly it becomes a source of conflict. The discipline of keeping PRs small — "one logical change per PR" is a decent heuristic — pays back more than almost any other review hygiene improvement. It also makes each PR <em>easier</em> to write, because you have to think clearly about what one change means.</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>PR size (lines changed)</th>
+      <th>Typical review quality</th>
+      <th>Review time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&lt; 200 lines</td>
+      <td>High — reviewer can hold it in working memory</td>
+      <td>15–45 min</td>
+    </tr>
+    <tr>
+      <td>200–500 lines</td>
+      <td>Medium — fatigue sets in on subtle issues</td>
+      <td>45–90 min</td>
+    </tr>
+    <tr>
+      <td>500–1,000 lines</td>
+      <td>Dropping — reviewers skim or split into sessions</td>
+      <td>Hours to a day</td>
+    </tr>
+    <tr>
+      <td>&gt; 1,000 lines</td>
+      <td>Mostly theatre — critical issues are regularly missed</td>
+      <td>Days (or never fully)</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>If a feature genuinely requires thousands of lines, consider <strong>stacked PRs</strong>: a series of small, self-contained changes that build on each other, each reviewable on its own merits. The overhead of opening more PRs is almost always worth it.</p>
+
+<h2 id="by-team-size">How review culture differs by team size</h2>
+<p>The right approach to code review changes substantially as a team grows. What works for three engineers often actively breaks down at thirty, and enterprise-scale teams need different tools entirely.</p>
+<p><strong>Solo or early startup (1–5 engineers).</strong> At this scale there may be no reviews at all, which is sometimes fine and sometimes catastrophic depending on the stakes. When you do review, the relationship is usually strong enough that blunt feedback lands well — but it's also the stage where bad habits get cemented before anyone thinks to name them. Establish the habit of labelling comment severity early; it costs nothing and becomes invaluable later.</p>
+<p><strong>Small growing team (5–20 engineers).</strong> This is where review culture is <em>made</em>. The team is large enough that the "we all know each other" shorthand starts to fade, but small enough that norms can still be set by a few influential voices. A single senior engineer who models kind, specific, labelled reviews will shift the whole team's culture within a few months. This is also when a <strong>team review guide</strong> — even one page — pays dividends: what's a blocker, what's a nit, how long should a review take.</p>
+<p><strong>Mid-size team (20–100 engineers).</strong> Reviews are now happening across squads who may barely know each other. The work of building trust that happens naturally in small teams has to be done deliberately. Cross-team reviews become a major source of friction if norms aren't shared. Code owners, review rotation, and lightweight review checklists help. So does making review quality a topic in engineering retrospectives — not just "did we ship fast" but "did we review well".</p>
+<p><strong>Large or enterprise team (100+ engineers).</strong> At this scale, review is as much a governance and compliance function as a quality function. Tooling matters enormously: automated checks, required reviewers, review SLAs, and metrics on review cycle time. The human review slot is precious and should be reserved for what only a human can do — design judgment, domain knowledge, cross-team impact. Anything a linter or static analyser can catch should be caught before the PR is opened, not in a comment thread.</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Key takeaways</h3>
+<ul>
+  <li><strong>Code review is culture first, bug-catching second.</strong> Every comment teaches, and patterns of comments build or erode psychological safety over months.</li>
+  <li><strong>Focus review energy on what matters:</strong> correctness, design, readability, tests, and security. Let your linter handle formatting.</li>
+  <li><strong>Kind + Specific is the goal.</strong> Explain the why, ask questions instead of issuing verdicts, and praise good code explicitly.</li>
+  <li><strong>Label your comments:</strong> nit / suggestion / blocking / question / praise. It removes ambiguity and respects the author's time.</li>
+  <li><strong>Approve with comments</strong> once blockers are resolved. Don't hold a PR hostage to nitpicks.</li>
+  <li><strong>As the author:</strong> assume good intent, respond to every comment, push back calmly when you disagree, and don't over-explain in the PR description.</li>
+  <li><strong>Smaller PRs, faster reviews.</strong> Under 200 lines gets the best attention. Stacked PRs handle large features.</li>
+  <li><strong>Review norms need to be deliberate</strong> — especially as teams grow past 10–20 people. Write them down, revisit them in retros.</li>
+</ul>
+</div>
+<p>If this resonated, the next post in this series goes wider — from how you review code to how you show up as an engineer every day: <a href="/blog/culture/how-to-be-a-kind-engineer">Kind Engineering</a>.</p>4:["$","div",null,{"className":"blog-article__main","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$L9",null,{"href":"/en/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$L9",null,{"href":"/en/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Engineering Culture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Kind & Effective Engineering",["$","span",null,{"aria-hidden":"true","children":" · "}],"Part 1 of 5"]}],["$","h1",null,{"className":"blog-article__title","children":"The Art of Code Review: How to Critique Code Without Crushing People"}],["$","p",null,{"className":"blog-article__summary","children":"Code review is where team culture is made or broken. A practical guide to reviewing code so it ships better AND the author comes back stronger — concrete phrasing, a reviewer's checklist, and the habits that quietly turn reviews toxic."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"By Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-05-29","children":"May 29, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"14 min read"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Engineering Culture",{"children":"Engineering Culture"}],["$","li","Code Review",{"children":"Code Review"}],["$","li","Pull Requests",{"children":"Pull Requests"}],["$","li","Feedback",{"children":"Feedback"}],["$","li","Team Collaboration",{"children":"Team Collaboration"}],["$","li","Mentorship",{"children":"Mentorship"}]]}]]}],["$","$La",null,{"html":"$b"}],"$Lc","$Ld","$Le"]}]
+5:["$","aside",null,{"className":"blog-article__toc","children":["$","$Lf",null,{"label":"On this page"}]}]
+6:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/b0ec84467ea2406e.css","precedence":"next"}]
+7:["$","script","script-0",{"src":"/_next/static/chunks/192c27563089a763.js","async":true}]
+8:["$","$L10",null,{"children":["$","$11",null,{"name":"Next.MetadataOutlet","children":"$@12"}]}]
+c:["$","section",null,{"className":"blog-faq","aria-labelledby":"blog-faq-heading","children":[["$","h2",null,{"id":"blog-faq-heading","className":"blog-faq__heading","children":"Frequently asked questions"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How long should a code review take?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"For a well-scoped PR under 200 lines, plan on 15–45 minutes of focused attention. Acknowledging a review request within a few hours and completing it within one business day is a healthy target. Reviews that drag past 48 hours become a bottleneck that slows the whole team — timeliness is part of review quality."}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What should I look for in a code review?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Focus on <strong>correctness</strong> (will this work in production, including edge cases?), <strong>design</strong> (does it fit the architecture cleanly?), <strong>readability</strong> (will a teammate understand this in six months?), <strong>tests</strong> (are they meaningful and covering the important cases?), and <strong>security</strong> (is user input validated, any injection risk?). Skip formatting issues that your linter already catches — that attention is better spent on what only a human can judge."}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How do I give code review feedback without sounding harsh?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"The most effective technique is to ask questions instead of issuing verdicts, and to always explain <em>why</em> something matters. \"Why did you choose X here?\" invites dialogue; \"you should use Y\" closes it. Labelling comment severity (nit / suggestion / blocking) also helps — it separates \"this is a blocker\" from \"this is a preference\", so the author doesn't have to guess."}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Should I block a pull request over style nitpicks?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"No. Blocking a PR means a correctness bug, a security issue, or a clear violation of agreed team standards — things that would cause real problems if merged. Style preferences and minor formatting points should be labelled as <strong>nit</strong> and left to the author's discretion. Once all blocking comments are resolved, approve with comments and let the author handle the rest."}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How big should a pull request be?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Under 200 changed lines is the sweet spot for high-quality reviews. At this size, a reviewer can hold the change in working memory and spot subtle issues. PRs over 500 lines see sharply declining review quality — reviewers skim, fatigue sets in, and critical issues get missed. For large features, use stacked PRs: a series of small, self-contained changes that each tell one clear story."}}]]}]]}]]}]
+d:["$","nav",null,{"className":"blog-series-nav","aria-label":"Kind & Effective Engineering","children":[["$","span",null,{}],["$","$L9",null,{"href":"/en/blog/culture/how-to-be-a-kind-engineer","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Next up"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Kind Engineering: Why Being Kind Makes You a Better Engineer"}]]}]]}]
+e:["$","footer",null,{"className":"blog-article__footer","children":["$","$L9",null,{"href":"/en/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Back to Engineering Culture"]}]}]
+12:null

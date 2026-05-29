@@ -1,0 +1,195 @@
+1:"$Sreact.fragment"
+9:I[77105,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+a:I[63047,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+f:I[35757,["/_next/static/chunks/b1dacca048b168d9.js","/_next/static/chunks/adda4f8d284f61f5.js","/_next/static/chunks/b9004a9a2c3ef441.js","/_next/static/chunks/fc0560b29860090b.js","/_next/static/chunks/c1c09076be4c9467.js","/_next/static/chunks/920b11be92c50b6e.js","/_next/static/chunks/192c27563089a763.js"],"default"]
+10:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/0b082245f106d665.js"],"OutletBoundary"]
+11:"$Sreact.suspense"
+:HL["/_next/static/chunks/b0ec84467ea2406e.css","style"]
+2:T4ca,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/en/blog/culture/mentoring-engineers#article","headline":"Mentoring Engineers: How to Grow Juniors into Seniors","description":"Great teams are grown, not just hired. From leading engineering teams: how to mentor so people level up fast — pairing, code review as teaching, the right-sized stretch, and the mindset shifts that turn a junior into someone you'd trust with anything.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/blog/culture/mentoring-engineers","mainEntityOfPage":"https://nguyenlephong.github.io/en/blog/culture/mentoring-engineers","datePublished":"2026-05-29","dateModified":"2026-05-29","keywords":"Engineering Culture, Mentorship, Career Growth, Leadership, Team Collaboration, Code Review","articleSection":"Engineering Culture","isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/en/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:T1093,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/en/blog/culture/mentoring-engineers#faq","mainEntity":[{"@type":"Question","name":"How do I mentor a junior developer?","acceptedAnswer":{"@type":"Answer","text":"The most effective approach combines three things: give them tasks that are just beyond their current ability (the stretch zone), stay available to unblock them without solving problems for them, and invest in deliberate teaching moments during pairing and code review. The key is to let them drive — put the keyboard in front of them, ask guiding questions rather than handing over answers, and narrate your own reasoning when you make decisions together. Scheduled time matters too: a regular one-on-one with a genuine mentoring agenda, not just status, makes the difference between mentoring that actually happens and mentoring that gets crowded out by urgency."}},{"@type":"Question","name":"What's the difference between mentoring and managing?","acceptedAnswer":{"@type":"Answer","text":"Managing is primarily about outcomes — ensuring the work gets done well, the team is aligned, and the organisation's goals are met. Mentoring is about the person's growth — helping them develop skills, judgement, and ownership that they'll carry forward in their career. In practice they overlap heavily: the best managers mentor, and the best mentors understand the organisational context. But the distinction matters when they come into tension. If you're in a crunch and you solve someone's problem yourself to ship faster, you've made a management call at the cost of a mentoring opportunity. Good mentors notice that trade-off and compensate for it when the pressure is off."}},{"@type":"Question","name":"How do I help an engineer get promoted to senior?","acceptedAnswer":{"@type":"Answer","text":"Senior is less about technical skill than most people think — by mid-level, the technical bar is usually close enough. What distinguishes a senior engineer is scope, judgement, and influence. To help someone get there: give them ownership of a real problem (not just a sequence of tickets), put them in rooms where decisions are made, let them mentor someone more junior (teaching forces the articulation of instincts that define senior thinking), and give them opportunities to drive technical decisions beyond their immediate work. The growth happens in those experiences, not in completing more tickets. Make sure the career ladder at your company is explicit about what senior actually means — vague criteria make the path invisible."}},{"@type":"Question","name":"How much time should mentoring take?","acceptedAnswer":{"@type":"Answer","text":"If you're doing it properly, roughly two to three hours per mentee per week. That typically breaks down into: one focused one-on-one (30–45 minutes), intentional code review that goes beyond approving the diff (30–60 minutes across the week), and one or two pairing sessions or ad-hoc conversations (30–60 minutes total). It's a real investment — that's the point. If mentoring is costing you nothing, you're probably not doing it in any meaningful sense. The leverage argument is important here: two to three hours a week that substantially accelerates one engineer's growth returns far more than those hours spent on your own code."}},{"@type":"Question","name":"How do I mentor without doing the work for them?","acceptedAnswer":{"@type":"Answer","text":"The rule that helps most: your first response to a problem they bring you should always be a question, not a solution. Ask what they've already tried, what the error message says, whether there's a similar pattern elsewhere in the codebase. Wait thirty seconds before saying anything — often they'll answer their own question in that time. When they're stuck in a pairing session, resist the urge to take the keyboard. Instead, ask: \"What would you check next?\" The discomfort of not jumping in is the price of actually teaching something. Reserve direct answers for situations where they've genuinely exhausted their approaches and the blocker is preventing everything else — and even then, explain the reasoning rather than just providing the solution."}}]}0:{"buildId":"hgOgYV9IopzBeg68k9UUI","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--violet","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/en/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Engineering Culture\",\"item\":\"https://nguyenlephong.github.io/en/blog/culture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Mentoring Engineers: How to Grow Juniors into Seniors\",\"item\":\"https://nguyenlephong.github.io/en/blog/culture/mentoring-engineers\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4","$L5"]}],["$L6","$L7"],"$L8"]}],"loading":null,"isPartial":false}
+b:T5574,<p>Think about two managers you've had — one who made you better, and one who didn't. The one who didn't probably kept you busy: tickets assigned, reviews signed off, standups attended. The one who <em>did</em> make you better probably did something subtler. They gave you a problem that was slightly too big, stayed close enough to catch you if you fell, and then watched while you figured it out. That's the whole craft of mentoring, right there.</p>
+<p>I've led engineering teams ranging from eight to eleven people across startups and scale-ups, and the difference between teams that grew quickly and teams that plateaued almost always came down to one thing: whether the senior people were investing in the junior ones. Not babysitting them. Not doing their work. Investing — with time, with trust, with carefully designed difficulty.</p>
+<p>This piece is everything I wish someone had told me before my first attempt at mentoring an engineer. It's also, honestly, a record of the mistakes I made and had to unlearn. If you're a senior engineer who's been handed someone to mentor, or a tech lead building out a team, I hope it saves you some of those lessons.</p>
+
+<h2 id="why-mentor">Why mentoring is leverage</h2>
+<p>There's a temptation — especially if you came up as an individual contributor — to think of mentoring as a cost. Time you spend explaining a concept is time you're not writing code. But this framing has the maths exactly backwards.</p>
+<p>If you have eight engineers on your team, your output as a team is eight people's worth of work. The moment you help someone who was operating at 60% capacity get to 80%, you've added 20% of a person to your team's output — without hiring, without onboarding overhead, without the three months it takes a new hire to become effective. Multiply that across a team and across a year, and mentoring is among the highest-leverage investments you can make.</p>
+<p>There's a ceiling-raising effect too. The best teams I've been part of weren't the ones with the most star players — they were the ones where the <em>floor</em> was highest. When every engineer on the team can be trusted to handle a hard problem independently, you can move much faster than a team that funnels everything through one or two senior people. Mentoring raises that floor.</p>
+<p>And there's the retention angle, which matters more than people admit. Engineers don't quit jobs — they quit stagnation. The number one reason I've heard from engineers leaving teams is some version of “I stopped growing.” A culture where senior people invest in junior ones is a culture where people stay, and where your institutional knowledge doesn't walk out the door every eighteen months.</p>
+
+<h2 id="meet-them-where-they-are">Meet people where they are</h2>
+<p>The single biggest mentoring mistake I see — and made myself early on — is pitching the challenge at the wrong level. Give someone a task they can do in their sleep and they're bored. Give them something genuinely beyond their reach and they flounder. The magic happens in a band between the two.</p>
+<p>Developmental psychologist Lev Vygotsky called this the <strong>zone of proximal development</strong>. The idea is simple: there are things you can do independently, things you can't do even with help, and — between those — things you <em>almost</em> can do, that you'd be able to do with the right support. That middle zone is where learning actually happens. It's where stretch without panic lives.</p>
+<p>In practice, this means finding the task that is one step past what they've done before, not ten steps. A junior who has handled simple API endpoints is ready to own a moderate-complexity feature, not a full system redesign. A mid-level engineer who's delivered several features solo is ready to lead one that involves coordination across teams, not to become the tech lead overnight.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 640 300" role="img" aria-labelledby="dgm-zpd">
+    <title id="dgm-zpd">Three nested zones: comfort in the centre, stretch/learning in the middle, and panic at the outer edge. The stretch zone is highlighted as the learning sweet spot.</title>
+    <defs>
+      <marker id="zpdAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <!-- outer: panic -->
+    <ellipse cx="320" cy="150" rx="290" ry="130" class="dgm-surface" stroke-width="1.5"/>
+    <!-- middle: stretch — highlighted -->
+    <ellipse cx="320" cy="150" rx="200" ry="92" class="dgm-port" stroke-width="2"/>
+    <!-- inner: comfort -->
+    <ellipse cx="320" cy="150" rx="108" ry="50" class="dgm-core" stroke-width="2"/>
+
+    <text class="dgm-t-strong" x="320" y="146" text-anchor="middle" font-size="15">Comfort zone</text>
+    <text class="dgm-t-muted" x="320" y="165" text-anchor="middle" font-size="12">already mastered</text>
+
+    <!-- stretch label: placed in the visible ring -->
+    <text class="dgm-t-accent" x="320" y="105" text-anchor="middle" font-size="14">Stretch zone (learning sweet spot)</text>
+    <text class="dgm-t-muted" x="320" y="122" text-anchor="middle" font-size="11">challenge just past current ability</text>
+
+    <!-- panic label -->
+    <text class="dgm-t-muted dgm-t-mono" x="320" y="261" text-anchor="middle" font-size="11">PANIC ZONE — too far, too fast</text>
+
+    <!-- arrow pointing to the stretch ring -->
+    <path class="dgm-flow" d="M460,78 Q 430,85 395,100" marker-end="url(#zpdAcc)"/>
+    <text class="dgm-t-accent" x="480" y="74" text-anchor="middle" font-size="12">← your target</text>
+  </svg>
+  <figcaption>The <strong>stretch zone</strong> — the ring between comfort and panic — is where growth happens. Good mentoring keeps the engineer in that ring: challenged, but not drowning.</figcaption>
+</figure>
+
+<p>How do you know where someone's zone is? You ask, and you watch. Ask them which parts of a task feel clear and which feel murky. Watch where they slow down in a pairing session. Notice what kind of questions they ask (big architectural ones usually signal they're near the edge; small syntax ones usually don't). You'll calibrate quickly if you're paying attention.</p>
+
+<h2 id="ways-to-teach">Concrete teaching tools</h2>
+<p>There are a handful of techniques I come back to over and over. None of them are exotic.</p>
+<h3 id="pairing">Pair programming, done right</h3>
+<p>Pairing is the fastest way to transfer tacit knowledge — the kind that doesn't live in docs, the instincts about where a problem usually hides or why that pattern causes pain later. But pairing only teaches when the <em>junior</em> is driving, not the senior. If you sit down and start typing while they watch, you've demonstrated competence. You have not helped them build any.</p>
+<p>The version of pairing that actually works: put the keyboard in front of them, sit beside them, and narrate what you're noticing. "I'd look at the edge cases here first — what happens if this list is empty?" Wait. Let them think. Let them be wrong. The discomfort of not jumping in is the cost of admission for actually teaching something.</p>
+<h3 id="code-review-as-teaching">Code review as a teaching channel</h3>
+<p>Most code review is focused on the code. Good mentoring turns it into a conversation about <em>thinking</em>. Instead of just flagging that a function is too long, explain why — what becomes hard to understand, what breaks first as the codebase grows. I wrote more about the mechanics of doing this kindly and effectively in <a href="/blog/culture/how-to-review-code-kindly">How to Review Code Kindly</a>, but the mentoring angle is worth adding here: reviews are one of the few places where you can catch someone's reasoning and redirect it before it becomes habit.</p>
+<p>One thing I learned to do: ask questions in reviews instead of issuing corrections. "What would happen if two requests hit this simultaneously?" is more useful than "this isn't thread-safe." It invites them to think through the problem; it doesn't just hand them the answer.</p>
+<h3 id="reasoning-aloud">Explain your reasoning out loud</h3>
+<p>Senior engineers have huge amounts of compressed, invisible knowledge — they've just forgotten they have it. When you're making a decision, narrate it. "I'm going with a simple in-memory map here rather than reaching for Redis, because at this scale the extra complexity isn't worth it yet." That sentence, which takes three seconds to say, can take a junior engineer months of trial and error to learn on their own.</p>
+<p>You don't need to narrate everything. But making your reasoning visible — especially at decision points where the answer isn't obvious — is one of the highest-yield things you can do for someone learning the craft.</p>
+<h3 id="stretch-tasks">Stretch tasks with a safety net</h3>
+<p>The most effective teaching move I know is assigning something slightly too big, then staying close. Not hovering — they need the space to struggle — but available. Check in at natural milestones. Let them come to you with blockers rather than anticipating every one. The goal is that they feel independent even though the safety net is there.</p>
+<p>One important guardrail: stretch tasks need a real deadline with real stakes, but not stakes so high that failure is catastrophic. The junior engineer who burns out an entire on-call weekend on a task they weren't ready for will be more risk-averse, not more capable. Match the size of the stretch to how much the system can tolerate going wrong.</p>
+<h3 id="dont-solve-it">Don't solve it for them</h3>
+<p>This is the hardest one. When someone is stuck and you know the answer, it takes genuine discipline not to give it. But the moment you do, you've switched from teaching to doing. The next time they hit a similar problem, they'll come back to you rather than work through it themselves.</p>
+<p>What works instead: ask the right guiding question. "What does the error message actually say?" "Have you looked at how we handled the similar case in the payments module?" The goal is to give them the next step in their own thinking, not the answer.</p>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">The thirty-second rule</span><p>When someone brings you a problem, wait thirty seconds before saying anything. Often they'll answer their own question in that time. If they don't, your first response should be a question, not a solution.</p></div>
+
+<h2 id="autonomy-ladder">The autonomy ladder</h2>
+<p>One of the clearest mental models I've found for mentoring is thinking about autonomy as a ladder. Where you are on the ladder determines how much context you need to give, how closely you check in, and what kinds of tasks you assign. The goal of mentoring is always to move someone one rung up — not to pull them to the top overnight, but to keep them moving.</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Rung</th><th>How they operate</th><th>What your involvement looks like</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1 — Directed</th>
+      <td>Needs step-by-step instructions; uncertain about most decisions. Asks before acting on almost everything.</td>
+      <td>You define the task in detail, review every PR closely, check in daily, and narrate your reasoning constantly.</td>
+    </tr>
+    <tr>
+      <th>2 — Guided</th>
+      <td>Can handle familiar work independently; needs input on new situations. Brings blockers to you rather than guessing.</td>
+      <td>You set clear goals, define the scope, and review key decisions. You check in every few days, not daily.</td>
+    </tr>
+    <tr>
+      <th>3 — Collaborative</th>
+      <td>Proposes their own approach, thinks through trade-offs, and flags risks proactively. Brings you options, not just problems.</td>
+      <td>You act more as a sounding board than a guide. You review the approach before execution but trust the execution.</td>
+    </tr>
+    <tr>
+      <th>4 — Delegated</th>
+      <td>Takes full ownership of a problem: scoping, execution, stakeholder communication. Escalates only when genuinely needed.</td>
+      <td>You check in at milestones. You're available when they want a second opinion, but they drive entirely.</td>
+    </tr>
+    <tr>
+      <th>5 — Trusted</th>
+      <td>You'd hand them any problem on the team, including the ones you're not sure how to solve yourself.</td>
+      <td>Peer relationship. You learn from each other. Your role is to give them scope and get out of the way.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Most new graduates start at rung one. Most engineers hired with two or three years of experience land at rung two. The journey from there depends heavily on how deliberately their manager and team invest in moving them up.</p>
+<p>The most common mistake I see is treating someone as though they're on a lower rung than they've earned. If someone is functioning at rung three but you're still managing them at rung one — reviewing every PR in detail, checking in daily — you're slowing them down, not helping them. Trust is something you extend progressively; it's not a reward you hand out when someone has definitively "proven themselves."</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">On trust</span><p>Trust is extended in advance of certainty — that's what makes it trust. If you wait until someone has a perfect track record before trusting them with something hard, you've denied them the conditions needed to build that track record in the first place.</p></div>
+
+<h2 id="growing-seniors">Growing seniors, not just closing tickets</h2>
+<p>A lot of mentoring attention goes to juniors — and rightly so, because the delta from junior to mid-level is steep and the need for support is obvious. But mid-level engineers who plateau into ticket-closers and never make it to senior are one of the most common and most preventable losses on an engineering team.</p>
+<p>The gap between mid-level and senior is less about technical skill than most people think. Technically strong mid-level engineers stall out because they haven't had the opportunity to own something large enough to develop the judgement that comes with scope.</p>
+<p>Growing a senior means giving them:</p>
+<ul>
+  <li><strong>Scope, not just tasks.</strong> A mid-level engineer given a sequence of tickets will complete those tickets and nothing else. Give them a problem — an area of the system to own, a capability to build — and they have to develop the judgement to break it down, sequence it, and make trade-offs. That judgement is what defines senior.</li>
+  <li><strong>Visible ownership.</strong> Put them in the room where decisions about their area are made. Let them present their approach to stakeholders. Let them defend it when it's challenged. This is uncomfortable at first and invaluable over time.</li>
+  <li><strong>Mentoring responsibility.</strong> Pairing a mid-level engineer with a junior to mentor is one of the best accelerants I know for their growth. Teaching requires understanding at a different level than doing. It also forces them to articulate judgements they've been making intuitively, which is exactly the step from mid-level to senior.</li>
+  <li><strong>Technical influence beyond their immediate work.</strong> Getting them to drive a standards decision, write an ADR, or lead a technical postmortem — all of these build the breadth of influence that a senior engineer needs to have.</li>
+</ul>
+
+<h2 id="mistakes">Mentoring mistakes worth naming</h2>
+<p>I've made most of these. The ones I haven't made personally, I've watched other good engineers make without realising it.</p>
+<ul>
+  <li><strong>Rescuing too early.</strong> Jumping in the moment someone struggles feels helpful. It isn't. Productive struggle is where the growth lives. Rescue is for when someone has been stuck for too long with no path forward — not for the first sign of difficulty.</li>
+  <li><strong>Vague feedback.</strong> "This could be cleaner" tells someone nothing. "This function is doing three things — naming it after any one of them would be misleading, and it'll be hard to test" is feedback they can act on. Specificity is kindness.</li>
+  <li><strong>Delegating only the boring work.</strong> If the tasks you hand to junior engineers are always the lowest-stakes, lowest-visibility, most mechanical work, you are keeping the interesting learning for yourself and giving them a career of drudgery. They notice. They leave. The stretch tasks have to include the good stuff too.</li>
+  <li><strong>Not actually investing time.</strong> "I'm available for questions" is not mentoring. Mentoring requires scheduled, protected time — a regular one-on-one with a mentoring agenda, not just status updates; intentional code review; deliberate pairing sessions. If you're doing it right, it costs two to three hours a week. If it's costing you nothing, you probably aren't doing it.</li>
+  <li><strong>Making it about you.</strong> The goal is their growth, not your satisfaction at having a thoughtful mentee. Sometimes the right move for them involves opportunities on another team, or feedback that your codebase has problems that are making their learning harder. Good mentors put the mentee first.</li>
+</ul>
+
+<h2 id="by-company-size">How mentoring works at different scales</h2>
+<p>The core principles don't change with company size, but the infrastructure around them does enormously.</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Company stage</th><th>How mentoring typically works</th><th>Watch out for</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Startup (&lt;30 eng)</th>
+      <td>Informal and relationship-driven. Mentoring happens in the flow of work — pairing, review, and daily proximity. No formal program, but often very intense because the work itself is a stretch task.</td>
+      <td>Senior engineers too buried in output to invest in others. Mentoring gets crowded out by urgency.</td>
+    </tr>
+    <tr>
+      <th>Scale-up (30–150 eng)</th>
+      <td>The company is large enough to have career ladders but often hasn't built formal mentoring infrastructure yet. Mentoring quality varies wildly by team. Some seniors are excellent; others have never thought about it.</td>
+      <td>Inconsistent outcomes. A junior on one team grows fast; a junior on another team stalls for two years. Equity becomes a real issue.</td>
+    </tr>
+    <tr>
+      <th>Enterprise (150+ eng)</th>
+      <td>Formal programs: mentorship pairings, structured career frameworks, learning budgets, dedicated time allocations. More process, which is sometimes helpful and sometimes paperwork that crowds out the actual relationship.</td>
+      <td>Process substituting for genuine investment. A mentorship pairing on paper that amounts to a monthly coffee and no real challenge.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>At one startup I was part of, there was no formal mentoring program, but the three seniors on the team had an unspoken agreement: every junior engineer would be the primary owner of at least one significant feature within their first six months. The features were scoped to be achievable with support, not trivial. The seniors would pair on the tricky parts and review everything closely, but the junior drove. By the end of a year, those junior engineers were mid-levels in everything but title.</p>
+<p>At a larger company I joined later, there was a very sophisticated mentoring program — official pairings, quarterly check-ins, a shared document template for goals. And it mostly didn't work, because the document template became the mentoring. Nobody was tracking whether the junior engineers were actually getting better work or just better paperwork. The lesson I took from it: the relationship and the deliberate challenge are what matters. Everything else is scaffolding.</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Key takeaways</h3>
+<ul>
+  <li><strong>Mentoring is leverage.</strong> Growing one engineer's capability has compounding returns on team output and retention — far more than the hours it costs.</li>
+  <li><strong>The stretch zone is where learning lives.</strong> The task should be one step past their current ability, not ten. Too easy breeds boredom; too hard breeds paralysis.</li>
+  <li><strong>Teaching tools that work:</strong> junior-drives pairing, questions-not-corrections in code review, narrating your reasoning aloud, stretch tasks with safety nets, and resisting the urge to solve it for them.</li>
+  <li><strong>The autonomy ladder</strong> gives you a shared language for where someone is and where they're going. Extend trust one rung ahead of where you're certain.</li>
+  <li><strong>Mid-to-senior growth</strong> happens through scope, ownership, mentoring others, and technical influence — not just more difficult tickets.</li>
+  <li><strong>Common traps:</strong> rescuing too early, vague feedback, delegating only the boring work, and not investing real time.</li>
+  <li><strong>The relationship is the program.</strong> Formal structures help at scale, but they're scaffolding. The actual work is the deliberate challenge, the honest feedback, and the trust extended in advance of certainty.</li>
+</ul>
+</div>
+
+<p>This is the second piece in a small series on engineering culture. If you haven't already, <a href="/blog/culture/how-to-review-code-kindly">part one on reviewing code kindly</a> covers the mechanics of giving feedback in a way that teaches without demoralising — which is the same skill, applied at the PR level. More writing on culture, hiring, and how teams actually work is on the way.</p>4:["$","div",null,{"className":"blog-article__main","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$L9",null,{"href":"/en/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$L9",null,{"href":"/en/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Engineering Culture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Kind & Effective Engineering",["$","span",null,{"aria-hidden":"true","children":" · "}],"Part 5 of 5"]}],["$","h1",null,{"className":"blog-article__title","children":"Mentoring Engineers: How to Grow Juniors into Seniors"}],["$","p",null,{"className":"blog-article__summary","children":"Great teams are grown, not just hired. From leading engineering teams: how to mentor so people level up fast — pairing, code review as teaching, the right-sized stretch, and the mindset shifts that turn a junior into someone you'd trust with anything."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"By Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-05-29","children":"May 29, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"14 min read"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Engineering Culture",{"children":"Engineering Culture"}],["$","li","Mentorship",{"children":"Mentorship"}],["$","li","Career Growth",{"children":"Career Growth"}],["$","li","Leadership",{"children":"Leadership"}],["$","li","Team Collaboration",{"children":"Team Collaboration"}],["$","li","Code Review",{"children":"Code Review"}]]}]]}],["$","$La",null,{"html":"$b"}],"$Lc","$Ld","$Le"]}]
+5:["$","aside",null,{"className":"blog-article__toc","children":["$","$Lf",null,{"label":"On this page"}]}]
+6:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/b0ec84467ea2406e.css","precedence":"next"}]
+7:["$","script","script-0",{"src":"/_next/static/chunks/192c27563089a763.js","async":true}]
+8:["$","$L10",null,{"children":["$","$11",null,{"name":"Next.MetadataOutlet","children":"$@12"}]}]
+c:["$","section",null,{"className":"blog-faq","aria-labelledby":"blog-faq-heading","children":[["$","h2",null,{"id":"blog-faq-heading","className":"blog-faq__heading","children":"Frequently asked questions"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How do I mentor a junior developer?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"The most effective approach combines three things: give them tasks that are just beyond their current ability (the stretch zone), stay available to unblock them without solving problems for them, and invest in deliberate teaching moments during pairing and code review. The key is to let them drive — put the keyboard in front of them, ask guiding questions rather than handing over answers, and narrate your own reasoning when you make decisions together. Scheduled time matters too: a regular one-on-one with a genuine mentoring agenda, not just status, makes the difference between mentoring that actually happens and mentoring that gets crowded out by urgency."}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What's the difference between mentoring and managing?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Managing is primarily about outcomes — ensuring the work gets done well, the team is aligned, and the organisation's goals are met. Mentoring is about the person's growth — helping them develop skills, judgement, and ownership that they'll carry forward in their career. In practice they overlap heavily: the best managers mentor, and the best mentors understand the organisational context. But the distinction matters when they come into tension. If you're in a crunch and you solve someone's problem yourself to ship faster, you've made a management call at the cost of a mentoring opportunity. Good mentors notice that trade-off and compensate for it when the pressure is off."}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How do I help an engineer get promoted to senior?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Senior is less about technical skill than most people think — by mid-level, the technical bar is usually close enough. What distinguishes a senior engineer is scope, judgement, and influence. To help someone get there: give them ownership of a real problem (not just a sequence of tickets), put them in rooms where decisions are made, let them mentor someone more junior (teaching forces the articulation of instincts that define senior thinking), and give them opportunities to drive technical decisions beyond their immediate work. The growth happens in those experiences, not in completing more tickets. Make sure the career ladder at your company is explicit about what senior actually means — vague criteria make the path invisible."}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How much time should mentoring take?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"If you're doing it properly, roughly two to three hours per mentee per week. That typically breaks down into: one focused one-on-one (30–45 minutes), intentional code review that goes beyond approving the diff (30–60 minutes across the week), and one or two pairing sessions or ad-hoc conversations (30–60 minutes total). It's a real investment — that's the point. If mentoring is costing you nothing, you're probably not doing it in any meaningful sense. The leverage argument is important here: two to three hours a week that substantially accelerates one engineer's growth returns far more than those hours spent on your own code."}}]]}],"$L13"]}]]}]
+d:["$","nav",null,{"className":"blog-series-nav","aria-label":"Kind & Effective Engineering","children":[["$","$L9",null,{"href":"/en/blog/culture/giving-and-receiving-feedback","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Previously"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Feedback That Lands: Giving and Receiving Critique as an Engineer"}]]}],["$","span",null,{}]]}]
+e:["$","footer",null,{"className":"blog-article__footer","children":["$","$L9",null,{"href":"/en/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Back to Engineering Culture"]}]}]
+12:null
+13:["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How do I mentor without doing the work for them?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"The rule that helps most: your first response to a problem they bring you should always be a question, not a solution. Ask what they've already tried, what the error message says, whether there's a similar pattern elsewhere in the codebase. Wait thirty seconds before saying anything — often they'll answer their own question in that time. When they're stuck in a pairing session, resist the urge to take the keyboard. Instead, ask: \"What would you check next?\" The discomfort of not jumping in is the price of actually teaching something. Reserve direct answers for situations where they've genuinely exhausted their approaches and the blocker is preventing everything else — and even then, explain the reasoning rather than just providing the solution."}}]]}]
