@@ -4,6 +4,7 @@ export const APP_ROUTE = {
   HOME: "/",
   ABOUT: "/about",
   GALLERY: "/gallery",
+  BLOG: "/blog",
   APPS: "/apps",
   CV: "/cv",
   CV_PDF: "/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf"

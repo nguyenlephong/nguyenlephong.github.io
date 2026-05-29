@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "slug": "architecture",
+      "title": "소스 코드 & 아키텍처",
+      "tagline": "성장과 팀 규모, 변화를 견딜 수 있도록 소스 코드를 구조화하는 방법.",
+      "description": "소프트웨어 아키텍처와 소스 코드 조직에 관한 실용적이고 초보자 친화적인 심층 분석 — Ports & Adapters, Clean Architecture부터 의존성 관리, 모듈 경계, 각 선택지에 따른 트레이드오프까지. 다이어그램, 실제 예제, 그리고 개인 프로젝트부터 엔터프라이즈 시스템까지 적용할 수 있는 교훈을 바탕으로 작성되었습니다.",
+      "accent": "ocean",
+      "order": 1
+    }
+  ],
+  "posts": [
+    {
+      "slug": "ports-and-adapters",
+      "category": "architecture",
+      "title": "Ports & Adapters (Hexagonal Architecture), 쉽게 이해하기",
+      "summary": "Hexagonal Architecture를 친근하고 예제 중심으로 설명하는 가이드: port와 adapter가 실제로 무엇인지, 이 아키텍처를 작동시키는 단 하나의 규칙, 그리고 1인 창업자든 엔터프라이즈 팀이든 딱 얼마나 적용해야 하는지.",
+      "date": "2026-05-29",
+      "readingMinutes": 16,
+      "tags": [
+        "소프트웨어 아키텍처",
+        "Hexagonal Architecture",
+        "Ports and Adapters",
+        "Clean Architecture",
+        "시스템 설계",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    }
+  ]
+}

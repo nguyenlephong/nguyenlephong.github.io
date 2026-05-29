@@ -10,7 +10,8 @@
       "label": "阅读字体",
       "sans": "无衬线",
       "serif": "衬线"
-    }
+    },
+    "blog": "博客"
   },
   "Footer": {
     "tag": "高级软件工程师 · 技术负责人",
@@ -273,6 +274,20 @@
         "evergreen": "常青"
       },
       "credit": "灵感来自并镜像 <link>huylenq.github.io</link>。笔记原作归属于原作者；本镜像为私有并注明出处。"
+    },
+    "blog": {
+      "eyebrow": "文章",
+      "title": "博客",
+      "intro": "关于软件架构与源码结构的深度文章——写得让初学者也能读懂，同时对大规模交付的团队同样有用。配有图示、真实案例，绝不空谈。",
+      "categoriesHeading": "按主题浏览",
+      "latestHeading": "最新文章",
+      "empty": "暂无文章——第一篇即将发布。",
+      "backToBlog": "返回博客",
+      "backToCategory": "返回 {category}",
+      "readingTime": "{minutes} 分钟阅读",
+      "articleCount": "{count, plural, other {# 篇文章}}",
+      "writtenBy": "作者：{author}",
+      "onThisPage": "本页内容"
     }
   }
 }

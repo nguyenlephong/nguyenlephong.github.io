@@ -10,7 +10,8 @@
       "label": "本文フォント",
       "sans": "サンセリフ",
       "serif": "セリフ"
-    }
+    },
+    "blog": "ブログ"
   },
   "Footer": {
     "tag": "シニアソフトウェアエンジニア · テックリード",
@@ -273,6 +274,20 @@
         "evergreen": "常緑"
       },
       "credit": "<link>huylenq.github.io</link> から着想を得て、現在ミラーしています。ノートは原作者のものです。"
+    },
+    "blog": {
+      "eyebrow": "記事",
+      "title": "ブログ",
+      "intro": "ソフトウェアアーキテクチャとソースコードの構造についての詳しい解説。初心者にも分かりやすく、それでいて大規模に開発するチームにも役立つように書いています。図解と実例つき、曖昧な説明はしません。",
+      "categoriesHeading": "トピックで探す",
+      "latestHeading": "最新の記事",
+      "empty": "まだ記事がありません——最初の記事をまもなく公開します。",
+      "backToBlog": "ブログに戻る",
+      "backToCategory": "{category}に戻る",
+      "readingTime": "{minutes} 分で読めます",
+      "articleCount": "{count, plural, other {# 件の記事}}",
+      "writtenBy": "著者：{author}",
+      "onThisPage": "目次"
     }
   }
 }

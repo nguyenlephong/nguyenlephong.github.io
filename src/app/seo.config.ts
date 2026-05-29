@@ -18,7 +18,7 @@ export interface PageSEO {
 }
 
 export const PAGE_SEO: Record<
-  'home' | 'about' | 'cv' | 'gallery' | 'apps' | 'homeAlt' | 'thoughts',
+  'home' | 'about' | 'cv' | 'gallery' | 'apps' | 'homeAlt' | 'thoughts' | 'blog',
   PageSEO
 > = {
   home: {
@@ -121,6 +121,23 @@ export const PAGE_SEO: Record<
       'Nguyen Le Phong thoughts',
     ],
     ogAlt: 'Thoughts — a living knowledge graph of notes and essays',
+  },
+  blog: {
+    title: 'Blog — Software Architecture & Engineering, Explained Simply',
+    description:
+      'Beginner-friendly, deeply practical writing on software architecture and source-code structure — from Ports & Adapters to system design — with diagrams, real-world examples, and lessons that scale from startups to enterprise.',
+    path: '/blog',
+    keywords: [
+      'software architecture blog',
+      'source code structure',
+      'hexagonal architecture',
+      'ports and adapters',
+      'clean architecture',
+      'system design',
+      'software engineering tutorials',
+      'Nguyen Le Phong blog',
+    ],
+    ogAlt: 'Blog — software architecture and engineering, explained simply',
   },
 }
 

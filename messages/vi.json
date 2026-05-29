@@ -10,7 +10,8 @@
       "label": "Font đọc",
       "sans": "Sans-serif",
       "serif": "Serif"
-    }
+    },
+    "blog": "Blog"
   },
   "Footer": {
     "tag": "Senior Software Engineer · Tech Lead",
@@ -273,6 +274,20 @@
         "evergreen": "Trưởng thành"
       },
       "credit": "Lấy cảm hứng và hiện đang phản chiếu ý nghĩ từ <link>huylenq.github.io</link>. Các ghi chú thuộc về anh ấy; bản mirror này riêng tư và có ghi nguồn."
+    },
+    "blog": {
+      "eyebrow": "Bài viết",
+      "title": "Blog",
+      "intro": "Những bài phân tích sâu về kiến trúc phần mềm và cách tổ chức mã nguồn — viết sao cho người mới đọc cũng hiểu, mà đội ngũ đang vận hành ở quy mô lớn vẫn thấy hữu ích. Có sơ đồ, ví dụ thực tế, không nói chung chung.",
+      "categoriesHeading": "Duyệt theo chủ đề",
+      "latestHeading": "Bài viết mới nhất",
+      "empty": "Chưa có bài viết nào — bài đầu tiên sắp ra mắt.",
+      "backToBlog": "Về trang Blog",
+      "backToCategory": "Về {category}",
+      "readingTime": "{minutes} phút đọc",
+      "articleCount": "{count, plural, other {# bài viết}}",
+      "writtenBy": "Bởi {author}",
+      "onThisPage": "Trong bài này"
     }
   }
 }

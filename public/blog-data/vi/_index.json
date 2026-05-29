@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "slug": "architecture",
+      "title": "Mã nguồn & Kiến trúc",
+      "tagline": "Cách tổ chức mã nguồn để nó sống sót qua tăng trưởng, đội ngũ và thay đổi.",
+      "description": "Những bài phân tích sâu, thân thiện với người mới về kiến trúc phần mềm và cách tổ chức mã nguồn — từ Ports & Adapters, Clean Architecture cho tới quản lý phụ thuộc, ranh giới module và những đánh đổi đằng sau mỗi lựa chọn. Dựa trên sơ đồ, ví dụ thực tế và những bài học áp dụng được từ dự án cá nhân tới hệ thống enterprise.",
+      "accent": "ocean",
+      "order": 1
+    }
+  ],
+  "posts": [
+    {
+      "slug": "ports-and-adapters",
+      "category": "architecture",
+      "title": "Ports & Adapters (Kiến trúc Lục giác), Giải thích Đơn giản",
+      "summary": "Một hướng dẫn thân thiện, đầy ví dụ về Kiến trúc Lục giác: port và adapter thực sự là gì, quy tắc duy nhất khiến nó vận hành, và áp dụng bao nhiêu là vừa — dù bạn là founder solo hay một team enterprise.",
+      "date": "2026-05-29",
+      "readingMinutes": 16,
+      "tags": [
+        "Kiến trúc phần mềm",
+        "Hexagonal Architecture",
+        "Ports and Adapters",
+        "Clean Architecture",
+        "Thiết kế hệ thống",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    }
+  ]
+}

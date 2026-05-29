@@ -5,6 +5,7 @@
     "projects": "Projects",
     "contact": "Contact",
     "gallery": "Gallery",
+    "blog": "Blog",
     "resume": "Résumé",
     "font": {
       "label": "Reading font",
@@ -273,6 +274,20 @@
         "evergreen": "Evergreen"
       },
       "credit": "Inspired by and currently mirroring thoughts from <link>huylenq.github.io</link>. These notes are his; the mirror is private and credited."
+    },
+    "blog": {
+      "eyebrow": "Writing",
+      "title": "Blog",
+      "intro": "Deep-dives on software architecture and the way source code is structured — written to be understood by beginners, yet useful to teams shipping at scale. Diagrams, real examples, no hand-waving.",
+      "categoriesHeading": "Browse by topic",
+      "latestHeading": "Latest articles",
+      "empty": "No articles yet — the first one is on its way.",
+      "backToBlog": "Back to blog",
+      "backToCategory": "Back to {category}",
+      "readingTime": "{minutes} min read",
+      "articleCount": "{count, plural, =0 {No articles} one {# article} other {# articles}}",
+      "writtenBy": "By {author}",
+      "onThisPage": "On this page"
     }
   }
 }

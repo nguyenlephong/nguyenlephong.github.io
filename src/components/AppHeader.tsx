@@ -54,6 +54,13 @@ export default function AppHeader() {
           >
             {t('gallery')}
           </Link>
+          <Link
+            href={APP_ROUTE.BLOG}
+            className="nav-link"
+            onClick={() => track('cv_nav_click', { target: 'blog' })}
+          >
+            {t('blog')}
+          </Link>
         </nav>
 
         <div className="nav-actions">

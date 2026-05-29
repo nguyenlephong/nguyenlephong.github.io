@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "slug": "architecture",
+      "title": "Source & Architecture",
+      "tagline": "How to structure source code so it survives growth, teams, and change.",
+      "description": "Practical, beginner-friendly deep-dives on software architecture and how source code is organised — from Ports & Adapters and Clean Architecture to dependency management, module boundaries, and the trade-offs behind each. Built on diagrams, real examples, and lessons that scale from solo projects to enterprise systems.",
+      "accent": "ocean",
+      "order": 1
+    }
+  ],
+  "posts": [
+    {
+      "slug": "ports-and-adapters",
+      "category": "architecture",
+      "title": "Ports & Adapters (Hexagonal Architecture), Explained Simply",
+      "summary": "A friendly, example-driven guide to Hexagonal Architecture: what ports and adapters really are, the one rule that makes it work, and exactly how much of it to apply — whether you are a solo founder or an enterprise team.",
+      "date": "2026-05-29",
+      "readingMinutes": 16,
+      "tags": [
+        "Software Architecture",
+        "Hexagonal Architecture",
+        "Ports and Adapters",
+        "Clean Architecture",
+        "System Design",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    }
+  ]
+}

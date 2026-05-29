@@ -10,7 +10,8 @@
       "label": "Police de lecture",
       "sans": "Sans-serif",
       "serif": "Serif"
-    }
+    },
+    "blog": "Blog"
   },
   "Footer": {
     "tag": "Senior Software Engineer · Tech Lead",
@@ -273,6 +274,20 @@
         "evergreen": "Persistant"
       },
       "credit": "Inspiré de et actuellement miroir des notes de <link>huylenq.github.io</link>. Crédit à l’auteur original."
+    },
+    "blog": {
+      "eyebrow": "Articles",
+      "title": "Blog",
+      "intro": "Des analyses approfondies sur l'architecture logicielle et la façon de structurer le code source — écrites pour être comprises par les débutants, tout en restant utiles aux équipes qui livrent à grande échelle. Des schémas, des exemples concrets, sans bla-bla.",
+      "categoriesHeading": "Parcourir par thème",
+      "latestHeading": "Derniers articles",
+      "empty": "Aucun article pour l'instant — le premier arrive bientôt.",
+      "backToBlog": "Retour au blog",
+      "backToCategory": "Retour à {category}",
+      "readingTime": "{minutes} min de lecture",
+      "articleCount": "{count, plural, one {# article} other {# articles}}",
+      "writtenBy": "Par {author}",
+      "onThisPage": "Sur cette page"
     }
   }
 }

@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "slug": "architecture",
+      "title": "ソースコード & アーキテクチャ",
+      "tagline": "成長・チーム・変化を乗り越えられるコードの構成方法。",
+      "description": "ソフトウェアアーキテクチャとコードの整理方法について、初心者にも優しい実践的な深掘り記事のシリーズです。Ports & Adapters や Clean Architecture から、依存関係管理・モジュール境界・各パターンのトレードオフまでを取り上げます。図解・実例・個人プロジェクトからエンタープライズシステムまで通用する知見をもとに構成されています。",
+      "accent": "ocean",
+      "order": 1
+    }
+  ],
+  "posts": [
+    {
+      "slug": "ports-and-adapters",
+      "category": "architecture",
+      "title": "Ports & Adapters（Hexagonal Architecture）をやさしく解説",
+      "summary": "Hexagonal Architecture の入門ガイドです。ポートとアダプターが実際に何であるか、それを成立させる唯一のルール、そしてどこまで適用すべきかを、ソロ開発者からエンタープライズチームまでに向けてわかりやすく解説します。",
+      "date": "2026-05-29",
+      "readingMinutes": 16,
+      "tags": [
+        "ソフトウェアアーキテクチャ",
+        "Hexagonal Architecture",
+        "Ports and Adapters",
+        "Clean Architecture",
+        "システム設計",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    }
+  ]
+}

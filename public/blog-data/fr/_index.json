@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "slug": "architecture",
+      "title": "Code source & Architecture",
+      "tagline": "Comment organiser le code source pour qu'il survive à la croissance, aux équipes et aux changements.",
+      "description": "Des analyses approfondies et accessibles aux débutants sur l'architecture logicielle et l'organisation du code source — des Ports & Adapters et Clean Architecture à la gestion des dépendances, aux frontières de modules et aux compromis qui sous-tendent chaque choix. Fondées sur des diagrammes, des exemples concrets et des enseignements qui s'appliquent aussi bien aux projets solo qu'aux systèmes d'entreprise.",
+      "accent": "ocean",
+      "order": 1
+    }
+  ],
+  "posts": [
+    {
+      "slug": "ports-and-adapters",
+      "category": "architecture",
+      "title": "Ports & Adapters (Hexagonal Architecture), Expliqués Simplement",
+      "summary": "Un guide accessible et riche en exemples sur l'Hexagonal Architecture : ce que sont vraiment les ports et les adapters, la règle unique qui la fait fonctionner, et exactement quelle dose en appliquer — que vous soyez un fondateur solo ou une équipe d'entreprise.",
+      "date": "2026-05-29",
+      "readingMinutes": 16,
+      "tags": [
+        "Architecture logicielle",
+        "Hexagonal Architecture",
+        "Ports and Adapters",
+        "Clean Architecture",
+        "Conception de systèmes",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    }
+  ]
+}
