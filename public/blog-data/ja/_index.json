@@ -7,6 +7,14 @@
       "description": "ソフトウェアアーキテクチャとコードの整理方法について、初心者にも優しい実践的な深掘り記事のシリーズです。Ports & Adapters や Clean Architecture から、依存関係管理・モジュール境界・各パターンのトレードオフまでを取り上げます。図解・実例・個人プロジェクトからエンタープライズシステムまで通用する知見をもとに構成されています。",
       "accent": "ocean",
       "order": 1
+    },
+    {
+      "slug": "culture",
+      "title": "エンジニアリング文化",
+      "tagline": "ソフトウェアづくりの人間的な側面 — レビュー、フィードバック、メンタリング、そして人を燃え尽きさせずに育てるチーム。",
+      "description": "エンジニアリング文化についての実践的で人間中心の記事。コードと人の両方をより良くするコードレビュー、上手なフィードバックの授受、レビューしやすいプルリクエストの書き方、ジュニアをシニアへ育てるメンタリング、そして親切で信頼の高いチームのつくり方。実際のスクリプトと例、そして2人のスタートアップから1,000人規模の組織まで通用する学びをお届けします。",
+      "accent": "violet",
+      "order": 2
     }
   ],
   "posts": [
@@ -124,6 +132,102 @@
       "author": "Nguyen Le Phong",
       "series": "foundations",
       "seriesOrder": 6
+    },
+    {
+      "slug": "how-to-review-code-kindly",
+      "category": "culture",
+      "title": "コードレビューという技術：人を傷つけずにコードを批評する方法",
+      "summary": "コードレビューは、チームカルチャーが育まれるか壊れるかの分岐点です。コードをより良く仕上げながら、書いた人がより成長して戻ってこられるレビューの実践ガイド——具体的なフレーズ、レビュアーのチェックリスト、そしてレビューを静かに有害にしてしまう習慣を紹介します。",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "エンジニアリング文化",
+        "コードレビュー",
+        "Pull Requests",
+        "フィードバック",
+        "チームコラボレーション",
+        "メンタリング"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "how-to-be-a-kind-engineer",
+      "category": "culture",
+      "title": "Kind Engineering：優しさがあなたをより良いエンジニアにする理由",
+      "summary": "優しさはお人好しでも、柔弱でもありません。フォース・マルティプライヤーです——より明確なフィードバック、より安全なインシデント対応、より速く成長するチームメンバーを生み出します。「Kind Engineering」とは何か、そしてコードレビュー、インシデント対応、日常の仕事の中でそれをどう実践するかを解説します。",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "エンジニアリング文化",
+        "Kind Engineering",
+        "心理的安全性",
+        "共感",
+        "チームコラボレーション",
+        "リーダーシップ"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "how-to-write-a-great-pull-request",
+      "category": "culture",
+      "title": "レビューしたくなるプルリクエストの書き方",
+      "summary": "優れたプルリクエストはレビュアーへの贈り物です：小さく、説明が丁寧で、Yesと言いやすい。レビュー可能なプルリクエストの解剖——サイズ、タイトル、説明、コミット衛生、セルフレビュー——を具体的なビフォー・アフターの例で解説します。",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "エンジニアリング文化",
+        "Pull Requests",
+        "コードレビュー",
+        "Git",
+        "チームコラボレーション",
+        "開発生産性"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "giving-and-receiving-feedback",
+      "category": "culture",
+      "title": "届くフィードバック：エンジニアとして批評を与え、受け取る方法",
+      "summary": "フィードバックの与え方を学んでいるエンジニアはほとんどいません——受け取り方も同様です。具体的で、優しく、実行可能なフィードバックへのフィールドガイド、そして受け取る側で開かれた姿勢を保つための方法。すぐに使えるスクリプト付き。",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "エンジニアリング文化",
+        "フィードバック",
+        "コミュニケーション",
+        "心理的安全性",
+        "メンタリング",
+        "チームコラボレーション"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "mentoring-engineers",
+      "category": "culture",
+      "title": "エンジニアのメンタリング：ジュニアをシニアに育てる方法",
+      "summary": "優れたチームは採用するだけでなく育てることで生まれます。エンジニアリングチームのリードとして得た経験から：ペアプログラミング、教えるチャンネルとしてのコードレビュー、ちょうど良いストレッチ課題、そしてジュニアを誰にでも任せられる存在に変えるマインドセットの転換を紹介します。",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "エンジニアリング文化",
+        "メンタリング",
+        "キャリア成長",
+        "リーダーシップ",
+        "チームコラボレーション",
+        "コードレビュー"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 5
     }
   ]
 }

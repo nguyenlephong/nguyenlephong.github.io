@@ -292,8 +292,10 @@
       "nextUp": "次の記事",
       "previously": "前の記事",
       "seriesNames": {
-        "foundations": "ソフトウェアアーキテクチャの基礎"
-      }
+        "foundations": "ソフトウェアアーキテクチャの基礎",
+        "kind-engineering": "やさしく効果的なエンジニアリング"
+      },
+      "faqHeading": "よくある質問"
     }
   }
 }

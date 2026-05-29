@@ -292,8 +292,10 @@
       "nextUp": "下一篇",
       "previously": "上一篇",
       "seriesNames": {
-        "foundations": "软件架构基础"
-      }
+        "foundations": "软件架构基础",
+        "kind-engineering": "友善而高效的工程文化"
+      },
+      "faqHeading": "常见问题"
     }
   }
 }

@@ -36,9 +36,18 @@ export interface BlogPostMeta {
   seriesOrder?: number
 }
 
+export interface BlogFaq {
+  /** Question (plain text) */
+  q: string
+  /** Answer — may contain simple inline HTML */
+  a: string
+}
+
 export interface BlogPost extends BlogPostMeta {
   /** Pre-rendered HTML body (server-trusted, authored in-repo) */
   html: string
+  /** Optional FAQ — rendered as a section and emitted as FAQPage JSON-LD */
+  faqs?: BlogFaq[]
 }
 
 export interface BlogIndexFile {

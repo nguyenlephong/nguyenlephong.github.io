@@ -292,8 +292,10 @@
       "nextUp": "À suivre",
       "previously": "Précédemment",
       "seriesNames": {
-        "foundations": "Les fondamentaux de l'architecture logicielle"
-      }
+        "foundations": "Les fondamentaux de l'architecture logicielle",
+        "kind-engineering": "Une ingénierie bienveillante et efficace"
+      },
+      "faqHeading": "Questions fréquentes"
     }
   }
 }

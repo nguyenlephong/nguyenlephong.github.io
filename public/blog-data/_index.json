@@ -7,6 +7,14 @@
       "description": "Practical, beginner-friendly deep-dives on software architecture and how source code is organised — from Ports & Adapters and Clean Architecture to dependency management, module boundaries, and the trade-offs behind each. Built on diagrams, real examples, and lessons that scale from solo projects to enterprise systems.",
       "accent": "ocean",
       "order": 1
+    },
+    {
+      "slug": "culture",
+      "title": "Engineering Culture",
+      "tagline": "The human side of building software — reviews, feedback, mentorship, and teams that grow people instead of burning them out.",
+      "description": "Practical, people-first writing on engineering culture: how to run code reviews that make code and people better, give and receive feedback well, write pull requests reviewers love, mentor engineers into seniors, and build kind, high-trust teams. Real scripts, examples, and lessons that scale from a two-person startup to a thousand-engineer org.",
+      "accent": "violet",
+      "order": 2
     }
   ],
   "posts": [
@@ -124,6 +132,102 @@
       "author": "Nguyen Le Phong",
       "series": "foundations",
       "seriesOrder": 6
+    },
+    {
+      "slug": "how-to-review-code-kindly",
+      "category": "culture",
+      "title": "The Art of Code Review: How to Critique Code Without Crushing People",
+      "summary": "Code review is where team culture is made or broken. A practical guide to reviewing code so it ships better AND the author comes back stronger — concrete phrasing, a reviewer's checklist, and the habits that quietly turn reviews toxic.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "Engineering Culture",
+        "Code Review",
+        "Pull Requests",
+        "Feedback",
+        "Team Collaboration",
+        "Mentorship"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "how-to-be-a-kind-engineer",
+      "category": "culture",
+      "title": "Kind Engineering: Why Being Kind Makes You a Better Engineer",
+      "summary": "Kindness isn’t niceness, and it isn’t soft. It’s a force multiplier — clearer feedback, safer incidents, faster-growing teammates. What ‘kind engineering’ really means, and how to practise it in code reviews, incidents, and everyday work.",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "Engineering Culture",
+        "Kind Engineering",
+        "Psychological Safety",
+        "Empathy",
+        "Team Collaboration",
+        "Leadership"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "how-to-write-a-great-pull-request",
+      "category": "culture",
+      "title": "How to Write a Pull Request People Actually Enjoy Reviewing",
+      "summary": "A great pull request is a gift to your reviewer: small, well-described, easy to say yes to. The anatomy of a reviewable PR — size, title, description, commit hygiene, and self-review — with concrete before/after examples.",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "Engineering Culture",
+        "Pull Requests",
+        "Code Review",
+        "Git",
+        "Team Collaboration",
+        "Developer Productivity"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "giving-and-receiving-feedback",
+      "category": "culture",
+      "title": "Feedback That Lands: Giving and Receiving Critique as an Engineer",
+      "summary": "Most engineers were never taught how to give feedback — or how to take it. A field guide to specific, kind, actionable feedback, and to staying open when you're on the receiving end, with ready-to-use scripts.",
+      "date": "2026-05-29",
+      "readingMinutes": 13,
+      "tags": [
+        "Engineering Culture",
+        "Feedback",
+        "Communication",
+        "Psychological Safety",
+        "Mentorship",
+        "Team Collaboration"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "mentoring-engineers",
+      "category": "culture",
+      "title": "Mentoring Engineers: How to Grow Juniors into Seniors",
+      "summary": "Great teams are grown, not just hired. From leading engineering teams: how to mentor so people level up fast — pairing, code review as teaching, the right-sized stretch, and the mindset shifts that turn a junior into someone you'd trust with anything.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "Engineering Culture",
+        "Mentorship",
+        "Career Growth",
+        "Leadership",
+        "Team Collaboration",
+        "Code Review"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 5
     }
   ]
 }

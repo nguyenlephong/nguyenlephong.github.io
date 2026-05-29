@@ -9,6 +9,7 @@ import {
   OG_LOCALE_MAP,
   buildDescription,
   canonicalFor,
+  htmlToPlainText,
   localeAlternates,
 } from '@/lib/blog/seo'
 import {
@@ -162,6 +163,20 @@ export default async function BlogPostPage({ params }: Props) {
     ],
   }
 
+  const faqLd =
+    post.faqs && post.faqs.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          '@id': canonical + '#faq',
+          mainEntity: post.faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: htmlToPlainText(f.a) },
+          })),
+        }
+      : null
+
   return (
     <main className={`blog-article blog-article--${cat?.accent ?? 'ocean'}`}>
       <script
@@ -172,6 +187,12 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
+      {faqLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+        />
+      )}
 
       <div className="blog-article__main">
         <nav className="blog-breadcrumb" aria-label="Breadcrumb">
@@ -207,6 +228,25 @@ export default async function BlogPostPage({ params }: Props) {
         </header>
 
         <BlogContent html={post.html} />
+
+        {post.faqs && post.faqs.length > 0 && (
+          <section className="blog-faq" aria-labelledby="blog-faq-heading">
+            <h2 id="blog-faq-heading" className="blog-faq__heading">
+              {t('faqHeading')}
+            </h2>
+            <dl className="blog-faq__list">
+              {post.faqs.map((f, i) => (
+                <div className="blog-faq__item" key={i}>
+                  <dt className="blog-faq__q">{f.q}</dt>
+                  <dd
+                    className="blog-faq__a"
+                    dangerouslySetInnerHTML={{ __html: f.a }}
+                  />
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
 
         {series && (series.prev || series.next) && (
           <nav className="blog-series-nav" aria-label={t(`seriesNames.${series.series}`)}>

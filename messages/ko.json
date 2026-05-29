@@ -292,8 +292,10 @@
       "nextUp": "다음 글",
       "previously": "이전 글",
       "seriesNames": {
-        "foundations": "소프트웨어 아키텍처 기초"
-      }
+        "foundations": "소프트웨어 아키텍처 기초",
+        "kind-engineering": "친절하고 효과적인 엔지니어링"
+      },
+      "faqHeading": "자주 묻는 질문"
     }
   }
 }

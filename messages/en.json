@@ -291,8 +291,10 @@
       "partOf": "Part {part} of {total}",
       "nextUp": "Next up",
       "previously": "Previously",
+      "faqHeading": "Frequently asked questions",
       "seriesNames": {
-        "foundations": "Foundations of Software Architecture"
+        "foundations": "Foundations of Software Architecture",
+        "kind-engineering": "Kind & Effective Engineering"
       }
     }
   }

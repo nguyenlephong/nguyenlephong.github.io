@@ -292,8 +292,10 @@
       "nextUp": "Bài tiếp theo",
       "previously": "Bài trước",
       "seriesNames": {
-        "foundations": "Nền tảng Kiến trúc Phần mềm"
-      }
+        "foundations": "Nền tảng Kiến trúc Phần mềm",
+        "kind-engineering": "Kỹ thuật Tử tế & Hiệu quả"
+      },
+      "faqHeading": "Câu hỏi thường gặp"
     }
   }
 }
