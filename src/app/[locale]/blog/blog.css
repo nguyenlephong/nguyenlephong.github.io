@@ -285,7 +285,7 @@
    Article
    ========================================================================== */
 .blog-article {
-  max-width: 1180px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: clamp(1.75rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2rem) 6rem;
 }
@@ -295,12 +295,13 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
+  max-width: 760px;
+  margin: 0 auto 1.5rem;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--fg-subtle);
-  margin-bottom: 1.5rem;
 }
 .blog-breadcrumb a {
   color: var(--fg-subtle);
@@ -366,18 +367,22 @@
 }
 
 @media (min-width: 1024px) {
+  /* Symmetric track: an empty left gutter mirrors the right-hand TOC so the
+     760px reading column lands dead-centre of the page — and the header,
+     breadcrumb, and footer (all centred at the same 760px) line up with it. */
   .blog-article__body {
-    grid-template-columns: minmax(0, 760px) 240px;
+    grid-template-columns: 240px minmax(0, 760px) 240px;
+    column-gap: 2.5rem;
     justify-content: center;
     align-items: start;
   }
   .blog-article__body .blog-content {
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 1;
   }
   .blog-article__aside {
     display: block;
-    grid-column: 2;
+    grid-column: 3;
     grid-row: 1;
     position: sticky;
     top: calc(var(--header-h, 64px) + 1.5rem);
