@@ -171,43 +171,44 @@ export default async function BlogPostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
-      <nav className="blog-breadcrumb" aria-label="Breadcrumb">
-        <Link href="/blog">{t('title')}</Link>
-        <span aria-hidden="true">/</span>
-        <Link href={`/blog/${category}`}>{cat?.title ?? category}</Link>
-      </nav>
+      <div className="blog-article__main">
+        <nav className="blog-breadcrumb" aria-label="Breadcrumb">
+          <Link href="/blog">{t('title')}</Link>
+          <span aria-hidden="true">/</span>
+          <Link href={`/blog/${category}`}>{cat?.title ?? category}</Link>
+        </nav>
 
-      <header className="blog-article__head">
-        <h1 className="blog-article__title">{post.title}</h1>
-        <p className="blog-article__summary">{post.summary}</p>
-        <div className="blog-article__meta">
-          <span>{t('writtenBy', { author: post.author })}</span>
-          <span aria-hidden="true">·</span>
-          <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
-          <span aria-hidden="true">·</span>
-          <span>{t('readingTime', { minutes: post.readingMinutes })}</span>
-        </div>
-        {post.tags.length > 0 && (
-          <ul className="blog-article__tags">
-            {post.tags.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
-        )}
-      </header>
+        <header className="blog-article__head">
+          <h1 className="blog-article__title">{post.title}</h1>
+          <p className="blog-article__summary">{post.summary}</p>
+          <div className="blog-article__meta">
+            <span>{t('writtenBy', { author: post.author })}</span>
+            <span aria-hidden="true">·</span>
+            <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
+            <span aria-hidden="true">·</span>
+            <span>{t('readingTime', { minutes: post.readingMinutes })}</span>
+          </div>
+          {post.tags.length > 0 && (
+            <ul className="blog-article__tags">
+              {post.tags.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          )}
+        </header>
 
-      <div className="blog-article__body">
-        <aside className="blog-article__aside">
-          <BlogToc label={t('onThisPage')} />
-        </aside>
         <BlogContent html={post.html} />
+
+        <footer className="blog-article__footer">
+          <Link href={`/blog/${category}`} className="blog-back">
+            ← {t('backToCategory', { category: cat?.title ?? category })}
+          </Link>
+        </footer>
       </div>
 
-      <footer className="blog-article__footer">
-        <Link href={`/blog/${category}`} className="blog-back">
-          ← {t('backToCategory', { category: cat?.title ?? category })}
-        </Link>
-      </footer>
+      <aside className="blog-article__toc">
+        <BlogToc label={t('onThisPage')} />
+      </aside>
     </main>
   )
 }

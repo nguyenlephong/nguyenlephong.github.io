@@ -285,9 +285,25 @@
    Article
    ========================================================================== */
 .blog-article {
-  max-width: 1280px;
+  max-width: 1060px;
   margin: 0 auto;
   padding: clamp(1.75rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2rem) 6rem;
+}
+
+/* Two independent grid tracks: a flexible reading column + a fixed TOC rail.
+   Grid tracks never overlap, and min-width:0 lets the reading column shrink
+   instead of bleeding under the TOC. The whole text column (breadcrumb →
+   footer) lives in __main, so the header lines up with the body for free. */
+@media (min-width: 1080px) {
+  .blog-article {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 236px;
+    column-gap: 3rem;
+    align-items: start;
+  }
+}
+.blog-article__main {
+  min-width: 0;
 }
 
 .blog-breadcrumb {
@@ -355,37 +371,23 @@
   padding: 0.25rem 0.7rem;
 }
 
-/* ---- body grid: content + sticky TOC ---- */
-.blog-article__body {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
+/* space between the header and the article body */
+.blog-article__main .blog-content {
   margin-top: 2.5rem;
 }
-.blog-article__aside {
+
+/* ---- sticky table-of-contents rail (second grid track) ---- */
+.blog-article__toc {
   display: none;
 }
-
-@media (min-width: 1024px) {
-  /* Symmetric track: an empty left gutter mirrors the right-hand TOC so the
-     760px reading column lands dead-centre of the page — and the header,
-     breadcrumb, and footer (all centred at the same 760px) line up with it. */
-  .blog-article__body {
-    grid-template-columns: 240px minmax(0, 760px) 240px;
-    column-gap: 2.5rem;
-    justify-content: center;
-    align-items: start;
-  }
-  .blog-article__body .blog-content {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .blog-article__aside {
+@media (min-width: 1080px) {
+  .blog-article__toc {
     display: block;
-    grid-column: 3;
-    grid-row: 1;
+    align-self: start;
     position: sticky;
     top: calc(var(--header-h, 64px) + 1.5rem);
+    max-height: calc(100vh - var(--header-h, 64px) - 3rem);
+    overflow-y: auto;
   }
 }
 
