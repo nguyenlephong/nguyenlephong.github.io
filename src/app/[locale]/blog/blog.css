@@ -79,7 +79,8 @@
 .blog-home {
   max-width: 1080px;
   margin: 0 auto;
-  padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem) 6rem;
+  /* top clears the fixed site header (~80px) + breathing room */
+  padding: clamp(5.5rem, 4.5rem + 3vw, 7rem) clamp(1rem, 3vw, 2rem) 6rem;
 }
 
 .blog-home__eyebrow,
@@ -255,7 +256,7 @@
 .blog-category {
   max-width: 880px;
   margin: 0 auto;
-  padding: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2rem) 6rem;
+  padding: clamp(5.5rem, 4.5rem + 3vw, 7rem) clamp(1rem, 3vw, 2rem) 6rem;
 }
 .blog-category__head {
   margin: 1.5rem 0 2.5rem;
@@ -287,7 +288,7 @@
 .blog-article {
   max-width: 1060px;
   margin: 0 auto;
-  padding: clamp(1.75rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2rem) 6rem;
+  padding: clamp(5.5rem, 4.5rem + 3vw, 7rem) clamp(1rem, 3vw, 2rem) 6rem;
 }
 
 /* Two independent grid tracks: a flexible reading column + a fixed TOC rail.
