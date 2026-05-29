@@ -213,17 +213,17 @@
     {
       "slug": "mentoring-engineers",
       "category": "culture",
-      "title": "Mentoring Engineers: How to Grow Juniors into Seniors",
-      "summary": "Great teams are grown, not just hired. From leading engineering teams: how to mentor so people level up fast — pairing, code review as teaching, the right-sized stretch, and the mindset shifts that turn a junior into someone you'd trust with anything.",
+      "title": "指导工程师：如何把初级工程师培养成资深工程师",
+      "summary": "优秀的团队是培养出来的，不只是招聘来的。来自领导工程团队的实战经验：如何通过结对编程、代码审查、恰当的拉伸任务，以及那些把初级工程师变成你愿意托付一切的人的思维转变，让人快速成长。",
       "date": "2026-05-29",
       "readingMinutes": 14,
       "tags": [
-        "Engineering Culture",
-        "Mentorship",
-        "Career Growth",
-        "Leadership",
-        "Team Collaboration",
-        "Code Review"
+        "工程文化",
+        "指导",
+        "职业成长",
+        "领导力",
+        "团队协作",
+        "代码审查"
       ],
       "author": "Nguyen Le Phong",
       "series": "kind-engineering",
