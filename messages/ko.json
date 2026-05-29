@@ -287,7 +287,13 @@
       "readingTime": "{minutes}분 읽기",
       "articleCount": "{count, plural, other {# 개의 글}}",
       "writtenBy": "작성자: {author}",
-      "onThisPage": "목차"
+      "onThisPage": "목차",
+      "partOf": "{total}부 중 {part}부",
+      "nextUp": "다음 글",
+      "previously": "이전 글",
+      "seriesNames": {
+        "foundations": "소프트웨어 아키텍처 기초"
+      }
     }
   }
 }

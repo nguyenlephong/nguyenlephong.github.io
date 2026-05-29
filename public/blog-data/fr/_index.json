@@ -26,7 +26,104 @@
         "Dependency Inversion"
       ],
       "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 1,
       "featured": true
+    },
+    {
+      "slug": "clean-vs-onion-vs-hexagonal",
+      "category": "architecture",
+      "title": "Clean, Onion & Hexagonal Architecture : Une étoile du nord, trois noms",
+      "summary": "Elles ressemblent à trois architectures rivales. En réalité, c'est la même idée — les dépendances pointent vers l'intérieur, les frameworks restent à la périphérie — dessinée de trois façons différentes. Voici ce que chacune apporte vraiment, et laquelle choisir.",
+      "date": "2026-05-29",
+      "readingMinutes": 15,
+      "tags": [
+        "Architecture logicielle",
+        "Clean Architecture",
+        "Onion Architecture",
+        "Hexagonal Architecture",
+        "Conception de systèmes",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "dependency-injection-and-ioc",
+      "category": "architecture",
+      "title": "Dependency Injection & Inversion of Control, Sans la Magie",
+      "summary": "Les conteneurs DI semblent magiques jusqu'à ce que vous voyiez l'idée simple qu'ils cachent : arrêtez de laisser le code créer ses propres dépendances, et passez-les plutôt de l'extérieur. Un guide depuis zéro, avec de vrais exemples et les bénéfices pour les tests.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "Architecture logicielle",
+        "Dependency Injection",
+        "Inversion of Control",
+        "SOLID",
+        "Tests",
+        "Design Patterns"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "structuring-code-feature-vs-layer",
+      "category": "architecture",
+      "title": "Structurer un Codebase : Par Couche, Par Fonctionnalité ou Par Domaine ?",
+      "summary": "Vos dossiers de premier niveau doivent-ils s'appeler controllers/services/models, ou orders/billing/auth ? Ce choix discret façonne silencieusement la façon dont votre codebase grandit. Un tour pratique de la structure par couche, par fonctionnalité et de la Screaming Architecture — avec les compromis à chaque taille d'entreprise.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "Architecture logicielle",
+        "Structure de projet",
+        "Screaming Architecture",
+        "Modularity",
+        "Organisation du code",
+        "Monorepo"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "monolith-to-microservices",
+      "category": "architecture",
+      "title": "Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête",
+      "summary": "Les microservices sont une taxe que vous payez pour la mise à l'échelle organisationnelle — pas un point de départ. Un parcours sans fioriture du monolithe au monolithe modulaire puis aux microservices, avec les signaux qui vous disent quand (et si) diviser.",
+      "date": "2026-05-29",
+      "readingMinutes": 16,
+      "tags": [
+        "Architecture logicielle",
+        "Microservices",
+        "Modular Monolith",
+        "Conception de systèmes",
+        "Systèmes distribués",
+        "Scalabilité"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 5
+    },
+    {
+      "slug": "micro-frontends-when-why-and-cost",
+      "category": "architecture",
+      "title": "Micro-Frontends : Quand Ça Vaut le Coup, et Ce Que Ça Coûte",
+      "summary": "Diviser le frontend en pièces déployables indépendamment peut libérer les équipes — ou vous noyer dans la complexité. Rédigé à partir de l'expérience de livraison d'une configuration Angular-host + modules React à grande échelle : quand les micro-frontends rapportent, et la facture qu'ils entraînent.",
+      "date": "2026-05-29",
+      "readingMinutes": 15,
+      "tags": [
+        "Architecture logicielle",
+        "Micro-Frontends",
+        "Architecture frontend",
+        "Module Federation",
+        "Scalabilité",
+        "Conception de systèmes"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 6
     }
   ]
 }

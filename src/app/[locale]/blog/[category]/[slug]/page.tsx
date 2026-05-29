@@ -13,6 +13,7 @@ import {
 } from '@/lib/blog/seo'
 import {
   getCategory,
+  getSeriesContext,
   listCategoryPostPairs,
   loadPost,
 } from '@/lib/blog/data'
@@ -100,6 +101,7 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post || post.category !== category) notFound()
 
   const cat = getCategory(category, locale)
+  const series = getSeriesContext(slug, locale)
   const t = await getTranslations({ locale, namespace: 'Pages.blog' })
   const canonical = canonicalFor(locale, `/blog/${category}/${slug}`)
   const description = post.summary || buildDescription(post.html)
@@ -179,6 +181,13 @@ export default async function BlogPostPage({ params }: Props) {
         </nav>
 
         <header className="blog-article__head">
+          {series && (
+            <p className="blog-article__series">
+              {t(`seriesNames.${series.series}`)}
+              <span aria-hidden="true"> · </span>
+              {t('partOf', { part: series.part, total: series.total })}
+            </p>
+          )}
           <h1 className="blog-article__title">{post.title}</h1>
           <p className="blog-article__summary">{post.summary}</p>
           <div className="blog-article__meta">
@@ -198,6 +207,33 @@ export default async function BlogPostPage({ params }: Props) {
         </header>
 
         <BlogContent html={post.html} />
+
+        {series && (series.prev || series.next) && (
+          <nav className="blog-series-nav" aria-label={t(`seriesNames.${series.series}`)}>
+            {series.prev ? (
+              <Link
+                href={`/blog/${series.prev.category}/${series.prev.slug}`}
+                className="blog-series-nav__link blog-series-nav__link--prev"
+              >
+                <span className="blog-series-nav__dir">← {t('previously')}</span>
+                <span className="blog-series-nav__title">{series.prev.title}</span>
+              </Link>
+            ) : (
+              <span />
+            )}
+            {series.next ? (
+              <Link
+                href={`/blog/${series.next.category}/${series.next.slug}`}
+                className="blog-series-nav__link blog-series-nav__link--next"
+              >
+                <span className="blog-series-nav__dir">{t('nextUp')} →</span>
+                <span className="blog-series-nav__title">{series.next.title}</span>
+              </Link>
+            ) : (
+              <span />
+            )}
+          </nav>
+        )}
 
         <footer className="blog-article__footer">
           <Link href={`/blog/${category}`} className="blog-back">

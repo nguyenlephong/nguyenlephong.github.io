@@ -26,7 +26,104 @@
         "Dependency Inversion"
       ],
       "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 1,
       "featured": true
+    },
+    {
+      "slug": "clean-vs-onion-vs-hexagonal",
+      "category": "architecture",
+      "title": "Clean, Onion & Hexagonal Architecture: Một Ngôi Sao Phương Bắc, Ba Cái Tên",
+      "summary": "Nhìn bề ngoài có vẻ là ba kiến trúc đối lập nhau. Thực ra chúng là cùng một ý tưởng — phụ thuộc hướng vào trong, framework ở rìa — được vẽ theo ba cách. Đây là điều mỗi cái thực sự thêm vào, và khi nào nên chọn cái nào.",
+      "date": "2026-05-29",
+      "readingMinutes": 15,
+      "tags": [
+        "Kiến trúc phần mềm",
+        "Clean Architecture",
+        "Onion Architecture",
+        "Hexagonal Architecture",
+        "Thiết kế hệ thống",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "dependency-injection-and-ioc",
+      "category": "architecture",
+      "title": "Dependency Injection & Inversion of Control, Không Có Phép Thuật",
+      "summary": "DI container thoạt nghe như phù phép cho đến khi bạn thấy ý tưởng đơn giản ở phía dưới: đừng để code tự tạo ra dependency của chính nó, hãy đưa chúng vào từ bên ngoài. Hướng dẫn từ đầu, với ví dụ thực tế và lợi ích trong kiểm thử.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "Kiến trúc phần mềm",
+        "Dependency Injection",
+        "Inversion of Control",
+        "SOLID",
+        "Kiểm thử",
+        "Design Patterns"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "structuring-code-feature-vs-layer",
+      "category": "architecture",
+      "title": "Cấu trúc Codebase: Theo Lớp, Theo Tính năng, hay Theo Domain?",
+      "summary": "Thư mục cấp cao nhất nên là controllers/services/models, hay orders/billing/auth? Lựa chọn này âm thầm định hình cách codebase lớn lên. Một chuyến tham quan thực tế qua cấu trúc theo lớp, theo tính năng, và screaming architecture — với những đánh đổi ở mỗi quy mô công ty.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "Kiến trúc phần mềm",
+        "Cấu trúc dự án",
+        "Screaming Architecture",
+        "Modularity",
+        "Tổ chức mã nguồn",
+        "Monorepo"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "monolith-to-microservices",
+      "category": "architecture",
+      "title": "Monolith, Modular Monolith, Microservices: Hướng dẫn Quyết định Thành thật",
+      "summary": "Microservices là cái giá bạn trả cho quy mô tổ chức — không phải điểm khởi đầu. Hành trình không màu mè từ monolith đến modular monolith đến microservices, với các tín hiệu cho bạn biết khi nào (và liệu có nên) tách ra.",
+      "date": "2026-05-29",
+      "readingMinutes": 16,
+      "tags": [
+        "Kiến trúc phần mềm",
+        "Microservices",
+        "Modular Monolith",
+        "Thiết kế hệ thống",
+        "Hệ phân tán",
+        "Khả năng mở rộng"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 5
+    },
+    {
+      "slug": "micro-frontends-when-why-and-cost",
+      "category": "architecture",
+      "title": "Micro-Frontends: Khi Nào Xứng Đáng, và Chi Phí Là Gì",
+      "summary": "Tách frontend thành các mảnh có thể deploy độc lập có thể giải phóng các team — hoặc chôn vùi bạn trong độ phức tạp. Viết từ kinh nghiệm ship một setup Angular-host + React-modules ở quy mô: khi nào micro-frontend đáng công, và hóa đơn chúng mang lại.",
+      "date": "2026-05-29",
+      "readingMinutes": 15,
+      "tags": [
+        "Kiến trúc phần mềm",
+        "Micro-Frontends",
+        "Kiến trúc Frontend",
+        "Module Federation",
+        "Khả năng mở rộng",
+        "Thiết kế hệ thống"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 6
     }
   ]
 }

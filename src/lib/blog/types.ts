@@ -30,6 +30,10 @@ export interface BlogPostMeta {
   tags: string[]
   author: string
   featured?: boolean
+  /** Series identifier (e.g. "foundations"); groups posts into a reading order */
+  series?: string
+  /** 1-based position within the series */
+  seriesOrder?: number
 }
 
 export interface BlogPost extends BlogPostMeta {

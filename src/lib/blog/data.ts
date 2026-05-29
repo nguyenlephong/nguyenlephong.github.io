@@ -25,6 +25,14 @@ function byDateDesc(a: BlogPostMeta, b: BlogPostMeta): number {
   return b.date.localeCompare(a.date)
 }
 
+/** Series reading order first (ascending), then newest-first as a tiebreaker. */
+function bySeriesThenDate(a: BlogPostMeta, b: BlogPostMeta): number {
+  const ao = a.seriesOrder ?? Number.MAX_SAFE_INTEGER
+  const bo = b.seriesOrder ?? Number.MAX_SAFE_INTEGER
+  if (ao !== bo) return ao - bo
+  return byDateDesc(a, b)
+}
+
 /** Canonical index (English) — used for static-param generation. */
 function baseIndex(): BlogIndexFile {
   return readJson<BlogIndexFile>(path.join(DATA_DIR, '_index.json')) ?? EMPTY_INDEX
@@ -76,7 +84,42 @@ export function getPostsByCategory(
 ): BlogPostMeta[] {
   return loadIndex(locale)
     .posts.filter((p) => p.category === category)
-    .sort(byDateDesc)
+    .sort(bySeriesThenDate)
+}
+
+export interface SeriesContext {
+  series: string
+  part: number
+  total: number
+  prev: BlogPostMeta | null
+  next: BlogPostMeta | null
+}
+
+/**
+ * Resolves where a post sits within its series and who its neighbours are, so
+ * the article page can render "Part N of M" plus previous/next links. Returns
+ * null for standalone posts.
+ */
+export function getSeriesContext(
+  slug: string,
+  locale?: string,
+): SeriesContext | null {
+  const all = loadIndex(locale).posts
+  const current = all.find((p) => p.slug === slug)
+  if (!current?.series) return null
+
+  const inSeries = all
+    .filter((p) => p.series === current.series)
+    .sort(bySeriesThenDate)
+  const idx = inSeries.findIndex((p) => p.slug === slug)
+
+  return {
+    series: current.series,
+    part: current.seriesOrder ?? idx + 1,
+    total: inSeries.length,
+    prev: idx > 0 ? inSeries[idx - 1] : null,
+    next: idx < inSeries.length - 1 ? inSeries[idx + 1] : null,
+  }
 }
 
 export function listPosts(locale?: string): BlogPostMeta[] {

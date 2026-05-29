@@ -287,7 +287,13 @@
       "readingTime": "{minutes} phút đọc",
       "articleCount": "{count, plural, other {# bài viết}}",
       "writtenBy": "Bởi {author}",
-      "onThisPage": "Trong bài này"
+      "onThisPage": "Trong bài này",
+      "partOf": "Phần {part}/{total}",
+      "nextUp": "Bài tiếp theo",
+      "previously": "Bài trước",
+      "seriesNames": {
+        "foundations": "Nền tảng Kiến trúc Phần mềm"
+      }
     }
   }
 }

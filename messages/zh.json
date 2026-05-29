@@ -287,7 +287,13 @@
       "readingTime": "{minutes} 分钟阅读",
       "articleCount": "{count, plural, other {# 篇文章}}",
       "writtenBy": "作者：{author}",
-      "onThisPage": "本页内容"
+      "onThisPage": "本页内容",
+      "partOf": "第 {part} 篇，共 {total} 篇",
+      "nextUp": "下一篇",
+      "previously": "上一篇",
+      "seriesNames": {
+        "foundations": "软件架构基础"
+      }
     }
   }
 }

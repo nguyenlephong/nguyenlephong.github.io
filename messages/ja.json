@@ -287,7 +287,13 @@
       "readingTime": "{minutes} 分で読めます",
       "articleCount": "{count, plural, other {# 件の記事}}",
       "writtenBy": "著者：{author}",
-      "onThisPage": "目次"
+      "onThisPage": "目次",
+      "partOf": "全 {total} 回中第 {part} 回",
+      "nextUp": "次の記事",
+      "previously": "前の記事",
+      "seriesNames": {
+        "foundations": "ソフトウェアアーキテクチャの基礎"
+      }
     }
   }
 }

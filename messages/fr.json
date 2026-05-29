@@ -287,7 +287,13 @@
       "readingTime": "{minutes} min de lecture",
       "articleCount": "{count, plural, one {# article} other {# articles}}",
       "writtenBy": "Par {author}",
-      "onThisPage": "Sur cette page"
+      "onThisPage": "Sur cette page",
+      "partOf": "Partie {part} sur {total}",
+      "nextUp": "À suivre",
+      "previously": "Précédemment",
+      "seriesNames": {
+        "foundations": "Les fondamentaux de l'architecture logicielle"
+      }
     }
   }
 }

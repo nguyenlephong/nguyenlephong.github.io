@@ -287,7 +287,13 @@
       "readingTime": "{minutes} min read",
       "articleCount": "{count, plural, =0 {No articles} one {# article} other {# articles}}",
       "writtenBy": "By {author}",
-      "onThisPage": "On this page"
+      "onThisPage": "On this page",
+      "partOf": "Part {part} of {total}",
+      "nextUp": "Next up",
+      "previously": "Previously",
+      "seriesNames": {
+        "foundations": "Foundations of Software Architecture"
+      }
     }
   }
 }

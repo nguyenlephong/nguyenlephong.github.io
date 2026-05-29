@@ -26,7 +26,104 @@
         "Dependency Inversion"
       ],
       "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 1,
       "featured": true
+    },
+    {
+      "slug": "clean-vs-onion-vs-hexagonal",
+      "category": "architecture",
+      "title": "Clean, Onion & Hexagonal Architecture: 하나의 북극성, 세 가지 이름",
+      "summary": "세 가지 경쟁 아키텍처처럼 보이지만, 사실은 같은 아이디어를 세 가지 방식으로 그린 것입니다 — 의존성은 안쪽을 향하고, 프레임워크는 가장자리에. 각각이 실제로 무엇을 더하는지, 그리고 어떤 상황에 어느 것을 선택해야 하는지 알아봅니다.",
+      "date": "2026-05-29",
+      "readingMinutes": 15,
+      "tags": [
+        "소프트웨어 아키텍처",
+        "Clean Architecture",
+        "Onion Architecture",
+        "Hexagonal Architecture",
+        "시스템 설계",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "dependency-injection-and-ioc",
+      "category": "architecture",
+      "title": "Dependency Injection & Inversion of Control, 마법 없이 이해하기",
+      "summary": "DI 컨테이너는 밑에 있는 단순한 아이디어를 보기 전까지 마법처럼 느껴집니다: 코드가 자신의 의존성을 직접 생성하지 않도록 하고, 대신 외부에서 전달받는 것입니다. 실제 예제와 테스트에서 얻을 수 있는 이점을 포함한 처음부터 끝까지의 가이드.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "소프트웨어 아키텍처",
+        "Dependency Injection",
+        "Inversion of Control",
+        "SOLID",
+        "테스트",
+        "디자인 패턴"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "structuring-code-feature-vs-layer",
+      "category": "architecture",
+      "title": "코드베이스 구조화: 레이어별, 기능별, 또는 도메인별?",
+      "summary": "최상위 폴더가 controllers/services/models여야 할까요, 아니면 orders/billing/auth여야 할까요? 이 선택은 조용히 코드베이스의 성장 방식을 결정합니다. 레이어별, 기능별, 소리치는 아키텍처의 실용적인 여행 — 각 회사 규모별 트레이드오프와 함께.",
+      "date": "2026-05-29",
+      "readingMinutes": 14,
+      "tags": [
+        "소프트웨어 아키텍처",
+        "프로젝트 구조",
+        "Screaming Architecture",
+        "Modularity",
+        "코드 구성",
+        "Monorepo"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "monolith-to-microservices",
+      "category": "architecture",
+      "title": "모놀리스, Modular Monolith, 마이크로서비스: 솔직한 의사결정 가이드",
+      "summary": "마이크로서비스는 출발점이 아니라 조직 규모에 대해 지불하는 세금입니다. 모놀리스에서 Modular Monolith, 마이크로서비스까지의 과장 없는 여정 — 언제(그리고 분리할지 여부를) 알려주는 신호와 함께.",
+      "date": "2026-05-29",
+      "readingMinutes": 16,
+      "tags": [
+        "소프트웨어 아키텍처",
+        "Microservices",
+        "Modular Monolith",
+        "시스템 설계",
+        "분산 시스템",
+        "확장성"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 5
+    },
+    {
+      "slug": "micro-frontends-when-why-and-cost",
+      "category": "architecture",
+      "title": "마이크로 프론트엔드: 언제 가치가 있고, 무엇이 드는가",
+      "summary": "프론트엔드를 독립적으로 배포 가능한 조각들로 분리하면 팀을 해방시킬 수도 — 또는 복잡성에 묻힐 수도 있습니다. Angular 호스트 + React 모듈 설정을 규모에서 출시한 경험을 바탕으로: 마이크로 프론트엔드가 보상을 줄 때, 그리고 그것이 가져오는 청구서.",
+      "date": "2026-05-29",
+      "readingMinutes": 15,
+      "tags": [
+        "소프트웨어 아키텍처",
+        "Micro-Frontends",
+        "프론트엔드 아키텍처",
+        "Module Federation",
+        "확장성",
+        "시스템 설계"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 6
     }
   ]
 }
