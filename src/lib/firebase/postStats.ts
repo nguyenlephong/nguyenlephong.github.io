@@ -81,8 +81,8 @@ export async function incrementView(id: string): Promise<void> {
       { views: increment(1) },
       { merge: true },
     )
-  } catch {
-    // ignore
+  } catch (e) {
+    console.error('[postStats] incrementView failed:', e)
   }
 }
 
