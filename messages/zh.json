@@ -295,7 +295,20 @@
         "foundations": "软件架构基础",
         "kind-engineering": "友善而高效的工程文化"
       },
-      "faqHeading": "常见问题"
+      "faqHeading": "常见问题",
+      "engagement": {
+        "reactionsPrompt": "你觉得这篇文章如何？",
+        "views": "次浏览",
+        "share": "分享",
+        "copyLink": "复制链接",
+        "copied": "已复制！",
+        "reactions": {
+          "like": "赞",
+          "love": "喜欢",
+          "insightful": "有启发",
+          "clap": "鼓掌"
+        }
+      }
     }
   }
 }

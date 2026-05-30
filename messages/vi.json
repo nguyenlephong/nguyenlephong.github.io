@@ -295,7 +295,20 @@
         "foundations": "Nền tảng Kiến trúc Phần mềm",
         "kind-engineering": "Kỹ thuật Tử tế & Hiệu quả"
       },
-      "faqHeading": "Câu hỏi thường gặp"
+      "faqHeading": "Câu hỏi thường gặp",
+      "engagement": {
+        "reactionsPrompt": "Bạn thấy bài viết thế nào?",
+        "views": "lượt xem",
+        "share": "Chia sẻ",
+        "copyLink": "Sao chép liên kết",
+        "copied": "Đã sao chép!",
+        "reactions": {
+          "like": "Thích",
+          "love": "Yêu thích",
+          "insightful": "Sâu sắc",
+          "clap": "Tuyệt vời"
+        }
+      }
     }
   }
 }

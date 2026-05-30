@@ -295,7 +295,20 @@
         "foundations": "소프트웨어 아키텍처 기초",
         "kind-engineering": "친절하고 효과적인 엔지니어링"
       },
-      "faqHeading": "자주 묻는 질문"
+      "faqHeading": "자주 묻는 질문",
+      "engagement": {
+        "reactionsPrompt": "이 글 어떠셨나요?",
+        "views": "조회",
+        "share": "공유",
+        "copyLink": "링크 복사",
+        "copied": "복사됨!",
+        "reactions": {
+          "like": "좋아요",
+          "love": "최고예요",
+          "insightful": "유익해요",
+          "clap": "축하해요"
+        }
+      }
     }
   }
 }

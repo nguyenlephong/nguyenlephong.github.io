@@ -1,0 +1,99 @@
+rules_version = '2';
+
+// Firestore security rules for blog engagement (views · shares · reactions).
+//
+// The blog is a public static site with no auth, so anyone may read the
+// counters and bump them. These rules keep that open but constrain *what* can
+// be written: only the `postStats` collection, only the known counter fields,
+// only non-negative numbers — and (the important part) each counter may move by
+// at most ±1 per write, so a scripted client cannot inflate numbers in bulk.
+//
+// Everything else in the database is locked down.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /postStats/{postId} {
+      allow read: if true;
+
+      allow create: if isValidShape()
+                    && newCounter('views') >= 0 && newCounter('views') <= 1
+                    && newCounter('shares') >= 0 && newCounter('shares') <= 1
+                    && reactionsCreatedSmall();
+
+      allow update: if isValidShape()
+                    && deltaWithinOne('views')
+                    && deltaWithinOne('shares')
+                    && reactionDeltasWithinOne();
+    }
+
+    // Deny everything else by default.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+// ---- helpers ---------------------------------------------------------------
+
+function data() { return request.resource.data; }
+function prior() { return resource.data; }
+
+// Only the three known top-level fields may exist.
+function isValidShape() {
+  return data().keys().hasOnly(['views', 'shares', 'reactions'])
+    && (!('views' in data()) || data().views is int)
+    && (!('shares' in data()) || data().shares is int)
+    && (!('reactions' in data()) || isReactionMap(data().reactions));
+}
+
+function isReactionMap(r) {
+  return r.keys().hasOnly(['like', 'love', 'insightful', 'clap'])
+    && (!('like' in r) || r.like is int)
+    && (!('love' in r) || r.love is int)
+    && (!('insightful' in r) || r.insightful is int)
+    && (!('clap' in r) || r.clap is int);
+}
+
+function newCounter(field) {
+  return (field in data()) ? data()[field] : 0;
+}
+
+function priorCounter(field) {
+  return (prior() != null && field in prior()) ? prior()[field] : 0;
+}
+
+// A top-level counter may change by at most 1 in either direction, never negative.
+function deltaWithinOne(field) {
+  return newCounter(field) >= 0
+    && newCounter(field) - priorCounter(field) >= -1
+    && newCounter(field) - priorCounter(field) <= 1;
+}
+
+function reactionsCreatedSmall() {
+  return !('reactions' in data())
+    || (reactionNew('like') <= 1 && reactionNew('love') <= 1
+        && reactionNew('insightful') <= 1 && reactionNew('clap') <= 1);
+}
+
+function reactionNew(key) {
+  return ('reactions' in data() && key in data().reactions)
+    ? data().reactions[key] : 0;
+}
+
+function reactionPrior(key) {
+  return (prior() != null && 'reactions' in prior() && key in prior().reactions)
+    ? prior().reactions[key] : 0;
+}
+
+function reactionDeltaOk(key) {
+  return reactionNew(key) >= 0
+    && reactionNew(key) - reactionPrior(key) >= -1
+    && reactionNew(key) - reactionPrior(key) <= 1;
+}
+
+function reactionDeltasWithinOne() {
+  return !('reactions' in data())
+    || (reactionDeltaOk('like') && reactionDeltaOk('love')
+        && reactionDeltaOk('insightful') && reactionDeltaOk('clap'));
+}

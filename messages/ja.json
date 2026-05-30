@@ -295,7 +295,20 @@
         "foundations": "ソフトウェアアーキテクチャの基礎",
         "kind-engineering": "やさしく効果的なエンジニアリング"
       },
-      "faqHeading": "よくある質問"
+      "faqHeading": "よくある質問",
+      "engagement": {
+        "reactionsPrompt": "記事はいかがでしたか？",
+        "views": "ビュー",
+        "share": "シェア",
+        "copyLink": "リンクをコピー",
+        "copied": "コピーしました！",
+        "reactions": {
+          "like": "いいね",
+          "love": "大好き",
+          "insightful": "なるほど",
+          "clap": "祝福"
+        }
+      }
     }
   }
 }

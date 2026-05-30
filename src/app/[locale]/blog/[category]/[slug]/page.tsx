@@ -20,6 +20,7 @@ import {
 } from '@/lib/blog/data'
 import BlogContent from '@/components/blog/BlogContent'
 import BlogToc from '@/components/blog/BlogToc'
+import BlogEngagement from '@/components/blog/BlogEngagement'
 import '../../blog.css'
 
 type Props = {
@@ -228,6 +229,26 @@ export default async function BlogPostPage({ params }: Props) {
         </header>
 
         <BlogContent html={post.html} />
+
+        <BlogEngagement
+          category={category}
+          slug={slug}
+          url={canonical}
+          title={post.title}
+          labels={{
+            reactionsPrompt: t('engagement.reactionsPrompt'),
+            views: t('engagement.views'),
+            share: t('engagement.share'),
+            copyLink: t('engagement.copyLink'),
+            copied: t('engagement.copied'),
+            reactions: {
+              like: t('engagement.reactions.like'),
+              love: t('engagement.reactions.love'),
+              insightful: t('engagement.reactions.insightful'),
+              clap: t('engagement.reactions.clap'),
+            },
+          }}
+        />
 
         {post.faqs && post.faqs.length > 0 && (
           <section className="blog-faq" aria-labelledby="blog-faq-heading">

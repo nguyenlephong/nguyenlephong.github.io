@@ -295,7 +295,20 @@
         "foundations": "Les fondamentaux de l'architecture logicielle",
         "kind-engineering": "Une ingénierie bienveillante et efficace"
       },
-      "faqHeading": "Questions fréquentes"
+      "faqHeading": "Questions fréquentes",
+      "engagement": {
+        "reactionsPrompt": "Qu'en avez-vous pensé ?",
+        "views": "vues",
+        "share": "Partager",
+        "copyLink": "Copier le lien",
+        "copied": "Copié !",
+        "reactions": {
+          "like": "J'aime",
+          "love": "Adoré",
+          "insightful": "Pertinent",
+          "clap": "Bravo"
+        }
+      }
     }
   }
 }

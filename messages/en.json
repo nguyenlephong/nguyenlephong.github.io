@@ -295,6 +295,19 @@
       "seriesNames": {
         "foundations": "Foundations of Software Architecture",
         "kind-engineering": "Kind & Effective Engineering"
+      },
+      "engagement": {
+        "reactionsPrompt": "What did you think?",
+        "views": "views",
+        "share": "Share",
+        "copyLink": "Copy link",
+        "copied": "Copied!",
+        "reactions": {
+          "like": "Like",
+          "love": "Love",
+          "insightful": "Insightful",
+          "clap": "Celebrate"
+        }
       }
     }
   }
