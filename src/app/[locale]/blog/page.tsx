@@ -7,7 +7,7 @@ import { PAGE_SEO, SITE, SITE_URL } from '@/app/seo.config'
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/blog/seo'
 import { listCategories, listPosts } from '@/lib/blog/data'
 import BlogCategoryCard from '@/components/blog/BlogCategoryCard'
-import BlogPostCard from '@/components/blog/BlogPostCard'
+import BlogPostListClient from '@/components/blog/BlogPostListClient'
 import './blog.css'
 
 type Props = { params: Promise<{ locale: string }> }
@@ -129,21 +129,19 @@ export default async function BlogIndexPage({ params }: Props) {
           {t('latestHeading')}
         </h2>
         {posts.length > 0 ? (
-          <div className="blog-post-list">
-            {posts.map((p) => {
+          <BlogPostListClient
+            cards={posts.map((p) => {
               const cat = categoryBySlug.get(p.category)
-              return (
-                <BlogPostCard
-                  key={p.slug}
-                  post={p}
-                  accent={cat?.accent ?? 'ocean'}
-                  categoryTitle={cat?.title ?? p.category}
-                  locale={locale}
-                  readingLabel={t('readingTime', { minutes: p.readingMinutes })}
-                />
-              )
+              return {
+                post: p,
+                accent: cat?.accent ?? 'ocean',
+                categoryTitle: cat?.title ?? p.category,
+                readingLabel: t('readingTime', { minutes: p.readingMinutes }),
+              }
             })}
-          </div>
+            locale={locale}
+            viewsLabel={t('engagement.views')}
+          />
         ) : (
           <p className="blog-empty">{t('empty')}</p>
         )}

@@ -1,5 +1,7 @@
+import { LuEye } from 'react-icons/lu'
 import { Link } from '@/i18n/navigation'
 import type { BlogAccent, BlogPostMeta } from '@/lib/blog/types'
+import { formatCount } from '@/lib/firebase/postStats'
 
 interface BlogPostCardProps {
   post: BlogPostMeta
@@ -11,6 +13,10 @@ interface BlogPostCardProps {
   locale: string
   /** Pre-translated reading-time string, e.g. "12 min read" */
   readingLabel: string
+  /** View count injected client-side; shown only when >= 100 */
+  viewCount?: number
+  /** Translated "views" label */
+  viewsLabel?: string
 }
 
 function formatDate(iso: string, locale: string): string {
@@ -29,6 +35,8 @@ export default function BlogPostCard({
   categoryTitle,
   locale,
   readingLabel,
+  viewCount,
+  viewsLabel,
 }: BlogPostCardProps) {
   return (
     <article className={`blog-card blog-card--${accent}`}>
@@ -43,6 +51,15 @@ export default function BlogPostCard({
           <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
           <span aria-hidden="true">·</span>
           <span>{readingLabel}</span>
+          {typeof viewCount === 'number' && viewCount >= 100 && (
+            <>
+              <span aria-hidden="true">·</span>
+              <span className="blog-card__views">
+                <LuEye aria-hidden="true" />
+                {formatCount(viewCount)}{viewsLabel ? ` ${viewsLabel}` : ''}
+              </span>
+            </>
+          )}
         </div>
       </Link>
     </article>

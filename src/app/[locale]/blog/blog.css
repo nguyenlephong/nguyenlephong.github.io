@@ -1096,3 +1096,18 @@
     animation: none;
   }
 }
+
+/* ---- view count badge on post cards (injected client-side, >= 100 views) ---- */
+.blog-card__views {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: var(--text-xs);
+  color: var(--blog-accent);
+  font-variant-numeric: tabular-nums;
+}
+.blog-card__views svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  opacity: 0.85;
+}
