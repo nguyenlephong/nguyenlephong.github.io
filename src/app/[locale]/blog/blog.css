@@ -860,51 +860,35 @@
 }
 
 /* ==========================================================================
-   Engagement bar — reactions · views · share (client-hydrated)
+   Engagement — inline view count · reaction bar · floating share dock
    ========================================================================== */
-.blog-engagement {
-  display: flex;
-  flex-wrap: wrap;
+
+/* ---- inline view count in the article meta line ---- */
+.blog-article__views {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem 1.5rem;
-  margin: 2.75rem 0 0.5rem;
-  padding: 1.4rem 1.5rem;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--bg-muted);
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  gap: 0.35rem;
+  font-variant-numeric: tabular-nums;
+  animation: blog-fade-in 0.4s ease both;
 }
-.blog-engagement--ready {
-  opacity: 1;
-  transform: none;
+.blog-article__views svg {
+  width: 1rem;
+  height: 1rem;
+  opacity: 0.8;
 }
-
-.blog-engagement__reactions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-.blog-engagement__prompt {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--fg-subtle);
-}
-.blog-engagement__react-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+@keyframes blog-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
 }
 
+/* ---- shared reaction chip (used by the reaction bar) ---- */
 .blog-react {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.45rem 0.8rem;
+  padding: 0.45rem 0.85rem;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--bg);
@@ -924,8 +908,8 @@
   outline-offset: 2px;
 }
 .blog-react__icon {
-  width: 1.05rem;
-  height: 1.05rem;
+  width: 1.1rem;
+  height: 1.1rem;
 }
 .blog-react--active {
   border-color: var(--blog-accent);
@@ -937,72 +921,178 @@
   opacity: 0.85;
 }
 
-.blog-engagement__aside {
+/* ---- bottom-of-article reaction bar ---- */
+.blog-reactions {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 1.1rem;
+  gap: 0.85rem 1.25rem;
+  margin: 2.75rem 0 0.5rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-muted);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
-.blog-engagement__views {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: var(--text-sm);
-  font-variant-numeric: tabular-nums;
+.blog-reactions--ready {
+  opacity: 1;
+  transform: none;
+}
+.blog-reactions__prompt {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--fg-subtle);
 }
-.blog-engagement__views-label {
-  font-size: var(--text-xs);
+.blog-reactions__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: auto;
 }
 
-.blog-engagement__share {
+/* ==========================================================================
+   Floating share dock — sticky left rail (desktop) ↔ FAB popover (mobile)
+   ========================================================================== */
+.blog-share-dock {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 60;
   display: flex;
-  align-items: center;
-  gap: 0.45rem;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.blog-share-btn {
+.blog-share-dock--visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* the popover stack of share targets */
+.blog-share-dock__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transform-origin: bottom center;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.blog-share-dock--open .blog-share-dock__actions {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.blog-share-dock__label {
+  display: none;
+}
+
+.blog-share-dock__btn,
+.blog-share-dock__fab {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  width: 2.2rem;
-  height: 2.2rem;
-  padding: 0;
-  border: 1px solid var(--border);
+  width: 2.6rem;
+  height: 2.6rem;
   border-radius: 999px;
+  border: 1px solid var(--border);
   background: var(--bg);
   color: var(--fg);
   cursor: pointer;
   text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   transition: border-color 0.18s ease, background 0.18s ease,
-    transform 0.18s ease, color 0.18s ease;
+    color 0.18s ease, transform 0.18s ease;
 }
-.blog-share-btn:hover {
+.blog-share-dock__btn:hover,
+.blog-share-dock__fab:hover {
   border-color: var(--blog-accent-line);
   color: var(--blog-accent);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
-.blog-share-btn:focus-visible {
+.blog-share-dock__btn:focus-visible,
+.blog-share-dock__fab:focus-visible {
   outline: 2px solid var(--blog-accent);
   outline-offset: 2px;
 }
-.blog-share-btn--primary {
-  width: auto;
-  padding: 0 0.95rem;
-  font-size: var(--text-sm);
-  background: var(--blog-accent-soft);
-  border-color: var(--blog-accent-line);
-  color: var(--blog-accent);
+.blog-share-dock__fab {
+  background: var(--blog-accent);
+  border-color: var(--blog-accent);
+  color: #fff;
+  box-shadow: 0 6px 18px color-mix(in oklab, var(--blog-accent) 45%, transparent);
+}
+.blog-share-dock__fab:hover {
+  color: #fff;
+}
+
+/* Desktop ≥1280px: become a static vertical rail in the left margin. */
+@media (min-width: 1280px) {
+  .blog-share-dock {
+    right: auto;
+    bottom: auto;
+    top: 50%;
+    left: max(1.25rem, calc((100vw - 1060px) / 2 - 4rem));
+    transform: translateY(-50%);
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .blog-share-dock--visible {
+    transform: translateY(-50%);
+  }
+  .blog-share-dock__actions {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .blog-share-dock__label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    writing-mode: vertical-rl;
+    margin-bottom: 0.4rem;
+  }
+  .blog-share-dock__btn {
+    width: 2.4rem;
+    height: 2.4rem;
+    box-shadow: none;
+  }
+  .blog-share-dock__fab {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {
-  .blog-engagement {
+  .blog-reactions {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.1rem;
     padding: 1.2rem 1.15rem;
   }
-  .blog-engagement__aside {
+  .blog-reactions__row {
+    margin-left: 0;
     width: 100%;
-    justify-content: space-between;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-share-dock,
+  .blog-share-dock__actions,
+  .blog-reactions,
+  .blog-article__views {
+    transition: none;
+    animation: none;
   }
 }

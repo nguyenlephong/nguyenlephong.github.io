@@ -20,7 +20,10 @@ import {
 } from '@/lib/blog/data'
 import BlogContent from '@/components/blog/BlogContent'
 import BlogToc from '@/components/blog/BlogToc'
-import BlogEngagement from '@/components/blog/BlogEngagement'
+import { EngagementProvider } from '@/components/blog/EngagementProvider'
+import BlogViewCount from '@/components/blog/BlogViewCount'
+import BlogShareDock from '@/components/blog/BlogShareDock'
+import BlogReactions from '@/components/blog/BlogReactions'
 import '../../blog.css'
 
 type Props = {
@@ -195,6 +198,17 @@ export default async function BlogPostPage({ params }: Props) {
         />
       )}
 
+      <EngagementProvider category={category} slug={slug}>
+      <BlogShareDock
+        url={canonical}
+        title={post.title}
+        labels={{
+          share: t('engagement.share'),
+          copyLink: t('engagement.copyLink'),
+          copied: t('engagement.copied'),
+          close: t('engagement.close'),
+        }}
+      />
       <div className="blog-article__main">
         <nav className="blog-breadcrumb" aria-label="Breadcrumb">
           <Link href="/blog">{t('title')}</Link>
@@ -218,6 +232,7 @@ export default async function BlogPostPage({ params }: Props) {
             <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
             <span aria-hidden="true">·</span>
             <span>{t('readingTime', { minutes: post.readingMinutes })}</span>
+            <BlogViewCount label={t('engagement.views')} />
           </div>
           {post.tags.length > 0 && (
             <ul className="blog-article__tags">
@@ -230,23 +245,13 @@ export default async function BlogPostPage({ params }: Props) {
 
         <BlogContent html={post.html} />
 
-        <BlogEngagement
-          category={category}
-          slug={slug}
-          url={canonical}
-          title={post.title}
-          labels={{
-            reactionsPrompt: t('engagement.reactionsPrompt'),
-            views: t('engagement.views'),
-            share: t('engagement.share'),
-            copyLink: t('engagement.copyLink'),
-            copied: t('engagement.copied'),
-            reactions: {
-              like: t('engagement.reactions.like'),
-              love: t('engagement.reactions.love'),
-              insightful: t('engagement.reactions.insightful'),
-              clap: t('engagement.reactions.clap'),
-            },
+        <BlogReactions
+          prompt={t('engagement.reactionsPrompt')}
+          reactionLabels={{
+            like: t('engagement.reactions.like'),
+            love: t('engagement.reactions.love'),
+            insightful: t('engagement.reactions.insightful'),
+            clap: t('engagement.reactions.clap'),
           }}
         />
 
@@ -306,6 +311,7 @@ export default async function BlogPostPage({ params }: Props) {
       <aside className="blog-article__toc">
         <BlogToc label={t('onThisPage')} />
       </aside>
+      </EngagementProvider>
     </main>
   )
 }

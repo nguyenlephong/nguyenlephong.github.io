@@ -37,6 +37,12 @@ export function postStatsId(category: string, slug: string): string {
   return `${category}__${slug}`
 }
 
+/** Compact display for counters: 1234 → "1.2k", 12000 → "12k". */
+export function formatCount(n: number): string {
+  if (n >= 1000) return (n / 1000).toFixed(n >= 10000 ? 0 : 1) + 'k'
+  return String(n)
+}
+
 function normalise(data: Record<string, unknown> | undefined): PostStats {
   const reactions = (data?.reactions ?? {}) as Partial<ReactionCounts>
   return {

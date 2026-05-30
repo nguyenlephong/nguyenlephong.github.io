@@ -53,6 +53,20 @@ Add Firestore-backed engagement to blog posts: per-post **view count**, **reacti
    secrets/build env (they're public anyway).
 6. `bun run dev`, open a blog post → reactions/share appear; refresh → view +1 once/session.
 
+## Update — engagement layout v2
+Refactored into a shared context so all widgets share one Firestore read / one
+view increment:
+- `src/components/blog/EngagementProvider.tsx` — context wrapping the article.
+- `src/components/blog/BlogViewCount.tsx` — view count inline in the byline meta
+  (hidden until ready & views > 0).
+- `src/components/blog/BlogShareDock.tsx` — responsive share surface:
+  ≥1280px = sticky vertical rail in the left margin; <1280px = floating FAB
+  (bottom-right) that opens a popover / native share sheet. Reveals after 500px scroll.
+- `src/components/blog/BlogReactions.tsx` — bottom bar, reactions only (share removed).
+- `BlogEngagement.tsx` deleted. `formatCount` moved to `postStats.ts`.
+- New i18n key `Pages.blog.engagement.close` in all 6 locales.
+
 ## Verify
 - `bunx tsc --noEmit` → clean.
-- `bunx next build` → green, 240+ static post pages, firebase in async chunk.
+- `bunx next build` → green, 747 static pages, firebase in async chunk.
+- Exported HTML contains `.blog-share-dock` + `.blog-reactions`, old `.blog-engagement` gone.
