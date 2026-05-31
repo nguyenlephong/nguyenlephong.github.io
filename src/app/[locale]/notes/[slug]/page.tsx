@@ -6,6 +6,11 @@ import { SITE, SITE_URL } from '@/app/seo.config'
 import { buildDescription } from '@/lib/blog/seo'
 import { listNoteSlugs, loadNote } from '@/lib/notes/data'
 import BlogContent from '@/components/blog/BlogContent'
+import BlogToc from '@/components/blog/BlogToc'
+import BlogViewCount from '@/components/blog/BlogViewCount'
+import BlogShareDock from '@/components/blog/BlogShareDock'
+import BlogReactions from '@/components/blog/BlogReactions'
+import { EngagementProvider } from '@/components/blog/EngagementProvider'
 import '../notes.css'
 import '../../blog/blog.css'
 
@@ -97,42 +102,72 @@ export default async function NotePage({ params }: Props) {
   }
 
   return (
-    <main className="notes-article">
+    <main className="blog-article blog-article--ocean notes-accent">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
       />
 
-      <nav className="notes-breadcrumb" aria-label="Breadcrumb">
-        <Link href="/notes">Ghi chú</Link>
-        <span aria-hidden="true">/</span>
-        <span>{note.title}</span>
-      </nav>
+      <EngagementProvider category="notes" slug={slug}>
+        <BlogShareDock
+          url={canonical}
+          title={note.title}
+          labels={{
+            share: 'Chia sẻ',
+            copyLink: 'Sao chép liên kết',
+            copied: 'Đã sao chép!',
+            close: 'Đóng',
+          }}
+        />
 
-      <header className="notes-article__head">
-        <h1 className="notes-article__title">{note.title}</h1>
-        <p className="notes-article__summary">{note.summary}</p>
-        <div className="notes-article__meta">
-          <time dateTime={note.date}>{formatDate(note.date)}</time>
-          <span aria-hidden="true">·</span>
-          <span>{note.readingMinutes} phút đọc</span>
+        <div className="blog-article__main">
+          <nav className="blog-breadcrumb" aria-label="Breadcrumb">
+            <Link href="/notes">Ghi chú</Link>
+            <span aria-hidden="true">/</span>
+            <span>{note.title}</span>
+          </nav>
+
+          <header className="blog-article__head">
+            <h1 className="blog-article__title">{note.title}</h1>
+            <p className="blog-article__summary">{note.summary}</p>
+            <div className="blog-article__meta">
+              <time dateTime={note.date}>{formatDate(note.date)}</time>
+              <span aria-hidden="true">·</span>
+              <span>{note.readingMinutes} phút đọc</span>
+              <BlogViewCount label="lượt xem" />
+            </div>
+            {note.tags.length > 0 && (
+              <ul className="blog-article__tags">
+                {note.tags.map((tag) => (
+                  <li key={tag}>{tag}</li>
+                ))}
+              </ul>
+            )}
+          </header>
+
+          <BlogContent html={note.html} />
+
+          <BlogReactions
+            prompt="Bài này có hữu ích không?"
+            reactionLabels={{
+              like: 'Thích',
+              love: 'Yêu thích',
+              insightful: 'Sâu sắc',
+              clap: 'Tuyệt vời',
+            }}
+          />
+
+          <footer className="blog-article__footer">
+            <Link href="/notes" className="blog-back">
+              ← Quay lại Ghi chú
+            </Link>
+          </footer>
         </div>
-        {note.tags.length > 0 && (
-          <ul className="notes-article__tags">
-            {note.tags.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
-        )}
-      </header>
 
-      <BlogContent html={note.html} />
-
-      <footer className="notes-article__footer">
-        <Link href="/notes" className="notes-back">
-          ← Quay lại Ghi chú
-        </Link>
-      </footer>
+        <aside className="blog-article__toc">
+          <BlogToc label="Trong bài này" />
+        </aside>
+      </EngagementProvider>
     </main>
   )
 }
