@@ -278,7 +278,9 @@
       "viewList": "Liste",
       "viewToggle": "Changer de vue",
       "share": "Partager",
-      "copied": "Copié !"
+      "copied": "Copié !",
+      "copyLink": "Copier le lien",
+      "close": "Fermer"
     },
     "blog": {
       "eyebrow": "Articles",

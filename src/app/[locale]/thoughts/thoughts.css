@@ -479,3 +479,144 @@
 .thoughts-page__credit a:hover {
   border-bottom-color: var(--accent);
 }
+
+/* ========================================================================
+   Floating share dock — FAB + popover (mobile) ↔ left rail (desktop)
+   ======================================================================== */
+.thought-share-dock {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.thought-share-dock--visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.thought-share-dock__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transform-origin: bottom center;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.thought-share-dock--open .thought-share-dock__actions {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.thought-share-dock__label {
+  display: none;
+}
+
+.thought-share-dock__btn,
+.thought-share-dock__fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--fg);
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.18s ease, background 0.18s ease,
+    color 0.18s ease, transform 0.18s ease;
+}
+
+.thought-share-dock__btn:hover,
+.thought-share-dock__fab:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.thought-share-dock__btn:focus-visible,
+.thought-share-dock__fab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.thought-share-dock__fab {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 6px 18px color-mix(in oklab, var(--accent) 45%, transparent);
+}
+
+.thought-share-dock__fab:hover {
+  color: #fff;
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Desktop ≥1280px: static vertical rail on the left margin */
+@media (min-width: 1280px) {
+  .thought-share-dock {
+    right: auto;
+    bottom: auto;
+    top: 50%;
+    left: max(1.25rem, calc((100vw - 720px) / 2 - 4.5rem));
+    transform: translateY(-50%);
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .thought-share-dock--visible {
+    transform: translateY(-50%);
+  }
+
+  .thought-share-dock__actions {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .thought-share-dock__label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    writing-mode: vertical-rl;
+    margin-bottom: 0.4rem;
+  }
+
+  .thought-share-dock__btn {
+    width: 2.4rem;
+    height: 2.4rem;
+    box-shadow: none;
+  }
+
+  .thought-share-dock__fab {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thought-share-dock,
+  .thought-share-dock__actions {
+    transition: none;
+    animation: none;
+  }
+}

@@ -278,7 +278,9 @@
       "viewList": "Danh sách",
       "viewToggle": "Đổi chế độ xem",
       "share": "Chia sẻ",
-      "copied": "Đã sao chép!"
+      "copied": "Đã sao chép!",
+      "copyLink": "Sao chép liên kết",
+      "close": "Đóng"
     },
     "blog": {
       "eyebrow": "Bài viết",

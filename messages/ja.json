@@ -278,7 +278,9 @@
       "viewList": "リスト",
       "viewToggle": "表示切替",
       "share": "シェア",
-      "copied": "コピーしました!"
+      "copied": "コピーしました!",
+      "copyLink": "リンクをコピー",
+      "close": "閉じる"
     },
     "blog": {
       "eyebrow": "記事",
