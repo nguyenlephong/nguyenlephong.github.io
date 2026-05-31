@@ -23,6 +23,14 @@
       "description": "Practical, developer-focused writing on artificial intelligence: how to get great results from AI tools, understand how language models actually work, build reliable AI-powered products, and navigate the fast-moving landscape of LLMs, agents, and context engineering. Written for engineers who want to work smarter with AI — not just follow the hype.",
       "accent": "gold",
       "order": 3
+    },
+    {
+      "slug": "perspectives",
+      "title": "Perspectives",
+      "tagline": "Personal reflections on technology, society, and the questions worth asking out loud.",
+      "description": "Personal essays and reflections sitting outside the technical — questions about how we work, why we follow the rules we follow, and what technology is actually doing to the time we have. Honest, opinionated, and written without a safety net.",
+      "accent": "dark",
+      "order": 4
     }
   ],
   "posts": [
@@ -251,6 +259,24 @@
         "LLM",
         "Developer Productivity",
         "AI Tools"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
+      "slug": "the-monkey-eight-hours-and-unquestioned-rules",
+      "category": "perspectives",
+      "title": "The Monkey, the Bananas, and the 8-Hour Question",
+      "summary": "A famous monkey experiment, Sơn Tùng M-TP, and the workday that hasn't changed since the industrial revolution. A personal reflection on the rules we follow without remembering why — and what AI should actually be giving us back.",
+      "date": "2026-05-31",
+      "readingMinutes": 9,
+      "tags": [
+        "Work",
+        "Society",
+        "AI",
+        "Productivity",
+        "Personal Reflection",
+        "Future of Work"
       ],
       "author": "Nguyen Le Phong",
       "featured": true

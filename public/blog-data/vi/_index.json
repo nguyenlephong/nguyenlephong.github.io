@@ -23,6 +23,14 @@
       "description": "Bài viết thực tế, định hướng developer về trí tuệ nhân tạo: cách đạt kết quả tốt với công cụ AI, hiểu cách mô hình ngôn ngữ thực sự hoạt động, xây dựng sản phẩm AI đáng tin cậy và điều hướng bối cảnh đang thay đổi nhanh của LLM, agent và context engineering. Viết cho kỹ sư muốn làm việc thông minh hơn với AI.",
       "accent": "gold",
       "order": 3
+    },
+    {
+      "slug": "perspectives",
+      "title": "Chia sẻ",
+      "tagline": "Góc nhìn cá nhân về công nghệ, xã hội và những câu hỏi đáng đặt ra.",
+      "description": "Những bài viết cá nhân nằm ngoài địa hạt kỹ thuật — về cách chúng ta làm việc, lý do chúng ta tuân theo những quy tắc mình đã không còn nhớ nguồn gốc, và điều mà công nghệ thực sự đang làm với quỹ thời gian của mỗi người. Trung thực, có quan điểm và không có lưới an toàn.",
+      "accent": "dark",
+      "order": 4
     }
   ],
   "posts": [
@@ -252,6 +260,24 @@
         "Năng suất Developer",
         "Công cụ AI"
       ]
+    },
+    {
+      "slug": "the-monkey-eight-hours-and-unquestioned-rules",
+      "category": "perspectives",
+      "title": "Con Khỉ, Nải Chuối và Câu Hỏi 8 Tiếng",
+      "summary": "Một thí nghiệm nổi tiếng về đàn khỉ, Sơn Tùng M-TP và ngày làm việc chưa thay đổi kể từ cuộc cách mạng công nghiệp. Suy nghĩ cá nhân về những quy tắc ta tuân theo mà không còn nhớ lý do — và điều mà AI đáng lẽ phải trả lại cho chúng ta.",
+      "date": "2026-05-31",
+      "readingMinutes": 9,
+      "tags": [
+        "Công việc",
+        "Xã hội",
+        "AI",
+        "Năng suất",
+        "Góc nhìn cá nhân",
+        "Tương lai lao động"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
     }
   ]
 }
