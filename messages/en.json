@@ -276,7 +276,9 @@
       "credit": "Inspired by and currently mirroring thoughts from <link>huylenq.github.io</link>. These notes are his; the mirror is private and credited.",
       "viewGraph": "Graph",
       "viewList": "List",
-      "viewToggle": "Switch view"
+      "viewToggle": "Switch view",
+      "share": "Share",
+      "copied": "Copied!"
     },
     "blog": {
       "eyebrow": "Writing",

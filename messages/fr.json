@@ -276,7 +276,9 @@
       "credit": "Inspiré de et actuellement miroir des notes de <link>huylenq.github.io</link>. Crédit à l’auteur original.",
       "viewGraph": "Graphe",
       "viewList": "Liste",
-      "viewToggle": "Changer de vue"
+      "viewToggle": "Changer de vue",
+      "share": "Partager",
+      "copied": "Copié !"
     },
     "blog": {
       "eyebrow": "Articles",

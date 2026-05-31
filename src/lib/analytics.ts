@@ -43,6 +43,9 @@ export type AnalyticsEvent =
   // Home (legacy /home page)
   | 'home_view'
   | 'home_social_click'
+  // Thoughts
+  | 'thoughts_view_toggle'
+  | 'thoughts_share'
   // Outbound
   | 'outbound_click'
 

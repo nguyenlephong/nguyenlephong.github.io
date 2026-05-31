@@ -3,12 +3,26 @@
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { TbNetwork, TbLayoutList } from 'react-icons/tb'
+import { track } from '@/lib/analytics'
 import ThoughtGraph from './ThoughtGraph'
 import ThoughtList from './ThoughtList'
 import type { PublicThought, ThoughtEdge } from '@/lib/thoughts/types'
 
 type View = 'graph' | 'list'
 const STORAGE_KEY = 'thoughts-view'
+const PARAM_KEY = 'view'
+
+function getUrlView(): View | null {
+  if (typeof window === 'undefined') return null
+  const v = new URLSearchParams(window.location.search).get(PARAM_KEY) as View | null
+  return v === 'graph' || v === 'list' ? v : null
+}
+
+function setUrlView(v: View) {
+  const params = new URLSearchParams(window.location.search)
+  params.set(PARAM_KEY, v)
+  window.history.replaceState(null, '', `?${params.toString()}`)
+}
 
 interface Props {
   thoughts: PublicThought[]
@@ -20,23 +34,36 @@ export default function ThoughtsViewClient({ thoughts, edges }: Props) {
   const [view, setView] = useState<View>('graph')
 
   useEffect(() => {
+    // Priority: URL param → localStorage → mobile default
+    const urlView = getUrlView()
+    if (urlView) {
+      setView(urlView)
+      return
+    }
     try {
       const saved = localStorage.getItem(STORAGE_KEY) as View | null
       if (saved === 'graph' || saved === 'list') {
         setView(saved)
+        setUrlView(saved)
         return
       }
     } catch {}
     try {
-      if (window.matchMedia('(max-width: 640px)').matches) setView('list')
+      if (window.matchMedia('(max-width: 640px)').matches) {
+        setView('list')
+        setUrlView('list')
+      }
     } catch {}
   }, [])
 
   const changeView = (v: View) => {
+    if (v === view) return
     setView(v)
+    setUrlView(v)
     try {
       localStorage.setItem(STORAGE_KEY, v)
     } catch {}
+    track('thoughts_view_toggle', { from: view, to: v })
   }
 
   return (

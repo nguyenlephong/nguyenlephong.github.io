@@ -276,7 +276,9 @@
       "credit": "灵感来自并镜像 <link>huylenq.github.io</link>。笔记原作归属于原作者；本镜像为私有并注明出处。",
       "viewGraph": "关系图",
       "viewList": "列表",
-      "viewToggle": "切换视图"
+      "viewToggle": "切换视图",
+      "share": "分享",
+      "copied": "已复制!"
     },
     "blog": {
       "eyebrow": "文章",

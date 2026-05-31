@@ -276,7 +276,9 @@
       "credit": "<link>huylenq.github.io</link> から着想を得て、現在ミラーしています。ノートは原作者のものです。",
       "viewGraph": "グラフ",
       "viewList": "リスト",
-      "viewToggle": "表示切替"
+      "viewToggle": "表示切替",
+      "share": "シェア",
+      "copied": "コピーしました!"
     },
     "blog": {
       "eyebrow": "記事",

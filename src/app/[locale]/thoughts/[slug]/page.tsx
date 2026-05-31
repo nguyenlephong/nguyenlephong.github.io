@@ -19,6 +19,8 @@ import {
 import { listThoughtSlugs, loadThought } from '@/lib/thoughts/data'
 import ThoughtContent from '@/components/thoughts/ThoughtContent'
 import Backlinks from '@/components/thoughts/Backlinks'
+import ThoughtViewCount from '@/components/thoughts/ThoughtViewCount'
+import ThoughtShareButton from '@/components/thoughts/ThoughtShareButton'
 import '../thoughts.css'
 
 type Props = { params: Promise<{ locale: string; slug: string }> }
@@ -136,8 +138,18 @@ export default async function ThoughtPage({ params }: Props) {
         ← {t('backToIndex')}
       </Link>
       <h1 className="thought-page__title">{thought.title}</h1>
-      <div className="thought-page__maturity">
-        {t(`maturity.${thought.maturity}`)}
+      <div className="thought-page__meta-row">
+        <span className="thought-page__maturity">
+          {t(`maturity.${thought.maturity}`)}
+        </span>
+        <ThoughtViewCount slug={slug} />
+        <ThoughtShareButton
+          url={canonical}
+          title={thought.title}
+          slug={slug}
+          label={t('share')}
+          copiedLabel={t('copied')}
+        />
       </div>
 
       <ThoughtContent html={thought.html} />
