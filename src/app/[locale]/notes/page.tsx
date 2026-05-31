@@ -1,8 +1,10 @@
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
+import { setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { SITE, SITE_URL } from '@/app/seo.config'
 import { listNotes } from '@/lib/notes/data'
+import { routing } from '@/i18n/routing'
 import './notes.css'
 
 export const metadata: Metadata = {
@@ -37,8 +39,13 @@ function formatDate(iso: string): string {
   }).format(date)
 }
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
 export default async function NotesPage({ params }: Props) {
   const { locale } = await params
+  setRequestLocale(locale)
   if (locale !== 'vi') redirect('/vi/notes')
 
   const posts = listNotes()

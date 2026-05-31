@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
+import { setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { SITE, SITE_URL } from '@/app/seo.config'
-import { buildDescription, htmlToPlainText } from '@/lib/blog/seo'
+import { buildDescription } from '@/lib/blog/seo'
 import { listNoteSlugs, loadNote } from '@/lib/notes/data'
 import BlogContent from '@/components/blog/BlogContent'
 import '../notes.css'
@@ -66,6 +67,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function NotePage({ params }: Props) {
   const { locale, slug } = await params
+  setRequestLocale(locale)
   if (locale !== 'vi') redirect(`/vi/notes/${slug}`)
 
   const note = loadNote(slug)
