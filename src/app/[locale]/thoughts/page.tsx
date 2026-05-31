@@ -112,6 +112,7 @@ export default async function ThoughtsIndexPage({ params }: Props) {
           <div className="thoughts-fullpage__meta">
             <p className="thoughts-fullpage__eyebrow">{t('eyebrow')}</p>
             <h1 className="thoughts-fullpage__title">{t('title')}</h1>
+            <p className="thoughts-fullpage__intro">{t('intro')}</p>
           </div>
           <p className="thoughts-fullpage__credit">
             {t.rich('credit', {

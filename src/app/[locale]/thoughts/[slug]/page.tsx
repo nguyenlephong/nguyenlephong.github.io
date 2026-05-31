@@ -8,6 +8,7 @@ import {
   SITE,
   SITE_URL,
   THOUGHTS_SOURCE,
+  PAGE_SEO,
 } from '@/app/seo.config'
 import {
   OG_LOCALE_MAP,
@@ -41,9 +42,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = canonicalFor(locale, `/thoughts/${slug}`)
   const languages = localeAlternates(`/thoughts/${slug}`)
 
+  const baseKeywords = PAGE_SEO.thoughts.keywords ?? []
+  const titleWords = thought.title
+    .toLowerCase()
+    .split(/\s+/)
+    .filter((w) => w.length > 3)
+  const keywords = [...new Set([...baseKeywords, ...titleWords])]
+
   return {
     title,
     description,
+    keywords,
     alternates: { canonical, languages },
     openGraph: {
       type: 'article',

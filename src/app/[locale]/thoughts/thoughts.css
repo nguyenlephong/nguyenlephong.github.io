@@ -38,6 +38,14 @@
   color: var(--fg);
 }
 
+.thoughts-fullpage__intro {
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+  line-height: 1.6;
+  margin: 0.5rem 0 0;
+  max-width: 48ch;
+}
+
 .thoughts-fullpage__credit {
   font-size: var(--text-xs);
   color: var(--fg-subtle);
