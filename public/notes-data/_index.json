@@ -1,12 +1,30 @@
 {
+  "topics": [
+    {
+      "id": "mua-nha",
+      "label": "Mua nhà",
+      "description": "Kinh nghiệm thực tế từ quá trình tìm kiếm, đánh giá và xuống tiền mua bất động sản.",
+      "color": "#059669"
+    }
+  ],
   "posts": [
+    {
+      "slug": "chi-phi-mua-nha-toan-bo-nhung-khoan-can-biet",
+      "title": "Toàn bộ chi phí khi mua nhà — đừng để bị bất ngờ",
+      "summary": "Giá nhà chỉ là một phần. Xung quanh nó là hàng chục khoản phí mà nhiều người mua lần đầu không lường trước — từ thuế trước bạ, phí công chứng, quỹ bảo trì, đến chi phí vận hành hàng tháng. Bài này tổng hợp đầy đủ để bạn lập ngân sách chính xác trước khi xuống tiền.",
+      "date": "2026-05-31",
+      "readingMinutes": 11,
+      "tags": ["Mua nhà", "Bất động sản", "Tài chính", "Chi phí", "Kinh nghiệm"],
+      "topic": "mua-nha"
+    },
     {
       "slug": "bay-mat-tien-khi-mua-nha-cac-kich-ban-can-tranh",
       "title": "Những cái bẫy khiến bạn mất tiền khi mua nhà — từ vay vốn đến tranh chấp",
       "summary": "Không ai mua nhà với ý định bị lừa. Nhưng mỗi năm có hàng nghìn người mất tiền — không phải vì họ không cẩn thận, mà vì họ không biết những kịch bản này tồn tại. Đây là bản đồ các bẫy phổ biến nhất, từ khoản vay đến đặt cọc, tranh chấp, và án phí.",
       "date": "2026-05-31",
       "readingMinutes": 16,
-      "tags": ["Mua nhà", "Bất động sản", "Cảnh báo", "Pháp lý", "Kinh nghiệm"]
+      "tags": ["Mua nhà", "Bất động sản", "Cảnh báo", "Pháp lý", "Kinh nghiệm"],
+      "topic": "mua-nha"
     },
     {
       "slug": "phap-ly-bat-dong-san-nhung-dieu-can-biet",
@@ -14,7 +32,8 @@
       "summary": "Mất tiền vì bất động sản thường không phải do giá cao hay vị trí xấu — mà do pháp lý. Bài này là bộ checklist chi tiết về những gì cần kiểm tra, những dấu hiệu cần cảnh giác, và những bẫy phổ biến nhất mà người mua thường bỏ qua.",
       "date": "2026-05-31",
       "readingMinutes": 12,
-      "tags": ["Pháp lý", "Mua nhà", "Bất động sản", "Kinh nghiệm", "Rủi ro"]
+      "tags": ["Pháp lý", "Mua nhà", "Bất động sản", "Kinh nghiệm", "Rủi ro"],
+      "topic": "mua-nha"
     },
     {
       "slug": "phong-thuy-mua-nha-tieu-chi-can-biet",
@@ -22,7 +41,8 @@
       "summary": "Phong thủy không chỉ là tâm linh. Nhiều nguyên tắc phong thủy có nền tảng thực tế rõ ràng — từ hướng nhà, cửa chính, bố cục nội thất, đến những thứ cần tránh. Đây là bộ tiêu chí tôi tổng hợp lại để dùng khi xem nhà.",
       "date": "2026-05-31",
       "readingMinutes": 9,
-      "tags": ["Phong thủy", "Mua nhà", "Bất động sản", "Kinh nghiệm"]
+      "tags": ["Phong thủy", "Mua nhà", "Bất động sản", "Kinh nghiệm"],
+      "topic": "mua-nha"
     },
     {
       "slug": "mua-nha-nhung-dieu-can-biet",
@@ -30,7 +50,8 @@
       "summary": "Những điều cần đặt ra ngay từ đầu khi bắt đầu nghĩ đến việc mua nhà — xác định mục đích, các yếu tố cần đánh giá, và chiến lược xem nhà hiệu quả.",
       "date": "2026-05-31",
       "readingMinutes": 7,
-      "tags": ["Mua nhà", "Bất động sản", "Kinh nghiệm", "Đầu tư"]
+      "tags": ["Mua nhà", "Bất động sản", "Kinh nghiệm", "Đầu tư"],
+      "topic": "mua-nha"
     }
   ]
 }
