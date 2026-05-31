@@ -273,7 +273,10 @@
         "budding": "Nẩy mầm",
         "evergreen": "Trưởng thành"
       },
-      "credit": "Lấy cảm hứng và hiện đang phản chiếu ý nghĩ từ <link>huylenq.github.io</link>. Các ghi chú thuộc về anh ấy; bản mirror này riêng tư và có ghi nguồn."
+      "credit": "Lấy cảm hứng và hiện đang phản chiếu ý nghĩ từ <link>huylenq.github.io</link>. Các ghi chú thuộc về anh ấy; bản mirror này riêng tư và có ghi nguồn.",
+      "viewGraph": "Đồ thị",
+      "viewList": "Danh sách",
+      "viewToggle": "Đổi chế độ xem"
     },
     "blog": {
       "eyebrow": "Bài viết",

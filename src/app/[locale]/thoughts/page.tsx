@@ -16,7 +16,7 @@ import {
   localeAlternates,
 } from '@/lib/thoughts/seo'
 import { loadGraph } from '@/lib/thoughts/data'
-import ThoughtGraph from '@/components/thoughts/ThoughtGraph'
+import ThoughtsViewClient from '@/components/thoughts/ThoughtsViewClient'
 import './thoughts.css'
 
 type Props = { params: Promise<{ locale: string }> }
@@ -131,9 +131,7 @@ export default async function ThoughtsIndexPage({ params }: Props) {
       </header>
 
       {thoughts.length > 0 ? (
-        <div className="thoughts-fullpage__graph">
-          <ThoughtGraph thoughts={thoughts} edges={graph.edges} fillViewport />
-        </div>
+        <ThoughtsViewClient thoughts={thoughts} edges={graph.edges} />
       ) : (
         <p className="thoughts-fullpage__empty">{t('empty')}</p>
       )}

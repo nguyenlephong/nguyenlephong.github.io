@@ -273,7 +273,10 @@
         "budding": "Budding",
         "evergreen": "Evergreen"
       },
-      "credit": "Inspired by and currently mirroring thoughts from <link>huylenq.github.io</link>. These notes are his; the mirror is private and credited."
+      "credit": "Inspired by and currently mirroring thoughts from <link>huylenq.github.io</link>. These notes are his; the mirror is private and credited.",
+      "viewGraph": "Graph",
+      "viewList": "List",
+      "viewToggle": "Switch view"
     },
     "blog": {
       "eyebrow": "Writing",

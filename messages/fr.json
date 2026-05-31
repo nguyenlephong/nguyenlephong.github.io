@@ -273,7 +273,10 @@
         "budding": "Bourgeon",
         "evergreen": "Persistant"
       },
-      "credit": "Inspiré de et actuellement miroir des notes de <link>huylenq.github.io</link>. Crédit à l’auteur original."
+      "credit": "Inspiré de et actuellement miroir des notes de <link>huylenq.github.io</link>. Crédit à l’auteur original.",
+      "viewGraph": "Graphe",
+      "viewList": "Liste",
+      "viewToggle": "Changer de vue"
     },
     "blog": {
       "eyebrow": "Articles",

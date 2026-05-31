@@ -65,6 +65,157 @@
   border-bottom-color: var(--accent);
 }
 
+/* === View client wrapper === */
+.thoughts-view {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.thoughts-view--graph {
+  background: var(--bg-muted);
+  overflow: hidden;
+}
+
+.thoughts-view--list {
+  background: var(--bg);
+}
+
+.thoughts-view__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+.thoughts-view__tab {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: none;
+  color: var(--fg-muted);
+  font-size: var(--text-xs);
+  font-family: inherit;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color 150ms, background 150ms, border-color 150ms;
+}
+
+.thoughts-view__tab:hover {
+  color: var(--fg);
+  background: var(--bg-muted);
+}
+
+.thoughts-view__tab.is-active {
+  color: var(--fg);
+  background: var(--bg-muted);
+  border-color: var(--border);
+}
+
+.thoughts-view__graph-wrap {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.thoughts-view__list-wrap {
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+/* === List view === */
+.thought-list {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 3vw, 2rem) 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.thought-list__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.thought-list__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  font-weight: 400;
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.thought-list__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.thought-list__dot--evergreen { background: var(--fg); }
+.thought-list__dot--budding   { background: var(--fg-muted); }
+.thought-list__dot--seed      { background: var(--fg-subtle); }
+
+.thought-list__count {
+  margin-left: auto;
+  font-size: var(--text-xs);
+  color: var(--fg-subtle);
+}
+
+.thought-list__items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.thought-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+  text-decoration: none;
+  color: var(--fg);
+  min-height: 44px;
+  transition: color 150ms;
+}
+
+.thought-list__item:hover {
+  color: var(--accent);
+}
+
+.thought-list__title {
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  flex: 1;
+}
+
+.thought-list__links {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--fg-subtle);
+  white-space: nowrap;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
 .thoughts-fullpage__graph {
   flex: 1 1 auto;
   width: 100%;
