@@ -15,6 +15,9 @@
 # testing
 /coverage
 
+# OG image build cache (populated/restored by CI)
+/public/og-cache/*.png
+
 # misc
 .DS_Store
 .env.local

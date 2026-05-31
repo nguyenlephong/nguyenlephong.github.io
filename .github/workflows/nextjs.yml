@@ -40,13 +40,21 @@ jobs:
         if: steps.cache_dependencies.outputs.cache-hit != 'true'
         run: npm install
 
+      - name: Cache OG images ⚡
+        uses: actions/cache@v3
+        with:
+          path: public/og-cache
+          key: og-images-v1-${{ hashFiles('public/blog-data/**/*.json', 'src/app/**/*opengraph*', 'src/app/_og/**') }}
+          restore-keys: |
+            og-images-v1-
+
       - name: Setup Pages ⚙️
         uses: actions/configure-pages@v4
         with:
           static_site_generator: next
 
       - name: Build with Next.js 🏗️
-        run: npx next build
+        run: npm run build
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3

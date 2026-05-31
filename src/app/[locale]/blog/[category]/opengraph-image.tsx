@@ -2,6 +2,7 @@ import { ImageResponse } from 'next/og'
 import { routing } from '@/i18n/routing'
 import { OgShell, OG_SIZE, OG_CONTENT_TYPE, type OgTheme } from '@/app/_og/og-shell'
 import { getCategory, getPostsByCategory, listCategorySlugs } from '@/lib/blog/data'
+import { hashOgParams, getCachedOg, saveOgCache, cachedOgResponse } from '@/lib/og/cache'
 
 export const size = OG_SIZE
 export const contentType = OG_CONTENT_TYPE
@@ -28,8 +29,13 @@ export default async function OgImage({ params }: { params: Promise<Params> }) {
   }
 
   const count = getPostsByCategory(category, locale).length
+  const hash = hashOgParams({ title: cat.title, tagline: cat.tagline, accent: cat.accent, count, locale })
+  const cacheKey = `blog-cat-${category}-${locale}-${hash}`
 
-  return new ImageResponse(
+  const cached = getCachedOg(cacheKey)
+  if (cached) return cachedOgResponse(cached)
+
+  const response = new ImageResponse(
     (
       <OgShell
         theme={cat.accent as OgTheme}
@@ -42,4 +48,7 @@ export default async function OgImage({ params }: { params: Promise<Params> }) {
     ),
     { ...size },
   )
+
+  await saveOgCache(cacheKey, response.clone())
+  return response
 }
