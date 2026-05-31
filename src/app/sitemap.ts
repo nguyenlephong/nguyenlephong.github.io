@@ -3,6 +3,7 @@ import { SITE_URL } from '@/app/seo.config'
 import { routing } from '@/i18n/routing'
 import { listThoughtSlugs } from '@/lib/thoughts/data'
 import { listCategorySlugs, listCategoryPostPairs } from '@/lib/blog/data'
+import { listNoteSlugs } from '@/lib/notes/data'
 
 export const dynamic = 'force-static'
 
@@ -55,6 +56,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
   for (const { category, slug } of listCategoryPostPairs()) {
     pushPath(`/blog/${category}/${slug}`, 0.8, 'monthly')
+  }
+
+  // Notes: Vietnamese-only — canonical at /vi/notes/...
+  for (const slug of listNoteSlugs()) {
+    const canonical = `${SITE_URL}/vi/notes/${slug}`
+    entries.push({
+      url: canonical,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+      alternates: { languages: { vi: canonical, 'x-default': canonical } },
+    })
   }
 
   return entries

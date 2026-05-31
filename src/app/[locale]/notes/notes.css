@@ -1,0 +1,212 @@
+/* ==========================================================================
+   Notes — second brain surface
+   ========================================================================== */
+.notes-home,
+.notes-article {
+  --notes-accent: #059669;
+  --notes-accent-soft: color-mix(in oklab, var(--notes-accent) 12%, transparent);
+  --notes-accent-line: color-mix(in oklab, var(--notes-accent) 28%, transparent);
+  color: var(--fg);
+}
+
+/* ==========================================================================
+   Notes home / list
+   ========================================================================== */
+.notes-home {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem);
+}
+
+.notes-home__head {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border, oklch(88% 0 0));
+}
+
+.notes-home__title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 0.5rem;
+  color: var(--fg);
+}
+
+.notes-home__desc {
+  font-size: var(--text-base, 1rem);
+  color: var(--fg-muted, oklch(50% 0 0));
+  margin: 0;
+  line-height: 1.6;
+}
+
+.notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notes-card {
+  border: 1px solid var(--border, oklch(88% 0 0));
+  border-radius: 10px;
+  transition: border-color 200ms, box-shadow 200ms;
+}
+
+.notes-card:hover {
+  border-color: var(--notes-accent);
+  box-shadow: 0 2px 12px var(--notes-accent-soft);
+}
+
+.notes-card__link {
+  display: block;
+  padding: 1.25rem 1.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.notes-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  margin: 0 0 0.4rem;
+  color: var(--fg);
+}
+
+.notes-card__summary {
+  font-size: 0.9rem;
+  color: var(--fg-muted, oklch(50% 0 0));
+  line-height: 1.55;
+  margin: 0 0 0.75rem;
+}
+
+.notes-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--fg-muted, oklch(55% 0 0));
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.02em;
+}
+
+.notes-card__tags {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.notes-card__tags li {
+  font-size: 0.75rem;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  background: var(--notes-accent-soft);
+  color: var(--notes-accent);
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   Notes article
+   ========================================================================== */
+.notes-article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem);
+}
+
+.notes-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted, oklch(55% 0 0));
+  margin-bottom: 2rem;
+}
+
+.notes-breadcrumb a {
+  color: var(--notes-accent);
+  text-decoration: none;
+}
+
+.notes-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.notes-article__head {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border, oklch(88% 0 0));
+}
+
+.notes-article__title {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
+  color: var(--fg);
+}
+
+.notes-article__summary {
+  font-size: 1.05rem;
+  color: var(--fg-muted, oklch(50% 0 0));
+  line-height: 1.65;
+  margin: 0 0 1.25rem;
+}
+
+.notes-article__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--fg-muted, oklch(55% 0 0));
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.04em;
+}
+
+.notes-article__tags {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.notes-article__tags li {
+  font-size: 0.75rem;
+  padding: 0.2em 0.65em;
+  border-radius: 4px;
+  background: var(--notes-accent-soft);
+  color: var(--notes-accent);
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.04em;
+}
+
+.notes-article__footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border, oklch(88% 0 0));
+}
+
+.notes-back {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--notes-accent);
+  text-decoration: none;
+}
+
+.notes-back:hover {
+  text-decoration: underline;
+}
