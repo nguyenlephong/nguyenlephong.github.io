@@ -15,6 +15,14 @@
       "description": "Practical, people-first writing on engineering culture: how to run code reviews that make code and people better, give and receive feedback well, write pull requests reviewers love, mentor engineers into seniors, and build kind, high-trust teams. Real scripts, examples, and lessons that scale from a two-person startup to a thousand-engineer org.",
       "accent": "violet",
       "order": 2
+    },
+    {
+      "slug": "ai",
+      "title": "AI & The Future",
+      "tagline": "Making sense of AI — from context engineering to building reliable, production-ready AI products.",
+      "description": "Practical, developer-focused writing on artificial intelligence: how to get great results from AI tools, understand how language models actually work, build reliable AI-powered products, and navigate the fast-moving landscape of LLMs, agents, and context engineering. Written for engineers who want to work smarter with AI — not just follow the hype.",
+      "accent": "gold",
+      "order": 3
     }
   ],
   "posts": [
@@ -228,6 +236,24 @@
       "author": "Nguyen Le Phong",
       "series": "kind-engineering",
       "seriesOrder": 5
+    },
+    {
+      "slug": "context-engineering",
+      "category": "ai",
+      "title": "Context Engineering: The Skill That Separates Great AI Users From Everyone Else",
+      "summary": "Most AI results are disappointing not because the models are bad, but because the context is thin. A practical guide to context engineering — what lives in the model's window, the five pillars of great context, common anti-patterns, and reusable templates that consistently produce better results.",
+      "date": "2026-05-31",
+      "readingMinutes": 15,
+      "tags": [
+        "AI",
+        "Context Engineering",
+        "Prompt Engineering",
+        "LLM",
+        "Developer Productivity",
+        "AI Tools"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
     }
   ]
 }

@@ -15,6 +15,14 @@
       "description": "Des écrits pratiques et centrés sur les personnes sur la culture d'ingénierie : comment mener des revues de code qui améliorent à la fois le code et les personnes, bien donner et recevoir des retours, écrire des pull requests que les relecteurs adorent, mentorer les ingénieurs vers le senior, et construire des équipes bienveillantes et de grande confiance. Des scripts réels, des exemples et des leçons qui s'appliquent d'une startup de deux personnes à une organisation de mille ingénieurs.",
       "accent": "violet",
       "order": 2
+    },
+    {
+      "slug": "ai",
+      "title": "IA & L'Avenir",
+      "tagline": "Comprendre l'IA — de l'ingénierie de contexte à la construction de produits IA fiables.",
+      "description": "Des écrits pratiques, orientés développeur sur l'intelligence artificielle : comment obtenir d'excellents résultats des outils IA, comprendre le fonctionnement réel des modèles de langage, construire des produits IA fiables et naviguer dans le paysage en rapide évolution des LLM, agents et ingénierie de contexte.",
+      "accent": "gold",
+      "order": 3
     }
   ],
   "posts": [
@@ -228,6 +236,22 @@
       "author": "Nguyen Le Phong",
       "series": "kind-engineering",
       "seriesOrder": 5
+    },
+    {
+      "slug": "context-engineering",
+      "category": "ai",
+      "title": "L'Ingénierie de Contexte : La Compétence Qui Sépare les Experts IA du Reste",
+      "summary": "La plupart des résultats IA sont décevants non pas parce que les modèles sont mauvais, mais parce que le contexte est trop mince. Un guide pratique de l'ingénierie de contexte — ce qui vit dans la fenêtre du modèle, les cinq piliers d'un excellent contexte, les anti-patterns courants, et des templates réutilisables qui produisent des résultats nettement meilleurs.",
+      "date": "2026-05-31",
+      "readingMinutes": 15,
+      "tags": [
+        "IA",
+        "Ingénierie de Contexte",
+        "Prompt Engineering",
+        "LLM",
+        "Productivité Développeur",
+        "Outils IA"
+      ]
     }
   ]
 }

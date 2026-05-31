@@ -15,6 +15,14 @@
       "description": "Những bài viết thực tế, đặt con người lên trước về văn hoá kỹ thuật: cách chạy review code khiến cả code lẫn con người tốt hơn, đưa ra và nhận phản hồi tốt, viết pull request mà reviewer thích, cố vấn kỹ sư trở thành senior, và xây dựng những nhóm tử tế, tin tưởng cao. Các kịch bản thực tế, ví dụ và bài học có thể áp dụng từ startup hai người đến tổ chức nghìn kỹ sư.",
       "accent": "violet",
       "order": 2
+    },
+    {
+      "slug": "ai",
+      "title": "AI & Tương lai",
+      "tagline": "Hiểu về AI — từ context engineering đến xây dựng sản phẩm AI đáng tin cậy.",
+      "description": "Bài viết thực tế, định hướng developer về trí tuệ nhân tạo: cách đạt kết quả tốt với công cụ AI, hiểu cách mô hình ngôn ngữ thực sự hoạt động, xây dựng sản phẩm AI đáng tin cậy và điều hướng bối cảnh đang thay đổi nhanh của LLM, agent và context engineering. Viết cho kỹ sư muốn làm việc thông minh hơn với AI.",
+      "accent": "gold",
+      "order": 3
     }
   ],
   "posts": [
@@ -228,6 +236,22 @@
       "author": "Nguyen Le Phong",
       "series": "kind-engineering",
       "seriesOrder": 5
+    },
+    {
+      "slug": "context-engineering",
+      "category": "ai",
+      "title": "Context Engineering: Kỹ năng Phân biệt Người dùng AI Giỏi và Người Bình thường",
+      "summary": "Hầu hết kết quả AI đáng thất vọng không phải vì mô hình kém, mà vì bối cảnh quá mỏng. Hướng dẫn thực tế về context engineering — những gì sống trong cửa sổ mô hình, năm trụ cột của bối cảnh tốt, các anti-pattern phổ biến, và template tái sử dụng giúp tạo kết quả tốt hơn.",
+      "date": "2026-05-31",
+      "readingMinutes": 15,
+      "tags": [
+        "AI",
+        "Context Engineering",
+        "Prompt Engineering",
+        "LLM",
+        "Năng suất Developer",
+        "Công cụ AI"
+      ]
     }
   ]
 }
