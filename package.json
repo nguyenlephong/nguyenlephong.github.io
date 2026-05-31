@@ -7,7 +7,7 @@
     "build": "next build && node scripts/postbuild-og.mjs",
     "start": "next start",
     "lint": "eslint .",
-    "predeploy": "bun run build",
+    "predeploy": "node scripts/bump-version.mjs && bun run build",
     "export": "next export",
     "fb-deploy": "firebase deploy",
     "deploy": "touch ./out/.nojekyll && gh-pages -d out -t true"

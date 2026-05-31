@@ -79,7 +79,14 @@ export default function AppFooter() {
         </ul>
 
         <div className="footer-bottom">
-          <p className="footer-copy">{t('copy', { year })}</p>
+          <p className="footer-copy">
+            {t('copy', { year })}
+            {process.env.NEXT_PUBLIC_APP_VERSION && (
+              <span className="footer-version">
+                v{process.env.NEXT_PUBLIC_APP_VERSION}
+              </span>
+            )}
+          </p>
           <div className="footer-controls">
             <FontSwitcher placement="up" />
             <LocaleSwitcher />

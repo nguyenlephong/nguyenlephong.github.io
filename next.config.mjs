@@ -1,4 +1,10 @@
+import { readFileSync } from 'node:fs'
+import { URL } from 'node:url'
 import createNextIntlPlugin from 'next-intl/plugin'
+
+const { version: appVersion } = JSON.parse(
+  readFileSync(new URL('./app-version.json', import.meta.url), 'utf-8'),
+)
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
@@ -33,7 +39,10 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  images: {unoptimized: true}
+  images: {unoptimized: true},
+  env: {
+    NEXT_PUBLIC_APP_VERSION: appVersion,
+  },
 };
 
 export default withNextIntl(nextConfig);

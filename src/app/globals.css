@@ -1151,6 +1151,16 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   color: var(--fg-subtle);
   margin: 0;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.footer-version {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--fg-subtle);
+  opacity: 0.55;
+  letter-spacing: 0.04em;
 }
 .footer-controls {
   display: inline-flex;
