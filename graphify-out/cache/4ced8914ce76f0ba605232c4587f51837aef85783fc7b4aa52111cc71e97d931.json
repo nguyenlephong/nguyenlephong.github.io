@@ -1,0 +1,1 @@
+{"nodes": [{"id": "src_i18n_routing_ts", "label": "routing.ts", "file_type": "code", "source_file": "src/i18n/routing.ts", "source_location": "L1"}], "edges": [{"source": "src_i18n_routing_ts", "target": "routing", "relation": "imports_from", "confidence": "EXTRACTED", "source_file": "src/i18n/routing.ts", "source_location": "L1", "weight": 1.0}]}

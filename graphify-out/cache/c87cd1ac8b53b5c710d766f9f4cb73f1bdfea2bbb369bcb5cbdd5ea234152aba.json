@@ -1,0 +1,1 @@
+{"nodes": [{"id": "src_app_og_og_shell_tsx", "label": "og-shell.tsx", "file_type": "code", "source_file": "src/app/_og/og-shell.tsx", "source_location": "L1"}], "edges": [{"source": "src_app_og_og_shell_tsx", "target": "react", "relation": "imports_from", "confidence": "EXTRACTED", "source_file": "src/app/_og/og-shell.tsx", "source_location": "L1", "weight": 1.0}]}
