@@ -9,6 +9,24 @@
   ],
   "posts": [
     {
+      "slug": "doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong",
+      "title": "Đọc bản vẽ thiết kế & đánh giá chất lượng nhà — cẩm nang cho người mua trẻ",
+      "summary": "Một căn nhà đẹp trên ảnh chưa chắc là một căn nhà tốt để ở lâu dài. Phần lớn những thứ quyết định chất lượng — kết cấu, điện nước âm tường, chống thấm, thoát nước mùa mưa, vật liệu thật sự bên trong — đều nằm khuất sau lớp sơn đẹp. Bài này hướng dẫn cách đọc bản vẽ thiết kế và đánh giá chất lượng xây dựng, dành cho người mua lần đầu chưa từng trải qua, để biết căn nhà có thật sự bền vững hay không.",
+      "date": "2026-06-01",
+      "readingMinutes": 20,
+      "tags": ["Mua nhà", "Bất động sản", "Xây dựng", "Thiết kế", "Kinh nghiệm"],
+      "topic": "mua-nha"
+    },
+    {
+      "slug": "tam-ly-mua-nha-tranh-bay-nguoi-ban",
+      "title": "Tâm lý khi mua nhà — tỉnh táo trước mọi cái bẫy của người bán",
+      "summary": "Bạn không bị thuyết phục bởi căn nhà. Bạn bị thuyết phục bởi cảm xúc của chính mình — và người bán biết rõ điều đó. FOMO, khan hiếm giả, cò mồi chốt đơn, neo giá, áp lực thời gian… đều là những đòn tâm lý có công thức. Bài này bóc tách từng cái bẫy, giải thích cơ chế hoạt động, và trang bị cho bạn cách giữ cái đầu lạnh để ra quyết định bằng lý trí, không bằng nỗi sợ.",
+      "date": "2026-06-01",
+      "readingMinutes": 18,
+      "tags": ["Mua nhà", "Bất động sản", "Tâm lý", "Cảnh báo", "Kinh nghiệm"],
+      "topic": "mua-nha"
+    },
+    {
       "slug": "chi-phi-mua-nha-toan-bo-nhung-khoan-can-biet",
       "title": "Toàn bộ chi phí khi mua nhà — đừng để bị bất ngờ",
       "summary": "Giá nhà chỉ là một phần. Xung quanh nó là hàng chục khoản phí mà nhiều người mua lần đầu không lường trước — từ thuế trước bạ, phí công chứng, quỹ bảo trì, đến chi phí vận hành hàng tháng. Bài này tổng hợp đầy đủ để bạn lập ngân sách chính xác trước khi xuống tiền.",
