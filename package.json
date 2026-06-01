@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/postbuild-og.mjs",
+    "build": "next build --turbopack && node scripts/postbuild-og.mjs",
     "start": "next start",
     "lint": "eslint .",
     "predeploy": "node scripts/bump-version.mjs && bun run build",
