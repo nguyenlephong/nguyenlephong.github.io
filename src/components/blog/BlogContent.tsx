@@ -20,7 +20,7 @@ export default function BlogContent({ html }: BlogContentProps) {
     const root = ref.current
     if (!root) return
     const anchors = root.querySelectorAll<HTMLAnchorElement>(
-      'a[href^="/blog/"], a[href^="/thoughts/"]',
+      'a[href^="/blog/"], a[href^="/thoughts/"], a[href^="/notes/"]',
     )
     anchors.forEach((a) => {
       const href = a.getAttribute('href')
