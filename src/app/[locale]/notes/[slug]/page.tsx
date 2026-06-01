@@ -4,12 +4,13 @@ import { setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { SITE, SITE_URL } from '@/app/seo.config'
 import { buildDescription } from '@/lib/blog/seo'
-import { listNoteSlugs, loadNote } from '@/lib/notes/data'
+import { listNoteSlugs, listTopics, loadNote } from '@/lib/notes/data'
 import BlogContent from '@/components/blog/BlogContent'
 import BlogToc from '@/components/blog/BlogToc'
 import BlogViewCount from '@/components/blog/BlogViewCount'
 import BlogShareDock from '@/components/blog/BlogShareDock'
 import BlogReactions from '@/components/blog/BlogReactions'
+import BlogReadingTracker from '@/components/blog/BlogReadingTracker'
 import { EngagementProvider } from '@/components/blog/EngagementProvider'
 import '../notes.css'
 import '../../blog/blog.css'
@@ -81,6 +82,9 @@ export default async function NotePage({ params }: Props) {
   const canonical = `${SITE_URL}/vi/notes/${slug}`
   const description = note.summary || buildDescription(note.html)
 
+  const topic = listTopics().find((t) => t.id === note.topic)
+  const topicColor = topic?.color ?? '#b45309'
+
   const articleLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -102,13 +106,21 @@ export default async function NotePage({ params }: Props) {
   }
 
   return (
-    <main className="blog-article blog-article--ocean notes-accent">
+    <main
+      className="blog-article blog-article--ocean notes-accent notes-reading"
+      style={{ '--topic-color': topicColor } as React.CSSProperties}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
       />
 
       <EngagementProvider category="notes" slug={slug}>
+        <BlogReadingTracker
+          category="notes"
+          slug={slug}
+          readingMinutes={note.readingMinutes}
+        />
         <BlogShareDock
           url={canonical}
           title={note.title}
@@ -122,7 +134,13 @@ export default async function NotePage({ params }: Props) {
 
         <div className="blog-article__main">
           <nav className="blog-breadcrumb" aria-label="Breadcrumb">
-            <Link href="/notes">Ghi chú</Link>
+            <Link href="/notes">Ghi chép</Link>
+            {topic && (
+              <>
+                <span aria-hidden="true">/</span>
+                <span>{topic.label}</span>
+              </>
+            )}
             <span aria-hidden="true">/</span>
             <span>{note.title}</span>
           </nav>

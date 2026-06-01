@@ -1,188 +1,722 @@
 /* ==========================================================================
-   Notes — second brain surface
+   Notes — "The Knowledge Archive"
+   An archival / encyclopedia reading surface: warm paper, fine rules,
+   Roman-numbered chambers, leading-zero entries, serif display type.
+   Scales gracefully as new categories (chambers) are added.
    ========================================================================== */
 
-/* Override blog-article accent with notes green for article pages */
-.notes-accent {
-  --blog-accent: #059669;
-  --blog-accent-soft: color-mix(in oklab, #059669 12%, transparent);
-  --blog-accent-line: color-mix(in oklab, #059669 28%, transparent);
+/* --------------------------------------------------------------------------
+   Shared archival palette — applied to both the index and the reading page.
+   Works in light + dark. Per-chamber identity rides on --topic-color.
+   -------------------------------------------------------------------------- */
+.notes-archive,
+.notes-reading {
+  --paper: oklch(97.6% 0.012 85);
+  --paper-2: oklch(95.4% 0.016 84);
+  --paper-3: oklch(93% 0.02 83);
+  --ink: oklch(25% 0.022 58);
+  --ink-soft: oklch(43% 0.022 60);
+  --ink-faint: oklch(56% 0.016 62);
+  --rule: oklch(84% 0.02 72);
+  --rule-strong: oklch(74% 0.028 70);
+  --gilt: oklch(56% 0.092 70);
+  --serif: var(--font-reading-lora), Georgia, 'Times New Roman', serif;
+}
+
+[data-theme='dark'] .notes-archive,
+[data-theme='dark'] .notes-reading {
+  --paper: oklch(17.5% 0.012 60);
+  --paper-2: oklch(20.5% 0.015 62);
+  --paper-3: oklch(23.5% 0.018 64);
+  --ink: oklch(92% 0.016 82);
+  --ink-soft: oklch(74% 0.018 76);
+  --ink-faint: oklch(60% 0.016 70);
+  --rule: oklch(34% 0.016 66);
+  --rule-strong: oklch(44% 0.02 68);
+  --gilt: oklch(74% 0.085 80);
+}
+
+/* Layered warm paper backdrop — fixed so it reads as one continuous surface. */
+.notes-archive::before,
+.notes-reading::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      120% 80% at 50% -10%,
+      color-mix(in oklab, var(--paper-2) 60%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      100% 100% at 50% 120%,
+      color-mix(in oklab, var(--paper-3) 50%, transparent),
+      transparent 55%
+    ),
+    var(--paper);
+}
+
+/* Faint paper grain for texture. */
+.notes-archive::after,
+.notes-reading::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.45;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
 }
 
 /* ==========================================================================
-   Notes home / list
+   1 · The title page (hero)
    ========================================================================== */
-.notes-home {
-  max-width: 780px;
+.notes-archive {
+  max-width: 1120px;
   margin: 0 auto;
-  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem);
-  color: var(--fg);
+  padding: clamp(2rem, 5vw, 4.5rem) clamp(1.1rem, 4vw, 2.5rem) clamp(4rem, 8vw, 7rem);
+  color: var(--ink);
 }
 
-.notes-home__head {
+.notes-archive__title-page {
+  text-align: center;
+  padding: clamp(1.5rem, 5vw, 3.5rem) 0 clamp(2.5rem, 5vw, 4rem);
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border, oklch(88% 0 0));
+  position: relative;
 }
 
-.notes-home__title {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin: 0 0 0.5rem;
-  color: var(--fg);
+.notes-archive__eyebrow {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gilt);
+  margin: 0 0 clamp(1.25rem, 3vw, 2rem);
 }
 
-.notes-home__desc {
-  font-size: var(--text-base, 1rem);
-  color: var(--fg-muted, oklch(50% 0 0));
+.notes-archive__title {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
   margin: 0;
-  line-height: 1.6;
+  color: var(--ink);
 }
 
-/* ==========================================================================
-   Topic sections
-   ========================================================================== */
-.notes-topics {
+.notes-archive__subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.02rem, 2.4vw, 1.35rem);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin: clamp(1rem, 2.5vw, 1.5rem) auto 0;
+}
+
+/* Double rule under the masthead, broken by an asterism. */
+.notes-archive__rule {
+  width: min(420px, 80%);
+  height: 0;
+  margin: clamp(1.75rem, 4vw, 2.5rem) auto clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+  padding-top: 3px;
+  position: relative;
+}
+
+.notes-archive__rule::after {
+  content: '⁂';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--paper);
+  padding: 0 0.6rem;
+  color: var(--gilt);
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.notes-archive__stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1.5rem, 5vw, 3rem);
+  margin: 0;
+}
+
+.notes-archive__stats > div {
   display: flex;
   flex-direction: column;
-  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+  gap: 0.3rem;
 }
 
-.notes-topic {
-  --topic-color: #059669;
-  --topic-soft: color-mix(in oklab, var(--topic-color) 10%, transparent);
-  --topic-line: color-mix(in oklab, var(--topic-color) 25%, transparent);
+.notes-archive__stats dt {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  order: 2;
 }
 
-.notes-topic__head {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--topic-line);
-}
-
-.notes-topic__icon {
-  font-size: 1.5rem;
+.notes-archive__stats dd {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 600;
   line-height: 1;
-  flex-shrink: 0;
-  margin-top: 0.1rem;
+  margin: 0;
+  color: var(--ink);
+  order: 1;
 }
 
-.notes-topic__info {
-  flex: 1;
+/* ==========================================================================
+   2 · Chambers (topic sections) — auto Roman numerals
+   ========================================================================== */
+.notes-chambers {
+  counter-reset: chamber;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 6vw, 5rem);
+}
+
+.chamber {
+  counter-increment: chamber;
+  --topic-color: var(--gilt);
+  --topic-ink: color-mix(in oklab, var(--topic-color) 72%, var(--ink));
+  /* Clear the fixed header (72px) + sticky chip strip when jumped to. */
+  scroll-margin-top: 140px;
+}
+
+.chamber__head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  column-gap: clamp(0.9rem, 2.5vw, 1.5rem);
+  row-gap: 0.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  border-bottom: 2px solid var(--rule-strong);
+}
+
+.chamber__numeral {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--topic-ink);
+}
+
+.chamber__numeral::before {
+  content: counter(chamber, upper-roman);
+}
+
+.chamber__heading {
   min-width: 0;
 }
 
-.notes-topic__label {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin: 0 0 0.25rem;
-  color: var(--topic-color);
+.chamber__kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.notes-topic__desc {
-  font-size: 0.875rem;
-  color: var(--fg-muted, oklch(50% 0 0));
+.chamber__icon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.chamber__label {
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 3.5vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
   margin: 0;
-  line-height: 1.5;
+  color: var(--ink);
 }
 
-.notes-topic__count {
-  flex-shrink: 0;
-  font-size: 0.75rem;
+.chamber__desc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0.4rem 0 0;
+  max-width: 62ch;
+}
+
+.chamber__count {
   font-family: var(--font-mono, monospace);
-  letter-spacing: 0.04em;
-  color: var(--fg-muted, oklch(55% 0 0));
-  background: var(--topic-soft);
-  color: var(--topic-color);
-  padding: 0.25em 0.65em;
-  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--topic-ink);
   white-space: nowrap;
-  margin-top: 0.15rem;
 }
 
 /* ==========================================================================
-   Note cards
+   3 · Entries (catalog cards) — auto leading-zero numbers
    ========================================================================== */
-.notes-list {
+.chamber__entries {
+  counter-reset: entry;
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: clamp(0.9rem, 2vw, 1.35rem);
 }
 
-.notes-card {
-  border: 1px solid var(--border, oklch(88% 0 0));
-  border-radius: 10px;
-  transition: border-color 200ms, box-shadow 200ms, transform 150ms;
+.entry {
+  counter-increment: entry;
+  position: relative;
 }
 
-.notes-card:hover {
-  border-color: var(--topic-color, #059669);
-  box-shadow: 0 2px 14px color-mix(in oklab, var(--topic-color, #059669) 15%, transparent);
-  transform: translateY(-1px);
-}
-
-.notes-card__link {
-  display: block;
-  padding: 1.25rem 1.5rem;
+.entry__link {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: clamp(0.85rem, 2vw, 1.25rem);
+  height: 100%;
+  padding: clamp(1.25rem, 2.5vw, 1.6rem);
   text-decoration: none;
   color: inherit;
+  background: color-mix(in oklab, var(--paper-2) 70%, transparent);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 180ms ease,
+    background 220ms ease;
 }
 
-.notes-card__title {
+.entry__link:hover {
+  background: var(--paper-2);
+  border-color: color-mix(in oklab, var(--topic-color) 55%, var(--rule-strong));
+  box-shadow: 0 14px 34px -22px color-mix(in oklab, var(--topic-color) 70%, transparent);
+  transform: translateY(-3px);
+}
+
+.entry__link:focus-visible {
+  outline: 2px solid var(--topic-color);
+  outline-offset: 3px;
+}
+
+.entry__no {
+  font-family: var(--serif);
   font-size: 1.05rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.35;
-  margin: 0 0 0.4rem;
-  color: var(--fg);
+  line-height: 1.3;
+  color: var(--topic-ink);
+  padding-top: 0.05rem;
 }
 
-.notes-card__summary {
+.entry__no::before {
+  content: counter(entry, decimal-leading-zero);
+}
+
+.entry__body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.entry__title {
+  font-family: var(--serif);
+  font-size: clamp(1.08rem, 2.4vw, 1.28rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+  transition: color 200ms ease;
+}
+
+.entry__link:hover .entry__title {
+  color: var(--topic-ink);
+}
+
+.entry__summary {
   font-size: 0.875rem;
-  color: var(--fg-muted, oklch(50% 0 0));
-  line-height: 1.55;
-  margin: 0 0 0.75rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 0.9rem;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.notes-card__meta {
+.entry__meta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.78rem;
-  color: var(--fg-muted, oklch(55% 0 0));
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: auto;
   font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
   letter-spacing: 0.02em;
+  color: var(--ink-faint);
 }
 
-.notes-card__tags {
+.entry__tags {
   list-style: none;
   padding: 0;
-  margin: 0.65rem 0 0;
+  margin: 0.75rem 0 0;
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
 }
 
-.notes-card__tags li {
+.entry__tags li {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  padding: 0.18em 0.6em;
+  border-radius: 3px;
+  color: var(--topic-ink);
+  border: 1px solid color-mix(in oklab, var(--topic-color) 30%, var(--rule));
+  background: color-mix(in oklab, var(--topic-color) 8%, transparent);
+}
+
+/* Featured: the first entry in a chamber spans wider on roomy viewports,
+   giving the grid editorial rhythm rather than uniform tiles. */
+@media (min-width: 880px) {
+  .chamber__entries {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .entry:first-child {
+    grid-column: 1 / -1;
+  }
+  .entry:first-child .entry__title {
+    font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+  }
+  .entry:first-child .entry__summary {
+    -webkit-line-clamp: 2;
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 1180px) {
+  .chamber__entries {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .entry:first-child {
+    grid-column: 1 / 3;
+  }
+}
+
+/* ==========================================================================
+   4 · Reading page — "a page from the tome"
+   Layered over blog.css; only refines type + atmosphere for notes.
+   ========================================================================== */
+.notes-reading {
+  --blog-accent: var(--topic-color, #b45309);
+  --blog-accent-soft: color-mix(in oklab, var(--blog-accent) 14%, transparent);
+  --blog-accent-line: color-mix(in oklab, var(--blog-accent) 30%, transparent);
+  color: var(--ink);
+}
+
+.notes-reading .blog-breadcrumb {
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   font-size: 0.72rem;
-  padding: 0.2em 0.6em;
-  border-radius: 4px;
-  background: color-mix(in oklab, var(--topic-color, #059669) 10%, transparent);
-  color: var(--topic-color, #059669);
+}
+
+.notes-reading .blog-article__head {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.notes-reading .blog-article__title {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  color: var(--ink);
+}
+
+.notes-reading .blog-article__summary {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.notes-reading .blog-article__meta {
+  font-family: var(--font-mono, monospace);
+  color: var(--ink-faint);
+}
+
+/* Serif body for an immersive long-read; headings stay distinct. */
+.notes-reading .blog-content {
+  color: var(--ink);
+}
+
+.notes-reading .blog-content > p {
+  font-family: var(--serif);
+  font-size: 1.075rem;
+  line-height: 1.85;
+  color: color-mix(in oklab, var(--ink) 92%, var(--ink-soft));
+}
+
+.notes-reading .blog-content h2,
+.notes-reading .blog-content h3,
+.notes-reading .blog-content h4 {
+  font-family: var(--serif);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+/* Encyclopedia drop-cap on the opening paragraph. */
+.notes-reading .blog-content > p:first-of-type::first-letter {
+  font-family: var(--serif);
+  font-weight: 600;
+  float: left;
+  font-size: 3.4em;
+  line-height: 0.78;
+  padding: 0.06em 0.12em 0 0;
+  margin-right: 0.04em;
+  color: var(--topic-ink, var(--gilt));
+}
+
+/* Section headings get a gilt hairline above. */
+.notes-reading .blog-content h2 {
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--rule);
+  margin-top: 2.6rem;
+}
+
+.notes-reading .blog-content blockquote {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  border-left: 3px solid var(--blog-accent);
+  background: color-mix(in oklab, var(--paper-2) 60%, transparent);
+}
+
+.notes-reading .blog-article__footer {
+  border-top: 1px solid var(--rule);
+}
+
+.notes-reading .blog-back {
   font-family: var(--font-mono, monospace);
   letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   5 · Chamber navigator — quick jump between categories
+   Desktop: a fixed vertical rail in the right gutter.
+   Mobile/tablet: a sticky horizontal chip strip under the header.
+   ========================================================================== */
+
+/* --- Mobile / tablet: sticky chip strip ---------------------------------- */
+.chamber-nav--rail {
+  display: none;
+}
+
+.chamber-nav--strip {
+  position: sticky;
+  top: 72px; /* fixed app header height */
+  z-index: 30;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  /* Bleed to the edges of the padded archive container. */
+  margin-inline: calc(-1 * clamp(1.1rem, 4vw, 2.5rem));
+  padding: 0.6rem clamp(1.1rem, 4vw, 2.5rem);
+  background: color-mix(in oklab, var(--paper) 82%, transparent);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border-top: 1px solid color-mix(in oklab, var(--rule) 60%, transparent);
+  border-bottom: 1px solid var(--rule);
+}
+
+.chamber-nav__strip-scroll {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chamber-nav__strip-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.chamber-nav__chip {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--paper-2) 60%, transparent);
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    background 200ms ease;
+}
+
+.chamber-nav__chip-roman {
+  font-family: var(--serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-faint);
+  transition: color 200ms ease;
+}
+
+.chamber-nav__chip.is-active {
+  color: var(--topic-color);
+  border-color: color-mix(in oklab, var(--topic-color) 55%, var(--rule-strong));
+  background: color-mix(in oklab, var(--topic-color) 12%, transparent);
+}
+
+.chamber-nav__chip.is-active .chamber-nav__chip-roman {
+  color: var(--topic-color);
+}
+
+.chamber-nav__chip:focus-visible {
+  outline: 2px solid var(--topic-color);
+  outline-offset: 2px;
+}
+
+/* --- Desktop: vertical rail ---------------------------------------------- */
+@media (min-width: 1280px) {
+  .chamber-nav--strip {
+    display: none;
+  }
+
+  .chamber-nav--rail {
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: clamp(0.75rem, 2.2vw, 2.25rem);
+    transform: translateY(-50%);
+    z-index: 30;
+  }
+
+  .chamber-nav--rail ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    align-items: flex-end;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    transition: background 250ms ease, border-color 250ms ease;
+  }
+
+  .chamber-nav--rail:hover ul,
+  .chamber-nav--rail:focus-within ul {
+    background: color-mix(in oklab, var(--paper) 84%, transparent);
+    border-color: var(--rule);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .chamber-nav__tick {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.32rem 0.3rem;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    color: var(--ink-faint);
+    transition: color 220ms ease;
+  }
+
+  .chamber-nav__rule {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: currentColor;
+    opacity: 0.55;
+    transition: width 260ms cubic-bezier(0.16, 1, 0.3, 1), opacity 220ms ease;
+  }
+
+  .chamber-nav__roman {
+    font-family: var(--serif);
+    font-size: 0.8rem;
+    font-weight: 600;
+    min-width: 1.6em;
+    text-align: center;
+    opacity: 0.75;
+    transition: opacity 220ms ease;
+  }
+
+  .chamber-nav__name {
+    font-size: 0.82rem;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(8px);
+    transition:
+      max-width 320ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 220ms ease,
+      transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .chamber-nav--rail:hover .chamber-nav__name,
+  .chamber-nav--rail:focus-within .chamber-nav__name {
+    max-width: 220px;
+    opacity: 1;
+    transform: none;
+  }
+
+  .chamber-nav__tick:hover {
+    color: var(--ink);
+  }
+
+  .chamber-nav__tick.is-active,
+  .chamber-nav__tick.is-active:hover {
+    color: var(--topic-color);
+  }
+
+  .chamber-nav__tick.is-active .chamber-nav__rule {
+    width: 32px;
+    opacity: 1;
+  }
+
+  .chamber-nav__tick.is-active .chamber-nav__roman {
+    opacity: 1;
+  }
+
+  .chamber-nav__tick:focus-visible {
+    outline: 2px solid var(--topic-color);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* Reduced-motion: never translate cards on hover. */
+@media (prefers-reduced-motion: reduce) {
+  .entry__link,
+  .entry__title,
+  .chamber-nav__name,
+  .chamber-nav__rule {
+    transition: none;
+  }
+  .entry__link:hover {
+    transform: none;
+  }
+  .chamber-nav__strip-scroll {
+    scroll-behavior: auto;
+  }
 }

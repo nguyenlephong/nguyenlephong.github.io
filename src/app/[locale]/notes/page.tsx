@@ -6,6 +6,7 @@ import { SITE, SITE_URL } from '@/app/seo.config'
 import { listNotes, listTopics, listNotesByTopic } from '@/lib/notes/data'
 import type { NoteMeta, TopicMeta } from '@/lib/notes/types'
 import { routing } from '@/i18n/routing'
+import NotesChamberNav, { type ChamberNavItem } from '@/components/notes/NotesChamberNav'
 import './notes.css'
 
 export const metadata: Metadata = {
@@ -47,58 +48,66 @@ const TOPIC_ICONS: Record<string, string> = {
   'suc-khoe': '🌱',
 }
 
-function NoteCard({ post }: { post: NoteMeta }) {
+/** One catalog entry — numbered automatically via CSS counters. */
+function Entry({ post }: { post: NoteMeta }) {
   return (
-    <li className="notes-card">
-      <Link href={`/notes/${post.slug}`} className="notes-card__link">
-        <h3 className="notes-card__title">{post.title}</h3>
-        <p className="notes-card__summary">{post.summary}</p>
-        <div className="notes-card__meta">
-          <time dateTime={post.date}>{formatDate(post.date)}</time>
-          <span aria-hidden="true">·</span>
-          <span>{post.readingMinutes} phút đọc</span>
+    <li className="entry">
+      <Link href={`/notes/${post.slug}`} className="entry__link">
+        <span className="entry__no" aria-hidden="true" />
+        <div className="entry__body">
+          <h3 className="entry__title">{post.title}</h3>
+          <p className="entry__summary">{post.summary}</p>
+          <div className="entry__meta">
+            <time dateTime={post.date}>{formatDate(post.date)}</time>
+            <span aria-hidden="true">·</span>
+            <span>{post.readingMinutes} phút đọc</span>
+          </div>
+          {post.tags.length > 0 && (
+            <ul className="entry__tags" aria-label="Tags">
+              {post.tags.slice(0, 4).map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          )}
         </div>
-        {post.tags.length > 0 && (
-          <ul className="notes-card__tags" aria-label="Tags">
-            {post.tags.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
-        )}
       </Link>
     </li>
   )
 }
 
-function TopicSection({
-  topic,
-  posts,
-}: {
-  topic: TopicMeta
-  posts: NoteMeta[]
-}) {
+/** A chamber = one knowledge category. Roman numeral comes from CSS counter. */
+function Chamber({ topic, posts }: { topic: TopicMeta; posts: NoteMeta[] }) {
   const icon = TOPIC_ICONS[topic.id] ?? '📝'
   return (
     <section
-      className="notes-topic"
-      aria-labelledby={`topic-${topic.id}`}
+      id={`chamber-section-${topic.id}`}
+      data-topic={topic.id}
+      className="chamber"
+      aria-labelledby={`chamber-${topic.id}`}
       style={{ '--topic-color': topic.color } as React.CSSProperties}
     >
-      <header className="notes-topic__head">
-        <div className="notes-topic__icon" aria-hidden="true">{icon}</div>
-        <div className="notes-topic__info">
-          <h2 className="notes-topic__label" id={`topic-${topic.id}`}>
+      <header className="chamber__head">
+        <span className="chamber__numeral" aria-hidden="true" />
+        <div className="chamber__heading">
+          <p className="chamber__kicker">
+            <span className="chamber__icon" aria-hidden="true">
+              {icon}
+            </span>
+            <span className="chamber__count">
+              {posts.length} mục
+            </span>
+          </p>
+          <h2 className="chamber__label" id={`chamber-${topic.id}`}>
             {topic.label}
           </h2>
-          <p className="notes-topic__desc">{topic.description}</p>
+          <p className="chamber__desc">{topic.description}</p>
         </div>
-        <span className="notes-topic__count">{posts.length} bài</span>
       </header>
-      <ul className="notes-list">
+      <ol className="chamber__entries">
         {posts.map((post) => (
-          <NoteCard key={post.slug} post={post} />
+          <Entry key={post.slug} post={post} />
         ))}
-      </ul>
+      </ol>
     </section>
   )
 }
@@ -112,33 +121,70 @@ export default async function NotesPage({ params }: Props) {
   setRequestLocale(locale)
   if (locale !== 'vi') redirect('/vi/notes')
 
+  const allPosts = listNotes()
   const topics = listTopics()
   const byTopic = listNotesByTopic()
   const uncategorized = byTopic.get('__uncategorized__') ?? []
 
+  const visibleTopics = topics.filter(
+    (topic) => (byTopic.get(topic.id) ?? []).length > 0,
+  )
+  const chamberCount = visibleTopics.length + (uncategorized.length > 0 ? 1 : 0)
+  const latestDate = allPosts[0]?.date
+
+  const navItems: ChamberNavItem[] = [
+    ...visibleTopics.map((topic) => ({
+      id: topic.id,
+      label: topic.label,
+      color: topic.color,
+    })),
+    ...(uncategorized.length > 0
+      ? [{ id: '__uncategorized__', label: 'Khác', color: '#8a7d65' }]
+      : []),
+  ]
+
   return (
-    <main className="notes-home">
-      <header className="notes-home__head">
-        <h1 className="notes-home__title">Ghi chú</h1>
-        <p className="notes-home__desc">
-          Kinh nghiệm thực tế, góc nhìn cá nhân — những thứ tôi muốn ghi lại để không quên.
+    <main className="notes-archive">
+      <header className="notes-archive__title-page">
+        <p className="notes-archive__eyebrow">Tủ sách tri thức · Personal encyclopedia</p>
+        <h1 className="notes-archive__title">Ghi chép</h1>
+        <p className="notes-archive__subtitle">
+          Một kho lưu trữ riêng — nơi tôi cất giữ những gì đã học, đã trải và muốn
+          nhớ. Mời bạn lạc vào và đọc theo nhịp của riêng mình.
         </p>
+        <div className="notes-archive__rule" aria-hidden="true" />
+        <dl className="notes-archive__stats">
+          <div>
+            <dt>Chuyên mục</dt>
+            <dd>{chamberCount}</dd>
+          </div>
+          <div>
+            <dt>Bài viết</dt>
+            <dd>{allPosts.length}</dd>
+          </div>
+          {latestDate && (
+            <div>
+              <dt>Cập nhật</dt>
+              <dd>{formatDate(latestDate)}</dd>
+            </div>
+          )}
+        </dl>
       </header>
 
-      <div className="notes-topics">
-        {topics.map((topic) => {
-          const posts = byTopic.get(topic.id) ?? []
-          if (posts.length === 0) return null
-          return <TopicSection key={topic.id} topic={topic} posts={posts} />
-        })}
+      <NotesChamberNav chambers={navItems} />
+
+      <div className="notes-chambers">
+        {visibleTopics.map((topic) => (
+          <Chamber key={topic.id} topic={topic} posts={byTopic.get(topic.id) ?? []} />
+        ))}
 
         {uncategorized.length > 0 && (
-          <TopicSection
+          <Chamber
             topic={{
               id: '__uncategorized__',
               label: 'Khác',
               description: 'Những ghi chú chưa được phân loại.',
-              color: '#6b7280',
+              color: '#8a7d65',
             }}
             posts={uncategorized}
           />

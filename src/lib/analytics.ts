@@ -46,6 +46,14 @@ export type AnalyticsEvent =
   // Thoughts
   | 'thoughts_view_toggle'
   | 'thoughts_share'
+  // Notes (Ghi chú)
+  | 'notes_view'
+  | 'notes_article_view'
+  | 'notes_scroll_depth'
+  | 'notes_read_time'
+  | 'notes_read_complete'
+  | 'notes_share'
+  | 'notes_nav_jump'
   // Outbound
   | 'outbound_click'
 

@@ -5,9 +5,24 @@
       "label": "Mua nhà",
       "description": "Kinh nghiệm thực tế từ quá trình tìm kiếm, đánh giá và xuống tiền mua bất động sản.",
       "color": "#059669"
+    },
+    {
+      "id": "tiet-kiem",
+      "label": "Tài chính & Tiết kiệm",
+      "description": "Cách quản lý dòng tiền cá nhân, giữ tiền trong túi và xây thói quen tài chính lành mạnh — viết cho người đi làm bình thường.",
+      "color": "#d97706"
     }
   ],
   "posts": [
+    {
+      "slug": "giu-tien-trong-tui-cach-de-giau",
+      "title": "Giữ được tiền trong túi — nghệ thuật làm giàu mà ít ai dạy bạn",
+      "summary": "Bạn không nghèo vì kiếm ít. Phần lớn chúng ta nghèo vì tiền cứ lặng lẽ chảy ra khỏi túi mỗi ngày — qua những khoản nhỏ tưởng vô hại, những cú click \"thanh toán\" lúc 11 giờ đêm, những gói subscription đã quên từ lâu. Giữ được tiền là một kỹ năng, và nó còn quan trọng hơn cả việc kiếm thêm. Bài này chia sẻ những cách rất đời thường để bịt các lỗ rò trong túi tiền, giữ lại nhiều hơn từ chính số tiền bạn đang có — với phương châm: giữ được tiền cũng là một cách để giàu.",
+      "date": "2026-06-01",
+      "readingMinutes": 16,
+      "tags": ["Tài chính cá nhân", "Tiết kiệm", "Quản lý chi tiêu", "Thói quen", "Mindset"],
+      "topic": "tiet-kiem"
+    },
     {
       "slug": "doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong",
       "title": "Đọc bản vẽ thiết kế & đánh giá chất lượng nhà — cẩm nang cho người mua trẻ",
