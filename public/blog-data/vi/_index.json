@@ -33,18 +33,98 @@
       "order": 4
     },
     {
-      "slug": "agile",
-      "title": "Agile & Quy trình",
-      "tagline": "Cách các đội thực sự chạy Scrum và Agile — chuẩn gốc, các biến tấu, và cách vận hành cho tốt.",
-      "description": "Những bài viết thực tế, không màu mè về cách các đội phần mềm thật sự làm việc: Agile và Scrum trong thực tế, ý nghĩa đằng sau epic, story, task và story point, estimate và log work một cách trung thực, đọc biểu đồ burndown và velocity, cùng cách chạy planning, standup, review và retro sao cho hữu ích thay vì tốn thời gian. Viết để bất kỳ ai trong team — BA, PO, PM, lập trình viên, QC hay người mới — đều hiểu và vận hành tốt ngay từ ngày đầu.",
+      "slug": "ways-of-working",
+      "title": "Cách làm việc",
+      "tagline": "Cách các đội phần mềm thực sự vận hành và phối hợp — từ Agile, Scrum đến cách công việc thật sự diễn ra trong big corp, startup và outsourcing.",
+      "description": "Những bài viết thực tế, không màu mè về cách các đội phần mềm thật sự làm việc và phối hợp: Agile và Scrum trong thực tế, cả họ \"-Driven Development\", và — quan trọng nhất — cách việc bàn giao, quyền sở hữu, giao tiếp và ra quyết định thật sự khác nhau giữa các loại công ty, từ tập đoàn lớn đến startup nhỏ và vừa đến outsourcing và công ty dịch vụ phần mềm. Viết để bất kỳ ai trong team — BA, PO, PM, lập trình viên, QC hay người mới — đều đọc được môi trường mình đang ở và vận hành tốt trong đó.",
       "accent": "light",
       "order": 5
     }
   ],
   "posts": [
     {
+      "slug": "how-teams-work-big-corp-startup-outsourcing",
+      "category": "ways-of-working",
+      "title": "Đội phần mềm thực sự làm việc thế nào: Big Corp vs Startup vs Outsourcing",
+      "summary": "Hai kỹ sư cùng chức danh có thể làm hai công việc hoàn toàn khác nhau — vì môi trường định hình công việc nhiều hơn hẳn cái chức danh. Đây là cẩm nang thực địa về ba thế giới mà phần lớn sự nghiệp phần mềm đi qua: big corp, startup và outsourcing, so sánh theo những chiều thực sự thay đổi mỗi ngày — việc đến từ đâu, ai quyết, quy trình nặng đến đâu, bạn sở hữu bao nhiêu, giao tiếp ra sao, tốc độ và chuẩn chất lượng, và điều gì được tưởng thưởng. Có bảng so sánh đầy đủ và một hướng dẫn trung thực: môi trường nào hợp với bạn.",
+      "date": "2026-06-02",
+      "readingMinutes": 19,
+      "tags": [
+        "Cách làm việc",
+        "Làm việc nhóm",
+        "Startup",
+        "Tập đoàn",
+        "Outsourcing",
+        "Sự nghiệp"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ways-of-working",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "working-in-a-big-corp",
+      "category": "ways-of-working",
+      "title": "Làm việc trong Big Corp: Align, quy trình và cách hoàn thành việc ở quy mô lớn",
+      "summary": "Từ một công ty nhỏ chuyển sang công ty lớn là một cú sốc văn hóa: bạn kiểm soát rất ít hệ thống, mà nó vẫn chạy xuất sắc. Đó là thiết kế — một tập đoàn tối ưu cho quy mô và độ tin cậy, không phải tốc độ cá nhân bạn. Bài đào sâu này giải thích cách làm việc tốt bên trong cỗ máy đó: việc của bạn nằm đâu trong hệ thống lập kế hoạch, vì sao align (chứ không phải code) mới là công việc cấp cao thật sự, quy trình nào xứng đáng và quy trình nào là trình diễn, làm sao thực sự ship qua chuỗi review, mặt lành mạnh của stakeholder và chính trị, các failure mode bào mòn con người, và cách phát triển trên một ladder sự nghiệp rõ ràng.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "Cách làm việc",
+        "Tập đoàn",
+        "Làm việc nhóm",
+        "Sự nghiệp",
+        "Quy trình",
+        "Quản lý stakeholder"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ways-of-working",
+      "seriesOrder": 2,
+      "featured": false
+    },
+    {
+      "slug": "working-in-a-startup",
+      "category": "ways-of-working",
+      "title": "Làm việc trong Startup: Tốc độ, sự mơ hồ, và đội nhiều mũ",
+      "summary": "Lời hứa của startup — quyền sở hữu thật, ship hôm nay, mai thấy nó tạo khác biệt — phần lớn là thật, nhưng trang tuyển dụng bỏ quên sự mơ hồ, những cú giật ngược và sự bất ổn đến từ cùng một gốc rễ: startup là công ty vẫn đang đi tìm mô hình kinh doanh của mình. Bài đào sâu này là hướng dẫn trung thực về cuộc đánh đổi, cho cả startup nhỏ và vừa: vì sao tốc độ học thắng sự chỉn chu, sở hữu rộng-và-nông thực sự ra sao, cách coi mơ hồ là chính công việc, vay nợ kỹ thuật một cách có ý thức, giao tiếp trước khi kiến thức-trong-đầu cắn bạn, cuộc chuyển nhỏ-sang-vừa gây mất phương hướng khi quy trình quay lại, các failure mode (burnout, văn hóa anh hùng, giật ngược), và cách bứt lên và phát triển.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "Cách làm việc",
+        "Startup",
+        "Làm việc nhóm",
+        "Quyền sở hữu",
+        "Nợ kỹ thuật",
+        "Sự nghiệp"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ways-of-working",
+      "seriesOrder": 3,
+      "featured": false
+    },
+    {
+      "slug": "working-in-outsourcing-software-services",
+      "category": "ways-of-working",
+      "title": "Làm việc trong Outsourcing & Dịch vụ phần mềm: Client, scope và bàn giao theo hợp đồng",
+      "summary": "Outsourcing là thế giới bị hiểu lầm nhiều nhất trong ba thế giới — không phải một xưởng code vô danh mà, ở một công ty dịch vụ tốt, là nơi bạn xây những sản phẩm thật, chạm vào nhiều domain trong hai năm hơn phần lớn kỹ sư sản phẩm chạm trong mười năm. Điểm gút: bạn không sở hữu sản phẩm, bạn bàn giao theo một hợp đồng, và một kỹ năng thứ hai nằm cạnh việc kỹ thuật — quản lý mối quan hệ client. Bài đào sâu này bàn về sự thật cấu trúc định hình lại mọi thứ, hai hình thái công việc outsourcing, vì sao scope là bất khả xâm phạm và change request là bạn của bạn, tính tiền/estimate/utilization, giao tiếp như sản phẩm bàn giao, múi giờ, chất lượng theo hợp đồng, các failure mode, và cách bứt lên cùng lộ trình sự nghiệp dịch vụ.",
+      "date": "2026-06-02",
+      "readingMinutes": 19,
+      "tags": [
+        "Cách làm việc",
+        "Outsourcing",
+        "Dịch vụ phần mềm",
+        "Quản lý client",
+        "Làm việc nhóm",
+        "Sự nghiệp"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ways-of-working",
+      "seriesOrder": 4,
+      "featured": false
+    },
+    {
       "slug": "tdd-bdd-ddd-driven-development",
-      "category": "agile",
+      "category": "ways-of-working",
       "title": "TDD, BDD, DDD và cả họ \"-Driven Development\", Giải thích Cho Engineer",
       "summary": "TDD, BDD, DDD, ATDD, EDD, CDD, FDD — mớ chữ cái \"-Driven Development\" làm bối rối cả engineer nhiều kinh nghiệm, một phần vì chúng không phải đối thủ của nhau: chúng trả lời những câu hỏi khác nhau và kết hợp được với nhau. Đây là hướng dẫn thực tế, nhiều ví dụ cho lập trình viên: mỗi cái thực sự nghĩa là gì, vòng lặp/khái niệm cốt lõi, ví dụ code và Gherkin cụ thể, khi nào nên dùng, các cạm bẫy — và một bản đồ rõ ràng cho thấy chúng ghép với nhau ra sao trên cùng một tính năng thật.",
       "date": "2026-06-02",
@@ -62,7 +142,7 @@
     },
     {
       "slug": "agile-scrum-in-practice",
-      "category": "agile",
+      "category": "ways-of-working",
       "title": "Agile & Scrum trong thực tế: Công ty đang biến tấu thế nào, và chuẩn thật sự ra sao",
       "summary": "Gần như đội phần mềm nào cũng nói mình \"làm Scrum\" — và gần như mỗi đội làm một kiểu. Đây là cẩm nang thực tế, rõ ràng cho mọi vai trò trong team: epic, story, task, sub-task thực chất là gì; status workflow vận hành ra sao; story point nghĩa là gì (và những sai lầm phá hỏng nó); estimate và log work thế nào cho trung thực; đọc biểu đồ burndown, velocity ra sao; và cách chạy planning, daily, review, retro sao cho hữu ích thay vì tốn thời gian. Chuẩn gốc, các biến tấu phổ biến, và cách vận hành tốt — đủ để bất kỳ ai đọc vào cũng hiểu và làm được ngay.",
       "date": "2026-06-02",

@@ -33,18 +33,98 @@
       "order": 4
     },
     {
-      "slug": "agile",
-      "title": "Agile & Delivery",
-      "tagline": "How real teams run Scrum and Agile — the standard, the customizations, and how to operate it well.",
-      "description": "Practical, no-nonsense writing on how software teams actually work: Agile and Scrum in practice, the meaning behind epics, stories, tasks and story points, honest estimation and work logging, reading burndown and velocity charts, and running planning, standups, reviews and retros so they help instead of waste time. Written so anyone on the team — BA, PO, PM, developer, QA or newcomer — can understand it and operate well from day one.",
+      "slug": "ways-of-working",
+      "title": "Ways of Working",
+      "tagline": "How software teams actually operate and work together — from Agile and Scrum to how delivery really happens in big corps, startups, and outsourcing.",
+      "description": "Practical, no-nonsense writing on how software teams actually work and collaborate: Agile and Scrum in practice, the \"-Driven Development\" family, and — crucially — how delivery, ownership, communication and decision-making really differ across company types, from enterprises to small and mid-size startups to outsourcing and software services. Written so anyone on the team — BA, PO, PM, developer, QA or newcomer — can read the environment they're in and operate well in it.",
       "accent": "light",
       "order": 5
     }
   ],
   "posts": [
     {
+      "slug": "how-teams-work-big-corp-startup-outsourcing",
+      "category": "ways-of-working",
+      "title": "How Software Teams Really Work: Big Corp vs Startup vs Outsourcing",
+      "summary": "Two engineers with the same title can have completely different jobs — because the environment shapes the work far more than the title does. This is a field guide to the three worlds most software careers move through: big corp, startup, and outsourcing, compared along the dimensions that actually change day to day — where work comes from, who decides, how heavy the process is, how much you own, how you communicate, the pace and quality bar, and what gets rewarded. With a full comparison table and an honest guide to which environment suits you.",
+      "date": "2026-06-02",
+      "readingMinutes": 19,
+      "tags": [
+        "Ways of Working",
+        "Team Collaboration",
+        "Startups",
+        "Enterprise",
+        "Outsourcing",
+        "Career"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ways-of-working",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "working-in-a-big-corp",
+      "category": "ways-of-working",
+      "title": "Working in a Big Corp: Alignment, Process, and Getting Things Done at Scale",
+      "summary": "Joining a big company from a smaller one is a culture shock: you control very little of the system, and it works brilliantly anyway. That's the design — an enterprise optimises for scale and reliability, not your individual speed. This deep-dive explains how to work well inside the machine: where your work fits in the planning hierarchy, why alignment (not coding) is the real senior job, which process is earned and which is theatre, how to actually ship through review chains, the healthy side of stakeholders and politics, the failure modes that grind people down, and how to grow up a clear career ladder.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "Ways of Working",
+        "Enterprise",
+        "Team Collaboration",
+        "Career",
+        "Process",
+        "Stakeholder Management"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ways-of-working",
+      "seriesOrder": 2,
+      "featured": false
+    },
+    {
+      "slug": "working-in-a-startup",
+      "category": "ways-of-working",
+      "title": "Working in a Startup: Speed, Ambiguity, and Wearing Many Hats",
+      "summary": "The startup promise — real ownership, ship today, watch it matter tomorrow — is largely true, but the recruiting page leaves out the ambiguity, whiplash, and instability that come from the same root cause: a startup is a company still searching for its business. This deep-dive is an honest guide to the trade, across small and mid-size startups: why speed of learning beats polish, what wide-and-shallow ownership really feels like, how to treat ambiguity as the work itself, taking technical debt consciously, communicating before knowledge-in-heads bites, the disorienting small-to-mid transition when process reappears, the failure modes (burnout, hero culture, whiplash), and how to thrive and grow.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "Ways of Working",
+        "Startups",
+        "Team Collaboration",
+        "Ownership",
+        "Technical Debt",
+        "Career"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ways-of-working",
+      "seriesOrder": 3,
+      "featured": false
+    },
+    {
+      "slug": "working-in-outsourcing-software-services",
+      "category": "ways-of-working",
+      "title": "Working in Outsourcing & Software Services: Clients, Scope, and Delivery on Contract",
+      "summary": "Outsourcing is the most misunderstood of the three worlds — not a faceless code factory but, in a good services firm, a place where you build real products across more domains in two years than most product engineers touch in ten. The catch: you don't own the product, you deliver against a contract, and a second skill sits beside the engineering — managing the client relationship. This deep-dive covers the structural fact that reshapes everything, the two shapes of outsourcing work, why scope is sacred and the change request is your friend, billing and estimates and utilization, communication as a deliverable, time zones, quality under contract, the failure modes, and how to thrive and grow a services career.",
+      "date": "2026-06-02",
+      "readingMinutes": 19,
+      "tags": [
+        "Ways of Working",
+        "Outsourcing",
+        "Software Services",
+        "Client Management",
+        "Team Collaboration",
+        "Career"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ways-of-working",
+      "seriesOrder": 4,
+      "featured": false
+    },
+    {
       "slug": "tdd-bdd-ddd-driven-development",
-      "category": "agile",
+      "category": "ways-of-working",
       "title": "TDD, BDD, DDD, and the Rest of the \"-Driven Development\" Family, Explained for Engineers",
       "summary": "TDD, BDD, DDD, ATDD, EDD, CDD, FDD — the \"-Driven Development\" alphabet soup confuses even experienced engineers, partly because they're not rivals: they answer different questions and compose together. This is a practical, example-rich guide for software engineers: what each one really means, the core loop or concept, concrete code and Gherkin examples, when to reach for it, the pitfalls — and a clear map of how they fit together on a single real feature.",
       "date": "2026-06-02",
@@ -62,7 +142,7 @@
     },
     {
       "slug": "agile-scrum-in-practice",
-      "category": "agile",
+      "category": "ways-of-working",
       "title": "Agile & Scrum in Practice: How Teams Really Run It vs. How It's Meant to Work",
       "summary": "Almost every software team says they \"do Scrum\" — and almost every one does it a little differently. This is a clear, practical field guide for everyone on the team, whatever your role: what an epic, story, task, and sub-task actually are; how status workflows really run; what story points mean (and the mistakes that ruin them); how to estimate and log work honestly; how to read burndown and velocity charts; and how to run planning, daily, review, and retro so they help instead of waste time. The standard, the common customizations, and how to operate it all well — enough to be genuinely useful from day one.",
       "date": "2026-06-02",
