@@ -44,6 +44,8 @@ function formatDate(iso: string): string {
 const TOPIC_ICONS: Record<string, string> = {
   'mua-nha': '🏠',
   'tiet-kiem': '💰',
+  'mua-xe': '🚗',
+  'su-nghiep': '💼',
   'cong-nghe': '💻',
   'suc-khoe': '🌱',
 }
@@ -146,7 +148,7 @@ export default async function NotesPage({ params }: Props) {
   return (
     <main className="notes-archive">
       <header className="notes-archive__title-page">
-        <p className="notes-archive__eyebrow">Tủ sách tri thức · Personal encyclopedia</p>
+        <p className="notes-archive__eyebrow">Personal encyclopedia</p>
         <h1 className="notes-archive__title">Ghi chép</h1>
         <p className="notes-archive__subtitle">
           Một kho lưu trữ riêng — nơi tôi cất giữ những gì đã học, đã trải và muốn

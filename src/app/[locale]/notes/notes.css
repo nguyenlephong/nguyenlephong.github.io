@@ -115,6 +115,7 @@
   color: var(--ink-soft);
   max-width: 46ch;
   margin: clamp(1rem, 2.5vw, 1.5rem) auto 0;
+  text-wrap: pretty;
 }
 
 /* Double rule under the masthead, broken by an asterism. */
