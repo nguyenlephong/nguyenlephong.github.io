@@ -123,6 +123,66 @@
       "featured": false
     },
     {
+      "slug": "ai-agents-explained",
+      "category": "ai",
+      "title": "AI Agent, Giải Thích Không Hype: Nó Là Gì, Hoạt Động Ra Sao, Và Làm Được Gì Cho Bạn",
+      "summary": "Đột nhiên ai cũng nói về “AI agent” — phần mềm không chỉ trả lời câu hỏi mà còn tự đi làm việc giúp bạn. Nhưng agent thực ra là gì, khác chatbot bạn đang dùng ở điểm nào, và nó thật sự hữu ích ở đâu so với việc âm thầm gây rối? Đây là một bài viết thân thiện, ít thuật ngữ, dành cho tất cả mọi người dù rành công nghệ hay không: vòng lặp đơn giản mà mọi agent đều chạy, năm thành phần tạo nên một agent, các mức độ tự chủ từ co-pilot đến auto-pilot, ví dụ gần gũi nơi văn phòng lẫn trong nhà, những kiểu lỗi cần đề phòng, và cách cụ thể để đưa agent hữu ích đầu tiên vào việc ngay trong tuần này.",
+      "date": "2026-06-02",
+      "readingMinutes": 17,
+      "tags": [
+        "AI",
+        "AI Agent",
+        "Agentic AI",
+        "Tự động hoá",
+        "Tương lai công việc",
+        "Năng suất"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "ai-workflows-that-save-hours",
+      "category": "ai",
+      "title": "Từ Prompt Đến Workflow: Thiết Kế AI Workflow Tiết Kiệm Cho Bạn Hàng Giờ Mỗi Tuần",
+      "summary": "Đa số mọi người dùng AI mỗi lần một câu hỏi — và bỏ phí phần lớn giá trị của nó. Đòn bẩy thật sự không phải một prompt khôn khéo; mà là một AI workflow lặp lại được: một chuỗi bước nhỏ bạn thiết kế một lần và tái sử dụng mãi mãi, biến một việc vặt hai tiếng lặp lại thành một lần rà soát hai phút. Đây là hướng dẫn thực hành, nhiều ví dụ, dành cho tất cả mọi người dù rành công nghệ hay không: khác biệt giữa prompt và workflow, cấu trúc đơn giản mà mọi workflow đều có, những workflow bê-vào-dùng-ngay cho văn phòng lẫn đời sống, ba mức từ thủ công đến tự động hoàn toàn, sáu bước tự thiết kế workflow của riêng bạn, và một cách tính nhẩm để chứng minh số giờ bạn thật sự tiết kiệm được.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "AI",
+        "AI Workflow",
+        "Tự động hoá",
+        "Năng suất",
+        "Tương lai công việc",
+        "Công cụ AI"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 2,
+      "featured": true
+    },
+    {
+      "slug": "ai-trends-2026-into-value",
+      "category": "ai",
+      "title": "Những Xu Hướng AI Đáng Để Tâm Năm 2026 — Và Cách Biến Chúng Thành Giá Trị Thật",
+      "summary": "Mỗi tuần lại có thêm một dòng tít AI kiểu “thứ này thay đổi tất cả”, và thật mệt mỏi khi cố phân biệt tín hiệu với nhiễu. Đây là một chuyến đi điềm tĩnh, có cơ sở qua những xu hướng AI thật sự quan trọng năm 2026 — agentic AI, đa phương thức (multimodal), AI nhúng sẵn trong các app bạn đang dùng, AI chạy trên thiết bị, và sự trỗi dậy của phán đoán và kiểm chứng như lợi thế con người — kèm phần mà hầu hết bài viết bỏ qua: một khung thực hành để biến bất kỳ xu hướng nào thành giá trị thật trong công việc và đời sống. Bạn sẽ có bộ lọc hype-hay-giá-trị, thang giá trị, một phương trình giá trị đơn giản, một ví dụ cụ thể, và một kế hoạch 30 ngày — để thôi chạy theo tin tức và bắt đầu tích lũy lợi ích.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "AI",
+        "Xu hướng AI",
+        "Agentic AI",
+        "Tương lai công việc",
+        "Năng suất",
+        "Generative AI"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 3,
+      "featured": true
+    },
+    {
       "slug": "tdd-bdd-ddd-driven-development",
       "category": "ways-of-working",
       "title": "TDD, BDD, DDD và cả họ \"-Driven Development\", Giải thích Cho Engineer",

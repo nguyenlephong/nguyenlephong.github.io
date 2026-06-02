@@ -27,6 +27,66 @@
   ],
   "posts": [
     {
+      "slug": "ai-agents-explained",
+      "category": "ai",
+      "title": "Les AI Agents Démystifiés : Ce Qu'ils Sont, Comment ils Fonctionnent, et Ce Qu'ils Peuvent Faire Pour Vous",
+      "summary": "Tout le monde parle soudainement des \"AI agents\" — des logiciels qui ne se contentent pas de répondre à vos questions, mais qui accomplissent réellement le travail à votre place. Mais qu'est-ce qu'un agent en réalité, en quoi est-il différent du chatbot que vous utilisez déjà, et où apporte-t-il vraiment de la valeur plutôt que de créer discrètement du chaos ? Voici un guide accessible et sans jargon pour tout le monde, technique ou non : la boucle simple que tout agent exécute, les cinq ingrédients qui le composent, les niveaux d'autonomie du co-pilot à l'auto-pilot, des exemples concrets au bureau et à la maison, les modes d'échec à surveiller, et une façon concrète de mettre votre premier agent utile au travail cette semaine.",
+      "date": "2026-06-02",
+      "readingMinutes": 17,
+      "tags": [
+        "IA",
+        "AI Agents",
+        "IA Agentique",
+        "Automatisation",
+        "Avenir du Travail",
+        "Productivité"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "ai-workflows-that-save-hours",
+      "category": "ai",
+      "title": "Des Prompts aux Workflows : Concevoir des AI Workflows Qui Vous Font Gagner des Heures Chaque Semaine",
+      "summary": "La plupart des gens utilisent l'IA une question à la fois — et laissent la majeure partie de sa valeur sur la table. Le vrai levier n'est pas un prompt ingénieux ; c'est un AI workflow réutilisable : une petite chaîne d'étapes que vous concevez une fois et réutilisez indéfiniment, transformant une corvée récurrente de deux heures en une révision de deux minutes. Voici un guide pratique et riche en exemples pour tout le monde, technique ou non : la différence entre un prompt et un workflow, l'anatomie simple que tout workflow partage, des workflows prêts à copier pour le bureau et la vie quotidienne, les trois niveaux du manuel au pleinement automatique, une méthode en six étapes pour concevoir le vôtre, et une façon rapide de prouver le temps que vous économisez réellement.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "IA",
+        "AI Workflow",
+        "Automatisation",
+        "Productivité",
+        "Avenir du Travail",
+        "Outils IA"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 2,
+      "featured": true
+    },
+    {
+      "slug": "ai-trends-2026-into-value",
+      "category": "ai",
+      "title": "Les Tendances IA Qui Méritent Votre Attention en 2026 — et Comment les Transformer en Vraie Valeur",
+      "summary": "Chaque semaine apporte un nouveau titre IA \"qui change tout\", et c'est épuisant d'essayer de distinguer le signal du bruit. Voici un tour d'horizon calme et ancré des tendances IA qui comptent vraiment en 2026 — l'IA agentique, le multimodal, l'IA intégrée dans les applications que vous utilisez déjà, l'intelligence sur l'appareil, et l'émergence du jugement et de la vérification comme avantage humain — accompagné de la partie que la plupart des articles sautent : un cadre pratique pour transformer n'importe quelle tendance en valeur réelle dans votre travail et votre vie. Vous obtiendrez un filtre hype vs. valeur, l'échelle de valeur, une équation de valeur simple, un exemple concret, et un plan sur 30 jours — pour cesser de courir après les nouvelles et commencer à cumuler des bénéfices.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "IA",
+        "Tendances IA",
+        "IA Agentique",
+        "Avenir du Travail",
+        "Productivité",
+        "IA Générative"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 3,
+      "featured": true
+    },
+    {
       "slug": "ports-and-adapters",
       "category": "architecture",
       "title": "Ports & Adapters (Hexagonal Architecture), Expliqués Simplement",

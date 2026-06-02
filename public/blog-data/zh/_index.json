@@ -27,6 +27,66 @@
   ],
   "posts": [
     {
+      "slug": "ai-agents-explained",
+      "category": "ai",
+      "title": "AI Agent 全解析：它是什么、如何运作、能为你做什么",
+      "summary": "所有人突然都在谈论“AI agent”——一种不只回答问题、而是真正去完成工作的软件。但 agent 究竟是什么？它和你已经在用的 chatbot 有何不同？它真正有帮助的地方在哪里，又在哪里会悄悄制造麻烦？这是一份面向所有人的友好、轻术语指南——无论你是否懂技术：每个 agent 运行的简单循环、构成它的五大要素、从 co-pilot 到 auto-pilot 的自主程度层级、工作与生活中接地气的示例、需要注意的失败模式，以及本周就能让第一个实用 agent 运转起来的具体方法。",
+      "date": "2026-06-02",
+      "readingMinutes": 17,
+      "tags": [
+        "AI",
+        "AI Agent",
+        "Agentic AI",
+        "自动化",
+        "未来工作",
+        "生产力"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "ai-workflows-that-save-hours",
+      "category": "ai",
+      "title": "从 Prompt 到 Workflow：设计每周为你省下数小时的 AI Workflow",
+      "summary": "大多数人每次只用一个问题来使用 AI——也因此把它的大部分价值留在了桌面上。真正的杠杆不是一句巧妙的 prompt，而是一个可重复的 AI workflow：你设计一次、便永远复用的一小串步骤，把每周两小时的重复杂活变成两分钟的审阅。这是一份面向所有人（无论是否懂技术）的实用、案例丰富的指南：prompt 与 workflow 的区别、每个 workflow 都共有的简单结构、可直接照搬到办公室与日常生活的 workflow、从手动到全自动的三个层级、自己动手设计的六个步骤，以及一个用来证明你真正省下多少时间的简易估算法。",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "AI",
+        "AI Workflow",
+        "自动化",
+        "生产力",
+        "未来工作",
+        "AI 工具"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 2,
+      "featured": true
+    },
+    {
+      "slug": "ai-trends-2026-into-value",
+      "category": "ai",
+      "title": "2026 年真正值得你关注的 AI 趋势——以及如何把它们变成实实在在的价值",
+      "summary": "每周都冒出又一个“这将改变一切”的 AI 头条，想从噪音里分辨出信号，实在令人疲惫。这是一趟冷静、有据的导览，带你看清 2026 年真正重要的 AI 趋势——agentic AI、多模态（multimodal）、嵌进你已在用的 app 里的 AI、设备端 AI，以及判断力与核查作为人类优势的崛起——再配上几乎所有文章都略过的部分：一套把任何趋势变成工作与生活中真实价值的实用框架。你会得到一个“炒作还是价值”的过滤器、价值阶梯、一个简单的价值方程、一个具体例子，以及一份 30 天计划——好让你不再追逐新闻，而开始累积复利般的收益。",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "AI",
+        "AI 趋势",
+        "Agentic AI",
+        "未来工作",
+        "生产力",
+        "Generative AI"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 3,
+      "featured": true
+    },
+    {
       "slug": "ports-and-adapters",
       "category": "architecture",
       "title": "Ports & Adapters（六边形架构），简单讲清楚",

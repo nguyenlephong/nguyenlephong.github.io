@@ -123,6 +123,66 @@
       "featured": false
     },
     {
+      "slug": "ai-agents-explained",
+      "category": "ai",
+      "title": "AI Agents, Explained Without the Hype: What They Are, How They Work, and What They Can Do for You",
+      "summary": "Everyone is suddenly talking about “AI agents” — software that doesn’t just answer your questions but actually goes off and does the work. But what is an agent really, how is it different from the chatbot you already use, and where does it genuinely help versus quietly create a mess? This is a friendly, jargon-light guide for everyone, tech or not: the simple loop every agent runs, the five ingredients that make one, the levels of autonomy from co-pilot to auto-pilot, down-to-earth examples at the office and at home, the failure modes to watch for, and a concrete way to put your first useful agent to work this week.",
+      "date": "2026-06-02",
+      "readingMinutes": 17,
+      "tags": [
+        "AI",
+        "AI Agents",
+        "Agentic AI",
+        "Automation",
+        "Future of Work",
+        "Productivity"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "ai-workflows-that-save-hours",
+      "category": "ai",
+      "title": "From Prompts to Workflows: Designing AI Workflows That Save You Hours Every Week",
+      "summary": "Most people use AI one question at a time — and leave most of its value on the table. The real leverage isn’t a clever prompt; it’s a repeatable AI workflow: a small chain of steps you design once and reuse forever, turning a recurring two-hour chore into a two-minute review. This is a practical, example-rich guide for everyone, tech or not: the difference between a prompt and a workflow, the simple anatomy every workflow shares, ready-to-steal workflows for the office and for everyday life, the three levels from manual to fully automatic, a six-step way to design your own, and a back-of-the-envelope way to prove the time you’re actually saving.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "AI",
+        "AI Workflow",
+        "Automation",
+        "Productivity",
+        "Future of Work",
+        "AI Tools"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 2,
+      "featured": true
+    },
+    {
+      "slug": "ai-trends-2026-into-value",
+      "category": "ai",
+      "title": "The AI Trends Worth Your Attention in 2026 — and How to Turn Them Into Real Value",
+      "summary": "Every week brings another “this changes everything” AI headline, and it’s exhausting trying to tell the signal from the noise. This is a calm, grounded tour of the AI trends that genuinely matter in 2026 — agentic AI, multimodal, AI baked into the apps you already use, on-device intelligence, and the rise of judgment and verification as the human edge — paired with the part most articles skip: a practical framework for turning any trend into actual value in your work and life. You’ll get a hype-vs-value filter, the value ladder, a simple value equation, a worked example, and a 30-day plan — so you can stop chasing news and start compounding benefit.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "AI",
+        "AI Trends",
+        "Agentic AI",
+        "Future of Work",
+        "Productivity",
+        "Generative AI"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 3,
+      "featured": true
+    },
+    {
       "slug": "tdd-bdd-ddd-driven-development",
       "category": "ways-of-working",
       "title": "TDD, BDD, DDD, and the Rest of the \"-Driven Development\" Family, Explained for Engineers",

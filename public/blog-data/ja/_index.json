@@ -27,6 +27,66 @@
   ],
   "posts": [
     {
+      "slug": "ai-agents-explained",
+      "category": "ai",
+      "title": "AIエージェント、誇張なしで解説：それが何か、どう動くか、何をしてくれるか",
+      "summary": "「AIエージェント」という言葉が急速に広まっています——質問に答えるだけでなく、実際に仕事をこなしてくれるソフトウェアです。でも、エージェントとは本当に何でしょう？すでに使っているchatbotとどう違うのか、どこで本当に役立ち、どこで静かに問題を起こすのか？これは、技術的な知識の有無を問わず誰でも読めるフレンドリーなガイドです。すべてのエージェントが動く単純なループ、エージェントを構成する5つの要素、co-pilotからauto-pilotまでの自律性のレベル、職場と日常生活での具体例、気をつけるべき失敗パターン、そして今週から使える第一歩を丁寧に解説します。",
+      "date": "2026-06-02",
+      "readingMinutes": 17,
+      "tags": [
+        "AI",
+        "AIエージェント",
+        "Agentic AI",
+        "自動化",
+        "仕事の未来",
+        "生産性"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "ai-workflows-that-save-hours",
+      "category": "ai",
+      "title": "promptからworkflowへ：毎週何時間も節約するAI workflowの作り方",
+      "summary": "ほとんどの人はAIを一度に一つの質問で使い、その価値の大部分をテーブルに残したままにしています。本当のレバレッジは巧みなpromptではありません。繰り返せるAI workflow——一度設計して永遠に再利用できる、毎回2時間かかる雑務を2分のレビューに変える小さなステップの連鎖です。技術的な知識の有無を問わず誰でも読めるこの実践ガイドでは、promptとworkflowの違い、すべてのworkflowが共有するシンプルな構造、職場と日常生活ですぐに使えるworkflowの例、手動から全自動への3つのレベル、自分のworkflowを設計する6ステップ、そして本当に時間を節約しているかを確かめる簡単な計算式を解説します。",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "AI",
+        "AI Workflow",
+        "自動化",
+        "生産性",
+        "仕事の未来",
+        "AIツール"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 2,
+      "featured": true
+    },
+    {
+      "slug": "ai-trends-2026-into-value",
+      "category": "ai",
+      "title": "2026年に注目すべきAIトレンドと、それを本当の価値に変える方法",
+      "summary": "毎週「これがすべてを変える」というAIの見出しが届いて、信号とノイズを見分けようとするだけで疲れ果てています。これは2026年に本当に重要なAIトレンドを穏やかに整理したガイドです——agentic AI・マルチモーダル・すでに使っているアプリに組み込まれたAI・オンデバイスのインテリジェンス・人間の強みとしての判断と検証の台頭——そして、ほとんどの記事が省略する部分とセットにして解説します。どんなトレンドも仕事と生活に実際の価値へと変えるための実践的なフレームワーク。ハイプと価値のフィルター・価値のはしご・シンプルな価値の方程式・具体的な実例・30日プランを手に入れて、ニュースを追いかけるのをやめて、メリットを積み上げ始めましょう。",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "AI",
+        "AIトレンド",
+        "Agentic AI",
+        "仕事の未来",
+        "生産性",
+        "生成AI"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 3,
+      "featured": true
+    },
+    {
       "slug": "ports-and-adapters",
       "category": "architecture",
       "title": "Ports & Adapters（Hexagonal Architecture）をやさしく解説",

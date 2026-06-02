@@ -27,6 +27,66 @@
   ],
   "posts": [
     {
+      "slug": "ai-agents-explained",
+      "category": "ai",
+      "title": "AI Agent, 과장 없이 설명하기: 정의, 작동 원리, 그리고 활용법",
+      "summary": "어느 날 갑자기 모두가 'AI agent'를 얘기하기 시작했습니다. 질문에 답하는 것을 넘어 직접 일을 처리하는 소프트웨어 말이죠. 하지만 agent란 정확히 무엇이고, 우리가 이미 쓰는 chatbot과 어떻게 다르며, 어디서 진짜 도움이 되고 어디서 조용히 문제를 만드는 걸까요? 이 글은 기술 지식 없이도 이해할 수 있는 친절한 안내서입니다. 모든 agent가 실행하는 단순한 루프, 구성하는 다섯 가지 요소, co-pilot에서 auto-pilot까지의 자율성 단계, 직장과 일상의 실질적인 사례, 주의해야 할 실패 유형, 그리고 이번 주부터 유용한 agent를 실제로 써볼 수 있는 방법까지 담았습니다.",
+      "date": "2026-06-02",
+      "readingMinutes": 17,
+      "tags": [
+        "AI",
+        "AI Agent",
+        "에이전틱 AI",
+        "자동화",
+        "일의 미래",
+        "생산성"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "ai-workflows-that-save-hours",
+      "category": "ai",
+      "title": "Prompt에서 Workflow로: 매주 몇 시간을 절약하는 AI Workflow 설계하기",
+      "summary": "대부분의 사람들은 AI를 한 번에 하나씩 질문하며 — 그 가치의 대부분을 놓칩니다. 진짜 레버리지는 영리한 prompt가 아닙니다. 재사용 가능한 AI workflow, 즉 한 번 설계해 영원히 재사용하는 작은 단계들의 연결 고리입니다. 반복되는 두 시간짜리 잡무를 2분 검토로 바꿔주죠. 기술 지식이 없어도 이해할 수 있는 실용적인 안내서입니다: prompt와 workflow의 차이, 모든 workflow가 공유하는 간단한 구조, 직장과 일상에서 바로 훔쳐 쓸 수 있는 workflow, 수동에서 완전 자동까지의 세 단계, 나만의 workflow를 설계하는 6단계 방법, 그리고 실제로 절약하는 시간을 증명하는 간단한 공식.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "AI",
+        "AI Workflow",
+        "자동화",
+        "생산성",
+        "일의 미래",
+        "AI 도구"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 2,
+      "featured": true
+    },
+    {
+      "slug": "ai-trends-2026-into-value",
+      "category": "ai",
+      "title": "2026년 주목할 AI 트렌드 — 그리고 실질적 가치로 바꾸는 방법",
+      "summary": "매주 '이것이 모든 것을 바꾼다'는 AI 헤드라인이 쏟아지고, 신호와 소음을 구분하려 애쓰는 것은 지칩니다. 이 글은 2026년에 진짜 중요한 AI 트렌드를 차분하게 살펴봅니다 — 에이전틱 AI, 멀티모달, 이미 쓰는 앱에 내장된 AI, 온디바이스 지능, 그리고 인간의 강점으로 떠오르는 판단과 검증 — 거기에 대부분의 글이 건너뛰는 부분을 함께 담았습니다: 어떤 트렌드든 업무와 생활에서 실제 가치로 바꾸는 실용적인 프레임워크. 과대 광고 필터, 가치 사다리, 간단한 가치 방정식, 실제 사례, 30일 계획까지 — 뉴스를 쫓는 것을 멈추고 이점을 복리로 쌓기 시작할 수 있습니다.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": [
+        "AI",
+        "AI 트렌드",
+        "에이전틱 AI",
+        "일의 미래",
+        "생산성",
+        "생성 AI"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 3,
+      "featured": true
+    },
+    {
       "slug": "ports-and-adapters",
       "category": "architecture",
       "title": "Ports & Adapters (Hexagonal Architecture), 쉽게 이해하기",
