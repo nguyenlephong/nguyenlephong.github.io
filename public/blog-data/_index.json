@@ -264,6 +264,24 @@
       "featured": true
     },
     {
+      "slug": "generative-ai-everyday-uses",
+      "category": "ai",
+      "title": "Generative AI in Daily Life and Work: A Practical Catalog of What You Can Use Today",
+      "summary": "Generative AI has quietly moved from headline to household tool — yet most people still use it for little more than the occasional question. This is a hands-on catalog of the most common, genuinely useful applications across work, learning, creativity, and everyday life, organized so you can find at least one thing to try today. No hype, no jargon — just real use cases you can apply immediately, plus the one skill that makes all of them work and the limits you should never ignore.",
+      "date": "2026-06-02",
+      "readingMinutes": 16,
+      "tags": [
+        "AI",
+        "Generative AI",
+        "AI Tools",
+        "Productivity",
+        "Everyday AI",
+        "Future of Work"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "the-monkey-eight-hours-and-unquestioned-rules",
       "category": "perspectives",
       "title": "The Monkey, the Bananas, and the 8-Hour Question",
