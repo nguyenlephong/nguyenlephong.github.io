@@ -22,7 +22,8 @@ export default function AppFooter() {
           <p className="footer-tag">{t('tag')}</p>
         </div>
 
-        <ul className="footer-social" aria-label="Social profiles">
+        <div className="footer-center">
+          <ul className="footer-social" aria-label="Social profiles">
           <li>
             <Link
               href={c.linkedin}
@@ -85,9 +86,7 @@ export default function AppFooter() {
               <PiNotebookBold size={18} />
             </Link>
           </li>
-        </ul>
-
-        <div className="footer-bottom">
+          </ul>
           <p className="footer-copy">
             {t('copy', { year })}
             {process.env.NEXT_PUBLIC_APP_VERSION && (
@@ -96,6 +95,9 @@ export default function AppFooter() {
               </span>
             )}
           </p>
+        </div>
+
+        <div className="footer-bottom">
           <div className="footer-controls">
             <FontSwitcher placement="up" />
             <LocaleSwitcher />
