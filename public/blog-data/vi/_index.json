@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "tdd-bdd-ddd-driven-development",
+      "category": "agile",
+      "title": "TDD, BDD, DDD và cả họ \"-Driven Development\", Giải thích Cho Engineer",
+      "summary": "TDD, BDD, DDD, ATDD, EDD, CDD, FDD — mớ chữ cái \"-Driven Development\" làm bối rối cả engineer nhiều kinh nghiệm, một phần vì chúng không phải đối thủ của nhau: chúng trả lời những câu hỏi khác nhau và kết hợp được với nhau. Đây là hướng dẫn thực tế, nhiều ví dụ cho lập trình viên: mỗi cái thực sự nghĩa là gì, vòng lặp/khái niệm cốt lõi, ví dụ code và Gherkin cụ thể, khi nào nên dùng, các cạm bẫy — và một bản đồ rõ ràng cho thấy chúng ghép với nhau ra sao trên cùng một tính năng thật.",
+      "date": "2026-06-02",
+      "readingMinutes": 22,
+      "tags": [
+        "TDD",
+        "BDD",
+        "Domain-Driven Design",
+        "Kiến trúc phần mềm",
+        "Testing",
+        "Phát triển phần mềm"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "agile-scrum-in-practice",
       "category": "agile",
       "title": "Agile & Scrum trong thực tế: Công ty đang biến tấu thế nào, và chuẩn thật sự ra sao",
