@@ -3,7 +3,7 @@ import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
-import { PiBrainBold } from 'react-icons/pi'
+import { PiBrainBold, PiBooksBold } from 'react-icons/pi'
 import { profileInfo } from '@/app/app.const'
 import { track } from '@/lib/analytics'
 import LocaleSwitcher from '@/components/LocaleSwitcher'
@@ -74,6 +74,15 @@ export default function AppFooter() {
               onClick={() => track('cv_social_click', { platform: 'thoughts', source: 'footer' })}
             >
               <PiBrainBold size={18} />
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/notes"
+              aria-label="Notes — knowledge guides"
+              onClick={() => track('cv_social_click', { platform: 'notes', source: 'footer' })}
+            >
+              <PiBooksBold size={18} />
             </Link>
           </li>
         </ul>
