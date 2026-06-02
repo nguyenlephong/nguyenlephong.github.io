@@ -11,9 +11,39 @@
       "label": "Tài chính & Tiết kiệm",
       "description": "Cách quản lý dòng tiền cá nhân, giữ tiền trong túi và xây thói quen tài chính lành mạnh — viết cho người đi làm bình thường.",
       "color": "#d97706"
+    },
+    {
+      "id": "mua-xe",
+      "label": "Mua xe & sắm lớn",
+      "description": "Cách ra quyết định cho những khoản mua sắm lớn của đời người — mua xe, chi phí sở hữu thật, mua mới hay cũ, trả thẳng hay trả góp — để tài sản phục vụ bạn, không trở thành gánh nặng.",
+      "color": "#2563eb"
+    },
+    {
+      "id": "su-nghiep",
+      "label": "Sự nghiệp & phát triển",
+      "description": "Làm chủ con đường sự nghiệp của chính mình — xây kỹ năng, nâng giá trị thị trường, đàm phán thu nhập, và phát triển bản thân bền vững cho người đi làm.",
+      "color": "#7c3aed"
     }
   ],
   "posts": [
+    {
+      "slug": "mua-xe-lan-dau-chi-phi-va-quyet-dinh",
+      "title": "Mua xe lần đầu — toàn bộ chi phí và quyết định trước khi xuống tiền",
+      "summary": "Một chiếc xe có thể là công cụ nâng tầm cuộc sống của bạn — hoặc một cái hố ngốn tiền âm thầm kéo bạn lùi lại nhiều năm. Khác biệt không nằm ở chiếc xe, mà ở cách bạn ra quyết định mua nó. Giống như mua nhà, mua xe là một trong những khoản chi lớn nhất đời người, nhưng hầu hết chúng ta lại quyết định nó bằng cảm xúc và chỉ nhìn vào mỗi con số trên bảng giá. Bài này là tấm bản đồ đầy đủ cho người mua xe lần đầu: câu hỏi quan trọng nhất phải tự trả lời trước, toàn bộ tảng băng chi phí sở hữu mà giá xe chỉ là phần nổi, cách đặt ngân sách để xe không bóp nghẹt tài chính, mua mới hay cũ, trả thẳng hay trả góp, chọn xe theo nhu cầu thật, và cách vượt qua những cái bẫy ở phòng trưng bày.",
+      "date": "2026-06-02",
+      "readingMinutes": 17,
+      "tags": ["Mua xe", "Tài chính cá nhân", "Quyết định mua sắm", "Chi phí", "Kinh nghiệm"],
+      "topic": "mua-xe"
+    },
+    {
+      "slug": "lam-chu-su-nghiep-bien-cong-viec-thanh-be-phong",
+      "title": "Làm chủ sự nghiệp — biến công việc thành bệ phóng, không phải nơi mắc kẹt",
+      "summary": "Phần lớn chúng ta được dạy cách làm tốt công việc, nhưng không ai dạy cách làm chủ sự nghiệp của mình. Thế là nhiều người đi làm chăm chỉ hàng chục năm, trung thành và tận tụy, để rồi một ngày nhìn lại và tự hỏi vì sao mình vẫn ở nguyên chỗ cũ, trong khi những người không giỏi hơn lại tiến xa. Sự thật là: sự nghiệp không phải thứ công ty trao cho bạn, mà là thứ bạn phải chủ động xây. Bài này thay đổi cách bạn nhìn về công việc của mình — từ giá trị thị trường quyết định mức lương, cách xây bộ kỹ năng vừa sâu vừa rộng, nghệ thuật tăng thu nhập qua giá trị và qua đàm phán, vì sao làm tốt thôi chưa đủ, khi nào nên ở lại và khi nào nên ra đi, đến những cái bẫy âm thầm giữ chân bạn ở vùng an toàn.",
+      "date": "2026-06-02",
+      "readingMinutes": 18,
+      "tags": ["Sự nghiệp", "Phát triển bản thân", "Kỹ năng", "Thu nhập", "Mindset"],
+      "topic": "su-nghiep"
+    },
     {
       "slug": "lap-ngan-sach-lam-chu-dong-tien",
       "title": "Lập ngân sách & làm chủ dòng tiền — bản kế hoạch cho từng đồng bạn kiếm được",
