@@ -31,9 +31,35 @@
       "description": "Personal essays and reflections sitting outside the technical — questions about how we work, why we follow the rules we follow, and what technology is actually doing to the time we have. Honest, opinionated, and written without a safety net.",
       "accent": "dark",
       "order": 4
+    },
+    {
+      "slug": "agile",
+      "title": "Agile & Delivery",
+      "tagline": "How real teams run Scrum and Agile — the standard, the customizations, and how to operate it well.",
+      "description": "Practical, no-nonsense writing on how software teams actually work: Agile and Scrum in practice, the meaning behind epics, stories, tasks and story points, honest estimation and work logging, reading burndown and velocity charts, and running planning, standups, reviews and retros so they help instead of waste time. Written so anyone on the team — BA, PO, PM, developer, QA or newcomer — can understand it and operate well from day one.",
+      "accent": "light",
+      "order": 5
     }
   ],
   "posts": [
+    {
+      "slug": "agile-scrum-in-practice",
+      "category": "agile",
+      "title": "Agile & Scrum in Practice: How Teams Really Run It vs. How It's Meant to Work",
+      "summary": "Almost every software team says they \"do Scrum\" — and almost every one does it a little differently. This is a clear, practical field guide for everyone on the team, whatever your role: what an epic, story, task, and sub-task actually are; how status workflows really run; what story points mean (and the mistakes that ruin them); how to estimate and log work honestly; how to read burndown and velocity charts; and how to run planning, daily, review, and retro so they help instead of waste time. The standard, the common customizations, and how to operate it all well — enough to be genuinely useful from day one.",
+      "date": "2026-06-02",
+      "readingMinutes": 20,
+      "tags": [
+        "Agile",
+        "Scrum",
+        "Software Development",
+        "Project Management",
+        "Team Collaboration",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
     {
       "slug": "ports-and-adapters",
       "category": "architecture",
