@@ -282,6 +282,60 @@
       "featured": true
     },
     {
+      "slug": "questions-before-marriage",
+      "category": "perspectives",
+      "title": "Deciding to Marry: 24 Conversations to Have Before You Move In Together",
+      "summary": "We're told marriage is a matter of fate — love enough and it works out. But the most peaceful couples tend to be the ones who sat down and made every expectation clear before the wedding. This article shares a set of 24 questions — inspired by a list one married friend used with her partner before moving in together — covering money, children, careers, both families, habits, privacy, and how to actually run a home. Not to interrogate each other, but to co-design a marriage with less drama and more peace.",
+      "date": "2026-06-02",
+      "readingMinutes": 19,
+      "tags": [
+        "Marriage",
+        "Premarital",
+        "Deciding to Marry",
+        "Life Values",
+        "Couple Communication",
+        "Life Planning"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
+      "slug": "wedding-prep-for-grooms",
+      "category": "perspectives",
+      "title": "A Groom's Complete Guide to Wedding Preparation: Every Stage and a Detailed Budget (Vietnam)",
+      "summary": "Getting married isn't just one big day — it's a months-long project with dozens of moving parts and a budget that can reach hundreds of millions of đồng. This is a map for the man who wants to be genuinely thoughtful: walking through every stage from dating, meeting the families, the formal proposal and engagement ceremonies, the wedding itself, and the honeymoon — with a detailed line-by-line budget, how to allocate it, what the groom's side typically covers, money-saving tips, and the things a future husband should care about beyond the cost.",
+      "date": "2026-06-02",
+      "readingMinutes": 23,
+      "tags": [
+        "Wedding",
+        "Wedding Budget",
+        "Wedding Planning",
+        "Family Finance",
+        "Marriage",
+        "Life Planning"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
+      "slug": "know-your-work-rights",
+      "category": "perspectives",
+      "title": "Know Your Rights at Work: An A–Z Guide to Quitting, Switching Jobs, Insurance, and Tax (Vietnam)",
+      "summary": "Every month, around 32% of your salary flows into insurance and tax — yet most working people have no idea what they're entitled to in return. This is a practical, plain-language field guide for anyone with a job: from the moment you think about quitting, through the handover and finalizing your social-insurance book, to claiming unemployment benefits, reading the contract, signing the right papers, and onboarding at a new company. With worked examples, real office situations, and a do / don't checklist so you never lose a benefit simply because nobody told you it existed.",
+      "date": "2026-06-02",
+      "readingMinutes": 22,
+      "tags": [
+        "Employee Rights",
+        "Social Insurance",
+        "Unemployment Insurance",
+        "Personal Income Tax",
+        "Employment Contract",
+        "Changing Jobs"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "the-monkey-eight-hours-and-unquestioned-rules",
       "category": "perspectives",
       "title": "The Monkey, the Bananas, and the 8-Hour Question",
