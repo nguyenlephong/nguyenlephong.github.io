@@ -340,6 +340,24 @@
       ]
     },
     {
+      "slug": "software-engineer-career-path",
+      "category": "perspectives",
+      "title": "Hiểu rõ tấm bản đồ: Vì sao nắm được career path là lợi thế thầm lặng của một engineer",
+      "summary": "Phần lớn engineer trôi theo sự nghiệp từng đợt thăng chức một, hy vọng chỉ cần cố gắng là đủ. Những người tiến xa có chủ đích lại làm một việc khác trước tiên: họ hiểu tấm bản đồ. Dùng chính sơ đồ nấc thang sự nghiệp software engineer — nhánh IC chung tách thành nhánh kỹ thuật và nhánh quản lý — đây là hướng dẫn thực tế về vì sao hiểu địa hình là một lợi thế, mỗi nấc thang thực sự tưởng thưởng điều gì, cách xác định hướng đi của riêng bạn, nhịp cải thiện mỗi ngày–tháng–quý–năm, và những cạm bẫy cần tránh trên đường.",
+      "date": "2026-06-02",
+      "readingMinutes": 19,
+      "tags": [
+        "Phát triển sự nghiệp",
+        "Software Engineering",
+        "Career Path",
+        "Phát triển bản thân",
+        "Lãnh đạo",
+        "Cố vấn"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "questions-before-marriage",
       "category": "perspectives",
       "title": "Quyết định tiến tới hôn nhân: 24 câu hỏi nên cùng nhau trả lời trước khi về chung một nhà",

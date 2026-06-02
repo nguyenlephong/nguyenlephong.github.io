@@ -344,6 +344,24 @@
       "featured": true
     },
     {
+      "slug": "software-engineer-career-path",
+      "category": "perspectives",
+      "title": "Know the Map: Why Understanding Your Career Path Is an Engineer's Quiet Superpower",
+      "summary": "Most engineers drift up their career one promotion at a time, hoping effort alone will carry them. The ones who move with intent do something different first: they understand the map. Using the software engineering career ladder — the IC trunk that forks into a technical track and a managerial track — this is a practical guide to why knowing the terrain is an advantage, what each rung actually rewards, how to figure out your own direction, the cadence of improving every day, month, quarter, and year, and the traps to avoid along the way.",
+      "date": "2026-06-02",
+      "readingMinutes": 19,
+      "tags": [
+        "Career Growth",
+        "Software Engineering",
+        "Career Path",
+        "Personal Development",
+        "Leadership",
+        "Mentorship"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "questions-before-marriage",
       "category": "perspectives",
       "title": "Deciding to Marry: 24 Conversations to Have Before You Move In Together",
