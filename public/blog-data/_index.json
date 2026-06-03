@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "roads-to-c-level",
+      "category": "perspectives",
+      "title": "What C-Level Leaders Learn Before They Get the Chair: Five Roads to the Top of a Big Corp",
+      "summary": "At the executive level, the market stops asking about your potential and starts asking for your evidence. Have you owned a P&L? Carried revenue? Decided well on imperfect data? This is a clear, practical guide to how people actually reach C-level inside a large corporation: the five well-worn roads — through FMCG, Tech, Finance, Consulting, and Legal/Risk — what each one really teaches, the honest truth about whether you need an MBA or Master’s, and the single mindset shift that separates a specialist from someone the board will bet on. Written for anyone, in any field, who suspects the chair they want will be earned by evidence, not by title.",
+      "date": "2026-06-03",
+      "readingMinutes": 17,
+      "tags": [
+        "Career Growth",
+        "Leadership",
+        "C-Level",
+        "Executive Career",
+        "MBA",
+        "Personal Development"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "solitude-of-great-minds",
       "category": "perspectives",
       "title": "The Solitude of Great Minds: The Quiet Strength of People Who Walk Alone",

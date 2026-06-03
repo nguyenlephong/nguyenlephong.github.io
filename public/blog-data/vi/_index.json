@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "roads-to-c-level",
+      "category": "perspectives",
+      "title": "C-Level Ở Big Corp Học Gì Trước Khi Lên Ghế Lãnh Đạo? Năm Con Đường, Chuyện MBA, Và Bước Chuyển Tư Duy",
+      "summary": "Ở tầng lãnh đạo, thị trường thôi hỏi về tiềm năng của bạn và bắt đầu đòi bằng chứng. Bạn đã quản lý P&L chưa? Đã chịu trách nhiệm với doanh thu chưa? Ra quyết định được khi dữ liệu chưa hoàn hảo chưa? Đây là một bài viết rõ ràng, thực tế về cách người ta thật sự lên tới C-level trong một tập đoàn lớn: năm con đường quen thuộc — qua FMCG, Tech, Finance, Consulting và Legal/Risk — mỗi hướng thật sự dạy gì, sự thật thẳng thắn về việc có cần MBA hay Master không, và một bước chuyển tư duy duy nhất tách một người chuyên môn khỏi một người mà ban lãnh đạo dám đặt cược. Viết cho bất kỳ ai, ở bất kỳ ngành nào, đang ngờ rằng chiếc ghế mình muốn sẽ được trao bằng bằng chứng, chứ không bằng chức danh.",
+      "date": "2026-06-03",
+      "readingMinutes": 17,
+      "tags": [
+        "Phát triển sự nghiệp",
+        "Lãnh đạo",
+        "C-Level",
+        "Sự nghiệp điều hành",
+        "MBA",
+        "Phát triển bản thân"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "solitude-of-great-minds",
       "category": "perspectives",
       "title": "Sự Cô Đơn Của Những Tâm Hồn Vĩ Đại: Sức Mạnh Lặng Thầm Của Người Dám Đi Một Mình",
