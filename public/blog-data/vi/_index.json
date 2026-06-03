@@ -43,6 +43,42 @@
   ],
   "posts": [
     {
+      "slug": "solitude-of-great-minds",
+      "category": "perspectives",
+      "title": "Sự Cô Đơn Của Những Tâm Hồn Vĩ Đại: Sức Mạnh Lặng Thầm Của Người Dám Đi Một Mình",
+      "summary": "Ta thường cho rằng người hay đi một mình hẳn có gì đó không ổn. Nhưng phần nhiều, họ chỉ đơn giản đã đi qua nơi mà người bình thường chưa từng đặt chân — qua giai đoạn tăm tối nhất của đời mình, và tự bước ra. Đây là một bài viết ấm áp, có chiều sâu về sức mạnh lặng thầm của người sống độc lập: vì sao cô độc không phải là cô đơn, vì sao giá trị bản thân được đặt từ bên trong khiến một người trở nên không thể quật ngã, vì sao người đã đi qua bóng tối lại nhìn người rất giỏi, và vì sao một người từng ấm áp bỗng trầm lặng thường không phải vô tâm — mà chỉ là cẩn trọng hơn. Kèm những ví dụ gần gũi và một lối nhỏ để bạn tự xây cho mình chút tòa thành nội tâm ấy.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Cô đơn",
+        "Giá trị bản thân",
+        "Sống độc lập",
+        "Nội tâm",
+        "Chữa lành",
+        "Suy ngẫm"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
+      "slug": "meaning-is-in-the-living",
+      "category": "perspectives",
+      "title": "Ý Nghĩa Của Đời Người Nằm Ở Cách Ta Sống: Đừng Mãi Chờ “Sau Này”",
+      "summary": "Nếu trang cuối của mỗi đời người đã được an bài, thì ý nghĩa chưa bao giờ nằm ở điểm kết — nó nằm trọn trong việc được sống. Đây là một bài viết ấm áp, thong thả, dành cho bất cứ ai đang cuốn trong vòng xoáy hết việc này tới việc khác: vì sao đời vốn không hẹn trước, cái bẫy lặng lẽ “bao giờ rảnh sẽ sống” lấy đi những năm tháng đẹp nhất ra sao, và làm sao biến những ngày tưởng chừng tẻ nhạt thành khoảnh khắc đáng nhớ suốt đời. Không phải một bài giảng về cái chết, mà là một lời mời gọi: hãy nói lời yêu khi còn nói được, hãy ngắm một lần mặt trời lên, và hiểu rằng ngay cả những câu chuyện bị gọi là “dang dở” cũng đã từng rất rực rỡ trên suốt chặng đường nó tồn tại.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Cuộc sống",
+        "Sống trọn",
+        "Suy ngẫm",
+        "Ý nghĩa cuộc sống",
+        "Hiện diện",
+        "Chánh niệm"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "how-teams-work-big-corp-startup-outsourcing",
       "category": "ways-of-working",
       "title": "Đội phần mềm thực sự làm việc thế nào: Big Corp vs Startup vs Outsourcing",

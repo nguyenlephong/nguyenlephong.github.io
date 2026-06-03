@@ -43,6 +43,42 @@
   ],
   "posts": [
     {
+      "slug": "solitude-of-great-minds",
+      "category": "perspectives",
+      "title": "The Solitude of Great Minds: The Quiet Strength of People Who Walk Alone",
+      "summary": "We tend to assume something is wrong with the person who walks alone. More often, they’ve simply been somewhere most people haven’t — through their darkest stretch, and out the other side, on their own. This is a warm, grounded reflection on the quiet strength of independent people: why solitude is not loneliness, how self-worth built from within makes someone unshakeable, why those who’ve walked through the dark read people so well, and why a once-warm person who turns quiet usually isn’t cold — just careful. With down-to-earth examples and a gentle guide to building a little of that inner fortress yourself.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Solitude",
+        "Self-Worth",
+        "Independence",
+        "Personal Growth",
+        "Emotional Resilience",
+        "Personal Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
+      "slug": "meaning-is-in-the-living",
+      "category": "perspectives",
+      "title": "The Meaning of a Life Is in the Living: A Gentle Case Against Waiting for “Later”",
+      "summary": "If the last page of every life is already written, then the meaning was never the ending — it was the living. This is a warm, unhurried reflection for anyone caught in the endless rush of task after task: why life doesn’t make appointments, how the quiet trap of “I’ll live when…” steals our best years, and how to turn ordinary, forgettable days into moments worth keeping. Not a lecture on mortality, but an invitation to say the love while you can say it, to notice the sunrise, and to understand that even the stories we call “unfinished” were once radiant the whole way down the road.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Life",
+        "Living Fully",
+        "Personal Reflection",
+        "Meaning of Life",
+        "Presence",
+        "Mindfulness"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "how-teams-work-big-corp-startup-outsourcing",
       "category": "ways-of-working",
       "title": "How Software Teams Really Work: Big Corp vs Startup vs Outsourcing",
