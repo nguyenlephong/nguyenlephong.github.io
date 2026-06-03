@@ -43,6 +43,63 @@
   ],
   "posts": [
     {
+      "slug": "event-driven-architecture-and-messaging",
+      "category": "architecture",
+      "title": "Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained",
+      "summary": "When services hold hands through synchronous calls, latency adds up and one slow dependency takes down checkout. A no-hype guide to event-driven architecture: sync vs async, commands vs events, what brokers really promise (at-least-once, not exactly-once), choreography vs orchestration, and exactly when NOT to reach for events.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Software Architecture",
+        "Event-Driven Architecture",
+        "Message Queues",
+        "Asynchronous Messaging",
+        "Distributed Systems",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 7
+    },
+    {
+      "slug": "data-in-distributed-systems",
+      "category": "architecture",
+      "title": "Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears",
+      "summary": "Splitting code is the easy half — splitting data is where distributed systems humble you. A practical guide to owning data across services: why a shared database is a distributed monolith, the trade from ACID to eventual consistency, the dual-write bug and the outbox that fixes it, sagas with compensating actions, and when CQRS and event sourcing are worth their lifetime cost.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Software Architecture",
+        "Distributed Systems",
+        "Saga Pattern",
+        "CQRS",
+        "Event Sourcing",
+        "Data Consistency"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 8
+    },
+    {
+      "slug": "resilience-in-distributed-systems",
+      "category": "architecture",
+      "title": "The Distributed-Systems Tax, Paid: Timeouts, Retries, Circuit Breakers, and Idempotency",
+      "summary": "The moment a call leaves your process it can be slow, fail, or happen twice — and that is the normal case, not the exception. The resilience toolkit, explained plainly: why timeouts come first, how retries become a self-inflicted DDoS without backoff and jitter, why idempotency is the price of retrying, and how circuit breakers, bulkheads, graceful degradation, and observability keep one bad dependency from taking down everything.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Software Architecture",
+        "Resilience",
+        "Fault Tolerance",
+        "Circuit Breaker",
+        "Idempotency",
+        "Distributed Systems"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 9
+    },
+    {
       "slug": "ambition-in-the-age-of-ai",
       "category": "ai",
       "title": "Your Fear of AI Is the Size of Your Ambition: Why It’s Time to Aim Dramatically Bigger",
