@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "sdlc-to-adlc-agentic-development",
+      "category": "ai",
+      "title": "Từ SDLC Đến ADLC: Cách AI Agent Đang Viết Lại Vòng Đời Phát Triển Phần Mềm",
+      "summary": "Phát triển phần mềm đang trải qua bước ngoặt lớn nhất kể từ giao diện đồ họa. Những giai đoạn mà kỹ sư từng làm thủ công — lập kế hoạch, code, kiểm thử, triển khai — ngày càng được các AI agent thực thi song song. Đây là một hướng dẫn rõ ràng, trực quan về bước chuyển từ SDLC kinh điển sang ADLC đang lên (Agentic Development Life Cycle): hai vòng đời vẽ cạnh nhau, sáu chuyển dịch cụ thể đang diễn ra ngay lúc này, những con số ban đầu gợi ý điều gì, nó thật sự nghĩa là gì với công việc hằng ngày của một kỹ sư, và năm best practice ít rủi ro để bắt đầu đi nhanh hơn — mà không trao đi phần phán đoán vẫn phải là của bạn.",
+      "date": "2026-06-03",
+      "readingMinutes": 15,
+      "tags": [
+        "AI",
+        "AI Agent",
+        "Agentic AI",
+        "SDLC",
+        "Phát triển phần mềm",
+        "Tương lai công việc"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "dreamers-doers-and-grit",
       "category": "perspectives",
       "title": "Kẻ Bỏ Cuộc Luôn Có Lý Do, Người Thành Công Chỉ Có Mục Tiêu: Bàn Về Chữ “Lì”",
