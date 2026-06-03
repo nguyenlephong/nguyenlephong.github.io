@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "se-to-technical-manager",
+      "category": "culture",
+      "title": "From Software Engineer to Technical Manager: The Counterintuitive Things You Learn",
+      "summary": "Moving from Software Engineer to Technical Manager isn’t a bigger version of the same job — it’s a quiet rewrite of the very habits that made you good at the last one. Step back from the IDE to see architecture, people, and process, and three surprising truths come into focus: code is an asset and a liability at once, your value shifts from addition to multiplication, and delegation is simple to say but genuinely hard to let go of. A practical, honest reflection for senior engineers eyeing the lead role — and for new managers still reaching for the keyboard.",
+      "date": "2026-06-03",
+      "readingMinutes": 12,
+      "tags": [
+        "Engineering Culture",
+        "Engineering Management",
+        "Technical Leadership",
+        "Career Growth",
+        "Delegation",
+        "Mentorship"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "sdlc-to-adlc-agentic-development",
       "category": "ai",
       "title": "From SDLC to ADLC: How AI Agents Are Rewriting the Software Development Lifecycle",

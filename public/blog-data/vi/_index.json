@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "se-to-technical-manager",
+      "category": "culture",
+      "title": "Từ Software Engineer Đến Technical Manager: Những Điều Thú Vị (Và Trái Ngược) Bạn Sẽ Nhận Ra",
+      "summary": "Bước từ Software Engineer sang Technical Manager không phải là một phiên bản “to hơn” của cùng một công việc — đó là một cuộc viết lại lặng lẽ chính những thói quen đã từng giúp bạn giỏi ở vai trò trước. Lùi khỏi IDE để nhìn kiến trúc, con người và quy trình, ba sự thật khá bất ngờ dần hiện ra: code vừa là tài sản vừa là tiêu sản, giá trị của bạn dịch từ phép cộng sang phép nhân, và delegate nghe thì đơn giản nhưng buông tay thật sự rất khó. Một bài chiêm nghiệm thực tế, thành thật cho những kỹ sư senior đang nhìn về vai trò lead — và cho cả những manager mới vẫn còn quen với tay đặt lên bàn phím.",
+      "date": "2026-06-03",
+      "readingMinutes": 12,
+      "tags": [
+        "Văn hoá Kỹ thuật",
+        "Quản lý kỹ thuật",
+        "Lãnh đạo kỹ thuật",
+        "Phát triển sự nghiệp",
+        "Uỷ thác",
+        "Cố vấn"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "sdlc-to-adlc-agentic-development",
       "category": "ai",
       "title": "Từ SDLC Đến ADLC: Cách AI Agent Đang Viết Lại Vòng Đời Phát Triển Phần Mềm",
