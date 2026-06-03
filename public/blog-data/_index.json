@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "same-facts-different-story",
+      "category": "perspectives",
+      "title": "Same Facts, Different Story: How Where You Stand — and How You Say It — Change Everything",
+      "summary": "Raise one fish and it dies, you grieve all day; tend a whole pond and you barely notice. Stand on the first floor and a harsh word makes you tremble; stand on the hundredth and the same words never reach you. The facts hold still — it’s our position and our words that swing the feeling. This is a warm, office-relatable reflection on the two dials you almost always have a hand on: where you stand and how you say it. With real workplace examples, a couple of simple diagrams, a “recalculating route” lesson from Google Maps, gentle takeaways, and one idea that can lighten an entire day.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Growth",
+        "Perspective",
+        "Communication",
+        "Reframing",
+        "Resilience",
+        "Personal Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "se-to-technical-manager",
       "category": "culture",
       "title": "From Software Engineer to Technical Manager: The Counterintuitive Things You Learn",

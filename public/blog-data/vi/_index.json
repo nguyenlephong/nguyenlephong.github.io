@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "same-facts-different-story",
+      "category": "perspectives",
+      "title": "Cùng Một Sự Thật, Khác Một Cách Kể: Vị Trí Bạn Đứng Và Cách Bạn Nói Đổi Thay Tất Cả",
+      "summary": "Nuôi một con cá, nó chết, bạn buồn cả ngày; nuôi cả một ao cá, vài con đi bạn chẳng hay biết. Đứng ở tầng 1, một câu chửi làm bạn run người; đứng ở tầng 100, cùng những lời ấy chẳng còn chạm tới. Sự thật đứng yên — chính vị trí và ngôn từ của ta mới làm cảm xúc chao đảo. Đây là một bài viết ấm áp, gần gũi với môi trường văn phòng, về hai cái “núm vặn” bạn gần như luôn nắm trong tay: chỗ bạn đứng và cách bạn nói. Kèm ví dụ công việc thật, vài sơ đồ đơn giản, bài học “đang lập lại lộ trình” từ Google Maps, những điều đọng lại nhẹ nhàng, và một ý có thể làm nhẹ cả một ngày.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Phát triển bản thân",
+        "Góc nhìn",
+        "Giao tiếp",
+        "Tư duy lại",
+        "Bản lĩnh",
+        "Suy ngẫm"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "se-to-technical-manager",
       "category": "culture",
       "title": "Từ Software Engineer Đến Technical Manager: Những Điều Thú Vị (Và Trái Ngược) Bạn Sẽ Nhận Ra",
