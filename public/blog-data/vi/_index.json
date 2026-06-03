@@ -43,6 +43,42 @@
   ],
   "posts": [
     {
+      "slug": "ambition-in-the-age-of-ai",
+      "category": "ai",
+      "title": "Nỗi Sợ AI Của Bạn Chính Là Kích Thước Tham Vọng Của Bạn: Đã Đến Lúc Nhắm Lớn Hơn Rất Nhiều",
+      "summary": "Hai người có thể nhìn cùng một bước nhảy của AI và cảm thấy hai điều trái ngược — kinh hãi hoặc hứng khởi — và khác biệt ấy hé lộ một điều hơi khó nghe: nỗi sợ tương lai của ta xấp xỉ bằng kích thước tham vọng của ta. Nếu kế hoạch của bạn là cứ làm đúng những gì đang làm, một cỗ máy làm điều đó rẻ hơn thật đáng sợ. Nếu kế hoạch của bạn là kiến tạo một thứ lớn hơn rất nhiều, đó là tin tốt nhất bạn từng nhận. Đây là một lập luận rõ ràng, tiếp lửa để cho “đừng đun sôi cả đại dương” về hưu, đổi cái hiện-tại-1.05x lấy cái tương-lai-10x, và vì sao — qua ephemeralization và Jevons paradox — nâng tham vọng thường tạo ra nhiều hơn, chứ không ít hơn.",
+      "date": "2026-06-03",
+      "readingMinutes": 11,
+      "tags": [
+        "AI",
+        "Tương lai công việc",
+        "Tham vọng",
+        "Khởi nghiệp",
+        "Thời đại AI",
+        "Phát triển bản thân"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
+      "slug": "complexity-is-inevitable-simplicity-is-sustainable",
+      "category": "perspectives",
+      "title": "Sự Phức Tạp Là Tất Yếu, Sự Đơn Giản Là Bền Vững: Bài Học Từ Hệ Thống Lớn — Và Cuộc Sống",
+      "summary": "Những năm đầu sự nghiệp, mình tin một hệ thống “xịn” phải là nơi hội tụ công nghệ mới nhất, nhiều lớp abstraction và càng nhiều “magic code” càng đẳng cấp. Nhiều năm với large-scale distributed systems đã dạy mình điều ngược lại. Sự phức tạp là cái giá tất yếu của tăng trưởng — nhưng sự đơn giản, thứ đến từ sự tường minh, mới là cái giúp một hệ thống (và một cuộc đời) sống sót qua việc người rời đi, công nghệ lỗi thời và yêu cầu dịch chuyển. Một góc nhìn ấm áp, gần gũi văn phòng về essential vs. accidental complexity, lãi kép của technical debt, vì sao giữ đơn giản lại khó hơn, và vì sao cùng ý tưởng đó giúp ta vững vàng giữa cuộc sống hiện đại.",
+      "date": "2026-06-03",
+      "readingMinutes": 12,
+      "tags": [
+        "Thiết kế hệ thống",
+        "Kiến trúc phần mềm",
+        "Sự đơn giản",
+        "Technical Debt",
+        "Triết lý kỹ thuật",
+        "Suy ngẫm"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "same-facts-different-story",
       "category": "perspectives",
       "title": "Cùng Một Sự Thật, Khác Một Cách Kể: Vị Trí Bạn Đứng Và Cách Bạn Nói Đổi Thay Tất Cả",

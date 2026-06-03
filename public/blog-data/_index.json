@@ -43,6 +43,42 @@
   ],
   "posts": [
     {
+      "slug": "ambition-in-the-age-of-ai",
+      "category": "ai",
+      "title": "Your Fear of AI Is the Size of Your Ambition: Why It’s Time to Aim Dramatically Bigger",
+      "summary": "Two people can look at the same AI breakthrough and feel opposite things — terror or fuel — and the difference reveals something uncomfortable: our fear of the future is roughly the size of our ambition. If your plan is to keep doing exactly what you do, a machine that does it cheaper is frightening. If your plan is to build something dramatically bigger, it’s the best news you’ve ever gotten. This is a clear, energising case for retiring “don’t boil the ocean,” trading the 1.05x present for the 10x future, and why — through ephemeralization and the Jevons paradox — raising your ambitions tends to create more, not less.",
+      "date": "2026-06-03",
+      "readingMinutes": 11,
+      "tags": [
+        "AI",
+        "Future of Work",
+        "Ambition",
+        "Entrepreneurship",
+        "AI Era",
+        "Personal Growth"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
+      "slug": "complexity-is-inevitable-simplicity-is-sustainable",
+      "category": "perspectives",
+      "title": "Complexity Is Inevitable, Simplicity Is Sustainable: Lessons from Large-Scale Systems — and Life",
+      "summary": "Early in my career I believed a “great” system meant the newest tech, the most abstraction layers, and the cleverest “magic code.” Years inside large-scale distributed systems taught me the opposite. Complexity is the inevitable price of growth — but simplicity, the kind that comes from clarity, is what lets a system (and a life) survive people leaving, tech ageing, and requirements shifting. A warm, office-relatable look at essential vs. accidental complexity, the compound interest of technical debt, why staying simple is the harder choice, and how the same idea quietly steadies a busy modern life.",
+      "date": "2026-06-03",
+      "readingMinutes": 12,
+      "tags": [
+        "System Design",
+        "Software Architecture",
+        "Simplicity",
+        "Technical Debt",
+        "Engineering Philosophy",
+        "Personal Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "same-facts-different-story",
       "category": "perspectives",
       "title": "Same Facts, Different Story: How Where You Stand — and How You Say It — Change Everything",
