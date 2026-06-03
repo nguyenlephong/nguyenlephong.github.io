@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "the-quiet-art-of-letting-go",
+      "category": "perspectives",
+      "title": "The Quiet Art of Letting Go: Seven Shifts of a Maturing Mind",
+      "summary": "There’s a kind of strength that doesn’t announce itself — it goes quiet. The more settled a person becomes inside, the less they argue, the less they need to change anyone, and the more easily they let go of what was never theirs to keep. This is a warm, grounded reflection drawn from a set of life maxims about maturity and awakening: why the strongest people are the calmest, why you eventually stop trying to fix others, how relationships arise and end, and why awakening really comes down to a single word — let go. With everyday examples, gentle takeaways, and one quiet idea that can lighten an entire day.",
+      "date": "2026-06-03",
+      "readingMinutes": 14,
+      "tags": [
+        "Personal Growth",
+        "Letting Go",
+        "Maturity",
+        "Mindfulness",
+        "Inner Peace",
+        "Personal Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "roads-to-c-level",
       "category": "perspectives",
       "title": "What C-Level Leaders Learn Before They Get the Chair: Five Roads to the Top of a Big Corp",

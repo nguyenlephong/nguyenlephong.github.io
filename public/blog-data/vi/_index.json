@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "the-quiet-art-of-letting-go",
+      "category": "perspectives",
+      "title": "Nghệ Thuật Buông Lặng Lẽ: Bảy Chuyển Hóa Của Một Tâm Trí Trưởng Thành",
+      "summary": "Có một thứ sức mạnh không cần lên tiếng — nó lặng đi. Một người càng an định bên trong thì càng ít tranh cãi, càng thôi muốn thay đổi ai, và càng dễ buông những gì vốn chẳng thuộc về mình. Đây là một bài viết ấm áp, sâu lắng, chắt ra từ một loạt câu nói về sự trưởng thành và tỉnh thức: vì sao người mạnh mẽ nhất lại điềm tĩnh nhất, vì sao rồi bạn sẽ thôi cố sửa người khác, vì sao mọi mối quan hệ đều duyên khởi duyên diệt, và vì sao tỉnh thức rốt cuộc gói trong một chữ — buông. Kèm những ví dụ gần gũi, vài điều đọng lại, và một ý lặng lẽ có thể làm nhẹ cả một ngày.",
+      "date": "2026-06-03",
+      "readingMinutes": 14,
+      "tags": [
+        "Phát triển bản thân",
+        "Buông bỏ",
+        "Trưởng thành",
+        "Chánh niệm",
+        "Bình an nội tâm",
+        "Suy ngẫm"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "roads-to-c-level",
       "category": "perspectives",
       "title": "C-Level Ở Big Corp Học Gì Trước Khi Lên Ghế Lãnh Đạo? Năm Con Đường, Chuyện MBA, Và Bước Chuyển Tư Duy",
