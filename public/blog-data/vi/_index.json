@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "dreamers-doers-and-grit",
+      "category": "perspectives",
+      "title": "Kẻ Bỏ Cuộc Luôn Có Lý Do, Người Thành Công Chỉ Có Mục Tiêu: Bàn Về Chữ “Lì”",
+      "summary": "Kẻ bỏ cuộc luôn có lý do; người đi tới đích chỉ có một mục tiêu. Khác biệt duy nhất giữa kẻ mơ mộng và người thành công không nằm ở tài năng, may mắn hay một ý tưởng hay hơn — mà ở chữ “lì”: sự bền gan đi xuyên qua chính cơn nản chí của mình. Đây là một bài viết ấm áp, tiếp lửa cho bất kỳ ai đang có một giấc mơ còn bỏ ngỏ: vì sao thế giới ngập tràn ý tưởng triệu đô mà lại đói người dám đi tới cùng, vì sao cứ bắt đầu vụng về và chậm chạp còn hơn là không bắt đầu, và một cách nghĩ lại biến câu “bao giờ mới tới?” thành một câu hỏi bạn thật sự trả lời được. Kèm ví dụ thật, vài thói quen thực tế, và một chút lửa cho những ngày bạn muốn dừng lại.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Động lực",
+        "Kiên trì",
+        "Bền chí",
+        "Phát triển bản thân",
+        "Mục tiêu",
+        "Suy ngẫm"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "the-quiet-art-of-letting-go",
       "category": "perspectives",
       "title": "Nghệ Thuật Buông Lặng Lẽ: Bảy Chuyển Hóa Của Một Tâm Trí Trưởng Thành",

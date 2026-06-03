@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "dreamers-doers-and-grit",
+      "category": "perspectives",
+      "title": "Quitters Have Reasons, Doers Have Grit: The Quiet Art of Not Stopping",
+      "summary": "Quitters always have a reason; the people who make it just have a goal. The single difference between a dreamer and a doer isn’t talent, luck, or a better idea — it’s grit: the stubborn willingness to walk through your own discouragement. This is a warm, energising reflection for anyone with a dream sitting unstarted: why the world is overflowing with million-dollar ideas and starving for follow-through, why you should begin clumsy and slow rather than not at all, and the one reframe that turns “when will I get there?” into a question you can actually answer. With real examples, practical habits, and a little fire for the days you want to stop.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Motivation",
+        "Grit",
+        "Perseverance",
+        "Personal Growth",
+        "Goals",
+        "Personal Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "the-quiet-art-of-letting-go",
       "category": "perspectives",
       "title": "The Quiet Art of Letting Go: Seven Shifts of a Maturing Mind",
