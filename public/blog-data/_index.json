@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "the-old-man-who-lost-his-horse",
+      "category": "perspectives",
+      "title": "The Old Man Who Lost His Horse: On Trusting Life's Arrangements and Treasuring What Is Here",
+      "summary": "A man on the frontier loses his horse, and the neighbours rush to call it bad luck. The famous Taoist tale \"Tái ông thất mã\" — in misfortune, fortune hides, and back again — is really a lesson about a habit we all share: grading every event the moment it lands. A warm reflection on why the verdict (not the feeling) is the mistake, what equanimity actually is, and why the wise response to an arrangement we cannot read is not to care less, but to treasure the present more.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Equanimity",
+        "Gratitude",
+        "Taoism",
+        "Letting Go"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "event-driven-architecture-and-messaging",
       "category": "architecture",
       "title": "Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained",

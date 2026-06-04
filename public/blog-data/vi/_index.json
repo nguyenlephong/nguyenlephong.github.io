@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "the-old-man-who-lost-his-horse",
+      "category": "perspectives",
+      "title": "Tái Ông Mất Ngựa: Tin vào Sự Sắp đặt của Đời và Trân trọng Những gì Đang Hiện diện",
+      "summary": "Một người nơi biên ải mất con ngựa, và hàng xóm vội gọi đó là xui xẻo. Điển tích Đạo gia nổi tiếng \"Tái ông thất mã\" — trong hoạ có phúc, rồi lại đảo chiều — thật ra là bài học về một thói quen tất cả chúng ta đều có: chấm điểm mọi sự kiện ngay khoảnh khắc nó vừa rơi xuống. Một suy ngẫm ấm áp về vì sao lời phán xét (chứ không phải cảm xúc) mới là sai lầm, bình thản thật sự là gì, và vì sao phản ứng khôn ngoan trước một sự sắp đặt ta chưa đọc nổi không phải bớt quan tâm, mà là trân trọng hiện tại nhiều hơn.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Equanimity",
+        "Gratitude",
+        "Taoism",
+        "Letting Go"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "event-driven-architecture-and-messaging",
       "category": "architecture",
       "title": "Events, Queues và Nghệ thuật Không-Gọi-Nhau: Event-Driven Architecture, Giải thích Giản dị",
