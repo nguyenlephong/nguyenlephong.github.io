@@ -118,6 +118,25 @@
       "seriesOrder": 9
     },
     {
+      "slug": "scaling-the-database",
+      "category": "architecture",
+      "title": "Scale Database: Index, Read Replica, Caching và Sharding — Theo Đúng Thứ Tự Đó",
+      "summary": "Database gần như luôn là thứ gục ngã đầu tiên dưới sức tăng trưởng — và cũng là thứ kỹ sư over-engineer đầu tiên trong cơn hoảng. Một cái thang không màu mè để scale tầng dữ liệu: vì sao phải đo và thêm index trước khi đụng tới phần cứng, read replica khai thác sự bất đối xứng đọc/ghi ra sao (và cái bẫy replication lag nó mang theo), caching giúp ở đâu và vì sao invalidation mới là phần khó, và khi nào cuối cùng mới với tới partitioning cùng sharding — quyết định thật sự khó quay đầu.",
+      "date": "2026-06-04",
+      "readingMinutes": 15,
+      "tags": [
+        "Software Architecture",
+        "Database Scaling",
+        "Scalability",
+        "Read Replicas",
+        "Sharding",
+        "Caching"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 10
+    },
+    {
       "slug": "ambition-in-the-age-of-ai",
       "category": "ai",
       "title": "Nỗi Sợ AI Của Bạn Chính Là Kích Thước Tham Vọng Của Bạn: Đã Đến Lúc Nhắm Lớn Hơn Rất Nhiều",

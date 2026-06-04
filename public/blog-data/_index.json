@@ -118,6 +118,25 @@
       "seriesOrder": 9
     },
     {
+      "slug": "scaling-the-database",
+      "category": "architecture",
+      "title": "Scaling the Database: Indexes, Read Replicas, Caching, and Sharding — In That Order",
+      "summary": "The database is almost always the first thing to buckle under growth — and the first thing engineers over-engineer in a panic. A no-hype ladder for scaling the data layer: why you measure and add an index before touching hardware, how read replicas exploit the read/write asymmetry (and the replication-lag trap they bring), where caching helps and why invalidation is the hard part, and when you finally reach for partitioning and sharding — the one decision that is genuinely hard to undo.",
+      "date": "2026-06-04",
+      "readingMinutes": 14,
+      "tags": [
+        "Software Architecture",
+        "Database Scaling",
+        "Scalability",
+        "Read Replicas",
+        "Sharding",
+        "Caching"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 10
+    },
+    {
       "slug": "ambition-in-the-age-of-ai",
       "category": "ai",
       "title": "Your Fear of AI Is the Size of Your Ambition: Why It’s Time to Aim Dramatically Bigger",
