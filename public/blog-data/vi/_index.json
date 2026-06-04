@@ -137,6 +137,25 @@
       "seriesOrder": 10
     },
     {
+      "slug": "observability-at-scale",
+      "category": "architecture",
+      "title": "Bạn Không Thể Sửa Thứ Bạn Không Thấy: Logs, Metrics, Traces và SLO ở Quy mô Lớn",
+      "summary": "Trong monolith, debug gần như ấm cúng — một log file, một process, một chỗ sự thật cư ngụ. Distributed systems lặng lẽ lấy đi điều đó: một request giờ toả ra cả tá service, và khi nó hỏng chẳng còn một log file để đọc. Một hướng dẫn không màu mè về việc nhìn thấy hệ thống ở quy mô lớn: ba trụ cột (metrics, logs, traces) và câu hỏi mỗi cái trả lời, vì sao một trace ID lan khắp hệ thống là thói quen đòn bẩy cao nhất, SLO biến reliability thành một error budget bạn có thể tiêu, và alert vào triệu chứng để on-call không kiệt sức.",
+      "date": "2026-06-04",
+      "readingMinutes": 16,
+      "tags": [
+        "Software Architecture",
+        "Observability",
+        "Distributed Systems",
+        "Distributed Tracing",
+        "SLO",
+        "Site Reliability Engineering"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 11
+    },
+    {
       "slug": "ambition-in-the-age-of-ai",
       "category": "ai",
       "title": "Nỗi Sợ AI Của Bạn Chính Là Kích Thước Tham Vọng Của Bạn: Đã Đến Lúc Nhắm Lớn Hơn Rất Nhiều",
