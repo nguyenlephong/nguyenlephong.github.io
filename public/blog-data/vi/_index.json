@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "you-are-not-a-machine",
+      "category": "perspectives",
+      "title": "Bạn Không Phải Cỗ Máy: Vì Sao Nghỉ Ngơi Không Khiến Bạn Tụt Lại",
+      "summary": "Có một nỗi áy náy rất lạ trong đời sống hiện đại: làm việc quá nhiều thì kiệt sức, nhưng nghỉ ngơi lại thấy có lỗi — như thể ngồi yên vài phút là đang tụt lại phía sau. Một suy ngẫm ấm áp về vì sao nghỉ ngơi bị nhầm thành lười biếng và bận rộn bị xem là thước đo giá trị, vì sao không gì trong tự nhiên vận hành mà không có mùa nghỉ, nghỉ ngơi đúng nghĩa thật ra là gì (không phải lướt điện thoại), cái giá của việc nhồi kín lịch cả người lớn lẫn trẻ em, và khoa học nói gì về sự căng thẳng và sự hồi phục. Bởi bạn không phải cỗ máy — và một khoảng lặng không khiến bạn tụt lại, nó chỉ giúp bạn thở lại đúng nghĩa.",
+      "date": "2026-06-08",
+      "readingMinutes": 11,
+      "tags": [
+        "Personal Reflection",
+        "Mental Wellbeing",
+        "Rest and Recovery",
+        "Burnout",
+        "Work-Life Balance",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "things-no-one-teaches-you",
       "category": "perspectives",
       "title": "Những Điều Không Ai Dạy Bạn: Những Bài Học Cuộc Đời Dạy Bằng Cách Làm Bạn Đau",

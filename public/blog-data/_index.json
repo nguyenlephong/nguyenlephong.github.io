@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "you-are-not-a-machine",
+      "category": "perspectives",
+      "title": "You Are Not a Machine: Why Rest Isn't Falling Behind",
+      "summary": "There's a strange guilt in modern life: working too much exhausts us, but resting makes us feel guilty — as if sitting still for a few minutes means falling behind. A warm reflection on why rest became mistaken for laziness and busyness for worth, why nothing in nature runs without a fallow season, what real rest actually is (it isn't doomscrolling), the cost of over-scheduling both adults and children, and what the science says about strain versus recovery. Because you are not a machine — and a pause doesn't set you back, it lets you breathe again.",
+      "date": "2026-06-08",
+      "readingMinutes": 11,
+      "tags": [
+        "Personal Reflection",
+        "Mental Wellbeing",
+        "Rest and Recovery",
+        "Burnout",
+        "Work-Life Balance",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "things-no-one-teaches-you",
       "category": "perspectives",
       "title": "Things No One Teaches You: The Lessons Life Drives Home the Hard Way",
