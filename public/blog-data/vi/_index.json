@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "salary-is-seed-capital",
+      "category": "perspectives",
+      "title": "Tiền Lương Là Vốn Mồi, Không Phải Đích Đến",
+      "summary": "Phần lớn người ta xem tiền lương như chiếc phao cứu sinh: nhận lương, trả hóa đơn, mua vài thứ, rồi chờ kỳ lương sau. Người có tư duy làm chủ thì xem nó là vốn mồi — nhiên liệu đầu tiên cho một điều lớn hơn. Một suy ngẫm ấm áp, thực tế về việc biến lương thành tài sản, tài sản thành dòng tiền, và dòng tiền thành tự do; vì sao nâng cấp lối sống quá sớm chỉ dựng nên một chiếc lồng đẹp hơn; cách nuôi một việc kinh doanh nhỏ bằng kỷ luật thay vì nghỉ việc; và tự do tài chính thật ra mua được gì — không phải sự lười biếng, mà là quyền chọn công việc, thời gian và cuộc đời mình. Kèm ví dụ gần gũi.",
+      "date": "2026-06-08",
+      "readingMinutes": 11,
+      "tags": [
+        "Personal Reflection",
+        "Personal Finance",
+        "Financial Freedom",
+        "Wealth Building",
+        "Entrepreneurship",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "you-are-not-a-machine",
       "category": "perspectives",
       "title": "Bạn Không Phải Cỗ Máy: Vì Sao Nghỉ Ngơi Không Khiến Bạn Tụt Lại",

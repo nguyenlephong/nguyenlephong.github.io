@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "salary-is-seed-capital",
+      "category": "perspectives",
+      "title": "Your Salary Is Seed Capital, Not the Finish Line",
+      "summary": "Most people treat a paycheck as a lifeline: earn, pay bills, buy a few things, wait for the next one. People with an owner's mindset treat it as seed capital — the first fuel for something larger. A warm, practical reflection on turning salary into assets, assets into cash flow, and cash flow into freedom; why upgrading your lifestyle too early just builds a prettier cage; how to feed a small side venture with discipline instead of quitting; and what financial freedom actually buys — not laziness, but the right to choose your work, your time, and your life. With everyday examples.",
+      "date": "2026-06-08",
+      "readingMinutes": 11,
+      "tags": [
+        "Personal Reflection",
+        "Personal Finance",
+        "Financial Freedom",
+        "Wealth Building",
+        "Entrepreneurship",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "you-are-not-a-machine",
       "category": "perspectives",
       "title": "You Are Not a Machine: Why Rest Isn't Falling Behind",
