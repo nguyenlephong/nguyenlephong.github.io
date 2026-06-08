@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "things-no-one-teaches-you",
+      "category": "perspectives",
+      "title": "Things No One Teaches You: The Lessons Life Drives Home the Hard Way",
+      "summary": "Some things no one ever sits you down to explain. Life teaches them instead — by hurting you once, so you remember. A warm, honest field guide to the quiet lessons about people and boundaries: why you should read patterns not snapshots, why someone who hurt you won't change just because you wish it, why the closest people cut the deepest, why good intentions still need good timing, and why holding a little back is self-respect rather than coldness. Not cynicism — clear eyes and a kinder relationship with yourself. With everyday office and life examples.",
+      "date": "2026-06-08",
+      "readingMinutes": 14,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Life Lessons",
+        "Boundaries",
+        "Wisdom",
+        "Self-Mastery"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "the-approval-race",
       "category": "perspectives",
       "title": "The Approval Race Has No Finish Line: 5 Quiet Ways to Come Home to Yourself",

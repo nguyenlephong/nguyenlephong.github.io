@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "things-no-one-teaches-you",
+      "category": "perspectives",
+      "title": "Những Điều Không Ai Dạy Bạn: Những Bài Học Cuộc Đời Dạy Bằng Cách Làm Bạn Đau",
+      "summary": "Có những thứ không ai ngồi xuống dạy bạn. Cuộc đời sẽ dạy thay — bằng cách làm bạn đau một lần cho nhớ. Một cẩm nang ấm áp, thành thật về những bài học trầm lặng quanh con người và ranh giới: vì sao nên đọc quy luật chứ không phải một khoảnh khắc, vì sao người từng làm bạn đau sẽ không đổi chỉ vì bạn mong, vì sao người từng rất thân lại làm đau nhất, vì sao thiện ý vẫn cần đúng thời điểm, và vì sao giữ lại một phần là sự tự trọng chứ không phải lạnh lùng. Không phải hoài nghi — mà là nhìn rõ và dịu dàng hơn với chính mình. Kèm ví dụ gần gũi từ công sở đến đời sống.",
+      "date": "2026-06-08",
+      "readingMinutes": 14,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Life Lessons",
+        "Boundaries",
+        "Wisdom",
+        "Self-Mastery"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "the-approval-race",
       "category": "perspectives",
       "title": "Cuộc Đua Tìm Công Nhận Không Có Vạch Đích: 5 Cách Lặng Lẽ Quay Về Với Chính Mình",
