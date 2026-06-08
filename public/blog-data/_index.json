@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "the-master-who-plays-the-fool",
+      "category": "perspectives",
+      "title": "The Master Who Plays the Fool: The Quiet Power That Needs No Proof",
+      "summary": "The most formidable person in the room is rarely the most obviously clever — it's the one who quietly chooses not to show you how clever they are. A warm reflection on 大智若愚, \"great wisdom that looks like folly\": why they stay half a beat behind the world on purpose, how they are sharp when it matters and invisible when it doesn't, and where their strange calm power really comes from — not controlling others, but controlling themselves, and quietly keeping the freedom to walk away. With everyday office and life examples.",
+      "date": "2026-06-08",
+      "readingMinutes": 12,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Quiet Strength",
+        "Self-Mastery",
+        "Strategy",
+        "Taoism"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "half-light-half-shadow",
       "category": "perspectives",
       "title": "Half Light, Half Shadow: The Quiet Authority of People Who Lean to No Extreme",
