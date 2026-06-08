@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "choice-or-fate",
+      "category": "perspectives",
+      "title": "Choice or Fate? Living Well Inside an Arrangement You Cannot See",
+      "summary": "You think you are choosing your path — yet the longer you live, the more you notice the chance meeting that became a turning point, the thing you gripped and still lost, the chapter you were sure had closed quietly returning. So is life choice or fate? A warm, practical reflection — with everyday office and life examples — on invisible connections, why the ledger always balances, and the one thing that was ever truly yours: how you respond. Because inner freedom isn't a calm sea; it's a steady captain.",
+      "date": "2026-06-08",
+      "readingMinutes": 12,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Choice and Destiny",
+        "Equanimity",
+        "Self-Mastery",
+        "Inner Freedom"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "the-old-man-who-lost-his-horse",
       "category": "perspectives",
       "title": "The Old Man Who Lost His Horse: On Trusting Life's Arrangements and Treasuring What Is Here",

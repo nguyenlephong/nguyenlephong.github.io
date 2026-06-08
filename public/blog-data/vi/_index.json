@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "choice-or-fate",
+      "category": "perspectives",
+      "title": "Lựa Chọn hay Số Phận? Sống An Nhiên Giữa Một Sự Sắp Đặt Ta Không Thấy",
+      "summary": "Bạn nghĩ mình đang chọn con đường của đời mình — nhưng càng sống lâu, bạn càng nhận ra cuộc gặp tình cờ lại thành bước ngoặt, điều cố giữ bằng mọi giá vẫn mất, chương tưởng đã khép lại lặng lẽ quay về. Vậy đời là lựa chọn hay số phận? Một suy ngẫm ấm áp, thực tế — với ví dụ gần gũi từ công sở đến đời sống — về những kết nối vô hình, vì sao sổ sách của cuộc đời luôn cân bằng, và điều duy nhất thật sự thuộc về bạn: cách bạn phản ứng. Bởi tự do bên trong không phải là biển lặng, mà là một người thuyền trưởng vững tay.",
+      "date": "2026-06-08",
+      "readingMinutes": 12,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Choice and Destiny",
+        "Equanimity",
+        "Self-Mastery",
+        "Inner Freedom"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "the-old-man-who-lost-his-horse",
       "category": "perspectives",
       "title": "Tái Ông Mất Ngựa: Tin vào Sự Sắp đặt của Đời và Trân trọng Những gì Đang Hiện diện",
