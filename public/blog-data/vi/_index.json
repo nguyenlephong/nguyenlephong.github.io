@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "how-people-actually-work",
+      "category": "perspectives",
+      "title": "Cách Con Người Thật Sự Vận Hành: 15 Sự Thật Trầm Lặng Về Tâm Trí",
+      "summary": "Con người không sống bằng sự thật hoàn toàn — họ sống bằng cảm xúc, niềm tin và những câu chuyện trong đầu mình. Một cẩm nang ấm áp, thực tế về mười lăm điều 'người xưa nói mà hóa ra rất đúng' về cách tâm trí thật sự vận hành: vì sao ta nhớ cảm giác chứ không nhớ việc bạn đã giúp gì, vì sao kiểm soát và giận dữ là lớp giáp che cho nỗi sợ, vì sao não chỉ tìm bằng chứng cho điều nó đã tin, vì sao kỳ vọng (chứ không phải sự việc) mới làm ta đau, và vì sao chữa lành không phải là quên đi. Đầy ví dụ gần gũi từ công sở đến đời sống — đọc để dịu dàng và sáng suốt hơn, với người khác và với chính mình.",
+      "date": "2026-06-08",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Reflection",
+        "Psychology",
+        "Human Behavior",
+        "Emotional Intelligence",
+        "Self-Awareness",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "choice-or-fate",
       "category": "perspectives",
       "title": "Lựa Chọn hay Số Phận? Sống An Nhiên Giữa Một Sự Sắp Đặt Ta Không Thấy",

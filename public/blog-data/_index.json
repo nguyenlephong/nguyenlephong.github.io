@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "how-people-actually-work",
+      "category": "perspectives",
+      "title": "How People Actually Work: 15 Quiet Truths About the Human Mind",
+      "summary": "People don't live by the whole truth — they live by feeling, by belief, and by the stories running quietly in their heads. A warm, practical field guide to fifteen old-but-true observations about how the mind really works: why we remember the feeling not the favour, why control and anger are armour for fear, how the brain only finds evidence for what it already believes, why expectation (not events) does the hurting, and why healing isn't forgetting. Full of everyday office and life examples — read it to be kinder and clearer, with others and with yourself.",
+      "date": "2026-06-08",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Reflection",
+        "Psychology",
+        "Human Behavior",
+        "Emotional Intelligence",
+        "Self-Awareness",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "choice-or-fate",
       "category": "perspectives",
       "title": "Choice or Fate? Living Well Inside an Arrangement You Cannot See",
