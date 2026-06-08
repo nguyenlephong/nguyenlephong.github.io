@@ -20,6 +20,7 @@ import {
 } from '@/lib/blog/data'
 import BlogContent from '@/components/blog/BlogContent'
 import BlogToc from '@/components/blog/BlogToc'
+import BlogReadingTracker from '@/components/blog/BlogReadingTracker'
 import { EngagementProvider } from '@/components/blog/EngagementProvider'
 import BlogViewCount from '@/components/blog/BlogViewCount'
 import BlogShareDock from '@/components/blog/BlogShareDock'
@@ -199,6 +200,11 @@ export default async function BlogPostPage({ params }: Props) {
       )}
 
       <EngagementProvider category={category} slug={slug}>
+      <BlogReadingTracker
+        category={category}
+        slug={slug}
+        readingMinutes={post.readingMinutes}
+      />
       <BlogShareDock
         url={canonical}
         title={post.title}
