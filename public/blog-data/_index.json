@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "half-light-half-shadow",
+      "category": "perspectives",
+      "title": "Half Light, Half Shadow: The Quiet Authority of People Who Lean to No Extreme",
+      "summary": "Some people don't talk much, don't compete, and never hurt anyone — yet beneath the gentleness they notice everything, and somehow you find yourself choosing your words more carefully around them. A warm reflection on wordless authority: why the rare, steady people carry both light and shadow without leaning to either, why a purely 'nice' person gets walked over while a purely hard one leaves chaos, and how lucid awareness holds the two in balance — tâm bất mê, khí bất loạn, hành bất lệch (an undeluded mind, an unshaken presence, conduct that doesn't drift). With everyday office and life examples.",
+      "date": "2026-06-08",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Quiet Strength",
+        "Shadow Integration",
+        "Self-Mastery",
+        "Equanimity"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "how-people-actually-work",
       "category": "perspectives",
       "title": "How People Actually Work: 15 Quiet Truths About the Human Mind",

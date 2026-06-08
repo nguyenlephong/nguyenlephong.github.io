@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "half-light-half-shadow",
+      "category": "perspectives",
+      "title": "Tâm Bất Mê, Khí Bất Loạn: Uy Lực Vô Ngôn Của Người Không Nghiêng Về Cực Nào",
+      "summary": "Có những người không nói nhiều, không tranh hơn thua, không làm tổn thương ai — vậy mà dưới lớp hiền đó họ quan sát từng chi tiết, và ở cạnh họ ta tự chỉnh lại lời mình. Một suy ngẫm ấm áp về uy lực vô ngôn: vì sao những người trầm tĩnh hiếm hoi mang trong mình cả chánh lẫn tà mà không nghiêng về cực nào, vì sao người chỉ toàn 'hiền' lại dễ bị lấn lướt còn người chỉ toàn 'sắc' lại để lại hỗn loạn, và làm sao sự tỉnh táo giữ thăng bằng cả hai — tâm bất mê, khí bất loạn, hành bất lệch. Kèm ví dụ gần gũi từ công sở đến đời sống.",
+      "date": "2026-06-08",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Quiet Strength",
+        "Shadow Integration",
+        "Self-Mastery",
+        "Equanimity"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "how-people-actually-work",
       "category": "perspectives",
       "title": "Cách Con Người Thật Sự Vận Hành: 15 Sự Thật Trầm Lặng Về Tâm Trí",
