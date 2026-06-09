@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "forgiveness-is-for-you",
+      "category": "perspectives",
+      "title": "Tha Thứ Là Để Cho Chính Mình: Đặt Xuống Gánh Nặng Bạn Không Biết Mình Đang Mang",
+      "summary": "Có hai sự thật trầm lặng giải phóng tâm trí: bạn chỉ có thể thay đổi chính mình, và tha thứ là điều bạn làm cho bạn — không phải cho người đã làm bạn đau. Một suy ngẫm ấm áp, cẩn trọng về điều ta kháng cự nhất: vì sao một mối oán giận chỉ buộc chặt đầu dây phía bạn, vì sao tha thứ không phải là chấp nhận hay làm hòa, vì sao người bạn nghĩ không bao giờ nên tha thứ lại thường là người mà sự níu giữ khiến bạn trả giá nhiều nhất, và cách đặt gánh nặng xuống một cách dịu dàng — kể cả tha thứ cho chính mình. Bạn tha thứ không phải vì họ xứng đáng, mà vì bạn xứng đáng được tự do.",
+      "date": "2026-06-09",
+      "readingMinutes": 11,
+      "tags": [
+        "Personal Reflection",
+        "Forgiveness",
+        "Letting Go",
+        "Emotional Healing",
+        "Self-Mastery",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "salary-is-seed-capital",
       "category": "perspectives",
       "title": "Tiền Lương Là Vốn Mồi, Không Phải Đích Đến",

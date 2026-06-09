@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "forgiveness-is-for-you",
+      "category": "perspectives",
+      "title": "Forgiveness Is for You: Setting Down a Weight You Didn't Know You Carried",
+      "summary": "There are two quiet truths that set the mind free: you can only ever change yourself, and forgiveness is something you do for you — not for the person who hurt you. A warm, careful reflection on the one we resist most: why a grudge chains only your end of the rope, why forgiving is not the same as approving or reconciling, why the person you'd never forgive is often the one whose grip costs you most, and how to set the weight down gently — including forgiving yourself. You forgive not because they earned it, but because you deserve to be free.",
+      "date": "2026-06-09",
+      "readingMinutes": 11,
+      "tags": [
+        "Personal Reflection",
+        "Forgiveness",
+        "Letting Go",
+        "Emotional Healing",
+        "Self-Mastery",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "salary-is-seed-capital",
       "category": "perspectives",
       "title": "Your Salary Is Seed Capital, Not the Finish Line",
