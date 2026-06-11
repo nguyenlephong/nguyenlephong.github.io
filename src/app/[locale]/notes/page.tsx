@@ -1,197 +1,164 @@
-import type { Metadata } from 'next'
-import { redirect } from 'next/navigation'
-import { setRequestLocale } from 'next-intl/server'
-import { Link } from '@/i18n/navigation'
-import { SITE, SITE_URL } from '@/app/seo.config'
-import { listNotes, listTopics, listNotesByTopic } from '@/lib/notes/data'
-import type { NoteMeta, TopicMeta } from '@/lib/notes/types'
-import { routing } from '@/i18n/routing'
-import NotesChamberNav, { type ChamberNavItem } from '@/components/notes/NotesChamberNav'
-import './notes.css'
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { routing, type Locale } from "@/i18n/routing";
+import { SITE, SITE_URL } from "@/app/seo.config";
+import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from "@/lib/blog/seo";
+import { listNotes, listTopics } from "@/lib/notes/data";
+import NotesExplorer from "@/components/notes/NotesExplorer";
+import "./notes.css";
+import "../blog/blog.css";
 
-export const metadata: Metadata = {
-  title: 'Ghi chú — Nguyen Le Phong',
-  description:
-    'Những kinh nghiệm và ghi chú cá nhân của Nguyen Le Phong — mua nhà, tài chính, và những góc nhìn từ thực tế cuộc sống.',
-  alternates: {
-    canonical: `${SITE_URL}/vi/notes`,
-    languages: { vi: `${SITE_URL}/vi/notes`, 'x-default': `${SITE_URL}/vi/notes` },
-  },
-  openGraph: {
-    type: 'website',
-    url: `${SITE_URL}/vi/notes`,
-    title: 'Ghi chú — Nguyen Le Phong',
-    description:
-      'Những kinh nghiệm và ghi chú cá nhân của Nguyen Le Phong — mua nhà, tài chính, và những góc nhìn từ thực tế cuộc sống.',
-    siteName: SITE.name,
-    locale: 'vi_VN',
-  },
-  robots: { index: true, follow: true },
-}
+type Props = { params: Promise<{ locale: string }> };
 
-type Props = { params: Promise<{ locale: string }> }
-
-function formatDate(iso: string): string {
-  const date = new Date(iso)
-  if (Number.isNaN(date.getTime())) return iso
-  return new Intl.DateTimeFormat('vi-VN', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }).format(date)
-}
-
-const TOPIC_ICONS: Record<string, string> = {
-  'mua-nha': '🏠',
-  'tiet-kiem': '💰',
-  'mua-xe': '🚗',
-  'su-nghiep': '💼',
-  'cong-nghe': '💻',
-  'suc-khoe': '🌱',
-}
-
-/** One catalog entry — numbered automatically via CSS counters. */
-function Entry({ post }: { post: NoteMeta }) {
-  return (
-    <li className="entry">
-      <Link href={`/notes/${post.slug}`} className="entry__link">
-        <span className="entry__no" aria-hidden="true" />
-        <div className="entry__body">
-          <h3 className="entry__title">{post.title}</h3>
-          <p className="entry__summary">{post.summary}</p>
-          <div className="entry__meta">
-            <time dateTime={post.date}>{formatDate(post.date)}</time>
-            <span aria-hidden="true">·</span>
-            <span>{post.readingMinutes} phút đọc</span>
-          </div>
-          {post.tags.length > 0 && (
-            <ul className="entry__tags" aria-label="Tags">
-              {post.tags.slice(0, 4).map((tag) => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </Link>
-    </li>
-  )
-}
-
-/** A chamber = one knowledge category. Roman numeral comes from CSS counter. */
-function Chamber({ topic, posts }: { topic: TopicMeta; posts: NoteMeta[] }) {
-  const icon = TOPIC_ICONS[topic.id] ?? '📝'
-  return (
-    <section
-      id={`chamber-section-${topic.id}`}
-      data-topic={topic.id}
-      className="chamber"
-      aria-labelledby={`chamber-${topic.id}`}
-      style={{ '--topic-color': topic.color } as React.CSSProperties}
-    >
-      <header className="chamber__head">
-        <span className="chamber__numeral" aria-hidden="true" />
-        <div className="chamber__heading">
-          <p className="chamber__kicker">
-            <span className="chamber__icon" aria-hidden="true">
-              {icon}
-            </span>
-            <span className="chamber__count">
-              {posts.length} mục
-            </span>
-          </p>
-          <h2 className="chamber__label" id={`chamber-${topic.id}`}>
-            {topic.label}
-          </h2>
-          <p className="chamber__desc">{topic.description}</p>
-        </div>
-      </header>
-      <ol className="chamber__entries">
-        {posts.map((post) => (
-          <Entry key={post.slug} post={post} />
-        ))}
-      </ol>
-    </section>
-  )
-}
+const FALLBACK_TOPIC_COLOR = "#b45309";
+const POPULAR_TAG_LIMIT = 12;
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }))
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+/** Most-used tags across the visible note set — drives the quick-filter chips. */
+function popularTags(notes: { tags: string[] }[]): string[] {
+  const counts = new Map<string, number>();
+  for (const n of notes) {
+    for (const tag of n.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1);
+  }
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, POPULAR_TAG_LIMIT)
+    .map(([tag]) => tag);
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Pages.notes" });
+
+  const title = `${t("title")} — ${t("eyebrow")}`;
+  const description = t("intro");
+  const canonical = canonicalFor(locale, "/notes");
+  const languages = localeAlternates("/notes");
+
+  return {
+    title,
+    description,
+    alternates: { canonical, languages },
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title,
+      description,
+      siteName: SITE.name,
+      locale: OG_LOCALE_MAP[locale as Locale] ?? OG_LOCALE_MAP.en
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      site: SITE.twitter,
+      creator: SITE.twitter
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" }
+    }
+  };
+}
+
+function formatDate(iso: string, locale: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return new Intl.DateTimeFormat(locale, {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  }).format(date);
 }
 
 export default async function NotesPage({ params }: Props) {
-  const { locale } = await params
-  setRequestLocale(locale)
-  if (locale !== 'vi') redirect('/vi/notes')
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+  setRequestLocale(locale);
 
-  const allPosts = listNotes()
-  const topics = listTopics()
-  const byTopic = listNotesByTopic()
-  const uncategorized = byTopic.get('__uncategorized__') ?? []
+  const t = await getTranslations({ locale, namespace: "Pages.notes" });
+  const notes = listNotes(locale);
+  const topics = listTopics(locale);
+  const topicBySlug = new Map(topics.map((tp) => [tp.id, tp]));
+  const latestDate = notes[0]?.date;
 
-  const visibleTopics = topics.filter(
-    (topic) => (byTopic.get(topic.id) ?? []).length > 0,
-  )
-  const chamberCount = visibleTopics.length + (uncategorized.length > 0 ? 1 : 0)
-  const latestDate = allPosts[0]?.date
+  const cards = notes.map((note) => {
+    const topic = note.topic ? topicBySlug.get(note.topic) : undefined;
+    return {
+      note,
+      topicLabel: topic?.label ?? note.topic ?? "",
+      topicColor: topic?.color ?? FALLBACK_TOPIC_COLOR,
+      readingLabel: t("readingTime", { minutes: note.readingMinutes })
+    };
+  });
 
-  const navItems: ChamberNavItem[] = [
-    ...visibleTopics.map((topic) => ({
-      id: topic.id,
-      label: topic.label,
-      color: topic.color,
-    })),
-    ...(uncategorized.length > 0
-      ? [{ id: '__uncategorized__', label: 'Khác', color: '#8a7d65' }]
-      : []),
-  ]
+  const collectionLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": canonicalFor(locale, "/notes") + "#notes",
+    name: `${t("title")} — ${t("eyebrow")}`,
+    description: t("intro"),
+    url: canonicalFor(locale, "/notes"),
+    inLanguage: locale,
+    isPartOf: { "@type": "WebSite", "@id": `${SITE_URL}/#website` },
+    author: { "@type": "Person", "@id": `${SITE_URL}/#person` },
+    hasPart: notes.map((n) => ({
+      "@type": "Article",
+      headline: n.title,
+      url: canonicalFor(locale, `/notes/${n.slug}`),
+      datePublished: n.date
+    }))
+  };
 
   return (
-    <main className="notes-archive">
+    <main className="notes-archive notes-home">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionLd) }}
+      />
       <header className="notes-archive__title-page">
-        <p className="notes-archive__eyebrow">Personal encyclopedia</p>
-        <h1 className="notes-archive__title">Ghi chép</h1>
-        <p className="notes-archive__subtitle">
-          Một kho lưu trữ riêng — nơi tôi cất giữ những gì đã học, đã trải và muốn
-          nhớ. Mời bạn lạc vào và đọc theo nhịp của riêng mình.
-        </p>
+        <p className="notes-archive__eyebrow">{t("eyebrow")}</p>
+        <h1 className="notes-archive__title">{t("title")}</h1>
+        <p className="notes-archive__subtitle">{t("intro")}</p>
         <div className="notes-archive__rule" aria-hidden="true" />
         <dl className="notes-archive__stats">
           <div>
-            <dt>Chuyên mục</dt>
-            <dd>{chamberCount}</dd>
+            <dt>{t("stats.topics")}</dt>
+            <dd>{topics.length}</dd>
           </div>
           <div>
-            <dt>Bài viết</dt>
-            <dd>{allPosts.length}</dd>
+            <dt>{t("stats.articles")}</dt>
+            <dd>{notes.length}</dd>
           </div>
           {latestDate && (
             <div>
-              <dt>Cập nhật</dt>
-              <dd>{formatDate(latestDate)}</dd>
+              <dt>{t("stats.updated")}</dt>
+              <dd>{formatDate(latestDate, locale)}</dd>
             </div>
           )}
         </dl>
       </header>
 
-      <NotesChamberNav chambers={navItems} />
-
-      <div className="notes-chambers">
-        {visibleTopics.map((topic) => (
-          <Chamber key={topic.id} topic={topic} posts={byTopic.get(topic.id) ?? []} />
-        ))}
-
-        {uncategorized.length > 0 && (
-          <Chamber
-            topic={{
-              id: '__uncategorized__',
-              label: 'Khác',
-              description: 'Những ghi chú chưa được phân loại.',
-              color: '#8a7d65',
-            }}
-            posts={uncategorized}
-          />
-        )}
-      </div>
+      {notes.length > 0 ? (
+        <NotesExplorer
+          cards={cards}
+          topics={topics.map((tp) => ({
+            id: tp.id,
+            label: tp.label,
+            color: tp.color
+          }))}
+          popularTags={popularTags(notes)}
+          locale={locale}
+        />
+      ) : (
+        <p className="blog-empty">{t("empty")}</p>
+      )}
     </main>
-  )
+  );
 }

@@ -1,14 +1,15 @@
-import {CDN_PATH} from "@/app/app.conf";
+import { CDN_PATH } from "@/app/app.conf";
 
 export const APP_ROUTE = {
   HOME: "/",
   ABOUT: "/about",
   GALLERY: "/gallery",
   BLOG: "/blog",
+  NOTES: "/notes",
   APPS: "/apps",
   CV: "/cv",
   CV_PDF: "/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf"
-}
+};
 
 export const SEO = {
   title: "Nguyen Le Phong | Software Engineer",
@@ -17,7 +18,7 @@ export const SEO = {
   og: {
     title: "Nguyễn Lê Phong | Software Engineer",
     type: "website",
-    url: "https://nguyenlephong.github.io",
+    url: "https://nguyenlephong.github.io"
   },
   title_tail: "Nguyen Le Phong | Software Engineer"
 };
@@ -25,7 +26,6 @@ export const SEO = {
 export const profileInfo = {
   gallery: {
     certificates: [
-      
       // {
       //   src: "/assets/photos/cert.jpeg",
       //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
@@ -69,11 +69,9 @@ export const profileInfo = {
         alt: "Nguyen Le Phong - Software Engineer - Cybersecurity Refresh Training certificate",
         width: 320,
         height: 232
-      },
+      }
     ],
     activities: [
-      
-      
       // {
       //   src: CDN_PATH + "/images/me/view-0.jpg",
       //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
@@ -98,7 +96,7 @@ export const profileInfo = {
       //   height: 4,
       //   hide: true,
       // },
-      
+
       // {
       //   src: CDN_PATH + "/images/me/standup.jpg",
       //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
@@ -132,7 +130,7 @@ export const profileInfo = {
         width: 3,
         height: 4
       },
-      
+
       {
         src: CDN_PATH + "/images/me/certificate_splus.jpeg",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
@@ -140,7 +138,7 @@ export const profileInfo = {
         width: 4,
         height: 3
       },
-      
+
       {
         src: CDN_PATH + "/images/me/award_prime.jpeg",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
@@ -168,7 +166,7 @@ export const profileInfo = {
         alt: "Nguyen Le Phong - Trekking Penang Hill - Malaysia Certificate 11km",
         width: 420,
         height: 279
-      },
+      }
     ],
     projects: [
       {
@@ -178,7 +176,7 @@ export const profileInfo = {
         width: 4,
         height: 3
       },
-      
+
       {
         src: CDN_PATH + "/images/project/wat_overview.png",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
@@ -186,7 +184,7 @@ export const profileInfo = {
         width: 4,
         height: 3
       },
-      
+
       {
         src: CDN_PATH + "/images/me/essay-group.JPG",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
@@ -201,54 +199,54 @@ export const profileInfo = {
         width: 4,
         height: 3
       },
-      
+
       {
         src: CDN_PATH + "/images/me/drone_dev.jpeg",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - drone applications",
         width: 4,
         height: 3
-      },
-    ],
+      }
+    ]
   },
   videos: [
-    
     {
       id: "v0",
-      title: "[Bài 01] - Giới thiệu khóa học hoàn thành dự án Frontend ReactJS - Next.JS",
-      url: "https://www.youtube.com/embed/ehiiZ-JvxWc",
+      title:
+        "[Bài 01] - Giới thiệu khóa học hoàn thành dự án Frontend ReactJS - Next.JS",
+      url: "https://www.youtube.com/embed/ehiiZ-JvxWc"
     },
     {
       id: "v6",
-      title: "[Review] - ChatGPT Có thực sự \"ngon\" không?",
-      url: "https://www.youtube.com/embed/BE4vA3JN-e8",
+      title: '[Review] - ChatGPT Có thực sự "ngon" không?',
+      url: "https://www.youtube.com/embed/BE4vA3JN-e8"
     },
     {
       id: "v1",
       title: "[Kỷ Niệm] - Bảo Vệ Luận Văn Tốt Nghiệp",
-      url: "https://bit.ly/3jgaQAx",
+      url: "https://bit.ly/3jgaQAx"
     },
     {
       id: "v2",
       title:
         "[Mobile Devices Programming]- Ứng Dụng Điểm Danh Sinh Viên Nhận Diện Khuôn Mặt",
-      url: "https://bit.ly/3jb5qqo",
+      url: "https://bit.ly/3jb5qqo"
     },
     {
       id: "v3",
       title: "Kỷ Niệm Báo Cáo Data Warehouse In Real Time",
-      url: "https://bit.ly/3ftshg6",
+      url: "https://bit.ly/3ftshg6"
     },
     {
       id: "v4",
       title: "Báo cáo cuối kỳ 2016-2017-Lập trình web",
-      url: "https://bit.ly/3fqgE9J",
+      url: "https://bit.ly/3fqgE9J"
     },
     {
       id: "v5",
       title: "[Thương Mại Điện Tử ]- Báo Cáo Giữa Kỳ- CMS-WORDPRESS",
-      url: "https://bit.ly/2VuDeXD",
-    },
+      url: "https://bit.ly/2VuDeXD"
+    }
   ],
   contact: {
     email: "phongnguyen.itengineer@gmail.com",
@@ -284,8 +282,8 @@ export const profileInfo = {
         "Experience with <strong>version control systems</strong> such as Git, GitLab, Bitbucket, SVN",
         "Passion for learning and staying up-to-date with the latest front-end development trends",
         "Ability to <strong>work independently</strong> and as part of a team",
-        "<strong>Excellent verbal and written</strong> communication skills",
-      ],
+        "<strong>Excellent verbal and written</strong> communication skills"
+      ]
     },
     {
       id: "strengths",
@@ -297,16 +295,16 @@ export const profileInfo = {
         "I have the ability to <strong>manage good personal time</strong>",
         "Ability to <strong>analyze problems, solve problems</strong>",
         "Endure <strong>good pressure, high patience</strong>",
-        "Ability to read <strong>English</strong> documents",
-      ],
+        "Ability to read <strong>English</strong> documents"
+      ]
     },
     {
       id: "weaknesses",
       categories: "Weaknesses",
       descriptions: [
         "Sometimes <strong>talking alone</strong> while looking for a solution to solve a task",
-        "Foreign language communication (English) is <strong>not fluent</strong>",
-      ],
+        "Foreign language communication (English) is <strong>not fluent</strong>"
+      ]
     },
     {
       id: "hobby",
@@ -315,12 +313,13 @@ export const profileInfo = {
         "Enjoy watching <strong>movies</strong> (movies can bring life skills enhancement lessons), singing on weekends, holidays with friends and relatives",
         "I am a <strong>technology enthusiast</strong>, <strong>applying technology</strong> in practice",
         "Enjoy reading <strong>new technology</strong> news, new applications to cut wind with friends when you have free time",
-        "I also have a habit of <strong>reading books</strong>, every quarter I equip myself with new books",
-      ],
+        "I also have a habit of <strong>reading books</strong>, every quarter I equip myself with new books"
+      ]
     },
     {
       id: "notes",
-      categories: "As a front-end software engineer, while working, I will pay attention to the following:",
+      categories:
+        "As a front-end software engineer, while working, I will pay attention to the following:",
       descriptions: [
         "<strong>Semantic HTML</strong>: Using HTML elements in a semantically correct way to ensure the structure and meaning of the content are clear to both humans and machines.",
         "<strong>CSS Architecture</strong>: Implementing a modular and maintainable CSS structure, such as BEM",
@@ -336,13 +335,13 @@ export const profileInfo = {
         "<strong>Testing</strong>: Regularly test your website or application to ensure that it works as expected.",
         "<strong>Continuous Integration/Continuous Deployment (CI/CD)</strong>: Automating the build, test, and deployment processes to ensure a smooth and efficient <strong>development workflow</strong>.",
         "<strong>Documentation</strong>: Writing clear and concise documentation to ensure that code is <strong>easily understandable</strong> by other developers and can be easily maintained in the future."
-      ],
-    },
+      ]
+    }
   ],
   summary: {
     title: "Summary",
     description: [
-      `Possessing a Bachelor's degree in Information Technology (minor in Software Engineering, <b>GPA 3.36</b>) with nearly <b>8 years of experience</b> in full-stack software development, including <b>3+ years</b> contributing to technical leadership, architectural decision-making, and delivery coordination across teams.` ,
+      `Possessing a Bachelor's degree in Information Technology (minor in Software Engineering, <b>GPA 3.36</b>) with nearly <b>8 years of experience</b> in full-stack software development, including <b>3+ years</b> contributing to technical leadership, architectural decision-making, and delivery coordination across teams.`,
       `Hands-on experience in designing, building, and operating end-to-end systems—from front-end applications and backend services to CI/CD pipelines, release workflows, and production infrastructure—with a strong emphasis on automation, operational clarity, and reliable delivery.`,
       `<i>Here are my recent focused hard skills over the past few years:</i>`
     ],
@@ -354,14 +353,14 @@ export const profileInfo = {
       `<b>Architecture & Delivery Practices</b>: Experience applying Micro-Frontend and multi-tenant architectures, feature-flag-driven rollouts, progressive delivery strategies, and observability practices to support safe releases and production diagnostics.`,
       `<b>Testing</b>: Practical use of Jest, Cucumber, Puppeteer, and Testing Library to ensure regression safety, release confidence, and production readiness across services and applications.`,
       `<b>Libraries</b>: Seasoned in <b>Firebase</b>, Strapi, Directus, React Flow, Webpack, <b>Redux</b>, React Query, and G2plot.`,
-      `<b>Other</b>: In addition, familiar with <b>Micro-frontend</b> architecture, Proficiency in Responsive Design, Cross-Browser Compatibility, <b>SEO</b>, GraphQL, and Electron.`,
+      `<b>Other</b>: In addition, familiar with <b>Micro-frontend</b> architecture, Proficiency in Responsive Design, Cross-Browser Compatibility, <b>SEO</b>, GraphQL, and Electron.`
     ],
     skills_bk: [
       `<b>Back-end</b>: Competent in <b>Java</b> with the Spring Framework and <b>Node.js</b> with a working knowledge of the Express framework.`,
       `<b>Front-end</b>: Proficient in <b>React</b>, utilizing TypeScript, JavaScript, and the <b>Next.js</b> framework, and <b>React Native</b> with a working knowledge of the Expo platform, as well as proficiency in vanilla JavaScript.`,
       `<b>Libraries</b>: Seasoned in <b>Firebase</b>, Strapi, Directus, React Flow, Webpack, <b>Redux</b>, React Query, and G2plot.`,
       `<b>Testing</b>: Skilled in <b>Jest, Cucumber, Puppeteer</b>, and Testing Library.`,
-      `<b>Other</b>: In addition, familiar with <b>Micro-frontend</b> architecture, Proficiency in Responsive Design, Cross-Browser Compatibility, <b>SEO</b>, GraphQL, and Electron.`,
+      `<b>Other</b>: In addition, familiar with <b>Micro-frontend</b> architecture, Proficiency in Responsive Design, Cross-Browser Compatibility, <b>SEO</b>, GraphQL, and Electron.`
     ]
   },
   technical_skill: {
@@ -394,7 +393,7 @@ export const profileInfo = {
           title: "Head of Tech",
           duration: "Aug 2025 - Present",
           summaries: [
-            "Owned product delivery and technical direction post-CTO transition, leading architecture decisions, rollout systems, enterprise-grade integrations, and cross-team alignment while managing a delivery team of 8 developers (including 4 seniors) and 3 QC engineers.",
+            "Owned product delivery and technical direction post-CTO transition, leading architecture decisions, rollout systems, enterprise-grade integrations, and cross-team alignment while managing a delivery team of 8 developers (including 4 seniors) and 3 QC engineers."
           ],
           key_contribution: [
             "Engineered a .NET Core multi-tenant feature flag system <b>(30+ tenants, ~40k users)</b> with a priority rule engine, percentage rollout (tenant/segment/env), JSON-config values, and stateless runtime evaluation—powering mobile/web apps and enabling controlled, progressive production releases across high-traffic tenants.",
@@ -409,7 +408,14 @@ export const profileInfo = {
             "Led hiring and capability growth loops: structured interviews (QC/Fullstack), onboarding path, 1:1 coaching, performance review cycles, and cross-team conflict resolution to keep delivery collaborative and output-focused.",
             "Maintained delivery quality through documentation-first culture and process guardrails (checklists, handover rules, rollback readiness), ensuring predictable release cadences during scaling."
           ],
-          key_techs: ["React.js", "Angular", "Node.js", "Flutter", ".NET", "AKS/FKE/K3S/EKS"]
+          key_techs: [
+            "React.js",
+            "Angular",
+            "Node.js",
+            "Flutter",
+            ".NET",
+            "AKS/FKE/K3S/EKS"
+          ]
         }
       ],
       jobs_bk: []
@@ -466,16 +472,26 @@ export const profileInfo = {
           title: "Senior Full-stack Software Engineer",
           duration: "July 2020 - Apr. 2024",
           summaries: [
-            `The company builds a so-called CDxP product. In brief, it is a data platform that tailor-made to host and process customer profiles (the keystone solution is how would you able to identify and unify your customers data from heterogeneous schemas and formats from diverged services and systems).`,
+            `The company builds a so-called CDxP product. In brief, it is a data platform that tailor-made to host and process customer profiles (the keystone solution is how would you able to identify and unify your customers data from heterogeneous schemas and formats from diverged services and systems).`
           ],
           key_contribution: [
             `Led Front-end team, delivering <b>10+ projects</b> including CDxP app, Magento & WordPress demos, JS SDKs, mobile SDKs, and more.`,
             `Managed team of <b>4 members</b>, aligning with product roadmap to satisfy multiple major partners, enhancing UI/UX and implementing advanced features like 360 profiles and campaign builders.`,
             `Developed lightweight JS SDK with full functionalities (<b><200kb, <150ms</b> load time), facilitating seamless integration across projects.`,
-            `Demonstrated rapid <b>problem-solving</b>, ensuring swift feature demonstrations to impress clients and investors.`,
+            `Demonstrated rapid <b>problem-solving</b>, ensuring swift feature demonstrations to impress clients and investors.`
           ],
-          key_techs: ["ReactJs", "Next.js", "Typescript", "WordPress", "SDK",  "Antdesign", "Team Leadership", "React Native", "Node.js"],
-        },
+          key_techs: [
+            "ReactJs",
+            "Next.js",
+            "Typescript",
+            "WordPress",
+            "SDK",
+            "Antdesign",
+            "Team Leadership",
+            "React Native",
+            "Node.js"
+          ]
+        }
       ],
       jobs_bk: [
         {
@@ -489,7 +505,15 @@ export const profileInfo = {
             "Integrated third-party platform reports and data visualizations into the system, implementing secure authentication for external systems to uphold data security standards.",
             "Leveraged my expertise in code optimization and load time reduction, ensuring the application's efficiency and responsiveness met the highest standards."
           ],
-          skills: ["ReactJs", "Next.js", "Typescript", "WordPress", "SDK",  "Antdesign", "Team Leadership"]
+          skills: [
+            "ReactJs",
+            "Next.js",
+            "Typescript",
+            "WordPress",
+            "SDK",
+            "Antdesign",
+            "Team Leadership"
+          ]
         },
         {
           title: "Full-stack Software Engineer",
@@ -499,10 +523,21 @@ export const profileInfo = {
             "Designed and developed SDKs and application sets to complement the core application, providing crucial support for development, testing, and marketing teams.",
             "Led the development of the entire front-end code base from scratch for various applications, including the Customer Data Platform (CDP) app, shop app, bank app, tools, WordPress, Magento, and mobile app. Ensured comprehensive features catering to common user needs in all applications."
           ],
-          skills: ["ReactJs", "Node.js", "React Native", "Java", "Typescript",  "Antdesign", "Wordpress", "Docker", "Team Leadership", "My SQL", "Firebase"]
+          skills: [
+            "ReactJs",
+            "Node.js",
+            "React Native",
+            "Java",
+            "Typescript",
+            "Antdesign",
+            "Wordpress",
+            "Docker",
+            "Team Leadership",
+            "My SQL",
+            "Firebase"
+          ]
         }
       ]
-      
     },
     {
       company: "Splus-Software JSC",
@@ -512,15 +547,27 @@ export const profileInfo = {
           title: "Java Developer",
           duration: "Mar 2019 - July 2020",
           summaries: [
-            `An out-sourcing company. Most projects revolve around <b>mobile and web apps</b>.`,
+            `An out-sourcing company. Most projects revolve around <b>mobile and web apps</b>.`
           ],
           key_contribution: [
             `With expertise in the <b>end-to-end software production process</b>, I <b>led a small team</b>, mastering the phases from requirements gathering to project security, laying the groundwork for future leadership roles.`,
             `Engaging in <b>8+</b> diverse projects across <b>education, food and drink, banking,</b> and <b>e-commerce</b> domains, I gained invaluable insights into both web and mobile application development.`,
-            `As a project mercenary, I secured significant projects like Savyu and Bank Tool, generating over <b>$20,000</b> in revenue and earning recognition as the <b>Best Rookie of the Year</b> for my impactful contributions.`,
+            `As a project mercenary, I secured significant projects like Savyu and Bank Tool, generating over <b>$20,000</b> in revenue and earning recognition as the <b>Best Rookie of the Year</b> for my impactful contributions.`
           ],
-          key_techs: [ "Java", "Spring Framework", "ReactJs", "Next.js", "Typescript", "React Native", "My SQL", "Antdesign", "Realm DB", "Wordpress", "Node.js",]
-        },
+          key_techs: [
+            "Java",
+            "Spring Framework",
+            "ReactJs",
+            "Next.js",
+            "Typescript",
+            "React Native",
+            "My SQL",
+            "Antdesign",
+            "Realm DB",
+            "Wordpress",
+            "Node.js"
+          ]
+        }
       ],
       jobs_bk: [
         {
@@ -534,7 +581,15 @@ export const profileInfo = {
             "Demonstrated exceptional problem-solving skills and meticulous attention to detail while collaborating with a dynamic team of developers and project managers. Ensured the completion of all projects to the highest standards of quality.",
             "Served as an onsite representative for Mobivi and Synova Solutions, exhibiting stellar communication and collaboration skills with clients and internal teams. Consistently delivered high-quality projects, making significant contributions to the company's growth and success."
           ],
-          skills: ["ReactJs", "Java", "Node.js", "React Native", "My SQL", "Antdesign", "Realm DB"]
+          skills: [
+            "ReactJs",
+            "Java",
+            "Node.js",
+            "React Native",
+            "My SQL",
+            "Antdesign",
+            "Realm DB"
+          ]
         }
       ]
     },
@@ -546,13 +601,13 @@ export const profileInfo = {
           title: "Fresher Front-end Developer",
           duration: "May 2018 - Jan 2019",
           summaries: [
-            `A <b>real estate-domain</b> startup. I was one of the founding engineers.`,
+            `A <b>real estate-domain</b> startup. I was one of the founding engineers.`
           ],
           key_contribution: [
-            `Initiated involvement in primary web app development as a Front-end Developer. Obtained foundational web development skills, with a specialization in <b>React JS</b> and related technologies. Collaborated on responsive design projects, prioritizing enhancements for user experience.`,
+            `Initiated involvement in primary web app development as a Front-end Developer. Obtained foundational web development skills, with a specialization in <b>React JS</b> and related technologies. Collaborated on responsive design projects, prioritizing enhancements for user experience.`
           ],
           key_techs: ["ReactJs", "Javascript", "Wordpress", "Material UI"]
-        },
+        }
       ],
       jobs_bk: [
         {
@@ -571,7 +626,17 @@ export const profileInfo = {
   projects: [
     {
       name: "Digital SAT Math",
-      technologies: ["Next.js", "React", "React Native", "Antdesign", "Docker", "GCP", "Directus", "Google Ads", "Stripe"],
+      technologies: [
+        "Next.js",
+        "React",
+        "React Native",
+        "Antdesign",
+        "Docker",
+        "GCP",
+        "Directus",
+        "Google Ads",
+        "Stripe"
+      ],
       duration: "Oct 2023 - Present",
       description: [],
       accomplishment: [
@@ -584,7 +649,14 @@ export const profileInfo = {
     },
     {
       name: "CDP",
-      technologies: ["React", "Next.js", "Antdesign", "React Native", "WordPress", "Docker"],
+      technologies: [
+        "React",
+        "Next.js",
+        "Antdesign",
+        "React Native",
+        "WordPress",
+        "Docker"
+      ],
       duration: "July 2020 - Apr 2024",
       description: [],
       accomplishment: [
@@ -596,7 +668,7 @@ export const profileInfo = {
         `Established robust testing flow, covering core CDP features with <b>100+ scenarios</b> and <b>1000+ test cases</b>.`,
         `Acquired domain expertise and excelled in testing methodologies, including BDD, unit testing, and <b>E2E testing</b>, which improved test coverage and reduced software bugs by <b>30%</b>.`,
         `Developed a <b>feature flag</b> for runtime toggling, enabling A/B testing and feature grouping based on customer segments, which optimized feature delivery and increased feature adoption.`,
-        `<b>Documented</b> components for clarity and ease of maintenance, which improved code readability and reduced maintenance time.`,
+        `<b>Documented</b> components for clarity and ease of maintenance, which improved code readability and reduced maintenance time.`
       ]
     },
     {
@@ -609,7 +681,7 @@ export const profileInfo = {
         `Utilized <b>web workers and service workers</b> to facilitate multitasking in the background, effectively managing complex functionalities and handling <b>multiple edge cases</b>, such as simultaneous multi-tab usage.`,
         `Additionally, designed and implemented a <b>personalized recommendation feature</b> using a <b>micro-frontend</b> architecture, specifically a carousel block showcasing products users may love, thereby enhancing user experience and engagement.`,
         `Among the various advanced features built are web pop-ups, web push notifications, <b>web component embedding</b>, WebSocket integration, and management of annoying pop-ups across multiple tabs.`,
-        `Furthermore, leveraged <b>JS Closure</b> to organize module structures, enabling seamless feature export or <b>data encapsulation</b>, thereby <b>avoid conflicts</b> within the global scope.`,
+        `Furthermore, leveraged <b>JS Closure</b> to organize module structures, enabling seamless feature export or <b>data encapsulation</b>, thereby <b>avoid conflicts</b> within the global scope.`
       ]
     },
     {
@@ -671,12 +743,16 @@ export const profileInfo = {
     {
       title: "The degree of engineer",
       year: 2020,
-      description: ["Bachelor's degree in Software Engineering, awarded with a very good classification."]
+      description: [
+        "Bachelor's degree in Software Engineering, awarded with a very good classification."
+      ]
     },
     {
       title: "Certification in Software Testing",
       year: 2019,
-      description: ["I was awarded a type-A certificate by GST and invited to join their project."]
+      description: [
+        "I was awarded a type-A certificate by GST and invited to join their project."
+      ]
     },
     {
       title: "Best Rookie Of The Year",
@@ -687,7 +763,9 @@ export const profileInfo = {
   education: [
     {
       school: "Nong Lam University",
-      description: ["Bachelor of Information Technology, Minor in Software Engineering"],
+      description: [
+        "Bachelor of Information Technology, Minor in Software Engineering"
+      ],
       GPA: 3.36,
       duration: "Sep. 2015 - Dec 2019"
     }
@@ -695,9 +773,12 @@ export const profileInfo = {
   references: [
     {
       name: "Mr. NGO VAN KIM KHANH",
-      roles: ["Co-founder & Developer & CEO, Algae", "SRE & Cloud/OnPrem Infrastructure, PrimeData VN"],
+      roles: [
+        "Co-founder & Developer & CEO, Algae",
+        "SRE & Cloud/OnPrem Infrastructure, PrimeData VN"
+      ],
       email: "khanh.ngo@algae.vn",
       phone: "(+84) 907-709-380"
     }
   ]
-}
+};

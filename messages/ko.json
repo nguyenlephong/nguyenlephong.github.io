@@ -11,7 +11,8 @@
       "sans": "산세리프",
       "serif": "세리프"
     },
-    "blog": "블로그"
+    "blog": "블로그",
+    "notes": "노트"
   },
   "Footer": {
     "tag": "시니어 소프트웨어 엔지니어 · 테크 리드",
@@ -282,7 +283,70 @@
       "copyLink": "링크 복사",
       "close": "닫기"
     },
+    "notes": {
+      "eyebrow": "개인 백과",
+      "title": "노트",
+      "intro": "개인적인 아카이브 — 배우고, 겪고, 기억하고 싶은 것들을 모아두는 곳. 삶과 일, 그리고 깔끔한 답이 없는 질문들에 대한 사색.",
+      "stats": {
+        "topics": "주제",
+        "articles": "노트",
+        "updated": "업데이트"
+      },
+      "readingTime": "{minutes}분 읽기",
+      "empty": "아직 노트가 없습니다 — 첫 번째 글이 곧 올라옵니다.",
+      "backToNotes": "노트로 돌아가기",
+      "onThisPage": "이 페이지에서",
+      "faqHeading": "자주 묻는 질문",
+      "controls": {
+        "searchPlaceholder": "노트 검색…",
+        "searchLabel": "노트 검색",
+        "clearSearch": "검색 지우기",
+        "filtersLabel": "주제로 필터링",
+        "allTopics": "전체",
+        "popularTags": "인기 태그",
+        "clear": "필터 지우기",
+        "results": "{count, plural, =0 {노트가 없습니다} other {# 개의 노트}}",
+        "noResults": "검색과 일치하는 노트가 없습니다.",
+        "pagination": {
+          "label": "노트 페이지",
+          "prev": "이전",
+          "next": "다음",
+          "goToPage": "{page} 페이지로 이동"
+        }
+      },
+      "engagement": {
+        "views": "조회",
+        "reactionsPrompt": "어떻게 보셨나요?",
+        "share": "공유",
+        "copyLink": "링크 복사",
+        "copied": "복사됨!",
+        "close": "닫기",
+        "reactions": {
+          "like": "좋아요",
+          "love": "사랑",
+          "insightful": "통찰",
+          "clap": "축하"
+        }
+      }
+    },
     "blog": {
+      "controls": {
+        "searchPlaceholder": "글 검색…",
+        "searchLabel": "글 검색",
+        "clearSearch": "검색 지우기",
+        "filtersLabel": "주제로 필터링",
+        "allCategories": "전체",
+        "popularTags": "인기 태그",
+        "clear": "필터 지우기",
+        "results": "{count, plural, =0 {글이 없습니다} other {# 개의 글}}",
+        "noResults": "검색과 일치하는 글이 없습니다.",
+        "pagination": {
+          "label": "블로그 페이지",
+          "prev": "이전",
+          "next": "다음",
+          "goToPage": "{page} 페이지로 이동"
+        }
+      },
       "eyebrow": "글",
       "title": "블로그",
       "intro": "소프트웨어 아키텍처와 소스 코드 구조에 대한 깊이 있는 글입니다. 입문자도 이해할 수 있으면서, 대규모로 개발하는 팀에도 유용하도록 썼습니다. 다이어그램과 실제 사례를 곁들였고, 두루뭉술한 설명은 없습니다.",

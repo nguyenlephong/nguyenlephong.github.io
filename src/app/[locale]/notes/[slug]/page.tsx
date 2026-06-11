@@ -1,119 +1,148 @@
-import type { Metadata } from 'next'
-import { redirect } from 'next/navigation'
-import { setRequestLocale } from 'next-intl/server'
-import { Link } from '@/i18n/navigation'
-import { SITE, SITE_URL } from '@/app/seo.config'
-import { buildDescription } from '@/lib/blog/seo'
-import { listNoteSlugs, listTopics, loadNote } from '@/lib/notes/data'
-import BlogContent from '@/components/blog/BlogContent'
-import BlogToc from '@/components/blog/BlogToc'
-import BlogViewCount from '@/components/blog/BlogViewCount'
-import BlogShareDock from '@/components/blog/BlogShareDock'
-import BlogReactions from '@/components/blog/BlogReactions'
-import BlogReadingTracker from '@/components/blog/BlogReadingTracker'
-import { EngagementProvider } from '@/components/blog/EngagementProvider'
-import '../notes.css'
-import '../../blog/blog.css'
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
+import { routing, type Locale } from "@/i18n/routing";
+import { SITE, SITE_URL } from "@/app/seo.config";
+import {
+  OG_LOCALE_MAP,
+  buildDescription,
+  canonicalFor,
+  htmlToPlainText,
+  localeAlternates
+} from "@/lib/blog/seo";
+import { getTopic, listNoteParams, loadNote } from "@/lib/notes/data";
+import BlogContent from "@/components/blog/BlogContent";
+import BlogToc from "@/components/blog/BlogToc";
+import BlogViewCount from "@/components/blog/BlogViewCount";
+import BlogShareDock from "@/components/blog/BlogShareDock";
+import BlogReactions from "@/components/blog/BlogReactions";
+import BlogReadingTracker from "@/components/blog/BlogReadingTracker";
+import { EngagementProvider } from "@/components/blog/EngagementProvider";
+import "../notes.css";
+import "../../blog/blog.css";
 
-type Props = { params: Promise<{ locale: string; slug: string }> }
+type Props = { params: Promise<{ locale: string; slug: string }> };
+
+const FALLBACK_TOPIC_COLOR = "#b45309";
 
 export function generateStaticParams() {
-  return listNoteSlugs().map((slug) => ({ locale: 'vi', slug }))
+  return listNoteParams();
 }
 
-function formatDate(iso: string): string {
-  const date = new Date(iso)
-  if (Number.isNaN(date.getTime())) return iso
-  return new Intl.DateTimeFormat('vi-VN', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }).format(date)
+function formatDate(iso: string, locale: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return new Intl.DateTimeFormat(locale, {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  }).format(date);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-  const note = loadNote(slug)
-  if (!note) return { title: 'Không tìm thấy' }
+  const { locale, slug } = await params;
+  const note = loadNote(slug, locale);
+  if (!note) return { title: "Not found" };
 
-  const title = note.title
-  const description = note.summary || buildDescription(note.html)
-  const canonical = `${SITE_URL}/vi/notes/${slug}`
+  const title = note.title;
+  const description = note.summary || buildDescription(note.html);
+  const canonical = canonicalFor(locale, `/notes/${slug}`);
+  const languages = localeAlternates(`/notes/${slug}`);
 
   return {
     title,
     description,
     keywords: note.tags,
-    alternates: {
-      canonical,
-      languages: { vi: canonical, 'x-default': canonical },
-    },
+    alternates: { canonical, languages },
     openGraph: {
-      type: 'article',
+      type: "article",
       url: canonical,
       title,
       description,
       siteName: SITE.name,
-      locale: 'vi_VN',
+      locale: OG_LOCALE_MAP[locale as Locale] ?? OG_LOCALE_MAP.en,
       publishedTime: note.date,
       modifiedTime: note.updated ?? note.date,
       authors: [SITE_URL],
-      tags: note.tags,
+      tags: note.tags
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
       site: SITE.twitter,
-      creator: SITE.twitter,
+      creator: SITE.twitter
     },
-    robots: { index: true, follow: true },
-  }
+    robots: { index: true, follow: true }
+  };
 }
 
 export default async function NotePage({ params }: Props) {
-  const { locale, slug } = await params
-  setRequestLocale(locale)
-  if (locale !== 'vi') redirect(`/vi/notes/${slug}`)
+  const { locale, slug } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+  setRequestLocale(locale);
 
-  const note = loadNote(slug)
-  if (!note) redirect('/vi/notes')
+  const note = loadNote(slug, locale);
+  if (!note) notFound();
 
-  const canonical = `${SITE_URL}/vi/notes/${slug}`
-  const description = note.summary || buildDescription(note.html)
+  const t = await getTranslations({ locale, namespace: "Pages.notes" });
+  const canonical = canonicalFor(locale, `/notes/${slug}`);
+  const description = note.summary || buildDescription(note.html);
 
-  const topic = listTopics().find((t) => t.id === note.topic)
-  const topicColor = topic?.color ?? '#b45309'
+  const topic = note.topic ? getTopic(note.topic, locale) : null;
+  const topicColor = topic?.color ?? FALLBACK_TOPIC_COLOR;
 
   const articleLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    '@id': canonical + '#article',
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": canonical + "#article",
     headline: note.title,
     description,
-    inLanguage: 'vi',
+    inLanguage: locale,
     url: canonical,
     mainEntityOfPage: canonical,
     datePublished: note.date,
     dateModified: note.updated ?? note.date,
-    keywords: note.tags.join(', '),
+    keywords: note.tags.join(", "),
     author: {
-      '@type': 'Person',
-      '@id': `${SITE_URL}/#person`,
-      name: 'Nguyen Le Phong',
-      url: SITE_URL,
-    },
-  }
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: "Nguyen Le Phong",
+      url: SITE_URL
+    }
+  };
+
+  const faqLd =
+    note.faqs && note.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": canonical + "#faq",
+          mainEntity: note.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: htmlToPlainText(f.a) }
+          }))
+        }
+      : null;
 
   return (
     <main
       className="blog-article blog-article--ocean notes-accent notes-reading"
-      style={{ '--topic-color': topicColor } as React.CSSProperties}
+      style={{ "--topic-color": topicColor } as React.CSSProperties}
     >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
       />
+      {faqLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+        />
+      )}
 
       <EngagementProvider category="notes" slug={slug}>
         <BlogReadingTracker
@@ -125,16 +154,16 @@ export default async function NotePage({ params }: Props) {
           url={canonical}
           title={note.title}
           labels={{
-            share: 'Chia sẻ',
-            copyLink: 'Sao chép liên kết',
-            copied: 'Đã sao chép!',
-            close: 'Đóng',
+            share: t("engagement.share"),
+            copyLink: t("engagement.copyLink"),
+            copied: t("engagement.copied"),
+            close: t("engagement.close")
           }}
         />
 
         <div className="blog-article__main">
           <nav className="blog-breadcrumb" aria-label="Breadcrumb">
-            <Link href="/notes">Ghi chép</Link>
+            <Link href="/notes">{t("title")}</Link>
             {topic && (
               <>
                 <span aria-hidden="true">/</span>
@@ -149,10 +178,10 @@ export default async function NotePage({ params }: Props) {
             <h1 className="blog-article__title">{note.title}</h1>
             <p className="blog-article__summary">{note.summary}</p>
             <div className="blog-article__meta">
-              <time dateTime={note.date}>{formatDate(note.date)}</time>
+              <time dateTime={note.date}>{formatDate(note.date, locale)}</time>
               <span aria-hidden="true">·</span>
-              <span>{note.readingMinutes} phút đọc</span>
-              <BlogViewCount label="lượt xem" />
+              <span>{t("readingTime", { minutes: note.readingMinutes })}</span>
+              <BlogViewCount label={t("engagement.views")} />
             </div>
             {note.tags.length > 0 && (
               <ul className="blog-article__tags">
@@ -165,27 +194,46 @@ export default async function NotePage({ params }: Props) {
 
           <BlogContent html={note.html} />
 
+          {note.faqs && note.faqs.length > 0 && (
+            <section className="blog-faq" aria-labelledby="notes-faq-heading">
+              <h2 id="notes-faq-heading" className="blog-faq__heading">
+                {t("faqHeading")}
+              </h2>
+              <dl className="blog-faq__list">
+                {note.faqs.map((f, i) => (
+                  <div className="blog-faq__item" key={i}>
+                    <dt className="blog-faq__q">{f.q}</dt>
+                    <dd
+                      className="blog-faq__a"
+                      dangerouslySetInnerHTML={{ __html: f.a }}
+                    />
+                  </div>
+                ))}
+              </dl>
+            </section>
+          )}
+
           <BlogReactions
-            prompt="Bài này có hữu ích không?"
+            prompt={t("engagement.reactionsPrompt")}
             reactionLabels={{
-              like: 'Thích',
-              love: 'Yêu thích',
-              insightful: 'Sâu sắc',
-              clap: 'Tuyệt vời',
+              like: t("engagement.reactions.like"),
+              love: t("engagement.reactions.love"),
+              insightful: t("engagement.reactions.insightful"),
+              clap: t("engagement.reactions.clap")
             }}
           />
 
           <footer className="blog-article__footer">
             <Link href="/notes" className="blog-back">
-              ← Quay lại Ghi chú
+              ← {t("backToNotes")}
             </Link>
           </footer>
         </div>
 
         <aside className="blog-article__toc">
-          <BlogToc label="Trong bài này" />
+          <BlogToc label={t("onThisPage")} />
         </aside>
       </EngagementProvider>
     </main>
-  )
+  );
 }

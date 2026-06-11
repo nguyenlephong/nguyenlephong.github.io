@@ -11,7 +11,8 @@
       "sans": "Sans-serif",
       "serif": "Serif"
     },
-    "blog": "Blog"
+    "blog": "Blog",
+    "notes": "Notes"
   },
   "Footer": {
     "tag": "Senior Software Engineer · Tech Lead",
@@ -282,7 +283,70 @@
       "copyLink": "Copier le lien",
       "close": "Fermer"
     },
+    "notes": {
+      "eyebrow": "Encyclopédie personnelle",
+      "title": "Notes",
+      "intro": "Une archive personnelle — où je garde ce que j'ai appris, vécu et veux retenir. Des réflexions sur la vie, le travail et les questions sans réponses toutes faites.",
+      "stats": {
+        "topics": "Thèmes",
+        "articles": "Notes",
+        "updated": "Mis à jour"
+      },
+      "readingTime": "{minutes} min de lecture",
+      "empty": "Aucune note pour l'instant — la première arrive bientôt.",
+      "backToNotes": "Retour aux notes",
+      "onThisPage": "Sur cette page",
+      "faqHeading": "Questions fréquentes",
+      "controls": {
+        "searchPlaceholder": "Rechercher des notes…",
+        "searchLabel": "Rechercher des notes",
+        "clearSearch": "Effacer la recherche",
+        "filtersLabel": "Filtrer par thème",
+        "allTopics": "Tous",
+        "popularTags": "Tags populaires",
+        "clear": "Réinitialiser les filtres",
+        "results": "{count, plural, =0 {Aucune note} one {# note} other {# notes}}",
+        "noResults": "Aucune note ne correspond à votre recherche.",
+        "pagination": {
+          "label": "Pages des notes",
+          "prev": "Précédent",
+          "next": "Suivant",
+          "goToPage": "Aller à la page {page}"
+        }
+      },
+      "engagement": {
+        "views": "vues",
+        "reactionsPrompt": "Qu'en avez-vous pensé ?",
+        "share": "Partager",
+        "copyLink": "Copier le lien",
+        "copied": "Copié !",
+        "close": "Fermer",
+        "reactions": {
+          "like": "J'aime",
+          "love": "Adoré",
+          "insightful": "Pertinent",
+          "clap": "Bravo"
+        }
+      }
+    },
     "blog": {
+      "controls": {
+        "searchPlaceholder": "Rechercher des articles…",
+        "searchLabel": "Rechercher des articles",
+        "clearSearch": "Effacer la recherche",
+        "filtersLabel": "Filtrer par thème",
+        "allCategories": "Tous",
+        "popularTags": "Tags populaires",
+        "clear": "Réinitialiser les filtres",
+        "results": "{count, plural, =0 {Aucun article} one {# article} other {# articles}}",
+        "noResults": "Aucun article ne correspond à votre recherche.",
+        "pagination": {
+          "label": "Pages du blog",
+          "prev": "Précédent",
+          "next": "Suivant",
+          "goToPage": "Aller à la page {page}"
+        }
+      },
       "eyebrow": "Articles",
       "title": "Blog",
       "intro": "Des analyses approfondies sur l'architecture logicielle et la façon de structurer le code source — écrites pour être comprises par les débutants, tout en restant utiles aux équipes qui livrent à grande échelle. Des schémas, des exemples concrets, sans bla-bla.",

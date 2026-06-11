@@ -11,7 +11,8 @@
       "sans": "サンセリフ",
       "serif": "セリフ"
     },
-    "blog": "ブログ"
+    "blog": "ブログ",
+    "notes": "ノート"
   },
   "Footer": {
     "tag": "シニアソフトウェアエンジニア · テックリード",
@@ -282,7 +283,70 @@
       "copyLink": "リンクをコピー",
       "close": "閉じる"
     },
+    "notes": {
+      "eyebrow": "個人事典",
+      "title": "ノート",
+      "intro": "個人的なアーカイブ——学んだこと、経験したこと、覚えておきたいことを収めた場所。人生や仕事、そしてすっきりした答えのない問いについての考察。",
+      "stats": {
+        "topics": "トピック",
+        "articles": "ノート",
+        "updated": "更新"
+      },
+      "readingTime": "{minutes} 分で読めます",
+      "empty": "まだノートがありません — 最初の一篇がもうすぐ。",
+      "backToNotes": "ノートに戻る",
+      "onThisPage": "このページの内容",
+      "faqHeading": "よくある質問",
+      "controls": {
+        "searchPlaceholder": "ノートを検索…",
+        "searchLabel": "ノートを検索",
+        "clearSearch": "検索をクリア",
+        "filtersLabel": "トピックで絞り込む",
+        "allTopics": "すべて",
+        "popularTags": "人気のタグ",
+        "clear": "フィルターをクリア",
+        "results": "{count, plural, =0 {ノートがありません} other {# 件のノート}}",
+        "noResults": "検索に一致するノートがありません。",
+        "pagination": {
+          "label": "ノートのページ",
+          "prev": "前へ",
+          "next": "次へ",
+          "goToPage": "{page} ページ目へ"
+        }
+      },
+      "engagement": {
+        "views": "回閲覧",
+        "reactionsPrompt": "いかがでしたか？",
+        "share": "シェア",
+        "copyLink": "リンクをコピー",
+        "copied": "コピーしました！",
+        "close": "閉じる",
+        "reactions": {
+          "like": "いいね",
+          "love": "お気に入り",
+          "insightful": "学びになった",
+          "clap": "祝福"
+        }
+      }
+    },
     "blog": {
+      "controls": {
+        "searchPlaceholder": "記事を検索…",
+        "searchLabel": "記事を検索",
+        "clearSearch": "検索をクリア",
+        "filtersLabel": "トピックで絞り込む",
+        "allCategories": "すべて",
+        "popularTags": "人気のタグ",
+        "clear": "フィルターをクリア",
+        "results": "{count, plural, =0 {記事がありません} other {# 件の記事}}",
+        "noResults": "検索に一致する記事がありません。",
+        "pagination": {
+          "label": "ブログのページ",
+          "prev": "前へ",
+          "next": "次へ",
+          "goToPage": "{page} ページ目へ"
+        }
+      },
       "eyebrow": "記事",
       "title": "ブログ",
       "intro": "ソフトウェアアーキテクチャとソースコードの構造についての詳しい解説。初心者にも分かりやすく、それでいて大規模に開発するチームにも役立つように書いています。図解と実例つき、曖昧な説明はしません。",

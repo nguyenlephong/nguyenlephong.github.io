@@ -6,6 +6,7 @@
     "contact": "Contact",
     "gallery": "Gallery",
     "blog": "Blog",
+    "notes": "Notes",
     "resume": "Résumé",
     "font": {
       "label": "Reading font",
@@ -282,7 +283,70 @@
       "copyLink": "Copy link",
       "close": "Close"
     },
+    "notes": {
+      "eyebrow": "Personal encyclopedia",
+      "title": "Notes",
+      "intro": "A personal archive — where I keep what I've learned, lived, and want to remember. Reflections on life, work, and the questions that don't have tidy answers.",
+      "stats": {
+        "topics": "Topics",
+        "articles": "Notes",
+        "updated": "Updated"
+      },
+      "readingTime": "{minutes} min read",
+      "empty": "No notes yet — the first one is on its way.",
+      "backToNotes": "Back to notes",
+      "onThisPage": "On this page",
+      "faqHeading": "Frequently asked questions",
+      "controls": {
+        "searchPlaceholder": "Search notes…",
+        "searchLabel": "Search notes",
+        "clearSearch": "Clear search",
+        "filtersLabel": "Filter by topic",
+        "allTopics": "All",
+        "popularTags": "Popular tags",
+        "clear": "Clear filters",
+        "results": "{count, plural, =0 {No notes} one {# note} other {# notes}}",
+        "noResults": "No notes match your search.",
+        "pagination": {
+          "label": "Notes pages",
+          "prev": "Previous",
+          "next": "Next",
+          "goToPage": "Go to page {page}"
+        }
+      },
+      "engagement": {
+        "views": "views",
+        "reactionsPrompt": "What did you think?",
+        "share": "Share",
+        "copyLink": "Copy link",
+        "copied": "Copied!",
+        "close": "Close",
+        "reactions": {
+          "like": "Like",
+          "love": "Love",
+          "insightful": "Insightful",
+          "clap": "Celebrate"
+        }
+      }
+    },
     "blog": {
+      "controls": {
+        "searchPlaceholder": "Search articles…",
+        "searchLabel": "Search articles",
+        "clearSearch": "Clear search",
+        "filtersLabel": "Filter by topic",
+        "allCategories": "All",
+        "popularTags": "Popular tags",
+        "clear": "Clear filters",
+        "results": "{count, plural, =0 {No articles} one {# article} other {# articles}}",
+        "noResults": "No articles match your search.",
+        "pagination": {
+          "label": "Blog pages",
+          "prev": "Previous",
+          "next": "Next",
+          "goToPage": "Go to page {page}"
+        }
+      },
       "eyebrow": "Writing",
       "title": "Blog",
       "intro": "Deep-dives on software architecture and the way source code is structured — written to be understood by beginners, yet useful to teams shipping at scale. Diagrams, real examples, no hand-waving.",

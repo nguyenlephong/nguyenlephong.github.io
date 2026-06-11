@@ -23,6 +23,12 @@
       "label": "Sự nghiệp & phát triển",
       "description": "Làm chủ con đường sự nghiệp của chính mình — xây kỹ năng, nâng giá trị thị trường, đàm phán thu nhập, và phát triển bản thân bền vững cho người đi làm.",
       "color": "#7c3aed"
+    },
+    {
+      "id": "goc-nhin",
+      "label": "Perspectives & Reflections",
+      "description": "Personal reflections on life, work, and the questions that don't have tidy answers.",
+      "color": "#b45309"
     }
   ],
   "posts": [
@@ -32,8 +38,18 @@
       "summary": "Một chiếc xe có thể là công cụ nâng tầm cuộc sống của bạn — hoặc một cái hố ngốn tiền âm thầm kéo bạn lùi lại nhiều năm. Khác biệt không nằm ở chiếc xe, mà ở cách bạn ra quyết định mua nó. Giống như mua nhà, mua xe là một trong những khoản chi lớn nhất đời người, nhưng hầu hết chúng ta lại quyết định nó bằng cảm xúc và chỉ nhìn vào mỗi con số trên bảng giá. Bài này là tấm bản đồ đầy đủ cho người mua xe lần đầu: câu hỏi quan trọng nhất phải tự trả lời trước, toàn bộ tảng băng chi phí sở hữu mà giá xe chỉ là phần nổi, cách đặt ngân sách để xe không bóp nghẹt tài chính, mua mới hay cũ, trả thẳng hay trả góp, chọn xe theo nhu cầu thật, và cách vượt qua những cái bẫy ở phòng trưng bày.",
       "date": "2026-06-02",
       "readingMinutes": 17,
-      "tags": ["Mua xe", "Tài chính cá nhân", "Quyết định mua sắm", "Chi phí", "Kinh nghiệm"],
-      "topic": "mua-xe"
+      "tags": [
+        "Mua xe",
+        "Tài chính cá nhân",
+        "Quyết định mua sắm",
+        "Chi phí",
+        "Kinh nghiệm"
+      ],
+      "topic": "mua-xe",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "lam-chu-su-nghiep-bien-cong-viec-thanh-be-phong",
@@ -41,8 +57,18 @@
       "summary": "Phần lớn chúng ta được dạy cách làm tốt công việc, nhưng không ai dạy cách làm chủ sự nghiệp của mình. Thế là nhiều người đi làm chăm chỉ hàng chục năm, trung thành và tận tụy, để rồi một ngày nhìn lại và tự hỏi vì sao mình vẫn ở nguyên chỗ cũ, trong khi những người không giỏi hơn lại tiến xa. Sự thật là: sự nghiệp không phải thứ công ty trao cho bạn, mà là thứ bạn phải chủ động xây. Bài này thay đổi cách bạn nhìn về công việc của mình — từ giá trị thị trường quyết định mức lương, cách xây bộ kỹ năng vừa sâu vừa rộng, nghệ thuật tăng thu nhập qua giá trị và qua đàm phán, vì sao làm tốt thôi chưa đủ, khi nào nên ở lại và khi nào nên ra đi, đến những cái bẫy âm thầm giữ chân bạn ở vùng an toàn.",
       "date": "2026-06-02",
       "readingMinutes": 18,
-      "tags": ["Sự nghiệp", "Phát triển bản thân", "Kỹ năng", "Thu nhập", "Mindset"],
-      "topic": "su-nghiep"
+      "tags": [
+        "Sự nghiệp",
+        "Phát triển bản thân",
+        "Kỹ năng",
+        "Thu nhập",
+        "Mindset"
+      ],
+      "topic": "su-nghiep",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "lap-ngan-sach-lam-chu-dong-tien",
@@ -50,8 +76,18 @@
       "summary": "Nhiều người nghe đến \"lập ngân sách\" là thấy ngột ngạt, hình dung ngay những bảng tính chi chít và một cuộc sống bị cấm đoán đủ thứ. Nhưng ngân sách thật ra là điều ngược lại: nó không phải sợi dây trói, mà là tấm bản đồ cho bạn biết tiền của mình đang đi đâu và được phép đi đâu — để bạn tiêu mà không áy náy, và để dành mà không phải nghiến răng. Bài này hướng dẫn ba phương pháp lập ngân sách phổ biến và dễ áp dụng nhất cho người đi làm: quy tắc 50/30/20, phương pháp hũ tiền, và zero-based budgeting; cách chọn cái hợp với mình, cách tự động hóa để không phụ thuộc ý chí, và cách theo dõi điều chỉnh mỗi tháng. Làm chủ dòng tiền là bước đầu tiên biến mọi mục tiêu tài chính thành hiện thực.",
       "date": "2026-06-02",
       "readingMinutes": 15,
-      "tags": ["Tài chính cá nhân", "Ngân sách", "Quản lý chi tiêu", "Dòng tiền", "Thói quen"],
-      "topic": "tiet-kiem"
+      "tags": [
+        "Tài chính cá nhân",
+        "Ngân sách",
+        "Quản lý chi tiêu",
+        "Dòng tiền",
+        "Thói quen"
+      ],
+      "topic": "tiet-kiem",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "quy-khan-cap-tu-a-den-z",
@@ -59,8 +95,18 @@
       "summary": "Cuộc đời không hỏi ý kiến bạn trước khi giáng một cú: chiếc xe chết máy giữa đường, một lần nhập viện bất ngờ, hay tệ hơn — một email sa thải vào sáng thứ Hai. Người không có quỹ khẩn cấp, mỗi cú như thế đều có thể đẩy họ vào nợ nần và phá tan mọi kế hoạch tài chính. Người có quỹ khẩn cấp chỉ coi đó là một sự cố khó chịu rồi đi tiếp. Quỹ khẩn cấp là nền móng của mọi sự an toàn tài chính — quan trọng hơn cả đầu tư. Bài này trả lời đầy đủ: vì sao nó là ưu tiên số một, bao nhiêu là đủ cho hoàn cảnh của bạn, nên để tiền ở đâu, khi nào được dùng và khi nào tuyệt đối không, cách xây dần từ con số 0, và cách tái lập sau khi đã dùng.",
       "date": "2026-06-02",
       "readingMinutes": 13,
-      "tags": ["Tài chính cá nhân", "Quỹ khẩn cấp", "An toàn tài chính", "Tiết kiệm", "Kế hoạch"],
-      "topic": "tiet-kiem"
+      "tags": [
+        "Tài chính cá nhân",
+        "Quỹ khẩn cấp",
+        "An toàn tài chính",
+        "Tiết kiệm",
+        "Kế hoạch"
+      ],
+      "topic": "tiet-kiem",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "thoat-no-thong-minh",
@@ -68,8 +114,18 @@
       "summary": "Nợ không phải lúc nào cũng xấu — một khoản vay đúng chỗ có thể là bệ phóng. Nhưng có một loại nợ âm thầm bào mòn tương lai của hàng triệu người đi làm: nợ tiêu dùng lãi cao, đặc biệt là thẻ tín dụng. Nó được thiết kế để bạn chỉ trả phần tối thiểu, để rồi mắc kẹt nhiều năm trong một vòng xoáy mà lãi mẹ đẻ lãi con. Bài này giúp bạn phân biệt nợ tốt và nợ xấu, hiểu vì sao trả tối thiểu là cái bẫy, và đi qua hai chiến lược thoát nợ đã được kiểm chứng — debt snowball và debt avalanche — kèm cách chọn cái hợp với mình, cách thương lượng lãi suất, và quan trọng nhất: cách không bao giờ rơi lại vào hố nợ một lần nữa.",
       "date": "2026-06-02",
       "readingMinutes": 16,
-      "tags": ["Tài chính cá nhân", "Quản lý nợ", "Thẻ tín dụng", "Tiết kiệm", "Kế hoạch"],
-      "topic": "tiet-kiem"
+      "tags": [
+        "Tài chính cá nhân",
+        "Quản lý nợ",
+        "Thẻ tín dụng",
+        "Tiết kiệm",
+        "Kế hoạch"
+      ],
+      "topic": "tiet-kiem",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "dau-tu-cho-nguoi-moi-bat-dau",
@@ -77,8 +133,18 @@
       "summary": "Đầu tư nghe có vẻ là sân chơi của người giàu, của dân tài chính, của những bảng giá nhấp nháy mà người bình thường nhìn vào chỉ thấy hoa mắt. Nhưng sự thật là: bạn càng có ít tiền, càng cần để số tiền đó làm việc cho mình — vì lạm phát không tha một ai. Bài này được viết cho người chưa từng đầu tư một đồng nào: vì sao tiền để yên là tiền đang teo lại, những việc phải làm xong trước khi đầu tư đồng đầu tiên, các kênh đầu tư phổ biến ở Việt Nam và mức rủi ro của từng kênh, vì sao chứng chỉ quỹ và index fund là cánh cửa dễ nhất cho người mới, cùng những nguyên tắc vàng giúp bạn không mất tiền oan trong những năm đầu tiên.",
       "date": "2026-06-02",
       "readingMinutes": 17,
-      "tags": ["Tài chính cá nhân", "Đầu tư", "Chứng chỉ quỹ", "Lãi kép", "Người mới bắt đầu"],
-      "topic": "tiet-kiem"
+      "tags": [
+        "Tài chính cá nhân",
+        "Đầu tư",
+        "Chứng chỉ quỹ",
+        "Lãi kép",
+        "Người mới bắt đầu"
+      ],
+      "topic": "tiet-kiem",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "lam-phat-va-suc-mua",
@@ -86,8 +152,18 @@
       "summary": "Ông bà ta từng kể một bát phở giá vài đồng, cha mẹ ta nhớ thời ly cà phê vài nghìn — và bạn thì đang trả gấp nhiều lần cho đúng những thứ đó. Đó không phải vì mọi thứ \"đắt lên\" một cách ngẫu nhiên, mà là lạm phát: một lực âm thầm, đều đặn, làm đồng tiền mất giá theo thời gian. Hiểu lạm phát là hiểu vì sao để tiền nằm yên lại là một quyết định thua lỗ chắc chắn, vì sao người gửi tiết kiệm cả đời vẫn nghèo đi, và vì sao đầu tư không phải lựa chọn xa xỉ mà là sự phòng vệ cần thiết. Bài này giải thích lạm phát bằng ngôn ngữ đời thường nhất, chỉ ra ai chịu thiệt nhiều nhất, và quan trọng nhất — cách bảo vệ sức mua của bạn trước kẻ trộm vô hình này.",
       "date": "2026-06-02",
       "readingMinutes": 12,
-      "tags": ["Tài chính cá nhân", "Lạm phát", "Sức mua", "Đầu tư", "Kiến thức nền tảng"],
-      "topic": "tiet-kiem"
+      "tags": [
+        "Tài chính cá nhân",
+        "Lạm phát",
+        "Sức mua",
+        "Đầu tư",
+        "Kiến thức nền tảng"
+      ],
+      "topic": "tiet-kiem",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "bao-hiem-dung-va-du",
@@ -95,8 +171,18 @@
       "summary": "Bảo hiểm là một trong những chủ đề tài chính gây bối rối nhất: người thì xem là vô bổ ném tiền qua cửa sổ, người thì bị tư vấn mua chồng chất những gói không cần đến. Cả hai thái cực đều khiến bạn mất tiền. Sự thật nằm ở giữa: bảo hiểm là một công cụ chuyển giao rủi ro thông minh — bạn trả một khoản nhỏ đều đặn để một bên khác gánh giúp những rủi ro lớn mà bạn không thể tự gánh. Bài này giúp bạn hiểu bản chất bảo hiểm, phân biệt rạch ròi giữa bảo vệ và đầu tư (cái bẫy phổ biến nhất), biết loại nào thật sự cần với người đi làm, mua bao nhiêu là đủ, và cách đọc hợp đồng để không vỡ mộng đúng lúc cần dùng nhất.",
       "date": "2026-06-02",
       "readingMinutes": 14,
-      "tags": ["Tài chính cá nhân", "Bảo hiểm", "Quản lý rủi ro", "Bảo vệ tài sản", "Kế hoạch"],
-      "topic": "tiet-kiem"
+      "tags": [
+        "Tài chính cá nhân",
+        "Bảo hiểm",
+        "Quản lý rủi ro",
+        "Bảo vệ tài sản",
+        "Kế hoạch"
+      ],
+      "topic": "tiet-kiem",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "tranh-bay-lua-dao-dau-tu",
@@ -104,8 +190,18 @@
       "summary": "Mỗi năm, vô số người mất sạch tiền tiết kiệm cả đời — không phải vì họ ngốc, mà vì những kẻ lừa đảo ngày càng tinh vi và đánh trúng vào đúng điểm yếu tâm lý của tất cả chúng ta: lòng tham, nỗi sợ bỏ lỡ, và niềm tin vào người quen. Từ mô hình Ponzi đội lốt dự án hào nhoáng, đa cấp tài chính, các sàn forex và crypto ảo, đến những app đầu tư cho rút tiền vài lần đầu để dụ bạn nạp lớn — tất cả đều có chung một bộ khung mà một khi nhận ra, bạn sẽ thấy chúng ở khắp nơi. Bài này bóc tách tâm lý khiến người ta sập bẫy, những dấu hiệu nhận diện không bao giờ sai, các mô hình lừa đảo phổ biến nhất, và phải làm gì nếu chẳng may đã trót dính.",
       "date": "2026-06-02",
       "readingMinutes": 15,
-      "tags": ["Tài chính cá nhân", "Lừa đảo", "Cảnh báo", "Bảo vệ tài sản", "Đầu tư"],
-      "topic": "tiet-kiem"
+      "tags": [
+        "Tài chính cá nhân",
+        "Lừa đảo",
+        "Cảnh báo",
+        "Bảo vệ tài sản",
+        "Đầu tư"
+      ],
+      "topic": "tiet-kiem",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "tai-chinh-theo-do-tuoi",
@@ -113,8 +209,18 @@
       "summary": "Cùng một lời khuyên tài chính không thể đúng cho tất cả mọi người, vì mỗi giai đoạn cuộc đời có một bài toán riêng. Tuổi 20 giàu thời gian nhưng ít tiền — vũ khí lớn nhất là sự bắt đầu sớm. Tuổi 30 thu nhập tăng nhưng trách nhiệm cũng nặng lên — gia đình, nhà cửa, con cái dồn đến cùng lúc. Tuổi 40 là đỉnh thu nhập và là cơ hội cuối để tăng tốc cho hưu trí. Bài này là tấm bản đồ tài chính theo từng thập niên: việc quan trọng nhất cần làm ở mỗi độ tuổi, những sai lầm điển hình phải tránh, và những nguyên tắc xuyên suốt không bao giờ lỗi thời — để dù bạn đang ở đâu trên hành trình, bạn cũng biết bước tiếp theo nên là gì.",
       "date": "2026-06-02",
       "readingMinutes": 16,
-      "tags": ["Tài chính cá nhân", "Kế hoạch tài chính", "Mục tiêu", "Hưu trí", "Cột mốc cuộc đời"],
-      "topic": "tiet-kiem"
+      "tags": [
+        "Tài chính cá nhân",
+        "Kế hoạch tài chính",
+        "Mục tiêu",
+        "Hưu trí",
+        "Cột mốc cuộc đời"
+      ],
+      "topic": "tiet-kiem",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "tien-bac-trong-gia-dinh",
@@ -122,8 +228,18 @@
       "summary": "Tiền là một trong những nguyên nhân gây mâu thuẫn hàng đầu giữa các cặp vợ chồng — không phải vì thiếu tiền, mà vì thiếu sự thấu hiểu và một cách quản lý chung. Hai người lớn lên với hai quan niệm khác nhau về tiền, giờ phải gộp chung một dòng tiền, một tương lai — va chạm là điều khó tránh nếu không có thỏa thuận rõ ràng. Bài này nói về điều ít ai dạy: cách hai người cùng làm chủ tài chính gia đình mà không biến mỗi cuộc nói chuyện tiền thành một cuộc cãi vã. Từ việc hiểu vì sao tiền gây xung đột, chọn mô hình quản lý phù hợp, đặt mục tiêu chung, đến cách dạy con về tiền — để tiền trở thành thứ gắn kết gia đình thay vì chia rẽ nó.",
       "date": "2026-06-02",
       "readingMinutes": 14,
-      "tags": ["Tài chính cá nhân", "Gia đình", "Vợ chồng", "Quản lý chi tiêu", "Giao tiếp"],
-      "topic": "tiet-kiem"
+      "tags": [
+        "Tài chính cá nhân",
+        "Gia đình",
+        "Vợ chồng",
+        "Quản lý chi tiêu",
+        "Giao tiếp"
+      ],
+      "topic": "tiet-kiem",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "thinh-vuong-tai-chinh-de-tien-lam-viec-cho-ban",
@@ -131,8 +247,18 @@
       "summary": "Giữ được tiền là phòng thủ. Thịnh vượng là tấn công. Phần lớn chúng ta dành cả đời đi làm để đổi thời gian lấy tiền — rồi tự hỏi vì sao mãi không khá lên, dù lương năm nào cũng tăng. Sự thật là người thịnh vượng không kiếm tiền giỏi hơn bạn nhiều đến thế; họ chỉ hiểu một thứ mà trường học không dạy: cách bắt tiền đi làm thay mình. Bài này vẽ ra lộ trình từ người đi làm bình thường đến tự do tài chính — bốn nấc thang tài chính, cỗ máy tạo của cải gồm ba đòn bẩy, cách xây nhiều nguồn thu nhập, sức mạnh thật sự của lãi kép, và những cái bẫy bóng bẩy khiến nhiều người trật đường ray. Không hứa hẹn làm giàu nhanh — chỉ là con đường bền vững mà ai cũng đi được.",
       "date": "2026-06-02",
       "readingMinutes": 19,
-      "tags": ["Tài chính cá nhân", "Tự do tài chính", "Đầu tư", "Lãi kép", "Mindset"],
-      "topic": "tiet-kiem"
+      "tags": [
+        "Tài chính cá nhân",
+        "Tự do tài chính",
+        "Đầu tư",
+        "Lãi kép",
+        "Mindset"
+      ],
+      "topic": "tiet-kiem",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "giu-tien-trong-tui-cach-de-giau",
@@ -140,8 +266,18 @@
       "summary": "Bạn không nghèo vì kiếm ít. Phần lớn chúng ta nghèo vì tiền cứ lặng lẽ chảy ra khỏi túi mỗi ngày — qua những khoản nhỏ tưởng vô hại, những cú click \"thanh toán\" lúc 11 giờ đêm, những gói subscription đã quên từ lâu. Giữ được tiền là một kỹ năng, và nó còn quan trọng hơn cả việc kiếm thêm. Bài này chia sẻ những cách rất đời thường để bịt các lỗ rò trong túi tiền, giữ lại nhiều hơn từ chính số tiền bạn đang có — với phương châm: giữ được tiền cũng là một cách để giàu.",
       "date": "2026-06-01",
       "readingMinutes": 16,
-      "tags": ["Tài chính cá nhân", "Tiết kiệm", "Quản lý chi tiêu", "Thói quen", "Mindset"],
-      "topic": "tiet-kiem"
+      "tags": [
+        "Tài chính cá nhân",
+        "Tiết kiệm",
+        "Quản lý chi tiêu",
+        "Thói quen",
+        "Mindset"
+      ],
+      "topic": "tiet-kiem",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "vay-ngan-hang-mua-nha-don-bay-thong-minh",
@@ -149,8 +285,18 @@
       "summary": "Hầu hết chúng ta mua nhà bằng tiền của ngân hàng, không phải tiền của mình. Khoản vay đó có thể là bệ phóng đưa bạn tới căn nhà sớm hơn nhiều năm — hoặc là sợi dây thắt chặt dần qua từng kỳ trả nợ. Khác biệt nằm ở chỗ bạn hiểu nó đến đâu. Bài này giải thích cặn kẽ cách vay mua nhà cho người chưa từng vay: ba con số phải biết về chính mình, lãi suất cố định vs thả nổi và cái bẫy lãi ưu đãi năm đầu, cách so sánh các gói vay, có nên tất toán sớm, và phép thử quan trọng nhất — nếu lãi tăng mạnh, bạn còn trụ được không.",
       "date": "2026-06-01",
       "readingMinutes": 15,
-      "tags": ["Mua nhà", "Bất động sản", "Vay vốn", "Tài chính", "Kinh nghiệm"],
-      "topic": "mua-nha"
+      "tags": [
+        "Mua nhà",
+        "Bất động sản",
+        "Vay vốn",
+        "Tài chính",
+        "Kinh nghiệm"
+      ],
+      "topic": "mua-nha",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "dinh-gia-va-thuong-luong-gia-mua-nha",
@@ -158,8 +304,18 @@
       "summary": "Giá người bán đưa ra không phải là giá trị căn nhà — đó chỉ là điểm khởi đầu của một cuộc đối thoại. Người mua thiếu thông tin thường trả theo cảm xúc; người mua có thông tin trả theo dữ kiện, và tiết kiệm được cả trăm triệu chỉ nhờ biết cách nhìn và cách nói. Bài này hướng dẫn cách tự định giá một căn nhà bằng phương pháp comparable, nhận diện giá ảo và chiêu thổi giá, dùng định giá ngân hàng làm mỏ neo khách quan, và những kịch bản thương lượng thực tế — kể cả điều khó nhất: biết khi nào nên đứng dậy bỏ đi.",
       "date": "2026-06-01",
       "readingMinutes": 13,
-      "tags": ["Mua nhà", "Bất động sản", "Thương lượng", "Định giá", "Kinh nghiệm"],
-      "topic": "mua-nha"
+      "tags": [
+        "Mua nhà",
+        "Bất động sản",
+        "Thương lượng",
+        "Định giá",
+        "Kinh nghiệm"
+      ],
+      "topic": "mua-nha",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "chon-vi-tri-va-quy-hoach-khi-mua-nha",
@@ -167,8 +323,18 @@
       "summary": "Bạn có thể sửa nhà, đổi nội thất, thậm chí đập đi xây lại — nhưng bạn không bao giờ di dời được căn nhà ra khỏi vị trí của nó. Đó là lý do vị trí và quy hoạch quyết định giá trị lâu dài nhiều hơn bất kỳ yếu tố nào khác, và cũng là nơi người mua thiếu kinh nghiệm dễ bỏ sót nhất. Bài này hướng dẫn cách kiểm tra quy hoạch trước khi xuống tiền, đọc được hạ tầng tương lai (cả tốt lẫn xấu), khảo sát thực địa đúng cách, và đánh giá thanh khoản — câu hỏi sống còn: sau này ai sẽ mua lại căn nhà của bạn?",
       "date": "2026-06-01",
       "readingMinutes": 12,
-      "tags": ["Mua nhà", "Bất động sản", "Quy hoạch", "Vị trí", "Kinh nghiệm"],
-      "topic": "mua-nha"
+      "tags": [
+        "Mua nhà",
+        "Bất động sản",
+        "Quy hoạch",
+        "Vị trí",
+        "Kinh nghiệm"
+      ],
+      "topic": "mua-nha",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "quy-trinh-mua-nha-tu-a-den-z",
@@ -176,8 +342,18 @@
       "summary": "Mua nhà không phải một hành động, mà là một chuỗi bước nối tiếp nhau, mỗi bước có giấy tờ, mốc tiền và rủi ro riêng. Người lần đầu thường mơ hồ về trình tự, để rồi lúng túng khi đến công chứng, hoặc giao tiền sai thời điểm. Bài này là bản đồ quy trình hoàn chỉnh — từ chuẩn bị tài chính, thẩm định, đặt cọc, công chứng, sang tên đến nhận nhà — kèm bộ giấy tờ cần có và những điểm sống còn ở mỗi chặng, để bạn đi qua cả hành trình một cách chủ động thay vì bị dắt.",
       "date": "2026-06-01",
       "readingMinutes": 13,
-      "tags": ["Mua nhà", "Bất động sản", "Quy trình", "Thủ tục", "Kinh nghiệm"],
-      "topic": "mua-nha"
+      "tags": [
+        "Mua nhà",
+        "Bất động sản",
+        "Quy trình",
+        "Thủ tục",
+        "Kinh nghiệm"
+      ],
+      "topic": "mua-nha",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "chung-cu-vs-nha-dat-va-mua-nha-du-an",
@@ -185,8 +361,18 @@
       "summary": "Trước khi chọn một căn nhà cụ thể, bạn phải trả lời hai câu hỏi lớn hơn: mua chung cư hay nhà đất, và mua nhà đã có sẵn hay nhà hình thành trong tương lai? Mỗi lựa chọn là một bộ ưu nhược, một kiểu pháp lý và một kiểu rủi ro rất khác nhau — chọn sai loại hình thì dù căn nhà có đẹp đến đâu cũng không hợp với cuộc sống của bạn. Bài này so sánh thẳng thắn chung cư và nhà đất, giải thích những điều cần biết khi mua nhà dự án (tiến độ thanh toán, bảo lãnh ngân hàng, rủi ro chậm bàn giao), và gợi ý cách chọn theo nhu cầu và giai đoạn cuộc đời.",
       "date": "2026-06-01",
       "readingMinutes": 13,
-      "tags": ["Mua nhà", "Bất động sản", "Chung cư", "Nhà dự án", "Kinh nghiệm"],
-      "topic": "mua-nha"
+      "tags": [
+        "Mua nhà",
+        "Bất động sản",
+        "Chung cư",
+        "Nhà dự án",
+        "Kinh nghiệm"
+      ],
+      "topic": "mua-nha",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong",
@@ -194,8 +380,18 @@
       "summary": "Một căn nhà đẹp trên ảnh chưa chắc là một căn nhà tốt để ở lâu dài. Phần lớn những thứ quyết định chất lượng — kết cấu, điện nước âm tường, chống thấm, thoát nước mùa mưa, vật liệu thật sự bên trong — đều nằm khuất sau lớp sơn đẹp. Bài này hướng dẫn cách đọc bản vẽ thiết kế và đánh giá chất lượng xây dựng, dành cho người mua lần đầu chưa từng trải qua, để biết căn nhà có thật sự bền vững hay không.",
       "date": "2026-06-01",
       "readingMinutes": 20,
-      "tags": ["Mua nhà", "Bất động sản", "Xây dựng", "Thiết kế", "Kinh nghiệm"],
-      "topic": "mua-nha"
+      "tags": [
+        "Mua nhà",
+        "Bất động sản",
+        "Xây dựng",
+        "Thiết kế",
+        "Kinh nghiệm"
+      ],
+      "topic": "mua-nha",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "tam-ly-mua-nha-tranh-bay-nguoi-ban",
@@ -203,8 +399,18 @@
       "summary": "Bạn không bị thuyết phục bởi căn nhà. Bạn bị thuyết phục bởi cảm xúc của chính mình — và người bán biết rõ điều đó. FOMO, khan hiếm giả, cò mồi chốt đơn, neo giá, áp lực thời gian… đều là những đòn tâm lý có công thức. Bài này bóc tách từng cái bẫy, giải thích cơ chế hoạt động, và trang bị cho bạn cách giữ cái đầu lạnh để ra quyết định bằng lý trí, không bằng nỗi sợ.",
       "date": "2026-06-01",
       "readingMinutes": 18,
-      "tags": ["Mua nhà", "Bất động sản", "Tâm lý", "Cảnh báo", "Kinh nghiệm"],
-      "topic": "mua-nha"
+      "tags": [
+        "Mua nhà",
+        "Bất động sản",
+        "Tâm lý",
+        "Cảnh báo",
+        "Kinh nghiệm"
+      ],
+      "topic": "mua-nha",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "chi-phi-mua-nha-toan-bo-nhung-khoan-can-biet",
@@ -212,8 +418,18 @@
       "summary": "Giá nhà chỉ là một phần. Xung quanh nó là hàng chục khoản phí mà nhiều người mua lần đầu không lường trước — từ thuế trước bạ, phí công chứng, quỹ bảo trì, đến chi phí vận hành hàng tháng. Bài này tổng hợp đầy đủ để bạn lập ngân sách chính xác trước khi xuống tiền.",
       "date": "2026-05-31",
       "readingMinutes": 11,
-      "tags": ["Mua nhà", "Bất động sản", "Tài chính", "Chi phí", "Kinh nghiệm"],
-      "topic": "mua-nha"
+      "tags": [
+        "Mua nhà",
+        "Bất động sản",
+        "Tài chính",
+        "Chi phí",
+        "Kinh nghiệm"
+      ],
+      "topic": "mua-nha",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "bay-mat-tien-khi-mua-nha-cac-kich-ban-can-tranh",
@@ -221,8 +437,18 @@
       "summary": "Không ai mua nhà với ý định bị lừa. Nhưng mỗi năm có hàng nghìn người mất tiền — không phải vì họ không cẩn thận, mà vì họ không biết những kịch bản này tồn tại. Đây là bản đồ các bẫy phổ biến nhất, từ khoản vay đến đặt cọc, tranh chấp, và án phí.",
       "date": "2026-05-31",
       "readingMinutes": 16,
-      "tags": ["Mua nhà", "Bất động sản", "Cảnh báo", "Pháp lý", "Kinh nghiệm"],
-      "topic": "mua-nha"
+      "tags": [
+        "Mua nhà",
+        "Bất động sản",
+        "Cảnh báo",
+        "Pháp lý",
+        "Kinh nghiệm"
+      ],
+      "topic": "mua-nha",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "phap-ly-bat-dong-san-nhung-dieu-can-biet",
@@ -230,8 +456,18 @@
       "summary": "Mất tiền vì bất động sản thường không phải do giá cao hay vị trí xấu — mà do pháp lý. Bài này là bộ checklist chi tiết về những gì cần kiểm tra, những dấu hiệu cần cảnh giác, và những bẫy phổ biến nhất mà người mua thường bỏ qua.",
       "date": "2026-05-31",
       "readingMinutes": 12,
-      "tags": ["Pháp lý", "Mua nhà", "Bất động sản", "Kinh nghiệm", "Rủi ro"],
-      "topic": "mua-nha"
+      "tags": [
+        "Pháp lý",
+        "Mua nhà",
+        "Bất động sản",
+        "Kinh nghiệm",
+        "Rủi ro"
+      ],
+      "topic": "mua-nha",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "phong-thuy-mua-nha-tieu-chi-can-biet",
@@ -239,8 +475,17 @@
       "summary": "Phong thủy không chỉ là tâm linh. Nhiều nguyên tắc phong thủy có nền tảng thực tế rõ ràng — từ hướng nhà, cửa chính, bố cục nội thất, đến những thứ cần tránh. Đây là bộ tiêu chí tôi tổng hợp lại để dùng khi xem nhà.",
       "date": "2026-05-31",
       "readingMinutes": 9,
-      "tags": ["Phong thủy", "Mua nhà", "Bất động sản", "Kinh nghiệm"],
-      "topic": "mua-nha"
+      "tags": [
+        "Phong thủy",
+        "Mua nhà",
+        "Bất động sản",
+        "Kinh nghiệm"
+      ],
+      "topic": "mua-nha",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
     },
     {
       "slug": "mua-nha-nhung-dieu-can-biet",
@@ -248,8 +493,592 @@
       "summary": "Những điều cần đặt ra ngay từ đầu khi bắt đầu nghĩ đến việc mua nhà — xác định mục đích, các yếu tố cần đánh giá, và chiến lược xem nhà hiệu quả.",
       "date": "2026-05-31",
       "readingMinutes": 7,
-      "tags": ["Mua nhà", "Bất động sản", "Kinh nghiệm", "Đầu tư"],
-      "topic": "mua-nha"
+      "tags": [
+        "Mua nhà",
+        "Bất động sản",
+        "Kinh nghiệm",
+        "Đầu tư"
+      ],
+      "topic": "mua-nha",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
+      "slug": "quiet-rules-for-moving-through-the-world",
+      "title": "Fifteen Quiet Rules for Moving Through the World: Street-Smart Wisdom for Work and Life",
+      "summary": "Every culture collects a set of street-smart rules people usually learn the hard way — small lines about money, favours, travel, secrets, and who to keep close. On their own they can sound cynical; read right, they're the opposite. A warm, practical guide woven into six simple themes: let money and effort show who's really with you, keep your own movements quiet, hold a few cards back, lower yourself when you ask, lead by example and keep your relationship categories honest, and carry a soft heart with a clear method. The through-line isn't suspicion — it's stewardship of your finite trust, energy, and warmth, so you have more left for the people who earn it. Clear eyes, soft heart.",
+      "date": "2026-06-11",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Reflection",
+        "Practical Wisdom",
+        "Boundaries",
+        "Workplace Relationships",
+        "Discretion",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "seven-laws-of-doing-great-things",
+      "title": "Seven Quiet Laws of Doing Great Things: Strength, Patience, and the People Who Carry You",
+      "summary": "The people who build something great rarely look the part while they're doing it. They speak little, guard their plans, invest in people, commit hard when it counts, and build their strength long before they need it. A warm, practical reflection on seven quiet laws — don't mistake noise for strength, keep the important plan close, remember it's always about people (pairing grace with earned authority), treat money as fuel not a trophy, commit fully once you finally move, build capability so opportunity finds you, and live with intensity rather than just length. None of it is about being ruthless. All of it is about being solid.",
+      "date": "2026-06-11",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Reflection",
+        "Ambition",
+        "Leadership",
+        "Self-Mastery",
+        "Strategy",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "dealing-with-people-you-dislike",
+      "title": "Four Things to Hold Close When Dealing With People You Don't Like",
+      "summary": "You don't need to clash or raise your voice to handle someone you can't stand. Carve four quiet truths into your bones — especially the third, which changes your whole stance: when values don't align, don't waste words; the more you shine, the more envy you draw, so wear it like a medal; never measure yourself against petty people — treat them like air; and see through people without calling them out. The world outside rarely changes. What changes is the calm you carry into it.",
+      "date": "2026-06-10",
+      "readingMinutes": 11,
+      "tags": [
+        "Personal Reflection",
+        "Emotional Maturity",
+        "Boundaries",
+        "Workplace Relationships",
+        "Self-Mastery",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "forgiveness-is-for-you",
+      "title": "Forgiveness Is for You: Setting Down a Weight You Didn't Know You Carried",
+      "summary": "There are two quiet truths that set the mind free: you can only ever change yourself, and forgiveness is something you do for you — not for the person who hurt you. A warm, careful reflection on the one we resist most: why a grudge chains only your end of the rope, why forgiving is not the same as approving or reconciling, why the person you'd never forgive is often the one whose grip costs you most, and how to set the weight down gently — including forgiving yourself. You forgive not because they earned it, but because you deserve to be free.",
+      "date": "2026-06-09",
+      "readingMinutes": 11,
+      "tags": [
+        "Personal Reflection",
+        "Forgiveness",
+        "Letting Go",
+        "Emotional Healing",
+        "Self-Mastery",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "salary-is-seed-capital",
+      "title": "Your Salary Is Seed Capital, Not the Finish Line",
+      "summary": "Most people treat a paycheck as a lifeline: earn, pay bills, buy a few things, wait for the next one. People with an owner's mindset treat it as seed capital — the first fuel for something larger. A warm, practical reflection on turning salary into assets, assets into cash flow, and cash flow into freedom; why upgrading your lifestyle too early just builds a prettier cage; how to feed a small side venture with discipline instead of quitting; and what financial freedom actually buys — not laziness, but the right to choose your work, your time, and your life. With everyday examples.",
+      "date": "2026-06-08",
+      "readingMinutes": 11,
+      "tags": [
+        "Personal Reflection",
+        "Personal Finance",
+        "Financial Freedom",
+        "Wealth Building",
+        "Entrepreneurship",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "you-are-not-a-machine",
+      "title": "You Are Not a Machine: Why Rest Isn't Falling Behind",
+      "summary": "There's a strange guilt in modern life: working too much exhausts us, but resting makes us feel guilty — as if sitting still for a few minutes means falling behind. A warm reflection on why rest became mistaken for laziness and busyness for worth, why nothing in nature runs without a fallow season, what real rest actually is (it isn't doomscrolling), the cost of over-scheduling both adults and children, and what the science says about strain versus recovery. Because you are not a machine — and a pause doesn't set you back, it lets you breathe again.",
+      "date": "2026-06-08",
+      "readingMinutes": 11,
+      "tags": [
+        "Personal Reflection",
+        "Mental Wellbeing",
+        "Rest and Recovery",
+        "Burnout",
+        "Work-Life Balance",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "things-no-one-teaches-you",
+      "title": "Things No One Teaches You: The Lessons Life Drives Home the Hard Way",
+      "summary": "Some things no one ever sits you down to explain. Life teaches them instead — by hurting you once, so you remember. A warm, honest field guide to the quiet lessons about people and boundaries: why you should read patterns not snapshots, why someone who hurt you won't change just because you wish it, why the closest people cut the deepest, why good intentions still need good timing, and why holding a little back is self-respect rather than coldness. Not cynicism — clear eyes and a kinder relationship with yourself. With everyday office and life examples.",
+      "date": "2026-06-08",
+      "readingMinutes": 14,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Life Lessons",
+        "Boundaries",
+        "Wisdom",
+        "Self-Mastery"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "the-approval-race",
+      "title": "The Approval Race Has No Finish Line: 5 Quiet Ways to Come Home to Yourself",
+      "summary": "A lot of the tiredness people carry isn't from not being good enough — it's from the quiet, constant effort of trying to keep everyone else happy. Chasing approval, praise, and the right look in someone's eyes is a race with no finish line: praised today, criticised tomorrow. A warm, practical guide to coming home to yourself, with five small daily practices — looking inward, working for value not recognition, running your own race, keeping one small discipline, and tending your relationships — and the single question worth living by. Focusing on yourself isn't selfish; it's how you keep enough to be kind.",
+      "date": "2026-06-08",
+      "readingMinutes": 12,
+      "tags": [
+        "Personal Reflection",
+        "Self-Worth",
+        "Healthy Habits",
+        "Mental Wellbeing",
+        "Self-Mastery",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "the-master-who-plays-the-fool",
+      "title": "The Master Who Plays the Fool: The Quiet Power That Needs No Proof",
+      "summary": "The most formidable person in the room is rarely the most obviously clever — it's the one who quietly chooses not to show you how clever they are. A warm reflection on 大智若愚, \"great wisdom that looks like folly\": why they stay half a beat behind the world on purpose, how they are sharp when it matters and invisible when it doesn't, and where their strange calm power really comes from — not controlling others, but controlling themselves, and quietly keeping the freedom to walk away. With everyday office and life examples.",
+      "date": "2026-06-08",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Quiet Strength",
+        "Self-Mastery",
+        "Strategy",
+        "Taoism"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "half-light-half-shadow",
+      "title": "Half Light, Half Shadow: The Quiet Authority of People Who Lean to No Extreme",
+      "summary": "Some people don't talk much, don't compete, and never hurt anyone — yet beneath the gentleness they notice everything, and somehow you find yourself choosing your words more carefully around them. A warm reflection on wordless authority: why the rare, steady people carry both light and shadow without leaning to either, why a purely 'nice' person gets walked over while a purely hard one leaves chaos, and how lucid awareness holds the two in balance — tâm bất mê, khí bất loạn, hành bất lệch (an undeluded mind, an unshaken presence, conduct that doesn't drift). With everyday office and life examples.",
+      "date": "2026-06-08",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Quiet Strength",
+        "Shadow Integration",
+        "Self-Mastery",
+        "Equanimity"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "how-people-actually-work",
+      "title": "How People Actually Work: 15 Quiet Truths About the Human Mind",
+      "summary": "People don't live by the whole truth — they live by feeling, by belief, and by the stories running quietly in their heads. A warm, practical field guide to fifteen old-but-true observations about how the mind really works: why we remember the feeling not the favour, why control and anger are armour for fear, how the brain only finds evidence for what it already believes, why expectation (not events) does the hurting, and why healing isn't forgetting. Full of everyday office and life examples — read it to be kinder and clearer, with others and with yourself.",
+      "date": "2026-06-08",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Reflection",
+        "Psychology",
+        "Human Behavior",
+        "Emotional Intelligence",
+        "Self-Awareness",
+        "Life Philosophy"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "choice-or-fate",
+      "title": "Choice or Fate? Living Well Inside an Arrangement You Cannot See",
+      "summary": "You think you are choosing your path — yet the longer you live, the more you notice the chance meeting that became a turning point, the thing you gripped and still lost, the chapter you were sure had closed quietly returning. So is life choice or fate? A warm, practical reflection — with everyday office and life examples — on invisible connections, why the ledger always balances, and the one thing that was ever truly yours: how you respond. Because inner freedom isn't a calm sea; it's a steady captain.",
+      "date": "2026-06-08",
+      "readingMinutes": 12,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Choice and Destiny",
+        "Equanimity",
+        "Self-Mastery",
+        "Inner Freedom"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "the-old-man-who-lost-his-horse",
+      "title": "The Old Man Who Lost His Horse: On Trusting Life's Arrangements and Treasuring What Is Here",
+      "summary": "A man on the frontier loses his horse, and the neighbours rush to call it bad luck. The famous Taoist tale \"Tái ông thất mã\" — in misfortune, fortune hides, and back again — is really a lesson about a habit we all share: grading every event the moment it lands. A warm reflection on why the verdict (not the feeling) is the mistake, what equanimity actually is, and why the wise response to an arrangement we cannot read is not to care less, but to treasure the present more.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Reflection",
+        "Life Philosophy",
+        "Equanimity",
+        "Gratitude",
+        "Taoism",
+        "Letting Go"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "complexity-is-inevitable-simplicity-is-sustainable",
+      "title": "Complexity Is Inevitable, Simplicity Is Sustainable: Lessons from Large-Scale Systems — and Life",
+      "summary": "Early in my career I believed a “great” system meant the newest tech, the most abstraction layers, and the cleverest “magic code.” Years inside large-scale distributed systems taught me the opposite. Complexity is the inevitable price of growth — but simplicity, the kind that comes from clarity, is what lets a system (and a life) survive people leaving, tech ageing, and requirements shifting. A warm, office-relatable look at essential vs. accidental complexity, the compound interest of technical debt, why staying simple is the harder choice, and how the same idea quietly steadies a busy modern life.",
+      "date": "2026-06-03",
+      "readingMinutes": 12,
+      "tags": [
+        "System Design",
+        "Software Architecture",
+        "Simplicity",
+        "Technical Debt",
+        "Engineering Philosophy",
+        "Personal Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "same-facts-different-story",
+      "title": "Same Facts, Different Story: How Where You Stand — and How You Say It — Change Everything",
+      "summary": "Raise one fish and it dies, you grieve all day; tend a whole pond and you barely notice. Stand on the first floor and a harsh word makes you tremble; stand on the hundredth and the same words never reach you. The facts hold still — it’s our position and our words that swing the feeling. This is a warm, office-relatable reflection on the two dials you almost always have a hand on: where you stand and how you say it. With real workplace examples, a couple of simple diagrams, a “recalculating route” lesson from Google Maps, gentle takeaways, and one idea that can lighten an entire day.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Personal Growth",
+        "Perspective",
+        "Communication",
+        "Reframing",
+        "Resilience",
+        "Personal Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "dreamers-doers-and-grit",
+      "title": "Quitters Have Reasons, Doers Have Grit: The Quiet Art of Not Stopping",
+      "summary": "Quitters always have a reason; the people who make it just have a goal. The single difference between a dreamer and a doer isn’t talent, luck, or a better idea — it’s grit: the stubborn willingness to walk through your own discouragement. This is a warm, energising reflection for anyone with a dream sitting unstarted: why the world is overflowing with million-dollar ideas and starving for follow-through, why you should begin clumsy and slow rather than not at all, and the one reframe that turns “when will I get there?” into a question you can actually answer. With real examples, practical habits, and a little fire for the days you want to stop.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Motivation",
+        "Grit",
+        "Perseverance",
+        "Personal Growth",
+        "Goals",
+        "Personal Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "the-quiet-art-of-letting-go",
+      "title": "The Quiet Art of Letting Go: Seven Shifts of a Maturing Mind",
+      "summary": "There’s a kind of strength that doesn’t announce itself — it goes quiet. The more settled a person becomes inside, the less they argue, the less they need to change anyone, and the more easily they let go of what was never theirs to keep. This is a warm, grounded reflection drawn from a set of life maxims about maturity and awakening: why the strongest people are the calmest, why you eventually stop trying to fix others, how relationships arise and end, and why awakening really comes down to a single word — let go. With everyday examples, gentle takeaways, and one quiet idea that can lighten an entire day.",
+      "date": "2026-06-03",
+      "readingMinutes": 14,
+      "tags": [
+        "Personal Growth",
+        "Letting Go",
+        "Maturity",
+        "Mindfulness",
+        "Inner Peace",
+        "Personal Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "roads-to-c-level",
+      "title": "What C-Level Leaders Learn Before They Get the Chair: Five Roads to the Top of a Big Corp",
+      "summary": "At the executive level, the market stops asking about your potential and starts asking for your evidence. Have you owned a P&L? Carried revenue? Decided well on imperfect data? This is a clear, practical guide to how people actually reach C-level inside a large corporation: the five well-worn roads — through FMCG, Tech, Finance, Consulting, and Legal/Risk — what each one really teaches, the honest truth about whether you need an MBA or Master’s, and the single mindset shift that separates a specialist from someone the board will bet on. Written for anyone, in any field, who suspects the chair they want will be earned by evidence, not by title.",
+      "date": "2026-06-03",
+      "readingMinutes": 17,
+      "tags": [
+        "Career Growth",
+        "Leadership",
+        "C-Level",
+        "Executive Career",
+        "MBA",
+        "Personal Development"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "solitude-of-great-minds",
+      "title": "The Solitude of Great Minds: The Quiet Strength of People Who Walk Alone",
+      "summary": "We tend to assume something is wrong with the person who walks alone. More often, they’ve simply been somewhere most people haven’t — through their darkest stretch, and out the other side, on their own. This is a warm, grounded reflection on the quiet strength of independent people: why solitude is not loneliness, how self-worth built from within makes someone unshakeable, why those who’ve walked through the dark read people so well, and why a once-warm person who turns quiet usually isn’t cold — just careful. With down-to-earth examples and a gentle guide to building a little of that inner fortress yourself.",
+      "date": "2026-06-03",
+      "readingMinutes": 14,
+      "tags": [
+        "Solitude",
+        "Self-Worth",
+        "Independence",
+        "Personal Growth",
+        "Emotional Resilience",
+        "Personal Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "meaning-is-in-the-living",
+      "title": "The Meaning of a Life Is in the Living: A Gentle Case Against Waiting for “Later”",
+      "summary": "If the last page of every life is already written, then the meaning was never the ending — it was the living. This is a warm, unhurried reflection for anyone caught in the endless rush of task after task: why life doesn’t make appointments, how the quiet trap of “I’ll live when…” steals our best years, and how to turn ordinary, forgettable days into moments worth keeping. Not a lecture on mortality, but an invitation to say the love while you can say it, to notice the sunrise, and to understand that even the stories we call “unfinished” were once radiant the whole way down the road.",
+      "date": "2026-06-03",
+      "readingMinutes": 13,
+      "tags": [
+        "Life",
+        "Living Fully",
+        "Personal Reflection",
+        "Meaning of Life",
+        "Presence",
+        "Mindfulness"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "software-engineer-career-path",
+      "title": "Know the Map: Why Understanding Your Career Path Is an Engineer's Quiet Superpower",
+      "summary": "Most engineers drift up their career one promotion at a time, hoping effort alone will carry them. The ones who move with intent do something different first: they understand the map. Using the software engineering career ladder — the IC trunk that forks into a technical track and a managerial track — this is a practical guide to why knowing the terrain is an advantage, what each rung actually rewards, how to figure out your own direction, the cadence of improving every day, month, quarter, and year, and the traps to avoid along the way.",
+      "date": "2026-06-02",
+      "readingMinutes": 19,
+      "tags": [
+        "Career Growth",
+        "Software Engineering",
+        "Career Path",
+        "Personal Development",
+        "Leadership",
+        "Mentorship"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "questions-before-marriage",
+      "title": "Deciding to Marry: 24 Conversations to Have Before You Move In Together",
+      "summary": "We're told marriage is a matter of fate — love enough and it works out. But the most peaceful couples tend to be the ones who sat down and made every expectation clear before the wedding. This article shares a set of 24 questions — inspired by a list one married friend used with her partner before moving in together — covering money, children, careers, both families, habits, privacy, and how to actually run a home. Not to interrogate each other, but to co-design a marriage with less drama and more peace.",
+      "date": "2026-06-02",
+      "readingMinutes": 19,
+      "tags": [
+        "Marriage",
+        "Premarital",
+        "Deciding to Marry",
+        "Life Values",
+        "Couple Communication",
+        "Life Planning"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "wedding-prep-for-grooms",
+      "title": "A Groom's Complete Guide to Wedding Preparation: Every Stage and a Detailed Budget (Vietnam)",
+      "summary": "Getting married isn't just one big day — it's a months-long project with dozens of moving parts and a budget that can reach hundreds of millions of đồng. This is a map for the man who wants to be genuinely thoughtful: walking through every stage from dating, meeting the families, the formal proposal and engagement ceremonies, the wedding itself, and the honeymoon — with a detailed line-by-line budget, how to allocate it, what the groom's side typically covers, money-saving tips, and the things a future husband should care about beyond the cost.",
+      "date": "2026-06-02",
+      "readingMinutes": 23,
+      "tags": [
+        "Wedding",
+        "Wedding Budget",
+        "Wedding Planning",
+        "Family Finance",
+        "Marriage",
+        "Life Planning"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "know-your-work-rights",
+      "title": "Know Your Rights at Work: An A–Z Guide to Quitting, Switching Jobs, Insurance, and Tax (Vietnam)",
+      "summary": "Every month, around 32% of your salary flows into insurance and tax — yet most working people have no idea what they're entitled to in return. This is a practical, plain-language field guide for anyone with a job: from the moment you think about quitting, through the handover and finalizing your social-insurance book, to claiming unemployment benefits, reading the contract, signing the right papers, and onboarding at a new company. With worked examples, real office situations, and a do / don't checklist so you never lose a benefit simply because nobody told you it existed.",
+      "date": "2026-06-02",
+      "readingMinutes": 22,
+      "tags": [
+        "Employee Rights",
+        "Social Insurance",
+        "Unemployment Insurance",
+        "Personal Income Tax",
+        "Employment Contract",
+        "Changing Jobs"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "the-monkey-eight-hours-and-unquestioned-rules",
+      "title": "The Monkey, the Bananas, and the 8-Hour Question",
+      "summary": "A famous monkey experiment, Sơn Tùng M-TP, and the workday that hasn't changed since the industrial revolution. A personal reflection on the rules we follow without remembering why — and what AI should actually be giving us back.",
+      "date": "2026-05-31",
+      "readingMinutes": 9,
+      "tags": [
+        "Work",
+        "Society",
+        "AI",
+        "Productivity",
+        "Personal Reflection",
+        "Future of Work"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
     }
   ]
 }

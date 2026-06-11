@@ -721,3 +721,21 @@
     scroll-behavior: auto;
   }
 }
+
+/* ==========================================================================
+   Notes index — explorer accent bridge
+   The explorer reuses the blog's .blog-* primitives, which expect an accent
+   variable trio. Provide a sensible default here (the archive's gilt/amber) so
+   search, chips, tags, and pagination render correctly outside .blog-home.
+   ========================================================================== */
+.notes-explorer {
+  --blog-accent: #b45309;
+  --blog-accent-soft: color-mix(in oklab, var(--blog-accent) 14%, transparent);
+  --blog-accent-line: color-mix(in oklab, var(--blog-accent) 32%, transparent);
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* Tighten the gap between the masthead and the toolbar on the index. */
+.notes-home .notes-archive__title-page {
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
