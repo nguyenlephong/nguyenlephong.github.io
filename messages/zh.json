@@ -1,6 +1,7 @@
 {
   "Nav": {
     "about": "关于",
+    "aboutMe": "关于我",
     "experience": "经验",
     "projects": "项目",
     "contact": "联系",
@@ -274,7 +275,7 @@
         "budding": "萌芽",
         "evergreen": "常青"
       },
-      "credit": "灵感来自并镜像 <link>huylenq.github.io</link>。笔记原作归属于原作者；本镜像为私有并注明出处。",
+
       "viewGraph": "关系图",
       "viewList": "列表",
       "viewToggle": "切换视图",

@@ -32,13 +32,9 @@ export default function AppHeader() {
   }, [menuOpen]);
 
   const navItems: { href: string; label: string; trackId: string }[] = [
-    { href: "/#about", label: t("about"), trackId: "about" },
-    { href: "/#experience", label: t("experience"), trackId: "experience" },
-    { href: "/#projects", label: t("projects"), trackId: "projects" },
-    { href: "/#contact", label: t("contact"), trackId: "contact" },
+    { href: "/#about", label: t("aboutMe"), trackId: "about" },
     { href: APP_ROUTE.GALLERY, label: t("gallery"), trackId: "gallery" },
-    { href: APP_ROUTE.BLOG, label: t("blog"), trackId: "blog" },
-    { href: APP_ROUTE.NOTES, label: t("notes"), trackId: "notes" }
+    { href: APP_ROUTE.BLOG, label: t("blog"), trackId: "blog" }
   ];
 
   return (
@@ -50,9 +46,13 @@ export default function AppHeader() {
             className="brand"
             onClick={() => track("cv_nav_click", { target: "home" })}
           >
-            <span className="brand-mark" aria-hidden="true">
-              NLP
-            </span>
+            <img
+              src="/icon.png"
+              alt="Nguyen Le Phong"
+              width={36}
+              height={36}
+              className="brand-avatar"
+            />
             <span className="brand-text">Nguyen Le Phong</span>
           </Link>
 

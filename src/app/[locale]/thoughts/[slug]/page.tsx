@@ -4,12 +4,7 @@ import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing, type Locale } from '@/i18n/routing'
-import {
-  SITE,
-  SITE_URL,
-  THOUGHTS_SOURCE,
-  PAGE_SEO,
-} from '@/app/seo.config'
+import { SITE, SITE_URL, PAGE_SEO } from '@/app/seo.config'
 import {
   OG_LOCALE_MAP,
   buildDescription,
@@ -99,7 +94,6 @@ export default async function ThoughtPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: 'Pages.thoughts' })
   const canonical = canonicalFor(locale, `/thoughts/${slug}`)
   const description = buildDescription(thought.html)
-  const originalUrl = THOUGHTS_SOURCE.thoughtUrl(slug)
 
   const articleLd = {
     '@context': 'https://schema.org',
@@ -148,16 +142,6 @@ export default async function ThoughtPage({ params }: Props) {
       <ThoughtContent html={thought.html} />
 
       <Backlinks items={thought.backlinks} />
-
-      <p className="thoughts-page__credit">
-        {t.rich('credit', {
-          link: (chunks) => (
-            <a href={originalUrl} target="_blank" rel="noopener noreferrer">
-              {chunks}
-            </a>
-          ),
-        })}
-      </p>
 
       <ThoughtShareDock
         url={canonical}

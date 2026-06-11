@@ -3,13 +3,7 @@ import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing, type Locale } from '@/i18n/routing'
-import {
-  PAGE_SEO,
-  SITE,
-  SITE_URL,
-  THOUGHTS_SOURCE,
-  absoluteUrl,
-} from '@/app/seo.config'
+import { PAGE_SEO, SITE, SITE_URL, absoluteUrl } from '@/app/seo.config'
 import {
   OG_LOCALE_MAP,
   canonicalFor,
@@ -114,19 +108,6 @@ export default async function ThoughtsIndexPage({ params }: Props) {
             <h1 className="thoughts-fullpage__title">{t('title')}</h1>
             <p className="thoughts-fullpage__intro">{t('intro')}</p>
           </div>
-          <p className="thoughts-fullpage__credit">
-            {t.rich('credit', {
-              link: (chunks) => (
-                <a
-                  href={THOUGHTS_SOURCE.homepage}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {chunks}
-                </a>
-              ),
-            })}
-          </p>
         </div>
       </header>
 

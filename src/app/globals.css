@@ -207,6 +207,20 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   border-radius: var(--radius-sm);
   color: var(--fg);
 }
+.brand-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-strong);
+  background: var(--bg);
+  flex-shrink: 0;
+  transition: border-color 0.18s ease, transform 0.18s ease;
+}
+.brand:hover .brand-avatar {
+  border-color: var(--accent, var(--fg));
+  transform: scale(1.04);
+}
 .brand-text {
   font-weight: 600;
   font-size: var(--text-sm);

@@ -1,6 +1,7 @@
 {
   "Nav": {
     "about": "소개",
+    "aboutMe": "소개",
     "experience": "경력",
     "projects": "프로젝트",
     "contact": "연락처",
@@ -274,7 +275,7 @@
         "budding": "새싹",
         "evergreen": "상록"
       },
-      "credit": "<link>huylenq.github.io</link> 의 노트에서 영감을 받아 현재 미러링하고 있습니다. 출처를 명시합니다.",
+
       "viewGraph": "그래프",
       "viewList": "목록",
       "viewToggle": "보기 전환",
