@@ -9,6 +9,12 @@ export interface NoteMeta {
   slug: string;
   title: string;
   summary: string;
+  /**
+   * Short, punchy hook shown on list/index cards in place of the long SEO
+   * `summary`. Keep it to one sentence so cards stay compact and uniform
+   * (3-per-row). Falls back to `summary` when absent.
+   */
+  cardSummary?: string;
   date: string;
   updated?: string;
   readingMinutes: number;

@@ -1,0 +1,12 @@
+{
+  "slug": "vocabulary-as-api-for-second-brain",
+  "title": "Vốn từ phong phú, nhất quán là API tốt nhất cho bộ não thứ hai",
+  "summary": "Vault của bạn là một đồ thị, nhưng bạn điều hướng nó bằng từ ngữ: đặt tên cùng một ý là 'information overload' lần này rồi 'consumption trap' lần sau, và hai ghi chú ấy không bao giờ gặp nhau. Vốn từ nhất quán là hệ dây dẫn nhất quán — và vốn từ phong phú không chỉ giúp truy xuất, nó định hình cả những gì bạn nghĩ được ngay từ đầu.",
+  "tags": [
+    "Thoughts",
+    "Quản lý tri thức",
+    "Vốn từ",
+    "Ghi chú"
+  ],
+  "html": "<p>Vault của bạn là một đồ thị, nhưng bạn điều hướng nó bằng từ ngữ. Khi tôi gõ <code>[[</code> trong Obsidian, bất cứ điều gì hiện lên trong đầu khoảnh khắc ấy sẽ quyết định cái gì được liên kết — và bất cứ điều gì không hiện lên thì cứ thế nằm rời rạc. Nếu tôi từng gọi một thứ là &ldquo;information overload&rdquo; rồi sau đó gọi chính ý tưởng ấy là &ldquo;consumption trap,&rdquo; hai ghi chú đó không bao giờ gặp nhau; ý nghĩ bị xẻ đôi giữa hai cái tên chẳng bao giờ với tới nhau. API đã gãy. Vốn từ nhất quán, vì vậy, là hệ dây dẫn nhất quán — phiên bản con người của một hợp đồng API ổn định: đổi tên endpoint là mọi client gãy.</p>\n<p>Nhưng một vốn từ phong phú làm được nhiều hơn việc giúp truy xuất — nó định hình cả những gì bạn <em>có thể</em> nghĩ ngay từ đầu. Nếu bạn có từ chính xác cho những phân biệt tinh tế, bạn giữ được những phân biệt ấy trong tâm trí và suy luận về chúng; nếu không, chúng nhòe vào nhau thành một khối không tách bạch. Một lập trình viên chỉ biết &ldquo;list&rdquo; thì không thể nghĩ bằng &ldquo;stack&rdquo; với &ldquo;queue&rdquo; với &ldquo;deque,&rdquo; và vì thế không với tới được cái cấu trúc mà từng bài toán thật sự cần. Cùng nguyên lý ấy cai quản tri thức cá nhân: cách đặt tên của bạn càng giàu và càng chính xác, bạn càng có nhiều chiều để nghĩ — và càng đi xuyên được nhiều phần trong chính đồ thị của mình. <em>(Một phân biệt tôi mài sắc lần đầu khi đọc <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">ghi chú của một người bạn</a>.)</em></p>\n<hr>\n<ul>\n<li><a href=\"/notes/articulation-skill\">Kỹ năng diễn đạt</a></li>\n<li><a href=\"/notes/programming-beacons\">Những ngọn hải đăng lập trình</a></li>\n<li><a href=\"/notes/code-run-on-people\">Code có còn chạy trên con người?</a></li>\n</ul>"
+}

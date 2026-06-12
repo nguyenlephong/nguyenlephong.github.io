@@ -1,0 +1,18 @@
+{
+  "slug": "human-vs-ai-brain-elasticity",
+  "title": "The Human Advantage: Brain Elasticity vs. Frozen Weights",
+  "summary": "For all the speed and breadth of modern AI, the brain holds one biological advantage software hasn't matched: elasticity. AI weights freeze after training, while the mind fine-tunes itself with every single use — compressing, abstracting, and linking ideas by what they mean rather than how they sound.",
+  "cardSummary": "AI weights freeze after training. Your brain fine-tunes itself every time you use it.",
+  "date": "2026-05-27",
+  "readingMinutes": 2,
+  "tags": [
+    "Thoughts",
+    "AI",
+    "Brain",
+    "Learning"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "topic": "thoughts",
+  "html": "<p>For all the speed and breadth of modern AI, there is one place where models-as-software still fall short of the human brain: our &ldquo;wetware&rdquo; comes with a biological advantage of <strong>elasticity</strong>. The mind is not a fixed machine running fixed weights; it reshapes itself in the very act of being used.</p>\n<p>AI models do not learn continuously. Once trained, their weights are frozen until someone deliberately retrains them. There is no equivalent of the mind&rsquo;s &ldquo;neurons that fire together, wire together&rdquo; — that quiet, ongoing rewiring that happens whether or not we notice it.</p>\n<p>We carry a complicated biochemical machine that &ldquo;fine-tunes&rdquo; with every inference. Each time we think, recall, or struggle with something, information patterns are encoded and abstracted into efficient chunks automatically. Consider how a phone number you have dialed a hundred times becomes a single fluid gesture rather than ten separate digits — that compression happened on its own. An LLM, by contrast, starts from scratch no matter how many hours it has spent on the same problem; nothing from one conversation settles into the next.</p>\n<p>And the difference runs deeper than memory. Agentic LLM behavior acquires contextual connections largely through semantic similarity of wording — matching things that <em>sound</em> alike. The human mind connects through abstracted relations, a higher-dimensional level of linking: ideas joined by what they <em>mean</em>, not merely how they are phrased. <em>(A distinction I keep returning to from <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">a friend&rsquo;s thinking</a>.)</em></p>"
+}

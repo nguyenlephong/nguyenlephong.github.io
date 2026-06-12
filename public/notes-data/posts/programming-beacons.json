@@ -1,0 +1,18 @@
+{
+  "slug": "programming-beacons",
+  "title": "Programming Beacons",
+  "summary": "Beacons are the small clues in code that trigger a usually-correct assumption about what is going on — a variable named 'node' tells you it lives in a tree or graph before you trace a thing. Good code is full of these quiet signposts, and you can deliberately enrich yours with them.",
+  "cardSummary": "A variable named 'node' tells you half the story before you read a single line more.",
+  "date": "2026-05-27",
+  "readingMinutes": 2,
+  "tags": [
+    "Thoughts",
+    "Software Engineering",
+    "Code Readability",
+    "Naming"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "topic": "thoughts",
+  "html": "<p>Beacons are the small clues in code that trigger an assumption about what is going on — an assumption that, most of the time, turns out to be right. Because they let your brain skip ahead with reasonable confidence, they save real mental expense: instead of reading every line to reconstruct meaning, you recognize a familiar signal and move on.</p>\n<p>A beacon is often just a common naming convention. If a variable is named <code>node</code>, the odds are good it is an element of a tree, a graph, or some other connected structure. You didn&rsquo;t trace its origin to form that expectation; the name did the work. Good code is full of these quiet signposts, and reading it feels fast precisely because the beacons keep confirming what you already guessed.</p>\n<p>You can deliberately enrich your code by scattering beacons through it. And when the right cue is hard to embed in the statements themselves — when no name or structure can quite carry the hint — drop it into a comment instead, so the next reader inherits the same shortcut you would have wanted. <em>(A small idea I keep returning to from <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">a friend&rsquo;s thinking</a>.)</em></p>\n<p>Though — <a href=\"/notes/code-run-on-people\">does code still run on people?</a></p>"
+}

@@ -46,7 +46,7 @@ export default function NoteCard({
       <Link href={`/notes/${note.slug}`} className="blog-card__link">
         <span className="blog-card__kicker">{topicLabel}</span>
         <h3 className="blog-card__title">{note.title}</h3>
-        <p className="blog-card__summary">{note.summary}</p>
+        <p className="blog-card__summary">{note.cardSummary ?? note.summary}</p>
         <div className="blog-card__meta">
           <time dateTime={note.date}>{formatDate(note.date, locale)}</time>
           <span aria-hidden="true">·</span>

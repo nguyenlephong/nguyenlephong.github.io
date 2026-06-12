@@ -3,7 +3,7 @@ import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
-import { PiBrainBold, PiNotebookBold } from 'react-icons/pi'
+import { PiNotebookBold } from 'react-icons/pi'
 import { profileInfo } from '@/app/app.const'
 import { track } from '@/lib/analytics'
 import LocaleSwitcher from '@/components/LocaleSwitcher'
@@ -68,15 +68,8 @@ export default function AppFooter() {
               <FaYoutube size={18} />
             </Link>
           </li>
-          <li>
-            <Link
-              href="/thoughts"
-              aria-label="Thoughts — digital garden"
-              onClick={() => track('cv_social_click', { platform: 'thoughts', source: 'footer' })}
-            >
-              <PiBrainBold size={18} />
-            </Link>
-          </li>
+          {/* /thoughts is intentionally unlisted — its content now lives in
+              /notes (Thought Garden topic); the route stays reachable by URL. */}
           <li>
             <Link
               href="/notes"

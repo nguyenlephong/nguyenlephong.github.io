@@ -5,6 +5,12 @@
       "label": "Góc nhìn & Chiêm nghiệm",
       "description": "Những chiêm nghiệm cá nhân về cuộc sống, công việc, và những câu hỏi không có lời đáp gọn gàng.",
       "color": "#b45309"
+    },
+    {
+      "id": "thoughts",
+      "label": "Vườn suy nghĩ",
+      "description": "Những ghi chú ngắn còn đang lớn — quan sát nhỏ và ý nghĩ chưa tròn từ công việc và đời sống, được ghi lại trước khi chúng kịp trôi đi. Mỗi lần quay lại, chúng lại lớn thêm một chút.",
+      "color": "#4d7c0f"
     }
   ],
   "posts": [
@@ -12,6 +18,7 @@
       "slug": "the-space-between-feeling-and-doing",
       "title": "Khoảng Trống Giữa Điều Bạn Cảm Thấy Và Điều Bạn Làm: Nơi Gần Như Mọi Thứ Được Định Đoạt",
       "summary": "Một tin nhắn hiện lên, lồng ngực bạn thắt lại, và những ngón tay đã bắt đầu gõ câu trả lời — thứ tưởng như một động tác thật ra là hai: một cảm giác, rồi một phản ứng, với một lằn khoảng trống mỏng ở giữa. Một bài suy ngẫm ấm áp, gần gũi chốn công sở về khoảng trống ấy: vì sao gần như mọi cuộc leo thang đều bắt đầu từ một xung động nhỏ không được để ý; vì sao một cảm giác là thông tin, không phải mệnh lệnh; việc để ý và gọi tên xung động trước khi nó cuốn bạn đi trông như thế nào; và vì sao những người điềm tĩnh bạn ngưỡng mộ không sinh ra đã vững vàng — sự điềm tĩnh của họ là cả nghìn khoảnh khắc dừng lại nhỏ bé, lặng lẽ cộng dồn.",
+      "cardSummary": "Một cảm giác rơi xuống, rồi bạn phản ứng — gần như mọi thứ được định đoạt trong cái khe mỏng ở giữa.",
       "tags": [
         "Điều tiết cảm xúc",
         "Tự nhận thức",
@@ -25,6 +32,7 @@
       "slug": "the-foundation-comes-first",
       "title": "Nền Móng Phải Đến Trước: Vì Sao Mọi Bước Vọt “Bất Ngờ” Đều Được Dựng Từ Những Năm Chẳng Ai Thấy",
       "summary": "Một đồng nghiệp được thăng chức &ldquo;từ trên trời rơi xuống&rdquo;, và ta gọi đó là may mắn hay đúng thời điểm — nhưng cú vọt ai cũng thấy gần như luôn là vài phân cuối của một đường băng đã được âm thầm lát suốt nhiều năm. Một bài suy ngẫm ấm áp, gần gũi chốn công sở về cái nền móng bạn dựng trước khi có ai để mắt tới: vì sao thời gian, chứ không phải tiền bạc, mới là thứ lặng lẽ tính lãi; vì sao con đường dễ thì hẹp dần còn con đường khó thì rộng ra; cái trật tự thật sự chịu lực — định hướng, ý chí, năng lực, đóng góp; và vì sao đúng hơn một chút mỗi ngày thắng việc ngồi chờ một khoảnh khắc rực sáng. Những thay đổi lớn hiếm khi đột ngột; chúng là một quá trình tích lũy dài và âm thầm cuối cùng nổi lên.",
+      "cardSummary": "Mọi cú vọt “bất ngờ” đều được dựng từ những năm chẳng ai nhìn.",
       "tags": [
         "Phát triển bản thân",
         "Phát triển sự nghiệp",
@@ -38,6 +46,7 @@
       "slug": "inductive-and-deductive-thinking",
       "title": "Hai Lối Tư Duy: Quy Nạp Và Diễn Dịch Lặng Lẽ Định Hình Sự Nghiệp Và Tình Cảm Của Bạn",
       "summary": "Hai người có thể gặp cùng một ý tưởng mà với tay tới hai công cụ trái ngược: một người tin vào điều mình đã sống qua (quy nạp), người kia suy luận đi xuống từ điều buộc phải đúng (diễn dịch). Một bài suy ngẫm ấm áp, gần gũi chốn công sở — từ con gà tây quy nạp tới Steve Jobs, Mark Zuckerberg và First Principles Thinking của Elon Musk — về việc khi nào nên thử nghiệm và khi nào nên giữ một nguyên lý, trải khắp từ gây dựng sự nghiệp tới đọc hiểu những người bạn cho lại gần. Những bước ngoặt lớn hiếm khi là một khoảnh khắc rực sáng đơn lẻ; chúng là phần nổi lên của một quá trình tích lũy dài và âm thầm.",
+      "cardSummary": "Tin vào điều mình đã sống, hay suy luận từ điều buộc phải đúng? Biết chọn lúc nào quyết định rất nhiều.",
       "tags": [
         "Tư duy quy nạp",
         "Tư duy diễn dịch",
@@ -51,6 +60,7 @@
       "slug": "quiet-rules-for-moving-through-the-world",
       "title": "Mười Lăm Quy Tắc Ngầm Để Đi Qua Cuộc Đời: Sự Khôn Khéo Đời Thường Nơi Công Sở Và Cuộc Sống",
       "summary": "Nền văn hóa nào cũng góp nhặt một bộ quy tắc khôn khéo đời thường mà người ta thường phải học bằng cách trả giá — những lời ngắn về tiền bạc, sự nhờ vả, chuyện đi lại, bí mật, và chuyện nên giữ ai bên mình. Đứng riêng, chúng nghe có vẻ thực dụng; đọc cho đúng, lại ngược lại. Một bài hướng dẫn ấm áp, thực tế gom thành sáu chủ đề đơn giản: để tiền bạc và công sức cho thấy ai thật sự ở bên, giữ kín những bước đi của mình, giữ lại vài quân bài, hạ mình khi nhờ vả, làm gương và giữ các ngăn quan hệ rạch ròi, và mang một tấm lòng mềm cùng một phương pháp rõ ràng. Sợi chỉ xuyên suốt không phải sự nghi kỵ — mà là sự gìn giữ lòng tin, năng lượng và hơi ấm hữu hạn của bạn, để còn dư cho những người xứng đáng. Mắt tỉnh, lòng ấm.",
+      "cardSummary": "Mười lăm quy tắc nghe như khôn lỏi — cho tới khi bạn đọc chúng bằng mắt sáng và lòng mềm.",
       "tags": [
         "Suy ngẫm",
         "Khôn khéo đời thường",
@@ -64,6 +74,7 @@
       "slug": "seven-laws-of-doing-great-things",
       "title": "Bảy Nguyên Tắc Thầm Lặng Để Làm Nên Việc Lớn: Thực Lực, Lòng Người Và Sự Quyết Đoán",
       "summary": "Người làm nên việc lớn hiếm khi trông giống vậy trong lúc đang làm. Họ nói ít, giữ kín kế hoạch, đầu tư vào con người, dốc sức khi cần, và bồi đắp thực lực từ rất lâu trước khi cần đến. Một bài suy ngẫm ấm áp, thực tế về bảy nguyên tắc thầm lặng — đừng nhầm ồn ào với thực lực, giữ kín kế hoạch quan trọng, nhớ rằng luôn là chuyện lòng người (ghép ân với uy có được nhờ thực lực), xem tiền là nhiên liệu chứ không phải chiếc cúp, dốc toàn lực một khi đã ra tay, bồi đắp năng lực để cơ hội tự tìm đến, và sống bằng cường độ thay vì chỉ độ dài. Không điều nào nói về sự tàn nhẫn. Tất cả đều nói về sự vững vàng.",
+      "cardSummary": "Người làm nên việc lớn hiếm khi trông ra dáng trong lúc họ đang làm.",
       "tags": [
         "Suy ngẫm",
         "Chí lớn",
@@ -77,6 +88,7 @@
       "slug": "dealing-with-people-you-dislike",
       "title": "4 Điều Khắc Cốt Ghi Tâm Khi Đối Đãi Với Người Không Thích",
       "summary": "Để đối đãi với người mình không thích, bạn không cần lật mặt hay lớn tiếng. Hãy khắc cốt ghi tâm bốn sự thật — đặc biệt là điều thứ ba, nó thay đổi hoàn toàn tâm thế của bạn: tam quan không hợp thì đừng phí lời; bạn càng ưu tú, kẻ đố kỵ càng nhiều, hãy coi đó như một tấm huân chương; đừng so đo với tiểu nhân — hãy coi họ như không khí; và nhìn thấu nhưng không nói thấu. Thế giới bên ngoài hiếm khi đổi. Thứ đổi chính là sự điềm tĩnh bạn mang vào nó.",
+      "cardSummary": "Không cần va chạm để đối diện người mình không ưa — chỉ cần giữ bốn điều trong lòng.",
       "tags": [
         "Personal Reflection",
         "Emotional Maturity",
@@ -90,6 +102,7 @@
       "slug": "forgiveness-is-for-you",
       "title": "Tha Thứ Là Để Cho Chính Mình: Đặt Xuống Gánh Nặng Bạn Không Biết Mình Đang Mang",
       "summary": "Có hai sự thật trầm lặng giải phóng tâm trí: bạn chỉ có thể thay đổi chính mình, và tha thứ là điều bạn làm cho bạn — không phải cho người đã làm bạn đau. Một suy ngẫm ấm áp, cẩn trọng về điều ta kháng cự nhất: vì sao một mối oán giận chỉ buộc chặt đầu dây phía bạn, vì sao tha thứ không phải là chấp nhận hay làm hòa, vì sao người bạn nghĩ không bao giờ nên tha thứ lại thường là người mà sự níu giữ khiến bạn trả giá nhiều nhất, và cách đặt gánh nặng xuống một cách dịu dàng — kể cả tha thứ cho chính mình. Bạn tha thứ không phải vì họ xứng đáng, mà vì bạn xứng đáng được tự do.",
+      "cardSummary": "Mối hận chỉ trói đầu dây của bạn. Tha thứ là chiếc chìa khóa bạn giữ cho chính mình.",
       "tags": [
         "Personal Reflection",
         "Forgiveness",
@@ -103,6 +116,7 @@
       "slug": "salary-is-seed-capital",
       "title": "Tiền Lương Là Vốn Mồi, Không Phải Đích Đến",
       "summary": "Phần lớn người ta xem tiền lương như chiếc phao cứu sinh: nhận lương, trả hóa đơn, mua vài thứ, rồi chờ kỳ lương sau. Người có tư duy làm chủ thì xem nó là vốn mồi — nhiên liệu đầu tiên cho một điều lớn hơn. Một suy ngẫm ấm áp, thực tế về việc biến lương thành tài sản, tài sản thành dòng tiền, và dòng tiền thành tự do; vì sao nâng cấp lối sống quá sớm chỉ dựng nên một chiếc lồng đẹp hơn; cách nuôi một việc kinh doanh nhỏ bằng kỷ luật thay vì nghỉ việc; và tự do tài chính thật ra mua được gì — không phải sự lười biếng, mà là quyền chọn công việc, thời gian và cuộc đời mình. Kèm ví dụ gần gũi.",
+      "cardSummary": "Phần lớn người ta tiêu lương. Một số ít gieo nó — và trồng nên thứ sống lâu hơn kỳ lương sau.",
       "tags": [
         "Personal Reflection",
         "Personal Finance",
@@ -116,6 +130,7 @@
       "slug": "you-are-not-a-machine",
       "title": "Bạn Không Phải Cỗ Máy: Vì Sao Nghỉ Ngơi Không Khiến Bạn Tụt Lại",
       "summary": "Có một nỗi áy náy rất lạ trong đời sống hiện đại: làm việc quá nhiều thì kiệt sức, nhưng nghỉ ngơi lại thấy có lỗi — như thể ngồi yên vài phút là đang tụt lại phía sau. Một suy ngẫm ấm áp về vì sao nghỉ ngơi bị nhầm thành lười biếng và bận rộn bị xem là thước đo giá trị, vì sao không gì trong tự nhiên vận hành mà không có mùa nghỉ, nghỉ ngơi đúng nghĩa thật ra là gì (không phải lướt điện thoại), cái giá của việc nhồi kín lịch cả người lớn lẫn trẻ em, và khoa học nói gì về sự căng thẳng và sự hồi phục. Bởi bạn không phải cỗ máy — và một khoảng lặng không khiến bạn tụt lại, nó chỉ giúp bạn thở lại đúng nghĩa.",
+      "cardSummary": "Chỉ là nghỉ ngơi thôi mà thấy như đang tụt lại phía sau. Đây là lý do điều đó là một lời nói dối.",
       "tags": [
         "Personal Reflection",
         "Mental Wellbeing",
@@ -129,6 +144,7 @@
       "slug": "things-no-one-teaches-you",
       "title": "Những Điều Không Ai Dạy Bạn: Những Bài Học Cuộc Đời Dạy Bằng Cách Làm Bạn Đau",
       "summary": "Có những thứ không ai ngồi xuống dạy bạn. Cuộc đời sẽ dạy thay — bằng cách làm bạn đau một lần cho nhớ. Một cẩm nang ấm áp, thành thật về những bài học trầm lặng quanh con người và ranh giới: vì sao nên đọc quy luật chứ không phải một khoảnh khắc, vì sao người từng làm bạn đau sẽ không đổi chỉ vì bạn mong, vì sao người từng rất thân lại làm đau nhất, vì sao thiện ý vẫn cần đúng thời điểm, và vì sao giữ lại một phần là sự tự trọng chứ không phải lạnh lùng. Không phải hoài nghi — mà là nhìn rõ và dịu dàng hơn với chính mình. Kèm ví dụ gần gũi từ công sở đến đời sống.",
+      "cardSummary": "Có những bài học chẳng ai ngồi giảng — đời dạy bằng cách làm bạn đau một lần để nhớ.",
       "tags": [
         "Personal Reflection",
         "Life Philosophy",
@@ -142,6 +158,7 @@
       "slug": "the-approval-race",
       "title": "Cuộc Đua Tìm Công Nhận Không Có Vạch Đích: 5 Cách Lặng Lẽ Quay Về Với Chính Mình",
       "summary": "Phần lớn sự mệt mỏi mà người ta mang theo không phải vì họ không đủ giỏi — mà vì cái nỗ lực âm thầm, không ngừng nghỉ để làm hài lòng người khác. Chạy theo sự công nhận, lời khen và ánh nhìn của người khác là một cuộc đua không có vạch đích: hôm nay được khen, ngày mai có thể bị chê. Một cẩm nang ấm áp, thực tế để quay về với chính mình, với năm thói quen nhỏ mỗi ngày — nhìn vào trong, làm vì giá trị chứ không vì sự ghi nhận, chạy cuộc đua của riêng mình, giữ một kỷ luật nhỏ, và thanh lọc các mối quan hệ — cùng một câu hỏi duy nhất đáng để sống theo. Tập trung vào chính mình không phải ích kỷ; đó là cách bạn giữ đủ năng lượng để tử tế.",
+      "cardSummary": "Chạy theo sự công nhận là cuộc đua không vạch đích. Đây là cách trở về với chính mình.",
       "tags": [
         "Personal Reflection",
         "Self-Worth",
@@ -155,6 +172,7 @@
       "slug": "the-master-who-plays-the-fool",
       "title": "Cao Thủ Giả Hồ Đồ: Sức Mạnh Thầm Lặng Của Người Không Cần Chứng Minh",
       "summary": "Người đáng gờm nhất trong phòng hiếm khi là người tỏ ra thông minh nhất — mà là người cố tình không cho bạn thấy họ thông minh đến đâu. Một suy ngẫm ấm áp về 大智若愚 (đại trí nhược ngu), 'đại trí mà trông như ngu': vì sao họ chậm hơn thế gian nửa nhịp một cách có chủ đích, sắc khi cần và lặng như chưa từng tồn tại khi không cần, và sức mạnh trầm lặng của họ thật sự đến từ đâu — không phải kiểm soát người khác, mà kiểm soát chính mình, và lặng lẽ giữ cho mình quyền được rời đi. Kèm ví dụ gần gũi từ công sở đến đời sống.",
+      "cardSummary": "Người đáng gờm nhất trong phòng không bao giờ cho bạn thấy họ khôn đến đâu.",
       "tags": [
         "Personal Reflection",
         "Life Philosophy",
@@ -168,6 +186,7 @@
       "slug": "half-light-half-shadow",
       "title": "Tâm Bất Mê, Khí Bất Loạn: Uy Lực Vô Ngôn Của Người Không Nghiêng Về Cực Nào",
       "summary": "Có những người không nói nhiều, không tranh hơn thua, không làm tổn thương ai — vậy mà dưới lớp hiền đó họ quan sát từng chi tiết, và ở cạnh họ ta tự chỉnh lại lời mình. Một suy ngẫm ấm áp về uy lực vô ngôn: vì sao những người trầm tĩnh hiếm hoi mang trong mình cả chánh lẫn tà mà không nghiêng về cực nào, vì sao người chỉ toàn 'hiền' lại dễ bị lấn lướt còn người chỉ toàn 'sắc' lại để lại hỗn loạn, và làm sao sự tỉnh táo giữ thăng bằng cả hai — tâm bất mê, khí bất loạn, hành bất lệch. Kèm ví dụ gần gũi từ công sở đến đời sống.",
+      "cardSummary": "Họ không tranh, không hại ai — vậy mà bạn lại chọn lời cẩn thận hơn khi ở bên. Vì sao?",
       "tags": [
         "Personal Reflection",
         "Life Philosophy",
@@ -181,6 +200,7 @@
       "slug": "how-people-actually-work",
       "title": "Cách Con Người Thật Sự Vận Hành: 15 Sự Thật Trầm Lặng Về Tâm Trí",
       "summary": "Con người không sống bằng sự thật hoàn toàn — họ sống bằng cảm xúc, niềm tin và những câu chuyện trong đầu mình. Một cẩm nang ấm áp, thực tế về mười lăm điều 'người xưa nói mà hóa ra rất đúng' về cách tâm trí thật sự vận hành: vì sao ta nhớ cảm giác chứ không nhớ việc bạn đã giúp gì, vì sao kiểm soát và giận dữ là lớp giáp che cho nỗi sợ, vì sao não chỉ tìm bằng chứng cho điều nó đã tin, vì sao kỳ vọng (chứ không phải sự việc) mới làm ta đau, và vì sao chữa lành không phải là quên đi. Đầy ví dụ gần gũi từ công sở đến đời sống — đọc để dịu dàng và sáng suốt hơn, với người khác và với chính mình.",
+      "cardSummary": "Người ta không sống bằng sự thật — mà bằng cảm giác, niềm tin, và những câu chuyện trong đầu.",
       "tags": [
         "Personal Reflection",
         "Psychology",
@@ -194,6 +214,7 @@
       "slug": "choice-or-fate",
       "title": "Lựa Chọn hay Số Phận? Sống An Nhiên Giữa Một Sự Sắp Đặt Ta Không Thấy",
       "summary": "Bạn nghĩ mình đang chọn con đường của đời mình — nhưng càng sống lâu, bạn càng nhận ra cuộc gặp tình cờ lại thành bước ngoặt, điều cố giữ bằng mọi giá vẫn mất, chương tưởng đã khép lại lặng lẽ quay về. Vậy đời là lựa chọn hay số phận? Một suy ngẫm ấm áp, thực tế — với ví dụ gần gũi từ công sở đến đời sống — về những kết nối vô hình, vì sao sổ sách của cuộc đời luôn cân bằng, và điều duy nhất thật sự thuộc về bạn: cách bạn phản ứng. Bởi tự do bên trong không phải là biển lặng, mà là một người thuyền trưởng vững tay.",
+      "cardSummary": "Bạn tưởng mình đang chọn đường đi — cho tới khi nhận ra bao nhiêu phần của nó đã chọn bạn.",
       "tags": [
         "Personal Reflection",
         "Life Philosophy",
@@ -207,6 +228,7 @@
       "slug": "the-old-man-who-lost-his-horse",
       "title": "Tái Ông Mất Ngựa: Tin vào Sự Sắp đặt của Đời và Trân trọng Những gì Đang Hiện diện",
       "summary": "Một người nơi biên ải mất con ngựa, và hàng xóm vội gọi đó là xui xẻo. Điển tích Đạo gia nổi tiếng \"Tái ông thất mã\" — trong hoạ có phúc, rồi lại đảo chiều — thật ra là bài học về một thói quen tất cả chúng ta đều có: chấm điểm mọi sự kiện ngay khoảnh khắc nó vừa rơi xuống. Một suy ngẫm ấm áp về vì sao lời phán xét (chứ không phải cảm xúc) mới là sai lầm, bình thản thật sự là gì, và vì sao phản ứng khôn ngoan trước một sự sắp đặt ta chưa đọc nổi không phải bớt quan tâm, mà là trân trọng hiện tại nhiều hơn.",
+      "cardSummary": "Mất ngựa là rủi hay may? Cái bẫy là vội chấm điểm mọi chuyện ngay khi nó vừa xảy ra.",
       "tags": [
         "Personal Reflection",
         "Life Philosophy",
@@ -220,6 +242,7 @@
       "slug": "complexity-is-inevitable-simplicity-is-sustainable",
       "title": "Sự Phức Tạp Là Tất Yếu, Sự Đơn Giản Là Bền Vững: Bài Học Từ Hệ Thống Lớn — Và Cuộc Sống",
       "summary": "Những năm đầu sự nghiệp, mình tin một hệ thống “xịn” phải là nơi hội tụ công nghệ mới nhất, nhiều lớp abstraction và càng nhiều “magic code” càng đẳng cấp. Nhiều năm với large-scale distributed systems đã dạy mình điều ngược lại. Sự phức tạp là cái giá tất yếu của tăng trưởng — nhưng sự đơn giản, thứ đến từ sự tường minh, mới là cái giúp một hệ thống (và một cuộc đời) sống sót qua việc người rời đi, công nghệ lỗi thời và yêu cầu dịch chuyển. Một góc nhìn ấm áp, gần gũi văn phòng về essential vs. accidental complexity, lãi kép của technical debt, vì sao giữ đơn giản lại khó hơn, và vì sao cùng ý tưởng đó giúp ta vững vàng giữa cuộc sống hiện đại.",
+      "cardSummary": "Nhiều năm trong hệ thống quy mô lớn dạy tôi điều ngược lại những gì tôi từng tin về kỹ thuật “giỏi”.",
       "tags": [
         "Thiết kế hệ thống",
         "Kiến trúc phần mềm",
@@ -233,6 +256,7 @@
       "slug": "same-facts-different-story",
       "title": "Cùng Một Sự Thật, Khác Một Cách Kể: Vị Trí Bạn Đứng Và Cách Bạn Nói Đổi Thay Tất Cả",
       "summary": "Nuôi một con cá, nó chết, bạn buồn cả ngày; nuôi cả một ao cá, vài con đi bạn chẳng hay biết. Đứng ở tầng 1, một câu chửi làm bạn run người; đứng ở tầng 100, cùng những lời ấy chẳng còn chạm tới. Sự thật đứng yên — chính vị trí và ngôn từ của ta mới làm cảm xúc chao đảo. Đây là một bài viết ấm áp, gần gũi với môi trường văn phòng, về hai cái “núm vặn” bạn gần như luôn nắm trong tay: chỗ bạn đứng và cách bạn nói. Kèm ví dụ công việc thật, vài sơ đồ đơn giản, bài học “đang lập lại lộ trình” từ Google Maps, những điều đọng lại nhẹ nhàng, và một ý có thể làm nhẹ cả một ngày.",
+      "cardSummary": "Sự việc đứng yên; chính vị trí bạn đứng và cách bạn nói mới làm lay cả cảm xúc.",
       "tags": [
         "Phát triển bản thân",
         "Góc nhìn",
@@ -246,6 +270,7 @@
       "slug": "dreamers-doers-and-grit",
       "title": "Kẻ Bỏ Cuộc Luôn Có Lý Do, Người Thành Công Chỉ Có Mục Tiêu: Bàn Về Chữ “Lì”",
       "summary": "Kẻ bỏ cuộc luôn có lý do; người đi tới đích chỉ có một mục tiêu. Khác biệt duy nhất giữa kẻ mơ mộng và người thành công không nằm ở tài năng, may mắn hay một ý tưởng hay hơn — mà ở chữ “lì”: sự bền gan đi xuyên qua chính cơn nản chí của mình. Đây là một bài viết ấm áp, tiếp lửa cho bất kỳ ai đang có một giấc mơ còn bỏ ngỏ: vì sao thế giới ngập tràn ý tưởng triệu đô mà lại đói người dám đi tới cùng, vì sao cứ bắt đầu vụng về và chậm chạp còn hơn là không bắt đầu, và một cách nghĩ lại biến câu “bao giờ mới tới?” thành một câu hỏi bạn thật sự trả lời được. Kèm ví dụ thật, vài thói quen thực tế, và một chút lửa cho những ngày bạn muốn dừng lại.",
+      "cardSummary": "Người bỏ cuộc luôn có lý do. Người làm được chỉ có một mục tiêu — và sự lì để đi qua chính nỗi nản của mình.",
       "tags": [
         "Động lực",
         "Kiên trì",
@@ -259,6 +284,7 @@
       "slug": "the-quiet-art-of-letting-go",
       "title": "Nghệ Thuật Buông Lặng Lẽ: Bảy Chuyển Hóa Của Một Tâm Trí Trưởng Thành",
       "summary": "Có một thứ sức mạnh không cần lên tiếng — nó lặng đi. Một người càng an định bên trong thì càng ít tranh cãi, càng thôi muốn thay đổi ai, và càng dễ buông những gì vốn chẳng thuộc về mình. Đây là một bài viết ấm áp, sâu lắng, chắt ra từ một loạt câu nói về sự trưởng thành và tỉnh thức: vì sao người mạnh mẽ nhất lại điềm tĩnh nhất, vì sao rồi bạn sẽ thôi cố sửa người khác, vì sao mọi mối quan hệ đều duyên khởi duyên diệt, và vì sao tỉnh thức rốt cuộc gói trong một chữ — buông. Kèm những ví dụ gần gũi, vài điều đọng lại, và một ý lặng lẽ có thể làm nhẹ cả một ngày.",
+      "cardSummary": "Người vững nhất tranh cãi ít hơn, sửa người khác ít hơn, và buông điều vốn chẳng thuộc về mình.",
       "tags": [
         "Phát triển bản thân",
         "Buông bỏ",
@@ -272,6 +298,7 @@
       "slug": "roads-to-c-level",
       "title": "C-Level Ở Big Corp Học Gì Trước Khi Lên Ghế Lãnh Đạo? Năm Con Đường, Chuyện MBA, Và Bước Chuyển Tư Duy",
       "summary": "Ở tầng lãnh đạo, thị trường thôi hỏi về tiềm năng của bạn và bắt đầu đòi bằng chứng. Bạn đã quản lý P&L chưa? Đã chịu trách nhiệm với doanh thu chưa? Ra quyết định được khi dữ liệu chưa hoàn hảo chưa? Đây là một bài viết rõ ràng, thực tế về cách người ta thật sự lên tới C-level trong một tập đoàn lớn: năm con đường quen thuộc — qua FMCG, Tech, Finance, Consulting và Legal/Risk — mỗi hướng thật sự dạy gì, sự thật thẳng thắn về việc có cần MBA hay Master không, và một bước chuyển tư duy duy nhất tách một người chuyên môn khỏi một người mà ban lãnh đạo dám đặt cược. Viết cho bất kỳ ai, ở bất kỳ ngành nào, đang ngờ rằng chiếc ghế mình muốn sẽ được trao bằng bằng chứng, chứ không bằng chức danh.",
+      "cardSummary": "Lên tới đỉnh, thị trường thôi hỏi về tiềm năng và bắt đầu đòi bằng chứng của bạn.",
       "tags": [
         "Phát triển sự nghiệp",
         "Lãnh đạo",
@@ -285,6 +312,7 @@
       "slug": "solitude-of-great-minds",
       "title": "Sự Cô Đơn Của Những Tâm Hồn Vĩ Đại: Sức Mạnh Lặng Thầm Của Người Dám Đi Một Mình",
       "summary": "Ta thường cho rằng người hay đi một mình hẳn có gì đó không ổn. Nhưng phần nhiều, họ chỉ đơn giản đã đi qua nơi mà người bình thường chưa từng đặt chân — qua giai đoạn tăm tối nhất của đời mình, và tự bước ra. Đây là một bài viết ấm áp, có chiều sâu về sức mạnh lặng thầm của người sống độc lập: vì sao cô độc không phải là cô đơn, vì sao giá trị bản thân được đặt từ bên trong khiến một người trở nên không thể quật ngã, vì sao người đã đi qua bóng tối lại nhìn người rất giỏi, và vì sao một người từng ấm áp bỗng trầm lặng thường không phải vô tâm — mà chỉ là cẩn trọng hơn. Kèm những ví dụ gần gũi và một lối nhỏ để bạn tự xây cho mình chút tòa thành nội tâm ấy.",
+      "cardSummary": "Ta hay nghĩ người đi một mình có gì đó không ổn. Thường thì họ chỉ đã đi tới nơi ta chưa từng.",
       "tags": [
         "Cô đơn",
         "Giá trị bản thân",
@@ -298,6 +326,7 @@
       "slug": "meaning-is-in-the-living",
       "title": "Ý Nghĩa Của Đời Người Nằm Ở Cách Ta Sống: Đừng Mãi Chờ “Sau Này”",
       "summary": "Nếu trang cuối của mỗi đời người đã được an bài, thì ý nghĩa chưa bao giờ nằm ở điểm kết — nó nằm trọn trong việc được sống. Đây là một bài viết ấm áp, thong thả, dành cho bất cứ ai đang cuốn trong vòng xoáy hết việc này tới việc khác: vì sao đời vốn không hẹn trước, cái bẫy lặng lẽ “bao giờ rảnh sẽ sống” lấy đi những năm tháng đẹp nhất ra sao, và làm sao biến những ngày tưởng chừng tẻ nhạt thành khoảnh khắc đáng nhớ suốt đời. Không phải một bài giảng về cái chết, mà là một lời mời gọi: hãy nói lời yêu khi còn nói được, hãy ngắm một lần mặt trời lên, và hiểu rằng ngay cả những câu chuyện bị gọi là “dang dở” cũng đã từng rất rực rỡ trên suốt chặng đường nó tồn tại.",
+      "cardSummary": "Nếu trang cuối đã được viết sẵn, thì ý nghĩa chưa bao giờ nằm ở cái kết — mà ở việc sống.",
       "tags": [
         "Cuộc sống",
         "Sống trọn",
@@ -311,6 +340,7 @@
       "slug": "software-engineer-career-path",
       "title": "Hiểu rõ tấm bản đồ: Vì sao nắm được career path là lợi thế thầm lặng của một engineer",
       "summary": "Phần lớn engineer trôi theo sự nghiệp từng đợt thăng chức một, hy vọng chỉ cần cố gắng là đủ. Những người tiến xa có chủ đích lại làm một việc khác trước tiên: họ hiểu tấm bản đồ. Dùng chính sơ đồ nấc thang sự nghiệp software engineer — nhánh IC chung tách thành nhánh kỹ thuật và nhánh quản lý — đây là hướng dẫn thực tế về vì sao hiểu địa hình là một lợi thế, mỗi nấc thang thực sự tưởng thưởng điều gì, cách xác định hướng đi của riêng bạn, nhịp cải thiện mỗi ngày–tháng–quý–năm, và những cạm bẫy cần tránh trên đường.",
+      "cardSummary": "Phần lớn kỹ sư trôi lên từng nấc thăng chức. Người đi có chủ đích thì đọc tấm bản đồ trước.",
       "tags": [
         "Phát triển sự nghiệp",
         "Software Engineering",
@@ -324,6 +354,7 @@
       "slug": "questions-before-marriage",
       "title": "Quyết định tiến tới hôn nhân: 24 câu hỏi nên cùng nhau trả lời trước khi về chung một nhà",
       "summary": "Người ta hay nói hôn nhân là chuyện của duyên số. Nhưng những cặp đôi bình an nhất lại thường là những người đã ngồi xuống, nói rõ với nhau mọi kỳ vọng từ trước khi cưới. Bài viết này chia sẻ một bộ 24 câu hỏi — lấy cảm hứng từ danh sách mà một người chị đi trước đã cùng bạn đời 'chốt' trước khi về chung một nhà — về tiền bạc, con cái, sự nghiệp, gia đình hai bên, thói quen, quyền riêng tư và cách vận hành một tổ ấm. Không phải để thẩm vấn nhau, mà để cùng thiết kế một cuộc hôn nhân ít kịch tính và nhiều bình an.",
+      "cardSummary": "Những cặp đôi bình yên nhất thường làm rõ mọi kỳ vọng trước hôn lễ — đây là 24 câu hỏi.",
       "tags": [
         "Hôn nhân",
         "Tiền hôn nhân",
@@ -337,6 +368,7 @@
       "slug": "wedding-prep-for-grooms",
       "title": "Cẩm nang cưới vợ cho đấng nam nhi: Chuẩn bị chu đáo từng giai đoạn & bảng chi phí chi tiết (A–Z)",
       "summary": "Cưới vợ không chỉ là một ngày trọng đại — nó là một dự án kéo dài nhiều tháng, với hàng chục đầu việc và một ngân sách có thể lên tới hàng trăm triệu đồng. Bài viết này là tấm bản đồ dành cho người đàn ông muốn chuẩn bị thật chu đáo: đi qua từng giai đoạn từ tìm hiểu, ra mắt gia đình, lễ dạm ngõ, lễ ăn hỏi, đám cưới cho tới trăng mật — và đặc biệt là bảng chi phí chi tiết từng khoản, cách phân bổ ngân sách, nhà trai thường chuẩn bị những gì, cùng những mẹo tiết kiệm và những điều một người chồng tương lai nên để tâm hơn cả tiền bạc.",
+      "cardSummary": "Đám cưới không phải một ngày trọng đại — mà là dự án nhiều tháng với ngân sách khiến chú rể nào cũng bất ngờ.",
       "tags": [
         "Cưới hỏi",
         "Chi phí đám cưới",
@@ -350,6 +382,7 @@
       "slug": "know-your-work-rights",
       "title": "Quyền lợi khi đi làm: Cẩm nang A–Z từ nghỉ việc, chuyển việc đến nhận việc (BHXH, BHYT, BHTN, thuế TNCN)",
       "summary": "Mỗi tháng có khoảng 32% tiền lương của bạn chảy vào bảo hiểm và thuế — nhưng phần lớn người đi làm không biết mình đang được hưởng những gì. Đây là cẩm nang thực tế, dễ hiểu cho bất kỳ ai đi làm: từ lúc nghĩ đến chuyện nghỉ việc, làm thủ tục bàn giao, chốt sổ BHXH, nhận trợ cấp thất nghiệp, cho đến khi đọc hợp đồng, ký giấy và onboarding ở công ty mới. Có bảng tính, ví dụ gần gũi, checklist NÊN làm / NÊN tránh, và những điều ai cũng nên biết để không bao giờ mất quyền lợi chỉ vì không biết.",
+      "cardSummary": "Khoảng 32% lương của bạn chảy vào bảo hiểm và thuế — bạn có biết nó mua lại cho mình điều gì không?",
       "tags": [
         "Quyền lợi người lao động",
         "Bảo hiểm xã hội",
@@ -363,6 +396,7 @@
       "slug": "the-monkey-eight-hours-and-unquestioned-rules",
       "title": "Con Khỉ, Nải Chuối và Câu Hỏi 8 Tiếng",
       "summary": "Một thí nghiệm nổi tiếng về đàn khỉ, Sơn Tùng M-TP và ngày làm việc chưa thay đổi kể từ cuộc cách mạng công nghiệp. Suy nghĩ cá nhân về những quy tắc ta tuân theo mà không còn nhớ lý do — và điều mà AI đáng lẽ phải trả lại cho chúng ta.",
+      "cardSummary": "Một thí nghiệm với bầy khỉ, một ngôi sao nhạc, và ngày làm việc ta chưa từng dừng lại để hỏi vì sao.",
       "tags": [
         "Công việc",
         "Xã hội",
@@ -370,6 +404,486 @@
         "Năng suất",
         "Góc nhìn cá nhân",
         "Tương lai lao động"
+      ]
+    },
+    {
+      "slug": "a-reading-system",
+      "title": "Một hệ thống đọc sách",
+      "summary": "Tôi từng đọc xong một cuốn sách rồi nhận ra mình gần như không kể lại được nó nói gì. Qua nhiều năm, nỗi khó chịu ấy thành một hệ thống đọc nhỏ: buông cảm giác tội lỗi với sách đọc dở, coi tủ sách như khu vườn thay vì hàng đợi, và một đường ống highlight-ôn tập giữ lại điều quan trọng mà không phải đọc lại điều không cần.",
+      "cardSummary": "Ba nỗi khổ quen thuộc của người đọc sách — và hệ thống nhỏ đã gỡ chúng cho tôi.",
+      "tags": [
+        "Thoughts",
+        "Đọc sách",
+        "Hệ thống học",
+        "Ghi chú"
+      ]
+    },
+    {
+      "slug": "anchoring-on-tool-capability-limits-the-mind",
+      "title": "Bị neo vào khả năng công cụ làm hạn chế tư duy",
+      "summary": "Một ứng dụng nhanh hơn hay một framework sắc hơn không nâng được cái trần thật, vì nút thắt chưa bao giờ nằm ở công cụ — nó nằm ở tâm trí đang cầm công cụ ấy. Một ghi chú ngắn về việc cầm công cụ thật lỏng tay: coi mỗi lần dùng là một thử nghiệm, và rời đi ngay khi công cụ thôi phục vụ phần tư duy bên dưới.",
+      "cardSummary": "Một công cụ bạn không thể rời bỏ đã lặng lẽ trở thành một cái lồng.",
+      "tags": [
+        "Thoughts",
+        "Công cụ",
+        "Tư duy",
+        "First Principles Thinking"
+      ]
+    },
+    {
+      "slug": "be-mindful-of-what-you-put-into-your-bucket",
+      "title": "Cẩn thận với những gì bạn cho vào 'xô' của mình",
+      "summary": "Hãy hình dung một ngày của bạn như một chiếc xô mang theo từ sáng tới tối, múc vào đó ý tưởng, cuộc trò chuyện, mẩu tin — thứ nước dành tưới cho cái cây bạn đang cố nuôi lớn. Không phải nước nào cũng sạch, và chiếc xô có dung tích cố định. Một hình ảnh nhỏ về việc chăm chút đầu vào mỗi ngày, vì thứ bạn nhặt lên hằng ngày quyết định sức khỏe của cái cây.",
+      "cardSummary": "Sự chú ý của bạn là một chiếc xô dung tích cố định — và không phải nước nào cũng sạch.",
+      "tags": [
+        "Thoughts",
+        "Sự chú ý",
+        "Khẩu phần thông tin",
+        "Thói quen"
+      ]
+    },
+    {
+      "slug": "code-run-on-people",
+      "title": "Code có còn chạy trên con người?",
+      "summary": "“Chương trình phải được viết cho con người đọc” từng là chân lý suốt nhiều thập kỷ — và giờ AI agent viết lẫn đọc phần lớn code. Nhưng câu nói cũ có lẽ vẫn đúng: thứ con người viết cho con người đọc chỉ dịch lên một tầng, từ phần hiện thực sang phần ý định — prompt, spec, và quyết định kiến trúc đóng khung công việc.",
+      "cardSummary": "Giờ AI viết code. Thứ con người viết cho nhau chỉ vừa dịch lên một tầng.",
+      "tags": [
+        "Thoughts",
+        "Kỹ thuật phần mềm",
+        "AI",
+        "Code dễ đọc"
+      ]
+    },
+    {
+      "slug": "completeness-learning-bias",
+      "title": "Thiên kiến học cho đầy đủ",
+      "summary": "Cảm giác áy náy rằng một chương bị bỏ qua là kiến thức mất vĩnh viễn khiến ta đọc lại thứ mình nhớ nửa vời và coi mục lục như một checklist. Nhưng ý tưởng lớn hơn các hình hài biểu diễn của nó: điều bạn lỡ ở chương bốn có thể đang đợi trong một cuộc trò chuyện, một dự án, hay một cuốn sách bạn chưa mở.",
+      "cardSummary": "Bỏ qua một chương không làm mất chân lý — đích đến sống lâu hơn bất kỳ con đường nào dẫn tới nó.",
+      "tags": [
+        "Thoughts",
+        "Học tập",
+        "Thiên kiến",
+        "Sách"
+      ]
+    },
+    {
+      "slug": "different-purposes-of-writing",
+      "title": "Những mục đích khác nhau của việc viết",
+      "summary": "“Bạn nên viết nhiều hơn” là lời khuyên tốt nhưng bỏ qua câu hỏi hữu ích hơn: viết cái gì? Những kiểu viết khác nhau phục vụ những mục đích khác nhau, đòi hỏi sự chú tâm khác nhau, và được đo bằng những thước khác nhau. Gọi tên được chế độ mình đang viết — viết để chú tâm, hay viết để hiểu và truyền đạt — mới khiến câu 'mình làm tốt chưa?' có lời đáp.",
+      "cardSummary": "“Hãy viết nhiều hơn” bỏ qua câu hỏi thật: viết cái gì — và đo bằng cây thước nào?",
+      "tags": [
+        "Thoughts",
+        "Viết",
+        "Chú tâm",
+        "Chia sẻ tri thức"
+      ]
+    },
+    {
+      "slug": "feel-the-sensation",
+      "title": "Cảm nhận",
+      "summary": "Bóc đi những câu chuyện ta kể về ý nghĩa và hoài bão, bên dưới là một điều giản dị hơn: ta đang đuổi theo những cảm giác, và các mục đích phần lớn là những con đường dẫn tới chúng. Gọi tên được những cảm giác thật sự kéo mình — khoảnh khắc 'chính là đây', cảm giác đang tiến về phía trước, sự thanh thản — cho bạn định hướng theo chúng thay vì trôi dạt.",
+      "cardSummary": "Bên dưới mọi mục đích lớn lao là một điều giản dị hơn: một cảm giác bạn đang cố chạm tới.",
+      "tags": [
+        "Thoughts",
+        "Tự nhận thức",
+        "Động lực",
+        "La bàn nội tâm"
+      ]
+    },
+    {
+      "slug": "healthy-disagreement",
+      "title": "Bất đồng lành mạnh",
+      "summary": "Khi cả phòng đồng ý với bạn tuyệt đối, hãy khựng lại trước khi coi đó là sự tán thành — sự nhất trí không sứt mẻ thường báo hiệu sự vắng mặt của những cái đầu độc lập hơn là sự hiện diện của một ý tưởng tốt. Chẳng cực nào là đích: một chút bất đồng là chất liệu của những con người đang thật sự suy nghĩ, thứ nên chào đón thay vì vuốt phẳng.",
+      "cardSummary": "Nếu cả phòng đồng ý với bạn ngay lập tức, nhiều khả năng có ai đó đang không suy nghĩ.",
+      "tags": [
+        "Thoughts",
+        "Làm việc nhóm",
+        "Giao tiếp",
+        "Ra quyết định"
+      ]
+    },
+    {
+      "slug": "how-i-write-notes",
+      "title": "Cách tôi viết ghi chú",
+      "summary": "Vài năm duy trì một vault tri thức cá nhân trong Obsidian, chưng cất thành những thói quen sống sót qua va chạm với thực tế: viết thẳng vào vault, viết ở chất lượng sẵn sàng cho người khác xem với từ khóa in đậm, liên kết không ngừng, và đừng sợ xóa. Vault không phải bãi rác — nó là cung điện nơi ý tưởng được củng cố.",
+      "cardSummary": "Không phải một hệ thống vẽ sẵn — chỉ là những thói quen ghi chú sống sót qua va chạm với thực tế.",
+      "tags": [
+        "Thoughts",
+        "Ghi chú",
+        "Obsidian",
+        "Quản lý tri thức"
+      ]
+    },
+    {
+      "slug": "human-vs-ai-brain-elasticity",
+      "title": "Ưu thế nền tảng của con người so với AI",
+      "summary": "Dù AI hiện đại nhanh và rộng tới đâu, bộ não vẫn giữ một ưu thế sinh học mà phần mềm chưa sánh được: tính mềm dẻo. Trọng số của AI đóng băng sau huấn luyện, còn tâm trí tự tinh chỉnh qua mỗi lần sử dụng — nén, trừu tượng hóa, và nối ý tưởng theo nghĩa thay vì theo cách phát âm giống nhau.",
+      "cardSummary": "Trọng số AI đóng băng sau huấn luyện. Bộ não bạn tự tinh chỉnh mỗi lần bạn dùng nó.",
+      "tags": [
+        "Thoughts",
+        "AI",
+        "Bộ não",
+        "Học tập"
+      ]
+    },
+    {
+      "slug": "indecisiveness",
+      "title": "Sự do dự",
+      "summary": "Đôi khi càng cân nhắc kỹ điểm hơn điểm thiệt, bạn càng do dự — mỗi cột mới thêm vào là thêm một cách khiến các lựa chọn trông ngang nhau. Một ghi chú ngắn về những khoảnh khắc mà việc cam kết với bất kỳ lựa chọn nào cũng làm nhẹ cả tinh thần, và vì sao chọn nhanh thường thắng chọn hoàn hảo.",
+      "cardSummary": "Đôi khi chính cái bảng điểm hơn–thiệt là thứ đang giữ bạn đứng yên.",
+      "tags": [
+        "Thoughts",
+        "Ra quyết định",
+        "Nghĩ quá nhiều",
+        "Hành động"
+      ]
+    },
+    {
+      "slug": "letter-to-my-20s",
+      "title": "Tôi sẽ nói gì với chính mình ở tuổi 20",
+      "summary": "Nếu có thể gửi một mẩu thư ngắn về cho tuổi hai mươi của mình, nó sẽ không phải một chiến lược — chỉ một nhúm điều học được theo cách chậm rãi: xây hệ thống thay vì dựa vào ý chí, cứ ra mắt thứ chưa hoàn hảo, để ý những ngày bình thường, nhớ rằng cái tôi chỉ là hành khách, và nhân cách được chứng minh dưới áp lực, không phải trong êm ấm.",
+      "cardSummary": "Không phải chiến lược — chỉ là tám điều tôi đã phải học theo cách chậm rãi.",
+      "tags": [
+        "Thoughts",
+        "Bài học cuộc sống",
+        "Trưởng thành",
+        "Tuổi trẻ"
+      ]
+    },
+    {
+      "slug": "life-running-digital-engine",
+      "title": "Cuộc sống vận hành như cỗ máy số",
+      "summary": "Hãy đối xử với những quyết định lặp lại của đời sống thường ngày bớt như những phán đoán mới toanh, mà như những luật đã quyết một lần và cứ thế chạy. Các hệ con trong cỗ máy của tôi: một hệ todo 'người lái' chứa cơ hội, một hệ trách nhiệm chứa những điều không thương lượng, và một nhịp chiêm nghiệm giữ cho cả cỗ máy tự sửa mình thay vì trôi dạt.",
+      "cardSummary": "Quyết những việc lặp lại một lần thôi — rồi để chúng chạy như luật, không phải tranh luận mỗi ngày.",
+      "tags": [
+        "Thoughts",
+        "Năng suất",
+        "Hệ thống",
+        "Thói quen"
+      ]
+    },
+    {
+      "slug": "modal-thinking",
+      "title": "Tư duy theo chế độ — tách quyết định khỏi thực thi",
+      "summary": "Giữ việc quyết định và việc thực thi trong hai chế độ tách biệt, và đừng bao giờ để chúng chạy cùng lúc. Trong chế độ quyết định, dựa vào lịch sử của chính mình và nhớ rằng một lựa chọn tùy ý vẫn hơn một lựa chọn bốc đồng. Trong chế độ thực thi, không còn gì để cân nhắc — phán xét nước đi là việc của chế độ quyết định, sau này, với cái đầu nguội.",
+      "cardSummary": "Quyết xong, rồi làm — và đừng bao giờ để hai việc ấy chạy cùng lúc.",
+      "tags": [
+        "Thoughts",
+        "Ra quyết định",
+        "Tập trung",
+        "Kỷ luật"
+      ]
+    },
+    {
+      "slug": "play-the-game",
+      "title": "Chơi cuộc chơi",
+      "summary": "Cách tốt nhất để giỏi cuộc chơi là chơi nó. Bao nhiêu lần đứng xem từ ngoài biên, nghiền ngẫm luật chơi hay tổng duyệt trong đầu cũng không thay được cảm giác chạm bóng, sức ép của khoảnh khắc, những hiệu chỉnh chỉ học được trên sân. Chiến lược mà không chơi chỉ là tấm bản đồ của một xứ sở bạn không bao giờ ghé.",
+      "cardSummary": "Chiến lược mà không chơi là một tấm bản đồ vẽ đẹp về xứ sở bạn không bao giờ ghé thăm.",
+      "tags": [
+        "Thoughts",
+        "Hành động",
+        "Học qua làm",
+        "Trải nghiệm"
+      ]
+    },
+    {
+      "slug": "programmable-self",
+      "title": "Bản thân có thể lập trình",
+      "summary": "Nếu coi tâm trí như một hệ điều hành, các thành phần khớp nhau gọn đến bất ngờ: calendar là bộ lập lịch tiến trình, danh sách todo là hàng đợi, và các mental model là framework chạy trên kernel. Chiêm nghiệm là nguồn của tính mềm dẻo — còn độ tin cậy, tức kỷ luật thuần túy, quyết định liệu tất cả có hơn một bản vẽ hay không.",
+      "cardSummary": "Calendar là bộ lập lịch, todo là hàng đợi — chuyện gì xảy ra khi coi tâm trí như một hệ điều hành.",
+      "tags": [
+        "Thoughts",
+        "Hệ thống",
+        "Năng suất",
+        "Mental Models"
+      ]
+    },
+    {
+      "slug": "programming-abstractions",
+      "title": "Các tầng trừu tượng trong lập trình",
+      "summary": "Mỗi tầng trừu tượng là một ván cược: thắng, các thay đổi xếp chồng lên dễ dàng; thua, bạn ôm một abstraction non và mọi thay đổi đặt lên nó đều bốc mùi. Cảm giác thỏa mãn khi đặt tên được mọi thứ là có thật — và chính điều đó khiến nó nguy hiểm. Khái quát hóa code chuyên biệt luôn dễ hơn gỡ rối một thiết kế trừu tượng quá đà.",
+      "cardSummary": "Mỗi abstraction là một ván cược — và kèo thua nghiêng về phía bạn thường xuyên hơn cảm giác.",
+      "tags": [
+        "Thoughts",
+        "Kỹ thuật phần mềm",
+        "Trừu tượng hóa",
+        "Thiết kế code"
+      ]
+    },
+    {
+      "slug": "programming-beacons",
+      "title": "Những ngọn hải đăng lập trình",
+      "summary": "Hải đăng là những manh mối nhỏ trong code kích hoạt một phỏng đoán thường-đúng về chuyện gì đang diễn ra — một biến tên 'node' nói cho bạn biết nó sống trong cây hay đồ thị trước cả khi bạn phải truy vết. Code tốt đầy những cột mốc lặng lẽ như vậy, và bạn có thể chủ đích rải chúng vào code của mình.",
+      "cardSummary": "Một biến tên 'node' kể cho bạn nửa câu chuyện trước khi bạn đọc thêm lấy một dòng.",
+      "tags": [
+        "Thoughts",
+        "Kỹ thuật phần mềm",
+        "Code dễ đọc",
+        "Đặt tên"
+      ]
+    },
+    {
+      "slug": "purpose-of-highlights",
+      "title": "Mục đích của highlight",
+      "summary": "Tại sao highlight khi đọc, highlight cái gì, và chúng sẽ được dùng ra sao? Thiếu câu trả lời, highlight lặng lẽ thành một thói quen cho cảm giác năng suất mà chẳng sinh ra gì. Hai loại đáng giữ: cộng hưởng — những dòng chạm vào thứ vốn đã có trong bạn — và dấu sao, những lá cờ cắm trên các điểm bạn còn nợ suy nghĩ.",
+      "cardSummary": "Nếu một highlight không chứa hành động tương lai nào, bạn chỉ đang tích trữ những câu chữ.",
+      "tags": [
+        "Thoughts",
+        "Đọc sách",
+        "Ghi chú",
+        "Học tập"
+      ]
+    },
+    {
+      "slug": "reading-is-catching-balls",
+      "title": "Đọc sách như bắt bóng",
+      "summary": "Từ How to Read a Book: quan hệ giữa người viết và người đọc giống hệt giữa pitcher và catcher trong bóng chày. Cả ném-viết lẫn bắt-đọc đều là nỗ lực chủ động, đòi hỏi sức — không có chuyện bắt bóng thụ động, và ý nghĩa không tự bay vào tâm trí. Thành công của cả hoạt động nằm ở việc hai bên phối hợp tốt tới đâu.",
+      "cardSummary": "Ý nghĩa không tự bay vào tâm trí — đọc là bắt bóng, và bắt bóng tốn sức.",
+      "tags": [
+        "Thoughts",
+        "Đọc sách",
+        "Viết",
+        "Giao tiếp"
+      ]
+    },
+    {
+      "slug": "recognizable-patterns-of-valuable-thoughts",
+      "title": "Liệu có khuôn mẫu nhận biết được của những suy nghĩ giá trị?",
+      "summary": "Nhận ra suy nghĩ ít giá trị dễ hơn định nghĩa suy nghĩ giá trị, vậy hãy bắt đầu từ đầu dễ: tua lại quá khứ chỉ để tua, tự tô vẽ bản thân, xoay vòng quanh những vấn đề không có hành động khả dĩ. Sợi chỉ chung — tâm trí quay tít trong khi bánh xe không chạm đường. Suy nghĩ giá trị dẫn tới đâu đó: tới hành động, hoặc tới hiểu biết mới.",
+      "cardSummary": "Suy nghĩ vô giá trị chung một chữ ký: tâm trí quay tít, nhưng bánh xe không bao giờ chạm đường.",
+      "tags": [
+        "Thoughts",
+        "Tư duy",
+        "Tự nhận thức",
+        "Chú tâm"
+      ]
+    },
+    {
+      "slug": "sense",
+      "title": "Trực giác",
+      "summary": "Ngoài năm giác quan còn một tín hiệu bên trong bừng lên khi bộ não tự cảm nhận chính nó — một chớp lóe phi ngôn từ, đến trước khi bạn kịp có lời cho nó. Những trực giác ấy là nhiều năm kinh nghiệm được nén lại: suy luận thì đắt như inference với đầy đủ ngữ cảnh, trực giác thì rẻ như một mô hình đã luyện trả lời từ trọng số. Nhưng hành động luôn đi trước trực giác, không bao giờ ngược lại.",
+      "cardSummary": "Suy luận là inference đắt đỏ; trực giác là mô hình đã luyện, trả lời thẳng từ trọng số.",
+      "tags": [
+        "Thoughts",
+        "Trực giác",
+        "Kinh nghiệm",
+        "Tự nhận thức"
+      ]
+    },
+    {
+      "slug": "software-engineering-fatigue",
+      "title": "Mệt mỏi với nghề kỹ sư phần mềm",
+      "summary": "Làm phần mềm như chơi Lego: bạn học những viên gạch nền tảng, rồi các khối ghép sẵn, rồi khối làm từ khối — cho tới khi việc tìm hiểu bên dưới thực sự có gì trở nên bất khả thi. Đâu đó trong cú trôi ấy, việc học đổi bản chất từ hiểu mọi thứ sang chỉ biết dùng mọi thứ, và sự nhân tạo đó chính là nguồn cơn của nỗi mệt.",
+      "cardSummary": "Vật lý đưa bạn về gần chân lý của vũ trụ; framework dạy bạn những phát minh tùy ý của ai đó.",
+      "tags": [
+        "Thoughts",
+        "Kỹ thuật phần mềm",
+        "Nghề nghiệp",
+        "Học tập"
+      ]
+    },
+    {
+      "slug": "start-new-behaviors-in-boring-easy-mode",
+      "title": "Khi tập thói quen mới, hãy bắt đầu ở chế độ 'dễ và chán'",
+      "summary": "Cơn hứng ban đầu đánh lừa bạn xem nhẹ ma sát của một thói quen mới khi ánh hào quang phai đi. Cách sửa ngược đời: nhắm thấp xuống — mười phút luyện tập, mười thẻ flashcard, một ghi chú mỗi ngày — nhỏ đủ để đạt được kể cả ngày tồi tệ. Và hãy dừng khi còn đang muốn thêm: cơn thèm chưa tiêu hết ấy chính là thứ kéo bạn quay lại ngày mai.",
+      "cardSummary": "Hãy dừng khi còn đang muốn thêm — cơn thèm chưa tiêu hết chính là thứ kéo bạn lại ngày mai.",
+      "tags": [
+        "Thoughts",
+        "Thói quen",
+        "Sự đều đặn",
+        "Trưởng thành"
+      ]
+    },
+    {
+      "slug": "the-cost-of-delayed-action",
+      "title": "Cái giá của việc trì hoãn hành động",
+      "summary": "Khoảnh khắc một ý tưởng nảy ra là lúc động lực hữu cơ của nó cao nhất — từ đó nó phân rã, thường nhanh hơn ta tưởng. Trì hoãn không ướp một việc trong hổ phách; nó để điện tích rò rỉ dần. Cách giảm thiểu: một hành động tượng trưng, bước nhỏ nhất phá vỡ ma sát tĩnh và cho động lực một chỗ bám.",
+      "cardSummary": "Trì hoãn không ướp một việc trong hổ phách — nó để điện tích lặng lẽ rò ra khỏi việc ấy.",
+      "tags": [
+        "Thoughts",
+        "Trì hoãn",
+        "Năng suất",
+        "Hành động"
+      ]
+    },
+    {
+      "slug": "the-heuristics-for-what-to-do-now",
+      "title": "Những heuristic cho câu hỏi 'bây giờ làm gì'",
+      "summary": "Phần lớn thời gian câu trả lời đã ở sẵn trong bạn — bạn chỉ không lắng nghe, vì câu trả lời ấy bất tiện. Khi thật sự lạc lối, hãy thôi tra khảo danh sách todo và lắng nghe ba tín hiệu: những việc bạn kháng cự, những việc phá vỡ cảm giác đủ đầy, và những giấc mơ bạn gạt đi là viển vông. Cả ba đều chỉ về phía sự khó chịu — đó chính là phương pháp.",
+      "cardSummary": "Ba mũi kim la bàn của bạn đều chỉ về phía khó chịu — không phải lỗi đâu, đó chính là phương pháp.",
+      "tags": [
+        "Thoughts",
+        "Phương hướng",
+        "Tự nhận thức",
+        "Ra quyết định"
+      ]
+    },
+    {
+      "slug": "the-trap-of-information-consumption",
+      "title": "Cái bẫy của việc tiêu thụ thông tin mà không hành động",
+      "summary": "Một kiểu thất bại phổ biến trong việc học: đầu vào cứ chảy, giá sách cứ đầy, mà chẳng gì biến thành năng lực. Nó cho cảm giác như đang học — và chính vì thế khó nhận ra từ bên trong. Triệu chứng, nguyên nhân, và lối ra: đặt ý định áp dụng trước khi tiêu thụ, ưu tiên học just-in-time, và đếm hành động đã làm thay vì thông tin đã nạp.",
+      "cardSummary": "Nó cho cảm giác y hệt đang học — và vì thế bạn không nhìn thấy nó từ bên trong.",
+      "tags": [
+        "Thoughts",
+        "Học tập",
+        "Trì hoãn",
+        "Khẩu phần thông tin"
+      ]
+    },
+    {
+      "slug": "thinking-and-doing-rhythm",
+      "title": "Nhịp giữa suy nghĩ và hành động",
+      "summary": "Ta nghĩ nhanh hơn ta làm — tâm trí phóng trước ba nước trong khi đôi tay còn ở bước một, và khoảng hở ấy đọc lên như thất bại kể cả khi chẳng có gì sai. Nhịp thực dụng: nghĩ vừa đủ để làm, làm, rồi nghĩ tiếp với những gì vừa học được. Nghĩ mà không làm là tưởng tượng; làm mà không nghĩ là bốc đồng; năng lực hành động là sự hợp nhất của cả hai.",
+      "cardSummary": "Một vòng nghĩ-làm dạy nhiều hơn mười vòng nghĩ-nghĩ-nghĩ.",
+      "tags": [
+        "Thoughts",
+        "Hành động",
+        "Năng suất",
+        "Chủ động"
+      ]
+    },
+    {
+      "slug": "thinking-excuses",
+      "title": "Khi suy nghĩ trở thành cái cớ",
+      "summary": "Tôi từng mang một niềm tin ảo tưởng rằng suy nghĩ là lời giải cho mọi thứ. Nó trở thành cái cớ để tôi né hành động, khoác lên mình bộ trang phục của sự chuyên cần. Phép tính khó chịu: những ý tưởng mới mất dần trọng lượng trong khi ý tưởng hiện tại còn nằm đó chưa được thử — và suy nghĩ quyến rũ chính vì, trong đầu bạn, ý tưởng còn nguyên vẹn không tì vết.",
+      "cardSummary": "Suy nghĩ không mang rủi ro thất bại — và chính vì thế nó là một chỗ trốn quá đỗi dễ chịu.",
+      "tags": [
+        "Thoughts",
+        "Trì hoãn",
+        "Hành động",
+        "Tự nhận thức"
+      ]
+    },
+    {
+      "slug": "trust",
+      "title": "Niềm tin",
+      "summary": "'Mặc định là tin' là một trong số ít quy tắc ngón tay cái tôi thấy phổ quát. Niềm tin là một heuristic giải phóng dung lượng tâm trí — mặc định nghi ngờ mọi thứ sẽ làm tâm trí quá tải. Vậy mà vẫn có một lát nghi ngờ nép trong góc của mỗi niềm tin, và chính điều đó khiến cuộc sống là một fractal vô tận đáng để khám phá.",
+      "cardSummary": "Mặc định là tin — vì nghi ngờ mọi thứ là cái tải mà tâm trí đơn giản không gánh nổi.",
+      "tags": [
+        "Thoughts",
+        "Niềm tin",
+        "Heuristic",
+        "Triết lý sống"
+      ]
+    },
+    {
+      "slug": "vocabulary-as-api-for-second-brain",
+      "title": "Vốn từ phong phú, nhất quán là API tốt nhất cho bộ não thứ hai",
+      "summary": "Vault của bạn là một đồ thị, nhưng bạn điều hướng nó bằng từ ngữ: đặt tên cùng một ý là 'information overload' lần này rồi 'consumption trap' lần sau, và hai ghi chú ấy không bao giờ gặp nhau. Vốn từ nhất quán là hệ dây dẫn nhất quán — và vốn từ phong phú không chỉ giúp truy xuất, nó định hình cả những gì bạn nghĩ được ngay từ đầu.",
+      "cardSummary": "Đổi tên endpoint là mọi client gãy — từ ngữ trong bộ não thứ hai của bạn cũng y như vậy.",
+      "tags": [
+        "Thoughts",
+        "Quản lý tri thức",
+        "Vốn từ",
+        "Ghi chú"
+      ]
+    },
+    {
+      "slug": "what-if-i-found-a-startup",
+      "title": "Nếu tôi khởi nghiệp thì sao",
+      "summary": "Nếu ngày mai tôi lập một công ty phần mềm, đây là những nguyên tắc tôi sẽ mã hóa vào DNA của nó trước khi viết một dòng code: mặc định cởi mở, quan điểm mạnh nhưng giữ lỏng, không có 'thiên tài khó ở', tuyển dụng builder-first qua contract-to-hire, các pod nhỏ thay cho quản lý cấp trung, một 'glory list' thay cho OKR, và một giao thức giao tiếp coi mention như hộp thư.",
+      "cardSummary": "Công ty tôi sẽ dựng, được viết ra từ trước khi có bất kỳ công ty nào để dựng.",
+      "tags": [
+        "Thoughts",
+        "Khởi nghiệp",
+        "Văn hóa",
+        "Tuyển dụng"
+      ]
+    },
+    {
+      "slug": "work-messages-aggressive-bias",
+      "title": "Thiên kiến hung hăng trong tin nhắn công việc",
+      "summary": "Cùng những lời nói nhẹ nhàng qua bàn họp lại mang theo một lưỡi dao không chủ ý khi nằm trong khung chat — không có gương mặt hay giọng nói để bám vào, tâm trí lấp khoảng trống bằng phỏng đoán tệ nhất của nó. Vì thiên kiến này đoán trước được, hãy bù trừ từ cả hai phía: gửi ấm hơn một nấc so với tự nhiên, và đọc dịu xuống vài nấc so với cảm nhận.",
+      "cardSummary": "Một chữ 'ok' cụt lủn nhiều khả năng nghĩa là người ta đang bận, hơn là đang khó chịu với bạn.",
+      "tags": [
+        "Thoughts",
+        "Giao tiếp",
+        "Làm việc từ xa",
+        "Làm việc nhóm"
+      ]
+    },
+    {
+      "slug": "write-to-attend",
+      "title": "Viết để chú tâm",
+      "summary": "Một kiểu viết mà trang giấy không phải đích đến — chính việc viết mới là. Ghi chú thoáng qua, nét vẽ nguệch ngoạc, chữ viết trên tablet: cốt lõi là sự hiện diện, để một phần trong bạn chủ động vươn về phía ý nghĩ. Bắt đầu không ma sát, dùng xong là bỏ — xử lý chúng, rồi vứt đi.",
+      "cardSummary": "Trang giấy không phải đích đến; chính việc viết mới là.",
+      "tags": [
+        "Thoughts",
+        "Viết",
+        "Chú tâm",
+        "Hiện diện"
+      ]
+    },
+    {
+      "slug": "write-to-understand-and-transfer",
+      "title": "Viết để hiểu và để truyền đạt",
+      "summary": "Viết thành câu hoàn chỉnh là cách tàn nhẫn để lộ ra những lỗ hổng trong hiểu biết của bạn — trong đầu bạn có thể gật gù với một ý tưởng, nhưng trên trang giấy mọi khoảng trống đều tự xưng tên. Nhọc công mà cũng đầy vui thú, đó là cách permanent notes ra đời; và nếu một ghi chú đọc lại thấy nhạt, nghĩa là ý nghĩ chưa từng được ghim xuống thật sự.",
+      "cardSummary": "Trong đầu, bạn có thể gật gù với một ý tưởng — trên trang giấy, mọi lỗ hổng đều tự xưng tên.",
+      "tags": [
+        "Thoughts",
+        "Viết",
+        "Thấu hiểu",
+        "Chia sẻ tri thức"
+      ]
+    },
+    {
+      "slug": "ai-reduces-the-information-privilege",
+      "title": "AI làm giảm đặc quyền thông tin",
+      "summary": "Suốt phần lớn lịch sử, biết là một thứ quyền lực được chia khẩu phần — gác cổng bởi học vấn, địa lý, ngôn ngữ, quan hệ. AI lặng lẽ rút cạn con hào ấy: thông tin thôi khan hiếm, và thứ trở nên giá trị là mọi điều xung quanh nó — tư duy trừu tượng, đặt câu hỏi chất lượng, thẩm định câu trả lời. Dữ kiện giờ là hàng hóa phổ thông; cách đóng khung mới là lợi thế.",
+      "cardSummary": "Nút thắt đã dời từ 'mình có thông tin chưa?' sang 'mình đóng khung được điều mình thật sự muốn chưa?'",
+      "tags": [
+        "Thoughts",
+        "AI",
+        "Học tập",
+        "Đặt câu hỏi"
+      ]
+    },
+    {
+      "slug": "why-taking-notes",
+      "title": "Tại sao phải ghi chú?",
+      "summary": "Một chồng ghi chú bạn không bao giờ quay lại chỉ là một kiểu bừa bộn gọn gàng hơn. Ghi chú xứng đáng tồn tại vì một lý do khiêm tốn hơn: tâm trí tuyệt vời ở việc nghĩ và tệ hại ở việc lưu. Một ghi chú tốt lập trình cho phiên bản tương lai của bạn và mang tiếp những gì bạn từng hiểu — và tay nghề của ghi chú quyết định bao nhiêu phần bị mất trong cú chuyển giao ấy.",
+      "cardSummary": "Tâm trí ta tuyệt vời ở việc nghĩ và tệ hại ở việc lưu — một ghi chú tốt là một tuyến phòng thủ nhỏ.",
+      "tags": [
+        "Thoughts",
+        "Ghi chú",
+        "Trí nhớ",
+        "Quản lý tri thức"
+      ]
+    },
+    {
+      "slug": "perfect-tools-syndrome",
+      "title": "Hội chứng công cụ hoàn hảo",
+      "summary": "Có một nỗi mệt chẳng liên quan gì tới công việc: cuộc truy tìm bất tận chiếc app đúng, những buổi tối mất vào một bộ setup bạn sẽ bỏ trong vòng một tháng. Cái bẫy cho cảm giác năng suất — chọn công cụ thì cụ thể theo cách mà vấn đề thật thường không có. Cú chuyển trong một dòng: thôi cố chọn cái tốt nhất, bắt đầu tận dụng tối đa cái đang có.",
+      "cardSummary": "Thôi cố chọn cái tốt nhất — hãy bắt đầu tận dụng tối đa cái đang có trong tay.",
+      "tags": [
+        "Thoughts",
+        "Công cụ",
+        "Năng suất",
+        "Tập trung"
+      ]
+    },
+    {
+      "slug": "articulation-skill",
+      "title": "Kỹ năng diễn đạt",
+      "summary": "Diễn đạt là sự kiểm chứng tối hậu của tư duy: nếu bạn không đặt được một ý tưởng thành lời — khi viết, khi nói, hay trong một prompt — thì hoặc ý nghĩ chưa từng được kết luận, hoặc bạn chưa thật sự hiểu nó. Cảm giác dễ chịu 'mình hiểu rồi' sống vô hạn trong đầu, vì cái đầu không bao giờ đòi các mảnh phải khớp nhau. Trang giấy thì có.",
+      "cardSummary": "Viết là tư duy, không chỉ là bản ghi của nó — trang giấy là nơi tư duy thật sự được hoàn tất.",
+      "tags": [
+        "Thoughts",
+        "Viết",
+        "Tư duy",
+        "Giao tiếp"
+      ]
+    },
+    {
+      "slug": "the-physics-laws-of-life",
+      "title": "Những quy luật vật lý của cuộc sống",
+      "summary": "Vài khuôn mẫu lặp lại đáng tin tới mức chúng giống định luật vật lý hơn lời khuyên: quán tính (khởi động tốn hơn duy trì), trọng lực (nhắm nhỉnh hơn năng lực hiện tại một chút), entropy (bỏ mặc là mọi thứ rã ra — trật tự cần năng lượng liên tục), và sóng (đáy thấp chính là thứ làm nên đỉnh cao).",
+      "cardSummary": "Mượn từ thế giới vật chất và năng lượng — nhưng ràng buộc thói quen, công việc và các mối quan hệ chẳng kém phần.",
+      "tags": [
+        "Thoughts",
+        "Mental Models",
+        "Thói quen",
+        "Bài học cuộc sống"
       ]
     }
   ]

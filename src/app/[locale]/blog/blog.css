@@ -1316,6 +1316,13 @@
 }
 .blog-explorer .blog-card__summary {
   flex: 1 1 auto;
+  /* Keep cards compact + uniform: cap the hook at three lines so a long
+     fallback summary can never blow out the card height. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
 }
 
 /* ---- empty state ---- */
