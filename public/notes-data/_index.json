@@ -33,6 +33,29 @@
   ],
   "posts": [
     {
+      "slug": "inductive-and-deductive-thinking",
+      "title": "Two Ways of Thinking: How Induction and Deduction Quietly Shape Your Career and Your Relationships",
+      "summary": "Two people can meet the same idea and reach for opposite tools: one trusts what they have lived (induction), the other reasons down from what must be true (deduction). A warm, office-relatable reflection — from the inductivist turkey to Steve Jobs, Mark Zuckerberg and Elon Musk's First Principles Thinking — on when to experiment and when to hold a principle, across building a career and reading the people you let close. The big turns are rarely a single bright moment; they are the surfacing of a long, quiet accumulation.",
+      "date": "2026-06-12",
+      "readingMinutes": 13,
+      "tags": [
+        "Inductive Reasoning",
+        "Deductive Reasoning",
+        "First Principles Thinking",
+        "Decision Making",
+        "Career Growth",
+        "Personal Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
       "slug": "mua-xe-lan-dau-chi-phi-va-quyet-dinh",
       "title": "Mua xe lần đầu — toàn bộ chi phí và quyết định trước khi xuống tiền",
       "summary": "Một chiếc xe có thể là công cụ nâng tầm cuộc sống của bạn — hoặc một cái hố ngốn tiền âm thầm kéo bạn lùi lại nhiều năm. Khác biệt không nằm ở chiếc xe, mà ở cách bạn ra quyết định mua nó. Giống như mua nhà, mua xe là một trong những khoản chi lớn nhất đời người, nhưng hầu hết chúng ta lại quyết định nó bằng cảm xúc và chỉ nhìn vào mỗi con số trên bảng giá. Bài này là tấm bản đồ đầy đủ cho người mua xe lần đầu: câu hỏi quan trọng nhất phải tự trả lời trước, toàn bộ tảng băng chi phí sở hữu mà giá xe chỉ là phần nổi, cách đặt ngân sách để xe không bóp nghẹt tài chính, mua mới hay cũ, trả thẳng hay trả góp, chọn xe theo nhu cầu thật, và cách vượt qua những cái bẫy ở phòng trưng bày.",
