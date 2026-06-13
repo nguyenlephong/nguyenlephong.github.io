@@ -112,6 +112,7 @@ export default async function NotesPage({ params }: Props) {
       "@type": "Article",
       headline: n.title,
       url: canonicalFor(locale, `/notes/${n.slug}`),
+      image: canonicalFor(locale, `/notes/${n.slug}/opengraph-image`),
       datePublished: n.date
     }))
   };

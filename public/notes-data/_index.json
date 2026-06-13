@@ -3,7 +3,7 @@
     {
       "id": "mua-nha",
       "label": "Mua nhà",
-      "description": "Kinh nghiệm thực tế từ quá trình tìm kiếm, đánh giá và xuống tiền mua bất động sản.",
+      "description": "Những ghi chép thực tế về mua nhà: tài chính, pháp lý, vị trí, quy trình, chất lượng nhà và các quyết định cần nhìn bằng sự bình tĩnh.",
       "color": "#059669"
     },
     {
@@ -25,6 +25,12 @@
       "color": "#7c3aed"
     },
     {
+      "id": "sach",
+      "label": "Book Notes",
+      "description": "Reading notes and reflections from books, translated into practical ideas for work, study, and personal growth.",
+      "color": "#0f766e"
+    },
+    {
       "id": "goc-nhin",
       "label": "Perspectives & Reflections",
       "description": "Personal reflections on life, work, and the questions that don't have tidy answers.",
@@ -39,10 +45,58 @@
   ],
   "posts": [
     {
+      "slug": "tam-ly-hoc-hanh-vi-katy-milkman",
+      "title": "How to Change by Katy Milkman: Durable Change Starts in Small Places",
+      "summary": "Katy Milkman’s How to Change is less about making louder promises and more about designing the small moments around us: fresh starts, temptation bundling, commitment devices, implementation intentions, friction, confidence, and social proof. This book note keeps the focus on what can be used in work, learning, and everyday life: calm systems, small cues, humane commitments, and the quiet accumulation that makes visible change possible.",
+      "cardSummary": "Durable change often begins with a better-designed moment, not a louder promise.",
+      "date": "2026-06-13",
+      "readingMinutes": 11,
+      "tags": [
+        "Book Notes",
+        "Behavior Change",
+        "Katy Milkman",
+        "Habits",
+        "Personal Development",
+        "Workplace"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "sach",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "dung-bao-gio-di-an-mot-minh-keith-ferrazzi",
+      "title": "Never Eat Alone by Keith Ferrazzi and Tahl Raz: Relationships Are Built Before You Need Them",
+      "summary": "Never Eat Alone is not a book about collecting contacts. It is a book about becoming present in the right rooms, doing meaningful work, giving without keeping score, preparing before conversations, following up with care, and staying valuable enough that relationships can grow naturally. This book note reads networking as a calm long game: less transaction, more shared context, generosity, preparation, and quiet consistency.",
+      "cardSummary": "Good relationships are built before they are needed, then kept warm with care.",
+      "date": "2026-06-13",
+      "readingMinutes": 12,
+      "tags": [
+        "Book Notes",
+        "Networking",
+        "Keith Ferrazzi",
+        "Relationships",
+        "Career Growth",
+        "Communication"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "sach",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
       "slug": "the-space-between-feeling-and-doing",
-      "title": "The Space Between What You Feel and What You Do: Where Almost Everything Is Decided",
-      "summary": "A message lands, your chest tightens, and your fingers are already typing the reply — what feels like one motion is really two: a feeling, then a response, with a thin sliver of space between them. A warm, office-relatable reflection on that space: why almost every escalation starts from one small, unnoticed charge; how a feeling is information, not an instruction; what it looks like to notice and name the charge before it drives you; and why the calm people you admire weren't born unshakeable — their composure is a thousand small pauses, quietly compounded.",
-      "cardSummary": "A feeling lands, then you react — and almost everything is decided in the thin gap between.",
+      "title": "The Pause Between Feeling and Response: Where Better Choices Begin",
+      "summary": "A message lands, your chest tightens, and your fingers are already typing the reply. What feels like one motion is often two: a feeling, then a response, with a small pause between them. This reflection looks at that pause in ordinary workplace moments: why escalation often begins with one unnoticed charge, how a feeling can be treated as information rather than instruction, and why composure is usually built from many small pauses repeated over time.",
+      "cardSummary": "A feeling is information, not an instruction; the pause is where choice begins.",
       "date": "2026-06-12",
       "readingMinutes": 11,
       "tags": [
@@ -64,9 +118,9 @@
     },
     {
       "slug": "the-foundation-comes-first",
-      "title": "The Foundation Comes First: Why Every “Overnight” Rise Was Built in the Years No One Saw",
-      "summary": "A teammate gets promoted “out of nowhere,” and we call it luck or timing — but the leap everyone sees is almost always the last inch of a runway laid down, unseen, for years. A warm, office-relatable reflection on the foundation you build before anyone is watching: why time, not money, is the thing that quietly charges interest; why the easy road narrows while the harder one widens; the order that actually bears weight — direction, resolve, capability, contribution; and why getting a little more right each day beats waiting for a single bright moment. Big changes are rarely sudden; they are a long, quiet accumulation finally surfacing.",
-      "cardSummary": "Every “overnight” rise was built in the years no one was watching.",
+      "title": "The Foundation Comes First: Visible Progress Is Built Before Anyone Notices",
+      "summary": "A teammate gets promoted and it looks sudden from the outside. Look closer and the visible step is usually the last inch of a runway built quietly over years. This reflection is about the foundation beneath progress: time, direction, resolve, capability and contribution; why the easy road can narrow while the harder road widens; and why getting a little more right each day matters more than waiting for one bright moment.",
+      "cardSummary": "Visible progress is usually quiet accumulation finally becoming visible.",
       "date": "2026-06-12",
       "readingMinutes": 12,
       "tags": [
@@ -88,9 +142,9 @@
     },
     {
       "slug": "inductive-and-deductive-thinking",
-      "title": "Two Ways of Thinking: How Induction and Deduction Quietly Shape Your Career and Your Relationships",
-      "summary": "Two people can meet the same idea and reach for opposite tools: one trusts what they have lived (induction), the other reasons down from what must be true (deduction). A warm, office-relatable reflection — from the inductivist turkey to Steve Jobs, Mark Zuckerberg and Elon Musk's First Principles Thinking — on when to experiment and when to hold a principle, across building a career and reading the people you let close. The big turns are rarely a single bright moment; they are the surfacing of a long, quiet accumulation.",
-      "cardSummary": "Trust what you’ve lived, or reason down from what must be true? Knowing when decides a lot.",
+      "title": "Two Ways of Thinking: How Induction and Deduction Shape Work and Relationships",
+      "summary": "Two people can meet the same idea and reach for different tools: one trusts what they have lived, the other reasons from a principle. This article uses induction and deduction to think about career decisions, product work, first-principles thinking, and the people we let close. The point is not to choose one forever, but to know when to experiment from evidence and when to hold a principle steady.",
+      "cardSummary": "Good judgement often comes from knowing when to observe and when to reason from first principles.",
       "date": "2026-06-12",
       "readingMinutes": 13,
       "tags": [
@@ -112,9 +166,9 @@
     },
     {
       "slug": "mua-xe-lan-dau-chi-phi-va-quyet-dinh",
-      "title": "Mua xe lần đầu — toàn bộ chi phí và quyết định trước khi xuống tiền",
-      "summary": "Một chiếc xe có thể là công cụ nâng tầm cuộc sống của bạn — hoặc một cái hố ngốn tiền âm thầm kéo bạn lùi lại nhiều năm. Khác biệt không nằm ở chiếc xe, mà ở cách bạn ra quyết định mua nó. Giống như mua nhà, mua xe là một trong những khoản chi lớn nhất đời người, nhưng hầu hết chúng ta lại quyết định nó bằng cảm xúc và chỉ nhìn vào mỗi con số trên bảng giá. Bài này là tấm bản đồ đầy đủ cho người mua xe lần đầu: câu hỏi quan trọng nhất phải tự trả lời trước, toàn bộ tảng băng chi phí sở hữu mà giá xe chỉ là phần nổi, cách đặt ngân sách để xe không bóp nghẹt tài chính, mua mới hay cũ, trả thẳng hay trả góp, chọn xe theo nhu cầu thật, và cách vượt qua những cái bẫy ở phòng trưng bày.",
-      "cardSummary": "Một chiếc xe có thể nâng tầm cuộc sống — hoặc âm thầm ngốn tiền kéo bạn lùi nhiều năm.",
+      "title": "Mua xe lần đầu — nhìn đủ chi phí trước khi xuống tiền",
+      "summary": "Một chiếc xe có thể giúp cuộc sống chủ động hơn: đi làm thuận tiện, đưa gia đình đi xa, xử lý việc cá nhân linh hoạt hơn. Nhưng xe cũng là một quyết định tài chính lớn, vì chi phí thật không nằm riêng ở giá niêm yết mà còn ở thuế phí lăn bánh, bảo hiểm, gửi xe, bảo dưỡng, nhiên liệu, sửa chữa và khấu hao. Bài này giữ lại toàn bộ bản đồ cho người mua xe lần đầu: câu hỏi có thật sự cần sở hữu xe không, cách tính total cost of ownership, đặt ngân sách để xe không làm hẹp kế hoạch tài chính, mua mới hay cũ, trả thẳng hay trả góp, chọn xe theo nhu cầu thật và cách giữ bình tĩnh trước các gói bán kèm ở showroom.",
+      "cardSummary": "Mua xe nên bắt đầu từ tổng chi phí sở hữu, không chỉ từ cảm xúc khi nhìn bảng giá.",
       "date": "2026-06-02",
       "readingMinutes": 17,
       "tags": [
@@ -132,9 +186,9 @@
     },
     {
       "slug": "lam-chu-su-nghiep-bien-cong-viec-thanh-be-phong",
-      "title": "Làm chủ sự nghiệp — biến công việc thành bệ phóng, không phải nơi mắc kẹt",
-      "summary": "Phần lớn chúng ta được dạy cách làm tốt công việc, nhưng không ai dạy cách làm chủ sự nghiệp của mình. Thế là nhiều người đi làm chăm chỉ hàng chục năm, trung thành và tận tụy, để rồi một ngày nhìn lại và tự hỏi vì sao mình vẫn ở nguyên chỗ cũ, trong khi những người không giỏi hơn lại tiến xa. Sự thật là: sự nghiệp không phải thứ công ty trao cho bạn, mà là thứ bạn phải chủ động xây. Bài này thay đổi cách bạn nhìn về công việc của mình — từ giá trị thị trường quyết định mức lương, cách xây bộ kỹ năng vừa sâu vừa rộng, nghệ thuật tăng thu nhập qua giá trị và qua đàm phán, vì sao làm tốt thôi chưa đủ, khi nào nên ở lại và khi nào nên ra đi, đến những cái bẫy âm thầm giữ chân bạn ở vùng an toàn.",
-      "cardSummary": "Ai cũng được dạy làm tốt công việc — nhưng không ai dạy cách làm chủ sự nghiệp của mình.",
+      "title": "Làm chủ sự nghiệp — biến công việc thành nền tảng phát triển dài hạn",
+      "summary": "Làm tốt công việc là điều cần thiết, nhưng sự nghiệp không tự lớn lên chỉ nhờ chăm chỉ và chờ được ghi nhận. Người đi làm cần học cách nhìn mình như một người đang quản trị tài sản nghề nghiệp: hiểu market value, xây kỹ năng T-shaped, nâng giá trị tạo ra, biết đàm phán bằng dữ kiện, để thành quả được nhìn thấy, xây quan hệ chân thành và định kỳ đánh giá nên ở lại hay chuyển hướng. Bài này giữ lại đầy đủ các điểm quan trọng đó, nhưng đặt chúng trong một giọng văn bình tĩnh hơn: không thúc ép, không dạy đời, chỉ giúp bạn có thêm một bản đồ để đi đường dài.",
+      "cardSummary": "Sự nghiệp bền vững đến từ việc chủ động quản trị giá trị, kỹ năng, quan hệ và lựa chọn dài hạn.",
       "date": "2026-06-02",
       "readingMinutes": 18,
       "tags": [
@@ -152,9 +206,9 @@
     },
     {
       "slug": "lap-ngan-sach-lam-chu-dong-tien",
-      "title": "Lập ngân sách & làm chủ dòng tiền — bản kế hoạch cho từng đồng bạn kiếm được",
-      "summary": "Nhiều người nghe đến \"lập ngân sách\" là thấy ngột ngạt, hình dung ngay những bảng tính chi chít và một cuộc sống bị cấm đoán đủ thứ. Nhưng ngân sách thật ra là điều ngược lại: nó không phải sợi dây trói, mà là tấm bản đồ cho bạn biết tiền của mình đang đi đâu và được phép đi đâu — để bạn tiêu mà không áy náy, và để dành mà không phải nghiến răng. Bài này hướng dẫn ba phương pháp lập ngân sách phổ biến và dễ áp dụng nhất cho người đi làm: quy tắc 50/30/20, phương pháp hũ tiền, và zero-based budgeting; cách chọn cái hợp với mình, cách tự động hóa để không phụ thuộc ý chí, và cách theo dõi điều chỉnh mỗi tháng. Làm chủ dòng tiền là bước đầu tiên biến mọi mục tiêu tài chính thành hiện thực.",
-      "cardSummary": "Ngân sách không phải sợi dây trói — nó là tấm bản đồ cho từng đồng bạn kiếm được.",
+      "title": "Lập ngân sách & làm chủ dòng tiền — bản đồ nhẹ nhàng cho từng đồng bạn kiếm được",
+      "summary": "Lập ngân sách không phải là tự cấm mình tận hưởng cuộc sống. Đúng hơn, đó là cách nhìn rõ tiền đang đi đâu, khoản nào dành cho nhu cầu, khoản nào dành cho niềm vui, và khoản nào cần được giữ lại cho tương lai. Bài này giữ lại ba phương pháp dễ áp dụng cho người đi làm: quy tắc 50/30/20, phương pháp hũ tiền và zero-based budgeting; kèm cách chọn phương pháp hợp với mình, tự động hóa ngày nhận lương và điều chỉnh ngân sách mỗi tháng mà không tự trách.",
+      "cardSummary": "Ngân sách không phải khuôn ép; nó là bản đồ giúp từng đồng có một nhiệm vụ rõ ràng.",
       "date": "2026-06-02",
       "readingMinutes": 15,
       "tags": [
@@ -172,9 +226,9 @@
     },
     {
       "slug": "quy-khan-cap-tu-a-den-z",
-      "title": "Quỹ khẩn cấp từ A đến Z — tấm đệm cứu bạn khỏi cú ngã tài chính",
-      "summary": "Cuộc đời không hỏi ý kiến bạn trước khi giáng một cú: chiếc xe chết máy giữa đường, một lần nhập viện bất ngờ, hay tệ hơn — một email sa thải vào sáng thứ Hai. Người không có quỹ khẩn cấp, mỗi cú như thế đều có thể đẩy họ vào nợ nần và phá tan mọi kế hoạch tài chính. Người có quỹ khẩn cấp chỉ coi đó là một sự cố khó chịu rồi đi tiếp. Quỹ khẩn cấp là nền móng của mọi sự an toàn tài chính — quan trọng hơn cả đầu tư. Bài này trả lời đầy đủ: vì sao nó là ưu tiên số một, bao nhiêu là đủ cho hoàn cảnh của bạn, nên để tiền ở đâu, khi nào được dùng và khi nào tuyệt đối không, cách xây dần từ con số 0, và cách tái lập sau khi đã dùng.",
-      "cardSummary": "Cuộc đời không báo trước khi giáng một cú. Quỹ khẩn cấp là tấm đệm giữ bạn không ngã.",
+      "title": "Quỹ khẩn cấp từ A đến Z — tấm đệm giúp bạn đi qua biến cố",
+      "summary": "Một khoản dự phòng không làm tài sản tăng lên ngay, nhưng giúp bạn bình tĩnh hơn khi cuộc sống có biến cố: giảm thu nhập, chi phí y tế, xe hỏng, nhà cần sửa hoặc một việc gia đình cần tiền gấp. Bài này giữ lại đầy đủ cách tính quỹ khẩn cấp theo 3–6 tháng chi phí thiết yếu, khi nào cần 9–12 tháng, nên để tiền ở đâu, khi nào được dùng, khi nào nên có sinking fund riêng và cách tái lập quỹ sau khi đã dùng.",
+      "cardSummary": "Quỹ khẩn cấp là tấm đệm giúp một biến cố không làm lệch toàn bộ kế hoạch tài chính.",
       "date": "2026-06-02",
       "readingMinutes": 13,
       "tags": [
@@ -192,9 +246,9 @@
     },
     {
       "slug": "thoat-no-thong-minh",
-      "title": "Thoát nợ thông minh — đường ra khỏi vòng xoáy nợ nần",
-      "summary": "Nợ không phải lúc nào cũng xấu — một khoản vay đúng chỗ có thể là bệ phóng. Nhưng có một loại nợ âm thầm bào mòn tương lai của hàng triệu người đi làm: nợ tiêu dùng lãi cao, đặc biệt là thẻ tín dụng. Nó được thiết kế để bạn chỉ trả phần tối thiểu, để rồi mắc kẹt nhiều năm trong một vòng xoáy mà lãi mẹ đẻ lãi con. Bài này giúp bạn phân biệt nợ tốt và nợ xấu, hiểu vì sao trả tối thiểu là cái bẫy, và đi qua hai chiến lược thoát nợ đã được kiểm chứng — debt snowball và debt avalanche — kèm cách chọn cái hợp với mình, cách thương lượng lãi suất, và quan trọng nhất: cách không bao giờ rơi lại vào hố nợ một lần nữa.",
-      "cardSummary": "Có một loại nợ được thiết kế để giữ bạn mắc kẹt nhiều năm. Đây là đường ra.",
+      "title": "Thoát nợ thông minh — từng bước xử lý nợ lãi cao",
+      "summary": "Không phải khoản vay nào cũng xấu. Một khoản vay đúng bối cảnh có thể giúp học tập, mua nhà hoặc mở rộng cơ hội. Nhưng nợ tiêu dùng lãi cao, đặc biệt là dư nợ thẻ tín dụng chỉ trả tối thiểu, có thể bào mòn dòng tiền rất nhanh. Bài này giúp phân biệt nợ tốt và nợ xấu, hiểu rủi ro của trả tối thiểu, lập danh sách nợ, chọn giữa debt snowball và debt avalanche, thương lượng lãi suất và tạo hệ thống để không quay lại vòng nợ cũ.",
+      "cardSummary": "Thoát nợ bắt đầu từ việc nhìn rõ từng khoản, rồi xử lý đều đặn theo một chiến lược phù hợp.",
       "date": "2026-06-02",
       "readingMinutes": 16,
       "tags": [
@@ -212,9 +266,9 @@
     },
     {
       "slug": "dau-tu-cho-nguoi-moi-bat-dau",
-      "title": "Đầu tư cho người mới bắt đầu — bắt đầu từ đâu khi bạn chưa biết gì",
-      "summary": "Đầu tư nghe có vẻ là sân chơi của người giàu, của dân tài chính, của những bảng giá nhấp nháy mà người bình thường nhìn vào chỉ thấy hoa mắt. Nhưng sự thật là: bạn càng có ít tiền, càng cần để số tiền đó làm việc cho mình — vì lạm phát không tha một ai. Bài này được viết cho người chưa từng đầu tư một đồng nào: vì sao tiền để yên là tiền đang teo lại, những việc phải làm xong trước khi đầu tư đồng đầu tiên, các kênh đầu tư phổ biến ở Việt Nam và mức rủi ro của từng kênh, vì sao chứng chỉ quỹ và index fund là cánh cửa dễ nhất cho người mới, cùng những nguyên tắc vàng giúp bạn không mất tiền oan trong những năm đầu tiên.",
-      "cardSummary": "Càng ít tiền càng cần để tiền làm việc cho mình — bắt đầu từ con số không.",
+      "title": "Đầu tư cho người mới bắt đầu — bắt đầu từ nền móng vững",
+      "summary": "Đầu tư không cần bắt đầu bằng một số tiền lớn hay những bảng giá phức tạp. Điều quan trọng hơn là hiểu vì sao tiền cần được bảo vệ trước lạm phát, hoàn thành các nền móng trước khi xuống tiền, và chọn kênh phù hợp với mục tiêu, thời hạn và khẩu vị rủi ro của mình. Bài này giữ lại bản đồ các kênh phổ biến ở Việt Nam, vì sao chứng chỉ quỹ và index fund thường dễ tiếp cận với người mới, cùng những nguyên tắc giúp tránh sai lầm trong những năm đầu.",
+      "cardSummary": "Người mới nên bắt đầu đầu tư từ nền móng, mục tiêu và kỷ luật đều đặn.",
       "date": "2026-06-02",
       "readingMinutes": 17,
       "tags": [
@@ -232,9 +286,9 @@
     },
     {
       "slug": "lam-phat-va-suc-mua",
-      "title": "Lạm phát & sức mua — vì sao tiền của bạn teo dần mỗi năm",
-      "summary": "Ông bà ta từng kể một bát phở giá vài đồng, cha mẹ ta nhớ thời ly cà phê vài nghìn — và bạn thì đang trả gấp nhiều lần cho đúng những thứ đó. Đó không phải vì mọi thứ \"đắt lên\" một cách ngẫu nhiên, mà là lạm phát: một lực âm thầm, đều đặn, làm đồng tiền mất giá theo thời gian. Hiểu lạm phát là hiểu vì sao để tiền nằm yên lại là một quyết định thua lỗ chắc chắn, vì sao người gửi tiết kiệm cả đời vẫn nghèo đi, và vì sao đầu tư không phải lựa chọn xa xỉ mà là sự phòng vệ cần thiết. Bài này giải thích lạm phát bằng ngôn ngữ đời thường nhất, chỉ ra ai chịu thiệt nhiều nhất, và quan trọng nhất — cách bảo vệ sức mua của bạn trước kẻ trộm vô hình này.",
-      "cardSummary": "Tiền của bạn teo dần mỗi năm bởi một lực âm thầm, đều đặn mà ít ai để ý.",
+      "title": "Lạm phát & sức mua — vì sao tiền cần được bảo vệ theo thời gian",
+      "summary": "Lạm phát không làm con số trong tài khoản nhỏ đi, nhưng khiến cùng một số tiền mua được ít hơn theo thời gian. Hiểu điều này giúp ta nhìn khác đi về tiền mặt, gửi tiết kiệm, đầu tư và các mục tiêu dài hạn như nhà ở, học phí hay hưu trí. Bài này giải thích lạm phát bằng hình ảnh đời thường, dùng quy tắc 72 để thấy tác động dài hạn, chỉ ra nhóm dễ bị ảnh hưởng nhất và cách bảo vệ sức mua bằng đầu tư, quỹ tiền mặt hợp lý và năng lực kiếm tiền.",
+      "cardSummary": "Lạm phát là lực âm thầm làm sức mua giảm; hiểu nó giúp mình đặt tiền đúng vai trò.",
       "date": "2026-06-02",
       "readingMinutes": 12,
       "tags": [
@@ -252,9 +306,9 @@
     },
     {
       "slug": "bao-hiem-dung-va-du",
-      "title": "Bảo hiểm đúng & đủ — mua sự an tâm, không mua nỗi sợ",
-      "summary": "Bảo hiểm là một trong những chủ đề tài chính gây bối rối nhất: người thì xem là vô bổ ném tiền qua cửa sổ, người thì bị tư vấn mua chồng chất những gói không cần đến. Cả hai thái cực đều khiến bạn mất tiền. Sự thật nằm ở giữa: bảo hiểm là một công cụ chuyển giao rủi ro thông minh — bạn trả một khoản nhỏ đều đặn để một bên khác gánh giúp những rủi ro lớn mà bạn không thể tự gánh. Bài này giúp bạn hiểu bản chất bảo hiểm, phân biệt rạch ròi giữa bảo vệ và đầu tư (cái bẫy phổ biến nhất), biết loại nào thật sự cần với người đi làm, mua bao nhiêu là đủ, và cách đọc hợp đồng để không vỡ mộng đúng lúc cần dùng nhất.",
-      "cardSummary": "Mua bảo hiểm là mua sự an tâm — không phải mua nỗi sợ hay chồng chất gói thừa.",
+      "title": "Bảo hiểm đúng & đủ — mua sự bảo vệ, không mua nỗi lo",
+      "summary": "Bảo hiểm dễ gây bối rối vì vừa là sản phẩm tài chính, vừa gắn với những rủi ro không ai muốn nghĩ tới. Cách tiếp cận bình tĩnh hơn là xem bảo hiểm như công cụ chuyển giao rủi ro: mình trả một khoản phí để những biến cố lớn không làm lệch toàn bộ kế hoạch tài chính. Bài này giữ lại bản chất của bảo hiểm, cách tách bảo vệ khỏi đầu tư, các loại thường cần với người đi làm, cách xác định mức bảo vệ vừa đủ và những điều cần đọc kỹ trong hợp đồng.",
+      "cardSummary": "Bảo hiểm tốt là công cụ bảo vệ đúng rủi ro, đúng mức, đúng ngân sách.",
       "date": "2026-06-02",
       "readingMinutes": 14,
       "tags": [
@@ -272,9 +326,9 @@
     },
     {
       "slug": "tranh-bay-lua-dao-dau-tu",
-      "title": "Tránh bẫy lừa đảo đầu tư — khi \"cơ hội\" là cái bẫy",
-      "summary": "Mỗi năm, vô số người mất sạch tiền tiết kiệm cả đời — không phải vì họ ngốc, mà vì những kẻ lừa đảo ngày càng tinh vi và đánh trúng vào đúng điểm yếu tâm lý của tất cả chúng ta: lòng tham, nỗi sợ bỏ lỡ, và niềm tin vào người quen. Từ mô hình Ponzi đội lốt dự án hào nhoáng, đa cấp tài chính, các sàn forex và crypto ảo, đến những app đầu tư cho rút tiền vài lần đầu để dụ bạn nạp lớn — tất cả đều có chung một bộ khung mà một khi nhận ra, bạn sẽ thấy chúng ở khắp nơi. Bài này bóc tách tâm lý khiến người ta sập bẫy, những dấu hiệu nhận diện không bao giờ sai, các mô hình lừa đảo phổ biến nhất, và phải làm gì nếu chẳng may đã trót dính.",
-      "cardSummary": "Người mất sạch tiền tiết kiệm thường không ngốc — họ chỉ trúng đúng điểm yếu tâm lý.",
+      "title": "Tránh rủi ro lừa đảo đầu tư — nhận diện trước khi xuống tiền",
+      "summary": "Các mô hình lừa đảo đầu tư thường không bắt đầu bằng một lời mời đáng ngờ, mà bằng một câu chuyện nghe có vẻ hợp lý, có người quen giới thiệu và vài lần rút tiền nhỏ để tạo niềm tin. Bài này giữ lại các dấu hiệu cần cảnh giác: cam kết lợi nhuận cao, áp lực xuống tiền nhanh, mô hình không giải thích được nguồn lời, trả thưởng khi mời thêm người, khó rút tiền; đồng thời đi qua Ponzi, đa cấp tài chính, app đầu tư ảo, mạo danh chuyên gia và các bước cần làm nếu đã lỡ tham gia.",
+      "cardSummary": "Một cơ hội đầu tư đáng tin phải giải thích được tiền lời đến từ đâu và cho bạn thời gian kiểm chứng.",
       "date": "2026-06-02",
       "readingMinutes": 15,
       "tags": [
@@ -292,9 +346,9 @@
     },
     {
       "slug": "tai-chinh-theo-do-tuoi",
-      "title": "Tài chính theo độ tuổi — việc cần làm ở tuổi 20, 30 và 40",
-      "summary": "Cùng một lời khuyên tài chính không thể đúng cho tất cả mọi người, vì mỗi giai đoạn cuộc đời có một bài toán riêng. Tuổi 20 giàu thời gian nhưng ít tiền — vũ khí lớn nhất là sự bắt đầu sớm. Tuổi 30 thu nhập tăng nhưng trách nhiệm cũng nặng lên — gia đình, nhà cửa, con cái dồn đến cùng lúc. Tuổi 40 là đỉnh thu nhập và là cơ hội cuối để tăng tốc cho hưu trí. Bài này là tấm bản đồ tài chính theo từng thập niên: việc quan trọng nhất cần làm ở mỗi độ tuổi, những sai lầm điển hình phải tránh, và những nguyên tắc xuyên suốt không bao giờ lỗi thời — để dù bạn đang ở đâu trên hành trình, bạn cũng biết bước tiếp theo nên là gì.",
-      "cardSummary": "Cùng một lời khuyên tài chính không thể đúng cho tuổi 20, 30 và 40.",
+      "title": "Tài chính theo độ tuổi — việc nên ưu tiên ở tuổi 20, 30 và 40",
+      "summary": "Cùng một lời khuyên tài chính không thể đúng với mọi giai đoạn cuộc đời. Tuổi 20 có nhiều thời gian để học, hình thành thói quen và để lãi kép bắt đầu. Tuổi 30 thường có thêm thu nhập nhưng cũng thêm trách nhiệm về gia đình, nhà cửa và con cái. Tuổi 40 là lúc cần củng cố tài sản, nhìn lại hưu trí và cân bằng giữa hỗ trợ con cái với bảo vệ tương lai của chính mình. Bài này là bản đồ ưu tiên theo từng thập niên, không phải một khuôn mẫu cứng.",
+      "cardSummary": "Mỗi độ tuổi có một bài toán tài chính riêng; ưu tiên đúng giúp mình đi nhẹ hơn.",
       "date": "2026-06-02",
       "readingMinutes": 16,
       "tags": [
@@ -312,9 +366,9 @@
     },
     {
       "slug": "tien-bac-trong-gia-dinh",
-      "title": "Tiền bạc trong gia đình — nói chuyện tiền mà không cãi nhau",
-      "summary": "Tiền là một trong những nguyên nhân gây mâu thuẫn hàng đầu giữa các cặp vợ chồng — không phải vì thiếu tiền, mà vì thiếu sự thấu hiểu và một cách quản lý chung. Hai người lớn lên với hai quan niệm khác nhau về tiền, giờ phải gộp chung một dòng tiền, một tương lai — va chạm là điều khó tránh nếu không có thỏa thuận rõ ràng. Bài này nói về điều ít ai dạy: cách hai người cùng làm chủ tài chính gia đình mà không biến mỗi cuộc nói chuyện tiền thành một cuộc cãi vã. Từ việc hiểu vì sao tiền gây xung đột, chọn mô hình quản lý phù hợp, đặt mục tiêu chung, đến cách dạy con về tiền — để tiền trở thành thứ gắn kết gia đình thay vì chia rẽ nó.",
-      "cardSummary": "Tiền gây cãi vã không phải vì thiếu tiền — mà vì thiếu một cách quản lý chung.",
+      "title": "Tiền bạc trong gia đình — nói chuyện tiền một cách bình tĩnh",
+      "summary": "Nhiều cuộc căng thẳng trong gia đình tưởng là vì tiền, nhưng sâu hơn thường là vì cảm giác an toàn, quyền tự chủ, thói quen lớn lên và kỳ vọng chưa được nói rõ. Bài này giữ lại cách bắt đầu một cuộc nói chuyện tiền khi mọi thứ đang bình yên, ba mô hình quản lý tài chính gia đình, cách đóng góp công bằng khi thu nhập khác nhau, vai trò của mục tiêu chung và cách dạy con nhìn tiền như một kỹ năng sống lành mạnh.",
+      "cardSummary": "Nói chuyện tiền tốt hơn khi hai người cùng giải một bài toán chung, không phải tranh phần đúng sai.",
       "date": "2026-06-02",
       "readingMinutes": 14,
       "tags": [
@@ -332,9 +386,9 @@
     },
     {
       "slug": "thinh-vuong-tai-chinh-de-tien-lam-viec-cho-ban",
-      "title": "Thịnh vượng tài chính — lộ trình để tiền làm việc cho bạn",
-      "summary": "Giữ được tiền là phòng thủ. Thịnh vượng là tấn công. Phần lớn chúng ta dành cả đời đi làm để đổi thời gian lấy tiền — rồi tự hỏi vì sao mãi không khá lên, dù lương năm nào cũng tăng. Sự thật là người thịnh vượng không kiếm tiền giỏi hơn bạn nhiều đến thế; họ chỉ hiểu một thứ mà trường học không dạy: cách bắt tiền đi làm thay mình. Bài này vẽ ra lộ trình từ người đi làm bình thường đến tự do tài chính — bốn nấc thang tài chính, cỗ máy tạo của cải gồm ba đòn bẩy, cách xây nhiều nguồn thu nhập, sức mạnh thật sự của lãi kép, và những cái bẫy bóng bẩy khiến nhiều người trật đường ray. Không hứa hẹn làm giàu nhanh — chỉ là con đường bền vững mà ai cũng đi được.",
-      "cardSummary": "Giữ tiền là phòng thủ. Thịnh vượng là tấn công — và để tiền tự đi làm cho bạn.",
+      "title": "Thịnh vượng tài chính — lộ trình để tiền dần làm việc cho bạn",
+      "summary": "Thịnh vượng tài chính không nhất thiết là thu nhập thật cao hay một hình ảnh thành công bên ngoài. Nó gần hơn với câu hỏi: nếu thu nhập chính tạm dừng, bạn có bao nhiêu khoảng thở và tài sản của bạn đang hỗ trợ cuộc sống đến mức nào? Bài này giữ lại lộ trình từ ổn định dòng tiền đến tự do tài chính: phân biệt asset và liability, bốn nấc thang tài chính, ba đòn bẩy tạo tài sản, nhiều nguồn thu nhập, lãi kép, đầu tư đều đặn và những rủi ro bóng bẩy cần tránh.",
+      "cardSummary": "Thịnh vượng là khi tiền được đặt vào hệ thống để dần hỗ trợ cuộc sống, không chỉ nằm ở mức lương.",
       "date": "2026-06-02",
       "readingMinutes": 19,
       "tags": [
@@ -352,9 +406,9 @@
     },
     {
       "slug": "giu-tien-trong-tui-cach-de-giau",
-      "title": "Giữ được tiền trong túi — nghệ thuật làm giàu mà ít ai dạy bạn",
-      "summary": "Bạn không nghèo vì kiếm ít. Phần lớn chúng ta nghèo vì tiền cứ lặng lẽ chảy ra khỏi túi mỗi ngày — qua những khoản nhỏ tưởng vô hại, những cú click \"thanh toán\" lúc 11 giờ đêm, những gói subscription đã quên từ lâu. Giữ được tiền là một kỹ năng, và nó còn quan trọng hơn cả việc kiếm thêm. Bài này chia sẻ những cách rất đời thường để bịt các lỗ rò trong túi tiền, giữ lại nhiều hơn từ chính số tiền bạn đang có — với phương châm: giữ được tiền cũng là một cách để giàu.",
-      "cardSummary": "Bạn không nghèo vì kiếm ít — mà vì tiền cứ lặng lẽ rò khỏi túi mỗi ngày.",
+      "title": "Giữ được tiền trong túi — kỹ năng giữ lại giá trị mình tạo ra",
+      "summary": "Tăng thu nhập là quan trọng, nhưng nếu tiền liên tục rò qua những khoản nhỏ, gói subscription không dùng, phí tiện lợi, mua sắm theo cảm xúc hoặc lifestyle inflation, thì dòng tiền vẫn khó vững. Bài này giữ lại các cách rất đời thường để nhìn rõ sao kê 30 ngày, phân loại Cần / Muốn / Rò rỉ, kiểm soát latte factor, dùng pay yourself first, quy tắc 24 giờ, sinking fund, no-spend day và biến phần giữ được thành quỹ khẩn cấp rồi đầu tư đều đặn.",
+      "cardSummary": "Giữ tiền là kỹ năng nhìn rõ dòng tiền, bịt lỗ rò và giữ lại nhiều hơn từ giá trị mình tạo ra.",
       "date": "2026-06-01",
       "readingMinutes": 16,
       "tags": [
@@ -372,9 +426,9 @@
     },
     {
       "slug": "vay-ngan-hang-mua-nha-don-bay-thong-minh",
-      "title": "Vay ngân hàng mua nhà — dùng đòn bẩy một cách thông minh",
-      "summary": "Hầu hết chúng ta mua nhà bằng tiền của ngân hàng, không phải tiền của mình. Khoản vay đó có thể là bệ phóng đưa bạn tới căn nhà sớm hơn nhiều năm — hoặc là sợi dây thắt chặt dần qua từng kỳ trả nợ. Khác biệt nằm ở chỗ bạn hiểu nó đến đâu. Bài này giải thích cặn kẽ cách vay mua nhà cho người chưa từng vay: ba con số phải biết về chính mình, lãi suất cố định vs thả nổi và cái bẫy lãi ưu đãi năm đầu, cách so sánh các gói vay, có nên tất toán sớm, và phép thử quan trọng nhất — nếu lãi tăng mạnh, bạn còn trụ được không.",
-      "cardSummary": "Bạn mua nhà bằng tiền ngân hàng — đòn bẩy ấy là bệ phóng hay sợi dây thắt dần?",
+      "title": "Vay ngân hàng mua nhà: dùng đòn bẩy một cách tỉnh táo",
+      "summary": "Hầu hết chúng ta mua nhà bằng tiền của ngân hàng, không chỉ bằng tiền của mình. Khoản vay có thể giúp ta sở hữu căn nhà sớm hơn nhiều năm, nhưng cũng là một cam kết dài hạn với dòng tiền, lãi suất, quỹ dự phòng và sức chịu đựng của gia đình. Bài này giữ lại các con số cần biết, cách đọc lãi suất cố định và thả nổi, cách so sánh gói vay, câu chuyện tất toán sớm và phép thử quan trọng nhất: nếu lãi tăng, mình còn sống ổn không.",
+      "cardSummary": "Khoản vay mua nhà chỉ hữu ích khi mình hiểu rõ dòng tiền, lãi suất và biên an toàn.",
       "date": "2026-06-01",
       "readingMinutes": 15,
       "tags": [
@@ -392,9 +446,9 @@
     },
     {
       "slug": "dinh-gia-va-thuong-luong-gia-mua-nha",
-      "title": "Định giá & thương lượng — trả bao nhiêu cho một căn nhà là hợp lý?",
-      "summary": "Giá người bán đưa ra không phải là giá trị căn nhà — đó chỉ là điểm khởi đầu của một cuộc đối thoại. Người mua thiếu thông tin thường trả theo cảm xúc; người mua có thông tin trả theo dữ kiện, và tiết kiệm được cả trăm triệu chỉ nhờ biết cách nhìn và cách nói. Bài này hướng dẫn cách tự định giá một căn nhà bằng phương pháp comparable, nhận diện giá ảo và chiêu thổi giá, dùng định giá ngân hàng làm mỏ neo khách quan, và những kịch bản thương lượng thực tế — kể cả điều khó nhất: biết khi nào nên đứng dậy bỏ đi.",
-      "cardSummary": "Giá người bán đưa ra không phải giá trị căn nhà — chỉ là điểm bắt đầu của cuộc thương lượng.",
+      "title": "Định giá và thương lượng khi mua nhà: trả theo dữ kiện, không theo cảm xúc",
+      "summary": "Giá người bán đưa ra là điểm bắt đầu của một cuộc đối thoại, không phải kết luận cuối cùng. Người mua có dữ kiện sẽ bình tĩnh hơn khi so sánh comparable, nhận diện giá ảo, đọc định giá ngân hàng, tính chi phí sửa chữa và biết khi nào nên dừng lại. Bài này giữ lại các phương pháp định giá và kịch bản thương lượng thực tế, nhưng đặt chúng trong tinh thần tôn trọng và bảo vệ biên an toàn.",
+      "cardSummary": "Thương lượng tốt không phải thắng người bán, mà là bảo vệ quyết định của mình.",
       "date": "2026-06-01",
       "readingMinutes": 13,
       "tags": [
@@ -412,9 +466,9 @@
     },
     {
       "slug": "chon-vi-tri-va-quy-hoach-khi-mua-nha",
-      "title": "Vị trí & quy hoạch — thứ duy nhất bạn không bao giờ sửa được",
-      "summary": "Bạn có thể sửa nhà, đổi nội thất, thậm chí đập đi xây lại — nhưng bạn không bao giờ di dời được căn nhà ra khỏi vị trí của nó. Đó là lý do vị trí và quy hoạch quyết định giá trị lâu dài nhiều hơn bất kỳ yếu tố nào khác, và cũng là nơi người mua thiếu kinh nghiệm dễ bỏ sót nhất. Bài này hướng dẫn cách kiểm tra quy hoạch trước khi xuống tiền, đọc được hạ tầng tương lai (cả tốt lẫn xấu), khảo sát thực địa đúng cách, và đánh giá thanh khoản — câu hỏi sống còn: sau này ai sẽ mua lại căn nhà của bạn?",
-      "cardSummary": "Bạn sửa được mọi thứ trong căn nhà, trừ vị trí của nó.",
+      "title": "Vị trí và quy hoạch khi mua nhà: thứ khó sửa nhất sau khi xuống tiền",
+      "summary": "Bạn có thể sửa nội thất, thay thiết bị, thậm chí cải tạo lại không gian sống, nhưng không thể dời căn nhà ra khỏi vị trí của nó. Bài này giữ lại cách kiểm tra quy hoạch, đọc hạ tầng tương lai, khảo sát thực địa nhiều thời điểm, đánh giá thanh khoản và nhìn vị trí bằng nhịp sống thật: đi làm, trường học, bệnh viện, tiếng ồn, ngập nước và khả năng bán lại khi cuộc sống đổi hướng.",
+      "cardSummary": "Vị trí tốt là nơi nhịp sống hằng ngày của mình có thể vận hành nhẹ hơn.",
       "date": "2026-06-01",
       "readingMinutes": 12,
       "tags": [
@@ -432,9 +486,9 @@
     },
     {
       "slug": "quy-trinh-mua-nha-tu-a-den-z",
-      "title": "Quy trình mua nhà từ A đến Z — bản đồ cầm tay cho người lần đầu",
-      "summary": "Mua nhà không phải một hành động, mà là một chuỗi bước nối tiếp nhau, mỗi bước có giấy tờ, mốc tiền và rủi ro riêng. Người lần đầu thường mơ hồ về trình tự, để rồi lúng túng khi đến công chứng, hoặc giao tiền sai thời điểm. Bài này là bản đồ quy trình hoàn chỉnh — từ chuẩn bị tài chính, thẩm định, đặt cọc, công chứng, sang tên đến nhận nhà — kèm bộ giấy tờ cần có và những điểm sống còn ở mỗi chặng, để bạn đi qua cả hành trình một cách chủ động thay vì bị dắt.",
-      "cardSummary": "Mua nhà không phải một hành động — mà là một chuỗi bước, mỗi bước một rủi ro riêng.",
+      "title": "Quy trình mua nhà từ A đến Z: bản đồ đi chậm cho người lần đầu",
+      "summary": "Mua nhà không phải một hành động đơn lẻ, mà là một chuỗi bước nối nhau: chuẩn bị tài chính, chọn tiêu chí, xem nhà, kiểm tra pháp lý, đặt cọc, công chứng, thanh toán, sang tên và nhận bàn giao. Bài này giữ lại bản đồ quy trình, giấy tờ cần có và các điểm cần chú ý ở từng chặng, để người mua lần đầu bớt bị cuốn theo cảm xúc hoặc thời hạn.",
+      "cardSummary": "Quy trình rõ giúp người mua lần đầu bớt bị cuốn theo cảm xúc và thời hạn.",
       "date": "2026-06-01",
       "readingMinutes": 13,
       "tags": [
@@ -452,9 +506,9 @@
     },
     {
       "slug": "chung-cu-vs-nha-dat-va-mua-nha-du-an",
-      "title": "Chung cư hay nhà đất, nhà có sẵn hay dự án — chọn đúng loại hình cho mình",
-      "summary": "Trước khi chọn một căn nhà cụ thể, bạn phải trả lời hai câu hỏi lớn hơn: mua chung cư hay nhà đất, và mua nhà đã có sẵn hay nhà hình thành trong tương lai? Mỗi lựa chọn là một bộ ưu nhược, một kiểu pháp lý và một kiểu rủi ro rất khác nhau — chọn sai loại hình thì dù căn nhà có đẹp đến đâu cũng không hợp với cuộc sống của bạn. Bài này so sánh thẳng thắn chung cư và nhà đất, giải thích những điều cần biết khi mua nhà dự án (tiến độ thanh toán, bảo lãnh ngân hàng, rủi ro chậm bàn giao), và gợi ý cách chọn theo nhu cầu và giai đoạn cuộc đời.",
-      "cardSummary": "Chung cư hay nhà đất, có sẵn hay dự án? Chọn sai loại hình thì nhà đẹp mấy cũng không cứu được.",
+      "title": "Chung cư, nhà đất hay nhà dự án: chọn theo cách mình sống",
+      "summary": "Trước khi chọn một căn cụ thể, ta cần hiểu mình đang chọn loại hình nào: chung cư, nhà đất, nhà có sẵn hay nhà hình thành trong tương lai. Mỗi lựa chọn có tiện ích, chi phí, pháp lý, quyền kiểm soát và rủi ro khác nhau. Bài này giữ lại phần so sánh chung cư và nhà đất, các điểm cần kiểm tra khi mua nhà dự án, tiến độ thanh toán, bảo lãnh ngân hàng và cách chọn theo giai đoạn cuộc đời.",
+      "cardSummary": "Loại hình nhà ở nên phù hợp với cách sống, không phải với một chuẩn chung.",
       "date": "2026-06-01",
       "readingMinutes": 13,
       "tags": [
@@ -472,9 +526,9 @@
     },
     {
       "slug": "doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong",
-      "title": "Đọc bản vẽ thiết kế & đánh giá chất lượng nhà — cẩm nang cho người mua trẻ",
-      "summary": "Một căn nhà đẹp trên ảnh chưa chắc là một căn nhà tốt để ở lâu dài. Phần lớn những thứ quyết định chất lượng — kết cấu, điện nước âm tường, chống thấm, thoát nước mùa mưa, vật liệu thật sự bên trong — đều nằm khuất sau lớp sơn đẹp. Bài này hướng dẫn cách đọc bản vẽ thiết kế và đánh giá chất lượng xây dựng, dành cho người mua lần đầu chưa từng trải qua, để biết căn nhà có thật sự bền vững hay không.",
-      "cardSummary": "Những thứ quyết định chất lượng căn nhà đều nằm khuất sau lớp sơn đẹp.",
+      "title": "Đọc bản vẽ thiết kế và đánh giá chất lượng nhà: nhìn phần không xuất hiện trên ảnh",
+      "summary": "Một căn nhà đẹp trên ảnh chưa chắc là một căn nhà tốt để sống lâu dài. Phần quan trọng thường nằm ở layout, ánh sáng, thông gió, kết cấu, điện nước âm tường, chống thấm, thoát nước mùa mưa, vật liệu và chất lượng thi công. Bài này giữ lại các cách đọc bản vẽ, checklist xem nhà và dấu hiệu cần hỏi thêm người có chuyên môn.",
+      "cardSummary": "Ảnh đẹp cho mình cảm xúc; bản vẽ và chất lượng thi công cho mình sự thật để sống lâu dài.",
       "date": "2026-06-01",
       "readingMinutes": 20,
       "tags": [
@@ -492,9 +546,9 @@
     },
     {
       "slug": "tam-ly-mua-nha-tranh-bay-nguoi-ban",
-      "title": "Tâm lý khi mua nhà — tỉnh táo trước mọi cái bẫy của người bán",
-      "summary": "Bạn không bị thuyết phục bởi căn nhà. Bạn bị thuyết phục bởi cảm xúc của chính mình — và người bán biết rõ điều đó. FOMO, khan hiếm giả, cò mồi chốt đơn, neo giá, áp lực thời gian… đều là những đòn tâm lý có công thức. Bài này bóc tách từng cái bẫy, giải thích cơ chế hoạt động, và trang bị cho bạn cách giữ cái đầu lạnh để ra quyết định bằng lý trí, không bằng nỗi sợ.",
-      "cardSummary": "Bạn không bị thuyết phục bởi căn nhà — mà bởi cảm xúc của chính mình, và người bán biết rõ.",
+      "title": "Tâm lý khi mua nhà: giữ khoảng lùi trước các áp lực chốt nhanh",
+      "summary": "Khi mua nhà, cảm xúc là điều tự nhiên: thích một căn, sợ lỡ cơ hội, ngại làm người khác thất vọng hoặc bị cuốn theo câu chuyện khan hiếm. Bài này giữ lại các cơ chế tâm lý thường gặp như FOMO, neo giá, khan hiếm giả, áp lực thời gian và cách tạo khoảng lùi bằng checklist, dữ kiện so sánh, thời gian ngủ qua đêm và một người phản biện đáng tin cậy.",
+      "cardSummary": "Cảm xúc khi mua nhà là bình thường; khoảng lùi mới giúp quyết định bền hơn.",
       "date": "2026-06-01",
       "readingMinutes": 18,
       "tags": [
@@ -512,9 +566,9 @@
     },
     {
       "slug": "chi-phi-mua-nha-toan-bo-nhung-khoan-can-biet",
-      "title": "Toàn bộ chi phí khi mua nhà — đừng để bị bất ngờ",
-      "summary": "Giá nhà chỉ là một phần. Xung quanh nó là hàng chục khoản phí mà nhiều người mua lần đầu không lường trước — từ thuế trước bạ, phí công chứng, quỹ bảo trì, đến chi phí vận hành hàng tháng. Bài này tổng hợp đầy đủ để bạn lập ngân sách chính xác trước khi xuống tiền.",
-      "cardSummary": "Giá nhà chỉ là một phần — còn hàng chục khoản phí ít ai lường trước.",
+      "title": "Toàn bộ chi phí khi mua nhà: nhìn đủ bức tranh trước khi xuống tiền",
+      "summary": "Giá nhà chỉ là dòng đầu tiên. Xung quanh nó là thuế trước bạ, phí công chứng, sang tên, phí ngân hàng, quỹ bảo trì, nội thất, sửa chữa, chuyển nhà, vận hành hàng tháng và quỹ dự phòng. Bài này giữ lại danh sách các khoản cần chuẩn bị để người mua lần đầu lập ngân sách đầy đủ hơn và bớt bất ngờ sau khi ký.",
+      "cardSummary": "Giá nhà chỉ là dòng đầu tiên; quyết định thật nằm ở toàn bộ chi phí đi kèm.",
       "date": "2026-05-31",
       "readingMinutes": 11,
       "tags": [
@@ -532,9 +586,9 @@
     },
     {
       "slug": "bay-mat-tien-khi-mua-nha-cac-kich-ban-can-tranh",
-      "title": "Những cái bẫy khiến bạn mất tiền khi mua nhà — từ vay vốn đến tranh chấp",
-      "summary": "Không ai mua nhà với ý định bị lừa. Nhưng mỗi năm có hàng nghìn người mất tiền — không phải vì họ không cẩn thận, mà vì họ không biết những kịch bản này tồn tại. Đây là bản đồ các bẫy phổ biến nhất, từ khoản vay đến đặt cọc, tranh chấp, và án phí.",
-      "cardSummary": "Không ai mua nhà với ý định bị lừa — nhưng mỗi năm hàng nghìn người mất tiền vì không biết các bẫy này.",
+      "title": "Những tình huống rủi ro khi mua nhà: từ khoản vay, đặt cọc đến tranh chấp",
+      "summary": "Không ai bước vào giao dịch mua nhà với mong muốn gặp rủi ro, nhưng rủi ro thường xuất hiện khi mình vội, thiếu giấy tờ hoặc tin vào lời nói thay cho kiểm chứng. Bài này giữ lại bản đồ các tình huống cần cẩn trọng: vay vốn, đặt cọc, tài khoản thanh toán, đồng sở hữu, thế chấp, tranh chấp, án phí và các điều khoản hợp đồng cần đọc kỹ.",
+      "cardSummary": "Chuẩn bị trước các tình huống rủi ro giúp mình bình tĩnh hơn khi giao dịch thật.",
       "date": "2026-05-31",
       "readingMinutes": 16,
       "tags": [
@@ -552,9 +606,9 @@
     },
     {
       "slug": "phap-ly-bat-dong-san-nhung-dieu-can-biet",
-      "title": "Pháp lý bất động sản — những gì cần kiểm tra trước khi xuống tiền",
-      "summary": "Mất tiền vì bất động sản thường không phải do giá cao hay vị trí xấu — mà do pháp lý. Bài này là bộ checklist chi tiết về những gì cần kiểm tra, những dấu hiệu cần cảnh giác, và những bẫy phổ biến nhất mà người mua thường bỏ qua.",
-      "cardSummary": "Mất tiền vì bất động sản thường không do giá hay vị trí — mà do pháp lý.",
+      "title": "Pháp lý bất động sản: những gì cần kiểm tra trước khi xuống tiền",
+      "summary": "Pháp lý không phải phần hấp dẫn nhất khi mua nhà, nhưng lại là phần giúp bảo vệ nhiều năm tích lũy. Bài này giữ lại checklist kiểm tra giấy chứng nhận, chủ sở hữu, tình trạng thế chấp, đồng sở hữu, tranh chấp, quy hoạch, đặt cọc, công chứng và các dấu hiệu cần hỏi thêm người có chuyên môn trước khi giao dịch.",
+      "cardSummary": "Đi chậm ở bước pháp lý có thể giúp mình ngủ yên trong nhiều năm sau.",
       "date": "2026-05-31",
       "readingMinutes": 12,
       "tags": [
@@ -572,9 +626,9 @@
     },
     {
       "slug": "phong-thuy-mua-nha-tieu-chi-can-biet",
-      "title": "Phong thủy khi mua nhà — những tiêu chí ai cũng nên biết",
-      "summary": "Phong thủy không chỉ là tâm linh. Nhiều nguyên tắc phong thủy có nền tảng thực tế rõ ràng — từ hướng nhà, cửa chính, bố cục nội thất, đến những thứ cần tránh. Đây là bộ tiêu chí tôi tổng hợp lại để dùng khi xem nhà.",
-      "cardSummary": "Phong thủy không chỉ là tâm linh — nhiều nguyên tắc có nền tảng thực tế rõ ràng.",
+      "title": "Phong thủy khi mua nhà: đọc bằng ánh sáng, gió và thói quen sống",
+      "summary": "Bài viết tiếp cận phong thủy theo góc nhìn thực tế, không dựa vào những điều khó kiểm chứng. Nhiều tiêu chí người mua quan tâm có thể được hiểu qua ánh sáng, hướng nắng, thông gió, sự riêng tư, tiếng ồn, luồng di chuyển, bố cục công năng và cảm giác dễ sống trong căn nhà mỗi ngày.",
+      "cardSummary": "Đọc phong thủy bằng thực tế: ánh sáng, gió, riêng tư và cách mình sống mỗi ngày.",
       "date": "2026-05-31",
       "readingMinutes": 9,
       "tags": [
@@ -591,9 +645,9 @@
     },
     {
       "slug": "mua-nha-nhung-dieu-can-biet",
-      "title": "Làm gì và nghĩ gì khi có ý định mua nhà",
-      "summary": "Những điều cần đặt ra ngay từ đầu khi bắt đầu nghĩ đến việc mua nhà — xác định mục đích, các yếu tố cần đánh giá, và chiến lược xem nhà hiệu quả.",
-      "cardSummary": "Những câu cần tự hỏi ngay từ khi ý định mua nhà mới chỉ là một ý nghĩ.",
+      "title": "Làm gì và nghĩ gì khi bắt đầu có ý định mua nhà",
+      "summary": "Trước khi mở app bất động sản hay đặt lịch xem căn đầu tiên, điều quan trọng hơn là hiểu mình đang mua nhà để giải quyết bài toán nào trong cuộc sống. Bài này giữ lại các câu hỏi nền tảng: mua để ở hay đầu tư, cần đánh giá vị trí, tầng lầu, hạ tầng, tiện ích, mặt bằng, thời điểm xem nhà và cách lọc thông tin để tiết kiệm thời gian.",
+      "cardSummary": "Trước khi đi xem nhà, hãy hiểu mình đang mua để giải quyết bài toán sống nào.",
       "date": "2026-05-31",
       "readingMinutes": 7,
       "tags": [
@@ -610,9 +664,9 @@
     },
     {
       "slug": "quiet-rules-for-moving-through-the-world",
-      "title": "Fifteen Quiet Rules for Moving Through the World: Street-Smart Wisdom for Work and Life",
-      "summary": "Every culture collects a set of street-smart rules people usually learn the hard way — small lines about money, favours, travel, secrets, and who to keep close. On their own they can sound cynical; read right, they're the opposite. A warm, practical guide woven into six simple themes: let money and effort show who's really with you, keep your own movements quiet, hold a few cards back, lower yourself when you ask, lead by example and keep your relationship categories honest, and carry a soft heart with a clear method. The through-line isn't suspicion — it's stewardship of your finite trust, energy, and warmth, so you have more left for the people who earn it. Clear eyes, soft heart.",
-      "cardSummary": "Fifteen street-smart rules that sound cynical — until you read them as clear eyes and a soft heart.",
+      "title": "Fifteen Quiet Rules for Moving Through Work and Life",
+      "summary": "Every culture carries practical rules people often learn through experience: how to handle money, favours, travel, privacy, trust, and closeness. Read harshly, these rules can sound suspicious. Read with care, they become stewardship: protecting finite trust, energy and warmth so there is more left for the people and work that deserve it.",
+      "cardSummary": "Clear boundaries help you keep a warm heart without spending your energy carelessly.",
       "date": "2026-06-11",
       "readingMinutes": 13,
       "tags": [
@@ -634,9 +688,9 @@
     },
     {
       "slug": "seven-laws-of-doing-great-things",
-      "title": "Seven Quiet Laws of Doing Great Things: Strength, Patience, and the People Who Carry You",
-      "summary": "The people who build something great rarely look the part while they're doing it. They speak little, guard their plans, invest in people, commit hard when it counts, and build their strength long before they need it. A warm, practical reflection on seven quiet laws — don't mistake noise for strength, keep the important plan close, remember it's always about people (pairing grace with earned authority), treat money as fuel not a trophy, commit fully once you finally move, build capability so opportunity finds you, and live with intensity rather than just length. None of it is about being ruthless. All of it is about being solid.",
-      "cardSummary": "The people who build something great rarely look the part while they’re doing it.",
+      "title": "Seven Quiet Principles for Doing Meaningful Work",
+      "summary": "People who build meaningful things rarely look loud while doing it. They speak less than they prepare, keep important plans close, invest in people, commit when it matters, and build capability before opportunity arrives. This reflection keeps the original seven principles, but frames them around steadiness rather than toughness: quiet strength, patience, people, money as fuel, full commitment, preparation and a life lived with intention.",
+      "cardSummary": "Meaningful work is usually built by steadiness, not noise.",
       "date": "2026-06-11",
       "readingMinutes": 13,
       "tags": [
@@ -658,9 +712,9 @@
     },
     {
       "slug": "dealing-with-people-you-dislike",
-      "title": "Four Things to Hold Close When Dealing With People You Don't Like",
-      "summary": "You don't need to clash or raise your voice to handle someone you can't stand. Carve four quiet truths into your bones — especially the third, which changes your whole stance: when values don't align, don't waste words; the more you shine, the more envy you draw, so wear it like a medal; never measure yourself against petty people — treat them like air; and see through people without calling them out. The world outside rarely changes. What changes is the calm you carry into it.",
-      "cardSummary": "You don’t need to clash to handle someone you can’t stand — just hold four quiet truths.",
+      "title": "Working Calmly With People You Find Difficult",
+      "summary": "You do not need to clash, perform indifference or raise your voice to work with someone difficult. This reflection keeps four practical ideas close: when values do not align, use fewer words; when someone reacts from comparison, do not make it your identity; keep distance from smallness without becoming small yourself; and understand what is happening without needing to expose everyone. The goal is not superiority, but peace and self-control.",
+      "cardSummary": "Difficult people do not require drama; they require boundaries, clarity and self-control.",
       "date": "2026-06-10",
       "readingMinutes": 11,
       "tags": [
@@ -682,9 +736,9 @@
     },
     {
       "slug": "forgiveness-is-for-you",
-      "title": "Forgiveness Is for You: Setting Down a Weight You Didn't Know You Carried",
-      "summary": "There are two quiet truths that set the mind free: you can only ever change yourself, and forgiveness is something you do for you — not for the person who hurt you. A warm, careful reflection on the one we resist most: why a grudge chains only your end of the rope, why forgiving is not the same as approving or reconciling, why the person you'd never forgive is often the one whose grip costs you most, and how to set the weight down gently — including forgiving yourself. You forgive not because they earned it, but because you deserve to be free.",
-      "cardSummary": "A grudge only chains your end of the rope. Forgiveness is the key you keep for yourself.",
+      "title": "Forgiveness Is for You: Setting Down a Weight You No Longer Need to Carry",
+      "summary": "Forgiveness is often misunderstood as approval or reconciliation. This reflection treats it differently: as a way to stop letting an old injury occupy the present. It looks at why resentment keeps one end of the rope in your own hand, why boundaries can remain after forgiveness, and how forgiving yourself is sometimes part of the same work.",
+      "cardSummary": "Forgiveness does not erase boundaries; it releases the weight you no longer need to hold.",
       "date": "2026-06-09",
       "readingMinutes": 11,
       "tags": [
@@ -707,8 +761,8 @@
     {
       "slug": "salary-is-seed-capital",
       "title": "Your Salary Is Seed Capital, Not the Finish Line",
-      "summary": "Most people treat a paycheck as a lifeline: earn, pay bills, buy a few things, wait for the next one. People with an owner's mindset treat it as seed capital — the first fuel for something larger. A warm, practical reflection on turning salary into assets, assets into cash flow, and cash flow into freedom; why upgrading your lifestyle too early just builds a prettier cage; how to feed a small side venture with discipline instead of quitting; and what financial freedom actually buys — not laziness, but the right to choose your work, your time, and your life. With everyday examples.",
-      "cardSummary": "Most people spend a paycheck. A few plant it — and grow something that outlives the next payday.",
+      "summary": "A paycheck can be only a cycle of earning, spending and waiting for the next one. It can also become seed capital: the first fuel for assets, optionality and future choices. This practical reflection looks at turning salary into assets, assets into cash flow, and cash flow into freedom; why lifestyle upgrades need timing; how to explore a side venture with discipline; and what financial freedom actually buys: not doing nothing, but more choice.",
+      "cardSummary": "Salary becomes powerful when it is used as seed capital for future choices.",
       "date": "2026-06-08",
       "readingMinutes": 11,
       "tags": [
@@ -730,9 +784,9 @@
     },
     {
       "slug": "you-are-not-a-machine",
-      "title": "You Are Not a Machine: Why Rest Isn't Falling Behind",
-      "summary": "There's a strange guilt in modern life: working too much exhausts us, but resting makes us feel guilty — as if sitting still for a few minutes means falling behind. A warm reflection on why rest became mistaken for laziness and busyness for worth, why nothing in nature runs without a fallow season, what real rest actually is (it isn't doomscrolling), the cost of over-scheduling both adults and children, and what the science says about strain versus recovery. Because you are not a machine — and a pause doesn't set you back, it lets you breathe again.",
-      "cardSummary": "Rest stopped feeling like recovery and started feeling like falling behind. Here’s why that’s a lie.",
+      "title": "You Are Not a Machine: Why Rest Is Part of Doing Good Work",
+      "summary": "Modern work can make rest feel suspicious, as if pausing means falling behind. This reflection looks at why busyness is often confused with worth, why real rest is different from numbing out, what over-scheduling costs adults and children, and what the science of strain and recovery makes clear: pause is not the opposite of progress; it is one condition that lets progress continue.",
+      "cardSummary": "Rest is not a reward after all value is created; it is part of how value stays possible.",
       "date": "2026-06-08",
       "readingMinutes": 11,
       "tags": [
@@ -754,9 +808,9 @@
     },
     {
       "slug": "things-no-one-teaches-you",
-      "title": "Things No One Teaches You: The Lessons Life Drives Home the Hard Way",
-      "summary": "Some things no one ever sits you down to explain. Life teaches them instead — by hurting you once, so you remember. A warm, honest field guide to the quiet lessons about people and boundaries: why you should read patterns not snapshots, why someone who hurt you won't change just because you wish it, why the closest people cut the deepest, why good intentions still need good timing, and why holding a little back is self-respect rather than coldness. Not cynicism — clear eyes and a kinder relationship with yourself. With everyday office and life examples.",
-      "cardSummary": "Some lessons nobody explains — life just hurts you once so you remember.",
+      "title": "Things Experience Slowly Teaches You",
+      "summary": "Some lessons are hard to transfer through advice alone. They arrive through patterns we notice over time: read behavior rather than one snapshot, protect boundaries, match help with timing, promise less and deliver more, and keep a little back as self-respect rather than coldness. This is not cynicism; it is a calmer relationship with people, limits and yourself.",
+      "cardSummary": "Experience teaches slowly: read patterns, keep boundaries, and stay kind without becoming careless.",
       "date": "2026-06-08",
       "readingMinutes": 14,
       "tags": [
@@ -778,9 +832,9 @@
     },
     {
       "slug": "the-approval-race",
-      "title": "The Approval Race Has No Finish Line: 5 Quiet Ways to Come Home to Yourself",
-      "summary": "A lot of the tiredness people carry isn't from not being good enough — it's from the quiet, constant effort of trying to keep everyone else happy. Chasing approval, praise, and the right look in someone's eyes is a race with no finish line: praised today, criticised tomorrow. A warm, practical guide to coming home to yourself, with five small daily practices — looking inward, working for value not recognition, running your own race, keeping one small discipline, and tending your relationships — and the single question worth living by. Focusing on yourself isn't selfish; it's how you keep enough to be kind.",
-      "cardSummary": "Chasing everyone’s approval is a race with no finish line. Here’s how to come home to yourself.",
+      "title": "The Approval Loop Has No Finish Line: Five Quiet Ways to Come Back to Yourself",
+      "summary": "A lot of tiredness comes from trying to keep everyone else pleased. Approval, praise and the right look in someone else’s eyes can become a loop with no finish line. This guide offers five small practices for returning to yourself: looking inward, working for value rather than recognition, measuring against your own path, keeping one small discipline, and tending relationships without losing yourself.",
+      "cardSummary": "Approval is unstable; a quieter life begins when your center moves back inside.",
       "date": "2026-06-08",
       "readingMinutes": 12,
       "tags": [
@@ -802,9 +856,9 @@
     },
     {
       "slug": "the-master-who-plays-the-fool",
-      "title": "The Master Who Plays the Fool: The Quiet Power That Needs No Proof",
-      "summary": "The most formidable person in the room is rarely the most obviously clever — it's the one who quietly chooses not to show you how clever they are. A warm reflection on 大智若愚, \"great wisdom that looks like folly\": why they stay half a beat behind the world on purpose, how they are sharp when it matters and invisible when it doesn't, and where their strange calm power really comes from — not controlling others, but controlling themselves, and quietly keeping the freedom to walk away. With everyday office and life examples.",
-      "cardSummary": "The most formidable person in the room never shows you how clever they are.",
+      "title": "The Person Who Does Not Need to Prove It: Quiet Strength Without Performance",
+      "summary": "Some people do not show every card they hold. They listen more than they explain, stay a little behind the noise, and act clearly when the moment matters. This reflection keeps the idea behind 大智若愚, but reads it practically: not as mystique, but as self-control, timing, and the freedom to walk away without needing to win every room.",
+      "cardSummary": "Quiet strength often looks like restraint, timing and no need to perform intelligence.",
       "date": "2026-06-08",
       "readingMinutes": 13,
       "tags": [
@@ -826,9 +880,9 @@
     },
     {
       "slug": "half-light-half-shadow",
-      "title": "Half Light, Half Shadow: The Quiet Authority of People Who Lean to No Extreme",
-      "summary": "Some people don't talk much, don't compete, and never hurt anyone — yet beneath the gentleness they notice everything, and somehow you find yourself choosing your words more carefully around them. A warm reflection on wordless authority: why the rare, steady people carry both light and shadow without leaning to either, why a purely 'nice' person gets walked over while a purely hard one leaves chaos, and how lucid awareness holds the two in balance — tâm bất mê, khí bất loạn, hành bất lệch (an undeluded mind, an unshaken presence, conduct that doesn't drift). With everyday office and life examples.",
-      "cardSummary": "They never compete and never hurt anyone — yet you choose your words carefully around them. Why?",
+      "title": "Steady Presence: The Quiet Authority of People Who Hold Balance",
+      "summary": "Some people do not compete for the room, yet their presence changes how the room behaves. This reflection looks at quiet authority without mystique: why pure softness can be overrun, pure hardness can create damage, and mature steadiness holds warmth and edge together with clear judgement.",
+      "cardSummary": "Real steadiness holds warmth and edge together without leaning into either extreme.",
       "date": "2026-06-08",
       "readingMinutes": 13,
       "tags": [
@@ -850,9 +904,9 @@
     },
     {
       "slug": "how-people-actually-work",
-      "title": "How People Actually Work: 15 Quiet Truths About the Human Mind",
-      "summary": "People don't live by the whole truth — they live by feeling, by belief, and by the stories running quietly in their heads. A warm, practical field guide to fifteen old-but-true observations about how the mind really works: why we remember the feeling not the favour, why control and anger are armour for fear, how the brain only finds evidence for what it already believes, why expectation (not events) does the hurting, and why healing isn't forgetting. Full of everyday office and life examples — read it to be kinder and clearer, with others and with yourself.",
-      "cardSummary": "People don’t live by the truth — they live by feeling, belief, and the stories in their heads.",
+      "title": "How People Actually Work: Fifteen Quiet Notes About the Human Mind",
+      "summary": "People rarely respond only to facts. They respond to feelings, beliefs and the stories already running in their heads. This practical reflection gathers fifteen observations about memory, control, anger, expectation, belief and healing, with office and life examples that help us become clearer with others and kinder with ourselves.",
+      "cardSummary": "People are moved by facts, feelings, beliefs and stories all at once.",
       "date": "2026-06-08",
       "readingMinutes": 13,
       "tags": [
@@ -874,9 +928,9 @@
     },
     {
       "slug": "choice-or-fate",
-      "title": "Choice or Fate? Living Well Inside an Arrangement You Cannot See",
-      "summary": "You think you are choosing your path — yet the longer you live, the more you notice the chance meeting that became a turning point, the thing you gripped and still lost, the chapter you were sure had closed quietly returning. So is life choice or fate? A warm, practical reflection — with everyday office and life examples — on invisible connections, why the ledger always balances, and the one thing that was ever truly yours: how you respond. Because inner freedom isn't a calm sea; it's a steady captain.",
-      "cardSummary": "You think you’re choosing your path — until you notice how much of it chose you.",
+      "title": "Choice and Circumstance: Living Well Inside What You Cannot Fully Control",
+      "summary": "We choose, and we are also shaped by timing, context, other people and conditions we did not design. This reflection removes the mystical frame and looks at the practical question underneath: what belongs to us, what does not, and how a steady response can create inner freedom even when the whole picture is not visible yet.",
+      "cardSummary": "Life is partly choice and partly circumstance; the response is the part we can practice.",
       "date": "2026-06-08",
       "readingMinutes": 12,
       "tags": [
@@ -898,9 +952,9 @@
     },
     {
       "slug": "the-old-man-who-lost-his-horse",
-      "title": "The Old Man Who Lost His Horse: On Trusting Life's Arrangements and Treasuring What Is Here",
-      "summary": "A man on the frontier loses his horse, and the neighbours rush to call it bad luck. The famous Taoist tale \"Tái ông thất mã\" — in misfortune, fortune hides, and back again — is really a lesson about a habit we all share: grading every event the moment it lands. A warm reflection on why the verdict (not the feeling) is the mistake, what equanimity actually is, and why the wise response to an arrangement we cannot read is not to care less, but to treasure the present more.",
-      "cardSummary": "Lost horse: bad luck, or good? The trap is grading every event the moment it lands.",
+      "title": "The Old Man Who Lost His Horse: Hold the Verdict, Keep the Present",
+      "summary": "The old story of the man who lost his horse is often told as a lesson about luck changing shape. This reflection reads it in a grounded way: our first judgement about an event is often incomplete. The practice is not to care less, but to delay the verdict, stay present, and respond with more room than the first emotion gives us.",
+      "cardSummary": "The first verdict is often incomplete; holding it lightly gives the present more room.",
       "date": "2026-06-03",
       "readingMinutes": 13,
       "tags": [
@@ -922,9 +976,9 @@
     },
     {
       "slug": "complexity-is-inevitable-simplicity-is-sustainable",
-      "title": "Complexity Is Inevitable, Simplicity Is Sustainable: Lessons from Large-Scale Systems — and Life",
-      "summary": "Early in my career I believed a “great” system meant the newest tech, the most abstraction layers, and the cleverest “magic code.” Years inside large-scale distributed systems taught me the opposite. Complexity is the inevitable price of growth — but simplicity, the kind that comes from clarity, is what lets a system (and a life) survive people leaving, tech ageing, and requirements shifting. A warm, office-relatable look at essential vs. accidental complexity, the compound interest of technical debt, why staying simple is the harder choice, and how the same idea quietly steadies a busy modern life.",
-      "cardSummary": "Years inside large-scale systems taught me the opposite of what I believed about “great” engineering.",
+      "title": "Complexity Is Inevitable, Simplicity Is Sustainable: Lessons from Systems and Life",
+      "summary": "Early in a technical career, it is easy to mistake more tools, more abstraction and clever code for better architecture. Large systems teach a quieter lesson: growth creates complexity, but clarity keeps systems maintainable. This article connects essential and accidental complexity, technical debt, trade-offs, and the same discipline of simplicity in a busy life.",
+      "cardSummary": "Complexity grows naturally; simplicity has to be designed and protected.",
       "date": "2026-06-03",
       "readingMinutes": 12,
       "tags": [
@@ -946,9 +1000,9 @@
     },
     {
       "slug": "same-facts-different-story",
-      "title": "Same Facts, Different Story: How Where You Stand — and How You Say It — Change Everything",
-      "summary": "Raise one fish and it dies, you grieve all day; tend a whole pond and you barely notice. Stand on the first floor and a harsh word makes you tremble; stand on the hundredth and the same words never reach you. The facts hold still — it’s our position and our words that swing the feeling. This is a warm, office-relatable reflection on the two dials you almost always have a hand on: where you stand and how you say it. With real workplace examples, a couple of simple diagrams, a “recalculating route” lesson from Google Maps, gentle takeaways, and one idea that can lighten an entire day.",
-      "cardSummary": "The facts hold still; your position and your words swing the whole feeling.",
+      "title": "Same Facts, Different Story: Position and Language Change the Experience",
+      "summary": "The same event can feel different depending on where we stand and how we describe it. This reflection uses workplace examples, simple diagrams and the “recalculating route” lesson from maps to show two controls we often still have a hand on: perspective and language.",
+      "cardSummary": "Facts matter, but position and language shape the experience we live inside.",
       "date": "2026-06-03",
       "readingMinutes": 13,
       "tags": [
@@ -970,9 +1024,9 @@
     },
     {
       "slug": "dreamers-doers-and-grit",
-      "title": "Quitters Have Reasons, Doers Have Grit: The Quiet Art of Not Stopping",
-      "summary": "Quitters always have a reason; the people who make it just have a goal. The single difference between a dreamer and a doer isn’t talent, luck, or a better idea — it’s grit: the stubborn willingness to walk through your own discouragement. This is a warm, energising reflection for anyone with a dream sitting unstarted: why the world is overflowing with million-dollar ideas and starving for follow-through, why you should begin clumsy and slow rather than not at all, and the one reframe that turns “when will I get there?” into a question you can actually answer. With real examples, practical habits, and a little fire for the days you want to stop.",
-      "cardSummary": "Quitters always have a reason. Doers just have a goal — and the grit to walk through their own doubt.",
+      "title": "From Idea to Follow-Through: The Quiet Practice of Not Stopping",
+      "summary": "A good idea is only the beginning. What usually separates an unfinished dream from visible progress is not a louder promise, but follow-through: beginning imperfectly, staying with discouragement, creating practical habits, and asking questions that turn distance into a next step. This reflection keeps the energy, but grounds it in steady practice rather than slogans.",
+      "cardSummary": "Follow-through turns an idea from something imagined into something gradually built.",
       "date": "2026-06-03",
       "readingMinutes": 13,
       "tags": [
@@ -995,8 +1049,8 @@
     {
       "slug": "the-quiet-art-of-letting-go",
       "title": "The Quiet Art of Letting Go: Seven Shifts of a Maturing Mind",
-      "summary": "There’s a kind of strength that doesn’t announce itself — it goes quiet. The more settled a person becomes inside, the less they argue, the less they need to change anyone, and the more easily they let go of what was never theirs to keep. This is a warm, grounded reflection drawn from a set of life maxims about maturity and awakening: why the strongest people are the calmest, why you eventually stop trying to fix others, how relationships arise and end, and why awakening really comes down to a single word — let go. With everyday examples, gentle takeaways, and one quiet idea that can lighten an entire day.",
-      "cardSummary": "The strongest people argue less, fix others less, and let go of what was never theirs to keep.",
+      "summary": "Letting go is not passivity. It is the mature skill of knowing what is yours to carry, what belongs to someone else, and what needs to be released so life can keep moving. This reflection reframes maturity without mystical language: less arguing, less fixing people, clearer boundaries, more attention to what is actually here.",
+      "cardSummary": "Letting go is the skill of carrying what is yours and releasing what is not.",
       "date": "2026-06-03",
       "readingMinutes": 14,
       "tags": [
@@ -1018,9 +1072,9 @@
     },
     {
       "slug": "roads-to-c-level",
-      "title": "What C-Level Leaders Learn Before They Get the Chair: Five Roads to the Top of a Big Corp",
-      "summary": "At the executive level, the market stops asking about your potential and starts asking for your evidence. Have you owned a P&L? Carried revenue? Decided well on imperfect data? This is a clear, practical guide to how people actually reach C-level inside a large corporation: the five well-worn roads — through FMCG, Tech, Finance, Consulting, and Legal/Risk — what each one really teaches, the honest truth about whether you need an MBA or Master’s, and the single mindset shift that separates a specialist from someone the board will bet on. Written for anyone, in any field, who suspects the chair they want will be earned by evidence, not by title.",
-      "cardSummary": "At the top, the market stops asking about your potential and starts asking for your evidence.",
+      "title": "What C-Level Leaders Learn Before the Chair: Five Practical Roads in Big Corp",
+      "summary": "At executive level, potential matters less than evidence. Have you owned a P&L, carried revenue, decided with incomplete data, led across functions and managed risk? This guide maps five common roads to C-level in large corporations — FMCG, Tech, Finance, Consulting and Legal/Risk — plus what degrees can and cannot do, and the mindset shift from specialist to business owner.",
+      "cardSummary": "Executive readiness is built through evidence, scope and business judgement, not title alone.",
       "date": "2026-06-03",
       "readingMinutes": 17,
       "tags": [
@@ -1042,9 +1096,9 @@
     },
     {
       "slug": "solitude-of-great-minds",
-      "title": "The Solitude of Great Minds: The Quiet Strength of People Who Walk Alone",
-      "summary": "We tend to assume something is wrong with the person who walks alone. More often, they’ve simply been somewhere most people haven’t — through their darkest stretch, and out the other side, on their own. This is a warm, grounded reflection on the quiet strength of independent people: why solitude is not loneliness, how self-worth built from within makes someone unshakeable, why those who’ve walked through the dark read people so well, and why a once-warm person who turns quiet usually isn’t cold — just careful. With down-to-earth examples and a gentle guide to building a little of that inner fortress yourself.",
-      "cardSummary": "We assume something’s wrong with the person who walks alone. Usually they’ve just been somewhere we haven’t.",
+      "title": "The Quiet Strength of People Who Walk Alone",
+      "summary": "We often misread people who are comfortable alone. Sometimes they have simply learned to draw self-worth from within, keep boundaries, and observe carefully before trusting. This reflection looks at solitude without romanticizing it: why it is different from loneliness, how independence can become steadiness, and why strength still needs openness.",
+      "cardSummary": "Solitude can become steadiness when it is grounded in self-worth and healthy boundaries.",
       "date": "2026-06-03",
       "readingMinutes": 14,
       "tags": [
@@ -1066,9 +1120,9 @@
     },
     {
       "slug": "meaning-is-in-the-living",
-      "title": "The Meaning of a Life Is in the Living: A Gentle Case Against Waiting for “Later”",
-      "summary": "If the last page of every life is already written, then the meaning was never the ending — it was the living. This is a warm, unhurried reflection for anyone caught in the endless rush of task after task: why life doesn’t make appointments, how the quiet trap of “I’ll live when…” steals our best years, and how to turn ordinary, forgettable days into moments worth keeping. Not a lecture on mortality, but an invitation to say the love while you can say it, to notice the sunrise, and to understand that even the stories we call “unfinished” were once radiant the whole way down the road.",
-      "cardSummary": "If the last page is already written, the meaning was never the ending — it was the living.",
+      "title": "The Meaning of a Life Is in the Living: A Gentle Case Against Waiting for Later",
+      "summary": "It is easy to postpone life until after the next task, deadline or milestone. This reflection is not a lecture about mortality; it is a grounded reminder to notice ordinary days while they are happening: say what matters, take the small trip, notice the morning, and understand that meaning is not only at the ending.",
+      "cardSummary": "Meaning is not only at the destination; it is built inside ordinary days.",
       "date": "2026-06-03",
       "readingMinutes": 13,
       "tags": [
@@ -1090,9 +1144,9 @@
     },
     {
       "slug": "software-engineer-career-path",
-      "title": "Know the Map: Why Understanding Your Career Path Is an Engineer's Quiet Superpower",
-      "summary": "Most engineers drift up their career one promotion at a time, hoping effort alone will carry them. The ones who move with intent do something different first: they understand the map. Using the software engineering career ladder — the IC trunk that forks into a technical track and a managerial track — this is a practical guide to why knowing the terrain is an advantage, what each rung actually rewards, how to figure out your own direction, the cadence of improving every day, month, quarter, and year, and the traps to avoid along the way.",
-      "cardSummary": "Most engineers drift up one promotion at a time. The ones who move with intent read the map first.",
+      "title": "Know the Map: Why Understanding Your Career Path Is an Engineer’s Quiet Advantage",
+      "summary": "Many engineers move one promotion at a time and hope effort alone will carry them. Engineers who move with intent first understand the map: the IC trunk, the technical track, the managerial track, what each rung rewards, how to choose direction, and how to improve by day, month, quarter and year without letting comparison drive the path.",
+      "cardSummary": "A career map turns vague ambition into clearer next steps.",
       "date": "2026-06-02",
       "readingMinutes": 19,
       "tags": [
@@ -1114,9 +1168,9 @@
     },
     {
       "slug": "questions-before-marriage",
-      "title": "Deciding to Marry: 24 Conversations to Have Before You Move In Together",
-      "summary": "We're told marriage is a matter of fate — love enough and it works out. But the most peaceful couples tend to be the ones who sat down and made every expectation clear before the wedding. This article shares a set of 24 questions — inspired by a list one married friend used with her partner before moving in together — covering money, children, careers, both families, habits, privacy, and how to actually run a home. Not to interrogate each other, but to co-design a marriage with less drama and more peace.",
-      "cardSummary": "The most peaceful couples make every expectation clear before the wedding. Here are 24 questions.",
+      "title": "Deciding to Marry: 24 Conversations Before You Share a Home",
+      "summary": "Marriage is not only a feeling; it is also a long-running system two people design together. This article shares 24 conversations to have before moving in or getting married: money, children, careers, both families, habits, privacy, conflict, domestic work and how to run a home. The goal is not interrogation, but fewer hidden expectations and more peace.",
+      "cardSummary": "A calmer marriage often begins with expectations spoken before they become friction.",
       "date": "2026-06-02",
       "readingMinutes": 19,
       "tags": [
@@ -1138,9 +1192,9 @@
     },
     {
       "slug": "wedding-prep-for-grooms",
-      "title": "A Groom's Complete Guide to Wedding Preparation: Every Stage and a Detailed Budget (Vietnam)",
-      "summary": "Getting married isn't just one big day — it's a months-long project with dozens of moving parts and a budget that can reach hundreds of millions of đồng. This is a map for the man who wants to be genuinely thoughtful: walking through every stage from dating, meeting the families, the formal proposal and engagement ceremonies, the wedding itself, and the honeymoon — with a detailed line-by-line budget, how to allocate it, what the groom's side typically covers, money-saving tips, and the things a future husband should care about beyond the cost.",
-      "cardSummary": "A wedding isn’t one big day — it’s a months-long project with a budget that surprises every groom.",
+      "title": "A Groom’s Practical Guide to Wedding Preparation: Stages and Budget in Vietnam",
+      "summary": "A wedding is not just one day. It is a months-long project with families, ceremonies, logistics and a budget that can reach hundreds of millions of đồng. This guide walks through dating, family meetings, proposal and engagement ceremonies, the wedding, honeymoon, line-by-line budget, allocation, common groom-side costs, saving tips, and the care that matters beyond money.",
+      "cardSummary": "A thoughtful wedding plan balances budget, family expectations, logistics and care.",
       "date": "2026-06-02",
       "readingMinutes": 23,
       "tags": [
@@ -1162,9 +1216,9 @@
     },
     {
       "slug": "know-your-work-rights",
-      "title": "Know Your Rights at Work: An A–Z Guide to Quitting, Switching Jobs, Insurance, and Tax (Vietnam)",
-      "summary": "Every month, around 32% of your salary flows into insurance and tax — yet most working people have no idea what they're entitled to in return. This is a practical, plain-language field guide for anyone with a job: from the moment you think about quitting, through the handover and finalizing your social-insurance book, to claiming unemployment benefits, reading the contract, signing the right papers, and onboarding at a new company. With worked examples, real office situations, and a do / don't checklist so you never lose a benefit simply because nobody told you it existed.",
-      "cardSummary": "Around 32% of your salary leaves for insurance and tax — do you know what it buys you back?",
+      "title": "Know Your Rights at Work: Quitting, Switching Jobs, Insurance and Tax in Vietnam",
+      "summary": "Every month, a meaningful part of salary flows into insurance and tax, yet many workers do not know what they can claim in return. This plain-language guide covers quitting, handover, social-insurance book finalization, unemployment benefits, contracts, required papers, onboarding at a new company, worked examples and do/don’t checklists.",
+      "cardSummary": "Knowing your work rights helps you protect benefits you have already paid into.",
       "date": "2026-06-02",
       "readingMinutes": 22,
       "tags": [
@@ -1186,9 +1240,9 @@
     },
     {
       "slug": "the-monkey-eight-hours-and-unquestioned-rules",
-      "title": "The Monkey, the Bananas, and the 8-Hour Question",
-      "summary": "A famous monkey experiment, Sơn Tùng M-TP, and the workday that hasn't changed since the industrial revolution. A personal reflection on the rules we follow without remembering why — and what AI should actually be giving us back.",
-      "cardSummary": "A monkey experiment, a pop star, and the workday we’ve never stopped to question.",
+      "title": "The Monkey, the Bananas, and the Eight-Hour Question",
+      "summary": "A familiar monkey experiment, Sơn Tùng M-TP, the eight-hour workday, and the rules we keep following after forgetting why they began. This personal reflection asks what AI and automation should give back: not only more output, but more agency over time, attention and the shape of a working life.",
+      "cardSummary": "The point of better tools should be more agency, not just more output.",
       "date": "2026-05-31",
       "readingMinutes": 9,
       "tags": [
@@ -1234,7 +1288,7 @@
       "slug": "anchoring-on-tool-capability-limits-the-mind",
       "title": "Anchoring on Tool Capability Limits the Mind",
       "summary": "A faster app or a sharper framework never moves the real ceiling, because the bottleneck was never the tool — it was the mind holding it. A short note on holding tools loosely: treating every adoption as an experiment, and walking away the moment a tool stops serving the thinking underneath.",
-      "cardSummary": "A tool you cannot abandon has quietly become a cage.",
+      "cardSummary": "A tool you cannot set down has quietly become the boundary of your thinking.",
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
@@ -1256,7 +1310,7 @@
       "slug": "be-mindful-of-what-you-put-into-your-bucket",
       "title": "Be Mindful of What You Put Into Your Bucket",
       "summary": "Picture your day as a bucket you carry from morning to night, scooping up ideas, conversations, scraps of news — water meant for the tree you are trying to grow. Not all water is clean, and the bucket has a fixed size. A small image about tending your daily intake, because what you pick up each day decides the health of the tree.",
-      "cardSummary": "Your attention is a bucket of fixed size — and not all water is clean.",
+      "cardSummary": "Your attention has a fixed capacity, and not every input nourishes what you are growing.",
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
@@ -1366,7 +1420,7 @@
       "slug": "healthy-disagreement",
       "title": "Healthy Disagreement",
       "summary": "When a room agrees with you completely, pause before taking it as approval — unbroken consensus often signals absence of independent minds rather than the presence of a good idea. Neither pole is the goal: a little disagreement is the texture of people actually thinking, something to welcome rather than smooth away.",
-      "cardSummary": "If everyone in the room agrees with you instantly, someone probably isn't thinking.",
+      "cardSummary": "If everyone agrees instantly, the idea may still need a room brave enough to test it.",
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
@@ -1563,8 +1617,8 @@
     {
       "slug": "programming-abstractions",
       "title": "Programming Abstractions Are Bets",
-      "summary": "Every abstraction is a bet: win, and changes stack easily on top; lose, and you own a premature abstraction where every layered change comes out smelly. The satisfaction of naming things is real — which is exactly what makes it dangerous. It is always easier to generalize specialized code than to untangle an over-abstracted design.",
-      "cardSummary": "Every abstraction is a bet — and the odds lean toward the losing side more often than it feels.",
+      "summary": "Every abstraction is a bet: if it fits, future changes stack more cleanly; if it arrives too early, every layered change becomes harder to carry. The satisfaction of naming things is real — which is exactly why it deserves restraint. It is usually easier to generalize specialized code later than to untangle an over-abstracted design.",
+      "cardSummary": "Every abstraction is a bet, and early certainty deserves a little humility.",
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
@@ -1651,8 +1705,8 @@
     {
       "slug": "recognizable-patterns-of-valuable-thoughts",
       "title": "Are There Recognizable Patterns of Valuable Thoughts?",
-      "summary": "It's easier to spot worthless thoughts than to define valuable ones, so start from the easy end: replaying the past for its own sake, glorifying yourself, circling problems with no possible action. The common thread — the mind spinning while the wheels never touch the road. Valuable thoughts lead somewhere: to action, or to new understanding.",
-      "cardSummary": "The worthless thoughts share one signature: the mind spins, but the wheels never touch the road.",
+      "summary": "It is easier to spot low-value thoughts than to define valuable ones, so start from the easy end: replaying the past for its own sake, glorifying yourself, circling problems with no possible action. The common thread is the mind spinning while the wheels never touch the road. Valuable thoughts lead somewhere: to action, to a clearer question, or to a new understanding.",
+      "cardSummary": "Valuable thoughts usually move you toward action, a clearer question, or new understanding.",
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
@@ -1696,7 +1750,7 @@
       "slug": "software-engineering-fatigue",
       "title": "Software Engineering Fatigue",
       "summary": "Making software is like assembling Lego: you learn the fundamental bricks, then the precomposed blocks, then blocks made of blocks — until finding out what is actually underneath becomes impractical. Somewhere in that drift, learning changes character from understanding things to merely using things, and that artificiality is the source of the fatigue.",
-      "cardSummary": "Physics boils you toward the truth of the universe; frameworks teach you someone's arbitrary inventions.",
+      "cardSummary": "Physics leads toward universal laws; frameworks often ask you to learn someone else’s chosen abstractions.",
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
@@ -1782,9 +1836,9 @@
     },
     {
       "slug": "the-trap-of-information-consumption",
-      "title": "The Trap of Information Consumption Without Action",
-      "summary": "A common failure mode in learning: the input keeps flowing, the shelf keeps filling, yet nothing turns into capability. It feels like learning — which is exactly why it's hard to notice from inside. Symptoms, causes, and the way out: set implementation intentions, prefer just-in-time learning, and track actions taken rather than information consumed.",
-      "cardSummary": "It feels exactly like learning — which is why you can't see it from the inside.",
+      "title": "When Information Consumption Replaces Action",
+      "summary": "A common risk in learning: the input keeps flowing, the shelf keeps filling, yet nothing turns into capability. It feels like learning — which is exactly why it is hard to notice from inside. Symptoms, causes, and the way out: set implementation intentions, prefer just-in-time learning, and track actions taken instead of inputs consumed.",
+      "cardSummary": "It feels like learning, which is why it needs one small action to become real.",
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
@@ -1805,7 +1859,7 @@
     {
       "slug": "thinking-and-doing-rhythm",
       "title": "The Thinking and Doing Rhythm",
-      "summary": "We think faster than we can do — the mind races three moves ahead while the hands are on step one, and that gap reads as failure even when nothing is wrong. The practical rhythm: think just enough to act, act, then think again with what you learned. Thinking without acting is imagination; acting without thinking is impulse; agency is the unity of both.",
+      "summary": "We think faster than we can do — the mind races three moves ahead while the hands are on step one, and that gap can feel like something is wrong even when nothing is. The practical rhythm: think just enough to act, act, then think again with what you learned. Thinking without acting is imagination; acting without thinking is impulse; agency is the unity of both.",
       "cardSummary": "One cycle of think-act teaches more than ten cycles of think-think-think.",
       "date": "2026-05-27",
       "readingMinutes": 2,
@@ -1827,8 +1881,8 @@
     {
       "slug": "thinking-excuses",
       "title": "When Thinking Becomes the Excuse",
-      "summary": "I once held the delusional belief that thinking is the solution to everything. It became my excuse to avoid action, wearing the costume of diligence. The uncomfortable arithmetic: additional ideas lose their weight while the current one sits untested — and thinking is seductive precisely because, in your head, the idea stays pristine.",
-      "cardSummary": "Thinking carries no risk of failure — which is exactly why it makes such a comfortable hiding place.",
+      "summary": "I once believed too strongly that thinking could solve everything. It became my excuse to avoid action, dressed up as diligence. The uncomfortable arithmetic: additional ideas lose their weight while the current one sits untested — and thinking is seductive precisely because, in your head, the idea stays untouched by real-world friction.",
+      "cardSummary": "Thinking is useful until it becomes a comfortable place to avoid the next action.",
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
@@ -1871,7 +1925,7 @@
     {
       "slug": "vocabulary-as-api-for-second-brain",
       "title": "A Rich, Consistent Vocabulary Is the Best API for Your Second Brain",
-      "summary": "Your vault is a graph, but you navigate it through words: name the same idea 'information overload' once and 'consumption trap' later, and those two notes never meet. Consistent vocabulary is consistent wiring — and a rich vocabulary doesn't just help retrieval, it shapes what you can think in the first place.",
+      "summary": "Your vault is a graph, but you navigate it through words: name the same idea 'information overload' once and 'consumption pattern' later, and those two notes never meet. Consistent vocabulary is consistent wiring — and a rich vocabulary doesn't just help retrieval, it shapes what you can think in the first place.",
       "cardSummary": "Rename the endpoint and all the clients break — the same goes for the words in your second brain.",
       "date": "2026-05-27",
       "readingMinutes": 2,
@@ -1914,9 +1968,9 @@
     },
     {
       "slug": "work-messages-aggressive-bias",
-      "title": "The Aggressive Bias in Work Messages",
-      "summary": "The same words that land softly across a table arrive with an unintended edge in a chat box — with no face or tone to lean on, the mind fills the vacuum with its worst guess. Since the bias is predictable, offset it from both sides: send a notch warmer than feels natural, and read a few notches softer than you judge.",
-      "cardSummary": "A terse 'ok' more likely means someone is busy than that they are annoyed with you.",
+      "title": "Why Work Messages Can Feel Sharper Than Intended",
+      "summary": "The same words that land softly across a table can arrive with an unintended edge in a chat box. With no face or tone to lean on, the mind fills the vacuum with its least generous guess. Since the bias is predictable, offset it from both sides: send messages with context, and read messages with a little more room.",
+      "cardSummary": "A terse “ok” often means someone is busy, not that they are upset with you.",
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
@@ -1959,8 +2013,8 @@
     {
       "slug": "write-to-understand-and-transfer",
       "title": "Write to Understand and to Transfer",
-      "summary": "Writing in full sentences is a merciless way to spot the holes in your understanding — you can nod along to an idea in your head, but every gap announces itself on the page. Effortful yet playful, this is how permanent notes get made; and if a note reads as banal later, the thought was never truly pinned down.",
-      "cardSummary": "You can nod along to an idea in your head — the page is where every gap announces itself.",
+      "summary": "Writing in full sentences is an honest way to spot the gaps in your understanding — you can nod along to an idea in your head, but every gap announces itself on the page. Effortful yet playful, this is how permanent notes get made; and if a note reads as banal later, the thought may not have been pinned down clearly enough.",
+      "cardSummary": "You can nod along in your head; the page is where the gaps become visible.",
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
@@ -1980,9 +2034,9 @@
     },
     {
       "slug": "ai-reduces-the-information-privilege",
-      "title": "AI Reduces the Information Privilege",
-      "summary": "For most of history, knowing things was rationed power — gated by education, geography, language, connections. AI quietly drains that moat: information stops being scarce, and what becomes valuable is everything around it — thinking abstractly, asking quality questions, judging answers. The facts are a commodity now; the framing is the edge.",
-      "cardSummary": "The bottleneck moved from 'do I have the information?' to 'can I frame what I actually want?'",
+      "title": "AI Reduces the Information Advantage",
+      "summary": "For most of history, knowing things created an advantage gated by education, geography, language, and connections. AI quietly lowers that barrier: information becomes less scarce, and what grows more valuable is everything around it — abstract thinking, better questions, and the judgment to evaluate answers. Facts are more available now; framing is the skill that matters.",
+      "cardSummary": "The bottleneck moved from “do I have the information?” to “can I frame what I actually want?”",
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
@@ -2025,7 +2079,7 @@
     {
       "slug": "perfect-tools-syndrome",
       "title": "Perfect-Tools Syndrome",
-      "summary": "There is a tiredness that has nothing to do with the work: the endless search for the right app, the evenings lost to a setup you'll abandon in a month. The trap feels productive — choosing tools is concrete in a way the real problem is not. The shift in one line: stop trying to choose the best of, start making the most out of.",
+      "summary": "There is a tiredness that has nothing to do with the work: the endless search for the right app, the evenings lost to a setup you may abandon in a month. The pattern feels productive because choosing tools is concrete in a way the real problem is not. The shift in one line: stop trying to choose the best of, start making the most out of.",
       "cardSummary": "Stop trying to choose the best of — start making the most out of.",
       "date": "2026-05-27",
       "readingMinutes": 2,

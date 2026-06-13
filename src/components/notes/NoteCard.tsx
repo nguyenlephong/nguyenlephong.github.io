@@ -44,23 +44,25 @@ export default function NoteCard({
       style={{ "--blog-accent": topicColor } as React.CSSProperties}
     >
       <Link href={`/notes/${note.slug}`} className="blog-card__link">
-        <span className="blog-card__kicker">{topicLabel}</span>
-        <h3 className="blog-card__title">{note.title}</h3>
-        <p className="blog-card__summary">{note.cardSummary ?? note.summary}</p>
-        <div className="blog-card__meta">
-          <time dateTime={note.date}>{formatDate(note.date, locale)}</time>
-          <span aria-hidden="true">·</span>
-          <span>{readingLabel}</span>
-          {typeof viewCount === "number" && viewCount >= 100 && (
-            <>
-              <span aria-hidden="true">·</span>
-              <span className="blog-card__views">
-                <LuEye aria-hidden="true" />
-                {formatCount(viewCount)}
-                {viewsLabel ? ` ${viewsLabel}` : ""}
-              </span>
-            </>
-          )}
+        <div className="blog-card__body">
+          <span className="blog-card__kicker">{topicLabel}</span>
+          <h3 className="blog-card__title">{note.title}</h3>
+          <p className="blog-card__summary">{note.cardSummary ?? note.summary}</p>
+          <div className="blog-card__meta">
+            <time dateTime={note.date}>{formatDate(note.date, locale)}</time>
+            <span aria-hidden="true">·</span>
+            <span>{readingLabel}</span>
+            {typeof viewCount === "number" && viewCount >= 100 && (
+              <>
+                <span aria-hidden="true">·</span>
+                <span className="blog-card__views">
+                  <LuEye aria-hidden="true" />
+                  {formatCount(viewCount)}
+                  {viewsLabel ? ` ${viewsLabel}` : ""}
+                </span>
+              </>
+            )}
+          </div>
         </div>
       </Link>
     </article>
