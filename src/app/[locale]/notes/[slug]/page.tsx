@@ -247,7 +247,11 @@ export default async function NotePage({ params }: Props) {
           {topicReading && (topicReading.prev || topicReading.next) && (
             <nav
               className="blog-series-nav"
-              aria-label={topicReading.topic.label}
+              aria-label={
+                topicReading.scope === "topic" && topicReading.topic
+                  ? topicReading.topic.label
+                  : t("title")
+              }
             >
               {topicReading.prev ? (
                 <Link

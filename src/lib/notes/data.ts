@@ -23,7 +23,8 @@ const TOPIC_READING_ORDERS: Record<string, string[]> = {
 };
 
 export interface TopicReadingContext {
-  topic: TopicMeta;
+  topic: TopicMeta | null;
+  scope: "topic" | "all";
   part: number;
   total: number;
   prev: NoteMeta | null;
@@ -124,36 +125,47 @@ export function getTopicReadingContext(
   locale?: string
 ): TopicReadingContext | null {
   const current = loadNotesIndex(locale).posts.find((p) => p.slug === slug);
-  if (!current?.topic) return null;
+  if (!current) return null;
 
-  const orderedSlugs = TOPIC_READING_ORDERS[current.topic];
-  if (!orderedSlugs) return null;
-
-  const topic = getTopic(current.topic, locale);
-  if (!topic) return null;
-
-  const orderIndex = new Map(orderedSlugs.map((s, i) => [s, i]));
-  const visibleNotes = listNotes(locale).filter(
-    (p) => p.topic === current.topic
-  );
-  const orderedNotes = visibleNotes
-    .filter((p) => orderIndex.has(p.slug))
-    .sort((a, b) => orderIndex.get(a.slug)! - orderIndex.get(b.slug)!);
-  const extraNotes = visibleNotes
-    .filter((p) => !orderIndex.has(p.slug))
-    .sort(byDateDesc);
-  const notes = [...orderedNotes, ...extraNotes];
+  const visibleNotes = listNotes(locale);
+  const topic = current.topic ? getTopic(current.topic, locale) : null;
+  const topicNotes = current.topic
+    ? visibleNotes.filter((p) => p.topic === current.topic)
+    : [];
+  const orderedSlugs = current.topic
+    ? TOPIC_READING_ORDERS[current.topic]
+    : undefined;
+  const topicOrderedNotes = orderedSlugs
+    ? orderNotesBySlugs(topicNotes, orderedSlugs)
+    : topicNotes;
+  const scope = topicOrderedNotes.length > 1 ? "topic" : "all";
+  const notes = scope === "topic" ? topicOrderedNotes : visibleNotes;
   const index = notes.findIndex((p) => p.slug === slug);
 
   if (index === -1) return null;
 
   return {
     topic,
+    scope,
     part: index + 1,
     total: notes.length,
     prev: notes[index - 1] ?? null,
     next: notes[index + 1] ?? null
   };
+}
+
+function orderNotesBySlugs(
+  notes: NoteMeta[],
+  orderedSlugs: string[]
+): NoteMeta[] {
+  const orderIndex = new Map(orderedSlugs.map((s, i) => [s, i]));
+  const orderedNotes = notes
+    .filter((p) => orderIndex.has(p.slug))
+    .sort((a, b) => orderIndex.get(a.slug)! - orderIndex.get(b.slug)!);
+  const extraNotes = notes
+    .filter((p) => !orderIndex.has(p.slug))
+    .sort(byDateDesc);
+  return [...orderedNotes, ...extraNotes];
 }
 
 /** (locale, slug) pairs for static generation — one per locale a note serves. */
