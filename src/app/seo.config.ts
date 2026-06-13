@@ -6,7 +6,7 @@ export const SITE = {
   brandShort: 'Nguyen Le Phong',
   twitter: '@nguyenlephong17',
   locale: 'en_US',
-  defaultOgAlt: 'Nguyen Le Phong — Senior Software Engineer & Tech Lead',
+  defaultOgAlt: 'Nguyen Le Phong — Senior Software Engineer & Technical Lead',
 }
 
 export interface PageSEO {
@@ -22,15 +22,15 @@ export const PAGE_SEO: Record<
   PageSEO
 > = {
   home: {
-    title: 'Nguyen Le Phong — Senior Software Engineer & Tech Lead',
+    title: 'Nguyen Le Phong — Senior Software Engineer & Technical Lead',
     description:
-      'Senior Software Engineer & Head of Tech with 8+ years building product, leading delivery, and architecting Micro-Frontend, Kubernetes, and rollout systems. Bachelor of IT — Very Good (GPA 3.36).',
+      'Senior full-stack engineer and technical lead with 8+ years shipping product, platform, Micro-Frontend, Kubernetes, secure fintech integration, and rollout systems.',
     path: '/',
     keywords: [
       'Nguyen Le Phong',
       'Nguyễn Lê Phong',
       'Senior Software Engineer',
-      'Head of Tech',
+      'Technical Lead',
       'Tech Lead',
       'Full-stack',
       'React',
@@ -40,7 +40,7 @@ export const PAGE_SEO: Record<
       'GPA 3.36',
       'Very Good degree',
     ],
-    ogAlt: 'Nguyen Le Phong — Very Good degree, GPA 3.36, 8+ years engineering',
+    ogAlt: 'Nguyen Le Phong — 8+ years across product, platform, and technical leadership',
   },
   homeAlt: {
     title: 'Nguyen Le Phong — Software Engineer',
@@ -67,16 +67,16 @@ export const PAGE_SEO: Record<
   cv: {
     title: 'Curriculum Vitae — Nguyen Le Phong',
     description:
-      'Downloadable résumé and full work history of Nguyen Le Phong — Head of Tech at NDSVN, ex-Zalo PC (15M+ MAU), ex-PrimeData. React, Next.js, Java Spring, Kubernetes.',
+      'Downloadable résumé and work history of Nguyen Le Phong — senior full-stack engineer and technical lead at NDSVN, ex-Zalo PC (15M+ MAU), ex-PrimeData. React, Next.js, Java Spring, .NET Core, Kubernetes.',
     path: '/cv',
     keywords: [
       'Nguyen Le Phong CV',
       'Resume',
       'Software Engineer Resume',
       'Tech Lead CV',
-      'Head of Tech',
+      'Technical Lead',
     ],
-    ogAlt: 'Nguyen Le Phong — Résumé (Head of Tech · ex-Zalo · ex-PrimeData)',
+    ogAlt: 'Nguyen Le Phong — Résumé (technical lead · ex-Zalo · ex-PrimeData)',
   },
   gallery: {
     title: 'Gallery — Certifications, Awards & Projects',

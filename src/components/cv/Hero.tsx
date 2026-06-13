@@ -10,7 +10,6 @@ import {
   LuDownload,
   LuMapPin,
   LuCalendarClock,
-  LuCode2,
   LuUsers,
   LuCrown,
   LuBuilding2,
@@ -27,13 +26,13 @@ type StatTone = 'amber' | 'violet' | 'sky' | 'emerald' | 'rose' | 'cyan' | 'indi
 
 type StatKey =
   | 'yearsShipping'
-  | 'hoursCoding'
   | 'usersTouched'
   | 'engineersLed'
   | 'tenantsPowered'
-  | 'domainsDelivered'
   | 'projectsLaunched'
   | 'testCasesAuthored'
+
+type ProofKey = 'scale' | 'team' | 'platform'
 
 type Stat = {
   icon: IconType
@@ -45,13 +44,17 @@ type Stat = {
 
 const stats: Stat[] = [
   { icon: LuCalendarClock, value: '8+', key: 'yearsShipping', tone: 'amber', spark: [3, 4, 5, 6, 7, 8, 9, 10] },
-  { icon: LuCode2, value: '9K+', key: 'hoursCoding', tone: 'violet', spark: [4, 5, 7, 6, 8, 9, 10, 12] },
   { icon: LuUsers, value: '80M+', key: 'usersTouched', tone: 'sky', spark: [2, 3, 4, 6, 8, 9, 11, 12] },
-  { icon: LuCrown, value: '12+', key: 'engineersLed', tone: 'emerald', spark: [2, 3, 4, 5, 7, 8, 10, 11] },
+  { icon: LuCrown, value: '11', key: 'engineersLed', tone: 'emerald', spark: [2, 3, 4, 5, 7, 8, 10, 11] },
   { icon: LuBuilding2, value: '30+', key: 'tenantsPowered', tone: 'rose', spark: [1, 2, 4, 5, 6, 8, 9, 11] },
-  { icon: LuLayers, value: '20+', key: 'domainsDelivered', tone: 'cyan', spark: [3, 4, 4, 5, 6, 7, 9, 10] },
   { icon: LuRocket, value: '30+', key: 'projectsLaunched', tone: 'indigo', spark: [2, 3, 4, 5, 6, 7, 9, 10] },
   { icon: LuShieldCheck, value: '1K+', key: 'testCasesAuthored', tone: 'lime', spark: [1, 2, 3, 4, 6, 8, 9, 11] },
+]
+
+const proofs: { icon: IconType; key: ProofKey }[] = [
+  { icon: LuUsers, key: 'scale' },
+  { icon: LuCrown, key: 'team' },
+  { icon: LuLayers, key: 'platform' },
 ]
 
 const ease = [0.16, 1, 0.3, 1] as const
@@ -91,7 +94,19 @@ export default function Hero() {
             {t('bio')}
           </m.p>
 
-          <m.ul className="hero-contact" {...fade(0.3)}>
+          <m.ul className="hero-proof" {...fade(0.3)}>
+            {proofs.map((item) => {
+              const Icon = item.icon
+              return (
+                <li key={item.key}>
+                  <Icon size={15} aria-hidden="true" />
+                  <span>{t(`proof.${item.key}`)}</span>
+                </li>
+              )
+            })}
+          </m.ul>
+
+          <m.ul className="hero-contact" {...fade(0.34)}>
             <li>
               <LuMapPin size={16} aria-hidden="true" />
               <span>{t('location')}</span>
@@ -116,7 +131,7 @@ export default function Hero() {
             </li>
           </m.ul>
 
-          <m.div className="hero-cta" {...fade(0.36)}>
+          <m.div className="hero-cta" {...fade(0.4)}>
             <a
               href={APP_ROUTE.CV_PDF}
               target="_blank"
@@ -135,7 +150,7 @@ export default function Hero() {
             </a>
           </m.div>
 
-          <m.ul className="social-row" aria-label={t('socialProfiles')} {...fade(0.42)}>
+          <m.ul className="social-row" aria-label={t('socialProfiles')} {...fade(0.46)}>
             <SocialIcon href={c.linkedin} label="LinkedIn" platform="linkedin">
               <FaLinkedin size={18} />
             </SocialIcon>

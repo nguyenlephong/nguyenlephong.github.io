@@ -24,8 +24,8 @@ export default async function OgImage() {
         theme="dark"
         eyebrow="Curriculum Vitae"
         title="Built systems. Led teams. Shipped product."
-        subtitle="Head of Tech @ NDSVN. Previously Zalo PC (15M+ MAU) and PrimeData CDxP. End-to-end full-stack from UI to Kubernetes rollout."
-        chips={['Head of Tech', 'ex-Zalo PC', 'ex-PrimeData', 'React · Java Spring · K8s']}
+        subtitle="Technical lead at NDSVN. Previously Zalo PC (15M+ MAU) and PrimeData CDxP. End-to-end full-stack from UI to secure integrations and Kubernetes rollout."
+        chips={['Technical Lead', 'ex-Zalo PC', 'ex-PrimeData', 'React · .NET · K8s']}
         badge={{ label: 'Experience', value: '8+ yrs' }}
         footer="Download résumé · nguyenlephong.github.io/cv"
       />

@@ -16,20 +16,25 @@
     "notes": "Ghi chép"
   },
   "Footer": {
-    "tag": "Senior Software Engineer · Tech Lead",
+    "tag": "Senior Software Engineer · Technical Lead",
     "copy": "© {year} Nguyễn Lê Phong.",
     "language": "Ngôn ngữ"
   },
   "Hero": {
-    "eyebrow": "Sẵn sàng cho vị trí senior / lead",
-    "role": "Senior Software Engineer · Tech Lead",
-    "roleSub": "Full-stack · Platform engineering · Quản lý vận hành",
-    "bio": "Tôi thiết kế và vận hành các hệ thống end-to-end — từ ứng dụng front-end, dịch vụ backend, pipeline CI/CD, quy trình release đến hạ tầng production. Hiện tại đang dẫn dắt đội ngũ 11 người xây dựng nền tảng multi-tenant, các integration tài chính bảo mật và kiến trúc Micro-Frontend.",
+    "eyebrow": "Sẵn sàng cho vị trí senior / lead engineering",
+    "role": "Senior Software Engineer · Technical Lead",
+    "roleSub": "Product engineering · Platform systems · Delivery leadership",
+    "bio": "Tôi giúp đội sản phẩm biến hệ thống phức tạp thành những lần release ổn định. Hơn 8 năm qua, tôi đã trực tiếp ship sản phẩm React/Next.js, backend service, nền tảng Kubernetes, integration tài chính bảo mật và mô hình vận hành kỹ thuật. Hiện tại đang dẫn dắt đội delivery 11 người xây dựng hệ thống rollout multi-tenant và integration enterprise.",
     "location": "TP. Hồ Chí Minh, Việt Nam",
     "downloadResume": "Tải CV",
     "getInTouch": "Liên hệ ngay",
     "careerHighlights": "Điểm nổi bật sự nghiệp",
     "socialProfiles": "Mạng xã hội",
+    "proof": {
+      "scale": "80M+ người dùng thông qua Zalo và các nền tảng đã tham gia",
+      "team": "Dẫn dắt đội delivery 11 người gồm dev và QC",
+      "platform": "Nền tảng rollout 30+ tenant với integration bảo mật"
+    },
     "stats": {
       "yearsShipping": "Năm kinh nghiệm",
       "yearsShippingCaption": "Code production mỗi ngày",
@@ -37,8 +42,8 @@
       "hoursCodingCaption": "Đo bằng WakaTime từ 2021",
       "usersTouched": "Người dùng phục vụ",
       "usersTouchedCaption": "Zalo · CDP · fintech quy mô lớn",
-      "engineersLed": "Kỹ sư đã dẫn dắt",
-      "engineersLedCaption": "Dev · QC · liên phòng ban",
+      "engineersLed": "Đội delivery",
+      "engineersLedCaption": "Developer · QC · stakeholder",
       "tenantsPowered": "Tenant đang vận hành",
       "tenantsPoweredCaption": "Hệ thống feature flag multi-tenant",
       "domainsDelivered": "Lĩnh vực đã làm",
@@ -51,59 +56,59 @@
   },
   "Sections": {
     "aboutEyebrow": "Hồ sơ",
-    "aboutTitle": "Đôi nét về tôi và cách tôi làm việc",
+    "aboutTitle": "Hồ sơ nhà tuyển dụng có thể nắm trong một phút",
     "experienceEyebrow": "Sự nghiệp",
-    "experienceTitle": "Những nơi tôi đã làm",
+    "experienceTitle": "Tác động qua sản phẩm, nền tảng và leadership",
     "projectsEyebrow": "Công việc",
-    "projectsTitle": "Dự án tiêu biểu"
+    "projectsTitle": "Dự án tiêu biểu có kết quả đo được"
   },
   "Summary": {
-    "intro1": "Cử nhân Công nghệ Thông tin (chuyên ngành phụ Kỹ thuật Phần mềm, <b>GPA 3.36</b>) với gần <b>8 năm kinh nghiệm</b> phát triển phần mềm full-stack, trong đó <b>3+ năm</b> tham gia leadership kỹ thuật, ra quyết định kiến trúc và điều phối delivery liên đội.",
-    "intro2": "Trực tiếp thiết kế, xây dựng và vận hành các hệ thống end-to-end — từ ứng dụng front-end, dịch vụ backend đến pipeline CI/CD, quy trình release và hạ tầng production — luôn ưu tiên tự động hoá, minh bạch vận hành và đảm bảo delivery ổn định.",
-    "intro3": "<i>Đây là những kỹ năng cứng tôi tập trung trong những năm gần đây:</i>",
-    "visionEyebrow": "Cách tôi làm việc",
-    "hardSkillsEyebrow": "Kỹ năng cứng",
+    "intro1": "Senior full-stack engineer và technical lead, Cử nhân Công nghệ Thông tin (chuyên ngành phụ Kỹ thuật Phần mềm, <b>GPA 3.36</b>) với <b>8+ năm</b> ship phần mềm production trong các domain consumer-scale, CDP, fintech, giáo dục và bất động sản.",
+    "intro2": "Giá trị mạnh nhất của tôi nằm ở giao điểm giữa delivery sản phẩm và độ ổn định nền tảng: biến mục tiêu kinh doanh còn mơ hồ thành front-end system, backend service, rollout workflow, observability, CI/CD và vận hành production ổn định.",
+    "intro3": "<i>Những vùng năng lực gần đây có bằng chứng rõ:</i>",
+    "visionEyebrow": "Phạm vi vận hành",
+    "hardSkillsEyebrow": "Chiều sâu kỹ thuật",
     "pillars": {
       "endToEnd": {
-        "title": "Kỹ sư end-to-end",
-        "body": "Front-end, backend, CI/CD, release và hạ tầng production — một người chịu trách nhiệm toàn bộ vòng đời.",
-        "chip": "FE · BE · Hạ tầng"
+        "title": "Sở hữu từ sản phẩm đến nền tảng",
+        "body": "Đưa nhu cầu sản phẩm từ UI, API, release, observability đến theo dõi incident sau production.",
+        "chip": "Ý tưởng tới prod"
       },
       "multiTenant": {
-        "title": "Nền tảng multi-tenant",
-        "body": "Feature flag, RBAC, rollout theo phần trăm/segment, JSON-config values, đánh giá runtime stateless.",
-        "chip": "30+ tenant đang chạy"
+        "title": "Hệ thống progressive delivery",
+        "body": "Feature flag, rollout theo segment, JSON-config values, runtime stateless và release production có kiểm soát.",
+        "chip": "30+ tenant"
       },
       "leadership": {
-        "title": "Lãnh đạo delivery",
-        "body": "Dẫn dắt 11+ kỹ sư — tuyển dụng, thiết kế tổ chức, RFC, runbook, playbook rollout, coaching 1:1.",
+        "title": "Leadership kỹ thuật điềm tĩnh",
+        "body": "Dẫn dắt dev và QC qua thiết kế ownership, tuyển dụng, RFC, runbook, playbook rollout và coaching 1:1.",
         "chip": "Team 11 người"
       },
       "fintech": {
-        "title": "Integration fintech bảo mật",
-        "body": "RSA-4096 handshake, AES-256 payload, mTLS, certificate pinning, contract idempotent, retry queue.",
+        "title": "Integration bảo mật",
+        "body": "RSA-4096 handshake, AES-256 payload, mTLS, certificate pinning, contract idempotent và retry queue.",
         "chip": "Gtel · Napas"
       },
       "mfe": {
-        "title": "Micro-frontend & SDK",
-        "body": "Angular host + module React để deploy độc lập. SDK JS dưới <200KB, tải <150ms.",
-        "chip": "MFE · <150ms"
+        "title": "Kiến trúc front-end mở rộng",
+        "body": "React/Next.js, design system, Micro-Frontend Angular host + React module và SDK nhẹ dưới budget hiệu năng chặt.",
+        "chip": "MFE · SDK"
       },
       "ai": {
-        "title": "AI-first engineering",
-        "body": "Xây dựng AI agent cho code review, hỗ trợ deploy, quota dịch vụ, giám sát API và phân tích release.",
-        "chip": "Agent đang production"
+        "title": "AI hỗ trợ vận hành kỹ thuật",
+        "body": "Xây dựng internal agent cho code review, hỗ trợ deploy, kiểm tra quota dịch vụ, giám sát API và phân tích release.",
+        "chip": "Agent đang chạy"
       }
     },
     "skills": {
-      "backend": "<b>Back-end</b>: Kinh nghiệm vững với <b>Node.js</b>, <b>Java (Spring)</b>; thiết kế REST/GraphQL API với contract rõ ràng, cơ chế xác thực và mã hoá, tương thích ngược và độ bền cho integration enterprise và bên thứ ba.",
-      "frontend": "<b>Front-end</b>: Kinh nghiệm xây dựng và bảo trì các ứng dụng client phức tạp với <b>React</b> (TypeScript, Next.js), <b>React Native</b> và host Micro-Frontend trên Angular; áp dụng tối ưu hiệu năng, quản lý state và các pattern kiến trúc UI mở rộng được.",
-      "databases": "<b>Cơ sở dữ liệu</b>: Kinh nghiệm thực tế sâu với <b>MySQL</b>, tập trung vào thiết kế schema và data model, chiến lược index, tối ưu query, ranh giới transaction, lập kế hoạch migration và đánh đổi consistency trong hệ thống phân tán, throughput cao.",
-      "infra": "<b>Hạ tầng & Platform Engineering</b>: Trực tiếp làm việc với <b>Docker</b> và <b>Kubernetes</b> trên nhiều môi trường; vận hành cluster managed (<b>AKS</b>, <b>EKS</b>, <b>FKE</b>, <b>K3S</b>), deployment GitOps với <b>ArgoCD</b>, pipeline CI/CD, cấu hình môi trường và quản lý domain/SSL.",
-      "architecture": "<b>Kiến trúc & Delivery</b>: Kinh nghiệm áp dụng kiến trúc Micro-Frontend và multi-tenant, rollout dựa trên feature flag, progressive delivery và observability để hỗ trợ release an toàn và chẩn đoán production.",
-      "testing": "<b>Testing</b>: Sử dụng thành thạo Jest, Cucumber, Puppeteer và Testing Library để đảm bảo an toàn regression, tự tin khi release và sẵn sàng production cho dịch vụ và ứng dụng.",
-      "libraries": "<b>Thư viện</b>: Thành thạo <b>Firebase</b>, Strapi, Directus, React Flow, Webpack, <b>Redux</b>, React Query và G2plot.",
-      "other": "<b>Khác</b>: Quen với kiến trúc <b>Micro-frontend</b>, Responsive Design, Cross-Browser Compatibility, <b>SEO</b>, GraphQL và Electron."
+      "backend": "<b>Back-end</b>: Node.js, Java Spring và .NET Core cho REST/GraphQL service, auth, mã hoá, contract tương thích ngược và integration enterprise/bên thứ ba.",
+      "frontend": "<b>Front-end</b>: React, Next.js, TypeScript, React Native, Micro-Frontend host Angular, design system Storybook, state management và kiến trúc UI nhạy với hiệu năng.",
+      "databases": "<b>Cơ sở dữ liệu</b>: MySQL schema design, indexing, tối ưu query, ranh giới transaction, kế hoạch migration và đánh đổi consistency trong hệ thống throughput cao.",
+      "infra": "<b>Hạ tầng & Platform</b>: Docker, Kubernetes, AKS, EKS, FKE, K3S, ArgoCD, CI/CD, cấu hình môi trường, domain/SSL và xử lý phục hồi production.",
+      "architecture": "<b>Kiến trúc & Delivery</b>: Multi-tenant architecture, feature-flag rollout, Micro-Frontend composition, progressive delivery, observability, RFC và runbook.",
+      "testing": "<b>Testing & Quality</b>: Jest, Cucumber, Puppeteer, Testing Library, BDD/E2E coverage, release checklist, rollback readiness và phòng chống regression.",
+      "libraries": "<b>Thư viện & Platform</b>: Firebase, Strapi, Directus, React Flow, Webpack, Redux, React Query, G2plot, PostHog, Electron và mobile tooling.",
+      "other": "<b>Cách làm việc</b>: Tuyển dụng, onboarding, coaching, documentation-first delivery, phối hợp liên đội, giao tiếp stakeholder và AI-assisted engineering thực dụng."
     }
   },
   "Experience": {
@@ -114,39 +119,35 @@
       "keyTechnologies": "Công nghệ chính"
     },
     "ndsvn": {
-      "summary": "Nhận trách nhiệm về delivery sản phẩm và định hướng kỹ thuật sau khi CTO chuyển giao, dẫn dắt các quyết định kiến trúc, hệ thống rollout, integration enterprise-grade và phối hợp liên đội — quản lý đội delivery gồm 8 developer (4 senior) và 3 QC engineer.",
+      "summary": "Nhận ownership kỹ thuật sau giai đoạn CTO chuyển giao, dẫn dắt delivery sản phẩm, quyết định kiến trúc, hệ thống rollout, integration enterprise và thực thi liên đội cho đội delivery gồm 8 developer và 3 QC engineer.",
       "contributions": [
-        "Thiết kế hệ thống feature flag multi-tenant trên .NET Core <b>(30+ tenant, ~40k người dùng)</b> với rule engine ưu tiên, rollout theo phần trăm (tenant/segment/env), JSON-config values và đánh giá runtime stateless — cung cấp cho ứng dụng mobile/web và cho phép release production tiến triển có kiểm soát trên các tenant lưu lượng cao.",
-        "Xây dựng integration bảo mật với <b>Gtel & Napas</b>: handshake RSA-4096, mã hoá payload AES-256, xác thực hai chiều <b>mTLS</b>, certificate pinning, retry queue, contract API idempotent và giám sát theo ACK cho dịch vụ bên thứ ba không ổn định.",
-        "Triển khai kiến trúc <b>Micro-Frontend</b> (Angular host + module React) cho phép chu kỳ deploy độc lập và cô lập feature — giảm bề mặt regression và sự phụ thuộc deployment giữa các đội.",
-        "Giới thiệu observability stack (PostHog + pipeline metric + workflow) cho tác động rollout, mức độ áp dụng feature, phát hiện anomaly và truy vết regression — cắt giảm đáng kể thời gian debug/phân tích qua các chu kỳ release.",
-        "Nhận trách nhiệm về hạ tầng kế thừa và giữ cho tổ chức vận hành — âm thầm xử lý các sự cố production, lỗi pipeline, các vấn đề cluster và bất ổn integration để sản phẩm và đội không bị đình trệ; định hình ArgoCD, CI/CD, domain/SSL và các cluster <b>AKS/FKE/K3S/EKS</b> thành hệ thống <b>chẩn đoán được, phục hồi được và ổn định thay vì các ẩn số lặp lại</b>.",
-        "Xây dựng <b>AI agent</b> hỗ trợ code review, deployment assistant, kiểm tra service-quota, giám sát API và phân tích release; rút ngắn vòng lặp ra quyết định & delivery cho các đội sản phẩm.",
-        "Phát triển integration simulation và module sandbox/demo để xử lý đối tác không ổn định và đảm bảo validation pre-contract với hệ sinh thái bên thứ ba.",
-        "<b>Tái cấu trúc tổ chức kỹ thuật</b> sau khi leadership chuyển giao: xác định org chart, ma trận năng lực, định tuyến công việc và ranh giới ownership — mở khoá tự chủ và giảm lead-time cho quyết định kỹ thuật.",
-        "Xây dựng engineering playbook thống nhất: chiến lược branch, convention commit, tagging release, tiêu chí rollout, quy tắc API/integration và kho technical spec (RFC, runbook, troubleshooting guide).",
-        "Dẫn dắt vòng tuyển dụng và phát triển năng lực: phỏng vấn có cấu trúc (QC/Fullstack), lộ trình onboarding, coaching 1:1, chu kỳ performance review và giải quyết xung đột liên đội để giữ delivery cộng tác và tập trung kết quả.",
-        "Duy trì chất lượng delivery thông qua văn hoá documentation-first và process guardrail (checklist, quy tắc handover, sẵn sàng rollback), đảm bảo nhịp release ổn định trong giai đoạn scale."
+        "Thiết kế <b>nền tảng feature flag multi-tenant .NET Core</b> cho <b>30+ tenant</b> và <b>~40k người dùng</b>, gồm rule ưu tiên, rollout theo tenant/segment/env, JSON-config values và runtime stateless.",
+        "Xây dựng integration bảo mật với <b>Gtel & Napas</b> bằng RSA-4096 handshake, mã hoá AES-256, <b>mTLS</b>, certificate pinning, contract idempotent, retry queue và monitoring theo ACK.",
+        "Triển khai kiến trúc <b>Micro-Frontend</b> với Angular host và React module, cho phép deploy độc lập, cô lập feature và giảm bề mặt regression.",
+        "Ổn định hạ tầng kế thừa gồm <b>ArgoCD</b>, CI/CD, domain/SSL và <b>AKS/FKE/K3S/EKS</b>, biến các ẩn số lặp lại thành hệ thống chẩn đoán và phục hồi được.",
+        "Đưa PostHog-based observability vào rollout impact, adoption, anomaly detection và regression tracing qua các chu kỳ release.",
+        "Xây dựng AI-assisted engineering agent cho code review, hỗ trợ deploy, kiểm tra service-quota, giám sát API và phân tích release.",
+        "Thiết lập lại vận hành kỹ thuật: org chart, ma trận năng lực, ranh giới ownership, branch strategy, release tagging, RFC, runbook, onboarding và phỏng vấn có cấu trúc."
       ]
     },
     "zalo": {
-      "summary1": "Core developer của ứng dụng đa nền tảng <b>Zalo PC</b> (Web, macOS, Windows), phục vụ <b>15M+ MAU</b>. Đã ra mắt các tính năng then chốt như dark mode, dynamic theming và theo dõi hành vi người dùng. Dẫn dắt phát triển promotion flow và một <b>design system</b> mở rộng được cho <b>50+ developer</b>. Tối ưu hiệu năng, nâng cao khả năng bảo trì và đóng góp vào tăng trưởng kinh doanh qua các giải pháp bền vững, hiệu quả.",
-      "summary2": "Chủ động bảo trì và cải thiện ứng dụng mobile <b>Zalo Android</b>, đảm bảo <b>sự ổn định</b> và <b>hiệu năng</b> của các tính năng quan trọng cho gần <b>80 triệu người dùng</b>.",
+      "summary1": "Core engineer của <b>Zalo PC</b> đa nền tảng (Web, macOS, Windows), phục vụ <b>15M+ MAU</b>, tham gia ownership từ feature sản phẩm, tracking, design system đến độ ổn định release.",
+      "summary2": "Đồng thời đóng góp cho <b>Zalo Android</b>, cải thiện độ ổn định và hiệu năng feature cho sản phẩm mobile gần <b>80 triệu người dùng</b>.",
       "contributions": [
-        "Ra mắt hơn <b>10 tính năng</b>, gồm dark mode, module download, kiki bot, log tracking và nhiều tính năng khác, cải thiện UX và mức độ tương tác.",
-        "Phát triển <b>promotion flow</b> tích hợp hệ thống tracking và monitoring, thúc đẩy thành công activation trên <b>15M+ MAU</b>.",
-        "Dẫn dắt phát triển <b>design system</b> mở rộng được bằng Storybook, đảm bảo nhất quán UI và hiệu quả cho <b>50+ developer</b>.",
-        "Chủ động hỗ trợ <b>50+ client user</b>, xử lý vấn đề nhanh chóng với <b>sự tận tâm</b> và <b>giải quyết vấn đề hiệu quả</b>, nhận được phản hồi tích cực mạnh mẽ.",
-        "Bảo trì và cải thiện <b>3+</b> tính năng trong ứng dụng <b>Zalo Android</b>, tập trung vào <b>sự ổn định</b>, <b>hiệu năng</b> và trải nghiệm liền mạch cho gần <b>80 triệu người dùng</b>."
+        "Ra mắt <b>10+ feature sản phẩm</b>, gồm dark mode, download flow, bề mặt Kiki assistant, logging và behavior tracking.",
+        "Xây dựng promotion flow tích hợp tracking và monitoring, hỗ trợ activation trên <b>15M+ MAU</b>.",
+        "Dẫn dắt design-system work bằng Storybook, cải thiện tính nhất quán UI và khả năng tái sử dụng cho <b>50+ developer</b>.",
+        "Xử lý support/rollout issue cho <b>50+ client user</b> trong khi vẫn giữ chất lượng feature và release confidence.",
+        "Bảo trì <b>3+ Android feature</b>, tập trung vào stability, performance và UX ở quy mô gần 80M người dùng."
       ]
     },
     "primedata": {
-      "summary": "Công ty xây dựng sản phẩm gọi là CDxP. Tóm lại, đây là nền tảng dữ liệu được thiết kế riêng để host và xử lý customer profile (giải pháp cốt lõi là làm sao có thể nhận diện và hợp nhất dữ liệu khách hàng từ các schema và format không đồng nhất đến từ nhiều dịch vụ và hệ thống khác nhau).",
+      "summary": "Xây dựng CDxP, nền tảng customer data giúp nhận diện, hợp nhất và kích hoạt customer profile từ nhiều schema rời rạc qua các hệ thống khác nhau.",
       "contributions": [
-        "Dẫn dắt đội Front-end, ra mắt <b>10+ dự án</b> gồm ứng dụng CDxP, demo Magento & WordPress, JS SDK, mobile SDK và nhiều hơn nữa.",
-        "Quản lý đội <b>4 thành viên</b>, đồng bộ với product roadmap để đáp ứng nhiều đối tác lớn, nâng cao UI/UX và triển khai các tính năng nâng cao như 360 profile và campaign builder.",
-        "Phát triển JS SDK nhẹ với đầy đủ chức năng (<b><200kb, <150ms</b> thời gian tải), hỗ trợ tích hợp liền mạch qua nhiều dự án.",
-        "Thể hiện khả năng <b>giải quyết vấn đề</b> nhanh, đảm bảo demo tính năng tức thì để gây ấn tượng với khách hàng và nhà đầu tư."
+        "Dẫn dắt đội front-end <b>4 người</b>, ra mắt <b>10+ dự án</b> gồm CDxP app, demo Magento/WordPress, JS SDK và mobile SDK.",
+        "Ship các bề mặt sản phẩm nâng cao như 360 customer profile, campaign builder, analytics, segmentation và demo cho partner.",
+        "Phát triển JS SDK nhẹ với tracking/engagement capability dưới <b>200KB</b> và thời gian tải <b><150ms</b>.",
+        "Xây dựng reusable UI utilities, RBAC hooks, data-visualization flow và testing coverage giúp tăng tốc delivery và maintainability."
       ]
     },
     "splus": {
@@ -154,7 +155,7 @@
       "contributions": [
         "Với chuyên môn về <b>quy trình sản xuất phần mềm end-to-end</b>, tôi đã <b>dẫn dắt một đội nhỏ</b>, làm chủ các giai đoạn từ thu thập yêu cầu đến bảo mật dự án, đặt nền tảng cho các vai trò leadership sau này.",
         "Tham gia <b>8+</b> dự án đa dạng thuộc các lĩnh vực <b>giáo dục, F&B, ngân hàng</b> và <b>thương mại điện tử</b>, tôi đã thu được những hiểu biết quý giá về phát triển ứng dụng web lẫn mobile.",
-        "Với vai trò project mercenary, tôi đã giành được các dự án quan trọng như Savyu và Bank Tool, tạo ra hơn <b>$20,000</b> doanh thu và được công nhận là <b>Best Rookie of the Year</b> nhờ những đóng góp ấn tượng."
+        "Góp phần chốt và delivery các dự án quan trọng như Savyu và Bank Tool, tạo hơn <b>$20,000</b> doanh thu và được ghi nhận <b>Best Rookie of the Year</b>."
       ]
     },
     "propman": {
@@ -167,77 +168,62 @@
   "Projects": {
     "sat": {
       "accomplishments": [
-        "Điều phối phát triển sản phẩm bao gồm thiết kế UI/UX, kỹ thuật sản phẩm và phân tích hành vi người dùng, mang lại tệp người dùng toàn cầu vượt <b>10,000</b> lượt truy cập và <b>3,000</b> đăng ký trong vòng hai tháng.",
-        "Nâng cao thứ hạng tìm kiếm Google qua các sáng kiến SEO chiến lược, gồm thành thạo kỹ thuật <b>parasite SEO</b>. Các nỗ lực này tạo nên cải thiện hiệu năng đáng kể và định vị sản phẩm hiệu quả ngang hàng với đối thủ trong ngành.",
-        "Thể hiện sự hiệu quả và tối ưu tài nguyên trong phát triển ứng dụng front-end bằng cách tận dụng một Cloud Run instance duy nhất với <b>1 CPU</b> và giới hạn memory <b>256 MiB</b>.",
-        "Dẫn dắt phát triển ứng dụng mobile với cách tiếp cận <b>mobile-first</b>, cho phép triển khai nhanh lên app store trong vòng <b>hai ngày</b>. Đồng thời đảm bảo cài đặt <b>PWA</b> liền mạch trên mọi thiết bị, nâng cao khả năng tiếp cận và trải nghiệm người dùng.",
-        "Phát triển <b>tính năng monetization</b>, gồm tích hợp <b>Google Ads</b> và triển khai luồng thanh toán <b>Stripe</b>, để gia tăng doanh thu."
+        "Sở hữu product engineering từ UI/UX đến analytics, đạt <b>10,000+ lượt truy cập</b> và <b>3,000+ đăng ký</b> trong hai tháng.",
+        "Cải thiện acquisition bằng technical SEO, PWA installability và lộ trình release mobile-first.",
+        "Giữ hạ tầng gọn trên một Cloud Run instance (<b>1 CPU, 256 MiB</b>) trong khi bổ sung Google Ads và Stripe monetization."
       ]
     },
     "cdp": {
       "accomplishments": [
-        "Dẫn dắt kiến trúc và triển khai dự án CDxP, tập trung vào các tính năng <b>UI/UX</b>, qua đó nâng cao trải nghiệm tổng thể và gia tăng mức độ tương tác.",
-        "Cấu hình nested router, duy trì cấu trúc dự án <b>scalable</b> và thể hiện kiến thức vững về ES6, Typescript và data type, <b>cải thiện khả năng bảo trì code</b> và giảm các vấn đề liên quan đến code.",
-        "<b>Theo dõi lỗi</b> hiệu quả và các cải tiến, hỗ trợ fix bug đảm bảo <b>sự ổn định</b> của dự án, qua đó nâng cao độ tin cậy hệ thống và giảm downtime.",
-        "Triển khai hook <b>RBAC</b> để xác thực phân quyền truy cập component trong các cấu hình client adaptive. Thêm vào đó, đã xây dựng hơn <b>20 tính năng tiện ích tái sử dụng</b> có thể dùng chung qua nhiều dự án nhờ thiết kế modular.",
-        "Phát triển <b>10+ tính năng nâng cao</b> như profile, campaign, analytics và nhiều hơn.",
-        "Xây dựng quy trình testing vững chắc, bao phủ các tính năng cốt lõi của CDP với <b>100+ kịch bản</b> và <b>1000+ test case</b>.",
-        "Tích luỹ chuyên môn lĩnh vực và xuất sắc trong các phương pháp testing, gồm BDD, unit testing và <b>E2E testing</b>, qua đó cải thiện độ phủ test và giảm bug phần mềm <b>30%</b>.",
-        "Phát triển <b>feature flag</b> cho toggling runtime, cho phép A/B testing và phân nhóm tính năng theo phân khúc khách hàng, tối ưu việc giao tính năng và tăng mức độ áp dụng.",
-        "<b>Document hoá</b> các component rõ ràng và dễ bảo trì, nâng cao khả năng đọc code và giảm thời gian bảo trì."
+        "Dẫn dắt front-end architecture cho CDxP, ship profile, campaign, analytics, segmentation và giao diện cho partner.",
+        "Xây dựng RBAC hooks, nested routing, shared utilities và modular UI patterns giúp tăng maintainability qua nhiều sản phẩm.",
+        "Thiết lập BDD/E2E coverage với <b>100+ scenario</b> và <b>1,000+ test case</b>, giảm regression risk và production defect."
       ]
     },
     "sdk": {
       "accomplishments": [
-        "Phát triển thành công hơn <b>5 module</b>, tích hợp hơn <b>10 tính năng nâng cao</b> bằng <b>vanilla JS</b>. Đạt bundle size ấn tượng <b><200kb và thời gian tải <150ms</b> (số liệu đo trước khi áp dụng toàn bộ kỹ thuật tối ưu bundle).",
-        "Sử dụng <b>web worker và service worker</b> để hỗ trợ multitasking ở nền, quản lý hiệu quả các chức năng phức tạp và xử lý <b>nhiều edge case</b> như sử dụng đa tab đồng thời.",
-        "Đồng thời thiết kế và triển khai <b>tính năng recommendation cá nhân hoá</b> bằng kiến trúc <b>micro-frontend</b>, cụ thể là một carousel block hiển thị sản phẩm người dùng có thể thích, qua đó nâng cao trải nghiệm và tương tác.",
-        "Trong các tính năng nâng cao đã xây dựng có web pop-up, web push notification, <b>nhúng web component</b>, tích hợp WebSocket và quản lý pop-up gây phiền nhiễu trên nhiều tab.",
-        "Hơn nữa, tận dụng <b>JS Closure</b> để tổ chức cấu trúc module, cho phép export tính năng liền mạch hoặc <b>đóng gói dữ liệu</b>, qua đó <b>tránh xung đột</b> trong global scope."
+        "Xây dựng <b>5+ vanilla JS module</b> cho tracking, web popup, push notification, WebSocket messaging và embedded web component.",
+        "Dùng web worker, service worker và multi-tab coordination để background work bền hơn trong điều kiện browser thực tế.",
+        "Giữ footprint tích hợp nhẹ dưới <b>200KB</b> và thời gian tải <b><150ms</b> trước cả các bước tối ưu bundle sâu hơn."
       ]
     },
     "vac": {
       "accomplishments": [
-        "Đảm nhận trách nhiệm <b>giảng dạy</b> khoá học <b>Front-end Project</b> tại Vietnam Australia Center.",
-        "Thiết kế và truyền tải các <b>bài giảng hấp dẫn</b>, hướng dẫn thực hành cho sinh viên về các dự án phát triển front-end.",
-        "Tập trung nuôi dưỡng môi trường học tập <b>cộng tác</b>, khuyến khích <b>làm việc nhóm</b> cho <b>12 sinh viên</b> và đồng bộ chương trình với best practice ngành.",
-        "Cung cấp <b>phản hồi</b> và <b>mentoring</b> cá nhân hoá, hỗ trợ sinh viên <b>vượt qua thử thách</b> và đảm bảo nắm vững toàn bộ nội dung khoá học."
+        "Thiết kế và giảng dạy khoá front-end project cho <b>12 sinh viên</b>, hướng dẫn đội từ requirement đến sản phẩm React/Next.js chạy được.",
+        "Review, mentoring và đưa thói quen delivery thực tế vào quá trình học."
       ]
     },
     "mona": {
       "accomplishments": [
-        "Phát triển ứng dụng mobile toàn diện, Mona House, bằng <b>React Native</b> và Realm DB cho việc quản lý nhà ở hiệu quả.",
-        "Chuyên về tạo ứng dụng cross-platform với trọng tâm <b>component tái sử dụng</b>, animation mượt và tích hợp liền mạch với module native.",
-        "Thể hiện kỹ năng <b>giải quyết vấn đề</b> và <b>troubleshooting</b> mạnh, nhanh chóng xác định và xử lý các vấn đề phức tạp qua công cụ debug nâng cao và profiling hiệu năng.",
-        "Thể hiện <b>khả năng thích ứng</b> và <b>đường cong học nhanh</b> với công nghệ mới, cho phép triển khai liền mạch framework, ngôn ngữ lập trình hay công cụ mới để đảm bảo hoàn thành dự án."
+        "Xây dựng ứng dụng quản lý nhà bằng React Native và Realm DB với component tái sử dụng, interaction mượt và tích hợp native module.",
+        "Xử lý debugging và performance profiling trên ràng buộc mobile, đồng thời thích nghi nhanh với yêu cầu triển khai mới."
       ]
     },
     "mobivi": {
       "accomplishments": [
-        "Phát triển <b>ứng dụng web full-stack</b> tại Mobivi, tập trung vào ingest và xử lý dữ liệu trên <b>20 file Excel</b>, mỗi file chứa hơn <b>20,000 bản ghi</b>.",
-        "Ứng dụng được thiết kế để xử lý hiệu quả dữ liệu giao dịch được tính toán tăng dần từ người dùng, <b>đảm bảo báo cáo chính xác và đáng tin cậy</b>."
+        "Xây dựng banking tool full-stack để ingest và xử lý <b>20+ file Excel</b>, mỗi file có <b>20,000+ bản ghi</b>.",
+        "Thiết kế workflow tính toán giao dịch tăng dần và báo cáo vận hành đáng tin cậy."
       ]
     },
     "savyu": {
       "accomplishments": [
-        "Đóng vai trò then chốt trong phát triển <b>hai ứng dụng mobile</b> tại Synova - một cho merchant và một cho người tiêu dùng.",
-        "Đóng góp vào tạo ra <b>ứng dụng web</b> giúp quản trị viên quản lý dữ liệu người dùng hiệu quả.",
-        "Thể hiện <b>thành thạo phát triển ứng dụng mobile</b>, cộng tác với các đội liên chức năng để đảm bảo delivery thành công các ứng dụng <b>trực quan</b> và <b>hiệu năng cao</b>."
+        "Phát triển feature cho app merchant và consumer bằng React Native, cùng admin web flow để quản lý người dùng.",
+        "Làm việc xuyên mobile, web và backend integration để ship trải nghiệm marketplace nhất quán."
       ]
     }
   },
   "CTA": {
-    "eyebrow": "Cùng xây điều gì đó",
-    "title": "Có vấn đề khó đáng để ship không?",
-    "body": "Tôi hữu ích nhất khi sản phẩm đang scale nhanh, đội cần sự rõ ràng và hạ tầng phải hoạt động ổn dưới tải. Liên hệ ngay — tôi đọc mọi tin nhắn.",
+    "eyebrow": "Cùng trao đổi",
+    "title": "Cần một người vừa ship được vừa làm hệ thống ổn hơn?",
+    "body": "Tôi mạnh nhất ở nơi delivery sản phẩm, độ tin cậy hệ thống và sự rõ ràng của đội phải đi cùng nhau. Hãy gửi vấn đề, không chỉ gửi job description.",
     "emailMe": "Gửi email",
     "resumePdf": "CV (PDF)",
     "linkedin": "LinkedIn"
   },
   "SEO": {
     "home": {
-      "title": "Nguyễn Lê Phong — Senior Software Engineer & Tech Lead",
-      "description": "Senior Software Engineer & Head of Tech với 8+ năm xây dựng sản phẩm, dẫn dắt delivery và kiến trúc hệ thống Micro-Frontend, Kubernetes và rollout. Cử nhân CNTT — loại Giỏi (GPA 3.36)."
+      "title": "Nguyễn Lê Phong — Senior Software Engineer & Technical Lead",
+      "description": "Senior full-stack engineer và technical lead với 8+ năm ship sản phẩm, platform, Micro-Frontend, Kubernetes, integration fintech bảo mật và hệ thống rollout."
     }
   },
   "Pages": {

@@ -76,7 +76,9 @@ export default function Experience({ data }: Props) {
 
               {ex.jobs.map((job: JobType) => {
                 const summaryKeys = getSummaryKeys(companyKey, job.summaries.length)
-                const contribCount = job.key_contribution.length
+                const contributions = companyKey
+                  ? (t.raw(`${companyKey}.contributions`) as string[])
+                  : job.key_contribution
                 return (
                   <article key={job.title} className="role">
                     <header className="role-head">
@@ -97,13 +99,11 @@ export default function Experience({ data }: Props) {
 
                     <p className="role-section-label">{t('labels.keyContributions')}</p>
                     <ul className="role-contrib">
-                      {Array.from({ length: contribCount }).map((_, i) => (
+                      {contributions.map((item, i) => (
                         <li
                           key={i}
                           className="role-contrib-item"
-                          dangerouslySetInnerHTML={{
-                            __html: (t.raw(`${companyKey}.contributions`) as string[])[i],
-                          }}
+                          dangerouslySetInnerHTML={{ __html: item }}
                         />
                       ))}
                     </ul>

@@ -30,6 +30,11 @@
     "getInTouch": "Me contacter",
     "careerHighlights": "Faits marquants de carrière",
     "socialProfiles": "Profils sociaux",
+    "proof": {
+      "scale": "80M+ utilisateurs touchés via Zalo et des produits plateforme",
+      "team": "Équipe delivery de 11 personnes dirigée entre développement et QC",
+      "platform": "Plateforme de rollout 30+ tenants avec intégrations sécurisées"
+    },
     "stats": {
       "yearsShipping": "Années de livraison",
       "yearsShippingCaption": "Code en production, jour après jour",

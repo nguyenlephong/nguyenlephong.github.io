@@ -30,6 +30,11 @@
     "getInTouch": "联系我",
     "careerHighlights": "职业亮点",
     "socialProfiles": "社交主页",
+    "proof": {
+      "scale": "通过 Zalo 和平台产品触达 80M+ 用户",
+      "team": "带领 11 人交付团队,覆盖开发与 QC",
+      "platform": "支持 30+ 租户的安全集成 rollout platform"
+    },
     "stats": {
       "yearsShipping": "交付年数",
       "yearsShippingCaption": "每天交付生产代码",

@@ -4,10 +4,10 @@ import { SITE_URL } from '@/app/seo.config'
 
 const DEFAULT = `/${routing.defaultLocale}`
 
-const SEO_TITLE = 'Nguyen Le Phong — Senior Software Engineer & Tech Lead'
+const SEO_TITLE = 'Nguyen Le Phong — Senior Software Engineer & Technical Lead'
 const SEO_DESCRIPTION =
-  'Senior Software Engineer & Head of Tech with 8+ years building product, leading delivery, and architecting Micro-Frontend, Kubernetes, and rollout systems. Bachelor of IT — Very Good (GPA 3.36).'
-const OG_ALT = 'Nguyen Le Phong — Senior Software Engineer & Tech Lead'
+  'Senior full-stack engineer and technical lead with 8+ years shipping product, platform, Micro-Frontend, Kubernetes, secure fintech integration, and rollout systems.'
+const OG_ALT = 'Nguyen Le Phong — Senior Software Engineer & Technical Lead'
 
 const localeLanguages: Record<string, string> = {}
 for (const loc of routing.locales) localeLanguages[loc] = `${SITE_URL}/${loc}`

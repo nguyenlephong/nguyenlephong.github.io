@@ -30,6 +30,11 @@
     "getInTouch": "お問い合わせ",
     "careerHighlights": "キャリアハイライト",
     "socialProfiles": "ソーシャルプロフィール",
+    "proof": {
+      "scale": "Zalo とプラットフォーム製品で 80M+ ユーザーに到達",
+      "team": "開発と QC を含む 11 名のデリバリーチームをリード",
+      "platform": "30+ テナント向けの安全な連携付き rollout platform"
+    },
     "stats": {
       "yearsShipping": "出荷年数",
       "yearsShippingCaption": "毎日プロダクションコードを",

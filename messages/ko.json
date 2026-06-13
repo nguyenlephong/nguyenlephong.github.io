@@ -30,6 +30,11 @@
     "getInTouch": "연락하기",
     "careerHighlights": "커리어 하이라이트",
     "socialProfiles": "소셜 프로필",
+    "proof": {
+      "scale": "Zalo와 플랫폼 제품을 통해 80M+ 사용자에 도달",
+      "team": "개발과 QC를 포함한 11명 딜리버리 팀 리딩",
+      "platform": "보안 연동을 갖춘 30+ 테넌트 rollout platform"
+    },
     "stats": {
       "yearsShipping": "출시 경력",
       "yearsShippingCaption": "매일 프로덕션 코드 작성",

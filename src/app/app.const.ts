@@ -12,15 +12,15 @@ export const APP_ROUTE = {
 };
 
 export const SEO = {
-  title: "Nguyen Le Phong | Software Engineer",
+  title: "Nguyen Le Phong | Senior Software Engineer",
   description:
-    "As a front-end software engineer with over seven years of experience, I specialize in designing and implementing user-friendly web applications. Proficient in HTML, CSS, JavaScript, and React, my expertise extends to optimizing website performance to accommodate a large user base. My commitment to creating visually appealing and efficient interfaces has led to successful project deliveries across diverse industries.",
+    "Senior full-stack engineer and technical lead with 8+ years shipping product, platform, Micro-Frontend, Kubernetes, secure fintech integration, and rollout systems.",
   og: {
     title: "Nguyễn Lê Phong | Software Engineer",
     type: "website",
     url: "https://nguyenlephong.github.io"
   },
-  title_tail: "Nguyen Le Phong | Software Engineer"
+  title_tail: "Nguyen Le Phong | Senior Software Engineer"
 };
 
 export const profileInfo = {
@@ -341,9 +341,9 @@ export const profileInfo = {
   summary: {
     title: "Summary",
     description: [
-      `Possessing a Bachelor's degree in Information Technology (minor in Software Engineering, <b>GPA 3.36</b>) with nearly <b>8 years of experience</b> in full-stack software development, including <b>3+ years</b> contributing to technical leadership, architectural decision-making, and delivery coordination across teams.`,
-      `Hands-on experience in designing, building, and operating end-to-end systems—from front-end applications and backend services to CI/CD pipelines, release workflows, and production infrastructure—with a strong emphasis on automation, operational clarity, and reliable delivery.`,
-      `<i>Here are my recent focused hard skills over the past few years:</i>`
+      `Senior full-stack engineer and technical lead with a Bachelor of Information Technology (minor in Software Engineering, <b>GPA 3.36</b>) and <b>8+ years</b> shipping production software across consumer-scale, CDP, fintech, education, and real-estate domains.`,
+      `Strongest at the intersection of product delivery and platform reliability: front-end systems, backend services, rollout workflows, observability, CI/CD, and stable production operations.`,
+      `<i>Recent areas of depth and evidence:</i>`
     ],
     skills: [
       `<b>Back-end</b>: Strong hands-on experience with <b>Node.js</b>, <b>Java (Spring)</b>; designing REST/GraphQL APIs with clear contracts, authentication and encryption mechanisms, backward compatibility, and resilience for enterprise and third-party integrations.`,
@@ -390,7 +390,7 @@ export const profileInfo = {
       location: "Ho Chi Minh City, Vietnam",
       jobs: [
         {
-          title: "Head of Tech",
+          title: "Senior Software Engineer Lead",
           duration: "Aug 2025 - Present",
           summaries: [
             "Owned product delivery and technical direction post-CTO transition, leading architecture decisions, rollout systems, enterprise-grade integrations, and cross-team alignment while managing a delivery team of 8 developers (including 4 seniors) and 3 QC engineers."
@@ -472,7 +472,7 @@ export const profileInfo = {
           title: "Senior Full-stack Software Engineer",
           duration: "July 2020 - Apr. 2024",
           summaries: [
-            `The company builds a so-called CDxP product. In brief, it is a data platform that tailor-made to host and process customer profiles (the keystone solution is how would you able to identify and unify your customers data from heterogeneous schemas and formats from diverged services and systems).`
+            `Built CDxP, a customer data platform for identifying, unifying, and activating customer profiles from heterogeneous schemas across disconnected systems.`
           ],
           key_contribution: [
             `Led Front-end team, delivering <b>10+ projects</b> including CDxP app, Magento & WordPress demos, JS SDKs, mobile SDKs, and more.`,
@@ -552,7 +552,7 @@ export const profileInfo = {
           key_contribution: [
             `With expertise in the <b>end-to-end software production process</b>, I <b>led a small team</b>, mastering the phases from requirements gathering to project security, laying the groundwork for future leadership roles.`,
             `Engaging in <b>8+</b> diverse projects across <b>education, food and drink, banking,</b> and <b>e-commerce</b> domains, I gained invaluable insights into both web and mobile application development.`,
-            `As a project mercenary, I secured significant projects like Savyu and Bank Tool, generating over <b>$20,000</b> in revenue and earning recognition as the <b>Best Rookie of the Year</b> for my impactful contributions.`
+            `Helped secure and deliver key projects such as Savyu and Bank Tool, generating over <b>$20,000</b> in revenue and earning <b>Best Rookie of the Year</b> recognition.`
           ],
           key_techs: [
             "Java",

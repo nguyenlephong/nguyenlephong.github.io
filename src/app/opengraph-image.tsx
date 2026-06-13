@@ -18,11 +18,11 @@ export default async function OgImage() {
       <OgShell
         theme="gold"
         eyebrow="Nguyen Le Phong"
-        title="Senior Software Engineer · Tech Lead"
-        subtitle="Bachelor of IT — Very Good classification (GPA 3.36). 8+ years shipping product, leading delivery, and architecting Micro-Frontend, Kubernetes, and rollout systems."
-        chips={['React · Next.js', 'Java Spring · Node.js', 'Kubernetes · ArgoCD', 'Micro-Frontend']}
-        badge={{ label: 'GPA', value: '3.36 / 4.0' }}
-        footer="nguyenlephong.github.io · Head of Tech @ NDSVN"
+        title="Senior Software Engineer · Technical Lead"
+        subtitle="8+ years shipping product, platform systems, Micro-Frontend architecture, Kubernetes operations, secure fintech integrations, and rollout workflows."
+        chips={['React · Next.js', 'Node · Java · .NET', 'Kubernetes · ArgoCD', 'Micro-Frontend']}
+        badge={{ label: 'Scale', value: '80M+ users' }}
+        footer="nguyenlephong.github.io · Product to platform"
       />
     ),
     { ...size }
