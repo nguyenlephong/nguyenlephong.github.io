@@ -45,6 +45,30 @@
   ],
   "posts": [
     {
+      "slug": "giai-ma-tam-tri-kiem-soat-cam-xuc-david-eagleman",
+      "title": "David Eagleman on the Adaptive Brain: The Mind Learns Through Signals",
+      "summary": "David Eagleman’s writing on the brain stayed with me because it makes learning feel less like filling a hard drive and more like training a living interface. This book note follows one thread: the brain redraws its maps, protects useful territory, learns new sensory inputs, treats tools as body extensions, stores memory across networks, and uses repeated feedback to shape how we move, sense, think, and regulate emotion.",
+      "cardSummary": "The brain is not fixed storage; it is an adaptive interface trained by repeated signals.",
+      "date": "2026-06-13",
+      "readingMinutes": 13,
+      "tags": [
+        "Book Notes",
+        "Neuroscience",
+        "David Eagleman",
+        "Neuroplasticity",
+        "Brain-Computer Interfaces",
+        "Learning"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "sach",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
       "slug": "tam-ly-hoc-hanh-vi-katy-milkman",
       "title": "How to Change by Katy Milkman: Durable Change Starts in Small Places",
       "summary": "Katy Milkman’s How to Change is less about making louder promises and more about designing the small moments around us: fresh starts, temptation bundling, commitment devices, implementation intentions, friction, confidence, and social proof. This book note keeps the focus on what can be used in work, learning, and everyday life: calm systems, small cues, humane commitments, and the quiet accumulation that makes visible change possible.",
