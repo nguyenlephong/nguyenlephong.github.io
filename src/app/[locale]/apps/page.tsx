@@ -1,13 +1,11 @@
 import { Metadata } from 'next'
-import { Link } from '@/i18n/navigation'
 import { setRequestLocale } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import { APP_ROUTE } from '@/app/app.const'
 import { PAGE_SEO, absoluteUrl } from '@/app/seo.config'
 import { apps } from './apps.data'
-import AppCard from '@/components/apps/AppCard'
+import AppsConsole from '@/components/apps/AppsConsole'
 import PageTracker from '@/components/analytics/PageTracker'
 import AppsLinkTracker from '@/components/analytics/AppsLinkTracker'
 
@@ -73,79 +71,7 @@ export default async function AppsPage({ params }: Props) {
       <PageTracker page="apps" eventName="apps_view" section="showroom" />
       <AppsLinkTracker />
       <div className="container">
-        <header className="apps-hero">
-          <div className="apps-hero-bleed" aria-hidden="true" />
-          <span className="eyebrow">
-            <span className="eyebrow-dot" aria-hidden="true" /> Apps · Showroom
-          </span>
-          <h1 className="apps-hero-title">
-            Tiny apps,{' '}
-            <span className="accent">crafted with care.</span>
-          </h1>
-          <p className="apps-hero-sub">
-            A personal showroom of utilities I&apos;ve shipped — each one open-source,
-            opinionated about what to leave out, and designed to disappear into your
-            workflow.
-          </p>
-          <div className="apps-hero-meta">
-            <span className="apps-hero-meta-item">
-              <span className="apps-hero-meta-num">{apps.length}</span>
-              <span className="apps-hero-meta-label">app{apps.length > 1 ? 's' : ''} live</span>
-            </span>
-            <span className="apps-hero-meta-sep" aria-hidden="true" />
-            <span className="apps-hero-meta-item">
-              <span className="apps-hero-meta-num">MIT</span>
-              <span className="apps-hero-meta-label">open-source</span>
-            </span>
-            <span className="apps-hero-meta-sep" aria-hidden="true" />
-            <span className="apps-hero-meta-item">
-              <span className="apps-hero-meta-num">∞</span>
-              <span className="apps-hero-meta-label">more on the way</span>
-            </span>
-          </div>
-          <Link href={APP_ROUTE.HOME} className="page-back">
-            ← Back to CV
-          </Link>
-        </header>
-
-        <section className="apps-list" aria-label="Apps">
-          {apps.map((app, index) => (
-            <AppCard key={app.id} app={app} index={index} />
-          ))}
-        </section>
-
-        <section className="apps-coming">
-          <div className="apps-coming-inner">
-            <span className="apps-coming-eyebrow">More to come</span>
-            <h2 className="apps-coming-title">
-              I&apos;m always tinkering. New apps land here first.
-            </h2>
-            <p className="apps-coming-body">
-              If something here saved you a minute, a star on GitHub keeps the lights on.
-              Got an idea or a bug? Open an issue — I read every one.
-            </p>
-            <div className="apps-coming-actions">
-              <Link
-                href="https://github.com/nguyenlephong"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-                data-track="apps_cta_click"
-                data-track-target="github_follow"
-              >
-                Follow on GitHub
-              </Link>
-              <Link
-                href={APP_ROUTE.HOME + '#contact'}
-                className="btn btn-ghost"
-                data-track="apps_cta_click"
-                data-track-target="contact"
-              >
-                Get in touch
-              </Link>
-            </div>
-          </div>
-        </section>
+        <AppsConsole apps={apps} locale={locale} />
       </div>
     </main>
   )
