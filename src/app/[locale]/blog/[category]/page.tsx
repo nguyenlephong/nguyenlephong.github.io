@@ -89,6 +89,7 @@ export default async function BlogCategoryPage({ params }: Props) {
       '@type': 'BlogPosting',
       headline: p.title,
       url: canonicalFor(locale, `/blog/${p.category}/${p.slug}`),
+      image: canonicalFor(locale, `/blog/${p.category}/${p.slug}/opengraph-image`),
     })),
   }
 

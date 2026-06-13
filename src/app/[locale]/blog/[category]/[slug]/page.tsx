@@ -16,8 +16,10 @@ import {
   getCategory,
   getSeriesContext,
   listCategoryPostPairs,
+  listPosts,
   loadPost,
 } from '@/lib/blog/data'
+import { getRelatedPosts } from '@/lib/blog/related'
 import BlogContent from '@/components/blog/BlogContent'
 import BlogToc from '@/components/blog/BlogToc'
 import BlogReadingTracker from '@/components/blog/BlogReadingTracker'
@@ -25,6 +27,7 @@ import { EngagementProvider } from '@/components/blog/EngagementProvider'
 import BlogViewCount from '@/components/blog/BlogViewCount'
 import BlogShareDock from '@/components/blog/BlogShareDock'
 import BlogReactions from '@/components/blog/BlogReactions'
+import BlogRelatedPosts from '@/components/blog/BlogRelatedPosts'
 import '../../blog.css'
 
 type Props = {
@@ -56,6 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = post.title
   const description = post.summary || buildDescription(post.html)
   const canonical = canonicalFor(locale, `/blog/${category}/${slug}`)
+  const imageUrl = canonicalFor(locale, `/blog/${category}/${slug}/opengraph-image`)
   const languages = localeAlternates(`/blog/${category}/${slug}`)
 
   return {
@@ -77,6 +81,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       modifiedTime: post.updated ?? post.date,
       authors: [SITE_URL],
       tags: post.tags,
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -84,6 +89,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       site: SITE.twitter,
       creator: SITE.twitter,
+      images: [imageUrl],
     },
     robots: {
       index: true,
@@ -110,7 +116,19 @@ export default async function BlogPostPage({ params }: Props) {
   const series = getSeriesContext(slug, locale)
   const t = await getTranslations({ locale, namespace: 'Pages.blog' })
   const canonical = canonicalFor(locale, `/blog/${category}/${slug}`)
+  const imageUrl = canonicalFor(locale, `/blog/${category}/${slug}/opengraph-image`)
   const description = post.summary || buildDescription(post.html)
+  const relatedPosts = getRelatedPosts(post, listPosts(locale))
+  const relatedItems = relatedPosts.map((relatedPost) => {
+    const categoryTitle =
+      getCategory(relatedPost.category, locale)?.title ?? relatedPost.category
+
+    return {
+      post: relatedPost,
+      categoryTitle,
+      readingLabel: t('readingTime', { minutes: relatedPost.readingMinutes }),
+    }
+  })
 
   const articleLd = {
     '@context': 'https://schema.org',
@@ -120,11 +138,21 @@ export default async function BlogPostPage({ params }: Props) {
     description,
     inLanguage: locale,
     url: canonical,
+    image: imageUrl,
     mainEntityOfPage: canonical,
     datePublished: post.date,
     dateModified: post.updated ?? post.date,
     keywords: post.tags.join(', '),
     articleSection: cat?.title ?? category,
+    isRelatedTo: relatedPosts.map((relatedPost) => ({
+      '@type': 'BlogPosting',
+      headline: relatedPost.title,
+      url: canonicalFor(locale, `/blog/${relatedPost.category}/${relatedPost.slug}`),
+      image: canonicalFor(
+        locale,
+        `/blog/${relatedPost.category}/${relatedPost.slug}/opengraph-image`,
+      ),
+    })),
     isPartOf: {
       '@type': 'Blog',
       '@id': canonicalFor(locale, '/blog') + '#blog',
@@ -200,123 +228,144 @@ export default async function BlogPostPage({ params }: Props) {
       )}
 
       <EngagementProvider category={category} slug={slug}>
-      <BlogReadingTracker
-        category={category}
-        slug={slug}
-        readingMinutes={post.readingMinutes}
-      />
-      <BlogShareDock
-        url={canonical}
-        title={post.title}
-        labels={{
-          share: t('engagement.share'),
-          copyLink: t('engagement.copyLink'),
-          copied: t('engagement.copied'),
-          close: t('engagement.close'),
-        }}
-      />
-      <div className="blog-article__main">
-        <nav className="blog-breadcrumb" aria-label="Breadcrumb">
-          <Link href="/blog">{t('title')}</Link>
-          <span aria-hidden="true">/</span>
-          <Link href={`/blog/${category}`}>{cat?.title ?? category}</Link>
-        </nav>
-
-        <header className="blog-article__head">
-          {series && (
-            <p className="blog-article__series">
-              {t(`seriesNames.${series.series}`)}
-              <span aria-hidden="true"> · </span>
-              {t('partOf', { part: series.part, total: series.total })}
-            </p>
-          )}
-          <h1 className="blog-article__title">{post.title}</h1>
-          <p className="blog-article__summary">{post.summary}</p>
-          <div className="blog-article__meta">
-            <span>{t('writtenBy', { author: post.author })}</span>
-            <span aria-hidden="true">·</span>
-            <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
-            <span aria-hidden="true">·</span>
-            <span>{t('readingTime', { minutes: post.readingMinutes })}</span>
-            <BlogViewCount label={t('engagement.views')} />
-          </div>
-          {post.tags.length > 0 && (
-            <ul className="blog-article__tags">
-              {post.tags.map((tag) => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </ul>
-          )}
-        </header>
-
-        <BlogContent html={post.html} />
-
-        <BlogReactions
-          prompt={t('engagement.reactionsPrompt')}
-          reactionLabels={{
-            like: t('engagement.reactions.like'),
-            love: t('engagement.reactions.love'),
-            insightful: t('engagement.reactions.insightful'),
-            clap: t('engagement.reactions.clap'),
-          }}
+        <BlogReadingTracker
+          category={category}
+          slug={slug}
+          readingMinutes={post.readingMinutes}
         />
+        <div className="blog-article__main">
+          <div className="blog-article__reader">
+            <BlogShareDock
+              url={canonical}
+              title={post.title}
+              labels={{
+                share: t('engagement.share'),
+                copyLink: t('engagement.copyLink'),
+                copied: t('engagement.copied'),
+                close: t('engagement.close'),
+              }}
+            />
+            <div className="blog-article__reader-content">
+              <nav className="blog-breadcrumb" aria-label="Breadcrumb">
+                <Link href="/blog">{t('title')}</Link>
+                <span aria-hidden="true">/</span>
+                <Link href={`/blog/${category}`}>{cat?.title ?? category}</Link>
+              </nav>
 
-        {post.faqs && post.faqs.length > 0 && (
-          <section className="blog-faq" aria-labelledby="blog-faq-heading">
-            <h2 id="blog-faq-heading" className="blog-faq__heading">
-              {t('faqHeading')}
-            </h2>
-            <dl className="blog-faq__list">
-              {post.faqs.map((f, i) => (
-                <div className="blog-faq__item" key={i}>
-                  <dt className="blog-faq__q">{f.q}</dt>
-                  <dd
-                    className="blog-faq__a"
-                    dangerouslySetInnerHTML={{ __html: f.a }}
-                  />
+              <header className="blog-article__head">
+                {series && (
+                  <p className="blog-article__series">
+                    {t(`seriesNames.${series.series}`)}
+                    <span aria-hidden="true"> · </span>
+                    {t('partOf', { part: series.part, total: series.total })}
+                  </p>
+                )}
+                <h1 className="blog-article__title">{post.title}</h1>
+                <p className="blog-article__summary">{post.summary}</p>
+                <div className="blog-article__meta">
+                  <span>{t('writtenBy', { author: post.author })}</span>
+                  <span aria-hidden="true">·</span>
+                  <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
+                  <span aria-hidden="true">·</span>
+                  <span>{t('readingTime', { minutes: post.readingMinutes })}</span>
+                  <BlogViewCount label={t('engagement.views')} />
                 </div>
-              ))}
-            </dl>
-          </section>
-        )}
+                {post.tags.length > 0 && (
+                  <ul className="blog-article__tags">
+                    {post.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                )}
+              </header>
 
-        {series && (series.prev || series.next) && (
-          <nav className="blog-series-nav" aria-label={t(`seriesNames.${series.series}`)}>
-            {series.prev ? (
-              <Link
-                href={`/blog/${series.prev.category}/${series.prev.slug}`}
-                className="blog-series-nav__link blog-series-nav__link--prev"
-              >
-                <span className="blog-series-nav__dir">← {t('previously')}</span>
-                <span className="blog-series-nav__title">{series.prev.title}</span>
-              </Link>
-            ) : (
-              <span />
-            )}
-            {series.next ? (
-              <Link
-                href={`/blog/${series.next.category}/${series.next.slug}`}
-                className="blog-series-nav__link blog-series-nav__link--next"
-              >
-                <span className="blog-series-nav__dir">{t('nextUp')} →</span>
-                <span className="blog-series-nav__title">{series.next.title}</span>
-              </Link>
-            ) : (
-              <span />
-            )}
-          </nav>
-        )}
+              <BlogContent html={post.html} />
 
-        <footer className="blog-article__footer">
-          <Link href={`/blog/${category}`} className="blog-back">
-            ← {t('backToCategory', { category: cat?.title ?? category })}
-          </Link>
-        </footer>
-      </div>
+              <BlogReactions
+                prompt={t('engagement.reactionsPrompt')}
+                reactionLabels={{
+                  like: t('engagement.reactions.like'),
+                  love: t('engagement.reactions.love'),
+                  insightful: t('engagement.reactions.insightful'),
+                  clap: t('engagement.reactions.clap'),
+                }}
+              />
 
-      <aside className="blog-article__toc">
-        <BlogToc label={t('onThisPage')} />
-      </aside>
+              {post.faqs && post.faqs.length > 0 && (
+                <section className="blog-faq" aria-labelledby="blog-faq-heading">
+                  <h2 id="blog-faq-heading" className="blog-faq__heading">
+                    {t('faqHeading')}
+                  </h2>
+                  <dl className="blog-faq__list">
+                    {post.faqs.map((f, i) => (
+                      <div className="blog-faq__item" key={i}>
+                        <dt className="blog-faq__q">{f.q}</dt>
+                        <dd
+                          className="blog-faq__a"
+                          dangerouslySetInnerHTML={{ __html: f.a }}
+                        />
+                      </div>
+                    ))}
+                  </dl>
+                </section>
+              )}
+            </div>
+          </div>
+
+          <BlogRelatedPosts
+            heading={t('relatedHeading')}
+            intro={t('relatedIntro')}
+            items={relatedItems}
+          />
+
+          {series && (series.prev || series.next) && (
+            <nav
+              className="blog-series-nav"
+              aria-label={t(`seriesNames.${series.series}`)}
+            >
+              {series.prev ? (
+                <Link
+                  href={`/blog/${series.prev.category}/${series.prev.slug}`}
+                  className="blog-series-nav__link blog-series-nav__link--prev"
+                >
+                  <span className="blog-series-nav__dir">
+                    ← {t('previously')}
+                  </span>
+                  <span className="blog-series-nav__title">
+                    {series.prev.title}
+                  </span>
+                </Link>
+              ) : (
+                <span />
+              )}
+              {series.next ? (
+                <Link
+                  href={`/blog/${series.next.category}/${series.next.slug}`}
+                  className="blog-series-nav__link blog-series-nav__link--next"
+                >
+                  <span className="blog-series-nav__dir">
+                    {t('nextUp')} →
+                  </span>
+                  <span className="blog-series-nav__title">
+                    {series.next.title}
+                  </span>
+                </Link>
+              ) : (
+                <span />
+              )}
+            </nav>
+          )}
+
+          <footer className="blog-article__footer">
+            <Link href={`/blog/${category}`} className="blog-back">
+              ← {t('backToCategory', { category: cat?.title ?? category })}
+            </Link>
+          </footer>
+        </div>
+
+        <aside className="blog-article__toc">
+          <BlogToc label={t('onThisPage')} />
+        </aside>
       </EngagementProvider>
     </main>
   )

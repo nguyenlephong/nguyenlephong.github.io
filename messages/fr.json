@@ -368,8 +368,12 @@
       "partOf": "Partie {part} sur {total}",
       "nextUp": "À suivre",
       "previously": "Précédemment",
+      "relatedHeading": "Lectures liées",
+      "relatedIntro": "Quelques articles proches pour poursuivre le même fil avec plus de contexte.",
       "seriesNames": {
         "foundations": "Les fondamentaux de l'architecture logicielle",
+        "ways-of-working": "Façons de travailler",
+        "ai-in-practice": "L'IA en pratique",
         "kind-engineering": "Une ingénierie bienveillante et efficace"
       },
       "faqHeading": "Questions fréquentes",

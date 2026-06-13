@@ -349,9 +349,13 @@
       "partOf": "Part {part} of {total}",
       "nextUp": "Next up",
       "previously": "Previously",
+      "relatedHeading": "Related reading",
+      "relatedIntro": "A few nearby pieces to keep following the same thread with more context.",
       "faqHeading": "Frequently asked questions",
       "seriesNames": {
         "foundations": "Foundations of Software Architecture",
+        "ways-of-working": "Ways of Working",
+        "ai-in-practice": "AI in Practice",
         "kind-engineering": "Kind & Effective Engineering"
       },
       "engagement": {

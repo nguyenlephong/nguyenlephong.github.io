@@ -368,8 +368,12 @@
       "partOf": "第 {part} 篇，共 {total} 篇",
       "nextUp": "下一篇",
       "previously": "上一篇",
+      "relatedHeading": "相关阅读",
+      "relatedIntro": "几篇相近主题的文章，方便沿着同一条思路继续阅读。",
       "seriesNames": {
         "foundations": "软件架构基础",
+        "ways-of-working": "团队协作方式",
+        "ai-in-practice": "AI 实践",
         "kind-engineering": "友善而高效的工程文化"
       },
       "faqHeading": "常见问题",

@@ -25,6 +25,14 @@
       "order": 3
     },
     {
+      "slug": "perspectives",
+      "title": "Góc nhìn & Trải nghiệm",
+      "tagline": "Những ghi chép cá nhân từ công việc, học tập, con người và các khoảnh khắc âm thầm định hình hành trình nghề nghiệp.",
+      "description": "Những bài viết suy ngẫm, gần gũi và có chiều sâu, nối các trải nghiệm đời thường với hành trình nghề nghiệp, học tập, làm việc nhóm và phát triển bản thân. Viết bằng giọng bình tĩnh, thực tế, dễ đọc cho cả độc giả technical lẫn non-tech.",
+      "accent": "dark",
+      "order": 4
+    },
+    {
       "slug": "ways-of-working",
       "title": "Cách làm việc",
       "tagline": "Cách các đội phần mềm thực sự vận hành và phối hợp — từ Agile, Scrum đến cách công việc thật sự diễn ra trong big corp, startup và outsourcing.",
@@ -619,6 +627,42 @@
         "AI đời thường",
         "Tương lai công việc"
       ]
+    },
+    {
+      "slug": "pre-mortem-thinking",
+      "category": "ways-of-working",
+      "title": "Pre-mortem là gì? Nhìn trước thất bại để làm việc, lập trình và thăng tiến tốt hơn",
+      "summary": "Pre-mortem là thói quen tưởng tượng một kế hoạch đã thất bại trước khi bắt đầu, rồi lần ngược lại để tìm nguyên nhân. Bài viết giải thích khái niệm này và cách áp dụng vào code, hệ thống lớn, promotion, phỏng vấn vị trí mới và các mục tiêu cá nhân mà không biến sự chuẩn bị thành bi quan.",
+      "date": "2026-06-13",
+      "readingMinutes": 12,
+      "tags": [
+        "Pre-mortem",
+        "Quản lý rủi ro",
+        "Software Engineering",
+        "System Design",
+        "Phát triển sự nghiệp",
+        "Ra quyết định"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "quiet-accumulation-on-the-trail",
+      "category": "perspectives",
+      "title": "Một ngày trekking Hoàng Ngưu Sơn và những giới hạn mình tự vẽ",
+      "summary": "Từ những bước đầu trên cung trekking Hoàng Ngưu Sơn đến khoảnh khắc chạm summit và khoảng nghỉ sau đó, bài viết nhìn lại cách một giới hạn trong đầu được nới rộng bằng nhịp đi bền, sự khiêm tốn để học và can đảm để bắt đầu.",
+      "date": "2026-06-12",
+      "readingMinutes": 8,
+      "tags": [
+        "Personal Growth",
+        "Career Growth",
+        "Trekking",
+        "Team Building",
+        "Resilience"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "updated": "2026-06-13"
     }
   ]
 }

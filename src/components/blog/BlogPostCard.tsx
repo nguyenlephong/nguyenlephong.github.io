@@ -44,22 +44,24 @@ export default function BlogPostCard({
         href={`/blog/${post.category}/${post.slug}`}
         className="blog-card__link"
       >
-        <span className="blog-card__kicker">{categoryTitle}</span>
-        <h3 className="blog-card__title">{post.title}</h3>
-        <p className="blog-card__summary">{post.summary}</p>
-        <div className="blog-card__meta">
-          <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
-          <span aria-hidden="true">·</span>
-          <span>{readingLabel}</span>
-          {typeof viewCount === 'number' && viewCount >= 100 && (
-            <>
-              <span aria-hidden="true">·</span>
-              <span className="blog-card__views">
-                <LuEye aria-hidden="true" />
-                {formatCount(viewCount)}{viewsLabel ? ` ${viewsLabel}` : ''}
-              </span>
-            </>
-          )}
+        <div className="blog-card__body">
+          <span className="blog-card__kicker">{categoryTitle}</span>
+          <h3 className="blog-card__title">{post.title}</h3>
+          <p className="blog-card__summary">{post.summary}</p>
+          <div className="blog-card__meta">
+            <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
+            <span aria-hidden="true">·</span>
+            <span>{readingLabel}</span>
+            {typeof viewCount === 'number' && viewCount >= 100 && (
+              <>
+                <span aria-hidden="true">·</span>
+                <span className="blog-card__views">
+                  <LuEye aria-hidden="true" />
+                  {formatCount(viewCount)}{viewsLabel ? ` ${viewsLabel}` : ''}
+                </span>
+              </>
+            )}
+          </div>
         </div>
       </Link>
     </article>

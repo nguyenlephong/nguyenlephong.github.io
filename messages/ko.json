@@ -368,8 +368,12 @@
       "partOf": "{total}부 중 {part}부",
       "nextUp": "다음 글",
       "previously": "이전 글",
+      "relatedHeading": "함께 읽기 좋은 글",
+      "relatedIntro": "같은 흐름을 조금 더 이어서 볼 수 있는 가까운 주제의 글입니다.",
       "seriesNames": {
         "foundations": "소프트웨어 아키텍처 기초",
+        "ways-of-working": "일하는 방식",
+        "ai-in-practice": "실무 속 AI",
         "kind-engineering": "친절하고 효과적인 엔지니어링"
       },
       "faqHeading": "자주 묻는 질문",

@@ -142,6 +142,8 @@ export function loadPost(slug: string, locale?: string): BlogPost | null {
     ...base,
     title: override.title ?? base.title,
     summary: override.summary ?? base.summary,
+    readingMinutes: override.readingMinutes ?? base.readingMinutes,
+    updated: override.updated ?? base.updated,
     html: override.html ?? base.html,
     tags: override.tags ?? base.tags,
     faqs: override.faqs ?? base.faqs,

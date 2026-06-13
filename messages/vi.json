@@ -349,8 +349,12 @@
       "partOf": "Phần {part}/{total}",
       "nextUp": "Bài tiếp theo",
       "previously": "Bài trước",
+      "relatedHeading": "Bài liên quan",
+      "relatedIntro": "Một vài bài gần chủ đề này để bạn đọc tiếp mạch suy nghĩ với nhiều ngữ cảnh hơn.",
       "seriesNames": {
         "foundations": "Nền tảng Kiến trúc Phần mềm",
+        "ways-of-working": "Cách đội ngũ làm việc",
+        "ai-in-practice": "AI trong công việc hằng ngày",
         "kind-engineering": "Kỹ thuật Tử tế & Hiệu quả"
       },
       "faqHeading": "Câu hỏi thường gặp",

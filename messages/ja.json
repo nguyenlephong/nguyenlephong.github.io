@@ -368,8 +368,12 @@
       "partOf": "全 {total} 回中第 {part} 回",
       "nextUp": "次の記事",
       "previously": "前の記事",
+      "relatedHeading": "関連する読みもの",
+      "relatedIntro": "同じ流れをもう少し深く追える、近いテーマの記事です。",
       "seriesNames": {
         "foundations": "ソフトウェアアーキテクチャの基礎",
+        "ways-of-working": "働き方とチームづくり",
+        "ai-in-practice": "実務で使うAI",
         "kind-engineering": "やさしく効果的なエンジニアリング"
       },
       "faqHeading": "よくある質問",
