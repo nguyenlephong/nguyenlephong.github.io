@@ -21,6 +21,48 @@
   ],
   "posts": [
     {
+      "slug": "nha-gia-kim-paulo-coelho",
+      "title": "Nhà Giả Kim: có những kho báu chỉ nhìn thấy sau một hành trình đủ dài",
+      "summary": "Đọc Nhà Giả Kim của Paulo Coelho như một câu chuyện rất đời về ước mơ, mất mát, lao động, tình yêu, nỗi sợ và hành trình quay lại chính mình. Bài viết giữ các điểm chính từ ghi chú: cậu bé chăn cừu, giấc mơ Ai Cập, hai viên đá quyết định, cú mất tiền đầu đời, cửa hàng pha lê, Fatima, sa mạc, nhà giả kim và kho báu nằm gần nơi bắt đầu.",
+      "cardSummary": "Một cách đọc grounded về ước mơ, dấu hiệu, lao động, tình yêu và kho báu quay về nơi bắt đầu.",
+      "tags": [
+        "Ghi chú sách",
+        "Paulo Coelho",
+        "Nhà Giả Kim",
+        "Phát triển bản thân",
+        "Học tập",
+        "Sự nghiệp"
+      ]
+    },
+    {
+      "slug": "tam-ly-hoc-toi-pham-phac-thao-chan-dung-ke-pham-toi-diep-hong-vu",
+      "title": "Tâm Lý Học Tội Phạm: học cách đọc chi tiết nhỏ mà không vội phán xét",
+      "summary": "Một bài ghi chú cẩn trọng về Tâm Lý Học Tội Phạm: Phác Thảo Chân Dung Kẻ Phạm Tội của Diệp Hồng Vũ. Bài viết không giật gân hóa các vụ án, mà tập trung vào profiling, cách hiện trường và hành vi để lại manh mối, việc thu hẹp scope điều tra, ảnh hưởng của môi trường tuổi thơ, và bài học quan sát chi tiết trong công việc lẫn đời sống.",
+      "cardSummary": "Một cách đọc tỉnh táo về profiling, manh mối nhỏ, môi trường tuổi thơ và kỷ luật quan sát.",
+      "tags": [
+        "Ghi chú sách",
+        "Tâm lý học tội phạm",
+        "Profiling",
+        "Quan sát",
+        "Rủi ro",
+        "Gia đình"
+      ]
+    },
+    {
+      "slug": "think-and-grow-rich-napoleon-hill",
+      "title": "Think and Grow Rich: khát vọng chỉ có ích khi biến thành một kế hoạch được viết ra",
+      "summary": "Một cách đọc bình tĩnh về Think and Grow Rich của Napoleon Hill: khát vọng, niềm tin, tự kỷ ám thị, kiến thức chuyên môn, óc tưởng tượng, kế hoạch rõ ràng và bộ câu hỏi tự kiểm điểm giúp tham vọng bớt là cảm xúc nhất thời, trở thành một hệ thống có thể soi lại mỗi ngày.",
+      "cardSummary": "Một ghi chú grounded về khát vọng, niềm tin, kế hoạch, kiến thức chuyên môn và self-audit.",
+      "tags": [
+        "Ghi chú sách",
+        "Napoleon Hill",
+        "Think and Grow Rich",
+        "Nghĩ giàu làm giàu",
+        "Kế hoạch",
+        "Phát triển bản thân"
+      ]
+    },
+    {
       "slug": "the-48-laws-of-power-robert-greene",
       "title": "The 48 Laws of Power: đọc quyền lực để tỉnh táo hơn, không lạnh lùng hơn",
       "summary": "Đọc The 48 Laws of Power của Robert Greene như một bản đồ phòng vệ hơn là cẩm nang thao túng: quyền lực hiện ra qua authority, reputation, attention, timing, dependence, options, tiền, kế hoạch, chiến thắng biết dừng, đổi mới có nhịp chuyển, và khả năng linh hoạt mà vẫn giữ ranh giới đạo đức.",
