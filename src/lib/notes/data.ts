@@ -5,6 +5,30 @@ import type { Note, NoteMeta, NotesIndexFile, TopicMeta } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "public", "notes-data");
 const EMPTY_INDEX: NotesIndexFile = { topics: [], posts: [] };
+const TOPIC_READING_ORDERS: Record<string, string[]> = {
+  "mua-nha": [
+    "mua-nha-nhung-dieu-can-biet",
+    "chi-phi-mua-nha-toan-bo-nhung-khoan-can-biet",
+    "vay-ngan-hang-mua-nha-don-bay-thong-minh",
+    "phap-ly-bat-dong-san-nhung-dieu-can-biet",
+    "chon-vi-tri-va-quy-hoach-khi-mua-nha",
+    "dinh-gia-va-thuong-luong-gia-mua-nha",
+    "quy-trinh-mua-nha-tu-a-den-z",
+    "chung-cu-vs-nha-dat-va-mua-nha-du-an",
+    "doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong",
+    "phong-thuy-mua-nha-tieu-chi-can-biet",
+    "tam-ly-mua-nha-tranh-bay-nguoi-ban",
+    "bay-mat-tien-khi-mua-nha-cac-kich-ban-can-tranh"
+  ]
+};
+
+export interface TopicReadingContext {
+  topic: TopicMeta;
+  part: number;
+  total: number;
+  prev: NoteMeta | null;
+  next: NoteMeta | null;
+}
 
 /**
  * Notes carry content in at most two languages: a Vietnamese-native legacy set
@@ -93,6 +117,43 @@ export function listNotesByTopic(locale?: string): Map<string, NoteMeta[]> {
     map.set(key, group);
   }
   return map;
+}
+
+export function getTopicReadingContext(
+  slug: string,
+  locale?: string
+): TopicReadingContext | null {
+  const current = loadNotesIndex(locale).posts.find((p) => p.slug === slug);
+  if (!current?.topic) return null;
+
+  const orderedSlugs = TOPIC_READING_ORDERS[current.topic];
+  if (!orderedSlugs) return null;
+
+  const topic = getTopic(current.topic, locale);
+  if (!topic) return null;
+
+  const orderIndex = new Map(orderedSlugs.map((s, i) => [s, i]));
+  const visibleNotes = listNotes(locale).filter(
+    (p) => p.topic === current.topic
+  );
+  const orderedNotes = visibleNotes
+    .filter((p) => orderIndex.has(p.slug))
+    .sort((a, b) => orderIndex.get(a.slug)! - orderIndex.get(b.slug)!);
+  const extraNotes = visibleNotes
+    .filter((p) => !orderIndex.has(p.slug))
+    .sort(byDateDesc);
+  const notes = [...orderedNotes, ...extraNotes];
+  const index = notes.findIndex((p) => p.slug === slug);
+
+  if (index === -1) return null;
+
+  return {
+    topic,
+    part: index + 1,
+    total: notes.length,
+    prev: notes[index - 1] ?? null,
+    next: notes[index + 1] ?? null
+  };
 }
 
 /** (locale, slug) pairs for static generation — one per locale a note serves. */

@@ -303,6 +303,8 @@
       "backToNotes": "ノートに戻る",
       "onThisPage": "このページの内容",
       "faqHeading": "よくある質問",
+      "nextUp": "次のノート",
+      "previously": "前のノート",
       "controls": {
         "searchPlaceholder": "ノートを検索…",
         "searchLabel": "ノートを検索",

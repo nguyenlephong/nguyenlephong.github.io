@@ -303,6 +303,8 @@
       "backToNotes": "노트로 돌아가기",
       "onThisPage": "이 페이지에서",
       "faqHeading": "자주 묻는 질문",
+      "nextUp": "다음 노트",
+      "previously": "이전 노트",
       "controls": {
         "searchPlaceholder": "노트 검색…",
         "searchLabel": "노트 검색",

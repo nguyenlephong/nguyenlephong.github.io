@@ -303,6 +303,8 @@
       "backToNotes": "返回笔记",
       "onThisPage": "本页内容",
       "faqHeading": "常见问题",
+      "nextUp": "下一篇笔记",
+      "previously": "上一篇笔记",
       "controls": {
         "searchPlaceholder": "搜索笔记…",
         "searchLabel": "搜索笔记",

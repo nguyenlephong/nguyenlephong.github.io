@@ -284,6 +284,8 @@
       "backToNotes": "Back to notes",
       "onThisPage": "On this page",
       "faqHeading": "Frequently asked questions",
+      "nextUp": "Next note",
+      "previously": "Previous note",
       "controls": {
         "searchPlaceholder": "Search notes…",
         "searchLabel": "Search notes",

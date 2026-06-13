@@ -12,7 +12,12 @@ import {
   htmlToPlainText,
   localeAlternates
 } from "@/lib/blog/seo";
-import { getTopic, listNoteParams, loadNote } from "@/lib/notes/data";
+import {
+  getTopic,
+  getTopicReadingContext,
+  listNoteParams,
+  loadNote
+} from "@/lib/notes/data";
 import BlogContent from "@/components/blog/BlogContent";
 import BlogToc from "@/components/blog/BlogToc";
 import BlogViewCount from "@/components/blog/BlogViewCount";
@@ -49,6 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = note.title;
   const description = note.summary || buildDescription(note.html);
   const canonical = canonicalFor(locale, `/notes/${slug}`);
+  const imageUrl = canonicalFor(locale, `/notes/${slug}/opengraph-image`);
   const languages = localeAlternates(`/notes/${slug}`);
 
   return {
@@ -66,14 +72,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: note.date,
       modifiedTime: note.updated ?? note.date,
       authors: [SITE_URL],
-      tags: note.tags
+      tags: note.tags,
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }]
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
       site: SITE.twitter,
-      creator: SITE.twitter
+      creator: SITE.twitter,
+      images: [imageUrl]
     },
     robots: { index: true, follow: true }
   };
@@ -89,9 +97,11 @@ export default async function NotePage({ params }: Props) {
 
   const t = await getTranslations({ locale, namespace: "Pages.notes" });
   const canonical = canonicalFor(locale, `/notes/${slug}`);
+  const imageUrl = canonicalFor(locale, `/notes/${slug}/opengraph-image`);
   const description = note.summary || buildDescription(note.html);
 
   const topic = note.topic ? getTopic(note.topic, locale) : null;
+  const topicReading = getTopicReadingContext(slug, locale);
   const topicColor = topic?.color ?? FALLBACK_TOPIC_COLOR;
 
   const articleLd = {
@@ -102,6 +112,7 @@ export default async function NotePage({ params }: Props) {
     description,
     inLanguage: locale,
     url: canonical,
+    image: imageUrl,
     mainEntityOfPage: canonical,
     datePublished: note.date,
     dateModified: note.updated ?? note.date,
@@ -150,78 +161,124 @@ export default async function NotePage({ params }: Props) {
           slug={slug}
           readingMinutes={note.readingMinutes}
         />
-        <BlogShareDock
-          url={canonical}
-          title={note.title}
-          labels={{
-            share: t("engagement.share"),
-            copyLink: t("engagement.copyLink"),
-            copied: t("engagement.copied"),
-            close: t("engagement.close")
-          }}
-        />
-
         <div className="blog-article__main">
-          <nav className="blog-breadcrumb" aria-label="Breadcrumb">
-            <Link href="/notes">{t("title")}</Link>
-            {topic && (
-              <>
+          <div className="blog-article__reader">
+            <BlogShareDock
+              url={canonical}
+              title={note.title}
+              labels={{
+                share: t("engagement.share"),
+                copyLink: t("engagement.copyLink"),
+                copied: t("engagement.copied"),
+                close: t("engagement.close")
+              }}
+            />
+            <div className="blog-article__reader-content">
+              <nav className="blog-breadcrumb" aria-label="Breadcrumb">
+                <Link href="/notes">{t("title")}</Link>
+                {topic && (
+                  <>
+                    <span aria-hidden="true">/</span>
+                    <span>{topic.label}</span>
+                  </>
+                )}
                 <span aria-hidden="true">/</span>
-                <span>{topic.label}</span>
-              </>
-            )}
-            <span aria-hidden="true">/</span>
-            <span>{note.title}</span>
-          </nav>
+                <span>{note.title}</span>
+              </nav>
 
-          <header className="blog-article__head">
-            <h1 className="blog-article__title">{note.title}</h1>
-            <p className="blog-article__summary">{note.summary}</p>
-            <div className="blog-article__meta">
-              <time dateTime={note.date}>{formatDate(note.date, locale)}</time>
-              <span aria-hidden="true">·</span>
-              <span>{t("readingTime", { minutes: note.readingMinutes })}</span>
-              <BlogViewCount label={t("engagement.views")} />
+              <header className="blog-article__head">
+                <h1 className="blog-article__title">{note.title}</h1>
+                <p className="blog-article__summary">{note.summary}</p>
+                <div className="blog-article__meta">
+                  <time dateTime={note.date}>
+                    {formatDate(note.date, locale)}
+                  </time>
+                  <span aria-hidden="true">·</span>
+                  <span>
+                    {t("readingTime", { minutes: note.readingMinutes })}
+                  </span>
+                  <BlogViewCount label={t("engagement.views")} />
+                </div>
+                {note.tags.length > 0 && (
+                  <ul className="blog-article__tags">
+                    {note.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                )}
+              </header>
+
+              <BlogContent html={note.html} />
+
+              {note.faqs && note.faqs.length > 0 && (
+                <section
+                  className="blog-faq"
+                  aria-labelledby="notes-faq-heading"
+                >
+                  <h2 id="notes-faq-heading" className="blog-faq__heading">
+                    {t("faqHeading")}
+                  </h2>
+                  <dl className="blog-faq__list">
+                    {note.faqs.map((f, i) => (
+                      <div className="blog-faq__item" key={i}>
+                        <dt className="blog-faq__q">{f.q}</dt>
+                        <dd
+                          className="blog-faq__a"
+                          dangerouslySetInnerHTML={{ __html: f.a }}
+                        />
+                      </div>
+                    ))}
+                  </dl>
+                </section>
+              )}
+
+              <BlogReactions
+                prompt={t("engagement.reactionsPrompt")}
+                reactionLabels={{
+                  like: t("engagement.reactions.like"),
+                  love: t("engagement.reactions.love"),
+                  insightful: t("engagement.reactions.insightful"),
+                  clap: t("engagement.reactions.clap")
+                }}
+              />
             </div>
-            {note.tags.length > 0 && (
-              <ul className="blog-article__tags">
-                {note.tags.map((tag) => (
-                  <li key={tag}>{tag}</li>
-                ))}
-              </ul>
-            )}
-          </header>
+          </div>
 
-          <BlogContent html={note.html} />
-
-          {note.faqs && note.faqs.length > 0 && (
-            <section className="blog-faq" aria-labelledby="notes-faq-heading">
-              <h2 id="notes-faq-heading" className="blog-faq__heading">
-                {t("faqHeading")}
-              </h2>
-              <dl className="blog-faq__list">
-                {note.faqs.map((f, i) => (
-                  <div className="blog-faq__item" key={i}>
-                    <dt className="blog-faq__q">{f.q}</dt>
-                    <dd
-                      className="blog-faq__a"
-                      dangerouslySetInnerHTML={{ __html: f.a }}
-                    />
-                  </div>
-                ))}
-              </dl>
-            </section>
+          {topicReading && (topicReading.prev || topicReading.next) && (
+            <nav
+              className="blog-series-nav"
+              aria-label={topicReading.topic.label}
+            >
+              {topicReading.prev ? (
+                <Link
+                  href={`/notes/${topicReading.prev.slug}`}
+                  className="blog-series-nav__link blog-series-nav__link--prev"
+                >
+                  <span className="blog-series-nav__dir">
+                    ← {t("previously")}
+                  </span>
+                  <span className="blog-series-nav__title">
+                    {topicReading.prev.title}
+                  </span>
+                </Link>
+              ) : (
+                <span />
+              )}
+              {topicReading.next ? (
+                <Link
+                  href={`/notes/${topicReading.next.slug}`}
+                  className="blog-series-nav__link blog-series-nav__link--next"
+                >
+                  <span className="blog-series-nav__dir">{t("nextUp")} →</span>
+                  <span className="blog-series-nav__title">
+                    {topicReading.next.title}
+                  </span>
+                </Link>
+              ) : (
+                <span />
+              )}
+            </nav>
           )}
-
-          <BlogReactions
-            prompt={t("engagement.reactionsPrompt")}
-            reactionLabels={{
-              like: t("engagement.reactions.like"),
-              love: t("engagement.reactions.love"),
-              insightful: t("engagement.reactions.insightful"),
-              clap: t("engagement.reactions.clap")
-            }}
-          />
 
           <footer className="blog-article__footer">
             <Link href="/notes" className="blog-back">

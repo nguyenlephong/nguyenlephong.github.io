@@ -303,6 +303,8 @@
       "backToNotes": "Retour aux notes",
       "onThisPage": "Sur cette page",
       "faqHeading": "Questions fréquentes",
+      "nextUp": "Note suivante",
+      "previously": "Note précédente",
       "controls": {
         "searchPlaceholder": "Rechercher des notes…",
         "searchLabel": "Rechercher des notes",
