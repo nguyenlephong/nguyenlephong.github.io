@@ -18,6 +18,7 @@ import {
   listNoteParams,
   loadNote
 } from "@/lib/notes/data";
+import { buildNotesTopicHref } from "@/lib/notes/urls";
 import BlogContent from "@/components/blog/BlogContent";
 import BlogToc from "@/components/blog/BlogToc";
 import BlogViewCount from "@/components/blog/BlogViewCount";
@@ -103,6 +104,7 @@ export default async function NotePage({ params }: Props) {
   const topic = note.topic ? getTopic(note.topic, locale) : null;
   const topicReading = getTopicReadingContext(slug, locale);
   const topicColor = topic?.color ?? FALLBACK_TOPIC_COLOR;
+  const topicHref = topic ? buildNotesTopicHref(topic.id) : null;
 
   const articleLd = {
     "@context": "https://schema.org",
@@ -123,6 +125,35 @@ export default async function NotePage({ params }: Props) {
       name: "Nguyen Le Phong",
       url: SITE_URL
     }
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: t("title"),
+        item: canonicalFor(locale, "/notes")
+      },
+      ...(topic && topicHref
+        ? [
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: topic.label,
+              item: canonicalFor(locale, topicHref)
+            }
+          ]
+        : []),
+      {
+        "@type": "ListItem",
+        position: topic ? 3 : 2,
+        name: note.title,
+        item: canonical
+      }
+    ]
   };
 
   const faqLd =
@@ -147,6 +178,10 @@ export default async function NotePage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
       {faqLd && (
         <script
@@ -179,7 +214,7 @@ export default async function NotePage({ params }: Props) {
                 {topic && (
                   <>
                     <span aria-hidden="true">/</span>
-                    <span>{topic.label}</span>
+                    <Link href={topicHref ?? "/notes"}>{topic.label}</Link>
                   </>
                 )}
                 <span aria-hidden="true">/</span>
