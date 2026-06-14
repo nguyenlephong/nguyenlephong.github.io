@@ -45,6 +45,29 @@
   ],
   "posts": [
     {
+      "slug": "echology-check",
+      "title": "Echology check: kiểm tra một ý tưởng trước khi nó làm lệch cả hệ sinh thái",
+      "summary": "Một ghi chú suy ngẫm về Echology check: cách kiểm tra một cách làm mới không chỉ bằng tốc độ hay hiệu quả trước mắt, mà bằng tác động của nó lên hệ sinh thái xung quanh: con người, kỹ năng, trách nhiệm, niềm tin, dữ liệu, gia đình và nhịp sống dài hạn.",
+      "cardSummary": "Một cách dừng lại trước khi tối ưu một việc nhỏ nhưng vô tình làm lệch cả hệ thống lớn hơn.",
+      "date": "2026-06-15",
+      "readingMinutes": 8,
+      "tags": [
+        "Echology check",
+        "Tư duy hệ thống",
+        "AI",
+        "Công việc",
+        "Ra quyết định",
+        "Phát triển bản thân"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "su-nghiep",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
       "slug": "nhung-cau-noi-nhat-duoc-tren-duong",
       "title": "Những câu nói nhặt được trên đường: một bộ não thứ hai để tự nhắc mình",
       "summary": "Một ghi chú chiêm nghiệm từ những câu nói, thành ngữ và mẩu quan sát nhặt được từ nhiều nguồn: nói ít làm rõ, chọn môi trường học, đi qua nghịch cảnh, sống bớt diễn, giữ ranh giới với người khác, và lãnh đạo bằng khả năng truyền cảm hứng thay vì chỉ ép người khác làm.",
