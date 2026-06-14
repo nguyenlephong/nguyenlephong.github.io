@@ -45,6 +45,29 @@
   ],
   "posts": [
     {
+      "slug": "nhin-thau-nhan-tinh-su-kho-khan-trong-moi-quan-he-ban-be",
+      "title": "Nhìn Thấu Nhân Tính: Sự Khó Khăn Trong Mối Quan Hệ Bạn Bè",
+      "summary": "Một bài chiêm nghiệm bình tĩnh về những vỡ mộng trong tình bạn: bản chất đổi chác của nhiều mối quan hệ, sự đố kỵ ngầm, những chiếc mặt nạ xã hội, cảm giác chán các vòng kết nối hời hợt, và sự nhẹ nhõm khi thôi đòi hỏi người khác phải hoàn hảo.",
+      "cardSummary": "Tình bạn trưởng thành hơn khi ta bớt kỳ vọng, chọn quan hệ sâu hơn và nhìn con người bằng sự tỉnh táo.",
+      "date": "2026-06-14",
+      "readingMinutes": 8,
+      "tags": [
+        "Tình bạn",
+        "Nhân tính",
+        "Mối quan hệ",
+        "Trưởng thành cảm xúc",
+        "Ranh giới",
+        "Suy ngẫm"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "goc-nhin",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
       "slug": "ly-thuyet-tro-choi-tran-phach-ham",
       "title": "Lý thuyết trò chơi: hợp tác khôn ngoan không phải là nhường phần thắng",
       "summary": "Đọc Lý thuyết trò chơi của Trần Phách Hàm như một lời nhắc thực tế về cách con người ra quyết định khi lợi ích đan vào nhau. Từ Pareto Efficiency, Prisoner's Dilemma, Win-Win cooperation đến các ví dụ trong thương mại điện tử, công sở và tâm lý học, bài viết nhìn game theory như một cách thiết kế cuộc chơi để hợp tác trở nên có lý hơn.",
