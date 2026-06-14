@@ -34,26 +34,34 @@ export default function ThoughtsViewClient({ thoughts, edges }: Props) {
   const [view, setView] = useState<View>('graph')
 
   useEffect(() => {
-    // Priority: URL param → localStorage → mobile default
-    const urlView = getUrlView()
-    if (urlView) {
-      setView(urlView)
-      return
-    }
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY) as View | null
-      if (saved === 'graph' || saved === 'list') {
-        setView(saved)
-        setUrlView(saved)
+    let cancelled = false
+    const frame = window.requestAnimationFrame(() => {
+      if (cancelled) return
+      // Priority: URL param → localStorage → mobile default
+      const urlView = getUrlView()
+      if (urlView) {
+        setView(urlView)
         return
       }
-    } catch {}
-    try {
-      if (window.matchMedia('(max-width: 640px)').matches) {
-        setView('list')
-        setUrlView('list')
-      }
-    } catch {}
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY) as View | null
+        if (saved === 'graph' || saved === 'list') {
+          setView(saved)
+          setUrlView(saved)
+          return
+        }
+      } catch {}
+      try {
+        if (window.matchMedia('(max-width: 640px)').matches) {
+          setView('list')
+          setUrlView('list')
+        }
+      } catch {}
+    })
+    return () => {
+      cancelled = true
+      window.cancelAnimationFrame(frame)
+    }
   }, [])
 
   const changeView = (v: View) => {

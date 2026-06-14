@@ -74,12 +74,20 @@ export default function FontSwitcher({ placement = 'down' }: FontSwitcherProps) 
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setMounted(true)
-    try {
-      const stored = localStorage.getItem(FONT_STORAGE_KEY) as ReadingFont | null
-      if (stored && READING_FONTS.includes(stored)) setCurrent(stored)
-    } catch {
-      // ignore
+    let cancelled = false
+    const frame = window.requestAnimationFrame(() => {
+      if (cancelled) return
+      setMounted(true)
+      try {
+        const stored = localStorage.getItem(FONT_STORAGE_KEY) as ReadingFont | null
+        if (stored && READING_FONTS.includes(stored)) setCurrent(stored)
+      } catch {
+        // ignore
+      }
+    })
+    return () => {
+      cancelled = true
+      window.cancelAnimationFrame(frame)
     }
   }, [])
 

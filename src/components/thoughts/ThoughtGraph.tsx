@@ -421,13 +421,21 @@ export default function ThoughtGraph({
   }, [thoughts, edges, height, locale])
 
   useEffect(() => {
-    setHeight(measureHeight())
-    if (typeof document !== 'undefined' && document.fonts?.ready) {
-      document.fonts.ready.then(buildGraph)
-    } else {
+    let cancelled = false
+    let frame: number | undefined
+    const rebuild = () => {
+      if (cancelled) return
+      setHeight(measureHeight())
       buildGraph()
     }
+    if (typeof document !== 'undefined' && document.fonts?.ready) {
+      document.fonts.ready.then(rebuild)
+    } else {
+      frame = window.requestAnimationFrame(rebuild)
+    }
     return () => {
+      cancelled = true
+      if (frame !== undefined) window.cancelAnimationFrame(frame)
       simulationRef.current?.stop()
     }
   }, [buildGraph, measureHeight])

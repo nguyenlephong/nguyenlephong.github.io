@@ -27,15 +27,23 @@ export default function ThemeToggle() {
   const [setting, setSetting] = useState<ThemeSetting>('system')
 
   useEffect(() => {
-    setMounted(true)
-    try {
-      const stored = localStorage.getItem(THEME_STORAGE_KEY)
-      if (stored) {
-        const parsed = JSON.parse(stored) as { theme_setting?: ThemeSetting }
-        if (parsed.theme_setting) setSetting(parsed.theme_setting)
+    let cancelled = false
+    const frame = window.requestAnimationFrame(() => {
+      if (cancelled) return
+      setMounted(true)
+      try {
+        const stored = localStorage.getItem(THEME_STORAGE_KEY)
+        if (stored) {
+          const parsed = JSON.parse(stored) as { theme_setting?: ThemeSetting }
+          if (parsed.theme_setting) setSetting(parsed.theme_setting)
+        }
+      } catch {
+        // ignore
       }
-    } catch {
-      // ignore
+    })
+    return () => {
+      cancelled = true
+      window.cancelAnimationFrame(frame)
     }
   }, [])
 

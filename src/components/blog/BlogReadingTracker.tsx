@@ -30,9 +30,9 @@ export default function BlogReadingTracker({
   slug,
   readingMinutes,
 }: BlogReadingTrackerProps) {
-  const startedAtRef = useRef<number>(Date.now())
+  const startedAtRef = useRef<number>(0)
   const visibleMsRef = useRef<number>(0)
-  const lastVisibleAtRef = useRef<number>(Date.now())
+  const lastVisibleAtRef = useRef<number>(0)
   const reportedBucketsRef = useRef<Set<number>>(new Set())
   const completedRef = useRef<boolean>(false)
   const finalSentRef = useRef<boolean>(false)

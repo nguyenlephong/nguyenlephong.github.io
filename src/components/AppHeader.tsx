@@ -11,7 +11,8 @@ export default function AppHeader() {
   const t = useTranslations("Nav");
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuState, setMenuState] = useState({ pathname, open: false });
+  const menuOpen = menuState.pathname === pathname && menuState.open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -19,10 +20,6 @@ export default function AppHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -85,7 +82,7 @@ export default function AppHeader() {
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
-              onClick={() => setMenuOpen((prev) => !prev)}
+              onClick={() => setMenuState({ pathname, open: !menuOpen })}
             >
               <span
                 className={`hamburger${menuOpen ? " is-open" : ""}`}
@@ -114,7 +111,7 @@ export default function AppHeader() {
               className="nav-mobile-link"
               onClick={() => {
                 track("cv_nav_click", { target: item.trackId });
-                setMenuOpen(false);
+                setMenuState({ pathname, open: false });
               }}
             >
               {item.label}
@@ -139,7 +136,7 @@ export default function AppHeader() {
       {menuOpen && (
         <div
           className="nav-mobile-backdrop"
-          onClick={() => setMenuOpen(false)}
+          onClick={() => setMenuState({ pathname, open: false })}
           aria-hidden="true"
         />
       )}

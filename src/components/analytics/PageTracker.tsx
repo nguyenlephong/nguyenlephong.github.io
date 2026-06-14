@@ -16,12 +16,18 @@ interface PageTrackerProps {
 const SCROLL_BUCKETS = [25, 50, 75, 100] as const
 
 export default function PageTracker({ page, section, eventName = 'page_view' }: PageTrackerProps) {
-  const startedAtRef = useRef<number>(Date.now())
+  const startedAtRef = useRef<number>(0)
   const visibleMsRef = useRef<number>(0)
-  const lastVisibleAtRef = useRef<number>(Date.now())
+  const lastVisibleAtRef = useRef<number>(0)
   const reportedRef = useRef<Set<number>>(new Set())
 
   useEffect(() => {
+    const startedAt = Date.now()
+    startedAtRef.current = startedAt
+    lastVisibleAtRef.current = startedAt
+    visibleMsRef.current = 0
+    reportedRef.current = new Set()
+
     registerPageContext({
       page_type: page,
       page_section: section ?? null,
