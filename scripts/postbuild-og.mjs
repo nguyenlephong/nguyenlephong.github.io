@@ -16,6 +16,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 
 const OUT_DIR = path.resolve(process.cwd(), 'out')
+const MAX_RENAME_LOGS = 40
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true })
@@ -81,8 +82,11 @@ async function main() {
   console.log(
     `[postbuild-og] renamed ${renamed.length} OG file(s), rewrote ${updatedHtml} HTML file(s)`
   )
-  for (const r of renamed) {
+  for (const r of renamed.slice(0, MAX_RENAME_LOGS)) {
     console.log(`  ${path.relative(OUT_DIR, r.from)} → ${path.relative(OUT_DIR, r.to)}`)
+  }
+  if (renamed.length > MAX_RENAME_LOGS) {
+    console.log(`  ... ${renamed.length - MAX_RENAME_LOGS} more file(s) omitted`)
   }
 }
 
