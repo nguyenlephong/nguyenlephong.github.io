@@ -45,6 +45,29 @@
   ],
   "posts": [
     {
+      "slug": "ly-thuyet-tro-choi-tran-phach-ham",
+      "title": "Lý thuyết trò chơi: hợp tác khôn ngoan không phải là nhường phần thắng",
+      "summary": "Đọc Lý thuyết trò chơi của Trần Phách Hàm như một lời nhắc thực tế về cách con người ra quyết định khi lợi ích đan vào nhau. Từ Pareto Efficiency, Prisoner's Dilemma, Win-Win cooperation đến các ví dụ trong thương mại điện tử, công sở và tâm lý học, bài viết nhìn game theory như một cách thiết kế cuộc chơi để hợp tác trở nên có lý hơn.",
+      "cardSummary": "Hợp tác bền không đến từ lòng tốt mơ hồ, mà từ một cuộc chơi được thiết kế đủ rõ.",
+      "date": "2026-06-14",
+      "readingMinutes": 10,
+      "tags": [
+        "Ghi chú sách",
+        "Lý thuyết trò chơi",
+        "Trần Phách Hàm",
+        "Pareto Efficiency",
+        "Prisoner's Dilemma",
+        "Tâm lý học"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "sach",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
       "slug": "nha-gia-kim-paulo-coelho",
       "title": "The Alchemist: The Long Road Back to What Was Already Yours",
       "summary": "A reflective note on Paulo Coelho’s The Alchemist, read through a grounded lens: dreams need movement, loss can become tuition, work can fund the next step, love should not become a cage, and the treasure we seek is often understood only after we have changed enough to see it.",
