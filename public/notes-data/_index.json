@@ -45,6 +45,29 @@
   ],
   "posts": [
     {
+      "slug": "hanh-phuc-nhan-vien-den-tu-ket-qua",
+      "title": "Hạnh phúc của nhân viên thường bắt đầu từ kết quả có ý nghĩa",
+      "summary": "Một ghi chú về hạnh phúc nơi công sở nhìn qua hai chữ R: Relationships và Results. Quan hệ tốt giúp con người thấy an toàn hơn, nhưng kết quả rõ ràng mới thường tạo ra tác động, sự công nhận và cảm giác mình đang đóng góp thật. Khi mục tiêu minh bạch, chỉ số được giải thích, và mỗi người hiểu Why trước khi làm What, hiệu quả có thể tạo ra hạnh phúc, rồi hạnh phúc lại làm con người hiệu quả hơn.",
+      "cardSummary": "Quan hệ tốt làm công việc dễ thở hơn, nhưng kết quả có ý nghĩa mới thường làm người đi làm thấy mình đang thật sự đóng góp.",
+      "date": "2026-06-14",
+      "readingMinutes": 7,
+      "tags": [
+        "Sự nghiệp",
+        "Employee Happiness",
+        "Leadership",
+        "Kết quả",
+        "Mục tiêu",
+        "Công sở"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "su-nghiep",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
       "slug": "ton-trong-nguoi-khac-soi-lai-minh-truoc-khi-phan-xet",
       "title": "Tôn trọng người khác: soi lại mình trước khi phán xét",
       "summary": "Một ghi chú chiêm nghiệm về sự tôn trọng trong công việc và đời sống: tôn trọng hành trình của người khác, tự soi lại khi mình phán xét, hiểu động lực nơi công sở, dùng feedback theo hướng 3 lời khen 1 góp ý, và quay về Vòng tròn kiểm soát để sửa điều nằm trong tay mình.",
