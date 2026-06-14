@@ -45,6 +45,29 @@
   ],
   "posts": [
     {
+      "slug": "thu-chap-pha-hoc-ma-khong-mac-ket",
+      "title": "Thụ, chấp, phá: học mà không mắc kẹt trong cái biết",
+      "summary": "Một ghi chú suy ngẫm về cách học trong thời đại AI: thụ để tiếp nhận, chấp để biến tri thức thành niềm tin có ích, rồi phá để vượt qua chính giới hạn của cái mình từng biết. Bài viết đi qua câu nói \"Tôi biết rồi\", knowledge obesity, niềm tin cứng từ kinh nghiệm dài hạn, nhãn dán ban đầu, process decrypt, Echology check và PAIR framework.",
+      "cardSummary": "Biết nhiều chưa chắc là học sâu; đôi khi cần phá chính cái biết cũ để học tiếp.",
+      "date": "2026-06-14",
+      "readingMinutes": 8,
+      "tags": [
+        "Học tập",
+        "Tư duy",
+        "AI",
+        "Phát triển sự nghiệp",
+        "Niềm tin",
+        "PAIR framework"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "su-nghiep",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
       "slug": "song-nhieu-vai-va-thay-doi-toan-dien",
       "title": "Sống nhiều vai và cái giá của thay đổi toàn diện",
       "summary": "Một ghi chú từ hai tập podcast #web5ngay: sống một cuộc đời nhiều vai là học cách đổi vai phù hợp trong từng bối cảnh xã hội và công việc; còn thay đổi toàn diện trong thời gian ngắn thường đòi hỏi ta làm những việc người khác không sẵn lòng làm, từ thay đổi thói quen chăm sóc bản thân đến kỷ luật giảm cân.",
