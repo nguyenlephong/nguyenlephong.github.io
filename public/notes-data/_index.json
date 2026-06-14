@@ -45,6 +45,29 @@
   ],
   "posts": [
     {
+      "slug": "song-nhieu-vai-va-thay-doi-toan-dien",
+      "title": "Sống nhiều vai và cái giá của thay đổi toàn diện",
+      "summary": "Một ghi chú từ hai tập podcast #web5ngay: sống một cuộc đời nhiều vai là học cách đổi vai phù hợp trong từng bối cảnh xã hội và công việc; còn thay đổi toàn diện trong thời gian ngắn thường đòi hỏi ta làm những việc người khác không sẵn lòng làm, từ thay đổi thói quen chăm sóc bản thân đến kỷ luật giảm cân.",
+      "cardSummary": "Trưởng thành là biết đổi vai đúng lúc và chịu làm những việc người khác thường né tránh.",
+      "date": "2026-06-14",
+      "readingMinutes": 6,
+      "tags": [
+        "#web5ngay",
+        "Podcast",
+        "Phát triển bản thân",
+        "Kỷ luật",
+        "Thói quen",
+        "Vai trò xã hội"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "topic": "su-nghiep",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
       "slug": "nhin-thau-nhan-tinh-su-kho-khan-trong-moi-quan-he-ban-be",
       "title": "Nhìn Thấu Nhân Tính: Sự Khó Khăn Trong Mối Quan Hệ Bạn Bè",
       "summary": "Một bài chiêm nghiệm bình tĩnh về những vỡ mộng trong tình bạn: bản chất đổi chác của nhiều mối quan hệ, sự đố kỵ ngầm, những chiếc mặt nạ xã hội, cảm giác chán các vòng kết nối hời hợt, và sự nhẹ nhõm khi thôi đòi hỏi người khác phải hoàn hảo.",
