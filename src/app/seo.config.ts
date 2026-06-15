@@ -81,7 +81,7 @@ export const PAGE_SEO: Record<
   gallery: {
     title: 'Gallery — Certifications, Awards & Projects',
     description:
-      'Certifications, awards, projects, and activities — a visual record of Nguyen Le Phong as a software engineer.',
+      'An evidence board of certifications, awards, project snapshots, and activity signals from Nguyen Le Phong as a software engineer.',
     path: '/gallery',
     keywords: [
       'Nguyen Le Phong gallery',
@@ -90,7 +90,8 @@ export const PAGE_SEO: Record<
       'Compliance Refresh Training',
       'Cybersecurity certificate',
     ],
-    ogAlt: 'Gallery — certifications, awards, projects and activities',
+    ogAlt:
+      'Gallery — evidence board of certifications, awards, projects and activities',
   },
   apps: {
     title: 'Apps — A Showroom of Tiny, Crafted Tools',

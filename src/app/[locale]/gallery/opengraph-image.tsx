@@ -20,7 +20,7 @@ export default async function OgImage() {
     awards: profileInfo.gallery.awards.length,
     projects: profileInfo.gallery.projects.length,
   }
-  const cacheKey = `static-gallery-certs${counts.certs}-awards${counts.awards}-projects${counts.projects}-v1`
+  const cacheKey = `static-gallery-certs${counts.certs}-awards${counts.awards}-projects${counts.projects}-v2`
   const cached = getCachedOg(cacheKey)
   if (cached) return cachedOgResponse(cached)
 
@@ -29,8 +29,8 @@ export default async function OgImage() {
       <OgShell
         theme="light"
         eyebrow="Gallery"
-        title="A record of the work."
-        subtitle="Certifications, awards, projects, and a few off-screen moments — verifiable proofs of what I've built and learned."
+        title="Evidence beyond the resume."
+        subtitle="Certifications, awards, project snapshots, and activity signals — visible proof of what I've built, learned, and kept practicing."
         chips={[
           `${counts.certs} certifications`,
           `${counts.awards} awards`,

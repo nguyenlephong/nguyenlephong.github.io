@@ -258,9 +258,40 @@
     "gallery": {
       "eyebrow": "作品集",
       "title": "工作的印记",
-      "sub": "证书、奖项、项目以及一些幕后瞬间。点击任意项目可查看原图或验证链接。",
+      "sub": "一个聚焦的证据看板：证书、认可、已交付项目的瞬间，以及支撑工作的日常纪律。",
       "back": "← 返回简历",
       "all": "全部",
+      "tabsLabel": "作品集证据筛选",
+      "hero": {
+        "kicker": "证据看板",
+        "title": "超越简历的可见证明",
+        "lead": "有些信号在被看见时更容易被信任：证书、奖项、项目截图，以及让交付保持稳定的习惯。",
+        "proofTitle": "简历之外的信号"
+      },
+      "stats": {
+        "label": "作品集信号",
+        "proofs": "证据",
+        "certifications": "证书",
+        "recognitions": "认可",
+        "builds": "项目"
+      },
+      "story": {
+        "label": "职业信号",
+        "title": "用四个角度读懂工作",
+        "body": "这个 Gallery 按证据组织：学到了什么、在哪些地方被认可、构建了什么，以及正式项目之外的实践如何持续。"
+      },
+      "categoryNotes": {
+        "all": "查看完整证据轨迹，而不是一份平铺列表。",
+        "certificates": "学习信号；可验证时附带验证链接。",
+        "awards": "来自团队、项目和耐力挑战的认可。",
+        "projects": "构建、交付、教学或探索留下的痕迹。",
+        "activities": "塑造交付方式的工作习惯和社区时刻。"
+      },
+      "featured": "重点证据",
+      "supporting": "辅助证据",
+      "openProof": "打开证据",
+      "verified": "已验证来源",
+      "original": "完整图片",
       "categories": {
         "certificates": "证书",
         "awards": "奖项",

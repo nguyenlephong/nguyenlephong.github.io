@@ -67,14 +67,14 @@ export default async function GalleryPage({ params }: Props) {
   }
 
   return (
-    <main>
+    <main className="gallery-showcase">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(galleryLd) }}
       />
       <PageTracker page="gallery" eventName="gallery_view" />
       <div className="container">
-        <header className="page-header">
+        <header className="page-header gallery-page-header">
           <span className="eyebrow">
             <span className="eyebrow-dot" aria-hidden="true" /> {t('eyebrow')}
           </span>

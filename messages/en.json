@@ -239,9 +239,40 @@
     "gallery": {
       "eyebrow": "Gallery",
       "title": "A record of the work",
-      "sub": "Certificates, awards, projects, and a few off-screen moments. Click any item to open the full image or its verification link.",
+      "sub": "A focused evidence board of certifications, recognitions, shipped project moments, and the off-screen discipline behind the work.",
       "back": "← Back to CV",
       "all": "All",
+      "tabsLabel": "Gallery evidence filters",
+      "hero": {
+        "kicker": "Evidence board",
+        "title": "Proof that travels beyond the resume",
+        "lead": "Some signals are easier to trust when they are visible: certificates, awards, project snapshots, and the habits that keep delivery steady.",
+        "proofTitle": "Signals beyond a resume"
+      },
+      "stats": {
+        "label": "Gallery signals",
+        "proofs": "Proofs",
+        "certifications": "Certifications",
+        "recognitions": "Recognitions",
+        "builds": "Builds"
+      },
+      "story": {
+        "label": "Career signals",
+        "title": "Four ways to read the work",
+        "body": "The gallery is organized as evidence: what was learned, where the work was recognized, what was built, and how the practice continued outside formal project walls."
+      },
+      "categoryNotes": {
+        "all": "View the full proof trail without flattening it into a plain list.",
+        "certificates": "Learning signals with verifiable links where available.",
+        "awards": "Recognition from teams, programs, and endurance challenges.",
+        "projects": "Artifacts from things built, shipped, taught, or explored.",
+        "activities": "Work habits and community moments that shaped delivery."
+      },
+      "featured": "Spotlight proof",
+      "supporting": "Supporting evidence",
+      "openProof": "Open proof",
+      "verified": "Verified source",
+      "original": "Full image",
       "categories": {
         "certificates": "Certifications",
         "awards": "Awards",

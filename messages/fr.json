@@ -258,9 +258,40 @@
     "gallery": {
       "eyebrow": "Galerie",
       "title": "Le journal de mes travaux",
-      "sub": "Certifications, prix, projets et quelques moments hors-écran. Cliquez sur un élément pour ouvrir l'image complète ou son lien de vérification.",
+      "sub": "Un tableau de preuves ciblé: certifications, reconnaissances, moments de projet livrés et discipline discrète derrière le travail.",
       "back": "← Retour au CV",
       "all": "Tout",
+      "tabsLabel": "Filtres de preuves de la galerie",
+      "hero": {
+        "kicker": "Tableau de preuves",
+        "title": "Des preuves qui vont au-delà du CV",
+        "lead": "Certains signaux inspirent plus confiance quand ils sont visibles: certificats, prix, captures de projets et habitudes qui rendent la livraison régulière.",
+        "proofTitle": "Signaux au-delà du CV"
+      },
+      "stats": {
+        "label": "Signaux de la galerie",
+        "proofs": "Preuves",
+        "certifications": "Certifications",
+        "recognitions": "Reconnaissances",
+        "builds": "Réalisations"
+      },
+      "story": {
+        "label": "Signaux de carrière",
+        "title": "Quatre façons de lire le travail",
+        "body": "La galerie est organisée comme un ensemble de preuves: ce qui a été appris, où le travail a été reconnu, ce qui a été construit et comment la pratique continue hors des projets officiels."
+      },
+      "categoryNotes": {
+        "all": "Voir toute la trace de preuves sans la réduire à une simple liste.",
+        "certificates": "Signaux d'apprentissage avec liens de vérification quand ils existent.",
+        "awards": "Reconnaissance d'équipes, de programmes et de défis d'endurance.",
+        "projects": "Traces de choses construites, livrées, enseignées ou explorées.",
+        "activities": "Habitudes de travail et moments collectifs qui ont façonné la livraison."
+      },
+      "featured": "Preuve en avant",
+      "supporting": "Preuves complémentaires",
+      "openProof": "Ouvrir la preuve",
+      "verified": "Source vérifiée",
+      "original": "Image complète",
       "categories": {
         "certificates": "Certifications",
         "awards": "Prix",

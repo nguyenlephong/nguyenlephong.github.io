@@ -239,9 +239,40 @@
     "gallery": {
       "eyebrow": "Bộ sưu tập",
       "title": "Dấu ấn công việc",
-      "sub": "Chứng chỉ, giải thưởng, dự án và vài khoảnh khắc đời thường. Bấm vào ảnh để xem bản gốc hoặc link xác thực.",
+      "sub": "Một bảng bằng chứng tập trung: chứng chỉ, ghi nhận, khoảnh khắc dự án và những kỷ luật âm thầm phía sau công việc.",
       "back": "← Quay lại CV",
       "all": "Tất cả",
+      "tabsLabel": "Bộ lọc bằng chứng trong gallery",
+      "hero": {
+        "kicker": "Bảng bằng chứng",
+        "title": "Những điều đi xa hơn một bản CV",
+        "lead": "Có những tín hiệu đáng tin hơn khi được nhìn thấy: chứng chỉ, giải thưởng, ảnh dự án và thói quen giữ cho việc giao hàng luôn ổn định.",
+        "proofTitle": "Tín hiệu ngoài CV"
+      },
+      "stats": {
+        "label": "Tín hiệu trong gallery",
+        "proofs": "Bằng chứng",
+        "certifications": "Chứng chỉ",
+        "recognitions": "Ghi nhận",
+        "builds": "Dự án"
+      },
+      "story": {
+        "label": "Tín hiệu nghề nghiệp",
+        "title": "Bốn cách đọc hành trình làm việc",
+        "body": "Gallery này được sắp theo dạng bằng chứng: đã học gì, được ghi nhận ở đâu, đã xây gì và cách việc thực hành vẫn tiếp tục ngoài phạm vi dự án chính thức."
+      },
+      "categoryNotes": {
+        "all": "Xem toàn bộ dấu vết công việc mà không biến nó thành một danh sách phẳng.",
+        "certificates": "Tín hiệu học tập, có link xác thực ở những nơi hỗ trợ.",
+        "awards": "Ghi nhận từ đội nhóm, chương trình và các thử thách cần sự bền bỉ.",
+        "projects": "Dấu vết từ những thứ đã xây, đã giao, đã hướng dẫn hoặc đã thử nghiệm.",
+        "activities": "Thói quen làm việc và khoảnh khắc cộng đồng đã góp phần định hình cách giao hàng."
+      },
+      "featured": "Bằng chứng nổi bật",
+      "supporting": "Bằng chứng bổ trợ",
+      "openProof": "Mở bằng chứng",
+      "verified": "Nguồn xác thực",
+      "original": "Ảnh đầy đủ",
       "categories": {
         "certificates": "Chứng chỉ",
         "awards": "Giải thưởng",
