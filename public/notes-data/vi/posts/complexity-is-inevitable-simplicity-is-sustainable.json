@@ -21,7 +21,7 @@
       "a": "Không — và đây là cách hiểu sai phổ biến nhất. Đơn giản không phải sơ sài, và nó không có nghĩa là ít code hay ít công nghệ. Trong kiến trúc, đơn giản nghĩa là tường minh: hành vi dự đoán được, ranh giới chỉ ra được, có cách làm chuẩn cho việc thường gặp, và thay đổi giữ tính cục bộ thay vì lan khắp nơi. Bạn hoàn toàn có thể dùng một công nghệ mới mạnh mẽ mà vẫn đơn giản, miễn là nó có lý do có mặt và một kỹ sư bình thường vẫn suy luận được về nó. Thứ mà sự đơn giản chối bỏ là phức tạp không ai nói được lý do — flexibility “phòng khi cần”, các tùy chọn không ai dùng, và magic code chỉ tác giả mới hiểu."
     },
     {
-      "q": "Làm sao biết hệ thống của tôi đang quá nhiều accidental complexity hay technical debt?",
+      "q": "Làm sao biết hệ thống của mình đang quá nhiều accidental complexity hay technical debt?",
       "a": "Hãy quan sát khoảng cách giữa công sức và kết quả, và quan sát nỗi sợ của mọi người. Các dấu hiệu cảnh báo: code vài dòng nhưng mất hàng giờ chỉ để tìm đúng chỗ đặt; một thay đổi nhỏ kích hoạt một loạt lỗi không liên quan; chỉ một người hiểu một luồng quan trọng; onboarding kỹ sư mới mất thời gian đau đớn; và — tín hiệu lớn nhất — cả team âm thầm sợ động vào vài khu vực nhất định. Khi hệ thống đã lớn vượt quá thứ một con người giữ nổi trong đầu (giới hạn cognitive load), technical debt đã đi từ “nợ” sang lãi kép. Chính nỗi sợ-thay-đổi đó là tín hiệu để bắt đầu refactor về phía tường minh, thay vì tiếp tục chất chồng."
     },
     {
