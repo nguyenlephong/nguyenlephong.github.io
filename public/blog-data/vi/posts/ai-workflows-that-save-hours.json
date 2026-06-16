@@ -1,8 +1,8 @@
 {
   "slug": "ai-workflows-that-save-hours",
   "category": "ai",
-  "title": "Từ Prompt Đến Workflow: Thiết Kế AI Workflow Tiết Kiệm Cho Bạn Hàng Giờ Mỗi Tuần",
-  "summary": "Đa số mọi người dùng AI mỗi lần một câu hỏi — và bỏ phí phần lớn giá trị của nó. Đòn bẩy thật sự không phải một prompt khôn khéo; mà là một AI workflow lặp lại được: một chuỗi bước nhỏ bạn thiết kế một lần và tái sử dụng mãi mãi, biến một việc vặt hai tiếng lặp lại thành một lần rà soát hai phút. Đây là hướng dẫn thực hành, nhiều ví dụ, dành cho tất cả mọi người dù rành công nghệ hay không: khác biệt giữa prompt và workflow, cấu trúc đơn giản mà mọi workflow đều có, những workflow bê-vào-dùng-ngay cho văn phòng lẫn đời sống, ba mức từ thủ công đến tự động hoàn toàn, sáu bước tự thiết kế workflow của riêng bạn, và một cách tính nhẩm để chứng minh số giờ bạn thật sự tiết kiệm được.",
+  "title": "Từ prompt đến workflow: cách thiết kế AI workflow tiết kiệm thời gian mỗi tuần",
+  "summary": "Một prompt hay có thể giúp một lần; một workflow tốt có thể giúp lặp lại mỗi tuần. Bài này chỉ cách biến các việc quen thuộc thành AI workflow: xác định input, chia bước, kiểm tra output, tái sử dụng template và đo thời gian tiết kiệm được. Mục tiêu không phải dùng AI cho vui, mà để giảm việc lặp lại và có thêm thời gian cho phần cần suy nghĩ thật.",
   "date": "2026-06-02",
   "readingMinutes": 18,
   "tags": [

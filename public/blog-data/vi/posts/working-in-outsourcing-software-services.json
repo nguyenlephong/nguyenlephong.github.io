@@ -1,8 +1,8 @@
 {
   "slug": "working-in-outsourcing-software-services",
   "category": "ways-of-working",
-  "title": "Làm việc trong Outsourcing & Dịch vụ phần mềm: Client, scope và bàn giao theo hợp đồng",
-  "summary": "Outsourcing là thế giới bị hiểu lầm nhiều nhất trong ba thế giới — không phải một xưởng code vô danh mà, ở một công ty dịch vụ tốt, là nơi bạn xây những sản phẩm thật, chạm vào nhiều domain trong hai năm hơn phần lớn kỹ sư sản phẩm chạm trong mười năm. Điểm gút: bạn không sở hữu sản phẩm, bạn bàn giao theo một hợp đồng, và một kỹ năng thứ hai nằm cạnh việc kỹ thuật — quản lý mối quan hệ client. Bài đào sâu này bàn về sự thật cấu trúc định hình lại mọi thứ, hai hình thái công việc outsourcing, vì sao scope là bất khả xâm phạm và change request là bạn của bạn, tính tiền/estimate/utilization, giao tiếp như sản phẩm bàn giao, múi giờ, chất lượng theo hợp đồng, các failure mode, và cách bứt lên cùng lộ trình sự nghiệp dịch vụ.",
+  "title": "Làm việc trong Outsourcing: client, scope và delivery theo cam kết",
+  "summary": "Outsourcing không chỉ là “làm theo spec”. Ở một công ty dịch vụ tốt, bạn được chạm vào nhiều domain, làm với client thật và học rất nhanh cách biến yêu cầu thành delivery. Bài này giải thích cấu trúc của môi trường outsourcing: scope, change request, estimate, utilization, communication, quality theo hợp đồng, múi giờ, quan hệ client và cách phát triển sự nghiệp trong service business.",
   "date": "2026-06-02",
   "readingMinutes": 19,
   "tags": [

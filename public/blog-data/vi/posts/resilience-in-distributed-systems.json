@@ -1,8 +1,8 @@
 {
   "slug": "resilience-in-distributed-systems",
   "category": "architecture",
-  "title": "Trả Cái Distributed-Systems Tax: Timeout, Retry, Circuit Breaker và Idempotency",
-  "summary": "Khoảnh khắc một lời gọi rời khỏi process của bạn, nó có thể chậm, lỗi, hoặc xảy ra hai lần — và đó là trường hợp bình thường, không phải ngoại lệ. Bộ công cụ resilience, giải thích giản dị: vì sao timeout đứng đầu, retry trở thành một cú DDoS tự gây ra thế nào nếu thiếu backoff và jitter, vì sao idempotency là cái giá của việc retry, và circuit breaker, bulkhead, graceful degradation cùng observability giữ một dependency tồi khỏi quật ngã tất cả ra sao.",
+  "title": "Timeout, Retry, Circuit Breaker và Idempotency: bộ kỹ năng sống còn của distributed systems",
+  "summary": "Một lời gọi ra khỏi process có thể chậm, lỗi, timeout, hoặc chạy hai lần. Đó không phải chuyện hiếm, mà là đời sống bình thường của distributed systems. Bài này gom lại những kỹ thuật giúp hệ thống bền hơn: timeout, retry với backoff và jitter, idempotency, circuit breaker, bulkhead, graceful degradation và observability.",
   "date": "2026-06-03",
   "readingMinutes": 14,
   "tags": [

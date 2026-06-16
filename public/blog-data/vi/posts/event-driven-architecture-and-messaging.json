@@ -1,8 +1,8 @@
 {
   "slug": "event-driven-architecture-and-messaging",
   "category": "architecture",
-  "title": "Events, Queues và Nghệ thuật Không-Gọi-Nhau: Event-Driven Architecture, Giải thích Giản dị",
-  "summary": "Khi các service nắm tay nhau qua những lời gọi synchronous, độ trễ cộng dồn và một dependency chậm là đủ làm sập checkout. Một hướng dẫn không màu mè về event-driven architecture: sync và async, command và event, broker thật sự hứa gì (at-least-once, không phải exactly-once), choreography và orchestration, và chính xác khi nào ĐỪNG với tới events.",
+  "title": "Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn",
+  "summary": "Khi service nào cũng gọi trực tiếp service khác, một dependency chậm có thể kéo cả checkout đi xuống. Bài này giải thích event-driven architecture bằng cách gần gũi: khi nào nên dùng sync hay async, command khác event ra sao, message broker thật sự bảo đảm điều gì, choreography và orchestration khác nhau thế nào, và lúc nào events chỉ làm hệ thống rối hơn.",
   "date": "2026-06-03",
   "readingMinutes": 15,
   "tags": [

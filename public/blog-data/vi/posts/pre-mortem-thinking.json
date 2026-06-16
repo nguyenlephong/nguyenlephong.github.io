@@ -1,8 +1,8 @@
 {
   "slug": "pre-mortem-thinking",
   "category": "ways-of-working",
-  "title": "Pre-mortem là gì? Nhìn trước thất bại để làm việc, lập trình và thăng tiến tốt hơn",
-  "summary": "Pre-mortem là thói quen tưởng tượng một kế hoạch đã thất bại trước khi bắt đầu, rồi lần ngược lại để tìm nguyên nhân. Bài viết giải thích khái niệm này và cách áp dụng vào code, hệ thống lớn, promotion, phỏng vấn vị trí mới và các mục tiêu cá nhân mà không biến sự chuẩn bị thành bi quan.",
+  "title": "Pre-mortem: nghĩ trước điều có thể hỏng để chuẩn bị tốt hơn",
+  "summary": "Pre-mortem là một cách chuẩn bị rất thực tế: tưởng tượng kế hoạch đã thất bại, rồi lần ngược lại xem điều gì có thể đã làm nó hỏng. Bài này chỉ cách dùng pre-mortem trong code, system design, release, promotion, phỏng vấn và mục tiêu cá nhân, để mình nhìn rủi ro sớm hơn mà không biến sự cẩn thận thành bi quan.",
   "readingMinutes": 12,
   "updated": "2026-06-13",
   "tags": [

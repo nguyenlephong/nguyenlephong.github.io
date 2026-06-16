@@ -1,8 +1,8 @@
 {
   "slug": "working-in-a-big-corp",
   "category": "ways-of-working",
-  "title": "Làm việc trong Big Corp: Align, quy trình và cách hoàn thành việc ở quy mô lớn",
-  "summary": "Từ một công ty nhỏ chuyển sang công ty lớn là một cú sốc văn hóa: bạn kiểm soát rất ít hệ thống, mà nó vẫn chạy xuất sắc. Đó là thiết kế — một tập đoàn tối ưu cho quy mô và độ tin cậy, không phải tốc độ cá nhân bạn. Bài đào sâu này giải thích cách làm việc tốt bên trong cỗ máy đó: việc của bạn nằm đâu trong hệ thống lập kế hoạch, vì sao align (chứ không phải code) mới là công việc cấp cao thật sự, quy trình nào xứng đáng và quy trình nào là trình diễn, làm sao thực sự ship qua chuỗi review, mặt lành mạnh của stakeholder và chính trị, các failure mode bào mòn con người, và cách phát triển trên một ladder sự nghiệp rõ ràng.",
+  "title": "Làm việc trong Big Corp: align tốt, ship bền và lớn lên trong hệ thống lớn",
+  "summary": "Big corp có thể chậm hơn cảm giác của một cá nhân, nhưng đổi lại là scale, reliability và rất nhiều hệ thống đã được thiết kế để không phụ thuộc vào một người. Bài này nói về cách làm việc hiệu quả ở môi trường lớn: align trước khi code, hiểu planning system, đi qua review chain, quản lý stakeholder, tránh các failure mode khiến mình mỏi, và dùng career ladder để phát triển rõ ràng hơn.",
   "date": "2026-06-02",
   "readingMinutes": 18,
   "tags": [

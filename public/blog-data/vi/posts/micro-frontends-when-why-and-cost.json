@@ -1,8 +1,8 @@
 {
   "slug": "micro-frontends-when-why-and-cost",
   "category": "architecture",
-  "title": "Micro-Frontends: Khi Nào Xứng Đáng, và Chi Phí Là Gì",
-  "summary": "Tách frontend thành các mảnh có thể deploy độc lập có thể giải phóng các team — hoặc chôn vùi bạn trong độ phức tạp. Viết từ kinh nghiệm ship một setup Angular-host + React-modules ở quy mô: khi nào micro-frontend đáng công, và hóa đơn chúng mang lại.",
+  "title": "Micro-Frontends: khi nào đáng tách, khi nào chỉ thêm rối",
+  "summary": "Micro-frontends có thể giúp nhiều team deploy độc lập hơn, nhưng cũng mang theo chi phí về routing, shared dependency, design system, performance và ownership. Bài này nhìn micro-frontends từ kinh nghiệm thực tế, để bạn biết khi nào nó giải phóng team, và khi nào nó chỉ biến frontend thành một distributed system khó chăm hơn.",
   "tags": [
     "Kiến trúc phần mềm",
     "Micro-Frontends",

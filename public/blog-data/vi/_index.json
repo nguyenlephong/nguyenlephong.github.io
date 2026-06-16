@@ -2,41 +2,41 @@
   "categories": [
     {
       "slug": "architecture",
-      "title": "Mã nguồn & Kiến trúc",
-      "tagline": "Cách tổ chức mã nguồn để nó sống sót qua tăng trưởng, đội ngũ và thay đổi.",
-      "description": "Những bài phân tích sâu, thân thiện với người mới về kiến trúc phần mềm và cách tổ chức mã nguồn — từ Ports & Adapters, Clean Architecture cho tới quản lý phụ thuộc, ranh giới module và những đánh đổi đằng sau mỗi lựa chọn. Dựa trên sơ đồ, ví dụ thực tế và những bài học áp dụng được từ dự án cá nhân tới hệ thống enterprise.",
+      "title": "Source Code & Software Architecture",
+      "tagline": "Cách tổ chức codebase để hệ thống dễ hiểu, dễ sửa và vẫn đứng vững khi team lớn lên.",
+      "description": "Những bài viết thực tế về software architecture và source code structure: từ Ports & Adapters, Clean Architecture đến dependency, module boundary, scaling và trade-off. Mỗi bài cố gắng giải thích bằng sơ đồ, ví dụ gần với đời làm việc, để người mới không bị ngợp và người đã đi làm vẫn có thứ mang về áp dụng.",
       "accent": "ocean",
       "order": 1
     },
     {
       "slug": "culture",
-      "title": "Văn hoá Kỹ thuật",
-      "tagline": "Phía con người của việc xây dựng phần mềm — review, phản hồi, cố vấn và những nhóm nuôi dưỡng con người thay vì đốt cháy họ.",
-      "description": "Những bài viết thực tế, đặt con người lên trước về văn hoá kỹ thuật: cách chạy review code khiến cả code lẫn con người tốt hơn, đưa ra và nhận phản hồi tốt, viết pull request mà reviewer thích, cố vấn kỹ sư trở thành senior, và xây dựng những nhóm tử tế, tin tưởng cao. Các kịch bản thực tế, ví dụ và bài học có thể áp dụng từ startup hai người đến tổ chức nghìn kỹ sư.",
+      "title": "Engineering Culture",
+      "tagline": "Code review, feedback, mentoring và những thói quen giúp team làm việc tử tế mà vẫn hiệu quả.",
+      "description": "Các bài viết về phần con người trong software engineering: viết pull request rõ ràng, review code không làm nhau mệt, feedback thẳng mà ấm, mentoring engineer và xây trust trong team. Không phải lý thuyết HR; đây là những tình huống rất đời trong một ngày làm sản phẩm, release, họp, sửa bug và cùng nhau trưởng thành.",
       "accent": "violet",
       "order": 2
     },
     {
       "slug": "ai",
-      "title": "AI & Tương lai",
-      "tagline": "Hiểu về AI — từ context engineering đến xây dựng sản phẩm AI đáng tin cậy.",
-      "description": "Bài viết thực tế, định hướng developer về trí tuệ nhân tạo: cách đạt kết quả tốt với công cụ AI, hiểu cách mô hình ngôn ngữ thực sự hoạt động, xây dựng sản phẩm AI đáng tin cậy và điều hướng bối cảnh đang thay đổi nhanh của LLM, agent và context engineering. Viết cho kỹ sư muốn làm việc thông minh hơn với AI.",
+      "title": "AI & Future of Work",
+      "tagline": "Hiểu AI đủ rõ để dùng tốt hơn, build chắc hơn và không bị cuốn theo hype.",
+      "description": "Những bài viết dành cho engineer và người làm sản phẩm muốn làm việc thông minh hơn với AI: prompt, context engineering, LLM, AI agent, workflow và rủi ro khi đưa AI vào production. Giọng viết đi theo hướng thực tế: AI giúp gì, giới hạn ở đâu, và mình nên thay đổi cách học, cách làm thế nào để đi nhanh hơn mà vẫn giữ được phán đoán của con người.",
       "accent": "gold",
       "order": 3
     },
     {
       "slug": "perspectives",
       "title": "Góc nhìn & Trải nghiệm",
-      "tagline": "Những ghi chép cá nhân từ công việc, học tập, con người và các khoảnh khắc âm thầm định hình hành trình nghề nghiệp.",
-      "description": "Những bài viết suy ngẫm, gần gũi và có chiều sâu, nối các trải nghiệm đời thường với hành trình nghề nghiệp, học tập, làm việc nhóm và phát triển bản thân. Viết bằng giọng bình tĩnh, thực tế, dễ đọc cho cả độc giả technical lẫn non-tech.",
+      "tagline": "Những câu chuyện từ công việc, học tập, con người và các khoảnh khắc nhỏ làm mình lớn lên từng chút.",
+      "description": "Các bài reflection nhẹ nhàng hơn về hành trình đi làm, học hỏi, vượt giới hạn bản thân và nhìn lại những điều rất đời trong công việc. Đây là nơi một chuyến trek, một cuộc trò chuyện, một lần vấp, hoặc một ngày bình thường có thể trở thành một góc nhìn hữu ích để quay lại làm việc bình tĩnh hơn, vui hơn và có năng lượng hơn.",
       "accent": "dark",
       "order": 4
     },
     {
       "slug": "ways-of-working",
-      "title": "Cách làm việc",
-      "tagline": "Cách các đội phần mềm thực sự vận hành và phối hợp — từ Agile, Scrum đến cách công việc thật sự diễn ra trong big corp, startup và outsourcing.",
-      "description": "Những bài viết thực tế, không màu mè về cách các đội phần mềm thật sự làm việc và phối hợp: Agile và Scrum trong thực tế, cả họ \"-Driven Development\", và — quan trọng nhất — cách việc bàn giao, quyền sở hữu, giao tiếp và ra quyết định thật sự khác nhau giữa các loại công ty, từ tập đoàn lớn đến startup nhỏ và vừa đến outsourcing và công ty dịch vụ phần mềm. Viết để bất kỳ ai trong team — BA, PO, PM, lập trình viên, QC hay người mới — đều đọc được môi trường mình đang ở và vận hành tốt trong đó.",
+      "title": "Ways of Working",
+      "tagline": "Cách team phần mềm thật sự vận hành: Agile, Scrum, delivery, ownership, communication và nhịp làm việc ở từng môi trường.",
+      "description": "Những bài viết giúp bạn đọc môi trường làm việc của mình rõ hơn: team đang ra quyết định thế nào, ai owns việc gì, vì sao delivery bị kẹt, Agile/Scrum nên dùng ra sao cho bớt hình thức, và mỗi mô hình công ty có nhịp vận hành riêng thế nào. Viết cho BA, PO, PM, developer, QA và người mới để đi làm đỡ mơ hồ, phối hợp vui hơn và hiệu quả hơn.",
       "accent": "light",
       "order": 5
     }
@@ -45,8 +45,8 @@
     {
       "slug": "event-driven-architecture-and-messaging",
       "category": "architecture",
-      "title": "Events, Queues và Nghệ thuật Không-Gọi-Nhau: Event-Driven Architecture, Giải thích Giản dị",
-      "summary": "Khi các service nắm tay nhau qua những lời gọi synchronous, độ trễ cộng dồn và một dependency chậm là đủ làm sập checkout. Một hướng dẫn không màu mè về event-driven architecture: sync và async, command và event, broker thật sự hứa gì (at-least-once, không phải exactly-once), choreography và orchestration, và chính xác khi nào ĐỪNG với tới events.",
+      "title": "Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn",
+      "summary": "Khi service nào cũng gọi trực tiếp service khác, một dependency chậm có thể kéo cả checkout đi xuống. Bài này giải thích event-driven architecture bằng cách gần gũi: khi nào nên dùng sync hay async, command khác event ra sao, message broker thật sự bảo đảm điều gì, choreography và orchestration khác nhau thế nào, và lúc nào events chỉ làm hệ thống rối hơn.",
       "date": "2026-06-03",
       "readingMinutes": 15,
       "tags": [
@@ -64,8 +64,8 @@
     {
       "slug": "data-in-distributed-systems",
       "category": "architecture",
-      "title": "Ai Sở hữu Dữ liệu? Database-per-Service, Saga và Eventual Consistency Không Nước mắt",
-      "summary": "Tách code mới là nửa dễ — tách dữ liệu mới là nơi distributed systems khiến bạn khiêm tốn. Hướng dẫn thực tế về sở hữu dữ liệu xuyên service: vì sao database dùng chung là một distributed monolith, cú đánh đổi từ ACID sang eventual consistency, bug dual-write và outbox sửa nó, saga với compensating action, và khi nào CQRS cùng event sourcing đáng với chi phí cả đời của chúng.",
+      "title": "Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems",
+      "summary": "Tách code thường dễ hơn tách dữ liệu. Khi mỗi service cần sở hữu dữ liệu riêng, team phải đối mặt với shared database, eventual consistency, dual-write bug, outbox, saga, CQRS và event sourcing. Bài này đi qua những lựa chọn đó bằng ví dụ thực tế, để bạn hiểu trade-off trước khi hệ thống phân tán bắt đầu làm mọi thứ khó hơn.",
       "date": "2026-06-03",
       "readingMinutes": 14,
       "tags": [
@@ -83,8 +83,8 @@
     {
       "slug": "resilience-in-distributed-systems",
       "category": "architecture",
-      "title": "Trả Cái Distributed-Systems Tax: Timeout, Retry, Circuit Breaker và Idempotency",
-      "summary": "Khoảnh khắc một lời gọi rời khỏi process của bạn, nó có thể chậm, lỗi, hoặc xảy ra hai lần — và đó là trường hợp bình thường, không phải ngoại lệ. Bộ công cụ resilience, giải thích giản dị: vì sao timeout đứng đầu, retry trở thành một cú DDoS tự gây ra thế nào nếu thiếu backoff và jitter, vì sao idempotency là cái giá của việc retry, và circuit breaker, bulkhead, graceful degradation cùng observability giữ một dependency tồi khỏi quật ngã tất cả ra sao.",
+      "title": "Timeout, Retry, Circuit Breaker và Idempotency: bộ kỹ năng sống còn của distributed systems",
+      "summary": "Một lời gọi ra khỏi process có thể chậm, lỗi, timeout, hoặc chạy hai lần. Đó không phải chuyện hiếm, mà là đời sống bình thường của distributed systems. Bài này gom lại những kỹ thuật giúp hệ thống bền hơn: timeout, retry với backoff và jitter, idempotency, circuit breaker, bulkhead, graceful degradation và observability.",
       "date": "2026-06-03",
       "readingMinutes": 14,
       "tags": [
@@ -102,8 +102,8 @@
     {
       "slug": "scaling-the-database",
       "category": "architecture",
-      "title": "Scale Database: Index, Read Replica, Caching và Sharding — Theo Đúng Thứ Tự Đó",
-      "summary": "Database gần như luôn là thứ gục ngã đầu tiên dưới sức tăng trưởng — và cũng là thứ kỹ sư over-engineer đầu tiên trong cơn hoảng. Một cái thang không màu mè để scale tầng dữ liệu: vì sao phải đo và thêm index trước khi đụng tới phần cứng, read replica khai thác sự bất đối xứng đọc/ghi ra sao (và cái bẫy replication lag nó mang theo), caching giúp ở đâu và vì sao invalidation mới là phần khó, và khi nào cuối cùng mới với tới partitioning cùng sharding — quyết định thật sự khó quay đầu.",
+      "title": "Scale database theo đúng thứ tự: Index, Read Replica, Cache rồi mới tới Sharding",
+      "summary": "Khi traffic tăng, database thường là nơi kêu cứu đầu tiên. Nhưng không phải cứ chậm là lao vào sharding. Bài này đưa ra một nấc thang thực tế để scale data layer: đo trước, thêm index, dùng read replica, cache đúng chỗ, hiểu replication lag và chỉ đụng tới partitioning hoặc sharding khi thật sự đã đến lúc.",
       "date": "2026-06-04",
       "readingMinutes": 15,
       "tags": [
@@ -121,8 +121,8 @@
     {
       "slug": "observability-at-scale",
       "category": "architecture",
-      "title": "Bạn Không Thể Sửa Thứ Bạn Không Thấy: Logs, Metrics, Traces và SLO ở Quy mô Lớn",
-      "summary": "Trong monolith, debug gần như ấm cúng — một log file, một process, một chỗ sự thật cư ngụ. Distributed systems lặng lẽ lấy đi điều đó: một request giờ toả ra cả tá service, và khi nó hỏng chẳng còn một log file để đọc. Một hướng dẫn không màu mè về việc nhìn thấy hệ thống ở quy mô lớn: ba trụ cột (metrics, logs, traces) và câu hỏi mỗi cái trả lời, vì sao một trace ID lan khắp hệ thống là thói quen đòn bẩy cao nhất, SLO biến reliability thành một error budget bạn có thể tiêu, và alert vào triệu chứng để on-call không kiệt sức.",
+      "title": "Observability ở quy mô lớn: Logs, Metrics, Traces và SLO giúp mình thấy gì",
+      "summary": "Khi một request đi qua nhiều service, không còn một log file duy nhất để kể toàn bộ câu chuyện. Bài này giải thích observability theo cách dễ nắm: metrics cho biết hệ thống đang khỏe hay không, logs kể chuyện chi tiết, traces nối các bước lại với nhau, còn SLO giúp team nói về reliability bằng một ngôn ngữ rõ ràng hơn.",
       "date": "2026-06-04",
       "readingMinutes": 16,
       "tags": [
@@ -140,8 +140,8 @@
     {
       "slug": "ambition-in-the-age-of-ai",
       "category": "ai",
-      "title": "Nỗi Sợ AI Của Bạn Chính Là Kích Thước Tham Vọng Của Bạn: Đã Đến Lúc Nhắm Lớn Hơn Rất Nhiều",
-      "summary": "Hai người có thể nhìn cùng một bước nhảy của AI và cảm thấy hai điều trái ngược — kinh hãi hoặc hứng khởi — và khác biệt ấy hé lộ một điều hơi khó nghe: nỗi sợ tương lai của ta xấp xỉ bằng kích thước tham vọng của ta. Nếu kế hoạch của bạn là cứ làm đúng những gì đang làm, một cỗ máy làm điều đó rẻ hơn thật đáng sợ. Nếu kế hoạch của bạn là kiến tạo một thứ lớn hơn rất nhiều, đó là tin tốt nhất bạn từng nhận. Đây là một lập luận rõ ràng, tiếp lửa để cho “đừng đun sôi cả đại dương” về hưu, đổi cái hiện-tại-1.05x lấy cái tương-lai-10x, và vì sao — qua ephemeralization và Jevons paradox — nâng tham vọng thường tạo ra nhiều hơn, chứ không ít hơn.",
+      "title": "Trong thời đại AI, tham vọng nên lớn hơn nỗi sợ",
+      "summary": "AI có thể làm nhiều việc nhanh hơn, rẻ hơn và đều hơn con người. Điều đó đáng lo nếu mình chỉ muốn giữ nguyên cách làm cũ. Nhưng nếu nhìn AI như một đòn bẩy, câu hỏi thú vị hơn là: mình có thể đặt mục tiêu lớn hơn đến đâu? Bài này là một lời nhắc tỉnh táo về tham vọng, học hỏi và cách dùng AI để mở rộng giới hạn thay vì thu mình lại.",
       "date": "2026-06-03",
       "readingMinutes": 11,
       "tags": [
@@ -158,8 +158,8 @@
     {
       "slug": "se-to-technical-manager",
       "category": "culture",
-      "title": "Từ Software Engineer Đến Technical Manager: Những Điều Thú Vị (Và Trái Ngược) Bạn Sẽ Nhận Ra",
-      "summary": "Bước từ Software Engineer sang Technical Manager không phải là một phiên bản “to hơn” của cùng một công việc — đó là một cuộc viết lại lặng lẽ chính những thói quen đã từng giúp bạn giỏi ở vai trò trước. Lùi khỏi IDE để nhìn kiến trúc, con người và quy trình, ba sự thật khá bất ngờ dần hiện ra: code vừa là tài sản vừa là tiêu sản, giá trị của bạn dịch từ phép cộng sang phép nhân, và delegate nghe thì đơn giản nhưng buông tay thật sự rất khó. Một bài chiêm nghiệm thực tế, thành thật cho những kỹ sư senior đang nhìn về vai trò lead — và cho cả những manager mới vẫn còn quen với tay đặt lên bàn phím.",
+      "title": "Từ Software Engineer đến Technical Manager: đổi vai là đổi cách tạo giá trị",
+      "summary": "Lên vai trò Technical Manager không chỉ là làm nhiều hơn một chút so với Senior Engineer. Bạn phải rời khỏi thói quen tự tay giải mọi bài toán để tạo điều kiện cho cả team giải tốt hơn. Bài này chia sẻ những thay đổi dễ bất ngờ: code vừa là tài sản vừa là chi phí, giá trị chuyển từ phép cộng sang phép nhân, và delegate là một kỹ năng cần luyện thật.",
       "date": "2026-06-03",
       "readingMinutes": 12,
       "tags": [
@@ -176,8 +176,8 @@
     {
       "slug": "sdlc-to-adlc-agentic-development",
       "category": "ai",
-      "title": "Từ SDLC Đến ADLC: Cách AI Agent Đang Viết Lại Vòng Đời Phát Triển Phần Mềm",
-      "summary": "Phát triển phần mềm đang trải qua bước ngoặt lớn nhất kể từ giao diện đồ họa. Những giai đoạn mà kỹ sư từng làm thủ công — lập kế hoạch, code, kiểm thử, triển khai — ngày càng được các AI agent thực thi song song. Đây là một hướng dẫn rõ ràng, trực quan về bước chuyển từ SDLC kinh điển sang ADLC đang lên (Agentic Development Life Cycle): hai vòng đời vẽ cạnh nhau, sáu chuyển dịch cụ thể đang diễn ra ngay lúc này, những con số ban đầu gợi ý điều gì, nó thật sự nghĩa là gì với công việc hằng ngày của một kỹ sư, và năm best practice ít rủi ro để bắt đầu đi nhanh hơn — mà không trao đi phần phán đoán vẫn phải là của bạn.",
+      "title": "Từ SDLC đến ADLC: AI Agent đang thay đổi cách làm phần mềm ra sao",
+      "summary": "Khi AI agent bắt đầu tham gia planning, coding, testing và deployment, vòng đời phát triển phần mềm cũng đổi nhịp. Bài này so sánh SDLC truyền thống với ADLC, giải thích những phần việc đang được tự động hóa, những phần vẫn cần phán đoán của engineer, và cách bắt đầu dùng agent an toàn mà không giao hết tay lái.",
       "date": "2026-06-03",
       "readingMinutes": 15,
       "tags": [
@@ -194,8 +194,8 @@
     {
       "slug": "how-teams-work-big-corp-startup-outsourcing",
       "category": "ways-of-working",
-      "title": "Đội phần mềm thực sự làm việc thế nào: Big Corp vs Startup vs Outsourcing",
-      "summary": "Hai kỹ sư cùng chức danh có thể làm hai công việc hoàn toàn khác nhau — vì môi trường định hình công việc nhiều hơn hẳn cái chức danh. Đây là cẩm nang thực địa về ba thế giới mà phần lớn sự nghiệp phần mềm đi qua: big corp, startup và outsourcing, so sánh theo những chiều thực sự thay đổi mỗi ngày — việc đến từ đâu, ai quyết, quy trình nặng đến đâu, bạn sở hữu bao nhiêu, giao tiếp ra sao, tốc độ và chuẩn chất lượng, và điều gì được tưởng thưởng. Có bảng so sánh đầy đủ và một hướng dẫn trung thực: môi trường nào hợp với bạn.",
+      "title": "Big Corp, Startup, Outsourcing: cùng làm software nhưng nhịp rất khác nhau",
+      "summary": "Cùng là Software Engineer, nhưng một ngày làm việc trong big corp, startup và outsourcing có thể khác nhau hoàn toàn. Bài này so sánh ba môi trường qua những thứ người đi làm thật sự cảm nhận mỗi ngày: việc đến từ đâu, ai quyết định, scope đổi thế nào, ownership rộng hay hẹp, communication nặng hay nhẹ, tốc độ ship ra sao, và kiểu người nào dễ phát triển ở từng nơi.",
       "date": "2026-06-02",
       "readingMinutes": 19,
       "tags": [
@@ -214,8 +214,8 @@
     {
       "slug": "working-in-a-big-corp",
       "category": "ways-of-working",
-      "title": "Làm việc trong Big Corp: Align, quy trình và cách hoàn thành việc ở quy mô lớn",
-      "summary": "Từ một công ty nhỏ chuyển sang công ty lớn là một cú sốc văn hóa: bạn kiểm soát rất ít hệ thống, mà nó vẫn chạy xuất sắc. Đó là thiết kế — một tập đoàn tối ưu cho quy mô và độ tin cậy, không phải tốc độ cá nhân bạn. Bài đào sâu này giải thích cách làm việc tốt bên trong cỗ máy đó: việc của bạn nằm đâu trong hệ thống lập kế hoạch, vì sao align (chứ không phải code) mới là công việc cấp cao thật sự, quy trình nào xứng đáng và quy trình nào là trình diễn, làm sao thực sự ship qua chuỗi review, mặt lành mạnh của stakeholder và chính trị, các failure mode bào mòn con người, và cách phát triển trên một ladder sự nghiệp rõ ràng.",
+      "title": "Làm việc trong Big Corp: align tốt, ship bền và lớn lên trong hệ thống lớn",
+      "summary": "Big corp có thể chậm hơn cảm giác của một cá nhân, nhưng đổi lại là scale, reliability và rất nhiều hệ thống đã được thiết kế để không phụ thuộc vào một người. Bài này nói về cách làm việc hiệu quả ở môi trường lớn: align trước khi code, hiểu planning system, đi qua review chain, quản lý stakeholder, tránh các failure mode khiến mình mỏi, và dùng career ladder để phát triển rõ ràng hơn.",
       "date": "2026-06-02",
       "readingMinutes": 18,
       "tags": [
@@ -234,8 +234,8 @@
     {
       "slug": "working-in-a-startup",
       "category": "ways-of-working",
-      "title": "Làm việc trong Startup: Tốc độ, sự mơ hồ, và đội nhiều mũ",
-      "summary": "Lời hứa của startup — quyền sở hữu thật, ship hôm nay, mai thấy nó tạo khác biệt — phần lớn là thật, nhưng trang tuyển dụng bỏ quên sự mơ hồ, những cú giật ngược và sự bất ổn đến từ cùng một gốc rễ: startup là công ty vẫn đang đi tìm mô hình kinh doanh của mình. Bài đào sâu này là hướng dẫn trung thực về cuộc đánh đổi, cho cả startup nhỏ và vừa: vì sao tốc độ học thắng sự chỉn chu, sở hữu rộng-và-nông thực sự ra sao, cách coi mơ hồ là chính công việc, vay nợ kỹ thuật một cách có ý thức, giao tiếp trước khi kiến thức-trong-đầu cắn bạn, cuộc chuyển nhỏ-sang-vừa gây mất phương hướng khi quy trình quay lại, các failure mode (burnout, văn hóa anh hùng, giật ngược), và cách bứt lên và phát triển.",
+      "title": "Làm việc trong Startup: tốc độ, mơ hồ và cách giữ nhịp khi team còn nhỏ",
+      "summary": "Startup hấp dẫn vì ownership thật, tốc độ nhanh và cảm giác việc mình làm có tác động ngay. Nhưng cùng lúc đó là sự mơ hồ, đổi hướng, thiếu người, technical debt và áp lực sống còn. Bài này giúp bạn đọc đúng môi trường startup: khi nào nên ưu tiên tốc độ học, cách giao tiếp khi mọi thứ chưa rõ, cách vay nợ kỹ thuật có ý thức, và làm sao phát triển mà không tự đốt mình.",
       "date": "2026-06-02",
       "readingMinutes": 18,
       "tags": [
@@ -254,8 +254,8 @@
     {
       "slug": "working-in-outsourcing-software-services",
       "category": "ways-of-working",
-      "title": "Làm việc trong Outsourcing & Dịch vụ phần mềm: Client, scope và bàn giao theo hợp đồng",
-      "summary": "Outsourcing là thế giới bị hiểu lầm nhiều nhất trong ba thế giới — không phải một xưởng code vô danh mà, ở một công ty dịch vụ tốt, là nơi bạn xây những sản phẩm thật, chạm vào nhiều domain trong hai năm hơn phần lớn kỹ sư sản phẩm chạm trong mười năm. Điểm gút: bạn không sở hữu sản phẩm, bạn bàn giao theo một hợp đồng, và một kỹ năng thứ hai nằm cạnh việc kỹ thuật — quản lý mối quan hệ client. Bài đào sâu này bàn về sự thật cấu trúc định hình lại mọi thứ, hai hình thái công việc outsourcing, vì sao scope là bất khả xâm phạm và change request là bạn của bạn, tính tiền/estimate/utilization, giao tiếp như sản phẩm bàn giao, múi giờ, chất lượng theo hợp đồng, các failure mode, và cách bứt lên cùng lộ trình sự nghiệp dịch vụ.",
+      "title": "Làm việc trong Outsourcing: client, scope và delivery theo cam kết",
+      "summary": "Outsourcing không chỉ là “làm theo spec”. Ở một công ty dịch vụ tốt, bạn được chạm vào nhiều domain, làm với client thật và học rất nhanh cách biến yêu cầu thành delivery. Bài này giải thích cấu trúc của môi trường outsourcing: scope, change request, estimate, utilization, communication, quality theo hợp đồng, múi giờ, quan hệ client và cách phát triển sự nghiệp trong service business.",
       "date": "2026-06-02",
       "readingMinutes": 19,
       "tags": [
@@ -274,8 +274,8 @@
     {
       "slug": "ai-agents-explained",
       "category": "ai",
-      "title": "AI Agent, Giải Thích Không Hype: Nó Là Gì, Hoạt Động Ra Sao, Và Làm Được Gì Cho Bạn",
-      "summary": "Đột nhiên ai cũng nói về “AI agent” — phần mềm không chỉ trả lời câu hỏi mà còn tự đi làm việc giúp bạn. Nhưng agent thực ra là gì, khác chatbot bạn đang dùng ở điểm nào, và nó thật sự hữu ích ở đâu so với việc âm thầm gây rối? Đây là một bài viết thân thiện, ít thuật ngữ, dành cho tất cả mọi người dù rành công nghệ hay không: vòng lặp đơn giản mà mọi agent đều chạy, năm thành phần tạo nên một agent, các mức độ tự chủ từ co-pilot đến auto-pilot, ví dụ gần gũi nơi văn phòng lẫn trong nhà, những kiểu lỗi cần đề phòng, và cách cụ thể để đưa agent hữu ích đầu tiên vào việc ngay trong tuần này.",
+      "title": "AI Agent là gì: cách nó hoạt động và khi nào thật sự hữu ích",
+      "summary": "AI agent không chỉ trả lời câu hỏi; nó có thể nhận mục tiêu, chia việc, dùng tool và quay lại kiểm tra kết quả. Bài này giải thích agent bằng ngôn ngữ ít thuật ngữ: vòng lặp cơ bản, các thành phần chính, mức độ tự chủ, ví dụ trong công việc hằng ngày, và những rủi ro cần biết trước khi để agent làm thay mình.",
       "date": "2026-06-02",
       "readingMinutes": 17,
       "tags": [
@@ -294,8 +294,8 @@
     {
       "slug": "ai-workflows-that-save-hours",
       "category": "ai",
-      "title": "Từ Prompt Đến Workflow: Thiết Kế AI Workflow Tiết Kiệm Cho Bạn Hàng Giờ Mỗi Tuần",
-      "summary": "Đa số mọi người dùng AI mỗi lần một câu hỏi — và bỏ phí phần lớn giá trị của nó. Đòn bẩy thật sự không phải một prompt khôn khéo; mà là một AI workflow lặp lại được: một chuỗi bước nhỏ bạn thiết kế một lần và tái sử dụng mãi mãi, biến một việc vặt hai tiếng lặp lại thành một lần rà soát hai phút. Đây là hướng dẫn thực hành, nhiều ví dụ, dành cho tất cả mọi người dù rành công nghệ hay không: khác biệt giữa prompt và workflow, cấu trúc đơn giản mà mọi workflow đều có, những workflow bê-vào-dùng-ngay cho văn phòng lẫn đời sống, ba mức từ thủ công đến tự động hoàn toàn, sáu bước tự thiết kế workflow của riêng bạn, và một cách tính nhẩm để chứng minh số giờ bạn thật sự tiết kiệm được.",
+      "title": "Từ prompt đến workflow: cách thiết kế AI workflow tiết kiệm thời gian mỗi tuần",
+      "summary": "Một prompt hay có thể giúp một lần; một workflow tốt có thể giúp lặp lại mỗi tuần. Bài này chỉ cách biến các việc quen thuộc thành AI workflow: xác định input, chia bước, kiểm tra output, tái sử dụng template và đo thời gian tiết kiệm được. Mục tiêu không phải dùng AI cho vui, mà để giảm việc lặp lại và có thêm thời gian cho phần cần suy nghĩ thật.",
       "date": "2026-06-02",
       "readingMinutes": 18,
       "tags": [
@@ -314,8 +314,8 @@
     {
       "slug": "ai-trends-2026-into-value",
       "category": "ai",
-      "title": "Những Xu Hướng AI Đáng Để Tâm Năm 2026 — Và Cách Biến Chúng Thành Giá Trị Thật",
-      "summary": "Mỗi tuần lại có thêm một dòng tít AI kiểu “thứ này thay đổi tất cả”, và thật mệt mỏi khi cố phân biệt tín hiệu với nhiễu. Đây là một chuyến đi điềm tĩnh, có cơ sở qua những xu hướng AI thật sự quan trọng năm 2026 — agentic AI, đa phương thức (multimodal), AI nhúng sẵn trong các app bạn đang dùng, AI chạy trên thiết bị, và sự trỗi dậy của phán đoán và kiểm chứng như lợi thế con người — kèm phần mà hầu hết bài viết bỏ qua: một khung thực hành để biến bất kỳ xu hướng nào thành giá trị thật trong công việc và đời sống. Bạn sẽ có bộ lọc hype-hay-giá-trị, thang giá trị, một phương trình giá trị đơn giản, một ví dụ cụ thể, và một kế hoạch 30 ngày — để thôi chạy theo tin tức và bắt đầu tích lũy lợi ích.",
+      "title": "Xu hướng AI 2026: nhìn bớt hype, tìm giá trị thật",
+      "summary": "Tin tức AI thay đổi nhanh đến mức rất dễ mệt. Bài này chọn lọc những xu hướng đáng theo dõi hơn trong năm 2026 như agentic AI, multimodal, AI trong app hằng ngày, on-device AI và vai trò ngày càng lớn của phán đoán con người. Quan trọng hơn, bài đưa ra một cách lọc hype để biến xu hướng thành thử nghiệm nhỏ có giá trị thật.",
       "date": "2026-06-02",
       "readingMinutes": 18,
       "tags": [
@@ -334,8 +334,8 @@
     {
       "slug": "tdd-bdd-ddd-driven-development",
       "category": "ways-of-working",
-      "title": "TDD, BDD, DDD và cả họ \"-Driven Development\", Giải thích Cho Engineer",
-      "summary": "TDD, BDD, DDD, ATDD, EDD, CDD, FDD — mớ chữ cái \"-Driven Development\" làm bối rối cả engineer nhiều kinh nghiệm, một phần vì chúng không phải đối thủ của nhau: chúng trả lời những câu hỏi khác nhau và kết hợp được với nhau. Đây là hướng dẫn thực tế, nhiều ví dụ cho lập trình viên: mỗi cái thực sự nghĩa là gì, vòng lặp/khái niệm cốt lõi, ví dụ code và Gherkin cụ thể, khi nào nên dùng, các cạm bẫy — và một bản đồ rõ ràng cho thấy chúng ghép với nhau ra sao trên cùng một tính năng thật.",
+      "title": "TDD, BDD, DDD và họ “Driven Development”: hiểu đúng để dùng đúng",
+      "summary": "TDD, BDD, DDD, ATDD, EDD, CDD, FDD nghe như một rừng chữ viết tắt, nhưng chúng không phải đối thủ của nhau. Mỗi cách trả lời một câu hỏi khác nhau: kiểm thử trước, hành vi mong muốn, domain model, event, component hay feature. Bài này giúp engineer đặt chúng lên cùng một bản đồ, hiểu khi nào dùng gì và tránh biến “driven development” thành khẩu hiệu.",
       "date": "2026-06-02",
       "readingMinutes": 22,
       "tags": [
@@ -352,8 +352,8 @@
     {
       "slug": "agile-scrum-in-practice",
       "category": "ways-of-working",
-      "title": "Agile & Scrum trong thực tế: Công ty đang biến tấu thế nào, và chuẩn thật sự ra sao",
-      "summary": "Gần như đội phần mềm nào cũng nói mình \"làm Scrum\" — và gần như mỗi đội làm một kiểu. Đây là cẩm nang thực tế, rõ ràng cho mọi vai trò trong team: epic, story, task, sub-task thực chất là gì; status workflow vận hành ra sao; story point nghĩa là gì (và những sai lầm phá hỏng nó); estimate và log work thế nào cho trung thực; đọc biểu đồ burndown, velocity ra sao; và cách chạy planning, daily, review, retro sao cho hữu ích thay vì tốn thời gian. Chuẩn gốc, các biến tấu phổ biến, và cách vận hành tốt — đủ để bất kỳ ai đọc vào cũng hiểu và làm được ngay.",
+      "title": "Agile & Scrum trong thực tế: hiểu board, estimate và các buổi họp cho đỡ mơ hồ",
+      "summary": "Rất nhiều team nói mình làm Scrum, nhưng mỗi nơi lại hiểu story, point, Done, daily hay retro theo một kiểu. Bài này giúp mọi vai trò trong team có cùng ngôn ngữ: epic, story, task, status workflow, story point, estimate, log work, burndown, velocity và cách chạy planning, daily, review, retro sao cho chúng thật sự giúp team ship tốt hơn thay vì chỉ thêm họp.",
       "date": "2026-06-02",
       "readingMinutes": 20,
       "tags": [
@@ -370,8 +370,8 @@
     {
       "slug": "ports-and-adapters",
       "category": "architecture",
-      "title": "Ports & Adapters (Kiến trúc Lục giác), Giải thích Đơn giản",
-      "summary": "Một hướng dẫn thân thiện, đầy ví dụ về Kiến trúc Lục giác: port và adapter thực sự là gì, quy tắc duy nhất khiến nó vận hành, và áp dụng bao nhiêu là vừa — dù bạn là founder solo hay một team enterprise.",
+      "title": "Ports & Adapters: Hexagonal Architecture giải thích bằng ví dụ dễ hiểu",
+      "summary": "Ports & Adapters nghe có vẻ học thuật, nhưng ý tưởng cốt lõi rất thực tế: business logic nên đứng vững dù database, UI hay API bên ngoài thay đổi. Bài này giải thích port, adapter và dependency direction bằng ví dụ gần gũi, để bạn biết áp dụng vừa đủ cho dự án nhỏ lẫn codebase lớn.",
       "date": "2026-05-29",
       "readingMinutes": 16,
       "tags": [
@@ -390,8 +390,8 @@
     {
       "slug": "clean-vs-onion-vs-hexagonal",
       "category": "architecture",
-      "title": "Clean, Onion & Hexagonal Architecture: Một Ngôi Sao Phương Bắc, Ba Cái Tên",
-      "summary": "Nhìn bề ngoài có vẻ là ba kiến trúc đối lập nhau. Thực ra chúng là cùng một ý tưởng — phụ thuộc hướng vào trong, framework ở rìa — được vẽ theo ba cách. Đây là điều mỗi cái thực sự thêm vào, và khi nào nên chọn cái nào.",
+      "title": "Clean, Onion và Hexagonal Architecture: ba tên gọi cho cùng một hướng nghĩ",
+      "summary": "Clean Architecture, Onion Architecture và Hexagonal Architecture thường bị xem như ba trường phái khác nhau. Thực ra chúng cùng nhắc về một điều: domain và business rule nên nằm ở trung tâm, framework và chi tiết kỹ thuật ở ngoài rìa. Bài này so sánh nhẹ nhàng để bạn chọn cách gọi và cách vẽ phù hợp với team.",
       "date": "2026-05-29",
       "readingMinutes": 15,
       "tags": [
@@ -409,8 +409,8 @@
     {
       "slug": "dependency-injection-and-ioc",
       "category": "architecture",
-      "title": "Dependency Injection & Inversion of Control, Không Có Phép Thuật",
-      "summary": "DI container thoạt nghe như phù phép cho đến khi bạn thấy ý tưởng đơn giản ở phía dưới: đừng để code tự tạo ra dependency của chính nó, hãy đưa chúng vào từ bên ngoài. Hướng dẫn từ đầu, với ví dụ thực tế và lợi ích trong kiểm thử.",
+      "title": "Dependency Injection & Inversion of Control: bớt coupling mà không cần phép thuật",
+      "summary": "DI và IoC không phải phép màu của framework. Ý tưởng đơn giản hơn nhiều: đừng để một class tự tạo mọi dependency mà nó cần; hãy đưa dependency từ bên ngoài vào. Bài này giải thích vì sao cách làm đó giúp code dễ test hơn, dễ thay đổi hơn và đỡ dính chặt vào database, SDK hay service cụ thể.",
       "date": "2026-05-29",
       "readingMinutes": 14,
       "tags": [
@@ -428,8 +428,8 @@
     {
       "slug": "structuring-code-feature-vs-layer",
       "category": "architecture",
-      "title": "Cấu trúc Codebase: Theo Lớp, Theo Tính năng, hay Theo Domain?",
-      "summary": "Thư mục cấp cao nhất nên là controllers/services/models, hay orders/billing/auth? Lựa chọn này âm thầm định hình cách codebase lớn lên. Một chuyến tham quan thực tế qua cấu trúc theo lớp, theo tính năng, và screaming architecture — với những đánh đổi ở mỗi quy mô công ty.",
+      "title": "Tổ chức codebase: theo layer, feature hay domain?",
+      "summary": "Một codebase bắt đầu lớn lên từ những lựa chọn rất nhỏ: thư mục trên cùng nên là controllers/services/models, hay orders/billing/auth? Bài này so sánh cách tổ chức theo layer, theo feature và theo domain, chỉ ra mỗi kiểu hợp với giai đoạn nào, và vì sao cấu trúc thư mục thật ra đang kể cách team suy nghĩ về sản phẩm.",
       "date": "2026-05-29",
       "readingMinutes": 14,
       "tags": [
@@ -447,8 +447,8 @@
     {
       "slug": "monolith-to-microservices",
       "category": "architecture",
-      "title": "Monolith, Modular Monolith, Microservices: Hướng dẫn Quyết định Thành thật",
-      "summary": "Microservices là cái giá bạn trả cho quy mô tổ chức — không phải điểm khởi đầu. Hành trình không màu mè từ monolith đến modular monolith đến microservices, với các tín hiệu cho bạn biết khi nào (và liệu có nên) tách ra.",
+      "title": "Monolith, Modular Monolith hay Microservices: chọn theo giai đoạn, không theo trend",
+      "summary": "Microservices không phải điểm xuất phát bắt buộc, mà thường là cái giá phải trả khi team và hệ thống đã đủ lớn. Bài này đi qua hành trình từ monolith, modular monolith đến microservices, với các dấu hiệu thực tế giúp bạn biết khi nào nên tách, khi nào nên giữ lại, và khi nào chỉ đang đổi sự đơn giản lấy thêm vận hành.",
       "date": "2026-05-29",
       "readingMinutes": 16,
       "tags": [
@@ -466,8 +466,8 @@
     {
       "slug": "micro-frontends-when-why-and-cost",
       "category": "architecture",
-      "title": "Micro-Frontends: Khi Nào Xứng Đáng, và Chi Phí Là Gì",
-      "summary": "Tách frontend thành các mảnh có thể deploy độc lập có thể giải phóng các team — hoặc chôn vùi bạn trong độ phức tạp. Viết từ kinh nghiệm ship một setup Angular-host + React-modules ở quy mô: khi nào micro-frontend đáng công, và hóa đơn chúng mang lại.",
+      "title": "Micro-Frontends: khi nào đáng tách, khi nào chỉ thêm rối",
+      "summary": "Micro-frontends có thể giúp nhiều team deploy độc lập hơn, nhưng cũng mang theo chi phí về routing, shared dependency, design system, performance và ownership. Bài này nhìn micro-frontends từ kinh nghiệm thực tế, để bạn biết khi nào nó giải phóng team, và khi nào nó chỉ biến frontend thành một distributed system khó chăm hơn.",
       "date": "2026-05-29",
       "readingMinutes": 15,
       "tags": [
@@ -485,8 +485,8 @@
     {
       "slug": "how-to-review-code-kindly",
       "category": "culture",
-      "title": "Nghệ thuật Review Code: Nhận xét mà không làm người ta chùn bước",
-      "summary": "Review code là nơi văn hoá nhóm được tạo ra hoặc tan vỡ. Hướng dẫn thực tế để review code sao cho sản phẩm tốt hơn VÀ tác giả trở lại mạnh mẽ hơn — cách diễn đạt cụ thể, checklist cho reviewer, và những thói quen âm thầm biến review thành độc tố.",
+      "title": "Code review tử tế: góp ý để code tốt hơn và người viết vẫn muốn tiến lên",
+      "summary": "Code review không chỉ là tìm lỗi. Đó là nơi team học cách nói chuyện về chất lượng, trade-off và tiêu chuẩn chung. Bài này đưa ra cách review rõ ràng mà không làm người viết chùn bước: góp ý cụ thể, phân biệt blocker với suggestion, hỏi trước khi kết luận, và giữ cho review trở thành nơi code lẫn con người cùng tốt lên.",
       "date": "2026-05-29",
       "readingMinutes": 14,
       "tags": [
@@ -505,8 +505,8 @@
     {
       "slug": "how-to-be-a-kind-engineer",
       "category": "culture",
-      "title": "Kind Engineering: Tại sao Tử tế giúp bạn trở thành Kỹ sư Tốt hơn",
-      "summary": "Tử tế không phải là dễ chịu, và không phải mềm yếu. Đó là bộ khuếch đại — phản hồi rõ ràng hơn, sự cố an toàn hơn, đồng đội phát triển nhanh hơn. 'Kind engineering' thực sự có nghĩa là gì, và cách thực hành trong review code, sự cố, và công việc hàng ngày.",
+      "title": "Kind Engineering: tử tế không làm team chậm hơn",
+      "summary": "Tử tế trong engineering không có nghĩa là né tránh vấn đề hay nói chuyện cho dễ nghe. Nó là cách nói thẳng mà vẫn tôn trọng, xử lý incident không đổ lỗi, review code để người khác học được, và tạo môi trường nơi mọi người dám nói thật sớm. Bài này giải thích vì sao sự tử tế đúng cách giúp team đi nhanh và bền hơn.",
       "date": "2026-05-29",
       "readingMinutes": 13,
       "tags": [
@@ -524,8 +524,8 @@
     {
       "slug": "how-to-write-a-great-pull-request",
       "category": "culture",
-      "title": "Cách viết Pull Request mà mọi người thực sự thích Review",
-      "summary": "Một pull request xuất sắc là món quà cho reviewer: nhỏ gọn, mô tả tốt, dễ nói có. Giải phẫu của một PR có thể review được — kích thước, tiêu đề, mô tả, vệ sinh commit, và self-review — kèm ví dụ trước/sau cụ thể.",
+      "title": "Viết Pull Request dễ review: giúp reviewer hiểu nhanh và góp ý đúng chỗ",
+      "summary": "Một pull request tốt giúp reviewer tiết kiệm năng lượng: phạm vi gọn, title rõ, mô tả có bối cảnh, screenshot hoặc test note đủ dùng, commit sạch và self-review trước khi gửi. Bài này chỉ cách biến PR từ một đống thay đổi khó đọc thành một câu chuyện dễ theo dõi để review nhanh hơn và ít hiểu lầm hơn.",
       "date": "2026-05-29",
       "readingMinutes": 13,
       "tags": [
@@ -543,8 +543,8 @@
     {
       "slug": "giving-and-receiving-feedback",
       "category": "culture",
-      "title": "Phản hồi Đánh Đúng Chỗ: Đưa ra và Tiếp nhận Phê bình như một Kỹ sư",
-      "summary": "Hầu hết kỹ sư chưa bao giờ được dạy cách đưa ra phản hồi — hay cách tiếp nhận nó. Cẩm nang thực địa cho phản hồi cụ thể, tử tế, hành động được, và cách giữ thái độ cởi mở khi là bên nhận, kèm các kịch bản sẵn sàng dùng.",
+      "title": "Feedback trong team kỹ thuật: thẳng, rõ và vẫn giữ được sự tôn trọng",
+      "summary": "Feedback tốt không phải là nói nhẹ cho qua, cũng không phải nói thẳng đến mức làm người khác phòng thủ. Bài này gợi ý cách đưa feedback cụ thể, có ngữ cảnh, hướng vào hành vi và bước tiếp theo; đồng thời chỉ cách nhận feedback mà không biến nó thành phán xét cá nhân. Một kỹ năng nhỏ nhưng ảnh hưởng lớn tới tốc độ trưởng thành của team.",
       "date": "2026-05-29",
       "readingMinutes": 13,
       "tags": [
@@ -562,8 +562,8 @@
     {
       "slug": "mentoring-engineers",
       "category": "culture",
-      "title": "Cố vấn Kỹ sư: Cách Phát triển Junior thành Senior",
-      "summary": "Các nhóm giỏi được nuôi dưỡng, không chỉ được tuyển dụng. Từ kinh nghiệm dẫn dắt nhóm kỹ thuật: cách cố vấn để mọi người lên level nhanh — pairing, review code như một kênh dạy học, stretch task phù hợp, và những thay đổi tư duy biến junior thành người bạn có thể tin giao bất cứ điều gì.",
+      "title": "Mentoring engineer: giúp junior lớn lên thành người đáng tin",
+      "summary": "Một junior không trở thành senior chỉ nhờ nhận task khó hơn. Họ cần context, feedback, cơ hội thử sức và một người biết khi nào nên hướng dẫn, khi nào nên lùi lại. Bài này chia sẻ cách mentoring qua pairing, code review, stretch task, câu hỏi tốt và những thói quen giúp engineer trẻ dần tự tin nhận việc lớn hơn.",
       "date": "2026-05-29",
       "readingMinutes": 14,
       "tags": [
@@ -581,8 +581,8 @@
     {
       "slug": "how-ai-changes-software-roles",
       "category": "ai",
-      "title": "AI Đang Định Hình Lại Mọi Vai Trò Phần Mềm: Tư Duy Của BA, PO, PM, Dev, QC… Thay Đổi Thế Nào",
-      "summary": "AI không chỉ là một công cụ chạy nhanh hơn gắn vào cách chúng ta làm phần mềm — nó đang âm thầm dịch chuyển trọng tâm của từng vai trò. Những công việc từng định nghĩa một BA, PO, PM, Dev hay QC đang bị tự động hóa từ dưới lên, và phần còn lại là một công việc khác hẳn, dựa trên tư duy phán đoán, gu thẩm mỹ và khả năng kiểm chứng. Đây là một góc nhìn tỉnh táo, đi qua từng vai trò: điều gì đang phai nhạt, điều gì đang trở nên quan trọng, và điều gì cần cảnh giác khi đội ngũ chuyển từ AI-assisted sang AI-first — để bạn thấy rõ điều gì có thể mất đi, điều gì được thêm vào, và làm sao để vẫn thực sự có giá trị trong một thời đại đã khác.",
+      "title": "AI đang đổi vai trò BA, PO, PM, Dev và QC như thế nào",
+      "summary": "AI không chỉ làm developer viết code nhanh hơn. Nó đang dịch chuyển phần việc của BA, PO, PM, Dev, QC và cả cách team phối hợp. Bài này đi qua từng vai trò: việc gì có thể được AI hỗ trợ hoặc tự động hóa, kỹ năng nào trở nên quan trọng hơn, và làm sao để mỗi người vẫn tạo ra giá trị thật trong một team đang chuyển sang AI-first.",
       "date": "2026-06-02",
       "readingMinutes": 21,
       "tags": [
@@ -599,8 +599,8 @@
     {
       "slug": "context-engineering",
       "category": "ai",
-      "title": "Context Engineering: Kỹ năng Phân biệt Người dùng AI Giỏi và Người Bình thường",
-      "summary": "Hầu hết kết quả AI đáng thất vọng không phải vì mô hình kém, mà vì bối cảnh quá mỏng. Hướng dẫn thực tế về context engineering — những gì sống trong cửa sổ mô hình, năm trụ cột của bối cảnh tốt, các anti-pattern phổ biến, và template tái sử dụng giúp tạo kết quả tốt hơn.",
+      "title": "Context Engineering: kỹ năng khiến AI hiểu việc của bạn tốt hơn",
+      "summary": "Nhiều kết quả AI kém không phải vì model quá dở, mà vì context quá mỏng. Bài này giải thích context engineering: cần đưa gì vào prompt, cách mô tả mục tiêu, dữ liệu, ràng buộc, ví dụ, tiêu chí đánh giá, và các anti-pattern làm AI trả lời lan man. Đây là kỹ năng nhỏ nhưng tạo khác biệt lớn khi làm việc với LLM.",
       "date": "2026-05-31",
       "readingMinutes": 15,
       "tags": [
@@ -615,8 +615,8 @@
     {
       "slug": "generative-ai-everyday-uses",
       "category": "ai",
-      "title": "AI tự sinh trong đời sống và công việc: Cẩm nang thực dụng những gì bạn dùng được ngay hôm nay",
-      "summary": "Generative AI đã lặng lẽ đi từ tin tức nóng thành công cụ thường ngày — nhưng phần lớn mọi người vẫn chỉ dùng nó để hỏi vài câu lặt vặt. Đây là một cẩm nang thực hành về những ứng dụng phổ biến và thật sự hữu ích nhất trong công việc, học tập, sáng tạo và đời sống, sắp xếp để bạn tìm ngay được ít nhất một việc có thể thử hôm nay. Không hô hào, không thuật ngữ rối rắm — chỉ là các trường hợp ứng dụng thực tế áp dụng được liền, cộng với một kỹ năng khiến tất cả chúng hiệu quả và những giới hạn bạn không bao giờ nên bỏ qua.",
+      "title": "Generative AI trong công việc và đời sống: những cách dùng thực tế có thể thử ngay",
+      "summary": "Generative AI không chỉ để hỏi vài câu lặt vặt. Nếu dùng đúng, nó có thể giúp viết nháp, tóm tắt, học nhanh, chuẩn bị cuộc họp, lên ý tưởng, kiểm tra logic và xử lý nhiều việc nhỏ trong ngày. Bài này gom các use case dễ thử, kèm giới hạn cần nhớ để AI trở thành trợ lý đáng tin hơn thay vì một nguồn tự tin sai.",
       "date": "2026-06-02",
       "readingMinutes": 16,
       "tags": [
@@ -631,8 +631,8 @@
     {
       "slug": "pre-mortem-thinking",
       "category": "ways-of-working",
-      "title": "Pre-mortem là gì? Nhìn trước thất bại để làm việc, lập trình và thăng tiến tốt hơn",
-      "summary": "Pre-mortem là thói quen tưởng tượng một kế hoạch đã thất bại trước khi bắt đầu, rồi lần ngược lại để tìm nguyên nhân. Bài viết giải thích khái niệm này và cách áp dụng vào code, hệ thống lớn, promotion, phỏng vấn vị trí mới và các mục tiêu cá nhân mà không biến sự chuẩn bị thành bi quan.",
+      "title": "Pre-mortem: nghĩ trước điều có thể hỏng để chuẩn bị tốt hơn",
+      "summary": "Pre-mortem là một cách chuẩn bị rất thực tế: tưởng tượng kế hoạch đã thất bại, rồi lần ngược lại xem điều gì có thể đã làm nó hỏng. Bài này chỉ cách dùng pre-mortem trong code, system design, release, promotion, phỏng vấn và mục tiêu cá nhân, để mình nhìn rủi ro sớm hơn mà không biến sự cẩn thận thành bi quan.",
       "date": "2026-06-13",
       "readingMinutes": 12,
       "tags": [
@@ -649,8 +649,8 @@
     {
       "slug": "quiet-accumulation-on-the-trail",
       "category": "perspectives",
-      "title": "Hoàng Ngưu Sơn: lên đỉnh, xuống núi, rồi đi tiếp",
-      "summary": "Một ngày trekking Hoàng Ngưu Sơn 972 m cùng hơn 150 đồng đội Zalo: từ vài phút tự hỏi mình có theo nổi không, qua những con dốc nắng, những trạm nghỉ, tới khoảnh khắc chạm đỉnh. Mình mang cảm giác ấy về công việc như một lời nhắc vui và thật: khó thì chỉnh nhịp rồi bước tiếp, muốn lên nấc mới phải biết xuống núi cũ, gạn bớt điều chưa tốt và chuẩn bị tử tế cho thử thách tiếp theo.",
+      "title": "Hoàng Ngưu Sơn: lên đỉnh, xuống núi và mang năng lượng về công việc",
+      "summary": "Một ngày trekking Hoàng Ngưu Sơn 972 m cùng hơn 150 đồng đội Zalo: bắt đầu bằng chút nghi ngờ, đi qua nắng, dốc, trạm nghỉ và cuối cùng là cảm giác rất sáng khi chạm đỉnh. Bài viết kể lại cách mình mang trải nghiệm đó về công việc: gặp khó thì giữ nhịp, muốn lên nấc mới thì phải biết xuống núi cũ, nhìn lại điều chưa tốt và chuẩn bị tử tế cho thử thách tiếp theo.",
       "date": "2026-06-12",
       "readingMinutes": 10,
       "tags": [

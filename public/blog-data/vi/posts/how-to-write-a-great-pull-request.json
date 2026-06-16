@@ -1,8 +1,8 @@
 {
   "slug": "how-to-write-a-great-pull-request",
   "category": "culture",
-  "title": "Cách viết Pull Request mà mọi người thực sự thích Review",
-  "summary": "Một pull request xuất sắc là món quà cho reviewer: nhỏ gọn, mô tả tốt, dễ nói có. Giải phẫu của một PR có thể review được — kích thước, tiêu đề, mô tả, vệ sinh commit, và self-review — kèm ví dụ trước/sau cụ thể.",
+  "title": "Viết Pull Request dễ review: giúp reviewer hiểu nhanh và góp ý đúng chỗ",
+  "summary": "Một pull request tốt giúp reviewer tiết kiệm năng lượng: phạm vi gọn, title rõ, mô tả có bối cảnh, screenshot hoặc test note đủ dùng, commit sạch và self-review trước khi gửi. Bài này chỉ cách biến PR từ một đống thay đổi khó đọc thành một câu chuyện dễ theo dõi để review nhanh hơn và ít hiểu lầm hơn.",
   "tags": [
     "Văn hoá kỹ thuật",
     "Pull Requests",

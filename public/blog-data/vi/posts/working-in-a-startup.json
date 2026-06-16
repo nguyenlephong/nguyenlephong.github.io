@@ -1,8 +1,8 @@
 {
   "slug": "working-in-a-startup",
   "category": "ways-of-working",
-  "title": "Làm việc trong Startup: Tốc độ, sự mơ hồ, và đội nhiều mũ",
-  "summary": "Lời hứa của startup — quyền sở hữu thật, ship hôm nay, mai thấy nó tạo khác biệt — phần lớn là thật, nhưng trang tuyển dụng bỏ quên sự mơ hồ, những cú giật ngược và sự bất ổn đến từ cùng một gốc rễ: startup là công ty vẫn đang đi tìm mô hình kinh doanh của mình. Bài đào sâu này là hướng dẫn trung thực về cuộc đánh đổi, cho cả startup nhỏ và vừa: vì sao tốc độ học thắng sự chỉn chu, sở hữu rộng-và-nông thực sự ra sao, cách coi mơ hồ là chính công việc, vay nợ kỹ thuật một cách có ý thức, giao tiếp trước khi kiến thức-trong-đầu cắn bạn, cuộc chuyển nhỏ-sang-vừa gây mất phương hướng khi quy trình quay lại, các failure mode (burnout, văn hóa anh hùng, giật ngược), và cách bứt lên và phát triển.",
+  "title": "Làm việc trong Startup: tốc độ, mơ hồ và cách giữ nhịp khi team còn nhỏ",
+  "summary": "Startup hấp dẫn vì ownership thật, tốc độ nhanh và cảm giác việc mình làm có tác động ngay. Nhưng cùng lúc đó là sự mơ hồ, đổi hướng, thiếu người, technical debt và áp lực sống còn. Bài này giúp bạn đọc đúng môi trường startup: khi nào nên ưu tiên tốc độ học, cách giao tiếp khi mọi thứ chưa rõ, cách vay nợ kỹ thuật có ý thức, và làm sao phát triển mà không tự đốt mình.",
   "date": "2026-06-02",
   "readingMinutes": 18,
   "tags": [

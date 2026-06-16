@@ -1,8 +1,8 @@
 {
   "slug": "how-to-review-code-kindly",
   "category": "culture",
-  "title": "Nghệ thuật Review Code: Nhận xét mà không làm người ta chùn bước",
-  "summary": "Review code là nơi văn hoá nhóm được tạo ra hoặc tan vỡ. Hướng dẫn thực tế để review code sao cho sản phẩm tốt hơn VÀ tác giả trở lại mạnh mẽ hơn — cách diễn đạt cụ thể, checklist cho reviewer, và những thói quen âm thầm biến review thành độc tố.",
+  "title": "Code review tử tế: góp ý để code tốt hơn và người viết vẫn muốn tiến lên",
+  "summary": "Code review không chỉ là tìm lỗi. Đó là nơi team học cách nói chuyện về chất lượng, trade-off và tiêu chuẩn chung. Bài này đưa ra cách review rõ ràng mà không làm người viết chùn bước: góp ý cụ thể, phân biệt blocker với suggestion, hỏi trước khi kết luận, và giữ cho review trở thành nơi code lẫn con người cùng tốt lên.",
   "tags": [
     "Văn hoá kỹ thuật",
     "Code Review",

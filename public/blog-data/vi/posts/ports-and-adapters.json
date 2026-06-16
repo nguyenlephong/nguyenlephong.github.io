@@ -1,8 +1,8 @@
 {
   "slug": "ports-and-adapters",
   "category": "architecture",
-  "title": "Ports & Adapters (Kiến trúc Lục giác), Giải thích Đơn giản",
-  "summary": "Một hướng dẫn thân thiện, đầy ví dụ về Kiến trúc Lục giác: port và adapter thực sự là gì, quy tắc duy nhất khiến nó vận hành, và áp dụng bao nhiêu là vừa — dù bạn là founder solo hay một team enterprise.",
+  "title": "Ports & Adapters: Hexagonal Architecture giải thích bằng ví dụ dễ hiểu",
+  "summary": "Ports & Adapters nghe có vẻ học thuật, nhưng ý tưởng cốt lõi rất thực tế: business logic nên đứng vững dù database, UI hay API bên ngoài thay đổi. Bài này giải thích port, adapter và dependency direction bằng ví dụ gần gũi, để bạn biết áp dụng vừa đủ cho dự án nhỏ lẫn codebase lớn.",
   "tags": [
     "Kiến trúc phần mềm",
     "Hexagonal Architecture",

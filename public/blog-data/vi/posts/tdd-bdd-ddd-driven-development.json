@@ -1,8 +1,8 @@
 {
   "slug": "tdd-bdd-ddd-driven-development",
   "category": "ways-of-working",
-  "title": "TDD, BDD, DDD và cả họ \"-Driven Development\", Giải thích Cho Engineer",
-  "summary": "TDD, BDD, DDD, ATDD, EDD, CDD, FDD — mớ chữ cái \"-Driven Development\" làm bối rối cả engineer nhiều kinh nghiệm, một phần vì chúng không phải đối thủ của nhau: chúng trả lời những câu hỏi khác nhau và kết hợp được với nhau. Đây là hướng dẫn thực tế, nhiều ví dụ cho lập trình viên: mỗi cái thực sự nghĩa là gì, vòng lặp/khái niệm cốt lõi, ví dụ code và Gherkin cụ thể, khi nào nên dùng, các cạm bẫy — và một bản đồ rõ ràng cho thấy chúng ghép với nhau ra sao trên cùng một tính năng thật.",
+  "title": "TDD, BDD, DDD và họ “Driven Development”: hiểu đúng để dùng đúng",
+  "summary": "TDD, BDD, DDD, ATDD, EDD, CDD, FDD nghe như một rừng chữ viết tắt, nhưng chúng không phải đối thủ của nhau. Mỗi cách trả lời một câu hỏi khác nhau: kiểm thử trước, hành vi mong muốn, domain model, event, component hay feature. Bài này giúp engineer đặt chúng lên cùng một bản đồ, hiểu khi nào dùng gì và tránh biến “driven development” thành khẩu hiệu.",
   "date": "2026-06-02",
   "readingMinutes": 22,
   "tags": [

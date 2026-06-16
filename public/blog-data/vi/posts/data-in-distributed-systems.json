@@ -1,8 +1,8 @@
 {
   "slug": "data-in-distributed-systems",
   "category": "architecture",
-  "title": "Ai Sở hữu Dữ liệu? Database-per-Service, Saga và Eventual Consistency Không Nước mắt",
-  "summary": "Tách code mới là nửa dễ — tách dữ liệu mới là nơi distributed systems khiến bạn khiêm tốn. Hướng dẫn thực tế về sở hữu dữ liệu xuyên service: vì sao database dùng chung là một distributed monolith, cú đánh đổi từ ACID sang eventual consistency, bug dual-write và outbox sửa nó, saga với compensating action, và khi nào CQRS cùng event sourcing đáng với chi phí cả đời của chúng.",
+  "title": "Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems",
+  "summary": "Tách code thường dễ hơn tách dữ liệu. Khi mỗi service cần sở hữu dữ liệu riêng, team phải đối mặt với shared database, eventual consistency, dual-write bug, outbox, saga, CQRS và event sourcing. Bài này đi qua những lựa chọn đó bằng ví dụ thực tế, để bạn hiểu trade-off trước khi hệ thống phân tán bắt đầu làm mọi thứ khó hơn.",
   "date": "2026-06-03",
   "readingMinutes": 14,
   "tags": [

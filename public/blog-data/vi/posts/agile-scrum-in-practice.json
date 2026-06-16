@@ -1,8 +1,8 @@
 {
   "slug": "agile-scrum-in-practice",
   "category": "ways-of-working",
-  "title": "Agile & Scrum trong thực tế: Công ty đang biến tấu thế nào, và chuẩn thật sự ra sao",
-  "summary": "Gần như đội phần mềm nào cũng nói mình \"làm Scrum\" — và gần như mỗi đội làm một kiểu. Đây là cẩm nang thực tế, rõ ràng cho mọi vai trò trong team: epic, story, task, sub-task thực chất là gì; status workflow vận hành ra sao; story point nghĩa là gì (và những sai lầm phá hỏng nó); estimate và log work thế nào cho trung thực; đọc biểu đồ burndown, velocity ra sao; và cách chạy planning, daily, review, retro sao cho hữu ích thay vì tốn thời gian. Chuẩn gốc, các biến tấu phổ biến, và cách vận hành tốt — đủ để bất kỳ ai đọc vào cũng hiểu và làm được ngay.",
+  "title": "Agile & Scrum trong thực tế: hiểu board, estimate và các buổi họp cho đỡ mơ hồ",
+  "summary": "Rất nhiều team nói mình làm Scrum, nhưng mỗi nơi lại hiểu story, point, Done, daily hay retro theo một kiểu. Bài này giúp mọi vai trò trong team có cùng ngôn ngữ: epic, story, task, status workflow, story point, estimate, log work, burndown, velocity và cách chạy planning, daily, review, retro sao cho chúng thật sự giúp team ship tốt hơn thay vì chỉ thêm họp.",
   "date": "2026-06-02",
   "readingMinutes": 20,
   "tags": [

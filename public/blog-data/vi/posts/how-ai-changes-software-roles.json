@@ -1,8 +1,8 @@
 {
   "slug": "how-ai-changes-software-roles",
   "category": "ai",
-  "title": "AI Đang Định Hình Lại Mọi Vai Trò Phần Mềm: Tư Duy Của BA, PO, PM, Dev, QC… Thay Đổi Thế Nào",
-  "summary": "AI không chỉ là một công cụ chạy nhanh hơn gắn vào cách chúng ta làm phần mềm — nó đang âm thầm dịch chuyển trọng tâm của từng vai trò. Những công việc từng định nghĩa một BA, PO, PM, Dev hay QC đang bị tự động hóa từ dưới lên, và phần còn lại là một công việc khác hẳn, dựa trên tư duy phán đoán, gu thẩm mỹ và khả năng kiểm chứng. Đây là một góc nhìn tỉnh táo, đi qua từng vai trò: điều gì đang phai nhạt, điều gì đang trở nên quan trọng, và điều gì cần cảnh giác khi đội ngũ chuyển từ AI-assisted sang AI-first — để bạn thấy rõ điều gì có thể mất đi, điều gì được thêm vào, và làm sao để vẫn thực sự có giá trị trong một thời đại đã khác.",
+  "title": "AI đang đổi vai trò BA, PO, PM, Dev và QC như thế nào",
+  "summary": "AI không chỉ làm developer viết code nhanh hơn. Nó đang dịch chuyển phần việc của BA, PO, PM, Dev, QC và cả cách team phối hợp. Bài này đi qua từng vai trò: việc gì có thể được AI hỗ trợ hoặc tự động hóa, kỹ năng nào trở nên quan trọng hơn, và làm sao để mỗi người vẫn tạo ra giá trị thật trong một team đang chuyển sang AI-first.",
   "date": "2026-06-02",
   "readingMinutes": 21,
   "tags": [

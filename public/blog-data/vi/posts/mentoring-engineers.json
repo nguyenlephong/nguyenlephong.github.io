@@ -1,8 +1,8 @@
 {
   "slug": "mentoring-engineers",
   "category": "culture",
-  "title": "Cố vấn Kỹ sư: Cách Phát triển Junior thành Senior",
-  "summary": "Các nhóm giỏi được nuôi dưỡng, không chỉ được tuyển dụng. Từ kinh nghiệm dẫn dắt nhóm kỹ thuật: cách cố vấn để mọi người lên level nhanh — pairing, review code như một kênh dạy học, stretch task phù hợp, và những thay đổi tư duy biến junior thành người bạn có thể tin giao bất cứ điều gì.",
+  "title": "Mentoring engineer: giúp junior lớn lên thành người đáng tin",
+  "summary": "Một junior không trở thành senior chỉ nhờ nhận task khó hơn. Họ cần context, feedback, cơ hội thử sức và một người biết khi nào nên hướng dẫn, khi nào nên lùi lại. Bài này chia sẻ cách mentoring qua pairing, code review, stretch task, câu hỏi tốt và những thói quen giúp engineer trẻ dần tự tin nhận việc lớn hơn.",
   "tags": [
     "Văn hoá kỹ thuật",
     "Cố vấn",

@@ -1,8 +1,8 @@
 {
   "slug": "how-to-be-a-kind-engineer",
   "category": "culture",
-  "title": "Kind Engineering: Tại sao Tử tế giúp bạn trở thành Kỹ sư Tốt hơn",
-  "summary": "Tử tế không phải là dễ chịu, và không phải mềm yếu. Đó là bộ khuếch đại — phản hồi rõ ràng hơn, sự cố an toàn hơn, đồng đội phát triển nhanh hơn. 'Kind engineering' thực sự có nghĩa là gì, và cách thực hành trong review code, xử lý sự cố, và công việc hàng ngày.",
+  "title": "Kind Engineering: tử tế không làm team chậm hơn",
+  "summary": "Tử tế trong engineering không có nghĩa là né tránh vấn đề hay nói chuyện cho dễ nghe. Nó là cách nói thẳng mà vẫn tôn trọng, xử lý incident không đổ lỗi, review code để người khác học được, và tạo môi trường nơi mọi người dám nói thật sớm. Bài này giải thích vì sao sự tử tế đúng cách giúp team đi nhanh và bền hơn.",
   "tags": [
     "Văn hoá kỹ thuật",
     "Kind Engineering",

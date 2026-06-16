@@ -1,8 +1,8 @@
 {
   "slug": "monolith-to-microservices",
   "category": "architecture",
-  "title": "Monolith, Modular Monolith, Microservices: Hướng dẫn Quyết định Thành thật",
-  "summary": "Microservices là cái giá bạn trả cho quy mô tổ chức — không phải điểm khởi đầu. Hành trình không màu mè từ monolith đến modular monolith đến microservices, với các tín hiệu cho bạn biết khi nào (và liệu có nên) tách ra.",
+  "title": "Monolith, Modular Monolith hay Microservices: chọn theo giai đoạn, không theo trend",
+  "summary": "Microservices không phải điểm xuất phát bắt buộc, mà thường là cái giá phải trả khi team và hệ thống đã đủ lớn. Bài này đi qua hành trình từ monolith, modular monolith đến microservices, với các dấu hiệu thực tế giúp bạn biết khi nào nên tách, khi nào nên giữ lại, và khi nào chỉ đang đổi sự đơn giản lấy thêm vận hành.",
   "tags": [
     "Kiến trúc phần mềm",
     "Microservices",

@@ -369,9 +369,9 @@
       },
       "eyebrow": "Bài viết",
       "title": "Blog",
-      "intro": "Những bài phân tích sâu về kiến trúc phần mềm và cách tổ chức mã nguồn — viết sao cho người mới đọc cũng hiểu, mà đội ngũ đang vận hành ở quy mô lớn vẫn thấy hữu ích. Có sơ đồ, ví dụ thực tế, không nói chung chung.",
-      "categoriesHeading": "Duyệt theo chủ đề",
-      "latestHeading": "Bài viết mới nhất",
+      "intro": "Một góc đọc dễ vào về software architecture, source code, AI và cách team phần mềm làm việc. Mỗi bài đi từ tình huống thật, giải thích bằng ngôn ngữ gần gũi, giữ lại những thuật ngữ quan trọng để người mới không bị ngợp và người đi làm lâu vẫn tìm được một góc nhìn có thể áp dụng ngay.",
+      "categoriesHeading": "Chọn mạch đọc bạn quan tâm",
+      "latestHeading": "Bài mới để đọc tiếp",
       "empty": "Chưa có bài viết nào — bài đầu tiên sắp ra mắt.",
       "backToBlog": "Về trang Blog",
       "backToCategory": "Về {category}",
@@ -385,10 +385,10 @@
       "relatedHeading": "Bài liên quan",
       "relatedIntro": "Một vài bài gần chủ đề này để bạn đọc tiếp mạch suy nghĩ với nhiều ngữ cảnh hơn.",
       "seriesNames": {
-        "foundations": "Nền tảng Kiến trúc Phần mềm",
-        "ways-of-working": "Cách đội ngũ làm việc",
-        "ai-in-practice": "AI trong công việc hằng ngày",
-        "kind-engineering": "Kỹ thuật Tử tế & Hiệu quả"
+        "foundations": "Software Architecture Foundations",
+        "ways-of-working": "Ways of Working",
+        "ai-in-practice": "AI in Practice",
+        "kind-engineering": "Kind Engineering"
       },
       "faqHeading": "Câu hỏi thường gặp",
       "engagement": {

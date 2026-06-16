@@ -1,8 +1,8 @@
 {
   "slug": "clean-vs-onion-vs-hexagonal",
   "category": "architecture",
-  "title": "Clean, Onion & Hexagonal Architecture: Một Ngôi Sao Phương Bắc, Ba Cái Tên",
-  "summary": "Nhìn bề ngoài có vẻ là ba kiến trúc đối lập nhau. Thực ra chúng là cùng một ý tưởng — phụ thuộc hướng vào trong, framework ở rìa — được vẽ theo ba cách. Đây là điều mỗi cái thực sự thêm vào, và khi nào nên chọn cái nào.",
+  "title": "Clean, Onion và Hexagonal Architecture: ba tên gọi cho cùng một hướng nghĩ",
+  "summary": "Clean Architecture, Onion Architecture và Hexagonal Architecture thường bị xem như ba trường phái khác nhau. Thực ra chúng cùng nhắc về một điều: domain và business rule nên nằm ở trung tâm, framework và chi tiết kỹ thuật ở ngoài rìa. Bài này so sánh nhẹ nhàng để bạn chọn cách gọi và cách vẽ phù hợp với team.",
   "tags": [
     "Kiến trúc phần mềm",
     "Clean Architecture",

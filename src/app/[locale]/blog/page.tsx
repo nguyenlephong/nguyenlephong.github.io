@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "Pages.blog" });
 
   const title = `${t("title")} — ${t("eyebrow")}`;
-  const description = seo.description;
+  const description = t("intro");
   const canonical = canonicalFor(locale, "/blog");
   const languages = localeAlternates("/blog");
 

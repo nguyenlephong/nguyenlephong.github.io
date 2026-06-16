@@ -1,8 +1,8 @@
 {
   "slug": "ai-agents-explained",
   "category": "ai",
-  "title": "AI Agent, Giải Thích Không Hype: Nó Là Gì, Hoạt Động Ra Sao, Và Làm Được Gì Cho Bạn",
-  "summary": "Đột nhiên ai cũng nói về “AI agent” — phần mềm không chỉ trả lời câu hỏi mà còn tự đi làm việc giúp bạn. Nhưng agent thực ra là gì, khác chatbot bạn đang dùng ở điểm nào, và nó thật sự hữu ích ở đâu so với việc âm thầm gây rối? Đây là một bài viết thân thiện, ít thuật ngữ, dành cho tất cả mọi người dù rành công nghệ hay không: vòng lặp đơn giản mà mọi agent đều chạy, năm thành phần tạo nên một agent, các mức độ tự chủ từ co-pilot đến auto-pilot, ví dụ gần gũi nơi văn phòng lẫn trong nhà, những kiểu lỗi cần đề phòng, và cách cụ thể để đưa agent hữu ích đầu tiên vào việc ngay trong tuần này.",
+  "title": "AI Agent là gì: cách nó hoạt động và khi nào thật sự hữu ích",
+  "summary": "AI agent không chỉ trả lời câu hỏi; nó có thể nhận mục tiêu, chia việc, dùng tool và quay lại kiểm tra kết quả. Bài này giải thích agent bằng ngôn ngữ ít thuật ngữ: vòng lặp cơ bản, các thành phần chính, mức độ tự chủ, ví dụ trong công việc hằng ngày, và những rủi ro cần biết trước khi để agent làm thay mình.",
   "date": "2026-06-02",
   "readingMinutes": 17,
   "tags": [

@@ -1,8 +1,8 @@
 {
   "slug": "structuring-code-feature-vs-layer",
   "category": "architecture",
-  "title": "Cấu trúc Codebase: Theo Lớp, Theo Tính năng, hay Theo Domain?",
-  "summary": "Thư mục cấp cao nhất nên là controllers/services/models, hay orders/billing/auth? Lựa chọn này âm thầm định hình cách codebase lớn lên. Một chuyến tham quan thực tế qua cấu trúc theo lớp, theo tính năng, và screaming architecture — với những đánh đổi ở mỗi quy mô công ty.",
+  "title": "Tổ chức codebase: theo layer, feature hay domain?",
+  "summary": "Một codebase bắt đầu lớn lên từ những lựa chọn rất nhỏ: thư mục trên cùng nên là controllers/services/models, hay orders/billing/auth? Bài này so sánh cách tổ chức theo layer, theo feature và theo domain, chỉ ra mỗi kiểu hợp với giai đoạn nào, và vì sao cấu trúc thư mục thật ra đang kể cách team suy nghĩ về sản phẩm.",
   "tags": [
     "Kiến trúc phần mềm",
     "Cấu trúc dự án",

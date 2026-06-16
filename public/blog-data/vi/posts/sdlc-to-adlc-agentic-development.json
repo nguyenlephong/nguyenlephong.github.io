@@ -1,8 +1,8 @@
 {
   "slug": "sdlc-to-adlc-agentic-development",
   "category": "ai",
-  "title": "Từ SDLC Đến ADLC: Cách AI Agent Đang Viết Lại Vòng Đời Phát Triển Phần Mềm",
-  "summary": "Phát triển phần mềm đang trải qua bước ngoặt lớn nhất kể từ giao diện đồ họa. Những giai đoạn mà kỹ sư từng làm thủ công — lập kế hoạch, code, kiểm thử, triển khai — ngày càng được các AI agent thực thi song song. Đây là một hướng dẫn rõ ràng, trực quan về bước chuyển từ SDLC kinh điển sang ADLC đang lên (Agentic Development Life Cycle): hai vòng đời vẽ cạnh nhau, sáu chuyển dịch cụ thể đang diễn ra ngay lúc này, những con số ban đầu gợi ý điều gì, nó thật sự nghĩa là gì với công việc hằng ngày của một kỹ sư, và năm best practice ít rủi ro để bắt đầu đi nhanh hơn — mà không trao đi phần phán đoán vẫn phải là của bạn.",
+  "title": "Từ SDLC đến ADLC: AI Agent đang thay đổi cách làm phần mềm ra sao",
+  "summary": "Khi AI agent bắt đầu tham gia planning, coding, testing và deployment, vòng đời phát triển phần mềm cũng đổi nhịp. Bài này so sánh SDLC truyền thống với ADLC, giải thích những phần việc đang được tự động hóa, những phần vẫn cần phán đoán của engineer, và cách bắt đầu dùng agent an toàn mà không giao hết tay lái.",
   "date": "2026-06-03",
   "readingMinutes": 15,
   "tags": [
