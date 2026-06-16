@@ -68,8 +68,7 @@ export default function AppFooter() {
               <FaYoutube size={18} />
             </Link>
           </li>
-          {/* /thoughts is intentionally unlisted — its content now lives in
-              /notes (Thought Garden topic); the route stays reachable by URL. */}
+          {/* Thoughts content now lives under /notes (Thought Garden topic). */}
           <li>
             <Link
               href="/notes"

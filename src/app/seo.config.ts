@@ -18,7 +18,7 @@ export interface PageSEO {
 }
 
 export const PAGE_SEO: Record<
-  'home' | 'about' | 'cv' | 'gallery' | 'apps' | 'homeAlt' | 'thoughts' | 'blog',
+  'home' | 'about' | 'cv' | 'gallery' | 'apps' | 'homeAlt' | 'blog',
   PageSEO
 > = {
   home: {
@@ -106,30 +106,6 @@ export const PAGE_SEO: Record<
       'developer tools',
     ],
     ogAlt: 'Apps Showroom — tiny, crafted open-source tools',
-  },
-  thoughts: {
-    title: 'Thoughts — Digital Garden by Nguyen Le Phong',
-    description:
-      'A personal digital garden by Nguyen Le Phong — a living knowledge graph of evergreen notes on software craft, decision-making, reading, and learning. Available in English and Vietnamese.',
-    path: '/thoughts',
-    keywords: [
-      'digital garden',
-      'knowledge graph',
-      'evergreen notes',
-      'second brain',
-      'personal knowledge management',
-      'PKM',
-      'Zettelkasten',
-      'software craft notes',
-      'learning in public',
-      'decision making notes',
-      'reading notes',
-      'software engineering essays',
-      'note-taking system',
-      'Nguyen Le Phong thoughts',
-      'tech notes Vietnamese engineer',
-    ],
-    ogAlt: 'Thoughts — personal digital garden by Nguyen Le Phong',
   },
   blog: {
     title: 'Blog — Software Architecture & Engineering, Explained Simply',

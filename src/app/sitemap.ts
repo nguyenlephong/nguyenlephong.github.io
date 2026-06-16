@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/app/seo.config";
 import { routing } from "@/i18n/routing";
-import { listThoughtSlugs } from "@/lib/thoughts/data";
 import { listCategorySlugs, listCategoryPostPairs } from "@/lib/blog/data";
 import { listNotes } from "@/lib/notes/data";
 
@@ -18,7 +17,6 @@ const PATHS: Array<{
   { path: "/about", priority: 0.8, freq: "monthly" },
   { path: "/cv", priority: 0.8, freq: "monthly" },
   { path: "/gallery", priority: 0.7, freq: "monthly" },
-  { path: "/thoughts", priority: 0.85, freq: "weekly" },
   { path: "/notes", priority: 0.85, freq: "weekly" }
 ];
 
@@ -49,11 +47,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   };
 
   for (const { path, priority, freq } of PATHS) pushPath(path, priority, freq);
-
-  // Per-thought entries: one per (locale, slug) with hreflang cluster
-  for (const slug of listThoughtSlugs()) {
-    pushPath(`/thoughts/${slug}`, 0.7, "monthly");
-  }
 
   // Blog category landings + per-post entries (each with hreflang cluster)
   for (const category of listCategorySlugs()) {
