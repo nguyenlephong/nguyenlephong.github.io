@@ -1,7 +1,7 @@
 {
   "slug": "programmable-self",
-  "title": "Bản thân có thể lập trình",
-  "summary": "Nếu coi tâm trí như một hệ điều hành, các thành phần khớp nhau gọn đến bất ngờ: calendar là bộ lập lịch tiến trình, danh sách todo là hàng đợi, và các mental model là framework chạy trên kernel. Chiêm nghiệm là nguồn của tính mềm dẻo — còn độ tin cậy, tức kỷ luật thuần túy, quyết định liệu tất cả có hơn một bản vẽ hay không.",
+  "title": "Mình có thể thiết kế lại cách mình vận hành",
+  "summary": "Nếu xem tâm trí như một hệ điều hành nhỏ, calendar, todo và mental model không còn là công cụ rời rạc mà là cách mình lập lịch, xếp hàng đợi và chạy các framework sống. Ghi chú này nói về phần có thể “lập trình” trong chính mình: thiết kế hệ thống tốt hơn, reflection đều hơn và kỷ luật đủ tin cậy để bản vẽ thành đời sống.",
   "tags": [
     "Thoughts",
     "Hệ thống",
@@ -9,5 +9,5 @@
     "Mental Models"
   ],
   "html": "<h2 id=\"tam-the\">Tâm thế</h2>\n<p>Cứ làm đi, cảm nhận nó, và cho phép mình được nhẹ nhõm khỏi việc liên tục nghi ngờ chính hệ thống của mình. Mục đích không phải chứng minh cỗ máy chạy tốt ngay ngày đầu; mà là chạy nó đủ lâu để niềm tin thôi còn là một câu hỏi. Kết quả hữu hình cần thời gian và kiên nhẫn — sự cộng dồn là thật, nhưng nó chậm, và nó tưởng thưởng những người thôi ngó bảng tỷ số mỗi giờ.</p>\n<h2 id=\"thanh-phan\">Các thành phần</h2>\n<p>Nếu coi tâm trí như một hệ điều hành, vài thành phần của &ldquo;MindOS&rdquo; khớp nhau gọn đến bất ngờ:</p>\n<ul>\n<li><strong>Calendar</strong> là <strong>bộ lập lịch tiến trình</strong> — nó quyết cái gì chạy, và khi nào.</li>\n<li><strong>Danh sách todo</strong> là các <strong>hàng đợi</strong> — mọi thứ đang bị chặn, đang treo, đang đợi tới lượt.</li>\n<li>Tầng tinh thần — <strong>identities</strong>, <strong>principles</strong>, <strong>mental models</strong>, <strong>các chế độ vận hành</strong> — là phần code framework bạn viết bên trên kernel.</li>\n</ul>\n<h2 id=\"tien-trinh\">Các kiểu tiến trình</h2>\n<ul>\n<li><strong>Chương trình</strong> nên có tính chen ngắt, kèm hẹn giờ — để không một việc nào chiếm trọn cả ngày mà không bị cắt và xếp lại lịch.</li>\n<li><strong>Chiêm nghiệm</strong> là meta-program ở đầu và cuối mỗi chu kỳ. Nó là nguồn của tính mềm dẻo trong MindOS — cơ chế để hệ thống tự viết lại luật của chính nó thay vì chạy mãi một vòng lặp lỗi.</li>\n</ul>\n<h2 id=\"pham-chat\">Phẩm chất quyết định tất cả</h2>\n<p><strong>Độ tin cậy</strong>: các chỉ dẫn được tuân thủ trung thành tới đâu. Nói cách khác, kỷ luật — phẩm chất trầm lặng quyết định liệu mọi thứ phía trên có hơn một bản vẽ hay không. <em>(Dựng trên một ẩn dụ hệ điều hành tôi cứ quay lại trong <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">khu vườn suy nghĩ của một người bạn</a>.)</em></p>\n<hr>\n<ul>\n<li><a href=\"/notes/life-running-digital-engine\">Cuộc sống vận hành như cỗ máy số</a></li>\n</ul>",
-  "cardSummary": "Calendar, todo và mental model có thể vận hành như một hệ điều hành nhỏ cho đời sống."
+  "cardSummary": "Calendar, todo và mental model có thể trở thành một hệ vận hành nhỏ cho đời sống."
 }

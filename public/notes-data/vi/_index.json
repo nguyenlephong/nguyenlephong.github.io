@@ -608,9 +608,9 @@
     },
     {
       "slug": "anchoring-on-tool-capability-limits-the-mind",
-      "title": "Bị neo vào khả năng công cụ làm hạn chế tư duy",
-      "summary": "Một ứng dụng nhanh hơn hay một framework sắc hơn không nâng được cái trần thật, vì nút thắt chưa bao giờ nằm ở công cụ — nó nằm ở tâm trí đang cầm công cụ ấy. Một ghi chú ngắn về việc cầm công cụ thật lỏng tay: coi mỗi lần dùng là một thử nghiệm, và rời đi ngay khi công cụ thôi phục vụ phần tư duy bên dưới.",
-      "cardSummary": "Công cụ hữu ích nhất vẫn chỉ nên là tay vịn, không phải giới hạn của cách mình nghĩ.",
+      "title": "Đừng để công cụ giới hạn cách mình nghĩ",
+      "summary": "Một app nhanh hơn hay một framework sắc hơn chỉ giúp được khi nó phục vụ đúng phần tư duy bên dưới. Ghi chú này nhắc mình cầm công cụ lỏng tay hơn: dùng như một thử nghiệm, bóc về first principles khi cần, và rời đi khi công cụ bắt đầu biến thành cái trần của cách mình nghĩ.",
+      "cardSummary": "Công cụ tốt nên mở rộng cách mình nghĩ, không nên trở thành cái trần mới.",
       "tags": [
         "Thoughts",
         "Công cụ",
@@ -620,9 +620,9 @@
     },
     {
       "slug": "be-mindful-of-what-you-put-into-your-bucket",
-      "title": "Cẩn thận với những gì bạn cho vào 'xô' của mình",
-      "summary": "Hãy hình dung một ngày của bạn như một chiếc xô mang theo từ sáng tới tối, múc vào đó ý tưởng, cuộc trò chuyện, mẩu tin — thứ nước dành tưới cho cái cây bạn đang cố nuôi lớn. Không phải nước nào cũng sạch, và chiếc xô có dung tích cố định. Một hình ảnh nhỏ về việc chăm chút đầu vào mỗi ngày, vì thứ bạn nhặt lên hằng ngày quyết định sức khỏe của cái cây.",
-      "cardSummary": "Sự chú ý có dung lượng hữu hạn; không phải đầu vào nào cũng nuôi được điều mình đang xây.",
+      "title": "Chọn kỹ những gì mình nạp vào mỗi ngày",
+      "summary": "Mỗi ngày mình đều múc vào đầu rất nhiều thứ: tin tức, cuộc trò chuyện, ý tưởng, hình ảnh, lời than phiền, một đoạn sách hay một cuộc họp dài. Ghi chú này dùng hình ảnh chiếc xô nhỏ để nhắc rằng sự chú ý có dung lượng hữu hạn; thứ mình nạp vào đều đặn sẽ quyết định cái cây bên trong được nuôi hay bị làm đục.",
+      "cardSummary": "Sự chú ý có dung lượng hữu hạn; đầu vào mỗi ngày sẽ nuôi hoặc làm đục điều mình đang xây.",
       "tags": [
         "Thoughts",
         "Sự chú ý",
@@ -632,9 +632,9 @@
     },
     {
       "slug": "code-run-on-people",
-      "title": "Code có còn chạy trên con người?",
-      "summary": "“Chương trình phải được viết cho con người đọc” từng là chân lý suốt nhiều thập kỷ — và giờ AI agent viết lẫn đọc phần lớn code. Nhưng câu nói cũ có lẽ vẫn đúng: thứ con người viết cho con người đọc chỉ dịch lên một tầng, từ phần hiện thực sang phần ý định — prompt, spec, và quyết định kiến trúc đóng khung công việc.",
-      "cardSummary": "AI có thể viết code, nhưng con người vẫn cần viết ra bối cảnh để cùng hiểu.",
+      "title": "Code vẫn cần con người hiểu",
+      "summary": "AI agent có thể viết và đọc nhiều phần code hơn trước, nhưng điều đó không làm con người biến mất khỏi hệ thống. Ghi chú này nhìn lại câu nói “code viết cho người đọc”: có lẽ phần cần rõ ràng đang dịch lên một tầng cao hơn, từ từng dòng implementation sang prompt, spec, context và quyết định kiến trúc.",
+      "cardSummary": "AI có thể viết code, nhưng con người vẫn cần viết rõ bối cảnh, ý định và trade-off.",
       "tags": [
         "Thoughts",
         "Kỹ thuật phần mềm",
@@ -644,9 +644,9 @@
     },
     {
       "slug": "completeness-learning-bias",
-      "title": "Thiên kiến học cho đầy đủ",
-      "summary": "Cảm giác áy náy rằng một chương bị bỏ qua là kiến thức mất vĩnh viễn khiến ta đọc lại thứ mình nhớ nửa vời và coi mục lục như một checklist. Nhưng ý tưởng lớn hơn các hình hài biểu diễn của nó: điều bạn lỡ ở chương bốn có thể đang đợi trong một cuộc trò chuyện, một dự án, hay một cuốn sách bạn chưa mở.",
-      "cardSummary": "Bỏ qua một chương không làm mất sự thật; điều cần hiểu thường lớn hơn một lộ trình duy nhất.",
+      "title": "Nỗi sợ học thiếu khiến mình mắc kẹt",
+      "summary": "Cảm giác phải học cho đủ dễ biến mục lục thành checklist và khiến mình đọc lại những phần không còn cần thiết. Ghi chú này nhắc rằng ý tưởng lớn hơn một chương sách hay một khóa học cụ thể; điều quan trọng là biết mình đang cần hiểu gì, rồi để tri thức xuất hiện qua sách, dự án, cuộc trò chuyện và lần va chạm thật.",
+      "cardSummary": "Học đủ không phải đọc hết; đôi khi là biết phần nào cần đi qua và phần nào có thể gặp lại sau.",
       "tags": [
         "Thoughts",
         "Học tập",
@@ -656,9 +656,9 @@
     },
     {
       "slug": "different-purposes-of-writing",
-      "title": "Những mục đích khác nhau của việc viết",
-      "summary": "“Bạn nên viết nhiều hơn” là lời khuyên tốt nhưng bỏ qua câu hỏi hữu ích hơn: viết cái gì? Những kiểu viết khác nhau phục vụ những mục đích khác nhau, đòi hỏi sự chú tâm khác nhau, và được đo bằng những thước khác nhau. Gọi tên được chế độ mình đang viết — viết để chú tâm, hay viết để hiểu và truyền đạt — mới khiến câu 'mình làm tốt chưa?' có lời đáp.",
-      "cardSummary": "Viết nhiều chưa đủ; cần biết mình đang viết để nghĩ, để nhớ, để chia sẻ hay để chuyển giao.",
+      "title": "Viết để làm gì: nghĩ, nhớ, chia sẻ hay chuyển giao",
+      "summary": "“Viết nhiều hơn” là lời khuyên tốt, nhưng chưa đủ. Mỗi kiểu viết có một nhiệm vụ khác nhau: viết để chú tâm, viết để hiểu, viết để nhớ, viết để truyền đạt hoặc để chuyển giao điều mình biết cho người khác. Ghi chú này giúp gọi tên đúng chế độ viết, để câu hỏi “mình viết tốt chưa?” có điểm tựa rõ hơn.",
+      "cardSummary": "Viết tốt hơn bắt đầu từ việc biết mình đang viết để nghĩ, để nhớ, để chia sẻ hay để chuyển giao.",
       "tags": [
         "Thoughts",
         "Viết",
@@ -668,9 +668,9 @@
     },
     {
       "slug": "feel-the-sensation",
-      "title": "Cảm nhận",
-      "summary": "Bóc đi những câu chuyện ta kể về ý nghĩa và hoài bão, bên dưới là một điều giản dị hơn: ta đang đuổi theo những cảm giác, và các mục đích phần lớn là những con đường dẫn tới chúng. Gọi tên được những cảm giác thật sự kéo mình — khoảnh khắc 'chính là đây', cảm giác đang tiến về phía trước, sự thanh thản — cho bạn định hướng theo chúng thay vì trôi dạt.",
-      "cardSummary": "Bên dưới nhiều mục tiêu lớn là một cảm giác rất người mà ta đang tìm đường chạm tới.",
+      "title": "Điều mình thật sự tìm kiếm thường là một cảm giác",
+      "summary": "Đằng sau nhiều mục tiêu nghe rất lớn đôi khi là một cảm giác rất người: được tiến về phía trước, được yên ổn, được chạm vào khoảnh khắc “đúng rồi, là nó”. Ghi chú này rủ mình bóc bớt lớp câu chuyện quanh tham vọng để nhận ra cảm giác nào thật sự đang kéo mình đi, rồi chọn đường rõ hơn thay vì trôi theo mục tiêu mượn từ người khác.",
+      "cardSummary": "Khi gọi tên được cảm giác mình thật sự tìm kiếm, mục tiêu trở nên thật và gần hơn.",
       "tags": [
         "Thoughts",
         "Tự nhận thức",
@@ -704,9 +704,9 @@
     },
     {
       "slug": "human-vs-ai-brain-elasticity",
-      "title": "Ưu thế nền tảng của con người so với AI",
-      "summary": "Dù AI hiện đại nhanh và rộng tới đâu, bộ não vẫn giữ một ưu thế sinh học mà phần mềm chưa sánh được: tính mềm dẻo. Trọng số của AI đóng băng sau huấn luyện, còn tâm trí tự tinh chỉnh qua mỗi lần sử dụng — nén, trừu tượng hóa, và nối ý tưởng theo nghĩa thay vì theo cách phát âm giống nhau.",
-      "cardSummary": "AI giữ weights sau huấn luyện; bộ não người vẫn tự tinh chỉnh qua từng lần dùng.",
+      "title": "Điều con người vẫn hơn AI: khả năng tự mềm dẻo và học tiếp",
+      "summary": "AI hiện đại có thể nhanh và rộng, nhưng bộ não người vẫn có một lợi thế nền tảng: nó tự tinh chỉnh qua từng lần sống, học, nhớ và kết nối ý tưởng. Ghi chú này so sánh weights đóng băng sau huấn luyện với tâm trí luôn mềm dẻo, để nhắc mình rằng khả năng học tiếp vẫn là phần rất đáng quý của con người.",
+      "cardSummary": "AI giữ weights sau huấn luyện; con người vẫn tự chỉnh mình qua từng lần sống và học.",
       "tags": [
         "Thoughts",
         "AI",
@@ -716,9 +716,9 @@
     },
     {
       "slug": "indecisiveness",
-      "title": "Sự do dự",
-      "summary": "Đôi khi càng cân nhắc kỹ điểm hơn điểm thiệt, bạn càng do dự — mỗi cột mới thêm vào là thêm một cách khiến các lựa chọn trông ngang nhau. Một ghi chú ngắn về những khoảnh khắc mà việc cam kết với bất kỳ lựa chọn nào cũng làm nhẹ cả tinh thần, và vì sao chọn nhanh thường thắng chọn hoàn hảo.",
-      "cardSummary": "Có lúc bảng pros-cons không giải quyết do dự, mà chỉ làm nó tinh vi hơn.",
+      "title": "Khi cân nhắc quá nhiều làm mình đứng yên",
+      "summary": "Có lúc bảng pros-cons không giúp mình rõ hơn, mà chỉ thêm nhiều cách để các lựa chọn trông ngang nhau. Ghi chú này nói về những khoảnh khắc chọn một hướng đủ tốt còn nhẹ hơn việc tiếp tục tối ưu trong đầu, và vì sao cam kết đôi khi là cách duy nhất để có thêm dữ kiện thật.",
+      "cardSummary": "Có lúc chọn một hướng đủ tốt dạy mình nhiều hơn việc đứng yên để tìm lựa chọn hoàn hảo.",
       "tags": [
         "Thoughts",
         "Ra quyết định",
@@ -740,9 +740,9 @@
     },
     {
       "slug": "life-running-digital-engine",
-      "title": "Cuộc sống vận hành như cỗ máy số",
-      "summary": "Hãy đối xử với những quyết định lặp lại của đời sống thường ngày bớt như những phán đoán mới toanh, mà như những luật đã quyết một lần và cứ thế chạy. Các hệ con trong cỗ máy của tôi: một hệ todo 'người lái' chứa cơ hội, một hệ trách nhiệm chứa những điều không thương lượng, và một nhịp chiêm nghiệm giữ cho cả cỗ máy tự sửa mình thay vì trôi dạt.",
-      "cardSummary": "Những việc lặp lại nên được quyết một lần, rồi chạy như rule thay vì tranh luận mỗi ngày.",
+      "title": "Thiết kế đời sống như một hệ thống nhỏ",
+      "summary": "Một vài quyết định lặp lại trong đời sống không cần được tranh luận lại mỗi ngày. Ghi chú này nhìn calendar, todo, trách nhiệm và nhịp reflection như các hệ con của một cỗ máy nhỏ: thứ giúp mình bớt tiêu hao vào những lựa chọn quen thuộc, để còn năng lượng cho phần cần phán đoán thật.",
+      "cardSummary": "Việc lặp lại nên có rule đủ rõ, để mình không phải quyết lại từ đầu mỗi ngày.",
       "tags": [
         "Thoughts",
         "Năng suất",
@@ -764,8 +764,8 @@
     },
     {
       "slug": "play-the-game",
-      "title": "Chơi cuộc chơi",
-      "summary": "Cách tốt nhất để giỏi cuộc chơi là chơi nó. Bao nhiêu lần đứng xem từ ngoài biên, nghiền ngẫm luật chơi hay tổng duyệt trong đầu cũng không thay được cảm giác chạm bóng, sức ép của khoảnh khắc, những hiệu chỉnh chỉ học được trên sân. Chiến lược mà không chơi chỉ là tấm bản đồ của một xứ sở bạn không bao giờ ghé.",
+      "title": "Muốn giỏi cuộc chơi, cuối cùng vẫn phải bước vào sân",
+      "summary": "Đứng ngoài quan sát, đọc luật hay diễn tập trong đầu đều có ích, nhưng không thay được cảm giác thật khi mình đang ở trong cuộc. Ghi chú này nhắc rằng chiến lược chỉ sống dậy khi va vào áp lực, phản hồi và những chỉnh sửa nhỏ chỉ xuất hiện sau khi mình thật sự chơi.",
       "cardSummary": "Muốn hiểu cuộc chơi, cuối cùng vẫn phải bước vào sân và chạm bóng thật.",
       "tags": [
         "Thoughts",
@@ -776,9 +776,9 @@
     },
     {
       "slug": "programmable-self",
-      "title": "Bản thân có thể lập trình",
-      "summary": "Nếu coi tâm trí như một hệ điều hành, các thành phần khớp nhau gọn đến bất ngờ: calendar là bộ lập lịch tiến trình, danh sách todo là hàng đợi, và các mental model là framework chạy trên kernel. Chiêm nghiệm là nguồn của tính mềm dẻo — còn độ tin cậy, tức kỷ luật thuần túy, quyết định liệu tất cả có hơn một bản vẽ hay không.",
-      "cardSummary": "Calendar, todo và mental model có thể vận hành như một hệ điều hành nhỏ cho đời sống.",
+      "title": "Mình có thể thiết kế lại cách mình vận hành",
+      "summary": "Nếu xem tâm trí như một hệ điều hành nhỏ, calendar, todo và mental model không còn là công cụ rời rạc mà là cách mình lập lịch, xếp hàng đợi và chạy các framework sống. Ghi chú này nói về phần có thể “lập trình” trong chính mình: thiết kế hệ thống tốt hơn, reflection đều hơn và kỷ luật đủ tin cậy để bản vẽ thành đời sống.",
+      "cardSummary": "Calendar, todo và mental model có thể trở thành một hệ vận hành nhỏ cho đời sống.",
       "tags": [
         "Thoughts",
         "Hệ thống",
@@ -800,9 +800,9 @@
     },
     {
       "slug": "programming-beacons",
-      "title": "Những ngọn hải đăng lập trình",
-      "summary": "Hải đăng là những manh mối nhỏ trong code kích hoạt một phỏng đoán thường-đúng về chuyện gì đang diễn ra — một biến tên 'node' nói cho bạn biết nó sống trong cây hay đồ thị trước cả khi bạn phải truy vết. Code tốt đầy những cột mốc lặng lẽ như vậy, và bạn có thể chủ đích rải chúng vào code của mình.",
-      "cardSummary": "Tên biến tốt là ngọn đèn nhỏ, giúp người đọc code đoán đúng trước khi lần theo chi tiết.",
+      "title": "Những tín hiệu nhỏ giúp code dễ đọc hơn",
+      "summary": "Code dễ đọc không chỉ nhờ comment dài hay tài liệu đầy đủ. Nhiều khi nó đến từ những tín hiệu rất nhỏ: tên biến, cấu trúc, cách đặt hàm, những dấu hiệu giúp người sau đoán đúng bối cảnh trước khi truy vết chi tiết. Ghi chú này gọi chúng là những ngọn hải đăng trong code.",
+      "cardSummary": "Tên gọi và cấu trúc tốt là những ngọn đèn nhỏ giúp người đọc code đi đúng hướng.",
       "tags": [
         "Thoughts",
         "Kỹ thuật phần mềm",
@@ -812,8 +812,8 @@
     },
     {
       "slug": "purpose-of-highlights",
-      "title": "Mục đích của highlight",
-      "summary": "Tại sao highlight khi đọc, highlight cái gì, và chúng sẽ được dùng ra sao? Thiếu câu trả lời, highlight lặng lẽ thành một thói quen cho cảm giác năng suất mà chẳng sinh ra gì. Hai loại đáng giữ: cộng hưởng — những dòng chạm vào thứ vốn đã có trong bạn — và dấu sao, những lá cờ cắm trên các điểm bạn còn nợ suy nghĩ.",
+      "title": "Highlight để làm gì?",
+      "summary": "Highlight dễ cho cảm giác mình đang học, nhưng nếu không quay lại dùng, nó chỉ là một lớp màu đẹp trên trang. Ghi chú này hỏi lại ba điều đơn giản: vì sao mình highlight, highlight loại ý nào, và đoạn đó sẽ dẫn tới hành động, câu hỏi hay lần dùng lại nào sau này.",
       "cardSummary": "Highlight chỉ có giá trị khi nó còn dẫn tới một hành động, một câu hỏi hoặc một lần dùng lại.",
       "tags": [
         "Thoughts",
@@ -836,9 +836,9 @@
     },
     {
       "slug": "recognizable-patterns-of-valuable-thoughts",
-      "title": "Liệu có khuôn mẫu nhận biết được của những suy nghĩ giá trị?",
-      "summary": "Nhận ra suy nghĩ ít giá trị thường dễ hơn định nghĩa suy nghĩ giá trị, vậy hãy bắt đầu từ đầu dễ: tua lại quá khứ chỉ để tua, tự tô vẽ bản thân, xoay vòng quanh những vấn đề không có hành động khả thi. Điểm chung là tâm trí vẫn quay, nhưng bánh xe không chạm đường. Suy nghĩ có giá trị thường đưa mình tới một hành động, một câu hỏi rõ hơn, hoặc một hiểu biết mới.",
-      "cardSummary": "Suy nghĩ có giá trị thường đưa mình tới hành động, hiểu biết mới hoặc một câu hỏi rõ hơn.",
+      "title": "Suy nghĩ giá trị thường để lại dấu vết gì?",
+      "summary": "Định nghĩa một suy nghĩ giá trị không dễ, nhưng mình có thể nhận ra những vòng nghĩ không đưa tới đâu: tua lại quá khứ chỉ để tua, tự tô vẽ bản thân, hoặc xoay quanh vấn đề không có hành động khả thi. Ghi chú này tìm những dấu vết ngược lại: một bước tiếp theo, một câu hỏi rõ hơn, hoặc một hiểu biết mới.",
+      "cardSummary": "Suy nghĩ có giá trị thường để lại một bước tiếp theo, một câu hỏi rõ hơn hoặc một hiểu biết mới.",
       "tags": [
         "Thoughts",
         "Tư duy",
@@ -860,9 +860,9 @@
     },
     {
       "slug": "software-engineering-fatigue",
-      "title": "Mệt mỏi với nghề kỹ sư phần mềm",
-      "summary": "Làm phần mềm như chơi Lego: bạn học những viên gạch nền tảng, rồi các khối ghép sẵn, rồi khối làm từ khối — cho tới khi việc tìm hiểu bên dưới thực sự có gì trở nên bất khả thi. Đâu đó trong cú trôi ấy, việc học đổi bản chất từ hiểu mọi thứ sang chỉ biết dùng mọi thứ, và sự nhân tạo đó chính là nguồn cơn của nỗi mệt.",
-      "cardSummary": "Mệt mỏi kỹ thuật thường đến từ việc học nhiều abstraction do người khác chọn.",
+      "title": "Vì sao nghề software đôi khi làm mình mệt",
+      "summary": "Làm phần mềm có thể giống xếp Lego qua nhiều tầng abstraction: học viên gạch nền, rồi khối ghép sẵn, rồi những khối được xây từ khối khác. Đến một lúc, mình biết dùng rất nhiều thứ nhưng không còn thấy rõ bên dưới thật sự vận hành ra sao. Ghi chú này gọi tên kiểu mệt đó: mệt vì học quá nhiều lớp nhân tạo mà không còn chạm được nền.",
+      "cardSummary": "Mệt mỏi kỹ thuật thường đến từ việc đi qua quá nhiều abstraction mà không còn thấy nền bên dưới.",
       "tags": [
         "Thoughts",
         "Kỹ thuật phần mềm",
@@ -896,9 +896,9 @@
     },
     {
       "slug": "the-heuristics-for-what-to-do-now",
-      "title": "Những heuristic cho câu hỏi 'bây giờ làm gì'",
-      "summary": "Phần lớn thời gian câu trả lời đã ở sẵn trong bạn — bạn chỉ không lắng nghe, vì câu trả lời ấy bất tiện. Khi thật sự lạc lối, hãy thôi tra khảo danh sách todo và lắng nghe ba tín hiệu: những việc bạn kháng cự, những việc phá vỡ cảm giác đủ đầy, và những giấc mơ bạn gạt đi là viển vông. Cả ba đều chỉ về phía sự khó chịu — đó chính là phương pháp.",
-      "cardSummary": "Khi không biết làm gì, hãy nghe ba tín hiệu: năng lượng, né tránh và điều hơi bất tiện.",
+      "title": "Khi không biết làm gì tiếp, hãy nghe những tín hiệu nhỏ",
+      "summary": "Có lúc câu trả lời đã ở trong mình, chỉ là nó bất tiện nên mình không muốn nghe. Ghi chú này gợi ý ba tín hiệu để chọn việc tiếp theo: việc mình đang né, việc phá vỡ cảm giác đủ đầy giả tạo, và giấc mơ mình hay gạt đi là viển vông. Chúng thường không dễ chịu, nhưng lại chỉ đúng nơi cần nhìn.",
+      "cardSummary": "Khi không biết làm gì, hãy nhìn vào việc mình né tránh, điều làm mình không yên và ước mơ bị gạt đi.",
       "tags": [
         "Thoughts",
         "Phương hướng",
@@ -944,8 +944,8 @@
     },
     {
       "slug": "trust",
-      "title": "Niềm tin",
-      "summary": "'Mặc định là tin' là một trong số ít quy tắc ngón tay cái tôi thấy phổ quát. Niềm tin là một heuristic giải phóng dung lượng tâm trí — mặc định nghi ngờ mọi thứ sẽ làm tâm trí quá tải. Vậy mà vẫn có một lát nghi ngờ nép trong góc của mỗi niềm tin, và chính điều đó khiến cuộc sống là một fractal vô tận đáng để khám phá.",
+      "title": "Mặc định tin, nhưng vẫn giữ ranh giới",
+      "summary": "Mặc định nghi ngờ mọi thứ làm tâm trí rất mệt, nhưng tin mà không có ranh giới cũng dễ khiến mình tự đánh mất dữ kiện. Ghi chú này nhìn niềm tin như một heuristic để đời sống nhẹ hơn: bắt đầu bằng thiện chí, quan sát bằng sự tỉnh táo và để ranh giới giữ cho niềm tin không thành ngây thơ.",
       "cardSummary": "Mặc định tin giúp tâm trí nhẹ hơn; ranh giới giúp niềm tin vẫn có dữ kiện.",
       "tags": [
         "Thoughts",
@@ -956,8 +956,8 @@
     },
     {
       "slug": "vocabulary-as-api-for-second-brain",
-      "title": "Vốn từ phong phú, nhất quán là API tốt nhất cho bộ não thứ hai",
-      "summary": "Vault của bạn là một đồ thị, nhưng bạn điều hướng nó bằng từ ngữ: đặt tên cùng một ý là 'information overload' lần này rồi 'consumption pattern' lần sau, và hai ghi chú ấy không bao giờ gặp nhau. Vốn từ nhất quán là hệ dây dẫn nhất quán — và vốn từ phong phú không chỉ giúp truy xuất, nó định hình cả những gì bạn nghĩ được ngay từ đầu.",
+      "title": "Vốn từ là API của second brain",
+      "summary": "Một vault ghi chú có thể là đồ thị rất giàu, nhưng mình vẫn đi qua nó bằng từ ngữ. Nếu cùng một ý hôm nay gọi là “information overload”, hôm sau lại gọi là “consumption pattern”, hai ghi chú có thể không bao giờ gặp nhau. Ghi chú này nhắc rằng vốn từ nhất quán không chỉ giúp tìm lại ý tưởng; nó còn định hình những gì mình nghĩ được.",
       "cardSummary": "Đổi tên endpoint làm client gãy; đổi từ trong second brain cũng làm ý tưởng lạc nhau.",
       "tags": [
         "Thoughts",
