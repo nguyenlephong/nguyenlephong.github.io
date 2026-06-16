@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 10505",
     "build": "next build --turbopack && node scripts/postbuild-og.mjs",
     "start": "next start",
     "lint": "eslint .",

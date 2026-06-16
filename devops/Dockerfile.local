@@ -12,7 +12,7 @@ RUN npm ci
 COPY . .
 
 # Expose the listening port
-EXPOSE 3000
+EXPOSE 10505
 
 # Run in development mode
 CMD ["npm", "run", "dev"]
