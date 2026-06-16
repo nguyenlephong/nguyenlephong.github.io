@@ -6,6 +6,7 @@ export type ReadingFont =
   | 'plex'
   | 'atkinson'
   | 'lora'
+  | 'be-vietnam'
 
 export const READING_FONTS: ReadingFont[] = [
   'inter',
@@ -13,6 +14,7 @@ export const READING_FONTS: ReadingFont[] = [
   'plex',
   'atkinson',
   'lora',
+  'be-vietnam',
 ]
 
 const fontScript = `

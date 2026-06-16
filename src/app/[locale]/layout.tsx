@@ -4,8 +4,11 @@ import {
   JetBrains_Mono,
   Source_Sans_3,
   IBM_Plex_Sans,
+  IBM_Plex_Mono,
   Atkinson_Hyperlegible,
   Lora,
+  Be_Vietnam_Pro,
+  Fraunces,
 } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
@@ -63,12 +66,35 @@ const lora = Lora({
   display: 'swap',
 })
 
+const beVietnamPro = Be_Vietnam_Pro({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-reading-be-vietnam',
+  display: 'swap',
+})
+
+const fraunces = Fraunces({
+  subsets: ['latin', 'vietnamese'],
+  variable: '--font-reading-fraunces',
+  display: 'swap',
+})
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-reading-ibm-plex-mono',
+  display: 'swap',
+})
+
 const FONT_VARIABLES = [
   jbMono.variable,
   sourceSans.variable,
   plexSans.variable,
   atkinson.variable,
   lora.variable,
+  beVietnamPro.variable,
+  fraunces.variable,
+  ibmPlexMono.variable,
 ].join(' ')
 
 const PROFILE_AVATAR =

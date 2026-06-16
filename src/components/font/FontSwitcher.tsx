@@ -50,6 +50,14 @@ const FONTS: FontMeta[] = [
     kind: 'serif',
     sampleStyle: { fontFamily: 'var(--font-reading-lora), Georgia, serif' },
   },
+  {
+    id: 'be-vietnam',
+    label: 'Be Vietnam Pro + Fraunces',
+    kind: 'sans',
+    sampleStyle: {
+      fontFamily: 'var(--font-reading-be-vietnam), system-ui, sans-serif',
+    },
+  },
 ]
 
 function applyFont(font: ReadingFont) {

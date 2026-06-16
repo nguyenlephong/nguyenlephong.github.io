@@ -5,6 +5,22 @@ export interface NoteFaq {
   a: string;
 }
 
+export interface NoteBookSource {
+  /** Localized or commonly used title in this note. */
+  title: string;
+  /** Original title of the book, when different or useful for attribution. */
+  originalTitle?: string;
+  /** Book authors, not the author of this website note. */
+  authors: string[];
+  /** Named contributors credited by the source book. */
+  contributors?: string[];
+  publisher?: string;
+  published?: string;
+  isbn?: string;
+  /** Short editorial note about how this article relates to the book. */
+  note?: string;
+}
+
 export interface NoteMeta {
   slug: string;
   title: string;
@@ -30,6 +46,8 @@ export interface NoteMeta {
 
 export interface Note extends NoteMeta {
   html: string;
+  /** Optional source book metadata for book reflections. */
+  book?: NoteBookSource;
   /** Optional FAQ — rendered as a section and emitted as FAQPage JSON-LD */
   faqs?: NoteFaq[];
 }

@@ -111,6 +111,10 @@ html[data-reading-font='atkinson'] {
 html[data-reading-font='lora'] {
   --font-sans: var(--font-reading-lora), Georgia, 'Times New Roman', serif;
 }
+html[data-reading-font='be-vietnam'] {
+  --font-sans: var(--font-reading-be-vietnam), system-ui, sans-serif;
+  --font-mono: var(--font-reading-ibm-plex-mono), 'SF Mono', 'Cascadia Mono', 'Roboto Mono', monospace;
+}
 
 body {
   background: var(--bg);

@@ -1073,6 +1073,118 @@
         "Thói quen",
         "Bài học cuộc sống"
       ]
+    },
+    {
+      "slug": "data-mastery-kinh-chan-gio-cho-doanh-nghiep",
+      "title": "Data: dữ liệu là kính chắn gió cho người điều hành",
+      "summary": "Một ghi chú đọc Data: Harness Your Numbers to Go from Uncertain to Unstoppable về cách dữ liệu giúp người điều hành thoát khỏi trạng thái lái doanh nghiệp trong mù mờ. Bài viết nhìn Data Component của EOS như một hệ thống giúp giảm lo âu, kiểm tra trực giác, tránh sống bằng hy vọng, nối Visionary và Integrator bằng cùng một thực tế, và biến dữ liệu thành tự do lãnh đạo thay vì một bảng số gây áp lực.",
+      "cardSummary": "Dữ liệu tốt không làm doanh nghiệp lạnh hơn; nó làm người điều hành bớt lái xe trong mù mờ.",
+      "tags": [
+        "Ghi chú sách",
+        "Data",
+        "EOS",
+        "Business Data",
+        "Leadership",
+        "Ra quyết định"
+      ]
+    },
+    {
+      "slug": "data-mastery-scorecard-mot-trang-so-de-thay-som-van-de",
+      "title": "Data: Scorecard là một trang số để thấy sớm vấn đề",
+      "summary": "Một ghi chú đọc Data về Scorecard trong EOS: vì sao doanh nghiệp không cần hàng chục KPI để hiểu sức khỏe vận hành, mà cần một nhóm nhỏ measurables đủ đúng, đủ đều, đủ predictive. Bài viết bàn về Scorecard như check engine light, khác biệt giữa P&L và leading indicators, cách reverse-engineer từ kết quả mong muốn, nhịp đo hằng tuần, range goals, và những bẫy phổ biến khi đo quá nhiều hoặc đo thứ dễ đo thay vì thứ cần đo.",
+      "cardSummary": "Một Scorecard tốt không phải report cho đẹp; nó là hệ thống cảnh báo sớm để team hành động trước khi vấn đề lớn lên.",
+      "tags": [
+        "Ghi chú sách",
+        "Data",
+        "EOS",
+        "Scorecard",
+        "KPIs",
+        "Business Operations"
+      ]
+    },
+    {
+      "slug": "data-mastery-everyone-has-a-number",
+      "title": "Data: Everyone Has a Number không phải là giám sát",
+      "summary": "Một ghi chú đọc Data về nguyên tắc Everyone Has a Number trong EOS. Bài viết nhìn số đo cá nhân như một món quà về clarity: giúp mỗi người biết mình thắng bằng cách nào, manager bớt đánh giá bằng cảm giác, team giải quyết vấn đề nhanh hơn, cạnh tranh lành mạnh hơn, và accountability trở thành nền tảng của trust thay vì một công cụ kiểm soát lạnh lùng.",
+      "cardSummary": "Một con số đúng không biến con người thành máy; nó giúp họ biết rõ mình đóng góp thế nào và thắng bằng cách nào.",
+      "tags": [
+        "Ghi chú sách",
+        "Data",
+        "EOS",
+        "Everyone Has a Number",
+        "Accountability",
+        "Leadership"
+      ]
+    },
+    {
+      "slug": "data-mastery-cash-khong-phai-doanh-thu",
+      "title": "Data: doanh thu không phải cash, và profit cũng chưa chắc là tiền sống",
+      "summary": "Một ghi chú đọc Data về chương Cash: vì sao một doanh nghiệp có sales tốt hoặc profit trên giấy vẫn có thể căng dòng tiền. Bài viết diễn giải sự khác nhau giữa sales, profit và cash; vì sao cả leadership team cần financial literacy cơ bản; cách nối hành động hằng ngày với gross margin, rework, collections, expenses và cash flow; và vì sao hiểu tiền không cần công thức phức tạp mà cần sự rõ ràng, nhịp đo và các quyết định thực tế.",
+      "cardSummary": "Một business có thể bán được, có profit trên giấy, nhưng vẫn thiếu cash nếu team không hiểu dòng tiền thật đang đi đâu.",
+      "tags": [
+        "Ghi chú sách",
+        "Data",
+        "EOS",
+        "Cash Flow",
+        "Financial Literacy",
+        "Business"
+      ]
+    },
+    {
+      "slug": "nha-lanh-dao-360-lanh-dao-khong-doi-chuc-danh",
+      "title": "Nhà Lãnh Đạo 360: lãnh đạo bắt đầu từ ảnh hưởng, không phải chức danh",
+      "summary": "Một ghi chú đọc Nhà Lãnh Đạo 360 về các ngộ nhận phổ biến của người ở vị trí cấp trung: chờ chức danh mới dám lãnh đạo, tưởng lên cao sẽ tự do hơn, nghĩ quyền lực chính thức sẽ khiến người khác đi theo, hoặc xem vị trí giữa chỉ là nơi tạm trú. Bài viết nhìn leadership như một quá trình tích lũy ảnh hưởng qua công việc thật, quan hệ thật, trách nhiệm thật và khả năng tạo giá trị từ đúng vị trí hiện tại.",
+      "cardSummary": "Lãnh đạo không bắt đầu ở chiếc ghế cao hơn; nó bắt đầu từ ảnh hưởng tích cực mình tạo ra ở vị trí hiện tại.",
+      "tags": [
+        "Ghi chú sách",
+        "Nhà Lãnh Đạo 360",
+        "Leadership",
+        "Sự nghiệp",
+        "Ảnh hưởng",
+        "Công sở"
+      ]
+    },
+    {
+      "slug": "nha-lanh-dao-360-lanh-dao-nguoc",
+      "title": "Nhà Lãnh Đạo 360: lãnh đạo ngược không phải nịnh sếp",
+      "summary": "Một ghi chú đọc Nhà Lãnh Đạo 360 về lead up: cách tạo ảnh hưởng với cấp trên bằng năng lực tự quản, chuẩn bị kỹ trước mỗi lần gặp, nói sự thật đúng lúc, mang giải pháp thay vì chỉ mang vấn đề, biết khi nào nên tiến hay lùi, và trở thành người chia sẻ gánh nặng cho tổ chức mà không đánh mất ranh giới cá nhân.",
+      "cardSummary": "Lead up không phải nịnh sếp; đó là năng lực làm cho người phía trên và tổ chức ra quyết định tốt hơn.",
+      "tags": [
+        "Ghi chú sách",
+        "Nhà Lãnh Đạo 360",
+        "Lead Up",
+        "Leadership",
+        "Sự nghiệp",
+        "Công sở"
+      ]
+    },
+    {
+      "slug": "nha-lanh-dao-360-lanh-dao-ngang",
+      "title": "Nhà Lãnh Đạo 360: lãnh đạo ngang là thắng cùng đồng cấp",
+      "summary": "Một ghi chú đọc Nhà Lãnh Đạo 360 về lead across: cách tạo ảnh hưởng với đồng cấp khi không có quyền ra lệnh. Bài viết nhìn vào chu trình quan tâm, học hỏi, đánh giá cao, đóng góp và cùng thắng; đồng thời bàn về cạnh tranh lành mạnh, tránh đấu đá chính trị, mở rộng vòng tròn quan hệ, bảo vệ ý tưởng tốt nhất và không cần tỏ ra hoàn hảo trong công sở.",
+      "cardSummary": "Lãnh đạo ngang bắt đầu khi mình giúp đồng cấp mạnh hơn, thay vì xem họ như đối thủ cần vượt qua.",
+      "tags": [
+        "Ghi chú sách",
+        "Nhà Lãnh Đạo 360",
+        "Lead Across",
+        "Leadership",
+        "Đồng cấp",
+        "Công sở"
+      ]
+    },
+    {
+      "slug": "nha-lanh-dao-360-lanh-dao-xuoi",
+      "title": "Nhà Lãnh Đạo 360: lãnh đạo xuống dưới là phát triển con người",
+      "summary": "Một ghi chú đọc Nhà Lãnh Đạo 360 về lead down: cách lãnh đạo cấp dưới không chỉ bằng giao việc và kiểm soát, mà bằng kết nối trực tiếp, nhìn thấy tiềm năng của từng người, cho họ vay niềm tin khi cần, phát triển con người dài hạn, đặt người vào đúng sở trường, làm gương, truyền tải tầm nhìn rõ ràng và tưởng thưởng đúng hành vi muốn lặp lại.",
+      "cardSummary": "Lead down không chỉ là giao việc; đó là làm cho người phía dưới lớn lên trong lúc công việc được hoàn thành.",
+      "tags": [
+        "Ghi chú sách",
+        "Nhà Lãnh Đạo 360",
+        "Lead Down",
+        "Leadership",
+        "Quản lý con người",
+        "Công sở"
+      ]
     }
   ]
 }

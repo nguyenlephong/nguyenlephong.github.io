@@ -376,6 +376,16 @@
       "faqHeading": "Frequently asked questions",
       "nextUp": "Next note",
       "previously": "Previous note",
+      "source": {
+        "heading": "Book information",
+        "title": "Book title",
+        "originalTitle": "Original title",
+        "authors": "Authors",
+        "contributors": "Contributors",
+        "publisher": "Publisher",
+        "published": "Edition",
+        "isbn": "ISBN"
+      },
       "controls": {
         "searchPlaceholder": "Search notes…",
         "searchLabel": "Search notes",

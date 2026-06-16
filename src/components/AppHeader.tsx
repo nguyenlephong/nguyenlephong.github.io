@@ -31,7 +31,8 @@ export default function AppHeader() {
   const navItems: { href: string; label: string; trackId: string }[] = [
     { href: "/#about", label: t("aboutMe"), trackId: "about" },
     { href: APP_ROUTE.GALLERY, label: t("gallery"), trackId: "gallery" },
-    { href: APP_ROUTE.BLOG, label: t("blog"), trackId: "blog" }
+    { href: APP_ROUTE.BLOG, label: t("blog"), trackId: "blog" },
+    { href: APP_ROUTE.NOTES, label: t("notes"), trackId: "notes" }
   ];
 
   return (

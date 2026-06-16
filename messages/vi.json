@@ -376,6 +376,16 @@
       "faqHeading": "Câu hỏi thường gặp",
       "nextUp": "Bài tiếp theo",
       "previously": "Bài trước",
+      "source": {
+        "heading": "Thông tin sách",
+        "title": "Tên sách",
+        "originalTitle": "Tên gốc",
+        "authors": "Tác giả",
+        "contributors": "Cộng tác",
+        "publisher": "Nhà xuất bản",
+        "published": "Ấn bản",
+        "isbn": "ISBN"
+      },
       "controls": {
         "searchPlaceholder": "Tìm bài viết…",
         "searchLabel": "Tìm bài viết",

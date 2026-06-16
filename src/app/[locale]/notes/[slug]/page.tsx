@@ -105,6 +105,54 @@ export default async function NotePage({ params }: Props) {
   const topicReading = getTopicReadingContext(slug, locale);
   const topicColor = topic?.color ?? FALLBACK_TOPIC_COLOR;
   const topicHref = topic ? buildNotesTopicHref(topic.id) : null;
+  const bookSourceCard = note.book ? (
+    <aside className="notes-source-card" aria-label={t("source.heading")}>
+      <p className="notes-source-card__eyebrow">{t("source.heading")}</p>
+      <dl className="notes-source-card__grid">
+        <div>
+          <dt>{t("source.title")}</dt>
+          <dd>{note.book.title}</dd>
+        </div>
+        {note.book.originalTitle && (
+          <div>
+            <dt>{t("source.originalTitle")}</dt>
+            <dd>{note.book.originalTitle}</dd>
+          </div>
+        )}
+        <div>
+          <dt>{t("source.authors")}</dt>
+          <dd>{note.book.authors.join(", ")}</dd>
+        </div>
+        {note.book.contributors && note.book.contributors.length > 0 && (
+          <div>
+            <dt>{t("source.contributors")}</dt>
+            <dd>{note.book.contributors.join(", ")}</dd>
+          </div>
+        )}
+        {note.book.publisher && (
+          <div>
+            <dt>{t("source.publisher")}</dt>
+            <dd>{note.book.publisher}</dd>
+          </div>
+        )}
+        {note.book.published && (
+          <div>
+            <dt>{t("source.published")}</dt>
+            <dd>{note.book.published}</dd>
+          </div>
+        )}
+        {note.book.isbn && (
+          <div>
+            <dt>{t("source.isbn")}</dt>
+            <dd>{note.book.isbn}</dd>
+          </div>
+        )}
+      </dl>
+      {note.book.note && (
+        <p className="notes-source-card__note">{note.book.note}</p>
+      )}
+    </aside>
+  ) : null;
 
   const articleLd = {
     "@context": "https://schema.org",
@@ -124,7 +172,20 @@ export default async function NotePage({ params }: Props) {
       "@id": `${SITE_URL}/#person`,
       name: "Nguyen Le Phong",
       url: SITE_URL
-    }
+    },
+    ...(note.book
+      ? {
+          about: {
+            "@type": "Book",
+            name: note.book.originalTitle ?? note.book.title,
+            alternateName: note.book.title,
+            author: note.book.authors.map((name) => ({
+              "@type": "Person",
+              name
+            }))
+          }
+        }
+      : {})
   };
 
   const breadcrumbLd = {
@@ -266,6 +327,8 @@ export default async function NotePage({ params }: Props) {
                   </dl>
                 </section>
               )}
+
+              {bookSourceCard}
 
               <BlogReactions
                 prompt={t("engagement.reactionsPrompt")}

@@ -198,6 +198,7 @@ export function loadNote(slug: string, locale?: string): Note | null {
     summary: override.summary ?? base.summary,
     html: override.html ?? base.html,
     tags: override.tags ?? base.tags,
+    book: override.book ?? base.book,
     faqs: override.faqs ?? base.faqs
   };
 }

@@ -23,6 +23,11 @@
   --serif: var(--font-reading-lora), Georgia, 'Times New Roman', serif;
 }
 
+html[data-reading-font='be-vietnam'] .notes-archive,
+html[data-reading-font='be-vietnam'] .notes-reading {
+  --serif: var(--font-reading-fraunces), Georgia, 'Times New Roman', serif;
+}
+
 [data-theme='dark'] .notes-archive,
 [data-theme='dark'] .notes-reading {
   --paper: oklch(17.5% 0.012 60);
@@ -452,6 +457,59 @@
 .notes-reading .blog-article__meta {
   font-family: var(--font-mono, monospace);
   color: var(--ink-faint);
+}
+
+.notes-source-card {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: color-mix(in oklab, var(--paper-2) 74%, transparent);
+}
+
+.notes-source-card__eyebrow {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--topic-ink, var(--gilt));
+}
+
+.notes-source-card__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1rem;
+  margin: 0;
+}
+
+.notes-source-card dt {
+  margin: 0 0 0.18rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}
+
+.notes-source-card dd {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.notes-source-card__note {
+  margin: 0.85rem 0 0;
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 640px) {
+  .notes-source-card__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Serif body for an immersive long-read; headings stay distinct. */
