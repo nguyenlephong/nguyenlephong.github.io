@@ -40,7 +40,8 @@ export const PAGE_SEO: Record<
       'GPA 3.36',
       'Very Good degree',
     ],
-    ogAlt: 'Nguyen Le Phong — 8+ years across product, platform, and technical leadership',
+    ogAlt:
+      'Nguyen Le Phong — 8+ years across product, platform, and technical leadership',
   },
   homeAlt: {
     title: 'Nguyen Le Phong — Software Engineer',
@@ -79,9 +80,9 @@ export const PAGE_SEO: Record<
     ogAlt: 'Nguyen Le Phong — Résumé (technical lead · ex-Zalo · ex-PrimeData)',
   },
   gallery: {
-    title: 'Gallery — Certifications, Awards & Projects',
+    title: 'Gallery — Career Signals Behind the Work',
     description:
-      'An evidence board of certifications, awards, project snapshots, and activity signals from Nguyen Le Phong as a software engineer.',
+      'A curated gallery of certifications, recognitions, project snapshots, and personal discipline signals that show how Nguyen Le Phong learns, builds, and delivers.',
     path: '/gallery',
     keywords: [
       'Nguyen Le Phong gallery',
@@ -91,7 +92,7 @@ export const PAGE_SEO: Record<
       'Cybersecurity certificate',
     ],
     ogAlt:
-      'Gallery — evidence board of certifications, awards, projects and activities',
+      'Gallery — career signals from certifications, recognitions, projects and steady practice',
   },
   apps: {
     title: 'Apps — A Showroom of Tiny, Crafted Tools',

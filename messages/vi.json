@@ -238,41 +238,100 @@
     },
     "gallery": {
       "eyebrow": "Bộ sưu tập",
-      "title": "Dấu ấn công việc",
-      "sub": "Một bảng bằng chứng tập trung: chứng chỉ, ghi nhận, khoảnh khắc dự án và những kỷ luật âm thầm phía sau công việc.",
+      "title": "Những mảnh ghép phía sau CV",
+      "sub": "CV thường kể rất nhanh: vai trò, công ty, kỹ năng. Trang này chậm hơn một chút, gom lại vài chứng chỉ, ghi nhận, dự án và khoảnh khắc đời thường để bạn thấy rõ hơn cách mình học, làm việc và đi đường dài.",
       "back": "← Quay lại CV",
       "all": "Tất cả",
-      "tabsLabel": "Bộ lọc bằng chứng trong gallery",
+      "tabsLabel": "Bộ lọc dấu ấn nghề nghiệp",
       "hero": {
-        "kicker": "Bảng bằng chứng",
-        "title": "Những điều đi xa hơn một bản CV",
-        "lead": "Có những tín hiệu đáng tin hơn khi được nhìn thấy: chứng chỉ, giải thưởng, ảnh dự án và thói quen giữ cho việc giao hàng luôn ổn định.",
-        "proofTitle": "Tín hiệu ngoài CV"
+        "kicker": "Một góc nhìn gần hơn",
+        "title": "Không chỉ là ảnh, mà là những chặng mình đã đi qua",
+        "lead": "Mỗi tấm ảnh ở đây gắn với một việc rất thật: học thêm một kỹ năng, hoàn thành một dự án, được team ghi nhận, hoặc tự rèn sức bền bên ngoài công việc. Mình muốn trang này đọc nhẹ như một câu chuyện, nhưng vẫn đủ rõ để người tuyển dụng có thêm niềm tin.",
+        "primaryCta": "Xem từng chặng",
+        "scanNote": "Nếu bạn đang đọc nhanh, hãy lướt phần tóm tắt trước rồi mở nhóm ảnh cần xem kỹ.",
+        "proofTitle": "Những chuyện nhỏ nói thêm về cách mình làm việc"
       },
       "stats": {
-        "label": "Tín hiệu trong gallery",
-        "proofs": "Bằng chứng",
+        "label": "Một vài con số nhỏ",
+        "proofs": "Mảnh ghép",
+        "proofsDetail": "Chứng chỉ, ảnh dự án và những khoảnh khắc có thật.",
         "certifications": "Chứng chỉ",
+        "certificationsDetail": "Những lần chủ động học thêm để làm việc chắc hơn.",
         "recognitions": "Ghi nhận",
-        "builds": "Dự án"
+        "recognitionsDetail": "Những ghi nhận đến từ quá trình làm thật, cùng team thật.",
+        "builds": "Dự án",
+        "buildsDetail": "Một vài sản phẩm, demo và bài làm đã thành hình."
+      },
+      "trust": {
+        "label": "Góc nhìn cho người tuyển dụng",
+        "title": "Có thể nhìn thấy gì ở đây?",
+        "learning": {
+          "title": "Biết học thêm khi công việc cần",
+          "body": "Mình không xem chứng chỉ là thứ để trang trí. Với mình, đó là cách nhắc bản thân phải hiểu kỹ hơn trước khi làm."
+        },
+        "delivery": {
+          "title": "Đi cùng công việc tới lúc hoàn thành",
+          "body": "Các dự án và ghi nhận ở đây cho thấy một điều giản dị: khi đã nhận việc, mình cố gắng đi tới cùng với team."
+        },
+        "team": {
+          "title": "Giữ được nhịp bền bỉ",
+          "body": "Những hoạt động ngoài công việc giúp mình rèn sức bền, giữ năng lượng và học cách kiên trì qua từng chặng."
+        }
       },
       "story": {
-        "label": "Tín hiệu nghề nghiệp",
-        "title": "Bốn cách đọc hành trình làm việc",
-        "body": "Gallery này được sắp theo dạng bằng chứng: đã học gì, được ghi nhận ở đâu, đã xây gì và cách việc thực hành vẫn tiếp tục ngoài phạm vi dự án chính thức."
+        "label": "Đọc theo một mạch",
+        "title": "Mỗi tấm ảnh là một đoạn đường nhỏ",
+        "body": "Có ảnh nói về việc học, có ảnh nói về team, có ảnh nói về những dự án từng làm, cũng có ảnh nhắc mình về sức bền. Gom lại, chúng kể một câu chuyện đơn giản hơn: mình vẫn đang cố gắng tốt lên từng chút."
       },
       "categoryNotes": {
-        "all": "Xem toàn bộ dấu vết công việc mà không biến nó thành một danh sách phẳng.",
-        "certificates": "Tín hiệu học tập, có link xác thực ở những nơi hỗ trợ.",
-        "awards": "Ghi nhận từ đội nhóm, chương trình và các thử thách cần sự bền bỉ.",
-        "projects": "Dấu vết từ những thứ đã xây, đã giao, đã hướng dẫn hoặc đã thử nghiệm.",
-        "activities": "Thói quen làm việc và khoảnh khắc cộng đồng đã góp phần định hình cách giao hàng."
+        "all": "Xem trọn mạch từ học tập, dự án, ghi nhận tới thói quen đi đường dài.",
+        "certificates": "Những lần học thêm để hiểu việc sâu hơn và làm cẩn thận hơn.",
+        "awards": "Những lời ghi nhận nhỏ cho sự chủ động, trách nhiệm và bền bỉ.",
+        "projects": "Những thứ từng được xây, được thử, được trình bày hoặc đưa vào làm thật.",
+        "activities": "Những khoảnh khắc đời thường giúp mình giữ năng lượng và sức bền."
       },
-      "featured": "Bằng chứng nổi bật",
-      "supporting": "Bằng chứng bổ trợ",
-      "openProof": "Mở bằng chứng",
+      "categoryIntros": {
+        "certificates": {
+          "body": "Đây là những lần mình chọn ngồi lại học thêm: có khi để hiểu rõ hơn về quality, có khi để cẩn thận hơn với compliance, security và cách sản phẩm vận hành ngoài đời thật.",
+          "signal": "Mình học đều để hiểu việc sâu hơn và làm chắc hơn theo thời gian."
+        },
+        "awards": {
+          "body": "Mỗi ghi nhận ở đây đều gắn với một giai đoạn cụ thể: có lúc mình mới vào việc, có lúc đi cùng team qua một thử thách, có lúc tự đặt mục tiêu dài hơi và hoàn thành nó.",
+          "signal": "Những ghi nhận này đến từ môi trường làm việc thật, nơi sự đều đặn và trách nhiệm được nhìn thấy rõ nhất."
+        },
+        "projects": {
+          "body": "Phần này là vài lát cắt từ sản phẩm, demo và bài làm. Điều mình quý không chỉ là màn hình cuối cùng, mà là quá trình biến một ý tưởng thành thứ có thể chạy, có thể giải thích và tiếp tục cải thiện.",
+          "signal": "Mình thích biến ý tưởng thành thứ cụ thể, chạy được, giải thích được và còn có thể cải thiện tiếp."
+        },
+        "activities": {
+          "body": "Có những thứ không nằm trong Jira ticket hay release note, nhưng vẫn ảnh hưởng trực tiếp tới cách làm việc: góc bàn, thói quen, sức bền và cách mình giữ nhịp qua những ngày dài.",
+          "signal": "Kỷ luật cá nhân giúp mình giữ sức bền để đi xa hơn cùng team."
+        }
+      },
+      "captions": {
+        "veryGood": "Tốt nghiệp loại Very Good, một dấu mốc nhắc mình về những năm học nghiêm túc.",
+        "scoreboard": "Bảng điểm và kết quả học tập, phần lặng lẽ phía sau một chặng đường dài.",
+        "testerCertificate": "Tester certificate, bài học về việc nhìn sản phẩm bằng con mắt kiểm chứng.",
+        "compliance": "Compliance Refresh Training, học cách giữ sản phẩm trong chuẩn mực an toàn và đúng quy trình.",
+        "cybersecurity": "Cybersecurity Refresh Training, nhắc mình luôn đặt bảo mật vào quá trình làm sản phẩm.",
+        "bestRookie": "Best Rookie of the Year, một ghi nhận cho giai đoạn vào việc nhanh và chịu khó.",
+        "splus": "Splus Certificate, một dấu mốc nhỏ từ những ngày làm việc cùng team.",
+        "primeAward": "Award at PrimeData, ghi nhận cho sự chủ động và trách nhiệm trong công việc.",
+        "upraceMedals": "UpRace medals, những lần chạy nhỏ giúp mình rèn sức bền ngoài công việc.",
+        "uprace323": "UpRace 323km, từng ki-lô-mét cộng lại thành một kết quả đáng nhớ.",
+        "penangHill": "Penang Hill 11km, một chặng leo núi nhắc mình rằng cứ đi đều rồi sẽ tới đỉnh.",
+        "deskWorking": "Một góc làm việc bình thường, nơi những việc quan trọng thường được lặp lại rất lặng lẽ.",
+        "chessProject": "Chess games project, một bài làm nhỏ từ logic, UI và cảm giác chơi.",
+        "watProject": "WAT project, một lát cắt từ quá trình làm sản phẩm trong môi trường team.",
+        "essay": "Bài luận và chia sẻ, nơi mình tập nói rõ hơn những điều mình nghĩ.",
+        "teamEssay": "Khoảnh khắc làm việc cùng team, vì ý tưởng chỉ thật sự có giá trị khi được triển khai.",
+        "drone": "Drone applications, thử đưa một ý tưởng thành mô hình có thể chạy được."
+      },
+      "featured": "Mảnh ghép nổi bật",
+      "supporting": "Mảnh ghép liên quan",
+      "openProof": "Mở mảnh ghép",
       "verified": "Nguồn xác thực",
-      "original": "Ảnh đầy đủ",
+      "original": "Xem ảnh đầy đủ",
       "categories": {
         "certificates": "Chứng chỉ",
         "awards": "Giải thưởng",

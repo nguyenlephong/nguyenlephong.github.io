@@ -257,39 +257,98 @@
     },
     "gallery": {
       "eyebrow": "作品集",
-      "title": "工作的印记",
-      "sub": "一个聚焦的证据看板：证书、认可、已交付项目的瞬间，以及支撑工作的日常纪律。",
+      "title": "工作背后的信号",
+      "sub": "一个小小的合集，记录我学过、做过、被认可过，以及持续练习的东西。如果简历展示角色，这里展示角色背后的工作节奏。",
       "back": "← 返回简历",
       "all": "全部",
-      "tabsLabel": "作品集证据筛选",
+      "tabsLabel": "职业信号筛选",
       "hero": {
-        "kicker": "证据看板",
-        "title": "超越简历的可见证明",
-        "lead": "有些信号在被看见时更容易被信任：证书、奖项、项目截图，以及让交付保持稳定的习惯。",
-        "proofTitle": "简历之外的信号"
+        "kicker": "Proof portfolio",
+        "title": "比几行简历更能说明问题的小信号",
+        "lead": "我把证书、认可、项目片段和一些日常瞬间放在这里，让读者能看到我如何学习、如何和团队协作，以及如何长期保持稳定的delivery。",
+        "primaryCta": "查看这些信号",
+        "scanNote": "给快速浏览的recruiter：先读故事，再按需要打开每一组证据。",
+        "proofTitle": "更接近真实工作方式的一面"
       },
       "stats": {
         "label": "作品集信号",
-        "proofs": "证据",
+        "proofs": "信号",
+        "proofsDetail": "可对照的图片、证书和工作瞬间。",
         "certifications": "证书",
+        "certificationsDetail": "为了更谨慎地工作而持续学习。",
         "recognitions": "认可",
-        "builds": "项目"
+        "recognitionsDetail": "来自团队、项目和长期挑战的结果。",
+        "builds": "项目",
+        "buildsDetail": "已经形成具体形态的产品、demo和作品。"
+      },
+      "trust": {
+        "label": "Recruiter lens",
+        "title": "如何阅读这一页",
+        "learning": {
+          "title": "持续学习和更新的习惯",
+          "body": "证书不是孤立的徽章；它们说明我习惯通过学习把工作处理得更稳。"
+        },
+        "delivery": {
+          "title": "对结果负责",
+          "body": "认可和项目片段说明我愿意和团队一起把事情推进到完成。"
+        },
+        "team": {
+          "title": "耐力与协作",
+          "body": "活动瞬间展示的是长期工作需要的能量、纪律和稳定性。"
+        }
       },
       "story": {
-        "label": "职业信号",
-        "title": "用四个角度读懂工作",
-        "body": "这个 Gallery 按证据组织：学到了什么、在哪些地方被认可、构建了什么，以及正式项目之外的实践如何持续。"
+        "label": "快速阅读方式",
+        "title": "不是照片墙，而是一条持续进步的痕迹",
+        "body": "每一组都回答一个小问题：我学到了什么，在哪里被信任，做过什么，以及在正式项目之外如何训练长期耐力。"
       },
       "categoryNotes": {
-        "all": "查看完整证据轨迹，而不是一份平铺列表。",
-        "certificates": "学习信号；可验证时附带验证链接。",
-        "awards": "来自团队、项目和耐力挑战的认可。",
+        "all": "从学习到delivery，按一条完整路径阅读。",
+        "certificates": "有目的的学习，让工作更扎实。",
+        "awards": "对主动性、稳定性和责任感的认可。",
         "projects": "构建、交付、教学或探索留下的痕迹。",
-        "activities": "塑造交付方式的工作习惯和社区时刻。"
+        "activities": "展示能量、纪律和长期习惯的日常瞬间。"
       },
-      "featured": "重点证据",
-      "supporting": "辅助证据",
-      "openProof": "打开证据",
+      "categoryIntros": {
+        "certificates": {
+          "body": "这一部分展示我如何继续打基础：更理解系统，也更谨慎地处理compliance、security和产品质量。",
+          "signal": "持续学习会让工作随着时间变得更扎实、更谨慎。"
+        },
+        "awards": {
+          "body": "这些认可不是终点，而是一些小节点：快速进入状态、承担责任，并在较长的挑战中坚持下去。",
+          "signal": "真实团队环境最能看见一个人的稳定性和责任感。"
+        },
+        "projects": {
+          "body": "这里有产品、demo和作品的一些切片。重要的不只是截图，而是把想法变成可运行、可解释、可改进的过程。",
+          "signal": "想法变成可运行、可解释、可持续改进的东西时，才更有意义。"
+        },
+        "activities": {
+          "body": "不是所有职业信号都在ticket或release里。有些个人节奏和习惯，支撑着可持续的工作状态。",
+          "signal": "个人纪律帮助我和团队保持更长期、稳定的节奏。"
+        }
+      },
+      "captions": {
+        "veryGood": "以Very Good成绩毕业 - 早期认真打下的学习基础。",
+        "scoreboard": "学习成绩记录 - 稳定积累的一小段痕迹。",
+        "testerCertificate": "Tester certificate - 学会用验证视角看产品质量。",
+        "compliance": "Compliance Refresh Training - 让产品工作更安全、更符合流程。",
+        "cybersecurity": "Cybersecurity Refresh Training - 在delivery中加强security思维。",
+        "bestRookie": "Best Rookie of the Year - 对快速进入状态和持续努力的认可。",
+        "splus": "Splus Certificate - 团队环境中的一个小节点。",
+        "primeAward": "Award at PrimeData - delivery中ownership和主动性的结果。",
+        "upraceMedals": "UpRace medals - 在工作之外训练长期节奏和耐力。",
+        "uprace323": "UpRace 323km - 小小的公里数累积成值得记住的结果。",
+        "penangHill": "Penang Hill 11km - 一段一段坚持，最后到达山顶。",
+        "deskWorking": "一个普通的工作角落 - 纪律每天都在这里重复。",
+        "chessProject": "Chess games project - 从逻辑、UI和游戏体验构建产品。",
+        "watProject": "WAT project - 团队产品工作留下的痕迹。",
+        "essay": "文章与分享 - 练习把想法讲清楚。",
+        "teamEssay": "团队协作的一刻 - 想法只有被一起实现时才更有价值。",
+        "drone": "Drone applications - 把产品想法探索到可运行模型。"
+      },
+      "featured": "重点信号",
+      "supporting": "补充信号",
+      "openProof": "打开信号",
       "verified": "已验证来源",
       "original": "完整图片",
       "categories": {

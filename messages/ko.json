@@ -257,39 +257,98 @@
     },
     "gallery": {
       "eyebrow": "갤러리",
-      "title": "작업의 기록",
-      "sub": "자격증, 인정, 전달한 프로젝트의 순간, 그리고 일을 지탱한 조용한 습관을 모은 증거 보드입니다.",
+      "title": "일 뒤에 남은 신호",
+      "sub": "배운 것, 만든 것, 인정받은 것, 그리고 계속 연습하는 것을 모은 작은 컬렉션입니다. CV가 역할을 보여준다면, 이 페이지는 그 역할 뒤의 일하는 리듬을 보여줍니다.",
       "back": "← 이력서로 돌아가기",
       "all": "전체",
-      "tabsLabel": "갤러리 증거 필터",
+      "tabsLabel": "커리어 신호 필터",
       "hero": {
-        "kicker": "증거 보드",
-        "title": "이력서를 넘어 전달되는 증거",
-        "lead": "자격증, 수상, 프로젝트 장면, 안정적인 전달을 만드는 습관은 눈에 보일 때 더 신뢰하기 쉽습니다.",
-        "proofTitle": "이력서 밖의 신호"
+        "kicker": "Proof portfolio",
+        "title": "CV 몇 줄보다 더 많은 것을 말해주는 작은 신호",
+        "lead": "자격증, 인정, 프로젝트 장면, 그리고 평범한 순간들을 모았습니다. 제가 어떻게 배우고, 팀과 일하고, 시간이 지나도 안정적인 delivery를 유지하는지 보여주기 위해서입니다.",
+        "primaryCta": "신호 보기",
+        "scanNote": "빠르게 보는 recruiter라면 먼저 이야기를 읽고, 필요한 그룹만 열어 확인할 수 있습니다.",
+        "proofTitle": "제가 일하는 방식이 조금 더 사람답게 보이는 한 장면"
       },
       "stats": {
         "label": "갤러리 신호",
-        "proofs": "증거",
+        "proofs": "신호",
+        "proofsDetail": "확인할 수 있는 이미지, 자격증, 순간들입니다.",
         "certifications": "자격증",
+        "certificationsDetail": "더 신중하게 일하기 위한 학습입니다.",
         "recognitions": "인정",
-        "builds": "프로젝트"
+        "recognitionsDetail": "팀, 프로그램, 긴 도전에서 나온 결과입니다.",
+        "builds": "프로젝트",
+        "buildsDetail": "구체적인 형태가 된 제품, 데모, 작업물입니다."
+      },
+      "trust": {
+        "label": "Recruiter lens",
+        "title": "이 페이지를 읽는 법",
+        "learning": {
+          "title": "계속 배우고 업데이트하는 습관",
+          "body": "자격증은 단순한 배지가 아니라, 일을 더 신중하게 처리하기 위해 배우는 습관을 보여줍니다."
+        },
+        "delivery": {
+          "title": "결과에 대한 책임감",
+          "body": "인정과 프로젝트 장면은 팀과 함께 일이 끝날 때까지 가는 태도를 보여줍니다."
+        },
+        "team": {
+          "title": "지구력과 협업",
+          "body": "활동 순간들은 장기적으로 일하기 위한 에너지, 규율, 꾸준함을 보여줍니다."
+        }
       },
       "story": {
-        "label": "커리어 신호",
-        "title": "일을 읽는 네 가지 방식",
-        "body": "이 갤러리는 배운 것, 인정받은 지점, 만든 것, 그리고 공식 프로젝트 밖에서도 이어진 실천을 증거로 정리합니다."
+        "label": "빠르게 읽는 법",
+        "title": "사진 벽이 아니라 꾸준히 나아온 흔적",
+        "body": "각 그룹은 작은 질문에 답합니다. 무엇을 배웠는지, 어디에서 신뢰받았는지, 무엇을 만들었는지, 그리고 공식 업무 밖에서 어떻게 지구력을 기르는지입니다."
       },
       "categoryNotes": {
-        "all": "단순한 목록으로 만들지 않고 전체 증거 흐름을 봅니다.",
-        "certificates": "가능한 곳에는 검증 링크가 있는 학습 신호입니다.",
-        "awards": "팀, 프로그램, 꾸준함이 필요한 도전에서 받은 인정입니다.",
+        "all": "학습에서 delivery까지의 흐름을 한 번에 봅니다.",
+        "certificates": "일을 더 탄탄하게 만드는 의도적인 학습입니다.",
+        "awards": "주도성, 꾸준함, 책임감에 대한 인정입니다.",
         "projects": "만들고, 전달하고, 가르치고, 탐색한 것의 흔적입니다.",
-        "activities": "전달 방식을 만든 업무 습관과 커뮤니티 순간입니다."
+        "activities": "에너지, 규율, 장기적인 습관이 보이는 평범한 순간입니다."
       },
-      "featured": "주요 증거",
-      "supporting": "보조 증거",
-      "openProof": "증거 열기",
+      "categoryIntros": {
+        "certificates": {
+          "body": "이 섹션은 제가 기반을 계속 다지는 방식을 보여줍니다. 시스템을 더 잘 이해하고, compliance, security, 제품 품질을 더 신중하게 다루기 위한 학습입니다.",
+          "signal": "꾸준한 학습은 시간이 지날수록 일을 더 단단하고 신중하게 만듭니다."
+        },
+        "awards": {
+          "body": "이 인정들은 끝점이 아닙니다. 빠르게 적응하고, 책임을 들고, 긴 도전을 이어간 시기의 작은 이정표입니다.",
+          "signal": "실제 팀 환경에서는 꾸준함과 책임감이 더 분명하게 드러납니다."
+        },
+        "projects": {
+          "body": "제품, 데모, 작업물의 일부입니다. 중요한 것은 스크린샷만이 아니라, 아이디어를 실행 가능하고 설명 가능하며 개선 가능한 형태로 만드는 과정입니다.",
+          "signal": "아이디어는 실행되고 설명되며 계속 개선될 수 있을 때 더 의미 있어집니다."
+        },
+        "activities": {
+          "body": "모든 커리어 신호가 ticket이나 release 안에 있는 것은 아닙니다. 개인의 리듬과 습관은 오래 일할 에너지를 지탱합니다.",
+          "signal": "개인의 규율은 팀과 더 오래 안정적으로 가는 힘을 만들어 줍니다."
+        }
+      },
+      "captions": {
+        "veryGood": "Very Good 등급 졸업 - 초기에 성실하게 쌓은 학습 기반입니다.",
+        "scoreboard": "학습 결과 - 꾸준함의 작은 흔적입니다.",
+        "testerCertificate": "Tester certificate - 검증 관점으로 제품 품질을 보는 연습입니다.",
+        "compliance": "Compliance Refresh Training - 안전하고 절차를 이해하는 제품 작업입니다.",
+        "cybersecurity": "Cybersecurity Refresh Training - delivery 안에서 security 사고를 강화합니다.",
+        "bestRookie": "Best Rookie of the Year - 빠른 적응과 꾸준한 노력에 대한 인정입니다.",
+        "splus": "Splus Certificate - 팀 환경에서의 작은 이정표입니다.",
+        "primeAward": "Award at PrimeData - delivery에서 ownership과 주도성이 만든 결과입니다.",
+        "upraceMedals": "UpRace medals - 일 밖에서도 긴 리듬과 지구력을 기릅니다.",
+        "uprace323": "UpRace 323km - 작은 거리들이 모여 기억에 남는 결과가 됩니다.",
+        "penangHill": "Penang Hill 11km - 한 구간씩 올라 정상에 닿은 기록입니다.",
+        "deskWorking": "평범한 작업 공간 - 규율이 매일 반복되는 곳입니다.",
+        "chessProject": "Chess games project - 로직, UI, 플레이 감각으로 만든 경험입니다.",
+        "watProject": "WAT project - 팀 환경에서의 제품 작업 흔적입니다.",
+        "essay": "글쓰기와 공유 - 아이디어를 명확하게 설명하는 연습입니다.",
+        "teamEssay": "팀워크의 한 장면 - 아이디어는 함께 구현될 때 더 가치가 있습니다.",
+        "drone": "Drone applications - 제품 아이디어를 실행 가능한 모델까지 탐색했습니다."
+      },
+      "featured": "주요 신호",
+      "supporting": "보조 신호",
+      "openProof": "신호 열기",
       "verified": "검증된 출처",
       "original": "전체 이미지",
       "categories": {

@@ -238,39 +238,98 @@
     },
     "gallery": {
       "eyebrow": "Gallery",
-      "title": "A record of the work",
-      "sub": "A focused evidence board of certifications, recognitions, shipped project moments, and the off-screen discipline behind the work.",
+      "title": "Signals behind the work",
+      "sub": "A small collection of what I have learned, built, earned, and kept practicing. If the resume shows the roles, this page shows the working rhythm behind them.",
       "back": "← Back to CV",
       "all": "All",
-      "tabsLabel": "Gallery evidence filters",
+      "tabsLabel": "Career signal filters",
       "hero": {
-        "kicker": "Evidence board",
-        "title": "Proof that travels beyond the resume",
-        "lead": "Some signals are easier to trust when they are visible: certificates, awards, project snapshots, and the habits that keep delivery steady.",
-        "proofTitle": "Signals beyond a resume"
+        "kicker": "Proof portfolio",
+        "title": "Small signals that say more than a few resume lines",
+        "lead": "I keep certificates, recognitions, project snapshots, and a few ordinary moments here so readers can see how I learn, work with teams, and keep delivery steady over time.",
+        "primaryCta": "View the signals",
+        "scanNote": "For recruiters scanning quickly: start with the story, then open each proof group when you need details.",
+        "proofTitle": "A more human slice of how I work"
       },
       "stats": {
         "label": "Gallery signals",
-        "proofs": "Proofs",
+        "proofs": "Signals",
+        "proofsDetail": "Images, certificates, and moments that can be checked.",
         "certifications": "Certifications",
+        "certificationsDetail": "Learning done to make the work more careful.",
         "recognitions": "Recognitions",
-        "builds": "Builds"
+        "recognitionsDetail": "Results from teams, programs, and long-form challenges.",
+        "builds": "Builds",
+        "buildsDetail": "Products, demos, and work that reached a concrete shape."
+      },
+      "trust": {
+        "label": "Recruiter lens",
+        "title": "How to read this page",
+        "learning": {
+          "title": "A habit of learning and updating",
+          "body": "The certificates are not isolated badges; they show a habit of learning to handle work with more care."
+        },
+        "delivery": {
+          "title": "Responsibility for outcomes",
+          "body": "The recognitions and project snapshots point to staying with a team until the work is finished."
+        },
+        "team": {
+          "title": "Endurance and collaboration",
+          "body": "The activity moments show how I keep energy, discipline, and consistency for long-term work."
+        }
       },
       "story": {
-        "label": "Career signals",
-        "title": "Four ways to read the work",
-        "body": "The gallery is organized as evidence: what was learned, where the work was recognized, what was built, and how the practice continued outside formal project walls."
+        "label": "Quick reading guide",
+        "title": "Not a photo wall, but a trace of steady progress",
+        "body": "Each group answers a small question: what I learned, where the work was trusted, what I built, and how I train endurance outside formal project work."
       },
       "categoryNotes": {
-        "all": "View the full proof trail without flattening it into a plain list.",
-        "certificates": "Learning signals with verifiable links where available.",
-        "awards": "Recognition from teams, programs, and endurance challenges.",
+        "all": "Read the full path from learning to delivery in one flow.",
+        "certificates": "Intentional learning that makes the work more grounded.",
+        "awards": "Recognition for ownership, steadiness, and responsibility.",
         "projects": "Artifacts from things built, shipped, taught, or explored.",
-        "activities": "Work habits and community moments that shaped delivery."
+        "activities": "Ordinary moments that show energy, discipline, and long-game habits."
       },
-      "featured": "Spotlight proof",
-      "supporting": "Supporting evidence",
-      "openProof": "Open proof",
+      "categoryIntros": {
+        "certificates": {
+          "body": "This section shows how I keep strengthening the base: learning to understand systems better, and to be more careful with compliance, security, and product quality.",
+          "signal": "Steady learning helps the work become more careful over time."
+        },
+        "awards": {
+          "body": "These recognitions are not endpoints. They are small markers from periods where I picked things up quickly, carried responsibility, and stayed with longer challenges.",
+          "signal": "Real team environments show whether consistency can be trusted."
+        },
+        "projects": {
+          "body": "A few slices from products, demos, and coursework. The point is not only the screenshot, but the process of turning an idea into something runnable, explainable, and improvable.",
+          "signal": "Ideas matter more when they become something people can run, explain, and improve."
+        },
+        "activities": {
+          "body": "Not every career signal lives inside a ticket or release. Some habits, work corners, and personal rhythms help me keep enough energy to work sustainably.",
+          "signal": "Personal discipline helps keep the pace steady for a longer road with the team."
+        }
+      },
+      "captions": {
+        "veryGood": "Graduated with Very Good classification - an early foundation built with care.",
+        "scoreboard": "Scoreboard and study results - a small trace of consistency.",
+        "testerCertificate": "Tester certificate - learning to see product quality through a verification lens.",
+        "compliance": "Compliance Refresh Training - keeping product work safe and process-aware.",
+        "cybersecurity": "Cybersecurity Refresh Training - reinforcing security thinking in delivery.",
+        "bestRookie": "Best Rookie of the Year - recognition for ramping up quickly and staying diligent.",
+        "splus": "Splus Certificate - a small milestone from a teamwork environment.",
+        "primeAward": "Award at PrimeData - a result of ownership and initiative in delivery.",
+        "upraceMedals": "UpRace medals - building endurance outside work to keep a steady long-term rhythm.",
+        "uprace323": "UpRace 323km - small kilometers adding up to a memorable result.",
+        "penangHill": "Penang Hill 11km - reaching the top one patient section at a time.",
+        "deskWorking": "An ordinary work corner - where discipline repeats day by day.",
+        "chessProject": "Chess games project - building from logic, UI, and the feel of play.",
+        "watProject": "WAT project - a trace from product work in a team environment.",
+        "essay": "Essay and sharing - practicing how to explain ideas clearly.",
+        "teamEssay": "A moment of teamwork - ideas matter more when they are implemented together.",
+        "drone": "Drone applications - exploring a product idea until it becomes a runnable model."
+      },
+      "featured": "Spotlight signal",
+      "supporting": "Supporting signals",
+      "openProof": "Open signal",
       "verified": "Verified source",
       "original": "Full image",
       "categories": {

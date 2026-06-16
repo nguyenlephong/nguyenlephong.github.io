@@ -257,39 +257,98 @@
     },
     "gallery": {
       "eyebrow": "ギャラリー",
-      "title": "仕事の記録",
-      "sub": "証明書、評価、納品したプロジェクトの瞬間、そして仕事を支える静かな習慣をまとめた証跡ボードです。",
+      "title": "仕事の裏側にあるシグナル",
+      "sub": "学んだこと、作ったもの、受けた評価、そして続けている習慣をまとめた小さなコレクションです。CVが役割を示すなら、このページはその裏にある働き方を見せます。",
       "back": "← 履歴書へ戻る",
       "all": "すべて",
-      "tabsLabel": "ギャラリー証跡フィルター",
+      "tabsLabel": "キャリアシグナルのフィルター",
       "hero": {
-        "kicker": "証跡ボード",
-        "title": "履歴書の外まで届く証拠",
-        "lead": "証明書、受賞、プロジェクトの記録、安定したデリバリーを支える習慣は、目に見える形になると信頼しやすくなります。",
-        "proofTitle": "履歴書を超えるシグナル"
+        "kicker": "Proof portfolio",
+        "title": "CVの数行よりも多くを語る小さなシグナル",
+        "lead": "証明書、評価、プロジェクトの記録、そして日常の瞬間をここにまとめています。学び方、チームでの働き方、deliveryを安定させるリズムが見えるようにするためです。",
+        "primaryCta": "シグナルを見る",
+        "scanNote": "急いで確認するrecruiter向け: まずストーリーを読み、必要なグループだけ開いて確認できます。",
+        "proofTitle": "働き方が少し具体的に見える一面"
       },
       "stats": {
         "label": "ギャラリーのシグナル",
-        "proofs": "証跡",
+        "proofs": "シグナル",
+        "proofsDetail": "確認できる画像、証明書、仕事の瞬間。",
         "certifications": "証明書",
+        "certificationsDetail": "より丁寧に働くための学習。",
         "recognitions": "評価",
-        "builds": "制作"
+        "recognitionsDetail": "チーム、プログラム、長い挑戦からの結果。",
+        "builds": "制作",
+        "buildsDetail": "具体的な形になったプロダクト、デモ、成果物。"
+      },
+      "trust": {
+        "label": "Recruiter lens",
+        "title": "このページの読み方",
+        "learning": {
+          "title": "学び続ける習慣",
+          "body": "証明書は単なるバッジではなく、より注意深く仕事をするために学び続ける姿勢を示しています。"
+        },
+        "delivery": {
+          "title": "結果への責任",
+          "body": "評価やプロジェクトの記録は、チームと一緒に完了まで進める姿勢を示しています。"
+        },
+        "team": {
+          "title": "継続力とコラボレーション",
+          "body": "活動の瞬間は、長期的に働くためのエネルギー、規律、一貫性を表しています。"
+        }
       },
       "story": {
-        "label": "キャリアのシグナル",
-        "title": "仕事を読む四つの視点",
-        "body": "このギャラリーは、何を学んだか、どこで評価されたか、何を作ったか、そして正式なプロジェクトの外でも実践が続いているかを証跡として整理しています。"
+        "label": "クイックガイド",
+        "title": "写真の壁ではなく、少しずつ進んできた跡",
+        "body": "各グループは小さな問いに答えます。何を学んだか、どこで信頼されたか、何を作ったか、そして正式な仕事以外でどう継続力を育てているか。"
       },
       "categoryNotes": {
-        "all": "単なる一覧にせず、証跡全体の流れを見る。",
-        "certificates": "可能なものは検証リンク付きの学習シグナル。",
-        "awards": "チーム、プログラム、継続力を要する挑戦からの評価。",
+        "all": "学習からdeliveryまでの流れをまとめて見る。",
+        "certificates": "仕事をより確かなものにするための意図的な学習。",
+        "awards": "主体性、安定感、責任感への評価。",
         "projects": "作り、届け、教え、試したものの記録。",
-        "activities": "デリバリーの姿勢を形づくった仕事習慣とコミュニティの瞬間。"
+        "activities": "エネルギー、規律、長く続ける習慣が見える日常の瞬間。"
       },
-      "featured": "注目の証跡",
-      "supporting": "補足証跡",
-      "openProof": "証跡を開く",
+      "categoryIntros": {
+        "certificates": {
+          "body": "このセクションは、システム理解、compliance、security、プロダクト品質をより丁寧に扱うために土台を強くしてきた跡です。",
+          "signal": "継続して学ぶことで、仕事は少しずつ丁寧で確かなものになります。"
+        },
+        "awards": {
+          "body": "これらの評価はゴールではありません。早く立ち上がり、責任を持ち、長い挑戦を進めた時期の小さな節目です。",
+          "signal": "実際のチーム環境では、安定した姿勢と信頼性がよく見えます。"
+        },
+        "projects": {
+          "body": "プロダクト、デモ、課題の一部です。大切なのはスクリーンショットだけでなく、アイデアを動くもの、説明できるもの、改善できるものにする過程です。",
+          "signal": "アイデアは、動かせて、説明できて、改善し続けられる形になった時により意味を持ちます。"
+        },
+        "activities": {
+          "body": "すべてのキャリアシグナルがticketやreleaseの中にあるわけではありません。日々のリズムや習慣が、持続的に働くエネルギーを支えます。",
+          "signal": "個人の規律は、チームと長く安定して進む力を支えてくれます。"
+        }
+      },
+      "captions": {
+        "veryGood": "Very Goodで卒業 - 早い段階から丁寧に作った学習の土台。",
+        "scoreboard": "学習結果 - 継続の小さな跡。",
+        "testerCertificate": "Tester certificate - 検証の視点で品質を見る練習。",
+        "compliance": "Compliance Refresh Training - 安全で手順を意識したプロダクト作り。",
+        "cybersecurity": "Cybersecurity Refresh Training - deliveryの中でsecurity思考を強める。",
+        "bestRookie": "Best Rookie of the Year - 早く立ち上がり、丁寧に取り組んだことへの評価。",
+        "splus": "Splus Certificate - チーム環境での小さな節目。",
+        "primeAward": "Award at PrimeData - deliveryにおけるownershipと主体性の結果。",
+        "upraceMedals": "UpRace medals - 仕事の外でも長期的なリズムを鍛える。",
+        "uprace323": "UpRace 323km - 小さな距離の積み重ねが記憶に残る結果になる。",
+        "penangHill": "Penang Hill 11km - 一歩ずつ進んで頂上に届く。",
+        "deskWorking": "普通の作業スペース - 規律が毎日繰り返される場所。",
+        "chessProject": "Chess games project - ロジック、UI、遊び心から作った体験。",
+        "watProject": "WAT project - チーム環境でのプロダクト作業の記録。",
+        "essay": "エッセイと共有 - アイデアを明確に伝える練習。",
+        "teamEssay": "チームでの一場面 - アイデアは一緒に実装されてこそ価値を持つ。",
+        "drone": "Drone applications - アイデアを動くモデルにするまでの探索。"
+      },
+      "featured": "注目のシグナル",
+      "supporting": "補足シグナル",
+      "openProof": "シグナルを開く",
       "verified": "検証済みソース",
       "original": "フル画像",
       "categories": {

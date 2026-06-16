@@ -257,39 +257,98 @@
     },
     "gallery": {
       "eyebrow": "Galerie",
-      "title": "Le journal de mes travaux",
-      "sub": "Un tableau de preuves ciblé: certifications, reconnaissances, moments de projet livrés et discipline discrète derrière le travail.",
+      "title": "Les signaux derrière le travail",
+      "sub": "Une petite collection de ce que j'ai appris, construit, reçu comme reconnaissance et continué à pratiquer. Si le CV montre les rôles, cette page montre le rythme de travail derrière eux.",
       "back": "← Retour au CV",
       "all": "Tout",
-      "tabsLabel": "Filtres de preuves de la galerie",
+      "tabsLabel": "Filtres des signaux de carrière",
       "hero": {
-        "kicker": "Tableau de preuves",
-        "title": "Des preuves qui vont au-delà du CV",
-        "lead": "Certains signaux inspirent plus confiance quand ils sont visibles: certificats, prix, captures de projets et habitudes qui rendent la livraison régulière.",
-        "proofTitle": "Signaux au-delà du CV"
+        "kicker": "Portfolio de preuves",
+        "title": "De petits signaux qui disent plus que quelques lignes de CV",
+        "lead": "Je rassemble ici certificats, reconnaissances, aperçus de projets et moments ordinaires pour montrer comment j'apprends, travaille avec une équipe et garde un delivery régulier.",
+        "primaryCta": "Voir les signaux",
+        "scanNote": "Pour les recruteurs pressés: commencez par l'histoire, puis ouvrez chaque groupe quand un détail mérite d'être vérifié.",
+        "proofTitle": "Une tranche plus humaine de ma façon de travailler"
       },
       "stats": {
         "label": "Signaux de la galerie",
-        "proofs": "Preuves",
+        "proofs": "Signaux",
+        "proofsDetail": "Images, certificats et moments que l'on peut vérifier.",
         "certifications": "Certifications",
+        "certificationsDetail": "Apprentissages faits pour travailler avec plus de soin.",
         "recognitions": "Reconnaissances",
-        "builds": "Réalisations"
+        "recognitionsDetail": "Résultats venus des équipes, programmes et défis longs.",
+        "builds": "Réalisations",
+        "buildsDetail": "Produits, démos et travaux arrivés à une forme concrète."
+      },
+      "trust": {
+        "label": "Regard recruteur",
+        "title": "Comment lire cette page",
+        "learning": {
+          "title": "Un rythme d'apprentissage continu",
+          "body": "Les certificats ne sont pas de simples badges; ils montrent l'habitude d'apprendre pour travailler avec plus de précision."
+        },
+        "delivery": {
+          "title": "Responsabilité du résultat",
+          "body": "Les reconnaissances et projets montrent la capacité à rester avec l'équipe jusqu'à ce que le travail soit terminé."
+        },
+        "team": {
+          "title": "Endurance et collaboration",
+          "body": "Les moments d'activité montrent l'énergie, la discipline et la constance nécessaires au travail long terme."
+        }
       },
       "story": {
-        "label": "Signaux de carrière",
-        "title": "Quatre façons de lire le travail",
-        "body": "La galerie est organisée comme un ensemble de preuves: ce qui a été appris, où le travail a été reconnu, ce qui a été construit et comment la pratique continue hors des projets officiels."
+        "label": "Guide de lecture rapide",
+        "title": "Pas un mur de photos, mais une trace de progrès régulier",
+        "body": "Chaque groupe répond à une petite question: ce que j'ai appris, où le travail a été reconnu, ce que j'ai construit et comment je cultive l'endurance hors des projets formels."
       },
       "categoryNotes": {
-        "all": "Voir toute la trace de preuves sans la réduire à une simple liste.",
-        "certificates": "Signaux d'apprentissage avec liens de vérification quand ils existent.",
-        "awards": "Reconnaissance d'équipes, de programmes et de défis d'endurance.",
+        "all": "Lire le chemin complet, de l'apprentissage au delivery.",
+        "certificates": "Apprentissage intentionnel pour rendre le travail plus solide.",
+        "awards": "Reconnaissance de l'ownership, de la constance et de la responsabilité.",
         "projects": "Traces de choses construites, livrées, enseignées ou explorées.",
-        "activities": "Habitudes de travail et moments collectifs qui ont façonné la livraison."
+        "activities": "Moments ordinaires qui montrent énergie, discipline et habitudes de long terme."
       },
-      "featured": "Preuve en avant",
-      "supporting": "Preuves complémentaires",
-      "openProof": "Ouvrir la preuve",
+      "categoryIntros": {
+        "certificates": {
+          "body": "Cette partie montre comment je renforce la base: mieux comprendre les systèmes, et travailler plus prudemment avec la compliance, la sécurité et la qualité produit.",
+          "signal": "L'apprentissage régulier rend le travail plus solide avec le temps."
+        },
+        "awards": {
+          "body": "Ces reconnaissances ne sont pas des points d'arrivée. Ce sont de petits jalons de périodes où j'ai appris vite, porté la responsabilité et tenu dans la durée.",
+          "signal": "Les environnements d'équipe réels montrent mieux la constance et la fiabilité."
+        },
+        "projects": {
+          "body": "Quelques extraits de produits, démos et travaux. L'important n'est pas seulement l'image, mais le passage d'une idée à quelque chose qui fonctionne, s'explique et s'améliore.",
+          "signal": "Une idée devient plus utile quand elle peut fonctionner, s'expliquer et continuer à s'améliorer."
+        },
+        "activities": {
+          "body": "Tous les signaux de carrière ne vivent pas dans un ticket ou une release. Certains rythmes personnels aident à garder l'énergie nécessaire pour travailler durablement.",
+          "signal": "La discipline personnelle aide à garder un rythme stable avec l'équipe sur la durée."
+        }
+      },
+      "captions": {
+        "veryGood": "Diplôme avec mention Very Good - une base construite tôt avec sérieux.",
+        "scoreboard": "Résultats d'étude - une petite trace de régularité.",
+        "testerCertificate": "Tester certificate - apprendre à regarder la qualité produit par la vérification.",
+        "compliance": "Compliance Refresh Training - garder le travail produit sûr et conscient des règles.",
+        "cybersecurity": "Cybersecurity Refresh Training - renforcer la pensée sécurité dans le delivery.",
+        "bestRookie": "Best Rookie of the Year - reconnaissance d'une montée en charge rapide et sérieuse.",
+        "splus": "Splus Certificate - un petit jalon dans un environnement d'équipe.",
+        "primeAward": "Award at PrimeData - résultat d'ownership et d'initiative dans le delivery.",
+        "upraceMedals": "Médailles UpRace - entraîner l'endurance hors du travail.",
+        "uprace323": "UpRace 323km - de petits kilomètres qui deviennent un résultat mémorable.",
+        "penangHill": "Penang Hill 11km - atteindre le sommet étape par étape.",
+        "deskWorking": "Un coin de travail ordinaire - là où la discipline se répète chaque jour.",
+        "chessProject": "Chess games project - construire avec logique, UI et sensation de jeu.",
+        "watProject": "WAT project - trace d'un produit en environnement d'équipe.",
+        "essay": "Essai et partage - pratiquer l'explication claire des idées.",
+        "teamEssay": "Moment de teamwork - une idée compte davantage quand elle est mise en œuvre.",
+        "drone": "Drone applications - explorer une idée produit jusqu'à un modèle exécutable."
+      },
+      "featured": "Signal en avant",
+      "supporting": "Signaux complémentaires",
+      "openProof": "Ouvrir le signal",
       "verified": "Source vérifiée",
       "original": "Image complète",
       "categories": {
