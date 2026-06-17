@@ -1369,11 +1369,6 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   transition: color var(--d-fast), background var(--d-fast);
 }
 .footer-social a:hover { color: var(--fg); background: var(--bg-muted); }
-.footer-bottom {
-  display: flex;
-  align-items: center;
-  justify-self: end;
-}
 .footer-copy {
   font-size: var(--text-xs);
   color: var(--fg-subtle);
@@ -1389,15 +1384,6 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   color: var(--fg-subtle);
   opacity: 0.55;
   letter-spacing: 0.04em;
-}
-.footer-controls {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-@media (max-width: 720px) {
-  .footer-bottom { justify-self: center; justify-content: center; }
-  .footer-controls { justify-content: center; }
 }
 
 /* =========================================================
@@ -1468,6 +1454,17 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   transform: rotate(180deg);
   color: var(--fg);
 }
+.locale-menu--compact .locale-menu-trigger {
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+}
+.locale-menu--compact .locale-menu-trigger .locale-name,
+.locale-menu--compact .locale-menu-trigger .locale-caret {
+  display: none;
+}
 
 .locale-menu-list {
   position: absolute;
@@ -1492,6 +1489,12 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
     transform var(--d-fast);
   z-index: 50;
   backdrop-filter: saturate(140%) blur(6px);
+}
+.locale-menu--down .locale-menu-list {
+  top: calc(100% + 0.5rem);
+  bottom: auto;
+  transform: translateY(-6px) scale(0.97);
+  transform-origin: top right;
 }
 .locale-menu.is-open .locale-menu-list {
   opacity: 1;
@@ -1551,6 +1554,10 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
     right: 50%;
     transform-origin: bottom center;
     transform: translate(50%, 6px) scale(0.97);
+  }
+  .locale-menu--down .locale-menu-list {
+    transform-origin: top center;
+    transform: translate(50%, -6px) scale(0.97);
   }
   .locale-menu.is-open .locale-menu-list {
     transform: translate(50%, 0) scale(1);

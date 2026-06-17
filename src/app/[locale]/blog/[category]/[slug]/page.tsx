@@ -26,6 +26,7 @@ import BlogReadingTracker from '@/components/blog/BlogReadingTracker'
 import { EngagementProvider } from '@/components/blog/EngagementProvider'
 import BlogViewCount from '@/components/blog/BlogViewCount'
 import BlogShareDock from '@/components/blog/BlogShareDock'
+import BlogReaderTools from '@/components/blog/BlogReaderTools'
 import BlogReactions from '@/components/blog/BlogReactions'
 import BlogRelatedPosts from '@/components/blog/BlogRelatedPosts'
 import '../../blog.css'
@@ -157,6 +158,22 @@ export default async function BlogPostPage({ params }: Props) {
       '@type': 'Blog',
       '@id': canonicalFor(locale, '/blog') + '#blog',
     },
+    ...(post.book
+      ? {
+          isBasedOn: {
+            '@type': 'Book',
+            name: post.book.title,
+            alternateName: post.book.originalTitle,
+            author: post.book.authors.map((name) => ({
+              '@type': 'Person',
+              name,
+            })),
+            publisher: post.book.publisher,
+            datePublished: post.book.published,
+            isbn: post.book.isbn,
+          },
+        }
+      : {}),
     author: {
       '@type': 'Person',
       '@id': `${SITE_URL}/#person`,
@@ -232,6 +249,15 @@ export default async function BlogPostPage({ params }: Props) {
           category={category}
           slug={slug}
           readingMinutes={post.readingMinutes}
+        />
+        <BlogReaderTools
+          labels={{
+            label: t('readerTools.label'),
+            scrollTop: t('readerTools.scrollTop'),
+            scrollBottom: t('readerTools.scrollBottom'),
+            font: t('readerTools.font'),
+            language: t('readerTools.language'),
+          }}
         />
         <div className="blog-article__main">
           <div className="blog-article__reader">

@@ -373,6 +373,13 @@
       "empty": "Chưa có bài nào — bài đầu tiên đang trên đường tới.",
       "backToNotes": "Quay lại Ghi chép",
       "onThisPage": "Trong bài này",
+      "readerTools": {
+        "label": "Công cụ đọc",
+        "scrollTop": "Lên đầu bài",
+        "scrollBottom": "Xuống cuối bài",
+        "font": "Đổi font đọc",
+        "language": "Đổi ngôn ngữ"
+      },
       "faqHeading": "Câu hỏi thường gặp",
       "nextUp": "Bài tiếp theo",
       "previously": "Bài trước",
@@ -448,6 +455,13 @@
       "articleCount": "{count, plural, other {# bài viết}}",
       "writtenBy": "Bởi {author}",
       "onThisPage": "Trong bài này",
+      "readerTools": {
+        "label": "Công cụ đọc",
+        "scrollTop": "Lên đầu bài",
+        "scrollBottom": "Xuống cuối bài",
+        "font": "Đổi font đọc",
+        "language": "Đổi ngôn ngữ"
+      },
       "partOf": "Phần {part}/{total}",
       "nextUp": "Bài tiếp theo",
       "previously": "Bài trước",

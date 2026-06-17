@@ -392,6 +392,13 @@
       "empty": "まだノートがありません — 最初の一篇がもうすぐ。",
       "backToNotes": "ノートに戻る",
       "onThisPage": "このページの内容",
+      "readerTools": {
+        "label": "読書ツール",
+        "scrollTop": "先頭へ移動",
+        "scrollBottom": "末尾へ移動",
+        "font": "読書フォントを変更",
+        "language": "言語を変更"
+      },
       "faqHeading": "よくある質問",
       "nextUp": "次のノート",
       "previously": "前のノート",
@@ -457,6 +464,13 @@
       "articleCount": "{count, plural, other {# 件の記事}}",
       "writtenBy": "著者：{author}",
       "onThisPage": "目次",
+      "readerTools": {
+        "label": "読書ツール",
+        "scrollTop": "先頭へ移動",
+        "scrollBottom": "末尾へ移動",
+        "font": "読書フォントを変更",
+        "language": "言語を変更"
+      },
       "partOf": "全 {total} 回中第 {part} 回",
       "nextUp": "次の記事",
       "previously": "前の記事",

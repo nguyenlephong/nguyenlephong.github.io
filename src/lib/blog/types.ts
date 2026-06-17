@@ -36,6 +36,22 @@ export interface BlogPostMeta {
   seriesOrder?: number
 }
 
+export interface BlogBookSource {
+  /** Localized or commonly used title in this article. */
+  title: string
+  /** Original title of the book, when different or useful for attribution. */
+  originalTitle?: string
+  /** Book authors, not the author of this website article. */
+  authors: string[]
+  /** Named contributors credited by the source book. */
+  contributors?: string[]
+  publisher?: string
+  published?: string
+  isbn?: string
+  /** Short editorial note about how this article relates to the book. */
+  note?: string
+}
+
 export interface BlogFaq {
   /** Question (plain text) */
   q: string
@@ -46,6 +62,8 @@ export interface BlogFaq {
 export interface BlogPost extends BlogPostMeta {
   /** Pre-rendered HTML body (server-trusted, authored in-repo) */
   html: string
+  /** Optional source book metadata for book reflections. */
+  book?: BlogBookSource
   /** Optional FAQ — rendered as a section and emitted as FAQPage JSON-LD */
   faqs?: BlogFaq[]
 }

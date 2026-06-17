@@ -6,8 +6,6 @@ import { LuAppWindow } from 'react-icons/lu'
 import { SiLeetcode } from 'react-icons/si'
 import { APP_ROUTE, profileInfo } from '@/app/app.const'
 import { track } from '@/lib/analytics'
-import LocaleSwitcher from '@/components/LocaleSwitcher'
-import FontSwitcher from '@/components/font/FontSwitcher'
 
 const year = new Date().getFullYear()
 
@@ -87,13 +85,6 @@ export default function AppFooter() {
               </span>
             )}
           </p>
-        </div>
-
-        <div className="footer-bottom">
-          <div className="footer-controls">
-            <FontSwitcher placement="up" />
-            <LocaleSwitcher />
-          </div>
         </div>
       </div>
     </footer>

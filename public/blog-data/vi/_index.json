@@ -156,6 +156,96 @@
       "featured": true
     },
     {
+      "slug": "software-measurement-estimation-practical-approach",
+      "category": "ways-of-working",
+      "title": "Software Measurement and Estimation: bớt quản lý bằng cảm giác, ra quyết định bằng dữ liệu",
+      "summary": "Một bài reflection từ cuốn Software Measurement and Estimation: A Practical Approach của Linda M. Laird và M. Carol Brennan. Bài viết giữ lại những ý có thể dùng trong team phần mềm: đo từ quyết định cần ra, estimate như một vùng bất định thay vì lời hứa, nhìn chất lượng trước ngày release và giữ dashboard đủ nhỏ để thật sự giúp hành động.",
+      "date": "2026-06-17",
+      "readingMinutes": 17,
+      "tags": [
+        "Software Measurement",
+        "Estimation",
+        "Quản lý kỹ thuật",
+        "Quản lý dự án",
+        "Chất lượng phần mềm",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "agile-estimating-planning-estimates-are-conversations",
+      "category": "ways-of-working",
+      "title": "Agile Estimating and Planning: estimate là cuộc trò chuyện, không phải lời hứa",
+      "summary": "Một bài reflection từ cuốn Agile Estimating and Planning của Mike Cohn về story points, velocity, planning poker, ideal days và cách nói về estimate trung thực hơn trong team phần mềm.",
+      "date": "2026-06-17",
+      "readingMinutes": 14,
+      "tags": [
+        "Agile Estimating",
+        "Story Points",
+        "Velocity",
+        "Planning Poker",
+        "Lập kế hoạch phần mềm",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "agile-release-planning-value-risk-feedback",
+      "category": "ways-of-working",
+      "title": "Agile Release Planning: lập kế hoạch bằng giá trị, rủi ro và feedback thật",
+      "summary": "Bài reflection thứ hai từ Agile Estimating and Planning, tập trung vào release planning: ưu tiên theo value và risk, tách user story thành lát cắt có giá trị, dùng buffer cho bất định và giao tiếp kế hoạch trung thực hơn.",
+      "date": "2026-06-17",
+      "readingMinutes": 19,
+      "tags": [
+        "Agile Planning",
+        "Release Planning",
+        "Product Prioritization",
+        "User Stories",
+        "Risk Management",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "design-of-everyday-things-clear-signals-feedback",
+      "category": "ways-of-working",
+      "title": "The Design of Everyday Things: đừng bắt người dùng đoán sản phẩm muốn gì",
+      "summary": "Một bài reflection từ The Design of Everyday Things của Don Norman cho team phần mềm và product: discoverability, signifier, mapping, feedback, conceptual model và cách một interface rõ ràng giúp người dùng không phải đoán mò.",
+      "date": "2026-06-17",
+      "readingMinutes": 13,
+      "tags": [
+        "UX Design",
+        "Human-Centered Design",
+        "Thiết kế sản phẩm",
+        "Interaction Design",
+        "Design Systems",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "design-of-everyday-things-human-error-system-design",
+      "category": "ways-of-working",
+      "title": "The Design of Everyday Things: “lỗi người dùng” thường là lỗi thiết kế hệ thống",
+      "summary": "Bài reflection thứ hai từ The Design of Everyday Things của Don Norman về slip, mistake, constraint, forcing function, checklist, undo, root-cause analysis và cách product team thiết kế hệ thống biết hấp thụ giới hạn bình thường của con người thay vì chỉ trách người dùng.",
+      "date": "2026-06-17",
+      "readingMinutes": 14,
+      "tags": [
+        "Human Error",
+        "System Design",
+        "UX Design",
+        "Safety",
+        "Vận hành sản phẩm",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
       "slug": "ambition-in-the-age-of-ai",
       "category": "ai",
       "title": "Trong thời đại AI, tham vọng nên lớn hơn nỗi sợ",

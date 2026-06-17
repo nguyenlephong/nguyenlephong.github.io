@@ -392,6 +392,13 @@
       "empty": "还没有笔记 —— 第一篇即将到来。",
       "backToNotes": "返回笔记",
       "onThisPage": "本页内容",
+      "readerTools": {
+        "label": "阅读工具",
+        "scrollTop": "回到顶部",
+        "scrollBottom": "前往底部",
+        "font": "更改阅读字体",
+        "language": "切换语言"
+      },
       "faqHeading": "常见问题",
       "nextUp": "下一篇笔记",
       "previously": "上一篇笔记",
@@ -457,6 +464,13 @@
       "articleCount": "{count, plural, other {# 篇文章}}",
       "writtenBy": "作者：{author}",
       "onThisPage": "本页内容",
+      "readerTools": {
+        "label": "阅读工具",
+        "scrollTop": "回到顶部",
+        "scrollBottom": "前往底部",
+        "font": "更改阅读字体",
+        "language": "切换语言"
+      },
       "partOf": "第 {part} 篇，共 {total} 篇",
       "nextUp": "下一篇",
       "previously": "上一篇",

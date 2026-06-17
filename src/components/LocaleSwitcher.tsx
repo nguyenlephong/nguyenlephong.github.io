@@ -6,7 +6,15 @@ import { routing, LOCALE_LABELS, type Locale } from '@/i18n/routing'
 import { LuCheck, LuChevronDown } from 'react-icons/lu'
 import { track } from '@/lib/analytics'
 
-export default function LocaleSwitcher() {
+interface LocaleSwitcherProps {
+  placement?: 'up' | 'down'
+  compact?: boolean
+}
+
+export default function LocaleSwitcher({
+  placement = 'up',
+  compact = false,
+}: LocaleSwitcherProps) {
   const t = useTranslations('Footer')
   const router = useRouter()
   const pathname = usePathname()
@@ -53,7 +61,15 @@ export default function LocaleSwitcher() {
   return (
     <div
       ref={rootRef}
-      className={`locale-menu${open ? ' is-open' : ''}${isPending ? ' is-pending' : ''}`}
+      className={[
+        'locale-menu',
+        `locale-menu--${placement}`,
+        compact ? 'locale-menu--compact' : '',
+        open ? 'is-open' : '',
+        isPending ? 'is-pending' : '',
+      ]
+        .filter(Boolean)
+        .join(' ')}
     >
       <button
         ref={triggerRef}
@@ -62,6 +78,7 @@ export default function LocaleSwitcher() {
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={t('language')}
+        title={t('language')}
         onClick={() => setOpen((v) => !v)}
       >
         <span className="locale-flag" aria-hidden="true">{current.flag}</span>

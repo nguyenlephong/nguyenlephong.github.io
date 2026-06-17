@@ -392,6 +392,13 @@
       "empty": "Aucune note pour l'instant — la première arrive bientôt.",
       "backToNotes": "Retour aux notes",
       "onThisPage": "Sur cette page",
+      "readerTools": {
+        "label": "Outils de lecture",
+        "scrollTop": "Remonter en haut",
+        "scrollBottom": "Aller en bas",
+        "font": "Changer la police de lecture",
+        "language": "Changer de langue"
+      },
       "faqHeading": "Questions fréquentes",
       "nextUp": "Note suivante",
       "previously": "Note précédente",
@@ -457,6 +464,13 @@
       "articleCount": "{count, plural, one {# article} other {# articles}}",
       "writtenBy": "Par {author}",
       "onThisPage": "Sur cette page",
+      "readerTools": {
+        "label": "Outils de lecture",
+        "scrollTop": "Remonter en haut",
+        "scrollBottom": "Aller en bas",
+        "font": "Changer la police de lecture",
+        "language": "Changer de langue"
+      },
       "partOf": "Partie {part} sur {total}",
       "nextUp": "À suivre",
       "previously": "Précédemment",

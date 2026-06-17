@@ -373,6 +373,13 @@
       "empty": "No notes yet — the first one is on its way.",
       "backToNotes": "Back to notes",
       "onThisPage": "On this page",
+      "readerTools": {
+        "label": "Reader tools",
+        "scrollTop": "Scroll to top",
+        "scrollBottom": "Scroll to bottom",
+        "font": "Change reading font",
+        "language": "Change language"
+      },
       "faqHeading": "Frequently asked questions",
       "nextUp": "Next note",
       "previously": "Previous note",
@@ -448,6 +455,13 @@
       "articleCount": "{count, plural, =0 {No articles} one {# article} other {# articles}}",
       "writtenBy": "By {author}",
       "onThisPage": "On this page",
+      "readerTools": {
+        "label": "Reader tools",
+        "scrollTop": "Scroll to top",
+        "scrollBottom": "Scroll to bottom",
+        "font": "Change reading font",
+        "language": "Change language"
+      },
       "partOf": "Part {part} of {total}",
       "nextUp": "Next up",
       "previously": "Previously",

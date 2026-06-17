@@ -156,6 +156,96 @@
       "featured": true
     },
     {
+      "slug": "software-measurement-estimation-practical-approach",
+      "category": "ways-of-working",
+      "title": "Software Measurement and Estimation: Fewer Gut Feelings, Better Engineering Decisions",
+      "summary": "A practical reflection on Software Measurement and Estimation: A Practical Approach by Linda M. Laird and M. Carol Brennan. The article focuses on the ideas engineers can use at work: measure from decisions, estimate as uncertainty instead of promise, track quality before release, and keep dashboards useful instead of decorative.",
+      "date": "2026-06-17",
+      "readingMinutes": 16,
+      "tags": [
+        "Software Measurement",
+        "Estimation",
+        "Engineering Management",
+        "Project Management",
+        "Software Quality",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "agile-estimating-planning-estimates-are-conversations",
+      "category": "ways-of-working",
+      "title": "Agile Estimating and Planning: Estimates Are Conversations, Not Promises",
+      "summary": "A practical reflection from Mike Cohn’s Agile Estimating and Planning on story points, velocity, planning poker, ideal days, and why estimates should expose uncertainty instead of pretending to remove it.",
+      "date": "2026-06-17",
+      "readingMinutes": 13,
+      "tags": [
+        "Agile Estimating",
+        "Story Points",
+        "Velocity",
+        "Planning Poker",
+        "Software Planning",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "agile-release-planning-value-risk-feedback",
+      "category": "ways-of-working",
+      "title": "Agile Release Planning: Plan with Value, Risk, and Real Feedback",
+      "summary": "A second reflection from Agile Estimating and Planning, focused on release planning: prioritizing by value and risk, splitting stories into useful slices, using buffers for uncertainty, and communicating plans without pretending the future is fixed.",
+      "date": "2026-06-17",
+      "readingMinutes": 18,
+      "tags": [
+        "Agile Planning",
+        "Release Planning",
+        "Product Prioritization",
+        "User Stories",
+        "Risk Management",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "design-of-everyday-things-clear-signals-feedback",
+      "category": "ways-of-working",
+      "title": "The Design of Everyday Things: Make the Interface Explain Itself",
+      "summary": "A practical reflection from Don Norman’s The Design of Everyday Things for software and product teams: discoverability, signifiers, mapping, feedback, conceptual models, and why a clear interface should not make users guess what it wants.",
+      "date": "2026-06-17",
+      "readingMinutes": 12,
+      "tags": [
+        "UX Design",
+        "Human-Centered Design",
+        "Product Design",
+        "Interaction Design",
+        "Design Systems",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "design-of-everyday-things-human-error-system-design",
+      "category": "ways-of-working",
+      "title": "The Design of Everyday Things: Human Error Is Often System Design",
+      "summary": "A second reflection from Don Norman’s The Design of Everyday Things on slips, mistakes, constraints, forcing functions, checklists, undo, root-cause analysis, and how product teams can design systems that absorb ordinary human limits instead of blaming users.",
+      "date": "2026-06-17",
+      "readingMinutes": 13,
+      "tags": [
+        "Human Error",
+        "System Design",
+        "UX Design",
+        "Safety",
+        "Product Operations",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
       "slug": "ambition-in-the-age-of-ai",
       "category": "ai",
       "title": "Your Fear of AI Is the Size of Your Ambition: Why It’s Time to Aim Dramatically Bigger",

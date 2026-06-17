@@ -392,6 +392,13 @@
       "empty": "아직 노트가 없습니다 — 첫 번째 글이 곧 올라옵니다.",
       "backToNotes": "노트로 돌아가기",
       "onThisPage": "이 페이지에서",
+      "readerTools": {
+        "label": "읽기 도구",
+        "scrollTop": "맨 위로 이동",
+        "scrollBottom": "맨 아래로 이동",
+        "font": "읽기 글꼴 변경",
+        "language": "언어 변경"
+      },
       "faqHeading": "자주 묻는 질문",
       "nextUp": "다음 노트",
       "previously": "이전 노트",
@@ -457,6 +464,13 @@
       "articleCount": "{count, plural, other {# 개의 글}}",
       "writtenBy": "작성자: {author}",
       "onThisPage": "목차",
+      "readerTools": {
+        "label": "읽기 도구",
+        "scrollTop": "맨 위로 이동",
+        "scrollBottom": "맨 아래로 이동",
+        "font": "읽기 글꼴 변경",
+        "language": "언어 변경"
+      },
       "partOf": "{total}부 중 {part}부",
       "nextUp": "다음 글",
       "previously": "이전 글",

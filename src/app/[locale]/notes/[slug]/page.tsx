@@ -23,6 +23,7 @@ import BlogContent from "@/components/blog/BlogContent";
 import BlogToc from "@/components/blog/BlogToc";
 import BlogViewCount from "@/components/blog/BlogViewCount";
 import BlogShareDock from "@/components/blog/BlogShareDock";
+import BlogReaderTools from "@/components/blog/BlogReaderTools";
 import BlogReactions from "@/components/blog/BlogReactions";
 import BlogReadingTracker from "@/components/blog/BlogReadingTracker";
 import { EngagementProvider } from "@/components/blog/EngagementProvider";
@@ -256,6 +257,15 @@ export default async function NotePage({ params }: Props) {
           category="notes"
           slug={slug}
           readingMinutes={note.readingMinutes}
+        />
+        <BlogReaderTools
+          labels={{
+            label: t("readerTools.label"),
+            scrollTop: t("readerTools.scrollTop"),
+            scrollBottom: t("readerTools.scrollBottom"),
+            font: t("readerTools.font"),
+            language: t("readerTools.language")
+          }}
         />
         <div className="blog-article__main">
           <div className="blog-article__reader">
