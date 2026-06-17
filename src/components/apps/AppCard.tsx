@@ -1,8 +1,9 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { AppShowcaseItem } from '@/app/[locale]/apps/apps.data'
+import { Link } from '@/i18n/navigation'
+import EnglishVisual from './EnglishVisual'
 import GlanceVisual from './GlanceVisual'
 import { track } from '@/lib/analytics'
 
@@ -28,6 +29,7 @@ function StatusBadge({ status }: { status: AppShowcaseItem['status'] }) {
 
 function renderVisual(visual: AppShowcaseItem['visual']) {
   if (visual === 'glance') return <GlanceVisual />
+  if (visual === 'english') return <EnglishVisual />
   return <div className="app-visual app-visual--placeholder" aria-hidden="true" />
 }
 
@@ -60,7 +62,7 @@ export default function AppCard({ app, index }: AppCardProps) {
     return () => observer.disconnect()
   }, [app.id, app.name, app.status, index])
 
-  const handleLinkClick = (kind: 'repo' | 'download' | 'docs' | 'website'): void => {
+  const handleLinkClick = (kind: 'app' | 'repo' | 'download' | 'docs' | 'website'): void => {
     track('apps_link_click', {
       app_id: app.id,
       app_name: app.name,
@@ -140,6 +142,15 @@ export default function AppCard({ app, index }: AppCardProps) {
           </div>
 
           <div className="app-card-actions">
+            {app.links.app && (
+              <Link
+                href={app.links.app}
+                className="btn btn-primary"
+                onClick={() => handleLinkClick('app')}
+              >
+                Open app
+              </Link>
+            )}
             {app.links.repo && (
               <Link
                 href={app.links.repo}

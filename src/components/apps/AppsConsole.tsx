@@ -21,9 +21,10 @@ import { APP_ROUTE } from '@/app/app.const'
 import type { AppShowcaseItem } from '@/app/[locale]/apps/apps.data'
 import { Link } from '@/i18n/navigation'
 import { track } from '@/lib/analytics'
+import EnglishVisual from './EnglishVisual'
 import GlanceVisual from './GlanceVisual'
 
-type LinkKind = 'repo' | 'download' | 'docs' | 'website'
+type LinkKind = 'app' | 'repo' | 'download' | 'docs' | 'website'
 
 interface AppsConsoleProps {
   apps: AppShowcaseItem[]
@@ -64,6 +65,7 @@ const copy = {
       wip: 'In progress',
     },
     links: {
+      app: 'Mở app',
       repo: 'Source',
       download: 'Download',
       docs: 'Docs',
@@ -106,6 +108,7 @@ const copy = {
       wip: 'In progress',
     },
     links: {
+      app: 'Open app',
       repo: 'Source',
       download: 'Download',
       docs: 'Docs',
@@ -123,6 +126,7 @@ function getCopy(locale: string) {
 
 function renderVisual(visual: AppShowcaseItem['visual']) {
   if (visual === 'glance') return <GlanceVisual />
+  if (visual === 'english') return <EnglishVisual />
   return <div className="app-visual app-visual--placeholder" aria-hidden="true" />
 }
 
@@ -259,6 +263,7 @@ export default function AppsConsole({ apps, locale }: AppsConsoleProps) {
   }
 
   const actionLinks = [
+    { kind: 'app', href: activeApp.links.app, label: t.links.app, icon: LuArrowUpRight, variant: 'btn-primary' },
     { kind: 'repo', href: activeApp.links.repo, label: t.links.repo, icon: LuGithub, variant: 'btn-primary' },
     {
       kind: 'download',
@@ -453,18 +458,19 @@ export default function AppsConsole({ apps, locale }: AppsConsoleProps) {
                 .filter((link) => Boolean(link.href))
                 .map((link) => {
                   const Icon = link.icon
+                  const isExternal = link.kind !== 'app'
                   return (
                     <Link
                       key={link.kind}
                       href={link.href ?? '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={isExternal ? '_blank' : undefined}
+                      rel={isExternal ? 'noopener noreferrer' : undefined}
                       className={`btn ${link.variant}`}
                       onClick={() => trackLink(link.kind)}
                     >
                       <Icon aria-hidden="true" />
                       {link.label}
-                      <LuArrowUpRight aria-hidden="true" />
+                      {isExternal && <LuArrowUpRight aria-hidden="true" />}
                     </Link>
                   )
                 })}
