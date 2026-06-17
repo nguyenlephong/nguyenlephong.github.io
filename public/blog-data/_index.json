@@ -143,7 +143,7 @@
       "title": "Cognitive Debt in AI-Assisted Development: When Code Grows Faster Than Understanding",
       "summary": "AI coding tools can make a team produce code faster than it can understand, review, debug, and safely operate that code. This article explains cognitive debt, how it differs from technical debt and intent debt, why agentic coding makes it more visible, and the practical controls teams can use: smaller batches, better PR rationale, human-owned invariants, disposable prototypes, and AI used to repay understanding instead of only generating more work.",
       "date": "2026-06-17",
-      "readingMinutes": 14,
+      "readingMinutes": 15,
       "tags": [
         "AI",
         "Cognitive Debt",
