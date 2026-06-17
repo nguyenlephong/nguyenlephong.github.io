@@ -156,6 +156,86 @@
       "featured": true
     },
     {
+      "slug": "lean-business-analysis-value-needs-business-case",
+      "category": "ways-of-working",
+      "title": "Lean Business Analysis: bắt đầu từ value, đừng bắt đầu bằng requirement",
+      "summary": "Một bài mở đầu thực tế về Lean Business Analysis: vì sao BA nên bắt đầu từ value, Needs Assessment giúp team tránh giải sai vấn đề thế nào, và Business Case nên là công cụ ra quyết định thay vì một tài liệu làm cho đủ.",
+      "date": "2026-06-17",
+      "readingMinutes": 14,
+      "tags": [
+        "Business Analysis",
+        "Lean BA",
+        "Needs Assessment",
+        "Business Case",
+        "Product Discovery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "lean-business-analysis",
+      "seriesOrder": 1
+    },
+    {
+      "slug": "lean-ba-planning-stakeholders-elicitation",
+      "category": "ways-of-working",
+      "title": "Lean BA Planning: stakeholders, elicitation và những câu hỏi phía sau requirement",
+      "summary": "Một hướng dẫn thực tế về BA Planning theo Lean: stakeholder analysis, nhịp BA trong predictive và adaptive project, lập kế hoạch elicitation, và khác biệt giữa ghi lại request với khơi ra nhu cầu thật.",
+      "date": "2026-06-17",
+      "readingMinutes": 15,
+      "tags": [
+        "Business Analysis",
+        "Stakeholder Management",
+        "Elicitation",
+        "Agile",
+        "Requirements",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "lean-business-analysis",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "requirements-modeling-for-business-analysis",
+      "category": "ways-of-working",
+      "title": "Requirements Modeling: BA biến cuộc trò chuyện rối thành bức tranh chung như thế nào",
+      "summary": "Một hướng dẫn bình tĩnh và thực tế về requirements modeling: scope, process, rule, data và interface models, kèm ví dụ về cách diagram và mô tả có cấu trúc giúp team nghĩ cùng nhau trước khi build.",
+      "date": "2026-06-17",
+      "readingMinutes": 16,
+      "tags": [
+        "Business Analysis",
+        "Requirements Modeling",
+        "Process Modeling",
+        "User Stories",
+        "Data Modeling",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "lean-business-analysis",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "requirements-quality-traceability-solution-evaluation",
+      "category": "ways-of-working",
+      "title": "Requirements Quality, Traceability và Solution Evaluation: giữ lời hứa sau sign-off",
+      "summary": "Một bài reflection thực tế về nửa sau của Business Analysis: requirement quality, prioritization, traceability, change control, UAT, rollout, transition và đánh giá solution có thật sự tạo outcome không.",
+      "date": "2026-06-17",
+      "readingMinutes": 16,
+      "tags": [
+        "Business Analysis",
+        "Requirements Quality",
+        "Traceability",
+        "UAT",
+        "Change Management",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "lean-business-analysis",
+      "seriesOrder": 4
+    },
+    {
       "slug": "software-measurement-estimation-practical-approach",
       "category": "ways-of-working",
       "title": "Software Measurement and Estimation: bớt quản lý bằng cảm giác, ra quyết định bằng dữ liệu",

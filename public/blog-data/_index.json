@@ -156,6 +156,86 @@
       "featured": true
     },
     {
+      "slug": "lean-business-analysis-value-needs-business-case",
+      "category": "ways-of-working",
+      "title": "Lean Business Analysis: Start from Value, Not Requirements",
+      "summary": "A practical introduction to Lean Business Analysis: why BA starts with value, how needs assessment protects teams from solving the wrong problem, and how a business case keeps decisions grounded without turning analysis into ceremony.",
+      "date": "2026-06-17",
+      "readingMinutes": 13,
+      "tags": [
+        "Business Analysis",
+        "Lean BA",
+        "Needs Assessment",
+        "Business Case",
+        "Product Discovery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "lean-business-analysis",
+      "seriesOrder": 1
+    },
+    {
+      "slug": "lean-ba-planning-stakeholders-elicitation",
+      "category": "ways-of-working",
+      "title": "Lean BA Planning: Stakeholders, Elicitation, and the Questions Behind Requirements",
+      "summary": "A practical guide to Lean BA planning: stakeholder analysis, predictive versus adaptive BA rhythms, elicitation planning, and the difference between collecting stated requests and uncovering the need behind them.",
+      "date": "2026-06-17",
+      "readingMinutes": 14,
+      "tags": [
+        "Business Analysis",
+        "Stakeholder Management",
+        "Elicitation",
+        "Agile",
+        "Requirements",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "lean-business-analysis",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "requirements-modeling-for-business-analysis",
+      "category": "ways-of-working",
+      "title": "Requirements Modeling: How BA Turns Messy Conversations into Shared Pictures",
+      "summary": "A calm, practical guide to requirements modeling: scope, process, rule, data, and interface models, with examples of how diagrams and structured descriptions help teams reason together before building.",
+      "date": "2026-06-17",
+      "readingMinutes": 15,
+      "tags": [
+        "Business Analysis",
+        "Requirements Modeling",
+        "Process Modeling",
+        "User Stories",
+        "Data Modeling",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "lean-business-analysis",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "requirements-quality-traceability-solution-evaluation",
+      "category": "ways-of-working",
+      "title": "Requirements Quality, Traceability, and Solution Evaluation: Keep the Promise After Sign-off",
+      "summary": "A practical reflection on the later half of Business Analysis: requirement quality, prioritization, traceability, change control, UAT, rollout choices, transition, and evaluating whether the delivered solution actually worked.",
+      "date": "2026-06-17",
+      "readingMinutes": 15,
+      "tags": [
+        "Business Analysis",
+        "Requirements Quality",
+        "Traceability",
+        "UAT",
+        "Change Management",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "lean-business-analysis",
+      "seriesOrder": 4
+    },
+    {
       "slug": "software-measurement-estimation-practical-approach",
       "category": "ways-of-working",
       "title": "Software Measurement and Estimation: Fewer Gut Feelings, Better Engineering Decisions",
