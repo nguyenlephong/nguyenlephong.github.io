@@ -138,6 +138,24 @@
       "seriesOrder": 11
     },
     {
+      "slug": "cognitive-debt-ai-assisted-development",
+      "category": "ai",
+      "title": "Cognitive debt trong AI-assisted development: khi code lớn nhanh hơn mức team hiểu",
+      "summary": "AI coding tools có thể làm team sinh code nhanh hơn tốc độ team hiểu, review, debug và vận hành an toàn phần code đó. Bài viết giải thích cognitive debt, khác gì technical debt và intent debt, vì sao agentic coding làm khoản nợ này rõ hơn, và các cách giảm rủi ro: giới hạn batch size, bắt PR nói rõ why/invariant/rollback, giữ checkpoint con người, xem prototype AI là bản nháp, và dùng AI để trả nợ hiểu biết thay vì chỉ tạo thêm artifact.",
+      "date": "2026-06-17",
+      "readingMinutes": 14,
+      "tags": [
+        "AI",
+        "Cognitive Debt",
+        "AI Agent",
+        "Software Engineering",
+        "Code Review",
+        "Văn hoá kỹ thuật"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "ambition-in-the-age-of-ai",
       "category": "ai",
       "title": "Trong thời đại AI, tham vọng nên lớn hơn nỗi sợ",
