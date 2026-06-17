@@ -5,22 +5,6 @@ import type { Note, NoteMeta, NotesIndexFile, TopicMeta } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "public", "notes-data");
 const EMPTY_INDEX: NotesIndexFile = { topics: [], posts: [] };
-const TOPIC_READING_ORDERS: Record<string, string[]> = {
-  "mua-nha": [
-    "mua-nha-nhung-dieu-can-biet",
-    "chi-phi-mua-nha-toan-bo-nhung-khoan-can-biet",
-    "vay-ngan-hang-mua-nha-don-bay-thong-minh",
-    "phap-ly-bat-dong-san-nhung-dieu-can-biet",
-    "chon-vi-tri-va-quy-hoach-khi-mua-nha",
-    "dinh-gia-va-thuong-luong-gia-mua-nha",
-    "quy-trinh-mua-nha-tu-a-den-z",
-    "chung-cu-vs-nha-dat-va-mua-nha-du-an",
-    "doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong",
-    "phong-thuy-mua-nha-tieu-chi-can-biet",
-    "tam-ly-mua-nha-tranh-bay-nguoi-ban",
-    "bay-mat-tien-khi-mua-nha-cac-kich-ban-can-tranh"
-  ]
-};
 
 export interface TopicReadingContext {
   topic: TopicMeta | null;
@@ -132,14 +116,8 @@ export function getTopicReadingContext(
   const topicNotes = current.topic
     ? visibleNotes.filter((p) => p.topic === current.topic)
     : [];
-  const orderedSlugs = current.topic
-    ? TOPIC_READING_ORDERS[current.topic]
-    : undefined;
-  const topicOrderedNotes = orderedSlugs
-    ? orderNotesBySlugs(topicNotes, orderedSlugs)
-    : topicNotes;
-  const scope = topicOrderedNotes.length > 1 ? "topic" : "all";
-  const notes = scope === "topic" ? topicOrderedNotes : visibleNotes;
+  const scope = topicNotes.length > 1 ? "topic" : "all";
+  const notes = scope === "topic" ? topicNotes : visibleNotes;
   const index = notes.findIndex((p) => p.slug === slug);
 
   if (index === -1) return null;
@@ -152,20 +130,6 @@ export function getTopicReadingContext(
     prev: notes[index - 1] ?? null,
     next: notes[index + 1] ?? null
   };
-}
-
-function orderNotesBySlugs(
-  notes: NoteMeta[],
-  orderedSlugs: string[]
-): NoteMeta[] {
-  const orderIndex = new Map(orderedSlugs.map((s, i) => [s, i]));
-  const orderedNotes = notes
-    .filter((p) => orderIndex.has(p.slug))
-    .sort((a, b) => orderIndex.get(a.slug)! - orderIndex.get(b.slug)!);
-  const extraNotes = notes
-    .filter((p) => !orderIndex.has(p.slug))
-    .sort(byDateDesc);
-  return [...orderedNotes, ...extraNotes];
 }
 
 /** (locale, slug) pairs for static generation — one per locale a note serves. */
