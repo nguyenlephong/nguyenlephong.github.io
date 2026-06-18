@@ -236,6 +236,86 @@
       "seriesOrder": 4
     },
     {
+      "slug": "data-mastery-kinh-chan-gio-cho-doanh-nghiep",
+      "category": "ways-of-working",
+      "title": "Data: dữ liệu là kính chắn gió cho người điều hành",
+      "summary": "Một bài reflection từ Data: Harness Your Numbers to Go from Uncertain to Unstoppable về cách dữ liệu giúp người điều hành thoát khỏi trạng thái lái doanh nghiệp trong mù mờ. Bài viết nhìn Data Component của EOS như một hệ thống giúp giảm lo âu, kiểm tra trực giác, tránh sống bằng hy vọng, nối Visionary và Integrator bằng cùng một thực tế, và biến dữ liệu thành tự do lãnh đạo thay vì một bảng số gây áp lực.",
+      "date": "2026-06-16",
+      "readingMinutes": 11,
+      "tags": [
+        "Business Data",
+        "EOS",
+        "Business Operations",
+        "Leadership",
+        "Decision Making",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "series": "data-eos-operating-system",
+      "seriesOrder": 1
+    },
+    {
+      "slug": "data-mastery-scorecard-mot-trang-so-de-thay-som-van-de",
+      "category": "ways-of-working",
+      "title": "Data: Scorecard là một trang số để thấy sớm vấn đề",
+      "summary": "Một bài reflection từ Data về Scorecard trong EOS: vì sao doanh nghiệp không cần hàng chục KPI để hiểu sức khỏe vận hành, mà cần một nhóm nhỏ measurables đủ đúng, đủ đều, đủ predictive. Bài viết bàn về Scorecard như check engine light, khác biệt giữa P&L và leading indicators, cách reverse-engineer từ kết quả mong muốn, nhịp đo hằng tuần, range goals, và những bẫy phổ biến khi đo quá nhiều hoặc đo thứ dễ đo thay vì thứ cần đo.",
+      "date": "2026-06-16",
+      "readingMinutes": 11,
+      "tags": [
+        "Business Data",
+        "EOS",
+        "Scorecard",
+        "KPIs",
+        "Business Operations",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "data-eos-operating-system",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "data-mastery-everyone-has-a-number",
+      "category": "ways-of-working",
+      "title": "Data: Everyone Has a Number không phải là giám sát",
+      "summary": "Một bài reflection từ Data về nguyên tắc Everyone Has a Number trong EOS. Bài viết nhìn số đo cá nhân như một món quà về clarity: giúp mỗi người biết mình thắng bằng cách nào, manager bớt đánh giá bằng cảm giác, team giải quyết vấn đề nhanh hơn, cạnh tranh lành mạnh hơn, và accountability trở thành nền tảng của trust thay vì một công cụ kiểm soát lạnh lùng.",
+      "date": "2026-06-16",
+      "readingMinutes": 10,
+      "tags": [
+        "Business Data",
+        "EOS",
+        "Accountability",
+        "Leadership",
+        "Team Management",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "data-eos-operating-system",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "data-mastery-cash-khong-phai-doanh-thu",
+      "category": "ways-of-working",
+      "title": "Data: doanh thu không phải cash, và profit cũng chưa chắc là tiền sống",
+      "summary": "Một bài reflection từ Data về chương Cash: vì sao một doanh nghiệp có sales tốt hoặc profit trên giấy vẫn có thể căng dòng tiền. Bài viết diễn giải sự khác nhau giữa sales, profit và cash; vì sao cả leadership team cần financial literacy cơ bản; cách nối hành động hằng ngày với gross margin, rework, collections, expenses và cash flow; và vì sao hiểu tiền không cần công thức phức tạp mà cần sự rõ ràng, nhịp đo và các quyết định thực tế.",
+      "date": "2026-06-16",
+      "readingMinutes": 10,
+      "tags": [
+        "Business Data",
+        "EOS",
+        "Cash Flow",
+        "Financial Literacy",
+        "Business Operations",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "data-eos-operating-system",
+      "seriesOrder": 4
+    },
+    {
       "slug": "software-measurement-estimation-practical-approach",
       "category": "ways-of-working",
       "title": "Software Measurement and Estimation: bớt quản lý bằng cảm giác, ra quyết định bằng dữ liệu",
