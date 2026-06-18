@@ -12,6 +12,16 @@
       "sans": "Sans-serif",
       "serif": "Serif"
     },
+    "background": {
+      "label": "Nền đọc",
+      "plain": "Mặc định",
+      "parchment": "Giấy cũ",
+      "linen": "Vải linen",
+      "sepia": "Sepia",
+      "sage": "Xanh sage",
+      "mist": "Sương nhẹ",
+      "night": "Đêm dịu"
+    },
     "blog": "Blog",
     "notes": "Ghi chép"
   },
@@ -378,6 +388,7 @@
         "scrollTop": "Lên đầu bài",
         "scrollBottom": "Xuống cuối bài",
         "font": "Đổi font đọc",
+        "background": "Đổi nền đọc",
         "language": "Đổi ngôn ngữ"
       },
       "faqHeading": "Câu hỏi thường gặp",
@@ -460,6 +471,7 @@
         "scrollTop": "Lên đầu bài",
         "scrollBottom": "Xuống cuối bài",
         "font": "Đổi font đọc",
+        "background": "Đổi nền đọc",
         "language": "Đổi ngôn ngữ"
       },
       "partOf": "Phần {part}/{total}",

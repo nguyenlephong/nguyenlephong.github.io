@@ -8,6 +8,7 @@ import {
   saveOgCache,
   cachedOgResponse
 } from "@/lib/og/cache";
+import { filterOgStaticParams } from "@/lib/og/build-targets";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
@@ -15,7 +16,11 @@ export const alt = "Ghi chú — Nguyen Le Phong";
 export const dynamic = "force-static";
 
 export function generateStaticParams() {
-  return listNoteParams();
+  return filterOgStaticParams(
+    listNoteParams(),
+    ({ locale, slug }) => `/${locale}/notes/${slug}`,
+    { keepFirstWhenEmpty: true }
+  );
 }
 
 type Params = { locale: string; slug: string };

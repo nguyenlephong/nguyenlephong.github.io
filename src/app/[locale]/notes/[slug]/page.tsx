@@ -264,6 +264,7 @@ export default async function NotePage({ params }: Props) {
             scrollTop: t("readerTools.scrollTop"),
             scrollBottom: t("readerTools.scrollBottom"),
             font: t("readerTools.font"),
+            background: t("readerTools.background"),
             language: t("readerTools.language")
           }}
         />

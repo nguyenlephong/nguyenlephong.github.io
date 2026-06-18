@@ -256,6 +256,7 @@ export default async function BlogPostPage({ params }: Props) {
             scrollTop: t('readerTools.scrollTop'),
             scrollBottom: t('readerTools.scrollBottom'),
             font: t('readerTools.font'),
+            background: t('readerTools.background'),
             language: t('readerTools.language'),
           }}
         />

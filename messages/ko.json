@@ -12,6 +12,16 @@
       "sans": "산세리프",
       "serif": "세리프"
     },
+    "background": {
+      "label": "읽기 배경",
+      "plain": "기본",
+      "parchment": "양피지",
+      "linen": "리넨",
+      "sepia": "세피아",
+      "sage": "세이지",
+      "mist": "안개",
+      "night": "밤"
+    },
     "blog": "블로그",
     "notes": "노트"
   },
@@ -397,6 +407,7 @@
         "scrollTop": "맨 위로 이동",
         "scrollBottom": "맨 아래로 이동",
         "font": "읽기 글꼴 변경",
+        "background": "읽기 배경 변경",
         "language": "언어 변경"
       },
       "faqHeading": "자주 묻는 질문",
@@ -469,6 +480,7 @@
         "scrollTop": "맨 위로 이동",
         "scrollBottom": "맨 아래로 이동",
         "font": "읽기 글꼴 변경",
+        "background": "읽기 배경 변경",
         "language": "언어 변경"
       },
       "partOf": "{total}부 중 {part}부",

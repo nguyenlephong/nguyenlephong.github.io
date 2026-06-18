@@ -4,13 +4,19 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 10505",
-    "build": "next build --turbopack && node scripts/postbuild-og.mjs",
+    "build": "node scripts/build-og.mjs --full",
+    "build:og": "node scripts/build-og.mjs",
+    "build:fast": "node scripts/build-og.mjs --skip",
+    "build:force": "node scripts/build-og.mjs --full",
     "start": "next start",
     "lint": "eslint .",
     "predeploy": "node scripts/bump-version.mjs && bun run build",
     "export": "next export",
     "fb-deploy": "firebase deploy",
-    "deploy": "touch ./out/.nojekyll && gh-pages -d out -t true"
+    "deploy": "bun run deploy:out",
+    "deploy:out": "touch ./out/.nojekyll && gh-pages -d out -t true",
+    "deploy:fast": "node scripts/bump-version.mjs && bun run build:fast && bun run deploy:out",
+    "deploy:og": "node scripts/bump-version.mjs && node scripts/build-og.mjs && bun run deploy:out"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [

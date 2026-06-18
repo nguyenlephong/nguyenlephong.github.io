@@ -4,6 +4,7 @@ import { OgShell, OG_SIZE, OG_CONTENT_TYPE, type OgTheme } from '@/app/_og/og-sh
 import { getCategory, listCategoryPostPairs, loadPost } from '@/lib/blog/data'
 import { buildDescription } from '@/lib/blog/seo'
 import { hashOgParams, getCachedOg, saveOgCache, cachedOgResponse } from '@/lib/og/cache'
+import { filterOgStaticParams } from '@/lib/og/build-targets'
 
 export const size = OG_SIZE
 export const contentType = OG_CONTENT_TYPE
@@ -11,8 +12,13 @@ export const alt = 'Blog post — Nguyen Le Phong'
 
 export function generateStaticParams() {
   const pairs = listCategoryPostPairs()
-  return routing.locales.flatMap((locale) =>
+  const params = routing.locales.flatMap((locale) =>
     pairs.map(({ category, slug }) => ({ locale, category, slug })),
+  )
+  return filterOgStaticParams(
+    params,
+    ({ locale, category, slug }) => `/${locale}/blog/${category}/${slug}`,
+    { keepFirstWhenEmpty: true },
   )
 }
 export const dynamic = 'force-static'

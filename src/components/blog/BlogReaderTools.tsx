@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { LuArrowDownToLine, LuArrowUpToLine } from 'react-icons/lu'
 import LocaleSwitcher from '@/components/LocaleSwitcher'
 import FontSwitcher from '@/components/font/FontSwitcher'
+import ReadingBackgroundSwitcher from '@/components/reading/ReadingBackgroundSwitcher'
 import { track } from '@/lib/analytics'
 
 interface BlogReaderToolsLabels {
@@ -11,6 +12,7 @@ interface BlogReaderToolsLabels {
   scrollTop: string
   scrollBottom: string
   font: string
+  background: string
   language: string
 }
 
@@ -97,6 +99,9 @@ export default function BlogReaderTools({ labels }: BlogReaderToolsProps) {
         <span className="blog-reader-tools__divider" aria-hidden="true" />
         <div className="blog-reader-tools__item" title={labels.font}>
           <FontSwitcher placement="up" />
+        </div>
+        <div className="blog-reader-tools__item" title={labels.background}>
+          <ReadingBackgroundSwitcher placement="up" />
         </div>
         <div className="blog-reader-tools__item" title={labels.language}>
           <LocaleSwitcher placement="up" compact />

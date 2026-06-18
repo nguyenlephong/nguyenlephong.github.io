@@ -13,6 +13,16 @@
       "label": "Reading font",
       "sans": "Sans-serif",
       "serif": "Serif"
+    },
+    "background": {
+      "label": "Reading background",
+      "plain": "Plain",
+      "parchment": "Parchment",
+      "linen": "Linen",
+      "sepia": "Sepia",
+      "sage": "Sage",
+      "mist": "Mist",
+      "night": "Night"
     }
   },
   "Footer": {
@@ -378,6 +388,7 @@
         "scrollTop": "Scroll to top",
         "scrollBottom": "Scroll to bottom",
         "font": "Change reading font",
+        "background": "Change reading background",
         "language": "Change language"
       },
       "faqHeading": "Frequently asked questions",
@@ -460,6 +471,7 @@
         "scrollTop": "Scroll to top",
         "scrollBottom": "Scroll to bottom",
         "font": "Change reading font",
+        "background": "Change reading background",
         "language": "Change language"
       },
       "partOf": "Part {part} of {total}",

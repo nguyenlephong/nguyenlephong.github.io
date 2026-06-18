@@ -12,6 +12,16 @@
       "sans": "サンセリフ",
       "serif": "セリフ"
     },
+    "background": {
+      "label": "読書背景",
+      "plain": "標準",
+      "parchment": "古紙",
+      "linen": "リネン",
+      "sepia": "セピア",
+      "sage": "セージ",
+      "mist": "ミスト",
+      "night": "ナイト"
+    },
     "blog": "ブログ",
     "notes": "ノート"
   },
@@ -397,6 +407,7 @@
         "scrollTop": "先頭へ移動",
         "scrollBottom": "末尾へ移動",
         "font": "読書フォントを変更",
+        "background": "読書背景を変更",
         "language": "言語を変更"
       },
       "faqHeading": "よくある質問",
@@ -469,6 +480,7 @@
         "scrollTop": "先頭へ移動",
         "scrollBottom": "末尾へ移動",
         "font": "読書フォントを変更",
+        "background": "読書背景を変更",
         "language": "言語を変更"
       },
       "partOf": "全 {total} 回中第 {part} 回",
