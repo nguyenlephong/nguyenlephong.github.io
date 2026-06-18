@@ -1,7 +1,7 @@
 export type FamilyTier = 'elder' | 'parent' | 'sibling' | 'self'
 
 export interface FamilyMember {
-  name: string
+  id: string
   alias: string
   dob: string
   relation: string
@@ -9,12 +9,12 @@ export interface FamilyMember {
 }
 
 export const familyMembers: FamilyMember[] = [
-  { name: 'Nguyễn Lê Phong', alias: 'Me', dob: '1997-07-01', relation: 'Bản thân', tier: 'self' },
-  { name: 'Nguyễn Thị Yến Nhi', alias: 'Em Út', dob: '2005-06-09', relation: 'Em gái', tier: 'sibling' },
-  { name: 'Nguyễn Thanh Xuân', alias: 'Ba', dob: '1976-11-18', relation: 'Cha', tier: 'parent' },
-  { name: 'Lê Thị Thanh Hương', alias: 'Mẹ', dob: '1976-02-19', relation: 'Mẹ', tier: 'parent' },
-  { name: 'Nguyễn Thị Bích Hương', alias: 'Cô Út', dob: '1983-03-02', relation: 'Cô', tier: 'parent' },
-  { name: 'Nguyễn Thị Cái', alias: 'Nội Bà', dob: '1939-04-20', relation: 'Bà nội', tier: 'elder' },
-  { name: 'Lê Văn Măng', alias: 'Ngoại Ông', dob: '1944-05-02', relation: 'Ông ngoại', tier: 'elder' },
-  { name: 'Nguyễn Thị Mười', alias: 'Ngoại Bà', dob: '1946-04-02', relation: 'Bà ngoại', tier: 'elder' },
+  { id: 'm01', alias: 'Mình', dob: '1997-07-01', relation: 'Bản thân', tier: 'self' },
+  { id: 'm02', alias: 'Em', dob: '2005-06-09', relation: 'Em gái', tier: 'sibling' },
+  { id: 'm03', alias: 'Ba', dob: '1976-11-18', relation: 'Ba', tier: 'parent' },
+  { id: 'm04', alias: 'Mẹ', dob: '1976-02-19', relation: 'Mẹ', tier: 'parent' },
+  { id: 'm05', alias: 'Cô út', dob: '1983-03-02', relation: 'Cô', tier: 'parent' },
+  { id: 'm06', alias: 'Nội', dob: '1939-04-20', relation: 'Bà nội', tier: 'elder' },
+  { id: 'm07', alias: 'Ngoại ông', dob: '1944-05-02', relation: 'Ông ngoại', tier: 'elder' },
+  { id: 'm08', alias: 'Ngoại bà', dob: '1946-04-02', relation: 'Bà ngoại', tier: 'elder' },
 ]

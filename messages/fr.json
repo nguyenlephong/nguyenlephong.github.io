@@ -12,6 +12,16 @@
       "sans": "Sans-serif",
       "serif": "Serif"
     },
+    "background": {
+      "label": "Fond de lecture",
+      "plain": "Simple",
+      "parchment": "Parchemin",
+      "linen": "Lin",
+      "sepia": "Sépia",
+      "sage": "Sauge",
+      "mist": "Brume",
+      "night": "Nuit"
+    },
     "blog": "Blog",
     "notes": "Notes"
   },
@@ -397,6 +407,7 @@
         "scrollTop": "Remonter en haut",
         "scrollBottom": "Aller en bas",
         "font": "Changer la police de lecture",
+        "background": "Changer le fond de lecture",
         "language": "Changer de langue"
       },
       "faqHeading": "Questions fréquentes",
@@ -469,6 +480,7 @@
         "scrollTop": "Remonter en haut",
         "scrollBottom": "Aller en bas",
         "font": "Changer la police de lecture",
+        "background": "Changer le fond de lecture",
         "language": "Changer de langue"
       },
       "partOf": "Partie {part} sur {total}",

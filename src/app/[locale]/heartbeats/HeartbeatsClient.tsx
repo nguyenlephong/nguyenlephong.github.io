@@ -87,7 +87,7 @@ export default function HeartbeatsClient({ members }: HeartbeatsClientProps) {
       .sort((a, b) => a.daysUntilBirthday - b.daysUntilBirthday)
       .slice(0, 3)
     const map = new Map<string, number>()
-    ranked.forEach((p, i) => map.set(p.name, i + 1))
+    ranked.forEach((p, i) => map.set(p.id, i + 1))
     return map
   }, [list])
 
@@ -128,11 +128,11 @@ export default function HeartbeatsClient({ members }: HeartbeatsClientProps) {
           suppressHydrationWarning
         >
           {list.map((person) => {
-            const rank = upcomingRank.get(person.name)
+            const rank = upcomingRank.get(person.id)
             const isUpcoming = rank !== undefined
             return (
               <article
-                key={person.name}
+                key={person.id}
                 className={
                   `hb-card hb-tier-${person.tier}` +
                   (isUpcoming ? ` is-upcoming hb-upcoming-${rank}` : '')
@@ -144,7 +144,6 @@ export default function HeartbeatsClient({ members }: HeartbeatsClientProps) {
                 <div className="hb-card-head">
                   <div className="hb-card-id">
                     <h2 className="hb-card-alias">{person.alias}</h2>
-                    <p className="hb-card-name">{person.name}</p>
                     <p className="hb-card-dob">
                       <LuCake className="hb-card-dob-icon" aria-hidden="true" />
                       <time>{person.dob}</time>

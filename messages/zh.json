@@ -12,6 +12,16 @@
       "sans": "无衬线",
       "serif": "衬线"
     },
+    "background": {
+      "label": "阅读背景",
+      "plain": "默认",
+      "parchment": "旧纸",
+      "linen": "亚麻",
+      "sepia": "棕褐",
+      "sage": "鼠尾草",
+      "mist": "薄雾",
+      "night": "夜读"
+    },
     "blog": "博客",
     "notes": "笔记"
   },
@@ -397,6 +407,7 @@
         "scrollTop": "回到顶部",
         "scrollBottom": "前往底部",
         "font": "更改阅读字体",
+        "background": "更改阅读背景",
         "language": "切换语言"
       },
       "faqHeading": "常见问题",
@@ -469,6 +480,7 @@
         "scrollTop": "回到顶部",
         "scrollBottom": "前往底部",
         "font": "更改阅读字体",
+        "background": "更改阅读背景",
         "language": "切换语言"
       },
       "partOf": "第 {part} 篇，共 {total} 篇",

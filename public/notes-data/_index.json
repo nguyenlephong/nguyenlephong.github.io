@@ -45,6 +45,213 @@
   ],
   "posts": [
     {
+      "slug": "truoc-khi-cham-chi-hon-hay-chon-huong-co-don-bay",
+      "title": "Before Working Harder, Check Whether the Direction Can Grow",
+      "summary": "A calm career note on why effort needs direction, leverage, and compounding skill. Salary is valuable, but if every unit of income depends only on the next hour of work, people can become tired without becoming freer. The note reflects on linear income, skill assets, reusable systems, and the habit of turning daily work into something that keeps growing after the workday ends.",
+      "cardSummary": "Hard work matters, but the question is whether today’s effort leaves behind skill, systems, and leverage for tomorrow.",
+      "readingMinutes": 7,
+      "tags": [
+        "Career",
+        "Leverage",
+        "Skill Building",
+        "Personal Finance",
+        "Learning",
+        "Decision Making"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "thay-nguoi-khac-thanh-cong-ma-long-minh-khong-hep-lai",
+      "title": "When Someone Else Succeeds, Do Not Let Your Own World Become Smaller",
+      "summary": "A reflective workplace note on envy, generosity, and the ability to learn from other people’s success. The article turns the idea of wishing companions well into practical office behavior: congratulating without shrinking, studying what worked, choosing stronger rooms, and keeping ambition clean instead of turning comparison into quiet resentment.",
+      "cardSummary": "Another person’s success does not have to reduce our own path; it can show us a larger room to grow in.",
+      "readingMinutes": 6,
+      "tags": [
+        "Career",
+        "Mindset",
+        "Teamwork",
+        "Generosity",
+        "Leadership",
+        "Self Development"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "duong-tang-giu-vision-va-trao-quyen",
+      "title": "Tang Sanzang Holds the Vision: A Leader Does Not Need to Do Everything, but Must Keep the Direction",
+      "summary": "A reflective note from Journey to the West on Tang Sanzang as a workplace leader: a leader does not have to be the strongest technical operator, but must keep the goal clear, understand each person’s strengths, delegate with trust, verify without micromanaging, and protect shared values when the team goes through pressure.",
+      "cardSummary": "A leader does not need to do everything, but someone must keep the direction steady so strong people do not pull the team apart.",
+      "readingMinutes": 7,
+      "tags": [
+        "Journey to the West",
+        "Tang Sanzang",
+        "Leadership",
+        "Delegation",
+        "Vision",
+        "Career"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "ton-ngo-khong-nhan-tai-10x-va-vong-kim-co",
+      "title": "Sun Wukong at Work: 10x Talent Needs Room to Move and Clear Boundaries",
+      "summary": "A reflective note from Journey to the West on Sun Wukong as a 10x talent at work: enormous problem-solving ability, speed, and networks can save a team, but without boundaries, feedback, and a shared goal, the same talent can become a cultural and operational risk.",
+      "cardSummary": "The strongest person on a team should not be made smaller, but their strength still needs boundaries so talent does not become risk.",
+      "readingMinutes": 7,
+      "tags": [
+        "Journey to the West",
+        "Sun Wukong",
+        "10x Talent",
+        "Leadership",
+        "Boundaries",
+        "Career"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "bat-gioi-sa-tang-bach-long-ma-nhung-vai-tham-lang-trong-team",
+      "title": "Zhu Bajie, Sha Wujing, and the White Dragon Horse: Quiet Roles That Keep a Team Moving",
+      "summary": "A reflective note from Journey to the West on the less celebrated roles inside a team: the person who lightens tension, the person who keeps operations steady, and the infrastructure that quietly carries the work. The note looks at these roles with more fairness while also remembering that diligence should grow into visible capability.",
+      "cardSummary": "Not everyone saves the day on stage, but teams lose rhythm when no one keeps the mood, operations, and infrastructure steady.",
+      "readingMinutes": 8,
+      "tags": [
+        "Journey to the West",
+        "Zhu Bajie",
+        "Sha Wujing",
+        "White Dragon Horse",
+        "Teamwork",
+        "Career"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "tay-du-ky-nhu-mot-project-team-di-qua-81-kiep-nan",
+      "title": "Journey to the West as a Project Team: Every Hard Stretch Teaches Coordination",
+      "summary": "A reflective note from Journey to the West that reads the pilgrimage as a long-running project team: vision, sponsor, product owner, lead engineer, operations, infrastructure, incidents, escalation, and many chances for imperfect people to learn how to keep moving together.",
+      "cardSummary": "A lasting team is not built from perfect people, but from people who understand their roles and coordinate when blockers appear.",
+      "readingMinutes": 8,
+      "tags": [
+        "Journey to the West",
+        "Project Management",
+        "Teamwork",
+        "Agile",
+        "Incident",
+        "Career"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "luu-bi-nhan-tri-noi-cong-so",
+      "title": "Liu Bei and People-Centered Leadership at Work: Trust Must Become Behavior, Not Just Warm Words",
+      "summary": "A reflective note from Three Kingdoms management material on Liu Bei’s people-centered leadership: how trust, humility, and attention to people can hold a team together, while still needing clear boundaries so loyalty and kindness do not blur capability, feedback, or the common good.",
+      "cardSummary": "Trust is the glue of a small team, but without boundaries it can also make management decisions blurry.",
+      "readingMinutes": 7,
+      "tags": [
+        "Three Kingdoms",
+        "Liu Bei",
+        "Leadership",
+        "Management",
+        "People",
+        "Career"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "tao-thao-phap-tri-trong-van-phong",
+      "title": "Cao Cao and Rule-Based Management at Work: Good Systems Help Teams Stop Managing by Emotion",
+      "summary": "A reflective note from Three Kingdoms management material on Cao Cao’s pragmatic, rule-based style: merit, role fit, operating systems, and clear rules can reduce ambiguity, but discipline must not turn into surveillance, fear, or suspicion.",
+      "cardSummary": "A larger team cannot run on personal warmth alone; it needs clear rules so well-intentioned people do not have to guess every day.",
+      "readingMinutes": 7,
+      "tags": [
+        "Three Kingdoms",
+        "Cao Cao",
+        "Leadership",
+        "Management",
+        "Systems",
+        "Career"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "giua-luu-bi-va-tao-thao-di-lam-can-ca-tinh-nguoi-va-luat-choi",
+      "title": "Between Liu Bei and Cao Cao: Work Needs Humanity, but It Also Needs Clear Rules",
+      "summary": "A reflective note from Three Kingdoms management material on balancing people-centered leadership and rule-based management at work: when trust is needed, when structure is needed, why startup and scale-up stages require different management habits, and how kindness can stay clear while discipline stays human.",
+      "cardSummary": "A healthy team does not choose between humanity and systems; it learns how to let both support each other.",
+      "readingMinutes": 8,
+      "tags": [
+        "Three Kingdoms",
+        "Leadership",
+        "Management",
+        "Workplace",
+        "Startup",
+        "Career"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
       "slug": "tu-duy-he-thong-trong-cong-viec-steven-schuster",
       "title": "The Art of Thinking in Systems: Do Not Fix the Symptom and Call It a Solution",
       "summary": "A reading note on The Art of Thinking in Systems through the lens of everyday work: many problems do not come from one person or one event, but from feedback loops, delays, bottlenecks, incentives, and second-order effects we miss when we rush to fix the loudest symptom.",
@@ -154,102 +361,6 @@
         "Globalization",
         "Career",
         "Technology"
-      ],
-      "author": "Nguyen Le Phong",
-      "featured": false,
-      "topic": "sach",
-      "baseLocale": "en",
-      "locales": [
-        "en",
-        "vi"
-      ]
-    },
-    {
-      "slug": "data-mastery-kinh-chan-gio-cho-doanh-nghiep",
-      "title": "Data: Data Is a Windshield for Operators",
-      "summary": "A reading note on Data: Harness Your Numbers to Go from Uncertain to Unstoppable, focused on how the EOS Data Component helps leaders move from anxious guesswork to clearer operating visibility. The article looks at data as a clean windshield: a way to test intuition, avoid hopeful fiction, connect Visionary and Integrator work, and turn numbers into leadership freedom rather than pressure.",
-      "cardSummary": "Good data does not make a company colder; it helps leaders stop driving through fog.",
-      "date": "2026-06-16",
-      "readingMinutes": 11,
-      "tags": [
-        "Book Notes",
-        "Data",
-        "EOS",
-        "Business Data",
-        "Leadership",
-        "Decision Making"
-      ],
-      "author": "Nguyen Le Phong",
-      "featured": true,
-      "topic": "sach",
-      "baseLocale": "en",
-      "locales": [
-        "en",
-        "vi"
-      ]
-    },
-    {
-      "slug": "data-mastery-scorecard-mot-trang-so-de-thay-som-van-de",
-      "title": "Data: A Scorecard Is a One-Page Early Warning System",
-      "summary": "A reading note on the Scorecard idea in Data and EOS: why a company does not need dozens of KPIs to understand its operating health, but a small set of measurables that are clear, consistent, predictive, and owned. The article reflects on the Scorecard as a check-engine light, the difference between P&L and leading indicators, weekly cadence, reverse-engineering goals, range goals, and the traps of measuring too much or measuring what is easy instead of what matters.",
-      "cardSummary": "A good Scorecard is not reporting decoration; it is an early warning system that helps a team act before problems get expensive.",
-      "date": "2026-06-16",
-      "readingMinutes": 11,
-      "tags": [
-        "Book Notes",
-        "Data",
-        "EOS",
-        "Scorecard",
-        "KPIs",
-        "Business Operations"
-      ],
-      "author": "Nguyen Le Phong",
-      "featured": false,
-      "topic": "sach",
-      "baseLocale": "en",
-      "locales": [
-        "en",
-        "vi"
-      ]
-    },
-    {
-      "slug": "data-mastery-everyone-has-a-number",
-      "title": "Data: Everyone Has a Number Is Not Surveillance",
-      "summary": "A reading note on Everyone Has a Number from Data and EOS. The article treats role-level measurables as a gift of clarity rather than a surveillance tool: they help people understand how they win, help managers avoid vague judgment, speed up problem-solving, create healthier competition, and turn accountability into a foundation for trust.",
-      "cardSummary": "The right number does not turn a person into a machine; it helps them see how they contribute and how they can win.",
-      "date": "2026-06-16",
-      "readingMinutes": 10,
-      "tags": [
-        "Book Notes",
-        "Data",
-        "EOS",
-        "Everyone Has a Number",
-        "Accountability",
-        "Leadership"
-      ],
-      "author": "Nguyen Le Phong",
-      "featured": false,
-      "topic": "sach",
-      "baseLocale": "en",
-      "locales": [
-        "en",
-        "vi"
-      ]
-    },
-    {
-      "slug": "data-mastery-cash-khong-phai-doanh-thu",
-      "title": "Data: Revenue Is Not Cash, and Profit Is Not Breathing Room",
-      "summary": "A reading note on the Cash chapter in Data: why a business can sell well, show accounting profit, and still feel tight on cash. The article explains the difference between sales, profit, and cash; why financial literacy should extend beyond finance; how daily work connects to gross margin, rework, collections, expenses, and cash flow; and why understanding money requires clarity, rhythm, and real decisions more than complex formulas.",
-      "cardSummary": "A business can sell well and show profit on paper while still running out of real operating cash.",
-      "date": "2026-06-16",
-      "readingMinutes": 10,
-      "tags": [
-        "Book Notes",
-        "Data",
-        "EOS",
-        "Cash Flow",
-        "Financial Literacy",
-        "Business"
       ],
       "author": "Nguyen Le Phong",
       "featured": false,

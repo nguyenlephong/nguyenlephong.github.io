@@ -41,6 +41,17 @@ html[data-reading-font='be-vietnam'] .notes-reading {
   --gilt: oklch(74% 0.085 80);
 }
 
+html[data-reading-background] .notes-reading {
+  --paper: var(--reader-bg);
+  --paper-2: var(--reader-bg-muted);
+  --paper-3: var(--reader-bg-elevated);
+  --ink: var(--reader-fg);
+  --ink-soft: var(--reader-fg-muted);
+  --ink-faint: var(--reader-fg-subtle);
+  --rule: var(--reader-border);
+  --rule-strong: var(--reader-border-strong);
+}
+
 /* Layered warm paper backdrop — fixed so it reads as one continuous surface. */
 .notes-archive::before,
 .notes-reading::before {
