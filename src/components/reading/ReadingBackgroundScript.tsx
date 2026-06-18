@@ -25,10 +25,13 @@ const backgroundScript = `
     var key = '${READING_BACKGROUND_STORAGE_KEY}';
     var allowed = ${JSON.stringify(READING_BACKGROUNDS)};
     var stored = localStorage.getItem(key);
-    var value = allowed.indexOf(stored) >= 0 ? stored : 'plain';
-    document.documentElement.setAttribute('data-reading-background', value);
+    if (allowed.indexOf(stored) >= 0) {
+      document.documentElement.setAttribute('data-reading-background', stored);
+    } else {
+      document.documentElement.removeAttribute('data-reading-background');
+    }
   } catch (e) {
-    document.documentElement.setAttribute('data-reading-background', 'plain');
+    document.documentElement.removeAttribute('data-reading-background');
   }
 })();
 `

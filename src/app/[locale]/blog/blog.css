@@ -1389,6 +1389,10 @@
   right: 1.1rem;
   bottom: 4.55rem;
   z-index: 61;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.45rem;
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
@@ -1401,7 +1405,42 @@
   transform: none;
   pointer-events: auto;
 }
+.blog-reader-tools__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.45rem;
+  height: 2.45rem;
+  padding: 0;
+  border: 1px solid color-mix(in oklab, var(--border) 82%, transparent);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  color: var(--fg-muted);
+  box-shadow: 0 14px 34px -24px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  cursor: pointer;
+  transition:
+    background 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease,
+    transform 0.16s ease;
+}
+.blog-reader-tools__trigger:hover,
+.blog-reader-tools__trigger:focus-visible,
+.blog-reader-tools--expanded .blog-reader-tools__trigger {
+  border-color: color-mix(in oklab, var(--blog-accent) 44%, var(--border));
+  background: color-mix(in oklab, var(--blog-accent-soft) 64%, var(--bg));
+  color: var(--blog-accent);
+}
+.blog-reader-tools__trigger:focus-visible {
+  outline: 2px solid var(--blog-accent);
+  outline-offset: 2px;
+}
 .blog-reader-tools__controls {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.55rem);
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -1413,6 +1452,8 @@
   box-shadow: 0 14px 34px -24px rgba(0, 0, 0, 0.38);
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
+  animation: reader-tools-pop 0.16s ease-out;
+  transform-origin: bottom right;
 }
 .blog-reader-tools__btn {
   display: inline-flex;
@@ -1489,6 +1530,17 @@
 }
 .blog-reader-tools .locale-menu.is-open .locale-menu-list {
   transform: translateY(0) scale(1);
+}
+
+@keyframes reader-tools-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Desktop ≥1280px: sticky rail scoped to the article body only. */
@@ -1581,6 +1633,8 @@
   .blog-share-dock,
   .blog-share-dock__actions,
   .blog-reader-tools,
+  .blog-reader-tools__trigger,
+  .blog-reader-tools__controls,
   .blog-reactions,
   .blog-article__views {
     transition: none;

@@ -32,10 +32,22 @@ test("reader background preferences are available from the floating tools", () =
   }
 
   assert.match(tools, /ReadingBackgroundSwitcher/);
+  assert.match(tools, /blog-reader-tools__trigger/);
+  assert.match(tools, /aria-expanded=\{expanded\}/);
+  assert.match(tools, /expanded &&/);
   assert.match(blogPage, /background: t\('readerTools\.background'\)/);
   assert.match(notesPage, /background: t\("readerTools\.background"\)/);
   assert.match(blogCss, /\.blog-reader-tools__controls \{[^}]*flex-direction: column/s);
   assert.match(notesCss, /html\[data-reading-background\] \.notes-reading/);
+});
+
+test("reader background inherits active theme until the reader chooses a material", () => {
+  const script = read("src/components/reading/ReadingBackgroundScript.tsx");
+  const switcher = read("src/components/reading/ReadingBackgroundSwitcher.tsx");
+
+  assert.match(script, /removeAttribute\('data-reading-background'\)/);
+  assert.doesNotMatch(script, /value = allowed\.indexOf\(stored\) >= 0 \? stored : 'plain'/);
+  assert.match(switcher, /removeAttribute\('data-reading-background'\)/);
 });
 
 test("reader background labels exist for blog and notes in every locale", () => {

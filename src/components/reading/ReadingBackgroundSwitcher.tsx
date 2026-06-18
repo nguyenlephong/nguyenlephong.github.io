@@ -47,9 +47,13 @@ export default function ReadingBackgroundSwitcher({
         const stored = localStorage.getItem(
           READING_BACKGROUND_STORAGE_KEY,
         ) as ReadingBackground | null
-        if (stored && READING_BACKGROUNDS.includes(stored)) setCurrent(stored)
+        if (stored && READING_BACKGROUNDS.includes(stored)) {
+          setCurrent(stored)
+        } else {
+          document.documentElement.removeAttribute('data-reading-background')
+        }
       } catch {
-        // ignore
+        document.documentElement.removeAttribute('data-reading-background')
       }
     })
 

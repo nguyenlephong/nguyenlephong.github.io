@@ -130,6 +130,7 @@ export default function HeartbeatsClient({ members }: HeartbeatsClientProps) {
           {list.map((person) => {
             const rank = upcomingRank.get(person.name)
             const isUpcoming = rank !== undefined
+            const hasPublicName = person.name !== person.alias
             return (
               <article
                 key={person.name}
@@ -144,7 +145,9 @@ export default function HeartbeatsClient({ members }: HeartbeatsClientProps) {
                 <div className="hb-card-head">
                   <div className="hb-card-id">
                     <h2 className="hb-card-alias">{person.alias}</h2>
-                    <p className="hb-card-name">{person.name}</p>
+                    {hasPublicName && (
+                      <p className="hb-card-name">{person.name}</p>
+                    )}
                     <p className="hb-card-dob">
                       <LuCake className="hb-card-dob-icon" aria-hidden="true" />
                       <time>{person.dob}</time>
