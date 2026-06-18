@@ -45,6 +45,94 @@
   ],
   "posts": [
     {
+      "slug": "duong-tang-giu-vision-va-trao-quyen",
+      "title": "Đường Tăng giữ vision: leader không cần giỏi mọi việc, nhưng phải giữ hướng",
+      "summary": "Một ghi chép từ tư liệu quản trị Tây Du Ký về Đường Tăng dưới góc nhìn công sở: người lãnh đạo không nhất thiết là người xử lý kỹ thuật giỏi nhất, nhưng phải giữ được mục tiêu, hiểu năng lực từng người, biết trao quyền, biết kiểm tra vừa đủ và biết bảo vệ giá trị chung khi team đi qua khủng hoảng.",
+      "cardSummary": "Leader không cần tự làm hết, nhưng phải giữ được hướng đi để những người giỏi không kéo team về nhiều phía khác nhau.",
+      "readingMinutes": 7,
+      "tags": [
+        "Tây Du Ký",
+        "Đường Tăng",
+        "Leadership",
+        "Trao quyền",
+        "Vision",
+        "Sự nghiệp"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
+      "slug": "ton-ngo-khong-nhan-tai-10x-va-vong-kim-co",
+      "title": "Tôn Ngộ Không trong công sở: nhân tài 10x cần đất diễn và ranh giới",
+      "summary": "Một ghi chép từ tư liệu quản trị Tây Du Ký về Tôn Ngộ Không như hình ảnh của nhân tài 10x trong công sở: năng lực giải quyết vấn đề rất lớn, tốc độ cao, mạng lưới rộng, nhưng cũng dễ bốc đồng, khó hợp tác nếu thiếu ranh giới, cơ chế phản hồi và mục tiêu chung đủ rõ.",
+      "cardSummary": "Người giỏi nhất team không cần bị kìm lại, nhưng cần một ranh giới đủ rõ để tài năng không trở thành rủi ro.",
+      "readingMinutes": 7,
+      "tags": [
+        "Tây Du Ký",
+        "Tôn Ngộ Không",
+        "10x Talent",
+        "Leadership",
+        "Ranh giới",
+        "Sự nghiệp"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
+      "slug": "bat-gioi-sa-tang-bach-long-ma-nhung-vai-tham-lang-trong-team",
+      "title": "Bát Giới, Sa Tăng và Bạch Long Mã: những vai ít hào nhoáng vẫn giữ team đi tiếp",
+      "summary": "Một ghi chép từ tư liệu quản trị Tây Du Ký về các vai ít được tung hô trong team: người làm không khí bớt căng, người giữ vận hành đều, người làm hạ tầng thầm lặng. Bài viết nhìn các vai này bằng sự công bằng hơn, đồng thời nhắc rằng sự chăm chỉ cần được nâng cấp thành năng lực thấy được.",
+      "cardSummary": "Không phải ai cũng là người cứu nguy trước sân khấu, nhưng team sẽ đứt nhịp nếu thiếu những vai giữ không khí, nhịp vận hành và hạ tầng.",
+      "readingMinutes": 8,
+      "tags": [
+        "Tây Du Ký",
+        "Bát Giới",
+        "Sa Tăng",
+        "Bạch Long Mã",
+        "Teamwork",
+        "Sự nghiệp"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
+      "slug": "tay-du-ky-nhu-mot-project-team-di-qua-81-kiep-nan",
+      "title": "Tây Du Ký như một project team: mỗi chặng khó là một bài học về phối hợp",
+      "summary": "Một ghi chép từ tư liệu quản trị Tây Du Ký nhìn hành trình thỉnh kinh như một project team dài hạn: có vision, sponsor, PO, lead engineer, ops, hạ tầng, incident, escalation và rất nhiều lần team phải học cách đi tiếp dù không ai hoàn hảo.",
+      "cardSummary": "Một team bền không phải vì ai cũng hoàn hảo, mà vì mỗi người hiểu vai của mình và biết phối hợp khi blocker xuất hiện.",
+      "readingMinutes": 8,
+      "tags": [
+        "Tây Du Ký",
+        "Project Management",
+        "Teamwork",
+        "Agile",
+        "Incident",
+        "Sự nghiệp"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
       "slug": "luu-bi-nhan-tri-noi-cong-so",
       "title": "Lưu Bị và nhân trị nơi công sở: giữ người bằng lòng tin, không phải chỉ bằng lời hay",
       "summary": "Một ghi chép từ tư liệu quản trị trong Tam Quốc về phong cách nhân trị của Lưu Bị: cách một người lãnh đạo giữ người bằng lòng tin, biết hạ mình cầu hiền, đặt con người vào trung tâm, nhưng cũng cần tỉnh táo để tình nghĩa không che mất năng lực, ranh giới và lợi ích chung của tổ chức.",
