@@ -8,12 +8,13 @@ function read(path) {
   return readFileSync(new URL(path, root), "utf8");
 }
 
-test("family members expose aliases instead of full public names", () => {
+test("family members expose aliases without a public name field", () => {
   const data = read("src/app/[locale]/heartbeats/family.data.ts");
-  const entries = [...data.matchAll(/name: '([^']+)', alias: '([^']+)'/g)];
+  const client = read("src/app/[locale]/heartbeats/HeartbeatsClient.tsx");
+  const entries = [...data.matchAll(/id: 'm\d+', alias: '([^']+)'/g)];
 
   assert.ok(entries.length > 0, "expected family member entries");
-  for (const [, name, alias] of entries) {
-    assert.ok(name === alias, "family member name should use the public alias");
-  }
+  assert.doesNotMatch(data, /\bname:/);
+  assert.doesNotMatch(data, /\bname: string/);
+  assert.doesNotMatch(client, /person\.name/);
 });
