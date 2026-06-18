@@ -46,155 +46,162 @@
   "posts": [
     {
       "slug": "duong-tang-giu-vision-va-trao-quyen",
-      "title": "Đường Tăng giữ vision: leader không cần giỏi mọi việc, nhưng phải giữ hướng",
-      "summary": "Một ghi chép từ tư liệu quản trị Tây Du Ký về Đường Tăng dưới góc nhìn công sở: người lãnh đạo không nhất thiết là người xử lý kỹ thuật giỏi nhất, nhưng phải giữ được mục tiêu, hiểu năng lực từng người, biết trao quyền, biết kiểm tra vừa đủ và biết bảo vệ giá trị chung khi team đi qua khủng hoảng.",
-      "cardSummary": "Leader không cần tự làm hết, nhưng phải giữ được hướng đi để những người giỏi không kéo team về nhiều phía khác nhau.",
+      "title": "Tang Sanzang Holds the Vision: A Leader Does Not Need to Do Everything, but Must Keep the Direction",
+      "summary": "A reflective note from Journey to the West on Tang Sanzang as a workplace leader: a leader does not have to be the strongest technical operator, but must keep the goal clear, understand each person’s strengths, delegate with trust, verify without micromanaging, and protect shared values when the team goes through pressure.",
+      "cardSummary": "A leader does not need to do everything, but someone must keep the direction steady so strong people do not pull the team apart.",
       "readingMinutes": 7,
       "tags": [
-        "Tây Du Ký",
-        "Đường Tăng",
+        "Journey to the West",
+        "Tang Sanzang",
         "Leadership",
-        "Trao quyền",
+        "Delegation",
         "Vision",
-        "Sự nghiệp"
+        "Career"
       ],
       "date": "2026-06-18",
       "author": "Nguyen Le Phong",
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "ton-ngo-khong-nhan-tai-10x-va-vong-kim-co",
-      "title": "Tôn Ngộ Không trong công sở: nhân tài 10x cần đất diễn và ranh giới",
-      "summary": "Một ghi chép từ tư liệu quản trị Tây Du Ký về Tôn Ngộ Không như hình ảnh của nhân tài 10x trong công sở: năng lực giải quyết vấn đề rất lớn, tốc độ cao, mạng lưới rộng, nhưng cũng dễ bốc đồng, khó hợp tác nếu thiếu ranh giới, cơ chế phản hồi và mục tiêu chung đủ rõ.",
-      "cardSummary": "Người giỏi nhất team không cần bị kìm lại, nhưng cần một ranh giới đủ rõ để tài năng không trở thành rủi ro.",
+      "title": "Sun Wukong at Work: 10x Talent Needs Room to Move and Clear Boundaries",
+      "summary": "A reflective note from Journey to the West on Sun Wukong as a 10x talent at work: enormous problem-solving ability, speed, and networks can save a team, but without boundaries, feedback, and a shared goal, the same talent can become a cultural and operational risk.",
+      "cardSummary": "The strongest person on a team should not be made smaller, but their strength still needs boundaries so talent does not become risk.",
       "readingMinutes": 7,
       "tags": [
-        "Tây Du Ký",
-        "Tôn Ngộ Không",
+        "Journey to the West",
+        "Sun Wukong",
         "10x Talent",
         "Leadership",
-        "Ranh giới",
-        "Sự nghiệp"
+        "Boundaries",
+        "Career"
       ],
       "date": "2026-06-18",
       "author": "Nguyen Le Phong",
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "bat-gioi-sa-tang-bach-long-ma-nhung-vai-tham-lang-trong-team",
-      "title": "Bát Giới, Sa Tăng và Bạch Long Mã: những vai ít hào nhoáng vẫn giữ team đi tiếp",
-      "summary": "Một ghi chép từ tư liệu quản trị Tây Du Ký về các vai ít được tung hô trong team: người làm không khí bớt căng, người giữ vận hành đều, người làm hạ tầng thầm lặng. Bài viết nhìn các vai này bằng sự công bằng hơn, đồng thời nhắc rằng sự chăm chỉ cần được nâng cấp thành năng lực thấy được.",
-      "cardSummary": "Không phải ai cũng là người cứu nguy trước sân khấu, nhưng team sẽ đứt nhịp nếu thiếu những vai giữ không khí, nhịp vận hành và hạ tầng.",
+      "title": "Zhu Bajie, Sha Wujing, and the White Dragon Horse: Quiet Roles That Keep a Team Moving",
+      "summary": "A reflective note from Journey to the West on the less celebrated roles inside a team: the person who lightens tension, the person who keeps operations steady, and the infrastructure that quietly carries the work. The note looks at these roles with more fairness while also remembering that diligence should grow into visible capability.",
+      "cardSummary": "Not everyone saves the day on stage, but teams lose rhythm when no one keeps the mood, operations, and infrastructure steady.",
       "readingMinutes": 8,
       "tags": [
-        "Tây Du Ký",
-        "Bát Giới",
-        "Sa Tăng",
-        "Bạch Long Mã",
+        "Journey to the West",
+        "Zhu Bajie",
+        "Sha Wujing",
+        "White Dragon Horse",
         "Teamwork",
-        "Sự nghiệp"
+        "Career"
       ],
       "date": "2026-06-18",
       "author": "Nguyen Le Phong",
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "tay-du-ky-nhu-mot-project-team-di-qua-81-kiep-nan",
-      "title": "Tây Du Ký như một project team: mỗi chặng khó là một bài học về phối hợp",
-      "summary": "Một ghi chép từ tư liệu quản trị Tây Du Ký nhìn hành trình thỉnh kinh như một project team dài hạn: có vision, sponsor, PO, lead engineer, ops, hạ tầng, incident, escalation và rất nhiều lần team phải học cách đi tiếp dù không ai hoàn hảo.",
-      "cardSummary": "Một team bền không phải vì ai cũng hoàn hảo, mà vì mỗi người hiểu vai của mình và biết phối hợp khi blocker xuất hiện.",
+      "title": "Journey to the West as a Project Team: Every Hard Stretch Teaches Coordination",
+      "summary": "A reflective note from Journey to the West that reads the pilgrimage as a long-running project team: vision, sponsor, product owner, lead engineer, operations, infrastructure, incidents, escalation, and many chances for imperfect people to learn how to keep moving together.",
+      "cardSummary": "A lasting team is not built from perfect people, but from people who understand their roles and coordinate when blockers appear.",
       "readingMinutes": 8,
       "tags": [
-        "Tây Du Ký",
+        "Journey to the West",
         "Project Management",
         "Teamwork",
         "Agile",
         "Incident",
-        "Sự nghiệp"
+        "Career"
       ],
       "date": "2026-06-18",
       "author": "Nguyen Le Phong",
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "luu-bi-nhan-tri-noi-cong-so",
-      "title": "Lưu Bị và nhân trị nơi công sở: giữ người bằng lòng tin, không phải chỉ bằng lời hay",
-      "summary": "Một ghi chép từ tư liệu quản trị trong Tam Quốc về phong cách nhân trị của Lưu Bị: cách một người lãnh đạo giữ người bằng lòng tin, biết hạ mình cầu hiền, đặt con người vào trung tâm, nhưng cũng cần tỉnh táo để tình nghĩa không che mất năng lực, ranh giới và lợi ích chung của tổ chức.",
-      "cardSummary": "Lòng tin là chất keo của một team nhỏ, nhưng nếu thiếu ranh giới, nó cũng có thể làm quyết định quản trị trở nên mờ đi.",
+      "title": "Liu Bei and People-Centered Leadership at Work: Trust Must Become Behavior, Not Just Warm Words",
+      "summary": "A reflective note from Three Kingdoms management material on Liu Bei’s people-centered leadership: how trust, humility, and attention to people can hold a team together, while still needing clear boundaries so loyalty and kindness do not blur capability, feedback, or the common good.",
+      "cardSummary": "Trust is the glue of a small team, but without boundaries it can also make management decisions blurry.",
       "readingMinutes": 7,
       "tags": [
-        "Tam Quốc",
-        "Lưu Bị",
+        "Three Kingdoms",
+        "Liu Bei",
         "Leadership",
-        "Quản trị",
-        "Nhân sự",
-        "Sự nghiệp"
+        "Management",
+        "People",
+        "Career"
       ],
       "date": "2026-06-18",
       "author": "Nguyen Le Phong",
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "tao-thao-phap-tri-trong-van-phong",
-      "title": "Tào Tháo và pháp trị trong văn phòng: hệ thống tốt giúp bớt quản bằng cảm xúc",
-      "summary": "Một ghi chép từ tư liệu quản trị trong Tam Quốc về phong cách pháp trị và thực dụng của Tào Tháo: trọng dụng năng lực, đặt đúng người đúng việc, xây hệ thống vận hành, dùng luật chơi rõ ràng để giảm mơ hồ, nhưng cũng cần tránh biến kỷ luật thành kiểm soát và nghi ngờ.",
-      "cardSummary": "Một team lớn không thể chỉ chạy bằng tình cảm; nó cần luật chơi rõ để người tử tế không phải đoán nhau mỗi ngày.",
+      "title": "Cao Cao and Rule-Based Management at Work: Good Systems Help Teams Stop Managing by Emotion",
+      "summary": "A reflective note from Three Kingdoms management material on Cao Cao’s pragmatic, rule-based style: merit, role fit, operating systems, and clear rules can reduce ambiguity, but discipline must not turn into surveillance, fear, or suspicion.",
+      "cardSummary": "A larger team cannot run on personal warmth alone; it needs clear rules so well-intentioned people do not have to guess every day.",
       "readingMinutes": 7,
       "tags": [
-        "Tam Quốc",
-        "Tào Tháo",
+        "Three Kingdoms",
+        "Cao Cao",
         "Leadership",
-        "Quản trị",
-        "Hệ thống",
-        "Sự nghiệp"
+        "Management",
+        "Systems",
+        "Career"
       ],
       "date": "2026-06-18",
       "author": "Nguyen Le Phong",
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "giua-luu-bi-va-tao-thao-di-lam-can-ca-tinh-nguoi-va-luat-choi",
-      "title": "Giữa Lưu Bị và Tào Tháo: đi làm cần tình người, nhưng cũng cần luật chơi rõ",
-      "summary": "Một ghi chép suy ngẫm từ tư liệu quản trị Tam Quốc về cách cân bằng nhân trị và pháp trị trong đời sống công sở: khi nào cần lòng tin, khi nào cần hệ thống, vì sao startup và scale-up cần cách quản khác nhau, và làm sao để sự tử tế không mơ hồ còn kỷ luật không trở nên lạnh.",
-      "cardSummary": "Team khỏe không chọn giữa tình người và hệ thống; team khỏe học cách để hai thứ đó nâng đỡ nhau.",
+      "title": "Between Liu Bei and Cao Cao: Work Needs Humanity, but It Also Needs Clear Rules",
+      "summary": "A reflective note from Three Kingdoms management material on balancing people-centered leadership and rule-based management at work: when trust is needed, when structure is needed, why startup and scale-up stages require different management habits, and how kindness can stay clear while discipline stays human.",
+      "cardSummary": "A healthy team does not choose between humanity and systems; it learns how to let both support each other.",
       "readingMinutes": 8,
       "tags": [
-        "Tam Quốc",
+        "Three Kingdoms",
         "Leadership",
-        "Quản trị",
-        "Công sở",
+        "Management",
+        "Workplace",
         "Startup",
-        "Sự nghiệp"
+        "Career"
       ],
       "date": "2026-06-18",
       "author": "Nguyen Le Phong",
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
