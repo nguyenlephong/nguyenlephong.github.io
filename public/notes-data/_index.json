@@ -45,6 +45,52 @@
   ],
   "posts": [
     {
+      "slug": "truoc-khi-cham-chi-hon-hay-chon-huong-co-don-bay",
+      "title": "Before Working Harder, Check Whether the Direction Can Grow",
+      "summary": "A calm career note on why effort needs direction, leverage, and compounding skill. Salary is valuable, but if every unit of income depends only on the next hour of work, people can become tired without becoming freer. The note reflects on linear income, skill assets, reusable systems, and the habit of turning daily work into something that keeps growing after the workday ends.",
+      "cardSummary": "Hard work matters, but the question is whether today’s effort leaves behind skill, systems, and leverage for tomorrow.",
+      "readingMinutes": 7,
+      "tags": [
+        "Career",
+        "Leverage",
+        "Skill Building",
+        "Personal Finance",
+        "Learning",
+        "Decision Making"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
+      "slug": "thay-nguoi-khac-thanh-cong-ma-long-minh-khong-hep-lai",
+      "title": "When Someone Else Succeeds, Do Not Let Your Own World Become Smaller",
+      "summary": "A reflective workplace note on envy, generosity, and the ability to learn from other people’s success. The article turns the idea of wishing companions well into practical office behavior: congratulating without shrinking, studying what worked, choosing stronger rooms, and keeping ambition clean instead of turning comparison into quiet resentment.",
+      "cardSummary": "Another person’s success does not have to reduce our own path; it can show us a larger room to grow in.",
+      "readingMinutes": 6,
+      "tags": [
+        "Career",
+        "Mindset",
+        "Teamwork",
+        "Generosity",
+        "Leadership",
+        "Self Development"
+      ],
+      "date": "2026-06-18",
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
       "slug": "duong-tang-giu-vision-va-trao-quyen",
       "title": "Tang Sanzang Holds the Vision: A Leader Does Not Need to Do Everything, but Must Keep the Direction",
       "summary": "A reflective note from Journey to the West on Tang Sanzang as a workplace leader: a leader does not have to be the strongest technical operator, but must keep the goal clear, understand each person’s strengths, delegate with trust, verify without micromanaging, and protect shared values when the team goes through pressure.",
