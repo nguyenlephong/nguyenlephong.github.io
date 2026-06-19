@@ -4,8 +4,6 @@ import { experience } from "@/content/experience";
 import { projects } from "@/content/projects";
 import {
   contact,
-  about,
-  summary,
   technical_skill,
   achievements,
   education,
@@ -40,8 +38,6 @@ export const profileInfo = {
   gallery,
   videos,
   contact,
-  about,
-  summary,
   technical_skill,
   experience,
   projects,

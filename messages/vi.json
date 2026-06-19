@@ -361,7 +361,6 @@
         "budding": "Nẩy mầm",
         "evergreen": "Trưởng thành"
       },
-
       "viewGraph": "Đồ thị",
       "viewList": "Danh sách",
       "viewToggle": "Đổi chế độ xem",
@@ -501,5 +500,79 @@
         "close": "Đóng"
       }
     }
+  },
+  "About": {
+    "heading": "Nguyễn Lê Phong — Kỹ sư phần mềm",
+    "sections": [
+      {
+        "title": "Kỹ năng & Kinh nghiệm",
+        "items": [
+          "Cử nhân <strong>Công nghệ Thông tin</strong>. Xếp loại: <strong>Giỏi</strong>. <strong>(GPA: 3.36)</strong>",
+          "<strong>5+ năm</strong> kinh nghiệm phát triển front-end",
+          "Thành thạo <strong>JavaScript, DOM, HTML5, LESS, SASS/CSS3</strong>",
+          "Hiểu các nguyên tắc <strong>SEO</strong>.",
+          "Có kinh nghiệm về <strong>thiết kế UI/UX, tối ưu hiệu năng, testing, design pattern</strong>, v.v.",
+          "Kinh nghiệm với các framework front-end như <strong>React, Next.js</strong>",
+          "Hiểu bản chất của <strong>lập trình bất đồng bộ</strong>",
+          "Quen thuộc với các công nghệ back-end như <strong>Node.js, Java</strong>",
+          "Nắm vững cấu trúc dữ liệu và giải thuật.",
+          "Kinh nghiệm với các công cụ build front-end như <strong>Webpack</strong>",
+          "Hiểu nguyên tắc <strong>responsive design</strong> và phát triển <strong>mobile-first</strong>",
+          "Kỹ năng <strong>giải quyết vấn đề</strong> và <strong>phân tích</strong> tốt",
+          "Tỉ mỉ và có khả năng <strong>viết code sạch, dễ bảo trì</strong>",
+          "Kinh nghiệm với các <strong>hệ thống quản lý phiên bản</strong> như Git, GitLab, Bitbucket, SVN",
+          "Đam mê học hỏi và luôn cập nhật các xu hướng phát triển front-end mới nhất",
+          "Có khả năng <strong>làm việc độc lập</strong> và phối hợp theo nhóm",
+          "Kỹ năng giao tiếp <strong>nói và viết tốt</strong>"
+        ]
+      },
+      {
+        "title": "Điểm mạnh",
+        "items": [
+          "Tôi là người có <strong>tinh thần trách nhiệm cao</strong> trong công việc",
+          "<strong>Dễ thích nghi</strong> với môi trường làm việc nhóm, có khả năng <strong>quản lý</strong> nhóm từ 3 đến 5 người",
+          "Dễ hòa đồng, sẵn sàng giúp đỡ người khác khi có thể",
+          "Tôi có khả năng <strong>quản lý thời gian cá nhân tốt</strong>",
+          "Có khả năng <strong>phân tích và giải quyết vấn đề</strong>",
+          "Chịu được <strong>áp lực tốt, kiên nhẫn cao</strong>",
+          "Có khả năng đọc tài liệu <strong>tiếng Anh</strong>"
+        ]
+      },
+      {
+        "title": "Điểm yếu",
+        "items": [
+          "Đôi khi <strong>tự nói một mình</strong> khi tìm giải pháp cho công việc",
+          "Giao tiếp ngoại ngữ (tiếng Anh) <strong>chưa lưu loát</strong>"
+        ]
+      },
+      {
+        "title": "Sở thích",
+        "items": [
+          "Thích xem <strong>phim</strong> (phim có thể mang lại những bài học nâng cao kỹ năng sống), ca hát vào cuối tuần, ngày lễ cùng bạn bè và người thân",
+          "Tôi là người <strong>đam mê công nghệ</strong>, <strong>ứng dụng công nghệ</strong> vào thực tế",
+          "Thích đọc tin tức <strong>công nghệ mới</strong>, các ứng dụng mới để trò chuyện cùng bạn bè khi rảnh rỗi",
+          "Tôi cũng có thói quen <strong>đọc sách</strong>, mỗi quý tự trang bị cho mình những cuốn sách mới"
+        ]
+      },
+      {
+        "title": "Là một kỹ sư phần mềm front-end, trong quá trình làm việc, tôi luôn chú ý đến những điều sau:",
+        "items": [
+          "<strong>Semantic HTML</strong>: Sử dụng các phần tử HTML đúng ngữ nghĩa để cấu trúc và ý nghĩa nội dung rõ ràng với cả con người lẫn máy móc.",
+          "<strong>Kiến trúc CSS</strong>: Triển khai cấu trúc CSS module hóa và dễ bảo trì, ví dụ như BEM",
+          "<strong>Trải nghiệm người dùng</strong>: Đảm bảo website hoặc ứng dụng dễ sử dụng và mang lại trải nghiệm tốt.",
+          "<strong>Khả năng tiếp cận</strong>: Đảm bảo website hoặc ứng dụng tiếp cận được với người dùng khuyết tật.",
+          "<strong>Tương thích đa trình duyệt</strong>: Đảm bảo website hoặc ứng dụng hoạt động trên nhiều trình duyệt và thiết bị khác nhau.",
+          "<strong>Hợp tác</strong>: Giao tiếp và phối hợp tốt với các thành viên trong nhóm, đặc biệt là với back-end developer, là yếu tố quan trọng cho thành công của dự án.",
+          "<strong>Responsive design</strong>: Đảm bảo website hoặc ứng dụng được tối ưu cho nhiều kích thước màn hình và thiết bị.",
+          "<strong>Tối ưu hiệu năng</strong>: Giảm thiểu <strong>dung lượng file</strong>, tối ưu <strong>hình ảnh</strong>, và áp dụng <strong>lazy loading</strong> để cải thiện hiệu năng website.",
+          "<strong>Bảo mật</strong>: Nhận thức các rủi ro bảo mật và triển khai biện pháp phòng tránh.",
+          "<strong>Khả năng bảo trì</strong>: Viết code <strong>sạch và có tổ chức</strong>, dễ <strong>bảo trì và chỉnh sửa</strong> trong tương lai.",
+          "<strong>Best practices</strong>: Tuân thủ các thực hành tốt nhất theo tiêu chuẩn ngành cho phát triển front-end.",
+          "<strong>Testing</strong>: Thường xuyên kiểm thử website hoặc ứng dụng để đảm bảo hoạt động đúng như mong đợi.",
+          "<strong>Tích hợp/Triển khai liên tục (CI/CD)</strong>: Tự động hóa quy trình build, test và deploy để đảm bảo <strong>quy trình phát triển</strong> mượt mà và hiệu quả.",
+          "<strong>Tài liệu</strong>: Viết tài liệu rõ ràng, súc tích để code <strong>dễ hiểu</strong> với các developer khác và dễ bảo trì trong tương lai."
+        ]
+      }
+    ]
   }
 }
