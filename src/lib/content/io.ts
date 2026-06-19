@@ -1,4 +1,5 @@
 import fs from 'node:fs'
+import { z } from 'zod'
 import { routing } from '@/i18n/routing'
 
 /**
@@ -46,6 +47,38 @@ export function readJson<T>(file: string): T | null {
 
   if (CACHE_ENABLED) cache.set(file, parsed)
   return parsed
+}
+
+const validatedCache = new Map<string, unknown>()
+
+/**
+ * Like {@link readJson} but validates the parsed value against a Zod schema, so
+ * a content file with the wrong *shape* (missing field, wrong type) fails the
+ * build with a precise message — instead of surfacing later as `undefined` in a
+ * render. Validation runs once per file per production build.
+ */
+export function readJsonValidated<S extends z.ZodTypeAny>(
+  file: string,
+  schema: S,
+): z.infer<S> | null {
+  if (CACHE_ENABLED && validatedCache.has(file)) {
+    return validatedCache.get(file) as z.infer<S>
+  }
+
+  const raw = readJson<unknown>(file)
+  if (raw === null) return null
+
+  const result = schema.safeParse(raw)
+  if (!result.success) {
+    const issues = result.error.issues
+      .slice(0, 8)
+      .map((i) => `  - ${i.path.join('.') || '(root)'}: ${i.message}`)
+      .join('\n')
+    throw new Error(`Content failed schema validation: ${file}\n${issues}`)
+  }
+
+  if (CACHE_ENABLED) validatedCache.set(file, result.data)
+  return result.data
 }
 
 /** True when no locale is given, or it is the canonical (default) locale. */

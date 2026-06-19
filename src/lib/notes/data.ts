@@ -1,6 +1,12 @@
 import path from "node:path";
 import { routing } from "@/i18n/routing";
-import { byDateDesc, overlayByKey, readJson } from "@/lib/content/io";
+import {
+  byDateDesc,
+  overlayByKey,
+  readJson,
+  readJsonValidated
+} from "@/lib/content/io";
+import { notesIndexSchema, noteSchema } from "./schema";
 import type { Note, NoteMeta, NotesIndexFile, TopicMeta } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "public", "notes-data");
@@ -31,7 +37,8 @@ function noteLocales(post: NoteMeta): string[] {
 
 function baseIndex(): NotesIndexFile {
   return (
-    readJson<NotesIndexFile>(path.join(DATA_DIR, "_index.json")) ?? EMPTY_INDEX
+    readJsonValidated(path.join(DATA_DIR, "_index.json"), notesIndexSchema) ??
+    EMPTY_INDEX
   );
 }
 
@@ -129,7 +136,10 @@ export function listNoteParams(): Array<{ locale: string; slug: string }> {
 
 /** Loads a single note, overlaying the Vietnamese body when serving `vi`. */
 export function loadNote(slug: string, locale?: string): Note | null {
-  const base = readJson<Note>(path.join(DATA_DIR, "posts", `${slug}.json`));
+  const base = readJsonValidated(
+    path.join(DATA_DIR, "posts", `${slug}.json`),
+    noteSchema
+  );
   if (!base) return null;
   if (contentLocale(locale) !== "vi") return base;
 

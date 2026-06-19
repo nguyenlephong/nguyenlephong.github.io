@@ -4,7 +4,9 @@ import {
   isDefaultLocale,
   overlayByKey,
   readJson,
+  readJsonValidated,
 } from '@/lib/content/io'
+import { blogIndexSchema, blogPostSchema } from './schema'
 import type {
   BlogCategoryMeta,
   BlogIndexFile,
@@ -19,7 +21,8 @@ const EMPTY_INDEX: BlogIndexFile = { categories: [], posts: [] }
 /** Canonical index (English) — used for static-param generation. */
 function baseIndex(): BlogIndexFile {
   return (
-    readJson<BlogIndexFile>(path.join(DATA_DIR, '_index.json')) ?? EMPTY_INDEX
+    readJsonValidated(path.join(DATA_DIR, '_index.json'), blogIndexSchema) ??
+    EMPTY_INDEX
   )
 }
 
@@ -108,7 +111,10 @@ export function listPosts(locale?: string): BlogPostMeta[] {
 }
 
 export function loadPost(slug: string, locale?: string): BlogPost | null {
-  const base = readJson<BlogPost>(path.join(DATA_DIR, 'posts', `${slug}.json`))
+  const base = readJsonValidated(
+    path.join(DATA_DIR, 'posts', `${slug}.json`),
+    blogPostSchema,
+  )
   if (!base) return null
   if (isDefaultLocale(locale)) return base
 
