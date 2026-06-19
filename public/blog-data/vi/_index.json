@@ -955,6 +955,18 @@
         "Thực thi",
         "Engineering Culture"
       ]
+    },
+    {
+      "slug": "signals-or-messages",
+      "title": "Tín hiệu hay thông điệp: cái giá thầm lặng của giao tiếp mập mờ",
+      "summary": "Abraham Zaleznik nhận ra rằng những người không thoải mái với sự gắn kết trực tiếp thường giao tiếp bằng tín hiệu thay vì thông điệp. Về việc vì sao giao tiếp mập mờ cảm thấy an toàn khi gửi và đáp xuống thành lo âu, cách nó lặng lẽ nuôi lớn chính trị nội bộ, và vì sao một thông điệp rõ ràng là một lòng tốt — nhất là khi nó khó nói.",
+      "tags": [
+        "Leadership",
+        "Management",
+        "Giao tiếp",
+        "Engineering Culture",
+        "Team Collaboration"
+      ]
     }
   ]
 }

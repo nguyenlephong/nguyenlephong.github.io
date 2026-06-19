@@ -973,6 +973,25 @@
       "featured": true,
       "series": "leadership-and-management",
       "seriesOrder": 2
+    },
+    {
+      "slug": "signals-or-messages",
+      "category": "culture",
+      "title": "Signals or Messages: The Quiet Cost of Vague Communication",
+      "summary": "Abraham Zaleznik noticed that people uncomfortable with direct engagement communicate in signals rather than messages. On why vague communication feels safe to send and lands as anxiety, how it quietly breeds office politics, and why a clear message is a kindness — especially when it is hard.",
+      "date": "2026-06-20",
+      "readingMinutes": 5,
+      "tags": [
+        "Leadership",
+        "Management",
+        "Communication",
+        "Engineering Culture",
+        "Team Collaboration"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "series": "leadership-and-management",
+      "seriesOrder": 3
     }
   ]
 }
