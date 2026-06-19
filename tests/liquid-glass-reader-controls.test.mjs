@@ -25,6 +25,13 @@ test("blog and notes explorer controls use a compact command palette contract", 
   const command = blockFor(".blog-command");
   assert.match(command, /position:\s*relative/);
 
+  const commandOuterHalo = blockFor(".blog-command::before");
+  assert.match(commandOuterHalo, /command-listening-halo/);
+  assert.match(commandOuterHalo, /filter:\s*blur/);
+
+  assert.match(css, /\.blog-command::after\s*\{[\s\S]*?command-listening-ring/);
+  assert.match(css, /\.blog-command::after\s*\{[\s\S]*?conic-gradient/);
+
   const bar = blockFor(".blog-command__bar");
   assert.match(bar, /backdrop-filter:/);
   assert.match(bar, /saturate/);
@@ -68,6 +75,8 @@ test("blog and notes explorer controls use a compact command palette contract", 
 
   assert.match(css, /@keyframes\s+command-apple-field/);
   assert.match(css, /@keyframes\s+command-apple-rim/);
+  assert.match(css, /@keyframes\s+command-listening-halo/);
+  assert.match(css, /@keyframes\s+command-listening-ring/);
   assert.match(css, /@keyframes\s+reader-tool-aurora-pulse/);
   assert.match(css, /@keyframes\s+reader-tool-aurora-rim/);
   assert.match(css, /@media\s*\(prefers-reduced-transparency:\s*reduce\)/);
