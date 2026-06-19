@@ -1,16 +1,11 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { routing } from '@/i18n/routing'
+import { isDefaultLocale, readJson } from '@/lib/content/io'
 import type { ThoughtApiResponse, ThoughtGraphFile } from './types'
 
 const DATA_DIR = path.join(process.cwd(), 'public', 'thoughts-data')
 
 const EMPTY_GRAPH: ThoughtGraphFile = { thoughts: {}, edges: [] }
-
-function readJson<T>(file: string): T | null {
-  if (!fs.existsSync(file)) return null
-  return JSON.parse(fs.readFileSync(file, 'utf-8')) as T
-}
 
 /**
  * Loads the canonical graph and, when a per-locale override exists, swaps in
@@ -22,9 +17,9 @@ export function loadGraph(locale?: string): ThoughtGraphFile {
   const base = readJson<ThoughtGraphFile>(path.join(DATA_DIR, '_graph.json'))
   if (!base) return EMPTY_GRAPH
 
-  if (!locale || locale === routing.defaultLocale) return base
+  if (isDefaultLocale(locale)) return base
 
-  const overrideFile = path.join(DATA_DIR, locale, '_graph.json')
+  const overrideFile = path.join(DATA_DIR, locale as string, '_graph.json')
   const override = readJson<ThoughtGraphFile>(overrideFile)
   if (!override) return base
 
@@ -51,10 +46,10 @@ export function loadThought(
     path.join(DATA_DIR, 'thoughts', `${slug}.json`),
   )
   if (!base) return null
-  if (!locale || locale === routing.defaultLocale) return base
+  if (isDefaultLocale(locale)) return base
 
   const override = readJson<Partial<ThoughtApiResponse>>(
-    path.join(DATA_DIR, locale, 'thoughts', `${slug}.json`),
+    path.join(DATA_DIR, locale as string, 'thoughts', `${slug}.json`),
   )
   if (!override) return base
 

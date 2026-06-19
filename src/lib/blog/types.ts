@@ -1,3 +1,5 @@
+import type { BookSource, Faq } from '@/lib/content/types'
+
 export type BlogAccent = 'ocean' | 'gold' | 'violet' | 'dark' | 'light'
 
 export interface BlogCategoryMeta {
@@ -36,28 +38,11 @@ export interface BlogPostMeta {
   seriesOrder?: number
 }
 
-export interface BlogBookSource {
-  /** Localized or commonly used title in this article. */
-  title: string
-  /** Original title of the book, when different or useful for attribution. */
-  originalTitle?: string
-  /** Book authors, not the author of this website article. */
-  authors: string[]
-  /** Named contributors credited by the source book. */
-  contributors?: string[]
-  publisher?: string
-  published?: string
-  isbn?: string
-  /** Short editorial note about how this article relates to the book. */
-  note?: string
-}
+/** @see {@link BookSource} — shared with notes. */
+export type BlogBookSource = BookSource
 
-export interface BlogFaq {
-  /** Question (plain text) */
-  q: string
-  /** Answer — may contain simple inline HTML */
-  a: string
-}
+/** @see {@link Faq} — shared with notes. */
+export type BlogFaq = Faq
 
 export interface BlogPost extends BlogPostMeta {
   /** Pre-rendered HTML body (server-trusted, authored in-repo) */

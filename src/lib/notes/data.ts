@@ -1,6 +1,6 @@
-import fs from "node:fs";
 import path from "node:path";
 import { routing } from "@/i18n/routing";
+import { byDateDesc, overlayByKey, readJson } from "@/lib/content/io";
 import type { Note, NoteMeta, NotesIndexFile, TopicMeta } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "public", "notes-data");
@@ -29,15 +29,6 @@ function noteLocales(post: NoteMeta): string[] {
   return post.locales ?? ["vi"];
 }
 
-function readJson<T>(file: string): T | null {
-  if (!fs.existsSync(file)) return null;
-  return JSON.parse(fs.readFileSync(file, "utf-8")) as T;
-}
-
-function byDateDesc(a: NoteMeta, b: NoteMeta): number {
-  return b.date.localeCompare(a.date);
-}
-
 function baseIndex(): NotesIndexFile {
   return (
     readJson<NotesIndexFile>(path.join(DATA_DIR, "_index.json")) ?? EMPTY_INDEX
@@ -58,18 +49,9 @@ export function loadNotesIndex(locale?: string): NotesIndexFile {
   );
   if (!override) return base;
 
-  const topicOverrides = new Map((override.topics ?? []).map((t) => [t.id, t]));
-  const postOverrides = new Map((override.posts ?? []).map((p) => [p.slug, p]));
-
   return {
-    topics: base.topics.map((t) => ({
-      ...t,
-      ...(topicOverrides.get(t.id) ?? {})
-    })),
-    posts: base.posts.map((p) => ({
-      ...p,
-      ...(postOverrides.get(p.slug) ?? {})
-    }))
+    topics: overlayByKey(base.topics, override.topics, (t) => t.id),
+    posts: overlayByKey(base.posts, override.posts, (p) => p.slug)
   };
 }
 

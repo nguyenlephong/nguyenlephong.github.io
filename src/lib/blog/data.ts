@@ -1,6 +1,10 @@
-import fs from 'node:fs'
 import path from 'node:path'
-import { routing } from '@/i18n/routing'
+import {
+  byDateDesc,
+  isDefaultLocale,
+  overlayByKey,
+  readJson,
+} from '@/lib/content/io'
 import type {
   BlogCategoryMeta,
   BlogIndexFile,
@@ -12,22 +16,11 @@ const DATA_DIR = path.join(process.cwd(), 'public', 'blog-data')
 
 const EMPTY_INDEX: BlogIndexFile = { categories: [], posts: [] }
 
-function readJson<T>(file: string): T | null {
-  if (!fs.existsSync(file)) return null
-  return JSON.parse(fs.readFileSync(file, 'utf-8')) as T
-}
-
-function isDefault(locale?: string): boolean {
-  return !locale || locale === routing.defaultLocale
-}
-
-function byDateDesc(a: BlogPostMeta, b: BlogPostMeta): number {
-  return b.date.localeCompare(a.date)
-}
-
 /** Canonical index (English) — used for static-param generation. */
 function baseIndex(): BlogIndexFile {
-  return readJson<BlogIndexFile>(path.join(DATA_DIR, '_index.json')) ?? EMPTY_INDEX
+  return (
+    readJson<BlogIndexFile>(path.join(DATA_DIR, '_index.json')) ?? EMPTY_INDEX
+  )
 }
 
 /**
@@ -38,24 +31,20 @@ function baseIndex(): BlogIndexFile {
  */
 export function loadIndex(locale?: string): BlogIndexFile {
   const base = baseIndex()
-  if (isDefault(locale)) return base
+  if (isDefaultLocale(locale)) return base
 
   const override = readJson<Partial<BlogIndexFile>>(
     path.join(DATA_DIR, locale as string, '_index.json'),
   )
   if (!override) return base
 
-  const catOverrides = new Map(
-    (override.categories ?? []).map((c) => [c.slug, c]),
-  )
-  const postOverrides = new Map((override.posts ?? []).map((p) => [p.slug, p]))
-
   return {
-    categories: base.categories.map((c) => ({
-      ...c,
-      ...(catOverrides.get(c.slug) ?? {}),
-    })),
-    posts: base.posts.map((p) => ({ ...p, ...(postOverrides.get(p.slug) ?? {}) })),
+    categories: overlayByKey(
+      base.categories,
+      override.categories,
+      (c) => c.slug,
+    ),
+    posts: overlayByKey(base.posts, override.posts, (p) => p.slug),
   }
 }
 
@@ -119,11 +108,9 @@ export function listPosts(locale?: string): BlogPostMeta[] {
 }
 
 export function loadPost(slug: string, locale?: string): BlogPost | null {
-  const base = readJson<BlogPost>(
-    path.join(DATA_DIR, 'posts', `${slug}.json`),
-  )
+  const base = readJson<BlogPost>(path.join(DATA_DIR, 'posts', `${slug}.json`))
   if (!base) return null
-  if (isDefault(locale)) return base
+  if (isDefaultLocale(locale)) return base
 
   const override = readJson<Partial<BlogPost>>(
     path.join(DATA_DIR, locale as string, 'posts', `${slug}.json`),
