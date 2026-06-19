@@ -41,15 +41,21 @@ refactor (security → CI → dedup → engagement → god-file → perf).
 - `firestore.rules` change must be deployed: `firebase deploy --only firestore:rules`.
 - Keep `package.json` ↔ `package-lock.json` in sync (CI runs `npm ci`).
 
-## Next Steps (deferred — pure refactors, do as focused PRs)
-1. ~~Explorer extraction~~ DONE (`121cc028`): `useExplorer` + `ExplorerShell` +
-   `src/lib/content/search.ts`; BlogExplorer 501→131, NotesExplorer 506→133.
-2. **`app.const.ts` module split**: shard into `src/content/{gallery,projects,profile,
-   skills,media}.ts` + `routes.ts`; migrate about/summary prose to `messages/*` (single
-   source) so the about page stops rendering English-only.
-3. **ThoughtGraph perf** (only when thoughts is revived — currently unrendered):
-   `next/dynamic({ssr:false})`, debounce resize, replace O(n²) `forceRectCollide`.
-4. **Font loading**: 9 Google families in `[locale]/layout.tsx`; lazy-load by reader
-   selection. Needs screenshot testing across themes.
-5. Deploy the hardened `firestore.rules`. Consider Firebase App Check (the only real
-   anti-abuse for anonymous counter writes on a static host).
+## Done since
+- ~~Explorer extraction~~ (`121cc028`): `useExplorer` + `ExplorerShell` + `search.ts`;
+  BlogExplorer 501→131, NotesExplorer 506→133.
+- ~~`app.const.ts` module split~~ (`813f5487`): data → `src/content/{gallery,media,
+  experience,projects,profile}.ts`; app.const.ts 616→51-line barrel (imports unchanged).
+- ~~Fonts + ThoughtGraph~~ (`4ce3efbc`): 7 reading fonts `preload:false` (homepage font
+  preloads 9→2); `ThoughtGraph` via `next/dynamic({ssr:false})`; resize rebuild debounced.
+
+## Remaining (content task, not a refactor — needs the user's call)
+1. **About/summary prose → `messages/*`**: the about page still renders `profileInfo.about`
+   (English-only, now in `src/content/profile.ts`). Moving it into `messages/*` makes it
+   translatable, but needs actual translated copy for the 6 locales (vi/zh/ja/ko/fr) — a
+   content decision, not mechanical.
+2. **Deploy** the hardened `firestore.rules` (`firebase deploy --only firestore:rules`);
+   consider Firebase App Check — the only real anti-abuse for anonymous counter writes on a
+   static host.
+3. Optional deeper `ThoughtGraph` work (replace O(n²) `forceRectCollide`, cap warmup ticks)
+   — low priority while the thoughts route stays unrendered.
