@@ -351,6 +351,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
               capture_pageleave: true,
               autocapture: false,
               disable_session_recording: true,
+              respect_dnt: true,
               persistence: 'localStorage+cookie'
             });
             posthog.register({ site: 'nguyenlephong.github.io', surface: 'cv', locale: ${JSON.stringify(locale)} });
