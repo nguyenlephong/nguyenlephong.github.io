@@ -1841,6 +1841,16 @@
       color-mix(in oklab, var(--blog-control-highlight) 58%, transparent),
       transparent 48%
     ),
+    radial-gradient(
+      90% 180% at 8% 50%,
+      color-mix(in oklab, var(--blog-ai-rose) 12%, transparent),
+      transparent 64%
+    ),
+    radial-gradient(
+      82% 180% at 92% 50%,
+      color-mix(in oklab, var(--blog-ai-cyan) 12%, transparent),
+      transparent 62%
+    ),
     var(--blog-control-glass);
   box-shadow:
     var(--blog-control-inner),
@@ -1857,33 +1867,52 @@
 .blog-command__bar::before {
   content: "";
   position: absolute;
-  inset: 2px;
+  inset: 0;
   border-radius: inherit;
   z-index: 0;
   background:
     radial-gradient(
-      70% 180% at 10% 18%,
-      color-mix(in oklab, var(--blog-ai-rose) 24%, transparent),
-      transparent 42%
+      48% 220% at 6% 50%,
+      color-mix(in oklab, var(--blog-ai-rose) 34%, transparent),
+      transparent 58%
     ),
     radial-gradient(
-      62% 160% at 68% -26%,
-      color-mix(in oklab, var(--blog-ai-gold) 18%, transparent),
-      transparent 46%
+      46% 210% at 42% -42%,
+      color-mix(in oklab, var(--blog-ai-gold) 24%, transparent),
+      transparent 54%
     ),
     radial-gradient(
-      76% 180% at 96% 88%,
-      color-mix(in oklab, var(--blog-ai-cyan) 20%, transparent),
-      transparent 44%
+      50% 220% at 96% 50%,
+      color-mix(in oklab, var(--blog-ai-cyan) 34%, transparent),
+      transparent 58%
     ),
     radial-gradient(
-      80% 160% at 35% 118%,
-      color-mix(in oklab, var(--blog-ai-violet) 18%, transparent),
-      transparent 48%
+      58% 210% at 54% 142%,
+      color-mix(in oklab, var(--blog-ai-violet) 30%, transparent),
+      transparent 58%
+    ),
+    linear-gradient(
+      105deg,
+      transparent 0 28%,
+      color-mix(in oklab, white 16%, transparent) 42%,
+      transparent 56% 100%
     );
-  filter: blur(12px) saturate(1.18);
-  opacity: 0.32;
-  transform: translate3d(-2%, 0, 0) scale(1.04);
+  background-size:
+    142% 100%,
+    136% 100%,
+    148% 100%,
+    132% 100%,
+    220% 100%;
+  background-position:
+    -10% 50%,
+    46% 0%,
+    110% 50%,
+    54% 100%,
+    -120% 0%;
+  background-blend-mode: screen;
+  filter: blur(9px) saturate(1.32);
+  opacity: 0.48;
+  transform: translate3d(-1.5%, 0, 0) scale(1.03);
   transition:
     opacity 0.24s ease,
     transform 0.5s ease;
@@ -1932,8 +1961,8 @@
 .blog-command.is-open .blog-command__bar::before,
 .blog-command__bar:hover::before,
 .blog-command__bar:focus-within::before {
-  opacity: 0.38;
-  transform: translate3d(2%, 0, 0) scale(1.08);
+  opacity: 0.68;
+  transform: translate3d(1.5%, 0, 0) scale(1.06);
 }
 .blog-command.is-open .blog-command__bar::after,
 .blog-command__bar:hover::after,
@@ -2058,16 +2087,16 @@
 
 @keyframes command-apple-field {
   0% {
-    background-position: 0% 48%, 58% 0%, 100% 100%, 24% 100%;
-    filter: blur(12px) saturate(1.1) hue-rotate(0deg);
+    background-position: -10% 50%, 46% 0%, 110% 50%, 54% 100%, -120% 0%;
+    filter: blur(9px) saturate(1.16) hue-rotate(0deg);
   }
   50% {
-    background-position: 24% 58%, 74% 18%, 82% 76%, 42% 86%;
-    filter: blur(13px) saturate(1.28) hue-rotate(10deg);
+    background-position: 18% 54%, 68% 14%, 84% 46%, 36% 88%, 24% 0%;
+    filter: blur(10px) saturate(1.42) hue-rotate(10deg);
   }
   100% {
-    background-position: 8% 38%, 48% 8%, 92% 88%, 18% 70%;
-    filter: blur(12px) saturate(1.16) hue-rotate(-8deg);
+    background-position: 2% 44%, 38% 8%, 104% 58%, 64% 78%, 120% 0%;
+    filter: blur(9px) saturate(1.22) hue-rotate(-8deg);
   }
 }
 

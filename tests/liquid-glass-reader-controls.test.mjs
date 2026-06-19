@@ -29,6 +29,11 @@ test("blog and notes explorer controls use a compact command palette contract", 
   assert.match(bar, /backdrop-filter:/);
   assert.match(bar, /saturate/);
 
+  const commandField = blockFor(".blog-command__bar::before");
+  assert.match(commandField, /command-apple-field/);
+  assert.match(commandField, /radial-gradient/);
+  assert.match(commandField, /background-blend-mode:\s*screen/);
+
   const commandHalo = blockFor(".blog-command__bar::after");
   assert.match(commandHalo, /command-apple-rim/);
   assert.match(commandHalo, /conic-gradient/);
