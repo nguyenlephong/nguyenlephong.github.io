@@ -1865,25 +1865,25 @@
 }
 .blog-command::after {
   z-index: 1;
-  padding: 1px;
+  top: -1rem;
+  right: -1.12rem;
+  left: -1.12rem;
+  height: calc(3.5rem + 2rem);
   background:
     conic-gradient(
-      from var(--apple-rim-angle, 210deg),
-      transparent 0 9%,
-      color-mix(in oklab, var(--blog-ai-rose) 82%, transparent) 18%,
-      color-mix(in oklab, var(--blog-ai-gold) 72%, transparent) 31%,
-      transparent 43%,
-      color-mix(in oklab, var(--blog-ai-cyan) 86%, transparent) 58%,
-      color-mix(in oklab, var(--blog-ai-violet) 78%, transparent) 76%,
-      transparent 91% 100%
+      from var(--apple-rim-angle, 220deg),
+      transparent 0 7%,
+      color-mix(in oklab, var(--blog-ai-rose) 76%, transparent) 12%,
+      color-mix(in oklab, var(--blog-ai-gold) 54%, transparent) 20%,
+      transparent 31% 43%,
+      color-mix(in oklab, var(--blog-ai-cyan) 82%, transparent) 52%,
+      color-mix(in oklab, var(--blog-ai-violet) 74%, transparent) 64%,
+      transparent 76% 100%
     );
-  filter: blur(0.4px) saturate(1.4);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: command-listening-ring 4.8s linear infinite;
+  background-size: 100% 100%;
+  filter: blur(16px) saturate(1.58);
+  mix-blend-mode: screen;
+  animation: command-listening-orbit 4.8s linear infinite;
 }
 .blog-command:hover::before,
 .blog-command:focus-within::before,
@@ -1894,8 +1894,8 @@
 .blog-command:hover::after,
 .blog-command:focus-within::after,
 .blog-command.is-open::after {
-  opacity: 0.9;
-  transform: scale(1.004);
+  opacity: 0.82;
+  transform: scale(1.018);
 }
 .blog-command.is-open {
   z-index: 90;
@@ -1932,7 +1932,6 @@
   box-shadow:
     var(--blog-control-inner),
     var(--blog-control-shadow),
-    0 0 0 1px color-mix(in oklab, var(--blog-ai-cyan) 8%, transparent),
     0 0 46px -34px color-mix(in oklab, var(--blog-ai-violet) 46%, transparent);
   -webkit-backdrop-filter: blur(24px) saturate(1.35);
   backdrop-filter: blur(24px) saturate(1.35);
@@ -1999,42 +1998,37 @@
 .blog-command__bar::after {
   content: "";
   position: absolute;
-  inset: -3px;
+  inset: 0;
   z-index: 0;
   border-radius: inherit;
-  padding: 2px;
   background:
-    conic-gradient(
-      from var(--apple-rim-angle, 170deg),
-      var(--blog-ai-rose),
-      var(--blog-ai-gold) 21%,
-      var(--blog-ai-cyan) 45%,
-      var(--blog-ai-violet) 68%,
-      var(--blog-ai-rose) 100%
+    radial-gradient(
+      58% 220% at 8% 52%,
+      color-mix(in oklab, var(--blog-ai-rose) 22%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      52% 210% at 92% 48%,
+      color-mix(in oklab, var(--blog-ai-cyan) 22%, transparent),
+      transparent 62%
+    ),
+    linear-gradient(
+      96deg,
+      transparent 0 28%,
+      color-mix(in oklab, var(--blog-ai-violet) 12%, transparent) 48%,
+      transparent 68% 100%
     );
-  opacity: 0.66;
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, white 14%, transparent),
-    0 0 20px -6px color-mix(in oklab, var(--blog-ai-cyan) 46%, transparent),
-    0 0 34px -10px color-mix(in oklab, var(--blog-ai-rose) 42%, transparent),
-    0 0 52px -18px color-mix(in oklab, var(--blog-ai-violet) 54%, transparent);
-  filter: saturate(1.32);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  filter: blur(13px) saturate(1.2);
+  opacity: 0.16;
   pointer-events: none;
-  animation: command-apple-rim 5.2s linear infinite;
+  animation: command-apple-sheen 6.4s ease-in-out infinite alternate;
 }
 .blog-command.is-open .blog-command__bar,
 .blog-command__bar:focus-within {
-  border-color: color-mix(in oklab, var(--blog-control-accent) 58%, var(--blog-control-border));
+  border-color: color-mix(in oklab, var(--blog-control-border) 62%, transparent);
   box-shadow:
     var(--blog-control-inner),
     var(--blog-control-shadow),
-    var(--blog-control-focus),
-    0 0 0 1px color-mix(in oklab, var(--blog-ai-cyan) 20%, transparent),
     0 0 24px -10px color-mix(in oklab, var(--blog-ai-cyan) 66%, transparent),
     0 0 42px -15px color-mix(in oklab, var(--blog-ai-rose) 58%, transparent),
     0 0 72px -24px color-mix(in oklab, var(--blog-ai-violet) 62%, transparent);
@@ -2048,12 +2042,8 @@
 .blog-command.is-open .blog-command__bar::after,
 .blog-command__bar:hover::after,
 .blog-command__bar:focus-within::after {
-  opacity: 0.88;
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, white 22%, transparent),
-    0 0 22px -7px color-mix(in oklab, var(--blog-ai-cyan) 46%, transparent),
-    0 0 34px -10px color-mix(in oklab, var(--blog-ai-rose) 44%, transparent),
-    0 0 50px -18px color-mix(in oklab, var(--blog-ai-violet) 54%, transparent);
+  opacity: 0.26;
+  transform: scale(1.02);
 }
 .blog-search__icon {
   position: relative;
@@ -2182,17 +2172,17 @@
   }
 }
 
-@keyframes command-listening-ring {
+@keyframes command-listening-orbit {
   0% {
-    --apple-rim-angle: 210deg;
-    filter: blur(0.4px) saturate(1.28) hue-rotate(0deg);
+    --apple-rim-angle: 220deg;
+    filter: blur(15px) saturate(1.36) hue-rotate(0deg);
   }
   50% {
-    filter: blur(0.6px) saturate(1.58) hue-rotate(10deg);
+    filter: blur(19px) saturate(1.76) hue-rotate(12deg);
   }
   to {
-    --apple-rim-angle: 570deg;
-    filter: blur(0.4px) saturate(1.28) hue-rotate(0deg);
+    --apple-rim-angle: 580deg;
+    filter: blur(15px) saturate(1.36) hue-rotate(0deg);
   }
 }
 
@@ -2211,17 +2201,18 @@
   }
 }
 
-@keyframes command-apple-rim {
+@keyframes command-apple-sheen {
   0% {
-    --apple-rim-angle: 170deg;
-    filter: saturate(1.24) hue-rotate(0deg);
+    background-position: 0% 50%, 100% 50%, -80% 0%;
+    filter: blur(13px) saturate(1.1) hue-rotate(0deg);
   }
   50% {
-    filter: saturate(1.44) hue-rotate(10deg);
+    background-position: 16% 46%, 84% 54%, 40% 0%;
+    filter: blur(15px) saturate(1.34) hue-rotate(8deg);
   }
   to {
-    --apple-rim-angle: 530deg;
-    filter: saturate(1.24) hue-rotate(0deg);
+    background-position: 4% 52%, 96% 48%, 120% 0%;
+    filter: blur(13px) saturate(1.14) hue-rotate(-6deg);
   }
 }
 .blog-command__tokens {
