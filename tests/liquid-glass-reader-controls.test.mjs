@@ -8,6 +8,14 @@ const notesExplorer = await readFile(
   "src/components/notes/NotesExplorer.tsx",
   "utf8"
 );
+const explorerShell = await readFile(
+  "src/components/explorer/ExplorerShell.tsx",
+  "utf8"
+);
+const useExplorerHook = await readFile(
+  "src/components/explorer/useExplorer.ts",
+  "utf8"
+);
 
 function blockFor(selector) {
   const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -73,14 +81,16 @@ test("blog and notes explorer controls use a compact command palette contract", 
   const tokens = blockFor(".blog-command__tokens");
   assert.match(tokens, /flex-wrap:\s*wrap/);
 
-  assert.match(blogExplorer, /paletteOpen/);
-  assert.match(blogExplorer, /palettePlacement/);
-  assert.match(blogExplorer, /blog-command__palette/);
-  assert.match(blogExplorer, /blog-command__toggle/);
-  assert.match(notesExplorer, /paletteOpen/);
-  assert.match(notesExplorer, /palettePlacement/);
-  assert.match(notesExplorer, /blog-command__palette/);
-  assert.match(notesExplorer, /blog-command__toggle/);
+  // The command-palette markup contract now lives in the shared shell + hook,
+  // and both the blog and notes surfaces consume them.
+  assert.match(useExplorerHook, /paletteOpen/);
+  assert.match(useExplorerHook, /palettePlacement/);
+  assert.match(explorerShell, /blog-command__palette/);
+  assert.match(explorerShell, /blog-command__toggle/);
+  assert.match(blogExplorer, /ExplorerShell/);
+  assert.match(blogExplorer, /useExplorer/);
+  assert.match(notesExplorer, /ExplorerShell/);
+  assert.match(notesExplorer, /useExplorer/);
 
   const readerTrigger = blockFor(".blog-reader-tools__trigger");
   assert.match(readerTrigger, /position:\s*relative/);
