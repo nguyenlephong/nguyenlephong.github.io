@@ -1,51 +1,16 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
-import {
-  getPostStats,
-  incrementShare,
-  incrementView,
-  postStatsId,
-} from '@/lib/firebase/postStats'
+import { usePostEngagement } from '@/components/blog/usePostEngagement'
 
-const viewedKey = (id: string) => `thought:viewed:${id}`
-
+/**
+ * Thoughts track only views + shares (no reactions). Thin wrapper over the
+ * shared {@link usePostEngagement} hook so the view-load / session-guard logic
+ * lives in exactly one place; `thought` keeps the legacy storage-key prefix.
+ */
 export function useThoughtEngagement(slug: string) {
-  const id = postStatsId('thoughts', slug)
-  const [views, setViews] = useState(0)
-  const [ready, setReady] = useState(false)
-
-  useEffect(() => {
-    let cancelled = false
-
-    async function init() {
-      let alreadyViewed = false
-      try {
-        alreadyViewed = sessionStorage.getItem(viewedKey(id)) === '1'
-      } catch {}
-
-      if (!alreadyViewed) {
-        try {
-          sessionStorage.setItem(viewedKey(id), '1')
-        } catch {}
-        await incrementView(id)
-      }
-
-      const stats = await getPostStats(id)
-      if (cancelled) return
-      setViews(stats?.views ?? 0)
-      setReady(true)
-    }
-
-    init()
-    return () => {
-      cancelled = true
-    }
-  }, [id])
-
-  const recordShare = useCallback(() => {
-    incrementShare(id)
-  }, [id])
-
+  const { views, ready, recordShare } = usePostEngagement('thoughts', slug, {
+    withReactions: false,
+    storageNamespace: 'thought',
+  })
   return { views, ready, recordShare }
 }

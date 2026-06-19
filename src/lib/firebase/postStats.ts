@@ -70,6 +70,26 @@ export async function getPostStats(id: string): Promise<PostStats | null> {
   }
 }
 
+/**
+ * Reads every post's counters in a single query, keyed by document id. List /
+ * explorer views use this instead of issuing one `getPostStats` per card, which
+ * turned a page of N cards into N round-trips plus N dynamic `firebase/firestore`
+ * imports. Returns an empty map when unconfigured or on error.
+ */
+export async function getAllPostStats(): Promise<Map<string, PostStats>> {
+  const out = new Map<string, PostStats>()
+  const db = await getDb()
+  if (!db) return out
+  try {
+    const { collection, getDocs } = await import('firebase/firestore')
+    const snap = await getDocs(collection(db, COLLECTION))
+    snap.forEach((d) => out.set(d.id, normalise(d.data())))
+    return out
+  } catch {
+    return out
+  }
+}
+
 /** Atomically bumps the view counter. Best-effort; never throws. */
 export async function incrementView(id: string): Promise<void> {
   const db = await getDb()
@@ -81,15 +101,18 @@ export async function incrementView(id: string): Promise<void> {
       { views: increment(1) },
       { merge: true },
     )
-  } catch (e) {
-    console.error('[postStats] incrementView failed:', e)
+  } catch {
+    // best-effort; a failed view bump must never disrupt reading.
   }
 }
 
-/** Atomically bumps the share counter. Best-effort; never throws. */
-export async function incrementShare(id: string): Promise<void> {
+/**
+ * Atomically bumps the share counter. Returns `true` on success so callers can
+ * roll back an optimistic UI update when the write fails. Never throws.
+ */
+export async function incrementShare(id: string): Promise<boolean> {
   const db = await getDb()
-  if (!db) return
+  if (!db) return false
   try {
     const { doc, setDoc, increment } = await import('firebase/firestore')
     await setDoc(
@@ -97,22 +120,24 @@ export async function incrementShare(id: string): Promise<void> {
       { shares: increment(1) },
       { merge: true },
     )
+    return true
   } catch {
-    // ignore
+    return false
   }
 }
 
 /**
  * Applies a reaction change. Pass `delta: +1` to add a reaction and `-1` to
- * remove it; switching reactions is two calls (−1 old, +1 new). Best-effort.
+ * remove it; switching reactions is two calls (−1 old, +1 new). Returns `true`
+ * on success so callers can roll back an optimistic update. Never throws.
  */
 export async function applyReaction(
   id: string,
   reaction: ReactionKey,
   delta: 1 | -1,
-): Promise<void> {
+): Promise<boolean> {
   const db = await getDb()
-  if (!db) return
+  if (!db) return false
   try {
     const { doc, setDoc, increment } = await import('firebase/firestore')
     await setDoc(
@@ -120,8 +145,9 @@ export async function applyReaction(
       { reactions: { [reaction]: increment(delta) } },
       { merge: true },
     )
+    return true
   } catch {
-    // ignore
+    return false
   }
 }
 

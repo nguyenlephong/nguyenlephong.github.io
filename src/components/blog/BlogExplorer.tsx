@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { LuListFilter, LuSearch, LuX } from "react-icons/lu";
-import { getPostStats, postStatsId } from "@/lib/firebase/postStats";
+import { getAllPostStats, postStatsId } from "@/lib/firebase/postStats";
 import BlogPostCard from "./BlogPostCard";
 import BlogPagination from "./BlogPagination";
 import { useDebouncedValue } from "./useDebouncedValue";
@@ -129,22 +129,17 @@ export default function BlogExplorer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Fetch per-post view counts once after mount (parallel), badge the popular ones.
+  // Fetch view counts once after mount in a single batched read (one round-trip
+  // for the whole page instead of one request per card), badge the popular ones.
   useEffect(() => {
     let cancelled = false;
     async function fetchAll() {
-      const entries = await Promise.all(
-        cards.map(async ({ post }) => {
-          const stats = await getPostStats(
-            postStatsId(post.category, post.slug)
-          );
-          return stats ? ([post.slug, stats.views] as const) : null;
-        })
-      );
+      const all = await getAllPostStats();
       if (cancelled) return;
       const counts: Record<string, number> = {};
-      for (const entry of entries) {
-        if (entry && entry[1] >= viewThreshold) counts[entry[0]] = entry[1];
+      for (const { post } of cards) {
+        const views = all.get(postStatsId(post.category, post.slug))?.views ?? 0;
+        if (views >= viewThreshold) counts[post.slug] = views;
       }
       setViewCounts(counts);
     }

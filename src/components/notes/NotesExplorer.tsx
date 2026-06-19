@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { LuListFilter, LuSearch, LuX } from "react-icons/lu";
-import { getPostStats, postStatsId } from "@/lib/firebase/postStats";
+import { getAllPostStats, postStatsId } from "@/lib/firebase/postStats";
 import { useDebouncedValue } from "@/components/blog/useDebouncedValue";
 import BlogPagination from "@/components/blog/BlogPagination";
 import NoteCard from "./NoteCard";
@@ -123,19 +123,16 @@ export default function NotesExplorer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // One batched read for all cards instead of a per-card request waterfall.
   useEffect(() => {
     let cancelled = false;
     async function fetchAll() {
-      const entries = await Promise.all(
-        cards.map(async ({ note }) => {
-          const stats = await getPostStats(postStatsId("notes", note.slug));
-          return stats ? ([note.slug, stats.views] as const) : null;
-        })
-      );
+      const all = await getAllPostStats();
       if (cancelled) return;
       const counts: Record<string, number> = {};
-      for (const entry of entries) {
-        if (entry && entry[1] >= viewThreshold) counts[entry[0]] = entry[1];
+      for (const { note } of cards) {
+        const views = all.get(postStatsId("notes", note.slug))?.views ?? 0;
+        if (views >= viewThreshold) counts[note.slug] = views;
       }
       setViewCounts(counts);
     }
