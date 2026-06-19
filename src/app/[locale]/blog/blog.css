@@ -1437,33 +1437,55 @@
   pointer-events: none;
 }
 .blog-reader-tools__trigger::before {
-  inset: -0.55rem;
+  inset: -0.68rem;
   z-index: -2;
   background:
     radial-gradient(
-      circle at 64% 18%,
-      color-mix(in oklab, #34d399 58%, transparent) 0 0.18rem,
-      transparent 0.48rem
+      circle at 24% 18%,
+      color-mix(in oklab, #ff5ac8 56%, transparent) 0 0.34rem,
+      transparent 0.86rem
     ),
-    conic-gradient(
-      from 40deg,
-      transparent 0 18%,
-      color-mix(in oklab, #22c55e 48%, transparent) 27%,
-      color-mix(in oklab, var(--blog-accent) 40%, transparent) 42%,
-      transparent 58% 100%
+    radial-gradient(
+      circle at 76% 24%,
+      color-mix(in oklab, #f9c74f 48%, transparent) 0 0.28rem,
+      transparent 0.78rem
+    ),
+    radial-gradient(
+      circle at 84% 78%,
+      color-mix(in oklab, #37d5ff 55%, transparent) 0 0.32rem,
+      transparent 0.86rem
+    ),
+    radial-gradient(
+      circle at 20% 82%,
+      color-mix(in oklab, #9b7cff 52%, transparent) 0 0.3rem,
+      transparent 0.82rem
     );
-  filter: blur(9px);
-  opacity: 0.28;
+  filter: blur(10px) saturate(1.35);
+  opacity: 0.42;
   transform: scale(0.92);
-  animation: reader-tool-flicker 4.8s ease-in-out infinite;
+  animation: reader-tool-aurora-pulse 4.8s ease-in-out infinite;
 }
 .blog-reader-tools__trigger::after {
-  inset: -0.22rem;
+  inset: -0.18rem;
   z-index: -1;
-  border: 1px solid color-mix(in oklab, #34d399 34%, var(--blog-accent) 18%);
-  opacity: 0.24;
-  transform: scale(0.94);
-  animation: reader-tool-ripple 3.6s ease-in-out infinite;
+  padding: 1px;
+  background:
+    conic-gradient(
+      from var(--apple-rim-angle, 120deg),
+      #ff5ac8,
+      #f9c74f 22%,
+      #37d5ff 46%,
+      #9b7cff 68%,
+      #ff5ac8 100%
+    );
+  filter: saturate(1.32);
+  opacity: 0.48;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: reader-tool-aurora-rim 5.4s linear infinite;
 }
 .blog-reader-tools__trigger svg {
   position: relative;
@@ -1479,12 +1501,12 @@
 .blog-reader-tools__trigger:hover::before,
 .blog-reader-tools__trigger:focus-visible::before,
 .blog-reader-tools--expanded .blog-reader-tools__trigger::before {
-  opacity: 0.48;
+  opacity: 0.72;
 }
 .blog-reader-tools__trigger:hover::after,
 .blog-reader-tools__trigger:focus-visible::after,
 .blog-reader-tools--expanded .blog-reader-tools__trigger::after {
-  opacity: 0.42;
+  opacity: 0.82;
 }
 .blog-reader-tools__trigger:focus-visible {
   outline: 2px solid var(--blog-accent);
@@ -1596,35 +1618,43 @@
   }
 }
 
-@keyframes reader-tool-flicker {
+@property --apple-rim-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 170deg;
+}
+
+@keyframes reader-tool-aurora-pulse {
   0%,
   100% {
-    opacity: 0.2;
-    transform: scale(0.88) rotate(0deg);
+    opacity: 0.34;
+    transform: translate3d(0, 0, 0) scale(0.9) rotate(0deg);
   }
   18% {
-    opacity: 0.46;
-    transform: scale(1.04) rotate(18deg);
+    opacity: 0.68;
+    transform: translate3d(-2px, 1px, 0) scale(1.08) rotate(16deg);
   }
   44% {
-    opacity: 0.3;
-    transform: scale(0.96) rotate(78deg);
+    opacity: 0.46;
+    transform: translate3d(2px, -1px, 0) scale(0.98) rotate(84deg);
   }
   68% {
-    opacity: 0.52;
-    transform: scale(1.08) rotate(136deg);
+    opacity: 0.76;
+    transform: translate3d(1px, 2px, 0) scale(1.12) rotate(152deg);
   }
 }
 
-@keyframes reader-tool-ripple {
-  0%,
-  100% {
-    opacity: 0.16;
-    transform: scale(0.92);
+@keyframes reader-tool-aurora-rim {
+  0% {
+    --apple-rim-angle: 120deg;
+    filter: saturate(1.18);
   }
-  48% {
-    opacity: 0.42;
-    transform: scale(1.18);
+  50% {
+    filter: saturate(1.46);
+  }
+  to {
+    --apple-rim-angle: 480deg;
+    filter: saturate(1.18);
   }
 }
 
@@ -1760,6 +1790,10 @@
   --blog-control-shadow: 0 24px 70px -42px color-mix(in oklab, black 42%, var(--blog-control-accent) 12%);
   --blog-control-inner: inset 0 1px 0 var(--blog-control-highlight);
   --blog-control-focus: 0 0 0 3px var(--blog-control-accent-soft);
+  --blog-ai-rose: #ff5ac8;
+  --blog-ai-gold: #f9c74f;
+  --blog-ai-cyan: #37d5ff;
+  --blog-ai-violet: #9b7cff;
   --blog-active-fg: #fff;
   --blog-active-fill: color-mix(in oklab, var(--blog-control-accent) 88%, black 4%);
   --blog-active-shadow: 0 12px 28px -20px color-mix(in oklab, var(--blog-control-accent) 70%, transparent);
@@ -1810,7 +1844,9 @@
     var(--blog-control-glass);
   box-shadow:
     var(--blog-control-inner),
-    var(--blog-control-shadow);
+    var(--blog-control-shadow),
+    0 0 0 1px color-mix(in oklab, var(--blog-ai-cyan) 8%, transparent),
+    0 0 46px -34px color-mix(in oklab, var(--blog-ai-violet) 46%, transparent);
   -webkit-backdrop-filter: blur(24px) saturate(1.35);
   backdrop-filter: blur(24px) saturate(1.35);
   transition:
@@ -1821,36 +1857,69 @@
 .blog-command__bar::before {
   content: "";
   position: absolute;
-  inset: 1px;
+  inset: 2px;
   border-radius: inherit;
-  background: linear-gradient(
-    110deg,
-    transparent 0 32%,
-    color-mix(in oklab, white 32%, transparent) 44%,
-    transparent 56% 100%
-  );
-  opacity: 0.18;
-  transform: translateX(-42%);
+  z-index: 0;
+  background:
+    radial-gradient(
+      70% 180% at 10% 18%,
+      color-mix(in oklab, var(--blog-ai-rose) 24%, transparent),
+      transparent 42%
+    ),
+    radial-gradient(
+      62% 160% at 68% -26%,
+      color-mix(in oklab, var(--blog-ai-gold) 18%, transparent),
+      transparent 46%
+    ),
+    radial-gradient(
+      76% 180% at 96% 88%,
+      color-mix(in oklab, var(--blog-ai-cyan) 20%, transparent),
+      transparent 44%
+    ),
+    radial-gradient(
+      80% 160% at 35% 118%,
+      color-mix(in oklab, var(--blog-ai-violet) 18%, transparent),
+      transparent 48%
+    );
+  filter: blur(12px) saturate(1.18);
+  opacity: 0.32;
+  transform: translate3d(-2%, 0, 0) scale(1.04);
   transition:
     opacity 0.24s ease,
     transform 0.5s ease;
   pointer-events: none;
+  animation: command-apple-field 7.6s ease-in-out infinite alternate;
 }
 .blog-command__bar::after {
   content: "";
   position: absolute;
-  inset: -2px;
+  inset: -3px;
   z-index: 0;
   border-radius: inherit;
-  border: 1px solid color-mix(in oklab, #34d399 24%, var(--blog-control-accent) 28%);
-  opacity: 0.22;
+  padding: 2px;
+  background:
+    conic-gradient(
+      from var(--apple-rim-angle, 170deg),
+      var(--blog-ai-rose),
+      var(--blog-ai-gold) 21%,
+      var(--blog-ai-cyan) 45%,
+      var(--blog-ai-violet) 68%,
+      var(--blog-ai-rose) 100%
+    );
+  opacity: 0.66;
   box-shadow:
-    0 0 0 1px color-mix(in oklab, #60a5fa 12%, transparent),
-    0 0 18px -6px color-mix(in oklab, #34d399 46%, transparent),
-    0 0 26px -10px color-mix(in oklab, var(--blog-control-accent) 52%, transparent),
-    inset 0 0 18px -14px color-mix(in oklab, #c084fc 46%, transparent);
+    0 0 0 1px color-mix(in oklab, white 14%, transparent),
+    0 0 20px -6px color-mix(in oklab, var(--blog-ai-cyan) 46%, transparent),
+    0 0 34px -10px color-mix(in oklab, var(--blog-ai-rose) 42%, transparent),
+    0 0 52px -18px color-mix(in oklab, var(--blog-ai-violet) 54%, transparent);
+  filter: saturate(1.32);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   pointer-events: none;
-  animation: command-halo-drift 5.6s linear infinite;
+  animation: command-apple-rim 5.2s linear infinite;
 }
 .blog-command.is-open .blog-command__bar,
 .blog-command__bar:focus-within {
@@ -1863,18 +1932,18 @@
 .blog-command.is-open .blog-command__bar::before,
 .blog-command__bar:hover::before,
 .blog-command__bar:focus-within::before {
-  opacity: 0.28;
-  transform: translateX(38%);
+  opacity: 0.38;
+  transform: translate3d(2%, 0, 0) scale(1.08);
 }
 .blog-command.is-open .blog-command__bar::after,
 .blog-command__bar:hover::after,
 .blog-command__bar:focus-within::after {
-  opacity: 0.82;
+  opacity: 0.88;
   box-shadow:
-    0 0 0 1px color-mix(in oklab, #60a5fa 22%, transparent),
-    0 0 20px -7px color-mix(in oklab, #34d399 54%, transparent),
-    0 0 32px -11px color-mix(in oklab, var(--blog-control-accent) 66%, transparent),
-    inset 0 0 20px -14px color-mix(in oklab, #c084fc 48%, transparent);
+    0 0 0 1px color-mix(in oklab, white 22%, transparent),
+    0 0 22px -7px color-mix(in oklab, var(--blog-ai-cyan) 46%, transparent),
+    0 0 34px -10px color-mix(in oklab, var(--blog-ai-rose) 44%, transparent),
+    0 0 50px -18px color-mix(in oklab, var(--blog-ai-violet) 54%, transparent);
 }
 .blog-search__icon {
   position: relative;
@@ -1987,21 +2056,32 @@
   outline-offset: 2px;
 }
 
-@keyframes command-halo-drift {
+@keyframes command-apple-field {
   0% {
-    border-color: color-mix(in oklab, #34d399 28%, var(--blog-control-accent) 26%);
-    filter: hue-rotate(0deg);
-    transform: scale(0.998);
+    background-position: 0% 48%, 58% 0%, 100% 100%, 24% 100%;
+    filter: blur(12px) saturate(1.1) hue-rotate(0deg);
   }
   50% {
-    border-color: color-mix(in oklab, #60a5fa 26%, var(--blog-control-accent) 38%);
-    filter: hue-rotate(18deg);
-    transform: scale(1.004);
+    background-position: 24% 58%, 74% 18%, 82% 76%, 42% 86%;
+    filter: blur(13px) saturate(1.28) hue-rotate(10deg);
   }
   100% {
-    border-color: color-mix(in oklab, #34d399 28%, var(--blog-control-accent) 26%);
-    filter: hue-rotate(0deg);
-    transform: scale(0.998);
+    background-position: 8% 38%, 48% 8%, 92% 88%, 18% 70%;
+    filter: blur(12px) saturate(1.16) hue-rotate(-8deg);
+  }
+}
+
+@keyframes command-apple-rim {
+  0% {
+    --apple-rim-angle: 170deg;
+    filter: saturate(1.24) hue-rotate(0deg);
+  }
+  50% {
+    filter: saturate(1.44) hue-rotate(10deg);
+  }
+  to {
+    --apple-rim-angle: 530deg;
+    filter: saturate(1.24) hue-rotate(0deg);
   }
 }
 .blog-command__tokens {

@@ -22,6 +22,7 @@ import ThemeSync from '@/components/theme/ThemeSync'
 import FontScript from '@/components/font/FontScript'
 import ReadingBackgroundScript from '@/components/reading/ReadingBackgroundScript'
 import MotionProvider from '@/components/motion/MotionProvider'
+import RouteProgressBar from '@/components/motion/RouteProgressBar'
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
 import { SITE_URL } from '@/app/seo.config'
 import { routing, type Locale } from '@/i18n/routing'
@@ -361,6 +362,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <NextIntlClientProvider>
           <ThemeSync />
           <MotionProvider>
+            <RouteProgressBar />
             <WebVitalsReporter />
             <AppHeader />
             {children}
