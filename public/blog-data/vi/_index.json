@@ -943,6 +943,18 @@
         "Quản lý",
         "Engineering Culture"
       ]
+    },
+    {
+      "slug": "vision-without-craft",
+      "title": "Tầm nhìn mà thiếu nghề: vì sao người lãnh đạo không thể lơ lửng trên công việc",
+      "summary": "Warren Bennis nói nhà lãnh đạo làm việc đúng còn người quản lý làm đúng việc. Robert Sutton thêm phần quan trọng: để làm việc đúng, bạn phải hiểu cần những gì để làm mọi thứ đúng đắn. Về cái bẫy của tầm nhìn tách rời khỏi cái nghề — và sự bật lên bật xuống giữa bức tranh lớn và chi tiết.",
+      "tags": [
+        "Leadership",
+        "Management",
+        "Lãnh đạo",
+        "Thực thi",
+        "Engineering Culture"
+      ]
     }
   ]
 }
