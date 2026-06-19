@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { LuSearch, LuX } from "react-icons/lu";
+import { LuListFilter, LuSearch, LuX } from "react-icons/lu";
 import { getPostStats, postStatsId } from "@/lib/firebase/postStats";
 import BlogPostCard from "./BlogPostCard";
 import BlogPagination from "./BlogPagination";
@@ -80,8 +80,13 @@ export default function BlogExplorer({
   // after mount so the first client render matches the server (no mismatch).
   const [view, setView] = useState<ExplorerView>(INITIAL_VIEW);
   const [viewCounts, setViewCounts] = useState<Record<string, number>>({});
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const [palettePlacement, setPalettePlacement] = useState<
+    "dropdown" | "dropup"
+  >("dropdown");
 
   const debouncedQuery = useDebouncedValue(view.query, 200);
+  const commandRef = useRef<HTMLDivElement>(null);
   const listTopRef = useRef<HTMLDivElement>(null);
   const hydratedFromUrl = useRef(false);
 
@@ -191,12 +196,51 @@ export default function BlogExplorer({
     );
   }, [debouncedQuery, view.category, view.tag, safePage]);
 
+  useEffect(() => {
+    if (!paletteOpen) return;
+
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      const target = event.target;
+      if (target instanceof Node && commandRef.current?.contains(target)) {
+        return;
+      }
+      setPaletteOpen(false);
+    };
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setPaletteOpen(false);
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsidePointer);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsidePointer);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [paletteOpen]);
+
   const scrollToTop = () => {
     listTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const onSearch = (value: string) =>
     setView((v) => ({ ...v, query: value, page: 1 }));
+  const updatePalettePlacement = () => {
+    const rect = commandRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const spaceBelow = window.innerHeight - rect.bottom;
+    setPalettePlacement(
+      spaceBelow < 300 && rect.top > spaceBelow ? "dropup" : "dropdown"
+    );
+  };
+  const openPalette = () => {
+    updatePalettePlacement();
+    setPaletteOpen(true);
+  };
+  const togglePaletteVisibility = () => {
+    if (!paletteOpen) updatePalettePlacement();
+    setPaletteOpen((open) => !open);
+  };
   const selectAllCategories = () =>
     setView((v) => ({ ...v, category: null, page: 1 }));
   const toggleCategory = (slug: string) =>
@@ -214,95 +258,202 @@ export default function BlogExplorer({
   };
 
   const hasFilters = Boolean(view.query || view.category || view.tag);
+  const activeCategory = view.category
+    ? categories.find((category) => category.slug === view.category)
+    : null;
+  const paletteId = "blog-command-palette";
+  const clearTag = () => setView((v) => ({ ...v, tag: null, page: 1 }));
+  const chooseAllCategories = () => {
+    selectAllCategories();
+    setPaletteOpen(false);
+  };
+  const chooseCategory = (slug: string) => {
+    toggleCategory(slug);
+    setPaletteOpen(false);
+  };
+  const chooseTag = (value: string) => {
+    toggleTag(value);
+    setPaletteOpen(false);
+  };
 
   return (
     <div className="blog-explorer">
       <div className="blog-explorer__controls">
-        <div className="blog-search">
-          <LuSearch className="blog-search__icon" aria-hidden="true" />
-          <input
-            type="search"
-            className="blog-search__input"
-            value={view.query}
-            onChange={(e) => onSearch(e.target.value)}
-            placeholder={t("controls.searchPlaceholder")}
-            aria-label={t("controls.searchLabel")}
-            autoComplete="off"
-          />
-          {view.query && (
-            <button
-              type="button"
-              className="blog-search__clear"
-              onClick={() => onSearch("")}
-              aria-label={t("controls.clearSearch")}
-            >
-              <LuX aria-hidden="true" />
-            </button>
-          )}
-        </div>
-
         <div
-          className="blog-filters"
-          role="group"
-          aria-label={t("controls.filtersLabel")}
+          className={`blog-command is-${palettePlacement}${paletteOpen ? " is-open" : ""}`}
+          ref={commandRef}
         >
-          <button
-            type="button"
-            className={`blog-chip${!view.category ? " is-active" : ""}`}
-            onClick={selectAllCategories}
-            aria-pressed={!view.category}
-          >
-            {t("controls.allCategories")}
-          </button>
-          {categories.map((c) => (
+          <div className="blog-command__bar">
+            <LuSearch className="blog-search__icon" aria-hidden="true" />
+            <input
+              type="search"
+              className="blog-search__input"
+              value={view.query}
+              onChange={(e) => onSearch(e.target.value)}
+              onFocus={openPalette}
+              placeholder={t("controls.searchPlaceholder")}
+              aria-label={t("controls.searchLabel")}
+              aria-controls={paletteId}
+              autoComplete="off"
+            />
+            <p className="blog-command__count" aria-live="polite">
+              {t("controls.results", { count: filtered.length })}
+            </p>
+            {view.query && (
+              <button
+                type="button"
+                className="blog-search__clear"
+                onClick={() => onSearch("")}
+                aria-label={t("controls.clearSearch")}
+              >
+                <LuX aria-hidden="true" />
+              </button>
+            )}
             <button
-              key={c.slug}
               type="button"
-              className={`blog-chip${view.category === c.slug ? " is-active" : ""}`}
-              onClick={() => toggleCategory(c.slug)}
-              aria-pressed={view.category === c.slug}
+              className="blog-command__toggle"
+              onClick={togglePaletteVisibility}
+              aria-label={t("controls.filtersLabel")}
+              aria-controls={paletteId}
+              aria-expanded={paletteOpen}
             >
-              {c.title}
+              <LuListFilter aria-hidden="true" />
             </button>
-          ))}
-        </div>
+          </div>
 
-        {popularTags.length > 0 && (
-          <div className="blog-tags">
-            <span className="blog-tags__label">
-              {t("controls.popularTags")}
-            </span>
-            <ul className="blog-tags__list">
-              {popularTags.map((tg) => (
-                <li key={tg}>
+          {hasFilters && (
+            <div className="blog-command__tokens">
+              {activeCategory && (
+                <button
+                  type="button"
+                  className="blog-command__token"
+                  onClick={selectAllCategories}
+                  aria-label={`${t("controls.clear")} ${activeCategory.title}`}
+                >
+                  <span>{activeCategory.title}</span>
+                  <LuX aria-hidden="true" />
+                </button>
+              )}
+              {view.tag && (
+                <button
+                  type="button"
+                  className="blog-command__token"
+                  onClick={clearTag}
+                  aria-label={`${t("controls.clear")} ${view.tag}`}
+                >
+                  <span>{view.tag}</span>
+                  <LuX aria-hidden="true" />
+                </button>
+              )}
+              <button
+                type="button"
+                className="blog-command__reset"
+                onClick={clearAll}
+              >
+                {t("controls.clear")}
+              </button>
+            </div>
+          )}
+
+          {paletteOpen && (
+            <div
+              id={paletteId}
+              className="blog-command__palette"
+              role="region"
+              aria-label={t("controls.filtersLabel")}
+            >
+              <section className="blog-command__section">
+                <p className="blog-command__label">
+                  {t("controls.filtersLabel")}
+                </p>
+                <div
+                  className="blog-command__options"
+                  role="group"
+                  aria-label={t("controls.filtersLabel")}
+                >
                   <button
                     type="button"
-                    className={`blog-tag${view.tag === tg ? " is-active" : ""}`}
-                    onClick={() => toggleTag(tg)}
-                    aria-pressed={view.tag === tg}
+                    className={`blog-command__option${!view.category ? " is-active" : ""}`}
+                    onClick={chooseAllCategories}
+                    aria-pressed={!view.category}
                   >
-                    {tg}
+                    {t("controls.allCategories")}
                   </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+                  {categories.map((c) => (
+                    <button
+                      key={c.slug}
+                      type="button"
+                      className={`blog-command__option${view.category === c.slug ? " is-active" : ""}`}
+                      onClick={() => chooseCategory(c.slug)}
+                      aria-pressed={view.category === c.slug}
+                    >
+                      {c.title}
+                    </button>
+                  ))}
+                </div>
+              </section>
 
-        <div className="blog-explorer__status">
-          <p className="blog-explorer__count" aria-live="polite">
-            {t("controls.results", { count: filtered.length })}
-          </p>
-          {hasFilters && (
-            <button
-              type="button"
-              className="blog-explorer__reset"
-              onClick={clearAll}
-            >
-              {t("controls.clear")}
-            </button>
+              {popularTags.length > 0 && (
+                <section className="blog-command__section">
+                  <p className="blog-command__label">
+                    {t("controls.popularTags")}
+                  </p>
+                  <ul className="blog-command__tag-list">
+                    {popularTags.map((tg) => (
+                      <li key={tg}>
+                        <button
+                          type="button"
+                          className={`blog-command__tag${view.tag === tg ? " is-active" : ""}`}
+                          onClick={() => chooseTag(tg)}
+                          aria-pressed={view.tag === tg}
+                        >
+                          {tg}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </div>
           )}
         </div>
+
+        <noscript>
+          <div
+            className="blog-filters"
+            role="group"
+            aria-label={t("controls.filtersLabel")}
+          >
+            <button type="button" className="blog-chip is-active">
+              {t("controls.allCategories")}
+            </button>
+            {categories.map((c) => (
+              <button key={c.slug} type="button" className="blog-chip">
+                {c.title}
+              </button>
+            ))}
+          </div>
+
+          {popularTags.length > 0 && (
+            <div className="blog-tags">
+              <span className="blog-tags__label">
+                {t("controls.popularTags")}
+              </span>
+              <ul className="blog-tags__list">
+                {popularTags.map((tg) => (
+                  <li key={tg}>
+                    <button
+                      type="button"
+                      className="blog-tag"
+                    >
+                      {tg}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </noscript>
       </div>
 
       <div ref={listTopRef} className="blog-explorer__scroll-anchor" />
