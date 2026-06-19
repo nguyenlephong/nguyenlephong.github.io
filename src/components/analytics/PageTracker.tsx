@@ -10,7 +10,7 @@ interface PageTrackerProps {
   /** Optional section grouping that rides along every event on this page. */
   section?: string
   /** Override the page_view event name (default: `page_view`). */
-  eventName?: 'page_view' | 'apps_view' | 'gallery_view' | 'about_view' | 'cv_view' | 'home_view'
+  eventName?: 'page_view' | 'apps_view' | 'gallery_view' | 'about_view' | 'cv_view'
 }
 
 const SCROLL_BUCKETS = [25, 50, 75, 100] as const

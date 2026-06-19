@@ -18,7 +18,7 @@ export interface PageSEO {
 }
 
 export const PAGE_SEO: Record<
-  'home' | 'about' | 'cv' | 'gallery' | 'apps' | 'homeAlt' | 'blog',
+  'home' | 'about' | 'cv' | 'gallery' | 'apps' | 'blog',
   PageSEO
 > = {
   home: {
@@ -42,14 +42,6 @@ export const PAGE_SEO: Record<
     ],
     ogAlt:
       'Nguyen Le Phong — 8+ years across product, platform, and technical leadership',
-  },
-  homeAlt: {
-    title: 'Nguyen Le Phong — Software Engineer',
-    description:
-      'A passionate full-stack engineer building end-to-end products: front-end, services, CI/CD, and production infrastructure.',
-    path: '/home',
-    keywords: ['Nguyen Le Phong', 'Software Engineer', 'Full-stack'],
-    ogAlt: 'Nguyen Le Phong — Software Engineer profile',
   },
   about: {
     title: 'About — Skills, Strengths & Engineering Principles',

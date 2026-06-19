@@ -40,9 +40,6 @@ export type AnalyticsEvent =
   // About
   | 'about_view'
   | 'about_section_view'
-  // Home (legacy /home page)
-  | 'home_view'
-  | 'home_social_click'
   // Thoughts
   | 'thoughts_view_toggle'
   | 'thoughts_share'
