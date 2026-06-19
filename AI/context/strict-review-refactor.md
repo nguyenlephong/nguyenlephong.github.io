@@ -42,10 +42,8 @@ refactor (security → CI → dedup → engagement → god-file → perf).
 - Keep `package.json` ↔ `package-lock.json` in sync (CI runs `npm ci`).
 
 ## Next Steps (deferred — pure refactors, do as focused PRs)
-1. **Explorer extraction** (task 7): generic `useExplorer<T>` + `<ExplorerShell>`;
-   Blog/NotesExplorer are ~95% dup (markup contract confirmed shared). Move
-   `normalize`/`readParam` → `src/lib/content/search.ts`. High value, high risk to
-   browse UX — needs visual regression.
+1. ~~Explorer extraction~~ DONE (`121cc028`): `useExplorer` + `ExplorerShell` +
+   `src/lib/content/search.ts`; BlogExplorer 501→131, NotesExplorer 506→133.
 2. **`app.const.ts` module split**: shard into `src/content/{gallery,projects,profile,
    skills,media}.ts` + `routes.ts`; migrate about/summary prose to `messages/*` (single
    source) so the about page stops rendering English-only.
