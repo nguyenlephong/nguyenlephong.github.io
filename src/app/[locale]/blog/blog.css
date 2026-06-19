@@ -1406,6 +1406,8 @@
   pointer-events: auto;
 }
 .blog-reader-tools__trigger {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1414,6 +1416,7 @@
   padding: 0;
   border: 1px solid color-mix(in oklab, var(--border) 82%, transparent);
   border-radius: 999px;
+  overflow: visible;
   background: color-mix(in oklab, var(--bg) 88%, transparent);
   color: var(--fg-muted);
   box-shadow: 0 14px 34px -24px rgba(0, 0, 0, 0.38);
@@ -1426,12 +1429,62 @@
     color 0.16s ease,
     transform 0.16s ease;
 }
+.blog-reader-tools__trigger::before,
+.blog-reader-tools__trigger::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.blog-reader-tools__trigger::before {
+  inset: -0.55rem;
+  z-index: -2;
+  background:
+    radial-gradient(
+      circle at 64% 18%,
+      color-mix(in oklab, #34d399 58%, transparent) 0 0.18rem,
+      transparent 0.48rem
+    ),
+    conic-gradient(
+      from 40deg,
+      transparent 0 18%,
+      color-mix(in oklab, #22c55e 48%, transparent) 27%,
+      color-mix(in oklab, var(--blog-accent) 40%, transparent) 42%,
+      transparent 58% 100%
+    );
+  filter: blur(9px);
+  opacity: 0.28;
+  transform: scale(0.92);
+  animation: reader-tool-flicker 4.8s ease-in-out infinite;
+}
+.blog-reader-tools__trigger::after {
+  inset: -0.22rem;
+  z-index: -1;
+  border: 1px solid color-mix(in oklab, #34d399 34%, var(--blog-accent) 18%);
+  opacity: 0.24;
+  transform: scale(0.94);
+  animation: reader-tool-ripple 3.6s ease-in-out infinite;
+}
+.blog-reader-tools__trigger svg {
+  position: relative;
+  z-index: 1;
+}
 .blog-reader-tools__trigger:hover,
 .blog-reader-tools__trigger:focus-visible,
 .blog-reader-tools--expanded .blog-reader-tools__trigger {
   border-color: color-mix(in oklab, var(--blog-accent) 44%, var(--border));
   background: color-mix(in oklab, var(--blog-accent-soft) 64%, var(--bg));
   color: var(--blog-accent);
+}
+.blog-reader-tools__trigger:hover::before,
+.blog-reader-tools__trigger:focus-visible::before,
+.blog-reader-tools--expanded .blog-reader-tools__trigger::before {
+  opacity: 0.48;
+}
+.blog-reader-tools__trigger:hover::after,
+.blog-reader-tools__trigger:focus-visible::after,
+.blog-reader-tools--expanded .blog-reader-tools__trigger::after {
+  opacity: 0.42;
 }
 .blog-reader-tools__trigger:focus-visible {
   outline: 2px solid var(--blog-accent);
@@ -1543,6 +1596,38 @@
   }
 }
 
+@keyframes reader-tool-flicker {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.88) rotate(0deg);
+  }
+  18% {
+    opacity: 0.46;
+    transform: scale(1.04) rotate(18deg);
+  }
+  44% {
+    opacity: 0.3;
+    transform: scale(0.96) rotate(78deg);
+  }
+  68% {
+    opacity: 0.52;
+    transform: scale(1.08) rotate(136deg);
+  }
+}
+
+@keyframes reader-tool-ripple {
+  0%,
+  100% {
+    opacity: 0.16;
+    transform: scale(0.92);
+  }
+  48% {
+    opacity: 0.42;
+    transform: scale(1.18);
+  }
+}
+
 /* Desktop ≥1280px: sticky rail scoped to the article body only. */
 @media (min-width: 1280px) {
   .blog-article__reader {
@@ -1634,6 +1719,8 @@
   .blog-share-dock__actions,
   .blog-reader-tools,
   .blog-reader-tools__trigger,
+  .blog-reader-tools__trigger::before,
+  .blog-reader-tools__trigger::after,
   .blog-reader-tools__controls,
   .blog-reactions,
   .blog-article__views {
@@ -1705,6 +1792,7 @@
 }
 .blog-command__bar {
   position: relative;
+  isolation: isolate;
   display: flex;
   align-items: center;
   gap: 0.55rem;
@@ -1748,6 +1836,22 @@
     transform 0.5s ease;
   pointer-events: none;
 }
+.blog-command__bar::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: 0;
+  border-radius: inherit;
+  border: 1px solid color-mix(in oklab, #34d399 24%, var(--blog-control-accent) 28%);
+  opacity: 0.22;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, #60a5fa 12%, transparent),
+    0 0 18px -6px color-mix(in oklab, #34d399 46%, transparent),
+    0 0 26px -10px color-mix(in oklab, var(--blog-control-accent) 52%, transparent),
+    inset 0 0 18px -14px color-mix(in oklab, #c084fc 46%, transparent);
+  pointer-events: none;
+  animation: command-halo-drift 5.6s linear infinite;
+}
 .blog-command.is-open .blog-command__bar,
 .blog-command__bar:focus-within {
   border-color: color-mix(in oklab, var(--blog-control-accent) 58%, var(--blog-control-border));
@@ -1761,6 +1865,16 @@
 .blog-command__bar:focus-within::before {
   opacity: 0.28;
   transform: translateX(38%);
+}
+.blog-command.is-open .blog-command__bar::after,
+.blog-command__bar:hover::after,
+.blog-command__bar:focus-within::after {
+  opacity: 0.82;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, #60a5fa 22%, transparent),
+    0 0 20px -7px color-mix(in oklab, #34d399 54%, transparent),
+    0 0 32px -11px color-mix(in oklab, var(--blog-control-accent) 66%, transparent),
+    inset 0 0 20px -14px color-mix(in oklab, #c084fc 48%, transparent);
 }
 .blog-search__icon {
   position: relative;
@@ -1871,6 +1985,24 @@
 .blog-command__toggle:focus-visible {
   outline: 2px solid var(--blog-control-accent);
   outline-offset: 2px;
+}
+
+@keyframes command-halo-drift {
+  0% {
+    border-color: color-mix(in oklab, #34d399 28%, var(--blog-control-accent) 26%);
+    filter: hue-rotate(0deg);
+    transform: scale(0.998);
+  }
+  50% {
+    border-color: color-mix(in oklab, #60a5fa 26%, var(--blog-control-accent) 38%);
+    filter: hue-rotate(18deg);
+    transform: scale(1.004);
+  }
+  100% {
+    border-color: color-mix(in oklab, #34d399 28%, var(--blog-control-accent) 26%);
+    filter: hue-rotate(0deg);
+    transform: scale(0.998);
+  }
 }
 .blog-command__tokens {
   display: flex;
@@ -2309,6 +2441,7 @@
 @media (prefers-reduced-motion: reduce) {
   .blog-command__bar,
   .blog-command__bar::before,
+  .blog-command__bar::after,
   .blog-command__toggle,
   .blog-command__token,
   .blog-command__reset,

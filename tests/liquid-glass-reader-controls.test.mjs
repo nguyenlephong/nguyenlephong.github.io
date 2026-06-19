@@ -29,6 +29,9 @@ test("blog and notes explorer controls use a compact command palette contract", 
   assert.match(bar, /backdrop-filter:/);
   assert.match(bar, /saturate/);
 
+  const commandHalo = blockFor(".blog-command__bar::after");
+  assert.match(commandHalo, /command-halo-drift/);
+
   const palette = blockFor(".blog-command__palette");
   assert.match(palette, /position:\s*absolute/);
   assert.match(palette, /width:\s*100%/);
@@ -47,6 +50,14 @@ test("blog and notes explorer controls use a compact command palette contract", 
   assert.match(notesExplorer, /blog-command__palette/);
   assert.match(notesExplorer, /blog-command__toggle/);
 
+  const readerTrigger = blockFor(".blog-reader-tools__trigger");
+  assert.match(readerTrigger, /position:\s*relative/);
+  assert.match(readerTrigger, /overflow:\s*visible/);
+  const readerFlicker = blockFor(".blog-reader-tools__trigger::before");
+  assert.match(readerFlicker, /reader-tool-flicker/);
+
+  assert.match(css, /@keyframes\s+command-halo-drift/);
+  assert.match(css, /@keyframes\s+reader-tool-flicker/);
   assert.match(css, /@media\s*\(prefers-reduced-transparency:\s*reduce\)/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
 });
