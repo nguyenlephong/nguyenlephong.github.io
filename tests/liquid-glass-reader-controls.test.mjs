@@ -31,6 +31,7 @@ test("blog and notes explorer controls use a compact command palette contract", 
 
   const palette = blockFor(".blog-command__palette");
   assert.match(palette, /position:\s*absolute/);
+  assert.match(palette, /width:\s*100%/);
   assert.match(palette, /backdrop-filter:/);
   assert.match(css, /\.blog-command\.is-dropup\s+\.blog-command__palette/);
 

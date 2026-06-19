@@ -1877,7 +1877,8 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.05rem 0.6rem 0;
+  margin-top: 0.45rem;
+  padding: 0 0.95rem;
 }
 .blog-command__token,
 .blog-command__reset {
@@ -1941,9 +1942,9 @@
   position: absolute;
   z-index: 20;
   top: calc(100% + 0.72rem);
-  left: 50%;
-  width: min(100%, 54rem);
-  transform: translateX(-50%);
+  left: 0;
+  width: 100%;
+  transform: none;
   display: grid;
   gap: 1rem;
   padding: 1rem;
