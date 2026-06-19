@@ -21,6 +21,9 @@ test("blog and notes explorer controls use a compact command palette contract", 
   assert.match(controls, /--blog-control-glass:/);
   assert.match(controls, /--blog-control-border:/);
   assert.match(controls, /--blog-control-shadow:/);
+  assert.match(controls, /--blog-search-field-fill:/);
+  assert.match(controls, /--blog-search-text:/);
+  assert.match(controls, /--blog-search-placeholder:/);
 
   const command = blockFor(".blog-command");
   assert.match(command, /position:\s*relative/);
@@ -34,6 +37,9 @@ test("blog and notes explorer controls use a compact command palette contract", 
   assert.match(css, /\.blog-command::after\s*\{[\s\S]*?filter:\s*blur/);
 
   const bar = blockFor(".blog-command__bar");
+  assert.match(bar, /--blog-search-field-fill-current:/);
+  assert.match(bar, /var\(--blog-search-field-fill-current\)/);
+  assert.match(bar, /--blog-search-field-tint-strength:\s*2%/);
   assert.match(bar, /backdrop-filter:/);
   assert.match(bar, /saturate/);
 
@@ -45,7 +51,18 @@ test("blog and notes explorer controls use a compact command palette contract", 
   const commandHalo = blockFor(".blog-command__bar::after");
   assert.match(commandHalo, /command-apple-sheen/);
   assert.match(commandHalo, /radial-gradient/);
+  assert.match(commandHalo, /opacity:\s*0\.05/);
   assert.doesNotMatch(commandHalo, /mask-composite/);
+
+  assert.match(
+    css,
+    /\.blog-command\.is-open \.blog-command__bar,[\s\S]*?--blog-search-field-fill-current:\s*var\(--blog-search-field-fill-focus\)/
+  );
+
+  const searchInput = blockFor(".blog-search__input");
+  assert.match(searchInput, /color:\s*var\(--blog-search-text\)/);
+  const searchPlaceholder = blockFor(".blog-search__input::placeholder");
+  assert.match(searchPlaceholder, /color:\s*var\(--blog-search-placeholder\)/);
 
   const palette = blockFor(".blog-command__palette");
   assert.match(palette, /position:\s*absolute/);
