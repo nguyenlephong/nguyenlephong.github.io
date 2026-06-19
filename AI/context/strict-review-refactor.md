@@ -49,13 +49,25 @@ refactor (security → CI → dedup → engagement → god-file → perf).
 - ~~Fonts + ThoughtGraph~~ (`4ce3efbc`): 7 reading fonts `preload:false` (homepage font
   preloads 9→2); `ThoughtGraph` via `next/dynamic({ssr:false})`; resize rebuild debounced.
 
-## Remaining (content task, not a refactor — needs the user's call)
-1. **About/summary prose → `messages/*`**: the about page still renders `profileInfo.about`
-   (English-only, now in `src/content/profile.ts`). Moving it into `messages/*` makes it
-   translatable, but needs actual translated copy for the 6 locales (vi/zh/ja/ko/fr) — a
-   content decision, not mechanical.
-2. **Deploy** the hardened `firestore.rules` (`firebase deploy --only firestore:rules`);
-   consider Firebase App Check — the only real anti-abuse for anonymous counter writes on a
+## Data work (done this round)
+- ~~About prose → `messages`~~ (`78d854df`): `About` namespace in en + **vi** (translated);
+  `/about` reads via `getTranslations`; zh/ja/ko/fr fall back to English. Removed dead
+  `profileInfo.about` + superseded `profileInfo.summary`.
+- ~~zod validation~~ (`1d228b6a`): `readJsonValidated()` + `blog/notes` schemas validate
+  `_index.json` + post files at build (precise path-bearing errors); schema test rejects
+  bad shapes.
+- ~~`getRelatedPosts` O(n²)~~ (`1d228b6a`): `meaningfulTags` memoized by slug+tags.
+- ~~firestore rules deploy~~: `firebase.json` now declares the `firestore` target
+  (`6de190c5`). Deployed to **`phongnguyen-it`** (the project the site's `.env` uses — NOT
+  the `.firebaserc` default `nguyenlephong-cv`).
+
+## Remaining (optional, not blocking)
+1. Translate `messages/*` (`About`, and the rest) for zh/ja/ko/fr — currently English fallback.
+   The `vi` `About` translation is done.
+2. Consider Firebase App Check — the only real anti-abuse for anonymous counter writes on a
    static host.
 3. Optional deeper `ThoughtGraph` work (replace O(n²) `forceRectCollide`, cap warmup ticks)
    — low priority while the thoughts route stays unrendered.
+4. The unused-but-real `profileInfo.{technical_skill,videos,achievements,education,references}`
+   remain in `src/content/*` — authored CV data with no current consumer; surface on a CV
+   page or delete, your call.
