@@ -35,9 +35,9 @@ const nextConfig = {
     return config;
   },
   eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
+    // Lint is clean (0 errors); let builds fail on new ESLint errors so the
+    // deploy pipeline doubles as a quality gate. CI also lints on every PR.
+    ignoreDuringBuilds: false,
   },
   images: {unoptimized: true},
   env: {
