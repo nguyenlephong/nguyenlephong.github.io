@@ -27,13 +27,6 @@ export const SEO = {
 export const profileInfo = {
   gallery: {
     certificates: [
-      // {
-      //   src: "/assets/photos/cert.jpeg",
-      //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      //   alt: "Nguyen Le Phong - Software Engineer - Certificate",
-      //   width: 3,
-      //   height: 4
-      // },
       {
         src: "/assets/photos/cert_verygood.JPG",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
@@ -73,48 +66,6 @@ export const profileInfo = {
       }
     ],
     activities: [
-      // {
-      //   src: CDN_PATH + "/images/me/view-0.jpg",
-      //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      //   alt: "Nguyen Le Phong - Software Engineer - me",
-      //   width: 3,
-      //   height: 4,
-      //   hide: true,
-      // },
-      // {
-      //   src: CDN_PATH + "/images/me/view-1.jpg",
-      //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      //   alt: "Nguyen Le Phong - Software Engineer - me",
-      //   width: 3,
-      //   height: 4,
-      //   hide: true,
-      // },
-      // {
-      //   src: CDN_PATH + "/images/me/view-2.jpg",
-      //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      //   alt: "Nguyen Le Phong - Software Engineer - me",
-      //   width: 3,
-      //   height: 4,
-      //   hide: true,
-      // },
-
-      // {
-      //   src: CDN_PATH + "/images/me/standup.jpg",
-      //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      //   alt: "Nguyen Le Phong - Software Engineer - me",
-      //   width: 3,
-      //   height: 4,
-      //   hide: true,
-      // },
-      //
-      // {
-      //   src: CDN_PATH + "/images/me/sit-down.jpg",
-      //   sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
-      //   alt: "Nguyen Le Phong - Software Engineer - me",
-      //   width: 3,
-      //   height: 4,
-      //   hide: true,
-      // },
       {
         src: CDN_PATH + "/images/me/DSC_1507.JPG",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
@@ -259,8 +210,7 @@ export const profileInfo = {
     twitter: "https://twitter.com/nguyenlephong17",
     facebook: "https://www.facebook.com/NguyenLePhong0107/",
     instagram: "https://www.instagram.com/anhmap0107/",
-    cv_pdf: "https://www.overleaf.com/read/frxhzzvkgqtk#229227",
-    cv_pdf_bk: "https://www.overleaf.com/read/sbqsdsgkpbzv#f46329"
+    cv_pdf: "https://www.overleaf.com/read/frxhzzvkgqtk#229227"
   },
   about: [
     {
@@ -355,13 +305,6 @@ export const profileInfo = {
       `<b>Testing</b>: Practical use of Jest, Cucumber, Puppeteer, and Testing Library to ensure regression safety, release confidence, and production readiness across services and applications.`,
       `<b>Libraries</b>: Seasoned in <b>Firebase</b>, Strapi, Directus, React Flow, Webpack, <b>Redux</b>, React Query, and G2plot.`,
       `<b>Other</b>: In addition, familiar with <b>Micro-frontend</b> architecture, Proficiency in Responsive Design, Cross-Browser Compatibility, <b>SEO</b>, GraphQL, and Electron.`
-    ],
-    skills_bk: [
-      `<b>Back-end</b>: Competent in <b>Java</b> with the Spring Framework and <b>Node.js</b> with a working knowledge of the Express framework.`,
-      `<b>Front-end</b>: Proficient in <b>React</b>, utilizing TypeScript, JavaScript, and the <b>Next.js</b> framework, and <b>React Native</b> with a working knowledge of the Expo platform, as well as proficiency in vanilla JavaScript.`,
-      `<b>Libraries</b>: Seasoned in <b>Firebase</b>, Strapi, Directus, React Flow, Webpack, <b>Redux</b>, React Query, and G2plot.`,
-      `<b>Testing</b>: Skilled in <b>Jest, Cucumber, Puppeteer</b>, and Testing Library.`,
-      `<b>Other</b>: In addition, familiar with <b>Micro-frontend</b> architecture, Proficiency in Responsive Design, Cross-Browser Compatibility, <b>SEO</b>, GraphQL, and Electron.`
     ]
   },
   technical_skill: {
@@ -418,8 +361,7 @@ export const profileInfo = {
             "AKS/FKE/K3S/EKS"
           ]
         }
-      ],
-      jobs_bk: []
+      ]
     },
     {
       company: "Zalo PC - VNG Corp",
@@ -441,30 +383,8 @@ export const profileInfo = {
           ],
           key_techs: ["ReactJs", "Node.js", "Electron", "Typescript", "Kotlin"]
         }
-      ],
-      jobs_bk: []
+      ]
     },
-    // {
-    //   company: "Math99th",
-    //   location: "Remote",
-    //   jobs: [
-    //     {
-    //       title: "Senior Front-end Engineer",
-    //       duration: "Oct 2023 - Present",
-    //       summaries: [],
-    //       key_contribution: [
-    //         "Championed the architectural blueprint and construction of the front-end and server-side project base, cultivating a meticulously organized and structured codebase. Elevated code maintainability and fostered seamless collaboration among cross-functional teams.",
-    //         "Developed a web application for mathematical review using Next.js and Ant Design. Integrated Mathjax for displaying mathematical expressions, ensuring a seamless and visually appealing user experience.",
-    //         "Collaborated with cross-functional teams to align with user needs and optimized application performance, showcasing expertise in front-end development and a commitment to delivering innovative solutions.",
-    //         "Implemented and maintained an automated email flow for customer care, triggered by specific user segments, enhancing user engagement and satisfaction.",
-    //         "Monitored and collected user behavior data for analysis and statistics. Utilized insights to execute targeted marketing campaigns, resulting in improved DAU, WAU, and MAU metrics."
-    //       ],
-    //       key_techs: ["ReactJs", "Next.js", "Antdesign", "React Native", "Typescript", "Docker", "GCP"]
-    //
-    //     }
-    //   ]
-    //
-    // },
     {
       company: "PrimeData VN",
       location: "Binh Thanh",
@@ -491,51 +411,6 @@ export const profileInfo = {
             "Team Leadership",
             "React Native",
             "Node.js"
-          ]
-        }
-      ],
-      jobs_bk: [
-        {
-          title: "Senior Full-stack Software Engineer",
-          duration: "Mar 2022 - Apr. 2024",
-          responsibilities: [
-            "Strategically influenced the product roadmap by championing and executing impactful user experience enhancements.",
-            "Led and motivated a cohesive team of 4 members, employing effective leadership strategies to ensure successful project completion. Emphasized teamwork, aligning individual strengths with project goals, and cultivated a culture of shared success and professional growth.",
-            "Directed the development of new user-facing features, crafting reusable code and libraries to optimize application speed and scalability.",
-            "Collaborated closely with designers and stakeholders to bridge the gap between design and technical implementation. Translated UI/UX wireframes into functional and visually appealing front-end components.",
-            "Integrated third-party platform reports and data visualizations into the system, implementing secure authentication for external systems to uphold data security standards.",
-            "Leveraged my expertise in code optimization and load time reduction, ensuring the application's efficiency and responsiveness met the highest standards."
-          ],
-          skills: [
-            "ReactJs",
-            "Next.js",
-            "Typescript",
-            "WordPress",
-            "SDK",
-            "Antdesign",
-            "Team Leadership"
-          ]
-        },
-        {
-          title: "Full-stack Software Engineer",
-          duration: "July 2020 - Mar 2022",
-          responsibilities: [
-            "Built and maintained websites for running seasonal, event-specific, or new brand branch campaigns. Implemented robust data tracking mechanisms to gather insights for customer care and marketing strategies.",
-            "Designed and developed SDKs and application sets to complement the core application, providing crucial support for development, testing, and marketing teams.",
-            "Led the development of the entire front-end code base from scratch for various applications, including the Customer Data Platform (CDP) app, shop app, bank app, tools, WordPress, Magento, and mobile app. Ensured comprehensive features catering to common user needs in all applications."
-          ],
-          skills: [
-            "ReactJs",
-            "Node.js",
-            "React Native",
-            "Java",
-            "Typescript",
-            "Antdesign",
-            "Wordpress",
-            "Docker",
-            "Team Leadership",
-            "My SQL",
-            "Firebase"
           ]
         }
       ]
@@ -569,29 +444,6 @@ export const profileInfo = {
             "Node.js"
           ]
         }
-      ],
-      jobs_bk: [
-        {
-          title: "Java Developer",
-          duration: "Mar 2019 - July 2020",
-          responsibilities: [
-            "Delivered a diverse range of projects, including websites, mobile apps, and internal tools, for prestigious Japanese and American partners.",
-            "Flourished in an outsourcing environment, honing cross-cultural communication and collaboration skills while engaging with clients from diverse backgrounds.",
-            "Optimized software production processes and refined time management skills by navigating various projects and meeting tight deadlines, ensuring the timely delivery of high-quality solutions.",
-            "Contributed to both front-end and back-end code development using Java, Spring, and React. Adhered rigorously to software development best practices and principles, emphasizing code quality, testing, and documentation.",
-            "Demonstrated exceptional problem-solving skills and meticulous attention to detail while collaborating with a dynamic team of developers and project managers. Ensured the completion of all projects to the highest standards of quality.",
-            "Served as an onsite representative for Mobivi and Synova Solutions, exhibiting stellar communication and collaboration skills with clients and internal teams. Consistently delivered high-quality projects, making significant contributions to the company's growth and success."
-          ],
-          skills: [
-            "ReactJs",
-            "Java",
-            "Node.js",
-            "React Native",
-            "My SQL",
-            "Antdesign",
-            "Realm DB"
-          ]
-        }
       ]
     },
     {
@@ -608,18 +460,6 @@ export const profileInfo = {
             `Initiated involvement in primary web app development as a Front-end Developer. Obtained foundational web development skills, with a specialization in <b>React JS</b> and related technologies. Collaborated on responsive design projects, prioritizing enhancements for user experience.`
           ],
           key_techs: ["ReactJs", "Javascript", "Wordpress", "Material UI"]
-        }
-      ],
-      jobs_bk: [
-        {
-          title: "Fresher Front-end Developer",
-          duration: "May 2018 - Jan 2019",
-          responsibilities: [
-            "Embarked on my professional journey as a Fresher Front-end Developer, actively contributed to the development and maintenance of the primary web app, gaining foundational skills and practical insights into web development.",
-            "Delved deep into React JS, mastering associated technologies, libraries like axios, redux, middleware, ..., laying the groundwork for modern web development.",
-            "Collaborated on responsive designs for property listing pages, showcasing a commitment to delivering an exceptional user experience."
-          ],
-          skills: ["ReactJs", "Javascript", "Wordpress", "Material UI"]
         }
       ]
     }
@@ -697,15 +537,6 @@ export const profileInfo = {
         `Provided personalized <b>feedback</b> and <b>mentoring</b>, supporting students in <b>overcoming challenges</b> and ensuring a comprehensive understanding of the course material.`
       ]
     },
-    // {
-    //   name: "SmartR.co",
-    //   technologies: ["React", "Next.js", "Chart.js", "Material UI"],
-    //   duration: "Aug 2022",
-    //   description: [],
-    //   accomplishment: [
-    //     "Contributed to a project as a freelancer, focusing on developing a CMS website using Next.js and Strapi headless CMS."
-    //   ]
-    // },
     {
       name: "House Management - Mona House",
       technologies: ["React Native", "Realm DB", "Figma"],
