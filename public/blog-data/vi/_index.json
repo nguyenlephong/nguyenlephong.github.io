@@ -967,6 +967,18 @@
         "Engineering Culture",
         "Team Collaboration"
       ]
+    },
+    {
+      "slug": "sitting-with-the-problem",
+      "title": "Kỷ luật ngồi lại với một bài toán bạn chưa thể giải",
+      "summary": "Có người khôi phục trật tự ngay khi hỗn loạn xuất hiện; có người giữ được bài toán ở trạng thái mở đủ lâu để hiểu nó. Về khả năng chịu đựng sự mập mờ như một kỷ luật có thể luyện, cái giá của việc giải trước khi hiểu, cái bẫy Einstellung, và vì sao sự trưởng thành nằm ở chỗ bạn ở lại với một bài toán khó được bao lâu.",
+      "tags": [
+        "Leadership",
+        "Management",
+        "Giải quyết vấn đề",
+        "Incident",
+        "Engineering Culture"
+      ]
     }
   ]
 }
