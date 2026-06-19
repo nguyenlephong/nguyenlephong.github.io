@@ -46,6 +46,7 @@ const sourceSans = Source_Sans_3({
   subsets: ['latin'],
   variable: '--font-reading-source',
   display: 'swap',
+  preload: false,
 })
 
 const plexSans = IBM_Plex_Sans({
@@ -53,6 +54,7 @@ const plexSans = IBM_Plex_Sans({
   weight: ['400', '500', '600', '700'],
   variable: '--font-reading-plex',
   display: 'swap',
+  preload: false,
 })
 
 const atkinson = Atkinson_Hyperlegible({
@@ -60,12 +62,14 @@ const atkinson = Atkinson_Hyperlegible({
   weight: ['400', '700'],
   variable: '--font-reading-atkinson',
   display: 'swap',
+  preload: false,
 })
 
 const lora = Lora({
   subsets: ['latin'],
   variable: '--font-reading-lora',
   display: 'swap',
+  preload: false,
 })
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -73,12 +77,14 @@ const beVietnamPro = Be_Vietnam_Pro({
   weight: ['400', '500', '600', '700'],
   variable: '--font-reading-be-vietnam',
   display: 'swap',
+  preload: false,
 })
 
 const fraunces = Fraunces({
   subsets: ['latin', 'vietnamese'],
   variable: '--font-reading-fraunces',
   display: 'swap',
+  preload: false,
 })
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -86,6 +92,7 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ['400', '500', '600', '700'],
   variable: '--font-reading-ibm-plex-mono',
   display: 'swap',
+  preload: false,
 })
 
 const FONT_VARIABLES = [

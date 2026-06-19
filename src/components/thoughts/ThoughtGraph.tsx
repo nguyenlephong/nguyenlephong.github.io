@@ -441,13 +441,22 @@ export default function ThoughtGraph({
   }, [buildGraph, measureHeight])
 
   useEffect(() => {
+    // Each rebuild reruns a 500-tick O(n²) simulation; debounce so dragging a
+    // window edge doesn't trigger a rebuild per resize event.
+    let timer: number | undefined
     const onResize = () => {
-      simulationRef.current?.stop()
-      setHeight(measureHeight())
-      buildGraph()
+      if (timer !== undefined) window.clearTimeout(timer)
+      timer = window.setTimeout(() => {
+        simulationRef.current?.stop()
+        setHeight(measureHeight())
+        buildGraph()
+      }, 150)
     }
     window.addEventListener('resize', onResize)
-    return () => window.removeEventListener('resize', onResize)
+    return () => {
+      if (timer !== undefined) window.clearTimeout(timer)
+      window.removeEventListener('resize', onResize)
+    }
   }, [buildGraph, measureHeight])
 
   return (
