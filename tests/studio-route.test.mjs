@@ -64,6 +64,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(page, /generateMetadata/);
   assert.match(page, /PageTracker page="studio" eventName="studio_view"/);
   assert.match(page, /StudioWorkspace/);
+  assert.match(page, /studio-route-shell/);
+  assert.match(page, /body:has\(\.studio-route-shell\) \.app-nav/);
+  assert.match(page, /body:has\(\.studio-route-shell\) \.app-footer/);
   assert.doesNotMatch(page, /studio\.css/);
   assert.doesNotMatch(page, /studio-kit\/studio-kit\.css/);
 
@@ -71,13 +74,14 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(workspace, /@\/components\/studio-kit/);
   assert.match(workspace, /ShadowIsland/);
   assert.match(workspace, /studioShadowStyles/);
-  assert.match(workspace, /admin-sidebar/);
-  assert.match(workspace, /admin-topbar/);
-  assert.match(workspace, /workspace-grid/);
-  assert.match(workspace, /selectedNoteId/);
-  assert.match(workspace, /studioFolders/);
-  assert.match(workspace, /studioNotes/);
-  assert.match(workspace, /navigator\.clipboard\.writeText/);
+  assert.match(workspace, /studio-sidebar/);
+  assert.match(workspace, /studio-topbar/);
+  assert.match(workspace, /metric-grid/);
+  assert.match(workspace, /Studio Admin/);
+  assert.match(workspace, /Quick Create/);
+  assert.match(workspace, /Customer Activity/);
+  assert.match(workspace, /18,426 Customers/);
+  assert.match(workspace, /next-shadcn-admin-dashboard/);
   assert.doesNotMatch(workspace, /Downloads\/next-shadcn-admin-dashboard-main/);
   assert.match(kitIndex, /export \* from "\.\/primitives"/);
   assert.match(kitIndex, /export \* from "\.\/dashboard"/);
@@ -88,17 +92,20 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(kitUpstream, /"sourceVersion": "2\.2\.0"/);
 
   for (const expectedClass of [
-    "admin-shell",
-    "admin-sidebar",
-    "admin-topbar",
+    "studio-admin",
+    "studio-sidebar",
+    "studio-topbar",
     "metric-grid",
-    "workspace-grid",
-    "rail-stack"
+    "activity-card",
+    "customers-card",
+    "table-shell"
   ]) {
     assert.match(shadowCss, new RegExp(`\\.${expectedClass}\\b`));
   }
   assert.match(shadowCss, /grid-template-columns:\s*272px minmax\(0, 1fr\)/);
-  assert.match(shadowCss, /\.admin-sidebar\s*\{[^}]*height:\s*100vh/s);
+  assert.match(shadowCss, /\.studio-sidebar\s*\{[^}]*height:\s*100vh/s);
+  assert.match(shadowCss, /--sidebar:\s*#fafafa/);
+  assert.match(shadowCss, /border-radius:\s*0\.875rem/);
   assert.match(shadowCss, /@media \(max-width: 860px\)/);
 
   for (const expected of [
