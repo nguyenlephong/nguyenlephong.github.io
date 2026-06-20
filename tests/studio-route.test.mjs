@@ -123,10 +123,20 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /Component Inventory/);
   assert.match(adminShell, /System Workstreams/);
   assert.match(adminShell, /DeliverySignalChart/);
+  assert.match(adminShell, /ResponsiveContainer/);
+  assert.match(adminShell, /ComposedChart/);
+  assert.match(adminShell, /Tooltip/);
+  assert.match(adminShell, /releaseSignalChartData/);
+  assert.match(adminShell, /rolloutVolume/);
+  assert.match(adminShell, /platformHealth/);
+  assert.match(adminShell, /incidentNoise/);
   assert.match(adminShell, /distributionSegments/);
   assert.match(adminShell, /componentInventory/);
   assert.doesNotMatch(adminShell, /Customer Activity/);
   assert.doesNotMatch(adminShell, /18,426 Customers/);
+  assert.doesNotMatch(adminShell, /activity-chart/);
+  assert.doesNotMatch(adminShell, /chart-bar/);
+  assert.doesNotMatch(adminShell, /polyline/);
   assert.doesNotMatch(adminShell, /next-shadcn-admin-dashboard/);
   assert.doesNotMatch(adminShell, /source admin/);
   assert.doesNotMatch(adminShell, /source-style/);
@@ -149,6 +159,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "studio-topbar",
     "metric-grid",
     "activity-card",
+    "studio-chart",
+    "studio-chart-tooltip",
     "workstreams-card",
     "ops-kpi-strip",
     "component-inventory",
@@ -160,6 +172,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   ]) {
     assert.match(shadowCss, new RegExp(`\\.${expectedClass}\\b`));
   }
+  assert.match(shadowCss, /\.chart-legend\.interactive\b/);
+  assert.doesNotMatch(shadowCss, /\.activity-chart\b/);
+  assert.doesNotMatch(shadowCss, /\.chart-bar\b/);
+  assert.match(packageJson, /"recharts":/);
   assert.match(shadowCss, /\.mail-workbench\.card,\s*\.chat-workbench\.card\s*\{[^}]*display:\s*grid/s);
   assert.match(shadowCss, /grid-template-columns:\s*272px minmax\(0, 1fr\)/);
   assert.match(shadowCss, /\.studio-sidebar\s*\{[^}]*height:\s*100vh/s);

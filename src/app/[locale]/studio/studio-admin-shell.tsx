@@ -78,6 +78,16 @@ import {
   LuWaves,
   LuX
 } from "react-icons/lu";
+import {
+  Area,
+  CartesianGrid,
+  ComposedChart,
+  Line,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis
+} from "recharts";
 
 type StudioAdminShellProps = {
   locale: string;
@@ -235,7 +245,7 @@ const defaultMetrics: StudioMetric[] = [
   {
     label: "Release Health",
     value: "96.4%",
-    helper: "Successful deploys across active services",
+    helper: "Successful deploys this window",
     badge: "+4.8%",
     trend: "up",
     icon: LuCheckCircle2
@@ -243,7 +253,7 @@ const defaultMetrics: StudioMetric[] = [
   {
     label: "Open Incidents",
     value: "2",
-    helper: "One gateway watch and one partner queue",
+    helper: "Gateway and partner queues",
     badge: "-3",
     trend: "down",
     icon: LuFlag
@@ -251,7 +261,7 @@ const defaultMetrics: StudioMetric[] = [
   {
     label: "P95 Latency",
     value: "182ms",
-    helper: "API edge and backend aggregate",
+    helper: "Edge and backend aggregate",
     badge: "-28ms",
     trend: "up",
     icon: LuGauge
@@ -259,7 +269,7 @@ const defaultMetrics: StudioMetric[] = [
   {
     label: "Flag Coverage",
     value: "38",
-    helper: "Tenant, segment, and environment rules",
+    helper: "Tenant and segment rules",
     badge: "+6",
     trend: "up",
     icon: LuSlidersHorizontal
@@ -1009,12 +1019,45 @@ const distributionSegments = [
   { label: "Runbooks", value: 20, color: "#d4d4d4" }
 ];
 
-const xTicks = ["May 9", "May 16", "May 23", "May 30", "Jun 6", "Jun 13", "Jun 20"];
+const rolloutPulseMap = new Map([
+  [0, 44],
+  [6, 28],
+  [11, 52],
+  [15, 38],
+  [23, 26],
+  [30, 50],
+  [36, 36],
+  [45, 62],
+  [53, 34],
+  [60, 45],
+  [66, 31],
+  [73, 54],
+  [79, 39],
+  [86, 30]
+]);
 
-const deliveryVelocityValues = [64, 68, 72, 69, 78, 83, 88, 84, 91, 89, 94, 92, 96, 93];
-const latencyHealthValues = [72, 74, 71, 76, 79, 77, 82, 84, 81, 86, 88, 90, 91, 92];
-const incidentSignalValues = [18, 16, 14, 22, 13, 12, 18, 11, 9, 15, 8, 7, 10, 6];
-const deployVolumeValues = [28, 34, 41, 36, 48, 52, 45, 57, 62, 55, 67, 73, 69, 78];
+const releaseSignalChartData = Array.from({ length: 89 }, (_, index) => {
+  const date = new Date(2026, 2, 24);
+  date.setDate(date.getDate() + index);
+
+  const baseline = 38 + ((index * 13) % 22) + Math.round(Math.sin(index * 0.62) * 6);
+  const pulse = rolloutPulseMap.get(index) ?? 0;
+
+  return {
+    date: formatDateKey(date),
+    rolloutVolume: Math.min(124, Math.max(24, baseline + pulse)),
+    platformHealth: 64 + Math.round(Math.sin(index * 0.22) * 2) + (index % 11 === 0 ? 1 : 0),
+    incidentNoise: 56 + Math.round(Math.cos(index * 0.18) * 2) - (index % 17 === 0 ? 1 : 0)
+  };
+});
+
+const releaseSignalSeries = [
+  { key: "platformHealth", label: "Platform health", color: "#525252" },
+  { key: "rolloutVolume", label: "Rollout volume", color: "#d4d4d4" },
+  { key: "incidentNoise", label: "Incident noise", color: "#171717" }
+] as const;
+
+type ReleaseSignalSeriesKey = (typeof releaseSignalSeries)[number]["key"];
 
 const flatRouteResults = navGroups.flatMap((group) =>
   group.items.flatMap((item) => {
@@ -1037,22 +1080,28 @@ function isItemActive(item: StudioNavItem, activeRoute: StudioRouteId): boolean 
   return item.subItems?.some((subItem) => subItem.routeId === activeRoute) ?? false;
 }
 
-function linePoints(values: number[], maxValue = 82): string {
-  const width = 1040;
-  const height = 176;
-  const xStep = width / Math.max(values.length - 1, 1);
-
-  return values
-    .map((value, index) => {
-      const x = Math.round(index * xStep);
-      const y = Math.round(height - (value / maxValue) * height);
-      return `${x},${y}`;
-    })
-    .join(" ");
-}
-
 function cvHref(): string {
   return resumePath;
+}
+
+function formatDateKey(date: Date): string {
+  const year = date.getFullYear();
+  const month = `${date.getMonth() + 1}`.padStart(2, "0");
+  const day = `${date.getDate()}`.padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function parseChartDate(value: string): Date {
+  const [year, month, day] = value.split("-").map(Number);
+  return new Date(year, month - 1, day);
+}
+
+function formatChartTick(value: string): string {
+  return parseChartDate(value).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+}
+
+function formatChartTooltipLabel(value: string): string {
+  return parseChartDate(value).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" });
 }
 
 function getInitials(name: string): string {
@@ -1085,37 +1134,127 @@ function MetricCard({ item }: { item: StudioMetric }) {
   );
 }
 
-function DeliverySignalChart() {
-  const chartWidth = 1040;
-  const chartHeight = 176;
-  const xStep = chartWidth / Math.max(deployVolumeValues.length - 1, 1);
+type StudioTooltipPayload = {
+  color?: string;
+  dataKey?: string | number;
+  name?: string | number;
+  value?: number | string;
+};
+
+function StudioChartTooltip({
+  active,
+  label,
+  payload
+}: {
+  active?: boolean;
+  label?: string | number;
+  payload?: StudioTooltipPayload[];
+}) {
+  if (!active || !payload?.length) return null;
 
   return (
-    <svg className="activity-chart" viewBox="0 0 1080 300" role="img" aria-label="Release health and traffic quality chart">
-      <g className="chart-grid">
-        {[36, 84, 132, 180, 228, 276].map((y) => (
-          <line key={y} x1="0" x2="1080" y1={y} y2={y} />
-        ))}
-      </g>
-      <g transform="translate(0 58)">
-        {deployVolumeValues.map((value, index) => {
-          const barHeight = Math.max(8, Math.round((value / 100) * chartHeight));
-          const x = Math.max(0, Math.round(index * xStep) - 5);
-          const y = chartHeight - barHeight;
-          return <rect key={`${value}-${index}`} className="chart-bar" x={x} y={y} width="10" height={barHeight} rx="3" />;
+    <div className="studio-chart-tooltip">
+      <strong>{typeof label === "string" ? formatChartTooltipLabel(label) : label}</strong>
+      <div>
+        {payload.map((item) => {
+          const series = releaseSignalSeries.find((entry) => entry.key === item.dataKey);
+          if (!series || item.value == null) return null;
+
+          return (
+            <span key={series.key}>
+              <i style={{ background: series.color }} />
+              <em>{series.label}</em>
+              <b>{Number(item.value).toLocaleString("en-US")}</b>
+            </span>
+          );
         })}
-        <polyline className="chart-line chart-new" points={linePoints(deliveryVelocityValues, 100)} />
-        <polyline className="chart-line chart-active" points={linePoints(latencyHealthValues, 100)} />
-        <polyline className="chart-line chart-returning" points={linePoints(incidentSignalValues, 100)} />
-      </g>
-      <g className="chart-axis">
-        {xTicks.map((tick, index) => (
-          <text key={tick} x={(index / (xTicks.length - 1)) * 1040 + 10} y="292">
-            {tick}
-          </text>
+      </div>
+    </div>
+  );
+}
+
+function DeliverySignalChart() {
+  const [activeSeries, setActiveSeries] = useState<ReleaseSignalSeriesKey | "all">("all");
+  const isDimmed = (key: ReleaseSignalSeriesKey) => activeSeries !== "all" && activeSeries !== key;
+
+  return (
+    <div className="studio-chart-shell">
+      <div className="chart-legend interactive" aria-label="Release signal series">
+        {releaseSignalSeries.map((series) => (
+          <button
+            key={series.key}
+            type="button"
+            className={activeSeries === series.key ? "is-active" : undefined}
+            onBlur={() => setActiveSeries("all")}
+            onClick={() => setActiveSeries((current) => (current === series.key ? "all" : series.key))}
+            onFocus={() => setActiveSeries(series.key)}
+            onMouseEnter={() => setActiveSeries(series.key)}
+            onMouseLeave={() => setActiveSeries("all")}
+          >
+            <i style={{ background: series.color }} />
+            {series.label}
+          </button>
         ))}
-      </g>
-    </svg>
+      </div>
+      <div className="studio-chart" role="img" aria-label="Release volume, platform health, and incident noise chart">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0} initialDimension={{ width: 640, height: 320 }}>
+          <ComposedChart data={releaseSignalChartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
+            <defs>
+              <linearGradient id="studioFillRolloutVolume" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#d4d4d4" stopOpacity={0.5} />
+                <stop offset="95%" stopColor="#d4d4d4" stopOpacity={0.05} />
+              </linearGradient>
+            </defs>
+            <CartesianGrid vertical={false} stroke="#e5e5e5" strokeOpacity={0.72} />
+            <XAxis
+              dataKey="date"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={10}
+              minTickGap={42}
+              tickFormatter={formatChartTick}
+            />
+            <YAxis hide domain={[0, 128]} />
+            <Tooltip cursor={false} content={<StudioChartTooltip />} />
+            <Area
+              dataKey="rolloutVolume"
+              type="natural"
+              fill="url(#studioFillRolloutVolume)"
+              stroke="#d4d4d4"
+              strokeWidth={1.35}
+              dot={false}
+              activeDot={{ r: 4, strokeWidth: 0 }}
+              fillOpacity={isDimmed("rolloutVolume") ? 0.28 : 1}
+              opacity={isDimmed("rolloutVolume") ? 0.35 : 1}
+              isAnimationActive
+              animationDuration={850}
+            />
+            <Line
+              dataKey="platformHealth"
+              type="natural"
+              stroke="#525252"
+              strokeWidth={1.55}
+              dot={false}
+              activeDot={{ r: 4, strokeWidth: 0 }}
+              opacity={isDimmed("platformHealth") ? 0.25 : 1}
+              isAnimationActive
+              animationDuration={900}
+            />
+            <Line
+              dataKey="incidentNoise"
+              type="natural"
+              stroke="#171717"
+              strokeWidth={1.35}
+              dot={false}
+              activeDot={{ r: 4, strokeWidth: 0 }}
+              opacity={isDimmed("incidentNoise") ? 0.25 : 1}
+              isAnimationActive
+              animationDuration={950}
+            />
+          </ComposedChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
   );
 }
 
@@ -2067,7 +2206,6 @@ function AuthPage({ route }: { route: StudioRoute }) {
 }
 
 function DefaultDashboard({
-  route,
   workstreamSearch,
   statusFilter,
   sortMode,
@@ -2075,7 +2213,6 @@ function DefaultDashboard({
   onStatusFilter,
   onSortMode
 }: {
-  route: StudioRoute;
   workstreamSearch: string;
   statusFilter: string;
   sortMode: string;
@@ -2100,26 +2237,13 @@ function DefaultDashboard({
 
   return (
     <section className="route-page">
-      <RouteHeading route={route}>
-        <div className="route-actions">
-          <button type="button" className="outline-button">
-            <LuRotateCw aria-hidden="true" />
-            Sync
-          </button>
-          <button type="button" className="outline-button">
-            <LuDownload aria-hidden="true" />
-            Export
-          </button>
-        </div>
-      </RouteHeading>
       <RouteMetricGrid metrics={defaultMetrics} />
-      <DashboardKpiStrip />
 
       <section className="card activity-card" id="release-signal" data-slot="card">
         <header className="card-header activity-header">
           <div>
-            <h2>Release Signal</h2>
-            <p>Delivery velocity, traffic quality, incident signal, and deploy volume over the current rollout window.</p>
+            <h2>Release Activity</h2>
+            <p>Release Signal across rollout volume, platform health, and incident noise.</p>
           </div>
           <div className="card-actions">
             <select className="native-select" defaultValue="quarter" aria-label="Period">
@@ -2136,26 +2260,14 @@ function DefaultDashboard({
             </a>
           </div>
         </header>
-        <div className="chart-legend" aria-hidden="true">
-          <span><i className="legend-bars" />Deploy volume</span>
-          <span><i className="legend-new" />Delivery velocity</span>
-          <span><i className="legend-active" />Latency health</span>
-          <span><i className="legend-returning" />Incident signal</span>
-        </div>
         <DeliverySignalChart />
       </section>
-
-      <div className="ops-detail-grid">
-        <ComponentInventoryCard />
-        <DistributionCard />
-        <ReleaseChecklistCard />
-      </div>
 
       <section className="card records-card workstreams-card" id="system-workstreams" data-slot="card">
         <header className="card-header table-header">
           <div>
-            <h2>System Workstreams</h2>
-            <p>Static operational rows showing table, search, select, checkbox, badge, and export states.</p>
+            <h2>12 Workstreams</h2>
+            <p>System Workstreams with status, risk, area, and last-update activity.</p>
           </div>
           <a href={resumePath} className="outline-button" target="_blank" rel="noreferrer">
             <LuDownload aria-hidden="true" />
@@ -2221,6 +2333,14 @@ function DefaultDashboard({
           </table>
         </div>
       </section>
+
+      <DashboardKpiStrip />
+
+      <div className="ops-detail-grid">
+        <ComponentInventoryCard />
+        <DistributionCard />
+        <ReleaseChecklistCard />
+      </div>
     </section>
   );
 }
@@ -2245,7 +2365,6 @@ function RouteContent({
   if (route.kind === "default") {
     return (
       <DefaultDashboard
-        route={route}
         workstreamSearch={workstreamSearch}
         statusFilter={statusFilter}
         sortMode={sortMode}

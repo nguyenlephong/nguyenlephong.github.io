@@ -1645,6 +1645,17 @@ a {
   min-height: 9.75rem;
   background: linear-gradient(to top, rgba(10, 10, 10, 0.035), transparent), var(--card);
   padding: 1rem;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.metric-card:hover,
+.activity-card:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .metric-icon {
@@ -1660,7 +1671,7 @@ a {
 }
 
 .metric-card p {
-  margin: 0.625rem 0 0.875rem;
+  margin: 0.5rem 0 0.625rem;
   color: var(--muted-foreground);
   font-size: 0.875rem;
 }
@@ -1713,7 +1724,7 @@ a {
 
 .metric-helper {
   display: block;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
   color: var(--muted-foreground);
   font-size: 0.875rem;
 }
@@ -1773,85 +1784,126 @@ a {
   font-weight: 400;
 }
 
-.chart-legend {
+.activity-card {
+  min-height: 25.625rem;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.studio-chart-shell {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.studio-chart {
+  width: 100%;
+  height: 17.25rem;
+}
+
+.studio-chart .recharts-wrapper,
+.studio-chart .recharts-surface,
+.studio-chart .recharts-layer {
+  outline: none;
+}
+
+.studio-chart .recharts-cartesian-axis-tick text {
+  fill: var(--muted-foreground);
+  font-size: 12px;
+}
+
+.studio-chart .recharts-cartesian-grid line {
+  stroke: var(--border);
+}
+
+.studio-chart .recharts-curve {
+  transition: opacity 180ms ease;
+}
+
+.chart-legend.interactive {
   justify-content: flex-end;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
   margin-top: 0.25rem;
   color: var(--foreground);
   font-size: 0.75rem;
 }
 
-.chart-legend span {
+.chart-legend.interactive button {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
+  border: 0;
+  background: transparent;
+  padding: 0.25rem 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  opacity: 0.72;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
 }
 
-.chart-legend i {
+.chart-legend.interactive button:hover,
+.chart-legend.interactive button:focus-visible,
+.chart-legend.interactive button.is-active {
+  opacity: 1;
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.chart-legend.interactive i {
   width: 0.5rem;
   height: 0.5rem;
+  flex: 0 0 auto;
   border-radius: 0.125rem;
 }
 
-.legend-bars {
-  background: #eeeeee;
+.studio-chart-tooltip {
+  display: grid;
+  min-width: 12.5rem;
+  gap: 0.625rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  border-radius: 0.75rem;
+  background: var(--background);
+  padding: 0.625rem 0.75rem;
+  color: var(--foreground);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  font-size: 0.75rem;
 }
 
-.legend-active {
-  background: #717171;
+.studio-chart-tooltip strong {
+  font-weight: 600;
 }
 
-.legend-new {
-  background: #d4d4d4;
+.studio-chart-tooltip div {
+  display: grid;
+  gap: 0.45rem;
 }
 
-.legend-returning {
-  background: #525252;
+.studio-chart-tooltip span {
+  display: grid;
+  grid-template-columns: 0.5rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.activity-card {
-  min-height: 25.625rem;
+.studio-chart-tooltip i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2px;
 }
 
-.activity-chart {
-  display: block;
-  width: 100%;
-  height: 19.25rem;
-  margin-top: 0.25rem;
-  overflow: visible;
+.studio-chart-tooltip em {
+  color: var(--muted-foreground);
+  font-style: normal;
 }
 
-.chart-grid line {
-  stroke: #f0f0f0;
-  stroke-width: 1;
-}
-
-.chart-line {
-  fill: none;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  stroke-width: 1.2;
-}
-
-.chart-bar {
-  fill: #eeeeee;
-}
-
-.chart-new {
-  stroke: #d4d4d4;
-}
-
-.chart-active {
-  stroke: #737373;
-}
-
-.chart-returning {
-  stroke: #525252;
-}
-
-.chart-axis text {
-  fill: var(--muted-foreground);
-  font-size: 12px;
+.studio-chart-tooltip b {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .records-card {
@@ -2350,8 +2402,12 @@ tbody tr:hover {
     width: 100%;
   }
 
-  .activity-chart {
-    height: 15.5rem;
+  .studio-chart {
+    height: 15rem;
+  }
+
+  .chart-legend.interactive {
+    justify-content: flex-start;
   }
 
   .workstreams-card .table-shell {
