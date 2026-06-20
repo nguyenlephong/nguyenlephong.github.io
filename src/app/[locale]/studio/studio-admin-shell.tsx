@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { MouseEvent } from "react";
+import type { CSSProperties, MouseEvent } from "react";
 import type { IconType } from "react-icons";
 import {
   LuAlarmClock,
@@ -233,36 +233,36 @@ const resumePath = "/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf";
 
 const defaultMetrics: StudioMetric[] = [
   {
-    label: "Total Revenue",
-    value: "$1,250.00",
-    helper: "Visitors for the last 6 months",
-    badge: "+12.5%",
+    label: "Release Health",
+    value: "96.4%",
+    helper: "Successful deploys across active services",
+    badge: "+4.8%",
     trend: "up",
-    icon: LuBadgeDollarSign
+    icon: LuCheckCircle2
   },
   {
-    label: "New Customers",
-    value: "1,234",
-    helper: "Acquisition needs attention",
-    badge: "-20%",
+    label: "Open Incidents",
+    value: "2",
+    helper: "One gateway watch and one partner queue",
+    badge: "-3",
     trend: "down",
-    icon: LuUserPlus
+    icon: LuFlag
   },
   {
-    label: "Active Accounts",
-    value: "45,678",
-    helper: "Engagement exceeds targets",
-    badge: "+12.5%",
+    label: "P95 Latency",
+    value: "182ms",
+    helper: "API edge and backend aggregate",
+    badge: "-28ms",
     trend: "up",
-    icon: LuUsers
+    icon: LuGauge
   },
   {
-    label: "Growth Rate",
-    value: "4.5%",
-    helper: "Meets growth projections",
-    badge: "+4.5%",
+    label: "Flag Coverage",
+    value: "38",
+    helper: "Tenant, segment, and environment rules",
+    badge: "+6",
     trend: "up",
-    icon: LuWaves
+    icon: LuSlidersHorizontal
   }
 ];
 
@@ -391,18 +391,18 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
 const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
   default: {
     id: "default",
-    title: "Default",
-    description: "Customer activity, recent subscribers, and high-level growth metrics.",
+    title: "Engineering Ops",
+    description: "Release health, traffic quality, rollout control, component inventory, and operational workstreams.",
     kind: "default",
     icon: LuLayoutDashboard,
     metrics: routeMetrics.default,
-    panels: ["Customer Activity", "Recent Customers", "Revenue Movement"],
-    timeline: ["Revenue updated", "Customer import finished", "Subscriber export ready"]
+    panels: ["Release Signal", "Component Inventory", "System Workstreams"],
+    timeline: ["Gateway rollback criteria reviewed", "Feature flag audit completed", "PostHog anomaly window closed"]
   },
   crm: {
     id: "crm",
     title: "CRM",
-    description: "Pipeline, task reminders, and opportunity health in the same pattern as the source admin.",
+    description: "Stakeholder follow-ups, delivery pipeline notes, and opportunity health in the Studio shell.",
     kind: "dashboard",
     icon: LuBarChart,
     metrics: routeMetrics.crm,
@@ -513,7 +513,7 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
   kanban: {
     id: "kanban",
     title: "Kanban",
-    description: "Task board with source-style columns and cards.",
+    description: "Task board with columns, cards, status, and review-ready engineering work.",
     kind: "kanban",
     icon: LuKanbanSquare,
     metrics: routeMetrics.kanban,
@@ -583,7 +583,7 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
   "auth-register-v2": {
     id: "auth-register-v2",
     title: "Register v2",
-    description: "Second registration variant from the source app navigation.",
+    description: "Second registration variant with workspace, invite, and access-review states.",
     kind: "auth",
     icon: LuFingerprint,
     metrics: routeMetrics["auth-register-v2"],
@@ -702,7 +702,7 @@ const studioMails: StudioMail[] = [
     to: ["Nguyen Le Phong"],
     cc: ["Platform Team"],
     subject: "Staging gateway still returns 502 after rollback",
-    body: "Hi Phong,\n\nThe latest rollback finished, but the staging gateway is still returning intermittent 502s. API traffic looks healthy; only the web container readiness probe keeps failing.\n\nCan you check whether the ingress path and upstream service selector still match after the deployment rollback?\n\nThanks,\nOlivia",
+    body: "Hi Phong,\n\nThe latest rollback finished, but the staging gateway is still returning intermittent 502s. API traffic looks healthy; only the web container readiness probe keeps failing.\n\nCan you check whether the ingress path and service selector still match after the deployment rollback?\n\nThanks,\nOlivia",
     receivedAt: "Just now",
     folder: "inbox",
     isRead: false,
@@ -799,7 +799,7 @@ const studioConversations: StudioConversation[] = [
     },
     messages: [
       { id: 101, side: "in", text: "We are seeing 502s on staging right after the latest build. Rollback finished, but health checks are still red.", time: "10 min ago" },
-      { id: 102, side: "out", text: "Thanks, Olivia. I am checking deploy logs, service selectors, and the upstream gateway config now.", time: "8 min ago" },
+      { id: 102, side: "out", text: "Thanks, Olivia. I am checking deploy logs, service selectors, and the gateway routing config now.", time: "8 min ago" },
       { id: 103, side: "in", text: "API traffic looks fine. The web container keeps failing readiness probes.", time: "5 min ago" },
       { id: 104, side: "out", text: "Found a staging env mismatch on the web workload. I am applying the fix and will confirm once probes recover.", time: "3 min ago" }
     ]
@@ -823,7 +823,7 @@ const studioConversations: StudioConversation[] = [
       website: "meridianretail.com",
       location: "Chicago, IL",
       timezone: "CDT (UTC-5)",
-      status: "Customer",
+      status: "Partner",
       qualifiedAt: "Jan 18, 2026",
       tags: ["Billing", "Enterprise"]
     },
@@ -909,7 +909,7 @@ const studioConversations: StudioConversation[] = [
       website: "atlasworks.co",
       location: "Austin, TX",
       timezone: "CDT (UTC-5)",
-      status: "Customer",
+      status: "Partner",
       qualifiedAt: "Aug 3, 2025",
       tags: ["Onboarding", "Platform"]
     },
@@ -920,54 +920,101 @@ const studioConversations: StudioConversation[] = [
   }
 ];
 
-const customers = [
+const workstreamRows = [
   {
-    name: "Sarah Parker",
-    id: "#18425",
-    status: "Subscribed",
-    billing: "Paid",
-    plan: "Enterprise",
-    joined: "30th April 2026",
-    time: "at 10:25 AM",
+    name: "Gateway rollout guardrails",
+    id: "REL-204",
+    status: "Healthy",
+    billing: "Ready",
+    plan: "Platform",
+    joined: "20th June 2026",
+    time: "at 09:40 AM",
     billingTone: "paid"
   },
   {
-    name: "Michael Brown",
-    id: "#18424",
-    status: "Inactive",
-    billing: "Pending",
-    plan: "Growth",
-    joined: "29th April 2026",
-    time: "at 10:08 AM",
+    name: "Partner mTLS certificate overlap",
+    id: "SEC-118",
+    status: "Watching",
+    billing: "Review",
+    plan: "Security",
+    joined: "20th June 2026",
+    time: "at 08:15 AM",
     billingTone: "pending"
   },
   {
-    name: "Linda Chen",
-    id: "#18423",
-    status: "Subscribed",
-    billing: "Paid",
-    plan: "Enterprise",
-    joined: "28th April 2026",
-    time: "at 09:44 AM",
+    name: "Feature flag tenant expansion",
+    id: "FF-089",
+    status: "Healthy",
+    billing: "Ready",
+    plan: "Rollout",
+    joined: "19th June 2026",
+    time: "at 05:35 PM",
     billingTone: "paid"
   },
   {
-    name: "Ethan Brooks",
-    id: "#18422",
-    status: "Trial",
-    billing: "Unpaid",
-    plan: "Starter",
-    joined: "27th April 2026",
-    time: "at 05:16 PM",
+    name: "Bulk export async worker",
+    id: "PERF-047",
+    status: "Blocked",
+    billing: "Risk",
+    plan: "Backend",
+    joined: "19th June 2026",
+    time: "at 02:12 PM",
     billingTone: "unpaid"
+  },
+  {
+    name: "PostHog release anomaly review",
+    id: "OBS-066",
+    status: "Queued",
+    billing: "Next",
+    plan: "Observability",
+    joined: "18th June 2026",
+    time: "at 11:08 AM",
+    billingTone: "pending"
   }
 ];
 
-const xTicks = ["Mar 25", "Apr 1", "Apr 8", "Apr 15", "Apr 22", "Apr 29", "May 6", "May 13", "May 21", "May 28", "Jun 4", "Jun 11", "Jun 20"];
+const dashboardKpis = [
+  { title: "Runtime Flags", value: "38", description: "Rules across 30+ tenants", tone: "success" },
+  { title: "Deploy Train", value: "12", description: "Services released this week", tone: "neutral" },
+  { title: "Load Path", value: "4", description: "Ingress and LB checks watched", tone: "warning" },
+  { title: "Runbooks", value: "9", description: "Recovery paths kept current", tone: "success" }
+];
 
-const newCustomerValues = [72, 22, 28, 18, 20, 42, 18, 24, 19, 21, 34, 68, 28, 25, 23, 22, 76, 26, 34, 20, 22, 24, 22, 21, 33, 24, 66, 22, 28, 31, 33, 31, 26, 24, 48, 20, 22, 24, 44, 27, 35, 26, 76];
-const activeAccountValues = [18, 17, 16, 17, 16, 18, 17, 16, 17, 18, 17, 16, 18, 17, 18, 17, 16, 17, 18, 17, 18, 16, 17, 18, 17, 16, 17, 18, 17, 16, 17, 16, 17, 18, 17, 17, 16, 18, 17, 18, 17, 16, 17];
-const returningUserValues = [14, 13, 12, 13, 12, 12, 13, 14, 13, 12, 13, 12, 12, 13, 12, 13, 12, 13, 12, 12, 13, 14, 13, 12, 13, 12, 13, 12, 12, 13, 12, 13, 12, 13, 12, 12, 13, 12, 13, 12, 13, 12, 13];
+const releaseChecklist = [
+  { title: "Verify feature flag default fallback", tag: "Rollout", done: true },
+  { title: "Check ingress and load balancer route parity", tag: "Infra", done: true },
+  { title: "Review PostHog adoption and anomaly window", tag: "Observability", done: false },
+  { title: "Confirm rollback owner and cutover criteria", tag: "Release", done: false }
+];
+
+const componentInventory = [
+  "Sidebar",
+  "Topbar",
+  "Metric cards",
+  "Tabs",
+  "Selects",
+  "Buttons",
+  "Badges",
+  "Tables",
+  "Charts",
+  "Timeline",
+  "Command palette",
+  "Shadow island"
+];
+
+const distributionSegments = [
+  { label: "Feature flags", value: 38, color: "#171717" },
+  { label: "API contracts", value: 24, color: "#525252" },
+  { label: "Infra checks", value: 18, color: "#a3a3a3" },
+  { label: "Runbooks", value: 20, color: "#d4d4d4" }
+];
+
+const xTicks = ["May 9", "May 16", "May 23", "May 30", "Jun 6", "Jun 13", "Jun 20"];
+
+const deliveryVelocityValues = [64, 68, 72, 69, 78, 83, 88, 84, 91, 89, 94, 92, 96, 93];
+const latencyHealthValues = [72, 74, 71, 76, 79, 77, 82, 84, 81, 86, 88, 90, 91, 92];
+const incidentSignalValues = [18, 16, 14, 22, 13, 12, 18, 11, 9, 15, 8, 7, 10, 6];
+const deployVolumeValues = [28, 34, 41, 36, 48, 52, 45, 57, 62, 55, 67, 73, 69, 78];
 
 const flatRouteResults = navGroups.flatMap((group) =>
   group.items.flatMap((item) => {
@@ -1038,18 +1085,28 @@ function MetricCard({ item }: { item: StudioMetric }) {
   );
 }
 
-function CustomerActivityChart() {
+function DeliverySignalChart() {
+  const chartWidth = 1040;
+  const chartHeight = 176;
+  const xStep = chartWidth / Math.max(deployVolumeValues.length - 1, 1);
+
   return (
-    <svg className="activity-chart" viewBox="0 0 1080 300" role="img" aria-label="Customer activity chart">
+    <svg className="activity-chart" viewBox="0 0 1080 300" role="img" aria-label="Release health and traffic quality chart">
       <g className="chart-grid">
         {[36, 84, 132, 180, 228, 276].map((y) => (
           <line key={y} x1="0" x2="1080" y1={y} y2={y} />
         ))}
       </g>
       <g transform="translate(0 58)">
-        <polyline className="chart-line chart-new" points={linePoints(newCustomerValues)} />
-        <polyline className="chart-line chart-active" points={linePoints(activeAccountValues)} />
-        <polyline className="chart-line chart-returning" points={linePoints(returningUserValues)} />
+        {deployVolumeValues.map((value, index) => {
+          const barHeight = Math.max(8, Math.round((value / 100) * chartHeight));
+          const x = Math.max(0, Math.round(index * xStep) - 5);
+          const y = chartHeight - barHeight;
+          return <rect key={`${value}-${index}`} className="chart-bar" x={x} y={y} width="10" height={barHeight} rx="3" />;
+        })}
+        <polyline className="chart-line chart-new" points={linePoints(deliveryVelocityValues, 100)} />
+        <polyline className="chart-line chart-active" points={linePoints(latencyHealthValues, 100)} />
+        <polyline className="chart-line chart-returning" points={linePoints(incidentSignalValues, 100)} />
       </g>
       <g className="chart-axis">
         {xTicks.map((tick, index) => (
@@ -1221,6 +1278,111 @@ function PanelsCard({ route }: { route: StudioRoute }) {
   );
 }
 
+function DashboardKpiStrip() {
+  return (
+    <section className="ops-kpi-strip" aria-label="Studio component metrics">
+      {dashboardKpis.map((item) => (
+        <article className={`ops-kpi-card tone-${item.tone}`} key={item.title}>
+          <span>{item.title}</span>
+          <strong>{item.value}</strong>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </section>
+  );
+}
+
+function ComponentInventoryCard() {
+  return (
+    <section className="card route-panel component-inventory" data-slot="card">
+      <header className="card-header">
+        <div>
+          <h2>Component Inventory</h2>
+          <p>Static frontend primitives currently represented inside this Studio shell.</p>
+        </div>
+      </header>
+      <div className="component-token-grid">
+        {componentInventory.map((item) => (
+          <span className="component-token" key={item}>{item}</span>
+        ))}
+      </div>
+      <div className="component-samples" aria-label="Component samples">
+        <button type="button" className="outline-button">Outline</button>
+        <button type="button" className="primary-icon" aria-label="Send sample"><LuSend aria-hidden="true" /></button>
+        <span className="soft-pill">Badge</span>
+        <label className="check-row">
+          <input type="checkbox" defaultChecked />
+          <span>Checkbox</span>
+        </label>
+      </div>
+    </section>
+  );
+}
+
+function DistributionCard() {
+  const gradient = distributionSegments.reduce<{ cursor: number; stops: string[] }>(
+    (accumulator, segment) => {
+      const start = accumulator.cursor;
+      const end = start + segment.value * 3.6;
+      return {
+        cursor: end,
+        stops: [...accumulator.stops, `${segment.color} ${start}deg ${end}deg`]
+      };
+    },
+    { cursor: 0, stops: [] }
+  ).stops.join(", ");
+  const donutStyle = { background: `conic-gradient(${gradient})` } satisfies CSSProperties;
+
+  return (
+    <section className="card route-panel distribution-card" data-slot="card">
+      <header className="card-header">
+        <div>
+          <h2>Control Surface</h2>
+          <p>Coverage by operational control type.</p>
+        </div>
+      </header>
+      <div className="distribution-layout">
+        <div className="donut-chart" style={donutStyle} aria-label="Control surface distribution">
+          <span>100%</span>
+        </div>
+        <div className="distribution-list">
+          {distributionSegments.map((segment) => (
+            <div key={segment.label}>
+              <span style={{ background: segment.color }} aria-hidden="true" />
+              <p>{segment.label}</p>
+              <strong>{segment.value}%</strong>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ReleaseChecklistCard() {
+  return (
+    <section className="card route-panel checklist-panel" data-slot="card">
+      <header className="card-header">
+        <div>
+          <h2>Release Checklist</h2>
+          <p>Frontend-only stateful checklist for deployment readiness.</p>
+        </div>
+      </header>
+      <div className="task-list">
+        {releaseChecklist.map((task) => (
+          <label key={task.title} className="check-row checklist-row">
+            <input type="checkbox" defaultChecked={task.done} />
+            <span>
+              <strong>{task.title}</strong>
+              <small>{task.tag}</small>
+            </span>
+          </label>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function DashboardRoutePage({ route }: { route: StudioRoute }) {
   return (
     <section className="route-page">
@@ -1252,7 +1414,7 @@ function DashboardRoutePage({ route }: { route: StudioRoute }) {
               <button type="button" className="outline-button">View report</button>
             </div>
           </header>
-          <CustomerActivityChart />
+          <DeliverySignalChart />
         </section>
         <TimelineCard route={route} />
         <PanelsCard route={route} />
@@ -1296,7 +1458,7 @@ function FinanceLikePage({ route }: { route: StudioRoute }) {
         <section className="empty-route card">
           <LuCreditCard aria-hidden="true" />
           <strong>{tab === "accounts" ? "Accounts view" : "Transactions view"}</strong>
-          <p>This tab is mounted and switchable, matching the tabbed behavior from the source admin.</p>
+          <p>This tab is mounted and switchable, keeping the Studio shell state intact.</p>
         </section>
       )}
     </section>
@@ -1333,7 +1495,7 @@ function AnalyticsPage({ route }: { route: StudioRoute }) {
                 </div>
                 <button type="button" className="outline-button">View report</button>
               </header>
-              <CustomerActivityChart />
+              <DeliverySignalChart />
             </section>
             <TimelineCard route={route} />
             <PanelsCard route={route} />
@@ -1365,7 +1527,7 @@ function ProductivityPage({ route }: { route: StudioRoute }) {
         <section className="card route-panel">
           <h2>Today</h2>
           <div className="task-list">
-            {["Review dashboard shell", "Compare source route behavior", "Ship PR update"].map((task) => (
+            {["Review dashboard shell", "Validate route behavior", "Ship PR update"].map((task) => (
               <label key={task} className="check-row">
                 <input type="checkbox" />
                 <span>{task}</span>
@@ -1845,7 +2007,7 @@ function UsersRolesPage({ route }: { route: StudioRoute }) {
         </button>
       </RouteHeading>
       <RouteMetricGrid metrics={route.metrics} />
-      <section className="card customers-card">
+      <section className="card records-card">
         <div className="table-shell">
           <table>
             <thead>
@@ -1905,25 +2067,27 @@ function AuthPage({ route }: { route: StudioRoute }) {
 }
 
 function DefaultDashboard({
-  customerSearch,
+  route,
+  workstreamSearch,
   statusFilter,
   sortMode,
-  onCustomerSearch,
+  onWorkstreamSearch,
   onStatusFilter,
   onSortMode
 }: {
-  customerSearch: string;
+  route: StudioRoute;
+  workstreamSearch: string;
   statusFilter: string;
   sortMode: string;
-  onCustomerSearch: (value: string) => void;
+  onWorkstreamSearch: (value: string) => void;
   onStatusFilter: (value: string) => void;
   onSortMode: (value: string) => void;
 }) {
-  const filteredCustomers = useMemo(() => {
-    const query = customerSearch.trim().toLowerCase();
-    const rows = customers.filter((customer) => {
-      const matchesQuery = !query || [customer.name, customer.id, customer.status, customer.billing, customer.plan].some((value) => value.toLowerCase().includes(query));
-      const matchesStatus = statusFilter === "all" || customer.status.toLowerCase() === statusFilter;
+  const filteredWorkstreams = useMemo(() => {
+    const query = workstreamSearch.trim().toLowerCase();
+    const rows = workstreamRows.filter((workstream) => {
+      const matchesQuery = !query || [workstream.name, workstream.id, workstream.status, workstream.billing, workstream.plan].some((value) => value.toLowerCase().includes(query));
+      const matchesStatus = statusFilter === "all" || workstream.status.toLowerCase() === statusFilter;
       return matchesQuery && matchesStatus;
     });
 
@@ -1932,26 +2096,40 @@ function DefaultDashboard({
       if (sortMode === "status") return a.status.localeCompare(b.status);
       return b.id.localeCompare(a.id);
     });
-  }, [customerSearch, sortMode, statusFilter]);
+  }, [sortMode, statusFilter, workstreamSearch]);
 
   return (
     <section className="route-page">
+      <RouteHeading route={route}>
+        <div className="route-actions">
+          <button type="button" className="outline-button">
+            <LuRotateCw aria-hidden="true" />
+            Sync
+          </button>
+          <button type="button" className="outline-button">
+            <LuDownload aria-hidden="true" />
+            Export
+          </button>
+        </div>
+      </RouteHeading>
       <RouteMetricGrid metrics={defaultMetrics} />
+      <DashboardKpiStrip />
 
-      <section className="card activity-card" data-slot="card">
+      <section className="card activity-card" id="release-signal" data-slot="card">
         <header className="card-header activity-header">
           <div>
-            <h2>Customer Activity</h2>
-            <p>Customer activity for the last 3 months</p>
+            <h2>Release Signal</h2>
+            <p>Delivery velocity, traffic quality, incident signal, and deploy volume over the current rollout window.</p>
           </div>
           <div className="card-actions">
             <select className="native-select" defaultValue="quarter" aria-label="Period">
-              <option value="quarter">3 months</option>
+              <option value="quarter">6 weeks</option>
+              <option value="sprint">Current sprint</option>
             </select>
             <select className="native-select" defaultValue="all" aria-label="Segment">
-              <option value="all">All segments</option>
-              <option value="paid">Paid</option>
-              <option value="organic">Organic</option>
+              <option value="all">All services</option>
+              <option value="edge">Edge/API</option>
+              <option value="workers">Workers</option>
             </select>
             <a href={resumePath} className="outline-button" target="_blank" rel="noreferrer">
               View report
@@ -1959,18 +2137,25 @@ function DefaultDashboard({
           </div>
         </header>
         <div className="chart-legend" aria-hidden="true">
-          <span><i className="legend-active" />Active Accounts</span>
-          <span><i className="legend-new" />New Customers</span>
-          <span><i className="legend-returning" />Returning Users</span>
+          <span><i className="legend-bars" />Deploy volume</span>
+          <span><i className="legend-new" />Delivery velocity</span>
+          <span><i className="legend-active" />Latency health</span>
+          <span><i className="legend-returning" />Incident signal</span>
         </div>
-        <CustomerActivityChart />
+        <DeliverySignalChart />
       </section>
 
-      <section className="card customers-card" data-slot="card">
+      <div className="ops-detail-grid">
+        <ComponentInventoryCard />
+        <DistributionCard />
+        <ReleaseChecklistCard />
+      </div>
+
+      <section className="card records-card workstreams-card" id="system-workstreams" data-slot="card">
         <header className="card-header table-header">
           <div>
-            <h2>18,426 Customers</h2>
-            <p>Recent customer records with plan, billing, status, and signup activity.</p>
+            <h2>System Workstreams</h2>
+            <p>Static operational rows showing table, search, select, checkbox, badge, and export states.</p>
           </div>
           <a href={resumePath} className="outline-button" target="_blank" rel="noreferrer">
             <LuDownload aria-hidden="true" />
@@ -1979,20 +2164,21 @@ function DefaultDashboard({
         </header>
 
         <div className="table-toolbar">
-          <label className="customer-search">
+          <label className="workstream-search">
             <LuSearch aria-hidden="true" />
-            <span className="sr-only">Search customers</span>
-            <input type="search" placeholder="Search customers..." value={customerSearch} onChange={(event) => onCustomerSearch(event.target.value)} />
+            <span className="sr-only">Search workstreams</span>
+            <input type="search" placeholder="Search workstreams..." value={workstreamSearch} onChange={(event) => onWorkstreamSearch(event.target.value)} />
           </label>
           <select className="native-select" value={statusFilter} onChange={(event) => onStatusFilter(event.target.value)} aria-label="Status filter">
             <option value="all">Status</option>
-            <option value="subscribed">Subscribed</option>
-            <option value="inactive">Inactive</option>
-            <option value="trial">Trial</option>
+            <option value="healthy">Healthy</option>
+            <option value="watching">Watching</option>
+            <option value="blocked">Blocked</option>
+            <option value="queued">Queued</option>
           </select>
           <span className="toolbar-spacer" />
-          <select className="native-select" value={sortMode} onChange={(event) => onSortMode(event.target.value)} aria-label="Sort customers">
-            <option value="joined">Joined date</option>
+          <select className="native-select" value={sortMode} onChange={(event) => onSortMode(event.target.value)} aria-label="Sort workstreams">
+            <option value="joined">Last update</option>
             <option value="name">Name</option>
             <option value="status">Status</option>
           </select>
@@ -2002,33 +2188,33 @@ function DefaultDashboard({
           <table>
             <thead>
               <tr>
-                <th><input type="checkbox" aria-label="Select all customers" /></th>
-                <th>Customer</th>
+                <th><input type="checkbox" aria-label="Select all workstreams" /></th>
+                <th>Workstream</th>
                 <th>Status</th>
-                <th>Billing</th>
-                <th>Plan</th>
-                <th>Joined</th>
+                <th>Risk</th>
+                <th>Area</th>
+                <th>Updated</th>
               </tr>
             </thead>
             <tbody>
-              {filteredCustomers.map((customer) => (
-                <tr key={customer.id}>
-                  <td><input type="checkbox" aria-label={`Select ${customer.name}`} /></td>
-                  <td>
-                    <div className="customer-cell">
-                      <span className="customer-avatar"><LuUsers aria-hidden="true" /></span>
-                      <span><strong>{customer.name}</strong><small>{customer.id}</small></span>
+              {filteredWorkstreams.map((workstream) => (
+                <tr key={workstream.id}>
+                  <td><input type="checkbox" aria-label={`Select ${workstream.name}`} /></td>
+                  <td data-label="Workstream">
+                    <div className="workstream-cell">
+                      <span className="workstream-avatar"><LuServer aria-hidden="true" /></span>
+                      <span><strong>{workstream.name}</strong><small>{workstream.id}</small></span>
                     </div>
                   </td>
-                  <td><span className="soft-pill">{customer.status}</span></td>
-                  <td>
-                    <span className={`billing-pill billing-${customer.billingTone}`}>
-                      {customer.billingTone === "paid" && <LuCheck aria-hidden="true" />}
-                      {customer.billing}
+                  <td data-label="Status"><span className="soft-pill">{workstream.status}</span></td>
+                  <td data-label="Risk">
+                    <span className={`billing-pill billing-${workstream.billingTone}`}>
+                      {workstream.billingTone === "paid" && <LuCheck aria-hidden="true" />}
+                      {workstream.billing}
                     </span>
                   </td>
-                  <td>{customer.plan}</td>
-                  <td><span className="joined-cell"><strong>{customer.joined}</strong><small>{customer.time}</small></span></td>
+                  <td data-label="Area">{workstream.plan}</td>
+                  <td data-label="Updated"><span className="joined-cell"><strong>{workstream.joined}</strong><small>{workstream.time}</small></span></td>
                 </tr>
               ))}
             </tbody>
@@ -2041,28 +2227,29 @@ function DefaultDashboard({
 
 function RouteContent({
   route,
-  customerSearch,
+  workstreamSearch,
   statusFilter,
   sortMode,
-  onCustomerSearch,
+  onWorkstreamSearch,
   onStatusFilter,
   onSortMode
 }: {
   route: StudioRoute;
-  customerSearch: string;
+  workstreamSearch: string;
   statusFilter: string;
   sortMode: string;
-  onCustomerSearch: (value: string) => void;
+  onWorkstreamSearch: (value: string) => void;
   onStatusFilter: (value: string) => void;
   onSortMode: (value: string) => void;
 }) {
   if (route.kind === "default") {
     return (
       <DefaultDashboard
-        customerSearch={customerSearch}
+        route={route}
+        workstreamSearch={workstreamSearch}
         statusFilter={statusFilter}
         sortMode={sortMode}
-        onCustomerSearch={onCustomerSearch}
+        onWorkstreamSearch={onWorkstreamSearch}
         onStatusFilter={onStatusFilter}
         onSortMode={onSortMode}
       />
@@ -2156,7 +2343,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [accountOpen, setAccountOpen] = useState(false);
-  const [customerSearch, setCustomerSearch] = useState("");
+  const [workstreamSearch, setWorkstreamSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [sortMode, setSortMode] = useState("joined");
   const route = routeDefinitions[activeRoute];
@@ -2298,10 +2485,10 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
             </button>
             <a
               className="topbar-icon"
-              href="https://github.com/arhamkhnz/next-shadcn-admin-dashboard"
+              href="https://github.com/nguyenlephong"
               target="_blank"
               rel="noreferrer"
-              aria-label="Open GitHub repository"
+              aria-label="Open GitHub profile"
             >
               <LuGithub aria-hidden="true" />
             </a>
@@ -2319,10 +2506,10 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
         <div className="dashboard-content" id="dashboard">
           <RouteContent
             route={route}
-            customerSearch={customerSearch}
+            workstreamSearch={workstreamSearch}
             statusFilter={statusFilter}
             sortMode={sortMode}
-            onCustomerSearch={setCustomerSearch}
+            onWorkstreamSearch={setWorkstreamSearch}
             onStatusFilter={setStatusFilter}
             onSortMode={setSortMode}
           />
