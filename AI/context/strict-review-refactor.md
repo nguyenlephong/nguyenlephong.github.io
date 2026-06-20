@@ -71,3 +71,17 @@ refactor (security → CI → dedup → engagement → god-file → perf).
 4. The unused-but-real `profileInfo.{technical_skill,videos,achievements,education,references}`
    remain in `src/content/*` — authored CV data with no current consumer; surface on a CV
    page or delete, your call.
+
+## Content + UX round (2026-06-20)
+- **Leadership & Management blog series** (category `culture`, series `leadership-and-management`,
+  5 parts, EN+VI, from /Users/lap16773/Downloads/leadership-vs-management-insights.md):
+  1 over-managed-and-under-led · 2 vision-without-craft · 3 signals-or-messages ·
+  4 sitting-with-the-problem · 5 pull-dont-push. Each: story-led, calm voice (calm-content-writer
+  skill), 5 FAQs, woven everyday example (road trip / dinner-party menu / doctor / leaky pipe /
+  teenager's room). VI rewritten to flow natively (not literal) with polished titles — per user feedback.
+- **Global float button**: BlogReaderTools moved from article pages into `[locale]/layout.tsx`
+  (new `ReaderTools` message namespace) → appears on every page.
+- Built per post (zod-validated), committed per post, pushed, deployed via `npm run deploy`
+  (gh-pages branch, app-version 1.1.11). Live verified: posts HTTP 200, VI titles live, float
+  button on non-article pages.
+- Thoughts->notes migration confirmed already complete (40/40); no action needed.
