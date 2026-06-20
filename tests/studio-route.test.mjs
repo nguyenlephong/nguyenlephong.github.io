@@ -6,6 +6,7 @@ import test from "node:test";
 test("studio route is wired into routing, seo, navigation, analytics, and inventory content", async () => {
   assert.ok(existsSync("src/app/[locale]/studio/page.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioWorkspace.tsx"));
+  assert.ok(existsSync("src/app/[locale]/studio/studio-admin-shell.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.shadow-styles.ts"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.data.ts"));
   assert.ok(existsSync("src/components/studio-kit/index.ts"));
@@ -22,6 +23,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     tracker,
     page,
     workspace,
+    adminShell,
     data,
     shadowCss,
     kitIndex,
@@ -39,6 +41,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/components/analytics/PageTracker.tsx", "utf8"),
     readFile("src/app/[locale]/studio/page.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8"),
+    readFile("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8"),
     readFile("src/app/[locale]/studio/studio.data.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio.shadow-styles.ts", "utf8"),
     readFile("src/components/studio-kit/index.ts", "utf8"),
@@ -73,21 +76,31 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(workspace, /^"use client"/);
   assert.match(workspace, /@\/components\/studio-kit/);
   assert.match(workspace, /ShadowIsland/);
+  assert.match(workspace, /StudioAdminShell/);
   assert.match(workspace, /studioShadowStyles/);
-  assert.match(workspace, /studio-sidebar/);
-  assert.match(workspace, /studio-topbar/);
-  assert.match(workspace, /metric-grid/);
-  assert.match(workspace, /Studio Admin/);
-  assert.match(workspace, /Back to CV/);
-  assert.match(workspace, /href=\{`\/\$\{locale\}\/cv`\}/);
-  assert.match(workspace, /handleShadowAnchorClick/);
-  assert.match(workspace, /href: "#dashboard"/);
-  assert.match(workspace, /href: "#customer-activity"/);
-  assert.match(workspace, /href: "#customers"/);
-  assert.match(workspace, /Customer Activity/);
-  assert.match(workspace, /18,426 Customers/);
-  assert.match(workspace, /next-shadcn-admin-dashboard/);
-  assert.doesNotMatch(workspace, /Downloads\/next-shadcn-admin-dashboard-main/);
+  assert.match(adminShell, /^"use client"/);
+  assert.match(adminShell, /StudioAdminShell/);
+  assert.match(adminShell, /studio-sidebar/);
+  assert.match(adminShell, /studio-topbar/);
+  assert.match(adminShell, /metric-grid/);
+  assert.match(adminShell, /Studio Admin/);
+  assert.match(adminShell, /Quick Create/);
+  assert.match(adminShell, /Back to CV/);
+  assert.match(adminShell, /function routeHref/);
+  assert.match(adminShell, /window\.history\.pushState/);
+  assert.match(adminShell, /CommandDialog/);
+  assert.match(adminShell, /is-sidebar-collapsed/);
+  assert.match(adminShell, /is-mobile-open/);
+  assert.match(adminShell, /is-dark/);
+  assert.match(adminShell, /"crm"/);
+  assert.match(adminShell, /"finance"/);
+  assert.match(adminShell, /"analytics"/);
+  assert.match(adminShell, /"email"/);
+  assert.match(adminShell, /"auth-login-v1"/);
+  assert.match(adminShell, /Customer Activity/);
+  assert.match(adminShell, /18,426 Customers/);
+  assert.match(adminShell, /next-shadcn-admin-dashboard/);
+  assert.doesNotMatch(adminShell, /Downloads\/next-shadcn-admin-dashboard-main/);
   assert.match(kitIndex, /export \* from "\.\/primitives"/);
   assert.match(kitIndex, /export \* from "\.\/dashboard"/);
   assert.match(kitIndex, /export \* from "\.\/shadow-island"/);
