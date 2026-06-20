@@ -91,7 +91,7 @@ export default async function StudioPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionLd) }}
       />
       <PageTracker page="studio" eventName="studio_view" section="notes_admin" />
-      <StudioWorkspace />
+      <StudioWorkspace locale={locale} />
     </main>
   );
 }
