@@ -13,7 +13,6 @@ test("reader background preferences are available from the floating tools", () =
   const tools = read("src/components/blog/BlogReaderTools.tsx");
   const layout = read("src/app/[locale]/layout.tsx");
   const globals = read("src/app/globals.css");
-  const blogCss = read("src/app/[locale]/blog/blog.css");
   const notesCss = read("src/app/[locale]/notes/notes.css");
 
   assert.match(script, /READING_BACKGROUND_STORAGE_KEY = 'reading_background_preference'/);
@@ -36,7 +35,7 @@ test("reader background preferences are available from the floating tools", () =
   assert.match(tools, /expanded &&/);
   assert.match(layout, /background: rt\('background'\)/);
   assert.match(layout, /<BlogReaderTools labels=\{readerLabels\} \/>/);
-  assert.match(blogCss, /\.blog-reader-tools__controls \{[^}]*flex-direction: column/s);
+  assert.match(globals, /\.blog-reader-tools__controls \{[^}]*flex-direction: column/s);
   assert.match(notesCss, /html\[data-reading-background\] \.notes-reading/);
 });
 
