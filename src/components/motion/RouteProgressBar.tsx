@@ -1,13 +1,34 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from 'react'
 import { usePathname } from 'next/navigation'
 
 type ProgressPhase = 'idle' | 'loading' | 'finishing'
 
-const FINISH_DELAY_MS = 120
-const RESET_DELAY_MS = 520
+const FINISH_DELAY_MS = 90
+const RESET_DELAY_MS = 660
+const PROGRESS_RESET_DELAY_MS = RESET_DELAY_MS + 220
 const FAILSAFE_DELAY_MS = 12000
+const START_PROGRESS = 0.08
+const ROUTE_PROGRESS_STEPS = [
+  { delay: 80, value: 0.36 },
+  { delay: 420, value: 0.62 },
+  { delay: 1100, value: 0.78 },
+  { delay: 2200, value: 0.88 },
+]
+
+function clearTimer(timer: { current: number | null }) {
+  if (timer.current) {
+    window.clearTimeout(timer.current)
+    timer.current = null
+  }
+}
 
 function isPlainLeftClick(event: MouseEvent): boolean {
   return (
@@ -47,41 +68,60 @@ function findNavigableLink(target: EventTarget | null): HTMLAnchorElement | null
 export default function RouteProgressBar() {
   const pathname = usePathname()
   const [phase, setPhase] = useState<ProgressPhase>('idle')
+  const [progress, setProgress] = useState(0)
   const isFirstPath = useRef(true)
   const finishTimer = useRef<number | null>(null)
   const resetTimer = useRef<number | null>(null)
+  const progressResetTimer = useRef<number | null>(null)
   const failsafeTimer = useRef<number | null>(null)
+  const advanceTimers = useRef<number[]>([])
+
+  const clearAdvanceTimers = useCallback(() => {
+    for (const timer of advanceTimers.current) {
+      window.clearTimeout(timer)
+    }
+    advanceTimers.current = []
+  }, [])
+
+  const finish = useCallback(() => {
+    clearTimer(failsafeTimer)
+    clearTimer(finishTimer)
+    clearTimer(resetTimer)
+    clearTimer(progressResetTimer)
+    clearAdvanceTimers()
+
+    finishTimer.current = window.setTimeout(() => {
+      setPhase('finishing')
+      setProgress(1)
+    }, FINISH_DELAY_MS)
+
+    resetTimer.current = window.setTimeout(() => {
+      setPhase('idle')
+    }, RESET_DELAY_MS)
+
+    progressResetTimer.current = window.setTimeout(() => {
+      setProgress(0)
+    }, PROGRESS_RESET_DELAY_MS)
+  }, [clearAdvanceTimers])
+
+  const start = useCallback(() => {
+    clearTimer(finishTimer)
+    clearTimer(resetTimer)
+    clearTimer(progressResetTimer)
+    clearTimer(failsafeTimer)
+    clearAdvanceTimers()
+    setPhase('loading')
+    setProgress(START_PROGRESS)
+
+    advanceTimers.current = ROUTE_PROGRESS_STEPS.map(({ delay, value }) =>
+      window.setTimeout(() => {
+        setProgress((current) => Math.max(current, value))
+      }, delay),
+    )
+    failsafeTimer.current = window.setTimeout(finish, FAILSAFE_DELAY_MS)
+  }, [clearAdvanceTimers, finish])
 
   useEffect(() => {
-    const clearTimer = (timer: typeof finishTimer) => {
-      if (timer.current) {
-        window.clearTimeout(timer.current)
-        timer.current = null
-      }
-    }
-
-    const finish = () => {
-      clearTimer(failsafeTimer)
-      clearTimer(finishTimer)
-      clearTimer(resetTimer)
-
-      finishTimer.current = window.setTimeout(() => {
-        setPhase('finishing')
-      }, FINISH_DELAY_MS)
-
-      resetTimer.current = window.setTimeout(() => {
-        setPhase('idle')
-      }, RESET_DELAY_MS)
-    }
-
-    const start = () => {
-      clearTimer(finishTimer)
-      clearTimer(resetTimer)
-      clearTimer(failsafeTimer)
-      setPhase('loading')
-      failsafeTimer.current = window.setTimeout(finish, FAILSAFE_DELAY_MS)
-    }
-
     const handleClick = (event: MouseEvent) => {
       if (event.defaultPrevented || !isPlainLeftClick(event)) return
       if (findNavigableLink(event.target)) start()
@@ -97,9 +137,11 @@ export default function RouteProgressBar() {
       window.removeEventListener('pageshow', finish)
       clearTimer(finishTimer)
       clearTimer(resetTimer)
+      clearTimer(progressResetTimer)
       clearTimer(failsafeTimer)
+      clearAdvanceTimers()
     }
-  }, [])
+  }, [clearAdvanceTimers, finish, start])
 
   useEffect(() => {
     if (isFirstPath.current) {
@@ -107,21 +149,19 @@ export default function RouteProgressBar() {
       return
     }
 
-    const finishTimerId = window.setTimeout(() => {
-      setPhase('finishing')
-    }, FINISH_DELAY_MS)
-    const resetTimerId = window.setTimeout(() => {
-      setPhase('idle')
-    }, RESET_DELAY_MS)
+    finish()
+  }, [finish, pathname])
 
-    return () => {
-      window.clearTimeout(finishTimerId)
-      window.clearTimeout(resetTimerId)
-    }
-  }, [pathname])
+  const progressStyle = {
+    '--route-progress': progress.toFixed(3),
+  } as CSSProperties
 
   return (
-    <div className={`route-progress route-progress--${phase}`} aria-hidden="true">
+    <div
+      className={`route-progress route-progress--${phase}`}
+      style={progressStyle}
+      aria-hidden="true"
+    >
       <span className="route-progress__bar" />
     </div>
   )

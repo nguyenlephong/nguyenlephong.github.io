@@ -276,32 +276,35 @@ a:focus-visible, button:focus-visible {
   position: fixed;
   inset: 0 0 auto;
   z-index: 2147483647;
-  height: 3px;
+  height: 2px;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(-5px);
+  transform: translateY(-3px);
+  contain: paint;
   transition:
-    opacity 180ms ease,
-    transform 220ms var(--ease);
+    opacity 220ms ease,
+    transform 260ms var(--ease);
 }
 .route-progress::before {
   content: "";
   position: absolute;
-  inset: -10px 0 auto;
-  height: 22px;
+  inset: -8px 0 auto;
+  height: 18px;
   background:
-    radial-gradient(70% 100% at 18% 0%, color-mix(in oklab, #ff5ac8 30%, transparent), transparent 62%),
-    radial-gradient(70% 100% at 52% 0%, color-mix(in oklab, #f9c74f 20%, transparent), transparent 64%),
-    radial-gradient(70% 100% at 86% 0%, color-mix(in oklab, #37d5ff 28%, transparent), transparent 62%);
-  filter: blur(10px) saturate(1.24);
-  opacity: 0.78;
+    radial-gradient(60% 100% at 18% 0%, color-mix(in oklab, #ff5ac8 18%, transparent), transparent 64%),
+    radial-gradient(62% 100% at 54% 0%, color-mix(in oklab, #f9c74f 12%, transparent), transparent 66%),
+    radial-gradient(60% 100% at 86% 0%, color-mix(in oklab, #37d5ff 18%, transparent), transparent 64%);
+  filter: blur(9px) saturate(1.12);
+  opacity: 0;
+  transition: opacity 260ms ease;
 }
 .route-progress__bar {
   position: relative;
   display: block;
-  width: 46vw;
+  width: 100%;
   height: 100%;
   border-radius: 0 999px 999px 0;
+  overflow: hidden;
   background:
     linear-gradient(
       90deg,
@@ -311,52 +314,49 @@ a:focus-visible, button:focus-visible {
       #9b7cff 78%,
       #ff5ac8
     );
-  background-size: 220% 100%;
+  background-size: 100% 100%;
   box-shadow:
-    0 0 14px color-mix(in oklab, #37d5ff 42%, transparent),
-    0 0 28px color-mix(in oklab, #ff5ac8 30%, transparent),
-    0 0 42px color-mix(in oklab, #9b7cff 24%, transparent);
-  transform: translateX(-112%) scaleX(0.28);
+    0 0 10px color-mix(in oklab, #37d5ff 30%, transparent),
+    0 0 18px color-mix(in oklab, #ff5ac8 20%, transparent);
+  transform: translate3d(0, 0, 0) scaleX(var(--route-progress, 0));
   transform-origin: left center;
+  transition:
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 220ms ease;
+  will-change: transform;
+}
+.route-progress__bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.44),
+      transparent
+    );
+  opacity: 0;
+  transition: opacity 220ms ease;
 }
 .route-progress--loading,
 .route-progress--finishing {
   opacity: 1;
   transform: translateY(0);
 }
-.route-progress--loading .route-progress__bar {
-  animation:
-    route-progress-run 1.18s cubic-bezier(0.55, 0, 0.16, 1) infinite,
-    route-progress-spectrum 1.4s linear infinite;
+.route-progress--loading::before,
+.route-progress--finishing::before {
+  opacity: 0.62;
 }
-.route-progress--finishing {
-  transition:
-    opacity 180ms ease 320ms,
-    transform 220ms var(--ease);
+.route-progress--loading .route-progress__bar {
+  opacity: 0.96;
+}
+.route-progress--loading .route-progress__bar::after {
+  opacity: 0.18;
 }
 .route-progress--finishing .route-progress__bar {
-  width: 100%;
-  animation: route-progress-spectrum 0.8s linear infinite;
-  transform: translateX(0) scaleX(1);
-  transition: transform 360ms var(--ease), width 360ms var(--ease);
-}
-
-@keyframes route-progress-run {
-  0% {
-    transform: translateX(-112%) scaleX(0.26);
-  }
-  48% {
-    transform: translateX(58vw) scaleX(0.82);
-  }
-  100% {
-    transform: translateX(122vw) scaleX(0.36);
-  }
-}
-
-@keyframes route-progress-spectrum {
-  to {
-    background-position: -220% 0;
-  }
+  transform: translate3d(0, 0, 0) scaleX(1);
+  transition-duration: 520ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -368,8 +368,7 @@ a:focus-visible, button:focus-visible {
   }
   .route-progress--loading .route-progress__bar,
   .route-progress--finishing .route-progress__bar {
-    width: 100%;
-    transform: none;
+    transform: translate3d(0, 0, 0) scaleX(1);
   }
   .accent {
     color: var(--accent);
