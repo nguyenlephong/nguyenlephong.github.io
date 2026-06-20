@@ -1,11 +1,10 @@
 import { Metadata } from 'next'
 import { FaHandPointRight } from 'react-icons/fa'
 import { GoDotFill } from 'react-icons/go'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import { profileInfo } from '@/app/app.const'
 import { PAGE_SEO, absoluteUrl } from '@/app/seo.config'
 import PageTracker from '@/components/analytics/PageTracker'
 
@@ -52,6 +51,8 @@ export default async function AboutPage({ params }: Props) {
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+  const t = await getTranslations('About')
+  const sections = t.raw('sections') as { title: string; items: string[] }[]
   return (
     <main className={'about-page'}>
       <script
@@ -61,18 +62,18 @@ export default async function AboutPage({ params }: Props) {
       <PageTracker page="about" eventName="about_view" />
       <section className={'section-container'}>
         <h1 style={{ textAlign: 'center', fontSize: 32, padding: 24 }}>
-          Nguyen Le Phong — Software Engineer
+          {t('heading')}
         </h1>
 
-        {profileInfo.about.map((item) => {
+        {sections.map((item, idx) => {
           return (
-            <div key={`sm_${item.id}`} id={`sm_${item.id}`} className={'section-wrapper'}>
+            <div key={`sm_${idx}`} id={`sm_${idx}`} className={'section-wrapper'}>
               <h2 className={'box-title'}>
-                <FaHandPointRight size={24} /> {item.categories}
+                <FaHandPointRight size={24} /> {item.title}
               </h2>
 
               <ul className={'list-none'}>
-                {item.descriptions.map((des, ind) => {
+                {item.items.map((des, ind) => {
                   return (
                     <li key={`des_${ind}`}>
                       <span className={'align-centered'}>

@@ -1406,6 +1406,8 @@
   pointer-events: auto;
 }
 .blog-reader-tools__trigger {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1414,6 +1416,7 @@
   padding: 0;
   border: 1px solid color-mix(in oklab, var(--border) 82%, transparent);
   border-radius: 999px;
+  overflow: visible;
   background: color-mix(in oklab, var(--bg) 88%, transparent);
   color: var(--fg-muted);
   box-shadow: 0 14px 34px -24px rgba(0, 0, 0, 0.38);
@@ -1426,12 +1429,84 @@
     color 0.16s ease,
     transform 0.16s ease;
 }
+.blog-reader-tools__trigger::before,
+.blog-reader-tools__trigger::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.blog-reader-tools__trigger::before {
+  inset: -0.68rem;
+  z-index: -2;
+  background:
+    radial-gradient(
+      circle at 24% 18%,
+      color-mix(in oklab, #ff5ac8 56%, transparent) 0 0.34rem,
+      transparent 0.86rem
+    ),
+    radial-gradient(
+      circle at 76% 24%,
+      color-mix(in oklab, #f9c74f 48%, transparent) 0 0.28rem,
+      transparent 0.78rem
+    ),
+    radial-gradient(
+      circle at 84% 78%,
+      color-mix(in oklab, #37d5ff 55%, transparent) 0 0.32rem,
+      transparent 0.86rem
+    ),
+    radial-gradient(
+      circle at 20% 82%,
+      color-mix(in oklab, #9b7cff 52%, transparent) 0 0.3rem,
+      transparent 0.82rem
+    );
+  filter: blur(10px) saturate(1.35);
+  opacity: 0.42;
+  transform: scale(0.92);
+  animation: reader-tool-aurora-pulse 4.8s ease-in-out infinite;
+}
+.blog-reader-tools__trigger::after {
+  inset: -0.18rem;
+  z-index: -1;
+  padding: 1px;
+  background:
+    conic-gradient(
+      from var(--apple-rim-angle, 120deg),
+      #ff5ac8,
+      #f9c74f 22%,
+      #37d5ff 46%,
+      #9b7cff 68%,
+      #ff5ac8 100%
+    );
+  filter: saturate(1.32);
+  opacity: 0.48;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: reader-tool-aurora-rim 5.4s linear infinite;
+}
+.blog-reader-tools__trigger svg {
+  position: relative;
+  z-index: 1;
+}
 .blog-reader-tools__trigger:hover,
 .blog-reader-tools__trigger:focus-visible,
 .blog-reader-tools--expanded .blog-reader-tools__trigger {
   border-color: color-mix(in oklab, var(--blog-accent) 44%, var(--border));
   background: color-mix(in oklab, var(--blog-accent-soft) 64%, var(--bg));
   color: var(--blog-accent);
+}
+.blog-reader-tools__trigger:hover::before,
+.blog-reader-tools__trigger:focus-visible::before,
+.blog-reader-tools--expanded .blog-reader-tools__trigger::before {
+  opacity: 0.72;
+}
+.blog-reader-tools__trigger:hover::after,
+.blog-reader-tools__trigger:focus-visible::after,
+.blog-reader-tools--expanded .blog-reader-tools__trigger::after {
+  opacity: 0.82;
 }
 .blog-reader-tools__trigger:focus-visible {
   outline: 2px solid var(--blog-accent);
@@ -1543,6 +1618,46 @@
   }
 }
 
+@property --apple-rim-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 170deg;
+}
+
+@keyframes reader-tool-aurora-pulse {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: translate3d(0, 0, 0) scale(0.9) rotate(0deg);
+  }
+  18% {
+    opacity: 0.68;
+    transform: translate3d(-2px, 1px, 0) scale(1.08) rotate(16deg);
+  }
+  44% {
+    opacity: 0.46;
+    transform: translate3d(2px, -1px, 0) scale(0.98) rotate(84deg);
+  }
+  68% {
+    opacity: 0.76;
+    transform: translate3d(1px, 2px, 0) scale(1.12) rotate(152deg);
+  }
+}
+
+@keyframes reader-tool-aurora-rim {
+  0% {
+    --apple-rim-angle: 120deg;
+    filter: saturate(1.18);
+  }
+  50% {
+    filter: saturate(1.46);
+  }
+  to {
+    --apple-rim-angle: 480deg;
+    filter: saturate(1.18);
+  }
+}
+
 /* Desktop ≥1280px: sticky rail scoped to the article body only. */
 @media (min-width: 1280px) {
   .blog-article__reader {
@@ -1634,6 +1749,8 @@
   .blog-share-dock__actions,
   .blog-reader-tools,
   .blog-reader-tools__trigger,
+  .blog-reader-tools__trigger::before,
+  .blog-reader-tools__trigger::after,
   .blog-reader-tools__controls,
   .blog-reactions,
   .blog-article__views {
@@ -1673,6 +1790,14 @@
   --blog-control-shadow: 0 24px 70px -42px color-mix(in oklab, black 42%, var(--blog-control-accent) 12%);
   --blog-control-inner: inset 0 1px 0 var(--blog-control-highlight);
   --blog-control-focus: 0 0 0 3px var(--blog-control-accent-soft);
+  --blog-search-field-fill: color-mix(in oklab, var(--bg) 88%, white 5%);
+  --blog-search-field-fill-focus: color-mix(in oklab, var(--bg) 91%, white 6%);
+  --blog-search-text: color-mix(in oklab, var(--fg) 90%, var(--bg-inverse) 10%);
+  --blog-search-placeholder: color-mix(in oklab, var(--fg-muted) 76%, var(--fg) 24%);
+  --blog-ai-rose: #ff5ac8;
+  --blog-ai-gold: #f9c74f;
+  --blog-ai-cyan: #37d5ff;
+  --blog-ai-violet: #9b7cff;
   --blog-active-fg: #fff;
   --blog-active-fill: color-mix(in oklab, var(--blog-control-accent) 88%, black 4%);
   --blog-active-shadow: 0 12px 28px -20px color-mix(in oklab, var(--blog-control-accent) 70%, transparent);
@@ -1692,6 +1817,8 @@
   --blog-control-highlight: color-mix(in oklab, white 24%, transparent);
   --blog-control-accent: oklch(66% 0.15 58);
   --blog-control-shadow: 0 26px 82px -42px color-mix(in oklab, black 76%, var(--blog-control-accent) 8%);
+  --blog-search-field-fill: color-mix(in oklab, #0b0d10 62%, transparent);
+  --blog-search-field-fill-focus: color-mix(in oklab, #0b0d10 68%, transparent);
   --blog-active-shadow: 0 14px 34px -18px color-mix(in oklab, var(--blog-control-accent) 64%, black 18%);
 }
 
@@ -1700,31 +1827,123 @@
   position: relative;
   isolation: isolate;
 }
+.blog-command::before,
+.blog-command::after {
+  content: "";
+  position: absolute;
+  top: -0.72rem;
+  right: -0.78rem;
+  left: -0.78rem;
+  height: calc(3.5rem + 1.44rem);
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.985);
+  transition:
+    opacity 0.28s ease,
+    transform 0.38s var(--ease);
+}
+.blog-command::before {
+  z-index: 0;
+  background:
+    radial-gradient(
+      42% 140% at 8% 48%,
+      color-mix(in oklab, var(--blog-ai-rose) 52%, transparent),
+      transparent 64%
+    ),
+    radial-gradient(
+      38% 130% at 50% -18%,
+      color-mix(in oklab, var(--blog-ai-gold) 34%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      44% 140% at 92% 52%,
+      color-mix(in oklab, var(--blog-ai-cyan) 54%, transparent),
+      transparent 64%
+    ),
+    radial-gradient(
+      56% 150% at 54% 116%,
+      color-mix(in oklab, var(--blog-ai-violet) 42%, transparent),
+      transparent 68%
+    );
+  filter: blur(20px) saturate(1.35);
+  animation: command-listening-halo 5.8s ease-in-out infinite;
+}
+.blog-command::after {
+  z-index: 1;
+  top: -1rem;
+  right: -1.12rem;
+  left: -1.12rem;
+  height: calc(3.5rem + 2rem);
+  background:
+    conic-gradient(
+      from var(--apple-rim-angle, 220deg),
+      transparent 0 7%,
+      color-mix(in oklab, var(--blog-ai-rose) 76%, transparent) 12%,
+      color-mix(in oklab, var(--blog-ai-gold) 54%, transparent) 20%,
+      transparent 31% 43%,
+      color-mix(in oklab, var(--blog-ai-cyan) 82%, transparent) 52%,
+      color-mix(in oklab, var(--blog-ai-violet) 74%, transparent) 64%,
+      transparent 76% 100%
+    );
+  background-size: 100% 100%;
+  filter: blur(16px) saturate(1.58);
+  mix-blend-mode: screen;
+  animation: command-listening-orbit 4.8s linear infinite;
+}
+.blog-command:hover::before,
+.blog-command:focus-within::before,
+.blog-command.is-open::before {
+  opacity: 0.72;
+  transform: scale(1.01);
+}
+.blog-command:hover::after,
+.blog-command:focus-within::after,
+.blog-command.is-open::after {
+  opacity: 0.82;
+  transform: scale(1.018);
+}
 .blog-command.is-open {
   z-index: 90;
 }
 .blog-command__bar {
+  --blog-search-field-fill-current: var(--blog-search-field-fill);
+  --blog-search-field-highlight-strength: 18%;
+  --blog-search-field-tint-strength: 2%;
   position: relative;
+  z-index: 2;
+  isolation: isolate;
   display: flex;
   align-items: center;
   gap: 0.55rem;
   min-height: 3.5rem;
   padding: 0.45rem 0.5rem 0.45rem 1rem;
-  border: 1px solid var(--blog-control-border);
+  border: 1px solid color-mix(in oklab, var(--blog-control-border) 34%, transparent);
   border-radius: 999px;
   overflow: hidden;
   background:
     linear-gradient(
       135deg,
-      color-mix(in oklab, var(--blog-control-highlight) 58%, transparent),
+      color-mix(in oklab, var(--blog-control-highlight) var(--blog-search-field-highlight-strength), transparent),
       transparent 48%
     ),
-    var(--blog-control-glass);
+    radial-gradient(
+      90% 180% at 8% 50%,
+      color-mix(in oklab, var(--blog-ai-rose) var(--blog-search-field-tint-strength), transparent),
+      transparent 64%
+    ),
+    radial-gradient(
+      82% 180% at 92% 50%,
+      color-mix(in oklab, var(--blog-ai-cyan) var(--blog-search-field-tint-strength), transparent),
+      transparent 62%
+    ),
+    var(--blog-search-field-fill-current);
   box-shadow:
     var(--blog-control-inner),
-    var(--blog-control-shadow);
-  -webkit-backdrop-filter: blur(24px) saturate(1.35);
-  backdrop-filter: blur(24px) saturate(1.35);
+    0 18px 54px -48px color-mix(in oklab, black 54%, transparent),
+    0 0 28px -28px color-mix(in oklab, var(--blog-ai-violet) 26%, transparent);
+  -webkit-backdrop-filter: blur(22px) saturate(1.18);
+  backdrop-filter: blur(22px) saturate(1.18);
   transition:
     border-color 0.18s ease,
     box-shadow 0.18s ease,
@@ -1733,34 +1952,110 @@
 .blog-command__bar::before {
   content: "";
   position: absolute;
-  inset: 1px;
+  inset: 0;
   border-radius: inherit;
-  background: linear-gradient(
-    110deg,
-    transparent 0 32%,
-    color-mix(in oklab, white 32%, transparent) 44%,
-    transparent 56% 100%
-  );
-  opacity: 0.18;
-  transform: translateX(-42%);
+  z-index: 0;
+  background:
+    radial-gradient(
+      48% 220% at 6% 50%,
+      color-mix(in oklab, var(--blog-ai-rose) 14%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      46% 210% at 42% -42%,
+      color-mix(in oklab, var(--blog-ai-gold) 9%, transparent),
+      transparent 54%
+    ),
+    radial-gradient(
+      50% 220% at 96% 50%,
+      color-mix(in oklab, var(--blog-ai-cyan) 14%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      58% 210% at 54% 142%,
+      color-mix(in oklab, var(--blog-ai-violet) 12%, transparent),
+      transparent 58%
+    ),
+    linear-gradient(
+      105deg,
+      transparent 0 28%,
+      color-mix(in oklab, white 8%, transparent) 42%,
+      transparent 56% 100%
+    );
+  background-size:
+    142% 100%,
+    136% 100%,
+    148% 100%,
+    132% 100%,
+    220% 100%;
+  background-position:
+    -10% 50%,
+    46% 0%,
+    110% 50%,
+    54% 100%,
+    -120% 0%;
+  background-blend-mode: screen;
+  filter: blur(12px) saturate(1.12);
+  opacity: 0.14;
+  transform: translate3d(-1.5%, 0, 0) scale(1.03);
   transition:
     opacity 0.24s ease,
     transform 0.5s ease;
   pointer-events: none;
+  animation: command-apple-field 7.6s ease-in-out infinite alternate;
+}
+.blog-command__bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      58% 220% at 8% 52%,
+      color-mix(in oklab, var(--blog-ai-rose) 8%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      52% 210% at 92% 48%,
+      color-mix(in oklab, var(--blog-ai-cyan) 8%, transparent),
+      transparent 62%
+    ),
+    linear-gradient(
+      96deg,
+      transparent 0 28%,
+      color-mix(in oklab, var(--blog-ai-violet) 6%, transparent) 48%,
+      transparent 68% 100%
+    );
+  filter: blur(15px) saturate(1.08);
+  opacity: 0.05;
+  pointer-events: none;
+  animation: command-apple-sheen 6.4s ease-in-out infinite alternate;
 }
 .blog-command.is-open .blog-command__bar,
 .blog-command__bar:focus-within {
-  border-color: color-mix(in oklab, var(--blog-control-accent) 58%, var(--blog-control-border));
+  --blog-search-field-fill-current: var(--blog-search-field-fill-focus);
+  --blog-search-field-highlight-strength: 14%;
+  --blog-search-field-tint-strength: 2%;
+  border-color: color-mix(in oklab, var(--blog-control-border) 34%, transparent);
   box-shadow:
     var(--blog-control-inner),
-    var(--blog-control-shadow),
-    var(--blog-control-focus);
+    0 18px 56px -48px color-mix(in oklab, black 58%, transparent),
+    0 0 26px -17px color-mix(in oklab, var(--blog-ai-cyan) 42%, transparent),
+    0 0 42px -26px color-mix(in oklab, var(--blog-ai-rose) 30%, transparent),
+    0 0 66px -36px color-mix(in oklab, var(--blog-ai-violet) 34%, transparent);
 }
 .blog-command.is-open .blog-command__bar::before,
 .blog-command__bar:hover::before,
 .blog-command__bar:focus-within::before {
-  opacity: 0.28;
-  transform: translateX(38%);
+  opacity: 0.24;
+  transform: translate3d(1.5%, 0, 0) scale(1.06);
+}
+.blog-command.is-open .blog-command__bar::after,
+.blog-command__bar:hover::after,
+.blog-command__bar:focus-within::after {
+  opacity: 0.1;
+  transform: scale(1.02);
 }
 .blog-search__icon {
   position: relative;
@@ -1768,7 +2063,7 @@
   flex: 0 0 auto;
   width: 1.15rem;
   height: 1.15rem;
-  color: color-mix(in oklab, var(--fg-subtle) 76%, var(--fg) 24%);
+  color: color-mix(in oklab, var(--blog-search-placeholder) 74%, var(--blog-search-text) 26%);
 }
 .blog-search__input {
   position: relative;
@@ -1778,14 +2073,14 @@
   font: inherit;
   font-size: clamp(1rem, 0.96rem + 0.2vw, 1.14rem);
   font-weight: 500;
-  color: var(--fg);
+  color: var(--blog-search-text);
   background: transparent;
   border: 0;
   padding: 0.45rem 0;
   appearance: none;
 }
 .blog-search__input::placeholder {
-  color: color-mix(in oklab, var(--fg-subtle) 84%, transparent);
+  color: var(--blog-search-placeholder);
 }
 .blog-search__input:focus-visible {
   outline: none;
@@ -1871,6 +2166,66 @@
 .blog-command__toggle:focus-visible {
   outline: 2px solid var(--blog-control-accent);
   outline-offset: 2px;
+}
+
+@keyframes command-listening-halo {
+  0%,
+  100% {
+    filter: blur(18px) saturate(1.18) hue-rotate(0deg);
+    transform: translate3d(-0.4%, 0, 0) scale(0.99);
+  }
+  38% {
+    filter: blur(22px) saturate(1.48) hue-rotate(12deg);
+    transform: translate3d(0.8%, -1px, 0) scale(1.018);
+  }
+  68% {
+    filter: blur(20px) saturate(1.34) hue-rotate(-10deg);
+    transform: translate3d(-0.2%, 1px, 0) scale(1.006);
+  }
+}
+
+@keyframes command-listening-orbit {
+  0% {
+    --apple-rim-angle: 220deg;
+    filter: blur(15px) saturate(1.36) hue-rotate(0deg);
+  }
+  50% {
+    filter: blur(19px) saturate(1.76) hue-rotate(12deg);
+  }
+  to {
+    --apple-rim-angle: 580deg;
+    filter: blur(15px) saturate(1.36) hue-rotate(0deg);
+  }
+}
+
+@keyframes command-apple-field {
+  0% {
+    background-position: -10% 50%, 46% 0%, 110% 50%, 54% 100%, -120% 0%;
+    filter: blur(9px) saturate(1.16) hue-rotate(0deg);
+  }
+  50% {
+    background-position: 18% 54%, 68% 14%, 84% 46%, 36% 88%, 24% 0%;
+    filter: blur(10px) saturate(1.42) hue-rotate(10deg);
+  }
+  100% {
+    background-position: 2% 44%, 38% 8%, 104% 58%, 64% 78%, 120% 0%;
+    filter: blur(9px) saturate(1.22) hue-rotate(-8deg);
+  }
+}
+
+@keyframes command-apple-sheen {
+  0% {
+    background-position: 0% 50%, 100% 50%, -80% 0%;
+    filter: blur(13px) saturate(1.1) hue-rotate(0deg);
+  }
+  50% {
+    background-position: 16% 46%, 84% 54%, 40% 0%;
+    filter: blur(15px) saturate(1.34) hue-rotate(8deg);
+  }
+  to {
+    background-position: 4% 52%, 96% 48%, 120% 0%;
+    filter: blur(13px) saturate(1.14) hue-rotate(-6deg);
+  }
 }
 .blog-command__tokens {
   display: flex;
@@ -2307,8 +2662,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .blog-command::before,
+  .blog-command::after,
   .blog-command__bar,
   .blog-command__bar::before,
+  .blog-command__bar::after,
   .blog-command__toggle,
   .blog-command__token,
   .blog-command__reset,

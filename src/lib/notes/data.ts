@@ -1,6 +1,12 @@
-import fs from "node:fs";
 import path from "node:path";
 import { routing } from "@/i18n/routing";
+import {
+  byDateDesc,
+  overlayByKey,
+  readJson,
+  readJsonValidated
+} from "@/lib/content/io";
+import { notesIndexSchema, noteSchema } from "./schema";
 import type { Note, NoteMeta, NotesIndexFile, TopicMeta } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "public", "notes-data");
@@ -29,18 +35,10 @@ function noteLocales(post: NoteMeta): string[] {
   return post.locales ?? ["vi"];
 }
 
-function readJson<T>(file: string): T | null {
-  if (!fs.existsSync(file)) return null;
-  return JSON.parse(fs.readFileSync(file, "utf-8")) as T;
-}
-
-function byDateDesc(a: NoteMeta, b: NoteMeta): number {
-  return b.date.localeCompare(a.date);
-}
-
 function baseIndex(): NotesIndexFile {
   return (
-    readJson<NotesIndexFile>(path.join(DATA_DIR, "_index.json")) ?? EMPTY_INDEX
+    readJsonValidated(path.join(DATA_DIR, "_index.json"), notesIndexSchema) ??
+    EMPTY_INDEX
   );
 }
 
@@ -58,18 +56,9 @@ export function loadNotesIndex(locale?: string): NotesIndexFile {
   );
   if (!override) return base;
 
-  const topicOverrides = new Map((override.topics ?? []).map((t) => [t.id, t]));
-  const postOverrides = new Map((override.posts ?? []).map((p) => [p.slug, p]));
-
   return {
-    topics: base.topics.map((t) => ({
-      ...t,
-      ...(topicOverrides.get(t.id) ?? {})
-    })),
-    posts: base.posts.map((p) => ({
-      ...p,
-      ...(postOverrides.get(p.slug) ?? {})
-    }))
+    topics: overlayByKey(base.topics, override.topics, (t) => t.id),
+    posts: overlayByKey(base.posts, override.posts, (p) => p.slug)
   };
 }
 
@@ -147,7 +136,10 @@ export function listNoteParams(): Array<{ locale: string; slug: string }> {
 
 /** Loads a single note, overlaying the Vietnamese body when serving `vi`. */
 export function loadNote(slug: string, locale?: string): Note | null {
-  const base = readJson<Note>(path.join(DATA_DIR, "posts", `${slug}.json`));
+  const base = readJsonValidated(
+    path.join(DATA_DIR, "posts", `${slug}.json`),
+    noteSchema
+  );
   if (!base) return null;
   if (contentLocale(locale) !== "vi") return base;
 

@@ -26,7 +26,6 @@ import BlogReadingTracker from '@/components/blog/BlogReadingTracker'
 import { EngagementProvider } from '@/components/blog/EngagementProvider'
 import BlogViewCount from '@/components/blog/BlogViewCount'
 import BlogShareDock from '@/components/blog/BlogShareDock'
-import BlogReaderTools from '@/components/blog/BlogReaderTools'
 import BlogReactions from '@/components/blog/BlogReactions'
 import BlogRelatedPosts from '@/components/blog/BlogRelatedPosts'
 import '../../blog.css'
@@ -249,16 +248,6 @@ export default async function BlogPostPage({ params }: Props) {
           category={category}
           slug={slug}
           readingMinutes={post.readingMinutes}
-        />
-        <BlogReaderTools
-          labels={{
-            label: t('readerTools.label'),
-            scrollTop: t('readerTools.scrollTop'),
-            scrollBottom: t('readerTools.scrollBottom'),
-            font: t('readerTools.font'),
-            background: t('readerTools.background'),
-            language: t('readerTools.language'),
-          }}
         />
         <div className="blog-article__main">
           <div className="blog-article__reader">

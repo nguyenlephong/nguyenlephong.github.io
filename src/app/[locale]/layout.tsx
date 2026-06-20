@@ -22,7 +22,9 @@ import ThemeSync from '@/components/theme/ThemeSync'
 import FontScript from '@/components/font/FontScript'
 import ReadingBackgroundScript from '@/components/reading/ReadingBackgroundScript'
 import MotionProvider from '@/components/motion/MotionProvider'
+import RouteProgressBar from '@/components/motion/RouteProgressBar'
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
+import BlogReaderTools from '@/components/blog/BlogReaderTools'
 import { SITE_URL } from '@/app/seo.config'
 import { routing, type Locale } from '@/i18n/routing'
 import { Person, WithContext } from 'schema-dts'
@@ -45,6 +47,7 @@ const sourceSans = Source_Sans_3({
   subsets: ['latin'],
   variable: '--font-reading-source',
   display: 'swap',
+  preload: false,
 })
 
 const plexSans = IBM_Plex_Sans({
@@ -52,6 +55,7 @@ const plexSans = IBM_Plex_Sans({
   weight: ['400', '500', '600', '700'],
   variable: '--font-reading-plex',
   display: 'swap',
+  preload: false,
 })
 
 const atkinson = Atkinson_Hyperlegible({
@@ -59,12 +63,14 @@ const atkinson = Atkinson_Hyperlegible({
   weight: ['400', '700'],
   variable: '--font-reading-atkinson',
   display: 'swap',
+  preload: false,
 })
 
 const lora = Lora({
   subsets: ['latin'],
   variable: '--font-reading-lora',
   display: 'swap',
+  preload: false,
 })
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -72,12 +78,14 @@ const beVietnamPro = Be_Vietnam_Pro({
   weight: ['400', '500', '600', '700'],
   variable: '--font-reading-be-vietnam',
   display: 'swap',
+  preload: false,
 })
 
 const fraunces = Fraunces({
   subsets: ['latin', 'vietnamese'],
   variable: '--font-reading-fraunces',
   display: 'swap',
+  preload: false,
 })
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -85,6 +93,7 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ['400', '500', '600', '700'],
   variable: '--font-reading-ibm-plex-mono',
   display: 'swap',
+  preload: false,
 })
 
 const FONT_VARIABLES = [
@@ -232,6 +241,18 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const t = await getTranslations({ locale, namespace: 'SEO.home' })
   const seoDescription = t('description')
 
+  // Global reading-preferences float button (font, background, language,
+  // scroll) — available on every page, not only article detail pages.
+  const rt = await getTranslations('ReaderTools')
+  const readerLabels = {
+    label: rt('label'),
+    scrollTop: rt('scrollTop'),
+    scrollBottom: rt('scrollBottom'),
+    font: rt('font'),
+    background: rt('background'),
+    language: rt('language'),
+  }
+
   const personSchema: WithContext<Person> = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -350,6 +371,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
               capture_pageleave: true,
               autocapture: false,
               disable_session_recording: true,
+              respect_dnt: true,
               persistence: 'localStorage+cookie'
             });
             posthog.register({ site: 'nguyenlephong.github.io', surface: 'cv', locale: ${JSON.stringify(locale)} });
@@ -361,10 +383,12 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <NextIntlClientProvider>
           <ThemeSync />
           <MotionProvider>
+            <RouteProgressBar />
             <WebVitalsReporter />
             <AppHeader />
             {children}
             <AppFooter />
+            <BlogReaderTools labels={readerLabels} />
           </MotionProvider>
         </NextIntlClientProvider>
       </body>

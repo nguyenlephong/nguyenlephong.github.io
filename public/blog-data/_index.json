@@ -935,6 +935,101 @@
       "author": "Nguyen Le Phong",
       "featured": false,
       "updated": "2026-06-16"
+    },
+    {
+      "slug": "over-managed-and-under-led",
+      "category": "culture",
+      "title": "Over-Managed and Under-Led: Why a Busy Team Can Still Lose Its Way",
+      "summary": "A team can be carefully managed and still drift. Using John Kotter's distinction between coping with complexity and coping with change, here is how to spot when a team is over-managed and under-led — and small, repeatable ways to bring the direction back.",
+      "date": "2026-06-20",
+      "readingMinutes": 7,
+      "tags": [
+        "Leadership",
+        "Management",
+        "Engineering Leadership",
+        "Team Direction",
+        "Engineering Culture"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "series": "leadership-and-management",
+      "seriesOrder": 1
+    },
+    {
+      "slug": "vision-without-craft",
+      "category": "culture",
+      "title": "Vision Without Craft: Why Leaders Can't Float Above the Work",
+      "summary": "Warren Bennis said leaders do the right thing while managers do things right. Robert Sutton added the part that matters: to do the right thing, you must understand what it takes to do things right. On the trap of vision detached from craft — and the bounce between big picture and detail.",
+      "date": "2026-06-20",
+      "readingMinutes": 6,
+      "tags": [
+        "Leadership",
+        "Management",
+        "Engineering Leadership",
+        "Execution",
+        "Engineering Culture"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "series": "leadership-and-management",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "signals-or-messages",
+      "category": "culture",
+      "title": "Signals or Messages: The Quiet Cost of Vague Communication",
+      "summary": "Abraham Zaleznik noticed that people uncomfortable with direct engagement communicate in signals rather than messages. On why vague communication feels safe to send and lands as anxiety, how it quietly breeds office politics, and why a clear message is a kindness — especially when it is hard.",
+      "date": "2026-06-20",
+      "readingMinutes": 5,
+      "tags": [
+        "Leadership",
+        "Management",
+        "Communication",
+        "Engineering Culture",
+        "Team Collaboration"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "series": "leadership-and-management",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "sitting-with-the-problem",
+      "category": "culture",
+      "title": "The Discipline of Sitting With a Problem You Can't Yet Solve",
+      "summary": "Some people restore order the instant disorder appears; others can hold a problem open long enough to understand it. On tolerance for ambiguity as a learnable discipline, the cost of solving before understanding, the Einstellung trap, and why the maturity is in how long you can stay with a hard problem.",
+      "date": "2026-06-20",
+      "readingMinutes": 5,
+      "tags": [
+        "Leadership",
+        "Management",
+        "Problem Solving",
+        "Incident Response",
+        "Engineering Culture"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "series": "leadership-and-management",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "pull-dont-push",
+      "category": "culture",
+      "title": "Pull, Don't Push: Why People Follow Meaning, Not Instructions",
+      "summary": "Bennis and Goldsmith described two ways to move people: push (deadlines, KPIs, position power) and pull (meaning and trust). On the unforgettable sign-language image of reins versus a cradle, why pull is slower but deeper, the honesty it requires, and when to reach for each. The closing piece of the series.",
+      "date": "2026-06-20",
+      "readingMinutes": 5,
+      "tags": [
+        "Leadership",
+        "Management",
+        "Motivation",
+        "Communication",
+        "Engineering Culture"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "series": "leadership-and-management",
+      "seriesOrder": 5
     }
   ]
 }

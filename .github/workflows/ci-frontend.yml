@@ -1,42 +1,57 @@
 name: Frontend CI
 
 on:
-    - pull_request
+  pull_request:
+  push:
+    branches: [dev]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-#    frontend-code-quality:
-#        name: Code quality checks
-#        runs-on: ubuntu-20.04
-#        steps:
-#            - uses: actions/checkout@v1
-#
-#            - name: Set up Node 14
-#              uses: actions/setup-node@v1
-#              with:
-#                  node-version: 14
-#
-#            - name: Install package.json dependencies with Yarn
-#              run: yarn
-#
-#            - name: Check formatting with prettier
-#              run: yarn prettier:check
-#
-#            - name: Lint with ESLint
-#              run: yarn eslint
+  quality:
+    name: Type-check · Lint · Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    jest:
-        name: Jest tests
-        runs-on: ubuntu-20.04
-        steps:
-            - uses: actions/checkout@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
 
-            - name: Set up Node 14
-              uses: actions/setup-node@v1
-              with:
-                  node-version: 14
+      - name: Install dependencies
+        run: npm ci
 
-            - name: Install package.json dependencies with Yarn
-              run: yarn
+      - name: Type-check
+        run: npm run typecheck
 
-            - name: Test with Jest
-              run: yarn test
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm test
+
+  build:
+    name: Smoke build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Skip OG-image generation for speed; this still runs the full
+      # `next build` and fails on any compile / type / lint error.
+      - name: Build (static export, OG skipped)
+        run: npm run build:fast

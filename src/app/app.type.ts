@@ -2,12 +2,6 @@ export type ExperienceItemType = {
   company: string;
   location: string;
   jobs: JobType[]
-  jobs_bk: {
-    title: string;
-    duration: string;
-    responsibilities: string[]
-    skills: string[]
-  }[]
 }
 
 export type JobType = {

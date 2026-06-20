@@ -1,18 +1,26 @@
 rules_version = '2';
 
-// Firestore rules for blog post engagement.
+// Firestore rules for blog/notes/thoughts post engagement.
 //
-// Intentionally minimal: any visitor may read stats and bump counters on the
-// postStats collection. Everything else is locked down.
-// Client-side spam protection (sessionStorage / localStorage) is enough for a
-// personal blog; the rules only ensure no one writes to other collections.
+// Any visitor may read stats and bump counters on the postStats collection,
+// but writes are constrained to monotonic, integer increments so a hostile
+// client cannot overwrite a counter to an arbitrary value, set a negative /
+// non-numeric value, or decrement views/shares. Reactions stay a map (a key
+// may move ±1 when a user toggles a reaction on/off).
+//
+// NOTE: these rules bound the *shape* of each write but cannot stop a
+// determined attacker from looping +1 writes. The real mitigation for that is
+// Firebase App Check, which a static GitHub Pages deploy cannot host. Treat
+// the counters as best-effort, not audit-grade.
 
 service cloud.firestore {
   match /databases/{database}/documents {
 
     match /postStats/{postId} {
       allow read: if true;
-      allow write: if onlyEngagementFields();
+      allow create: if isValidCreate();
+      allow update: if isValidUpdate();
+      allow delete: if false;
     }
 
     // Deny everything else.
@@ -23,6 +31,30 @@ service cloud.firestore {
 }
 
 // Only the three known top-level fields may appear in the written document.
-function onlyEngagementFields() {
-  return request.resource.data.keys().hasOnly(['views', 'shares', 'reactions']);
+function onlyEngagementKeys(data) {
+  return data.keys().hasOnly(['views', 'shares', 'reactions']);
+}
+
+// First write for a post: counters may only be 0 or 1, reactions a map.
+function isValidCreate() {
+  let d = request.resource.data;
+  return onlyEngagementKeys(d)
+    && d.get('views', 0) is int && d.get('views', 0) >= 0 && d.get('views', 0) <= 1
+    && d.get('shares', 0) is int && d.get('shares', 0) >= 0 && d.get('shares', 0) <= 1
+    && d.get('reactions', {}) is map;
+}
+
+// Subsequent writes: views/shares are integer and may increase by at most 1
+// (never decrease); reactions stays a map.
+function isValidUpdate() {
+  let d = request.resource.data;
+  let p = resource.data;
+  return onlyEngagementKeys(d)
+    && d.get('views', 0) is int
+    && d.get('views', 0) >= p.get('views', 0)
+    && d.get('views', 0) <= p.get('views', 0) + 1
+    && d.get('shares', 0) is int
+    && d.get('shares', 0) >= p.get('shares', 0)
+    && d.get('shares', 0) <= p.get('shares', 0) + 1
+    && d.get('reactions', {}) is map;
 }

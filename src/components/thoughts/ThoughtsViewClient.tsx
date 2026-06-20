@@ -2,11 +2,15 @@
 
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
+import dynamic from 'next/dynamic'
 import { TbNetwork, TbLayoutList } from 'react-icons/tb'
 import { track } from '@/lib/analytics'
-import ThoughtGraph from './ThoughtGraph'
 import ThoughtList from './ThoughtList'
 import type { PublicThought, ThoughtEdge } from '@/lib/thoughts/types'
+
+// d3-force/selection/transition/drag are heavy; load them only when the graph
+// view is actually shown (the list view never pays for the graph bundle).
+const ThoughtGraph = dynamic(() => import('./ThoughtGraph'), { ssr: false })
 
 type View = 'graph' | 'list'
 const STORAGE_KEY = 'thoughts-view'

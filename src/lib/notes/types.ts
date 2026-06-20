@@ -1,25 +1,10 @@
-export interface NoteFaq {
-  /** Question (plain text) */
-  q: string;
-  /** Answer — may contain simple inline HTML */
-  a: string;
-}
+import type { BookSource, Faq } from "@/lib/content/types";
 
-export interface NoteBookSource {
-  /** Localized or commonly used title in this note. */
-  title: string;
-  /** Original title of the book, when different or useful for attribution. */
-  originalTitle?: string;
-  /** Book authors, not the author of this website note. */
-  authors: string[];
-  /** Named contributors credited by the source book. */
-  contributors?: string[];
-  publisher?: string;
-  published?: string;
-  isbn?: string;
-  /** Short editorial note about how this article relates to the book. */
-  note?: string;
-}
+/** @see {@link Faq} — shared with blog. */
+export type NoteFaq = Faq;
+
+/** @see {@link BookSource} — shared with blog. */
+export type NoteBookSource = BookSource;
 
 export interface NoteMeta {
   slug: string;

@@ -40,9 +40,6 @@ export type AnalyticsEvent =
   // About
   | 'about_view'
   | 'about_section_view'
-  // Home (legacy /home page)
-  | 'home_view'
-  | 'home_social_click'
   // Thoughts
   | 'thoughts_view_toggle'
   | 'thoughts_share'
@@ -67,12 +64,22 @@ function safePath(): string {
   return window.location.pathname + window.location.search
 }
 
+/** Honour the browser's Do-Not-Track signal across vendor prefixes. */
+function isDoNotTrack(): boolean {
+  if (typeof navigator === 'undefined') return false
+  const nav = navigator as Navigator & { msDoNotTrack?: string }
+  const win = window as Window & { doNotTrack?: string }
+  const dnt = nav.doNotTrack ?? win.doNotTrack ?? nav.msDoNotTrack
+  return dnt === '1' || dnt === 'yes'
+}
+
 export function track(
   event: AnalyticsEvent | string,
   props?: Record<string, unknown>,
   options?: TrackOptions
 ): void {
   if (typeof window === 'undefined') return
+  if (isDoNotTrack()) return
   try {
     const payload: Record<string, unknown> = {
       ts: Date.now(),

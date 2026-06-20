@@ -272,12 +272,104 @@ a:focus-visible, button:focus-visible {
 }
 ::selection { background: var(--accent); color: var(--fg-on-accent); }
 
+.route-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 2147483647;
+  height: 3px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition:
+    opacity 180ms ease,
+    transform 220ms var(--ease);
+}
+.route-progress::before {
+  content: "";
+  position: absolute;
+  inset: -10px 0 auto;
+  height: 22px;
+  background:
+    radial-gradient(70% 100% at 18% 0%, color-mix(in oklab, #ff5ac8 30%, transparent), transparent 62%),
+    radial-gradient(70% 100% at 52% 0%, color-mix(in oklab, #f9c74f 20%, transparent), transparent 64%),
+    radial-gradient(70% 100% at 86% 0%, color-mix(in oklab, #37d5ff 28%, transparent), transparent 62%);
+  filter: blur(10px) saturate(1.24);
+  opacity: 0.78;
+}
+.route-progress__bar {
+  position: relative;
+  display: block;
+  width: 46vw;
+  height: 100%;
+  border-radius: 0 999px 999px 0;
+  background:
+    linear-gradient(
+      90deg,
+      #ff5ac8,
+      #f9c74f 24%,
+      #37d5ff 52%,
+      #9b7cff 78%,
+      #ff5ac8
+    );
+  background-size: 220% 100%;
+  box-shadow:
+    0 0 14px color-mix(in oklab, #37d5ff 42%, transparent),
+    0 0 28px color-mix(in oklab, #ff5ac8 30%, transparent),
+    0 0 42px color-mix(in oklab, #9b7cff 24%, transparent);
+  transform: translateX(-112%) scaleX(0.28);
+  transform-origin: left center;
+}
+.route-progress--loading,
+.route-progress--finishing {
+  opacity: 1;
+  transform: translateY(0);
+}
+.route-progress--loading .route-progress__bar {
+  animation:
+    route-progress-run 1.18s cubic-bezier(0.55, 0, 0.16, 1) infinite,
+    route-progress-spectrum 1.4s linear infinite;
+}
+.route-progress--finishing {
+  transition:
+    opacity 180ms ease 320ms,
+    transform 220ms var(--ease);
+}
+.route-progress--finishing .route-progress__bar {
+  width: 100%;
+  animation: route-progress-spectrum 0.8s linear infinite;
+  transform: translateX(0) scaleX(1);
+  transition: transform 360ms var(--ease), width 360ms var(--ease);
+}
+
+@keyframes route-progress-run {
+  0% {
+    transform: translateX(-112%) scaleX(0.26);
+  }
+  48% {
+    transform: translateX(58vw) scaleX(0.82);
+  }
+  100% {
+    transform: translateX(122vw) scaleX(0.36);
+  }
+}
+
+@keyframes route-progress-spectrum {
+  to {
+    background-position: -220% 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0ms !important;
+  }
+  .route-progress--loading .route-progress__bar,
+  .route-progress--finishing .route-progress__bar {
+    width: 100%;
+    transform: none;
   }
   .accent {
     color: var(--accent);

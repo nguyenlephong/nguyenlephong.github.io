@@ -1,0 +1,87 @@
+# Session: Strict review + refactor (nguyenlephong.github.io)
+
+**Branch:** dev · **Date:** 2026-06-19
+
+## Objective
+Strict code review of the personal site, then execute the full prioritized
+refactor (security → CI → dedup → engagement → god-file → perf).
+
+## Current State (6 commits on `dev`, all verified tsc + eslint + node:test + static build)
+- `a4e478f9` Phase 0 — security & hygiene: hardened `firestore.rules` (monotonic
+  int +1 writes; was: anyone could overwrite any counter); anonymized real
+  family DOBs in `heartbeats/family.data.ts`; removed unused `NEXT_PUBLIC_OPEN_AI_KEY`;
+  deleted legacy `/home` route + `HomeSocialTracker` + `*.bk.ts`; added `sharp` devDep.
+- `c42a494e` Phase 1 — CI: replaced dead Node-14/jest job with real gate
+  (npm ci → typecheck → eslint → node:test → smoke build); added `test`/`typecheck`
+  scripts; `eslint.ignoreDuringBuilds:false`.
+- `7669230d` Phase 2 — shared content IO: `src/lib/content/{io,types}.ts` (cached +
+  validated `readJson`, shared `byDateDesc`/`overlayByKey`, `Faq`/`BookSource`);
+  blog/notes/thoughts `data.ts` now compose it (removed 3× `readJson` + ~180 dup lines).
+- `afd9c58b` Phase 3 — engagement: unified `usePostEngagement` (options:
+  withReactions/storageNamespace) drives blog/notes + thoughts; side-effects moved
+  out of setState updater + rollback on failed writes; `postStats` repository returns
+  success booleans + `getAllPostStats()`; explorers use one batched read (no per-card fan-out).
+- `ec3ecdda` Phase 3 — stripped dead code from `app.const.ts` (785→616): all `_bk`
+  fields + `jobs_bk` type + 4 commented-out data blocks.
+- `fbde1798` Phase 4 — privacy/tracking: Do-Not-Track gate in `track()` +
+  `respect_dnt:true`; `PageTracker` guards duplicate `page_time_on_page`.
+
+## Decisions (important)
+- `.env` kept tracked: all values are public-by-design `NEXT_PUBLIC_*` Firebase web
+  config and the GitHub-Pages deploy has no secrets block, so untracking would break
+  live engagement for zero security gain. Removed only the unused OpenAI footgun.
+- Thoughts surface kept (orphaned/dead code) per user; de-duplicated via shared IO,
+  not deleted.
+- View counts batched (one query) rather than baked at build, to keep counts live.
+- Did NOT force a generic content `createCollection` — blog/notes diverge enough
+  (series vs topic, locale-collapse, visibility) that shared helpers are cleaner.
+
+## Constraints
+- Static export (`output:"export"`) → no request-time server; deploy = `gh-pages`.
+- `firestore.rules` change must be deployed: `firebase deploy --only firestore:rules`.
+- Keep `package.json` ↔ `package-lock.json` in sync (CI runs `npm ci`).
+
+## Done since
+- ~~Explorer extraction~~ (`121cc028`): `useExplorer` + `ExplorerShell` + `search.ts`;
+  BlogExplorer 501→131, NotesExplorer 506→133.
+- ~~`app.const.ts` module split~~ (`813f5487`): data → `src/content/{gallery,media,
+  experience,projects,profile}.ts`; app.const.ts 616→51-line barrel (imports unchanged).
+- ~~Fonts + ThoughtGraph~~ (`4ce3efbc`): 7 reading fonts `preload:false` (homepage font
+  preloads 9→2); `ThoughtGraph` via `next/dynamic({ssr:false})`; resize rebuild debounced.
+
+## Data work (done this round)
+- ~~About prose → `messages`~~ (`78d854df`): `About` namespace in en + **vi** (translated);
+  `/about` reads via `getTranslations`; zh/ja/ko/fr fall back to English. Removed dead
+  `profileInfo.about` + superseded `profileInfo.summary`.
+- ~~zod validation~~ (`1d228b6a`): `readJsonValidated()` + `blog/notes` schemas validate
+  `_index.json` + post files at build (precise path-bearing errors); schema test rejects
+  bad shapes.
+- ~~`getRelatedPosts` O(n²)~~ (`1d228b6a`): `meaningfulTags` memoized by slug+tags.
+- ~~firestore rules deploy~~: `firebase.json` now declares the `firestore` target
+  (`6de190c5`). Deployed to **`phongnguyen-it`** (the project the site's `.env` uses — NOT
+  the `.firebaserc` default `nguyenlephong-cv`).
+
+## Remaining (optional, not blocking)
+1. Translate `messages/*` (`About`, and the rest) for zh/ja/ko/fr — currently English fallback.
+   The `vi` `About` translation is done.
+2. Consider Firebase App Check — the only real anti-abuse for anonymous counter writes on a
+   static host.
+3. Optional deeper `ThoughtGraph` work (replace O(n²) `forceRectCollide`, cap warmup ticks)
+   — low priority while the thoughts route stays unrendered.
+4. The unused-but-real `profileInfo.{technical_skill,videos,achievements,education,references}`
+   remain in `src/content/*` — authored CV data with no current consumer; surface on a CV
+   page or delete, your call.
+
+## Content + UX round (2026-06-20)
+- **Leadership & Management blog series** (category `culture`, series `leadership-and-management`,
+  5 parts, EN+VI, from /Users/lap16773/Downloads/leadership-vs-management-insights.md):
+  1 over-managed-and-under-led · 2 vision-without-craft · 3 signals-or-messages ·
+  4 sitting-with-the-problem · 5 pull-dont-push. Each: story-led, calm voice (calm-content-writer
+  skill), 5 FAQs, woven everyday example (road trip / dinner-party menu / doctor / leaky pipe /
+  teenager's room). VI rewritten to flow natively (not literal) with polished titles — per user feedback.
+- **Global float button**: BlogReaderTools moved from article pages into `[locale]/layout.tsx`
+  (new `ReaderTools` message namespace) → appears on every page.
+- Built per post (zod-validated), committed per post, pushed, deployed via `npm run deploy`
+  (gh-pages branch, app-version 1.1.11). Live verified: posts HTTP 200, VI titles live, float
+  button on non-article pages.
+- Thoughts->notes migration confirmed already complete (40/40); no action needed.

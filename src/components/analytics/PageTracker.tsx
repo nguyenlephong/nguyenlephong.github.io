@@ -10,7 +10,7 @@ interface PageTrackerProps {
   /** Optional section grouping that rides along every event on this page. */
   section?: string
   /** Override the page_view event name (default: `page_view`). */
-  eventName?: 'page_view' | 'apps_view' | 'gallery_view' | 'about_view' | 'cv_view' | 'home_view'
+  eventName?: 'page_view' | 'apps_view' | 'gallery_view' | 'about_view' | 'cv_view'
 }
 
 const SCROLL_BUCKETS = [25, 50, 75, 100] as const
@@ -20,6 +20,7 @@ export default function PageTracker({ page, section, eventName = 'page_view' }: 
   const visibleMsRef = useRef<number>(0)
   const lastVisibleAtRef = useRef<number>(0)
   const reportedRef = useRef<Set<number>>(new Set())
+  const finalReportedRef = useRef<boolean>(false)
 
   useEffect(() => {
     const startedAt = Date.now()
@@ -27,6 +28,7 @@ export default function PageTracker({ page, section, eventName = 'page_view' }: 
     lastVisibleAtRef.current = startedAt
     visibleMsRef.current = 0
     reportedRef.current = new Set()
+    finalReportedRef.current = false
 
     registerPageContext({
       page_type: page,
@@ -69,6 +71,10 @@ export default function PageTracker({ page, section, eventName = 'page_view' }: 
     }
 
     const reportTime = (): void => {
+      // `pagehide` and `beforeunload` can both fire on the same navigation;
+      // only emit the final time-on-page once.
+      if (finalReportedRef.current) return
+      finalReportedRef.current = true
       const now = Date.now()
       if (document.visibilityState === 'visible') {
         visibleMsRef.current += now - lastVisibleAtRef.current
