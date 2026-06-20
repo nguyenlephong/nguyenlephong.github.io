@@ -256,9 +256,6 @@
     }
   },
   "Pages": {
-    "cv": {
-      "title": "Software Engineer"
-    },
     "about": {
       "heading": "关于我"
     },
@@ -380,7 +377,6 @@
         "budding": "萌芽",
         "evergreen": "常青"
       },
-
       "viewGraph": "关系图",
       "viewList": "列表",
       "viewToggle": "切换视图",

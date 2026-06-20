@@ -18,7 +18,7 @@ export interface PageSEO {
 }
 
 export const PAGE_SEO: Record<
-  'home' | 'about' | 'cv' | 'gallery' | 'apps' | 'blog' | 'studio',
+  'home' | 'about' | 'gallery' | 'apps' | 'blog' | 'studio',
   PageSEO
 > = {
   home: {
@@ -56,20 +56,6 @@ export const PAGE_SEO: Record<
       'GPA 3.36',
     ],
     ogAlt: 'About Nguyen Le Phong — Very Good classification, GPA 3.36',
-  },
-  cv: {
-    title: 'Curriculum Vitae — Nguyen Le Phong',
-    description:
-      'Downloadable résumé and work history of Nguyen Le Phong — senior full-stack engineer and technical lead at NDSVN, ex-Zalo PC (15M+ MAU), ex-PrimeData. React, Next.js, Java Spring, .NET Core, Kubernetes.',
-    path: '/cv',
-    keywords: [
-      'Nguyen Le Phong CV',
-      'Resume',
-      'Software Engineer Resume',
-      'Tech Lead CV',
-      'Technical Lead',
-    ],
-    ogAlt: 'Nguyen Le Phong — Résumé (technical lead · ex-Zalo · ex-PrimeData)',
   },
   gallery: {
     title: 'Gallery — Career Signals Behind the Work',

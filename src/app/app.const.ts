@@ -19,7 +19,6 @@ export const APP_ROUTE = {
   STUDIO: "/studio",
   APPS: "/apps",
   APPS_ENGLISH: "/apps/english",
-  CV: "/cv",
   CV_PDF: "/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf"
 };
 

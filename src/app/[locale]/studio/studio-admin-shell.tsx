@@ -142,7 +142,6 @@ type StudioNavGroup = {
 };
 
 const DEFAULT_ROUTE: StudioRouteId = "default";
-const CV_PATH = "/cv";
 const resumePath = "/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf";
 
 const defaultMetrics: StudioMetric[] = [
@@ -638,8 +637,8 @@ function linePoints(values: number[], maxValue = 82): string {
     .join(" ");
 }
 
-function cvHref(locale: string): string {
-  return `/${locale}${CV_PATH}`;
+function cvHref(): string {
+  return resumePath;
 }
 
 function MetricCard({ item }: { item: StudioMetric }) {
@@ -1402,7 +1401,6 @@ function RouteContent({
 function CommandDialog({
   open,
   query,
-  locale,
   activeRoute,
   onQuery,
   onClose,
@@ -1410,7 +1408,6 @@ function CommandDialog({
 }: {
   open: boolean;
   query: string;
-  locale: string;
   activeRoute: StudioRouteId;
   onQuery: (value: string) => void;
   onClose: () => void;
@@ -1456,9 +1453,9 @@ function CommandDialog({
               </a>
             );
           })}
-          <a href={cvHref(locale)} className="command-cv-link">
+          <a href={cvHref()} className="command-cv-link" target="_blank" rel="noreferrer">
             <LuExternalLink aria-hidden="true" />
-            <span><strong>Back to CV</strong><small>Return to the main CV page.</small></span>
+            <span><strong>Back to CV</strong><small>Open the CV PDF file.</small></span>
           </a>
         </div>
       </section>
@@ -1576,12 +1573,12 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
             <section className="support-card">
               <strong>Looking for the CV?</strong>
               <p>
-                The admin shell stays isolated here. Return to the <a href={cvHref(locale)}>CV page</a> any time.
+                The admin shell stays isolated here. Open the <a href={cvHref()} target="_blank" rel="noreferrer">CV file</a> any time.
               </p>
             </section>
           )}
 
-          <a className="user-card" href={cvHref(locale)}>
+          <a className="user-card" href={cvHref()} target="_blank" rel="noreferrer">
             <span className="user-avatar">N</span>
             <span>
               <strong>Nguyen Le Phong</strong>
@@ -1629,7 +1626,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
               <section className="account-popover">
                 <strong>Nguyen Le Phong</strong>
                 <span>Studio preview account</span>
-                <a href={cvHref(locale)}>Back to CV</a>
+                <a href={cvHref()} target="_blank" rel="noreferrer">Back to CV</a>
               </section>
             )}
           </div>
@@ -1651,7 +1648,6 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
       <CommandDialog
         open={searchOpen}
         query={searchQuery}
-        locale={locale}
         activeRoute={activeRoute}
         onQuery={setSearchQuery}
         onClose={() => setSearchOpen(false)}

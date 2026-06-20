@@ -12,6 +12,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.ok(existsSync("src/components/studio-kit/index.ts"));
   assert.ok(existsSync("src/components/studio-kit/shadow-island.tsx"));
   assert.ok(existsSync("src/components/studio-kit/upstream.json"));
+  assert.ok(!existsSync("src/app/[locale]/cv/page.tsx"));
+  assert.ok(!existsSync("src/app/[locale]/cv/opengraph-image.tsx"));
+  assert.ok(!existsSync("src/components/PDFResumeViewer.tsx"));
 
   const [
     routes,
@@ -29,6 +32,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     kitIndex,
     shadowIsland,
     kitUpstream,
+    packageJson,
     enMessages,
     viMessages
   ] = await Promise.all([
@@ -47,12 +51,15 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/components/studio-kit/index.ts", "utf8"),
     readFile("src/components/studio-kit/shadow-island.tsx", "utf8"),
     readFile("src/components/studio-kit/upstream.json", "utf8"),
+    readFile("package.json", "utf8"),
     readFile("messages/en.json", "utf8"),
     readFile("messages/vi.json", "utf8")
   ]);
 
   assert.match(routes, /STUDIO:\s*"\/studio"/);
+  assert.doesNotMatch(routes, /CV:\s*"\/cv"/);
   assert.match(sitemap, /path:\s*"\/studio"/);
+  assert.doesNotMatch(sitemap, /path:\s*"\/cv"/);
   assert.doesNotMatch(header, /APP_ROUTE\.STUDIO/);
   assert.doesNotMatch(header, /trackId:\s*"studio"/);
   assert.match(footer, /APP_ROUTE\.STUDIO/);
@@ -108,6 +115,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowIsland, /createPortal/);
   assert.match(kitUpstream, /next-shadcn-admin-dashboard-main/);
   assert.match(kitUpstream, /"sourceVersion": "2\.2\.0"/);
+  assert.doesNotMatch(packageJson, /@react-pdf-viewer\/core/);
+  assert.doesNotMatch(packageJson, /pdfjs-dist/);
 
   for (const expectedClass of [
     "studio-admin",
@@ -146,4 +155,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
 
   assert.match(enMessages, /"studio":\s*"Studio"/);
   assert.match(viMessages, /"studio":\s*"Studio"/);
+  assert.doesNotMatch(enMessages, /"cv":\s*\{\s*"title":\s*"Software Engineer"/);
+  assert.doesNotMatch(viMessages, /"cv":\s*\{\s*"title":\s*"Software Engineer"/);
 });

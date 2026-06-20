@@ -256,9 +256,6 @@
     }
   },
   "Pages": {
-    "cv": {
-      "title": "Software Engineer"
-    },
     "about": {
       "heading": "소개"
     },
@@ -380,7 +377,6 @@
         "budding": "새싹",
         "evergreen": "상록"
       },
-
       "viewGraph": "그래프",
       "viewList": "목록",
       "viewToggle": "보기 전환",

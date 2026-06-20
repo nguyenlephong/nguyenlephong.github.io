@@ -256,9 +256,6 @@
     }
   },
   "Pages": {
-    "cv": {
-      "title": "Software Engineer"
-    },
     "about": {
       "heading": "À propos de moi"
     },
@@ -380,7 +377,6 @@
         "budding": "Bourgeon",
         "evergreen": "Persistant"
       },
-
       "viewGraph": "Graphe",
       "viewList": "Liste",
       "viewToggle": "Changer de vue",
