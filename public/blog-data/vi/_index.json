@@ -933,18 +933,6 @@
       "updated": "2026-06-16"
     },
     {
-      "slug": "signals-or-messages",
-      "title": "Tín hiệu hay thông điệp: cái giá thầm lặng của giao tiếp mập mờ",
-      "summary": "Abraham Zaleznik nhận ra rằng những người không thoải mái với sự gắn kết trực tiếp thường giao tiếp bằng tín hiệu thay vì thông điệp. Về việc vì sao giao tiếp mập mờ cảm thấy an toàn khi gửi và đáp xuống thành lo âu, cách nó lặng lẽ nuôi lớn chính trị nội bộ, và vì sao một thông điệp rõ ràng là một lòng tốt — nhất là khi nó khó nói.",
-      "tags": [
-        "Leadership",
-        "Management",
-        "Giao tiếp",
-        "Engineering Culture",
-        "Team Collaboration"
-      ]
-    },
-    {
       "slug": "sitting-with-the-problem",
       "title": "Kỷ luật ngồi lại với một bài toán bạn chưa thể giải",
       "summary": "Có người khôi phục trật tự ngay khi hỗn loạn xuất hiện; có người giữ được bài toán ở trạng thái mở đủ lâu để hiểu nó. Về khả năng chịu đựng sự mập mờ như một kỷ luật có thể luyện, cái giá của việc giải trước khi hiểu, cái bẫy Einstellung, và vì sao sự trưởng thành nằm ở chỗ bạn ở lại với một bài toán khó được bao lâu.",
@@ -990,6 +978,18 @@
         "Lãnh đạo",
         "Thực thi",
         "Engineering Culture"
+      ]
+    },
+    {
+      "slug": "signals-or-messages",
+      "title": "Ra hiệu hay nói thẳng: cái giá thầm lặng của những câu mập mờ",
+      "summary": "Abraham Zaleznik để ý rằng những người ngại gắn kết trực tiếp thường ra hiệu thay vì nói thẳng. Về việc vì sao giao tiếp mập mờ thì dịu dàng khi gửi đi mà đáp xuống thành lo âu, cách nó lặng lẽ nuôi lớn chính trị nội bộ, và vì sao một thông điệp rõ ràng là một lòng tốt — nhất là khi nó khó nói.",
+      "tags": [
+        "Leadership",
+        "Management",
+        "Giao tiếp",
+        "Engineering Culture",
+        "Team Collaboration"
       ]
     }
   ]
