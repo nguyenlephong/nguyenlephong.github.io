@@ -979,6 +979,18 @@
         "Incident",
         "Engineering Culture"
       ]
+    },
+    {
+      "slug": "pull-dont-push",
+      "title": "Kéo, đừng đẩy: vì sao người ta đi theo ý nghĩa, không phải mệnh lệnh",
+      "summary": "Bennis và Goldsmith mô tả hai cách làm người ta chuyển động: đẩy (hạn chót, KPI, quyền lực vị trí) và kéo (ý nghĩa và lòng tin). Về hình ảnh ngôn ngữ ký hiệu khó quên giữa dây cương và vòng tay ôm ấp, vì sao kéo chậm hơn nhưng sâu hơn, sự thành thật mà nó đòi hỏi, và khi nào nên dùng cái nào. Bài khép lại của loạt.",
+      "tags": [
+        "Leadership",
+        "Management",
+        "Động lực",
+        "Giao tiếp",
+        "Engineering Culture"
+      ]
     }
   ]
 }

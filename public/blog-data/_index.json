@@ -1011,6 +1011,25 @@
       "featured": true,
       "series": "leadership-and-management",
       "seriesOrder": 4
+    },
+    {
+      "slug": "pull-dont-push",
+      "category": "culture",
+      "title": "Pull, Don't Push: Why People Follow Meaning, Not Instructions",
+      "summary": "Bennis and Goldsmith described two ways to move people: push (deadlines, KPIs, position power) and pull (meaning and trust). On the unforgettable sign-language image of reins versus a cradle, why pull is slower but deeper, the honesty it requires, and when to reach for each. The closing piece of the series.",
+      "date": "2026-06-20",
+      "readingMinutes": 5,
+      "tags": [
+        "Leadership",
+        "Management",
+        "Motivation",
+        "Communication",
+        "Engineering Culture"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "series": "leadership-and-management",
+      "seriesOrder": 5
     }
   ]
 }
