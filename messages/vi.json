@@ -238,9 +238,6 @@
     }
   },
   "Pages": {
-    "cv": {
-      "title": "Software Engineer"
-    },
     "about": {
       "heading": "Về tôi"
     },
@@ -508,78 +505,127 @@
     }
   },
   "About": {
-    "heading": "Nguyễn Lê Phong — Kỹ sư phần mềm",
-    "sections": [
-      {
-        "title": "Kỹ năng & Kinh nghiệm",
-        "items": [
-          "Cử nhân <strong>Công nghệ Thông tin</strong>. Xếp loại: <strong>Giỏi</strong>. <strong>(GPA: 3.36)</strong>",
-          "<strong>5+ năm</strong> kinh nghiệm phát triển front-end",
-          "Thành thạo <strong>JavaScript, DOM, HTML5, LESS, SASS/CSS3</strong>",
-          "Hiểu các nguyên tắc <strong>SEO</strong>.",
-          "Có kinh nghiệm về <strong>thiết kế UI/UX, tối ưu hiệu năng, testing, design pattern</strong>, v.v.",
-          "Kinh nghiệm với các framework front-end như <strong>React, Next.js</strong>",
-          "Hiểu bản chất của <strong>lập trình bất đồng bộ</strong>",
-          "Quen thuộc với các công nghệ back-end như <strong>Node.js, Java</strong>",
-          "Nắm vững cấu trúc dữ liệu và giải thuật.",
-          "Kinh nghiệm với các công cụ build front-end như <strong>Webpack</strong>",
-          "Hiểu nguyên tắc <strong>responsive design</strong> và phát triển <strong>mobile-first</strong>",
-          "Kỹ năng <strong>giải quyết vấn đề</strong> và <strong>phân tích</strong> tốt",
-          "Tỉ mỉ và có khả năng <strong>viết code sạch, dễ bảo trì</strong>",
-          "Kinh nghiệm với các <strong>hệ thống quản lý phiên bản</strong> như Git, GitLab, Bitbucket, SVN",
-          "Đam mê học hỏi và luôn cập nhật các xu hướng phát triển front-end mới nhất",
-          "Có khả năng <strong>làm việc độc lập</strong> và phối hợp theo nhóm",
-          "Kỹ năng giao tiếp <strong>nói và viết tốt</strong>"
-        ]
-      },
-      {
-        "title": "Điểm mạnh",
-        "items": [
-          "Tôi là người có <strong>tinh thần trách nhiệm cao</strong> trong công việc",
-          "<strong>Dễ thích nghi</strong> với môi trường làm việc nhóm, có khả năng <strong>quản lý</strong> nhóm từ 3 đến 5 người",
-          "Dễ hòa đồng, sẵn sàng giúp đỡ người khác khi có thể",
-          "Tôi có khả năng <strong>quản lý thời gian cá nhân tốt</strong>",
-          "Có khả năng <strong>phân tích và giải quyết vấn đề</strong>",
-          "Chịu được <strong>áp lực tốt, kiên nhẫn cao</strong>",
-          "Có khả năng đọc tài liệu <strong>tiếng Anh</strong>"
-        ]
-      },
-      {
-        "title": "Điểm yếu",
-        "items": [
-          "Đôi khi <strong>tự nói một mình</strong> khi tìm giải pháp cho công việc",
-          "Giao tiếp ngoại ngữ (tiếng Anh) <strong>chưa lưu loát</strong>"
-        ]
-      },
-      {
-        "title": "Sở thích",
-        "items": [
-          "Thích xem <strong>phim</strong> (phim có thể mang lại những bài học nâng cao kỹ năng sống), ca hát vào cuối tuần, ngày lễ cùng bạn bè và người thân",
-          "Tôi là người <strong>đam mê công nghệ</strong>, <strong>ứng dụng công nghệ</strong> vào thực tế",
-          "Thích đọc tin tức <strong>công nghệ mới</strong>, các ứng dụng mới để trò chuyện cùng bạn bè khi rảnh rỗi",
-          "Tôi cũng có thói quen <strong>đọc sách</strong>, mỗi quý tự trang bị cho mình những cuốn sách mới"
-        ]
-      },
-      {
-        "title": "Là một kỹ sư phần mềm front-end, trong quá trình làm việc, tôi luôn chú ý đến những điều sau:",
-        "items": [
-          "<strong>Semantic HTML</strong>: Sử dụng các phần tử HTML đúng ngữ nghĩa để cấu trúc và ý nghĩa nội dung rõ ràng với cả con người lẫn máy móc.",
-          "<strong>Kiến trúc CSS</strong>: Triển khai cấu trúc CSS module hóa và dễ bảo trì, ví dụ như BEM",
-          "<strong>Trải nghiệm người dùng</strong>: Đảm bảo website hoặc ứng dụng dễ sử dụng và mang lại trải nghiệm tốt.",
-          "<strong>Khả năng tiếp cận</strong>: Đảm bảo website hoặc ứng dụng tiếp cận được với người dùng khuyết tật.",
-          "<strong>Tương thích đa trình duyệt</strong>: Đảm bảo website hoặc ứng dụng hoạt động trên nhiều trình duyệt và thiết bị khác nhau.",
-          "<strong>Hợp tác</strong>: Giao tiếp và phối hợp tốt với các thành viên trong nhóm, đặc biệt là với back-end developer, là yếu tố quan trọng cho thành công của dự án.",
-          "<strong>Responsive design</strong>: Đảm bảo website hoặc ứng dụng được tối ưu cho nhiều kích thước màn hình và thiết bị.",
-          "<strong>Tối ưu hiệu năng</strong>: Giảm thiểu <strong>dung lượng file</strong>, tối ưu <strong>hình ảnh</strong>, và áp dụng <strong>lazy loading</strong> để cải thiện hiệu năng website.",
-          "<strong>Bảo mật</strong>: Nhận thức các rủi ro bảo mật và triển khai biện pháp phòng tránh.",
-          "<strong>Khả năng bảo trì</strong>: Viết code <strong>sạch và có tổ chức</strong>, dễ <strong>bảo trì và chỉnh sửa</strong> trong tương lai.",
-          "<strong>Best practices</strong>: Tuân thủ các thực hành tốt nhất theo tiêu chuẩn ngành cho phát triển front-end.",
-          "<strong>Testing</strong>: Thường xuyên kiểm thử website hoặc ứng dụng để đảm bảo hoạt động đúng như mong đợi.",
-          "<strong>Tích hợp/Triển khai liên tục (CI/CD)</strong>: Tự động hóa quy trình build, test và deploy để đảm bảo <strong>quy trình phát triển</strong> mượt mà và hiệu quả.",
-          "<strong>Tài liệu</strong>: Viết tài liệu rõ ràng, súc tích để code <strong>dễ hiểu</strong> với các developer khác và dễ bảo trì trong tương lai."
-        ]
-      }
-    ]
+    "hero": {
+      "eyebrow": "Hồ sơ kỹ thuật",
+      "title": "Tôi xây dựng hệ thống sản phẩm có thể release, quan sát và phục hồi.",
+      "lead": "Công việc hiện tại của tôi nằm giữa <strong>product engineering</strong> và <strong>platform reliability</strong>: giao diện front-end, backend service, integration bảo mật, hệ thống rollout, hạ tầng Kubernetes và mô hình vận hành giúp team release ít phải đoán mò hơn.",
+      "metricsLabel": "Tín hiệu kỹ thuật hiện tại",
+      "metrics": [
+        {
+          "value": "8+",
+          "label": "năm ship phần mềm production"
+        },
+        {
+          "value": "11",
+          "label": "thành viên trong delivery team tôi đang lead"
+        },
+        {
+          "value": "30+",
+          "label": "tenant được phục vụ bởi hệ thống rollout"
+        },
+        {
+          "value": "~40k",
+          "label": "người dùng phía sau nền tảng feature flag"
+        }
+      ]
+    },
+    "systems": {
+      "eyebrow": "Trọng tâm hiện tại",
+      "title": "Lớp hệ thống tôi đang vận hành",
+      "intro": "Tôi vẫn quan tâm đến giao diện chỉn chu, nhưng giá trị hiện tại rộng hơn: nối quyết định sản phẩm với backend contract, đường đi hạ tầng, kiểm soát release và khả năng chẩn đoán production.",
+      "items": [
+        {
+          "title": "Backend service & integration bảo mật",
+          "body": "Tôi làm việc với <strong>.NET Core</strong>, <strong>Node.js</strong> và <strong>Java Spring</strong>, tập trung vào REST/GraphQL contract, auth, mã hoá, backward compatibility, retry, idempotency và độ bất ổn từ hệ thống đối tác.",
+          "tags": [".NET Core", "Node.js", "Java Spring", "REST/GraphQL", "mTLS"]
+        },
+        {
+          "title": "Platform, infra & traffic path",
+          "body": "Tôi tham gia vào đường đi production quanh <strong>Docker</strong>, <strong>Kubernetes</strong>, <strong>AKS/FKE/K3S/EKS</strong>, <strong>ArgoCD</strong>, CI/CD, domain/SSL, ingress, load balancer routing và các bước phục hồi khi hệ thống đang chịu áp lực.",
+          "tags": ["Kubernetes", "ArgoCD", "CI/CD", "Ingress", "Load balancer"]
+        },
+        {
+          "title": "Progressive delivery",
+          "body": "Tôi đã xây dựng <strong>nền tảng feature flag multi-tenant</strong> với rule ưu tiên, rollout theo tenant/segment/env, JSON-config values và runtime stateless để release đi từng bước thay vì bật toàn bộ cùng lúc.",
+          "tags": ["Feature flags", "30+ tenant", "Rollout rules", "Runtime config"]
+        },
+        {
+          "title": "Observability & vận hành rõ ràng",
+          "body": "Tôi xây các feedback loop quanh release: PostHog, metrics pipeline, API health check, anomaly review, rollback readiness, RFC, runbook và release criteria để sự cố dễ hiểu hơn.",
+          "tags": ["PostHog", "Metrics", "Runbook", "Rollback", "Release review"]
+        }
+      ]
+    },
+    "stack": {
+      "eyebrow": "Chiều sâu kỹ thuật",
+      "title": "Những chi tiết kỹ thuật tôi chú ý",
+      "intro": "Hệ thống tốt với tôi không chỉ đủ feature. Nó cần contract rõ, failure mode có thể đoán được và đủ dấu hiệu vận hành để team tìm ra vấn đề trước khi người dùng cảm nhận.",
+      "groups": [
+        {
+          "title": "Kỹ thuật backend",
+          "items": [
+            "<strong>API contract tương thích ngược</strong> cho mobile, web và enterprise client.",
+            "<strong>RSA-4096 handshake, AES-256 payload encryption, mTLS, certificate pinning</strong> và ACK-driven monitoring cho integration tài chính.",
+            "<strong>Retry queue và idempotent API</strong> cho đối tác chậm, bất ổn hoặc xử lý bất đồng bộ.",
+            "<strong>Stateless runtime evaluation</strong> cho rollout rule, JSON config, tenant và segment targeting."
+          ]
+        },
+        {
+          "title": "Kỹ thuật hạ tầng",
+          "items": [
+            "<strong>Vận hành Kubernetes cluster</strong> trên các môi trường AKS, FKE, K3S và EKS.",
+            "<strong>Ingress, load balancer, domain và SSL path</strong> được xem là một phần của product delivery flow, không phải hộp đen.",
+            "<strong>ArgoCD và CI/CD pipeline</strong> cho release lặp lại được, kiểm soát môi trường và phục hồi.",
+            "<strong>Chẩn đoán production</strong> qua log, metric, health check và recovery step được tài liệu hoá."
+          ]
+        },
+        {
+          "title": "Kiến trúc release",
+          "items": [
+            "<strong>Micro-Frontend composition</strong> với Angular host và React module để giảm coupling khi deploy.",
+            "<strong>Feature-flag rollout</strong> theo tenant, segment, environment và percentage.",
+            "<strong>Observability workflow</strong> cho feature adoption, regression tracing và anomaly review.",
+            "<strong>Rollback criteria và release checklist</strong> để delivery vẫn có kiểm soát khi áp lực cao."
+          ]
+        },
+        {
+          "title": "Hệ thống cho team",
+          "items": [
+            "<strong>Ownership boundary</strong>, org chart, competency matrix và workload routing sau giai đoạn chuyển giao leadership.",
+            "<strong>RFC, runbook, technical spec</strong> và troubleshooting guide để giảm kiến thức ẩn.",
+            "<strong>Hiring, onboarding, 1:1 coaching</strong> và review loop cho developer và QC engineer.",
+            "<strong>Branch strategy, commit convention, release tagging</strong> và integration rule giúp delivery dễ dự đoán hơn."
+          ]
+        }
+      ]
+    },
+    "principles": {
+      "eyebrow": "Cách tôi làm việc",
+      "title": "Nguyên tắc tôi mang vào hệ thống production",
+      "intro": "Đây là các thói quen thực tế, không phải khẩu hiệu. Chúng đến từ việc nhìn thấy hệ thống lỗi theo những cách rất đời thường và học cách để lần release sau dễ hiểu hơn.",
+      "items": [
+        {
+          "title": "Trace trước khi rewrite",
+          "body": "Khi hệ thống hành xử lạ, tôi nhìn đường đi trước: request flow, data contract, log, metric, lịch sử release và thay đổi hạ tầng."
+        },
+        {
+          "title": "Contract trước số lượng code",
+          "body": "Backend service dễ vận hành hơn khi API, retry, idempotency, security boundary và compatibility rule rõ ràng."
+        },
+        {
+          "title": "Rollout trước big-bang release",
+          "body": "Feature flag, tenant targeting, staged deployment và rollback criteria giúp sản phẩm đi tiếp đều hơn mà không biến mỗi release thành một canh bạc."
+        },
+        {
+          "title": "Tài liệu phải giảm gián đoạn",
+          "body": "Spec, runbook và checklist hữu ích khi chúng giúp một kỹ sư khác chẩn đoán, phục hồi hoặc tiếp tục công việc mà không phải chờ một người duy nhất."
+        }
+      ]
+    },
+    "closing": {
+      "label": "Ghi chú kết About",
+      "body": "Tôi hữu ích nhất ở những team nơi <strong>tham vọng sản phẩm</strong>, <strong>độ phức tạp backend</strong> và <strong>độ ổn định production</strong> gặp nhau. Đó là nơi engineering cẩn thận biến hệ thống mơ hồ thành thứ team có thể ship, quan sát và cải tiến."
+    }
   },
   "ReaderTools": {
     "label": "Công cụ đọc",

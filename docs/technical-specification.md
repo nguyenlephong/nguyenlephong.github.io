@@ -23,17 +23,17 @@ views, shares, and reactions.
 
 ## 2. Product Scope
 
-The application has six public-facing surfaces and one private/noindex surface.
+The application has seven public-facing surfaces and one private/noindex surface.
 
 | Surface           | Main route                               | Purpose                                                                                                             |
 |-------------------|------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
 | Profile / CV home | `/{locale}`                              | Recruiter-focused personal profile, experience, projects, and contact CTA.                                          |
 | About             | `/{locale}/about`                        | Skills, strengths, and engineering principles.                                                                      |
-| CV PDF            | `/{locale}/cv`                           | Embedded PDF resume viewer.                                                                                         |
 | Gallery           | `/{locale}/gallery`                      | Certificates, awards, project snapshots, and activity images.                                                       |
 | Apps              | `/{locale}/apps`                         | Showcase for small tools such as Glance and E-Slang.                                                                |
 | Blog              | `/{locale}/blog` and nested post routes  | Engineering articles with SEO metadata, categories, related posts, and engagement widgets.                          |
 | Notes             | `/{locale}/notes` and nested note routes | Personal notes and book reflections with bilingual content behavior.                                                |
+| Studio            | `/{locale}/studio`                       | Shadow-DOM admin-style workbench for learning notes and engineering setup.                                          |
 | Heartbeats        | `/{locale}/heartbeats`                   | Private family-time visualization. It is blocked from search indexing and uses placeholder data in the public repo. |
 
 `/` is a static redirect page to `/en`. It still includes metadata so crawlers
@@ -57,12 +57,11 @@ The locale prefix is always present in public URLs.
 | Internationalization    | `next-intl`                               | Locale routing, translated messages, locale-aware links and metadata.                                    |
 | Content validation      | Zod                                       | Build-time validation for canonical blog and notes JSON files.                                           |
 | SEO structured data     | `schema-dts` and manual JSON-LD           | Person, WebSite, Blog, BlogPosting, Article, BreadcrumbList, FAQPage, ImageGallery, ItemList.            |
-| Social images           | `next/og`, `ImageResponse`, Node scripts  | Generates and caches OpenGraph images for profile, blog, notes, apps, gallery, and CV pages.             |
+| Social images           | `next/og`, `ImageResponse`, Node scripts  | Generates and caches OpenGraph images for profile, blog, notes, apps, and gallery pages.                 |
 | Styling                 | Global CSS, CSS variables, `next/font`    | Theme system, reading backgrounds, responsive layout, typography.                                        |
 | Motion                  | `framer-motion` with `LazyMotion`         | Lightweight reveal/count/progress animations.                                                            |
 | Icons                   | `react-icons`                             | Navigation, cards, controls, app visuals.                                                                |
 | Graph/visual tools      | D3 packages                               | Thought graph components exist in the repo, although no active App Router thoughts route is present now. |
-| PDF viewing             | `@react-pdf-viewer/core`, `pdfjs-dist`    | CV route renders the resume PDF in the browser.                                                          |
 | Dates                   | `dayjs`                                   | Heartbeats age and countdown calculations.                                                               |
 | Analytics               | PostHog, Google Analytics, Google AdSense | Page views, scroll depth, read time, outbound clicks, app interactions, ads script.                      |
 | Engagement storage      | Firebase Firestore                        | Public article counters for views, shares, and reactions.                                                |
@@ -135,7 +134,6 @@ It must either be built ahead of time or handled by client-side JavaScript.
 | `/`                                | `src/app/page.tsx`                                 | Static redirect to `/en` with crawler-readable metadata.                                  |
 | `/{locale}`                        | `src/app/[locale]/page.tsx`                        | Main CV/profile page, built from `profileInfo` and translated section labels.             |
 | `/{locale}/about`                  | `src/app/[locale]/about/page.tsx`                  | Translated about sections from `messages`.                                                |
-| `/{locale}/cv`                     | `src/app/[locale]/cv/page.tsx`                     | Dynamic PDF viewer component for the resume.                                              |
 | `/{locale}/gallery`                | `src/app/[locale]/gallery/page.tsx`                | Gallery from `profileInfo.gallery`, with ImageGallery JSON-LD.                            |
 | `/{locale}/apps`                   | `src/app/[locale]/apps/page.tsx`                   | Static app showcase from `apps.data.ts`.                                                  |
 | `/{locale}/apps/english`           | `src/app/[locale]/apps/english/page.tsx`           | Private/noindex E-Slang practice app.                                                     |
@@ -143,6 +141,7 @@ It must either be built ahead of time or handled by client-side JavaScript.
 | `/{locale}/blog/{category}`        | `src/app/[locale]/blog/[category]/page.tsx`        | Category landing page.                                                                    |
 | `/{locale}/blog/{category}/{slug}` | `src/app/[locale]/blog/[category]/[slug]/page.tsx` | Article page with schema, related posts, reading tracker, reactions, share dock, and TOC. |
 | `/{locale}/notes`                  | `src/app/[locale]/notes/page.tsx`                  | Notes index with topic filters and CollectionPage JSON-LD.                                |
+| `/{locale}/studio`                 | `src/app/[locale]/studio/page.tsx`                 | Shadow-DOM admin workbench, route-isolated from the main profile shell.                   |
 | `/{locale}/notes/{slug}`           | `src/app/[locale]/notes/[slug]/page.tsx`           | Note article page, source-book card, topic breadcrumb, FAQ support, engagement widgets.   |
 | `/{locale}/heartbeats`             | `src/app/[locale]/heartbeats/page.tsx`             | Private/noindex family time visualization with placeholder public data.                   |
 
@@ -382,7 +381,6 @@ not financial or security records.
 | Route progress     | `RouteProgressBar`                                     | Click/popstate-aware progress bar for internal navigation.                          |
 | Motion             | `MotionProvider`                                       | Uses `framer-motion` `LazyMotion` with the smaller DOM animation bundle.            |
 | Explorer filters   | `ExplorerShell`, `useExplorer`, blog/notes explorers   | Search, filter, tag, and topic/category exploration on content indexes.             |
-| PDF viewer         | `PDFResumeViewer`                                      | Browser-side resume preview.                                                        |
 
 ## 12. Build, Test, and Deploy
 

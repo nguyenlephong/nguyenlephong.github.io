@@ -7,7 +7,6 @@ import PageTracker from "@/components/analytics/PageTracker";
 import { routing, type Locale } from "@/i18n/routing";
 import StudioWorkspace from "./StudioWorkspace";
 import { studioNotes } from "./studio.data";
-import "./studio.css";
 
 const seo = PAGE_SEO.studio;
 
@@ -85,7 +84,42 @@ export default async function StudioPage({ params }: Props) {
   };
 
   return (
-    <main className="studio-page">
+    <main className="studio-route-shell">
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            body:has(.studio-route-shell),
+            body.studio-app-shell-active {
+              background: #fafafa !important;
+            }
+
+            body:has(.studio-route-shell) main.studio-route-shell,
+            body.studio-app-shell-active main.studio-route-shell {
+              padding-top: 0 !important;
+              padding-bottom: 0 !important;
+            }
+
+            body:has(.studio-route-shell) .app-nav,
+            body:has(.studio-route-shell) .nav-mobile-panel,
+            body:has(.studio-route-shell) .nav-mobile-backdrop,
+            body:has(.studio-route-shell) .app-footer,
+            body:has(.studio-route-shell) .blog-reader-tools,
+            body:has(.studio-route-shell) .font-switcher,
+            body:has(.studio-route-shell) .reading-background-switcher,
+            body:has(.studio-route-shell) .locale-menu,
+            body.studio-app-shell-active .app-nav,
+            body.studio-app-shell-active .nav-mobile-panel,
+            body.studio-app-shell-active .nav-mobile-backdrop,
+            body.studio-app-shell-active .app-footer,
+            body.studio-app-shell-active .blog-reader-tools,
+            body.studio-app-shell-active .font-switcher,
+            body.studio-app-shell-active .reading-background-switcher,
+            body.studio-app-shell-active .locale-menu {
+              display: none !important;
+            }
+          `
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionLd) }}

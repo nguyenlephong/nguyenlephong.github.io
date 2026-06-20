@@ -8,7 +8,6 @@ export type PageType =
   | 'apps'
   | 'gallery'
   | 'about'
-  | 'cv'
   | 'studio'
   | 'home_alt'
 

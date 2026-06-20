@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const css = await readFile("src/app/[locale]/blog/blog.css", "utf8");
+const globalCss = await readFile("src/app/globals.css", "utf8");
 const blogExplorer = await readFile("src/components/blog/BlogExplorer.tsx", "utf8");
 const notesExplorer = await readFile(
   "src/components/notes/NotesExplorer.tsx",
@@ -17,9 +18,9 @@ const useExplorerHook = await readFile(
   "utf8"
 );
 
-function blockFor(selector) {
+function blockFor(selector, source = css) {
   const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const match = css.match(new RegExp(`${escaped}\\s*\\{([\\s\\S]*?)\\n\\}`, "m"));
+  const match = source.match(new RegExp(`${escaped}\\s*\\{([\\s\\S]*?)\\n\\}`, "m"));
   assert.ok(match, `missing CSS block for ${selector}`);
   return match[1];
 }
@@ -92,13 +93,13 @@ test("blog and notes explorer controls use a compact command palette contract", 
   assert.match(notesExplorer, /ExplorerShell/);
   assert.match(notesExplorer, /useExplorer/);
 
-  const readerTrigger = blockFor(".blog-reader-tools__trigger");
+  const readerTrigger = blockFor(".blog-reader-tools__trigger", globalCss);
   assert.match(readerTrigger, /position:\s*relative/);
   assert.match(readerTrigger, /overflow:\s*visible/);
-  const readerFlicker = blockFor(".blog-reader-tools__trigger::before");
+  const readerFlicker = blockFor(".blog-reader-tools__trigger::before", globalCss);
   assert.match(readerFlicker, /reader-tool-aurora-pulse/);
   assert.match(
-    css,
+    globalCss,
     /\.blog-reader-tools__trigger::after\s*\{[\s\S]*?reader-tool-aurora-rim/
   );
 
@@ -106,8 +107,8 @@ test("blog and notes explorer controls use a compact command palette contract", 
   assert.match(css, /@keyframes\s+command-apple-sheen/);
   assert.match(css, /@keyframes\s+command-listening-halo/);
   assert.match(css, /@keyframes\s+command-listening-orbit/);
-  assert.match(css, /@keyframes\s+reader-tool-aurora-pulse/);
-  assert.match(css, /@keyframes\s+reader-tool-aurora-rim/);
+  assert.match(globalCss, /@keyframes\s+reader-tool-aurora-pulse/);
+  assert.match(globalCss, /@keyframes\s+reader-tool-aurora-rim/);
   assert.match(css, /@media\s*\(prefers-reduced-transparency:\s*reduce\)/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
 });

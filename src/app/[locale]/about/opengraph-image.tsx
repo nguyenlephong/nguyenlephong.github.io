@@ -14,19 +14,19 @@ export function generateStaticParams() {
 export const dynamic = 'force-static'
 
 export default async function OgImage() {
-  const cacheKey = 'static-about-v1'
+  const cacheKey = 'static-about-v2'
   const cached = getCachedOg(cacheKey)
   if (cached) return cachedOgResponse(cached)
 
   const response = new ImageResponse(
     (
       <OgShell
-        theme="violet"
+        theme="ocean"
         eyebrow="About"
-        title="How I think about engineering."
-        subtitle="Skills, strengths, and the principles I bring to every team — semantic HTML, performance, accessibility, testing, and a documentation-first culture."
-        chips={['Very Good degree', 'GPA 3.36', '8+ yrs experience', 'Team lead']}
-        badge={{ label: 'Classification', value: 'Very Good' }}
+        title="Backend, platform, and product engineering."
+        subtitle="Production systems across secure integrations, Kubernetes infrastructure, load balancer paths, feature-flag rollouts, observability, and technical leadership."
+        chips={['.NET Core', 'Kubernetes', 'Load balancer', 'Feature flags']}
+        badge={{ label: 'Experience', value: '8+ yrs' }}
       />
     ),
     { ...size }

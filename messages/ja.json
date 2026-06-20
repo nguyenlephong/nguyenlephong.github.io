@@ -256,9 +256,6 @@
     }
   },
   "Pages": {
-    "cv": {
-      "title": "Software Engineer"
-    },
     "about": {
       "heading": "私について"
     },
@@ -380,7 +377,6 @@
         "budding": "芽生え",
         "evergreen": "常緑"
       },
-
       "viewGraph": "グラフ",
       "viewList": "リスト",
       "viewToggle": "表示切替",
