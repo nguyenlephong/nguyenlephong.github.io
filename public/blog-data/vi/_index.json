@@ -933,18 +933,6 @@
       "updated": "2026-06-16"
     },
     {
-      "slug": "pull-dont-push",
-      "title": "Kéo, đừng đẩy: vì sao người ta đi theo ý nghĩa, không phải mệnh lệnh",
-      "summary": "Bennis và Goldsmith mô tả hai cách làm người ta chuyển động: đẩy (hạn chót, KPI, quyền lực vị trí) và kéo (ý nghĩa và lòng tin). Về hình ảnh ngôn ngữ ký hiệu khó quên giữa dây cương và vòng tay ôm ấp, vì sao kéo chậm hơn nhưng sâu hơn, sự thành thật mà nó đòi hỏi, và khi nào nên dùng cái nào. Bài khép lại của loạt.",
-      "tags": [
-        "Leadership",
-        "Management",
-        "Động lực",
-        "Giao tiếp",
-        "Engineering Culture"
-      ]
-    },
-    {
       "slug": "over-managed-and-under-led",
       "title": "Bận rộn mà vẫn lạc hướng: khi một team được quản lý kỹ nhưng thiếu người dẫn dắt",
       "summary": "Một team được quản lý rất kỹ vẫn có thể từ từ đi lạc. Mượn cách phân biệt của John Kotter — quản lý để trị cái phức tạp, lãnh đạo để theo kịp cái đổi thay — đây là cách nhận ra lúc một team bận rộn mà thiếu người dẫn dắt, cùng vài cách nhỏ, làm được đều, để đưa cái hướng quay lại.",
@@ -989,6 +977,18 @@
         "Management",
         "Giải quyết vấn đề",
         "Incident",
+        "Engineering Culture"
+      ]
+    },
+    {
+      "slug": "pull-dont-push",
+      "title": "Cầm cương hay ôm vào lòng: người ta đi theo ý nghĩa, không theo mệnh lệnh",
+      "summary": "Bennis và Goldsmith mô tả hai cách làm người ta chuyển động: đẩy (hạn chót, KPI, quyền lực vị trí) và kéo (ý nghĩa và lòng tin). Về hình ảnh ngôn ngữ ký hiệu khó quên giữa dây cương và vòng tay ôm ấp, vì sao kéo chậm hơn nhưng sâu hơn, sự thành thật mà nó đòi hỏi, và khi nào nên dùng cái nào. Bài khép lại của loạt.",
+      "tags": [
+        "Leadership",
+        "Management",
+        "Động lực",
+        "Giao tiếp",
         "Engineering Culture"
       ]
     }
