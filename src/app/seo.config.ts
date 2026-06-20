@@ -119,14 +119,6 @@ export const PAGE_SEO: Record<
   },
 }
 
-// Reference link shown only inside the rendered page (visible footer credit).
-// NOT exposed in any SEO metadata — meta description, JSON-LD, OG images,
-// sitemap, robots — must stay clean of this URL by request.
-export const THOUGHTS_SOURCE = {
-  homepage: 'https://huylenq.github.io',
-  thoughtUrl: (slug: string) => `https://huylenq.github.io/thoughts/${slug}`,
-}
-
 export function absoluteUrl(path: string): string {
   if (!path.startsWith('/')) return path
   return `${SITE_URL}${path === '/' ? '' : path}`

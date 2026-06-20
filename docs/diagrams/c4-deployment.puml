@@ -1,0 +1,58 @@
+@startuml c4_deployment
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml
+
+LAYOUT_WITH_LEGEND()
+
+title C4 Deployment - Static Export and Browser Runtime
+
+Person(owner, "Site Owner", "Commits source and content changes.")
+Person(visitor, "Visitor", "Loads the site in a browser.")
+
+Deployment_Node(dev_machine, "Developer Machine", "macOS / Node.js", "Local editing and preview") {
+  Container(repo, "Working Tree", "Git repository", "Source code, public content, messages, tests, and docs.")
+  Container(dev_server, "Next Dev Server", "npm run dev", "Runs on port 10505 for local development.")
+}
+
+Deployment_Node(github, "GitHub", "Repository and automation") {
+  Container(source_repo, "Remote Repository", "GitHub", "Stores committed source and content.")
+  Deployment_Node(actions, "GitHub Actions Runner", "Ubuntu / Node 20") {
+    Container(ci_quality, "Quality Job", "npm", "Runs typecheck, lint, node tests, and fast smoke build.")
+    Container(build_job, "Pages Build Job", "Next.js static export", "Runs full build, generates OG images, restores cache, and prepares out.")
+    ContainerDb(actions_cache, "Actions Cache", "GitHub cache", "Caches node dependencies and public/og-cache entries.")
+  }
+}
+
+Deployment_Node(static_hosting, "GitHub Pages", "Static hosting") {
+  Container(out_dir, "Published out Directory", "HTML / CSS / JS / PNG / PDF", "The production site files served over HTTPS.")
+}
+
+Deployment_Node(browser, "Visitor Browser", "Chrome, Safari, Firefox, Edge") {
+  Container(static_runtime, "Hydrated Static App", "React client runtime", "Runs interactive widgets, reader tools, analytics, and engagement UI.")
+  ContainerDb(browser_storage, "Browser Storage", "localStorage / sessionStorage", "Stores theme, font, reading background, reaction, and viewed-session markers.")
+}
+
+Deployment_Node(firebase, "Firebase", "Google Cloud") {
+  ContainerDb(firestore, "Cloud Firestore", "NoSQL document store", "postStats collection for article engagement counters.")
+}
+
+Deployment_Node(external_analytics, "External Analytics", "SaaS") {
+  Container(posthog, "PostHog", "Analytics", "Product analytics events.")
+  Container(google, "Google Analytics / AdSense", "Analytics and ads", "Traffic analytics and ads scripts.")
+}
+
+Rel(owner, repo, "Edits locally")
+Rel(repo, dev_server, "Runs local preview", "npm run dev")
+Rel(owner, source_repo, "Pushes commits", "Git")
+Rel(source_repo, ci_quality, "Triggers on PR and dev branch pushes")
+Rel(source_repo, build_job, "Triggers on master branch pushes")
+Rel(ci_quality, actions_cache, "Restores dependency cache")
+Rel(build_job, actions_cache, "Restores and saves OG image cache")
+Rel(build_job, out_dir, "Deploys static export", "GitHub Pages artifact")
+Rel(visitor, out_dir, "Requests pages and assets", "HTTPS")
+Rel(out_dir, static_runtime, "Loads HTML, CSS, JS, images, and PDFs")
+Rel(static_runtime, browser_storage, "Persists local preferences and markers")
+Rel(static_runtime, firestore, "Reads/writes engagement counters", "HTTPS / Firestore SDK")
+Rel(static_runtime, posthog, "Sends analytics events", "HTTPS")
+Rel(static_runtime, google, "Loads analytics and ads scripts", "HTTPS")
+
+@enduml

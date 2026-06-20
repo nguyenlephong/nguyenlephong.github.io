@@ -1,0 +1,41 @@
+@startuml c4_component_engagement
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title C4 Component - Analytics and Engagement
+
+Person(reader, "Reader", "Reads pages, scrolls articles, shares posts, and reacts to content.")
+
+Container_Boundary(browser, "Visitor Browser") {
+  Component(layout_scripts, "Layout Scripts", "src/app/[locale]/layout.tsx", "Loads PostHog, Google Analytics, AdSense, and global page context lazily.")
+  Component(track_helper, "Analytics Helper", "src/lib/analytics.ts", "Adds path/timestamp context, respects Do-Not-Track, and fails silently.")
+  Component(page_tracker, "PageTracker", "src/components/analytics/PageTracker.tsx", "Tracks page view, scroll depth, visibility, and time on page.")
+  Component(reading_tracker, "BlogReadingTracker", "src/components/blog/BlogReadingTracker.tsx", "Tracks article view, scroll depth, read complete, and visible reading time.")
+  Component(engagement_provider, "EngagementProvider", "src/components/blog/EngagementProvider.tsx", "Shares one article engagement state across view count, share dock, and reactions.")
+  Component(engagement_hook, "usePostEngagement", "src/components/blog/usePostEngagement.ts", "Loads counters, increments one view per session, persists browser reaction state, and performs optimistic updates.")
+  Component(firebase_client, "Firebase Client", "src/lib/firebase/client.ts", "Dynamically imports Firebase only when configured and running in the browser.")
+  Component(post_stats, "Post Stats Access", "src/lib/firebase/postStats.ts", "Normalizes counters and applies atomic view, share, and reaction increments.")
+  Component(local_storage, "Browser Storage", "localStorage and sessionStorage", "Stores reaction choice and one-view-per-session markers.")
+}
+
+System_Ext(posthog, "PostHog", "Receives browser analytics events.")
+System_Ext(google, "Google Analytics / AdSense", "Receives analytics and ad script requests.")
+System_Ext(firestore, "Firebase Firestore", "postStats documents for public counters.")
+
+Rel(reader, page_tracker, "Views and scrolls pages")
+Rel(reader, reading_tracker, "Reads articles")
+Rel(reader, engagement_provider, "Shares and reacts")
+Rel(layout_scripts, posthog, "Initializes analytics", "HTTPS")
+Rel(layout_scripts, google, "Loads external scripts", "HTTPS")
+Rel(page_tracker, track_helper, "Sends page events")
+Rel(reading_tracker, track_helper, "Sends article reading events")
+Rel(track_helper, posthog, "Captures events when DNT allows", "HTTPS")
+Rel(engagement_provider, engagement_hook, "Provides shared state")
+Rel(engagement_hook, local_storage, "Reads and writes view/reaction markers")
+Rel(engagement_hook, post_stats, "Gets and updates counters")
+Rel(post_stats, firebase_client, "Requests Firestore instance")
+Rel(firebase_client, firestore, "Connects with public NEXT_PUBLIC_FIREBASE_* config", "Firestore SDK")
+Rel(post_stats, firestore, "Reads docs and applies atomic increments", "Firestore SDK")
+
+@enduml
