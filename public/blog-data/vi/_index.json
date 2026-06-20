@@ -933,18 +933,6 @@
       "updated": "2026-06-16"
     },
     {
-      "slug": "over-managed-and-under-led",
-      "title": "Quản lý quá nhiều, lãnh đạo quá ít: vì sao một team bận rộn vẫn có thể lạc hướng",
-      "summary": "Một team có thể được quản lý rất cẩn thận mà vẫn trôi dạt. Dựa trên sự phân biệt của John Kotter giữa đối phó với phức tạp và đối phó với thay đổi, đây là cách nhận ra khi một team bị quản lý quá nhiều và lãnh đạo quá ít — cùng những cách nhỏ, lặp lại được để đưa hướng đi quay lại.",
-      "tags": [
-        "Leadership",
-        "Management",
-        "Lãnh đạo",
-        "Quản lý",
-        "Engineering Culture"
-      ]
-    },
-    {
       "slug": "vision-without-craft",
       "title": "Tầm nhìn mà thiếu nghề: vì sao người lãnh đạo không thể lơ lửng trên công việc",
       "summary": "Warren Bennis nói nhà lãnh đạo làm việc đúng còn người quản lý làm đúng việc. Robert Sutton thêm phần quan trọng: để làm việc đúng, bạn phải hiểu cần những gì để làm mọi thứ đúng đắn. Về cái bẫy của tầm nhìn tách rời khỏi cái nghề — và sự bật lên bật xuống giữa bức tranh lớn và chi tiết.",
@@ -989,6 +977,18 @@
         "Management",
         "Động lực",
         "Giao tiếp",
+        "Engineering Culture"
+      ]
+    },
+    {
+      "slug": "over-managed-and-under-led",
+      "title": "Bận rộn mà vẫn lạc hướng: khi một team được quản lý kỹ nhưng thiếu người dẫn dắt",
+      "summary": "Một team được quản lý rất kỹ vẫn có thể từ từ đi lạc. Mượn cách phân biệt của John Kotter — quản lý để trị cái phức tạp, lãnh đạo để theo kịp cái đổi thay — đây là cách nhận ra lúc một team bận rộn mà thiếu người dẫn dắt, cùng vài cách nhỏ, làm được đều, để đưa cái hướng quay lại.",
+      "tags": [
+        "Leadership",
+        "Management",
+        "Lãnh đạo",
+        "Quản lý",
         "Engineering Culture"
       ]
     }
