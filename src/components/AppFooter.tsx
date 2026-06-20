@@ -2,7 +2,7 @@
 import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
-import { LuAppWindow } from 'react-icons/lu'
+import { LuAppWindow, LuOrbit } from 'react-icons/lu'
 import { SiLeetcode } from 'react-icons/si'
 import { APP_ROUTE, profileInfo } from '@/app/app.const'
 import { track } from '@/lib/analytics'
@@ -30,6 +30,16 @@ export default function AppFooter() {
                 onClick={() => track('cv_nav_click', { target: 'apps_footer' })}
               >
                 <LuAppWindow size={18} />
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={APP_ROUTE.STUDIO}
+                aria-label="Studio"
+                title="Studio"
+                onClick={() => track('cv_nav_click', { target: 'studio_footer' })}
+              >
+                <LuOrbit size={18} />
               </Link>
             </li>
             <li>
@@ -77,15 +87,16 @@ export default function AppFooter() {
               </Link>
             </li>
           </ul>
-          <p className="footer-copy">
-            {t('copy', { year })}
-            {process.env.NEXT_PUBLIC_APP_VERSION && (
-              <span className="footer-version">
-                v{process.env.NEXT_PUBLIC_APP_VERSION}
-              </span>
-            )}
-          </p>
         </div>
+
+        <p className="footer-copy">
+          {t('copy', { year })}
+          {process.env.NEXT_PUBLIC_APP_VERSION && (
+            <span className="footer-version">
+              v{process.env.NEXT_PUBLIC_APP_VERSION}
+            </span>
+          )}
+        </p>
       </div>
     </footer>
   )

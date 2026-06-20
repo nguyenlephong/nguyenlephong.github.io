@@ -3,14 +3,27 @@
 import { useEffect, useRef } from 'react'
 import { registerPageContext, track } from '@/lib/analytics'
 
-export type PageType = 'home' | 'apps' | 'gallery' | 'about' | 'cv' | 'home_alt'
+export type PageType =
+  | 'home'
+  | 'apps'
+  | 'gallery'
+  | 'about'
+  | 'cv'
+  | 'studio'
+  | 'home_alt'
 
 interface PageTrackerProps {
   page: PageType
   /** Optional section grouping that rides along every event on this page. */
   section?: string
   /** Override the page_view event name (default: `page_view`). */
-  eventName?: 'page_view' | 'apps_view' | 'gallery_view' | 'about_view' | 'cv_view'
+  eventName?:
+    | 'page_view'
+    | 'apps_view'
+    | 'gallery_view'
+    | 'about_view'
+    | 'cv_view'
+    | 'studio_view'
 }
 
 const SCROLL_BUCKETS = [25, 50, 75, 100] as const
