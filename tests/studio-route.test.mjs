@@ -6,9 +6,10 @@ import test from "node:test";
 test("studio route is wired into routing, seo, navigation, analytics, and inventory content", async () => {
   assert.ok(existsSync("src/app/[locale]/studio/page.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioWorkspace.tsx"));
-  assert.ok(existsSync("src/app/[locale]/studio/studio.css"));
+  assert.ok(existsSync("src/app/[locale]/studio/studio.shadow-styles.ts"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.data.ts"));
   assert.ok(existsSync("src/components/studio-kit/index.ts"));
+  assert.ok(existsSync("src/components/studio-kit/shadow-island.tsx"));
   assert.ok(existsSync("src/components/studio-kit/upstream.json"));
 
   const [
@@ -22,8 +23,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     page,
     workspace,
     data,
-    css,
+    shadowCss,
     kitIndex,
+    shadowIsland,
     kitUpstream,
     enMessages,
     viMessages
@@ -38,8 +40,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/app/[locale]/studio/page.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8"),
     readFile("src/app/[locale]/studio/studio.data.ts", "utf8"),
-    readFile("src/app/[locale]/studio/studio.css", "utf8"),
+    readFile("src/app/[locale]/studio/studio.shadow-styles.ts", "utf8"),
     readFile("src/components/studio-kit/index.ts", "utf8"),
+    readFile("src/components/studio-kit/shadow-island.tsx", "utf8"),
     readFile("src/components/studio-kit/upstream.json", "utf8"),
     readFile("messages/en.json", "utf8"),
     readFile("messages/vi.json", "utf8")
@@ -61,14 +64,16 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(page, /generateMetadata/);
   assert.match(page, /PageTracker page="studio" eventName="studio_view"/);
   assert.match(page, /StudioWorkspace/);
-  assert.match(page, /studio-kit\/studio-kit\.css/);
+  assert.doesNotMatch(page, /studio\.css/);
+  assert.doesNotMatch(page, /studio-kit\/studio-kit\.css/);
 
   assert.match(workspace, /^"use client"/);
   assert.match(workspace, /@\/components\/studio-kit/);
-  assert.match(workspace, /DashboardFrame/);
-  assert.match(workspace, /SearchField/);
-  assert.match(workspace, /SegmentedControl/);
-  assert.match(workspace, /ActionCard/);
+  assert.match(workspace, /ShadowIsland/);
+  assert.match(workspace, /studioShadowStyles/);
+  assert.match(workspace, /admin-sidebar/);
+  assert.match(workspace, /admin-topbar/);
+  assert.match(workspace, /workspace-grid/);
   assert.match(workspace, /selectedNoteId/);
   assert.match(workspace, /studioFolders/);
   assert.match(workspace, /studioNotes/);
@@ -76,23 +81,25 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(workspace, /Downloads\/next-shadcn-admin-dashboard-main/);
   assert.match(kitIndex, /export \* from "\.\/primitives"/);
   assert.match(kitIndex, /export \* from "\.\/dashboard"/);
+  assert.match(kitIndex, /export \* from "\.\/shadow-island"/);
+  assert.match(shadowIsland, /attachShadow\(\{ mode: "open", delegatesFocus: true \}\)/);
+  assert.match(shadowIsland, /createPortal/);
   assert.match(kitUpstream, /next-shadcn-admin-dashboard-main/);
   assert.match(kitUpstream, /"sourceVersion": "2\.2\.0"/);
 
   for (const expectedClass of [
-    "studio-workbench",
-    "studio-sidebar",
-    "studio-submenu",
-    "studio-note-card",
-    "studio-reader"
+    "admin-shell",
+    "admin-sidebar",
+    "admin-topbar",
+    "metric-grid",
+    "workspace-grid",
+    "rail-stack"
   ]) {
-    assert.match(css, new RegExp(`\\.${expectedClass}\\b`));
+    assert.match(shadowCss, new RegExp(`\\.${expectedClass}\\b`));
   }
-  assert.doesNotMatch(css, /\.studio-sidebar\s*\{[^}]*overflow:\s*auto/s);
-  assert.doesNotMatch(css, /\.studio-reader\s*\{[^}]*overflow:\s*auto/s);
-  assert.doesNotMatch(css, /height:\s*calc\(100vh - 72px\)/);
-  assert.match(css, /\.studio-page\s*\{[^}]*overflow-x:\s*clip/s);
-  assert.match(css, /\.studio-reader__header h2\s*\{[^}]*overflow-wrap:\s*anywhere/s);
+  assert.match(shadowCss, /grid-template-columns:\s*272px minmax\(0, 1fr\)/);
+  assert.match(shadowCss, /\.admin-sidebar\s*\{[^}]*height:\s*100vh/s);
+  assert.match(shadowCss, /@media \(max-width: 860px\)/);
 
   for (const expected of [
     "AI setup",

@@ -7,8 +7,6 @@ import PageTracker from "@/components/analytics/PageTracker";
 import { routing, type Locale } from "@/i18n/routing";
 import StudioWorkspace from "./StudioWorkspace";
 import { studioNotes } from "./studio.data";
-import "@/components/studio-kit/studio-kit.css";
-import "./studio.css";
 
 const seo = PAGE_SEO.studio;
 
@@ -86,7 +84,7 @@ export default async function StudioPage({ params }: Props) {
   };
 
   return (
-    <main className="studio-page">
+    <main>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionLd) }}
