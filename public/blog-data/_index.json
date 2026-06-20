@@ -937,25 +937,6 @@
       "updated": "2026-06-16"
     },
     {
-      "slug": "sitting-with-the-problem",
-      "category": "culture",
-      "title": "The Discipline of Sitting With a Problem You Can't Yet Solve",
-      "summary": "Some people restore order the instant disorder appears; others can hold a problem open long enough to understand it. On tolerance for ambiguity as a learnable discipline, the cost of solving before understanding, the Einstellung trap, and why the maturity is in how long you can stay with a hard problem.",
-      "date": "2026-06-20",
-      "readingMinutes": 5,
-      "tags": [
-        "Leadership",
-        "Management",
-        "Problem Solving",
-        "Incident Response",
-        "Engineering Culture"
-      ],
-      "author": "Nguyen Le Phong",
-      "featured": true,
-      "series": "leadership-and-management",
-      "seriesOrder": 4
-    },
-    {
       "slug": "pull-dont-push",
       "category": "culture",
       "title": "Pull, Don't Push: Why People Follow Meaning, Not Instructions",
@@ -1030,6 +1011,25 @@
       "featured": true,
       "series": "leadership-and-management",
       "seriesOrder": 3
+    },
+    {
+      "slug": "sitting-with-the-problem",
+      "category": "culture",
+      "title": "The Discipline of Sitting With a Problem You Can't Yet Solve",
+      "summary": "Some people restore order the instant disorder appears; others can hold a problem open long enough to understand it. On tolerance for ambiguity as a learnable discipline, the cost of solving before understanding, the Einstellung trap, and why the maturity is in how long you can stay with a hard problem.",
+      "date": "2026-06-20",
+      "readingMinutes": 5,
+      "tags": [
+        "Leadership",
+        "Management",
+        "Problem Solving",
+        "Incident Response",
+        "Engineering Culture"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true,
+      "series": "leadership-and-management",
+      "seriesOrder": 4
     }
   ]
 }

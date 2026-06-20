@@ -933,18 +933,6 @@
       "updated": "2026-06-16"
     },
     {
-      "slug": "sitting-with-the-problem",
-      "title": "Kỷ luật ngồi lại với một bài toán bạn chưa thể giải",
-      "summary": "Có người khôi phục trật tự ngay khi hỗn loạn xuất hiện; có người giữ được bài toán ở trạng thái mở đủ lâu để hiểu nó. Về khả năng chịu đựng sự mập mờ như một kỷ luật có thể luyện, cái giá của việc giải trước khi hiểu, cái bẫy Einstellung, và vì sao sự trưởng thành nằm ở chỗ bạn ở lại với một bài toán khó được bao lâu.",
-      "tags": [
-        "Leadership",
-        "Management",
-        "Giải quyết vấn đề",
-        "Incident",
-        "Engineering Culture"
-      ]
-    },
-    {
       "slug": "pull-dont-push",
       "title": "Kéo, đừng đẩy: vì sao người ta đi theo ý nghĩa, không phải mệnh lệnh",
       "summary": "Bennis và Goldsmith mô tả hai cách làm người ta chuyển động: đẩy (hạn chót, KPI, quyền lực vị trí) và kéo (ý nghĩa và lòng tin). Về hình ảnh ngôn ngữ ký hiệu khó quên giữa dây cương và vòng tay ôm ấp, vì sao kéo chậm hơn nhưng sâu hơn, sự thành thật mà nó đòi hỏi, và khi nào nên dùng cái nào. Bài khép lại của loạt.",
@@ -990,6 +978,18 @@
         "Giao tiếp",
         "Engineering Culture",
         "Team Collaboration"
+      ]
+    },
+    {
+      "slug": "sitting-with-the-problem",
+      "title": "Đừng vội chữa cái mình chưa hiểu: kỷ luật ngồi lại với một bài toán khó",
+      "summary": "Có người lập lại trật tự ngay khi lộn xộn vừa ló ra; có người giữ được bài toán ở trạng thái mở đủ lâu để hiểu nó. Về khả năng chịu được sự mập mờ như một kỷ luật tập được, cái giá của việc giải trước khi hiểu, cái bẫy Einstellung, và vì sao sự trưởng thành nằm ở chỗ bạn ở lại với một bài toán khó được bao lâu.",
+      "tags": [
+        "Leadership",
+        "Management",
+        "Giải quyết vấn đề",
+        "Incident",
+        "Engineering Culture"
       ]
     }
   ]
