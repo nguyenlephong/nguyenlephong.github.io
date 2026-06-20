@@ -44,18 +44,23 @@ export const PAGE_SEO: Record<
       'Nguyen Le Phong — 8+ years across product, platform, and technical leadership',
   },
   about: {
-    title: 'About — Skills, Strengths & Engineering Principles',
+    title: 'About — Backend, Platform & Product Engineering',
     description:
-      "Skills, strengths, and how I think about engineering. Bachelor's in Information Technology — Very Good classification, GPA 3.36 — with 8+ years shipping production systems.",
+      'How Nguyen Le Phong builds production systems across backend services, secure integrations, Kubernetes infrastructure, load balancer paths, feature-flag rollouts, observability, and technical leadership.',
     path: '/about',
     keywords: [
       'About Nguyen Le Phong',
-      'Software Engineer principles',
-      'Engineering philosophy',
-      'Very Good degree',
-      'GPA 3.36',
+      'Backend engineer',
+      'Platform engineer',
+      'Technical Lead',
+      'Kubernetes',
+      'Load balancer',
+      'Feature flags',
+      'Observability',
+      'Secure integrations',
     ],
-    ogAlt: 'About Nguyen Le Phong — Very Good classification, GPA 3.36',
+    ogAlt:
+      'About Nguyen Le Phong — backend, platform, infrastructure, and product engineering',
   },
   gallery: {
     title: 'Gallery — Career Signals Behind the Work',
