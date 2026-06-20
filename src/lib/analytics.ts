@@ -51,6 +51,8 @@ export type AnalyticsEvent =
   | 'notes_read_complete'
   | 'notes_share'
   | 'notes_nav_jump'
+  // Studio
+  | 'studio_view'
   // Outbound
   | 'outbound_click'
 

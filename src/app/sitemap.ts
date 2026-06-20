@@ -14,6 +14,7 @@ const PATHS: Array<{
   { path: "", priority: 1, freq: "weekly" },
   { path: "/apps", priority: 0.9, freq: "weekly" },
   { path: "/blog", priority: 0.9, freq: "weekly" },
+  { path: "/studio", priority: 0.85, freq: "weekly" },
   { path: "/about", priority: 0.8, freq: "monthly" },
   { path: "/cv", priority: 0.8, freq: "monthly" },
   { path: "/gallery", priority: 0.7, freq: "monthly" },

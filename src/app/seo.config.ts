@@ -18,7 +18,7 @@ export interface PageSEO {
 }
 
 export const PAGE_SEO: Record<
-  'home' | 'about' | 'cv' | 'gallery' | 'apps' | 'blog',
+  'home' | 'about' | 'cv' | 'gallery' | 'apps' | 'blog' | 'studio',
   PageSEO
 > = {
   home: {
@@ -116,6 +116,24 @@ export const PAGE_SEO: Record<
       'Nguyen Le Phong blog',
     ],
     ogAlt: 'Blog — software architecture and engineering, explained simply',
+  },
+  studio: {
+    title: 'Studio — Learning Notes & Engineering Machine Setup',
+    description:
+      'A public working shelf for AI setup, machine setup, terminal setup, and the skill libraries Nguyen Le Phong keeps installed across Codex, Claude, Antigravity, and Gemini.',
+    path: '/studio',
+    keywords: [
+      'Nguyen Le Phong studio',
+      'engineering machine setup',
+      'AI developer setup',
+      'Codex skills',
+      'Claude skills',
+      'Antigravity skills',
+      'Gemini skills',
+      'developer checklist',
+    ],
+    ogAlt:
+      'Studio — learning notes, AI tooling inventory, and engineering setup checklist',
   },
 }
 

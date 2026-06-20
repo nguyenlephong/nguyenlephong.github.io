@@ -11,8 +11,7 @@ function read(path) {
 test("reader background preferences are available from the floating tools", () => {
   const script = read("src/components/reading/ReadingBackgroundScript.tsx");
   const tools = read("src/components/blog/BlogReaderTools.tsx");
-  const blogPage = read("src/app/[locale]/blog/[category]/[slug]/page.tsx");
-  const notesPage = read("src/app/[locale]/notes/[slug]/page.tsx");
+  const layout = read("src/app/[locale]/layout.tsx");
   const globals = read("src/app/globals.css");
   const blogCss = read("src/app/[locale]/blog/blog.css");
   const notesCss = read("src/app/[locale]/notes/notes.css");
@@ -35,8 +34,8 @@ test("reader background preferences are available from the floating tools", () =
   assert.match(tools, /blog-reader-tools__trigger/);
   assert.match(tools, /aria-expanded=\{expanded\}/);
   assert.match(tools, /expanded &&/);
-  assert.match(blogPage, /background: t\('readerTools\.background'\)/);
-  assert.match(notesPage, /background: t\("readerTools\.background"\)/);
+  assert.match(layout, /background: rt\('background'\)/);
+  assert.match(layout, /<BlogReaderTools labels=\{readerLabels\} \/>/);
   assert.match(blogCss, /\.blog-reader-tools__controls \{[^}]*flex-direction: column/s);
   assert.match(notesCss, /html\[data-reading-background\] \.notes-reading/);
 });

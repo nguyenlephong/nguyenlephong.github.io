@@ -45,6 +45,69 @@
   ],
   "posts": [
     {
+      "slug": "tri-tue-can-duc-hanh",
+      "title": "Trí tuệ cần đức hạnh để không trở thành dao sắc",
+      "summary": "Một ghi chép bình tĩnh về trí tuệ, tài năng và đức hạnh. Trí tuệ tự nó không thiện cũng không ác; nó chỉ khuếch đại hướng đi của người cầm nó. Người có năng lực nhưng thiếu nhân cách có thể gây hại xa hơn người bình thường, nên điều đáng quý không chỉ là thông minh, mà là dùng sự thông minh đó để bảo vệ, xây dựng và làm người khác an toàn hơn.",
+      "cardSummary": "Trí tuệ là năng lực khuếch đại; đức hạnh mới quyết định năng lực đó đi về phía xây dựng hay gây hại.",
+      "date": "2026-06-20",
+      "readingMinutes": 5,
+      "tags": [
+        "Đức hạnh",
+        "Trí tuệ",
+        "Nhân cách",
+        "Sự nghiệp",
+        "Tự phát triển"
+      ],
+      "author": "Nguyen Le Phong",
+      "topic": "goc-nhin",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
+      "slug": "su-ro-rang-la-mot-dang-noi-luc",
+      "title": "Sự rõ ràng là một dạng nội lực",
+      "summary": "Một ghi chép về sự minh bạch, thẳng thắn và cảm giác dễ thở khi ở cạnh người có nội lực. Người vững bên trong thường không cần tạo mê cung bằng lời nói; họ nói rõ điều mình biết, điều mình chưa chắc, điều mình sẽ làm, và để kết quả trả lời. Sự rõ ràng không làm người ta yếu đi, mà giúp niềm tin bớt phải dựa vào suy đoán.",
+      "cardSummary": "Người có nội lực không cần làm mình bí ẩn; họ tạo niềm tin bằng sự rõ ràng và nhất quán.",
+      "date": "2026-06-20",
+      "readingMinutes": 6,
+      "tags": [
+        "Giao tiếp",
+        "Minh bạch",
+        "Niềm tin",
+        "Nội lực",
+        "Quan hệ công việc"
+      ],
+      "author": "Nguyen Le Phong",
+      "topic": "goc-nhin",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
+      "slug": "tao-niem-tin-khong-phai-tao-ao-giac",
+      "title": "Tạo niềm tin không phải là tạo ảo giác",
+      "summary": "Một ghi chép về ranh giới giữa xây dựng niềm tin và thao túng kỳ vọng. Con người thường hành động theo điều họ tin là thực tế, nên khả năng tạo niềm tin rất mạnh trong kinh doanh, quản lý và khởi nghiệp. Nhưng niềm tin được dựng bằng mập mờ là một khoản nợ lãi cao; niềm tin bền hơn phải đi cùng bằng chứng nhỏ, cam kết rõ và sự thật có thể kiểm chứng.",
+      "cardSummary": "Niềm tin có thể đi trước kết quả, nhưng nếu nó được dựng bằng mập mờ thì sớm muộn cũng thành một khoản nợ.",
+      "date": "2026-06-20",
+      "readingMinutes": 7,
+      "tags": [
+        "Niềm tin",
+        "Chiến lược",
+        "Đạo đức",
+        "Leadership",
+        "Khởi nghiệp"
+      ],
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "vi",
+      "locales": [
+        "vi"
+      ]
+    },
+    {
       "slug": "truoc-khi-cham-chi-hon-hay-chon-huong-co-don-bay",
       "title": "Before Working Harder, Check Whether the Direction Can Grow",
       "summary": "A calm career note on why effort needs direction, leverage, and compounding skill. Salary is valuable, but if every unit of income depends only on the next hour of work, people can become tired without becoming freer. The note reflects on linear income, skill assets, reusable systems, and the habit of turning daily work into something that keeps growing after the workday ends.",

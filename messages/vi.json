@@ -7,6 +7,7 @@
     "contact": "Liên hệ",
     "gallery": "Bộ sưu tập",
     "resume": "CV",
+    "studio": "Studio",
     "font": {
       "label": "Font đọc",
       "sans": "Sans-serif",
@@ -245,6 +246,11 @@
     },
     "apps": {
       "heading": "Ứng dụng"
+    },
+    "studio": {
+      "eyebrow": "Góc học tập",
+      "title": "Studio",
+      "intro": "Một kệ public cho ghi chú học tập, setup máy, AI tooling và những checklist nhỏ để một laptop engineering mới sẵn sàng làm việc."
     },
     "gallery": {
       "eyebrow": "Bộ sưu tập",

@@ -8,6 +8,7 @@
     "gallery": "Gallery",
     "blog": "Blog",
     "notes": "Notes",
+    "studio": "Studio",
     "resume": "Résumé",
     "font": {
       "label": "Reading font",
@@ -245,6 +246,11 @@
     },
     "apps": {
       "heading": "Apps"
+    },
+    "studio": {
+      "eyebrow": "Learning workbench",
+      "title": "Studio",
+      "intro": "A public shelf for learning notes, machine setup, AI tooling, and the small checklists that make a new engineering laptop feel ready."
     },
     "gallery": {
       "eyebrow": "Gallery",
