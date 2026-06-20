@@ -1,0 +1,32 @@
+@startuml c4_context
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+title C4 Context - Nguyen Le Phong Profile Site
+
+Person(visitor, "Visitor", "Recruiters, engineers, readers, and people exploring the profile, blog, notes, gallery, CV, and apps.")
+Person(owner, "Site Owner", "Nguyen Le Phong. Authors profile data, long-form content, app showcases, and deployment changes.")
+
+System_Boundary(site_boundary, "nguyenlephong.github.io") {
+  System(profile_site, "Profile and Writing Site", "A static multilingual Next.js site for CV, portfolio, blog, notes, gallery, app showcase, and selected private views.")
+}
+
+System_Ext(github_pages, "GitHub Pages", "Serves the static export from the out directory.")
+System_Ext(github_actions, "GitHub Actions", "Builds, tests, caches OpenGraph images, and deploys the static site.")
+System_Ext(firebase, "Firebase Firestore", "Stores public engagement counters for article views, shares, and reactions.")
+System_Ext(posthog, "PostHog", "Receives product analytics events from browser-side tracking.")
+System_Ext(google, "Google Analytics / AdSense", "Receives traffic analytics and loads ads scripts.")
+System_Ext(cdn, "Remote Media CDN", "Serves selected public images and media assets.")
+
+Rel(visitor, github_pages, "Requests pages and assets", "HTTPS")
+Rel(github_pages, profile_site, "Serves prebuilt HTML, CSS, JavaScript, images, and PDFs")
+Rel(visitor, profile_site, "Reads content and interacts with client-side widgets", "Browser")
+Rel(owner, github_actions, "Pushes source/content changes that trigger CI/CD", "Git")
+Rel(github_actions, profile_site, "Builds static export and generated social images", "Next.js build")
+Rel(profile_site, firebase, "Reads and writes best-effort engagement counters", "Firestore Web SDK")
+Rel(profile_site, posthog, "Sends page, scroll, read-time, web-vital, and click events", "HTTPS")
+Rel(profile_site, google, "Loads analytics and ads scripts", "HTTPS")
+Rel(profile_site, cdn, "Displays remote media used by gallery/profile content", "HTTPS")
+
+@enduml

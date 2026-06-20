@@ -1,0 +1,38 @@
+@startuml c4_container
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+title C4 Container - Profile Site
+
+Person(visitor, "Visitor", "Uses a browser to read and interact with the site.")
+Person(owner, "Site Owner", "Maintains content, code, and deployment configuration.")
+
+System_Boundary(system, "nguyenlephong.github.io") {
+  Container(static_app, "Static Next.js App", "Next.js 16, React 19, TypeScript", "Pre-rendered localized pages, route metadata, JSON-LD, static assets, and hydrated client widgets.")
+  ContainerDb(content_files, "Repository Content Files", "TypeScript modules and JSON files", "Profile data, blog posts, notes, translated messages, gallery media references, and cached OG images.")
+  Container(client_widgets, "Client Enhancements", "React client components", "Theme/font/background preferences, explorers, reader tools, route progress, PDF viewer, analytics emitters, and engagement UI.")
+  Container(og_pipeline, "OpenGraph Build Pipeline", "Next ImageResponse and Node scripts", "Generates social images, caches PNGs, renames extensionless image routes, and rewrites exported HTML.")
+}
+
+System_Ext(github_pages, "GitHub Pages", "Static hosting for the exported out directory.")
+System_Ext(github_actions, "GitHub Actions", "CI and deployment runner.")
+System_Ext(firebase, "Firebase Firestore", "postStats collection for views, shares, and reactions.")
+System_Ext(posthog, "PostHog", "Analytics event collection.")
+System_Ext(google, "Google Analytics / AdSense", "Analytics and ads scripts.")
+
+Rel(owner, content_files, "Edits content and code", "Git")
+Rel(github_actions, content_files, "Checks out repository")
+Rel(github_actions, static_app, "Runs typecheck, lint, tests, and static build", "Node 20 / npm")
+Rel(static_app, content_files, "Reads content at build time", "Node fs + Zod")
+Rel(static_app, og_pipeline, "Invokes OG image routes during build", "Next build")
+Rel(og_pipeline, content_files, "Reads indexes and writes public/og-cache", "Node fs")
+Rel(github_actions, github_pages, "Publishes out directory", "GitHub Pages deploy")
+Rel(visitor, github_pages, "Loads static files", "HTTPS")
+Rel(github_pages, static_app, "Serves generated files")
+Rel(static_app, client_widgets, "Hydrates interactive islands", "React")
+Rel(client_widgets, firebase, "Reads/writes public counters", "Firestore Web SDK")
+Rel(client_widgets, posthog, "Sends analytics events", "HTTPS")
+Rel(static_app, google, "Loads scripts lazily", "HTTPS")
+
+@enduml

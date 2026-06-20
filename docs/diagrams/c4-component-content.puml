@@ -1,0 +1,44 @@
+@startuml c4_component_content
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title C4 Component - Routing, Content, SEO, and OG Generation
+
+Container_Boundary(app, "Static Next.js App") {
+  Component(root_page, "Root Redirect Page", "src/app/page.tsx", "Sends / to /en while keeping metadata for crawlers.")
+  Component(locale_layout, "Locale Layout", "src/app/[locale]/layout.tsx", "Main shell for locale validation, providers, scripts, JSON-LD, header, footer, and global tools.")
+  Component(route_pages, "Route Pages", "Next.js server components", "Profile, about, CV, gallery, apps, blog, notes, and heartbeats pages.")
+  Component(i18n, "i18n Routing", "next-intl", "Defines locales, locale-aware links, message loading, and English fallback merging.")
+  Component(content_io, "Content IO", "src/lib/content/io.ts", "Reads JSON, caches production reads, overlays translated fields, and validates canonical files.")
+  Component(blog_loader, "Blog Loader", "src/lib/blog/data.ts", "Loads canonical blog categories/posts and locale overrides.")
+  Component(notes_loader, "Notes Loader", "src/lib/notes/data.ts", "Loads notes, topic metadata, and vi/en content-locale visibility rules.")
+  Component(profile_data, "Profile Data", "src/content/*.ts", "Structured TypeScript data for profile, experience, projects, gallery, and media.")
+  Component(seo_helpers, "SEO Helpers", "src/app/seo.config.ts and src/lib/*/seo.ts", "Builds canonical URLs, hreflang alternates, descriptions, and OpenGraph locale codes.")
+  Component(og_routes, "OpenGraph Routes", "src/app/**/opengraph-image.tsx", "Creates social preview images with next/og ImageResponse.")
+  Component(og_scripts, "OG Post-Build Scripts", "scripts/build-og.mjs and scripts/postbuild-og.mjs", "Controls OG build mode, restores cache, renames image files to .png, and rewrites HTML.")
+}
+
+ContainerDb(messages, "Locale Messages", "messages/*.json", "Translated UI copy.")
+ContainerDb(blog_json, "Blog JSON", "public/blog-data", "Canonical blog content and locale overrides.")
+ContainerDb(notes_json, "Notes JSON", "public/notes-data", "Canonical notes content and Vietnamese overrides.")
+ContainerDb(og_cache, "OG Cache", "public/og-cache", "Cached generated social-image PNGs.")
+
+Rel(root_page, i18n, "Reads default locale")
+Rel(locale_layout, i18n, "Validates locale and provides translations")
+Rel(locale_layout, messages, "Loads translated labels")
+Rel(route_pages, blog_loader, "Loads blog indexes and posts")
+Rel(route_pages, notes_loader, "Loads notes indexes and posts")
+Rel(route_pages, profile_data, "Reads profile/gallery/project data")
+Rel(route_pages, seo_helpers, "Builds metadata and JSON-LD")
+Rel(blog_loader, content_io, "Uses shared read, overlay, and validation helpers")
+Rel(notes_loader, content_io, "Uses shared read, overlay, and validation helpers")
+Rel(content_io, blog_json, "Reads and validates canonical data")
+Rel(content_io, notes_json, "Reads and validates canonical data")
+Rel(og_routes, blog_loader, "Reads post/category data for social cards")
+Rel(og_routes, notes_loader, "Reads note data for social cards")
+Rel(og_routes, og_cache, "Reads and writes cached PNGs")
+Rel(og_scripts, og_routes, "Controls which OG routes build")
+Rel(og_scripts, og_cache, "Restores missing generated images")
+
+@enduml
