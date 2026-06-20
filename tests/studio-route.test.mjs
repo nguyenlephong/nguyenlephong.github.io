@@ -104,6 +104,19 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /"analytics"/);
   assert.match(adminShell, /"email"/);
   assert.match(adminShell, /"auth-login-v1"/);
+  assert.match(adminShell, /function MailRoutePage/);
+  assert.match(adminShell, /function ChatRoutePage/);
+  assert.match(adminShell, /title:\s*"Email"/);
+  assert.match(adminShell, /title:\s*"Chat"/);
+  assert.doesNotMatch(adminShell, /Mail preview/);
+  assert.doesNotMatch(adminShell, /Chat preview/);
+  assert.match(adminShell, /data-studio-module="mail"/);
+  assert.match(adminShell, /data-studio-module="chat"/);
+  assert.match(adminShell, /studioMails/);
+  assert.match(adminShell, /studioConversations/);
+  assert.match(adminShell, /Attachments \(\{selectedMail\.attachments\.length\}\)/);
+  assert.match(adminShell, /Internal note/);
+  assert.doesNotMatch(adminShell, /function MailChatPage/);
   assert.match(adminShell, /Customer Activity/);
   assert.match(adminShell, /18,426 Customers/);
   assert.match(adminShell, /next-shadcn-admin-dashboard/);
@@ -125,10 +138,14 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "metric-grid",
     "activity-card",
     "customers-card",
-    "table-shell"
+    "table-shell",
+    "mail-workbench",
+    "chat-workbench",
+    "chat-profile-pane"
   ]) {
     assert.match(shadowCss, new RegExp(`\\.${expectedClass}\\b`));
   }
+  assert.match(shadowCss, /\.mail-workbench\.card,\s*\.chat-workbench\.card\s*\{[^}]*display:\s*grid/s);
   assert.match(shadowCss, /grid-template-columns:\s*272px minmax\(0, 1fr\)/);
   assert.match(shadowCss, /\.studio-sidebar\s*\{[^}]*height:\s*100vh/s);
   assert.match(shadowCss, /--sidebar:\s*#fafafa/);
