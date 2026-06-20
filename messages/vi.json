@@ -574,5 +574,13 @@
         ]
       }
     ]
+  },
+  "ReaderTools": {
+    "label": "Công cụ đọc",
+    "scrollTop": "Lên đầu trang",
+    "scrollBottom": "Xuống cuối trang",
+    "font": "Đổi font đọc",
+    "background": "Đổi nền đọc",
+    "language": "Đổi ngôn ngữ"
   }
 }

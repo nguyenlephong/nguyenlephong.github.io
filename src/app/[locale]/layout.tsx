@@ -24,6 +24,7 @@ import ReadingBackgroundScript from '@/components/reading/ReadingBackgroundScrip
 import MotionProvider from '@/components/motion/MotionProvider'
 import RouteProgressBar from '@/components/motion/RouteProgressBar'
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
+import BlogReaderTools from '@/components/blog/BlogReaderTools'
 import { SITE_URL } from '@/app/seo.config'
 import { routing, type Locale } from '@/i18n/routing'
 import { Person, WithContext } from 'schema-dts'
@@ -240,6 +241,18 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   const t = await getTranslations({ locale, namespace: 'SEO.home' })
   const seoDescription = t('description')
 
+  // Global reading-preferences float button (font, background, language,
+  // scroll) — available on every page, not only article detail pages.
+  const rt = await getTranslations('ReaderTools')
+  const readerLabels = {
+    label: rt('label'),
+    scrollTop: rt('scrollTop'),
+    scrollBottom: rt('scrollBottom'),
+    font: rt('font'),
+    background: rt('background'),
+    language: rt('language'),
+  }
+
   const personSchema: WithContext<Person> = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -375,6 +388,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
             <AppHeader />
             {children}
             <AppFooter />
+            <BlogReaderTools labels={readerLabels} />
           </MotionProvider>
         </NextIntlClientProvider>
       </body>

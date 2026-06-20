@@ -574,5 +574,13 @@
         ]
       }
     ]
+  },
+  "ReaderTools": {
+    "label": "Reader tools",
+    "scrollTop": "Scroll to top",
+    "scrollBottom": "Scroll to bottom",
+    "font": "Change reading font",
+    "background": "Change reading background",
+    "language": "Change language"
   }
 }
