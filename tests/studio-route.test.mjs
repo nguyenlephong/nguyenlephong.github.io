@@ -63,19 +63,19 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(workspace, /navigator\.clipboard\.writeText/);
 
   for (const expectedClass of [
-    "studio-admin",
+    "studio-workbench",
     "studio-sidebar",
     "studio-submenu",
-    "studio-note-list",
-    "studio-note-detail"
+    "studio-note-card",
+    "studio-reader"
   ]) {
     assert.match(css, new RegExp(`\\.${expectedClass}\\b`));
   }
   assert.doesNotMatch(css, /\.studio-sidebar\s*\{[^}]*overflow:\s*auto/s);
-  assert.doesNotMatch(css, /\.studio-note-list\s*\{[^}]*overflow:\s*auto/s);
+  assert.doesNotMatch(css, /\.studio-reader\s*\{[^}]*overflow:\s*auto/s);
   assert.doesNotMatch(css, /height:\s*calc\(100vh - 72px\)/);
   assert.match(css, /\.studio-page\s*\{[^}]*overflow-x:\s*clip/s);
-  assert.match(css, /\.studio-note-detail__header h2\s*\{[^}]*overflow-wrap:\s*anywhere/s);
+  assert.match(css, /\.studio-reader__header h2\s*\{[^}]*overflow-wrap:\s*anywhere/s);
 
   for (const expected of [
     "AI setup",
