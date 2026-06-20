@@ -280,6 +280,8 @@ a {
   grid-template-columns: 2.25rem minmax(0, 1fr) 1.75rem;
   gap: 0.625rem;
   align-items: center;
+  color: inherit;
+  text-decoration: none;
 }
 
 .user-avatar,
@@ -327,15 +329,11 @@ a {
   white-space: nowrap;
 }
 
-.user-card button {
-  display: inline-flex;
+.user-card > svg {
   width: 1.75rem;
   height: 1.75rem;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 0.5rem;
-  background: transparent;
+  justify-self: center;
+  color: var(--foreground);
 }
 
 .studio-main {
@@ -438,6 +436,12 @@ a {
   gap: 1.5rem;
   margin: 0 auto;
   padding: 1.5rem;
+}
+
+#dashboard,
+#customer-activity,
+#customers {
+  scroll-margin-top: 4.25rem;
 }
 
 .metric-grid {

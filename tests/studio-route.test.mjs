@@ -78,7 +78,12 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(workspace, /studio-topbar/);
   assert.match(workspace, /metric-grid/);
   assert.match(workspace, /Studio Admin/);
-  assert.match(workspace, /Quick Create/);
+  assert.match(workspace, /Back to CV/);
+  assert.match(workspace, /href=\{`\/\$\{locale\}\/cv`\}/);
+  assert.match(workspace, /handleShadowAnchorClick/);
+  assert.match(workspace, /href: "#dashboard"/);
+  assert.match(workspace, /href: "#customer-activity"/);
+  assert.match(workspace, /href: "#customers"/);
   assert.match(workspace, /Customer Activity/);
   assert.match(workspace, /18,426 Customers/);
   assert.match(workspace, /next-shadcn-admin-dashboard/);

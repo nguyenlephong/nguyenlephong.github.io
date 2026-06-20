@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import type { MouseEvent } from "react";
 import type { IconType } from "react-icons";
 import {
   LuBadgeDollarSign,
@@ -52,32 +53,34 @@ type SidebarLink = {
   active?: boolean;
   badge?: string;
   hasChildren?: boolean;
+  href: string;
+  external?: boolean;
 };
 
 const dashboardLinks: SidebarLink[] = [
-  { label: "Default", icon: LuLayoutDashboard, active: true },
-  { label: "CRM", icon: LuBarChart },
-  { label: "Finance", icon: LuBanknote },
-  { label: "Analytics", icon: LuGauge },
-  { label: "Productivity", icon: LuListTodo },
-  { label: "E-commerce", icon: LuShoppingBag },
-  { label: "Academy", icon: LuGraduationCap },
-  { label: "Logistics", icon: LuBoxes },
-  { label: "Infrastructure", icon: LuBriefcase, badge: "New" }
+  { label: "Default", href: "#dashboard", icon: LuLayoutDashboard, active: true },
+  { label: "CRM", href: "#customer-activity", icon: LuBarChart },
+  { label: "Finance", href: "#customers", icon: LuBanknote },
+  { label: "Analytics", href: "#customer-activity", icon: LuGauge },
+  { label: "Productivity", href: "#customers", icon: LuListTodo },
+  { label: "E-commerce", href: "#customers", icon: LuShoppingBag },
+  { label: "Academy", href: "#customers", icon: LuGraduationCap },
+  { label: "Logistics", href: "#customers", icon: LuBoxes },
+  { label: "Infrastructure", href: "#dashboard", icon: LuBriefcase, badge: "New" }
 ];
 
 const pageLinks: SidebarLink[] = [
-  { label: "Email", icon: LuMail },
-  { label: "Chat", icon: LuMessageSquare },
-  { label: "Calendar", icon: LuCalendarDays },
-  { label: "Kanban", icon: LuKanbanSquare },
-  { label: "Invoice", icon: LuReceipt },
-  { label: "Users", icon: LuUsers },
-  { label: "Roles", icon: LuLock },
-  { label: "Authentication", icon: LuFingerprint, hasChildren: true }
+  { label: "Email", href: "mailto:phongnguyen.itengineer@gmail.com", icon: LuMail, external: true },
+  { label: "Chat", href: "https://www.linkedin.com/in/phongnguyen-it/", icon: LuMessageSquare, external: true },
+  { label: "Calendar", href: "/gallery", icon: LuCalendarDays },
+  { label: "Kanban", href: "/notes", icon: LuKanbanSquare },
+  { label: "Invoice", href: "/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf", icon: LuReceipt, external: true },
+  { label: "Users", href: "/cv", icon: LuUsers },
+  { label: "Roles", href: "/cv", icon: LuLock },
+  { label: "Authentication", href: "/cv", icon: LuFingerprint, hasChildren: true }
 ];
 
-const legacyLinks: SidebarLink[] = [{ label: "Dashboards", hasChildren: true }];
+const legacyLinks: SidebarLink[] = [{ label: "Dashboards", href: "#dashboard", hasChildren: true }];
 
 const metricCards = [
   {
@@ -209,7 +212,32 @@ function linePoints(values: number[], maxValue = 82): string {
     .join(" ");
 }
 
-function SidebarGroup({ title, items }: { title: string; items: SidebarLink[] }) {
+function isExternalHref(href: string): boolean {
+  return href.startsWith("http") || href.startsWith("mailto:");
+}
+
+function resolveStudioHref(locale: string, href: string): string {
+  if (href.startsWith("#") || isExternalHref(href) || href.endsWith(".pdf")) return href;
+  return `/${locale}${href}`;
+}
+
+function handleShadowAnchorClick(event: MouseEvent<HTMLAnchorElement>): void {
+  const href = event.currentTarget.getAttribute("href") ?? "";
+  if (!href.startsWith("#")) return;
+
+  const root = event.currentTarget.getRootNode() as Document | ShadowRoot;
+  const target = root.querySelector(href);
+  if (!target) return;
+
+  event.preventDefault();
+  target.scrollIntoView({
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    block: "start"
+  });
+  window.history.replaceState(null, "", href);
+}
+
+function SidebarGroup({ title, items, locale }: { title: string; items: SidebarLink[]; locale: string }) {
   return (
     <section className="sidebar-group" aria-label={title}>
       <p className="sidebar-group-label">{title}</p>
@@ -218,17 +246,20 @@ function SidebarGroup({ title, items }: { title: string; items: SidebarLink[] })
           const Icon = item.icon;
 
           return (
-            <button
+            <a
               key={item.label}
-              type="button"
+              href={resolveStudioHref(locale, item.href)}
               className={`sidebar-menu-button${item.active ? " is-active" : ""}`}
               aria-current={item.active ? "page" : undefined}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noreferrer" : undefined}
+              onClick={handleShadowAnchorClick}
             >
               {Icon ? <Icon aria-hidden="true" /> : <span className="sidebar-fallback" />}
               <span>{item.label}</span>
               {item.badge && <span className="sidebar-badge">{item.badge}</span>}
               {item.hasChildren && <LuChevronRight className="sidebar-chevron" aria-hidden="true" />}
-            </button>
+            </a>
           );
         })}
       </div>
@@ -286,70 +317,77 @@ function StudioAdminReplica({ locale }: StudioWorkspaceProps) {
     <div className="studio-admin" data-locale={locale}>
       <aside className="studio-sidebar" aria-label="Dashboard navigation">
         <div className="sidebar-header">
-          <a className="sidebar-brand" href="#dashboard" aria-label="Studio Admin">
+          <a className="sidebar-brand" href={`/${locale}/cv`} aria-label="Back to CV">
             <LuCommand aria-hidden="true" />
             <span>Studio Admin</span>
           </a>
         </div>
 
         <div className="sidebar-create">
-          <button type="button" className="quick-create">
+          <a href={`/${locale}/cv`} className="quick-create">
             <LuPlusCircle aria-hidden="true" />
-            <span>Quick Create</span>
-          </button>
-          <button type="button" className="mail-button" aria-label="Inbox">
+            <span>Back to CV</span>
+          </a>
+          <a
+            href="mailto:phongnguyen.itengineer@gmail.com"
+            className="mail-button"
+            aria-label="Send email"
+          >
             <LuInbox aria-hidden="true" />
-          </button>
+          </a>
         </div>
 
         <div className="sidebar-scroll">
-          <SidebarGroup title="Dashboards" items={dashboardLinks} />
-          <SidebarGroup title="Pages" items={pageLinks} />
-          <SidebarGroup title="Legacy" items={legacyLinks} />
+          <SidebarGroup title="Dashboards" items={dashboardLinks} locale={locale} />
+          <SidebarGroup title="Pages" items={pageLinks} locale={locale} />
+          <SidebarGroup title="Legacy" items={legacyLinks} locale={locale} />
         </div>
 
         <div className="sidebar-footer">
           <section className="support-card">
             <strong>Looking for something more?</strong>
             <p>
-              Open an issue or do reach out to me on <a href="https://x.com/arhamkhnz">X</a>.
+              Open an issue or go back to the <a href={`/${locale}/cv`}>CV page</a>.
             </p>
           </section>
 
-          <div className="user-card">
+          <a className="user-card" href={`/${locale}/cv`}>
             <span className="user-avatar">N</span>
             <span>
-              <strong>Arham Khan</strong>
-              <small>hello@arhamkhnz.com</small>
+              <strong>Nguyen Le Phong</strong>
+              <small>Back to CV</small>
             </span>
-            <button type="button" aria-label="User menu">
-              <LuMoreVertical aria-hidden="true" />
-            </button>
-          </div>
+            <LuMoreVertical aria-hidden="true" />
+          </a>
         </div>
       </aside>
 
       <main className="studio-main">
         <header className="studio-topbar">
           <div className="topbar-left">
-            <button type="button" className="icon-button" aria-label="Toggle Sidebar">
+            <a
+              href="#dashboard"
+              className="icon-button"
+              aria-label="Go to dashboard"
+              onClick={handleShadowAnchorClick}
+            >
               <LuPanelLeft aria-hidden="true" />
-            </button>
+            </a>
             <span className="topbar-separator" aria-hidden="true" />
-            <button type="button" className="search-command">
+            <a href="#customers" className="search-command" onClick={handleShadowAnchorClick}>
               <LuSearch aria-hidden="true" />
               <span>Search</span>
               <kbd>⌘ J</kbd>
-            </button>
+            </a>
           </div>
 
           <div className="topbar-actions">
-            <button type="button" className="topbar-icon" aria-label="Settings">
+            <a href={`/${locale}/cv`} className="topbar-icon" aria-label="Back to CV">
               <LuSettings aria-hidden="true" />
-            </button>
-            <button type="button" className="topbar-icon" aria-label="Toggle theme">
+            </a>
+            <a href="#dashboard" className="topbar-icon" aria-label="Dashboard" onClick={handleShadowAnchorClick}>
               <LuMoon aria-hidden="true" />
-            </button>
+            </a>
             <a
               className="topbar-icon"
               href="https://github.com/arhamkhnz/next-shadcn-admin-dashboard"
@@ -359,35 +397,35 @@ function StudioAdminReplica({ locale }: StudioWorkspaceProps) {
             >
               <LuGithub aria-hidden="true" />
             </a>
-            <span className="topbar-avatar">AK</span>
+            <span className="topbar-avatar">N</span>
           </div>
         </header>
 
-        <div className="dashboard-content">
+        <div className="dashboard-content" id="dashboard">
           <section className="metric-grid" aria-label="Dashboard metrics">
             {metricCards.map((item) => (
               <MetricCard key={item.label} item={item} />
             ))}
           </section>
 
-          <section className="card activity-card" data-slot="card">
+          <section id="customer-activity" className="card activity-card" data-slot="card">
             <header className="card-header activity-header">
               <div>
                 <h2>Customer Activity</h2>
                 <p>Customer activity for the last 3 months</p>
               </div>
               <div className="card-actions">
-                <button type="button" className="select-button">
+                <a href="#customer-activity" className="select-button" onClick={handleShadowAnchorClick}>
                   3 months
                   <LuChevronDown aria-hidden="true" />
-                </button>
-                <button type="button" className="select-button">
+                </a>
+                <a href="#customer-activity" className="select-button" onClick={handleShadowAnchorClick}>
                   All segments
                   <LuChevronDown aria-hidden="true" />
-                </button>
-                <button type="button" className="outline-button">
+                </a>
+                <a href="#customers" className="outline-button" onClick={handleShadowAnchorClick}>
                   View report
-                </button>
+                </a>
               </div>
             </header>
             <div className="chart-legend" aria-hidden="true">
@@ -407,16 +445,21 @@ function StudioAdminReplica({ locale }: StudioWorkspaceProps) {
             <CustomerActivityChart />
           </section>
 
-          <section className="card customers-card" data-slot="card">
+          <section id="customers" className="card customers-card" data-slot="card">
             <header className="card-header table-header">
               <div>
                 <h2>18,426 Customers</h2>
                 <p>Recent customer records with plan, billing, status, and signup activity.</p>
               </div>
-              <button type="button" className="outline-button">
+              <a
+                href="/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf"
+                className="outline-button"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <LuDownload aria-hidden="true" />
                 Export
-              </button>
+              </a>
             </header>
 
             <div className="table-toolbar">
@@ -425,23 +468,23 @@ function StudioAdminReplica({ locale }: StudioWorkspaceProps) {
                 <span className="sr-only">Search customers</span>
                 <input type="search" placeholder="Search customers..." />
               </label>
-              <button type="button" className="outline-button">
+              <a href="#customers" className="outline-button" onClick={handleShadowAnchorClick}>
                 <LuUsers aria-hidden="true" />
                 Status
-              </button>
-              <button type="button" className="outline-button">
+              </a>
+              <a href="#customers" className="outline-button" onClick={handleShadowAnchorClick}>
                 <LuCalendarDays aria-hidden="true" />
                 Joined date
-              </button>
+              </a>
               <span className="toolbar-spacer" />
-              <button type="button" className="outline-button">
+              <a href="#customers" className="outline-button" onClick={handleShadowAnchorClick}>
                 <LuBadgeDollarSign aria-hidden="true" />
                 Billing
-              </button>
-              <button type="button" className="outline-button">
+              </a>
+              <a href="#customers" className="outline-button" onClick={handleShadowAnchorClick}>
                 <LuArrowUpDown aria-hidden="true" />
                 Sort
-              </button>
+              </a>
             </div>
 
             <div className="table-shell">
