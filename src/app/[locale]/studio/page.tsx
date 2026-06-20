@@ -7,6 +7,7 @@ import PageTracker from "@/components/analytics/PageTracker";
 import { routing, type Locale } from "@/i18n/routing";
 import StudioWorkspace from "./StudioWorkspace";
 import { studioNotes } from "./studio.data";
+import "@/components/studio-kit/studio-kit.css";
 import "./studio.css";
 
 const seo = PAGE_SEO.studio;

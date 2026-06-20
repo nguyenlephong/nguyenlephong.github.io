@@ -33,6 +33,26 @@ import {
   type StudioNote,
   type StudioNoteStatus
 } from "./studio.data";
+import {
+  ActionCard,
+  Badge,
+  Button,
+  Card,
+  CardLink,
+  DashboardFrame,
+  DashboardGrid,
+  DashboardHeader,
+  DashboardPanel,
+  EmptyState,
+  Item,
+  ItemContent,
+  ItemGroup,
+  ItemMedia,
+  MetricCard,
+  MetricGrid,
+  SearchField,
+  SegmentedControl
+} from "@/components/studio-kit";
 
 type StudioWorkspaceProps = {
   locale: string;
@@ -351,8 +371,8 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
   };
 
   return (
-    <section className="studio-workbench" aria-label={t.workspaceLabel}>
-      <header className="studio-topbar">
+    <DashboardFrame className="studio-workbench" aria-label={t.workspaceLabel}>
+      <DashboardHeader className="studio-topbar">
         <div className="studio-topbar__copy">
           <p className="studio-eyebrow">
             <LuSparkles aria-hidden="true" />
@@ -366,62 +386,48 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
           <span>{t.snapshot}</span>
           <strong>{studioCapturedAt}</strong>
         </div>
-      </header>
+      </DashboardHeader>
 
-      <div className="studio-metrics" aria-label={t.metricsLabel}>
+      <MetricGrid className="studio-metrics" aria-label={t.metricsLabel}>
         {stats.map((item) => {
           const Icon = item.icon;
           return (
-            <div className="studio-metric" key={item.label}>
-              <Icon aria-hidden="true" />
-              <span>{item.label}</span>
-              <strong>{item.value}</strong>
-            </div>
+            <MetricCard
+              className="studio-metric"
+              icon={<Icon aria-hidden="true" />}
+              key={item.label}
+              label={item.label}
+              value={item.value}
+            />
           );
         })}
-      </div>
+      </MetricGrid>
 
-      <div className="studio-shell">
-        <aside className="studio-sidebar" aria-label={t.folderNav}>
-          <label className="studio-search">
-            <LuSearch aria-hidden="true" />
-            <span className="sr-only">{t.searchLabel}</span>
-            <input
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder={t.searchPlaceholder}
-            />
-            {query && (
-              <button
-                type="button"
-                className="studio-search__clear"
-                onClick={() => setQuery("")}
-                aria-label={t.clearSearch}
-              >
-                <LuX aria-hidden="true" />
-              </button>
-            )}
-          </label>
+      <DashboardGrid className="studio-shell">
+        <DashboardPanel kind="sidebar" className="studio-sidebar" aria-label={t.folderNav}>
+          <SearchField
+            className="studio-search"
+            clearIcon={<LuX aria-hidden="true" />}
+            clearLabel={t.clearSearch}
+            icon={<LuSearch aria-hidden="true" />}
+            label={t.searchLabel}
+            onChange={setQuery}
+            onClear={() => setQuery("")}
+            placeholder={t.searchPlaceholder}
+            value={query}
+          />
 
           <div className="studio-status-filter" aria-label={t.statusFilter}>
             <div className="studio-status-filter__label">
               <LuFilter aria-hidden="true" />
               <span>{t.statusLabel}</span>
             </div>
-            <div className="studio-status-filter__buttons">
-              {statusOptions.map((option) => (
-                <button
-                  type="button"
-                  key={option.value}
-                  className={option.value === status ? "is-active" : ""}
-                  onClick={() => setStatus(option.value)}
-                  aria-pressed={option.value === status}
-                >
-                  {option.label}
-                </button>
-              ))}
-            </div>
+            <SegmentedControl
+              className="studio-status-filter__buttons"
+              onChange={setStatus}
+              options={statusOptions}
+              value={status}
+            />
           </div>
 
           <nav className="studio-folder-nav" aria-label={t.folderNav}>
@@ -437,12 +443,12 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
                   className={`studio-folder${activeFolder ? " studio-folder--active" : ""}`}
                   key={folder.id}
                 >
-                  <button
-                    type="button"
+                  <Button
                     className="studio-folder__button"
                     onClick={() => selectFolder(folder)}
                     aria-current={activeFolder ? "page" : undefined}
                     aria-expanded={activeFolder}
+                    variant="ghost"
                   >
                     <Icon aria-hidden="true" />
                     <span className="studio-folder__text">
@@ -451,7 +457,7 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
                     </span>
                     <span className="studio-folder__count">{visibleCount}</span>
                     <LuChevronRight aria-hidden="true" />
-                  </button>
+                  </Button>
 
                   {activeFolder && (
                     <div className="studio-submenu">
@@ -466,8 +472,7 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
                             <p>{group.label}</p>
                             {groupNotes.length > 0 ? (
                               groupNotes.map((note) => (
-                                <button
-                                  type="button"
+                                <Button
                                   key={note.id}
                                   className={
                                     note.id === selectedNote.id
@@ -476,12 +481,13 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
                                   }
                                   onClick={() => selectNote(note.id, folder.id)}
                                   aria-current={note.id === selectedNote.id ? "true" : undefined}
+                                  variant="ghost"
                                 >
                                   <span>{note.title}</span>
-                                  <small className={`studio-status studio-status--${note.status}`}>
+                                  <Badge className={`studio-status studio-status--${note.status}`}>
                                     {t.status[note.status]}
-                                  </small>
-                                </button>
+                                  </Badge>
+                                </Button>
                               ))
                             ) : (
                               <span className="studio-submenu__empty">{t.noFolderMatches}</span>
@@ -495,9 +501,9 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
               );
             })}
           </nav>
-        </aside>
+        </DashboardPanel>
 
-        <aside className="studio-index" aria-label={t.noteIndex}>
+        <DashboardPanel kind="index" className="studio-index" aria-label={t.noteIndex}>
           <div className="studio-index__header">
             <span>{t.activeFolder}</span>
             <strong>{selectedFolder.label}</strong>
@@ -509,54 +515,57 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
           <div className="studio-index__items">
             {selectedFolderNotes.length > 0 ? (
               selectedFolderNotes.map((note) => (
-                <button
-                  type="button"
+                <ActionCard
                   key={note.id}
                   className={
                     note.id === selectedNote.id
                       ? "studio-note-card studio-note-card--active"
                       : "studio-note-card"
                   }
+                  active={note.id === selectedNote.id}
                   onClick={() => selectNote(note.id, selectedFolder.id)}
                   aria-current={note.id === selectedNote.id ? "true" : undefined}
                 >
-                  <span className={`studio-status studio-status--${note.status}`}>
+                  <Badge className={`studio-status studio-status--${note.status}`}>
                     {t.status[note.status]}
-                  </span>
+                  </Badge>
                   <strong>{note.title}</strong>
                   <small>{note.subtitle}</small>
                   <span className="studio-note-card__date">{note.updatedAt}</span>
-                </button>
+                </ActionCard>
               ))
             ) : (
-              <div className="studio-index__empty">
-                <strong>{t.emptyTitle}</strong>
-                <p>{t.emptyBody}</p>
-                <button type="button" onClick={resetFilters}>
-                  <LuRotateCcw aria-hidden="true" />
-                  {t.reset}
-                </button>
-              </div>
+              <EmptyState
+                action={
+                  <Button onClick={resetFilters}>
+                    <LuRotateCcw aria-hidden="true" />
+                    {t.reset}
+                  </Button>
+                }
+                className="studio-index__empty"
+                description={t.emptyBody}
+                title={t.emptyTitle}
+              />
             )}
           </div>
-        </aside>
+        </DashboardPanel>
 
         {hasResults ? (
-          <article className="studio-reader" aria-live="polite">
+          <DashboardPanel as="article" kind="reader" className="studio-reader" aria-live="polite">
             <header className="studio-reader__header">
               <div>
                 <p className="studio-reader__folder">{selectedFolder.label}</p>
                 <h2>{selectedNote.title}</h2>
                 <p>{selectedNote.summary}</p>
               </div>
-              <span className={`studio-status studio-status--${selectedNote.status}`}>
+              <Badge className={`studio-status studio-status--${selectedNote.status}`}>
                 {t.status[selectedNote.status]}
-              </span>
+              </Badge>
             </header>
 
             <div className="studio-note-tags" aria-label="Note tags">
               {selectedNote.tags.map((tag) => (
-                <span key={tag}>{tag}</span>
+                <Badge key={tag}>{tag}</Badge>
               ))}
             </div>
 
@@ -568,22 +577,29 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
                 </section>
               ))}
             </div>
-          </article>
+          </DashboardPanel>
         ) : (
-          <section className="studio-reader studio-reader--empty" aria-live="polite">
-            <div>
-              <LuSearch aria-hidden="true" />
-              <h2>{t.emptyTitle}</h2>
-              <p>{t.emptyBody}</p>
-              <button type="button" onClick={resetFilters}>
-                <LuRotateCcw aria-hidden="true" />
-                {t.reset}
-              </button>
-            </div>
-          </section>
+          <DashboardPanel
+            as="section"
+            kind="reader"
+            className="studio-reader studio-reader--empty"
+            aria-live="polite"
+          >
+            <EmptyState
+              action={
+                <Button onClick={resetFilters}>
+                  <LuRotateCcw aria-hidden="true" />
+                  {t.reset}
+                </Button>
+              }
+              description={t.emptyBody}
+              icon={<LuSearch aria-hidden="true" />}
+              title={t.emptyTitle}
+            />
+          </DashboardPanel>
         )}
 
-        <aside className="studio-rail" aria-label={t.actionRail}>
+        <DashboardPanel kind="rail" className="studio-rail" aria-label={t.actionRail}>
           <section className="studio-rail__section">
             <div className="studio-panel-heading">
               <LuCommand aria-hidden="true" />
@@ -592,26 +608,27 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
             {selectedNote.commands && selectedNote.commands.length > 0 ? (
               <div className="studio-command-stack">
                 {selectedNote.commands.map((item) => (
-                  <div className="studio-command" key={item.command}>
+                  <Card className="studio-command" key={item.command}>
                     <div>
                       <strong>{item.label}</strong>
                       {item.note && <p>{item.note}</p>}
                       <code>{item.command}</code>
                     </div>
-                    <button
-                      type="button"
+                    <Button
                       className="studio-icon-button"
                       onClick={() => copyCommand(item.command)}
                       aria-label={`${t.copyCommand}: ${item.label}`}
                       title={copiedCommand === item.command ? t.copied : t.copyCommand}
+                      size="icon"
+                      variant="ghost"
                     >
                       {copiedCommand === item.command ? (
                         <LuCheck aria-hidden="true" />
                       ) : (
                         <LuClipboard aria-hidden="true" />
                       )}
-                    </button>
-                  </div>
+                    </Button>
+                  </Card>
                 ))}
               </div>
             ) : (
@@ -627,13 +644,13 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
             {selectedNote.links && selectedNote.links.length > 0 ? (
               <div className="studio-link-stack">
                 {selectedNote.links.map((link) => (
-                  <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                  <CardLink key={link.href} href={link.href} target="_blank" rel="noreferrer">
                     <span>
                       <strong>{link.label}</strong>
                       {link.note && <small>{link.note}</small>}
                     </span>
                     <LuExternalLink aria-hidden="true" />
-                  </a>
+                  </CardLink>
                 ))}
               </div>
             ) : (
@@ -647,25 +664,25 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
               <h3>{t.checklistTitle}</h3>
             </div>
             {selectedNote.checklist && selectedNote.checklist.length > 0 ? (
-              <ul className="studio-check-list">
+              <ItemGroup className="studio-check-list">
                 {selectedNote.checklist.map((item) => (
-                  <li key={item.label}>
-                    <span className={item.checked ? "is-checked" : ""}>
+                  <Item key={item.label}>
+                    <ItemMedia className={item.checked ? "is-checked" : ""}>
                       {item.checked ? <LuCheck aria-hidden="true" /> : null}
-                    </span>
-                    <div>
+                    </ItemMedia>
+                    <ItemContent>
                       <strong>{item.label}</strong>
                       {item.detail && <p>{item.detail}</p>}
-                    </div>
-                  </li>
+                    </ItemContent>
+                  </Item>
                 ))}
-              </ul>
+              </ItemGroup>
             ) : (
               <p className="studio-panel-empty">{t.noChecklist}</p>
             )}
           </section>
-        </aside>
-      </div>
-    </section>
+        </DashboardPanel>
+      </DashboardGrid>
+    </DashboardFrame>
   );
 }

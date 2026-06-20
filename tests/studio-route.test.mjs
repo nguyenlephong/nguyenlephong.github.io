@@ -8,6 +8,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.ok(existsSync("src/app/[locale]/studio/StudioWorkspace.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.css"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.data.ts"));
+  assert.ok(existsSync("src/components/studio-kit/index.ts"));
+  assert.ok(existsSync("src/components/studio-kit/upstream.json"));
 
   const [
     routes,
@@ -21,6 +23,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     workspace,
     data,
     css,
+    kitIndex,
+    kitUpstream,
     enMessages,
     viMessages
   ] = await Promise.all([
@@ -35,6 +39,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8"),
     readFile("src/app/[locale]/studio/studio.data.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio.css", "utf8"),
+    readFile("src/components/studio-kit/index.ts", "utf8"),
+    readFile("src/components/studio-kit/upstream.json", "utf8"),
     readFile("messages/en.json", "utf8"),
     readFile("messages/vi.json", "utf8")
   ]);
@@ -55,12 +61,23 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(page, /generateMetadata/);
   assert.match(page, /PageTracker page="studio" eventName="studio_view"/);
   assert.match(page, /StudioWorkspace/);
+  assert.match(page, /studio-kit\/studio-kit\.css/);
 
   assert.match(workspace, /^"use client"/);
+  assert.match(workspace, /@\/components\/studio-kit/);
+  assert.match(workspace, /DashboardFrame/);
+  assert.match(workspace, /SearchField/);
+  assert.match(workspace, /SegmentedControl/);
+  assert.match(workspace, /ActionCard/);
   assert.match(workspace, /selectedNoteId/);
   assert.match(workspace, /studioFolders/);
   assert.match(workspace, /studioNotes/);
   assert.match(workspace, /navigator\.clipboard\.writeText/);
+  assert.doesNotMatch(workspace, /Downloads\/next-shadcn-admin-dashboard-main/);
+  assert.match(kitIndex, /export \* from "\.\/primitives"/);
+  assert.match(kitIndex, /export \* from "\.\/dashboard"/);
+  assert.match(kitUpstream, /next-shadcn-admin-dashboard-main/);
+  assert.match(kitUpstream, /"sourceVersion": "2\.2\.0"/);
 
   for (const expectedClass of [
     "studio-workbench",

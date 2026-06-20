@@ -1,0 +1,85 @@
+.studio-kit-scope .sdk-button,
+.studio-kit-scope .sdk-action-card,
+.studio-kit-scope .sdk-card-link {
+  font: inherit;
+}
+
+.studio-kit-scope .sdk-button {
+  display: inline-grid;
+  grid-auto-flow: column;
+  gap: 0.45rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.2rem;
+  border: 1px solid var(--studio-line);
+  border-radius: var(--radius-sm);
+  background: var(--studio-surface-strong);
+  color: var(--fg);
+  padding: 0 0.72rem;
+  cursor: pointer;
+  transition:
+    border-color var(--d-fast) var(--ease),
+    background var(--d-fast) var(--ease),
+    color var(--d-fast) var(--ease),
+    transform var(--d-fast) var(--ease);
+}
+
+.studio-kit-scope .sdk-button--icon {
+  width: 2.25rem;
+  min-height: 2.25rem;
+  padding: 0;
+}
+
+.studio-kit-scope .sdk-button:hover,
+.studio-kit-scope .sdk-button--active {
+  border-color: color-mix(in oklab, var(--studio-indigo) 46%, var(--studio-line));
+  background: color-mix(in oklab, var(--studio-indigo) 10%, var(--studio-surface-strong));
+  color: var(--fg);
+}
+
+.studio-kit-scope .sdk-button:active {
+  transform: translateY(1px);
+}
+
+.studio-kit-scope .sdk-card {
+  min-width: 0;
+}
+
+.studio-kit-scope .sdk-action-card {
+  text-align: left;
+}
+
+.studio-kit-scope .sdk-badge {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+}
+
+.studio-kit-scope .sdk-empty {
+  display: grid;
+  place-items: center;
+}
+
+.studio-kit-scope .sdk-empty__content {
+  display: grid;
+  justify-items: center;
+  max-width: 24rem;
+}
+
+.studio-kit-scope .sdk-item-group {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+.studio-kit-scope .sdk-item {
+  min-width: 0;
+}
+
+.studio-kit-scope .sdk-search__clear {
+  width: 1.8rem;
+  min-height: 1.8rem;
+  padding: 0;
+}
+
