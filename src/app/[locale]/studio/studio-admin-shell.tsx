@@ -7,7 +7,6 @@ import type { IconType } from "react-icons";
 import { APP_ROUTE } from "@/app/app.const";
 import { track } from "@/lib/analytics";
 import {
-  blogRoadmapTicketChecklist,
   blogRoadmapTopics,
   defaultStudioNoteId,
   studioAiSkills,
@@ -15,6 +14,12 @@ import {
   studioNotes,
   studioWorkflowChecklists
 } from "./studio.data";
+import {
+  getLocalizedBlogRoadmapTicketChecklist,
+  getLocalizedBlogRoadmapTopics,
+  getLocalizedStudioAiSkills,
+  getLocalizedStudioWorkflowChecklists
+} from "./studio.localized-content";
 import type {
   BlogRoadmapEntry,
   BlogRoadmapStatus,
@@ -3334,12 +3339,13 @@ function AiAgentSetupPage({
   );
 }
 
-function AiSkillsPage({ route, copy }: { route: StudioRoute; copy: StudioUiCopy }) {
-  const [selectedSkillId, setSelectedSkillId] = useState(studioAiSkills[0]?.id ?? "");
+function AiSkillsPage({ route, locale, copy }: { route: StudioRoute; locale: string; copy: StudioUiCopy }) {
+  const localizedSkills = useMemo(() => getLocalizedStudioAiSkills(locale), [locale]);
+  const [selectedSkillId, setSelectedSkillId] = useState(localizedSkills[0]?.id ?? "");
   const [categoryFilter, setCategoryFilter] = useState<StudioAiSkill["category"] | "all">("all");
   const [copiedSkillId, setCopiedSkillId] = useState<string | null>(null);
-  const visibleSkills = studioAiSkills.filter((skill) => categoryFilter === "all" || skill.category === categoryFilter);
-  const selectedSkill = studioAiSkills.find((skill) => skill.id === selectedSkillId) ?? visibleSkills[0] ?? studioAiSkills[0];
+  const visibleSkills = localizedSkills.filter((skill) => categoryFilter === "all" || skill.category === categoryFilter);
+  const selectedSkill = localizedSkills.find((skill) => skill.id === selectedSkillId) ?? visibleSkills[0] ?? localizedSkills[0];
   const categories: Array<StudioAiSkill["category"] | "all"> = [
     "all",
     "strategy",
@@ -3351,7 +3357,7 @@ function AiSkillsPage({ route, copy }: { route: StudioRoute; copy: StudioUiCopy 
   ];
 
   const handleCategoryFilter = (category: StudioAiSkill["category"] | "all") => {
-    const nextVisibleSkills = studioAiSkills.filter((skill) => category === "all" || skill.category === category);
+    const nextVisibleSkills = localizedSkills.filter((skill) => category === "all" || skill.category === category);
     setCategoryFilter(category);
     if (!nextVisibleSkills.some((skill) => skill.id === selectedSkillId)) {
       setSelectedSkillId(nextVisibleSkills[0]?.id ?? selectedSkillId);
@@ -3541,10 +3547,11 @@ function ChecklistStepNode({
   );
 }
 
-function DeliveryChecklistsPage({ route, copy }: { route: StudioRoute; copy: StudioUiCopy }) {
-  const [selectedChecklistId, setSelectedChecklistId] = useState(studioWorkflowChecklists[0]?.id ?? "");
+function DeliveryChecklistsPage({ route, locale, copy }: { route: StudioRoute; locale: string; copy: StudioUiCopy }) {
+  const localizedChecklists = useMemo(() => getLocalizedStudioWorkflowChecklists(locale), [locale]);
+  const [selectedChecklistId, setSelectedChecklistId] = useState(localizedChecklists[0]?.id ?? "");
   const [copiedChecklistId, setCopiedChecklistId] = useState<string | null>(null);
-  const selectedChecklist = studioWorkflowChecklists.find((checklist) => checklist.id === selectedChecklistId) ?? studioWorkflowChecklists[0];
+  const selectedChecklist = localizedChecklists.find((checklist) => checklist.id === selectedChecklistId) ?? localizedChecklists[0];
   const selectedMarkdown = selectedChecklist ? renderChecklistMarkdown(selectedChecklist, copy) : "";
   const totalSteps = selectedChecklist?.sections.reduce((total, section) => total + countChecklistSteps(section.steps), 0) ?? 0;
 
@@ -3610,7 +3617,7 @@ function DeliveryChecklistsPage({ route, copy }: { route: StudioRoute; copy: Stu
           </div>
 
           <div className="checklist-list">
-            {studioWorkflowChecklists.map((checklist) => (
+            {localizedChecklists.map((checklist) => (
               <button
                 key={checklist.id}
                 type="button"
@@ -3688,10 +3695,12 @@ function DeliveryChecklistsPage({ route, copy }: { route: StudioRoute; copy: Stu
 }
 
 function BlogRoadmapPage({ route, locale, copy }: { route: StudioRoute; locale: string; copy: StudioUiCopy }) {
-  const [selectedTopicId, setSelectedTopicId] = useState(blogRoadmapTopics[0]?.id ?? "");
+  const localizedTopics = useMemo(() => getLocalizedBlogRoadmapTopics(locale), [locale]);
+  const localizedTicketChecklist = useMemo(() => getLocalizedBlogRoadmapTicketChecklist(locale), [locale]);
+  const [selectedTopicId, setSelectedTopicId] = useState(localizedTopics[0]?.id ?? "");
   const [selectedDay, setSelectedDay] = useState(1);
   const [statusFilter, setStatusFilter] = useState<BlogRoadmapStatus | "all">("all");
-  const selectedTopic = blogRoadmapTopics.find((topic) => topic.id === selectedTopicId) ?? blogRoadmapTopics[0];
+  const selectedTopic = localizedTopics.find((topic) => topic.id === selectedTopicId) ?? localizedTopics[0];
   const selectedEntry = selectedTopic?.entries.find((entry) => entry.day === selectedDay) ?? selectedTopic?.entries[0];
   const visibleEntries = selectedTopic?.entries.filter((entry) => statusFilter === "all" || entry.status === statusFilter) ?? [];
   const readyCount = selectedTopic?.entries.filter((entry) => entry.status === "ready").length ?? 0;
@@ -3782,7 +3791,7 @@ function BlogRoadmapPage({ route, locale, copy }: { route: StudioRoute; locale: 
           </div>
 
           <div className="roadmap-topic-list">
-            {blogRoadmapTopics.map((topic) => {
+            {localizedTopics.map((topic) => {
               const active = topic.id === selectedTopic.id;
               const topicReady = topic.entries.filter((entry) => entry.status === "ready").length;
               return (
@@ -3880,7 +3889,7 @@ function BlogRoadmapPage({ route, locale, copy }: { route: StudioRoute; locale: 
           <section className="ai-checklist-panel">
             <h3>{copy.roadmap.ticketHandoff}</h3>
             <div>
-              {blogRoadmapTicketChecklist.map((item, index) => (
+              {localizedTicketChecklist.map((item, index) => (
                 <label className="check-row checklist-row" key={item}>
                   <input type="checkbox" defaultChecked={index < 3} />
                   <span>
@@ -4245,8 +4254,8 @@ function RouteContent({
   if (route.kind === "mail") return <MailRoutePage route={route} />;
   if (route.kind === "chat") return <ChatRoutePage route={route} />;
   if (route.kind === "ai-setup") return <AiAgentSetupPage route={route} locale={locale} copy={copy} profileActions={profileActions} />;
-  if (route.kind === "ai-skills") return <AiSkillsPage route={route} copy={copy} />;
-  if (route.kind === "checklists") return <DeliveryChecklistsPage route={route} copy={copy} />;
+  if (route.kind === "ai-skills") return <AiSkillsPage route={route} locale={locale} copy={copy} />;
+  if (route.kind === "checklists") return <DeliveryChecklistsPage route={route} locale={locale} copy={copy} />;
   if (route.kind === "roadmap") return <BlogRoadmapPage route={route} locale={locale} copy={copy} />;
   if (route.kind === "calendar") return <CalendarPage route={route} />;
   if (route.kind === "kanban") return <KanbanPage route={route} />;
