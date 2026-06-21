@@ -68,6 +68,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(footer, /studio_footer/);
   assert.match(seo, /studio/);
   assert.match(analytics, /'studio_view'/);
+  assert.match(analytics, /'studio_blog_roadmap_topic_select'/);
+  assert.match(analytics, /'studio_blog_roadmap_day_select'/);
+  assert.match(analytics, /'studio_blog_roadmap_ticket_action'/);
   assert.match(tracker, /'studio'/);
   assert.match(tracker, /'studio_view'/);
 
@@ -132,6 +135,12 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(navGroupsBlock, /label:\s*"Personal Studio"/);
   assert.match(navGroupsBlock, /title:\s*"AI Setup"/);
   assert.match(navGroupsBlock, /routeId:\s*"ai-agent-setup"/);
+  assert.match(navGroupsBlock, /title:\s*"AI Skills"/);
+  assert.match(navGroupsBlock, /routeId:\s*"ai-skills"/);
+  assert.match(navGroupsBlock, /title:\s*"Checklists"/);
+  assert.match(navGroupsBlock, /routeId:\s*"delivery-checklists"/);
+  assert.match(navGroupsBlock, /title:\s*"Blog Roadmap"/);
+  assert.match(navGroupsBlock, /routeId:\s*"blog-roadmap"/);
   assert.doesNotMatch(navGroupsBlock, /Communication/);
   assert.doesNotMatch(navGroupsBlock, /title:\s*"Email"/);
   assert.doesNotMatch(navGroupsBlock, /title:\s*"Chat"/);
@@ -146,22 +155,46 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /"analytics"/);
   assert.match(adminShell, /"email"/);
   assert.match(adminShell, /"ai-agent-setup"/);
+  assert.match(adminShell, /"ai-skills"/);
+  assert.match(adminShell, /"delivery-checklists"/);
+  assert.match(adminShell, /"blog-roadmap"/);
   assert.match(adminShell, /"auth-login-v1"/);
   assert.match(adminShell, /function MailRoutePage/);
   assert.match(adminShell, /function ChatRoutePage/);
   assert.match(adminShell, /function AiAgentSetupPage/);
+  assert.match(adminShell, /function AiSkillsPage/);
+  assert.match(adminShell, /function DeliveryChecklistsPage/);
+  assert.match(adminShell, /function BlogRoadmapPage/);
   assert.match(adminShell, /title:\s*"Email"/);
   assert.match(adminShell, /title:\s*"Chat"/);
   assert.match(adminShell, /title:\s*"AI Agent Setup"/);
+  assert.match(adminShell, /title:\s*"AI Skills"/);
+  assert.match(adminShell, /title:\s*"Delivery Checklists"/);
+  assert.match(adminShell, /title:\s*"Blog Roadmap"/);
   assert.doesNotMatch(adminShell, /Mail preview/);
   assert.doesNotMatch(adminShell, /Chat preview/);
   assert.match(adminShell, /data-studio-module="mail"/);
   assert.match(adminShell, /data-studio-module="chat"/);
   assert.match(adminShell, /data-studio-module="ai-agent-setup"/);
+  assert.match(adminShell, /data-studio-module="ai-skills"/);
+  assert.match(adminShell, /data-studio-module="delivery-checklists"/);
+  assert.match(adminShell, /data-studio-module="blog-roadmap"/);
+  assert.match(adminShell, /studio_ai_skill_select/);
+  assert.match(adminShell, /studio_ai_skill_copy/);
+  assert.match(adminShell, /studio_checklist_select/);
+  assert.match(adminShell, /studio_checklist_copy/);
+  assert.match(adminShell, /studio_checklist_item_toggle/);
+  assert.match(adminShell, /studio_blog_roadmap_topic_select/);
+  assert.match(adminShell, /studio_blog_roadmap_day_select/);
+  assert.match(adminShell, /studio_blog_roadmap_ticket_action/);
   assert.match(adminShell, /studioMails/);
   assert.match(adminShell, /studioConversations/);
   assert.match(adminShell, /studioFolders/);
   assert.match(adminShell, /studioNotes/);
+  assert.match(adminShell, /studioAiSkills/);
+  assert.match(adminShell, /studioWorkflowChecklists/);
+  assert.match(adminShell, /blogRoadmapTopics/);
+  assert.match(adminShell, /blogRoadmapTicketChecklist/);
   assert.match(adminShell, /aiWorkflowSteps/);
   assert.match(adminShell, /Attachments \(\{selectedMail\.attachments\.length\}\)/);
   assert.match(adminShell, /Internal note/);
@@ -221,6 +254,19 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "ai-setup-index",
     "ai-setup-reader",
     "ai-workflow-rail",
+    "skill-library-workbench",
+    "skill-index-pane",
+    "skill-reader-pane",
+    "skill-markdown-preview",
+    "checklist-workbench",
+    "checklist-index-pane",
+    "checklist-reader-pane",
+    "checklist-section-card",
+    "blog-roadmap-workbench",
+    "roadmap-topic-pane",
+    "roadmap-plan-pane",
+    "roadmap-detail-pane",
+    "roadmap-day-grid",
     "preferences-popover"
   ]) {
     assert.match(shadowCss, new RegExp(`\\.${expectedClass}\\b`));
@@ -241,6 +287,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.studio-main\s*\{[^}]*height:\s*calc\(100vh - 1\.5rem\)/s);
   assert.match(shadowCss, /\.dashboard-content\s*\{[^}]*overflow:\s*auto/s);
   assert.match(shadowCss, /\.ai-setup-container\.card\s*\{[^}]*height:\s*clamp/s);
+  assert.match(shadowCss, /\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card\s*\{[^}]*height:\s*clamp/s);
+  assert.match(shadowCss, /\.blog-roadmap-workbench\.card\s*\{[^}]*grid-template-columns:\s*18rem minmax\(0,\s*1fr\) 20rem/s);
+  assert.match(shadowCss, /\.roadmap-day-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s);
   assert.match(shadowCss, /--sidebar:\s*color-mix/);
   assert.match(shadowCss, /border-radius:\s*0\.875rem/);
   assert.match(shadowCss, /@media \(max-width: 860px\)/);
@@ -265,7 +314,29 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "npx antigravity-awesome-skills",
     "https://github.com/sickn33/antigravity-awesome-skills",
     "od mcp install codex",
-    "od mcp install antigravity"
+    "od mcp install antigravity",
+    "Code Review Skill",
+    "Frontend Architecture Skill",
+    "Backend Architecture Skill",
+    "Blog Content Writer Skill",
+    "Prompt Writing Skill",
+    "Status Report Skill",
+    "Doc / Spec / Tech Spec Skill",
+    "Proposal / Slide / Pitch Deck Skill",
+    "Ticket intake to first commit",
+    "Create a new module",
+    "Release readiness",
+    "Rollout plan",
+    "Roll out by phase.",
+    "Source & Architecture",
+    "Engineering Culture",
+    "AI & The Future",
+    "Ways of Working",
+    "Perspectives & Field Notes",
+    "One architecture article per day for 30 days.",
+    "Module boundaries before folder names",
+    "From prompts to workflows",
+    "Create one focused Multica ticket per roadmap article."
   ]) {
     assert.match(data, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }

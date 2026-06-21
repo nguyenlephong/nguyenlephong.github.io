@@ -6,8 +6,24 @@ import Image from "next/image";
 import type { IconType } from "react-icons";
 import { APP_ROUTE } from "@/app/app.const";
 import { track } from "@/lib/analytics";
-import { defaultStudioNoteId, studioFolders, studioNotes } from "./studio.data";
-import type { StudioNote } from "./studio.data";
+import {
+  blogRoadmapTicketChecklist,
+  blogRoadmapTopics,
+  defaultStudioNoteId,
+  studioAiSkills,
+  studioFolders,
+  studioNotes,
+  studioWorkflowChecklists
+} from "./studio.data";
+import type {
+  BlogRoadmapEntry,
+  BlogRoadmapStatus,
+  BlogRoadmapTopic,
+  StudioAiSkill,
+  StudioChecklistStep,
+  StudioNote,
+  StudioWorkflowChecklist
+} from "./studio.data";
 import {
   LuAlarmClock,
   LuArchive,
@@ -110,6 +126,9 @@ type StudioRouteId =
   | "email"
   | "chat"
   | "ai-agent-setup"
+  | "ai-skills"
+  | "delivery-checklists"
+  | "blog-roadmap"
   | "calendar"
   | "kanban"
   | "invoice"
@@ -137,6 +156,9 @@ type StudioRouteKind =
   | "mail"
   | "chat"
   | "ai-setup"
+  | "ai-skills"
+  | "checklists"
+  | "roadmap"
   | "calendar"
   | "kanban"
   | "invoice"
@@ -558,6 +580,24 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
     { label: "MCP paths", value: "5", helper: "Install commands kept close", badge: "+3", trend: "up", icon: LuCommand },
     { label: "Safety checks", value: "4", helper: "Credential and workflow guardrails", badge: "stable", trend: "up", icon: LuLock }
   ],
+  "ai-skills": [
+    { label: "Skills", value: `${studioAiSkills.length}`, helper: "Reusable markdown prompts", badge: "copy", trend: "up", icon: LuSparkles },
+    { label: "Engineering", value: `${studioAiSkills.filter((skill) => skill.category === "engineering").length}`, helper: "Code, frontend, backend, specs", badge: "core", trend: "up", icon: LuServer },
+    { label: "Content", value: `${studioAiSkills.filter((skill) => skill.category === "content").length}`, helper: "Writing and prompt work", badge: "voice", trend: "up", icon: LuFileText },
+    { label: "Ops", value: `${studioAiSkills.filter((skill) => skill.category === "operations" || skill.category === "communication").length}`, helper: "Reports, proposals, decks", badge: "ready", trend: "up", icon: LuClipboardList }
+  ],
+  "delivery-checklists": [
+    { label: "Checklists", value: `${studioWorkflowChecklists.length}`, helper: "Task, module, release, rollout", badge: "nested", trend: "up", icon: LuClipboardList },
+    { label: "Sections", value: `${studioWorkflowChecklists.reduce((total, checklist) => total + checklist.sections.length, 0)}`, helper: "Reusable operating gates", badge: "mapped", trend: "up", icon: LuListTodo },
+    { label: "Steps", value: `${studioWorkflowChecklists.reduce((total, checklist) => total + checklist.sections.reduce((sum, section) => sum + section.steps.length, 0), 0)}`, helper: "Parent checklist items", badge: "ready", trend: "up", icon: LuCheckCircle2 },
+    { label: "Rollout", value: "3 phases", helper: "Before, during, after", badge: "guarded", trend: "up", icon: LuFlag }
+  ],
+  "blog-roadmap": [
+    { label: "Topics", value: `${blogRoadmapTopics.length}`, helper: "Existing blog categories in scope", badge: "mapped", trend: "up", icon: LuBookOpenCheck },
+    { label: "Article tickets", value: `${blogRoadmapTopics.reduce((total, topic) => total + topic.entries.length, 0)}`, helper: "One daily idea per topic", badge: "30d", trend: "up", icon: LuListTodo },
+    { label: "Ready drafts", value: `${blogRoadmapTopics.reduce((total, topic) => total + topic.entries.filter((entry) => entry.status === "ready").length, 0)}`, helper: "Can be ticketed first", badge: "next", trend: "up", icon: LuCheckCircle2 },
+    { label: "Cadence", value: "5/day", helper: "One post per topic each day", badge: "daily", trend: "up", icon: LuCalendarDays }
+  ],
   calendar: [
     { label: "Today", value: "6", helper: "Events on the schedule", badge: "+2", trend: "up", icon: LuCalendarDays },
     { label: "Focus Blocks", value: "3h", helper: "Protected engineering time", badge: "+45m", trend: "up", icon: LuAlarmClock },
@@ -741,6 +781,39 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
     panels: ["Setup library", "Agent workflow", "Command runbook"],
     timeline: ["Skill library reviewed", "MCP install path captured", "Credential guardrail checked"]
   },
+  "ai-skills": {
+    id: "ai-skills",
+    title: "AI Skills",
+    description: "Reusable markdown skills for code review, architecture, content writing, prompts, reports, specs, and proposals.",
+    kind: "ai-skills",
+    icon: LuSparkles,
+    badge: "new",
+    metrics: routeMetrics["ai-skills"],
+    panels: ["Skill library", "Markdown preview", "Copy-ready prompt"],
+    timeline: ["Code review skill ready", "Architecture skills grouped", "Content and report prompts prepared"]
+  },
+  "delivery-checklists": {
+    id: "delivery-checklists",
+    title: "Delivery Checklists",
+    description: "Operating checklists from task intake through module work, release readiness, and rollout.",
+    kind: "checklists",
+    icon: LuClipboardList,
+    badge: "new",
+    metrics: routeMetrics["delivery-checklists"],
+    panels: ["Task intake", "Module creation", "Release and rollout"],
+    timeline: ["Ticket intake path mapped", "Module checklist nested", "Rollout phases captured"]
+  },
+  "blog-roadmap": {
+    id: "blog-roadmap",
+    title: "Blog Roadmap",
+    description: "A 30-day writing menu for every current blog topic, ready to turn into daily Multica article tickets.",
+    kind: "roadmap",
+    icon: LuBookOpenCheck,
+    badge: "new",
+    metrics: routeMetrics["blog-roadmap"],
+    panels: ["Topic menu", "Daily article plan", "Ticket checklist"],
+    timeline: ["Existing blog topics mapped", "Thirty daily prompts prepared", "Ticket handoff checklist ready"]
+  },
   calendar: {
     id: "calendar",
     title: "Calendar",
@@ -883,6 +956,27 @@ const navGroups: StudioNavGroup[] = [
         title: "AI Setup",
         routeId: "ai-agent-setup",
         icon: LuSparkles,
+        badge: "new"
+      },
+      {
+        id: "ai-skills",
+        title: "AI Skills",
+        routeId: "ai-skills",
+        icon: LuCommand,
+        badge: "new"
+      },
+      {
+        id: "delivery-checklists",
+        title: "Checklists",
+        routeId: "delivery-checklists",
+        icon: LuClipboardList,
+        badge: "new"
+      },
+      {
+        id: "blog-roadmap",
+        title: "Blog Roadmap",
+        routeId: "blog-roadmap",
+        icon: LuBookOpenCheck,
         badge: "new"
       }
     ]
@@ -1338,6 +1432,51 @@ function statusText(status: StudioNote["status"]): string {
   if (status === "ready") return "Ready";
   if (status === "draft") return "Draft";
   return "Next";
+}
+
+function roadmapStatusText(status: BlogRoadmapStatus): string {
+  if (status === "ready") return "Ready";
+  if (status === "outline") return "Outline";
+  return "Research";
+}
+
+function skillCategoryLabel(category: StudioAiSkill["category"] | "all"): string {
+  if (category === "all") return "All";
+  if (category === "engineering") return "Engineering";
+  if (category === "content") return "Content";
+  if (category === "operations") return "Operations";
+  return "Communication";
+}
+
+function renderChecklistStepMarkdown(step: StudioChecklistStep, depth = 0): string {
+  const indent = "  ".repeat(depth);
+  const detail = step.detail ? ` - ${step.detail}` : "";
+  const children = step.children?.length
+    ? `\n${step.children.map((child) => renderChecklistStepMarkdown(child, depth + 1)).join("\n")}`
+    : "";
+  return `${indent}- [ ] ${step.label}${detail}${children}`;
+}
+
+function renderChecklistMarkdown(checklist: StudioWorkflowChecklist): string {
+  return [
+    `# ${checklist.title}`,
+    "",
+    checklist.summary,
+    "",
+    `Use when: ${checklist.whenToUse}`,
+    "",
+    ...checklist.sections.flatMap((section) => [
+      `## ${section.title}`,
+      section.detail,
+      "",
+      ...section.steps.map((step) => renderChecklistStepMarkdown(step)),
+      ""
+    ])
+  ].join("\n").trim();
+}
+
+function countChecklistSteps(steps: StudioChecklistStep[]): number {
+  return steps.reduce((total, step) => total + 1 + countChecklistSteps(step.children ?? []), 0);
 }
 
 function MetricCard({ item }: { item: StudioMetric }) {
@@ -2467,6 +2606,547 @@ function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: strin
   );
 }
 
+function AiSkillsPage({ route }: { route: StudioRoute }) {
+  const [selectedSkillId, setSelectedSkillId] = useState(studioAiSkills[0]?.id ?? "");
+  const [categoryFilter, setCategoryFilter] = useState<StudioAiSkill["category"] | "all">("all");
+  const [copiedSkillId, setCopiedSkillId] = useState<string | null>(null);
+  const visibleSkills = studioAiSkills.filter((skill) => categoryFilter === "all" || skill.category === categoryFilter);
+  const selectedSkill = studioAiSkills.find((skill) => skill.id === selectedSkillId) ?? visibleSkills[0] ?? studioAiSkills[0];
+  const categories: Array<StudioAiSkill["category"] | "all"> = ["all", "engineering", "content", "operations", "communication"];
+
+  const handleCategoryFilter = (category: StudioAiSkill["category"] | "all") => {
+    const nextVisibleSkills = studioAiSkills.filter((skill) => category === "all" || skill.category === category);
+    setCategoryFilter(category);
+    if (!nextVisibleSkills.some((skill) => skill.id === selectedSkillId)) {
+      setSelectedSkillId(nextVisibleSkills[0]?.id ?? selectedSkillId);
+    }
+    track("studio_ai_skill_filter", {
+      category,
+      result_count: nextVisibleSkills.length
+    });
+  };
+
+  const handleSkillSelect = (skill: StudioAiSkill) => {
+    setSelectedSkillId(skill.id);
+    track("studio_ai_skill_select", {
+      skill_id: skill.id,
+      category: skill.category
+    });
+  };
+
+  const copySkill = async () => {
+    if (!selectedSkill) return;
+
+    try {
+      await navigator.clipboard.writeText(selectedSkill.markdown);
+      setCopiedSkillId(selectedSkill.id);
+      window.setTimeout(() => setCopiedSkillId(null), 1600);
+      track("studio_ai_skill_copy", {
+        skill_id: selectedSkill.id,
+        category: selectedSkill.category,
+        markdown_length: selectedSkill.markdown.length
+      });
+    } catch {
+      track("studio_ai_skill_copy", {
+        skill_id: selectedSkill.id,
+        category: selectedSkill.category,
+        failed: true
+      });
+    }
+  };
+
+  if (!selectedSkill) {
+    return (
+      <section className="empty-route card">
+        <LuSparkles aria-hidden="true" />
+        <strong>Skill library is empty</strong>
+        <p>Add markdown skills to Studio data before opening this menu.</p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="route-page ai-skills-route">
+      <RouteHeading route={route}>
+        <button type="button" className="outline-button" onClick={copySkill}>
+          {copiedSkillId === selectedSkill.id ? <LuCheck aria-hidden="true" /> : <LuCopy aria-hidden="true" />}
+          {copiedSkillId === selectedSkill.id ? "Copied" : "Copy markdown"}
+        </button>
+      </RouteHeading>
+
+      <RouteMetricGrid metrics={route.metrics} />
+
+      <div className="skill-library-workbench card" data-studio-module="ai-skills">
+        <aside className="skill-index-pane" aria-label="AI skill library">
+          <div className="ai-pane-head">
+            <span><LuCommand aria-hidden="true" /></span>
+            <div>
+              <h2>Skill library</h2>
+              <p>Markdown prompts that can be copied into an agent session.</p>
+            </div>
+          </div>
+
+          <div className="skill-filter-row" role="tablist" aria-label="Skill categories">
+            {categories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                className={categoryFilter === category ? "is-active" : undefined}
+                onClick={() => handleCategoryFilter(category)}
+              >
+                {skillCategoryLabel(category)}
+              </button>
+            ))}
+          </div>
+
+          <div className="skill-list">
+            {visibleSkills.map((skill) => (
+              <button
+                key={skill.id}
+                type="button"
+                className={`skill-list-button${selectedSkill.id === skill.id ? " is-active" : ""}`}
+                onClick={() => handleSkillSelect(skill)}
+              >
+                <span>
+                  <strong>{skill.title}</strong>
+                  <small>{skill.summary}</small>
+                </span>
+                <em>{skillCategoryLabel(skill.category)}</em>
+              </button>
+            ))}
+          </div>
+        </aside>
+
+        <article className="skill-reader-pane" aria-label="Selected AI skill markdown">
+          <div className="skill-reader-head">
+            <div>
+              <span className="ai-status-pill status-ready">{skillCategoryLabel(selectedSkill.category)}</span>
+              <h2>{selectedSkill.title}</h2>
+              <p>{selectedSkill.summary}</p>
+            </div>
+            <button type="button" className="outline-button" onClick={copySkill}>
+              {copiedSkillId === selectedSkill.id ? <LuCheck aria-hidden="true" /> : <LuCopy aria-hidden="true" />}
+              {copiedSkillId === selectedSkill.id ? "Copied" : "Copy"}
+            </button>
+          </div>
+
+          <div className="ai-tag-list" aria-label="Skill tags">
+            {selectedSkill.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+
+          <pre className="skill-markdown-preview"><code>{selectedSkill.markdown}</code></pre>
+        </article>
+
+        <aside className="skill-side-pane" aria-label="Skill usage notes">
+          <section>
+            <h3>Use this when</h3>
+            <p>{selectedSkill.summary}</p>
+          </section>
+          <section>
+            <h3>Copy behavior</h3>
+            <p>The button copies the raw markdown block, including headings, process, output format, and guardrails.</p>
+          </section>
+          <section>
+            <h3>Operating rule</h3>
+            <p>Keep the skill specific enough to be useful, but short enough to paste into Codex, Claude, Gemini, or another agent tool.</p>
+          </section>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+function ChecklistStepNode({
+  checklistId,
+  sectionId,
+  step,
+  depth = 0
+}: {
+  checklistId: string;
+  sectionId: string;
+  step: StudioChecklistStep;
+  depth?: number;
+}) {
+  return (
+    <li className="checklist-step-node" data-depth={depth}>
+      <label className="check-row checklist-row">
+        <input
+          type="checkbox"
+          onChange={(event) => {
+            track("studio_checklist_item_toggle", {
+              checklist_id: checklistId,
+              section_id: sectionId,
+              step_id: step.id,
+              checked: event.currentTarget.checked
+            });
+          }}
+        />
+        <span>
+          <strong>{step.label}</strong>
+          {step.detail && <small>{step.detail}</small>}
+        </span>
+      </label>
+      {step.children?.length ? (
+        <ol>
+          {step.children.map((child) => (
+            <ChecklistStepNode
+              key={child.id}
+              checklistId={checklistId}
+              sectionId={sectionId}
+              step={child}
+              depth={depth + 1}
+            />
+          ))}
+        </ol>
+      ) : null}
+    </li>
+  );
+}
+
+function DeliveryChecklistsPage({ route }: { route: StudioRoute }) {
+  const [selectedChecklistId, setSelectedChecklistId] = useState(studioWorkflowChecklists[0]?.id ?? "");
+  const [copiedChecklistId, setCopiedChecklistId] = useState<string | null>(null);
+  const selectedChecklist = studioWorkflowChecklists.find((checklist) => checklist.id === selectedChecklistId) ?? studioWorkflowChecklists[0];
+  const selectedMarkdown = selectedChecklist ? renderChecklistMarkdown(selectedChecklist) : "";
+  const totalSteps = selectedChecklist?.sections.reduce((total, section) => total + countChecklistSteps(section.steps), 0) ?? 0;
+
+  const handleChecklistSelect = (checklist: StudioWorkflowChecklist) => {
+    setSelectedChecklistId(checklist.id);
+    track("studio_checklist_select", {
+      checklist_id: checklist.id,
+      section_count: checklist.sections.length,
+      step_count: checklist.sections.reduce((total, section) => total + countChecklistSteps(section.steps), 0)
+    });
+  };
+
+  const copyChecklist = async () => {
+    if (!selectedChecklist) return;
+
+    try {
+      await navigator.clipboard.writeText(selectedMarkdown);
+      setCopiedChecklistId(selectedChecklist.id);
+      window.setTimeout(() => setCopiedChecklistId(null), 1600);
+      track("studio_checklist_copy", {
+        checklist_id: selectedChecklist.id,
+        markdown_length: selectedMarkdown.length,
+        section_count: selectedChecklist.sections.length,
+        step_count: totalSteps
+      });
+    } catch {
+      track("studio_checklist_copy", {
+        checklist_id: selectedChecklist.id,
+        failed: true
+      });
+    }
+  };
+
+  if (!selectedChecklist) {
+    return (
+      <section className="empty-route card">
+        <LuClipboardList aria-hidden="true" />
+        <strong>Checklist library is empty</strong>
+        <p>Add workflow checklists to Studio data before opening this menu.</p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="route-page delivery-checklists-route">
+      <RouteHeading route={route}>
+        <button type="button" className="outline-button" onClick={copyChecklist}>
+          {copiedChecklistId === selectedChecklist.id ? <LuCheck aria-hidden="true" /> : <LuCopy aria-hidden="true" />}
+          {copiedChecklistId === selectedChecklist.id ? "Copied" : "Copy checklist"}
+        </button>
+      </RouteHeading>
+
+      <RouteMetricGrid metrics={route.metrics} />
+
+      <div className="checklist-workbench card" data-studio-module="delivery-checklists">
+        <aside className="checklist-index-pane" aria-label="Workflow checklists">
+          <div className="ai-pane-head">
+            <span><LuClipboardList aria-hidden="true" /></span>
+            <div>
+              <h2>Checklist menu</h2>
+              <p>Operating lists from ticket intake to rollout.</p>
+            </div>
+          </div>
+
+          <div className="checklist-list">
+            {studioWorkflowChecklists.map((checklist) => (
+              <button
+                key={checklist.id}
+                type="button"
+                className={`checklist-list-button${selectedChecklist.id === checklist.id ? " is-active" : ""}`}
+                onClick={() => handleChecklistSelect(checklist)}
+              >
+                <span>
+                  <strong>{checklist.title}</strong>
+                  <small>{checklist.summary}</small>
+                </span>
+                <em>{checklist.sections.length} sections</em>
+              </button>
+            ))}
+          </div>
+        </aside>
+
+        <article className="checklist-reader-pane" aria-label="Selected workflow checklist">
+          <div className="skill-reader-head">
+            <div>
+              <span className="ai-status-pill status-ready">{totalSteps} steps</span>
+              <h2>{selectedChecklist.title}</h2>
+              <p>{selectedChecklist.summary}</p>
+            </div>
+            <button type="button" className="outline-button" onClick={copyChecklist}>
+              {copiedChecklistId === selectedChecklist.id ? <LuCheck aria-hidden="true" /> : <LuCopy aria-hidden="true" />}
+              {copiedChecklistId === selectedChecklist.id ? "Copied" : "Copy"}
+            </button>
+          </div>
+
+          <div className="ai-tag-list" aria-label="Checklist tags">
+            {selectedChecklist.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+
+          <div className="checklist-section-list">
+            {selectedChecklist.sections.map((section) => (
+              <section key={section.id} className="checklist-section-card">
+                <header>
+                  <h3>{section.title}</h3>
+                  <p>{section.detail}</p>
+                </header>
+                <ol>
+                  {section.steps.map((step) => (
+                    <ChecklistStepNode
+                      key={step.id}
+                      checklistId={selectedChecklist.id}
+                      sectionId={section.id}
+                      step={step}
+                    />
+                  ))}
+                </ol>
+              </section>
+            ))}
+          </div>
+        </article>
+
+        <aside className="checklist-side-pane" aria-label="Checklist details">
+          <section>
+            <h3>When to use</h3>
+            <p>{selectedChecklist.whenToUse}</p>
+          </section>
+          <section>
+            <h3>Structure</h3>
+            <p>{selectedChecklist.sections.length} sections, {totalSteps} nested steps, copy-ready as markdown.</p>
+          </section>
+          <section>
+            <h3>Markdown copy</h3>
+            <pre><code>{selectedMarkdown}</code></pre>
+          </section>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+function BlogRoadmapPage({ route, locale }: { route: StudioRoute; locale: string }) {
+  const [selectedTopicId, setSelectedTopicId] = useState(blogRoadmapTopics[0]?.id ?? "");
+  const [selectedDay, setSelectedDay] = useState(1);
+  const [statusFilter, setStatusFilter] = useState<BlogRoadmapStatus | "all">("all");
+  const selectedTopic = blogRoadmapTopics.find((topic) => topic.id === selectedTopicId) ?? blogRoadmapTopics[0];
+  const selectedEntry = selectedTopic?.entries.find((entry) => entry.day === selectedDay) ?? selectedTopic?.entries[0];
+  const visibleEntries = selectedTopic?.entries.filter((entry) => statusFilter === "all" || entry.status === statusFilter) ?? [];
+  const readyCount = selectedTopic?.entries.filter((entry) => entry.status === "ready").length ?? 0;
+  const outlineCount = selectedTopic?.entries.filter((entry) => entry.status === "outline").length ?? 0;
+  const researchCount = selectedTopic?.entries.filter((entry) => entry.status === "research").length ?? 0;
+  const blogCategoryHref = selectedTopic ? `${profileHref(locale, APP_ROUTE.BLOG)}/${selectedTopic.categorySlug}` : profileHref(locale, APP_ROUTE.BLOG);
+
+  const handleTopicSelect = (topic: BlogRoadmapTopic) => {
+    const firstEntry = topic.entries[0];
+    setSelectedTopicId(topic.id);
+    setSelectedDay(firstEntry?.day ?? 1);
+    setStatusFilter("all");
+    track("studio_blog_roadmap_topic_select", {
+      topic_id: topic.id,
+      category_slug: topic.categorySlug,
+      entries_count: topic.entries.length
+    });
+  };
+
+  const handleEntrySelect = (entry: BlogRoadmapEntry) => {
+    setSelectedDay(entry.day);
+    track("studio_blog_roadmap_day_select", {
+      topic_id: selectedTopic?.id,
+      day: entry.day,
+      status: entry.status,
+      ticket_label: entry.ticketLabel
+    });
+  };
+
+  const handleTicketAction = (action: "create_one" | "create_ready_batch") => {
+    track("studio_blog_roadmap_ticket_action", {
+      action,
+      topic_id: selectedTopic?.id,
+      day: selectedEntry?.day,
+      ticket_label: selectedEntry?.ticketLabel,
+      ready_count: readyCount
+    });
+  };
+
+  if (!selectedTopic || !selectedEntry) {
+    return (
+      <section className="empty-route card">
+        <LuBookOpenCheck aria-hidden="true" />
+        <strong>Roadmap data is empty</strong>
+        <p>Add blog roadmap topics to Studio data before opening this menu.</p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="route-page blog-roadmap-route">
+      <RouteHeading route={route}>
+        <div className="route-actions">
+          <a className="outline-button" href={blogCategoryHref}>
+            <LuBookOpenCheck aria-hidden="true" />
+            Open category
+          </a>
+          <button type="button" className="outline-button" onClick={() => handleTicketAction("create_ready_batch")}>
+            <LuPlusCircle aria-hidden="true" />
+            Queue ready tickets
+          </button>
+        </div>
+      </RouteHeading>
+
+      <RouteMetricGrid metrics={route.metrics} />
+
+      <div className="blog-roadmap-workbench card" data-studio-module="blog-roadmap">
+        <aside className="roadmap-topic-pane" aria-label="Blog roadmap topics">
+          <div className="ai-pane-head">
+            <span><LuBookOpenCheck aria-hidden="true" /></span>
+            <div>
+              <h2>Topic menu</h2>
+              <p>Current blog categories mapped to a one-month cadence.</p>
+            </div>
+          </div>
+
+          <div className="roadmap-topic-list">
+            {blogRoadmapTopics.map((topic) => {
+              const active = topic.id === selectedTopic.id;
+              const topicReady = topic.entries.filter((entry) => entry.status === "ready").length;
+              return (
+                <button
+                  key={topic.id}
+                  type="button"
+                  className={`roadmap-topic-button${active ? " is-active" : ""}`}
+                  onClick={() => handleTopicSelect(topic)}
+                >
+                  <span>
+                    <strong>{topic.title}</strong>
+                    <small>{topic.tagline}</small>
+                  </span>
+                  <em>{topicReady}/{topic.entries.length}</em>
+                </button>
+              );
+            })}
+          </div>
+        </aside>
+
+        <article className="roadmap-plan-pane" aria-label="Selected blog roadmap">
+          <div className="roadmap-plan-head">
+            <div>
+              <span className="ai-status-pill status-ready">{selectedTopic.cadence}</span>
+              <h2>{selectedTopic.title}</h2>
+              <p>{selectedTopic.tagline}</p>
+            </div>
+            <div className="roadmap-status-strip" aria-label="Roadmap status counts">
+              <span><strong>{readyCount}</strong> Ready</span>
+              <span><strong>{outlineCount}</strong> Outline</span>
+              <span><strong>{researchCount}</strong> Research</span>
+            </div>
+          </div>
+
+          <div className="tabs-row tabs-wrap" role="tablist" aria-label="Roadmap status filters">
+            {(["all", "ready", "outline", "research"] as const).map((status) => (
+              <button
+                key={status}
+                type="button"
+                className={statusFilter === status ? "is-active" : undefined}
+                onClick={() => setStatusFilter(status)}
+              >
+                {status === "all" ? "All" : roadmapStatusText(status)}
+              </button>
+            ))}
+          </div>
+
+          <div className="roadmap-day-grid" aria-label="Thirty day roadmap">
+            {visibleEntries.map((entry) => (
+              <button
+                key={entry.day}
+                type="button"
+                className={`roadmap-day-card status-${entry.status}${entry.day === selectedEntry.day ? " is-active" : ""}`}
+                onClick={() => handleEntrySelect(entry)}
+              >
+                <span>Day {entry.day}</span>
+                <strong>{entry.title}</strong>
+                <small>{entry.intent} - {entry.format}</small>
+              </button>
+            ))}
+          </div>
+        </article>
+
+        <aside className="roadmap-detail-pane" aria-label="Roadmap ticket detail">
+          <div className="roadmap-ticket-card">
+            <div className="roadmap-ticket-head">
+              <span className={`ai-status-pill status-${selectedEntry.status}`}>{roadmapStatusText(selectedEntry.status)}</span>
+              <strong>{selectedEntry.ticketLabel}</strong>
+            </div>
+            <h2>Day {selectedEntry.day}: {selectedEntry.title}</h2>
+            <p>{selectedEntry.angle}</p>
+            <dl className="roadmap-detail-list">
+              <div>
+                <dt>Intent</dt>
+                <dd>{selectedEntry.intent}</dd>
+              </div>
+              <div>
+                <dt>Format</dt>
+                <dd>{selectedEntry.format}</dd>
+              </div>
+              <div>
+                <dt>Draft time</dt>
+                <dd>{selectedEntry.estimatedMinutes} min</dd>
+              </div>
+              <div>
+                <dt>Category</dt>
+                <dd>{selectedTopic.categorySlug}</dd>
+              </div>
+            </dl>
+            <button type="button" className="primary-action" onClick={() => handleTicketAction("create_one")}>
+              Prepare Multica ticket
+            </button>
+          </div>
+
+          <section className="ai-checklist-panel">
+            <h3>Ticket handoff</h3>
+            <div>
+              {blogRoadmapTicketChecklist.map((item, index) => (
+                <label className="check-row checklist-row" key={item}>
+                  <input type="checkbox" defaultChecked={index < 3} />
+                  <span>
+                    <strong>{item}</strong>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </section>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
 function CalendarPage({ route }: { route: StudioRoute }) {
   const days = Array.from({ length: 35 }, (_, index) => index + 1);
   return (
@@ -2812,6 +3492,9 @@ function RouteContent({
   if (route.kind === "mail") return <MailRoutePage route={route} />;
   if (route.kind === "chat") return <ChatRoutePage route={route} />;
   if (route.kind === "ai-setup") return <AiAgentSetupPage route={route} locale={locale} />;
+  if (route.kind === "ai-skills") return <AiSkillsPage route={route} />;
+  if (route.kind === "checklists") return <DeliveryChecklistsPage route={route} />;
+  if (route.kind === "roadmap") return <BlogRoadmapPage route={route} locale={locale} />;
   if (route.kind === "calendar") return <CalendarPage route={route} />;
   if (route.kind === "kanban") return <KanbanPage route={route} />;
   if (route.kind === "invoice") return <InvoicePage route={route} />;

@@ -1015,6 +1015,236 @@ a {
   font-size: 0.8125rem;
 }
 
+.blog-roadmap-workbench.card {
+  display: grid;
+  grid-template-columns: 18rem minmax(0, 1fr) 20rem;
+  min-height: clamp(36rem, calc(100vh - 17rem), 56rem);
+  overflow: hidden;
+  padding: 0;
+}
+
+.roadmap-topic-pane,
+.roadmap-plan-pane,
+.roadmap-detail-pane {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.roadmap-topic-pane {
+  border-right: 1px solid var(--border);
+  background: color-mix(in srgb, var(--muted) 62%, transparent);
+}
+
+.roadmap-detail-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-left: 1px solid var(--border);
+  background: color-mix(in srgb, var(--muted) 44%, transparent);
+}
+
+.roadmap-topic-list {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.roadmap-topic-button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.625rem;
+  align-items: flex-start;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--foreground);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.roadmap-topic-button:hover,
+.roadmap-topic-button.is-active {
+  border-color: var(--border);
+  background: var(--background);
+}
+
+.roadmap-topic-button strong,
+.roadmap-topic-button small,
+.roadmap-topic-button em {
+  display: block;
+}
+
+.roadmap-topic-button strong {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.roadmap-topic-button small {
+  margin-top: 0.25rem;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.roadmap-topic-button em {
+  border-radius: 999px;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  padding: 0.125rem 0.45rem;
+  font-size: 0.6875rem;
+  font-style: normal;
+}
+
+.roadmap-plan-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.roadmap-plan-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+.roadmap-plan-head h2,
+.roadmap-ticket-card h2 {
+  margin: 0.5rem 0 0;
+  color: var(--foreground);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.roadmap-plan-head p,
+.roadmap-ticket-card p {
+  margin: 0.35rem 0 0;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+}
+
+.roadmap-status-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  min-width: min(24rem, 100%);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+}
+
+.roadmap-status-strip span {
+  display: grid;
+  gap: 0.2rem;
+  border-right: 1px solid var(--border);
+  padding: 0.75rem;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+}
+
+.roadmap-status-strip span:last-child {
+  border-right: 0;
+}
+
+.roadmap-status-strip strong {
+  color: var(--foreground);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.roadmap-day-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.625rem;
+}
+
+.roadmap-day-card {
+  display: grid;
+  min-height: 8.25rem;
+  align-content: start;
+  gap: 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+  color: var(--foreground);
+  padding: 0.875rem;
+  text-align: left;
+}
+
+.roadmap-day-card:hover,
+.roadmap-day-card.is-active {
+  border-color: color-mix(in srgb, var(--primary) 36%, var(--border));
+  background: color-mix(in srgb, var(--primary) 7%, var(--background));
+}
+
+.roadmap-day-card span {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.roadmap-day-card strong {
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+.roadmap-day-card small {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.roadmap-ticket-card {
+  display: grid;
+  gap: 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+  padding: 1rem;
+}
+
+.roadmap-ticket-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.roadmap-ticket-head > strong {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.roadmap-detail-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.roadmap-detail-list div {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0.75rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.5rem;
+}
+
+.roadmap-detail-list dt {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+}
+
+.roadmap-detail-list dd {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
 .ai-setup-container.card {
   display: grid;
   grid-template-columns: 18rem minmax(0, 1fr) 19rem;
@@ -1230,6 +1460,16 @@ a {
   color: #92400e;
 }
 
+.status-outline {
+  border-color: color-mix(in srgb, #2563eb 32%, var(--border));
+  color: #1d4ed8;
+}
+
+.status-research {
+  border-color: color-mix(in srgb, #71717a 36%, var(--border));
+  color: var(--muted-foreground);
+}
+
 .status-next {
   border-color: color-mix(in srgb, #71717a 36%, var(--border));
 }
@@ -1363,6 +1603,250 @@ a {
 .ai-research-queue {
   display: grid;
   gap: 0.625rem;
+}
+
+.skill-library-workbench.card,
+.checklist-workbench.card {
+  display: grid;
+  grid-template-columns: 18rem minmax(0, 1fr) 18rem;
+  height: clamp(36rem, calc(100vh - 17rem), 54rem);
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.skill-index-pane,
+.skill-reader-pane,
+.skill-side-pane,
+.checklist-index-pane,
+.checklist-reader-pane,
+.checklist-side-pane {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.skill-index-pane,
+.checklist-index-pane {
+  border-right: 1px solid var(--border);
+  background: color-mix(in srgb, var(--muted) 62%, transparent);
+}
+
+.skill-side-pane,
+.checklist-side-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-left: 1px solid var(--border);
+  background: color-mix(in srgb, var(--muted) 44%, transparent);
+}
+
+.skill-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 1rem;
+}
+
+.skill-filter-row button {
+  min-height: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--background);
+  color: var(--muted-foreground);
+  padding: 0 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.skill-filter-row button.is-active {
+  border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
+  background: color-mix(in srgb, var(--accent) 12%, var(--background));
+  color: var(--foreground);
+}
+
+.skill-list,
+.checklist-list {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.skill-list-button,
+.checklist-list-button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.625rem;
+  align-items: flex-start;
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  background: transparent;
+  color: var(--foreground);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.skill-list-button:hover,
+.skill-list-button.is-active,
+.checklist-list-button:hover,
+.checklist-list-button.is-active {
+  border-color: var(--border);
+  background: var(--background);
+}
+
+.skill-list-button strong,
+.skill-list-button small,
+.skill-list-button em,
+.checklist-list-button strong,
+.checklist-list-button small,
+.checklist-list-button em {
+  display: block;
+}
+
+.skill-list-button strong,
+.checklist-list-button strong {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.skill-list-button small,
+.checklist-list-button small {
+  margin-top: 0.25rem;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.skill-list-button em,
+.checklist-list-button em {
+  border-radius: 999px;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  padding: 0.125rem 0.375rem;
+  font-size: 0.6875rem;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+.skill-reader-pane,
+.checklist-reader-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skill-reader-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.skill-reader-head h2 {
+  margin: 0.5rem 0 0;
+  color: var(--foreground);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.skill-reader-head p {
+  margin: 0.375rem 0 0;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.skill-markdown-preview,
+.checklist-side-pane pre {
+  min-height: 0;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #050505;
+  color: #f5f5f5;
+  padding: 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.skill-markdown-preview {
+  flex: 1 1 auto;
+}
+
+.skill-side-pane section,
+.checklist-side-pane section,
+.checklist-section-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+  padding: 0.875rem;
+}
+
+.skill-side-pane h3,
+.checklist-side-pane h3,
+.checklist-section-card h3 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.skill-side-pane p,
+.checklist-side-pane p,
+.checklist-section-card p {
+  margin: 0.375rem 0 0;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.checklist-section-list {
+  display: grid;
+  gap: 0.875rem;
+}
+
+.checklist-section-card {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.checklist-section-card > ol,
+.checklist-step-node > ol {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.checklist-step-node > ol {
+  margin-left: 1rem;
+  border-left: 1px solid var(--border);
+}
+
+.checklist-step-node .check-row {
+  border: 0;
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  background: color-mix(in srgb, var(--muted) 24%, transparent);
+}
+
+.checklist-step-node:first-child > .check-row {
+  border-top: 0;
+}
+
+.checklist-step-node[data-depth="1"] > .check-row {
+  padding-left: 1rem;
+  background: color-mix(in srgb, var(--muted) 14%, transparent);
+}
+
+.checklist-side-pane pre {
+  max-height: 18rem;
+  margin: 0.75rem 0 0;
 }
 
 .native-select {
@@ -2925,11 +3409,13 @@ tbody tr:hover {
 }
 
 @media (max-width: 1320px) {
+  .blog-roadmap-workbench.card,
   .ai-setup-container.card {
     grid-template-columns: 17rem minmax(0, 1fr);
     height: clamp(38rem, calc(100vh - 14rem), 58rem);
   }
 
+  .roadmap-detail-pane,
   .ai-workflow-rail {
     grid-column: 1 / -1;
     border-top: 1px solid var(--border);
@@ -3208,7 +3694,10 @@ tbody tr:hover {
 
   .route-grid,
   .ops-detail-grid,
+  .blog-roadmap-workbench.card,
   .ai-setup-container.card,
+  .skill-library-workbench.card,
+  .checklist-workbench.card,
   .productivity-layout,
   .invoice-layout,
   .preview-shell,
@@ -3236,7 +3725,10 @@ tbody tr:hover {
   }
 
   .preview-list,
+  .roadmap-topic-pane,
   .ai-setup-index,
+  .skill-index-pane,
+  .checklist-index-pane,
   .mail-list-pane,
   .chat-list-pane,
   .chat-profile-pane {
@@ -3248,16 +3740,45 @@ tbody tr:hover {
     border-left: 0;
   }
 
-  .ai-workflow-rail {
+  .roadmap-detail-pane,
+  .ai-workflow-rail,
+  .skill-side-pane,
+  .checklist-side-pane {
     border-left: 0;
     border-top: 1px solid var(--border);
   }
 
+  .roadmap-topic-pane,
+  .roadmap-plan-pane,
+  .roadmap-detail-pane,
   .ai-setup-index,
   .ai-setup-reader,
-  .ai-workflow-rail {
+  .ai-workflow-rail,
+  .skill-index-pane,
+  .skill-reader-pane,
+  .skill-side-pane,
+  .checklist-index-pane,
+  .checklist-reader-pane,
+  .checklist-side-pane {
     overflow: visible;
     padding: 0.875rem;
+  }
+
+  .roadmap-plan-head {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-status-strip,
+  .roadmap-day-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-topic-button {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-topic-button em {
+    justify-self: flex-start;
   }
 
   .ai-pane-head,
@@ -3289,6 +3810,26 @@ tbody tr:hover {
     justify-self: flex-start;
   }
 
+  .skill-reader-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .skill-reader-head h2 {
+    font-size: 1.2rem;
+  }
+
+  .skill-list-button,
+  .checklist-list-button {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-list-button em,
+  .checklist-list-button em {
+    justify-self: flex-start;
+  }
+
   .ai-command-card code {
     white-space: pre-wrap;
     word-break: break-word;
@@ -3311,7 +3852,10 @@ tbody tr:hover {
 
   .mail-workbench,
   .chat-workbench,
-  .ai-setup-container.card {
+  .blog-roadmap-workbench.card,
+  .ai-setup-container.card,
+  .skill-library-workbench.card,
+  .checklist-workbench.card {
     height: auto;
     min-height: auto;
     overflow: visible;
@@ -3460,6 +4004,9 @@ tbody tr:hover {
   }
 
   .ai-setup-index,
+  .roadmap-topic-pane,
+  .roadmap-plan-pane,
+  .roadmap-detail-pane,
   .ai-setup-reader,
   .ai-workflow-rail {
     padding: 0.75rem;
