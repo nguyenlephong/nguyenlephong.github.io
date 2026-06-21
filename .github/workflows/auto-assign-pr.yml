@@ -1,0 +1,35 @@
+name: Auto-assign pull requests
+
+on:
+  pull_request_target:
+    types: [opened, reopened, ready_for_review]
+
+permissions:
+  issues: write
+  pull-requests: read
+
+jobs:
+  assign:
+    name: Assign repository owner
+    if: ${{ github.event.pull_request.draft == false }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign nguyenlephong
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const defaultAssignee = 'nguyenlephong'
+            const { owner, repo } = context.repo
+            const issue_number = context.payload.pull_request.number
+            const existingAssignees = context.payload.pull_request.assignees.map(
+              (assignee) => assignee.login,
+            )
+
+            if (!existingAssignees.includes(defaultAssignee)) {
+              await github.rest.issues.addAssignees({
+                owner,
+                repo,
+                issue_number,
+                assignees: [defaultAssignee],
+              })
+            }
