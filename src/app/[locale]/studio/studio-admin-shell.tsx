@@ -2995,6 +2995,19 @@ function BlogRoadmapPage({ route, locale }: { route: StudioRoute; locale: string
     });
   };
 
+  const handleStatusFilterChange = (status: BlogRoadmapStatus | "all") => {
+    if (!selectedTopic) return;
+    const nextEntry = selectedTopic.entries.find((entry) => status === "all" || entry.status === status) ?? selectedTopic.entries[0];
+    setStatusFilter(status);
+    setSelectedDay(nextEntry?.day ?? 1);
+    track("studio_blog_roadmap_status_filter", {
+      topic_id: selectedTopic.id,
+      status,
+      visible_count: status === "all" ? selectedTopic.entries.length : selectedTopic.entries.filter((entry) => entry.status === status).length,
+      selected_day: nextEntry?.day
+    });
+  };
+
   if (!selectedTopic || !selectedEntry) {
     return (
       <section className="empty-route card">
@@ -3074,7 +3087,7 @@ function BlogRoadmapPage({ route, locale }: { route: StudioRoute; locale: string
                 key={status}
                 type="button"
                 className={statusFilter === status ? "is-active" : undefined}
-                onClick={() => setStatusFilter(status)}
+                onClick={() => handleStatusFilterChange(status)}
               >
                 {status === "all" ? "All" : roadmapStatusText(status)}
               </button>

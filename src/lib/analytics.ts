@@ -108,6 +108,7 @@ export type AnalyticsEvent =
   | 'studio_checklist_copy'
   | 'studio_checklist_item_toggle'
   | 'studio_blog_roadmap_topic_select'
+  | 'studio_blog_roadmap_status_filter'
   | 'studio_blog_roadmap_day_select'
   | 'studio_blog_roadmap_ticket_action'
   // Outbound

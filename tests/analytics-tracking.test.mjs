@@ -135,7 +135,11 @@ test("studio analytics and agent rules cover new workspace interactions", async 
     "studio_ai_skill_copy",
     "studio_checklist_select",
     "studio_checklist_copy",
-    "studio_checklist_item_toggle"
+    "studio_checklist_item_toggle",
+    "studio_blog_roadmap_topic_select",
+    "studio_blog_roadmap_status_filter",
+    "studio_blog_roadmap_day_select",
+    "studio_blog_roadmap_ticket_action"
   ]) {
     assert.match(analytics, new RegExp(`'${eventName}'`));
     assert.match(adminShell, new RegExp(`"${eventName}"`));

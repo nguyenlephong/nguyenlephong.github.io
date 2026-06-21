@@ -3409,10 +3409,22 @@ tbody tr:hover {
 }
 
 @media (max-width: 1320px) {
-  .blog-roadmap-workbench.card,
+  .blog-roadmap-workbench.card {
+    grid-template-columns: 17rem minmax(0, 1fr);
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+  }
+
   .ai-setup-container.card {
     grid-template-columns: 17rem minmax(0, 1fr);
     height: clamp(38rem, calc(100vh - 14rem), 58rem);
+  }
+
+  .roadmap-topic-pane,
+  .roadmap-plan-pane,
+  .roadmap-detail-pane {
+    overflow: visible;
   }
 
   .roadmap-detail-pane,

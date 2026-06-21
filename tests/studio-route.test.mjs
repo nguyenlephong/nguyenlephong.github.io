@@ -69,6 +69,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(seo, /studio/);
   assert.match(analytics, /'studio_view'/);
   assert.match(analytics, /'studio_blog_roadmap_topic_select'/);
+  assert.match(analytics, /'studio_blog_roadmap_status_filter'/);
   assert.match(analytics, /'studio_blog_roadmap_day_select'/);
   assert.match(analytics, /'studio_blog_roadmap_ticket_action'/);
   assert.match(tracker, /'studio'/);
@@ -185,8 +186,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studio_checklist_copy/);
   assert.match(adminShell, /studio_checklist_item_toggle/);
   assert.match(adminShell, /studio_blog_roadmap_topic_select/);
+  assert.match(adminShell, /studio_blog_roadmap_status_filter/);
   assert.match(adminShell, /studio_blog_roadmap_day_select/);
   assert.match(adminShell, /studio_blog_roadmap_ticket_action/);
+  assert.match(adminShell, /handleStatusFilterChange/);
   assert.match(adminShell, /studioMails/);
   assert.match(adminShell, /studioConversations/);
   assert.match(adminShell, /studioFolders/);
@@ -290,6 +293,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card\s*\{[^}]*height:\s*clamp/s);
   assert.match(shadowCss, /\.blog-roadmap-workbench\.card\s*\{[^}]*grid-template-columns:\s*18rem minmax\(0,\s*1fr\) 20rem/s);
   assert.match(shadowCss, /\.roadmap-day-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s);
+  assert.match(shadowCss, /@media \(max-width: 1320px\)\s*\{[\s\S]*?\.blog-roadmap-workbench\.card\s*\{[^}]*height:\s*auto;[^}]*overflow:\s*visible/s);
   assert.match(shadowCss, /--sidebar:\s*color-mix/);
   assert.match(shadowCss, /border-radius:\s*0\.875rem/);
   assert.match(shadowCss, /@media \(max-width: 860px\)/);
