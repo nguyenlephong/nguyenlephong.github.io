@@ -489,6 +489,37 @@ a {
   text-underline-offset: 2px;
 }
 
+.profile-link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+}
+
+.profile-link-grid a {
+  display: inline-flex;
+  min-height: 2rem;
+  align-items: center;
+  gap: 0.375rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--background);
+  padding: 0 0.5rem;
+  color: var(--foreground);
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.profile-link-grid a:hover {
+  background: var(--muted);
+}
+
+.profile-link-grid svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex: 0 0 auto;
+}
+
 .user-card {
   display: grid;
   grid-template-columns: 2.25rem minmax(0, 1fr) 1.75rem;
@@ -811,22 +842,43 @@ a {
 }
 
 .account-popover strong,
-.account-popover span,
-.account-popover a {
+.account-popover > span {
   display: block;
 }
 
-.account-popover span {
+.account-popover > span {
   color: var(--muted-foreground);
   font-size: 0.8125rem;
 }
 
-.account-popover a {
-  margin-top: 0.35rem;
+.account-nav {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 0.55rem;
   border-top: 1px solid var(--border);
   padding-top: 0.625rem;
+}
+
+.account-nav a {
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr);
+  min-height: 2rem;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
   color: var(--foreground);
   text-decoration: none;
+}
+
+.account-nav a:hover {
+  background: var(--muted);
+}
+
+.account-nav svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: var(--muted-foreground);
 }
 
 .dashboard-content {
@@ -2240,6 +2292,16 @@ a {
   max-height: 24rem;
   overflow: auto;
   padding: 0.5rem;
+}
+
+.command-section-label {
+  margin: 0.5rem 0 0.125rem;
+  padding: 0 0.75rem;
+  color: var(--muted-foreground);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .command-results a {

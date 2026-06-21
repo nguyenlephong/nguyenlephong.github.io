@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, MouseEvent } from "react";
 import Image from "next/image";
 import type { IconType } from "react-icons";
+import { APP_ROUTE } from "@/app/app.const";
 import { defaultStudioNoteId, studioFolders, studioNotes } from "./studio.data";
 import type { StudioNote } from "./studio.data";
 import {
@@ -242,8 +243,16 @@ type StudioNavGroup = {
   items: StudioNavItem[];
 };
 
+type StudioProfileMenuItem = {
+  id: string;
+  label: string;
+  detail: string;
+  href: string;
+  icon: IconType;
+  external?: boolean;
+};
+
 const DEFAULT_ROUTE: StudioRouteId = "ai-agent-setup";
-const resumePath = "/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf";
 const STUDIO_THEME_STORAGE_KEY = "studio_theme_preference";
 const STUDIO_FONT_STORAGE_KEY = "studio_font_preference";
 const LAYOUT_STORAGE_KEY = "studio_layout_preference";
@@ -299,6 +308,18 @@ const sidebarCollapsibleOptions: Array<{ value: StudioSidebarCollapsible; label:
   { value: "icon", label: "Icon" },
   { value: "offcanvas", label: "Offcanvas" }
 ];
+
+const profileMenuItems: StudioProfileMenuItem[] = [
+  { id: "home", label: "Home", detail: "Profile overview.", href: APP_ROUTE.HOME, icon: LuGlobe },
+  { id: "about", label: "About", detail: "Experience and background.", href: "/#about", icon: LuUser },
+  { id: "gallery", label: "Gallery", detail: "Selected visual records.", href: APP_ROUTE.GALLERY, icon: LuSparkles },
+  { id: "blog", label: "Blog", detail: "Long-form writing.", href: APP_ROUTE.BLOG, icon: LuBookOpenCheck },
+  { id: "notes", label: "Notes", detail: "Shorter working notes.", href: APP_ROUTE.NOTES, icon: LuFileText },
+  { id: "apps", label: "Apps", detail: "Small tools and experiments.", href: APP_ROUTE.APPS, icon: LuBoxes },
+  { id: "resume", label: "Resume", detail: "Open the CV PDF.", href: APP_ROUTE.CV_PDF, icon: LuDownload, external: true }
+];
+
+const primaryProfileActions = profileMenuItems.filter((item) => ["home", "blog", "notes"].includes(item.id));
 
 const defaultLayoutPreference: StudioLayoutPreference = {
   contentLayout: "full-width",
@@ -1268,13 +1289,18 @@ function normalizeHash(hash: string): StudioRouteId {
     : DEFAULT_ROUTE;
 }
 
+function profileHref(locale: string, href: string): string {
+  if (href.startsWith("http") || href.endsWith(".pdf")) return href;
+  const prefix = locale ? `/${locale}` : "";
+  if (href === APP_ROUTE.HOME) return prefix || APP_ROUTE.HOME;
+  if (href.startsWith("/#")) return `${prefix}${href}`;
+  if (href.startsWith("/")) return `${prefix}${href}`;
+  return href;
+}
+
 function isItemActive(item: StudioNavItem, activeRoute: StudioRouteId): boolean {
   if (item.routeId === activeRoute) return true;
   return item.subItems?.some((subItem) => subItem.routeId === activeRoute) ?? false;
-}
-
-function cvHref(): string {
-  return resumePath;
 }
 
 function formatDateKey(date: Date): string {
@@ -2237,7 +2263,7 @@ function ChatRoutePage({ route }: { route: StudioRoute }) {
   );
 }
 
-function AiAgentSetupPage({ route }: { route: StudioRoute }) {
+function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: string }) {
   const setupFolder = studioFolders.find((folder) => folder.id === "machine-bootstrap");
   const setupGroups = setupFolder?.groups ?? [];
   const setupNoteIds = new Set(setupGroups.flatMap((group) => group.noteIds));
@@ -2255,10 +2281,15 @@ function AiAgentSetupPage({ route }: { route: StudioRoute }) {
     <section className="route-page ai-setup-route">
       <RouteHeading route={route}>
         <div className="route-actions">
-          <a className="outline-button" href={resumePath} target="_blank" rel="noreferrer">
-            <LuExternalLink aria-hidden="true" />
-            Back to CV
-          </a>
+          {primaryProfileActions.map((item) => {
+            const Icon = item.icon;
+            return (
+              <a key={item.id} className="outline-button" href={profileHref(locale, item.href)}>
+                <Icon aria-hidden="true" />
+                {item.label}
+              </a>
+            );
+          })}
           <button type="button" className="outline-button">
             <LuPlusCircle aria-hidden="true" />
             Add note
@@ -2481,7 +2512,7 @@ function InvoicePage({ route }: { route: StudioRoute }) {
   return (
     <section className="route-page">
       <RouteHeading route={route}>
-        <a className="outline-button" href={resumePath} target="_blank" rel="noreferrer">
+        <a className="outline-button" href={APP_ROUTE.CV_PDF} target="_blank" rel="noreferrer">
           <LuDownload aria-hidden="true" />
           Export
         </a>
@@ -2640,7 +2671,7 @@ function DefaultDashboard({
               <option value="edge">Edge/API</option>
               <option value="workers">Workers</option>
             </select>
-            <a href={resumePath} className="outline-button" target="_blank" rel="noreferrer">
+            <a href={APP_ROUTE.CV_PDF} className="outline-button" target="_blank" rel="noreferrer">
               View report
             </a>
           </div>
@@ -2654,7 +2685,7 @@ function DefaultDashboard({
             <h2>12 Workstreams</h2>
             <p>System Workstreams with status, risk, area, and last-update activity.</p>
           </div>
-          <a href={resumePath} className="outline-button" target="_blank" rel="noreferrer">
+          <a href={APP_ROUTE.CV_PDF} className="outline-button" target="_blank" rel="noreferrer">
             <LuDownload aria-hidden="true" />
             Export
           </a>
@@ -2732,6 +2763,7 @@ function DefaultDashboard({
 
 function RouteContent({
   route,
+  locale,
   workstreamSearch,
   statusFilter,
   sortMode,
@@ -2740,6 +2772,7 @@ function RouteContent({
   onSortMode
 }: {
   route: StudioRoute;
+  locale: string;
   workstreamSearch: string;
   statusFilter: string;
   sortMode: string;
@@ -2765,7 +2798,7 @@ function RouteContent({
   if (route.kind === "ecommerce" || route.kind === "academy" || route.kind === "logistics" || route.kind === "infrastructure") return <CommerceAcademyPage route={route} />;
   if (route.kind === "mail") return <MailRoutePage route={route} />;
   if (route.kind === "chat") return <ChatRoutePage route={route} />;
-  if (route.kind === "ai-setup") return <AiAgentSetupPage route={route} />;
+  if (route.kind === "ai-setup") return <AiAgentSetupPage route={route} locale={locale} />;
   if (route.kind === "calendar") return <CalendarPage route={route} />;
   if (route.kind === "kanban") return <KanbanPage route={route} />;
   if (route.kind === "invoice") return <InvoicePage route={route} />;
@@ -2777,6 +2810,7 @@ function RouteContent({
 function CommandDialog({
   open,
   query,
+  locale,
   activeRoute,
   onQuery,
   onClose,
@@ -2784,6 +2818,7 @@ function CommandDialog({
 }: {
   open: boolean;
   query: string;
+  locale: string;
   activeRoute: StudioRouteId;
   onQuery: (value: string) => void;
   onClose: () => void;
@@ -2829,10 +2864,22 @@ function CommandDialog({
               </a>
             );
           })}
-          <a href={cvHref()} className="command-cv-link" target="_blank" rel="noreferrer">
-            <LuExternalLink aria-hidden="true" />
-            <span><strong>Back to CV</strong><small>Open the CV PDF file.</small></span>
-          </a>
+          <span className="command-section-label">Profile menu</span>
+          {profileMenuItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.id}
+                href={profileHref(locale, item.href)}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noreferrer" : undefined}
+                onClick={onClose}
+              >
+                <Icon aria-hidden="true" />
+                <span><strong>{item.label}</strong><small>{item.detail}</small></span>
+              </a>
+            );
+          })}
         </div>
       </section>
     </div>
@@ -3205,18 +3252,32 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
         <div className="sidebar-footer">
           {!isIconCollapsed && (
             <section className="support-card">
-              <strong>Personal AI setup</strong>
-              <p>
-                Notes for preparing my machines, agent tools, and MCP paths. Open the <a href={cvHref()} target="_blank" rel="noreferrer">CV file</a> when needed.
-              </p>
+              <strong>Profile navigation</strong>
+              <p>Move between the public profile sections from this Studio workspace.</p>
+              <div className="profile-link-grid">
+                {profileMenuItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <a
+                      key={item.id}
+                      href={profileHref(locale, item.href)}
+                      target={item.external ? "_blank" : undefined}
+                      rel={item.external ? "noreferrer" : undefined}
+                    >
+                      <Icon aria-hidden="true" />
+                      <span>{item.label}</span>
+                    </a>
+                  );
+                })}
+              </div>
             </section>
           )}
 
-          <a className="user-card" href={cvHref()} target="_blank" rel="noreferrer">
+          <a className="user-card" href={profileHref(locale, APP_ROUTE.HOME)}>
             <span className="user-avatar">N</span>
             <span>
               <strong>Nguyen Le Phong</strong>
-              <small>Senior Software Engineer</small>
+              <small>Open profile home</small>
             </span>
             <LuMoreVertical aria-hidden="true" />
           </a>
@@ -3290,7 +3351,23 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
               <section className="account-popover">
                 <strong>Nguyen Le Phong</strong>
                 <span>Senior Software Engineer</span>
-                <a href={cvHref()} target="_blank" rel="noreferrer">Back to CV</a>
+                <nav className="account-nav" aria-label="Profile navigation">
+                  {profileMenuItems.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <a
+                        key={item.id}
+                        href={profileHref(locale, item.href)}
+                        target={item.external ? "_blank" : undefined}
+                        rel={item.external ? "noreferrer" : undefined}
+                        onClick={() => setAccountOpen(false)}
+                      >
+                        <Icon aria-hidden="true" />
+                        <span>{item.label}</span>
+                      </a>
+                    );
+                  })}
+                </nav>
               </section>
             )}
           </div>
@@ -3299,6 +3376,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
         <div className="dashboard-content" id="dashboard">
           <RouteContent
             route={route}
+            locale={locale}
             workstreamSearch={workstreamSearch}
             statusFilter={statusFilter}
             sortMode={sortMode}
@@ -3312,6 +3390,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
       <CommandDialog
         open={searchOpen}
         query={searchQuery}
+        locale={locale}
         activeRoute={activeRoute}
         onQuery={setSearchQuery}
         onClose={() => setSearchOpen(false)}
