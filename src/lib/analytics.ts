@@ -101,6 +101,16 @@ export type AnalyticsEvent =
   | 'studio_preference_change'
   | 'studio_preference_restore'
   | 'studio_sidebar_toggle'
+  | 'studio_ai_skill_filter'
+  | 'studio_ai_skill_select'
+  | 'studio_ai_skill_copy'
+  | 'studio_checklist_select'
+  | 'studio_checklist_copy'
+  | 'studio_checklist_item_toggle'
+  | 'studio_blog_roadmap_topic_select'
+  | 'studio_blog_roadmap_status_filter'
+  | 'studio_blog_roadmap_day_select'
+  | 'studio_blog_roadmap_ticket_action'
   // Outbound
   | 'outbound_click'
 

@@ -6,8 +6,25 @@ import Image from "next/image";
 import type { IconType } from "react-icons";
 import { APP_ROUTE } from "@/app/app.const";
 import { track } from "@/lib/analytics";
-import { defaultStudioNoteId, studioFolders, studioNotes } from "./studio.data";
-import type { StudioNote } from "./studio.data";
+import {
+  blogRoadmapTicketChecklist,
+  blogRoadmapTopics,
+  defaultStudioNoteId,
+  studioAiSkills,
+  studioFolders,
+  studioNotes,
+  studioWorkflowChecklists
+} from "./studio.data";
+import type {
+  BlogRoadmapEntry,
+  BlogRoadmapStatus,
+  BlogRoadmapTopic,
+  StudioAiSkill,
+  StudioChecklistStep,
+  StudioNote,
+  StudioNoteStatus,
+  StudioWorkflowChecklist
+} from "./studio.data";
 import {
   LuAlarmClock,
   LuArchive,
@@ -110,6 +127,9 @@ type StudioRouteId =
   | "email"
   | "chat"
   | "ai-agent-setup"
+  | "ai-skills"
+  | "delivery-checklists"
+  | "blog-roadmap"
   | "calendar"
   | "kanban"
   | "invoice"
@@ -137,6 +157,9 @@ type StudioRouteKind =
   | "mail"
   | "chat"
   | "ai-setup"
+  | "ai-skills"
+  | "checklists"
+  | "roadmap"
   | "calendar"
   | "kanban"
   | "invoice"
@@ -321,8 +344,6 @@ const profileMenuItems: StudioProfileMenuItem[] = [
   { id: "resume", label: "Resume", detail: "Open the CV PDF.", href: APP_ROUTE.CV_PDF, icon: LuDownload, external: true }
 ];
 
-const primaryProfileActions = profileMenuItems.filter((item) => ["home", "blog", "notes"].includes(item.id));
-
 const defaultLayoutPreference: StudioLayoutPreference = {
   contentLayout: "full-width",
   navbarStyle: "sticky",
@@ -336,6 +357,733 @@ const legacyLayoutPreference: StudioLayoutPreference = {
   sidebarVariant: "inset",
   sidebarCollapsible: "icon"
 };
+
+type StudioRouteCopy = {
+  title: string;
+  description: string;
+  panels: string[];
+  timeline: string[];
+};
+
+type StudioUiCopy = {
+  brand: string;
+  navLabel: string;
+  navItems: Record<string, string>;
+  profileItems: Record<string, { label: string; detail: string }>;
+  profileMenuTitle: string;
+  profileNavigationTitle: string;
+  profileNavigationDetail: string;
+  openProfileHome: string;
+  findSetupNote: string;
+  search: string;
+  searchPlaceholder: string;
+  commandPaletteLabel: string;
+  closeSearch: string;
+  openStudio: string;
+  closeNavigation: string;
+  toggleNavigation: string;
+  openPreferences: string;
+  openGithubProfile: string;
+  openAccountMenu: string;
+  routeKicker: {
+    legacy: string;
+    studio: string;
+  };
+  routeMetricsLabel: string;
+  status: Record<StudioNoteStatus, string>;
+  roadmapStatus: Record<BlogRoadmapStatus, string>;
+  categories: Record<StudioAiSkill["category"] | "all", string>;
+  routes: Pick<Record<StudioRouteId, StudioRouteCopy>, "ai-agent-setup" | "ai-skills" | "delivery-checklists" | "blog-roadmap">;
+  aiSetup: {
+    addNote: string;
+    setupLibrary: string;
+    agentSetupNotes: string;
+    agentRuntimes: string;
+    selectedNote: string;
+    updated: string;
+    setupNoteTags: string;
+    commandRunbook: string;
+    commandRunbookDetail: string;
+    setupCommands: string;
+    referenceLinks: string;
+    aiWorkflow: string;
+    aiWorkflowDetail: string;
+    setupChecklist: string;
+    researchQueue: string;
+  };
+  aiSkills: {
+    emptyTitle: string;
+    emptyDescription: string;
+    copyMarkdown: string;
+    copied: string;
+    copy: string;
+    skillLibrary: string;
+    skillLibraryDetail: string;
+    categoriesLabel: string;
+    selectedSkill: string;
+    skillTags: string;
+    useThisWhen: string;
+    copyBehavior: string;
+    copyBehaviorDetail: string;
+    operatingRule: string;
+    operatingRuleDetail: string;
+  };
+  checklists: {
+    emptyTitle: string;
+    emptyDescription: string;
+    copyChecklist: string;
+    copied: string;
+    copy: string;
+    menu: string;
+    menuDetail: string;
+    workflowListLabel: string;
+    selectedChecklist: string;
+    checklistTags: string;
+    sections: string;
+    steps: string;
+    whenToUse: string;
+    structure: string;
+    structureDetail: (sections: number, steps: number) => string;
+    markdownCopy: string;
+    markdownUseWhen: string;
+  };
+  roadmap: {
+    emptyTitle: string;
+    emptyDescription: string;
+    openCategory: string;
+    queueReadyTickets: string;
+    topicMenu: string;
+    topicMenuDetail: string;
+    topicListLabel: string;
+    selectedRoadmap: string;
+    statusCountsLabel: string;
+    statusFiltersLabel: string;
+    all: string;
+    day: string;
+    thirtyDayRoadmap: string;
+    ticketDetail: string;
+    intent: string;
+    format: string;
+    draftTime: string;
+    category: string;
+    prepareTicket: string;
+    ticketHandoff: string;
+    min: string;
+  };
+  preferences: {
+    title: string;
+    description: string;
+    palette: string;
+    themeMode: string;
+    resolvedNow: string;
+    font: string;
+    pageLayout: string;
+    pageLayoutHelp: string;
+    navbarBehavior: string;
+    navbarHelp: string;
+    sidebarStyle: string;
+    sidebarStyleHelp: string;
+    collapseMode: string;
+    collapseModeHelp: string;
+    restoreDefaults: string;
+    themeOptions: Record<StudioThemeSetting, string>;
+    contentLayoutOptions: Record<StudioContentLayout, string>;
+    navbarStyleOptions: Record<StudioNavbarStyle, string>;
+    sidebarVariantOptions: Record<StudioSidebarVariant, string>;
+    sidebarCollapsibleOptions: Record<StudioSidebarCollapsible, string>;
+  };
+};
+
+const englishStudioCopy: StudioUiCopy = {
+  brand: "Studio",
+  navLabel: "Personal Studio",
+  navItems: {
+    "ai-agent-setup": "AI Setup",
+    "ai-skills": "AI Skills",
+    "delivery-checklists": "Checklists",
+    "blog-roadmap": "Blog Roadmap"
+  },
+  profileItems: {
+    home: { label: "Home", detail: "Profile overview." },
+    about: { label: "About", detail: "Experience and background." },
+    gallery: { label: "Gallery", detail: "Selected visual records." },
+    blog: { label: "Blog", detail: "Long-form writing." },
+    notes: { label: "Notes", detail: "Shorter working notes." },
+    apps: { label: "Apps", detail: "Small tools and experiments." },
+    resume: { label: "Resume", detail: "Open the CV PDF." }
+  },
+  profileMenuTitle: "Profile menu",
+  profileNavigationTitle: "Profile navigation",
+  profileNavigationDetail: "Move between the public profile sections from this Studio workspace.",
+  openProfileHome: "Open profile home",
+  findSetupNote: "Find setup note",
+  search: "Search",
+  searchPlaceholder: "Search AI setup...",
+  commandPaletteLabel: "Search Studio routes",
+  closeSearch: "Close search",
+  openStudio: "Open Studio",
+  closeNavigation: "Close navigation",
+  toggleNavigation: "Toggle navigation",
+  openPreferences: "Open Studio preferences",
+  openGithubProfile: "Open GitHub profile",
+  openAccountMenu: "Open account menu",
+  routeKicker: {
+    legacy: "Legacy",
+    studio: "Studio route"
+  },
+  routeMetricsLabel: "Route metrics",
+  status: {
+    ready: "Ready",
+    draft: "Draft",
+    next: "Next"
+  },
+  roadmapStatus: {
+    ready: "Ready",
+    outline: "Outline",
+    research: "Research"
+  },
+  categories: {
+    all: "All",
+    engineering: "Engineering",
+    content: "Content",
+    operations: "Operations",
+    communication: "Communication",
+    strategy: "Strategy",
+    learning: "Learning"
+  },
+  routes: {
+    "ai-agent-setup": {
+      title: "AI Agent Setup",
+      description: "Personal setup notes for my AI agent tools, MCP paths, and safe machine bootstrap.",
+      panels: ["Setup library", "Agent workflow", "Command runbook"],
+      timeline: ["Skill library reviewed", "MCP install path captured", "Credential guardrail checked"]
+    },
+    "ai-skills": {
+      title: "AI Skills",
+      description: "Reusable markdown skills for code review, architecture, content writing, prompts, reports, specs, and proposals.",
+      panels: ["Skill library", "Markdown preview", "Copy-ready prompt"],
+      timeline: ["Code review skill ready", "Architecture skills grouped", "Content and report prompts prepared"]
+    },
+    "delivery-checklists": {
+      title: "Delivery Checklists",
+      description: "Operating checklists from task intake through module work, release readiness, and rollout.",
+      panels: ["Task intake", "Module creation", "Release and rollout"],
+      timeline: ["Ticket intake path mapped", "Module checklist nested", "Rollout phases captured"]
+    },
+    "blog-roadmap": {
+      title: "Blog Roadmap",
+      description: "A 30-day writing menu for every current blog topic, ready to turn into daily Multica article tickets.",
+      panels: ["Topic menu", "Daily article plan", "Ticket checklist"],
+      timeline: ["Existing blog topics mapped", "Thirty daily prompts prepared", "Ticket handoff checklist ready"]
+    }
+  },
+  aiSetup: {
+    addNote: "Add note",
+    setupLibrary: "Setup library",
+    agentSetupNotes: "Agent setup notes",
+    agentRuntimes: "Agent runtimes",
+    selectedNote: "Selected AI setup note",
+    updated: "Updated",
+    setupNoteTags: "Setup note tags",
+    commandRunbook: "Command runbook",
+    commandRunbookDetail: "Commands to verify before using them on a new machine.",
+    setupCommands: "Setup commands",
+    referenceLinks: "Reference links",
+    aiWorkflow: "AI workflow",
+    aiWorkflowDetail: "First container for research and operating notes.",
+    setupChecklist: "Setup checklist",
+    researchQueue: "Research queue"
+  },
+  aiSkills: {
+    emptyTitle: "Skill library is empty",
+    emptyDescription: "Add markdown skills to Studio data before opening this menu.",
+    copyMarkdown: "Copy markdown",
+    copied: "Copied",
+    copy: "Copy",
+    skillLibrary: "Skill library",
+    skillLibraryDetail: "Markdown prompts that can be copied into an agent session.",
+    categoriesLabel: "Skill categories",
+    selectedSkill: "Selected AI skill markdown",
+    skillTags: "Skill tags",
+    useThisWhen: "Use this when",
+    copyBehavior: "Copy behavior",
+    copyBehaviorDetail: "The button copies the raw markdown block, including headings, process, output format, and guardrails.",
+    operatingRule: "Operating rule",
+    operatingRuleDetail: "Keep the skill specific enough to be useful, but short enough to paste into Codex, Claude, Gemini, or another agent tool."
+  },
+  checklists: {
+    emptyTitle: "Checklist library is empty",
+    emptyDescription: "Add workflow checklists to Studio data before opening this menu.",
+    copyChecklist: "Copy checklist",
+    copied: "Copied",
+    copy: "Copy",
+    menu: "Checklist menu",
+    menuDetail: "Operating lists from ticket intake to rollout.",
+    workflowListLabel: "Workflow checklists",
+    selectedChecklist: "Selected workflow checklist",
+    checklistTags: "Checklist tags",
+    sections: "sections",
+    steps: "steps",
+    whenToUse: "When to use",
+    structure: "Structure",
+    structureDetail: (sections, steps) => `${sections} sections, ${steps} nested steps, copy-ready as markdown.`,
+    markdownCopy: "Markdown copy",
+    markdownUseWhen: "Use when"
+  },
+  roadmap: {
+    emptyTitle: "Roadmap data is empty",
+    emptyDescription: "Add blog roadmap topics to Studio data before opening this menu.",
+    openCategory: "Open category",
+    queueReadyTickets: "Queue ready tickets",
+    topicMenu: "Topic menu",
+    topicMenuDetail: "Current blog categories mapped to a one-month cadence.",
+    topicListLabel: "Blog roadmap topics",
+    selectedRoadmap: "Selected blog roadmap",
+    statusCountsLabel: "Roadmap status counts",
+    statusFiltersLabel: "Roadmap status filters",
+    all: "All",
+    day: "Day",
+    thirtyDayRoadmap: "Thirty day roadmap",
+    ticketDetail: "Roadmap ticket detail",
+    intent: "Intent",
+    format: "Format",
+    draftTime: "Draft time",
+    category: "Category",
+    prepareTicket: "Prepare Multica ticket",
+    ticketHandoff: "Ticket handoff",
+    min: "min"
+  },
+  preferences: {
+    title: "Preferences",
+    description: "Theme, font, and layout for this Studio workspace.",
+    palette: "CV palette",
+    themeMode: "Theme mode",
+    resolvedNow: "Resolved now",
+    font: "Font",
+    pageLayout: "Page layout",
+    pageLayoutHelp: "Centered keeps reading calm. Full width gives wider operations surfaces.",
+    navbarBehavior: "Navbar behavior",
+    navbarHelp: "Sticky keeps controls visible. Scroll lets the whole workspace move together.",
+    sidebarStyle: "Sidebar style",
+    sidebarStyleHelp: "Choose the density that matches the current setup work.",
+    collapseMode: "Collapse mode",
+    collapseModeHelp: "Icon keeps the rail visible. Offcanvas hides it completely on desktop.",
+    restoreDefaults: "Restore layout defaults",
+    themeOptions: { light: "Light", system: "System", dark: "Dark" },
+    contentLayoutOptions: { centered: "Centered", "full-width": "Full width" },
+    navbarStyleOptions: { sticky: "Sticky", scroll: "Scroll" },
+    sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" },
+    sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
+  }
+};
+
+const studioCopyByLocale: Record<string, StudioUiCopy> = {
+  en: englishStudioCopy,
+  vi: {
+    ...englishStudioCopy,
+    navLabel: "Studio cá nhân",
+    navItems: {
+      "ai-agent-setup": "AI Setup",
+      "ai-skills": "AI Skill",
+      "delivery-checklists": "Checklist",
+      "blog-roadmap": "Lộ trình blog"
+    },
+    profileItems: {
+      home: { label: "Trang chủ", detail: "Tổng quan profile." },
+      about: { label: "Giới thiệu", detail: "Kinh nghiệm và nền tảng." },
+      gallery: { label: "Gallery", detail: "Một số hình ảnh chọn lọc." },
+      blog: { label: "Blog", detail: "Bài viết dài." },
+      notes: { label: "Note", detail: "Ghi chú làm việc ngắn." },
+      apps: { label: "Apps", detail: "Công cụ và thử nghiệm nhỏ." },
+      resume: { label: "Resume", detail: "Mở CV PDF." }
+    },
+    profileMenuTitle: "Menu profile",
+    profileNavigationTitle: "Menu profile",
+    profileNavigationDetail: "Đi tới các phần public profile ngay trong Studio.",
+    openProfileHome: "Mở trang chủ profile",
+    findSetupNote: "Tìm setup note",
+    search: "Tìm kiếm",
+    searchPlaceholder: "Tìm AI setup...",
+    commandPaletteLabel: "Tìm route Studio",
+    closeSearch: "Đóng tìm kiếm",
+    openStudio: "Mở Studio",
+    closeNavigation: "Đóng menu",
+    toggleNavigation: "Ẩn/hiện menu",
+    openPreferences: "Mở tùy chỉnh Studio",
+    openGithubProfile: "Mở GitHub profile",
+    openAccountMenu: "Mở menu tài khoản",
+    routeKicker: { legacy: "Legacy", studio: "Studio route" },
+    routeMetricsLabel: "Chỉ số route",
+    status: { ready: "Sẵn sàng", draft: "Nháp", next: "Tiếp theo" },
+    roadmapStatus: { ready: "Sẵn sàng", outline: "Dàn ý", research: "Nghiên cứu" },
+    categories: {
+      all: "Tất cả",
+      engineering: "Kỹ thuật",
+      content: "Nội dung",
+      operations: "Vận hành",
+      communication: "Giao tiếp",
+      strategy: "Chiến lược",
+      learning: "Học tập"
+    },
+    routes: {
+      "ai-agent-setup": {
+        title: "AI Agent Setup",
+        description: "Ghi chú setup cá nhân cho công cụ AI agent, MCP path và bootstrap máy an toàn.",
+        panels: ["Thư viện setup", "Luồng agent", "Runbook lệnh"],
+        timeline: ["Đã review skill library", "Đã lưu MCP install path", "Đã kiểm tra guardrail credential"]
+      },
+      "ai-skills": {
+        title: "AI Skill",
+        description: "Các skill markdown có thể copy cho review code, kiến trúc, viết nội dung, prompt, report, spec và proposal.",
+        panels: ["Thư viện skill", "Markdown preview", "Prompt copy-ready"],
+        timeline: ["Skill review code sẵn sàng", "Skill kiến trúc đã nhóm lại", "Prompt nội dung và report đã chuẩn bị"]
+      },
+      "delivery-checklists": {
+        title: "Checklist làm việc",
+        description: "Checklist vận hành từ nhận task, tạo module, chuẩn bị release đến rollout.",
+        panels: ["Nhận task", "Tạo module", "Release và rollout"],
+        timeline: ["Đã map intake ticket", "Checklist module có bước con", "Đã ghi lại phase rollout"]
+      },
+      "blog-roadmap": {
+        title: "Lộ trình blog",
+        description: "Menu viết 30 ngày cho từng chủ đề blog hiện có, sẵn sàng để chuyển thành ticket bài viết hằng ngày.",
+        panels: ["Menu chủ đề", "Kế hoạch bài viết", "Checklist ticket"],
+        timeline: ["Đã map topic blog hiện có", "Đã chuẩn bị prompt 30 ngày", "Checklist bàn giao ticket sẵn sàng"]
+      }
+    },
+    aiSetup: {
+      ...englishStudioCopy.aiSetup,
+      addNote: "Thêm note",
+      setupLibrary: "Thư viện setup",
+      agentSetupNotes: "Ghi chú setup agent",
+      agentRuntimes: "Agent runtime",
+      selectedNote: "Note AI setup đang chọn",
+      updated: "Cập nhật",
+      setupNoteTags: "Tag setup note",
+      commandRunbook: "Runbook lệnh",
+      commandRunbookDetail: "Các lệnh cần kiểm chứng trước khi dùng trên máy mới.",
+      setupCommands: "Lệnh setup",
+      referenceLinks: "Link tham khảo",
+      aiWorkflow: "AI workflow",
+      aiWorkflowDetail: "Container đầu tiên cho research và operating note.",
+      setupChecklist: "Checklist setup",
+      researchQueue: "Hàng đợi nghiên cứu"
+    },
+    aiSkills: {
+      ...englishStudioCopy.aiSkills,
+      emptyTitle: "Thư viện skill đang trống",
+      emptyDescription: "Thêm markdown skill vào Studio data trước khi mở menu này.",
+      copyMarkdown: "Copy markdown",
+      copied: "Đã copy",
+      copy: "Copy",
+      skillLibrary: "Thư viện skill",
+      skillLibraryDetail: "Prompt markdown có thể copy vào một phiên agent.",
+      categoriesLabel: "Nhóm skill",
+      selectedSkill: "Markdown skill đang chọn",
+      skillTags: "Tag skill",
+      useThisWhen: "Dùng khi",
+      copyBehavior: "Cách copy",
+      copyBehaviorDetail: "Nút này copy nguyên khối markdown, gồm heading, process, output format và guardrail.",
+      operatingRule: "Quy tắc vận hành",
+      operatingRuleDetail: "Giữ skill đủ cụ thể để dùng được, nhưng đủ ngắn để paste vào Codex, Claude, Gemini hoặc agent khác."
+    },
+    checklists: {
+      ...englishStudioCopy.checklists,
+      emptyTitle: "Thư viện checklist đang trống",
+      emptyDescription: "Thêm workflow checklist vào Studio data trước khi mở menu này.",
+      copyChecklist: "Copy checklist",
+      copied: "Đã copy",
+      copy: "Copy",
+      menu: "Menu checklist",
+      menuDetail: "Danh sách vận hành từ nhận ticket đến rollout.",
+      workflowListLabel: "Workflow checklist",
+      selectedChecklist: "Checklist đang chọn",
+      checklistTags: "Tag checklist",
+      sections: "phần",
+      steps: "bước",
+      whenToUse: "Khi dùng",
+      structure: "Cấu trúc",
+      structureDetail: (sections, steps) => `${sections} phần, ${steps} bước con, có thể copy dạng markdown.`,
+      markdownCopy: "Markdown copy",
+      markdownUseWhen: "Dùng khi"
+    },
+    roadmap: {
+      ...englishStudioCopy.roadmap,
+      emptyTitle: "Roadmap đang trống",
+      emptyDescription: "Thêm topic roadmap vào Studio data trước khi mở menu này.",
+      openCategory: "Mở category",
+      queueReadyTickets: "Queue ticket sẵn sàng",
+      topicMenu: "Menu chủ đề",
+      topicMenuDetail: "Các category blog hiện tại được map theo nhịp một tháng.",
+      topicListLabel: "Topic roadmap blog",
+      selectedRoadmap: "Roadmap blog đang chọn",
+      statusCountsLabel: "Số lượng theo trạng thái",
+      statusFiltersLabel: "Bộ lọc trạng thái roadmap",
+      all: "Tất cả",
+      day: "Ngày",
+      thirtyDayRoadmap: "Roadmap 30 ngày",
+      ticketDetail: "Chi tiết ticket roadmap",
+      intent: "Mục tiêu",
+      format: "Định dạng",
+      draftTime: "Thời gian draft",
+      category: "Category",
+      prepareTicket: "Chuẩn bị ticket Multica",
+      ticketHandoff: "Bàn giao ticket",
+      min: "phút"
+    },
+    preferences: {
+      ...englishStudioCopy.preferences,
+      title: "Tùy chỉnh",
+      description: "Theme, font và layout cho Studio workspace.",
+      palette: "CV palette",
+      themeMode: "Chế độ theme",
+      resolvedNow: "Đang áp dụng",
+      font: "Font",
+      pageLayout: "Layout trang",
+      pageLayoutHelp: "Centered giúp đọc bình tĩnh hơn. Full width phù hợp bề mặt thao tác rộng.",
+      navbarBehavior: "Navbar",
+      navbarHelp: "Sticky giữ control luôn thấy được. Scroll cho toàn bộ workspace cuộn cùng nhau.",
+      sidebarStyle: "Kiểu sidebar",
+      sidebarStyleHelp: "Chọn density phù hợp với việc setup hiện tại.",
+      collapseMode: "Cách thu gọn",
+      collapseModeHelp: "Icon giữ rail còn thấy được. Offcanvas ẩn hẳn trên desktop.",
+      restoreDefaults: "Khôi phục layout mặc định",
+      themeOptions: { light: "Sáng", system: "Hệ thống", dark: "Tối" },
+      contentLayoutOptions: { centered: "Căn giữa", "full-width": "Full width" },
+      navbarStyleOptions: { sticky: "Sticky", scroll: "Scroll" },
+      sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" },
+      sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
+    }
+  },
+  zh: {
+    ...englishStudioCopy,
+    navLabel: "个人 Studio",
+    navItems: {
+      "ai-agent-setup": "AI 设置",
+      "ai-skills": "AI 技能",
+      "delivery-checklists": "清单",
+      "blog-roadmap": "博客路线图"
+    },
+    findSetupNote: "查找设置笔记",
+    search: "搜索",
+    searchPlaceholder: "搜索 AI 设置...",
+    profileNavigationTitle: "个人资料导航",
+    profileNavigationDetail: "从 Studio 进入公开个人资料页面。",
+    openProfileHome: "打开个人主页",
+    status: { ready: "就绪", draft: "草稿", next: "下一步" },
+    roadmapStatus: { ready: "就绪", outline: "大纲", research: "研究" },
+    categories: { all: "全部", engineering: "工程", content: "内容", operations: "运营", communication: "沟通", strategy: "策略", learning: "学习" },
+    routes: {
+      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "AI Agent 设置", description: "用于 AI agent 工具、MCP 路径和安全机器初始化的个人设置笔记。" },
+      "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "AI 技能", description: "可复制的 markdown 技能，用于代码评审、架构、内容、提示词、报告、规格和提案。" },
+      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "交付清单", description: "从任务接收到模块工作、发布准备和上线的操作清单。" },
+      "blog-roadmap": { ...englishStudioCopy.routes["blog-roadmap"], title: "博客路线图", description: "当前博客主题的 30 天写作菜单，可转成每日文章 ticket。" }
+    },
+    aiSetup: { ...englishStudioCopy.aiSetup, addNote: "添加笔记", commandRunbook: "命令 runbook", setupChecklist: "设置清单", researchQueue: "研究队列" },
+    aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "复制 markdown", copied: "已复制", skillLibrary: "技能库", categoriesLabel: "技能分类" },
+    checklists: { ...englishStudioCopy.checklists, copied: "已复制", menu: "清单菜单", sections: "部分", steps: "步骤", structureDetail: (sections, steps) => `${sections} 个部分，${steps} 个嵌套步骤，可复制为 markdown。` },
+    roadmap: { ...englishStudioCopy.roadmap, all: "全部", day: "第", openCategory: "打开分类", queueReadyTickets: "排队就绪 ticket", min: "分钟" },
+    preferences: {
+      ...englishStudioCopy.preferences,
+      title: "偏好设置",
+      description: "Studio 工作区的主题、字体和布局。",
+      themeMode: "主题模式",
+      resolvedNow: "当前解析",
+      pageLayout: "页面布局",
+      navbarBehavior: "导航栏行为",
+      sidebarStyle: "侧边栏样式",
+      collapseMode: "折叠模式",
+      restoreDefaults: "恢复默认布局",
+      themeOptions: { light: "浅色", system: "系统", dark: "深色" },
+      contentLayoutOptions: { centered: "居中", "full-width": "全宽" },
+      navbarStyleOptions: { sticky: "固定", scroll: "滚动" },
+      sidebarVariantOptions: { inset: "内嵌", sidebar: "侧边栏", floating: "浮动" },
+      sidebarCollapsibleOptions: { icon: "图标", offcanvas: "抽屉" }
+    }
+  },
+  ja: {
+    ...englishStudioCopy,
+    navLabel: "パーソナル Studio",
+    navItems: {
+      "ai-agent-setup": "AI セットアップ",
+      "ai-skills": "AI スキル",
+      "delivery-checklists": "チェックリスト",
+      "blog-roadmap": "ブログ計画"
+    },
+    findSetupNote: "セットアップノートを検索",
+    search: "検索",
+    searchPlaceholder: "AI セットアップを検索...",
+    profileNavigationTitle: "プロフィールナビ",
+    profileNavigationDetail: "Studio から公開プロフィールの各ページへ移動します。",
+    openProfileHome: "プロフィールホームを開く",
+    status: { ready: "準備済み", draft: "下書き", next: "次" },
+    roadmapStatus: { ready: "準備済み", outline: "アウトライン", research: "調査" },
+    categories: { all: "すべて", engineering: "エンジニアリング", content: "コンテンツ", operations: "運用", communication: "コミュニケーション", strategy: "戦略", learning: "学習" },
+    routes: {
+      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "AI Agent セットアップ", description: "AI agent ツール、MCP パス、安全なマシン初期化のための個人セットアップノート。" },
+      "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "AI スキル", description: "コードレビュー、アーキテクチャ、コンテンツ、プロンプト、レポート、仕様、提案に使える markdown スキル。" },
+      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "デリバリーチェックリスト", description: "タスク受領からモジュール作業、リリース準備、ロールアウトまでの運用チェックリスト。" },
+      "blog-roadmap": { ...englishStudioCopy.routes["blog-roadmap"], title: "ブログ計画", description: "現在のブログトピックごとの 30 日執筆メニュー。" }
+    },
+    aiSetup: { ...englishStudioCopy.aiSetup, addNote: "ノート追加", commandRunbook: "コマンド runbook", setupChecklist: "セットアップチェックリスト", researchQueue: "調査キュー" },
+    aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Markdown をコピー", copied: "コピー済み", skillLibrary: "スキルライブラリ", categoriesLabel: "スキル分類" },
+    checklists: { ...englishStudioCopy.checklists, copied: "コピー済み", menu: "チェックリストメニュー", sections: "セクション", steps: "ステップ", structureDetail: (sections, steps) => `${sections} セクション、${steps} 個のネストされたステップ。markdown としてコピーできます。` },
+    roadmap: { ...englishStudioCopy.roadmap, all: "すべて", day: "Day", openCategory: "カテゴリを開く", queueReadyTickets: "準備済み ticket をキュー", min: "分" },
+    preferences: {
+      ...englishStudioCopy.preferences,
+      title: "設定",
+      description: "Studio ワークスペースのテーマ、フォント、レイアウト。",
+      themeMode: "テーマモード",
+      resolvedNow: "現在",
+      pageLayout: "ページレイアウト",
+      navbarBehavior: "ナビバー動作",
+      sidebarStyle: "サイドバー形式",
+      collapseMode: "折りたたみ方式",
+      restoreDefaults: "レイアウト既定値に戻す",
+      themeOptions: { light: "ライト", system: "システム", dark: "ダーク" },
+      contentLayoutOptions: { centered: "中央寄せ", "full-width": "全幅" },
+      navbarStyleOptions: { sticky: "固定", scroll: "スクロール" },
+      sidebarVariantOptions: { inset: "インセット", sidebar: "サイドバー", floating: "フローティング" },
+      sidebarCollapsibleOptions: { icon: "アイコン", offcanvas: "オフキャンバス" }
+    }
+  },
+  ko: {
+    ...englishStudioCopy,
+    navLabel: "개인 Studio",
+    navItems: {
+      "ai-agent-setup": "AI 설정",
+      "ai-skills": "AI 스킬",
+      "delivery-checklists": "체크리스트",
+      "blog-roadmap": "블로그 로드맵"
+    },
+    findSetupNote: "설정 노트 찾기",
+    search: "검색",
+    searchPlaceholder: "AI 설정 검색...",
+    profileNavigationTitle: "프로필 탐색",
+    profileNavigationDetail: "Studio에서 공개 프로필 섹션으로 이동합니다.",
+    openProfileHome: "프로필 홈 열기",
+    status: { ready: "준비됨", draft: "초안", next: "다음" },
+    roadmapStatus: { ready: "준비됨", outline: "개요", research: "리서치" },
+    categories: { all: "전체", engineering: "엔지니어링", content: "콘텐츠", operations: "운영", communication: "커뮤니케이션", strategy: "전략", learning: "학습" },
+    routes: {
+      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "AI Agent 설정", description: "AI agent 도구, MCP 경로, 안전한 머신 부트스트랩을 위한 개인 설정 노트." },
+      "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "AI 스킬", description: "코드 리뷰, 아키텍처, 콘텐츠, 프롬프트, 보고서, 스펙, 제안서에 재사용할 수 있는 markdown 스킬." },
+      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "딜리버리 체크리스트", description: "작업 접수부터 모듈 작업, 릴리스 준비, 롤아웃까지의 운영 체크리스트." },
+      "blog-roadmap": { ...englishStudioCopy.routes["blog-roadmap"], title: "블로그 로드맵", description: "현재 블로그 주제를 위한 30일 글쓰기 메뉴." }
+    },
+    aiSetup: { ...englishStudioCopy.aiSetup, addNote: "노트 추가", commandRunbook: "명령 runbook", setupChecklist: "설정 체크리스트", researchQueue: "리서치 큐" },
+    aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Markdown 복사", copied: "복사됨", skillLibrary: "스킬 라이브러리", categoriesLabel: "스킬 카테고리" },
+    checklists: { ...englishStudioCopy.checklists, copied: "복사됨", menu: "체크리스트 메뉴", sections: "섹션", steps: "단계", structureDetail: (sections, steps) => `${sections}개 섹션, ${steps}개 중첩 단계, markdown 복사 가능.` },
+    roadmap: { ...englishStudioCopy.roadmap, all: "전체", day: "Day", openCategory: "카테고리 열기", queueReadyTickets: "준비된 ticket 큐", min: "분" },
+    preferences: {
+      ...englishStudioCopy.preferences,
+      title: "환경설정",
+      description: "Studio 워크스페이스의 테마, 폰트, 레이아웃.",
+      themeMode: "테마 모드",
+      resolvedNow: "현재 적용",
+      pageLayout: "페이지 레이아웃",
+      navbarBehavior: "Navbar 동작",
+      sidebarStyle: "Sidebar 스타일",
+      collapseMode: "접기 방식",
+      restoreDefaults: "레이아웃 기본값 복원",
+      themeOptions: { light: "라이트", system: "시스템", dark: "다크" },
+      contentLayoutOptions: { centered: "중앙", "full-width": "전체 폭" },
+      navbarStyleOptions: { sticky: "고정", scroll: "스크롤" },
+      sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" },
+      sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
+    }
+  },
+  fr: {
+    ...englishStudioCopy,
+    navLabel: "Studio personnel",
+    navItems: {
+      "ai-agent-setup": "Setup IA",
+      "ai-skills": "Skills IA",
+      "delivery-checklists": "Checklists",
+      "blog-roadmap": "Roadmap blog"
+    },
+    findSetupNote: "Trouver une note",
+    search: "Rechercher",
+    searchPlaceholder: "Rechercher dans le setup IA...",
+    profileNavigationTitle: "Navigation profil",
+    profileNavigationDetail: "Aller vers les sections publiques du profil depuis Studio.",
+    openProfileHome: "Ouvrir l'accueil du profil",
+    status: { ready: "Prêt", draft: "Brouillon", next: "Suivant" },
+    roadmapStatus: { ready: "Prêt", outline: "Plan", research: "Recherche" },
+    categories: { all: "Tout", engineering: "Ingénierie", content: "Contenu", operations: "Opérations", communication: "Communication", strategy: "Stratégie", learning: "Apprentissage" },
+    routes: {
+      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "Setup AI Agent", description: "Notes personnelles pour les outils AI agent, chemins MCP et bootstrap machine sécurisé." },
+      "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "Skills IA", description: "Skills markdown réutilisables pour review code, architecture, contenu, prompts, rapports, specs et proposals." },
+      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "Checklists de livraison", description: "Checklists de l'intake de tâche au module, release readiness et rollout." },
+      "blog-roadmap": { ...englishStudioCopy.routes["blog-roadmap"], title: "Roadmap blog", description: "Menu d'écriture 30 jours pour chaque sujet de blog actuel." }
+    },
+    aiSetup: { ...englishStudioCopy.aiSetup, addNote: "Ajouter une note", commandRunbook: "Runbook commandes", setupChecklist: "Checklist setup", researchQueue: "File de recherche" },
+    aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Copier markdown", copied: "Copié", skillLibrary: "Bibliothèque de skills", categoriesLabel: "Catégories de skills" },
+    checklists: { ...englishStudioCopy.checklists, copied: "Copié", menu: "Menu checklist", sections: "sections", steps: "étapes", structureDetail: (sections, steps) => `${sections} sections, ${steps} étapes imbriquées, copiables en markdown.` },
+    roadmap: { ...englishStudioCopy.roadmap, all: "Tout", day: "Jour", openCategory: "Ouvrir catégorie", queueReadyTickets: "Mettre les tickets prêts en file", min: "min" },
+    preferences: {
+      ...englishStudioCopy.preferences,
+      title: "Préférences",
+      description: "Thème, police et layout pour ce Studio.",
+      themeMode: "Mode thème",
+      resolvedNow: "Actuel",
+      pageLayout: "Layout page",
+      navbarBehavior: "Comportement navbar",
+      sidebarStyle: "Style sidebar",
+      collapseMode: "Mode de réduction",
+      restoreDefaults: "Restaurer les valeurs par défaut",
+      themeOptions: { light: "Clair", system: "Système", dark: "Sombre" },
+      contentLayoutOptions: { centered: "Centré", "full-width": "Pleine largeur" },
+      navbarStyleOptions: { sticky: "Sticky", scroll: "Scroll" },
+      sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" },
+      sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
+    }
+  }
+};
+
+function getStudioCopy(locale: string): StudioUiCopy {
+  return studioCopyByLocale[locale] ?? englishStudioCopy;
+}
+
+function getLocalizedProfileItems(copy: StudioUiCopy): StudioProfileMenuItem[] {
+  return profileMenuItems.map((item) => ({
+    ...item,
+    ...(copy.profileItems[item.id] ?? {})
+  }));
+}
+
+function getLocalizedNavGroups(copy: StudioUiCopy): StudioNavGroup[] {
+  return navGroups.map((group) => ({
+    ...group,
+    label: copy.navLabel,
+    items: group.items.map((item) => ({
+      ...item,
+      title: copy.navItems[item.id] ?? item.title
+    }))
+  }));
+}
+
+function getLocalizedRouteDefinitions(copy: StudioUiCopy): Record<StudioRouteId, StudioRoute> {
+  return {
+    ...routeDefinitions,
+    "ai-agent-setup": {
+      ...routeDefinitions["ai-agent-setup"],
+      ...copy.routes["ai-agent-setup"]
+    },
+    "ai-skills": {
+      ...routeDefinitions["ai-skills"],
+      ...copy.routes["ai-skills"]
+    },
+    "delivery-checklists": {
+      ...routeDefinitions["delivery-checklists"],
+      ...copy.routes["delivery-checklists"]
+    },
+    "blog-roadmap": {
+      ...routeDefinitions["blog-roadmap"],
+      ...copy.routes["blog-roadmap"]
+    }
+  };
+}
 
 function isSameLayoutPreference(a: StudioLayoutPreference, b: StudioLayoutPreference): boolean {
   return a.contentLayout === b.contentLayout
@@ -553,10 +1301,28 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
     { label: "Avg. Reply", value: "4m", helper: "Median response time today", badge: "+18%", trend: "up", icon: LuGauge }
   ],
   "ai-agent-setup": [
-    { label: "Setup notes", value: "6", helper: "Machine and agent references", badge: "+2", trend: "up", icon: LuBookOpenCheck },
-    { label: "Agent tools", value: "4", helper: "Codex, Claude, Gemini, Antigravity", badge: "ready", trend: "up", icon: LuSparkles },
-    { label: "MCP paths", value: "5", helper: "Install commands kept close", badge: "+3", trend: "up", icon: LuCommand },
-    { label: "Safety checks", value: "4", helper: "Credential and workflow guardrails", badge: "stable", trend: "up", icon: LuLock }
+    { label: "Setup notes", value: `${studioNotes.length}`, helper: "Machine, AI OS, and research notes", badge: "+AI OS", trend: "up", icon: LuBookOpenCheck },
+    { label: "Agent tools", value: "5", helper: "NotebookLM, GPT, Claude, Codex, Antigravity", badge: "ready", trend: "up", icon: LuSparkles },
+    { label: "Prompt cards", value: "3", helper: "Daily, weekly, and tool routing", badge: "copy", trend: "up", icon: LuCommand },
+    { label: "Safety checks", value: "6", helper: "Credential and workflow guardrails", badge: "stable", trend: "up", icon: LuLock }
+  ],
+  "ai-skills": [
+    { label: "Skills", value: `${studioAiSkills.length}`, helper: "Reusable markdown prompts", badge: "copy", trend: "up", icon: LuSparkles },
+    { label: "Engineering", value: `${studioAiSkills.filter((skill) => skill.category === "engineering").length}`, helper: "Code, frontend, backend, specs", badge: "core", trend: "up", icon: LuServer },
+    { label: "Learning", value: `${studioAiSkills.filter((skill) => skill.category === "learning").length}`, helper: "Daily AI practice and source-backed study", badge: "daily", trend: "up", icon: LuBookOpenCheck },
+    { label: "Strategy", value: `${studioAiSkills.filter((skill) => skill.category === "strategy").length}`, helper: "AI OS and career leverage", badge: "direction", trend: "up", icon: LuMapPin }
+  ],
+  "delivery-checklists": [
+    { label: "Checklists", value: `${studioWorkflowChecklists.length}`, helper: "Task, AI learning, release, rollout", badge: "nested", trend: "up", icon: LuClipboardList },
+    { label: "Sections", value: `${studioWorkflowChecklists.reduce((total, checklist) => total + checklist.sections.length, 0)}`, helper: "Reusable operating gates", badge: "mapped", trend: "up", icon: LuListTodo },
+    { label: "Steps", value: `${studioWorkflowChecklists.reduce((total, checklist) => total + checklist.sections.reduce((sum, section) => sum + section.steps.length, 0), 0)}`, helper: "Parent checklist items", badge: "ready", trend: "up", icon: LuCheckCircle2 },
+    { label: "AI plan", value: "90 days", helper: "Setup, work, career, life", badge: "compound", trend: "up", icon: LuFlag }
+  ],
+  "blog-roadmap": [
+    { label: "Topics", value: `${blogRoadmapTopics.length}`, helper: "Existing blog categories in scope", badge: "mapped", trend: "up", icon: LuBookOpenCheck },
+    { label: "Article tickets", value: `${blogRoadmapTopics.reduce((total, topic) => total + topic.entries.length, 0)}`, helper: "One daily idea per topic", badge: "30d", trend: "up", icon: LuListTodo },
+    { label: "Ready drafts", value: `${blogRoadmapTopics.reduce((total, topic) => total + topic.entries.filter((entry) => entry.status === "ready").length, 0)}`, helper: "Can be ticketed first", badge: "next", trend: "up", icon: LuCheckCircle2 },
+    { label: "Cadence", value: "5/day", helper: "One post per topic each day", badge: "daily", trend: "up", icon: LuCalendarDays }
   ],
   calendar: [
     { label: "Today", value: "6", helper: "Events on the schedule", badge: "+2", trend: "up", icon: LuCalendarDays },
@@ -741,6 +1507,39 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
     panels: ["Setup library", "Agent workflow", "Command runbook"],
     timeline: ["Skill library reviewed", "MCP install path captured", "Credential guardrail checked"]
   },
+  "ai-skills": {
+    id: "ai-skills",
+    title: "AI Skills",
+    description: "Reusable markdown skills for code review, architecture, content writing, prompts, reports, specs, and proposals.",
+    kind: "ai-skills",
+    icon: LuSparkles,
+    badge: "new",
+    metrics: routeMetrics["ai-skills"],
+    panels: ["Skill library", "Markdown preview", "Copy-ready prompt"],
+    timeline: ["Code review skill ready", "Architecture skills grouped", "Content and report prompts prepared"]
+  },
+  "delivery-checklists": {
+    id: "delivery-checklists",
+    title: "Delivery Checklists",
+    description: "Operating checklists from task intake through module work, release readiness, and rollout.",
+    kind: "checklists",
+    icon: LuClipboardList,
+    badge: "new",
+    metrics: routeMetrics["delivery-checklists"],
+    panels: ["Task intake", "Module creation", "Release and rollout"],
+    timeline: ["Ticket intake path mapped", "Module checklist nested", "Rollout phases captured"]
+  },
+  "blog-roadmap": {
+    id: "blog-roadmap",
+    title: "Blog Roadmap",
+    description: "A 30-day writing menu for every current blog topic, ready to turn into daily Multica article tickets.",
+    kind: "roadmap",
+    icon: LuBookOpenCheck,
+    badge: "new",
+    metrics: routeMetrics["blog-roadmap"],
+    panels: ["Topic menu", "Daily article plan", "Ticket checklist"],
+    timeline: ["Existing blog topics mapped", "Thirty daily prompts prepared", "Ticket handoff checklist ready"]
+  },
   calendar: {
     id: "calendar",
     title: "Calendar",
@@ -883,6 +1682,27 @@ const navGroups: StudioNavGroup[] = [
         title: "AI Setup",
         routeId: "ai-agent-setup",
         icon: LuSparkles,
+        badge: "new"
+      },
+      {
+        id: "ai-skills",
+        title: "AI Skills",
+        routeId: "ai-skills",
+        icon: LuCommand,
+        badge: "new"
+      },
+      {
+        id: "delivery-checklists",
+        title: "Checklists",
+        routeId: "delivery-checklists",
+        icon: LuClipboardList,
+        badge: "new"
+      },
+      {
+        id: "blog-roadmap",
+        title: "Blog Roadmap",
+        routeId: "blog-roadmap",
+        icon: LuBookOpenCheck,
         badge: "new"
       }
     ]
@@ -1176,28 +1996,28 @@ const dashboardKpis = [
 
 const aiWorkflowSteps = [
   {
-    title: "Context intake",
-    detail: "Collect repo state, goal, constraints, and acceptance checks before I ask an agent to work.",
+    title: "Capture",
+    detail: "Put facts, source documents, logs, and notes into NotebookLM or a focused Project before asking for judgment.",
     state: "ready"
   },
   {
-    title: "Agent run",
-    detail: "Use Codex or another focused agent for one bounded implementation path at a time.",
+    title: "Clarify",
+    detail: "Use GPT to separate goal, assumptions, constraints, decision, and next action.",
     state: "active"
   },
   {
-    title: "Verification",
-    detail: "Run typecheck, route tests, visual audit, and deploy checks before calling work done.",
+    title: "Challenge",
+    detail: "Use Claude to review weak assumptions, architecture risk, edge cases, and communication clarity.",
     state: "required"
   },
   {
-    title: "Knowledge capture",
-    detail: "Store useful commands, MCP setup, and failure notes back into this Studio.",
+    title: "Execute and archive",
+    detail: "Use Codex or Antigravity for bounded work, then save the prompt, artifact, verification, and lesson.",
     state: "next"
   }
 ];
 
-const aiRuntimeTargets = ["Codex", "Claude", "Antigravity", "Gemini"];
+const aiRuntimeTargets = ["NotebookLM", "GPT", "Claude", "Codex", "Antigravity"];
 
 const releaseChecklist = [
   { title: "Verify feature flag default fallback", tag: "Rollout", done: true },
@@ -1334,10 +2154,47 @@ function getInitials(name: string): string {
     .toUpperCase();
 }
 
-function statusText(status: StudioNote["status"]): string {
-  if (status === "ready") return "Ready";
-  if (status === "draft") return "Draft";
-  return "Next";
+function statusText(status: StudioNote["status"], copy: StudioUiCopy = englishStudioCopy): string {
+  return copy.status[status];
+}
+
+function roadmapStatusText(status: BlogRoadmapStatus, copy: StudioUiCopy = englishStudioCopy): string {
+  return copy.roadmapStatus[status];
+}
+
+function skillCategoryLabel(category: StudioAiSkill["category"] | "all", copy: StudioUiCopy = englishStudioCopy): string {
+  return copy.categories[category];
+}
+
+function renderChecklistStepMarkdown(step: StudioChecklistStep, depth = 0): string {
+  const indent = "  ".repeat(depth);
+  const detail = step.detail ? ` - ${step.detail}` : "";
+  const children = step.children?.length
+    ? `\n${step.children.map((child) => renderChecklistStepMarkdown(child, depth + 1)).join("\n")}`
+    : "";
+  return `${indent}- [ ] ${step.label}${detail}${children}`;
+}
+
+function renderChecklistMarkdown(checklist: StudioWorkflowChecklist, copy: StudioUiCopy = englishStudioCopy): string {
+  return [
+    `# ${checklist.title}`,
+    "",
+    checklist.summary,
+    "",
+    `${copy.checklists.markdownUseWhen}: ${checklist.whenToUse}`,
+    "",
+    ...checklist.sections.flatMap((section) => [
+      `## ${section.title}`,
+      section.detail,
+      "",
+      ...section.steps.map((step) => renderChecklistStepMarkdown(step)),
+      ""
+    ])
+  ].join("\n").trim();
+}
+
+function countChecklistSteps(steps: StudioChecklistStep[]): number {
+  return steps.reduce((total, step) => total + 1 + countChecklistSteps(step.children ?? []), 0);
 }
 
 function MetricCard({ item }: { item: StudioMetric }) {
@@ -1575,14 +2432,14 @@ function SidebarGroup({
   );
 }
 
-function RouteHeading({ route, children }: { route: StudioRoute; children?: React.ReactNode }) {
+function RouteHeading({ route, copy = englishStudioCopy, children }: { route: StudioRoute; copy?: StudioUiCopy; children?: React.ReactNode }) {
   const Icon = route.icon;
   return (
     <div className="route-heading">
       <div>
         <div className="route-kicker">
           <Icon aria-hidden="true" />
-          <span>{route.kind === "legacy" ? "Legacy" : "Studio route"}</span>
+          <span>{route.kind === "legacy" ? copy.routeKicker.legacy : copy.routeKicker.studio}</span>
         </div>
         <h1>{route.title}</h1>
         <p>{route.description}</p>
@@ -1592,9 +2449,9 @@ function RouteHeading({ route, children }: { route: StudioRoute; children?: Reac
   );
 }
 
-function RouteMetricGrid({ metrics }: { metrics: StudioMetric[] }) {
+function RouteMetricGrid({ metrics, copy = englishStudioCopy }: { metrics: StudioMetric[]; copy?: StudioUiCopy }) {
   return (
-    <section className="metric-grid" aria-label="Route metrics">
+    <section className="metric-grid" aria-label={copy.routeMetricsLabel}>
       {metrics.map((item) => (
         <MetricCard key={item.label} item={item} />
       ))}
@@ -2265,7 +3122,17 @@ function ChatRoutePage({ route }: { route: StudioRoute }) {
   );
 }
 
-function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: string }) {
+function AiAgentSetupPage({
+  route,
+  locale,
+  copy,
+  profileActions
+}: {
+  route: StudioRoute;
+  locale: string;
+  copy: StudioUiCopy;
+  profileActions: StudioProfileMenuItem[];
+}) {
   const setupFolder = studioFolders.find((folder) => folder.id === "machine-bootstrap");
   const setupGroups = setupFolder?.groups ?? [];
   const setupNoteIds = new Set(setupGroups.flatMap((group) => group.noteIds));
@@ -2281,9 +3148,9 @@ function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: strin
 
   return (
     <section className="route-page ai-setup-route">
-      <RouteHeading route={route}>
+      <RouteHeading route={route} copy={copy}>
         <div className="route-actions">
-          {primaryProfileActions.map((item) => {
+          {profileActions.map((item) => {
             const Icon = item.icon;
             return (
               <a
@@ -2305,24 +3172,24 @@ function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: strin
           })}
           <button type="button" className="outline-button">
             <LuPlusCircle aria-hidden="true" />
-            Add note
+            {copy.aiSetup.addNote}
           </button>
         </div>
       </RouteHeading>
 
-      <RouteMetricGrid metrics={route.metrics} />
+      <RouteMetricGrid metrics={route.metrics} copy={copy} />
 
       <div className="ai-setup-container card" data-studio-module="ai-agent-setup">
-        <aside className="ai-setup-index" aria-label="AI setup notes">
+        <aside className="ai-setup-index" aria-label={copy.aiSetup.agentSetupNotes}>
           <div className="ai-pane-head">
             <span><LuSparkles aria-hidden="true" /></span>
             <div>
-              <h2>{setupFolder?.label ?? "Setup library"}</h2>
-              <p>{setupFolder?.subtitle ?? "Agent setup notes"}</p>
+              <h2>{setupFolder?.label ?? copy.aiSetup.setupLibrary}</h2>
+              <p>{setupFolder?.subtitle ?? copy.aiSetup.agentSetupNotes}</p>
             </div>
           </div>
 
-          <div className="ai-runtime-strip" aria-label="Agent runtimes">
+          <div className="ai-runtime-strip" aria-label={copy.aiSetup.agentRuntimes}>
             {aiRuntimeTargets.map((target) => (
               <span key={target}>{target}</span>
             ))}
@@ -2348,7 +3215,7 @@ function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: strin
                           <strong>{note.title}</strong>
                           <small>{note.subtitle}</small>
                         </span>
-                        <em>{statusText(note.status)}</em>
+                        <em>{statusText(note.status, copy)}</em>
                       </button>
                     );
                   })}
@@ -2358,17 +3225,17 @@ function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: strin
           </div>
         </aside>
 
-        <article className="ai-setup-reader" aria-label="Selected AI setup note">
+        <article className="ai-setup-reader" aria-label={copy.aiSetup.selectedNote}>
           <div className="ai-reader-head">
             <div>
-              <span className={`ai-status-pill status-${selectedNote.status}`}>{statusText(selectedNote.status)}</span>
+              <span className={`ai-status-pill status-${selectedNote.status}`}>{statusText(selectedNote.status, copy)}</span>
               <h2>{selectedNote.title}</h2>
               <p>{selectedNote.summary}</p>
             </div>
-            <small>Updated {selectedNote.updatedAt}</small>
+            <small>{copy.aiSetup.updated} {selectedNote.updatedAt}</small>
           </div>
 
-          <div className="ai-tag-list" aria-label="Setup note tags">
+          <div className="ai-tag-list" aria-label={copy.aiSetup.setupNoteTags}>
             {selectedNote.tags.map((tag) => (
               <span key={tag}>{tag}</span>
             ))}
@@ -2384,12 +3251,12 @@ function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: strin
           </div>
 
           {selectedNote.commands?.length ? (
-            <section className="ai-command-panel" aria-label="Setup commands">
+            <section className="ai-command-panel" aria-label={copy.aiSetup.setupCommands}>
               <div className="ai-panel-title">
                 <LuCommand aria-hidden="true" />
                 <div>
-                  <h3>Command runbook</h3>
-                  <p>Commands to verify before using them on a new machine.</p>
+                  <h3>{copy.aiSetup.commandRunbook}</h3>
+                  <p>{copy.aiSetup.commandRunbookDetail}</p>
                 </div>
               </div>
               <div className="ai-command-list">
@@ -2405,7 +3272,7 @@ function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: strin
           ) : null}
 
           {selectedNote.links?.length ? (
-            <section className="ai-link-grid" aria-label="Reference links">
+            <section className="ai-link-grid" aria-label={copy.aiSetup.referenceLinks}>
               {selectedNote.links.map((link) => (
                 <a href={link.href} key={link.href} target="_blank" rel="noreferrer">
                   <strong>{link.label}</strong>
@@ -2416,12 +3283,12 @@ function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: strin
           ) : null}
         </article>
 
-        <aside className="ai-workflow-rail" aria-label="AI workflow setup">
+        <aside className="ai-workflow-rail" aria-label={copy.aiSetup.aiWorkflow}>
           <div className="ai-pane-head">
             <span><LuWaves aria-hidden="true" /></span>
             <div>
-              <h2>AI workflow</h2>
-              <p>First container for research and operating notes.</p>
+              <h2>{copy.aiSetup.aiWorkflow}</h2>
+              <p>{copy.aiSetup.aiWorkflowDetail}</p>
             </div>
           </div>
 
@@ -2438,7 +3305,7 @@ function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: strin
           </div>
 
           <section className="ai-checklist-panel">
-            <h3>Setup checklist</h3>
+            <h3>{copy.aiSetup.setupChecklist}</h3>
             <div>
               {selectedNote.checklist?.map((item) => (
                 <label className="check-row checklist-row" key={item.label}>
@@ -2453,13 +3320,575 @@ function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: strin
           </section>
 
           <section className="ai-research-queue">
-            <h3>Research queue</h3>
+            <h3>{copy.aiSetup.researchQueue}</h3>
             {workflowNotes.map((note) => (
               <article key={note.id}>
                 <strong>{note.title}</strong>
                 <p>{note.subtitle}</p>
               </article>
             ))}
+          </section>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+function AiSkillsPage({ route, copy }: { route: StudioRoute; copy: StudioUiCopy }) {
+  const [selectedSkillId, setSelectedSkillId] = useState(studioAiSkills[0]?.id ?? "");
+  const [categoryFilter, setCategoryFilter] = useState<StudioAiSkill["category"] | "all">("all");
+  const [copiedSkillId, setCopiedSkillId] = useState<string | null>(null);
+  const visibleSkills = studioAiSkills.filter((skill) => categoryFilter === "all" || skill.category === categoryFilter);
+  const selectedSkill = studioAiSkills.find((skill) => skill.id === selectedSkillId) ?? visibleSkills[0] ?? studioAiSkills[0];
+  const categories: Array<StudioAiSkill["category"] | "all"> = [
+    "all",
+    "strategy",
+    "learning",
+    "engineering",
+    "content",
+    "operations",
+    "communication"
+  ];
+
+  const handleCategoryFilter = (category: StudioAiSkill["category"] | "all") => {
+    const nextVisibleSkills = studioAiSkills.filter((skill) => category === "all" || skill.category === category);
+    setCategoryFilter(category);
+    if (!nextVisibleSkills.some((skill) => skill.id === selectedSkillId)) {
+      setSelectedSkillId(nextVisibleSkills[0]?.id ?? selectedSkillId);
+    }
+    track("studio_ai_skill_filter", {
+      category,
+      result_count: nextVisibleSkills.length
+    });
+  };
+
+  const handleSkillSelect = (skill: StudioAiSkill) => {
+    setSelectedSkillId(skill.id);
+    track("studio_ai_skill_select", {
+      skill_id: skill.id,
+      category: skill.category
+    });
+  };
+
+  const copySkill = async () => {
+    if (!selectedSkill) return;
+
+    try {
+      await navigator.clipboard.writeText(selectedSkill.markdown);
+      setCopiedSkillId(selectedSkill.id);
+      window.setTimeout(() => setCopiedSkillId(null), 1600);
+      track("studio_ai_skill_copy", {
+        skill_id: selectedSkill.id,
+        category: selectedSkill.category,
+        markdown_length: selectedSkill.markdown.length
+      });
+    } catch {
+      track("studio_ai_skill_copy", {
+        skill_id: selectedSkill.id,
+        category: selectedSkill.category,
+        failed: true
+      });
+    }
+  };
+
+  if (!selectedSkill) {
+    return (
+      <section className="empty-route card">
+        <LuSparkles aria-hidden="true" />
+        <strong>{copy.aiSkills.emptyTitle}</strong>
+        <p>{copy.aiSkills.emptyDescription}</p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="route-page ai-skills-route">
+      <RouteHeading route={route} copy={copy}>
+        <button type="button" className="outline-button" onClick={copySkill}>
+          {copiedSkillId === selectedSkill.id ? <LuCheck aria-hidden="true" /> : <LuCopy aria-hidden="true" />}
+          {copiedSkillId === selectedSkill.id ? copy.aiSkills.copied : copy.aiSkills.copyMarkdown}
+        </button>
+      </RouteHeading>
+
+      <RouteMetricGrid metrics={route.metrics} copy={copy} />
+
+      <div className="skill-library-workbench card" data-studio-module="ai-skills">
+        <aside className="skill-index-pane" aria-label={copy.aiSkills.skillLibrary}>
+          <div className="ai-pane-head">
+            <span><LuCommand aria-hidden="true" /></span>
+            <div>
+              <h2>{copy.aiSkills.skillLibrary}</h2>
+              <p>{copy.aiSkills.skillLibraryDetail}</p>
+            </div>
+          </div>
+
+          <div className="skill-filter-row" role="tablist" aria-label={copy.aiSkills.categoriesLabel}>
+            {categories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                className={categoryFilter === category ? "is-active" : undefined}
+                onClick={() => handleCategoryFilter(category)}
+              >
+                {skillCategoryLabel(category, copy)}
+              </button>
+            ))}
+          </div>
+
+          <div className="skill-list">
+            {visibleSkills.map((skill) => (
+              <button
+                key={skill.id}
+                type="button"
+                className={`skill-list-button${selectedSkill.id === skill.id ? " is-active" : ""}`}
+                onClick={() => handleSkillSelect(skill)}
+              >
+                <span>
+                  <strong>{skill.title}</strong>
+                  <small>{skill.summary}</small>
+                </span>
+                <em>{skillCategoryLabel(skill.category, copy)}</em>
+              </button>
+            ))}
+          </div>
+        </aside>
+
+        <article className="skill-reader-pane" aria-label={copy.aiSkills.selectedSkill}>
+          <div className="skill-reader-head">
+            <div>
+              <span className="ai-status-pill status-ready">{skillCategoryLabel(selectedSkill.category, copy)}</span>
+              <h2>{selectedSkill.title}</h2>
+              <p>{selectedSkill.summary}</p>
+            </div>
+            <button type="button" className="outline-button" onClick={copySkill}>
+              {copiedSkillId === selectedSkill.id ? <LuCheck aria-hidden="true" /> : <LuCopy aria-hidden="true" />}
+              {copiedSkillId === selectedSkill.id ? copy.aiSkills.copied : copy.aiSkills.copy}
+            </button>
+          </div>
+
+          <div className="ai-tag-list" aria-label={copy.aiSkills.skillTags}>
+            {selectedSkill.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+
+          <pre className="skill-markdown-preview"><code>{selectedSkill.markdown}</code></pre>
+        </article>
+
+        <aside className="skill-side-pane" aria-label="Skill usage notes">
+          <section>
+            <h3>{copy.aiSkills.useThisWhen}</h3>
+            <p>{selectedSkill.summary}</p>
+          </section>
+          <section>
+            <h3>{copy.aiSkills.copyBehavior}</h3>
+            <p>{copy.aiSkills.copyBehaviorDetail}</p>
+          </section>
+          <section>
+            <h3>{copy.aiSkills.operatingRule}</h3>
+            <p>{copy.aiSkills.operatingRuleDetail}</p>
+          </section>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+function ChecklistStepNode({
+  checklistId,
+  sectionId,
+  step,
+  depth = 0
+}: {
+  checklistId: string;
+  sectionId: string;
+  step: StudioChecklistStep;
+  depth?: number;
+}) {
+  return (
+    <li className="checklist-step-node" data-depth={depth}>
+      <label className="check-row checklist-row">
+        <input
+          type="checkbox"
+          onChange={(event) => {
+            track("studio_checklist_item_toggle", {
+              checklist_id: checklistId,
+              section_id: sectionId,
+              step_id: step.id,
+              checked: event.currentTarget.checked
+            });
+          }}
+        />
+        <span>
+          <strong>{step.label}</strong>
+          {step.detail && <small>{step.detail}</small>}
+        </span>
+      </label>
+      {step.children?.length ? (
+        <ol>
+          {step.children.map((child) => (
+            <ChecklistStepNode
+              key={child.id}
+              checklistId={checklistId}
+              sectionId={sectionId}
+              step={child}
+              depth={depth + 1}
+            />
+          ))}
+        </ol>
+      ) : null}
+    </li>
+  );
+}
+
+function DeliveryChecklistsPage({ route, copy }: { route: StudioRoute; copy: StudioUiCopy }) {
+  const [selectedChecklistId, setSelectedChecklistId] = useState(studioWorkflowChecklists[0]?.id ?? "");
+  const [copiedChecklistId, setCopiedChecklistId] = useState<string | null>(null);
+  const selectedChecklist = studioWorkflowChecklists.find((checklist) => checklist.id === selectedChecklistId) ?? studioWorkflowChecklists[0];
+  const selectedMarkdown = selectedChecklist ? renderChecklistMarkdown(selectedChecklist, copy) : "";
+  const totalSteps = selectedChecklist?.sections.reduce((total, section) => total + countChecklistSteps(section.steps), 0) ?? 0;
+
+  const handleChecklistSelect = (checklist: StudioWorkflowChecklist) => {
+    setSelectedChecklistId(checklist.id);
+    track("studio_checklist_select", {
+      checklist_id: checklist.id,
+      section_count: checklist.sections.length,
+      step_count: checklist.sections.reduce((total, section) => total + countChecklistSteps(section.steps), 0)
+    });
+  };
+
+  const copyChecklist = async () => {
+    if (!selectedChecklist) return;
+
+    try {
+      await navigator.clipboard.writeText(selectedMarkdown);
+      setCopiedChecklistId(selectedChecklist.id);
+      window.setTimeout(() => setCopiedChecklistId(null), 1600);
+      track("studio_checklist_copy", {
+        checklist_id: selectedChecklist.id,
+        markdown_length: selectedMarkdown.length,
+        section_count: selectedChecklist.sections.length,
+        step_count: totalSteps
+      });
+    } catch {
+      track("studio_checklist_copy", {
+        checklist_id: selectedChecklist.id,
+        failed: true
+      });
+    }
+  };
+
+  if (!selectedChecklist) {
+    return (
+      <section className="empty-route card">
+        <LuClipboardList aria-hidden="true" />
+        <strong>{copy.checklists.emptyTitle}</strong>
+        <p>{copy.checklists.emptyDescription}</p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="route-page delivery-checklists-route">
+      <RouteHeading route={route} copy={copy}>
+        <button type="button" className="outline-button" onClick={copyChecklist}>
+          {copiedChecklistId === selectedChecklist.id ? <LuCheck aria-hidden="true" /> : <LuCopy aria-hidden="true" />}
+          {copiedChecklistId === selectedChecklist.id ? copy.checklists.copied : copy.checklists.copyChecklist}
+        </button>
+      </RouteHeading>
+
+      <RouteMetricGrid metrics={route.metrics} copy={copy} />
+
+      <div className="checklist-workbench card" data-studio-module="delivery-checklists">
+        <aside className="checklist-index-pane" aria-label={copy.checklists.workflowListLabel}>
+          <div className="ai-pane-head">
+            <span><LuClipboardList aria-hidden="true" /></span>
+            <div>
+              <h2>{copy.checklists.menu}</h2>
+              <p>{copy.checklists.menuDetail}</p>
+            </div>
+          </div>
+
+          <div className="checklist-list">
+            {studioWorkflowChecklists.map((checklist) => (
+              <button
+                key={checklist.id}
+                type="button"
+                className={`checklist-list-button${selectedChecklist.id === checklist.id ? " is-active" : ""}`}
+                onClick={() => handleChecklistSelect(checklist)}
+              >
+                <span>
+                  <strong>{checklist.title}</strong>
+                  <small>{checklist.summary}</small>
+                </span>
+                <em>{checklist.sections.length} {copy.checklists.sections}</em>
+              </button>
+            ))}
+          </div>
+        </aside>
+
+        <article className="checklist-reader-pane" aria-label={copy.checklists.selectedChecklist}>
+          <div className="skill-reader-head">
+            <div>
+              <span className="ai-status-pill status-ready">{totalSteps} {copy.checklists.steps}</span>
+              <h2>{selectedChecklist.title}</h2>
+              <p>{selectedChecklist.summary}</p>
+            </div>
+            <button type="button" className="outline-button" onClick={copyChecklist}>
+              {copiedChecklistId === selectedChecklist.id ? <LuCheck aria-hidden="true" /> : <LuCopy aria-hidden="true" />}
+              {copiedChecklistId === selectedChecklist.id ? copy.checklists.copied : copy.checklists.copy}
+            </button>
+          </div>
+
+          <div className="ai-tag-list" aria-label={copy.checklists.checklistTags}>
+            {selectedChecklist.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+
+          <div className="checklist-section-list">
+            {selectedChecklist.sections.map((section) => (
+              <section key={section.id} className="checklist-section-card">
+                <header>
+                  <h3>{section.title}</h3>
+                  <p>{section.detail}</p>
+                </header>
+                <ol>
+                  {section.steps.map((step) => (
+                    <ChecklistStepNode
+                      key={step.id}
+                      checklistId={selectedChecklist.id}
+                      sectionId={section.id}
+                      step={step}
+                    />
+                  ))}
+                </ol>
+              </section>
+            ))}
+          </div>
+        </article>
+
+        <aside className="checklist-side-pane" aria-label="Checklist details">
+          <section>
+            <h3>{copy.checklists.whenToUse}</h3>
+            <p>{selectedChecklist.whenToUse}</p>
+          </section>
+          <section>
+            <h3>{copy.checklists.structure}</h3>
+            <p>{copy.checklists.structureDetail(selectedChecklist.sections.length, totalSteps)}</p>
+          </section>
+          <section>
+            <h3>{copy.checklists.markdownCopy}</h3>
+            <pre><code>{selectedMarkdown}</code></pre>
+          </section>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+function BlogRoadmapPage({ route, locale, copy }: { route: StudioRoute; locale: string; copy: StudioUiCopy }) {
+  const [selectedTopicId, setSelectedTopicId] = useState(blogRoadmapTopics[0]?.id ?? "");
+  const [selectedDay, setSelectedDay] = useState(1);
+  const [statusFilter, setStatusFilter] = useState<BlogRoadmapStatus | "all">("all");
+  const selectedTopic = blogRoadmapTopics.find((topic) => topic.id === selectedTopicId) ?? blogRoadmapTopics[0];
+  const selectedEntry = selectedTopic?.entries.find((entry) => entry.day === selectedDay) ?? selectedTopic?.entries[0];
+  const visibleEntries = selectedTopic?.entries.filter((entry) => statusFilter === "all" || entry.status === statusFilter) ?? [];
+  const readyCount = selectedTopic?.entries.filter((entry) => entry.status === "ready").length ?? 0;
+  const outlineCount = selectedTopic?.entries.filter((entry) => entry.status === "outline").length ?? 0;
+  const researchCount = selectedTopic?.entries.filter((entry) => entry.status === "research").length ?? 0;
+  const blogCategoryHref = selectedTopic ? `${profileHref(locale, APP_ROUTE.BLOG)}/${selectedTopic.categorySlug}` : profileHref(locale, APP_ROUTE.BLOG);
+
+  const handleTopicSelect = (topic: BlogRoadmapTopic) => {
+    const firstEntry = topic.entries[0];
+    setSelectedTopicId(topic.id);
+    setSelectedDay(firstEntry?.day ?? 1);
+    setStatusFilter("all");
+    track("studio_blog_roadmap_topic_select", {
+      topic_id: topic.id,
+      category_slug: topic.categorySlug,
+      entries_count: topic.entries.length
+    });
+  };
+
+  const handleEntrySelect = (entry: BlogRoadmapEntry) => {
+    setSelectedDay(entry.day);
+    track("studio_blog_roadmap_day_select", {
+      topic_id: selectedTopic?.id,
+      day: entry.day,
+      status: entry.status,
+      ticket_label: entry.ticketLabel
+    });
+  };
+
+  const handleTicketAction = (action: "create_one" | "create_ready_batch") => {
+    track("studio_blog_roadmap_ticket_action", {
+      action,
+      topic_id: selectedTopic?.id,
+      day: selectedEntry?.day,
+      ticket_label: selectedEntry?.ticketLabel,
+      ready_count: readyCount
+    });
+  };
+
+  const handleStatusFilterChange = (status: BlogRoadmapStatus | "all") => {
+    if (!selectedTopic) return;
+    const nextEntry = selectedTopic.entries.find((entry) => status === "all" || entry.status === status) ?? selectedTopic.entries[0];
+    setStatusFilter(status);
+    setSelectedDay(nextEntry?.day ?? 1);
+    track("studio_blog_roadmap_status_filter", {
+      topic_id: selectedTopic.id,
+      status,
+      visible_count: status === "all" ? selectedTopic.entries.length : selectedTopic.entries.filter((entry) => entry.status === status).length,
+      selected_day: nextEntry?.day
+    });
+  };
+
+  if (!selectedTopic || !selectedEntry) {
+    return (
+      <section className="empty-route card">
+        <LuBookOpenCheck aria-hidden="true" />
+        <strong>{copy.roadmap.emptyTitle}</strong>
+        <p>{copy.roadmap.emptyDescription}</p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="route-page blog-roadmap-route">
+      <RouteHeading route={route} copy={copy}>
+        <div className="route-actions">
+          <a className="outline-button" href={blogCategoryHref}>
+            <LuBookOpenCheck aria-hidden="true" />
+            {copy.roadmap.openCategory}
+          </a>
+          <button type="button" className="outline-button" onClick={() => handleTicketAction("create_ready_batch")}>
+            <LuPlusCircle aria-hidden="true" />
+            {copy.roadmap.queueReadyTickets}
+          </button>
+        </div>
+      </RouteHeading>
+
+      <RouteMetricGrid metrics={route.metrics} copy={copy} />
+
+      <div className="blog-roadmap-workbench card" data-studio-module="blog-roadmap">
+        <aside className="roadmap-topic-pane" aria-label={copy.roadmap.topicListLabel}>
+          <div className="ai-pane-head">
+            <span><LuBookOpenCheck aria-hidden="true" /></span>
+            <div>
+              <h2>{copy.roadmap.topicMenu}</h2>
+              <p>{copy.roadmap.topicMenuDetail}</p>
+            </div>
+          </div>
+
+          <div className="roadmap-topic-list">
+            {blogRoadmapTopics.map((topic) => {
+              const active = topic.id === selectedTopic.id;
+              const topicReady = topic.entries.filter((entry) => entry.status === "ready").length;
+              return (
+                <button
+                  key={topic.id}
+                  type="button"
+                  className={`roadmap-topic-button${active ? " is-active" : ""}`}
+                  onClick={() => handleTopicSelect(topic)}
+                >
+                  <span>
+                    <strong>{topic.title}</strong>
+                    <small>{topic.tagline}</small>
+                  </span>
+                  <em>{topicReady}/{topic.entries.length}</em>
+                </button>
+              );
+            })}
+          </div>
+        </aside>
+
+        <article className="roadmap-plan-pane" aria-label={copy.roadmap.selectedRoadmap}>
+          <div className="roadmap-plan-head">
+            <div>
+              <span className="ai-status-pill status-ready">{selectedTopic.cadence}</span>
+              <h2>{selectedTopic.title}</h2>
+              <p>{selectedTopic.tagline}</p>
+            </div>
+            <div className="roadmap-status-strip" aria-label={copy.roadmap.statusCountsLabel}>
+              <span><strong>{readyCount}</strong> {roadmapStatusText("ready", copy)}</span>
+              <span><strong>{outlineCount}</strong> {roadmapStatusText("outline", copy)}</span>
+              <span><strong>{researchCount}</strong> {roadmapStatusText("research", copy)}</span>
+            </div>
+          </div>
+
+          <div className="tabs-row tabs-wrap" role="tablist" aria-label={copy.roadmap.statusFiltersLabel}>
+            {(["all", "ready", "outline", "research"] as const).map((status) => (
+              <button
+                key={status}
+                type="button"
+                className={statusFilter === status ? "is-active" : undefined}
+                onClick={() => handleStatusFilterChange(status)}
+              >
+                {status === "all" ? copy.roadmap.all : roadmapStatusText(status, copy)}
+              </button>
+            ))}
+          </div>
+
+          <div className="roadmap-day-grid" aria-label={copy.roadmap.thirtyDayRoadmap}>
+            {visibleEntries.map((entry) => (
+              <button
+                key={entry.day}
+                type="button"
+                className={`roadmap-day-card status-${entry.status}${entry.day === selectedEntry.day ? " is-active" : ""}`}
+                onClick={() => handleEntrySelect(entry)}
+              >
+                <span>{copy.roadmap.day} {entry.day}</span>
+                <strong>{entry.title}</strong>
+                <small>{entry.intent} - {entry.format}</small>
+              </button>
+            ))}
+          </div>
+        </article>
+
+        <aside className="roadmap-detail-pane" aria-label={copy.roadmap.ticketDetail}>
+          <div className="roadmap-ticket-card">
+            <div className="roadmap-ticket-head">
+              <span className={`ai-status-pill status-${selectedEntry.status}`}>{roadmapStatusText(selectedEntry.status, copy)}</span>
+              <strong>{selectedEntry.ticketLabel}</strong>
+            </div>
+            <h2>{copy.roadmap.day} {selectedEntry.day}: {selectedEntry.title}</h2>
+            <p>{selectedEntry.angle}</p>
+            <dl className="roadmap-detail-list">
+              <div>
+                <dt>{copy.roadmap.intent}</dt>
+                <dd>{selectedEntry.intent}</dd>
+              </div>
+              <div>
+                <dt>{copy.roadmap.format}</dt>
+                <dd>{selectedEntry.format}</dd>
+              </div>
+              <div>
+                <dt>{copy.roadmap.draftTime}</dt>
+                <dd>{selectedEntry.estimatedMinutes} {copy.roadmap.min}</dd>
+              </div>
+              <div>
+                <dt>{copy.roadmap.category}</dt>
+                <dd>{selectedTopic.categorySlug}</dd>
+              </div>
+            </dl>
+            <button type="button" className="primary-action" onClick={() => handleTicketAction("create_one")}>
+              {copy.roadmap.prepareTicket}
+            </button>
+          </div>
+
+          <section className="ai-checklist-panel">
+            <h3>{copy.roadmap.ticketHandoff}</h3>
+            <div>
+              {blogRoadmapTicketChecklist.map((item, index) => (
+                <label className="check-row checklist-row" key={item}>
+                  <input type="checkbox" defaultChecked={index < 3} />
+                  <span>
+                    <strong>{item}</strong>
+                  </span>
+                </label>
+              ))}
+            </div>
           </section>
         </aside>
       </div>
@@ -2777,6 +4206,8 @@ function DefaultDashboard({
 function RouteContent({
   route,
   locale,
+  copy,
+  profileActions,
   workstreamSearch,
   statusFilter,
   sortMode,
@@ -2786,6 +4217,8 @@ function RouteContent({
 }: {
   route: StudioRoute;
   locale: string;
+  copy: StudioUiCopy;
+  profileActions: StudioProfileMenuItem[];
   workstreamSearch: string;
   statusFilter: string;
   sortMode: string;
@@ -2811,7 +4244,10 @@ function RouteContent({
   if (route.kind === "ecommerce" || route.kind === "academy" || route.kind === "logistics" || route.kind === "infrastructure") return <CommerceAcademyPage route={route} />;
   if (route.kind === "mail") return <MailRoutePage route={route} />;
   if (route.kind === "chat") return <ChatRoutePage route={route} />;
-  if (route.kind === "ai-setup") return <AiAgentSetupPage route={route} locale={locale} />;
+  if (route.kind === "ai-setup") return <AiAgentSetupPage route={route} locale={locale} copy={copy} profileActions={profileActions} />;
+  if (route.kind === "ai-skills") return <AiSkillsPage route={route} copy={copy} />;
+  if (route.kind === "checklists") return <DeliveryChecklistsPage route={route} copy={copy} />;
+  if (route.kind === "roadmap") return <BlogRoadmapPage route={route} locale={locale} copy={copy} />;
   if (route.kind === "calendar") return <CalendarPage route={route} />;
   if (route.kind === "kanban") return <KanbanPage route={route} />;
   if (route.kind === "invoice") return <InvoicePage route={route} />;
@@ -2825,6 +4261,10 @@ function CommandDialog({
   query,
   locale,
   activeRoute,
+  copy,
+  routes,
+  routeResults,
+  profileItems,
   onQuery,
   onClose,
   onActivate
@@ -2833,33 +4273,37 @@ function CommandDialog({
   query: string;
   locale: string;
   activeRoute: StudioRouteId;
+  copy: StudioUiCopy;
+  routes: Record<StudioRouteId, StudioRoute>;
+  routeResults: StudioNavItem[];
+  profileItems: StudioProfileMenuItem[];
   onQuery: (value: string) => void;
   onClose: () => void;
   onActivate: (routeId: StudioRouteId, source?: StudioRouteActivationSource) => void;
 }) {
   const results = useMemo(() => {
     const normalized = query.trim().toLowerCase();
-    return flatRouteResults.filter((item) => {
-      const route = item.routeId ? routeDefinitions[item.routeId] : undefined;
+    return routeResults.filter((item) => {
+      const route = item.routeId ? routes[item.routeId] : undefined;
       return !normalized || item.title.toLowerCase().includes(normalized) || route?.description.toLowerCase().includes(normalized);
     });
-  }, [query]);
+  }, [query, routeResults, routes]);
 
   if (!open) return null;
 
   return (
     <div className="command-overlay" role="presentation" onMouseDown={(event) => event.currentTarget === event.target && onClose()}>
-      <section className="command-dialog" role="dialog" aria-modal="true" aria-label="Search Studio routes">
+      <section className="command-dialog" role="dialog" aria-modal="true" aria-label={copy.commandPaletteLabel}>
         <div className="command-input-row">
           <LuSearch aria-hidden="true" />
-          <input autoFocus value={query} onChange={(event) => onQuery(event.target.value)} placeholder="Search AI setup..." />
-          <button type="button" onClick={onClose} aria-label="Close search">
+          <input autoFocus value={query} onChange={(event) => onQuery(event.target.value)} placeholder={copy.searchPlaceholder} />
+          <button type="button" onClick={onClose} aria-label={copy.closeSearch}>
             <LuX aria-hidden="true" />
           </button>
         </div>
         <div className="command-results">
           {results.map((item) => {
-            const route = routeDefinitions[item.routeId ?? DEFAULT_ROUTE];
+            const route = routes[item.routeId ?? DEFAULT_ROUTE];
             const Icon = route.icon;
             return (
               <a
@@ -2882,8 +4326,8 @@ function CommandDialog({
               </a>
             );
           })}
-          <span className="command-section-label">Profile menu</span>
-          {profileMenuItems.map((item) => {
+          <span className="command-section-label">{copy.profileMenuTitle}</span>
+          {profileItems.map((item) => {
             const Icon = item.icon;
             return (
               <a
@@ -2912,6 +4356,7 @@ function CommandDialog({
 }
 
 function StudioPreferencesPanel({
+  copy,
   themeSetting,
   resolvedTheme,
   font,
@@ -2921,6 +4366,7 @@ function StudioPreferencesPanel({
   onLayoutChange,
   onRestoreLayout
 }: {
+  copy: StudioUiCopy;
   themeSetting: StudioThemeSetting;
   resolvedTheme: StudioResolvedTheme;
   font: StudioFont;
@@ -2933,21 +4379,21 @@ function StudioPreferencesPanel({
   const currentFont = fontOptions.find((option) => option.value === font) ?? fontOptions[0];
 
   return (
-    <section className="preferences-popover" aria-label="Studio preferences">
+    <section className="preferences-popover" aria-label={copy.preferences.title}>
       <div className="preferences-head">
         <div>
-          <h2>Preferences</h2>
-          <p>Theme, font, and layout for this Studio workspace.</p>
+          <h2>{copy.preferences.title}</h2>
+          <p>{copy.preferences.description}</p>
         </div>
-        <span className="theme-color-preview" aria-label="CV theme color">
+        <span className="theme-color-preview" aria-label={copy.preferences.palette}>
           <i />
-          CV palette
+          {copy.preferences.palette}
         </span>
       </div>
 
       <div className="preference-section">
-        <label>Theme mode</label>
-        <div className="preference-segment" data-columns={themeOptions.length} role="radiogroup" aria-label="Theme mode">
+        <label>{copy.preferences.themeMode}</label>
+        <div className="preference-segment" data-columns={themeOptions.length} role="radiogroup" aria-label={copy.preferences.themeMode}>
           {themeOptions.map((option) => {
             const Icon = option.icon;
             const active = themeSetting === option.value;
@@ -2959,18 +4405,18 @@ function StudioPreferencesPanel({
                 aria-checked={active}
                 className={active ? "is-active" : undefined}
                 onClick={() => onThemeChange(option.value)}
-              >
-                <Icon aria-hidden="true" />
-                <span>{option.label}</span>
+            >
+              <Icon aria-hidden="true" />
+                <span>{copy.preferences.themeOptions[option.value]}</span>
               </button>
             );
           })}
         </div>
-        <p>Resolved now: {resolvedTheme}</p>
+        <p>{copy.preferences.resolvedNow}: {resolvedTheme}</p>
       </div>
 
       <div className="preference-section">
-        <label htmlFor="studio-font-select">Font</label>
+        <label htmlFor="studio-font-select">{copy.preferences.font}</label>
         <div className="preference-select-row">
           <LuType aria-hidden="true" />
           <select
@@ -2990,8 +4436,8 @@ function StudioPreferencesPanel({
       </div>
 
       <div className="preference-section">
-        <label>Page layout</label>
-        <div className="preference-segment" data-columns={contentLayoutOptions.length} role="radiogroup" aria-label="Page layout">
+        <label>{copy.preferences.pageLayout}</label>
+        <div className="preference-segment" data-columns={contentLayoutOptions.length} role="radiogroup" aria-label={copy.preferences.pageLayout}>
           {contentLayoutOptions.map((option) => {
             const active = layoutPreference.contentLayout === option.value;
             return (
@@ -3003,17 +4449,17 @@ function StudioPreferencesPanel({
                 className={active ? "is-active" : undefined}
                 onClick={() => onLayoutChange({ contentLayout: option.value })}
               >
-                <span>{option.label}</span>
+                <span>{copy.preferences.contentLayoutOptions[option.value]}</span>
               </button>
             );
           })}
         </div>
-        <p>Centered keeps reading calm. Full width gives wider operations surfaces.</p>
+        <p>{copy.preferences.pageLayoutHelp}</p>
       </div>
 
       <div className="preference-section">
-        <label>Navbar behavior</label>
-        <div className="preference-segment" data-columns={navbarStyleOptions.length} role="radiogroup" aria-label="Navbar behavior">
+        <label>{copy.preferences.navbarBehavior}</label>
+        <div className="preference-segment" data-columns={navbarStyleOptions.length} role="radiogroup" aria-label={copy.preferences.navbarBehavior}>
           {navbarStyleOptions.map((option) => {
             const active = layoutPreference.navbarStyle === option.value;
             return (
@@ -3025,17 +4471,17 @@ function StudioPreferencesPanel({
                 className={active ? "is-active" : undefined}
                 onClick={() => onLayoutChange({ navbarStyle: option.value })}
               >
-                <span>{option.label}</span>
+                <span>{copy.preferences.navbarStyleOptions[option.value]}</span>
               </button>
             );
           })}
         </div>
-        <p>Sticky keeps controls visible. Scroll lets the whole workspace move together.</p>
+        <p>{copy.preferences.navbarHelp}</p>
       </div>
 
       <div className="preference-section">
-        <label>Sidebar style</label>
-        <div className="preference-segment" data-columns={sidebarVariantOptions.length} role="radiogroup" aria-label="Sidebar style">
+        <label>{copy.preferences.sidebarStyle}</label>
+        <div className="preference-segment" data-columns={sidebarVariantOptions.length} role="radiogroup" aria-label={copy.preferences.sidebarStyle}>
           {sidebarVariantOptions.map((option) => {
             const active = layoutPreference.sidebarVariant === option.value;
             return (
@@ -3047,17 +4493,17 @@ function StudioPreferencesPanel({
                 className={active ? "is-active" : undefined}
                 onClick={() => onLayoutChange({ sidebarVariant: option.value })}
               >
-                <span>{option.label}</span>
+                <span>{copy.preferences.sidebarVariantOptions[option.value]}</span>
               </button>
             );
           })}
         </div>
-        <p>Choose the density that matches the current setup work.</p>
+        <p>{copy.preferences.sidebarStyleHelp}</p>
       </div>
 
       <div className="preference-section">
-        <label>Collapse mode</label>
-        <div className="preference-segment" data-columns={sidebarCollapsibleOptions.length} role="radiogroup" aria-label="Collapse mode">
+        <label>{copy.preferences.collapseMode}</label>
+        <div className="preference-segment" data-columns={sidebarCollapsibleOptions.length} role="radiogroup" aria-label={copy.preferences.collapseMode}>
           {sidebarCollapsibleOptions.map((option) => {
             const active = layoutPreference.sidebarCollapsible === option.value;
             return (
@@ -3069,16 +4515,16 @@ function StudioPreferencesPanel({
                 className={active ? "is-active" : undefined}
                 onClick={() => onLayoutChange({ sidebarCollapsible: option.value })}
               >
-                <span>{option.label}</span>
+                <span>{copy.preferences.sidebarCollapsibleOptions[option.value]}</span>
               </button>
             );
           })}
         </div>
-        <p>Icon keeps the rail visible. Offcanvas hides it completely on desktop.</p>
+        <p>{copy.preferences.collapseModeHelp}</p>
       </div>
 
       <button type="button" className="restore-preferences" onClick={onRestoreLayout}>
-        Restore layout defaults
+        {copy.preferences.restoreDefaults}
       </button>
     </section>
   );
@@ -3102,7 +4548,16 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
   const [statusFilter, setStatusFilter] = useState("all");
   const [sortMode, setSortMode] = useState("joined");
   const preferencesRef = useRef<HTMLDivElement>(null);
-  const route = routeDefinitions[activeRoute];
+  const copy = useMemo(() => getStudioCopy(locale), [locale]);
+  const localizedRoutes = useMemo(() => getLocalizedRouteDefinitions(copy), [copy]);
+  const localizedNavGroups = useMemo(() => getLocalizedNavGroups(copy), [copy]);
+  const localizedProfileItems = useMemo(() => getLocalizedProfileItems(copy), [copy]);
+  const localizedPrimaryProfileActions = useMemo(
+    () => localizedProfileItems.filter((item) => ["home", "blog", "notes"].includes(item.id)),
+    [localizedProfileItems]
+  );
+  const localizedRouteResults = useMemo(() => localizedNavGroups.flatMap((group) => group.items), [localizedNavGroups]);
+  const route = localizedRoutes[activeRoute];
 
   useEffect(() => {
     const syncRoute = () => {
@@ -3302,11 +4757,11 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
       data-sidebar-variant={layoutPreference.sidebarVariant}
       data-sidebar-collapsible={layoutPreference.sidebarCollapsible}
     >
-      <aside className="studio-sidebar" aria-label="Dashboard navigation">
+      <aside className="studio-sidebar" aria-label={copy.navLabel}>
         <div className="sidebar-header">
-          <a className="sidebar-brand" href={routeHref(DEFAULT_ROUTE)} aria-label="Open Studio" onClick={handleBrandClick}>
+          <a className="sidebar-brand" href={routeHref(DEFAULT_ROUTE)} aria-label={copy.openStudio} onClick={handleBrandClick}>
             <Image src="/icon.png" alt="" width={28} height={28} />
-            <span>Studio</span>
+            <span>{copy.brand}</span>
           </a>
           <button
             className="sidebar-close"
@@ -3319,7 +4774,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
               });
               setMobileSidebarOpen(false);
             }}
-            aria-label="Close navigation"
+            aria-label={copy.closeNavigation}
           >
             <LuX aria-hidden="true" />
           </button>
@@ -3335,12 +4790,12 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
             }}
           >
             <LuSearch aria-hidden="true" />
-            <span>Find setup note</span>
+            <span>{copy.findSetupNote}</span>
           </button>
         </div>
 
         <div className="sidebar-scroll">
-          {navGroups.map((group) => (
+          {localizedNavGroups.map((group) => (
             <SidebarGroup
               key={group.id}
               group={group}
@@ -3356,10 +4811,10 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
         <div className="sidebar-footer">
           {!isIconCollapsed && (
             <section className="support-card">
-              <strong>Profile navigation</strong>
-              <p>Move between the public profile sections from this Studio workspace.</p>
+              <strong>{copy.profileNavigationTitle}</strong>
+              <p>{copy.profileNavigationDetail}</p>
               <div className="profile-link-grid">
-                {profileMenuItems.map((item) => {
+                {localizedProfileItems.map((item) => {
                   const Icon = item.icon;
                   return (
                     <a
@@ -3398,7 +4853,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
             <span className="user-avatar">N</span>
             <span>
               <strong>Nguyen Le Phong</strong>
-              <small>Open profile home</small>
+              <small>{copy.openProfileHome}</small>
             </span>
             <LuMoreVertical aria-hidden="true" />
           </a>
@@ -3409,7 +4864,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
         <button
           className="sidebar-scrim"
           type="button"
-          aria-label="Close navigation"
+          aria-label={copy.closeNavigation}
           onClick={() => {
             track("studio_sidebar_toggle", {
               mode: "mobile_scrim",
@@ -3424,7 +4879,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
       <main className="studio-main">
         <header className="studio-topbar">
           <div className="topbar-left">
-            <button type="button" className="icon-button" aria-label="Toggle navigation" onClick={toggleSidebar}>
+            <button type="button" className="icon-button" aria-label={copy.toggleNavigation} onClick={toggleSidebar}>
               {mobileSidebarOpen ? <LuX aria-hidden="true" /> : <LuPanelLeft aria-hidden="true" />}
             </button>
             <span className="topbar-separator" aria-hidden="true" />
@@ -3437,7 +4892,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
               }}
             >
               <LuSearch aria-hidden="true" />
-              <span>Search</span>
+              <span>{copy.search}</span>
               <kbd>Cmd J</kbd>
             </button>
           </div>
@@ -3447,7 +4902,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
               <button
                 type="button"
                 className="topbar-icon"
-                aria-label="Open Studio preferences"
+                aria-label={copy.openPreferences}
                 aria-expanded={preferencesOpen}
                 onClick={() => {
                   track("studio_preferences_panel_toggle", {
@@ -3462,6 +4917,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
               </button>
               {preferencesOpen && (
                 <StudioPreferencesPanel
+                  copy={copy}
                   themeSetting={themeSetting}
                   resolvedTheme={resolvedTheme}
                   font={studioFont}
@@ -3478,7 +4934,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
               href="https://github.com/nguyenlephong"
               target="_blank"
               rel="noreferrer"
-              aria-label="Open GitHub profile"
+              aria-label={copy.openGithubProfile}
               onClick={() => {
                 track("studio_profile_nav_click", {
                   target: "github",
@@ -3496,7 +4952,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
                 setAccountOpen((value) => !value);
                 setPreferencesOpen(false);
               }}
-              aria-label="Open account menu"
+              aria-label={copy.openAccountMenu}
             >
               N
             </button>
@@ -3504,8 +4960,8 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
               <section className="account-popover">
                 <strong>Nguyen Le Phong</strong>
                 <span>Senior Software Engineer</span>
-                <nav className="account-nav" aria-label="Profile navigation">
-                  {profileMenuItems.map((item) => {
+                <nav className="account-nav" aria-label={copy.profileNavigationTitle}>
+                  {localizedProfileItems.map((item) => {
                     const Icon = item.icon;
                     return (
                       <a
@@ -3537,6 +4993,8 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
           <RouteContent
             route={route}
             locale={locale}
+            copy={copy}
+            profileActions={localizedPrimaryProfileActions}
             workstreamSearch={workstreamSearch}
             statusFilter={statusFilter}
             sortMode={sortMode}
@@ -3552,6 +5010,10 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
         query={searchQuery}
         locale={locale}
         activeRoute={activeRoute}
+        copy={copy}
+        routes={localizedRoutes}
+        routeResults={localizedRouteResults}
+        profileItems={localizedProfileItems}
         onQuery={setSearchQuery}
         onClose={() => setSearchOpen(false)}
         onActivate={activateRoute}
