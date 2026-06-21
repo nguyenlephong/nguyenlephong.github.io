@@ -406,6 +406,24 @@
       "featured": false
     },
     {
+      "slug": "ai-literacy-from-prompts-to-agents",
+      "category": "ai",
+      "title": "AI Literacy: From Prompting to Orchestrating Agents",
+      "summary": "Using AI more often does not automatically mean working at a higher level. This reflective piece maps three levels of AI literacy in the age of agents: the consumer who asks one prompt at a time, the collaborator who turns repeated work into small workflows, and the orchestrator who defines goals, assigns agents, and protects quality with clear guardrails.",
+      "date": "2026-06-21",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "AI Literacy",
+        "AI Agents",
+        "Agentic AI",
+        "Future of Work",
+        "Productivity"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "ambition-in-the-age-of-ai",
       "category": "ai",
       "title": "Your Fear of AI Is the Size of Your Ambition: Why It’s Time to Aim Dramatically Bigger",

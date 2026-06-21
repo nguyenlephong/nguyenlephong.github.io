@@ -406,6 +406,24 @@
       "featured": false
     },
     {
+      "slug": "ai-literacy-from-prompts-to-agents",
+      "category": "ai",
+      "title": "AI Literacy: từ người gõ prompt đến người điều phối agents",
+      "summary": "Dùng AI nhiều hơn không tự động đồng nghĩa với làm việc ở cấp độ cao hơn. Bài viết nhìn lại 3 cấp độ AI literacy trong kỷ nguyên agents: người hỏi từng prompt rời rạc, người biến việc lặp lại thành workflow nhỏ, và người biết đặt mục tiêu, phân vai cho agents, rồi giữ chất lượng bằng guardrails rõ ràng.",
+      "date": "2026-06-21",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "AI Literacy",
+        "AI Agent",
+        "Agentic AI",
+        "Tương lai công việc",
+        "Năng suất"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": true
+    },
+    {
       "slug": "ambition-in-the-age-of-ai",
       "category": "ai",
       "title": "Trong thời đại AI, tham vọng nên lớn hơn nỗi sợ",
