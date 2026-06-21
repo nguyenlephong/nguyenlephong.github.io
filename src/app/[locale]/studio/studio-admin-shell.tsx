@@ -246,10 +246,22 @@ const DEFAULT_ROUTE: StudioRouteId = "ai-agent-setup";
 const resumePath = "/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf";
 const THEME_STORAGE_KEY = "theme_preference";
 const FONT_STORAGE_KEY = "reading_font_preference";
+const LAYOUT_STORAGE_KEY = "studio_layout_preference";
 
 type StudioThemeSetting = "light" | "dark" | "system";
 type StudioResolvedTheme = "light" | "dark";
 type StudioFont = "inter" | "source" | "plex" | "atkinson" | "lora" | "be-vietnam";
+type StudioContentLayout = "centered" | "full-width";
+type StudioNavbarStyle = "sticky" | "scroll";
+type StudioSidebarVariant = "inset" | "sidebar" | "floating";
+type StudioSidebarCollapsible = "icon" | "offcanvas";
+
+type StudioLayoutPreference = {
+  contentLayout: StudioContentLayout;
+  navbarStyle: StudioNavbarStyle;
+  sidebarVariant: StudioSidebarVariant;
+  sidebarCollapsible: StudioSidebarCollapsible;
+};
 
 const themeOptions: Array<{ value: StudioThemeSetting; label: string; icon: IconType }> = [
   { value: "light", label: "Light", icon: LuSun },
@@ -266,12 +278,56 @@ const fontOptions: Array<{ value: StudioFont; label: string; detail: string }> =
   { value: "be-vietnam", label: "Be Vietnam Pro", detail: "Vietnamese-friendly" }
 ];
 
+const contentLayoutOptions: Array<{ value: StudioContentLayout; label: string }> = [
+  { value: "centered", label: "Centered" },
+  { value: "full-width", label: "Full width" }
+];
+
+const navbarStyleOptions: Array<{ value: StudioNavbarStyle; label: string }> = [
+  { value: "sticky", label: "Sticky" },
+  { value: "scroll", label: "Scroll" }
+];
+
+const sidebarVariantOptions: Array<{ value: StudioSidebarVariant; label: string }> = [
+  { value: "inset", label: "Inset" },
+  { value: "sidebar", label: "Sidebar" },
+  { value: "floating", label: "Floating" }
+];
+
+const sidebarCollapsibleOptions: Array<{ value: StudioSidebarCollapsible; label: string }> = [
+  { value: "icon", label: "Icon" },
+  { value: "offcanvas", label: "Offcanvas" }
+];
+
+const defaultLayoutPreference: StudioLayoutPreference = {
+  contentLayout: "centered",
+  navbarStyle: "sticky",
+  sidebarVariant: "inset",
+  sidebarCollapsible: "icon"
+};
+
 function isStudioThemeSetting(value: unknown): value is StudioThemeSetting {
   return value === "light" || value === "dark" || value === "system";
 }
 
 function isStudioFont(value: unknown): value is StudioFont {
   return fontOptions.some((option) => option.value === value);
+}
+
+function isStudioContentLayout(value: unknown): value is StudioContentLayout {
+  return value === "centered" || value === "full-width";
+}
+
+function isStudioNavbarStyle(value: unknown): value is StudioNavbarStyle {
+  return value === "sticky" || value === "scroll";
+}
+
+function isStudioSidebarVariant(value: unknown): value is StudioSidebarVariant {
+  return value === "inset" || value === "sidebar" || value === "floating";
+}
+
+function isStudioSidebarCollapsible(value: unknown): value is StudioSidebarCollapsible {
+  return value === "icon" || value === "offcanvas";
 }
 
 function resolveStudioTheme(setting: StudioThemeSetting): StudioResolvedTheme {
@@ -310,6 +366,23 @@ function readInitialFont(): StudioFont {
   return isStudioFont(rootFont) ? rootFont : "inter";
 }
 
+function readInitialLayoutPreference(): StudioLayoutPreference {
+  if (typeof window === "undefined") return defaultLayoutPreference;
+
+  try {
+    const stored = localStorage.getItem(LAYOUT_STORAGE_KEY);
+    const parsed = stored ? JSON.parse(stored) as Partial<Record<keyof StudioLayoutPreference, unknown>> : null;
+    return {
+      contentLayout: isStudioContentLayout(parsed?.contentLayout) ? parsed.contentLayout : defaultLayoutPreference.contentLayout,
+      navbarStyle: isStudioNavbarStyle(parsed?.navbarStyle) ? parsed.navbarStyle : defaultLayoutPreference.navbarStyle,
+      sidebarVariant: isStudioSidebarVariant(parsed?.sidebarVariant) ? parsed.sidebarVariant : defaultLayoutPreference.sidebarVariant,
+      sidebarCollapsible: isStudioSidebarCollapsible(parsed?.sidebarCollapsible) ? parsed.sidebarCollapsible : defaultLayoutPreference.sidebarCollapsible
+    };
+  } catch {
+    return defaultLayoutPreference;
+  }
+}
+
 function applyThemePreference(setting: StudioThemeSetting): StudioResolvedTheme {
   const resolved = resolveStudioTheme(setting);
   document.documentElement.setAttribute("data-theme", resolved);
@@ -325,6 +398,14 @@ function applyFontPreference(font: StudioFont): void {
   document.documentElement.setAttribute("data-reading-font", font);
   try {
     localStorage.setItem(FONT_STORAGE_KEY, font);
+  } catch {
+    // ignore unavailable storage
+  }
+}
+
+function persistLayoutPreference(preference: StudioLayoutPreference): void {
+  try {
+    localStorage.setItem(LAYOUT_STORAGE_KEY, JSON.stringify(preference));
   } catch {
     // ignore unavailable storage
   }
@@ -2741,14 +2822,20 @@ function StudioPreferencesPanel({
   themeSetting,
   resolvedTheme,
   font,
+  layoutPreference,
   onThemeChange,
-  onFontChange
+  onFontChange,
+  onLayoutChange,
+  onRestoreLayout
 }: {
   themeSetting: StudioThemeSetting;
   resolvedTheme: StudioResolvedTheme;
   font: StudioFont;
+  layoutPreference: StudioLayoutPreference;
   onThemeChange: (setting: StudioThemeSetting) => void;
   onFontChange: (font: StudioFont) => void;
+  onLayoutChange: (preference: Partial<StudioLayoutPreference>) => void;
+  onRestoreLayout: () => void;
 }) {
   const currentFont = fontOptions.find((option) => option.value === font) ?? fontOptions[0];
 
@@ -2757,7 +2844,7 @@ function StudioPreferencesPanel({
       <div className="preferences-head">
         <div>
           <h2>Preferences</h2>
-          <p>Use the same theme and reading font as the CV.</p>
+          <p>Theme, font, and layout for this Studio workspace.</p>
         </div>
         <span className="theme-color-preview" aria-label="CV theme color">
           <i />
@@ -2767,7 +2854,7 @@ function StudioPreferencesPanel({
 
       <div className="preference-section">
         <label>Theme mode</label>
-        <div className="preference-segment" role="radiogroup" aria-label="Theme mode">
+        <div className="preference-segment" data-columns={themeOptions.length} role="radiogroup" aria-label="Theme mode">
           {themeOptions.map((option) => {
             const Icon = option.icon;
             const active = themeSetting === option.value;
@@ -2808,6 +2895,98 @@ function StudioPreferencesPanel({
         </div>
         <p>{currentFont.detail}</p>
       </div>
+
+      <div className="preference-section">
+        <label>Page layout</label>
+        <div className="preference-segment" data-columns={contentLayoutOptions.length} role="radiogroup" aria-label="Page layout">
+          {contentLayoutOptions.map((option) => {
+            const active = layoutPreference.contentLayout === option.value;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                className={active ? "is-active" : undefined}
+                onClick={() => onLayoutChange({ contentLayout: option.value })}
+              >
+                <span>{option.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <p>Centered keeps reading calm. Full width gives wider operations surfaces.</p>
+      </div>
+
+      <div className="preference-section">
+        <label>Navbar behavior</label>
+        <div className="preference-segment" data-columns={navbarStyleOptions.length} role="radiogroup" aria-label="Navbar behavior">
+          {navbarStyleOptions.map((option) => {
+            const active = layoutPreference.navbarStyle === option.value;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                className={active ? "is-active" : undefined}
+                onClick={() => onLayoutChange({ navbarStyle: option.value })}
+              >
+                <span>{option.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <p>Sticky keeps controls visible. Scroll lets the whole workspace move together.</p>
+      </div>
+
+      <div className="preference-section">
+        <label>Sidebar style</label>
+        <div className="preference-segment" data-columns={sidebarVariantOptions.length} role="radiogroup" aria-label="Sidebar style">
+          {sidebarVariantOptions.map((option) => {
+            const active = layoutPreference.sidebarVariant === option.value;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                className={active ? "is-active" : undefined}
+                onClick={() => onLayoutChange({ sidebarVariant: option.value })}
+              >
+                <span>{option.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <p>Choose the density that matches the current setup work.</p>
+      </div>
+
+      <div className="preference-section">
+        <label>Collapse mode</label>
+        <div className="preference-segment" data-columns={sidebarCollapsibleOptions.length} role="radiogroup" aria-label="Collapse mode">
+          {sidebarCollapsibleOptions.map((option) => {
+            const active = layoutPreference.sidebarCollapsible === option.value;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                className={active ? "is-active" : undefined}
+                onClick={() => onLayoutChange({ sidebarCollapsible: option.value })}
+              >
+                <span>{option.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <p>Icon keeps the rail visible. Offcanvas hides it completely on desktop.</p>
+      </div>
+
+      <button type="button" className="restore-preferences" onClick={onRestoreLayout}>
+        Restore layout defaults
+      </button>
     </section>
   );
 }
@@ -2820,6 +2999,8 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
   const [themeSetting, setThemeSetting] = useState<StudioThemeSetting>(readInitialThemeSetting);
   const [resolvedTheme, setResolvedTheme] = useState<StudioResolvedTheme>(() => resolveStudioTheme(readInitialThemeSetting()));
   const [studioFont, setStudioFont] = useState<StudioFont>(readInitialFont);
+  const [layoutPreference, setLayoutPreference] = useState<StudioLayoutPreference>(readInitialLayoutPreference);
+  const [desktopSidebarOpen, setDesktopSidebarOpen] = useState(true);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [preferencesOpen, setPreferencesOpen] = useState(false);
@@ -2906,6 +3087,12 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
       setMobileSidebarOpen((value) => !value);
       return;
     }
+
+    if (layoutPreference.sidebarCollapsible === "offcanvas") {
+      setDesktopSidebarOpen((value) => !value);
+      return;
+    }
+
     setSidebarCollapsed((value) => !value);
   };
 
@@ -2919,13 +3106,40 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
     applyFontPreference(font);
   }, []);
 
+  const handleLayoutChange = useCallback((preference: Partial<StudioLayoutPreference>) => {
+    setLayoutPreference((current) => {
+      const next = { ...current, ...preference };
+      persistLayoutPreference(next);
+      return next;
+    });
+
+    if (preference.sidebarCollapsible) {
+      setSidebarCollapsed(false);
+      setDesktopSidebarOpen(true);
+    }
+  }, []);
+
+  const handleRestoreLayout = useCallback(() => {
+    setLayoutPreference(defaultLayoutPreference);
+    persistLayoutPreference(defaultLayoutPreference);
+    setSidebarCollapsed(false);
+    setDesktopSidebarOpen(true);
+  }, []);
+
+  const isIconCollapsed = layoutPreference.sidebarCollapsible === "icon" && sidebarCollapsed;
+  const isSidebarHidden = layoutPreference.sidebarCollapsible === "offcanvas" && !desktopSidebarOpen;
+
   return (
     <div
-      className={`studio-admin${sidebarCollapsed ? " is-sidebar-collapsed" : ""}${mobileSidebarOpen ? " is-mobile-open" : ""}${resolvedTheme === "dark" ? " is-dark" : ""}`}
+      className={`studio-admin${isIconCollapsed ? " is-sidebar-collapsed" : ""}${isSidebarHidden ? " is-sidebar-hidden" : ""}${mobileSidebarOpen ? " is-mobile-open" : ""}${resolvedTheme === "dark" ? " is-dark" : ""}`}
       data-locale={locale}
       data-route={activeRoute}
       data-theme-setting={themeSetting}
       data-studio-font={studioFont}
+      data-content-layout={layoutPreference.contentLayout}
+      data-navbar-style={layoutPreference.navbarStyle}
+      data-sidebar-variant={layoutPreference.sidebarVariant}
+      data-sidebar-collapsible={layoutPreference.sidebarCollapsible}
     >
       <aside className="studio-sidebar" aria-label="Dashboard navigation">
         <div className="sidebar-header">
@@ -2952,7 +3166,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
               group={group}
               activeRoute={activeRoute}
               expanded={expanded}
-              collapsed={sidebarCollapsed}
+              collapsed={isIconCollapsed}
               onActivate={activateRoute}
               onToggle={(id) => setExpanded((value) => ({ ...value, [id]: !(value[id] ?? false) }))}
             />
@@ -2960,7 +3174,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
         </div>
 
         <div className="sidebar-footer">
-          {!sidebarCollapsed && (
+          {!isIconCollapsed && (
             <section className="support-card">
               <strong>Personal AI setup</strong>
               <p>
@@ -3015,8 +3229,11 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
                   themeSetting={themeSetting}
                   resolvedTheme={resolvedTheme}
                   font={studioFont}
+                  layoutPreference={layoutPreference}
                   onThemeChange={handleThemeChange}
                   onFontChange={handleFontChange}
+                  onLayoutChange={handleLayoutChange}
+                  onRestoreLayout={handleRestoreLayout}
                 />
               )}
             </div>

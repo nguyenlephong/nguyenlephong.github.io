@@ -100,10 +100,25 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /StudioPreferencesPanel/);
   assert.match(adminShell, /theme_preference/);
   assert.match(adminShell, /reading_font_preference/);
+  assert.match(adminShell, /studio_layout_preference/);
+  assert.match(adminShell, /type StudioContentLayout = "centered" \| "full-width"/);
+  assert.match(adminShell, /type StudioNavbarStyle = "sticky" \| "scroll"/);
+  assert.match(adminShell, /type StudioSidebarVariant = "inset" \| "sidebar" \| "floating"/);
+  assert.match(adminShell, /type StudioSidebarCollapsible = "icon" \| "offcanvas"/);
   assert.match(adminShell, /visibleRouteIds/);
   assert.match(adminShell, /is-sidebar-collapsed/);
+  assert.match(adminShell, /is-sidebar-hidden/);
   assert.match(adminShell, /is-mobile-open/);
   assert.match(adminShell, /is-dark/);
+  assert.match(adminShell, /data-content-layout/);
+  assert.match(adminShell, /data-navbar-style/);
+  assert.match(adminShell, /data-sidebar-variant/);
+  assert.match(adminShell, /data-sidebar-collapsible/);
+  assert.match(adminShell, /Page layout/);
+  assert.match(adminShell, /Navbar behavior/);
+  assert.match(adminShell, /Sidebar style/);
+  assert.match(adminShell, /Collapse mode/);
+  assert.match(adminShell, /Restore layout defaults/);
   const navGroupsBlock = adminShell.slice(
     adminShell.indexOf("const navGroups"),
     adminShell.indexOf("const studioMails")
@@ -211,6 +226,11 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.mail-workbench\.card,\s*\.chat-workbench\.card\s*\{[^}]*display:\s*grid/s);
   assert.match(shadowCss, /grid-template-columns:\s*18\.5rem minmax\(0, 1fr\)/);
   assert.match(shadowCss, /\.studio-admin\s*\{[^}]*gap:\s*0\.75rem/s);
+  assert.match(shadowCss, /\.studio-admin\.is-sidebar-hidden\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/s);
+  assert.match(shadowCss, /\.studio-admin\[data-sidebar-variant="sidebar"\]\s*\{[^}]*gap:\s*0/s);
+  assert.match(shadowCss, /\.studio-admin\[data-sidebar-variant="floating"\]\s*\{[^}]*gap:\s*1rem/s);
+  assert.match(shadowCss, /\.studio-admin\[data-content-layout="full-width"\] \.dashboard-content\s*\{[^}]*width:\s*100%/s);
+  assert.match(shadowCss, /\.studio-admin\[data-navbar-style="scroll"\] \.studio-main\s*\{[^}]*overflow:\s*auto/s);
   assert.match(shadowCss, /\.studio-sidebar\s*\{[^}]*height:\s*calc\(100vh - 1\.5rem\)/s);
   assert.match(shadowCss, /\.studio-main\s*\{[^}]*height:\s*calc\(100vh - 1\.5rem\)/s);
   assert.match(shadowCss, /\.dashboard-content\s*\{[^}]*overflow:\s*auto/s);
@@ -218,6 +238,13 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /--sidebar:\s*color-mix/);
   assert.match(shadowCss, /border-radius:\s*0\.875rem/);
   assert.match(shadowCss, /@media \(max-width: 860px\)/);
+  assert.match(shadowCss, /height:\s*100dvh/);
+  assert.match(shadowCss, /\.preferences-popover\s*\{[^}]*position:\s*fixed/s);
+  assert.match(shadowCss, /\.studio-admin\.is-mobile-open \.sidebar-brand span,\s*\.studio-admin\.is-mobile-open \.quick-create span,\s*\.studio-admin\.is-mobile-open \.sidebar-menu-button span:not\(\.sidebar-badge\)\s*\{[^}]*display:\s*inline/s);
+  assert.match(shadowCss, /\.studio-admin\.is-mobile-open \.quick-create\s*\{[^}]*width:\s*100%/s);
+  assert.match(shadowCss, /@media \(max-width: 520px\)/);
+  assert.match(shadowCss, /\.metric-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/s);
+  assert.match(shadowCss, /\.route-actions,\s*\.calendar-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
 
   for (const expected of [
     "AI setup",
