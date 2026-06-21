@@ -52,11 +52,31 @@ a {
   padding: 0.75rem;
   background: var(--sidebar);
   color: var(--foreground);
-  font-family: var(--font-sans, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 14px;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+.studio-admin[data-studio-font="source"] {
+  font-family: var(--font-reading-source), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.studio-admin[data-studio-font="plex"] {
+  font-family: var(--font-reading-plex), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.studio-admin[data-studio-font="atkinson"] {
+  font-family: var(--font-reading-atkinson), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.studio-admin[data-studio-font="lora"] {
+  font-family: var(--font-reading-lora), Georgia, "Times New Roman", serif;
+}
+
+.studio-admin[data-studio-font="be-vietnam"] {
+  font-family: var(--font-reading-be-vietnam), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .studio-admin.is-dark {

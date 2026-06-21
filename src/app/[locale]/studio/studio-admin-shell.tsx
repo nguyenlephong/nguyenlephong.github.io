@@ -244,9 +244,10 @@ type StudioNavGroup = {
 
 const DEFAULT_ROUTE: StudioRouteId = "ai-agent-setup";
 const resumePath = "/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf";
-const THEME_STORAGE_KEY = "theme_preference";
-const FONT_STORAGE_KEY = "reading_font_preference";
+const STUDIO_THEME_STORAGE_KEY = "studio_theme_preference";
+const STUDIO_FONT_STORAGE_KEY = "studio_font_preference";
 const LAYOUT_STORAGE_KEY = "studio_layout_preference";
+const STUDIO_LAYOUT_PREFERENCE_VERSION = 2;
 
 type StudioThemeSetting = "light" | "dark" | "system";
 type StudioResolvedTheme = "light" | "dark";
@@ -300,11 +301,25 @@ const sidebarCollapsibleOptions: Array<{ value: StudioSidebarCollapsible; label:
 ];
 
 const defaultLayoutPreference: StudioLayoutPreference = {
+  contentLayout: "full-width",
+  navbarStyle: "sticky",
+  sidebarVariant: "sidebar",
+  sidebarCollapsible: "icon"
+};
+
+const legacyLayoutPreference: StudioLayoutPreference = {
   contentLayout: "centered",
   navbarStyle: "sticky",
   sidebarVariant: "inset",
   sidebarCollapsible: "icon"
 };
+
+function isSameLayoutPreference(a: StudioLayoutPreference, b: StudioLayoutPreference): boolean {
+  return a.contentLayout === b.contentLayout
+    && a.navbarStyle === b.navbarStyle
+    && a.sidebarVariant === b.sidebarVariant
+    && a.sidebarCollapsible === b.sidebarCollapsible;
+}
 
 function isStudioThemeSetting(value: unknown): value is StudioThemeSetting {
   return value === "light" || value === "dark" || value === "system";
@@ -342,7 +357,7 @@ function readInitialThemeSetting(): StudioThemeSetting {
   if (typeof window === "undefined") return "system";
 
   try {
-    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    const stored = localStorage.getItem(STUDIO_THEME_STORAGE_KEY);
     const parsed = stored ? JSON.parse(stored) as { theme_setting?: unknown } : null;
     if (isStudioThemeSetting(parsed?.theme_setting)) return parsed.theme_setting;
   } catch {
@@ -356,14 +371,13 @@ function readInitialFont(): StudioFont {
   if (typeof window === "undefined") return "inter";
 
   try {
-    const stored = localStorage.getItem(FONT_STORAGE_KEY);
+    const stored = localStorage.getItem(STUDIO_FONT_STORAGE_KEY);
     if (isStudioFont(stored)) return stored;
   } catch {
     // ignore unavailable storage
   }
 
-  const rootFont = document.documentElement.getAttribute("data-reading-font");
-  return isStudioFont(rootFont) ? rootFont : "inter";
+  return "inter";
 }
 
 function readInitialLayoutPreference(): StudioLayoutPreference {
@@ -371,13 +385,21 @@ function readInitialLayoutPreference(): StudioLayoutPreference {
 
   try {
     const stored = localStorage.getItem(LAYOUT_STORAGE_KEY);
-    const parsed = stored ? JSON.parse(stored) as Partial<Record<keyof StudioLayoutPreference, unknown>> : null;
-    return {
+    const parsed = stored
+      ? JSON.parse(stored) as Partial<Record<keyof StudioLayoutPreference, unknown>> & { version?: unknown }
+      : null;
+    const restoredPreference = {
       contentLayout: isStudioContentLayout(parsed?.contentLayout) ? parsed.contentLayout : defaultLayoutPreference.contentLayout,
       navbarStyle: isStudioNavbarStyle(parsed?.navbarStyle) ? parsed.navbarStyle : defaultLayoutPreference.navbarStyle,
       sidebarVariant: isStudioSidebarVariant(parsed?.sidebarVariant) ? parsed.sidebarVariant : defaultLayoutPreference.sidebarVariant,
       sidebarCollapsible: isStudioSidebarCollapsible(parsed?.sidebarCollapsible) ? parsed.sidebarCollapsible : defaultLayoutPreference.sidebarCollapsible
     };
+
+    if (parsed?.version !== STUDIO_LAYOUT_PREFERENCE_VERSION && isSameLayoutPreference(restoredPreference, legacyLayoutPreference)) {
+      return defaultLayoutPreference;
+    }
+
+    return restoredPreference;
   } catch {
     return defaultLayoutPreference;
   }
@@ -387,7 +409,7 @@ function applyThemePreference(setting: StudioThemeSetting): StudioResolvedTheme 
   const resolved = resolveStudioTheme(setting);
   document.documentElement.setAttribute("data-theme", resolved);
   try {
-    localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify({ theme: resolved, theme_setting: setting }));
+    localStorage.setItem(STUDIO_THEME_STORAGE_KEY, JSON.stringify({ theme: resolved, theme_setting: setting }));
   } catch {
     // ignore unavailable storage
   }
@@ -395,9 +417,8 @@ function applyThemePreference(setting: StudioThemeSetting): StudioResolvedTheme 
 }
 
 function applyFontPreference(font: StudioFont): void {
-  document.documentElement.setAttribute("data-reading-font", font);
   try {
-    localStorage.setItem(FONT_STORAGE_KEY, font);
+    localStorage.setItem(STUDIO_FONT_STORAGE_KEY, font);
   } catch {
     // ignore unavailable storage
   }
@@ -405,7 +426,7 @@ function applyFontPreference(font: StudioFont): void {
 
 function persistLayoutPreference(preference: StudioLayoutPreference): void {
   try {
-    localStorage.setItem(LAYOUT_STORAGE_KEY, JSON.stringify(preference));
+    localStorage.setItem(LAYOUT_STORAGE_KEY, JSON.stringify({ ...preference, version: STUDIO_LAYOUT_PREFERENCE_VERSION }));
   } catch {
     // ignore unavailable storage
   }
@@ -3052,6 +3073,14 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
     document.addEventListener("mousedown", onPointerDown);
     return () => document.removeEventListener("mousedown", onPointerDown);
   }, [preferencesOpen]);
+
+  useEffect(() => {
+    applyThemePreference(themeSetting);
+  }, [themeSetting]);
+
+  useEffect(() => {
+    applyFontPreference(studioFont);
+  }, [studioFont]);
 
   useEffect(() => {
     if (themeSetting !== "system") return undefined;
