@@ -984,6 +984,12 @@ a {
   gap: 0.5rem;
 }
 
+.route-heading .outline-button,
+.skill-reader-head .outline-button {
+  flex: 0 0 auto;
+  min-width: max-content;
+}
+
 .route-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
@@ -1801,6 +1807,7 @@ a {
 
 .skill-markdown-preview,
 .checklist-side-pane pre {
+  max-width: 100%;
   min-height: 0;
   overflow: auto;
   border: 1px solid var(--border);
@@ -3449,9 +3456,9 @@ tbody tr:hover {
   display: block;
 }
 
-@media (max-width: 1320px) {
+@media (max-width: 1480px) {
   .blog-roadmap-workbench.card {
-    grid-template-columns: 17rem minmax(0, 1fr);
+    grid-template-columns: minmax(15rem, 0.36fr) minmax(0, 1fr);
     height: auto;
     min-height: auto;
     overflow: visible;
@@ -3473,6 +3480,38 @@ tbody tr:hover {
     grid-column: 1 / -1;
     border-top: 1px solid var(--border);
     border-left: 0;
+  }
+}
+
+@media (max-width: 1480px) {
+  .skill-library-workbench.card,
+  .checklist-workbench.card {
+    grid-template-columns: minmax(15rem, 0.34fr) minmax(0, 1fr);
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .skill-index-pane,
+  .skill-reader-pane,
+  .skill-side-pane,
+  .checklist-index-pane,
+  .checklist-reader-pane,
+  .checklist-side-pane {
+    overflow: visible;
+  }
+
+  .skill-side-pane,
+  .checklist-side-pane {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--border);
+    border-left: 0;
+  }
+
+  .skill-markdown-preview {
+    max-height: 38rem;
   }
 }
 
@@ -3500,7 +3539,7 @@ tbody tr:hover {
 
   .skill-library-workbench.card,
   .checklist-workbench.card {
-    grid-template-columns: minmax(15rem, 0.42fr) minmax(0, 1fr);
+    grid-template-columns: minmax(14rem, 0.38fr) minmax(0, 1fr);
     height: auto;
     min-height: auto;
     overflow: visible;
@@ -3517,7 +3556,9 @@ tbody tr:hover {
 
   .skill-side-pane,
   .checklist-side-pane {
+    display: grid;
     grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     border-top: 1px solid var(--border);
     border-left: 0;
   }
@@ -3568,6 +3609,7 @@ tbody tr:hover {
   .skill-side-pane,
   .checklist-side-pane {
     grid-column: auto;
+    grid-template-columns: 1fr;
     border-left: 0;
     border-top: 1px solid var(--border);
   }
@@ -3886,6 +3928,7 @@ tbody tr:hover {
   .ai-workflow-rail,
   .skill-side-pane,
   .checklist-side-pane {
+    grid-template-columns: 1fr;
     border-left: 0;
     border-top: 1px solid var(--border);
   }
@@ -3960,6 +4003,14 @@ tbody tr:hover {
 
   .skill-reader-head h2 {
     font-size: 1.2rem;
+  }
+
+  .route-heading .outline-button,
+  .skill-reader-head .outline-button {
+    width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+    white-space: normal;
   }
 
   .skill-list-button,

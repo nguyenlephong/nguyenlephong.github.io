@@ -29,6 +29,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     workspace,
     adminShell,
     data,
+    localizedContent,
     shadowCss,
     kitIndex,
     shadowIsland,
@@ -48,6 +49,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8"),
     readFile("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8"),
     readFile("src/app/[locale]/studio/studio.data.ts", "utf8"),
+    readFile("src/app/[locale]/studio/studio.localized-content.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio.shadow-styles.ts", "utf8"),
     readFile("src/components/studio-kit/index.ts", "utf8"),
     readFile("src/components/studio-kit/shadow-island.tsx", "utf8"),
@@ -205,7 +207,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studioAiSkills/);
   assert.match(adminShell, /studioWorkflowChecklists/);
   assert.match(adminShell, /blogRoadmapTopics/);
-  assert.match(adminShell, /blogRoadmapTicketChecklist/);
+  assert.match(adminShell, /getLocalizedStudioAiSkills/);
+  assert.match(adminShell, /getLocalizedStudioWorkflowChecklists/);
+  assert.match(adminShell, /getLocalizedBlogRoadmapTopics/);
+  assert.match(adminShell, /getLocalizedBlogRoadmapTicketChecklist/);
   assert.match(adminShell, /aiWorkflowSteps/);
   assert.match(adminShell, /Attachments \(\{selectedMail\.attachments\.length\}\)/);
   assert.match(adminShell, /Internal note/);
@@ -301,8 +306,11 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card\s*\{[^}]*height:\s*clamp/s);
   assert.match(shadowCss, /\.blog-roadmap-workbench\.card\s*\{[^}]*grid-template-columns:\s*18rem minmax\(0,\s*1fr\) 20rem/s);
   assert.match(shadowCss, /\.roadmap-day-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s);
-  assert.match(shadowCss, /@media \(max-width: 1320px\)\s*\{[\s\S]*?\.blog-roadmap-workbench\.card\s*\{[^}]*height:\s*auto;[^}]*overflow:\s*visible/s);
+  assert.match(shadowCss, /@media \(max-width: 1480px\)\s*\{[\s\S]*?\.blog-roadmap-workbench\.card\s*\{[^}]*height:\s*auto;[^}]*overflow:\s*visible/s);
+  assert.match(shadowCss, /@media \(max-width: 1480px\)\s*\{[\s\S]*?\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card\s*\{[^}]*grid-template-columns:\s*minmax\(15rem,\s*0\.34fr\) minmax\(0,\s*1fr\)/s);
+  assert.match(shadowCss, /\.route-heading \.outline-button,[\s\S]*?\.skill-reader-head \.outline-button\s*\{[^}]*min-width:\s*max-content/s);
   assert.match(shadowCss, /@media \(max-width: 1080px\)/);
+  assert.match(shadowCss, /@media \(max-width: 1080px\)\s*\{[\s\S]*?\.skill-side-pane,[\s\S]*?\.checklist-side-pane\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.match(shadowCss, /\.studio-admin\.is-mobile-open \.studio-sidebar\s*\{[^}]*width:\s*min\(22rem,\s*calc\(100vw - 1rem\)\)/s);
   assert.match(shadowCss, /@media \(max-width: 640px\)\s*\{[\s\S]*?\.metric-grid,\s*\.route-actions/s);
   assert.match(shadowCss, /--sidebar:\s*color-mix/);
@@ -393,6 +401,24 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "Create one focused Multica ticket per roadmap article."
   ]) {
     assert.match(data, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+
+  for (const expected of [
+    "getLocalizedStudioAiSkills",
+    "getLocalizedStudioWorkflowChecklists",
+    "getLocalizedBlogRoadmapTopics",
+    "getLocalizedBlogRoadmapTicketChecklist",
+    "Review thay đổi theo correctness",
+    "Kiến trúc frontend",
+    "Viết blog content",
+    "Từ ticket đến commit đầu tiên",
+    "Checklist delivery engineering",
+    "Từ prompt sang workflow",
+    "Cách review code do AI viết",
+    "Xác nhận locale đang chọn",
+    "isVietnameseLocale"
+  ]) {
+    assert.match(localizedContent, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
 
   assert.match(enMessages, /"studio":\s*"Studio"/);
