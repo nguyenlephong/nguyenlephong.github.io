@@ -1,5 +1,8 @@
+'use client'
+
 import { Link } from '@/i18n/navigation'
 import type { BlogPostMeta } from '@/lib/blog/types'
+import { track } from '@/lib/analytics'
 
 export interface BlogRelatedPostItem {
   post: BlogPostMeta
@@ -11,12 +14,16 @@ interface BlogRelatedPostsProps {
   heading: string
   intro: string
   items: BlogRelatedPostItem[]
+  sourceCategory: string
+  sourceSlug: string
 }
 
 export default function BlogRelatedPosts({
   heading,
   intro,
   items,
+  sourceCategory,
+  sourceSlug,
 }: BlogRelatedPostsProps) {
   if (items.length === 0) return null
 
@@ -34,6 +41,15 @@ export default function BlogRelatedPosts({
             key={post.slug}
             href={`/blog/${post.category}/${post.slug}`}
             className="blog-related__card"
+            onClick={() => {
+              track('blog_related_click', {
+                content_surface: 'blog',
+                source_category: sourceCategory,
+                source_slug: sourceSlug,
+                target_category: post.category,
+                target_slug: post.slug,
+              })
+            }}
           >
             <span className="blog-related__body">
               <span className="blog-related__kicker">{categoryTitle}</span>

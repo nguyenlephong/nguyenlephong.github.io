@@ -5,6 +5,7 @@ import type { CSSProperties, MouseEvent } from "react";
 import Image from "next/image";
 import type { IconType } from "react-icons";
 import { APP_ROUTE } from "@/app/app.const";
+import { track } from "@/lib/analytics";
 import { defaultStudioNoteId, studioFolders, studioNotes } from "./studio.data";
 import type { StudioNote } from "./studio.data";
 import {
@@ -265,6 +266,7 @@ type StudioContentLayout = "centered" | "full-width";
 type StudioNavbarStyle = "sticky" | "scroll";
 type StudioSidebarVariant = "inset" | "sidebar" | "floating";
 type StudioSidebarCollapsible = "icon" | "offcanvas";
+type StudioRouteActivationSource = "brand" | "sidebar" | "command" | "browser_history" | "unknown";
 
 type StudioLayoutPreference = {
   contentLayout: StudioContentLayout;
@@ -1495,7 +1497,7 @@ function SidebarGroup({
   activeRoute: StudioRouteId;
   expanded: Record<string, boolean>;
   collapsed: boolean;
-  onActivate: (routeId: StudioRouteId) => void;
+  onActivate: (routeId: StudioRouteId, source?: StudioRouteActivationSource) => void;
   onToggle: (id: string) => void;
 }) {
   return (
@@ -1529,7 +1531,7 @@ function SidebarGroup({
                         className={`sidebar-submenu-link${subItem.routeId === activeRoute ? " is-active" : ""}`}
                         onClick={(event) => {
                           event.preventDefault();
-                          onActivate(subItem.routeId ?? DEFAULT_ROUTE);
+                          onActivate(subItem.routeId ?? DEFAULT_ROUTE, "sidebar");
                         }}
                       >
                         {subItem.title}
@@ -1559,7 +1561,7 @@ function SidebarGroup({
               aria-current={active ? "page" : undefined}
               onClick={(event) => {
                 event.preventDefault();
-                onActivate(item.routeId ?? DEFAULT_ROUTE);
+                onActivate(item.routeId ?? DEFAULT_ROUTE, "sidebar");
               }}
             >
               {Icon ? <Icon aria-hidden="true" /> : <span className="sidebar-fallback" />}
@@ -2284,7 +2286,18 @@ function AiAgentSetupPage({ route, locale }: { route: StudioRoute; locale: strin
           {primaryProfileActions.map((item) => {
             const Icon = item.icon;
             return (
-              <a key={item.id} className="outline-button" href={profileHref(locale, item.href)}>
+              <a
+                key={item.id}
+                className="outline-button"
+                href={profileHref(locale, item.href)}
+                onClick={() => {
+                  track("studio_profile_nav_click", {
+                    target: item.id,
+                    source: "route_actions",
+                    external: Boolean(item.external)
+                  });
+                }}
+              >
                 <Icon aria-hidden="true" />
                 {item.label}
               </a>
@@ -2822,7 +2835,7 @@ function CommandDialog({
   activeRoute: StudioRouteId;
   onQuery: (value: string) => void;
   onClose: () => void;
-  onActivate: (routeId: StudioRouteId) => void;
+  onActivate: (routeId: StudioRouteId, source?: StudioRouteActivationSource) => void;
 }) {
   const results = useMemo(() => {
     const normalized = query.trim().toLowerCase();
@@ -2855,7 +2868,12 @@ function CommandDialog({
                 className={route.id === activeRoute ? "is-active" : ""}
                 onClick={(event) => {
                   event.preventDefault();
-                  onActivate(route.id);
+                  track("studio_command_result_click", {
+                    route_id: route.id,
+                    route_kind: route.kind,
+                    query_length: query.trim().length
+                  });
+                  onActivate(route.id, "command");
                   onClose();
                 }}
               >
@@ -2873,7 +2891,14 @@ function CommandDialog({
                 href={profileHref(locale, item.href)}
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noreferrer" : undefined}
-                onClick={onClose}
+                onClick={() => {
+                  track("studio_profile_nav_click", {
+                    target: item.id,
+                    source: "command_palette",
+                    external: Boolean(item.external)
+                  });
+                  onClose();
+                }}
               >
                 <Icon aria-hidden="true" />
                 <span><strong>{item.label}</strong><small>{item.detail}</small></span>
@@ -3080,7 +3105,20 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
   const route = routeDefinitions[activeRoute];
 
   useEffect(() => {
-    const syncRoute = () => setActiveRoute(normalizeHash(window.location.hash));
+    const syncRoute = () => {
+      const nextRoute = normalizeHash(window.location.hash);
+      setActiveRoute((currentRoute) => {
+        if (currentRoute !== nextRoute) {
+          track("studio_route_open", {
+            route_id: nextRoute,
+            route_kind: routeDefinitions[nextRoute].kind,
+            previous_route: currentRoute,
+            source: "browser_history"
+          });
+        }
+        return nextRoute;
+      });
+    };
     window.addEventListener("hashchange", syncRoute);
     window.addEventListener("popstate", syncRoute);
     return () => {
@@ -3093,6 +3131,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
     const onKeyDown = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "j") {
         event.preventDefault();
+        track("studio_command_open", { source: "keyboard", active_route: activeRoute });
         setSearchOpen(true);
       }
       if (event.key === "Escape") {
@@ -3105,7 +3144,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+  }, [activeRoute]);
 
   useEffect(() => {
     if (!preferencesOpen) return undefined;
@@ -3142,7 +3181,13 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
     return () => query.removeEventListener("change", onSystemThemeChange);
   }, [themeSetting]);
 
-  const activateRoute = useCallback((routeId: StudioRouteId) => {
+  const activateRoute = useCallback((routeId: StudioRouteId, source: StudioRouteActivationSource = "unknown") => {
+    track("studio_route_open", {
+      route_id: routeId,
+      route_kind: routeDefinitions[routeId].kind,
+      previous_route: activeRoute,
+      source
+    });
     setActiveRoute(routeId);
     setMobileSidebarOpen(false);
     setPreferencesOpen(false);
@@ -3151,56 +3196,96 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
     if (window.location.hash !== nextHash) {
       window.history.pushState(null, "", nextHash);
     }
-  }, []);
+  }, [activeRoute]);
 
   const handleBrandClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    activateRoute(DEFAULT_ROUTE);
+    activateRoute(DEFAULT_ROUTE, "brand");
   };
 
   const toggleSidebar = () => {
     if (window.matchMedia("(max-width: 860px)").matches) {
+      track("studio_sidebar_toggle", {
+        mode: "mobile",
+        open_next: !mobileSidebarOpen,
+        collapsible: layoutPreference.sidebarCollapsible
+      });
       setMobileSidebarOpen((value) => !value);
       return;
     }
 
     if (layoutPreference.sidebarCollapsible === "offcanvas") {
+      track("studio_sidebar_toggle", {
+        mode: "desktop_offcanvas",
+        open_next: !desktopSidebarOpen,
+        collapsible: layoutPreference.sidebarCollapsible
+      });
       setDesktopSidebarOpen((value) => !value);
       return;
     }
 
+    track("studio_sidebar_toggle", {
+      mode: "desktop_icon",
+      collapsed_next: !sidebarCollapsed,
+      collapsible: layoutPreference.sidebarCollapsible
+    });
     setSidebarCollapsed((value) => !value);
   };
 
   const handleThemeChange = useCallback((setting: StudioThemeSetting) => {
+    track("studio_preference_change", {
+      preference: "theme",
+      from: themeSetting,
+      to: setting,
+      resolved_to: resolveStudioTheme(setting)
+    });
     setThemeSetting(setting);
     setResolvedTheme(applyThemePreference(setting));
-  }, []);
+  }, [themeSetting]);
 
   const handleFontChange = useCallback((font: StudioFont) => {
+    track("studio_preference_change", {
+      preference: "font",
+      from: studioFont,
+      to: font
+    });
     setStudioFont(font);
     applyFontPreference(font);
-  }, []);
+  }, [studioFont]);
 
   const handleLayoutChange = useCallback((preference: Partial<StudioLayoutPreference>) => {
-    setLayoutPreference((current) => {
-      const next = { ...current, ...preference };
-      persistLayoutPreference(next);
-      return next;
-    });
+    const next = { ...layoutPreference, ...preference };
+    (Object.entries(preference) as Array<[keyof StudioLayoutPreference, StudioLayoutPreference[keyof StudioLayoutPreference]]>)
+      .forEach(([key, value]) => {
+        if (layoutPreference[key] === value) return;
+        track("studio_preference_change", {
+          preference: key,
+          from: layoutPreference[key],
+          to: value
+        });
+      });
+
+    setLayoutPreference(next);
+    persistLayoutPreference(next);
 
     if (preference.sidebarCollapsible) {
       setSidebarCollapsed(false);
       setDesktopSidebarOpen(true);
     }
-  }, []);
+  }, [layoutPreference]);
 
   const handleRestoreLayout = useCallback(() => {
+    track("studio_preference_restore", {
+      previous_content_layout: layoutPreference.contentLayout,
+      previous_navbar_style: layoutPreference.navbarStyle,
+      previous_sidebar_variant: layoutPreference.sidebarVariant,
+      previous_sidebar_collapsible: layoutPreference.sidebarCollapsible
+    });
     setLayoutPreference(defaultLayoutPreference);
     persistLayoutPreference(defaultLayoutPreference);
     setSidebarCollapsed(false);
     setDesktopSidebarOpen(true);
-  }, []);
+  }, [layoutPreference]);
 
   const isIconCollapsed = layoutPreference.sidebarCollapsible === "icon" && sidebarCollapsed;
   const isSidebarHidden = layoutPreference.sidebarCollapsible === "offcanvas" && !desktopSidebarOpen;
@@ -3223,13 +3308,32 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
             <Image src="/icon.png" alt="" width={28} height={28} />
             <span>Studio</span>
           </a>
-          <button className="sidebar-close" type="button" onClick={() => setMobileSidebarOpen(false)} aria-label="Close navigation">
+          <button
+            className="sidebar-close"
+            type="button"
+            onClick={() => {
+              track("studio_sidebar_toggle", {
+                mode: "mobile_close_button",
+                open_next: false,
+                collapsible: layoutPreference.sidebarCollapsible
+              });
+              setMobileSidebarOpen(false);
+            }}
+            aria-label="Close navigation"
+          >
             <LuX aria-hidden="true" />
           </button>
         </div>
 
         <div className="sidebar-create">
-          <button type="button" className="quick-create" onClick={() => setSearchOpen(true)}>
+          <button
+            type="button"
+            className="quick-create"
+            onClick={() => {
+              track("studio_command_open", { source: "sidebar_quick_search", active_route: activeRoute });
+              setSearchOpen(true);
+            }}
+          >
             <LuSearch aria-hidden="true" />
             <span>Find setup note</span>
           </button>
@@ -3263,6 +3367,13 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
                       href={profileHref(locale, item.href)}
                       target={item.external ? "_blank" : undefined}
                       rel={item.external ? "noreferrer" : undefined}
+                      onClick={() => {
+                        track("studio_profile_nav_click", {
+                          target: item.id,
+                          source: "sidebar_profile_grid",
+                          external: Boolean(item.external)
+                        });
+                      }}
                     >
                       <Icon aria-hidden="true" />
                       <span>{item.label}</span>
@@ -3273,7 +3384,17 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
             </section>
           )}
 
-          <a className="user-card" href={profileHref(locale, APP_ROUTE.HOME)}>
+          <a
+            className="user-card"
+            href={profileHref(locale, APP_ROUTE.HOME)}
+            onClick={() => {
+              track("studio_profile_nav_click", {
+                target: "home",
+                source: "user_card",
+                external: false
+              });
+            }}
+          >
             <span className="user-avatar">N</span>
             <span>
               <strong>Nguyen Le Phong</strong>
@@ -3284,7 +3405,21 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
         </div>
       </aside>
 
-      {mobileSidebarOpen && <button className="sidebar-scrim" type="button" aria-label="Close navigation" onClick={() => setMobileSidebarOpen(false)} />}
+      {mobileSidebarOpen && (
+        <button
+          className="sidebar-scrim"
+          type="button"
+          aria-label="Close navigation"
+          onClick={() => {
+            track("studio_sidebar_toggle", {
+              mode: "mobile_scrim",
+              open_next: false,
+              collapsible: layoutPreference.sidebarCollapsible
+            });
+            setMobileSidebarOpen(false);
+          }}
+        />
+      )}
 
       <main className="studio-main">
         <header className="studio-topbar">
@@ -3293,7 +3428,14 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
               {mobileSidebarOpen ? <LuX aria-hidden="true" /> : <LuPanelLeft aria-hidden="true" />}
             </button>
             <span className="topbar-separator" aria-hidden="true" />
-            <button type="button" className="search-command" onClick={() => setSearchOpen(true)}>
+            <button
+              type="button"
+              className="search-command"
+              onClick={() => {
+                track("studio_command_open", { source: "topbar", active_route: activeRoute });
+                setSearchOpen(true);
+              }}
+            >
               <LuSearch aria-hidden="true" />
               <span>Search</span>
               <kbd>Cmd J</kbd>
@@ -3308,6 +3450,10 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
                 aria-label="Open Studio preferences"
                 aria-expanded={preferencesOpen}
                 onClick={() => {
+                  track("studio_preferences_panel_toggle", {
+                    open_next: !preferencesOpen,
+                    active_route: activeRoute
+                  });
                   setPreferencesOpen((value) => !value);
                   setAccountOpen(false);
                 }}
@@ -3333,6 +3479,13 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
               target="_blank"
               rel="noreferrer"
               aria-label="Open GitHub profile"
+              onClick={() => {
+                track("studio_profile_nav_click", {
+                  target: "github",
+                  source: "topbar",
+                  external: true
+                });
+              }}
             >
               <LuGithub aria-hidden="true" />
             </a>
@@ -3360,7 +3513,14 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
                         href={profileHref(locale, item.href)}
                         target={item.external ? "_blank" : undefined}
                         rel={item.external ? "noreferrer" : undefined}
-                        onClick={() => setAccountOpen(false)}
+                        onClick={() => {
+                          track("studio_profile_nav_click", {
+                            target: item.id,
+                            source: "account_menu",
+                            external: Boolean(item.external)
+                          });
+                          setAccountOpen(false);
+                        }}
                       >
                         <Icon aria-hidden="true" />
                         <span>{item.label}</span>

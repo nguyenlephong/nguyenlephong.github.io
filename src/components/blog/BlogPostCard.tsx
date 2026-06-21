@@ -1,5 +1,8 @@
+'use client'
+
 import { LuEye } from 'react-icons/lu'
 import { Link } from '@/i18n/navigation'
+import { track } from '@/lib/analytics'
 import type { BlogAccent, BlogPostMeta } from '@/lib/blog/types'
 import { formatCount } from '@/lib/firebase/postStats'
 
@@ -17,6 +20,8 @@ interface BlogPostCardProps {
   viewCount?: number
   /** Translated "views" label */
   viewsLabel?: string
+  /** Listing surface that produced this card click. */
+  source?: string
 }
 
 function formatDate(iso: string, locale: string): string {
@@ -37,12 +42,21 @@ export default function BlogPostCard({
   readingLabel,
   viewCount,
   viewsLabel,
+  source = 'blog_list',
 }: BlogPostCardProps) {
   return (
     <article className={`blog-card blog-card--${accent}`}>
       <Link
         href={`/blog/${post.category}/${post.slug}`}
         className="blog-card__link"
+        onClick={() => {
+          track('blog_card_click', {
+            content_surface: 'blog',
+            content_category: post.category,
+            content_slug: post.slug,
+            source,
+          })
+        }}
       >
         <div className="blog-card__body">
           <span className="blog-card__kicker">{categoryTitle}</span>

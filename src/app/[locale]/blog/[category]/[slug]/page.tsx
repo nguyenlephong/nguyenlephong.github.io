@@ -248,12 +248,16 @@ export default async function BlogPostPage({ params }: Props) {
           category={category}
           slug={slug}
           readingMinutes={post.readingMinutes}
+          surface="blog"
         />
         <div className="blog-article__main">
           <div className="blog-article__reader">
             <BlogShareDock
               url={canonical}
               title={post.title}
+              surface="blog"
+              category={category}
+              slug={slug}
               labels={{
                 share: t('engagement.share'),
                 copyLink: t('engagement.copyLink'),
@@ -299,6 +303,9 @@ export default async function BlogPostPage({ params }: Props) {
 
               <BlogReactions
                 prompt={t('engagement.reactionsPrompt')}
+                surface="blog"
+                category={category}
+                slug={slug}
                 reactionLabels={{
                   like: t('engagement.reactions.like'),
                   love: t('engagement.reactions.love'),
@@ -332,6 +339,8 @@ export default async function BlogPostPage({ params }: Props) {
             heading={t('relatedHeading')}
             intro={t('relatedIntro')}
             items={relatedItems}
+            sourceCategory={category}
+            sourceSlug={slug}
           />
 
           {series && (series.prev || series.next) && (
@@ -380,7 +389,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         <aside className="blog-article__toc">
-          <BlogToc label={t('onThisPage')} />
+          <BlogToc label={t('onThisPage')} surface="blog" />
         </aside>
       </EngagementProvider>
     </main>

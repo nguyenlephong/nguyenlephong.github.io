@@ -7,12 +7,16 @@ import {
   LuPartyPopper,
 } from 'react-icons/lu'
 import type { IconType } from 'react-icons'
+import { track } from '@/lib/analytics'
 import { formatCount, type ReactionKey } from '@/lib/firebase/postStats'
 import { useEngagement } from './EngagementProvider'
 
 interface BlogReactionsProps {
   prompt: string
   reactionLabels: Record<ReactionKey, string>
+  surface?: 'blog' | 'notes'
+  category?: string
+  slug?: string
 }
 
 const REACTIONS: { key: ReactionKey; Icon: IconType }[] = [
@@ -26,6 +30,9 @@ const REACTIONS: { key: ReactionKey; Icon: IconType }[] = [
 export default function BlogReactions({
   prompt,
   reactionLabels,
+  surface = 'blog',
+  category,
+  slug,
 }: BlogReactionsProps) {
   const engagement = useEngagement()
   if (!engagement) return null
@@ -48,7 +55,16 @@ export default function BlogReactions({
               aria-pressed={active}
               aria-label={reactionLabels[key]}
               title={reactionLabels[key]}
-              onClick={() => react(key)}
+              onClick={() => {
+                react(key)
+                track(`${surface}_reaction`, {
+                  content_surface: surface,
+                  content_category: category ?? null,
+                  content_slug: slug ?? null,
+                  reaction: key,
+                  active_before_click: active,
+                })
+              }}
             >
               <Icon aria-hidden="true" className="blog-react__icon" />
               <span className="blog-react__count">

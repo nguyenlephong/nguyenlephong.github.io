@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { LuShare2, LuLink, LuCheck, LuX } from 'react-icons/lu'
 import { FaXTwitter, FaFacebookF, FaLinkedinIn } from 'react-icons/fa6'
 import type { IconType } from 'react-icons'
+import { track } from '@/lib/analytics'
 import { useEngagement } from './EngagementProvider'
 
 interface ShareLabels {
@@ -17,6 +18,9 @@ interface BlogShareDockProps {
   url: string
   title: string
   labels: ShareLabels
+  surface?: 'blog' | 'notes'
+  category?: string
+  slug?: string
 }
 
 /**
@@ -25,7 +29,14 @@ interface BlogShareDockProps {
  *   • <1280px — a floating action button (bottom-right) that toggles a popover.
  * Reveals itself only after the reader has scrolled past the header.
  */
-export default function BlogShareDock({ url, title, labels }: BlogShareDockProps) {
+export default function BlogShareDock({
+  url,
+  title,
+  labels,
+  surface = 'blog',
+  category,
+  slug,
+}: BlogShareDockProps) {
   const engagement = useEngagement()
   const [visible, setVisible] = useState(false)
   const [open, setOpen] = useState(false)
@@ -56,6 +67,14 @@ export default function BlogShareDock({ url, title, labels }: BlogShareDockProps
   }, [open])
 
   const record = () => engagement?.recordShare()
+  const trackShare = (method: string) => {
+    track(`${surface}_share`, {
+      content_surface: surface,
+      content_category: category ?? null,
+      content_slug: slug ?? null,
+      method,
+    })
+  }
 
   const encodedUrl = encodeURIComponent(url)
   const encodedTitle = encodeURIComponent(title)
@@ -85,6 +104,7 @@ export default function BlogShareDock({ url, title, labels }: BlogShareDockProps
       await navigator.clipboard.writeText(url)
       setCopied(true)
       record()
+      trackShare('copy')
       window.setTimeout(() => setCopied(false), 2000)
     } catch {
       /* ignore */
@@ -100,6 +120,7 @@ export default function BlogShareDock({ url, title, labels }: BlogShareDockProps
       try {
         await navigator.share({ title, url })
         record()
+        trackShare('native')
       } catch {
         /* cancelled */
       }
@@ -133,6 +154,7 @@ export default function BlogShareDock({ url, title, labels }: BlogShareDockProps
             title={label}
             onClick={() => {
               record()
+              trackShare(key)
               setOpen(false)
             }}
           >

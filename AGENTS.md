@@ -4,6 +4,15 @@ When writing or editing public-facing content, blog posts, notes, book reflectio
 
 Preserve the existing data model, locale behavior, SEO paths, and engagement/tracking behavior unless the user explicitly asks to change them.
 
+## Analytics And Event Tracking
+
+- Keep PostHog initialization current with the official JavaScript/Next.js SDK guidance while preserving privacy choices such as disabled autocapture/session recording and Do Not Track support unless the user asks otherwise.
+- When adding or changing public routes, Studio routes, navigation links, CTAs, forms, command/search UIs, filters, pagination, share/reaction controls, reader tools, preferences, outbound links, or engagement surfaces, update `src/lib/analytics.ts` and add or adjust the relevant `track(...)`/`PageTracker` calls in the same change.
+- New public pages should include a surface-specific `PageTracker` event instead of relying only on PostHog automatic `$pageview`.
+- Studio changes must track meaningful workspace actions: route opens, command palette opens/results, profile navigation, preference changes/restores, and sidebar/layout controls.
+- Preserve existing event names when they are already used by dashboards; if a new taxonomy is needed, add the new event alongside the old one or document the migration in the PR.
+- Add or update tests that assert analytics wiring when a test already covers the touched surface.
+
 ## Git Workflow
 
 - Work from `dev` for normal changes and open pull requests into `main`, unless the user explicitly requests another branch.

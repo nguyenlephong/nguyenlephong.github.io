@@ -116,6 +116,7 @@ export default function NotesExplorer({
       labels={labels}
       paletteId="notes-command-palette"
       className="notes-explorer"
+      trackingSurface="notes"
       renderItem={(c) => (
         <NoteCard
           key={c.note.slug}
