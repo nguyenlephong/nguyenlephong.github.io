@@ -916,6 +916,139 @@ For each scenario, define:
 - Focus on evidence, not title-chasing.
 - Convert learning into visible artifacts.
 - Keep the plan flexible enough to preserve optionality.`
+  },
+  {
+    id: "engineering-decision-map",
+    category: "engineering",
+    title: "Engineering decision map",
+    summary: "Analyze a feature from business need through domain, contract, data, architecture, implementation, rollout, and operation.",
+    tags: ["Architecture", "Trade-off", "Production"],
+    markdown: `# Engineering Decision Map Skill
+
+Use this skill when a requirement arrives and I need to lead the technical direction before asking AI to code.
+
+## Seven-layer map
+1. Business need: user, outcome, priority, success metric, deadline.
+2. Domain / use case: entities, aggregate boundary, state transitions, invariants.
+3. API / contract / workflow: sync or async, idempotency, versioning, backward compatibility.
+4. Data model / consistency: schema, transaction boundary, index, migration, consistency model.
+5. Architecture / patterns: modular monolith, microservice, event-driven, CQRS, Event Sourcing, cache, resilience.
+6. Implementation / testing: PR slices, unit, integration, contract, E2E, load, migration, rollback tests.
+7. Rollout / observability / operation: feature flag, canary, dashboard, alert, runbook, rollback owner.
+
+## Prompt
+Act as a Staff Software Engineer.
+Given this requirement, analyze it through the seven-layer map.
+For each layer, list:
+- Key questions.
+- Risks.
+- Options.
+- Trade-offs.
+- What AI can implement.
+- What a human must decide.
+
+End with:
+- Recommended architecture direction.
+- Small PR sequence.
+- Verification plan.
+- Rollout and rollback plan.
+
+## Guardrails
+- Do not jump from requirement to code.
+- Do not hide data consistency or migration risk.
+- Do not recommend Event Sourcing, CQRS, microservices, or cache unless the problem justifies the cost.`
+  },
+  {
+    id: "staff-engineer-ai-review-pack",
+    category: "engineering",
+    title: "Staff engineer AI review pack",
+    summary: "Use AI as requirement analyst, architect, adversarial reviewer, test strategist, and production readiness reviewer.",
+    tags: ["Staff reflex", "Review", "AI workflow"],
+    markdown: `# Staff Engineer AI Review Pack Skill
+
+Use this skill to make AI review a requirement, design, PR, or rollout plan from multiple senior engineering angles.
+
+## 1. Requirement analyst
+Read this requirement and identify ambiguity, hidden assumptions, edge cases, missing acceptance criteria, and stakeholder questions.
+Group questions by business, product, data, API, security, reliability, rollout, and observability.
+
+## 2. Architect
+Propose 3 architecture options.
+Compare scalability, complexity, operational burden, consistency, cost, security, migration effort, rollback strategy, and long-term maintainability.
+
+## 3. Adversarial reviewer
+Challenge this design.
+Find race conditions, data consistency bugs, security risks, performance bottlenecks, hidden coupling, and production failure scenarios.
+
+## 4. Test strategist
+Generate a test matrix:
+- Unit
+- Integration
+- Contract
+- E2E
+- Load
+- Security
+- Migration
+- Rollback
+- Chaos or dependency failure
+
+## 5. Production readiness reviewer
+Review this feature for production readiness.
+Include observability, alerting, runbook, rollout, rollback, SLO impact, incident response, and customer impact checks.
+
+## Guardrails
+- Give AI the context, constraints, and quality bar.
+- Ask for critique before implementation.
+- Keep final architecture and production decisions with the human owner.`
+  },
+  {
+    id: "data-resilience-observability-review",
+    category: "engineering",
+    title: "Data, resilience, observability review",
+    summary: "Review a design for database correctness, indexing, consistency, dependency failure, cache behavior, and production signals.",
+    tags: ["Data", "Resilience", "Observability"],
+    markdown: `# Data, Resilience, Observability Review Skill
+
+Use this skill when a feature touches database design, external dependencies, cache, events, or production traffic.
+
+## Database review
+- Does the schema match the domain?
+- Are transaction boundaries clear?
+- What isolation level assumptions exist?
+- Does the query need a B-tree, composite, partial, expression, GIN, GiST, SP-GiST, or BRIN index?
+- Does EXPLAIN ANALYZE confirm the plan?
+- Can migration run online without dangerous locks?
+- Is backup/restore or rollback tested?
+
+## Consistency review
+- Is strong consistency required or is eventual consistency acceptable?
+- Is there a read-after-write issue?
+- Are duplicate events/messages possible?
+- Is idempotency required?
+- Is Saga, Outbox, Inbox, CDC, CQRS, or Event Sourcing justified?
+
+## Resilience review
+- Is there a timeout?
+- Is retry bounded with backoff and jitter?
+- Is the operation idempotent?
+- Is there a Circuit Breaker, Bulkhead, rate limit, fallback, or load shedding path?
+- What happens when the dependency is slow, down, or returns partial failure?
+
+## Observability review
+- Business metric.
+- Technical metric.
+- Logs without PII.
+- Trace with correlation ID.
+- Dashboard before rollout.
+- Alert based on user impact.
+- Runbook and rollback owner.
+
+## Output format
+- Blockers.
+- Design risks.
+- Suggested tests.
+- Monitoring plan.
+- Rollout guardrails.`
   }
 ];
 
@@ -958,6 +1091,264 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
           { id: "update-tests", label: "Add or update tests at the same boundary as the behavior change." },
           { id: "update-tracking", label: "Update PostHog tracking when adding navigation, CTA, filters, forms, preferences, or new routes." },
           { id: "checkpoint", label: "Checkpoint with status if scope or risk changed." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "ai-driven-engineering-foundation-roadmap",
+    title: "AI-driven engineering foundation roadmap",
+    summary: "A layered roadmap for building senior engineering judgment in the AI era.",
+    whenToUse: "Use as a daily study map before or after engineering work, especially when a task touches architecture, data, reliability, or rollout.",
+    tags: ["Engineering foundation", "Architecture", "Production"],
+    sections: [
+      {
+        id: "code-design",
+        title: "Layer 1: Code design foundation",
+        detail: "Build codebases that are easy to test, refactor, and guide AI through without breaking architecture.",
+        steps: [
+          { id: "principles", label: "Study SOLID, DRY, KISS, YAGNI, dependency direction, and refactoring patterns." },
+          { id: "architecture", label: "Practice Clean Architecture, Hexagonal Architecture, Onion Architecture, and Modular Monolith before jumping to microservices." },
+          { id: "ddd", label: "Learn DDD tactical patterns.", detail: "Entity, Value Object, Aggregate, Repository, Domain Service, and Application Service." },
+          { id: "patterns", label: "Build a pattern catalog by context.", detail: "Creational, structural, behavioral, enterprise, integration, resilience, and delivery patterns." },
+          { id: "tests", label: "Choose the right testing layer.", detail: "Unit, integration, contract, E2E, property-based, migration, and rollback tests." }
+        ]
+      },
+      {
+        id: "data-consistency",
+        title: "Layer 2: Data and consistency",
+        detail: "Most production pain comes from weak data models, unsafe migrations, slow queries, or hidden consistency assumptions.",
+        steps: [
+          { id: "modeling", label: "Study relational modeling, constraints, normalization, denormalization, multi-tenant data, soft delete, and temporal data." },
+          { id: "transactions", label: "Understand ACID, isolation levels, optimistic locks, pessimistic locks, deadlocks, and transaction boundaries." },
+          { id: "indexes", label: "Practice indexing with evidence.", detail: "B-tree, composite, covering, partial, expression, GIN, GiST, SP-GiST, BRIN, and EXPLAIN ANALYZE." },
+          { id: "migration", label: "Design data migration and rollback before code lands.", detail: "Backfill, online index, CDC, audit log, backup, restore, and compatibility." },
+          { id: "replication", label: "Learn replication and availability.", detail: "Primary-replica, async lag, read-after-write, failover, split brain, RPO, RTO, and disaster recovery." }
+        ]
+      },
+      {
+        id: "distributed-resilience",
+        title: "Layer 3: Distributed systems and resilience",
+        detail: "A dependency can fail without taking the whole system down if the design has clear failure behavior.",
+        steps: [
+          { id: "timeouts", label: "Set timeouts before retries." },
+          { id: "retry", label: "Use bounded retry with exponential backoff and jitter only when the operation is safe." },
+          { id: "circuit-breaker", label: "Learn Circuit Breaker states.", detail: "Closed, open, and half-open." },
+          { id: "bulkhead", label: "Use Bulkhead, rate limiting, throttling, backpressure, load shedding, fallback, and graceful degradation where needed." },
+          { id: "idempotency", label: "Design idempotency, deduplication, distributed lock, DLQ, poison message handling, and queue-based load leveling." }
+        ]
+      },
+      {
+        id: "events-cqrs",
+        title: "Layer 4: Event-driven architecture, CQRS, and Event Sourcing",
+        detail: "Use events when they match the domain and operational model, not because they sound advanced.",
+        steps: [
+          { id: "event-types", label: "Compare direct API call, queue, pub/sub, log stream, Event Sourcing, and CDC." },
+          { id: "event-sourcing", label: "Study Event Sourcing deeply.", detail: "Domain event, event store, aggregate stream, append-only log, projection, snapshot, replay, and event versioning." },
+          { id: "cqrs", label: "Understand CQRS flow.", detail: "Command, handler, aggregate, event, projection handler, read model, and query." },
+          { id: "outbox", label: "Use Transactional Outbox, Inbox, Idempotent Consumer, Saga, DLQ, schema versioning, and Anti-Corruption Layer when the problem needs them." },
+          { id: "avoid-overuse", label: "Avoid Event Sourcing for simple CRUD or teams that cannot operate event schemas and projections yet." }
+        ]
+      },
+      {
+        id: "performance-observability",
+        title: "Layer 5: Performance, cache, and production operation",
+        detail: "Performance and reliability need signals before rollout, not only fixes after users complain.",
+        steps: [
+          { id: "cache", label: "Study cache-aside, read-through, write-through, write-behind, TTL, eviction, stampede, hot keys, CDN, and materialized views." },
+          { id: "scale", label: "Practice pagination, batch processing, async jobs, load tests, and p50/p95/p99 latency measurement." },
+          { id: "otel", label: "Use OpenTelemetry concepts.", detail: "Metrics, logs, traces, correlation ID, distributed tracing, and spans across services." },
+          { id: "slo", label: "Learn SLI, SLO, SLA, error budget, RED metrics, USE metrics, alerting, runbooks, incidents, and postmortems." },
+          { id: "well-architected", label: "Review operational excellence, security, reliability, performance efficiency, cost, and sustainability." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "engineering-delivery-checklist",
+    title: "Engineering delivery checklist",
+    summary: "An eight-phase checklist from task intake to post-rollout review.",
+    whenToUse: "Use whenever a task might affect architecture, data, traffic, users, production operation, or team handoff.",
+    tags: ["Task", "Delivery", "Rollout"],
+    sections: [
+      {
+        id: "intake",
+        title: "Phase 1: Intake",
+        detail: "Understand the real problem before choosing a technical shape.",
+        steps: [
+          { id: "business", label: "Name the business or user problem and the success metric." },
+          { id: "scope", label: "Clarify scope, out-of-scope, deadline, priority, and affected users." },
+          { id: "constraints", label: "Check dependencies, security, privacy, legal, data migration, backward compatibility, and production traffic impact." },
+          { id: "questions", label: "Ask AI for clarification questions grouped by business, product, data, API, security, reliability, rollout, and observability." }
+        ]
+      },
+      {
+        id: "discovery",
+        title: "Phase 2: Discovery",
+        detail: "Map the current system before changing it.",
+        steps: [
+          { id: "flow", label: "Identify services, routes, jobs, APIs, events, data stores, owners, and existing patterns." },
+          { id: "history", label: "Check related incidents, bottlenecks, dashboards, logs, and legacy constraints." },
+          { id: "risk-register", label: "Ask AI for a dependency map, impacted components, integration points, risks, and missing information." }
+        ]
+      },
+      {
+        id: "design",
+        title: "Phase 3: Design",
+        detail: "Compare options and choose the simplest design that handles the real risk.",
+        steps: [
+          { id: "adr", label: "Create an ADR when the decision affects architecture, data, dependency, or rollout." },
+          { id: "options", label: "Compare at least three options by complexity, scalability, consistency, cost, migration, rollback, and maintainability." },
+          { id: "technical-decisions", label: "Decide sync API or async event, CRUD or CQRS or Event Sourcing, indexes, transaction boundary, cache, idempotency, retries, Circuit Breaker, and security model." }
+        ]
+      },
+      {
+        id: "implementation-plan",
+        title: "Phase 4: Implementation plan",
+        detail: "Turn the design into reviewable PRs.",
+        steps: [
+          { id: "slice", label: "Break work into backend, database, API contract, tests, observability, rollout, and documentation tasks." },
+          { id: "compatibility", label: "Plan migration, feature flag, backward-compatible API changes, monitoring, rollback, and owner review." },
+          { id: "test-plan", label: "Define unit, integration, contract, E2E, load, security, migration, and rollback checks." }
+        ]
+      },
+      {
+        id: "coding-review",
+        title: "Phase 5: Coding and review",
+        detail: "Keep implementation aligned with boundaries and production behavior.",
+        steps: [
+          { id: "boundaries", label: "Check architecture boundary, transaction boundary, validation, error handling, and ownership." },
+          { id: "side-effects", label: "Verify retry cannot create duplicate side effects and sensitive data is not logged." },
+          { id: "review", label: "Ask AI to review as a principal engineer for correctness, races, consistency, security, observability, performance, maintainability, and rollback risk." }
+        ]
+      },
+      {
+        id: "pre-rollout",
+        title: "Phase 6: Verification before rollout",
+        detail: "Prove the feature can survive normal and failure paths.",
+        steps: [
+          { id: "tests", label: "Run unit, integration, contract, E2E, load, security, migration dry-run, and backward compatibility checks as needed." },
+          { id: "signals", label: "Prepare dashboard, alert, runbook, rollback path, and customer impact checks." },
+          { id: "readiness", label: "Ask AI for a production readiness checklist with failure scenarios, monitoring, abort criteria, rollback, and data validation." }
+        ]
+      },
+      {
+        id: "rollout",
+        title: "Phase 7: Rollout",
+        detail: "Release in small steps and watch user impact.",
+        steps: [
+          { id: "dark-launch", label: "Deploy dark when possible, then enable internal users before canary." },
+          { id: "monitor", label: "Monitor success metric, error rate, latency, DB load, query plan, queue lag, cache hit/miss, and support signal." },
+          { id: "abort", label: "Define success criteria, abort criteria, rollback owner, communication plan, and kill switch." }
+        ]
+      },
+      {
+        id: "post-rollout",
+        title: "Phase 8: Post-rollout",
+        detail: "Turn delivery into learning and reusable system memory.",
+        steps: [
+          { id: "outcome", label: "Compare expected metrics with actual outcome, regressions, incidents, near misses, and alert noise." },
+          { id: "docs", label: "Update docs, ADR, runbook, Studio checklist, and follow-up tickets." },
+          { id: "review", label: "Ask AI for a post-rollout review with outcome, metrics, issues, user impact, technical debt, actions, and lessons learned." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "senior-engineer-reflex",
+    title: "Senior engineer reflex",
+    summary: "A compact question set for any feature: business, product, domain, API, data, consistency, resilience, security, observability, and rollout.",
+    whenToUse: "Use before implementation when the task feels simple but could hide production, data, or user risk.",
+    tags: ["Senior reflex", "Questions", "Risk"],
+    sections: [
+      {
+        id: "business-product-domain",
+        title: "Business, product, and domain",
+        detail: "Connect implementation to the real outcome.",
+        steps: [
+          { id: "business", label: "Which business metric, user group, and deadline matter here?" },
+          { id: "product", label: "What are the happy path, edge cases, undo behavior, pending state, failed state, and audit needs?" },
+          { id: "domain", label: "What are the main entities, aggregate boundary, state transitions, invariants, and domain events?" }
+        ]
+      },
+      {
+        id: "api-data-consistency",
+        title: "API, data, and consistency",
+        detail: "Make contracts and state changes explicit.",
+        steps: [
+          { id: "api", label: "Is the API sync or async, idempotent, versioned, paginated, and backward compatible?" },
+          { id: "data", label: "What schema, migration, index, query scale, retention, and PII concerns exist?" },
+          { id: "consistency", label: "Is strong consistency required, can eventual consistency work, and are race conditions or duplicate events possible?" }
+        ]
+      },
+      {
+        id: "resilience-security",
+        title: "Resilience and security",
+        detail: "Assume dependencies and users can behave unexpectedly.",
+        steps: [
+          { id: "dependency", label: "Which dependency can fail, slow down, or return partial failure?" },
+          { id: "protection", label: "Are timeout, retry, Circuit Breaker, fallback, rate limit, and idempotency designed?" },
+          { id: "security", label: "Who can use it, how is authorization enforced, what input is validated, and what should never be logged?" }
+        ]
+      },
+      {
+        id: "observability-rollout",
+        title: "Observability and rollout",
+        detail: "Decide how the system proves it is healthy.",
+        steps: [
+          { id: "signals", label: "What business metric, technical metric, trace, log, correlation ID, dashboard, and alert prove the feature is working?" },
+          { id: "release", label: "Is there a feature flag, canary plan, abort criteria, rollback path, migration rollback, and monitoring owner?" },
+          { id: "learning", label: "What should be archived after rollout so the next task starts with better judgment?" }
+        ]
+      }
+    ]
+  },
+  {
+    id: "capstone-production-project",
+    title: "Capstone production project",
+    summary: "A long-running e-commerce, subscription, or booking lab that combines architecture, data, resilience, events, and observability.",
+    whenToUse: "Use as the practical lab for turning the roadmap into visible evidence and reusable engineering muscle.",
+    tags: ["Capstone", "Practice", "Portfolio"],
+    sections: [
+      {
+        id: "feature-set",
+        title: "Product surface",
+        detail: "Choose a domain that forces real production trade-offs.",
+        steps: [
+          { id: "domains", label: "Build user, catalog, cart, order, payment, inventory, notification, promotion, admin, audit, and reporting flows." },
+          { id: "scope", label: "Start as a modular monolith before extracting services." },
+          { id: "evidence", label: "Save ADRs, diagrams, test evidence, rollout notes, and postmortems as portfolio artifacts." }
+        ]
+      },
+      {
+        id: "foundation-requirements",
+        title: "Foundation requirements",
+        detail: "Prove the system has clear boundaries and data decisions.",
+        steps: [
+          { id: "architecture", label: "Use layered or hexagonal structure with module ownership." },
+          { id: "postgres", label: "Model PostgreSQL tables, constraints, migrations, indexes, query plans, and backup/restore." },
+          { id: "tests", label: "Add unit, integration, contract, E2E, migration, and rollback tests." }
+        ]
+      },
+      {
+        id: "resilience-events",
+        title: "Resilience and events",
+        detail: "Practice failure paths that show senior judgment.",
+        steps: [
+          { id: "cache", label: "Add Redis cache with invalidation, TTL, hit rate, and cache-down behavior." },
+          { id: "outbox", label: "Use Outbox, queue worker, retry, DLQ, poison message runbook, and idempotent consumer." },
+          { id: "payment", label: "Build a payment Saga with Circuit Breaker, fallback, and duplicate-payment protection." },
+          { id: "event-sourcing", label: "Use Event Sourcing for the order lifecycle and CQRS read model for admin or reporting." }
+        ]
+      },
+      {
+        id: "production-requirements",
+        title: "Production requirements",
+        detail: "Operate the lab like a real system, not a demo.",
+        steps: [
+          { id: "otel", label: "Instrument OpenTelemetry traces, metrics, logs, and correlation IDs." },
+          { id: "dashboard", label: "Create dashboards for request rate, errors, latency, DB latency, queue lag, cache hit rate, dependency failure, and business metrics." },
+          { id: "rollout", label: "Use feature flags, zero-downtime migration, load test, runbook, alert, rollback drill, and post-rollout review." }
         ]
       }
     ]
@@ -1349,7 +1740,7 @@ export const studioFolders: StudioFolder[] = [
     groups: [
       {
         label: "AI setup",
-        noteIds: ["ai-operating-system", "antigravity-awesome-skills", "open-design"]
+        noteIds: ["ai-operating-system", "ai-driven-engineering-foundation", "antigravity-awesome-skills", "open-design"]
       },
       {
         label: "Computer setup",
@@ -1369,7 +1760,7 @@ export const studioFolders: StudioFolder[] = [
     groups: [
       {
         label: "Operating system",
-        noteIds: ["ai-operating-system"]
+        noteIds: ["ai-operating-system", "ai-driven-engineering-foundation"]
       },
       {
         label: "Agent systems",
@@ -1466,6 +1857,83 @@ export const studioNotes: StudioNote[] = [
       {
         label: "Do not upload secrets, private keys, customer data, or sensitive company data into personal AI tools.",
         checked: true
+      }
+    ]
+  },
+  {
+    id: "ai-driven-engineering-foundation",
+    folderId: "machine-bootstrap",
+    title: "AI-Driven Engineering Foundation",
+    subtitle: "Daily roadmap for technical decision-making from task intake to production operation.",
+    status: "ready",
+    updatedAt: "2026-06-21",
+    tags: ["Engineering roadmap", "Architecture", "Data", "Resilience", "Observability", "AI workflow"],
+    summary:
+      "This note keeps the long-term learning direction visible: AI can generate code quickly, but senior leverage comes from asking the right technical questions, choosing the right trade-offs, verifying failure modes, and owning production behavior.",
+    sections: [
+      {
+        heading: "Why this matters",
+        body:
+          "The next step is not to ask AI for more code. The next step is to build a stronger decision map: what to ask AI to analyze, which assumptions to challenge, which risks require tests, and how to release without turning production into a guessing game."
+      },
+      {
+        heading: "Seven layers from task to production",
+        body:
+          "Every meaningful task should pass through seven layers: business need, domain or use case, API or workflow contract, data and consistency model, architecture and patterns, implementation and testing, then rollout, observability, and operation."
+      },
+      {
+        heading: "Knowledge layers to compound",
+        body:
+          "Study software design, data modeling, replication and consistency, distributed systems resilience, event-driven architecture with CQRS and Event Sourcing, caching and performance, observability, SRE, and production operation. The goal is not to memorize every term. The goal is to know when each idea becomes useful."
+      },
+      {
+        heading: "Daily practice rule",
+        body:
+          "Before coding, read one layer and ask one senior reflex question. After coding, save one artifact: a better prompt, a query plan, an ADR, a test case, a rollout risk, a dashboard signal, or a small lesson for the next task."
+      },
+      {
+        heading: "Capstone direction",
+        body:
+          "Use one long-running e-commerce, subscription, or booking platform as the lab. Start with a modular monolith, PostgreSQL, Redis cache, Outbox, queue worker, payment Saga, Circuit Breaker, CQRS read model, Event Sourcing for order lifecycle, OpenTelemetry, dashboards, feature flags, zero-downtime migration, load tests, runbooks, and ADRs."
+      }
+    ],
+    commands: [
+      {
+        label: "Task clarification prompt",
+        command:
+          "Act as a Staff Software Engineer. Given this requirement, ask me the most important clarification questions before implementation. Group questions by business, product, data, API, security, reliability, rollout, and observability.",
+        note: "Use before assigning a task to Codex or Antigravity."
+      },
+      {
+        label: "Architecture decision prompt",
+        command:
+          "Create an Architecture Decision Record for this feature. Compare at least 3 options. For each option, analyze complexity, scalability, consistency, operational risk, cost, migration effort, rollback strategy, and long-term maintainability.",
+        note: "Use when a change affects architecture, data, or production operation."
+      },
+      {
+        label: "Production readiness prompt",
+        command:
+          "Generate a production readiness checklist for this feature. Include test cases, failure scenarios, monitoring, alerts, rollback, data migration validation, customer impact checks, and abort criteria.",
+        note: "Use before rollout or before asking for final review."
+      }
+    ],
+    checklist: [
+      {
+        label: "Read one roadmap layer before starting meaningful engineering work."
+      },
+      {
+        label: "Ask one senior reflex question before implementation.",
+        detail: "Business, product, domain, API, data, consistency, resilience, security, observability, or rollout."
+      },
+      {
+        label: "Use AI first for analysis and critique, not only code generation."
+      },
+      {
+        label: "Save one reusable artifact after each task.",
+        detail: "Prompt, checklist, ADR, query plan, test matrix, runbook, rollout note, or postmortem lesson."
+      },
+      {
+        label: "Move one capstone project forward every week."
       }
     ]
   },
