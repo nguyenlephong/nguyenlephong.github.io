@@ -575,22 +575,22 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
     { label: "Avg. Reply", value: "4m", helper: "Median response time today", badge: "+18%", trend: "up", icon: LuGauge }
   ],
   "ai-agent-setup": [
-    { label: "Setup notes", value: "6", helper: "Machine and agent references", badge: "+2", trend: "up", icon: LuBookOpenCheck },
-    { label: "Agent tools", value: "4", helper: "Codex, Claude, Gemini, Antigravity", badge: "ready", trend: "up", icon: LuSparkles },
-    { label: "MCP paths", value: "5", helper: "Install commands kept close", badge: "+3", trend: "up", icon: LuCommand },
-    { label: "Safety checks", value: "4", helper: "Credential and workflow guardrails", badge: "stable", trend: "up", icon: LuLock }
+    { label: "Setup notes", value: `${studioNotes.length}`, helper: "Machine, AI OS, and research notes", badge: "+AI OS", trend: "up", icon: LuBookOpenCheck },
+    { label: "Agent tools", value: "5", helper: "NotebookLM, GPT, Claude, Codex, Antigravity", badge: "ready", trend: "up", icon: LuSparkles },
+    { label: "Prompt cards", value: "3", helper: "Daily, weekly, and tool routing", badge: "copy", trend: "up", icon: LuCommand },
+    { label: "Safety checks", value: "6", helper: "Credential and workflow guardrails", badge: "stable", trend: "up", icon: LuLock }
   ],
   "ai-skills": [
     { label: "Skills", value: `${studioAiSkills.length}`, helper: "Reusable markdown prompts", badge: "copy", trend: "up", icon: LuSparkles },
     { label: "Engineering", value: `${studioAiSkills.filter((skill) => skill.category === "engineering").length}`, helper: "Code, frontend, backend, specs", badge: "core", trend: "up", icon: LuServer },
-    { label: "Content", value: `${studioAiSkills.filter((skill) => skill.category === "content").length}`, helper: "Writing and prompt work", badge: "voice", trend: "up", icon: LuFileText },
-    { label: "Ops", value: `${studioAiSkills.filter((skill) => skill.category === "operations" || skill.category === "communication").length}`, helper: "Reports, proposals, decks", badge: "ready", trend: "up", icon: LuClipboardList }
+    { label: "Learning", value: `${studioAiSkills.filter((skill) => skill.category === "learning").length}`, helper: "Daily AI practice and source-backed study", badge: "daily", trend: "up", icon: LuBookOpenCheck },
+    { label: "Strategy", value: `${studioAiSkills.filter((skill) => skill.category === "strategy").length}`, helper: "AI OS and career leverage", badge: "direction", trend: "up", icon: LuMapPin }
   ],
   "delivery-checklists": [
-    { label: "Checklists", value: `${studioWorkflowChecklists.length}`, helper: "Task, module, release, rollout", badge: "nested", trend: "up", icon: LuClipboardList },
+    { label: "Checklists", value: `${studioWorkflowChecklists.length}`, helper: "Task, AI learning, release, rollout", badge: "nested", trend: "up", icon: LuClipboardList },
     { label: "Sections", value: `${studioWorkflowChecklists.reduce((total, checklist) => total + checklist.sections.length, 0)}`, helper: "Reusable operating gates", badge: "mapped", trend: "up", icon: LuListTodo },
     { label: "Steps", value: `${studioWorkflowChecklists.reduce((total, checklist) => total + checklist.sections.reduce((sum, section) => sum + section.steps.length, 0), 0)}`, helper: "Parent checklist items", badge: "ready", trend: "up", icon: LuCheckCircle2 },
-    { label: "Rollout", value: "3 phases", helper: "Before, during, after", badge: "guarded", trend: "up", icon: LuFlag }
+    { label: "AI plan", value: "90 days", helper: "Setup, work, career, life", badge: "compound", trend: "up", icon: LuFlag }
   ],
   "blog-roadmap": [
     { label: "Topics", value: `${blogRoadmapTopics.length}`, helper: "Existing blog categories in scope", badge: "mapped", trend: "up", icon: LuBookOpenCheck },
@@ -1270,28 +1270,28 @@ const dashboardKpis = [
 
 const aiWorkflowSteps = [
   {
-    title: "Context intake",
-    detail: "Collect repo state, goal, constraints, and acceptance checks before I ask an agent to work.",
+    title: "Capture",
+    detail: "Put facts, source documents, logs, and notes into NotebookLM or a focused Project before asking for judgment.",
     state: "ready"
   },
   {
-    title: "Agent run",
-    detail: "Use Codex or another focused agent for one bounded implementation path at a time.",
+    title: "Clarify",
+    detail: "Use GPT to separate goal, assumptions, constraints, decision, and next action.",
     state: "active"
   },
   {
-    title: "Verification",
-    detail: "Run typecheck, route tests, visual audit, and deploy checks before calling work done.",
+    title: "Challenge",
+    detail: "Use Claude to review weak assumptions, architecture risk, edge cases, and communication clarity.",
     state: "required"
   },
   {
-    title: "Knowledge capture",
-    detail: "Store useful commands, MCP setup, and failure notes back into this Studio.",
+    title: "Execute and archive",
+    detail: "Use Codex or Antigravity for bounded work, then save the prompt, artifact, verification, and lesson.",
     state: "next"
   }
 ];
 
-const aiRuntimeTargets = ["Codex", "Claude", "Antigravity", "Gemini"];
+const aiRuntimeTargets = ["NotebookLM", "GPT", "Claude", "Codex", "Antigravity"];
 
 const releaseChecklist = [
   { title: "Verify feature flag default fallback", tag: "Rollout", done: true },
@@ -1445,7 +1445,9 @@ function skillCategoryLabel(category: StudioAiSkill["category"] | "all"): string
   if (category === "engineering") return "Engineering";
   if (category === "content") return "Content";
   if (category === "operations") return "Operations";
-  return "Communication";
+  if (category === "communication") return "Communication";
+  if (category === "strategy") return "Strategy";
+  return "Learning";
 }
 
 function renderChecklistStepMarkdown(step: StudioChecklistStep, depth = 0): string {
@@ -2612,7 +2614,15 @@ function AiSkillsPage({ route }: { route: StudioRoute }) {
   const [copiedSkillId, setCopiedSkillId] = useState<string | null>(null);
   const visibleSkills = studioAiSkills.filter((skill) => categoryFilter === "all" || skill.category === categoryFilter);
   const selectedSkill = studioAiSkills.find((skill) => skill.id === selectedSkillId) ?? visibleSkills[0] ?? studioAiSkills[0];
-  const categories: Array<StudioAiSkill["category"] | "all"> = ["all", "engineering", "content", "operations", "communication"];
+  const categories: Array<StudioAiSkill["category"] | "all"> = [
+    "all",
+    "strategy",
+    "learning",
+    "engineering",
+    "content",
+    "operations",
+    "communication"
+  ];
 
   const handleCategoryFilter = (category: StudioAiSkill["category"] | "all") => {
     const nextVisibleSkills = studioAiSkills.filter((skill) => category === "all" || skill.category === category);

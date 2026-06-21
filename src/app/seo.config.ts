@@ -111,20 +111,23 @@ export const PAGE_SEO: Record<
   studio: {
     title: 'Studio — Learning Notes & Engineering Machine Setup',
     description:
-      'A public working shelf for AI setup, machine setup, terminal setup, and the skill libraries Nguyen Le Phong keeps installed across Codex, Claude, Antigravity, and Gemini.',
+      'A public working shelf for AI operating notes, daily learning checklists, machine setup, and skill libraries across NotebookLM, GPT, Claude, Codex, and Antigravity.',
     path: '/studio',
     keywords: [
       'Nguyen Le Phong studio',
       'engineering machine setup',
+      'AI operating system',
+      'AI learning checklist',
       'AI developer setup',
+      'NotebookLM workflow',
+      'ChatGPT Projects',
       'Codex skills',
       'Claude skills',
       'Antigravity skills',
-      'Gemini skills',
       'developer checklist',
     ],
     ogAlt:
-      'Studio — learning notes, AI tooling inventory, and engineering setup checklist',
+      'Studio — AI operating notes, learning checklists, and engineering setup',
   },
 }
 

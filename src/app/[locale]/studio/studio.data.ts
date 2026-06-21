@@ -75,7 +75,7 @@ export type BlogRoadmapTopic = {
 
 export type StudioAiSkill = {
   id: string;
-  category: "engineering" | "content" | "operations" | "communication";
+  category: "engineering" | "content" | "operations" | "communication" | "strategy" | "learning";
   title: string;
   summary: string;
   tags: string[];
@@ -105,7 +105,7 @@ export type StudioWorkflowChecklist = {
   sections: StudioChecklistSection[];
 };
 
-export const studioCapturedAt = "2026-06-20";
+export const studioCapturedAt = "2026-06-21";
 
 const roadmapStatuses: BlogRoadmapStatus[] = ["ready", "outline", "research"];
 
@@ -669,6 +669,253 @@ Use this skill for proposals, internal buy-in, product pitches, and slide outlin
 - Do not overclaim.
 - Do not use generic startup language.
 - Do not make slides dense; each slide should carry one job.`
+  },
+  {
+    id: "ai-operating-system",
+    category: "strategy",
+    title: "AI operating system",
+    summary: "Route work through NotebookLM, GPT, Claude, Codex, and Antigravity without creating AI noise.",
+    tags: ["AI OS", "Tool routing", "Compounding"],
+    markdown: `# AI Operating System Skill
+
+Use this skill when a problem feels broad and I need to decide which AI tool should do which part.
+
+## Operating model
+- NotebookLM keeps source-backed truth: uploaded docs, notes, PDFs, transcripts, reports, reviews, and decisions.
+- GPT / ChatGPT acts as chief of staff: clarify goals, plan, research, compare trade-offs, and create action plans.
+- Claude acts as deep critic: architecture review, writing polish, hidden assumptions, edge cases, and sensitive communication.
+- Codex acts as delivery factory: repo changes, tests, refactors, migrations, and PR-ready diffs.
+- Antigravity acts as agentic lab: prototype, UI verification, browser checks, multi-agent dev flows, and end-to-end artifacts.
+
+## Process
+1. Capture facts and source material first.
+2. Clarify the real problem and the desired outcome.
+3. Route the work to the smallest useful tool chain.
+4. Let one AI execute and another AI review when risk is meaningful.
+5. Archive the decision, prompt, result, and lesson learned.
+
+## Output format
+- Problem statement.
+- Best tool sequence.
+- Prompt for each tool.
+- Risks and guardrails.
+- Next action for today.
+
+## Guardrails
+- Do not ask every tool the same vague question.
+- Do not upload secrets, private keys, customer data, or sensitive company data into personal AI tools.
+- Do not let AI make final medical, legal, financial, or production-risk decisions without human review.`
+  },
+  {
+    id: "daily-ai-learning-coach",
+    category: "learning",
+    title: "Daily AI learning coach",
+    summary: "Turn every day into a small loop for learning AI, shipping better, and saving reusable prompts.",
+    tags: ["Daily learning", "Habit", "AI literacy"],
+    markdown: `# Daily AI Learning Coach Skill
+
+Use this skill at the start or end of a day to compound AI skill without turning learning into a separate heavy project.
+
+## Morning prompt
+Today is [date].
+Context:
+- Energy:
+- Work obligations:
+- Open loops:
+- One AI skill I want to improve:
+
+Help me choose:
+1. Top 3 outcomes for today.
+2. One AI-assisted workflow to practice.
+3. One thing to avoid or delay.
+4. One small artifact to save: prompt, checklist, decision, lesson, or example.
+5. A realistic time block plan.
+
+## Evening prompt
+Review today:
+- Done:
+- Not done:
+- AI tool used:
+- What worked:
+- What was noisy:
+- Lesson:
+
+Extract:
+1. One reusable prompt improvement.
+2. One workflow improvement.
+3. One thing to archive in NotebookLM or a Project.
+4. One next practice for tomorrow.
+
+## Guardrails
+- Keep the loop under 15 minutes.
+- Prefer one practical experiment over five abstract AI tips.
+- End with one saved artifact, not only a feeling of productivity.`
+  },
+  {
+    id: "notebooklm-source-of-truth",
+    category: "learning",
+    title: "NotebookLM source of truth",
+    summary: "Use NotebookLM as a source-backed knowledge base for learning, career, finance, and work memory.",
+    tags: ["NotebookLM", "Knowledge base", "Citations"],
+    markdown: `# NotebookLM Source Of Truth Skill
+
+Use this skill when the answer should be grounded in uploaded material instead of general memory.
+
+## Best source types
+- Books, papers, courses, docs, and transcript notes.
+- RFCs, PRDs, postmortems, decision logs, and architecture notes.
+- CV versions, performance reviews, job descriptions, feedback, and promotion material.
+- Redacted financial statements, policies, investment notes, and planning documents.
+
+## Prompt
+Based only on the uploaded sources, create:
+1. A timeline of important ideas or events.
+2. Source-backed claims with citations.
+3. Contradictions or missing data.
+4. Ten questions I should answer next.
+5. A 30-day action plan.
+
+## Learning output
+- Mind map.
+- Study guide.
+- Flashcards.
+- Quiz questions.
+- Practice projects.
+- Misconceptions to watch.
+
+## Guardrails
+- Redact sensitive data before upload.
+- Use citations for important claims.
+- Treat NotebookLM as grounded memory, not as a final expert for medical, legal, or financial decisions.`
+  },
+  {
+    id: "ai-delivery-factory",
+    category: "engineering",
+    title: "AI delivery factory",
+    summary: "Split engineering work across GPT, Claude, Codex, and Antigravity from spec to verified PR.",
+    tags: ["Codex", "Antigravity", "Delivery"],
+    markdown: `# AI Delivery Factory Skill
+
+Use this skill for feature work, refactors, migrations, bugfixes, and UI-heavy prototypes.
+
+## Tool sequence
+1. GPT: turn the idea into PRD, acceptance criteria, task slices, rollout, and test plan.
+2. Claude: review architecture, hidden assumptions, migration risk, and edge cases.
+3. Codex: implement bounded repo tasks, add tests, keep diff reviewable.
+4. Antigravity: run app, verify UI/browser flows, capture screenshots/logs/artifacts.
+5. Claude or GPT: review the final diff, risks, release note, and stakeholder update.
+6. NotebookLM: archive PRD, RFC, decision, postmortem, and lessons learned.
+
+## Codex prompt skeleton
+Repo context:
+- Stack:
+- Branch:
+- Relevant modules:
+- Constraints:
+
+Goal:
+Implement [feature/fix/refactor].
+
+Acceptance criteria:
+1.
+2.
+3.
+
+Rules:
+- Do not change public API unless necessary.
+- Add or adjust tests.
+- Run relevant verification commands.
+- Explain trade-offs.
+- Keep the diff suitable for PR review.
+
+## Guardrails
+- Split large work into map, plan, execute, verify, and review.
+- Do not let one agent both implement and be the only reviewer for risky changes.
+- Do not skip tests because an agent says the code looks correct.`
+  },
+  {
+    id: "claude-deep-review",
+    category: "engineering",
+    title: "Claude deep review",
+    summary: "Use Claude as the slow-thinking reviewer for architecture, writing, PRs, and sensitive communication.",
+    tags: ["Claude", "Architecture", "Critique"],
+    markdown: `# Claude Deep Review Skill
+
+Use this skill when I need careful critique more than fast execution.
+
+## Architecture review prompt
+Act as a Staff+ engineer reviewing this design.
+
+Context:
+[paste RFC/spec/diff summary]
+
+Review for:
+1. Correctness
+2. Scalability
+3. Operability
+4. Security and privacy
+5. Migration risk
+6. Team maintainability
+7. Hidden assumptions
+
+Output:
+- Top 5 risks.
+- What should change before implementation.
+- Questions to ask stakeholders.
+- Minimum viable version.
+- Long-term version.
+- Suggested tests or rollout guardrails.
+
+## Communication prompt
+Help me write this message with clarity and care.
+Separate facts, assumptions, emotions, and the decision needed.
+Make it direct, calm, and hard to misunderstand.
+
+## Guardrails
+- Ask Claude to challenge assumptions, not only improve wording.
+- Keep final decisions with the human owner.
+- Use Codex or local tools for repo execution after the review is clear.`
+  },
+  {
+    id: "career-ai-strategy",
+    category: "strategy",
+    title: "Career AI strategy",
+    summary: "Use AI to build Staff-level evidence, public writing, architecture portfolio, and automation assets.",
+    tags: ["Career", "Staff Engineer", "Portfolio"],
+    markdown: `# Career AI Strategy Skill
+
+Use this skill during weekly or monthly career planning.
+
+## Career thesis
+Build toward AI-native Staff Engineer / Tech Lead, with options toward AI platform leadership, consulting, or founder work.
+
+## Four assets to compound
+1. AI Engineering Playbook: how a team safely uses Codex, Claude, Antigravity, GPT, and NotebookLM.
+2. Architecture Portfolio: RFCs, diagrams, migration notes, incident reviews, and trade-off memos.
+3. Public Writing: calm posts about AI-native software engineering and leadership.
+4. Automation Products: internal tools, agent workflows, and developer productivity demos.
+
+## Prompt
+I am a Lead Software Engineer.
+Create a 3-year career strategy with these scenarios:
+1. Staff / Principal Engineer
+2. Engineering Manager / Director
+3. Founder / Independent consultant
+
+For each scenario, define:
+- Required skills.
+- Portfolio evidence.
+- Network strategy.
+- Compensation upside.
+- Risks.
+- 90-day actions.
+- 1-year milestones.
+- How AI tools should be used weekly.
+
+## Guardrails
+- Focus on evidence, not title-chasing.
+- Convert learning into visible artifacts.
+- Keep the plan flexible enough to preserve optionality.`
   }
 ];
 
@@ -869,6 +1116,227 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
         ]
       }
     ]
+  },
+  {
+    id: "daily-ai-learning-loop",
+    title: "Daily AI learning loop",
+    summary: "A short daily loop for improving AI skill through one useful practice, one saved artifact, and one review.",
+    whenToUse: "Use every morning and evening when the goal is steady AI skill compounding without overloading the day.",
+    tags: ["Daily", "AI learning", "Habit"],
+    sections: [
+      {
+        id: "morning-orientation",
+        title: "Morning orientation",
+        detail: "Choose one AI practice that fits the day's real work.",
+        steps: [
+          { id: "energy", label: "Write current energy level, obligations, and open loops." },
+          { id: "top-three", label: "Choose the top 3 outcomes for the day." },
+          { id: "practice", label: "Pick one AI skill to practice.", detail: "Example: better Codex task slicing, Claude critique, NotebookLM source synthesis, or GPT decision framing." },
+          { id: "time-block", label: "Reserve one small time block for the practice." }
+        ]
+      },
+      {
+        id: "workday-application",
+        title: "Workday application",
+        detail: "Learn through a real task instead of abstract tool browsing.",
+        steps: [
+          { id: "route-tool", label: "Route the task to the correct tool before prompting." },
+          { id: "write-prompt", label: "Write the prompt with role, goal, context, output, and guardrails." },
+          { id: "save-artifact", label: "Save one artifact.", detail: "Prompt, checklist, decision note, diff, screenshot, or lesson." },
+          { id: "avoid-noise", label: "Stop if the AI loop becomes broader than the task." }
+        ]
+      },
+      {
+        id: "evening-review",
+        title: "Evening review",
+        detail: "Close the loop while the context is still fresh.",
+        steps: [
+          { id: "done", label: "List what was done, not done, and why." },
+          { id: "tool-signal", label: "Note which AI tool helped and where it created noise." },
+          { id: "prompt-improvement", label: "Write one prompt improvement for tomorrow." },
+          { id: "archive", label: "Archive the lesson in NotebookLM, a ChatGPT Project, or Studio." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "weekly-ai-os-review",
+    title: "Weekly AI OS review",
+    summary: "A weekly review for work, learning, finance, life, and the AI workflows that should compound.",
+    whenToUse: "Use at the end of the week to convert scattered AI usage into reusable systems.",
+    tags: ["Weekly review", "Life OS", "Career"],
+    sections: [
+      {
+        id: "capture-week",
+        title: "Capture the week",
+        detail: "Collect enough facts to avoid reviewing only from memory.",
+        steps: [
+          { id: "work", label: "Summarize shipped work, PRs, blockers, incidents, and team moments." },
+          { id: "learning", label: "List AI tools used, prompts saved, and workflows repeated." },
+          { id: "life-finance", label: "Record health, energy, finance, relationships, and admin signals." },
+          { id: "sources", label: "Move useful docs or notes into NotebookLM when source grounding matters." }
+        ]
+      },
+      {
+        id: "review-patterns",
+        title: "Review patterns",
+        detail: "Look for repeated signals, not only completed tasks.",
+        steps: [
+          { id: "wins-losses", label: "Write wins, losses, and what changed since last week." },
+          { id: "avoidance", label: "Name one decision or conversation being avoided." },
+          { id: "ai-leverage", label: "Identify where AI gave leverage and where it created rework." },
+          { id: "hard-truth", label: "Write one hard truth that should influence next week." }
+        ]
+      },
+      {
+        id: "plan-next-week",
+        title: "Plan next week",
+        detail: "Turn reflection into a small operating plan.",
+        steps: [
+          { id: "priorities", label: "Choose top 5 priorities for the next week." },
+          { id: "one-workflow", label: "Select one AI workflow to improve deliberately." },
+          { id: "one-artifact", label: "Commit to one visible artifact.", detail: "Blog draft, RFC, automation demo, checklist, or portfolio note." },
+          { id: "one-boundary", label: "Set one boundary to protect attention and data safety." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "ai-tool-routing-decision-tree",
+    title: "AI tool routing decision tree",
+    summary: "A checklist for choosing NotebookLM, GPT, Claude, Codex, or Antigravity before starting work.",
+    whenToUse: "Use when a task is vague, large, or tempting to ask every AI tool at once.",
+    tags: ["Tool routing", "Decision", "Guardrails"],
+    sections: [
+      {
+        id: "choose-first-tool",
+        title: "Choose the first tool",
+        detail: "Start with the tool that matches the bottleneck.",
+        steps: [
+          { id: "source", label: "If the answer must come from uploaded docs or notes, start with NotebookLM." },
+          { id: "research", label: "If the question needs multi-source web research, start with GPT Deep Research." },
+          { id: "decision", label: "If the task is strategy, planning, or trade-off analysis, start with GPT." },
+          { id: "critique", label: "If the task needs deep critique, architecture review, or sensitive writing, start with Claude." },
+          { id: "repo", label: "If the task changes code in a repo, start with Codex or Claude Code." },
+          { id: "prototype", label: "If the task needs UI/browser verification or an end-to-end prototype, start with Antigravity." }
+        ]
+      },
+      {
+        id: "handoff",
+        title: "Handoff between tools",
+        detail: "Move only the useful context, not the whole conversation.",
+        steps: [
+          { id: "brief", label: "Write a short brief: goal, constraints, sources, acceptance criteria, and guardrails." },
+          { id: "execute-review", label: "Let one AI execute and another AI review when quality risk is meaningful." },
+          { id: "artifact", label: "Ask for an artifact that can be inspected.", detail: "Diff, checklist, report, screenshot, decision matrix, or test evidence." },
+          { id: "archive", label: "Archive the final prompt, artifact, and lesson for reuse." }
+        ]
+      },
+      {
+        id: "safety",
+        title: "Safety guardrails",
+        detail: "Protect secrets, production, and judgment.",
+        steps: [
+          { id: "redact", label: "Redact secrets, private keys, customer data, and sensitive company details." },
+          { id: "no-destructive", label: "Do not let agents run destructive commands or production migrations without explicit review." },
+          { id: "tests", label: "Require tests or verification for code changes." },
+          { id: "human-decision", label: "Keep final medical, legal, financial, and production-risk decisions with a human owner." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "ai-assisted-feature-workflow",
+    title: "AI-assisted feature workflow",
+    summary: "A full feature workflow from idea to spec, implementation, review, rollout, and knowledge archive.",
+    whenToUse: "Use for meaningful product or engineering changes where multiple AI tools can help without losing ownership.",
+    tags: ["Feature", "GPT", "Claude", "Codex", "Antigravity"],
+    sections: [
+      {
+        id: "shape",
+        title: "Shape the work",
+        detail: "Use AI to clarify the problem before assigning implementation.",
+        steps: [
+          { id: "gpt-prd", label: "Ask GPT for problem statement, user stories, acceptance criteria, non-goals, risks, rollout, and test plan." },
+          { id: "claude-review", label: "Ask Claude to challenge architecture, assumptions, failure modes, and minimum viable scope." },
+          { id: "slice", label: "Split into small Codex or Antigravity tasks that can be reviewed independently." }
+        ]
+      },
+      {
+        id: "execute",
+        title: "Execute",
+        detail: "Use the right agent for the right kind of work.",
+        steps: [
+          { id: "codex", label: "Use Codex for repo tasks with tests, clean diffs, refactors, migrations, and PR-ready work." },
+          { id: "antigravity", label: "Use Antigravity for UI-heavy prototypes, browser verification, screenshots, and end-to-end artifacts." },
+          { id: "checkpoint", label: "Checkpoint after each small task before expanding scope." }
+        ]
+      },
+      {
+        id: "review-release",
+        title: "Review and release",
+        detail: "Separate execution from review and release judgment.",
+        steps: [
+          { id: "ai-review", label: "Use Claude or GPT to review the diff for correctness, security, edge cases, test gaps, and migration risk." },
+          { id: "human-review", label: "Human owner reviews trade-offs and final merge decision." },
+          { id: "release-note", label: "Use GPT for release note, stakeholder update, and rollout checklist." },
+          { id: "archive", label: "Archive PRD, RFC, decisions, test evidence, and postmortem notes in NotebookLM." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "ninety-day-ai-skill-plan",
+    title: "90-day AI skill plan",
+    summary: "A phased plan for turning AI tools into daily practice, engineering leverage, career assets, and personal operating systems.",
+    whenToUse: "Use as the quarterly roadmap for raising AI literacy and turning the stack into durable leverage.",
+    tags: ["90 days", "Roadmap", "AI literacy"],
+    sections: [
+      {
+        id: "week-one",
+        title: "Week 1: setup the system",
+        detail: "Create the containers before trying to optimize every workflow.",
+        steps: [
+          { id: "projects", label: "Create five ChatGPT Projects.", detail: "PhongOS, Engineering Leadership, Finance & Investment, Learning & Research, Writing / Personal Brand." },
+          { id: "notebooks", label: "Create five NotebookLM notebooks.", detail: "Career Archive, Finance Library, Learning AI/Systems, Life Archive, Work Knowledge Base." },
+          { id: "templates", label: "Save prompt templates for Codex, Claude, Antigravity, NotebookLM, and GPT." },
+          { id: "logs", label: "Create decision_log, career_roadmap, finance_snapshot, and AI Operating System folders." }
+        ]
+      },
+      {
+        id: "days-eight-thirty",
+        title: "Days 8-30: work productivity",
+        detail: "Turn repeated engineering work into playbooks.",
+        steps: [
+          { id: "pr-review", label: "Create a PR review playbook." },
+          { id: "incident", label: "Create incident and postmortem workflow." },
+          { id: "feature", label: "Create feature spec to implementation workflow." },
+          { id: "ship", label: "Ship one AI-assisted feature and one refactor or test improvement." }
+        ]
+      },
+      {
+        id: "days-thirty-one-sixty",
+        title: "Days 31-60: career leverage",
+        detail: "Convert work into evidence and assets.",
+        steps: [
+          { id: "portfolio", label: "Draft Staff Engineer portfolio evidence." },
+          { id: "writing", label: "Draft three technical writing pieces." },
+          { id: "internal-proposal", label: "Write one internal proposal for AI-assisted engineering workflow." },
+          { id: "demo", label: "Build one demo automation with Codex or Antigravity." }
+        ]
+      },
+      {
+        id: "days-sixty-one-ninety",
+        title: "Days 61-90: life, finance, future",
+        detail: "Extend the operating system beyond code.",
+        steps: [
+          { id: "finance", label: "Create finance dashboard and investment checklist." },
+          { id: "principles", label: "Write personal operating principles and boundaries." },
+          { id: "career-strategy", label: "Create 3-year career strategy with three scenarios." },
+          { id: "learning-roadmap", label: "Create 12-month learning roadmap and stable weekly review habit." }
+        ]
+      }
+    ]
   }
 ];
 
@@ -881,7 +1349,7 @@ export const studioFolders: StudioFolder[] = [
     groups: [
       {
         label: "AI setup",
-        noteIds: ["antigravity-awesome-skills", "open-design"]
+        noteIds: ["ai-operating-system", "antigravity-awesome-skills", "open-design"]
       },
       {
         label: "Computer setup",
@@ -899,6 +1367,10 @@ export const studioFolders: StudioFolder[] = [
     subtitle: "Things to study next",
     icon: "brain",
     groups: [
+      {
+        label: "Operating system",
+        noteIds: ["ai-operating-system"]
+      },
       {
         label: "Agent systems",
         noteIds: ["multi-agent-ai", "openhands", "crewai"]
@@ -920,6 +1392,83 @@ export const studioFolders: StudioFolder[] = [
 ];
 
 export const studioNotes: StudioNote[] = [
+  {
+    id: "ai-operating-system",
+    folderId: "machine-bootstrap",
+    title: "AI Operating System",
+    subtitle: "Daily direction for using NotebookLM, GPT, Claude, Codex, and Antigravity as one system.",
+    status: "ready",
+    updatedAt: "2026-06-21",
+    tags: ["AI OS", "NotebookLM", "GPT", "Claude", "Codex", "Antigravity", "Daily learning"],
+    summary:
+      "This note turns the AI stack into a daily operating system: NotebookLM keeps source-backed truth, GPT plans, Claude critiques, Codex ships code, Antigravity verifies prototypes, and every useful lesson becomes a reusable artifact.",
+    sections: [
+      {
+        heading: "The operating principle",
+        body:
+          "The bottleneck is not a lack of AI tools. The bottleneck is scattered context. The system should capture facts first, clarify the real problem, route work to the right tool, review risky output, and archive the lesson so tomorrow starts from a better baseline."
+      },
+      {
+        heading: "Tool roles",
+        body:
+          "NotebookLM is the source-backed memory. GPT is the chief of staff for planning, research, decision support, and weekly reviews. Claude is the deep reviewer for architecture, writing, assumptions, and sensitive communication. Codex is the repo execution engine for PRs, tests, refactors, and migrations. Antigravity is the agentic lab for prototypes, UI flows, browser verification, and multi-agent dev experiments."
+      },
+      {
+        heading: "Daily learning direction",
+        body:
+          "Each day should produce one small improvement: a better prompt, a reusable checklist, a reviewed diff, a clearer decision, a sourced note, or one saved workflow. The goal is not to use every tool every day; the goal is to make the right tool choice repeatable."
+      },
+      {
+        heading: "Career direction",
+        body:
+          "The strongest path is AI-native Staff Engineer / Tech Lead: software architecture, agent orchestration, engineering leadership, product thinking, communication, and financial discipline. The assets to build are an AI engineering playbook, architecture portfolio, public writing, and automation demos."
+      }
+    ],
+    commands: [
+      {
+        label: "Morning planning prompt",
+        command:
+          "Today is [date]. Energy: [x]. Obligations: [x]. Open loops: [x]. Help me choose top 3 outcomes, one AI workflow to practice, one thing to delay, one health/career action, and a realistic time-block plan.",
+        note: "Use in the PhongOS / Life & Career project."
+      },
+      {
+        label: "Weekly command center prompt",
+        command:
+          "Here is my current state: Work: [x]. Life: [x]. Finance: [x]. Health: [x]. Relationships: [x]. Learning: [x]. Create a one-page command center: what matters now, what is risky, what to ignore, decisions needed, and next actions for 7 days.",
+        note: "Use on Sunday or before a high-context week."
+      },
+      {
+        label: "Tool routing prompt",
+        command:
+          "I have this task: [task]. Decide the best AI tool sequence across NotebookLM, GPT, Claude, Codex, and Antigravity. Include why, prompts for each tool, guardrails, and the artifact I should save.",
+        note: "Use when a task feels too broad or when tool choice is unclear."
+      }
+    ],
+    checklist: [
+      {
+        label: "Create ChatGPT Projects.",
+        detail: "PhongOS, Engineering Leadership, Finance & Investment, Learning & Research, Writing / Personal Brand."
+      },
+      {
+        label: "Create NotebookLM notebooks.",
+        detail: "Career Archive, Finance Library, Learning AI/Systems, Life Archive, Work Knowledge Base."
+      },
+      {
+        label: "Save reusable prompt templates for GPT, Claude, Codex, Antigravity, and NotebookLM."
+      },
+      {
+        label: "Run the daily AI learning loop at least once per workday."
+      },
+      {
+        label: "Archive one useful lesson or artifact each week.",
+        checked: true
+      },
+      {
+        label: "Do not upload secrets, private keys, customer data, or sensitive company data into personal AI tools.",
+        checked: true
+      }
+    ]
+  },
   {
     id: "antigravity-awesome-skills",
     folderId: "machine-bootstrap",
@@ -1229,4 +1778,4 @@ export const studioNotes: StudioNote[] = [
   }
 ];
 
-export const defaultStudioNoteId = "antigravity-awesome-skills";
+export const defaultStudioNoteId = "ai-operating-system";
