@@ -1,8 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, MouseEvent } from "react";
+import Image from "next/image";
 import type { IconType } from "react-icons";
+import { defaultStudioNoteId, studioFolders, studioNotes } from "./studio.data";
+import type { StudioNote } from "./studio.data";
 import {
   LuAlarmClock,
   LuArchive,
@@ -37,7 +40,6 @@ import {
   LuGlobe,
   LuGraduationCap,
   LuHelpCircle,
-  LuInbox,
   LuKanbanSquare,
   LuLayoutDashboard,
   LuLineChart,
@@ -105,6 +107,7 @@ type StudioRouteId =
   | "infrastructure"
   | "email"
   | "chat"
+  | "ai-agent-setup"
   | "calendar"
   | "kanban"
   | "invoice"
@@ -131,6 +134,7 @@ type StudioRouteKind =
   | "infrastructure"
   | "mail"
   | "chat"
+  | "ai-setup"
   | "calendar"
   | "kanban"
   | "invoice"
@@ -238,8 +242,174 @@ type StudioNavGroup = {
   items: StudioNavItem[];
 };
 
-const DEFAULT_ROUTE: StudioRouteId = "default";
+const DEFAULT_ROUTE: StudioRouteId = "ai-agent-setup";
 const resumePath = "/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf";
+const THEME_STORAGE_KEY = "theme_preference";
+const FONT_STORAGE_KEY = "reading_font_preference";
+const LAYOUT_STORAGE_KEY = "studio_layout_preference";
+
+type StudioThemeSetting = "light" | "dark" | "system";
+type StudioResolvedTheme = "light" | "dark";
+type StudioFont = "inter" | "source" | "plex" | "atkinson" | "lora" | "be-vietnam";
+type StudioContentLayout = "centered" | "full-width";
+type StudioNavbarStyle = "sticky" | "scroll";
+type StudioSidebarVariant = "inset" | "sidebar" | "floating";
+type StudioSidebarCollapsible = "icon" | "offcanvas";
+
+type StudioLayoutPreference = {
+  contentLayout: StudioContentLayout;
+  navbarStyle: StudioNavbarStyle;
+  sidebarVariant: StudioSidebarVariant;
+  sidebarCollapsible: StudioSidebarCollapsible;
+};
+
+const themeOptions: Array<{ value: StudioThemeSetting; label: string; icon: IconType }> = [
+  { value: "light", label: "Light", icon: LuSun },
+  { value: "system", label: "System", icon: LuMonitor },
+  { value: "dark", label: "Dark", icon: LuMoon }
+];
+
+const fontOptions: Array<{ value: StudioFont; label: string; detail: string }> = [
+  { value: "inter", label: "Inter", detail: "CV default" },
+  { value: "source", label: "Source Sans 3", detail: "Calm sans" },
+  { value: "plex", label: "IBM Plex Sans", detail: "Technical sans" },
+  { value: "atkinson", label: "Atkinson Hyperlegible", detail: "Readable sans" },
+  { value: "lora", label: "Lora", detail: "Serif reading" },
+  { value: "be-vietnam", label: "Be Vietnam Pro", detail: "Vietnamese-friendly" }
+];
+
+const contentLayoutOptions: Array<{ value: StudioContentLayout; label: string }> = [
+  { value: "centered", label: "Centered" },
+  { value: "full-width", label: "Full width" }
+];
+
+const navbarStyleOptions: Array<{ value: StudioNavbarStyle; label: string }> = [
+  { value: "sticky", label: "Sticky" },
+  { value: "scroll", label: "Scroll" }
+];
+
+const sidebarVariantOptions: Array<{ value: StudioSidebarVariant; label: string }> = [
+  { value: "inset", label: "Inset" },
+  { value: "sidebar", label: "Sidebar" },
+  { value: "floating", label: "Floating" }
+];
+
+const sidebarCollapsibleOptions: Array<{ value: StudioSidebarCollapsible; label: string }> = [
+  { value: "icon", label: "Icon" },
+  { value: "offcanvas", label: "Offcanvas" }
+];
+
+const defaultLayoutPreference: StudioLayoutPreference = {
+  contentLayout: "centered",
+  navbarStyle: "sticky",
+  sidebarVariant: "inset",
+  sidebarCollapsible: "icon"
+};
+
+function isStudioThemeSetting(value: unknown): value is StudioThemeSetting {
+  return value === "light" || value === "dark" || value === "system";
+}
+
+function isStudioFont(value: unknown): value is StudioFont {
+  return fontOptions.some((option) => option.value === value);
+}
+
+function isStudioContentLayout(value: unknown): value is StudioContentLayout {
+  return value === "centered" || value === "full-width";
+}
+
+function isStudioNavbarStyle(value: unknown): value is StudioNavbarStyle {
+  return value === "sticky" || value === "scroll";
+}
+
+function isStudioSidebarVariant(value: unknown): value is StudioSidebarVariant {
+  return value === "inset" || value === "sidebar" || value === "floating";
+}
+
+function isStudioSidebarCollapsible(value: unknown): value is StudioSidebarCollapsible {
+  return value === "icon" || value === "offcanvas";
+}
+
+function resolveStudioTheme(setting: StudioThemeSetting): StudioResolvedTheme {
+  if (typeof window === "undefined") return setting === "dark" ? "dark" : "light";
+  if (setting === "system") {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  return setting;
+}
+
+function readInitialThemeSetting(): StudioThemeSetting {
+  if (typeof window === "undefined") return "system";
+
+  try {
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    const parsed = stored ? JSON.parse(stored) as { theme_setting?: unknown } : null;
+    if (isStudioThemeSetting(parsed?.theme_setting)) return parsed.theme_setting;
+  } catch {
+    // ignore malformed persisted preferences
+  }
+
+  return "system";
+}
+
+function readInitialFont(): StudioFont {
+  if (typeof window === "undefined") return "inter";
+
+  try {
+    const stored = localStorage.getItem(FONT_STORAGE_KEY);
+    if (isStudioFont(stored)) return stored;
+  } catch {
+    // ignore unavailable storage
+  }
+
+  const rootFont = document.documentElement.getAttribute("data-reading-font");
+  return isStudioFont(rootFont) ? rootFont : "inter";
+}
+
+function readInitialLayoutPreference(): StudioLayoutPreference {
+  if (typeof window === "undefined") return defaultLayoutPreference;
+
+  try {
+    const stored = localStorage.getItem(LAYOUT_STORAGE_KEY);
+    const parsed = stored ? JSON.parse(stored) as Partial<Record<keyof StudioLayoutPreference, unknown>> : null;
+    return {
+      contentLayout: isStudioContentLayout(parsed?.contentLayout) ? parsed.contentLayout : defaultLayoutPreference.contentLayout,
+      navbarStyle: isStudioNavbarStyle(parsed?.navbarStyle) ? parsed.navbarStyle : defaultLayoutPreference.navbarStyle,
+      sidebarVariant: isStudioSidebarVariant(parsed?.sidebarVariant) ? parsed.sidebarVariant : defaultLayoutPreference.sidebarVariant,
+      sidebarCollapsible: isStudioSidebarCollapsible(parsed?.sidebarCollapsible) ? parsed.sidebarCollapsible : defaultLayoutPreference.sidebarCollapsible
+    };
+  } catch {
+    return defaultLayoutPreference;
+  }
+}
+
+function applyThemePreference(setting: StudioThemeSetting): StudioResolvedTheme {
+  const resolved = resolveStudioTheme(setting);
+  document.documentElement.setAttribute("data-theme", resolved);
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify({ theme: resolved, theme_setting: setting }));
+  } catch {
+    // ignore unavailable storage
+  }
+  return resolved;
+}
+
+function applyFontPreference(font: StudioFont): void {
+  document.documentElement.setAttribute("data-reading-font", font);
+  try {
+    localStorage.setItem(FONT_STORAGE_KEY, font);
+  } catch {
+    // ignore unavailable storage
+  }
+}
+
+function persistLayoutPreference(preference: StudioLayoutPreference): void {
+  try {
+    localStorage.setItem(LAYOUT_STORAGE_KEY, JSON.stringify(preference));
+  } catch {
+    // ignore unavailable storage
+  }
+}
 
 const defaultMetrics: StudioMetric[] = [
   {
@@ -337,6 +507,12 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
     { label: "Mentions", value: "3", helper: "Waiting for direct response", badge: "+1", trend: "up", icon: LuTag },
     { label: "Snoozed", value: "2", helper: "Deferred conversations", badge: "-1", trend: "up", icon: LuAlarmClock },
     { label: "Avg. Reply", value: "4m", helper: "Median response time today", badge: "+18%", trend: "up", icon: LuGauge }
+  ],
+  "ai-agent-setup": [
+    { label: "Setup notes", value: "6", helper: "Machine and agent references", badge: "+2", trend: "up", icon: LuBookOpenCheck },
+    { label: "Agent tools", value: "4", helper: "Codex, Claude, Gemini, Antigravity", badge: "ready", trend: "up", icon: LuSparkles },
+    { label: "MCP paths", value: "5", helper: "Install commands kept close", badge: "+3", trend: "up", icon: LuCommand },
+    { label: "Safety checks", value: "4", helper: "Credential and workflow guardrails", badge: "stable", trend: "up", icon: LuLock }
   ],
   calendar: [
     { label: "Today", value: "6", helper: "Events on the schedule", badge: "+2", trend: "up", icon: LuCalendarDays },
@@ -510,6 +686,17 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
     panels: ["Threads", "Conversation", "Profile"],
     timeline: ["Aiy sent a message", "Thread marked unread", "Attachment opened"]
   },
+  "ai-agent-setup": {
+    id: "ai-agent-setup",
+    title: "AI Agent Setup",
+    description: "Personal setup notes for my AI agent tools, MCP paths, and safe machine bootstrap.",
+    kind: "ai-setup",
+    icon: LuSparkles,
+    badge: "new",
+    metrics: routeMetrics["ai-agent-setup"],
+    panels: ["Setup library", "Agent workflow", "Command runbook"],
+    timeline: ["Skill library reviewed", "MCP install path captured", "Credential guardrail checked"]
+  },
   calendar: {
     id: "calendar",
     title: "Calendar",
@@ -645,63 +832,16 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
 const navGroups: StudioNavGroup[] = [
   {
     id: 1,
-    label: "Dashboards",
-    items: [
-      { id: "default", title: "Default", routeId: "default", icon: LuLayoutDashboard },
-      { id: "crm", title: "CRM", routeId: "crm", icon: LuBarChart },
-      { id: "finance", title: "Finance", routeId: "finance", icon: LuBanknote },
-      { id: "analytics", title: "Analytics", routeId: "analytics", icon: LuGauge },
-      { id: "productivity", title: "Productivity", routeId: "productivity", icon: LuListTodo },
-      { id: "ecommerce", title: "E-commerce", routeId: "ecommerce", icon: LuShoppingBag },
-      { id: "academy", title: "Academy", routeId: "academy", icon: LuGraduationCap },
-      { id: "logistics", title: "Logistics", routeId: "logistics", icon: LuBoxes },
-      { id: "infrastructure", title: "Infrastructure", routeId: "infrastructure", icon: LuServer, badge: "new" }
-    ]
-  },
-  {
-    id: 2,
-    label: "Pages",
-    items: [
-      { id: "email", title: "Email", routeId: "email", icon: LuMail },
-      { id: "chat", title: "Chat", routeId: "chat", icon: LuMessageSquare },
-      { id: "calendar", title: "Calendar", routeId: "calendar", icon: LuCalendarDays },
-      { id: "kanban", title: "Kanban", routeId: "kanban", icon: LuKanbanSquare },
-      { id: "invoice", title: "Invoice", routeId: "invoice", icon: LuClipboardList },
-      { id: "users", title: "Users", routeId: "users", icon: LuUsers },
-      { id: "roles", title: "Roles", routeId: "roles", icon: LuLock },
-      {
-        id: "authentication",
-        title: "Authentication",
-        icon: LuFingerprint,
-        subItems: [
-          { id: "auth-login-v1", title: "Login v1", routeId: "auth-login-v1" },
-          { id: "auth-login-v2", title: "Login v2", routeId: "auth-login-v2" },
-          { id: "auth-register-v1", title: "Register v1", routeId: "auth-register-v1" },
-          { id: "auth-register-v2", title: "Register v2", routeId: "auth-register-v2" }
-        ]
-      }
-    ]
-  },
-  {
-    id: 3,
-    label: "Legacy",
+    label: "Personal Studio",
     items: [
       {
-        id: "legacy-dashboards",
-        title: "Dashboards",
-        subItems: [
-          { id: "legacy-default", title: "Default V1", routeId: "legacy-default" },
-          { id: "legacy-crm", title: "CRM V1", routeId: "legacy-crm" },
-          { id: "legacy-finance", title: "Finance V1", routeId: "legacy-finance" },
-          { id: "legacy-analytics", title: "Analytics V1", routeId: "legacy-analytics" }
-        ]
+        id: "ai-agent-setup",
+        title: "AI Setup",
+        routeId: "ai-agent-setup",
+        icon: LuSparkles,
+        badge: "new"
       }
     ]
-  },
-  {
-    id: 4,
-    label: "Misc",
-    items: [{ id: "others", title: "Others", icon: LuExternalLink, badge: "soon", disabled: true }]
   }
 ];
 
@@ -990,6 +1130,31 @@ const dashboardKpis = [
   { title: "Runbooks", value: "9", description: "Recovery paths kept current", tone: "success" }
 ];
 
+const aiWorkflowSteps = [
+  {
+    title: "Context intake",
+    detail: "Collect repo state, goal, constraints, and acceptance checks before I ask an agent to work.",
+    state: "ready"
+  },
+  {
+    title: "Agent run",
+    detail: "Use Codex or another focused agent for one bounded implementation path at a time.",
+    state: "active"
+  },
+  {
+    title: "Verification",
+    detail: "Run typecheck, route tests, visual audit, and deploy checks before calling work done.",
+    state: "required"
+  },
+  {
+    title: "Knowledge capture",
+    detail: "Store useful commands, MCP setup, and failure notes back into this Studio.",
+    state: "next"
+  }
+];
+
+const aiRuntimeTargets = ["Codex", "Claude", "Antigravity", "Gemini"];
+
 const releaseChecklist = [
   { title: "Verify feature flag default fallback", tag: "Rollout", done: true },
   { title: "Check ingress and load balancer route parity", tag: "Infra", done: true },
@@ -1065,6 +1230,11 @@ const flatRouteResults = navGroups.flatMap((group) =>
     return item.routeId ? [item] : [];
   })
 );
+const visibleRouteIds = new Set(
+  flatRouteResults
+    .map((item) => item.routeId)
+    .filter((routeId): routeId is StudioRouteId => Boolean(routeId))
+);
 
 function routeHref(routeId: StudioRouteId): string {
   return `#${routeId}`;
@@ -1072,7 +1242,9 @@ function routeHref(routeId: StudioRouteId): string {
 
 function normalizeHash(hash: string): StudioRouteId {
   const candidate = hash.replace(/^#\/?/, "");
-  return candidate in routeDefinitions ? (candidate as StudioRouteId) : DEFAULT_ROUTE;
+  return candidate in routeDefinitions && visibleRouteIds.has(candidate as StudioRouteId)
+    ? (candidate as StudioRouteId)
+    : DEFAULT_ROUTE;
 }
 
 function isItemActive(item: StudioNavItem, activeRoute: StudioRouteId): boolean {
@@ -1111,6 +1283,12 @@ function getInitials(name: string): string {
     .join("")
     .slice(0, 2)
     .toUpperCase();
+}
+
+function statusText(status: StudioNote["status"]): string {
+  if (status === "ready") return "Ready";
+  if (status === "draft") return "Draft";
+  return "Next";
 }
 
 function MetricCard({ item }: { item: StudioMetric }) {
@@ -2038,6 +2216,192 @@ function ChatRoutePage({ route }: { route: StudioRoute }) {
   );
 }
 
+function AiAgentSetupPage({ route }: { route: StudioRoute }) {
+  const setupFolder = studioFolders.find((folder) => folder.id === "machine-bootstrap");
+  const setupGroups = setupFolder?.groups ?? [];
+  const setupNoteIds = new Set(setupGroups.flatMap((group) => group.noteIds));
+  const setupNotes = studioNotes.filter((note) => setupNoteIds.has(note.id));
+  const initialNoteId = setupNotes.some((note) => note.id === defaultStudioNoteId)
+    ? defaultStudioNoteId
+    : setupNotes[0]?.id ?? defaultStudioNoteId;
+  const [selectedNoteId, setSelectedNoteId] = useState(initialNoteId);
+  const selectedNote = setupNotes.find((note) => note.id === selectedNoteId) ?? setupNotes[0] ?? studioNotes[0];
+  const workflowFolder = studioFolders.find((folder) => folder.id === "ai-learning");
+  const workflowNoteIds = new Set(workflowFolder?.groups.flatMap((group) => group.noteIds) ?? []);
+  const workflowNotes = studioNotes.filter((note) => workflowNoteIds.has(note.id));
+
+  return (
+    <section className="route-page ai-setup-route">
+      <RouteHeading route={route}>
+        <div className="route-actions">
+          <a className="outline-button" href={resumePath} target="_blank" rel="noreferrer">
+            <LuExternalLink aria-hidden="true" />
+            Back to CV
+          </a>
+          <button type="button" className="outline-button">
+            <LuPlusCircle aria-hidden="true" />
+            Add note
+          </button>
+        </div>
+      </RouteHeading>
+
+      <RouteMetricGrid metrics={route.metrics} />
+
+      <div className="ai-setup-container card" data-studio-module="ai-agent-setup">
+        <aside className="ai-setup-index" aria-label="AI setup notes">
+          <div className="ai-pane-head">
+            <span><LuSparkles aria-hidden="true" /></span>
+            <div>
+              <h2>{setupFolder?.label ?? "Setup library"}</h2>
+              <p>{setupFolder?.subtitle ?? "Agent setup notes"}</p>
+            </div>
+          </div>
+
+          <div className="ai-runtime-strip" aria-label="Agent runtimes">
+            {aiRuntimeTargets.map((target) => (
+              <span key={target}>{target}</span>
+            ))}
+          </div>
+
+          <div className="ai-setup-groups">
+            {setupGroups.map((group) => (
+              <section key={group.label} className="ai-setup-group">
+                <p>{group.label}</p>
+                <div>
+                  {group.noteIds.map((noteId) => {
+                    const note = studioNotes.find((item) => item.id === noteId);
+                    if (!note) return null;
+
+                    return (
+                      <button
+                        key={note.id}
+                        type="button"
+                        className={`ai-note-button${selectedNote.id === note.id ? " is-active" : ""}`}
+                        onClick={() => setSelectedNoteId(note.id)}
+                      >
+                        <span>
+                          <strong>{note.title}</strong>
+                          <small>{note.subtitle}</small>
+                        </span>
+                        <em>{statusText(note.status)}</em>
+                      </button>
+                    );
+                  })}
+                </div>
+              </section>
+            ))}
+          </div>
+        </aside>
+
+        <article className="ai-setup-reader" aria-label="Selected AI setup note">
+          <div className="ai-reader-head">
+            <div>
+              <span className={`ai-status-pill status-${selectedNote.status}`}>{statusText(selectedNote.status)}</span>
+              <h2>{selectedNote.title}</h2>
+              <p>{selectedNote.summary}</p>
+            </div>
+            <small>Updated {selectedNote.updatedAt}</small>
+          </div>
+
+          <div className="ai-tag-list" aria-label="Setup note tags">
+            {selectedNote.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+
+          <div className="ai-section-list">
+            {selectedNote.sections.map((section) => (
+              <section key={section.heading}>
+                <h3>{section.heading}</h3>
+                <p>{section.body}</p>
+              </section>
+            ))}
+          </div>
+
+          {selectedNote.commands?.length ? (
+            <section className="ai-command-panel" aria-label="Setup commands">
+              <div className="ai-panel-title">
+                <LuCommand aria-hidden="true" />
+                <div>
+                  <h3>Command runbook</h3>
+                  <p>Commands to verify before using them on a new machine.</p>
+                </div>
+              </div>
+              <div className="ai-command-list">
+                {selectedNote.commands.map((command) => (
+                  <article className="ai-command-card" key={`${command.label}-${command.command}`}>
+                    <span>{command.label}</span>
+                    <code>{command.command}</code>
+                    {command.note && <p>{command.note}</p>}
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {selectedNote.links?.length ? (
+            <section className="ai-link-grid" aria-label="Reference links">
+              {selectedNote.links.map((link) => (
+                <a href={link.href} key={link.href} target="_blank" rel="noreferrer">
+                  <strong>{link.label}</strong>
+                  {link.note && <span>{link.note}</span>}
+                </a>
+              ))}
+            </section>
+          ) : null}
+        </article>
+
+        <aside className="ai-workflow-rail" aria-label="AI workflow setup">
+          <div className="ai-pane-head">
+            <span><LuWaves aria-hidden="true" /></span>
+            <div>
+              <h2>AI workflow</h2>
+              <p>First container for research and operating notes.</p>
+            </div>
+          </div>
+
+          <div className="ai-workflow-steps">
+            {aiWorkflowSteps.map((step, index) => (
+              <article key={step.title} className={`ai-workflow-step state-${step.state}`}>
+                <span>{index + 1}</span>
+                <div>
+                  <strong>{step.title}</strong>
+                  <p>{step.detail}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <section className="ai-checklist-panel">
+            <h3>Setup checklist</h3>
+            <div>
+              {selectedNote.checklist?.map((item) => (
+                <label className="check-row checklist-row" key={item.label}>
+                  <input type="checkbox" defaultChecked={item.checked} />
+                  <span>
+                    <strong>{item.label}</strong>
+                    {item.detail && <small>{item.detail}</small>}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </section>
+
+          <section className="ai-research-queue">
+            <h3>Research queue</h3>
+            {workflowNotes.map((note) => (
+              <article key={note.id}>
+                <strong>{note.title}</strong>
+                <p>{note.subtitle}</p>
+              </article>
+            ))}
+          </section>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
 function CalendarPage({ route }: { route: StudioRoute }) {
   const days = Array.from({ length: 35 }, (_, index) => index + 1);
   return (
@@ -2114,7 +2478,7 @@ function InvoicePage({ route }: { route: StudioRoute }) {
         </section>
         <section className="invoice-paper">
           <strong>Invoice #18425</strong>
-          <p>Studio Admin implementation</p>
+          <p>Studio implementation</p>
           <div className="invoice-line"><span>Dashboard shell</span><b>$1,250.00</b></div>
           <div className="invoice-line"><span>Interaction testing</span><b>$420.00</b></div>
           <div className="invoice-total"><span>Total</span><b>$1,670.00</b></div>
@@ -2181,7 +2545,7 @@ function AuthPage({ route }: { route: StudioRoute }) {
       <div className="auth-card card">
         <div className="auth-brand">
           <LuCommand aria-hidden="true" />
-          <span>Studio Admin</span>
+          <span>Studio</span>
         </div>
         <h1>{route.title}</h1>
         <p>{route.description}</p>
@@ -2380,6 +2744,7 @@ function RouteContent({
   if (route.kind === "ecommerce" || route.kind === "academy" || route.kind === "logistics" || route.kind === "infrastructure") return <CommerceAcademyPage route={route} />;
   if (route.kind === "mail") return <MailRoutePage route={route} />;
   if (route.kind === "chat") return <ChatRoutePage route={route} />;
+  if (route.kind === "ai-setup") return <AiAgentSetupPage route={route} />;
   if (route.kind === "calendar") return <CalendarPage route={route} />;
   if (route.kind === "kanban") return <KanbanPage route={route} />;
   if (route.kind === "invoice") return <InvoicePage route={route} />;
@@ -2418,7 +2783,7 @@ function CommandDialog({
       <section className="command-dialog" role="dialog" aria-modal="true" aria-label="Search Studio routes">
         <div className="command-input-row">
           <LuSearch aria-hidden="true" />
-          <input autoFocus value={query} onChange={(event) => onQuery(event.target.value)} placeholder="Search dashboards, pages, and legacy views..." />
+          <input autoFocus value={query} onChange={(event) => onQuery(event.target.value)} placeholder="Search AI setup..." />
           <button type="button" onClick={onClose} aria-label="Close search">
             <LuX aria-hidden="true" />
           </button>
@@ -2453,18 +2818,197 @@ function CommandDialog({
   );
 }
 
+function StudioPreferencesPanel({
+  themeSetting,
+  resolvedTheme,
+  font,
+  layoutPreference,
+  onThemeChange,
+  onFontChange,
+  onLayoutChange,
+  onRestoreLayout
+}: {
+  themeSetting: StudioThemeSetting;
+  resolvedTheme: StudioResolvedTheme;
+  font: StudioFont;
+  layoutPreference: StudioLayoutPreference;
+  onThemeChange: (setting: StudioThemeSetting) => void;
+  onFontChange: (font: StudioFont) => void;
+  onLayoutChange: (preference: Partial<StudioLayoutPreference>) => void;
+  onRestoreLayout: () => void;
+}) {
+  const currentFont = fontOptions.find((option) => option.value === font) ?? fontOptions[0];
+
+  return (
+    <section className="preferences-popover" aria-label="Studio preferences">
+      <div className="preferences-head">
+        <div>
+          <h2>Preferences</h2>
+          <p>Theme, font, and layout for this Studio workspace.</p>
+        </div>
+        <span className="theme-color-preview" aria-label="CV theme color">
+          <i />
+          CV palette
+        </span>
+      </div>
+
+      <div className="preference-section">
+        <label>Theme mode</label>
+        <div className="preference-segment" data-columns={themeOptions.length} role="radiogroup" aria-label="Theme mode">
+          {themeOptions.map((option) => {
+            const Icon = option.icon;
+            const active = themeSetting === option.value;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                className={active ? "is-active" : undefined}
+                onClick={() => onThemeChange(option.value)}
+              >
+                <Icon aria-hidden="true" />
+                <span>{option.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <p>Resolved now: {resolvedTheme}</p>
+      </div>
+
+      <div className="preference-section">
+        <label htmlFor="studio-font-select">Font</label>
+        <div className="preference-select-row">
+          <LuType aria-hidden="true" />
+          <select
+            id="studio-font-select"
+            className="native-select"
+            value={font}
+            onChange={(event) => onFontChange(event.target.value as StudioFont)}
+          >
+            {fontOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <p>{currentFont.detail}</p>
+      </div>
+
+      <div className="preference-section">
+        <label>Page layout</label>
+        <div className="preference-segment" data-columns={contentLayoutOptions.length} role="radiogroup" aria-label="Page layout">
+          {contentLayoutOptions.map((option) => {
+            const active = layoutPreference.contentLayout === option.value;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                className={active ? "is-active" : undefined}
+                onClick={() => onLayoutChange({ contentLayout: option.value })}
+              >
+                <span>{option.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <p>Centered keeps reading calm. Full width gives wider operations surfaces.</p>
+      </div>
+
+      <div className="preference-section">
+        <label>Navbar behavior</label>
+        <div className="preference-segment" data-columns={navbarStyleOptions.length} role="radiogroup" aria-label="Navbar behavior">
+          {navbarStyleOptions.map((option) => {
+            const active = layoutPreference.navbarStyle === option.value;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                className={active ? "is-active" : undefined}
+                onClick={() => onLayoutChange({ navbarStyle: option.value })}
+              >
+                <span>{option.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <p>Sticky keeps controls visible. Scroll lets the whole workspace move together.</p>
+      </div>
+
+      <div className="preference-section">
+        <label>Sidebar style</label>
+        <div className="preference-segment" data-columns={sidebarVariantOptions.length} role="radiogroup" aria-label="Sidebar style">
+          {sidebarVariantOptions.map((option) => {
+            const active = layoutPreference.sidebarVariant === option.value;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                className={active ? "is-active" : undefined}
+                onClick={() => onLayoutChange({ sidebarVariant: option.value })}
+              >
+                <span>{option.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <p>Choose the density that matches the current setup work.</p>
+      </div>
+
+      <div className="preference-section">
+        <label>Collapse mode</label>
+        <div className="preference-segment" data-columns={sidebarCollapsibleOptions.length} role="radiogroup" aria-label="Collapse mode">
+          {sidebarCollapsibleOptions.map((option) => {
+            const active = layoutPreference.sidebarCollapsible === option.value;
+            return (
+              <button
+                key={option.value}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                className={active ? "is-active" : undefined}
+                onClick={() => onLayoutChange({ sidebarCollapsible: option.value })}
+              >
+                <span>{option.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <p>Icon keeps the rail visible. Offcanvas hides it completely on desktop.</p>
+      </div>
+
+      <button type="button" className="restore-preferences" onClick={onRestoreLayout}>
+        Restore layout defaults
+      </button>
+    </section>
+  );
+}
+
 export function StudioAdminShell({ locale }: StudioAdminShellProps) {
   const [activeRoute, setActiveRoute] = useState<StudioRouteId>(() => (typeof window === "undefined" ? DEFAULT_ROUTE : normalizeHash(window.location.hash)));
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({ authentication: false, "legacy-dashboards": false });
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [themeSetting, setThemeSetting] = useState<StudioThemeSetting>(readInitialThemeSetting);
+  const [resolvedTheme, setResolvedTheme] = useState<StudioResolvedTheme>(() => resolveStudioTheme(readInitialThemeSetting()));
+  const [studioFont, setStudioFont] = useState<StudioFont>(readInitialFont);
+  const [layoutPreference, setLayoutPreference] = useState<StudioLayoutPreference>(readInitialLayoutPreference);
+  const [desktopSidebarOpen, setDesktopSidebarOpen] = useState(true);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [preferencesOpen, setPreferencesOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
   const [workstreamSearch, setWorkstreamSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [sortMode, setSortMode] = useState("joined");
+  const preferencesRef = useRef<HTMLDivElement>(null);
   const route = routeDefinitions[activeRoute];
 
   useEffect(() => {
@@ -2485,6 +3029,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
       }
       if (event.key === "Escape") {
         setSearchOpen(false);
+        setPreferencesOpen(false);
         setAccountOpen(false);
         setMobileSidebarOpen(false);
       }
@@ -2494,9 +3039,37 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
+  useEffect(() => {
+    if (!preferencesOpen) return undefined;
+
+    const onPointerDown = (event: globalThis.MouseEvent) => {
+      const path = event.composedPath();
+      if (preferencesRef.current && !path.includes(preferencesRef.current)) {
+        setPreferencesOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", onPointerDown);
+    return () => document.removeEventListener("mousedown", onPointerDown);
+  }, [preferencesOpen]);
+
+  useEffect(() => {
+    if (themeSetting !== "system") return undefined;
+
+    const query = window.matchMedia("(prefers-color-scheme: dark)");
+    const onSystemThemeChange = () => {
+      const resolved = applyThemePreference("system");
+      setResolvedTheme(resolved);
+    };
+
+    query.addEventListener("change", onSystemThemeChange);
+    return () => query.removeEventListener("change", onSystemThemeChange);
+  }, [themeSetting]);
+
   const activateRoute = useCallback((routeId: StudioRouteId) => {
     setActiveRoute(routeId);
     setMobileSidebarOpen(false);
+    setPreferencesOpen(false);
     setAccountOpen(false);
     const nextHash = routeHref(routeId);
     if (window.location.hash !== nextHash) {
@@ -2514,20 +3087,65 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
       setMobileSidebarOpen((value) => !value);
       return;
     }
+
+    if (layoutPreference.sidebarCollapsible === "offcanvas") {
+      setDesktopSidebarOpen((value) => !value);
+      return;
+    }
+
     setSidebarCollapsed((value) => !value);
   };
 
+  const handleThemeChange = useCallback((setting: StudioThemeSetting) => {
+    setThemeSetting(setting);
+    setResolvedTheme(applyThemePreference(setting));
+  }, []);
+
+  const handleFontChange = useCallback((font: StudioFont) => {
+    setStudioFont(font);
+    applyFontPreference(font);
+  }, []);
+
+  const handleLayoutChange = useCallback((preference: Partial<StudioLayoutPreference>) => {
+    setLayoutPreference((current) => {
+      const next = { ...current, ...preference };
+      persistLayoutPreference(next);
+      return next;
+    });
+
+    if (preference.sidebarCollapsible) {
+      setSidebarCollapsed(false);
+      setDesktopSidebarOpen(true);
+    }
+  }, []);
+
+  const handleRestoreLayout = useCallback(() => {
+    setLayoutPreference(defaultLayoutPreference);
+    persistLayoutPreference(defaultLayoutPreference);
+    setSidebarCollapsed(false);
+    setDesktopSidebarOpen(true);
+  }, []);
+
+  const isIconCollapsed = layoutPreference.sidebarCollapsible === "icon" && sidebarCollapsed;
+  const isSidebarHidden = layoutPreference.sidebarCollapsible === "offcanvas" && !desktopSidebarOpen;
+
   return (
     <div
-      className={`studio-admin${sidebarCollapsed ? " is-sidebar-collapsed" : ""}${mobileSidebarOpen ? " is-mobile-open" : ""}${darkMode ? " is-dark" : ""}`}
+      className={`studio-admin${isIconCollapsed ? " is-sidebar-collapsed" : ""}${isSidebarHidden ? " is-sidebar-hidden" : ""}${mobileSidebarOpen ? " is-mobile-open" : ""}${resolvedTheme === "dark" ? " is-dark" : ""}`}
       data-locale={locale}
       data-route={activeRoute}
+      data-theme-setting={themeSetting}
+      data-studio-font={studioFont}
+      data-content-layout={layoutPreference.contentLayout}
+      data-navbar-style={layoutPreference.navbarStyle}
+      data-sidebar-variant={layoutPreference.sidebarVariant}
+      data-sidebar-collapsible={layoutPreference.sidebarCollapsible}
     >
       <aside className="studio-sidebar" aria-label="Dashboard navigation">
         <div className="sidebar-header">
-          <a className="sidebar-brand" href={routeHref(DEFAULT_ROUTE)} aria-label="Open default dashboard" onClick={handleBrandClick}>
-            <LuCommand aria-hidden="true" />
-            <span>Studio Admin</span>
+          <a className="sidebar-brand" href={routeHref(DEFAULT_ROUTE)} aria-label="Open Studio" onClick={handleBrandClick}>
+            <Image src="/icon.png" alt="" width={28} height={28} />
+            <span>Studio</span>
           </a>
           <button className="sidebar-close" type="button" onClick={() => setMobileSidebarOpen(false)} aria-label="Close navigation">
             <LuX aria-hidden="true" />
@@ -2536,11 +3154,8 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
 
         <div className="sidebar-create">
           <button type="button" className="quick-create" onClick={() => setSearchOpen(true)}>
-            <LuPlusCircle aria-hidden="true" />
-            <span>Quick Create</span>
-          </button>
-          <button type="button" className="mail-button" aria-label="Open email route" onClick={() => activateRoute("email")}>
-            <LuInbox aria-hidden="true" />
+            <LuSearch aria-hidden="true" />
+            <span>Find setup note</span>
           </button>
         </div>
 
@@ -2551,7 +3166,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
               group={group}
               activeRoute={activeRoute}
               expanded={expanded}
-              collapsed={sidebarCollapsed}
+              collapsed={isIconCollapsed}
               onActivate={activateRoute}
               onToggle={(id) => setExpanded((value) => ({ ...value, [id]: !(value[id] ?? false) }))}
             />
@@ -2559,11 +3174,11 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
         </div>
 
         <div className="sidebar-footer">
-          {!sidebarCollapsed && (
+          {!isIconCollapsed && (
             <section className="support-card">
-              <strong>Looking for the CV?</strong>
+              <strong>Personal AI setup</strong>
               <p>
-                The admin shell stays isolated here. Open the <a href={cvHref()} target="_blank" rel="noreferrer">CV file</a> any time.
+                Notes for preparing my machines, agent tools, and MCP paths. Open the <a href={cvHref()} target="_blank" rel="noreferrer">CV file</a> when needed.
               </p>
             </section>
           )}
@@ -2572,7 +3187,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
             <span className="user-avatar">N</span>
             <span>
               <strong>Nguyen Le Phong</strong>
-              <small>Back to CV</small>
+              <small>Senior Software Engineer</small>
             </span>
             <LuMoreVertical aria-hidden="true" />
           </a>
@@ -2596,12 +3211,32 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
           </div>
 
           <div className="topbar-actions">
-            <button type="button" className="topbar-icon" aria-label="Open settings" onClick={() => setAccountOpen((value) => !value)}>
-              <LuSettings aria-hidden="true" />
-            </button>
-            <button type="button" className="topbar-icon" aria-label="Toggle theme" onClick={() => setDarkMode((value) => !value)}>
-              {darkMode ? <LuSun aria-hidden="true" /> : <LuMoon aria-hidden="true" />}
-            </button>
+            <div className="preferences-anchor" ref={preferencesRef}>
+              <button
+                type="button"
+                className="topbar-icon"
+                aria-label="Open Studio preferences"
+                aria-expanded={preferencesOpen}
+                onClick={() => {
+                  setPreferencesOpen((value) => !value);
+                  setAccountOpen(false);
+                }}
+              >
+                <LuSettings aria-hidden="true" />
+              </button>
+              {preferencesOpen && (
+                <StudioPreferencesPanel
+                  themeSetting={themeSetting}
+                  resolvedTheme={resolvedTheme}
+                  font={studioFont}
+                  layoutPreference={layoutPreference}
+                  onThemeChange={handleThemeChange}
+                  onFontChange={handleFontChange}
+                  onLayoutChange={handleLayoutChange}
+                  onRestoreLayout={handleRestoreLayout}
+                />
+              )}
+            </div>
             <a
               className="topbar-icon"
               href="https://github.com/nguyenlephong"
@@ -2611,11 +3246,21 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
             >
               <LuGithub aria-hidden="true" />
             </a>
-            <button type="button" className="topbar-avatar" onClick={() => setAccountOpen((value) => !value)} aria-label="Open account menu">N</button>
+            <button
+              type="button"
+              className="topbar-avatar"
+              onClick={() => {
+                setAccountOpen((value) => !value);
+                setPreferencesOpen(false);
+              }}
+              aria-label="Open account menu"
+            >
+              N
+            </button>
             {accountOpen && (
               <section className="account-popover">
                 <strong>Nguyen Le Phong</strong>
-                <span>Studio preview account</span>
+                <span>Senior Software Engineer</span>
                 <a href={cvHref()} target="_blank" rel="noreferrer">Back to CV</a>
               </section>
             )}
