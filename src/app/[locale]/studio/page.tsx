@@ -90,13 +90,24 @@ export default async function StudioPage({ params }: Props) {
           __html: `
             body:has(.studio-route-shell),
             body.studio-app-shell-active {
-              background: #fafafa !important;
+              overflow: hidden;
+              background: var(--bg, #fafafa) !important;
             }
 
             body:has(.studio-route-shell) main.studio-route-shell,
             body.studio-app-shell-active main.studio-route-shell {
+              height: 100vh !important;
+              min-height: 100vh !important;
+              overflow: hidden !important;
               padding-top: 0 !important;
               padding-bottom: 0 !important;
+            }
+
+            body:has(.studio-route-shell) [data-studio-shadow-host],
+            body.studio-app-shell-active [data-studio-shadow-host] {
+              height: 100vh !important;
+              min-height: 100vh !important;
+              overflow: hidden !important;
             }
 
             body:has(.studio-route-shell) .app-nav,
