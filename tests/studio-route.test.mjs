@@ -92,6 +92,14 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(workspace, /studioShadowStyles/);
   assert.match(adminShell, /^"use client"/);
   assert.match(adminShell, /StudioAdminShell/);
+  assert.match(adminShell, /studioCopyByLocale/);
+  assert.match(adminShell, /getStudioCopy/);
+  assert.match(adminShell, /getLocalizedRouteDefinitions/);
+  assert.match(adminShell, /navLabel:\s*"Studio cá nhân"/);
+  assert.match(adminShell, /navLabel:\s*"个人 Studio"/);
+  assert.match(adminShell, /navLabel:\s*"パーソナル Studio"/);
+  assert.match(adminShell, /navLabel:\s*"개인 Studio"/);
+  assert.match(adminShell, /navLabel:\s*"Studio personnel"/);
   assert.match(adminShell, /studio-sidebar/);
   assert.match(adminShell, /studio-topbar/);
   assert.match(adminShell, /metric-grid/);
@@ -294,6 +302,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.blog-roadmap-workbench\.card\s*\{[^}]*grid-template-columns:\s*18rem minmax\(0,\s*1fr\) 20rem/s);
   assert.match(shadowCss, /\.roadmap-day-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s);
   assert.match(shadowCss, /@media \(max-width: 1320px\)\s*\{[\s\S]*?\.blog-roadmap-workbench\.card\s*\{[^}]*height:\s*auto;[^}]*overflow:\s*visible/s);
+  assert.match(shadowCss, /@media \(max-width: 1080px\)/);
+  assert.match(shadowCss, /\.studio-admin\.is-mobile-open \.studio-sidebar\s*\{[^}]*width:\s*min\(22rem,\s*calc\(100vw - 1rem\)\)/s);
+  assert.match(shadowCss, /@media \(max-width: 640px\)\s*\{[\s\S]*?\.metric-grid,\s*\.route-actions/s);
   assert.match(shadowCss, /--sidebar:\s*color-mix/);
   assert.match(shadowCss, /border-radius:\s*0\.875rem/);
   assert.match(shadowCss, /@media \(max-width: 860px\)/);
@@ -350,6 +361,13 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "Engineering delivery checklist",
     "Senior engineer reflex",
     "Capstone production project",
+    "AI system engineering roadmap",
+    "SDLC ownership",
+    "Distributed architecture and resilience",
+    "Large-scale storage",
+    "B-Tree and LSM-Tree",
+    "AI-Driven System Engineering Roadmap",
+    "AI-first elicitation prompt",
     "Circuit Breaker",
     "Event Sourcing",
     "OpenTelemetry",

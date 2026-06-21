@@ -59,6 +59,21 @@ a {
   text-rendering: optimizeLegibility;
 }
 
+.studio-admin,
+.studio-main,
+.dashboard-content,
+.route-page,
+.card,
+.metric-card {
+  max-width: 100%;
+}
+
+.studio-main,
+.dashboard-content,
+.route-page {
+  overflow-x: clip;
+}
+
 .studio-admin[data-studio-font="source"] {
   font-family: var(--font-reading-source), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -295,6 +310,20 @@ a {
     border-color 150ms ease,
     color 150ms ease,
     transform 120ms ease;
+}
+
+.quick-create,
+.outline-button,
+.select-button,
+.sidebar-menu-button,
+.profile-link-grid a,
+.skill-list-button,
+.checklist-list-button,
+.roadmap-topic-button,
+.roadmap-day-card,
+.ai-note-button,
+.check-row {
+  overflow-wrap: anywhere;
 }
 
 .quick-create {
@@ -808,6 +837,13 @@ a {
   font-size: 0.75rem;
 }
 
+.preference-segment button span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .preference-segment button.is-active {
   background: var(--background);
   color: var(--foreground);
@@ -893,6 +929,11 @@ a {
   scrollbar-gutter: stable;
   margin: 0 auto;
   padding: 1.5rem;
+}
+
+.dashboard-content,
+.route-page {
+  overflow-x: clip;
 }
 
 .route-page {
@@ -3456,6 +3497,88 @@ tbody tr:hover {
   .component-inventory {
     grid-column: 1 / -1;
   }
+
+  .skill-library-workbench.card,
+  .checklist-workbench.card {
+    grid-template-columns: minmax(15rem, 0.42fr) minmax(0, 1fr);
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .skill-index-pane,
+  .skill-reader-pane,
+  .skill-side-pane,
+  .checklist-index-pane,
+  .checklist-reader-pane,
+  .checklist-side-pane {
+    overflow: visible;
+  }
+
+  .skill-side-pane,
+  .checklist-side-pane {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--border);
+    border-left: 0;
+  }
+
+  .ai-setup-container.card {
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 1080px) {
+  .blog-roadmap-workbench.card,
+  .ai-setup-container.card,
+  .skill-library-workbench.card,
+  .checklist-workbench.card {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .roadmap-topic-pane,
+  .roadmap-plan-pane,
+  .roadmap-detail-pane,
+  .ai-setup-index,
+  .ai-setup-reader,
+  .ai-workflow-rail,
+  .skill-index-pane,
+  .skill-reader-pane,
+  .skill-side-pane,
+  .checklist-index-pane,
+  .checklist-reader-pane,
+  .checklist-side-pane {
+    overflow: visible;
+  }
+
+  .roadmap-topic-pane,
+  .ai-setup-index,
+  .skill-index-pane,
+  .checklist-index-pane {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .roadmap-detail-pane,
+  .ai-workflow-rail,
+  .skill-side-pane,
+  .checklist-side-pane {
+    grid-column: auto;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .roadmap-plan-head {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-status-strip {
+    min-width: 0;
+  }
 }
 
 @media (max-width: 860px) {
@@ -3486,7 +3609,8 @@ tbody tr:hover {
     z-index: 80;
     display: flex;
     height: 100dvh;
-    width: min(19rem, 86vw);
+    width: min(22rem, calc(100vw - 1rem));
+    max-width: calc(100vw - 1rem);
     border-width: 0 1px 0 0;
     border-radius: 0 0.875rem 0.875rem 0;
     box-shadow: 16px 0 40px rgba(0, 0, 0, 0.16);
@@ -3530,6 +3654,12 @@ tbody tr:hover {
 
   .sidebar-close {
     display: inline-flex;
+  }
+
+  .sidebar-scroll {
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
   }
 
   .studio-main,
@@ -3984,6 +4114,29 @@ tbody tr:hover {
   .workstream-avatar {
     width: 1.75rem;
     height: 1.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .metric-grid,
+  .route-actions,
+  .roadmap-status-strip,
+  .roadmap-day-grid,
+  .profile-link-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .route-actions {
+    display: grid;
+  }
+
+  .roadmap-detail-list div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .message-bubble {
+    max-width: 92%;
   }
 }
 

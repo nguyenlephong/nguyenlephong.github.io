@@ -1416,6 +1416,123 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
     ]
   },
   {
+    id: "ai-system-engineering-roadmap",
+    title: "AI system engineering roadmap",
+    summary: "A daily learning checklist for SDLC ownership, distributed architecture, storage systems, and AI-assisted engineering review.",
+    whenToUse: "Use as the daily AI up-skill map when the goal is to become stronger at technical decisions, not only faster at code generation.",
+    tags: ["AI up-skill", "System engineering", "Distributed systems", "Storage", "SDLC"],
+    sections: [
+      {
+        id: "sdlc-ownership",
+        title: "Pillar 1: SDLC ownership",
+        detail: "Keep human ownership visible while AI accelerates implementation.",
+        steps: [
+          {
+            id: "ai-paradox",
+            label: "Watch the AI paradox.",
+            detail: "Do not merge complex generated code without understanding the mechanism and production consequence."
+          },
+          {
+            id: "productive-friction",
+            label: "Keep productive friction in the workflow.",
+            detail: "Use manual review, context-seeding sessions, and no-AI zones when learning or onboarding."
+          },
+          {
+            id: "nine-phases",
+            label: "Review the nine SDLC phases.",
+            detail: "Strategy, requirements, architecture, coding, QA, release, observability, maintenance, and iteration."
+          },
+          {
+            id: "telemetry-layers",
+            label: "Map telemetry across eight layers.",
+            detail: "Edge/network, service, application, data, Kubernetes, serverless/PaaS, CI/CD, and incident response."
+          }
+        ]
+      },
+      {
+        id: "distributed-resilience-advanced",
+        title: "Pillar 2: Distributed architecture and resilience",
+        detail: "Learn the patterns that keep systems correct when state, time, and dependencies become messy.",
+        steps: [
+          {
+            id: "event-sourcing-cqrs",
+            label: "Study Event Sourcing plus CQRS as an operational model.",
+            detail: "Event store, aggregate stream, snapshotting, projection, optimistic concurrency, and read model rebuild."
+          },
+          {
+            id: "schema-evolution",
+            label: "Practice event schema evolution.",
+            detail: "Tolerant deserialization, upcasting, versioned events, and hot/warm/cold event storage."
+          },
+          {
+            id: "circuit-breaker",
+            label: "Understand Circuit Breaker deeply.",
+            detail: "Closed, open, half-open, sliding windows, slow-call thresholds, fallback, and exception classification."
+          },
+          {
+            id: "retry-composition",
+            label: "Compose retry before Circuit Breaker deliberately.",
+            detail: "Use bounded retry with exponential backoff and jitter, then record the final outcome into the breaker."
+          }
+        ]
+      },
+      {
+        id: "storage-scale",
+        title: "Pillar 3: Large-scale storage",
+        detail: "Build the storage intuition needed for performance, availability, and safe data evolution.",
+        steps: [
+          {
+            id: "btree-lsm",
+            label: "Compare B-Tree and LSM-Tree.",
+            detail: "Read-heavy in-place updates versus write-heavy append-only storage, compaction, and Bloom filters."
+          },
+          {
+            id: "index-mastery",
+            label: "Master practical indexing.",
+            detail: "Clustered, non-clustered, composite, covering indexes, leftmost prefix rule, and index invalidation."
+          },
+          {
+            id: "replication-consensus",
+            label: "Study replication and consensus.",
+            detail: "Sync, async, semi-sync replication, Raft/Multi-Paxos quorum, physical/logical replication, and replication slots."
+          },
+          {
+            id: "sharding-transactions",
+            label: "Learn sharding and distributed transactions.",
+            detail: "Consistent hashing, virtual nodes, hotspot mitigation, 2PC trade-offs, and Saga as a practical alternative."
+          }
+        ]
+      },
+      {
+        id: "ai-engineering-review",
+        title: "Pillar 4: Professional AI engineering workflow",
+        detail: "Use AI as analyst, critic, test strategist, and production reviewer while keeping final judgment human.",
+        steps: [
+          {
+            id: "ai-elicitation",
+            label: "Ask AI to clarify requirements before implementation.",
+            detail: "Group questions by business, product, data, API, security, reliability, rollout, and observability."
+          },
+          {
+            id: "adversarial-review",
+            label: "Run adversarial architecture review.",
+            detail: "Challenge race conditions, consistency bugs, security gaps, performance bottlenecks, and failure scenarios."
+          },
+          {
+            id: "test-security",
+            label: "Generate a test and security matrix.",
+            detail: "Unit, integration, contract, E2E, migration, rollback, static security checks, and dependency failure paths."
+          },
+          {
+            id: "daily-artifact",
+            label: "Save one learning artifact per day.",
+            detail: "ADR, prompt, query plan, resilience note, rollout checklist, runbook, or postmortem lesson."
+          }
+        ]
+      }
+    ]
+  },
+  {
     id: "release-readiness",
     title: "Release readiness",
     summary: "A checklist for deciding whether a change is ready to leave the branch.",
@@ -1760,7 +1877,7 @@ export const studioFolders: StudioFolder[] = [
     groups: [
       {
         label: "Operating system",
-        noteIds: ["ai-operating-system", "ai-driven-engineering-foundation"]
+        noteIds: ["ai-operating-system", "ai-driven-engineering-foundation", "ai-system-engineering-roadmap"]
       },
       {
         label: "Agent systems",
@@ -1934,6 +2051,84 @@ export const studioNotes: StudioNote[] = [
       },
       {
         label: "Move one capstone project forward every week."
+      }
+    ]
+  },
+  {
+    id: "ai-system-engineering-roadmap",
+    folderId: "ai-learning",
+    title: "AI-Driven System Engineering Roadmap",
+    subtitle: "Daily map for SDLC ownership, distributed systems, storage scale, and AI-assisted review.",
+    status: "ready",
+    updatedAt: "2026-06-21",
+    tags: ["AI up-skill", "System engineering", "SDLC", "Distributed systems", "Storage", "AI workflow"],
+    summary:
+      "This roadmap keeps the next learning layer visible: AI can write code faster, but a senior engineer must own architecture decisions, verify distributed failure modes, understand storage trade-offs, and use AI as a disciplined reviewer.",
+    sections: [
+      {
+        heading: "Core shift",
+        body:
+          "The goal is to move from syntax-level coding to system ownership. AI can draft code and tests, but the engineer still decides the domain model, data contract, consistency model, rollout path, observability plan, and acceptable operational risk."
+      },
+      {
+        heading: "Pillar 1: SDLC ownership",
+        body:
+          "Study the full software lifecycle as a governance system: strategy and discovery, requirements and specification, architecture and design, implementation, QA, release, observability and incident response, maintenance and tech debt, then feedback and iteration. The habit to build is psychological ownership: never ship generated code that you cannot explain or monitor."
+      },
+      {
+        heading: "Pillar 2: Distributed architecture and resilience",
+        body:
+          "Go deeper on Event Sourcing, CQRS, snapshots, optimistic concurrency, event schema evolution, hot/warm/cold event storage, Circuit Breaker states, sliding windows, fallback behavior, and retry with exponential backoff plus jitter. The practical question is always: what happens when dependency behavior is slow, duplicated, delayed, or partially failed?"
+      },
+      {
+        heading: "Pillar 3: Large-scale storage",
+        body:
+          "Build storage intuition through B-Tree versus LSM-Tree, clustered and non-clustered indexes, composite and covering indexes, leftmost prefix rule, index invalidation, synchronous and asynchronous replication, Raft or Multi-Paxos quorum, logical replication, sharding, consistent hashing, virtual nodes, hotspot mitigation, 2PC, and Saga."
+      },
+      {
+        heading: "Pillar 4: Professional AI engineering workflow",
+        body:
+          "Use AI first as requirement analyst, architecture challenger, test strategist, and production-readiness reviewer. Ask it to surface ambiguity, challenge race conditions and consistency assumptions, design test matrices, and list rollback or observability gaps before assigning code generation."
+      }
+    ],
+    commands: [
+      {
+        label: "AI-first elicitation prompt",
+        command:
+          "Act as a staff software engineer. Given this requirement, ask me the most important clarification questions before implementation. Group questions by business, product, data, API, security, reliability, rollout, and observability.",
+        note: "Use before turning a vague ticket into tasks."
+      },
+      {
+        label: "Adversarial architecture review prompt",
+        command:
+          "Challenge this design. Find race conditions, data consistency bugs, security risks, performance bottlenecks, hidden operational assumptions, and production failure scenarios.",
+        note: "Use before asking Codex or Antigravity to implement."
+      },
+      {
+        label: "Test and security strategy prompt",
+        command:
+          "Generate a test matrix for this feature: unit, integration, contract, E2E, load, security, migration, rollback, and dependency failure scenarios. Identify which tests must block release.",
+        note: "Use before rollout planning."
+      }
+    ],
+    checklist: [
+      {
+        label: "Review one SDLC phase and one telemetry layer each week."
+      },
+      {
+        label: "Study one distributed pattern deeply.",
+        detail: "Event Sourcing, CQRS, Circuit Breaker, Retry, Saga, Outbox, or idempotent consumer."
+      },
+      {
+        label: "Practice one storage topic with evidence.",
+        detail: "Index plan, replication behavior, sharding trade-off, consistent hashing, or query plan."
+      },
+      {
+        label: "Use AI as critic before using it as coder."
+      },
+      {
+        label: "Archive one artifact daily so learning compounds.",
+        checked: true
       }
     ]
   },
