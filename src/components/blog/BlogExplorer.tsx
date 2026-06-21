@@ -114,6 +114,7 @@ export default function BlogExplorer({
       popularTags={popularTags}
       labels={labels}
       paletteId="blog-command-palette"
+      trackingSurface="blog"
       renderItem={(c) => (
         <BlogPostCard
           key={c.post.slug}
@@ -124,6 +125,7 @@ export default function BlogExplorer({
           readingLabel={c.readingLabel}
           viewCount={viewCounts[c.post.slug]}
           viewsLabel={t('engagement.views')}
+          source="blog_explorer"
         />
       )}
     />

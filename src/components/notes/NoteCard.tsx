@@ -1,5 +1,8 @@
+"use client";
+
 import { LuEye } from "react-icons/lu";
 import { Link } from "@/i18n/navigation";
+import { track } from "@/lib/analytics";
 import { formatCount } from "@/lib/firebase/postStats";
 import type { NoteMeta } from "@/lib/notes/types";
 
@@ -17,6 +20,8 @@ interface NoteCardProps {
   viewCount?: number;
   /** Translated "views" label */
   viewsLabel?: string;
+  /** Listing surface that produced this card click. */
+  source?: string;
 }
 
 function formatDate(iso: string, locale: string): string {
@@ -36,14 +41,26 @@ export default function NoteCard({
   locale,
   readingLabel,
   viewCount,
-  viewsLabel
+  viewsLabel,
+  source = "notes_explorer"
 }: NoteCardProps) {
   return (
     <article
       className="blog-card"
       style={{ "--blog-accent": topicColor } as React.CSSProperties}
     >
-      <Link href={`/notes/${note.slug}`} className="blog-card__link">
+      <Link
+        href={`/notes/${note.slug}`}
+        className="blog-card__link"
+        onClick={() => {
+          track("notes_card_click", {
+            content_surface: "notes",
+            content_category: note.topic ?? null,
+            content_slug: note.slug,
+            source
+          });
+        }}
+      >
         <div className="blog-card__body">
           <span className="blog-card__kicker">{topicLabel}</span>
           <h3 className="blog-card__title">{note.title}</h3>

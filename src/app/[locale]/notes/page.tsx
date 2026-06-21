@@ -6,6 +6,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { SITE, SITE_URL } from "@/app/seo.config";
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from "@/lib/blog/seo";
 import { listNotes, listTopics } from "@/lib/notes/data";
+import PageTracker from "@/components/analytics/PageTracker";
 import NotesExplorer from "@/components/notes/NotesExplorer";
 import "./notes.css";
 import "../blog/blog.css";
@@ -119,6 +120,7 @@ export default async function NotesPage({ params }: Props) {
 
   return (
     <main className="notes-archive notes-home">
+      <PageTracker page="notes" eventName="notes_view" section="index" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionLd) }}

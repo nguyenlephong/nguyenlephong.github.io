@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { track } from '@/lib/analytics'
 
 interface TocItem {
   id: string
@@ -10,6 +11,7 @@ interface TocItem {
 
 interface BlogTocProps {
   label: string
+  surface?: 'blog' | 'notes'
 }
 
 function slugifyHeading(text: string, fallback: string): string {
@@ -42,7 +44,7 @@ function uniqueHeadingId(base: string, usedIds: Set<string>): string {
  * Builds an "On this page" outline from article `h2`/`h3` headings, assigning
  * stable anchor ids client-side when older authored HTML omitted them.
  */
-export default function BlogToc({ label }: BlogTocProps) {
+export default function BlogToc({ label, surface = 'blog' }: BlogTocProps) {
   const [items, setItems] = useState<TocItem[]>([])
   const [activeId, setActiveId] = useState<string>('')
 
@@ -118,7 +120,18 @@ export default function BlogToc({ label }: BlogTocProps) {
               activeId === item.id ? ' is-active' : ''
             }`}
           >
-            <a href={`#${item.id}`}>{item.text}</a>
+            <a
+              href={`#${item.id}`}
+              onClick={() => {
+                track(surface === 'notes' ? 'notes_nav_jump' : 'blog_nav_jump', {
+                  content_surface: surface,
+                  target_id: item.id,
+                  heading_level: item.level,
+                })
+              }}
+            >
+              {item.text}
+            </a>
           </li>
         ))}
       </ul>

@@ -5,6 +5,7 @@ declare global {
       identify: (id: string, props?: Record<string, unknown>) => void
       register: (props: Record<string, unknown>) => void
       register_once?: (props: Record<string, unknown>) => void
+      set_config?: (props: Record<string, unknown>) => void
     }
   }
 }
@@ -25,14 +26,26 @@ export type AnalyticsEvent =
   | 'page_scroll_depth'
   | 'page_time_on_page'
   | 'page_visibility_change'
+  | 'locale_change'
   // Web vitals
   | 'web_vital'
   // Apps page
   | 'apps_view'
   | 'apps_card_view'
+  | 'apps_app_select'
+  | 'apps_filter_click'
   | 'apps_link_click'
   | 'apps_hotkey_view'
   | 'apps_cta_click'
+  | 'english_practice_select_slang'
+  | 'english_practice_next'
+  | 'english_practice_shuffle'
+  | 'english_practice_reset'
+  | 'english_practice_mark_hard'
+  | 'english_practice_mode_change'
+  | 'english_practice_reveal'
+  | 'english_practice_answer'
+  | 'english_practice_tts'
   // Gallery
   | 'gallery_view'
   | 'gallery_tab_click'
@@ -43,16 +56,51 @@ export type AnalyticsEvent =
   // Thoughts
   | 'thoughts_view_toggle'
   | 'thoughts_share'
-  // Notes (Ghi chú)
+  // Blog and notes explorer
+  | 'blog_view'
+  | 'blog_category_view'
+  | 'blog_category_click'
+  | 'blog_card_click'
+  | 'notes_card_click'
+  | 'explorer_search'
+  | 'explorer_filter_select'
+  | 'explorer_tag_select'
+  | 'explorer_page_change'
+  | 'explorer_clear'
+  | 'explorer_palette_toggle'
+  // Blog articles
+  | 'blog_article_view'
+  | 'blog_scroll_depth'
+  | 'blog_read_time'
+  | 'blog_read_complete'
+  | 'blog_share'
+  | 'blog_reaction'
+  | 'blog_nav_jump'
+  | 'blog_related_click'
+  // Notes articles
   | 'notes_view'
   | 'notes_article_view'
   | 'notes_scroll_depth'
   | 'notes_read_time'
   | 'notes_read_complete'
   | 'notes_share'
+  | 'notes_reaction'
   | 'notes_nav_jump'
+  // Reader controls
+  | 'reader_tool_scroll'
+  | 'reader_tool_toggle'
+  | 'reading_font_change'
+  | 'reading_background_change'
   // Studio
   | 'studio_view'
+  | 'studio_route_open'
+  | 'studio_command_open'
+  | 'studio_command_result_click'
+  | 'studio_profile_nav_click'
+  | 'studio_preferences_panel_toggle'
+  | 'studio_preference_change'
+  | 'studio_preference_restore'
+  | 'studio_sidebar_toggle'
   // Outbound
   | 'outbound_click'
 

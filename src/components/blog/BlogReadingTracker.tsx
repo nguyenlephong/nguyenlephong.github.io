@@ -4,12 +4,14 @@ import { useEffect, useRef } from 'react'
 import { registerPageContext, track } from '@/lib/analytics'
 
 interface BlogReadingTrackerProps {
-  /** Surface bucket, e.g. "notes" — rides along every event. */
+  /** Surface bucket, e.g. a blog category or "notes" — rides along every event. */
   category: string
   /** Article slug — the unique identity used to group reading sessions. */
   slug: string
   /** Author-estimated reading length, for comparing intent vs. reality. */
   readingMinutes?: number
+  /** Explicit content surface. Defaults to `notes` only for the notes category. */
+  surface?: 'blog' | 'notes'
 }
 
 const SCROLL_BUCKETS = [25, 50, 75, 100] as const
@@ -19,16 +21,14 @@ const SCROLL_BUCKETS = [25, 50, 75, 100] as const
  * scroll, then reports it through the existing PostHog event log (`track`).
  *
  * It only counts time while the tab is visible, so a piece left open in a
- * background tab does not inflate the numbers. Three signals are emitted:
- *   - `notes_article_view`   once, on mount
- *   - `notes_scroll_depth`   the first time each 25/50/75/100% line is crossed
- *   - `notes_read_complete`  once, when the reader reaches the end
- *   - `notes_read_time`      on tab hide / page leave, with visible reading ms
+ * background tab does not inflate the numbers. The event prefix follows the
+ * content surface: `blog_*` for blog posts and `notes_*` for notes.
  */
 export default function BlogReadingTracker({
   category,
   slug,
   readingMinutes,
+  surface,
 }: BlogReadingTrackerProps) {
   const startedAtRef = useRef<number>(0)
   const visibleMsRef = useRef<number>(0)
@@ -38,6 +38,17 @@ export default function BlogReadingTracker({
   const finalSentRef = useRef<boolean>(false)
 
   useEffect(() => {
+    const contentSurface = surface ?? (category === 'notes' ? 'notes' : 'blog')
+    const eventPrefix = contentSurface === 'notes' ? 'notes' : 'blog'
+    const baseProps = {
+      content_surface: contentSurface,
+      content_category: category,
+      content_slug: slug,
+      ...(contentSurface === 'notes'
+        ? { notes_category: category, notes_slug: slug }
+        : { blog_category: category, blog_slug: slug }),
+    }
+
     startedAtRef.current = Date.now()
     lastVisibleAtRef.current = Date.now()
     visibleMsRef.current = 0
@@ -46,14 +57,12 @@ export default function BlogReadingTracker({
     finalSentRef.current = false
 
     registerPageContext({
-      page_type: 'notes_article',
-      notes_category: category,
-      notes_slug: slug,
+      page_type: `${contentSurface}_article`,
+      ...baseProps,
     })
 
-    track('notes_article_view', {
-      notes_category: category,
-      notes_slug: slug,
+    track(`${eventPrefix}_article_view`, {
+      ...baseProps,
       estimated_minutes: readingMinutes ?? null,
       referrer: typeof document !== 'undefined' ? document.referrer || null : null,
     })
@@ -75,9 +84,8 @@ export default function BlogReadingTracker({
       for (const bucket of SCROLL_BUCKETS) {
         if (pct >= bucket && !reportedBucketsRef.current.has(bucket)) {
           reportedBucketsRef.current.add(bucket)
-          track('notes_scroll_depth', {
-            notes_category: category,
-            notes_slug: slug,
+          track(`${eventPrefix}_scroll_depth`, {
+            ...baseProps,
             depth: bucket,
           })
         }
@@ -86,9 +94,8 @@ export default function BlogReadingTracker({
       if (pct >= 100 && !completedRef.current) {
         completedRef.current = true
         accumulateVisible()
-        track('notes_read_complete', {
-          notes_category: category,
-          notes_slug: slug,
+        track(`${eventPrefix}_read_complete`, {
+          ...baseProps,
           visible_ms: visibleMsRef.current,
           total_ms: Date.now() - startedAtRef.current,
           estimated_minutes: readingMinutes ?? null,
@@ -116,9 +123,8 @@ export default function BlogReadingTracker({
         ? Math.max(...reportedBucketsRef.current)
         : 0
 
-      track('notes_read_time', {
-        notes_category: category,
-        notes_slug: slug,
+      track(`${eventPrefix}_read_time`, {
+        ...baseProps,
         reason,
         visible_ms: visibleMsRef.current,
         total_ms: Date.now() - startedAtRef.current,
@@ -141,7 +147,7 @@ export default function BlogReadingTracker({
       window.removeEventListener('pagehide', onLeave)
       window.removeEventListener('beforeunload', onLeave)
     }
-  }, [category, slug, readingMinutes])
+  }, [category, slug, readingMinutes, surface])
 
   return null
 }

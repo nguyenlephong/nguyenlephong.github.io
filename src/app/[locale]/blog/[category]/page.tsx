@@ -11,6 +11,7 @@ import {
   getPostsByCategory,
   listCategorySlugs,
 } from '@/lib/blog/data'
+import PageTracker from '@/components/analytics/PageTracker'
 import BlogPostCard from '@/components/blog/BlogPostCard'
 import '../blog.css'
 
@@ -95,6 +96,7 @@ export default async function BlogCategoryPage({ params }: Props) {
 
   return (
     <main className={`blog-category blog-category--${cat.accent}`}>
+      <PageTracker page="blog_category" eventName="blog_category_view" section={category} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionLd) }}
@@ -120,6 +122,7 @@ export default async function BlogCategoryPage({ params }: Props) {
               categoryTitle={cat.title}
               locale={locale}
               readingLabel={t('readingTime', { minutes: p.readingMinutes })}
+              source="blog_category"
             />
           ))}
         </div>
