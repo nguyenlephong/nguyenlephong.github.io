@@ -409,9 +409,9 @@
       "slug": "ai-literacy-from-prompts-to-agents",
       "category": "ai",
       "title": "AI Literacy: From Prompting to Orchestrating Agents",
-      "summary": "Using AI more often does not automatically mean working at a higher level. This reflective piece maps three levels of AI literacy in the age of agents: the consumer who asks one prompt at a time, the collaborator who turns repeated work into small workflows, and the orchestrator who defines goals, assigns agents, and protects quality with clear guardrails.",
+      "summary": "Using AI more often does not automatically mean working at a higher level. This reflective piece maps three levels of AI literacy in the age of agents, with concrete tool examples, workflow keys, and a path toward more detailed guides for using each level well.",
       "date": "2026-06-21",
-      "readingMinutes": 7,
+      "readingMinutes": 11,
       "tags": [
         "AI",
         "AI Literacy",

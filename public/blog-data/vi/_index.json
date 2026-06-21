@@ -409,9 +409,9 @@
       "slug": "ai-literacy-from-prompts-to-agents",
       "category": "ai",
       "title": "AI Literacy: từ người gõ prompt đến người điều phối agents",
-      "summary": "Dùng AI nhiều hơn không tự động đồng nghĩa với làm việc ở cấp độ cao hơn. Bài viết nhìn lại 3 cấp độ AI literacy trong kỷ nguyên agents: người hỏi từng prompt rời rạc, người biến việc lặp lại thành workflow nhỏ, và người biết đặt mục tiêu, phân vai cho agents, rồi giữ chất lượng bằng guardrails rõ ràng.",
+      "summary": "Dùng AI nhiều hơn không tự động đồng nghĩa với làm việc ở cấp độ cao hơn. Bài viết nhìn lại 3 cấp độ AI literacy trong kỷ nguyên agents, kèm ví dụ tool cụ thể, workflow keys và hướng mở để viết tiếp từng cấp độ ở mức thực hành hơn.",
       "date": "2026-06-21",
-      "readingMinutes": 7,
+      "readingMinutes": 11,
       "tags": [
         "AI",
         "AI Literacy",
