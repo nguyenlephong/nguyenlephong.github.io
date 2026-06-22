@@ -378,679 +378,1372 @@ export const blogRoadmapTicketChecklist = [
   "Run content checks before marking a writing ticket ready."
 ];
 
-export const studioAiSkills: StudioAiSkill[] = [
+const baseStudioAiSkills: StudioAiSkill[] = [
   {
     id: "code-review",
     category: "engineering",
-    title: "Review code",
-    summary: "Review a change for correctness, maintainability, tests, security, and user impact.",
-    tags: ["Code review", "Risk", "Testing"],
+    title: "Code Review Expert",
+    summary: "Review diffs like a Staff engineer: correctness first, security/privacy next, then maintainability, tests, and operational risk.",
+    tags: ["Code Review", "Correctness", "Security", "Test Strategy"],
     markdown: `# Code Review Skill
 
-Use this skill when reviewing a pull request, local diff, or generated code change.
+Use this skill when reviewing pull requests, local diffs, generated code, refactors, migrations, or production bug fixes.
 
-## Inputs I need
-- Goal of the change.
-- Files or diff to review.
-- Product surface affected.
-- Known constraints, rollout plan, and tests already run.
+## Required Context
+- The stated intent of the change, acceptance criteria, and user-facing behavior.
+- The changed files, surrounding ownership boundaries, existing tests, and relevant runtime constraints.
+- Any affected auth model, data model, analytics event, SEO path, feature flag, or rollout plan.
 
-## Review process
-1. Start with blocking issues: correctness, data loss, security, privacy, broken build, or broken user flow.
-2. Check behavior against the stated goal. Do not review only style.
-3. Verify error states, loading states, empty states, mobile behavior, and accessibility when UI is touched.
-4. Check tests: what is covered, what is missing, and what would fail if the bug returns.
-5. Look for unnecessary scope, hidden coupling, duplicated logic, and migration risk.
-6. Keep comments specific. Point to file/line and explain the consequence.
+## Review Process
+1. Validate intent: compare the diff against the requirement and identify missing behavior, accidental scope, or stale assumptions.
+2. Prove correctness: inspect control flow, state transitions, boundary conditions, concurrency, nullability, idempotency, and failure paths.
+3. Threat model the change: check OWASP Top 10, injection surfaces, authz/authn bypass, IDOR, CSRF/XSS, secrets, PII, and tenant isolation.
+4. Assess architecture: flag coupling, leaky abstractions, cyclic dependencies, API compatibility breaks, schema drift, and long-term maintenance cost.
+5. Check performance and operations: look for N+1 queries, algorithmic blowups, memory pressure, hydration regressions, observability gaps, and rollback risk.
+6. Evaluate verification: confirm unit, integration, E2E, contract, accessibility, and regression tests match the changed behavior.
 
-## Output format
-- Findings first, ordered by severity.
-- Open questions or assumptions.
-- Suggested fixes.
-- Verification gaps.
+## Output Format
+- Findings first, ordered by severity: Blocker, Major, Minor, Nit.
+- Each finding must include file/line, observed evidence, impact, and the smallest practical fix.
+- Include open questions only when they materially affect correctness, security, rollout, or product behavior.
+- End with residual risk and verification gaps.
 
 ## Guardrails
-- Do not praise before listing issues.
-- Do not request unrelated refactors.
-- Do not block on preference if behavior is correct.
-- If there are no issues, say that clearly and name residual risk.`
+- Do not spend review budget on personal style preferences when behavior, convention, and tests are sound.
+- Do not approve new business logic without meaningful verification.
+- Do not rewrite the whole design unless the current design creates measurable risk.
+`
   },
   {
     id: "frontend-architecture",
     category: "engineering",
-    title: "Frontend architecture",
-    summary: "Plan a frontend feature around routes, state, components, responsiveness, and tracking.",
-    tags: ["Frontend", "Architecture", "UI"],
+    title: "Frontend Architecture",
+    summary: "Shape frontend systems around route boundaries, state ownership, accessibility, telemetry, and Core Web Vitals.",
+    tags: ["Frontend", "React", "Web Vitals", "Accessibility"],
     markdown: `# Frontend Architecture Skill
 
-Use this skill before building or refactoring a frontend feature.
+Use this skill when designing routes, dashboards, component systems, forms, filters, search UIs, or frontend refactors.
 
-## Inputs I need
-- User workflow and target route.
-- Existing component patterns and design system constraints.
-- Data shape, loading/error states, and permissions.
-- Analytics events that must be preserved or added.
+## Required Context
+- Target users, core workflow, device classes, locale behavior, and SEO requirements.
+- Current routing framework, data fetching pattern, design system, analytics taxonomy, and accessibility baseline.
+- Constraints around authentication, personalization, caching, hydration, and browser support.
 
-## Architecture process
-1. Identify the route/page boundary and the smallest component ownership model.
-2. Separate server data, client state, visual components, and interaction handlers.
-3. Define states: loading, empty, partial data, error, disabled, mobile, desktop.
-4. Keep layout stable with responsive constraints, not viewport-scaled font hacks.
-5. Reuse existing tokens, components, icons, and motion patterns.
-6. Add analytics for new navigation, filters, forms, CTAs, preferences, and outbound links.
-7. Add tests at the risk boundary: route contract, interaction behavior, schema, or rendering.
+## Architecture Process
+1. Define route and layout boundaries, including loading, empty, error, partial-data, permission, and not-found states.
+2. Choose rendering mode deliberately: SSR, SSG, ISR, CSR, streaming, or client-only islands based on freshness, SEO, privacy, and personalization.
+3. Build a state taxonomy: server state, URL state, durable preferences, global app state, form state, and ephemeral component state.
+4. Design component ownership: compose small primitives, keep domain logic outside visual shells, and avoid prop drilling through unrelated layers.
+5. Protect interaction quality: keyboard access, focus management, ARIA semantics, reduced motion, color contrast, and responsive constraints.
+6. Set a performance and analytics plan: LCP, INP, CLS, bundle budgets, event names, PageTracker usage, and meaningful funnel events.
 
-## Output format
-- Proposed component tree.
-- State model.
-- Event tracking list.
-- Edge cases.
-- Implementation order.
+## Output Format
+- Route and component map with ownership boundaries.
+- State and data-fetching plan with cache invalidation rules.
+- UX state matrix for loading, empty, error, disabled, success, and responsive behavior.
+- Performance, accessibility, and analytics checklist.
+- Implementation slices ordered by risk.
 
 ## Guardrails
-- Do not create a landing page when the task is an app/tool surface.
-- Do not use nested cards or decorative gradients unless the existing system requires them.
-- Keep mobile behavior first-class.`
+- Do not create global state for local interaction details.
+- Do not ship a visual surface without keyboard, screen reader, and mobile behavior.
+- Do not change existing analytics or locale behavior without an explicit migration plan.
+`
   },
   {
     id: "backend-architecture",
     category: "engineering",
-    title: "Backend architecture",
-    summary: "Shape backend work around contracts, data ownership, reliability, security, and rollout.",
-    tags: ["Backend", "API", "Data"],
+    title: "Backend Architecture",
+    summary: "Design backend systems with clear domain ownership, explicit contracts, resilient data flows, and operable failure modes.",
+    tags: ["Backend", "API Design", "Distributed Systems", "Reliability"],
     markdown: `# Backend Architecture Skill
 
-Use this skill when designing an API, service, job, integration, or data workflow.
+Use this skill for APIs, services, background jobs, webhooks, event streams, data migrations, and integrations.
 
-## Inputs I need
-- Business goal and domain objects.
-- Existing API contracts, database tables, queues, jobs, and auth model.
-- Expected traffic, latency, consistency, and failure tolerance.
-- Migration and rollback constraints.
+## Required Context
+- Business invariant, owning domain, consumers, service boundaries, data classification, and compliance obligations.
+- Expected throughput, latency SLOs, consistency requirements, durability requirements, and cost constraints.
+- Current deployment model, observability stack, rollback path, and operational owner.
 
-## Architecture process
-1. Define the boundary: what this service owns and what it only reads.
-2. Write the API or job contract before implementation details.
-3. Identify validation, authorization, idempotency, rate limits, and audit needs.
-4. Map data changes: schema migration, backfill, indexes, retention, and privacy.
-5. Design failure behavior: retries, timeouts, dead-letter path, fallback, and alerting.
-6. Define observability: logs, metrics, traces, PostHog/business events if user behavior changes.
-7. Plan rollout: feature flag, canary, dark launch, migration window, rollback.
+## Architecture Process
+1. Model the domain: bounded contexts, aggregates, invariants, ownership of reads/writes, and lifecycle events.
+2. Select topology: modular monolith, service extraction, serverless, queue-backed worker, or event-driven flow based on operational need.
+3. Specify contracts first: OpenAPI, gRPC, AsyncAPI, event schemas, idempotency keys, pagination, error taxonomy, and versioning.
+4. Design persistence: schema, indexes, migration plan, retention, encryption, backup/restore, and consistency model.
+5. Build resilience: timeouts, retry budgets, backoff with jitter, DLQ, circuit breakers, bulkheads, rate limiting, and graceful degradation.
+6. Define operability: structured logs, traces, metrics, alerts, runbooks, canary/feature flags, and rollback triggers.
 
-## Output format
-- Boundary and responsibilities.
-- Contract.
-- Data model changes.
-- Failure modes.
-- Rollout and verification plan.
+## Output Format
+- Domain and responsibility map.
+- API/event contract with failure modes.
+- Data model and migration strategy.
+- Resilience, security, and observability plan.
+- Rollout, rollback, and disaster recovery plan.
 
 ## Guardrails
-- Do not hide unclear ownership behind a generic utility.
-- Do not introduce async workflows without retry and observability decisions.
-- Do not claim production readiness without rollback.`
+- Prefer the simplest topology that preserves the invariant and meets SLOs.
+- Do not introduce async processing without idempotency, observability, and replay semantics.
+- Do not call a design production-ready without rollback and data recovery.
+`
   },
   {
     id: "blog-content-writer",
     category: "content",
-    title: "Blog content writer",
-    summary: "Write calm technical or reflective content in the profile voice.",
-    tags: ["Blog", "Copywriting", "Content"],
+    title: "Technical Content Strategist",
+    summary: "Write technical content with a clear thesis, grounded evidence, semantic SEO, and calm expert authority.",
+    tags: ["Technical Writing", "SEO", "Editorial Strategy"],
     markdown: `# Blog Content Writer Skill
 
-Use this skill for profile posts, blog articles, notes, technical explainers, and copywriting.
+Use this skill for engineering articles, technical explainers, architectural postmortems, product notes, and public documentation.
 
-## Voice
-- Calm, practical, sincere, and grounded.
-- Explain like the reader is new, but keep the reasoning solid.
-- Avoid hype, dunking, sales language, and motivational theater.
+## Required Context
+- Target reader, publication surface, locale, category path, search intent, and desired level of technical depth.
+- Existing voice, reserved technical terms, source material, diagrams, code snippets, and SEO metadata pattern.
+- Claims that require citation, examples that must stay anonymous, and constraints around tone or privacy.
 
-## Writing process
-1. Open with a concrete work or life scene.
-2. Connect the scene to the deeper lesson.
-3. Use examples, workflows, tools, or trade-offs instead of abstract claims.
-4. Make the structure easy to scan when the format allows sections.
-5. End with a useful reflection or a question that invites perspective.
+## Writing Process
+1. Define the thesis: one specific claim the article will prove, not a broad topic label.
+2. Open from a concrete situation: code review, outage, product trade-off, messy requirement, slow dashboard, or daily work moment.
+3. Build the reader's model: explain terms, context, trade-offs, and constraints before prescribing a solution.
+4. Prove with specifics: architecture diagrams, workflows, code, benchmarks, standards, source citations, or realistic failure modes.
+5. Optimize structure: precise H1/H2/H3 hierarchy, natural keywords, internal links, meta title, meta description, and canonical path.
+6. Close with a usable takeaway: a mental model, checklist, decision rule, or reflection the reader can apply.
 
-## Output format
-- Strong title options.
-- Short hook.
-- Full draft.
-- Optional LinkedIn/Facebook version.
-- Suggested follow-up article idea.
+## Output Format
+- SEO metadata and slug recommendation.
+- Working outline with reader intent and search intent.
+- Full manuscript in the required format.
+- Source notes, diagrams, and internal-link suggestions.
+- Short social summary when needed.
 
 ## Guardrails
-- Do not invent sources.
-- Do not overuse buzzwords.
-- Do not write like a course landing page.
-- Preserve SEO, locale, and existing content schema when editing source.`
+- Do not keyword-stuff or inflate claims beyond evidence.
+- Do not invent statistics, citations, benchmarks, or capabilities.
+- Preserve existing locale behavior, content schema, SEO paths, and analytics surfaces.
+`
   },
   {
     id: "prompt-writing",
     category: "content",
-    title: "Prompt writing",
-    summary: "Turn vague requests into structured prompts that produce repeatable output.",
-    tags: ["Prompt", "AI workflow", "Quality"],
+    title: "Prompt Engineering Expert",
+    summary: "Design prompts and system instructions with explicit roles, bounded context, injection resistance, and verifiable output schemas.",
+    tags: ["Prompt Engineering", "LLM", "Agents", "Evaluation"],
     markdown: `# Prompt Writing Skill
 
-Use this skill to turn a vague request into a reusable prompt for an AI assistant or agent.
+Use this skill to design system prompts, task prompts, few-shot examples, agent policies, extraction prompts, and output schemas.
 
-## Prompt structure
-1. Role: what perspective the assistant should take.
-2. Goal: what outcome is needed.
-3. Context: files, product, audience, constraints, examples.
-4. Process: steps the assistant should follow.
-5. Output: exact format, length, tone, and acceptance criteria.
-6. Guardrails: what to avoid, what to verify, when to ask questions.
+## Required Context
+- Task objective, target model/tool, allowed tools, trust boundaries, input sources, and expected output consumer.
+- Required domain facts, examples of success/failure, schema needs, tone constraints, and safety constraints.
+- Which inputs are trusted operator instructions versus untrusted user or document content.
 
-## Quality checklist
-- The prompt gives enough context without hiding the actual task.
-- It defines success and failure.
-- It asks for evidence when accuracy matters.
-- It limits style drift and unnecessary verbosity.
-- It includes examples only when examples improve the output.
+## Prompt Architecture
+1. Role and scope: define expertise, authority, non-goals, and the boundaries the model must not cross.
+2. Task contract: specify objective, inputs, assumptions, acceptance criteria, and failure conditions.
+3. Context layout: separate system rules, developer rules, user request, retrieved evidence, and untrusted content with clear delimiters.
+4. Procedure: give the model a concise operating checklist and require a short rationale, not hidden reasoning dumps.
+5. Output schema: define JSON Schema, markdown sections, tables, diffs, or structured fields with examples.
+6. Evaluation: create adversarial test cases for ambiguity, prompt injection, missing context, malformed input, and schema drift.
 
-## Output format
-- Final prompt.
-- Why this structure works.
-- Optional shorter version for chat tools.
+## Output Format
+- Production prompt or prompt pack.
+- Variable map and input sanitation rules.
+- Output schema and valid/invalid examples.
+- Evaluation checklist with pass/fail criteria.
+- Compact version for ad-hoc use.
 
 ## Guardrails
-- Do not make the prompt longer than the task needs.
-- Do not ask AI to guess missing facts when the cost of being wrong is high.
-- Do not optimize only for a polished answer; optimize for useful work.`
+- Do not ask for private chain-of-thought; ask for concise rationale, checks, or evidence.
+- Do not let untrusted content redefine role, tools, data access, or output policy.
+- Do not rely on adjectives such as "good" or "better" without measurable criteria.
+`
   },
   {
     id: "status-report",
     category: "operations",
-    title: "Daily, weekly, monthly report",
-    summary: "Generate concise status reports with progress, risk, blockers, and next actions.",
-    tags: ["Report", "Daily", "Weekly"],
+    title: "Executive Status & Operations",
+    summary: "Turn workstream noise into executive signal: health, impact, blockers, decisions, owners, and path to green.",
+    tags: ["Operations", "Reporting", "OKR", "Escalation"],
     markdown: `# Status Report Skill
 
-Use this skill for daily, weekly, or monthly engineering/product updates.
+Use this skill for daily standups, weekly status reports, monthly OKR reviews, incident updates, and stakeholder escalations.
 
-## Inputs I need
-- Reporting period.
-- Completed work.
-- Work in progress.
-- Blockers, risks, decisions needed.
-- Metrics, incidents, release notes, or customer impact.
+## Required Context
+- Audience, reporting cadence, workstream goal, current commitments, dates, owners, and decision rights.
+- Evidence: shipped work, metrics, incidents, open blockers, dependency status, scope changes, and customer impact.
+- Definitions of Green, Yellow, Red, and what escalation path exists.
 
-## Report process
-1. Separate facts from interpretation.
-2. State impact before activity.
-3. Name risks early and attach an owner or next action.
-4. Keep detail proportional to audience.
-5. Include what changed since the last report.
+## Reporting Process
+1. Lead with BLUF: current health, reason, and what changed since the last update.
+2. Separate facts from interpretation: metrics, shipped artifacts, incidents, and unresolved assumptions.
+3. Quantify progress: OKR movement, DORA metrics, burn-up/burn-down, SLA/SLO, MTTR, lead time, throughput, or adoption.
+4. Identify constraints: name the exact blocker, dependency owner, due date, probability, impact, and mitigation path.
+5. Make decisions explicit: offer recommended option, fallback option, deadline, and consequence of no decision.
+6. Close with next commitments: owner, date, expected evidence, and status-change trigger.
 
-## Output format
-- Executive summary.
-- Shipped / completed.
-- In progress.
-- Risks and blockers.
-- Next plan.
-- Decisions needed.
+## Output Format
+- Status: Green, Yellow, or Red, with one-sentence rationale.
+- Progress: shipped value, not activity inventory.
+- Risks and blockers: severity, owner, next action, and date.
+- Decisions needed: precise ask and recommendation.
+- Next cycle focus and measurable success signal.
 
-## Cadence rules
-- Daily: short, action-oriented, focused on blockers.
-- Weekly: progress, risk, scope, and upcoming work.
-- Monthly: outcomes, metrics, lessons, and strategic adjustments.`
+## Guardrails
+- Do not hide bad news behind progress theater.
+- Do not report vanity metrics unless tied to a decision or outcome.
+- Do not assign vague ownership such as "team"; name the accountable role or person.
+`
   },
   {
     id: "doc-spec-tech-spec",
     category: "engineering",
-    title: "Doc, spec, tech spec",
-    summary: "Write specs that align product intent, technical plan, risks, and verification.",
-    tags: ["Spec", "Tech spec", "Documentation"],
+    title: "Technical Specification & RFC",
+    summary: "Write decision-ready specs that bind product intent to architecture, NFRs, threat model, rollout, and verification.",
+    tags: ["RFC", "ADR", "Architecture", "NFR"],
     markdown: `# Doc / Spec / Tech Spec Skill
 
-Use this skill to write a product spec, technical spec, RFC, or implementation plan.
+Use this skill for RFCs, ADRs, technical specifications, migration plans, system designs, and implementation handoffs.
 
-## Inputs I need
-- Problem statement and user impact.
-- Current behavior and desired behavior.
-- Constraints, dependencies, and owners.
-- Relevant files, APIs, data models, and rollout concerns.
+## Required Context
+- Product problem, user impact, scope, non-goals, stakeholders, deadlines, and success metrics.
+- Current architecture, data model, API contracts, dependencies, operational constraints, and known incidents.
+- Security, privacy, compliance, accessibility, SEO, analytics, and localization constraints when relevant.
 
-## Spec structure
-1. Context and problem.
-2. Goals and non-goals.
-3. User flow or system flow.
-4. Proposed solution.
-5. Data/API/component changes.
-6. Alternatives considered.
-7. Risks, security, privacy, accessibility, and observability.
-8. Rollout, migration, rollback.
-9. Test and acceptance criteria.
+## Specification Structure
+1. Problem framing: why this exists, who it helps, what breaks today, and what success means.
+2. Scope control: goals, non-goals, assumptions, constraints, and unresolved questions.
+3. Proposed design: architecture diagram, data model, APIs/events, dependencies, edge cases, and compatibility rules.
+4. Alternatives: compare at least two viable paths with cost, complexity, risk, reversibility, and time-to-value.
+5. Risk model: STRIDE, privacy impact, failure domains, blast radius, data migration risk, and operational load.
+6. Delivery plan: implementation slices, test matrix, observability, rollout, rollback, and post-launch validation.
 
-## Output format
-- Decision-ready spec.
-- Open questions.
-- Implementation checklist.
-- Review checklist.
+## Output Format
+- Complete RFC or ADR ready for review.
+- Decision table with alternatives and recommendation.
+- Implementation plan and ticket breakdown.
+- Test, rollout, observability, and rollback checklist.
+- Sign-off list by stakeholder function.
 
 ## Guardrails
-- Do not hide unknowns.
-- Do not turn assumptions into requirements.
-- Do not skip rollback or verification for production changes.`
+- Do not treat assumptions as requirements without validation.
+- Do not omit non-goals; they are scope control, not decoration.
+- Do not ship a spec that changes production data without rollback and recovery details.
+`
   },
   {
     id: "proposal-slide-pitch",
     category: "communication",
-    title: "Proposal, slide, pitch deck",
-    summary: "Frame a proposal or deck around audience, problem, option value, proof, and next decision.",
-    tags: ["Proposal", "Slide", "Pitch"],
+    title: "Strategic Pitch & Proposal",
+    summary: "Build proposals that connect pain, value, ROI, risk, proof, and a concrete decision request.",
+    tags: ["Proposal", "Strategy", "Executive Communication"],
     markdown: `# Proposal / Slide / Pitch Deck Skill
 
-Use this skill for proposals, internal buy-in, product pitches, and slide outlines.
+Use this skill for executive proposals, product strategy memos, budget asks, pitch decks, and technical-business trade-off narratives.
 
-## Inputs I need
-- Audience and decision they need to make.
-- Problem, cost of inaction, and desired outcome.
-- Proposed solution, alternatives, timeline, and resources.
-- Proof: data, examples, customer signal, technical feasibility.
+## Required Context
+- Audience, decision maker, budget owner, desired action, political constraints, timeline, and competing priorities.
+- Current pain, target outcome, evidence, costs, opportunity cost, risk profile, and available proof.
+- Format: memo, slide outline, one-pager, spoken pitch, FAQ, or objection-handling sheet.
 
-## Deck process
-1. Start with the audience's problem, not our feature.
-2. Show why now matters.
-3. Explain the solution in one clear sentence.
-4. Prove feasibility with evidence.
-5. Name risks honestly.
-6. End with the specific decision or next step.
+## Pitch Architecture
+1. Audience calibration: map what each stakeholder values, fears, funds, and can approve.
+2. Frame the gap: current cost, risk, delay, churn, manual work, missed revenue, or strategic exposure.
+3. State the thesis: one direct sentence explaining what should be done and why now.
+4. Prove feasibility: benchmark, customer signal, PoC, architecture validation, financial model, or comparable case.
+5. Quantify impact: ROI, payback period, cost avoided, cycle-time reduction, risk reduction, or option value.
+6. Make the ask: exact decision, budget, owner, date, success metric, and fallback if declined.
 
-## Output format
-- One-line narrative.
-- Slide-by-slide outline.
-- Speaker notes.
-- Risk and objection handling.
-- Follow-up email draft.
+## Output Format
+- One-sentence thesis and 30-second pitch.
+- Slide-by-slide narrative or memo structure.
+- ROI and risk model.
+- Objection-handling matrix.
+- Final decision request and next-step plan.
 
 ## Guardrails
-- Do not overclaim.
-- Do not use generic startup language.
-- Do not make slides dense; each slide should carry one job.`
+- Do not use buzzwords that do not carry decision value.
+- Do not overpromise adoption, revenue, cost savings, or delivery dates.
+- Do not hide the ask; ambiguity kills executive decisions.
+`
   },
   {
     id: "ai-operating-system",
     category: "strategy",
-    title: "AI operating system",
-    summary: "Route work through NotebookLM, GPT, Claude, Codex, and Antigravity without creating AI noise.",
-    tags: ["AI OS", "Tool routing", "Compounding"],
+    title: "AI Operating System & Orchestration",
+    summary: "Design agent workflows with model routing, context control, tool boundaries, RAG grounding, and human approval gates.",
+    tags: ["AI Orchestration", "Agents", "RAG", "MCP"],
     markdown: `# AI Operating System Skill
 
-Use this skill when a problem feels broad and I need to decide which AI tool should do which part.
+Use this skill to design multi-agent workflows, AI workbenches, RAG pipelines, Codex/Claude/GPT task routing, and MCP tool policies.
 
-## Operating model
-- NotebookLM keeps source-backed truth: uploaded docs, notes, PDFs, transcripts, reports, reviews, and decisions.
-- GPT / ChatGPT acts as chief of staff: clarify goals, plan, research, compare trade-offs, and create action plans.
-- Claude acts as deep critic: architecture review, writing polish, hidden assumptions, edge cases, and sensitive communication.
-- Codex acts as delivery factory: repo changes, tests, refactors, migrations, and PR-ready diffs.
-- Antigravity acts as agentic lab: prototype, UI verification, browser checks, multi-agent dev flows, and end-to-end artifacts.
+## Required Context
+- Workflow goal, data sensitivity, available tools, model/tool costs, latency tolerance, and approval requirements.
+- Source-of-truth repositories, documents, issue trackers, logs, RAG indexes, and memory stores.
+- Actions that are read-only, write-capable, destructive, external, or require human-in-the-loop approval.
 
-## Process
-1. Capture facts and source material first.
-2. Clarify the real problem and the desired outcome.
-3. Route the work to the smallest useful tool chain.
-4. Let one AI execute and another AI review when risk is meaningful.
-5. Archive the decision, prompt, result, and lesson learned.
+## Orchestration Process
+1. Classify intent: retrieval, reasoning, coding, review, planning, synthesis, browser work, or deterministic automation.
+2. Route work by capability: assign models and agents based on context length, reasoning depth, tool need, latency, cost, and privacy.
+3. Build the context package: source files, docs, constraints, examples, definitions, and explicit exclusions.
+4. Define tool boundaries: read/write permissions, filesystem scope, network policy, secrets handling, and approval gates.
+5. Add validation: schema checks, tests, citations, diff review, secondary-agent critique, and deterministic fallback paths.
+6. Archive decisions: prompts, routing matrix, artifacts, and reusable playbooks.
 
-## Output format
-- Problem statement.
-- Best tool sequence.
-- Prompt for each tool.
-- Risks and guardrails.
-- Next action for today.
+## Output Format
+- Agent role map and routing matrix.
+- Context packaging template.
+- Tool permission matrix and approval gates.
+- Validation and fallback plan.
+- Reusable prompt pack or operating playbook.
 
 ## Guardrails
-- Do not ask every tool the same vague question.
-- Do not upload secrets, private keys, customer data, or sensitive company data into personal AI tools.
-- Do not let AI make final medical, legal, financial, or production-risk decisions without human review.`
+- Do not let any agent mutate production state without explicit approval and observability.
+- Do not mix trusted instructions with untrusted retrieved text.
+- Do not optimize only for model intelligence; optimize for correctness, traceability, privacy, and cost.
+`
   },
   {
     id: "daily-ai-learning-coach",
     category: "learning",
-    title: "Daily AI learning coach",
-    summary: "Turn every day into a small loop for learning AI, shipping better, and saving reusable prompts.",
-    tags: ["Daily learning", "Habit", "AI literacy"],
+    title: "Continuous AI Learning & Neuroplasticity",
+    summary: "Compound AI skill through deliberate practice, active recall, feedback loops, and reusable artifacts.",
+    tags: ["Learning", "Deliberate Practice", "AI Fluency", "Feedback"],
     markdown: `# Daily AI Learning Coach Skill
 
-Use this skill at the start or end of a day to compound AI skill without turning learning into a separate heavy project.
+Use this skill to plan daily AI up-skilling, technical practice, tool fluency, and long-term knowledge compounding.
 
-## Morning prompt
-Today is [date].
-Context:
-- Energy:
-- Work obligations:
-- Open loops:
-- One AI skill I want to improve:
+## Required Context
+- Target capability, current level, available time, active workstream, preferred tools, and desired artifact.
+- Recent mistakes, repeated blockers, weak concepts, and high-leverage workflows worth practicing.
+- Constraints around focus, energy, deadlines, and avoiding learning theater.
 
-Help me choose:
-1. Top 3 outcomes for today.
-2. One AI-assisted workflow to practice.
-3. One thing to avoid or delay.
-4. One small artifact to save: prompt, checklist, decision, lesson, or example.
-5. A realistic time block plan.
+## Daily Loop Process
+1. Pick one micro-skill: prompt slicing, diff review, RAG synthesis, architecture critique, test generation, or tool orchestration.
+2. Practice on real context: a current ticket, codebase, document, incident, or decision rather than generic tutorials.
+3. Generate feedback: ask the AI to find blind spots, counterexamples, edge cases, and missing verification.
+4. Convert to memory: create an active recall card, prompt template, checklist, snippet, or decision note.
+5. Schedule reinforcement: revisit at spaced intervals and test whether the skill transfers to a new task.
+6. Measure value: time saved, quality improved, bug avoided, decision clarified, or artifact reused.
 
-## Evening prompt
-Review today:
-- Done:
-- Not done:
-- AI tool used:
-- What worked:
-- What was noisy:
-- Lesson:
-
-Extract:
-1. One reusable prompt improvement.
-2. One workflow improvement.
-3. One thing to archive in NotebookLM or a Project.
-4. One next practice for tomorrow.
+## Output Format
+- Daily micro-skill target.
+- Practice task with input and expected output.
+- Feedback prompt and evaluation rubric.
+- Artifact to save.
+- Next repetition date and transfer challenge.
 
 ## Guardrails
-- Keep the loop under 15 minutes.
-- Prefer one practical experiment over five abstract AI tips.
-- End with one saved artifact, not only a feeling of productivity.`
+- Do not count passive reading as skill acquisition.
+- Do not practice five tools in one session; isolate one behavior.
+- Validate AI explanations against official docs, local code, or empirical tests.
+`
   },
   {
     id: "notebooklm-source-of-truth",
     category: "learning",
-    title: "NotebookLM source of truth",
-    summary: "Use NotebookLM as a source-backed knowledge base for learning, career, finance, and work memory.",
-    tags: ["NotebookLM", "Knowledge base", "Citations"],
+    title: "RAG-Grounded Knowledge Extraction",
+    summary: "Extract source-grounded answers from trusted documents with citations, contradiction checks, and explicit unknowns.",
+    tags: ["RAG", "Citations", "Research", "Knowledge Graph"],
     markdown: `# NotebookLM Source Of Truth Skill
 
-Use this skill when the answer should be grounded in uploaded material instead of general memory.
+Use this skill for dense document sets, NotebookLM-style corpora, PRDs, RFCs, research papers, financial reports, and knowledge bases.
 
-## Best source types
-- Books, papers, courses, docs, and transcript notes.
-- RFCs, PRDs, postmortems, decision logs, and architecture notes.
-- CV versions, performance reviews, job descriptions, feedback, and promotion material.
-- Redacted financial statements, policies, investment notes, and planning documents.
+## Required Context
+- Source corpus, citation format, target question, audience, decision being supported, and allowed inference level.
+- Source trust ranking, document dates, known outdated files, sensitive content rules, and required redactions.
+- Whether the answer needs extraction, synthesis, comparison, timeline reconstruction, or gap analysis.
 
-## Prompt
-Based only on the uploaded sources, create:
-1. A timeline of important ideas or events.
-2. Source-backed claims with citations.
-3. Contradictions or missing data.
-4. Ten questions I should answer next.
-5. A 30-day action plan.
+## Extraction Process
+1. Sanitize sources: remove secrets, credentials, PII, and documents outside the approved scope.
+2. Retrieve narrowly: query by entity, date, decision, metric, requirement, contradiction, and dependency.
+3. Extract facts: quote or paraphrase only what the source supports and preserve source IDs.
+4. Synthesize cautiously: separate direct evidence, inferred interpretation, conflicts, and unknowns.
+5. Build structure: timeline, entity map, decision log, requirement matrix, or FAQ depending on the task.
+6. Identify gaps: state what evidence is missing and what source would resolve it.
 
-## Learning output
-- Mind map.
-- Study guide.
-- Flashcards.
-- Quiz questions.
-- Practice projects.
-- Misconceptions to watch.
+## Output Format
+- Direct answer with citations for factual claims.
+- Evidence table: claim, source, confidence, date, and caveat.
+- Contradictions and outdated-source warnings.
+- Entity/timeline/decision map when useful.
+- Unknowns and recommended follow-up sources.
 
 ## Guardrails
-- Redact sensitive data before upload.
-- Use citations for important claims.
-- Treat NotebookLM as grounded memory, not as a final expert for medical, legal, or financial decisions.`
+- If the source does not support a claim, say "not provided in the source."
+- Do not use external knowledge unless the task explicitly permits it.
+- Do not collapse conflicting sources into a false single truth.
+`
   },
   {
     id: "ai-delivery-factory",
     category: "engineering",
-    title: "AI delivery factory",
-    summary: "Split engineering work across GPT, Claude, Codex, and Antigravity from spec to verified PR.",
-    tags: ["Codex", "Antigravity", "Delivery"],
+    title: "Autonomous Delivery & CI/CD",
+    summary: "Run AI-assisted delivery from scoped requirement to implementation, verification, PR, and release-ready handoff.",
+    tags: ["AI Delivery", "CI/CD", "Testing", "Automation"],
     markdown: `# AI Delivery Factory Skill
 
-Use this skill for feature work, refactors, migrations, bugfixes, and UI-heavy prototypes.
+Use this skill when AI agents help implement features, refactors, migrations, test suites, CI changes, or release handoffs.
 
-## Tool sequence
-1. GPT: turn the idea into PRD, acceptance criteria, task slices, rollout, and test plan.
-2. Claude: review architecture, hidden assumptions, migration risk, and edge cases.
-3. Codex: implement bounded repo tasks, add tests, keep diff reviewable.
-4. Antigravity: run app, verify UI/browser flows, capture screenshots/logs/artifacts.
-5. Claude or GPT: review the final diff, risks, release note, and stakeholder update.
-6. NotebookLM: archive PRD, RFC, decision, postmortem, and lessons learned.
+## Required Context
+- Ticket scope, repository conventions, branch policy, test commands, CI gates, deployment model, and rollback constraints.
+- Files likely affected, ownership boundaries, existing user changes, secrets policy, and verification expectations.
+- Whether the agent may edit, commit, push, open PRs, deploy, or only prepare a patch.
 
-## Codex prompt skeleton
-Repo context:
-- Stack:
-- Branch:
-- Relevant modules:
-- Constraints:
+## Delivery Process
+1. Scope the work: restate requirement, acceptance criteria, non-goals, affected surfaces, and risk level.
+2. Slice execution: create small implementation chunks with a verification check after each meaningful change.
+3. Implement with local context: follow existing patterns, preserve unrelated user changes, and avoid broad refactors.
+4. Shift-left verification: run typecheck, lint, unit/integration/E2E tests, schema checks, accessibility checks, and security scans as applicable.
+5. Review the diff: inspect generated code, staged changes, secrets, artifacts, analytics wiring, and migration safety.
+6. Handoff cleanly: commit with Conventional Commits, push only with approval, and prepare PR notes with impact and verification.
 
-Goal:
-Implement [feature/fix/refactor].
-
-Acceptance criteria:
-1.
-2.
-3.
-
-Rules:
-- Do not change public API unless necessary.
-- Add or adjust tests.
-- Run relevant verification commands.
-- Explain trade-offs.
-- Keep the diff suitable for PR review.
+## Output Format
+- Execution plan and changed-file summary.
+- Verification evidence with command results.
+- Commit message and PR body draft.
+- Release, deployment, and rollback notes.
+- Remaining risks or follow-up tickets.
 
 ## Guardrails
-- Split large work into map, plan, execute, verify, and review.
-- Do not let one agent both implement and be the only reviewer for risky changes.
-- Do not skip tests because an agent says the code looks correct.`
+- Do not include secrets, local build output, runtime metadata, or unrelated user changes in commits.
+- Do not use an agent-generated diff as its own approval.
+- Do not deploy or mutate production unless the human explicitly requested that action.
+`
   },
   {
     id: "claude-deep-review",
     category: "engineering",
-    title: "Claude deep review",
-    summary: "Use Claude as the slow-thinking reviewer for architecture, writing, PRs, and sensitive communication.",
-    tags: ["Claude", "Architecture", "Critique"],
+    title: "Adversarial Semantic Review",
+    summary: "Use adversarial review to expose hidden assumptions, failure modes, ambiguity, and system-level fragility.",
+    tags: ["Adversarial Review", "Red Teaming", "Architecture", "Security"],
     markdown: `# Claude Deep Review Skill
 
-Use this skill when I need careful critique more than fast execution.
+Use this skill for deep critique of PRs, RFCs, architecture proposals, incident narratives, strategy memos, or AI-generated plans.
 
-## Architecture review prompt
-Act as a Staff+ engineer reviewing this design.
+## Required Context
+- Proposal, diff, system diagram, known constraints, success criteria, and the risk tolerance of the decision.
+- Existing incidents, data model, dependency graph, auth model, rollout path, and what has already been validated.
+- Reviewer lens: Staff engineer, SRE, security engineer, DBA, product operator, or executive stakeholder.
 
-Context:
-[paste RFC/spec/diff summary]
+## Review Process
+1. Decompose the system: actors, data flows, state transitions, dependencies, trust boundaries, and failure domains.
+2. Attack assumptions: invalid input, high concurrency, partial failure, network partition, stale cache, malicious user, and operator error.
+3. Trace blast radius: data corruption, availability loss, privacy breach, customer impact, cost explosion, and operational burden.
+4. Challenge alternatives: compare the proposed path against simpler, safer, cheaper, or more reversible options.
+5. Rewrite weak language: remove ambiguity, unsupported claims, hidden dependencies, and false certainty.
+6. Produce mitigations: concrete fixes, validation steps, and decision gates.
 
-Review for:
-1. Correctness
-2. Scalability
-3. Operability
-4. Security and privacy
-5. Migration risk
-6. Team maintainability
-7. Hidden assumptions
-
-Output:
-- Top 5 risks.
-- What should change before implementation.
-- Questions to ask stakeholders.
-- Minimum viable version.
-- Long-term version.
-- Suggested tests or rollout guardrails.
-
-## Communication prompt
-Help me write this message with clarity and care.
-Separate facts, assumptions, emotions, and the decision needed.
-Make it direct, calm, and hard to misunderstand.
+## Output Format
+- Critical risks and exploit/failure narrative.
+- Assumptions that need proof.
+- Alternative designs with trade-offs.
+- Mitigation plan ranked by risk reduction.
+- Go/No-Go recommendation with evidence threshold.
 
 ## Guardrails
-- Ask Claude to challenge assumptions, not only improve wording.
-- Keep final decisions with the human owner.
-- Use Codex or local tools for repo execution after the review is clear.`
+- Be direct but evidence-based; critique the work, not the author.
+- Do not accept "probably fine" for security, data integrity, or rollback.
+- Do not stop at critique; provide the smallest path to reduce risk.
+`
   },
   {
     id: "career-ai-strategy",
     category: "strategy",
-    title: "Career AI strategy",
-    summary: "Use AI to build Staff-level evidence, public writing, architecture portfolio, and automation assets.",
-    tags: ["Career", "Staff Engineer", "Portfolio"],
+    title: "Capability Compounding & Leverage",
+    summary: "Build durable career leverage through Staff-level scope, AI fluency, portfolio evidence, and compounding systems.",
+    tags: ["Career Strategy", "Staff Engineer", "Leverage", "Portfolio"],
     markdown: `# Career AI Strategy Skill
 
-Use this skill during weekly or monthly career planning.
+Use this skill for career planning, Staff/Principal path design, promotion packets, AI leverage strategy, and portfolio roadmaps.
 
-## Career thesis
-Build toward AI-native Staff Engineer / Tech Lead, with options toward AI platform leadership, consulting, or founder work.
+## Required Context
+- Target role, current level, domain, strengths, gaps, market direction, constraints, and available weekly capacity.
+- Existing artifacts: projects, PRs, ADRs, incident work, mentoring, writing, talks, automation, and business outcomes.
+- Desired optionality: Staff IC, engineering manager, founder, consultant, product-minded technologist, or AI systems specialist.
 
-## Four assets to compound
-1. AI Engineering Playbook: how a team safely uses Codex, Claude, Antigravity, GPT, and NotebookLM.
-2. Architecture Portfolio: RFCs, diagrams, migration notes, incident reviews, and trade-off memos.
-3. Public Writing: calm posts about AI-native software engineering and leadership.
-4. Automation Products: internal tools, agent workflows, and developer productivity demos.
+## Strategy Process
+1. Define the career thesis: the market problem you solve better because of your skill stack.
+2. Audit capability: technical depth, system design, product sense, communication, leadership, AI fluency, and business judgment.
+3. Identify leverage assets: internal tools, standards, reusable playbooks, public writing, OSS, talks, mentorship, and architecture artifacts.
+4. Choose bets: 2-3 projects with asymmetric upside, visible impact, and reusable proof.
+5. Build a 90-day operating plan: outcomes, rituals, artifacts, stakeholder alignment, and weekly feedback loops.
+6. Track evidence: before/after metrics, adoption, reliability gains, time saved, decisions influenced, and people enabled.
 
-## Prompt
-I am a Lead Software Engineer.
-Create a 3-year career strategy with these scenarios:
-1. Staff / Principal Engineer
-2. Engineering Manager / Director
-3. Founder / Independent consultant
-
-For each scenario, define:
-- Required skills.
-- Portfolio evidence.
-- Network strategy.
-- Compensation upside.
-- Risks.
-- 90-day actions.
-- 1-year milestones.
-- How AI tools should be used weekly.
+## Output Format
+- Career thesis and positioning statement.
+- Capability matrix with gaps and proof.
+- 90-day leverage roadmap.
+- Portfolio artifact plan.
+- Mentorship, visibility, and stakeholder strategy.
 
 ## Guardrails
-- Focus on evidence, not title-chasing.
-- Convert learning into visible artifacts.
-- Keep the plan flexible enough to preserve optionality.`
+- Do not optimize for job-title aesthetics over real scope and outcomes.
+- Do not confuse tool usage with AI fluency; measure quality, speed, judgment, and leverage.
+- Do not sacrifice technical depth for shallow breadth.
+`
   },
   {
     id: "engineering-decision-map",
     category: "engineering",
-    title: "Engineering decision map",
-    summary: "Analyze a feature from business need through domain, contract, data, architecture, implementation, rollout, and operation.",
-    tags: ["Architecture", "Trade-off", "Production"],
+    title: "Systemic Decision Topography",
+    summary: "Map business requirements to domain invariants, architecture options, trade-offs, risks, and operational readiness.",
+    tags: ["Decision Matrix", "Systems Thinking", "Trade-offs", "Requirements"],
     markdown: `# Engineering Decision Map Skill
 
-Use this skill when a requirement arrives and I need to lead the technical direction before asking AI to code.
+Use this skill when requirements are ambiguous, decisions are cross-functional, or architecture must balance product, data, and operations.
 
-## Seven-layer map
-1. Business need: user, outcome, priority, success metric, deadline.
-2. Domain / use case: entities, aggregate boundary, state transitions, invariants.
-3. API / contract / workflow: sync or async, idempotency, versioning, backward compatibility.
-4. Data model / consistency: schema, transaction boundary, index, migration, consistency model.
-5. Architecture / patterns: modular monolith, microservice, event-driven, CQRS, Event Sourcing, cache, resilience.
-6. Implementation / testing: PR slices, unit, integration, contract, E2E, load, migration, rollback tests.
-7. Rollout / observability / operation: feature flag, canary, dashboard, alert, runbook, rollback owner.
+## Required Context
+- Business goal, user journey, stakeholders, target metrics, hard constraints, and decision deadline.
+- Current domain model, data ownership, integration points, delivery team shape, and operational support model.
+- Quality attributes: latency, availability, consistency, security, accessibility, observability, maintainability, and cost.
 
-## Prompt
-Act as a Staff Software Engineer.
-Given this requirement, analyze it through the seven-layer map.
-For each layer, list:
-- Key questions.
-- Risks.
-- Options.
-- Trade-offs.
-- What AI can implement.
-- What a human must decide.
+## Decision Process
+1. Extract invariants: what must always be true for users, money, permissions, data, and compliance.
+2. Map the stack: business process, domain objects, API contracts, data stores, infrastructure, operations, and support.
+3. Generate options: CRUD, CQRS, event sourcing, queue-backed workflows, modular monolith, service extraction, or Strangler Fig migration.
+4. Score trade-offs: reversibility, delivery speed, data consistency, operational complexity, cost, reliability, and team fit.
+5. Run FMEA: failure modes, blast radius, detection, mitigation, rollback, and graceful degradation.
+6. Decide explicitly: two-way door versus one-way door, accepted technical debt, and validation milestone.
 
-End with:
-- Recommended architecture direction.
-- Small PR sequence.
-- Verification plan.
-- Rollout and rollback plan.
+## Output Format
+- Requirement-to-architecture map.
+- Weighted decision matrix.
+- Recommended option and rejected alternatives.
+- Risk register and mitigation plan.
+- Operational readiness and rollout outline.
 
 ## Guardrails
-- Do not jump from requirement to code.
-- Do not hide data consistency or migration risk.
-- Do not recommend Event Sourcing, CQRS, microservices, or cache unless the problem justifies the cost.`
+- Do not choose interesting technology when boring technology satisfies the invariant.
+- Do not finalize a decision without observability and rollback.
+- State the breaking point of the design instead of implying infinite scale.
+`
   },
   {
     id: "staff-engineer-ai-review-pack",
     category: "engineering",
-    title: "Staff engineer AI review pack",
-    summary: "Use AI as requirement analyst, architect, adversarial reviewer, test strategist, and production readiness reviewer.",
-    tags: ["Staff reflex", "Review", "AI workflow"],
+    title: "Staff-Level Architectural Audit",
+    summary: "Audit high-risk technical changes through Staff-level lenses: product, architecture, security, data, SRE, QA, and rollout.",
+    tags: ["Staff Engineer", "Architecture Review", "PRR", "Risk Audit"],
     markdown: `# Staff Engineer AI Review Pack Skill
 
-Use this skill to make AI review a requirement, design, PR, or rollout plan from multiple senior engineering angles.
+Use this skill for major architectural changes, multi-system integrations, sensitive-data features, migrations, and launch readiness reviews.
 
-## 1. Requirement analyst
-Read this requirement and identify ambiguity, hidden assumptions, edge cases, missing acceptance criteria, and stakeholder questions.
-Group questions by business, product, data, API, security, reliability, rollout, and observability.
+## Required Context
+- RFC/PR, target architecture, service map, data classification, dependency graph, timeline, and launch criteria.
+- SLOs, API contracts, schema changes, auth model, observability, test strategy, and rollback constraints.
+- Known risks, unresolved questions, and stakeholders who own sign-off.
 
-## 2. Architect
-Propose 3 architecture options.
-Compare scalability, complexity, operational burden, consistency, cost, security, migration effort, rollback strategy, and long-term maintainability.
+## Audit Process
+1. Product lens: validate user value, rollout segment, acceptance criteria, and cost of delaying or simplifying.
+2. Architecture lens: check boundaries, coupling, compatibility, contracts, extensibility, and architectural drift.
+3. Security/privacy lens: STRIDE, IAM/RBAC/ABAC, data exposure, tenant isolation, secrets, encryption, and auditability.
+4. Data lens: migration safety, index/lock behavior, backfill, consistency, retention, backup, restore, and reconciliation.
+5. SRE lens: SLO impact, capacity, alerts, dashboards, runbooks, on-call load, failure domains, and rollback triggers.
+6. QA lens: unit, integration, E2E, contract, load, chaos, accessibility, and exploratory test coverage.
 
-## 3. Adversarial reviewer
-Challenge this design.
-Find race conditions, data consistency bugs, security risks, performance bottlenecks, hidden coupling, and production failure scenarios.
-
-## 4. Test strategist
-Generate a test matrix:
-- Unit
-- Integration
-- Contract
-- E2E
-- Load
-- Security
-- Migration
-- Rollback
-- Chaos or dependency failure
-
-## 5. Production readiness reviewer
-Review this feature for production readiness.
-Include observability, alerting, runbook, rollout, rollback, SLO impact, incident response, and customer impact checks.
+## Output Format
+- Cross-functional risk matrix.
+- Hard blockers and launch conditions.
+- Production readiness score with Go/No-Go recommendation.
+- Required sign-offs and owners.
+- Evolution path from current state to target state.
 
 ## Guardrails
-- Give AI the context, constraints, and quality bar.
-- Ask for critique before implementation.
-- Keep final architecture and production decisions with the human owner.`
+- Do not approve big-bang rewrites without an incremental migration plan.
+- Do not accept launch readiness without measurable SLOs and rollback triggers.
+- Prioritize data integrity, privacy, and reliability over delivery optics.
+`
   },
   {
     id: "data-resilience-observability-review",
     category: "engineering",
-    title: "Data, resilience, observability review",
-    summary: "Review a design for database correctness, indexing, consistency, dependency failure, cache behavior, and production signals.",
-    tags: ["Data", "Resilience", "Observability"],
+    title: "Distributed Resilience & Telemetry",
+    summary: "Review data integrity, distributed resilience, telemetry, and recovery plans before systems carry production load.",
+    tags: ["Data", "Resilience", "Observability", "SRE"],
     markdown: `# Data, Resilience, Observability Review Skill
 
-Use this skill when a feature touches database design, external dependencies, cache, events, or production traffic.
+Use this skill for databases, caches, queues, search indexes, event streams, third-party integrations, and production readiness reviews.
 
-## Database review
-- Does the schema match the domain?
-- Are transaction boundaries clear?
-- What isolation level assumptions exist?
-- Does the query need a B-tree, composite, partial, expression, GIN, GiST, SP-GiST, or BRIN index?
-- Does EXPLAIN ANALYZE confirm the plan?
-- Can migration run online without dangerous locks?
-- Is backup/restore or rollback tested?
+## Required Context
+- Data model, query patterns, traffic profile, consistency needs, RPO/RTO, SLOs, and downstream consumers.
+- Current database/cache/queue/search topology, replication, backup, monitoring, alerting, and incident history.
+- Sensitive data classification, retention policy, and logging restrictions.
 
-## Consistency review
-- Is strong consistency required or is eventual consistency acceptable?
-- Is there a read-after-write issue?
-- Are duplicate events/messages possible?
-- Is idempotency required?
-- Is Saga, Outbox, Inbox, CDC, CQRS, or Event Sourcing justified?
+## Review Process
+1. Data integrity: transaction boundaries, isolation level, constraints, idempotency, deduplication, reconciliation, and migration safety.
+2. Query and storage: indexes, cardinality, locking, hot partitions, N+1 access, connection pooling, retention, and archival.
+3. Cache and queue behavior: invalidation, stampede protection, TTL, ordering, replay, DLQ, poison messages, and backpressure.
+4. Failure simulation: network partition, slow dependency, partial write, duplicate event, region failover, and third-party outage.
+5. Telemetry: RED/USE metrics, OpenTelemetry traces, structured logs, correlation IDs, dashboards, SLO burn alerts, and runbooks.
+6. Recovery: backup restore, point-in-time recovery, RPO/RTO, rollback scripts, and data repair procedure.
 
-## Resilience review
-- Is there a timeout?
-- Is retry bounded with backoff and jitter?
-- Is the operation idempotent?
-- Is there a Circuit Breaker, Bulkhead, rate limit, fallback, or load shedding path?
-- What happens when the dependency is slow, down, or returns partial failure?
+## Output Format
+- Consistency and data-integrity assessment.
+- Failure-mode matrix with mitigation.
+- Telemetry specification and dashboard plan.
+- Load, chaos, and restore test plan.
+- Go-live checklist with rollback and recovery triggers.
 
-## Observability review
-- Business metric.
-- Technical metric.
-- Logs without PII.
-- Trace with correlation ID.
-- Dashboard before rollout.
-- Alert based on user impact.
-- Runbook and rollback owner.
+## Guardrails
+- Never assume the network, clock, cache, queue, or third-party dependency is reliable.
+- Do not log PII, secrets, tokens, or sensitive payloads.
+- Do not page humans for non-actionable alerts.
+`
+  },
+  {
+    id: "installed-skill-library-cartographer",
+    category: "strategy",
+    title: "Installed Skill Library Cartographer",
+    summary: "Inventory installed agent skills, remove duplicates, classify capabilities, and turn scattered playbooks into a usable routing system.",
+    tags: ["Skill Inventory", "Agent Routing", "Taxonomy", "Governance"],
+    markdown: `# Installed Skill Library Cartographer Skill
 
-## Output format
-- Blockers.
-- Design risks.
-- Suggested tests.
-- Monitoring plan.
-- Rollout guardrails.`
+Use this skill when consolidating installed Codex, Claude, Gemini, Antigravity, local .agents, marketplace, plugin, or project skills into a coherent operating library.
+
+## Corpus Coverage
+- Latest local inventory pass: 14,541 raw \`SKILL.md\` files, 5,035 unique contents, 3,116 unique names, with heavy overlap across Codex, Claude, Gemini, Antigravity CLI/IDE, and local agent runtimes.
+- Scan installed \`SKILL.md\` files across approved local roots before editing the canonical library.
+- Deduplicate by content hash and normalized name because plugin caches and multi-runtime installs create many copies.
+- Preserve source provenance at the capability level without exposing private absolute paths in public content.
+- Treat vendor, marketplace, generated, translated, and project-local skills as signals, not as content to paste blindly.
+
+## Analysis Process
+1. Inventory sources: Codex, Claude, Gemini, Antigravity CLI/IDE, local .agents, project-local skills, plugins, and marketplace caches.
+2. Extract metadata: name, description, trigger rules, domain keywords, output expectations, and safety constraints.
+3. Cluster capabilities: engineering, frontend/UI, backend/platform, security, AI agents, research, content, product, operations, mobile, and learning.
+4. Identify gaps: capabilities heavily represented in installed skills but missing from the public Studio skill library.
+5. Synthesize target skills: merge overlapping playbooks into crisp, non-duplicative expert skills with clear use cases.
+6. Validate fit: each final skill must have a precise trigger, required context, process, output contract, and guardrails.
+
+## Output Format
+- Inventory summary: raw files, unique content count, unique names, and runtime coverage.
+- Capability taxonomy with mapped source families.
+- Gap analysis against the current skill library.
+- Proposed additions/merges/removals.
+- Final copy-ready English and localized versions.
+
+## Guardrails
+- Do not publish local paths, usernames, tokens, credentials, or private workspace details.
+- Do not inflate the library by copying every duplicate skill into the UI.
+- Do not trust marketplace/cache content without normalizing it into the owner's vocabulary and needs.
+`
+  },
+  {
+    id: "ai-product-evaluation",
+    category: "strategy",
+    title: "AI Product & Evaluation",
+    summary: "Move AI features from impressive demos to trustworthy products with evals, safety boundaries, cost controls, and measurable user value.",
+    tags: ["AI Product", "Evals", "LLM Quality", "Trust"],
+    markdown: `# AI Product & Evaluation Skill
+
+Use this skill when designing, auditing, or shipping AI-powered product features, agents, copilots, chat interfaces, retrieval systems, or model-powered workflows.
+
+## Required Context
+- User job-to-be-done, risk level, model/provider, tool access, retrieval sources, latency budget, cost target, and trust boundary.
+- Failure modes: hallucination, unsafe action, stale retrieval, prompt injection, privacy leak, refusal mismatch, and silent degradation.
+- Business metric: adoption, task completion, deflection, time saved, quality improvement, revenue, retention, or risk reduction.
+
+## Product Process
+1. Define the product promise: what the AI must help the user accomplish and what it must never do.
+2. Separate demo from production: specify grounding, permissions, fallback UX, observability, rate limits, and abuse controls.
+3. Build evals: golden tasks, adversarial prompts, regression suites, human review rubrics, and acceptance thresholds.
+4. Measure quality and cost: success rate, hallucination rate, tool-call accuracy, citation fidelity, latency, token spend, and support impact.
+5. Design trust UX: source display, confidence language, editability, audit trail, undo, escalation, and human handoff.
+6. Plan rollout: shadow mode, allowlist, feature flag, red-team review, telemetry, incident playbook, and model/provider rollback.
+
+## Output Format
+- AI feature brief with promise, non-goals, and risk class.
+- Evaluation plan with datasets, rubrics, thresholds, and owners.
+- Safety and trust UX checklist.
+- Cost/latency budget and monitoring plan.
+- Rollout and rollback plan.
+
+## Guardrails
+- Do not ship an AI feature without evals that match real user tasks.
+- Do not hide uncertainty, missing sources, or model limitations from the user.
+- Do not give agents write access to external systems without permission boundaries and audit logs.
+`
+  },
+  {
+    id: "agent-tools-mcp-automation",
+    category: "operations",
+    title: "Agent Tools, MCP & Workflow Automation",
+    summary: "Design reliable tool-using agents across MCP, GitHub, Slack, Gmail, Outlook, Notion, Airtable, browsers, and local CLIs.",
+    tags: ["MCP", "Automation", "Integrations", "Tool Use"],
+    markdown: `# Agent Tools, MCP & Workflow Automation Skill
+
+Use this skill when an agent needs to use tools, connectors, MCP servers, CLIs, browsers, or app integrations to complete a workflow.
+
+## Required Context
+- Target app/tool, available connector, account boundary, data sensitivity, read/write permissions, and approval requirement.
+- Inputs, IDs, schemas, pagination behavior, rate limits, retry policy, and expected artifacts.
+- Whether the workflow is independent, sequential, reversible, or state-mutating.
+
+## Automation Process
+1. Discover tools: inspect available schemas and required IDs before executing.
+2. Classify actions: read-only, draft creation, user-reviewed write, immediate write, scheduled action, destructive action, or external publish.
+3. Normalize inputs: resolve IDs, validate schemas, handle time zones, sanitize untrusted content, and preserve source links.
+4. Execute safely: batch only independent calls, paginate to completeness, checkpoint long work, and keep outputs inspectable.
+5. Verify results: compare returned state with requested state, record links/artifacts, and surface partial failures.
+6. Handoff: provide concise summary, artifacts, residual risk, and the next human decision when needed.
+
+## Output Format
+- Tooling plan with app, action, permission level, and risk class.
+- Schema-compliant execution inputs.
+- Result summary with source links or artifact references.
+- Failure/retry notes and unresolved blockers.
+- Audit trail for state-changing actions.
+
+## Guardrails
+- Do not execute write/destructive actions without explicit approval or a draft-first workflow.
+- Do not invent tool slugs, API fields, account IDs, channel IDs, folder IDs, or file IDs.
+- Do not expose secrets, OAuth tokens, private payloads, or unrelated app data.
+`
+  },
+  {
+    id: "product-analytics-growth",
+    category: "strategy",
+    title: "Product Analytics & Growth Experimentation",
+    summary: "Turn behavior data into decisions through event taxonomy, funnels, cohorts, A/B tests, attribution, and growth loops.",
+    tags: ["Analytics", "Growth", "Experimentation", "PostHog"],
+    markdown: `# Product Analytics & Growth Experimentation Skill
+
+Use this skill when designing analytics, auditing tracking, planning growth experiments, measuring funnels, or deciding whether a feature worked.
+
+## Required Context
+- Product goal, user segment, north-star metric, funnel stage, current instrumentation, and decision that the data must support.
+- Event taxonomy, identity model, consent/privacy rules, attribution model, experiment constraints, and dashboard owner.
+- Baseline metrics and expected movement: activation, retention, conversion, engagement, revenue, or operational efficiency.
+
+## Analytics Process
+1. Define the decision: what will change if the metric moves, does not move, or is inconclusive.
+2. Design event taxonomy: event names, properties, identity resolution, source surface, and versioning.
+3. Validate instrumentation: page views, click events, forms, filters, outbound links, search/command UIs, and error states.
+4. Analyze behavior: funnels, cohorts, retention curves, segmentation, drop-offs, correlation, and qualitative context.
+5. Plan experiments: hypothesis, primary metric, guardrail metrics, sample size, ramp plan, and stop conditions.
+6. Report learning: what changed, what did not, confidence level, next decision, and follow-up instrumentation.
+
+## Output Format
+- Tracking plan with events, properties, owners, and surfaces.
+- Funnel/cohort dashboard spec.
+- Experiment brief with hypothesis, metrics, and guardrails.
+- Data quality checklist.
+- Decision memo with recommendation.
+
+## Guardrails
+- Do not optimize vanity metrics that do not affect a decision.
+- Do not add public surfaces without matching analytics when the product convention requires it.
+- Do not ignore privacy choices, Do Not Track, consent, or autocapture/session-recording constraints.
+`
+  },
+  {
+    id: "research-market-intelligence",
+    category: "learning",
+    title: "Research & Market Intelligence",
+    summary: "Produce grounded research from local docs, web sources, competitors, customers, papers, and market signals with explicit confidence.",
+    tags: ["Research", "Market Intelligence", "Source Grounding", "Synthesis"],
+    markdown: `# Research & Market Intelligence Skill
+
+Use this skill for market research, competitor analysis, product discovery, customer insight synthesis, technical literature review, or strategic scanning.
+
+## Required Context
+- Research question, decision owner, time horizon, geography, industry, target segment, and acceptable source types.
+- Existing local knowledge, internal docs, known competitors, source trust ranking, and required citation style.
+- Whether the task needs current web research, local-only research, academic sources, interviews, or quantitative analysis.
+
+## Research Process
+1. Frame the question: define the decision, scope, non-goals, assumptions, and confidence needed.
+2. Start local: inspect provided docs, repo notes, prior decisions, and internal artifacts before external lookup.
+3. Gather evidence: use primary sources where possible, compare dates, check author/source incentives, and capture citations.
+4. Analyze patterns: segment users, competitors, jobs-to-be-done, willingness to pay, adoption barriers, and market timing.
+5. Separate signal from speculation: label facts, inferences, weak signals, contradictions, and unknowns.
+6. Recommend action: produce the smallest next decision or experiment that reduces uncertainty.
+
+## Output Format
+- Research brief with question, scope, and confidence.
+- Evidence table with source, date, claim, and caveat.
+- Competitor/customer/theme synthesis.
+- Unknowns and risk register.
+- Recommended next experiment or decision.
+
+## Guardrails
+- Do not browse externally when the task is explicitly local-only.
+- Do not present outdated or secondhand claims as current primary evidence.
+- Do not hide uncertainty; label confidence and proof gaps clearly.
+`
+  },
+  {
+    id: "security-privacy-threat-modeling",
+    category: "engineering",
+    title: "Security, Privacy & Threat Modeling",
+    summary: "Audit systems for abuse paths, auth flaws, PII exposure, supply-chain risk, compliance gaps, and secure rollout.",
+    tags: ["Security", "Privacy", "Threat Modeling", "Compliance"],
+    markdown: `# Security, Privacy & Threat Modeling Skill
+
+Use this skill when a change touches authentication, authorization, user input, sensitive data, payments, file uploads, integrations, AI tools, infrastructure, or production operations.
+
+## Required Context
+- Assets, actors, trust boundaries, data classification, auth model, threat history, compliance constraints, and deployment scope.
+- Inputs/outputs, storage locations, third-party processors, secrets, logs, analytics, and retention policy.
+- Existing controls: IAM, RBAC/ABAC, CSP, CSRF, rate limiting, audit logs, encryption, scanning, and incident response.
+
+## Review Process
+1. Map assets and trust boundaries: user data, credentials, tokens, payments, internal APIs, model context, and admin tools.
+2. Run STRIDE/LINDDUN: spoofing, tampering, repudiation, information disclosure, denial of service, elevation, linkability, identifiability, and non-repudiation.
+3. Test abuse paths: injection, XSS, CSRF, IDOR, SSRF, RCE, path traversal, prompt injection, insecure deserialization, and privilege escalation.
+4. Check privacy: data minimization, consent, PII redaction, logging hygiene, analytics properties, retention, and deletion.
+5. Assess supply chain: dependencies, SCA, SAST, secrets scanning, container/IaC drift, and CI permissions.
+6. Define mitigations: hard blockers, compensating controls, test cases, monitoring, rollout constraints, and incident runbook.
+
+## Output Format
+- Threat model with assets, actors, boundaries, and assumptions.
+- Vulnerability findings ranked by severity.
+- Privacy impact notes and data-flow diagram.
+- Required fixes and verification tests.
+- Go/No-Go security recommendation.
+
+## Guardrails
+- Do not log, copy, or publish secrets, tokens, private keys, or sensitive payloads.
+- Do not rely on generic "sanitize input" advice; name the exact control and location.
+- Do not approve sensitive-data features without auditability and rollback.
+`
+  },
+  {
+    id: "design-system-ui-craft",
+    category: "engineering",
+    title: "Design System & UI Craft",
+    summary: "Create polished, accessible, responsive interfaces using design systems, component libraries, visual hierarchy, and interaction states.",
+    tags: ["Design System", "UI", "Accessibility", "Responsive"],
+    markdown: `# Design System & UI Craft Skill
+
+Use this skill when building or refining product UI, design systems, dashboards, landing pages, mobile layouts, component libraries, or visual prototypes.
+
+## Required Context
+- Product type, user workflow, brand tone, existing design system, component library, icons, typography, color tokens, and density needs.
+- Target viewports, accessibility requirements, interaction states, content length, data density, and performance constraints.
+- Whether the surface is an operational tool, editorial page, portfolio, marketing page, game, or AI-native interface.
+
+## Design Process
+1. Understand the job: prioritize the user's repeated workflow, scanning pattern, decision load, and error recovery.
+2. Use existing system first: tokens, spacing, icons, button semantics, tabs, menus, forms, charts, tables, and empty states.
+3. Design complete states: hover, focus, disabled, loading, skeleton, empty, error, success, overflow, long text, and mobile.
+4. Build visual hierarchy: typography scale, spacing rhythm, contrast, density, grouping, affordances, and layout constraints.
+5. Verify craft: screenshot review, responsive checks, no overlap, stable dimensions, keyboard navigation, and color contrast.
+6. Connect telemetry: track meaningful UI decisions, filters, commands, CTAs, forms, outbound links, and preference changes.
+
+## Output Format
+- UI concept and layout rationale.
+- Component/state inventory.
+- Responsive and accessibility checklist.
+- Implementation notes tied to the existing design system.
+- Screenshot or browser-verification plan when applicable.
+
+## Guardrails
+- Do not make a landing page when the user asked for a tool or app.
+- Do not use decorative gradients/orbs as a substitute for product-relevant visual assets.
+- Do not ship text that overflows, overlaps, or breaks on mobile.
+`
+  },
+  {
+    id: "mobile-platform-engineering",
+    category: "engineering",
+    title: "Mobile Platform Engineering",
+    summary: "Build and review iOS, Android, SwiftUI, Kotlin, React Native, and app-store workflows with performance and release discipline.",
+    tags: ["Mobile", "iOS", "Android", "SwiftUI"],
+    markdown: `# Mobile Platform Engineering Skill
+
+Use this skill for native iOS, Android, SwiftUI, Kotlin, React Native, app packaging, app-store release work, or mobile UI/performance audits.
+
+## Required Context
+- Platform, minimum OS, navigation model, design system, data layer, offline needs, permissions, app-store constraints, and release channel.
+- Performance targets, accessibility expectations, device matrix, analytics events, crash reporting, and privacy declarations.
+- Build tooling: Xcode, SwiftPM, Tuist, Gradle, Android SDK, CI, signing, provisioning, and store metadata.
+
+## Engineering Process
+1. Define platform boundaries: native versus cross-platform, shared logic, UI ownership, device support, and release cadence.
+2. Design lifecycle behavior: app launch, navigation, state restoration, background tasks, permissions, offline mode, and error recovery.
+3. Optimize performance: startup time, scrolling, image memory, layout passes, concurrency, battery, network usage, and caching.
+4. Verify UI: device matrix, orientation, Dynamic Type, TalkBack/VoiceOver, keyboard, gestures, and visual regression.
+5. Harden release: signing, provisioning, app-store metadata, privacy nutrition labels, crash monitoring, phased rollout, and rollback plan.
+6. Capture evidence: simulator/device logs, screenshots, test reports, crash-free sessions, and release notes.
+
+## Output Format
+- Platform architecture and release plan.
+- UI/performance risk matrix.
+- Test matrix across devices and OS versions.
+- Store submission checklist.
+- Post-release monitoring and rollback notes.
+
+## Guardrails
+- Do not treat simulator success as device readiness.
+- Do not ignore accessibility, privacy declarations, or app-store review constraints.
+- Do not ship mobile changes without crash/analytics visibility.
+`
+  },
+  {
+    id: "data-ml-science-workflow",
+    category: "learning",
+    title: "Data, ML & Scientific Workflow",
+    summary: "Handle data, ML, and science tasks with reproducible notebooks, trustworthy sources, evaluation, provenance, and statistical caution.",
+    tags: ["Data", "ML", "Science", "Reproducibility"],
+    markdown: `# Data, ML & Scientific Workflow Skill
+
+Use this skill for data analysis, ML experiments, scientific APIs, bioinformatics, finance data, geospatial work, notebooks, dashboards, or model evaluation.
+
+## Required Context
+- Research question, dataset source, license, schema, missingness, time range, unit definitions, and decision the analysis supports.
+- Tooling: Python/R/SQL/notebook, API, model type, evaluation metric, compute limits, and reproducibility requirement.
+- Risk level: financial, health, science, compliance, privacy, or production-impacting analysis.
+
+## Workflow Process
+1. Define the hypothesis and decision: what the analysis can and cannot prove.
+2. Audit data provenance: source, freshness, sampling bias, schema quality, missing values, leakage, and sensitive fields.
+3. Build reproducibly: environment, seed, notebook/script split, versioned data, deterministic transforms, and documented assumptions.
+4. Analyze rigorously: baselines, confidence intervals, error bars, ablations, train/test split, and out-of-distribution checks.
+5. Validate with domain sense: compare against known constraints, source documentation, and independent sanity checks.
+6. Communicate limits: uncertainty, caveats, failed approaches, ethical constraints, and next experiment.
+
+## Output Format
+- Analysis plan and data dictionary.
+- Reproducible notebook/script outline.
+- Findings with confidence and caveats.
+- Evaluation table and error analysis.
+- Recommendation or next experiment.
+
+## Guardrails
+- Do not imply causality from correlation without an identification strategy.
+- Do not treat model output as truth without validation and error analysis.
+- Do not expose sensitive, medical, financial, or proprietary data in public artifacts.
+`
   }
 ];
+
+function buildSkillExpertAddendum({
+  role,
+  heuristics,
+  failureModes,
+  gates
+}: {
+  role: string;
+  heuristics: string[];
+  failureModes: string[];
+  gates: string[];
+}): string {
+  return [
+    "## Senior Role Lens",
+    `- ${role}`,
+    ...heuristics.map((item) => `- ${item}`),
+    "",
+    "## Expert Failure Modes",
+    ...failureModes.map((item) => `- ${item}`),
+    "",
+    "## Quality Gates",
+    ...gates.map((item) => `- ${item}`)
+  ].join("\n");
+}
+
+const studioAiSkillExpertAddenda: Record<string, string> = {
+  "code-review": buildSkillExpertAddendum({
+    role: "Act like the reviewer who will be paged if this change breaks at 2 a.m.; optimize for missed behavior, not clever comments.",
+    heuristics: [
+      "Review the diff against invariants: money, permissions, identity, data retention, locale, SEO, analytics, and rollback.",
+      "Trace both the happy path and the abandoned path: cancelled request, stale tab, retry, partial write, duplicate event, and disabled user."
+    ],
+    failureModes: [
+      "A test passes because it mocks away the real contract: time, auth, network, storage, routing, or browser behavior.",
+      "A small UI change breaks analytics, accessibility, locale paths, or cache invalidation outside the touched component."
+    ],
+    gates: [
+      "Every blocker must explain impact, evidence, and smallest fix.",
+      "Approval requires behavior coverage or an explicit residual-risk note."
+    ]
+  }),
+  "frontend-architecture": buildSkillExpertAddendum({
+    role: "Act like a Staff Frontend Architect balancing product speed, design-system integrity, accessibility, and runtime performance.",
+    heuristics: [
+      "Design around ownership boundaries: route, data loader, interaction state, visual primitive, analytics surface, and error recovery.",
+      "Budget for worst-case content: long translations, empty datasets, slow networks, reduced motion, keyboard-only use, and narrow screens."
+    ],
+    failureModes: [
+      "Hydration mismatch or client-only state quietly changes SEO, analytics, or first interaction latency.",
+      "A beautiful component has no stable dimensions, so real data causes layout shift, overlap, or unusable mobile controls."
+    ],
+    gates: [
+      "State taxonomy and responsive state matrix must be explicit.",
+      "LCP, INP, CLS, keyboard flow, focus order, and event tracking must have an owner."
+    ]
+  }),
+  "backend-architecture": buildSkillExpertAddendum({
+    role: "Act like a Backend Architect responsible for domain ownership, compatibility, migration safety, and operational load.",
+    heuristics: [
+      "Start from invariants before topology: what must always be true after retries, duplicate messages, partial failures, and replays.",
+      "Prefer boring boundaries until throughput, consistency, team ownership, or compliance forces a more complex shape."
+    ],
+    failureModes: [
+      "Async flow without idempotency, replay strategy, dead-letter handling, or reconciliation becomes invisible data loss.",
+      "A schema migration is technically valid but operationally unsafe because locks, backfills, rollbacks, or old readers were ignored."
+    ],
+    gates: [
+      "Every mutation path has idempotency, authorization, observability, and rollback semantics.",
+      "Contracts include pagination, error taxonomy, versioning, rate limits, and compatibility notes."
+    ]
+  }),
+  "blog-content-writer": buildSkillExpertAddendum({
+    role: "Act like a senior technical editor who protects trust, precision, source fidelity, and the reader's working memory.",
+    heuristics: [
+      "Turn a broad topic into one thesis, one reader, one decision, and one memorable mental model.",
+      "Use expert vocabulary only when it carries explanatory load; define it through context, not glossary padding."
+    ],
+    failureModes: [
+      "The article sounds expert but has no falsifiable claim, source trail, trade-off, or concrete operational example.",
+      "SEO work becomes keyword stuffing and weakens the author's voice, locale fit, or semantic structure."
+    ],
+    gates: [
+      "Metadata, slug, heading hierarchy, internal links, and schema fit the existing content system.",
+      "Every strong claim is either sourced, demonstrated, or softened with clear uncertainty."
+    ]
+  }),
+  "prompt-writing": buildSkillExpertAddendum({
+    role: "Act like a prompt systems engineer designing instructions that survive ambiguity, injection, tool use, and downstream parsing.",
+    heuristics: [
+      "Separate authority layers: system rules, developer rules, user task, retrieved evidence, examples, and untrusted payloads.",
+      "Design prompts as interfaces: inputs, preconditions, output contract, validation, errors, and fallback behavior."
+    ],
+    failureModes: [
+      "The prompt is long but not binding: it lacks acceptance criteria, negative constraints, schema examples, or test cases.",
+      "Untrusted content can redefine role, tools, safety policy, output format, or source hierarchy."
+    ],
+    gates: [
+      "Prompt pack includes adversarial evals and malformed-input tests.",
+      "Structured outputs have schema, valid/invalid examples, and a recovery path."
+    ]
+  }),
+  "status-report": buildSkillExpertAddendum({
+    role: "Act like an operator writing for leaders who need risk, decision, and path-to-green clarity in under one minute.",
+    heuristics: [
+      "Separate activity from value shipped, risk retired, decision unblocked, and customer/system impact.",
+      "State the consequence of no decision; otherwise an escalation is only a status update."
+    ],
+    failureModes: [
+      "Green status hides scope creep, dependency drift, quality debt, or a blocker with no owner.",
+      "Metrics are accurate but non-actionable because they do not map to a decision."
+    ],
+    gates: [
+      "Every blocker has owner, next action, due date, impact, and escalation threshold.",
+      "Report fits the audience: engineer detail for execution, BLUF and trade-off for executives."
+    ]
+  }),
+  "doc-spec-tech-spec": buildSkillExpertAddendum({
+    role: "Act like an RFC owner who must earn implementation consensus before code starts.",
+    heuristics: [
+      "Write non-goals as aggressively as goals; unclear exclusions become scope debt.",
+      "Make reversibility explicit: two-way-door decisions need speed, one-way-door decisions need evidence."
+    ],
+    failureModes: [
+      "The spec describes a solution but never proves the product problem or operational constraint.",
+      "Migration, rollback, privacy, observability, and compatibility are deferred until implementation, when they are most expensive."
+    ],
+    gates: [
+      "RFC contains alternatives, trade-off matrix, risk register, test matrix, and rollout/rollback plan.",
+      "All open questions have an owner, decision date, and impact if unresolved."
+    ]
+  }),
+  "proposal-slide-pitch": buildSkillExpertAddendum({
+    role: "Act like an executive communicator converting ambiguity into a decision-ready investment case.",
+    heuristics: [
+      "Translate features into business levers: revenue, cost, risk, cycle time, resilience, compliance, or strategic option value.",
+      "Put the ask early; decks that hide the decision force stakeholders to infer the point."
+    ],
+    failureModes: [
+      "The proposal is persuasive but not fundable because it lacks owner, budget, timeline, risk, and success metric.",
+      "A technical win is framed without CFO/CTO/Product lenses, so each stakeholder hears a different proposal."
+    ],
+    gates: [
+      "One thesis, one decision request, one quantified impact model, and one fallback path.",
+      "Objection matrix covers cost, risk, timing, technical feasibility, adoption, and opportunity cost."
+    ]
+  }),
+  "ai-operating-system": buildSkillExpertAddendum({
+    role: "Act like an AI systems architect designing reliable agent workflows, not a prompt collector.",
+    heuristics: [
+      "Route by task physics: retrieval, reasoning, coding, validation, UI verification, state mutation, and summarization are different jobs.",
+      "Treat context as a supply chain: provenance, freshness, trust level, compression, and exclusion matter."
+    ],
+    failureModes: [
+      "Multi-agent orchestration adds latency and contradiction without a validation layer or ownership model.",
+      "Agents receive broad tool access, then silently cross privacy, filesystem, or production boundaries."
+    ],
+    gates: [
+      "Every agent has role, inputs, tools, write boundary, output schema, and verification owner.",
+      "Critical workflows include secondary review, deterministic checks, and human approval gates."
+    ]
+  }),
+  "daily-ai-learning-coach": buildSkillExpertAddendum({
+    role: "Act like a learning systems coach who turns daily work into compounding evidence, not content consumption.",
+    heuristics: [
+      "Practice one micro-skill against real work, then save one artifact that can be reused or reviewed.",
+      "Prefer retrieval, critique, and evaluation drills over endless new tool exploration."
+    ],
+    failureModes: [
+      "Learning feels busy because it creates notes, but no prompt, checklist, test, demo, or decision improves.",
+      "AI replaces the hard part of learning, so fluency rises while judgment weakens."
+    ],
+    gates: [
+      "Each session produces a reusable artifact and a next transfer challenge.",
+      "Spaced repetition tests recall and application, not recognition."
+    ]
+  }),
+  "notebooklm-source-of-truth": buildSkillExpertAddendum({
+    role: "Act like a source-grounded analyst who would rather say 'not provided' than invent a bridge.",
+    heuristics: [
+      "Rank sources by authority, date, proximity to decision, and conflict with newer artifacts.",
+      "Separate extraction, synthesis, and inference so readers know what the corpus actually said."
+    ],
+    failureModes: [
+      "A smooth summary hides contradictions, outdated specs, missing dates, or uncited claims.",
+      "External model memory fills gaps that should remain explicit unknowns."
+    ],
+    gates: [
+      "Every factual claim has citation, confidence, and caveat when needed.",
+      "Contradictions and missing evidence are first-class outputs."
+    ]
+  }),
+  "ai-delivery-factory": buildSkillExpertAddendum({
+    role: "Act like an AI delivery lead coordinating spec, implementation, verification, review, and handoff without mixing duties.",
+    heuristics: [
+      "Slice work by independently verifiable behavior, not by files or agent convenience.",
+      "Let AI accelerate boilerplate, search, test generation, and critique; keep architecture and merge decisions owned."
+    ],
+    failureModes: [
+      "One agent plans, codes, reviews, and declares done, creating a closed loop with no independent evidence.",
+      "Generated code is correct locally but misses analytics, locale, accessibility, migration, or release conventions."
+    ],
+    gates: [
+      "Clean diff, focused commit, relevant tests, no secrets, no unrelated changes.",
+      "Handoff includes verification commands, residual risk, deployment impact, and rollback notes."
+    ]
+  }),
+  "claude-deep-review": buildSkillExpertAddendum({
+    role: "Act like an adversarial Principal Engineer exposing what a friendly review would miss.",
+    heuristics: [
+      "Attack assumptions before implementation: scale, data consistency, auth, timing, operator behavior, and unhappy paths.",
+      "Convert vague concerns into failure narratives: trigger, path, blast radius, detection, mitigation."
+    ],
+    failureModes: [
+      "The critique is intense but unactionable because it lacks smallest fix and evidence threshold.",
+      "The reviewer debates style while data integrity, rollback, or user trust risk remains unresolved."
+    ],
+    gates: [
+      "Every major objection includes mitigation, validation, and owner.",
+      "Go/No-Go recommendation states the evidence required to change the decision."
+    ]
+  }),
+  "career-ai-strategy": buildSkillExpertAddendum({
+    role: "Act like a Staff/Principal career strategist building proof of judgment, not a list of tools.",
+    heuristics: [
+      "Portfolio evidence should show scope, ambiguity handled, people influenced, risk reduced, and systems improved.",
+      "AI leverage is credible only when it improves throughput without lowering explainability or review quality."
+    ],
+    failureModes: [
+      "Career plan overfits to hot tools instead of durable capabilities: systems, product sense, communication, and leadership.",
+      "Artifacts exist but do not prove business impact, technical depth, or cross-functional trust."
+    ],
+    gates: [
+      "90-day plan has visible artifacts, measurable outcomes, and stakeholder feedback loops.",
+      "Each capability gap maps to a project that creates value while building proof."
+    ]
+  }),
+  "engineering-decision-map": buildSkillExpertAddendum({
+    role: "Act like a systems decision maker translating product ambiguity into explicit trade-offs.",
+    heuristics: [
+      "Map invariants before components: user, money, permission, data, compliance, and operational truth.",
+      "Score options by reversibility, blast radius, cognitive load, team ownership, and operational cost."
+    ],
+    failureModes: [
+      "The team chooses architecture to avoid a hard product question.",
+      "A one-way-door decision is treated like a reversible experiment."
+    ],
+    gates: [
+      "Decision matrix includes rejected alternatives and accepted debt.",
+      "Breaking point, observability, rollback, and owner are documented before implementation."
+    ]
+  }),
+  "staff-engineer-ai-review-pack": buildSkillExpertAddendum({
+    role: "Act like a Staff Engineer running a multi-lens production readiness review.",
+    heuristics: [
+      "Review through product, architecture, security, data, SRE, QA, accessibility, analytics, and release lenses.",
+      "Ask which team owns the system six months after launch, not only who can build it this sprint."
+    ],
+    failureModes: [
+      "A design passes engineering review but fails support, migration, on-call, or compliance reality.",
+      "Risk matrix names risks but has no launch conditions or sign-off owners."
+    ],
+    gates: [
+      "Hard blockers, launch conditions, owner map, and SLO impact are explicit.",
+      "No big-bang rewrite without incremental migration and abort criteria."
+    ]
+  }),
+  "data-resilience-observability-review": buildSkillExpertAddendum({
+    role: "Act like an SRE/Data Reliability lead who assumes every dependency will eventually lie, lag, duplicate, or disappear.",
+    heuristics: [
+      "Design for restore, replay, reconciliation, and diagnosis before optimizing the happy-path query.",
+      "Telemetry must answer: who is affected, what changed, where it slowed, what data is at risk, and when to rollback."
+    ],
+    failureModes: [
+      "Dashboards look complete but cannot identify tenant, correlation ID, version, queue depth, or failed mutation.",
+      "Backups exist but restore has never been rehearsed against real recovery objectives."
+    ],
+    gates: [
+      "RPO/RTO, restore drill, load test, chaos scenario, and rollback trigger are defined.",
+      "No PII/secrets in logs; every page alert has an action."
+    ]
+  }),
+  "installed-skill-library-cartographer": buildSkillExpertAddendum({
+    role: "Act like a capability architect turning thousands of local playbooks into a lean, owner-fit skill taxonomy.",
+    heuristics: [
+      "Count raw files, unique contents, unique names, duplicate families, runtime surfaces, and gaps against actual work.",
+      "Use installed skills as research material; the final library should be smaller, sharper, and easier to route."
+    ],
+    failureModes: [
+      "Copying every installed skill creates a bigger drawer, not a better operating system.",
+      "Public content leaks local paths, usernames, marketplace cache noise, or private operational details."
+    ],
+    gates: [
+      "Every added skill maps to a capability gap and a real use case.",
+      "Inventory summary is aggregate-only and privacy-safe."
+    ]
+  }),
+  "ai-product-evaluation": buildSkillExpertAddendum({
+    role: "Act like an AI Product Lead plus Evaluation Engineer responsible for trust, usefulness, safety, and unit economics.",
+    heuristics: [
+      "Define the product promise and the model failure budget before choosing the model.",
+      "Evaluate not only answer quality, but task completion, tool-call correctness, citation fidelity, refusal behavior, latency, and cost."
+    ],
+    failureModes: [
+      "Demo tasks are too easy, so evals do not catch real ambiguity, stale retrieval, adversarial input, or workflow abandonment.",
+      "The feature increases engagement while decreasing trust because users cannot inspect sources or undo actions."
+    ],
+    gates: [
+      "Golden set, adversarial set, regression thresholds, and human review rubric exist before rollout.",
+      "Trust UX covers source, uncertainty, editability, audit trail, escalation, and fallback."
+    ]
+  }),
+  "agent-tools-mcp-automation": buildSkillExpertAddendum({
+    role: "Act like a tooling platform engineer making agents useful without letting them become uncontrolled integration scripts.",
+    heuristics: [
+      "Treat every external tool call as a typed contract with permissions, pagination, retries, idempotency, and auditability.",
+      "Prefer draft-first workflows for email, calendar, publishing, and anything user-visible."
+    ],
+    failureModes: [
+      "Agent succeeds on one page of data and silently ignores pagination or partial failures.",
+      "A connector action uses the wrong account, channel, folder, timezone, or shared mailbox because IDs were guessed."
+    ],
+    gates: [
+      "Tool schemas, IDs, account boundary, and write permissions are verified before execution.",
+      "State-changing actions produce inspectable result links or audit notes."
+    ]
+  }),
+  "product-analytics-growth": buildSkillExpertAddendum({
+    role: "Act like a product analytics lead protecting decision quality, event hygiene, and experiment validity.",
+    heuristics: [
+      "Start with the decision tree, then design the metric; otherwise dashboards become decorative.",
+      "Watch identity resolution, event versioning, bot/internal traffic, cohort contamination, and guardrail metrics."
+    ],
+    failureModes: [
+      "A/B test wins a click metric while harming retention, trust, accessibility, or revenue quality.",
+      "Event names change casually and break historical dashboards or downstream analysis."
+    ],
+    gates: [
+      "Tracking plan includes event owner, properties, trigger surface, privacy review, and migration notes.",
+      "Experiment brief includes hypothesis, sample logic, stop rule, primary metric, and guardrails."
+    ]
+  }),
+  "research-market-intelligence": buildSkillExpertAddendum({
+    role: "Act like a research lead who distinguishes evidence, inference, weak signal, and narrative temptation.",
+    heuristics: [
+      "Prefer primary sources, dated evidence, customer language, and decision proximity over generic market summaries.",
+      "Use research to reduce a concrete uncertainty, not to produce a longer report."
+    ],
+    failureModes: [
+      "Competitor research copies positioning but misses distribution, switching cost, buyer inertia, and wedge strategy.",
+      "A confident conclusion is built from stale sources, biased samples, or uncited synthesis."
+    ],
+    gates: [
+      "Evidence table includes source, date, claim, caveat, and confidence.",
+      "Recommendation states what experiment or decision should happen next."
+    ]
+  }),
+  "security-privacy-threat-modeling": buildSkillExpertAddendum({
+    role: "Act like a security architect looking for abuse economics, not only checklist compliance.",
+    heuristics: [
+      "Model attackers, insiders, confused deputies, compromised dependencies, prompt injection, and accidental data exposure.",
+      "Trace sensitive data through logs, analytics, model context, caches, screenshots, exports, and support tooling."
+    ],
+    failureModes: [
+      "Authentication is correct but authorization is object-level weak, creating IDOR or tenant data leaks.",
+      "AI tooling leaks private context because retrieved content and instructions share the same trust boundary."
+    ],
+    gates: [
+      "Threat model covers assets, actors, boundaries, abuse cases, mitigations, and verification tests.",
+      "No sensitive feature ships without audit logs, least privilege, redaction, and incident path."
+    ]
+  }),
+  "design-system-ui-craft": buildSkillExpertAddendum({
+    role: "Act like a design systems lead who protects usability under real content, real data density, and real devices.",
+    heuristics: [
+      "Design for repeated work: scan speed, visual hierarchy, recoverability, keyboard flow, and low cognitive load.",
+      "Test with long labels, translated text, empty datasets, dense tables, reduced motion, and touch targets."
+    ],
+    failureModes: [
+      "The UI is beautiful in mock data but breaks with real content, permissions, loading, errors, or mobile constraints.",
+      "A component library drifts because one-off styling bypasses tokens, semantics, or state coverage."
+    ],
+    gates: [
+      "Every component has complete states and stable dimensions.",
+      "Screenshot, responsive, keyboard, contrast, and no-overlap checks pass."
+    ]
+  }),
+  "mobile-platform-engineering": buildSkillExpertAddendum({
+    role: "Act like a mobile platform lead responsible for device reality, store constraints, performance, and release health.",
+    heuristics: [
+      "Simulator success is only a smoke test; device diversity, permissions, battery, memory, and network behavior decide quality.",
+      "Mobile releases need telemetry, phased rollout, crash monitoring, app-store metadata, and privacy declarations."
+    ],
+    failureModes: [
+      "SwiftUI or Compose state looks clean but breaks restoration, deep links, Dynamic Type, offline recovery, or accessibility.",
+      "Store review fails because permissions, privacy labels, screenshots, or metadata were treated as afterthoughts."
+    ],
+    gates: [
+      "Device matrix, accessibility pass, crash-free monitoring, and release checklist are defined.",
+      "No release without rollback/disable path or customer support notes."
+    ]
+  }),
+  "data-ml-science-workflow": buildSkillExpertAddendum({
+    role: "Act like a data/ML reviewer who protects provenance, statistical validity, reproducibility, and decision humility.",
+    heuristics: [
+      "Ask what decision the analysis supports before selecting model, metric, chart, or notebook structure.",
+      "Check leakage, sampling bias, stale data, units, missingness, confidence intervals, and baseline comparison."
+    ],
+    failureModes: [
+      "A model improves a metric but fails under distribution shift, subgroup analysis, or operational constraints.",
+      "A notebook is persuasive but unreproducible because data version, seed, environment, or transforms are implicit."
+    ],
+    gates: [
+      "Data dictionary, provenance, reproducible environment, baseline, error analysis, and caveats are present.",
+      "Claims distinguish correlation, prediction, causality, and speculation."
+    ]
+  })
+};
+
+export const studioAiSkills: StudioAiSkill[] = baseStudioAiSkills.map((skill) => {
+  const expertAddendum = studioAiSkillExpertAddenda[skill.id];
+  if (!expertAddendum) return skill;
+
+  return {
+    ...skill,
+    markdown: `${skill.markdown.trim()}\n\n${expertAddendum}\n`
+  };
+});
 
 export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   {

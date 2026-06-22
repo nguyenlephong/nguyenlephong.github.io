@@ -565,9 +565,9 @@ const englishStudioCopy: StudioUiCopy = {
     },
     "ai-skills": {
       title: "AI Skills",
-      description: "Reusable markdown skills for code review, architecture, content writing, prompts, reports, specs, and proposals.",
-      panels: ["Skill library", "Markdown preview", "Copy-ready prompt"],
-      timeline: ["Code review skill ready", "Architecture skills grouped", "Content and report prompts prepared"]
+      description: "Reusable agent skills distilled from installed Codex, Claude, Gemini, Antigravity, and local skill libraries.",
+      panels: ["Skill taxonomy", "Markdown preview", "Copy-ready prompt"],
+      timeline: ["Installed skills inventoried", "Capability gaps mapped", "English and Vietnamese prompts prepared"]
     },
     "delivery-checklists": {
       title: "Delivery Checklists",
@@ -739,9 +739,9 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       },
       "ai-skills": {
         title: "AI Skill",
-        description: "Các skill markdown có thể copy cho review code, kiến trúc, viết nội dung, prompt, report, spec và proposal.",
-        panels: ["Thư viện skill", "Markdown preview", "Prompt copy-ready"],
-        timeline: ["Skill review code sẵn sàng", "Skill kiến trúc đã nhóm lại", "Prompt nội dung và report đã chuẩn bị"]
+        description: "Bộ agent skill cô đọng từ các skill đã cài trong Codex, Claude, Gemini, Antigravity và local workspace.",
+        panels: ["Taxonomy skill", "Markdown preview", "Prompt copy-ready"],
+        timeline: ["Đã inventory skill đã cài", "Đã map capability gaps", "Đã chuẩn bị prompt tiếng Anh và tiếng Việt"]
       },
       "delivery-checklists": {
         title: "Checklist làm việc",
@@ -1515,13 +1515,13 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
   "ai-skills": {
     id: "ai-skills",
     title: "AI Skills",
-    description: "Reusable markdown skills for code review, architecture, content writing, prompts, reports, specs, and proposals.",
+    description: "Reusable agent skills distilled from installed Codex, Claude, Gemini, Antigravity, and local skill libraries.",
     kind: "ai-skills",
     icon: LuSparkles,
     badge: "new",
     metrics: routeMetrics["ai-skills"],
-    panels: ["Skill library", "Markdown preview", "Copy-ready prompt"],
-    timeline: ["Code review skill ready", "Architecture skills grouped", "Content and report prompts prepared"]
+    panels: ["Skill taxonomy", "Markdown preview", "Copy-ready prompt"],
+    timeline: ["Installed skills inventoried", "Capability gaps mapped", "English and Vietnamese prompts prepared"]
   },
   "delivery-checklists": {
     id: "delivery-checklists",
