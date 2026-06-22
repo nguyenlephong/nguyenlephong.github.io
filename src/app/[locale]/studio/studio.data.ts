@@ -383,575 +383,611 @@ export const studioAiSkills: StudioAiSkill[] = [
     id: "code-review",
     category: "engineering",
     title: "Code Review Expert",
-    summary: "Conduct rigorous code reviews focusing on cyclomatic complexity, OWASP Top 10, SOLID principles, and architectural drift.",
-    tags: ["Code Review", "Static Analysis", "Security", "Quality"],
-    markdown: `# Code Review Expert Skill
+    summary: "Review diffs like a Staff engineer: correctness first, security/privacy next, then maintainability, tests, and operational risk.",
+    tags: ["Code Review", "Correctness", "Security", "Test Strategy"],
+    markdown: `# Code Review Skill
 
-Use this skill when reviewing pull requests (PRs), analyzing diffs, or auditing codebases.
+Use this skill when reviewing pull requests, local diffs, generated code, refactors, migrations, or production bug fixes.
 
-## Core Directives
-- **Correctness & Edge Cases**: Identify off-by-one errors, race conditions, memory leaks, and unhandled exceptions.
-- **Security & Privacy**: Enforce OWASP Top 10. Check for SQLi, XSS, CSRF, IDOR, improper auth, and PII leakage.
-- **Architecture & Maintainability**: Enforce SOLID, DRY, and KISS principles. Flag architectural drift, tight coupling, and cyclic dependencies.
-- **Performance**: Identify O(N^2) bottlenecks, N+1 query problems, and inefficient memory allocations.
+## Required Context
+- The stated intent of the change, acceptance criteria, and user-facing behavior.
+- The changed files, surrounding ownership boundaries, existing tests, and relevant runtime constraints.
+- Any affected auth model, data model, analytics event, SEO path, feature flag, or rollout plan.
 
-## Systematic Review Process
-1. **Context Verification**: Align diff changes with the PR's core intent. Identify missing domain logic.
-2. **Threat Modeling**: Run a mental STRIDE analysis on new inputs/outputs.
-3. **AST-level Analysis**: Check for anti-patterns specific to the language/framework.
-4. **Test Coverage Analysis**: Verify unit, integration, and mutation testing coverage. Ensure edge-case combinatorial testing is present.
+## Review Process
+1. Validate intent: compare the diff against the requirement and identify missing behavior, accidental scope, or stale assumptions.
+2. Prove correctness: inspect control flow, state transitions, boundary conditions, concurrency, nullability, idempotency, and failure paths.
+3. Threat model the change: check OWASP Top 10, injection surfaces, authz/authn bypass, IDOR, CSRF/XSS, secrets, PII, and tenant isolation.
+4. Assess architecture: flag coupling, leaky abstractions, cyclic dependencies, API compatibility breaks, schema drift, and long-term maintenance cost.
+5. Check performance and operations: look for N+1 queries, algorithmic blowups, memory pressure, hydration regressions, observability gaps, and rollback risk.
+6. Evaluate verification: confirm unit, integration, E2E, contract, accessibility, and regression tests match the changed behavior.
 
 ## Output Format
-- **Critical Blockers**: Security vulnerabilities, data loss risks, or severe regressions (MUST FIX).
-- **Architectural Feedback**: Structural improvements to reduce technical debt.
-- **Micro-Optimizations**: Performance and readability nits.
-- **Missing Verifications**: Test scenarios that are absent.
+- Findings first, ordered by severity: Blocker, Major, Minor, Nit.
+- Each finding must include file/line, observed evidence, impact, and the smallest practical fix.
+- Include open questions only when they materially affect correctness, security, rollout, or product behavior.
+- End with residual risk and verification gaps.
 
 ## Guardrails
-- Reject stylistic bikeshedding; focus on objective metrics and AST logic.
-- Do not approve without verified test coverage for new business logic.
-- Halt review immediately if a critical security flaw is detected.
+- Do not spend review budget on personal style preferences when behavior, convention, and tests are sound.
+- Do not approve new business logic without meaningful verification.
+- Do not rewrite the whole design unless the current design creates measurable risk.
 `
   },
   {
     id: "frontend-architecture",
     category: "engineering",
     title: "Frontend Architecture",
-    summary: "Design scalable, high-performance web applications optimizing Core Web Vitals, state management, and component hydration.",
-    tags: ["Frontend", "Architecture", "Web Vitals", "React"],
+    summary: "Shape frontend systems around route boundaries, state ownership, accessibility, telemetry, and Core Web Vitals.",
+    tags: ["Frontend", "React", "Web Vitals", "Accessibility"],
     markdown: `# Frontend Architecture Skill
 
-Use this skill when scaffolding new web applications, designing component systems, or refactoring frontend monoliths.
+Use this skill when designing routes, dashboards, component systems, forms, filters, search UIs, or frontend refactors.
 
-## Core Directives
-- **Rendering Strategy**: Decide between CSR, SSR, SSG, or ISR based on TTL, SEO, and personalization requirements.
-- **State Management**: Segregate server state (e.g., TanStack Query) from global client state (e.g., Zustand, Redux) and ephemeral local state.
-- **Performance Optimization**: Optimize Core Web Vitals (LCP, INP, CLS). Implement code splitting, route prefetching, and progressive hydration.
-- **Accessibility & UX**: Enforce WCAG 2.1 AA compliance, semantic HTML, and ARIA landmarks.
+## Required Context
+- Target users, core workflow, device classes, locale behavior, and SEO requirements.
+- Current routing framework, data fetching pattern, design system, analytics taxonomy, and accessibility baseline.
+- Constraints around authentication, personalization, caching, hydration, and browser support.
 
 ## Architecture Process
-1. **Boundary Definition**: Identify routing paradigms, layouts, and error boundaries.
-2. **Data Fetching Layer**: Define caching invalidation strategies, optimistic UI updates, and retry mechanisms.
-3. **Component Design**: Implement Atomic Design or feature-sliced design. Ensure UI components are pure and decoupled from business logic.
-4. **Observability**: Integrate RUM (Real User Monitoring), error tracking, and performance tracing.
+1. Define route and layout boundaries, including loading, empty, error, partial-data, permission, and not-found states.
+2. Choose rendering mode deliberately: SSR, SSG, ISR, CSR, streaming, or client-only islands based on freshness, SEO, privacy, and personalization.
+3. Build a state taxonomy: server state, URL state, durable preferences, global app state, form state, and ephemeral component state.
+4. Design component ownership: compose small primitives, keep domain logic outside visual shells, and avoid prop drilling through unrelated layers.
+5. Protect interaction quality: keyboard access, focus management, ARIA semantics, reduced motion, color contrast, and responsive constraints.
+6. Set a performance and analytics plan: LCP, INP, CLS, bundle budgets, event names, PageTracker usage, and meaningful funnel events.
 
 ## Output Format
-- **System Diagram**: Component hierarchy and data flow boundaries.
-- **State Taxonomy**: Mapping of state locations and lifecycles.
-- **Performance Budget**: Target metrics for bundles and Web Vitals.
-- **Implementation Phases**: Step-by-step roadmap.
+- Route and component map with ownership boundaries.
+- State and data-fetching plan with cache invalidation rules.
+- UX state matrix for loading, empty, error, disabled, success, and responsive behavior.
+- Performance, accessibility, and analytics checklist.
+- Implementation slices ordered by risk.
 
 ## Guardrails
-- Avoid premature abstraction; prefer composition over inheritance.
-- Prevent layout thrashing by enforcing strict CSS container sizing.
-- Do not bypass accessibility requirements for aesthetic gains.
+- Do not create global state for local interaction details.
+- Do not ship a visual surface without keyboard, screen reader, and mobile behavior.
+- Do not change existing analytics or locale behavior without an explicit migration plan.
 `
   },
   {
     id: "backend-architecture",
     category: "engineering",
     title: "Backend Architecture",
-    summary: "Design robust distributed systems utilizing microservices, EDA, CQRS, and zero-trust security.",
-    tags: ["Backend", "Distributed Systems", "API", "Scalability"],
+    summary: "Design backend systems with clear domain ownership, explicit contracts, resilient data flows, and operable failure modes.",
+    tags: ["Backend", "API Design", "Distributed Systems", "Reliability"],
     markdown: `# Backend Architecture Skill
 
-Use this skill to design scalable APIs, asynchronous workers, event-driven topologies, and data persistence layers.
+Use this skill for APIs, services, background jobs, webhooks, event streams, data migrations, and integrations.
 
-## Core Directives
-- **Topology Design**: Choose between Modular Monolith, Microservices, or Serverless. Define bounded contexts (DDD).
-- **Data Persistence**: Apply CAP Theorem. Select appropriate datastores (Relational, NoSQL, Time-Series, Graph). Design sharding and replication schemas.
-- **Communication Patterns**: Define synchronous (REST/gRPC) vs. asynchronous (Message Brokers, Event Bus, Kafka) contracts. Implement Saga or Outbox patterns for distributed transactions.
-- **Resilience**: Implement Circuit Breakers, Bulkheads, Token Bucket rate-limiting, and automatic retries with exponential backoff and jitter.
+## Required Context
+- Business invariant, owning domain, consumers, service boundaries, data classification, and compliance obligations.
+- Expected throughput, latency SLOs, consistency requirements, durability requirements, and cost constraints.
+- Current deployment model, observability stack, rollback path, and operational owner.
 
 ## Architecture Process
-1. **Domain Modeling**: Map entities, aggregates, and value objects.
-2. **Contract First**: Define OpenAPI/gRPC specs before implementation. Establish idempotency keys.
-3. **Security Posture**: Implement Zero-Trust, mTLS, OAuth2/OIDC, and RBAC/ABAC at the API gateway layer.
-4. **Observability**: Enforce structured logging, distributed tracing (OpenTelemetry), and RED/USE metrics.
+1. Model the domain: bounded contexts, aggregates, invariants, ownership of reads/writes, and lifecycle events.
+2. Select topology: modular monolith, service extraction, serverless, queue-backed worker, or event-driven flow based on operational need.
+3. Specify contracts first: OpenAPI, gRPC, AsyncAPI, event schemas, idempotency keys, pagination, error taxonomy, and versioning.
+4. Design persistence: schema, indexes, migration plan, retention, encryption, backup/restore, and consistency model.
+5. Build resilience: timeouts, retry budgets, backoff with jitter, DLQ, circuit breakers, bulkheads, rate limiting, and graceful degradation.
+6. Define operability: structured logs, traces, metrics, alerts, runbooks, canary/feature flags, and rollback triggers.
 
 ## Output Format
-- **C4 Model Context/Container Diagram**: High-level system interaction.
-- **Data Schema & Migration Plan**: Table definitions and partitioning strategies.
-- **API Contracts**: Endpoint definitions with failure mode modeling.
-- **SLA/SLO Definitions**: Target availability and latency percentiles.
+- Domain and responsibility map.
+- API/event contract with failure modes.
+- Data model and migration strategy.
+- Resilience, security, and observability plan.
+- Rollout, rollback, and disaster recovery plan.
 
 ## Guardrails
-- Do not introduce distributed systems complexity without justifying the operational overhead (OpEx).
-- Ensure all mutation endpoints are strictly idempotent.
-- Never design a system without a clear rollback and disaster recovery capability.
+- Prefer the simplest topology that preserves the invariant and meets SLOs.
+- Do not introduce async processing without idempotency, observability, and replay semantics.
+- Do not call a design production-ready without rollback and data recovery.
 `
   },
   {
     id: "blog-content-writer",
     category: "content",
     title: "Technical Content Strategist",
-    summary: "Produce high-signal, authoritative technical articles optimized for semantic search and cognitive retention.",
-    tags: ["Content", "SEO", "Technical Writing"],
-    markdown: `# Technical Content Strategist Skill
+    summary: "Write technical content with a clear thesis, grounded evidence, semantic SEO, and calm expert authority.",
+    tags: ["Technical Writing", "SEO", "Editorial Strategy"],
+    markdown: `# Blog Content Writer Skill
 
-Use this skill for writing engineering blogs, technical deep-dives, architectural postmortems, and authoritative documentation.
+Use this skill for engineering articles, technical explainers, architectural postmortems, product notes, and public documentation.
 
-## Core Directives
-- **High Signal-to-Noise**: Eliminate fluff. Maximize information density.
-- **Epistemic Rigor**: Back claims with empirical data, benchmarks, or verifiable industry standards.
-- **Semantic Optimization**: Optimize for NLP and LSI keywords. Structure with precise heading hierarchies (H1 > H2 > H3) and semantic HTML.
-- **Cognitive Load Reduction**: Use analogies, sequence diagrams, and code snippets to explain complex abstract concepts.
+## Required Context
+- Target reader, publication surface, locale, category path, search intent, and desired level of technical depth.
+- Existing voice, reserved technical terms, source material, diagrams, code snippets, and SEO metadata pattern.
+- Claims that require citation, examples that must stay anonymous, and constraints around tone or privacy.
 
 ## Writing Process
-1. **Hook & Premise**: State the core problem, the stakes, and the thesis in the first paragraph.
-2. **Contextual Framing**: Establish the baseline architecture or technical landscape before introducing the solution.
-3. **The 'How' and 'Why'**: Dive into the implementation details. Show the code, explain the trade-offs, and highlight the pitfalls.
-4. **Conclusion & Synthesis**: Summarize the heuristic or mental model the reader should walk away with.
+1. Define the thesis: one specific claim the article will prove, not a broad topic label.
+2. Open from a concrete situation: code review, outage, product trade-off, messy requirement, slow dashboard, or daily work moment.
+3. Build the reader's model: explain terms, context, trade-offs, and constraints before prescribing a solution.
+4. Prove with specifics: architecture diagrams, workflows, code, benchmarks, standards, source citations, or realistic failure modes.
+5. Optimize structure: precise H1/H2/H3 hierarchy, natural keywords, internal links, meta title, meta description, and canonical path.
+6. Close with a usable takeaway: a mental model, checklist, decision rule, or reflection the reader can apply.
 
 ## Output Format
-- **Metadata**: SEO Title, Meta Description, Canonical URL structure.
-- **Outline**: Structural breakdown.
-- **Full Manuscript**: The complete markdown text.
-- **TL;DR**: A 3-bullet executive summary.
+- SEO metadata and slug recommendation.
+- Working outline with reader intent and search intent.
+- Full manuscript in the required format.
+- Source notes, diagrams, and internal-link suggestions.
+- Short social summary when needed.
 
 ## Guardrails
-- Avoid hyperbolic marketing jargon ("revolutionary", "game-changing").
-- Do not invent statistics or hallucinate technical capabilities.
-- Maintain a calm, objective, and expert tone.
+- Do not keyword-stuff or inflate claims beyond evidence.
+- Do not invent statistics, citations, benchmarks, or capabilities.
+- Preserve existing locale behavior, content schema, SEO paths, and analytics surfaces.
 `
   },
   {
     id: "prompt-writing",
     category: "content",
     title: "Prompt Engineering Expert",
-    summary: "Design deterministic, injection-resistant LLM prompts using CoT, ToT, and strict output schema enforcement.",
-    tags: ["Prompting", "LLM", "AI Output"],
-    markdown: `# Prompt Engineering Expert Skill
+    summary: "Design prompts and system instructions with explicit roles, bounded context, injection resistance, and verifiable output schemas.",
+    tags: ["Prompt Engineering", "LLM", "Agents", "Evaluation"],
+    markdown: `# Prompt Writing Skill
 
-Use this skill to design, refine, and optimize system instructions and few-shot prompts for LLM agents.
+Use this skill to design system prompts, task prompts, few-shot examples, agent policies, extraction prompts, and output schemas.
 
-## Core Directives
-- **Context Framing**: Establish precise role-playing boundaries and operating contexts to anchor the LLM's latent space.
-- **Reasoning Elicitation**: Force Chain-of-Thought (CoT) or Tree-of-Thought (ToT) generation before the final output to improve logical coherence.
-- **Constraint Programming**: Explicitly list positive constraints (MUST DO) and negative constraints (MUST NOT DO).
-- **Schema Enforcement**: Define strict, parsable output structures (e.g., JSON Schema, Markdown tables).
+## Required Context
+- Task objective, target model/tool, allowed tools, trust boundaries, input sources, and expected output consumer.
+- Required domain facts, examples of success/failure, schema needs, tone constraints, and safety constraints.
+- Which inputs are trusted operator instructions versus untrusted user or document content.
 
 ## Prompt Architecture
-1. **System Persona**: "You are an expert in X..."
-2. **Task Definition**: Clear, unambiguous objective.
-3. **Input Variables**: Placeholder interpolation instructions.
-4. **Heuristics & Rules**: Behavioral guidelines and safety boundaries.
-5. **Few-Shot Exemplars**: High-quality input/output pairs demonstrating the exact desired reasoning and format.
+1. Role and scope: define expertise, authority, non-goals, and the boundaries the model must not cross.
+2. Task contract: specify objective, inputs, assumptions, acceptance criteria, and failure conditions.
+3. Context layout: separate system rules, developer rules, user request, retrieved evidence, and untrusted content with clear delimiters.
+4. Procedure: give the model a concise operating checklist and require a short rationale, not hidden reasoning dumps.
+5. Output schema: define JSON Schema, markdown sections, tables, diffs, or structured fields with examples.
+6. Evaluation: create adversarial test cases for ambiguity, prompt injection, missing context, malformed input, and schema drift.
 
 ## Output Format
-- **System Prompt**: The core instruction set.
-- **User Prompt Template**: The dynamic input wrapper.
-- **Evaluation Criteria**: How to test if the prompt succeeded.
+- Production prompt or prompt pack.
+- Variable map and input sanitation rules.
+- Output schema and valid/invalid examples.
+- Evaluation checklist with pass/fail criteria.
+- Compact version for ad-hoc use.
 
 ## Guardrails
-- Prevent prompt injection by explicitly sanitizing or isolating untrusted user input within delimiters (e.g., \`<user_input>\`).
-- Avoid vague adjectives; use quantifiable metrics for tone and length.
-- Never assume implicit knowledge; pass required facts in the context window.
+- Do not ask for private chain-of-thought; ask for concise rationale, checks, or evidence.
+- Do not let untrusted content redefine role, tools, data access, or output policy.
+- Do not rely on adjectives such as "good" or "better" without measurable criteria.
 `
   },
   {
     id: "status-report",
     category: "operations",
     title: "Executive Status & Operations",
-    summary: "Synthesize OKRs, sprint velocity, MTTR, and critical path blockers into high-impact executive summaries.",
-    tags: ["Operations", "Reporting", "Metrics"],
-    markdown: `# Executive Status & Operations Skill
+    summary: "Turn workstream noise into executive signal: health, impact, blockers, decisions, owners, and path to green.",
+    tags: ["Operations", "Reporting", "OKR", "Escalation"],
+    markdown: `# Status Report Skill
 
-Use this skill to generate daily standup logs, weekly sprint retrospectives, or monthly OKR reviews.
+Use this skill for daily standups, weekly status reports, monthly OKR reviews, incident updates, and stakeholder escalations.
 
-## Core Directives
-- **Bottom-Line Up Front (BLUF)**: State the health of the project and critical risks immediately.
-- **Data-Driven Progress**: Quantify progress using burn-down rates, DORA metrics, or SLA compliance.
-- **Bottleneck Identification**: Apply the Theory of Constraints. Highlight the exact node blocking the critical path.
-- **Actionable Escalation**: Define exact decisions needed from stakeholders with clear binary options or recommendations.
+## Required Context
+- Audience, reporting cadence, workstream goal, current commitments, dates, owners, and decision rights.
+- Evidence: shipped work, metrics, incidents, open blockers, dependency status, scope changes, and customer impact.
+- Definitions of Green, Yellow, Red, and what escalation path exists.
 
 ## Reporting Process
-1. **Data Aggregation**: Collect commits, incident logs, completed tickets, and metric dashboards.
-2. **Signal Extraction**: Filter out routine operations; highlight anomalies, shipped value, and regressions.
-3. **Risk Matrix**: Evaluate blockers on a Probability vs. Impact matrix.
-4. **Next Steps**: Assign strict ownership and deadlines for mitigation tasks.
+1. Lead with BLUF: current health, reason, and what changed since the last update.
+2. Separate facts from interpretation: metrics, shipped artifacts, incidents, and unresolved assumptions.
+3. Quantify progress: OKR movement, DORA metrics, burn-up/burn-down, SLA/SLO, MTTR, lead time, throughput, or adoption.
+4. Identify constraints: name the exact blocker, dependency owner, due date, probability, impact, and mitigation path.
+5. Make decisions explicit: offer recommended option, fallback option, deadline, and consequence of no decision.
+6. Close with next commitments: owner, date, expected evidence, and status-change trigger.
 
 ## Output Format
-- **Executive Summary**: 2 sentences max. Health status (Green/Yellow/Red).
-- **Key Milestones Achieved**: Quantified wins.
-- **Critical Risks & Blockers**: Current fires and assigned firefighters.
-- **Upcoming Cycle**: Strategic focus for the next period.
+- Status: Green, Yellow, or Red, with one-sentence rationale.
+- Progress: shipped value, not activity inventory.
+- Risks and blockers: severity, owner, next action, and date.
+- Decisions needed: precise ask and recommendation.
+- Next cycle focus and measurable success signal.
 
 ## Guardrails
-- Eliminate vanity metrics; report only actionable KPIs.
-- Do not obscure failures; practice blameless transparency.
-- Keep the report scannable. Use bullet points and bold keywords.
+- Do not hide bad news behind progress theater.
+- Do not report vanity metrics unless tied to a decision or outcome.
+- Do not assign vague ownership such as "team"; name the accountable role or person.
 `
   },
   {
     id: "doc-spec-tech-spec",
     category: "engineering",
     title: "Technical Specification & RFC",
-    summary: "Author rigorous Architecture Decision Records (ADRs) and RFCs focusing on NFRs, STRIDE, and implementation paths.",
-    tags: ["RFC", "ADR", "Documentation", "Architecture"],
-    markdown: `# Technical Specification & RFC Skill
+    summary: "Write decision-ready specs that bind product intent to architecture, NFRs, threat model, rollout, and verification.",
+    tags: ["RFC", "ADR", "Architecture", "NFR"],
+    markdown: `# Doc / Spec / Tech Spec Skill
 
-Use this skill to write engineering specs, Request for Comments (RFCs), Architecture Decision Records (ADRs), and system designs.
+Use this skill for RFCs, ADRs, technical specifications, migration plans, system designs, and implementation handoffs.
 
-## Core Directives
-- **Problem Space Definition**: Clearly articulate the 'Why' before the 'How'. Map user impact to technical necessity.
-- **Non-Functional Requirements (NFRs)**: Explicitly define SLIs, SLAs, throughput, latency, security, and compliance constraints.
-- **Alternative Analysis**: Rigorously evaluate at least two alternative architectures. Justify the chosen path using trade-off matrices.
-- **Risk & Threat Modeling**: Perform a STRIDE analysis. Define failure domains, blast radius, and rollback strategies.
+## Required Context
+- Product problem, user impact, scope, non-goals, stakeholders, deadlines, and success metrics.
+- Current architecture, data model, API contracts, dependencies, operational constraints, and known incidents.
+- Security, privacy, compliance, accessibility, SEO, analytics, and localization constraints when relevant.
 
 ## Specification Structure
-1. **Context & Scope**: Background, Goals, and strictly defined Non-Goals.
-2. **Proposed Architecture**: System diagrams, API contracts, database schema migrations.
-3. **Operational Readiness**: Observability metrics, deployment phasing (e.g., Canary), and data backfill strategies.
-4. **Security & Privacy**: RBAC changes, PII handling, and encryption at rest/transit.
+1. Problem framing: why this exists, who it helps, what breaks today, and what success means.
+2. Scope control: goals, non-goals, assumptions, constraints, and unresolved questions.
+3. Proposed design: architecture diagram, data model, APIs/events, dependencies, edge cases, and compatibility rules.
+4. Alternatives: compare at least two viable paths with cost, complexity, risk, reversibility, and time-to-value.
+5. Risk model: STRIDE, privacy impact, failure domains, blast radius, data migration risk, and operational load.
+6. Delivery plan: implementation slices, test matrix, observability, rollout, rollback, and post-launch validation.
 
 ## Output Format
-- **Complete RFC Document**: Ready for peer review.
-- **Implementation Phasing**: Epic and ticket breakdown.
-- **Reviewer Checklist**: Key areas requiring stakeholder sign-off.
+- Complete RFC or ADR ready for review.
+- Decision table with alternatives and recommendation.
+- Implementation plan and ticket breakdown.
+- Test, rollout, observability, and rollback checklist.
+- Sign-off list by stakeholder function.
 
 ## Guardrails
-- Do not present a solution without proving the problem exists.
-- Ensure 'Non-Goals' are explicit to prevent scope creep.
-- Never omit the rollback or data migration strategy.
+- Do not treat assumptions as requirements without validation.
+- Do not omit non-goals; they are scope control, not decoration.
+- Do not ship a spec that changes production data without rollback and recovery details.
 `
   },
   {
     id: "proposal-slide-pitch",
     category: "communication",
     title: "Strategic Pitch & Proposal",
-    summary: "Construct compelling pitches leveraging Value Proposition Canvas, ROI modeling, and cognitive load reduction.",
-    tags: ["Strategy", "Pitch", "Communication"],
-    markdown: `# Strategic Pitch & Proposal Skill
+    summary: "Build proposals that connect pain, value, ROI, risk, proof, and a concrete decision request.",
+    tags: ["Proposal", "Strategy", "Executive Communication"],
+    markdown: `# Proposal / Slide / Pitch Deck Skill
 
-Use this skill to build executive proposals, investor pitch decks, product strategy memos, and ROI justifications.
+Use this skill for executive proposals, product strategy memos, budget asks, pitch decks, and technical-business trade-off narratives.
 
-## Core Directives
-- **Audience Calibration**: Tailor the narrative vector to the specific stakeholder (e.g., CFO cares about ROI/CapEx; CTO cares about scalability/OpEx).
-- **Value Proposition**: Map features to direct business outcomes (revenue generation, cost reduction, risk mitigation).
-- **Evidence-Based Anchoring**: Use behavioral economics. Anchor proposals with empirical data, TAM/SAM/SOM analysis, and competitive moats.
-- **Cognitive Streamlining**: Apply the Minto Pyramid Principle. Lead with the conclusion, group supporting arguments, and order logically.
+## Required Context
+- Audience, decision maker, budget owner, desired action, political constraints, timeline, and competing priorities.
+- Current pain, target outcome, evidence, costs, opportunity cost, risk profile, and available proof.
+- Format: memo, slide outline, one-pager, spoken pitch, FAQ, or objection-handling sheet.
 
 ## Pitch Architecture
-1. **The Hook (The Gap)**: The current painful reality vs. the potential future state.
-2. **The Thesis**: One clear, definitive sentence describing the solution.
-3. **The Proof**: Financial models, technical validation, or market traction.
-4. **The Ask**: The precise decision, budget, or resource allocation required NOW.
+1. Audience calibration: map what each stakeholder values, fears, funds, and can approve.
+2. Frame the gap: current cost, risk, delay, churn, manual work, missed revenue, or strategic exposure.
+3. State the thesis: one direct sentence explaining what should be done and why now.
+4. Prove feasibility: benchmark, customer signal, PoC, architecture validation, financial model, or comparable case.
+5. Quantify impact: ROI, payback period, cost avoided, cycle-time reduction, risk reduction, or option value.
+6. Make the ask: exact decision, budget, owner, date, success metric, and fallback if declined.
 
 ## Output Format
-- **Elevator Pitch**: 30-second summary.
-- **Slide Deck Outline**: Slide-by-slide narrative arc with visual recommendations.
-- **Objection Handling Matrix**: Anticipated pushback and data-backed rebuttals.
+- One-sentence thesis and 30-second pitch.
+- Slide-by-slide narrative or memo structure.
+- ROI and risk model.
+- Objection-handling matrix.
+- Final decision request and next-step plan.
 
 ## Guardrails
-- Do not bury the 'Ask' at the end; state the required decision early.
-- Avoid text-heavy slides; shift dense information to the appendix.
-- Eliminate buzzwords that do not convey precise technical or business meaning.
+- Do not use buzzwords that do not carry decision value.
+- Do not overpromise adoption, revenue, cost savings, or delivery dates.
+- Do not hide the ask; ambiguity kills executive decisions.
 `
   },
   {
     id: "ai-operating-system",
     category: "strategy",
     title: "AI Operating System & Orchestration",
-    summary: "Design multi-agent LLM routing topologies, RAG pipelines, and deterministic fallback mechanisms.",
-    tags: ["AI Orchestration", "Agents", "RAG", "LLM"],
-    markdown: `# AI Operating System & Orchestration Skill
+    summary: "Design agent workflows with model routing, context control, tool boundaries, RAG grounding, and human approval gates.",
+    tags: ["AI Orchestration", "Agents", "RAG", "MCP"],
+    markdown: `# AI Operating System Skill
 
-Use this skill to architect and route tasks across multi-agent systems, balancing model intelligence, latency, and token cost.
+Use this skill to design multi-agent workflows, AI workbenches, RAG pipelines, Codex/Claude/GPT task routing, and MCP tool policies.
 
-## Core Directives
-- **Model Routing**: Route complex reasoning tasks to frontier models (Claude 3.5 Sonnet, GPT-4o) and bounded/formatting tasks to smaller, faster models.
-- **RAG Architecture**: Design semantic retrieval pipelines utilizing Vector DBs, hybrid search (BM25 + Dense), and context re-ranking.
-- **Agentic Workflows**: Define clear action spaces, tool-use permissions (e.g., MCP), and cyclic reasoning loops (ReAct).
-- **Context Management**: Implement semantic caching, context window pruning, and rolling memory summarization.
+## Required Context
+- Workflow goal, data sensitivity, available tools, model/tool costs, latency tolerance, and approval requirements.
+- Source-of-truth repositories, documents, issue trackers, logs, RAG indexes, and memory stores.
+- Actions that are read-only, write-capable, destructive, external, or require human-in-the-loop approval.
 
 ## Orchestration Process
-1. **Intent Classification**: Determine if the task requires deterministic logic, retrieval, or generative reasoning.
-2. **Pipeline Construction**: Map the sequence of agent interactions (e.g., Planner Agent -> Researcher Agent -> Coder Agent -> Reviewer Agent).
-3. **Tool Provisioning**: Equip agents with strictly scoped, read/write isolated tools.
-4. **Safety & Fallbacks**: Implement programmatic guardrails, output validation (e.g., JSON Schema), and deterministic fallbacks for hallucination recovery.
+1. Classify intent: retrieval, reasoning, coding, review, planning, synthesis, browser work, or deterministic automation.
+2. Route work by capability: assign models and agents based on context length, reasoning depth, tool need, latency, cost, and privacy.
+3. Build the context package: source files, docs, constraints, examples, definitions, and explicit exclusions.
+4. Define tool boundaries: read/write permissions, filesystem scope, network policy, secrets handling, and approval gates.
+5. Add validation: schema checks, tests, citations, diff review, secondary-agent critique, and deterministic fallback paths.
+6. Archive decisions: prompts, routing matrix, artifacts, and reusable playbooks.
 
 ## Output Format
-- **System Topology**: Diagram of agent roles, LLMs, and tool dependencies.
-- **Routing Logic**: Heuristics for task delegation.
-- **Prompt Specifications**: Core instructions for each sub-agent.
+- Agent role map and routing matrix.
+- Context packaging template.
+- Tool permission matrix and approval gates.
+- Validation and fallback plan.
+- Reusable prompt pack or operating playbook.
 
 ## Guardrails
-- Never grant autonomous execution capabilities (e.g., shell access) without human-in-the-loop (HITL) approval for destructive actions.
-- Do not load excessive, irrelevant data into the context window; optimize signal-to-noise.
-- Always validate structured output from LLMs before passing it to downstream deterministic systems.
+- Do not let any agent mutate production state without explicit approval and observability.
+- Do not mix trusted instructions with untrusted retrieved text.
+- Do not optimize only for model intelligence; optimize for correctness, traceability, privacy, and cost.
 `
   },
   {
     id: "daily-ai-learning-coach",
     category: "learning",
     title: "Continuous AI Learning & Neuroplasticity",
-    summary: "Optimize skill acquisition using spaced repetition, deliberate practice, and compounding mental models.",
-    tags: ["Learning", "Habits", "Neuroplasticity", "Coaching"],
-    markdown: `# Continuous AI Learning & Neuroplasticity Skill
+    summary: "Compound AI skill through deliberate practice, active recall, feedback loops, and reusable artifacts.",
+    tags: ["Learning", "Deliberate Practice", "AI Fluency", "Feedback"],
+    markdown: `# Daily AI Learning Coach Skill
 
-Use this skill to design daily learning loops, master new technical domains, and compound knowledge through structured feedback.
+Use this skill to plan daily AI up-skilling, technical practice, tool fluency, and long-term knowledge compounding.
 
-## Core Directives
-- **Deliberate Practice**: Focus on the edge of current capabilities. Identify specific micro-skills to drill.
-- **Spaced Repetition**: Extract core concepts into flashcards or active recall prompts to combat the Ebbinghaus forgetting curve.
-- **Mental Models**: Connect new information to existing architectural or programmatic heuristics (e.g., mapping React hooks to functional closures).
-- **Friction Reduction**: Lower the activation energy for learning by establishing rapid, localized prototyping environments.
+## Required Context
+- Target capability, current level, available time, active workstream, preferred tools, and desired artifact.
+- Recent mistakes, repeated blockers, weak concepts, and high-leverage workflows worth practicing.
+- Constraints around focus, energy, deadlines, and avoiding learning theater.
 
 ## Daily Loop Process
-1. **Target Identification**: Define one atomic concept or workflow to master today.
-2. **Active Exploration**: Use AI to simulate edge cases, generate adversarial examples, or build a minimal reproducible example (MRE).
-3. **Feedback Extraction**: Have AI critique the implementation or understanding, highlighting blind spots.
-4. **Knowledge Crystallization**: Document the mental model shift or reusable snippet in a personal knowledge graph (e.g., Obsidian/NotebookLM).
+1. Pick one micro-skill: prompt slicing, diff review, RAG synthesis, architecture critique, test generation, or tool orchestration.
+2. Practice on real context: a current ticket, codebase, document, incident, or decision rather than generic tutorials.
+3. Generate feedback: ask the AI to find blind spots, counterexamples, edge cases, and missing verification.
+4. Convert to memory: create an active recall card, prompt template, checklist, snippet, or decision note.
+5. Schedule reinforcement: revisit at spaced intervals and test whether the skill transfers to a new task.
+6. Measure value: time saved, quality improved, bug avoided, decision clarified, or artifact reused.
 
 ## Output Format
-- **Daily Focus**: Atomic goal definition.
-- **Practice Scenario**: A tailored coding or architectural challenge.
-- **Concept Breakdown**: Deconstruction of the topic using analogies.
-- **Retention Strategy**: Artifacts to save for long-term memory.
+- Daily micro-skill target.
+- Practice task with input and expected output.
+- Feedback prompt and evaluation rubric.
+- Artifact to save.
+- Next repetition date and transfer challenge.
 
 ## Guardrails
-- Do not consume tutorials passively; always generate code or architecture diagrams.
-- Avoid context switching; master one micro-skill before moving to the next.
-- Validate AI-generated explanations against official documentation.
+- Do not count passive reading as skill acquisition.
+- Do not practice five tools in one session; isolate one behavior.
+- Validate AI explanations against official docs, local code, or empirical tests.
 `
   },
   {
     id: "notebooklm-source-of-truth",
     category: "learning",
     title: "RAG-Grounded Knowledge Extraction",
-    summary: "Extract high-fidelity, citation-backed insights from trusted corpora using dense retrieval and epistemic rigor.",
-    tags: ["Knowledge Graph", "RAG", "Citations", "Research"],
-    markdown: `# RAG-Grounded Knowledge Extraction Skill
+    summary: "Extract source-grounded answers from trusted documents with citations, contradiction checks, and explicit unknowns.",
+    tags: ["RAG", "Citations", "Research", "Knowledge Graph"],
+    markdown: `# NotebookLM Source Of Truth Skill
 
-Use this skill when processing dense documents (PRDs, financial reports, research papers) where accuracy and source attribution are paramount.
+Use this skill for dense document sets, NotebookLM-style corpora, PRDs, RFCs, research papers, financial reports, and knowledge bases.
 
-## Core Directives
-- **Strict Grounding**: Force the LLM to rely exclusively on the provided context window. Disable parametric memory fallback.
-- **Citation Enforcement**: Require inline citations \`[Doc X, Page Y]\` for every factual claim, metric, or entity relationship.
-- **Contradiction Detection**: Explicitly instruct the model to highlight conflicting information within the source documents.
-- **Ontology Extraction**: Map out entities, relationships, and taxonomies to build structured knowledge graphs.
+## Required Context
+- Source corpus, citation format, target question, audience, decision being supported, and allowed inference level.
+- Source trust ranking, document dates, known outdated files, sensitive content rules, and required redactions.
+- Whether the answer needs extraction, synthesis, comparison, timeline reconstruction, or gap analysis.
 
 ## Extraction Process
-1. **Document Ingestion**: Parse and chunk source material logically (by paragraph or semantic boundary).
-2. **Information Retrieval**: Execute focused queries against the document index.
-3. **Synthesis & Attribution**: Generate the summary while maintaining absolute fidelity to the source text.
-4. **Gap Analysis**: Identify missing data required to fully answer the prompt.
+1. Sanitize sources: remove secrets, credentials, PII, and documents outside the approved scope.
+2. Retrieve narrowly: query by entity, date, decision, metric, requirement, contradiction, and dependency.
+3. Extract facts: quote or paraphrase only what the source supports and preserve source IDs.
+4. Synthesize cautiously: separate direct evidence, inferred interpretation, conflicts, and unknowns.
+5. Build structure: timeline, entity map, decision log, requirement matrix, or FAQ depending on the task.
+6. Identify gaps: state what evidence is missing and what source would resolve it.
 
 ## Output Format
-- **Executive Synthesis**: High-level overview.
-- **Annotated Findings**: Detailed claims mapped to explicit citations.
-- **Entity Relationship Map**: Key actors, components, and their links.
-- **Blind Spots**: What the documents fail to address.
+- Direct answer with citations for factual claims.
+- Evidence table: claim, source, confidence, date, and caveat.
+- Contradictions and outdated-source warnings.
+- Entity/timeline/decision map when useful.
+- Unknowns and recommended follow-up sources.
 
 ## Guardrails
-- Zero tolerance for hallucination; if the data is not in the text, explicitly state "Not provided in the source".
-- Do not interpolate external world knowledge.
-- Sanitize output for sensitive PII or confidential IP before external sharing.
+- If the source does not support a claim, say "not provided in the source."
+- Do not use external knowledge unless the task explicitly permits it.
+- Do not collapse conflicting sources into a false single truth.
 `
   },
   {
     id: "ai-delivery-factory",
     category: "engineering",
     title: "Autonomous Delivery & CI/CD",
-    summary: "Orchestrate end-to-end software delivery pipelines leveraging AST manipulation, shift-left testing, and automated PR generation.",
-    tags: ["CI/CD", "Automation", "Delivery", "Testing"],
-    markdown: `# Autonomous Delivery & CI/CD Skill
+    summary: "Run AI-assisted delivery from scoped requirement to implementation, verification, PR, and release-ready handoff.",
+    tags: ["AI Delivery", "CI/CD", "Testing", "Automation"],
+    markdown: `# AI Delivery Factory Skill
 
-Use this skill to automate feature implementation, manage zero-downtime deployments, and enforce shift-left security and testing.
+Use this skill when AI agents help implement features, refactors, migrations, test suites, CI changes, or release handoffs.
 
-## Core Directives
-- **Pipeline Architecture**: Design robust CI/CD pipelines (GitHub Actions, GitLab CI) with isolated build, test, and deploy stages.
-- **Static Analysis & Security**: Integrate SAST, DAST, SCA (Software Composition Analysis), and secret scanning directly into the pre-commit or CI hooks.
-- **Automated Verification**: Enforce high coverage thresholds. Utilize AI to generate boundary-condition unit tests and property-based tests.
-- **Deployment Strategy**: Implement Blue/Green, Canary, or Shadow deployments to minimize blast radius.
+## Required Context
+- Ticket scope, repository conventions, branch policy, test commands, CI gates, deployment model, and rollback constraints.
+- Files likely affected, ownership boundaries, existing user changes, secrets policy, and verification expectations.
+- Whether the agent may edit, commit, push, open PRs, deploy, or only prepare a patch.
 
 ## Delivery Process
-1. **Spec to Code**: Translate PRDs into atomic, testable functions using LLM codegen.
-2. **Local Verification**: Run linters, formatters, and local test suites.
-3. **PR Automation**: Generate semantic commits and comprehensive PR descriptions outlining the 'Why' and 'How'.
-4. **Deployment & Validation**: Trigger CI/CD, monitor post-deployment metrics, and execute automated rollbacks if SLIs degrade.
+1. Scope the work: restate requirement, acceptance criteria, non-goals, affected surfaces, and risk level.
+2. Slice execution: create small implementation chunks with a verification check after each meaningful change.
+3. Implement with local context: follow existing patterns, preserve unrelated user changes, and avoid broad refactors.
+4. Shift-left verification: run typecheck, lint, unit/integration/E2E tests, schema checks, accessibility checks, and security scans as applicable.
+5. Review the diff: inspect generated code, staged changes, secrets, artifacts, analytics wiring, and migration safety.
+6. Handoff cleanly: commit with Conventional Commits, push only with approval, and prepare PR notes with impact and verification.
 
 ## Output Format
-- **CI/CD Configuration**: YAML pipeline definitions.
-- **Test Strategy**: Generated test suites for the implementation.
-- **PR Template**: Structured pull request body.
-- **Rollback Runbook**: Automated scripts to revert state.
+- Execution plan and changed-file summary.
+- Verification evidence with command results.
+- Commit message and PR body draft.
+- Release, deployment, and rollback notes.
+- Remaining risks or follow-up tickets.
 
 ## Guardrails
-- Never bypass branch protection rules or mandatory peer reviews for production deployments.
-- Ensure all automated code generation is covered by deterministic unit tests.
-- Treat infrastructure as code (IaC); do not make manual changes to deployment environments.
+- Do not include secrets, local build output, runtime metadata, or unrelated user changes in commits.
+- Do not use an agent-generated diff as its own approval.
+- Do not deploy or mutate production unless the human explicitly requested that action.
 `
   },
   {
     id: "claude-deep-review",
     category: "engineering",
     title: "Adversarial Semantic Review",
-    summary: "Perform deep, adversarial red-teaming on architectures, PRs, and strategic documents to expose hidden vulnerabilities.",
-    tags: ["Review", "Adversarial", "Red Teaming", "Critique"],
-    markdown: `# Adversarial Semantic Review Skill
+    summary: "Use adversarial review to expose hidden assumptions, failure modes, ambiguity, and system-level fragility.",
+    tags: ["Adversarial Review", "Red Teaming", "Architecture", "Security"],
+    markdown: `# Claude Deep Review Skill
 
-Use this skill to simulate a Staff+ Engineer or Security Auditor performing a ruthless, rigorous critique of a system or document.
+Use this skill for deep critique of PRs, RFCs, architecture proposals, incident narratives, strategy memos, or AI-generated plans.
 
-## Core Directives
-- **Adversarial Mindset**: Actively seek to break the proposed system. Identify race conditions, algorithmic complexities, and security vectors.
-- **Assumption Invalidation**: Expose implicit assumptions (e.g., "the network is reliable", "users will input valid data").
-- **Blast Radius Analysis**: Map out the cascading effects of a subsystem failure.
-- **Semantic Clarity**: Critique documentation and messaging for ambiguity, logical fallacies, and cognitive friction.
+## Required Context
+- Proposal, diff, system diagram, known constraints, success criteria, and the risk tolerance of the decision.
+- Existing incidents, data model, dependency graph, auth model, rollout path, and what has already been validated.
+- Reviewer lens: Staff engineer, SRE, security engineer, DBA, product operator, or executive stakeholder.
 
 ## Review Process
-1. **Deconstruction**: Break the proposal down into atomic components and data flows.
-2. **Stress Testing**: Apply edge-case inputs, high-concurrency loads, and malicious payload scenarios.
-3. **Trade-off Evaluation**: Challenge the chosen architecture against viable alternatives regarding CapEx, OpEx, and DX (Developer Experience).
-4. **Constructive Reframing**: Provide actionable, specific solutions to mitigate the discovered vulnerabilities.
+1. Decompose the system: actors, data flows, state transitions, dependencies, trust boundaries, and failure domains.
+2. Attack assumptions: invalid input, high concurrency, partial failure, network partition, stale cache, malicious user, and operator error.
+3. Trace blast radius: data corruption, availability loss, privacy breach, customer impact, cost explosion, and operational burden.
+4. Challenge alternatives: compare the proposed path against simpler, safer, cheaper, or more reversible options.
+5. Rewrite weak language: remove ambiguity, unsupported claims, hidden dependencies, and false certainty.
+6. Produce mitigations: concrete fixes, validation steps, and decision gates.
 
 ## Output Format
-- **Critical Vulnerabilities**: High-risk flaws (Must Fix).
-- **Architectural Fragility**: Areas of high technical debt or coupling.
-- **Implicit Assumptions**: Unvalidated beliefs underpinning the design.
-- **Mitigation Roadmap**: Concrete architectural or code changes required.
+- Critical risks and exploit/failure narrative.
+- Assumptions that need proof.
+- Alternative designs with trade-offs.
+- Mitigation plan ranked by risk reduction.
+- Go/No-Go recommendation with evidence threshold.
 
 ## Guardrails
-- Maintain a highly objective, dispassionate tone. Focus purely on technical merit.
-- Do not provide superficial fixes; address the root cause in the architecture.
-- Demand empirical evidence (benchmarks, math, security models) for bold claims.
+- Be direct but evidence-based; critique the work, not the author.
+- Do not accept "probably fine" for security, data integrity, or rollback.
+- Do not stop at critique; provide the smallest path to reduce risk.
 `
   },
   {
     id: "career-ai-strategy",
     category: "strategy",
     title: "Capability Compounding & Leverage",
-    summary: "Optimize career trajectory by building T-shaped skills, architectural equity, and high-leverage automation assets.",
-    tags: ["Career", "Leverage", "Strategy", "Growth"],
-    markdown: `# Capability Compounding & Leverage Skill
+    summary: "Build durable career leverage through Staff-level scope, AI fluency, portfolio evidence, and compounding systems.",
+    tags: ["Career Strategy", "Staff Engineer", "Leverage", "Portfolio"],
+    markdown: `# Career AI Strategy Skill
 
-Use this skill to map out long-term professional development, build a Staff-level portfolio, and maximize impact-to-effort ratios.
+Use this skill for career planning, Staff/Principal path design, promotion packets, AI leverage strategy, and portfolio roadmaps.
 
-## Core Directives
-- **Asymmetric Leverage**: Focus on tasks that have a 10x ROI (e.g., building internal developer tools, fixing systemic CI/CD bottlenecks).
-- **Architectural Equity**: Build a portfolio of ADRs, system designs, and postmortems that demonstrate cross-functional leadership.
-- **Skill Stacking**: Combine distinct capabilities (e.g., Systems Engineering + AI Orchestration + Product Sense) to create a unique value proposition.
-- **Visibility & Documentation**: Open-source internal knowledge. Write authoritative engineering blog posts and technical standards.
+## Required Context
+- Target role, current level, domain, strengths, gaps, market direction, constraints, and available weekly capacity.
+- Existing artifacts: projects, PRs, ADRs, incident work, mentoring, writing, talks, automation, and business outcomes.
+- Desired optionality: Staff IC, engineering manager, founder, consultant, product-minded technologist, or AI systems specialist.
 
 ## Strategy Process
-1. **Current State Analysis**: Audit current capabilities against the target role (Staff Engineer, Tech Lead, Founder).
-2. **Gap Identification**: Map the technical, communicative, and strategic deficiencies.
-3. **High-Leverage Interventions**: Define 3 projects that bridge the gap while delivering massive business value.
-4. **Execution & Metric Tracking**: Establish KPIs for career progression (e.g., PRs merged, systems migrated, devs onboarded).
+1. Define the career thesis: the market problem you solve better because of your skill stack.
+2. Audit capability: technical depth, system design, product sense, communication, leadership, AI fluency, and business judgment.
+3. Identify leverage assets: internal tools, standards, reusable playbooks, public writing, OSS, talks, mentorship, and architecture artifacts.
+4. Choose bets: 2-3 projects with asymmetric upside, visible impact, and reusable proof.
+5. Build a 90-day operating plan: outcomes, rituals, artifacts, stakeholder alignment, and weekly feedback loops.
+6. Track evidence: before/after metrics, adoption, reliability gains, time saved, decisions influenced, and people enabled.
 
 ## Output Format
-- **Capability Matrix**: Current vs. Target skills.
-- **Leverage Roadmap**: 90-day execution plan for high-impact projects.
-- **Portfolio Blueprint**: List of artifacts to generate and publish.
-- **Mentorship Strategy**: Plan for managing up and lifting junior engineers.
+- Career thesis and positioning statement.
+- Capability matrix with gaps and proof.
+- 90-day leverage roadmap.
+- Portfolio artifact plan.
+- Mentorship, visibility, and stakeholder strategy.
 
 ## Guardrails
-- Optimize for real business impact, not just resume-driven development.
-- Avoid hoarding knowledge; true leverage comes from elevating the entire engineering org.
-- Ensure technical depth is not sacrificed for breadth.
+- Do not optimize for job-title aesthetics over real scope and outcomes.
+- Do not confuse tool usage with AI fluency; measure quality, speed, judgment, and leverage.
+- Do not sacrifice technical depth for shallow breadth.
 `
   },
   {
     id: "engineering-decision-map",
     category: "engineering",
     title: "Systemic Decision Topography",
-    summary: "Navigate complex technical trade-offs using decision matrices, Conway's Law, and operational readiness frameworks.",
-    tags: ["Decision Matrix", "Trade-offs", "Systems Thinking"],
-    markdown: `# Systemic Decision Topography Skill
+    summary: "Map business requirements to domain invariants, architecture options, trade-offs, risks, and operational readiness.",
+    tags: ["Decision Matrix", "Systems Thinking", "Trade-offs", "Requirements"],
+    markdown: `# Engineering Decision Map Skill
 
-Use this skill to align business requirements with architectural patterns, data models, and operational realities.
+Use this skill when requirements are ambiguous, decisions are cross-functional, or architecture must balance product, data, and operations.
 
-## Core Directives
-- **Holistic Mapping**: Traverse the stack from Business Intent -> Domain Logic -> API Contract -> Data Persistence -> Infrastructure -> Operations.
-- **Trade-off Quantification**: Use weighted decision matrices to evaluate speed, consistency, availability, cost, and maintainability.
-- **Conway's Law Alignment**: Ensure the software architecture mirrors the organizational communication structures to reduce friction.
-- **Operational Expenditure (OpEx)**: Evaluate the long-term cost of maintaining the system (monitoring, on-call, upgrades) vs. the initial CapEx.
+## Required Context
+- Business goal, user journey, stakeholders, target metrics, hard constraints, and decision deadline.
+- Current domain model, data ownership, integration points, delivery team shape, and operational support model.
+- Quality attributes: latency, availability, consistency, security, accessibility, observability, maintainability, and cost.
 
 ## Decision Process
-1. **Requirement Extraction**: Distill the core business invariant that must hold true.
-2. **Pattern Matching**: Evaluate standard architectural patterns (CQRS, Event Sourcing, CRUD, Strangler Fig) against the invariants.
-3. **Failure Mode Effects Analysis (FMEA)**: Predict how the system will fail and design the graceful degradation path.
-4. **Two-Way Door Analysis**: Determine if the decision is easily reversible. If yes, optimize for speed; if no, optimize for correctness.
+1. Extract invariants: what must always be true for users, money, permissions, data, and compliance.
+2. Map the stack: business process, domain objects, API contracts, data stores, infrastructure, operations, and support.
+3. Generate options: CRUD, CQRS, event sourcing, queue-backed workflows, modular monolith, service extraction, or Strangler Fig migration.
+4. Score trade-offs: reversibility, delivery speed, data consistency, operational complexity, cost, reliability, and team fit.
+5. Run FMEA: failure modes, blast radius, detection, mitigation, rollback, and graceful degradation.
+6. Decide explicitly: two-way door versus one-way door, accepted technical debt, and validation milestone.
 
 ## Output Format
-- **Decision Matrix**: Evaluation of options against weighted criteria.
-- **Chosen Architecture**: The selected path and its justification.
-- **Accepted Tech Debt**: Explicit documentation of corners cut for speed.
-- **Operational Runbook outline**: How to manage the system in production.
+- Requirement-to-architecture map.
+- Weighted decision matrix.
+- Recommended option and rejected alternatives.
+- Risk register and mitigation plan.
+- Operational readiness and rollout outline.
 
 ## Guardrails
-- Avoid "Resume-Driven Development"; choose boring technology unless the problem demands a novel solution.
-- Never finalize a design without defining the observability and rollback strategy.
-- Explicitly state the limits of the system (e.g., "This design breaks at 10k TPS").
+- Do not choose interesting technology when boring technology satisfies the invariant.
+- Do not finalize a decision without observability and rollback.
+- State the breaking point of the design instead of implying infinite scale.
 `
   },
   {
     id: "staff-engineer-ai-review-pack",
     category: "engineering",
     title: "Staff-Level Architectural Audit",
-    summary: "Deploy multi-persona AI agents to audit cross-functional impact, API backward compatibility, and blast radius containment.",
-    tags: ["Audit", "Staff Engineer", "Architecture", "Review"],
-    markdown: `# Staff-Level Architectural Audit Skill
+    summary: "Audit high-risk technical changes through Staff-level lenses: product, architecture, security, data, SRE, QA, and rollout.",
+    tags: ["Staff Engineer", "Architecture Review", "PRR", "Risk Audit"],
+    markdown: `# Staff Engineer AI Review Pack Skill
 
-Use this skill to rigorously audit major architectural changes, multi-system integrations, and critical production deployments.
+Use this skill for major architectural changes, multi-system integrations, sensitive-data features, migrations, and launch readiness reviews.
 
-## Core Directives
-- **Multi-Persona Simulation**: Evaluate the proposal from the perspective of an SRE, a Security Engineer, a Product Manager, and a DBA.
-- **Blast Radius Containment**: Ensure failure domains are strictly isolated. Validate that a failure in one service does not cascade (Circuit Breakers).
-- **Contract & Compatibility**: Enforce strict backward compatibility for APIs and database schemas. Validate API versioning strategies.
-- **Architectural Drift Prevention**: Ensure the new implementation adheres to the established target architecture and doesn't introduce entropy.
+## Required Context
+- RFC/PR, target architecture, service map, data classification, dependency graph, timeline, and launch criteria.
+- SLOs, API contracts, schema changes, auth model, observability, test strategy, and rollback constraints.
+- Known risks, unresolved questions, and stakeholders who own sign-off.
 
 ## Audit Process
-1. **SRE Review**: Analyze SLIs/SLOs, alerting thresholds, capacity planning, and deployment strategies (Blue/Green).
-2. **Security Review**: Audit IAM roles, network boundaries, data encryption, and compliance requirements.
-3. **DBA Review**: Evaluate query execution plans, index utilization, locking strategies, and data migration safety.
-4. **Product Review**: Validate that the technical complexity is justified by the user value and matches the Go-To-Market timeline.
+1. Product lens: validate user value, rollout segment, acceptance criteria, and cost of delaying or simplifying.
+2. Architecture lens: check boundaries, coupling, compatibility, contracts, extensibility, and architectural drift.
+3. Security/privacy lens: STRIDE, IAM/RBAC/ABAC, data exposure, tenant isolation, secrets, encryption, and auditability.
+4. Data lens: migration safety, index/lock behavior, backfill, consistency, retention, backup, restore, and reconciliation.
+5. SRE lens: SLO impact, capacity, alerts, dashboards, runbooks, on-call load, failure domains, and rollback triggers.
+6. QA lens: unit, integration, E2E, contract, load, chaos, accessibility, and exploratory test coverage.
 
 ## Output Format
-- **Cross-Functional Risk Matrix**: Heatmap of risks across domains.
-- **Production Readiness Score**: Go/No-Go recommendation.
-- **Hard Blockers**: Must-resolve architectural flaws.
-- **Evolutionary Roadmap**: How to transition from current state to the proposed state safely.
+- Cross-functional risk matrix.
+- Hard blockers and launch conditions.
+- Production readiness score with Go/No-Go recommendation.
+- Required sign-offs and owners.
+- Evolution path from current state to target state.
 
 ## Guardrails
-- Do not approve "Big Bang" rewrites without a Strangler Fig migration plan.
-- Ensure all reviews demand quantifiable metrics (e.g., "What is the P99 latency target?").
-- Prioritize system reliability and data integrity above all else.
+- Do not approve big-bang rewrites without an incremental migration plan.
+- Do not accept launch readiness without measurable SLOs and rollback triggers.
+- Prioritize data integrity, privacy, and reliability over delivery optics.
 `
   },
   {
     id: "data-resilience-observability-review",
     category: "engineering",
     title: "Distributed Resilience & Telemetry",
-    summary: "Engineer robust systems using CAP theorem principles, distributed tracing, and fault-tolerant replication strategies.",
-    tags: ["Resilience", "Observability", "Data", "SRE"],
-    markdown: `# Distributed Resilience & Telemetry Skill
+    summary: "Review data integrity, distributed resilience, telemetry, and recovery plans before systems carry production load.",
+    tags: ["Data", "Resilience", "Observability", "SRE"],
+    markdown: `# Data, Resilience, Observability Review Skill
 
-Use this skill when designing databases, caching layers, message queues, and high-availability production environments.
+Use this skill for databases, caches, queues, search indexes, event streams, third-party integrations, and production readiness reviews.
 
-## Core Directives
-- **Data Integrity & Consistency**: Navigate the CAP theorem. Define Eventual vs. Strong consistency requirements. Handle split-brain scenarios and replication lag.
-- **Fault Tolerance**: Design for Byzantine and Crash-Stop failures. Implement automated failovers, leader election, and idempotent retries.
-- **Deep Observability**: Implement the Three Pillars (Metrics, Logs, Traces). Use OpenTelemetry for distributed request tracing. Follow RED (Rate, Errors, Duration) and USE (Utilization, Saturation, Errors) methodologies.
-- **State Management**: Design cache invalidation (e.g., write-through, cache-aside), connection pooling, and connection lifetime management.
+## Required Context
+- Data model, query patterns, traffic profile, consistency needs, RPO/RTO, SLOs, and downstream consumers.
+- Current database/cache/queue/search topology, replication, backup, monitoring, alerting, and incident history.
+- Sensitive data classification, retention policy, and logging restrictions.
 
 ## Review Process
-1. **Schema & Index Analysis**: Validate Normalization (3NF) vs. Denormalization trade-offs. Analyze index cardinalities.
-2. **Network Partition Simulation**: Trace system behavior when inter-service communication drops or introduces high latency.
-3. **Telemetry Audit**: Ensure every state mutation emits an actionable metric or trace span.
-4. **Disaster Recovery (DR)**: Review RPO (Recovery Point Objective) and RTO (Recovery Time Objective) capabilities.
+1. Data integrity: transaction boundaries, isolation level, constraints, idempotency, deduplication, reconciliation, and migration safety.
+2. Query and storage: indexes, cardinality, locking, hot partitions, N+1 access, connection pooling, retention, and archival.
+3. Cache and queue behavior: invalidation, stampede protection, TTL, ordering, replay, DLQ, poison messages, and backpressure.
+4. Failure simulation: network partition, slow dependency, partial write, duplicate event, region failover, and third-party outage.
+5. Telemetry: RED/USE metrics, OpenTelemetry traces, structured logs, correlation IDs, dashboards, SLO burn alerts, and runbooks.
+6. Recovery: backup restore, point-in-time recovery, RPO/RTO, rollback scripts, and data repair procedure.
 
 ## Output Format
-- **Consistency Model**: Explicit documentation of data state across nodes.
-- **Resilience Mechanisms**: Detailed fallback and retry logic configurations.
-- **Telemetry Specifications**: Required dashboard panels and alert thresholds.
-- **Load Testing Plan**: Strategies to find the system's breaking point.
+- Consistency and data-integrity assessment.
+- Failure-mode matrix with mitigation.
+- Telemetry specification and dashboard plan.
+- Load, chaos, and restore test plan.
+- Go-live checklist with rollback and recovery triggers.
 
 ## Guardrails
-- Never assume the network is reliable.
-- Do not log PII or sensitive credentials.
-- Ensure alerts are actionable; eliminate alert fatigue by avoiding "informational" paging.
+- Never assume the network, clock, cache, queue, or third-party dependency is reliable.
+- Do not log PII, secrets, tokens, or sensitive payloads.
+- Do not page humans for non-actionable alerts.
 `
   }
 ];

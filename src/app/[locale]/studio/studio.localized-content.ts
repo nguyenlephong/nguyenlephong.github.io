@@ -49,503 +49,512 @@ type LocalizedRoadmapTopicCopy = {
 
 const vietnameseSkillCopies: Record<string, LocalizedSkillCopy> = {
   "code-review": {
-    title: "Code Review",
-    summary: "Đánh giá PR nghiêm ngặt dựa trên correctness, security, test coverage và architecture impact.",
-    tags: ["Code review", "Risk Management", "Quality Assurance"],
+    title: "Code Review Expert",
+    summary: "Review thay đổi theo correctness trước, rồi security/privacy, maintainability, test coverage và operational risk.",
+    tags: ["Code Review", "Correctness", "Security", "Test Strategy"],
     useWhen: [
-      "Khi thực hiện peer review cho pull request, local diff hoặc code do AI sinh ra.",
-      "Khi cần xác định technical blockers trước khi feedback về code style.",
-      "Khi thay đổi tác động đến UI, schema data, authorization model, rollout pattern hoặc tracking pipeline."
+      "Khi review pull request, local diff, generated code, refactor, migration hoặc hotfix production.",
+      "Khi cần tìm blocker thật sự trước khi bàn về code style.",
+      "Khi thay đổi chạm tới auth model, data model, analytics event, SEO path, feature flag hoặc rollout plan."
     ],
     process: [
-      "Khảo sát mục tiêu kinh doanh và footprint của thay đổi trên toàn hệ thống.",
-      "Tìm blocker ưu tiên: logic sai lệch (correctness), rủi ro mất mát dữ liệu, OWASP Top 10 vulnerabilities, privacy leaks, hoặc suy giảm Core Web Vitals.",
-      "Đối chiếu code với acceptance criteria, rà soát invariant violations thay vì review theo cảm tính.",
-      "Xác minh UI states: empty, loading, error, skeleton, responsive constraints và WCAG 2.1 AA accessibility.",
-      "Đánh giá test coverage: unit, integration và E2E tests có bắt được regression cho các edge cases hay không.",
-      "Ghi chú feedback với context chi tiết theo file/line, nêu rõ residual risk và hậu quả nếu không xử lý."
+      "Xác nhận intent: so diff với requirement, acceptance criteria và behavior người dùng.",
+      "Chứng minh correctness: control flow, state transitions, boundary cases, nullability, concurrency, idempotency và failure paths.",
+      "Threat model thay đổi: OWASP Top 10, injection, authz/authn bypass, IDOR, CSRF/XSS, secrets, PII và tenant isolation.",
+      "Đánh giá kiến trúc: coupling, leaky abstraction, cyclic dependency, API compatibility, schema drift và maintenance cost.",
+      "Kiểm tra vận hành: N+1 query, algorithmic blowup, memory pressure, hydration regression, observability gap và rollback risk.",
+      "Đối chiếu verification: unit, integration, E2E, contract, accessibility và regression tests có phủ đúng behavior mới không."
     ],
     output: [
-      "Findings được phân loại theo severity (Blocker, Major, Minor, Nit).",
-      "Các câu hỏi mở về architecture hoặc edge cases.",
-      "Đề xuất refactor/fix cụ thể.",
-      "Các lỗ hổng trong verification plan."
+      "Findings xếp theo severity: Blocker, Major, Minor, Nit.",
+      "Mỗi finding có file/line, evidence, impact và smallest practical fix.",
+      "Open questions chỉ khi ảnh hưởng tới correctness, security, rollout hoặc product behavior.",
+      "Residual risk và verification gaps còn lại."
     ],
     guardrails: [
-      "KHÔNG khen ngợi lấy lệ trước khi liệt kê critical issues.",
-      "KHÔNG yêu cầu scope creep (refactor code ngoài phạm vi PR hiện tại).",
-      "KHÔNG block PR vì preference cá nhân nếu behavior đã được cover bởi tests và tuân thủ convention.",
-      "Nếu PR hoàn hảo, PHẢI nêu rõ lý do approve và ghi nhận residual risk."
+      "KHÔNG tiêu review budget vào preference cá nhân nếu behavior, convention và tests đã ổn.",
+      "KHÔNG approve business logic mới nếu thiếu meaningful verification.",
+      "KHÔNG đòi rewrite toàn bộ design nếu current design chưa tạo rủi ro đo được."
     ]
   },
   "frontend-architecture": {
-    title: "Kiến trúc Frontend",
-    summary: "Thiết kế kiến trúc client-side tập trung vào component boundaries, state isolation, performance và analytics.",
-    tags: ["Frontend", "Architecture", "System Design"],
+    title: "Kiến trúc frontend",
+    summary: "Thiết kế frontend quanh route boundaries, state ownership, accessibility, telemetry và Core Web Vitals.",
+    tags: ["Frontend", "React", "Web Vitals", "Accessibility"],
     useWhen: [
-      "Trước khi khởi tạo hoặc refactor một feature UI phức tạp.",
-      "Khi route mới yêu cầu quản lý state (URL params, filters, context), forms, hoặc PostHog telemetry.",
-      "Khi responsive design (Mobile/Tablet/Desktop) là mandatory constraint trong acceptance criteria."
+      "Khi thiết kế route, dashboard, component system, form, filter, search UI hoặc frontend refactor.",
+      "Khi UI cần quản lý URL state, server state, preferences, form state hoặc client-only interactions.",
+      "Khi SEO, locale behavior, analytics, accessibility và mobile behavior là acceptance criteria bắt buộc."
     ],
     process: [
-      "Xác định route boundary, composition pattern và atomic component ownership.",
-      "Tách biệt rõ ràng giữa Server Data (fetching/caching), Client State (ephemeral), Visual Components (dumb) và Interaction Handlers.",
-      "Liệt kê và handle toàn bộ permutation của UI states: loading, partial data, empty, error boundaries, disabled interactions.",
-      "Thực thi responsive constraints qua CSS Grid/Flexbox và container queries, KHÔNG scale font tuyến tính theo viewport.",
-      "Tái sử dụng design tokens, typography, icon sets và micro-interactions từ design system hiện có.",
-      "Tích hợp event tracking (PostHog) cho tất cả routing, filter changes, form submissions và outbound links."
+      "Định nghĩa route/layout boundaries cùng loading, empty, error, partial-data, permission và not-found states.",
+      "Chọn rendering mode có chủ đích: SSR, SSG, ISR, CSR, streaming hoặc client island theo freshness, SEO, privacy và personalization.",
+      "Phân loại state: server state, URL state, durable preferences, global app state, form state và ephemeral component state.",
+      "Thiết kế component ownership: visual shell nhỏ, domain logic tách riêng, tránh prop drilling qua lớp không liên quan.",
+      "Bảo vệ interaction quality: keyboard access, focus management, ARIA semantics, reduced motion, contrast và responsive constraints.",
+      "Định nghĩa performance/analytics plan: LCP, INP, CLS, bundle budget, event names, PageTracker và funnel events."
     ],
     output: [
-      "Component tree & state distribution model.",
-      "Data fetching strategy (CSR, SSR, SSG).",
-      "Danh sách telemetry events.",
-      "Edge cases resolution.",
-      "Thứ tự implementation."
+      "Route map và component map với ownership boundaries.",
+      "State/data-fetching plan cùng cache invalidation rules.",
+      "UX state matrix cho loading, empty, error, disabled, success và responsive behavior.",
+      "Checklist performance, accessibility và analytics.",
+      "Implementation slices theo thứ tự rủi ro."
     ],
     guardrails: [
-      "KHÔNG biến SaaS application tool thành một marketing landing page.",
-      "KHÔNG lạm dụng prop drilling hoặc global state cho ephemeral data.",
-      "Mobile/Tablet behavior PHẢI được thiết kế như first-class citizen, không phải afterthought."
+      "KHÔNG đưa local interaction vào global state nếu không có lý do kiến trúc.",
+      "KHÔNG ship visual surface nếu thiếu keyboard, screen reader và mobile behavior.",
+      "KHÔNG đổi analytics hoặc locale behavior hiện có nếu thiếu migration plan rõ ràng."
     ]
   },
   "backend-architecture": {
     title: "Kiến trúc Backend",
-    summary: "Thiết kế backend systems đảm bảo data integrity, isolation, security, resilience và safe rollout.",
-    tags: ["Backend", "Distributed Systems", "Data"],
+    summary: "Thiết kế backend với domain ownership rõ, contracts tường minh, data flow bền vững và failure modes vận hành được.",
+    tags: ["Backend", "API Design", "Distributed Systems", "Reliability"],
     useWhen: [
-      "Khi thiết kế API contracts, microservices, async background jobs, webhook integrations hoặc data pipelines.",
-      "Khi thay đổi kéo theo database migrations, message queues, rate limiting, external dependencies hoặc auth/RBAC.",
-      "Khi bài toán yêu cầu zero-downtime deployment và safe rollout."
+      "Khi thiết kế APIs, services, background jobs, webhooks, event streams, data migrations hoặc integrations.",
+      "Khi thay đổi kéo theo database migration, message queue, rate limiting, external dependency hoặc auth/RBAC.",
+      "Khi hệ thống cần latency SLO, durability, consistency model, safe rollout và rollback rõ ràng."
     ],
     process: [
-      "Phân định rõ context boundaries: service nào sở hữu data (write), service nào chỉ consume (read).",
-      "Định nghĩa strict API/job contract (OpenAPI/AsyncAPI) trước khi implement logic.",
-      "Thiết kế cơ chế bảo vệ: input validation, authn/authz, idempotency keys, rate limiting và audit logging.",
-      "Thiết kế data layer: schema migration strategy (expand/contract), index optimization, data retention và GDPR compliance.",
-      "Thiết kế failure resilience: timeout bounds, exponential backoff retries, Dead Letter Queues (DLQ), Circuit Breakers và graceful degradation.",
-      "Lên kế hoạch rollout: feature flags, canary release, dark launching, migration windows và rollback procedures."
+      "Model domain: bounded contexts, aggregates, invariants, ownership của read/write và lifecycle events.",
+      "Chọn topology: modular monolith, service extraction, serverless, queue-backed worker hoặc event-driven flow theo operational need.",
+      "Contract-first: OpenAPI, gRPC, AsyncAPI, event schemas, idempotency keys, pagination, error taxonomy và versioning.",
+      "Thiết kế persistence: schema, indexes, migration plan, retention, encryption, backup/restore và consistency model.",
+      "Thiết kế resilience: timeouts, retry budgets, backoff with jitter, DLQ, circuit breakers, bulkheads, rate limiting và graceful degradation.",
+      "Định nghĩa operability: structured logs, traces, metrics, alerts, runbooks, canary/feature flags và rollback triggers."
     ],
     output: [
-      "Bounded contexts & responsibility maps.",
-      "API Contracts & Event schemas.",
-      "Data layer changes & Migration plan.",
-      "Failure mode analysis (FMEA).",
-      "Rollout, Observability & Rollback plan."
+      "Domain và responsibility map.",
+      "API/event contract kèm failure modes.",
+      "Data model và migration strategy.",
+      "Resilience, security và observability plan.",
+      "Rollout, rollback và disaster recovery plan."
     ],
     guardrails: [
-      "KHÔNG che giấu domain ownership bằng các generic/shared utilities.",
-      "KHÔNG thiết kế async flow nếu thiếu observability, retry mechanisms và idempotency.",
-      "KHÔNG claim hệ thống là production-ready nếu chưa diễn tập phương án rollback và data recovery."
+      "Ưu tiên topology đơn giản nhất vẫn giữ được invariant và đạt SLO.",
+      "KHÔNG introduce async processing nếu thiếu idempotency, observability và replay semantics.",
+      "KHÔNG gọi design là production-ready nếu thiếu rollback và data recovery."
     ]
   },
   "blog-content-writer": {
-    title: "Blog Content Writer",
-    summary: "Biên soạn technical articles, reflections và system explainers với văn phong chuyên gia, gãy gọn, không cường điệu.",
-    tags: ["Technical Writing", "Content Strategy", "SEO"],
+    title: "Viết blog content",
+    summary: "Viết technical content có thesis rõ, bằng chứng vững, semantic SEO tự nhiên và giọng chuyên gia điềm tĩnh.",
+    tags: ["Technical Writing", "SEO", "Editorial Strategy"],
     useWhen: [
-      "Khi draft các bài technical blog, engineering notes, book reflections hoặc profile narratives.",
-      "Khi cần cấu trúc hóa các ý tưởng thô thành một documentation có flow logic chặt chẽ, dễ tiêu hóa.",
-      "Khi cần một tone giọng chân thực, analytical, không hype và tuyệt đối không sặc mùi sales/marketing."
+      "Khi viết engineering articles, technical explainers, architecture postmortems, product notes hoặc public documentation.",
+      "Khi cần biến ý tưởng thô thành bài viết có thesis, flow logic, ví dụ thật và reader takeaway rõ.",
+      "Khi nội dung cần giữ tone bình tĩnh, chân thực, analytical, không hype và không sales."
     ],
     process: [
-      "Hook người đọc bằng một operational incident, technical debt, hoặc tình huống đời sống cụ thể.",
-      "Abstractize tình huống đó thành một engineering insight hoặc mental model sâu sắc.",
-      "Chứng minh bằng architecture diagrams, code workflows, tooling choices và trade-offs thay vì nói suông.",
-      "Tổ chức bài viết thành các semantic sections rõ ràng (H2, H3) để tối ưu scannability.",
-      "Kết luận bằng một reflection mang tính hành động hoặc một open constraint để kích thích tư duy."
+      "Chốt thesis: một claim cụ thể bài viết sẽ chứng minh, không chỉ đặt topic rộng.",
+      "Mở từ tình huống cụ thể: code review, outage, trade-off sản phẩm, requirement mơ hồ, dashboard chậm hoặc khoảnh khắc đi làm.",
+      "Xây mental model cho reader: giải thích thuật ngữ, context, trade-offs và constraints trước khi đưa lời khuyên.",
+      "Chứng minh bằng diagrams, workflows, code snippets, benchmarks, standards, source citations hoặc realistic failure modes.",
+      "Tối ưu cấu trúc: H1/H2/H3 rõ, keywords tự nhiên, internal links, meta title, meta description và canonical path.",
+      "Kết bằng takeaway dùng được: mental model, checklist, decision rule hoặc reflection."
     ],
     output: [
-      "3-5 biến thể Title tối ưu SEO.",
-      "Hook paragraph (tối đa 3 câu).",
-      "Full markdown draft với code snippets/mermaid diagrams.",
-      "Social media abstract (LinkedIn/Twitter).",
-      "Đề xuất ý tưởng spin-off."
+      "SEO metadata và slug recommendation.",
+      "Outline có reader intent và search intent.",
+      "Full manuscript đúng format yêu cầu.",
+      "Source notes, diagram ideas và internal-link suggestions.",
+      "Short social summary khi cần."
     ],
     guardrails: [
-      "KHÔNG hallucinate data, nguồn trích dẫn hoặc benchmarks.",
-      "KHÔNG lạm dụng technical buzzwords nếu không phục vụ mục đích giải thích.",
-      "KHÔNG dùng cấu trúc listicle sáo rỗng hoặc văn phong clickbait.",
-      "PHẢI bảo toàn SEO metadata, locale paths và schema markup hiện có."
+      "KHÔNG keyword-stuff hoặc thổi phồng claim vượt khỏi evidence.",
+      "KHÔNG bịa statistics, citations, benchmarks hoặc technical capabilities.",
+      "PHẢI bảo toàn locale behavior, content schema, SEO paths và analytics surfaces hiện có."
     ]
   },
   "prompt-writing": {
-    title: "Prompt Engineering",
-    summary: "Xây dựng AI prompts có cấu trúc chặt chẽ, deterministic và tái sử dụng được cho multi-agent orchestration.",
-    tags: ["Prompt Engineering", "AI Operations", "LLM"],
+    title: "Prompt Engineering Expert",
+    summary: "Thiết kế prompts/system instructions có role rõ, context đóng khung, chống injection và output schema kiểm chứng được.",
+    tags: ["Prompt Engineering", "LLM", "Agents", "Evaluation"],
     useWhen: [
-      "Khi task definition còn mơ hồ về role, goal, context hoặc output schema.",
-      "Khi cần xây dựng meta-prompts hoặc system instructions cho Codex, Claude, GPT, Gemini.",
-      "Khi output pipeline yêu cầu định dạng machine-readable (JSON/XML) với tỷ lệ hallucination tiệm cận 0."
+      "Khi thiết kế system prompts, task prompts, few-shot examples, agent policies, extraction prompts hoặc output schemas.",
+      "Khi task definition còn mơ hồ về role, goal, context, constraints hoặc acceptance criteria.",
+      "Khi output pipeline cần JSON Schema, markdown sections, diffs hoặc machine-readable fields ổn định."
     ],
     process: [
-      "Xác định Persona/Role của agent với expert context.",
-      "Định nghĩa Goal cốt lõi và strict acceptance criteria.",
-      "Tiêm System Context, constraints, few-shot examples và RAG references.",
-      "Mô tả Step-by-step Reasoning Process (Chain of Thought) mà agent phải tuân thủ.",
-      "Quy định Output Schema (JSON, Markdown, Code diff) và tone/style.",
-      "Thiết lập Negative Constraints (Guardrails): những gì tuyệt đối không được làm hoặc phải fallback user."
+      "Định nghĩa role/scope: expertise, authority, non-goals và boundaries agent không được vượt.",
+      "Viết task contract: objective, inputs, assumptions, acceptance criteria và failure conditions.",
+      "Tách context: system rules, developer rules, user request, retrieved evidence và untrusted content bằng delimiters rõ.",
+      "Tạo procedure ngắn: checklist vận hành và yêu cầu rationale/evidence ngắn, không đòi private chain-of-thought.",
+      "Đặc tả output schema: JSON Schema, markdown sections, tables, diffs hoặc structured fields kèm examples.",
+      "Test prompt bằng adversarial cases: ambiguity, prompt injection, missing context, malformed input và schema drift."
     ],
     output: [
-      "Production-ready System Prompt.",
-      "Rationale giải thích kiến trúc của prompt.",
-      "Lightweight version cho ad-hoc chat."
+      "Production prompt hoặc prompt pack.",
+      "Variable map và input sanitation rules.",
+      "Output schema kèm valid/invalid examples.",
+      "Evaluation checklist với pass/fail criteria.",
+      "Compact version cho ad-hoc usage."
     ],
     guardrails: [
-      "KHÔNG thiết kế prompt cồng kềnh, dư thừa token không mang lại signal.",
-      "KHÔNG để agent tự đoán các domain invariants quan trọng.",
-      "Tối ưu cho tỷ lệ hoàn thành task (task completion rate) và accuracy, KHÔNG tối ưu cho độ dài câu chữ."
+      "KHÔNG yêu cầu private chain-of-thought; chỉ yêu cầu concise rationale, checks hoặc evidence.",
+      "KHÔNG để untrusted content thay đổi role, tools, data access hoặc output policy.",
+      "KHÔNG dùng tính từ mơ hồ như 'tốt hơn' nếu thiếu tiêu chí đo được."
     ]
   },
   "status-report": {
-    title: "Executive Status Report",
-    summary: "Tổng hợp báo cáo tiến độ (Daily/Weekly/Monthly) sắc bén, tập trung vào impact, blockers và path to green.",
-    tags: ["Reporting", "Communication", "Leadership"],
+    title: "Executive Status & Operations",
+    summary: "Chuyển workstream noise thành executive signal: health, impact, blockers, decisions, owners và path to green.",
+    tags: ["Operations", "Reporting", "OKR", "Escalation"],
     useWhen: [
-      "Khi cần báo cáo async cho stakeholders về project health, engineering velocity hoặc sprint goals.",
-      "Khi dự án gặp rủi ro và cần escalation để xin quyết định từ cấp trên/cross-functional teams.",
-      "Khi cần chuyển hóa các Jira/Linear tickets thành một executive summary có ý nghĩa."
+      "Khi viết daily standup, weekly status, monthly OKR review, incident update hoặc stakeholder escalation.",
+      "Khi dự án chuyển Yellow/Red và cần quyết định từ cấp trên/cross-functional team.",
+      "Khi cần biến tickets, commits, incidents và metrics thành executive summary có nghĩa."
     ],
     process: [
-      "Phân định rạch ròi giữa hard facts (metrics, commits, incidents) và interpretation.",
-      "Sử dụng mô hình BLUF (Bottom Line Up Front): Nêu Business/System Impact trước khi liệt kê activities.",
-      "Đưa Risks và Blockers lên đầu, gán rõ ownership và next action items.",
-      "Điều chỉnh abstraction level phù hợp với audience (Engineers vs. C-Level).",
-      "Đối chiếu delta changes so với reporting cycle trước đó."
+      "Dẫn bằng BLUF: health hiện tại, lý do và thay đổi so với update trước.",
+      "Tách facts khỏi interpretation: metrics, shipped artifacts, incidents và unresolved assumptions.",
+      "Định lượng progress: OKR movement, DORA metrics, burn-up/burn-down, SLA/SLO, MTTR, lead time, throughput hoặc adoption.",
+      "Chỉ rõ constraints: blocker, dependency owner, due date, probability, impact và mitigation path.",
+      "Biến decisions thành explicit ask: recommended option, fallback option, deadline và consequence nếu không quyết.",
+      "Kết bằng commitments: owner, date, expected evidence và trigger đổi status."
     ],
     output: [
-      "TL;DR / Executive Summary.",
-      "Shipped / Value Delivered.",
-      "In Progress / WIP Limits.",
-      "Risks, Blockers & Mitigations.",
-      "Decisions Needed (Escalation)."
+      "Status Green/Yellow/Red kèm rationale một câu.",
+      "Progress: shipped value, không phải activity inventory.",
+      "Risks/blockers: severity, owner, next action và date.",
+      "Decisions needed: ask cụ thể và recommendation.",
+      "Next cycle focus và success signal đo được."
     ],
     guardrails: [
-      "Daily: Giới hạn dưới 3 bullet points, tập trung vào blockers và PR reviews.",
-      "Weekly: Focus vào velocity, scope creep, integration risks và mục tiêu tuần tới.",
-      "Monthly: Focus vào DORA metrics, system reliability, OKR outcomes và strategic pivots."
+      "KHÔNG che bad news bằng progress theater.",
+      "KHÔNG report vanity metrics nếu không gắn với decision hoặc outcome.",
+      "KHÔNG gán ownership mơ hồ kiểu 'team'; phải có role/person chịu trách nhiệm."
     ]
   },
   "doc-spec-tech-spec": {
-    title: "Tech Spec & RFC",
-    summary: "Soạn thảo Technical Specifications và RFCs liên kết product requirements với system design và rollout constraints.",
-    tags: ["Architecture", "RFC", "Documentation"],
+    title: "Technical Specification & RFC",
+    summary: "Viết specs decision-ready, nối product intent với architecture, NFRs, threat model, rollout và verification.",
+    tags: ["RFC", "ADR", "Architecture", "NFR"],
     useWhen: [
-      "Trước khi implement các features có scope lớn, cross-service dependencies hoặc schema migrations.",
-      "Khi cần đề xuất thay đổi kiến trúc (Architecture Decision Records - ADR) để xin consensus từ team.",
-      "Khi technical design tiềm ẩn rủi ro về security, performance hoặc data privacy."
+      "Khi viết RFCs, ADRs, technical specs, migration plans, system designs hoặc implementation handoffs.",
+      "Trước các features có scope lớn, cross-service dependencies, schema migrations hoặc production data impact.",
+      "Khi design có rủi ro security, privacy, performance, SEO, accessibility, analytics hoặc locale behavior."
     ],
     process: [
-      "Xác định Problem Statement, Business Context và User Impact.",
-      "Phân định rõ Explicit Goals và Non-Goals (Out of scope).",
-      "Phác thảo System Flow, Sequence Diagrams và Data Models.",
-      "Đề xuất Solution và phân tích các Alternatives đã bị loại bỏ (Trade-offs).",
-      "Đặc tả API Contracts, Database Schema Changes và Event Payloads.",
-      "Phân tích Threat Model (STRIDE), Privacy implications, Accessibility và Observability metrics.",
-      "Lên kế hoạch Rollout, Database Backfills, Migration scripts và Rollback triggers."
+      "Framing vấn đề: tại sao cần làm, ai bị ảnh hưởng, hiện tại vỡ ở đâu và success nghĩa là gì.",
+      "Kiểm soát scope: goals, non-goals, assumptions, constraints và unresolved questions.",
+      "Mô tả proposed design: architecture diagram, data model, APIs/events, dependencies, edge cases và compatibility rules.",
+      "So sánh alternatives: cost, complexity, risk, reversibility và time-to-value của ít nhất hai hướng khả thi.",
+      "Risk model: STRIDE, privacy impact, failure domains, blast radius, data migration risk và operational load.",
+      "Delivery plan: implementation slices, test matrix, observability, rollout, rollback và post-launch validation."
     ],
     output: [
-      "Decision-ready Technical Specification/RFC.",
-      "Danh sách Unresolved Questions.",
-      "Implementation Phasing/Checklist.",
-      "QA/Test Matrix Checklist."
+      "RFC hoặc ADR hoàn chỉnh sẵn sàng review.",
+      "Decision table với alternatives và recommendation.",
+      "Implementation plan và ticket breakdown.",
+      "Test, rollout, observability và rollback checklist.",
+      "Sign-off list theo stakeholder function."
     ],
     guardrails: [
-      "KHÔNG che giấu 'Unknown Unknowns' hoặc technical debt.",
-      "KHÔNG ngụy biện biến assumptions thành hard requirements mà không có validation.",
-      "PHẢI có phương án Rollback deterministic cho mọi thay đổi chạm đến production data."
+      "KHÔNG biến assumptions thành requirements nếu chưa validate.",
+      "KHÔNG bỏ non-goals; đó là scope control.",
+      "KHÔNG ship spec chạm production data nếu thiếu rollback và recovery details."
     ]
   },
   "proposal-slide-pitch": {
-    title: "Executive Pitch & Proposal",
-    summary: "Xây dựng business proposals và pitch decks tập trung vào ROI, risk mitigations và actionable decisions.",
-    tags: ["Proposal", "Strategy", "Pitch"],
+    title: "Strategic Pitch & Proposal",
+    summary: "Xây proposal nối pain, value, ROI, risk, proof và request for decision thật cụ thể.",
+    tags: ["Proposal", "Strategy", "Executive Communication"],
     useWhen: [
-      "Khi cần thuyết phục stakeholders (C-level, Sponsors) cấp ngân sách hoặc phê duyệt dự án.",
-      "Khi cấu trúc nội dung cho technical talk, All-hands presentation hoặc product launch.",
-      "Khi cần present các trade-offs kiến trúc phức tạp cho non-technical audience."
+      "Khi viết executive proposal, product strategy memo, budget ask, pitch deck hoặc technical-business trade-off narrative.",
+      "Khi cần thuyết phục C-level, sponsor hoặc budget owner approve dự án.",
+      "Khi phải giải thích trade-offs kiến trúc phức tạp cho non-technical stakeholders."
     ],
     process: [
-      "Mở đầu bằng Pain Point định lượng được của audience (Cost, Latency, Churn).",
-      "Thiết lập Urgency: Tại sao status quo không còn khả thi (Why Now?).",
-      "Trình bày Solution Hypothesis bằng một declarative sentence duy nhất.",
-      "Chứng minh Feasibility qua Proof of Concept (PoC), benchmarks hoặc case studies.",
-      "Trình bày Risk Mitigation Plan thẳng thắn, không né tránh điểm yếu.",
-      "Đóng lại bằng Call to Action (CTA) hoặc Request for Decision (RFD) cụ thể."
+      "Calibrate audience: họ value gì, sợ gì, fund gì và có quyền approve tới đâu.",
+      "Frame the gap: current cost, risk, delay, churn, manual work, missed revenue hoặc strategic exposure.",
+      "Nêu thesis một câu: nên làm gì và vì sao phải làm bây giờ.",
+      "Chứng minh feasibility: benchmark, customer signal, PoC, architecture validation, financial model hoặc comparable case.",
+      "Định lượng impact: ROI, payback period, cost avoided, cycle-time reduction, risk reduction hoặc option value.",
+      "Chốt ask: decision, budget, owner, date, success metric và fallback nếu bị decline."
     ],
     output: [
-      "Elevator Pitch (1 câu).",
-      "Slide-by-slide Narrative Outline.",
-      "Speaker Notes & Talking Points.",
-      "Pre-mortem Risk Analysis & FAQ.",
-      "Follow-up Memo Draft."
+      "Thesis một câu và 30-second pitch.",
+      "Slide-by-slide narrative hoặc memo structure.",
+      "ROI và risk model.",
+      "Objection-handling matrix.",
+      "Final decision request và next-step plan."
     ],
     guardrails: [
-      "KHÔNG overpromise hoặc bóp méo data benchmark.",
-      "KHÔNG sử dụng startup jargon/buzzwords vô nghĩa (e.g., 'synergy', 'blockchain-powered' nếu không liên quan).",
-      "Mỗi slide/section CHỈ phục vụ một single cognitive purpose."
+      "KHÔNG dùng buzzwords nếu không tạo decision value.",
+      "KHÔNG overpromise adoption, revenue, cost saving hoặc delivery date.",
+      "KHÔNG giấu ask; ambiguity làm executive decision chết."
     ]
   },
   "ai-operating-system": {
-    title: "AI Operating System Orchestrator",
-    summary: "Điều phối đa agent (NotebookLM, GPT, Claude, Codex, Antigravity) để xử lý workflows phức tạp mà không tạo noise.",
-    tags: ["Multi-Agent", "Orchestration", "Productivity"],
+    title: "AI Operating System & Orchestration",
+    summary: "Thiết kế agent workflows với model routing, context control, tool boundaries, RAG grounding và human approval gates.",
+    tags: ["AI Orchestration", "Agents", "RAG", "MCP"],
     useWhen: [
-      "Khi task vượt quá context window hoặc reasoning capacity của một single LLM.",
-      "Khi cần pipeline phân mảnh: Research -> Architect -> Implement -> Review -> Document.",
-      "Khi muốn chuẩn hóa một ad-hoc prompt chain thành một repeatable playbook."
+      "Khi thiết kế multi-agent workflow, AI workbench, RAG pipeline, Codex/Claude/GPT task routing hoặc MCP tool policy.",
+      "Khi task cần nhiều pha: retrieval, reasoning, coding, review, planning, synthesis hoặc deterministic automation.",
+      "Khi cần biến prompt chain rời rạc thành operating playbook có validation và approval gates."
     ],
     process: [
-      "Data Ingestion: Thu thập system facts, logs, specs và source code context.",
-      "Intent Clarification: Tinh lọc core problem và defined output schema.",
-      "Agent Routing: Phân chia task cho right-sized tools (e.g., Claude cho System Design, Codex cho Implementation).",
-      "Adversarial Review: Sử dụng một agent độc lập để critique output của agent thực thi.",
-      "Knowledge Archiving: Tổng hợp decisions, prompts và diffs vào long-term memory (NotebookLM/ADR)."
+      "Classify intent: retrieval, reasoning, coding, review, planning, synthesis, browser work hoặc deterministic automation.",
+      "Route theo capability: context length, reasoning depth, tool need, latency, cost và privacy.",
+      "Đóng gói context: source files, docs, constraints, examples, definitions và explicit exclusions.",
+      "Định nghĩa tool boundaries: read/write permissions, filesystem scope, network policy, secrets handling và approval gates.",
+      "Thêm validation: schema checks, tests, citations, diff review, secondary-agent critique và deterministic fallback.",
+      "Archive decisions: prompts, routing matrix, artifacts và reusable playbooks."
     ],
     output: [
-      "Refined Problem Statement.",
-      "Agent Routing Matrix & Sequence Diagram.",
-      "Context-rich Prompts cho từng step.",
-      "Guardrails & Validation Scripts.",
-      "Next immediate action."
+      "Agent role map và routing matrix.",
+      "Context packaging template.",
+      "Tool permission matrix và approval gates.",
+      "Validation và fallback plan.",
+      "Reusable prompt pack hoặc operating playbook."
     ],
     guardrails: [
-      "KHÔNG broad-casting cùng một zero-shot prompt cho nhiều models.",
-      "Tối kị việc leak production secrets, PII, hoặc proprietary algorithms vào external public LLMs.",
-      "Human-in-the-loop: Con người PHẢI là người phê duyệt final state mutation."
+      "KHÔNG để agent mutate production state nếu thiếu explicit approval và observability.",
+      "KHÔNG trộn trusted instructions với untrusted retrieved text.",
+      "KHÔNG tối ưu chỉ theo model intelligence; phải tối ưu correctness, traceability, privacy và cost."
     ]
   },
   "daily-ai-learning-coach": {
-    title: "Daily AI Learning Coach",
-    summary: "Tối ưu hóa quá trình học tập AI/Engineering hàng ngày thông qua micro-practices và artifact generation.",
-    tags: ["Continuous Learning", "Habits", "Growth"],
+    title: "Continuous AI Learning & Neuroplasticity",
+    summary: "Compound AI skill bằng deliberate practice, active recall, feedback loops và reusable artifacts.",
+    tags: ["Learning", "Deliberate Practice", "AI Fluency", "Feedback"],
     useWhen: [
-      "Khi thiết lập focus blocks buổi sáng để align việc học với daily engineering tasks.",
-      "Khi thực hiện retrospective buổi tối để trích xuất reusable prompts hoặc workflows.",
-      "Khi cần duy trì skill compounding mà không bị burnout bởi các side projects khổng lồ."
+      "Khi lập kế hoạch AI up-skilling hằng ngày, technical practice, tool fluency hoặc long-term knowledge compounding.",
+      "Khi muốn cải thiện prompt slicing, diff review, RAG synthesis, architecture critique, test generation hoặc tool orchestration.",
+      "Khi cần duy trì learning loop nhỏ, đều và gắn với việc thật thay vì side project quá lớn."
     ],
     process: [
-      "Assess: Ghi nhận energy levels, sprint obligations và open technical loops.",
-      "Focus: Xác định Top 3 High-Leverage Outcomes (HLOs) cho ngày.",
-      "Integrate: Chọn một AI workflow/tool để áp dụng trực tiếp vào một ticket đang làm.",
-      "Extract: Tổng hợp kết quả thành một micro-artifact (ADR, cheat sheet, prompt template).",
-      "Reflect: Phân tích tool ROI - agent nào mang lại value, agent nào sinh ra hallucination noise."
+      "Chọn một micro-skill: prompt slicing, diff review, RAG synthesis, architecture critique, test generation hoặc tool orchestration.",
+      "Practice trên context thật: current ticket, codebase, document, incident hoặc decision thay vì tutorial chung chung.",
+      "Tạo feedback: yêu cầu AI tìm blind spots, counterexamples, edge cases và missing verification.",
+      "Chuyển thành memory: active recall card, prompt template, checklist, snippet hoặc decision note.",
+      "Lên lịch reinforcement: spaced repetition và transfer challenge ở task khác.",
+      "Đo value: time saved, quality improved, bug avoided, decision clarified hoặc artifact reused."
     ],
     output: [
-      "Morning Focus Plan.",
-      "Evening Retrospective.",
-      "Tối ưu hóa Prompt Template.",
-      "Workflow Adjustments.",
-      "Next Micro-practice."
+      "Daily micro-skill target.",
+      "Practice task với input và expected output.",
+      "Feedback prompt và evaluation rubric.",
+      "Artifact cần lưu.",
+      "Next repetition date và transfer challenge."
     ],
     guardrails: [
-      "Giữ timebox cho learning loop dưới 15-20 phút.",
-      "Thực hành in-context (trên code thật) thay vì đọc AI tutorials lý thuyết.",
-      "Thành quả đo lường bằng tangible artifacts, KHÔNG đo bằng thời gian đọc."
+      "KHÔNG tính passive reading là skill acquisition.",
+      "KHÔNG luyện năm tool trong một session; isolate một behavior.",
+      "Validate AI explanations bằng official docs, local code hoặc empirical tests."
     ]
   },
   "notebooklm-source-of-truth": {
-    title: "NotebookLM Source of Truth",
-    summary: "Khai thác NotebookLM như một hệ thống RAG tĩnh, cung cấp grounded answers với citations từ proprietary documents.",
-    tags: ["NotebookLM", "RAG", "Knowledge Management"],
+    title: "RAG-Grounded Knowledge Extraction",
+    summary: "Trích xuất câu trả lời grounded trên trusted documents với citations, contradiction checks và unknowns rõ ràng.",
+    tags: ["RAG", "Citations", "Research", "Knowledge Graph"],
     useWhen: [
-      "Khi context reasoning bắt buộc phải dựa 100% trên internal RFCs, postmortems hoặc codebase docs.",
-      "Khi mọi technical claims cần phải có deterministic citations để audit.",
-      "Khi cần trích xuất event timelines, architecture invariants từ lượng lớn unstructured text."
+      "Khi làm việc với document sets dày: PRDs, RFCs, research papers, financial reports hoặc knowledge bases.",
+      "Khi mọi technical claim cần citation để audit.",
+      "Khi cần extraction, synthesis, comparison, timeline reconstruction hoặc gap analysis."
     ],
     process: [
-      "Sanitize & Redact: Loại bỏ PII và credentials trước khi ingest tài liệu.",
-      "Information Extraction: Yêu cầu trích xuất event timelines, dependency graphs hoặc decision logs.",
-      "Fact-checking: Yêu cầu mọi output phải đi kèm inline citations.",
-      "Contradiction Hunting: Prompt tìm kiếm các conflict giữa các specs hoặc outdated docs.",
-      "Synthesis: Tạo actionable outputs như migration checklists, study guides hoặc FAQs."
+      "Sanitize sources: loại bỏ secrets, credentials, PII và tài liệu ngoài approved scope.",
+      "Retrieve hẹp: query theo entity, date, decision, metric, requirement, contradiction và dependency.",
+      "Extract facts: chỉ quote/paraphrase điều source support và giữ source IDs.",
+      "Synthesize cẩn trọng: tách direct evidence, inferred interpretation, conflicts và unknowns.",
+      "Build structure: timeline, entity map, decision log, requirement matrix hoặc FAQ theo task.",
+      "Identify gaps: nêu evidence thiếu và source nào có thể resolve."
     ],
     output: [
-      "Chronological Timelines.",
-      "Grounded, Cited Engineering Claims.",
-      "Document Contradictions & Gaps.",
-      "Follow-up Exploration Questions.",
-      "Actionable Checklists/Guides."
+      "Direct answer với citations cho factual claims.",
+      "Evidence table: claim, source, confidence, date và caveat.",
+      "Contradictions và outdated-source warnings.",
+      "Entity/timeline/decision map khi hữu ích.",
+      "Unknowns và recommended follow-up sources."
     ],
     guardrails: [
-      "PHẢI sanitize data trước khi upload.",
-      "KHÔNG sử dụng NotebookLM cho real-time data hoặc code execution.",
-      "Tất cả architectural claims PHẢI truy xuất ngược được về source file (Citations)."
+      "Nếu source không support claim, ghi rõ: not provided in the source.",
+      "KHÔNG dùng external knowledge nếu task không cho phép.",
+      "KHÔNG gom conflicting sources thành một sự thật giả."
     ]
   },
   "ai-delivery-factory": {
-    title: "AI Delivery Factory",
-    summary: "Pipeline tự động hóa từ Spec đến PR: Requirements -> Architecture -> Implementation -> Verification -> Handoff.",
-    tags: ["SDLC", "Automation", "Delivery"],
+    title: "Autonomous Delivery & CI/CD",
+    summary: "Điều phối AI-assisted delivery từ scoped requirement tới implementation, verification, PR và release-ready handoff.",
+    tags: ["AI Delivery", "CI/CD", "Testing", "Automation"],
     useWhen: [
-      "Khi execute end-to-end features, complex refactors hoặc framework migrations.",
-      "Khi workflow đòi hỏi strict separation of concerns giữa Specification, Coding và Review.",
-      "Khi mục tiêu là tối thiểu hóa human boilerplate typing và tối đa hóa human code review."
+      "Khi AI agents hỗ trợ implement features, refactors, migrations, test suites, CI changes hoặc release handoffs.",
+      "Khi workflow cần separation of duties giữa specification, coding, review và verification.",
+      "Khi agent được phép edit, commit, push, open PR hoặc chỉ prepare patch tùy approval."
     ],
     process: [
-      "Requirement Phase (GPT/Claude): Phân rã Product Spec thành technical tasks, acceptance criteria và rollout plan.",
-      "Design Phase (Claude): Review kiến trúc, xác định boundary conditions, edge cases và data migrations.",
-      "Implementation Phase (Codex/Cursor): Code generation có test coverage cho các scoped tasks.",
-      "Verification Phase (Antigravity/Local): Chạy test suites, lints, build checks và UI regression.",
-      "Review Phase (Claude/GPT): Thực hiện automated diff review, security scan và sinh release notes.",
-      "Archive Phase: Ghi nhận ADR và lessons learned vào wiki."
+      "Scope work: restate requirement, acceptance criteria, non-goals, affected surfaces và risk level.",
+      "Slice execution: chia implementation chunks nhỏ, mỗi chunk có verification check.",
+      "Implement bằng local context: theo patterns hiện có, preserve unrelated user changes, tránh broad refactor.",
+      "Shift-left verification: typecheck, lint, unit/integration/E2E, schema, accessibility và security checks tùy scope.",
+      "Review diff: kiểm staged changes, secrets, artifacts, analytics wiring và migration safety.",
+      "Handoff sạch: Conventional Commit, push khi có approval, PR notes có impact và verification."
     ],
     output: [
-      "Task Execution Slices.",
-      "Contextual Prompts cho IDE/Agents.",
-      "CI/CD Verification Evidence.",
-      "PR Description & Diff Summary.",
-      "Stakeholder Release Notes."
+      "Execution plan và changed-file summary.",
+      "Verification evidence với command results.",
+      "Commit message và PR body draft.",
+      "Release/deployment/rollback notes.",
+      "Remaining risks hoặc follow-up tickets."
     ],
     guardrails: [
-      "KHÔNG nhồi nhét epic-level scope vào một single prompt.",
-      "Agent sinh code KHÔNG được phép làm agent duyệt code (Segregation of Duties).",
-      "KHÔNG bypass unit/integration tests dựa trên lời khẳng định 'code looks good' của AI."
+      "KHÔNG include secrets, local build output, runtime metadata hoặc unrelated user changes vào commit.",
+      "KHÔNG dùng agent-generated diff làm approval cho chính nó.",
+      "KHÔNG deploy hoặc mutate production nếu human chưa explicitly request."
     ]
   },
   "claude-deep-review": {
-    title: "Claude Deep Review",
-    summary: "Khai thác Claude (Opus/Sonnet) như một Principal Engineer để critique kiến trúc, security và system trade-offs.",
-    tags: ["Claude", "Critique", "System Design"],
+    title: "Adversarial Semantic Review",
+    summary: "Dùng adversarial review để lộ assumptions, failure modes, ambiguity và system-level fragility.",
+    tags: ["Adversarial Review", "Red Teaming", "Architecture", "Security"],
     useWhen: [
-      "Khi cần adversarial thinking để tìm kiếm lỗ hổng trong System Design hoặc RFCs.",
-      "Khi kiến trúc tiềm ẩn rủi ro về concurrency, horizontal scalability, CAP theorem trade-offs.",
-      "Khi cần tinh chỉnh external communication (postmortems, RCA) sắc bén, thấu cảm và minh bạch."
+      "Khi cần critique sâu cho PRs, RFCs, architecture proposals, incident narratives, strategy memos hoặc AI-generated plans.",
+      "Khi design có rủi ro concurrency, data integrity, security vectors, scale limits hoặc rollout ambiguity.",
+      "Khi cần một reviewer độc lập nói thẳng về weakest links trước khi execution."
     ],
     process: [
-      "Cung cấp raw context: Diffs, RFCs, DB schemas, hoặc system metrics.",
-      "Force constraints: Yêu cầu review theo lăng kính Correctness, Scalability, Security, Privacy và Operability.",
-      "Khám phá Unknowns: Prompt Claude chỉ ra các implicit assumptions và blind spots trong thiết kế.",
-      "Phân rã lộ trình: Yêu cầu đề xuất Minimum Viable Architecture (MVA) và Long-term Evolution path.",
-      "Tổng hợp feedback trước khi cấp quyền execute cho agent khác."
+      "Decompose system: actors, data flows, state transitions, dependencies, trust boundaries và failure domains.",
+      "Attack assumptions: invalid input, high concurrency, partial failure, network partition, stale cache, malicious user và operator error.",
+      "Trace blast radius: data corruption, availability loss, privacy breach, customer impact, cost explosion và operational burden.",
+      "Challenge alternatives: so proposed path với hướng đơn giản hơn, an toàn hơn, rẻ hơn hoặc dễ rollback hơn.",
+      "Rewrite weak language: loại ambiguity, unsupported claims, hidden dependencies và false certainty.",
+      "Đưa mitigation cụ thể: fixes, validation steps và decision gates."
     ],
     output: [
-      "Top Critical/Systemic Risks.",
-      "Pre-implementation Refactoring suggestions.",
-      "Stakeholder Clarification List.",
-      "MVP vs. Target State Architecture.",
-      "Rollout & Observability Guardrails."
+      "Critical risks và exploit/failure narrative.",
+      "Assumptions cần chứng minh.",
+      "Alternative designs kèm trade-offs.",
+      "Mitigation plan xếp theo risk reduction.",
+      "Go/No-Go recommendation với evidence threshold."
     ],
     guardrails: [
-      "Prompt phải ép Claude phản biện gay gắt, KHÔNG chấp nhận các lời khen ngợi xã giao.",
-      "Human Tech Lead nắm quyền phủ quyết cuối cùng (Veto power) với các architecture decisions.",
-      "Execution phase PHẢI tách biệt sau khi deep review hoàn tất."
+      "Nói thẳng nhưng dựa trên evidence; critique work, không critique author.",
+      "KHÔNG chấp nhận 'probably fine' cho security, data integrity hoặc rollback.",
+      "KHÔNG dừng ở critique; phải đưa smallest path để giảm risk."
     ]
   },
   "career-ai-strategy": {
-    title: "Career AI Strategy",
-    summary: "Xây dựng chiến lược phát triển sự nghiệp kỹ thuật (Staff/Principal path) thông qua AI leverage và portfolio building.",
-    tags: ["Career Development", "Staff Path", "Strategy"],
+    title: "Capability Compounding & Leverage",
+    summary: "Xây career leverage bền bằng Staff-level scope, AI fluency, portfolio evidence và compounding systems.",
+    tags: ["Career Strategy", "Staff Engineer", "Leverage", "Portfolio"],
     useWhen: [
-      "Khi thực hiện performance reviews, định hướng thăng tiến hoặc chuyển đổi career tracks.",
-      "Khi cần hệ thống hóa tacit knowledge thành public engineering blogs, OSS contributions hoặc talk proposals.",
-      "Khi đánh giá ROI của các công nghệ mới và quyết định technical stack bet."
+      "Khi lập career plan, Staff/Principal path, promotion packet, AI leverage strategy hoặc portfolio roadmap.",
+      "Khi cần hệ thống hóa project impact thành artifacts: ADRs, postmortems, engineering writing, OSS, talks hoặc internal tools.",
+      "Khi muốn giữ optionality giữa Staff IC, engineering manager, founder, consultant hoặc AI systems specialist."
     ],
     process: [
-      "Define Thesis: Xác định value proposition cốt lõi của bản thân trên thị trường tech.",
-      "Identify Assets: Lập kế hoạch xây dựng 4 pillars: AI Playbooks, Architecture ADRs, Public Writing, OSS/Tools.",
-      "Scenario Planning: Xây dựng roadmap 3 năm cho các ngã rẽ: Staff IC, Engineering Management, Solopreneur.",
-      "Gap Analysis: Đối chiếu current skills với Staff-level expectations (Scope, Impact, Leadership).",
-      "Execution: Thiết lập 90-day OKRs và weekly compounding habits."
+      "Định nghĩa career thesis: bạn giải quyết market problem nào tốt hơn nhờ skill stack của mình.",
+      "Audit capability: technical depth, system design, product sense, communication, leadership, AI fluency và business judgment.",
+      "Xác định leverage assets: tools, standards, playbooks, public writing, OSS, talks, mentorship và architecture artifacts.",
+      "Chọn bets: 2-3 projects có asymmetric upside, visible impact và reusable proof.",
+      "Xây 90-day operating plan: outcomes, rituals, artifacts, stakeholder alignment và weekly feedback loops.",
+      "Track evidence: before/after metrics, adoption, reliability gains, time saved, decisions influenced và people enabled."
     ],
     output: [
-      "Personal Career Thesis.",
-      "Portfolio of Evidence (Promotability).",
-      "Networking & Mentorship Strategy.",
-      "Risk Mitigation (Layoffs/AI replacement).",
-      "90-day Actionable OKRs."
+      "Career thesis và positioning statement.",
+      "Capability matrix với gaps và proof.",
+      "90-day leverage roadmap.",
+      "Portfolio artifact plan.",
+      "Mentorship, visibility và stakeholder strategy."
     ],
     guardrails: [
-      "Tập trung vào Business Impact và Engineering Excellence, KHÔNG chạy theo hype titles.",
-      "Luôn tài liệu hóa quá trình giải quyết vấn đề khó thành reusable assets.",
-      "Duy trì optionality cao, tránh over-fitting vào một framework hoặc vendor duy nhất."
+      "KHÔNG tối ưu job-title aesthetics hơn real scope và outcomes.",
+      "KHÔNG nhầm tool usage với AI fluency; đo quality, speed, judgment và leverage.",
+      "KHÔNG hy sinh technical depth cho breadth nông."
     ]
   },
   "engineering-decision-map": {
-    title: "Engineering Decision Map",
-    summary: "Phân tích đa chiều một feature từ Business Requirements mapping đến Data Models, Architecture và Production Operations.",
-    tags: ["Systems Engineering", "Trade-offs", "Requirements"],
+    title: "Systemic Decision Topography",
+    summary: "Map business requirements tới domain invariants, architecture options, trade-offs, risks và operational readiness.",
+    tags: ["Decision Matrix", "Systems Thinking", "Trade-offs", "Requirements"],
     useWhen: [
-      "Giai đoạn Inception: Khi requirement còn mơ hồ và cần thiết lập technical direction foundation.",
-      "Khi feature can thiệp sâu vào Core Domain, có risk về Data Consistency (Distributed Transactions) hoặc Integrations.",
-      "Khi cần xác định rõ ranh giới: Việc gì có thể giao cho AI gen code, việc gì Human Architect phải chốt."
+      "Khi requirements còn mơ hồ, decisions cross-functional hoặc architecture phải cân bằng product, data và operations.",
+      "Khi feature chạm core domain, data consistency, integrations, permissions hoặc migration.",
+      "Khi cần biết việc gì AI có thể execute và việc gì human architect phải chốt."
     ],
     process: [
-      "Business Mapping: Xác định Users, Business Outcomes, KPIs, Priority và SLA constraints.",
-      "Domain Mapping: Mô hình hóa Bounded Contexts, Aggregates, Entities và State Invariants.",
-      "Contract Mapping: Thiết kế Sync/Async boundaries, API signatures, Event Payloads và Idempotency keys.",
-      "Data Mapping: Xác định Database schema, Consistency models (ACID/BASE), Indexing và Migration scripts.",
-      "Architecture Mapping: Lựa chọn Design patterns (Monolith, CQRS, Event-Driven), Caching strategy và Fault tolerance.",
-      "Operations Mapping: Lên kế hoạch Testing, CI/CD, Feature Flags, Rollout phases và Observability."
+      "Extract invariants: điều gì luôn phải đúng với users, money, permissions, data và compliance.",
+      "Map toàn stack: business process, domain objects, API contracts, data stores, infrastructure, operations và support.",
+      "Generate options: CRUD, CQRS, event sourcing, queue-backed workflows, modular monolith, service extraction hoặc Strangler Fig.",
+      "Score trade-offs: reversibility, delivery speed, data consistency, operational complexity, cost, reliability và team fit.",
+      "Run FMEA: failure modes, blast radius, detection, mitigation, rollback và graceful degradation.",
+      "Chốt decision: two-way door vs one-way door, accepted tech debt và validation milestone."
     ],
     output: [
-      "Clarification Backlog.",
-      "Systemic Risks & Threat Model.",
-      "Architecture Trade-off Analysis.",
-      "AI vs. Human Responsibility Matrix.",
-      "PR Sequencing & Rollout Verification."
+      "Requirement-to-architecture map.",
+      "Weighted decision matrix.",
+      "Recommended option và rejected alternatives.",
+      "Risk register và mitigation plan.",
+      "Operational readiness và rollout outline."
     ],
     guardrails: [
-      "KHÔNG viết line code nào nếu Data Models và API Contracts chưa được review.",
-      "KHÔNG phớt lờ các rủi ro về Backward Compatibility và Data Migrations.",
-      "KHÔNG over-engineer (ví dụ: dùng Kafka/Microservices cho CRUD app) nếu không có non-functional requirements ép buộc."
+      "KHÔNG chọn technology thú vị nếu boring technology giữ invariant đủ tốt.",
+      "KHÔNG finalize decision nếu thiếu observability và rollback.",
+      "Phải nói rõ breaking point của design, không ngầm hứa scale vô hạn."
     ]
   },
   "staff-engineer-ai-review-pack": {
-    title: "Staff Engineer AI Review Pack",
-    summary: "Triển khai tổ hợp AI personas (Analyst, Architect, Security, QA, SRE) để review toàn diện technical designs.",
-    tags: ["Staff Level", "Comprehensive Review", "System Design"],
+    title: "Staff-Level Architectural Audit",
+    summary: "Audit technical changes rủi ro cao qua lăng kính Product, Architecture, Security, Data, SRE, QA và Rollout.",
+    tags: ["Staff Engineer", "Architecture Review", "PRR", "Risk Audit"],
     useWhen: [
-      "Khi PR hoặc RFC có độ phức tạp cao, tác động đến Tier-1 services hoặc xử lý sensitive data.",
-      "Khi cần stress-test một architecture design thông qua multi-perspective critique.",
-      "Khi cần đảm bảo feature đạt chuẩn Production Readiness trước khi merge."
+      "Khi review major architectural change, multi-system integration, sensitive-data feature, migration hoặc launch readiness.",
+      "Khi PR/RFC tác động Tier-1 services, API contracts, schema changes, auth model hoặc SLO.",
+      "Khi cần Production Readiness Review trước merge/go-live."
     ],
     process: [
-      "[Analyst]: Rà soát edge cases, missing ACs, và logic holes trong requirements.",
-      "[Architect]: Phân tích coupling, cohesion, extensibility và đề xuất 3 alternative designs với trade-offs.",
-      "[Security/SRE]: Chạy STRIDE threat modeling, tìm kiếm race conditions, memory leaks, và SPOFs (Single Points of Failure).",
-      "[QA]: Thiết kế Test Matrix phủ kín Unit, Integration, E2E, Load và Chaos engineering scenarios.",
-      "[Ops]: Kiểm tra SLO impacts, tracing contexts, log levels, alert definitions và runbook procedures."
+      "Product lens: validate user value, rollout segment, acceptance criteria và cost of delay/simplification.",
+      "Architecture lens: boundaries, coupling, compatibility, contracts, extensibility và architectural drift.",
+      "Security/privacy lens: STRIDE, IAM/RBAC/ABAC, data exposure, tenant isolation, secrets, encryption và auditability.",
+      "Data lens: migration safety, index/lock behavior, backfill, consistency, retention, backup/restore và reconciliation.",
+      "SRE lens: SLO impact, capacity, alerts, dashboards, runbooks, on-call load, failure domains và rollback triggers.",
+      "QA lens: unit, integration, E2E, contract, load, chaos, accessibility và exploratory test coverage."
     ],
     output: [
-      "Requirement Ambiguities.",
-      "Architecture Alternatives (Pros/Cons).",
-      "Adversarial Threat Vectors.",
-      "Comprehensive Test Matrix.",
-      "Production Readiness Checklist (PRR)."
+      "Cross-functional risk matrix.",
+      "Hard blockers và launch conditions.",
+      "Production readiness score với Go/No-Go recommendation.",
+      "Required sign-offs và owners.",
+      "Evolution path từ current state tới target state."
     ],
     guardrails: [
-      "Cung cấp đầy đủ System Context và Quality Gates trong prompt khởi tạo.",
-      "Thực hiện critique phase TRƯỚC KHI code implementation bắt đầu.",
-      "Các quyết định liên quan đến Data Security và System Architecture cuối cùng PHẢI do Human Staff/Principal duyệt."
+      "KHÔNG approve big-bang rewrite nếu thiếu incremental migration plan.",
+      "KHÔNG chấp nhận launch readiness nếu thiếu measurable SLOs và rollback triggers.",
+      "Ưu tiên data integrity, privacy và reliability hơn delivery optics."
     ]
   },
   "data-resilience-observability-review": {
-    title: "Data, Resilience & Observability Review",
-    summary: "Đánh giá chuyên sâu về độ bền vững của dữ liệu, khả năng chịu lỗi của hệ thống và khả năng giám sát trên production.",
-    tags: ["SRE", "Database", "Resilience"],
+    title: "Distributed Resilience & Telemetry",
+    summary: "Review data integrity, distributed resilience, telemetry và recovery plan trước khi hệ thống gánh production load.",
+    tags: ["Data", "Resilience", "Observability", "SRE"],
     useWhen: [
-      "Khi PR thay đổi Database Schemas, thêm Caching layers, hoặc integrate với 3rd-party services.",
-      "Khi thiết kế hệ thống phải chịu được network partitions, instance failures hoặc traffic spikes (Chaos/Resilience testing).",
-      "Khi chuẩn bị checklist cho Go-live, thiết lập Datadog/Grafana dashboards và PagerDuty alerts."
+      "Khi thiết kế databases, caches, queues, search indexes, event streams, third-party integrations hoặc production readiness reviews.",
+      "Khi PR thay đổi schema, query pattern, consistency model, cache layer, queue semantics hoặc recovery behavior.",
+      "Khi cần chuẩn bị SLO dashboards, alerting, runbooks, restore tests và go-live checklist."
     ],
     process: [
-      "Data Layer: Review Isolation levels, Transaction boundaries, N+1 queries, Index scans và schema migration safety (Zero-downtime).",
-      "Consistency Layer: Đánh giá Strong vs. Eventual consistency, handling duplicate events, Idempotency tokens, Outbox/Saga patterns.",
-      "Resilience Layer: Kiểm tra cấu hình Timeouts, Exponential Backoff Retries, Circuit Breakers, Bulkheads, Rate Limiting và Fallback routes.",
-      "Observability Layer: Đảm bảo RED metrics (Rate, Errors, Duration), Distributed Tracing (OpenTelemetry), log formats (JSON), và tuyệt đối KHÔNG leak PII/Secrets vào logs.",
-      "Rollout Layer: Rà soát Rollback scripts, Feature toggles, và Data restore procedures."
+      "Data integrity: transaction boundaries, isolation level, constraints, idempotency, deduplication, reconciliation và migration safety.",
+      "Query/storage: indexes, cardinality, locking, hot partitions, N+1 access, connection pooling, retention và archival.",
+      "Cache/queue behavior: invalidation, stampede protection, TTL, ordering, replay, DLQ, poison messages và backpressure.",
+      "Failure simulation: network partition, slow dependency, partial write, duplicate event, region failover và third-party outage.",
+      "Telemetry: RED/USE metrics, OpenTelemetry traces, structured logs, correlation IDs, dashboards, SLO burn alerts và runbooks.",
+      "Recovery: backup restore, point-in-time recovery, RPO/RTO, rollback scripts và data repair procedure."
     ],
     output: [
-      "Database/Query Bottlenecks.",
-      "Distributed System Failure Risks.",
-      "Chaos Testing Scenarios.",
-      "Telemetry & Dashboard Specs.",
-      "Rollout/Rollback Runbook."
+      "Consistency và data-integrity assessment.",
+      "Failure-mode matrix với mitigation.",
+      "Telemetry specification và dashboard plan.",
+      "Load, chaos và restore test plan.",
+      "Go-live checklist với rollback/recovery triggers."
     ],
     guardrails: [
-      "KHÔNG introduce Caching nếu chưa định nghĩa rõ Cache Invalidation strategy và Cache Stampede protection.",
-      "KHÔNG cấu hình Retry cho các operations không có tính chất Idempotent.",
-      "Tín hiệu Go-live PHẢI dựa trên SLI/SLO metrics, không dựa trên cảm tính 'code chạy trên local'."
+      "KHÔNG giả định network, clock, cache, queue hoặc third-party dependency luôn reliable.",
+      "KHÔNG log PII, secrets, tokens hoặc sensitive payloads.",
+      "KHÔNG page humans bằng non-actionable alerts."
     ]
   }
 };
