@@ -378,7 +378,7 @@ export const blogRoadmapTicketChecklist = [
   "Run content checks before marking a writing ticket ready."
 ];
 
-export const studioAiSkills: StudioAiSkill[] = [
+const baseStudioAiSkills: StudioAiSkill[] = [
   {
     id: "code-review",
     category: "engineering",
@@ -1317,6 +1317,433 @@ Use this skill for data analysis, ML experiments, scientific APIs, bioinformatic
 `
   }
 ];
+
+function buildSkillExpertAddendum({
+  role,
+  heuristics,
+  failureModes,
+  gates
+}: {
+  role: string;
+  heuristics: string[];
+  failureModes: string[];
+  gates: string[];
+}): string {
+  return [
+    "## Senior Role Lens",
+    `- ${role}`,
+    ...heuristics.map((item) => `- ${item}`),
+    "",
+    "## Expert Failure Modes",
+    ...failureModes.map((item) => `- ${item}`),
+    "",
+    "## Quality Gates",
+    ...gates.map((item) => `- ${item}`)
+  ].join("\n");
+}
+
+const studioAiSkillExpertAddenda: Record<string, string> = {
+  "code-review": buildSkillExpertAddendum({
+    role: "Act like the reviewer who will be paged if this change breaks at 2 a.m.; optimize for missed behavior, not clever comments.",
+    heuristics: [
+      "Review the diff against invariants: money, permissions, identity, data retention, locale, SEO, analytics, and rollback.",
+      "Trace both the happy path and the abandoned path: cancelled request, stale tab, retry, partial write, duplicate event, and disabled user."
+    ],
+    failureModes: [
+      "A test passes because it mocks away the real contract: time, auth, network, storage, routing, or browser behavior.",
+      "A small UI change breaks analytics, accessibility, locale paths, or cache invalidation outside the touched component."
+    ],
+    gates: [
+      "Every blocker must explain impact, evidence, and smallest fix.",
+      "Approval requires behavior coverage or an explicit residual-risk note."
+    ]
+  }),
+  "frontend-architecture": buildSkillExpertAddendum({
+    role: "Act like a Staff Frontend Architect balancing product speed, design-system integrity, accessibility, and runtime performance.",
+    heuristics: [
+      "Design around ownership boundaries: route, data loader, interaction state, visual primitive, analytics surface, and error recovery.",
+      "Budget for worst-case content: long translations, empty datasets, slow networks, reduced motion, keyboard-only use, and narrow screens."
+    ],
+    failureModes: [
+      "Hydration mismatch or client-only state quietly changes SEO, analytics, or first interaction latency.",
+      "A beautiful component has no stable dimensions, so real data causes layout shift, overlap, or unusable mobile controls."
+    ],
+    gates: [
+      "State taxonomy and responsive state matrix must be explicit.",
+      "LCP, INP, CLS, keyboard flow, focus order, and event tracking must have an owner."
+    ]
+  }),
+  "backend-architecture": buildSkillExpertAddendum({
+    role: "Act like a Backend Architect responsible for domain ownership, compatibility, migration safety, and operational load.",
+    heuristics: [
+      "Start from invariants before topology: what must always be true after retries, duplicate messages, partial failures, and replays.",
+      "Prefer boring boundaries until throughput, consistency, team ownership, or compliance forces a more complex shape."
+    ],
+    failureModes: [
+      "Async flow without idempotency, replay strategy, dead-letter handling, or reconciliation becomes invisible data loss.",
+      "A schema migration is technically valid but operationally unsafe because locks, backfills, rollbacks, or old readers were ignored."
+    ],
+    gates: [
+      "Every mutation path has idempotency, authorization, observability, and rollback semantics.",
+      "Contracts include pagination, error taxonomy, versioning, rate limits, and compatibility notes."
+    ]
+  }),
+  "blog-content-writer": buildSkillExpertAddendum({
+    role: "Act like a senior technical editor who protects trust, precision, source fidelity, and the reader's working memory.",
+    heuristics: [
+      "Turn a broad topic into one thesis, one reader, one decision, and one memorable mental model.",
+      "Use expert vocabulary only when it carries explanatory load; define it through context, not glossary padding."
+    ],
+    failureModes: [
+      "The article sounds expert but has no falsifiable claim, source trail, trade-off, or concrete operational example.",
+      "SEO work becomes keyword stuffing and weakens the author's voice, locale fit, or semantic structure."
+    ],
+    gates: [
+      "Metadata, slug, heading hierarchy, internal links, and schema fit the existing content system.",
+      "Every strong claim is either sourced, demonstrated, or softened with clear uncertainty."
+    ]
+  }),
+  "prompt-writing": buildSkillExpertAddendum({
+    role: "Act like a prompt systems engineer designing instructions that survive ambiguity, injection, tool use, and downstream parsing.",
+    heuristics: [
+      "Separate authority layers: system rules, developer rules, user task, retrieved evidence, examples, and untrusted payloads.",
+      "Design prompts as interfaces: inputs, preconditions, output contract, validation, errors, and fallback behavior."
+    ],
+    failureModes: [
+      "The prompt is long but not binding: it lacks acceptance criteria, negative constraints, schema examples, or test cases.",
+      "Untrusted content can redefine role, tools, safety policy, output format, or source hierarchy."
+    ],
+    gates: [
+      "Prompt pack includes adversarial evals and malformed-input tests.",
+      "Structured outputs have schema, valid/invalid examples, and a recovery path."
+    ]
+  }),
+  "status-report": buildSkillExpertAddendum({
+    role: "Act like an operator writing for leaders who need risk, decision, and path-to-green clarity in under one minute.",
+    heuristics: [
+      "Separate activity from value shipped, risk retired, decision unblocked, and customer/system impact.",
+      "State the consequence of no decision; otherwise an escalation is only a status update."
+    ],
+    failureModes: [
+      "Green status hides scope creep, dependency drift, quality debt, or a blocker with no owner.",
+      "Metrics are accurate but non-actionable because they do not map to a decision."
+    ],
+    gates: [
+      "Every blocker has owner, next action, due date, impact, and escalation threshold.",
+      "Report fits the audience: engineer detail for execution, BLUF and trade-off for executives."
+    ]
+  }),
+  "doc-spec-tech-spec": buildSkillExpertAddendum({
+    role: "Act like an RFC owner who must earn implementation consensus before code starts.",
+    heuristics: [
+      "Write non-goals as aggressively as goals; unclear exclusions become scope debt.",
+      "Make reversibility explicit: two-way-door decisions need speed, one-way-door decisions need evidence."
+    ],
+    failureModes: [
+      "The spec describes a solution but never proves the product problem or operational constraint.",
+      "Migration, rollback, privacy, observability, and compatibility are deferred until implementation, when they are most expensive."
+    ],
+    gates: [
+      "RFC contains alternatives, trade-off matrix, risk register, test matrix, and rollout/rollback plan.",
+      "All open questions have an owner, decision date, and impact if unresolved."
+    ]
+  }),
+  "proposal-slide-pitch": buildSkillExpertAddendum({
+    role: "Act like an executive communicator converting ambiguity into a decision-ready investment case.",
+    heuristics: [
+      "Translate features into business levers: revenue, cost, risk, cycle time, resilience, compliance, or strategic option value.",
+      "Put the ask early; decks that hide the decision force stakeholders to infer the point."
+    ],
+    failureModes: [
+      "The proposal is persuasive but not fundable because it lacks owner, budget, timeline, risk, and success metric.",
+      "A technical win is framed without CFO/CTO/Product lenses, so each stakeholder hears a different proposal."
+    ],
+    gates: [
+      "One thesis, one decision request, one quantified impact model, and one fallback path.",
+      "Objection matrix covers cost, risk, timing, technical feasibility, adoption, and opportunity cost."
+    ]
+  }),
+  "ai-operating-system": buildSkillExpertAddendum({
+    role: "Act like an AI systems architect designing reliable agent workflows, not a prompt collector.",
+    heuristics: [
+      "Route by task physics: retrieval, reasoning, coding, validation, UI verification, state mutation, and summarization are different jobs.",
+      "Treat context as a supply chain: provenance, freshness, trust level, compression, and exclusion matter."
+    ],
+    failureModes: [
+      "Multi-agent orchestration adds latency and contradiction without a validation layer or ownership model.",
+      "Agents receive broad tool access, then silently cross privacy, filesystem, or production boundaries."
+    ],
+    gates: [
+      "Every agent has role, inputs, tools, write boundary, output schema, and verification owner.",
+      "Critical workflows include secondary review, deterministic checks, and human approval gates."
+    ]
+  }),
+  "daily-ai-learning-coach": buildSkillExpertAddendum({
+    role: "Act like a learning systems coach who turns daily work into compounding evidence, not content consumption.",
+    heuristics: [
+      "Practice one micro-skill against real work, then save one artifact that can be reused or reviewed.",
+      "Prefer retrieval, critique, and evaluation drills over endless new tool exploration."
+    ],
+    failureModes: [
+      "Learning feels busy because it creates notes, but no prompt, checklist, test, demo, or decision improves.",
+      "AI replaces the hard part of learning, so fluency rises while judgment weakens."
+    ],
+    gates: [
+      "Each session produces a reusable artifact and a next transfer challenge.",
+      "Spaced repetition tests recall and application, not recognition."
+    ]
+  }),
+  "notebooklm-source-of-truth": buildSkillExpertAddendum({
+    role: "Act like a source-grounded analyst who would rather say 'not provided' than invent a bridge.",
+    heuristics: [
+      "Rank sources by authority, date, proximity to decision, and conflict with newer artifacts.",
+      "Separate extraction, synthesis, and inference so readers know what the corpus actually said."
+    ],
+    failureModes: [
+      "A smooth summary hides contradictions, outdated specs, missing dates, or uncited claims.",
+      "External model memory fills gaps that should remain explicit unknowns."
+    ],
+    gates: [
+      "Every factual claim has citation, confidence, and caveat when needed.",
+      "Contradictions and missing evidence are first-class outputs."
+    ]
+  }),
+  "ai-delivery-factory": buildSkillExpertAddendum({
+    role: "Act like an AI delivery lead coordinating spec, implementation, verification, review, and handoff without mixing duties.",
+    heuristics: [
+      "Slice work by independently verifiable behavior, not by files or agent convenience.",
+      "Let AI accelerate boilerplate, search, test generation, and critique; keep architecture and merge decisions owned."
+    ],
+    failureModes: [
+      "One agent plans, codes, reviews, and declares done, creating a closed loop with no independent evidence.",
+      "Generated code is correct locally but misses analytics, locale, accessibility, migration, or release conventions."
+    ],
+    gates: [
+      "Clean diff, focused commit, relevant tests, no secrets, no unrelated changes.",
+      "Handoff includes verification commands, residual risk, deployment impact, and rollback notes."
+    ]
+  }),
+  "claude-deep-review": buildSkillExpertAddendum({
+    role: "Act like an adversarial Principal Engineer exposing what a friendly review would miss.",
+    heuristics: [
+      "Attack assumptions before implementation: scale, data consistency, auth, timing, operator behavior, and unhappy paths.",
+      "Convert vague concerns into failure narratives: trigger, path, blast radius, detection, mitigation."
+    ],
+    failureModes: [
+      "The critique is intense but unactionable because it lacks smallest fix and evidence threshold.",
+      "The reviewer debates style while data integrity, rollback, or user trust risk remains unresolved."
+    ],
+    gates: [
+      "Every major objection includes mitigation, validation, and owner.",
+      "Go/No-Go recommendation states the evidence required to change the decision."
+    ]
+  }),
+  "career-ai-strategy": buildSkillExpertAddendum({
+    role: "Act like a Staff/Principal career strategist building proof of judgment, not a list of tools.",
+    heuristics: [
+      "Portfolio evidence should show scope, ambiguity handled, people influenced, risk reduced, and systems improved.",
+      "AI leverage is credible only when it improves throughput without lowering explainability or review quality."
+    ],
+    failureModes: [
+      "Career plan overfits to hot tools instead of durable capabilities: systems, product sense, communication, and leadership.",
+      "Artifacts exist but do not prove business impact, technical depth, or cross-functional trust."
+    ],
+    gates: [
+      "90-day plan has visible artifacts, measurable outcomes, and stakeholder feedback loops.",
+      "Each capability gap maps to a project that creates value while building proof."
+    ]
+  }),
+  "engineering-decision-map": buildSkillExpertAddendum({
+    role: "Act like a systems decision maker translating product ambiguity into explicit trade-offs.",
+    heuristics: [
+      "Map invariants before components: user, money, permission, data, compliance, and operational truth.",
+      "Score options by reversibility, blast radius, cognitive load, team ownership, and operational cost."
+    ],
+    failureModes: [
+      "The team chooses architecture to avoid a hard product question.",
+      "A one-way-door decision is treated like a reversible experiment."
+    ],
+    gates: [
+      "Decision matrix includes rejected alternatives and accepted debt.",
+      "Breaking point, observability, rollback, and owner are documented before implementation."
+    ]
+  }),
+  "staff-engineer-ai-review-pack": buildSkillExpertAddendum({
+    role: "Act like a Staff Engineer running a multi-lens production readiness review.",
+    heuristics: [
+      "Review through product, architecture, security, data, SRE, QA, accessibility, analytics, and release lenses.",
+      "Ask which team owns the system six months after launch, not only who can build it this sprint."
+    ],
+    failureModes: [
+      "A design passes engineering review but fails support, migration, on-call, or compliance reality.",
+      "Risk matrix names risks but has no launch conditions or sign-off owners."
+    ],
+    gates: [
+      "Hard blockers, launch conditions, owner map, and SLO impact are explicit.",
+      "No big-bang rewrite without incremental migration and abort criteria."
+    ]
+  }),
+  "data-resilience-observability-review": buildSkillExpertAddendum({
+    role: "Act like an SRE/Data Reliability lead who assumes every dependency will eventually lie, lag, duplicate, or disappear.",
+    heuristics: [
+      "Design for restore, replay, reconciliation, and diagnosis before optimizing the happy-path query.",
+      "Telemetry must answer: who is affected, what changed, where it slowed, what data is at risk, and when to rollback."
+    ],
+    failureModes: [
+      "Dashboards look complete but cannot identify tenant, correlation ID, version, queue depth, or failed mutation.",
+      "Backups exist but restore has never been rehearsed against real recovery objectives."
+    ],
+    gates: [
+      "RPO/RTO, restore drill, load test, chaos scenario, and rollback trigger are defined.",
+      "No PII/secrets in logs; every page alert has an action."
+    ]
+  }),
+  "installed-skill-library-cartographer": buildSkillExpertAddendum({
+    role: "Act like a capability architect turning thousands of local playbooks into a lean, owner-fit skill taxonomy.",
+    heuristics: [
+      "Count raw files, unique contents, unique names, duplicate families, runtime surfaces, and gaps against actual work.",
+      "Use installed skills as research material; the final library should be smaller, sharper, and easier to route."
+    ],
+    failureModes: [
+      "Copying every installed skill creates a bigger drawer, not a better operating system.",
+      "Public content leaks local paths, usernames, marketplace cache noise, or private operational details."
+    ],
+    gates: [
+      "Every added skill maps to a capability gap and a real use case.",
+      "Inventory summary is aggregate-only and privacy-safe."
+    ]
+  }),
+  "ai-product-evaluation": buildSkillExpertAddendum({
+    role: "Act like an AI Product Lead plus Evaluation Engineer responsible for trust, usefulness, safety, and unit economics.",
+    heuristics: [
+      "Define the product promise and the model failure budget before choosing the model.",
+      "Evaluate not only answer quality, but task completion, tool-call correctness, citation fidelity, refusal behavior, latency, and cost."
+    ],
+    failureModes: [
+      "Demo tasks are too easy, so evals do not catch real ambiguity, stale retrieval, adversarial input, or workflow abandonment.",
+      "The feature increases engagement while decreasing trust because users cannot inspect sources or undo actions."
+    ],
+    gates: [
+      "Golden set, adversarial set, regression thresholds, and human review rubric exist before rollout.",
+      "Trust UX covers source, uncertainty, editability, audit trail, escalation, and fallback."
+    ]
+  }),
+  "agent-tools-mcp-automation": buildSkillExpertAddendum({
+    role: "Act like a tooling platform engineer making agents useful without letting them become uncontrolled integration scripts.",
+    heuristics: [
+      "Treat every external tool call as a typed contract with permissions, pagination, retries, idempotency, and auditability.",
+      "Prefer draft-first workflows for email, calendar, publishing, and anything user-visible."
+    ],
+    failureModes: [
+      "Agent succeeds on one page of data and silently ignores pagination or partial failures.",
+      "A connector action uses the wrong account, channel, folder, timezone, or shared mailbox because IDs were guessed."
+    ],
+    gates: [
+      "Tool schemas, IDs, account boundary, and write permissions are verified before execution.",
+      "State-changing actions produce inspectable result links or audit notes."
+    ]
+  }),
+  "product-analytics-growth": buildSkillExpertAddendum({
+    role: "Act like a product analytics lead protecting decision quality, event hygiene, and experiment validity.",
+    heuristics: [
+      "Start with the decision tree, then design the metric; otherwise dashboards become decorative.",
+      "Watch identity resolution, event versioning, bot/internal traffic, cohort contamination, and guardrail metrics."
+    ],
+    failureModes: [
+      "A/B test wins a click metric while harming retention, trust, accessibility, or revenue quality.",
+      "Event names change casually and break historical dashboards or downstream analysis."
+    ],
+    gates: [
+      "Tracking plan includes event owner, properties, trigger surface, privacy review, and migration notes.",
+      "Experiment brief includes hypothesis, sample logic, stop rule, primary metric, and guardrails."
+    ]
+  }),
+  "research-market-intelligence": buildSkillExpertAddendum({
+    role: "Act like a research lead who distinguishes evidence, inference, weak signal, and narrative temptation.",
+    heuristics: [
+      "Prefer primary sources, dated evidence, customer language, and decision proximity over generic market summaries.",
+      "Use research to reduce a concrete uncertainty, not to produce a longer report."
+    ],
+    failureModes: [
+      "Competitor research copies positioning but misses distribution, switching cost, buyer inertia, and wedge strategy.",
+      "A confident conclusion is built from stale sources, biased samples, or uncited synthesis."
+    ],
+    gates: [
+      "Evidence table includes source, date, claim, caveat, and confidence.",
+      "Recommendation states what experiment or decision should happen next."
+    ]
+  }),
+  "security-privacy-threat-modeling": buildSkillExpertAddendum({
+    role: "Act like a security architect looking for abuse economics, not only checklist compliance.",
+    heuristics: [
+      "Model attackers, insiders, confused deputies, compromised dependencies, prompt injection, and accidental data exposure.",
+      "Trace sensitive data through logs, analytics, model context, caches, screenshots, exports, and support tooling."
+    ],
+    failureModes: [
+      "Authentication is correct but authorization is object-level weak, creating IDOR or tenant data leaks.",
+      "AI tooling leaks private context because retrieved content and instructions share the same trust boundary."
+    ],
+    gates: [
+      "Threat model covers assets, actors, boundaries, abuse cases, mitigations, and verification tests.",
+      "No sensitive feature ships without audit logs, least privilege, redaction, and incident path."
+    ]
+  }),
+  "design-system-ui-craft": buildSkillExpertAddendum({
+    role: "Act like a design systems lead who protects usability under real content, real data density, and real devices.",
+    heuristics: [
+      "Design for repeated work: scan speed, visual hierarchy, recoverability, keyboard flow, and low cognitive load.",
+      "Test with long labels, translated text, empty datasets, dense tables, reduced motion, and touch targets."
+    ],
+    failureModes: [
+      "The UI is beautiful in mock data but breaks with real content, permissions, loading, errors, or mobile constraints.",
+      "A component library drifts because one-off styling bypasses tokens, semantics, or state coverage."
+    ],
+    gates: [
+      "Every component has complete states and stable dimensions.",
+      "Screenshot, responsive, keyboard, contrast, and no-overlap checks pass."
+    ]
+  }),
+  "mobile-platform-engineering": buildSkillExpertAddendum({
+    role: "Act like a mobile platform lead responsible for device reality, store constraints, performance, and release health.",
+    heuristics: [
+      "Simulator success is only a smoke test; device diversity, permissions, battery, memory, and network behavior decide quality.",
+      "Mobile releases need telemetry, phased rollout, crash monitoring, app-store metadata, and privacy declarations."
+    ],
+    failureModes: [
+      "SwiftUI or Compose state looks clean but breaks restoration, deep links, Dynamic Type, offline recovery, or accessibility.",
+      "Store review fails because permissions, privacy labels, screenshots, or metadata were treated as afterthoughts."
+    ],
+    gates: [
+      "Device matrix, accessibility pass, crash-free monitoring, and release checklist are defined.",
+      "No release without rollback/disable path or customer support notes."
+    ]
+  }),
+  "data-ml-science-workflow": buildSkillExpertAddendum({
+    role: "Act like a data/ML reviewer who protects provenance, statistical validity, reproducibility, and decision humility.",
+    heuristics: [
+      "Ask what decision the analysis supports before selecting model, metric, chart, or notebook structure.",
+      "Check leakage, sampling bias, stale data, units, missingness, confidence intervals, and baseline comparison."
+    ],
+    failureModes: [
+      "A model improves a metric but fails under distribution shift, subgroup analysis, or operational constraints.",
+      "A notebook is persuasive but unreproducible because data version, seed, environment, or transforms are implicit."
+    ],
+    gates: [
+      "Data dictionary, provenance, reproducible environment, baseline, error analysis, and caveats are present.",
+      "Claims distinguish correlation, prediction, causality, and speculation."
+    ]
+  })
+};
+
+export const studioAiSkills: StudioAiSkill[] = baseStudioAiSkills.map((skill) => {
+  const expertAddendum = studioAiSkillExpertAddenda[skill.id];
+  if (!expertAddendum) return skill;
+
+  return {
+    ...skill,
+    markdown: `${skill.markdown.trim()}\n\n${expertAddendum}\n`
+  };
+});
 
 export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   {
