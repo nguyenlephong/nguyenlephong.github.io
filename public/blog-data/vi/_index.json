@@ -138,6 +138,25 @@
       "seriesOrder": 11
     },
     {
+      "slug": "true-cost-of-microservices",
+      "category": "architecture",
+      "title": "Chi phí thật sự của Microservices",
+      "summary": "Microservices có thể tạo ra quyền tự chủ thật cho team, nhưng cũng chuyển chi phí sang vận hành, dữ liệu, observability, testing và phối hợp. Một bài nhìn chậm lại để biết khi nào cái giá đó đáng trả, và khi nào modular monolith là lựa chọn tử tế hơn.",
+      "date": "2026-06-22",
+      "readingMinutes": 9,
+      "tags": [
+        "Kiến trúc phần mềm",
+        "Microservices",
+        "Distributed Systems",
+        "Modular Monolith",
+        "Technical Debt",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 12
+    },
+    {
       "slug": "cognitive-debt-ai-assisted-development",
       "category": "ai",
       "title": "Cognitive debt trong AI-assisted development: khi code lớn nhanh hơn mức team hiểu",
@@ -154,6 +173,24 @@
       ],
       "author": "Nguyen Le Phong",
       "featured": true
+    },
+    {
+      "slug": "beyond-the-hype-what-llms-actually-understand",
+      "category": "ai",
+      "title": "Vượt qua hype: LLM thật sự hiểu điều gì?",
+      "summary": "LLM có thể tạo cảm giác như đang hiểu ta vì chúng rất giỏi nhận ra pattern, dùng context và tạo ra ngôn ngữ có vẻ hợp lý. Bài viết này tách bạch giữa kiểu hiểu hữu ích của máy và kiểu hiểu của con người, để mình dùng LLM tỉnh táo hơn: đưa context rõ, kiểm chứng claim, để ý khoảng trống phía sau câu trả lời tự tin, và giữ phán đoán con người gần với công việc.",
+      "date": "2026-06-22",
+      "readingMinutes": 8,
+      "tags": [
+        "AI",
+        "LLM",
+        "Generative AI",
+        "AI Literacy",
+        "Machine Learning",
+        "Critical Thinking"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
     },
     {
       "slug": "lean-business-analysis-value-needs-business-case",
@@ -933,6 +970,23 @@
       "featured": false
     },
     {
+      "slug": "the-first-time-i-broke-production",
+      "category": "perspectives",
+      "title": "Lần đầu tiên tôi làm hỏng production",
+      "summary": "Một bài viết chậm lại về lần đầu một thay đổi nhỏ gây ảnh hưởng thật trên production: khoảng lặng sau alert, rollback, buổi incident review không dễ chịu, và bài học rằng kỹ thuật tốt được xây bằng thói quen, guardrail và ownership chung hơn là panic cá nhân.",
+      "date": "2026-06-22",
+      "readingMinutes": 7,
+      "tags": [
+        "Personal Growth",
+        "Incident Response",
+        "Production",
+        "Engineering Culture",
+        "Software Engineering"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
       "slug": "quiet-accumulation-on-the-trail",
       "category": "perspectives",
       "title": "Hoàng Ngưu Sơn: lên đỉnh, xuống núi và mang năng lượng về công việc",
@@ -1009,6 +1063,24 @@
         "Giao tiếp",
         "Engineering Culture"
       ]
+    },
+    {
+      "slug": "why-culture-fit-is-often-a-trap",
+      "category": "culture",
+      "title": "Vì sao \"Culture Fit\" thường là một cái bẫy",
+      "summary": "Culture fit nghe có vẻ vô hại, nhưng nhiều khi nó trở thành cách lịch sự để thưởng cho sự giống nhau và né những cuộc nói chuyện khó hơn về giá trị, hành vi và niềm tin. Một bài viết bình tĩnh về việc team nên tuyển người đóng góp cho văn hoá, không chỉ người làm mình thấy quen.",
+      "date": "2026-06-22",
+      "readingMinutes": 8,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "Tuyển dụng",
+        "Văn hoá team",
+        "Inclusion",
+        "Lãnh đạo",
+        "An toàn tâm lý"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
     }
   ]
 }

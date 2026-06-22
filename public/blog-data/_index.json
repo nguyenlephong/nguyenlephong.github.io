@@ -138,6 +138,25 @@
       "seriesOrder": 11
     },
     {
+      "slug": "true-cost-of-microservices",
+      "category": "architecture",
+      "title": "The True Cost of Microservices",
+      "summary": "Microservices can create real team autonomy, but they also move cost into operations, data consistency, observability, testing, and coordination. A calm reflection on when that cost is worth paying and when a modular monolith is the kinder architecture.",
+      "date": "2026-06-22",
+      "readingMinutes": 8,
+      "tags": [
+        "Software Architecture",
+        "Microservices",
+        "Distributed Systems",
+        "Modular Monolith",
+        "Technical Debt",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 12
+    },
+    {
       "slug": "cognitive-debt-ai-assisted-development",
       "category": "ai",
       "title": "Cognitive Debt in AI-Assisted Development: When Code Grows Faster Than Understanding",
@@ -154,6 +173,24 @@
       ],
       "author": "Nguyen Le Phong",
       "featured": true
+    },
+    {
+      "slug": "beyond-the-hype-what-llms-actually-understand",
+      "category": "ai",
+      "title": "Beyond the Hype: What LLMs Actually Understand",
+      "summary": "LLMs can look as if they understand us because they are very good at patterns, context, and language-shaped reasoning. This calm explainer separates useful machine understanding from human understanding, and shows how to work with LLMs more wisely: give context, verify claims, watch for confident gaps, and keep human judgment close to the work.",
+      "date": "2026-06-22",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "LLM",
+        "Generative AI",
+        "AI Literacy",
+        "Machine Learning",
+        "Critical Thinking"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
     },
     {
       "slug": "lean-business-analysis-value-needs-business-case",
@@ -937,6 +974,23 @@
       "featured": false
     },
     {
+      "slug": "the-first-time-i-broke-production",
+      "category": "perspectives",
+      "title": "The First Time I Broke Production",
+      "summary": "A calm reflection on the first time a small production change caused real impact: the silence after the alert, the rollback, the awkward incident review, and the slower lesson that good engineering is built through habits, guardrails, and shared ownership rather than personal panic.",
+      "date": "2026-06-22",
+      "readingMinutes": 6,
+      "tags": [
+        "Personal Growth",
+        "Incident Response",
+        "Production",
+        "Engineering Culture",
+        "Software Engineering"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
       "slug": "quiet-accumulation-on-the-trail",
       "category": "perspectives",
       "title": "Hoang Nguu Son: Reach the Summit, Come Down, Keep Going",
@@ -1048,6 +1102,24 @@
       "featured": true,
       "series": "leadership-and-management",
       "seriesOrder": 5
+    },
+    {
+      "slug": "why-culture-fit-is-often-a-trap",
+      "category": "culture",
+      "title": "Why \"Culture Fit\" is Often a Trap",
+      "summary": "Culture fit can sound harmless, but it often becomes a polite way to reward sameness and avoid harder conversations about values, behavior, and trust. A calm reflection on why teams should hire for culture contribution instead of comfort.",
+      "date": "2026-06-22",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Hiring",
+        "Team Culture",
+        "Inclusion",
+        "Leadership",
+        "Psychological Safety"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
     }
   ]
 }
