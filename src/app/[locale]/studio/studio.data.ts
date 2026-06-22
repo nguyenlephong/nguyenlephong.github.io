@@ -989,6 +989,332 @@ Use this skill for databases, caches, queues, search indexes, event streams, thi
 - Do not log PII, secrets, tokens, or sensitive payloads.
 - Do not page humans for non-actionable alerts.
 `
+  },
+  {
+    id: "installed-skill-library-cartographer",
+    category: "strategy",
+    title: "Installed Skill Library Cartographer",
+    summary: "Inventory installed agent skills, remove duplicates, classify capabilities, and turn scattered playbooks into a usable routing system.",
+    tags: ["Skill Inventory", "Agent Routing", "Taxonomy", "Governance"],
+    markdown: `# Installed Skill Library Cartographer Skill
+
+Use this skill when consolidating installed Codex, Claude, Gemini, Antigravity, local .agents, marketplace, plugin, or project skills into a coherent operating library.
+
+## Corpus Coverage
+- Latest local inventory pass: 14,541 raw \`SKILL.md\` files, 5,035 unique contents, 3,116 unique names, with heavy overlap across Codex, Claude, Gemini, Antigravity CLI/IDE, and local agent runtimes.
+- Scan installed \`SKILL.md\` files across approved local roots before editing the canonical library.
+- Deduplicate by content hash and normalized name because plugin caches and multi-runtime installs create many copies.
+- Preserve source provenance at the capability level without exposing private absolute paths in public content.
+- Treat vendor, marketplace, generated, translated, and project-local skills as signals, not as content to paste blindly.
+
+## Analysis Process
+1. Inventory sources: Codex, Claude, Gemini, Antigravity CLI/IDE, local .agents, project-local skills, plugins, and marketplace caches.
+2. Extract metadata: name, description, trigger rules, domain keywords, output expectations, and safety constraints.
+3. Cluster capabilities: engineering, frontend/UI, backend/platform, security, AI agents, research, content, product, operations, mobile, and learning.
+4. Identify gaps: capabilities heavily represented in installed skills but missing from the public Studio skill library.
+5. Synthesize target skills: merge overlapping playbooks into crisp, non-duplicative expert skills with clear use cases.
+6. Validate fit: each final skill must have a precise trigger, required context, process, output contract, and guardrails.
+
+## Output Format
+- Inventory summary: raw files, unique content count, unique names, and runtime coverage.
+- Capability taxonomy with mapped source families.
+- Gap analysis against the current skill library.
+- Proposed additions/merges/removals.
+- Final copy-ready English and localized versions.
+
+## Guardrails
+- Do not publish local paths, usernames, tokens, credentials, or private workspace details.
+- Do not inflate the library by copying every duplicate skill into the UI.
+- Do not trust marketplace/cache content without normalizing it into the owner's vocabulary and needs.
+`
+  },
+  {
+    id: "ai-product-evaluation",
+    category: "strategy",
+    title: "AI Product & Evaluation",
+    summary: "Move AI features from impressive demos to trustworthy products with evals, safety boundaries, cost controls, and measurable user value.",
+    tags: ["AI Product", "Evals", "LLM Quality", "Trust"],
+    markdown: `# AI Product & Evaluation Skill
+
+Use this skill when designing, auditing, or shipping AI-powered product features, agents, copilots, chat interfaces, retrieval systems, or model-powered workflows.
+
+## Required Context
+- User job-to-be-done, risk level, model/provider, tool access, retrieval sources, latency budget, cost target, and trust boundary.
+- Failure modes: hallucination, unsafe action, stale retrieval, prompt injection, privacy leak, refusal mismatch, and silent degradation.
+- Business metric: adoption, task completion, deflection, time saved, quality improvement, revenue, retention, or risk reduction.
+
+## Product Process
+1. Define the product promise: what the AI must help the user accomplish and what it must never do.
+2. Separate demo from production: specify grounding, permissions, fallback UX, observability, rate limits, and abuse controls.
+3. Build evals: golden tasks, adversarial prompts, regression suites, human review rubrics, and acceptance thresholds.
+4. Measure quality and cost: success rate, hallucination rate, tool-call accuracy, citation fidelity, latency, token spend, and support impact.
+5. Design trust UX: source display, confidence language, editability, audit trail, undo, escalation, and human handoff.
+6. Plan rollout: shadow mode, allowlist, feature flag, red-team review, telemetry, incident playbook, and model/provider rollback.
+
+## Output Format
+- AI feature brief with promise, non-goals, and risk class.
+- Evaluation plan with datasets, rubrics, thresholds, and owners.
+- Safety and trust UX checklist.
+- Cost/latency budget and monitoring plan.
+- Rollout and rollback plan.
+
+## Guardrails
+- Do not ship an AI feature without evals that match real user tasks.
+- Do not hide uncertainty, missing sources, or model limitations from the user.
+- Do not give agents write access to external systems without permission boundaries and audit logs.
+`
+  },
+  {
+    id: "agent-tools-mcp-automation",
+    category: "operations",
+    title: "Agent Tools, MCP & Workflow Automation",
+    summary: "Design reliable tool-using agents across MCP, GitHub, Slack, Gmail, Outlook, Notion, Airtable, browsers, and local CLIs.",
+    tags: ["MCP", "Automation", "Integrations", "Tool Use"],
+    markdown: `# Agent Tools, MCP & Workflow Automation Skill
+
+Use this skill when an agent needs to use tools, connectors, MCP servers, CLIs, browsers, or app integrations to complete a workflow.
+
+## Required Context
+- Target app/tool, available connector, account boundary, data sensitivity, read/write permissions, and approval requirement.
+- Inputs, IDs, schemas, pagination behavior, rate limits, retry policy, and expected artifacts.
+- Whether the workflow is independent, sequential, reversible, or state-mutating.
+
+## Automation Process
+1. Discover tools: inspect available schemas and required IDs before executing.
+2. Classify actions: read-only, draft creation, user-reviewed write, immediate write, scheduled action, destructive action, or external publish.
+3. Normalize inputs: resolve IDs, validate schemas, handle time zones, sanitize untrusted content, and preserve source links.
+4. Execute safely: batch only independent calls, paginate to completeness, checkpoint long work, and keep outputs inspectable.
+5. Verify results: compare returned state with requested state, record links/artifacts, and surface partial failures.
+6. Handoff: provide concise summary, artifacts, residual risk, and the next human decision when needed.
+
+## Output Format
+- Tooling plan with app, action, permission level, and risk class.
+- Schema-compliant execution inputs.
+- Result summary with source links or artifact references.
+- Failure/retry notes and unresolved blockers.
+- Audit trail for state-changing actions.
+
+## Guardrails
+- Do not execute write/destructive actions without explicit approval or a draft-first workflow.
+- Do not invent tool slugs, API fields, account IDs, channel IDs, folder IDs, or file IDs.
+- Do not expose secrets, OAuth tokens, private payloads, or unrelated app data.
+`
+  },
+  {
+    id: "product-analytics-growth",
+    category: "strategy",
+    title: "Product Analytics & Growth Experimentation",
+    summary: "Turn behavior data into decisions through event taxonomy, funnels, cohorts, A/B tests, attribution, and growth loops.",
+    tags: ["Analytics", "Growth", "Experimentation", "PostHog"],
+    markdown: `# Product Analytics & Growth Experimentation Skill
+
+Use this skill when designing analytics, auditing tracking, planning growth experiments, measuring funnels, or deciding whether a feature worked.
+
+## Required Context
+- Product goal, user segment, north-star metric, funnel stage, current instrumentation, and decision that the data must support.
+- Event taxonomy, identity model, consent/privacy rules, attribution model, experiment constraints, and dashboard owner.
+- Baseline metrics and expected movement: activation, retention, conversion, engagement, revenue, or operational efficiency.
+
+## Analytics Process
+1. Define the decision: what will change if the metric moves, does not move, or is inconclusive.
+2. Design event taxonomy: event names, properties, identity resolution, source surface, and versioning.
+3. Validate instrumentation: page views, click events, forms, filters, outbound links, search/command UIs, and error states.
+4. Analyze behavior: funnels, cohorts, retention curves, segmentation, drop-offs, correlation, and qualitative context.
+5. Plan experiments: hypothesis, primary metric, guardrail metrics, sample size, ramp plan, and stop conditions.
+6. Report learning: what changed, what did not, confidence level, next decision, and follow-up instrumentation.
+
+## Output Format
+- Tracking plan with events, properties, owners, and surfaces.
+- Funnel/cohort dashboard spec.
+- Experiment brief with hypothesis, metrics, and guardrails.
+- Data quality checklist.
+- Decision memo with recommendation.
+
+## Guardrails
+- Do not optimize vanity metrics that do not affect a decision.
+- Do not add public surfaces without matching analytics when the product convention requires it.
+- Do not ignore privacy choices, Do Not Track, consent, or autocapture/session-recording constraints.
+`
+  },
+  {
+    id: "research-market-intelligence",
+    category: "learning",
+    title: "Research & Market Intelligence",
+    summary: "Produce grounded research from local docs, web sources, competitors, customers, papers, and market signals with explicit confidence.",
+    tags: ["Research", "Market Intelligence", "Source Grounding", "Synthesis"],
+    markdown: `# Research & Market Intelligence Skill
+
+Use this skill for market research, competitor analysis, product discovery, customer insight synthesis, technical literature review, or strategic scanning.
+
+## Required Context
+- Research question, decision owner, time horizon, geography, industry, target segment, and acceptable source types.
+- Existing local knowledge, internal docs, known competitors, source trust ranking, and required citation style.
+- Whether the task needs current web research, local-only research, academic sources, interviews, or quantitative analysis.
+
+## Research Process
+1. Frame the question: define the decision, scope, non-goals, assumptions, and confidence needed.
+2. Start local: inspect provided docs, repo notes, prior decisions, and internal artifacts before external lookup.
+3. Gather evidence: use primary sources where possible, compare dates, check author/source incentives, and capture citations.
+4. Analyze patterns: segment users, competitors, jobs-to-be-done, willingness to pay, adoption barriers, and market timing.
+5. Separate signal from speculation: label facts, inferences, weak signals, contradictions, and unknowns.
+6. Recommend action: produce the smallest next decision or experiment that reduces uncertainty.
+
+## Output Format
+- Research brief with question, scope, and confidence.
+- Evidence table with source, date, claim, and caveat.
+- Competitor/customer/theme synthesis.
+- Unknowns and risk register.
+- Recommended next experiment or decision.
+
+## Guardrails
+- Do not browse externally when the task is explicitly local-only.
+- Do not present outdated or secondhand claims as current primary evidence.
+- Do not hide uncertainty; label confidence and proof gaps clearly.
+`
+  },
+  {
+    id: "security-privacy-threat-modeling",
+    category: "engineering",
+    title: "Security, Privacy & Threat Modeling",
+    summary: "Audit systems for abuse paths, auth flaws, PII exposure, supply-chain risk, compliance gaps, and secure rollout.",
+    tags: ["Security", "Privacy", "Threat Modeling", "Compliance"],
+    markdown: `# Security, Privacy & Threat Modeling Skill
+
+Use this skill when a change touches authentication, authorization, user input, sensitive data, payments, file uploads, integrations, AI tools, infrastructure, or production operations.
+
+## Required Context
+- Assets, actors, trust boundaries, data classification, auth model, threat history, compliance constraints, and deployment scope.
+- Inputs/outputs, storage locations, third-party processors, secrets, logs, analytics, and retention policy.
+- Existing controls: IAM, RBAC/ABAC, CSP, CSRF, rate limiting, audit logs, encryption, scanning, and incident response.
+
+## Review Process
+1. Map assets and trust boundaries: user data, credentials, tokens, payments, internal APIs, model context, and admin tools.
+2. Run STRIDE/LINDDUN: spoofing, tampering, repudiation, information disclosure, denial of service, elevation, linkability, identifiability, and non-repudiation.
+3. Test abuse paths: injection, XSS, CSRF, IDOR, SSRF, RCE, path traversal, prompt injection, insecure deserialization, and privilege escalation.
+4. Check privacy: data minimization, consent, PII redaction, logging hygiene, analytics properties, retention, and deletion.
+5. Assess supply chain: dependencies, SCA, SAST, secrets scanning, container/IaC drift, and CI permissions.
+6. Define mitigations: hard blockers, compensating controls, test cases, monitoring, rollout constraints, and incident runbook.
+
+## Output Format
+- Threat model with assets, actors, boundaries, and assumptions.
+- Vulnerability findings ranked by severity.
+- Privacy impact notes and data-flow diagram.
+- Required fixes and verification tests.
+- Go/No-Go security recommendation.
+
+## Guardrails
+- Do not log, copy, or publish secrets, tokens, private keys, or sensitive payloads.
+- Do not rely on generic "sanitize input" advice; name the exact control and location.
+- Do not approve sensitive-data features without auditability and rollback.
+`
+  },
+  {
+    id: "design-system-ui-craft",
+    category: "engineering",
+    title: "Design System & UI Craft",
+    summary: "Create polished, accessible, responsive interfaces using design systems, component libraries, visual hierarchy, and interaction states.",
+    tags: ["Design System", "UI", "Accessibility", "Responsive"],
+    markdown: `# Design System & UI Craft Skill
+
+Use this skill when building or refining product UI, design systems, dashboards, landing pages, mobile layouts, component libraries, or visual prototypes.
+
+## Required Context
+- Product type, user workflow, brand tone, existing design system, component library, icons, typography, color tokens, and density needs.
+- Target viewports, accessibility requirements, interaction states, content length, data density, and performance constraints.
+- Whether the surface is an operational tool, editorial page, portfolio, marketing page, game, or AI-native interface.
+
+## Design Process
+1. Understand the job: prioritize the user's repeated workflow, scanning pattern, decision load, and error recovery.
+2. Use existing system first: tokens, spacing, icons, button semantics, tabs, menus, forms, charts, tables, and empty states.
+3. Design complete states: hover, focus, disabled, loading, skeleton, empty, error, success, overflow, long text, and mobile.
+4. Build visual hierarchy: typography scale, spacing rhythm, contrast, density, grouping, affordances, and layout constraints.
+5. Verify craft: screenshot review, responsive checks, no overlap, stable dimensions, keyboard navigation, and color contrast.
+6. Connect telemetry: track meaningful UI decisions, filters, commands, CTAs, forms, outbound links, and preference changes.
+
+## Output Format
+- UI concept and layout rationale.
+- Component/state inventory.
+- Responsive and accessibility checklist.
+- Implementation notes tied to the existing design system.
+- Screenshot or browser-verification plan when applicable.
+
+## Guardrails
+- Do not make a landing page when the user asked for a tool or app.
+- Do not use decorative gradients/orbs as a substitute for product-relevant visual assets.
+- Do not ship text that overflows, overlaps, or breaks on mobile.
+`
+  },
+  {
+    id: "mobile-platform-engineering",
+    category: "engineering",
+    title: "Mobile Platform Engineering",
+    summary: "Build and review iOS, Android, SwiftUI, Kotlin, React Native, and app-store workflows with performance and release discipline.",
+    tags: ["Mobile", "iOS", "Android", "SwiftUI"],
+    markdown: `# Mobile Platform Engineering Skill
+
+Use this skill for native iOS, Android, SwiftUI, Kotlin, React Native, app packaging, app-store release work, or mobile UI/performance audits.
+
+## Required Context
+- Platform, minimum OS, navigation model, design system, data layer, offline needs, permissions, app-store constraints, and release channel.
+- Performance targets, accessibility expectations, device matrix, analytics events, crash reporting, and privacy declarations.
+- Build tooling: Xcode, SwiftPM, Tuist, Gradle, Android SDK, CI, signing, provisioning, and store metadata.
+
+## Engineering Process
+1. Define platform boundaries: native versus cross-platform, shared logic, UI ownership, device support, and release cadence.
+2. Design lifecycle behavior: app launch, navigation, state restoration, background tasks, permissions, offline mode, and error recovery.
+3. Optimize performance: startup time, scrolling, image memory, layout passes, concurrency, battery, network usage, and caching.
+4. Verify UI: device matrix, orientation, Dynamic Type, TalkBack/VoiceOver, keyboard, gestures, and visual regression.
+5. Harden release: signing, provisioning, app-store metadata, privacy nutrition labels, crash monitoring, phased rollout, and rollback plan.
+6. Capture evidence: simulator/device logs, screenshots, test reports, crash-free sessions, and release notes.
+
+## Output Format
+- Platform architecture and release plan.
+- UI/performance risk matrix.
+- Test matrix across devices and OS versions.
+- Store submission checklist.
+- Post-release monitoring and rollback notes.
+
+## Guardrails
+- Do not treat simulator success as device readiness.
+- Do not ignore accessibility, privacy declarations, or app-store review constraints.
+- Do not ship mobile changes without crash/analytics visibility.
+`
+  },
+  {
+    id: "data-ml-science-workflow",
+    category: "learning",
+    title: "Data, ML & Scientific Workflow",
+    summary: "Handle data, ML, and science tasks with reproducible notebooks, trustworthy sources, evaluation, provenance, and statistical caution.",
+    tags: ["Data", "ML", "Science", "Reproducibility"],
+    markdown: `# Data, ML & Scientific Workflow Skill
+
+Use this skill for data analysis, ML experiments, scientific APIs, bioinformatics, finance data, geospatial work, notebooks, dashboards, or model evaluation.
+
+## Required Context
+- Research question, dataset source, license, schema, missingness, time range, unit definitions, and decision the analysis supports.
+- Tooling: Python/R/SQL/notebook, API, model type, evaluation metric, compute limits, and reproducibility requirement.
+- Risk level: financial, health, science, compliance, privacy, or production-impacting analysis.
+
+## Workflow Process
+1. Define the hypothesis and decision: what the analysis can and cannot prove.
+2. Audit data provenance: source, freshness, sampling bias, schema quality, missing values, leakage, and sensitive fields.
+3. Build reproducibly: environment, seed, notebook/script split, versioned data, deterministic transforms, and documented assumptions.
+4. Analyze rigorously: baselines, confidence intervals, error bars, ablations, train/test split, and out-of-distribution checks.
+5. Validate with domain sense: compare against known constraints, source documentation, and independent sanity checks.
+6. Communicate limits: uncertainty, caveats, failed approaches, ethical constraints, and next experiment.
+
+## Output Format
+- Analysis plan and data dictionary.
+- Reproducible notebook/script outline.
+- Findings with confidence and caveats.
+- Evaluation table and error analysis.
+- Recommendation or next experiment.
+
+## Guardrails
+- Do not imply causality from correlation without an identification strategy.
+- Do not treat model output as truth without validation and error analysis.
+- Do not expose sensitive, medical, financial, or proprietary data in public artifacts.
+`
   }
 ];
 

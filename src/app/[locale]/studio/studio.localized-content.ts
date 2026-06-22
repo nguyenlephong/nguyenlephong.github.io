@@ -556,6 +556,277 @@ const vietnameseSkillCopies: Record<string, LocalizedSkillCopy> = {
       "KHÔNG log PII, secrets, tokens hoặc sensitive payloads.",
       "KHÔNG page humans bằng non-actionable alerts."
     ]
+  },
+  "installed-skill-library-cartographer": {
+    title: "Bản đồ Skill đã cài",
+    summary: "Inventory skill đã install, loại duplicate, phân loại capability và biến playbook rải rác thành hệ thống routing dùng được.",
+    tags: ["Skill Inventory", "Agent Routing", "Taxonomy", "Governance"],
+    useWhen: [
+      "Dựa trên lần quét local mới nhất: 14.541 raw SKILL.md, 5.035 unique contents, 3.116 unique names, overlap lớn giữa Codex, Claude, Gemini, Antigravity CLI/IDE và local agent runtimes.",
+      "Khi cần tổng hợp skill từ Codex, Claude, Gemini, Antigravity, local .agents, plugin, marketplace hoặc project-local skills.",
+      "Khi thư viện skill có quá nhiều bản duplicate/cache và cần rút thành capability taxonomy rõ.",
+      "Khi muốn update Studio skill library dựa trên corpus thật thay vì cảm tính."
+    ],
+    process: [
+      "Inventory sources: Codex, Claude, Gemini, Antigravity CLI/IDE, local .agents, project-local skills, plugins và marketplace caches.",
+      "Extract metadata: name, description, trigger rules, domain keywords, output expectations và safety constraints.",
+      "Cluster capabilities: engineering, frontend/UI, backend/platform, security, AI agents, research, content, product, operations, mobile và learning.",
+      "Tìm gaps: capability có nhiều trong installed skills nhưng thiếu trong public Studio skill library.",
+      "Synthesize target skills: merge playbooks trùng nhau thành expert skills rõ, không duplicate.",
+      "Validate fit: mỗi final skill phải có trigger, required context, process, output contract và guardrails."
+    ],
+    output: [
+      "Inventory summary: raw files, unique contents, unique names và runtime coverage.",
+      "Capability taxonomy gắn với source families.",
+      "Gap analysis so với current skill library.",
+      "Đề xuất additions/merges/removals.",
+      "Bản English và Vietnamese copy-ready."
+    ],
+    guardrails: [
+      "KHÔNG public local paths, username, token, credential hoặc private workspace details.",
+      "KHÔNG phình library bằng cách copy mọi duplicate skill vào UI.",
+      "KHÔNG bê nguyên marketplace/cache content nếu chưa normalize theo vocabulary và nhu cầu của owner."
+    ]
+  },
+  "ai-product-evaluation": {
+    title: "AI Product & Evaluation",
+    summary: "Đưa AI feature từ demo ấn tượng thành product đáng tin bằng evals, safety boundaries, cost controls và user value đo được.",
+    tags: ["AI Product", "Evals", "LLM Quality", "Trust"],
+    useWhen: [
+      "Khi thiết kế, audit hoặc ship AI product features, agents, copilots, chat interfaces, retrieval systems hoặc model-powered workflows.",
+      "Khi cần phân biệt demo đẹp với production behavior đáng tin.",
+      "Khi cần đo hallucination, tool-call accuracy, citation fidelity, latency, token spend và task completion."
+    ],
+    process: [
+      "Định nghĩa product promise: AI giúp user làm gì và tuyệt đối không được làm gì.",
+      "Tách demo khỏi production: grounding, permissions, fallback UX, observability, rate limits và abuse controls.",
+      "Build evals: golden tasks, adversarial prompts, regression suites, human review rubrics và acceptance thresholds.",
+      "Đo quality/cost: success rate, hallucination rate, tool-call accuracy, citation fidelity, latency, token spend và support impact.",
+      "Thiết kế trust UX: source display, confidence language, editability, audit trail, undo, escalation và human handoff.",
+      "Plan rollout: shadow mode, allowlist, feature flag, red-team review, telemetry, incident playbook và model/provider rollback."
+    ],
+    output: [
+      "AI feature brief với promise, non-goals và risk class.",
+      "Evaluation plan với datasets, rubrics, thresholds và owners.",
+      "Safety và trust UX checklist.",
+      "Cost/latency budget và monitoring plan.",
+      "Rollout và rollback plan."
+    ],
+    guardrails: [
+      "KHÔNG ship AI feature nếu evals không khớp real user tasks.",
+      "KHÔNG che uncertainty, missing sources hoặc model limitations khỏi user.",
+      "KHÔNG cấp write access cho agent nếu thiếu permission boundaries và audit logs."
+    ]
+  },
+  "agent-tools-mcp-automation": {
+    title: "Agent Tools, MCP & Workflow Automation",
+    summary: "Thiết kế tool-using agents ổn định qua MCP, GitHub, Slack, Gmail, Outlook, Notion, Airtable, browser và local CLI.",
+    tags: ["MCP", "Automation", "Integrations", "Tool Use"],
+    useWhen: [
+      "Khi agent cần dùng tools, connectors, MCP servers, CLIs, browsers hoặc app integrations để hoàn thành workflow.",
+      "Khi task có read/write permissions, app account boundary, schema, pagination hoặc state mutation.",
+      "Khi cần automation đáng tin nhưng vẫn có audit trail và approval gates."
+    ],
+    process: [
+      "Discover tools: inspect schemas và required IDs trước khi execute.",
+      "Classify actions: read-only, draft creation, user-reviewed write, immediate write, scheduled action, destructive action hoặc external publish.",
+      "Normalize inputs: resolve IDs, validate schemas, handle time zones, sanitize untrusted content và preserve source links.",
+      "Execute safely: batch chỉ khi independent, paginate tới completeness, checkpoint long work và giữ outputs inspectable.",
+      "Verify results: so returned state với requested state, record links/artifacts và surface partial failures.",
+      "Handoff: summary ngắn, artifacts, residual risk và next human decision nếu cần."
+    ],
+    output: [
+      "Tooling plan với app, action, permission level và risk class.",
+      "Schema-compliant execution inputs.",
+      "Result summary kèm source links hoặc artifact references.",
+      "Failure/retry notes và unresolved blockers.",
+      "Audit trail cho state-changing actions."
+    ],
+    guardrails: [
+      "KHÔNG execute write/destructive actions nếu thiếu explicit approval hoặc draft-first workflow.",
+      "KHÔNG bịa tool slugs, API fields, account IDs, channel IDs, folder IDs hoặc file IDs.",
+      "KHÔNG expose secrets, OAuth tokens, private payloads hoặc unrelated app data."
+    ]
+  },
+  "product-analytics-growth": {
+    title: "Product Analytics & Growth Experimentation",
+    summary: "Biến behavior data thành quyết định qua event taxonomy, funnels, cohorts, A/B tests, attribution và growth loops.",
+    tags: ["Analytics", "Growth", "Experimentation", "PostHog"],
+    useWhen: [
+      "Khi thiết kế analytics, audit tracking, plan growth experiments, đo funnel hoặc quyết định feature có hiệu quả không.",
+      "Khi public route, CTA, filter, command UI, form hoặc outbound link cần tracking đúng.",
+      "Khi cần nối product metric với decision thay vì vanity dashboard."
+    ],
+    process: [
+      "Define decision: metric move/không move/inconclusive thì quyết định gì thay đổi.",
+      "Design event taxonomy: event names, properties, identity resolution, source surface và versioning.",
+      "Validate instrumentation: page views, click events, forms, filters, outbound links, search/command UIs và error states.",
+      "Analyze behavior: funnels, cohorts, retention curves, segmentation, drop-offs, correlation và qualitative context.",
+      "Plan experiments: hypothesis, primary metric, guardrail metrics, sample size, ramp plan và stop conditions.",
+      "Report learning: what changed, what did not, confidence level, next decision và follow-up instrumentation."
+    ],
+    output: [
+      "Tracking plan với events, properties, owners và surfaces.",
+      "Funnel/cohort dashboard spec.",
+      "Experiment brief với hypothesis, metrics và guardrails.",
+      "Data quality checklist.",
+      "Decision memo với recommendation."
+    ],
+    guardrails: [
+      "KHÔNG optimize vanity metrics nếu không ảnh hưởng decision.",
+      "KHÔNG thêm public surfaces nếu thiếu analytics theo convention của product.",
+      "KHÔNG bỏ qua privacy choices, Do Not Track, consent hoặc autocapture/session-recording constraints."
+    ]
+  },
+  "research-market-intelligence": {
+    title: "Research & Market Intelligence",
+    summary: "Tạo research grounded từ local docs, web sources, competitors, customers, papers và market signals với confidence rõ.",
+    tags: ["Research", "Market Intelligence", "Source Grounding", "Synthesis"],
+    useWhen: [
+      "Khi làm market research, competitor analysis, product discovery, customer insight synthesis hoặc technical literature review.",
+      "Khi cần current web research hoặc local-only research có source boundaries rõ.",
+      "Khi quyết định cần evidence table thay vì opinion."
+    ],
+    process: [
+      "Frame question: decision, scope, non-goals, assumptions và confidence cần đạt.",
+      "Start local: inspect provided docs, repo notes, prior decisions và internal artifacts trước external lookup.",
+      "Gather evidence: ưu tiên primary sources, so dates, kiểm tra incentives của source và capture citations.",
+      "Analyze patterns: user segments, competitors, jobs-to-be-done, willingness to pay, adoption barriers và market timing.",
+      "Tách signal khỏi speculation: label facts, inferences, weak signals, contradictions và unknowns.",
+      "Recommend action: next decision hoặc experiment nhỏ nhất để giảm uncertainty."
+    ],
+    output: [
+      "Research brief với question, scope và confidence.",
+      "Evidence table với source, date, claim và caveat.",
+      "Competitor/customer/theme synthesis.",
+      "Unknowns và risk register.",
+      "Recommended next experiment hoặc decision."
+    ],
+    guardrails: [
+      "KHÔNG browse external nếu task yêu cầu local-only.",
+      "KHÔNG biến outdated/secondhand claims thành current primary evidence.",
+      "KHÔNG giấu uncertainty; phải label confidence và proof gaps."
+    ]
+  },
+  "security-privacy-threat-modeling": {
+    title: "Security, Privacy & Threat Modeling",
+    summary: "Audit abuse paths, auth flaws, PII exposure, supply-chain risk, compliance gaps và secure rollout.",
+    tags: ["Security", "Privacy", "Threat Modeling", "Compliance"],
+    useWhen: [
+      "Khi change chạm authentication, authorization, user input, sensitive data, payments, uploads, integrations, AI tools hoặc infrastructure.",
+      "Khi cần review data flow, logs, analytics properties, secrets hoặc third-party processors.",
+      "Khi cần Go/No-Go security recommendation trước rollout."
+    ],
+    process: [
+      "Map assets/trust boundaries: user data, credentials, tokens, payments, internal APIs, model context và admin tools.",
+      "Run STRIDE/LINDDUN: spoofing, tampering, repudiation, information disclosure, denial of service, elevation và privacy risks.",
+      "Test abuse paths: injection, XSS, CSRF, IDOR, SSRF, RCE, path traversal, prompt injection và privilege escalation.",
+      "Check privacy: data minimization, consent, PII redaction, logging hygiene, analytics properties, retention và deletion.",
+      "Assess supply chain: dependencies, SCA, SAST, secrets scanning, container/IaC drift và CI permissions.",
+      "Define mitigations: hard blockers, compensating controls, test cases, monitoring, rollout constraints và incident runbook."
+    ],
+    output: [
+      "Threat model với assets, actors, boundaries và assumptions.",
+      "Vulnerability findings xếp severity.",
+      "Privacy impact notes và data-flow diagram.",
+      "Required fixes và verification tests.",
+      "Go/No-Go security recommendation."
+    ],
+    guardrails: [
+      "KHÔNG log, copy hoặc publish secrets, tokens, private keys hoặc sensitive payloads.",
+      "KHÔNG nói chung chung 'sanitize input'; phải nêu exact control và location.",
+      "KHÔNG approve sensitive-data features nếu thiếu auditability và rollback."
+    ]
+  },
+  "design-system-ui-craft": {
+    title: "Design System & UI Craft",
+    summary: "Tạo interface polished, accessible, responsive bằng design system, component libraries, visual hierarchy và interaction states.",
+    tags: ["Design System", "UI", "Accessibility", "Responsive"],
+    useWhen: [
+      "Khi build hoặc refine product UI, design systems, dashboards, landing pages, mobile layouts, component libraries hoặc prototypes.",
+      "Khi cần UI vừa đẹp vừa usable, có state coverage và responsive constraints.",
+      "Khi cần nối design craft với telemetry và implementation."
+    ],
+    process: [
+      "Understand job: repeated workflow, scanning pattern, decision load và error recovery của user.",
+      "Use existing system first: tokens, spacing, icons, button semantics, tabs, menus, forms, charts, tables và empty states.",
+      "Design complete states: hover, focus, disabled, loading, skeleton, empty, error, success, overflow, long text và mobile.",
+      "Build visual hierarchy: typography scale, spacing rhythm, contrast, density, grouping, affordances và layout constraints.",
+      "Verify craft: screenshot review, responsive checks, no overlap, stable dimensions, keyboard navigation và color contrast.",
+      "Connect telemetry: track UI decisions, filters, commands, CTAs, forms, outbound links và preference changes."
+    ],
+    output: [
+      "UI concept và layout rationale.",
+      "Component/state inventory.",
+      "Responsive và accessibility checklist.",
+      "Implementation notes gắn với design system hiện có.",
+      "Screenshot hoặc browser-verification plan khi cần."
+    ],
+    guardrails: [
+      "KHÔNG làm landing page khi user yêu cầu tool hoặc app.",
+      "KHÔNG dùng decorative gradients/orbs thay cho visual assets liên quan product.",
+      "KHÔNG ship text overflow, overlap hoặc vỡ trên mobile."
+    ]
+  },
+  "mobile-platform-engineering": {
+    title: "Mobile Platform Engineering",
+    summary: "Build/review iOS, Android, SwiftUI, Kotlin, React Native và app-store workflows với performance và release discipline.",
+    tags: ["Mobile", "iOS", "Android", "SwiftUI"],
+    useWhen: [
+      "Khi làm native iOS, Android, SwiftUI, Kotlin, React Native, app packaging, app-store release hoặc mobile UI/performance audit.",
+      "Khi mobile change cần device matrix, accessibility, crash reporting, privacy declaration và phased rollout.",
+      "Khi cần bridge giữa product UX và app-store/release constraints."
+    ],
+    process: [
+      "Define platform boundaries: native vs cross-platform, shared logic, UI ownership, device support và release cadence.",
+      "Design lifecycle behavior: launch, navigation, state restoration, background tasks, permissions, offline mode và error recovery.",
+      "Optimize performance: startup time, scrolling, image memory, layout passes, concurrency, battery, network và caching.",
+      "Verify UI: device matrix, orientation, Dynamic Type, TalkBack/VoiceOver, keyboard, gestures và visual regression.",
+      "Harden release: signing, provisioning, app-store metadata, privacy labels, crash monitoring, phased rollout và rollback.",
+      "Capture evidence: simulator/device logs, screenshots, test reports, crash-free sessions và release notes."
+    ],
+    output: [
+      "Platform architecture và release plan.",
+      "UI/performance risk matrix.",
+      "Test matrix across devices và OS versions.",
+      "Store submission checklist.",
+      "Post-release monitoring và rollback notes."
+    ],
+    guardrails: [
+      "KHÔNG xem simulator success là device readiness.",
+      "KHÔNG bỏ qua accessibility, privacy declarations hoặc app-store review constraints.",
+      "KHÔNG ship mobile changes nếu thiếu crash/analytics visibility."
+    ]
+  },
+  "data-ml-science-workflow": {
+    title: "Data, ML & Scientific Workflow",
+    summary: "Xử lý data, ML và science tasks bằng reproducible notebooks, trustworthy sources, evaluation, provenance và statistical caution.",
+    tags: ["Data", "ML", "Science", "Reproducibility"],
+    useWhen: [
+      "Khi làm data analysis, ML experiments, scientific APIs, bioinformatics, finance data, geospatial work, notebooks hoặc dashboards.",
+      "Khi analysis có risk về financial, health, science, compliance, privacy hoặc production impact.",
+      "Khi cần evidence và caveat rõ thay vì model output trôi chảy."
+    ],
+    process: [
+      "Define hypothesis/decision: analysis có thể và không thể chứng minh điều gì.",
+      "Audit data provenance: source, freshness, sampling bias, schema quality, missing values, leakage và sensitive fields.",
+      "Build reproducibly: environment, seed, notebook/script split, versioned data, deterministic transforms và assumptions.",
+      "Analyze rigorously: baselines, confidence intervals, error bars, ablations, train/test split và OOD checks.",
+      "Validate with domain sense: so known constraints, source docs và independent sanity checks.",
+      "Communicate limits: uncertainty, caveats, failed approaches, ethical constraints và next experiment."
+    ],
+    output: [
+      "Analysis plan và data dictionary.",
+      "Reproducible notebook/script outline.",
+      "Findings với confidence và caveats.",
+      "Evaluation table và error analysis.",
+      "Recommendation hoặc next experiment."
+    ],
+    guardrails: [
+      "KHÔNG ám chỉ causality từ correlation nếu thiếu identification strategy.",
+      "KHÔNG xem model output là truth nếu thiếu validation và error analysis.",
+      "KHÔNG expose sensitive, medical, financial hoặc proprietary data trong public artifacts."
+    ]
   }
 };
 
