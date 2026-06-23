@@ -15,5 +15,13 @@ const compat = new FlatCompat({
 });
 
 export default defineConfig([{
+    ignores: [
+        ".next/**",
+        "out/**",
+        "node_modules/**",
+        "public/og-cache/**",
+        "coverage/**"
+    ],
+}, {
     extends: [...nextCoreWebVitals, ...next, ...compat.extends("prettier")],
 }]);

@@ -43,21 +43,23 @@ export const useThemeSetting = () => {
   };
   
   useEffect(() => {
-    if (themeSetting.theme_setting === 'system') {
-      const handleChange = (event: MediaQueryListEvent) => {
-        const newTheme = event.matches ? THEME.DARK : THEME.LIGHT;
-        setThemeSetting((prev) => {
-          const updated: ThemeSettingData = { ...prev, theme: newTheme as ThemeType };
-          localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(updated));
-          return updated;
-        });
-      };
-      mediaQuery.addEventListener('change', handleChange);
-      
-      return () => {
-        mediaQuery.removeEventListener('change', handleChange);
-      };
+    if (themeSetting.theme_setting !== 'system') {
+      return undefined;
     }
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      const newTheme = event.matches ? THEME.DARK : THEME.LIGHT;
+      setThemeSetting((prev) => {
+        const updated: ThemeSettingData = { ...prev, theme: newTheme as ThemeType };
+        localStorage.setItem(THEME_STORAGE_KEY, JSON.stringify(updated));
+        return updated;
+      });
+    };
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
   }, [themeSetting.theme_setting, mediaQuery]);
   
   return { themeSetting, updateTheme };

@@ -15,7 +15,7 @@ export default function AppsLinkTracker() {
       if (!(target instanceof Element)) return
       const el = target.closest<HTMLElement>('[data-track]')
       if (!el) return
-      const name = el.dataset.track
+      const name = el.dataset['track']
       if (!name) return
       const props: Record<string, unknown> = {}
       for (const key in el.dataset) {

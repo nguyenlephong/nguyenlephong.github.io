@@ -72,7 +72,7 @@ function roundedRect(
 }
 
 function drawBlogWorkflowCanvas(canvas: HTMLCanvasElement, locale: string) {
-  const kind = canvas.dataset.blogWorkflow as BlogWorkflowKind | undefined;
+  const kind = canvas.dataset["blogWorkflow"] as BlogWorkflowKind | undefined;
   if (!kind || !(kind in BLOG_WORKFLOW_COPY)) return;
 
   const copy = BLOG_WORKFLOW_COPY[kind][locale === "vi" ? "vi" : "en"];

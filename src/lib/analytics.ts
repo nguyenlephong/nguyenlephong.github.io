@@ -150,7 +150,7 @@ export function track(
       pathname: window.location.pathname,
       ...props,
     }
-    if (options?.beacon) payload.$set_once = { last_outbound_ts: Date.now() }
+    if (options?.beacon) payload['$set_once'] = { last_outbound_ts: Date.now() }
     window.posthog?.capture(event, payload)
   } catch {
     // swallow — analytics must never break UX
