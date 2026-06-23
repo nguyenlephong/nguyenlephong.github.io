@@ -1,3 +1,5 @@
+import { reactFlowArchitectureDemo } from "./studio.react-flow-architecture-demo";
+
 export type StudioNoteStatus = "ready" | "draft" | "next";
 
 export type StudioCommand = {
@@ -113,6 +115,65 @@ export type StudioFlowStep = {
   output: string;
 };
 
+export type StudioFlowArchitectureNodeKind =
+  | "input"
+  | "default"
+  | "output"
+  | "group"
+  | "service"
+  | "gateway"
+  | "database"
+  | "queue"
+  | "topic"
+  | "cache"
+  | "worker"
+  | "external"
+  | "decision"
+  | "risk"
+  | "note";
+
+export type StudioFlowArchitectureTone =
+  | "source"
+  | "process"
+  | "agent"
+  | "review"
+  | "output"
+  | "storage"
+  | "event"
+  | "external"
+  | "risk";
+
+export type StudioFlowArchitectureNodeSpec = {
+  id: string;
+  kind: StudioFlowArchitectureNodeKind;
+  tone: StudioFlowArchitectureTone;
+  title: string;
+  detail: string;
+  badge: string;
+  position: { x: number; y: number };
+  size?: { width: number; height: number };
+};
+
+export type StudioFlowArchitectureEdgeSpec = {
+  id: string;
+  source: string;
+  target: string;
+  type: "default" | "straight" | "step" | "smoothstep" | "simplebezier";
+  label: string;
+  tone: StudioFlowArchitectureTone;
+  marker?: "arrow" | "arrowClosed";
+  animated?: boolean;
+};
+
+export type StudioFlowArchitectureDemo = {
+  sections: {
+    title: string;
+    items: string[];
+  }[];
+  nodes: StudioFlowArchitectureNodeSpec[];
+  edges: StudioFlowArchitectureEdgeSpec[];
+};
+
 export type StudioFlow = {
   id: string;
   groupId: string;
@@ -127,6 +188,7 @@ export type StudioFlow = {
   steps: StudioFlowStep[];
   artifacts: string[];
   cvSignals: string[];
+  architectureDemo?: StudioFlowArchitectureDemo;
 };
 
 export type StudioFlowGroup = {
@@ -3201,6 +3263,14 @@ export const studioFlowGroups: StudioFlowGroup[] = [
     description:
       "Flows for AI-assisted delivery and portfolio stories that make engineering judgment visible without turning the work into marketing copy.",
     flowIds: ["ai-delivery", "portfolio-story"]
+  },
+  {
+    id: "react-flow-library",
+    title: "React Flow Library Demo",
+    subtitle: "Show architecture shapes before choosing a diagram.",
+    description:
+      "A React Flow showcase for software architecture diagrams: built-in nodes, custom architecture shapes, groups, edge styles, labels, markers, minimap, controls, and background.",
+    flowIds: ["react-flow-architecture-demo"]
   }
 ];
 
@@ -3645,6 +3715,88 @@ export const studioFlows: StudioFlow[] = [
       "Business awareness",
       "Reflective practice"
     ]
+  },
+  {
+    id: "react-flow-architecture-demo",
+    groupId: "react-flow-library",
+    title: "React Flow Architecture Demo",
+    summary:
+      "A library-style canvas showing what @xyflow/react can express for software architecture: node shapes, groups, edge types, markers, labels, minimap, controls, and background.",
+    seoTitle: "React Flow Architecture Demo for Software Diagrams",
+    seoDescription:
+      "A React Flow studio demo for software architecture diagrams with built-in node styles, custom architecture shapes, groups, edge types, labels, markers, minimap, controls, and background.",
+    useWhen:
+      "Use this when choosing how to model a system architecture, service map, platform topology, event flow, or deployment boundary with React Flow.",
+    outcome:
+      "A visual catalog of node and edge patterns that can be reused for architecture diagrams without confusing the demo with a product use-case map.",
+    officeExample:
+      "A team wants to explain a payment checkout architecture. This demo shows how to express client boundaries, API gateway, auth, services, database, cache, queue, event topic, external provider, observability, and rollback risk in one React Flow canvas.",
+    tags: ["React Flow", "XYFlow", "Architecture Diagram", "Node Shapes", "Edge Types"],
+    steps: [
+      {
+        id: "show-node-primitives",
+        title: "Show node primitives",
+        detail:
+          "Render input, default, output, and group-style nodes before adding custom architecture vocabulary.",
+        evidence: "Built-in node roles, labels, badges, handles, and grouping boundaries.",
+        output: "A baseline canvas that shows the primitives React Flow starts from."
+      },
+      {
+        id: "add-architecture-shapes",
+        title: "Add architecture shapes",
+        detail:
+          "Use custom nodes for API gateways, services, workers, databases, cache, queues, topics, external systems, decisions, risks, and notes.",
+        evidence: "Software architecture entities, deployment boundaries, data flow, and operational risk.",
+        output: "A reusable shape catalog for system diagrams."
+      },
+      {
+        id: "compare-edge-types",
+        title: "Compare edge types",
+        detail:
+          "Show default, straight, step, smoothstep, and simplebezier edges with labels, arrows, and animated async paths.",
+        evidence: "Synchronous call, async event, retry path, projection, observability, and rollback relationship.",
+        output: "An edge language that makes architecture diagrams easier to read."
+      },
+      {
+        id: "use-canvas-controls",
+        title: "Use canvas controls",
+        detail:
+          "Keep Background, Controls, MiniMap, fitView, zoom, and pan available so large architecture maps remain inspectable.",
+        evidence: "Large graph size, grouped zones, readable zoom level, and stable positions.",
+        output: "A diagram surface that works for both overview and inspection."
+      },
+      {
+        id: "model-system-architecture",
+        title: "Model system architecture",
+        detail:
+          "Place client, edge, domain, data, external, and operations zones in one architecture story.",
+        evidence: "Bounded context, service ownership, persistence, integration, telemetry, and rollout safety.",
+        output: "A checkout-style reference architecture that demonstrates the full shape set."
+      },
+      {
+        id: "turn-demo-into-template",
+        title: "Turn demo into a template",
+        detail:
+          "Use the demo as a starting point for architecture review, RFC, ADR, onboarding, or incident explanation.",
+        evidence: "Reusable node kinds, edge tones, zone layout, and copy that names real engineering trade-offs.",
+        output: "A React Flow architecture template ready to adapt."
+      }
+    ],
+    artifacts: [
+      "React Flow node shape catalog",
+      "Software architecture canvas",
+      "Edge type comparison",
+      "Group and boundary example",
+      "Minimap and controls demo",
+      "Reusable architecture template"
+    ],
+    cvSignals: [
+      "React Flow implementation",
+      "Software architecture visualization",
+      "Diagram system design",
+      "Platform communication"
+    ],
+    architectureDemo: reactFlowArchitectureDemo
   }
 ];
 

@@ -112,6 +112,18 @@ import {
   LuX
 } from "react-icons/lu";
 import {
+  Background,
+  Controls,
+  Handle,
+  MarkerType,
+  MiniMap,
+  Position,
+  ReactFlow,
+  type Edge,
+  type Node,
+  type NodeProps
+} from "@xyflow/react";
+import {
   Area,
   CartesianGrid,
   ComposedChart,
@@ -148,6 +160,7 @@ type StudioRouteId =
   | "flow-release-readiness"
   | "flow-ai-delivery"
   | "flow-portfolio-story"
+  | "flow-react-flow-architecture-demo"
   | "calendar"
   | "kanban"
   | "invoice"
@@ -293,6 +306,45 @@ type StudioProfileMenuItem = {
   href: string;
   icon: IconType;
   external?: boolean;
+};
+
+type StudioFlowCanvasNodeKind =
+  | "hub"
+  | "step"
+  | "detail"
+  | "input"
+  | "default"
+  | "output"
+  | "group"
+  | "service"
+  | "gateway"
+  | "database"
+  | "queue"
+  | "topic"
+  | "cache"
+  | "worker"
+  | "external"
+  | "decision"
+  | "risk"
+  | "note";
+type StudioFlowCanvasTone =
+  | "source"
+  | "process"
+  | "agent"
+  | "review"
+  | "output"
+  | "storage"
+  | "event"
+  | "external"
+  | "risk";
+
+type StudioFlowCanvasNodeData = {
+  kind: StudioFlowCanvasNodeKind;
+  title: string;
+  detail: string;
+  badge?: string;
+  tone: StudioFlowCanvasTone;
+  active?: boolean;
 };
 
 const DEFAULT_ROUTE: StudioRouteId = "ai-agent-setup";
@@ -562,7 +614,8 @@ const englishStudioCopy: StudioUiCopy = {
     "flow-incident-response": "Incident Response",
     "flow-release-readiness": "Release Readiness",
     "flow-ai-delivery": "AI Delivery",
-    "flow-portfolio-story": "Portfolio Story"
+    "flow-portfolio-story": "Portfolio Story",
+    "flow-react-flow-architecture-demo": "React Flow Demo"
   },
   profileItems: {
     home: { label: "Home", detail: "Profile overview." },
@@ -672,6 +725,12 @@ const englishStudioCopy: StudioUiCopy = {
       description: "A career-proof flow for turning real engineering work into grounded CV, blog, and interview stories.",
       panels: ["Context", "Trade-offs", "Impact"],
       timeline: ["Context captured", "Impact evidence selected", "Story draft shaped"]
+    },
+    "flow-react-flow-architecture-demo": {
+      title: "React Flow Architecture Demo",
+      description: "A library-style React Flow canvas for software architecture node shapes, edge types, groups, controls, minimap, and background.",
+      panels: ["Node shapes", "Edge language", "Architecture zones"],
+      timeline: ["Node primitives displayed", "Architecture shapes mapped", "Canvas controls enabled"]
     }
   },
   flows: {
@@ -812,7 +871,8 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       "flow-incident-response": "Xử lý incident",
       "flow-release-readiness": "Release readiness",
       "flow-ai-delivery": "AI delivery",
-      "flow-portfolio-story": "Portfolio story"
+      "flow-portfolio-story": "Portfolio story",
+      "flow-react-flow-architecture-demo": "Demo React Flow"
     },
     profileItems: {
       home: { label: "Trang chủ", detail: "Tổng quan profile." },
@@ -911,6 +971,12 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
         description: "Luồng biến công việc engineering thật thành câu chuyện CV, blog và phỏng vấn có bằng chứng.",
         panels: ["Context", "Trade-off", "Impact"],
         timeline: ["Context đã ghi lại", "Evidence impact đã chọn", "Story draft đã định hình"]
+      },
+      "flow-react-flow-architecture-demo": {
+        title: "Demo React Flow cho kiến trúc phần mềm",
+        description: "Canvas React Flow kiểu thư viện demo cho node shape, edge type, group, control, minimap và background trong sơ đồ architecture.",
+        panels: ["Node shape", "Edge language", "Vùng kiến trúc"],
+        timeline: ["Node primitive đã hiện", "Shape architecture đã map", "Canvas control đã bật"]
       }
     },
     flows: {
@@ -1426,6 +1492,17 @@ function getStudioFlow(flowId: StudioFlowId): StudioFlow {
 
 function flowMetrics(flowId: StudioFlowId): StudioMetric[] {
   const flow = getStudioFlow(flowId);
+  if (flow.architectureDemo) {
+    const nodeKinds = new Set(flow.architectureDemo.nodes.map((node) => node.kind));
+    const edgeTypes = new Set(flow.architectureDemo.edges.map((edge) => edge.type));
+    const zoneCount = flow.architectureDemo.nodes.filter((node) => node.kind === "group").length;
+    return [
+      { label: "Node shapes", value: `${nodeKinds.size}`, helper: "Built-in and custom nodes", badge: "shape", trend: "up", icon: LuBoxes },
+      { label: "Edge types", value: `${edgeTypes.size}`, helper: "Default, straight, step, smoothstep, bezier", badge: "edge", trend: "up", icon: LuWorkflow },
+      { label: "Zones", value: `${zoneCount}`, helper: "Architecture group boundaries", badge: "group", trend: "up", icon: LuLayoutDashboard },
+      { label: "Canvas aids", value: "3", helper: "Background, controls, minimap", badge: "xyflow", trend: "up", icon: LuGauge }
+    ];
+  }
   return [
     { label: "Flow steps", value: `${flow.steps.length}`, helper: "Ordered checkpoints", badge: "url", trend: "up", icon: LuWorkflow },
     { label: "Artifacts", value: `${flow.artifacts.length}`, helper: "Reusable handoff outputs", badge: "share", trend: "up", icon: LuClipboardList },
@@ -1526,6 +1603,7 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
   "flow-release-readiness": flowMetrics("release-readiness"),
   "flow-ai-delivery": flowMetrics("ai-delivery"),
   "flow-portfolio-story": flowMetrics("portfolio-story"),
+  "flow-react-flow-architecture-demo": flowMetrics("react-flow-architecture-demo"),
   calendar: [
     { label: "Today", value: "6", helper: "Events on the schedule", badge: "+2", trend: "up", icon: LuCalendarDays },
     { label: "Focus Blocks", value: "3h", helper: "Protected engineering time", badge: "+45m", trend: "up", icon: LuAlarmClock },
@@ -1807,6 +1885,17 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
     metrics: routeMetrics["flow-portfolio-story"],
     panels: ["Context", "Trade-offs", "Impact"],
     timeline: ["Context captured", "Impact evidence selected", "Story draft shaped"]
+  },
+  "flow-react-flow-architecture-demo": {
+    id: "flow-react-flow-architecture-demo",
+    title: getStudioFlow("react-flow-architecture-demo").title,
+    description: getStudioFlow("react-flow-architecture-demo").summary,
+    kind: "flows",
+    icon: LuWorkflow,
+    badge: "new",
+    metrics: routeMetrics["flow-react-flow-architecture-demo"],
+    panels: ["Node shapes", "Edge language", "Architecture zones"],
+    timeline: ["Node primitives displayed", "Architecture shapes mapped", "Canvas controls enabled"]
   },
   calendar: {
     id: "calendar",
@@ -4215,7 +4304,180 @@ function BlogRoadmapPage({ route, locale, copy }: { route: StudioRoute; locale: 
   );
 }
 
+type StudioFlowCanvasNode = Node<StudioFlowCanvasNodeData, "studioFlow">;
+
+const studioFlowNodeTypes = {
+  studioFlow: StudioFlowCanvasNodeCard
+};
+
+const flowCanvasTones: StudioFlowCanvasTone[] = [
+  "source",
+  "process",
+  "agent",
+  "review",
+  "storage",
+  "event",
+  "external",
+  "risk",
+  "output"
+];
+
+const flowCanvasToneColors: Record<StudioFlowCanvasTone, string> = {
+  source: "#2563eb",
+  process: "#0f766e",
+  agent: "#d97706",
+  review: "#7c3aed",
+  storage: "#0891b2",
+  event: "#9333ea",
+  external: "#64748b",
+  risk: "#dc2626",
+  output: "#16a34a"
+};
+
+function StudioFlowCanvasNodeCard({ data }: NodeProps<StudioFlowCanvasNode>) {
+  const canConnect = data.kind !== "group";
+
+  return (
+    <div className={`flow-react-node flow-react-node--${data.kind} tone-${data.tone}${data.active ? " is-active" : ""}`}>
+      {canConnect && <Handle type="target" position={Position.Left} />}
+      {canConnect && <Handle className="flow-react-handle-top" type="target" position={Position.Top} />}
+      <span className="flow-react-node-badge">{data.badge}</span>
+      <strong>{data.title}</strong>
+      <small>{data.detail}</small>
+      {canConnect && (
+        <Handle type="source" position={Position.Right} />
+      )}
+      {canConnect && <Handle className="flow-react-handle-bottom" type="source" position={Position.Bottom} />}
+    </div>
+  );
+}
+
+function buildStudioFlowCanvas(flow: StudioFlow): {
+  nodes: StudioFlowCanvasNode[];
+  edges: Edge[];
+} {
+  if (flow.architectureDemo) {
+    return buildArchitectureDemoCanvas(flow);
+  }
+
+  const nodes = flow.steps.map<StudioFlowCanvasNode>((step, index) => {
+    const tone = flowCanvasTones[index % flowCanvasTones.length] ?? "process";
+    return {
+      id: step.id,
+      type: "studioFlow",
+      position: {
+        x: index * 270,
+        y: index % 2 === 0 ? 34 : 178
+      },
+      data: {
+        kind: "step",
+        title: step.title,
+        detail: step.output,
+        badge: String(index + 1).padStart(2, "0"),
+        tone
+      }
+    };
+  });
+
+  const outcomeNode: StudioFlowCanvasNode = {
+    id: `${flow.id}-outcome`,
+    type: "studioFlow",
+    position: { x: flow.steps.length * 270 + 16, y: 90 },
+    data: {
+      kind: "detail",
+      title: "Outcome",
+      detail: flow.outcome,
+      badge: "goal",
+      tone: "output"
+    }
+  };
+
+  const edges: Edge[] = [];
+  for (let index = 1; index < nodes.length; index += 1) {
+    const source = nodes[index - 1];
+    const target = nodes[index];
+    if (!source || !target) continue;
+
+    const tone = target.data.tone;
+    edges.push({
+      id: `${source.id}-${target.id}`,
+      source: source.id,
+      target: target.id,
+      type: "smoothstep",
+      animated: index < 3,
+      markerEnd: { type: MarkerType.ArrowClosed },
+      style: { stroke: flowCanvasToneColors[tone], strokeWidth: 2 }
+    });
+  }
+
+  const lastStep = nodes[nodes.length - 1];
+  if (lastStep) {
+    edges.push({
+      id: `${lastStep.id}-${outcomeNode.id}`,
+      source: lastStep.id,
+      target: outcomeNode.id,
+      type: "smoothstep",
+      markerEnd: { type: MarkerType.ArrowClosed },
+      style: { stroke: flowCanvasToneColors.output, strokeWidth: 2 }
+    });
+  }
+
+  return { nodes: [...nodes, outcomeNode], edges };
+}
+
+function buildArchitectureDemoCanvas(flow: StudioFlow): {
+  nodes: StudioFlowCanvasNode[];
+  edges: Edge[];
+} {
+  const demo = flow.architectureDemo;
+  if (!demo) return { nodes: [], edges: [] };
+
+  const nodes = demo.nodes.map<StudioFlowCanvasNode>((node) => ({
+    id: node.id,
+    type: "studioFlow",
+    position: node.position,
+    zIndex: node.kind === "group" ? 0 : 2,
+    style: node.size ? { width: node.size.width, height: node.size.height } : undefined,
+    data: {
+      kind: node.kind,
+      title: node.title,
+      detail: node.detail,
+      badge: node.badge,
+      tone: node.tone,
+      active: node.kind !== "group"
+    }
+  }));
+
+  const edges = demo.edges.map<Edge>((edge) => ({
+    id: edge.id,
+    source: edge.source,
+    target: edge.target,
+    type: edge.type,
+    label: edge.label,
+    animated: edge.animated,
+    markerEnd:
+      edge.marker === "arrow"
+        ? { type: MarkerType.Arrow }
+        : edge.marker === "arrowClosed"
+          ? { type: MarkerType.ArrowClosed }
+          : undefined,
+    style: { stroke: flowCanvasToneColors[edge.tone], strokeWidth: edge.animated ? 2.4 : 1.8 },
+    labelStyle: { fill: flowCanvasToneColors[edge.tone], fontSize: 11, fontWeight: 700 },
+    labelBgStyle: { fill: "var(--card)", fillOpacity: 0.86 },
+    labelBgPadding: [6, 4],
+    labelBgBorderRadius: 6
+  }));
+
+  return { nodes, edges };
+}
+
+function getStudioFlowCanvasColor(node: Node<StudioFlowCanvasNodeData>) {
+  return flowCanvasToneColors[node.data.tone];
+}
+
 function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy }) {
+  const { nodes, edges } = useMemo(() => buildStudioFlowCanvas(flow), [flow]);
+
   return (
     <section className="flow-chart-surface" aria-label={copy.flows.chartLabel}>
       <div className="flow-chart-head">
@@ -4226,18 +4488,34 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
         <p>{copy.flows.chartHint}</p>
       </div>
 
-      <ol
-        className="flow-chart"
-        style={{ "--flow-count": flow.steps.length } as CSSProperties}
-      >
-        {flow.steps.map((step, index) => (
-          <li key={step.id} className="flow-chart-node">
-            <span className="flow-chart-index">{String(index + 1).padStart(2, "0")}</span>
-            <strong>{step.title}</strong>
-            <small>{step.output}</small>
-          </li>
-        ))}
-      </ol>
+      <div className={`flow-react-surface${flow.architectureDemo ? " is-architecture-demo" : ""}`}>
+        <ReactFlow
+          className="flow-react-canvas"
+          nodes={nodes}
+          edges={edges}
+          nodeTypes={studioFlowNodeTypes}
+          fitView
+          fitViewOptions={{
+            padding: flow.architectureDemo ? 0.06 : 0.24,
+            minZoom: flow.architectureDemo ? 0.36 : 0.5
+          }}
+          minZoom={0.18}
+          maxZoom={1.4}
+          nodesDraggable={false}
+          nodesConnectable={false}
+          elementsSelectable={false}
+          proOptions={{ hideAttribution: true }}
+        >
+          <Background color="color-mix(in srgb, var(--foreground) 12%, transparent)" gap={22} />
+          <Controls showInteractive={false} />
+          <MiniMap
+            position="top-right"
+            pannable
+            zoomable
+            nodeColor={(node) => getStudioFlowCanvasColor(node as Node<StudioFlowCanvasNodeData>)}
+          />
+        </ReactFlow>
+      </div>
 
       <div className="flow-chart-outcome">
         <span>{copy.flows.chartOutcome}</span>
@@ -4323,7 +4601,10 @@ function StudioFlowMenuPage({
 
       <RouteMetricGrid metrics={route.metrics} copy={copy} />
 
-      <div className="flow-workbench card" data-studio-module="flow-menu">
+      <div
+        className={`flow-workbench card${selectedFlow.architectureDemo ? " is-architecture-demo" : ""}`}
+        data-studio-module="flow-menu"
+      >
         <aside className="flow-index-pane" aria-label={copy.flows.flowListLabel}>
           <div className="ai-pane-head">
             <span><LuWorkflow aria-hidden="true" /></span>

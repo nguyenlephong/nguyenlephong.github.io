@@ -1908,6 +1908,10 @@ a {
   padding: 0;
 }
 
+.flow-workbench.card.is-architecture-demo {
+  grid-template-columns: 15rem minmax(0, 1fr) 15rem;
+}
+
 .flow-index-pane,
 .flow-reader-pane,
 .flow-side-pane {
@@ -2010,6 +2014,7 @@ a {
 
 .flow-chart-surface {
   display: grid;
+  flex: 0 0 auto;
   gap: 1rem;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--primary) 24%, var(--border));
@@ -2041,78 +2046,456 @@ a {
   line-height: 1.45;
 }
 
-.flow-chart {
-  display: grid;
-  grid-template-columns: repeat(var(--flow-count), minmax(7rem, 1fr));
-  gap: 0.625rem;
-  overflow-x: auto;
-  margin: 0;
-  padding: 0.25rem 0.125rem 0.75rem;
-  list-style: none;
-  scroll-padding-inline: 0.75rem;
+.flow-react-surface {
+  height: min(54vh, 34rem);
+  min-height: 25rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  border-radius: 0.95rem;
+  background: color-mix(in srgb, var(--background) 92%, var(--muted));
 }
 
-.flow-chart-node {
-  position: relative;
-  display: grid;
-  min-height: 9rem;
-  align-content: start;
-  gap: 0.55rem;
-  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
-  border-radius: 0.875rem;
-  background: color-mix(in srgb, var(--card) 94%, var(--background));
-  padding: 0.75rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+.flow-react-surface.is-architecture-demo {
+  height: clamp(28rem, 46vh, 34rem);
+  min-height: 28rem;
 }
 
-.flow-chart-node:not(:last-child)::after {
+.flow-react-canvas,
+.react-flow {
+  width: 100%;
+  height: 100%;
+  direction: ltr;
+  --xy-edge-stroke-default: color-mix(in srgb, var(--primary) 38%, var(--border));
+  --xy-edge-stroke-width-default: 1.5;
+  --xy-minimap-background-color-default: var(--card);
+  --xy-minimap-mask-background-color-default: color-mix(in srgb, var(--muted) 70%, transparent);
+  --xy-controls-button-background-color-default: var(--card);
+  --xy-controls-button-background-color-hover-default: var(--muted);
+  --xy-controls-button-color-default: var(--foreground);
+  --xy-controls-button-border-color-default: var(--border);
+  --xy-controls-box-shadow-default: 0 8px 22px rgba(0, 0, 0, 0.1);
+  --xy-background-color-default: transparent;
+  --xy-background-pattern-dots-color-default: color-mix(in srgb, var(--foreground) 20%, transparent);
+  background-color: transparent;
+}
+
+.react-flow__container,
+.react-flow__edgelabel-renderer,
+.react-flow__viewport-portal {
   position: absolute;
-  top: 2.25rem;
-  right: -0.875rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.react-flow__pane {
   z-index: 1;
-  width: 0.875rem;
-  height: 2px;
-  background: color-mix(in srgb, var(--primary) 48%, var(--border));
-  content: "";
+  touch-action: none;
 }
 
-.flow-chart-node:not(:last-child)::before {
-  position: absolute;
-  top: calc(2.25rem - 0.25rem);
-  right: -1rem;
+.react-flow__viewport {
   z-index: 2;
-  border-top: 0.3125rem solid transparent;
-  border-bottom: 0.3125rem solid transparent;
-  border-left: 0.45rem solid color-mix(in srgb, var(--primary) 64%, var(--foreground));
-  content: "";
+  pointer-events: none;
+  transform-origin: 0 0;
 }
 
-.flow-chart-index {
-  display: inline-flex;
-  width: 2rem;
-  height: 2rem;
+.react-flow__renderer {
+  z-index: 4;
+}
+
+.react-flow .react-flow__edges {
+  position: absolute;
+}
+
+.react-flow .react-flow__edges svg {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.react-flow__edge {
+  pointer-events: visibleStroke;
+}
+
+.react-flow__edge-path,
+.react-flow__connection-path {
+  fill: none;
+  stroke: var(--xy-edge-stroke, var(--xy-edge-stroke-default));
+  stroke-width: var(--xy-edge-stroke-width, var(--xy-edge-stroke-width-default));
+}
+
+.react-flow__edge.animated path {
+  animation: dashdraw 0.5s linear infinite;
+  stroke-dasharray: 5;
+}
+
+.react-flow__arrowhead polyline {
+  fill: var(--xy-edge-stroke, var(--xy-edge-stroke-default));
+  stroke: var(--xy-edge-stroke, var(--xy-edge-stroke-default));
+}
+
+.react-flow__nodes {
+  pointer-events: none;
+  transform-origin: 0 0;
+}
+
+.react-flow__node {
+  position: absolute;
+  box-sizing: border-box;
+  cursor: default;
+  pointer-events: all;
+  transform-origin: 0 0;
+  user-select: none;
+}
+
+.react-flow__handle {
+  position: absolute;
+  width: 0.55rem;
+  height: 0.55rem;
+  min-width: 0.55rem;
+  min-height: 0.55rem;
+  border: 1px solid var(--card);
+  border-radius: 999px;
+  background: var(--primary);
+  pointer-events: none;
+}
+
+.react-flow__handle-left {
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.react-flow__handle-right {
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.react-flow__handle-top {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.react-flow__handle-bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.react-flow__background {
+  z-index: -1;
+  pointer-events: none;
+}
+
+.react-flow__panel {
+  position: absolute;
+  z-index: 5;
+  margin: 0.75rem;
+}
+
+.react-flow__panel.top {
+  top: 0;
+}
+
+.react-flow__panel.bottom {
+  bottom: 0;
+}
+
+.react-flow__panel.left {
+  left: 0;
+}
+
+.react-flow__panel.right {
+  right: 0;
+}
+
+.react-flow__controls {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  box-shadow: var(--xy-controls-box-shadow, var(--xy-controls-box-shadow-default));
+}
+
+.react-flow__controls-button {
+  display: flex;
+  width: 1.75rem;
+  height: 1.75rem;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--primary) 18%, var(--muted));
-  color: var(--foreground);
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
+  border: 0;
+  border-bottom: 1px solid var(--xy-controls-button-border-color, var(--xy-controls-button-border-color-default));
+  background: var(--xy-controls-button-background-color, var(--xy-controls-button-background-color-default));
+  color: var(--xy-controls-button-color, var(--xy-controls-button-color-default));
+  padding: 0.25rem;
 }
 
-.flow-chart-node strong {
+.react-flow__controls-button:hover {
+  background: var(--xy-controls-button-background-color-hover, var(--xy-controls-button-background-color-hover-default));
+}
+
+.react-flow__controls-button:last-child {
+  border-bottom: 0;
+}
+
+.react-flow__controls-button svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  fill: currentColor;
+}
+
+.react-flow__minimap {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--xy-minimap-background-color, var(--xy-minimap-background-color-default));
+}
+
+.react-flow__minimap-svg {
+  display: block;
+}
+
+.react-flow__minimap-mask {
+  fill: var(--xy-minimap-mask-background-color, var(--xy-minimap-mask-background-color-default));
+}
+
+.react-flow__minimap-node {
+  stroke: transparent;
+  stroke-width: 2;
+}
+
+.react-flow__background-pattern.dots {
+  fill: var(--xy-background-pattern-color, var(--xy-background-pattern-dots-color-default));
+}
+
+.flow-react-node {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 0.45rem;
+  width: 14rem;
+  min-height: 5.75rem;
+  border: 1px solid color-mix(in srgb, var(--flow-node-color) 34%, var(--border));
+  border-radius: 0.875rem;
+  background: color-mix(in srgb, var(--card) 94%, var(--flow-node-color) 6%);
   color: var(--foreground);
-  font-size: 0.875rem;
-  font-weight: 600;
+  padding: 0.8rem;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.1);
+}
+
+.flow-react-node--hub {
+  width: 18rem;
+  border-color: color-mix(in srgb, var(--primary) 52%, var(--border));
+  background: color-mix(in srgb, var(--card) 88%, var(--primary) 12%);
+}
+
+.flow-react-node--input {
+  border-radius: 999px;
+  place-items: center;
+  text-align: center;
+}
+
+.flow-react-node--default,
+.flow-react-node--service,
+.flow-react-node--worker {
+  width: 15rem;
+}
+
+.flow-react-node--output {
+  border-radius: 1.25rem 0.35rem 1.25rem 0.35rem;
+  background: color-mix(in srgb, var(--card) 86%, var(--flow-node-color) 14%);
+}
+
+.flow-react-node--group {
+  width: 100%;
+  height: 100%;
+  align-content: start;
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--flow-node-color) 44%, var(--border));
+  background: color-mix(in srgb, var(--flow-node-color) 7%, transparent);
+  padding: 1rem;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.flow-react-node--gateway {
+  width: 15.5rem;
+  border-radius: 0.4rem;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+  padding-inline: 1.3rem;
+}
+
+.flow-react-node--database {
+  width: 14.5rem;
+  border-radius: 1rem 1rem 1.35rem 1.35rem;
+  padding-top: 1.15rem;
+}
+
+.flow-react-node--database::before {
+  position: absolute;
+  z-index: -1;
+  top: -0.05rem;
+  right: -0.05rem;
+  left: -0.05rem;
+  height: 1.05rem;
+  border: 1px solid color-mix(in srgb, var(--flow-node-color) 34%, var(--border));
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--card) 82%, var(--flow-node-color) 18%);
+  content: "";
+}
+
+.flow-react-node--queue,
+.flow-react-node--topic {
+  width: 14.5rem;
+  border-style: dashed;
+}
+
+.flow-react-node--topic {
+  border-style: dotted;
+  border-width: 2px;
+}
+
+.flow-react-node--cache {
+  width: 14.5rem;
+  overflow: hidden;
+}
+
+.flow-react-node--cache::before,
+.flow-react-node--cache::after {
+  position: absolute;
+  right: 0.75rem;
+  left: 0.75rem;
+  height: 0.38rem;
+  border: 1px solid color-mix(in srgb, var(--flow-node-color) 42%, transparent);
+  border-radius: 999px;
+  content: "";
+}
+
+.flow-react-node--cache::before {
+  bottom: 0.55rem;
+}
+
+.flow-react-node--cache::after {
+  bottom: 1rem;
+}
+
+.flow-react-node--external {
+  width: 15.5rem;
+  border-style: dashed;
+  background: color-mix(in srgb, var(--background) 92%, var(--flow-node-color) 8%);
+}
+
+.flow-react-node--decision {
+  width: 10.5rem;
+  min-height: 8.25rem;
+  place-items: center;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  padding: 2rem 1.65rem;
+  text-align: center;
+}
+
+.flow-react-node--risk {
+  width: 14.5rem;
+  border-color: color-mix(in srgb, #dc2626 60%, var(--border));
+  background: color-mix(in srgb, var(--card) 86%, #dc2626 14%);
+}
+
+.flow-react-node--note {
+  width: 14.5rem;
+  border-style: dashed;
+  border-radius: 0.35rem;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--flow-node-color) 20%, transparent) 0 0.35rem, transparent 0.35rem),
+    color-mix(in srgb, var(--card) 90%, var(--flow-node-color) 10%);
+}
+
+.flow-react-node--detail {
+  width: 18rem;
+}
+
+.flow-react-node.is-active {
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--flow-node-color) 24%, transparent),
+    0 16px 38px rgba(0, 0, 0, 0.12);
+}
+
+.flow-react-node.tone-source {
+  --flow-node-color: #2563eb;
+}
+
+.flow-react-node.tone-process {
+  --flow-node-color: #0f766e;
+}
+
+.flow-react-node.tone-agent {
+  --flow-node-color: #d97706;
+}
+
+.flow-react-node.tone-review {
+  --flow-node-color: #7c3aed;
+}
+
+.flow-react-node.tone-storage {
+  --flow-node-color: #0891b2;
+}
+
+.flow-react-node.tone-event {
+  --flow-node-color: #9333ea;
+}
+
+.flow-react-node.tone-external {
+  --flow-node-color: #64748b;
+}
+
+.flow-react-node.tone-risk {
+  --flow-node-color: #dc2626;
+}
+
+.flow-react-node.tone-output {
+  --flow-node-color: #16a34a;
+}
+
+.flow-react-node-badge {
+  width: fit-content;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--flow-node-color) 14%, var(--muted));
+  color: color-mix(in srgb, var(--flow-node-color) 78%, var(--foreground));
+  padding: 0.15rem 0.45rem;
+  font-size: 0.67rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.flow-react-node strong {
+  color: var(--foreground);
+  font-size: 0.86rem;
+  font-weight: 650;
   line-height: 1.25;
 }
 
-.flow-chart-node small {
-  display: block;
+.flow-react-node small {
+  display: -webkit-box;
+  overflow: hidden;
   color: var(--muted-foreground);
-  font-size: 0.75rem;
-  line-height: 1.35;
+  font-size: 0.74rem;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+@keyframes dashdraw {
+  from {
+    stroke-dashoffset: 10;
+  }
 }
 
 .flow-chart-outcome {
@@ -4316,45 +4699,6 @@ tbody tr:hover {
     grid-template-columns: 1fr;
     gap: 0.625rem;
     align-items: start;
-  }
-
-  .flow-chart {
-    grid-template-columns: 1fr;
-    overflow-x: visible;
-    padding-bottom: 0.25rem;
-  }
-
-  .flow-chart-node {
-    min-height: auto;
-    grid-template-columns: 2rem minmax(0, 1fr);
-    align-items: start;
-  }
-
-  .flow-chart-node strong,
-  .flow-chart-node small {
-    grid-column: 2;
-  }
-
-  .flow-chart-index {
-    grid-row: 1 / span 2;
-  }
-
-  .flow-chart-node:not(:last-child)::after {
-    top: calc(100% + 0.0625rem);
-    right: auto;
-    left: 1.875rem;
-    width: 2px;
-    height: 0.875rem;
-  }
-
-  .flow-chart-node:not(:last-child)::before {
-    top: calc(100% + 0.75rem);
-    right: auto;
-    left: calc(1.875rem - 0.25rem);
-    border-top: 0.45rem solid color-mix(in srgb, var(--primary) 64%, var(--foreground));
-    border-right: 0.3125rem solid transparent;
-    border-bottom: 0;
-    border-left: 0.3125rem solid transparent;
   }
 
   .roadmap-plan-head {

@@ -1926,6 +1926,12 @@ const vietnameseFlowGroupCopies: Record<string, LocalizedFlowGroupCopy> = {
     subtitle: "Biến công việc thành leverage.",
     description:
       "Các flow dành cho delivery có AI hỗ trợ và câu chuyện portfolio, giúp engineering judgment hiện rõ mà không biến thành copy marketing."
+  },
+  "react-flow-library": {
+    title: "Demo thư viện React Flow",
+    subtitle: "Xem shape kiến trúc trước khi chọn sơ đồ.",
+    description:
+      "Một showcase React Flow cho software architecture: node mặc định, custom shape, group, edge style, label, marker, minimap, control và background."
   }
 };
 
@@ -2229,6 +2235,68 @@ const vietnameseFlowCopies: Record<string, LocalizedFlowCopy> = {
     },
     artifacts: ["Context paragraph", "Action list", "Trade-off note", "Impact statement", "Story draft"],
     cvSignals: ["Giao tiếp impact", "Senior engineer narrative", "Business awareness", "Reflective practice"]
+  },
+  "react-flow-architecture-demo": {
+    title: "Demo React Flow cho kiến trúc phần mềm",
+    summary:
+      "Một canvas kiểu thư viện demo, cho thấy @xyflow/react có thể biểu diễn node shape, group, edge type, marker, label, minimap, control và background trong sơ đồ architecture.",
+    seoTitle: "Demo React Flow cho sơ đồ software architecture",
+    seoDescription:
+      "Studio demo React Flow cho software architecture với node mặc định, custom architecture shape, group, edge type, label, marker, minimap, control và background.",
+    useWhen:
+      "Dùng khi cần chọn cách mô hình hóa system architecture, service map, platform topology, event flow hoặc deployment boundary bằng React Flow.",
+    outcome:
+      "Một catalog trực quan các node và edge pattern có thể tái dùng cho sơ đồ architecture, không lẫn với use case map sản phẩm.",
+    officeExample:
+      "Một team muốn giải thích kiến trúc checkout payment. Demo này cho thấy cách đặt client boundary, API gateway, auth, service, database, cache, queue, event topic, external provider, observability và rollback risk trong cùng một canvas.",
+    tags: ["React Flow", "XYFlow", "Architecture Diagram", "Node Shapes", "Edge Types"],
+    steps: {
+      "show-node-primitives": {
+        title: "Hiện node primitive",
+        detail: "Render input, default, output và group-style node trước khi thêm vocabulary kiến trúc riêng.",
+        evidence: "Built-in node role, label, badge, handle và grouping boundary.",
+        output: "Một canvas baseline cho thấy primitive React Flow bắt đầu từ đâu."
+      },
+      "add-architecture-shapes": {
+        title: "Thêm shape kiến trúc",
+        detail: "Dùng custom node cho API gateway, service, worker, database, cache, queue, topic, external system, decision, risk và note.",
+        evidence: "Entity kiến trúc phần mềm, deployment boundary, data flow và operational risk.",
+        output: "Một shape catalog tái dùng cho system diagram."
+      },
+      "compare-edge-types": {
+        title: "So sánh edge type",
+        detail: "Hiện default, straight, step, smoothstep và simplebezier edge với label, arrow và async path có animation.",
+        evidence: "Sync call, async event, retry path, projection, observability và rollback relationship.",
+        output: "Một edge language giúp sơ đồ architecture dễ đọc hơn."
+      },
+      "use-canvas-controls": {
+        title: "Dùng canvas control",
+        detail: "Giữ Background, Controls, MiniMap, fitView, zoom và pan để architecture map lớn vẫn inspect được.",
+        evidence: "Kích thước graph, zone được group, zoom level dễ đọc và position ổn định.",
+        output: "Một diagram surface dùng được cho cả overview lẫn inspect chi tiết."
+      },
+      "model-system-architecture": {
+        title: "Model system architecture",
+        detail: "Đặt client, edge, domain, data, external và operations zone vào cùng một câu chuyện kiến trúc.",
+        evidence: "Bounded context, service ownership, persistence, integration, telemetry và rollout safety.",
+        output: "Một checkout-style reference architecture dùng để demo toàn bộ shape set."
+      },
+      "turn-demo-into-template": {
+        title: "Biến demo thành template",
+        detail: "Dùng demo làm điểm bắt đầu cho architecture review, RFC, ADR, onboarding hoặc giải thích incident.",
+        evidence: "Node kind tái dùng, edge tone, zone layout và copy gọi đúng trade-off engineering.",
+        output: "Một React Flow architecture template sẵn để adapt."
+      }
+    },
+    artifacts: [
+      "Catalog node shape React Flow",
+      "Canvas software architecture",
+      "So sánh edge type",
+      "Ví dụ group và boundary",
+      "Demo minimap và control",
+      "Architecture template tái dùng"
+    ],
+    cvSignals: ["React Flow implementation", "Software architecture visualization", "Diagram system design", "Platform communication"]
   }
 };
 
