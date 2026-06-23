@@ -434,6 +434,9 @@ type StudioUiCopy = {
     groupMenuLabel: string;
     flowListLabel: string;
     selectedFlow: string;
+    chartLabel: string;
+    chartHint: string;
+    chartOutcome: string;
     useWhen: string;
     outcome: string;
     officeExample: string;
@@ -679,6 +682,9 @@ const englishStudioCopy: StudioUiCopy = {
     groupMenuLabel: "Flow groups",
     flowListLabel: "Shareable Studio flows",
     selectedFlow: "Selected Studio flow",
+    chartLabel: "Flow chart",
+    chartHint: "Read the path from left to right: each node is a decision point, not a long note.",
+    chartOutcome: "Target outcome",
     useWhen: "Use when",
     outcome: "Outcome",
     officeExample: "Office example",
@@ -916,6 +922,9 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       groupMenuLabel: "Nhóm flow",
       flowListLabel: "Studio flow có thể share",
       selectedFlow: "Flow Studio đang chọn",
+      chartLabel: "Sơ đồ flow",
+      chartHint: "Đọc từ trái sang phải: mỗi node là một điểm quyết định, không phải một ghi chú dài.",
+      chartOutcome: "Kết quả cần đạt",
       useWhen: "Dùng khi",
       outcome: "Kết quả",
       officeExample: "Ví dụ nơi làm việc",
@@ -4206,6 +4215,38 @@ function BlogRoadmapPage({ route, locale, copy }: { route: StudioRoute; locale: 
   );
 }
 
+function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy }) {
+  return (
+    <section className="flow-chart-surface" aria-label={copy.flows.chartLabel}>
+      <div className="flow-chart-head">
+        <div>
+          <span className="ai-status-pill status-ready">{copy.flows.chartLabel}</span>
+          <h3>{flow.title}</h3>
+        </div>
+        <p>{copy.flows.chartHint}</p>
+      </div>
+
+      <ol
+        className="flow-chart"
+        style={{ "--flow-count": flow.steps.length } as CSSProperties}
+      >
+        {flow.steps.map((step, index) => (
+          <li key={step.id} className="flow-chart-node">
+            <span className="flow-chart-index">{String(index + 1).padStart(2, "0")}</span>
+            <strong>{step.title}</strong>
+            <small>{step.output}</small>
+          </li>
+        ))}
+      </ol>
+
+      <div className="flow-chart-outcome">
+        <span>{copy.flows.chartOutcome}</span>
+        <strong>{flow.outcome}</strong>
+      </div>
+    </section>
+  );
+}
+
 function StudioFlowMenuPage({
   route,
   locale,
@@ -4353,7 +4394,9 @@ function StudioFlowMenuPage({
             ))}
           </div>
 
-          <ol className="flow-step-map">
+          <StudioFlowChart flow={selectedFlow} copy={copy} />
+
+          <ol className="flow-step-map" aria-label={`${copy.flows.evidence} / ${copy.flows.output}`}>
             {selectedFlow.steps.map((step, index) => (
               <li key={step.id} className="flow-step-node">
                 <span className="flow-step-index">{String(index + 1).padStart(2, "0")}</span>

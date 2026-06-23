@@ -2008,6 +2008,136 @@ a {
   font-style: normal;
 }
 
+.flow-chart-surface {
+  display: grid;
+  gap: 1rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--primary) 24%, var(--border));
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 12%, transparent), transparent 40%),
+    color-mix(in srgb, var(--background) 94%, var(--muted));
+  padding: 1rem;
+}
+
+.flow-chart-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.68fr);
+  gap: 1rem;
+  align-items: end;
+}
+
+.flow-chart-head h3 {
+  margin: 0.45rem 0 0;
+  color: var(--foreground);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.flow-chart-head p {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.flow-chart {
+  display: grid;
+  grid-template-columns: repeat(var(--flow-count), minmax(7rem, 1fr));
+  gap: 0.625rem;
+  overflow-x: auto;
+  margin: 0;
+  padding: 0.25rem 0.125rem 0.75rem;
+  list-style: none;
+  scroll-padding-inline: 0.75rem;
+}
+
+.flow-chart-node {
+  position: relative;
+  display: grid;
+  min-height: 9rem;
+  align-content: start;
+  gap: 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  border-radius: 0.875rem;
+  background: color-mix(in srgb, var(--card) 94%, var(--background));
+  padding: 0.75rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.flow-chart-node:not(:last-child)::after {
+  position: absolute;
+  top: 2.25rem;
+  right: -0.875rem;
+  z-index: 1;
+  width: 0.875rem;
+  height: 2px;
+  background: color-mix(in srgb, var(--primary) 48%, var(--border));
+  content: "";
+}
+
+.flow-chart-node:not(:last-child)::before {
+  position: absolute;
+  top: calc(2.25rem - 0.25rem);
+  right: -1rem;
+  z-index: 2;
+  border-top: 0.3125rem solid transparent;
+  border-bottom: 0.3125rem solid transparent;
+  border-left: 0.45rem solid color-mix(in srgb, var(--primary) 64%, var(--foreground));
+  content: "";
+}
+
+.flow-chart-index {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 18%, var(--muted));
+  color: var(--foreground);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.flow-chart-node strong {
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.flow-chart-node small {
+  display: block;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.flow-chart-outcome {
+  display: grid;
+  gap: 0.35rem;
+  border: 1px solid color-mix(in srgb, var(--primary) 22%, var(--border));
+  border-radius: 0.875rem;
+  background: color-mix(in srgb, var(--primary) 8%, var(--muted));
+  padding: 0.875rem;
+}
+
+.flow-chart-outcome span {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.flow-chart-outcome strong {
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
 .flow-step-map {
   display: grid;
   gap: 0.875rem;
@@ -4180,6 +4310,51 @@ tbody tr:hover {
   .flow-side-pane {
     overflow: visible;
     padding: 0.875rem;
+  }
+
+  .flow-chart-head {
+    grid-template-columns: 1fr;
+    gap: 0.625rem;
+    align-items: start;
+  }
+
+  .flow-chart {
+    grid-template-columns: 1fr;
+    overflow-x: visible;
+    padding-bottom: 0.25rem;
+  }
+
+  .flow-chart-node {
+    min-height: auto;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .flow-chart-node strong,
+  .flow-chart-node small {
+    grid-column: 2;
+  }
+
+  .flow-chart-index {
+    grid-row: 1 / span 2;
+  }
+
+  .flow-chart-node:not(:last-child)::after {
+    top: calc(100% + 0.0625rem);
+    right: auto;
+    left: 1.875rem;
+    width: 2px;
+    height: 0.875rem;
+  }
+
+  .flow-chart-node:not(:last-child)::before {
+    top: calc(100% + 0.75rem);
+    right: auto;
+    left: calc(1.875rem - 0.25rem);
+    border-top: 0.45rem solid color-mix(in srgb, var(--primary) 64%, var(--foreground));
+    border-right: 0.3125rem solid transparent;
+    border-bottom: 0;
+    border-left: 0.3125rem solid transparent;
   }
 
   .roadmap-plan-head {

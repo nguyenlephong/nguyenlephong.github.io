@@ -190,6 +190,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /function AiSkillsPage/);
   assert.match(adminShell, /function DeliveryChecklistsPage/);
   assert.match(adminShell, /function BlogRoadmapPage/);
+  assert.match(adminShell, /function StudioFlowChart/);
   assert.match(adminShell, /function StudioFlowMenuPage/);
   assert.match(adminShell, /title:\s*"Email"/);
   assert.match(adminShell, /title:\s*"Chat"/);
@@ -198,6 +199,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /title:\s*"Delivery Checklists"/);
   assert.match(adminShell, /title:\s*"Blog Roadmap"/);
   assert.match(adminShell, /title:\s*"System Design Flow"/);
+  assert.match(adminShell, /chartLabel:\s*"Flow chart"/);
+  assert.match(adminShell, /Read the path from left to right/);
+  assert.match(adminShell, /chartLabel:\s*"Sơ đồ flow"/);
+  assert.match(adminShell, /Đọc từ trái sang phải/);
   assert.doesNotMatch(adminShell, /Mail preview/);
   assert.doesNotMatch(adminShell, /Chat preview/);
   assert.match(adminShell, /data-studio-module="mail"/);
@@ -306,6 +311,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "flow-index-pane",
     "flow-reader-pane",
     "flow-side-pane",
+    "flow-chart-surface",
+    "flow-chart",
+    "flow-chart-node",
+    "flow-chart-outcome",
     "flow-step-map",
     "flow-step-node",
     "blog-roadmap-workbench",
@@ -335,6 +344,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.ai-setup-container\.card\s*\{[^}]*height:\s*clamp/s);
   assert.match(shadowCss, /\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card\s*\{[^}]*height:\s*clamp/s);
   assert.match(shadowCss, /\.flow-workbench\.card\s*\{[^}]*grid-template-columns:\s*19rem minmax\(0,\s*1fr\) 19rem/s);
+  assert.match(shadowCss, /\.flow-chart\s*\{[^}]*grid-template-columns:\s*repeat\(var\(--flow-count\),\s*minmax\(7rem,\s*1fr\)\)/s);
+  assert.match(shadowCss, /\.flow-chart-node:not\(:last-child\)::after\s*\{[^}]*content:\s*""/s);
+  assert.match(shadowCss, /\.flow-chart-node:not\(:last-child\)::before\s*\{[^}]*border-left:\s*0\.45rem solid/s);
   assert.match(shadowCss, /\.blog-roadmap-workbench\.card\s*\{[^}]*grid-template-columns:\s*18rem minmax\(0,\s*1fr\) 20rem/s);
   assert.match(shadowCss, /\.roadmap-day-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s);
   assert.match(shadowCss, /@media \(max-width: 1480px\)\s*\{[\s\S]*?\.blog-roadmap-workbench\.card\s*\{[^}]*height:\s*auto;[^}]*overflow:\s*visible/s);
@@ -343,6 +355,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /@media \(max-width: 1080px\)/);
   assert.match(shadowCss, /@media \(max-width: 1080px\)\s*\{[\s\S]*?\.skill-side-pane,[\s\S]*?\.checklist-side-pane,[\s\S]*?\.flow-side-pane\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.match(shadowCss, /\.flow-step-node dl\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/s);
+  assert.match(shadowCss, /@media \(max-width: 860px\)\s*\{[\s\S]*?\.flow-chart\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(shadowCss, /@media \(max-width: 860px\)\s*\{[\s\S]*?\.flow-chart-node:not\(:last-child\)::after\s*\{[^}]*height:\s*0\.875rem/s);
   assert.match(shadowCss, /\.studio-flow-route \.flow-reader-pane\s*\{[^}]*order:\s*1/s);
   assert.match(shadowCss, /\.studio-flow-route \.flow-index-pane\s*\{[^}]*order:\s*3/s);
   assert.match(shadowCss, /\.studio-admin\.is-mobile-open \.studio-sidebar\s*\{[^}]*width:\s*min\(22rem,\s*calc\(100vw - 1rem\)\)/s);
