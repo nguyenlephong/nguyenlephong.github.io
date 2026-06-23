@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "ai-ideas-bloom-inside-everyday-work",
+      "category": "ai",
+      "title": "Khi AI chạm vào việc hằng ngày, ý tưởng bắt đầu nở ra",
+      "summary": "Khi AI đủ thực tế để bước vào những việc nhỏ trong văn phòng, ý tưởng không còn nằm ở các bản demo xa xôi. Chúng xuất hiện ngay trong onboarding, hỗ trợ khách hàng, đối chiếu tài chính, chuẩn bị họp, đọc tin tức, kiểm tra tài liệu và rất nhiều workflow lặp lại khác. Bài viết là một góc nhìn bình tĩnh về cách nhận ra các điểm nghẽn ấy, cải tiến từng chút và giữ con người ở phần phán đoán quan trọng.",
+      "date": "2026-06-23",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "AI Workflow",
+        "Năng suất",
+        "Future of Work",
+        "Tự động hóa"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 3
+    },
+    {
       "slug": "event-driven-architecture-and-messaging",
       "category": "architecture",
       "title": "Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn",
