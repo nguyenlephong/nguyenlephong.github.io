@@ -1,6 +1,7 @@
 "use client";
 import { Link } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { APP_ROUTE } from "@/app/app.const";
@@ -44,7 +45,7 @@ export default function AppHeader() {
             className="brand"
             onClick={() => track("cv_nav_click", { target: "home" })}
           >
-            <img
+            <Image
               src="/icon.png"
               alt="Nguyen Le Phong"
               width={36}

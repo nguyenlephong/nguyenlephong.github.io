@@ -44,10 +44,10 @@ export function formatCount(n: number): string {
 }
 
 function normalise(data: Record<string, unknown> | undefined): PostStats {
-  const reactions = (data?.reactions ?? {}) as Partial<ReactionCounts>
+  const reactions = (data?.['reactions'] ?? {}) as Partial<ReactionCounts>
   return {
-    views: Number(data?.views ?? 0),
-    shares: Number(data?.shares ?? 0),
+    views: Number(data?.['views'] ?? 0),
+    shares: Number(data?.['shares'] ?? 0),
     reactions: {
       like: Number(reactions.like ?? 0),
       love: Number(reactions.love ?? 0),

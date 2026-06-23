@@ -91,9 +91,9 @@ export default function AppFooter() {
 
         <p className="footer-copy">
           {t('copy', { year })}
-          {process.env.NEXT_PUBLIC_APP_VERSION && (
+          {process.env['NEXT_PUBLIC_APP_VERSION'] && (
             <span className="footer-version">
-              v{process.env.NEXT_PUBLIC_APP_VERSION}
+              v{process.env['NEXT_PUBLIC_APP_VERSION']}
             </span>
           )}
         </p>

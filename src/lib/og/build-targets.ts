@@ -4,7 +4,7 @@ type OgBuildMode = 'full' | 'targeted' | 'skip'
 type FilterOptions = { keepFirstWhenEmpty?: boolean }
 
 function getOgBuildMode(): OgBuildMode {
-  const raw = process.env.OG_BUILD_MODE?.trim().toLowerCase()
+  const raw = process.env['OG_BUILD_MODE']?.trim().toLowerCase()
   if (raw === 'targeted' || raw === 'skip') return raw
   return 'full'
 }
@@ -23,7 +23,7 @@ function normalizeTarget(target: string): string {
 
 function parseTargets(): Set<string> {
   return new Set(
-    (process.env.OG_TARGETS ?? '')
+    (process.env['OG_TARGETS'] ?? '')
       .split(',')
       .map(normalizeTarget)
       .filter(Boolean),

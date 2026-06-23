@@ -22,9 +22,9 @@ interface FirebaseConfig {
 }
 
 function readConfig(): FirebaseConfig | null {
-  const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY
-  const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID
-  const appId = process.env.NEXT_PUBLIC_FIREBASE_APP_ID
+  const apiKey = process.env['NEXT_PUBLIC_FIREBASE_API_KEY']
+  const projectId = process.env['NEXT_PUBLIC_FIREBASE_PROJECT_ID']
+  const appId = process.env['NEXT_PUBLIC_FIREBASE_APP_ID']
 
   // The three values above are the minimum needed for Firestore to work.
   if (!apiKey || !projectId || !appId) return null
@@ -32,14 +32,14 @@ function readConfig(): FirebaseConfig | null {
   return {
     apiKey,
     authDomain:
-      process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN ??
+      process.env['NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN'] ??
       `${projectId}.firebaseapp.com`,
     projectId,
     storageBucket:
-      process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ??
+      process.env['NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET'] ??
       `${projectId}.appspot.com`,
     messagingSenderId:
-      process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID ?? '',
+      process.env['NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID'] ?? '',
     appId,
   }
 }

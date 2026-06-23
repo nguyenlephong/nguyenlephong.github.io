@@ -34,11 +34,6 @@ const nextConfig = {
     config.resolve.alias.encoding = false;
     return config;
   },
-  eslint: {
-    // Lint is clean (0 errors); let builds fail on new ESLint errors so the
-    // deploy pipeline doubles as a quality gate. CI also lints on every PR.
-    ignoreDuringBuilds: false,
-  },
   images: {unoptimized: true},
   env: {
     NEXT_PUBLIC_APP_VERSION: appVersion,
