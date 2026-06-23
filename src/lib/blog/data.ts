@@ -13,6 +13,7 @@ import type {
   BlogPost,
   BlogPostMeta,
 } from './types'
+import { compareSeriesPosts } from './series'
 
 const DATA_DIR = path.join(process.cwd(), 'public', 'blog-data')
 
@@ -94,7 +95,7 @@ export function getSeriesContext(
 
   const inSeries = all
     .filter((p) => p.series === current.series)
-    .sort(byDateDesc)
+    .sort(compareSeriesPosts)
   const idx = inSeries.findIndex((p) => p.slug === slug)
 
   return {

@@ -407,6 +407,24 @@
       "featured": false
     },
     {
+      "slug": "agile-is-dead-long-live-agile",
+      "category": "ways-of-working",
+      "title": "Agile đã chết, Agile muôn năm",
+      "summary": "Agile thường bị tuyên bố là đã chết vì nhiều team đã trải qua quá nhiều ceremony mà không có học hỏi, quá nhiều board mà không có feedback, và quá nhiều cuộc họp mà thiếu trust. Một bài reflection bình tĩnh về vì sao phiên bản Agile mang tính hình thức đáng bị phê bình, trong khi thói quen thích nghi qua những vòng feedback nhỏ và trung thực vẫn rất đáng giữ.",
+      "date": "2026-06-22",
+      "readingMinutes": 8,
+      "tags": [
+        "Agile",
+        "Ways of Working",
+        "Software Teams",
+        "Scrum",
+        "Delivery",
+        "Văn hoá team"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
       "slug": "design-of-everyday-things-clear-signals-feedback",
       "category": "ways-of-working",
       "title": "The Design of Everyday Things: đừng bắt người dùng đoán sản phẩm muốn gì",
@@ -1078,6 +1096,98 @@
         "Inclusion",
         "Lãnh đạo",
         "An toàn tâm lý"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "layered-vs-vertical-slice-architecture",
+      "category": "architecture",
+      "title": "Layered và Vertical Slice Architecture",
+      "summary": "Layered architecture tạo cảm giác gọn gàng lúc ban đầu, còn vertical slice giữ thay đổi gần với feature mà người dùng thật sự chạm vào. Một bài nhìn chậm lại về hai cách tổ chức này, mỗi cách giúp được gì, và cách team có thể đi về boundary rõ hơn mà không biến kiến trúc thành nghi thức.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Kiến trúc phần mềm",
+        "Vertical Slice Architecture",
+        "Layered Architecture",
+        "Tổ chức mã nguồn",
+        "Modularity",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 13
+    },
+    {
+      "slug": "anatomy-of-a-healthy-one-on-one",
+      "category": "culture",
+      "title": "Một buổi 1-on-1 lành mạnh gồm những gì?",
+      "summary": "Một buổi 1-on-1 lành mạnh không phải status meeting được nói nhẹ hơn. Nó là khoảng nhỏ, đều đặn, để giữ context, niềm tin, feedback và hướng phát triển nghề nghiệp.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "One-on-One",
+        "Quản lý",
+        "Feedback",
+        "Lãnh đạo",
+        "Niềm tin trong team"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "prompt-engineering-is-just-communication",
+      "category": "ai",
+      "title": "Prompt Engineering thật ra chỉ là giao tiếp rõ ràng",
+      "summary": "Prompt tốt không phải câu thần chú. Nó là giao tiếp rõ: context, ý định, ràng buộc, ví dụ và feedback. Những thói quen giúp con người làm việc tốt với nhau cũng giúp AI trả lời tốt hơn.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Prompt Engineering",
+        "Giao tiếp",
+        "LLM",
+        "AI Literacy",
+        "Năng suất developer"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "learning-to-say-no-as-a-developer",
+      "category": "perspectives",
+      "title": "Học cách nói không khi làm developer",
+      "summary": "Nói không không phải là khó chịu. Đó là cách bảo vệ focus, chất lượng và niềm tin. Một bài viết chậm lại về kỹ năng từ chối, thương lượng lại và đưa ra tradeoff rõ hơn.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Personal Growth",
+        "Software Engineering",
+        "Ranh giới",
+        "Phát triển sự nghiệp",
+        "Giao tiếp",
+        "Focus"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "daily-standup-status-report-or-strategy",
+      "category": "ways-of-working",
+      "title": "Daily standup: báo cáo status hay chiến lược cho hôm nay?",
+      "summary": "Daily standup có thể trở thành nghi thức kể lại hôm qua, hoặc một cuộc nói chuyện ngắn về chiến lược của hôm nay. Khác biệt nằm ở việc team dùng nó để nhìn flow, gọi tên rủi ro và quyết định điều gì cần chú ý tiếp theo.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Daily Standup",
+        "Scrum",
+        "Team Collaboration",
+        "Delivery",
+        "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
       "featured": false

@@ -1,0 +1,21 @@
+{
+  "slug": "layered-vs-vertical-slice-architecture",
+  "category": "architecture",
+  "title": "レイヤードアーキテクチャと Vertical Slice Architecture",
+  "summary": "レイヤード構成は最初は整って見えます。一方、Vertical Slice は変更を実際の機能に近づけます。両者の良さ、痛み、移行の合図を落ち着いて考えます。",
+  "date": "2026-06-23",
+  "readingMinutes": 6,
+  "tags": [
+    "ソフトウェアアーキテクチャ",
+    "Vertical Slice Architecture",
+    "Layered Architecture",
+    "コード構成",
+    "Modularity",
+    "Technical Debt"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "series": "foundations",
+  "seriesOrder": 13,
+  "html": "<p>朝、ちいさな payment rule を追加する pull request を開く。変更自体は小さいのに、触るファイルは controller、service、repository、mapper、validator、そして離れた場所の test まで広がっている。ルールは単純なのに、置き場所は単純ではない。</p>\n<p>ここでアーキテクチャは図ではなく、毎日の感触になる。レイヤードアーキテクチャは技術的な役割ごとに code を整理する。教えやすく、見慣れていて、小さなアプリではとても助けになる。</p>\n<p>Vertical Slice Architecture は別の問いを立てる。この変更はどの product capability に属するのか。route、validation、use case、data access、test をその振る舞いの近くに置く。フォルダ名は framework よりも product を語り始める。</p>\n<p>レイヤードが間違いなのではない。問題は feature が増えたあとにゆっくり出てくる。小さな変更がすべての layer を横断し、削除したい機能の断片を探す作業が考古学のようになる。</p>\n<p>Vertical slice は blast radius を小さくする。refund approval が変わるなら、ほとんどの変更は refund approval の slice に残る。技術的な layer は消えない。ただ feature の内側に下がる。</p>\n<p>もちろん discipline は必要になる。slice が小さな島だらけになることもあるし、shared abstraction を早く作りすぎることもある。小さく明確な重複は、早すぎる共通化より安全な場合がある。</p>\n<p>多くの team は中間に落ち着く。上位には feature folder、その中に小さな layer、そして本当に共通になったものだけを置く退屈な shared folder。</p>\n<p>大切なのは、構造が意図と変更の距離を縮めることだ。フォルダ名を読んで business action が分かり、変更して、test して、残りをそっとしておけるなら、その architecture は役に立っている。</p>"
+}

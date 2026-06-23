@@ -407,6 +407,24 @@
       "featured": false
     },
     {
+      "slug": "agile-is-dead-long-live-agile",
+      "category": "ways-of-working",
+      "title": "Agile is Dead, Long Live Agile",
+      "summary": "Agile is often declared dead because teams have seen too much ceremony without learning, too many boards without feedback, and too many meetings without trust. A calm reflection on why the branded version of Agile may deserve criticism, while the deeper habit of adapting through small, honest feedback loops is still worth protecting.",
+      "date": "2026-06-22",
+      "readingMinutes": 7,
+      "tags": [
+        "Agile",
+        "Ways of Working",
+        "Software Teams",
+        "Scrum",
+        "Delivery",
+        "Team Culture"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
       "slug": "design-of-everyday-things-clear-signals-feedback",
       "category": "ways-of-working",
       "title": "The Design of Everyday Things: Make the Interface Explain Itself",
@@ -1117,6 +1135,98 @@
         "Inclusion",
         "Leadership",
         "Psychological Safety"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "layered-vs-vertical-slice-architecture",
+      "category": "architecture",
+      "title": "Layered vs. Vertical Slice Architecture",
+      "summary": "Layered architecture feels tidy at the beginning, while vertical slices keep change closer to the feature people actually use. A calm look at both styles, where each one helps, and how teams can move toward clearer boundaries without turning architecture into a ceremony.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Vertical Slice Architecture",
+        "Layered Architecture",
+        "Code Organization",
+        "Modularity",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 13
+    },
+    {
+      "slug": "anatomy-of-a-healthy-one-on-one",
+      "category": "culture",
+      "title": "The Anatomy of a Healthy 1-on-1",
+      "summary": "A healthy 1-on-1 is not a status meeting with softer lighting. It is a small, regular space for context, trust, feedback, and career direction. Here is what makes the conversation useful without making it heavy.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "One-on-One",
+        "Management",
+        "Feedback",
+        "Leadership",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "prompt-engineering-is-just-communication",
+      "category": "ai",
+      "title": "Prompt Engineering Is Just Communication",
+      "summary": "Good prompts are not magic phrases. They are clear communication: context, intent, constraints, examples, and feedback. The same habits that help humans work well together also help AI tools produce better results.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Prompt Engineering",
+        "Communication",
+        "LLM",
+        "AI Literacy",
+        "Developer Productivity"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "learning-to-say-no-as-a-developer",
+      "category": "perspectives",
+      "title": "Learning to Say No as a Developer",
+      "summary": "Saying no as a developer is not about being difficult. It is about protecting focus, quality, and trust. A reflective look at the quiet skill of declining, renegotiating, and offering a clearer tradeoff.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Personal Growth",
+        "Software Engineering",
+        "Boundaries",
+        "Career Growth",
+        "Communication",
+        "Focus"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "daily-standup-status-report-or-strategy",
+      "category": "ways-of-working",
+      "title": "The Daily Standup: Status Report or Strategy?",
+      "summary": "A daily standup can become a ritual of reporting yesterday, or a short strategy conversation about today. The difference is whether the team uses it to inspect flow, surface risk, and decide what needs attention next.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Daily Standup",
+        "Scrum",
+        "Team Collaboration",
+        "Delivery",
+        "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
       "featured": false

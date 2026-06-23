@@ -36,3 +36,10 @@ yarn-error.log*
 # build/debug noise
 firebase-debug.log
 tsconfig.tsbuildinfo
+
+.agent_context
+.agents
+.multica
+create_tickets.sh
+issues.json
+thread.json

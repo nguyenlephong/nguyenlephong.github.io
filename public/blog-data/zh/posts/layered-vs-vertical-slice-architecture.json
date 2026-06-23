@@ -1,0 +1,21 @@
+{
+  "slug": "layered-vs-vertical-slice-architecture",
+  "category": "architecture",
+  "title": "分层架构与 Vertical Slice Architecture",
+  "summary": "分层架构在一开始很整洁，Vertical Slice 则把变化放回真实功能附近。本文平静地比较两者的价值、代价，以及团队何时该调整结构。",
+  "date": "2026-06-23",
+  "readingMinutes": 6,
+  "tags": [
+    "软件架构",
+    "Vertical Slice Architecture",
+    "Layered Architecture",
+    "代码组织",
+    "Modularity",
+    "Technical Debt"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "series": "foundations",
+  "seriesOrder": 13,
+  "html": "<p>早晨常常从一件小事开始。有人打开一个 pull request，只是想加一条 payment rule，可文件列表却比变化本身长得多：controller、service、repository、mapper、validator，还有远处的 test。规则很简单，放进 codebase 的路径却不简单。</p>\n<p>这时，架构不再是图，而是每天工作的触感。分层架构按技术角色组织代码。它熟悉、容易教学，在小应用里也很友好。</p>\n<p>Vertical Slice Architecture 问的是另一个问题：这个变化属于哪个产品能力？它把 route、validation、use case、data access 和 test 放在行为附近。文件夹开始讲产品，而不只是讲 framework。</p>\n<p>分层并不是错。问题通常在 feature 变多之后慢慢出现。一个小改动要穿过所有 layer；删除旧功能像考古，因为碎片散在各处。</p>\n<p>Vertical slice 能降低 blast radius。refund approval 变了，大部分修改就留在这个 slice 里。技术 layer 没有消失，只是进入了 feature 内部。</p>\n<p>它也需要纪律。slice 可能变成很多孤岛，shared abstraction 也可能做得太早。有时，少量清晰的重复，比过早抽象更诚实。</p>\n<p>很多团队最后会采用折中：顶层是 feature folder，内部有小的技术 layer，shared folder 只放真正已经共同化的东西。</p>\n<p>最重要的标准很简单：结构应该缩短意图到修改之间的距离。如果开发者能读懂文件夹名，理解业务动作，完成修改和测试，并让其他部分保持安静，架构就在发挥作用。</p>"
+}

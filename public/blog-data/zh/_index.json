@@ -312,6 +312,98 @@
         "开发者生产力",
         "AI 工具"
       ]
+    },
+    {
+      "slug": "layered-vs-vertical-slice-architecture",
+      "category": "architecture",
+      "title": "分层架构与 Vertical Slice Architecture",
+      "summary": "分层架构在一开始很整洁，Vertical Slice 则把变化放回真实功能附近。本文平静地比较两者的价值、代价，以及团队何时该调整结构。",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "软件架构",
+        "Vertical Slice Architecture",
+        "Layered Architecture",
+        "代码组织",
+        "Modularity",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 13
+    },
+    {
+      "slug": "anatomy-of-a-healthy-one-on-one",
+      "category": "culture",
+      "title": "健康的 1-on-1 长什么样",
+      "summary": "健康的 1-on-1 不是语气更柔和的 status meeting，而是一个稳定的小空间，用来处理 context、信任、feedback 和职业方向。",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "工程文化",
+        "One-on-One",
+        "Management",
+        "Feedback",
+        "Leadership",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "prompt-engineering-is-just-communication",
+      "category": "ai",
+      "title": "Prompt Engineering 本质上只是清晰沟通",
+      "summary": "好的 prompt 不是魔法句子，而是清楚地提供 context、意图、constraints、examples 和 feedback。",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Prompt Engineering",
+        "沟通",
+        "LLM",
+        "AI Literacy",
+        "Developer Productivity"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "learning-to-say-no-as-a-developer",
+      "category": "perspectives",
+      "title": "开发者如何学习说不",
+      "summary": "说不不是难相处，而是为了保护 focus、quality 和 trust，把 tradeoff 讲清楚。",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Personal Growth",
+        "Software Engineering",
+        "边界",
+        "Career Growth",
+        "沟通",
+        "Focus"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "daily-standup-status-report-or-strategy",
+      "category": "ways-of-working",
+      "title": "Daily standup：status report 还是今天的 strategy？",
+      "summary": "Daily standup 可以变成汇报昨天的仪式，也可以成为关于 flow、risk 和今日注意力的短策略会。",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Daily Standup",
+        "Scrum",
+        "Team Collaboration",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
     }
   ]
 }

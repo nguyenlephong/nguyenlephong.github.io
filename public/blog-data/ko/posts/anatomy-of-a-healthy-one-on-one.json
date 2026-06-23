@@ -1,0 +1,19 @@
+{
+  "slug": "anatomy-of-a-healthy-one-on-one",
+  "category": "culture",
+  "title": "건강한 1-on-1 의 구조",
+  "summary": "건강한 1-on-1 은 부드러운 status meeting 이 아닙니다. context, 신뢰, feedback, 커리어 방향을 위한 작고 규칙적인 공간입니다.",
+  "date": "2026-06-23",
+  "readingMinutes": 6,
+  "tags": [
+    "Engineering Culture",
+    "One-on-One",
+    "Management",
+    "Feedback",
+    "Leadership",
+    "Team Trust"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>점심 전 10분, calendar reminder 가 뜹니다. release 는 끝나지 않았고 review 는 기다리고 있으며 Slack 은 계속 깜박입니다. 1-on-1 은 그 순간 급해 보이지 않아서 가장 먼저 밀리기 쉽습니다. 그리고 한 달 뒤, 그 자리에서 잡을 수 있었던 작은 신호가 비싸집니다.</p>\n<p>건강한 1-on-1 은 더 부드러운 status report 가 아닙니다. status 는 standup, board, pull request, dashboard 에서 다룰 수 있습니다. 1-on-1 은 애매함, context, 신뢰, feedback, 성장 방향처럼 그런 시스템에 잘 들어가지 않는 것들을 위한 자리입니다.</p>\n<p>첫 번째 재료는 regularity 입니다. 완벽한 agenda 보다 실제로 계속 열리는 리듬이 중요합니다. 가치는 한 번의 깊은 대화보다 작은 대화의 누적에서 나옵니다.</p>\n<p>두 번째는 shared ownership 입니다. engineer 는 막힌 것, 무거운 것, 흥미로운 것, 불확실한 것을 가져옵니다. manager 는 context, feedback, 그리고 일상 업무를 더 큰 방향과 연결하는 질문을 가져옵니다.</p>\n<p>세 번째는 덜 다듬어진 말을 할 수 있는 안전함입니다. \"성장하고 있는지 잘 모르겠습니다\" 또는 \"그 결정이 이해되지 않았습니다\" 라는 말이 곧바로 평가가 되지 않아야 합니다.</p>\n<p>네 번째는 specificity 입니다. \"잘하고 있어요\" 는 따뜻하지만, \"지난 incident write-up 은 timeline 이 명확해서 좋았습니다. 그 설명 방식을 계속 연습해 봅시다\" 는 반복할 행동을 줍니다.</p>\n<p>좋은 1-on-1 은 보통 작은 clarity 로 끝납니다. 하나의 결정이 설명되고, 하나의 걱정이 이름을 얻고, 하나의 feedback 이 action 이 됩니다. 그 작은 clarity 가 시간이 지나며 trust 가 됩니다.</p>\n<p>1-on-1 이 status meeting 이 되었다면 작게 고치면 됩니다. 시간을 지키고, 솔직한 주제 하나를 가져오고, Jira board 가 답할 수 없는 질문 하나를 물어보세요. 그리고 반복하세요.</p>"
+}

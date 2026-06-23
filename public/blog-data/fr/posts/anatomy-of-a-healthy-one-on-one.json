@@ -1,0 +1,19 @@
+{
+  "slug": "anatomy-of-a-healthy-one-on-one",
+  "category": "culture",
+  "title": "L'anatomie d'un 1-on-1 sain",
+  "summary": "Un 1-on-1 sain n'est pas une réunion de suivi plus douce. C'est un petit espace régulier pour le contexte, la confiance, le feedback et la direction professionnelle.",
+  "date": "2026-06-23",
+  "readingMinutes": 6,
+  "tags": [
+    "Culture engineering",
+    "One-on-One",
+    "Management",
+    "Feedback",
+    "Leadership",
+    "Confiance"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>Le rappel arrive dix minutes avant le déjeuner, et les deux personnes ont une petite envie de repousser. Il y a une release à finir, une review en attente, et des messages partout. Le 1-on-1 semble rarement urgent, alors il devient facile à sacrifier.</p>\n<p>Un 1-on-1 sain n'est pas un rapport d'état avec une lumière plus douce. Le suivi a déjà ses lieux : standup, board, pull requests, dashboard. Le 1-on-1 sert aux choses qui ne rentrent pas bien dans ces systèmes : doute, contexte, confiance, feedback, ambition et petits signaux faibles.</p>\n<p>Le premier ingrédient est la régularité. Une conversation simple qui a vraiment lieu toutes les deux semaines vaut mieux qu'un format parfait souvent annulé. La valeur vient de l'accumulation.</p>\n<p>Le deuxième ingrédient est la propriété partagée. L'ingénieur apporte ce qui est flou, lourd, motivant ou bloqué. Le manager apporte contexte, feedback et questions pour relier le quotidien à la direction plus large.</p>\n<p>Le troisième ingrédient est assez de sécurité pour dire des choses encore imparfaites. \"Je ne suis pas sûr de progresser\" ou \"je n'ai pas compris cette décision\" ne devrait pas devenir immédiatement un jugement de performance.</p>\n<p>Le quatrième ingrédient est la spécificité. \"Tu vas bien\" rassure, mais \"ton dernier postmortem a rendu la timeline très claire, continue à travailler cette qualité d'explication\" donne un comportement à répéter.</p>\n<p>Un bon 1-on-1 finit souvent avec une petite clarté : une décision expliquée, une inquiétude nommée, un feedback rendu actionnable, une prochaine étape écrite. Avec le temps, ces petites clartés deviennent de la confiance.</p>\n<p>Si vos 1-on-1 sont devenus des réunions de suivi, commencez petit : protégez le temps, apportez un sujet honnête, posez une question à laquelle le board ne peut pas répondre, puis répétez.</p>"
+}

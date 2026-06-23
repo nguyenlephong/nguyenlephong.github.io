@@ -1,0 +1,19 @@
+{
+  "slug": "anatomy-of-a-healthy-one-on-one",
+  "category": "culture",
+  "title": "Một buổi 1-on-1 lành mạnh gồm những gì?",
+  "summary": "Một buổi 1-on-1 lành mạnh không phải status meeting được nói nhẹ hơn. Nó là khoảng nhỏ, đều đặn, để giữ context, niềm tin, feedback và hướng phát triển nghề nghiệp.",
+  "date": "2026-06-23",
+  "readingMinutes": 6,
+  "tags": [
+    "Văn hoá kỹ thuật",
+    "One-on-One",
+    "Quản lý",
+    "Feedback",
+    "Lãnh đạo",
+    "Niềm tin trong team"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>Lịch nhắc hiện lên mười phút trước giờ ăn trưa, và cả hai người đều hơi muốn dời nó. Có release chưa xong, review đang chờ, một cuộc họp vừa kéo dài, và Slack vẫn nhấp nháy. 1-on-1 rất dễ trở thành thứ đầu tiên bị hy sinh vì nó hiếm khi có vẻ khẩn cấp ngay lúc đó. Rồi một tháng sau, những điều nó đáng lẽ bắt được bắt đầu trở nên đắt đỏ.</p>\n<p>Một buổi 1-on-1 lành mạnh không phải status report được nói bằng giọng mềm hơn. Status đã có chỗ khác: standup, board, project update, pull request, dashboard. 1-on-1 dành cho những phần công việc không nằm gọn trong các hệ thống đó: sự mơ hồ, context, niềm tin, tham vọng, lưỡng lự, feedback và các tín hiệu nhỏ cho thấy điều gì đó đang lệch.</p>\n<p>Thành phần đầu tiên là tính đều đặn. Không cần quá sâu, không cần agenda hoàn hảo, chỉ cần một nhịp đáng tin. Một cuộc trò chuyện hai tuần một lần thật sự diễn ra tốt hơn một meeting được thiết kế đẹp nhưng cứ bị hủy mỗi khi team bận. Giá trị đến từ tích lũy. Các cập nhật nhỏ, lặp lại theo thời gian, giúp mình nhìn thấy pattern trước khi nó thành bất ngờ.</p>\n<p>Thành phần thứ hai là cùng sở hữu. Nếu manager sở hữu toàn bộ cuộc nói chuyện, nó thành một buổi kiểm tra nhẹ nhàng. Nếu engineer sở hữu toàn bộ, nhiều context quan trọng có thể bị bỏ sót. Nhịp tốt là cả hai đều mang ghi chú: engineer mang điều chưa rõ, nặng, thú vị hoặc bị kẹt; manager mang context, feedback và câu hỏi nối công việc hằng ngày với hướng lớn hơn.</p>\n<p>Thành phần thứ ba là đủ an toàn để nói những điều chưa hoàn chỉnh. Điều này không có nghĩa cuộc nào cũng cảm xúc hay sâu sắc. Nó chỉ nghĩa là một người có thể nói: em không chắc mình đang lớn lên, em không hiểu vì sao quyết định này đổi, hoặc em nghĩ em xử lý review đó chưa tốt, mà câu nói ấy không lập tức thành đánh giá hiệu suất.</p>\n<p>Thành phần thứ tư là sự cụ thể. Sự hỗ trợ mơ hồ nghe tử tế nhưng không luôn giúp. \"Em đang làm ổn\" dễ chịu, nhưng \"incident write-up vừa rồi của em làm timeline rõ hơn nhiều, hãy tiếp tục luyện kiểu giải thích đó\" cho người nghe một hành vi để lặp lại. Điều tương tự đúng với góp ý. \"Chủ động hơn\" rất khó làm. \"Khi API contract đổi tuần trước, anh cần em flag rủi ro downstream sớm hơn\" tạo ra bức tranh chung.</p>\n<p>1-on-1 tốt cũng có chỗ cho hướng nghề nghiệp mà không biến mọi cuộc gặp thành promotion plan. Growth thường rất lặng. Nó hiện ra trong loại bài toán một người được tin giao, căn phòng họ được mời vào, feedback họ có thể hấp thụ, và judgment họ xây qua nhiều quyết định nhỏ. Thỉnh thoảng cuộc gặp nên hỏi: việc nào đang kéo em lớn lên, việc nào đang làm em cạn, và vài tháng tới thế nào sẽ có ý nghĩa hơn?</p>\n<p>Những buổi 1-on-1 tốt thường kết thúc bằng một chút rõ ràng, không phải lời hứa lớn. Một quyết định được giải thích. Một nỗi lo được gọi tên. Một feedback trở nên hành động được. Một bước tiếp theo được ghi lại. Theo thời gian, sự rõ ràng nhỏ đó tích lũy thành niềm tin.</p>\n<p>Nếu 1-on-1 của bạn đã thành status meeting, cách sửa không cần lớn. Giữ thời gian đó. Mang một chủ đề thật. Hỏi một câu mà Jira board không trả lời được. Ghi lại bước tiếp theo. Rồi lặp lại. Một 1-on-1 lành mạnh không được xây bằng một cuộc nói chuyện sâu sắc. Nó được xây bằng nhiều cuộc nói chuyện bình thường nhưng đủ được tôn trọng để xảy ra.</p>\n<p>Mình muốn nghe câu hỏi nào từng làm 1-on-1 của bạn hữu ích hơn, dù bạn ở vai trò manager hay engineer.</p>"
+}

@@ -312,6 +312,98 @@
         "Productivité Développeur",
         "Outils IA"
       ]
+    },
+    {
+      "slug": "layered-vs-vertical-slice-architecture",
+      "category": "architecture",
+      "title": "Architecture en couches ou Vertical Slice Architecture",
+      "summary": "L'architecture en couches semble ordonnée au début, tandis que les vertical slices rapprochent le changement de la fonctionnalité réelle. Un regard calme sur les deux approches, leurs forces et les signaux qui disent qu'il est temps de changer.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Architecture logicielle",
+        "Vertical Slice Architecture",
+        "Layered Architecture",
+        "Organisation du code",
+        "Modularity",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 13
+    },
+    {
+      "slug": "anatomy-of-a-healthy-one-on-one",
+      "category": "culture",
+      "title": "L'anatomie d'un 1-on-1 sain",
+      "summary": "Un 1-on-1 sain n'est pas une réunion de suivi plus douce. C'est un petit espace régulier pour le contexte, la confiance, le feedback et la direction professionnelle.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Culture engineering",
+        "One-on-One",
+        "Management",
+        "Feedback",
+        "Leadership",
+        "Confiance"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "prompt-engineering-is-just-communication",
+      "category": "ai",
+      "title": "Le prompt engineering, c'est surtout de la communication",
+      "summary": "Les bons prompts ne sont pas des phrases magiques. Ce sont des communications claires : contexte, intention, contraintes, exemples et feedback.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "IA",
+        "Prompt Engineering",
+        "Communication",
+        "LLM",
+        "AI Literacy",
+        "Productivité développeur"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "learning-to-say-no-as-a-developer",
+      "category": "perspectives",
+      "title": "Apprendre à dire non en tant que développeur",
+      "summary": "Dire non ne consiste pas à être difficile. C'est protéger le focus, la qualité et la confiance en rendant les tradeoffs visibles.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Développement personnel",
+        "Software Engineering",
+        "Limites",
+        "Carrière",
+        "Communication",
+        "Focus"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "daily-standup-status-report-or-strategy",
+      "category": "ways-of-working",
+      "title": "Daily standup : rapport d'état ou stratégie du jour ?",
+      "summary": "Un daily standup peut devenir un rituel de reporting, ou une courte conversation stratégique sur le flux, les risques et l'attention du jour.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Daily Standup",
+        "Scrum",
+        "Collaboration",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
     }
   ]
 }
