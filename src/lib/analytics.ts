@@ -111,6 +111,9 @@ export type AnalyticsEvent =
   | 'studio_blog_roadmap_status_filter'
   | 'studio_blog_roadmap_day_select'
   | 'studio_blog_roadmap_ticket_action'
+  | 'studio_flow_group_select'
+  | 'studio_flow_select'
+  | 'studio_flow_share'
   // Outbound
   | 'outbound_click'
 

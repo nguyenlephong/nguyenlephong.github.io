@@ -319,6 +319,8 @@ a {
 .profile-link-grid a,
 .skill-list-button,
 .checklist-list-button,
+.flow-group-button,
+.flow-list-button,
 .roadmap-topic-button,
 .roadmap-day-card,
 .ai-note-button,
@@ -1895,6 +1897,201 @@ a {
 .checklist-side-pane pre {
   max-height: 18rem;
   margin: 0.75rem 0 0;
+}
+
+.flow-workbench.card {
+  display: grid;
+  grid-template-columns: 19rem minmax(0, 1fr) 19rem;
+  height: clamp(38rem, calc(100vh - 17rem), 56rem);
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.flow-index-pane,
+.flow-reader-pane,
+.flow-side-pane {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.flow-index-pane {
+  border-right: 1px solid var(--border);
+  background: color-mix(in srgb, var(--muted) 62%, transparent);
+}
+
+.flow-reader-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.flow-side-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-left: 1px solid var(--border);
+  background: color-mix(in srgb, var(--muted) 44%, transparent);
+}
+
+.flow-group-list,
+.flow-list {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.flow-group-button,
+.flow-list-button {
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--foreground);
+  padding: 0.75rem;
+  text-align: left;
+  text-decoration: none;
+}
+
+.flow-group-button {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.flow-list-button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.625rem;
+  align-items: flex-start;
+}
+
+.flow-group-button:hover,
+.flow-group-button.is-active,
+.flow-list-button:hover,
+.flow-list-button.is-active {
+  border-color: var(--border);
+  background: var(--background);
+}
+
+.flow-group-button strong,
+.flow-group-button small,
+.flow-list-button strong,
+.flow-list-button small,
+.flow-list-button em {
+  display: block;
+}
+
+.flow-group-button strong,
+.flow-list-button strong {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.flow-group-button small,
+.flow-list-button small {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.flow-list-button small {
+  margin-top: 0.25rem;
+}
+
+.flow-list-button em {
+  border-radius: 999px;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  padding: 0.125rem 0.45rem;
+  font-size: 0.6875rem;
+  font-style: normal;
+}
+
+.flow-step-map {
+  display: grid;
+  gap: 0.875rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flow-step-node {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+  padding: 0.875rem;
+}
+
+.flow-step-index {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 12%, var(--muted));
+  color: var(--foreground);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.flow-step-node h3 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.flow-step-node p {
+  margin: 0.35rem 0 0;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.flow-step-node dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.625rem;
+  margin: 0.75rem 0 0;
+}
+
+.flow-step-node dl div,
+.flow-side-pane section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--muted) 24%, transparent);
+  padding: 0.75rem;
+}
+
+.flow-step-node dt,
+.flow-side-pane h3 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.flow-step-node dd,
+.flow-side-pane p {
+  margin: 0.35rem 0 0;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.flow-side-pane ul {
+  display: grid;
+  gap: 0.375rem;
+  margin: 0.5rem 0 0;
+  padding-left: 1rem;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.45;
 }
 
 .native-select {
@@ -3485,7 +3682,8 @@ tbody tr:hover {
 
 @media (max-width: 1480px) {
   .skill-library-workbench.card,
-  .checklist-workbench.card {
+  .checklist-workbench.card,
+  .flow-workbench.card {
     grid-template-columns: minmax(15rem, 0.34fr) minmax(0, 1fr);
     height: auto;
     min-height: auto;
@@ -3497,12 +3695,16 @@ tbody tr:hover {
   .skill-side-pane,
   .checklist-index-pane,
   .checklist-reader-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-index-pane,
+  .flow-reader-pane,
+  .flow-side-pane {
     overflow: visible;
   }
 
   .skill-side-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-side-pane {
     display: grid;
     grid-column: 1 / -1;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3538,7 +3740,8 @@ tbody tr:hover {
   }
 
   .skill-library-workbench.card,
-  .checklist-workbench.card {
+  .checklist-workbench.card,
+  .flow-workbench.card {
     grid-template-columns: minmax(14rem, 0.38fr) minmax(0, 1fr);
     height: auto;
     min-height: auto;
@@ -3550,12 +3753,16 @@ tbody tr:hover {
   .skill-side-pane,
   .checklist-index-pane,
   .checklist-reader-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-index-pane,
+  .flow-reader-pane,
+  .flow-side-pane {
     overflow: visible;
   }
 
   .skill-side-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-side-pane {
     display: grid;
     grid-column: 1 / -1;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3574,7 +3781,8 @@ tbody tr:hover {
   .blog-roadmap-workbench.card,
   .ai-setup-container.card,
   .skill-library-workbench.card,
-  .checklist-workbench.card {
+  .checklist-workbench.card,
+  .flow-workbench.card {
     grid-template-columns: 1fr;
     height: auto;
     min-height: auto;
@@ -3592,14 +3800,18 @@ tbody tr:hover {
   .skill-side-pane,
   .checklist-index-pane,
   .checklist-reader-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-index-pane,
+  .flow-reader-pane,
+  .flow-side-pane {
     overflow: visible;
   }
 
   .roadmap-topic-pane,
   .ai-setup-index,
   .skill-index-pane,
-  .checklist-index-pane {
+  .checklist-index-pane,
+  .flow-index-pane {
     border-right: 0;
     border-bottom: 1px solid var(--border);
   }
@@ -3607,11 +3819,26 @@ tbody tr:hover {
   .roadmap-detail-pane,
   .ai-workflow-rail,
   .skill-side-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-side-pane {
     grid-column: auto;
     grid-template-columns: 1fr;
     border-left: 0;
     border-top: 1px solid var(--border);
+  }
+
+  .studio-flow-route .flow-reader-pane {
+    order: 1;
+  }
+
+  .studio-flow-route .flow-side-pane {
+    order: 2;
+  }
+
+  .studio-flow-route .flow-index-pane {
+    order: 3;
+    border-top: 1px solid var(--border);
+    border-bottom: 0;
   }
 
   .roadmap-plan-head {
@@ -3882,6 +4109,7 @@ tbody tr:hover {
   .ai-setup-container.card,
   .skill-library-workbench.card,
   .checklist-workbench.card,
+  .flow-workbench.card,
   .productivity-layout,
   .invoice-layout,
   .preview-shell,
@@ -3913,6 +4141,7 @@ tbody tr:hover {
   .ai-setup-index,
   .skill-index-pane,
   .checklist-index-pane,
+  .flow-index-pane,
   .mail-list-pane,
   .chat-list-pane,
   .chat-profile-pane {
@@ -3927,7 +4156,8 @@ tbody tr:hover {
   .roadmap-detail-pane,
   .ai-workflow-rail,
   .skill-side-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-side-pane {
     grid-template-columns: 1fr;
     border-left: 0;
     border-top: 1px solid var(--border);
@@ -3944,7 +4174,10 @@ tbody tr:hover {
   .skill-side-pane,
   .checklist-index-pane,
   .checklist-reader-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-index-pane,
+  .flow-reader-pane,
+  .flow-side-pane {
     overflow: visible;
     padding: 0.875rem;
   }
@@ -4014,13 +4247,20 @@ tbody tr:hover {
   }
 
   .skill-list-button,
-  .checklist-list-button {
+  .checklist-list-button,
+  .flow-list-button {
     grid-template-columns: 1fr;
   }
 
   .skill-list-button em,
-  .checklist-list-button em {
+  .checklist-list-button em,
+  .flow-list-button em {
     justify-self: flex-start;
+  }
+
+  .flow-step-node,
+  .flow-step-node dl {
+    grid-template-columns: 1fr;
   }
 
   .ai-command-card code {
@@ -4048,7 +4288,8 @@ tbody tr:hover {
   .blog-roadmap-workbench.card,
   .ai-setup-container.card,
   .skill-library-workbench.card,
-  .checklist-workbench.card {
+  .checklist-workbench.card,
+  .flow-workbench.card {
     height: auto;
     min-height: auto;
     overflow: visible;
@@ -4175,6 +4416,10 @@ tbody tr:hover {
   .roadmap-day-grid,
   .profile-link-grid {
     grid-template-columns: 1fr;
+  }
+
+  .studio-flow-route .metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .route-actions {

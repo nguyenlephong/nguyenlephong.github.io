@@ -2,6 +2,8 @@ import {
   blogRoadmapTicketChecklist,
   blogRoadmapTopics,
   studioAiSkills,
+  studioFlowGroups,
+  studioFlows,
   studioWorkflowChecklists
 } from "./studio.data";
 import type {
@@ -10,6 +12,9 @@ import type {
   StudioAiSkill,
   StudioChecklistSection,
   StudioChecklistStep,
+  StudioFlow,
+  StudioFlowGroup,
+  StudioFlowStep,
   StudioWorkflowChecklist
 } from "./studio.data";
 
@@ -47,6 +52,33 @@ type LocalizedRoadmapTopicCopy = {
   entries: string[];
 };
 
+type LocalizedFlowGroupCopy = {
+  title: string;
+  subtitle: string;
+  description: string;
+};
+
+type LocalizedFlowStepCopy = {
+  title: string;
+  detail: string;
+  evidence: string;
+  output: string;
+};
+
+type LocalizedFlowCopy = {
+  title: string;
+  summary: string;
+  seoTitle: string;
+  seoDescription: string;
+  useWhen: string;
+  outcome: string;
+  officeExample: string;
+  tags: string[];
+  steps: Record<string, LocalizedFlowStepCopy>;
+  artifacts: string[];
+  cvSignals: string[];
+};
+
 const vietnameseSkillCopies: Record<string, LocalizedSkillCopy> = {
   "code-review": {
     title: "Code Review Expert",
@@ -62,18 +94,24 @@ const vietnameseSkillCopies: Record<string, LocalizedSkillCopy> = {
       "Chứng minh correctness: control flow, state transitions, boundary cases, nullability, concurrency, idempotency và failure paths.",
       "Threat model thay đổi: OWASP Top 10, injection, authz/authn bypass, IDOR, CSRF/XSS, secrets, PII và tenant isolation.",
       "Đánh giá kiến trúc: coupling, leaky abstraction, cyclic dependency, API compatibility, schema drift và maintenance cost.",
+      "Review data structure: array, map, set, queue, tree, index, cache và DTO phải hợp access pattern, không vô tình biến lookup/grouping thành O(n) ở đường nóng.",
+      "Review design pattern: chỉ dùng pattern quen thuộc khi nó giảm complexity thật, ví dụ Strategy cho rule thay thế được, Factory cho creation policy, Adapter cho external API, Repository cho persistence boundary, State Machine cho workflow nhiều bước.",
+      "Review clean architecture: domain rule không phụ thuộc UI, framework, transport, ORM, analytics hay vendor SDK; dependency nên đi vào trong thay vì kéo business logic ra ngoài edge.",
+      "Review boundary: application service giữ orchestration, domain service giữ business rule, repository/gateway giữ persistence và integration, utility chỉ giữ transform/validator/formatter/parser thuần.",
       "Kiểm tra vận hành: N+1 query, algorithmic blowup, memory pressure, hydration regression, observability gap và rollback risk.",
       "Đối chiếu verification: unit, integration, E2E, contract, accessibility và regression tests có phủ đúng behavior mới không."
     ],
     output: [
       "Findings xếp theo severity: Blocker, Major, Minor, Nit.",
       "Mỗi finding có file/line, evidence, impact và smallest practical fix.",
+      "Architecture/code-shape note khi change thêm service, repository, helper dùng chung, design pattern hoặc data structure mới.",
       "Open questions chỉ khi ảnh hưởng tới correctness, security, rollout hoặc product behavior.",
       "Residual risk và verification gaps còn lại."
     ],
     guardrails: [
       "KHÔNG tiêu review budget vào preference cá nhân nếu behavior, convention và tests đã ổn.",
       "KHÔNG approve business logic mới nếu thiếu meaningful verification.",
+      "KHÔNG gom business logic stateful vào file utils chỉ để nhìn gọn; nếu có ownership/domain rule thì tách service hoặc module rõ.",
       "KHÔNG đòi rewrite toàn bộ design nếu current design chưa tạo rủi ro đo được."
     ]
   },
@@ -864,17 +902,20 @@ const vietnameseSkillExpertAddenda: Record<string, VietnameseSkillExpertAddendum
     heuristics: [
       "Đọc diff qua invariant: tiền, quyền truy cập, identity, dữ liệu, locale, SEO, analytics, cache và rollback.",
       "Trace cả happy path lẫn abandoned path: double click, stale tab, retry, partial write, duplicate event, disabled user và request timeout.",
-      "Xem test như evidence, không xem test như bảo chứng; mock phải được đối chiếu với contract thật."
+      "Xem test như evidence, không xem test như bảo chứng; mock phải được đối chiếu với contract thật.",
+      "Review code shape trước code style: data structure, design pattern, service boundary và helper extraction phải hợp workflow thật."
     ],
     failureModes: [
       "Race condition, stale closure, optimistic UI rollback hoặc retry tạo side effect trùng nhưng unit test vẫn xanh.",
       "Một sửa UI nhỏ làm vỡ tracking, canonical path, accessibility, focus order hoặc localized copy ở route khác.",
-      "Migration hoặc schema change hợp lệ về cú pháp nhưng tạo lock, backfill chậm, old-reader break hoặc rollback không thể làm sạch data."
+      "Migration hoặc schema change hợp lệ về cú pháp nhưng tạo lock, backfill chậm, old-reader break hoặc rollback không thể làm sạch data.",
+      "Tên design pattern nghe đúng nhưng boundary sai: business rule trôi vào controller, persistence trôi lên UI, hoặc generic utility bắt đầu giữ product state."
     ],
     gates: [
       "Finding Blocker/Major phải có evidence, impact và smallest fix.",
       "High-risk diff phải có negative-path verification hoặc residual-risk note rõ.",
-      "Reviewer phải biết signal nào chứng minh production khỏe sau merge."
+      "Reviewer phải biết signal nào chứng minh production khỏe sau merge.",
+      "Diff thêm service, repository, shared utility, pattern hoặc data structure mới phải có ghi chú ngắn về ownership và lý do chọn."
     ]
   },
   "frontend-architecture": {
@@ -1867,6 +1908,330 @@ const vietnameseBlogRoadmapTicketChecklist = [
   "Chạy content checks trước khi đánh dấu writing ticket sẵn sàng."
 ];
 
+const vietnameseFlowGroupCopies: Record<string, LocalizedFlowGroupCopy> = {
+  architecture: {
+    title: "Kiến trúc & System Design",
+    subtitle: "Chốt quyết định trước khi vẽ box.",
+    description:
+      "Các flow dành cho system design, architecture review và những quyết định khó ở ranh giới module, dữ liệu, team và vận hành."
+  },
+  production: {
+    title: "Production & Delivery",
+    subtitle: "Cẩn thận hơn khi đã có người dùng thật.",
+    description:
+      "Các flow dành cho incident, release readiness, rollout gate và handoff vận hành, để bảo vệ reliability mà không làm mọi thay đổi bị nặng nề."
+  },
+  "ai-and-career": {
+    title: "AI Delivery & Career Proof",
+    subtitle: "Biến công việc thành leverage.",
+    description:
+      "Các flow dành cho delivery có AI hỗ trợ và câu chuyện portfolio, giúp engineering judgment hiện rõ mà không biến thành copy marketing."
+  }
+};
+
+const vietnameseFlowCopies: Record<string, LocalizedFlowCopy> = {
+  "system-design": {
+    title: "Flow System Design",
+    summary:
+      "Một đường đi bình tĩnh từ đề bài còn rộng tới kiến trúc rõ: requirement, capacity, data, API, failure modes và trade-off đi đúng thứ tự.",
+    seoTitle: "Flow system design cho senior software engineer",
+    seoDescription:
+      "Flow system design thực dụng để làm rõ requirement, chọn boundary, model dữ liệu, xử lý scale và giải thích trade-off mạch lạc.",
+    useWhen:
+      "Dùng khi đề bài còn rộng, ví dụ thiết kế notification system, booking platform, feed hoặc một workflow nội bộ.",
+    outcome:
+      "Một narrative có thể share, thể hiện judgment senior: điều gì quan trọng, điều gì có thể chờ, rủi ro nằm ở đâu và hệ thống sẽ tiến hóa thế nào.",
+    officeExample:
+      "Product manager muốn thêm flow onboarding đối tác. Thay vì nhảy ngay vào service và queue, flow này bắt đầu từ ai đổi dữ liệu nào, bước nào cần duyệt và rollback quan trọng ở đâu.",
+    tags: ["System Design", "Architecture", "Trade-off", "Interview"],
+    steps: {
+      "frame-problem": {
+        title: "Đóng khung bài toán",
+        detail: "Nói lại user, job, constraint và non-goal trước khi gọi tên công nghệ.",
+        evidence: "Mục tiêu business, actor, read/write path, latency hoặc reliability expectation.",
+        output: "Problem frame ngắn và danh sách assumption cần confirm."
+      },
+      "shape-interfaces": {
+        title: "Định hình interface",
+        detail: "Phác API, event, user action và admin action quanh workflow thật.",
+        evidence: "Request mẫu, tên event, idempotency, permission và error path.",
+        output: "Ghi chú API/event contract cùng các boundary đầu tiên."
+      },
+      "model-data": {
+        title: "Model dữ liệu",
+        detail: "Chọn ownership, consistency rule, index, retention và hướng migration.",
+        evidence: "Entity chính, invariant, query pattern, lifecycle state và nhu cầu audit.",
+        output: "Data sketch kèm consistency và migration note."
+      },
+      "design-runtime": {
+        title: "Thiết kế runtime",
+        detail: "Đặt service, queue, cache, worker và gateway chỉ khi chúng giải quyết một áp lực rõ.",
+        evidence: "Capacity estimate, fan-out, dependency limit, hot path và deploy constraint.",
+        output: "Runtime architecture có lý do cho từng phần chuyển động."
+      },
+      "stress-failures": {
+        title: "Stress failure modes",
+        detail: "Đi qua dependency chậm, request trùng, partial write, deploy lỗi và stale read.",
+        evidence: "Timeout, retry budget, DLQ, backpressure, observability và rollback trigger.",
+        output: "Failure-mode table với mitigation và monitoring hook."
+      },
+      "explain-evolution": {
+        title: "Giải thích hướng tiến hóa",
+        detail: "Nói rõ bản đầu tiên thực tế, điểm gãy và design tiếp theo khi traffic hoặc team lớn hơn.",
+        evidence: "Sức team hiện tại, đường tăng traffic, độ trưởng thành vận hành và trần chi phí.",
+        output: "Roadmap theo phiên bản: v1, trigger scale và alternative đã từ chối."
+      }
+    },
+    artifacts: ["Problem frame", "API/event notes", "Data ownership sketch", "Runtime diagram", "Failure-mode table", "Evolution roadmap"],
+    cvSignals: ["System design judgment", "Backend và platform thinking", "Giao tiếp trade-off", "Operational maturity"]
+  },
+  "architecture-decision": {
+    title: "Flow quyết định kiến trúc",
+    summary:
+      "Một đường RFC/ADR gọn để biến nhiều lựa chọn rối thành một recommendation rõ, có trade-off và rollback.",
+    seoTitle: "Flow quyết định kiến trúc với tư duy RFC và ADR",
+    seoDescription:
+      "Flow quyết định kiến trúc để so sánh option, cân trade-off, ghi rủi ro và align team trước khi implement.",
+    useWhen:
+      "Dùng trước khi feature vượt ranh giới module, đổi ownership dữ liệu, thêm integration mới hoặc kéo theo dependency khó quay lại.",
+    outcome:
+      "Một decision note giúp teammate hiểu không chỉ chọn gì, mà vì sao các hướng khác bị loại.",
+    officeExample:
+      "Team đang tranh luận có nên thêm queue cho partner sync. Flow này tách nhu cầu thật, hành vi khi lỗi, chi phí support của team và thời điểm async processing thật sự đáng giá.",
+    tags: ["RFC", "ADR", "Architecture Review", "Decision Matrix"],
+    steps: {
+      "name-decision": {
+        title: "Gọi tên quyết định",
+        detail: "Viết quyết định thành một câu và thu scope đủ nhỏ để có thể approve.",
+        evidence: "Nỗi đau hiện tại, hệ thống bị ảnh hưởng, owner, deadline và phần ngoài scope.",
+        output: "Decision statement có scope và non-goal."
+      },
+      "extract-invariants": {
+        title: "Rút invariant",
+        detail: "Liệt kê điều luôn phải đúng với user, tiền, permission, data, audit và support.",
+        evidence: "Domain rule, compliance, support workflow và incident production.",
+        output: "Danh sách invariant mà mọi option phải giữ được."
+      },
+      "compare-options": {
+        title: "So sánh option thật",
+        detail: "Đánh giá hai hoặc ba hướng thực dụng, không dựng một design hoàn hảo để thắng strawman.",
+        evidence: "Chi phí delivery, reversibility, performance, reliability, fit với team và migration về sau.",
+        output: "Option table với trade-off trung thực."
+      },
+      "risk-gates": {
+        title: "Đặt risk gate",
+        detail: "Chốt validation, telemetry, rollout và rollback trước khi implementation bắt đầu.",
+        evidence: "Test, dashboard, feature flag, migration script, runbook và owner sign-off.",
+        output: "Decision gate và launch condition."
+      },
+      "write-decision": {
+        title: "Viết decision note",
+        detail: "Giữ note đủ ngắn để đọc lúc review, nhưng đủ đầy để sống qua handoff.",
+        evidence: "Option được chọn, alternative bị loại, accepted debt và revisit trigger.",
+        output: "ADR/RFC entry sẵn sàng review."
+      }
+    },
+    artifacts: ["Decision statement", "Invariant list", "Option matrix", "Risk gates", "ADR/RFC note"],
+    cvSignals: ["Architecture leadership", "Làm rõ requirement", "Align cross-team", "Quản trị rủi ro"]
+  },
+  "incident-response": {
+    title: "Flow xử lý incident",
+    summary:
+      "Một đường xử lý incident từ signal đầu tiên tới rollback, communication, root cause và follow-up thật sự.",
+    seoTitle: "Flow xử lý production incident cho engineering team",
+    seoDescription:
+      "Flow incident cho triage, kiểm soát blast radius, rollback, communication, root cause analysis và follow-up.",
+    useWhen:
+      "Dùng khi alert, phản hồi khách hàng, deploy regression hoặc lỗi đối tác tạo áp lực và team cần một thứ tự bình tĩnh.",
+    outcome:
+      "Incident được kiểm soát: decision visible, user được bảo vệ và postmortem tạo ra prevention work thật.",
+    officeExample:
+      "Sau release, checkout latency tăng và support nhận complaint trùng lặp. Flow này giữ team khỏi đoán mò bằng cách tách signal, mitigation, rollback và root cause.",
+    tags: ["Incident", "SRE", "Rollback", "Postmortem"],
+    steps: {
+      "confirm-signal": {
+        title: "Xác nhận signal",
+        detail: "Tách incident có impact thật khỏi metric nhiễu hoặc một dependency chập chờn.",
+        evidence: "Alert, dashboard, log, trace, customer report, timeline deploy và segment bị ảnh hưởng.",
+        output: "Trạng thái incident, severity và owner ban đầu."
+      },
+      "contain-blast-radius": {
+        title: "Giới hạn blast radius",
+        detail: "Bảo vệ user trước bằng flag, rate limit, rollback, shift traffic hoặc tạm disable.",
+        evidence: "Feature flag, release version, dependency health, error budget và rollback path an toàn.",
+        output: "Mitigation action kèm impact dự kiến."
+      },
+      "coordinate-room": {
+        title: "Điều phối phòng incident",
+        detail: "Chia incident lead, comms, investigation và verification để team không giẫm chân nhau.",
+        evidence: "Owner, timestamp, hypothesis hiện tại, message cho khách hàng và mốc update tiếp theo.",
+        output: "Timeline incident và cadence communication chung."
+      },
+      "verify-recovery": {
+        title: "Xác nhận recovery",
+        detail: "Đừng đóng incident chỉ vì một graph đẹp hơn; kiểm user path và downstream queue.",
+        evidence: "SLO, synthetic check, real traffic, queue depth, support signal và error-rate recovery.",
+        output: "Recovery confirmation và watch window."
+      },
+      "write-postmortem": {
+        title: "Viết follow-up",
+        detail: "Biến incident thành prevention work mà không đổ lỗi cho người chạm deploy.",
+        evidence: "Root cause, contributing factor, missed detection và prevention option.",
+        output: "Postmortem, action item, owner và due date."
+      }
+    },
+    artifacts: ["Severity note", "Mitigation log", "Incident timeline", "Recovery checklist", "Postmortem actions"],
+    cvSignals: ["Production ownership", "Reliability thinking", "Stakeholder communication", "Bình tĩnh khi áp lực"]
+  },
+  "release-readiness": {
+    title: "Flow release readiness",
+    summary:
+      "Một rollout gate để kiểm scope, test, observability, migration safety, communication và rollback trước khi release.",
+    seoTitle: "Flow release readiness cho rollout phần mềm an toàn",
+    seoDescription:
+      "Flow release readiness để kiểm test, analytics, migration safety, observability, communication, rollout gate và rollback plan.",
+    useWhen:
+      "Dùng trước khi feature lên production, nhất là khi chạm checkout, authentication, data migration, integration hoặc route public.",
+    outcome:
+      "Một release có thể giải thích, quan sát, pause và rollback mà không cần dọn dẹp kiểu chữa cháy sau đó.",
+    officeExample:
+      "Team chuẩn bị ship một dashboard filter mới có analytics và SEO. Flow này kiểm behavior, tracking, empty state và rollback trước khi nút deploy trở nên quá hấp dẫn.",
+    tags: ["Release", "Rollout", "QA", "Observability"],
+    steps: {
+      "confirm-scope": {
+        title: "Xác nhận scope",
+        detail: "So release với ticket, acceptance criteria, non-goal và behavior user thấy được.",
+        evidence: "Ticket, diff summary, screenshot, copy change và route bị ảnh hưởng.",
+        output: "Scope release và non-goal rõ ràng."
+      },
+      "verify-behavior": {
+        title: "Verify behavior",
+        detail: "Chạy check đúng với risk: unit, integration, E2E, accessibility, typecheck và smoke thủ công.",
+        evidence: "Command output, test coverage, browser check, mobile check và gap còn lại.",
+        output: "Verification note kèm residual risk."
+      },
+      "check-data": {
+        title: "Kiểm data và migration",
+        detail: "Review schema change, backfill, index, cache, analytics event và SEO path.",
+        evidence: "Migration plan, rollback script, data volume, event name, canonical URL và sitemap impact.",
+        output: "Checklist sẵn sàng cho data và tracking."
+      },
+      "prepare-observability": {
+        title: "Chuẩn bị observability",
+        detail: "Đảm bảo release quan sát được bằng signal có thể hành động, không chỉ graph đẹp.",
+        evidence: "Dashboard, alert, log, trace, feature flag và owner coverage.",
+        output: "Watch plan và escalation path."
+      },
+      "rollout-decision": {
+        title: "Chốt rollout decision",
+        detail: "Chọn gradual rollout, release ngay, hold hoặc rollback dựa trên evidence.",
+        evidence: "Risk score, user segment, support readiness, deploy window và rollback confidence.",
+        output: "Go/hold decision kèm rollback trigger."
+      }
+    },
+    artifacts: ["Scope note", "Verification evidence", "Data và analytics checklist", "Watch plan", "Rollout decision"],
+    cvSignals: ["End-to-end delivery", "QA judgment", "SEO và analytics awareness", "Release ownership"]
+  },
+  "ai-delivery": {
+    title: "Flow delivery có AI hỗ trợ",
+    summary:
+      "Một cách dùng AI agent có kiểm soát cho implementation, không mất scope, privacy, test và judgment của engineer.",
+    seoTitle: "Flow delivery phần mềm có AI hỗ trợ và human review",
+    seoDescription:
+      "Flow AI-assisted delivery để scope task, đóng gói context, apply change, verify behavior và handoff công việc sẵn sàng review.",
+    useWhen:
+      "Dùng khi AI agent hỗ trợ coding, review, research, docs, refactor hoặc sinh test trong một codebase thật.",
+    outcome:
+      "Một change sẵn sàng review, trong đó AI giúp tăng tốc và tăng coverage, còn engineer vẫn giữ ownership về scope, correctness và release risk.",
+    officeExample:
+      "Một teammate yêu cầu feature mới trong Studio. Flow này biến request thành context có ranh giới, nói rõ phần không được đụng, verify analytics/SEO rồi review diff trước khi commit.",
+    tags: ["AI Delivery", "Agents", "Code Review", "Verification"],
+    steps: {
+      "scope-task": {
+        title: "Scope task",
+        detail: "Dịch request thành acceptance criteria, surface bị ảnh hưởng, non-goal và privacy boundary.",
+        evidence: "User request, repo instruction, local constraint, analytics rule và quyền deploy.",
+        output: "Task brief có ranh giới rõ."
+      },
+      "package-context": {
+        title: "Đóng gói context",
+        detail: "Đưa cho agent file, example, convention, test và cảnh báo thật sự liên quan.",
+        evidence: "Pattern hiện có, component tương tự, data model, locale behavior và test.",
+        output: "Context pack và implementation hint."
+      },
+      "execute-small": {
+        title: "Làm theo lát nhỏ",
+        detail: "Giữ edit hẹp, dùng abstraction sẵn có và verify từng boundary rủi ro trước khi đi tiếp.",
+        evidence: "Diff chunk, compile feedback, UI behavior và file ngoài scope không đổi.",
+        output: "Implementation diff tập trung."
+      },
+      "verify-review": {
+        title: "Verify và review",
+        detail: "Chạy test, đọc diff, kiểm chất lượng copy, analytics wiring và security/privacy implication.",
+        evidence: "Test output, manual check, changed-file list và residual risk.",
+        output: "Verification summary và review note."
+      },
+      "handoff-clean": {
+        title: "Handoff sạch",
+        detail: "Chuẩn bị commit, PR, release note hoặc deploy chỉ khi request của người dùng cho phép.",
+        evidence: "Git status, staged diff, commit message, PR checklist và trạng thái approval.",
+        output: "Handoff sẵn sàng cho commit/PR/deploy."
+      }
+    },
+    artifacts: ["Task brief", "Context pack", "Focused diff", "Verification note", "Review handoff"],
+    cvSignals: ["AI fluency", "Engineering judgment", "Privacy awareness", "Modern delivery practice"]
+  },
+  "portfolio-story": {
+    title: "Flow kể câu chuyện portfolio",
+    summary:
+      "Một cách biến công việc kỹ thuật thật thành câu chuyện CV, blog hoặc phỏng vấn rõ ràng mà không đánh bóng quá mức.",
+    seoTitle: "Flow kể câu chuyện engineering portfolio cho CV và phỏng vấn",
+    seoDescription:
+      "Flow portfolio story để biến công việc engineering thành context, action, trade-off, impact, evidence và bài học tiếp theo.",
+    useWhen:
+      "Dùng sau một project, incident, migration, release, khoảnh khắc leadership hoặc trade-off khó đáng để trở thành career evidence.",
+    outcome:
+      "Một câu chuyện grounded có thể chuyển thành CV bullet, blog post, câu trả lời phỏng vấn hoặc portfolio case study.",
+    officeExample:
+      "Một refactor làm giảm support noise nhưng không có headline quá kịch tính. Flow này giữ lại before/after, áp lực quyết định và giá trị vận hành âm thầm.",
+    tags: ["CV", "Portfolio", "Writing", "Career"],
+    steps: {
+      "capture-context": {
+        title: "Ghi lại context",
+        detail: "Nói rõ tình huống team, pain của user, constraint và vì sao việc này quan trọng lúc đó.",
+        evidence: "Ticket, incident note, stakeholder request, metric, support theme hoặc code-health signal.",
+        output: "Context paragraph cụ thể, không phóng đại."
+      },
+      "show-actions": {
+        title: "Cho thấy hành động",
+        detail: "Mô tả điều anh đổi, quyết định, phối hợp hoặc làm đơn giản hơn bằng ngôn ngữ engineering rõ.",
+        evidence: "Diff, design note, PR discussion, rollout plan, test evidence hoặc migration record.",
+        output: "Action list có cả technical detail và collaboration detail."
+      },
+      "name-tradeoffs": {
+        title: "Gọi tên trade-off",
+        detail: "Giải thích constraint làm công việc này đáng chú ý: thời gian, reliability, UX, cost, privacy hoặc sức team.",
+        evidence: "Option bị từ chối, accepted debt, rollback plan hoặc future trigger.",
+        output: "Trade-off note thể hiện judgment."
+      },
+      "prove-impact": {
+        title: "Chứng minh impact",
+        detail: "Dùng số liệu khi có, nhưng vẫn ghi lại risk giảm, handoff sạch hơn, reliability tốt hơn hoặc support nhanh hơn.",
+        evidence: "Before/after metric, customer signal, deploy health, incident giảm hoặc adoption của team.",
+        output: "Impact statement có evidence và caveat."
+      },
+      "shape-story": {
+        title: "Định dạng câu chuyện",
+        detail: "Biến raw material thành đúng format cho CV, interview, blog hoặc portfolio page.",
+        evidence: "Audience, keyword, role đang nhắm tới, proof link và boundary bảo mật.",
+        output: "CV bullet, STAR answer, blog outline hoặc case-study draft."
+      }
+    },
+    artifacts: ["Context paragraph", "Action list", "Trade-off note", "Impact statement", "Story draft"],
+    cvSignals: ["Giao tiếp impact", "Senior engineer narrative", "Business awareness", "Reflective practice"]
+  }
+};
+
 function isVietnameseLocale(locale: string): boolean {
   return locale.toLowerCase().split("-")[0] === "vi";
 }
@@ -1937,6 +2302,49 @@ function localizeRoadmapTopic(topic: BlogRoadmapTopic): BlogRoadmapTopic {
   };
 }
 
+function localizeFlowStep(step: StudioFlowStep, flowCopy: LocalizedFlowCopy): StudioFlowStep {
+  const copy = flowCopy.steps[step.id];
+  return {
+    ...step,
+    title: copy?.title ?? step.title,
+    detail: copy?.detail ?? step.detail,
+    evidence: copy?.evidence ?? step.evidence,
+    output: copy?.output ?? step.output
+  };
+}
+
+function localizeFlow(flow: StudioFlow): StudioFlow {
+  const copy = vietnameseFlowCopies[flow.id];
+  if (!copy) return flow;
+
+  return {
+    ...flow,
+    title: copy.title,
+    summary: copy.summary,
+    seoTitle: copy.seoTitle,
+    seoDescription: copy.seoDescription,
+    useWhen: copy.useWhen,
+    outcome: copy.outcome,
+    officeExample: copy.officeExample,
+    tags: copy.tags,
+    steps: flow.steps.map((step) => localizeFlowStep(step, copy)),
+    artifacts: copy.artifacts,
+    cvSignals: copy.cvSignals
+  };
+}
+
+function localizeFlowGroup(group: StudioFlowGroup): StudioFlowGroup {
+  const copy = vietnameseFlowGroupCopies[group.id];
+  if (!copy) return group;
+
+  return {
+    ...group,
+    title: copy.title,
+    subtitle: copy.subtitle,
+    description: copy.description
+  };
+}
+
 export function getLocalizedStudioAiSkills(locale: string): StudioAiSkill[] {
   if (!isVietnameseLocale(locale)) return studioAiSkills;
 
@@ -1978,4 +2386,14 @@ export function getLocalizedBlogRoadmapTopics(locale: string): BlogRoadmapTopic[
 export function getLocalizedBlogRoadmapTicketChecklist(locale: string): string[] {
   if (!isVietnameseLocale(locale)) return blogRoadmapTicketChecklist;
   return vietnameseBlogRoadmapTicketChecklist;
+}
+
+export function getLocalizedStudioFlows(locale: string): StudioFlow[] {
+  if (!isVietnameseLocale(locale)) return studioFlows;
+  return studioFlows.map(localizeFlow);
+}
+
+export function getLocalizedStudioFlowGroups(locale: string): StudioFlowGroup[] {
+  if (!isVietnameseLocale(locale)) return studioFlowGroups;
+  return studioFlowGroups.map(localizeFlowGroup);
 }
