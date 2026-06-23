@@ -1139,6 +1139,26 @@
       "seriesOrder": 13
     },
     {
+      "slug": "dependency-direction-in-plain-language",
+      "category": "architecture",
+      "title": "Dependency direction bằng ngôn ngữ đời thường",
+      "summary": "Dependency direction là một quy tắc đơn giản giúp team thống nhất: business rule ổn định không nên phụ thuộc vào chi tiết delivery dễ đổi. Bài viết dùng một tình huống release nhỏ để giải thích vì sao hướng phụ thuộc giúp code, review và trao đổi trong team bình tĩnh hơn.",
+      "date": "2026-06-24",
+      "readingMinutes": 8,
+      "tags": [
+        "Kiến trúc phần mềm",
+        "Dependency Direction",
+        "Tổ chức mã nguồn",
+        "Team Alignment",
+        "Technical Debt",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 14
+    },
+    {
       "slug": "anatomy-of-a-healthy-one-on-one",
       "category": "culture",
       "title": "Một buổi 1-on-1 lành mạnh gồm những gì?",

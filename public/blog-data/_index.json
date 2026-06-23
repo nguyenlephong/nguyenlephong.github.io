@@ -1178,6 +1178,26 @@
       "seriesOrder": 13
     },
     {
+      "slug": "dependency-direction-in-plain-language",
+      "category": "architecture",
+      "title": "Dependency Direction in Plain Language",
+      "summary": "Dependency direction is the simple team rule that says stable business ideas should not depend on volatile delivery details. This explainer uses a small release scenario to show how the rule keeps code, reviews, and team conversations calmer.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Dependency Direction",
+        "Code Organization",
+        "Team Alignment",
+        "Technical Debt",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 14
+    },
+    {
       "slug": "anatomy-of-a-healthy-one-on-one",
       "category": "culture",
       "title": "The Anatomy of a Healthy 1-on-1",
