@@ -1,0 +1,19 @@
+{
+  "slug": "learning-to-say-no-as-a-developer",
+  "category": "perspectives",
+  "title": "开发者如何学习说不",
+  "summary": "说不不是难相处，而是为了保护 focus、quality 和 trust，把 tradeoff 讲清楚。",
+  "date": "2026-06-23",
+  "readingMinutes": 6,
+  "tags": [
+    "Personal Growth",
+    "Software Engineering",
+    "边界",
+    "Career Growth",
+    "沟通",
+    "Focus"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>请求在一天快结束时到来。听起来很小，就像很多请求刚出现时那样。\"明天前能不能也加这个？\" release 很近，大家都累了，也都想帮忙。年轻一点的我大概会很快说 yes。</p>\n<p>开发者常被训练去解决，而不是拒绝。我们喜欢有用，喜欢在限制中找路。所以暂停一下的人，有时会被误解成不合作。</p>\n<p>学习说不，不是学习消极。它是保护一个真实 yes 所需要的条件。隐藏风险的 yes，并不是长久的善意。</p>\n<p>第一步是用 tradeoff 的语言说话。我们明天可以做，但 reporting task 要移动。我们可以放进这次 release，但需要拿掉另一个 change，或接受更窄的 test scope。</p>\n<p>第二步是区分 urgent 和 important。production down、customer blocked、security issue 是真正紧急的。有些紧急只是情绪上的，因为会议带来了压力，或者有人刚刚注意到问题。</p>\n<p>好的 no 通常带着替代方案。这次 release 不放，但我今天可以写 technical note 和 estimate。这个 API shape 不安全，但有一个更小的版本可以先做。</p>\n<p>最好的 no 往往是 calm、specific、early。冷静减少防御，具体避免听起来像偏好，足够早让团队还有选择。</p>\n<p>\"我想帮忙，而这个版本的计划以后会让我们受伤。\" 这句话同时包含关心和边界。在好的团队里，这样的 no 会成为可靠性的一部分。</p>"
+}

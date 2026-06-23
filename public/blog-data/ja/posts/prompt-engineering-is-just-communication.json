@@ -1,0 +1,19 @@
+{
+  "slug": "prompt-engineering-is-just-communication",
+  "category": "ai",
+  "title": "Prompt Engineering は結局コミュニケーションである",
+  "summary": "よい prompt は魔法の言葉ではありません。context、意図、constraints、example、feedback を明確にするコミュニケーションです。",
+  "date": "2026-06-23",
+  "readingMinutes": 6,
+  "tags": [
+    "AI",
+    "Prompt Engineering",
+    "Communication",
+    "LLM",
+    "AI Literacy",
+    "Developer Productivity"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>忙しい午後、同僚が \"これ見てもらえる？\" と聞く。file を開いても context がない。何をする code なのか、何が失敗したのか、何を試したのか、軽い意見がほしいのか深い review がほしいのか分からない。経験があっても、質問するか推測するしかない。</p>\n<p>AI model も似ている。Prompt engineering は秘密の言葉のように語られることがあるが、深いところではもっと普通の skill だ。別の知性が役に立つ仕事をできるように、状況を十分に伝えること。</p>\n<p>よい prompt は context から始まる。system は何か。audience は誰か。今の状態は何か。一番大事な constraint は何か。ここを省くと、model は一般的な仮定で空白を埋める。</p>\n<p>よい prompt は task も明確にする。\"これを改善して\" は願いに近い。\"非技術者の product manager 向けに、120 words 以内で、risk は残し jargon を減らして summary を書き直して\" は仕事になる。</p>\n<p>constraints は creativity を殺さない。方向を与える。新しい dependency を使わない、tone を calm にする、public API を保つ、code の前に tradeoff を説明する。これらは答えを現実に近づける。</p>\n<p>example は人間にも効くから AI にも効く。before/after、望む style、failing test、小さな成功例は、形をそろえる助けになる。</p>\n<p>feedback も会話の一部だ。\"抽象的すぎる\"、\"構造はそのままで tone をやわらかく\"、\"database constraint が抜けている\"。これは失敗ではなく、普通の collaboration signal である。</p>\n<p>Prompt engineering は、制約のある communication だ。よい ticket、よい code review、よい handoff を作る習慣は、そのままよい AI request を作る。</p>"
+}

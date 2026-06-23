@@ -312,6 +312,98 @@
         "개발자 생산성",
         "AI 도구"
       ]
+    },
+    {
+      "slug": "layered-vs-vertical-slice-architecture",
+      "category": "architecture",
+      "title": "레이어드 아키텍처와 Vertical Slice Architecture",
+      "summary": "레이어드 구조는 처음에는 깔끔해 보이고, vertical slice 는 변경을 실제 기능 가까이에 둡니다. 두 방식의 장점과 비용, 그리고 팀이 언제 방향을 바꿔야 하는지 차분히 살펴봅니다.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "소프트웨어 아키텍처",
+        "Vertical Slice Architecture",
+        "Layered Architecture",
+        "코드 구조",
+        "Modularity",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 13
+    },
+    {
+      "slug": "anatomy-of-a-healthy-one-on-one",
+      "category": "culture",
+      "title": "건강한 1-on-1 의 구조",
+      "summary": "건강한 1-on-1 은 부드러운 status meeting 이 아닙니다. context, 신뢰, feedback, 커리어 방향을 위한 작고 규칙적인 공간입니다.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "One-on-One",
+        "Management",
+        "Feedback",
+        "Leadership",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "prompt-engineering-is-just-communication",
+      "category": "ai",
+      "title": "Prompt Engineering 은 결국 커뮤니케이션입니다",
+      "summary": "좋은 prompt 는 마법 문장이 아닙니다. context, 의도, constraints, example, feedback 을 명확히 전하는 커뮤니케이션입니다.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Prompt Engineering",
+        "Communication",
+        "LLM",
+        "AI Literacy",
+        "Developer Productivity"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "learning-to-say-no-as-a-developer",
+      "category": "perspectives",
+      "title": "개발자로서 No 라고 말하는 법 배우기",
+      "summary": "No 라고 말하는 것은 까다롭게 구는 일이 아닙니다. focus, quality, trust 를 지키기 위해 tradeoff 를 보이게 만드는 일입니다.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Personal Growth",
+        "Software Engineering",
+        "Boundaries",
+        "Career Growth",
+        "Communication",
+        "Focus"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "daily-standup-status-report-or-strategy",
+      "category": "ways-of-working",
+      "title": "Daily standup: status report 인가, 오늘의 strategy 인가",
+      "summary": "Daily standup 은 어제를 보고하는 의식이 될 수도 있고, 오늘의 flow, risk, attention 을 맞추는 짧은 전략 대화가 될 수도 있습니다.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Daily Standup",
+        "Scrum",
+        "Team Collaboration",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
     }
   ]
 }

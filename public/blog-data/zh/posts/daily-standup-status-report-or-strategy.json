@@ -1,0 +1,19 @@
+{
+  "slug": "daily-standup-status-report-or-strategy",
+  "category": "ways-of-working",
+  "title": "Daily standup：status report 还是今天的 strategy？",
+  "summary": "Daily standup 可以变成汇报昨天的仪式，也可以成为关于 flow、risk 和今日注意力的短策略会。",
+  "date": "2026-06-23",
+  "readingMinutes": 6,
+  "tags": [
+    "Agile",
+    "Daily Standup",
+    "Scrum",
+    "Team Collaboration",
+    "Delivery",
+    "Ways of Working"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>9:30，视频会议打开，熟悉的小仪式开始。一个人读昨天，另一个人读 board，有人说 \"no blockers\"，但表情像在说别的。会议准时结束，却没有让今天更清楚。</p>\n<p>daily standup 太熟悉了，以至于团队容易忘记它的目的。它变成轮流汇报：昨天做了什么，今天做什么，有没有 blocker。这不是没用，但很容易表演。</p>\n<p>更好的 standup 是关于今天的短策略会。flow 哪里变慢了？哪个 risk 在变大？开始更多事情前，什么应该先完成？谁需要帮助？</p>\n<p>变化从看 work 而不是看 people 开始。可以从 board 右侧往左看：什么接近 done，什么卡在 review，什么 in progress 太久。</p>\n<p>blocker 也会更诚实。很多 blocker 并不戏剧化：未确认的 API contract、不稳定的 test environment、过载的 reviewer、没人愿意决定的 edge case。越早看到越好。</p>\n<p>standup 也应该保护 focus。如果三个 task 快完成时又开始五个新 task，团队可能在制造 motion，而不是完成。</p>\n<p>lead 和 manager 要小心。如果每个 update 都收到 judgment，会议会变成舞台。如果每个 blocker 都现场深挖，会议会变重。命名问题，决定谁会后续处理，然后继续。</p>\n<p>简单的问题是：这个 standup 改变了什么？如果连续很多天什么都没改变，它可能已经从协调变成汇报。</p>"
+}

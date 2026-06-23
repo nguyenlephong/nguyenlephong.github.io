@@ -312,6 +312,98 @@
         "開発者生産性",
         "AIツール"
       ]
+    },
+    {
+      "slug": "layered-vs-vertical-slice-architecture",
+      "category": "architecture",
+      "title": "レイヤードアーキテクチャと Vertical Slice Architecture",
+      "summary": "レイヤード構成は最初は整って見えます。一方、Vertical Slice は変更を実際の機能に近づけます。両者の良さ、痛み、移行の合図を落ち着いて考えます。",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "ソフトウェアアーキテクチャ",
+        "Vertical Slice Architecture",
+        "Layered Architecture",
+        "コード構成",
+        "Modularity",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 13
+    },
+    {
+      "slug": "anatomy-of-a-healthy-one-on-one",
+      "category": "culture",
+      "title": "健全な 1-on-1 のかたち",
+      "summary": "健全な 1-on-1 は、やわらかい status meeting ではありません。context、信頼、feedback、career direction を扱うための小さく定期的な場所です。",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "One-on-One",
+        "Management",
+        "Feedback",
+        "Leadership",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "prompt-engineering-is-just-communication",
+      "category": "ai",
+      "title": "Prompt Engineering は結局コミュニケーションである",
+      "summary": "よい prompt は魔法の言葉ではありません。context、意図、constraints、example、feedback を明確にするコミュニケーションです。",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Prompt Engineering",
+        "Communication",
+        "LLM",
+        "AI Literacy",
+        "Developer Productivity"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "learning-to-say-no-as-a-developer",
+      "category": "perspectives",
+      "title": "Developer として「No」と言う練習",
+      "summary": "No と言うことは難しく振る舞うことではありません。focus、quality、trust を守るために tradeoff を見えるようにする skill です。",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Personal Growth",
+        "Software Engineering",
+        "Boundaries",
+        "Career Growth",
+        "Communication",
+        "Focus"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "daily-standup-status-report-or-strategy",
+      "category": "ways-of-working",
+      "title": "Daily standup は status report か、それとも今日の strategy か",
+      "summary": "Daily standup は昨日を報告する儀式にも、今日の flow、risk、attention を整える短い戦略会話にもなります。",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Daily Standup",
+        "Scrum",
+        "Team Collaboration",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
     }
   ]
 }

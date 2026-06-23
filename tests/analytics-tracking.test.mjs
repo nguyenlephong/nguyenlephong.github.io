@@ -139,7 +139,10 @@ test("studio analytics and agent rules cover new workspace interactions", async 
     "studio_blog_roadmap_topic_select",
     "studio_blog_roadmap_status_filter",
     "studio_blog_roadmap_day_select",
-    "studio_blog_roadmap_ticket_action"
+    "studio_blog_roadmap_ticket_action",
+    "studio_flow_group_select",
+    "studio_flow_select",
+    "studio_flow_share"
   ]) {
     assert.match(analytics, new RegExp(`'${eventName}'`));
     assert.match(adminShell, new RegExp(`"${eventName}"`));

@@ -7,6 +7,7 @@ import PageTracker from "@/components/analytics/PageTracker";
 import { routing, type Locale } from "@/i18n/routing";
 import StudioWorkspace from "./StudioWorkspace";
 import { studioNotes } from "./studio.data";
+import { getLocalizedStudioFlows } from "./studio.localized-content";
 
 const seo = PAGE_SEO.studio;
 
@@ -62,6 +63,7 @@ export default async function StudioPage({ params }: Props) {
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   await getTranslations({ locale, namespace: "Pages.studio" });
+  const localizedFlows = getLocalizedStudioFlows(locale);
 
   const collectionLd = {
     "@context": "https://schema.org",
@@ -73,14 +75,29 @@ export default async function StudioPage({ params }: Props) {
     inLanguage: locale as Locale,
     isPartOf: { "@type": "WebSite", "@id": `${SITE_URL}/#website` },
     author: { "@type": "Person", "@id": `${SITE_URL}/#person` },
-    hasPart: studioNotes.map((note) => ({
-      "@type": "TechArticle",
-      headline: note.title,
-      description: note.summary,
-      url: `${SITE_URL}/${locale}/studio#${note.id}`,
-      dateModified: note.updatedAt,
-      keywords: note.tags.join(", ")
-    }))
+    hasPart: [
+      ...studioNotes.map((note) => ({
+        "@type": "TechArticle",
+        headline: note.title,
+        description: note.summary,
+        url: `${SITE_URL}/${locale}/studio#${note.id}`,
+        dateModified: note.updatedAt,
+        keywords: note.tags.join(", ")
+      })),
+      ...localizedFlows.map((flow) => ({
+        "@type": "HowTo",
+        name: flow.seoTitle,
+        description: flow.seoDescription,
+        url: `${SITE_URL}/${locale}/studio?route=flow-${flow.id}&flow=${flow.id}#flow-${flow.id}`,
+        keywords: flow.tags.join(", "),
+        step: flow.steps.map((step, index) => ({
+          "@type": "HowToStep",
+          position: index + 1,
+          name: step.title,
+          text: `${step.detail} ${step.output}`
+        }))
+      }))
+    ]
   };
 
   return (

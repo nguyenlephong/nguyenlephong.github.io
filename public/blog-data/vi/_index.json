@@ -141,7 +141,7 @@
       "slug": "true-cost-of-microservices",
       "category": "architecture",
       "title": "Chi phí thật sự của Microservices",
-      "summary": "Microservices có thể tạo ra quyền tự chủ thật cho team, nhưng cũng chuyển chi phí sang vận hành, dữ liệu, observability, testing và phối hợp. Một bài nhìn chậm lại để biết khi nào cái giá đó đáng trả, và khi nào modular monolith là lựa chọn tử tế hơn.",
+      "summary": "Microservices có thể tạo quyền tự chủ thật cho team, nhưng chuyển chi phí sang vận hành, dữ liệu, observability, testing và phối hợp. Bài viết hỏi khi nào cái giá đó đáng trả, và khi nào modular monolith tử tế hơn.",
       "date": "2026-06-22",
       "readingMinutes": 9,
       "tags": [
@@ -178,7 +178,7 @@
       "slug": "beyond-the-hype-what-llms-actually-understand",
       "category": "ai",
       "title": "Vượt qua hype: LLM thật sự hiểu điều gì?",
-      "summary": "LLM có thể tạo cảm giác như đang hiểu ta vì chúng rất giỏi nhận ra pattern, dùng context và tạo ra ngôn ngữ có vẻ hợp lý. Bài viết này tách bạch giữa kiểu hiểu hữu ích của máy và kiểu hiểu của con người, để mình dùng LLM tỉnh táo hơn: đưa context rõ, kiểm chứng claim, để ý khoảng trống phía sau câu trả lời tự tin, và giữ phán đoán con người gần với công việc.",
+      "summary": "LLM tạo cảm giác như hiểu ta vì chúng xử lý pattern, context và lập luận bằng ngôn ngữ rất tốt. Bài viết tách kiểu hiểu hữu ích của máy khỏi kiểu hiểu của con người để dùng AI tỉnh táo hơn.",
       "date": "2026-06-22",
       "readingMinutes": 8,
       "tags": [
@@ -402,6 +402,24 @@
         "User Stories",
         "Risk Management",
         "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "agile-is-dead-long-live-agile",
+      "category": "ways-of-working",
+      "title": "Agile đã chết, Agile muôn năm",
+      "summary": "Agile có vẻ đã chết khi ceremony thay thế học hỏi, board thay thế feedback, và meeting thiếu trust. Bài viết tách cái tên đã mệt mỏi khỏi thói quen còn hữu ích: thích nghi bằng những vòng feedback nhỏ và thật.",
+      "date": "2026-06-22",
+      "readingMinutes": 8,
+      "tags": [
+        "Agile",
+        "Ways of Working",
+        "Software Teams",
+        "Scrum",
+        "Delivery",
+        "Văn hoá team"
       ],
       "author": "Nguyen Le Phong",
       "featured": false
@@ -973,7 +991,7 @@
       "slug": "the-first-time-i-broke-production",
       "category": "perspectives",
       "title": "Lần đầu tiên tôi làm hỏng production",
-      "summary": "Một bài viết chậm lại về lần đầu một thay đổi nhỏ gây ảnh hưởng thật trên production: khoảng lặng sau alert, rollback, buổi incident review không dễ chịu, và bài học rằng kỹ thuật tốt được xây bằng thói quen, guardrail và ownership chung hơn là panic cá nhân.",
+      "summary": "Một thay đổi nhỏ trên production có thể dạy nhiều hơn một lần release sạch: panic trông ra sao, rollback quan trọng thế nào, và guardrail, thói quen, ownership chung biến incident thành kinh nghiệm như thế nào.",
       "date": "2026-06-22",
       "readingMinutes": 7,
       "tags": [
@@ -1068,7 +1086,7 @@
       "slug": "why-culture-fit-is-often-a-trap",
       "category": "culture",
       "title": "Vì sao \"Culture Fit\" thường là một cái bẫy",
-      "summary": "Culture fit nghe có vẻ vô hại, nhưng nhiều khi nó trở thành cách lịch sự để thưởng cho sự giống nhau và né những cuộc nói chuyện khó hơn về giá trị, hành vi và niềm tin. Một bài viết bình tĩnh về việc team nên tuyển người đóng góp cho văn hoá, không chỉ người làm mình thấy quen.",
+      "summary": "Culture fit nghe có vẻ trách nhiệm, nhưng có thể thưởng cho sự giống nhau và che đi những lo ngại mơ hồ. Bài viết tách tín hiệu giá trị thật khỏi cảm giác quen thuộc, và nghiêng về culture contribution.",
       "date": "2026-06-22",
       "readingMinutes": 8,
       "tags": [
@@ -1078,6 +1096,98 @@
         "Inclusion",
         "Lãnh đạo",
         "An toàn tâm lý"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "layered-vs-vertical-slice-architecture",
+      "category": "architecture",
+      "title": "Layered và Vertical Slice Architecture",
+      "summary": "Layered architecture dễ nhận ra và dễ dạy; vertical slice giữ thay đổi gần với feature người dùng chạm vào. Bài viết so sánh hai cách qua những thay đổi code hằng ngày và trade-off về boundary.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Kiến trúc phần mềm",
+        "Vertical Slice Architecture",
+        "Layered Architecture",
+        "Tổ chức mã nguồn",
+        "Modularity",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 13
+    },
+    {
+      "slug": "anatomy-of-a-healthy-one-on-one",
+      "category": "culture",
+      "title": "Một buổi 1-on-1 lành mạnh gồm những gì?",
+      "summary": "Một buổi 1-on-1 lành mạnh là khoảng đều đặn cho context, niềm tin, feedback và hướng phát triển nghề nghiệp, không phải status meeting nói bằng giọng mềm hơn.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "One-on-One",
+        "Quản lý",
+        "Feedback",
+        "Lãnh đạo",
+        "Niềm tin trong team"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "prompt-engineering-is-just-communication",
+      "category": "ai",
+      "title": "Prompt Engineering thật ra chỉ là giao tiếp rõ ràng",
+      "summary": "Prompt tốt là một dạng cộng tác rõ ràng: context, ý định, ràng buộc, ví dụ và feedback. Những thói quen giúp đồng đội làm việc tốt với nhau cũng giúp AI trả lời hữu ích và dễ kiểm chứng hơn.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Prompt Engineering",
+        "Giao tiếp",
+        "LLM",
+        "AI Literacy",
+        "Năng suất developer"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "learning-to-say-no-as-a-developer",
+      "category": "perspectives",
+      "title": "Học cách nói không khi làm developer",
+      "summary": "Nói không khi làm developer là cách bảo vệ focus, chất lượng và niềm tin. Bài viết nhìn vào cách từ chối, thương lượng lại scope và đưa ra trade-off rõ mà không phòng thủ hay vòng vo.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Personal Growth",
+        "Software Engineering",
+        "Ranh giới",
+        "Phát triển sự nghiệp",
+        "Giao tiếp",
+        "Focus"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "daily-standup-status-report-or-strategy",
+      "category": "ways-of-working",
+      "title": "Daily standup: báo cáo status hay chiến lược cho hôm nay?",
+      "summary": "Daily standup có thể là vòng kể lại hôm qua, hoặc một lần check flow ngắn: việc gì đang kẹt, điều gì vừa đổi, ai cần hỗ trợ, và rủi ro nào đáng nhìn trước khi ngày làm việc cuốn team đi.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Daily Standup",
+        "Scrum",
+        "Team Collaboration",
+        "Delivery",
+        "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
       "featured": false

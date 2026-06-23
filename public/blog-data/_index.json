@@ -141,7 +141,7 @@
       "slug": "true-cost-of-microservices",
       "category": "architecture",
       "title": "The True Cost of Microservices",
-      "summary": "Microservices can create real team autonomy, but they also move cost into operations, data consistency, observability, testing, and coordination. A calm reflection on when that cost is worth paying and when a modular monolith is the kinder architecture.",
+      "summary": "Microservices can create real team autonomy, but they move cost into operations, data consistency, observability, testing, and coordination. This piece asks when that cost is worth paying and when a modular monolith is the kinder architecture.",
       "date": "2026-06-22",
       "readingMinutes": 8,
       "tags": [
@@ -178,7 +178,7 @@
       "slug": "beyond-the-hype-what-llms-actually-understand",
       "category": "ai",
       "title": "Beyond the Hype: What LLMs Actually Understand",
-      "summary": "LLMs can look as if they understand us because they are very good at patterns, context, and language-shaped reasoning. This calm explainer separates useful machine understanding from human understanding, and shows how to work with LLMs more wisely: give context, verify claims, watch for confident gaps, and keep human judgment close to the work.",
+      "summary": "LLMs can feel like they understand us because they handle patterns, context, and language-shaped reasoning well. This explainer separates useful machine understanding from human understanding so teams can verify, constrain, and use AI with better judgment.",
       "date": "2026-06-22",
       "readingMinutes": 7,
       "tags": [
@@ -402,6 +402,24 @@
         "User Stories",
         "Risk Management",
         "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "agile-is-dead-long-live-agile",
+      "category": "ways-of-working",
+      "title": "Agile is Dead, Long Live Agile",
+      "summary": "Agile feels dead when ceremony replaces learning, boards replace feedback, and meetings lack trust. This piece separates the tired brand from the useful habit of adapting through small, honest feedback loops.",
+      "date": "2026-06-22",
+      "readingMinutes": 7,
+      "tags": [
+        "Agile",
+        "Ways of Working",
+        "Software Teams",
+        "Scrum",
+        "Delivery",
+        "Team Culture"
       ],
       "author": "Nguyen Le Phong",
       "featured": false
@@ -977,7 +995,7 @@
       "slug": "the-first-time-i-broke-production",
       "category": "perspectives",
       "title": "The First Time I Broke Production",
-      "summary": "A calm reflection on the first time a small production change caused real impact: the silence after the alert, the rollback, the awkward incident review, and the slower lesson that good engineering is built through habits, guardrails, and shared ownership rather than personal panic.",
+      "summary": "A small production change can teach more than a clean release: how panic feels, why rollback matters, and how guardrails, habits, and shared ownership turn an incident into experience.",
       "date": "2026-06-22",
       "readingMinutes": 6,
       "tags": [
@@ -1107,7 +1125,7 @@
       "slug": "why-culture-fit-is-often-a-trap",
       "category": "culture",
       "title": "Why \"Culture Fit\" is Often a Trap",
-      "summary": "Culture fit can sound harmless, but it often becomes a polite way to reward sameness and avoid harder conversations about values, behavior, and trust. A calm reflection on why teams should hire for culture contribution instead of comfort.",
+      "summary": "Culture fit sounds responsible, but it can reward sameness and hide vague concerns. This piece separates real values signals from comfort signals and argues for culture contribution.",
       "date": "2026-06-22",
       "readingMinutes": 7,
       "tags": [
@@ -1117,6 +1135,98 @@
         "Inclusion",
         "Leadership",
         "Psychological Safety"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "layered-vs-vertical-slice-architecture",
+      "category": "architecture",
+      "title": "Layered vs. Vertical Slice Architecture",
+      "summary": "Layered architecture is easy to recognize; vertical slices keep change close to the feature people use. This piece compares both styles through everyday code changes and the boundary trade-offs behind them.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Vertical Slice Architecture",
+        "Layered Architecture",
+        "Code Organization",
+        "Modularity",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 13
+    },
+    {
+      "slug": "anatomy-of-a-healthy-one-on-one",
+      "category": "culture",
+      "title": "The Anatomy of a Healthy 1-on-1",
+      "summary": "A healthy 1-on-1 is a regular place for context, trust, feedback, and career direction, not a softer status meeting. The useful version catches small signals before they become expensive.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "One-on-One",
+        "Management",
+        "Feedback",
+        "Leadership",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "prompt-engineering-is-just-communication",
+      "category": "ai",
+      "title": "Prompt Engineering Is Just Communication",
+      "summary": "Good prompts are clear collaboration: context, intent, constraints, examples, and feedback. The same habits that help teammates work together also help AI tools produce useful, verifiable answers.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Prompt Engineering",
+        "Communication",
+        "LLM",
+        "AI Literacy",
+        "Developer Productivity"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "learning-to-say-no-as-a-developer",
+      "category": "perspectives",
+      "title": "Learning to Say No as a Developer",
+      "summary": "Saying no as a developer is a way to protect focus, quality, and trust. This piece looks at how to decline, renegotiate scope, and offer trade-offs without becoming defensive or vague.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Personal Growth",
+        "Software Engineering",
+        "Boundaries",
+        "Career Growth",
+        "Communication",
+        "Focus"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "daily-standup-status-report-or-strategy",
+      "category": "ways-of-working",
+      "title": "The Daily Standup: Status Report or Strategy?",
+      "summary": "A practical look at turning daily standup from a round of yesterday updates into a short flow check: what is stuck, what changed, who needs help, and what deserves attention before the day starts pulling the team apart.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Daily Standup",
+        "Scrum",
+        "Team Collaboration",
+        "Delivery",
+        "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
       "featured": false

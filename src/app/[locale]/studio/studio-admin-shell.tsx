@@ -10,6 +10,8 @@ import {
   blogRoadmapTopics,
   defaultStudioNoteId,
   studioAiSkills,
+  studioFlowGroups,
+  studioFlows,
   studioFolders,
   studioNotes,
   studioWorkflowChecklists
@@ -17,6 +19,8 @@ import {
 import {
   getLocalizedBlogRoadmapTicketChecklist,
   getLocalizedBlogRoadmapTopics,
+  getLocalizedStudioFlowGroups,
+  getLocalizedStudioFlows,
   getLocalizedStudioAiSkills,
   getLocalizedStudioWorkflowChecklists
 } from "./studio.localized-content";
@@ -26,6 +30,7 @@ import type {
   BlogRoadmapTopic,
   StudioAiSkill,
   StudioChecklistStep,
+  StudioFlow,
   StudioNote,
   StudioNoteStatus,
   StudioWorkflowChecklist
@@ -91,6 +96,7 @@ import {
   LuSend,
   LuServer,
   LuSettings,
+  LuShare2,
   LuShoppingBag,
   LuSlidersHorizontal,
   LuSmile,
@@ -102,6 +108,7 @@ import {
   LuUserPlus,
   LuUsers,
   LuWaves,
+  LuWorkflow,
   LuX
 } from "react-icons/lu";
 import {
@@ -135,6 +142,12 @@ type StudioRouteId =
   | "ai-skills"
   | "delivery-checklists"
   | "blog-roadmap"
+  | "flow-system-design"
+  | "flow-architecture-decision"
+  | "flow-incident-response"
+  | "flow-release-readiness"
+  | "flow-ai-delivery"
+  | "flow-portfolio-story"
   | "calendar"
   | "kanban"
   | "invoice"
@@ -165,6 +178,7 @@ type StudioRouteKind =
   | "ai-skills"
   | "checklists"
   | "roadmap"
+  | "flows"
   | "calendar"
   | "kanban"
   | "invoice"
@@ -287,6 +301,19 @@ const STUDIO_FONT_STORAGE_KEY = "studio_font_preference";
 const LAYOUT_STORAGE_KEY = "studio_layout_preference";
 const STUDIO_LAYOUT_PREFERENCE_VERSION = 2;
 
+type StudioFlowId = (typeof studioFlows)[number]["id"];
+type StudioFlowRouteId = Extract<StudioRouteId, `flow-${string}`>;
+
+function flowRouteId(flowId: StudioFlowId): StudioFlowRouteId {
+  return `flow-${flowId}` as StudioFlowRouteId;
+}
+
+function flowIdFromRoute(routeId: StudioRouteId): StudioFlowId | null {
+  if (!routeId.startsWith("flow-")) return null;
+  const flowId = routeId.slice("flow-".length) as StudioFlowId;
+  return studioFlows.some((flow) => flow.id === flowId) ? flowId : null;
+}
+
 type StudioThemeSetting = "light" | "dark" | "system";
 type StudioResolvedTheme = "light" | "dark";
 type StudioFont = "inter" | "source" | "plex" | "atkinson" | "lora" | "be-vietnam";
@@ -294,7 +321,7 @@ type StudioContentLayout = "centered" | "full-width";
 type StudioNavbarStyle = "sticky" | "scroll";
 type StudioSidebarVariant = "inset" | "sidebar" | "floating";
 type StudioSidebarCollapsible = "icon" | "offcanvas";
-type StudioRouteActivationSource = "brand" | "sidebar" | "command" | "browser_history" | "unknown";
+type StudioRouteActivationSource = "brand" | "sidebar" | "command" | "route_actions" | "browser_history" | "unknown";
 
 type StudioLayoutPreference = {
   contentLayout: StudioContentLayout;
@@ -366,8 +393,8 @@ const legacyLayoutPreference: StudioLayoutPreference = {
 type StudioRouteCopy = {
   title: string;
   description: string;
-  panels: string[];
-  timeline: string[];
+  panels?: string[];
+  timeline?: string[];
 };
 
 type StudioUiCopy = {
@@ -398,7 +425,29 @@ type StudioUiCopy = {
   status: Record<StudioNoteStatus, string>;
   roadmapStatus: Record<BlogRoadmapStatus, string>;
   categories: Record<StudioAiSkill["category"] | "all", string>;
-  routes: Pick<Record<StudioRouteId, StudioRouteCopy>, "ai-agent-setup" | "ai-skills" | "delivery-checklists" | "blog-roadmap">;
+  routes: Partial<Record<StudioRouteId, StudioRouteCopy>>;
+  flows: {
+    emptyTitle: string;
+    emptyDescription: string;
+    menu: string;
+    menuDetail: string;
+    groupMenuLabel: string;
+    flowListLabel: string;
+    selectedFlow: string;
+    chartLabel: string;
+    chartHint: string;
+    chartOutcome: string;
+    useWhen: string;
+    outcome: string;
+    officeExample: string;
+    artifacts: string;
+    cvSignals: string;
+    evidence: string;
+    output: string;
+    shareFlow: string;
+    copied: string;
+    openFlow: string;
+  };
   aiSetup: {
     addNote: string;
     setupLibrary: string;
@@ -506,7 +555,14 @@ const englishStudioCopy: StudioUiCopy = {
     "ai-agent-setup": "AI Setup",
     "ai-skills": "AI Skills",
     "delivery-checklists": "Checklists",
-    "blog-roadmap": "Blog Roadmap"
+    "blog-roadmap": "Blog Roadmap",
+    "flow-menu": "Flow Menu",
+    "flow-system-design": "System Design",
+    "flow-architecture-decision": "Architecture Decision",
+    "flow-incident-response": "Incident Response",
+    "flow-release-readiness": "Release Readiness",
+    "flow-ai-delivery": "AI Delivery",
+    "flow-portfolio-story": "Portfolio Story"
   },
   profileItems: {
     home: { label: "Home", detail: "Profile overview." },
@@ -580,7 +636,65 @@ const englishStudioCopy: StudioUiCopy = {
       description: "A 30-day writing menu for every current blog topic, ready to turn into daily Multica article tickets.",
       panels: ["Topic menu", "Daily article plan", "Ticket checklist"],
       timeline: ["Existing blog topics mapped", "Thirty daily prompts prepared", "Ticket handoff checklist ready"]
+    },
+    "flow-system-design": {
+      title: "System Design Flow",
+      description: "A shareable system design path from vague prompt to architecture trade-offs, failure modes, and evolution plan.",
+      panels: ["Problem frame", "Runtime map", "Failure modes"],
+      timeline: ["Requirement frame set", "Data ownership mapped", "Evolution path documented"]
+    },
+    "flow-architecture-decision": {
+      title: "Architecture Decision Flow",
+      description: "A lightweight RFC/ADR flow for choosing between options with clear trade-offs, risk gates, and rollback.",
+      panels: ["Decision scope", "Option matrix", "Risk gates"],
+      timeline: ["Invariants listed", "Options compared", "Decision note ready"]
+    },
+    "flow-incident-response": {
+      title: "Incident Response Flow",
+      description: "A production incident flow for triage, mitigation, communication, recovery, and follow-up work.",
+      panels: ["Signal", "Mitigation", "Postmortem"],
+      timeline: ["Signal confirmed", "Blast radius contained", "Follow-up owners assigned"]
+    },
+    "flow-release-readiness": {
+      title: "Release Readiness Flow",
+      description: "A rollout gate for checking scope, verification, data, observability, and rollback before production.",
+      panels: ["Scope", "Verification", "Rollout decision"],
+      timeline: ["Scope checked", "Analytics and SEO reviewed", "Rollback trigger named"]
+    },
+    "flow-ai-delivery": {
+      title: "AI-Assisted Delivery Flow",
+      description: "A controlled delivery path for using AI agents without losing scope, privacy, tests, or human judgment.",
+      panels: ["Task brief", "Context pack", "Verification"],
+      timeline: ["Boundaries set", "Focused diff reviewed", "Handoff prepared"]
+    },
+    "flow-portfolio-story": {
+      title: "Portfolio Story Flow",
+      description: "A career-proof flow for turning real engineering work into grounded CV, blog, and interview stories.",
+      panels: ["Context", "Trade-offs", "Impact"],
+      timeline: ["Context captured", "Impact evidence selected", "Story draft shaped"]
     }
+  },
+  flows: {
+    emptyTitle: "Flow library is empty",
+    emptyDescription: "Add studio flows before opening this menu.",
+    menu: "Flow menu",
+    menuDetail: "Reusable work paths for system design, production delivery, AI-assisted coding, and career proof.",
+    groupMenuLabel: "Flow groups",
+    flowListLabel: "Shareable Studio flows",
+    selectedFlow: "Selected Studio flow",
+    chartLabel: "Flow chart",
+    chartHint: "Read the path from left to right: each node is a decision point, not a long note.",
+    chartOutcome: "Target outcome",
+    useWhen: "Use when",
+    outcome: "Outcome",
+    officeExample: "Office example",
+    artifacts: "Artifacts",
+    cvSignals: "CV signals",
+    evidence: "Evidence",
+    output: "Output",
+    shareFlow: "Share flow",
+    copied: "Copied",
+    openFlow: "Open flow"
   },
   aiSetup: {
     addNote: "Add note",
@@ -691,7 +805,14 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       "ai-agent-setup": "AI Setup",
       "ai-skills": "AI Skill",
       "delivery-checklists": "Checklist",
-      "blog-roadmap": "Lộ trình blog"
+      "blog-roadmap": "Lộ trình blog",
+      "flow-menu": "Flow",
+      "flow-system-design": "System Design",
+      "flow-architecture-decision": "Quyết định kiến trúc",
+      "flow-incident-response": "Xử lý incident",
+      "flow-release-readiness": "Release readiness",
+      "flow-ai-delivery": "AI delivery",
+      "flow-portfolio-story": "Portfolio story"
     },
     profileItems: {
       home: { label: "Trang chủ", detail: "Tổng quan profile." },
@@ -754,7 +875,66 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
         description: "Menu viết 30 ngày cho từng chủ đề blog hiện có, sẵn sàng để chuyển thành ticket bài viết hằng ngày.",
         panels: ["Menu chủ đề", "Kế hoạch bài viết", "Checklist ticket"],
         timeline: ["Đã map topic blog hiện có", "Đã chuẩn bị prompt 30 ngày", "Checklist bàn giao ticket sẵn sàng"]
+      },
+      "flow-system-design": {
+        title: "Flow System Design",
+        description: "Luồng share được từ đề bài còn mơ hồ tới trade-off kiến trúc, failure modes và hướng tiến hóa.",
+        panels: ["Problem frame", "Runtime map", "Failure modes"],
+        timeline: ["Requirement đã đóng khung", "Data ownership đã map", "Evolution path đã ghi lại"]
+      },
+      "flow-architecture-decision": {
+        title: "Flow quyết định kiến trúc",
+        description: "Luồng RFC/ADR gọn để chọn giữa các option với trade-off, risk gate và rollback rõ.",
+        panels: ["Scope quyết định", "Option matrix", "Risk gates"],
+        timeline: ["Invariant đã liệt kê", "Option đã so sánh", "Decision note sẵn sàng"]
+      },
+      "flow-incident-response": {
+        title: "Flow xử lý incident",
+        description: "Luồng production incident cho triage, mitigation, communication, recovery và follow-up.",
+        panels: ["Signal", "Mitigation", "Postmortem"],
+        timeline: ["Signal đã xác nhận", "Blast radius đã giới hạn", "Follow-up có owner"]
+      },
+      "flow-release-readiness": {
+        title: "Flow release readiness",
+        description: "Rollout gate để kiểm scope, verification, data, observability và rollback trước production.",
+        panels: ["Scope", "Verification", "Rollout decision"],
+        timeline: ["Scope đã kiểm", "Analytics và SEO đã review", "Rollback trigger đã gọi tên"]
+      },
+      "flow-ai-delivery": {
+        title: "Flow delivery có AI hỗ trợ",
+        description: "Luồng delivery có kiểm soát để dùng AI agent mà vẫn giữ scope, privacy, test và judgment.",
+        panels: ["Task brief", "Context pack", "Verification"],
+        timeline: ["Boundary đã chốt", "Focused diff đã review", "Handoff đã chuẩn bị"]
+      },
+      "flow-portfolio-story": {
+        title: "Flow kể câu chuyện portfolio",
+        description: "Luồng biến công việc engineering thật thành câu chuyện CV, blog và phỏng vấn có bằng chứng.",
+        panels: ["Context", "Trade-off", "Impact"],
+        timeline: ["Context đã ghi lại", "Evidence impact đã chọn", "Story draft đã định hình"]
       }
+    },
+    flows: {
+      ...englishStudioCopy.flows,
+      emptyTitle: "Thư viện flow đang trống",
+      emptyDescription: "Thêm Studio flow vào data trước khi mở menu này.",
+      menu: "Menu flow",
+      menuDetail: "Các đường làm việc có thể tái dùng cho system design, production delivery, coding có AI hỗ trợ và career proof.",
+      groupMenuLabel: "Nhóm flow",
+      flowListLabel: "Studio flow có thể share",
+      selectedFlow: "Flow Studio đang chọn",
+      chartLabel: "Sơ đồ flow",
+      chartHint: "Đọc từ trái sang phải: mỗi node là một điểm quyết định, không phải một ghi chú dài.",
+      chartOutcome: "Kết quả cần đạt",
+      useWhen: "Dùng khi",
+      outcome: "Kết quả",
+      officeExample: "Ví dụ nơi làm việc",
+      artifacts: "Artifact",
+      cvSignals: "Signal cho CV",
+      evidence: "Evidence",
+      output: "Output",
+      shareFlow: "Share flow",
+      copied: "Đã copy",
+      openFlow: "Mở flow"
     },
     aiSetup: {
       ...englishStudioCopy.aiSetup,
@@ -1057,37 +1237,34 @@ function getLocalizedProfileItems(copy: StudioUiCopy): StudioProfileMenuItem[] {
   }));
 }
 
+function getLocalizedNavItem(item: StudioNavItem, copy: StudioUiCopy): StudioNavItem {
+  return {
+    ...item,
+    title: copy.navItems[item.id] ?? item.title,
+    subItems: item.subItems?.map((subItem) => getLocalizedNavItem(subItem, copy))
+  };
+}
+
 function getLocalizedNavGroups(copy: StudioUiCopy): StudioNavGroup[] {
   return navGroups.map((group) => ({
     ...group,
     label: copy.navLabel,
-    items: group.items.map((item) => ({
-      ...item,
-      title: copy.navItems[item.id] ?? item.title
-    }))
+    items: group.items.map((item) => getLocalizedNavItem(item, copy))
   }));
 }
 
 function getLocalizedRouteDefinitions(copy: StudioUiCopy): Record<StudioRouteId, StudioRoute> {
-  return {
-    ...routeDefinitions,
-    "ai-agent-setup": {
-      ...routeDefinitions["ai-agent-setup"],
-      ...copy.routes["ai-agent-setup"]
-    },
-    "ai-skills": {
-      ...routeDefinitions["ai-skills"],
-      ...copy.routes["ai-skills"]
-    },
-    "delivery-checklists": {
-      ...routeDefinitions["delivery-checklists"],
-      ...copy.routes["delivery-checklists"]
-    },
-    "blog-roadmap": {
-      ...routeDefinitions["blog-roadmap"],
-      ...copy.routes["blog-roadmap"]
-    }
-  };
+  const localized = { ...routeDefinitions };
+
+  (Object.entries(copy.routes) as Array<[StudioRouteId, StudioRouteCopy | undefined]>).forEach(([routeId, routeCopy]) => {
+    if (!routeCopy || !localized[routeId]) return;
+    localized[routeId] = {
+      ...localized[routeId],
+      ...routeCopy
+    };
+  });
+
+  return localized;
 }
 
 function isSameLayoutPreference(a: StudioLayoutPreference, b: StudioLayoutPreference): boolean {
@@ -1243,6 +1420,20 @@ const defaultMetrics: StudioMetric[] = [
   }
 ];
 
+function getStudioFlow(flowId: StudioFlowId): StudioFlow {
+  return studioFlows.find((flow) => flow.id === flowId) ?? studioFlows[0];
+}
+
+function flowMetrics(flowId: StudioFlowId): StudioMetric[] {
+  const flow = getStudioFlow(flowId);
+  return [
+    { label: "Flow steps", value: `${flow.steps.length}`, helper: "Ordered checkpoints", badge: "url", trend: "up", icon: LuWorkflow },
+    { label: "Artifacts", value: `${flow.artifacts.length}`, helper: "Reusable handoff outputs", badge: "share", trend: "up", icon: LuClipboardList },
+    { label: "CV signals", value: `${flow.cvSignals.length}`, helper: "Proof points for interviews", badge: "proof", trend: "up", icon: LuBriefcase },
+    { label: "Use case", value: "1", helper: "Office example included", badge: "human", trend: "up", icon: LuUsers }
+  ];
+}
+
 const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
   default: defaultMetrics,
   crm: [
@@ -1329,6 +1520,12 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
     { label: "Ready drafts", value: `${blogRoadmapTopics.reduce((total, topic) => total + topic.entries.filter((entry) => entry.status === "ready").length, 0)}`, helper: "Can be ticketed first", badge: "next", trend: "up", icon: LuCheckCircle2 },
     { label: "Cadence", value: "5/day", helper: "One post per topic each day", badge: "daily", trend: "up", icon: LuCalendarDays }
   ],
+  "flow-system-design": flowMetrics("system-design"),
+  "flow-architecture-decision": flowMetrics("architecture-decision"),
+  "flow-incident-response": flowMetrics("incident-response"),
+  "flow-release-readiness": flowMetrics("release-readiness"),
+  "flow-ai-delivery": flowMetrics("ai-delivery"),
+  "flow-portfolio-story": flowMetrics("portfolio-story"),
   calendar: [
     { label: "Today", value: "6", helper: "Events on the schedule", badge: "+2", trend: "up", icon: LuCalendarDays },
     { label: "Focus Blocks", value: "3h", helper: "Protected engineering time", badge: "+45m", trend: "up", icon: LuAlarmClock },
@@ -1545,6 +1742,72 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
     panels: ["Topic menu", "Daily article plan", "Ticket checklist"],
     timeline: ["Existing blog topics mapped", "Thirty daily prompts prepared", "Ticket handoff checklist ready"]
   },
+  "flow-system-design": {
+    id: "flow-system-design",
+    title: getStudioFlow("system-design").title,
+    description: getStudioFlow("system-design").summary,
+    kind: "flows",
+    icon: LuWorkflow,
+    badge: "new",
+    metrics: routeMetrics["flow-system-design"],
+    panels: ["Problem frame", "Runtime map", "Failure modes"],
+    timeline: ["Requirement frame set", "Data ownership mapped", "Evolution path documented"]
+  },
+  "flow-architecture-decision": {
+    id: "flow-architecture-decision",
+    title: getStudioFlow("architecture-decision").title,
+    description: getStudioFlow("architecture-decision").summary,
+    kind: "flows",
+    icon: LuWorkflow,
+    badge: "new",
+    metrics: routeMetrics["flow-architecture-decision"],
+    panels: ["Decision scope", "Option matrix", "Risk gates"],
+    timeline: ["Invariants listed", "Options compared", "Decision note ready"]
+  },
+  "flow-incident-response": {
+    id: "flow-incident-response",
+    title: getStudioFlow("incident-response").title,
+    description: getStudioFlow("incident-response").summary,
+    kind: "flows",
+    icon: LuWorkflow,
+    badge: "new",
+    metrics: routeMetrics["flow-incident-response"],
+    panels: ["Signal", "Mitigation", "Postmortem"],
+    timeline: ["Signal confirmed", "Blast radius contained", "Follow-up owners assigned"]
+  },
+  "flow-release-readiness": {
+    id: "flow-release-readiness",
+    title: getStudioFlow("release-readiness").title,
+    description: getStudioFlow("release-readiness").summary,
+    kind: "flows",
+    icon: LuWorkflow,
+    badge: "new",
+    metrics: routeMetrics["flow-release-readiness"],
+    panels: ["Scope", "Verification", "Rollout decision"],
+    timeline: ["Scope checked", "Analytics and SEO reviewed", "Rollback trigger named"]
+  },
+  "flow-ai-delivery": {
+    id: "flow-ai-delivery",
+    title: getStudioFlow("ai-delivery").title,
+    description: getStudioFlow("ai-delivery").summary,
+    kind: "flows",
+    icon: LuWorkflow,
+    badge: "new",
+    metrics: routeMetrics["flow-ai-delivery"],
+    panels: ["Task brief", "Context pack", "Verification"],
+    timeline: ["Boundaries set", "Focused diff reviewed", "Handoff prepared"]
+  },
+  "flow-portfolio-story": {
+    id: "flow-portfolio-story",
+    title: getStudioFlow("portfolio-story").title,
+    description: getStudioFlow("portfolio-story").summary,
+    kind: "flows",
+    icon: LuWorkflow,
+    badge: "new",
+    metrics: routeMetrics["flow-portfolio-story"],
+    panels: ["Context", "Trade-offs", "Impact"],
+    timeline: ["Context captured", "Impact evidence selected", "Story draft shaped"]
+  },
   calendar: {
     id: "calendar",
     title: "Calendar",
@@ -1709,6 +1972,17 @@ const navGroups: StudioNavGroup[] = [
         routeId: "blog-roadmap",
         icon: LuBookOpenCheck,
         badge: "new"
+      },
+      {
+        id: "flow-menu",
+        title: "Flow Menu",
+        icon: LuWorkflow,
+        badge: "new",
+        subItems: studioFlows.map((flow) => ({
+          id: flowRouteId(flow.id),
+          title: flow.title,
+          routeId: flowRouteId(flow.id)
+        }))
       }
     ]
   }
@@ -2106,7 +2380,9 @@ const visibleRouteIds = new Set(
 );
 
 function routeHref(routeId: StudioRouteId): string {
-  return `#${routeId}`;
+  const flowId = flowIdFromRoute(routeId);
+  const flowQuery = flowId ? `&flow=${encodeURIComponent(flowId)}` : "";
+  return `?route=${encodeURIComponent(routeId)}${flowQuery}#${routeId}`;
 }
 
 function normalizeHash(hash: string): StudioRouteId {
@@ -2114,6 +2390,40 @@ function normalizeHash(hash: string): StudioRouteId {
   return candidate in routeDefinitions && visibleRouteIds.has(candidate as StudioRouteId)
     ? (candidate as StudioRouteId)
     : DEFAULT_ROUTE;
+}
+
+function normalizeLocationRoute(): StudioRouteId {
+  const params = new URLSearchParams(window.location.search);
+  const flowId = params.get("flow");
+  if (flowId && studioFlows.some((flow) => flow.id === flowId)) {
+    const routeId = flowRouteId(flowId);
+    if (visibleRouteIds.has(routeId)) return routeId;
+  }
+
+  const routeId = params.get("route");
+  if (routeId && routeId in routeDefinitions && visibleRouteIds.has(routeId as StudioRouteId)) {
+    return routeId as StudioRouteId;
+  }
+
+  return normalizeHash(window.location.hash);
+}
+
+function studioFlowHref(locale: string, flowId: StudioFlowId): string {
+  const prefix = locale ? `/${locale}` : "";
+  return `${prefix}${APP_ROUTE.STUDIO}${routeHref(flowRouteId(flowId))}`;
+}
+
+function trackStudioFlowSelect(routeId: StudioRouteId, source: StudioRouteActivationSource, previousRoute?: StudioRouteId): void {
+  const flowId = flowIdFromRoute(routeId);
+  if (!flowId) return;
+  const flow = getStudioFlow(flowId);
+  track("studio_flow_select", {
+    flow_id: flow.id,
+    group_id: flow.groupId,
+    route_id: routeId,
+    source,
+    previous_route: previousRoute
+  });
 }
 
 function profileHref(locale: string, href: string): string {
@@ -3905,6 +4215,245 @@ function BlogRoadmapPage({ route, locale, copy }: { route: StudioRoute; locale: 
   );
 }
 
+function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy }) {
+  return (
+    <section className="flow-chart-surface" aria-label={copy.flows.chartLabel}>
+      <div className="flow-chart-head">
+        <div>
+          <span className="ai-status-pill status-ready">{copy.flows.chartLabel}</span>
+          <h3>{flow.title}</h3>
+        </div>
+        <p>{copy.flows.chartHint}</p>
+      </div>
+
+      <ol
+        className="flow-chart"
+        style={{ "--flow-count": flow.steps.length } as CSSProperties}
+      >
+        {flow.steps.map((step, index) => (
+          <li key={step.id} className="flow-chart-node">
+            <span className="flow-chart-index">{String(index + 1).padStart(2, "0")}</span>
+            <strong>{step.title}</strong>
+            <small>{step.output}</small>
+          </li>
+        ))}
+      </ol>
+
+      <div className="flow-chart-outcome">
+        <span>{copy.flows.chartOutcome}</span>
+        <strong>{flow.outcome}</strong>
+      </div>
+    </section>
+  );
+}
+
+function StudioFlowMenuPage({
+  route,
+  locale,
+  copy,
+  onActivate
+}: {
+  route: StudioRoute;
+  locale: string;
+  copy: StudioUiCopy;
+  onActivate: (routeId: StudioRouteId, source?: StudioRouteActivationSource) => void;
+}) {
+  const localizedFlows = useMemo(() => getLocalizedStudioFlows(locale), [locale]);
+  const localizedGroups = useMemo(() => getLocalizedStudioFlowGroups(locale), [locale]);
+  const [copiedFlowId, setCopiedFlowId] = useState<string | null>(null);
+  const selectedFlowId = flowIdFromRoute(route.id) ?? localizedFlows[0]?.id ?? "";
+  const selectedFlow = localizedFlows.find((flow) => flow.id === selectedFlowId) ?? localizedFlows[0];
+  const selectedGroup = selectedFlow ? localizedGroups.find((group) => group.id === selectedFlow.groupId) : undefined;
+
+  const handleGroupSelect = (groupId: string) => {
+    const firstFlowId = studioFlowGroups.find((group) => group.id === groupId)?.flowIds[0];
+    if (!firstFlowId) return;
+    track("studio_flow_group_select", {
+      group_id: groupId,
+      selected_flow_id: selectedFlow?.id,
+      flow_count: studioFlows.filter((flow) => flow.groupId === groupId).length
+    });
+    onActivate(flowRouteId(firstFlowId), "route_actions");
+  };
+
+  const handleFlowSelect = (flowId: StudioFlowId) => {
+    onActivate(flowRouteId(flowId), "route_actions");
+  };
+
+  const copyFlowLink = async () => {
+    if (!selectedFlow) return;
+    const href = `${window.location.origin}${studioFlowHref(locale, selectedFlow.id)}`;
+
+    try {
+      await navigator.clipboard.writeText(href);
+      setCopiedFlowId(selectedFlow.id);
+      window.setTimeout(() => setCopiedFlowId(null), 1600);
+      track("studio_flow_share", {
+        flow_id: selectedFlow.id,
+        group_id: selectedFlow.groupId,
+        share_path: studioFlowHref(locale, selectedFlow.id)
+      });
+    } catch {
+      track("studio_flow_share", {
+        flow_id: selectedFlow.id,
+        group_id: selectedFlow.groupId,
+        failed: true
+      });
+    }
+  };
+
+  if (!selectedFlow) {
+    return (
+      <section className="empty-route card">
+        <LuWorkflow aria-hidden="true" />
+        <strong>{copy.flows.emptyTitle}</strong>
+        <p>{copy.flows.emptyDescription}</p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="route-page studio-flow-route">
+      <RouteHeading route={route} copy={copy}>
+        <button type="button" className="outline-button" onClick={copyFlowLink}>
+          {copiedFlowId === selectedFlow.id ? <LuCheck aria-hidden="true" /> : <LuShare2 aria-hidden="true" />}
+          {copiedFlowId === selectedFlow.id ? copy.flows.copied : copy.flows.shareFlow}
+        </button>
+      </RouteHeading>
+
+      <RouteMetricGrid metrics={route.metrics} copy={copy} />
+
+      <div className="flow-workbench card" data-studio-module="flow-menu">
+        <aside className="flow-index-pane" aria-label={copy.flows.flowListLabel}>
+          <div className="ai-pane-head">
+            <span><LuWorkflow aria-hidden="true" /></span>
+            <div>
+              <h2>{copy.flows.menu}</h2>
+              <p>{copy.flows.menuDetail}</p>
+            </div>
+          </div>
+
+          <div className="flow-group-list" aria-label={copy.flows.groupMenuLabel}>
+            {localizedGroups.map((group) => {
+              const active = selectedFlow.groupId === group.id;
+              return (
+                <button
+                  key={group.id}
+                  type="button"
+                  className={`flow-group-button${active ? " is-active" : ""}`}
+                  onClick={() => handleGroupSelect(group.id)}
+                >
+                  <strong>{group.title}</strong>
+                  <small>{group.subtitle}</small>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="flow-list">
+            {localizedFlows.map((flow) => {
+              const active = selectedFlow.id === flow.id;
+              return (
+                <a
+                  key={flow.id}
+                  href={studioFlowHref(locale, flow.id)}
+                  className={`flow-list-button${active ? " is-active" : ""}`}
+                  aria-current={active ? "page" : undefined}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    handleFlowSelect(flow.id);
+                  }}
+                >
+                  <span>
+                    <strong>{flow.title}</strong>
+                    <small>{flow.summary}</small>
+                  </span>
+                  <em>{flow.steps.length}</em>
+                </a>
+              );
+            })}
+          </div>
+        </aside>
+
+        <article id={`flow-${selectedFlow.id}`} className="flow-reader-pane" aria-label={copy.flows.selectedFlow}>
+          <div className="skill-reader-head">
+            <div>
+              <span className="ai-status-pill status-ready">{selectedGroup?.title ?? selectedFlow.groupId}</span>
+              <h2>{selectedFlow.title}</h2>
+              <p>{selectedFlow.summary}</p>
+            </div>
+            <a className="outline-button" href={studioFlowHref(locale, selectedFlow.id)}>
+              <LuLink aria-hidden="true" />
+              {copy.flows.openFlow}
+            </a>
+          </div>
+
+          <div className="ai-tag-list" aria-label="Flow tags">
+            {selectedFlow.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+
+          <StudioFlowChart flow={selectedFlow} copy={copy} />
+
+          <ol className="flow-step-map" aria-label={`${copy.flows.evidence} / ${copy.flows.output}`}>
+            {selectedFlow.steps.map((step, index) => (
+              <li key={step.id} className="flow-step-node">
+                <span className="flow-step-index">{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.detail}</p>
+                  <dl>
+                    <div>
+                      <dt>{copy.flows.evidence}</dt>
+                      <dd>{step.evidence}</dd>
+                    </div>
+                    <div>
+                      <dt>{copy.flows.output}</dt>
+                      <dd>{step.output}</dd>
+                    </div>
+                  </dl>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </article>
+
+        <aside className="flow-side-pane" aria-label="Flow details">
+          <section>
+            <h3>{copy.flows.useWhen}</h3>
+            <p>{selectedFlow.useWhen}</p>
+          </section>
+          <section>
+            <h3>{copy.flows.outcome}</h3>
+            <p>{selectedFlow.outcome}</p>
+          </section>
+          <section>
+            <h3>{copy.flows.officeExample}</h3>
+            <p>{selectedFlow.officeExample}</p>
+          </section>
+          <section>
+            <h3>{copy.flows.artifacts}</h3>
+            <ul>
+              {selectedFlow.artifacts.map((artifact) => (
+                <li key={artifact}>{artifact}</li>
+              ))}
+            </ul>
+          </section>
+          <section>
+            <h3>{copy.flows.cvSignals}</h3>
+            <ul>
+              {selectedFlow.cvSignals.map((signal) => (
+                <li key={signal}>{signal}</li>
+              ))}
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
 function CalendarPage({ route }: { route: StudioRoute }) {
   const days = Array.from({ length: 35 }, (_, index) => index + 1);
   return (
@@ -4222,7 +4771,8 @@ function RouteContent({
   sortMode,
   onWorkstreamSearch,
   onStatusFilter,
-  onSortMode
+  onSortMode,
+  onActivate
 }: {
   route: StudioRoute;
   locale: string;
@@ -4234,6 +4784,7 @@ function RouteContent({
   onWorkstreamSearch: (value: string) => void;
   onStatusFilter: (value: string) => void;
   onSortMode: (value: string) => void;
+  onActivate: (routeId: StudioRouteId, source?: StudioRouteActivationSource) => void;
 }) {
   if (route.kind === "default") {
     return (
@@ -4257,6 +4808,7 @@ function RouteContent({
   if (route.kind === "ai-skills") return <AiSkillsPage route={route} locale={locale} copy={copy} />;
   if (route.kind === "checklists") return <DeliveryChecklistsPage route={route} locale={locale} copy={copy} />;
   if (route.kind === "roadmap") return <BlogRoadmapPage route={route} locale={locale} copy={copy} />;
+  if (route.kind === "flows") return <StudioFlowMenuPage route={route} locale={locale} copy={copy} onActivate={onActivate} />;
   if (route.kind === "calendar") return <CalendarPage route={route} />;
   if (route.kind === "kanban") return <KanbanPage route={route} />;
   if (route.kind === "invoice") return <InvoicePage route={route} />;
@@ -4540,7 +5092,7 @@ function StudioPreferencesPanel({
 }
 
 export function StudioAdminShell({ locale }: StudioAdminShellProps) {
-  const [activeRoute, setActiveRoute] = useState<StudioRouteId>(() => (typeof window === "undefined" ? DEFAULT_ROUTE : normalizeHash(window.location.hash)));
+  const [activeRoute, setActiveRoute] = useState<StudioRouteId>(() => (typeof window === "undefined" ? DEFAULT_ROUTE : normalizeLocationRoute()));
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -4570,7 +5122,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
 
   useEffect(() => {
     const syncRoute = () => {
-      const nextRoute = normalizeHash(window.location.hash);
+      const nextRoute = normalizeLocationRoute();
       setActiveRoute((currentRoute) => {
         if (currentRoute !== nextRoute) {
           track("studio_route_open", {
@@ -4579,6 +5131,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
             previous_route: currentRoute,
             source: "browser_history"
           });
+          trackStudioFlowSelect(nextRoute, "browser_history", currentRoute);
         }
         return nextRoute;
       });
@@ -4652,13 +5205,15 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
       previous_route: activeRoute,
       source
     });
+    trackStudioFlowSelect(routeId, source, activeRoute);
     setActiveRoute(routeId);
     setMobileSidebarOpen(false);
     setPreferencesOpen(false);
     setAccountOpen(false);
-    const nextHash = routeHref(routeId);
-    if (window.location.hash !== nextHash) {
-      window.history.pushState(null, "", nextHash);
+    const nextHref = routeHref(routeId);
+    const currentHref = `${window.location.search}${window.location.hash}`;
+    if (currentHref !== nextHref) {
+      window.history.pushState(null, "", nextHref);
     }
   }, [activeRoute]);
 
@@ -5010,6 +5565,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
             onWorkstreamSearch={setWorkstreamSearch}
             onStatusFilter={setStatusFilter}
             onSortMode={setSortMode}
+            onActivate={activateRoute}
           />
         </div>
       </main>

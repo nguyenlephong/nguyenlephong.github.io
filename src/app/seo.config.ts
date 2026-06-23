@@ -109,12 +109,18 @@ export const PAGE_SEO: Record<
     ogAlt: 'Blog — software architecture and engineering, explained simply',
   },
   studio: {
-    title: 'Studio — Learning Notes & Engineering Machine Setup',
+    title: 'Studio — Engineering Flows, AI Notes & System Design',
     description:
-      'A public working shelf for AI operating notes, daily learning checklists, machine setup, and skill libraries across NotebookLM, GPT, Claude, Codex, and Antigravity.',
+      'A public working shelf for system design flows, release readiness, AI-assisted delivery, machine setup, daily learning checklists, and skill libraries.',
     path: '/studio',
     keywords: [
       'Nguyen Le Phong studio',
+      'system design flow',
+      'architecture decision flow',
+      'production incident flow',
+      'release readiness flow',
+      'AI-assisted software delivery',
+      'engineering portfolio story',
       'engineering machine setup',
       'AI operating system',
       'AI learning checklist',
@@ -133,7 +139,7 @@ export const PAGE_SEO: Record<
       'developer checklist',
     ],
     ogAlt:
-      'Studio — AI operating notes, learning checklists, and engineering setup',
+      'Studio — engineering flows, AI operating notes, learning checklists, and system design practice',
   },
 }
 

@@ -1,0 +1,21 @@
+{
+  "slug": "layered-vs-vertical-slice-architecture",
+  "category": "architecture",
+  "title": "Architecture en couches ou Vertical Slice Architecture",
+  "summary": "L'architecture en couches semble ordonnée au début, tandis que les vertical slices rapprochent le changement de la fonctionnalité réelle. Un regard calme sur les deux approches, leurs forces et les signaux qui disent qu'il est temps de changer.",
+  "date": "2026-06-23",
+  "readingMinutes": 6,
+  "tags": [
+    "Architecture logicielle",
+    "Vertical Slice Architecture",
+    "Layered Architecture",
+    "Organisation du code",
+    "Modularity",
+    "Technical Debt"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "series": "foundations",
+  "seriesOrder": 13,
+  "html": "<p>La matinée commence souvent simplement. Quelqu'un ouvre une pull request pour ajouter une petite règle de paiement, et la liste des fichiers paraît plus longue que le changement lui-même. Le code traverse un controller, un service, un repository, un mapper, un validator et quelques tests loin de la logique principale.</p>\n<p>C'est là que l'architecture cesse d'être un schéma et devient une sensation quotidienne. Une architecture en couches range le code par rôle technique. C'est familier, facile à enseigner, et souvent très utile au début. Mais quand les fonctionnalités se multiplient, un petit changement finit par toucher toutes les couches.</p>\n<p>La Vertical Slice Architecture pose une autre question : à quelle capacité produit ce changement appartient-il ? Elle garde la route, la validation, le use case, l'accès aux données et les tests près du comportement livré. Le dossier parle alors davantage du produit que du framework.</p>\n<p>L'approche en couches n'est pas mauvaise. Pour une petite application, elle peut être douce et lisible. Le problème arrive quand la suppression ou la modification d'une fonctionnalité demande une petite expédition dans tout le codebase.</p>\n<p>Les slices réduisent ce blast radius. La logique qui change ensemble vit ensemble. Cela demande pourtant de la discipline : ne pas transformer chaque slice en île isolée, ne pas partager trop tôt, et accepter qu'une duplication petite et claire vaut parfois mieux qu'une abstraction prématurée.</p>\n<p>Beaucoup d'équipes finissent dans un compromis sain : dossiers de fonctionnalité au niveau supérieur, petites couches techniques à l'intérieur, et un dossier shared volontairement ennuyeux pour ce qui est vraiment commun.</p>\n<p>Le plus important est simple : la structure doit raccourcir la distance entre l'intention et le changement. Si un développeur peut comprendre l'action métier, la modifier, la tester et laisser le reste tranquille, l'architecture travaille vraiment.</p>\n<p>Si votre équipe a déjà migré des couches vers les slices, je serais curieux de savoir quel signal a rendu ce choix évident.</p>"
+}

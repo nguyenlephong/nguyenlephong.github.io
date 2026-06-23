@@ -319,6 +319,8 @@ a {
 .profile-link-grid a,
 .skill-list-button,
 .checklist-list-button,
+.flow-group-button,
+.flow-list-button,
 .roadmap-topic-button,
 .roadmap-day-card,
 .ai-note-button,
@@ -1895,6 +1897,331 @@ a {
 .checklist-side-pane pre {
   max-height: 18rem;
   margin: 0.75rem 0 0;
+}
+
+.flow-workbench.card {
+  display: grid;
+  grid-template-columns: 19rem minmax(0, 1fr) 19rem;
+  height: clamp(38rem, calc(100vh - 17rem), 56rem);
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.flow-index-pane,
+.flow-reader-pane,
+.flow-side-pane {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 1rem;
+}
+
+.flow-index-pane {
+  border-right: 1px solid var(--border);
+  background: color-mix(in srgb, var(--muted) 62%, transparent);
+}
+
+.flow-reader-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.flow-side-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-left: 1px solid var(--border);
+  background: color-mix(in srgb, var(--muted) 44%, transparent);
+}
+
+.flow-group-list,
+.flow-list {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.flow-group-button,
+.flow-list-button {
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--foreground);
+  padding: 0.75rem;
+  text-align: left;
+  text-decoration: none;
+}
+
+.flow-group-button {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.flow-list-button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.625rem;
+  align-items: flex-start;
+}
+
+.flow-group-button:hover,
+.flow-group-button.is-active,
+.flow-list-button:hover,
+.flow-list-button.is-active {
+  border-color: var(--border);
+  background: var(--background);
+}
+
+.flow-group-button strong,
+.flow-group-button small,
+.flow-list-button strong,
+.flow-list-button small,
+.flow-list-button em {
+  display: block;
+}
+
+.flow-group-button strong,
+.flow-list-button strong {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.flow-group-button small,
+.flow-list-button small {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.flow-list-button small {
+  margin-top: 0.25rem;
+}
+
+.flow-list-button em {
+  border-radius: 999px;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  padding: 0.125rem 0.45rem;
+  font-size: 0.6875rem;
+  font-style: normal;
+}
+
+.flow-chart-surface {
+  display: grid;
+  gap: 1rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--primary) 24%, var(--border));
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 12%, transparent), transparent 40%),
+    color-mix(in srgb, var(--background) 94%, var(--muted));
+  padding: 1rem;
+}
+
+.flow-chart-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.68fr);
+  gap: 1rem;
+  align-items: end;
+}
+
+.flow-chart-head h3 {
+  margin: 0.45rem 0 0;
+  color: var(--foreground);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.flow-chart-head p {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.flow-chart {
+  display: grid;
+  grid-template-columns: repeat(var(--flow-count), minmax(7rem, 1fr));
+  gap: 0.625rem;
+  overflow-x: auto;
+  margin: 0;
+  padding: 0.25rem 0.125rem 0.75rem;
+  list-style: none;
+  scroll-padding-inline: 0.75rem;
+}
+
+.flow-chart-node {
+  position: relative;
+  display: grid;
+  min-height: 9rem;
+  align-content: start;
+  gap: 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  border-radius: 0.875rem;
+  background: color-mix(in srgb, var(--card) 94%, var(--background));
+  padding: 0.75rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.flow-chart-node:not(:last-child)::after {
+  position: absolute;
+  top: 2.25rem;
+  right: -0.875rem;
+  z-index: 1;
+  width: 0.875rem;
+  height: 2px;
+  background: color-mix(in srgb, var(--primary) 48%, var(--border));
+  content: "";
+}
+
+.flow-chart-node:not(:last-child)::before {
+  position: absolute;
+  top: calc(2.25rem - 0.25rem);
+  right: -1rem;
+  z-index: 2;
+  border-top: 0.3125rem solid transparent;
+  border-bottom: 0.3125rem solid transparent;
+  border-left: 0.45rem solid color-mix(in srgb, var(--primary) 64%, var(--foreground));
+  content: "";
+}
+
+.flow-chart-index {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 18%, var(--muted));
+  color: var(--foreground);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.flow-chart-node strong {
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.flow-chart-node small {
+  display: block;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.flow-chart-outcome {
+  display: grid;
+  gap: 0.35rem;
+  border: 1px solid color-mix(in srgb, var(--primary) 22%, var(--border));
+  border-radius: 0.875rem;
+  background: color-mix(in srgb, var(--primary) 8%, var(--muted));
+  padding: 0.875rem;
+}
+
+.flow-chart-outcome span {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.flow-chart-outcome strong {
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.flow-step-map {
+  display: grid;
+  gap: 0.875rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flow-step-node {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+  padding: 0.875rem;
+}
+
+.flow-step-index {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 12%, var(--muted));
+  color: var(--foreground);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.flow-step-node h3 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.flow-step-node p {
+  margin: 0.35rem 0 0;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.flow-step-node dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.625rem;
+  margin: 0.75rem 0 0;
+}
+
+.flow-step-node dl div,
+.flow-side-pane section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--muted) 24%, transparent);
+  padding: 0.75rem;
+}
+
+.flow-step-node dt,
+.flow-side-pane h3 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.flow-step-node dd,
+.flow-side-pane p {
+  margin: 0.35rem 0 0;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.flow-side-pane ul {
+  display: grid;
+  gap: 0.375rem;
+  margin: 0.5rem 0 0;
+  padding-left: 1rem;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.45;
 }
 
 .native-select {
@@ -3485,7 +3812,8 @@ tbody tr:hover {
 
 @media (max-width: 1480px) {
   .skill-library-workbench.card,
-  .checklist-workbench.card {
+  .checklist-workbench.card,
+  .flow-workbench.card {
     grid-template-columns: minmax(15rem, 0.34fr) minmax(0, 1fr);
     height: auto;
     min-height: auto;
@@ -3497,12 +3825,16 @@ tbody tr:hover {
   .skill-side-pane,
   .checklist-index-pane,
   .checklist-reader-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-index-pane,
+  .flow-reader-pane,
+  .flow-side-pane {
     overflow: visible;
   }
 
   .skill-side-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-side-pane {
     display: grid;
     grid-column: 1 / -1;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3538,7 +3870,8 @@ tbody tr:hover {
   }
 
   .skill-library-workbench.card,
-  .checklist-workbench.card {
+  .checklist-workbench.card,
+  .flow-workbench.card {
     grid-template-columns: minmax(14rem, 0.38fr) minmax(0, 1fr);
     height: auto;
     min-height: auto;
@@ -3550,12 +3883,16 @@ tbody tr:hover {
   .skill-side-pane,
   .checklist-index-pane,
   .checklist-reader-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-index-pane,
+  .flow-reader-pane,
+  .flow-side-pane {
     overflow: visible;
   }
 
   .skill-side-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-side-pane {
     display: grid;
     grid-column: 1 / -1;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3574,7 +3911,8 @@ tbody tr:hover {
   .blog-roadmap-workbench.card,
   .ai-setup-container.card,
   .skill-library-workbench.card,
-  .checklist-workbench.card {
+  .checklist-workbench.card,
+  .flow-workbench.card {
     grid-template-columns: 1fr;
     height: auto;
     min-height: auto;
@@ -3592,14 +3930,18 @@ tbody tr:hover {
   .skill-side-pane,
   .checklist-index-pane,
   .checklist-reader-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-index-pane,
+  .flow-reader-pane,
+  .flow-side-pane {
     overflow: visible;
   }
 
   .roadmap-topic-pane,
   .ai-setup-index,
   .skill-index-pane,
-  .checklist-index-pane {
+  .checklist-index-pane,
+  .flow-index-pane {
     border-right: 0;
     border-bottom: 1px solid var(--border);
   }
@@ -3607,11 +3949,26 @@ tbody tr:hover {
   .roadmap-detail-pane,
   .ai-workflow-rail,
   .skill-side-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-side-pane {
     grid-column: auto;
     grid-template-columns: 1fr;
     border-left: 0;
     border-top: 1px solid var(--border);
+  }
+
+  .studio-flow-route .flow-reader-pane {
+    order: 1;
+  }
+
+  .studio-flow-route .flow-side-pane {
+    order: 2;
+  }
+
+  .studio-flow-route .flow-index-pane {
+    order: 3;
+    border-top: 1px solid var(--border);
+    border-bottom: 0;
   }
 
   .roadmap-plan-head {
@@ -3882,6 +4239,7 @@ tbody tr:hover {
   .ai-setup-container.card,
   .skill-library-workbench.card,
   .checklist-workbench.card,
+  .flow-workbench.card,
   .productivity-layout,
   .invoice-layout,
   .preview-shell,
@@ -3913,6 +4271,7 @@ tbody tr:hover {
   .ai-setup-index,
   .skill-index-pane,
   .checklist-index-pane,
+  .flow-index-pane,
   .mail-list-pane,
   .chat-list-pane,
   .chat-profile-pane {
@@ -3927,7 +4286,8 @@ tbody tr:hover {
   .roadmap-detail-pane,
   .ai-workflow-rail,
   .skill-side-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-side-pane {
     grid-template-columns: 1fr;
     border-left: 0;
     border-top: 1px solid var(--border);
@@ -3944,9 +4304,57 @@ tbody tr:hover {
   .skill-side-pane,
   .checklist-index-pane,
   .checklist-reader-pane,
-  .checklist-side-pane {
+  .checklist-side-pane,
+  .flow-index-pane,
+  .flow-reader-pane,
+  .flow-side-pane {
     overflow: visible;
     padding: 0.875rem;
+  }
+
+  .flow-chart-head {
+    grid-template-columns: 1fr;
+    gap: 0.625rem;
+    align-items: start;
+  }
+
+  .flow-chart {
+    grid-template-columns: 1fr;
+    overflow-x: visible;
+    padding-bottom: 0.25rem;
+  }
+
+  .flow-chart-node {
+    min-height: auto;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .flow-chart-node strong,
+  .flow-chart-node small {
+    grid-column: 2;
+  }
+
+  .flow-chart-index {
+    grid-row: 1 / span 2;
+  }
+
+  .flow-chart-node:not(:last-child)::after {
+    top: calc(100% + 0.0625rem);
+    right: auto;
+    left: 1.875rem;
+    width: 2px;
+    height: 0.875rem;
+  }
+
+  .flow-chart-node:not(:last-child)::before {
+    top: calc(100% + 0.75rem);
+    right: auto;
+    left: calc(1.875rem - 0.25rem);
+    border-top: 0.45rem solid color-mix(in srgb, var(--primary) 64%, var(--foreground));
+    border-right: 0.3125rem solid transparent;
+    border-bottom: 0;
+    border-left: 0.3125rem solid transparent;
   }
 
   .roadmap-plan-head {
@@ -4014,13 +4422,20 @@ tbody tr:hover {
   }
 
   .skill-list-button,
-  .checklist-list-button {
+  .checklist-list-button,
+  .flow-list-button {
     grid-template-columns: 1fr;
   }
 
   .skill-list-button em,
-  .checklist-list-button em {
+  .checklist-list-button em,
+  .flow-list-button em {
     justify-self: flex-start;
+  }
+
+  .flow-step-node,
+  .flow-step-node dl {
+    grid-template-columns: 1fr;
   }
 
   .ai-command-card code {
@@ -4048,7 +4463,8 @@ tbody tr:hover {
   .blog-roadmap-workbench.card,
   .ai-setup-container.card,
   .skill-library-workbench.card,
-  .checklist-workbench.card {
+  .checklist-workbench.card,
+  .flow-workbench.card {
     height: auto;
     min-height: auto;
     overflow: visible;
@@ -4175,6 +4591,10 @@ tbody tr:hover {
   .roadmap-day-grid,
   .profile-link-grid {
     grid-template-columns: 1fr;
+  }
+
+  .studio-flow-route .metric-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .route-actions {

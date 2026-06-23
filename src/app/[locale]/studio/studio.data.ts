@@ -105,6 +105,38 @@ export type StudioWorkflowChecklist = {
   sections: StudioChecklistSection[];
 };
 
+export type StudioFlowStep = {
+  id: string;
+  title: string;
+  detail: string;
+  evidence: string;
+  output: string;
+};
+
+export type StudioFlow = {
+  id: string;
+  groupId: string;
+  title: string;
+  summary: string;
+  seoTitle: string;
+  seoDescription: string;
+  useWhen: string;
+  outcome: string;
+  officeExample: string;
+  tags: string[];
+  steps: StudioFlowStep[];
+  artifacts: string[];
+  cvSignals: string[];
+};
+
+export type StudioFlowGroup = {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  flowIds: string[];
+};
+
 export const studioCapturedAt = "2026-06-21";
 
 const roadmapStatuses: BlogRoadmapStatus[] = ["ready", "outline", "research"];
@@ -401,6 +433,14 @@ Use this skill when reviewing pull requests, local diffs, generated code, refact
 4. Assess architecture: flag coupling, leaky abstractions, cyclic dependencies, API compatibility breaks, schema drift, and long-term maintenance cost.
 5. Check performance and operations: look for N+1 queries, algorithmic blowups, memory pressure, hydration regressions, observability gaps, and rollback risk.
 6. Evaluate verification: confirm unit, integration, E2E, contract, accessibility, and regression tests match the changed behavior.
+
+## Code Shape Review
+- Data structures: confirm arrays, maps, sets, queues, trees, indexes, caches, and DTOs fit the access pattern instead of making every lookup or grouping O(n) by accident.
+- Design patterns: prefer common, recognizable patterns only where they reduce complexity: Strategy for replaceable rules, Factory for creation policy, Adapter for external APIs, Repository for persistence boundaries, and State Machine for multi-step workflows.
+- Clean architecture: domain rules should not depend on UI, framework, transport, ORM, analytics, or vendor SDK details; dependencies should point inward.
+- Service boundaries: keep orchestration in application services, business rules in domain services, persistence behind repositories or gateways, and infrastructure concerns at the edge.
+- Utility extraction: move reusable pure transforms, formatters, validators, parsers, and mappers into focused helpers; do not hide stateful business behavior inside generic utils.
+- Function quality: functions should have one reason to change, clear inputs/outputs, small branching surface, typed errors where useful, and names that describe intent rather than implementation.
 
 ## Output Format
 - Findings first, ordered by severity: Blocker, Major, Minor, Nit.
@@ -1347,15 +1387,18 @@ const studioAiSkillExpertAddenda: Record<string, string> = {
     role: "Act like the reviewer who will be paged if this change breaks at 2 a.m.; optimize for missed behavior, not clever comments.",
     heuristics: [
       "Review the diff against invariants: money, permissions, identity, data retention, locale, SEO, analytics, and rollback.",
-      "Trace both the happy path and the abandoned path: cancelled request, stale tab, retry, partial write, duplicate event, and disabled user."
+      "Trace both the happy path and the abandoned path: cancelled request, stale tab, retry, partial write, duplicate event, and disabled user.",
+      "Check code shape before style: the data structure, design pattern, service boundary, and utility extraction should match the real workflow."
     ],
     failureModes: [
       "A test passes because it mocks away the real contract: time, auth, network, storage, routing, or browser behavior.",
-      "A small UI change breaks analytics, accessibility, locale paths, or cache invalidation outside the touched component."
+      "A small UI change breaks analytics, accessibility, locale paths, or cache invalidation outside the touched component.",
+      "A familiar design-pattern name hides a wrong boundary: business rules leak into controllers, persistence leaks into UI, or generic utils start carrying product state."
     ],
     gates: [
       "Every blocker must explain impact, evidence, and smallest fix.",
-      "Approval requires behavior coverage or an explicit residual-risk note."
+      "Approval requires behavior coverage or an explicit residual-risk note.",
+      "High-quality approval requires a short architecture note when the change introduces new services, repositories, utilities, patterns, or shared data structures."
     ]
   }),
   "frontend-architecture": buildSkillExpertAddendum({
@@ -3130,6 +3173,477 @@ export const studioNotes: StudioNote[] = [
         body:
           "What tasks benefit from explicit roles, memory, and handoff between agents, and what tasks become slower because of that structure?"
       }
+    ]
+  }
+];
+
+export const studioFlowGroups: StudioFlowGroup[] = [
+  {
+    id: "architecture",
+    title: "Architecture & System Design",
+    subtitle: "Decide before drawing boxes.",
+    description:
+      "Flows for system design interviews, architecture reviews, and trade-off decisions where the hard part is choosing boundaries.",
+    flowIds: ["system-design", "architecture-decision"]
+  },
+  {
+    id: "production",
+    title: "Production & Delivery",
+    subtitle: "Move carefully when real users are involved.",
+    description:
+      "Flows for incidents, release readiness, rollout gates, and operational handoffs that protect reliability without slowing every change.",
+    flowIds: ["incident-response", "release-readiness"]
+  },
+  {
+    id: "ai-and-career",
+    title: "AI Delivery & Career Proof",
+    subtitle: "Turn work into leverage.",
+    description:
+      "Flows for AI-assisted delivery and portfolio stories that make engineering judgment visible without turning the work into marketing copy.",
+    flowIds: ["ai-delivery", "portfolio-story"]
+  }
+];
+
+export const studioFlows: StudioFlow[] = [
+  {
+    id: "system-design",
+    groupId: "architecture",
+    title: "System Design Interview Flow",
+    summary:
+      "A calm path from vague prompt to clear architecture, with capacity, data, API, failure modes, and trade-offs handled in order.",
+    seoTitle: "System Design Interview Flow for Senior Software Engineers",
+    seoDescription:
+      "A practical system design flow for framing requirements, choosing boundaries, modeling data, handling scale, and explaining trade-offs clearly.",
+    useWhen:
+      "Use this when a prompt starts broad, such as designing a notification system, a booking platform, a feed, or an internal workflow tool.",
+    outcome:
+      "A shareable design narrative that shows senior judgment: what matters, what can wait, where the risks are, and how the system evolves.",
+    officeExample:
+      "A product manager asks for a new partner onboarding flow. Instead of jumping to services and queues, this flow starts with who changes what data, which steps need approval, and where rollback matters.",
+    tags: ["System Design", "Architecture", "Trade-offs", "Interview"],
+    steps: [
+      {
+        id: "frame-problem",
+        title: "Frame the problem",
+        detail:
+          "Restate users, jobs, constraints, and non-goals before naming any technology.",
+        evidence: "Business goal, actor list, read/write paths, latency or reliability expectations.",
+        output: "A short problem frame and a list of assumptions to confirm."
+      },
+      {
+        id: "shape-interfaces",
+        title: "Shape the interfaces",
+        detail:
+          "Sketch APIs, events, user actions, and admin actions around the real workflow.",
+        evidence: "Request examples, event names, idempotency needs, permissions, and error paths.",
+        output: "API/event contract notes with the first boundary decisions."
+      },
+      {
+        id: "model-data",
+        title: "Model the data",
+        detail:
+          "Choose ownership, consistency rules, indexes, retention, and migration direction.",
+        evidence: "Core entities, invariants, query patterns, lifecycle states, and audit needs.",
+        output: "Data model sketch plus consistency and migration notes."
+      },
+      {
+        id: "design-runtime",
+        title: "Design the runtime",
+        detail:
+          "Place services, queues, cache, workers, and gateways only where they solve a named pressure.",
+        evidence: "Capacity estimate, fan-out, dependency limits, hot paths, and deployment constraints.",
+        output: "Runtime architecture with the reason behind each moving part."
+      },
+      {
+        id: "stress-failures",
+        title: "Stress the failure modes",
+        detail:
+          "Walk through slow dependencies, duplicate requests, partial writes, bad deploys, and stale reads.",
+        evidence: "Timeouts, retry budget, DLQ behavior, backpressure, observability, and rollback triggers.",
+        output: "Failure-mode table with mitigation and monitoring hooks."
+      },
+      {
+        id: "explain-evolution",
+        title: "Explain the evolution path",
+        detail:
+          "Name the first practical version, the breaking points, and the next design when traffic or team size changes.",
+        evidence: "Current team capacity, likely traffic curve, operational maturity, and cost ceiling.",
+        output: "Versioned roadmap: v1, scale trigger, and rejected alternatives."
+      }
+    ],
+    artifacts: [
+      "Problem frame",
+      "API and event notes",
+      "Data ownership sketch",
+      "Runtime diagram",
+      "Failure-mode table",
+      "Evolution roadmap"
+    ],
+    cvSignals: [
+      "System design judgment",
+      "Backend and platform thinking",
+      "Trade-off communication",
+      "Operational maturity"
+    ]
+  },
+  {
+    id: "architecture-decision",
+    groupId: "architecture",
+    title: "Architecture Decision Flow",
+    summary:
+      "A lightweight RFC/ADR path for turning messy options into one clear recommendation, including trade-offs and rollback.",
+    seoTitle: "Architecture Decision Flow with RFC and ADR Thinking",
+    seoDescription:
+      "A practical architecture decision flow for comparing options, scoring trade-offs, documenting risks, and aligning teams before implementation.",
+    useWhen:
+      "Use this before a feature crosses module boundaries, changes data ownership, adds a new integration, or introduces a hard-to-reverse dependency.",
+    outcome:
+      "A decision note that helps teammates understand not only what was chosen, but why the rejected paths were rejected.",
+    officeExample:
+      "A team debates whether to add a queue for partner sync. This flow separates the real need, failure behavior, team support cost, and the moment where async processing actually earns its complexity.",
+    tags: ["RFC", "ADR", "Architecture Review", "Decision Matrix"],
+    steps: [
+      {
+        id: "name-decision",
+        title: "Name the decision",
+        detail:
+          "Write the decision in one sentence and make the scope small enough to approve.",
+        evidence: "Current pain, affected systems, owners, deadline, and what stays out of scope.",
+        output: "Decision statement with scope and non-goals."
+      },
+      {
+        id: "extract-invariants",
+        title: "Extract invariants",
+        detail:
+          "List what must remain true for users, money, permissions, data, audit, and support.",
+        evidence: "Domain rules, compliance needs, support workflows, and production incidents.",
+        output: "Invariant list that every option must satisfy."
+      },
+      {
+        id: "compare-options",
+        title: "Compare real options",
+        detail:
+          "Evaluate two or three practical options, not a perfect design against a strawman.",
+        evidence: "Delivery cost, reversibility, performance, reliability, team fit, and future migration.",
+        output: "Option table with honest trade-offs."
+      },
+      {
+        id: "risk-gates",
+        title: "Set risk gates",
+        detail:
+          "Define validation, telemetry, rollout, and rollback before implementation starts.",
+        evidence: "Tests, dashboards, feature flags, migration scripts, runbooks, and owner sign-off.",
+        output: "Decision gates and launch conditions."
+      },
+      {
+        id: "write-decision",
+        title: "Write the decision",
+        detail:
+          "Keep the final note short enough to read during review, but complete enough to survive handoff.",
+        evidence: "Chosen option, rejected alternatives, accepted debt, and revisit trigger.",
+        output: "ADR/RFC entry ready for review."
+      }
+    ],
+    artifacts: [
+      "Decision statement",
+      "Invariant list",
+      "Option matrix",
+      "Risk gates",
+      "ADR/RFC note"
+    ],
+    cvSignals: [
+      "Architecture leadership",
+      "Requirement clarity",
+      "Cross-team alignment",
+      "Risk management"
+    ]
+  },
+  {
+    id: "incident-response",
+    groupId: "production",
+    title: "Production Incident Flow",
+    summary:
+      "A practical incident path from first signal to rollback, communication, root cause, and follow-up work.",
+    seoTitle: "Production Incident Response Flow for Engineering Teams",
+    seoDescription:
+      "A production incident flow for triage, blast-radius control, rollback, communication, root cause analysis, and follow-up tracking.",
+    useWhen:
+      "Use this when alerts, customer reports, deploy regressions, or partner failures create pressure and the team needs calm sequencing.",
+    outcome:
+      "A controlled incident response where decisions are visible, users are protected, and the postmortem produces real prevention work.",
+    officeExample:
+      "After a release, checkout latency climbs and support sees duplicate complaints. This flow keeps the team from guessing by separating signal, mitigation, rollback, and root-cause work.",
+    tags: ["Incident", "SRE", "Rollback", "Postmortem"],
+    steps: [
+      {
+        id: "confirm-signal",
+        title: "Confirm the signal",
+        detail:
+          "Separate a real user-impacting incident from a noisy metric or isolated dependency blip.",
+        evidence: "Alert, dashboard, logs, traces, customer reports, deploy timeline, and affected segment.",
+        output: "Incident status, severity, and initial owner."
+      },
+      {
+        id: "contain-blast-radius",
+        title: "Contain blast radius",
+        detail:
+          "Protect users first with flags, rate limits, rollback, traffic shift, or temporary disablement.",
+        evidence: "Feature flags, release version, dependency health, error budget, and safe rollback path.",
+        output: "Mitigation action with expected user impact."
+      },
+      {
+        id: "coordinate-room",
+        title: "Coordinate the room",
+        detail:
+          "Assign incident lead, comms, investigation, and verification so the team does not duplicate effort.",
+        evidence: "Owners, timestamps, current hypothesis, customer message, and next update time.",
+        output: "Shared incident timeline and communication cadence."
+      },
+      {
+        id: "verify-recovery",
+        title: "Verify recovery",
+        detail:
+          "Do not close the incident just because one graph improves; check the user path and downstream queues.",
+        evidence: "SLOs, synthetic checks, real traffic, queue depth, support signal, and error-rate recovery.",
+        output: "Recovery confirmation and watch window."
+      },
+      {
+        id: "write-postmortem",
+        title: "Write the follow-up",
+        detail:
+          "Turn the incident into prevention work without blaming the person who touched the deploy.",
+        evidence: "Root cause, contributing factors, missed detection, and prevention options.",
+        output: "Postmortem, action items, owners, and due dates."
+      }
+    ],
+    artifacts: [
+      "Severity note",
+      "Mitigation log",
+      "Incident timeline",
+      "Recovery checklist",
+      "Postmortem actions"
+    ],
+    cvSignals: [
+      "Production ownership",
+      "Reliability thinking",
+      "Stakeholder communication",
+      "Calm under pressure"
+    ]
+  },
+  {
+    id: "release-readiness",
+    groupId: "production",
+    title: "Release Readiness Flow",
+    summary:
+      "A rollout gate for checking scope, tests, observability, migration safety, communication, and rollback before release.",
+    seoTitle: "Release Readiness Flow for Safe Software Rollouts",
+    seoDescription:
+      "A release readiness flow for validating tests, analytics, migration safety, observability, communication, rollout gates, and rollback plans.",
+    useWhen:
+      "Use this before a feature reaches production, especially when it touches checkout, authentication, data migration, integrations, or user-facing routes.",
+    outcome:
+      "A release that can be explained, monitored, paused, and rolled back without heroic cleanup after the fact.",
+    officeExample:
+      "A team is shipping a new dashboard filter with analytics and SEO changes. This flow makes sure behavior, tracking, empty states, and rollback are covered before the deploy button becomes tempting.",
+    tags: ["Release", "Rollout", "QA", "Observability"],
+    steps: [
+      {
+        id: "confirm-scope",
+        title: "Confirm scope",
+        detail:
+          "Match the release to the ticket, acceptance criteria, non-goals, and user-facing behavior.",
+        evidence: "Ticket, diff summary, screenshots, copy changes, and affected routes.",
+        output: "Release scope and explicit non-goals."
+      },
+      {
+        id: "verify-behavior",
+        title: "Verify behavior",
+        detail:
+          "Run the checks that match the risk: unit, integration, E2E, accessibility, typecheck, and manual smoke.",
+        evidence: "Command output, test coverage, browser checks, mobile checks, and known gaps.",
+        output: "Verification note with remaining risk."
+      },
+      {
+        id: "check-data",
+        title: "Check data and migrations",
+        detail:
+          "Review schema changes, backfills, indexes, caches, analytics events, and SEO paths.",
+        evidence: "Migration plan, rollback script, data volume, event names, canonical URLs, and sitemap impact.",
+        output: "Data and tracking readiness checklist."
+      },
+      {
+        id: "prepare-observability",
+        title: "Prepare observability",
+        detail:
+          "Make sure the release can be watched after deploy with actionable signals, not vanity graphs.",
+        evidence: "Dashboards, alerts, logs, traces, feature flags, and owner coverage.",
+        output: "Watch plan and escalation path."
+      },
+      {
+        id: "rollout-decision",
+        title: "Make the rollout decision",
+        detail:
+          "Choose gradual rollout, immediate release, hold, or rollback based on evidence.",
+        evidence: "Risk score, user segment, support readiness, deploy window, and rollback confidence.",
+        output: "Go/hold decision with rollback trigger."
+      }
+    ],
+    artifacts: [
+      "Scope note",
+      "Verification evidence",
+      "Data and analytics checklist",
+      "Watch plan",
+      "Rollout decision"
+    ],
+    cvSignals: [
+      "End-to-end delivery",
+      "QA judgment",
+      "SEO and analytics awareness",
+      "Release ownership"
+    ]
+  },
+  {
+    id: "ai-delivery",
+    groupId: "ai-and-career",
+    title: "AI-Assisted Delivery Flow",
+    summary:
+      "A controlled way to use AI agents for implementation without losing scope, privacy, tests, or human judgment.",
+    seoTitle: "AI-Assisted Software Delivery Flow with Human Review",
+    seoDescription:
+      "An AI-assisted delivery flow for scoping tasks, packaging context, applying changes, verifying behavior, and handing off review-ready work.",
+    useWhen:
+      "Use this when an AI agent helps with coding, review, research, docs, refactors, or test generation inside a real codebase.",
+    outcome:
+      "A review-ready change where AI helped with speed and coverage, while the engineer still owns scope, correctness, and release risk.",
+    officeExample:
+      "A teammate asks for a Studio feature. This flow turns the request into bounded context, tells the agent what not to touch, verifies analytics and SEO, then reviews the diff before commit.",
+    tags: ["AI Delivery", "Agents", "Code Review", "Verification"],
+    steps: [
+      {
+        id: "scope-task",
+        title: "Scope the task",
+        detail:
+          "Translate the request into acceptance criteria, affected surfaces, non-goals, and privacy boundaries.",
+        evidence: "User request, repo instructions, local constraints, analytics rules, and deployment permission.",
+        output: "Task brief with clear boundaries."
+      },
+      {
+        id: "package-context",
+        title: "Package context",
+        detail:
+          "Give the agent the files, examples, conventions, tests, and warnings that matter.",
+        evidence: "Existing patterns, similar components, data model, locale behavior, and tests.",
+        output: "Context pack and implementation hints."
+      },
+      {
+        id: "execute-small",
+        title: "Execute in small slices",
+        detail:
+          "Keep edits narrow, use existing abstractions, and verify each risky boundary before moving on.",
+        evidence: "Diff chunks, compile feedback, UI behavior, and unchanged unrelated files.",
+        output: "Focused implementation diff."
+      },
+      {
+        id: "verify-review",
+        title: "Verify and review",
+        detail:
+          "Run tests, inspect the diff, check copy quality, analytics wiring, and security/privacy implications.",
+        evidence: "Test output, manual checks, changed-file list, and residual risks.",
+        output: "Verification summary and review notes."
+      },
+      {
+        id: "handoff-clean",
+        title: "Handoff cleanly",
+        detail:
+          "Prepare commit, PR, release notes, or deployment only when the human request allows it.",
+        evidence: "Git status, staged diff, commit message, PR checklist, and approval state.",
+        output: "Commit/PR/deploy-ready handoff."
+      }
+    ],
+    artifacts: [
+      "Task brief",
+      "Context pack",
+      "Focused diff",
+      "Verification note",
+      "Review handoff"
+    ],
+    cvSignals: [
+      "AI fluency",
+      "Engineering judgment",
+      "Privacy awareness",
+      "Modern delivery practice"
+    ]
+  },
+  {
+    id: "portfolio-story",
+    groupId: "ai-and-career",
+    title: "Portfolio Story Flow",
+    summary:
+      "A way to turn real engineering work into a clear CV, blog, or interview story without over-polishing the truth.",
+    seoTitle: "Engineering Portfolio Story Flow for CV and Interview Proof",
+    seoDescription:
+      "A portfolio story flow for turning engineering work into clear context, actions, trade-offs, impact, evidence, and next-step learning.",
+    useWhen:
+      "Use this after a project, incident, migration, release, leadership moment, or hard trade-off that should become career evidence.",
+    outcome:
+      "A grounded story that can become a CV bullet, blog post, interview answer, or portfolio case study.",
+    officeExample:
+      "A refactor reduced support noise but did not have a dramatic headline. This flow captures the before/after, the decision pressure, and the quiet operational value.",
+    tags: ["CV", "Portfolio", "Writing", "Career"],
+    steps: [
+      {
+        id: "capture-context",
+        title: "Capture context",
+        detail:
+          "Name the team situation, user pain, constraints, and why the work mattered at that moment.",
+        evidence: "Ticket, incident note, stakeholder request, metric, support theme, or code health signal.",
+        output: "Context paragraph that feels specific, not inflated."
+      },
+      {
+        id: "show-actions",
+        title: "Show the actions",
+        detail:
+          "Describe what you changed, decided, coordinated, or simplified in plain engineering language.",
+        evidence: "Diff, design note, PR discussion, rollout plan, test evidence, or migration record.",
+        output: "Action list with technical and collaboration detail."
+      },
+      {
+        id: "name-tradeoffs",
+        title: "Name the trade-offs",
+        detail:
+          "Explain the constraint that made the work interesting: time, reliability, UX, cost, privacy, or team capacity.",
+        evidence: "Rejected option, accepted debt, rollback plan, or future trigger.",
+        output: "Trade-off note that shows judgment."
+      },
+      {
+        id: "prove-impact",
+        title: "Prove the impact",
+        detail:
+          "Use numbers when available, but also capture reduced risk, cleaner handoff, better reliability, or faster support.",
+        evidence: "Before/after metrics, customer signal, deploy health, incident reduction, or team adoption.",
+        output: "Impact statement with evidence and caveat."
+      },
+      {
+        id: "shape-story",
+        title: "Shape the story",
+        detail:
+          "Turn the raw material into the right format for CV, interview, blog, or portfolio page.",
+        evidence: "Audience, keyword, desired role, proof links, and confidentiality boundary.",
+        output: "CV bullet, STAR answer, blog outline, or case-study draft."
+      }
+    ],
+    artifacts: [
+      "Context paragraph",
+      "Action list",
+      "Trade-off note",
+      "Impact statement",
+      "Story draft"
+    ],
+    cvSignals: [
+      "Impact communication",
+      "Senior engineer narrative",
+      "Business awareness",
+      "Reflective practice"
     ]
   }
 ];

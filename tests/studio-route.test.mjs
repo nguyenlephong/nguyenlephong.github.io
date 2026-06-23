@@ -74,12 +74,17 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(analytics, /'studio_blog_roadmap_status_filter'/);
   assert.match(analytics, /'studio_blog_roadmap_day_select'/);
   assert.match(analytics, /'studio_blog_roadmap_ticket_action'/);
+  assert.match(analytics, /'studio_flow_group_select'/);
+  assert.match(analytics, /'studio_flow_select'/);
+  assert.match(analytics, /'studio_flow_share'/);
   assert.match(tracker, /'studio'/);
   assert.match(tracker, /'studio_view'/);
 
   assert.match(page, /generateStaticParams/);
   assert.match(page, /generateMetadata/);
   assert.match(page, /PageTracker page="studio" eventName="studio_view"/);
+  assert.match(page, /"@type":\s*"HowTo"/);
+  assert.match(page, /flow-\$\{flow\.id\}/);
   assert.match(page, /StudioWorkspace/);
   assert.match(page, /studio-route-shell/);
   assert.match(page, /body:has\(\.studio-route-shell\) \.app-nav/);
@@ -152,6 +157,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(navGroupsBlock, /routeId:\s*"delivery-checklists"/);
   assert.match(navGroupsBlock, /title:\s*"Blog Roadmap"/);
   assert.match(navGroupsBlock, /routeId:\s*"blog-roadmap"/);
+  assert.match(navGroupsBlock, /title:\s*"Flow Menu"/);
+  assert.match(navGroupsBlock, /subItems:\s*studioFlows\.map/);
+  assert.match(navGroupsBlock, /flowRouteId\(flow\.id\)/);
   assert.doesNotMatch(navGroupsBlock, /Communication/);
   assert.doesNotMatch(navGroupsBlock, /title:\s*"Email"/);
   assert.doesNotMatch(navGroupsBlock, /title:\s*"Chat"/);
@@ -169,6 +177,12 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /"ai-skills"/);
   assert.match(adminShell, /"delivery-checklists"/);
   assert.match(adminShell, /"blog-roadmap"/);
+  assert.match(adminShell, /"flow-system-design"/);
+  assert.match(adminShell, /"flow-architecture-decision"/);
+  assert.match(adminShell, /"flow-incident-response"/);
+  assert.match(adminShell, /"flow-release-readiness"/);
+  assert.match(adminShell, /"flow-ai-delivery"/);
+  assert.match(adminShell, /"flow-portfolio-story"/);
   assert.match(adminShell, /"auth-login-v1"/);
   assert.match(adminShell, /function MailRoutePage/);
   assert.match(adminShell, /function ChatRoutePage/);
@@ -176,12 +190,19 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /function AiSkillsPage/);
   assert.match(adminShell, /function DeliveryChecklistsPage/);
   assert.match(adminShell, /function BlogRoadmapPage/);
+  assert.match(adminShell, /function StudioFlowChart/);
+  assert.match(adminShell, /function StudioFlowMenuPage/);
   assert.match(adminShell, /title:\s*"Email"/);
   assert.match(adminShell, /title:\s*"Chat"/);
   assert.match(adminShell, /title:\s*"AI Agent Setup"/);
   assert.match(adminShell, /title:\s*"AI Skills"/);
   assert.match(adminShell, /title:\s*"Delivery Checklists"/);
   assert.match(adminShell, /title:\s*"Blog Roadmap"/);
+  assert.match(adminShell, /title:\s*"System Design Flow"/);
+  assert.match(adminShell, /chartLabel:\s*"Flow chart"/);
+  assert.match(adminShell, /Read the path from left to right/);
+  assert.match(adminShell, /chartLabel:\s*"Sơ đồ flow"/);
+  assert.match(adminShell, /Đọc từ trái sang phải/);
   assert.doesNotMatch(adminShell, /Mail preview/);
   assert.doesNotMatch(adminShell, /Chat preview/);
   assert.match(adminShell, /data-studio-module="mail"/);
@@ -190,6 +211,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /data-studio-module="ai-skills"/);
   assert.match(adminShell, /data-studio-module="delivery-checklists"/);
   assert.match(adminShell, /data-studio-module="blog-roadmap"/);
+  assert.match(adminShell, /data-studio-module="flow-menu"/);
   assert.match(adminShell, /studio_ai_skill_select/);
   assert.match(adminShell, /studio_ai_skill_copy/);
   assert.match(adminShell, /studio_checklist_select/);
@@ -199,6 +221,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studio_blog_roadmap_status_filter/);
   assert.match(adminShell, /studio_blog_roadmap_day_select/);
   assert.match(adminShell, /studio_blog_roadmap_ticket_action/);
+  assert.match(adminShell, /studio_flow_group_select/);
+  assert.match(adminShell, /studio_flow_select/);
+  assert.match(adminShell, /studio_flow_share/);
   assert.match(adminShell, /handleStatusFilterChange/);
   assert.match(adminShell, /studioMails/);
   assert.match(adminShell, /studioConversations/);
@@ -206,11 +231,15 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studioNotes/);
   assert.match(adminShell, /studioAiSkills/);
   assert.match(adminShell, /studioWorkflowChecklists/);
+  assert.match(adminShell, /studioFlowGroups/);
+  assert.match(adminShell, /studioFlows/);
   assert.match(adminShell, /blogRoadmapTopics/);
   assert.match(adminShell, /getLocalizedStudioAiSkills/);
   assert.match(adminShell, /getLocalizedStudioWorkflowChecklists/);
   assert.match(adminShell, /getLocalizedBlogRoadmapTopics/);
   assert.match(adminShell, /getLocalizedBlogRoadmapTicketChecklist/);
+  assert.match(adminShell, /getLocalizedStudioFlowGroups/);
+  assert.match(adminShell, /getLocalizedStudioFlows/);
   assert.match(adminShell, /aiWorkflowSteps/);
   assert.match(adminShell, /Attachments \(\{selectedMail\.attachments\.length\}\)/);
   assert.match(adminShell, /Internal note/);
@@ -278,6 +307,16 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "checklist-index-pane",
     "checklist-reader-pane",
     "checklist-section-card",
+    "flow-workbench",
+    "flow-index-pane",
+    "flow-reader-pane",
+    "flow-side-pane",
+    "flow-chart-surface",
+    "flow-chart",
+    "flow-chart-node",
+    "flow-chart-outcome",
+    "flow-step-map",
+    "flow-step-node",
     "blog-roadmap-workbench",
     "roadmap-topic-pane",
     "roadmap-plan-pane",
@@ -304,15 +343,25 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.dashboard-content\s*\{[^}]*overflow:\s*auto/s);
   assert.match(shadowCss, /\.ai-setup-container\.card\s*\{[^}]*height:\s*clamp/s);
   assert.match(shadowCss, /\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card\s*\{[^}]*height:\s*clamp/s);
+  assert.match(shadowCss, /\.flow-workbench\.card\s*\{[^}]*grid-template-columns:\s*19rem minmax\(0,\s*1fr\) 19rem/s);
+  assert.match(shadowCss, /\.flow-chart\s*\{[^}]*grid-template-columns:\s*repeat\(var\(--flow-count\),\s*minmax\(7rem,\s*1fr\)\)/s);
+  assert.match(shadowCss, /\.flow-chart-node:not\(:last-child\)::after\s*\{[^}]*content:\s*""/s);
+  assert.match(shadowCss, /\.flow-chart-node:not\(:last-child\)::before\s*\{[^}]*border-left:\s*0\.45rem solid/s);
   assert.match(shadowCss, /\.blog-roadmap-workbench\.card\s*\{[^}]*grid-template-columns:\s*18rem minmax\(0,\s*1fr\) 20rem/s);
   assert.match(shadowCss, /\.roadmap-day-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s);
   assert.match(shadowCss, /@media \(max-width: 1480px\)\s*\{[\s\S]*?\.blog-roadmap-workbench\.card\s*\{[^}]*height:\s*auto;[^}]*overflow:\s*visible/s);
-  assert.match(shadowCss, /@media \(max-width: 1480px\)\s*\{[\s\S]*?\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card\s*\{[^}]*grid-template-columns:\s*minmax\(15rem,\s*0\.34fr\) minmax\(0,\s*1fr\)/s);
+  assert.match(shadowCss, /@media \(max-width: 1480px\)\s*\{[\s\S]*?\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card,[\s\S]*?\.flow-workbench\.card\s*\{[^}]*grid-template-columns:\s*minmax\(15rem,\s*0\.34fr\) minmax\(0,\s*1fr\)/s);
   assert.match(shadowCss, /\.route-heading \.outline-button,[\s\S]*?\.skill-reader-head \.outline-button\s*\{[^}]*min-width:\s*max-content/s);
   assert.match(shadowCss, /@media \(max-width: 1080px\)/);
-  assert.match(shadowCss, /@media \(max-width: 1080px\)\s*\{[\s\S]*?\.skill-side-pane,[\s\S]*?\.checklist-side-pane\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(shadowCss, /@media \(max-width: 1080px\)\s*\{[\s\S]*?\.skill-side-pane,[\s\S]*?\.checklist-side-pane,[\s\S]*?\.flow-side-pane\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(shadowCss, /\.flow-step-node dl\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/s);
+  assert.match(shadowCss, /@media \(max-width: 860px\)\s*\{[\s\S]*?\.flow-chart\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(shadowCss, /@media \(max-width: 860px\)\s*\{[\s\S]*?\.flow-chart-node:not\(:last-child\)::after\s*\{[^}]*height:\s*0\.875rem/s);
+  assert.match(shadowCss, /\.studio-flow-route \.flow-reader-pane\s*\{[^}]*order:\s*1/s);
+  assert.match(shadowCss, /\.studio-flow-route \.flow-index-pane\s*\{[^}]*order:\s*3/s);
   assert.match(shadowCss, /\.studio-admin\.is-mobile-open \.studio-sidebar\s*\{[^}]*width:\s*min\(22rem,\s*calc\(100vw - 1rem\)\)/s);
   assert.match(shadowCss, /@media \(max-width: 640px\)\s*\{[\s\S]*?\.metric-grid,\s*\.route-actions/s);
+  assert.match(shadowCss, /\.studio-flow-route \.metric-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/s);
   assert.match(shadowCss, /--sidebar:\s*color-mix/);
   assert.match(shadowCss, /border-radius:\s*0\.875rem/);
   assert.match(shadowCss, /@media \(max-width: 860px\)/);
@@ -348,6 +397,12 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "od mcp install codex",
     "od mcp install antigravity",
     "Code Review Skill",
+    "Code Shape Review",
+    "Data structures",
+    "Strategy for replaceable rules",
+    "Clean architecture",
+    "Service boundaries",
+    "Utility extraction",
     "Frontend Architecture Skill",
     "Backend Architecture Skill",
     "Blog Content Writer Skill",
@@ -398,7 +453,20 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "One architecture article per day for 30 days.",
     "Module boundaries before folder names",
     "From prompts to workflows",
-    "Create one focused Multica ticket per roadmap article."
+    "Create one focused Multica ticket per roadmap article.",
+    "Architecture & System Design",
+    "System Design Interview Flow",
+    "Architecture Decision Flow",
+    "Production Incident Flow",
+    "Release Readiness Flow",
+    "AI-Assisted Delivery Flow",
+    "Portfolio Story Flow",
+    "A product manager asks for a new partner onboarding flow.",
+    "A team debates whether to add a queue for partner sync.",
+    "checkout latency climbs",
+    "dashboard filter with analytics and SEO changes",
+    "AI agent helps with coding",
+    "CV bullet, STAR answer, blog outline, or case-study draft"
   ]) {
     assert.match(data, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
@@ -409,6 +477,11 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "getLocalizedBlogRoadmapTopics",
     "getLocalizedBlogRoadmapTicketChecklist",
     "Review thay đổi theo correctness",
+    "Review data structure",
+    "Review design pattern",
+    "Review clean architecture",
+    "application service giữ orchestration",
+    "generic utility bắt đầu giữ product state",
     "Kiến trúc frontend",
     "Viết blog content",
     "Từ ticket đến commit đầu tiên",
@@ -416,6 +489,12 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "Từ prompt sang workflow",
     "Cách review code do AI viết",
     "Xác nhận locale đang chọn",
+    "getLocalizedStudioFlows",
+    "getLocalizedStudioFlowGroups",
+    "Flow System Design",
+    "onboarding đối tác",
+    "release readiness",
+    "support noise",
     "isVietnameseLocale"
   ]) {
     assert.match(localizedContent, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
