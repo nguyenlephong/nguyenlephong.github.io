@@ -2,6 +2,7 @@ import type {
   StudioFlowArchitectureDemo,
   StudioFlowArchitectureEdgeSpec,
   StudioFlowArchitectureNodeSpec,
+  StudioFlowArchitectureTone,
   StudioFlowArchitectureViewSpec
 } from "./studio.data";
 
@@ -251,6 +252,28 @@ const serviceMapEdges: StudioFlowArchitectureEdgeSpec[] = [
   { id: "rollback-audit", source: "rollback", target: "audit-log", type: "straight", label: "release evidence", tone: "risk", marker: "arrow" }
 ];
 
+function systemIconNode(
+  id: string,
+  tone: StudioFlowArchitectureTone,
+  title: string,
+  detail: string,
+  badge: string,
+  position: { x: number; y: number }
+): StudioFlowArchitectureNodeSpec {
+  return { id, kind: "system", tone, title, detail, badge, position, compact: true };
+}
+
+function platformGroupNode(
+  id: string,
+  tone: StudioFlowArchitectureTone,
+  title: string,
+  detail: string,
+  position: { x: number; y: number },
+  size: { width: number; height: number }
+): StudioFlowArchitectureNodeSpec {
+  return { id, kind: "group", tone, title, detail, badge: "platform", position, size };
+}
+
 const reactFlowViews: StudioFlowArchitectureViewSpec[] = [
   {
     id: "feature-overview",
@@ -459,6 +482,59 @@ const reactFlowViews: StudioFlowArchitectureViewSpec[] = [
     ]
   },
   {
+    id: "layered-platform-icon-map",
+    family: "architecture",
+    title: "Layered platform icon map",
+    description: "A platform-oriented system design diagram with compact icons grouped inside ownership and runtime boundaries.",
+    notes: ["Wrapper groups show where each system lives", "Layers separate client, edge, services, data, operations, and external dependencies", "Useful for architecture review, onboarding, and refactoring conversations"],
+    nodes: [
+      platformGroupNode("layer-client", "source", "Client platform", "Public and internal entry surfaces.", { x: -940, y: -300 }, { width: 260, height: 560 }),
+      platformGroupNode("layer-edge", "review", "Edge platform", "Delivery, identity, policy, and routing boundary.", { x: -635, y: -300 }, { width: 300, height: 560 }),
+      platformGroupNode("layer-services", "process", "Service platform", "Domain services plus async execution.", { x: -290, y: -300 }, { width: 490, height: 560 }),
+      platformGroupNode("layer-data", "storage", "Data platform", "Transactional, cache, and analytical models.", { x: 255, y: -300 }, { width: 360, height: 560 }),
+      platformGroupNode("layer-ops", "risk", "Operations platform", "Telemetry, audit, and release controls.", { x: 665, y: -300 }, { width: 290, height: 560 }),
+      platformGroupNode("layer-external", "external", "External boundary", "Provider APIs and user-visible outputs.", { x: 1005, y: -300 }, { width: 270, height: 560 }),
+      systemIconNode("layer-users", "source", "Users", "Web and mobile traffic", "client", { x: -875, y: -135 }),
+      systemIconNode("layer-admin", "source", "Admin", "Operations surface", "client", { x: -875, y: 105 }),
+      systemIconNode("layer-cdn", "external", "CDN", "Static delivery", "edge", { x: -560, y: -180 }),
+      systemIconNode("layer-gateway", "review", "Gateway", "Rate limit and route", "edge", { x: -560, y: 15 }),
+      systemIconNode("layer-auth", "review", "Auth", "Session and tenancy", "security", { x: -560, y: 185 }),
+      systemIconNode("layer-api", "process", "Core API", "Command boundary", "service", { x: -225, y: -155 }),
+      systemIconNode("layer-order", "process", "Order", "Aggregate owner", "service", { x: -225, y: 55 }),
+      systemIconNode("layer-inventory", "process", "Inventory", "Reservation owner", "service", { x: 10, y: 55 }),
+      systemIconNode("layer-bus", "event", "Event Bus", "Async fan-out", "event", { x: -225, y: 190 }),
+      systemIconNode("layer-worker", "agent", "Workers", "Retries and side effects", "async", { x: 10, y: 190 }),
+      systemIconNode("layer-postgres", "storage", "Postgres", "System of record", "db", { x: 345, y: -155 }),
+      systemIconNode("layer-redis", "storage", "Redis", "Hot reads and locks", "cache", { x: 345, y: 55 }),
+      systemIconNode("layer-warehouse", "storage", "Warehouse", "Read model", "analytics", { x: 345, y: 190 }),
+      systemIconNode("layer-telemetry", "risk", "Telemetry", "Metrics and traces", "ops", { x: 740, y: -155 }),
+      systemIconNode("layer-audit", "risk", "Audit", "Append-only history", "ops", { x: 740, y: 55 }),
+      systemIconNode("layer-rollout", "risk", "Rollout", "Flag and rollback", "ops", { x: 740, y: 190 }),
+      systemIconNode("layer-payment", "external", "Payment API", "Provider contract", "external", { x: 1070, y: -60 }),
+      systemIconNode("layer-receipt", "output", "Receipt", "User-visible state", "output", { x: 1070, y: 155 })
+    ],
+    edges: [
+      { id: "layer-users-cdn", source: "layer-users", target: "layer-cdn", type: "smoothstep", label: "assets", tone: "external", marker: "arrowClosed" },
+      { id: "layer-users-gateway", source: "layer-users", target: "layer-gateway", type: "smoothstep", label: "HTTPS", tone: "source", marker: "arrowClosed" },
+      { id: "layer-admin-gateway", source: "layer-admin", target: "layer-gateway", type: "smoothstep", label: "ops", tone: "source", marker: "arrowClosed" },
+      { id: "layer-gateway-auth", source: "layer-gateway", target: "layer-auth", type: "smoothstep", label: "policy", tone: "review", marker: "arrowClosed" },
+      { id: "layer-auth-api", source: "layer-auth", target: "layer-api", type: "smoothstep", label: "claims", tone: "review", marker: "arrowClosed" },
+      { id: "layer-gateway-api", source: "layer-gateway", target: "layer-api", type: "smoothstep", label: "route", tone: "process", marker: "arrowClosed" },
+      { id: "layer-api-order", source: "layer-api", target: "layer-order", type: "smoothstep", label: "command", tone: "process", marker: "arrowClosed" },
+      { id: "layer-api-inventory", source: "layer-api", target: "layer-inventory", type: "smoothstep", label: "query", tone: "process", marker: "arrowClosed" },
+      { id: "layer-order-bus", source: "layer-order", target: "layer-bus", type: "smoothstep", label: "events", tone: "event", marker: "arrowClosed", animated: true },
+      { id: "layer-bus-worker", source: "layer-bus", target: "layer-worker", type: "smoothstep", label: "consume", tone: "event", marker: "arrowClosed", animated: true },
+      { id: "layer-order-postgres", source: "layer-order", target: "layer-postgres", type: "smoothstep", label: "write", tone: "storage", marker: "arrowClosed" },
+      { id: "layer-inventory-redis", source: "layer-inventory", target: "layer-redis", type: "smoothstep", label: "cache", tone: "storage", marker: "arrowClosed" },
+      { id: "layer-bus-warehouse", source: "layer-bus", target: "layer-warehouse", type: "smoothstep", label: "project", tone: "storage", marker: "arrowClosed", animated: true },
+      { id: "layer-api-telemetry", source: "layer-api", target: "layer-telemetry", type: "smoothstep", label: "traces", tone: "risk", marker: "arrow" },
+      { id: "layer-postgres-audit", source: "layer-postgres", target: "layer-audit", type: "smoothstep", label: "audit", tone: "risk", marker: "arrow" },
+      { id: "layer-worker-payment", source: "layer-worker", target: "layer-payment", type: "smoothstep", label: "charge", tone: "external", marker: "arrowClosed" },
+      { id: "layer-payment-receipt", source: "layer-payment", target: "layer-receipt", type: "smoothstep", label: "status", tone: "output", marker: "arrowClosed" },
+      { id: "layer-rollout-receipt", source: "layer-rollout", target: "layer-receipt", type: "smoothstep", label: "release gate", tone: "output", marker: "arrowClosed" }
+    ]
+  },
+  {
     id: "architecture-service-map",
     family: "architecture",
     title: "Software architecture service map",
@@ -600,7 +676,7 @@ export const reactFlowArchitectureDemo: StudioFlowArchitectureDemo = {
       ]
     }
   ],
-  defaultViewId: "system-design-icon-map",
+  defaultViewId: "layered-platform-icon-map",
   nodes: serviceMapNodes,
   edges: serviceMapEdges,
   views: reactFlowViews
