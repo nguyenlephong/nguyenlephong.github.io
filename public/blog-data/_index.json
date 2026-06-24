@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "retrospectives-that-actually-cause-change",
+      "category": "ways-of-working",
+      "title": "Retrospectives That Actually Cause Change",
+      "summary": "A practical look at retrospectives that produce visible follow-through: small experiments, clear action owners, trust, decision records, and measurable behavior change instead of another list of forgotten complaints.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Retrospectives",
+        "Agile",
+        "Team Trust",
+        "Continuous Improvement",
+        "Decision Records",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "mentoring-junior-developers-effectively",
       "category": "perspectives",
       "title": "Mentoring Junior Developers Effectively",

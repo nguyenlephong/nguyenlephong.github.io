@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "retrospectives-that-actually-cause-change",
+      "category": "ways-of-working",
+      "title": "Retrospective tạo ra thay đổi thật",
+      "summary": "Một góc nhìn thực tế về retrospective có follow-through rõ ràng: experiment nhỏ, action owner cụ thể, trust, decision record và thay đổi hành vi đo được thay vì thêm một danh sách than phiền bị quên.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Retrospective",
+        "Agile",
+        "Niềm tin trong team",
+        "Continuous Improvement",
+        "Decision Record",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "mentoring-junior-developers-effectively",
       "category": "perspectives",
       "title": "Mentoring junior developer một cách hiệu quả",
