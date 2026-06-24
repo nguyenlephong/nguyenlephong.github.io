@@ -43,6 +43,24 @@
   ],
   "posts": [
     {
+      "slug": "when-an-ai-answer-needs-a-test",
+      "category": "ai",
+      "title": "Khi một câu trả lời AI cần được kiểm chứng",
+      "summary": "Một bài explainer bình tĩnh về việc xem câu trả lời AI như một claim cần kiểm chứng đúng mức. Bài viết chỉ ra cách engineer giữ trách nhiệm bằng cách đối chiếu output của AI với evidence, context và hành vi thật của hệ thống trước khi hành động.",
+      "date": "2026-06-24",
+      "readingMinutes": 8,
+      "tags": [
+        "AI",
+        "AI Workflow",
+        "Verification",
+        "Software Engineering",
+        "Phán đoán con người"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 3
+    },
+    {
       "slug": "ai-ideas-bloom-inside-everyday-work",
       "category": "ai",
       "title": "Khi AI chạm vào việc hằng ngày, ý tưởng bắt đầu nở ra",
