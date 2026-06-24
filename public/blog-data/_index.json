@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "ethical-considerations-in-ai-products",
+      "category": "ai",
+      "title": "Ethical Considerations in AI Products",
+      "summary": "A practical article on product ethics for AI teams: consent, data boundaries, bias and fairness, human review, explanations, risk controls, and incentives that shape whether AI features remain useful and responsible.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "AI Ethics",
+        "Product Management",
+        "Responsible AI",
+        "Data Privacy",
+        "Human Review"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "async-communication-for-remote-teams",
       "category": "culture",
       "title": "Async Communication for Remote Teams",
