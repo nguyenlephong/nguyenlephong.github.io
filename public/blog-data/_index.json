@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "api-gateway-patterns",
+      "category": "architecture",
+      "title": "API Gateway Patterns",
+      "summary": "A practical look at API gateway responsibilities: routing, authentication boundaries, rate limiting, request aggregation, backend-for-frontend trade-offs, failure modes, and the observability needed to keep the edge of a system understandable.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "API Gateway",
+        "Backend for Frontend",
+        "Rate Limiting",
+        "System Design",
+        "Observability"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "retrieval-augmented-generation-rag-basics",
       "category": "ai",
       "title": "Retrieval-Augmented Generation (RAG) Basics",
