@@ -77,6 +77,23 @@
       "author": "Nguyen Le Phong"
     },
     {
+      "slug": "daily-standup-that-changes-decisions",
+      "category": "ways-of-working",
+      "title": "Daily standup giúp team đổi quyết định như thế nào",
+      "summary": "Một bài companion cho chủ đề daily standup, tập trung vào các quyết định nhỏ mà team nên làm rõ trước khi ngày làm việc bắt đầu: việc gì cần finish, việc gì nên chờ, rủi ro nào phải escalate, và ai cần hỗ trợ để outcome đổi thật.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Agile",
+        "Daily Standup",
+        "Ra quyết định",
+        "Team Collaboration",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "ai-ideas-bloom-inside-everyday-work",
       "category": "ai",
       "title": "Khi AI chạm vào việc hằng ngày, ý tưởng bắt đầu nở ra",
