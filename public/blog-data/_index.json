@@ -1266,6 +1266,26 @@
       "seriesOrder": 14
     },
     {
+      "slug": "eventual-consistency-in-the-real-world",
+      "category": "architecture",
+      "title": "Eventual Consistency in the Real World",
+      "summary": "A practical explanation of eventual consistency beyond the textbook definition: what users notice, which trade-offs teams are really making, how to set expectations in the product, and how operations keeps delayed truth from becoming silent data drift.",
+      "date": "2026-06-24",
+      "readingMinutes": 8,
+      "tags": [
+        "Software Architecture",
+        "Eventual Consistency",
+        "Distributed Systems",
+        "Reliability",
+        "Product Engineering",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 15
+    },
+    {
       "slug": "anatomy-of-a-healthy-one-on-one",
       "category": "culture",
       "title": "The Anatomy of a Healthy 1-on-1",

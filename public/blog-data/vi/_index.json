@@ -1227,6 +1227,26 @@
       "seriesOrder": 14
     },
     {
+      "slug": "eventual-consistency-in-the-real-world",
+      "category": "architecture",
+      "title": "Eventual Consistency trong đời thật",
+      "summary": "Một bài giải thích thực tế về eventual consistency ngoài định nghĩa sách vở: người dùng thật sự thấy gì, team đang đổi lấy điều gì, product nên đặt kỳ vọng ra sao, và vận hành phải làm gì để sự thật đến trễ không biến thành dữ liệu lệch âm thầm.",
+      "date": "2026-06-24",
+      "readingMinutes": 9,
+      "tags": [
+        "Kiến trúc phần mềm",
+        "Eventual Consistency",
+        "Distributed Systems",
+        "Reliability",
+        "Product Engineering",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 15
+    },
+    {
       "slug": "anatomy-of-a-healthy-one-on-one",
       "category": "culture",
       "title": "Một buổi 1-on-1 lành mạnh gồm những gì?",
