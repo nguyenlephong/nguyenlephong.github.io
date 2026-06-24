@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "retrieval-augmented-generation-rag-basics",
+      "category": "ai",
+      "title": "Retrieval-Augmented Generation (RAG) Basics",
+      "summary": "A beginner-friendly explanation of Retrieval-Augmented Generation: how documents are split into chunks, turned into embeddings, found with vector search, and used to ground AI answers with citations, evaluation, and clear failure checks.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "RAG",
+        "LLM",
+        "Embeddings",
+        "Vector Search",
+        "AI Evaluation"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "hexagonal-architecture-in-practice",
       "category": "architecture",
       "title": "Hexagonal Architecture in Practice",
