@@ -43,6 +43,22 @@
   ],
   "posts": [
     {
+      "slug": "why-i-stopped-writing-perfect-code",
+      "category": "perspectives",
+      "title": "Vì sao tôi ngừng viết code hoàn hảo",
+      "summary": "Một bài reflection về việc rời khỏi sự cầu toàn trong code để hướng tới những thay đổi dễ maintain, dễ hiểu và dễ review hơn. Bài viết nhìn lại vì sao code tốt không phải phiên bản gây ấn tượng nhất khi đứng một mình, mà là phiên bản team có thể hiểu, sửa và tiếp tục mang đi.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Engineering",
+        "Code Quality",
+        "Maintainability",
+        "Phát triển sự nghiệp",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "context-window-bottleneck",
       "category": "ai",
       "title": "Context window: điểm nghẽn thầm lặng của AI workflow",
