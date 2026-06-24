@@ -2,26 +2,26 @@
   "topics": [
     {
       "id": "mua-nha",
-      "label": "Mua nhà",
-      "description": "Những ghi chép thực tế về mua nhà: tài chính, pháp lý, vị trí, quy trình, chất lượng nhà và các quyết định cần nhìn bằng sự bình tĩnh.",
+      "label": "Home Buying",
+      "description": "Practical notes on buying a home: money, legal checks, location, process, build quality, and decisions that are easier to make calmly.",
       "color": "#059669"
     },
     {
       "id": "tiet-kiem",
-      "label": "Tài chính & Tiết kiệm",
-      "description": "Cách quản lý dòng tiền cá nhân, giữ tiền trong túi và xây thói quen tài chính lành mạnh — viết cho người đi làm bình thường.",
+      "label": "Personal Finance & Saving",
+      "description": "How to manage personal cash flow, keep more money available, and build healthy financial habits for everyday working life.",
       "color": "#d97706"
     },
     {
       "id": "mua-xe",
-      "label": "Mua xe & sắm lớn",
-      "description": "Cách ra quyết định cho những khoản mua sắm lớn của đời người — mua xe, chi phí sở hữu thật, mua mới hay cũ, trả thẳng hay trả góp — để tài sản phục vụ bạn, không trở thành gánh nặng.",
+      "label": "Cars & Major Purchases",
+      "description": "Decision notes for large purchases: car ownership cost, new versus used, paying upfront versus financing, and keeping assets useful instead of burdensome.",
       "color": "#2563eb"
     },
     {
       "id": "su-nghiep",
-      "label": "Sự nghiệp & phát triển",
-      "description": "Làm chủ con đường sự nghiệp của chính mình — xây kỹ năng, nâng giá trị thị trường, đàm phán thu nhập, và phát triển bản thân bền vững cho người đi làm.",
+      "label": "Career & Growth",
+      "description": "Owning a career path with clearer skills, market value, income negotiation, and sustainable self-development.",
       "color": "#7c3aed"
     },
     {

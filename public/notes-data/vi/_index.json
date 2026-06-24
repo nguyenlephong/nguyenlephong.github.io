@@ -1,6 +1,30 @@
 {
   "topics": [
     {
+      "id": "mua-nha",
+      "label": "Mua nhà",
+      "description": "Những ghi chép thực tế về mua nhà: tài chính, pháp lý, vị trí, quy trình, chất lượng nhà và các quyết định cần nhìn bằng sự bình tĩnh.",
+      "color": "#059669"
+    },
+    {
+      "id": "tiet-kiem",
+      "label": "Tài chính & Tiết kiệm",
+      "description": "Cách quản lý dòng tiền cá nhân, giữ tiền trong túi và xây thói quen tài chính lành mạnh — viết cho người đi làm bình thường.",
+      "color": "#d97706"
+    },
+    {
+      "id": "mua-xe",
+      "label": "Mua xe & sắm lớn",
+      "description": "Cách ra quyết định cho những khoản mua sắm lớn của đời người — mua xe, chi phí sở hữu thật, mua mới hay cũ, trả thẳng hay trả góp — để tài sản phục vụ bạn, không trở thành gánh nặng.",
+      "color": "#2563eb"
+    },
+    {
+      "id": "su-nghiep",
+      "label": "Sự nghiệp & phát triển",
+      "description": "Làm chủ con đường sự nghiệp của chính mình — xây kỹ năng, nâng giá trị thị trường, đàm phán thu nhập, và phát triển bản thân bền vững cho người đi làm.",
+      "color": "#7c3aed"
+    },
+    {
       "id": "goc-nhin",
       "label": "Góc nhìn & Chiêm nghiệm",
       "description": "Những chiêm nghiệm cá nhân về cuộc sống, công việc, và những câu hỏi không có lời đáp gọn gàng.",
