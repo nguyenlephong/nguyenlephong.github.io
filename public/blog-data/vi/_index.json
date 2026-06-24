@@ -110,6 +110,23 @@
       "author": "Nguyen Le Phong"
     },
     {
+      "slug": "handling-toxic-rockstars",
+      "category": "culture",
+      "title": "Xử lý kiểu \"rockstar\" làm hại niềm tin trong team",
+      "summary": "Một góc nhìn bình tĩnh về những người tạo ra nhiều output nhưng làm mòn trust: vì sao team dễ thưởng cho hành vi đó, feedback loop bị gãy thế nào, và leader nên đặt boundary ra sao mà vẫn để lại đường sửa.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "Lãnh đạo",
+        "Niềm tin trong team",
+        "Feedback",
+        "An toàn tâm lý",
+        "Management"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "hiring-for-potential-vs-experience",
       "category": "culture",
       "title": "Tuyển dụng vì tiềm năng hay vì kinh nghiệm",
