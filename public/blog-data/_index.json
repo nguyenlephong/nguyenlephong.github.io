@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "hexagonal-architecture-in-practice",
+      "category": "architecture",
+      "title": "Hexagonal Architecture in Practice",
+      "summary": "A practical guide to applying Hexagonal Architecture to one small feature: drawing the boundary, naming ports in business language, keeping adapters at the edge, testing the core, and deciding when the extra structure is worth the cost.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Hexagonal Architecture",
+        "Ports and Adapters",
+        "Testing",
+        "Code Organization",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "kanban-vs-scrum-which-fits-better",
       "category": "ways-of-working",
       "title": "Kanban vs. Scrum: Which Fits Better?",

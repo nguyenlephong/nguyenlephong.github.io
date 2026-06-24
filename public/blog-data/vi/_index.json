@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "hexagonal-architecture-in-practice",
+      "category": "architecture",
+      "title": "Áp dụng Hexagonal Architecture vào một feature nhỏ",
+      "summary": "Một hướng dẫn thực tế về cách áp dụng Hexagonal Architecture cho một feature nhỏ: vẽ boundary, đặt tên port bằng ngôn ngữ business, giữ adapter ở rìa hệ thống, test phần core, và biết khi nào pattern này đáng với chi phí của nó.",
+      "date": "2026-06-24",
+      "readingMinutes": 8,
+      "tags": [
+        "Software Architecture",
+        "Hexagonal Architecture",
+        "Ports and Adapters",
+        "Testing",
+        "Code Organization",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "kanban-vs-scrum-which-fits-better",
       "category": "ways-of-working",
       "title": "Kanban hay Scrum: cái nào hợp hơn?",
