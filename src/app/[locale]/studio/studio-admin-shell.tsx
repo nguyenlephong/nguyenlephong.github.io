@@ -7,7 +7,6 @@ import type { IconType } from "react-icons";
 import { APP_ROUTE } from "@/app/app.const";
 import { track } from "@/lib/analytics";
 import {
-  blogRoadmapTopics,
   defaultStudioNoteId,
   studioAiSkills,
   studioFlowGroups,
@@ -17,17 +16,12 @@ import {
   studioWorkflowChecklists
 } from "./studio.data";
 import {
-  getLocalizedBlogRoadmapTicketChecklist,
-  getLocalizedBlogRoadmapTopics,
   getLocalizedStudioFlowGroups,
   getLocalizedStudioFlows,
   getLocalizedStudioAiSkills,
   getLocalizedStudioWorkflowChecklists
 } from "./studio.localized-content";
 import type {
-  BlogRoadmapEntry,
-  BlogRoadmapStatus,
-  BlogRoadmapTopic,
   StudioAiSkill,
   StudioChecklistStep,
   StudioFlow,
@@ -78,8 +72,10 @@ import {
   LuMail,
   LuMailOpen,
   LuMapPin,
+  LuMaximize2,
   LuMenu,
   LuMessageSquare,
+  LuMinimize2,
   LuMonitor,
   LuMoon,
   LuMoreVertical,
@@ -139,6 +135,7 @@ type StudioAdminShellProps = {
 };
 
 type StudioRouteId =
+  | "welcome"
   | "default"
   | "crm"
   | "finance"
@@ -153,7 +150,6 @@ type StudioRouteId =
   | "ai-agent-setup"
   | "ai-skills"
   | "delivery-checklists"
-  | "blog-roadmap"
   | "flow-system-design"
   | "flow-architecture-decision"
   | "flow-incident-response"
@@ -176,6 +172,7 @@ type StudioRouteId =
   | "legacy-analytics";
 
 type StudioRouteKind =
+  | "welcome"
   | "default"
   | "dashboard"
   | "finance"
@@ -190,7 +187,6 @@ type StudioRouteKind =
   | "ai-setup"
   | "ai-skills"
   | "checklists"
-  | "roadmap"
   | "flows"
   | "calendar"
   | "kanban"
@@ -347,7 +343,7 @@ type StudioFlowCanvasNodeData = {
   active?: boolean;
 };
 
-const DEFAULT_ROUTE: StudioRouteId = "ai-agent-setup";
+const DEFAULT_ROUTE: StudioRouteId = "welcome";
 const STUDIO_THEME_STORAGE_KEY = "studio_theme_preference";
 const STUDIO_FONT_STORAGE_KEY = "studio_font_preference";
 const LAYOUT_STORAGE_KEY = "studio_layout_preference";
@@ -475,9 +471,18 @@ type StudioUiCopy = {
   };
   routeMetricsLabel: string;
   status: Record<StudioNoteStatus, string>;
-  roadmapStatus: Record<BlogRoadmapStatus, string>;
   categories: Record<StudioAiSkill["category"] | "all", string>;
   routes: Partial<Record<StudioRouteId, StudioRouteCopy>>;
+  welcome: {
+    eyebrow: string;
+    lead: string;
+    note: string;
+    studioLinks: string;
+    publicLinks: string;
+    open: string;
+    routeCards: Partial<Record<StudioRouteId, { label: string; detail: string }>>;
+    linkCards: Record<string, { label: string; detail: string }>;
+  };
   flows: {
     emptyTitle: string;
     emptyDescription: string;
@@ -502,6 +507,8 @@ type StudioUiCopy = {
     shareFlow: string;
     copied: string;
     openFlow: string;
+    enterFullscreen: string;
+    exitFullscreen: string;
   };
   aiSetup: {
     addNote: string;
@@ -556,29 +563,6 @@ type StudioUiCopy = {
     markdownCopy: string;
     markdownUseWhen: string;
   };
-  roadmap: {
-    emptyTitle: string;
-    emptyDescription: string;
-    openCategory: string;
-    queueReadyTickets: string;
-    topicMenu: string;
-    topicMenuDetail: string;
-    topicListLabel: string;
-    selectedRoadmap: string;
-    statusCountsLabel: string;
-    statusFiltersLabel: string;
-    all: string;
-    day: string;
-    thirtyDayRoadmap: string;
-    ticketDetail: string;
-    intent: string;
-    format: string;
-    draftTime: string;
-    category: string;
-    prepareTicket: string;
-    ticketHandoff: string;
-    min: string;
-  };
   preferences: {
     title: string;
     description: string;
@@ -607,10 +591,10 @@ const englishStudioCopy: StudioUiCopy = {
   brand: "Studio",
   navLabel: "Personal Studio",
   navItems: {
+    welcome: "Welcome",
     "ai-agent-setup": "AI Setup",
     "ai-skills": "AI Skills",
     "delivery-checklists": "Checklists",
-    "blog-roadmap": "Blog Roadmap",
     "flow-menu": "Flow Menu",
     "flow-system-design": "System Design",
     "flow-architecture-decision": "Architecture Decision",
@@ -654,11 +638,6 @@ const englishStudioCopy: StudioUiCopy = {
     draft: "Draft",
     next: "Next"
   },
-  roadmapStatus: {
-    ready: "Ready",
-    outline: "Outline",
-    research: "Research"
-  },
   categories: {
     all: "All",
     engineering: "Engineering",
@@ -669,6 +648,12 @@ const englishStudioCopy: StudioUiCopy = {
     learning: "Learning"
   },
   routes: {
+    welcome: {
+      title: "Welcome",
+      description: "A quiet starting point for the personal Studio: working notes, reusable workflows, and the public profile links I reach for most.",
+      panels: ["Start here", "Useful links", "Studio routes"],
+      timeline: ["Open the right workspace", "Keep context close", "Move from idea to proof"]
+    },
     "ai-agent-setup": {
       title: "AI Agent Setup",
       description: "Personal setup notes for my AI agent tools, MCP paths, and safe machine bootstrap.",
@@ -686,12 +671,6 @@ const englishStudioCopy: StudioUiCopy = {
       description: "Operating checklists from task intake through module work, release readiness, and rollout.",
       panels: ["Task intake", "Module creation", "Release and rollout"],
       timeline: ["Ticket intake path mapped", "Module checklist nested", "Rollout phases captured"]
-    },
-    "blog-roadmap": {
-      title: "Blog Roadmap",
-      description: "A 30-day writing menu for every current blog topic, ready to turn into daily Multica article tickets.",
-      panels: ["Topic menu", "Daily article plan", "Ticket checklist"],
-      timeline: ["Existing blog topics mapped", "Thirty daily prompts prepared", "Ticket handoff checklist ready"]
     },
     "flow-system-design": {
       title: "System Design Flow",
@@ -736,6 +715,27 @@ const englishStudioCopy: StudioUiCopy = {
       timeline: ["Example families mapped", "Dropdown views wired", "Canvas controls enabled"]
     }
   },
+  welcome: {
+    eyebrow: "Studio home",
+    lead: "This space is where I keep the practical parts of my work close together: setup notes, reusable AI skills, delivery checklists, and visual flows that help turn rough context into something I can ship or explain.",
+    note: "Use it as a calm control room. Start with the route that matches the job, keep the source material honest, then leave with a concrete artifact instead of another open tab.",
+    studioLinks: "Studio shortcuts",
+    publicLinks: "Useful profile links",
+    open: "Open",
+    routeCards: {
+      "ai-agent-setup": { label: "AI Setup", detail: "Machine notes, MCP paths, and personal agent setup references." },
+      "ai-skills": { label: "AI Skills", detail: "Reusable prompts and operating rules for focused agent sessions." },
+      "delivery-checklists": { label: "Checklists", detail: "Working checklists for task intake, release readiness, and rollout." },
+      "flow-react-flow-architecture-demo": { label: "Example", detail: "React Flow examples for architecture, layout, grouping, styling, and interactions." }
+    },
+    linkCards: {
+      home: { label: "Home", detail: "Public profile overview." },
+      notes: { label: "Notes", detail: "Short working notes and reflections." },
+      blog: { label: "Blog", detail: "Longer technical and personal essays." },
+      apps: { label: "Apps", detail: "Small tools and experiments." },
+      resume: { label: "Resume", detail: "Open the latest PDF CV." }
+    }
+  },
   flows: {
     emptyTitle: "Flow library is empty",
     emptyDescription: "Add studio flows before opening this menu.",
@@ -759,7 +759,9 @@ const englishStudioCopy: StudioUiCopy = {
     output: "Output",
     shareFlow: "Share flow",
     copied: "Copied",
-    openFlow: "Open flow"
+    openFlow: "Open flow",
+    enterFullscreen: "Fullscreen board",
+    exitFullscreen: "Exit fullscreen"
   },
   aiSetup: {
     addNote: "Add note",
@@ -814,29 +816,6 @@ const englishStudioCopy: StudioUiCopy = {
     markdownCopy: "Markdown copy",
     markdownUseWhen: "Use when"
   },
-  roadmap: {
-    emptyTitle: "Roadmap data is empty",
-    emptyDescription: "Add blog roadmap topics to Studio data before opening this menu.",
-    openCategory: "Open category",
-    queueReadyTickets: "Queue ready tickets",
-    topicMenu: "Topic menu",
-    topicMenuDetail: "Current blog categories mapped to a one-month cadence.",
-    topicListLabel: "Blog roadmap topics",
-    selectedRoadmap: "Selected blog roadmap",
-    statusCountsLabel: "Roadmap status counts",
-    statusFiltersLabel: "Roadmap status filters",
-    all: "All",
-    day: "Day",
-    thirtyDayRoadmap: "Thirty day roadmap",
-    ticketDetail: "Roadmap ticket detail",
-    intent: "Intent",
-    format: "Format",
-    draftTime: "Draft time",
-    category: "Category",
-    prepareTicket: "Prepare Multica ticket",
-    ticketHandoff: "Ticket handoff",
-    min: "min"
-  },
   preferences: {
     title: "Preferences",
     description: "Theme, font, and layout for this Studio workspace.",
@@ -867,10 +846,10 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     ...englishStudioCopy,
     navLabel: "Studio cá nhân",
     navItems: {
+      welcome: "Welcome",
       "ai-agent-setup": "AI Setup",
       "ai-skills": "AI Skill",
       "delivery-checklists": "Checklist",
-      "blog-roadmap": "Lộ trình blog",
       "flow-menu": "Flow",
       "flow-system-design": "System Design",
       "flow-architecture-decision": "Quyết định kiến trúc",
@@ -907,7 +886,6 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     routeKicker: { legacy: "Legacy", studio: "Studio route" },
     routeMetricsLabel: "Chỉ số route",
     status: { ready: "Sẵn sàng", draft: "Nháp", next: "Tiếp theo" },
-    roadmapStatus: { ready: "Sẵn sàng", outline: "Dàn ý", research: "Nghiên cứu" },
     categories: {
       all: "Tất cả",
       engineering: "Kỹ thuật",
@@ -918,6 +896,12 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       learning: "Học tập"
     },
     routes: {
+      welcome: {
+        title: "Welcome",
+        description: "Điểm bắt đầu nhẹ nhàng của Studio cá nhân: ghi chú làm việc, workflow tái dùng và các link profile cần mở thường xuyên.",
+        panels: ["Bắt đầu", "Link tiện ích", "Route Studio"],
+        timeline: ["Mở đúng workspace", "Giữ context gần", "Rời đi với artifact rõ"]
+      },
       "ai-agent-setup": {
         title: "AI Agent Setup",
         description: "Ghi chú setup cá nhân cho công cụ AI agent, MCP path và bootstrap máy an toàn.",
@@ -935,12 +919,6 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
         description: "Checklist vận hành từ nhận task, tạo module, chuẩn bị release đến rollout.",
         panels: ["Nhận task", "Tạo module", "Release và rollout"],
         timeline: ["Đã map intake ticket", "Checklist module có bước con", "Đã ghi lại phase rollout"]
-      },
-      "blog-roadmap": {
-        title: "Lộ trình blog",
-        description: "Menu viết 30 ngày cho từng chủ đề blog hiện có, sẵn sàng để chuyển thành ticket bài viết hằng ngày.",
-        panels: ["Menu chủ đề", "Kế hoạch bài viết", "Checklist ticket"],
-        timeline: ["Đã map topic blog hiện có", "Đã chuẩn bị prompt 30 ngày", "Checklist bàn giao ticket sẵn sàng"]
       },
       "flow-system-design": {
         title: "Flow System Design",
@@ -985,6 +963,28 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
         timeline: ["Nhóm example đã map", "Dropdown view đã nối", "Canvas control đã bật"]
       }
     },
+    welcome: {
+      ...englishStudioCopy.welcome,
+      eyebrow: "Studio home",
+      lead: "Đây là nơi em gom những phần thực dụng nhất của công việc vào cùng một chỗ: setup note, AI skill có thể tái dùng, checklist delivery và flow trực quan để biến context rời rạc thành thứ có thể làm, ship hoặc giải thích lại được.",
+      note: "Cứ xem Studio như một bàn làm việc yên tĩnh. Chọn đúng route cho việc đang làm, giữ nguồn và bằng chứng rõ ràng, rồi rời khỏi trang với một artifact cụ thể thay vì thêm một tab còn dang dở.",
+      studioLinks: "Lối tắt trong Studio",
+      publicLinks: "Link profile tiện ích",
+      open: "Mở",
+      routeCards: {
+        "ai-agent-setup": { label: "AI Setup", detail: "Ghi chú máy, MCP path và setup cá nhân cho agent." },
+        "ai-skills": { label: "AI Skill", detail: "Prompt và operating rule có thể copy vào phiên agent." },
+        "delivery-checklists": { label: "Checklist", detail: "Checklist nhận task, release readiness và rollout." },
+        "flow-react-flow-architecture-demo": { label: "Example", detail: "Demo React Flow cho kiến trúc, layout, grouping, styling và interaction." }
+      },
+      linkCards: {
+        home: { label: "Trang chủ", detail: "Tổng quan public profile." },
+        notes: { label: "Note", detail: "Ghi chú ngắn và suy nghĩ đang dùng." },
+        blog: { label: "Blog", detail: "Bài viết dài hơn về kỹ thuật và trải nghiệm." },
+        apps: { label: "Apps", detail: "Công cụ nhỏ và thử nghiệm cá nhân." },
+        resume: { label: "Resume", detail: "Mở bản CV PDF mới nhất." }
+      }
+    },
     flows: {
       ...englishStudioCopy.flows,
       emptyTitle: "Thư viện flow đang trống",
@@ -1009,7 +1009,9 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       output: "Output",
       shareFlow: "Share flow",
       copied: "Đã copy",
-      openFlow: "Mở flow"
+      openFlow: "Mở flow",
+      enterFullscreen: "Phóng to board",
+      exitFullscreen: "Thoát fullscreen"
     },
     aiSetup: {
       ...englishStudioCopy.aiSetup,
@@ -1067,30 +1069,6 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       markdownCopy: "Markdown copy",
       markdownUseWhen: "Dùng khi"
     },
-    roadmap: {
-      ...englishStudioCopy.roadmap,
-      emptyTitle: "Roadmap đang trống",
-      emptyDescription: "Thêm topic roadmap vào Studio data trước khi mở menu này.",
-      openCategory: "Mở category",
-      queueReadyTickets: "Queue ticket sẵn sàng",
-      topicMenu: "Menu chủ đề",
-      topicMenuDetail: "Các category blog hiện tại được map theo nhịp một tháng.",
-      topicListLabel: "Topic roadmap blog",
-      selectedRoadmap: "Roadmap blog đang chọn",
-      statusCountsLabel: "Số lượng theo trạng thái",
-      statusFiltersLabel: "Bộ lọc trạng thái roadmap",
-      all: "Tất cả",
-      day: "Ngày",
-      thirtyDayRoadmap: "Roadmap 30 ngày",
-      ticketDetail: "Chi tiết ticket roadmap",
-      intent: "Mục tiêu",
-      format: "Định dạng",
-      draftTime: "Thời gian draft",
-      category: "Category",
-      prepareTicket: "Chuẩn bị ticket Multica",
-      ticketHandoff: "Bàn giao ticket",
-      min: "phút"
-    },
     preferences: {
       ...englishStudioCopy.preferences,
       title: "Tùy chỉnh",
@@ -1119,10 +1097,10 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     ...englishStudioCopy,
     navLabel: "个人 Studio",
     navItems: {
+      welcome: "Welcome",
       "ai-agent-setup": "AI 设置",
       "ai-skills": "AI 技能",
-      "delivery-checklists": "清单",
-      "blog-roadmap": "博客路线图"
+      "delivery-checklists": "清单"
     },
     findSetupNote: "查找设置笔记",
     search: "搜索",
@@ -1131,18 +1109,16 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     profileNavigationDetail: "从 Studio 进入公开个人资料页面。",
     openProfileHome: "打开个人主页",
     status: { ready: "就绪", draft: "草稿", next: "下一步" },
-    roadmapStatus: { ready: "就绪", outline: "大纲", research: "研究" },
     categories: { all: "全部", engineering: "工程", content: "内容", operations: "运营", communication: "沟通", strategy: "策略", learning: "学习" },
     routes: {
+      welcome: { ...englishStudioCopy.routes.welcome!, title: "Welcome" },
       "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "AI Agent 设置", description: "用于 AI agent 工具、MCP 路径和安全机器初始化的个人设置笔记。" },
       "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "AI 技能", description: "可复制的 markdown 技能，用于代码评审、架构、内容、提示词、报告、规格和提案。" },
-      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "交付清单", description: "从任务接收到模块工作、发布准备和上线的操作清单。" },
-      "blog-roadmap": { ...englishStudioCopy.routes["blog-roadmap"], title: "博客路线图", description: "当前博客主题的 30 天写作菜单，可转成每日文章 ticket。" }
+      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "交付清单", description: "从任务接收到模块工作、发布准备和上线的操作清单。" }
     },
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "添加笔记", commandRunbook: "命令 runbook", setupChecklist: "设置清单", researchQueue: "研究队列" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "复制 markdown", copied: "已复制", skillLibrary: "技能库", categoriesLabel: "技能分类" },
     checklists: { ...englishStudioCopy.checklists, copied: "已复制", menu: "清单菜单", sections: "部分", steps: "步骤", structureDetail: (sections, steps) => `${sections} 个部分，${steps} 个嵌套步骤，可复制为 markdown。` },
-    roadmap: { ...englishStudioCopy.roadmap, all: "全部", day: "第", openCategory: "打开分类", queueReadyTickets: "排队就绪 ticket", min: "分钟" },
     preferences: {
       ...englishStudioCopy.preferences,
       title: "偏好设置",
@@ -1165,10 +1141,10 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     ...englishStudioCopy,
     navLabel: "パーソナル Studio",
     navItems: {
+      welcome: "Welcome",
       "ai-agent-setup": "AI セットアップ",
       "ai-skills": "AI スキル",
-      "delivery-checklists": "チェックリスト",
-      "blog-roadmap": "ブログ計画"
+      "delivery-checklists": "チェックリスト"
     },
     findSetupNote: "セットアップノートを検索",
     search: "検索",
@@ -1177,18 +1153,16 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     profileNavigationDetail: "Studio から公開プロフィールの各ページへ移動します。",
     openProfileHome: "プロフィールホームを開く",
     status: { ready: "準備済み", draft: "下書き", next: "次" },
-    roadmapStatus: { ready: "準備済み", outline: "アウトライン", research: "調査" },
     categories: { all: "すべて", engineering: "エンジニアリング", content: "コンテンツ", operations: "運用", communication: "コミュニケーション", strategy: "戦略", learning: "学習" },
     routes: {
+      welcome: { ...englishStudioCopy.routes.welcome!, title: "Welcome" },
       "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "AI Agent セットアップ", description: "AI agent ツール、MCP パス、安全なマシン初期化のための個人セットアップノート。" },
       "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "AI スキル", description: "コードレビュー、アーキテクチャ、コンテンツ、プロンプト、レポート、仕様、提案に使える markdown スキル。" },
-      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "デリバリーチェックリスト", description: "タスク受領からモジュール作業、リリース準備、ロールアウトまでの運用チェックリスト。" },
-      "blog-roadmap": { ...englishStudioCopy.routes["blog-roadmap"], title: "ブログ計画", description: "現在のブログトピックごとの 30 日執筆メニュー。" }
+      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "デリバリーチェックリスト", description: "タスク受領からモジュール作業、リリース準備、ロールアウトまでの運用チェックリスト。" }
     },
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "ノート追加", commandRunbook: "コマンド runbook", setupChecklist: "セットアップチェックリスト", researchQueue: "調査キュー" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Markdown をコピー", copied: "コピー済み", skillLibrary: "スキルライブラリ", categoriesLabel: "スキル分類" },
     checklists: { ...englishStudioCopy.checklists, copied: "コピー済み", menu: "チェックリストメニュー", sections: "セクション", steps: "ステップ", structureDetail: (sections, steps) => `${sections} セクション、${steps} 個のネストされたステップ。markdown としてコピーできます。` },
-    roadmap: { ...englishStudioCopy.roadmap, all: "すべて", day: "Day", openCategory: "カテゴリを開く", queueReadyTickets: "準備済み ticket をキュー", min: "分" },
     preferences: {
       ...englishStudioCopy.preferences,
       title: "設定",
@@ -1211,10 +1185,10 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     ...englishStudioCopy,
     navLabel: "개인 Studio",
     navItems: {
+      welcome: "Welcome",
       "ai-agent-setup": "AI 설정",
       "ai-skills": "AI 스킬",
-      "delivery-checklists": "체크리스트",
-      "blog-roadmap": "블로그 로드맵"
+      "delivery-checklists": "체크리스트"
     },
     findSetupNote: "설정 노트 찾기",
     search: "검색",
@@ -1223,18 +1197,16 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     profileNavigationDetail: "Studio에서 공개 프로필 섹션으로 이동합니다.",
     openProfileHome: "프로필 홈 열기",
     status: { ready: "준비됨", draft: "초안", next: "다음" },
-    roadmapStatus: { ready: "준비됨", outline: "개요", research: "리서치" },
     categories: { all: "전체", engineering: "엔지니어링", content: "콘텐츠", operations: "운영", communication: "커뮤니케이션", strategy: "전략", learning: "학습" },
     routes: {
+      welcome: { ...englishStudioCopy.routes.welcome!, title: "Welcome" },
       "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "AI Agent 설정", description: "AI agent 도구, MCP 경로, 안전한 머신 부트스트랩을 위한 개인 설정 노트." },
       "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "AI 스킬", description: "코드 리뷰, 아키텍처, 콘텐츠, 프롬프트, 보고서, 스펙, 제안서에 재사용할 수 있는 markdown 스킬." },
-      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "딜리버리 체크리스트", description: "작업 접수부터 모듈 작업, 릴리스 준비, 롤아웃까지의 운영 체크리스트." },
-      "blog-roadmap": { ...englishStudioCopy.routes["blog-roadmap"], title: "블로그 로드맵", description: "현재 블로그 주제를 위한 30일 글쓰기 메뉴." }
+      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "딜리버리 체크리스트", description: "작업 접수부터 모듈 작업, 릴리스 준비, 롤아웃까지의 운영 체크리스트." }
     },
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "노트 추가", commandRunbook: "명령 runbook", setupChecklist: "설정 체크리스트", researchQueue: "리서치 큐" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Markdown 복사", copied: "복사됨", skillLibrary: "스킬 라이브러리", categoriesLabel: "스킬 카테고리" },
     checklists: { ...englishStudioCopy.checklists, copied: "복사됨", menu: "체크리스트 메뉴", sections: "섹션", steps: "단계", structureDetail: (sections, steps) => `${sections}개 섹션, ${steps}개 중첩 단계, markdown 복사 가능.` },
-    roadmap: { ...englishStudioCopy.roadmap, all: "전체", day: "Day", openCategory: "카테고리 열기", queueReadyTickets: "준비된 ticket 큐", min: "분" },
     preferences: {
       ...englishStudioCopy.preferences,
       title: "환경설정",
@@ -1257,10 +1229,10 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     ...englishStudioCopy,
     navLabel: "Studio personnel",
     navItems: {
+      welcome: "Welcome",
       "ai-agent-setup": "Setup IA",
       "ai-skills": "Skills IA",
-      "delivery-checklists": "Checklists",
-      "blog-roadmap": "Roadmap blog"
+      "delivery-checklists": "Checklists"
     },
     findSetupNote: "Trouver une note",
     search: "Rechercher",
@@ -1269,18 +1241,16 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     profileNavigationDetail: "Aller vers les sections publiques du profil depuis Studio.",
     openProfileHome: "Ouvrir l'accueil du profil",
     status: { ready: "Prêt", draft: "Brouillon", next: "Suivant" },
-    roadmapStatus: { ready: "Prêt", outline: "Plan", research: "Recherche" },
     categories: { all: "Tout", engineering: "Ingénierie", content: "Contenu", operations: "Opérations", communication: "Communication", strategy: "Stratégie", learning: "Apprentissage" },
     routes: {
+      welcome: { ...englishStudioCopy.routes.welcome!, title: "Welcome" },
       "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "Setup AI Agent", description: "Notes personnelles pour les outils AI agent, chemins MCP et bootstrap machine sécurisé." },
       "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "Skills IA", description: "Skills markdown réutilisables pour review code, architecture, contenu, prompts, rapports, specs et proposals." },
-      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "Checklists de livraison", description: "Checklists de l'intake de tâche au module, release readiness et rollout." },
-      "blog-roadmap": { ...englishStudioCopy.routes["blog-roadmap"], title: "Roadmap blog", description: "Menu d'écriture 30 jours pour chaque sujet de blog actuel." }
+      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "Checklists de livraison", description: "Checklists de l'intake de tâche au module, release readiness et rollout." }
     },
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "Ajouter une note", commandRunbook: "Runbook commandes", setupChecklist: "Checklist setup", researchQueue: "File de recherche" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Copier markdown", copied: "Copié", skillLibrary: "Bibliothèque de skills", categoriesLabel: "Catégories de skills" },
     checklists: { ...englishStudioCopy.checklists, copied: "Copié", menu: "Menu checklist", sections: "sections", steps: "étapes", structureDetail: (sections, steps) => `${sections} sections, ${steps} étapes imbriquées, copiables en markdown.` },
-    roadmap: { ...englishStudioCopy.roadmap, all: "Tout", day: "Jour", openCategory: "Ouvrir catégorie", queueReadyTickets: "Mettre les tickets prêts en file", min: "min" },
     preferences: {
       ...englishStudioCopy.preferences,
       title: "Préférences",
@@ -1524,6 +1494,7 @@ function flowMetrics(flowId: StudioFlowId): StudioMetric[] {
 }
 
 const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
+  welcome: [],
   default: defaultMetrics,
   crm: [
     { label: "Open Pipeline", value: "$84.2k", helper: "Weighted active deals", badge: "+8.4%", trend: "up", icon: LuBarChart },
@@ -1603,12 +1574,6 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
     { label: "Steps", value: `${studioWorkflowChecklists.reduce((total, checklist) => total + checklist.sections.reduce((sum, section) => sum + section.steps.length, 0), 0)}`, helper: "Parent checklist items", badge: "ready", trend: "up", icon: LuCheckCircle2 },
     { label: "AI plan", value: "90 days", helper: "Setup, work, career, life", badge: "compound", trend: "up", icon: LuFlag }
   ],
-  "blog-roadmap": [
-    { label: "Topics", value: `${blogRoadmapTopics.length}`, helper: "Existing blog categories in scope", badge: "mapped", trend: "up", icon: LuBookOpenCheck },
-    { label: "Article tickets", value: `${blogRoadmapTopics.reduce((total, topic) => total + topic.entries.length, 0)}`, helper: "One daily idea per topic", badge: "30d", trend: "up", icon: LuListTodo },
-    { label: "Ready drafts", value: `${blogRoadmapTopics.reduce((total, topic) => total + topic.entries.filter((entry) => entry.status === "ready").length, 0)}`, helper: "Can be ticketed first", badge: "next", trend: "up", icon: LuCheckCircle2 },
-    { label: "Cadence", value: "5/day", helper: "One post per topic each day", badge: "daily", trend: "up", icon: LuCalendarDays }
-  ],
   "flow-system-design": flowMetrics("system-design"),
   "flow-architecture-decision": flowMetrics("architecture-decision"),
   "flow-incident-response": flowMetrics("incident-response"),
@@ -1677,6 +1642,16 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
 };
 
 const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
+  welcome: {
+    id: "welcome",
+    title: "Welcome",
+    description: "A quiet starting point for the personal Studio: working notes, reusable workflows, and the public profile links I reach for most.",
+    kind: "welcome",
+    icon: LuSmile,
+    metrics: routeMetrics.welcome,
+    panels: ["Start here", "Useful links", "Studio routes"],
+    timeline: ["Open the right workspace", "Keep context close", "Move from idea to proof"]
+  },
   default: {
     id: "default",
     title: "Engineering Ops",
@@ -1820,17 +1795,6 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
     metrics: routeMetrics["delivery-checklists"],
     panels: ["Task intake", "Module creation", "Release and rollout"],
     timeline: ["Ticket intake path mapped", "Module checklist nested", "Rollout phases captured"]
-  },
-  "blog-roadmap": {
-    id: "blog-roadmap",
-    title: "Blog Roadmap",
-    description: "A 30-day writing menu for every current blog topic, ready to turn into daily Multica article tickets.",
-    kind: "roadmap",
-    icon: LuBookOpenCheck,
-    badge: "new",
-    metrics: routeMetrics["blog-roadmap"],
-    panels: ["Topic menu", "Daily article plan", "Ticket checklist"],
-    timeline: ["Existing blog topics mapped", "Thirty daily prompts prepared", "Ticket handoff checklist ready"]
   },
   "flow-system-design": {
     id: "flow-system-design",
@@ -2047,6 +2011,12 @@ const navGroups: StudioNavGroup[] = [
     label: "Personal Studio",
     items: [
       {
+        id: "welcome",
+        title: "Welcome",
+        routeId: "welcome",
+        icon: LuSmile
+      },
+      {
         id: "ai-agent-setup",
         title: "AI Setup",
         routeId: "ai-agent-setup",
@@ -2065,13 +2035,6 @@ const navGroups: StudioNavGroup[] = [
         title: "Checklists",
         routeId: "delivery-checklists",
         icon: LuClipboardList,
-        badge: "new"
-      },
-      {
-        id: "blog-roadmap",
-        title: "Blog Roadmap",
-        routeId: "blog-roadmap",
-        icon: LuBookOpenCheck,
         badge: "new"
       },
       {
@@ -2575,10 +2538,6 @@ function getInitials(name: string): string {
 
 function statusText(status: StudioNote["status"], copy: StudioUiCopy = englishStudioCopy): string {
   return copy.status[status];
-}
-
-function roadmapStatusText(status: BlogRoadmapStatus, copy: StudioUiCopy = englishStudioCopy): string {
-  return copy.roadmapStatus[status];
 }
 
 function skillCategoryLabel(category: StudioAiSkill["category"] | "all", copy: StudioUiCopy = englishStudioCopy): string {
@@ -4115,213 +4074,107 @@ function DeliveryChecklistsPage({ route, locale, copy }: { route: StudioRoute; l
   );
 }
 
-function BlogRoadmapPage({ route, locale, copy }: { route: StudioRoute; locale: string; copy: StudioUiCopy }) {
-  const localizedTopics = useMemo(() => getLocalizedBlogRoadmapTopics(locale), [locale]);
-  const localizedTicketChecklist = useMemo(() => getLocalizedBlogRoadmapTicketChecklist(locale), [locale]);
-  const [selectedTopicId, setSelectedTopicId] = useState(localizedTopics[0]?.id ?? "");
-  const [selectedDay, setSelectedDay] = useState(1);
-  const [statusFilter, setStatusFilter] = useState<BlogRoadmapStatus | "all">("all");
-  const selectedTopic = localizedTopics.find((topic) => topic.id === selectedTopicId) ?? localizedTopics[0];
-  const selectedEntry = selectedTopic?.entries.find((entry) => entry.day === selectedDay) ?? selectedTopic?.entries[0];
-  const visibleEntries = selectedTopic?.entries.filter((entry) => statusFilter === "all" || entry.status === statusFilter) ?? [];
-  const readyCount = selectedTopic?.entries.filter((entry) => entry.status === "ready").length ?? 0;
-  const outlineCount = selectedTopic?.entries.filter((entry) => entry.status === "outline").length ?? 0;
-  const researchCount = selectedTopic?.entries.filter((entry) => entry.status === "research").length ?? 0;
-  const blogCategoryHref = selectedTopic ? `${profileHref(locale, APP_ROUTE.BLOG)}/${selectedTopic.categorySlug}` : profileHref(locale, APP_ROUTE.BLOG);
-
-  const handleTopicSelect = (topic: BlogRoadmapTopic) => {
-    const firstEntry = topic.entries[0];
-    setSelectedTopicId(topic.id);
-    setSelectedDay(firstEntry?.day ?? 1);
-    setStatusFilter("all");
-    track("studio_blog_roadmap_topic_select", {
-      topic_id: topic.id,
-      category_slug: topic.categorySlug,
-      entries_count: topic.entries.length
-    });
-  };
-
-  const handleEntrySelect = (entry: BlogRoadmapEntry) => {
-    setSelectedDay(entry.day);
-    track("studio_blog_roadmap_day_select", {
-      topic_id: selectedTopic?.id,
-      day: entry.day,
-      status: entry.status,
-      ticket_label: entry.ticketLabel
-    });
-  };
-
-  const handleTicketAction = (action: "create_one" | "create_ready_batch") => {
-    track("studio_blog_roadmap_ticket_action", {
-      action,
-      topic_id: selectedTopic?.id,
-      day: selectedEntry?.day,
-      ticket_label: selectedEntry?.ticketLabel,
-      ready_count: readyCount
-    });
-  };
-
-  const handleStatusFilterChange = (status: BlogRoadmapStatus | "all") => {
-    if (!selectedTopic) return;
-    const nextEntry = selectedTopic.entries.find((entry) => status === "all" || entry.status === status) ?? selectedTopic.entries[0];
-    setStatusFilter(status);
-    setSelectedDay(nextEntry?.day ?? 1);
-    track("studio_blog_roadmap_status_filter", {
-      topic_id: selectedTopic.id,
-      status,
-      visible_count: status === "all" ? selectedTopic.entries.length : selectedTopic.entries.filter((entry) => entry.status === status).length,
-      selected_day: nextEntry?.day
-    });
-  };
-
-  if (!selectedTopic || !selectedEntry) {
-    return (
-      <section className="empty-route card">
-        <LuBookOpenCheck aria-hidden="true" />
-        <strong>{copy.roadmap.emptyTitle}</strong>
-        <p>{copy.roadmap.emptyDescription}</p>
-      </section>
-    );
-  }
+function WelcomePage({
+  route,
+  locale,
+  copy,
+  onActivate
+}: {
+  route: StudioRoute;
+  locale: string;
+  copy: StudioUiCopy;
+  onActivate: (routeId: StudioRouteId, source?: StudioRouteActivationSource) => void;
+}) {
+  const localizedRoutes = getLocalizedRouteDefinitions(copy);
+  const usefulLinks = getLocalizedProfileItems(copy).filter((item) => ["home", "notes", "blog", "apps", "resume"].includes(item.id));
+  const studioShortcuts: StudioRouteId[] = ["ai-agent-setup", "ai-skills", "delivery-checklists", "flow-react-flow-architecture-demo"];
 
   return (
-    <section className="route-page blog-roadmap-route">
-      <RouteHeading route={route} copy={copy}>
-        <div className="route-actions">
-          <a className="outline-button" href={blogCategoryHref}>
-            <LuBookOpenCheck aria-hidden="true" />
-            {copy.roadmap.openCategory}
-          </a>
-          <button type="button" className="outline-button" onClick={() => handleTicketAction("create_ready_batch")}>
-            <LuPlusCircle aria-hidden="true" />
-            {copy.roadmap.queueReadyTickets}
-          </button>
+    <section className="route-page welcome-route" data-studio-module="welcome">
+      <div className="welcome-shell">
+        <div className="welcome-intro">
+          <span className="welcome-eyebrow"><LuSparkles aria-hidden="true" /> {copy.welcome.eyebrow}</span>
+          <h1>{route.title}</h1>
+          <p>{copy.welcome.lead}</p>
+          <div className="welcome-note-strip">
+            <LuSmile aria-hidden="true" />
+            <span>{copy.welcome.note}</span>
+          </div>
         </div>
-      </RouteHeading>
 
-      <RouteMetricGrid metrics={route.metrics} copy={copy} />
-
-      <div className="blog-roadmap-workbench card" data-studio-module="blog-roadmap">
-        <aside className="roadmap-topic-pane" aria-label={copy.roadmap.topicListLabel}>
-          <div className="ai-pane-head">
-            <span><LuBookOpenCheck aria-hidden="true" /></span>
+        <section className="welcome-panel" aria-label={copy.welcome.studioLinks}>
+          <div className="welcome-panel-head">
+            <span><LuWorkflow aria-hidden="true" /></span>
             <div>
-              <h2>{copy.roadmap.topicMenu}</h2>
-              <p>{copy.roadmap.topicMenuDetail}</p>
+              <h2>{copy.welcome.studioLinks}</h2>
+              <p>{route.description}</p>
             </div>
           </div>
-
-          <div className="roadmap-topic-list">
-            {localizedTopics.map((topic) => {
-              const active = topic.id === selectedTopic.id;
-              const topicReady = topic.entries.filter((entry) => entry.status === "ready").length;
+          <div className="welcome-shortcut-grid">
+            {studioShortcuts.map((routeId) => {
+              const shortcutRoute = localizedRoutes[routeId];
+              const shortcutCopy = copy.welcome.routeCards[routeId];
+              const Icon = shortcutRoute.icon;
               return (
-                <button
-                  key={topic.id}
-                  type="button"
-                  className={`roadmap-topic-button${active ? " is-active" : ""}`}
-                  onClick={() => handleTopicSelect(topic)}
+                <a
+                  key={routeId}
+                  href={routeHref(routeId)}
+                  className="welcome-shortcut"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    onActivate(routeId, "route_actions");
+                  }}
                 >
+                  <Icon aria-hidden="true" />
                   <span>
-                    <strong>{topic.title}</strong>
-                    <small>{topic.tagline}</small>
+                    <strong>{shortcutCopy?.label ?? shortcutRoute.title}</strong>
+                    <small>{shortcutCopy?.detail ?? shortcutRoute.description}</small>
                   </span>
-                  <em>{topicReady}/{topic.entries.length}</em>
-                </button>
+                  <em>{copy.welcome.open}</em>
+                </a>
               );
             })}
           </div>
-        </aside>
-
-        <article className="roadmap-plan-pane" aria-label={copy.roadmap.selectedRoadmap}>
-          <div className="roadmap-plan-head">
-            <div>
-              <span className="ai-status-pill status-ready">{selectedTopic.cadence}</span>
-              <h2>{selectedTopic.title}</h2>
-              <p>{selectedTopic.tagline}</p>
-            </div>
-            <div className="roadmap-status-strip" aria-label={copy.roadmap.statusCountsLabel}>
-              <span><strong>{readyCount}</strong> {roadmapStatusText("ready", copy)}</span>
-              <span><strong>{outlineCount}</strong> {roadmapStatusText("outline", copy)}</span>
-              <span><strong>{researchCount}</strong> {roadmapStatusText("research", copy)}</span>
-            </div>
-          </div>
-
-          <div className="tabs-row tabs-wrap" role="tablist" aria-label={copy.roadmap.statusFiltersLabel}>
-            {(["all", "ready", "outline", "research"] as const).map((status) => (
-              <button
-                key={status}
-                type="button"
-                className={statusFilter === status ? "is-active" : undefined}
-                onClick={() => handleStatusFilterChange(status)}
-              >
-                {status === "all" ? copy.roadmap.all : roadmapStatusText(status, copy)}
-              </button>
-            ))}
-          </div>
-
-          <div className="roadmap-day-grid" aria-label={copy.roadmap.thirtyDayRoadmap}>
-            {visibleEntries.map((entry) => (
-              <button
-                key={entry.day}
-                type="button"
-                className={`roadmap-day-card status-${entry.status}${entry.day === selectedEntry.day ? " is-active" : ""}`}
-                onClick={() => handleEntrySelect(entry)}
-              >
-                <span>{copy.roadmap.day} {entry.day}</span>
-                <strong>{entry.title}</strong>
-                <small>{entry.intent} - {entry.format}</small>
-              </button>
-            ))}
-          </div>
-        </article>
-
-        <aside className="roadmap-detail-pane" aria-label={copy.roadmap.ticketDetail}>
-          <div className="roadmap-ticket-card">
-            <div className="roadmap-ticket-head">
-              <span className={`ai-status-pill status-${selectedEntry.status}`}>{roadmapStatusText(selectedEntry.status, copy)}</span>
-              <strong>{selectedEntry.ticketLabel}</strong>
-            </div>
-            <h2>{copy.roadmap.day} {selectedEntry.day}: {selectedEntry.title}</h2>
-            <p>{selectedEntry.angle}</p>
-            <dl className="roadmap-detail-list">
-              <div>
-                <dt>{copy.roadmap.intent}</dt>
-                <dd>{selectedEntry.intent}</dd>
-              </div>
-              <div>
-                <dt>{copy.roadmap.format}</dt>
-                <dd>{selectedEntry.format}</dd>
-              </div>
-              <div>
-                <dt>{copy.roadmap.draftTime}</dt>
-                <dd>{selectedEntry.estimatedMinutes} {copy.roadmap.min}</dd>
-              </div>
-              <div>
-                <dt>{copy.roadmap.category}</dt>
-                <dd>{selectedTopic.categorySlug}</dd>
-              </div>
-            </dl>
-            <button type="button" className="primary-action" onClick={() => handleTicketAction("create_one")}>
-              {copy.roadmap.prepareTicket}
-            </button>
-          </div>
-
-          <section className="ai-checklist-panel">
-            <h3>{copy.roadmap.ticketHandoff}</h3>
-            <div>
-              {localizedTicketChecklist.map((item, index) => (
-                <label className="check-row checklist-row" key={item}>
-                  <input type="checkbox" defaultChecked={index < 3} />
-                  <span>
-                    <strong>{item}</strong>
-                  </span>
-                </label>
-              ))}
-            </div>
-          </section>
-        </aside>
+        </section>
       </div>
+
+      <section className="welcome-link-band" aria-label={copy.welcome.publicLinks}>
+        <div className="welcome-link-head">
+          <span><LuLink aria-hidden="true" /></span>
+          <div>
+            <h2>{copy.welcome.publicLinks}</h2>
+            <p>{copy.profileNavigationDetail}</p>
+          </div>
+        </div>
+        <div className="welcome-link-grid">
+          {usefulLinks.map((item) => {
+            const Icon = item.icon;
+            const linkCopy = copy.welcome.linkCards[item.id];
+            return (
+              <a
+                key={item.id}
+                href={profileHref(locale, item.href)}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noreferrer" : undefined}
+                onClick={() => {
+                  track("studio_profile_nav_click", {
+                    target: item.id,
+                    source: "welcome",
+                    external: Boolean(item.external)
+                  });
+                }}
+              >
+                <Icon aria-hidden="true" />
+                <span>
+                  <strong>{linkCopy?.label ?? item.label}</strong>
+                  <small>{linkCopy?.detail ?? item.detail}</small>
+                </span>
+                <LuExternalLink aria-hidden="true" />
+              </a>
+            );
+          })}
+        </div>
+      </section>
     </section>
   );
 }
@@ -4380,9 +4233,7 @@ function StudioFlowCanvasNodeCard({ data }: NodeProps<StudioFlowCanvasNode>) {
       <span className="flow-react-node-badge">{data.badge}</span>
       <strong>{data.title}</strong>
       <small>{data.detail}</small>
-      {canConnect && (
-        <Handle type="source" position={Position.Right} />
-      )}
+      {canConnect && <Handle type="source" position={Position.Right} />}
       {canConnect && <Handle className="flow-react-handle-bottom" type="source" position={Position.Bottom} />}
     </div>
   );
@@ -4520,6 +4371,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
   const demo = flow.architectureDemo;
   const demoViews = useMemo(() => demo?.views ?? [], [demo]);
   const initialDemoView = demoViews.find((view) => view.id === demo?.defaultViewId) ?? demoViews[0];
+  const [isBoardFullscreen, setIsBoardFullscreen] = useState(false);
   const [demoSelection, setDemoSelection] = useState<{ flowId: StudioFlowId; family: string; viewId: string }>({
     flowId: flow.id,
     family: initialDemoView?.family ?? "architecture",
@@ -4552,11 +4404,34 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
   const { nodes, edges } = useMemo(() => buildStudioFlowCanvas(flow, selectedView?.id), [flow, selectedView?.id]);
   const isReactFlowDemo = Boolean(demo);
 
+  useEffect(() => {
+    if (!isBoardFullscreen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsBoardFullscreen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isBoardFullscreen]);
+
+  const toggleFullscreen = () => {
+    const fullscreenNext = !isBoardFullscreen;
+    track("studio_flow_board_fullscreen_toggle", {
+      flow_id: flow.id,
+      view_id: selectedView?.id,
+      fullscreen_next: fullscreenNext
+    });
+    setIsBoardFullscreen(fullscreenNext);
+  };
+
   return (
-    <section className="flow-chart-surface" aria-label={copy.flows.chartLabel}>
+    <section className={`flow-chart-surface${isReactFlowDemo ? " is-architecture-demo" : ""}${isBoardFullscreen ? " is-fullscreen" : ""}`} aria-label={copy.flows.chartLabel}>
       <div className="flow-chart-head">
         <div>
-          <span className="ai-status-pill status-ready">{copy.flows.chartLabel}</span>
           <h3>{selectedView?.title ?? flow.title}</h3>
         </div>
         <p>{selectedView?.description ?? copy.flows.chartHint}</p>
@@ -4609,6 +4484,15 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
       )}
 
       <div className={`flow-react-surface${isReactFlowDemo ? " is-architecture-demo" : ""}`}>
+        <button
+          type="button"
+          className="flow-board-fullscreen-button"
+          aria-label={isBoardFullscreen ? copy.flows.exitFullscreen : copy.flows.enterFullscreen}
+          onClick={toggleFullscreen}
+        >
+          {isBoardFullscreen ? <LuMinimize2 aria-hidden="true" /> : <LuMaximize2 aria-hidden="true" />}
+          <span>{isBoardFullscreen ? copy.flows.exitFullscreen : copy.flows.enterFullscreen}</span>
+        </button>
         <ReactFlow
           key={selectedView?.id ?? flow.id}
           className="flow-react-canvas"
@@ -4621,7 +4505,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
             minZoom: isReactFlowDemo ? 0.26 : 0.5
           }}
           minZoom={0.18}
-          maxZoom={1.4}
+          maxZoom={1.6}
           nodesDraggable={false}
           nodesConnectable={false}
           elementsSelectable={false}
@@ -4633,7 +4517,14 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
             position="bottom-right"
             pannable
             zoomable
+            bgColor="rgba(15, 23, 42, 0.94)"
+            maskColor="rgba(2, 6, 23, 0.48)"
+            maskStrokeColor="#60a5fa"
+            maskStrokeWidth={1.4}
             nodeColor={(node) => getStudioFlowCanvasColor(node as Node<StudioFlowCanvasNodeData>)}
+            nodeStrokeColor={(node) => getStudioFlowCanvasColor(node as Node<StudioFlowCanvasNodeData>)}
+            nodeStrokeWidth={2.8}
+            nodeBorderRadius={8}
           />
         </ReactFlow>
       </div>
@@ -4715,14 +4606,18 @@ function StudioFlowMenuPage({
 
   return (
     <section className="route-page studio-flow-route">
-      <RouteHeading route={route} copy={copy}>
-        <button type="button" className="outline-button" onClick={copyFlowLink}>
-          {copiedFlowId === selectedFlow.id ? <LuCheck aria-hidden="true" /> : <LuShare2 aria-hidden="true" />}
-          {copiedFlowId === selectedFlow.id ? copy.flows.copied : copy.flows.shareFlow}
-        </button>
-      </RouteHeading>
+      {!selectedFlow.architectureDemo && (
+        <>
+          <RouteHeading route={route} copy={copy}>
+            <button type="button" className="outline-button" onClick={copyFlowLink}>
+              {copiedFlowId === selectedFlow.id ? <LuCheck aria-hidden="true" /> : <LuShare2 aria-hidden="true" />}
+              {copiedFlowId === selectedFlow.id ? copy.flows.copied : copy.flows.shareFlow}
+            </button>
+          </RouteHeading>
 
-      {!selectedFlow.architectureDemo && <RouteMetricGrid metrics={route.metrics} copy={copy} />}
+          <RouteMetricGrid metrics={route.metrics} copy={copy} />
+        </>
+      )}
 
       <div
         className={`flow-workbench card${selectedFlow.architectureDemo ? " is-architecture-demo" : ""}`}
@@ -4782,23 +4677,27 @@ function StudioFlowMenuPage({
         )}
 
         <article id={`flow-${selectedFlow.id}`} className="flow-reader-pane" aria-label={copy.flows.selectedFlow}>
-          <div className="skill-reader-head">
-            <div>
-              <span className="ai-status-pill status-ready">{selectedGroup?.title ?? selectedFlow.groupId}</span>
-              <h2>{selectedFlow.title}</h2>
-              <p>{selectedFlow.summary}</p>
-            </div>
-            <a className="outline-button" href={studioFlowHref(locale, selectedFlow.id)}>
-              <LuLink aria-hidden="true" />
-              {copy.flows.openFlow}
-            </a>
-          </div>
+          {!selectedFlow.architectureDemo && (
+            <>
+              <div className="skill-reader-head">
+                <div>
+                  <span className="ai-status-pill status-ready">{selectedGroup?.title ?? selectedFlow.groupId}</span>
+                  <h2>{selectedFlow.title}</h2>
+                  <p>{selectedFlow.summary}</p>
+                </div>
+                <a className="outline-button" href={studioFlowHref(locale, selectedFlow.id)}>
+                  <LuLink aria-hidden="true" />
+                  {copy.flows.openFlow}
+                </a>
+              </div>
 
-          <div className="ai-tag-list" aria-label="Flow tags">
-            {selectedFlow.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
+              <div className="ai-tag-list" aria-label="Flow tags">
+                {selectedFlow.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+            </>
+          )}
 
           <StudioFlowChart flow={selectedFlow} copy={copy} />
 
@@ -5196,6 +5095,7 @@ function RouteContent({
   onSortMode: (value: string) => void;
   onActivate: (routeId: StudioRouteId, source?: StudioRouteActivationSource) => void;
 }) {
+  if (route.kind === "welcome") return <WelcomePage route={route} locale={locale} copy={copy} onActivate={onActivate} />;
   if (route.kind === "default") {
     return (
       <DefaultDashboard
@@ -5217,7 +5117,6 @@ function RouteContent({
   if (route.kind === "ai-setup") return <AiAgentSetupPage route={route} locale={locale} copy={copy} profileActions={profileActions} />;
   if (route.kind === "ai-skills") return <AiSkillsPage route={route} locale={locale} copy={copy} />;
   if (route.kind === "checklists") return <DeliveryChecklistsPage route={route} locale={locale} copy={copy} />;
-  if (route.kind === "roadmap") return <BlogRoadmapPage route={route} locale={locale} copy={copy} />;
   if (route.kind === "flows") return <StudioFlowMenuPage route={route} locale={locale} copy={copy} onActivate={onActivate} />;
   if (route.kind === "calendar") return <CalendarPage route={route} />;
   if (route.kind === "kanban") return <KanbanPage route={route} />;

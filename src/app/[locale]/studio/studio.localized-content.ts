@@ -1,14 +1,10 @@
 import {
-  blogRoadmapTicketChecklist,
-  blogRoadmapTopics,
   studioAiSkills,
   studioFlowGroups,
   studioFlows,
   studioWorkflowChecklists
 } from "./studio.data";
 import type {
-  BlogRoadmapEntry,
-  BlogRoadmapTopic,
   StudioAiSkill,
   StudioChecklistSection,
   StudioChecklistStep,
@@ -43,13 +39,6 @@ type LocalizedSectionCopy = {
 type LocalizedStepCopy = {
   label: string;
   detail?: string;
-};
-
-type LocalizedRoadmapTopicCopy = {
-  title: string;
-  tagline: string;
-  cadence: string;
-  entries: string[];
 };
 
 type LocalizedFlowGroupCopy = {
@@ -1698,216 +1687,6 @@ const vietnameseStepCopies: Record<string, LocalizedStepCopy> = {
   "learning-roadmap": { label: "Tạo 12-month learning roadmap và weekly review habit ổn định." }
 };
 
-const vietnameseRoadmapCopies: Record<string, LocalizedRoadmapTopicCopy> = {
-  architecture: {
-    title: "Source & Architecture",
-    tagline: "Cấu trúc code để chịu được growth, team và thay đổi.",
-    cadence: "Mỗi ngày một bài architecture trong 30 ngày.",
-    entries: [
-      "Boundary module trước tên folder",
-      "Service nhỏ vẫn cần architecture",
-      "Dependency direction bằng ngôn ngữ đơn giản",
-      "Khi shared library trở thành shared pain",
-      "Ports and adapters trong một product nhỏ",
-      "Clean Architecture không cần ceremony nặng",
-      "Feature folders hay layer folders",
-      "Tách một component lớn sao cho an toàn",
-      "Architecture diagram đầu tiên thật sự hữu ích",
-      "Vì sao data ownership thay đổi mọi thứ",
-      "Event-driven architecture không hype",
-      "Timeout, retry và cái giá của hy vọng",
-      "Cache là contract, không phải thủ thuật",
-      "Scale database theo đúng thứ tự",
-      "Cái giá ẩn của microservices",
-      "Checklist sức khỏe cho practical monolith",
-      "API contract biết già đi cùng hệ thống",
-      "Observability như một design choice",
-      "Chọn boundary theo tốc độ thay đổi",
-      "Architecture decision cho teammate tương lai",
-      "Refactor về một core rõ hơn",
-      "Khi queue giúp ích và khi queue che giấu delay",
-      "CQRS chỉ sau khi model đơn giản bắt đầu đau",
-      "Resilience patterns cho team bình thường",
-      "Checklist ngày đầu cho service mới",
-      "Đặt tên theo responsibility",
-      "Architecture review trước khi rewrite",
-      "Technical debt xuất hiện thế nào trong handoff",
-      "Giữ diagram gần với code",
-      "Con đường bình tĩnh từ messy đến maintainable"
-    ]
-  },
-  culture: {
-    title: "Engineering Culture",
-    tagline: "Review, feedback, mentorship và team giúp con người phát triển.",
-    cadence: "Mỗi ngày một bài culture trong 30 ngày.",
-    entries: [
-      "Code review như shared thinking",
-      "Disagree mà không làm chậm team",
-      "Pull request khiến reviewer tin tưởng",
-      "Feedback vẫn giữ cánh cửa mở",
-      "Mentor mà không giành bàn phím",
-      "Kind engineering vẫn cần standards",
-      "Chi phí âm thầm của ownership mơ hồ",
-      "Junior học từ decision được nhìn thấy",
-      "Cách hỏi help tốt hơn",
-      "Khi senior engineer nên viết ít code hơn",
-      "Team ritual xứng đáng có mặt trong calendar",
-      "Phục hồi sau một review căng",
-      "Khác biệt giữa speed và pressure",
-      "Xây trust bằng lời hứa nhỏ được giữ",
-      "Onboarding cũng là architecture",
-      "Cuộc họp sau incident",
-      "Làm estimate bớt cá nhân hóa",
-      "Một script bình tĩnh cho feedback khó",
-      "Giữ standard mà không gatekeep",
-      "Khi sự im lặng trong team trở thành signal",
-      "Reviewer như người đọc tương lai",
-      "Giúp người khác mà không thành bottleneck",
-      "Team khỏe xử lý unfinished work thế nào",
-      "Chi phí của hero culture",
-      "Viết docs như chăm sóc teammate tương lai",
-      "Checklist senior engineer hữu ích",
-      "Nhận ra burnout trước khi performance giảm",
-      "Tạo chỗ cho nhiều working styles",
-      "Vì sao clarity tử tế hơn softness",
-      "Team culture chịu được áp lực"
-    ]
-  },
-  ai: {
-    title: "AI & The Future",
-    tagline: "Từ context engineering tới AI product đáng tin trong production.",
-    cadence: "Mỗi ngày một bài AI trong 30 ngày.",
-    entries: [
-      "Từ prompt sang workflow",
-      "Context engineering cho developer hằng ngày",
-      "Khi câu trả lời của AI cần một test",
-      "Thói quen hỏi AI về trade-off",
-      "Agent như teammate có boundary",
-      "Cách review code do AI viết",
-      "Rủi ro âm thầm của cognitive debt",
-      "Chỉ automate sau khi hiểu việc đó",
-      "Workflow AI thực tế cho pull request",
-      "Vì sao ví dụ tốt hơn instruction dài",
-      "Khác biệt giữa chat và system design",
-      "AI literacy cho engineer không chuyên AI",
-      "Giữ judgment trong loop",
-      "Prompt debug bắt đầu từ evidence",
-      "Dùng AI để học mà không outsource việc học",
-      "Một eval nhỏ trước claim lớn",
-      "Agent handoff không mất context",
-      "Cái giá của việc tin một câu trả lời trôi chảy",
-      "Product team nên mô tả AI feature thế nào",
-      "Từ prototype demo đến production behavior",
-      "AI tools để đọc codebase",
-      "AI giúp gì trong incident response",
-      "Viết ticket tốt hơn cho coding agent",
-      "Security review cho thay đổi có AI hỗ trợ",
-      "Đo thời gian tiết kiệm một cách trung thực",
-      "Khi không nên dùng agent",
-      "Xây AI feature quanh user trust",
-      "Vai trò tương lai của software engineer",
-      "Checklist bình tĩnh khi adopt AI tool mới",
-      "Làm việc thông minh hơn mà không cẩu thả"
-    ]
-  },
-  "ways-of-working": {
-    title: "Ways of Working",
-    tagline: "Cách software team thật sự vận hành và delivery cùng nhau.",
-    cadence: "Mỗi ngày một bài working-method trong 30 ngày.",
-    entries: [
-      "Agile ceremonies như feedback loops",
-      "Scrum không giả vờ plan luôn hoàn hảo",
-      "Daily standup làm thay đổi decision",
-      "Sprint planning như risk discovery",
-      "Vì sao estimate là conversation",
-      "Definition of done giúp tránh rework",
-      "Release planning với value và risk",
-      "Vai trò BA khi work còn mơ hồ",
-      "Product owner bảo vệ focus thế nào",
-      "QA như partner trước đoạn cuối",
-      "Làm startup mà không xem chaos là bản sắc",
-      "Làm công ty lớn mà không biến mất",
-      "Outsourcing và vấn đề context",
-      "Handoff giữ ownership sống",
-      "Viết requirement để người khác test được",
-      "User story không giấu complexity",
-      "Pre-mortem thực tế cho delivery",
-      "Khi roadmap gặp capacity thật",
-      "Team quyết định không làm gì như thế nào",
-      "Quản lý dependency không blame",
-      "Cách bình tĩnh xử lý scope change",
-      "Retrospective thay đổi một behavior",
-      "Vì sao WIP limit là một sự tử tế",
-      "Khác biệt giữa bận và đang tiến lên",
-      "Làm blocker visible sớm hơn",
-      "Dùng status update tốt hơn",
-      "Release note như delivery artifact",
-      "So sánh delivery culture giữa công ty",
-      "Khi process giúp và khi process che giấu",
-      "Một tháng teamwork phần mềm tốt hơn"
-    ]
-  },
-  perspectives: {
-    title: "Perspectives & Field Notes",
-    tagline: "Reflection cá nhân từ công việc, học tập, con người và career growth.",
-    cadence: "Mỗi ngày một field note trong 30 ngày.",
-    entries: [
-      "Thói quen nhỏ thay đổi cách tôi đọc công việc",
-      "Một bài học yên lặng từ release bị trễ",
-      "Vì sao preparation thường vô hình",
-      "Ngày tôi học cách hỏi câu rõ hơn",
-      "Bàn làm việc bừa bộn giải thích technical debt",
-      "Khác biệt giữa kiên nhẫn và chờ đợi",
-      "Một chuyến đi làm dài dạy gì về năng lượng",
-      "Kỹ năng nhận ra weak signals",
-      "Vì sao progress chậm khi nó đang diễn ra",
-      "Một ghi chú về ambition và attention",
-      "Học từ người làm việc khác mình",
-      "Khi helpful trở nên quá đắt",
-      "Chi phí riêng tư của context switching",
-      "Một quan hệ tốt hơn với unfinished work",
-      "Tôi học gì từ một checklist đơn giản",
-      "Sự bình tĩnh sau khi chọn scope nhỏ hơn",
-      "Vì sao system tốt thường có vẻ boring",
-      "Can đảm viết ghi chú thô đầu tiên",
-      "Bảo vệ attention một cách nhẹ nhàng",
-      "Khác biệt giữa confidence và evidence",
-      "Vì sao quiet consistency compound",
-      "Một reflection về việc xin feedback",
-      "Công việc phía sau kết quả cuối sạch sẽ",
-      "Giữ sự tử tế khi chịu áp lực",
-      "Giá trị ẩn của handoff rõ ràng",
-      "Một plan thất bại vẫn dạy được gì",
-      "Career lesson trong repeated practice",
-      "Vì sao đúng pace đôi khi chậm hơn",
-      "Một ghi chú cho tuần khó tiếp theo",
-      "Tháng này sẽ hiện rõ sau này"
-    ]
-  }
-};
-
-const vietnameseRoadmapAngles = [
-  "Bắt đầu từ một tình huống công việc quen thuộc, rồi chỉ ra trade-off.",
-  "So sánh shortcut hấp dẫn với chi phí maintain về sau.",
-  "Giải thích bằng một kịch bản delivery nhỏ của team."
-];
-
-const vietnameseRoadmapIntents = ["giảng giải", "hỗ trợ quyết định", "đồng bộ team"];
-
-const vietnameseRoadmapFormats: Record<BlogRoadmapEntry["format"], string> = {
-  "case note": "ghi chú tình huống",
-  explainer: "bài giải thích",
-  "field guide": "hướng dẫn thực chiến"
-};
-
-const vietnameseBlogRoadmapTicketChecklist = [
-  "Xác nhận locale đang chọn và canonical category path.",
-  "Tạo một Multica ticket tập trung cho từng bài trong roadmap.",
-  "Đính kèm title, angle, intent và source category.",
-  "Giữ metadata bài viết khớp với blog schema hiện có.",
-  "Chạy content checks trước khi đánh dấu writing ticket sẵn sàng."
-];
-
 const vietnameseFlowGroupCopies: Record<string, LocalizedFlowGroupCopy> = {
   architecture: {
     title: "Kiến trúc & System Design",
@@ -2351,25 +2130,6 @@ function localizeChecklistSection(section: StudioChecklistSection): StudioCheckl
   };
 }
 
-function localizeRoadmapTopic(topic: BlogRoadmapTopic): BlogRoadmapTopic {
-  const copy = vietnameseRoadmapCopies[topic.id];
-  if (!copy) return topic;
-
-  return {
-    ...topic,
-    title: copy.title,
-    tagline: copy.tagline,
-    cadence: copy.cadence,
-    entries: topic.entries.map((entry, index) => ({
-      ...entry,
-      title: copy.entries[index] ?? entry.title,
-      angle: vietnameseRoadmapAngles[index % vietnameseRoadmapAngles.length],
-      intent: vietnameseRoadmapIntents[index % vietnameseRoadmapIntents.length],
-      format: vietnameseRoadmapFormats[entry.format] ?? entry.format
-    }))
-  };
-}
-
 function localizeFlowStep(step: StudioFlowStep, flowCopy: LocalizedFlowCopy): StudioFlowStep {
   const copy = flowCopy.steps[step.id];
   return {
@@ -2444,16 +2204,6 @@ export function getLocalizedStudioWorkflowChecklists(locale: string): StudioWork
       sections: checklist.sections.map(localizeChecklistSection)
     };
   });
-}
-
-export function getLocalizedBlogRoadmapTopics(locale: string): BlogRoadmapTopic[] {
-  if (!isVietnameseLocale(locale)) return blogRoadmapTopics;
-  return blogRoadmapTopics.map(localizeRoadmapTopic);
-}
-
-export function getLocalizedBlogRoadmapTicketChecklist(locale: string): string[] {
-  if (!isVietnameseLocale(locale)) return blogRoadmapTicketChecklist;
-  return vietnameseBlogRoadmapTicketChecklist;
 }
 
 export function getLocalizedStudioFlows(locale: string): StudioFlow[] {
