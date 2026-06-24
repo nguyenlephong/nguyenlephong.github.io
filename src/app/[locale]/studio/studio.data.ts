@@ -165,13 +165,34 @@ export type StudioFlowArchitectureEdgeSpec = {
   animated?: boolean;
 };
 
+export type StudioFlowArchitectureExampleFamily =
+  | "overview"
+  | "interaction"
+  | "grouping"
+  | "layout"
+  | "styling"
+  | "whiteboard"
+  | "architecture";
+
+export type StudioFlowArchitectureViewSpec = {
+  id: string;
+  family: StudioFlowArchitectureExampleFamily;
+  title: string;
+  description: string;
+  notes: string[];
+  nodes: StudioFlowArchitectureNodeSpec[];
+  edges: StudioFlowArchitectureEdgeSpec[];
+};
+
 export type StudioFlowArchitectureDemo = {
   sections: {
     title: string;
     items: string[];
   }[];
+  defaultViewId: string;
   nodes: StudioFlowArchitectureNodeSpec[];
   edges: StudioFlowArchitectureEdgeSpec[];
+  views: StudioFlowArchitectureViewSpec[];
 };
 
 export type StudioFlow = {
@@ -3267,9 +3288,9 @@ export const studioFlowGroups: StudioFlowGroup[] = [
   {
     id: "react-flow-library",
     title: "React Flow Library Demo",
-    subtitle: "Show architecture shapes before choosing a diagram.",
+    subtitle: "Switch between example shapes before choosing a diagram.",
     description:
-      "A React Flow showcase for software architecture diagrams: built-in nodes, custom architecture shapes, groups, edge styles, labels, markers, minimap, controls, and background.",
+      "A React Flow showcase for example families: built-in nodes, custom architecture shapes, grouping, layout, validation, annotation, edge styles, labels, markers, minimap, controls, and background.",
     flowIds: ["react-flow-architecture-demo"]
   }
 ];
@@ -3719,18 +3740,18 @@ export const studioFlows: StudioFlow[] = [
   {
     id: "react-flow-architecture-demo",
     groupId: "react-flow-library",
-    title: "React Flow Architecture Demo",
+    title: "React Flow Example Gallery",
     summary:
-      "A library-style canvas showing what @xyflow/react can express for software architecture: node shapes, groups, edge types, markers, labels, minimap, controls, and background.",
-    seoTitle: "React Flow Architecture Demo for Software Diagrams",
+      "A library-style canvas showing what @xyflow/react can express across overview, interaction, grouping, layout, styling, whiteboard, and software architecture examples.",
+    seoTitle: "React Flow Example Gallery for Software Diagrams",
     seoDescription:
-      "A React Flow studio demo for software architecture diagrams with built-in node styles, custom architecture shapes, groups, edge types, labels, markers, minimap, controls, and background.",
+      "A React Flow studio demo with built-in node styles, custom architecture shapes, grouping, layout, validation, whiteboard annotation, edge types, labels, markers, minimap, controls, and background.",
     useWhen:
-      "Use this when choosing how to model a system architecture, service map, platform topology, event flow, or deployment boundary with React Flow.",
+      "Use this when choosing how to model a system architecture, service map, platform topology, event flow, deployment boundary, or graph-editor interaction with React Flow.",
     outcome:
-      "A visual catalog of node and edge patterns that can be reused for architecture diagrams without confusing the demo with a product use-case map.",
+      "A visual catalog of React Flow node, edge, grouping, layout, interaction, whiteboard, and architecture patterns without turning the page into a product use-case map.",
     officeExample:
-      "A team wants to explain a payment checkout architecture. This demo shows how to express client boundaries, API gateway, auth, services, database, cache, queue, event topic, external provider, observability, and rollback risk in one React Flow canvas.",
+      "A team wants to choose how a technical diagram should look before drawing the real system. This gallery lets them compare overview, subflow, layout, validation, whiteboard, event-driven, topology, and data-lineage views in one React Flow canvas.",
     tags: ["React Flow", "XYFlow", "Architecture Diagram", "Node Shapes", "Edge Types"],
     steps: [
       {

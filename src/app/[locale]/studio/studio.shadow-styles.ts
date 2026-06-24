@@ -1909,7 +1909,9 @@ a {
 }
 
 .flow-workbench.card.is-architecture-demo {
-  grid-template-columns: 15rem minmax(0, 1fr) 15rem;
+  grid-template-columns: minmax(0, 1fr);
+  height: auto;
+  overflow: visible;
 }
 
 .flow-index-pane,
@@ -1930,6 +1932,10 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.flow-workbench.card.is-architecture-demo .flow-reader-pane {
+  overflow: visible;
 }
 
 .flow-side-pane {
@@ -2056,8 +2062,41 @@ a {
 }
 
 .flow-react-surface.is-architecture-demo {
-  height: clamp(28rem, 46vh, 34rem);
-  min-height: 28rem;
+  height: clamp(34rem, 58vh, 46rem);
+  min-height: 34rem;
+}
+
+.flow-example-toolbar {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.34fr) minmax(14rem, 1fr);
+  gap: 0.75rem;
+  align-items: end;
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, var(--border));
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--primary) 7%, var(--muted));
+  padding: 0.85rem;
+}
+
+.flow-example-toolbar label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--muted-foreground);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.flow-example-toolbar select {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  background: var(--card);
+  color: var(--foreground);
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 650;
+  text-transform: none;
 }
 
 .flow-react-canvas,
@@ -2253,6 +2292,8 @@ a {
   border: 1px solid var(--border);
   border-radius: 0.75rem;
   background: var(--xy-minimap-background-color, var(--xy-minimap-background-color-default));
+  width: 9rem;
+  height: 6.5rem;
 }
 
 .react-flow__minimap-svg {
@@ -2505,6 +2546,32 @@ a {
   border-radius: 0.875rem;
   background: color-mix(in srgb, var(--primary) 8%, var(--muted));
   padding: 0.875rem;
+}
+
+.flow-example-notes {
+  display: grid;
+  gap: 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  border-radius: 0.875rem;
+  background: color-mix(in srgb, var(--muted) 38%, transparent);
+  padding: 0.875rem;
+}
+
+.flow-example-notes span {
+  color: var(--muted-foreground);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.flow-example-notes ul {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted-foreground);
+  font-size: 0.82rem;
+  line-height: 1.45;
 }
 
 .flow-chart-outcome span {
@@ -4352,6 +4419,10 @@ tbody tr:hover {
     order: 3;
     border-top: 1px solid var(--border);
     border-bottom: 0;
+  }
+
+  .flow-example-toolbar {
+    grid-template-columns: 1fr;
   }
 
   .roadmap-plan-head {

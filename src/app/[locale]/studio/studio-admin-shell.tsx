@@ -489,6 +489,9 @@ type StudioUiCopy = {
     chartLabel: string;
     chartHint: string;
     chartOutcome: string;
+    exampleFamily: string;
+    exampleView: string;
+    viewNotes: string;
     useWhen: string;
     outcome: string;
     officeExample: string;
@@ -727,10 +730,10 @@ const englishStudioCopy: StudioUiCopy = {
       timeline: ["Context captured", "Impact evidence selected", "Story draft shaped"]
     },
     "flow-react-flow-architecture-demo": {
-      title: "React Flow Architecture Demo",
-      description: "A library-style React Flow canvas for software architecture node shapes, edge types, groups, controls, minimap, and background.",
-      panels: ["Node shapes", "Edge language", "Architecture zones"],
-      timeline: ["Node primitives displayed", "Architecture shapes mapped", "Canvas controls enabled"]
+      title: "React Flow Example Gallery",
+      description: "A library-style React Flow canvas with dropdown views for overview, interaction, grouping, layout, styling, whiteboard, and software architecture examples.",
+      panels: ["Example selector", "Canvas gallery", "Architecture zones"],
+      timeline: ["Example families mapped", "Dropdown views wired", "Canvas controls enabled"]
     }
   },
   flows: {
@@ -744,6 +747,9 @@ const englishStudioCopy: StudioUiCopy = {
     chartLabel: "Flow chart",
     chartHint: "Read the path from left to right: each node is a decision point, not a long note.",
     chartOutcome: "Target outcome",
+    exampleFamily: "Example family",
+    exampleView: "View",
+    viewNotes: "View notes",
     useWhen: "Use when",
     outcome: "Outcome",
     officeExample: "Office example",
@@ -973,10 +979,10 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
         timeline: ["Context đã ghi lại", "Evidence impact đã chọn", "Story draft đã định hình"]
       },
       "flow-react-flow-architecture-demo": {
-        title: "Demo React Flow cho kiến trúc phần mềm",
-        description: "Canvas React Flow kiểu thư viện demo cho node shape, edge type, group, control, minimap và background trong sơ đồ architecture.",
-        panels: ["Node shape", "Edge language", "Vùng kiến trúc"],
-        timeline: ["Node primitive đã hiện", "Shape architecture đã map", "Canvas control đã bật"]
+        title: "Demo React Flow",
+        description: "Canvas React Flow kiểu thư viện demo với dropdown view cho overview, interaction, grouping, layout, styling, whiteboard và software architecture example.",
+        panels: ["Chọn example", "Canvas gallery", "Vùng kiến trúc"],
+        timeline: ["Nhóm example đã map", "Dropdown view đã nối", "Canvas control đã bật"]
       }
     },
     flows: {
@@ -991,6 +997,9 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       chartLabel: "Sơ đồ flow",
       chartHint: "Đọc từ trái sang phải: mỗi node là một điểm quyết định, không phải một ghi chú dài.",
       chartOutcome: "Kết quả cần đạt",
+      exampleFamily: "Nhóm example",
+      exampleView: "Kiểu view",
+      viewNotes: "Ghi chú view",
       useWhen: "Dùng khi",
       outcome: "Kết quả",
       officeExample: "Ví dụ nơi làm việc",
@@ -1493,14 +1502,17 @@ function getStudioFlow(flowId: StudioFlowId): StudioFlow {
 function flowMetrics(flowId: StudioFlowId): StudioMetric[] {
   const flow = getStudioFlow(flowId);
   if (flow.architectureDemo) {
-    const nodeKinds = new Set(flow.architectureDemo.nodes.map((node) => node.kind));
-    const edgeTypes = new Set(flow.architectureDemo.edges.map((edge) => edge.type));
-    const zoneCount = flow.architectureDemo.nodes.filter((node) => node.kind === "group").length;
+    const views = flow.architectureDemo.views.length > 0
+      ? flow.architectureDemo.views
+      : [{ nodes: flow.architectureDemo.nodes, edges: flow.architectureDemo.edges }];
+    const nodeKinds = new Set(views.flatMap((view) => view.nodes.map((node) => node.kind)));
+    const edgeTypes = new Set(views.flatMap((view) => view.edges.map((edge) => edge.type)));
+    const familyCount = new Set(flow.architectureDemo.views.map((view) => view.family)).size;
     return [
+      { label: "Demo views", value: `${flow.architectureDemo.views.length}`, helper: "React Flow example modes", badge: "views", trend: "up", icon: LuLayoutDashboard },
+      { label: "Families", value: `${familyCount}`, helper: "Overview, layout, architecture", badge: "menu", trend: "up", icon: LuFilter },
       { label: "Node shapes", value: `${nodeKinds.size}`, helper: "Built-in and custom nodes", badge: "shape", trend: "up", icon: LuBoxes },
       { label: "Edge types", value: `${edgeTypes.size}`, helper: "Default, straight, step, smoothstep, bezier", badge: "edge", trend: "up", icon: LuWorkflow },
-      { label: "Zones", value: `${zoneCount}`, helper: "Architecture group boundaries", badge: "group", trend: "up", icon: LuLayoutDashboard },
-      { label: "Canvas aids", value: "3", helper: "Background, controls, minimap", badge: "xyflow", trend: "up", icon: LuGauge }
     ];
   }
   return [
@@ -2065,6 +2077,7 @@ const navGroups: StudioNavGroup[] = [
       {
         id: "flow-menu",
         title: "Flow Menu",
+        routeId: "flow-react-flow-architecture-demo",
         icon: LuWorkflow,
         badge: "new",
         subItems: studioFlows.map((flow) => ({
@@ -2777,7 +2790,14 @@ function SidebarGroup({
                   className={`sidebar-menu-button${active ? " is-active" : ""}`}
                   type="button"
                   aria-expanded={open}
-                  onClick={() => onToggle(item.id)}
+                  onClick={() => {
+                    if (item.routeId) {
+                      if (!open) onToggle(item.id);
+                      onActivate(item.routeId, "sidebar");
+                      return;
+                    }
+                    onToggle(item.id);
+                  }}
                 >
                   {Icon ? <Icon aria-hidden="true" /> : <span className="sidebar-fallback" />}
                   <span>{item.title}</span>
@@ -4334,6 +4354,20 @@ const flowCanvasToneColors: Record<StudioFlowCanvasTone, string> = {
   output: "#16a34a"
 };
 
+const reactFlowExampleFamilyLabels: Record<string, string> = {
+  overview: "Overview",
+  interaction: "Interaction",
+  grouping: "Subflows & Grouping",
+  layout: "Layout",
+  styling: "Styling",
+  whiteboard: "Whiteboard",
+  architecture: "Software Architecture"
+};
+
+function getReactFlowFamilyLabel(family: string) {
+  return reactFlowExampleFamilyLabels[family] ?? family;
+}
+
 function StudioFlowCanvasNodeCard({ data }: NodeProps<StudioFlowCanvasNode>) {
   const canConnect = data.kind !== "group";
 
@@ -4352,12 +4386,12 @@ function StudioFlowCanvasNodeCard({ data }: NodeProps<StudioFlowCanvasNode>) {
   );
 }
 
-function buildStudioFlowCanvas(flow: StudioFlow): {
+function buildStudioFlowCanvas(flow: StudioFlow, viewId?: string): {
   nodes: StudioFlowCanvasNode[];
   edges: Edge[];
 } {
   if (flow.architectureDemo) {
-    return buildArchitectureDemoCanvas(flow);
+    return buildArchitectureDemoCanvas(flow, viewId);
   }
 
   const nodes = flow.steps.map<StudioFlowCanvasNode>((step, index) => {
@@ -4425,14 +4459,19 @@ function buildStudioFlowCanvas(flow: StudioFlow): {
   return { nodes: [...nodes, outcomeNode], edges };
 }
 
-function buildArchitectureDemoCanvas(flow: StudioFlow): {
+function buildArchitectureDemoCanvas(flow: StudioFlow, viewId?: string): {
   nodes: StudioFlowCanvasNode[];
   edges: Edge[];
 } {
   const demo = flow.architectureDemo;
   if (!demo) return { nodes: [], edges: [] };
+  const view = demo.views.find((candidate) => candidate.id === viewId)
+    ?? demo.views.find((candidate) => candidate.id === demo.defaultViewId)
+    ?? demo.views[0];
+  const viewNodes = view?.nodes ?? demo.nodes;
+  const viewEdges = view?.edges ?? demo.edges;
 
-  const nodes = demo.nodes.map<StudioFlowCanvasNode>((node) => ({
+  const nodes = viewNodes.map<StudioFlowCanvasNode>((node) => ({
     id: node.id,
     type: "studioFlow",
     position: node.position,
@@ -4448,7 +4487,7 @@ function buildArchitectureDemoCanvas(flow: StudioFlow): {
     }
   }));
 
-  const edges = demo.edges.map<Edge>((edge) => ({
+  const edges = viewEdges.map<Edge>((edge) => ({
     id: edge.id,
     source: edge.source,
     target: edge.target,
@@ -4476,28 +4515,108 @@ function getStudioFlowCanvasColor(node: Node<StudioFlowCanvasNodeData>) {
 }
 
 function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy }) {
-  const { nodes, edges } = useMemo(() => buildStudioFlowCanvas(flow), [flow]);
+  const demo = flow.architectureDemo;
+  const demoViews = useMemo(() => demo?.views ?? [], [demo]);
+  const initialDemoView = demoViews.find((view) => view.id === demo?.defaultViewId) ?? demoViews[0];
+  const [demoSelection, setDemoSelection] = useState<{ flowId: StudioFlowId; family: string; viewId: string }>({
+    flowId: flow.id,
+    family: initialDemoView?.family ?? "architecture",
+    viewId: initialDemoView?.id ?? ""
+  });
+  const activeSelection = demoSelection.flowId === flow.id
+    ? demoSelection
+    : {
+      flowId: flow.id,
+      family: initialDemoView?.family ?? "architecture",
+      viewId: initialDemoView?.id ?? ""
+    };
+  const selectedFamily = activeSelection.family;
+  const selectedViewId = activeSelection.viewId;
+
+  const familyOptions = useMemo(() => {
+    const families = new Map<string, string>();
+    demoViews.forEach((view) => {
+      if (!families.has(view.family)) families.set(view.family, getReactFlowFamilyLabel(view.family));
+    });
+    return Array.from(families, ([value, label]) => ({ value, label }));
+  }, [demoViews]);
+  const selectedFamilyViews = useMemo(
+    () => demoViews.filter((view) => view.family === selectedFamily),
+    [demoViews, selectedFamily]
+  );
+  const selectedView = demoViews.find((view) => view.id === selectedViewId)
+    ?? selectedFamilyViews[0]
+    ?? initialDemoView;
+  const { nodes, edges } = useMemo(() => buildStudioFlowCanvas(flow, selectedView?.id), [flow, selectedView?.id]);
+  const isReactFlowDemo = Boolean(demo);
 
   return (
     <section className="flow-chart-surface" aria-label={copy.flows.chartLabel}>
       <div className="flow-chart-head">
         <div>
           <span className="ai-status-pill status-ready">{copy.flows.chartLabel}</span>
-          <h3>{flow.title}</h3>
+          <h3>{selectedView?.title ?? flow.title}</h3>
         </div>
-        <p>{copy.flows.chartHint}</p>
+        <p>{selectedView?.description ?? copy.flows.chartHint}</p>
       </div>
 
-      <div className={`flow-react-surface${flow.architectureDemo ? " is-architecture-demo" : ""}`}>
+      {demo && selectedView && (
+        <div className="flow-example-toolbar" aria-label="React Flow example selector">
+          <label>
+            <span>{copy.flows.exampleFamily}</span>
+            <select
+              value={selectedFamily}
+              onChange={(event) => {
+                const nextFamily = event.target.value;
+                const nextView = demo.views.find((view) => view.family === nextFamily);
+                setDemoSelection({
+                  flowId: flow.id,
+                  family: nextFamily,
+                  viewId: nextView?.id ?? ""
+                });
+              }}
+            >
+              {familyOptions.map((family) => (
+                <option key={family.value} value={family.value}>
+                  {family.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            <span>{copy.flows.exampleView}</span>
+            <select
+              value={selectedView.id}
+              onChange={(event) => {
+                const nextView = demo.views.find((view) => view.id === event.target.value);
+                setDemoSelection({
+                  flowId: flow.id,
+                  family: nextView?.family ?? selectedFamily,
+                  viewId: event.target.value
+                });
+              }}
+            >
+              {selectedFamilyViews.map((view) => (
+                <option key={view.id} value={view.id}>
+                  {view.title}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+      )}
+
+      <div className={`flow-react-surface${isReactFlowDemo ? " is-architecture-demo" : ""}`}>
         <ReactFlow
+          key={selectedView?.id ?? flow.id}
           className="flow-react-canvas"
           nodes={nodes}
           edges={edges}
           nodeTypes={studioFlowNodeTypes}
           fitView
           fitViewOptions={{
-            padding: flow.architectureDemo ? 0.06 : 0.24,
-            minZoom: flow.architectureDemo ? 0.36 : 0.5
+            padding: isReactFlowDemo ? 0.14 : 0.24,
+            minZoom: isReactFlowDemo ? 0.26 : 0.5
           }}
           minZoom={0.18}
           maxZoom={1.4}
@@ -4509,7 +4628,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
           <Background color="color-mix(in srgb, var(--foreground) 12%, transparent)" gap={22} />
           <Controls showInteractive={false} />
           <MiniMap
-            position="top-right"
+            position="bottom-right"
             pannable
             zoomable
             nodeColor={(node) => getStudioFlowCanvasColor(node as Node<StudioFlowCanvasNodeData>)}
@@ -4517,10 +4636,21 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
         </ReactFlow>
       </div>
 
-      <div className="flow-chart-outcome">
-        <span>{copy.flows.chartOutcome}</span>
-        <strong>{flow.outcome}</strong>
-      </div>
+      {demo && selectedView ? (
+        <div className="flow-example-notes">
+          <span>{copy.flows.viewNotes}</span>
+          <ul>
+            {selectedView.notes.map((note) => (
+              <li key={note}>{note}</li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <div className="flow-chart-outcome">
+          <span>{copy.flows.chartOutcome}</span>
+          <strong>{flow.outcome}</strong>
+        </div>
+      )}
     </section>
   );
 }
@@ -4605,56 +4735,58 @@ function StudioFlowMenuPage({
         className={`flow-workbench card${selectedFlow.architectureDemo ? " is-architecture-demo" : ""}`}
         data-studio-module="flow-menu"
       >
-        <aside className="flow-index-pane" aria-label={copy.flows.flowListLabel}>
-          <div className="ai-pane-head">
-            <span><LuWorkflow aria-hidden="true" /></span>
-            <div>
-              <h2>{copy.flows.menu}</h2>
-              <p>{copy.flows.menuDetail}</p>
+        {!selectedFlow.architectureDemo && (
+          <aside className="flow-index-pane" aria-label={copy.flows.flowListLabel}>
+            <div className="ai-pane-head">
+              <span><LuWorkflow aria-hidden="true" /></span>
+              <div>
+                <h2>{copy.flows.menu}</h2>
+                <p>{copy.flows.menuDetail}</p>
+              </div>
             </div>
-          </div>
 
-          <div className="flow-group-list" aria-label={copy.flows.groupMenuLabel}>
-            {localizedGroups.map((group) => {
-              const active = selectedFlow.groupId === group.id;
-              return (
-                <button
-                  key={group.id}
-                  type="button"
-                  className={`flow-group-button${active ? " is-active" : ""}`}
-                  onClick={() => handleGroupSelect(group.id)}
-                >
-                  <strong>{group.title}</strong>
-                  <small>{group.subtitle}</small>
-                </button>
-              );
-            })}
-          </div>
+            <div className="flow-group-list" aria-label={copy.flows.groupMenuLabel}>
+              {localizedGroups.map((group) => {
+                const active = selectedFlow.groupId === group.id;
+                return (
+                  <button
+                    key={group.id}
+                    type="button"
+                    className={`flow-group-button${active ? " is-active" : ""}`}
+                    onClick={() => handleGroupSelect(group.id)}
+                  >
+                    <strong>{group.title}</strong>
+                    <small>{group.subtitle}</small>
+                  </button>
+                );
+              })}
+            </div>
 
-          <div className="flow-list">
-            {localizedFlows.map((flow) => {
-              const active = selectedFlow.id === flow.id;
-              return (
-                <a
-                  key={flow.id}
-                  href={studioFlowHref(locale, flow.id)}
-                  className={`flow-list-button${active ? " is-active" : ""}`}
-                  aria-current={active ? "page" : undefined}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    handleFlowSelect(flow.id);
-                  }}
-                >
-                  <span>
-                    <strong>{flow.title}</strong>
-                    <small>{flow.summary}</small>
-                  </span>
-                  <em>{flow.steps.length}</em>
-                </a>
-              );
-            })}
-          </div>
-        </aside>
+            <div className="flow-list">
+              {localizedFlows.map((flow) => {
+                const active = selectedFlow.id === flow.id;
+                return (
+                  <a
+                    key={flow.id}
+                    href={studioFlowHref(locale, flow.id)}
+                    className={`flow-list-button${active ? " is-active" : ""}`}
+                    aria-current={active ? "page" : undefined}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleFlowSelect(flow.id);
+                    }}
+                  >
+                    <span>
+                      <strong>{flow.title}</strong>
+                      <small>{flow.summary}</small>
+                    </span>
+                    <em>{flow.architectureDemo?.views.length ?? flow.steps.length}</em>
+                  </a>
+                );
+              })}
+            </div>
+          </aside>
+        )}
 
         <article id={`flow-${selectedFlow.id}`} className="flow-reader-pane" aria-label={copy.flows.selectedFlow}>
           <div className="skill-reader-head">
@@ -4700,36 +4832,38 @@ function StudioFlowMenuPage({
           </ol>
         </article>
 
-        <aside className="flow-side-pane" aria-label="Flow details">
-          <section>
-            <h3>{copy.flows.useWhen}</h3>
-            <p>{selectedFlow.useWhen}</p>
-          </section>
-          <section>
-            <h3>{copy.flows.outcome}</h3>
-            <p>{selectedFlow.outcome}</p>
-          </section>
-          <section>
-            <h3>{copy.flows.officeExample}</h3>
-            <p>{selectedFlow.officeExample}</p>
-          </section>
-          <section>
-            <h3>{copy.flows.artifacts}</h3>
-            <ul>
-              {selectedFlow.artifacts.map((artifact) => (
-                <li key={artifact}>{artifact}</li>
-              ))}
-            </ul>
-          </section>
-          <section>
-            <h3>{copy.flows.cvSignals}</h3>
-            <ul>
-              {selectedFlow.cvSignals.map((signal) => (
-                <li key={signal}>{signal}</li>
-              ))}
-            </ul>
-          </section>
-        </aside>
+        {!selectedFlow.architectureDemo && (
+          <aside className="flow-side-pane" aria-label="Flow details">
+            <section>
+              <h3>{copy.flows.useWhen}</h3>
+              <p>{selectedFlow.useWhen}</p>
+            </section>
+            <section>
+              <h3>{copy.flows.outcome}</h3>
+              <p>{selectedFlow.outcome}</p>
+            </section>
+            <section>
+              <h3>{copy.flows.officeExample}</h3>
+              <p>{selectedFlow.officeExample}</p>
+            </section>
+            <section>
+              <h3>{copy.flows.artifacts}</h3>
+              <ul>
+                {selectedFlow.artifacts.map((artifact) => (
+                  <li key={artifact}>{artifact}</li>
+                ))}
+              </ul>
+            </section>
+            <section>
+              <h3>{copy.flows.cvSignals}</h3>
+              <ul>
+                {selectedFlow.cvSignals.map((signal) => (
+                  <li key={signal}>{signal}</li>
+                ))}
+              </ul>
+            </section>
+          </aside>
+        )}
       </div>
     </section>
   );

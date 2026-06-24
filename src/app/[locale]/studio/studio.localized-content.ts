@@ -1929,9 +1929,9 @@ const vietnameseFlowGroupCopies: Record<string, LocalizedFlowGroupCopy> = {
   },
   "react-flow-library": {
     title: "Demo thư viện React Flow",
-    subtitle: "Xem shape kiến trúc trước khi chọn sơ đồ.",
+    subtitle: "Đổi các dạng example trước khi chọn sơ đồ.",
     description:
-      "Một showcase React Flow cho software architecture: node mặc định, custom shape, group, edge style, label, marker, minimap, control và background."
+      "Một showcase React Flow cho nhiều nhóm example: node mặc định, custom architecture shape, grouping, layout, validation, annotation, edge style, label, marker, minimap, control và background."
   }
 };
 
@@ -2237,18 +2237,18 @@ const vietnameseFlowCopies: Record<string, LocalizedFlowCopy> = {
     cvSignals: ["Giao tiếp impact", "Senior engineer narrative", "Business awareness", "Reflective practice"]
   },
   "react-flow-architecture-demo": {
-    title: "Demo React Flow cho kiến trúc phần mềm",
+    title: "Demo React Flow",
     summary:
-      "Một canvas kiểu thư viện demo, cho thấy @xyflow/react có thể biểu diễn node shape, group, edge type, marker, label, minimap, control và background trong sơ đồ architecture.",
-    seoTitle: "Demo React Flow cho sơ đồ software architecture",
+      "Một canvas kiểu thư viện demo, cho thấy @xyflow/react có thể biểu diễn overview, interaction, grouping, layout, styling, whiteboard và software architecture example.",
+    seoTitle: "Demo React Flow cho nhiều dạng sơ đồ kỹ thuật",
     seoDescription:
-      "Studio demo React Flow cho software architecture với node mặc định, custom architecture shape, group, edge type, label, marker, minimap, control và background.",
+      "Studio demo React Flow với node mặc định, custom architecture shape, grouping, layout, validation, whiteboard annotation, edge type, label, marker, minimap, control và background.",
     useWhen:
-      "Dùng khi cần chọn cách mô hình hóa system architecture, service map, platform topology, event flow hoặc deployment boundary bằng React Flow.",
+      "Dùng khi cần chọn cách mô hình hóa system architecture, service map, platform topology, event flow, deployment boundary hoặc graph-editor interaction bằng React Flow.",
     outcome:
-      "Một catalog trực quan các node và edge pattern có thể tái dùng cho sơ đồ architecture, không lẫn với use case map sản phẩm.",
+      "Một catalog trực quan các node, edge, grouping, layout, interaction, whiteboard và architecture pattern của React Flow, không lẫn với use case map sản phẩm.",
     officeExample:
-      "Một team muốn giải thích kiến trúc checkout payment. Demo này cho thấy cách đặt client boundary, API gateway, auth, service, database, cache, queue, event topic, external provider, observability và rollback risk trong cùng một canvas.",
+      "Một team muốn chọn hình thái sơ đồ kỹ thuật trước khi vẽ hệ thống thật. Gallery này cho phép so sánh overview, subflow, layout, validation, whiteboard, event-driven, topology và data-lineage view trong cùng một React Flow canvas.",
     tags: ["React Flow", "XYFlow", "Architecture Diagram", "Node Shapes", "Edge Types"],
     steps: {
       "show-node-primitives": {

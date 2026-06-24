@@ -108,6 +108,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /fitViewOptions/);
   assert.match(adminShell, /function buildArchitectureDemoCanvas/);
   assert.match(adminShell, /function StudioFlowCanvasNodeCard/);
+  assert.match(adminShell, /reactFlowExampleFamilyLabels/);
+  assert.match(adminShell, /flow-example-toolbar/);
+  assert.match(adminShell, /selectedViewId/);
+  assert.match(adminShell, /routeId:\s*"flow-react-flow-architecture-demo"/);
   assert.match(adminShell, /studioCopyByLocale/);
   assert.match(adminShell, /getStudioCopy/);
   assert.match(adminShell, /getLocalizedRouteDefinitions/);
@@ -342,6 +346,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.react-flow__container\b/);
   assert.match(shadowCss, /\.react-flow__controls\b/);
   assert.match(shadowCss, /\.react-flow__minimap\b/);
+  assert.match(shadowCss, /\.flow-example-toolbar\b/);
+  assert.match(shadowCss, /\.flow-example-notes\b/);
   assert.match(shadowCss, /\.flow-react-node--hub\b/);
   assert.match(shadowCss, /\.flow-react-node--group\b/);
   assert.match(shadowCss, /\.flow-react-node--gateway\b/);
@@ -372,7 +378,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.ai-setup-container\.card\s*\{[^}]*height:\s*clamp/s);
   assert.match(shadowCss, /\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card\s*\{[^}]*height:\s*clamp/s);
   assert.match(shadowCss, /\.flow-workbench\.card\s*\{[^}]*grid-template-columns:\s*19rem minmax\(0,\s*1fr\) 19rem/s);
-  assert.match(shadowCss, /\.flow-workbench\.card\.is-architecture-demo\s*\{[^}]*grid-template-columns:\s*15rem minmax\(0,\s*1fr\) 15rem/s);
+  assert.match(shadowCss, /\.flow-workbench\.card\.is-architecture-demo\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/s);
+  assert.match(shadowCss, /\.flow-workbench\.card\.is-architecture-demo \.flow-reader-pane\s*\{[^}]*overflow:\s*visible/s);
   assert.match(shadowCss, /\.blog-roadmap-workbench\.card\s*\{[^}]*grid-template-columns:\s*18rem minmax\(0,\s*1fr\) 20rem/s);
   assert.match(shadowCss, /\.roadmap-day-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s);
   assert.match(shadowCss, /@media \(max-width: 1480px\)\s*\{[\s\S]*?\.blog-roadmap-workbench\.card\s*\{[^}]*height:\s*auto;[^}]*overflow:\s*visible/s);
@@ -480,8 +487,15 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "Create one focused Multica ticket per roadmap article.",
     "Architecture & System Design",
     "React Flow Library Demo",
-    "React Flow Architecture Demo",
-    "A React Flow showcase for software architecture diagrams",
+    "React Flow Example Gallery",
+    "A React Flow showcase for example families",
+    "overview",
+    "interaction",
+    "grouping",
+    "layout",
+    "styling",
+    "whiteboard",
+    "architecture",
     "Node Shapes",
     "Edge Types",
     "System Design Interview Flow",
@@ -524,7 +538,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "getLocalizedStudioFlowGroups",
     "Flow System Design",
     "Demo thư viện React Flow",
-    "Demo React Flow cho kiến trúc phần mềm",
+    "Demo React Flow",
+    "Đổi các dạng example trước khi chọn sơ đồ",
     "onboarding đối tác",
     "release readiness",
     "support noise",
@@ -537,9 +552,23 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
 
   for (const expected of [
     "Built-in primitives",
+    "React Flow example families",
     "Software architecture nodes",
     "Edge language",
     "Canvas controls",
+    "Feature overview",
+    "Subflows and grouping",
+    "Dagre-style tree",
+    "Expand and collapse",
+    "Validation and helper lines",
+    "Whiteboard annotation",
+    "Styling and theming",
+    "Software architecture service map",
+    "Event-driven architecture",
+    "Deployment topology",
+    "Data lineage",
+    "views: reactFlowViews",
+    "defaultViewId",
     "input",
     "default",
     "output",
