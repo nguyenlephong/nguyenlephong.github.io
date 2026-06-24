@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "context-window-bottleneck",
+      "category": "ai",
+      "title": "Context window: điểm nghẽn thầm lặng của AI workflow",
+      "summary": "Một góc nhìn thực tế về giới hạn context window như một điểm nghẽn âm thầm trong AI workflow. Bài viết giải thích vì sao chat quá dài, codebase lớn, summary mơ hồ và working memory thiếu rõ ràng có thể làm AI trả lời lệch, và cách team xử lý giới hạn này mà không biến mọi task thành một đống tài liệu.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "Context Window",
+        "LLM",
+        "AI Workflow",
+        "Software Engineering",
+        "Phán đoán con người"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "hiring-for-potential-vs-experience",
       "category": "culture",
       "title": "Tuyển dụng vì tiềm năng hay vì kinh nghiệm",
