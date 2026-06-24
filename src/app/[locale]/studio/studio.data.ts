@@ -3287,7 +3287,7 @@ export const studioFlowGroups: StudioFlowGroup[] = [
   },
   {
     id: "react-flow-library",
-    title: "React Flow Library Demo",
+    title: "React Flow",
     subtitle: "Switch between example shapes before choosing a diagram.",
     description:
       "A React Flow showcase for example families: built-in nodes, custom architecture shapes, grouping, layout, validation, annotation, edge styles, labels, markers, minimap, controls, and background.",
@@ -3740,10 +3740,10 @@ export const studioFlows: StudioFlow[] = [
   {
     id: "react-flow-architecture-demo",
     groupId: "react-flow-library",
-    title: "React Flow Example Gallery",
+    title: "Example",
     summary:
       "A library-style canvas showing what @xyflow/react can express across overview, interaction, grouping, layout, styling, whiteboard, and software architecture examples.",
-    seoTitle: "React Flow Example Gallery for Software Diagrams",
+    seoTitle: "React Flow Example for Software Diagrams",
     seoDescription:
       "A React Flow studio demo with built-in node styles, custom architecture shapes, grouping, layout, validation, whiteboard annotation, edge types, labels, markers, minimap, controls, and background.",
     useWhen:

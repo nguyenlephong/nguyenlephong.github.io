@@ -171,8 +171,12 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(navGroupsBlock, /title:\s*"Blog Roadmap"/);
   assert.match(navGroupsBlock, /routeId:\s*"blog-roadmap"/);
   assert.match(navGroupsBlock, /title:\s*"Flow Menu"/);
-  assert.match(navGroupsBlock, /subItems:\s*studioFlows\.map/);
-  assert.match(navGroupsBlock, /flowRouteId\(flow\.id\)/);
+  assert.match(navGroupsBlock, /routeId:\s*"flow-react-flow-architecture-demo"/);
+  assert.match(navGroupsBlock, /title:\s*"Example"/);
+  assert.doesNotMatch(navGroupsBlock, /subItems:\s*studioFlows\.map/);
+  assert.doesNotMatch(navGroupsBlock, /flowRouteId\(flow\.id\)/);
+  assert.doesNotMatch(navGroupsBlock, /System Design Interview Flow/);
+  assert.doesNotMatch(navGroupsBlock, /AI-Assisted Delivery Flow/);
   assert.doesNotMatch(navGroupsBlock, /Communication/);
   assert.doesNotMatch(navGroupsBlock, /title:\s*"Email"/);
   assert.doesNotMatch(navGroupsBlock, /title:\s*"Chat"/);
@@ -213,7 +217,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /title:\s*"Delivery Checklists"/);
   assert.match(adminShell, /title:\s*"Blog Roadmap"/);
   assert.match(adminShell, /title:\s*"System Design Flow"/);
-  assert.match(adminShell, /"flow-react-flow-architecture-demo":\s*"React Flow Demo"/);
+  assert.match(adminShell, /"flow-react-flow-architecture-demo":\s*"Example"/);
   assert.match(adminShell, /chartLabel:\s*"Flow chart"/);
   assert.match(adminShell, /Read the path from left to right/);
   assert.match(adminShell, /chartLabel:\s*"Sơ đồ flow"/);
@@ -347,7 +351,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.react-flow__controls\b/);
   assert.match(shadowCss, /\.react-flow__minimap\b/);
   assert.match(shadowCss, /\.flow-example-toolbar\b/);
-  assert.match(shadowCss, /\.flow-example-notes\b/);
+  assert.doesNotMatch(shadowCss, /\.flow-example-notes\b/);
   assert.match(shadowCss, /\.flow-react-node--hub\b/);
   assert.match(shadowCss, /\.flow-react-node--group\b/);
   assert.match(shadowCss, /\.flow-react-node--gateway\b/);
@@ -486,8 +490,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "From prompts to workflows",
     "Create one focused Multica ticket per roadmap article.",
     "Architecture & System Design",
-    "React Flow Library Demo",
-    "React Flow Example Gallery",
+    "React Flow",
+    "React Flow Example for Software Diagrams",
     "A React Flow showcase for example families",
     "overview",
     "interaction",
@@ -537,8 +541,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "getLocalizedStudioFlows",
     "getLocalizedStudioFlowGroups",
     "Flow System Design",
-    "Demo thư viện React Flow",
-    "Demo React Flow",
+    "React Flow",
+    "Example",
     "Đổi các dạng example trước khi chọn sơ đồ",
     "onboarding đối tác",
     "release readiness",

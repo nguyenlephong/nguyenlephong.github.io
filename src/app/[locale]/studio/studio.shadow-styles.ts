@@ -2548,32 +2548,6 @@ a {
   padding: 0.875rem;
 }
 
-.flow-example-notes {
-  display: grid;
-  gap: 0.55rem;
-  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
-  border-radius: 0.875rem;
-  background: color-mix(in srgb, var(--muted) 38%, transparent);
-  padding: 0.875rem;
-}
-
-.flow-example-notes span {
-  color: var(--muted-foreground);
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.flow-example-notes ul {
-  display: grid;
-  gap: 0.35rem;
-  margin: 0;
-  padding-left: 1.1rem;
-  color: var(--muted-foreground);
-  font-size: 0.82rem;
-  line-height: 1.45;
-}
-
 .flow-chart-outcome span {
   color: var(--muted-foreground);
   font-size: 0.75rem;

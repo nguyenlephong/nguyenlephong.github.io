@@ -618,7 +618,7 @@ const englishStudioCopy: StudioUiCopy = {
     "flow-release-readiness": "Release Readiness",
     "flow-ai-delivery": "AI Delivery",
     "flow-portfolio-story": "Portfolio Story",
-    "flow-react-flow-architecture-demo": "React Flow Demo"
+    "flow-react-flow-architecture-demo": "Example"
   },
   profileItems: {
     home: { label: "Home", detail: "Profile overview." },
@@ -730,7 +730,7 @@ const englishStudioCopy: StudioUiCopy = {
       timeline: ["Context captured", "Impact evidence selected", "Story draft shaped"]
     },
     "flow-react-flow-architecture-demo": {
-      title: "React Flow Example Gallery",
+      title: "Example",
       description: "A library-style React Flow canvas with dropdown views for overview, interaction, grouping, layout, styling, whiteboard, and software architecture examples.",
       panels: ["Example selector", "Canvas gallery", "Architecture zones"],
       timeline: ["Example families mapped", "Dropdown views wired", "Canvas controls enabled"]
@@ -878,7 +878,7 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       "flow-release-readiness": "Release readiness",
       "flow-ai-delivery": "AI delivery",
       "flow-portfolio-story": "Portfolio story",
-      "flow-react-flow-architecture-demo": "Demo React Flow"
+      "flow-react-flow-architecture-demo": "Example"
     },
     profileItems: {
       home: { label: "Trang chủ", detail: "Tổng quan profile." },
@@ -979,7 +979,7 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
         timeline: ["Context đã ghi lại", "Evidence impact đã chọn", "Story draft đã định hình"]
       },
       "flow-react-flow-architecture-demo": {
-        title: "Demo React Flow",
+        title: "Example",
         description: "Canvas React Flow kiểu thư viện demo với dropdown view cho overview, interaction, grouping, layout, styling, whiteboard và software architecture example.",
         panels: ["Chọn example", "Canvas gallery", "Vùng kiến trúc"],
         timeline: ["Nhóm example đã map", "Dropdown view đã nối", "Canvas control đã bật"]
@@ -2080,11 +2080,13 @@ const navGroups: StudioNavGroup[] = [
         routeId: "flow-react-flow-architecture-demo",
         icon: LuWorkflow,
         badge: "new",
-        subItems: studioFlows.map((flow) => ({
-          id: flowRouteId(flow.id),
-          title: flow.title,
-          routeId: flowRouteId(flow.id)
-        }))
+        subItems: [
+          {
+            id: "flow-react-flow-architecture-demo",
+            title: "Example",
+            routeId: "flow-react-flow-architecture-demo"
+          }
+        ]
       }
     ]
   }
@@ -4636,16 +4638,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
         </ReactFlow>
       </div>
 
-      {demo && selectedView ? (
-        <div className="flow-example-notes">
-          <span>{copy.flows.viewNotes}</span>
-          <ul>
-            {selectedView.notes.map((note) => (
-              <li key={note}>{note}</li>
-            ))}
-          </ul>
-        </div>
-      ) : (
+      {!demo && (
         <div className="flow-chart-outcome">
           <span>{copy.flows.chartOutcome}</span>
           <strong>{flow.outcome}</strong>
@@ -4729,7 +4722,7 @@ function StudioFlowMenuPage({
         </button>
       </RouteHeading>
 
-      <RouteMetricGrid metrics={route.metrics} copy={copy} />
+      {!selectedFlow.architectureDemo && <RouteMetricGrid metrics={route.metrics} copy={copy} />}
 
       <div
         className={`flow-workbench card${selectedFlow.architectureDemo ? " is-architecture-demo" : ""}`}
@@ -4809,27 +4802,29 @@ function StudioFlowMenuPage({
 
           <StudioFlowChart flow={selectedFlow} copy={copy} />
 
-          <ol className="flow-step-map" aria-label={`${copy.flows.evidence} / ${copy.flows.output}`}>
-            {selectedFlow.steps.map((step, index) => (
-              <li key={step.id} className="flow-step-node">
-                <span className="flow-step-index">{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{step.title}</h3>
-                  <p>{step.detail}</p>
-                  <dl>
-                    <div>
-                      <dt>{copy.flows.evidence}</dt>
-                      <dd>{step.evidence}</dd>
-                    </div>
-                    <div>
-                      <dt>{copy.flows.output}</dt>
-                      <dd>{step.output}</dd>
-                    </div>
-                  </dl>
-                </div>
-              </li>
-            ))}
-          </ol>
+          {!selectedFlow.architectureDemo && (
+            <ol className="flow-step-map" aria-label={`${copy.flows.evidence} / ${copy.flows.output}`}>
+              {selectedFlow.steps.map((step, index) => (
+                <li key={step.id} className="flow-step-node">
+                  <span className="flow-step-index">{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p>{step.detail}</p>
+                    <dl>
+                      <div>
+                        <dt>{copy.flows.evidence}</dt>
+                        <dd>{step.evidence}</dd>
+                      </div>
+                      <div>
+                        <dt>{copy.flows.output}</dt>
+                        <dd>{step.output}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          )}
         </article>
 
         {!selectedFlow.architectureDemo && (

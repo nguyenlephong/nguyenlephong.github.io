@@ -1928,7 +1928,7 @@ const vietnameseFlowGroupCopies: Record<string, LocalizedFlowGroupCopy> = {
       "Các flow dành cho delivery có AI hỗ trợ và câu chuyện portfolio, giúp engineering judgment hiện rõ mà không biến thành copy marketing."
   },
   "react-flow-library": {
-    title: "Demo thư viện React Flow",
+    title: "React Flow",
     subtitle: "Đổi các dạng example trước khi chọn sơ đồ.",
     description:
       "Một showcase React Flow cho nhiều nhóm example: node mặc định, custom architecture shape, grouping, layout, validation, annotation, edge style, label, marker, minimap, control và background."
@@ -2237,10 +2237,10 @@ const vietnameseFlowCopies: Record<string, LocalizedFlowCopy> = {
     cvSignals: ["Giao tiếp impact", "Senior engineer narrative", "Business awareness", "Reflective practice"]
   },
   "react-flow-architecture-demo": {
-    title: "Demo React Flow",
+    title: "Example",
     summary:
       "Một canvas kiểu thư viện demo, cho thấy @xyflow/react có thể biểu diễn overview, interaction, grouping, layout, styling, whiteboard và software architecture example.",
-    seoTitle: "Demo React Flow cho nhiều dạng sơ đồ kỹ thuật",
+    seoTitle: "React Flow Example cho nhiều dạng sơ đồ kỹ thuật",
     seoDescription:
       "Studio demo React Flow với node mặc định, custom architecture shape, grouping, layout, validation, whiteboard annotation, edge type, label, marker, minimap, control và background.",
     useWhen:
