@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "mentoring-junior-developers-effectively",
+      "category": "perspectives",
+      "title": "Mentoring Junior Developers Effectively",
+      "summary": "A practical reflection on mentoring junior developers through context, calibrated support, confidence, code review, recoverable mistakes, independence, and psychological safety without turning mentorship into control.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Engineering",
+        "Mentorship",
+        "Junior Developers",
+        "Code Review",
+        "Psychological Safety",
+        "Career Growth"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "ethical-considerations-in-ai-products",
       "category": "ai",
       "title": "Ethical Considerations in AI Products",

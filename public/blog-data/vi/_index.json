@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "mentoring-junior-developers-effectively",
+      "category": "perspectives",
+      "title": "Mentoring junior developer một cách hiệu quả",
+      "summary": "Một bài reflection thực tế về mentoring junior developer bằng context, hỗ trợ đúng mức, sự tự tin, code review, sai sót có thể phục hồi, tính độc lập và psychological safety mà không biến mentoring thành kiểm soát.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Engineering",
+        "Mentorship",
+        "Junior Developer",
+        "Code Review",
+        "Psychological Safety",
+        "Phát triển sự nghiệp"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "ethical-considerations-in-ai-products",
       "category": "ai",
       "title": "Những cân nhắc đạo đức khi xây AI product",
