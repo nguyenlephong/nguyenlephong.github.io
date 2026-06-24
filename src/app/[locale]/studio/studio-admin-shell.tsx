@@ -24,6 +24,7 @@ import type {
   StudioAiSkill,
   StudioChecklistStep,
   StudioFlow,
+  StudioFlowArchitectureEdgeSpec,
   StudioNote,
   StudioNoteStatus,
   StudioWorkflowChecklist
@@ -841,6 +842,54 @@ const englishStudioCopy: StudioUiCopy = {
   }
 };
 
+type CompactStudioCopyConfig = {
+  navLabel: string;
+  navItems: Partial<Record<StudioRouteId, string>>;
+  findSetupNote: string;
+  search: string;
+  searchPlaceholder: string;
+  profileNavigationTitle: string;
+  profileNavigationDetail: string;
+  openProfileHome: string;
+  status: StudioUiCopy["status"];
+  categories: StudioUiCopy["categories"];
+  routeText: {
+    setup: Pick<StudioRouteCopy, "title" | "description">;
+    skills: Pick<StudioRouteCopy, "title" | "description">;
+    checklists: Pick<StudioRouteCopy, "title" | "description">;
+  };
+  aiSetup: Partial<StudioUiCopy["aiSetup"]>;
+  aiSkills: Partial<StudioUiCopy["aiSkills"]>;
+  checklists: Partial<StudioUiCopy["checklists"]>;
+  preferences: Partial<StudioUiCopy["preferences"]>;
+};
+
+function createCompactStudioCopy(config: CompactStudioCopyConfig): StudioUiCopy {
+  return {
+    ...englishStudioCopy,
+    navLabel: config.navLabel,
+    navItems: { ...englishStudioCopy.navItems, ...config.navItems },
+    findSetupNote: config.findSetupNote,
+    search: config.search,
+    searchPlaceholder: config.searchPlaceholder,
+    profileNavigationTitle: config.profileNavigationTitle,
+    profileNavigationDetail: config.profileNavigationDetail,
+    openProfileHome: config.openProfileHome,
+    status: config.status,
+    categories: config.categories,
+    routes: {
+      welcome: { ...englishStudioCopy.routes.welcome!, title: "Welcome" },
+      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"]!, ...config.routeText.setup },
+      "ai-skills": { ...englishStudioCopy.routes["ai-skills"]!, ...config.routeText.skills },
+      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"]!, ...config.routeText.checklists }
+    },
+    aiSetup: { ...englishStudioCopy.aiSetup, ...config.aiSetup },
+    aiSkills: { ...englishStudioCopy.aiSkills, ...config.aiSkills },
+    checklists: { ...englishStudioCopy.checklists, ...config.checklists },
+    preferences: { ...englishStudioCopy.preferences, ...config.preferences }
+  };
+}
+
 const studioCopyByLocale: Record<string, StudioUiCopy> = {
   en: englishStudioCopy,
   vi: {
@@ -1095,8 +1144,7 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
     }
   },
-  zh: {
-    ...englishStudioCopy,
+  zh: createCompactStudioCopy({
     navLabel: "个人 Studio",
     navItems: {
       welcome: "Welcome",
@@ -1112,11 +1160,10 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     openProfileHome: "打开个人主页",
     status: { ready: "就绪", draft: "草稿", next: "下一步" },
     categories: { all: "全部", engineering: "工程", content: "内容", operations: "运营", communication: "沟通", strategy: "策略", learning: "学习" },
-    routes: {
-      welcome: { ...englishStudioCopy.routes.welcome!, title: "Welcome" },
-      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "AI Agent 设置", description: "用于 AI agent 工具、MCP 路径和安全机器初始化的个人设置笔记。" },
-      "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "AI 技能", description: "可复制的 markdown 技能，用于代码评审、架构、内容、提示词、报告、规格和提案。" },
-      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "交付清单", description: "从任务接收到模块工作、发布准备和上线的操作清单。" }
+    routeText: {
+      setup: { title: "AI Agent 设置", description: "用于 AI agent 工具、MCP 路径和安全机器初始化的个人设置笔记。" },
+      skills: { title: "AI 技能", description: "可复制的 markdown 技能，用于代码评审、架构、内容、提示词、报告、规格和提案。" },
+      checklists: { title: "交付清单", description: "从任务接收到模块工作、发布准备和上线的操作清单。" }
     },
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "添加笔记", commandRunbook: "命令 runbook", setupChecklist: "设置清单", researchQueue: "研究队列" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "复制 markdown", copied: "已复制", skillLibrary: "技能库", categoriesLabel: "技能分类" },
@@ -1138,9 +1185,8 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       sidebarVariantOptions: { inset: "内嵌", sidebar: "侧边栏", floating: "浮动" },
       sidebarCollapsibleOptions: { icon: "图标", offcanvas: "抽屉" }
     }
-  },
-  ja: {
-    ...englishStudioCopy,
+  }),
+  ja: createCompactStudioCopy({
     navLabel: "パーソナル Studio",
     navItems: {
       welcome: "Welcome",
@@ -1156,11 +1202,10 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     openProfileHome: "プロフィールホームを開く",
     status: { ready: "準備済み", draft: "下書き", next: "次" },
     categories: { all: "すべて", engineering: "エンジニアリング", content: "コンテンツ", operations: "運用", communication: "コミュニケーション", strategy: "戦略", learning: "学習" },
-    routes: {
-      welcome: { ...englishStudioCopy.routes.welcome!, title: "Welcome" },
-      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "AI Agent セットアップ", description: "AI agent ツール、MCP パス、安全なマシン初期化のための個人セットアップノート。" },
-      "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "AI スキル", description: "コードレビュー、アーキテクチャ、コンテンツ、プロンプト、レポート、仕様、提案に使える markdown スキル。" },
-      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "デリバリーチェックリスト", description: "タスク受領からモジュール作業、リリース準備、ロールアウトまでの運用チェックリスト。" }
+    routeText: {
+      setup: { title: "AI Agent セットアップ", description: "AI agent ツール、MCP パス、安全なマシン初期化のための個人セットアップノート。" },
+      skills: { title: "AI スキル", description: "コードレビュー、アーキテクチャ、コンテンツ、プロンプト、レポート、仕様、提案に使える markdown スキル。" },
+      checklists: { title: "デリバリーチェックリスト", description: "タスク受領からモジュール作業、リリース準備、ロールアウトまでの運用チェックリスト。" }
     },
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "ノート追加", commandRunbook: "コマンド runbook", setupChecklist: "セットアップチェックリスト", researchQueue: "調査キュー" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Markdown をコピー", copied: "コピー済み", skillLibrary: "スキルライブラリ", categoriesLabel: "スキル分類" },
@@ -1182,9 +1227,8 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       sidebarVariantOptions: { inset: "インセット", sidebar: "サイドバー", floating: "フローティング" },
       sidebarCollapsibleOptions: { icon: "アイコン", offcanvas: "オフキャンバス" }
     }
-  },
-  ko: {
-    ...englishStudioCopy,
+  }),
+  ko: createCompactStudioCopy({
     navLabel: "개인 Studio",
     navItems: {
       welcome: "Welcome",
@@ -1200,11 +1244,10 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     openProfileHome: "프로필 홈 열기",
     status: { ready: "준비됨", draft: "초안", next: "다음" },
     categories: { all: "전체", engineering: "엔지니어링", content: "콘텐츠", operations: "운영", communication: "커뮤니케이션", strategy: "전략", learning: "학습" },
-    routes: {
-      welcome: { ...englishStudioCopy.routes.welcome!, title: "Welcome" },
-      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "AI Agent 설정", description: "AI agent 도구, MCP 경로, 안전한 머신 부트스트랩을 위한 개인 설정 노트." },
-      "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "AI 스킬", description: "코드 리뷰, 아키텍처, 콘텐츠, 프롬프트, 보고서, 스펙, 제안서에 재사용할 수 있는 markdown 스킬." },
-      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "딜리버리 체크리스트", description: "작업 접수부터 모듈 작업, 릴리스 준비, 롤아웃까지의 운영 체크리스트." }
+    routeText: {
+      setup: { title: "AI Agent 설정", description: "AI agent 도구, MCP 경로, 안전한 머신 부트스트랩을 위한 개인 설정 노트." },
+      skills: { title: "AI 스킬", description: "코드 리뷰, 아키텍처, 콘텐츠, 프롬프트, 보고서, 스펙, 제안서에 재사용할 수 있는 markdown 스킬." },
+      checklists: { title: "딜리버리 체크리스트", description: "작업 접수부터 모듈 작업, 릴리스 준비, 롤아웃까지의 운영 체크리스트." }
     },
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "노트 추가", commandRunbook: "명령 runbook", setupChecklist: "설정 체크리스트", researchQueue: "리서치 큐" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Markdown 복사", copied: "복사됨", skillLibrary: "스킬 라이브러리", categoriesLabel: "스킬 카테고리" },
@@ -1226,9 +1269,8 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" },
       sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
     }
-  },
-  fr: {
-    ...englishStudioCopy,
+  }),
+  fr: createCompactStudioCopy({
     navLabel: "Studio personnel",
     navItems: {
       welcome: "Welcome",
@@ -1244,11 +1286,10 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     openProfileHome: "Ouvrir l'accueil du profil",
     status: { ready: "Prêt", draft: "Brouillon", next: "Suivant" },
     categories: { all: "Tout", engineering: "Ingénierie", content: "Contenu", operations: "Opérations", communication: "Communication", strategy: "Stratégie", learning: "Apprentissage" },
-    routes: {
-      welcome: { ...englishStudioCopy.routes.welcome!, title: "Welcome" },
-      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "Setup AI Agent", description: "Notes personnelles pour les outils AI agent, chemins MCP et bootstrap machine sécurisé." },
-      "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "Skills IA", description: "Skills markdown réutilisables pour review code, architecture, contenu, prompts, rapports, specs et proposals." },
-      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "Checklists de livraison", description: "Checklists de l'intake de tâche au module, release readiness et rollout." }
+    routeText: {
+      setup: { title: "Setup AI Agent", description: "Notes personnelles pour les outils AI agent, chemins MCP et bootstrap machine sécurisé." },
+      skills: { title: "Skills IA", description: "Skills markdown réutilisables pour review code, architecture, contenu, prompts, rapports, specs et proposals." },
+      checklists: { title: "Checklists de livraison", description: "Checklists de l'intake de tâche au module, release readiness et rollout." }
     },
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "Ajouter une note", commandRunbook: "Runbook commandes", setupChecklist: "Checklist setup", researchQueue: "File de recherche" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Copier markdown", copied: "Copié", skillLibrary: "Bibliothèque de skills", categoriesLabel: "Catégories de skills" },
@@ -1270,7 +1311,7 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" },
       sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
     }
-  }
+  })
 };
 
 function getStudioCopy(locale: string): StudioUiCopy {
@@ -1643,6 +1684,26 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
   "legacy-analytics": defaultMetrics
 };
 
+function createFlowRouteDefinition(
+  routeId: StudioFlowRouteId,
+  flowId: StudioFlowId,
+  panels: string[],
+  timeline: string[]
+): StudioRoute {
+  const flow = getStudioFlow(flowId);
+  return {
+    id: routeId,
+    title: flow.title,
+    description: flow.summary,
+    kind: "flows",
+    icon: LuWorkflow,
+    badge: "new",
+    metrics: routeMetrics[routeId],
+    panels,
+    timeline
+  };
+}
+
 const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
   welcome: {
     id: "welcome",
@@ -1798,83 +1859,48 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
     panels: ["Task intake", "Module creation", "Release and rollout"],
     timeline: ["Ticket intake path mapped", "Module checklist nested", "Rollout phases captured"]
   },
-  "flow-system-design": {
-    id: "flow-system-design",
-    title: getStudioFlow("system-design").title,
-    description: getStudioFlow("system-design").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-system-design"],
-    panels: ["Problem frame", "Runtime map", "Failure modes"],
-    timeline: ["Requirement frame set", "Data ownership mapped", "Evolution path documented"]
-  },
-  "flow-architecture-decision": {
-    id: "flow-architecture-decision",
-    title: getStudioFlow("architecture-decision").title,
-    description: getStudioFlow("architecture-decision").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-architecture-decision"],
-    panels: ["Decision scope", "Option matrix", "Risk gates"],
-    timeline: ["Invariants listed", "Options compared", "Decision note ready"]
-  },
-  "flow-incident-response": {
-    id: "flow-incident-response",
-    title: getStudioFlow("incident-response").title,
-    description: getStudioFlow("incident-response").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-incident-response"],
-    panels: ["Signal", "Mitigation", "Postmortem"],
-    timeline: ["Signal confirmed", "Blast radius contained", "Follow-up owners assigned"]
-  },
-  "flow-release-readiness": {
-    id: "flow-release-readiness",
-    title: getStudioFlow("release-readiness").title,
-    description: getStudioFlow("release-readiness").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-release-readiness"],
-    panels: ["Scope", "Verification", "Rollout decision"],
-    timeline: ["Scope checked", "Analytics and SEO reviewed", "Rollback trigger named"]
-  },
-  "flow-ai-delivery": {
-    id: "flow-ai-delivery",
-    title: getStudioFlow("ai-delivery").title,
-    description: getStudioFlow("ai-delivery").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-ai-delivery"],
-    panels: ["Task brief", "Context pack", "Verification"],
-    timeline: ["Boundaries set", "Focused diff reviewed", "Handoff prepared"]
-  },
-  "flow-portfolio-story": {
-    id: "flow-portfolio-story",
-    title: getStudioFlow("portfolio-story").title,
-    description: getStudioFlow("portfolio-story").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-portfolio-story"],
-    panels: ["Context", "Trade-offs", "Impact"],
-    timeline: ["Context captured", "Impact evidence selected", "Story draft shaped"]
-  },
-  "flow-react-flow-architecture-demo": {
-    id: "flow-react-flow-architecture-demo",
-    title: getStudioFlow("react-flow-architecture-demo").title,
-    description: getStudioFlow("react-flow-architecture-demo").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-react-flow-architecture-demo"],
-    panels: ["Node shapes", "Edge language", "Architecture zones"],
-    timeline: ["Node primitives displayed", "Architecture shapes mapped", "Canvas controls enabled"]
-  },
+  "flow-system-design": createFlowRouteDefinition(
+    "flow-system-design",
+    "system-design",
+    ["Problem frame", "Runtime map", "Failure modes"],
+    ["Requirement frame set", "Data ownership mapped", "Evolution path documented"]
+  ),
+  "flow-architecture-decision": createFlowRouteDefinition(
+    "flow-architecture-decision",
+    "architecture-decision",
+    ["Decision scope", "Option matrix", "Risk gates"],
+    ["Invariants listed", "Options compared", "Decision note ready"]
+  ),
+  "flow-incident-response": createFlowRouteDefinition(
+    "flow-incident-response",
+    "incident-response",
+    ["Signal", "Mitigation", "Postmortem"],
+    ["Signal confirmed", "Blast radius contained", "Follow-up owners assigned"]
+  ),
+  "flow-release-readiness": createFlowRouteDefinition(
+    "flow-release-readiness",
+    "release-readiness",
+    ["Scope", "Verification", "Rollout decision"],
+    ["Scope checked", "Analytics and SEO reviewed", "Rollback trigger named"]
+  ),
+  "flow-ai-delivery": createFlowRouteDefinition(
+    "flow-ai-delivery",
+    "ai-delivery",
+    ["Task brief", "Context pack", "Verification"],
+    ["Boundaries set", "Focused diff reviewed", "Handoff prepared"]
+  ),
+  "flow-portfolio-story": createFlowRouteDefinition(
+    "flow-portfolio-story",
+    "portfolio-story",
+    ["Context", "Trade-offs", "Impact"],
+    ["Context captured", "Impact evidence selected", "Story draft shaped"]
+  ),
+  "flow-react-flow-architecture-demo": createFlowRouteDefinition(
+    "flow-react-flow-architecture-demo",
+    "react-flow-architecture-demo",
+    ["Node shapes", "Edge language", "Architecture zones"],
+    ["Node primitives displayed", "Architecture shapes mapped", "Canvas controls enabled"]
+  ),
   calendar: {
     id: "calendar",
     title: "Calendar",
@@ -4081,12 +4107,12 @@ function WelcomePage({
   locale,
   copy,
   onActivate
-}: {
+}: Readonly<{
   route: StudioRoute;
   locale: string;
   copy: StudioUiCopy;
   onActivate: (routeId: StudioRouteId, source?: StudioRouteActivationSource) => void;
-}) {
+}>) {
   const localizedRoutes = getLocalizedRouteDefinitions(copy);
   const usefulLinks = getLocalizedProfileItems(copy).filter((item) => ["home", "notes", "blog", "apps", "resume"].includes(item.id));
   const studioShortcuts: StudioRouteId[] = ["ai-agent-setup", "ai-skills", "delivery-checklists", "flow-react-flow-architecture-demo"];
@@ -4299,7 +4325,7 @@ function buildStudioFlowCanvas(flow: StudioFlow, viewId?: string): {
     });
   }
 
-  const lastStep = nodes[nodes.length - 1];
+  const lastStep = nodes.at(-1);
   if (lastStep) {
     edges.push({
       id: `${lastStep.id}-${outcomeNode.id}`,
@@ -4312,6 +4338,12 @@ function buildStudioFlowCanvas(flow: StudioFlow, viewId?: string): {
   }
 
   return { nodes: [...nodes, outcomeNode], edges };
+}
+
+function getStudioFlowEdgeMarker(marker: StudioFlowArchitectureEdgeSpec["marker"]): Edge["markerEnd"] {
+  if (marker === "arrow") return { type: MarkerType.Arrow };
+  if (marker === "arrowClosed") return { type: MarkerType.ArrowClosed };
+  return undefined;
 }
 
 function buildArchitectureDemoCanvas(flow: StudioFlow, viewId?: string): {
@@ -4349,12 +4381,7 @@ function buildArchitectureDemoCanvas(flow: StudioFlow, viewId?: string): {
     type: edge.type,
     label: edge.label,
     animated: edge.animated,
-    markerEnd:
-      edge.marker === "arrow"
-        ? { type: MarkerType.Arrow }
-        : edge.marker === "arrowClosed"
-          ? { type: MarkerType.ArrowClosed }
-          : undefined,
+    markerEnd: getStudioFlowEdgeMarker(edge.marker),
     style: { stroke: flowCanvasToneColors[edge.tone], strokeWidth: edge.animated ? 2.4 : 1.8 },
     labelStyle: { fill: flowCanvasToneColors[edge.tone], fontSize: 11, fontWeight: 700 },
     labelBgStyle: { fill: "var(--card)", fillOpacity: 0.86 },
@@ -4366,12 +4393,15 @@ function buildArchitectureDemoCanvas(flow: StudioFlow, viewId?: string): {
 }
 
 function getStudioFlowNodeSize(node: StudioFlowCanvasNode) {
-  const width = typeof node.style?.width === "number" ? node.style.width : node.data.kind === "decision" ? 160 : 220;
-  const height = typeof node.style?.height === "number" ? node.style.height : node.data.kind === "decision" ? 160 : 96;
+  const fallbackSize = node.data.kind === "decision"
+    ? { width: 160, height: 160 }
+    : { width: 220, height: 96 };
+  const width = typeof node.style?.width === "number" ? node.style.width : fallbackSize.width;
+  const height = typeof node.style?.height === "number" ? node.style.height : fallbackSize.height;
   return { width, height };
 }
 
-function StudioFlowMiniMapOverlay({ nodes }: { nodes: StudioFlowCanvasNode[] }) {
+function StudioFlowMiniMapOverlay({ nodes }: Readonly<{ nodes: StudioFlowCanvasNode[] }>) {
   const minimapNodes = useMemo(() => {
     if (!nodes.length) return [];
 
@@ -4472,10 +4502,10 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setIsBoardFullscreen(false);
     };
-    window.addEventListener("keydown", onKeyDown);
+    globalThis.addEventListener("keydown", onKeyDown);
     return () => {
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
+      globalThis.removeEventListener("keydown", onKeyDown);
     };
   }, [isBoardFullscreen]);
 
