@@ -43,6 +43,227 @@
   ],
   "posts": [
     {
+      "slug": "retrieval-augmented-generation-rag-basics",
+      "category": "ai",
+      "title": "Retrieval-Augmented Generation (RAG) Basics",
+      "summary": "A beginner-friendly explanation of Retrieval-Augmented Generation: how documents are split into chunks, turned into embeddings, found with vector search, and used to ground AI answers with citations, evaluation, and clear failure checks.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "RAG",
+        "LLM",
+        "Embeddings",
+        "Vector Search",
+        "AI Evaluation"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "value-of-a-boring-tech-stack",
+      "category": "perspectives",
+      "title": "The Value of a \"Boring\" Tech Stack",
+      "summary": "A calm reflection on why stable, familiar technology often helps teams move with more confidence. The article looks at reliability, hiring, maintainability, shared knowledge, and the trade-offs behind choosing a tech stack that does not need to impress anyone.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Engineering",
+        "Tech Stack",
+        "Maintainability",
+        "Reliability",
+        "Team Collaboration",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "hexagonal-architecture-in-practice",
+      "category": "architecture",
+      "title": "Hexagonal Architecture in Practice",
+      "summary": "A practical guide to applying Hexagonal Architecture to one small feature: drawing the boundary, naming ports in business language, keeping adapters at the edge, testing the core, and deciding when the extra structure is worth the cost.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Hexagonal Architecture",
+        "Ports and Adapters",
+        "Testing",
+        "Code Organization",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "writing-good-acceptance-criteria",
+      "category": "ways-of-working",
+      "title": "Writing Good Acceptance Criteria",
+      "summary": "A practical guide to writing acceptance criteria as shared evidence for done behavior: clear examples, important edge cases, reviewable scope, and a calmer handoff between product, engineering, QA, and stakeholders.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Acceptance Criteria",
+        "Agile",
+        "User Stories",
+        "Quality",
+        "Team Collaboration",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "kanban-vs-scrum-which-fits-better",
+      "category": "ways-of-working",
+      "title": "Kanban vs. Scrum: Which Fits Better?",
+      "summary": "A calm comparison of Kanban and Scrum through the shape of real team work: how requests arrive, how much WIP the team can carry, what kind of predictability the business needs, and which operating rhythm fits the team's context.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Kanban",
+        "Scrum",
+        "Agile",
+        "WIP",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "why-i-stopped-writing-perfect-code",
+      "category": "perspectives",
+      "title": "Why I Stopped Writing Perfect Code",
+      "summary": "A reflective essay on moving away from perfectionism in code and toward maintainable, understandable, reviewable work. The piece looks at why good code is not the most impressive version in isolation, but the version a team can safely understand, change, and carry forward.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Engineering",
+        "Code Quality",
+        "Maintainability",
+        "Career Growth",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "context-window-bottleneck",
+      "category": "ai",
+      "title": "The Context Window Bottleneck",
+      "summary": "A practical look at context window limits as one of the quiet bottlenecks in AI workflows. The article explains why long chats, big codebases, stale summaries, and missing working memory can make AI assistance drift, and how teams can work around the limit without turning every task into a document dump.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Context Window",
+        "LLM",
+        "AI Workflow",
+        "Software Engineering",
+        "Human Judgment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "handling-toxic-rockstars",
+      "category": "culture",
+      "title": "Handling Toxic Rockstars",
+      "summary": "A calm look at high-output behavior that damages trust: why teams reward it, how feedback loops break, and how leaders can set boundaries while still offering a real repair path.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Leadership",
+        "Team Trust",
+        "Feedback",
+        "Psychological Safety",
+        "Management"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "hiring-for-potential-vs-experience",
+      "category": "culture",
+      "title": "Hiring for Potential vs. Experience",
+      "summary": "A calm reflection on balancing experience and potential in engineering hiring. The article focuses on evidence, learning pace, team needs, and the quiet conditions that help a person grow after they join.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Hiring",
+        "Team Building",
+        "Engineering Leadership",
+        "Career Growth",
+        "Mentorship"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "when-an-ai-answer-needs-a-test",
+      "category": "ai",
+      "title": "When an AI Answer Needs a Test",
+      "summary": "A calm explainer on treating AI answers as claims that need proportionate verification. The article shows how engineers can keep responsibility by testing AI output against evidence, context, and real system behavior before acting on it.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "AI Workflow",
+        "Verification",
+        "Software Engineering",
+        "Human Judgment"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 5
+    },
+    {
+      "slug": "why-preparation-often-looks-invisible",
+      "category": "perspectives",
+      "title": "Why Preparation Often Looks Invisible",
+      "summary": "Preparation often looks like nothing from the outside: a quiet note, a rehearsal, a cleaned-up checklist, or one small risk handled before it becomes visible. This reflection looks at why calm outcomes usually come from work people do not see.",
+      "date": "2026-06-24",
+      "readingMinutes": 5,
+      "tags": [
+        "Personal Growth",
+        "Preparation",
+        "Career Growth",
+        "Software Engineering",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "daily-standup-that-changes-decisions",
+      "category": "ways-of-working",
+      "title": "The Daily Standup That Changes Decisions",
+      "summary": "A practical companion to the daily standup conversation, focused on the small decisions a team should make before the day starts: what to finish, what to defer, what to escalate, and where help would change the outcome.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Daily Standup",
+        "Decision Making",
+        "Team Collaboration",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "ai-ideas-bloom-inside-everyday-work",
+      "category": "ai",
+      "title": "Khi AI chạm vào việc hằng ngày, ý tưởng bắt đầu nở ra",
+      "summary": "Khi AI đủ thực tế để bước vào những việc nhỏ trong văn phòng, ý tưởng không còn nằm ở các bản demo xa xôi. Chúng xuất hiện ngay trong onboarding, hỗ trợ khách hàng, đối chiếu tài chính, chuẩn bị họp, đọc tin tức, kiểm tra tài liệu và rất nhiều workflow lặp lại khác. Bài viết là một góc nhìn bình tĩnh về cách nhận ra các điểm nghẽn ấy, cải tiến từng chút và giữ con người ở phần phán đoán quan trọng.",
+      "date": "2026-06-23",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "AI Workflow",
+        "Năng suất",
+        "Future of Work",
+        "Tự động hóa"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 4
+    },
+    {
       "slug": "event-driven-architecture-and-messaging",
       "category": "architecture",
       "title": "Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained",
@@ -882,6 +1103,23 @@
       "seriesOrder": 3
     },
     {
+      "slug": "pull-request-that-reviewers-can-trust",
+      "category": "culture",
+      "title": "The Pull Request That Reviewers Can Trust",
+      "summary": "A trusted pull request does more than look tidy. It names the behavior being changed, shows the safer pattern, and gives reviewers enough evidence to approve with real confidence instead of guesswork.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Pull Requests",
+        "Code Review",
+        "Team Trust",
+        "Reviewer Experience",
+        "Developer Communication"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "giving-and-receiving-feedback",
       "category": "culture",
       "title": "Feedback That Lands: Giving and Receiving Critique as an Engineer",
@@ -1158,6 +1396,46 @@
       "featured": false,
       "series": "foundations",
       "seriesOrder": 13
+    },
+    {
+      "slug": "dependency-direction-in-plain-language",
+      "category": "architecture",
+      "title": "Dependency Direction in Plain Language",
+      "summary": "Dependency direction is the simple team rule that says stable business ideas should not depend on volatile delivery details. This explainer uses a small release scenario to show how the rule keeps code, reviews, and team conversations calmer.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Dependency Direction",
+        "Code Organization",
+        "Team Alignment",
+        "Technical Debt",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 14
+    },
+    {
+      "slug": "eventual-consistency-in-the-real-world",
+      "category": "architecture",
+      "title": "Eventual Consistency in the Real World",
+      "summary": "A practical explanation of eventual consistency beyond the textbook definition: what users notice, which trade-offs teams are really making, how to set expectations in the product, and how operations keeps delayed truth from becoming silent data drift.",
+      "date": "2026-06-24",
+      "readingMinutes": 8,
+      "tags": [
+        "Software Architecture",
+        "Eventual Consistency",
+        "Distributed Systems",
+        "Reliability",
+        "Product Engineering",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 15
     },
     {
       "slug": "anatomy-of-a-healthy-one-on-one",

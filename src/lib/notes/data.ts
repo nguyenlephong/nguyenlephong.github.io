@@ -21,18 +21,19 @@ export interface TopicReadingContext {
   next: NoteMeta | null;
 }
 
+const NOTE_CONTENT_LOCALES = ["en", "vi"] as const;
+
 /**
- * Notes carry content in at most two languages: a Vietnamese-native legacy set
- * and a bilingual set migrated from the blog. Every routing locale collapses to
- * one of these two "content locales": Vietnamese serves `vi`, English serves
- * everything else (the international fallback).
+ * Notes are listed as one shared collection across English and Vietnamese.
+ * English is the canonical body; Vietnamese uses locale overrides for metadata
+ * and article content.
  */
 function contentLocale(locale?: string): "vi" | "en" {
   return locale === "vi" ? "vi" : "en";
 }
 
-function noteLocales(post: NoteMeta): string[] {
-  return post.locales ?? ["vi"];
+function noteLocales(): string[] {
+  return [...NOTE_CONTENT_LOCALES];
 }
 
 function baseIndex(): NotesIndexFile {
@@ -62,11 +63,11 @@ export function loadNotesIndex(locale?: string): NotesIndexFile {
   };
 }
 
-/** Notes visible for a locale — those that actually have content in it. */
+/** Notes visible for a locale — both English and Vietnamese serve the shared set. */
 export function listNotes(locale?: string): NoteMeta[] {
   const eff = contentLocale(locale);
   return loadNotesIndex(locale)
-    .posts.filter((p) => noteLocales(p).includes(eff))
+    .posts.filter(() => noteLocales().includes(eff))
     .sort(byDateDesc);
 }
 
@@ -128,7 +129,7 @@ export function listNoteParams(): Array<{ locale: string; slug: string }> {
   for (const locale of routing.locales) {
     const eff = contentLocale(locale);
     for (const p of posts) {
-      if (noteLocales(p).includes(eff)) out.push({ locale, slug: p.slug });
+      if (noteLocales().includes(eff)) out.push({ locale, slug: p.slug });
     }
   }
   return out;

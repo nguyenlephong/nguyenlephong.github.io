@@ -230,6 +230,25 @@ a {
   height: 1.125rem;
 }
 
+.sidebar-brand-mark {
+  display: inline-flex;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--primary) 45%, var(--border));
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 32% 24%, color-mix(in srgb, #ffffff 88%, transparent), transparent 34%),
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 82%, #38bdf8), color-mix(in srgb, #111827 92%, var(--primary)));
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 0.35rem 0.9rem color-mix(in srgb, var(--primary) 26%, transparent);
+}
+
 .sidebar-brand img {
   width: 1.75rem;
   height: 1.75rem;
@@ -321,8 +340,8 @@ a {
 .checklist-list-button,
 .flow-group-button,
 .flow-list-button,
-.roadmap-topic-button,
-.roadmap-day-card,
+.welcome-shortcut,
+.welcome-link-grid a,
 .ai-note-button,
 .check-row {
   overflow-wrap: anywhere;
@@ -434,15 +453,20 @@ a {
 }
 
 .sidebar-badge {
+  display: inline-flex;
   margin-left: auto;
-  min-height: 1.125rem;
+  min-width: 2rem;
+  height: 1.125rem;
+  align-items: center;
+  justify-content: center;
   border: 1px solid color-mix(in srgb, #22c55e 45%, transparent);
   border-radius: 999px;
   color: #16a34a;
-  padding: 0 0.375rem;
+  padding: 0 0.45rem;
   font-size: 0.6875rem;
   font-weight: 600;
   line-height: 1;
+  text-align: center;
 }
 
 .sidebar-chevron {
@@ -1064,234 +1088,204 @@ a {
   font-size: 0.8125rem;
 }
 
-.blog-roadmap-workbench.card {
+.welcome-route {
   display: grid;
-  grid-template-columns: 18rem minmax(0, 1fr) 20rem;
-  min-height: clamp(36rem, calc(100vh - 17rem), 56rem);
-  overflow: hidden;
-  padding: 0;
-}
-
-.roadmap-topic-pane,
-.roadmap-plan-pane,
-.roadmap-detail-pane {
-  min-width: 0;
-  min-height: 0;
-  overflow: auto;
-  padding: 1rem;
-}
-
-.roadmap-topic-pane {
-  border-right: 1px solid var(--border);
-  background: color-mix(in srgb, var(--muted) 62%, transparent);
-}
-
-.roadmap-detail-pane {
-  display: flex;
-  flex-direction: column;
   gap: 1rem;
-  border-left: 1px solid var(--border);
-  background: color-mix(in srgb, var(--muted) 44%, transparent);
 }
 
-.roadmap-topic-list {
+.welcome-shell {
   display: grid;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  grid-template-columns: minmax(0, 0.95fr) minmax(21rem, 0.78fr);
+  gap: 1rem;
+  align-items: stretch;
 }
 
-.roadmap-topic-button {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.625rem;
-  align-items: flex-start;
-  border: 1px solid transparent;
-  border-radius: var(--radius);
-  background: transparent;
-  color: var(--foreground);
-  padding: 0.75rem;
-  text-align: left;
+.welcome-intro,
+.welcome-panel,
+.welcome-link-band {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--card);
 }
 
-.roadmap-topic-button:hover,
-.roadmap-topic-button.is-active {
-  border-color: var(--border);
-  background: var(--background);
+.welcome-intro {
+  position: relative;
+  display: flex;
+  min-height: 22rem;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  overflow: hidden;
+  padding: clamp(1.25rem, 2.2vw, 2rem);
 }
 
-.roadmap-topic-button strong,
-.roadmap-topic-button small,
-.roadmap-topic-button em {
-  display: block;
+.welcome-intro::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 0.25rem;
+  background: linear-gradient(90deg, #16a34a, #0ea5e9, #f59e0b);
+  content: "";
 }
 
-.roadmap-topic-button strong {
-  font-size: 0.875rem;
+.welcome-eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--primary) 36%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
   font-weight: 600;
 }
 
-.roadmap-topic-button small {
-  margin-top: 0.25rem;
+.welcome-intro h1 {
+  margin: 0.9rem 0 0;
+  color: var(--foreground);
+  font-size: clamp(2.35rem, 5vw, 4.5rem);
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 0.95;
+}
+
+.welcome-intro p {
+  max-width: 48rem;
+  margin: 1rem 0 0;
   color: var(--muted-foreground);
-  font-size: 0.8125rem;
-  line-height: 1.4;
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  line-height: 1.65;
 }
 
-.roadmap-topic-button em {
-  border-radius: 999px;
-  background: var(--muted);
-  color: var(--muted-foreground);
-  padding: 0.125rem 0.45rem;
-  font-size: 0.6875rem;
-  font-style: normal;
-}
-
-.roadmap-plan-pane {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.roadmap-plan-head {
+.welcome-note-strip {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.875rem;
+  align-items: start;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  color: var(--muted-foreground);
+  line-height: 1.55;
+}
+
+.welcome-note-strip svg,
+.welcome-panel-head > span,
+.welcome-link-head > span {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--muted) 66%, transparent);
+  color: var(--foreground);
+}
+
+.welcome-panel,
+.welcome-link-band {
+  display: grid;
   gap: 1rem;
+  padding: clamp(1rem, 1.8vw, 1.25rem);
+}
+
+.welcome-panel-head,
+.welcome-link-head {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.75rem;
   align-items: start;
 }
 
-.roadmap-plan-head h2,
-.roadmap-ticket-card h2 {
-  margin: 0.5rem 0 0;
+.welcome-panel-head h2,
+.welcome-link-head h2 {
+  margin: 0;
   color: var(--foreground);
-  font-size: 1.35rem;
-  font-weight: 600;
-  line-height: 1.2;
+  font-size: 1rem;
+  font-weight: 650;
 }
 
-.roadmap-plan-head p,
-.roadmap-ticket-card p {
+.welcome-panel-head p,
+.welcome-link-head p {
   margin: 0.35rem 0 0;
   color: var(--muted-foreground);
   line-height: 1.5;
 }
 
-.roadmap-status-strip {
+.welcome-shortcut-grid,
+.welcome-link-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  min-width: min(24rem, 100%);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--background);
-}
-
-.roadmap-status-strip span {
-  display: grid;
-  gap: 0.2rem;
-  border-right: 1px solid var(--border);
-  padding: 0.75rem;
-  color: var(--muted-foreground);
-  font-size: 0.75rem;
-}
-
-.roadmap-status-strip span:last-child {
-  border-right: 0;
-}
-
-.roadmap-status-strip strong {
-  color: var(--foreground);
-  font-size: 1.125rem;
-  font-weight: 600;
-}
-
-.roadmap-day-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.625rem;
 }
 
-.roadmap-day-card {
+.welcome-shortcut,
+.welcome-link-grid a {
   display: grid;
-  min-height: 8.25rem;
-  align-content: start;
-  gap: 0.45rem;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: center;
+  min-height: 4.75rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--background);
+  background: color-mix(in srgb, var(--background) 76%, transparent);
   color: var(--foreground);
-  padding: 0.875rem;
-  text-align: left;
+  padding: 0.75rem;
+  text-decoration: none;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 120ms ease;
 }
 
-.roadmap-day-card:hover,
-.roadmap-day-card.is-active {
-  border-color: color-mix(in srgb, var(--primary) 36%, var(--border));
+.welcome-shortcut:hover,
+.welcome-link-grid a:hover {
+  border-color: color-mix(in srgb, var(--primary) 34%, var(--border));
   background: color-mix(in srgb, var(--primary) 7%, var(--background));
+  transform: translateY(-1px);
 }
 
-.roadmap-day-card span {
+.welcome-shortcut > svg,
+.welcome-link-grid a > svg:first-child {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--primary);
+}
+
+.welcome-shortcut span,
+.welcome-link-grid a span {
+  display: grid;
+  min-width: 0;
+  gap: 0.2rem;
+}
+
+.welcome-shortcut strong,
+.welcome-link-grid a strong {
+  overflow: hidden;
+  color: var(--foreground);
+  font-size: 0.9375rem;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.welcome-shortcut small,
+.welcome-link-grid a small {
   color: var(--muted-foreground);
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.roadmap-day-card strong {
-  font-size: 0.875rem;
-  line-height: 1.35;
-}
-
-.roadmap-day-card small {
-  color: var(--muted-foreground);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   line-height: 1.4;
 }
 
-.roadmap-ticket-card {
-  display: grid;
-  gap: 0.875rem;
+.welcome-shortcut em {
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--background);
-  padding: 1rem;
-}
-
-.roadmap-ticket-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-}
-
-.roadmap-ticket-head > strong {
+  border-radius: 999px;
   color: var(--muted-foreground);
+  padding: 0.25rem 0.55rem;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-style: normal;
 }
 
-.roadmap-detail-list {
-  display: grid;
-  gap: 0.5rem;
-  margin: 0;
-}
-
-.roadmap-detail-list div {
-  display: grid;
-  grid-template-columns: 5.5rem minmax(0, 1fr);
-  gap: 0.75rem;
-  border-top: 1px solid var(--border);
-  padding-top: 0.5rem;
-}
-
-.roadmap-detail-list dt {
+.welcome-link-grid a > svg:last-child {
+  width: 0.95rem;
+  height: 0.95rem;
   color: var(--muted-foreground);
-  font-size: 0.75rem;
-}
-
-.roadmap-detail-list dd {
-  margin: 0;
-  color: var(--foreground);
-  font-size: 0.8125rem;
-  line-height: 1.45;
 }
 
 .ai-setup-container.card {
@@ -1908,6 +1902,16 @@ a {
   padding: 0;
 }
 
+.flow-workbench.card.is-architecture-demo {
+  grid-template-columns: minmax(0, 1fr);
+  height: auto;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
 .flow-index-pane,
 .flow-reader-pane,
 .flow-side-pane {
@@ -1926,6 +1930,12 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.flow-workbench.card.is-architecture-demo .flow-reader-pane {
+  min-height: calc(100vh - 6rem);
+  overflow: visible;
+  padding: 0;
 }
 
 .flow-side-pane {
@@ -2010,6 +2020,7 @@ a {
 
 .flow-chart-surface {
   display: grid;
+  flex: 0 0 auto;
   gap: 1rem;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--primary) 24%, var(--border));
@@ -2020,9 +2031,34 @@ a {
   padding: 1rem;
 }
 
+.flow-chart-surface.is-architecture-demo {
+  grid-template-rows: auto auto minmax(0, 1fr);
+  min-height: calc(100vh - 6rem);
+  gap: 0.75rem;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.flow-chart-surface.is-fullscreen {
+  position: fixed;
+  inset: 0.75rem;
+  z-index: 120;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--primary) 26%, var(--border));
+  border-radius: var(--radius);
+  background: var(--background);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.46);
+  padding: 1rem;
+}
+
 .flow-chart-head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.68fr);
+  grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.68fr) auto;
   gap: 1rem;
   align-items: end;
 }
@@ -2041,78 +2077,662 @@ a {
   line-height: 1.45;
 }
 
-.flow-chart {
+.flow-board-toolbar {
   display: grid;
-  grid-template-columns: repeat(var(--flow-count), minmax(7rem, 1fr));
-  gap: 0.625rem;
-  overflow-x: auto;
-  margin: 0;
-  padding: 0.25rem 0.125rem 0.75rem;
-  list-style: none;
-  scroll-padding-inline: 0.75rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: end;
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, var(--border));
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--primary) 7%, var(--muted));
+  padding: 0.85rem;
 }
 
-.flow-chart-node {
-  position: relative;
-  display: grid;
-  min-height: 9rem;
-  align-content: start;
-  gap: 0.55rem;
-  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
-  border-radius: 0.875rem;
-  background: color-mix(in srgb, var(--card) 94%, var(--background));
-  padding: 0.75rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+.flow-board-toolbar:not(.has-selectors) {
+  grid-template-columns: auto;
+  justify-content: end;
 }
 
-.flow-chart-node:not(:last-child)::after {
-  position: absolute;
-  top: 2.25rem;
-  right: -0.875rem;
-  z-index: 1;
-  width: 0.875rem;
-  height: 2px;
-  background: color-mix(in srgb, var(--primary) 48%, var(--border));
-  content: "";
-}
-
-.flow-chart-node:not(:last-child)::before {
-  position: absolute;
-  top: calc(2.25rem - 0.25rem);
-  right: -1rem;
-  z-index: 2;
-  border-top: 0.3125rem solid transparent;
-  border-bottom: 0.3125rem solid transparent;
-  border-left: 0.45rem solid color-mix(in srgb, var(--primary) 64%, var(--foreground));
-  content: "";
-}
-
-.flow-chart-index {
+.flow-board-actionbar {
   display: inline-flex;
-  width: 2rem;
-  height: 2rem;
+  width: fit-content;
+  min-height: 2.9rem;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--primary) 18%, var(--muted));
-  color: var(--foreground);
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
+  gap: 0.375rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--background) 82%, var(--card));
+  padding: 0.35rem;
 }
 
-.flow-chart-node strong {
+.flow-board-fullscreen-button {
+  display: inline-flex;
+  min-height: 2.15rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-width: max-content;
+  border: 0;
+  border-radius: 0.55rem;
+  background: transparent;
   color: var(--foreground);
-  font-size: 0.875rem;
-  font-weight: 600;
+  padding: 0 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.flow-board-fullscreen-button:hover {
+  background: var(--muted);
+}
+
+.flow-board-fullscreen-button svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.flow-react-surface {
+  --flow-minimap-bg: rgba(248, 250, 252, 0.97);
+  --flow-minimap-mask: rgba(15, 23, 42, 0.14);
+  --flow-minimap-stroke: #2563eb;
+  --flow-minimap-node-fill: rgba(37, 99, 235, 0.8);
+  --flow-minimap-node-stroke: rgba(15, 23, 42, 0.82);
+  height: min(58vh, 36rem);
+  min-height: 25rem;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  border-radius: 0.95rem;
+  background: color-mix(in srgb, var(--background) 92%, var(--muted));
+}
+
+.studio-admin.is-dark .flow-react-surface {
+  --flow-minimap-bg: rgba(15, 23, 42, 0.97);
+  --flow-minimap-mask: rgba(2, 6, 23, 0.58);
+  --flow-minimap-stroke: #38bdf8;
+  --flow-minimap-node-fill: rgba(56, 189, 248, 0.76);
+  --flow-minimap-node-stroke: rgba(248, 250, 252, 0.9);
+}
+
+.flow-react-surface.is-architecture-demo {
+  height: max(38rem, calc(100vh - 14rem));
+  min-height: 38rem;
+}
+
+.flow-react-surface.is-compact-diagram {
+  background:
+    radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--primary) 8%, transparent), transparent 24rem),
+    color-mix(in srgb, var(--background) 94%, var(--muted));
+}
+
+.flow-chart-surface.is-fullscreen .flow-react-surface {
+  height: 100%;
+  min-height: 0;
+}
+
+.flow-example-toolbar {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.34fr) minmax(14rem, 1fr);
+  gap: 0.75rem;
+  align-items: end;
+  min-width: 0;
+}
+
+.flow-example-toolbar label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--muted-foreground);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.flow-example-toolbar select {
+  appearance: none;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  background-color: var(--card);
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 0.85rem center;
+  background-repeat: no-repeat;
+  background-size: 1rem;
+  color: var(--foreground);
+  padding: 0.65rem 2.75rem 0.65rem 0.75rem;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 650;
+  text-transform: none;
+}
+
+.flow-react-canvas,
+.react-flow {
+  width: 100%;
+  height: 100%;
+  direction: ltr;
+  --xy-edge-stroke-default: color-mix(in srgb, var(--primary) 38%, var(--border));
+  --xy-edge-stroke-width-default: 1.5;
+  --xy-minimap-background-color-default: var(--card);
+  --xy-minimap-mask-background-color-default: color-mix(in srgb, var(--muted) 70%, transparent);
+  --xy-controls-button-background-color-default: var(--card);
+  --xy-controls-button-background-color-hover-default: var(--muted);
+  --xy-controls-button-color-default: var(--foreground);
+  --xy-controls-button-border-color-default: var(--border);
+  --xy-controls-box-shadow-default: 0 8px 22px rgba(0, 0, 0, 0.1);
+  --xy-background-color-default: transparent;
+  --xy-background-pattern-dots-color-default: color-mix(in srgb, var(--foreground) 20%, transparent);
+  background-color: transparent;
+}
+
+.react-flow__container,
+.react-flow__edgelabel-renderer,
+.react-flow__viewport-portal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.react-flow__pane {
+  z-index: 1;
+  touch-action: none;
+}
+
+.react-flow__viewport {
+  z-index: 2;
+  pointer-events: none;
+  transform-origin: 0 0;
+}
+
+.react-flow__renderer {
+  z-index: 4;
+}
+
+.react-flow .react-flow__edges {
+  position: absolute;
+}
+
+.react-flow .react-flow__edges svg {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.react-flow__edge {
+  pointer-events: visibleStroke;
+}
+
+.react-flow__edge-path,
+.react-flow__connection-path {
+  fill: none;
+  stroke: var(--xy-edge-stroke, var(--xy-edge-stroke-default));
+  stroke-width: var(--xy-edge-stroke-width, var(--xy-edge-stroke-width-default));
+}
+
+.react-flow__edge.animated path {
+  animation: dashdraw 0.5s linear infinite;
+  stroke-dasharray: 5;
+}
+
+.react-flow__arrowhead polyline {
+  fill: var(--xy-edge-stroke, var(--xy-edge-stroke-default));
+  stroke: var(--xy-edge-stroke, var(--xy-edge-stroke-default));
+}
+
+.react-flow__nodes {
+  pointer-events: none;
+  transform-origin: 0 0;
+}
+
+.react-flow__node {
+  position: absolute;
+  box-sizing: border-box;
+  cursor: default;
+  pointer-events: all;
+  transform-origin: 0 0;
+  user-select: none;
+}
+
+.react-flow__handle {
+  position: absolute;
+  width: 0.55rem;
+  height: 0.55rem;
+  min-width: 0.55rem;
+  min-height: 0.55rem;
+  border: 1px solid var(--card);
+  border-radius: 999px;
+  background: var(--primary);
+  pointer-events: none;
+}
+
+.react-flow__handle-left {
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.react-flow__handle-right {
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.react-flow__handle-top {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.react-flow__handle-bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.react-flow__background {
+  z-index: -1;
+  pointer-events: none;
+}
+
+.react-flow__panel {
+  position: absolute;
+  z-index: 5;
+  margin: 0.75rem;
+}
+
+.react-flow__panel.top {
+  top: 0;
+}
+
+.react-flow__panel.bottom {
+  bottom: 0;
+}
+
+.react-flow__panel.left {
+  left: 0;
+}
+
+.react-flow__panel.right {
+  right: 0;
+}
+
+.react-flow__controls {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  box-shadow: var(--xy-controls-box-shadow, var(--xy-controls-box-shadow-default));
+}
+
+.react-flow__controls-button {
+  display: flex;
+  width: 1.75rem;
+  height: 1.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-bottom: 1px solid var(--xy-controls-button-border-color, var(--xy-controls-button-border-color-default));
+  background: var(--xy-controls-button-background-color, var(--xy-controls-button-background-color-default));
+  color: var(--xy-controls-button-color, var(--xy-controls-button-color-default));
+  padding: 0.25rem;
+}
+
+.react-flow__controls-button:hover {
+  background: var(--xy-controls-button-background-color-hover, var(--xy-controls-button-background-color-hover-default));
+}
+
+.react-flow__controls-button:last-child {
+  border-bottom: 0;
+}
+
+.react-flow__controls-button svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  fill: currentColor;
+}
+
+.react-flow__minimap {
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--foreground) 28%, var(--border));
+  border-radius: 0.75rem;
+  background: var(--flow-minimap-bg);
+  box-shadow: 0 0.9rem 2.2rem rgba(0, 0, 0, 0.3);
+  width: 7.75rem;
+  height: 5.35rem;
+  opacity: 1;
+}
+
+.react-flow__minimap-svg {
+  display: block;
+  background: var(--flow-minimap-bg);
+}
+
+.react-flow__minimap-mask {
+  fill: var(
+    --xy-minimap-mask-background-color-props,
+    var(--xy-minimap-mask-background-color, var(--xy-minimap-mask-background-color-default))
+  );
+  stroke: var(--xy-minimap-mask-stroke-color-props, color-mix(in srgb, var(--foreground) 34%, var(--primary)));
+  stroke-width: var(--xy-minimap-mask-stroke-width-props, 1.2);
+}
+
+.react-flow__minimap-node {
+  fill: var(--flow-minimap-node-fill);
+  opacity: 1;
+  stroke: var(--xy-minimap-node-stroke-color-props, color-mix(in srgb, var(--foreground) 66%, var(--background)));
+  stroke-width: var(--xy-minimap-node-stroke-width-props, 2.4);
+}
+
+.flow-minimap-overlay {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 8;
+  width: 7.75rem;
+  height: 5.35rem;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.flow-minimap-overlay-node {
+  fill: var(--flow-minimap-node-fill);
+  stroke: var(--flow-minimap-node-stroke);
+  stroke-width: 0.9;
+  opacity: 0.95;
+  vector-effect: non-scaling-stroke;
+}
+
+.flow-minimap-overlay-node.is-group {
+  fill: color-mix(in srgb, var(--flow-minimap-node-fill) 16%, transparent);
+  stroke: var(--flow-minimap-stroke);
+  stroke-dasharray: 2 2;
+  stroke-width: 0.75;
+  opacity: 0.86;
+}
+
+.react-flow__background-pattern.dots {
+  fill: var(--xy-background-pattern-color, var(--xy-background-pattern-dots-color-default));
+}
+
+.flow-react-node {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 0.45rem;
+  width: 14rem;
+  min-height: 5.75rem;
+  border: 1px solid color-mix(in srgb, var(--flow-node-color) 34%, var(--border));
+  border-radius: 0.875rem;
+  background: color-mix(in srgb, var(--card) 94%, var(--flow-node-color) 6%);
+  color: var(--foreground);
+  padding: 0.8rem;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.1);
+}
+
+.flow-react-node--hub {
+  width: 18rem;
+  border-color: color-mix(in srgb, var(--primary) 52%, var(--border));
+  background: color-mix(in srgb, var(--card) 88%, var(--primary) 12%);
+}
+
+.flow-react-node--input {
+  border-radius: 999px;
+  place-items: center;
+  text-align: center;
+}
+
+.flow-react-node--default,
+.flow-react-node--service,
+.flow-react-node--worker {
+  width: 15rem;
+}
+
+.flow-react-node--output {
+  border-radius: 1.25rem 0.35rem 1.25rem 0.35rem;
+  background: color-mix(in srgb, var(--card) 86%, var(--flow-node-color) 14%);
+}
+
+.flow-react-node--group {
+  width: 100%;
+  height: 100%;
+  align-content: start;
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--flow-node-color) 44%, var(--border));
+  background: color-mix(in srgb, var(--flow-node-color) 7%, transparent);
+  padding: 1rem;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.flow-react-node--gateway {
+  width: 15.5rem;
+  border-radius: 0.4rem;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+  padding-inline: 1.3rem;
+}
+
+.flow-react-node--database {
+  width: 14.5rem;
+  border-radius: 1rem 1rem 1.35rem 1.35rem;
+  padding-top: 1.15rem;
+}
+
+.flow-react-node--database::before {
+  position: absolute;
+  z-index: -1;
+  top: -0.05rem;
+  right: -0.05rem;
+  left: -0.05rem;
+  height: 1.05rem;
+  border: 1px solid color-mix(in srgb, var(--flow-node-color) 34%, var(--border));
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--card) 82%, var(--flow-node-color) 18%);
+  content: "";
+}
+
+.flow-react-node--queue,
+.flow-react-node--topic {
+  width: 14.5rem;
+  border-style: dashed;
+}
+
+.flow-react-node--topic {
+  border-style: dotted;
+  border-width: 2px;
+}
+
+.flow-react-node--cache {
+  width: 14.5rem;
+  overflow: hidden;
+}
+
+.flow-react-node--cache::before,
+.flow-react-node--cache::after {
+  position: absolute;
+  right: 0.75rem;
+  left: 0.75rem;
+  height: 0.38rem;
+  border: 1px solid color-mix(in srgb, var(--flow-node-color) 42%, transparent);
+  border-radius: 999px;
+  content: "";
+}
+
+.flow-react-node--cache::before {
+  bottom: 0.55rem;
+}
+
+.flow-react-node--cache::after {
+  bottom: 1rem;
+}
+
+.flow-react-node--external {
+  width: 15.5rem;
+  border-style: dashed;
+  background: color-mix(in srgb, var(--background) 92%, var(--flow-node-color) 8%);
+}
+
+.flow-react-node--decision {
+  width: 10.5rem;
+  min-height: 8.25rem;
+  place-items: center;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  padding: 2rem 1.65rem;
+  text-align: center;
+}
+
+.flow-react-node--risk {
+  width: 14.5rem;
+  border-color: color-mix(in srgb, #dc2626 60%, var(--border));
+  background: color-mix(in srgb, var(--card) 86%, #dc2626 14%);
+}
+
+.flow-react-node--note {
+  width: 14.5rem;
+  border-style: dashed;
+  border-radius: 0.35rem;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--flow-node-color) 20%, transparent) 0 0.35rem, transparent 0.35rem),
+    color-mix(in srgb, var(--card) 90%, var(--flow-node-color) 10%);
+}
+
+.flow-react-node--system {
+  width: 8.5rem;
+  min-height: 6.75rem;
+  place-items: center;
+  gap: 0.35rem;
+  border-radius: 1.05rem;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--flow-node-color) 12%, transparent), transparent),
+    color-mix(in srgb, var(--card) 90%, var(--flow-node-color) 10%);
+  padding: 0.7rem 0.55rem;
+  text-align: center;
+}
+
+.flow-react-node.is-compact {
+  width: 8.5rem;
+  min-height: 6.75rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.11);
+}
+
+.flow-react-node-icon {
+  display: inline-flex;
+  width: 2.45rem;
+  height: 2.45rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--flow-node-color) 30%, var(--border));
+  border-radius: 0.8rem;
+  background: color-mix(in srgb, var(--flow-node-color) 13%, var(--background));
+  color: color-mix(in srgb, var(--flow-node-color) 80%, var(--foreground));
+}
+
+.flow-react-node-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.flow-react-node.is-compact strong {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 0.78rem;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flow-react-node.is-compact small {
+  display: block;
+  max-width: 100%;
+  color: color-mix(in srgb, var(--muted-foreground) 88%, var(--foreground));
+  font-size: 0.66rem;
+  line-height: 1.2;
+  -webkit-line-clamp: unset;
+}
+
+.flow-react-node--detail {
+  width: 18rem;
+}
+
+.flow-react-node.is-active {
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--flow-node-color) 24%, transparent),
+    0 16px 38px rgba(0, 0, 0, 0.12);
+}
+
+.flow-react-node.tone-source {
+  --flow-node-color: #2563eb;
+}
+
+.flow-react-node.tone-process {
+  --flow-node-color: #0f766e;
+}
+
+.flow-react-node.tone-agent {
+  --flow-node-color: #d97706;
+}
+
+.flow-react-node.tone-review {
+  --flow-node-color: #7c3aed;
+}
+
+.flow-react-node.tone-storage {
+  --flow-node-color: #0891b2;
+}
+
+.flow-react-node.tone-event {
+  --flow-node-color: #9333ea;
+}
+
+.flow-react-node.tone-external {
+  --flow-node-color: #64748b;
+}
+
+.flow-react-node.tone-risk {
+  --flow-node-color: #dc2626;
+}
+
+.flow-react-node.tone-output {
+  --flow-node-color: #16a34a;
+}
+
+.flow-react-node-badge {
+  width: fit-content;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--flow-node-color) 14%, var(--muted));
+  color: color-mix(in srgb, var(--flow-node-color) 78%, var(--foreground));
+  padding: 0.15rem 0.45rem;
+  font-size: 0.67rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.flow-react-node strong {
+  color: var(--foreground);
+  font-size: 0.86rem;
+  font-weight: 650;
   line-height: 1.25;
 }
 
-.flow-chart-node small {
-  display: block;
+.flow-react-node small {
+  display: -webkit-box;
+  overflow: hidden;
   color: var(--muted-foreground);
-  font-size: 0.75rem;
-  line-height: 1.35;
+  font-size: 0.74rem;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+@keyframes dashdraw {
+  from {
+    stroke-dashoffset: 10;
+  }
 }
 
 .flow-chart-outcome {
@@ -2225,13 +2845,18 @@ a {
 }
 
 .native-select {
+  appearance: none;
   width: 100%;
   min-height: 2rem;
   border: 1px solid var(--border);
   border-radius: 0.625rem;
-  background: var(--background);
+  background-color: var(--background);
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 0.7rem center;
+  background-repeat: no-repeat;
+  background-size: 0.95rem;
   color: var(--foreground);
-  padding: 0 2rem 0 0.625rem;
+  padding: 0 2.45rem 0 0.625rem;
 }
 
 .tabs-row {
@@ -3784,25 +4409,11 @@ tbody tr:hover {
 }
 
 @media (max-width: 1480px) {
-  .blog-roadmap-workbench.card {
-    grid-template-columns: minmax(15rem, 0.36fr) minmax(0, 1fr);
-    height: auto;
-    min-height: auto;
-    overflow: visible;
-  }
-
   .ai-setup-container.card {
     grid-template-columns: 17rem minmax(0, 1fr);
     height: clamp(38rem, calc(100vh - 14rem), 58rem);
   }
 
-  .roadmap-topic-pane,
-  .roadmap-plan-pane,
-  .roadmap-detail-pane {
-    overflow: visible;
-  }
-
-  .roadmap-detail-pane,
   .ai-workflow-rail {
     grid-column: 1 / -1;
     border-top: 1px solid var(--border);
@@ -3908,7 +4519,6 @@ tbody tr:hover {
 }
 
 @media (max-width: 1080px) {
-  .blog-roadmap-workbench.card,
   .ai-setup-container.card,
   .skill-library-workbench.card,
   .checklist-workbench.card,
@@ -3919,9 +4529,6 @@ tbody tr:hover {
     overflow: visible;
   }
 
-  .roadmap-topic-pane,
-  .roadmap-plan-pane,
-  .roadmap-detail-pane,
   .ai-setup-index,
   .ai-setup-reader,
   .ai-workflow-rail,
@@ -3937,7 +4544,6 @@ tbody tr:hover {
     overflow: visible;
   }
 
-  .roadmap-topic-pane,
   .ai-setup-index,
   .skill-index-pane,
   .checklist-index-pane,
@@ -3946,7 +4552,6 @@ tbody tr:hover {
     border-bottom: 1px solid var(--border);
   }
 
-  .roadmap-detail-pane,
   .ai-workflow-rail,
   .skill-side-pane,
   .checklist-side-pane,
@@ -3971,12 +4576,21 @@ tbody tr:hover {
     border-bottom: 0;
   }
 
-  .roadmap-plan-head {
+  .flow-example-toolbar {
     grid-template-columns: 1fr;
   }
 
-  .roadmap-status-strip {
-    min-width: 0;
+  .flow-board-toolbar {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .flow-board-actionbar {
+    justify-self: start;
+  }
+
+  .welcome-shell {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -4235,7 +4849,6 @@ tbody tr:hover {
 
   .route-grid,
   .ops-detail-grid,
-  .blog-roadmap-workbench.card,
   .ai-setup-container.card,
   .skill-library-workbench.card,
   .checklist-workbench.card,
@@ -4267,7 +4880,6 @@ tbody tr:hover {
   }
 
   .preview-list,
-  .roadmap-topic-pane,
   .ai-setup-index,
   .skill-index-pane,
   .checklist-index-pane,
@@ -4283,7 +4895,6 @@ tbody tr:hover {
     border-left: 0;
   }
 
-  .roadmap-detail-pane,
   .ai-workflow-rail,
   .skill-side-pane,
   .checklist-side-pane,
@@ -4293,9 +4904,6 @@ tbody tr:hover {
     border-top: 1px solid var(--border);
   }
 
-  .roadmap-topic-pane,
-  .roadmap-plan-pane,
-  .roadmap-detail-pane,
   .ai-setup-index,
   .ai-setup-reader,
   .ai-workflow-rail,
@@ -4318,60 +4926,9 @@ tbody tr:hover {
     align-items: start;
   }
 
-  .flow-chart {
+  .welcome-shell,
+  .welcome-link-grid {
     grid-template-columns: 1fr;
-    overflow-x: visible;
-    padding-bottom: 0.25rem;
-  }
-
-  .flow-chart-node {
-    min-height: auto;
-    grid-template-columns: 2rem minmax(0, 1fr);
-    align-items: start;
-  }
-
-  .flow-chart-node strong,
-  .flow-chart-node small {
-    grid-column: 2;
-  }
-
-  .flow-chart-index {
-    grid-row: 1 / span 2;
-  }
-
-  .flow-chart-node:not(:last-child)::after {
-    top: calc(100% + 0.0625rem);
-    right: auto;
-    left: 1.875rem;
-    width: 2px;
-    height: 0.875rem;
-  }
-
-  .flow-chart-node:not(:last-child)::before {
-    top: calc(100% + 0.75rem);
-    right: auto;
-    left: calc(1.875rem - 0.25rem);
-    border-top: 0.45rem solid color-mix(in srgb, var(--primary) 64%, var(--foreground));
-    border-right: 0.3125rem solid transparent;
-    border-bottom: 0;
-    border-left: 0.3125rem solid transparent;
-  }
-
-  .roadmap-plan-head {
-    grid-template-columns: 1fr;
-  }
-
-  .roadmap-status-strip,
-  .roadmap-day-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .roadmap-topic-button {
-    grid-template-columns: 1fr;
-  }
-
-  .roadmap-topic-button em {
-    justify-self: flex-start;
   }
 
   .ai-pane-head,
@@ -4460,7 +5017,6 @@ tbody tr:hover {
 
   .mail-workbench,
   .chat-workbench,
-  .blog-roadmap-workbench.card,
   .ai-setup-container.card,
   .skill-library-workbench.card,
   .checklist-workbench.card,
@@ -4587,8 +5143,8 @@ tbody tr:hover {
 @media (max-width: 640px) {
   .metric-grid,
   .route-actions,
-  .roadmap-status-strip,
-  .roadmap-day-grid,
+  .welcome-shortcut,
+  .welcome-link-grid a,
   .profile-link-grid {
     grid-template-columns: 1fr;
   }
@@ -4599,11 +5155,6 @@ tbody tr:hover {
 
   .route-actions {
     display: grid;
-  }
-
-  .roadmap-detail-list div {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
   }
 
   .message-bubble {
@@ -4640,9 +5191,6 @@ tbody tr:hover {
   }
 
   .ai-setup-index,
-  .roadmap-topic-pane,
-  .roadmap-plan-pane,
-  .roadmap-detail-pane,
   .ai-setup-reader,
   .ai-workflow-rail {
     padding: 0.75rem;

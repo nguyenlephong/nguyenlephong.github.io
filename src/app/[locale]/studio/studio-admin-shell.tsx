@@ -2,12 +2,10 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, MouseEvent } from "react";
-import Image from "next/image";
 import type { IconType } from "react-icons";
 import { APP_ROUTE } from "@/app/app.const";
 import { track } from "@/lib/analytics";
 import {
-  blogRoadmapTopics,
   defaultStudioNoteId,
   studioAiSkills,
   studioFlowGroups,
@@ -17,20 +15,16 @@ import {
   studioWorkflowChecklists
 } from "./studio.data";
 import {
-  getLocalizedBlogRoadmapTicketChecklist,
-  getLocalizedBlogRoadmapTopics,
   getLocalizedStudioFlowGroups,
   getLocalizedStudioFlows,
   getLocalizedStudioAiSkills,
   getLocalizedStudioWorkflowChecklists
 } from "./studio.localized-content";
 import type {
-  BlogRoadmapEntry,
-  BlogRoadmapStatus,
-  BlogRoadmapTopic,
   StudioAiSkill,
   StudioChecklistStep,
   StudioFlow,
+  StudioFlowArchitectureEdgeSpec,
   StudioNote,
   StudioNoteStatus,
   StudioWorkflowChecklist
@@ -78,8 +72,10 @@ import {
   LuMail,
   LuMailOpen,
   LuMapPin,
+  LuMaximize2,
   LuMenu,
   LuMessageSquare,
+  LuMinimize2,
   LuMonitor,
   LuMoon,
   LuMoreVertical,
@@ -112,6 +108,18 @@ import {
   LuX
 } from "react-icons/lu";
 import {
+  Background,
+  Controls,
+  Handle,
+  MarkerType,
+  MiniMap,
+  Position,
+  ReactFlow,
+  type Edge,
+  type Node,
+  type NodeProps
+} from "@xyflow/react";
+import {
   Area,
   CartesianGrid,
   ComposedChart,
@@ -127,6 +135,7 @@ type StudioAdminShellProps = {
 };
 
 type StudioRouteId =
+  | "welcome"
   | "default"
   | "crm"
   | "finance"
@@ -141,13 +150,13 @@ type StudioRouteId =
   | "ai-agent-setup"
   | "ai-skills"
   | "delivery-checklists"
-  | "blog-roadmap"
   | "flow-system-design"
   | "flow-architecture-decision"
   | "flow-incident-response"
   | "flow-release-readiness"
   | "flow-ai-delivery"
   | "flow-portfolio-story"
+  | "flow-react-flow-architecture-demo"
   | "calendar"
   | "kanban"
   | "invoice"
@@ -163,6 +172,7 @@ type StudioRouteId =
   | "legacy-analytics";
 
 type StudioRouteKind =
+  | "welcome"
   | "default"
   | "dashboard"
   | "finance"
@@ -177,7 +187,6 @@ type StudioRouteKind =
   | "ai-setup"
   | "ai-skills"
   | "checklists"
-  | "roadmap"
   | "flows"
   | "calendar"
   | "kanban"
@@ -295,7 +304,48 @@ type StudioProfileMenuItem = {
   external?: boolean;
 };
 
-const DEFAULT_ROUTE: StudioRouteId = "ai-agent-setup";
+type StudioFlowCanvasNodeKind =
+  | "hub"
+  | "step"
+  | "detail"
+  | "input"
+  | "default"
+  | "output"
+  | "group"
+  | "service"
+  | "gateway"
+  | "database"
+  | "queue"
+  | "topic"
+  | "cache"
+  | "worker"
+  | "external"
+  | "decision"
+  | "risk"
+  | "note"
+  | "system";
+type StudioFlowCanvasTone =
+  | "source"
+  | "process"
+  | "agent"
+  | "review"
+  | "output"
+  | "storage"
+  | "event"
+  | "external"
+  | "risk";
+
+type StudioFlowCanvasNodeData = {
+  kind: StudioFlowCanvasNodeKind;
+  title: string;
+  detail: string;
+  badge?: string;
+  tone: StudioFlowCanvasTone;
+  active?: boolean;
+  compact?: boolean;
+};
+
+const DEFAULT_ROUTE: StudioRouteId = "welcome";
 const STUDIO_THEME_STORAGE_KEY = "studio_theme_preference";
 const STUDIO_FONT_STORAGE_KEY = "studio_font_preference";
 const LAYOUT_STORAGE_KEY = "studio_layout_preference";
@@ -423,9 +473,18 @@ type StudioUiCopy = {
   };
   routeMetricsLabel: string;
   status: Record<StudioNoteStatus, string>;
-  roadmapStatus: Record<BlogRoadmapStatus, string>;
   categories: Record<StudioAiSkill["category"] | "all", string>;
   routes: Partial<Record<StudioRouteId, StudioRouteCopy>>;
+  welcome: {
+    eyebrow: string;
+    lead: string;
+    note: string;
+    studioLinks: string;
+    publicLinks: string;
+    open: string;
+    routeCards: Partial<Record<StudioRouteId, { label: string; detail: string }>>;
+    linkCards: Record<string, { label: string; detail: string }>;
+  };
   flows: {
     emptyTitle: string;
     emptyDescription: string;
@@ -437,6 +496,10 @@ type StudioUiCopy = {
     chartLabel: string;
     chartHint: string;
     chartOutcome: string;
+    exampleFamily: string;
+    exampleView: string;
+    boardTools: string;
+    viewNotes: string;
     useWhen: string;
     outcome: string;
     officeExample: string;
@@ -447,6 +510,8 @@ type StudioUiCopy = {
     shareFlow: string;
     copied: string;
     openFlow: string;
+    enterFullscreen: string;
+    exitFullscreen: string;
   };
   aiSetup: {
     addNote: string;
@@ -501,29 +566,6 @@ type StudioUiCopy = {
     markdownCopy: string;
     markdownUseWhen: string;
   };
-  roadmap: {
-    emptyTitle: string;
-    emptyDescription: string;
-    openCategory: string;
-    queueReadyTickets: string;
-    topicMenu: string;
-    topicMenuDetail: string;
-    topicListLabel: string;
-    selectedRoadmap: string;
-    statusCountsLabel: string;
-    statusFiltersLabel: string;
-    all: string;
-    day: string;
-    thirtyDayRoadmap: string;
-    ticketDetail: string;
-    intent: string;
-    format: string;
-    draftTime: string;
-    category: string;
-    prepareTicket: string;
-    ticketHandoff: string;
-    min: string;
-  };
   preferences: {
     title: string;
     description: string;
@@ -552,17 +594,18 @@ const englishStudioCopy: StudioUiCopy = {
   brand: "Studio",
   navLabel: "Personal Studio",
   navItems: {
+    welcome: "Welcome",
     "ai-agent-setup": "AI Setup",
     "ai-skills": "AI Skills",
     "delivery-checklists": "Checklists",
-    "blog-roadmap": "Blog Roadmap",
     "flow-menu": "Flow Menu",
     "flow-system-design": "System Design",
     "flow-architecture-decision": "Architecture Decision",
     "flow-incident-response": "Incident Response",
     "flow-release-readiness": "Release Readiness",
     "flow-ai-delivery": "AI Delivery",
-    "flow-portfolio-story": "Portfolio Story"
+    "flow-portfolio-story": "Portfolio Story",
+    "flow-react-flow-architecture-demo": "Example"
   },
   profileItems: {
     home: { label: "Home", detail: "Profile overview." },
@@ -598,11 +641,6 @@ const englishStudioCopy: StudioUiCopy = {
     draft: "Draft",
     next: "Next"
   },
-  roadmapStatus: {
-    ready: "Ready",
-    outline: "Outline",
-    research: "Research"
-  },
   categories: {
     all: "All",
     engineering: "Engineering",
@@ -613,6 +651,12 @@ const englishStudioCopy: StudioUiCopy = {
     learning: "Learning"
   },
   routes: {
+    welcome: {
+      title: "Welcome",
+      description: "A quiet starting point for the personal Studio: working notes, reusable workflows, and the public profile links I reach for most.",
+      panels: ["Start here", "Useful links", "Studio routes"],
+      timeline: ["Open the right workspace", "Keep context close", "Move from idea to proof"]
+    },
     "ai-agent-setup": {
       title: "AI Agent Setup",
       description: "Personal setup notes for my AI agent tools, MCP paths, and safe machine bootstrap.",
@@ -630,12 +674,6 @@ const englishStudioCopy: StudioUiCopy = {
       description: "Operating checklists from task intake through module work, release readiness, and rollout.",
       panels: ["Task intake", "Module creation", "Release and rollout"],
       timeline: ["Ticket intake path mapped", "Module checklist nested", "Rollout phases captured"]
-    },
-    "blog-roadmap": {
-      title: "Blog Roadmap",
-      description: "A 30-day writing menu for every current blog topic, ready to turn into daily Multica article tickets.",
-      panels: ["Topic menu", "Daily article plan", "Ticket checklist"],
-      timeline: ["Existing blog topics mapped", "Thirty daily prompts prepared", "Ticket handoff checklist ready"]
     },
     "flow-system-design": {
       title: "System Design Flow",
@@ -672,6 +710,33 @@ const englishStudioCopy: StudioUiCopy = {
       description: "A career-proof flow for turning real engineering work into grounded CV, blog, and interview stories.",
       panels: ["Context", "Trade-offs", "Impact"],
       timeline: ["Context captured", "Impact evidence selected", "Story draft shaped"]
+    },
+    "flow-react-flow-architecture-demo": {
+      title: "Example",
+      description: "A library-style React Flow canvas with dropdown views for overview, interaction, grouping, layout, styling, whiteboard, and software architecture examples.",
+      panels: ["Example selector", "Canvas gallery", "Architecture zones"],
+      timeline: ["Example families mapped", "Dropdown views wired", "Canvas controls enabled"]
+    }
+  },
+  welcome: {
+    eyebrow: "Studio home",
+    lead: "This space is where I keep the practical parts of my work close together: setup notes, reusable AI skills, delivery checklists, and visual flows that help turn rough context into something I can ship or explain.",
+    note: "Use it as a calm control room. Start with the route that matches the job, keep the source material honest, then leave with a concrete artifact instead of another open tab.",
+    studioLinks: "Studio shortcuts",
+    publicLinks: "Useful profile links",
+    open: "Open",
+    routeCards: {
+      "ai-agent-setup": { label: "AI Setup", detail: "Machine notes, MCP paths, and personal agent setup references." },
+      "ai-skills": { label: "AI Skills", detail: "Reusable prompts and operating rules for focused agent sessions." },
+      "delivery-checklists": { label: "Checklists", detail: "Working checklists for task intake, release readiness, and rollout." },
+      "flow-react-flow-architecture-demo": { label: "Example", detail: "React Flow examples for architecture, layout, grouping, styling, and interactions." }
+    },
+    linkCards: {
+      home: { label: "Home", detail: "Public profile overview." },
+      notes: { label: "Notes", detail: "Short working notes and reflections." },
+      blog: { label: "Blog", detail: "Longer technical and personal essays." },
+      apps: { label: "Apps", detail: "Small tools and experiments." },
+      resume: { label: "Resume", detail: "Open the latest PDF CV." }
     }
   },
   flows: {
@@ -685,6 +750,10 @@ const englishStudioCopy: StudioUiCopy = {
     chartLabel: "Flow chart",
     chartHint: "Read the path from left to right: each node is a decision point, not a long note.",
     chartOutcome: "Target outcome",
+    exampleFamily: "Example family",
+    exampleView: "View",
+    boardTools: "Board tools",
+    viewNotes: "View notes",
     useWhen: "Use when",
     outcome: "Outcome",
     officeExample: "Office example",
@@ -694,7 +763,9 @@ const englishStudioCopy: StudioUiCopy = {
     output: "Output",
     shareFlow: "Share flow",
     copied: "Copied",
-    openFlow: "Open flow"
+    openFlow: "Open flow",
+    enterFullscreen: "Fullscreen board",
+    exitFullscreen: "Exit fullscreen"
   },
   aiSetup: {
     addNote: "Add note",
@@ -749,29 +820,6 @@ const englishStudioCopy: StudioUiCopy = {
     markdownCopy: "Markdown copy",
     markdownUseWhen: "Use when"
   },
-  roadmap: {
-    emptyTitle: "Roadmap data is empty",
-    emptyDescription: "Add blog roadmap topics to Studio data before opening this menu.",
-    openCategory: "Open category",
-    queueReadyTickets: "Queue ready tickets",
-    topicMenu: "Topic menu",
-    topicMenuDetail: "Current blog categories mapped to a one-month cadence.",
-    topicListLabel: "Blog roadmap topics",
-    selectedRoadmap: "Selected blog roadmap",
-    statusCountsLabel: "Roadmap status counts",
-    statusFiltersLabel: "Roadmap status filters",
-    all: "All",
-    day: "Day",
-    thirtyDayRoadmap: "Thirty day roadmap",
-    ticketDetail: "Roadmap ticket detail",
-    intent: "Intent",
-    format: "Format",
-    draftTime: "Draft time",
-    category: "Category",
-    prepareTicket: "Prepare Multica ticket",
-    ticketHandoff: "Ticket handoff",
-    min: "min"
-  },
   preferences: {
     title: "Preferences",
     description: "Theme, font, and layout for this Studio workspace.",
@@ -796,23 +844,72 @@ const englishStudioCopy: StudioUiCopy = {
   }
 };
 
+type CompactStudioCopyConfig = {
+  navLabel: string;
+  navItems: Partial<Record<StudioRouteId, string>>;
+  findSetupNote: string;
+  search: string;
+  searchPlaceholder: string;
+  profileNavigationTitle: string;
+  profileNavigationDetail: string;
+  openProfileHome: string;
+  status: StudioUiCopy["status"];
+  categories: StudioUiCopy["categories"];
+  routeText: {
+    setup: Pick<StudioRouteCopy, "title" | "description">;
+    skills: Pick<StudioRouteCopy, "title" | "description">;
+    checklists: Pick<StudioRouteCopy, "title" | "description">;
+  };
+  aiSetup: Partial<StudioUiCopy["aiSetup"]>;
+  aiSkills: Partial<StudioUiCopy["aiSkills"]>;
+  checklists: Partial<StudioUiCopy["checklists"]>;
+  preferences: Partial<StudioUiCopy["preferences"]>;
+};
+
+function createCompactStudioCopy(config: CompactStudioCopyConfig): StudioUiCopy {
+  return {
+    ...englishStudioCopy,
+    navLabel: config.navLabel,
+    navItems: { ...englishStudioCopy.navItems, ...config.navItems },
+    findSetupNote: config.findSetupNote,
+    search: config.search,
+    searchPlaceholder: config.searchPlaceholder,
+    profileNavigationTitle: config.profileNavigationTitle,
+    profileNavigationDetail: config.profileNavigationDetail,
+    openProfileHome: config.openProfileHome,
+    status: config.status,
+    categories: config.categories,
+    routes: {
+      welcome: { ...englishStudioCopy.routes.welcome!, title: "Welcome" },
+      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"]!, ...config.routeText.setup },
+      "ai-skills": { ...englishStudioCopy.routes["ai-skills"]!, ...config.routeText.skills },
+      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"]!, ...config.routeText.checklists }
+    },
+    aiSetup: { ...englishStudioCopy.aiSetup, ...config.aiSetup },
+    aiSkills: { ...englishStudioCopy.aiSkills, ...config.aiSkills },
+    checklists: { ...englishStudioCopy.checklists, ...config.checklists },
+    preferences: { ...englishStudioCopy.preferences, ...config.preferences }
+  };
+}
+
 const studioCopyByLocale: Record<string, StudioUiCopy> = {
   en: englishStudioCopy,
   vi: {
     ...englishStudioCopy,
     navLabel: "Studio cá nhân",
     navItems: {
+      welcome: "Welcome",
       "ai-agent-setup": "AI Setup",
       "ai-skills": "AI Skill",
       "delivery-checklists": "Checklist",
-      "blog-roadmap": "Lộ trình blog",
       "flow-menu": "Flow",
       "flow-system-design": "System Design",
       "flow-architecture-decision": "Quyết định kiến trúc",
       "flow-incident-response": "Xử lý incident",
       "flow-release-readiness": "Release readiness",
       "flow-ai-delivery": "AI delivery",
-      "flow-portfolio-story": "Portfolio story"
+      "flow-portfolio-story": "Portfolio story",
+      "flow-react-flow-architecture-demo": "Example"
     },
     profileItems: {
       home: { label: "Trang chủ", detail: "Tổng quan profile." },
@@ -841,7 +938,6 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     routeKicker: { legacy: "Legacy", studio: "Studio route" },
     routeMetricsLabel: "Chỉ số route",
     status: { ready: "Sẵn sàng", draft: "Nháp", next: "Tiếp theo" },
-    roadmapStatus: { ready: "Sẵn sàng", outline: "Dàn ý", research: "Nghiên cứu" },
     categories: {
       all: "Tất cả",
       engineering: "Kỹ thuật",
@@ -852,6 +948,12 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       learning: "Học tập"
     },
     routes: {
+      welcome: {
+        title: "Welcome",
+        description: "Điểm bắt đầu nhẹ nhàng của Studio cá nhân: ghi chú làm việc, workflow tái dùng và các link profile cần mở thường xuyên.",
+        panels: ["Bắt đầu", "Link tiện ích", "Route Studio"],
+        timeline: ["Mở đúng workspace", "Giữ context gần", "Rời đi với artifact rõ"]
+      },
       "ai-agent-setup": {
         title: "AI Agent Setup",
         description: "Ghi chú setup cá nhân cho công cụ AI agent, MCP path và bootstrap máy an toàn.",
@@ -869,12 +971,6 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
         description: "Checklist vận hành từ nhận task, tạo module, chuẩn bị release đến rollout.",
         panels: ["Nhận task", "Tạo module", "Release và rollout"],
         timeline: ["Đã map intake ticket", "Checklist module có bước con", "Đã ghi lại phase rollout"]
-      },
-      "blog-roadmap": {
-        title: "Lộ trình blog",
-        description: "Menu viết 30 ngày cho từng chủ đề blog hiện có, sẵn sàng để chuyển thành ticket bài viết hằng ngày.",
-        panels: ["Menu chủ đề", "Kế hoạch bài viết", "Checklist ticket"],
-        timeline: ["Đã map topic blog hiện có", "Đã chuẩn bị prompt 30 ngày", "Checklist bàn giao ticket sẵn sàng"]
       },
       "flow-system-design": {
         title: "Flow System Design",
@@ -911,6 +1007,34 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
         description: "Luồng biến công việc engineering thật thành câu chuyện CV, blog và phỏng vấn có bằng chứng.",
         panels: ["Context", "Trade-off", "Impact"],
         timeline: ["Context đã ghi lại", "Evidence impact đã chọn", "Story draft đã định hình"]
+      },
+      "flow-react-flow-architecture-demo": {
+        title: "Example",
+        description: "Canvas React Flow kiểu thư viện demo với dropdown view cho overview, interaction, grouping, layout, styling, whiteboard và software architecture example.",
+        panels: ["Chọn example", "Canvas gallery", "Vùng kiến trúc"],
+        timeline: ["Nhóm example đã map", "Dropdown view đã nối", "Canvas control đã bật"]
+      }
+    },
+    welcome: {
+      ...englishStudioCopy.welcome,
+      eyebrow: "Studio home",
+      lead: "Đây là nơi em gom những phần thực dụng nhất của công việc vào cùng một chỗ: setup note, AI skill có thể tái dùng, checklist delivery và flow trực quan để biến context rời rạc thành thứ có thể làm, ship hoặc giải thích lại được.",
+      note: "Cứ xem Studio như một bàn làm việc yên tĩnh. Chọn đúng route cho việc đang làm, giữ nguồn và bằng chứng rõ ràng, rồi rời khỏi trang với một artifact cụ thể thay vì thêm một tab còn dang dở.",
+      studioLinks: "Lối tắt trong Studio",
+      publicLinks: "Link profile tiện ích",
+      open: "Mở",
+      routeCards: {
+        "ai-agent-setup": { label: "AI Setup", detail: "Ghi chú máy, MCP path và setup cá nhân cho agent." },
+        "ai-skills": { label: "AI Skill", detail: "Prompt và operating rule có thể copy vào phiên agent." },
+        "delivery-checklists": { label: "Checklist", detail: "Checklist nhận task, release readiness và rollout." },
+        "flow-react-flow-architecture-demo": { label: "Example", detail: "Demo React Flow cho kiến trúc, layout, grouping, styling và interaction." }
+      },
+      linkCards: {
+        home: { label: "Trang chủ", detail: "Tổng quan public profile." },
+        notes: { label: "Note", detail: "Ghi chú ngắn và suy nghĩ đang dùng." },
+        blog: { label: "Blog", detail: "Bài viết dài hơn về kỹ thuật và trải nghiệm." },
+        apps: { label: "Apps", detail: "Công cụ nhỏ và thử nghiệm cá nhân." },
+        resume: { label: "Resume", detail: "Mở bản CV PDF mới nhất." }
       }
     },
     flows: {
@@ -925,6 +1049,10 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       chartLabel: "Sơ đồ flow",
       chartHint: "Đọc từ trái sang phải: mỗi node là một điểm quyết định, không phải một ghi chú dài.",
       chartOutcome: "Kết quả cần đạt",
+      exampleFamily: "Nhóm example",
+      exampleView: "Kiểu view",
+      boardTools: "Công cụ board",
+      viewNotes: "Ghi chú view",
       useWhen: "Dùng khi",
       outcome: "Kết quả",
       officeExample: "Ví dụ nơi làm việc",
@@ -934,7 +1062,9 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       output: "Output",
       shareFlow: "Share flow",
       copied: "Đã copy",
-      openFlow: "Mở flow"
+      openFlow: "Mở flow",
+      enterFullscreen: "Phóng to board",
+      exitFullscreen: "Thoát fullscreen"
     },
     aiSetup: {
       ...englishStudioCopy.aiSetup,
@@ -992,30 +1122,6 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       markdownCopy: "Markdown copy",
       markdownUseWhen: "Dùng khi"
     },
-    roadmap: {
-      ...englishStudioCopy.roadmap,
-      emptyTitle: "Roadmap đang trống",
-      emptyDescription: "Thêm topic roadmap vào Studio data trước khi mở menu này.",
-      openCategory: "Mở category",
-      queueReadyTickets: "Queue ticket sẵn sàng",
-      topicMenu: "Menu chủ đề",
-      topicMenuDetail: "Các category blog hiện tại được map theo nhịp một tháng.",
-      topicListLabel: "Topic roadmap blog",
-      selectedRoadmap: "Roadmap blog đang chọn",
-      statusCountsLabel: "Số lượng theo trạng thái",
-      statusFiltersLabel: "Bộ lọc trạng thái roadmap",
-      all: "Tất cả",
-      day: "Ngày",
-      thirtyDayRoadmap: "Roadmap 30 ngày",
-      ticketDetail: "Chi tiết ticket roadmap",
-      intent: "Mục tiêu",
-      format: "Định dạng",
-      draftTime: "Thời gian draft",
-      category: "Category",
-      prepareTicket: "Chuẩn bị ticket Multica",
-      ticketHandoff: "Bàn giao ticket",
-      min: "phút"
-    },
     preferences: {
       ...englishStudioCopy.preferences,
       title: "Tùy chỉnh",
@@ -1040,15 +1146,9 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
     }
   },
-  zh: {
-    ...englishStudioCopy,
+  zh: createCompactStudioCopy({
     navLabel: "个人 Studio",
-    navItems: {
-      "ai-agent-setup": "AI 设置",
-      "ai-skills": "AI 技能",
-      "delivery-checklists": "清单",
-      "blog-roadmap": "博客路线图"
-    },
+    navItems: { welcome: "Welcome", "ai-agent-setup": "AI 设置", "ai-skills": "AI 技能", "delivery-checklists": "清单" },
     findSetupNote: "查找设置笔记",
     search: "搜索",
     searchPlaceholder: "搜索 AI 设置...",
@@ -1056,45 +1156,20 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     profileNavigationDetail: "从 Studio 进入公开个人资料页面。",
     openProfileHome: "打开个人主页",
     status: { ready: "就绪", draft: "草稿", next: "下一步" },
-    roadmapStatus: { ready: "就绪", outline: "大纲", research: "研究" },
     categories: { all: "全部", engineering: "工程", content: "内容", operations: "运营", communication: "沟通", strategy: "策略", learning: "学习" },
-    routes: {
-      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "AI Agent 设置", description: "用于 AI agent 工具、MCP 路径和安全机器初始化的个人设置笔记。" },
-      "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "AI 技能", description: "可复制的 markdown 技能，用于代码评审、架构、内容、提示词、报告、规格和提案。" },
-      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "交付清单", description: "从任务接收到模块工作、发布准备和上线的操作清单。" },
-      "blog-roadmap": { ...englishStudioCopy.routes["blog-roadmap"], title: "博客路线图", description: "当前博客主题的 30 天写作菜单，可转成每日文章 ticket。" }
+    routeText: {
+      setup: { title: "AI Agent 设置", description: "用于 AI agent 工具、MCP 路径和安全机器初始化的个人设置笔记。" },
+      skills: { title: "AI 技能", description: "可复制的 markdown 技能，用于代码评审、架构、内容、提示词、报告、规格和提案。" },
+      checklists: { title: "交付清单", description: "从任务接收到模块工作、发布准备和上线的操作清单。" }
     },
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "添加笔记", commandRunbook: "命令 runbook", setupChecklist: "设置清单", researchQueue: "研究队列" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "复制 markdown", copied: "已复制", skillLibrary: "技能库", categoriesLabel: "技能分类" },
     checklists: { ...englishStudioCopy.checklists, copied: "已复制", menu: "清单菜单", sections: "部分", steps: "步骤", structureDetail: (sections, steps) => `${sections} 个部分，${steps} 个嵌套步骤，可复制为 markdown。` },
-    roadmap: { ...englishStudioCopy.roadmap, all: "全部", day: "第", openCategory: "打开分类", queueReadyTickets: "排队就绪 ticket", min: "分钟" },
-    preferences: {
-      ...englishStudioCopy.preferences,
-      title: "偏好设置",
-      description: "Studio 工作区的主题、字体和布局。",
-      themeMode: "主题模式",
-      resolvedNow: "当前解析",
-      pageLayout: "页面布局",
-      navbarBehavior: "导航栏行为",
-      sidebarStyle: "侧边栏样式",
-      collapseMode: "折叠模式",
-      restoreDefaults: "恢复默认布局",
-      themeOptions: { light: "浅色", system: "系统", dark: "深色" },
-      contentLayoutOptions: { centered: "居中", "full-width": "全宽" },
-      navbarStyleOptions: { sticky: "固定", scroll: "滚动" },
-      sidebarVariantOptions: { inset: "内嵌", sidebar: "侧边栏", floating: "浮动" },
-      sidebarCollapsibleOptions: { icon: "图标", offcanvas: "抽屉" }
-    }
-  },
-  ja: {
-    ...englishStudioCopy,
+    preferences: { ...englishStudioCopy.preferences, title: "偏好设置", description: "Studio 工作区的主题、字体和布局。", themeMode: "主题模式", resolvedNow: "当前解析", pageLayout: "页面布局", navbarBehavior: "导航栏行为", sidebarStyle: "侧边栏样式", collapseMode: "折叠模式", restoreDefaults: "恢复默认布局", themeOptions: { light: "浅色", system: "系统", dark: "深色" }, contentLayoutOptions: { centered: "居中", "full-width": "全宽" }, navbarStyleOptions: { sticky: "固定", scroll: "滚动" }, sidebarVariantOptions: { inset: "内嵌", sidebar: "侧边栏", floating: "浮动" }, sidebarCollapsibleOptions: { icon: "图标", offcanvas: "抽屉" } }
+  }),
+  ja: createCompactStudioCopy({
     navLabel: "パーソナル Studio",
-    navItems: {
-      "ai-agent-setup": "AI セットアップ",
-      "ai-skills": "AI スキル",
-      "delivery-checklists": "チェックリスト",
-      "blog-roadmap": "ブログ計画"
-    },
+    navItems: { welcome: "Welcome", "ai-agent-setup": "AI セットアップ", "ai-skills": "AI スキル", "delivery-checklists": "チェックリスト" },
     findSetupNote: "セットアップノートを検索",
     search: "検索",
     searchPlaceholder: "AI セットアップを検索...",
@@ -1102,45 +1177,20 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     profileNavigationDetail: "Studio から公開プロフィールの各ページへ移動します。",
     openProfileHome: "プロフィールホームを開く",
     status: { ready: "準備済み", draft: "下書き", next: "次" },
-    roadmapStatus: { ready: "準備済み", outline: "アウトライン", research: "調査" },
     categories: { all: "すべて", engineering: "エンジニアリング", content: "コンテンツ", operations: "運用", communication: "コミュニケーション", strategy: "戦略", learning: "学習" },
-    routes: {
-      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "AI Agent セットアップ", description: "AI agent ツール、MCP パス、安全なマシン初期化のための個人セットアップノート。" },
-      "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "AI スキル", description: "コードレビュー、アーキテクチャ、コンテンツ、プロンプト、レポート、仕様、提案に使える markdown スキル。" },
-      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "デリバリーチェックリスト", description: "タスク受領からモジュール作業、リリース準備、ロールアウトまでの運用チェックリスト。" },
-      "blog-roadmap": { ...englishStudioCopy.routes["blog-roadmap"], title: "ブログ計画", description: "現在のブログトピックごとの 30 日執筆メニュー。" }
+    routeText: {
+      setup: { title: "AI Agent セットアップ", description: "AI agent ツール、MCP パス、安全なマシン初期化のための個人セットアップノート。" },
+      skills: { title: "AI スキル", description: "コードレビュー、アーキテクチャ、コンテンツ、プロンプト、レポート、仕様、提案に使える markdown スキル。" },
+      checklists: { title: "デリバリーチェックリスト", description: "タスク受領からモジュール作業、リリース準備、ロールアウトまでの運用チェックリスト。" }
     },
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "ノート追加", commandRunbook: "コマンド runbook", setupChecklist: "セットアップチェックリスト", researchQueue: "調査キュー" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Markdown をコピー", copied: "コピー済み", skillLibrary: "スキルライブラリ", categoriesLabel: "スキル分類" },
     checklists: { ...englishStudioCopy.checklists, copied: "コピー済み", menu: "チェックリストメニュー", sections: "セクション", steps: "ステップ", structureDetail: (sections, steps) => `${sections} セクション、${steps} 個のネストされたステップ。markdown としてコピーできます。` },
-    roadmap: { ...englishStudioCopy.roadmap, all: "すべて", day: "Day", openCategory: "カテゴリを開く", queueReadyTickets: "準備済み ticket をキュー", min: "分" },
-    preferences: {
-      ...englishStudioCopy.preferences,
-      title: "設定",
-      description: "Studio ワークスペースのテーマ、フォント、レイアウト。",
-      themeMode: "テーマモード",
-      resolvedNow: "現在",
-      pageLayout: "ページレイアウト",
-      navbarBehavior: "ナビバー動作",
-      sidebarStyle: "サイドバー形式",
-      collapseMode: "折りたたみ方式",
-      restoreDefaults: "レイアウト既定値に戻す",
-      themeOptions: { light: "ライト", system: "システム", dark: "ダーク" },
-      contentLayoutOptions: { centered: "中央寄せ", "full-width": "全幅" },
-      navbarStyleOptions: { sticky: "固定", scroll: "スクロール" },
-      sidebarVariantOptions: { inset: "インセット", sidebar: "サイドバー", floating: "フローティング" },
-      sidebarCollapsibleOptions: { icon: "アイコン", offcanvas: "オフキャンバス" }
-    }
-  },
-  ko: {
-    ...englishStudioCopy,
+    preferences: { ...englishStudioCopy.preferences, title: "設定", description: "Studio ワークスペースのテーマ、フォント、レイアウト。", themeMode: "テーマモード", resolvedNow: "現在", pageLayout: "ページレイアウト", navbarBehavior: "ナビバー動作", sidebarStyle: "サイドバー形式", collapseMode: "折りたたみ方式", restoreDefaults: "レイアウト既定値に戻す", themeOptions: { light: "ライト", system: "システム", dark: "ダーク" }, contentLayoutOptions: { centered: "中央寄せ", "full-width": "全幅" }, navbarStyleOptions: { sticky: "固定", scroll: "スクロール" }, sidebarVariantOptions: { inset: "インセット", sidebar: "サイドバー", floating: "フローティング" }, sidebarCollapsibleOptions: { icon: "アイコン", offcanvas: "オフキャンバス" } }
+  }),
+  ko: createCompactStudioCopy({
     navLabel: "개인 Studio",
-    navItems: {
-      "ai-agent-setup": "AI 설정",
-      "ai-skills": "AI 스킬",
-      "delivery-checklists": "체크리스트",
-      "blog-roadmap": "블로그 로드맵"
-    },
+    navItems: { welcome: "Welcome", "ai-agent-setup": "AI 설정", "ai-skills": "AI 스킬", "delivery-checklists": "체크리스트" },
     findSetupNote: "설정 노트 찾기",
     search: "검색",
     searchPlaceholder: "AI 설정 검색...",
@@ -1148,45 +1198,20 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     profileNavigationDetail: "Studio에서 공개 프로필 섹션으로 이동합니다.",
     openProfileHome: "프로필 홈 열기",
     status: { ready: "준비됨", draft: "초안", next: "다음" },
-    roadmapStatus: { ready: "준비됨", outline: "개요", research: "리서치" },
     categories: { all: "전체", engineering: "엔지니어링", content: "콘텐츠", operations: "운영", communication: "커뮤니케이션", strategy: "전략", learning: "학습" },
-    routes: {
-      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "AI Agent 설정", description: "AI agent 도구, MCP 경로, 안전한 머신 부트스트랩을 위한 개인 설정 노트." },
-      "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "AI 스킬", description: "코드 리뷰, 아키텍처, 콘텐츠, 프롬프트, 보고서, 스펙, 제안서에 재사용할 수 있는 markdown 스킬." },
-      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "딜리버리 체크리스트", description: "작업 접수부터 모듈 작업, 릴리스 준비, 롤아웃까지의 운영 체크리스트." },
-      "blog-roadmap": { ...englishStudioCopy.routes["blog-roadmap"], title: "블로그 로드맵", description: "현재 블로그 주제를 위한 30일 글쓰기 메뉴." }
+    routeText: {
+      setup: { title: "AI Agent 설정", description: "AI agent 도구, MCP 경로, 안전한 머신 부트스트랩을 위한 개인 설정 노트." },
+      skills: { title: "AI 스킬", description: "코드 리뷰, 아키텍처, 콘텐츠, 프롬프트, 보고서, 스펙, 제안서에 재사용할 수 있는 markdown 스킬." },
+      checklists: { title: "딜리버리 체크리스트", description: "작업 접수부터 모듈 작업, 릴리스 준비, 롤아웃까지의 운영 체크리스트." }
     },
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "노트 추가", commandRunbook: "명령 runbook", setupChecklist: "설정 체크리스트", researchQueue: "리서치 큐" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Markdown 복사", copied: "복사됨", skillLibrary: "스킬 라이브러리", categoriesLabel: "스킬 카테고리" },
     checklists: { ...englishStudioCopy.checklists, copied: "복사됨", menu: "체크리스트 메뉴", sections: "섹션", steps: "단계", structureDetail: (sections, steps) => `${sections}개 섹션, ${steps}개 중첩 단계, markdown 복사 가능.` },
-    roadmap: { ...englishStudioCopy.roadmap, all: "전체", day: "Day", openCategory: "카테고리 열기", queueReadyTickets: "준비된 ticket 큐", min: "분" },
-    preferences: {
-      ...englishStudioCopy.preferences,
-      title: "환경설정",
-      description: "Studio 워크스페이스의 테마, 폰트, 레이아웃.",
-      themeMode: "테마 모드",
-      resolvedNow: "현재 적용",
-      pageLayout: "페이지 레이아웃",
-      navbarBehavior: "Navbar 동작",
-      sidebarStyle: "Sidebar 스타일",
-      collapseMode: "접기 방식",
-      restoreDefaults: "레이아웃 기본값 복원",
-      themeOptions: { light: "라이트", system: "시스템", dark: "다크" },
-      contentLayoutOptions: { centered: "중앙", "full-width": "전체 폭" },
-      navbarStyleOptions: { sticky: "고정", scroll: "스크롤" },
-      sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" },
-      sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
-    }
-  },
-  fr: {
-    ...englishStudioCopy,
+    preferences: { ...englishStudioCopy.preferences, title: "환경설정", description: "Studio 워크스페이스의 테마, 폰트, 레이아웃.", themeMode: "테마 모드", resolvedNow: "현재 적용", pageLayout: "페이지 레이아웃", navbarBehavior: "Navbar 동작", sidebarStyle: "Sidebar 스타일", collapseMode: "접기 방식", restoreDefaults: "레이아웃 기본값 복원", themeOptions: { light: "라이트", system: "시스템", dark: "다크" }, contentLayoutOptions: { centered: "중앙", "full-width": "전체 폭" }, navbarStyleOptions: { sticky: "고정", scroll: "스크롤" }, sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" }, sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" } }
+  }),
+  fr: createCompactStudioCopy({
     navLabel: "Studio personnel",
-    navItems: {
-      "ai-agent-setup": "Setup IA",
-      "ai-skills": "Skills IA",
-      "delivery-checklists": "Checklists",
-      "blog-roadmap": "Roadmap blog"
-    },
+    navItems: { welcome: "Welcome", "ai-agent-setup": "Setup IA", "ai-skills": "Skills IA", "delivery-checklists": "Checklists" },
     findSetupNote: "Trouver une note",
     search: "Rechercher",
     searchPlaceholder: "Rechercher dans le setup IA...",
@@ -1194,36 +1219,17 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     profileNavigationDetail: "Aller vers les sections publiques du profil depuis Studio.",
     openProfileHome: "Ouvrir l'accueil du profil",
     status: { ready: "Prêt", draft: "Brouillon", next: "Suivant" },
-    roadmapStatus: { ready: "Prêt", outline: "Plan", research: "Recherche" },
     categories: { all: "Tout", engineering: "Ingénierie", content: "Contenu", operations: "Opérations", communication: "Communication", strategy: "Stratégie", learning: "Apprentissage" },
-    routes: {
-      "ai-agent-setup": { ...englishStudioCopy.routes["ai-agent-setup"], title: "Setup AI Agent", description: "Notes personnelles pour les outils AI agent, chemins MCP et bootstrap machine sécurisé." },
-      "ai-skills": { ...englishStudioCopy.routes["ai-skills"], title: "Skills IA", description: "Skills markdown réutilisables pour review code, architecture, contenu, prompts, rapports, specs et proposals." },
-      "delivery-checklists": { ...englishStudioCopy.routes["delivery-checklists"], title: "Checklists de livraison", description: "Checklists de l'intake de tâche au module, release readiness et rollout." },
-      "blog-roadmap": { ...englishStudioCopy.routes["blog-roadmap"], title: "Roadmap blog", description: "Menu d'écriture 30 jours pour chaque sujet de blog actuel." }
+    routeText: {
+      setup: { title: "Setup AI Agent", description: "Notes personnelles pour les outils AI agent, chemins MCP et bootstrap machine sécurisé." },
+      skills: { title: "Skills IA", description: "Skills markdown réutilisables pour review code, architecture, contenu, prompts, rapports, specs et proposals." },
+      checklists: { title: "Checklists de livraison", description: "Checklists de l'intake de tâche au module, release readiness et rollout." }
     },
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "Ajouter une note", commandRunbook: "Runbook commandes", setupChecklist: "Checklist setup", researchQueue: "File de recherche" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Copier markdown", copied: "Copié", skillLibrary: "Bibliothèque de skills", categoriesLabel: "Catégories de skills" },
     checklists: { ...englishStudioCopy.checklists, copied: "Copié", menu: "Menu checklist", sections: "sections", steps: "étapes", structureDetail: (sections, steps) => `${sections} sections, ${steps} étapes imbriquées, copiables en markdown.` },
-    roadmap: { ...englishStudioCopy.roadmap, all: "Tout", day: "Jour", openCategory: "Ouvrir catégorie", queueReadyTickets: "Mettre les tickets prêts en file", min: "min" },
-    preferences: {
-      ...englishStudioCopy.preferences,
-      title: "Préférences",
-      description: "Thème, police et layout pour ce Studio.",
-      themeMode: "Mode thème",
-      resolvedNow: "Actuel",
-      pageLayout: "Layout page",
-      navbarBehavior: "Comportement navbar",
-      sidebarStyle: "Style sidebar",
-      collapseMode: "Mode de réduction",
-      restoreDefaults: "Restaurer les valeurs par défaut",
-      themeOptions: { light: "Clair", system: "Système", dark: "Sombre" },
-      contentLayoutOptions: { centered: "Centré", "full-width": "Pleine largeur" },
-      navbarStyleOptions: { sticky: "Sticky", scroll: "Scroll" },
-      sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" },
-      sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
-    }
-  }
+    preferences: { ...englishStudioCopy.preferences, title: "Préférences", description: "Thème, police et layout pour ce Studio.", themeMode: "Mode thème", resolvedNow: "Actuel", pageLayout: "Layout page", navbarBehavior: "Comportement navbar", sidebarStyle: "Style sidebar", collapseMode: "Mode de réduction", restoreDefaults: "Restaurer les valeurs par défaut", themeOptions: { light: "Clair", system: "Système", dark: "Sombre" }, contentLayoutOptions: { centered: "Centré", "full-width": "Pleine largeur" }, navbarStyleOptions: { sticky: "Sticky", scroll: "Scroll" }, sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" }, sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" } }
+  })
 };
 
 function getStudioCopy(locale: string): StudioUiCopy {
@@ -1426,6 +1432,20 @@ function getStudioFlow(flowId: StudioFlowId): StudioFlow {
 
 function flowMetrics(flowId: StudioFlowId): StudioMetric[] {
   const flow = getStudioFlow(flowId);
+  if (flow.architectureDemo) {
+    const views = flow.architectureDemo.views.length > 0
+      ? flow.architectureDemo.views
+      : [{ nodes: flow.architectureDemo.nodes, edges: flow.architectureDemo.edges }];
+    const nodeKinds = new Set(views.flatMap((view) => view.nodes.map((node) => node.kind)));
+    const edgeTypes = new Set(views.flatMap((view) => view.edges.map((edge) => edge.type)));
+    const familyCount = new Set(flow.architectureDemo.views.map((view) => view.family)).size;
+    return [
+      { label: "Demo views", value: `${flow.architectureDemo.views.length}`, helper: "React Flow example modes", badge: "views", trend: "up", icon: LuLayoutDashboard },
+      { label: "Families", value: `${familyCount}`, helper: "Overview, layout, architecture", badge: "menu", trend: "up", icon: LuFilter },
+      { label: "Node shapes", value: `${nodeKinds.size}`, helper: "Built-in and custom nodes", badge: "shape", trend: "up", icon: LuBoxes },
+      { label: "Edge types", value: `${edgeTypes.size}`, helper: "Default, straight, step, smoothstep, bezier", badge: "edge", trend: "up", icon: LuWorkflow },
+    ];
+  }
   return [
     { label: "Flow steps", value: `${flow.steps.length}`, helper: "Ordered checkpoints", badge: "url", trend: "up", icon: LuWorkflow },
     { label: "Artifacts", value: `${flow.artifacts.length}`, helper: "Reusable handoff outputs", badge: "share", trend: "up", icon: LuClipboardList },
@@ -1435,6 +1455,7 @@ function flowMetrics(flowId: StudioFlowId): StudioMetric[] {
 }
 
 const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
+  welcome: [],
   default: defaultMetrics,
   crm: [
     { label: "Open Pipeline", value: "$84.2k", helper: "Weighted active deals", badge: "+8.4%", trend: "up", icon: LuBarChart },
@@ -1514,18 +1535,13 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
     { label: "Steps", value: `${studioWorkflowChecklists.reduce((total, checklist) => total + checklist.sections.reduce((sum, section) => sum + section.steps.length, 0), 0)}`, helper: "Parent checklist items", badge: "ready", trend: "up", icon: LuCheckCircle2 },
     { label: "AI plan", value: "90 days", helper: "Setup, work, career, life", badge: "compound", trend: "up", icon: LuFlag }
   ],
-  "blog-roadmap": [
-    { label: "Topics", value: `${blogRoadmapTopics.length}`, helper: "Existing blog categories in scope", badge: "mapped", trend: "up", icon: LuBookOpenCheck },
-    { label: "Article tickets", value: `${blogRoadmapTopics.reduce((total, topic) => total + topic.entries.length, 0)}`, helper: "One daily idea per topic", badge: "30d", trend: "up", icon: LuListTodo },
-    { label: "Ready drafts", value: `${blogRoadmapTopics.reduce((total, topic) => total + topic.entries.filter((entry) => entry.status === "ready").length, 0)}`, helper: "Can be ticketed first", badge: "next", trend: "up", icon: LuCheckCircle2 },
-    { label: "Cadence", value: "5/day", helper: "One post per topic each day", badge: "daily", trend: "up", icon: LuCalendarDays }
-  ],
   "flow-system-design": flowMetrics("system-design"),
   "flow-architecture-decision": flowMetrics("architecture-decision"),
   "flow-incident-response": flowMetrics("incident-response"),
   "flow-release-readiness": flowMetrics("release-readiness"),
   "flow-ai-delivery": flowMetrics("ai-delivery"),
   "flow-portfolio-story": flowMetrics("portfolio-story"),
+  "flow-react-flow-architecture-demo": flowMetrics("react-flow-architecture-demo"),
   calendar: [
     { label: "Today", value: "6", helper: "Events on the schedule", badge: "+2", trend: "up", icon: LuCalendarDays },
     { label: "Focus Blocks", value: "3h", helper: "Protected engineering time", badge: "+45m", trend: "up", icon: LuAlarmClock },
@@ -1586,7 +1602,56 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
   "legacy-analytics": defaultMetrics
 };
 
+function createFlowRouteDefinition(
+  routeId: StudioFlowRouteId,
+  flowId: StudioFlowId,
+  panels: string[],
+  timeline: string[]
+): StudioRoute {
+  const flow = getStudioFlow(flowId);
+  return {
+    id: routeId,
+    title: flow.title,
+    description: flow.summary,
+    kind: "flows",
+    icon: LuWorkflow,
+    badge: "new",
+    metrics: routeMetrics[routeId],
+    panels,
+    timeline
+  };
+}
+
+function createAuthRouteDefinition(
+  routeId: Extract<StudioRouteId, `auth-${string}`>,
+  title: string,
+  description: string,
+  panels: string[],
+  timeline: string[]
+): StudioRoute {
+  return {
+    id: routeId,
+    title,
+    description,
+    kind: "auth",
+    icon: LuFingerprint,
+    metrics: routeMetrics[routeId],
+    panels,
+    timeline
+  };
+}
+
 const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
+  welcome: {
+    id: "welcome",
+    title: "Welcome",
+    description: "A quiet starting point for the personal Studio: working notes, reusable workflows, and the public profile links I reach for most.",
+    kind: "welcome",
+    icon: LuSmile,
+    metrics: routeMetrics.welcome,
+    panels: ["Start here", "Useful links", "Studio routes"],
+    timeline: ["Open the right workspace", "Keep context close", "Move from idea to proof"]
+  },
   default: {
     id: "default",
     title: "Engineering Ops",
@@ -1731,83 +1796,13 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
     panels: ["Task intake", "Module creation", "Release and rollout"],
     timeline: ["Ticket intake path mapped", "Module checklist nested", "Rollout phases captured"]
   },
-  "blog-roadmap": {
-    id: "blog-roadmap",
-    title: "Blog Roadmap",
-    description: "A 30-day writing menu for every current blog topic, ready to turn into daily Multica article tickets.",
-    kind: "roadmap",
-    icon: LuBookOpenCheck,
-    badge: "new",
-    metrics: routeMetrics["blog-roadmap"],
-    panels: ["Topic menu", "Daily article plan", "Ticket checklist"],
-    timeline: ["Existing blog topics mapped", "Thirty daily prompts prepared", "Ticket handoff checklist ready"]
-  },
-  "flow-system-design": {
-    id: "flow-system-design",
-    title: getStudioFlow("system-design").title,
-    description: getStudioFlow("system-design").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-system-design"],
-    panels: ["Problem frame", "Runtime map", "Failure modes"],
-    timeline: ["Requirement frame set", "Data ownership mapped", "Evolution path documented"]
-  },
-  "flow-architecture-decision": {
-    id: "flow-architecture-decision",
-    title: getStudioFlow("architecture-decision").title,
-    description: getStudioFlow("architecture-decision").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-architecture-decision"],
-    panels: ["Decision scope", "Option matrix", "Risk gates"],
-    timeline: ["Invariants listed", "Options compared", "Decision note ready"]
-  },
-  "flow-incident-response": {
-    id: "flow-incident-response",
-    title: getStudioFlow("incident-response").title,
-    description: getStudioFlow("incident-response").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-incident-response"],
-    panels: ["Signal", "Mitigation", "Postmortem"],
-    timeline: ["Signal confirmed", "Blast radius contained", "Follow-up owners assigned"]
-  },
-  "flow-release-readiness": {
-    id: "flow-release-readiness",
-    title: getStudioFlow("release-readiness").title,
-    description: getStudioFlow("release-readiness").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-release-readiness"],
-    panels: ["Scope", "Verification", "Rollout decision"],
-    timeline: ["Scope checked", "Analytics and SEO reviewed", "Rollback trigger named"]
-  },
-  "flow-ai-delivery": {
-    id: "flow-ai-delivery",
-    title: getStudioFlow("ai-delivery").title,
-    description: getStudioFlow("ai-delivery").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-ai-delivery"],
-    panels: ["Task brief", "Context pack", "Verification"],
-    timeline: ["Boundaries set", "Focused diff reviewed", "Handoff prepared"]
-  },
-  "flow-portfolio-story": {
-    id: "flow-portfolio-story",
-    title: getStudioFlow("portfolio-story").title,
-    description: getStudioFlow("portfolio-story").summary,
-    kind: "flows",
-    icon: LuWorkflow,
-    badge: "new",
-    metrics: routeMetrics["flow-portfolio-story"],
-    panels: ["Context", "Trade-offs", "Impact"],
-    timeline: ["Context captured", "Impact evidence selected", "Story draft shaped"]
-  },
+  "flow-system-design": createFlowRouteDefinition("flow-system-design", "system-design", ["Problem frame", "Runtime map", "Failure modes"], ["Requirement frame set", "Data ownership mapped", "Evolution path documented"]),
+  "flow-architecture-decision": createFlowRouteDefinition("flow-architecture-decision", "architecture-decision", ["Decision scope", "Option matrix", "Risk gates"], ["Invariants listed", "Options compared", "Decision note ready"]),
+  "flow-incident-response": createFlowRouteDefinition("flow-incident-response", "incident-response", ["Signal", "Mitigation", "Postmortem"], ["Signal confirmed", "Blast radius contained", "Follow-up owners assigned"]),
+  "flow-release-readiness": createFlowRouteDefinition("flow-release-readiness", "release-readiness", ["Scope", "Verification", "Rollout decision"], ["Scope checked", "Analytics and SEO reviewed", "Rollback trigger named"]),
+  "flow-ai-delivery": createFlowRouteDefinition("flow-ai-delivery", "ai-delivery", ["Task brief", "Context pack", "Verification"], ["Boundaries set", "Focused diff reviewed", "Handoff prepared"]),
+  "flow-portfolio-story": createFlowRouteDefinition("flow-portfolio-story", "portfolio-story", ["Context", "Trade-offs", "Impact"], ["Context captured", "Impact evidence selected", "Story draft shaped"]),
+  "flow-react-flow-architecture-demo": createFlowRouteDefinition("flow-react-flow-architecture-demo", "react-flow-architecture-demo", ["Node shapes", "Edge language", "Architecture zones"], ["Node primitives displayed", "Architecture shapes mapped", "Canvas controls enabled"]),
   calendar: {
     id: "calendar",
     title: "Calendar",
@@ -1858,26 +1853,8 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
     panels: ["Admin", "Editor", "Viewer"],
     timeline: ["Permission changed", "Role reviewed", "Access report exported"]
   },
-  "auth-login-v1": {
-    id: "auth-login-v1",
-    title: "Login v1",
-    description: "Authentication route preview opened inside Studio instead of a new project.",
-    kind: "auth",
-    icon: LuFingerprint,
-    metrics: routeMetrics["auth-login-v1"],
-    panels: ["Credentials", "Social auth", "Security"],
-    timeline: ["Session created", "Password reset checked", "Device trusted"]
-  },
-  "auth-login-v2": {
-    id: "auth-login-v2",
-    title: "Login v2",
-    description: "Alternate authentication layout with the same shell behavior.",
-    kind: "auth",
-    icon: LuFingerprint,
-    metrics: routeMetrics["auth-login-v2"],
-    panels: ["Credentials", "Magic link", "Security"],
-    timeline: ["Magic link generated", "Session checked", "Device trusted"]
-  },
+  "auth-login-v1": createAuthRouteDefinition("auth-login-v1", "Login v1", "Authentication route preview opened inside Studio instead of a new project.", ["Credentials", "Social auth", "Security"], ["Session created", "Password reset checked", "Device trusted"]),
+  "auth-login-v2": createAuthRouteDefinition("auth-login-v2", "Login v2", "Alternate authentication layout with the same shell behavior.", ["Credentials", "Magic link", "Security"], ["Magic link generated", "Session checked", "Device trusted"]),
   "auth-register-v1": {
     id: "auth-register-v1",
     title: "Register v1",
@@ -1946,6 +1923,12 @@ const navGroups: StudioNavGroup[] = [
     label: "Personal Studio",
     items: [
       {
+        id: "welcome",
+        title: "Welcome",
+        routeId: "welcome",
+        icon: LuSmile
+      },
+      {
         id: "ai-agent-setup",
         title: "AI Setup",
         routeId: "ai-agent-setup",
@@ -1967,22 +1950,18 @@ const navGroups: StudioNavGroup[] = [
         badge: "new"
       },
       {
-        id: "blog-roadmap",
-        title: "Blog Roadmap",
-        routeId: "blog-roadmap",
-        icon: LuBookOpenCheck,
-        badge: "new"
-      },
-      {
         id: "flow-menu",
         title: "Flow Menu",
+        routeId: "flow-react-flow-architecture-demo",
         icon: LuWorkflow,
         badge: "new",
-        subItems: studioFlows.map((flow) => ({
-          id: flowRouteId(flow.id),
-          title: flow.title,
-          routeId: flowRouteId(flow.id)
-        }))
+        subItems: [
+          {
+            id: "flow-react-flow-architecture-demo",
+            title: "Example",
+            routeId: "flow-react-flow-architecture-demo"
+          }
+        ]
       }
     ]
   }
@@ -2213,57 +2192,25 @@ const studioConversations: StudioConversation[] = [
   }
 ];
 
+function createWorkstreamRow(
+  name: string,
+  id: string,
+  status: string,
+  billing: string,
+  plan: string,
+  joined: string,
+  time: string,
+  billingTone: "paid" | "pending" | "unpaid"
+) {
+  return { name, id, status, billing, plan, joined, time, billingTone };
+}
+
 const workstreamRows = [
-  {
-    name: "Gateway rollout guardrails",
-    id: "REL-204",
-    status: "Healthy",
-    billing: "Ready",
-    plan: "Platform",
-    joined: "20th June 2026",
-    time: "at 09:40 AM",
-    billingTone: "paid"
-  },
-  {
-    name: "Partner mTLS certificate overlap",
-    id: "SEC-118",
-    status: "Watching",
-    billing: "Review",
-    plan: "Security",
-    joined: "20th June 2026",
-    time: "at 08:15 AM",
-    billingTone: "pending"
-  },
-  {
-    name: "Feature flag tenant expansion",
-    id: "FF-089",
-    status: "Healthy",
-    billing: "Ready",
-    plan: "Rollout",
-    joined: "19th June 2026",
-    time: "at 05:35 PM",
-    billingTone: "paid"
-  },
-  {
-    name: "Bulk export async worker",
-    id: "PERF-047",
-    status: "Blocked",
-    billing: "Risk",
-    plan: "Backend",
-    joined: "19th June 2026",
-    time: "at 02:12 PM",
-    billingTone: "unpaid"
-  },
-  {
-    name: "PostHog release anomaly review",
-    id: "OBS-066",
-    status: "Queued",
-    billing: "Next",
-    plan: "Observability",
-    joined: "18th June 2026",
-    time: "at 11:08 AM",
-    billingTone: "pending"
-  }
+  createWorkstreamRow("Gateway rollout guardrails", "REL-204", "Healthy", "Ready", "Platform", "20th June 2026", "at 09:40 AM", "paid"),
+  createWorkstreamRow("Partner mTLS certificate overlap", "SEC-118", "Watching", "Review", "Security", "20th June 2026", "at 08:15 AM", "pending"),
+  createWorkstreamRow("Feature flag tenant expansion", "FF-089", "Healthy", "Ready", "Rollout", "19th June 2026", "at 05:35 PM", "paid"),
+  createWorkstreamRow("Bulk export async worker", "PERF-047", "Blocked", "Risk", "Backend", "19th June 2026", "at 02:12 PM", "unpaid"),
+  createWorkstreamRow("PostHog release anomaly review", "OBS-066", "Queued", "Next", "Observability", "18th June 2026", "at 11:08 AM", "pending")
 ];
 
 const dashboardKpis = [
@@ -2471,10 +2418,6 @@ function getInitials(name: string): string {
 
 function statusText(status: StudioNote["status"], copy: StudioUiCopy = englishStudioCopy): string {
   return copy.status[status];
-}
-
-function roadmapStatusText(status: BlogRoadmapStatus, copy: StudioUiCopy = englishStudioCopy): string {
-  return copy.roadmapStatus[status];
 }
 
 function skillCategoryLabel(category: StudioAiSkill["category"] | "all", copy: StudioUiCopy = englishStudioCopy): string {
@@ -2688,7 +2631,14 @@ function SidebarGroup({
                   className={`sidebar-menu-button${active ? " is-active" : ""}`}
                   type="button"
                   aria-expanded={open}
-                  onClick={() => onToggle(item.id)}
+                  onClick={() => {
+                    if (item.routeId) {
+                      if (!open) onToggle(item.id);
+                      onActivate(item.routeId, "sidebar");
+                      return;
+                    }
+                    onToggle(item.id);
+                  }}
                 >
                   {Icon ? <Icon aria-hidden="true" /> : <span className="sidebar-fallback" />}
                   <span>{item.title}</span>
@@ -3492,8 +3442,6 @@ function AiAgentSetupPage({
         </div>
       </RouteHeading>
 
-      <RouteMetricGrid metrics={route.metrics} copy={copy} />
-
       <div className="ai-setup-container card" data-studio-module="ai-agent-setup">
         <aside className="ai-setup-index" aria-label={copy.aiSetup.agentSetupNotes}>
           <div className="ai-pane-head">
@@ -3726,8 +3674,6 @@ function AiSkillsPage({ route, locale, copy }: { route: StudioRoute; locale: str
         </button>
       </RouteHeading>
 
-      <RouteMetricGrid metrics={route.metrics} copy={copy} />
-
       <div className="skill-library-workbench card" data-studio-module="ai-skills">
         <aside className="skill-index-pane" aria-label={copy.aiSkills.skillLibrary}>
           <div className="ai-pane-head">
@@ -3914,8 +3860,6 @@ function DeliveryChecklistsPage({ route, locale, copy }: { route: StudioRoute; l
         </button>
       </RouteHeading>
 
-      <RouteMetricGrid metrics={route.metrics} copy={copy} />
-
       <div className="checklist-workbench card" data-studio-module="delivery-checklists">
         <aside className="checklist-index-pane" aria-label={copy.checklists.workflowListLabel}>
           <div className="ai-pane-head">
@@ -4004,245 +3948,564 @@ function DeliveryChecklistsPage({ route, locale, copy }: { route: StudioRoute; l
   );
 }
 
-function BlogRoadmapPage({ route, locale, copy }: { route: StudioRoute; locale: string; copy: StudioUiCopy }) {
-  const localizedTopics = useMemo(() => getLocalizedBlogRoadmapTopics(locale), [locale]);
-  const localizedTicketChecklist = useMemo(() => getLocalizedBlogRoadmapTicketChecklist(locale), [locale]);
-  const [selectedTopicId, setSelectedTopicId] = useState(localizedTopics[0]?.id ?? "");
-  const [selectedDay, setSelectedDay] = useState(1);
-  const [statusFilter, setStatusFilter] = useState<BlogRoadmapStatus | "all">("all");
-  const selectedTopic = localizedTopics.find((topic) => topic.id === selectedTopicId) ?? localizedTopics[0];
-  const selectedEntry = selectedTopic?.entries.find((entry) => entry.day === selectedDay) ?? selectedTopic?.entries[0];
-  const visibleEntries = selectedTopic?.entries.filter((entry) => statusFilter === "all" || entry.status === statusFilter) ?? [];
-  const readyCount = selectedTopic?.entries.filter((entry) => entry.status === "ready").length ?? 0;
-  const outlineCount = selectedTopic?.entries.filter((entry) => entry.status === "outline").length ?? 0;
-  const researchCount = selectedTopic?.entries.filter((entry) => entry.status === "research").length ?? 0;
-  const blogCategoryHref = selectedTopic ? `${profileHref(locale, APP_ROUTE.BLOG)}/${selectedTopic.categorySlug}` : profileHref(locale, APP_ROUTE.BLOG);
-
-  const handleTopicSelect = (topic: BlogRoadmapTopic) => {
-    const firstEntry = topic.entries[0];
-    setSelectedTopicId(topic.id);
-    setSelectedDay(firstEntry?.day ?? 1);
-    setStatusFilter("all");
-    track("studio_blog_roadmap_topic_select", {
-      topic_id: topic.id,
-      category_slug: topic.categorySlug,
-      entries_count: topic.entries.length
-    });
-  };
-
-  const handleEntrySelect = (entry: BlogRoadmapEntry) => {
-    setSelectedDay(entry.day);
-    track("studio_blog_roadmap_day_select", {
-      topic_id: selectedTopic?.id,
-      day: entry.day,
-      status: entry.status,
-      ticket_label: entry.ticketLabel
-    });
-  };
-
-  const handleTicketAction = (action: "create_one" | "create_ready_batch") => {
-    track("studio_blog_roadmap_ticket_action", {
-      action,
-      topic_id: selectedTopic?.id,
-      day: selectedEntry?.day,
-      ticket_label: selectedEntry?.ticketLabel,
-      ready_count: readyCount
-    });
-  };
-
-  const handleStatusFilterChange = (status: BlogRoadmapStatus | "all") => {
-    if (!selectedTopic) return;
-    const nextEntry = selectedTopic.entries.find((entry) => status === "all" || entry.status === status) ?? selectedTopic.entries[0];
-    setStatusFilter(status);
-    setSelectedDay(nextEntry?.day ?? 1);
-    track("studio_blog_roadmap_status_filter", {
-      topic_id: selectedTopic.id,
-      status,
-      visible_count: status === "all" ? selectedTopic.entries.length : selectedTopic.entries.filter((entry) => entry.status === status).length,
-      selected_day: nextEntry?.day
-    });
-  };
-
-  if (!selectedTopic || !selectedEntry) {
-    return (
-      <section className="empty-route card">
-        <LuBookOpenCheck aria-hidden="true" />
-        <strong>{copy.roadmap.emptyTitle}</strong>
-        <p>{copy.roadmap.emptyDescription}</p>
-      </section>
-    );
-  }
+function WelcomePage({
+  route,
+  locale,
+  copy,
+  onActivate
+}: Readonly<{
+  route: StudioRoute;
+  locale: string;
+  copy: StudioUiCopy;
+  onActivate: (routeId: StudioRouteId, source?: StudioRouteActivationSource) => void;
+}>) {
+  const localizedRoutes = getLocalizedRouteDefinitions(copy);
+  const usefulLinks = getLocalizedProfileItems(copy).filter((item) => ["home", "notes", "blog", "apps", "resume"].includes(item.id));
+  const studioShortcuts: StudioRouteId[] = ["ai-agent-setup", "ai-skills", "delivery-checklists", "flow-react-flow-architecture-demo"];
 
   return (
-    <section className="route-page blog-roadmap-route">
-      <RouteHeading route={route} copy={copy}>
-        <div className="route-actions">
-          <a className="outline-button" href={blogCategoryHref}>
-            <LuBookOpenCheck aria-hidden="true" />
-            {copy.roadmap.openCategory}
-          </a>
-          <button type="button" className="outline-button" onClick={() => handleTicketAction("create_ready_batch")}>
-            <LuPlusCircle aria-hidden="true" />
-            {copy.roadmap.queueReadyTickets}
-          </button>
+    <section className="route-page welcome-route" data-studio-module="welcome">
+      <div className="welcome-shell">
+        <div className="welcome-intro">
+          <span className="welcome-eyebrow"><LuSparkles aria-hidden="true" /> {copy.welcome.eyebrow}</span>
+          <h1>{route.title}</h1>
+          <p>{copy.welcome.lead}</p>
+          <div className="welcome-note-strip">
+            <LuSmile aria-hidden="true" />
+            <span>{copy.welcome.note}</span>
+          </div>
         </div>
-      </RouteHeading>
 
-      <RouteMetricGrid metrics={route.metrics} copy={copy} />
-
-      <div className="blog-roadmap-workbench card" data-studio-module="blog-roadmap">
-        <aside className="roadmap-topic-pane" aria-label={copy.roadmap.topicListLabel}>
-          <div className="ai-pane-head">
-            <span><LuBookOpenCheck aria-hidden="true" /></span>
+        <section className="welcome-panel" aria-label={copy.welcome.studioLinks}>
+          <div className="welcome-panel-head">
+            <span><LuWorkflow aria-hidden="true" /></span>
             <div>
-              <h2>{copy.roadmap.topicMenu}</h2>
-              <p>{copy.roadmap.topicMenuDetail}</p>
+              <h2>{copy.welcome.studioLinks}</h2>
+              <p>{route.description}</p>
             </div>
           </div>
-
-          <div className="roadmap-topic-list">
-            {localizedTopics.map((topic) => {
-              const active = topic.id === selectedTopic.id;
-              const topicReady = topic.entries.filter((entry) => entry.status === "ready").length;
+          <div className="welcome-shortcut-grid">
+            {studioShortcuts.map((routeId) => {
+              const shortcutRoute = localizedRoutes[routeId];
+              const shortcutCopy = copy.welcome.routeCards[routeId];
+              const Icon = shortcutRoute.icon;
               return (
-                <button
-                  key={topic.id}
-                  type="button"
-                  className={`roadmap-topic-button${active ? " is-active" : ""}`}
-                  onClick={() => handleTopicSelect(topic)}
+                <a
+                  key={routeId}
+                  href={routeHref(routeId)}
+                  className="welcome-shortcut"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    onActivate(routeId, "route_actions");
+                  }}
                 >
+                  <Icon aria-hidden="true" />
                   <span>
-                    <strong>{topic.title}</strong>
-                    <small>{topic.tagline}</small>
+                    <strong>{shortcutCopy?.label ?? shortcutRoute.title}</strong>
+                    <small>{shortcutCopy?.detail ?? shortcutRoute.description}</small>
                   </span>
-                  <em>{topicReady}/{topic.entries.length}</em>
-                </button>
+                  <em>{copy.welcome.open}</em>
+                </a>
               );
             })}
           </div>
-        </aside>
-
-        <article className="roadmap-plan-pane" aria-label={copy.roadmap.selectedRoadmap}>
-          <div className="roadmap-plan-head">
-            <div>
-              <span className="ai-status-pill status-ready">{selectedTopic.cadence}</span>
-              <h2>{selectedTopic.title}</h2>
-              <p>{selectedTopic.tagline}</p>
-            </div>
-            <div className="roadmap-status-strip" aria-label={copy.roadmap.statusCountsLabel}>
-              <span><strong>{readyCount}</strong> {roadmapStatusText("ready", copy)}</span>
-              <span><strong>{outlineCount}</strong> {roadmapStatusText("outline", copy)}</span>
-              <span><strong>{researchCount}</strong> {roadmapStatusText("research", copy)}</span>
-            </div>
-          </div>
-
-          <div className="tabs-row tabs-wrap" role="tablist" aria-label={copy.roadmap.statusFiltersLabel}>
-            {(["all", "ready", "outline", "research"] as const).map((status) => (
-              <button
-                key={status}
-                type="button"
-                className={statusFilter === status ? "is-active" : undefined}
-                onClick={() => handleStatusFilterChange(status)}
-              >
-                {status === "all" ? copy.roadmap.all : roadmapStatusText(status, copy)}
-              </button>
-            ))}
-          </div>
-
-          <div className="roadmap-day-grid" aria-label={copy.roadmap.thirtyDayRoadmap}>
-            {visibleEntries.map((entry) => (
-              <button
-                key={entry.day}
-                type="button"
-                className={`roadmap-day-card status-${entry.status}${entry.day === selectedEntry.day ? " is-active" : ""}`}
-                onClick={() => handleEntrySelect(entry)}
-              >
-                <span>{copy.roadmap.day} {entry.day}</span>
-                <strong>{entry.title}</strong>
-                <small>{entry.intent} - {entry.format}</small>
-              </button>
-            ))}
-          </div>
-        </article>
-
-        <aside className="roadmap-detail-pane" aria-label={copy.roadmap.ticketDetail}>
-          <div className="roadmap-ticket-card">
-            <div className="roadmap-ticket-head">
-              <span className={`ai-status-pill status-${selectedEntry.status}`}>{roadmapStatusText(selectedEntry.status, copy)}</span>
-              <strong>{selectedEntry.ticketLabel}</strong>
-            </div>
-            <h2>{copy.roadmap.day} {selectedEntry.day}: {selectedEntry.title}</h2>
-            <p>{selectedEntry.angle}</p>
-            <dl className="roadmap-detail-list">
-              <div>
-                <dt>{copy.roadmap.intent}</dt>
-                <dd>{selectedEntry.intent}</dd>
-              </div>
-              <div>
-                <dt>{copy.roadmap.format}</dt>
-                <dd>{selectedEntry.format}</dd>
-              </div>
-              <div>
-                <dt>{copy.roadmap.draftTime}</dt>
-                <dd>{selectedEntry.estimatedMinutes} {copy.roadmap.min}</dd>
-              </div>
-              <div>
-                <dt>{copy.roadmap.category}</dt>
-                <dd>{selectedTopic.categorySlug}</dd>
-              </div>
-            </dl>
-            <button type="button" className="primary-action" onClick={() => handleTicketAction("create_one")}>
-              {copy.roadmap.prepareTicket}
-            </button>
-          </div>
-
-          <section className="ai-checklist-panel">
-            <h3>{copy.roadmap.ticketHandoff}</h3>
-            <div>
-              {localizedTicketChecklist.map((item, index) => (
-                <label className="check-row checklist-row" key={item}>
-                  <input type="checkbox" defaultChecked={index < 3} />
-                  <span>
-                    <strong>{item}</strong>
-                  </span>
-                </label>
-              ))}
-            </div>
-          </section>
-        </aside>
+        </section>
       </div>
+
+      <section className="welcome-link-band" aria-label={copy.welcome.publicLinks}>
+        <div className="welcome-link-head">
+          <span><LuLink aria-hidden="true" /></span>
+          <div>
+            <h2>{copy.welcome.publicLinks}</h2>
+            <p>{copy.profileNavigationDetail}</p>
+          </div>
+        </div>
+        <div className="welcome-link-grid">
+          {usefulLinks.map((item) => {
+            const Icon = item.icon;
+            const linkCopy = copy.welcome.linkCards[item.id];
+            return (
+              <a
+                key={item.id}
+                href={profileHref(locale, item.href)}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noreferrer" : undefined}
+                onClick={() => {
+                  track("studio_profile_nav_click", {
+                    target: item.id,
+                    source: "welcome",
+                    external: Boolean(item.external)
+                  });
+                }}
+              >
+                <Icon aria-hidden="true" />
+                <span>
+                  <strong>{linkCopy?.label ?? item.label}</strong>
+                  <small>{linkCopy?.detail ?? item.detail}</small>
+                </span>
+                <LuExternalLink aria-hidden="true" />
+              </a>
+            );
+          })}
+        </div>
+      </section>
     </section>
   );
 }
 
-function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy }) {
+type StudioFlowCanvasNode = Node<StudioFlowCanvasNodeData, "studioFlow">;
+
+const studioFlowNodeTypes = {
+  studioFlow: StudioFlowCanvasNodeCard
+};
+
+const flowCanvasTones: StudioFlowCanvasTone[] = [
+  "source",
+  "process",
+  "agent",
+  "review",
+  "storage",
+  "event",
+  "external",
+  "risk",
+  "output"
+];
+
+const flowCanvasToneColors: Record<StudioFlowCanvasTone, string> = {
+  source: "#2563eb",
+  process: "#0f766e",
+  agent: "#d97706",
+  review: "#7c3aed",
+  storage: "#0891b2",
+  event: "#9333ea",
+  external: "#64748b",
+  risk: "#dc2626",
+  output: "#16a34a"
+};
+
+const reactFlowExampleFamilyLabels: Record<string, string> = {
+  overview: "Overview",
+  interaction: "Interaction",
+  grouping: "Subflows & Grouping",
+  layout: "Layout",
+  styling: "Styling",
+  whiteboard: "Whiteboard",
+  architecture: "Software Architecture"
+};
+
+function getReactFlowFamilyLabel(family: string) {
+  return reactFlowExampleFamilyLabels[family] ?? family;
+}
+
+function renderStudioFlowNodeIcon(kind: StudioFlowCanvasNodeKind, badge?: string) {
+  if (kind === "database" || badge === "db") return <LuDatabase />;
+  if (kind === "cache" || badge === "cache") return <LuArchive />;
+  if (kind === "queue" || kind === "topic" || badge === "event") return <LuWorkflow />;
+  if (kind === "worker" || badge === "async") return <LuSettings />;
+  if (kind === "external" || badge === "external" || badge === "edge") return <LuGlobe />;
+  if (kind === "gateway" || badge === "service") return <LuServer />;
+  if (kind === "input" || badge === "client") return <LuUsers />;
+  if (kind === "output") return <LuCheckCircle2 />;
+  if (kind === "risk") return <LuFlag />;
+  if (kind === "note") return <LuFileText />;
+  if (kind === "decision") return <LuHelpCircle />;
+  if (badge === "security") return <LuLock />;
+  if (badge === "ops") return <LuLineChart />;
+  if (badge === "analytics") return <LuBarChart />;
+  return <LuServer />;
+}
+
+function StudioFlowCanvasNodeCard({ data }: NodeProps<StudioFlowCanvasNode>) {
+  const canConnect = data.kind !== "group";
+
   return (
-    <section className="flow-chart-surface" aria-label={copy.flows.chartLabel}>
+    <div className={`flow-react-node flow-react-node--${data.kind} tone-${data.tone}${data.active ? " is-active" : ""}${data.compact ? " is-compact" : ""}`}>
+      {canConnect && <Handle type="target" position={Position.Left} />}
+      {canConnect && <Handle className="flow-react-handle-top" type="target" position={Position.Top} />}
+      {data.compact ? (
+        <span className="flow-react-node-icon" aria-hidden="true">
+          {renderStudioFlowNodeIcon(data.kind, data.badge)}
+        </span>
+      ) : (
+        <span className="flow-react-node-badge">{data.badge}</span>
+      )}
+      <strong>{data.title}</strong>
+      <small>{data.detail}</small>
+      {canConnect && <Handle type="source" position={Position.Right} />}
+      {canConnect && <Handle className="flow-react-handle-bottom" type="source" position={Position.Bottom} />}
+    </div>
+  );
+}
+
+function buildStudioFlowCanvas(flow: StudioFlow, viewId?: string): {
+  nodes: StudioFlowCanvasNode[];
+  edges: Edge[];
+} {
+  if (flow.architectureDemo) {
+    return buildArchitectureDemoCanvas(flow, viewId);
+  }
+
+  const nodes = flow.steps.map<StudioFlowCanvasNode>((step, index) => {
+    const tone = flowCanvasTones[index % flowCanvasTones.length] ?? "process";
+    return {
+      id: step.id,
+      type: "studioFlow",
+      position: {
+        x: index * 270,
+        y: index % 2 === 0 ? 34 : 178
+      },
+      data: {
+        kind: "step",
+        title: step.title,
+        detail: step.output,
+        badge: String(index + 1).padStart(2, "0"),
+        tone
+      }
+    };
+  });
+
+  const outcomeNode: StudioFlowCanvasNode = {
+    id: `${flow.id}-outcome`,
+    type: "studioFlow",
+    position: { x: flow.steps.length * 270 + 16, y: 90 },
+    data: {
+      kind: "detail",
+      title: "Outcome",
+      detail: flow.outcome,
+      badge: "goal",
+      tone: "output"
+    }
+  };
+
+  const edges: Edge[] = [];
+  for (let index = 1; index < nodes.length; index += 1) {
+    const source = nodes[index - 1];
+    const target = nodes[index];
+    if (!source || !target) continue;
+
+    const tone = target.data.tone;
+    edges.push({
+      id: `${source.id}-${target.id}`,
+      source: source.id,
+      target: target.id,
+      type: "smoothstep",
+      animated: index < 3,
+      markerEnd: { type: MarkerType.ArrowClosed },
+      style: { stroke: flowCanvasToneColors[tone], strokeWidth: 2 }
+    });
+  }
+
+  const lastStep = nodes.at(-1);
+  if (lastStep) {
+    edges.push({
+      id: `${lastStep.id}-${outcomeNode.id}`,
+      source: lastStep.id,
+      target: outcomeNode.id,
+      type: "smoothstep",
+      markerEnd: { type: MarkerType.ArrowClosed },
+      style: { stroke: flowCanvasToneColors.output, strokeWidth: 2 }
+    });
+  }
+
+  return { nodes: [...nodes, outcomeNode], edges };
+}
+
+function getStudioFlowEdgeMarker(marker: StudioFlowArchitectureEdgeSpec["marker"]): Edge["markerEnd"] {
+  if (marker === "arrow") return { type: MarkerType.Arrow };
+  if (marker === "arrowClosed") return { type: MarkerType.ArrowClosed };
+  return undefined;
+}
+
+function buildArchitectureDemoCanvas(flow: StudioFlow, viewId?: string): {
+  nodes: StudioFlowCanvasNode[];
+  edges: Edge[];
+} {
+  const demo = flow.architectureDemo;
+  if (!demo) return { nodes: [], edges: [] };
+  const view = demo.views.find((candidate) => candidate.id === viewId)
+    ?? demo.views.find((candidate) => candidate.id === demo.defaultViewId)
+    ?? demo.views[0];
+  const viewNodes = view?.nodes ?? demo.nodes;
+  const viewEdges = view?.edges ?? demo.edges;
+
+  const nodes = viewNodes.map<StudioFlowCanvasNode>((node) => ({
+    id: node.id,
+    type: "studioFlow",
+    position: node.position,
+    zIndex: node.kind === "group" ? 0 : 2,
+    style: node.size ? { width: node.size.width, height: node.size.height } : undefined,
+    data: {
+      kind: node.kind,
+      title: node.title,
+      detail: node.detail,
+      badge: node.badge,
+      tone: node.tone,
+      active: node.kind !== "group",
+      compact: node.compact
+    }
+  }));
+
+  const edges = viewEdges.map<Edge>((edge) => ({
+    id: edge.id,
+    source: edge.source,
+    target: edge.target,
+    type: edge.type,
+    label: edge.label,
+    animated: edge.animated,
+    markerEnd: getStudioFlowEdgeMarker(edge.marker),
+    style: { stroke: flowCanvasToneColors[edge.tone], strokeWidth: edge.animated ? 2.4 : 1.8 },
+    labelStyle: { fill: flowCanvasToneColors[edge.tone], fontSize: 11, fontWeight: 700 },
+    labelBgStyle: { fill: "var(--card)", fillOpacity: 0.86 },
+    labelBgPadding: [6, 4],
+    labelBgBorderRadius: 6
+  }));
+
+  return { nodes, edges };
+}
+
+function getStudioFlowNodeSize(node: StudioFlowCanvasNode) {
+  let fallbackSize = { width: 220, height: 96 };
+  if (node.data.kind === "decision") fallbackSize = { width: 160, height: 160 };
+  if (node.data.compact) fallbackSize = { width: 136, height: 108 };
+  const width = typeof node.style?.width === "number" ? node.style.width : fallbackSize.width;
+  const height = typeof node.style?.height === "number" ? node.style.height : fallbackSize.height;
+  return { width, height };
+}
+
+function StudioFlowMiniMapOverlay({ nodes }: Readonly<{ nodes: StudioFlowCanvasNode[] }>) {
+  const minimapNodes = useMemo(() => {
+    if (!nodes.length) return [];
+
+    const rawNodes = nodes.map((node) => {
+      const size = getStudioFlowNodeSize(node);
+      return {
+        id: node.id,
+        x: node.position.x,
+        y: node.position.y,
+        width: size.width,
+        height: size.height,
+        kind: node.data.kind
+      };
+    });
+    const minX = Math.min(...rawNodes.map((node) => node.x));
+    const minY = Math.min(...rawNodes.map((node) => node.y));
+    const maxX = Math.max(...rawNodes.map((node) => node.x + node.width));
+    const maxY = Math.max(...rawNodes.map((node) => node.y + node.height));
+    const contentWidth = Math.max(1, maxX - minX);
+    const contentHeight = Math.max(1, maxY - minY);
+    const width = 160;
+    const height = 112;
+    const padding = 9;
+    const scale = Math.min((width - padding * 2) / contentWidth, (height - padding * 2) / contentHeight);
+    const offsetX = (width - contentWidth * scale) / 2;
+    const offsetY = (height - contentHeight * scale) / 2;
+
+    return rawNodes.map((node) => ({
+      id: node.id,
+      x: offsetX + (node.x - minX) * scale,
+      y: offsetY + (node.y - minY) * scale,
+      width: Math.max(2.4, node.width * scale),
+      height: Math.max(2.4, node.height * scale),
+      isGroup: node.kind === "group"
+    }));
+  }, [nodes]);
+
+  if (!minimapNodes.length) return null;
+
+  return (
+    <svg className="flow-minimap-overlay" viewBox="0 0 160 112" aria-hidden="true">
+      {minimapNodes.map((node) => (
+        <rect
+          key={node.id}
+          className={`flow-minimap-overlay-node${node.isGroup ? " is-group" : ""}`}
+          x={node.x}
+          y={node.y}
+          width={node.width}
+          height={node.height}
+          rx={node.isGroup ? 3 : 2}
+        />
+      ))}
+    </svg>
+  );
+}
+
+function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy }) {
+  const demo = flow.architectureDemo;
+  const demoViews = useMemo(() => demo?.views ?? [], [demo]);
+  const initialDemoView = demoViews.find((view) => view.id === demo?.defaultViewId) ?? demoViews[0];
+  const [isBoardFullscreen, setIsBoardFullscreen] = useState(false);
+  const [demoSelection, setDemoSelection] = useState<{ flowId: StudioFlowId; family: string; viewId: string }>({
+    flowId: flow.id,
+    family: initialDemoView?.family ?? "architecture",
+    viewId: initialDemoView?.id ?? ""
+  });
+  const activeSelection = demoSelection.flowId === flow.id
+    ? demoSelection
+    : {
+      flowId: flow.id,
+      family: initialDemoView?.family ?? "architecture",
+      viewId: initialDemoView?.id ?? ""
+    };
+  const selectedFamily = activeSelection.family;
+  const selectedViewId = activeSelection.viewId;
+
+  const familyOptions = useMemo(() => {
+    const families = new Map<string, string>();
+    demoViews.forEach((view) => {
+      if (!families.has(view.family)) families.set(view.family, getReactFlowFamilyLabel(view.family));
+    });
+    return Array.from(families, ([value, label]) => ({ value, label }));
+  }, [demoViews]);
+  const selectedFamilyViews = useMemo(
+    () => demoViews.filter((view) => view.family === selectedFamily),
+    [demoViews, selectedFamily]
+  );
+  const selectedView = demoViews.find((view) => view.id === selectedViewId)
+    ?? selectedFamilyViews[0]
+    ?? initialDemoView;
+  const { nodes, edges } = useMemo(() => buildStudioFlowCanvas(flow, selectedView?.id), [flow, selectedView?.id]);
+  const isReactFlowDemo = Boolean(demo);
+  const isCompactDiagram = nodes.some((node) => node.data.compact);
+  let fitViewPadding = 0.24;
+  if (isReactFlowDemo) fitViewPadding = 0.14;
+  if (isCompactDiagram) fitViewPadding = 0.18;
+
+  useEffect(() => {
+    if (!isBoardFullscreen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsBoardFullscreen(false);
+    };
+    globalThis.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      globalThis.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isBoardFullscreen]);
+
+  const toggleFullscreen = () => {
+    const fullscreenNext = !isBoardFullscreen;
+    track("studio_flow_board_fullscreen_toggle", {
+      flow_id: flow.id,
+      view_id: selectedView?.id,
+      fullscreen_next: fullscreenNext
+    });
+    setIsBoardFullscreen(fullscreenNext);
+  };
+
+  return (
+    <section className={`flow-chart-surface${isReactFlowDemo ? " is-architecture-demo" : ""}${isCompactDiagram ? " is-compact-diagram" : ""}${isBoardFullscreen ? " is-fullscreen" : ""}`} aria-label={copy.flows.chartLabel}>
       <div className="flow-chart-head">
         <div>
-          <span className="ai-status-pill status-ready">{copy.flows.chartLabel}</span>
-          <h3>{flow.title}</h3>
+          <h3>{selectedView?.title ?? flow.title}</h3>
         </div>
-        <p>{copy.flows.chartHint}</p>
+        <p>{selectedView?.description ?? copy.flows.chartHint}</p>
       </div>
 
-      <ol
-        className="flow-chart"
-        style={{ "--flow-count": flow.steps.length } as CSSProperties}
-      >
-        {flow.steps.map((step, index) => (
-          <li key={step.id} className="flow-chart-node">
-            <span className="flow-chart-index">{String(index + 1).padStart(2, "0")}</span>
-            <strong>{step.title}</strong>
-            <small>{step.output}</small>
-          </li>
-        ))}
-      </ol>
-
-      <div className="flow-chart-outcome">
-        <span>{copy.flows.chartOutcome}</span>
-        <strong>{flow.outcome}</strong>
+      <div className={`flow-board-toolbar${demo && selectedView ? " has-selectors" : ""}`} aria-label={copy.flows.boardTools}>
+        {demo && selectedView && (
+          <div className="flow-example-toolbar" aria-label="React Flow example selector">
+            <label>
+              <span>{copy.flows.exampleFamily}</span>
+              <select
+                value={selectedFamily}
+                onChange={(event) => {
+                  const nextFamily = event.target.value;
+                  const nextView = demo.views.find((view) => view.family === nextFamily);
+                  setDemoSelection({
+                    flowId: flow.id,
+                    family: nextFamily,
+                    viewId: nextView?.id ?? ""
+                  });
+                }}
+              >
+                {familyOptions.map((family) => (
+                  <option key={family.value} value={family.value}>
+                    {family.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              <span>{copy.flows.exampleView}</span>
+              <select
+                value={selectedView.id}
+                onChange={(event) => {
+                  const nextView = demo.views.find((view) => view.id === event.target.value);
+                  setDemoSelection({
+                    flowId: flow.id,
+                    family: nextView?.family ?? selectedFamily,
+                    viewId: event.target.value
+                  });
+                }}
+              >
+                {selectedFamilyViews.map((view) => (
+                  <option key={view.id} value={view.id}>
+                    {view.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+        )}
+        <div className="flow-board-actionbar">
+          <button
+            type="button"
+            className="flow-board-fullscreen-button"
+            aria-label={isBoardFullscreen ? copy.flows.exitFullscreen : copy.flows.enterFullscreen}
+            onClick={toggleFullscreen}
+          >
+            {isBoardFullscreen ? <LuMinimize2 aria-hidden="true" /> : <LuMaximize2 aria-hidden="true" />}
+            <span>{isBoardFullscreen ? copy.flows.exitFullscreen : copy.flows.enterFullscreen}</span>
+          </button>
+        </div>
       </div>
+
+      <div className={`flow-react-surface${isReactFlowDemo ? " is-architecture-demo" : ""}${isCompactDiagram ? " is-compact-diagram" : ""}`}>
+        <ReactFlow
+          key={selectedView?.id ?? flow.id}
+          className="flow-react-canvas"
+          nodes={nodes}
+          edges={edges}
+          nodeTypes={studioFlowNodeTypes}
+          fitView
+          fitViewOptions={{
+            padding: fitViewPadding,
+            minZoom: isReactFlowDemo ? 0.26 : 0.5
+          }}
+          minZoom={0.18}
+          maxZoom={1.6}
+          nodesDraggable={false}
+          nodesConnectable={false}
+          elementsSelectable={false}
+          proOptions={{ hideAttribution: true }}
+        >
+          <Background color="color-mix(in srgb, var(--foreground) 12%, transparent)" gap={22} />
+          <Controls showInteractive={false} />
+          <MiniMap
+            position="bottom-right"
+            pannable
+            zoomable
+            bgColor="var(--flow-minimap-bg)"
+            maskColor="var(--flow-minimap-mask)"
+            maskStrokeColor="var(--flow-minimap-stroke)"
+            maskStrokeWidth={1.8}
+            nodeColor="var(--flow-minimap-node-fill)"
+            nodeStrokeColor="var(--flow-minimap-node-stroke)"
+            nodeStrokeWidth={2.6}
+            nodeBorderRadius={8}
+          />
+        </ReactFlow>
+        <StudioFlowMiniMapOverlay nodes={nodes} />
+      </div>
+
+      {!demo && (
+        <div className="flow-chart-outcome">
+          <span>{copy.flows.chartOutcome}</span>
+          <strong>{flow.outcome}</strong>
+        </div>
+      )}
     </section>
   );
 }
@@ -4314,141 +4577,157 @@ function StudioFlowMenuPage({
 
   return (
     <section className="route-page studio-flow-route">
-      <RouteHeading route={route} copy={copy}>
-        <button type="button" className="outline-button" onClick={copyFlowLink}>
-          {copiedFlowId === selectedFlow.id ? <LuCheck aria-hidden="true" /> : <LuShare2 aria-hidden="true" />}
-          {copiedFlowId === selectedFlow.id ? copy.flows.copied : copy.flows.shareFlow}
-        </button>
-      </RouteHeading>
+      {!selectedFlow.architectureDemo && (
+        <>
+          <RouteHeading route={route} copy={copy}>
+            <button type="button" className="outline-button" onClick={copyFlowLink}>
+              {copiedFlowId === selectedFlow.id ? <LuCheck aria-hidden="true" /> : <LuShare2 aria-hidden="true" />}
+              {copiedFlowId === selectedFlow.id ? copy.flows.copied : copy.flows.shareFlow}
+            </button>
+          </RouteHeading>
 
-      <RouteMetricGrid metrics={route.metrics} copy={copy} />
+        </>
+      )}
 
-      <div className="flow-workbench card" data-studio-module="flow-menu">
-        <aside className="flow-index-pane" aria-label={copy.flows.flowListLabel}>
-          <div className="ai-pane-head">
-            <span><LuWorkflow aria-hidden="true" /></span>
-            <div>
-              <h2>{copy.flows.menu}</h2>
-              <p>{copy.flows.menuDetail}</p>
+      <div
+        className={`flow-workbench card${selectedFlow.architectureDemo ? " is-architecture-demo" : ""}`}
+        data-studio-module="flow-menu"
+      >
+        {!selectedFlow.architectureDemo && (
+          <aside className="flow-index-pane" aria-label={copy.flows.flowListLabel}>
+            <div className="ai-pane-head">
+              <span><LuWorkflow aria-hidden="true" /></span>
+              <div>
+                <h2>{copy.flows.menu}</h2>
+                <p>{copy.flows.menuDetail}</p>
+              </div>
             </div>
-          </div>
 
-          <div className="flow-group-list" aria-label={copy.flows.groupMenuLabel}>
-            {localizedGroups.map((group) => {
-              const active = selectedFlow.groupId === group.id;
-              return (
-                <button
-                  key={group.id}
-                  type="button"
-                  className={`flow-group-button${active ? " is-active" : ""}`}
-                  onClick={() => handleGroupSelect(group.id)}
-                >
-                  <strong>{group.title}</strong>
-                  <small>{group.subtitle}</small>
-                </button>
-              );
-            })}
-          </div>
+            <div className="flow-group-list" aria-label={copy.flows.groupMenuLabel}>
+              {localizedGroups.map((group) => {
+                const active = selectedFlow.groupId === group.id;
+                return (
+                  <button
+                    key={group.id}
+                    type="button"
+                    className={`flow-group-button${active ? " is-active" : ""}`}
+                    onClick={() => handleGroupSelect(group.id)}
+                  >
+                    <strong>{group.title}</strong>
+                    <small>{group.subtitle}</small>
+                  </button>
+                );
+              })}
+            </div>
 
-          <div className="flow-list">
-            {localizedFlows.map((flow) => {
-              const active = selectedFlow.id === flow.id;
-              return (
-                <a
-                  key={flow.id}
-                  href={studioFlowHref(locale, flow.id)}
-                  className={`flow-list-button${active ? " is-active" : ""}`}
-                  aria-current={active ? "page" : undefined}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    handleFlowSelect(flow.id);
-                  }}
-                >
-                  <span>
-                    <strong>{flow.title}</strong>
-                    <small>{flow.summary}</small>
-                  </span>
-                  <em>{flow.steps.length}</em>
-                </a>
-              );
-            })}
-          </div>
-        </aside>
+            <div className="flow-list">
+              {localizedFlows.map((flow) => {
+                const active = selectedFlow.id === flow.id;
+                return (
+                  <a
+                    key={flow.id}
+                    href={studioFlowHref(locale, flow.id)}
+                    className={`flow-list-button${active ? " is-active" : ""}`}
+                    aria-current={active ? "page" : undefined}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleFlowSelect(flow.id);
+                    }}
+                  >
+                    <span>
+                      <strong>{flow.title}</strong>
+                      <small>{flow.summary}</small>
+                    </span>
+                    <em>{flow.architectureDemo?.views.length ?? flow.steps.length}</em>
+                  </a>
+                );
+              })}
+            </div>
+          </aside>
+        )}
 
         <article id={`flow-${selectedFlow.id}`} className="flow-reader-pane" aria-label={copy.flows.selectedFlow}>
-          <div className="skill-reader-head">
-            <div>
-              <span className="ai-status-pill status-ready">{selectedGroup?.title ?? selectedFlow.groupId}</span>
-              <h2>{selectedFlow.title}</h2>
-              <p>{selectedFlow.summary}</p>
-            </div>
-            <a className="outline-button" href={studioFlowHref(locale, selectedFlow.id)}>
-              <LuLink aria-hidden="true" />
-              {copy.flows.openFlow}
-            </a>
-          </div>
+          {!selectedFlow.architectureDemo && (
+            <>
+              <div className="skill-reader-head">
+                <div>
+                  <span className="ai-status-pill status-ready">{selectedGroup?.title ?? selectedFlow.groupId}</span>
+                  <h2>{selectedFlow.title}</h2>
+                  <p>{selectedFlow.summary}</p>
+                </div>
+                <a className="outline-button" href={studioFlowHref(locale, selectedFlow.id)}>
+                  <LuLink aria-hidden="true" />
+                  {copy.flows.openFlow}
+                </a>
+              </div>
 
-          <div className="ai-tag-list" aria-label="Flow tags">
-            {selectedFlow.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
+              <div className="ai-tag-list" aria-label="Flow tags">
+                {selectedFlow.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+            </>
+          )}
 
           <StudioFlowChart flow={selectedFlow} copy={copy} />
 
-          <ol className="flow-step-map" aria-label={`${copy.flows.evidence} / ${copy.flows.output}`}>
-            {selectedFlow.steps.map((step, index) => (
-              <li key={step.id} className="flow-step-node">
-                <span className="flow-step-index">{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{step.title}</h3>
-                  <p>{step.detail}</p>
-                  <dl>
-                    <div>
-                      <dt>{copy.flows.evidence}</dt>
-                      <dd>{step.evidence}</dd>
-                    </div>
-                    <div>
-                      <dt>{copy.flows.output}</dt>
-                      <dd>{step.output}</dd>
-                    </div>
-                  </dl>
-                </div>
-              </li>
-            ))}
-          </ol>
+          {!selectedFlow.architectureDemo && (
+            <ol className="flow-step-map" aria-label={`${copy.flows.evidence} / ${copy.flows.output}`}>
+              {selectedFlow.steps.map((step, index) => (
+                <li key={step.id} className="flow-step-node">
+                  <span className="flow-step-index">{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p>{step.detail}</p>
+                    <dl>
+                      <div>
+                        <dt>{copy.flows.evidence}</dt>
+                        <dd>{step.evidence}</dd>
+                      </div>
+                      <div>
+                        <dt>{copy.flows.output}</dt>
+                        <dd>{step.output}</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          )}
         </article>
 
-        <aside className="flow-side-pane" aria-label="Flow details">
-          <section>
-            <h3>{copy.flows.useWhen}</h3>
-            <p>{selectedFlow.useWhen}</p>
-          </section>
-          <section>
-            <h3>{copy.flows.outcome}</h3>
-            <p>{selectedFlow.outcome}</p>
-          </section>
-          <section>
-            <h3>{copy.flows.officeExample}</h3>
-            <p>{selectedFlow.officeExample}</p>
-          </section>
-          <section>
-            <h3>{copy.flows.artifacts}</h3>
-            <ul>
-              {selectedFlow.artifacts.map((artifact) => (
-                <li key={artifact}>{artifact}</li>
-              ))}
-            </ul>
-          </section>
-          <section>
-            <h3>{copy.flows.cvSignals}</h3>
-            <ul>
-              {selectedFlow.cvSignals.map((signal) => (
-                <li key={signal}>{signal}</li>
-              ))}
-            </ul>
-          </section>
-        </aside>
+        {!selectedFlow.architectureDemo && (
+          <aside className="flow-side-pane" aria-label="Flow details">
+            <section>
+              <h3>{copy.flows.useWhen}</h3>
+              <p>{selectedFlow.useWhen}</p>
+            </section>
+            <section>
+              <h3>{copy.flows.outcome}</h3>
+              <p>{selectedFlow.outcome}</p>
+            </section>
+            <section>
+              <h3>{copy.flows.officeExample}</h3>
+              <p>{selectedFlow.officeExample}</p>
+            </section>
+            <section>
+              <h3>{copy.flows.artifacts}</h3>
+              <ul>
+                {selectedFlow.artifacts.map((artifact) => (
+                  <li key={artifact}>{artifact}</li>
+                ))}
+              </ul>
+            </section>
+            <section>
+              <h3>{copy.flows.cvSignals}</h3>
+              <ul>
+                {selectedFlow.cvSignals.map((signal) => (
+                  <li key={signal}>{signal}</li>
+                ))}
+              </ul>
+            </section>
+          </aside>
+        )}
       </div>
     </section>
   );
@@ -4786,6 +5065,7 @@ function RouteContent({
   onSortMode: (value: string) => void;
   onActivate: (routeId: StudioRouteId, source?: StudioRouteActivationSource) => void;
 }) {
+  if (route.kind === "welcome") return <WelcomePage route={route} locale={locale} copy={copy} onActivate={onActivate} />;
   if (route.kind === "default") {
     return (
       <DefaultDashboard
@@ -4807,7 +5087,6 @@ function RouteContent({
   if (route.kind === "ai-setup") return <AiAgentSetupPage route={route} locale={locale} copy={copy} profileActions={profileActions} />;
   if (route.kind === "ai-skills") return <AiSkillsPage route={route} locale={locale} copy={copy} />;
   if (route.kind === "checklists") return <DeliveryChecklistsPage route={route} locale={locale} copy={copy} />;
-  if (route.kind === "roadmap") return <BlogRoadmapPage route={route} locale={locale} copy={copy} />;
   if (route.kind === "flows") return <StudioFlowMenuPage route={route} locale={locale} copy={copy} onActivate={onActivate} />;
   if (route.kind === "calendar") return <CalendarPage route={route} />;
   if (route.kind === "kanban") return <KanbanPage route={route} />;
@@ -5324,7 +5603,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
       <aside className="studio-sidebar" aria-label={copy.navLabel}>
         <div className="sidebar-header">
           <a className="sidebar-brand" href={routeHref(DEFAULT_ROUTE)} aria-label={copy.openStudio} onClick={handleBrandClick}>
-            <Image src="/icon.png" alt="" width={28} height={28} />
+            <span className="sidebar-brand-mark" aria-hidden="true">N</span>
             <span>{copy.brand}</span>
           </a>
           <button

@@ -9,6 +9,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.ok(existsSync("src/app/[locale]/studio/studio-admin-shell.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.shadow-styles.ts"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.data.ts"));
+  assert.ok(existsSync("src/app/[locale]/studio/studio.react-flow-architecture-demo.ts"));
   assert.ok(existsSync("src/components/studio-kit/index.ts"));
   assert.ok(existsSync("src/components/studio-kit/shadow-island.tsx"));
   assert.ok(existsSync("src/components/studio-kit/README.md"));
@@ -34,6 +35,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     kitIndex,
     shadowIsland,
     kitReadme,
+    architectureDemo,
     packageJson,
     enMessages,
     viMessages
@@ -54,6 +56,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/components/studio-kit/index.ts", "utf8"),
     readFile("src/components/studio-kit/shadow-island.tsx", "utf8"),
     readFile("src/components/studio-kit/README.md", "utf8"),
+    readFile("src/app/[locale]/studio/studio.react-flow-architecture-demo.ts", "utf8"),
     readFile("package.json", "utf8"),
     readFile("messages/en.json", "utf8"),
     readFile("messages/vi.json", "utf8")
@@ -70,12 +73,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(footer, /studio_footer/);
   assert.match(seo, /studio/);
   assert.match(analytics, /'studio_view'/);
-  assert.match(analytics, /'studio_blog_roadmap_topic_select'/);
-  assert.match(analytics, /'studio_blog_roadmap_status_filter'/);
-  assert.match(analytics, /'studio_blog_roadmap_day_select'/);
-  assert.match(analytics, /'studio_blog_roadmap_ticket_action'/);
+  assert.doesNotMatch(analytics, /studio_blog_roadmap/);
   assert.match(analytics, /'studio_flow_group_select'/);
   assert.match(analytics, /'studio_flow_select'/);
+  assert.match(analytics, /'studio_flow_board_fullscreen_toggle'/);
   assert.match(analytics, /'studio_flow_share'/);
   assert.match(tracker, /'studio'/);
   assert.match(tracker, /'studio_view'/);
@@ -99,6 +100,30 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(workspace, /studioShadowStyles/);
   assert.match(adminShell, /^"use client"/);
   assert.match(adminShell, /StudioAdminShell/);
+  assert.match(adminShell, /const DEFAULT_ROUTE:\s*StudioRouteId = "welcome"/);
+  assert.match(adminShell, /@xyflow\/react/);
+  assert.match(adminShell, /ReactFlow/);
+  assert.match(adminShell, /MiniMap/);
+  assert.match(adminShell, /maskStrokeColor/);
+  assert.match(adminShell, /bgColor="var\(--flow-minimap-bg\)"/);
+  assert.match(adminShell, /nodeColor="var\(--flow-minimap-node-fill\)"/);
+  assert.match(adminShell, /nodeStrokeWidth=\{2\.6\}/);
+  assert.match(adminShell, /fitViewOptions/);
+  assert.match(adminShell, /function buildArchitectureDemoCanvas/);
+  assert.match(adminShell, /function StudioFlowCanvasNodeCard/);
+  assert.match(adminShell, /function StudioFlowMiniMapOverlay/);
+  assert.match(adminShell, /isBoardFullscreen/);
+  assert.match(adminShell, /studio_flow_board_fullscreen_toggle/);
+  assert.match(adminShell, /flow-board-toolbar/);
+  assert.match(adminShell, /flow-board-fullscreen-button/);
+  assert.match(adminShell, /flow-chart-surface\$\{isReactFlowDemo \? " is-architecture-demo" : ""\}\$\{isCompactDiagram \? " is-compact-diagram" : ""\}\$\{isBoardFullscreen \? " is-fullscreen" : ""\}/);
+  assert.match(adminShell, /function renderStudioFlowNodeIcon/);
+  assert.match(adminShell, /const isCompactDiagram = nodes\.some/);
+  assert.match(adminShell, /!\s*selectedFlow\.architectureDemo\s*&&\s*\(/);
+  assert.match(adminShell, /reactFlowExampleFamilyLabels/);
+  assert.match(adminShell, /flow-example-toolbar/);
+  assert.match(adminShell, /selectedViewId/);
+  assert.match(adminShell, /routeId:\s*"flow-react-flow-architecture-demo"/);
   assert.match(adminShell, /studioCopyByLocale/);
   assert.match(adminShell, /getStudioCopy/);
   assert.match(adminShell, /getLocalizedRouteDefinitions/);
@@ -149,17 +174,23 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     adminShell.indexOf("const studioMails")
   );
   assert.match(navGroupsBlock, /label:\s*"Personal Studio"/);
+  assert.match(navGroupsBlock, /title:\s*"Welcome"/);
+  assert.match(navGroupsBlock, /routeId:\s*"welcome"/);
   assert.match(navGroupsBlock, /title:\s*"AI Setup"/);
   assert.match(navGroupsBlock, /routeId:\s*"ai-agent-setup"/);
   assert.match(navGroupsBlock, /title:\s*"AI Skills"/);
   assert.match(navGroupsBlock, /routeId:\s*"ai-skills"/);
   assert.match(navGroupsBlock, /title:\s*"Checklists"/);
   assert.match(navGroupsBlock, /routeId:\s*"delivery-checklists"/);
-  assert.match(navGroupsBlock, /title:\s*"Blog Roadmap"/);
-  assert.match(navGroupsBlock, /routeId:\s*"blog-roadmap"/);
+  assert.doesNotMatch(navGroupsBlock, /Blog Roadmap/);
+  assert.doesNotMatch(navGroupsBlock, /blog-roadmap/);
   assert.match(navGroupsBlock, /title:\s*"Flow Menu"/);
-  assert.match(navGroupsBlock, /subItems:\s*studioFlows\.map/);
-  assert.match(navGroupsBlock, /flowRouteId\(flow\.id\)/);
+  assert.match(navGroupsBlock, /routeId:\s*"flow-react-flow-architecture-demo"/);
+  assert.match(navGroupsBlock, /title:\s*"Example"/);
+  assert.doesNotMatch(navGroupsBlock, /subItems:\s*studioFlows\.map/);
+  assert.doesNotMatch(navGroupsBlock, /flowRouteId\(flow\.id\)/);
+  assert.doesNotMatch(navGroupsBlock, /System Design Interview Flow/);
+  assert.doesNotMatch(navGroupsBlock, /AI-Assisted Delivery Flow/);
   assert.doesNotMatch(navGroupsBlock, /Communication/);
   assert.doesNotMatch(navGroupsBlock, /title:\s*"Email"/);
   assert.doesNotMatch(navGroupsBlock, /title:\s*"Chat"/);
@@ -176,20 +207,23 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /"ai-agent-setup"/);
   assert.match(adminShell, /"ai-skills"/);
   assert.match(adminShell, /"delivery-checklists"/);
-  assert.match(adminShell, /"blog-roadmap"/);
+  assert.match(adminShell, /"welcome"/);
+  assert.doesNotMatch(adminShell, /"blog-roadmap"/);
   assert.match(adminShell, /"flow-system-design"/);
   assert.match(adminShell, /"flow-architecture-decision"/);
   assert.match(adminShell, /"flow-incident-response"/);
   assert.match(adminShell, /"flow-release-readiness"/);
   assert.match(adminShell, /"flow-ai-delivery"/);
   assert.match(adminShell, /"flow-portfolio-story"/);
+  assert.match(adminShell, /"flow-react-flow-architecture-demo"/);
   assert.match(adminShell, /"auth-login-v1"/);
   assert.match(adminShell, /function MailRoutePage/);
   assert.match(adminShell, /function ChatRoutePage/);
   assert.match(adminShell, /function AiAgentSetupPage/);
   assert.match(adminShell, /function AiSkillsPage/);
   assert.match(adminShell, /function DeliveryChecklistsPage/);
-  assert.match(adminShell, /function BlogRoadmapPage/);
+  assert.match(adminShell, /function WelcomePage/);
+  assert.doesNotMatch(adminShell, /function BlogRoadmapPage/);
   assert.match(adminShell, /function StudioFlowChart/);
   assert.match(adminShell, /function StudioFlowMenuPage/);
   assert.match(adminShell, /title:\s*"Email"/);
@@ -197,8 +231,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /title:\s*"AI Agent Setup"/);
   assert.match(adminShell, /title:\s*"AI Skills"/);
   assert.match(adminShell, /title:\s*"Delivery Checklists"/);
-  assert.match(adminShell, /title:\s*"Blog Roadmap"/);
+  assert.match(adminShell, /title:\s*"Welcome"/);
   assert.match(adminShell, /title:\s*"System Design Flow"/);
+  assert.match(adminShell, /"flow-react-flow-architecture-demo":\s*"Example"/);
   assert.match(adminShell, /chartLabel:\s*"Flow chart"/);
   assert.match(adminShell, /Read the path from left to right/);
   assert.match(adminShell, /chartLabel:\s*"Sơ đồ flow"/);
@@ -210,21 +245,19 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /data-studio-module="ai-agent-setup"/);
   assert.match(adminShell, /data-studio-module="ai-skills"/);
   assert.match(adminShell, /data-studio-module="delivery-checklists"/);
-  assert.match(adminShell, /data-studio-module="blog-roadmap"/);
+  assert.match(adminShell, /data-studio-module="welcome"/);
+  assert.doesNotMatch(adminShell, /data-studio-module="blog-roadmap"/);
   assert.match(adminShell, /data-studio-module="flow-menu"/);
   assert.match(adminShell, /studio_ai_skill_select/);
   assert.match(adminShell, /studio_ai_skill_copy/);
   assert.match(adminShell, /studio_checklist_select/);
   assert.match(adminShell, /studio_checklist_copy/);
   assert.match(adminShell, /studio_checklist_item_toggle/);
-  assert.match(adminShell, /studio_blog_roadmap_topic_select/);
-  assert.match(adminShell, /studio_blog_roadmap_status_filter/);
-  assert.match(adminShell, /studio_blog_roadmap_day_select/);
-  assert.match(adminShell, /studio_blog_roadmap_ticket_action/);
+  assert.doesNotMatch(adminShell, /studio_blog_roadmap/);
   assert.match(adminShell, /studio_flow_group_select/);
   assert.match(adminShell, /studio_flow_select/);
+  assert.match(adminShell, /studio_flow_board_fullscreen_toggle/);
   assert.match(adminShell, /studio_flow_share/);
-  assert.match(adminShell, /handleStatusFilterChange/);
   assert.match(adminShell, /studioMails/);
   assert.match(adminShell, /studioConversations/);
   assert.match(adminShell, /studioFolders/);
@@ -233,11 +266,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studioWorkflowChecklists/);
   assert.match(adminShell, /studioFlowGroups/);
   assert.match(adminShell, /studioFlows/);
-  assert.match(adminShell, /blogRoadmapTopics/);
+  assert.doesNotMatch(adminShell, /blogRoadmapTopics/);
   assert.match(adminShell, /getLocalizedStudioAiSkills/);
   assert.match(adminShell, /getLocalizedStudioWorkflowChecklists/);
-  assert.match(adminShell, /getLocalizedBlogRoadmapTopics/);
-  assert.match(adminShell, /getLocalizedBlogRoadmapTicketChecklist/);
+  assert.doesNotMatch(adminShell, /getLocalizedBlogRoadmap/);
   assert.match(adminShell, /getLocalizedStudioFlowGroups/);
   assert.match(adminShell, /getLocalizedStudioFlows/);
   assert.match(adminShell, /aiWorkflowSteps/);
@@ -303,6 +335,11 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "skill-index-pane",
     "skill-reader-pane",
     "skill-markdown-preview",
+    "welcome-route",
+    "welcome-shell",
+    "welcome-intro",
+    "welcome-shortcut-grid",
+    "welcome-link-grid",
     "checklist-workbench",
     "checklist-index-pane",
     "checklist-reader-pane",
@@ -311,25 +348,55 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "flow-index-pane",
     "flow-reader-pane",
     "flow-side-pane",
+    "flow-react-surface",
+    "flow-react-canvas",
+    "flow-react-node",
     "flow-chart-surface",
-    "flow-chart",
-    "flow-chart-node",
     "flow-chart-outcome",
     "flow-step-map",
     "flow-step-node",
-    "blog-roadmap-workbench",
-    "roadmap-topic-pane",
-    "roadmap-plan-pane",
-    "roadmap-detail-pane",
-    "roadmap-day-grid",
     "preferences-popover"
   ]) {
     assert.match(shadowCss, new RegExp(`\\.${expectedClass}\\b`));
   }
   assert.match(shadowCss, /\.chart-legend\.interactive\b/);
+  assert.match(shadowCss, /\.react-flow__container\b/);
+  assert.match(shadowCss, /\.react-flow__controls\b/);
+  assert.match(shadowCss, /\.react-flow__minimap\b/);
+  assert.match(shadowCss, /--flow-minimap-bg/);
+  assert.match(shadowCss, /--flow-minimap-node-fill/);
+  assert.match(shadowCss, /--flow-minimap-node-stroke/);
+  assert.match(shadowCss, /\.flow-board-toolbar\b/);
+  assert.match(shadowCss, /\.flow-minimap-overlay\b/);
+  assert.match(shadowCss, /\.flow-example-toolbar\b/);
+  assert.doesNotMatch(shadowCss, /\.flow-example-notes\b/);
+  assert.match(shadowCss, /\.flow-react-node--hub\b/);
+  assert.match(shadowCss, /\.flow-react-node--group\b/);
+  assert.match(shadowCss, /\.flow-react-node--gateway\b/);
+  assert.match(shadowCss, /\.flow-react-node--database\b/);
+  assert.match(shadowCss, /\.flow-react-node--queue\b/);
+  assert.match(shadowCss, /\.flow-react-node--topic\b/);
+  assert.match(shadowCss, /\.flow-react-node--cache\b/);
+  assert.match(shadowCss, /\.flow-react-node--external\b/);
+  assert.match(shadowCss, /\.flow-react-node--decision\b/);
+  assert.match(shadowCss, /\.flow-react-node--risk\b/);
+  assert.match(shadowCss, /\.flow-react-node--system\b/);
+  assert.match(shadowCss, /\.flow-react-node\.is-compact\b/);
+  assert.match(shadowCss, /\.flow-react-node-icon\b/);
+  assert.match(shadowCss, /\.flow-react-surface\.is-architecture-demo\b/);
+  assert.match(shadowCss, /\.flow-react-surface\.is-compact-diagram\b/);
+  assert.match(shadowCss, /\.sidebar-brand-mark\b/);
+  assert.match(shadowCss, /\.sidebar-badge\s*\{[^}]*display:\s*inline-flex/s);
+  assert.match(shadowCss, /\.flow-board-toolbar\b/);
+  assert.match(shadowCss, /--flow-minimap-bg/);
+  assert.match(shadowCss, /\.flow-chart-surface\.is-architecture-demo\s*\{[^}]*border:\s*0;[^}]*background:\s*transparent;[^}]*padding:\s*0/s);
+  assert.match(shadowCss, /\.flow-chart-surface\.is-fullscreen\s*\{[^}]*position:\s*fixed;[^}]*grid-template-rows:\s*auto auto minmax\(0,\s*1fr\)/s);
+  assert.match(shadowCss, /\.flow-board-fullscreen-button\b/);
+  assert.match(shadowCss, /\.flow-chart-surface\s*\{[^}]*flex:\s*0 0 auto/s);
   assert.doesNotMatch(shadowCss, /\.activity-chart\b/);
   assert.doesNotMatch(shadowCss, /\.chart-bar\b/);
   assert.match(packageJson, /"recharts":/);
+  assert.match(packageJson, /"@xyflow\/react":/);
   assert.match(shadowCss, /\.mail-workbench\.card,\s*\.chat-workbench\.card\s*\{[^}]*display:\s*grid/s);
   assert.match(shadowCss, /grid-template-columns:\s*18\.5rem minmax\(0, 1fr\)/);
   assert.match(shadowCss, /\.studio-admin\s*\{[^}]*gap:\s*0\.75rem/s);
@@ -344,19 +411,16 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.ai-setup-container\.card\s*\{[^}]*height:\s*clamp/s);
   assert.match(shadowCss, /\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card\s*\{[^}]*height:\s*clamp/s);
   assert.match(shadowCss, /\.flow-workbench\.card\s*\{[^}]*grid-template-columns:\s*19rem minmax\(0,\s*1fr\) 19rem/s);
-  assert.match(shadowCss, /\.flow-chart\s*\{[^}]*grid-template-columns:\s*repeat\(var\(--flow-count\),\s*minmax\(7rem,\s*1fr\)\)/s);
-  assert.match(shadowCss, /\.flow-chart-node:not\(:last-child\)::after\s*\{[^}]*content:\s*""/s);
-  assert.match(shadowCss, /\.flow-chart-node:not\(:last-child\)::before\s*\{[^}]*border-left:\s*0\.45rem solid/s);
-  assert.match(shadowCss, /\.blog-roadmap-workbench\.card\s*\{[^}]*grid-template-columns:\s*18rem minmax\(0,\s*1fr\) 20rem/s);
-  assert.match(shadowCss, /\.roadmap-day-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)/s);
-  assert.match(shadowCss, /@media \(max-width: 1480px\)\s*\{[\s\S]*?\.blog-roadmap-workbench\.card\s*\{[^}]*height:\s*auto;[^}]*overflow:\s*visible/s);
+  assert.match(shadowCss, /\.flow-workbench\.card\.is-architecture-demo\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\);[^}]*border:\s*0;[^}]*background:\s*transparent;[^}]*box-shadow:\s*none/s);
+  assert.match(shadowCss, /\.flow-workbench\.card\.is-architecture-demo \.flow-reader-pane\s*\{[^}]*overflow:\s*visible;[^}]*padding:\s*0/s);
+  assert.match(shadowCss, /\.welcome-shell\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*0\.95fr\) minmax\(21rem,\s*0\.78fr\)/s);
+  assert.match(shadowCss, /\.welcome-intro::before\s*\{[^}]*linear-gradient\(90deg,\s*#16a34a,\s*#0ea5e9,\s*#f59e0b\)/s);
+  assert.doesNotMatch(shadowCss, /blog-roadmap|roadmap-topic|roadmap-day/);
   assert.match(shadowCss, /@media \(max-width: 1480px\)\s*\{[\s\S]*?\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card,[\s\S]*?\.flow-workbench\.card\s*\{[^}]*grid-template-columns:\s*minmax\(15rem,\s*0\.34fr\) minmax\(0,\s*1fr\)/s);
   assert.match(shadowCss, /\.route-heading \.outline-button,[\s\S]*?\.skill-reader-head \.outline-button\s*\{[^}]*min-width:\s*max-content/s);
   assert.match(shadowCss, /@media \(max-width: 1080px\)/);
   assert.match(shadowCss, /@media \(max-width: 1080px\)\s*\{[\s\S]*?\.skill-side-pane,[\s\S]*?\.checklist-side-pane,[\s\S]*?\.flow-side-pane\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.match(shadowCss, /\.flow-step-node dl\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/s);
-  assert.match(shadowCss, /@media \(max-width: 860px\)\s*\{[\s\S]*?\.flow-chart\s*\{[^}]*grid-template-columns:\s*1fr/s);
-  assert.match(shadowCss, /@media \(max-width: 860px\)\s*\{[\s\S]*?\.flow-chart-node:not\(:last-child\)::after\s*\{[^}]*height:\s*0\.875rem/s);
   assert.match(shadowCss, /\.studio-flow-route \.flow-reader-pane\s*\{[^}]*order:\s*1/s);
   assert.match(shadowCss, /\.studio-flow-route \.flow-index-pane\s*\{[^}]*order:\s*3/s);
   assert.match(shadowCss, /\.studio-admin\.is-mobile-open \.studio-sidebar\s*\{[^}]*width:\s*min\(22rem,\s*calc\(100vw - 1rem\)\)/s);
@@ -445,16 +509,19 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "90-day AI skill plan",
     "Create five ChatGPT Projects.",
     "Create five NotebookLM notebooks.",
-    "Source & Architecture",
-    "Engineering Culture",
-    "AI & The Future",
-    "Ways of Working",
-    "Perspectives & Field Notes",
-    "One architecture article per day for 30 days.",
-    "Module boundaries before folder names",
-    "From prompts to workflows",
-    "Create one focused Multica ticket per roadmap article.",
     "Architecture & System Design",
+    "React Flow",
+    "React Flow Example for Software Diagrams",
+    "A React Flow showcase for example families",
+    "overview",
+    "interaction",
+    "grouping",
+    "layout",
+    "styling",
+    "whiteboard",
+    "architecture",
+    "Node Shapes",
+    "Edge Types",
     "System Design Interview Flow",
     "Architecture Decision Flow",
     "Production Incident Flow",
@@ -470,12 +537,12 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   ]) {
     assert.match(data, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
+  assert.match(data, /architectureDemo:\s*reactFlowArchitectureDemo/);
+  assert.match(data, /flowIds:\s*\["react-flow-architecture-demo"\]/);
 
   for (const expected of [
     "getLocalizedStudioAiSkills",
     "getLocalizedStudioWorkflowChecklists",
-    "getLocalizedBlogRoadmapTopics",
-    "getLocalizedBlogRoadmapTicketChecklist",
     "Review thay đổi theo correctness",
     "Review data structure",
     "Review design pattern",
@@ -486,19 +553,89 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "Viết blog content",
     "Từ ticket đến commit đầu tiên",
     "Checklist delivery engineering",
-    "Từ prompt sang workflow",
-    "Cách review code do AI viết",
-    "Xác nhận locale đang chọn",
     "getLocalizedStudioFlows",
     "getLocalizedStudioFlowGroups",
     "Flow System Design",
+    "React Flow",
+    "Example",
+    "Đổi các dạng example trước khi chọn sơ đồ",
     "onboarding đối tác",
     "release readiness",
     "support noise",
+    "Catalog node shape React Flow",
+    "Canvas software architecture",
     "isVietnameseLocale"
   ]) {
     assert.match(localizedContent, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
+
+  for (const expected of [
+    "Built-in primitives",
+    "React Flow example families",
+    "Software architecture nodes",
+    "Edge language",
+    "Canvas controls",
+    "Feature overview",
+    "Subflows and grouping",
+    "Dagre-style tree",
+    "Expand and collapse",
+    "Validation and helper lines",
+    "Whiteboard annotation",
+    "Styling and theming",
+    "Software architecture service map",
+    "System design icon map",
+    "Layered platform icon map",
+    "Event-driven architecture",
+    "Deployment topology",
+    "Data lineage",
+    "views: reactFlowViews",
+    "defaultViewId",
+    "system-design-icon-map",
+    "layered-platform-icon-map",
+    "systemIconNode",
+    "platformGroupNode",
+    "Client platform",
+    "Service platform",
+    "Data platform",
+    "External boundary",
+    "input",
+    "default",
+    "output",
+    "group",
+    "system",
+    "service",
+    "gateway",
+    "database",
+    "queue",
+    "topic",
+    "cache",
+    "worker",
+    "external",
+    "decision",
+    "risk",
+    "note",
+    "straight",
+    "step",
+    "smoothstep",
+    "simplebezier",
+    "API Gateway",
+    "Primary DB",
+    "Event topic",
+    "Postgres",
+    "Payment API",
+    "External SaaS",
+    "Rollback plan",
+    "compact: true",
+    "animated publish"
+  ]) {
+    assert.match(architectureDemo, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+
+  const forbiddenEventNamePattern = new RegExp(
+    `${["claw", "\\s*[- ]?\\s*a\\s*[- ]?\\s*thon"].join("")}|${["claw", "athon"].join("")}`,
+    "i"
+  );
+  assert.doesNotMatch(`${adminShell}\n${data}\n${localizedContent}\n${architectureDemo}`, forbiddenEventNamePattern);
 
   assert.match(enMessages, /"studio":\s*"Studio"/);
   assert.match(viMessages, /"studio":\s*"Studio"/);

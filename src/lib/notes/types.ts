@@ -23,9 +23,9 @@ export interface NoteMeta {
   topic?: string;
   author?: string;
   featured?: boolean;
-  /** Language the base content is authored in (default 'vi' for legacy notes). */
+  /** Language the canonical note body is authored in. */
   baseLocale?: string;
-  /** Locales this note has content for, e.g. ['en','vi']. Defaults to ['vi']. */
+  /** Content locales served for this shared note slug. */
   locales?: string[];
 }
 

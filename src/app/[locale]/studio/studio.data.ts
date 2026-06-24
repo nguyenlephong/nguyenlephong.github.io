@@ -1,3 +1,5 @@
+import { reactFlowArchitectureDemo } from "./studio.react-flow-architecture-demo";
+
 export type StudioNoteStatus = "ready" | "draft" | "next";
 
 export type StudioCommand = {
@@ -51,28 +53,6 @@ export type StudioFolder = {
   groups: StudioFolderGroup[];
 };
 
-export type BlogRoadmapStatus = "ready" | "outline" | "research";
-
-export type BlogRoadmapEntry = {
-  day: number;
-  title: string;
-  angle: string;
-  intent: string;
-  format: string;
-  estimatedMinutes: number;
-  status: BlogRoadmapStatus;
-  ticketLabel: string;
-};
-
-export type BlogRoadmapTopic = {
-  id: string;
-  categorySlug: string;
-  title: string;
-  tagline: string;
-  cadence: string;
-  entries: BlogRoadmapEntry[];
-};
-
 export type StudioAiSkill = {
   id: string;
   category: "engineering" | "content" | "operations" | "communication" | "strategy" | "learning";
@@ -113,6 +93,88 @@ export type StudioFlowStep = {
   output: string;
 };
 
+export type StudioFlowArchitectureNodeKind =
+  | "input"
+  | "default"
+  | "output"
+  | "group"
+  | "service"
+  | "gateway"
+  | "database"
+  | "queue"
+  | "topic"
+  | "cache"
+  | "worker"
+  | "external"
+  | "decision"
+  | "risk"
+  | "note"
+  | "system";
+
+export type StudioFlowArchitectureTone =
+  | "source"
+  | "process"
+  | "agent"
+  | "review"
+  | "output"
+  | "storage"
+  | "event"
+  | "external"
+  | "risk";
+
+export type StudioFlowArchitectureNodeSpec = {
+  id: string;
+  kind: StudioFlowArchitectureNodeKind;
+  tone: StudioFlowArchitectureTone;
+  title: string;
+  detail: string;
+  badge: string;
+  position: { x: number; y: number };
+  size?: { width: number; height: number };
+  compact?: boolean;
+};
+
+export type StudioFlowArchitectureEdgeSpec = {
+  id: string;
+  source: string;
+  target: string;
+  type: "default" | "straight" | "step" | "smoothstep" | "simplebezier";
+  label: string;
+  tone: StudioFlowArchitectureTone;
+  marker?: "arrow" | "arrowClosed";
+  animated?: boolean;
+};
+
+export type StudioFlowArchitectureExampleFamily =
+  | "overview"
+  | "interaction"
+  | "grouping"
+  | "layout"
+  | "styling"
+  | "whiteboard"
+  | "architecture";
+
+export type StudioFlowArchitectureViewSpec = {
+  id: string;
+  family: StudioFlowArchitectureExampleFamily;
+  title: string;
+  description: string;
+  notes: string[];
+  nodes: StudioFlowArchitectureNodeSpec[];
+  edges: StudioFlowArchitectureEdgeSpec[];
+};
+
+export type StudioFlowArchitectureDemo = {
+  sections: {
+    title: string;
+    items: string[];
+  }[];
+  defaultViewId: string;
+  nodes: StudioFlowArchitectureNodeSpec[];
+  edges: StudioFlowArchitectureEdgeSpec[];
+  views: StudioFlowArchitectureViewSpec[];
+};
+
 export type StudioFlow = {
   id: string;
   groupId: string;
@@ -127,6 +189,7 @@ export type StudioFlow = {
   steps: StudioFlowStep[];
   artifacts: string[];
   cvSignals: string[];
+  architectureDemo?: StudioFlowArchitectureDemo;
 };
 
 export type StudioFlowGroup = {
@@ -138,277 +201,6 @@ export type StudioFlowGroup = {
 };
 
 export const studioCapturedAt = "2026-06-21";
-
-const roadmapStatuses: BlogRoadmapStatus[] = ["ready", "outline", "research"];
-
-function buildRoadmapEntries(
-  topicId: string,
-  titles: string[],
-  angles: string[],
-  intents: string[]
-): BlogRoadmapEntry[] {
-  return titles.map((title, index) => ({
-    day: index + 1,
-    title,
-    angle: angles[index % angles.length],
-    intent: intents[index % intents.length],
-    format: index % 5 === 0 ? "field guide" : index % 3 === 0 ? "case note" : "explainer",
-    estimatedMinutes: 45 + (index % 4) * 15,
-    status: roadmapStatuses[index % roadmapStatuses.length],
-    ticketLabel: `${topicId.toUpperCase()}-${String(index + 1).padStart(2, "0")}`
-  }));
-}
-
-export const blogRoadmapTopics: BlogRoadmapTopic[] = [
-  {
-    id: "architecture",
-    categorySlug: "architecture",
-    title: "Source & Architecture",
-    tagline: "Structure code so it survives growth, teams, and change.",
-    cadence: "One architecture article per day for 30 days.",
-    entries: buildRoadmapEntries(
-      "architecture",
-      [
-        "Module boundaries before folder names",
-        "A small service still needs an architecture",
-        "Dependency direction in plain language",
-        "When shared libraries become shared pain",
-        "Ports and adapters in a small product",
-        "Clean architecture without ceremony",
-        "Feature folders versus layer folders",
-        "How to split a large component carefully",
-        "The first useful architecture diagram",
-        "Why data ownership changes everything",
-        "Event-driven architecture without hype",
-        "Timeouts, retries, and the cost of hope",
-        "Caching as a contract, not a trick",
-        "Scaling the database in the right order",
-        "The hidden price of microservices",
-        "A practical monolith health checklist",
-        "API contracts that age well",
-        "Observability as a design choice",
-        "How to choose a boundary by change rate",
-        "Architecture decisions for future teammates",
-        "Refactoring toward a clearer core",
-        "When a queue helps and when it hides delay",
-        "CQRS only after the simple model hurts",
-        "Resilience patterns for ordinary teams",
-        "A day-one checklist for new services",
-        "Naming things by responsibility",
-        "The architecture review before the rewrite",
-        "How technical debt shows up in handoffs",
-        "Keeping diagrams close to the code",
-        "A calm path from messy to maintainable"
-      ],
-      [
-        "Use a familiar codebase moment, then show the trade-off.",
-        "Compare the tempting shortcut with the maintenance cost.",
-        "Explain the idea through a small team delivery scenario."
-      ],
-      ["teach", "decision support", "team alignment"]
-    )
-  },
-  {
-    id: "culture",
-    categorySlug: "culture",
-    title: "Engineering Culture",
-    tagline: "Reviews, feedback, mentorship, and teams that grow people.",
-    cadence: "One culture article per day for 30 days.",
-    entries: buildRoadmapEntries(
-      "culture",
-      [
-        "Code review as shared thinking",
-        "How to disagree without slowing the team",
-        "The pull request that reviewers can trust",
-        "Feedback that leaves the door open",
-        "Mentoring without taking over the keyboard",
-        "Why kind engineering still needs standards",
-        "The quiet cost of vague ownership",
-        "How juniors learn from visible decisions",
-        "A better way to ask for help",
-        "When senior engineers should write less code",
-        "Team rituals that earn their calendar space",
-        "How to recover after a tense review",
-        "The difference between speed and pressure",
-        "Building trust with small promises kept",
-        "Why onboarding is architecture too",
-        "The meeting after the incident",
-        "How to make estimates less personal",
-        "A calm script for difficult feedback",
-        "Keeping standards without gatekeeping",
-        "When silence in a team becomes a signal",
-        "The reviewer as a future reader",
-        "Helping without becoming the bottleneck",
-        "How healthy teams handle unfinished work",
-        "The cost of hero culture",
-        "Writing docs as care for future teammates",
-        "The useful senior engineer checklist",
-        "How to notice burnout before performance drops",
-        "Making room for different working styles",
-        "Why clarity is kinder than softness",
-        "A team culture that can survive pressure"
-      ],
-      [
-        "Start from an ordinary team interaction.",
-        "Keep the lesson practical and non-preachy.",
-        "Name the behavior, then show the better pattern."
-      ],
-      ["reflection", "team practice", "mentorship"]
-    )
-  },
-  {
-    id: "ai",
-    categorySlug: "ai",
-    title: "AI & The Future",
-    tagline: "From context engineering to reliable production AI products.",
-    cadence: "One AI article per day for 30 days.",
-    entries: buildRoadmapEntries(
-      "ai",
-      [
-        "From prompts to workflows",
-        "Context engineering for everyday developers",
-        "When an AI answer needs a test",
-        "The habit of asking AI for trade-offs",
-        "Agents as teammates with boundaries",
-        "How to review AI-written code",
-        "The quiet risk of cognitive debt",
-        "What to automate after you understand it",
-        "A practical AI workflow for pull requests",
-        "Why examples beat long instructions",
-        "The difference between chat and system design",
-        "AI literacy for non-AI engineers",
-        "How to keep judgment in the loop",
-        "The debugging prompt that starts with evidence",
-        "Using AI to learn without outsourcing learning",
-        "A small eval before a big claim",
-        "Agent handoffs that do not lose context",
-        "The cost of trusting a fluent answer",
-        "How product teams should describe AI features",
-        "From prototype demo to production behavior",
-        "AI tools for reading a codebase",
-        "Where AI helps in incident response",
-        "Writing better tickets for coding agents",
-        "The security review for AI-assisted changes",
-        "How to measure time saved honestly",
-        "When not to use an agent",
-        "Building AI features around user trust",
-        "The future role of the software engineer",
-        "A calm checklist for adopting new AI tools",
-        "Working smarter without becoming careless"
-      ],
-      [
-        "Ground the AI idea in a real engineering workflow.",
-        "Separate useful automation from unclear hype.",
-        "Show how the human keeps responsibility."
-      ],
-      ["practical AI", "risk management", "workflow design"]
-    )
-  },
-  {
-    id: "ways-of-working",
-    categorySlug: "ways-of-working",
-    title: "Ways of Working",
-    tagline: "How software teams actually operate and deliver together.",
-    cadence: "One working-method article per day for 30 days.",
-    entries: buildRoadmapEntries(
-      "ways",
-      [
-        "Agile ceremonies as feedback loops",
-        "Scrum without pretending the plan is perfect",
-        "The daily standup that changes decisions",
-        "Sprint planning as risk discovery",
-        "Why estimates are conversations",
-        "Definition of done that prevents rework",
-        "Release planning with value and risk",
-        "The BA role in unclear work",
-        "How product owners protect focus",
-        "QA as a partner before the end",
-        "Working in a startup without chaos as identity",
-        "Working in a big company without disappearing",
-        "Outsourcing and the problem of context",
-        "The handoff that keeps ownership alive",
-        "How to write requirements people can test",
-        "User stories that do not hide complexity",
-        "A practical pre-mortem for delivery",
-        "When the roadmap meets real capacity",
-        "How teams decide what not to do",
-        "Managing dependencies without blame",
-        "The calm way to handle scope changes",
-        "Retrospectives that change one behavior",
-        "Why WIP limits are a kindness",
-        "The difference between busy and moving",
-        "How to make blockers visible early",
-        "A better way to use status updates",
-        "The release note as a delivery artifact",
-        "How to compare company delivery cultures",
-        "When process is helping and when it is hiding",
-        "A month of better software teamwork"
-      ],
-      [
-        "Explain the ceremony through a real delivery pressure.",
-        "Keep the advice useful for BA, PM, QA, and engineers.",
-        "Focus on trade-offs rather than a process slogan."
-      ],
-      ["delivery practice", "team operating model", "planning"]
-    )
-  },
-  {
-    id: "perspectives",
-    categorySlug: "perspectives",
-    title: "Perspectives & Field Notes",
-    tagline: "Personal reflections from work, learning, people, and career growth.",
-    cadence: "One reflective field note per day for 30 days.",
-    entries: buildRoadmapEntries(
-      "perspectives",
-      [
-        "The small habit that changed how I read work",
-        "A quiet lesson from a delayed release",
-        "Why preparation often looks invisible",
-        "The day I learned to ask a clearer question",
-        "How a messy desk explains technical debt",
-        "The difference between patience and waiting",
-        "What a long commute teaches about energy",
-        "The skill of noticing weak signals",
-        "Why progress feels slow while it is happening",
-        "A note about ambition and attention",
-        "Learning from people who work differently",
-        "When being helpful becomes too expensive",
-        "The private cost of context switching",
-        "A better relationship with unfinished work",
-        "What I learned from a simple checklist",
-        "The calm after choosing a smaller scope",
-        "Why good systems feel boring",
-        "The courage to write the first rough note",
-        "How to protect your attention gently",
-        "The difference between confidence and evidence",
-        "Why quiet consistency compounds",
-        "A reflection on asking for feedback",
-        "The work behind a clean final result",
-        "How to stay kind under pressure",
-        "The hidden value of a clear handoff",
-        "What a failed plan can still teach",
-        "The career lesson inside repeated practice",
-        "Why the right pace is sometimes slower",
-        "A note for the next difficult week",
-        "The month that becomes visible later"
-      ],
-      [
-        "Open with a small everyday scene.",
-        "Connect the moment to work, learning, or growth.",
-        "Leave the reader with a calm reflection."
-      ],
-      ["reflection", "career growth", "learning"]
-    )
-  }
-];
-
-export const blogRoadmapTicketChecklist = [
-  "Confirm the selected locale and canonical category path.",
-  "Create one focused Multica ticket per roadmap article.",
-  "Attach the target title, angle, intent, and source category.",
-  "Keep article metadata aligned with the existing blog schema.",
-  "Run content checks before marking a writing ticket ready."
-];
 
 const baseStudioAiSkills: StudioAiSkill[] = [
   {
@@ -3201,6 +2993,14 @@ export const studioFlowGroups: StudioFlowGroup[] = [
     description:
       "Flows for AI-assisted delivery and portfolio stories that make engineering judgment visible without turning the work into marketing copy.",
     flowIds: ["ai-delivery", "portfolio-story"]
+  },
+  {
+    id: "react-flow-library",
+    title: "React Flow",
+    subtitle: "Switch between example shapes before choosing a diagram.",
+    description:
+      "A React Flow showcase for example families: built-in nodes, custom architecture shapes, grouping, layout, validation, annotation, edge styles, labels, markers, minimap, controls, and background.",
+    flowIds: ["react-flow-architecture-demo"]
   }
 ];
 
@@ -3645,6 +3445,88 @@ export const studioFlows: StudioFlow[] = [
       "Business awareness",
       "Reflective practice"
     ]
+  },
+  {
+    id: "react-flow-architecture-demo",
+    groupId: "react-flow-library",
+    title: "Example",
+    summary:
+      "A library-style canvas showing what @xyflow/react can express across overview, interaction, grouping, layout, styling, whiteboard, and software architecture examples.",
+    seoTitle: "React Flow Example for Software Diagrams",
+    seoDescription:
+      "A React Flow studio demo with built-in node styles, custom architecture shapes, grouping, layout, validation, whiteboard annotation, edge types, labels, markers, minimap, controls, and background.",
+    useWhen:
+      "Use this when choosing how to model a system architecture, service map, platform topology, event flow, deployment boundary, or graph-editor interaction with React Flow.",
+    outcome:
+      "A visual catalog of React Flow node, edge, grouping, layout, interaction, whiteboard, and architecture patterns without turning the page into a product use-case map.",
+    officeExample:
+      "A team wants to choose how a technical diagram should look before drawing the real system. This gallery lets them compare overview, subflow, layout, validation, whiteboard, event-driven, topology, and data-lineage views in one React Flow canvas.",
+    tags: ["React Flow", "XYFlow", "Architecture Diagram", "Node Shapes", "Edge Types"],
+    steps: [
+      {
+        id: "show-node-primitives",
+        title: "Show node primitives",
+        detail:
+          "Render input, default, output, and group-style nodes before adding custom architecture vocabulary.",
+        evidence: "Built-in node roles, labels, badges, handles, and grouping boundaries.",
+        output: "A baseline canvas that shows the primitives React Flow starts from."
+      },
+      {
+        id: "add-architecture-shapes",
+        title: "Add architecture shapes",
+        detail:
+          "Use custom nodes for API gateways, services, workers, databases, cache, queues, topics, external systems, decisions, risks, and notes.",
+        evidence: "Software architecture entities, deployment boundaries, data flow, and operational risk.",
+        output: "A reusable shape catalog for system diagrams."
+      },
+      {
+        id: "compare-edge-types",
+        title: "Compare edge types",
+        detail:
+          "Show default, straight, step, smoothstep, and simplebezier edges with labels, arrows, and animated async paths.",
+        evidence: "Synchronous call, async event, retry path, projection, observability, and rollback relationship.",
+        output: "An edge language that makes architecture diagrams easier to read."
+      },
+      {
+        id: "use-canvas-controls",
+        title: "Use canvas controls",
+        detail:
+          "Keep Background, Controls, MiniMap, fitView, zoom, and pan available so large architecture maps remain inspectable.",
+        evidence: "Large graph size, grouped zones, readable zoom level, and stable positions.",
+        output: "A diagram surface that works for both overview and inspection."
+      },
+      {
+        id: "model-system-architecture",
+        title: "Model system architecture",
+        detail:
+          "Place client, edge, domain, data, external, and operations zones in one architecture story.",
+        evidence: "Bounded context, service ownership, persistence, integration, telemetry, and rollout safety.",
+        output: "A checkout-style reference architecture that demonstrates the full shape set."
+      },
+      {
+        id: "turn-demo-into-template",
+        title: "Turn demo into a template",
+        detail:
+          "Use the demo as a starting point for architecture review, RFC, ADR, onboarding, or incident explanation.",
+        evidence: "Reusable node kinds, edge tones, zone layout, and copy that names real engineering trade-offs.",
+        output: "A React Flow architecture template ready to adapt."
+      }
+    ],
+    artifacts: [
+      "React Flow node shape catalog",
+      "Software architecture canvas",
+      "Edge type comparison",
+      "Group and boundary example",
+      "Minimap and controls demo",
+      "Reusable architecture template"
+    ],
+    cvSignals: [
+      "React Flow implementation",
+      "Software architecture visualization",
+      "Diagram system design",
+      "Platform communication"
+    ],
+    architectureDemo: reactFlowArchitectureDemo
   }
 ];
 

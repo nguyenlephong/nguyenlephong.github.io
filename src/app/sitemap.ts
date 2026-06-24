@@ -56,22 +56,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     pushPath(`/blog/${category}/${slug}`, 0.8, "monthly");
   }
 
-  // Notes: bilingual notes get a full hreflang cluster; Vietnamese-only notes
-  // are emitted as a single /vi/notes/... canonical.
-  const bilingualNotes = new Set(listNotes("en").map((n) => n.slug));
-  for (const note of listNotes("vi")) {
-    if (bilingualNotes.has(note.slug)) {
-      pushPath(`/notes/${note.slug}`, 0.8, "monthly");
-    } else {
-      const canonical = `${SITE_URL}/vi/notes/${note.slug}`;
-      entries.push({
-        url: canonical,
-        lastModified: now,
-        changeFrequency: "monthly",
-        priority: 0.75,
-        alternates: { languages: { vi: canonical, "x-default": canonical } }
-      });
-    }
+  // Notes use one shared slug set across English and Vietnamese, with
+  // Vietnamese overrides layered on top where translated content exists.
+  for (const note of listNotes("en")) {
+    pushPath(`/notes/${note.slug}`, 0.8, "monthly");
   }
 
   return entries;
