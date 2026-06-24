@@ -2137,7 +2137,7 @@ a {
   --flow-minimap-stroke: #2563eb;
   --flow-minimap-node-fill: rgba(37, 99, 235, 0.8);
   --flow-minimap-node-stroke: rgba(15, 23, 42, 0.82);
-  height: min(54vh, 34rem);
+  height: min(58vh, 36rem);
   min-height: 25rem;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
@@ -2154,8 +2154,14 @@ a {
 }
 
 .flow-react-surface.is-architecture-demo {
-  height: max(34rem, calc(100vh - 15rem));
-  min-height: 34rem;
+  height: max(38rem, calc(100vh - 14rem));
+  min-height: 38rem;
+}
+
+.flow-react-surface.is-compact-diagram {
+  background:
+    radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--primary) 8%, transparent), transparent 24rem),
+    color-mix(in srgb, var(--background) 94%, var(--muted));
 }
 
 .flow-chart-surface.is-fullscreen .flow-react-surface {
@@ -2392,8 +2398,8 @@ a {
   border-radius: 0.75rem;
   background: var(--flow-minimap-bg);
   box-shadow: 0 0.9rem 2.2rem rgba(0, 0, 0, 0.3);
-  width: 10rem;
-  height: 7rem;
+  width: 7.75rem;
+  height: 5.35rem;
   opacity: 1;
 }
 
@@ -2423,8 +2429,8 @@ a {
   right: 0.75rem;
   bottom: 0.75rem;
   z-index: 8;
-  width: 10rem;
-  height: 7rem;
+  width: 7.75rem;
+  height: 5.35rem;
   overflow: visible;
   pointer-events: none;
 }
@@ -2588,6 +2594,60 @@ a {
   background:
     linear-gradient(90deg, color-mix(in srgb, var(--flow-node-color) 20%, transparent) 0 0.35rem, transparent 0.35rem),
     color-mix(in srgb, var(--card) 90%, var(--flow-node-color) 10%);
+}
+
+.flow-react-node--system {
+  width: 8.5rem;
+  min-height: 6.75rem;
+  place-items: center;
+  gap: 0.35rem;
+  border-radius: 1.05rem;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--flow-node-color) 12%, transparent), transparent),
+    color-mix(in srgb, var(--card) 90%, var(--flow-node-color) 10%);
+  padding: 0.7rem 0.55rem;
+  text-align: center;
+}
+
+.flow-react-node.is-compact {
+  width: 8.5rem;
+  min-height: 6.75rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.11);
+}
+
+.flow-react-node-icon {
+  display: inline-flex;
+  width: 2.45rem;
+  height: 2.45rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--flow-node-color) 30%, var(--border));
+  border-radius: 0.8rem;
+  background: color-mix(in srgb, var(--flow-node-color) 13%, var(--background));
+  color: color-mix(in srgb, var(--flow-node-color) 80%, var(--foreground));
+}
+
+.flow-react-node-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.flow-react-node.is-compact strong {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 0.78rem;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flow-react-node.is-compact small {
+  display: block;
+  max-width: 100%;
+  color: color-mix(in srgb, var(--muted-foreground) 88%, var(--foreground));
+  font-size: 0.66rem;
+  line-height: 1.2;
+  -webkit-line-clamp: unset;
 }
 
 .flow-react-node--detail {

@@ -116,7 +116,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studio_flow_board_fullscreen_toggle/);
   assert.match(adminShell, /flow-board-toolbar/);
   assert.match(adminShell, /flow-board-fullscreen-button/);
-  assert.match(adminShell, /flow-chart-surface\$\{isReactFlowDemo \? " is-architecture-demo" : ""\}\$\{isBoardFullscreen \? " is-fullscreen" : ""\}/);
+  assert.match(adminShell, /flow-chart-surface\$\{isReactFlowDemo \? " is-architecture-demo" : ""\}\$\{isCompactDiagram \? " is-compact-diagram" : ""\}\$\{isBoardFullscreen \? " is-fullscreen" : ""\}/);
+  assert.match(adminShell, /function renderStudioFlowNodeIcon/);
+  assert.match(adminShell, /const isCompactDiagram = nodes\.some/);
   assert.match(adminShell, /!\s*selectedFlow\.architectureDemo\s*&&\s*\(/);
   assert.match(adminShell, /reactFlowExampleFamilyLabels/);
   assert.match(adminShell, /flow-example-toolbar/);
@@ -378,7 +380,11 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.flow-react-node--external\b/);
   assert.match(shadowCss, /\.flow-react-node--decision\b/);
   assert.match(shadowCss, /\.flow-react-node--risk\b/);
+  assert.match(shadowCss, /\.flow-react-node--system\b/);
+  assert.match(shadowCss, /\.flow-react-node\.is-compact\b/);
+  assert.match(shadowCss, /\.flow-react-node-icon\b/);
   assert.match(shadowCss, /\.flow-react-surface\.is-architecture-demo\b/);
+  assert.match(shadowCss, /\.flow-react-surface\.is-compact-diagram\b/);
   assert.match(shadowCss, /\.sidebar-brand-mark\b/);
   assert.match(shadowCss, /\.sidebar-badge\s*\{[^}]*display:\s*inline-flex/s);
   assert.match(shadowCss, /\.flow-board-toolbar\b/);
@@ -577,15 +583,18 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "Whiteboard annotation",
     "Styling and theming",
     "Software architecture service map",
+    "System design icon map",
     "Event-driven architecture",
     "Deployment topology",
     "Data lineage",
     "views: reactFlowViews",
     "defaultViewId",
+    "system-design-icon-map",
     "input",
     "default",
     "output",
     "group",
+    "system",
     "service",
     "gateway",
     "database",
@@ -604,8 +613,11 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "API Gateway",
     "Primary DB",
     "Event topic",
+    "Postgres",
+    "Payment API",
     "External SaaS",
     "Rollback plan",
+    "compact: true",
     "animated publish"
   ]) {
     assert.match(architectureDemo, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));

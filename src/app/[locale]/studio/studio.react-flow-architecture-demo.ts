@@ -13,8 +13,8 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Client boundary",
     detail: "Large visible zone for user-facing clients.",
     badge: "group",
-    position: { x: -760, y: -270 },
-    size: { width: 540, height: 250 }
+    position: { x: -920, y: -340 },
+    size: { width: 520, height: 250 }
   },
   {
     id: "internet-user",
@@ -23,7 +23,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Input node",
     detail: "Customer, partner webhook, scheduler, or mobile event.",
     badge: "built-in",
-    position: { x: -700, y: -160 }
+    position: { x: -850, y: -225 }
   },
   {
     id: "web-app",
@@ -32,7 +32,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Default node",
     detail: "Web app, BFF, dashboard, or internal UI surface.",
     badge: "built-in",
-    position: { x: -450, y: -160 }
+    position: { x: -615, y: -225 }
   },
   {
     id: "edge-zone",
@@ -41,8 +41,8 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Edge and policy boundary",
     detail: "Ingress, security controls, routing, and approval gates.",
     badge: "group",
-    position: { x: -120, y: -270 },
-    size: { width: 590, height: 300 }
+    position: { x: -265, y: -340 },
+    size: { width: 610, height: 330 }
   },
   {
     id: "api-gateway",
@@ -51,7 +51,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "API Gateway",
     detail: "Ingress, rate limit, auth handoff, routing, and request shaping.",
     badge: "gateway",
-    position: { x: -40, y: -165 }
+    position: { x: -190, y: -235 }
   },
   {
     id: "auth-service",
@@ -60,7 +60,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Auth service",
     detail: "Token exchange, tenancy lookup, and session checks.",
     badge: "service",
-    position: { x: 235, y: -195 }
+    position: { x: 65, y: -245 }
   },
   {
     id: "policy-decision",
@@ -69,7 +69,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Policy?",
     detail: "Permission, rollout, compliance, or tenancy branch.",
     badge: "decision",
-    position: { x: 255, y: -35 },
+    position: { x: 80, y: -85 },
     size: { width: 160, height: 128 }
   },
   {
@@ -79,7 +79,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Risk gate",
     detail: "Throttle abuse, isolate failures, and protect hot paths.",
     badge: "risk",
-    position: { x: -40, y: -5 }
+    position: { x: -190, y: -65 }
   },
   {
     id: "ops-zone",
@@ -88,8 +88,8 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Operations and reliability",
     detail: "Release gates, observability, audit, and rollback controls.",
     badge: "group",
-    position: { x: 560, y: -270 },
-    size: { width: 660, height: 300 }
+    position: { x: 495, y: -340 },
+    size: { width: 720, height: 330 }
   },
   {
     id: "observability",
@@ -98,7 +98,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Telemetry note",
     detail: "Logs, traces, metrics, owner, dashboard, and alert route.",
     badge: "note",
-    position: { x: 640, y: -190 }
+    position: { x: 570, y: -240 }
   },
   {
     id: "rollback",
@@ -107,7 +107,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Rollback plan",
     detail: "Feature flag, migration reverse path, and blast-radius limit.",
     badge: "control",
-    position: { x: 930, y: -190 }
+    position: { x: 930, y: -240 }
   },
   {
     id: "audit-log",
@@ -116,7 +116,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Audit log",
     detail: "Append-only record for admin, money, and privacy actions.",
     badge: "audit",
-    position: { x: 790, y: -30 }
+    position: { x: 750, y: -70 }
   },
   {
     id: "domain-zone",
@@ -125,8 +125,8 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Domain services",
     detail: "Bounded context with services, stream, workers, and retry path.",
     badge: "sub-flow",
-    position: { x: -760, y: 120 },
-    size: { width: 900, height: 390 }
+    position: { x: -920, y: 120 },
+    size: { width: 790, height: 420 }
   },
   {
     id: "order-service",
@@ -135,7 +135,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Order service",
     detail: "Command handling, validation, idempotency, and aggregate owner.",
     badge: "service",
-    position: { x: -690, y: 260 }
+    position: { x: -840, y: 285 }
   },
   {
     id: "inventory-service",
@@ -144,7 +144,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Inventory service",
     detail: "Peer service that owns stock reservation and release.",
     badge: "service",
-    position: { x: -410, y: 230 }
+    position: { x: -560, y: 255 }
   },
   {
     id: "domain-events",
@@ -153,7 +153,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Event topic",
     detail: "Pub/sub stream for projections and downstream consumers.",
     badge: "event",
-    position: { x: -135, y: 220 }
+    position: { x: -300, y: 255 }
   },
   {
     id: "worker",
@@ -162,7 +162,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Worker",
     detail: "Async processor for side effects and long-running jobs.",
     badge: "worker",
-    position: { x: -410, y: 390 }
+    position: { x: -560, y: 410 }
   },
   {
     id: "order-queue",
@@ -171,7 +171,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Queue",
     detail: "Buffered command stream, retry budget, DLQ, and backpressure.",
     badge: "async",
-    position: { x: -135, y: 390 }
+    position: { x: -300, y: 410 }
   },
   {
     id: "data-zone",
@@ -180,8 +180,8 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Data plane",
     detail: "Transactional source, cache, and read models stay separated.",
     badge: "group",
-    position: { x: 235, y: 140 },
-    size: { width: 690, height: 360 }
+    position: { x: 130, y: 120 },
+    size: { width: 700, height: 420 }
   },
   {
     id: "primary-db",
@@ -190,7 +190,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Primary DB",
     detail: "Source-of-truth transactional storage.",
     badge: "database",
-    position: { x: 315, y: 245 }
+    position: { x: 230, y: 265 }
   },
   {
     id: "redis-cache",
@@ -199,7 +199,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Cache",
     detail: "Redis, CDN cache, local cache, or materialized lookup.",
     badge: "cache",
-    position: { x: 615, y: 235 }
+    position: { x: 560, y: 250 }
   },
   {
     id: "warehouse",
@@ -208,7 +208,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Warehouse",
     detail: "Read model, BI table, lakehouse, or audit archive.",
     badge: "read model",
-    position: { x: 615, y: 390 }
+    position: { x: 560, y: 420 }
   },
   {
     id: "payment-provider",
@@ -217,7 +217,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "External SaaS",
     detail: "Payment provider, partner API, KYC vendor, or cloud service.",
     badge: "external",
-    position: { x: 1060, y: 225 }
+    position: { x: 1040, y: 250 }
   },
   {
     id: "response",
@@ -226,7 +226,7 @@ const serviceMapNodes: StudioFlowArchitectureNodeSpec[] = [
     title: "Output node",
     detail: "Final status, receipt, user notification, or public response.",
     badge: "built-in",
-    position: { x: 1060, y: 385 }
+    position: { x: 1040, y: 430 }
   }
 ];
 
@@ -416,6 +416,49 @@ const reactFlowViews: StudioFlowArchitectureViewSpec[] = [
     ]
   },
   {
+    id: "system-design-icon-map",
+    family: "architecture",
+    title: "System design icon map",
+    description: "A clean system-design style diagram where each node is an icon, a short system name, and one small operational note.",
+    notes: ["Compact icon nodes for interview-style system design", "Wide lanes reduce edge collisions", "Shows clients, edge, services, data, async, external systems, and observability"],
+    nodes: [
+      { id: "sys-users", kind: "system", tone: "source", title: "Users", detail: "Web and mobile traffic", badge: "client", position: { x: -880, y: -95 }, compact: true },
+      { id: "sys-admin", kind: "system", tone: "source", title: "Admin", detail: "Internal operations", badge: "client", position: { x: -880, y: 135 }, compact: true },
+      { id: "sys-cdn", kind: "system", tone: "external", title: "CDN", detail: "Static assets", badge: "edge", position: { x: -630, y: -210 }, compact: true },
+      { id: "sys-gateway", kind: "system", tone: "review", title: "API Gateway", detail: "Auth, rate limit, routing", badge: "edge", position: { x: -630, y: 20 }, compact: true },
+      { id: "sys-auth", kind: "system", tone: "review", title: "Auth", detail: "Token and tenancy", badge: "security", position: { x: -365, y: -125 }, compact: true },
+      { id: "sys-api", kind: "system", tone: "process", title: "Core API", detail: "Commands and reads", badge: "service", position: { x: -365, y: 110 }, compact: true },
+      { id: "sys-order", kind: "system", tone: "process", title: "Order", detail: "Aggregate owner", badge: "service", position: { x: -90, y: -70 }, compact: true },
+      { id: "sys-inventory", kind: "system", tone: "process", title: "Inventory", detail: "Reservation state", badge: "service", position: { x: -90, y: 165 }, compact: true },
+      { id: "sys-bus", kind: "system", tone: "event", title: "Event Bus", detail: "Async fan-out", badge: "event", position: { x: 185, y: -190 }, compact: true },
+      { id: "sys-worker", kind: "system", tone: "agent", title: "Workers", detail: "Retry and side effects", badge: "async", position: { x: 185, y: 45 }, compact: true },
+      { id: "sys-postgres", kind: "system", tone: "storage", title: "Postgres", detail: "System of record", badge: "db", position: { x: 460, y: -95 }, compact: true },
+      { id: "sys-redis", kind: "system", tone: "storage", title: "Redis", detail: "Hot reads and locks", badge: "cache", position: { x: 460, y: 135 }, compact: true },
+      { id: "sys-warehouse", kind: "system", tone: "storage", title: "Warehouse", detail: "Read model", badge: "analytics", position: { x: 730, y: -210 }, compact: true },
+      { id: "sys-observe", kind: "system", tone: "risk", title: "Telemetry", detail: "Logs, metrics, traces", badge: "ops", position: { x: 730, y: 20 }, compact: true },
+      { id: "sys-payment", kind: "system", tone: "external", title: "Payment API", detail: "Provider boundary", badge: "external", position: { x: 1000, y: -95 }, compact: true },
+      { id: "sys-output", kind: "system", tone: "output", title: "Receipt", detail: "User-visible state", badge: "output", position: { x: 1000, y: 135 }, compact: true }
+    ],
+    edges: [
+      { id: "sys-users-cdn", source: "sys-users", target: "sys-cdn", type: "smoothstep", label: "assets", tone: "external", marker: "arrowClosed" },
+      { id: "sys-users-gateway", source: "sys-users", target: "sys-gateway", type: "smoothstep", label: "HTTPS", tone: "source", marker: "arrowClosed" },
+      { id: "sys-admin-gateway", source: "sys-admin", target: "sys-gateway", type: "smoothstep", label: "ops", tone: "source", marker: "arrowClosed" },
+      { id: "sys-gateway-auth", source: "sys-gateway", target: "sys-auth", type: "smoothstep", label: "token", tone: "review", marker: "arrowClosed" },
+      { id: "sys-gateway-api", source: "sys-gateway", target: "sys-api", type: "smoothstep", label: "route", tone: "process", marker: "arrowClosed" },
+      { id: "sys-api-order", source: "sys-api", target: "sys-order", type: "smoothstep", label: "command", tone: "process", marker: "arrowClosed" },
+      { id: "sys-api-inventory", source: "sys-api", target: "sys-inventory", type: "smoothstep", label: "query", tone: "process", marker: "arrowClosed" },
+      { id: "sys-order-bus", source: "sys-order", target: "sys-bus", type: "smoothstep", label: "events", tone: "event", marker: "arrowClosed", animated: true },
+      { id: "sys-bus-worker", source: "sys-bus", target: "sys-worker", type: "smoothstep", label: "consume", tone: "event", marker: "arrowClosed", animated: true },
+      { id: "sys-order-postgres", source: "sys-order", target: "sys-postgres", type: "smoothstep", label: "write", tone: "storage", marker: "arrowClosed" },
+      { id: "sys-inventory-redis", source: "sys-inventory", target: "sys-redis", type: "smoothstep", label: "cache", tone: "storage", marker: "arrowClosed" },
+      { id: "sys-postgres-warehouse", source: "sys-postgres", target: "sys-warehouse", type: "smoothstep", label: "CDC", tone: "storage", marker: "arrowClosed" },
+      { id: "sys-api-observe", source: "sys-api", target: "sys-observe", type: "smoothstep", label: "signals", tone: "risk", marker: "arrow" },
+      { id: "sys-worker-payment", source: "sys-worker", target: "sys-payment", type: "smoothstep", label: "charge", tone: "external", marker: "arrowClosed" },
+      { id: "sys-payment-output", source: "sys-payment", target: "sys-output", type: "smoothstep", label: "status", tone: "output", marker: "arrowClosed" },
+      { id: "sys-observe-output", source: "sys-observe", target: "sys-output", type: "smoothstep", label: "SLO", tone: "risk", marker: "arrow" }
+    ]
+  },
+  {
     id: "architecture-service-map",
     family: "architecture",
     title: "Software architecture service map",
@@ -557,7 +600,7 @@ export const reactFlowArchitectureDemo: StudioFlowArchitectureDemo = {
       ]
     }
   ],
-  defaultViewId: "architecture-service-map",
+  defaultViewId: "system-design-icon-map",
   nodes: serviceMapNodes,
   edges: serviceMapEdges,
   views: reactFlowViews

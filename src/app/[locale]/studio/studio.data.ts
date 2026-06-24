@@ -108,7 +108,8 @@ export type StudioFlowArchitectureNodeKind =
   | "external"
   | "decision"
   | "risk"
-  | "note";
+  | "note"
+  | "system";
 
 export type StudioFlowArchitectureTone =
   | "source"
@@ -130,6 +131,7 @@ export type StudioFlowArchitectureNodeSpec = {
   badge: string;
   position: { x: number; y: number };
   size?: { width: number; height: number };
+  compact?: boolean;
 };
 
 export type StudioFlowArchitectureEdgeSpec = {

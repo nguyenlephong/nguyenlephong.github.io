@@ -322,7 +322,8 @@ type StudioFlowCanvasNodeKind =
   | "external"
   | "decision"
   | "risk"
-  | "note";
+  | "note"
+  | "system";
 type StudioFlowCanvasTone =
   | "source"
   | "process"
@@ -341,6 +342,7 @@ type StudioFlowCanvasNodeData = {
   badge?: string;
   tone: StudioFlowCanvasTone;
   active?: boolean;
+  compact?: boolean;
 };
 
 const DEFAULT_ROUTE: StudioRouteId = "welcome";
@@ -1146,12 +1148,7 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
   },
   zh: createCompactStudioCopy({
     navLabel: "个人 Studio",
-    navItems: {
-      welcome: "Welcome",
-      "ai-agent-setup": "AI 设置",
-      "ai-skills": "AI 技能",
-      "delivery-checklists": "清单"
-    },
+    navItems: { welcome: "Welcome", "ai-agent-setup": "AI 设置", "ai-skills": "AI 技能", "delivery-checklists": "清单" },
     findSetupNote: "查找设置笔记",
     search: "搜索",
     searchPlaceholder: "搜索 AI 设置...",
@@ -1168,32 +1165,11 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "添加笔记", commandRunbook: "命令 runbook", setupChecklist: "设置清单", researchQueue: "研究队列" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "复制 markdown", copied: "已复制", skillLibrary: "技能库", categoriesLabel: "技能分类" },
     checklists: { ...englishStudioCopy.checklists, copied: "已复制", menu: "清单菜单", sections: "部分", steps: "步骤", structureDetail: (sections, steps) => `${sections} 个部分，${steps} 个嵌套步骤，可复制为 markdown。` },
-    preferences: {
-      ...englishStudioCopy.preferences,
-      title: "偏好设置",
-      description: "Studio 工作区的主题、字体和布局。",
-      themeMode: "主题模式",
-      resolvedNow: "当前解析",
-      pageLayout: "页面布局",
-      navbarBehavior: "导航栏行为",
-      sidebarStyle: "侧边栏样式",
-      collapseMode: "折叠模式",
-      restoreDefaults: "恢复默认布局",
-      themeOptions: { light: "浅色", system: "系统", dark: "深色" },
-      contentLayoutOptions: { centered: "居中", "full-width": "全宽" },
-      navbarStyleOptions: { sticky: "固定", scroll: "滚动" },
-      sidebarVariantOptions: { inset: "内嵌", sidebar: "侧边栏", floating: "浮动" },
-      sidebarCollapsibleOptions: { icon: "图标", offcanvas: "抽屉" }
-    }
+    preferences: { ...englishStudioCopy.preferences, title: "偏好设置", description: "Studio 工作区的主题、字体和布局。", themeMode: "主题模式", resolvedNow: "当前解析", pageLayout: "页面布局", navbarBehavior: "导航栏行为", sidebarStyle: "侧边栏样式", collapseMode: "折叠模式", restoreDefaults: "恢复默认布局", themeOptions: { light: "浅色", system: "系统", dark: "深色" }, contentLayoutOptions: { centered: "居中", "full-width": "全宽" }, navbarStyleOptions: { sticky: "固定", scroll: "滚动" }, sidebarVariantOptions: { inset: "内嵌", sidebar: "侧边栏", floating: "浮动" }, sidebarCollapsibleOptions: { icon: "图标", offcanvas: "抽屉" } }
   }),
   ja: createCompactStudioCopy({
     navLabel: "パーソナル Studio",
-    navItems: {
-      welcome: "Welcome",
-      "ai-agent-setup": "AI セットアップ",
-      "ai-skills": "AI スキル",
-      "delivery-checklists": "チェックリスト"
-    },
+    navItems: { welcome: "Welcome", "ai-agent-setup": "AI セットアップ", "ai-skills": "AI スキル", "delivery-checklists": "チェックリスト" },
     findSetupNote: "セットアップノートを検索",
     search: "検索",
     searchPlaceholder: "AI セットアップを検索...",
@@ -1210,32 +1186,11 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "ノート追加", commandRunbook: "コマンド runbook", setupChecklist: "セットアップチェックリスト", researchQueue: "調査キュー" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Markdown をコピー", copied: "コピー済み", skillLibrary: "スキルライブラリ", categoriesLabel: "スキル分類" },
     checklists: { ...englishStudioCopy.checklists, copied: "コピー済み", menu: "チェックリストメニュー", sections: "セクション", steps: "ステップ", structureDetail: (sections, steps) => `${sections} セクション、${steps} 個のネストされたステップ。markdown としてコピーできます。` },
-    preferences: {
-      ...englishStudioCopy.preferences,
-      title: "設定",
-      description: "Studio ワークスペースのテーマ、フォント、レイアウト。",
-      themeMode: "テーマモード",
-      resolvedNow: "現在",
-      pageLayout: "ページレイアウト",
-      navbarBehavior: "ナビバー動作",
-      sidebarStyle: "サイドバー形式",
-      collapseMode: "折りたたみ方式",
-      restoreDefaults: "レイアウト既定値に戻す",
-      themeOptions: { light: "ライト", system: "システム", dark: "ダーク" },
-      contentLayoutOptions: { centered: "中央寄せ", "full-width": "全幅" },
-      navbarStyleOptions: { sticky: "固定", scroll: "スクロール" },
-      sidebarVariantOptions: { inset: "インセット", sidebar: "サイドバー", floating: "フローティング" },
-      sidebarCollapsibleOptions: { icon: "アイコン", offcanvas: "オフキャンバス" }
-    }
+    preferences: { ...englishStudioCopy.preferences, title: "設定", description: "Studio ワークスペースのテーマ、フォント、レイアウト。", themeMode: "テーマモード", resolvedNow: "現在", pageLayout: "ページレイアウト", navbarBehavior: "ナビバー動作", sidebarStyle: "サイドバー形式", collapseMode: "折りたたみ方式", restoreDefaults: "レイアウト既定値に戻す", themeOptions: { light: "ライト", system: "システム", dark: "ダーク" }, contentLayoutOptions: { centered: "中央寄せ", "full-width": "全幅" }, navbarStyleOptions: { sticky: "固定", scroll: "スクロール" }, sidebarVariantOptions: { inset: "インセット", sidebar: "サイドバー", floating: "フローティング" }, sidebarCollapsibleOptions: { icon: "アイコン", offcanvas: "オフキャンバス" } }
   }),
   ko: createCompactStudioCopy({
     navLabel: "개인 Studio",
-    navItems: {
-      welcome: "Welcome",
-      "ai-agent-setup": "AI 설정",
-      "ai-skills": "AI 스킬",
-      "delivery-checklists": "체크리스트"
-    },
+    navItems: { welcome: "Welcome", "ai-agent-setup": "AI 설정", "ai-skills": "AI 스킬", "delivery-checklists": "체크리스트" },
     findSetupNote: "설정 노트 찾기",
     search: "검색",
     searchPlaceholder: "AI 설정 검색...",
@@ -1252,32 +1207,11 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "노트 추가", commandRunbook: "명령 runbook", setupChecklist: "설정 체크리스트", researchQueue: "리서치 큐" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Markdown 복사", copied: "복사됨", skillLibrary: "스킬 라이브러리", categoriesLabel: "스킬 카테고리" },
     checklists: { ...englishStudioCopy.checklists, copied: "복사됨", menu: "체크리스트 메뉴", sections: "섹션", steps: "단계", structureDetail: (sections, steps) => `${sections}개 섹션, ${steps}개 중첩 단계, markdown 복사 가능.` },
-    preferences: {
-      ...englishStudioCopy.preferences,
-      title: "환경설정",
-      description: "Studio 워크스페이스의 테마, 폰트, 레이아웃.",
-      themeMode: "테마 모드",
-      resolvedNow: "현재 적용",
-      pageLayout: "페이지 레이아웃",
-      navbarBehavior: "Navbar 동작",
-      sidebarStyle: "Sidebar 스타일",
-      collapseMode: "접기 방식",
-      restoreDefaults: "레이아웃 기본값 복원",
-      themeOptions: { light: "라이트", system: "시스템", dark: "다크" },
-      contentLayoutOptions: { centered: "중앙", "full-width": "전체 폭" },
-      navbarStyleOptions: { sticky: "고정", scroll: "스크롤" },
-      sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" },
-      sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
-    }
+    preferences: { ...englishStudioCopy.preferences, title: "환경설정", description: "Studio 워크스페이스의 테마, 폰트, 레이아웃.", themeMode: "테마 모드", resolvedNow: "현재 적용", pageLayout: "페이지 레이아웃", navbarBehavior: "Navbar 동작", sidebarStyle: "Sidebar 스타일", collapseMode: "접기 방식", restoreDefaults: "레이아웃 기본값 복원", themeOptions: { light: "라이트", system: "시스템", dark: "다크" }, contentLayoutOptions: { centered: "중앙", "full-width": "전체 폭" }, navbarStyleOptions: { sticky: "고정", scroll: "스크롤" }, sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" }, sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" } }
   }),
   fr: createCompactStudioCopy({
     navLabel: "Studio personnel",
-    navItems: {
-      welcome: "Welcome",
-      "ai-agent-setup": "Setup IA",
-      "ai-skills": "Skills IA",
-      "delivery-checklists": "Checklists"
-    },
+    navItems: { welcome: "Welcome", "ai-agent-setup": "Setup IA", "ai-skills": "Skills IA", "delivery-checklists": "Checklists" },
     findSetupNote: "Trouver une note",
     search: "Rechercher",
     searchPlaceholder: "Rechercher dans le setup IA...",
@@ -1294,23 +1228,7 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     aiSetup: { ...englishStudioCopy.aiSetup, addNote: "Ajouter une note", commandRunbook: "Runbook commandes", setupChecklist: "Checklist setup", researchQueue: "File de recherche" },
     aiSkills: { ...englishStudioCopy.aiSkills, copyMarkdown: "Copier markdown", copied: "Copié", skillLibrary: "Bibliothèque de skills", categoriesLabel: "Catégories de skills" },
     checklists: { ...englishStudioCopy.checklists, copied: "Copié", menu: "Menu checklist", sections: "sections", steps: "étapes", structureDetail: (sections, steps) => `${sections} sections, ${steps} étapes imbriquées, copiables en markdown.` },
-    preferences: {
-      ...englishStudioCopy.preferences,
-      title: "Préférences",
-      description: "Thème, police et layout pour ce Studio.",
-      themeMode: "Mode thème",
-      resolvedNow: "Actuel",
-      pageLayout: "Layout page",
-      navbarBehavior: "Comportement navbar",
-      sidebarStyle: "Style sidebar",
-      collapseMode: "Mode de réduction",
-      restoreDefaults: "Restaurer les valeurs par défaut",
-      themeOptions: { light: "Clair", system: "Système", dark: "Sombre" },
-      contentLayoutOptions: { centered: "Centré", "full-width": "Pleine largeur" },
-      navbarStyleOptions: { sticky: "Sticky", scroll: "Scroll" },
-      sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" },
-      sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
-    }
+    preferences: { ...englishStudioCopy.preferences, title: "Préférences", description: "Thème, police et layout pour ce Studio.", themeMode: "Mode thème", resolvedNow: "Actuel", pageLayout: "Layout page", navbarBehavior: "Comportement navbar", sidebarStyle: "Style sidebar", collapseMode: "Mode de réduction", restoreDefaults: "Restaurer les valeurs par défaut", themeOptions: { light: "Clair", system: "Système", dark: "Sombre" }, contentLayoutOptions: { centered: "Centré", "full-width": "Pleine largeur" }, navbarStyleOptions: { sticky: "Sticky", scroll: "Scroll" }, sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" }, sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" } }
   })
 };
 
@@ -1704,6 +1622,25 @@ function createFlowRouteDefinition(
   };
 }
 
+function createAuthRouteDefinition(
+  routeId: Extract<StudioRouteId, `auth-${string}`>,
+  title: string,
+  description: string,
+  panels: string[],
+  timeline: string[]
+): StudioRoute {
+  return {
+    id: routeId,
+    title,
+    description,
+    kind: "auth",
+    icon: LuFingerprint,
+    metrics: routeMetrics[routeId],
+    panels,
+    timeline
+  };
+}
+
 const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
   welcome: {
     id: "welcome",
@@ -1859,48 +1796,13 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
     panels: ["Task intake", "Module creation", "Release and rollout"],
     timeline: ["Ticket intake path mapped", "Module checklist nested", "Rollout phases captured"]
   },
-  "flow-system-design": createFlowRouteDefinition(
-    "flow-system-design",
-    "system-design",
-    ["Problem frame", "Runtime map", "Failure modes"],
-    ["Requirement frame set", "Data ownership mapped", "Evolution path documented"]
-  ),
-  "flow-architecture-decision": createFlowRouteDefinition(
-    "flow-architecture-decision",
-    "architecture-decision",
-    ["Decision scope", "Option matrix", "Risk gates"],
-    ["Invariants listed", "Options compared", "Decision note ready"]
-  ),
-  "flow-incident-response": createFlowRouteDefinition(
-    "flow-incident-response",
-    "incident-response",
-    ["Signal", "Mitigation", "Postmortem"],
-    ["Signal confirmed", "Blast radius contained", "Follow-up owners assigned"]
-  ),
-  "flow-release-readiness": createFlowRouteDefinition(
-    "flow-release-readiness",
-    "release-readiness",
-    ["Scope", "Verification", "Rollout decision"],
-    ["Scope checked", "Analytics and SEO reviewed", "Rollback trigger named"]
-  ),
-  "flow-ai-delivery": createFlowRouteDefinition(
-    "flow-ai-delivery",
-    "ai-delivery",
-    ["Task brief", "Context pack", "Verification"],
-    ["Boundaries set", "Focused diff reviewed", "Handoff prepared"]
-  ),
-  "flow-portfolio-story": createFlowRouteDefinition(
-    "flow-portfolio-story",
-    "portfolio-story",
-    ["Context", "Trade-offs", "Impact"],
-    ["Context captured", "Impact evidence selected", "Story draft shaped"]
-  ),
-  "flow-react-flow-architecture-demo": createFlowRouteDefinition(
-    "flow-react-flow-architecture-demo",
-    "react-flow-architecture-demo",
-    ["Node shapes", "Edge language", "Architecture zones"],
-    ["Node primitives displayed", "Architecture shapes mapped", "Canvas controls enabled"]
-  ),
+  "flow-system-design": createFlowRouteDefinition("flow-system-design", "system-design", ["Problem frame", "Runtime map", "Failure modes"], ["Requirement frame set", "Data ownership mapped", "Evolution path documented"]),
+  "flow-architecture-decision": createFlowRouteDefinition("flow-architecture-decision", "architecture-decision", ["Decision scope", "Option matrix", "Risk gates"], ["Invariants listed", "Options compared", "Decision note ready"]),
+  "flow-incident-response": createFlowRouteDefinition("flow-incident-response", "incident-response", ["Signal", "Mitigation", "Postmortem"], ["Signal confirmed", "Blast radius contained", "Follow-up owners assigned"]),
+  "flow-release-readiness": createFlowRouteDefinition("flow-release-readiness", "release-readiness", ["Scope", "Verification", "Rollout decision"], ["Scope checked", "Analytics and SEO reviewed", "Rollback trigger named"]),
+  "flow-ai-delivery": createFlowRouteDefinition("flow-ai-delivery", "ai-delivery", ["Task brief", "Context pack", "Verification"], ["Boundaries set", "Focused diff reviewed", "Handoff prepared"]),
+  "flow-portfolio-story": createFlowRouteDefinition("flow-portfolio-story", "portfolio-story", ["Context", "Trade-offs", "Impact"], ["Context captured", "Impact evidence selected", "Story draft shaped"]),
+  "flow-react-flow-architecture-demo": createFlowRouteDefinition("flow-react-flow-architecture-demo", "react-flow-architecture-demo", ["Node shapes", "Edge language", "Architecture zones"], ["Node primitives displayed", "Architecture shapes mapped", "Canvas controls enabled"]),
   calendar: {
     id: "calendar",
     title: "Calendar",
@@ -1951,26 +1853,8 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
     panels: ["Admin", "Editor", "Viewer"],
     timeline: ["Permission changed", "Role reviewed", "Access report exported"]
   },
-  "auth-login-v1": {
-    id: "auth-login-v1",
-    title: "Login v1",
-    description: "Authentication route preview opened inside Studio instead of a new project.",
-    kind: "auth",
-    icon: LuFingerprint,
-    metrics: routeMetrics["auth-login-v1"],
-    panels: ["Credentials", "Social auth", "Security"],
-    timeline: ["Session created", "Password reset checked", "Device trusted"]
-  },
-  "auth-login-v2": {
-    id: "auth-login-v2",
-    title: "Login v2",
-    description: "Alternate authentication layout with the same shell behavior.",
-    kind: "auth",
-    icon: LuFingerprint,
-    metrics: routeMetrics["auth-login-v2"],
-    panels: ["Credentials", "Magic link", "Security"],
-    timeline: ["Magic link generated", "Session checked", "Device trusted"]
-  },
+  "auth-login-v1": createAuthRouteDefinition("auth-login-v1", "Login v1", "Authentication route preview opened inside Studio instead of a new project.", ["Credentials", "Social auth", "Security"], ["Session created", "Password reset checked", "Device trusted"]),
+  "auth-login-v2": createAuthRouteDefinition("auth-login-v2", "Login v2", "Alternate authentication layout with the same shell behavior.", ["Credentials", "Magic link", "Security"], ["Magic link generated", "Session checked", "Device trusted"]),
   "auth-register-v1": {
     id: "auth-register-v1",
     title: "Register v1",
@@ -2308,57 +2192,25 @@ const studioConversations: StudioConversation[] = [
   }
 ];
 
+function createWorkstreamRow(
+  name: string,
+  id: string,
+  status: string,
+  billing: string,
+  plan: string,
+  joined: string,
+  time: string,
+  billingTone: "paid" | "pending" | "unpaid"
+) {
+  return { name, id, status, billing, plan, joined, time, billingTone };
+}
+
 const workstreamRows = [
-  {
-    name: "Gateway rollout guardrails",
-    id: "REL-204",
-    status: "Healthy",
-    billing: "Ready",
-    plan: "Platform",
-    joined: "20th June 2026",
-    time: "at 09:40 AM",
-    billingTone: "paid"
-  },
-  {
-    name: "Partner mTLS certificate overlap",
-    id: "SEC-118",
-    status: "Watching",
-    billing: "Review",
-    plan: "Security",
-    joined: "20th June 2026",
-    time: "at 08:15 AM",
-    billingTone: "pending"
-  },
-  {
-    name: "Feature flag tenant expansion",
-    id: "FF-089",
-    status: "Healthy",
-    billing: "Ready",
-    plan: "Rollout",
-    joined: "19th June 2026",
-    time: "at 05:35 PM",
-    billingTone: "paid"
-  },
-  {
-    name: "Bulk export async worker",
-    id: "PERF-047",
-    status: "Blocked",
-    billing: "Risk",
-    plan: "Backend",
-    joined: "19th June 2026",
-    time: "at 02:12 PM",
-    billingTone: "unpaid"
-  },
-  {
-    name: "PostHog release anomaly review",
-    id: "OBS-066",
-    status: "Queued",
-    billing: "Next",
-    plan: "Observability",
-    joined: "18th June 2026",
-    time: "at 11:08 AM",
-    billingTone: "pending"
-  }
+  createWorkstreamRow("Gateway rollout guardrails", "REL-204", "Healthy", "Ready", "Platform", "20th June 2026", "at 09:40 AM", "paid"),
+  createWorkstreamRow("Partner mTLS certificate overlap", "SEC-118", "Watching", "Review", "Security", "20th June 2026", "at 08:15 AM", "pending"),
+  createWorkstreamRow("Feature flag tenant expansion", "FF-089", "Healthy", "Ready", "Rollout", "19th June 2026", "at 05:35 PM", "paid"),
+  createWorkstreamRow("Bulk export async worker", "PERF-047", "Blocked", "Risk", "Backend", "19th June 2026", "at 02:12 PM", "unpaid"),
+  createWorkstreamRow("PostHog release anomaly review", "OBS-066", "Queued", "Next", "Observability", "18th June 2026", "at 11:08 AM", "pending")
 ];
 
 const dashboardKpis = [
@@ -3590,8 +3442,6 @@ function AiAgentSetupPage({
         </div>
       </RouteHeading>
 
-      <RouteMetricGrid metrics={route.metrics} copy={copy} />
-
       <div className="ai-setup-container card" data-studio-module="ai-agent-setup">
         <aside className="ai-setup-index" aria-label={copy.aiSetup.agentSetupNotes}>
           <div className="ai-pane-head">
@@ -3824,8 +3674,6 @@ function AiSkillsPage({ route, locale, copy }: { route: StudioRoute; locale: str
         </button>
       </RouteHeading>
 
-      <RouteMetricGrid metrics={route.metrics} copy={copy} />
-
       <div className="skill-library-workbench card" data-studio-module="ai-skills">
         <aside className="skill-index-pane" aria-label={copy.aiSkills.skillLibrary}>
           <div className="ai-pane-head">
@@ -4011,8 +3859,6 @@ function DeliveryChecklistsPage({ route, locale, copy }: { route: StudioRoute; l
           {copiedChecklistId === selectedChecklist.id ? copy.checklists.copied : copy.checklists.copyChecklist}
         </button>
       </RouteHeading>
-
-      <RouteMetricGrid metrics={route.metrics} copy={copy} />
 
       <div className="checklist-workbench card" data-studio-module="delivery-checklists">
         <aside className="checklist-index-pane" aria-label={copy.checklists.workflowListLabel}>
@@ -4251,14 +4097,38 @@ function getReactFlowFamilyLabel(family: string) {
   return reactFlowExampleFamilyLabels[family] ?? family;
 }
 
+function renderStudioFlowNodeIcon(kind: StudioFlowCanvasNodeKind, badge?: string) {
+  if (kind === "database" || badge === "db") return <LuDatabase />;
+  if (kind === "cache" || badge === "cache") return <LuArchive />;
+  if (kind === "queue" || kind === "topic" || badge === "event") return <LuWorkflow />;
+  if (kind === "worker" || badge === "async") return <LuSettings />;
+  if (kind === "external" || badge === "external" || badge === "edge") return <LuGlobe />;
+  if (kind === "gateway" || badge === "service") return <LuServer />;
+  if (kind === "input" || badge === "client") return <LuUsers />;
+  if (kind === "output") return <LuCheckCircle2 />;
+  if (kind === "risk") return <LuFlag />;
+  if (kind === "note") return <LuFileText />;
+  if (kind === "decision") return <LuHelpCircle />;
+  if (badge === "security") return <LuLock />;
+  if (badge === "ops") return <LuLineChart />;
+  if (badge === "analytics") return <LuBarChart />;
+  return <LuServer />;
+}
+
 function StudioFlowCanvasNodeCard({ data }: NodeProps<StudioFlowCanvasNode>) {
   const canConnect = data.kind !== "group";
 
   return (
-    <div className={`flow-react-node flow-react-node--${data.kind} tone-${data.tone}${data.active ? " is-active" : ""}`}>
+    <div className={`flow-react-node flow-react-node--${data.kind} tone-${data.tone}${data.active ? " is-active" : ""}${data.compact ? " is-compact" : ""}`}>
       {canConnect && <Handle type="target" position={Position.Left} />}
       {canConnect && <Handle className="flow-react-handle-top" type="target" position={Position.Top} />}
-      <span className="flow-react-node-badge">{data.badge}</span>
+      {data.compact ? (
+        <span className="flow-react-node-icon" aria-hidden="true">
+          {renderStudioFlowNodeIcon(data.kind, data.badge)}
+        </span>
+      ) : (
+        <span className="flow-react-node-badge">{data.badge}</span>
+      )}
       <strong>{data.title}</strong>
       <small>{data.detail}</small>
       {canConnect && <Handle type="source" position={Position.Right} />}
@@ -4370,7 +4240,8 @@ function buildArchitectureDemoCanvas(flow: StudioFlow, viewId?: string): {
       detail: node.detail,
       badge: node.badge,
       tone: node.tone,
-      active: node.kind !== "group"
+      active: node.kind !== "group",
+      compact: node.compact
     }
   }));
 
@@ -4393,9 +4264,9 @@ function buildArchitectureDemoCanvas(flow: StudioFlow, viewId?: string): {
 }
 
 function getStudioFlowNodeSize(node: StudioFlowCanvasNode) {
-  const fallbackSize = node.data.kind === "decision"
-    ? { width: 160, height: 160 }
-    : { width: 220, height: 96 };
+  let fallbackSize = { width: 220, height: 96 };
+  if (node.data.kind === "decision") fallbackSize = { width: 160, height: 160 };
+  if (node.data.compact) fallbackSize = { width: 136, height: 108 };
   const width = typeof node.style?.width === "number" ? node.style.width : fallbackSize.width;
   const height = typeof node.style?.height === "number" ? node.style.height : fallbackSize.height;
   return { width, height };
@@ -4494,6 +4365,10 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
     ?? initialDemoView;
   const { nodes, edges } = useMemo(() => buildStudioFlowCanvas(flow, selectedView?.id), [flow, selectedView?.id]);
   const isReactFlowDemo = Boolean(demo);
+  const isCompactDiagram = nodes.some((node) => node.data.compact);
+  let fitViewPadding = 0.24;
+  if (isReactFlowDemo) fitViewPadding = 0.14;
+  if (isCompactDiagram) fitViewPadding = 0.18;
 
   useEffect(() => {
     if (!isBoardFullscreen) return undefined;
@@ -4520,7 +4395,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
   };
 
   return (
-    <section className={`flow-chart-surface${isReactFlowDemo ? " is-architecture-demo" : ""}${isBoardFullscreen ? " is-fullscreen" : ""}`} aria-label={copy.flows.chartLabel}>
+    <section className={`flow-chart-surface${isReactFlowDemo ? " is-architecture-demo" : ""}${isCompactDiagram ? " is-compact-diagram" : ""}${isBoardFullscreen ? " is-fullscreen" : ""}`} aria-label={copy.flows.chartLabel}>
       <div className="flow-chart-head">
         <div>
           <h3>{selectedView?.title ?? flow.title}</h3>
@@ -4587,7 +4462,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
         </div>
       </div>
 
-      <div className={`flow-react-surface${isReactFlowDemo ? " is-architecture-demo" : ""}`}>
+      <div className={`flow-react-surface${isReactFlowDemo ? " is-architecture-demo" : ""}${isCompactDiagram ? " is-compact-diagram" : ""}`}>
         <ReactFlow
           key={selectedView?.id ?? flow.id}
           className="flow-react-canvas"
@@ -4596,7 +4471,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
           nodeTypes={studioFlowNodeTypes}
           fitView
           fitViewOptions={{
-            padding: isReactFlowDemo ? 0.14 : 0.24,
+            padding: fitViewPadding,
             minZoom: isReactFlowDemo ? 0.26 : 0.5
           }}
           minZoom={0.18}
@@ -4711,7 +4586,6 @@ function StudioFlowMenuPage({
             </button>
           </RouteHeading>
 
-          <RouteMetricGrid metrics={route.metrics} copy={copy} />
         </>
       )}
 
