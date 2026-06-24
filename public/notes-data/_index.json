@@ -46,64 +46,67 @@
   "posts": [
     {
       "slug": "tri-tue-can-duc-hanh",
-      "title": "Trí tuệ cần đức hạnh để không trở thành dao sắc",
-      "summary": "Một ghi chép bình tĩnh về trí tuệ, tài năng và đức hạnh. Trí tuệ tự nó không thiện cũng không ác; nó chỉ khuếch đại hướng đi của người cầm nó. Người có năng lực nhưng thiếu nhân cách có thể gây hại xa hơn người bình thường, nên điều đáng quý không chỉ là thông minh, mà là dùng sự thông minh đó để bảo vệ, xây dựng và làm người khác an toàn hơn.",
-      "cardSummary": "Trí tuệ là năng lực khuếch đại; đức hạnh mới quyết định năng lực đó đi về phía xây dựng hay gây hại.",
+      "title": "Wisdom Needs Character So It Does Not Become a Sharp Knife",
+      "summary": "A reflective note on why intelligence, skill, and quick judgment need character beside them. Without restraint, care, and responsibility, the same sharp mind that solves problems can also hurt trust, relationships, and the systems around it.",
+      "cardSummary": "A sharp mind is useful only when character helps decide where the edge should point.",
       "date": "2026-06-20",
-      "readingMinutes": 5,
+      "readingMinutes": 4,
       "tags": [
-        "Đức hạnh",
-        "Trí tuệ",
-        "Nhân cách",
-        "Sự nghiệp",
-        "Tự phát triển"
+        "Character",
+        "Wisdom",
+        "Career",
+        "Self Development",
+        "Judgment"
       ],
       "author": "Nguyen Le Phong",
       "topic": "goc-nhin",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "su-ro-rang-la-mot-dang-noi-luc",
-      "title": "Sự rõ ràng là một dạng nội lực",
-      "summary": "Một ghi chép về sự minh bạch, thẳng thắn và cảm giác dễ thở khi ở cạnh người có nội lực. Người vững bên trong thường không cần tạo mê cung bằng lời nói; họ nói rõ điều mình biết, điều mình chưa chắc, điều mình sẽ làm, và để kết quả trả lời. Sự rõ ràng không làm người ta yếu đi, mà giúp niềm tin bớt phải dựa vào suy đoán.",
-      "cardSummary": "Người có nội lực không cần làm mình bí ẩn; họ tạo niềm tin bằng sự rõ ràng và nhất quán.",
+      "title": "Clarity Is a Form of Strength",
+      "summary": "A note on clarity as a quiet form of strength in work and relationships. Clear words, clear boundaries, and clear expectations reduce unnecessary guessing and make trust easier to maintain.",
+      "cardSummary": "Clarity is not cold. It is one way to make trust easier to carry.",
       "date": "2026-06-20",
-      "readingMinutes": 6,
+      "readingMinutes": 4,
       "tags": [
-        "Giao tiếp",
-        "Minh bạch",
-        "Niềm tin",
-        "Nội lực",
-        "Quan hệ công việc"
+        "Communication",
+        "Clarity",
+        "Trust",
+        "Work Relationships",
+        "Self Development"
       ],
       "author": "Nguyen Le Phong",
       "topic": "goc-nhin",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "tao-niem-tin-khong-phai-tao-ao-giac",
-      "title": "Tạo niềm tin không phải là tạo ảo giác",
-      "summary": "Một ghi chép về ranh giới giữa xây dựng niềm tin và thao túng kỳ vọng. Con người thường hành động theo điều họ tin là thực tế, nên khả năng tạo niềm tin rất mạnh trong kinh doanh, quản lý và khởi nghiệp. Nhưng niềm tin được dựng bằng mập mờ là một khoản nợ lãi cao; niềm tin bền hơn phải đi cùng bằng chứng nhỏ, cam kết rõ và sự thật có thể kiểm chứng.",
-      "cardSummary": "Niềm tin có thể đi trước kết quả, nhưng nếu nó được dựng bằng mập mờ thì sớm muộn cũng thành một khoản nợ.",
+      "title": "Building Trust Is Not Creating an Illusion",
+      "summary": "A reflection on trust in leadership, product, and work. Real trust is built through evidence, consistency, and honest limits, not through a polished story that hides risk or asks people to believe without proof.",
+      "cardSummary": "Trust grows from evidence and consistency, not from making uncertainty look prettier than it is.",
       "date": "2026-06-20",
-      "readingMinutes": 7,
+      "readingMinutes": 4,
       "tags": [
-        "Niềm tin",
-        "Chiến lược",
-        "Đạo đức",
+        "Trust",
+        "Strategy",
+        "Ethics",
         "Leadership",
-        "Khởi nghiệp"
+        "Startup"
       ],
       "author": "Nguyen Le Phong",
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
@@ -557,254 +560,262 @@
     },
     {
       "slug": "echology-check",
-      "title": "Echology check: kiểm tra một ý tưởng trước khi nó làm lệch cả hệ sinh thái",
-      "summary": "Một ghi chú suy ngẫm về Echology check: cách kiểm tra một cách làm mới không chỉ bằng tốc độ hay hiệu quả trước mắt, mà bằng tác động của nó lên hệ sinh thái xung quanh: con người, kỹ năng, trách nhiệm, niềm tin, dữ liệu, gia đình và nhịp sống dài hạn.",
-      "cardSummary": "Một cách dừng lại trước khi tối ưu một việc nhỏ nhưng vô tình làm lệch cả hệ thống lớn hơn.",
+      "title": "Echology Check: Testing an Idea Before It Distorts the Ecosystem",
+      "summary": "A practical reflection on checking an idea before it changes the wider system around it. A useful idea should be tested not only for direct benefit, but also for second-order effects on people, incentives, operations, and trust.",
+      "cardSummary": "A good idea should improve more than one metric; it should also avoid quietly damaging the ecosystem around it.",
       "date": "2026-06-15",
-      "readingMinutes": 8,
+      "readingMinutes": 4,
       "tags": [
-        "Echology check",
-        "Tư duy hệ thống",
+        "Echology Check",
+        "Systems Thinking",
         "AI",
-        "Công việc",
-        "Ra quyết định",
-        "Phát triển bản thân"
+        "Work",
+        "Decision Making",
+        "Self Development"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "binh-phap-nhin-thau-con-nguoi",
-      "title": "Binh pháp cao nhất không phải đánh trận. Mà là nhìn thấu con người.",
-      "summary": "Một ghi chú chiêm nghiệm về cách đọc nhân tính trong các mối quan hệ: mong muốn, nỗi sợ, cảm xúc, lợi ích, đường lui, lòng tin, ranh giới và nghệ thuật giữ thế.",
-      "cardSummary": "Nhìn con người rõ hơn không phải để lạnh lùng hơn, mà để tin chậm, giữ ranh giới và bớt bị cảm xúc kéo khỏi đại cục.",
+      "title": "The Highest Strategy Is Not Winning the Battle, but Understanding People",
+      "summary": "A reflective note on strategy as the ability to understand motives, pressure, pride, fear, incentives, and timing. The deepest conflicts are rarely solved only by stronger arguments.",
+      "cardSummary": "The strongest strategy often begins before the battle, in understanding what people are protecting.",
       "date": "2026-06-15",
-      "readingMinutes": 6,
+      "readingMinutes": 4,
       "tags": [
-        "Nhân tính",
-        "Mối quan hệ",
-        "Tư duy chiến lược",
-        "Cảm xúc",
-        "Ranh giới",
-        "Ra quyết định"
+        "Human Nature",
+        "Relationships",
+        "Strategic Thinking",
+        "Emotion",
+        "Boundaries",
+        "Decision Making"
       ],
       "author": "Nguyen Le Phong",
       "featured": false,
       "topic": "goc-nhin",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "nhung-cau-noi-nhat-duoc-tren-duong",
-      "title": "Những câu nói nhặt được trên đường: một bộ não thứ hai để tự nhắc mình",
-      "summary": "Một ghi chú chiêm nghiệm từ những câu nói, thành ngữ và mẩu quan sát nhặt được từ nhiều nguồn: nói ít làm rõ, chọn môi trường học, đi qua nghịch cảnh, sống bớt diễn, giữ ranh giới với người khác, và lãnh đạo bằng khả năng truyền cảm hứng thay vì chỉ ép người khác làm.",
-      "cardSummary": "Một bản đồ nhỏ để nhớ lại những câu nói đời thường mà mình muốn đem theo khi làm việc, học và sống.",
+      "title": "Lines Collected Along the Way: A Second Brain for Reminding Myself",
+      "summary": "A note on collecting small sentences, sayings, and reminders as a practical second brain. Some lines stay useful because they help us pause, choose better words, or return to a clearer version of ourselves.",
+      "cardSummary": "A second brain is not only a storage system. Sometimes it is a quiet shelf for sentences that bring us back to ourselves.",
       "date": "2026-06-14",
-      "readingMinutes": 11,
+      "readingMinutes": 4,
       "tags": [
-        "Suy ngẫm",
-        "Bộ não thứ hai",
-        "Thành ngữ",
-        "Cuộc sống",
-        "Mối quan hệ",
-        "Phát triển bản thân"
+        "Reflection",
+        "Second Brain",
+        "Sayings",
+        "Life",
+        "Relationships",
+        "Self Development"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
       "topic": "goc-nhin",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "the-visual-mba-jason-barron",
-      "title": "The Visual MBA: đọc kinh doanh như một hệ thống phải vận hành được",
-      "summary": "Ghi chú đọc The Visual MBA của Jason Barron qua các mảng lãnh đạo, tài chính, kế toán quản trị, marketing, vận hành, nhân sự, thương lượng, chiến lược, đạo đức, startup, đổi mới, hiệu suất và quản trị toàn cầu. Bài viết giữ lại tinh thần ghi chú gốc: thực tế, hơi vui, ưu tiên công thức có thể áp dụng, và xem kinh doanh như một hệ thống gồm con người, tiền, sản phẩm, thị trường và năng lực triển khai.",
-      "cardSummary": "Một ghi chú gọn về business basics: tiền, người, sản phẩm, vận hành, chiến lược và khả năng triển khai.",
+      "title": "The Visual MBA: Reading Business as a System That Has to Run",
+      "summary": "A book reflection on The Visual MBA by Jason Barron, focusing less on business vocabulary and more on seeing a company as an operating system of customers, money, people, positioning, execution, and feedback loops.",
+      "cardSummary": "Business becomes easier to understand when it is seen as a system that must actually run, not a pile of impressive terms.",
       "date": "2026-06-14",
-      "readingMinutes": 12,
+      "readingMinutes": 4,
       "tags": [
-        "Ghi chú sách",
+        "Book Notes",
         "The Visual MBA",
         "Jason Barron",
-        "Kinh doanh",
-        "Quản trị",
+        "Business",
+        "Management",
         "Startup"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
       "topic": "sach",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "thinking-fast-and-slow-tu-duy-nhanh-va-cham",
-      "title": "Thinking Fast and Slow: vài lần tự bắt quả tang cái đầu mình chạy nhanh quá",
-      "summary": "Ghi chú đọc Thinking Fast and Slow - Tư duy nhanh và chậm của Daniel Kahneman qua các chương 1-9, 21-23 và 25: System 1/System 2, nỗ lực chú ý, System 2 lười, priming, nhận thức lỏng, framing, halo effect, checklist, trực giác chuyên gia, góc nhìn bên ngoài, Bernoulli, tâm lý sợ mất mát, lý thuyết triển vọng và biến cố hiếm có.",
-      "cardSummary": "Một ghi chú về những lúc cái đầu tự trả lời quá nhanh, rồi mình phải học cách bắt nó chậm lại.",
+      "title": "Thinking, Fast and Slow: Catching My Mind Moving Too Quickly",
+      "summary": "A book reflection on Daniel Kahneman's Thinking, Fast and Slow, centered on everyday moments where quick judgment feels confident before slow thinking has checked the evidence.",
+      "cardSummary": "The mind can feel certain before it has done the work. That is exactly when it is worth slowing down.",
       "date": "2026-06-14",
-      "readingMinutes": 12,
+      "readingMinutes": 4,
       "tags": [
-        "Ghi chú sách",
+        "Book Notes",
         "Thinking Fast and Slow",
-        "Tư duy nhanh và chậm",
         "Daniel Kahneman",
-        "Tư duy",
-        "Ra quyết định"
+        "Thinking",
+        "Decision Making"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
       "topic": "sach",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "hanh-phuc-nhan-vien-den-tu-ket-qua",
-      "title": "Hạnh phúc của nhân viên thường bắt đầu từ kết quả có ý nghĩa",
-      "summary": "Một ghi chú về hạnh phúc nơi công sở nhìn qua hai chữ R: Relationships và Results. Quan hệ tốt giúp con người thấy an toàn hơn, nhưng kết quả rõ ràng mới thường tạo ra tác động, sự công nhận và cảm giác mình đang đóng góp thật. Khi mục tiêu minh bạch, chỉ số được giải thích, và mỗi người hiểu Why trước khi làm What, hiệu quả có thể tạo ra hạnh phúc, rồi hạnh phúc lại làm con người hiệu quả hơn.",
-      "cardSummary": "Quan hệ tốt làm công việc dễ thở hơn, nhưng kết quả có ý nghĩa mới thường làm người đi làm thấy mình đang thật sự đóng góp.",
+      "title": "Employee Happiness Often Starts with Meaningful Results",
+      "summary": "A workplace reflection on employee happiness as something deeper than perks or cheerful language. People often feel better at work when their effort leads to meaningful progress, clear contribution, and results they can trust.",
+      "cardSummary": "People do not only need comfort at work. They also need to see that their effort matters.",
       "date": "2026-06-14",
-      "readingMinutes": 7,
+      "readingMinutes": 4,
       "tags": [
-        "Sự nghiệp",
+        "Career",
         "Employee Happiness",
         "Leadership",
-        "Kết quả",
-        "Mục tiêu",
-        "Công sở"
+        "Results",
+        "Goals",
+        "Workplace"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "ton-trong-nguoi-khac-soi-lai-minh-truoc-khi-phan-xet",
-      "title": "Tôn trọng người khác: soi lại mình trước khi phán xét",
-      "summary": "Một ghi chú chiêm nghiệm về sự tôn trọng trong công việc và đời sống: tôn trọng hành trình của người khác, tự soi lại khi mình phán xét, hiểu động lực nơi công sở, dùng feedback theo hướng 3 lời khen 1 góp ý, và quay về Vòng tròn kiểm soát để sửa điều nằm trong tay mình.",
-      "cardSummary": "Tôn trọng người khác cũng là một cách nhìn lại giới hạn, thiên kiến và trách nhiệm của chính mình.",
+      "title": "Respecting Others: Looking Back at Myself Before Judging",
+      "summary": "A reflection on respect as the habit of checking our own assumptions before turning another person into a conclusion. Good feedback and good leadership both require this pause.",
+      "cardSummary": "Respect begins in the small pause before judgment becomes a story about someone else.",
       "date": "2026-06-14",
-      "readingMinutes": 8,
+      "readingMinutes": 4,
       "tags": [
-        "Tôn trọng",
-        "Suy ngẫm",
+        "Respect",
+        "Reflection",
         "Feedback",
         "Leadership",
-        "Công sở",
-        "Phát triển bản thân"
+        "Workplace",
+        "Self Development"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "thu-chap-pha-hoc-ma-khong-mac-ket",
-      "title": "Thụ, chấp, phá: học mà không mắc kẹt trong cái biết",
-      "summary": "Một ghi chú suy ngẫm về cách học trong thời đại AI: thụ để tiếp nhận, chấp để biến tri thức thành niềm tin có ích, rồi phá để vượt qua chính giới hạn của cái mình từng biết. Bài viết đi qua câu nói \"Mình biết rồi\", knowledge obesity, niềm tin cứng từ kinh nghiệm dài hạn, nhãn dán ban đầu, process decrypt, Echology check và PAIR framework.",
-      "cardSummary": "Biết nhiều chưa chắc là học sâu; đôi khi cần phá chính cái biết cũ để học tiếp.",
+      "title": "Receive, Hold, Break: Learning Without Getting Trapped by What I Know",
+      "summary": "A reflection on learning as a cycle: receive knowledge with humility, hold it long enough to practice, and break from it when context changes. The point is not to collect beliefs, but to keep thinking alive.",
+      "cardSummary": "Good learning is not only absorbing knowledge. It is knowing when to practice it and when to loosen it.",
       "date": "2026-06-14",
-      "readingMinutes": 8,
+      "readingMinutes": 4,
       "tags": [
-        "Học tập",
-        "Tư duy",
+        "Learning",
+        "Thinking",
         "AI",
-        "Phát triển sự nghiệp",
-        "Niềm tin",
-        "PAIR framework"
+        "Career Development",
+        "Beliefs",
+        "PAIR Framework"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "song-nhieu-vai-va-thay-doi-toan-dien",
-      "title": "Sống nhiều vai và cái giá của thay đổi toàn diện",
-      "summary": "Một ghi chú từ hai tập podcast #web5ngay: sống một cuộc đời nhiều vai là học cách đổi vai phù hợp trong từng bối cảnh xã hội và công việc; còn thay đổi toàn diện trong thời gian ngắn thường đòi hỏi ta làm những việc người khác không sẵn lòng làm, từ thay đổi thói quen chăm sóc bản thân đến kỷ luật giảm cân.",
-      "cardSummary": "Trưởng thành là biết đổi vai đúng lúc và chịu làm những việc người khác thường né tránh.",
+      "title": "Living Many Roles and the Cost of Whole-Life Change",
+      "summary": "A reflection on trying to change many areas of life at once while carrying different social roles. Growth is real, but it has a cost in attention, energy, relationships, and recovery.",
+      "cardSummary": "Changing your whole life sounds inspiring until you count the roles that still need care every day.",
       "date": "2026-06-14",
-      "readingMinutes": 6,
+      "readingMinutes": 4,
       "tags": [
-        "#web5ngay",
         "Podcast",
-        "Phát triển bản thân",
-        "Kỷ luật",
-        "Thói quen",
-        "Vai trò xã hội"
+        "Self Development",
+        "Discipline",
+        "Habits",
+        "Social Roles"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "nhin-thau-nhan-tinh-su-kho-khan-trong-moi-quan-he-ban-be",
-      "title": "Nhìn thấu nhân tính: tỉnh táo hơn trong những mối quan hệ bạn bè",
-      "summary": "Một bài chiêm nghiệm về những lần mình vỡ mộng trong tình bạn: khi lợi ích, kỳ vọng, đố kỵ ngầm và những chiếc mặt nạ xã hội cùng chen vào một mối quan hệ tưởng rất đơn giản. Bài viết không cổ vũ nghi ngờ mọi người; nó chỉ nhắc mình tin chậm hơn, giữ ranh giới rõ hơn và bớt đòi hỏi người khác phải hoàn hảo.",
-      "cardSummary": "Tình bạn trưởng thành hơn khi mình tin chậm, giữ ranh giới và nhìn con người bằng sự tỉnh táo.",
+      "title": "Seeing Human Nature More Clearly in Friendships",
+      "summary": "A reflection on friendship, human nature, emotional maturity, and boundaries. Seeing people more clearly does not require becoming cynical; it can help us care with more honesty and less naive expectation.",
+      "cardSummary": "Seeing people clearly should make friendship more honest, not colder.",
       "date": "2026-06-14",
-      "readingMinutes": 8,
+      "readingMinutes": 4,
       "tags": [
-        "Tình bạn",
-        "Nhân tính",
-        "Mối quan hệ",
-        "Trưởng thành cảm xúc",
-        "Ranh giới",
-        "Suy ngẫm"
+        "Friendship",
+        "Human Nature",
+        "Relationships",
+        "Emotional Maturity",
+        "Boundaries",
+        "Reflection"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
       "topic": "goc-nhin",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "ly-thuyet-tro-choi-tran-phach-ham",
-      "title": "Lý thuyết trò chơi: hợp tác khôn ngoan không phải là nhường phần thắng",
-      "summary": "Đọc Lý thuyết trò chơi của Trần Phách Hàm như một lời nhắc thực tế về cách con người ra quyết định khi lợi ích đan vào nhau. Từ Pareto Efficiency, Prisoner's Dilemma, Win-Win cooperation đến các ví dụ trong thương mại điện tử, công sở và tâm lý học, bài viết nhìn game theory như một cách thiết kế cuộc chơi để hợp tác trở nên có lý hơn.",
-      "cardSummary": "Hợp tác bền không đến từ lòng tốt mơ hồ, mà từ một cuộc chơi được thiết kế đủ rõ.",
+      "title": "Game Theory: Wise Cooperation Is Not Giving Away the Win",
+      "summary": "A book reflection on game theory, cooperation, Pareto efficiency, and the Prisoner's Dilemma. Cooperation is not weakness when it is designed with incentives, boundaries, and repeated interaction in mind.",
+      "cardSummary": "Cooperation is strongest when it understands incentives instead of pretending incentives do not exist.",
       "date": "2026-06-14",
-      "readingMinutes": 10,
+      "readingMinutes": 4,
       "tags": [
-        "Ghi chú sách",
-        "Lý thuyết trò chơi",
-        "Trần Phách Hàm",
+        "Book Notes",
+        "Game Theory",
         "Pareto Efficiency",
-        "Prisoner's Dilemma",
-        "Tâm lý học"
+        "Prisoners Dilemma",
+        "Psychology"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
       "topic": "sach",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
@@ -1050,21 +1061,22 @@
     },
     {
       "slug": "mua-xe-lan-dau-chi-phi-va-quyet-dinh",
-      "title": "Mua xe lần đầu — nhìn đủ chi phí trước khi xuống tiền",
-      "summary": "Một chiếc xe có thể giúp cuộc sống chủ động hơn: đi làm thuận tiện, đưa gia đình đi xa, xử lý việc cá nhân linh hoạt hơn. Nhưng xe cũng là một quyết định tài chính lớn, vì chi phí thật không nằm riêng ở giá niêm yết mà còn ở thuế phí lăn bánh, bảo hiểm, gửi xe, bảo dưỡng, nhiên liệu, sửa chữa và khấu hao. Bài này giữ lại toàn bộ bản đồ cho người mua xe lần đầu: câu hỏi có thật sự cần sở hữu xe không, cách tính total cost of ownership, đặt ngân sách để xe không làm hẹp kế hoạch tài chính, mua mới hay cũ, trả thẳng hay trả góp, chọn xe theo nhu cầu thật và cách giữ bình tĩnh trước các gói bán kèm ở showroom.",
-      "cardSummary": "Mua xe nên bắt đầu từ tổng chi phí sở hữu, không chỉ từ cảm xúc khi nhìn bảng giá.",
+      "title": "Buying a First Car: Seeing the Full Cost Before Paying",
+      "summary": "A practical note for first-time car buyers on looking beyond the purchase price. The real decision includes cash flow, loan terms, maintenance, insurance, depreciation, parking, fuel, time, and the way the car will actually be used.",
+      "cardSummary": "The car price is only the front door. The real decision is the monthly life that comes after it.",
       "date": "2026-06-02",
-      "readingMinutes": 17,
+      "readingMinutes": 4,
       "tags": [
-        "Mua xe",
-        "Tài chính cá nhân",
-        "Quyết định mua sắm",
-        "Chi phí",
-        "Kinh nghiệm"
+        "Buying a Car",
+        "Personal Finance",
+        "Purchase Decisions",
+        "Cost",
+        "Experience"
       ],
       "topic": "mua-xe",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
@@ -1094,479 +1106,503 @@
     },
     {
       "slug": "lam-chu-su-nghiep-bien-cong-viec-thanh-be-phong",
-      "title": "Làm chủ sự nghiệp — biến công việc thành nền tảng phát triển dài hạn",
-      "summary": "Làm tốt công việc là điều cần thiết, nhưng sự nghiệp không tự lớn lên chỉ nhờ chăm chỉ và chờ được ghi nhận. Người đi làm cần học cách nhìn mình như một người đang quản trị tài sản nghề nghiệp: hiểu market value, xây kỹ năng T-shaped, nâng giá trị tạo ra, biết đàm phán bằng dữ kiện, để thành quả được nhìn thấy, xây quan hệ chân thành và định kỳ đánh giá nên ở lại hay chuyển hướng. Bài này giữ lại đầy đủ các điểm quan trọng đó, nhưng đặt chúng trong một giọng văn bình tĩnh hơn: không thúc ép, không dạy đời, chỉ giúp bạn có thêm một bản đồ để đi đường dài.",
-      "cardSummary": "Sự nghiệp bền vững đến từ việc chủ động quản trị giá trị, kỹ năng, quan hệ và lựa chọn dài hạn.",
+      "title": "Owning Your Career: Turning Work into a Long-Term Platform",
+      "summary": "A career note on treating daily work as a platform for capability, trust, proof, and future options. A job becomes more valuable when it builds skills, relationships, judgment, and evidence that remain useful beyond one role.",
+      "cardSummary": "A job pays the present. A well-owned career also builds proof for the future.",
       "date": "2026-06-02",
-      "readingMinutes": 18,
+      "readingMinutes": 4,
       "tags": [
-        "Sự nghiệp",
-        "Phát triển bản thân",
-        "Kỹ năng",
-        "Thu nhập",
+        "Career",
+        "Self Development",
+        "Skills",
+        "Income",
         "Mindset"
       ],
       "topic": "su-nghiep",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "lap-ngan-sach-lam-chu-dong-tien",
-      "title": "Lập ngân sách & làm chủ dòng tiền — bản đồ nhẹ nhàng cho từng đồng bạn kiếm được",
-      "summary": "Lập ngân sách không phải là tự cấm mình tận hưởng cuộc sống. Đúng hơn, đó là cách nhìn rõ tiền đang đi đâu, khoản nào dành cho nhu cầu, khoản nào dành cho niềm vui, và khoản nào cần được giữ lại cho tương lai. Bài này giữ lại ba phương pháp dễ áp dụng cho người đi làm: quy tắc 50/30/20, phương pháp hũ tiền và zero-based budgeting; kèm cách chọn phương pháp hợp với mình, tự động hóa ngày nhận lương và điều chỉnh ngân sách mỗi tháng mà không tự trách.",
-      "cardSummary": "Ngân sách không phải khuôn ép; nó là bản đồ giúp từng đồng có một nhiệm vụ rõ ràng.",
+      "title": "Budgeting and Cash Flow: A Gentle Map for Every Dollar You Earn",
+      "summary": "A personal finance note on budgeting without shame. A useful budget helps money move with intention: essentials, buffer, saving, investing, family needs, and small joys all become visible before the month disappears.",
+      "cardSummary": "A budget is not a punishment. It is a map that helps money stop disappearing silently.",
       "date": "2026-06-02",
-      "readingMinutes": 15,
+      "readingMinutes": 4,
       "tags": [
-        "Tài chính cá nhân",
-        "Ngân sách",
-        "Quản lý chi tiêu",
-        "Dòng tiền",
-        "Thói quen"
+        "Personal Finance",
+        "Budgeting",
+        "Spending",
+        "Cash Flow",
+        "Habits"
       ],
       "topic": "tiet-kiem",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "quy-khan-cap-tu-a-den-z",
-      "title": "Quỹ khẩn cấp từ A đến Z — tấm đệm giúp bạn đi qua biến cố",
-      "summary": "Một khoản dự phòng không làm tài sản tăng lên ngay, nhưng giúp bạn bình tĩnh hơn khi cuộc sống có biến cố: giảm thu nhập, chi phí y tế, xe hỏng, nhà cần sửa hoặc một việc gia đình cần tiền gấp. Bài này giữ lại đầy đủ cách tính quỹ khẩn cấp theo 3–6 tháng chi phí thiết yếu, khi nào cần 9–12 tháng, nên để tiền ở đâu, khi nào được dùng, khi nào nên có sinking fund riêng và cách tái lập quỹ sau khi đã dùng.",
-      "cardSummary": "Quỹ khẩn cấp là tấm đệm giúp một biến cố không làm lệch toàn bộ kế hoạch tài chính.",
+      "title": "Emergency Funds from A to Z: A Buffer for Unplanned Shocks",
+      "summary": "A practical note on emergency funds: why they matter, what they should cover, where to keep them, and how to build one gradually without turning financial safety into constant anxiety.",
+      "cardSummary": "An emergency fund does not make life risk-free, but it gives a difficult month more room to breathe.",
       "date": "2026-06-02",
-      "readingMinutes": 13,
+      "readingMinutes": 4,
       "tags": [
-        "Tài chính cá nhân",
-        "Quỹ khẩn cấp",
-        "An toàn tài chính",
-        "Tiết kiệm",
-        "Kế hoạch"
+        "Personal Finance",
+        "Emergency Fund",
+        "Financial Safety",
+        "Saving",
+        "Planning"
       ],
       "topic": "tiet-kiem",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "thoat-no-thong-minh",
-      "title": "Thoát nợ thông minh — từng bước xử lý nợ lãi cao",
-      "summary": "Không phải khoản vay nào cũng xấu. Một khoản vay đúng bối cảnh có thể giúp học tập, mua nhà hoặc mở rộng cơ hội. Nhưng nợ tiêu dùng lãi cao, đặc biệt là dư nợ thẻ tín dụng chỉ trả tối thiểu, có thể bào mòn dòng tiền rất nhanh. Bài này giúp phân biệt nợ tốt và nợ xấu, hiểu rủi ro của trả tối thiểu, lập danh sách nợ, chọn giữa debt snowball và debt avalanche, thương lượng lãi suất và tạo hệ thống để không quay lại vòng nợ cũ.",
-      "cardSummary": "Thoát nợ bắt đầu từ việc nhìn rõ từng khoản, rồi xử lý đều đặn theo một chiến lược phù hợp.",
+      "title": "Getting Out of Debt Wisely: Step by Step Through High-Interest Debt",
+      "summary": "A personal finance note on handling debt with clarity rather than shame. The first task is to understand balances, interest, minimum payments, cash flow, and the order of repayment before trying to move faster.",
+      "cardSummary": "Debt becomes less frightening when it is turned from a vague weight into a clear repayment system.",
       "date": "2026-06-02",
-      "readingMinutes": 16,
+      "readingMinutes": 4,
       "tags": [
-        "Tài chính cá nhân",
-        "Quản lý nợ",
-        "Thẻ tín dụng",
-        "Tiết kiệm",
-        "Kế hoạch"
+        "Personal Finance",
+        "Debt Management",
+        "Credit Cards",
+        "Saving",
+        "Planning"
       ],
       "topic": "tiet-kiem",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "dau-tu-cho-nguoi-moi-bat-dau",
-      "title": "Đầu tư cho người mới bắt đầu — bắt đầu từ nền móng vững",
-      "summary": "Đầu tư không cần bắt đầu bằng một số tiền lớn hay những bảng giá phức tạp. Điều quan trọng hơn là hiểu vì sao tiền cần được bảo vệ trước lạm phát, hoàn thành các nền móng trước khi xuống tiền, và chọn kênh phù hợp với mục tiêu, thời hạn và khẩu vị rủi ro của mình. Bài này giữ lại bản đồ các kênh phổ biến ở Việt Nam, vì sao chứng chỉ quỹ và index fund thường dễ tiếp cận với người mới, cùng những nguyên tắc giúp tránh sai lầm trong những năm đầu.",
-      "cardSummary": "Người mới nên bắt đầu đầu tư từ nền móng, mục tiêu và kỷ luật đều đặn.",
+      "title": "Investing for Beginners: Starting from a Stable Foundation",
+      "summary": "A beginner-friendly note on investing after the basic foundation is in place: cash flow, emergency fund, debt control, time horizon, risk tolerance, diversification, and patience.",
+      "cardSummary": "Beginner investing starts best when the foundation is boring enough to hold during noise.",
       "date": "2026-06-02",
-      "readingMinutes": 17,
+      "readingMinutes": 4,
       "tags": [
-        "Tài chính cá nhân",
-        "Đầu tư",
-        "Chứng chỉ quỹ",
-        "Lãi kép",
-        "Người mới bắt đầu"
+        "Personal Finance",
+        "Investing",
+        "Funds",
+        "Compound Interest",
+        "Beginners"
       ],
       "topic": "tiet-kiem",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "lam-phat-va-suc-mua",
-      "title": "Lạm phát & sức mua — vì sao tiền cần được bảo vệ theo thời gian",
-      "summary": "Lạm phát không làm con số trong tài khoản nhỏ đi, nhưng khiến cùng một số tiền mua được ít hơn theo thời gian. Hiểu điều này giúp ta nhìn khác đi về tiền mặt, gửi tiết kiệm, đầu tư và các mục tiêu dài hạn như nhà ở, học phí hay hưu trí. Bài này giải thích lạm phát bằng hình ảnh đời thường, dùng quy tắc 72 để thấy tác động dài hạn, chỉ ra nhóm dễ bị ảnh hưởng nhất và cách bảo vệ sức mua bằng đầu tư, quỹ tiền mặt hợp lý và năng lực kiếm tiền.",
-      "cardSummary": "Lạm phát là lực âm thầm làm sức mua giảm; hiểu nó giúp mình đặt tiền đúng vai trò.",
+      "title": "Inflation and Purchasing Power: Why Money Needs Protection Over Time",
+      "summary": "A plain-language note on inflation and purchasing power. The same amount of money may buy less over time, so savings, income growth, emergency funds, and investing need to be thought about together.",
+      "cardSummary": "Inflation is quiet until the same money buys less life than it used to.",
       "date": "2026-06-02",
-      "readingMinutes": 12,
+      "readingMinutes": 4,
       "tags": [
-        "Tài chính cá nhân",
-        "Lạm phát",
-        "Sức mua",
-        "Đầu tư",
-        "Kiến thức nền tảng"
+        "Personal Finance",
+        "Inflation",
+        "Purchasing Power",
+        "Investing",
+        "Financial Basics"
       ],
       "topic": "tiet-kiem",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "bao-hiem-dung-va-du",
-      "title": "Bảo hiểm đúng & đủ — mua sự bảo vệ, không mua nỗi lo",
-      "summary": "Bảo hiểm dễ gây bối rối vì vừa là sản phẩm tài chính, vừa gắn với những rủi ro không ai muốn nghĩ tới. Cách tiếp cận bình tĩnh hơn là xem bảo hiểm như công cụ chuyển giao rủi ro: mình trả một khoản phí để những biến cố lớn không làm lệch toàn bộ kế hoạch tài chính. Bài này giữ lại bản chất của bảo hiểm, cách tách bảo vệ khỏi đầu tư, các loại thường cần với người đi làm, cách xác định mức bảo vệ vừa đủ và những điều cần đọc kỹ trong hợp đồng.",
-      "cardSummary": "Bảo hiểm tốt là công cụ bảo vệ đúng rủi ro, đúng mức, đúng ngân sách.",
+      "title": "The Right Insurance: Buying Protection, Not Anxiety",
+      "summary": "A practical note on approaching insurance calmly. Good insurance transfers risks that would damage the whole financial plan, while avoiding unnecessary complexity, unclear promises, and products bought mainly from fear.",
+      "cardSummary": "Good insurance protects the right risk, at the right level, within a budget the household can keep.",
       "date": "2026-06-02",
-      "readingMinutes": 14,
+      "readingMinutes": 4,
       "tags": [
-        "Tài chính cá nhân",
-        "Bảo hiểm",
-        "Quản lý rủi ro",
-        "Bảo vệ tài sản",
-        "Kế hoạch"
+        "Personal Finance",
+        "Insurance",
+        "Risk Management",
+        "Asset Protection",
+        "Planning"
       ],
       "topic": "tiet-kiem",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "tranh-bay-lua-dao-dau-tu",
-      "title": "Tránh rủi ro lừa đảo đầu tư — nhận diện trước khi xuống tiền",
-      "summary": "Các mô hình lừa đảo đầu tư thường không bắt đầu bằng một lời mời đáng ngờ, mà bằng một câu chuyện nghe có vẻ hợp lý, có người quen giới thiệu và vài lần rút tiền nhỏ để tạo niềm tin. Bài này giữ lại các dấu hiệu cần cảnh giác: cam kết lợi nhuận cao, áp lực xuống tiền nhanh, mô hình không giải thích được nguồn lời, trả thưởng khi mời thêm người, khó rút tiền; đồng thời đi qua Ponzi, đa cấp tài chính, app đầu tư ảo, mạo danh chuyên gia và các bước cần làm nếu đã lỡ tham gia.",
-      "cardSummary": "Một cơ hội đầu tư đáng tin phải giải thích được tiền lời đến từ đâu và cho bạn thời gian kiểm chứng.",
+      "title": "Avoiding Investment Scams: Recognizing Risk Before Sending Money",
+      "summary": "A practical note on spotting investment scams and high-risk promises. Pressure, guaranteed returns, unclear products, referral incentives, and secrecy are all signals to slow down before transferring money.",
+      "cardSummary": "The safest moment to avoid a scam is before money leaves your account.",
       "date": "2026-06-02",
-      "readingMinutes": 15,
+      "readingMinutes": 4,
       "tags": [
-        "Tài chính cá nhân",
-        "Lừa đảo",
-        "Cảnh báo",
-        "Bảo vệ tài sản",
-        "Đầu tư"
+        "Personal Finance",
+        "Scams",
+        "Warning Signs",
+        "Asset Protection",
+        "Investing"
       ],
       "topic": "tiet-kiem",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "tai-chinh-theo-do-tuoi",
-      "title": "Tài chính theo độ tuổi — việc nên ưu tiên ở tuổi 20, 30 và 40",
-      "summary": "Cùng một lời khuyên tài chính không thể đúng với mọi giai đoạn cuộc đời. Tuổi 20 có nhiều thời gian để học, hình thành thói quen và để lãi kép bắt đầu. Tuổi 30 thường có thêm thu nhập nhưng cũng thêm trách nhiệm về gia đình, nhà cửa và con cái. Tuổi 40 là lúc cần củng cố tài sản, nhìn lại hưu trí và cân bằng giữa hỗ trợ con cái với bảo vệ tương lai của chính mình. Bài này là bản đồ ưu tiên theo từng thập niên, không phải một khuôn mẫu cứng.",
-      "cardSummary": "Mỗi độ tuổi có một bài toán tài chính riêng; ưu tiên đúng giúp mình đi nhẹ hơn.",
+      "title": "Personal Finance by Age: What to Prioritize in Your 20s, 30s, and 40s",
+      "summary": "A life-stage note on personal finance priorities. Each decade brings different pressures, but the core remains similar: cash flow, protection, skill growth, thoughtful investing, and decisions that keep future options open.",
+      "cardSummary": "Each decade has different pressure, but financial clarity is built from repeated basics.",
       "date": "2026-06-02",
-      "readingMinutes": 16,
+      "readingMinutes": 4,
       "tags": [
-        "Tài chính cá nhân",
-        "Kế hoạch tài chính",
-        "Mục tiêu",
-        "Hưu trí",
-        "Cột mốc cuộc đời"
+        "Personal Finance",
+        "Financial Planning",
+        "Goals",
+        "Retirement",
+        "Life Milestones"
       ],
       "topic": "tiet-kiem",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "tien-bac-trong-gia-dinh",
-      "title": "Tiền bạc trong gia đình — nói chuyện tiền một cách bình tĩnh",
-      "summary": "Nhiều cuộc căng thẳng trong gia đình tưởng là vì tiền, nhưng sâu hơn thường là vì cảm giác an toàn, quyền tự chủ, thói quen lớn lên và kỳ vọng chưa được nói rõ. Bài này giữ lại cách bắt đầu một cuộc nói chuyện tiền khi mọi thứ đang bình yên, ba mô hình quản lý tài chính gia đình, cách đóng góp công bằng khi thu nhập khác nhau, vai trò của mục tiêu chung và cách dạy con nhìn tiền như một kỹ năng sống lành mạnh.",
-      "cardSummary": "Nói chuyện tiền tốt hơn khi hai người cùng giải một bài toán chung, không phải tranh phần đúng sai.",
+      "title": "Money in the Family: Talking About Finance Calmly",
+      "summary": "A note on family money conversations: income, spending, support, debt, goals, and expectations are easier to handle when they are discussed calmly before pressure turns them into conflict.",
+      "cardSummary": "Family money is rarely only about numbers. It is also about trust, fear, care, and expectations.",
       "date": "2026-06-02",
-      "readingMinutes": 14,
+      "readingMinutes": 4,
       "tags": [
-        "Tài chính cá nhân",
-        "Gia đình",
-        "Vợ chồng",
-        "Quản lý chi tiêu",
-        "Giao tiếp"
+        "Personal Finance",
+        "Family",
+        "Marriage",
+        "Spending",
+        "Communication"
       ],
       "topic": "tiet-kiem",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "thinh-vuong-tai-chinh-de-tien-lam-viec-cho-ban",
-      "title": "Thịnh vượng tài chính — lộ trình để tiền dần làm việc cho bạn",
-      "summary": "Thịnh vượng tài chính không nhất thiết là thu nhập thật cao hay một hình ảnh thành công bên ngoài. Nó gần hơn với câu hỏi: nếu thu nhập chính tạm dừng, bạn có bao nhiêu khoảng thở và tài sản của bạn đang hỗ trợ cuộc sống đến mức nào? Bài này giữ lại lộ trình từ ổn định dòng tiền đến tự do tài chính: phân biệt asset và liability, bốn nấc thang tài chính, ba đòn bẩy tạo tài sản, nhiều nguồn thu nhập, lãi kép, đầu tư đều đặn và những rủi ro bóng bẩy cần tránh.",
-      "cardSummary": "Thịnh vượng là khi tiền được đặt vào hệ thống để dần hỗ trợ cuộc sống, không chỉ nằm ở mức lương.",
+      "title": "Financial Prosperity: A Path for Money to Slowly Work for You",
+      "summary": "A personal finance note on building prosperity gradually through earning, saving, protecting, investing, avoiding fragile commitments, and letting time work with consistent behavior.",
+      "cardSummary": "Money starts working for you only after enough of it stops leaking away from you.",
       "date": "2026-06-02",
-      "readingMinutes": 19,
+      "readingMinutes": 4,
       "tags": [
-        "Tài chính cá nhân",
-        "Tự do tài chính",
-        "Đầu tư",
-        "Lãi kép",
+        "Personal Finance",
+        "Financial Freedom",
+        "Investing",
+        "Compound Interest",
         "Mindset"
       ],
       "topic": "tiet-kiem",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "giu-tien-trong-tui-cach-de-giau",
-      "title": "Giữ được tiền trong túi — kỹ năng giữ lại giá trị mình tạo ra",
-      "summary": "Tăng thu nhập là quan trọng, nhưng nếu tiền liên tục rò qua những khoản nhỏ, gói subscription không dùng, phí tiện lợi, mua sắm theo cảm xúc hoặc lifestyle inflation, thì dòng tiền vẫn khó vững. Bài này giữ lại các cách rất đời thường để nhìn rõ sao kê 30 ngày, phân loại Cần / Muốn / Rò rỉ, kiểm soát latte factor, dùng pay yourself first, quy tắc 24 giờ, sinking fund, no-spend day và biến phần giữ được thành quỹ khẩn cấp rồi đầu tư đều đặn.",
-      "cardSummary": "Giữ tiền là kỹ năng nhìn rõ dòng tiền, bịt lỗ rò và giữ lại nhiều hơn từ giá trị mình tạo ra.",
+      "title": "Keeping Money in Your Pocket: Protecting the Value You Create",
+      "summary": "A note on saving as the skill of keeping part of the value we create. Building wealth is not only about earning more; it also requires awareness of leaks, habits, lifestyle pressure, and recurring commitments.",
+      "cardSummary": "Earning creates value. Saving keeps enough of that value close enough to build with.",
       "date": "2026-06-01",
-      "readingMinutes": 16,
+      "readingMinutes": 4,
       "tags": [
-        "Tài chính cá nhân",
-        "Tiết kiệm",
-        "Quản lý chi tiêu",
-        "Thói quen",
+        "Personal Finance",
+        "Saving",
+        "Spending Habits",
+        "Habits",
         "Mindset"
       ],
       "topic": "tiet-kiem",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "vay-ngan-hang-mua-nha-don-bay-thong-minh",
-      "title": "Vay ngân hàng mua nhà: dùng đòn bẩy một cách tỉnh táo",
-      "summary": "Hầu hết chúng ta mua nhà bằng tiền của ngân hàng, không chỉ bằng tiền của mình. Khoản vay có thể giúp ta sở hữu căn nhà sớm hơn nhiều năm, nhưng cũng là một cam kết dài hạn với dòng tiền, lãi suất, quỹ dự phòng và sức chịu đựng của gia đình. Bài này giữ lại các con số cần biết, cách đọc lãi suất cố định và thả nổi, cách so sánh gói vay, câu chuyện tất toán sớm và phép thử quan trọng nhất: nếu lãi tăng, mình còn sống ổn không.",
-      "cardSummary": "Khoản vay mua nhà chỉ hữu ích khi mình hiểu rõ dòng tiền, lãi suất và biên an toàn.",
+      "title": "Borrowing for a Home: Using Leverage with Clear Eyes",
+      "summary": "A practical note on home loans as leverage. Borrowing can make ownership possible earlier, but it needs careful attention to income stability, interest rate changes, repayment pressure, emergency buffers, and downside scenarios.",
+      "cardSummary": "A home loan can be useful leverage, but only if the monthly pressure stays survivable.",
       "date": "2026-06-01",
-      "readingMinutes": 15,
+      "readingMinutes": 4,
       "tags": [
-        "Mua nhà",
-        "Bất động sản",
-        "Vay vốn",
-        "Tài chính",
-        "Kinh nghiệm"
+        "Home Buying",
+        "Real Estate",
+        "Loans",
+        "Personal Finance",
+        "Experience"
       ],
       "topic": "mua-nha",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "dinh-gia-va-thuong-luong-gia-mua-nha",
-      "title": "Định giá và thương lượng khi mua nhà: trả theo dữ kiện, không theo cảm xúc",
-      "summary": "Giá người bán đưa ra là điểm bắt đầu của một cuộc đối thoại, không phải kết luận cuối cùng. Người mua có dữ kiện sẽ bình tĩnh hơn khi so sánh comparable, nhận diện giá ảo, đọc định giá ngân hàng, tính chi phí sửa chữa và biết khi nào nên dừng lại. Bài này giữ lại các phương pháp định giá và kịch bản thương lượng thực tế, nhưng đặt chúng trong tinh thần tôn trọng và bảo vệ biên an toàn.",
-      "cardSummary": "Thương lượng tốt không phải thắng người bán, mà là bảo vệ quyết định của mình.",
+      "title": "Valuation and Negotiation When Buying a Home: Pay with Evidence, Not Emotion",
+      "summary": "A practical note on valuing and negotiating a home purchase. Buyers need comparable prices, legal checks, repair estimates, location context, and emotional distance before making an offer.",
+      "cardSummary": "Good negotiation starts before the offer, with enough evidence to stay calm.",
       "date": "2026-06-01",
-      "readingMinutes": 13,
+      "readingMinutes": 4,
       "tags": [
-        "Mua nhà",
-        "Bất động sản",
-        "Thương lượng",
-        "Định giá",
-        "Kinh nghiệm"
+        "Home Buying",
+        "Real Estate",
+        "Negotiation",
+        "Valuation",
+        "Experience"
       ],
       "topic": "mua-nha",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "chon-vi-tri-va-quy-hoach-khi-mua-nha",
-      "title": "Vị trí và quy hoạch khi mua nhà: thứ khó sửa nhất sau khi xuống tiền",
-      "summary": "Bạn có thể sửa nội thất, thay thiết bị, thậm chí cải tạo lại không gian sống, nhưng không thể dời căn nhà ra khỏi vị trí của nó. Bài này giữ lại cách kiểm tra quy hoạch, đọc hạ tầng tương lai, khảo sát thực địa nhiều thời điểm, đánh giá thanh khoản và nhìn vị trí bằng nhịp sống thật: đi làm, trường học, bệnh viện, tiếng ồn, ngập nước và khả năng bán lại khi cuộc sống đổi hướng.",
-      "cardSummary": "Vị trí tốt là nơi nhịp sống hằng ngày của mình có thể vận hành nhẹ hơn.",
+      "title": "Location and Planning When Buying a Home: The Hardest Thing to Fix Later",
+      "summary": "A home buying note on location, zoning, planning, commute, infrastructure, noise, flooding, schools, hospitals, and daily convenience. The house can be improved, but location is difficult to repair after purchase.",
+      "cardSummary": "Paint can be changed. Location is much harder to repair.",
       "date": "2026-06-01",
-      "readingMinutes": 12,
+      "readingMinutes": 4,
       "tags": [
-        "Mua nhà",
-        "Bất động sản",
-        "Quy hoạch",
-        "Vị trí",
-        "Kinh nghiệm"
+        "Home Buying",
+        "Real Estate",
+        "Urban Planning",
+        "Location",
+        "Experience"
       ],
       "topic": "mua-nha",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "quy-trinh-mua-nha-tu-a-den-z",
-      "title": "Quy trình mua nhà từ A đến Z: bản đồ đi chậm cho người lần đầu",
-      "summary": "Mua nhà không phải một hành động đơn lẻ, mà là một chuỗi bước nối nhau: chuẩn bị tài chính, chọn tiêu chí, xem nhà, kiểm tra pháp lý, đặt cọc, công chứng, thanh toán, sang tên và nhận bàn giao. Bài này giữ lại bản đồ quy trình, giấy tờ cần có và các điểm cần chú ý ở từng chặng, để người mua lần đầu bớt bị cuốn theo cảm xúc hoặc thời hạn.",
-      "cardSummary": "Quy trình rõ giúp người mua lần đầu bớt bị cuốn theo cảm xúc và thời hạn.",
+      "title": "The Home Buying Process from A to Z: A Slow Map for First-Time Buyers",
+      "summary": "A practical overview of the home buying process: financial readiness, search criteria, legal checks, valuation, negotiation, deposit, loan approval, contract, handover, and post-purchase buffer.",
+      "cardSummary": "A slow process is not wasted time when the decision is large and difficult to reverse.",
       "date": "2026-06-01",
-      "readingMinutes": 13,
+      "readingMinutes": 4,
       "tags": [
-        "Mua nhà",
-        "Bất động sản",
-        "Quy trình",
-        "Thủ tục",
-        "Kinh nghiệm"
+        "Home Buying",
+        "Real Estate",
+        "Process",
+        "Paperwork",
+        "Experience"
       ],
       "topic": "mua-nha",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "chung-cu-vs-nha-dat-va-mua-nha-du-an",
-      "title": "Chung cư, nhà đất hay nhà dự án: chọn theo cách mình sống",
-      "summary": "Trước khi chọn một căn cụ thể, ta cần hiểu mình đang chọn loại hình nào: chung cư, nhà đất, nhà có sẵn hay nhà hình thành trong tương lai. Mỗi lựa chọn có tiện ích, chi phí, pháp lý, quyền kiểm soát và rủi ro khác nhau. Bài này giữ lại phần so sánh chung cư và nhà đất, các điểm cần kiểm tra khi mua nhà dự án, tiến độ thanh toán, bảo lãnh ngân hàng và cách chọn theo giai đoạn cuộc đời.",
-      "cardSummary": "Loại hình nhà ở nên phù hợp với cách sống, không phải với một chuẩn chung.",
+      "title": "Apartment, Landed House, or Project Home: Choose by the Way You Live",
+      "summary": "A practical note comparing apartments, landed houses, and project homes. The right choice depends on lifestyle, commute, management, privacy, maintenance, liquidity, legal status, and long-term household needs.",
+      "cardSummary": "The best home type is not universal. It should fit the life that will happen inside and around it.",
       "date": "2026-06-01",
-      "readingMinutes": 13,
+      "readingMinutes": 4,
       "tags": [
-        "Mua nhà",
-        "Bất động sản",
-        "Chung cư",
-        "Nhà dự án",
-        "Kinh nghiệm"
+        "Home Buying",
+        "Real Estate",
+        "Apartment",
+        "Project Home",
+        "Experience"
       ],
       "topic": "mua-nha",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong",
-      "title": "Đọc bản vẽ thiết kế và đánh giá chất lượng nhà: nhìn phần không xuất hiện trên ảnh",
-      "summary": "Một căn nhà đẹp trên ảnh chưa chắc là một căn nhà tốt để sống lâu dài. Phần quan trọng thường nằm ở layout, ánh sáng, thông gió, kết cấu, điện nước âm tường, chống thấm, thoát nước mùa mưa, vật liệu và chất lượng thi công. Bài này giữ lại các cách đọc bản vẽ, checklist xem nhà và dấu hiệu cần hỏi thêm người có chuyên môn.",
-      "cardSummary": "Ảnh đẹp cho mình cảm xúc; bản vẽ và chất lượng thi công cho mình sự thật để sống lâu dài.",
+      "title": "Reading House Plans and Evaluating Build Quality: Seeing What Photos Do Not Show",
+      "summary": "A practical home buying note on reading floor plans and checking build quality. Photos show surfaces, but buyers also need to notice layout logic, structure, ventilation, light, waterproofing, electrical systems, plumbing, and maintenance risks.",
+      "cardSummary": "A beautiful photo shows the surface. A careful inspection asks how the home will age.",
       "date": "2026-06-01",
-      "readingMinutes": 20,
+      "readingMinutes": 4,
       "tags": [
-        "Mua nhà",
-        "Bất động sản",
-        "Xây dựng",
-        "Thiết kế",
-        "Kinh nghiệm"
+        "Home Buying",
+        "Real Estate",
+        "Construction",
+        "Design",
+        "Experience"
       ],
       "topic": "mua-nha",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "tam-ly-mua-nha-tranh-bay-nguoi-ban",
-      "title": "Tâm lý khi mua nhà: giữ khoảng lùi trước các áp lực chốt nhanh",
-      "summary": "Khi mua nhà, cảm xúc là điều tự nhiên: thích một căn, sợ lỡ cơ hội, ngại làm người khác thất vọng hoặc bị cuốn theo câu chuyện khan hiếm. Bài này giữ lại các cơ chế tâm lý thường gặp như FOMO, neo giá, khan hiếm giả, áp lực thời gian và cách tạo khoảng lùi bằng checklist, dữ kiện so sánh, thời gian ngủ qua đêm và một người phản biện đáng tin cậy.",
-      "cardSummary": "Cảm xúc khi mua nhà là bình thường; khoảng lùi mới giúp quyết định bền hơn.",
+      "title": "The Psychology of Buying a Home: Keeping Distance from Fast-Closing Pressure",
+      "summary": "A home buying reflection on the emotional traps of urgency, scarcity, family pressure, seller pressure, comparison, and fear of missing out. A large purchase needs enough distance for the buyer to think clearly.",
+      "cardSummary": "When a decision is large, emotional distance is not hesitation. It is protection.",
       "date": "2026-06-01",
-      "readingMinutes": 18,
+      "readingMinutes": 4,
       "tags": [
-        "Mua nhà",
-        "Bất động sản",
-        "Tâm lý",
-        "Cảnh báo",
-        "Kinh nghiệm"
+        "Home Buying",
+        "Real Estate",
+        "Psychology",
+        "Warning Signs",
+        "Experience"
       ],
       "topic": "mua-nha",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "chi-phi-mua-nha-toan-bo-nhung-khoan-can-biet",
-      "title": "Toàn bộ chi phí khi mua nhà: nhìn đủ bức tranh trước khi xuống tiền",
-      "summary": "Giá nhà chỉ là dòng đầu tiên. Xung quanh nó là thuế trước bạ, phí công chứng, sang tên, phí ngân hàng, quỹ bảo trì, nội thất, sửa chữa, chuyển nhà, vận hành hàng tháng và quỹ dự phòng. Bài này giữ lại danh sách các khoản cần chuẩn bị để người mua lần đầu lập ngân sách đầy đủ hơn và bớt bất ngờ sau khi ký.",
-      "cardSummary": "Giá nhà chỉ là dòng đầu tiên; quyết định thật nằm ở toàn bộ chi phí đi kèm.",
+      "title": "The Full Cost of Buying a Home: Seeing the Whole Picture Before Paying",
+      "summary": "A practical note on the total cost of buying a home, beyond the listed price. Buyers should prepare for taxes, fees, loan costs, furniture, repairs, moving, maintenance, insurance, and a post-purchase safety buffer.",
+      "cardSummary": "The listed price is not the full cost. The missing costs often arrive after confidence is highest.",
       "date": "2026-05-31",
-      "readingMinutes": 11,
+      "readingMinutes": 4,
       "tags": [
-        "Mua nhà",
-        "Bất động sản",
-        "Tài chính",
-        "Chi phí",
-        "Kinh nghiệm"
+        "Home Buying",
+        "Real Estate",
+        "Personal Finance",
+        "Cost",
+        "Experience"
       ],
       "topic": "mua-nha",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "bay-mat-tien-khi-mua-nha-cac-kich-ban-can-tranh",
-      "title": "Những tình huống rủi ro khi mua nhà: từ khoản vay, đặt cọc đến tranh chấp",
-      "summary": "Không ai bước vào giao dịch mua nhà với mong muốn gặp rủi ro, nhưng rủi ro thường xuất hiện khi mình vội, thiếu giấy tờ hoặc tin vào lời nói thay cho kiểm chứng. Bài này giữ lại bản đồ các tình huống cần cẩn trọng: vay vốn, đặt cọc, tài khoản thanh toán, đồng sở hữu, thế chấp, tranh chấp, án phí và các điều khoản hợp đồng cần đọc kỹ.",
-      "cardSummary": "Chuẩn bị trước các tình huống rủi ro giúp mình bình tĩnh hơn khi giao dịch thật.",
+      "title": "Risk Scenarios When Buying a Home: Loans, Deposits, and Disputes",
+      "summary": "A practical warning note on common home buying risks: unclear ownership, rushed deposits, loan failure, planning issues, disputes, hidden defects, and contracts that do not protect the buyer.",
+      "cardSummary": "Many home buying losses begin before the contract, when pressure replaces verification.",
       "date": "2026-05-31",
-      "readingMinutes": 16,
+      "readingMinutes": 4,
       "tags": [
-        "Mua nhà",
-        "Bất động sản",
-        "Cảnh báo",
-        "Pháp lý",
-        "Kinh nghiệm"
+        "Home Buying",
+        "Real Estate",
+        "Warning Signs",
+        "Legal",
+        "Experience"
       ],
       "topic": "mua-nha",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "phap-ly-bat-dong-san-nhung-dieu-can-biet",
-      "title": "Pháp lý bất động sản: những gì cần kiểm tra trước khi xuống tiền",
-      "summary": "Pháp lý không phải phần hấp dẫn nhất khi mua nhà, nhưng lại là phần giúp bảo vệ nhiều năm tích lũy. Bài này giữ lại checklist kiểm tra giấy chứng nhận, chủ sở hữu, tình trạng thế chấp, đồng sở hữu, tranh chấp, quy hoạch, đặt cọc, công chứng và các dấu hiệu cần hỏi thêm người có chuyên môn trước khi giao dịch.",
-      "cardSummary": "Đi chậm ở bước pháp lý có thể giúp mình ngủ yên trong nhiều năm sau.",
+      "title": "Real Estate Legal Checks: What to Review Before Paying",
+      "summary": "A practical note on legal checks before buying property. Buyers should verify ownership, land-use rights, planning status, disputes, mortgages, construction legality, contract terms, taxes, and transfer procedures.",
+      "cardSummary": "Legal clarity is not paperwork for later. It is part of the property itself.",
       "date": "2026-05-31",
-      "readingMinutes": 12,
+      "readingMinutes": 4,
       "tags": [
-        "Pháp lý",
-        "Mua nhà",
-        "Bất động sản",
-        "Kinh nghiệm",
-        "Rủi ro"
+        "Legal",
+        "Home Buying",
+        "Real Estate",
+        "Experience",
+        "Risk"
       ],
       "topic": "mua-nha",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "phong-thuy-mua-nha-tieu-chi-can-biet",
-      "title": "Phong thủy khi mua nhà: đọc bằng ánh sáng, gió và thói quen sống",
-      "summary": "Bài viết tiếp cận phong thủy theo góc nhìn thực tế, không dựa vào những điều khó kiểm chứng. Nhiều tiêu chí người mua quan tâm có thể được hiểu qua ánh sáng, hướng nắng, thông gió, sự riêng tư, tiếng ồn, luồng di chuyển, bố cục công năng và cảm giác dễ sống trong căn nhà mỗi ngày.",
-      "cardSummary": "Đọc phong thủy bằng thực tế: ánh sáng, gió, riêng tư và cách mình sống mỗi ngày.",
+      "title": "Feng Shui When Buying a Home: Reading Light, Air, and Daily Habits",
+      "summary": "A grounded note on reading feng shui through practical living factors: light, airflow, noise, moisture, layout, privacy, movement, and the daily comfort of the people who will live there.",
+      "cardSummary": "The most useful feng shui questions are often practical: light, air, noise, flow, and habit.",
       "date": "2026-05-31",
-      "readingMinutes": 9,
+      "readingMinutes": 4,
       "tags": [
-        "Phong thủy",
-        "Mua nhà",
-        "Bất động sản",
-        "Kinh nghiệm"
+        "Feng Shui",
+        "Home Buying",
+        "Real Estate",
+        "Experience"
       ],
       "topic": "mua-nha",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },
     {
       "slug": "mua-nha-nhung-dieu-can-biet",
-      "title": "Làm gì và nghĩ gì khi bắt đầu có ý định mua nhà",
-      "summary": "Trước khi mở app bất động sản hay đặt lịch xem căn đầu tiên, điều quan trọng hơn là hiểu mình đang mua nhà để giải quyết bài toán nào trong cuộc sống. Bài này giữ lại các câu hỏi nền tảng: mua để ở hay đầu tư, cần đánh giá vị trí, tầng lầu, hạ tầng, tiện ích, mặt bằng, thời điểm xem nhà và cách lọc thông tin để tiết kiệm thời gian.",
-      "cardSummary": "Trước khi đi xem nhà, hãy hiểu mình đang mua để giải quyết bài toán sống nào.",
+      "title": "What to Think About When You First Consider Buying a Home",
+      "summary": "A beginner note for the earliest stage of home buying. Before viewing properties seriously, it helps to understand motivation, budget, loan capacity, lifestyle needs, location trade-offs, legal basics, and emotional pressure.",
+      "cardSummary": "Before looking for the right home, it helps to understand the life the home is supposed to support.",
       "date": "2026-05-31",
-      "readingMinutes": 7,
+      "readingMinutes": 4,
       "tags": [
-        "Mua nhà",
-        "Bất động sản",
-        "Kinh nghiệm",
-        "Đầu tư"
+        "Home Buying",
+        "Real Estate",
+        "Experience",
+        "Investing"
       ],
       "topic": "mua-nha",
-      "baseLocale": "vi",
+      "baseLocale": "en",
       "locales": [
+        "en",
         "vi"
       ]
     },

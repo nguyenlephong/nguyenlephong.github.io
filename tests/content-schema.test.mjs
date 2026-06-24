@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 
 const { blogIndexSchema, blogPostSchema } = await import(
@@ -61,4 +62,25 @@ test("notes schemas accept minimal valid shapes", () => {
   };
   assert.equal(noteSchema.safeParse(note).success, true);
   assert.equal(noteSchema.safeParse({ slug: "n" }).success, false);
+});
+
+test("notes expose one canonical slug set across English and Vietnamese", () => {
+  const notesDataSource = readFileSync(
+    new URL("../src/lib/notes/data.ts", import.meta.url),
+    "utf8"
+  );
+  const sitemapSource = readFileSync(
+    new URL("../src/app/sitemap.ts", import.meta.url),
+    "utf8"
+  );
+  const notesIndex = JSON.parse(
+    readFileSync(new URL("../public/notes-data/_index.json", import.meta.url), "utf8")
+  );
+  const canonicalSlugs = notesIndex.posts.map((post) => post.slug);
+
+  assert.equal(new Set(canonicalSlugs).size, canonicalSlugs.length);
+  assert.match(notesDataSource, /NOTE_CONTENT_LOCALES = \["en", "vi"\] as const/);
+  assert.match(notesDataSource, /return \[\.\.\.NOTE_CONTENT_LOCALES\]/);
+  assert.match(sitemapSource, /for \(const note of listNotes\("en"\)\)/);
+  assert.doesNotMatch(sitemapSource, /Vietnamese-only notes/);
 });
