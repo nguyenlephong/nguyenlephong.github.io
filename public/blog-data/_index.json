@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "kanban-vs-scrum-which-fits-better",
+      "category": "ways-of-working",
+      "title": "Kanban vs. Scrum: Which Fits Better?",
+      "summary": "A calm comparison of Kanban and Scrum through the shape of real team work: how requests arrive, how much WIP the team can carry, what kind of predictability the business needs, and which operating rhythm fits the team's context.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Kanban",
+        "Scrum",
+        "Agile",
+        "WIP",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "why-i-stopped-writing-perfect-code",
       "category": "perspectives",
       "title": "Why I Stopped Writing Perfect Code",

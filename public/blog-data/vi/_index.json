@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "kanban-vs-scrum-which-fits-better",
+      "category": "ways-of-working",
+      "title": "Kanban hay Scrum: cái nào hợp hơn?",
+      "summary": "Một bài so sánh bình tĩnh giữa Kanban và Scrum qua hình dạng công việc thật của team: request đi vào như thế nào, team đang gánh bao nhiêu WIP, business cần kiểu predictability nào, và nhịp vận hành nào hợp với context hiện tại.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Kanban",
+        "Scrum",
+        "Agile",
+        "WIP",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "why-i-stopped-writing-perfect-code",
       "category": "perspectives",
       "title": "Vì sao tôi ngừng viết code hoàn hảo",
