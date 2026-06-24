@@ -60,6 +60,23 @@
       "author": "Nguyen Le Phong"
     },
     {
+      "slug": "value-of-a-boring-tech-stack",
+      "category": "perspectives",
+      "title": "Giá trị của một tech stack \"nhàm chán\"",
+      "summary": "Một bài reflection bình tĩnh về vì sao technology ổn định và quen thuộc thường giúp team đi chắc hơn. Bài viết nhìn vào reliability, tuyển dụng, maintainability, shared knowledge và những trade-off khi chọn một tech stack không cần gây ấn tượng.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Engineering",
+        "Tech Stack",
+        "Maintainability",
+        "Reliability",
+        "Team Collaboration",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "hexagonal-architecture-in-practice",
       "category": "architecture",
       "title": "Áp dụng Hexagonal Architecture vào một feature nhỏ",

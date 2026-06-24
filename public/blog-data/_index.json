@@ -60,6 +60,23 @@
       "author": "Nguyen Le Phong"
     },
     {
+      "slug": "value-of-a-boring-tech-stack",
+      "category": "perspectives",
+      "title": "The Value of a \"Boring\" Tech Stack",
+      "summary": "A calm reflection on why stable, familiar technology often helps teams move with more confidence. The article looks at reliability, hiring, maintainability, shared knowledge, and the trade-offs behind choosing a tech stack that does not need to impress anyone.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Engineering",
+        "Tech Stack",
+        "Maintainability",
+        "Reliability",
+        "Team Collaboration",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "hexagonal-architecture-in-practice",
       "category": "architecture",
       "title": "Hexagonal Architecture in Practice",
