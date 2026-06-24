@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "hiring-for-potential-vs-experience",
+      "category": "culture",
+      "title": "Hiring for Potential vs. Experience",
+      "summary": "A calm reflection on balancing experience and potential in engineering hiring. The article focuses on evidence, learning pace, team needs, and the quiet conditions that help a person grow after they join.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Hiring",
+        "Team Building",
+        "Engineering Leadership",
+        "Career Growth",
+        "Mentorship"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "when-an-ai-answer-needs-a-test",
       "category": "ai",
       "title": "When an AI Answer Needs a Test",

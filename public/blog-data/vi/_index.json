@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "hiring-for-potential-vs-experience",
+      "category": "culture",
+      "title": "Tuyển dụng vì tiềm năng hay vì kinh nghiệm",
+      "summary": "Một bài reflection bình tĩnh về cách cân bằng kinh nghiệm và tiềm năng trong tuyển dụng engineering. Trọng tâm là bằng chứng, tốc độ học, nhu cầu thật của team và điều kiện giúp một người lớn lên sau khi gia nhập.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "Tuyển dụng",
+        "Xây dựng team",
+        "Engineering Leadership",
+        "Phát triển sự nghiệp",
+        "Mentorship"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "when-an-ai-answer-needs-a-test",
       "category": "ai",
       "title": "Khi một câu trả lời AI cần được kiểm chứng",
