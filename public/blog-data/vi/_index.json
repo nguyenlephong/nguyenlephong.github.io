@@ -94,6 +94,23 @@
       "author": "Nguyen Le Phong"
     },
     {
+      "slug": "writing-good-acceptance-criteria",
+      "category": "ways-of-working",
+      "title": "Viết acceptance criteria tốt: biến done thành bằng chứng chung",
+      "summary": "Một hướng dẫn thực tế về cách viết acceptance criteria như bằng chứng chung cho hành vi đã hoàn thành: ví dụ rõ, edge case quan trọng, scope dễ review, và handoff bình tĩnh hơn giữa product, engineering, QA và stakeholder.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Acceptance Criteria",
+        "Agile",
+        "User Stories",
+        "Quality",
+        "Team Collaboration",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "kanban-vs-scrum-which-fits-better",
       "category": "ways-of-working",
       "title": "Kanban hay Scrum: cái nào hợp hơn?",
