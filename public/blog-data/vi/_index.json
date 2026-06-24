@@ -43,6 +43,23 @@
   ],
   "posts": [
     {
+      "slug": "async-communication-for-remote-teams",
+      "category": "culture",
+      "title": "Async communication cho remote team",
+      "summary": "Một góc nhìn bình tĩnh về async communication trong remote team: viết đủ context, ghi lại decision, đặt kỳ vọng phản hồi, handoff rõ ràng, xây trust và tránh biến mọi người thành luôn phải online.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "Remote Work",
+        "Async Communication",
+        "Decision Record",
+        "Niềm tin trong team",
+        "Collaboration"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "api-gateway-patterns",
       "category": "architecture",
       "title": "API Gateway Patterns",
