@@ -109,6 +109,7 @@ export type AnalyticsEvent =
   | 'studio_checklist_item_toggle'
   | 'studio_flow_group_select'
   | 'studio_flow_select'
+  | 'studio_flow_example_select'
   | 'studio_flow_board_fullscreen_toggle'
   | 'studio_flow_share'
   // Outbound

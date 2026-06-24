@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "tdd-is-it-worth-the-time",
+      "category": "ways-of-working",
+      "title": "TDD: Is It Worth the Time?",
+      "summary": "A practical reflection on when Test-Driven Development is worth the cost: how TDD shapes design, where it slows teams down, and how to use the red-green-refactor loop without turning it into dogma.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "TDD",
+        "Testing",
+        "Software Development",
+        "Code Quality",
+        "Refactoring",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "reading-code-is-harder-than-writing-it",
+      "category": "perspectives",
+      "title": "Reading Code Is Harder Than Writing It",
+      "summary": "A reflective essay on why reading code often feels harder than writing it, and how patient tracing, tests, naming, history, and small notes help engineers understand a codebase without rushing to rewrite it.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Engineering",
+        "Code Reading",
+        "Codebase",
+        "Maintainability",
+        "Debugging",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "fine-tuning-vs-prompting-vs-rag",
+      "category": "ai",
+      "title": "Fine-Tuning vs. Prompting vs. RAG",
+      "summary": "A practical comparison of prompting, RAG, and fine-tuning for AI products: what each approach changes, when it helps, where it fails, and how teams can choose the smallest reliable intervention.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Prompting",
+        "RAG",
+        "Fine-Tuning",
+        "LLM",
+        "AI Product"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "onboarding-that-actually-helps-new-teammates",
+      "category": "culture",
+      "title": "Onboarding That Actually Helps New Teammates",
+      "summary": "A calm look at engineering onboarding that helps people become useful without feeling lost: context, small early wins, clear ownership, buddy support, documentation, feedback loops, and patient team habits.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Onboarding",
+        "Team Trust",
+        "Mentorship",
+        "Documentation",
+        "Developer Experience"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "saga-pattern-for-distributed-transactions",
+      "category": "architecture",
+      "title": "The Saga Pattern for Distributed Transactions",
+      "summary": "A practical explanation of the Saga pattern for distributed transactions: why one database transaction stops working across services, how orchestration and choreography differ, and why compensation, observability, and idempotency matter.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Saga Pattern",
+        "Distributed Transactions",
+        "Microservices",
+        "Eventual Consistency",
+        "Observability"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "retrospectives-that-actually-cause-change",
       "category": "ways-of-working",
       "title": "Retrospectives That Actually Cause Change",

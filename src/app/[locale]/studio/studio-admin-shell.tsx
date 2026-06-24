@@ -4413,6 +4413,14 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
                 onChange={(event) => {
                   const nextFamily = event.target.value;
                   const nextView = demo.views.find((view) => view.family === nextFamily);
+                  track("studio_flow_example_select", {
+                    flow_id: flow.id,
+                    source: "family_select",
+                    previous_family: selectedFamily,
+                    previous_view_id: selectedView?.id,
+                    next_family: nextFamily,
+                    next_view_id: nextView?.id
+                  });
                   setDemoSelection({
                     flowId: flow.id,
                     family: nextFamily,
@@ -4433,6 +4441,14 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
                 value={selectedView.id}
                 onChange={(event) => {
                   const nextView = demo.views.find((view) => view.id === event.target.value);
+                  track("studio_flow_example_select", {
+                    flow_id: flow.id,
+                    source: "view_select",
+                    previous_family: selectedFamily,
+                    previous_view_id: selectedView.id,
+                    next_family: nextView?.family ?? selectedFamily,
+                    next_view_id: event.target.value
+                  });
                   setDemoSelection({
                     flowId: flow.id,
                     family: nextView?.family ?? selectedFamily,

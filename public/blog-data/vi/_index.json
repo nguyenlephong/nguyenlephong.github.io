@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "tdd-is-it-worth-the-time",
+      "category": "ways-of-working",
+      "title": "TDD có đáng thời gian không?",
+      "summary": "Một bài nhìn lại thực tế về khi nào Test-Driven Development đáng với chi phí bỏ ra: TDD định hình design thế nào, chỗ nào làm team chậm lại, và cách dùng vòng red-green-refactor mà không biến nó thành giáo điều.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "TDD",
+        "Testing",
+        "Software Development",
+        "Code Quality",
+        "Refactoring",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "reading-code-is-harder-than-writing-it",
+      "category": "perspectives",
+      "title": "Đọc code khó hơn viết code",
+      "summary": "Một bài nhìn lại vì sao đọc code thường khó hơn viết code, và cách tracing kiên nhẫn, test, naming, lịch sử decision, cùng những note nhỏ giúp engineer hiểu codebase mà không vội rewrite.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Engineering",
+        "Code Reading",
+        "Codebase",
+        "Maintainability",
+        "Debugging",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "fine-tuning-vs-prompting-vs-rag",
+      "category": "ai",
+      "title": "Fine-tuning, prompting và RAG khác nhau thế nào?",
+      "summary": "Một bài so sánh thực tế giữa prompting, RAG và fine-tuning khi xây AI product: mỗi cách thay đổi phần nào của hệ thống, khi nào hữu ích, thường vấp ở đâu, và làm sao chọn can thiệp nhỏ nhất nhưng đủ đáng tin.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "Prompting",
+        "RAG",
+        "Fine-Tuning",
+        "LLM",
+        "AI Product"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "onboarding-that-actually-helps-new-teammates",
+      "category": "culture",
+      "title": "Onboarding giúp người mới thật sự hòa vào team",
+      "summary": "Một góc nhìn bình tĩnh về onboarding trong engineering team: context, small win đầu tiên, ownership rõ, buddy support, documentation, feedback loop và những thói quen kiên nhẫn giúp người mới bớt lạc.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Onboarding",
+        "Team Trust",
+        "Mentorship",
+        "Documentation",
+        "Developer Experience"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "saga-pattern-for-distributed-transactions",
+      "category": "architecture",
+      "title": "Saga Pattern cho distributed transaction",
+      "summary": "Một bài giải thích thực tế về Saga pattern trong distributed transaction: vì sao một database transaction không còn đủ khi hệ thống tách service, orchestration và choreography khác nhau thế nào, và vì sao compensation, observability, idempotency lại quan trọng.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Saga Pattern",
+        "Distributed Transactions",
+        "Microservices",
+        "Eventual Consistency",
+        "Observability"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "retrospectives-that-actually-cause-change",
       "category": "ways-of-working",
       "title": "Retrospective tạo ra thay đổi thật",

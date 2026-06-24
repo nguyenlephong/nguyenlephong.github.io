@@ -3,6 +3,61 @@ import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
+const compactSystemNodeSize = { width: 136, height: 108 };
+
+const layeredPlatformOwnership = new Map([
+  ["layer-users", "layer-client"],
+  ["layer-admin", "layer-client"],
+  ["layer-cdn", "layer-edge"],
+  ["layer-gateway", "layer-edge"],
+  ["layer-auth", "layer-edge"],
+  ["layer-api", "layer-services"],
+  ["layer-order", "layer-services"],
+  ["layer-inventory", "layer-services"],
+  ["layer-bus", "layer-services"],
+  ["layer-worker", "layer-services"],
+  ["layer-postgres", "layer-data"],
+  ["layer-redis", "layer-data"],
+  ["layer-warehouse", "layer-data"],
+  ["layer-telemetry", "layer-ops"],
+  ["layer-audit", "layer-ops"],
+  ["layer-rollout", "layer-ops"],
+  ["layer-payment", "layer-external"],
+  ["layer-receipt", "layer-external"]
+]);
+
+function parseLayeredPlatformBounds(source) {
+  const groups = new Map();
+  const groupPattern = /platformGroupNode\("(?<id>layer-[^"]+)"[\s\S]*?\{ x: (?<x>-?\d+), y: (?<y>-?\d+) \}, \{ width: (?<width>\d+), height: (?<height>\d+) \}\)/g;
+  for (const match of source.matchAll(groupPattern)) {
+    const groupsData = match.groups;
+    if (!groupsData) continue;
+    groups.set(groupsData.id, {
+      x: Number(groupsData.x),
+      y: Number(groupsData.y),
+      width: Number(groupsData.width),
+      height: Number(groupsData.height)
+    });
+  }
+  return groups;
+}
+
+function parseLayeredSystemNodeBounds(source) {
+  const nodes = new Map();
+  const nodePattern = /systemIconNode\("(?<id>layer-[^"]+)"[\s\S]*?\{ x: (?<x>-?\d+), y: (?<y>-?\d+) \}\)/g;
+  for (const match of source.matchAll(nodePattern)) {
+    const nodeData = match.groups;
+    if (!nodeData) continue;
+    nodes.set(nodeData.id, {
+      x: Number(nodeData.x),
+      y: Number(nodeData.y),
+      width: compactSystemNodeSize.width,
+      height: compactSystemNodeSize.height
+    });
+  }
+  return nodes;
+}
+
 test("studio route is wired into routing, seo, navigation, analytics, and inventory content", async () => {
   assert.ok(existsSync("src/app/[locale]/studio/page.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioWorkspace.tsx"));
@@ -76,6 +131,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(analytics, /studio_blog_roadmap/);
   assert.match(analytics, /'studio_flow_group_select'/);
   assert.match(analytics, /'studio_flow_select'/);
+  assert.match(analytics, /'studio_flow_example_select'/);
   assert.match(analytics, /'studio_flow_board_fullscreen_toggle'/);
   assert.match(analytics, /'studio_flow_share'/);
   assert.match(tracker, /'studio'/);
@@ -256,6 +312,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(adminShell, /studio_blog_roadmap/);
   assert.match(adminShell, /studio_flow_group_select/);
   assert.match(adminShell, /studio_flow_select/);
+  assert.match(adminShell, /studio_flow_example_select/);
   assert.match(adminShell, /studio_flow_board_fullscreen_toggle/);
   assert.match(adminShell, /studio_flow_share/);
   assert.match(adminShell, /studioMails/);
@@ -629,6 +686,19 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "animated publish"
   ]) {
     assert.match(architectureDemo, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+
+  const platformBounds = parseLayeredPlatformBounds(architectureDemo);
+  const layeredNodeBounds = parseLayeredSystemNodeBounds(architectureDemo);
+  for (const [nodeId, platformId] of layeredPlatformOwnership) {
+    const node = layeredNodeBounds.get(nodeId);
+    const platform = platformBounds.get(platformId);
+    assert.ok(node, `missing layered icon node ${nodeId}`);
+    assert.ok(platform, `missing layered platform wrapper ${platformId}`);
+    assert.ok(node.x >= platform.x, `${nodeId} exceeds ${platformId} left boundary`);
+    assert.ok(node.y >= platform.y, `${nodeId} exceeds ${platformId} top boundary`);
+    assert.ok(node.x + node.width <= platform.x + platform.width, `${nodeId} exceeds ${platformId} right boundary`);
+    assert.ok(node.y + node.height <= platform.y + platform.height, `${nodeId} exceeds ${platformId} bottom boundary`);
   }
 
   const forbiddenEventNamePattern = new RegExp(
