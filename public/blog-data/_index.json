@@ -900,6 +900,23 @@
       "seriesOrder": 3
     },
     {
+      "slug": "pull-request-that-reviewers-can-trust",
+      "category": "culture",
+      "title": "The Pull Request That Reviewers Can Trust",
+      "summary": "A trusted pull request does more than look tidy. It names the behavior being changed, shows the safer pattern, and gives reviewers enough evidence to approve with real confidence instead of guesswork.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Pull Requests",
+        "Code Review",
+        "Team Trust",
+        "Reviewer Experience",
+        "Developer Communication"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "giving-and-receiving-feedback",
       "category": "culture",
       "title": "Feedback That Lands: Giving and Receiving Critique as an Engineer",
