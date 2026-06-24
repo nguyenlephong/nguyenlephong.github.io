@@ -105,12 +105,14 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /ReactFlow/);
   assert.match(adminShell, /MiniMap/);
   assert.match(adminShell, /maskStrokeColor/);
-  assert.match(adminShell, /nodeStrokeWidth=\{2\.8\}/);
+  assert.match(adminShell, /bgColor="var\(--flow-minimap-bg\)"/);
+  assert.match(adminShell, /nodeStrokeWidth=\{2\.6\}/);
   assert.match(adminShell, /fitViewOptions/);
   assert.match(adminShell, /function buildArchitectureDemoCanvas/);
   assert.match(adminShell, /function StudioFlowCanvasNodeCard/);
   assert.match(adminShell, /isBoardFullscreen/);
   assert.match(adminShell, /studio_flow_board_fullscreen_toggle/);
+  assert.match(adminShell, /flow-board-toolbar/);
   assert.match(adminShell, /flow-board-fullscreen-button/);
   assert.match(adminShell, /flow-chart-surface\$\{isReactFlowDemo \? " is-architecture-demo" : ""\}\$\{isBoardFullscreen \? " is-fullscreen" : ""\}/);
   assert.match(adminShell, /!\s*selectedFlow\.architectureDemo\s*&&\s*\(/);
@@ -357,8 +359,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.react-flow__container\b/);
   assert.match(shadowCss, /\.react-flow__controls\b/);
   assert.match(shadowCss, /\.react-flow__minimap\b/);
-  assert.match(shadowCss, /--xy-minimap-background-color-props/);
-  assert.match(shadowCss, /--xy-minimap-node-stroke-color-props/);
+  assert.match(shadowCss, /--flow-minimap-bg/);
+  assert.match(shadowCss, /--flow-minimap-node-stroke/);
+  assert.match(shadowCss, /\.flow-board-toolbar\b/);
   assert.match(shadowCss, /\.flow-example-toolbar\b/);
   assert.doesNotMatch(shadowCss, /\.flow-example-notes\b/);
   assert.match(shadowCss, /\.flow-react-node--hub\b/);
@@ -372,6 +375,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.flow-react-node--decision\b/);
   assert.match(shadowCss, /\.flow-react-node--risk\b/);
   assert.match(shadowCss, /\.flow-react-surface\.is-architecture-demo\b/);
+  assert.match(shadowCss, /\.sidebar-brand-mark\b/);
+  assert.match(shadowCss, /\.sidebar-badge\s*\{[^}]*display:\s*inline-flex/s);
+  assert.match(shadowCss, /\.flow-board-toolbar\b/);
+  assert.match(shadowCss, /--flow-minimap-bg/);
   assert.match(shadowCss, /\.flow-chart-surface\.is-architecture-demo\s*\{[^}]*border:\s*0;[^}]*background:\s*transparent;[^}]*padding:\s*0/s);
   assert.match(shadowCss, /\.flow-chart-surface\.is-fullscreen\s*\{[^}]*position:\s*fixed;[^}]*grid-template-rows:\s*auto auto minmax\(0,\s*1fr\)/s);
   assert.match(shadowCss, /\.flow-board-fullscreen-button\b/);

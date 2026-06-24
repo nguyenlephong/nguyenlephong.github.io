@@ -230,6 +230,25 @@ a {
   height: 1.125rem;
 }
 
+.sidebar-brand-mark {
+  display: inline-flex;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--primary) 45%, var(--border));
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 32% 24%, color-mix(in srgb, #ffffff 88%, transparent), transparent 34%),
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 82%, #38bdf8), color-mix(in srgb, #111827 92%, var(--primary)));
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 0.35rem 0.9rem color-mix(in srgb, var(--primary) 26%, transparent);
+}
+
 .sidebar-brand img {
   width: 1.75rem;
   height: 1.75rem;
@@ -434,15 +453,20 @@ a {
 }
 
 .sidebar-badge {
+  display: inline-flex;
   margin-left: auto;
-  min-height: 1.125rem;
+  min-width: 2rem;
+  height: 1.125rem;
+  align-items: center;
+  justify-content: center;
   border: 1px solid color-mix(in srgb, #22c55e 45%, transparent);
   border-radius: 999px;
   color: #16a34a;
-  padding: 0 0.375rem;
+  padding: 0 0.45rem;
   font-size: 0.6875rem;
   font-weight: 600;
   line-height: 1;
+  text-align: center;
 }
 
 .sidebar-chevron {
@@ -1909,6 +1933,7 @@ a {
 }
 
 .flow-workbench.card.is-architecture-demo .flow-reader-pane {
+  min-height: calc(100vh - 6rem);
   overflow: visible;
   padding: 0;
 }
@@ -2007,6 +2032,8 @@ a {
 }
 
 .flow-chart-surface.is-architecture-demo {
+  grid-template-rows: auto auto minmax(0, 1fr);
+  min-height: calc(100vh - 6rem);
   gap: 0.75rem;
   overflow: visible;
   border: 0;
@@ -2050,17 +2077,47 @@ a {
   line-height: 1.45;
 }
 
+.flow-board-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: end;
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, var(--border));
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--primary) 7%, var(--muted));
+  padding: 0.85rem;
+}
+
+.flow-board-toolbar:not(.has-selectors) {
+  grid-template-columns: auto;
+  justify-content: end;
+}
+
+.flow-board-actionbar {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 2.9rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--background) 82%, var(--card));
+  padding: 0.35rem;
+}
+
 .flow-board-fullscreen-button {
   display: inline-flex;
+  min-height: 2.15rem;
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
   min-width: max-content;
-  border: 1px solid color-mix(in srgb, var(--foreground) 13%, transparent);
-  border-radius: var(--control-radius);
-  background: var(--background);
+  border: 0;
+  border-radius: 0.55rem;
+  background: transparent;
   color: var(--foreground);
-  padding: 0.5rem 0.7rem;
+  padding: 0 0.65rem;
   font-size: 0.82rem;
   font-weight: 650;
 }
@@ -2075,6 +2132,10 @@ a {
 }
 
 .flow-react-surface {
+  --flow-minimap-bg: rgba(248, 250, 252, 0.97);
+  --flow-minimap-mask: rgba(15, 23, 42, 0.14);
+  --flow-minimap-stroke: #2563eb;
+  --flow-minimap-node-stroke: rgba(15, 23, 42, 0.82);
   height: min(54vh, 34rem);
   min-height: 25rem;
   overflow: hidden;
@@ -2083,8 +2144,15 @@ a {
   background: color-mix(in srgb, var(--background) 92%, var(--muted));
 }
 
+.studio-admin.is-dark .flow-react-surface {
+  --flow-minimap-bg: rgba(15, 23, 42, 0.97);
+  --flow-minimap-mask: rgba(2, 6, 23, 0.58);
+  --flow-minimap-stroke: #38bdf8;
+  --flow-minimap-node-stroke: rgba(248, 250, 252, 0.9);
+}
+
 .flow-react-surface.is-architecture-demo {
-  height: clamp(34rem, 58vh, 46rem);
+  height: max(34rem, calc(100vh - 15rem));
   min-height: 34rem;
 }
 
@@ -2098,10 +2166,7 @@ a {
   grid-template-columns: minmax(11rem, 0.34fr) minmax(14rem, 1fr);
   gap: 0.75rem;
   align-items: end;
-  border: 1px solid color-mix(in srgb, var(--primary) 20%, var(--border));
-  border-radius: 0.85rem;
-  background: color-mix(in srgb, var(--primary) 7%, var(--muted));
-  padding: 0.85rem;
+  min-width: 0;
 }
 
 .flow-example-toolbar label {
@@ -2114,12 +2179,17 @@ a {
 }
 
 .flow-example-toolbar select {
+  appearance: none;
   min-width: 0;
   border: 1px solid var(--border);
   border-radius: 0.65rem;
-  background: var(--card);
+  background-color: var(--card);
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 0.85rem center;
+  background-repeat: no-repeat;
+  background-size: 1rem;
   color: var(--foreground);
-  padding: 0.65rem 0.75rem;
+  padding: 0.65rem 2.75rem 0.65rem 0.75rem;
   font: inherit;
   font-size: 0.86rem;
   font-weight: 650;
@@ -2316,19 +2386,18 @@ a {
 
 .react-flow__minimap {
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--foreground) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--foreground) 28%, var(--border));
   border-radius: 0.75rem;
-  background: var(
-    --xy-minimap-background-color-props,
-    var(--xy-minimap-background-color, var(--xy-minimap-background-color-default))
-  );
-  box-shadow: 0 0.9rem 2.2rem rgba(0, 0, 0, 0.28);
+  background: var(--flow-minimap-bg);
+  box-shadow: 0 0.9rem 2.2rem rgba(0, 0, 0, 0.3);
   width: 10rem;
   height: 7rem;
+  opacity: 1;
 }
 
 .react-flow__minimap-svg {
   display: block;
+  background: var(--flow-minimap-bg);
 }
 
 .react-flow__minimap-mask {
@@ -2686,13 +2755,18 @@ a {
 }
 
 .native-select {
+  appearance: none;
   width: 100%;
   min-height: 2rem;
   border: 1px solid var(--border);
   border-radius: 0.625rem;
-  background: var(--background);
+  background-color: var(--background);
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 0.7rem center;
+  background-repeat: no-repeat;
+  background-size: 0.95rem;
   color: var(--foreground);
-  padding: 0 2rem 0 0.625rem;
+  padding: 0 2.45rem 0 0.625rem;
 }
 
 .tabs-row {
@@ -4414,6 +4488,15 @@ tbody tr:hover {
 
   .flow-example-toolbar {
     grid-template-columns: 1fr;
+  }
+
+  .flow-board-toolbar {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .flow-board-actionbar {
+    justify-self: start;
   }
 
   .welcome-shell {

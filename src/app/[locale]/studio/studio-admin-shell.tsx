@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties, MouseEvent } from "react";
-import Image from "next/image";
 import type { IconType } from "react-icons";
 import { APP_ROUTE } from "@/app/app.const";
 import { track } from "@/lib/analytics";
@@ -496,6 +495,7 @@ type StudioUiCopy = {
     chartOutcome: string;
     exampleFamily: string;
     exampleView: string;
+    boardTools: string;
     viewNotes: string;
     useWhen: string;
     outcome: string;
@@ -749,6 +749,7 @@ const englishStudioCopy: StudioUiCopy = {
     chartOutcome: "Target outcome",
     exampleFamily: "Example family",
     exampleView: "View",
+    boardTools: "Board tools",
     viewNotes: "View notes",
     useWhen: "Use when",
     outcome: "Outcome",
@@ -999,6 +1000,7 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       chartOutcome: "Kết quả cần đạt",
       exampleFamily: "Nhóm example",
       exampleView: "Kiểu view",
+      boardTools: "Công cụ board",
       viewNotes: "Ghi chú view",
       useWhen: "Dùng khi",
       outcome: "Kết quả",
@@ -4437,62 +4439,66 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
         <p>{selectedView?.description ?? copy.flows.chartHint}</p>
       </div>
 
-      {demo && selectedView && (
-        <div className="flow-example-toolbar" aria-label="React Flow example selector">
-          <label>
-            <span>{copy.flows.exampleFamily}</span>
-            <select
-              value={selectedFamily}
-              onChange={(event) => {
-                const nextFamily = event.target.value;
-                const nextView = demo.views.find((view) => view.family === nextFamily);
-                setDemoSelection({
-                  flowId: flow.id,
-                  family: nextFamily,
-                  viewId: nextView?.id ?? ""
-                });
-              }}
-            >
-              {familyOptions.map((family) => (
-                <option key={family.value} value={family.value}>
-                  {family.label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            <span>{copy.flows.exampleView}</span>
-            <select
-              value={selectedView.id}
-              onChange={(event) => {
-                const nextView = demo.views.find((view) => view.id === event.target.value);
-                setDemoSelection({
-                  flowId: flow.id,
-                  family: nextView?.family ?? selectedFamily,
-                  viewId: event.target.value
-                });
-              }}
-            >
-              {selectedFamilyViews.map((view) => (
-                <option key={view.id} value={view.id}>
-                  {view.title}
-                </option>
-              ))}
-            </select>
-          </label>
+      <div className={`flow-board-toolbar${demo && selectedView ? " has-selectors" : ""}`} aria-label={copy.flows.boardTools}>
+        {demo && selectedView && (
+          <div className="flow-example-toolbar" aria-label="React Flow example selector">
+            <label>
+              <span>{copy.flows.exampleFamily}</span>
+              <select
+                value={selectedFamily}
+                onChange={(event) => {
+                  const nextFamily = event.target.value;
+                  const nextView = demo.views.find((view) => view.family === nextFamily);
+                  setDemoSelection({
+                    flowId: flow.id,
+                    family: nextFamily,
+                    viewId: nextView?.id ?? ""
+                  });
+                }}
+              >
+                {familyOptions.map((family) => (
+                  <option key={family.value} value={family.value}>
+                    {family.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              <span>{copy.flows.exampleView}</span>
+              <select
+                value={selectedView.id}
+                onChange={(event) => {
+                  const nextView = demo.views.find((view) => view.id === event.target.value);
+                  setDemoSelection({
+                    flowId: flow.id,
+                    family: nextView?.family ?? selectedFamily,
+                    viewId: event.target.value
+                  });
+                }}
+              >
+                {selectedFamilyViews.map((view) => (
+                  <option key={view.id} value={view.id}>
+                    {view.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+        )}
+        <div className="flow-board-actionbar">
+          <button
+            type="button"
+            className="flow-board-fullscreen-button"
+            aria-label={isBoardFullscreen ? copy.flows.exitFullscreen : copy.flows.enterFullscreen}
+            onClick={toggleFullscreen}
+          >
+            {isBoardFullscreen ? <LuMinimize2 aria-hidden="true" /> : <LuMaximize2 aria-hidden="true" />}
+            <span>{isBoardFullscreen ? copy.flows.exitFullscreen : copy.flows.enterFullscreen}</span>
+          </button>
         </div>
-      )}
+      </div>
 
       <div className={`flow-react-surface${isReactFlowDemo ? " is-architecture-demo" : ""}`}>
-        <button
-          type="button"
-          className="flow-board-fullscreen-button"
-          aria-label={isBoardFullscreen ? copy.flows.exitFullscreen : copy.flows.enterFullscreen}
-          onClick={toggleFullscreen}
-        >
-          {isBoardFullscreen ? <LuMinimize2 aria-hidden="true" /> : <LuMaximize2 aria-hidden="true" />}
-          <span>{isBoardFullscreen ? copy.flows.exitFullscreen : copy.flows.enterFullscreen}</span>
-        </button>
         <ReactFlow
           key={selectedView?.id ?? flow.id}
           className="flow-react-canvas"
@@ -4517,13 +4523,13 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
             position="bottom-right"
             pannable
             zoomable
-            bgColor="rgba(15, 23, 42, 0.94)"
-            maskColor="rgba(2, 6, 23, 0.48)"
-            maskStrokeColor="#60a5fa"
-            maskStrokeWidth={1.4}
+            bgColor="var(--flow-minimap-bg)"
+            maskColor="var(--flow-minimap-mask)"
+            maskStrokeColor="var(--flow-minimap-stroke)"
+            maskStrokeWidth={1.8}
             nodeColor={(node) => getStudioFlowCanvasColor(node as Node<StudioFlowCanvasNodeData>)}
-            nodeStrokeColor={(node) => getStudioFlowCanvasColor(node as Node<StudioFlowCanvasNodeData>)}
-            nodeStrokeWidth={2.8}
+            nodeStrokeColor="var(--flow-minimap-node-stroke)"
+            nodeStrokeWidth={2.6}
             nodeBorderRadius={8}
           />
         </ReactFlow>
@@ -5633,7 +5639,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
       <aside className="studio-sidebar" aria-label={copy.navLabel}>
         <div className="sidebar-header">
           <a className="sidebar-brand" href={routeHref(DEFAULT_ROUTE)} aria-label={copy.openStudio} onClick={handleBrandClick}>
-            <Image src="/icon.png" alt="" width={28} height={28} />
+            <span className="sidebar-brand-mark" aria-hidden="true">N</span>
             <span>{copy.brand}</span>
           </a>
           <button
