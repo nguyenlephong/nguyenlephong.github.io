@@ -4365,8 +4365,67 @@ function buildArchitectureDemoCanvas(flow: StudioFlow, viewId?: string): {
   return { nodes, edges };
 }
 
-function getStudioFlowCanvasColor(node: Node<StudioFlowCanvasNodeData>) {
-  return flowCanvasToneColors[node.data.tone];
+function getStudioFlowNodeSize(node: StudioFlowCanvasNode) {
+  const width = typeof node.style?.width === "number" ? node.style.width : node.data.kind === "decision" ? 160 : 220;
+  const height = typeof node.style?.height === "number" ? node.style.height : node.data.kind === "decision" ? 160 : 96;
+  return { width, height };
+}
+
+function StudioFlowMiniMapOverlay({ nodes }: { nodes: StudioFlowCanvasNode[] }) {
+  const minimapNodes = useMemo(() => {
+    if (!nodes.length) return [];
+
+    const rawNodes = nodes.map((node) => {
+      const size = getStudioFlowNodeSize(node);
+      return {
+        id: node.id,
+        x: node.position.x,
+        y: node.position.y,
+        width: size.width,
+        height: size.height,
+        kind: node.data.kind
+      };
+    });
+    const minX = Math.min(...rawNodes.map((node) => node.x));
+    const minY = Math.min(...rawNodes.map((node) => node.y));
+    const maxX = Math.max(...rawNodes.map((node) => node.x + node.width));
+    const maxY = Math.max(...rawNodes.map((node) => node.y + node.height));
+    const contentWidth = Math.max(1, maxX - minX);
+    const contentHeight = Math.max(1, maxY - minY);
+    const width = 160;
+    const height = 112;
+    const padding = 9;
+    const scale = Math.min((width - padding * 2) / contentWidth, (height - padding * 2) / contentHeight);
+    const offsetX = (width - contentWidth * scale) / 2;
+    const offsetY = (height - contentHeight * scale) / 2;
+
+    return rawNodes.map((node) => ({
+      id: node.id,
+      x: offsetX + (node.x - minX) * scale,
+      y: offsetY + (node.y - minY) * scale,
+      width: Math.max(2.4, node.width * scale),
+      height: Math.max(2.4, node.height * scale),
+      isGroup: node.kind === "group"
+    }));
+  }, [nodes]);
+
+  if (!minimapNodes.length) return null;
+
+  return (
+    <svg className="flow-minimap-overlay" viewBox="0 0 160 112" aria-hidden="true">
+      {minimapNodes.map((node) => (
+        <rect
+          key={node.id}
+          className={`flow-minimap-overlay-node${node.isGroup ? " is-group" : ""}`}
+          x={node.x}
+          y={node.y}
+          width={node.width}
+          height={node.height}
+          rx={node.isGroup ? 3 : 2}
+        />
+      ))}
+    </svg>
+  );
 }
 
 function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy }) {
@@ -4527,12 +4586,13 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
             maskColor="var(--flow-minimap-mask)"
             maskStrokeColor="var(--flow-minimap-stroke)"
             maskStrokeWidth={1.8}
-            nodeColor={(node) => getStudioFlowCanvasColor(node as Node<StudioFlowCanvasNodeData>)}
+            nodeColor="var(--flow-minimap-node-fill)"
             nodeStrokeColor="var(--flow-minimap-node-stroke)"
             nodeStrokeWidth={2.6}
             nodeBorderRadius={8}
           />
         </ReactFlow>
+        <StudioFlowMiniMapOverlay nodes={nodes} />
       </div>
 
       {!demo && (

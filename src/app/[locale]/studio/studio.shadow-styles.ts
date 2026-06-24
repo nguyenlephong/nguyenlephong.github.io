@@ -2135,6 +2135,7 @@ a {
   --flow-minimap-bg: rgba(248, 250, 252, 0.97);
   --flow-minimap-mask: rgba(15, 23, 42, 0.14);
   --flow-minimap-stroke: #2563eb;
+  --flow-minimap-node-fill: rgba(37, 99, 235, 0.8);
   --flow-minimap-node-stroke: rgba(15, 23, 42, 0.82);
   height: min(54vh, 34rem);
   min-height: 25rem;
@@ -2148,6 +2149,7 @@ a {
   --flow-minimap-bg: rgba(15, 23, 42, 0.97);
   --flow-minimap-mask: rgba(2, 6, 23, 0.58);
   --flow-minimap-stroke: #38bdf8;
+  --flow-minimap-node-fill: rgba(56, 189, 248, 0.76);
   --flow-minimap-node-stroke: rgba(248, 250, 252, 0.9);
 }
 
@@ -2410,9 +2412,37 @@ a {
 }
 
 .react-flow__minimap-node {
-  opacity: 0.96;
+  fill: var(--flow-minimap-node-fill);
+  opacity: 1;
   stroke: var(--xy-minimap-node-stroke-color-props, color-mix(in srgb, var(--foreground) 66%, var(--background)));
   stroke-width: var(--xy-minimap-node-stroke-width-props, 2.4);
+}
+
+.flow-minimap-overlay {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 8;
+  width: 10rem;
+  height: 7rem;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.flow-minimap-overlay-node {
+  fill: var(--flow-minimap-node-fill);
+  stroke: var(--flow-minimap-node-stroke);
+  stroke-width: 0.9;
+  opacity: 0.95;
+  vector-effect: non-scaling-stroke;
+}
+
+.flow-minimap-overlay-node.is-group {
+  fill: color-mix(in srgb, var(--flow-minimap-node-fill) 16%, transparent);
+  stroke: var(--flow-minimap-stroke);
+  stroke-dasharray: 2 2;
+  stroke-width: 0.75;
+  opacity: 0.86;
 }
 
 .react-flow__background-pattern.dots {

@@ -106,10 +106,12 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /MiniMap/);
   assert.match(adminShell, /maskStrokeColor/);
   assert.match(adminShell, /bgColor="var\(--flow-minimap-bg\)"/);
+  assert.match(adminShell, /nodeColor="var\(--flow-minimap-node-fill\)"/);
   assert.match(adminShell, /nodeStrokeWidth=\{2\.6\}/);
   assert.match(adminShell, /fitViewOptions/);
   assert.match(adminShell, /function buildArchitectureDemoCanvas/);
   assert.match(adminShell, /function StudioFlowCanvasNodeCard/);
+  assert.match(adminShell, /function StudioFlowMiniMapOverlay/);
   assert.match(adminShell, /isBoardFullscreen/);
   assert.match(adminShell, /studio_flow_board_fullscreen_toggle/);
   assert.match(adminShell, /flow-board-toolbar/);
@@ -360,8 +362,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.react-flow__controls\b/);
   assert.match(shadowCss, /\.react-flow__minimap\b/);
   assert.match(shadowCss, /--flow-minimap-bg/);
+  assert.match(shadowCss, /--flow-minimap-node-fill/);
   assert.match(shadowCss, /--flow-minimap-node-stroke/);
   assert.match(shadowCss, /\.flow-board-toolbar\b/);
+  assert.match(shadowCss, /\.flow-minimap-overlay\b/);
   assert.match(shadowCss, /\.flow-example-toolbar\b/);
   assert.doesNotMatch(shadowCss, /\.flow-example-notes\b/);
   assert.match(shadowCss, /\.flow-react-node--hub\b/);
