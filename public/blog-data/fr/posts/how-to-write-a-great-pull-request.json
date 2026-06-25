@@ -33,5 +33,6 @@
       "q": "Que devrait contenir un message de commit ?",
       "a": "Un message de commit devrait avoir une courte ligne de sujet à l'impératif (50 caractères ou moins) décrivant ce que fait le commit. Utilisez le format des commits conventionnels : type(scope): sujet — par exemple 'fix(cart): add row-level lock to prevent oversell'. Si le pourquoi n'est pas évident dans le diff, ajoutez une ligne vide après le sujet et un bref corps expliquant la motivation ou toute décision de conception non évidente. Le diff montre ce qui a changé ; le message devrait expliquer pourquoi."
     }
-  ]
+  ],
+  "date": "2026-02-27"
 }

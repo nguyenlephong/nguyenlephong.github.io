@@ -245,7 +245,7 @@
       "category": "culture",
       "title": "Comment Écrire une Pull Request que les Gens Aiment Vraiment Réviser",
       "summary": "Une excellente pull request est un cadeau pour votre relecteur : petite, bien décrite, facile à accepter. L'anatomie d'une PR révisable — taille, titre, description, hygiène des commits et auto-revue — avec des exemples concrets avant/après.",
-      "date": "2026-05-29",
+      "date": "2026-02-27",
       "readingMinutes": 13,
       "tags": [
         "Culture d'ingénierie",

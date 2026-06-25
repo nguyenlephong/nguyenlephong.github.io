@@ -1513,7 +1513,7 @@
       "category": "culture",
       "title": "How to Write a Pull Request People Actually Enjoy Reviewing",
       "summary": "A great pull request is a gift to your reviewer: small, well-described, easy to say yes to. The anatomy of a reviewable PR — size, title, description, commit hygiene, and self-review — with concrete before/after examples.",
-      "date": "2026-05-29",
+      "date": "2026-02-27",
       "readingMinutes": 13,
       "tags": [
         "Engineering Culture",

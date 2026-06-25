@@ -245,7 +245,7 @@
       "category": "culture",
       "title": "如何写一个让人真正乐于审查的 Pull Request",
       "summary": "一个出色的 pull request 是给审查者的礼物：简小、描述清晰、容易说是。可审查 PR 的解剖学——大小、标题、描述、提交卫生和自审——附具体的前后对比示例。",
-      "date": "2026-05-29",
+      "date": "2026-02-27",
       "readingMinutes": 13,
       "tags": [
         "工程文化",
