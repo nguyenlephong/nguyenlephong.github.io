@@ -684,7 +684,7 @@
       "category": "architecture",
       "title": "Observability ở quy mô lớn: Logs, Metrics, Traces và SLO giúp mình thấy gì",
       "summary": "Khi một request đi qua nhiều service, không còn một log file duy nhất để kể toàn bộ câu chuyện. Bài này giải thích observability theo cách dễ nắm: metrics cho biết hệ thống đang khỏe hay không, logs kể chuyện chi tiết, traces nối các bước lại với nhau, còn SLO giúp team nói về reliability bằng một ngôn ngữ rõ ràng hơn.",
-      "date": "2026-06-04",
+      "date": "2026-04-07",
       "readingMinutes": 16,
       "tags": [
         "Software Architecture",

@@ -769,7 +769,7 @@
       "category": "architecture",
       "title": "You Can't Fix What You Can't See: Logs, Metrics, Traces, and SLOs at Scale",
       "summary": "In a monolith, debugging was almost cosy — one log file, one process, one place the truth lived. Distributed systems quietly took that away: one request now fans out across a dozen services, and when it breaks there is no single log to read. A no-hype guide to seeing your system at scale: the three pillars (metrics, logs, traces) and the question each one answers, why a single propagated trace ID is the highest-leverage habit you can adopt, how SLOs turn reliability into an error budget you can spend, and how to alert on symptoms so on-call doesn't burn out.",
-      "date": "2026-06-04",
+      "date": "2026-04-07",
       "readingMinutes": 14,
       "tags": [
         "Software Architecture",
