@@ -33,5 +33,6 @@
       "q": "Làm thế nào để cố vấn mà không làm công việc cho họ?",
       "a": "Quy tắc giúp ích nhiều nhất: phản hồi đầu tiên của bạn với vấn đề họ mang đến bạn luôn phải là câu hỏi, không phải giải pháp. Hỏi họ đã thử gì, thông báo lỗi nói gì, liệu có pattern tương tự nào ở nơi khác trong codebase không. Chờ ba mươi giây trước khi nói bất cứ điều gì — thường họ sẽ tự trả lời câu hỏi của mình trong thời gian đó. Khi họ bị kẹt trong phiên pairing, chống lại sự thôi thúc lấy bàn phím. Thay vào đó, hỏi: \"Bạn sẽ kiểm tra gì tiếp theo?\" Sự khó chịu khi không nhảy vào là cái giá để thực sự dạy được điều gì đó. Dành câu trả lời trực tiếp cho tình huống họ đã thực sự kiệt sức các cách tiếp cận và blocker đang ngăn mọi thứ khác — và kể cả khi đó, hãy giải thích lý luận thay vì chỉ cung cấp giải pháp."
     }
-  ]
+  ],
+  "date": "2026-02-24"
 }
