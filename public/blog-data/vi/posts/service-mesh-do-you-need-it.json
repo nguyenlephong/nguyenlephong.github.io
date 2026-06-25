@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Service Mesh: có thật sự cần không?",
   "summary": "Một bài giải thích thực tế về service mesh: nó gom những vấn đề gì, khi nào hữu ích, và vì sao team nên giải quyết nỗi đau service-to-service thật trước khi thêm một tầng infrastructure mới.",
-  "date": "2026-06-25",
+  "date": "2026-05-10",
   "readingMinutes": 7,
   "tags": [
     "Software Architecture",
