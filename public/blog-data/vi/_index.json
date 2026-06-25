@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "cross-functional-teams",
+      "category": "ways-of-working",
+      "title": "Cross-functional team",
+      "summary": "Một góc nhìn thực tế về cross-functional team: vì sao mô hình này tồn tại, shared outcome giảm handoff friction thế nào, và team cần gì quanh ownership, ritual, decision-making, specialist depth và bất đồng lành mạnh.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Cross-Functional Teams",
+        "Ways of Working",
+        "Product Engineering",
+        "Team Collaboration",
+        "Software Delivery",
+        "Ownership"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "loneliness-of-the-solo-developer",
+      "category": "perspectives",
+      "title": "Sự cô đơn của solo developer",
+      "summary": "Một bài reflection về solo development: sự tự do và áp lực khi làm một mình, những feedback loop bị thiếu, và các hệ thống nhỏ giúp solo work bền hơn, ít cô lập hơn.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Solo Developer",
+        "Reflection",
+        "Software Engineering",
+        "Career Growth",
+        "Sustainable Work",
+        "Decision Making"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "vector-databases-explained",
+      "category": "ai",
+      "title": "Vector database được giải thích dễ hiểu",
+      "summary": "Một bài giải thích dễ vào về vector database: embedding biểu diễn meaning như thế nào, vì sao similarity search hữu ích cho AI product, và team cần xử lý gì quanh chunking, metadata, freshness, evaluation và cost.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "Vector Database",
+        "Embeddings",
+        "Semantic Search",
+        "RAG",
+        "AI Product"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "fostering-innovation-in-teams",
+      "category": "culture",
+      "title": "Nuôi dưỡng innovation trong team",
+      "summary": "Một góc nhìn thực tế về cách nuôi dưỡng innovation trong engineering team: psychological safety, slack, user context, experiment nhỏ, technical quality và prioritization trung thực giúp ý tưởng trở thành thay đổi hữu ích.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Innovation",
+        "Team Trust",
+        "Leadership",
+        "Product Engineering",
+        "Continuous Improvement"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-outbox-pattern",
+      "category": "architecture",
+      "title": "Outbox Pattern",
+      "summary": "Một bài giải thích thực tế về Outbox Pattern: vì sao dual write dễ fail, cách transactional outbox giữ database state và event đi cùng nhau, và những phần team vẫn cần xử lý quanh retry, idempotency, ordering, cleanup và observability.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Outbox Pattern",
+        "Distributed Systems",
+        "Event-Driven Architecture",
+        "Reliability",
+        "Microservices"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "trunk-based-development",
       "category": "ways-of-working",
       "title": "Trunk-Based Development",

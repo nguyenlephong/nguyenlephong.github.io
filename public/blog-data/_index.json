@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "cross-functional-teams",
+      "category": "ways-of-working",
+      "title": "Cross-Functional Teams",
+      "summary": "A practical look at cross-functional teams: why they exist, how shared outcomes reduce handoff friction, and what teams need around ownership, rituals, decision-making, specialist depth, and healthy disagreement.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Cross-Functional Teams",
+        "Ways of Working",
+        "Product Engineering",
+        "Team Collaboration",
+        "Software Delivery",
+        "Ownership"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "loneliness-of-the-solo-developer",
+      "category": "perspectives",
+      "title": "The Loneliness of the Solo Developer",
+      "summary": "A reflective essay on solo development: the freedom and pressure of working alone, the missing feedback loops, and the small systems that make solo work more sustainable and less isolating.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Solo Developer",
+        "Reflection",
+        "Software Engineering",
+        "Career Growth",
+        "Sustainable Work",
+        "Decision Making"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "vector-databases-explained",
+      "category": "ai",
+      "title": "Vector Databases Explained",
+      "summary": "A beginner-friendly explanation of vector databases: how embeddings represent meaning, why similarity search helps AI products, and what teams need to handle around chunking, metadata, freshness, evaluation, and cost.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Vector Database",
+        "Embeddings",
+        "Semantic Search",
+        "RAG",
+        "AI Product"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "fostering-innovation-in-teams",
+      "category": "culture",
+      "title": "Fostering Innovation in Teams",
+      "summary": "A grounded reflection on fostering innovation in engineering teams: how psychological safety, slack, user context, small experiments, technical quality, and honest prioritization help ideas become useful change.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Innovation",
+        "Team Trust",
+        "Leadership",
+        "Product Engineering",
+        "Continuous Improvement"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-outbox-pattern",
+      "category": "architecture",
+      "title": "The Outbox Pattern",
+      "summary": "A practical explanation of the Outbox Pattern: why dual writes fail, how a transactional outbox keeps database state and events aligned, and what teams still need to handle around retries, idempotency, ordering, cleanup, and observability.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Outbox Pattern",
+        "Distributed Systems",
+        "Event-Driven Architecture",
+        "Reliability",
+        "Microservices"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "okrs-for-engineering-teams",
       "category": "ways-of-working",
       "title": "OKRs for Engineering Teams",
