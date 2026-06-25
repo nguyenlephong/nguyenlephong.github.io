@@ -65,6 +65,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.ok(existsSync("src/app/[locale]/studio/studio.shadow-styles.ts"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.data.ts"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.react-flow-architecture-demo.ts"));
+  assert.ok(existsSync("src/app/[locale]/studio/studio.react-flow-system-blueprint.ts"));
   assert.ok(existsSync("src/components/studio-kit/index.ts"));
   assert.ok(existsSync("src/components/studio-kit/shadow-island.tsx"));
   assert.ok(existsSync("src/components/studio-kit/README.md"));
@@ -91,6 +92,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     shadowIsland,
     kitReadme,
     architectureDemo,
+    systemBlueprintDemo,
     packageJson,
     enMessages,
     viMessages
@@ -112,6 +114,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/components/studio-kit/shadow-island.tsx", "utf8"),
     readFile("src/components/studio-kit/README.md", "utf8"),
     readFile("src/app/[locale]/studio/studio.react-flow-architecture-demo.ts", "utf8"),
+    readFile("src/app/[locale]/studio/studio.react-flow-system-blueprint.ts", "utf8"),
     readFile("package.json", "utf8"),
     readFile("messages/en.json", "utf8"),
     readFile("messages/vi.json", "utf8")
@@ -163,16 +166,17 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /maskStrokeColor/);
   assert.match(adminShell, /bgColor="var\(--flow-minimap-bg\)"/);
   assert.match(adminShell, /nodeColor="var\(--flow-minimap-node-fill\)"/);
-  assert.match(adminShell, /nodeStrokeWidth=\{2\.6\}/);
+  assert.match(adminShell, /nodeStrokeWidth=\{isBlueprintDiagram \? 1\.15 : 2\.6\}/);
+  assert.match(adminShell, /nodeBorderRadius=\{isBlueprintDiagram \? 4 : 8\}/);
   assert.match(adminShell, /fitViewOptions/);
   assert.match(adminShell, /function buildArchitectureDemoCanvas/);
   assert.match(adminShell, /function StudioFlowCanvasNodeCard/);
-  assert.match(adminShell, /function StudioFlowMiniMapOverlay/);
+  assert.match(adminShell, /const isBlueprintDiagram = flow\.id === "react-flow-system-blueprint"/);
   assert.match(adminShell, /isBoardFullscreen/);
   assert.match(adminShell, /studio_flow_board_fullscreen_toggle/);
   assert.match(adminShell, /flow-board-toolbar/);
   assert.match(adminShell, /flow-board-fullscreen-button/);
-  assert.match(adminShell, /flow-chart-surface\$\{isReactFlowDemo \? " is-architecture-demo" : ""\}\$\{isCompactDiagram \? " is-compact-diagram" : ""\}\$\{isBoardFullscreen \? " is-fullscreen" : ""\}/);
+  assert.match(adminShell, /flow-chart-surface\$\{isReactFlowDemo \? " is-architecture-demo" : ""\}\$\{isBlueprintDiagram \? " is-blueprint-diagram" : ""\}\$\{isCompactDiagram \? " is-compact-diagram" : ""\}\$\{isBoardFullscreen \? " is-fullscreen" : ""\}/);
   assert.match(adminShell, /function renderStudioFlowNodeIcon/);
   assert.match(adminShell, /const isCompactDiagram = nodes\.some/);
   assert.match(adminShell, /!\s*selectedFlow\.architectureDemo\s*&&\s*\(/);
@@ -180,6 +184,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /flow-example-toolbar/);
   assert.match(adminShell, /selectedViewId/);
   assert.match(adminShell, /routeId:\s*"flow-react-flow-architecture-demo"/);
+  assert.match(adminShell, /routeId:\s*"flow-react-flow-system-blueprint"/);
   assert.match(adminShell, /studioCopyByLocale/);
   assert.match(adminShell, /getStudioCopy/);
   assert.match(adminShell, /getLocalizedRouteDefinitions/);
@@ -243,6 +248,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(navGroupsBlock, /title:\s*"Flow Menu"/);
   assert.match(navGroupsBlock, /routeId:\s*"flow-react-flow-architecture-demo"/);
   assert.match(navGroupsBlock, /title:\s*"Example"/);
+  assert.match(navGroupsBlock, /routeId:\s*"flow-react-flow-system-blueprint"/);
+  assert.match(navGroupsBlock, /title:\s*"Blueprint"/);
   assert.doesNotMatch(navGroupsBlock, /subItems:\s*studioFlows\.map/);
   assert.doesNotMatch(navGroupsBlock, /flowRouteId\(flow\.id\)/);
   assert.doesNotMatch(navGroupsBlock, /System Design Interview Flow/);
@@ -272,11 +279,15 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /"flow-ai-delivery"/);
   assert.match(adminShell, /"flow-portfolio-story"/);
   assert.match(adminShell, /"flow-react-flow-architecture-demo"/);
+  assert.match(adminShell, /"flow-react-flow-system-blueprint"/);
   assert.match(adminShell, /"auth-login-v1"/);
   assert.match(adminShell, /function MailRoutePage/);
   assert.match(adminShell, /function ChatRoutePage/);
   assert.match(adminShell, /function AiAgentSetupPage/);
   assert.match(adminShell, /function AiSkillsPage/);
+  assert.match(adminShell, /className="skill-filter-control"/);
+  assert.match(adminShell, /className="skill-use-case"/);
+  assert.doesNotMatch(adminShell, /className="skill-side-pane"/);
   assert.match(adminShell, /function DeliveryChecklistsPage/);
   assert.match(adminShell, /function WelcomePage/);
   assert.doesNotMatch(adminShell, /function BlogRoadmapPage/);
@@ -290,6 +301,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /title:\s*"Welcome"/);
   assert.match(adminShell, /title:\s*"System Design Flow"/);
   assert.match(adminShell, /"flow-react-flow-architecture-demo":\s*"Example"/);
+  assert.match(adminShell, /"flow-react-flow-system-blueprint":\s*"Blueprint"/);
   assert.match(adminShell, /chartLabel:\s*"Flow chart"/);
   assert.match(adminShell, /Read the path from left to right/);
   assert.match(adminShell, /chartLabel:\s*"Sơ đồ flow"/);
@@ -424,7 +436,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /--flow-minimap-node-fill/);
   assert.match(shadowCss, /--flow-minimap-node-stroke/);
   assert.match(shadowCss, /\.flow-board-toolbar\b/);
-  assert.match(shadowCss, /\.flow-minimap-overlay\b/);
+  assert.doesNotMatch(shadowCss, /\.flow-minimap-overlay\b/);
   assert.match(shadowCss, /\.flow-example-toolbar\b/);
   assert.doesNotMatch(shadowCss, /\.flow-example-notes\b/);
   assert.match(shadowCss, /\.flow-react-node--hub\b/);
@@ -441,6 +453,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.flow-react-node\.is-compact\b/);
   assert.match(shadowCss, /\.flow-react-node-icon\b/);
   assert.match(shadowCss, /\.flow-react-surface\.is-architecture-demo\b/);
+  assert.match(shadowCss, /\.flow-react-surface\.is-architecture-demo\.is-blueprint-diagram\b/);
   assert.match(shadowCss, /\.flow-react-surface\.is-compact-diagram\b/);
   assert.match(shadowCss, /\.sidebar-brand-mark\b/);
   assert.match(shadowCss, /\.sidebar-badge\s*\{[^}]*display:\s*inline-flex/s);
@@ -466,7 +479,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.studio-main\s*\{[^}]*height:\s*calc\(100vh - 1\.5rem\)/s);
   assert.match(shadowCss, /\.dashboard-content\s*\{[^}]*overflow:\s*auto/s);
   assert.match(shadowCss, /\.ai-setup-container\.card\s*\{[^}]*height:\s*clamp/s);
-  assert.match(shadowCss, /\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card\s*\{[^}]*height:\s*clamp/s);
+  assert.match(shadowCss, /\.skill-library-workbench\.card\s*\{[^}]*grid-template-columns:\s*minmax\(21rem,\s*0\.34fr\) minmax\(0,\s*1fr\);[^}]*height:\s*clamp/s);
+  assert.match(shadowCss, /\.checklist-workbench\.card\s*\{[^}]*grid-template-columns:\s*18rem minmax\(0,\s*1fr\) 18rem;[^}]*height:\s*clamp/s);
   assert.match(shadowCss, /\.flow-workbench\.card\s*\{[^}]*grid-template-columns:\s*19rem minmax\(0,\s*1fr\) 19rem/s);
   assert.match(shadowCss, /\.flow-workbench\.card\.is-architecture-demo\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\);[^}]*border:\s*0;[^}]*background:\s*transparent;[^}]*box-shadow:\s*none/s);
   assert.match(shadowCss, /\.flow-workbench\.card\.is-architecture-demo \.flow-reader-pane\s*\{[^}]*overflow:\s*visible;[^}]*padding:\s*0/s);
@@ -585,17 +599,20 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "Release Readiness Flow",
     "AI-Assisted Delivery Flow",
     "Portfolio Story Flow",
+    "System Design Blueprint",
     "A product manager asks for a new partner onboarding flow.",
     "A team debates whether to add a queue for partner sync.",
     "checkout latency climbs",
     "dashboard filter with analytics and SEO changes",
     "AI agent helps with coding",
-    "CV bullet, STAR answer, blog outline, or case-study draft"
+    "CV bullet, STAR answer, blog outline, or case-study draft",
+    "poster-style architecture map"
   ]) {
     assert.match(data, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
   assert.match(data, /architectureDemo:\s*reactFlowArchitectureDemo/);
-  assert.match(data, /flowIds:\s*\["react-flow-architecture-demo"\]/);
+  assert.match(data, /architectureDemo:\s*reactFlowSystemBlueprintDemo/);
+  assert.match(data, /flowIds:\s*\["react-flow-architecture-demo", "react-flow-system-blueprint"\]/);
 
   for (const expected of [
     "getLocalizedStudioAiSkills",
@@ -615,12 +632,14 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "Flow System Design",
     "React Flow",
     "Example",
+    "System Design Blueprint",
     "Đổi các dạng example trước khi chọn sơ đồ",
     "onboarding đối tác",
     "release readiness",
     "support noise",
     "Catalog node shape React Flow",
     "Canvas software architecture",
+    "Blueprint system design lớn bằng React Flow",
     "isVietnameseLocale"
   ]) {
     assert.match(localizedContent, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
@@ -686,6 +705,32 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "animated publish"
   ]) {
     assert.match(architectureDemo, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+
+  for (const expected of [
+    "reactFlowSystemBlueprintDemo",
+    "Full system blueprint",
+    "DNS resolution",
+    "Client request and edge policy",
+    "Load balancing and runtime",
+    "Coordination primitives",
+    "Databases and cache",
+    "Upload media pipeline",
+    "Common fan-out services",
+    "Recursive resolver",
+    "Authoritative NS",
+    "API Gateway",
+    "Load Balancer",
+    "Backend cluster",
+    "Object Storage",
+    "Processing Workers",
+    "Message Queue",
+    "Notification Service",
+    "Payment Charge",
+    "animated: true",
+    "defaultViewId: \"blueprint-full\""
+  ]) {
+    assert.match(systemBlueprintDemo, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
 
   const platformBounds = parseLayeredPlatformBounds(architectureDemo);
