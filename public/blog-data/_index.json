@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "trunk-based-development",
+      "category": "ways-of-working",
+      "title": "Trunk-Based Development",
+      "summary": "A practical introduction to trunk-based development: small frequent merges, feature flags, fast tests, code review discipline, and the team habits needed to keep the main branch healthy.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Trunk-Based Development",
+        "Continuous Integration",
+        "Feature Flags",
+        "Software Delivery",
+        "Code Review",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "overcoming-analysis-paralysis",
+      "category": "perspectives",
+      "title": "Overcoming Analysis Paralysis",
+      "summary": "A reflective essay on analysis paralysis: why careful thinking can turn into delay, how to separate reversible from irreversible choices, and how small experiments help decisions move without rushing.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Decision Making",
+        "Reflection",
+        "Career Growth",
+        "Software Engineering",
+        "Learning",
+        "Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "reducing-hallucinations-in-llms",
+      "category": "ai",
+      "title": "Reducing Hallucinations in LLMs",
+      "summary": "A practical guide to reducing LLM hallucinations with clearer tasks, bounded context, retrieval, citations, verification, refusals, evaluation sets, and product design that makes uncertainty visible.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Hallucinations",
+        "RAG",
+        "AI Product",
+        "Evaluation"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "mentorship-vs-sponsorship",
+      "category": "culture",
+      "title": "The Difference Between Mentorship and Sponsorship",
+      "summary": "A calm explanation of mentorship and sponsorship in engineering careers: how advice, feedback, advocacy, visibility, trust, and opportunity work together without turning growth into politics.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Mentorship",
+        "Sponsorship",
+        "Career Growth",
+        "Leadership",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "event-sourcing-beginners-guide",
+      "category": "architecture",
+      "title": "Event Sourcing: A Beginner's Guide",
+      "summary": "A beginner-friendly guide to Event Sourcing: storing facts as an append-only event history, rebuilding current state through projections, and understanding when the pattern is worth its operational cost.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Event Sourcing",
+        "Event-Driven Architecture",
+        "CQRS",
+        "System Design",
+        "Data Modeling"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "tdd-is-it-worth-the-time",
       "category": "ways-of-working",
       "title": "TDD: Is It Worth the Time?",

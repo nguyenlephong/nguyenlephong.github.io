@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "trunk-based-development",
+      "category": "ways-of-working",
+      "title": "Trunk-Based Development",
+      "summary": "Một bài nhập môn thực tế về trunk-based development: merge nhỏ và thường xuyên, feature flag, test nhanh, code review discipline và thói quen team cần có để giữ main branch khỏe.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Trunk-Based Development",
+        "Continuous Integration",
+        "Feature Flags",
+        "Software Delivery",
+        "Code Review",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "overcoming-analysis-paralysis",
+      "category": "perspectives",
+      "title": "Vượt qua analysis paralysis",
+      "summary": "Một bài reflection về analysis paralysis: vì sao suy nghĩ cẩn thận có thể biến thành trì hoãn, cách tách decision reversible và irreversible, và cách experiment nhỏ giúp quyết định di chuyển mà không hấp tấp.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Decision Making",
+        "Reflection",
+        "Career Growth",
+        "Software Engineering",
+        "Learning",
+        "Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "reducing-hallucinations-in-llms",
+      "category": "ai",
+      "title": "Giảm hallucination trong LLM",
+      "summary": "Một hướng dẫn thực tế để giảm hallucination trong LLM bằng task rõ hơn, context có giới hạn, retrieval, citation, verification, refusal, evaluation set và product design làm uncertainty nhìn thấy được.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "LLM",
+        "Hallucination",
+        "RAG",
+        "AI Product",
+        "Evaluation"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "mentorship-vs-sponsorship",
+      "category": "culture",
+      "title": "Mentorship và sponsorship khác nhau thế nào?",
+      "summary": "Một bài giải thích bình tĩnh về mentorship và sponsorship trong career engineering: advice, feedback, advocacy, visibility, trust và opportunity phối hợp với nhau thế nào mà không biến growth thành chính trị.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Mentorship",
+        "Sponsorship",
+        "Career Growth",
+        "Leadership",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "event-sourcing-beginners-guide",
+      "category": "architecture",
+      "title": "Event Sourcing cho người mới bắt đầu",
+      "summary": "Một bài nhập môn về Event Sourcing: lưu các sự kiện như lịch sử append-only, dựng current state bằng projection, và hiểu khi nào pattern này đáng với chi phí vận hành.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Event Sourcing",
+        "Event-Driven Architecture",
+        "CQRS",
+        "System Design",
+        "Data Modeling"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "tdd-is-it-worth-the-time",
       "category": "ways-of-working",
       "title": "TDD có đáng thời gian không?",
