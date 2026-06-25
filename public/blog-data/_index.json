@@ -2209,7 +2209,7 @@
       "category": "architecture",
       "title": "Database Sharding: When and Why",
       "summary": "A practical explanation of database sharding: what changes when one database is split into smaller partitions, when sharding is worth the operational cost, and why shard keys, hotspots, rebalancing, and observability matter.",
-      "date": "2026-06-25",
+      "date": "2026-01-20",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
