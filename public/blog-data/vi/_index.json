@@ -2247,7 +2247,7 @@
       "category": "ways-of-working",
       "title": "Shift-left security",
       "summary": "Một bài giải thích thực tế về shift-left security: đưa threat thinking, dependency check, secrets hygiene, secure default và review habit vào sớm hơn trong delivery mà không biến mọi engineer thành security specialist.",
-      "date": "2026-06-25",
+      "date": "2026-01-11",
       "readingMinutes": 7,
       "tags": [
         "Shift-Left Security",
