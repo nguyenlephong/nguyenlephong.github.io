@@ -19,6 +19,7 @@ import {
   loadNote
 } from "@/lib/notes/data";
 import { buildNotesTopicHref } from "@/lib/notes/urls";
+import { noteOgImageUrl } from "@/lib/og/static-images";
 import BlogContent from "@/components/blog/BlogContent";
 import BlogToc from "@/components/blog/BlogToc";
 import BlogViewCount from "@/components/blog/BlogViewCount";
@@ -55,7 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = note.title;
   const description = note.summary || buildDescription(note.html);
   const canonical = canonicalFor(locale, `/notes/${slug}`);
-  const imageUrl = canonicalFor(locale, `/notes/${slug}/opengraph-image`);
+  const imageUrl = noteOgImageUrl(slug);
   const languages = localeAlternates(`/notes/${slug}`);
 
   return {
@@ -98,7 +99,7 @@ export default async function NotePage({ params }: Props) {
 
   const t = await getTranslations({ locale, namespace: "Pages.notes" });
   const canonical = canonicalFor(locale, `/notes/${slug}`);
-  const imageUrl = canonicalFor(locale, `/notes/${slug}/opengraph-image`);
+  const imageUrl = noteOgImageUrl(slug);
   const description = note.summary || buildDescription(note.html);
 
   const topic = note.topic ? getTopic(note.topic, locale) : null;

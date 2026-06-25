@@ -20,6 +20,7 @@ import {
   loadPost,
 } from '@/lib/blog/data'
 import { getRelatedPosts } from '@/lib/blog/related'
+import { blogPostOgImageUrl } from '@/lib/og/static-images'
 import BlogContent from '@/components/blog/BlogContent'
 import BlogToc from '@/components/blog/BlogToc'
 import BlogReadingTracker from '@/components/blog/BlogReadingTracker'
@@ -59,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = post.title
   const description = post.summary || buildDescription(post.html)
   const canonical = canonicalFor(locale, `/blog/${category}/${slug}`)
-  const imageUrl = canonicalFor(locale, `/blog/${category}/${slug}/opengraph-image`)
+  const imageUrl = blogPostOgImageUrl(slug)
   const languages = localeAlternates(`/blog/${category}/${slug}`)
 
   return {
@@ -116,7 +117,7 @@ export default async function BlogPostPage({ params }: Props) {
   const series = getSeriesContext(slug, locale)
   const t = await getTranslations({ locale, namespace: 'Pages.blog' })
   const canonical = canonicalFor(locale, `/blog/${category}/${slug}`)
-  const imageUrl = canonicalFor(locale, `/blog/${category}/${slug}/opengraph-image`)
+  const imageUrl = blogPostOgImageUrl(slug)
   const description = post.summary || buildDescription(post.html)
   const relatedPosts = getRelatedPosts(post, listPosts(locale))
   const relatedItems = relatedPosts.map((relatedPost) => {
@@ -148,10 +149,7 @@ export default async function BlogPostPage({ params }: Props) {
       '@type': 'BlogPosting',
       headline: relatedPost.title,
       url: canonicalFor(locale, `/blog/${relatedPost.category}/${relatedPost.slug}`),
-      image: canonicalFor(
-        locale,
-        `/blog/${relatedPost.category}/${relatedPost.slug}/opengraph-image`,
-      ),
+      image: blogPostOgImageUrl(relatedPost.slug),
     })),
     isPartOf: {
       '@type': 'Blog',

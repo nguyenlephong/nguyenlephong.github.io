@@ -76,6 +76,4 @@ const summary =
 
 console.log(`[build-og] ${summary}`)
 run(nextBin, ['build', '--turbopack'], env)
-const postbuildArgs = ['scripts/postbuild-og.mjs']
-if (mode !== 'full') postbuildArgs.push('--restore-cache')
-run(process.execPath, postbuildArgs, env)
+run(process.execPath, ['scripts/postbuild-og.mjs'], env)
