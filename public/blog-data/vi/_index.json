@@ -2337,7 +2337,7 @@
       "category": "ways-of-working",
       "title": "Behavior-Driven Development (BDD)",
       "summary": "Một bài reflection thực tế về Behavior-Driven Development: cách example, shared language và Given-When-Then scenario giúp product, QA và engineering cùng hiểu nhau khi team xem BDD là conversation trước, automation sau.",
-      "date": "2026-06-25",
+      "date": "2026-01-06",
       "readingMinutes": 7,
       "tags": [
         "BDD",
