@@ -1351,7 +1351,7 @@
       "category": "architecture",
       "title": "Monolith, Modular Monolith hay Microservices: chọn theo giai đoạn, không theo trend",
       "summary": "Microservices không phải điểm xuất phát bắt buộc, mà thường là cái giá phải trả khi team và hệ thống đã đủ lớn. Bài này đi qua hành trình từ monolith, modular monolith đến microservices, với các dấu hiệu thực tế giúp bạn biết khi nào nên tách, khi nào nên giữ lại, và khi nào chỉ đang đổi sự đơn giản lấy thêm vận hành.",
-      "date": "2026-05-29",
+      "date": "2026-03-03",
       "readingMinutes": 16,
       "tags": [
         "Kiến trúc phần mềm",

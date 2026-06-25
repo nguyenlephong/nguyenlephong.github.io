@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Monolith, Modular Monolith, Microservices: An Honest Decision Guide",
   "summary": "Microservices are a tax you pay for organisational scale — not a starting point. A no-hype walk from monolith to modular monolith to microservices, with the signals that tell you when (and whether) to split.",
-  "date": "2026-05-29",
+  "date": "2026-03-03",
   "readingMinutes": 16,
   "tags": [
     "Software Architecture",

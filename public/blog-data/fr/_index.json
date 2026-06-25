@@ -168,7 +168,7 @@
       "category": "architecture",
       "title": "Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête",
       "summary": "Les microservices sont une taxe que vous payez pour la mise à l'échelle organisationnelle — pas un point de départ. Un parcours sans fioriture du monolithe au monolithe modulaire puis aux microservices, avec les signaux qui vous disent quand (et si) diviser.",
-      "date": "2026-05-29",
+      "date": "2026-03-03",
       "readingMinutes": 16,
       "tags": [
         "Architecture logicielle",

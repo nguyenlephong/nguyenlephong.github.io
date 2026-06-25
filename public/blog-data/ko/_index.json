@@ -168,7 +168,7 @@
       "category": "architecture",
       "title": "모놀리스, Modular Monolith, 마이크로서비스: 솔직한 의사결정 가이드",
       "summary": "마이크로서비스는 출발점이 아니라 조직 규모에 대해 지불하는 세금입니다. 모놀리스에서 Modular Monolith, 마이크로서비스까지의 과장 없는 여정 — 언제(그리고 분리할지 여부를) 알려주는 신호와 함께.",
-      "date": "2026-05-29",
+      "date": "2026-03-03",
       "readingMinutes": 16,
       "tags": [
         "소프트웨어 아키텍처",
