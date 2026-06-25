@@ -506,7 +506,7 @@
       "category": "architecture",
       "title": "Hexagonal Architecture in Practice",
       "summary": "A practical guide to applying Hexagonal Architecture to one small feature: drawing the boundary, naming ports in business language, keeping adapters at the edge, testing the core, and deciding when the extra structure is worth the cost.",
-      "date": "2026-06-24",
+      "date": "2026-04-22",
       "readingMinutes": 7,
       "tags": [
         "Software Architecture",

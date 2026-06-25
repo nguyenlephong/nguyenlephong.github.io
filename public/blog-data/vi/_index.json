@@ -421,7 +421,7 @@
       "category": "architecture",
       "title": "Áp dụng Hexagonal Architecture vào một feature nhỏ",
       "summary": "Một hướng dẫn thực tế về cách áp dụng Hexagonal Architecture cho một feature nhỏ: vẽ boundary, đặt tên port bằng ngôn ngữ business, giữ adapter ở rìa hệ thống, test phần core, và biết khi nào pattern này đáng với chi phí của nó.",
-      "date": "2026-06-24",
+      "date": "2026-04-22",
       "readingMinutes": 8,
       "tags": [
         "Software Architecture",
