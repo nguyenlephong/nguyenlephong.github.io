@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Caching: chiến lược và những cái bẫy dễ gặp",
   "summary": "Một bài giải thích thực tế về caching: cache giúp ở đâu, cache-aside, read-through, write-through, TTL và invalidation khác nhau thế nào, và vì sao stale data, cache stampede, key design cùng observability quan trọng không kém tốc độ.",
-  "date": "2026-06-25",
+  "date": "2026-01-25",
   "readingMinutes": 7,
   "tags": [
     "Software Architecture",
