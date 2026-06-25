@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Timeout, Retry, Circuit Breaker và Idempotency: bộ kỹ năng sống còn của distributed systems",
   "summary": "Một lời gọi ra khỏi process có thể chậm, lỗi, timeout, hoặc chạy hai lần. Đó không phải chuyện hiếm, mà là đời sống bình thường của distributed systems. Bài này gom lại những kỹ thuật giúp hệ thống bền hơn: timeout, retry với backoff và jitter, idempotency, circuit breaker, bulkhead, graceful degradation và observability.",
-  "date": "2026-06-03",
+  "date": "2026-04-09",
   "readingMinutes": 14,
   "tags": [
     "Software Architecture",

@@ -731,7 +731,7 @@
       "category": "architecture",
       "title": "The Distributed-Systems Tax, Paid: Timeouts, Retries, Circuit Breakers, and Idempotency",
       "summary": "The moment a call leaves your process it can be slow, fail, or happen twice — and that is the normal case, not the exception. The resilience toolkit, explained plainly: why timeouts come first, how retries become a self-inflicted DDoS without backoff and jitter, why idempotency is the price of retrying, and how circuit breakers, bulkheads, graceful degradation, and observability keep one bad dependency from taking down everything.",
-      "date": "2026-06-03",
+      "date": "2026-04-09",
       "readingMinutes": 13,
       "tags": [
         "Software Architecture",
