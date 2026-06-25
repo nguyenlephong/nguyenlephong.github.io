@@ -370,7 +370,7 @@
       "category": "architecture",
       "title": "The Saga Pattern for Distributed Transactions",
       "summary": "A practical explanation of the Saga pattern for distributed transactions: why one database transaction stops working across services, how orchestration and choreography differ, and why compensation, observability, and idempotency matter.",
-      "date": "2026-06-24",
+      "date": "2026-04-30",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
