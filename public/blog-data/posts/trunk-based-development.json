@@ -3,7 +3,7 @@
   "category": "ways-of-working",
   "title": "Trunk-Based Development",
   "summary": "A practical introduction to trunk-based development: small frequent merges, feature flags, fast tests, code review discipline, and the team habits needed to keep the main branch healthy.",
-  "date": "2026-06-25",
+  "date": "2026-05-09",
   "readingMinutes": 6,
   "tags": [
     "Trunk-Based Development",

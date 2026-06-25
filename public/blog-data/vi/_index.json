@@ -132,7 +132,7 @@
       "category": "ways-of-working",
       "title": "Trunk-Based Development",
       "summary": "Một bài nhập môn thực tế về trunk-based development: merge nhỏ và thường xuyên, feature flag, test nhanh, code review discipline và thói quen team cần có để giữ main branch khỏe.",
-      "date": "2026-06-25",
+      "date": "2026-05-09",
       "readingMinutes": 7,
       "tags": [
         "Trunk-Based Development",
