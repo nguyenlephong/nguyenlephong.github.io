@@ -3,7 +3,7 @@
   "category": "ways-of-working",
   "title": "Continuous Integration và Continuous Delivery khác nhau thế nào?",
   "summary": "Một bài giải thích thực tế về Continuous Integration và Continuous Delivery: CI bảo vệ shared code ra sao, CD giữ release luôn sẵn sàng thế nào, và vì sao test, trunk habit, feature flag cùng deployment discipline rất quan trọng.",
-  "date": "2026-06-25",
+  "date": "2026-01-16",
   "readingMinutes": 7,
   "tags": [
     "Continuous Integration",

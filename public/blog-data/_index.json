@@ -2281,7 +2281,7 @@
       "category": "ways-of-working",
       "title": "Continuous Integration vs. Continuous Delivery",
       "summary": "A practical explanation of Continuous Integration and Continuous Delivery: how CI protects shared code, how CD keeps releases ready, and why tests, trunk habits, feature flags, and deployment discipline matter.",
-      "date": "2026-06-25",
+      "date": "2026-01-16",
       "readingMinutes": 6,
       "tags": [
         "Continuous Integration",
