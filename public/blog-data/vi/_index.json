@@ -665,7 +665,7 @@
       "category": "architecture",
       "title": "Scale database theo đúng thứ tự: Index, Read Replica, Cache rồi mới tới Sharding",
       "summary": "Khi traffic tăng, database thường là nơi kêu cứu đầu tiên. Nhưng không phải cứ chậm là lao vào sharding. Bài này đưa ra một nấc thang thực tế để scale data layer: đo trước, thêm index, dùng read replica, cache đúng chỗ, hiểu replication lag và chỉ đụng tới partitioning hoặc sharding khi thật sự đã đến lúc.",
-      "date": "2026-06-04",
+      "date": "2026-04-08",
       "readingMinutes": 15,
       "tags": [
         "Software Architecture",
