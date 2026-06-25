@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Rate Limiting and Throttling",
   "summary": "A practical explanation of rate limiting and throttling: how systems protect shared capacity, shape traffic, communicate limits clearly, and keep overload from turning into a full outage.",
-  "date": "2026-06-25",
+  "date": "2026-01-05",
   "readingMinutes": 6,
   "tags": [
     "Software Architecture",
