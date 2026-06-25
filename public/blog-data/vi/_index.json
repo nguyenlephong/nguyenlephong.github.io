@@ -1389,7 +1389,7 @@
       "category": "culture",
       "title": "Code review tử tế: góp ý để code tốt hơn và người viết vẫn muốn tiến lên",
       "summary": "Code review không chỉ là tìm lỗi. Đó là nơi team học cách nói chuyện về chất lượng, trade-off và tiêu chuẩn chung. Bài này đưa ra cách review rõ ràng mà không làm người viết chùn bước: góp ý cụ thể, phân biệt blocker với suggestion, hỏi trước khi kết luận, và giữ cho review trở thành nơi code lẫn con người cùng tốt lên.",
-      "date": "2026-05-29",
+      "date": "2026-03-01",
       "readingMinutes": 14,
       "tags": [
         "Văn hoá kỹ thuật",

@@ -33,5 +33,6 @@
       "q": "Quelle taille devrait avoir une pull request ?",
       "a": "Moins de 200 lignes modifiées est le point idéal pour des revues de haute qualité. À cette taille, un relecteur peut garder le changement en mémoire de travail et repérer les problèmes subtils. Les PRs de plus de 500 lignes connaissent une qualité de revue fortement déclinante — les relecteurs survolent, la fatigue s'installe et les problèmes critiques passent inaperçus. Pour les grandes fonctionnalités, utilisez des PRs empilées : une série de petits changements autonomes qui racontent chacun une histoire claire."
     }
-  ]
+  ],
+  "date": "2026-03-01"
 }
