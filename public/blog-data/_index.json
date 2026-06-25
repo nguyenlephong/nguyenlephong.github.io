@@ -693,7 +693,7 @@
       "category": "architecture",
       "title": "Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained",
       "summary": "When services hold hands through synchronous calls, latency adds up and one slow dependency takes down checkout. A no-hype guide to event-driven architecture: sync vs async, commands vs events, what brokers really promise (at-least-once, not exactly-once), choreography vs orchestration, and exactly when NOT to reach for events.",
-      "date": "2026-06-03",
+      "date": "2026-04-11",
       "readingMinutes": 13,
       "tags": [
         "Software Architecture",

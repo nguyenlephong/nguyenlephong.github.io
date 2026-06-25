@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn",
   "summary": "Khi service nào cũng gọi trực tiếp service khác, một dependency chậm có thể kéo cả checkout đi xuống. Bài này giải thích event-driven architecture bằng cách gần gũi: khi nào nên dùng sync hay async, command khác event ra sao, message broker thật sự bảo đảm điều gì, choreography và orchestration khác nhau thế nào, và lúc nào events chỉ làm hệ thống rối hơn.",
-  "date": "2026-06-03",
+  "date": "2026-04-11",
   "readingMinutes": 15,
   "tags": [
     "Software Architecture",
