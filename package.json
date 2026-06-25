@@ -21,7 +21,7 @@
     "predeploy": "node scripts/bump-version.mjs && bun run build",
     "fb-deploy": "firebase deploy",
     "deploy": "bun run deploy:out",
-    "deploy:out": "touch ./out/.nojekyll && gh-pages -d out -t true",
+    "deploy:out": "node scripts/deploy-pages.mjs",
     "deploy:fast": "node scripts/bump-version.mjs && bun run build && bun run deploy:out"
   },
   "lint-staged": {
