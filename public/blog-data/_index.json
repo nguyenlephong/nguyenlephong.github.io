@@ -2191,7 +2191,7 @@
       "category": "ways-of-working",
       "title": "Feature Flags for Safer Deployments",
       "summary": "A practical reflection on feature flags: how they decouple deploy from release, support gradual rollout and kill switches, and what teams must do to avoid flag debt, hidden complexity, and weak observability.",
-      "date": "2026-06-25",
+      "date": "2026-01-21",
       "readingMinutes": 6,
       "tags": [
         "Feature Flags",

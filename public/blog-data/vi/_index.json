@@ -2067,7 +2067,7 @@
       "category": "ways-of-working",
       "title": "Feature flag để deploy an toàn hơn",
       "summary": "Một bài nhìn thực tế về feature flag: cách chúng tách deploy khỏi release, hỗ trợ rollout từ từ và kill switch, đồng thời những việc team phải làm để tránh flag debt, hidden complexity và observability yếu.",
-      "date": "2026-06-25",
+      "date": "2026-01-21",
       "readingMinutes": 7,
       "tags": [
         "Feature Flags",
