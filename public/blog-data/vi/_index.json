@@ -115,7 +115,7 @@
       "category": "architecture",
       "title": "Outbox Pattern",
       "summary": "Một bài giải thích thực tế về Outbox Pattern: vì sao dual write dễ fail, cách transactional outbox giữ database state và event đi cùng nhau, và những phần team vẫn cần xử lý quanh retry, idempotency, ordering, cleanup và observability.",
-      "date": "2026-06-25",
+      "date": "2026-05-15",
       "readingMinutes": 7,
       "tags": [
         "Software Architecture",

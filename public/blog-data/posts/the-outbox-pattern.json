@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "The Outbox Pattern",
   "summary": "A practical explanation of the Outbox Pattern: why dual writes fail, how a transactional outbox keeps database state and events aligned, and what teams still need to handle around retries, idempotency, ordering, cleanup, and observability.",
-  "date": "2026-06-25",
+  "date": "2026-05-15",
   "readingMinutes": 6,
   "tags": [
     "Software Architecture",
