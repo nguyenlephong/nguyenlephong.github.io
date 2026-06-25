@@ -370,7 +370,7 @@
       "category": "architecture",
       "title": "API Gateway Patterns",
       "summary": "Một góc nhìn thực tế về trách nhiệm của API gateway: routing, authentication boundary, rate limiting, request aggregation, trade-off của backend-for-frontend, failure mode và observability cần có để vận hành edge của hệ thống rõ ràng hơn.",
-      "date": "2026-06-24",
+      "date": "2026-04-25",
       "readingMinutes": 7,
       "tags": [
         "Software Architecture",
