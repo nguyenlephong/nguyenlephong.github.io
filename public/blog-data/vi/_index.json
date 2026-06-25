@@ -2301,7 +2301,7 @@
       "category": "ai",
       "title": "AI cho refactor code",
       "summary": "Một bài nhìn thực tế về cách dùng AI cho code refactoring: AI giúp map code, tạo option, gợi ý test và thay đổi cơ học ở đâu, đồng thời vì sao engineer vẫn cần boundary, evidence và verification trước khi tin kết quả.",
-      "date": "2026-06-25",
+      "date": "2026-01-08",
       "readingMinutes": 7,
       "tags": [
         "AI",
