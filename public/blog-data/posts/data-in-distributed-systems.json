@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears",
   "summary": "Splitting code is the easy half — splitting data is where distributed systems humble you. A practical guide to owning data across services: why a shared database is a distributed monolith, the trade from ACID to eventual consistency, the dual-write bug and the outbox that fixes it, sagas with compensating actions, and when CQRS and event sourcing are worth their lifetime cost.",
-  "date": "2026-06-03",
+  "date": "2026-04-10",
   "readingMinutes": 13,
   "tags": [
     "Software Architecture",
