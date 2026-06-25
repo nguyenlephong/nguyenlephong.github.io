@@ -43,3 +43,6 @@ tsconfig.tsbuildinfo
 create_tickets.sh
 issues.json
 thread.json
+
+
+plan/

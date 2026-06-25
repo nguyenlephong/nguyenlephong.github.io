@@ -1710,7 +1710,7 @@ const vietnameseFlowGroupCopies: Record<string, LocalizedFlowGroupCopy> = {
     title: "React Flow",
     subtitle: "Đổi các dạng example trước khi chọn sơ đồ.",
     description:
-      "Một showcase React Flow cho nhiều nhóm example: node mặc định, custom architecture shape, grouping, layout, validation, annotation, edge style, label, marker, minimap, control và background."
+      "Một showcase React Flow cho nhiều nhóm example: node mặc định, custom architecture shape, grouping, layout, validation, annotation, edge style, label, marker, minimap, control, background và blueprint hệ thống lớn."
   }
 };
 
@@ -2076,6 +2076,55 @@ const vietnameseFlowCopies: Record<string, LocalizedFlowCopy> = {
       "Architecture template tái dùng"
     ],
     cvSignals: ["React Flow implementation", "Software architecture visualization", "Diagram system design", "Platform communication"]
+  },
+  "react-flow-system-blueprint": {
+    title: "System Design Blueprint",
+    summary:
+      "Một bản đồ system design cỡ poster bằng React Flow, thể hiện DNS, edge policy, load balancing, backend service, cache, data store, media queue, worker và fan-out service.",
+    seoTitle: "React Flow System Design Blueprint Example",
+    seoDescription:
+      "Blueprint system design lớn bằng React Flow với architecture zone được group, custom node, edge có label, async path có animation, minimap, control và focused view.",
+    useWhen:
+      "Dùng khi cần chứng minh React Flow có thể gánh diagram system design dày đặc như poster kỹ thuật, không chỉ workflow chart nhỏ.",
+    outcome:
+      "Một architecture canvas mạnh nhưng vẫn inspect được: overview cho toàn cảnh, focused view cho DNS, runtime, storage, media processing và fan-out.",
+    officeExample:
+      "Một team muốn có một poster kiến trúc cho buổi review. Example này giữ diagram tương tác được, zoom được và tách được theo zone thay vì đóng băng thành ảnh tĩnh.",
+    tags: ["React Flow", "System Design", "Blueprint", "Distributed Systems", "Media Pipeline"],
+    steps: {
+      "map-edge-entry": {
+        title: "Map edge entry",
+        detail: "Cho thấy domain lookup, resolver, CDN, request metadata, security policy và API gateway nối với nhau trước khi traffic vào service.",
+        evidence: "DNS record, edge cache behavior, header, auth token, WAF policy, request ID và response metadata.",
+        output: "Ingress path rõ ràng để đọc được hành trình request."
+      },
+      "show-runtime-topology": {
+        title: "Hiện runtime topology",
+        detail: "Tách load balancing, frontend server, backend service, message dispatch và connection ownership thành các vùng dễ đọc.",
+        evidence: "Balancing strategy, connection table, live session transport, server ownership và routing rule.",
+        output: "Runtime zone giải thích traffic được nhận, route và dispatch ở đâu."
+      },
+      "surface-coordination": {
+        title: "Đưa coordination lên bề mặt",
+        detail: "Biến distributed ID, lock, concurrency choice và metadata table thành thành phần chính của diagram.",
+        evidence: "ID strategy, lock provider, retry model, checksum, timestamp, server mapping và object pointer.",
+        output: "Coordination layer cho thấy write và streaming chunk ổn định bằng cách nào."
+      },
+      "trace-storage-media": {
+        title: "Trace storage và media",
+        detail: "Nối database chính, shard, replica, cache, object storage, queue, processing worker và encoded output.",
+        evidence: "Storage type, cache policy, queue depth, worker cost, checksum validation và compression output.",
+        output: "Data và media pipeline có thể inspect ngay trong canvas."
+      },
+      "fan-out-downstream": {
+        title: "Fan out downstream",
+        detail: "Hiện các consumer như notification, recommendation, log processing, search, analytics và payment charge.",
+        evidence: "Pub/sub topic, idempotent key, blocked card, service-down state và third-party dependency.",
+        output: "Fan-out zone làm rõ secondary effect thay vì giấu sau một box."
+      }
+    },
+    artifacts: ["Full blueprint canvas", "DNS and request path view", "Runtime and balancing view", "Storage and coordination view", "Media upload and fan-out view"],
+    cvSignals: ["React Flow advanced usage", "System design depth", "Distributed systems vocabulary", "Architecture communication"]
   }
 };
 

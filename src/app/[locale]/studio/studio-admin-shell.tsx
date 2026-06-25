@@ -157,6 +157,7 @@ type StudioRouteId =
   | "flow-ai-delivery"
   | "flow-portfolio-story"
   | "flow-react-flow-architecture-demo"
+  | "flow-react-flow-system-blueprint"
   | "calendar"
   | "kanban"
   | "invoice"
@@ -539,6 +540,7 @@ type StudioUiCopy = {
     skillLibrary: string;
     skillLibraryDetail: string;
     categoriesLabel: string;
+    skillCountLabel: (count: number) => string;
     selectedSkill: string;
     skillTags: string;
     useThisWhen: string;
@@ -605,7 +607,8 @@ const englishStudioCopy: StudioUiCopy = {
     "flow-release-readiness": "Release Readiness",
     "flow-ai-delivery": "AI Delivery",
     "flow-portfolio-story": "Portfolio Story",
-    "flow-react-flow-architecture-demo": "Example"
+    "flow-react-flow-architecture-demo": "Example",
+    "flow-react-flow-system-blueprint": "Blueprint"
   },
   profileItems: {
     home: { label: "Home", detail: "Profile overview." },
@@ -716,6 +719,12 @@ const englishStudioCopy: StudioUiCopy = {
       description: "A library-style React Flow canvas with dropdown views for overview, interaction, grouping, layout, styling, whiteboard, and software architecture examples.",
       panels: ["Example selector", "Canvas gallery", "Architecture zones"],
       timeline: ["Example families mapped", "Dropdown views wired", "Canvas controls enabled"]
+    },
+    "flow-react-flow-system-blueprint": {
+      title: "System Design Blueprint",
+      description: "A dense React Flow blueprint that maps DNS, edge policy, load balancing, storage, media processing, queues, and fan-out services.",
+      panels: ["Full blueprint", "Focused views", "Production vocabulary"],
+      timeline: ["DNS path mapped", "Runtime and storage linked", "Media fan-out modeled"]
     }
   },
   welcome: {
@@ -729,7 +738,8 @@ const englishStudioCopy: StudioUiCopy = {
       "ai-agent-setup": { label: "AI Setup", detail: "Machine notes, MCP paths, and personal agent setup references." },
       "ai-skills": { label: "AI Skills", detail: "Reusable prompts and operating rules for focused agent sessions." },
       "delivery-checklists": { label: "Checklists", detail: "Working checklists for task intake, release readiness, and rollout." },
-      "flow-react-flow-architecture-demo": { label: "Example", detail: "React Flow examples for architecture, layout, grouping, styling, and interactions." }
+      "flow-react-flow-architecture-demo": { label: "Example", detail: "React Flow examples for architecture, layout, grouping, styling, and interactions." },
+      "flow-react-flow-system-blueprint": { label: "Blueprint", detail: "A poster-scale system design canvas with DNS, runtime, storage, media, and fan-out zones." }
     },
     linkCards: {
       home: { label: "Home", detail: "Public profile overview." },
@@ -793,6 +803,7 @@ const englishStudioCopy: StudioUiCopy = {
     skillLibrary: "Skill library",
     skillLibraryDetail: "Markdown prompts that can be copied into an agent session.",
     categoriesLabel: "Skill categories",
+    skillCountLabel: (count) => `${count} skills`,
     selectedSkill: "Selected AI skill markdown",
     skillTags: "Skill tags",
     useThisWhen: "Use this when",
@@ -909,7 +920,8 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       "flow-release-readiness": "Release readiness",
       "flow-ai-delivery": "AI delivery",
       "flow-portfolio-story": "Portfolio story",
-      "flow-react-flow-architecture-demo": "Example"
+      "flow-react-flow-architecture-demo": "Example",
+      "flow-react-flow-system-blueprint": "Blueprint"
     },
     profileItems: {
       home: { label: "Trang chủ", detail: "Tổng quan profile." },
@@ -1013,6 +1025,12 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
         description: "Canvas React Flow kiểu thư viện demo với dropdown view cho overview, interaction, grouping, layout, styling, whiteboard và software architecture example.",
         panels: ["Chọn example", "Canvas gallery", "Vùng kiến trúc"],
         timeline: ["Nhóm example đã map", "Dropdown view đã nối", "Canvas control đã bật"]
+      },
+      "flow-react-flow-system-blueprint": {
+        title: "System Design Blueprint",
+        description: "Blueprint React Flow dày đặc, mô hình hóa DNS, edge policy, load balancing, storage, media processing, queue và fan-out service.",
+        panels: ["Blueprint đầy đủ", "View tập trung", "Từ vựng production"],
+        timeline: ["DNS path đã map", "Runtime và storage đã nối", "Media fan-out đã mô hình hóa"]
       }
     },
     welcome: {
@@ -1027,7 +1045,8 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
         "ai-agent-setup": { label: "AI Setup", detail: "Ghi chú máy, MCP path và setup cá nhân cho agent." },
         "ai-skills": { label: "AI Skill", detail: "Prompt và operating rule có thể copy vào phiên agent." },
         "delivery-checklists": { label: "Checklist", detail: "Checklist nhận task, release readiness và rollout." },
-        "flow-react-flow-architecture-demo": { label: "Example", detail: "Demo React Flow cho kiến trúc, layout, grouping, styling và interaction." }
+        "flow-react-flow-architecture-demo": { label: "Example", detail: "Demo React Flow cho kiến trúc, layout, grouping, styling và interaction." },
+        "flow-react-flow-system-blueprint": { label: "Blueprint", detail: "Canvas system design cỡ poster với DNS, runtime, storage, media và fan-out zone." }
       },
       linkCards: {
         home: { label: "Trang chủ", detail: "Tổng quan public profile." },
@@ -1094,6 +1113,7 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
       skillLibrary: "Thư viện skill",
       skillLibraryDetail: "Prompt markdown có thể copy vào một phiên agent.",
       categoriesLabel: "Nhóm skill",
+      skillCountLabel: (count) => `${count} skill`,
       selectedSkill: "Markdown skill đang chọn",
       skillTags: "Tag skill",
       useThisWhen: "Dùng khi",
@@ -1542,6 +1562,7 @@ const routeMetrics: Record<StudioRouteId, StudioMetric[]> = {
   "flow-ai-delivery": flowMetrics("ai-delivery"),
   "flow-portfolio-story": flowMetrics("portfolio-story"),
   "flow-react-flow-architecture-demo": flowMetrics("react-flow-architecture-demo"),
+  "flow-react-flow-system-blueprint": flowMetrics("react-flow-system-blueprint"),
   calendar: [
     { label: "Today", value: "6", helper: "Events on the schedule", badge: "+2", trend: "up", icon: LuCalendarDays },
     { label: "Focus Blocks", value: "3h", helper: "Protected engineering time", badge: "+45m", trend: "up", icon: LuAlarmClock },
@@ -1803,6 +1824,7 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
   "flow-ai-delivery": createFlowRouteDefinition("flow-ai-delivery", "ai-delivery", ["Task brief", "Context pack", "Verification"], ["Boundaries set", "Focused diff reviewed", "Handoff prepared"]),
   "flow-portfolio-story": createFlowRouteDefinition("flow-portfolio-story", "portfolio-story", ["Context", "Trade-offs", "Impact"], ["Context captured", "Impact evidence selected", "Story draft shaped"]),
   "flow-react-flow-architecture-demo": createFlowRouteDefinition("flow-react-flow-architecture-demo", "react-flow-architecture-demo", ["Node shapes", "Edge language", "Architecture zones"], ["Node primitives displayed", "Architecture shapes mapped", "Canvas controls enabled"]),
+  "flow-react-flow-system-blueprint": createFlowRouteDefinition("flow-react-flow-system-blueprint", "react-flow-system-blueprint", ["Full blueprint", "Focused views", "Production vocabulary"], ["DNS path mapped", "Runtime and storage linked", "Media fan-out modeled"]),
   calendar: {
     id: "calendar",
     title: "Calendar",
@@ -1960,6 +1982,11 @@ const navGroups: StudioNavGroup[] = [
             id: "flow-react-flow-architecture-demo",
             title: "Example",
             routeId: "flow-react-flow-architecture-demo"
+          },
+          {
+            id: "flow-react-flow-system-blueprint",
+            title: "Blueprint",
+            routeId: "flow-react-flow-system-blueprint"
           }
         ]
       }
@@ -3684,17 +3711,20 @@ function AiSkillsPage({ route, locale, copy }: { route: StudioRoute; locale: str
             </div>
           </div>
 
-          <div className="skill-filter-row" role="tablist" aria-label={copy.aiSkills.categoriesLabel}>
-            {categories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                className={categoryFilter === category ? "is-active" : undefined}
-                onClick={() => handleCategoryFilter(category)}
-              >
-                {skillCategoryLabel(category, copy)}
-              </button>
-            ))}
+          <div className="skill-filter-control">
+            <label htmlFor="ai-skill-category-filter">{copy.aiSkills.categoriesLabel}</label>
+            <select
+              id="ai-skill-category-filter"
+              value={categoryFilter}
+              onChange={(event) => handleCategoryFilter(event.currentTarget.value as StudioAiSkill["category"] | "all")}
+            >
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {skillCategoryLabel(category, copy)}
+                </option>
+              ))}
+            </select>
+            <span>{copy.aiSkills.skillCountLabel(visibleSkills.length)}</span>
           </div>
 
           <div className="skill-list">
@@ -3705,11 +3735,11 @@ function AiSkillsPage({ route, locale, copy }: { route: StudioRoute; locale: str
                 className={`skill-list-button${selectedSkill.id === skill.id ? " is-active" : ""}`}
                 onClick={() => handleSkillSelect(skill)}
               >
+                <em>{skillCategoryLabel(skill.category, copy)}</em>
                 <span>
                   <strong>{skill.title}</strong>
                   <small>{skill.summary}</small>
                 </span>
-                <em>{skillCategoryLabel(skill.category, copy)}</em>
               </button>
             ))}
           </div>
@@ -3720,7 +3750,10 @@ function AiSkillsPage({ route, locale, copy }: { route: StudioRoute; locale: str
             <div>
               <span className="ai-status-pill status-ready">{skillCategoryLabel(selectedSkill.category, copy)}</span>
               <h2>{selectedSkill.title}</h2>
-              <p>{selectedSkill.summary}</p>
+              <div className="skill-use-case">
+                <strong>{copy.aiSkills.useThisWhen}</strong>
+                <p>{selectedSkill.summary}</p>
+              </div>
             </div>
             <button type="button" className="outline-button" onClick={copySkill}>
               {copiedSkillId === selectedSkill.id ? <LuCheck aria-hidden="true" /> : <LuCopy aria-hidden="true" />}
@@ -3736,21 +3769,6 @@ function AiSkillsPage({ route, locale, copy }: { route: StudioRoute; locale: str
 
           <pre className="skill-markdown-preview"><code>{selectedSkill.markdown}</code></pre>
         </article>
-
-        <aside className="skill-side-pane" aria-label="Skill usage notes">
-          <section>
-            <h3>{copy.aiSkills.useThisWhen}</h3>
-            <p>{selectedSkill.summary}</p>
-          </section>
-          <section>
-            <h3>{copy.aiSkills.copyBehavior}</h3>
-            <p>{copy.aiSkills.copyBehaviorDetail}</p>
-          </section>
-          <section>
-            <h3>{copy.aiSkills.operatingRule}</h3>
-            <p>{copy.aiSkills.operatingRuleDetail}</p>
-          </section>
-        </aside>
       </div>
     </section>
   );
@@ -4263,72 +4281,6 @@ function buildArchitectureDemoCanvas(flow: StudioFlow, viewId?: string): {
   return { nodes, edges };
 }
 
-function getStudioFlowNodeSize(node: StudioFlowCanvasNode) {
-  let fallbackSize = { width: 220, height: 96 };
-  if (node.data.kind === "decision") fallbackSize = { width: 160, height: 160 };
-  if (node.data.compact) fallbackSize = { width: 136, height: 108 };
-  const width = typeof node.style?.width === "number" ? node.style.width : fallbackSize.width;
-  const height = typeof node.style?.height === "number" ? node.style.height : fallbackSize.height;
-  return { width, height };
-}
-
-function StudioFlowMiniMapOverlay({ nodes }: Readonly<{ nodes: StudioFlowCanvasNode[] }>) {
-  const minimapNodes = useMemo(() => {
-    if (!nodes.length) return [];
-
-    const rawNodes = nodes.map((node) => {
-      const size = getStudioFlowNodeSize(node);
-      return {
-        id: node.id,
-        x: node.position.x,
-        y: node.position.y,
-        width: size.width,
-        height: size.height,
-        kind: node.data.kind
-      };
-    });
-    const minX = Math.min(...rawNodes.map((node) => node.x));
-    const minY = Math.min(...rawNodes.map((node) => node.y));
-    const maxX = Math.max(...rawNodes.map((node) => node.x + node.width));
-    const maxY = Math.max(...rawNodes.map((node) => node.y + node.height));
-    const contentWidth = Math.max(1, maxX - minX);
-    const contentHeight = Math.max(1, maxY - minY);
-    const width = 160;
-    const height = 112;
-    const padding = 9;
-    const scale = Math.min((width - padding * 2) / contentWidth, (height - padding * 2) / contentHeight);
-    const offsetX = (width - contentWidth * scale) / 2;
-    const offsetY = (height - contentHeight * scale) / 2;
-
-    return rawNodes.map((node) => ({
-      id: node.id,
-      x: offsetX + (node.x - minX) * scale,
-      y: offsetY + (node.y - minY) * scale,
-      width: Math.max(2.4, node.width * scale),
-      height: Math.max(2.4, node.height * scale),
-      isGroup: node.kind === "group"
-    }));
-  }, [nodes]);
-
-  if (!minimapNodes.length) return null;
-
-  return (
-    <svg className="flow-minimap-overlay" viewBox="0 0 160 112" aria-hidden="true">
-      {minimapNodes.map((node) => (
-        <rect
-          key={node.id}
-          className={`flow-minimap-overlay-node${node.isGroup ? " is-group" : ""}`}
-          x={node.x}
-          y={node.y}
-          width={node.width}
-          height={node.height}
-          rx={node.isGroup ? 3 : 2}
-        />
-      ))}
-    </svg>
-  );
-}
-
 function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy }) {
   const demo = flow.architectureDemo;
   const demoViews = useMemo(() => demo?.views ?? [], [demo]);
@@ -4365,10 +4317,12 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
     ?? initialDemoView;
   const { nodes, edges } = useMemo(() => buildStudioFlowCanvas(flow, selectedView?.id), [flow, selectedView?.id]);
   const isReactFlowDemo = Boolean(demo);
+  const isBlueprintDiagram = flow.id === "react-flow-system-blueprint";
+  const showMiniMap = !isBlueprintDiagram || selectedView?.id !== "blueprint-full";
   const isCompactDiagram = nodes.some((node) => node.data.compact);
   let fitViewPadding = 0.24;
-  if (isReactFlowDemo) fitViewPadding = 0.14;
-  if (isCompactDiagram) fitViewPadding = 0.18;
+  if (isReactFlowDemo) fitViewPadding = isBlueprintDiagram ? 0.08 : 0.14;
+  if (isCompactDiagram && !isBlueprintDiagram) fitViewPadding = 0.18;
 
   useEffect(() => {
     if (!isBoardFullscreen) return undefined;
@@ -4395,7 +4349,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
   };
 
   return (
-    <section className={`flow-chart-surface${isReactFlowDemo ? " is-architecture-demo" : ""}${isCompactDiagram ? " is-compact-diagram" : ""}${isBoardFullscreen ? " is-fullscreen" : ""}`} aria-label={copy.flows.chartLabel}>
+    <section className={`flow-chart-surface${isReactFlowDemo ? " is-architecture-demo" : ""}${isBlueprintDiagram ? " is-blueprint-diagram" : ""}${isCompactDiagram ? " is-compact-diagram" : ""}${isBoardFullscreen ? " is-fullscreen" : ""}`} aria-label={copy.flows.chartLabel}>
       <div className="flow-chart-head">
         <div>
           <h3>{selectedView?.title ?? flow.title}</h3>
@@ -4413,6 +4367,14 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
                 onChange={(event) => {
                   const nextFamily = event.target.value;
                   const nextView = demo.views.find((view) => view.family === nextFamily);
+                  track("studio_flow_example_select", {
+                    flow_id: flow.id,
+                    source: "family_select",
+                    previous_family: selectedFamily,
+                    previous_view_id: selectedView?.id,
+                    next_family: nextFamily,
+                    next_view_id: nextView?.id
+                  });
                   setDemoSelection({
                     flowId: flow.id,
                     family: nextFamily,
@@ -4433,6 +4395,14 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
                 value={selectedView.id}
                 onChange={(event) => {
                   const nextView = demo.views.find((view) => view.id === event.target.value);
+                  track("studio_flow_example_select", {
+                    flow_id: flow.id,
+                    source: "view_select",
+                    previous_family: selectedFamily,
+                    previous_view_id: selectedView.id,
+                    next_family: nextView?.family ?? selectedFamily,
+                    next_view_id: event.target.value
+                  });
                   setDemoSelection({
                     flowId: flow.id,
                     family: nextView?.family ?? selectedFamily,
@@ -4462,7 +4432,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
         </div>
       </div>
 
-      <div className={`flow-react-surface${isReactFlowDemo ? " is-architecture-demo" : ""}${isCompactDiagram ? " is-compact-diagram" : ""}`}>
+      <div className={`flow-react-surface${isReactFlowDemo ? " is-architecture-demo" : ""}${isBlueprintDiagram ? " is-blueprint-diagram" : ""}${isCompactDiagram ? " is-compact-diagram" : ""}`}>
         <ReactFlow
           key={selectedView?.id ?? flow.id}
           className="flow-react-canvas"
@@ -4472,10 +4442,10 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
           fitView
           fitViewOptions={{
             padding: fitViewPadding,
-            minZoom: isReactFlowDemo ? 0.26 : 0.5
+            minZoom: isBlueprintDiagram ? 0.16 : isReactFlowDemo ? 0.26 : 0.5
           }}
-          minZoom={0.18}
-          maxZoom={1.6}
+          minZoom={isBlueprintDiagram ? 0.1 : 0.18}
+          maxZoom={isBlueprintDiagram ? 1.9 : 1.6}
           nodesDraggable={false}
           nodesConnectable={false}
           elementsSelectable={false}
@@ -4483,21 +4453,22 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
         >
           <Background color="color-mix(in srgb, var(--foreground) 12%, transparent)" gap={22} />
           <Controls showInteractive={false} />
-          <MiniMap
-            position="bottom-right"
-            pannable
-            zoomable
-            bgColor="var(--flow-minimap-bg)"
-            maskColor="var(--flow-minimap-mask)"
-            maskStrokeColor="var(--flow-minimap-stroke)"
-            maskStrokeWidth={1.8}
-            nodeColor="var(--flow-minimap-node-fill)"
-            nodeStrokeColor="var(--flow-minimap-node-stroke)"
-            nodeStrokeWidth={2.6}
-            nodeBorderRadius={8}
-          />
+          {showMiniMap && (
+            <MiniMap
+              position="bottom-right"
+              pannable
+              zoomable
+              bgColor="var(--flow-minimap-bg)"
+              maskColor="var(--flow-minimap-mask)"
+              maskStrokeColor="var(--flow-minimap-stroke)"
+              maskStrokeWidth={isBlueprintDiagram ? 1.15 : 1.8}
+              nodeColor="var(--flow-minimap-node-fill)"
+              nodeStrokeColor="var(--flow-minimap-node-stroke)"
+              nodeStrokeWidth={isBlueprintDiagram ? 1.15 : 2.6}
+              nodeBorderRadius={isBlueprintDiagram ? 4 : 8}
+            />
+          )}
         </ReactFlow>
-        <StudioFlowMiniMapOverlay nodes={nodes} />
       </div>
 
       {!demo && (

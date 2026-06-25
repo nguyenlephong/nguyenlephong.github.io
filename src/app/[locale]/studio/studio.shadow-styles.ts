@@ -1648,7 +1648,15 @@ a {
   gap: 0.625rem;
 }
 
-.skill-library-workbench.card,
+.skill-library-workbench.card {
+  display: grid;
+  grid-template-columns: minmax(21rem, 0.34fr) minmax(0, 1fr);
+  height: clamp(36rem, calc(100vh - 17rem), 54rem);
+  min-height: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
 .checklist-workbench.card {
   display: grid;
   grid-template-columns: 18rem minmax(0, 1fr) 18rem;
@@ -1685,28 +1693,45 @@ a {
   background: color-mix(in srgb, var(--muted) 44%, transparent);
 }
 
-.skill-filter-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.375rem;
+.skill-filter-control {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem 0.625rem;
+  align-items: center;
   margin-top: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--control-radius);
+  background: var(--background);
+  padding: 0.75rem;
 }
 
-.skill-filter-row button {
-  min-height: 2rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--background);
+.skill-filter-control label {
+  grid-column: 1 / -1;
   color: var(--muted-foreground);
-  padding: 0 0.625rem;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.skill-filter-control select {
+  min-width: 0;
+  min-height: 2.375rem;
+  border: 1px solid var(--border);
+  border-radius: 0.625rem;
+  background: color-mix(in srgb, var(--muted) 30%, transparent);
+  color: var(--foreground);
+  padding: 0 0.75rem;
+  font: inherit;
+  font-size: 0.8125rem;
   font-weight: 600;
 }
 
-.skill-filter-row button.is-active {
-  border-color: color-mix(in srgb, var(--accent) 34%, var(--border));
-  background: color-mix(in srgb, var(--accent) 12%, var(--background));
-  color: var(--foreground);
+.skill-filter-control span {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .skill-list,
@@ -1728,6 +1753,12 @@ a {
   color: var(--foreground);
   padding: 0.75rem;
   text-align: left;
+}
+
+.skill-list-button {
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  background: color-mix(in srgb, var(--background) 72%, transparent);
 }
 
 .skill-list-button:hover,
@@ -1761,6 +1792,13 @@ a {
   line-height: 1.4;
 }
 
+.skill-list-button small {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .skill-list-button em,
 .checklist-list-button em {
   border-radius: 999px;
@@ -1770,6 +1808,10 @@ a {
   font-size: 0.6875rem;
   font-style: normal;
   white-space: nowrap;
+}
+
+.skill-list-button em {
+  justify-self: flex-start;
 }
 
 .skill-reader-pane,
@@ -1799,6 +1841,29 @@ a {
   color: var(--muted-foreground);
   font-size: 0.875rem;
   line-height: 1.5;
+}
+
+.skill-use-case {
+  display: grid;
+  gap: 0.375rem;
+  max-width: 48rem;
+  margin-top: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--control-radius);
+  background: color-mix(in srgb, var(--muted) 28%, transparent);
+  padding: 0.75rem 0.875rem;
+}
+
+.skill-use-case strong {
+  color: var(--foreground);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.skill-use-case p {
+  margin: 0;
 }
 
 .skill-markdown-preview,
@@ -2033,7 +2098,7 @@ a {
 
 .flow-chart-surface.is-architecture-demo {
   grid-template-rows: auto auto minmax(0, 1fr);
-  min-height: calc(100vh - 6rem);
+  min-height: 0;
   gap: 0.75rem;
   overflow: visible;
   border: 0;
@@ -2137,6 +2202,7 @@ a {
   --flow-minimap-stroke: #2563eb;
   --flow-minimap-node-fill: rgba(37, 99, 235, 0.8);
   --flow-minimap-node-stroke: rgba(15, 23, 42, 0.82);
+  position: relative;
   height: min(58vh, 36rem);
   min-height: 25rem;
   overflow: hidden;
@@ -2154,8 +2220,13 @@ a {
 }
 
 .flow-react-surface.is-architecture-demo {
-  height: max(38rem, calc(100vh - 14rem));
-  min-height: 38rem;
+  height: clamp(33rem, calc(100dvh - 15.5rem), 44rem);
+  min-height: 33rem;
+}
+
+.flow-react-surface.is-architecture-demo.is-blueprint-diagram {
+  height: clamp(35rem, calc(100dvh - 16rem), 46rem);
+  min-height: 35rem;
 }
 
 .flow-react-surface.is-compact-diagram {
@@ -2398,9 +2469,22 @@ a {
   border-radius: 0.75rem;
   background: var(--flow-minimap-bg);
   box-shadow: 0 0.9rem 2.2rem rgba(0, 0, 0, 0.3);
-  width: 7.75rem;
-  height: 5.35rem;
-  opacity: 1;
+  width: 6.95rem;
+  height: 4.75rem;
+  opacity: 0.94;
+}
+
+.flow-react-surface.is-blueprint-diagram .react-flow__panel.bottom.right {
+  right: 0.25rem;
+  bottom: 0.25rem;
+}
+
+.flow-react-surface.is-blueprint-diagram .react-flow__minimap {
+  width: 6.35rem;
+  height: 4.25rem;
+  border-radius: 0.65rem;
+  opacity: 0.84;
+  box-shadow: 0 0.75rem 1.85rem rgba(0, 0, 0, 0.24);
 }
 
 .react-flow__minimap-svg {
@@ -2424,31 +2508,8 @@ a {
   stroke-width: var(--xy-minimap-node-stroke-width-props, 2.4);
 }
 
-.flow-minimap-overlay {
-  position: absolute;
-  right: 0.75rem;
-  bottom: 0.75rem;
-  z-index: 8;
-  width: 7.75rem;
-  height: 5.35rem;
-  overflow: visible;
-  pointer-events: none;
-}
-
-.flow-minimap-overlay-node {
-  fill: var(--flow-minimap-node-fill);
-  stroke: var(--flow-minimap-node-stroke);
-  stroke-width: 0.9;
-  opacity: 0.95;
-  vector-effect: non-scaling-stroke;
-}
-
-.flow-minimap-overlay-node.is-group {
-  fill: color-mix(in srgb, var(--flow-minimap-node-fill) 16%, transparent);
-  stroke: var(--flow-minimap-stroke);
-  stroke-dasharray: 2 2;
-  stroke-width: 0.75;
-  opacity: 0.86;
+.flow-react-surface.is-blueprint-diagram .react-flow__minimap-node {
+  opacity: 0.76;
 }
 
 .react-flow__background-pattern.dots {
@@ -4976,6 +5037,10 @@ tbody tr:hover {
     max-width: 100%;
     min-width: 0;
     white-space: normal;
+  }
+
+  .skill-filter-control {
+    grid-template-columns: 1fr;
   }
 
   .skill-list-button,

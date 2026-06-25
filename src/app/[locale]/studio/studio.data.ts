@@ -1,4 +1,5 @@
 import { reactFlowArchitectureDemo } from "./studio.react-flow-architecture-demo";
+import { reactFlowSystemBlueprintDemo } from "./studio.react-flow-system-blueprint";
 
 export type StudioNoteStatus = "ready" | "draft" | "next";
 
@@ -3000,7 +3001,7 @@ export const studioFlowGroups: StudioFlowGroup[] = [
     subtitle: "Switch between example shapes before choosing a diagram.",
     description:
       "A React Flow showcase for example families: built-in nodes, custom architecture shapes, grouping, layout, validation, annotation, edge styles, labels, markers, minimap, controls, and background.",
-    flowIds: ["react-flow-architecture-demo"]
+    flowIds: ["react-flow-architecture-demo", "react-flow-system-blueprint"]
   }
 ];
 
@@ -3527,6 +3528,79 @@ export const studioFlows: StudioFlow[] = [
       "Platform communication"
     ],
     architectureDemo: reactFlowArchitectureDemo
+  },
+  {
+    id: "react-flow-system-blueprint",
+    groupId: "react-flow-library",
+    title: "System Design Blueprint",
+    summary:
+      "A poster-scale React Flow system design map that shows DNS, edge policy, load balancing, backend services, cache, data stores, media queues, workers, and fan-out services.",
+    seoTitle: "React Flow System Design Blueprint Example",
+    seoDescription:
+      "A large React Flow system design blueprint with grouped architecture zones, custom nodes, labeled edges, animated async paths, minimap, controls, and focused diagram views.",
+    useWhen:
+      "Use this when a diagram needs to prove React Flow can handle dense system design posters, not only small workflow charts.",
+    outcome:
+      "A powerful architecture canvas that stays inspectable: overview for the full story, focused views for DNS, runtime, storage, media processing, and fan-out.",
+    officeExample:
+      "A team wants a poster-style architecture map for a review. This example keeps the diagram interactive, searchable by zone, and zoomable instead of freezing it as a static image.",
+    tags: ["React Flow", "System Design", "Blueprint", "Distributed Systems", "Media Pipeline"],
+    steps: [
+      {
+        id: "map-edge-entry",
+        title: "Map edge entry",
+        detail:
+          "Show how the domain lookup, resolver, CDN, request metadata, security policy, and API gateway connect before traffic reaches services.",
+        evidence: "DNS records, edge cache behavior, headers, auth token, WAF policy, request ID, and response metadata.",
+        output: "A visible ingress path that makes the request journey clear."
+      },
+      {
+        id: "show-runtime-topology",
+        title: "Show runtime topology",
+        detail:
+          "Separate load balancing, frontend servers, backend services, message dispatch, and connection ownership.",
+        evidence: "Balancing strategy, connection table, live session transport, server ownership, and routing rules.",
+        output: "A runtime zone that explains where live traffic is accepted, routed, and dispatched."
+      },
+      {
+        id: "surface-coordination",
+        title: "Surface coordination",
+        detail:
+          "Make distributed IDs, locks, concurrency choices, and metadata tables first-class parts of the diagram.",
+        evidence: "ID strategy, lock provider, retry model, checksum, timestamp, server mapping, and object pointer.",
+        output: "A coordination layer that shows how writes and streaming chunks stay stable."
+      },
+      {
+        id: "trace-storage-media",
+        title: "Trace storage and media",
+        detail:
+          "Connect primary databases, shards, replicas, cache, object storage, queue, processing workers, and encoded output.",
+        evidence: "Storage type, cache policy, queue depth, worker cost, checksum validation, and compression output.",
+        output: "A data and media pipeline that can be inspected without leaving the canvas."
+      },
+      {
+        id: "fan-out-downstream",
+        title: "Fan out downstream",
+        detail:
+          "Show downstream consumers such as notification, recommendations, logging, search, analytics, and payment charge.",
+        evidence: "Pub/sub topics, idempotent keys, blocked cards, service-down states, and third-party dependencies.",
+        output: "A fan-out zone that makes secondary effects visible instead of hiding them behind one box."
+      }
+    ],
+    artifacts: [
+      "Full blueprint canvas",
+      "DNS and request path view",
+      "Runtime and balancing view",
+      "Storage and coordination view",
+      "Media upload and fan-out view"
+    ],
+    cvSignals: [
+      "React Flow advanced usage",
+      "System design depth",
+      "Distributed systems vocabulary",
+      "Architecture communication"
+    ],
+    architectureDemo: reactFlowSystemBlueprintDemo
   }
 ];
 

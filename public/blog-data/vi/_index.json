@@ -43,6 +43,261 @@
   ],
   "posts": [
     {
+      "slug": "trunk-based-development",
+      "category": "ways-of-working",
+      "title": "Trunk-Based Development",
+      "summary": "Một bài nhập môn thực tế về trunk-based development: merge nhỏ và thường xuyên, feature flag, test nhanh, code review discipline và thói quen team cần có để giữ main branch khỏe.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Trunk-Based Development",
+        "Continuous Integration",
+        "Feature Flags",
+        "Software Delivery",
+        "Code Review",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "overcoming-analysis-paralysis",
+      "category": "perspectives",
+      "title": "Vượt qua analysis paralysis",
+      "summary": "Một bài reflection về analysis paralysis: vì sao suy nghĩ cẩn thận có thể biến thành trì hoãn, cách tách decision reversible và irreversible, và cách experiment nhỏ giúp quyết định di chuyển mà không hấp tấp.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Decision Making",
+        "Reflection",
+        "Career Growth",
+        "Software Engineering",
+        "Learning",
+        "Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "reducing-hallucinations-in-llms",
+      "category": "ai",
+      "title": "Giảm hallucination trong LLM",
+      "summary": "Một hướng dẫn thực tế để giảm hallucination trong LLM bằng task rõ hơn, context có giới hạn, retrieval, citation, verification, refusal, evaluation set và product design làm uncertainty nhìn thấy được.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "LLM",
+        "Hallucination",
+        "RAG",
+        "AI Product",
+        "Evaluation"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "mentorship-vs-sponsorship",
+      "category": "culture",
+      "title": "Mentorship và sponsorship khác nhau thế nào?",
+      "summary": "Một bài giải thích bình tĩnh về mentorship và sponsorship trong career engineering: advice, feedback, advocacy, visibility, trust và opportunity phối hợp với nhau thế nào mà không biến growth thành chính trị.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Mentorship",
+        "Sponsorship",
+        "Career Growth",
+        "Leadership",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "event-sourcing-beginners-guide",
+      "category": "architecture",
+      "title": "Event Sourcing cho người mới bắt đầu",
+      "summary": "Một bài nhập môn về Event Sourcing: lưu các sự kiện như lịch sử append-only, dựng current state bằng projection, và hiểu khi nào pattern này đáng với chi phí vận hành.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Event Sourcing",
+        "Event-Driven Architecture",
+        "CQRS",
+        "System Design",
+        "Data Modeling"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "tdd-is-it-worth-the-time",
+      "category": "ways-of-working",
+      "title": "TDD có đáng thời gian không?",
+      "summary": "Một bài nhìn lại thực tế về khi nào Test-Driven Development đáng với chi phí bỏ ra: TDD định hình design thế nào, chỗ nào làm team chậm lại, và cách dùng vòng red-green-refactor mà không biến nó thành giáo điều.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "TDD",
+        "Testing",
+        "Software Development",
+        "Code Quality",
+        "Refactoring",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "reading-code-is-harder-than-writing-it",
+      "category": "perspectives",
+      "title": "Đọc code khó hơn viết code",
+      "summary": "Một bài nhìn lại vì sao đọc code thường khó hơn viết code, và cách tracing kiên nhẫn, test, naming, lịch sử decision, cùng những note nhỏ giúp engineer hiểu codebase mà không vội rewrite.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Engineering",
+        "Code Reading",
+        "Codebase",
+        "Maintainability",
+        "Debugging",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "fine-tuning-vs-prompting-vs-rag",
+      "category": "ai",
+      "title": "Fine-tuning, prompting và RAG khác nhau thế nào?",
+      "summary": "Một bài so sánh thực tế giữa prompting, RAG và fine-tuning khi xây AI product: mỗi cách thay đổi phần nào của hệ thống, khi nào hữu ích, thường vấp ở đâu, và làm sao chọn can thiệp nhỏ nhất nhưng đủ đáng tin.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "Prompting",
+        "RAG",
+        "Fine-Tuning",
+        "LLM",
+        "AI Product"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "onboarding-that-actually-helps-new-teammates",
+      "category": "culture",
+      "title": "Onboarding giúp người mới thật sự hòa vào team",
+      "summary": "Một góc nhìn bình tĩnh về onboarding trong engineering team: context, small win đầu tiên, ownership rõ, buddy support, documentation, feedback loop và những thói quen kiên nhẫn giúp người mới bớt lạc.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Onboarding",
+        "Team Trust",
+        "Mentorship",
+        "Documentation",
+        "Developer Experience"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "saga-pattern-for-distributed-transactions",
+      "category": "architecture",
+      "title": "Saga Pattern cho distributed transaction",
+      "summary": "Một bài giải thích thực tế về Saga pattern trong distributed transaction: vì sao một database transaction không còn đủ khi hệ thống tách service, orchestration và choreography khác nhau thế nào, và vì sao compensation, observability, idempotency lại quan trọng.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Saga Pattern",
+        "Distributed Transactions",
+        "Microservices",
+        "Eventual Consistency",
+        "Observability"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "retrospectives-that-actually-cause-change",
+      "category": "ways-of-working",
+      "title": "Retrospective tạo ra thay đổi thật",
+      "summary": "Một góc nhìn thực tế về retrospective có follow-through rõ ràng: experiment nhỏ, action owner cụ thể, trust, decision record và thay đổi hành vi đo được thay vì thêm một danh sách than phiền bị quên.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Retrospective",
+        "Agile",
+        "Niềm tin trong team",
+        "Continuous Improvement",
+        "Decision Record",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "mentoring-junior-developers-effectively",
+      "category": "perspectives",
+      "title": "Mentoring junior developer một cách hiệu quả",
+      "summary": "Một bài reflection thực tế về mentoring junior developer bằng context, hỗ trợ đúng mức, sự tự tin, code review, sai sót có thể phục hồi, tính độc lập và psychological safety mà không biến mentoring thành kiểm soát.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Engineering",
+        "Mentorship",
+        "Junior Developer",
+        "Code Review",
+        "Psychological Safety",
+        "Phát triển sự nghiệp"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "ethical-considerations-in-ai-products",
+      "category": "ai",
+      "title": "Những cân nhắc đạo đức khi xây AI product",
+      "summary": "Một bài viết thực tế về product ethics cho AI product: consent, ranh giới dữ liệu, bias và fairness, human review, explanation, risk control và incentive quyết định liệu một AI feature có còn hữu ích và đáng tin khi đi vào đời thật hay không.",
+      "date": "2026-06-24",
+      "readingMinutes": 8,
+      "tags": [
+        "AI",
+        "AI Ethics",
+        "Product Management",
+        "Responsible AI",
+        "Data Privacy",
+        "Human Review"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "async-communication-for-remote-teams",
+      "category": "culture",
+      "title": "Async communication cho remote team",
+      "summary": "Một góc nhìn bình tĩnh về async communication trong remote team: viết đủ context, ghi lại decision, đặt kỳ vọng phản hồi, handoff rõ ràng, xây trust và tránh biến mọi người thành luôn phải online.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "Remote Work",
+        "Async Communication",
+        "Decision Record",
+        "Niềm tin trong team",
+        "Collaboration"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "api-gateway-patterns",
+      "category": "architecture",
+      "title": "API Gateway Patterns",
+      "summary": "Một góc nhìn thực tế về trách nhiệm của API gateway: routing, authentication boundary, rate limiting, request aggregation, trade-off của backend-for-frontend, failure mode và observability cần có để vận hành edge của hệ thống rõ ràng hơn.",
+      "date": "2026-06-24",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "API Gateway",
+        "Backend for Frontend",
+        "Rate Limiting",
+        "System Design",
+        "Observability"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "retrieval-augmented-generation-rag-basics",
       "category": "ai",
       "title": "Retrieval-Augmented Generation (RAG): những nền tảng cần hiểu",
@@ -1465,6 +1720,456 @@
         "Scrum",
         "Team Collaboration",
         "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "cqrs-command-query-responsibility-segregation",
+      "category": "architecture",
+      "title": "CQRS: tách phần ghi và phần đọc cho đúng việc",
+      "summary": "Một bài giải thích thực tế về CQRS: tách command khỏi query, khi nào read model và write model nên có hình dạng khác nhau, và cách tránh biến một pattern hữu ích thành kiến trúc thừa.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "CQRS",
+        "Read Models",
+        "Event-Driven Architecture",
+        "System Design",
+        "Scalability"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "celebrating-failure",
+      "category": "culture",
+      "title": "Celebrating Failure: mừng điều gì khi mọi thứ đã hỏng?",
+      "summary": "Một góc nhìn thực tế về ý nghĩa đúng của celebrating failure: không phải vỗ tay cho thiệt hại, mà là làm cho sự thật, sửa chữa, học hỏi và thay đổi hệ thống trở nên an toàn hơn.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Văn hoá kỹ thuật",
+        "Failure",
+        "Postmortem",
+        "Psychological Safety",
+        "Team Learning",
+        "Leadership"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "ai-in-qa-automated-test-generation",
+      "category": "ai",
+      "title": "AI trong QA: tạo automated test thế nào cho có ích",
+      "summary": "Một góc nhìn thực tế về AI-assisted QA và automated test generation: AI giúp mở rộng scenario, edge case, fixture và test skeleton ở đâu, và vì sao con người vẫn sở hữu risk, sự thật và niềm tin.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "QA",
+        "Testing",
+        "Automated Tests",
+        "Software Quality",
+        "Developer Productivity"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "when-to-walk-away-from-a-project",
+      "category": "perspectives",
+      "title": "Khi nào nên rời khỏi một project",
+      "summary": "Một bài suy ngẫm về việc biết khi nào nên rời khỏi một project: phân biệt giai đoạn khó với dead end thật sự, thử sửa trước, và rời đi tử tế khi chi phí, niềm tin hoặc hướng đi không còn phù hợp.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Career Growth",
+        "Software Engineering",
+        "Decision Making",
+        "Project Health",
+        "Ranh giới",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "definition-of-done-vs-ready",
+      "category": "ways-of-working",
+      "title": "Definition of Done và Definition of Ready khác nhau thế nào?",
+      "summary": "Một bài nhìn thực tế về Definition of Ready và Definition of Done: một cái bảo vệ điểm bắt đầu, một cái bảo vệ điểm kết thúc, và cách dùng cả hai mà không biến chúng thành nghi thức gatekeeping.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Definition of Done",
+        "Definition of Ready",
+        "Scrum",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "serverless-trade-offs-and-truths",
+      "category": "architecture",
+      "title": "Serverless: những trade-off và sự thật cần nhìn thẳng",
+      "summary": "Một góc nhìn thực tế về serverless architecture: team được gì khi giao bớt infrastructure cho managed platform, vẫn phải sở hữu phần nào, và khi nào function, queue, managed service là một lựa chọn hợp lý.",
+      "date": "2026-06-25",
+      "readingMinutes": 8,
+      "tags": [
+        "Software Architecture",
+        "Serverless",
+        "Cloud",
+        "System Design",
+        "Observability",
+        "Cost"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "building-diverse-engineering-teams",
+      "category": "culture",
+      "title": "Xây dựng engineering team đa dạng một cách thực chất",
+      "summary": "Một bài reflection thực tế về việc xây engineering team đa dạng: vượt qua khẩu hiệu để đi vào hiring, onboarding, meeting design, decision-making, feedback và những thói quen giúp nhiều kiểu người đóng góp đầy đủ.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Diversity",
+        "Team Trust",
+        "Inclusion",
+        "Hiring",
+        "Collaboration"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "running-local-llms-for-privacy",
+      "category": "ai",
+      "title": "Chạy local LLM để bảo vệ privacy",
+      "summary": "Một bài giải thích thực tế về local LLM cho công việc nhạy cảm về dữ liệu: điều gì tốt hơn khi prompt và tài liệu ở lại máy mình kiểm soát, vẫn còn những chi phí chất lượng và vận hành nào, và team nên áp dụng ra sao.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "Local LLM",
+        "Privacy",
+        "Data Security",
+        "AI Product",
+        "LLM"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "myth-of-the-10x-developer",
+      "category": "perspectives",
+      "title": "Huyền thoại 10x developer",
+      "summary": "Một bài reflection về huyền thoại 10x developer: vì sao impact lớn thường không đến từ thiên tài cô độc, mà từ context, judgment, leverage, khả năng dạy người khác, sự đơn giản hóa và hệ thống của team.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Engineering",
+        "10x Developer",
+        "Teamwork",
+        "Engineering Culture",
+        "Career Growth",
+        "Leadership"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "pair-programming-love-it-or-hate-it",
+      "category": "ways-of-working",
+      "title": "Pair programming: yêu hay ghét?",
+      "summary": "Một góc nhìn cân bằng về pair programming: khi nào nó giúp giải problem khó, onboarding, giảm risk và chia sẻ hiểu biết, khi nào nó trở nên mệt, và cách dùng pairing có chủ đích thay vì như một nghi thức.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Pair Programming",
+        "Collaboration",
+        "Agile",
+        "Knowledge Sharing",
+        "Code Review",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "caching-strategies-and-pitfalls",
+      "category": "architecture",
+      "title": "Caching: chiến lược và những cái bẫy dễ gặp",
+      "summary": "Một bài giải thích thực tế về caching: cache giúp ở đâu, cache-aside, read-through, write-through, TTL và invalidation khác nhau thế nào, và vì sao stale data, cache stampede, key design cùng observability quan trọng không kém tốc độ.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Caching",
+        "Performance",
+        "System Design",
+        "Scalability",
+        "Observability"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "managing-up-communicating-with-non-technical-leadership",
+      "category": "culture",
+      "title": "Managing up: giao tiếp với lãnh đạo không chuyên kỹ thuật",
+      "summary": "Một hướng dẫn bình tĩnh về managing up với non-technical leadership: chuyển technical work thành risk, option, impact, timing và decision mà không giấu complexity cũng không nói từ trên xuống.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Managing Up",
+        "Communication",
+        "Leadership",
+        "Stakeholders",
+        "Decision Making"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "ai-agents-next-frontier",
+      "category": "ai",
+      "title": "AI Agent: vùng biên tiếp theo của workflow",
+      "summary": "Một góc nhìn thực tế về AI agent bên ngoài hype: điều gì thay đổi khi model có thể dùng tool, đi theo workflow, nhớ context, xin approval và tạo ra work có thể audit, cùng những chỗ human judgment vẫn phải giữ vai trò chính.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "AI Agents",
+        "LLM",
+        "Automation",
+        "AI Workflow",
+        "Human Review"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "why-side-projects-matter",
+      "category": "perspectives",
+      "title": "Vì sao side project quan trọng",
+      "summary": "Một bài reflection về vì sao side project có ý nghĩa mà không biến nó thành áp lực hustle: thử nghiệm nhỏ, learning loop, quyền sở hữu sáng tạo, tín hiệu nghề nghiệp và sự tự tin lặng lẽ khi tự build một thứ từ đầu đến cuối.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Engineering",
+        "Side Projects",
+        "Learning",
+        "Career Growth",
+        "Creativity",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "feature-flags-for-safer-deployments",
+      "category": "ways-of-working",
+      "title": "Feature flag để deploy an toàn hơn",
+      "summary": "Một bài nhìn thực tế về feature flag: cách chúng tách deploy khỏi release, hỗ trợ rollout từ từ và kill switch, đồng thời những việc team phải làm để tránh flag debt, hidden complexity và observability yếu.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Feature Flags",
+        "Deployment",
+        "Progressive Delivery",
+        "Release Management",
+        "Observability",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "database-sharding-when-and-why",
+      "category": "architecture",
+      "title": "Database sharding: khi nào cần và vì sao",
+      "summary": "Một bài giải thích thực tế về database sharding: điều gì thay đổi khi một database được chia thành nhiều partition nhỏ hơn, khi nào sharding đáng với chi phí vận hành, và vì sao shard key, hotspot, rebalancing cùng observability rất quan trọng.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Database Sharding",
+        "Scalability",
+        "System Design",
+        "Data Partitioning",
+        "Observability"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "performance-reviews-that-matter",
+      "category": "culture",
+      "title": "Performance review thật sự có ý nghĩa",
+      "summary": "Một bài reflection bình tĩnh về performance review giúp con người trưởng thành: dùng evidence, expectation, calibration, feedback và follow-through mà không biến review thành một bất ngờ hoặc nghi thức hình thức.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Performance Review",
+        "Feedback",
+        "Career Growth",
+        "Leadership",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "data-privacy-in-the-era-of-ai",
+      "category": "ai",
+      "title": "Data privacy trong kỷ nguyên AI",
+      "summary": "Một bài viết thực tế về data privacy khi làm việc với AI: prompt, document, log, retrieval, training và evaluation tạo thêm những đường đi dữ liệu mới ra sao, và team có thể dùng AI thế nào trong khi vẫn giữ rõ consent, minimization, access và retention.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "Data Privacy",
+        "Responsible AI",
+        "Data Security",
+        "LLM",
+        "AI Product"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "the-tech-transition",
+      "category": "perspectives",
+      "title": "The Tech Transition: bước chuyển vào công nghệ",
+      "summary": "Một bài reflection về việc chuyển vào tech hoặc đi qua một thay đổi công nghệ lớn: học ngôn ngữ mới, xây lại sự tự tin, dùng kinh nghiệm cũ, và xem bước chuyển như một quá trình luyện tập yên lặng thay vì đổi danh tính đột ngột.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Career Growth",
+        "Software Engineering",
+        "Learning",
+        "Career Transition",
+        "Reflection",
+        "Personal Development"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "continuous-integration-vs-continuous-delivery",
+      "category": "ways-of-working",
+      "title": "Continuous Integration và Continuous Delivery khác nhau thế nào?",
+      "summary": "Một bài giải thích thực tế về Continuous Integration và Continuous Delivery: CI bảo vệ shared code ra sao, CD giữ release luôn sẵn sàng thế nào, và vì sao test, trunk habit, feature flag cùng deployment discipline rất quan trọng.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Continuous Integration",
+        "Continuous Delivery",
+        "CI/CD",
+        "Testing",
+        "Deployment",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "graphql-vs-rest",
+      "category": "architecture",
+      "title": "GraphQL và REST",
+      "summary": "Một bài so sánh thực tế giữa GraphQL và REST: mỗi cách định hình API contract, độ linh hoạt cho frontend, caching, observability, ownership trong team và trade-off vận hành khi chọn một phong cách API.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "GraphQL",
+        "REST",
+        "API Design",
+        "System Design",
+        "Frontend Backend"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "handling-burnout-before-it-happens",
+      "category": "culture",
+      "title": "Xử lý burnout trước khi nó xảy ra",
+      "summary": "Một bài viết bình tĩnh về cách phòng burnout trong engineering team: tín hiệu sớm, workload visibility, thời gian hồi phục, kỳ vọng bền vững, trách nhiệm quản lý và những thói quen nhỏ giúp con người không kiệt sức trong im lặng.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Burnout",
+        "Team Health",
+        "Leadership",
+        "Sustainable Pace",
+        "Workload"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "multimodal-ai-text-vision-and-audio",
+      "category": "ai",
+      "title": "Multimodal AI: text, vision và audio",
+      "summary": "Một bài giới thiệu thực tế về multimodal AI: text, image, audio và video thay đổi workflow sản phẩm ra sao, điều gì trở nên khả thi, và vì sao evaluation, privacy, accessibility cùng human review càng quan trọng khi input giàu hơn.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "Multimodal AI",
+        "LLM",
+        "Computer Vision",
+        "Speech AI",
+        "AI Product"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "dealing-with-legacy-code",
+      "category": "perspectives",
+      "title": "Làm việc với legacy code",
+      "summary": "Một bài reflection về cách làm việc kiên nhẫn với legacy code: hiểu lịch sử, thêm test, thay đổi nhỏ và an toàn, tôn trọng constraint cũ, và cải thiện codebase mà không vội rewrite.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Engineering",
+        "Legacy Code",
+        "Refactoring",
+        "Codebase",
+        "Testing",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "shift-left-security",
+      "category": "ways-of-working",
+      "title": "Shift-left security",
+      "summary": "Một bài giải thích thực tế về shift-left security: đưa threat thinking, dependency check, secrets hygiene, secure default và review habit vào sớm hơn trong delivery mà không biến mọi engineer thành security specialist.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Shift-Left Security",
+        "Application Security",
+        "DevSecOps",
+        "Secure Coding",
+        "Software Delivery",
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
