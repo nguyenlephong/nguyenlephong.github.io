@@ -15,7 +15,7 @@ const COMMIT_MESSAGE =
 function run(command, args, options = {}) {
   console.log(`$ ${[command, ...args].join(' ')}`)
   const result = spawnSync(command, args, {
-    cwd: ROOT,
+    cwd: options.cwd ?? ROOT,
     env: options.env ?? process.env,
     stdio: 'inherit',
     shell: false,
@@ -27,7 +27,7 @@ function run(command, args, options = {}) {
 
 function output(command, args, options = {}) {
   const result = spawnSync(command, args, {
-    cwd: ROOT,
+    cwd: options.cwd ?? ROOT,
     encoding: 'utf8',
     env: options.env ?? process.env,
     maxBuffer: 1024 * 1024 * 20,
@@ -44,6 +44,9 @@ function currentRemoteBranchSha() {
   const [sha] = refs.split(/\s+/)
   return sha || null
 }
+
+const GIT_DIR = output('git', ['rev-parse', '--absolute-git-dir'])
+const outputTreeGitArgs = ['--git-dir', GIT_DIR, '--work-tree', OUT_DIR]
 
 if (!existsSync(OUT_DIR)) {
   console.error('[deploy-pages] missing out directory. Run `bun run build` first.')
@@ -67,11 +70,14 @@ const env = {
   GIT_INDEX_FILE: INDEX_FILE,
 }
 
-run('git', ['read-tree', '--empty'], { env })
-run('git', ['--work-tree', OUT_DIR, 'add', '-A', '.'], { env })
+run('git', [...outputTreeGitArgs, 'read-tree', '--empty'], { cwd: OUT_DIR, env })
+run('git', [...outputTreeGitArgs, 'add', '-A', '.'], { cwd: OUT_DIR, env })
 
-const tree = output('git', ['write-tree'], { env })
-const commit = output('git', ['commit-tree', tree, '-m', COMMIT_MESSAGE], { env })
+const tree = output('git', [...outputTreeGitArgs, 'write-tree'], { cwd: OUT_DIR, env })
+const commit = output('git', [...outputTreeGitArgs, 'commit-tree', tree, '-m', COMMIT_MESSAGE], {
+  cwd: OUT_DIR,
+  env,
+})
 const remoteSha = currentRemoteBranchSha()
 const pushArgs = ['push', REMOTE, `${commit}:refs/heads/${BRANCH}`]
 
