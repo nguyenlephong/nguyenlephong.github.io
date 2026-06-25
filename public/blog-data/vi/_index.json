@@ -703,7 +703,7 @@
       "category": "architecture",
       "title": "Chi phí thật sự của Microservices",
       "summary": "Microservices có thể tạo quyền tự chủ thật cho team, nhưng chuyển chi phí sang vận hành, dữ liệu, observability, testing và phối hợp. Bài viết hỏi khi nào cái giá đó đáng trả, và khi nào modular monolith tử tế hơn.",
-      "date": "2026-06-22",
+      "date": "2026-04-06",
       "readingMinutes": 9,
       "tags": [
         "Kiến trúc phần mềm",

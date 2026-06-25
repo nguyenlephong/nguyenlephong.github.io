@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "The True Cost of Microservices",
   "summary": "Microservices can create real team autonomy, but they move cost into operations, data consistency, observability, testing, and coordination. This piece asks when that cost is worth paying and when a modular monolith is the kinder architecture.",
-  "date": "2026-06-22",
+  "date": "2026-04-06",
   "readingMinutes": 8,
   "tags": [
     "Software Architecture",
