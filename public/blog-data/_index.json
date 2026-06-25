@@ -1323,7 +1323,7 @@
       "category": "ways-of-working",
       "title": "TDD, BDD, DDD, and the Rest of the \"-Driven Development\" Family, Explained for Engineers",
       "summary": "TDD, BDD, DDD, ATDD, EDD, CDD, FDD — the \"-Driven Development\" alphabet soup confuses even experienced engineers, partly because they're not rivals: they answer different questions and compose together. This is a practical, example-rich guide for software engineers: what each one really means, the core loop or concept, concrete code and Gherkin examples, when to reach for it, the pitfalls — and a clear map of how they fit together on a single real feature.",
-      "date": "2026-06-02",
+      "date": "2026-03-09",
       "readingMinutes": 22,
       "tags": [
         "TDD",
