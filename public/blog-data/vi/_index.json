@@ -234,7 +234,7 @@
       "category": "perspectives",
       "title": "Đọc code khó hơn viết code",
       "summary": "Một bài nhìn lại vì sao đọc code thường khó hơn viết code, và cách tracing kiên nhẫn, test, naming, lịch sử decision, cùng những note nhỏ giúp engineer hiểu codebase mà không vội rewrite.",
-      "date": "2026-06-24",
+      "date": "2026-05-03",
       "readingMinutes": 7,
       "tags": [
         "Software Engineering",
