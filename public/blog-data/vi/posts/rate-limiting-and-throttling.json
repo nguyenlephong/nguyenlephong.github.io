@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Rate limiting và throttling",
   "summary": "Một bài giải thích thực tế về rate limiting và throttling: cách hệ thống bảo vệ capacity chung, điều tiết traffic, giao tiếp limit rõ ràng và ngăn overload biến thành outage.",
-  "date": "2026-06-25",
+  "date": "2026-01-05",
   "readingMinutes": 7,
   "tags": [
     "Software Architecture",

@@ -33,5 +33,6 @@
       "q": "Commit message nên chứa gì?",
       "a": "Commit message nên có dòng subject ngắn dạng imperative (tối đa 50 ký tự) mô tả commit làm gì. Dùng định dạng conventional commits: type(scope): subject — ví dụ 'fix(cart): add row-level lock to prevent oversell'. Nếu lý do không rõ ràng từ diff, thêm một dòng trống sau subject và một body ngắn giải thích động lực hay bất kỳ quyết định thiết kế không rõ ràng nào. Diff cho thấy cái gì đã thay đổi; message nên giải thích tại sao."
     }
-  ]
+  ],
+  "date": "2026-02-27"
 }

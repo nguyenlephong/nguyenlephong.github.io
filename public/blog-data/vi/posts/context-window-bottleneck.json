@@ -3,7 +3,7 @@
   "category": "ai",
   "title": "Context window: điểm nghẽn thầm lặng của AI workflow",
   "summary": "Một góc nhìn thực tế về giới hạn context window như một điểm nghẽn âm thầm trong AI workflow. Bài viết giải thích vì sao chat quá dài, codebase lớn, summary mơ hồ và working memory thiếu rõ ràng có thể làm AI trả lời lệch, và cách team xử lý giới hạn này mà không biến mọi task thành một đống tài liệu.",
-  "date": "2026-06-24",
+  "date": "2026-04-18",
   "readingMinutes": 7,
   "tags": [
     "AI",

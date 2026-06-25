@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Database sharding: khi nào cần và vì sao",
   "summary": "Một bài giải thích thực tế về database sharding: điều gì thay đổi khi một database được chia thành nhiều partition nhỏ hơn, khi nào sharding đáng với chi phí vận hành, và vì sao shard key, hotspot, rebalancing cùng observability rất quan trọng.",
-  "date": "2026-06-25",
+  "date": "2026-01-20",
   "readingMinutes": 7,
   "tags": [
     "Software Architecture",

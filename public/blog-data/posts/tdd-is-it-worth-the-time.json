@@ -3,7 +3,7 @@
   "category": "ways-of-working",
   "title": "TDD: Is It Worth the Time?",
   "summary": "A practical reflection on when Test-Driven Development is worth the cost: how TDD shapes design, where it slows teams down, and how to use the red-green-refactor loop without turning it into dogma.",
-  "date": "2026-06-24",
+  "date": "2026-05-04",
   "readingMinutes": 6,
   "tags": [
     "TDD",

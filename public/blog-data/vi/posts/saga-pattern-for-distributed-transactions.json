@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Saga Pattern cho distributed transaction",
   "summary": "Một bài giải thích thực tế về Saga pattern trong distributed transaction: vì sao một database transaction không còn đủ khi hệ thống tách service, orchestration và choreography khác nhau thế nào, và vì sao compensation, observability, idempotency lại quan trọng.",
-  "date": "2026-06-24",
+  "date": "2026-04-30",
   "readingMinutes": 7,
   "tags": [
     "Software Architecture",

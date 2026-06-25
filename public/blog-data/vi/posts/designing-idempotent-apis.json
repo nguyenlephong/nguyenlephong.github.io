@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Thiết kế idempotent API",
   "summary": "Một bài giải thích thực tế về idempotent API design: vì sao retry luôn xảy ra, duplicate request tạo rủi ro thế nào, và cách idempotency key, state transition ổn định cùng response contract rõ ràng làm distributed system bình tĩnh hơn.",
-  "date": "2026-06-25",
+  "date": "2026-01-10",
   "readingMinutes": 7,
   "tags": [
     "Software Architecture",

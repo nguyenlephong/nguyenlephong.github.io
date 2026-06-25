@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Caching Strategies and Pitfalls",
   "summary": "A practical explanation of caching strategies: where caches help, how cache-aside, read-through, write-through, TTLs, and invalidation differ, and why stale data, stampedes, keys, and observability matter as much as speed.",
-  "date": "2026-06-25",
+  "date": "2026-01-25",
   "readingMinutes": 6,
   "tags": [
     "Software Architecture",

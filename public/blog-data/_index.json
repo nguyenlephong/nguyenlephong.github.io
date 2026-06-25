@@ -43,11 +43,96 @@
   ],
   "posts": [
     {
+      "slug": "cross-functional-teams",
+      "category": "ways-of-working",
+      "title": "Cross-Functional Teams",
+      "summary": "A practical look at cross-functional teams: why they exist, how shared outcomes reduce handoff friction, and what teams need around ownership, rituals, decision-making, specialist depth, and healthy disagreement.",
+      "date": "2026-05-19",
+      "readingMinutes": 6,
+      "tags": [
+        "Cross-Functional Teams",
+        "Ways of Working",
+        "Product Engineering",
+        "Team Collaboration",
+        "Software Delivery",
+        "Ownership"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "loneliness-of-the-solo-developer",
+      "category": "perspectives",
+      "title": "The Loneliness of the Solo Developer",
+      "summary": "A reflective essay on solo development: the freedom and pressure of working alone, the missing feedback loops, and the small systems that make solo work more sustainable and less isolating.",
+      "date": "2026-05-18",
+      "readingMinutes": 6,
+      "tags": [
+        "Solo Developer",
+        "Reflection",
+        "Software Engineering",
+        "Career Growth",
+        "Sustainable Work",
+        "Decision Making"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "vector-databases-explained",
+      "category": "ai",
+      "title": "Vector Databases Explained",
+      "summary": "A beginner-friendly explanation of vector databases: how embeddings represent meaning, why similarity search helps AI products, and what teams need to handle around chunking, metadata, freshness, evaluation, and cost.",
+      "date": "2026-05-17",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Vector Database",
+        "Embeddings",
+        "Semantic Search",
+        "RAG",
+        "AI Product"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "fostering-innovation-in-teams",
+      "category": "culture",
+      "title": "Fostering Innovation in Teams",
+      "summary": "A grounded reflection on fostering innovation in engineering teams: how psychological safety, slack, user context, small experiments, technical quality, and honest prioritization help ideas become useful change.",
+      "date": "2026-05-16",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Innovation",
+        "Team Trust",
+        "Leadership",
+        "Product Engineering",
+        "Continuous Improvement"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-outbox-pattern",
+      "category": "architecture",
+      "title": "The Outbox Pattern",
+      "summary": "A practical explanation of the Outbox Pattern: why dual writes fail, how a transactional outbox keeps database state and events aligned, and what teams still need to handle around retries, idempotency, ordering, cleanup, and observability.",
+      "date": "2026-05-15",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Outbox Pattern",
+        "Distributed Systems",
+        "Event-Driven Architecture",
+        "Reliability",
+        "Microservices"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "okrs-for-engineering-teams",
       "category": "ways-of-working",
       "title": "OKRs for Engineering Teams",
       "summary": "A practical guide to engineering OKRs: how to connect outcomes to delivery work, avoid task lists disguised as objectives, choose useful key results, and keep learning visible during the quarter.",
-      "date": "2026-06-25",
+      "date": "2026-05-14",
       "readingMinutes": 6,
       "tags": [
         "OKRs",
@@ -64,7 +149,7 @@
       "category": "perspectives",
       "title": "Learning a New Language Every Year",
       "summary": "A reflective essay on learning one new programming or human language each year: how unfamiliar grammar, small exercises, patience, and comparison sharpen the way we think and communicate.",
-      "date": "2026-06-25",
+      "date": "2026-05-13",
       "readingMinutes": 6,
       "tags": [
         "Learning",
@@ -81,7 +166,7 @@
       "category": "ai",
       "title": "AI in Cybersecurity",
       "summary": "A practical reflection on AI in cybersecurity: how AI helps detection, triage, secure coding, and incident response while creating new risks around automation, privacy, prompt injection, and false confidence.",
-      "date": "2026-06-25",
+      "date": "2026-05-12",
       "readingMinutes": 6,
       "tags": [
         "AI",
@@ -98,7 +183,7 @@
       "category": "culture",
       "title": "Navigating Office Politics",
       "summary": "A calm look at office politics in engineering teams: how to understand incentives, build trust, communicate context, disagree cleanly, and stay principled without becoming naive.",
-      "date": "2026-06-25",
+      "date": "2026-05-11",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -115,7 +200,7 @@
       "category": "architecture",
       "title": "Service Mesh: Do You Need It?",
       "summary": "A practical explanation of service mesh trade-offs: what it centralizes, when it helps, and why teams should solve real service-to-service pain before adopting another infrastructure layer.",
-      "date": "2026-06-25",
+      "date": "2026-05-10",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
@@ -132,7 +217,7 @@
       "category": "ways-of-working",
       "title": "Trunk-Based Development",
       "summary": "A practical introduction to trunk-based development: small frequent merges, feature flags, fast tests, code review discipline, and the team habits needed to keep the main branch healthy.",
-      "date": "2026-06-25",
+      "date": "2026-05-09",
       "readingMinutes": 6,
       "tags": [
         "Trunk-Based Development",
@@ -149,7 +234,7 @@
       "category": "perspectives",
       "title": "Overcoming Analysis Paralysis",
       "summary": "A reflective essay on analysis paralysis: why careful thinking can turn into delay, how to separate reversible from irreversible choices, and how small experiments help decisions move without rushing.",
-      "date": "2026-06-25",
+      "date": "2026-05-08",
       "readingMinutes": 6,
       "tags": [
         "Decision Making",
@@ -166,7 +251,7 @@
       "category": "ai",
       "title": "Reducing Hallucinations in LLMs",
       "summary": "A practical guide to reducing LLM hallucinations with clearer tasks, bounded context, retrieval, citations, verification, refusals, evaluation sets, and product design that makes uncertainty visible.",
-      "date": "2026-06-25",
+      "date": "2026-05-07",
       "readingMinutes": 6,
       "tags": [
         "AI",
@@ -183,7 +268,7 @@
       "category": "culture",
       "title": "The Difference Between Mentorship and Sponsorship",
       "summary": "A calm explanation of mentorship and sponsorship in engineering careers: how advice, feedback, advocacy, visibility, trust, and opportunity work together without turning growth into politics.",
-      "date": "2026-06-25",
+      "date": "2026-05-06",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -200,7 +285,7 @@
       "category": "architecture",
       "title": "Event Sourcing: A Beginner's Guide",
       "summary": "A beginner-friendly guide to Event Sourcing: storing facts as an append-only event history, rebuilding current state through projections, and understanding when the pattern is worth its operational cost.",
-      "date": "2026-06-25",
+      "date": "2026-05-05",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
@@ -217,7 +302,7 @@
       "category": "ways-of-working",
       "title": "TDD: Is It Worth the Time?",
       "summary": "A practical reflection on when Test-Driven Development is worth the cost: how TDD shapes design, where it slows teams down, and how to use the red-green-refactor loop without turning it into dogma.",
-      "date": "2026-06-24",
+      "date": "2026-05-04",
       "readingMinutes": 6,
       "tags": [
         "TDD",
@@ -234,7 +319,7 @@
       "category": "perspectives",
       "title": "Reading Code Is Harder Than Writing It",
       "summary": "A reflective essay on why reading code often feels harder than writing it, and how patient tracing, tests, naming, history, and small notes help engineers understand a codebase without rushing to rewrite it.",
-      "date": "2026-06-24",
+      "date": "2026-05-03",
       "readingMinutes": 6,
       "tags": [
         "Software Engineering",
@@ -251,7 +336,7 @@
       "category": "ai",
       "title": "Fine-Tuning vs. Prompting vs. RAG",
       "summary": "A practical comparison of prompting, RAG, and fine-tuning for AI products: what each approach changes, when it helps, where it fails, and how teams can choose the smallest reliable intervention.",
-      "date": "2026-06-24",
+      "date": "2026-05-02",
       "readingMinutes": 6,
       "tags": [
         "AI",
@@ -268,7 +353,7 @@
       "category": "culture",
       "title": "Onboarding That Actually Helps New Teammates",
       "summary": "A calm look at engineering onboarding that helps people become useful without feeling lost: context, small early wins, clear ownership, buddy support, documentation, feedback loops, and patient team habits.",
-      "date": "2026-06-24",
+      "date": "2026-05-01",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -285,7 +370,7 @@
       "category": "architecture",
       "title": "The Saga Pattern for Distributed Transactions",
       "summary": "A practical explanation of the Saga pattern for distributed transactions: why one database transaction stops working across services, how orchestration and choreography differ, and why compensation, observability, and idempotency matter.",
-      "date": "2026-06-24",
+      "date": "2026-04-30",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
@@ -302,7 +387,7 @@
       "category": "ways-of-working",
       "title": "Retrospectives That Actually Cause Change",
       "summary": "A practical look at retrospectives that produce visible follow-through: small experiments, clear action owners, trust, decision records, and measurable behavior change instead of another list of forgotten complaints.",
-      "date": "2026-06-24",
+      "date": "2026-04-29",
       "readingMinutes": 6,
       "tags": [
         "Retrospectives",
@@ -319,7 +404,7 @@
       "category": "perspectives",
       "title": "Mentoring Junior Developers Effectively",
       "summary": "A practical reflection on mentoring junior developers through context, calibrated support, confidence, code review, recoverable mistakes, independence, and psychological safety without turning mentorship into control.",
-      "date": "2026-06-24",
+      "date": "2026-04-28",
       "readingMinutes": 6,
       "tags": [
         "Software Engineering",
@@ -336,7 +421,7 @@
       "category": "ai",
       "title": "Ethical Considerations in AI Products",
       "summary": "A practical article on product ethics for AI teams: consent, data boundaries, bias and fairness, human review, explanations, risk controls, and incentives that shape whether AI features remain useful and responsible.",
-      "date": "2026-06-24",
+      "date": "2026-04-27",
       "readingMinutes": 7,
       "tags": [
         "AI",
@@ -353,7 +438,7 @@
       "category": "culture",
       "title": "Async Communication for Remote Teams",
       "summary": "A calm guide to async communication for remote teams: writing enough context, recording decisions, setting response expectations, improving handoffs, building trust, and protecting people from always-on pressure.",
-      "date": "2026-06-24",
+      "date": "2026-04-26",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -370,7 +455,7 @@
       "category": "architecture",
       "title": "API Gateway Patterns",
       "summary": "A practical look at API gateway responsibilities: routing, authentication boundaries, rate limiting, request aggregation, backend-for-frontend trade-offs, failure modes, and the observability needed to keep the edge of a system understandable.",
-      "date": "2026-06-24",
+      "date": "2026-04-25",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
@@ -387,7 +472,7 @@
       "category": "ai",
       "title": "Retrieval-Augmented Generation (RAG) Basics",
       "summary": "A beginner-friendly explanation of Retrieval-Augmented Generation: how documents are split into chunks, turned into embeddings, found with vector search, and used to ground AI answers with citations, evaluation, and clear failure checks.",
-      "date": "2026-06-24",
+      "date": "2026-04-24",
       "readingMinutes": 7,
       "tags": [
         "AI",
@@ -404,7 +489,7 @@
       "category": "perspectives",
       "title": "The Value of a \"Boring\" Tech Stack",
       "summary": "A calm reflection on why stable, familiar technology often helps teams move with more confidence. The article looks at reliability, hiring, maintainability, shared knowledge, and the trade-offs behind choosing a tech stack that does not need to impress anyone.",
-      "date": "2026-06-24",
+      "date": "2026-04-23",
       "readingMinutes": 6,
       "tags": [
         "Software Engineering",
@@ -421,7 +506,7 @@
       "category": "architecture",
       "title": "Hexagonal Architecture in Practice",
       "summary": "A practical guide to applying Hexagonal Architecture to one small feature: drawing the boundary, naming ports in business language, keeping adapters at the edge, testing the core, and deciding when the extra structure is worth the cost.",
-      "date": "2026-06-24",
+      "date": "2026-04-22",
       "readingMinutes": 7,
       "tags": [
         "Software Architecture",
@@ -438,7 +523,7 @@
       "category": "ways-of-working",
       "title": "Writing Good Acceptance Criteria",
       "summary": "A practical guide to writing acceptance criteria as shared evidence for done behavior: clear examples, important edge cases, reviewable scope, and a calmer handoff between product, engineering, QA, and stakeholders.",
-      "date": "2026-06-24",
+      "date": "2026-04-21",
       "readingMinutes": 6,
       "tags": [
         "Acceptance Criteria",
@@ -455,7 +540,7 @@
       "category": "ways-of-working",
       "title": "Kanban vs. Scrum: Which Fits Better?",
       "summary": "A calm comparison of Kanban and Scrum through the shape of real team work: how requests arrive, how much WIP the team can carry, what kind of predictability the business needs, and which operating rhythm fits the team's context.",
-      "date": "2026-06-24",
+      "date": "2026-04-20",
       "readingMinutes": 6,
       "tags": [
         "Kanban",
@@ -472,7 +557,7 @@
       "category": "perspectives",
       "title": "Why I Stopped Writing Perfect Code",
       "summary": "A reflective essay on moving away from perfectionism in code and toward maintainable, understandable, reviewable work. The piece looks at why good code is not the most impressive version in isolation, but the version a team can safely understand, change, and carry forward.",
-      "date": "2026-06-24",
+      "date": "2026-04-19",
       "readingMinutes": 6,
       "tags": [
         "Software Engineering",
@@ -488,7 +573,7 @@
       "category": "ai",
       "title": "The Context Window Bottleneck",
       "summary": "A practical look at context window limits as one of the quiet bottlenecks in AI workflows. The article explains why long chats, big codebases, stale summaries, and missing working memory can make AI assistance drift, and how teams can work around the limit without turning every task into a document dump.",
-      "date": "2026-06-24",
+      "date": "2026-04-18",
       "readingMinutes": 6,
       "tags": [
         "AI",
@@ -505,7 +590,7 @@
       "category": "culture",
       "title": "Handling Toxic Rockstars",
       "summary": "A calm look at high-output behavior that damages trust: why teams reward it, how feedback loops break, and how leaders can set boundaries while still offering a real repair path.",
-      "date": "2026-06-24",
+      "date": "2026-04-17",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -522,7 +607,7 @@
       "category": "culture",
       "title": "Hiring for Potential vs. Experience",
       "summary": "A calm reflection on balancing experience and potential in engineering hiring. The article focuses on evidence, learning pace, team needs, and the quiet conditions that help a person grow after they join.",
-      "date": "2026-06-24",
+      "date": "2026-04-16",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -539,7 +624,7 @@
       "category": "ai",
       "title": "When an AI Answer Needs a Test",
       "summary": "A calm explainer on treating AI answers as claims that need proportionate verification. The article shows how engineers can keep responsibility by testing AI output against evidence, context, and real system behavior before acting on it.",
-      "date": "2026-06-24",
+      "date": "2026-04-15",
       "readingMinutes": 7,
       "tags": [
         "AI",
@@ -557,7 +642,7 @@
       "category": "perspectives",
       "title": "Why Preparation Often Looks Invisible",
       "summary": "Preparation often looks like nothing from the outside: a quiet note, a rehearsal, a cleaned-up checklist, or one small risk handled before it becomes visible. This reflection looks at why calm outcomes usually come from work people do not see.",
-      "date": "2026-06-24",
+      "date": "2026-04-14",
       "readingMinutes": 5,
       "tags": [
         "Personal Growth",
@@ -573,7 +658,7 @@
       "category": "ways-of-working",
       "title": "The Daily Standup That Changes Decisions",
       "summary": "A practical companion to the daily standup conversation, focused on the small decisions a team should make before the day starts: what to finish, what to defer, what to escalate, and where help would change the outcome.",
-      "date": "2026-06-24",
+      "date": "2026-04-13",
       "readingMinutes": 6,
       "tags": [
         "Agile",
@@ -590,7 +675,7 @@
       "category": "ai",
       "title": "Khi AI chạm vào việc hằng ngày, ý tưởng bắt đầu nở ra",
       "summary": "Khi AI đủ thực tế để bước vào những việc nhỏ trong văn phòng, ý tưởng không còn nằm ở các bản demo xa xôi. Chúng xuất hiện ngay trong onboarding, hỗ trợ khách hàng, đối chiếu tài chính, chuẩn bị họp, đọc tin tức, kiểm tra tài liệu và rất nhiều workflow lặp lại khác. Bài viết là một góc nhìn bình tĩnh về cách nhận ra các điểm nghẽn ấy, cải tiến từng chút và giữ con người ở phần phán đoán quan trọng.",
-      "date": "2026-06-23",
+      "date": "2026-04-12",
       "readingMinutes": 7,
       "tags": [
         "AI",
@@ -608,7 +693,7 @@
       "category": "architecture",
       "title": "Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained",
       "summary": "When services hold hands through synchronous calls, latency adds up and one slow dependency takes down checkout. A no-hype guide to event-driven architecture: sync vs async, commands vs events, what brokers really promise (at-least-once, not exactly-once), choreography vs orchestration, and exactly when NOT to reach for events.",
-      "date": "2026-06-03",
+      "date": "2026-04-11",
       "readingMinutes": 13,
       "tags": [
         "Software Architecture",
@@ -627,7 +712,7 @@
       "category": "architecture",
       "title": "Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears",
       "summary": "Splitting code is the easy half — splitting data is where distributed systems humble you. A practical guide to owning data across services: why a shared database is a distributed monolith, the trade from ACID to eventual consistency, the dual-write bug and the outbox that fixes it, sagas with compensating actions, and when CQRS and event sourcing are worth their lifetime cost.",
-      "date": "2026-06-03",
+      "date": "2026-04-10",
       "readingMinutes": 13,
       "tags": [
         "Software Architecture",
@@ -646,7 +731,7 @@
       "category": "architecture",
       "title": "The Distributed-Systems Tax, Paid: Timeouts, Retries, Circuit Breakers, and Idempotency",
       "summary": "The moment a call leaves your process it can be slow, fail, or happen twice — and that is the normal case, not the exception. The resilience toolkit, explained plainly: why timeouts come first, how retries become a self-inflicted DDoS without backoff and jitter, why idempotency is the price of retrying, and how circuit breakers, bulkheads, graceful degradation, and observability keep one bad dependency from taking down everything.",
-      "date": "2026-06-03",
+      "date": "2026-04-09",
       "readingMinutes": 13,
       "tags": [
         "Software Architecture",
@@ -665,7 +750,7 @@
       "category": "architecture",
       "title": "Scaling the Database: Indexes, Read Replicas, Caching, and Sharding — In That Order",
       "summary": "The database is almost always the first thing to buckle under growth — and the first thing engineers over-engineer in a panic. A no-hype ladder for scaling the data layer: why you measure and add an index before touching hardware, how read replicas exploit the read/write asymmetry (and the replication-lag trap they bring), where caching helps and why invalidation is the hard part, and when you finally reach for partitioning and sharding — the one decision that is genuinely hard to undo.",
-      "date": "2026-06-04",
+      "date": "2026-04-08",
       "readingMinutes": 14,
       "tags": [
         "Software Architecture",
@@ -684,7 +769,7 @@
       "category": "architecture",
       "title": "You Can't Fix What You Can't See: Logs, Metrics, Traces, and SLOs at Scale",
       "summary": "In a monolith, debugging was almost cosy — one log file, one process, one place the truth lived. Distributed systems quietly took that away: one request now fans out across a dozen services, and when it breaks there is no single log to read. A no-hype guide to seeing your system at scale: the three pillars (metrics, logs, traces) and the question each one answers, why a single propagated trace ID is the highest-leverage habit you can adopt, how SLOs turn reliability into an error budget you can spend, and how to alert on symptoms so on-call doesn't burn out.",
-      "date": "2026-06-04",
+      "date": "2026-04-07",
       "readingMinutes": 14,
       "tags": [
         "Software Architecture",
@@ -703,7 +788,7 @@
       "category": "architecture",
       "title": "The True Cost of Microservices",
       "summary": "Microservices can create real team autonomy, but they move cost into operations, data consistency, observability, testing, and coordination. This piece asks when that cost is worth paying and when a modular monolith is the kinder architecture.",
-      "date": "2026-06-22",
+      "date": "2026-04-06",
       "readingMinutes": 8,
       "tags": [
         "Software Architecture",
@@ -722,7 +807,7 @@
       "category": "ai",
       "title": "Cognitive Debt in AI-Assisted Development: When Code Grows Faster Than Understanding",
       "summary": "AI coding tools can make a team produce code faster than it can understand, review, debug, and safely operate that code. This article explains cognitive debt, how it differs from technical debt and intent debt, why agentic coding makes it more visible, and the practical controls teams can use: smaller batches, better PR rationale, human-owned invariants, disposable prototypes, and AI used to repay understanding instead of only generating more work.",
-      "date": "2026-06-17",
+      "date": "2026-04-05",
       "readingMinutes": 15,
       "tags": [
         "AI",
@@ -740,7 +825,7 @@
       "category": "ai",
       "title": "Beyond the Hype: What LLMs Actually Understand",
       "summary": "LLMs can feel like they understand us because they handle patterns, context, and language-shaped reasoning well. This explainer separates useful machine understanding from human understanding so teams can verify, constrain, and use AI with better judgment.",
-      "date": "2026-06-22",
+      "date": "2026-04-04",
       "readingMinutes": 7,
       "tags": [
         "AI",
@@ -758,7 +843,7 @@
       "category": "ways-of-working",
       "title": "Lean Business Analysis: Start from Value, Not Requirements",
       "summary": "A practical introduction to Lean Business Analysis: why BA starts with value, how needs assessment protects teams from solving the wrong problem, and how a business case keeps decisions grounded without turning analysis into ceremony.",
-      "date": "2026-06-17",
+      "date": "2026-04-03",
       "readingMinutes": 13,
       "tags": [
         "Business Analysis",
@@ -778,7 +863,7 @@
       "category": "ways-of-working",
       "title": "Lean BA Planning: Stakeholders, Elicitation, and the Questions Behind Requirements",
       "summary": "A practical guide to Lean BA planning: stakeholder analysis, predictive versus adaptive BA rhythms, elicitation planning, and the difference between collecting stated requests and uncovering the need behind them.",
-      "date": "2026-06-17",
+      "date": "2026-04-02",
       "readingMinutes": 14,
       "tags": [
         "Business Analysis",
@@ -798,7 +883,7 @@
       "category": "ways-of-working",
       "title": "Requirements Modeling: How BA Turns Messy Conversations into Shared Pictures",
       "summary": "A calm, practical guide to requirements modeling: scope, process, rule, data, and interface models, with examples of how diagrams and structured descriptions help teams reason together before building.",
-      "date": "2026-06-17",
+      "date": "2026-04-01",
       "readingMinutes": 15,
       "tags": [
         "Business Analysis",
@@ -818,7 +903,7 @@
       "category": "ways-of-working",
       "title": "Requirements Quality, Traceability, and Solution Evaluation: Keep the Promise After Sign-off",
       "summary": "A practical reflection on the later half of Business Analysis: requirement quality, prioritization, traceability, change control, UAT, rollout choices, transition, and evaluating whether the delivered solution actually worked.",
-      "date": "2026-06-17",
+      "date": "2026-03-31",
       "readingMinutes": 15,
       "tags": [
         "Business Analysis",
@@ -838,7 +923,7 @@
       "category": "ways-of-working",
       "title": "Data: Data Is a Windshield for Operators",
       "summary": "A practical reflection on Data: Harness Your Numbers to Go from Uncertain to Unstoppable, focused on how the EOS Data Component helps leaders move from anxious guesswork to clearer operating visibility. The article looks at data as a clean windshield: a way to test intuition, avoid hopeful fiction, connect Visionary and Integrator work, and turn numbers into leadership freedom rather than pressure.",
-      "date": "2026-06-16",
+      "date": "2026-03-30",
       "readingMinutes": 11,
       "tags": [
         "Business Data",
@@ -858,7 +943,7 @@
       "category": "ways-of-working",
       "title": "Data: A Scorecard Is a One-Page Early Warning System",
       "summary": "A practical reflection on the Scorecard idea in Data and EOS: why a company does not need dozens of KPIs to understand its operating health, but a small set of measurables that are clear, consistent, predictive, and owned. The article looks at the Scorecard as a check-engine light, the difference between P&L and leading indicators, weekly cadence, reverse-engineering goals, range goals, and the traps of measuring too much or measuring what is easy instead of what matters.",
-      "date": "2026-06-16",
+      "date": "2026-03-29",
       "readingMinutes": 11,
       "tags": [
         "Business Data",
@@ -878,7 +963,7 @@
       "category": "ways-of-working",
       "title": "Data: Everyone Has a Number Is Not Surveillance",
       "summary": "A practical reflection on Everyone Has a Number from Data and EOS. The article treats role-level measurables as a gift of clarity rather than a surveillance tool: they help people understand how they win, help managers avoid vague judgment, speed up problem-solving, create healthier competition, and turn accountability into a foundation for trust.",
-      "date": "2026-06-16",
+      "date": "2026-03-28",
       "readingMinutes": 10,
       "tags": [
         "Business Data",
@@ -898,7 +983,7 @@
       "category": "ways-of-working",
       "title": "Data: Revenue Is Not Cash, and Profit Is Not Breathing Room",
       "summary": "A practical reflection on the Cash chapter in Data: why a business can sell well, show accounting profit, and still feel tight on cash. The article explains the difference between sales, profit, and cash; why financial literacy should extend beyond finance; how daily work connects to gross margin, rework, collections, expenses, and cash flow; and why understanding money requires clarity, rhythm, and real decisions more than complex formulas.",
-      "date": "2026-06-16",
+      "date": "2026-03-27",
       "readingMinutes": 10,
       "tags": [
         "Business Data",
@@ -918,7 +1003,7 @@
       "category": "ways-of-working",
       "title": "Software Measurement and Estimation: Fewer Gut Feelings, Better Engineering Decisions",
       "summary": "A practical reflection on Software Measurement and Estimation: A Practical Approach by Linda M. Laird and M. Carol Brennan. The article focuses on the ideas engineers can use at work: measure from decisions, estimate as uncertainty instead of promise, track quality before release, and keep dashboards useful instead of decorative.",
-      "date": "2026-06-17",
+      "date": "2026-03-26",
       "readingMinutes": 16,
       "tags": [
         "Software Measurement",
@@ -936,7 +1021,7 @@
       "category": "ways-of-working",
       "title": "Agile Estimating and Planning: Estimates Are Conversations, Not Promises",
       "summary": "A practical reflection from Mike Cohn’s Agile Estimating and Planning on story points, velocity, planning poker, ideal days, and why estimates should expose uncertainty instead of pretending to remove it.",
-      "date": "2026-06-17",
+      "date": "2026-03-25",
       "readingMinutes": 13,
       "tags": [
         "Agile Estimating",
@@ -954,7 +1039,7 @@
       "category": "ways-of-working",
       "title": "Agile Release Planning: Plan with Value, Risk, and Real Feedback",
       "summary": "A second reflection from Agile Estimating and Planning, focused on release planning: prioritizing by value and risk, splitting stories into useful slices, using buffers for uncertainty, and communicating plans without pretending the future is fixed.",
-      "date": "2026-06-17",
+      "date": "2026-03-24",
       "readingMinutes": 18,
       "tags": [
         "Agile Planning",
@@ -972,7 +1057,7 @@
       "category": "ways-of-working",
       "title": "Agile is Dead, Long Live Agile",
       "summary": "Agile feels dead when ceremony replaces learning, boards replace feedback, and meetings lack trust. This piece separates the tired brand from the useful habit of adapting through small, honest feedback loops.",
-      "date": "2026-06-22",
+      "date": "2026-03-23",
       "readingMinutes": 7,
       "tags": [
         "Agile",
@@ -990,7 +1075,7 @@
       "category": "ways-of-working",
       "title": "The Design of Everyday Things: Make the Interface Explain Itself",
       "summary": "A practical reflection from Don Norman’s The Design of Everyday Things for software and product teams: discoverability, signifiers, mapping, feedback, conceptual models, and why a clear interface should not make users guess what it wants.",
-      "date": "2026-06-17",
+      "date": "2026-03-22",
       "readingMinutes": 12,
       "tags": [
         "UX Design",
@@ -1008,7 +1093,7 @@
       "category": "ways-of-working",
       "title": "The Design of Everyday Things: Human Error Is Often System Design",
       "summary": "A second reflection from Don Norman’s The Design of Everyday Things on slips, mistakes, constraints, forcing functions, checklists, undo, root-cause analysis, and how product teams can design systems that absorb ordinary human limits instead of blaming users.",
-      "date": "2026-06-17",
+      "date": "2026-03-21",
       "readingMinutes": 13,
       "tags": [
         "Human Error",
@@ -1026,7 +1111,7 @@
       "category": "ai",
       "title": "AI Literacy: From Prompting to Orchestrating Agents",
       "summary": "Using AI more often does not automatically mean working at a higher level. This guide maps three levels of AI literacy with a visual ladder, concrete tool examples, workflow keys, and a path toward deeper practical guides for each level.",
-      "date": "2026-06-21",
+      "date": "2026-03-20",
       "readingMinutes": 13,
       "tags": [
         "AI",
@@ -1044,7 +1129,7 @@
       "category": "ai",
       "title": "Your Fear of AI Is the Size of Your Ambition: Why It’s Time to Aim Dramatically Bigger",
       "summary": "Two people can look at the same AI breakthrough and feel opposite things — terror or fuel — and the difference reveals something uncomfortable: our fear of the future is roughly the size of our ambition. If your plan is to keep doing exactly what you do, a machine that does it cheaper is frightening. If your plan is to build something dramatically bigger, it’s the best news you’ve ever gotten. This is a clear, energising case for retiring “don’t boil the ocean,” trading the 1.05x present for the 10x future, and why — through ephemeralization and the Jevons paradox — raising your ambitions tends to create more, not less.",
-      "date": "2026-06-03",
+      "date": "2026-03-19",
       "readingMinutes": 11,
       "tags": [
         "AI",
@@ -1062,7 +1147,7 @@
       "category": "culture",
       "title": "From Software Engineer to Technical Manager: The Counterintuitive Things You Learn",
       "summary": "Moving from Software Engineer to Technical Manager isn’t a bigger version of the same job — it’s a quiet rewrite of the very habits that made you good at the last one. Step back from the IDE to see architecture, people, and process, and three surprising truths come into focus: code is an asset and a liability at once, your value shifts from addition to multiplication, and delegation is simple to say but genuinely hard to let go of. A practical, honest reflection for senior engineers eyeing the lead role — and for new managers still reaching for the keyboard.",
-      "date": "2026-06-03",
+      "date": "2026-03-18",
       "readingMinutes": 12,
       "tags": [
         "Engineering Culture",
@@ -1080,7 +1165,7 @@
       "category": "ai",
       "title": "From SDLC to ADLC: How AI Agents Are Rewriting the Software Development Lifecycle",
       "summary": "Software development is going through its biggest shift since the graphical interface. The phases engineers once ran by hand — planning, coding, testing, deployment — are increasingly executed by AI agents working in parallel. This is a clear, visual guide to the move from the classic SDLC to the emerging ADLC (Agentic Development Life Cycle): the two lifecycles drawn side by side, the six concrete shifts happening right now, what the early numbers suggest, what it actually means for an engineer’s day-to-day, and five low-risk best practices to start moving faster — without handing over the judgment that still has to be yours.",
-      "date": "2026-06-03",
+      "date": "2026-03-17",
       "readingMinutes": 15,
       "tags": [
         "AI",
@@ -1098,7 +1183,7 @@
       "category": "ways-of-working",
       "title": "How Software Teams Really Work: Big Corp vs Startup vs Outsourcing",
       "summary": "Two engineers with the same title can have completely different jobs — because the environment shapes the work far more than the title does. This is a field guide to the three worlds most software careers move through: big corp, startup, and outsourcing, compared along the dimensions that actually change day to day — where work comes from, who decides, how heavy the process is, how much you own, how you communicate, the pace and quality bar, and what gets rewarded. With a full comparison table and an honest guide to which environment suits you.",
-      "date": "2026-06-02",
+      "date": "2026-03-16",
       "readingMinutes": 19,
       "tags": [
         "Ways of Working",
@@ -1118,7 +1203,7 @@
       "category": "ways-of-working",
       "title": "Working in a Big Corp: Alignment, Process, and Getting Things Done at Scale",
       "summary": "Joining a big company from a smaller one is a culture shock: you control very little of the system, and it works brilliantly anyway. That's the design — an enterprise optimises for scale and reliability, not your individual speed. This deep-dive explains how to work well inside the machine: where your work fits in the planning hierarchy, why alignment (not coding) is the real senior job, which process is earned and which is theatre, how to actually ship through review chains, the healthy side of stakeholders and politics, the failure modes that grind people down, and how to grow up a clear career ladder.",
-      "date": "2026-06-02",
+      "date": "2026-03-15",
       "readingMinutes": 18,
       "tags": [
         "Ways of Working",
@@ -1138,7 +1223,7 @@
       "category": "ways-of-working",
       "title": "Working in a Startup: Speed, Ambiguity, and Wearing Many Hats",
       "summary": "The startup promise — real ownership, ship today, watch it matter tomorrow — is largely true, but the recruiting page leaves out the ambiguity, whiplash, and instability that come from the same root cause: a startup is a company still searching for its business. This deep-dive is an honest guide to the trade, across small and mid-size startups: why speed of learning beats polish, what wide-and-shallow ownership really feels like, how to treat ambiguity as the work itself, taking technical debt consciously, communicating before knowledge-in-heads bites, the disorienting small-to-mid transition when process reappears, the failure modes (burnout, hero culture, whiplash), and how to thrive and grow.",
-      "date": "2026-06-02",
+      "date": "2026-03-14",
       "readingMinutes": 18,
       "tags": [
         "Ways of Working",
@@ -1158,7 +1243,7 @@
       "category": "ways-of-working",
       "title": "Working in Outsourcing & Software Services: Clients, Scope, and Delivery on Contract",
       "summary": "Outsourcing is the most misunderstood of the three worlds — not a faceless code factory but, in a good services firm, a place where you build real products across more domains in two years than most product engineers touch in ten. The catch: you don't own the product, you deliver against a contract, and a second skill sits beside the engineering — managing the client relationship. This deep-dive covers the structural fact that reshapes everything, the two shapes of outsourcing work, why scope is sacred and the change request is your friend, billing and estimates and utilization, communication as a deliverable, time zones, quality under contract, the failure modes, and how to thrive and grow a services career.",
-      "date": "2026-06-02",
+      "date": "2026-03-13",
       "readingMinutes": 19,
       "tags": [
         "Ways of Working",
@@ -1178,7 +1263,7 @@
       "category": "ai",
       "title": "AI Agents, Explained Without the Hype: What They Are, How They Work, and What They Can Do for You",
       "summary": "Everyone is suddenly talking about “AI agents” — software that doesn’t just answer your questions but actually goes off and does the work. But what is an agent really, how is it different from the chatbot you already use, and where does it genuinely help versus quietly create a mess? This is a friendly, jargon-light guide for everyone, tech or not: the simple loop every agent runs, the five ingredients that make one, the levels of autonomy from co-pilot to auto-pilot, down-to-earth examples at the office and at home, the failure modes to watch for, and a concrete way to put your first useful agent to work this week.",
-      "date": "2026-06-02",
+      "date": "2026-03-12",
       "readingMinutes": 17,
       "tags": [
         "AI",
@@ -1198,7 +1283,7 @@
       "category": "ai",
       "title": "From Prompts to Workflows: Designing AI Workflows That Save You Hours Every Week",
       "summary": "Most people use AI one question at a time — and leave most of its value on the table. The real leverage isn’t a clever prompt; it’s a repeatable AI workflow: a small chain of steps you design once and reuse forever, turning a recurring two-hour chore into a two-minute review. This is a practical, example-rich guide for everyone, tech or not: the difference between a prompt and a workflow, the simple anatomy every workflow shares, ready-to-steal workflows for the office and for everyday life, the three levels from manual to fully automatic, a six-step way to design your own, and a back-of-the-envelope way to prove the time you’re actually saving.",
-      "date": "2026-06-02",
+      "date": "2026-03-11",
       "readingMinutes": 18,
       "tags": [
         "AI",
@@ -1218,7 +1303,7 @@
       "category": "ai",
       "title": "The AI Trends Worth Your Attention in 2026 — and How to Turn Them Into Real Value",
       "summary": "Every week brings another “this changes everything” AI headline, and it’s exhausting trying to tell the signal from the noise. This is a calm, grounded tour of the AI trends that genuinely matter in 2026 — agentic AI, multimodal, AI baked into the apps you already use, on-device intelligence, and the rise of judgment and verification as the human edge — paired with the part most articles skip: a practical framework for turning any trend into actual value in your work and life. You’ll get a hype-vs-value filter, the value ladder, a simple value equation, a worked example, and a 30-day plan — so you can stop chasing news and start compounding benefit.",
-      "date": "2026-06-02",
+      "date": "2026-03-10",
       "readingMinutes": 18,
       "tags": [
         "AI",
@@ -1238,7 +1323,7 @@
       "category": "ways-of-working",
       "title": "TDD, BDD, DDD, and the Rest of the \"-Driven Development\" Family, Explained for Engineers",
       "summary": "TDD, BDD, DDD, ATDD, EDD, CDD, FDD — the \"-Driven Development\" alphabet soup confuses even experienced engineers, partly because they're not rivals: they answer different questions and compose together. This is a practical, example-rich guide for software engineers: what each one really means, the core loop or concept, concrete code and Gherkin examples, when to reach for it, the pitfalls — and a clear map of how they fit together on a single real feature.",
-      "date": "2026-06-02",
+      "date": "2026-03-09",
       "readingMinutes": 22,
       "tags": [
         "TDD",
@@ -1256,7 +1341,7 @@
       "category": "ways-of-working",
       "title": "Agile & Scrum in Practice: How Teams Really Run It vs. How It's Meant to Work",
       "summary": "Almost every software team says they \"do Scrum\" — and almost every one does it a little differently. This is a clear, practical field guide for everyone on the team, whatever your role: what an epic, story, task, and sub-task actually are; how status workflows really run; what story points mean (and the mistakes that ruin them); how to estimate and log work honestly; how to read burndown and velocity charts; and how to run planning, daily, review, and retro so they help instead of waste time. The standard, the common customizations, and how to operate it all well — enough to be genuinely useful from day one.",
-      "date": "2026-06-02",
+      "date": "2026-03-08",
       "readingMinutes": 20,
       "tags": [
         "Agile",
@@ -1274,7 +1359,7 @@
       "category": "architecture",
       "title": "Ports & Adapters (Hexagonal Architecture), Explained Simply",
       "summary": "A friendly, example-driven guide to Hexagonal Architecture: what ports and adapters really are, the one rule that makes it work, and exactly how much of it to apply — whether you are a solo founder or an enterprise team.",
-      "date": "2026-05-29",
+      "date": "2026-03-07",
       "readingMinutes": 16,
       "tags": [
         "Software Architecture",
@@ -1294,7 +1379,7 @@
       "category": "architecture",
       "title": "Clean, Onion & Hexagonal Architecture: One North Star, Three Names",
       "summary": "They look like three rival architectures. They are really the same idea — dependencies pointing inward, frameworks at the edge — drawn three ways. Here is what each one actually adds, and which to reach for.",
-      "date": "2026-05-29",
+      "date": "2026-03-06",
       "readingMinutes": 15,
       "tags": [
         "Software Architecture",
@@ -1313,7 +1398,7 @@
       "category": "architecture",
       "title": "Dependency Injection & Inversion of Control, Without the Magic",
       "summary": "DI containers feel like wizardry until you see the plain idea underneath: stop letting code create its own dependencies, and hand them in instead. A from-scratch guide, with real examples and the testing payoff.",
-      "date": "2026-05-29",
+      "date": "2026-03-05",
       "readingMinutes": 14,
       "tags": [
         "Software Architecture",
@@ -1332,7 +1417,7 @@
       "category": "architecture",
       "title": "Structuring a Codebase: By Layer, By Feature, or By Domain?",
       "summary": "Should your top-level folders be controllers/services/models, or orders/billing/auth? The choice quietly shapes how your codebase grows. A practical tour of by-layer, by-feature, and screaming architecture — with the trade-offs at each company size.",
-      "date": "2026-05-29",
+      "date": "2026-03-04",
       "readingMinutes": 14,
       "tags": [
         "Software Architecture",
@@ -1351,7 +1436,7 @@
       "category": "architecture",
       "title": "Monolith, Modular Monolith, Microservices: An Honest Decision Guide",
       "summary": "Microservices are a tax you pay for organisational scale — not a starting point. A no-hype walk from monolith to modular monolith to microservices, with the signals that tell you when (and whether) to split.",
-      "date": "2026-05-29",
+      "date": "2026-03-03",
       "readingMinutes": 16,
       "tags": [
         "Software Architecture",
@@ -1370,7 +1455,7 @@
       "category": "architecture",
       "title": "Micro-Frontends: When They're Worth It, and What They Cost",
       "summary": "Splitting the frontend into independently deployable pieces can free teams — or bury you in complexity. Written from shipping an Angular-host + React-modules setup at scale: when micro-frontends pay off, and the bill they come with.",
-      "date": "2026-05-29",
+      "date": "2026-03-02",
       "readingMinutes": 15,
       "tags": [
         "Software Architecture",
@@ -1389,7 +1474,7 @@
       "category": "culture",
       "title": "The Art of Code Review: How to Critique Code Without Crushing People",
       "summary": "Code review is where team culture is made or broken. A practical guide to reviewing code so it ships better AND the author comes back stronger — concrete phrasing, a reviewer's checklist, and the habits that quietly turn reviews toxic.",
-      "date": "2026-05-29",
+      "date": "2026-03-01",
       "readingMinutes": 14,
       "tags": [
         "Engineering Culture",
@@ -1409,7 +1494,7 @@
       "category": "culture",
       "title": "Kind Engineering: Why Being Kind Makes You a Better Engineer",
       "summary": "Kindness isn’t niceness, and it isn’t soft. It’s a force multiplier — clearer feedback, safer incidents, faster-growing teammates. What ‘kind engineering’ really means, and how to practise it in code reviews, incidents, and everyday work.",
-      "date": "2026-05-29",
+      "date": "2026-02-28",
       "readingMinutes": 13,
       "tags": [
         "Engineering Culture",
@@ -1428,7 +1513,7 @@
       "category": "culture",
       "title": "How to Write a Pull Request People Actually Enjoy Reviewing",
       "summary": "A great pull request is a gift to your reviewer: small, well-described, easy to say yes to. The anatomy of a reviewable PR — size, title, description, commit hygiene, and self-review — with concrete before/after examples.",
-      "date": "2026-05-29",
+      "date": "2026-02-27",
       "readingMinutes": 13,
       "tags": [
         "Engineering Culture",
@@ -1447,7 +1532,7 @@
       "category": "culture",
       "title": "The Pull Request That Reviewers Can Trust",
       "summary": "A trusted pull request does more than look tidy. It names the behavior being changed, shows the safer pattern, and gives reviewers enough evidence to approve with real confidence instead of guesswork.",
-      "date": "2026-06-24",
+      "date": "2026-02-26",
       "readingMinutes": 7,
       "tags": [
         "Engineering Culture",
@@ -1464,7 +1549,7 @@
       "category": "culture",
       "title": "Feedback That Lands: Giving and Receiving Critique as an Engineer",
       "summary": "Most engineers were never taught how to give feedback — or how to take it. A field guide to specific, kind, actionable feedback, and to staying open when you're on the receiving end, with ready-to-use scripts.",
-      "date": "2026-05-29",
+      "date": "2026-02-25",
       "readingMinutes": 13,
       "tags": [
         "Engineering Culture",
@@ -1483,7 +1568,7 @@
       "category": "culture",
       "title": "Mentoring Engineers: How to Grow Juniors into Seniors",
       "summary": "Great teams are grown, not just hired. From leading engineering teams: how to mentor so people level up fast — pairing, code review as teaching, the right-sized stretch, and the mindset shifts that turn a junior into someone you'd trust with anything.",
-      "date": "2026-05-29",
+      "date": "2026-02-24",
       "readingMinutes": 14,
       "tags": [
         "Engineering Culture",
@@ -1502,7 +1587,7 @@
       "category": "ai",
       "title": "AI Is Rewiring Every Software Role: How Thinking Changes for BA, PO, PM, Dev, QA and Beyond",
       "summary": "AI isn't just a faster tool bolted onto how we build software — it's quietly moving the center of gravity of every role. The work that used to define a BA, PO, PM, developer, or QA engineer is being automated from the bottom up, and what remains is a different job built on judgment, taste, and verification. This is a clear-eyed, role-by-role look at what's fading, what's rising, and what to watch out for as teams move from AI-assisted to AI-first — so you can see what may be lost, what's added, and how to stay genuinely valuable in a changed era.",
-      "date": "2026-06-02",
+      "date": "2026-02-23",
       "readingMinutes": 21,
       "tags": [
         "AI",
@@ -1520,7 +1605,7 @@
       "category": "ai",
       "title": "Context Engineering: The Skill That Separates Great AI Users From Everyone Else",
       "summary": "Most AI results are disappointing not because the models are bad, but because the context is thin. A practical guide to context engineering — what lives in the model's window, the five pillars of great context, common anti-patterns, and reusable templates that consistently produce better results.",
-      "date": "2026-05-31",
+      "date": "2026-02-22",
       "readingMinutes": 15,
       "tags": [
         "AI",
@@ -1538,7 +1623,7 @@
       "category": "ai",
       "title": "Generative AI in Daily Life and Work: A Practical Catalog of What You Can Use Today",
       "summary": "Generative AI has quietly moved from headline to household tool — yet most people still use it for little more than the occasional question. This is a hands-on catalog of the most common, genuinely useful applications across work, learning, creativity, and everyday life, organized so you can find at least one thing to try today. No hype, no jargon — just real use cases you can apply immediately, plus the one skill that makes all of them work and the limits you should never ignore.",
-      "date": "2026-06-02",
+      "date": "2026-02-21",
       "readingMinutes": 16,
       "tags": [
         "AI",
@@ -1556,7 +1641,7 @@
       "category": "ways-of-working",
       "title": "What Is a Pre-Mortem? Seeing Failure Early to Build Better Systems and Careers",
       "summary": "A pre-mortem is the quiet habit of imagining that a plan has failed before it begins, then working backward to find the reasons. This article explains the idea and shows how to use it in code, large systems, promotion planning, interviews, and personal goals without turning preparation into pessimism.",
-      "date": "2026-06-13",
+      "date": "2026-02-20",
       "readingMinutes": 9,
       "tags": [
         "Pre-mortem",
@@ -1574,7 +1659,7 @@
       "category": "perspectives",
       "title": "The First Time I Broke Production",
       "summary": "A small production change can teach more than a clean release: how panic feels, why rollback matters, and how guardrails, habits, and shared ownership turn an incident into experience.",
-      "date": "2026-06-22",
+      "date": "2026-02-19",
       "readingMinutes": 6,
       "tags": [
         "Personal Growth",
@@ -1591,7 +1676,7 @@
       "category": "perspectives",
       "title": "Hoang Nguu Son: Reach the Summit, Come Down, Keep Going",
       "summary": "A day on Hoang Nguu Son, 972 m, with more than 150 Zalo teammates: a few minutes of wondering whether I could keep up, sunny slopes, checkpoint pauses, and the moment we reached the summit. I carried that feeling back into work as a friendly, practical reminder: when things get hard, adjust the pace and keep moving; to climb the next mountain, first come down from the current one, clear what is not working, and prepare honestly for the next challenge.",
-      "date": "2026-06-12",
+      "date": "2026-02-18",
       "readingMinutes": 10,
       "tags": [
         "Personal Growth",
@@ -1609,7 +1694,7 @@
       "category": "culture",
       "title": "Over-Managed and Under-Led: Why a Busy Team Can Still Lose Its Way",
       "summary": "A team can be carefully managed and still drift. Using John Kotter's distinction between coping with complexity and coping with change, here is how to spot when a team is over-managed and under-led — and small, repeatable ways to bring the direction back.",
-      "date": "2026-06-20",
+      "date": "2026-02-17",
       "readingMinutes": 7,
       "tags": [
         "Leadership",
@@ -1628,7 +1713,7 @@
       "category": "culture",
       "title": "Vision Without Craft: Why Leaders Can't Float Above the Work",
       "summary": "Warren Bennis said leaders do the right thing while managers do things right. Robert Sutton added the part that matters: to do the right thing, you must understand what it takes to do things right. On the trap of vision detached from craft — and the bounce between big picture and detail.",
-      "date": "2026-06-20",
+      "date": "2026-02-16",
       "readingMinutes": 6,
       "tags": [
         "Leadership",
@@ -1647,7 +1732,7 @@
       "category": "culture",
       "title": "Signals or Messages: The Quiet Cost of Vague Communication",
       "summary": "Abraham Zaleznik noticed that people uncomfortable with direct engagement communicate in signals rather than messages. On why vague communication feels safe to send and lands as anxiety, how it quietly breeds office politics, and why a clear message is a kindness — especially when it is hard.",
-      "date": "2026-06-20",
+      "date": "2026-02-15",
       "readingMinutes": 5,
       "tags": [
         "Leadership",
@@ -1666,7 +1751,7 @@
       "category": "culture",
       "title": "The Discipline of Sitting With a Problem You Can't Yet Solve",
       "summary": "Some people restore order the instant disorder appears; others can hold a problem open long enough to understand it. On tolerance for ambiguity as a learnable discipline, the cost of solving before understanding, the Einstellung trap, and why the maturity is in how long you can stay with a hard problem.",
-      "date": "2026-06-20",
+      "date": "2026-02-14",
       "readingMinutes": 5,
       "tags": [
         "Leadership",
@@ -1685,7 +1770,7 @@
       "category": "culture",
       "title": "Pull, Don't Push: Why People Follow Meaning, Not Instructions",
       "summary": "Bennis and Goldsmith described two ways to move people: push (deadlines, KPIs, position power) and pull (meaning and trust). On the unforgettable sign-language image of reins versus a cradle, why pull is slower but deeper, the honesty it requires, and when to reach for each. The closing piece of the series.",
-      "date": "2026-06-20",
+      "date": "2026-02-13",
       "readingMinutes": 5,
       "tags": [
         "Leadership",
@@ -1704,7 +1789,7 @@
       "category": "culture",
       "title": "Why \"Culture Fit\" is Often a Trap",
       "summary": "Culture fit sounds responsible, but it can reward sameness and hide vague concerns. This piece separates real values signals from comfort signals and argues for culture contribution.",
-      "date": "2026-06-22",
+      "date": "2026-02-12",
       "readingMinutes": 7,
       "tags": [
         "Engineering Culture",
@@ -1722,7 +1807,7 @@
       "category": "architecture",
       "title": "Layered vs. Vertical Slice Architecture",
       "summary": "Layered architecture is easy to recognize; vertical slices keep change close to the feature people use. This piece compares both styles through everyday code changes and the boundary trade-offs behind them.",
-      "date": "2026-06-23",
+      "date": "2026-02-11",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
@@ -1742,7 +1827,7 @@
       "category": "architecture",
       "title": "Dependency Direction in Plain Language",
       "summary": "Dependency direction is the simple team rule that says stable business ideas should not depend on volatile delivery details. This explainer uses a small release scenario to show how the rule keeps code, reviews, and team conversations calmer.",
-      "date": "2026-06-24",
+      "date": "2026-02-10",
       "readingMinutes": 7,
       "tags": [
         "Software Architecture",
@@ -1762,7 +1847,7 @@
       "category": "architecture",
       "title": "Eventual Consistency in the Real World",
       "summary": "A practical explanation of eventual consistency beyond the textbook definition: what users notice, which trade-offs teams are really making, how to set expectations in the product, and how operations keeps delayed truth from becoming silent data drift.",
-      "date": "2026-06-24",
+      "date": "2026-02-09",
       "readingMinutes": 8,
       "tags": [
         "Software Architecture",
@@ -1782,7 +1867,7 @@
       "category": "culture",
       "title": "The Anatomy of a Healthy 1-on-1",
       "summary": "A healthy 1-on-1 is a regular place for context, trust, feedback, and career direction, not a softer status meeting. The useful version catches small signals before they become expensive.",
-      "date": "2026-06-23",
+      "date": "2026-02-08",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -1800,7 +1885,7 @@
       "category": "ai",
       "title": "Prompt Engineering Is Just Communication",
       "summary": "Good prompts are clear collaboration: context, intent, constraints, examples, and feedback. The same habits that help teammates work together also help AI tools produce useful, verifiable answers.",
-      "date": "2026-06-23",
+      "date": "2026-02-07",
       "readingMinutes": 6,
       "tags": [
         "AI",
@@ -1818,7 +1903,7 @@
       "category": "perspectives",
       "title": "Learning to Say No as a Developer",
       "summary": "Saying no as a developer is a way to protect focus, quality, and trust. This piece looks at how to decline, renegotiate scope, and offer trade-offs without becoming defensive or vague.",
-      "date": "2026-06-23",
+      "date": "2026-02-06",
       "readingMinutes": 6,
       "tags": [
         "Personal Growth",
@@ -1836,7 +1921,7 @@
       "category": "ways-of-working",
       "title": "The Daily Standup: Status Report or Strategy?",
       "summary": "A practical look at turning daily standup from a round of yesterday updates into a short flow check: what is stuck, what changed, who needs help, and what deserves attention before the day starts pulling the team apart.",
-      "date": "2026-06-23",
+      "date": "2026-02-05",
       "readingMinutes": 6,
       "tags": [
         "Agile",
@@ -1854,7 +1939,7 @@
       "category": "architecture",
       "title": "CQRS: Command Query Responsibility Segregation",
       "summary": "A practical explanation of CQRS: separating commands from queries, when read and write models deserve different shapes, and how to avoid turning a useful pattern into unnecessary architecture.",
-      "date": "2026-06-24",
+      "date": "2026-02-04",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
@@ -1872,7 +1957,7 @@
       "category": "culture",
       "title": "Celebrating Failure",
       "summary": "A grounded look at what teams should really mean by celebrating failure: not applauding damage, but making honest learning, early signal reporting, repair, and changed systems safer to practice.",
-      "date": "2026-06-24",
+      "date": "2026-02-03",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -1890,7 +1975,7 @@
       "category": "ai",
       "title": "AI in QA: Automated Test Generation",
       "summary": "A practical look at AI-assisted QA and automated test generation: where AI helps with breadth, edge cases, fixtures, and test skeletons, and why human judgment still owns risk, truth, and trust.",
-      "date": "2026-06-24",
+      "date": "2026-02-02",
       "readingMinutes": 6,
       "tags": [
         "AI",
@@ -1908,7 +1993,7 @@
       "category": "perspectives",
       "title": "When to Walk Away from a Project",
       "summary": "A reflective essay on knowing when to leave a project: separating a hard middle from a true dead end, trying repair first, and exiting with care when the cost, trust, or direction no longer works.",
-      "date": "2026-06-24",
+      "date": "2026-02-01",
       "readingMinutes": 6,
       "tags": [
         "Career Growth",
@@ -1926,7 +2011,7 @@
       "category": "ways-of-working",
       "title": "The Definition of Done vs. Ready",
       "summary": "A practical reflection on Definition of Ready and Definition of Done: how one protects the start of work, how the other protects the finish, and how teams can use both without turning them into gatekeeping rituals.",
-      "date": "2026-06-24",
+      "date": "2026-01-31",
       "readingMinutes": 6,
       "tags": [
         "Agile",
@@ -1944,7 +2029,7 @@
       "category": "architecture",
       "title": "Serverless: Trade-offs and Truths",
       "summary": "A practical look at serverless architecture: what teams gain by handing infrastructure to managed platforms, what they still own, and how to decide when functions, queues, and managed services are the right trade.",
-      "date": "2026-06-25",
+      "date": "2026-01-30",
       "readingMinutes": 7,
       "tags": [
         "Software Architecture",
@@ -1962,7 +2047,7 @@
       "category": "culture",
       "title": "Building Diverse Engineering Teams",
       "summary": "A grounded reflection on building diverse engineering teams: moving beyond slogans into hiring, onboarding, meeting design, decision-making, feedback, and the daily habits that let different people contribute fully.",
-      "date": "2026-06-25",
+      "date": "2026-01-29",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -1980,7 +2065,7 @@
       "category": "ai",
       "title": "Running Local LLMs for Privacy",
       "summary": "A practical explanation of local LLMs for privacy-sensitive work: what improves when prompts and documents stay on owned machines, what quality and operations costs remain, and how teams can adopt local models responsibly.",
-      "date": "2026-06-25",
+      "date": "2026-01-28",
       "readingMinutes": 6,
       "tags": [
         "AI",
@@ -1998,7 +2083,7 @@
       "category": "perspectives",
       "title": "The Myth of the 10x Developer",
       "summary": "A reflective essay on the myth of the 10x developer: why exceptional impact is usually less about lone genius and more about context, judgment, leverage, teaching, simplification, and team systems.",
-      "date": "2026-06-25",
+      "date": "2026-01-27",
       "readingMinutes": 6,
       "tags": [
         "Software Engineering",
@@ -2016,7 +2101,7 @@
       "category": "ways-of-working",
       "title": "Pair Programming: Love It or Hate It?",
       "summary": "A balanced reflection on pair programming: when it helps with hard problems, onboarding, risk, and shared understanding, when it becomes exhausting, and how teams can use pairing deliberately instead of as a ritual.",
-      "date": "2026-06-25",
+      "date": "2026-01-26",
       "readingMinutes": 6,
       "tags": [
         "Pair Programming",
@@ -2034,7 +2119,7 @@
       "category": "architecture",
       "title": "Caching Strategies and Pitfalls",
       "summary": "A practical explanation of caching strategies: where caches help, how cache-aside, read-through, write-through, TTLs, and invalidation differ, and why stale data, stampedes, keys, and observability matter as much as speed.",
-      "date": "2026-06-25",
+      "date": "2026-01-25",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
@@ -2052,7 +2137,7 @@
       "category": "culture",
       "title": "Managing Up: Communicating with Non-Technical Leadership",
       "summary": "A calm guide to managing up with non-technical leadership: translating technical work into risk, options, impact, timing, and decisions without hiding complexity or talking down to people.",
-      "date": "2026-06-25",
+      "date": "2026-01-24",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -2070,7 +2155,7 @@
       "category": "ai",
       "title": "AI Agents: The Next Frontier",
       "summary": "A practical look at AI agents beyond the hype: what changes when models can use tools, follow workflows, remember context, ask for approval, and produce auditable work, plus where human judgment still matters.",
-      "date": "2026-06-25",
+      "date": "2026-01-23",
       "readingMinutes": 6,
       "tags": [
         "AI",
@@ -2088,7 +2173,7 @@
       "category": "perspectives",
       "title": "Why Side Projects Matter",
       "summary": "A reflective essay on why side projects matter without turning them into hustle: small experiments, learning loops, creative ownership, career signals, and the quiet confidence that comes from building something end to end.",
-      "date": "2026-06-25",
+      "date": "2026-01-22",
       "readingMinutes": 6,
       "tags": [
         "Software Engineering",
@@ -2106,7 +2191,7 @@
       "category": "ways-of-working",
       "title": "Feature Flags for Safer Deployments",
       "summary": "A practical reflection on feature flags: how they decouple deploy from release, support gradual rollout and kill switches, and what teams must do to avoid flag debt, hidden complexity, and weak observability.",
-      "date": "2026-06-25",
+      "date": "2026-01-21",
       "readingMinutes": 6,
       "tags": [
         "Feature Flags",
@@ -2124,7 +2209,7 @@
       "category": "architecture",
       "title": "Database Sharding: When and Why",
       "summary": "A practical explanation of database sharding: what changes when one database is split into smaller partitions, when sharding is worth the operational cost, and why shard keys, hotspots, rebalancing, and observability matter.",
-      "date": "2026-06-25",
+      "date": "2026-01-20",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
@@ -2142,7 +2227,7 @@
       "category": "culture",
       "title": "Performance Reviews That Matter",
       "summary": "A calm reflection on performance reviews that actually help people grow: using evidence, expectations, calibration, feedback, and follow-through without turning the review into a surprise or a ritual.",
-      "date": "2026-06-25",
+      "date": "2026-01-19",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -2160,7 +2245,7 @@
       "category": "ai",
       "title": "Data Privacy in the Era of AI",
       "summary": "A practical article on data privacy in AI work: how prompts, documents, logs, retrieval, training, and evaluation create new data paths, and how teams can use AI while keeping consent, minimization, access, and retention clear.",
-      "date": "2026-06-25",
+      "date": "2026-01-18",
       "readingMinutes": 6,
       "tags": [
         "AI",
@@ -2178,7 +2263,7 @@
       "category": "perspectives",
       "title": "The Tech Transition",
       "summary": "A reflective essay on moving into tech or through a major technology shift: learning the language, rebuilding confidence, using past experience, and treating the transition as quiet practice rather than a sudden identity change.",
-      "date": "2026-06-25",
+      "date": "2026-01-17",
       "readingMinutes": 6,
       "tags": [
         "Career Growth",
@@ -2196,7 +2281,7 @@
       "category": "ways-of-working",
       "title": "Continuous Integration vs. Continuous Delivery",
       "summary": "A practical explanation of Continuous Integration and Continuous Delivery: how CI protects shared code, how CD keeps releases ready, and why tests, trunk habits, feature flags, and deployment discipline matter.",
-      "date": "2026-06-25",
+      "date": "2026-01-16",
       "readingMinutes": 6,
       "tags": [
         "Continuous Integration",
@@ -2214,7 +2299,7 @@
       "category": "architecture",
       "title": "GraphQL vs. REST",
       "summary": "A practical comparison of GraphQL and REST: how each shapes API contracts, frontend flexibility, caching, observability, team ownership, and the operational trade-offs behind choosing one style over the other.",
-      "date": "2026-06-25",
+      "date": "2026-01-15",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
@@ -2232,7 +2317,7 @@
       "category": "culture",
       "title": "Handling Burnout Before It Happens",
       "summary": "A calm look at preventing burnout in engineering teams: early signals, workload visibility, recovery time, sustainable expectations, management responsibility, and the small habits that keep people from disappearing quietly.",
-      "date": "2026-06-25",
+      "date": "2026-01-14",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -2250,7 +2335,7 @@
       "category": "ai",
       "title": "Multimodal AI: Text, Vision, and Audio",
       "summary": "A practical introduction to multimodal AI: how text, images, audio, and video change product workflows, what becomes possible, and why evaluation, privacy, accessibility, and human review matter more as inputs become richer.",
-      "date": "2026-06-25",
+      "date": "2026-01-13",
       "readingMinutes": 6,
       "tags": [
         "AI",
@@ -2268,7 +2353,7 @@
       "category": "perspectives",
       "title": "Dealing with Legacy Code",
       "summary": "A reflective essay on working with legacy code patiently: understanding history, adding tests, making small safe changes, respecting past constraints, and improving the codebase without rushing into a rewrite.",
-      "date": "2026-06-25",
+      "date": "2026-01-12",
       "readingMinutes": 6,
       "tags": [
         "Software Engineering",
@@ -2286,7 +2371,7 @@
       "category": "ways-of-working",
       "title": "Shift-Left Security",
       "summary": "A practical explanation of shift-left security: bringing threat thinking, dependency checks, secrets hygiene, secure defaults, and review habits earlier in delivery without turning every engineer into a security specialist.",
-      "date": "2026-06-25",
+      "date": "2026-01-11",
       "readingMinutes": 6,
       "tags": [
         "Shift-Left Security",
@@ -2304,7 +2389,7 @@
       "category": "architecture",
       "title": "Designing Idempotent APIs",
       "summary": "A practical explanation of idempotent API design: why retries happen, how duplicate requests create risk, and how idempotency keys, stable state transitions, and clear response contracts make distributed systems calmer.",
-      "date": "2026-06-25",
+      "date": "2026-01-10",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
@@ -2322,7 +2407,7 @@
       "category": "culture",
       "title": "Creating a Blameless Culture",
       "summary": "A calm look at blameless engineering culture: how teams can study incidents without blame, separate accountability from punishment, improve systems, and make it safer for people to tell the truth early.",
-      "date": "2026-06-25",
+      "date": "2026-01-09",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -2340,7 +2425,7 @@
       "category": "ai",
       "title": "AI for Code Refactoring",
       "summary": "A practical reflection on using AI for code refactoring: where it helps with mapping, options, tests, and mechanical changes, and why engineers still need boundaries, evidence, and verification before trusting the result.",
-      "date": "2026-06-25",
+      "date": "2026-01-08",
       "readingMinutes": 6,
       "tags": [
         "AI",
@@ -2358,7 +2443,7 @@
       "category": "perspectives",
       "title": "The Art of the Meaningful Commit Message",
       "summary": "A reflective essay on meaningful commit messages: how good history helps future debugging, review, rollback, onboarding, and team memory without turning every commit into a long document.",
-      "date": "2026-06-25",
+      "date": "2026-01-07",
       "readingMinutes": 6,
       "tags": [
         "Software Engineering",
@@ -2376,7 +2461,7 @@
       "category": "ways-of-working",
       "title": "Behavior-Driven Development (BDD)",
       "summary": "A practical reflection on Behavior-Driven Development: how examples, shared language, and Given-When-Then scenarios can align product, QA, and engineering when teams treat BDD as conversation first and automation second.",
-      "date": "2026-06-25",
+      "date": "2026-01-06",
       "readingMinutes": 6,
       "tags": [
         "BDD",
@@ -2394,7 +2479,7 @@
       "category": "architecture",
       "title": "Rate Limiting and Throttling",
       "summary": "A practical explanation of rate limiting and throttling: how systems protect shared capacity, shape traffic, communicate limits clearly, and keep overload from turning into a full outage.",
-      "date": "2026-06-25",
+      "date": "2026-01-05",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
@@ -2412,7 +2497,7 @@
       "category": "culture",
       "title": "Giving Constructive Feedback",
       "summary": "A calm reflection on constructive feedback: how specific observations, timing, care, accountability, and follow-up help people improve without turning feedback into blame or performance theater.",
-      "date": "2026-06-25",
+      "date": "2026-01-04",
       "readingMinutes": 6,
       "tags": [
         "Engineering Culture",
@@ -2430,7 +2515,7 @@
       "category": "ai",
       "title": "Evaluating LLM Performance",
       "summary": "A practical guide to evaluating LLM performance with task-specific datasets, rubrics, human review, regression checks, latency, cost, safety, and production feedback instead of relying on impressive demos.",
-      "date": "2026-06-25",
+      "date": "2026-01-03",
       "readingMinutes": 6,
       "tags": [
         "AI",
@@ -2448,7 +2533,7 @@
       "category": "perspectives",
       "title": "Why I Love Writing Documentation",
       "summary": "A reflective essay on documentation as care for future work: how clear notes, decision records, examples, and small updates reduce confusion, protect team memory, and make software easier to change.",
-      "date": "2026-06-25",
+      "date": "2026-01-02",
       "readingMinutes": 6,
       "tags": [
         "Documentation",
@@ -2466,7 +2551,7 @@
       "category": "ways-of-working",
       "title": "Minimum Viable Product (MVP) Traps",
       "summary": "A practical reflection on common MVP traps: shipping too little to learn, confusing cheap with viable, ignoring operations, measuring the wrong signal, and forgetting that an MVP is a learning instrument.",
-      "date": "2026-06-25",
+      "date": "2026-01-01",
       "readingMinutes": 6,
       "tags": [
         "MVP",

@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Architecture en couches ou Vertical Slice Architecture",
   "summary": "L'architecture en couches semble ordonnée au début, tandis que les vertical slices rapprochent le changement de la fonctionnalité réelle. Un regard calme sur les deux approches, leurs forces et les signaux qui disent qu'il est temps de changer.",
-  "date": "2026-06-23",
+  "date": "2026-02-11",
   "readingMinutes": 6,
   "tags": [
     "Architecture logicielle",

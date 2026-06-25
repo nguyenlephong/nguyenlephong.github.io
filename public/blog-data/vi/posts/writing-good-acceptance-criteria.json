@@ -3,7 +3,7 @@
   "category": "ways-of-working",
   "title": "Viết acceptance criteria tốt: biến done thành bằng chứng chung",
   "summary": "Một hướng dẫn thực tế về cách viết acceptance criteria như bằng chứng chung cho hành vi đã hoàn thành: ví dụ rõ, edge case quan trọng, scope dễ review, và handoff bình tĩnh hơn giữa product, engineering, QA và stakeholder.",
-  "date": "2026-06-24",
+  "date": "2026-04-21",
   "readingMinutes": 7,
   "tags": [
     "Acceptance Criteria",

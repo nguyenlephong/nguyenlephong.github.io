@@ -33,5 +33,6 @@
       "q": "Pull request nên lớn bao nhiêu?",
       "a": "Dưới 200 dòng thay đổi là sweet spot cho review chất lượng cao. Ở kích thước này, reviewer có thể giữ thay đổi trong bộ nhớ làm việc và phát hiện vấn đề tinh tế. PR trên 500 dòng thấy chất lượng review giảm mạnh — reviewer lướt qua, mệt mỏi xuất hiện, và vấn đề quan trọng bị bỏ qua. Với tính năng lớn, hãy dùng stacked PR: một loạt thay đổi nhỏ, độc lập, mỗi cái kể một câu chuyện rõ ràng."
     }
-  ]
+  ],
+  "date": "2026-03-01"
 }

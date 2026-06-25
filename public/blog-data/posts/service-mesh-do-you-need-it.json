@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Service Mesh: Do You Need It?",
   "summary": "A practical explanation of service mesh trade-offs: what it centralizes, when it helps, and why teams should solve real service-to-service pain before adopting another infrastructure layer.",
-  "date": "2026-06-25",
+  "date": "2026-05-10",
   "readingMinutes": 6,
   "tags": [
     "Software Architecture",

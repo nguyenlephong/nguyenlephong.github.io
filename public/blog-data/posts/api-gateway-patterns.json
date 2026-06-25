@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "API Gateway Patterns",
   "summary": "A practical look at API gateway responsibilities: routing, authentication boundaries, rate limiting, request aggregation, backend-for-frontend trade-offs, failure modes, and the observability needed to keep the edge of a system understandable.",
-  "date": "2026-06-24",
+  "date": "2026-04-25",
   "readingMinutes": 6,
   "tags": [
     "Software Architecture",

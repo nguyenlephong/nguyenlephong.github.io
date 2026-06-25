@@ -3,7 +3,7 @@
   "category": "ai",
   "title": "Evaluating LLM Performance",
   "summary": "A practical guide to evaluating LLM performance with task-specific datasets, rubrics, human review, regression checks, latency, cost, safety, and production feedback instead of relying on impressive demos.",
-  "date": "2026-06-25",
+  "date": "2026-01-03",
   "readingMinutes": 6,
   "tags": [
     "AI",

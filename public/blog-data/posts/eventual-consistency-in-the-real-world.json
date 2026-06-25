@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Eventual Consistency in the Real World",
   "summary": "A practical explanation of eventual consistency beyond the textbook definition: what users notice, which trade-offs teams are really making, how to set expectations in the product, and how operations keeps delayed truth from becoming silent data drift.",
-  "date": "2026-06-24",
+  "date": "2026-02-09",
   "readingMinutes": 8,
   "tags": [
     "Software Architecture",

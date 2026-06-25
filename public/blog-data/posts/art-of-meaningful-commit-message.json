@@ -3,7 +3,7 @@
   "category": "perspectives",
   "title": "The Art of the Meaningful Commit Message",
   "summary": "A reflective essay on meaningful commit messages: how good history helps future debugging, review, rollback, onboarding, and team memory without turning every commit into a long document.",
-  "date": "2026-06-25",
+  "date": "2026-01-07",
   "readingMinutes": 6,
   "tags": [
     "Software Engineering",

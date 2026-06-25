@@ -3,7 +3,7 @@
   "category": "culture",
   "title": "The Pull Request That Reviewers Can Trust",
   "summary": "A trusted pull request does more than look tidy. It names the behavior being changed, shows the safer pattern, and gives reviewers enough evidence to approve with real confidence instead of guesswork.",
-  "date": "2026-06-24",
+  "date": "2026-02-26",
   "readingMinutes": 7,
   "tags": [
     "Engineering Culture",

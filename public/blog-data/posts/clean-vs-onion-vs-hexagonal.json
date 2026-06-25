@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Clean, Onion & Hexagonal Architecture: One North Star, Three Names",
   "summary": "They look like three rival architectures. They are really the same idea — dependencies pointing inward, frameworks at the edge — drawn three ways. Here is what each one actually adds, and which to reach for.",
-  "date": "2026-05-29",
+  "date": "2026-03-06",
   "readingMinutes": 15,
   "tags": [
     "Software Architecture",

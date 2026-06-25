@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems",
   "summary": "Tách code thường dễ hơn tách dữ liệu. Khi mỗi service cần sở hữu dữ liệu riêng, team phải đối mặt với shared database, eventual consistency, dual-write bug, outbox, saga, CQRS và event sourcing. Bài này đi qua những lựa chọn đó bằng ví dụ thực tế, để bạn hiểu trade-off trước khi hệ thống phân tán bắt đầu làm mọi thứ khó hơn.",
-  "date": "2026-06-03",
+  "date": "2026-04-10",
   "readingMinutes": 14,
   "tags": [
     "Software Architecture",

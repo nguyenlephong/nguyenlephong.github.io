@@ -3,7 +3,7 @@
   "category": "ways-of-working",
   "title": "Shift-Left Security",
   "summary": "A practical explanation of shift-left security: bringing threat thinking, dependency checks, secrets hygiene, secure defaults, and review habits earlier in delivery without turning every engineer into a security specialist.",
-  "date": "2026-06-25",
+  "date": "2026-01-11",
   "readingMinutes": 6,
   "tags": [
     "Shift-Left Security",

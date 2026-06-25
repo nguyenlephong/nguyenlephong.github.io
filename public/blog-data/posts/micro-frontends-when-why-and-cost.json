@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Micro-Frontends: When They're Worth It, and What They Cost",
   "summary": "Splitting the frontend into independently deployable pieces can free teams — or bury you in complexity. Written from shipping an Angular-host + React-modules setup at scale: when micro-frontends pay off, and the bill they come with.",
-  "date": "2026-05-29",
+  "date": "2026-03-02",
   "readingMinutes": 15,
   "tags": [
     "Software Architecture",
