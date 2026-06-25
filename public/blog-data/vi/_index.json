@@ -81,7 +81,7 @@
       "category": "ai",
       "title": "Vector database được giải thích dễ hiểu",
       "summary": "Một bài giải thích dễ vào về vector database: embedding biểu diễn meaning như thế nào, vì sao similarity search hữu ích cho AI product, và team cần xử lý gì quanh chunking, metadata, freshness, evaluation và cost.",
-      "date": "2026-06-25",
+      "date": "2026-05-17",
       "readingMinutes": 7,
       "tags": [
         "AI",

@@ -81,7 +81,7 @@
       "category": "ai",
       "title": "Vector Databases Explained",
       "summary": "A beginner-friendly explanation of vector databases: how embeddings represent meaning, why similarity search helps AI products, and what teams need to handle around chunking, metadata, freshness, evaluation, and cost.",
-      "date": "2026-06-25",
+      "date": "2026-05-17",
       "readingMinutes": 6,
       "tags": [
         "AI",
