@@ -285,7 +285,7 @@
       "category": "architecture",
       "title": "Event Sourcing: A Beginner's Guide",
       "summary": "A beginner-friendly guide to Event Sourcing: storing facts as an append-only event history, rebuilding current state through projections, and understanding when the pattern is worth its operational cost.",
-      "date": "2026-06-25",
+      "date": "2026-05-05",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",

@@ -200,7 +200,7 @@
       "category": "architecture",
       "title": "Event Sourcing cho người mới bắt đầu",
       "summary": "Một bài nhập môn về Event Sourcing: lưu các sự kiện như lịch sử append-only, dựng current state bằng projection, và hiểu khi nào pattern này đáng với chi phí vận hành.",
-      "date": "2026-06-25",
+      "date": "2026-05-05",
       "readingMinutes": 7,
       "tags": [
         "Software Architecture",
