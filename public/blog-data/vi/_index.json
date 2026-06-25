@@ -166,7 +166,7 @@
       "category": "ai",
       "title": "Giảm hallucination trong LLM",
       "summary": "Một hướng dẫn thực tế để giảm hallucination trong LLM bằng task rõ hơn, context có giới hạn, retrieval, citation, verification, refusal, evaluation set và product design làm uncertainty nhìn thấy được.",
-      "date": "2026-06-25",
+      "date": "2026-05-07",
       "readingMinutes": 7,
       "tags": [
         "AI",

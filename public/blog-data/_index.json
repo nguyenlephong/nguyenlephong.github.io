@@ -251,7 +251,7 @@
       "category": "ai",
       "title": "Reducing Hallucinations in LLMs",
       "summary": "A practical guide to reducing LLM hallucinations with clearer tasks, bounded context, retrieval, citations, verification, refusals, evaluation sets, and product design that makes uncertainty visible.",
-      "date": "2026-06-25",
+      "date": "2026-05-07",
       "readingMinutes": 6,
       "tags": [
         "AI",
