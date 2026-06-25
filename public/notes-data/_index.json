@@ -1923,7 +1923,7 @@
       "title": "Complexity Is Inevitable, Simplicity Is Sustainable: Lessons from Systems and Life",
       "summary": "Early in a technical career, it is easy to mistake more tools, more abstraction and clever code for better architecture. Large systems teach a quieter lesson: growth creates complexity, but clarity keeps systems maintainable. This article connects essential and accidental complexity, technical debt, trade-offs, and the same discipline of simplicity in a busy life.",
       "cardSummary": "Complexity grows naturally; simplicity has to be designed and protected.",
-      "date": "2026-06-03",
+      "date": "2026-02-21",
       "readingMinutes": 12,
       "tags": [
         "System Design",
