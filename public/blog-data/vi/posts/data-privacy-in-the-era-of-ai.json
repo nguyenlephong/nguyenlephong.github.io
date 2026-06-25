@@ -3,7 +3,7 @@
   "category": "ai",
   "title": "Data privacy trong kỷ nguyên AI",
   "summary": "Một bài viết thực tế về data privacy khi làm việc với AI: prompt, document, log, retrieval, training và evaluation tạo thêm những đường đi dữ liệu mới ra sao, và team có thể dùng AI thế nào trong khi vẫn giữ rõ consent, minimization, access và retention.",
-  "date": "2026-06-25",
+  "date": "2026-01-18",
   "readingMinutes": 7,
   "tags": [
     "AI",
