@@ -50,7 +50,13 @@ async function rewriteHtml(files) {
   let updated = 0
   for (const file of files) {
     if (!file.endsWith('.html')) continue
-    const original = await fs.readFile(file, 'utf8')
+    let original
+    try {
+      original = await fs.readFile(file, 'utf8')
+    } catch (err) {
+      if (err?.code === 'ENOENT') continue
+      throw err
+    }
     let next = original
     // Match the URL exactly so we only touch our OG endpoints and preserve
     // the query string Next appends for cache busting.
