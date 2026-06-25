@@ -1827,7 +1827,7 @@
       "category": "architecture",
       "title": "Dependency Direction in Plain Language",
       "summary": "Dependency direction is the simple team rule that says stable business ideas should not depend on volatile delivery details. This explainer uses a small release scenario to show how the rule keeps code, reviews, and team conversations calmer.",
-      "date": "2026-06-24",
+      "date": "2026-02-10",
       "readingMinutes": 7,
       "tags": [
         "Software Architecture",

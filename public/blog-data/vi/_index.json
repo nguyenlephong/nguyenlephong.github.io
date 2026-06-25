@@ -1703,7 +1703,7 @@
       "category": "architecture",
       "title": "Dependency direction bằng ngôn ngữ đời thường",
       "summary": "Dependency direction là một quy tắc đơn giản giúp team thống nhất: business rule ổn định không nên phụ thuộc vào chi tiết delivery dễ đổi. Bài viết dùng một tình huống release nhỏ để giải thích vì sao hướng phụ thuộc giúp code, review và trao đổi trong team bình tĩnh hơn.",
-      "date": "2026-06-24",
+      "date": "2026-02-10",
       "readingMinutes": 8,
       "tags": [
         "Kiến trúc phần mềm",
