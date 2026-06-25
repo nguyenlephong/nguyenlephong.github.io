@@ -187,7 +187,7 @@
       "category": "architecture",
       "title": "Micro-Frontends : Quand Ça Vaut le Coup, et Ce Que Ça Coûte",
       "summary": "Diviser le frontend en pièces déployables indépendamment peut libérer les équipes — ou vous noyer dans la complexité. Rédigé à partir de l'expérience de livraison d'une configuration Angular-host + modules React à grande échelle : quand les micro-frontends rapportent, et la facture qu'ils entraînent.",
-      "date": "2026-05-29",
+      "date": "2026-03-02",
       "readingMinutes": 15,
       "tags": [
         "Architecture logicielle",
