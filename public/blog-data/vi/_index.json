@@ -1646,7 +1646,8 @@
         "Giải quyết vấn đề",
         "Incident",
         "Engineering Culture"
-      ]
+      ],
+      "date": "2026-02-14"
     },
     {
       "slug": "pull-dont-push",
