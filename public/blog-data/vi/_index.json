@@ -1294,7 +1294,7 @@
       "category": "architecture",
       "title": "Clean, Onion và Hexagonal Architecture: ba tên gọi cho cùng một hướng nghĩ",
       "summary": "Clean Architecture, Onion Architecture và Hexagonal Architecture thường bị xem như ba trường phái khác nhau. Thực ra chúng cùng nhắc về một điều: domain và business rule nên nằm ở trung tâm, framework và chi tiết kỹ thuật ở ngoài rìa. Bài này so sánh nhẹ nhàng để bạn chọn cách gọi và cách vẽ phù hợp với team.",
-      "date": "2026-05-29",
+      "date": "2026-03-06",
       "readingMinutes": 15,
       "tags": [
         "Kiến trúc phần mềm",

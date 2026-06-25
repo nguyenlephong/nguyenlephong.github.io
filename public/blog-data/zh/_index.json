@@ -111,7 +111,7 @@
       "category": "architecture",
       "title": "Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字",
       "summary": "它们看起来像是三种相互竞争的架构，实则是同一个思想——依赖指向内部，框架置于边缘——用三种方式画出来。本文讲清楚每种方案真正增加了什么，以及应该选哪一个。",
-      "date": "2026-05-29",
+      "date": "2026-03-06",
       "readingMinutes": 15,
       "tags": [
         "软件架构",

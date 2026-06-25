@@ -111,7 +111,7 @@
       "category": "architecture",
       "title": "Clean, Onion & Hexagonal Architecture : Une étoile du nord, trois noms",
       "summary": "Elles ressemblent à trois architectures rivales. En réalité, c'est la même idée — les dépendances pointent vers l'intérieur, les frameworks restent à la périphérie — dessinée de trois façons différentes. Voici ce que chacune apporte vraiment, et laquelle choisir.",
-      "date": "2026-05-29",
+      "date": "2026-03-06",
       "readingMinutes": 15,
       "tags": [
         "Architecture logicielle",
