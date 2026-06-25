@@ -23,14 +23,16 @@ const MAX_RENAME_LOGS = 40
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true })
-  const files = await Promise.all(
-    entries.map((entry) => {
-      const full = path.join(dir, entry.name)
-      if (entry.isDirectory()) return walk(full)
-      return [full]
-    })
-  )
-  return files.flat()
+  const files = []
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name)
+    if (entry.isDirectory()) {
+      files.push(...(await walk(full)))
+    } else {
+      files.push(full)
+    }
+  }
+  return files
 }
 
 async function renameOgFiles(files) {
@@ -46,10 +48,34 @@ async function renameOgFiles(files) {
   return renamed
 }
 
+function htmlCandidatesForOgRoutes(files) {
+  const candidates = new Set()
+  for (const file of files) {
+    const base = path.basename(file)
+    if (
+      base !== 'opengraph-image' &&
+      base !== 'opengraph-image.png' &&
+      base !== 'twitter-image' &&
+      base !== 'twitter-image.png'
+    ) {
+      continue
+    }
+
+    const routeDir = path.dirname(file)
+    if (routeDir === OUT_DIR) {
+      candidates.add(path.join(OUT_DIR, 'index.html'))
+      continue
+    }
+
+    candidates.add(`${routeDir}.html`)
+    candidates.add(path.join(routeDir, 'index.html'))
+  }
+  return [...candidates]
+}
+
 async function rewriteHtml(files) {
   let updated = 0
-  for (const file of files) {
-    if (!file.endsWith('.html')) continue
+  for (const file of htmlCandidatesForOgRoutes(files)) {
     let original
     try {
       original = await fs.readFile(file, 'utf8')
@@ -99,7 +125,11 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error('[postbuild-og] failed:', err)
-  process.exit(1)
-})
+main()
+  .then(() => {
+    process.exit(0)
+  })
+  .catch((err) => {
+    console.error('[postbuild-og] failed:', err)
+    process.exit(1)
+  })
