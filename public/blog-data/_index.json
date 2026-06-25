@@ -2353,7 +2353,7 @@
       "category": "perspectives",
       "title": "Dealing with Legacy Code",
       "summary": "A reflective essay on working with legacy code patiently: understanding history, adding tests, making small safe changes, respecting past constraints, and improving the codebase without rushing into a rewrite.",
-      "date": "2026-06-25",
+      "date": "2026-01-12",
       "readingMinutes": 6,
       "tags": [
         "Software Engineering",

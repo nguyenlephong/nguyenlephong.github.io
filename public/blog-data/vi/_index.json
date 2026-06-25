@@ -2229,7 +2229,7 @@
       "category": "perspectives",
       "title": "Làm việc với legacy code",
       "summary": "Một bài reflection về cách làm việc kiên nhẫn với legacy code: hiểu lịch sử, thêm test, thay đổi nhỏ và an toàn, tôn trọng constraint cũ, và cải thiện codebase mà không vội rewrite.",
-      "date": "2026-06-25",
+      "date": "2026-01-12",
       "readingMinutes": 7,
       "tags": [
         "Software Engineering",
