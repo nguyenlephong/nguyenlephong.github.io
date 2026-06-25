@@ -573,7 +573,7 @@
       "category": "ai",
       "title": "The Context Window Bottleneck",
       "summary": "A practical look at context window limits as one of the quiet bottlenecks in AI workflows. The article explains why long chats, big codebases, stale summaries, and missing working memory can make AI assistance drift, and how teams can work around the limit without turning every task into a document dump.",
-      "date": "2026-06-24",
+      "date": "2026-04-18",
       "readingMinutes": 6,
       "tags": [
         "AI",
