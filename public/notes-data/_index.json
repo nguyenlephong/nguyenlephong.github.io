@@ -2585,7 +2585,7 @@
       "title": "Programming Beacons",
       "summary": "Beacons are the small clues in code that trigger a usually-correct assumption about what is going on — a variable named 'node' tells you it lives in a tree or graph before you trace a thing. Good code is full of these quiet signposts, and you can deliberately enrich yours with them.",
       "cardSummary": "A variable named 'node' tells you half the story before you read a single line more.",
-      "date": "2026-05-27",
+      "date": "2026-01-23",
       "readingMinutes": 2,
       "tags": [
         "Thoughts",
