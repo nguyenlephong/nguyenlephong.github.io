@@ -1520,7 +1520,7 @@
       "category": "ai",
       "title": "Context Engineering: kỹ năng khiến AI hiểu việc của bạn tốt hơn",
       "summary": "Nhiều kết quả AI kém không phải vì model quá dở, mà vì context quá mỏng. Bài này giải thích context engineering: cần đưa gì vào prompt, cách mô tả mục tiêu, dữ liệu, ràng buộc, ví dụ, tiêu chí đánh giá, và các anti-pattern làm AI trả lời lan man. Đây là kỹ năng nhỏ nhưng tạo khác biệt lớn khi làm việc với LLM.",
-      "date": "2026-05-31",
+      "date": "2026-02-22",
       "readingMinutes": 15,
       "tags": [
         "AI",
