@@ -2175,7 +2175,7 @@
       "category": "architecture",
       "title": "GraphQL và REST",
       "summary": "Một bài so sánh thực tế giữa GraphQL và REST: mỗi cách định hình API contract, độ linh hoạt cho frontend, caching, observability, ownership trong team và trade-off vận hành khi chọn một phong cách API.",
-      "date": "2026-06-25",
+      "date": "2026-01-15",
       "readingMinutes": 7,
       "tags": [
         "Software Architecture",
