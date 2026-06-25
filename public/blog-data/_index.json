@@ -1939,7 +1939,7 @@
       "category": "architecture",
       "title": "CQRS: Command Query Responsibility Segregation",
       "summary": "A practical explanation of CQRS: separating commands from queries, when read and write models deserve different shapes, and how to avoid turning a useful pattern into unnecessary architecture.",
-      "date": "2026-06-24",
+      "date": "2026-02-04",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",

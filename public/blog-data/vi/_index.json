@@ -1815,7 +1815,7 @@
       "category": "architecture",
       "title": "CQRS: tách phần ghi và phần đọc cho đúng việc",
       "summary": "Một bài giải thích thực tế về CQRS: tách command khỏi query, khi nào read model và write model nên có hình dạng khác nhau, và cách tránh biến một pattern hữu ích thành kiến trúc thừa.",
-      "date": "2026-06-24",
+      "date": "2026-02-04",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
