@@ -3,7 +3,7 @@
   "category": "perspectives",
   "title": "Nghệ thuật viết commit message có ý nghĩa",
   "summary": "Một bài reflection về commit message có ý nghĩa: lịch sử tốt giúp debug, review, rollback, onboarding và team memory ra sao mà không biến mỗi commit thành một tài liệu dài.",
-  "date": "2026-06-25",
+  "date": "2026-01-07",
   "readingMinutes": 7,
   "tags": [
     "Software Engineering",
