@@ -33,5 +33,6 @@
       "q": "Tử tế có nghĩa là hạ thấp tiêu chuẩn không?",
       "a": "Không — và đây là điều quan trọng nhất cần hiểu. Kind engineering hoàn toàn tương thích với tiêu chuẩn cao; thực tế, nó đòi hỏi chúng. Sự khác biệt là ở <em>cách</em> bạn duy trì tiêu chuẩn: kỹ sư tử tế rõ ràng về tiêu chuẩn là gì, giải thích tại sao nó quan trọng, và giúp người đó đáp ứng nó. \"Mình không thể merge cái này mà không có test — đây là lý do tại sao điều đó quan trọng và đây là cách mình tiếp cận\" vừa tiêu chuẩn cao vừa tử tế. Approve mọi thứ để tránh ma sát là 'dễ chịu' nhưng cuối cùng không hữu ích. Sự tử tế không bao giờ đưa ra phản hồi thành thật chỉ là né tránh xung đột trá hình."
     }
-  ]
+  ],
+  "date": "2026-02-28"
 }
