@@ -91,7 +91,7 @@
       "category": "architecture",
       "title": "Ports & Adapters（六边形架构），简单讲清楚",
       "summary": "一篇友好、示例驱动的六边形架构指南：ports 和 adapters 到底是什么、让它运转的那条核心规则，以及究竟该用多少——无论你是独立创业者还是企业级团队。",
-      "date": "2026-05-29",
+      "date": "2026-03-07",
       "readingMinutes": 16,
       "tags": [
         "软件架构",

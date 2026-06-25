@@ -91,7 +91,7 @@
       "category": "architecture",
       "title": "Ports & Adapters（Hexagonal Architecture）をやさしく解説",
       "summary": "Hexagonal Architecture の入門ガイドです。ポートとアダプターが実際に何であるか、それを成立させる唯一のルール、そしてどこまで適用すべきかを、ソロ開発者からエンタープライズチームまでに向けてわかりやすく解説します。",
-      "date": "2026-05-29",
+      "date": "2026-03-07",
       "readingMinutes": 16,
       "tags": [
         "ソフトウェアアーキテクチャ",

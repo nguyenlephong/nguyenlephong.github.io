@@ -1274,7 +1274,7 @@
       "category": "architecture",
       "title": "Ports & Adapters: Hexagonal Architecture giải thích bằng ví dụ dễ hiểu",
       "summary": "Ports & Adapters nghe có vẻ học thuật, nhưng ý tưởng cốt lõi rất thực tế: business logic nên đứng vững dù database, UI hay API bên ngoài thay đổi. Bài này giải thích port, adapter và dependency direction bằng ví dụ gần gũi, để bạn biết áp dụng vừa đủ cho dự án nhỏ lẫn codebase lớn.",
-      "date": "2026-05-29",
+      "date": "2026-03-07",
       "readingMinutes": 16,
       "tags": [
         "Kiến trúc phần mềm",
