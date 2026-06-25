@@ -2563,7 +2563,7 @@
       "title": "Programming Abstractions Are Bets",
       "summary": "Every abstraction is a bet: if it fits, future changes stack more cleanly; if it arrives too early, every layered change becomes harder to carry. The satisfaction of naming things is real — which is exactly why it deserves restraint. It is usually easier to generalize specialized code later than to untangle an over-abstracted design.",
       "cardSummary": "Every abstraction is a bet, and early certainty deserves a little humility.",
-      "date": "2026-05-27",
+      "date": "2026-01-24",
       "readingMinutes": 2,
       "tags": [
         "Thoughts",
