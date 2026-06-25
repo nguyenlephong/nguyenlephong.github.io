@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "分层架构与 Vertical Slice Architecture",
   "summary": "分层架构在一开始很整洁，Vertical Slice 则把变化放回真实功能附近。本文平静地比较两者的价值、代价，以及团队何时该调整结构。",
-  "date": "2026-06-23",
+  "date": "2026-02-11",
   "readingMinutes": 6,
   "tags": [
     "软件架构",

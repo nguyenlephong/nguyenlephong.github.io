@@ -318,7 +318,7 @@
       "category": "architecture",
       "title": "レイヤードアーキテクチャと Vertical Slice Architecture",
       "summary": "レイヤード構成は最初は整って見えます。一方、Vertical Slice は変更を実際の機能に近づけます。両者の良さ、痛み、移行の合図を落ち着いて考えます。",
-      "date": "2026-06-23",
+      "date": "2026-02-11",
       "readingMinutes": 6,
       "tags": [
         "ソフトウェアアーキテクチャ",

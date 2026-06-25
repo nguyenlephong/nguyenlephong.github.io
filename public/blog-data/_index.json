@@ -1807,7 +1807,7 @@
       "category": "architecture",
       "title": "Layered vs. Vertical Slice Architecture",
       "summary": "Layered architecture is easy to recognize; vertical slices keep change close to the feature people use. This piece compares both styles through everyday code changes and the boundary trade-offs behind them.",
-      "date": "2026-06-23",
+      "date": "2026-02-11",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",

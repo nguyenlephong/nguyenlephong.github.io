@@ -318,7 +318,7 @@
       "category": "architecture",
       "title": "레이어드 아키텍처와 Vertical Slice Architecture",
       "summary": "레이어드 구조는 처음에는 깔끔해 보이고, vertical slice 는 변경을 실제 기능 가까이에 둡니다. 두 방식의 장점과 비용, 그리고 팀이 언제 방향을 바꿔야 하는지 차분히 살펴봅니다.",
-      "date": "2026-06-23",
+      "date": "2026-02-11",
       "readingMinutes": 6,
       "tags": [
         "소프트웨어 아키텍처",

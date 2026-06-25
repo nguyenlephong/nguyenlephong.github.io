@@ -1683,7 +1683,7 @@
       "category": "architecture",
       "title": "Layered và Vertical Slice Architecture",
       "summary": "Layered architecture dễ nhận ra và dễ dạy; vertical slice giữ thay đổi gần với feature người dùng chạm vào. Bài viết so sánh hai cách qua những thay đổi code hằng ngày và trade-off về boundary.",
-      "date": "2026-06-23",
+      "date": "2026-02-11",
       "readingMinutes": 6,
       "tags": [
         "Kiến trúc phần mềm",
