@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "okrs-for-engineering-teams",
+      "category": "ways-of-working",
+      "title": "OKRs for Engineering Teams",
+      "summary": "A practical guide to engineering OKRs: how to connect outcomes to delivery work, avoid task lists disguised as objectives, choose useful key results, and keep learning visible during the quarter.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "OKRs",
+        "Engineering Management",
+        "Ways of Working",
+        "Software Delivery",
+        "Team Planning",
+        "Metrics"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "learning-a-new-language-every-year",
+      "category": "perspectives",
+      "title": "Learning a New Language Every Year",
+      "summary": "A reflective essay on learning one new programming or human language each year: how unfamiliar grammar, small exercises, patience, and comparison sharpen the way we think and communicate.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Learning",
+        "Programming Languages",
+        "Career Growth",
+        "Reflection",
+        "Software Engineering",
+        "Communication"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "ai-in-cybersecurity",
+      "category": "ai",
+      "title": "AI in Cybersecurity",
+      "summary": "A practical reflection on AI in cybersecurity: how AI helps detection, triage, secure coding, and incident response while creating new risks around automation, privacy, prompt injection, and false confidence.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Cybersecurity",
+        "Security Engineering",
+        "Incident Response",
+        "Threat Detection",
+        "Responsible AI"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "navigating-office-politics",
+      "category": "culture",
+      "title": "Navigating Office Politics",
+      "summary": "A calm look at office politics in engineering teams: how to understand incentives, build trust, communicate context, disagree cleanly, and stay principled without becoming naive.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Office Politics",
+        "Leadership",
+        "Communication",
+        "Team Trust",
+        "Career Growth"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "service-mesh-do-you-need-it",
+      "category": "architecture",
+      "title": "Service Mesh: Do You Need It?",
+      "summary": "A practical explanation of service mesh trade-offs: what it centralizes, when it helps, and why teams should solve real service-to-service pain before adopting another infrastructure layer.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Service Mesh",
+        "Microservices",
+        "Platform Engineering",
+        "Observability",
+        "Reliability"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "trunk-based-development",
       "category": "ways-of-working",
       "title": "Trunk-Based Development",
