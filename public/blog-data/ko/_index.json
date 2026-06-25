@@ -149,7 +149,7 @@
       "category": "architecture",
       "title": "코드베이스 구조화: 레이어별, 기능별, 또는 도메인별?",
       "summary": "최상위 폴더가 controllers/services/models여야 할까요, 아니면 orders/billing/auth여야 할까요? 이 선택은 조용히 코드베이스의 성장 방식을 결정합니다. 레이어별, 기능별, 소리치는 아키텍처의 실용적인 여행 — 각 회사 규모별 트레이드오프와 함께.",
-      "date": "2026-05-29",
+      "date": "2026-03-04",
       "readingMinutes": 14,
       "tags": [
         "소프트웨어 아키텍처",

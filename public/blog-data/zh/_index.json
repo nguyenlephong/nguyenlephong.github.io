@@ -149,7 +149,7 @@
       "category": "architecture",
       "title": "代码库结构：按层、按功能，还是按领域？",
       "summary": "顶层文件夹应该叫 controllers/services/models，还是 orders/billing/auth？这个选择悄悄地影响代码库的成长方式。一篇关于按层、按功能和尖叫式架构的实用指南——附上各公司规模下的权衡取舍。",
-      "date": "2026-05-29",
+      "date": "2026-03-04",
       "readingMinutes": 14,
       "tags": [
         "软件架构",

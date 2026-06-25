@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Structuring a Codebase: By Layer, By Feature, or By Domain?",
   "summary": "Should your top-level folders be controllers/services/models, or orders/billing/auth? The choice quietly shapes how your codebase grows. A practical tour of by-layer, by-feature, and screaming architecture — with the trade-offs at each company size.",
-  "date": "2026-05-29",
+  "date": "2026-03-04",
   "readingMinutes": 14,
   "tags": [
     "Software Architecture",

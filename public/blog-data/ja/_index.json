@@ -149,7 +149,7 @@
       "category": "architecture",
       "title": "コードベースの構成：レイヤー・フィーチャー・ドメイン、どれを選ぶ？",
       "summary": "トップレベルのフォルダーを controllers/services/models にすべきか、orders/billing/auth にすべきか？この選択はコードベースの成長を静かに形作ります。レイヤー別・フィーチャー別・Screaming Architecture を実践的に比較し、会社の規模ごとのトレードオフを解説します。",
-      "date": "2026-05-29",
+      "date": "2026-03-04",
       "readingMinutes": 14,
       "tags": [
         "ソフトウェアアーキテクチャ",

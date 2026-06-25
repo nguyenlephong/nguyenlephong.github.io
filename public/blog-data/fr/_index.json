@@ -149,7 +149,7 @@
       "category": "architecture",
       "title": "Structurer un Codebase : Par Couche, Par Fonctionnalité ou Par Domaine ?",
       "summary": "Vos dossiers de premier niveau doivent-ils s'appeler controllers/services/models, ou orders/billing/auth ? Ce choix discret façonne silencieusement la façon dont votre codebase grandit. Un tour pratique de la structure par couche, par fonctionnalité et de la Screaming Architecture — avec les compromis à chaque taille d'entreprise.",
-      "date": "2026-05-29",
+      "date": "2026-03-04",
       "readingMinutes": 14,
       "tags": [
         "Architecture logicielle",
