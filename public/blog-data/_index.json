@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "okrs-for-engineering-teams",
+      "category": "ways-of-working",
+      "title": "OKRs for Engineering Teams",
+      "summary": "A practical guide to engineering OKRs: how to connect outcomes to delivery work, avoid task lists disguised as objectives, choose useful key results, and keep learning visible during the quarter.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "OKRs",
+        "Engineering Management",
+        "Ways of Working",
+        "Software Delivery",
+        "Team Planning",
+        "Metrics"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "learning-a-new-language-every-year",
+      "category": "perspectives",
+      "title": "Learning a New Language Every Year",
+      "summary": "A reflective essay on learning one new programming or human language each year: how unfamiliar grammar, small exercises, patience, and comparison sharpen the way we think and communicate.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Learning",
+        "Programming Languages",
+        "Career Growth",
+        "Reflection",
+        "Software Engineering",
+        "Communication"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "ai-in-cybersecurity",
+      "category": "ai",
+      "title": "AI in Cybersecurity",
+      "summary": "A practical reflection on AI in cybersecurity: how AI helps detection, triage, secure coding, and incident response while creating new risks around automation, privacy, prompt injection, and false confidence.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Cybersecurity",
+        "Security Engineering",
+        "Incident Response",
+        "Threat Detection",
+        "Responsible AI"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "navigating-office-politics",
+      "category": "culture",
+      "title": "Navigating Office Politics",
+      "summary": "A calm look at office politics in engineering teams: how to understand incentives, build trust, communicate context, disagree cleanly, and stay principled without becoming naive.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Office Politics",
+        "Leadership",
+        "Communication",
+        "Team Trust",
+        "Career Growth"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "service-mesh-do-you-need-it",
+      "category": "architecture",
+      "title": "Service Mesh: Do You Need It?",
+      "summary": "A practical explanation of service mesh trade-offs: what it centralizes, when it helps, and why teams should solve real service-to-service pain before adopting another infrastructure layer.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Service Mesh",
+        "Microservices",
+        "Platform Engineering",
+        "Observability",
+        "Reliability"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "trunk-based-development",
       "category": "ways-of-working",
       "title": "Trunk-Based Development",
@@ -2209,6 +2294,186 @@
         "DevSecOps",
         "Secure Coding",
         "Software Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "designing-idempotent-apis",
+      "category": "architecture",
+      "title": "Designing Idempotent APIs",
+      "summary": "A practical explanation of idempotent API design: why retries happen, how duplicate requests create risk, and how idempotency keys, stable state transitions, and clear response contracts make distributed systems calmer.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "API Design",
+        "Idempotency",
+        "Distributed Systems",
+        "Reliability",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "creating-a-blameless-culture",
+      "category": "culture",
+      "title": "Creating a Blameless Culture",
+      "summary": "A calm look at blameless engineering culture: how teams can study incidents without blame, separate accountability from punishment, improve systems, and make it safer for people to tell the truth early.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Blameless Culture",
+        "Incident Review",
+        "Psychological Safety",
+        "Leadership",
+        "Team Learning"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "ai-for-code-refactoring",
+      "category": "ai",
+      "title": "AI for Code Refactoring",
+      "summary": "A practical reflection on using AI for code refactoring: where it helps with mapping, options, tests, and mechanical changes, and why engineers still need boundaries, evidence, and verification before trusting the result.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Refactoring",
+        "Software Engineering",
+        "Code Quality",
+        "Testing",
+        "Developer Tools"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "art-of-meaningful-commit-message",
+      "category": "perspectives",
+      "title": "The Art of the Meaningful Commit Message",
+      "summary": "A reflective essay on meaningful commit messages: how good history helps future debugging, review, rollback, onboarding, and team memory without turning every commit into a long document.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Engineering",
+        "Git",
+        "Commit Messages",
+        "Code Review",
+        "Maintainability",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "behavior-driven-development-bdd",
+      "category": "ways-of-working",
+      "title": "Behavior-Driven Development (BDD)",
+      "summary": "A practical reflection on Behavior-Driven Development: how examples, shared language, and Given-When-Then scenarios can align product, QA, and engineering when teams treat BDD as conversation first and automation second.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "BDD",
+        "Behavior-Driven Development",
+        "Acceptance Criteria",
+        "Testing",
+        "Collaboration",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "rate-limiting-and-throttling",
+      "category": "architecture",
+      "title": "Rate Limiting and Throttling",
+      "summary": "A practical explanation of rate limiting and throttling: how systems protect shared capacity, shape traffic, communicate limits clearly, and keep overload from turning into a full outage.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Rate Limiting",
+        "Throttling",
+        "Reliability",
+        "API Design",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "giving-constructive-feedback",
+      "category": "culture",
+      "title": "Giving Constructive Feedback",
+      "summary": "A calm reflection on constructive feedback: how specific observations, timing, care, accountability, and follow-up help people improve without turning feedback into blame or performance theater.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Feedback",
+        "Communication",
+        "Team Trust",
+        "Psychological Safety",
+        "Leadership"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "evaluating-llm-performance",
+      "category": "ai",
+      "title": "Evaluating LLM Performance",
+      "summary": "A practical guide to evaluating LLM performance with task-specific datasets, rubrics, human review, regression checks, latency, cost, safety, and production feedback instead of relying on impressive demos.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "AI Evaluation",
+        "Prompting",
+        "Product Quality",
+        "Observability"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "why-i-love-writing-documentation",
+      "category": "perspectives",
+      "title": "Why I Love Writing Documentation",
+      "summary": "A reflective essay on documentation as care for future work: how clear notes, decision records, examples, and small updates reduce confusion, protect team memory, and make software easier to change.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Documentation",
+        "Software Engineering",
+        "Knowledge Sharing",
+        "Codebase",
+        "Team Memory",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "minimum-viable-product-mvp-traps",
+      "category": "ways-of-working",
+      "title": "Minimum Viable Product (MVP) Traps",
+      "summary": "A practical reflection on common MVP traps: shipping too little to learn, confusing cheap with viable, ignoring operations, measuring the wrong signal, and forgetting that an MVP is a learning instrument.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "MVP",
+        "Product Development",
+        "Lean Startup",
+        "Delivery",
+        "Product Discovery",
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",

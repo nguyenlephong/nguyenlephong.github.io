@@ -2174,6 +2174,186 @@
       ],
       "author": "Nguyen Le Phong",
       "featured": false
+    },
+    {
+      "slug": "designing-idempotent-apis",
+      "category": "architecture",
+      "title": "Thiết kế idempotent API",
+      "summary": "Một bài giải thích thực tế về idempotent API design: vì sao retry luôn xảy ra, duplicate request tạo rủi ro thế nào, và cách idempotency key, state transition ổn định cùng response contract rõ ràng làm distributed system bình tĩnh hơn.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "API Design",
+        "Idempotency",
+        "Distributed Systems",
+        "Reliability",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "creating-a-blameless-culture",
+      "category": "culture",
+      "title": "Xây dựng văn hóa blameless",
+      "summary": "Một bài nhìn bình tĩnh về blameless engineering culture: cách team học từ incident mà không đổ lỗi, tách accountability khỏi punishment, cải thiện system, và làm con người an toàn hơn khi nói sự thật sớm.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Blameless Culture",
+        "Incident Review",
+        "Psychological Safety",
+        "Leadership",
+        "Team Learning"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "ai-for-code-refactoring",
+      "category": "ai",
+      "title": "AI cho refactor code",
+      "summary": "Một bài nhìn thực tế về cách dùng AI cho code refactoring: AI giúp map code, tạo option, gợi ý test và thay đổi cơ học ở đâu, đồng thời vì sao engineer vẫn cần boundary, evidence và verification trước khi tin kết quả.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "Refactoring",
+        "Software Engineering",
+        "Code Quality",
+        "Testing",
+        "Developer Tools"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "art-of-meaningful-commit-message",
+      "category": "perspectives",
+      "title": "Nghệ thuật viết commit message có ý nghĩa",
+      "summary": "Một bài reflection về commit message có ý nghĩa: lịch sử tốt giúp debug, review, rollback, onboarding và team memory ra sao mà không biến mỗi commit thành một tài liệu dài.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Engineering",
+        "Git",
+        "Commit Messages",
+        "Code Review",
+        "Maintainability",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "behavior-driven-development-bdd",
+      "category": "ways-of-working",
+      "title": "Behavior-Driven Development (BDD)",
+      "summary": "Một bài reflection thực tế về Behavior-Driven Development: cách example, shared language và Given-When-Then scenario giúp product, QA và engineering cùng hiểu nhau khi team xem BDD là conversation trước, automation sau.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "BDD",
+        "Behavior-Driven Development",
+        "Acceptance Criteria",
+        "Testing",
+        "Collaboration",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "rate-limiting-and-throttling",
+      "category": "architecture",
+      "title": "Rate limiting và throttling",
+      "summary": "Một bài giải thích thực tế về rate limiting và throttling: cách hệ thống bảo vệ capacity chung, điều tiết traffic, giao tiếp limit rõ ràng và ngăn overload biến thành outage.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Rate Limiting",
+        "Throttling",
+        "Reliability",
+        "API Design",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "giving-constructive-feedback",
+      "category": "culture",
+      "title": "Góp ý xây dựng một cách tử tế và rõ ràng",
+      "summary": "Một bài reflection bình tĩnh về constructive feedback: cách observation cụ thể, timing, sự quan tâm, accountability và follow-up giúp con người tiến bộ mà không biến feedback thành đổ lỗi.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Feedback",
+        "Communication",
+        "Team Trust",
+        "Psychological Safety",
+        "Leadership"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "evaluating-llm-performance",
+      "category": "ai",
+      "title": "Đánh giá hiệu năng của LLM",
+      "summary": "Một hướng dẫn thực tế về cách đánh giá LLM bằng dataset theo task, rubric, human review, regression check, latency, cost, safety và production feedback thay vì chỉ tin demo ấn tượng.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "LLM",
+        "AI Evaluation",
+        "Prompting",
+        "Product Quality",
+        "Observability"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "why-i-love-writing-documentation",
+      "category": "perspectives",
+      "title": "Vì sao tôi thích viết documentation",
+      "summary": "Một bài reflection về documentation như sự chăm sóc cho công việc tương lai: note rõ, decision record, example và update nhỏ giúp giảm mơ hồ, giữ team memory và làm software dễ thay đổi hơn.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Documentation",
+        "Software Engineering",
+        "Knowledge Sharing",
+        "Codebase",
+        "Team Memory",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "minimum-viable-product-mvp-traps",
+      "category": "ways-of-working",
+      "title": "Những cái bẫy của Minimum Viable Product (MVP)",
+      "summary": "Một bài reflection thực tế về những bẫy thường gặp khi làm MVP: ship quá ít để học được gì, nhầm rẻ với viable, bỏ qua vận hành, đo sai tín hiệu và quên rằng MVP là công cụ học.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "MVP",
+        "Product Development",
+        "Lean Startup",
+        "Delivery",
+        "Product Discovery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
     }
   ]
 }
