@@ -472,7 +472,7 @@
       "category": "ai",
       "title": "Retrieval-Augmented Generation (RAG) Basics",
       "summary": "A beginner-friendly explanation of Retrieval-Augmented Generation: how documents are split into chunks, turned into embeddings, found with vector search, and used to ground AI answers with citations, evaluation, and clear failure checks.",
-      "date": "2026-06-24",
+      "date": "2026-04-24",
       "readingMinutes": 7,
       "tags": [
         "AI",

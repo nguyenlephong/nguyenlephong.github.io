@@ -3,7 +3,7 @@
   "category": "ai",
   "title": "Retrieval-Augmented Generation (RAG): những nền tảng cần hiểu",
   "summary": "Một bài giải thích RAG theo cách dễ bắt đầu: tài liệu được chia thành chunk, chuyển thành embedding, tìm bằng vector search, rồi dùng để grounding câu trả lời AI với citation, evaluation và các failure mode cần kiểm tra.",
-  "date": "2026-06-24",
+  "date": "2026-04-24",
   "readingMinutes": 8,
   "tags": [
     "AI",
