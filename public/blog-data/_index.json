@@ -2389,7 +2389,7 @@
       "category": "architecture",
       "title": "Designing Idempotent APIs",
       "summary": "A practical explanation of idempotent API design: why retries happen, how duplicate requests create risk, and how idempotency keys, stable state transitions, and clear response contracts make distributed systems calmer.",
-      "date": "2026-06-25",
+      "date": "2026-01-10",
       "readingMinutes": 6,
       "tags": [
         "Software Architecture",
