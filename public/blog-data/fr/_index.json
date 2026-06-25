@@ -130,7 +130,7 @@
       "category": "architecture",
       "title": "Dependency Injection & Inversion of Control, Sans la Magie",
       "summary": "Les conteneurs DI semblent magiques jusqu'à ce que vous voyiez l'idée simple qu'ils cachent : arrêtez de laisser le code créer ses propres dépendances, et passez-les plutôt de l'extérieur. Un guide depuis zéro, avec de vrais exemples et les bénéfices pour les tests.",
-      "date": "2026-05-29",
+      "date": "2026-03-05",
       "readingMinutes": 14,
       "tags": [
         "Architecture logicielle",

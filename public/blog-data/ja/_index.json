@@ -130,7 +130,7 @@
       "category": "architecture",
       "title": "Dependency Injection と Inversion of Control——魔法なしで理解する",
       "summary": "DIコンテナは、根底にあるシンプルなアイデアを見るまで魔法のように感じられます：コードが自分で依存を作るのをやめ、外から受け取るようにする、それだけです。初歩から始めるガイドで、実例とテストの恩恵をお届けします。",
-      "date": "2026-05-29",
+      "date": "2026-03-05",
       "readingMinutes": 14,
       "tags": [
         "ソフトウェアアーキテクチャ",

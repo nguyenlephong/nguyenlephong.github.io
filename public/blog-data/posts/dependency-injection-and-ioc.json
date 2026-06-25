@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Dependency Injection & Inversion of Control, Without the Magic",
   "summary": "DI containers feel like wizardry until you see the plain idea underneath: stop letting code create its own dependencies, and hand them in instead. A from-scratch guide, with real examples and the testing payoff.",
-  "date": "2026-05-29",
+  "date": "2026-03-05",
   "readingMinutes": 14,
   "tags": [
     "Software Architecture",

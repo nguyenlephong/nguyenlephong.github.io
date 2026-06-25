@@ -130,7 +130,7 @@
       "category": "architecture",
       "title": "Dependency Injection & Inversion of Control, 마법 없이 이해하기",
       "summary": "DI 컨테이너는 밑에 있는 단순한 아이디어를 보기 전까지 마법처럼 느껴집니다: 코드가 자신의 의존성을 직접 생성하지 않도록 하고, 대신 외부에서 전달받는 것입니다. 실제 예제와 테스트에서 얻을 수 있는 이점을 포함한 처음부터 끝까지의 가이드.",
-      "date": "2026-05-29",
+      "date": "2026-03-05",
       "readingMinutes": 14,
       "tags": [
         "소프트웨어 아키텍처",

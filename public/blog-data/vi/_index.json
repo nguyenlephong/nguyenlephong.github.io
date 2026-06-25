@@ -1313,7 +1313,7 @@
       "category": "architecture",
       "title": "Dependency Injection & Inversion of Control: bớt coupling mà không cần phép thuật",
       "summary": "DI và IoC không phải phép màu của framework. Ý tưởng đơn giản hơn nhiều: đừng để một class tự tạo mọi dependency mà nó cần; hãy đưa dependency từ bên ngoài vào. Bài này giải thích vì sao cách làm đó giúp code dễ test hơn, dễ thay đổi hơn và đỡ dính chặt vào database, SDK hay service cụ thể.",
-      "date": "2026-05-29",
+      "date": "2026-03-05",
       "readingMinutes": 14,
       "tags": [
         "Kiến trúc phần mềm",
