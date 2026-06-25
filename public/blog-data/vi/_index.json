@@ -1941,7 +1941,7 @@
       "category": "ai",
       "title": "Chạy local LLM để bảo vệ privacy",
       "summary": "Một bài giải thích thực tế về local LLM cho công việc nhạy cảm về dữ liệu: điều gì tốt hơn khi prompt và tài liệu ở lại máy mình kiểm soát, vẫn còn những chi phí chất lượng và vận hành nào, và team nên áp dụng ra sao.",
-      "date": "2026-06-25",
+      "date": "2026-01-28",
       "readingMinutes": 7,
       "tags": [
         "AI",

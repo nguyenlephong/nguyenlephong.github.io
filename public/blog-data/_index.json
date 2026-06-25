@@ -2065,7 +2065,7 @@
       "category": "ai",
       "title": "Running Local LLMs for Privacy",
       "summary": "A practical explanation of local LLMs for privacy-sensitive work: what improves when prompts and documents stay on owned machines, what quality and operations costs remain, and how teams can adopt local models responsibly.",
-      "date": "2026-06-25",
+      "date": "2026-01-28",
       "readingMinutes": 6,
       "tags": [
         "AI",
