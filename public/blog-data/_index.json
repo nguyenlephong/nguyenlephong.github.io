@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "trunk-based-development",
+      "category": "ways-of-working",
+      "title": "Trunk-Based Development",
+      "summary": "A practical introduction to trunk-based development: small frequent merges, feature flags, fast tests, code review discipline, and the team habits needed to keep the main branch healthy.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Trunk-Based Development",
+        "Continuous Integration",
+        "Feature Flags",
+        "Software Delivery",
+        "Code Review",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "overcoming-analysis-paralysis",
+      "category": "perspectives",
+      "title": "Overcoming Analysis Paralysis",
+      "summary": "A reflective essay on analysis paralysis: why careful thinking can turn into delay, how to separate reversible from irreversible choices, and how small experiments help decisions move without rushing.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Decision Making",
+        "Reflection",
+        "Career Growth",
+        "Software Engineering",
+        "Learning",
+        "Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "reducing-hallucinations-in-llms",
+      "category": "ai",
+      "title": "Reducing Hallucinations in LLMs",
+      "summary": "A practical guide to reducing LLM hallucinations with clearer tasks, bounded context, retrieval, citations, verification, refusals, evaluation sets, and product design that makes uncertainty visible.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Hallucinations",
+        "RAG",
+        "AI Product",
+        "Evaluation"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "mentorship-vs-sponsorship",
+      "category": "culture",
+      "title": "The Difference Between Mentorship and Sponsorship",
+      "summary": "A calm explanation of mentorship and sponsorship in engineering careers: how advice, feedback, advocacy, visibility, trust, and opportunity work together without turning growth into politics.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Mentorship",
+        "Sponsorship",
+        "Career Growth",
+        "Leadership",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "event-sourcing-beginners-guide",
+      "category": "architecture",
+      "title": "Event Sourcing: A Beginner's Guide",
+      "summary": "A beginner-friendly guide to Event Sourcing: storing facts as an append-only event history, rebuilding current state through projections, and understanding when the pattern is worth its operational cost.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Event Sourcing",
+        "Event-Driven Architecture",
+        "CQRS",
+        "System Design",
+        "Data Modeling"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "tdd-is-it-worth-the-time",
       "category": "ways-of-working",
       "title": "TDD: Is It Worth the Time?",
@@ -1680,6 +1765,366 @@
       "featured": false
     },
     {
+      "slug": "cqrs-command-query-responsibility-segregation",
+      "category": "architecture",
+      "title": "CQRS: Command Query Responsibility Segregation",
+      "summary": "A practical explanation of CQRS: separating commands from queries, when read and write models deserve different shapes, and how to avoid turning a useful pattern into unnecessary architecture.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "CQRS",
+        "Read Models",
+        "Event-Driven Architecture",
+        "System Design",
+        "Scalability"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "celebrating-failure",
+      "category": "culture",
+      "title": "Celebrating Failure",
+      "summary": "A grounded look at what teams should really mean by celebrating failure: not applauding damage, but making honest learning, early signal reporting, repair, and changed systems safer to practice.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Failure",
+        "Postmortems",
+        "Psychological Safety",
+        "Team Learning",
+        "Leadership"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "ai-in-qa-automated-test-generation",
+      "category": "ai",
+      "title": "AI in QA: Automated Test Generation",
+      "summary": "A practical look at AI-assisted QA and automated test generation: where AI helps with breadth, edge cases, fixtures, and test skeletons, and why human judgment still owns risk, truth, and trust.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "QA",
+        "Testing",
+        "Automated Tests",
+        "Software Quality",
+        "Developer Productivity"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "when-to-walk-away-from-a-project",
+      "category": "perspectives",
+      "title": "When to Walk Away from a Project",
+      "summary": "A reflective essay on knowing when to leave a project: separating a hard middle from a true dead end, trying repair first, and exiting with care when the cost, trust, or direction no longer works.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Career Growth",
+        "Software Engineering",
+        "Decision Making",
+        "Project Health",
+        "Boundaries",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "definition-of-done-vs-ready",
+      "category": "ways-of-working",
+      "title": "The Definition of Done vs. Ready",
+      "summary": "A practical reflection on Definition of Ready and Definition of Done: how one protects the start of work, how the other protects the finish, and how teams can use both without turning them into gatekeeping rituals.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Definition of Done",
+        "Definition of Ready",
+        "Scrum",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "serverless-trade-offs-and-truths",
+      "category": "architecture",
+      "title": "Serverless: Trade-offs and Truths",
+      "summary": "A practical look at serverless architecture: what teams gain by handing infrastructure to managed platforms, what they still own, and how to decide when functions, queues, and managed services are the right trade.",
+      "date": "2026-06-25",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Serverless",
+        "Cloud",
+        "System Design",
+        "Observability",
+        "Cost"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "building-diverse-engineering-teams",
+      "category": "culture",
+      "title": "Building Diverse Engineering Teams",
+      "summary": "A grounded reflection on building diverse engineering teams: moving beyond slogans into hiring, onboarding, meeting design, decision-making, feedback, and the daily habits that let different people contribute fully.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Diversity",
+        "Team Trust",
+        "Inclusion",
+        "Hiring",
+        "Collaboration"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "running-local-llms-for-privacy",
+      "category": "ai",
+      "title": "Running Local LLMs for Privacy",
+      "summary": "A practical explanation of local LLMs for privacy-sensitive work: what improves when prompts and documents stay on owned machines, what quality and operations costs remain, and how teams can adopt local models responsibly.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Local LLM",
+        "Privacy",
+        "Data Security",
+        "AI Product",
+        "LLM"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "myth-of-the-10x-developer",
+      "category": "perspectives",
+      "title": "The Myth of the 10x Developer",
+      "summary": "A reflective essay on the myth of the 10x developer: why exceptional impact is usually less about lone genius and more about context, judgment, leverage, teaching, simplification, and team systems.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Engineering",
+        "10x Developer",
+        "Teamwork",
+        "Engineering Culture",
+        "Career Growth",
+        "Leadership"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "pair-programming-love-it-or-hate-it",
+      "category": "ways-of-working",
+      "title": "Pair Programming: Love It or Hate It?",
+      "summary": "A balanced reflection on pair programming: when it helps with hard problems, onboarding, risk, and shared understanding, when it becomes exhausting, and how teams can use pairing deliberately instead of as a ritual.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Pair Programming",
+        "Collaboration",
+        "Agile",
+        "Knowledge Sharing",
+        "Code Review",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "caching-strategies-and-pitfalls",
+      "category": "architecture",
+      "title": "Caching Strategies and Pitfalls",
+      "summary": "A practical explanation of caching strategies: where caches help, how cache-aside, read-through, write-through, TTLs, and invalidation differ, and why stale data, stampedes, keys, and observability matter as much as speed.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Caching",
+        "Performance",
+        "System Design",
+        "Scalability",
+        "Observability"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "managing-up-communicating-with-non-technical-leadership",
+      "category": "culture",
+      "title": "Managing Up: Communicating with Non-Technical Leadership",
+      "summary": "A calm guide to managing up with non-technical leadership: translating technical work into risk, options, impact, timing, and decisions without hiding complexity or talking down to people.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Managing Up",
+        "Communication",
+        "Leadership",
+        "Stakeholders",
+        "Decision Making"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "ai-agents-next-frontier",
+      "category": "ai",
+      "title": "AI Agents: The Next Frontier",
+      "summary": "A practical look at AI agents beyond the hype: what changes when models can use tools, follow workflows, remember context, ask for approval, and produce auditable work, plus where human judgment still matters.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "AI Agents",
+        "LLM",
+        "Automation",
+        "AI Workflow",
+        "Human Review"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "why-side-projects-matter",
+      "category": "perspectives",
+      "title": "Why Side Projects Matter",
+      "summary": "A reflective essay on why side projects matter without turning them into hustle: small experiments, learning loops, creative ownership, career signals, and the quiet confidence that comes from building something end to end.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Engineering",
+        "Side Projects",
+        "Learning",
+        "Career Growth",
+        "Creativity",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "feature-flags-for-safer-deployments",
+      "category": "ways-of-working",
+      "title": "Feature Flags for Safer Deployments",
+      "summary": "A practical reflection on feature flags: how they decouple deploy from release, support gradual rollout and kill switches, and what teams must do to avoid flag debt, hidden complexity, and weak observability.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Feature Flags",
+        "Deployment",
+        "Progressive Delivery",
+        "Release Management",
+        "Observability",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "database-sharding-when-and-why",
+      "category": "architecture",
+      "title": "Database Sharding: When and Why",
+      "summary": "A practical explanation of database sharding: what changes when one database is split into smaller partitions, when sharding is worth the operational cost, and why shard keys, hotspots, rebalancing, and observability matter.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Database Sharding",
+        "Scalability",
+        "System Design",
+        "Data Partitioning",
+        "Observability"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "performance-reviews-that-matter",
+      "category": "culture",
+      "title": "Performance Reviews That Matter",
+      "summary": "A calm reflection on performance reviews that actually help people grow: using evidence, expectations, calibration, feedback, and follow-through without turning the review into a surprise or a ritual.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Performance Reviews",
+        "Feedback",
+        "Career Growth",
+        "Leadership",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "data-privacy-in-the-era-of-ai",
+      "category": "ai",
+      "title": "Data Privacy in the Era of AI",
+      "summary": "A practical article on data privacy in AI work: how prompts, documents, logs, retrieval, training, and evaluation create new data paths, and how teams can use AI while keeping consent, minimization, access, and retention clear.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Data Privacy",
+        "Responsible AI",
+        "Data Security",
+        "LLM",
+        "AI Product"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "the-tech-transition",
+      "category": "perspectives",
+      "title": "The Tech Transition",
+      "summary": "A reflective essay on moving into tech or through a major technology shift: learning the language, rebuilding confidence, using past experience, and treating the transition as quiet practice rather than a sudden identity change.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Career Growth",
+        "Software Engineering",
+        "Learning",
+        "Career Transition",
+        "Reflection",
+        "Personal Development"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "continuous-integration-vs-continuous-delivery",
+      "category": "ways-of-working",
+      "title": "Continuous Integration vs. Continuous Delivery",
+      "summary": "A practical explanation of Continuous Integration and Continuous Delivery: how CI protects shared code, how CD keeps releases ready, and why tests, trunk habits, feature flags, and deployment discipline matter.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Continuous Integration",
+        "Continuous Delivery",
+        "CI/CD",
+        "Testing",
+        "Deployment",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
       "slug": "graphql-vs-rest",
       "category": "architecture",
       "title": "GraphQL vs. REST",
@@ -1764,6 +2209,186 @@
         "DevSecOps",
         "Secure Coding",
         "Software Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "designing-idempotent-apis",
+      "category": "architecture",
+      "title": "Designing Idempotent APIs",
+      "summary": "A practical explanation of idempotent API design: why retries happen, how duplicate requests create risk, and how idempotency keys, stable state transitions, and clear response contracts make distributed systems calmer.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "API Design",
+        "Idempotency",
+        "Distributed Systems",
+        "Reliability",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "creating-a-blameless-culture",
+      "category": "culture",
+      "title": "Creating a Blameless Culture",
+      "summary": "A calm look at blameless engineering culture: how teams can study incidents without blame, separate accountability from punishment, improve systems, and make it safer for people to tell the truth early.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Blameless Culture",
+        "Incident Review",
+        "Psychological Safety",
+        "Leadership",
+        "Team Learning"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "ai-for-code-refactoring",
+      "category": "ai",
+      "title": "AI for Code Refactoring",
+      "summary": "A practical reflection on using AI for code refactoring: where it helps with mapping, options, tests, and mechanical changes, and why engineers still need boundaries, evidence, and verification before trusting the result.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Refactoring",
+        "Software Engineering",
+        "Code Quality",
+        "Testing",
+        "Developer Tools"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "art-of-meaningful-commit-message",
+      "category": "perspectives",
+      "title": "The Art of the Meaningful Commit Message",
+      "summary": "A reflective essay on meaningful commit messages: how good history helps future debugging, review, rollback, onboarding, and team memory without turning every commit into a long document.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Engineering",
+        "Git",
+        "Commit Messages",
+        "Code Review",
+        "Maintainability",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "behavior-driven-development-bdd",
+      "category": "ways-of-working",
+      "title": "Behavior-Driven Development (BDD)",
+      "summary": "A practical reflection on Behavior-Driven Development: how examples, shared language, and Given-When-Then scenarios can align product, QA, and engineering when teams treat BDD as conversation first and automation second.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "BDD",
+        "Behavior-Driven Development",
+        "Acceptance Criteria",
+        "Testing",
+        "Collaboration",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "rate-limiting-and-throttling",
+      "category": "architecture",
+      "title": "Rate Limiting and Throttling",
+      "summary": "A practical explanation of rate limiting and throttling: how systems protect shared capacity, shape traffic, communicate limits clearly, and keep overload from turning into a full outage.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Rate Limiting",
+        "Throttling",
+        "Reliability",
+        "API Design",
+        "System Design"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "giving-constructive-feedback",
+      "category": "culture",
+      "title": "Giving Constructive Feedback",
+      "summary": "A calm reflection on constructive feedback: how specific observations, timing, care, accountability, and follow-up help people improve without turning feedback into blame or performance theater.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Feedback",
+        "Communication",
+        "Team Trust",
+        "Psychological Safety",
+        "Leadership"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "evaluating-llm-performance",
+      "category": "ai",
+      "title": "Evaluating LLM Performance",
+      "summary": "A practical guide to evaluating LLM performance with task-specific datasets, rubrics, human review, regression checks, latency, cost, safety, and production feedback instead of relying on impressive demos.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "AI Evaluation",
+        "Prompting",
+        "Product Quality",
+        "Observability"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "why-i-love-writing-documentation",
+      "category": "perspectives",
+      "title": "Why I Love Writing Documentation",
+      "summary": "A reflective essay on documentation as care for future work: how clear notes, decision records, examples, and small updates reduce confusion, protect team memory, and make software easier to change.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Documentation",
+        "Software Engineering",
+        "Knowledge Sharing",
+        "Codebase",
+        "Team Memory",
+        "Reflection"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "minimum-viable-product-mvp-traps",
+      "category": "ways-of-working",
+      "title": "Minimum Viable Product (MVP) Traps",
+      "summary": "A practical reflection on common MVP traps: shipping too little to learn, confusing cheap with viable, ignoring operations, measuring the wrong signal, and forgetting that an MVP is a learning instrument.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "MVP",
+        "Product Development",
+        "Lean Startup",
+        "Delivery",
+        "Product Discovery",
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
