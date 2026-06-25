@@ -1905,7 +1905,7 @@
       "category": "architecture",
       "title": "Serverless: những trade-off và sự thật cần nhìn thẳng",
       "summary": "Một góc nhìn thực tế về serverless architecture: team được gì khi giao bớt infrastructure cho managed platform, vẫn phải sở hữu phần nào, và khi nào function, queue, managed service là một lựa chọn hợp lý.",
-      "date": "2026-06-25",
+      "date": "2026-01-30",
       "readingMinutes": 8,
       "tags": [
         "Software Architecture",

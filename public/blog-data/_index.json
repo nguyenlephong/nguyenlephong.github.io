@@ -2029,7 +2029,7 @@
       "category": "architecture",
       "title": "Serverless: Trade-offs and Truths",
       "summary": "A practical look at serverless architecture: what teams gain by handing infrastructure to managed platforms, what they still own, and how to decide when functions, queues, and managed services are the right trade.",
-      "date": "2026-06-25",
+      "date": "2026-01-30",
       "readingMinutes": 7,
       "tags": [
         "Software Architecture",
