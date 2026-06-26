@@ -242,8 +242,9 @@
       "syncing": "Đang chuẩn bị chế độ đọc offline cho ngôn ngữ này…",
       "ready": "Chế độ đọc offline cho ngôn ngữ này đã sẵn sàng.",
       "partial": "Gói đọc offline vẫn mới được lưu một phần. Hãy giữ trang này online thêm một lúc nữa.",
-      "offlineReady": "Bạn đang offline. Những trang và bài đã lưu vẫn có thể đọc tiếp.",
-      "offlinePartial": "Bạn đang offline. Một vài trang vẫn cần được mở online một lần trước khi có thể đọc lại."
+      "offlineReady": "Bạn đang offline, nhưng các trang và bài đã lưu vẫn đọc tiếp được.",
+      "offlinePartial": "Bạn đang offline. Một vài trang cần được mở online một lần trước khi được lưu.",
+      "dismiss": "Ẩn thông báo offline"
     },
     "page": {
       "eyebrow": "Mất kết nối",

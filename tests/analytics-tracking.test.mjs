@@ -77,6 +77,7 @@ test("public content surfaces have explicit posthog page and interaction events"
     "offline_view",
     "offline_mode_ready",
     "offline_status_change",
+    "offline_banner_dismiss",
     "explorer_search",
     "explorer_filter_select",
     "explorer_tag_select",
@@ -123,6 +124,7 @@ test("public content surfaces have explicit posthog page and interaction events"
   assert.match(offlineBanner, /navigator\.serviceWorker/);
   assert.match(offlineBanner, /offline_mode_ready/);
   assert.match(offlineBanner, /offline_status_change/);
+  assert.match(offlineBanner, /offline_banner_dismiss/);
 });
 
 test("studio analytics and agent rules cover new workspace interactions", async () => {

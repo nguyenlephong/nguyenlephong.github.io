@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
+import { LuX } from 'react-icons/lu'
 import { track } from '@/lib/analytics'
 
 type OfflinePhase = 'idle' | 'syncing' | 'reading' | 'extended'
@@ -18,6 +19,7 @@ type OfflineStatusBannerInnerProps = {
 
 const STORAGE_PREFIX = 'offline-locale-state:v2:'
 const LEGACY_STORAGE_PREFIX = 'offline-locale-phase:v1:'
+const DISMISS_STORAGE_PREFIX = 'offline-banner-dismissed:v1:'
 
 function readStoredState(locale: string): OfflineState {
   if (typeof window === 'undefined') {
@@ -68,6 +70,28 @@ function persistState(locale: string, state: OfflineState): void {
   }
 }
 
+function readDismissed(locale: string): boolean {
+  if (typeof window === 'undefined') return false
+  try {
+    return window.localStorage.getItem(`${DISMISS_STORAGE_PREFIX}${locale}`) === 'true'
+  } catch {
+    return false
+  }
+}
+
+function persistDismissed(locale: string, dismissed: boolean): void {
+  if (typeof window === 'undefined') return
+  try {
+    if (dismissed) {
+      window.localStorage.setItem(`${DISMISS_STORAGE_PREFIX}${locale}`, 'true')
+      return
+    }
+    window.localStorage.removeItem(`${DISMISS_STORAGE_PREFIX}${locale}`)
+  } catch {
+    // Ignore storage failures in private mode.
+  }
+}
+
 function postToWorker(
   registration: ServiceWorkerRegistration,
   message: { type: 'OFFLINE_WARM_LOCALE'; locale: string; pathname: string | null } | { type: 'OFFLINE_WARM_PATH'; pathname: string },
@@ -93,6 +117,10 @@ function OfflineStatusBannerInner({
 }: OfflineStatusBannerInnerProps) {
   const t = useTranslations('Offline.banner')
   const [offlineState, setOfflineState] = useState<OfflineState>(() => readStoredState(locale))
+  const [isDismissed, setIsDismissed] = useState(() => {
+    if (typeof window !== 'undefined' && window.navigator.onLine) return false
+    return readDismissed(locale)
+  })
   const [isOnline, setIsOnline] = useState(() =>
     typeof window === 'undefined' ? true : window.navigator.onLine,
   )
@@ -116,6 +144,8 @@ function OfflineStatusBannerInner({
 
     const onOnline = () => {
       setIsOnline(true)
+      setIsDismissed(false)
+      persistDismissed(locale, false)
       report(true)
     }
     const onOffline = () => {
@@ -130,6 +160,11 @@ function OfflineStatusBannerInner({
       window.removeEventListener('offline', onOffline)
     }
   }, [locale])
+
+  useEffect(() => {
+    if (!isOnline) return
+    persistDismissed(locale, false)
+  }, [isOnline, locale])
 
   useEffect(() => {
     if (!('serviceWorker' in navigator)) return
@@ -230,12 +265,24 @@ function OfflineStatusBannerInner({
       })
   }, [pathname])
 
-  if (isOnline) return null
+  if (isOnline || isDismissed) return null
 
   const tone: 'offline' | 'partial' =
     completeness === 'complete' ? 'offline' : 'partial'
   const message =
     completeness === 'complete' ? t('offlineReady') : t('offlinePartial')
+  const dismissLabel = t('dismiss')
+
+  const onDismiss = () => {
+    setIsDismissed(true)
+    persistDismissed(locale, true)
+    track('offline_banner_dismiss', {
+      locale,
+      phase: offlineState.phase,
+      completeness,
+      tone,
+    })
+  }
 
   return (
     <div
@@ -245,6 +292,15 @@ function OfflineStatusBannerInner({
     >
       <span className="offline-banner__dot" aria-hidden="true" />
       <span className="offline-banner__message">{message}</span>
+      <button
+        type="button"
+        className="offline-banner__dismiss"
+        aria-label={dismissLabel}
+        title={dismissLabel}
+        onClick={onDismiss}
+      >
+        <LuX aria-hidden="true" />
+      </button>
     </div>
   )
 }

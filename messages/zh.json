@@ -260,8 +260,9 @@
       "syncing": "正在为当前语言准备 offline 阅读…",
       "ready": "当前语言的 offline 阅读已经准备好。",
       "partial": "offline 阅读缓存目前只完成了一部分。请让这个语言页面再保持在线一会儿。",
-      "offlineReady": "你当前处于 offline 状态。已保存的页面和文章仍然可以继续阅读。",
-      "offlinePartial": "你当前处于 offline 状态。有些页面还需要先在线打开一次，之后才能离线再读。"
+      "offlineReady": "你当前处于 offline 状态，但已保存的页面和文章仍可继续阅读。",
+      "offlinePartial": "你当前处于 offline 状态。有些页面可能需要先在线打开一次，之后才会被保存。",
+      "dismiss": "隐藏 offline 提醒"
     },
     "page": {
       "eyebrow": "连接已断开",

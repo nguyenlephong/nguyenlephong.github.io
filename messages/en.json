@@ -242,8 +242,9 @@
       "syncing": "Preparing offline reading for this language…",
       "ready": "Offline reading is ready for this language.",
       "partial": "Offline reading is only partially cached. Keep this language online a little longer.",
-      "offlineReady": "You’re offline. Saved pages and articles are still available.",
-      "offlinePartial": "You’re offline. Some pages still need one online visit before they can be read later."
+      "offlineReady": "You’re offline, but saved pages and articles are still ready to read.",
+      "offlinePartial": "You’re offline. Some pages may need one online visit before they’re saved.",
+      "dismiss": "Hide offline notice"
     },
     "page": {
       "eyebrow": "Connection lost",

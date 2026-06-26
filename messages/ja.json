@@ -260,8 +260,9 @@
       "syncing": "この言語のoffline読書を準備しています…",
       "ready": "この言語のoffline読書の準備ができました。",
       "partial": "offline読書の保存はまだ一部だけです。もう少しだけonlineのままにしてください。",
-      "offlineReady": "現在offlineです。保存済みのページと記事はそのまま読めます。",
-      "offlinePartial": "現在offlineです。いくつかのページは、あとで読む前に一度onlineで開く必要があります。"
+      "offlineReady": "現在offlineですが、保存済みのページと記事はそのまま読めます。",
+      "offlinePartial": "現在offlineです。保存するには一度onlineで開く必要があるページがあります。",
+      "dismiss": "offline通知を隠す"
     },
     "page": {
       "eyebrow": "接続が切れました",

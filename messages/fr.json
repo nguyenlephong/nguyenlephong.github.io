@@ -260,8 +260,9 @@
       "syncing": "Préparation de la lecture hors ligne pour cette langue…",
       "ready": "La lecture hors ligne est prête pour cette langue.",
       "partial": "Le mode hors ligne n’est encore mis en cache qu’en partie. Laissez cette langue en ligne un peu plus longtemps.",
-      "offlineReady": "Vous êtes hors ligne. Les pages et articles déjà enregistrés restent disponibles.",
-      "offlinePartial": "Vous êtes hors ligne. Certaines pages doivent encore être ouvertes une fois en ligne avant de pouvoir être relues."
+      "offlineReady": "Vous êtes hors ligne, mais les pages et articles enregistrés restent lisibles.",
+      "offlinePartial": "Vous êtes hors ligne. Certaines pages devront peut-être être ouvertes une fois en ligne avant d’être enregistrées.",
+      "dismiss": "Masquer l’avis hors ligne"
     },
     "page": {
       "eyebrow": "Connexion perdue",

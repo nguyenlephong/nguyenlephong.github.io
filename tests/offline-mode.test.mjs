@@ -78,18 +78,22 @@ test("offline mode wires the export build, fallback route, and cache warmup flow
   assert.match(offlineBanner, /OFFLINE_WARM_LOCALE/);
   assert.match(offlineBanner, /OFFLINE_WARM_PATH/);
   assert.match(offlineBanner, /offline-locale-state:v2:/);
+  assert.match(offlineBanner, /offline-banner-dismissed:v1:/);
   assert.match(offlineBanner, /completeness/);
   assert.match(offlineBanner, /window\.navigator\.onLine/);
-  assert.match(offlineBanner, /if \(isOnline\) return null/);
+  assert.match(offlineBanner, /if \(isOnline \|\| isDismissed\) return null/);
+  assert.match(offlineBanner, /offline_banner_dismiss/);
   assert.match(offlineNavigationCapture, /navigator\.onLine/);
   assert.match(offlineNavigationCapture, /window\.location\.assign/);
 
   assert.match(postStats, /navigator\.onLine === false/);
 
   assert.ok(en.Offline?.banner?.partial);
+  assert.ok(en.Offline?.banner?.dismiss);
   assert.ok(en.Offline?.banner?.syncing);
   assert.ok(en.Offline?.page?.title);
   assert.ok(vi.Offline?.banner?.partial);
   assert.ok(vi.Offline?.banner?.offlineReady);
+  assert.ok(vi.Offline?.banner?.dismiss);
   assert.ok(vi.Offline?.page?.title);
 });

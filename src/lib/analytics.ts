@@ -95,6 +95,7 @@ export type AnalyticsEvent =
   | 'offline_view'
   | 'offline_mode_ready'
   | 'offline_status_change'
+  | 'offline_banner_dismiss'
   // Studio
   | 'studio_view'
   | 'studio_route_open'
