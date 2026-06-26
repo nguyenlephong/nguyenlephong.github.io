@@ -77,6 +77,10 @@ test("notes expose one canonical slug set across English and Vietnamese", () => 
     new URL("../src/app/robots.ts", import.meta.url),
     "utf8"
   );
+  const rootLayoutSource = readFileSync(
+    new URL("../src/app/layout.tsx", import.meta.url),
+    "utf8"
+  );
   const notesIndexPage = readFileSync(
     new URL("../src/app/[locale]/notes/page.tsx", import.meta.url),
     "utf8"
@@ -113,6 +117,7 @@ test("notes expose one canonical slug set across English and Vietnamese", () => 
   assert.doesNotMatch(sitemapSource, /Vietnamese-only notes/);
   assert.match(robotsSource, /sitemap:\s*`\$\{SITE_URL\}\/sitemap\.xml`/);
   assert.doesNotMatch(robotsSource, /host:/i);
+  assert.match(rootLayoutSource, /metadataBase:\s*new URL\(SITE_URL\)/);
   assert.match(notesIndexPage, /NOTE_CONTENT_LOCALES/);
   assert.match(notesIndexPage, /collectionLocale/);
   assert.match(notesIndexPage, /locale:\s*OG_LOCALE_MAP\[canonicalLocale as Locale\]/);
