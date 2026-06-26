@@ -18,7 +18,6 @@ type OfflineStatusBannerInnerProps = {
 
 const STORAGE_PREFIX = 'offline-locale-state:v2:'
 const LEGACY_STORAGE_PREFIX = 'offline-locale-phase:v1:'
-const READY_TOAST_MS = 3600
 
 function readStoredState(locale: string): OfflineState {
   if (typeof window === 'undefined') {
@@ -95,18 +94,10 @@ function OfflineStatusBannerInner({
   const t = useTranslations('Offline.banner')
   const [offlineState, setOfflineState] = useState<OfflineState>(() => readStoredState(locale))
   const [isOnline, setIsOnline] = useState(() =>
-    typeof navigator === 'undefined' ? true : navigator.onLine,
+    typeof window === 'undefined' ? true : window.navigator.onLine,
   )
-  const [showReadyToast, setShowReadyToast] = useState(false)
-  const isOnlineRef = useRef(isOnline)
-  const readyToastTimerRef = useRef<number | null>(null)
   const lastTrackedStatusRef = useRef<string | null>(null)
-  const phase = offlineState.phase
   const completeness = offlineState.completeness
-
-  useEffect(() => {
-    isOnlineRef.current = isOnline
-  }, [isOnline])
 
   useEffect(() => {
     const report = (nextOnline: boolean) => {
@@ -187,20 +178,6 @@ function OfflineStatusBannerInner({
         failed: data.failed ?? null,
         version: data.version ?? null,
       })
-
-      if (
-        nextPhase === 'reading' &&
-        nextCompleteness === 'complete' &&
-        isOnlineRef.current
-      ) {
-        setShowReadyToast(true)
-        if (readyToastTimerRef.current !== null) {
-          window.clearTimeout(readyToastTimerRef.current)
-        }
-        readyToastTimerRef.current = window.setTimeout(() => {
-          setShowReadyToast(false)
-        }, READY_TOAST_MS)
-      }
     }
 
     const registerAndWarm = async () => {
@@ -235,10 +212,6 @@ function OfflineStatusBannerInner({
     return () => {
       cancelled = true
       navigator.serviceWorker.removeEventListener('message', onMessage)
-      if (readyToastTimerRef.current !== null) {
-        window.clearTimeout(readyToastTimerRef.current)
-        readyToastTimerRef.current = null
-      }
     }
   }, [locale, pathname])
 
@@ -257,30 +230,12 @@ function OfflineStatusBannerInner({
       })
   }, [pathname])
 
-  let tone: 'syncing' | 'ready' | 'offline' | 'partial' | null = null
-  let message = ''
+  if (isOnline) return null
 
-  if (!isOnline) {
-    tone = 'offline'
-    message =
-      (phase === 'reading' || phase === 'extended') && completeness === 'complete'
-        ? t('offlineReady')
-        : t('offlinePartial')
-  } else if (phase === 'syncing') {
-    tone = 'syncing'
-    message = t('syncing')
-  } else if (
-    completeness === 'partial' &&
-    (phase === 'reading' || phase === 'extended')
-  ) {
-    tone = 'partial'
-    message = t('partial')
-  } else if (showReadyToast) {
-    tone = 'ready'
-    message = t('ready')
-  }
-
-  if (!tone) return null
+  const tone: 'offline' | 'partial' =
+    completeness === 'complete' ? 'offline' : 'partial'
+  const message =
+    completeness === 'complete' ? t('offlineReady') : t('offlinePartial')
 
   return (
     <div

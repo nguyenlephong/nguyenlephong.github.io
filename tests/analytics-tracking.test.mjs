@@ -152,7 +152,14 @@ test("studio analytics and agent rules cover new workspace interactions", async 
     "studio_flow_group_select",
     "studio_flow_select",
     "studio_flow_example_select",
+    "studio_flow_canvas_mode_change",
+    "studio_flow_layout_apply",
+    "studio_flow_node_select",
+    "studio_flow_node_action",
+    "studio_flow_history_action",
+    "studio_flow_group_visibility_toggle",
     "studio_flow_board_fullscreen_toggle",
+    "studio_flow_focus_toggle",
     "studio_flow_share"
   ]) {
     assert.match(analytics, new RegExp(`'${eventName}'`));
