@@ -255,6 +255,26 @@
       "description": "拥有 8+ 年产品构建、交付领导以及微前端、Kubernetes 与发布系统架构经验的高级软件工程师与技术总监。信息技术学士 — 优秀(GPA 3.36)。"
     }
   },
+  "Offline": {
+    "banner": {
+      "syncing": "正在为当前语言准备 offline 阅读…",
+      "ready": "当前语言的 offline 阅读已经准备好。",
+      "partial": "offline 阅读缓存目前只完成了一部分。请让这个语言页面再保持在线一会儿。",
+      "offlineReady": "你当前处于 offline 状态。已保存的页面和文章仍然可以继续阅读。",
+      "offlinePartial": "你当前处于 offline 状态。有些页面还需要先在线打开一次，之后才能离线再读。"
+    },
+    "page": {
+      "eyebrow": "连接已断开",
+      "title": "Offline 阅读",
+      "body": "这个页面还没有保存到 offline 阅读包里。你在当前语言里已经打开过的页面和文章应该仍然可读。",
+      "hint": "恢复联网后，只要把这个页面打开一次，它就会为之后的阅读保存下来。",
+      "actionsLabel": "offline 阅读快捷入口",
+      "home": "首页",
+      "blog": "Blog",
+      "notes": "笔记",
+      "about": "关于"
+    }
+  },
   "Pages": {
     "about": {
       "heading": "关于我"

@@ -237,6 +237,26 @@
       "description": "Senior full-stack engineer and technical lead with 8+ years shipping product, platform, Micro-Frontend, Kubernetes, secure fintech integration, and rollout systems."
     }
   },
+  "Offline": {
+    "banner": {
+      "syncing": "Preparing offline reading for this language…",
+      "ready": "Offline reading is ready for this language.",
+      "partial": "Offline reading is only partially cached. Keep this language online a little longer.",
+      "offlineReady": "You’re offline. Saved pages and articles are still available.",
+      "offlinePartial": "You’re offline. Some pages still need one online visit before they can be read later."
+    },
+    "page": {
+      "eyebrow": "Connection lost",
+      "title": "Offline reading",
+      "body": "This page is not saved for offline reading yet. The shelves and articles you already opened in this language should still be available.",
+      "hint": "When you are back online, open this page once and it will be saved for a later read.",
+      "actionsLabel": "Offline reading shortcuts",
+      "home": "Home",
+      "blog": "Blog",
+      "notes": "Notes",
+      "about": "About"
+    }
+  },
   "Pages": {
     "about": {
       "heading": "About me"

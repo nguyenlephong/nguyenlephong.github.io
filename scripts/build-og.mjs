@@ -77,3 +77,4 @@ const summary =
 console.log(`[build-og] ${summary}`)
 run(nextBin, ['build', '--turbopack'], env)
 run(process.execPath, ['scripts/postbuild-og.mjs'], env)
+run(process.execPath, ['scripts/postbuild-offline.mjs'], env)

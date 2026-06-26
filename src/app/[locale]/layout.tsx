@@ -25,6 +25,8 @@ import MotionProvider from '@/components/motion/MotionProvider'
 import RouteProgressBar from '@/components/motion/RouteProgressBar'
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
 import BlogReaderTools from '@/components/blog/BlogReaderTools'
+import OfflineNavigationCapture from '@/components/offline/OfflineNavigationCapture'
+import OfflineStatusBanner from '@/components/offline/OfflineStatusBanner'
 import { SITE_URL } from '@/app/seo.config'
 import { routing, type Locale } from '@/i18n/routing'
 import { Person, WithContext } from 'schema-dts'
@@ -107,8 +109,7 @@ const FONT_VARIABLES = [
   ibmPlexMono.variable,
 ].join(' ')
 
-const PROFILE_AVATAR =
-  'https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom.png'
+const PROFILE_AVATAR = `${SITE_URL}/icon.png`
 
 const LOCALE_OG_MAP: Record<Locale, string> = {
   en: 'en_US',
@@ -203,6 +204,7 @@ export async function generateMetadata({
       description,
       creator: '@nguyenlephong17',
     },
+    manifest: '/manifest.webmanifest',
     icons: {
       icon: [
         { url: '/favicon.ico', sizes: 'any' },
@@ -387,6 +389,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           <ThemeSync />
           <MotionProvider>
             <RouteProgressBar />
+            <OfflineNavigationCapture />
+            <OfflineStatusBanner />
             <WebVitalsReporter />
             <AppHeader />
             {children}

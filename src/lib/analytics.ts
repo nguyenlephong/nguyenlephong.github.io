@@ -91,6 +91,10 @@ export type AnalyticsEvent =
   | 'reader_tool_toggle'
   | 'reading_font_change'
   | 'reading_background_change'
+  // Offline reading
+  | 'offline_view'
+  | 'offline_mode_ready'
+  | 'offline_status_change'
   // Studio
   | 'studio_view'
   | 'studio_route_open'

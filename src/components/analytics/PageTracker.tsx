@@ -12,6 +12,7 @@ export type PageType =
   | 'blog'
   | 'blog_category'
   | 'notes'
+  | 'offline'
   | 'home_alt'
 
 interface PageTrackerProps {
@@ -29,6 +30,7 @@ interface PageTrackerProps {
     | 'blog_view'
     | 'blog_category_view'
     | 'notes_view'
+    | 'offline_view'
 }
 
 const SCROLL_BUCKETS = [25, 50, 75, 100] as const

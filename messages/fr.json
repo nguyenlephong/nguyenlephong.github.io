@@ -255,6 +255,26 @@
       "description": "Senior Software Engineer & Head of Tech avec 8+ ans à construire des produits, diriger la livraison et architecturer des systèmes Micro-Frontend, Kubernetes et de rollout. Licence en TI — Très Bien (GPA 3,36)."
     }
   },
+  "Offline": {
+    "banner": {
+      "syncing": "Préparation de la lecture hors ligne pour cette langue…",
+      "ready": "La lecture hors ligne est prête pour cette langue.",
+      "partial": "Le mode hors ligne n’est encore mis en cache qu’en partie. Laissez cette langue en ligne un peu plus longtemps.",
+      "offlineReady": "Vous êtes hors ligne. Les pages et articles déjà enregistrés restent disponibles.",
+      "offlinePartial": "Vous êtes hors ligne. Certaines pages doivent encore être ouvertes une fois en ligne avant de pouvoir être relues."
+    },
+    "page": {
+      "eyebrow": "Connexion perdue",
+      "title": "Lecture hors ligne",
+      "body": "Cette page n’a pas encore été enregistrée pour la lecture hors ligne. Les pages et articles déjà ouverts dans cette langue devraient rester disponibles.",
+      "hint": "Quand la connexion revient, ouvrez simplement cette page une fois pour l’enregistrer pour plus tard.",
+      "actionsLabel": "Raccourcis de lecture hors ligne",
+      "home": "Accueil",
+      "blog": "Blog",
+      "notes": "Notes",
+      "about": "À propos"
+    }
+  },
   "Pages": {
     "about": {
       "heading": "À propos de moi"

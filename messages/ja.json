@@ -255,6 +255,26 @@
       "description": "8 年以上の経験を持つシニアソフトウェアエンジニア兼 Head of Tech。プロダクト構築、デリバリーリード、マイクロフロントエンド、Kubernetes、ロールアウトシステムのアーキテクチャ設計を担当。情報技術学士 — Very Good(GPA 3.36)。"
     }
   },
+  "Offline": {
+    "banner": {
+      "syncing": "この言語のoffline読書を準備しています…",
+      "ready": "この言語のoffline読書の準備ができました。",
+      "partial": "offline読書の保存はまだ一部だけです。もう少しだけonlineのままにしてください。",
+      "offlineReady": "現在offlineです。保存済みのページと記事はそのまま読めます。",
+      "offlinePartial": "現在offlineです。いくつかのページは、あとで読む前に一度onlineで開く必要があります。"
+    },
+    "page": {
+      "eyebrow": "接続が切れました",
+      "title": "Offline読書",
+      "body": "このページはまだoffline読書用に保存されていません。すでに開いたページや記事は、この言語のままで引き続き読めるはずです。",
+      "hint": "接続が戻ったら、このページを一度開くだけで次回のために保存されます。",
+      "actionsLabel": "offline読書のショートカット",
+      "home": "ホーム",
+      "blog": "ブログ",
+      "notes": "ノート",
+      "about": "About"
+    }
+  },
   "Pages": {
     "about": {
       "heading": "私について"

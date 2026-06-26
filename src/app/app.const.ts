@@ -16,6 +16,7 @@ export const APP_ROUTE = {
   GALLERY: "/gallery",
   BLOG: "/blog",
   NOTES: "/notes",
+  OFFLINE: "/offline",
   STUDIO: "/studio",
   APPS: "/apps",
   APPS_ENGLISH: "/apps/english",
