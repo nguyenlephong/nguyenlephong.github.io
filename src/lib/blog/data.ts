@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs'
 import path from 'node:path'
 import {
   byDateDesc,
@@ -16,6 +17,7 @@ import type {
 import { compareSeriesPosts } from './series'
 
 const DATA_DIR = path.join(process.cwd(), 'public', 'blog-data')
+const BLOG_OVERRIDE_LOCALES = ['vi', 'zh', 'ja', 'ko', 'fr'] as const
 
 const EMPTY_INDEX: BlogIndexFile = { categories: [], posts: [] }
 
@@ -135,6 +137,15 @@ export function loadPost(slug: string, locale?: string): BlogPost | null {
     book: override.book ?? base.book,
     faqs: override.faqs ?? base.faqs,
   }
+}
+
+export function getPostContentLocales(slug: string): string[] {
+  return [
+    'en',
+    ...BLOG_OVERRIDE_LOCALES.filter((locale) =>
+      existsSync(path.join(DATA_DIR, locale, 'posts', `${slug}.json`)),
+    ),
+  ]
 }
 
 /** Canonical category slugs — drives static-param generation. */

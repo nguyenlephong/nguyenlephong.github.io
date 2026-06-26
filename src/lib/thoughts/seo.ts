@@ -34,9 +34,10 @@ export function buildDescription(html: string, max = MAX_DESC): string {
  */
 export function localeAlternates(
   pathAfterLocale: string,
+  locales: readonly string[] = routing.locales,
 ): Record<string, string> {
   const map: Record<string, string> = {}
-  for (const l of routing.locales) {
+  for (const l of locales) {
     map[l] = `${SITE_URL}/${l}${pathAfterLocale}`
   }
   map['x-default'] = `${SITE_URL}/${routing.defaultLocale}${pathAfterLocale}`

@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import path from "node:path";
 import { routing } from "@/i18n/routing";
 import {
@@ -21,7 +22,7 @@ export interface TopicReadingContext {
   next: NoteMeta | null;
 }
 
-const NOTE_CONTENT_LOCALES = ["en", "vi"] as const;
+export const NOTE_CONTENT_LOCALES = ["en", "vi"] as const;
 
 /**
  * Notes are listed as one shared collection across English and Vietnamese.
@@ -34,6 +35,15 @@ function contentLocale(locale?: string): "vi" | "en" {
 
 function noteLocales(): string[] {
   return [...NOTE_CONTENT_LOCALES];
+}
+
+export function getNoteContentLocales(slug: string): string[] {
+  return [
+    "en",
+    ...(existsSync(path.join(DATA_DIR, "vi", "posts", `${slug}.json`))
+      ? ["vi"]
+      : [])
+  ];
 }
 
 function baseIndex(): NotesIndexFile {
