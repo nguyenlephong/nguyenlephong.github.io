@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { spawnSync } from 'node:child_process'
+import { spawn } from 'node:child_process'
+import { existsSync, readFileSync, statSync } from 'node:fs'
 import path from 'node:path'
 
 const args = process.argv.slice(2)
@@ -31,16 +32,192 @@ function hasFlag(...names) {
   return args.some((arg) => names.includes(arg))
 }
 
-function run(command, commandArgs, env) {
-  const result = spawnSync(command, commandArgs, {
-    cwd: process.cwd(),
-    env,
-    stdio: 'inherit',
-    shell: false,
-  })
+const EXPORT_DETAIL = path.join(process.cwd(), '.next', 'export-detail.json')
+const EXPORT_EXIT_GRACE_MS = Number(process.env.OG_EXPORT_EXIT_GRACE_MS ?? 5_000)
+const KILL_GRACE_MS = Number(process.env.OG_KILL_GRACE_MS ?? 5_000)
+const SIGNAL_EXIT_GRACE_MS = Number(process.env.OG_SIGNAL_EXIT_GRACE_MS ?? KILL_GRACE_MS)
+const BUILD_HEARTBEAT_MS = Number(process.env.OG_BUILD_HEARTBEAT_MS ?? 15_000)
+const activeChildren = new Set()
 
-  if (result.error) throw result.error
-  if (result.status !== 0) process.exit(result.status ?? 1)
+function exportSucceededSince(startedAt) {
+  if (!existsSync(EXPORT_DETAIL)) return false
+  const stat = statSync(EXPORT_DETAIL)
+  if (stat.mtimeMs + 1000 < startedAt) return false
+
+  try {
+    const detail = JSON.parse(readFileSync(EXPORT_DETAIL, 'utf8'))
+    return detail?.success === true
+  } catch {
+    return false
+  }
+}
+
+function killChildProcess({ child, detached }, signal) {
+  if (!child.pid) return
+  try {
+    if (detached && process.platform !== 'win32') {
+      process.kill(-child.pid, signal)
+    } else {
+      child.kill(signal)
+    }
+  } catch (err) {
+    if (err?.code !== 'ESRCH') throw err
+  }
+}
+
+function waitForChildExit(child) {
+  if (child.exitCode !== null || child.signalCode !== null) return Promise.resolve()
+
+  return new Promise((resolve) => {
+    child.once('close', resolve)
+  })
+}
+
+function installSignalCleanup() {
+  for (const signal of ['SIGINT', 'SIGTERM']) {
+    process.once(signal, () => {
+      const exitCode = signal === 'SIGINT' ? 130 : 143
+      const childrenToCleanUp = [...activeChildren]
+
+      for (const entry of childrenToCleanUp) {
+        try {
+          killChildProcess(entry, signal)
+        } catch (err) {
+          console.warn(`[build-og] failed to forward ${signal} to child:`, err)
+        }
+      }
+
+      if (childrenToCleanUp.length === 0) {
+        process.exit(exitCode)
+      }
+
+      const forceExit = setTimeout(() => {
+        for (const entry of activeChildren) {
+          try {
+            killChildProcess(entry, 'SIGKILL')
+          } catch (err) {
+            console.warn('[build-og] failed to force-kill child:', err)
+          }
+        }
+        process.exit(exitCode)
+      }, SIGNAL_EXIT_GRACE_MS)
+      forceExit.unref()
+
+      Promise.all(childrenToCleanUp.map(({ child }) => waitForChildExit(child))).then(() => {
+        clearTimeout(forceExit)
+        process.exit(exitCode)
+      })
+    })
+  }
+}
+
+installSignalCleanup()
+
+function run(command, commandArgs, env, options = {}) {
+  const {
+    acceptSuccessfulExportSignal = false,
+    detached = false,
+    terminateAfterSuccessfulExport = false,
+    startedAt = Date.now(),
+  } = options
+  const monitorExport = acceptSuccessfulExportSignal || terminateAfterSuccessfulExport
+
+  return new Promise((resolve) => {
+    const child = spawn(command, commandArgs, {
+      cwd: process.cwd(),
+      detached,
+      env,
+      stdio: ['inherit', 'pipe', 'pipe'],
+      shell: false,
+    })
+    const childEntry = { child, detached }
+    activeChildren.add(childEntry)
+
+    let settled = false
+    let exportSuccessAt = null
+    let forceKillTimer = null
+    let terminationRequested = false
+    let lastHeartbeatAt = Date.now()
+
+    child.stdout?.on('data', (chunk) => process.stdout.write(chunk))
+    child.stderr?.on('data', (chunk) => process.stderr.write(chunk))
+
+    const killChild = (signal) => {
+      killChildProcess(childEntry, signal)
+    }
+
+    const finish = (code) => {
+      if (settled) return
+      settled = true
+      activeChildren.delete(childEntry)
+      clearInterval(exportWatch)
+      clearTimeout(forceKillTimer)
+      resolve(code)
+    }
+
+    const exportWatch = monitorExport
+      ? setInterval(() => {
+          const now = Date.now()
+          const exportSucceeded = exportSucceededSince(startedAt)
+          if (now - lastHeartbeatAt >= BUILD_HEARTBEAT_MS) {
+            lastHeartbeatAt = now
+            console.log(
+              exportSucceeded
+                ? '[build-og] next build export succeeded; waiting for process shutdown'
+                : '[build-og] waiting for next build export to finish'
+            )
+          }
+
+          if (!exportSucceeded) return
+          exportSuccessAt ??= Date.now()
+          if (
+            terminateAfterSuccessfulExport &&
+            !terminationRequested &&
+            Date.now() - exportSuccessAt >= EXPORT_EXIT_GRACE_MS
+          ) {
+            terminationRequested = true
+            console.warn(
+              `[build-og] next build export succeeded but the process did not exit after ${EXPORT_EXIT_GRACE_MS}ms; terminating stale child process`
+            )
+            killChild('SIGTERM')
+            forceKillTimer = setTimeout(() => {
+              if (!settled) killChild('SIGKILL')
+            }, KILL_GRACE_MS)
+          }
+        }, 1000)
+      : null
+
+    child.on('error', (err) => {
+      console.error(`[build-og] failed to start ${command}:`, err)
+      finish(1)
+    })
+
+    child.on('close', (code, signal) => {
+      const exportSucceeded = exportSucceededSince(startedAt)
+      if (code === 0) {
+        finish(0)
+        return
+      }
+
+      if (
+        acceptSuccessfulExportSignal &&
+        exportSucceeded &&
+        (signal === 'SIGINT' ||
+          signal === 'SIGTERM' ||
+          signal === 'SIGKILL' ||
+          code === 130 ||
+          code === 143)
+      ) {
+        console.warn(
+          `[build-og] next build ended with ${signal ?? `code ${code}`} after a successful export; continuing to postbuild`
+        )
+        finish(0)
+        return
+      }
+
+      finish(code ?? 1)
+    })
+  })
 }
 
 const cliTargets = collectTargets()
@@ -75,6 +252,17 @@ const summary =
       : `targeted OG generation for ${targets.join(', ')}`
 
 console.log(`[build-og] ${summary}`)
-run(nextBin, ['build', '--turbopack'], env)
-run(process.execPath, ['scripts/postbuild-og.mjs'], env)
-run(process.execPath, ['scripts/postbuild-offline.mjs'], env)
+const buildStartedAt = Date.now()
+const buildCode = await run(nextBin, ['build', '--turbopack'], env, {
+  acceptSuccessfulExportSignal: true,
+  detached: true,
+  terminateAfterSuccessfulExport: true,
+  startedAt: buildStartedAt,
+})
+if (buildCode !== 0) process.exit(buildCode)
+
+const postbuildCode = await run(process.execPath, ['scripts/postbuild-og.mjs'], env)
+if (postbuildCode !== 0) process.exit(postbuildCode)
+
+const offlinePostbuildCode = await run(process.execPath, ['scripts/postbuild-offline.mjs'], env)
+if (offlinePostbuildCode !== 0) process.exit(offlinePostbuildCode)

@@ -36,8 +36,15 @@
   --shadow-lg: 0 24px 48px -16px rgba(15, 23, 42, 0.14);
 
   /* Type scale */
-  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', 'Cascadia Mono', 'Roboto Mono', monospace;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Cascadia Mono', 'Roboto Mono', Consolas, monospace;
+  --font-reading-source: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
+  --font-reading-plex: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-reading-atkinson: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, sans-serif;
+  --font-reading-lora: 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-reading-be-vietnam: 'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif;
+  --font-reading-fraunces: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-reading-ibm-plex-mono: 'IBM Plex Mono', 'SF Mono', 'Cascadia Mono', 'Roboto Mono', monospace;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -240,8 +247,8 @@ html {
   scroll-padding-top: 88px;
 }
 /* Reader-friendly font switcher: data-reading-font on <html> swaps the
-   site-wide --font-sans. Default = Inter (already set above). Code/mono
-   surfaces continue to use --font-mono. */
+   site-wide --font-sans. Font families resolve through local stacks so
+   static export stays deterministic in offline or rate-limited builds. */
 html[data-reading-font='source'] {
   --font-sans: var(--font-reading-source), system-ui, sans-serif;
 }
