@@ -4648,8 +4648,12 @@ function getDisplayStudioFlowEdges(edges: Edge[], nodes: StudioFlowCanvasNode[])
   return edges.filter((edge) => visibleNodeIds.has(edge.source) && visibleNodeIds.has(edge.target));
 }
 
+let scratchNodeSequence = 0;
+
 function createScratchNodeId(prefix: string) {
-  return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
+  scratchNodeSequence += 1;
+  const uniquePart = globalThis.crypto?.randomUUID?.() ?? scratchNodeSequence.toString(36);
+  return `${prefix}-${Date.now().toString(36)}-${scratchNodeSequence.toString(36)}-${uniquePart}`;
 }
 
 function createScratchNoteNode(anchorNode?: StudioFlowCanvasNode): StudioFlowCanvasNode {

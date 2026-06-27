@@ -35,7 +35,7 @@ function routeUrlFromOutFile(relativePath) {
 }
 
 function uniqueSorted(values) {
-  return [...new Set(values)].sort()
+  return [...new Set(values)].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
 }
 
 function isLocaleScoped(relativePath, locale) {
