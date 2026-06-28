@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { spawn } from 'node:child_process'
-import { existsSync, readFileSync, statSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync, statSync, unlinkSync } from 'node:fs'
 import path from 'node:path'
 
 const args = process.argv.slice(2)
@@ -34,22 +34,69 @@ function hasFlag(...names) {
 
 const EXPORT_DETAIL = path.join(process.cwd(), '.next', 'export-detail.json')
 const EXPORT_EXIT_GRACE_MS = Number(process.env.OG_EXPORT_EXIT_GRACE_MS ?? 5_000)
+const EXPORT_FALLBACK_QUIET_MS = Number(
+  process.env.OG_EXPORT_FALLBACK_QUIET_MS ?? Math.max(EXPORT_EXIT_GRACE_MS, 20_000)
+)
 const KILL_GRACE_MS = Number(process.env.OG_KILL_GRACE_MS ?? 5_000)
 const SIGNAL_EXIT_GRACE_MS = Number(process.env.OG_SIGNAL_EXIT_GRACE_MS ?? KILL_GRACE_MS)
 const BUILD_HEARTBEAT_MS = Number(process.env.OG_BUILD_HEARTBEAT_MS ?? 15_000)
 const activeChildren = new Set()
 
-function exportSucceededSince(startedAt) {
-  if (!existsSync(EXPORT_DETAIL)) return false
-  const stat = statSync(EXPORT_DETAIL)
-  if (stat.mtimeMs + 1000 < startedAt) return false
+function getExportState(startedAt) {
+  const htmlState = getFreshDeepHtmlState(path.join(process.cwd(), 'out'), startedAt)
+  let detailFresh = false
+  let detailSuccess = false
+  let detailMtimeMs = 0
 
-  try {
-    const detail = JSON.parse(readFileSync(EXPORT_DETAIL, 'utf8'))
-    return detail?.success === true
-  } catch {
-    return false
+  if (existsSync(EXPORT_DETAIL)) {
+    const stat = statSync(EXPORT_DETAIL)
+    detailMtimeMs = stat.mtimeMs
+
+    if (stat.mtimeMs + 1000 >= startedAt) {
+      detailFresh = true
+      try {
+        const detail = JSON.parse(readFileSync(EXPORT_DETAIL, 'utf8'))
+        detailSuccess = detail?.success === true
+      } catch {
+        detailSuccess = false
+      }
+    }
   }
+
+  return {
+    detailFresh,
+    detailSuccess,
+    fallbackSatisfied: htmlState.count > 0,
+    latestActivityMtimeMs: Math.max(detailMtimeMs, htmlState.latestMtimeMs),
+    htmlCount: htmlState.count,
+  }
+}
+
+function getFreshDeepHtmlState(dir, startedAt, depth = 0) {
+  if (!existsSync(dir)) return { count: 0, latestMtimeMs: 0 }
+
+  let count = 0
+  let latestMtimeMs = 0
+
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const fullPath = path.join(dir, entry.name)
+    if (entry.isDirectory()) {
+      const childState = getFreshDeepHtmlState(fullPath, startedAt, depth + 1)
+      count += childState.count
+      latestMtimeMs = Math.max(latestMtimeMs, childState.latestMtimeMs)
+      continue
+    }
+
+    if (!entry.isFile() || !entry.name.endsWith('.html') || depth < 3) continue
+
+    const stat = statSync(fullPath)
+    if (stat.mtimeMs + 1000 < startedAt) continue
+
+    count += 1
+    latestMtimeMs = Math.max(latestMtimeMs, stat.mtimeMs)
+  }
+
+  return { count, latestMtimeMs }
 }
 
 function killChildProcess({ child, detached }, signal) {
@@ -134,13 +181,18 @@ function run(command, commandArgs, env, options = {}) {
     activeChildren.add(childEntry)
 
     let settled = false
-    let exportSuccessAt = null
+    let exportStableSince = null
+    let lastExportSignature = ''
     let forceKillTimer = null
     let terminationRequested = false
     let lastHeartbeatAt = Date.now()
 
-    child.stdout?.on('data', (chunk) => process.stdout.write(chunk))
-    child.stderr?.on('data', (chunk) => process.stderr.write(chunk))
+    child.stdout?.on('data', (chunk) => {
+      process.stdout.write(chunk)
+    })
+    child.stderr?.on('data', (chunk) => {
+      process.stderr.write(chunk)
+    })
 
     const killChild = (signal) => {
       killChildProcess(childEntry, signal)
@@ -158,26 +210,44 @@ function run(command, commandArgs, env, options = {}) {
     const exportWatch = monitorExport
       ? setInterval(() => {
           const now = Date.now()
-          const exportSucceeded = exportSucceededSince(startedAt)
+          const exportState = getExportState(startedAt)
+          const exportSucceeded = exportState.detailSuccess || exportState.fallbackSatisfied
+          const exportSignature = exportSucceeded
+            ? [
+                exportState.detailSuccess ? 'detail' : 'fallback',
+                exportState.latestActivityMtimeMs,
+                exportState.htmlCount,
+              ].join(':')
+            : ''
+
+          if (exportSucceeded && exportSignature !== lastExportSignature) {
+            lastExportSignature = exportSignature
+            exportStableSince = now
+          } else if (exportSucceeded) {
+            exportStableSince ??= now
+          }
+
           if (now - lastHeartbeatAt >= BUILD_HEARTBEAT_MS) {
             lastHeartbeatAt = now
             console.log(
               exportSucceeded
-                ? '[build-og] next build export succeeded; waiting for process shutdown'
+                ? '[build-og] next build export looks complete; waiting for the output to go quiet'
                 : '[build-og] waiting for next build export to finish'
             )
           }
 
           if (!exportSucceeded) return
-          exportSuccessAt ??= Date.now()
+
+          const quietMs = exportState.detailSuccess ? EXPORT_EXIT_GRACE_MS : EXPORT_FALLBACK_QUIET_MS
           if (
             terminateAfterSuccessfulExport &&
             !terminationRequested &&
-            Date.now() - exportSuccessAt >= EXPORT_EXIT_GRACE_MS
+            exportStableSince !== null &&
+            Date.now() - exportStableSince >= quietMs
           ) {
             terminationRequested = true
             console.warn(
-              `[build-og] next build export succeeded but the process did not exit after ${EXPORT_EXIT_GRACE_MS}ms; terminating stale child process`
+              `[build-og] next build export looks complete and quiet for ${quietMs}ms; terminating stale child process`
             )
             killChild('SIGTERM')
             forceKillTimer = setTimeout(() => {
@@ -193,7 +263,8 @@ function run(command, commandArgs, env, options = {}) {
     })
 
     child.on('close', (code, signal) => {
-      const exportSucceeded = exportSucceededSince(startedAt)
+      const exportState = getExportState(startedAt)
+      const exportSucceeded = exportState.detailSuccess || exportState.fallbackSatisfied
       if (code === 0) {
         finish(0)
         return
@@ -252,6 +323,13 @@ const summary =
       : `targeted OG generation for ${targets.join(', ')}`
 
 console.log(`[build-og] ${summary}`)
+if (existsSync(EXPORT_DETAIL)) {
+  try {
+    unlinkSync(EXPORT_DETAIL)
+  } catch (err) {
+    console.warn('[build-og] failed to remove stale export-detail.json before build:', err)
+  }
+}
 const buildStartedAt = Date.now()
 const buildCode = await run(nextBin, ['build', '--turbopack'], env, {
   acceptSuccessfulExportSignal: true,
