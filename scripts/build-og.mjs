@@ -77,8 +77,16 @@ function getFreshDeepHtmlState(dir, startedAt, depth = 0) {
 
   let count = 0
   let latestMtimeMs = 0
+  let entries = []
 
-  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+  try {
+    entries = readdirSync(dir, { withFileTypes: true })
+  } catch (err) {
+    if (err?.code === 'ENOENT') return { count: 0, latestMtimeMs: 0 }
+    throw err
+  }
+
+  for (const entry of entries) {
     const fullPath = path.join(dir, entry.name)
     if (entry.isDirectory()) {
       const childState = getFreshDeepHtmlState(fullPath, startedAt, depth + 1)
@@ -89,7 +97,13 @@ function getFreshDeepHtmlState(dir, startedAt, depth = 0) {
 
     if (!entry.isFile() || !entry.name.endsWith('.html') || depth < 3) continue
 
-    const stat = statSync(fullPath)
+    let stat
+    try {
+      stat = statSync(fullPath)
+    } catch (err) {
+      if (err?.code === 'ENOENT') continue
+      throw err
+    }
     if (stat.mtimeMs + 1000 < startedAt) continue
 
     count += 1
