@@ -95,7 +95,8 @@ function getFreshDeepHtmlState(dir, startedAt, depth = 0) {
       continue
     }
 
-    if (!entry.isFile() || !entry.name.endsWith('.html') || depth < 3) continue
+    // Count exported locale routes like out/en/notes/foo.html as a valid export signal.
+    if (!entry.isFile() || !entry.name.endsWith('.html') || depth < 2) continue
 
     let stat
     try {

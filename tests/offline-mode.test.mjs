@@ -40,6 +40,7 @@ test("offline mode wires the export build, fallback route, and cache warmup flow
   const pkg = JSON.parse(packageJson);
 
   assert.match(buildScript, /postbuild-offline\.mjs/);
+  assert.match(buildScript, /depth < 2/);
   assert.equal(pkg.scripts["verify:offline"], "node scripts/verify-offline.mjs");
   assert.equal(
     pkg.scripts.quality,
