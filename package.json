@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
     "check": "npm run typecheck && npm run lint && npm test",
-    "quality": "npm run check && npm run build:fast",
+    "quality": "npm run check && npm run build:fast && npm run verify:offline",
+    "verify:offline": "node scripts/verify-offline.mjs",
     "og:generate": "node scripts/generate-static-og.mjs",
     "sonar": "sonar-scanner",
     "sonar:check": "sonar-scanner -Dsonar.qualitygate.wait=true",
@@ -62,6 +63,7 @@
     "canvas": "2.11.2",
     "eslint": "9",
     "eslint-config-next": "16.1.1",
+    "playwright": "1.61.1",
     "sharp": "^0.33.5",
     "typescript": "5"
   },

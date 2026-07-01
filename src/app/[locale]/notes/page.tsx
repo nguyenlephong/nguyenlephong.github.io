@@ -5,7 +5,12 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
 import { SITE, SITE_URL } from "@/app/seo.config";
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from "@/lib/blog/seo";
-import { listNotes, listTopics } from "@/lib/notes/data";
+import {
+  getNoteContentLocales,
+  listNotes,
+  listTopics,
+  NOTE_CONTENT_LOCALES
+} from "@/lib/notes/data";
 import PageTracker from "@/components/analytics/PageTracker";
 import NotesExplorer from "@/components/notes/NotesExplorer";
 import "./notes.css";
@@ -35,11 +40,13 @@ function popularTags(notes: { tags: string[] }[]): string[] {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Pages.notes" });
+  const indexable = NOTE_CONTENT_LOCALES.includes(locale as "en" | "vi");
+  const canonicalLocale = indexable ? locale : "en";
 
   const title = `${t("title")} — ${t("eyebrow")}`;
   const description = t("intro");
-  const canonical = canonicalFor(locale, "/notes");
-  const languages = localeAlternates("/notes");
+  const canonical = canonicalFor(canonicalLocale, "/notes");
+  const languages = localeAlternates("/notes", NOTE_CONTENT_LOCALES);
 
   return {
     title,
@@ -51,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       siteName: SITE.name,
-      locale: OG_LOCALE_MAP[locale as Locale] ?? OG_LOCALE_MAP.en
+      locale: OG_LOCALE_MAP[canonicalLocale as Locale] ?? OG_LOCALE_MAP.en
     },
     twitter: {
       card: "summary_large_image",
@@ -61,9 +68,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       creator: SITE.twitter
     },
     robots: {
-      index: true,
+      index: indexable,
       follow: true,
-      googleBot: { index: true, follow: true, "max-image-preview": "large" }
+      googleBot: {
+        index: indexable,
+        follow: true,
+        "max-image-preview": "large"
+      }
     }
   };
 }
@@ -86,6 +97,9 @@ export default async function NotesPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "Pages.notes" });
   const notes = listNotes(locale);
   const topics = listTopics(locale);
+  const collectionLocale = NOTE_CONTENT_LOCALES.includes(locale as "en" | "vi")
+    ? locale
+    : "en";
   const topicBySlug = new Map(topics.map((tp) => [tp.id, tp]));
   const latestDate = notes[0]?.date;
 
@@ -102,20 +116,26 @@ export default async function NotesPage({ params }: Props) {
   const collectionLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": canonicalFor(locale, "/notes") + "#notes",
+    "@id": canonicalFor(collectionLocale, "/notes") + "#notes",
     name: `${t("title")} — ${t("eyebrow")}`,
     description: t("intro"),
-    url: canonicalFor(locale, "/notes"),
-    inLanguage: locale,
+    url: canonicalFor(collectionLocale, "/notes"),
+    inLanguage: collectionLocale,
     isPartOf: { "@type": "WebSite", "@id": `${SITE_URL}/#website` },
     author: { "@type": "Person", "@id": `${SITE_URL}/#person` },
-    hasPart: notes.map((n) => ({
-      "@type": "Article",
-      headline: n.title,
-      url: canonicalFor(locale, `/notes/${n.slug}`),
-      image: canonicalFor(locale, `/notes/${n.slug}/opengraph-image`),
-      datePublished: n.date
-    }))
+    hasPart: notes.map((n) => {
+      const noteLocale = getNoteContentLocales(n.slug).includes(collectionLocale)
+        ? collectionLocale
+        : "en";
+
+      return {
+        "@type": "Article",
+        headline: n.title,
+        url: canonicalFor(noteLocale, `/notes/${n.slug}`),
+        image: canonicalFor(noteLocale, `/notes/${n.slug}/opengraph-image`),
+        datePublished: n.date
+      };
+    })
   };
 
   return (

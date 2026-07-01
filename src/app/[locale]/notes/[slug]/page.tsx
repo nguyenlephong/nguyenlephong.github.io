@@ -14,6 +14,7 @@ import {
 } from "@/lib/blog/seo";
 import {
   getTopic,
+  getNoteContentLocales,
   getTopicReadingContext,
   listNoteParams,
   loadNote
@@ -52,12 +53,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   const note = loadNote(slug, locale);
   if (!note) return { title: "Not found" };
+  const contentLocales = getNoteContentLocales(slug);
+  const indexable = contentLocales.includes(locale);
+  const canonicalLocale = indexable ? locale : "en";
 
   const title = note.title;
   const description = note.summary || buildDescription(note.html);
-  const canonical = canonicalFor(locale, `/notes/${slug}`);
+  const canonical = canonicalFor(canonicalLocale, `/notes/${slug}`);
   const imageUrl = noteOgImageUrl(slug);
-  const languages = localeAlternates(`/notes/${slug}`);
+  const languages = localeAlternates(`/notes/${slug}`, contentLocales);
 
   return {
     title,
@@ -70,7 +74,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       siteName: SITE.name,
-      locale: OG_LOCALE_MAP[locale as Locale] ?? OG_LOCALE_MAP.en,
+      locale: OG_LOCALE_MAP[canonicalLocale as Locale] ?? OG_LOCALE_MAP.en,
       publishedTime: note.date,
       modifiedTime: note.updated ?? note.date,
       authors: [SITE_URL],
@@ -85,7 +89,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       creator: SITE.twitter,
       images: [imageUrl]
     },
-    robots: { index: true, follow: true }
+    robots: {
+      index: indexable,
+      follow: true,
+      googleBot: { index: indexable, follow: true, "max-image-preview": "large" }
+    }
   };
 }
 
@@ -96,9 +104,12 @@ export default async function NotePage({ params }: Props) {
 
   const note = loadNote(slug, locale);
   if (!note) notFound();
+  const contentLocales = getNoteContentLocales(slug);
+  const indexable = contentLocales.includes(locale);
+  const canonicalLocale = indexable ? locale : "en";
 
   const t = await getTranslations({ locale, namespace: "Pages.notes" });
-  const canonical = canonicalFor(locale, `/notes/${slug}`);
+  const canonical = canonicalFor(canonicalLocale, `/notes/${slug}`);
   const imageUrl = noteOgImageUrl(slug);
   const description = note.summary || buildDescription(note.html);
 
@@ -161,7 +172,7 @@ export default async function NotePage({ params }: Props) {
     "@id": canonical + "#article",
     headline: note.title,
     description,
-    inLanguage: locale,
+    inLanguage: canonicalLocale,
     url: canonical,
     image: imageUrl,
     mainEntityOfPage: canonical,
@@ -197,7 +208,7 @@ export default async function NotePage({ params }: Props) {
         "@type": "ListItem",
         position: 1,
         name: t("title"),
-        item: canonicalFor(locale, "/notes")
+        item: canonicalFor(canonicalLocale, "/notes")
       },
       ...(topic && topicHref
         ? [
@@ -205,7 +216,7 @@ export default async function NotePage({ params }: Props) {
               "@type": "ListItem",
               position: 2,
               name: topic.label,
-              item: canonicalFor(locale, topicHref)
+              item: canonicalFor(canonicalLocale, topicHref)
             }
           ]
         : []),

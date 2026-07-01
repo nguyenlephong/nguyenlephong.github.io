@@ -255,6 +255,27 @@
       "description": "8년 이상의 제품 구축, 딜리버리 리딩, 마이크로프런트엔드, Kubernetes, 롤아웃 시스템 아키텍처 경험을 갖춘 시니어 소프트웨어 엔지니어이자 Head of Tech. 정보기술 학사 — Very Good (GPA 3.36)."
     }
   },
+  "Offline": {
+    "banner": {
+      "syncing": "이 언어의 offline 읽기 모드를 준비하는 중입니다…",
+      "ready": "이 언어의 offline 읽기 모드가 준비되었습니다.",
+      "partial": "offline 읽기 캐시가 아직 일부만 준비되었습니다. 이 언어를 조금 더 온라인 상태로 두세요.",
+      "offlineReady": "현재 offline입니다. 저장된 페이지와 글은 계속 읽을 수 있어요.",
+      "offlinePartial": "현재 offline입니다. 일부 페이지는 저장되기 전에 온라인에서 한 번 열어야 할 수 있어요.",
+      "dismiss": "offline 알림 숨기기"
+    },
+    "page": {
+      "eyebrow": "연결이 끊겼습니다",
+      "title": "Offline 읽기",
+      "body": "이 페이지는 아직 offline 읽기용으로 저장되지 않았습니다. 이 언어에서 이미 열어 본 페이지와 글은 계속 읽을 수 있어야 합니다.",
+      "hint": "연결이 돌아오면 이 페이지를 한 번만 열어 두면 다음 읽기를 위해 저장됩니다.",
+      "actionsLabel": "offline 읽기 바로가기",
+      "home": "홈",
+      "blog": "블로그",
+      "notes": "노트",
+      "about": "소개"
+    }
+  },
   "Pages": {
     "about": {
       "heading": "소개"

@@ -135,7 +135,14 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(analytics, /'studio_flow_group_select'/);
   assert.match(analytics, /'studio_flow_select'/);
   assert.match(analytics, /'studio_flow_example_select'/);
+  assert.match(analytics, /'studio_flow_canvas_mode_change'/);
+  assert.match(analytics, /'studio_flow_layout_apply'/);
+  assert.match(analytics, /'studio_flow_node_select'/);
+  assert.match(analytics, /'studio_flow_node_action'/);
+  assert.match(analytics, /'studio_flow_history_action'/);
+  assert.match(analytics, /'studio_flow_group_visibility_toggle'/);
   assert.match(analytics, /'studio_flow_board_fullscreen_toggle'/);
+  assert.match(analytics, /'studio_flow_focus_toggle'/);
   assert.match(analytics, /'studio_flow_share'/);
   assert.match(tracker, /'studio'/);
   assert.match(tracker, /'studio_view'/);
@@ -161,6 +168,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /StudioAdminShell/);
   assert.match(adminShell, /const DEFAULT_ROUTE:\s*StudioRouteId = "welcome"/);
   assert.match(adminShell, /@xyflow\/react/);
+  assert.match(adminShell, /applyNodeChanges/);
+  assert.match(adminShell, /applyEdgeChanges/);
+  assert.match(adminShell, /addEdge/);
+  assert.match(adminShell, /ViewportPortal/);
   assert.match(adminShell, /ReactFlow/);
   assert.match(adminShell, /MiniMap/);
   assert.match(adminShell, /maskStrokeColor/);
@@ -174,11 +185,34 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /const isBlueprintDiagram = flow\.id === "react-flow-system-blueprint"/);
   assert.match(adminShell, /isBoardFullscreen/);
   assert.match(adminShell, /studio_flow_board_fullscreen_toggle/);
+  assert.match(adminShell, /studio_flow_focus_toggle/);
+  assert.match(adminShell, /studio_flow_canvas_mode_change/);
+  assert.match(adminShell, /studio_flow_layout_apply/);
+  assert.match(adminShell, /studio_flow_node_select/);
+  assert.match(adminShell, /studio_flow_node_action/);
+  assert.match(adminShell, /studio_flow_history_action/);
+  assert.match(adminShell, /studio_flow_group_visibility_toggle/);
   assert.match(adminShell, /flow-board-toolbar/);
+  assert.match(adminShell, /flow-canvas-toolbar/);
+  assert.match(adminShell, /flow-inspector-panel/);
+  assert.match(adminShell, /flow-helper-line/);
   assert.match(adminShell, /flow-board-fullscreen-button/);
   assert.match(adminShell, /flow-chart-surface\$\{isReactFlowDemo \? " is-architecture-demo" : ""\}\$\{isBlueprintDiagram \? " is-blueprint-diagram" : ""\}\$\{isCompactDiagram \? " is-compact-diagram" : ""\}\$\{isBoardFullscreen \? " is-fullscreen" : ""\}/);
   assert.match(adminShell, /function renderStudioFlowNodeIcon/);
-  assert.match(adminShell, /const isCompactDiagram = nodes\.some/);
+  assert.match(adminShell, /const isCompactDiagram = displayNodes\.some/);
+  assert.match(adminShell, /getLayoutedStudioFlowNodes/);
+  assert.match(adminShell, /getSourcePositionedStudioFlowNodes/);
+  assert.match(adminShell, /getDisplayStudioFlowNodes/);
+  assert.match(adminShell, /createStudioFlowSnapshot/);
+  assert.match(adminShell, /cloneStudioFlowNodeForPaste/);
+  assert.match(adminShell, /pointerEvents:\s*"none"/);
+  assert.match(adminShell, /deleteKeyCode=\{null\}/);
+  const applyLayoutBlock = adminShell.slice(
+    adminShell.indexOf("const handleApplyLayout"),
+    adminShell.indexOf("const handleResetBoard")
+  );
+  assert.match(applyLayoutBlock, /getSourcePositionedStudioFlowNodes\(current, sourceCanvas\.nodes\)/);
+  assert.doesNotMatch(applyLayoutBlock, /setCanvasEdges\(cloneStudioFlowEdges\(sourceCanvas\.edges\)\)/);
   assert.match(adminShell, /!\s*selectedFlow\.architectureDemo\s*&&\s*\(/);
   assert.match(adminShell, /reactFlowExampleFamilyLabels/);
   assert.match(adminShell, /flow-example-toolbar/);
@@ -325,7 +359,14 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studio_flow_group_select/);
   assert.match(adminShell, /studio_flow_select/);
   assert.match(adminShell, /studio_flow_example_select/);
+  assert.match(adminShell, /studio_flow_canvas_mode_change/);
+  assert.match(adminShell, /studio_flow_layout_apply/);
+  assert.match(adminShell, /studio_flow_node_select/);
+  assert.match(adminShell, /studio_flow_node_action/);
+  assert.match(adminShell, /studio_flow_history_action/);
+  assert.match(adminShell, /studio_flow_group_visibility_toggle/);
   assert.match(adminShell, /studio_flow_board_fullscreen_toggle/);
+  assert.match(adminShell, /studio_flow_focus_toggle/);
   assert.match(adminShell, /studio_flow_share/);
   assert.match(adminShell, /studioMails/);
   assert.match(adminShell, /studioConversations/);
@@ -417,6 +458,11 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "flow-index-pane",
     "flow-reader-pane",
     "flow-side-pane",
+    "flow-canvas-shell",
+    "flow-canvas-toolbar",
+    "flow-inspector-panel",
+    "flow-helper-line",
+    "flow-group-visibility",
     "flow-react-surface",
     "flow-react-canvas",
     "flow-react-node",
@@ -436,6 +482,11 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /--flow-minimap-node-fill/);
   assert.match(shadowCss, /--flow-minimap-node-stroke/);
   assert.match(shadowCss, /\.flow-board-toolbar\b/);
+  assert.match(shadowCss, /\.flow-canvas-toolbar\b/);
+  assert.match(shadowCss, /\.flow-canvas-shell\b/);
+  assert.match(shadowCss, /\.flow-inspector-panel\b/);
+  assert.match(shadowCss, /\.flow-helper-line\.is-vertical\b/);
+  assert.match(shadowCss, /\.flow-helper-line\.is-horizontal\b/);
   assert.doesNotMatch(shadowCss, /\.flow-minimap-overlay\b/);
   assert.match(shadowCss, /\.flow-example-toolbar\b/);
   assert.doesNotMatch(shadowCss, /\.flow-example-notes\b/);
@@ -451,7 +502,11 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.flow-react-node--risk\b/);
   assert.match(shadowCss, /\.flow-react-node--system\b/);
   assert.match(shadowCss, /\.flow-react-node\.is-compact\b/);
+  assert.match(shadowCss, /\.flow-react-node\.is-selected\b/);
+  assert.match(shadowCss, /\.flow-react-node\.is-collapsed\b/);
+  assert.match(shadowCss, /\.flow-react-node\.is-scratch\b/);
   assert.match(shadowCss, /\.flow-react-node-icon\b/);
+  assert.match(shadowCss, /\.flow-react-surface\.is-edit-mode \.react-flow__handle\b/);
   assert.match(shadowCss, /\.flow-react-surface\.is-architecture-demo\b/);
   assert.match(shadowCss, /\.flow-react-surface\.is-architecture-demo\.is-blueprint-diagram\b/);
   assert.match(shadowCss, /\.flow-react-surface\.is-compact-diagram\b/);
@@ -459,7 +514,11 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.sidebar-badge\s*\{[^}]*display:\s*inline-flex/s);
   assert.match(shadowCss, /\.flow-board-toolbar\b/);
   assert.match(shadowCss, /--flow-minimap-bg/);
-  assert.match(shadowCss, /\.flow-chart-surface\.is-architecture-demo\s*\{[^}]*border:\s*0;[^}]*background:\s*transparent;[^}]*padding:\s*0/s);
+  assert.match(shadowCss, /\.flow-chart-surface\.is-architecture-demo\s*\{[^}]*border:\s*1px solid[^}]*background:[^}]*linear-gradient[^}]*padding:\s*0\.85rem/s);
+  assert.match(shadowCss, /\.flow-layout-presets\b/);
+  assert.match(shadowCss, /\.flow-trail-panel\b/);
+  assert.match(shadowCss, /\.flow-relation-map\b/);
+  assert.match(shadowCss, /\.react-flow__edge\.is-dimmed\b/);
   assert.match(shadowCss, /\.flow-chart-surface\.is-fullscreen\s*\{[^}]*position:\s*fixed;[^}]*grid-template-rows:\s*auto auto minmax\(0,\s*1fr\)/s);
   assert.match(shadowCss, /\.flow-board-fullscreen-button\b/);
   assert.match(shadowCss, /\.flow-chart-surface\s*\{[^}]*flex:\s*0 0 auto/s);

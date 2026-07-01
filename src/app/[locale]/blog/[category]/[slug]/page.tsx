@@ -14,6 +14,7 @@ import {
 } from '@/lib/blog/seo'
 import {
   getCategory,
+  getPostContentLocales,
   getSeriesContext,
   listCategoryPostPairs,
   listPosts,
@@ -56,12 +57,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, category, slug } = await params
   const post = loadPost(slug, locale)
   if (!post || post.category !== category) return { title: 'Post not found' }
+  const contentLocales = getPostContentLocales(slug)
+  const indexable = contentLocales.includes(locale)
+  const canonicalLocale = indexable ? locale : 'en'
 
   const title = post.title
   const description = post.summary || buildDescription(post.html)
-  const canonical = canonicalFor(locale, `/blog/${category}/${slug}`)
+  const canonical = canonicalFor(canonicalLocale, `/blog/${category}/${slug}`)
   const imageUrl = blogPostOgImageUrl(slug)
-  const languages = localeAlternates(`/blog/${category}/${slug}`)
+  const languages = localeAlternates(`/blog/${category}/${slug}`, contentLocales)
 
   return {
     title,
@@ -74,10 +78,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       siteName: SITE.name,
-      locale: OG_LOCALE_MAP[locale as Locale] ?? OG_LOCALE_MAP.en,
-      alternateLocale: routing.locales
-        .filter((l) => l !== locale)
-        .map((l) => OG_LOCALE_MAP[l]),
+      locale: OG_LOCALE_MAP[canonicalLocale as Locale] ?? OG_LOCALE_MAP.en,
+      alternateLocale: contentLocales
+        .filter((l) => l !== canonicalLocale)
+        .map((l) => OG_LOCALE_MAP[l as Locale]),
       publishedTime: post.date,
       modifiedTime: post.updated ?? post.date,
       authors: [SITE_URL],
@@ -93,10 +97,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [imageUrl],
     },
     robots: {
-      index: true,
+      index: indexable,
       follow: true,
       googleBot: {
-        index: true,
+        index: indexable,
         follow: true,
         'max-image-preview': 'large',
         'max-snippet': -1,
@@ -112,11 +116,14 @@ export default async function BlogPostPage({ params }: Props) {
 
   const post = loadPost(slug, locale)
   if (!post || post.category !== category) notFound()
+  const contentLocales = getPostContentLocales(slug)
+  const indexable = contentLocales.includes(locale)
+  const canonicalLocale = indexable ? locale : 'en'
 
   const cat = getCategory(category, locale)
   const series = getSeriesContext(slug, locale)
   const t = await getTranslations({ locale, namespace: 'Pages.blog' })
-  const canonical = canonicalFor(locale, `/blog/${category}/${slug}`)
+  const canonical = canonicalFor(canonicalLocale, `/blog/${category}/${slug}`)
   const imageUrl = blogPostOgImageUrl(slug)
   const description = post.summary || buildDescription(post.html)
   const relatedPosts = getRelatedPosts(post, listPosts(locale))
@@ -137,7 +144,7 @@ export default async function BlogPostPage({ params }: Props) {
     '@id': canonical + '#article',
     headline: post.title,
     description,
-    inLanguage: locale,
+    inLanguage: canonicalLocale,
     url: canonical,
     image: imageUrl,
     mainEntityOfPage: canonical,
@@ -148,12 +155,17 @@ export default async function BlogPostPage({ params }: Props) {
     isRelatedTo: relatedPosts.map((relatedPost) => ({
       '@type': 'BlogPosting',
       headline: relatedPost.title,
-      url: canonicalFor(locale, `/blog/${relatedPost.category}/${relatedPost.slug}`),
+      url: canonicalFor(
+        getPostContentLocales(relatedPost.slug).includes(canonicalLocale)
+          ? canonicalLocale
+          : 'en',
+        `/blog/${relatedPost.category}/${relatedPost.slug}`,
+      ),
       image: blogPostOgImageUrl(relatedPost.slug),
     })),
     isPartOf: {
       '@type': 'Blog',
-      '@id': canonicalFor(locale, '/blog') + '#blog',
+      '@id': canonicalFor(canonicalLocale, '/blog') + '#blog',
     },
     ...(post.book
       ? {
@@ -193,13 +205,13 @@ export default async function BlogPostPage({ params }: Props) {
         '@type': 'ListItem',
         position: 1,
         name: t('title'),
-        item: canonicalFor(locale, '/blog'),
+        item: canonicalFor(canonicalLocale, '/blog'),
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: cat?.title ?? category,
-        item: canonicalFor(locale, `/blog/${category}`),
+        item: canonicalFor(canonicalLocale, `/blog/${category}`),
       },
       {
         '@type': 'ListItem',

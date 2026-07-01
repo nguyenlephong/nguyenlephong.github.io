@@ -91,6 +91,11 @@ export type AnalyticsEvent =
   | 'reader_tool_toggle'
   | 'reading_font_change'
   | 'reading_background_change'
+  // Offline reading
+  | 'offline_view'
+  | 'offline_mode_ready'
+  | 'offline_status_change'
+  | 'offline_banner_dismiss'
   // Studio
   | 'studio_view'
   | 'studio_route_open'
@@ -110,7 +115,14 @@ export type AnalyticsEvent =
   | 'studio_flow_group_select'
   | 'studio_flow_select'
   | 'studio_flow_example_select'
+  | 'studio_flow_canvas_mode_change'
+  | 'studio_flow_layout_apply'
+  | 'studio_flow_node_select'
+  | 'studio_flow_node_action'
+  | 'studio_flow_history_action'
+  | 'studio_flow_group_visibility_toggle'
   | 'studio_flow_board_fullscreen_toggle'
+  | 'studio_flow_focus_toggle'
   | 'studio_flow_share'
   // Outbound
   | 'outbound_click'

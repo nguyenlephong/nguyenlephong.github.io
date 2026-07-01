@@ -237,6 +237,27 @@
       "description": "Senior full-stack engineer và technical lead với 8+ năm ship sản phẩm, platform, Micro-Frontend, Kubernetes, integration fintech bảo mật và hệ thống rollout."
     }
   },
+  "Offline": {
+    "banner": {
+      "syncing": "Đang chuẩn bị chế độ đọc offline cho ngôn ngữ này…",
+      "ready": "Chế độ đọc offline cho ngôn ngữ này đã sẵn sàng.",
+      "partial": "Gói đọc offline vẫn mới được lưu một phần. Hãy giữ trang này online thêm một lúc nữa.",
+      "offlineReady": "Bạn đang offline, nhưng các trang và bài đã lưu vẫn đọc tiếp được.",
+      "offlinePartial": "Bạn đang offline. Một vài trang cần được mở online một lần trước khi được lưu.",
+      "dismiss": "Ẩn thông báo offline"
+    },
+    "page": {
+      "eyebrow": "Mất kết nối",
+      "title": "Đọc offline",
+      "body": "Trang này vẫn chưa được lưu cho chế độ đọc offline. Những danh sách và bài viết bạn đã mở trước đó trong ngôn ngữ này vẫn nên đọc được.",
+      "hint": "Khi có mạng trở lại, chỉ cần mở trang này một lần để lưu cho lần đọc sau.",
+      "actionsLabel": "Lối tắt khi đọc offline",
+      "home": "Trang chủ",
+      "blog": "Blog",
+      "notes": "Ghi chép",
+      "about": "Giới thiệu"
+    }
+  },
   "Pages": {
     "about": {
       "heading": "Về tôi"

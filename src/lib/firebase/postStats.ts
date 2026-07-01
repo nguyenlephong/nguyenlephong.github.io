@@ -32,6 +32,10 @@ function emptyReactions(): ReactionCounts {
   return { like: 0, love: 0, insightful: 0, clap: 0 }
 }
 
+function isNavigatorOffline(): boolean {
+  return typeof navigator !== 'undefined' && navigator.onLine === false
+}
+
 /** Stable, locale-agnostic Firestore document id for an article. */
 export function postStatsId(category: string, slug: string): string {
   return `${category}__${slug}`
@@ -59,6 +63,7 @@ function normalise(data: Record<string, unknown> | undefined): PostStats {
 
 /** Reads current counters once. Returns null when unconfigured or on error. */
 export async function getPostStats(id: string): Promise<PostStats | null> {
+  if (isNavigatorOffline()) return null
   const db = await getDb()
   if (!db) return null
   try {
@@ -78,6 +83,7 @@ export async function getPostStats(id: string): Promise<PostStats | null> {
  */
 export async function getAllPostStats(): Promise<Map<string, PostStats>> {
   const out = new Map<string, PostStats>()
+  if (isNavigatorOffline()) return out
   const db = await getDb()
   if (!db) return out
   try {
@@ -92,6 +98,7 @@ export async function getAllPostStats(): Promise<Map<string, PostStats>> {
 
 /** Atomically bumps the view counter. Best-effort; never throws. */
 export async function incrementView(id: string): Promise<void> {
+  if (isNavigatorOffline()) return
   const db = await getDb()
   if (!db) return
   try {
@@ -111,6 +118,7 @@ export async function incrementView(id: string): Promise<void> {
  * roll back an optimistic UI update when the write fails. Never throws.
  */
 export async function incrementShare(id: string): Promise<boolean> {
+  if (isNavigatorOffline()) return false
   const db = await getDb()
   if (!db) return false
   try {
@@ -136,6 +144,7 @@ export async function applyReaction(
   reaction: ReactionKey,
   delta: 1 | -1,
 ): Promise<boolean> {
+  if (isNavigatorOffline()) return false
   const db = await getDb()
   if (!db) return false
   try {

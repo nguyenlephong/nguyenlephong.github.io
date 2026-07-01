@@ -2101,10 +2101,16 @@ a {
   min-height: 0;
   gap: 0.75rem;
   overflow: visible;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  border-radius: 0.95rem;
+  background:
+    linear-gradient(color-mix(in srgb, var(--foreground) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--foreground) 4%, transparent) 1px, transparent 1px),
+    radial-gradient(circle at 16% 14%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 24rem),
+    color-mix(in srgb, var(--background) 96%, var(--muted));
+  background-size: 28px 28px, 28px 28px, auto, auto;
+  padding: 0.85rem;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
 }
 
 .flow-chart-surface.is-fullscreen {
@@ -2144,18 +2150,18 @@ a {
 
 .flow-board-toolbar {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(16rem, 0.72fr) minmax(22rem, 1.35fr) auto;
   gap: 0.75rem;
-  align-items: end;
+  align-items: start;
   border: 1px solid color-mix(in srgb, var(--primary) 20%, var(--border));
   border-radius: 0.85rem;
-  background: color-mix(in srgb, var(--primary) 7%, var(--muted));
+  background: color-mix(in srgb, var(--card) 88%, var(--primary) 6%);
   padding: 0.85rem;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
 }
 
 .flow-board-toolbar:not(.has-selectors) {
-  grid-template-columns: auto;
-  justify-content: end;
+  grid-template-columns: minmax(0, 1fr) auto;
 }
 
 .flow-board-actionbar {
@@ -2196,6 +2202,139 @@ a {
   height: 1rem;
 }
 
+.flow-canvas-toolbar {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.45rem;
+}
+
+.flow-layout-presets {
+  display: inline-grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.25rem;
+  width: min(100%, 28rem);
+  min-height: 2.15rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--background) 82%, var(--card));
+  padding: 0.25rem;
+}
+
+.flow-layout-presets button {
+  min-width: 0;
+  min-height: 1.7rem;
+  border: 0;
+  border-radius: 0.48rem;
+  background: transparent;
+  color: var(--muted-foreground);
+  padding: 0 0.42rem;
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+.flow-layout-presets button:hover {
+  background: color-mix(in srgb, var(--primary) 8%, var(--card));
+  color: var(--foreground);
+}
+
+.flow-layout-presets button.is-active {
+  background: color-mix(in srgb, var(--primary) 12%, var(--card));
+  color: color-mix(in srgb, var(--primary) 82%, var(--foreground));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary) 22%, transparent);
+}
+
+.flow-layout-presets svg {
+  display: none;
+}
+
+.flow-canvas-toolbar label {
+  display: grid;
+  min-width: 8.5rem;
+  gap: 0.35rem;
+  color: var(--muted-foreground);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.flow-canvas-toolbar select,
+.flow-canvas-toolbar button {
+  min-height: 2.15rem;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  background: var(--card);
+  color: var(--foreground);
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.flow-canvas-toolbar select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: right 0.7rem center;
+  background-repeat: no-repeat;
+  background-size: 0.95rem;
+  padding: 0 2.25rem 0 0.65rem;
+}
+
+.flow-canvas-toolbar button {
+  display: inline-flex;
+  width: auto;
+  min-width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0 0.55rem;
+}
+
+.flow-canvas-toolbar > button {
+  width: 2.15rem;
+  min-width: 2.15rem;
+  padding: 0;
+}
+
+.flow-canvas-toolbar > button span {
+  display: none;
+}
+
+.flow-canvas-toolbar button:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--primary) 32%, var(--border));
+  background: color-mix(in srgb, var(--primary) 9%, var(--card));
+}
+
+.flow-canvas-toolbar button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.flow-canvas-toolbar svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.flow-canvas-toolbar .flow-layout-presets button {
+  min-height: 1.7rem;
+  border: 0;
+  background: transparent;
+  padding: 0 0.42rem;
+  font-size: 0.72rem;
+}
+
+.flow-canvas-toolbar .flow-layout-presets button:hover {
+  background: color-mix(in srgb, var(--primary) 8%, var(--card));
+}
+
+.flow-canvas-toolbar .flow-layout-presets button.is-active {
+  background: color-mix(in srgb, var(--primary) 12%, var(--card));
+}
+
+.flow-board-fullscreen-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
 .flow-react-surface {
   --flow-minimap-bg: rgba(248, 250, 252, 0.97);
   --flow-minimap-mask: rgba(15, 23, 42, 0.14);
@@ -2209,6 +2348,13 @@ a {
   border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
   border-radius: 0.95rem;
   background: color-mix(in srgb, var(--background) 92%, var(--muted));
+}
+
+.flow-canvas-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(14.5rem, 18rem);
+  gap: 0.75rem;
+  min-height: 0;
 }
 
 .studio-admin.is-dark .flow-react-surface {
@@ -2237,6 +2383,10 @@ a {
 
 .flow-chart-surface.is-fullscreen .flow-react-surface {
   height: 100%;
+  min-height: 0;
+}
+
+.flow-chart-surface.is-fullscreen .flow-canvas-shell {
   min-height: 0;
 }
 
@@ -2345,6 +2495,15 @@ a {
   stroke-dasharray: 5;
 }
 
+.react-flow__edge.is-dimmed {
+  opacity: 0.22;
+}
+
+.react-flow__edge.is-focus-edge .react-flow__edge-path {
+  stroke-width: calc(var(--xy-edge-stroke-width, var(--xy-edge-stroke-width-default)) + 0.8px);
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--primary) 28%, transparent));
+}
+
 .react-flow__arrowhead polyline {
   fill: var(--xy-edge-stroke, var(--xy-edge-stroke-default));
   stroke: var(--xy-edge-stroke, var(--xy-edge-stroke-default));
@@ -2374,6 +2533,10 @@ a {
   border-radius: 999px;
   background: var(--primary);
   pointer-events: none;
+}
+
+.flow-react-surface.is-edit-mode .react-flow__handle {
+  pointer-events: all;
 }
 
 .react-flow__handle-left {
@@ -2514,6 +2677,325 @@ a {
 
 .react-flow__background-pattern.dots {
   fill: var(--xy-background-pattern-color, var(--xy-background-pattern-dots-color-default));
+}
+
+.flow-helper-line {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--primary) 72%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--background) 72%, transparent);
+}
+
+.flow-helper-line.is-vertical {
+  top: -4000px;
+  width: 1px;
+  height: 8000px;
+  transform: translateX(-0.5px);
+}
+
+.flow-helper-line.is-horizontal {
+  left: -4000px;
+  width: 8000px;
+  height: 1px;
+  transform: translateY(-0.5px);
+}
+
+.flow-trail-panel-host {
+  width: min(38rem, calc(100% - 1.5rem));
+  margin-top: 0.75rem;
+}
+
+.flow-trail-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(8rem, 0.72fr) minmax(0, 1fr);
+  gap: 0.45rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  border-radius: 0.85rem;
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  backdrop-filter: blur(14px) saturate(150%);
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.14);
+  padding: 0.45rem;
+}
+
+.flow-trail-panel.is-isolated {
+  border-color: color-mix(in srgb, var(--primary) 34%, var(--border));
+  background: color-mix(in srgb, var(--primary) 9%, var(--card));
+}
+
+.flow-trail-panel section {
+  display: grid;
+  gap: 0.28rem;
+  min-width: 0;
+}
+
+.flow-trail-panel h4,
+.flow-relation-map h4 {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.63rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flow-trail-current {
+  align-content: center;
+  justify-items: center;
+  border-radius: 0.65rem;
+  background: color-mix(in srgb, var(--primary) 9%, var(--background));
+  padding: 0.45rem;
+  text-align: center;
+}
+
+.flow-trail-current strong,
+.flow-trail-node-button strong {
+  overflow: hidden;
+  max-width: 100%;
+  color: var(--foreground);
+  font-size: 0.72rem;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flow-trail-current small,
+.flow-trail-node-button small,
+.flow-trail-empty,
+.flow-trail-more {
+  overflow: hidden;
+  color: var(--muted-foreground);
+  font-size: 0.62rem;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flow-trail-node-button {
+  display: grid;
+  gap: 0.12rem;
+  min-width: 0;
+  border: 1px solid color-mix(in srgb, var(--foreground) 9%, transparent);
+  border-radius: 0.55rem;
+  background: color-mix(in srgb, var(--background) 86%, var(--card));
+  padding: 0.38rem 0.45rem;
+  text-align: left;
+}
+
+.flow-trail-node-button:hover {
+  border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
+  background: color-mix(in srgb, var(--primary) 8%, var(--card));
+}
+
+.flow-inspector-panel {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: auto;
+  border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+  border-radius: 0.95rem;
+  background: color-mix(in srgb, var(--card) 92%, var(--muted));
+  padding: 0.85rem;
+}
+
+.flow-inspector-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.flow-inspector-head strong {
+  color: var(--foreground);
+  font-size: 0.88rem;
+}
+
+.flow-inspector-head span {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 10%, var(--muted));
+  color: color-mix(in srgb, var(--primary) 78%, var(--foreground));
+  padding: 0.16rem 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.flow-metric-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.flow-metric-strip span {
+  display: grid;
+  gap: 0.1rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 9%, transparent);
+  border-radius: 0.65rem;
+  background: color-mix(in srgb, var(--background) 82%, var(--card));
+  color: var(--muted-foreground);
+  padding: 0.55rem;
+  font-size: 0.67rem;
+  font-weight: 650;
+  text-transform: uppercase;
+}
+
+.flow-metric-strip strong {
+  color: var(--foreground);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.flow-sandbox-note {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.flow-selected-card {
+  display: grid;
+  gap: 0.35rem;
+  border: 1px solid color-mix(in srgb, var(--primary) 16%, var(--border));
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--primary) 6%, var(--background));
+  padding: 0.7rem;
+}
+
+.flow-selected-card.is-node {
+  border-color: color-mix(in srgb, var(--primary) 26%, var(--border));
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 9%, transparent), transparent 64%),
+    color-mix(in srgb, var(--background) 90%, var(--card));
+}
+
+.flow-selected-card.is-edge {
+  border-color: color-mix(in srgb, var(--status-online, #16a34a) 22%, var(--border));
+  background: color-mix(in srgb, var(--status-online, #16a34a) 6%, var(--background));
+}
+
+.flow-selected-card span,
+.flow-selected-card small {
+  color: var(--muted-foreground);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.flow-selected-card strong {
+  color: var(--foreground);
+  font-size: 0.86rem;
+}
+
+.flow-selected-card p {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.flow-node-meta-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.flow-node-meta-grid small {
+  width: fit-content;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 8%, var(--muted));
+  color: color-mix(in srgb, var(--primary) 72%, var(--foreground));
+  padding: 0.16rem 0.46rem;
+}
+
+.flow-relation-map {
+  display: grid;
+  gap: 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--foreground) 9%, transparent);
+  border-radius: 0.8rem;
+  background: color-mix(in srgb, var(--background) 86%, var(--card));
+  padding: 0.7rem;
+}
+
+.flow-relation-map-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.flow-relation-map-head strong {
+  color: var(--foreground);
+  font-size: 0.78rem;
+}
+
+.flow-relation-map-head button {
+  min-height: 1.8rem;
+  border: 1px solid color-mix(in srgb, var(--primary) 22%, var(--border));
+  border-radius: 0.55rem;
+  background: color-mix(in srgb, var(--primary) 8%, var(--card));
+  color: color-mix(in srgb, var(--primary) 78%, var(--foreground));
+  padding: 0 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+.flow-relation-columns {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.flow-relation-columns section {
+  display: grid;
+  gap: 0.32rem;
+}
+
+.flow-group-visibility {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.flow-group-visibility button {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.15rem 0.45rem;
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--foreground) 9%, transparent);
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--background) 86%, var(--card));
+  color: var(--foreground);
+  padding: 0.55rem;
+  text-align: left;
+}
+
+.flow-group-visibility button:hover {
+  border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
+  background: color-mix(in srgb, var(--primary) 8%, var(--card));
+}
+
+.flow-group-visibility svg {
+  grid-row: span 2;
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--primary);
+}
+
+.flow-group-visibility span,
+.flow-group-visibility small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.flow-group-visibility span {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.flow-group-visibility small {
+  color: var(--muted-foreground);
+  font-size: 0.67rem;
+  font-weight: 650;
 }
 
 .flow-react-node {
@@ -2721,6 +3203,21 @@ a {
     0 16px 38px rgba(0, 0, 0, 0.12);
 }
 
+.flow-react-node.is-selected {
+  outline: 2px solid color-mix(in srgb, var(--primary) 72%, transparent);
+  outline-offset: 4px;
+}
+
+.flow-react-node.is-collapsed {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--flow-node-color) 14%, transparent), transparent),
+    color-mix(in srgb, var(--card) 92%, var(--muted));
+}
+
+.flow-react-node.is-scratch {
+  border-style: dotted;
+}
+
 .flow-react-node.tone-source {
   --flow-node-color: #2563eb;
 }
@@ -2788,6 +3285,96 @@ a {
   line-height: 1.4;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
+}
+
+.flow-react-node {
+  min-height: 7.7rem;
+  align-content: start;
+  border-top: 4px solid var(--flow-node-color);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--flow-node-color) 8%, transparent), transparent 55%),
+    color-mix(in srgb, var(--card) 96%, var(--flow-node-color) 4%);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.14);
+}
+
+.flow-react-node.is-dimmed {
+  opacity: 0.42;
+  filter: grayscale(0.2);
+}
+
+.flow-react-node-topline {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+
+.flow-react-node-topline .flow-react-node-icon {
+  width: 1.95rem;
+  height: 1.95rem;
+  flex: 0 0 auto;
+  border-radius: 0.65rem;
+}
+
+.flow-react-node-topline .flow-react-node-icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.flow-react-node-type {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  color: color-mix(in srgb, var(--flow-node-color) 82%, var(--foreground));
+  font-size: 0.66rem;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.flow-react-node-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 0.55rem;
+  border-top: 1px dashed color-mix(in srgb, var(--foreground) 14%, transparent);
+}
+
+.flow-react-node-footer span,
+.flow-react-node-footer em {
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--flow-node-color) 10%, var(--muted));
+  color: color-mix(in srgb, var(--flow-node-color) 80%, var(--foreground));
+  padding: 0.15rem 0.45rem;
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.flow-react-node-footer em {
+  background: color-mix(in srgb, var(--muted) 84%, var(--card));
+  color: var(--muted-foreground);
+}
+
+.flow-react-node.is-compact {
+  min-height: 7.3rem;
+}
+
+.flow-react-node.is-compact .flow-react-node-topline {
+  justify-content: center;
+}
+
+.flow-react-node.is-compact .flow-react-node-type,
+.flow-react-node.is-compact .flow-react-node-badge,
+.flow-react-node.is-compact .flow-react-node-footer {
+  display: none;
 }
 
 @keyframes dashdraw {
@@ -4577,6 +5164,30 @@ tbody tr:hover {
     min-height: auto;
     overflow: visible;
   }
+
+  .flow-board-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-layout-presets {
+    width: 100%;
+  }
+
+  .flow-trail-panel-host {
+    display: none;
+  }
+
+  .flow-board-actionbar {
+    justify-self: start;
+  }
+
+  .flow-canvas-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-inspector-panel {
+    max-height: none;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -5220,6 +5831,41 @@ tbody tr:hover {
 
   .route-actions {
     display: grid;
+  }
+
+  .flow-chart-head,
+  .flow-example-toolbar,
+  .flow-board-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-canvas-toolbar {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(2.35rem, 1fr));
+    align-items: stretch;
+  }
+
+  .flow-layout-presets {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .flow-canvas-toolbar label {
+    grid-column: span 5;
+    min-width: 0;
+  }
+
+  .flow-canvas-toolbar button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .flow-canvas-toolbar button span {
+    display: none;
+  }
+
+  .flow-canvas-toolbar .flow-layout-presets button span {
+    display: inline;
   }
 
   .message-bubble {

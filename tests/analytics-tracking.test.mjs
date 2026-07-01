@@ -22,6 +22,7 @@ test("public content surfaces have explicit posthog page and interaction events"
     blogIndex,
     blogCategory,
     notesIndex,
+    offlinePage,
     blogArticle,
     noteArticle,
     readingTracker,
@@ -34,13 +35,15 @@ test("public content surfaces have explicit posthog page and interaction events"
     categoryCard,
     explorerShell,
     blogExplorer,
-    notesExplorer
+    notesExplorer,
+    offlineBanner
   ] = await Promise.all([
     readFile("src/lib/analytics.ts", "utf8"),
     readFile("src/components/analytics/PageTracker.tsx", "utf8"),
     readFile("src/app/[locale]/blog/page.tsx", "utf8"),
     readFile("src/app/[locale]/blog/[category]/page.tsx", "utf8"),
     readFile("src/app/[locale]/notes/page.tsx", "utf8"),
+    readFile("src/app/[locale]/offline/page.tsx", "utf8"),
     readFile("src/app/[locale]/blog/[category]/[slug]/page.tsx", "utf8"),
     readFile("src/app/[locale]/notes/[slug]/page.tsx", "utf8"),
     readFile("src/components/blog/BlogReadingTracker.tsx", "utf8"),
@@ -53,7 +56,8 @@ test("public content surfaces have explicit posthog page and interaction events"
     readFile("src/components/blog/BlogCategoryCard.tsx", "utf8"),
     readFile("src/components/explorer/ExplorerShell.tsx", "utf8"),
     readFile("src/components/blog/BlogExplorer.tsx", "utf8"),
-    readFile("src/components/notes/NotesExplorer.tsx", "utf8")
+    readFile("src/components/notes/NotesExplorer.tsx", "utf8"),
+    readFile("src/components/offline/OfflineStatusBanner.tsx", "utf8")
   ]);
 
   for (const eventName of [
@@ -70,6 +74,10 @@ test("public content surfaces have explicit posthog page and interaction events"
     "notes_card_click",
     "notes_share",
     "notes_reaction",
+    "offline_view",
+    "offline_mode_ready",
+    "offline_status_change",
+    "offline_banner_dismiss",
     "explorer_search",
     "explorer_filter_select",
     "explorer_tag_select",
@@ -83,12 +91,15 @@ test("public content surfaces have explicit posthog page and interaction events"
   assert.match(pageTracker, /'blog'/);
   assert.match(pageTracker, /'blog_category'/);
   assert.match(pageTracker, /'notes'/);
+  assert.match(pageTracker, /'offline'/);
   assert.match(pageTracker, /'blog_view'/);
   assert.match(pageTracker, /'blog_category_view'/);
   assert.match(pageTracker, /'notes_view'/);
+  assert.match(pageTracker, /'offline_view'/);
   assert.match(blogIndex, /PageTracker page="blog" eventName="blog_view"/);
   assert.match(blogCategory, /PageTracker page="blog_category" eventName="blog_category_view"/);
   assert.match(notesIndex, /PageTracker page="notes" eventName="notes_view"/);
+  assert.match(offlinePage, /PageTracker page="offline" eventName="offline_view"/);
 
   assert.match(blogArticle, /surface="blog"/);
   assert.match(noteArticle, /surface="notes"/);
@@ -110,6 +121,10 @@ test("public content surfaces have explicit posthog page and interaction events"
   assert.match(explorerShell, /query_length/);
   assert.match(blogExplorer, /trackingSurface="blog"/);
   assert.match(notesExplorer, /trackingSurface="notes"/);
+  assert.match(offlineBanner, /navigator\.serviceWorker/);
+  assert.match(offlineBanner, /offline_mode_ready/);
+  assert.match(offlineBanner, /offline_status_change/);
+  assert.match(offlineBanner, /offline_banner_dismiss/);
 });
 
 test("studio analytics and agent rules cover new workspace interactions", async () => {
@@ -139,7 +154,14 @@ test("studio analytics and agent rules cover new workspace interactions", async 
     "studio_flow_group_select",
     "studio_flow_select",
     "studio_flow_example_select",
+    "studio_flow_canvas_mode_change",
+    "studio_flow_layout_apply",
+    "studio_flow_node_select",
+    "studio_flow_node_action",
+    "studio_flow_history_action",
+    "studio_flow_group_visibility_toggle",
     "studio_flow_board_fullscreen_toggle",
+    "studio_flow_focus_toggle",
     "studio_flow_share"
   ]) {
     assert.match(analytics, new RegExp(`'${eventName}'`));

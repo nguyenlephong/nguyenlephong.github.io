@@ -1,15 +1,4 @@
 import type { Metadata, Viewport } from 'next'
-import {
-  Inter,
-  JetBrains_Mono,
-  Source_Sans_3,
-  IBM_Plex_Sans,
-  IBM_Plex_Mono,
-  Atkinson_Hyperlegible,
-  Lora,
-  Be_Vietnam_Pro,
-  Fraunces,
-} from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
@@ -25,90 +14,15 @@ import MotionProvider from '@/components/motion/MotionProvider'
 import RouteProgressBar from '@/components/motion/RouteProgressBar'
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
 import BlogReaderTools from '@/components/blog/BlogReaderTools'
+import OfflineNavigationCapture from '@/components/offline/OfflineNavigationCapture'
+import OfflineStatusBanner from '@/components/offline/OfflineStatusBanner'
 import { SITE_URL } from '@/app/seo.config'
 import { routing, type Locale } from '@/i18n/routing'
 import { Person, WithContext } from 'schema-dts'
 import React from 'react'
 import '../globals.css'
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
-})
-
-const jbMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  display: 'swap',
-})
-
-const sourceSans = Source_Sans_3({
-  subsets: ['latin'],
-  variable: '--font-reading-source',
-  display: 'swap',
-  preload: false,
-})
-
-const plexSans = IBM_Plex_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-reading-plex',
-  display: 'swap',
-  preload: false,
-})
-
-const atkinson = Atkinson_Hyperlegible({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-reading-atkinson',
-  display: 'swap',
-  preload: false,
-})
-
-const lora = Lora({
-  subsets: ['latin'],
-  variable: '--font-reading-lora',
-  display: 'swap',
-  preload: false,
-})
-
-const beVietnamPro = Be_Vietnam_Pro({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-reading-be-vietnam',
-  display: 'swap',
-  preload: false,
-})
-
-const fraunces = Fraunces({
-  subsets: ['latin', 'vietnamese'],
-  variable: '--font-reading-fraunces',
-  display: 'swap',
-  preload: false,
-})
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-reading-ibm-plex-mono',
-  display: 'swap',
-  preload: false,
-})
-
-const FONT_VARIABLES = [
-  jbMono.variable,
-  sourceSans.variable,
-  plexSans.variable,
-  atkinson.variable,
-  lora.variable,
-  beVietnamPro.variable,
-  fraunces.variable,
-  ibmPlexMono.variable,
-].join(' ')
-
-const PROFILE_AVATAR =
-  'https://cdn.jsdelivr.net/gh/nguyenlephong/dom-pub/shared/images/cv/images/dom.png'
+const PROFILE_AVATAR = `${SITE_URL}/icon.png`
 
 const LOCALE_OG_MAP: Record<Locale, string> = {
   en: 'en_US',
@@ -203,6 +117,7 @@ export async function generateMetadata({
       description,
       creator: '@nguyenlephong17',
     },
+    manifest: '/manifest.webmanifest',
     icons: {
       icon: [
         { url: '/favicon.ico', sizes: 'any' },
@@ -315,7 +230,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   }
 
   return (
-    <html lang={locale} className={`${inter.variable} ${FONT_VARIABLES}`} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <ThemeScript />
         <FontScript />
@@ -387,6 +302,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
           <ThemeSync />
           <MotionProvider>
             <RouteProgressBar />
+            <OfflineNavigationCapture />
+            <OfflineStatusBanner />
             <WebVitalsReporter />
             <AppHeader />
             {children}
