@@ -9,7 +9,9 @@ test("offline mode wires the export build, fallback route, and cache warmup flow
     offlineScript,
     offlineVerifyScript,
     manifestRoute,
+    localePage,
     layout,
+    swRoute,
     offlinePage,
     offlineNavigationCapture,
     offlineBanner,
@@ -22,7 +24,9 @@ test("offline mode wires the export build, fallback route, and cache warmup flow
     readFile("scripts/postbuild-offline.mjs", "utf8"),
     readFile("scripts/verify-offline.mjs", "utf8"),
     readFile("src/app/manifest.ts", "utf8"),
+    readFile("src/app/[locale]/page.tsx", "utf8"),
     readFile("src/app/[locale]/layout.tsx", "utf8"),
+    readFile("src/app/sw.js/route.ts", "utf8"),
     readFile("src/app/[locale]/offline/page.tsx", "utf8"),
     readFile("src/components/offline/OfflineNavigationCapture.tsx", "utf8"),
     readFile("src/components/offline/OfflineStatusBanner.tsx", "utf8"),
@@ -47,11 +51,13 @@ test("offline mode wires the export build, fallback route, and cache warmup flow
   assert.match(offlineScript, /OFFLINE_WARM_PATH/);
   assert.match(offlineScript, /OFFLINE_CACHE_READY/);
   assert.match(offlineScript, /offlineFallbackCandidates/);
-  assert.match(offlineScript, /cache\.match\(url\)/);
+  assert.match(offlineScript, /pageVersions/);
+  assert.match(offlineScript, /cache\.match\(cacheKey\)/);
   assert.match(offlineScript, /manifest\.shared\.readingData/);
   assert.match(offlineScript, /manifest\.shared\.readingAssets/);
   assert.match(offlineScript, /completenessFromStats/);
   assert.match(offlineScript, /const CONTENT_CACHE = 'offline-content'/);
+  assert.match(offlineScript, /PAGE_VERSION_PARAM/);
   assert.match(offlineScript, /pruneCache/);
   assert.match(offlineScript, /buildContentAllowList/);
   assert.match(offlineScript, /knownNavigationCandidates/);
@@ -61,20 +67,30 @@ test("offline mode wires the export build, fallback route, and cache warmup flow
   assert.match(offlineVerifyScript, /offline-page-shell/);
   assert.match(offlineVerifyScript, /offline-locale-state:v2:/);
   assert.match(offlineVerifyScript, /\/\$\{LOCALE\}\/notes/);
+  assert.match(offlineVerifyScript, /pageVersions/);
+  assert.match(offlineVerifyScript, /offline-manifest-version/);
 
   assert.match(manifestRoute, /export const dynamic = 'force-static'/);
   assert.match(manifestRoute, /start_url: '\/en'/);
   assert.match(manifestRoute, /display: 'standalone'/);
 
+  assert.match(localePage, /export function generateStaticParams\(\)/);
+  assert.match(localePage, /PageTracker page="home" eventName="page_view"/);
+
   assert.match(layout, /manifest: '\/manifest\.webmanifest'/);
   assert.match(layout, /<OfflineNavigationCapture \/>/);
   assert.match(layout, /<OfflineStatusBanner \/>/);
+
+  assert.match(swRoute, /export const dynamic = 'force-static'/);
+  assert.match(swRoute, /Development fallback only/);
 
   assert.match(offlinePage, /PageTracker page="offline" eventName="offline_view"/);
   assert.match(offlinePage, /APP_ROUTE\.BLOG/);
   assert.match(offlinePage, /APP_ROUTE\.NOTES/);
 
-  assert.match(offlineBanner, /navigator\.serviceWorker\.register\('\/sw\.js'\)/);
+  assert.match(offlineBanner, /offline-manifest-version/);
+  assert.match(offlineBanner, /serviceWorkerUrl\(\)/);
+  assert.match(offlineBanner, /navigator\.serviceWorker\.register\(serviceWorkerUrl\(\)\)/);
   assert.match(offlineBanner, /OFFLINE_WARM_LOCALE/);
   assert.match(offlineBanner, /OFFLINE_WARM_PATH/);
   assert.match(offlineBanner, /offline-locale-state:v2:/);

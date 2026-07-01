@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { createHash } from 'node:crypto'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 
@@ -9,6 +10,8 @@ const GALLERY_FILE = path.resolve(ROOT, 'src/content/gallery.ts')
 const APP_CONF_FILE = path.resolve(ROOT, 'src/app/app.conf.ts')
 const LOCALES = ['en', 'vi', 'zh', 'ja', 'ko', 'fr']
 const DEFAULT_LOCALE = 'en'
+const PAGE_VERSION_PARAM = '__offlineVersion'
+const OFFLINE_MANIFEST_VERSION_META = 'offline-manifest-version'
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true })
@@ -32,6 +35,14 @@ function routeUrlFromOutFile(relativePath) {
   const rel = toPosix(relativePath)
   if (rel === 'index.html') return '/index.html'
   return `/${rel}`
+}
+
+function hashContent(value) {
+  return createHash('sha256').update(value).digest('hex').slice(0, 16)
+}
+
+function hashRecord(value) {
+  return hashContent(JSON.stringify(value))
 }
 
 function uniqueSorted(values) {
@@ -105,6 +116,65 @@ async function readRemoteGalleryAssets() {
   return uniqueSorted(remoteAssets)
 }
 
+async function buildPageVersions(relativeFiles) {
+  const pageVersions = {}
+  const htmlFiles = relativeFiles
+    .filter((relativePath) => relativePath.endsWith('.html'))
+    .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
+
+  for (const relativePath of htmlFiles) {
+    const fullPath = path.join(OUT_DIR, relativePath)
+    const content = await fs.readFile(fullPath)
+    pageVersions[routeUrlFromOutFile(relativePath)] = hashContent(content)
+  }
+
+  return pageVersions
+}
+
+function buildManifestVersion({ appVersion, shell, readingData, readingAssets, extendedAssets, remoteAssets, pageVersions }) {
+  return hashRecord({
+    appVersion,
+    shell,
+    readingData,
+    readingAssets,
+    extendedAssets,
+    remoteAssets,
+    pageVersions,
+  })
+}
+
+function injectOfflineManifestVersion(html, version) {
+  const metaTag = `<meta name="${OFFLINE_MANIFEST_VERSION_META}" content="${version}">`
+  const metaPattern = new RegExp(
+    `<meta\\s+name=["']${OFFLINE_MANIFEST_VERSION_META}["'][^>]*>`,
+    'i',
+  )
+
+  if (metaPattern.test(html)) {
+    return html.replace(metaPattern, metaTag)
+  }
+
+  if (html.includes('</head>')) {
+    return html.replace('</head>', `  ${metaTag}\n</head>`)
+  }
+
+  return html
+}
+
+async function writeOfflineManifestVersion(relativeFiles, version) {
+  const htmlFiles = relativeFiles.filter((relativePath) => relativePath.endsWith('.html'))
+  await Promise.all(
+    htmlFiles.map(async (relativePath) => {
+      const fullPath = path.join(OUT_DIR, relativePath)
+      const html = await fs.readFile(fullPath, 'utf8')
+      const nextHtml = injectOfflineManifestVersion(html, version)
+      if (nextHtml !== html) {
+        await fs.writeFile(fullPath, nextHtml, 'utf8')
+      }
+    }),
+  )
+}
+
 function buildServiceWorkerSource(version) {
   return `/* eslint-disable no-restricted-globals */
 const OFFLINE_VERSION = ${JSON.stringify(version)};
@@ -112,6 +182,7 @@ const SHELL_CACHE = \`offline-shell-\${OFFLINE_VERSION}\`;
 const SHELL_CACHE_PREFIX = 'offline-shell-';
 const CONTENT_CACHE = 'offline-content';
 const REMOTE_CACHE = 'offline-remote';
+const PAGE_VERSION_PARAM = ${JSON.stringify(PAGE_VERSION_PARAM)};
 let manifestPromise = null;
 const localeWarmups = new Map();
 
@@ -119,7 +190,7 @@ self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
     const manifest = await loadManifest();
     const shellCache = await caches.open(SHELL_CACHE);
-    await cacheFiles(shellCache, manifest.shared.shell);
+    await cacheFiles(shellCache, manifest.shared.shell, false, manifest.shared.pageVersions);
     self.skipWaiting();
   })());
 });
@@ -210,10 +281,8 @@ async function warmLocale(locale, pathname) {
 
     const readingStats = mergeStats(
       await cacheFiles(contentCache, manifest.shared.readingData),
-      await cacheFiles(contentCache, localeFiles),
-      pathname
-        ? await cacheFiles(contentCache, knownNavigationCandidates(manifest, pathname))
-        : emptyStats(),
+      await cacheFiles(contentCache, localeFiles, false, manifest.shared.pageVersions),
+      pathname ? await cacheNavigationCandidates(contentCache, manifest, pathname) : emptyStats(),
     );
     await broadcast({
       type: 'OFFLINE_CACHE_READY',
@@ -260,7 +329,72 @@ async function warmLocale(locale, pathname) {
 async function warmPath(pathname) {
   const manifest = await loadManifest();
   const contentCache = await caches.open(CONTENT_CACHE);
-  await cacheFiles(contentCache, knownNavigationCandidates(manifest, pathname));
+  await cacheNavigationCandidates(contentCache, manifest, pathname);
+}
+
+function pageVersionForUrl(manifest, url) {
+  return manifest.shared?.pageVersions?.[url] ?? null;
+}
+
+function navigationCacheKey(candidateUrl, version) {
+  if (!version) return candidateUrl;
+  const separator = candidateUrl.includes('?') ? '&' : '?';
+  return \`\${candidateUrl}\${separator}\${PAGE_VERSION_PARAM}=\${encodeURIComponent(version)}\`;
+}
+
+async function cacheNavigationCandidates(cache, manifest, pathname) {
+  const stats = emptyStats();
+  for (const candidate of knownNavigationCandidates(manifest, pathname)) {
+    stats.requested += 1;
+    const version = pageVersionForUrl(manifest, candidate);
+    const cacheKey = navigationCacheKey(candidate, version);
+    try {
+      const cached = await cache.match(cacheKey);
+      if (cached) {
+        stats.fulfilled += 1;
+        continue;
+      }
+      const response = await fetch(cacheKey, { cache: 'reload' });
+      if (!response?.ok) {
+        stats.failed += 1;
+        continue;
+      }
+      await cache.put(cacheKey, response.clone());
+      stats.fulfilled += 1;
+    } catch {
+      stats.failed += 1;
+    }
+  }
+  return stats;
+}
+
+async function cacheNavigationResponse(cache, manifest, pathname, response) {
+  const stats = emptyStats();
+  for (const candidate of knownNavigationCandidates(manifest, pathname)) {
+    stats.requested += 1;
+    const version = pageVersionForUrl(manifest, candidate);
+    const cacheKey = navigationCacheKey(candidate, version);
+    try {
+      await cache.put(cacheKey, response.clone());
+      stats.fulfilled += 1;
+    } catch {
+      stats.failed += 1;
+    }
+  }
+  return stats;
+}
+
+async function matchNavigationCache(manifest, pathname) {
+  return matchVersionedCandidates(manifest, knownNavigationCandidates(manifest, pathname));
+}
+
+async function matchVersionedCandidates(manifest, candidates) {
+  for (const candidate of candidates) {
+    const version = pageVersionForUrl(manifest, candidate);
+    const cached = await caches.match(navigationCacheKey(candidate, version));
+    if (cached) return cached;
+  }
+  return null;
 }
 
 function navigationCandidates(pathname) {
@@ -301,29 +435,39 @@ function offlineFallbackCandidates(pathname) {
 }
 
 async function handleNavigation(request, url) {
+  const manifest = await loadManifest();
   try {
-    const fresh = await fetch(request);
+    const version = pageVersionForUrl(manifest, url.pathname);
+    const requestUrl = navigationCacheKey(url.pathname + url.search, version);
+    const fresh = await fetch(requestUrl, { cache: 'reload' });
     const contentCache = await caches.open(CONTENT_CACHE);
-    if (fresh?.ok) await contentCache.put(request, fresh.clone());
-    return fresh;
+    if (fresh?.ok) {
+      await cacheNavigationResponse(contentCache, manifest, url.pathname, fresh);
+      return fresh;
+    }
+
+    const cached = await matchNavigationCache(manifest, url.pathname);
+    if (cached) return cached;
+
+    const fallback = await matchVersionedCandidates(manifest, offlineFallbackCandidates(url.pathname));
+    if (fallback) return fallback;
+
+    const rootFallback = await matchVersionedCandidates(manifest, navigationCandidates('/${DEFAULT_LOCALE}/offline'));
+    if (rootFallback) return rootFallback;
+
+    return fresh ?? new Response('Offline', {
+      status: 503,
+      headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+    });
   } catch {
-    const direct = await caches.match(request);
-    if (direct) return direct;
+    const cached = await matchNavigationCache(manifest, url.pathname);
+    if (cached) return cached;
 
-    for (const candidate of navigationCandidates(url.pathname)) {
-      const cached = await caches.match(candidate);
-      if (cached) return cached;
-    }
+    const fallback = await matchVersionedCandidates(manifest, offlineFallbackCandidates(url.pathname));
+    if (fallback) return fallback;
 
-    for (const candidate of offlineFallbackCandidates(url.pathname)) {
-      const fallback = await caches.match(candidate);
-      if (fallback) return fallback;
-    }
-
-    for (const candidate of navigationCandidates('/${DEFAULT_LOCALE}/offline')) {
-      const rootFallback = await caches.match(candidate);
-      if (rootFallback) return rootFallback;
-    }
+    const rootFallback = await matchVersionedCandidates(manifest, navigationCandidates('/${DEFAULT_LOCALE}/offline'));
+    if (rootFallback) return rootFallback;
 
     return new Response('Offline', {
       status: 503,
@@ -427,7 +571,14 @@ function buildContentAllowList(manifest) {
   return allowed;
 }
 
-async function cacheFiles(cache, urls, allowOpaque = false) {
+function cacheKeyForUrl(url, pageVersions) {
+  const version = pageVersions?.[url] ?? null;
+  if (!version) return url;
+  const separator = url.includes('?') ? '&' : '?';
+  return url + separator + PAGE_VERSION_PARAM + '=' + encodeURIComponent(version);
+}
+
+async function cacheFiles(cache, urls, allowOpaque = false, pageVersions = null) {
   const unique = [...new Set(urls)].filter(Boolean);
   const stats = emptyStats();
   const batchSize = 12;
@@ -435,13 +586,17 @@ async function cacheFiles(cache, urls, allowOpaque = false) {
     const batch = unique.slice(index, index + batchSize);
     await Promise.all(batch.map(async (url) => {
       stats.requested += 1;
+      const cacheKey = cacheKeyForUrl(url, pageVersions);
       try {
-        const cached = await cache.match(url);
+        const cached = await cache.match(cacheKey);
         if (cached) {
           stats.fulfilled += 1;
           return;
         }
-        const response = await fetch(url, { mode: allowOpaque ? 'no-cors' : 'cors' });
+        const response = await fetch(cacheKey, {
+          mode: allowOpaque ? 'no-cors' : 'cors',
+          cache: 'reload',
+        });
         if (!response) {
           stats.failed += 1;
           return;
@@ -450,7 +605,7 @@ async function cacheFiles(cache, urls, allowOpaque = false) {
           stats.failed += 1;
           return;
         }
-        await cache.put(url, response.clone());
+        await cache.put(cacheKey, response.clone());
         stats.fulfilled += 1;
       } catch {
         // Ignore individual cache misses so one failed asset never blocks the pack.
@@ -491,13 +646,13 @@ async function main() {
     return
   }
 
-  const [files, appVersion, remoteAssets] = await Promise.all([
-    walk(OUT_DIR),
+  const files = await walk(OUT_DIR)
+  const relativeFiles = files.map((file) => path.relative(OUT_DIR, file))
+  const [appVersion, remoteAssets, pageVersions] = await Promise.all([
     readAppVersion(),
     readRemoteGalleryAssets(),
+    buildPageVersions(relativeFiles),
   ])
-
-  const relativeFiles = files.map((file) => path.relative(OUT_DIR, file))
   const shell = uniqueSorted(
     ['/offline-manifest.json', ...relativeFiles.filter(isCoreSharedFile).map(routeUrlFromOutFile)],
   )
@@ -520,8 +675,18 @@ async function main() {
     )
   }
 
+  const manifestVersion = buildManifestVersion({
+    appVersion,
+    shell,
+    readingData,
+    readingAssets,
+    extendedAssets,
+    remoteAssets,
+    pageVersions,
+  })
+
   const manifest = {
-    version: `${appVersion}-${Date.now()}`,
+    version: manifestVersion,
     defaultLocale: DEFAULT_LOCALE,
     locales,
     shared: {
@@ -530,6 +695,7 @@ async function main() {
       readingAssets,
       extendedAssets,
       remoteAssets,
+      pageVersions,
     },
   }
 
@@ -538,6 +704,7 @@ async function main() {
     `${JSON.stringify(manifest, null, 2)}\n`,
     'utf8',
   )
+  await writeOfflineManifestVersion(relativeFiles, manifest.version)
   await fs.writeFile(
     path.join(OUT_DIR, 'sw.js'),
     buildServiceWorkerSource(manifest.version),

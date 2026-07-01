@@ -20,6 +20,20 @@ type OfflineStatusBannerInnerProps = {
 const STORAGE_PREFIX = 'offline-locale-state:v2:'
 const LEGACY_STORAGE_PREFIX = 'offline-locale-phase:v1:'
 const DISMISS_STORAGE_PREFIX = 'offline-banner-dismissed:v1:'
+const SERVICE_WORKER_VERSION_META = 'offline-manifest-version'
+const FALLBACK_APP_VERSION = process.env['NEXT_PUBLIC_APP_VERSION'] ?? 'dev'
+
+function serviceWorkerUrl(): string {
+  const version =
+    typeof document === 'undefined'
+      ? FALLBACK_APP_VERSION
+      : document
+          .querySelector(`meta[name="${SERVICE_WORKER_VERSION_META}"]`)
+          ?.getAttribute('content')
+          ?.trim() || FALLBACK_APP_VERSION
+
+  return `/sw.js?v=${encodeURIComponent(version)}`
+}
 
 function readStoredState(locale: string): OfflineState {
   if (typeof window === 'undefined') {
@@ -217,7 +231,7 @@ function OfflineStatusBannerInner({
 
     const registerAndWarm = async () => {
       try {
-        await navigator.serviceWorker.register('/sw.js')
+        await navigator.serviceWorker.register(serviceWorkerUrl())
         if (cancelled) return
 
         setOfflineState((current) => {

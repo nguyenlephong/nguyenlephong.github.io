@@ -106,6 +106,7 @@ async function assertArtifacts() {
     fs.readFile(path.join(OUT_DIR, 'sw.js'), 'utf8'),
     fs.readFile(path.join(OUT_DIR, 'manifest.webmanifest'), 'utf8'),
   ])
+  const homeHtml = await fs.readFile(path.join(OUT_DIR, `${LOCALE}.html`), 'utf8')
 
   const manifest = JSON.parse(manifestRaw)
   const webManifest = JSON.parse(manifestRouteRaw)
@@ -120,10 +121,14 @@ async function assertArtifacts() {
     manifest.shared?.shell?.includes('/offline-manifest.json'),
     'shell cache should include offline-manifest.json',
   )
+  assert.equal(typeof manifest.shared?.pageVersions?.[`/${LOCALE}.html`], 'string')
   assert.match(swSource, /offline-shell-/)
   assert.match(swSource, /OFFLINE_CACHE_READY/)
   assert.match(swSource, /offline-content/)
   assert.match(swSource, /offline-remote/)
+  assert.match(swSource, /pageVersions/)
+  assert.match(swSource, /__offlineVersion/)
+  assert.match(homeHtml, new RegExp(`<meta\\s+name="offline-manifest-version"\\s+content="${manifest.version}"`))
   assert.equal(webManifest.start_url, '/en')
 }
 
