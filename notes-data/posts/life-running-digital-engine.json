@@ -1,0 +1,18 @@
+{
+  "slug": "life-running-digital-engine",
+  "title": "Life Running on a Digital Engine",
+  "summary": "Treat the recurring decisions of daily life less like fresh judgment calls and more like rules decided once that simply run. The sub-systems of my own engine: a driver todo system of opportunities, an accountability system of non-negotiables, and a reflection cadence that keeps the whole thing correcting itself instead of drifting.",
+  "cardSummary": "Decide the recurring things once — then let them run like rules, not daily debates.",
+  "date": "2026-01-28",
+  "readingMinutes": 2,
+  "tags": [
+    "Thoughts",
+    "Productivity",
+    "Systems",
+    "Habits"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "topic": "thoughts",
+  "html": "<p>This is the umbrella for all the sub-systems I use to run the parts of life where a rule-engine is employable. The idea: treat the recurring decisions of daily life less like fresh judgment calls and more like rules that were decided once and can simply run.</p>\n<p>The implementation strongly prefers apps — to leverage <strong>notifications</strong> and the principle of keeping the right things on the first screen, easing the mental tax of decision-making and the low hum of &ldquo;am I doing the right thing?&rdquo; When the right cue surfaces at the right moment, you don&rsquo;t have to remember or deliberate. You just act.</p>\n<p>Above all the sub-systems sits the mindset that governs their execution — knowing which mode of mind you are in, and letting that mode do its job.</p>\n<h2 id=\"driver-todo\">The driver todo system</h2>\n<p>Here, you take the driver&rsquo;s seat. <em>(App: Things.)</em></p>\n<p>Every task and project in this system is an <em>opportunity</em> to pick up — something with a positive, desirable outcome to pursue. Every bit of progress pushes life forward. Nothing here is pre-allocated or time-scheduled; the <strong>mentality</strong> while executing is one of cheerful urgency: &ldquo;could I do this in minimal time?&rdquo;, &ldquo;could I do the best version of this in thirty minutes?&rdquo; The faster the outcome is reached, the better.</p>\n<p>Routine and scheduled tasks are deliberately excluded. This backlog holds opportunities, not obligations.</p>\n<h2 id=\"accountability-todo\">The accountability todo system</h2>\n<p>Non-negotiable, executed with no wasted mental cycles — that is the beauty of it. What was settled in advance no longer needs to be argued with in the moment. <em>(Apps: Calendar + Reminders + Streaks.)</em></p>\n<p>This system holds the <em>obligations</em> and <em>routines</em> I just mindlessly do. Most are time-scheduled or carry a very clear doable context. The &ldquo;when to do it&rdquo; rule:</p>\n<ul>\n<li>When it is due — evening for date-scheduled items, on appearance for datetime-scheduled ones.</li>\n<li>In context (location, equipment). I currently keep a single context: <em>groceries</em> — when I am at a grocery store.</li>\n</ul>\n<h2 id=\"reflection-cadence\">The reflection cadence</h2>\n<p>Reflection is the system&rsquo;s <strong>dynamic</strong> of self-stabilizing evolution. The sessions run routinely, on recurring schedules, so the whole engine keeps correcting itself instead of quietly drifting. There are three cycles — <strong>daily</strong>, <strong>weekly</strong>, and <strong>monthly</strong> — each scheduled with its own notes in the Reminders app.</p>\n<hr>\n<ul>\n<li><a href=\"/notes/programmable-self\">Programmable Self</a></li>\n</ul>"
+}

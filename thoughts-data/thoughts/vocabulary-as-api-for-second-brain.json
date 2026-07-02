@@ -1,0 +1,13 @@
+{
+  "slug": "vocabulary-as-api-for-second-brain",
+  "title": "Your rich and consistent vocabulary is the best API for your second brain",
+  "html": "<p>Your vault is a graph, but you navigate it through words. When I type <code>[[</code> in Obsidian, whatever comes to mind in that instant determines what gets linked &mdash; and whatever doesn&rsquo;t come to mind simply stays disconnected. If I once called something &ldquo;information overload&rdquo; and later called the same idea &ldquo;consumption trap&rdquo;, those two notes never meet; the thought is split across two names that never reach for each other. The API is broken. Consistent vocabulary, then, is consistent wiring. It is the human equivalent of a stable API contract: rename the endpoint and all the clients break.</p>\n<p>But a rich vocabulary does more than help retrieval &mdash; it shapes what you <em>can</em> think in the first place. If you have precise words for subtle distinctions, you can hold those distinctions in mind and reason about them; if you don&rsquo;t, they blur into a single undifferentiated lump. A programmer who only knows &ldquo;list&rdquo; cannot think in &ldquo;stack&rdquo; vs &ldquo;queue&rdquo; vs &ldquo;deque&rdquo;, and so cannot reach for the structure each problem actually wants. The same principle governs personal knowledge: the richer and more precise your naming, the more dimensions you have to think in &mdash; and the more of your own graph you can actually traverse. <em>(A distinction I first sharpened reading <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">a note from a friend</a>.)</em></p>\n<hr>\n<ul>\n<li><a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Articulation skill</a></li>\n<li><a href=\"/thoughts/programming-beacons\">Programming beacons</a></li>\n<li><a href=\"/thoughts/code-run-on-people\">Does code still run on people?</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "96524a51-8a13-4db4-950c-e365c69a017d",
+      "title": "§ Articulation skill",
+      "context": "<p>...- <a href=\"/thoughts/vocabulary-as-api-for-second-brain\">Your rich and consistent vocabulary is the best API for your second brain</a> - [Different purposes of...</p>"
+    }
+  ],
+  "maturity": "budding"
+}

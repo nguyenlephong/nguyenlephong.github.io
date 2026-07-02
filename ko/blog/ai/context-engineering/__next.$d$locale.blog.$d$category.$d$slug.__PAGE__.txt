@@ -1,0 +1,172 @@
+1:"$Sreact.fragment"
+9:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+a:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+e:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+15:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+16:"$Sreact.suspense"
+18:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[70346,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1a:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T9be,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/ko/blog/ai/context-engineering#article","headline":"컨텍스트 엔지니어링: AI를 잘 쓰는 사람과 그렇지 않은 사람의 차이","description":"대부분의 AI 결과가 실망스러운 것은 모델이 나쁜 게 아니라 컨텍스트가 빈약하기 때문입니다. 컨텍스트 엔지니어링에 대한 실용적인 가이드 — 모델 윈도우에 무엇이 있는지, 훌륭한 컨텍스트의 다섯 기둥, 흔한 안티패턴, 그리고 일관되게 더 나은 결과를 내는 재사용 가능한 템플릿.","inLanguage":"ko","url":"https://nguyenlephong.github.io/ko/blog/ai/context-engineering","image":"https://nguyenlephong.github.io/og/blog/context-engineering.png","mainEntityOfPage":"https://nguyenlephong.github.io/ko/blog/ai/context-engineering","datePublished":"2026-02-22","dateModified":"2026-02-22","keywords":"AI, 컨텍스트 엔지니어링, 프롬프트 엔지니어링, LLM, 개발자 생산성, AI 도구","articleSection":"AI & 미래","isRelatedTo":[{"@type":"BlogPosting","headline":"Prompt에서 Workflow로: 매주 몇 시간을 절약하는 AI Workflow 설계하기","url":"https://nguyenlephong.github.io/ko/blog/ai/ai-workflows-that-save-hours","image":"https://nguyenlephong.github.io/og/blog/ai-workflows-that-save-hours.png"},{"@type":"BlogPosting","headline":"Reducing Hallucinations in LLMs","url":"https://nguyenlephong.github.io/en/blog/ai/reducing-hallucinations-in-llms","image":"https://nguyenlephong.github.io/og/blog/reducing-hallucinations-in-llms.png"},{"@type":"BlogPosting","headline":"Fine-Tuning vs. Prompting vs. RAG","url":"https://nguyenlephong.github.io/en/blog/ai/fine-tuning-vs-prompting-vs-rag","image":"https://nguyenlephong.github.io/og/blog/fine-tuning-vs-prompting-vs-rag.png"},{"@type":"BlogPosting","headline":"Retrieval-Augmented Generation (RAG) Basics","url":"https://nguyenlephong.github.io/en/blog/ai/retrieval-augmented-generation-rag-basics","image":"https://nguyenlephong.github.io/og/blog/retrieval-augmented-generation-rag-basics.png"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/ko/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:Td1f,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/ko/blog/ai/context-engineering#faq","mainEntity":[{"@type":"Question","name":"What is context engineering and why does it matter for developers?","acceptedAnswer":{"@type":"Answer","text":"Context engineering is the skill of deliberately designing the information you provide to an AI — its role, background state, task, constraints, and output format — so it produces useful results without back-and-forth. It matters because the quality of AI output is almost entirely determined by the quality of input: vague, thin context produces generic, off-target answers, while rich, structured context produces specific, actionable ones. Most developers underestimate this and focus on rephrasing prompts instead."}},{"@type":"Question","name":"What is the difference between context engineering and prompt engineering?","acceptedAnswer":{"@type":"Answer","text":"Prompt engineering is about word choice — how to phrase a request so the model interprets it correctly. Context engineering is a level deeper: it's about what information you make available before the model generates anything. You can have a perfectly phrased prompt and still get a poor answer because the model lacks background, state, or constraints. Context engineering addresses the information architecture; prompt engineering addresses the wording within it."}},{"@type":"Question","name":"What are the five pillars of great context?","acceptedAnswer":{"@type":"Answer","text":"The five pillars are: (1) Role — who the model should be (persona, expertise, audience perspective); (2) State — what already exists, what's been tried, what constraints apply; (3) Task — exactly what you want done, not a vague category; (4) Constraints — what to avoid, scope limits, hard rules; (5) Format — the shape of the output (length, structure, level of detail). Addressing all five reduces back-and-forth dramatically and improves first-draft quality."}},{"@type":"Question","name":"How do I build a reusable context template?","acceptedAnswer":{"@type":"Answer","text":"Structure your template around the five pillars: Role (who the model is and for whom), Background State (tech stack, what exists, what's been tried), Task (one precise sentence), Constraints (explicit negatives: what not to do), and Output Format (length, structure, detail level). You don't need to fill in every field every time — for a simple lookup, role + task + format is enough. For complex debugging or code review, all five matter. The template is a scaffold, not a form."}},{"@type":"Question","name":"What does 'token budget' mean in context engineering?","acceptedAnswer":{"@type":"Answer","text":"Every interaction with an AI happens inside a context window with a fixed size measured in tokens. Everything you include — the system prompt, pasted code, conversation history, your question — competes for space in that window. Token budget management means being selective about what you include: paste specific functions rather than whole files, strip boilerplate from pasted code, summarize conversation history after long sessions, and put standing instructions in the system prompt rather than repeating them per-message. Irrelevant content isn't neutral — it's noise the model has to reason through."}}]}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--gold","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"블로그\",\"item\":\"https://nguyenlephong.github.io/ko/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"AI & 미래\",\"item\":\"https://nguyenlephong.github.io/ko/blog/ai\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"컨텍스트 엔지니어링: AI를 잘 쓰는 사람과 그렇지 않은 사람의 차이\",\"item\":\"https://nguyenlephong.github.io/ko/blog/ai/context-engineering\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],["$L5","$L6","$L7"],"$L8"]}],"loading":null,"isPartial":false}
+f:T3764,<p>이런 경험 아시죠. 명확해 보이는 질문을 AI에 입력하면 돌아오는 답변은... 살짝 빗나간다. 기술적으로는 관련이 있지만 핵심을 놓친다. 다시 표현해보고, 재시도하고, 또 빗나간 답변을 받는다. 다섯 번의 왕복 끝에 겨우 쓸 만한 것을 얻지만, 처음부터 직접 했으면 더 빨랐을 것이다.</p>
+<p>실제로 일어나는 일은 이렇습니다: <strong>모델은 앞에 놓인 것만으로 작업할 수 있습니다</strong>. 코드베이스가 어떻게 생겼는지, 제약 조건이 무엇인지, 이미 무엇을 시도했는지, 왜 묻는지를 전혀 모릅니다. AI 응답이 빗나갈 때, 근본 원인은 거의 항상 <em>정보 부족</em>입니다. 말 선택이나 프롬프트 기술이 아닙니다. 이것이 AI 커뮤니티가 <strong>컨텍스트 엔지니어링</strong>이라고 부르는 것의 핵심입니다.</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">정의</span><p>컨텍스트 엔지니어링은 AI에게 제공하는 정보——역할, 배경 상태, 작업, 제약, 출력 형식——를 의도적으로 설계하여 반복적인 대화 없이 일관되게 유용한 결과를 얻는 기술입니다.</p></div>
+
+<h2 id="what-is-ce">컨텍스트 엔지니어링이란 실제로 무엇인가</h2>
+<p>2025년 Andrej Karpathy가 대중화한 이 용어는 "프롬프트 엔지니어링"과의 차이가 중요합니다. 프롬프트 엔지니어링은 <em>단어 선택</em>에 관한 것입니다. 컨텍스트 엔지니어링은 한 단계 더 깊이 들어가서, 모델이 생성하기 전에 <em>어떤 정보를 제공하는지</em>에 관한 것입니다.</p>
+<p><em>미장 플라스</em>(요리 전 식재료 준비)로 생각해보세요. 훌륭한 셰프는 요리를 시작하기 전에 모든 재료를 준비합니다. 컨텍스트 엔지니어링은 AI 협력자를 위해 그 준비 작업을 하는 것입니다.</p>
+
+<h2 id="anatomy">컨텍스트 윈도우 해부</h2>
+<p>AI와의 모든 상호작용은 컨텍스트 윈도우라는 작업 메모리 안에서 일어납니다. 네 가지 레이어가 있습니다.</p>
+
+<figure class="blog-figure">
+<svg class="dgm-svg" viewBox="0 0 700 430" role="img" aria-labelledby="ctx-anat">
+  <title id="ctx-anat">Four layers inside an AI context window: System Prompt, Injected Context, Conversation History, and User Message feed into the LLM to produce a response.</title>
+  <defs>
+    <marker id="arr-ctx" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+  <text class="dgm-t-muted dgm-t-mono" x="24" y="16" font-size="10">CONTEXT WINDOW — everything the model sees before writing a single word</text>
+  <rect class="dgm-surface" x="10" y="22" width="680" height="304" rx="14" stroke-width="1.5"/>
+  <rect class="dgm-core" x="22" y="34" width="656" height="64" rx="8" stroke-width="1.5"/>
+  <rect class="dgm-fill-accent" x="28" y="43" width="44" height="18" rx="4"/>
+  <text fill="white" x="50" y="57" text-anchor="middle" font-size="10" font-weight="700">ROLE</text>
+  <text x="84" y="56" font-size="13">System Prompt</text>
+  <text class="dgm-t-muted" x="84" y="74" font-size="11">Persona, role, standing instructions — the model's "constitution" for this session</text>
+  <rect class="dgm-adapter" x="22" y="106" width="656" height="64" rx="8" stroke-width="1.5"/>
+  <rect class="dgm-fill-accent" x="28" y="115" width="44" height="18" rx="4" opacity="0.7"/>
+  <text fill="white" x="50" y="129" text-anchor="middle" font-size="10" font-weight="700">DOCS</text>
+  <text x="84" y="128" font-size="13">Injected Context</text>
+  <text class="dgm-t-muted" x="84" y="146" font-size="11">Files, search results, tool outputs, docs — raw material the model reasons over</text>
+  <rect class="dgm-driven" x="22" y="178" width="656" height="64" rx="8" stroke-width="1.5"/>
+  <rect class="dgm-fill-accent" x="28" y="187" width="44" height="18" rx="4" opacity="0.5"/>
+  <text fill="white" x="50" y="201" text-anchor="middle" font-size="10" font-weight="700">MEM</text>
+  <text x="84" y="200" font-size="13">Conversation History</text>
+  <text class="dgm-t-muted" x="84" y="218" font-size="11">Prior messages, decisions — working memory of everything that has happened so far</text>
+  <rect class="dgm-core" x="22" y="250" width="656" height="64" rx="8" stroke-width="1.5"/>
+  <rect class="dgm-fill-accent" x="28" y="259" width="44" height="18" rx="4"/>
+  <text fill="white" x="50" y="273" text-anchor="middle" font-size="10" font-weight="700">TASK</text>
+  <text class="dgm-t-strong" x="84" y="272" font-size="13">User Message</text>
+  <text class="dgm-t-muted" x="84" y="290" font-size="11">The actual question or task — often under 5% of total tokens, but triggers everything</text>
+  <path class="dgm-flow" d="M 350,330 L 350,360" marker-end="url(#arr-ctx)" stroke-width="2"/>
+  <rect class="dgm-core" x="268" y="364" width="164" height="52" rx="12" stroke-width="2"/>
+  <text class="dgm-t-strong" x="350" y="389" text-anchor="middle" font-size="14">LLM</text>
+  <text class="dgm-t-muted dgm-t-mono" x="350" y="407" text-anchor="middle" font-size="10">attention + generation</text>
+  <path class="dgm-flow" d="M 436,390 L 484,390" marker-end="url(#arr-ctx)" stroke-width="2"/>
+  <rect class="dgm-driven" x="488" y="366" width="196" height="48" rx="10" stroke-width="1.5"/>
+  <text x="586" y="387" text-anchor="middle" font-size="12">Response</text>
+  <text class="dgm-t-muted" x="586" y="404" text-anchor="middle" font-size="11">quality = f(context quality)</text>
+  <text class="dgm-t-accent" x="350" y="426" text-anchor="middle" font-size="11">All four layers share the same token budget. Context engineering is choosing wisely.</text>
+</svg>
+  <figcaption>컨텍스트 윈도우의 네 레이어. 대부분의 사람들은 4번 레이어(사용자 메시지)에만 집중하지만, 가장 강력하고 간과되는 것은 1, 2번 레이어입니다.</figcaption>
+</figure>
+
+<p><strong>시스템 프롬프트</strong>는 가장 강력하지만 가장 간과되는 레이어입니다. 모델의 페르소나, 전문 지식 수준, 모든 응답을 지배하는 규칙을 설정합니다.</p>
+<p><strong>주입 컨텍스트</strong>는 원자재를 제공하는 곳입니다: 코드 파일, 문서, 오류 로그. 모델이 추론하는 재료입니다.</p>
+<p><strong>대화 기록</strong>은 세션이 진행되면서 축적됩니다. 유용하지만 토큰 비용이 높습니다.</p>
+<p><strong>사용자 메시지</strong>는 실제 질문이나 작업입니다. 잘 설계된 설정에서는 전체 토큰의 5% 미만인 경우가 많습니다.</p>
+
+<h2 id="five-pillars">훌륭한 컨텍스트의 다섯 기둥</h2>
+
+<figure class="blog-figure">
+<svg class="dgm-svg" viewBox="0 0 700 195" role="img" aria-labelledby="five-pil">
+  <title id="five-pil">The five pillars of great context: Role, State, Task, Constraints, Format.</title>
+  <rect class="dgm-core" x="8" y="10" width="124" height="170" rx="10" stroke-width="1.5"/>
+  <text class="dgm-t-accent" x="70" y="55" text-anchor="middle" font-size="36" font-weight="700">1</text>
+  <text class="dgm-t-strong" x="70" y="80" text-anchor="middle" font-size="13">Role</text>
+  <text class="dgm-t-muted" x="70" y="100" text-anchor="middle" font-size="10">Who should</text>
+  <text class="dgm-t-muted" x="70" y="114" text-anchor="middle" font-size="10">the model</text>
+  <text class="dgm-t-muted" x="70" y="128" text-anchor="middle" font-size="10">behave as?</text>
+  <rect class="dgm-adapter" x="140" y="10" width="124" height="170" rx="10" stroke-width="1.5"/>
+  <text class="dgm-t-accent" x="202" y="55" text-anchor="middle" font-size="36" font-weight="700">2</text>
+  <text x="202" y="80" text-anchor="middle" font-size="13">State</text>
+  <text class="dgm-t-muted" x="202" y="100" text-anchor="middle" font-size="10">What's known,</text>
+  <text class="dgm-t-muted" x="202" y="114" text-anchor="middle" font-size="10">decided, or</text>
+  <text class="dgm-t-muted" x="202" y="128" text-anchor="middle" font-size="10">already tried?</text>
+  <rect class="dgm-core" x="272" y="10" width="156" height="170" rx="10" stroke-width="2"/>
+  <text class="dgm-t-accent" x="350" y="55" text-anchor="middle" font-size="36" font-weight="700">3</text>
+  <text class="dgm-t-strong" x="350" y="80" text-anchor="middle" font-size="13">Task</text>
+  <text class="dgm-t-muted" x="350" y="100" text-anchor="middle" font-size="10">What exactly</text>
+  <text class="dgm-t-muted" x="350" y="114" text-anchor="middle" font-size="10">do you want</text>
+  <text class="dgm-t-muted" x="350" y="128" text-anchor="middle" font-size="10">done?</text>
+  <text class="dgm-t-accent dgm-t-mono" x="350" y="162" text-anchor="middle" font-size="9">MOST CRITICAL</text>
+  <rect class="dgm-driven" x="436" y="10" width="124" height="170" rx="10" stroke-width="1.5"/>
+  <text class="dgm-t-accent" x="498" y="55" text-anchor="middle" font-size="36" font-weight="700">4</text>
+  <text x="498" y="80" text-anchor="middle" font-size="13">Constraints</text>
+  <text class="dgm-t-muted" x="498" y="100" text-anchor="middle" font-size="10">What to avoid,</text>
+  <text class="dgm-t-muted" x="498" y="114" text-anchor="middle" font-size="10">scope limits,</text>
+  <text class="dgm-t-muted" x="498" y="128" text-anchor="middle" font-size="10">hard rules</text>
+  <rect class="dgm-adapter" x="568" y="10" width="124" height="170" rx="10" stroke-width="1.5"/>
+  <text class="dgm-t-accent" x="630" y="55" text-anchor="middle" font-size="36" font-weight="700">5</text>
+  <text x="630" y="80" text-anchor="middle" font-size="13">Format</text>
+  <text class="dgm-t-muted" x="630" y="100" text-anchor="middle" font-size="10">Output shape,</text>
+  <text class="dgm-t-muted" x="630" y="114" text-anchor="middle" font-size="10">length, level</text>
+  <text class="dgm-t-muted" x="630" y="128" text-anchor="middle" font-size="10">of detail</text>
+</svg>
+  <figcaption>다섯 기둥. 기둥 3(Task)이 가장 많은 주목을 받지만, 나머지 네 기둥이 그 작업을 잘 답변할 수 있게 만드는 것입니다.</figcaption>
+</figure>
+
+<h3 id="pillar-role">기둥 1: 역할(Role)</h3>
+<p>모델이 누구여야 하는지 정의하세요——전문성, 관점, 소통 스타일.</p>
+<div class="blog-table-wrap"><table><thead><tr><th width="50%">역할 없음</th><th>역할 있음</th></tr></thead><tbody><tr><td><code>인증을 설명해.</code></td><td><code>당신은 보안 전문 시니어 백엔드 엔지니어입니다. JavaScript는 알지만 auth 구현은 처음인 주니어 개발자를 위해 JWT의 보안 트레이드오프와 주의사항을 설명하세요.</code></td></tr></tbody></table></div>
+
+<h3 id="pillar-state">기둥 2: 상태(State)</h3>
+<p>현재 상황을 알려주세요——코드베이스 구조, 시도한 것, 효과 없는 것, 결정된 사항, 적용 중인 제약.</p>
+<div class="blog-table-wrap"><table><thead><tr><th width="50%">상태 없음</th><th>상태 있음</th></tr></thead><tbody><tr><td><code>이 버그 고쳐.</code><br><em>(코드만 붙여넣기)</em></td><td><code>[코드] 이 debounce 함수는 일반 입력에서는 작동하지만 빠른 스크롤에서는 대기 없이 즉시 실행됨. clearTimeout 시도해봤지만 여전히 실행됨. React 18, TypeScript. 콘솔 오류: [메시지].</code></td></tr></tbody></table></div>
+
+<h3 id="pillar-task">기둥 3: 작업(Task)</h3>
+<p>원하는 것을 정확하게 지정하세요, 카테고리가 아니라. "API 도와줘"는 카테고리입니다. "JWT 토큰을 검증하고, 없거나 유효하지 않으면 401을 반환하고, 디코딩된 사용자를 req.user에 첨부하는 Express 미들웨어를 작성해줘"가 작업입니다.</p>
+
+<h3 id="pillar-constraints">기둥 4: 제약(Constraints)</h3>
+<p>무엇을 해서는 안 되는지, 범위 제한, 절대 규칙을 알려주세요. 제약은 제한적으로 들리지만 실제로는 응답을 <em>해방</em>시킵니다.</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">제약 작성법</span><p>"하지 마세요", "피해주세요"처럼 명시적인 부정문으로 작성하세요. 모델은 도움이 되도록 학습되어 자연스럽게 범위를 넓히려 합니다. 명시적 부정이 가장 신뢰할 수 있는 가드레일입니다.</p></div>
+
+<h3 id="pillar-format">기둥 5: 형식(Format)</h3>
+<p>출력의 형태를 지정하세요: 길이, 구조, 세부 수준. 형식 지침 없이는 모델이 적절하다고 판단하는 것을 받게 됩니다.</p>
+
+<h2 id="templates">재사용 가능한 컨텍스트 템플릿 만들기</h2>
+<pre><code><span class="cmt">## 역할</span>
+당신은 [역할], [도메인] 전문가입니다.
+대상 독자는 [대상]입니다.
+
+<span class="cmt">## 배경 상태</span>
+기술 스택: [언어 / 프레임워크]
+현재 상태: [간단한 설명]
+시도한 것: [시도와 결과]
+관련 오류: [해당하는 경우]
+
+<span class="cmt">## 작업</span>
+[정확히 한 문장: 동사 + 대상 + 범위]
+
+<span class="cmt">## 제약</span>
+- [라이브러리/접근법] 사용하지 마세요
+- [측면]을 [한도] 이내로 유지하세요
+
+<span class="cmt">## 출력 형식</span>
+[길이] — [구조] — [세부 수준]</code></pre>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">핵심 정리</h3>
+<ul>
+<li><strong>컨텍스트 엔지니어링 &gt; 프롬프트 엔지니어링:</strong> 단어 선택보다 제공하는 정보가 더 중요합니다.</li>
+<li><strong>네 레이어, 하나의 예산:</strong> 각각 다른 목적을 가지며 같은 토큰을 두고 경쟁합니다.</li>
+<li><strong>다섯 기둥, 다섯 격차:</strong> Role, State, Task, Constraints, Format. 다섯 가지를 모두 다루면 반복 대화가 급격히 줄어듭니다.</li>
+<li><strong>품질이 양보다 중요:</strong> 관련성 있고 집중된 컨텍스트가 크고 집중되지 않은 덤프보다 항상 낫습니다.</li>
+</ul>
+</div>4:["$","$L9",null,{"category":"ai","slug":"context-engineering","children":[["$","$La",null,{"category":"ai","slug":"context-engineering","readingMinutes":15,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lb",null,{"url":"https://nguyenlephong.github.io/ko/blog/ai/context-engineering","title":"컨텍스트 엔지니어링: AI를 잘 쓰는 사람과 그렇지 않은 사람의 차이","surface":"blog","category":"ai","slug":"context-engineering","labels":{"share":"공유","copyLink":"링크 복사","copied":"복사됨!","close":"닫기"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lc",null,{"href":"/ko/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"블로그"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lc",null,{"href":"/ko/blog/ai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"AI & 미래"}]]}],["$","header",null,{"className":"blog-article__head","children":[null,["$","h1",null,{"className":"blog-article__title","children":"컨텍스트 엔지니어링: AI를 잘 쓰는 사람과 그렇지 않은 사람의 차이"}],["$","p",null,{"className":"blog-article__summary","children":"대부분의 AI 결과가 실망스러운 것은 모델이 나쁜 게 아니라 컨텍스트가 빈약하기 때문입니다. 컨텍스트 엔지니어링에 대한 실용적인 가이드 — 모델 윈도우에 무엇이 있는지, 훌륭한 컨텍스트의 다섯 기둥, 흔한 안티패턴, 그리고 일관되게 더 나은 결과를 내는 재사용 가능한 템플릿."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"작성자: Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-02-22","children":"2026년 2월 22일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"15분 읽기"}],["$","$Ld",null,{"label":"조회"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","AI",{"children":"AI"}],["$","li","컨텍스트 엔지니어링",{"children":"컨텍스트 엔지니어링"}],["$","li","프롬프트 엔지니어링",{"children":"프롬프트 엔지니어링"}],["$","li","LLM",{"children":"LLM"}],["$","li","개발자 생산성",{"children":"개발자 생산성"}],["$","li","AI 도구",{"children":"AI 도구"}]]}]]}],["$","$Le",null,{"html":"$f"}],"$L10","$L11"]}]]}],"$L12",null,"$L13"]}],"$L14"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+7:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+8:["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]
+10:["$","$L18",null,{"prompt":"이 글 어떠셨나요?","surface":"blog","category":"ai","slug":"context-engineering","reactionLabels":{"like":"좋아요","love":"최고예요","insightful":"유익해요","clap":"축하해요"}}]
+11:["$","section",null,{"className":"blog-faq","aria-labelledby":"blog-faq-heading","children":[["$","h2",null,{"id":"blog-faq-heading","className":"blog-faq__heading","children":"자주 묻는 질문"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What is context engineering and why does it matter for developers?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Context engineering is the skill of deliberately designing the information you provide to an AI — its role, background state, task, constraints, and output format — so it produces useful results without back-and-forth. It matters because the quality of AI output is almost entirely determined by the quality of input: vague, thin context produces generic, off-target answers, while rich, structured context produces specific, actionable ones. Most developers underestimate this and focus on rephrasing prompts instead."}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What is the difference between context engineering and prompt engineering?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Prompt engineering is about <em>word choice</em> — how to phrase a request so the model interprets it correctly. Context engineering is a level deeper: it's about <em>what information you make available</em> before the model generates anything. You can have a perfectly phrased prompt and still get a poor answer because the model lacks background, state, or constraints. Context engineering addresses the information architecture; prompt engineering addresses the wording within it."}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What are the five pillars of great context?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"The five pillars are: (1) <strong>Role</strong> — who the model should be (persona, expertise, audience perspective); (2) <strong>State</strong> — what already exists, what's been tried, what constraints apply; (3) <strong>Task</strong> — exactly what you want done, not a vague category; (4) <strong>Constraints</strong> — what to avoid, scope limits, hard rules; (5) <strong>Format</strong> — the shape of the output (length, structure, level of detail). Addressing all five reduces back-and-forth dramatically and improves first-draft quality."}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How do I build a reusable context template?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Structure your template around the five pillars: Role (who the model is and for whom), Background State (tech stack, what exists, what's been tried), Task (one precise sentence), Constraints (explicit negatives: what not to do), and Output Format (length, structure, detail level). You don't need to fill in every field every time — for a simple lookup, role + task + format is enough. For complex debugging or code review, all five matter. The template is a scaffold, not a form."}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What does 'token budget' mean in context engineering?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Every interaction with an AI happens inside a context window with a fixed size measured in tokens. Everything you include — the system prompt, pasted code, conversation history, your question — competes for space in that window. Token budget management means being selective about what you include: paste specific functions rather than whole files, strip boilerplate from pasted code, summarize conversation history after long sessions, and put standing instructions in the system prompt rather than repeating them per-message. Irrelevant content isn't neutral — it's noise the model has to reason through."}}]]}]]}]]}]
+12:["$","$L19",null,{"heading":"함께 읽기 좋은 글","intro":"같은 흐름을 조금 더 이어서 볼 수 있는 가까운 주제의 글입니다.","items":[{"post":{"slug":"ai-workflows-that-save-hours","category":"ai","title":"Prompt에서 Workflow로: 매주 몇 시간을 절약하는 AI Workflow 설계하기","summary":"대부분의 사람들은 AI를 한 번에 하나씩 질문하며 — 그 가치의 대부분을 놓칩니다. 진짜 레버리지는 영리한 prompt가 아닙니다. 재사용 가능한 AI workflow, 즉 한 번 설계해 영원히 재사용하는 작은 단계들의 연결 고리입니다. 반복되는 두 시간짜리 잡무를 2분 검토로 바꿔주죠. 기술 지식이 없어도 이해할 수 있는 실용적인 안내서입니다: prompt와 workflow의 차이, 모든 workflow가 공유하는 간단한 구조, 직장과 일상에서 바로 훔쳐 쓸 수 있는 workflow, 수동에서 완전 자동까지의 세 단계, 나만의 workflow를 설계하는 6단계 방법, 그리고 실제로 절약하는 시간을 증명하는 간단한 공식.","date":"2026-03-11","readingMinutes":18,"tags":["AI","AI Workflow","자동화","생산성","일의 미래","AI 도구"],"author":"Nguyen Le Phong","featured":true,"series":"ai-in-practice","seriesOrder":2},"categoryTitle":"AI & 미래","readingLabel":"18분 읽기"},{"post":{"slug":"reducing-hallucinations-in-llms","category":"ai","title":"Reducing Hallucinations in LLMs","summary":"A practical guide to reducing LLM hallucinations with clearer tasks, bounded context, retrieval, citations, verification, refusals, evaluation sets, and product design that makes uncertainty visible.","date":"2026-05-07","readingMinutes":6,"tags":["AI","LLM","Hallucinations","RAG","AI Product","Evaluation"],"author":"Nguyen Le Phong"},"categoryTitle":"AI & 미래","readingLabel":"6분 읽기"},{"post":{"slug":"fine-tuning-vs-prompting-vs-rag","category":"ai","title":"Fine-Tuning vs. Prompting vs. RAG","summary":"A practical comparison of prompting, RAG, and fine-tuning for AI products: what each approach changes, when it helps, where it fails, and how teams can choose the smallest reliable intervention.","date":"2026-05-02","readingMinutes":6,"tags":["AI","Prompting","RAG","Fine-Tuning","LLM","AI Product"],"author":"Nguyen Le Phong"},"categoryTitle":"AI & 미래","readingLabel":"6분 읽기"},{"post":{"slug":"retrieval-augmented-generation-rag-basics","category":"ai","title":"Retrieval-Augmented Generation (RAG) Basics","summary":"A beginner-friendly explanation of Retrieval-Augmented Generation: how documents are split into chunks, turned into embeddings, found with vector search, and used to ground AI answers with citations, evaluation, and clear failure checks.","date":"2026-04-24","readingMinutes":7,"tags":["AI","RAG","LLM","Embeddings","Vector Search","AI Evaluation"],"author":"Nguyen Le Phong"},"categoryTitle":"AI & 미래","readingLabel":"7분 읽기"}],"sourceCategory":"ai","sourceSlug":"context-engineering"}]
+13:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lc",null,{"href":"/ko/blog/ai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","AI & 미래(으)로 돌아가기"]}]}]
+14:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1a",null,{"label":"목차","surface":"blog"}]}]
+17:null

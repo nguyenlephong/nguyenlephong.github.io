@@ -1,0 +1,19 @@
+{
+  "slug": "learning-to-say-no-as-a-developer",
+  "category": "perspectives",
+  "title": "Developer として「No」と言う練習",
+  "summary": "No と言うことは難しく振る舞うことではありません。focus、quality、trust を守るために tradeoff を見えるようにする skill です。",
+  "date": "2026-02-06",
+  "readingMinutes": 6,
+  "tags": [
+    "Personal Growth",
+    "Software Engineering",
+    "Boundaries",
+    "Career Growth",
+    "Communication",
+    "Focus"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>一日の終わりに request が届く。最初は小さく聞こえる。\"明日までにこれも入れられる？\" release は近い。みんな疲れている。役に立ちたい。若い頃の私は、たぶんすぐ yes と言っていた。</p>\n<p>Developer は solve するように育つことが多い。役に立つことが好きで、制約の中で道を探すのが好きだ。だから pause する人が、協力的でないように見えることがある。</p>\n<p>No を学ぶことは negative になることではない。本当の yes を可能にする条件を守ることだ。risk を隠した yes は、長い目で見ると親切ではない。</p>\n<p>最初の step は tradeoff の言葉に変えること。\"明日できます。ただし reporting task は動かす必要があります。\" \"この release に入れられます。ただし別の change を外すか、test scope を狭める必要があります。\"</p>\n<p>次に urgency と importance を分ける。production down、customer blocked、security issue は本当に urgent だ。一方で、meeting の空気や誰かが今気づいたことから生まれる emotional urgency もある。</p>\n<p>よい no は代案を持つ。\"この release には入れないが、technical note と estimate は今日出せる。\" \"この API shape ではないが、安全な小さい version ならできる。\"</p>\n<p>一番よい no は、calm、specific、early であることが多い。落ち着いていて、何を守っているか具体的で、遅すぎない。遅い no は正しくても裏切りのように感じられる。</p>\n<p>\"助けたい。そしてこの計画のままだと後で痛む。\" その一文には care と boundary の両方がある。よい team では、そのような no は信頼の一部になる。</p>"
+}

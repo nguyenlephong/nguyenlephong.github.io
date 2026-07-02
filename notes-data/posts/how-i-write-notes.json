@@ -1,0 +1,18 @@
+{
+  "slug": "how-i-write-notes",
+  "title": "How I Write Notes",
+  "summary": "A few years of keeping a personal knowledge vault in Obsidian distilled into the habits that survived contact with reality: write directly into the vault, write at show-someone quality with bolded keywords, link relentlessly, and never be afraid to delete. The vault is not a dump — it's a palace where ideas consolidate.",
+  "cardSummary": "Not a system I planned upfront — just the note-taking habits that survived contact with reality.",
+  "date": "2026-02-01",
+  "readingMinutes": 2,
+  "tags": [
+    "Thoughts",
+    "Note-taking",
+    "Obsidian",
+    "Knowledge Management"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "topic": "thoughts",
+  "html": "<p>I have been keeping a personal knowledge vault in Obsidian for a few years now. What follows are the principles I have settled on — not a system I designed upfront, but habits that survived contact with reality.</p>\n<h2 id=\"write-when\">When to write</h2>\n<ul>\n<li>In the writing window — the deliberate sessions set aside for it.</li>\n<li>When <strong>recognizing connections</strong> — while writing other notes, or when a real-life situation triggers an idea that already lives in the vault. This one rests on habits built <em>outside</em> the writing sessions: an intimate mental map of your own vault, and the reflex of spotting links between a fleeting thought and the ideas already living there.</li>\n</ul>\n<h2 id=\"write-with\">How to write</h2>\n<ol>\n<li>\n<hr>\n<ul>\n<li><a href=\"/notes/why-taking-notes\">Why taking notes?</a></li>\n<li><a href=\"/notes/articulation-skill\">Articulation skill</a></li>\n</ul>"
+}

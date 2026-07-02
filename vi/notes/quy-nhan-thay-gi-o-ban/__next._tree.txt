@@ -1,0 +1,4 @@
+:HL["/_next/static/chunks/86cb92de2dbc4a72.css","style"]
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+0:{"buildId":"KR7d5e40vDcl4tos3IAgD","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"locale","paramType":"d","paramKey":"vi","hasRuntimePrefetch":false,"slots":{"children":{"name":"notes","paramType":null,"paramKey":"notes","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"quy-nhan-thay-gi-o-ban","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}

@@ -1,0 +1,100 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+5:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+6:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+13:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+14:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+16:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+17:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+18:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T4ea,{"@context":"https://schema.org","@type":"Article","@id":"https://nguyenlephong.github.io/vi/notes/quy-trinh-mua-nha-tu-a-den-z#article","headline":"Quy trình mua nhà từ A đến Z: bản đồ đi chậm cho người lần đầu","description":"Mua nhà không phải một hành động đơn lẻ, mà là một chuỗi bước nối nhau: chuẩn bị tài chính, chọn tiêu chí, xem nhà, kiểm tra pháp lý, đặt cọc, công chứng, thanh toán, sang tên và nhận bàn giao. Bài này giữ lại bản đồ quy trình, giấy tờ cần có và các điểm cần chú ý ở từng chặng, để người mua lần đầu bớt bị cuốn theo cảm xúc hoặc thời hạn.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/notes/quy-trinh-mua-nha-tu-a-den-z","image":"https://nguyenlephong.github.io/og/notes/quy-trinh-mua-nha-tu-a-den-z.png","mainEntityOfPage":"https://nguyenlephong.github.io/vi/notes/quy-trinh-mua-nha-tu-a-den-z","datePublished":"2026-03-15","dateModified":"2026-03-15","keywords":"Mua nhà, Bất động sản, Quy trình, Thủ tục, Kinh nghiệm","author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean notes-accent notes-reading","style":{"--topic-color":"#059669"},"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Ghi chép\",\"item\":\"https://nguyenlephong.github.io/vi/notes\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Mua nhà\",\"item\":\"https://nguyenlephong.github.io/vi/notes?topic=mua-nha\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Quy trình mua nhà từ A đến Z: bản đồ đi chậm cho người lần đầu\",\"item\":\"https://nguyenlephong.github.io/vi/notes/quy-trinh-mua-nha-tu-a-den-z\"}]}"}}],null,["$","$L3",null,{"category":"notes","slug":"quy-trinh-mua-nha-tu-a-den-z","children":[["$","$L4",null,{"category":"notes","slug":"quy-trinh-mua-nha-tu-a-den-z","readingMinutes":4,"surface":"notes"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L5",null,{"url":"https://nguyenlephong.github.io/vi/notes/quy-trinh-mua-nha-tu-a-den-z","title":"Quy trình mua nhà từ A đến Z: bản đồ đi chậm cho người lần đầu","surface":"notes","category":"notes","slug":"quy-trinh-mua-nha-tu-a-den-z","labels":{"share":"Chia sẻ","copyLink":"Sao chép liên kết","copied":"Đã sao chép!","close":"Đóng"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$L6",null,{"href":"/vi/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Ghi chép"}],[["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$L6",null,{"href":"/vi/notes?topic=mua-nha","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Mua nhà"}]],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"Quy trình mua nhà từ A đến Z: bản đồ đi chậm cho người lần đầu"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","h1",null,{"className":"blog-article__title","children":"Quy trình mua nhà từ A đến Z: bản đồ đi chậm cho người lần đầu"}],["$","p",null,{"className":"blog-article__summary","children":"Mua nhà không phải một hành động đơn lẻ, mà là một chuỗi bước nối nhau: chuẩn bị tài chính, chọn tiêu chí, xem nhà, kiểm tra pháp lý, đặt cọc, công chứng, thanh toán, sang tên và nhận bàn giao. Bài này giữ lại bản đồ quy trình, giấy tờ cần có và các điểm cần chú ý ở từng chặng, để người mua lần đầu bớt bị cuốn theo cảm xúc hoặc thời hạn."}],"$L7","$L8"]}],"$L9","$undefined",null,"$La"]}]]}],"$Lb","$Lc"]}],"$Ld"]}]]}],["$Le","$Lf","$L10","$L11"],"$L12"]}],"loading":null,"isPartial":false}
+7:["$","div",null,{"className":"blog-article__meta","children":[["$","time",null,{"dateTime":"2026-03-15","children":"15 tháng 3, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"4 phút đọc"}],["$","$L13",null,{"label":"lượt xem"}]]}]
+8:["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Mua nhà",{"children":"Mua nhà"}],["$","li","Bất động sản",{"children":"Bất động sản"}],["$","li","Quy trình",{"children":"Quy trình"}],["$","li","Thủ tục",{"children":"Thủ tục"}],["$","li","Kinh nghiệm",{"children":"Kinh nghiệm"}]]}]
+15:T22e4,<h2 id="ban-do-tong-quat">Bản đồ tổng quát — 6 chặng của một thương vụ</h2>
+<p>Trước khi đi vào chi tiết, hãy nắm bức tranh lớn. Một thương vụ mua nhà điển hình đi qua sáu chặng:</p>
+<ol>
+<li><strong>Chuẩn bị tài chính</strong> — biết khả năng, lấy pre-approval.</li>
+<li><strong>Tìm & thẩm định nhà</strong> — chọn căn, kiểm tra pháp lý và chất lượng.</li>
+<li><strong>Đặt cọc</strong> — ký hợp đồng đặt cọc, giữ chỗ.</li>
+<li><strong>Công chứng hợp đồng mua bán</strong> — chuyển phần lớn tiền, ký trước công chứng viên.</li>
+<li><strong>Nộp thuế & sang tên</strong> — hoàn tất thủ tục pháp lý, ra sổ tên bạn.</li>
+<li><strong>Bàn giao & nhận nhà</strong> — nghiệm thu, chốt công tơ, nhận chìa khóa.</li>
+</ol>
+<p>Hiểu trình tự này giúp bạn không bao giờ rơi vào thế bị động: bạn luôn biết mình đang ở đâu, bước tiếp theo là gì, và tiền nên ra khỏi túi vào lúc nào.</p>
+<blockquote><p>Người mua chủ động không phải người biết nhiều luật nhất — mà là người biết rõ mình đang ở chặng nào và điều gì sắp tới.</p></blockquote>
+
+<h2 id="buoc-1">Chặng 1 — Chuẩn bị tài chính & pre-approval</h2>
+<p>Mọi thứ bắt đầu từ việc biết rõ khả năng của mình. Tính tổng số tiền bạn có (vốn tự có), cộng phần có thể vay an toàn, và <strong>trừ đi toàn bộ chi phí phát sinh</strong> (thuế, phí, sửa sang — xem bài <a href="/notes/chi-phi-mua-nha-toan-bo-nhung-khoan-can-biet">Toàn bộ chi phí khi mua nhà</a>). Nếu định vay, hãy lấy <strong>pre-approval</strong> từ ngân hàng để biết hạn mức thật trước khi đi xem nhà (xem bài <a href="/notes/vay-ngan-hang-mua-nha-don-bay-thong-minh">Vay ngân hàng mua nhà</a>). Kết thúc chặng này, bạn có một con số rõ ràng: ngân sách tối đa.</p>
+
+<h2 id="buoc-2">Chặng 2 — Tìm & thẩm định nhà (due diligence)</h2>
+<p>Khi đã chọn được căn ưng ý và chốt giá, <strong>đừng đặt cọc vội</strong>. Đây là lúc thẩm định kỹ trước khi cam kết tiền:</p>
+<ul>
+<li><strong>Pháp lý:</strong> kiểm tra sổ (sổ đỏ/sổ hồng) chính chủ, không tranh chấp, không thế chấp (hoặc rõ phương án giải chấp), đúng người bán có quyền bán. Xem bài <a href="/notes/phap-ly-bat-dong-san-nhung-dieu-can-biet">Pháp lý bất động sản</a>.</li>
+<li><strong>Quy hoạch:</strong> tra lộ giới, quy hoạch treo, mục đích sử dụng đất. Xem bài <a href="/notes/chon-vi-tri-va-quy-hoach-khi-mua-nha">Vị trí & quy hoạch</a>.</li>
+<li><strong>Chất lượng:</strong> kết cấu, thấm dột, điện nước. Xem bài <a href="/notes/doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong">Đọc bản vẽ & đánh giá chất lượng</a>.</li>
+</ul>
+<p>Chỉ khi cả ba "cửa" này đều sạch, bạn mới nên bước sang chặng đặt cọc.</p>
+
+<h2 id="buoc-3">Chặng 3 — Đặt cọc (chặng nhiều rủi ro nhất)</h2>
+<p>Đặt cọc là bước cam kết bằng tiền đầu tiên, thường 5–10% giá trị. Đây cũng là nơi nhiều người thiệt hại tài chính oan vì hợp đồng đặt cọc sơ sài. Những điều khoản <strong>sống còn</strong> cần có:</p>
+<ul>
+<li><strong>Thông tin đầy đủ:</strong> đúng chính chủ, đúng thông tin căn nhà, đúng giá đã thống nhất.</li>
+<li><strong>Mốc thời gian rõ ràng:</strong> ngày công chứng, ngày bàn giao.</li>
+<li><strong>Điều khoản phạt cọc hai chiều:</strong> nếu bạn bỏ thì mất cọc; nhưng nếu <em>người bán</em> đổi ý, họ phải đền (thường gấp đôi cọc). Thiếu điều khoản này, bạn chịu thiệt một chiều.</li>
+<li><strong>Điều kiện hoàn cọc:</strong> nếu phát sinh vấn đề pháp lý/quy hoạch mà người bán giấu, bạn được hoàn cọc.</li>
+<li><strong>Ai chịu thuế, phí:</strong> ghi rõ để tránh tranh cãi sau này.</li>
+</ul>
+<blockquote><p><strong>Mẹo an toàn:</strong> ưu tiên đặt cọc có người làm chứng hoặc công chứng hợp đồng đặt cọc. Một tờ giấy viết tay không chặt chẽ có thể khiến số tiền cọc lớn của bạn rơi vào thế rủi ro.</p></blockquote>
+
+<h2 id="buoc-4">Chặng 4 — Công chứng hợp đồng mua bán</h2>
+<p>Đây là bước pháp lý quan trọng nhất: hai bên ký <strong>hợp đồng mua bán</strong> trước mặt công chứng viên, và phần lớn số tiền được thanh toán ở đây. Lưu ý:</p>
+<ul>
+<li><strong>Mang đủ giấy tờ:</strong> sổ gốc, CMND/CCCD hai bên, giấy đăng ký kết hôn hoặc xác nhận độc thân của bên bán (để xác định tài sản chung/riêng).</li>
+<li><strong>Thời điểm giao tiền:</strong> phối hợp giữa giao tiền và ký công chứng để cả hai bên an toàn. Nếu vay ngân hàng, dòng tiền giải ngân thường gắn với thời điểm này.</li>
+<li><strong>Đừng ghi giá thấp hơn thực tế để né thuế:</strong> nghe thì lợi trước mắt nhưng bạn gánh rủi ro pháp lý và thiệt khi bán lại (xem bài <a href="/notes/bay-mat-tien-khi-mua-nha-cac-kich-ban-can-tranh">Những tình huống rủi ro khiến bạn thiệt hại tài chính</a>).</li>
+</ul>
+
+<h2 id="buoc-5">Chặng 5 — Nộp thuế & sang tên</h2>
+<p>Sau công chứng, hồ sơ được nộp tại Văn phòng Đăng ký đất đai để hoàn tất nghĩa vụ tài chính và <strong>sang tên</strong> sổ sang tên bạn. Các khoản chính: thuế thu nhập cá nhân (thường bên bán chịu), lệ phí trước bạ (thường bên mua chịu), phí thẩm định, phí cấp đổi sổ. Thời gian xử lý thường vài tuần. Kết thúc chặng này, bạn cầm trên tay cuốn sổ mang tên mình — thời điểm bạn chính thức là chủ sở hữu hợp pháp.</p>
+
+<h2 id="buoc-6">Chặng 6 — Bàn giao & nhận nhà</h2>
+<p>Chặng cuối nhưng đừng lơ là. Khi nhận nhà, hãy <strong>nghiệm thu</strong> cẩn thận:</p>
+<ul>
+<li><strong>Chốt chỉ số công tơ điện, nước</strong> tại thời điểm bàn giao và xác nhận đã thanh toán hết các khoản cũ — tránh ôm nợ của chủ trước.</li>
+<li><strong>Kiểm tra hiện trạng</strong> đúng như thỏa thuận: nội thất để lại (nếu có), không hư hại phát sinh so với lúc xem.</li>
+<li><strong>Nhận đủ giấy tờ & chìa khóa:</strong> sổ, các giấy bảo hành thiết bị (nếu nhà mới), thẻ cư dân/giấy tờ ban quản lý (nếu chung cư).</li>
+<li><strong>Lập biên bản bàn giao</strong> có chữ ký hai bên, ghi rõ tình trạng và các chỉ số — đây là bằng chứng nếu có tranh chấp về sau.</li>
+</ul>
+
+<h2 id="giay-to-cam-tay">Bộ giấy tờ cầm tay — chuẩn bị trước cho đỡ cuống</h2>
+<ul>
+<li>CMND/CCCD, sổ hộ khẩu/giấy xác nhận cư trú của bên mua.</li>
+<li>Giấy đăng ký kết hôn hoặc giấy xác nhận tình trạng hôn nhân.</li>
+<li>Hồ sơ vay (nếu vay): giấy tờ thu nhập, hợp đồng lao động, sao kê.</li>
+<li>Tiền cho các khoản phí/thuế dự phòng sẵn (đừng để đến lúc cần mới xoay).</li>
+</ul>
+
+<h2 id="key-takeaways">Những điểm nên giữ lại</h2>
+<ul>
+<li><strong>Mua nhà là một chuỗi 6 chặng,</strong> không phải một hành động. Luôn biết mình đang ở đâu.</li>
+<li><strong>Thẩm định đủ pháp lý — quy hoạch — chất lượng TRƯỚC khi đặt cọc.</strong> Đặt cọc xong mới phát hiện vấn đề là đã muộn.</li>
+<li><strong>Hợp đồng đặt cọc phải có phạt cọc hai chiều</strong> và điều kiện hoàn cọc — đừng ký giấy viết tay sơ sài.</li>
+<li><strong>Công chứng là bước giao phần lớn tiền:</strong> mang đủ giấy tờ, phối hợp thời điểm giao tiền, ghi đúng giá thật.</li>
+<li><strong>Khi nhận nhà phải nghiệm thu & chốt công tơ,</strong> lập biên bản bàn giao có chữ ký.</li>
+<li><strong>Chuẩn bị giấy tờ & phí dự phòng từ sớm</strong> để không cuống ở phút chót.</li>
+</ul>
+<p>Khi bạn nhìn toàn bộ hành trình như một bản đồ rõ ràng, nỗi sợ "mua nhà phức tạp lắm" tan đi rất nhiều. Mỗi chặng chỉ cần làm đúng phần của nó, và bạn sẽ tới đích — cầm chìa khóa căn nhà của mình mà không một lần phải đoán mò.</p>9:["$","$L14",null,{"html":"$15"}]
+a:["$","$L16",null,{"prompt":"Bạn thấy bài này thế nào?","surface":"notes","category":"notes","slug":"quy-trinh-mua-nha-tu-a-den-z","reactionLabels":{"like":"Thích","love":"Yêu thích","insightful":"Sâu sắc","clap":"Tuyệt vời"}}]
+b:["$","nav",null,{"className":"blog-series-nav","aria-label":"Mua nhà","children":[["$","$L6",null,{"href":"/vi/notes/chon-vi-tri-va-quy-hoach-khi-mua-nha","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Vị trí và quy hoạch khi mua nhà: thứ khó sửa nhất sau khi xuống tiền"}]]}],["$","$L6",null,{"href":"/vi/notes/chung-cu-vs-nha-dat-va-mua-nha-du-an","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Bài tiếp theo"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Chung cư, nhà đất hay nhà dự án: chọn theo cách mình sống"}]]}]]}]
+c:["$","footer",null,{"className":"blog-article__footer","children":["$","$L6",null,{"href":"/vi/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Quay lại Ghi chép"]}]}]
+d:["$","aside",null,{"className":"blog-article__toc","children":["$","$L17",null,{"label":"Trong bài này","surface":"notes"}]}]
+e:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/579669e8fc8fe057.css","precedence":"next"}]
+f:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+10:["$","script","script-0",{"src":"/_next/static/chunks/60afb5b0374fe7a9.js","async":true}]
+11:["$","script","script-1",{"src":"/_next/static/chunks/0e65e15104575034.js","async":true}]
+12:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+1a:null

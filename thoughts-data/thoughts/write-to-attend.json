@@ -1,0 +1,13 @@
+{
+  "slug": "write-to-attend",
+  "title": "Write to attend",
+  "html": "<p>This is the kind of writing where you write simply for the act of it. The page is not the destination; the writing is. In the context of note taking, <strong>fleeting notes</strong> are a type of this writing. You write to engage, to get your mind to participate with the words on the paper or screen right in front of your eyes. The point is presence, not the artifact. For this same purpose, doodling and sketching can be seen as the same activity &mdash; what matters is that some part of you is actively reaching toward the thought rather than passively letting it drift by.</p>\n<p>The more <strong>physical</strong> the activity is, the better. Pen and paper would be excellent, because the hand&rsquo;s effort pulls the attention along with it. I myself like to draw the words on screen with a tablet, for it is immediately available and the physical engagement feels relatively on par. The body doing something concrete is what keeps the mind from wandering off mid-thought.</p>\n<p>Starting to write these kinds of one-off notes should feel frictionless, and the tools to write should be readily available; any hesitation defeats the purpose. And they are not for permanent storage. You should regularly process them &mdash; extract the todo items, or file them into some sort of archive system &mdash; and then throw them out once done. Treating them as disposable is exactly what frees you to write without overthinking. <em>(A practice I picked up from <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">a note from a friend</a>.)</em></p>",
+  "backlinks": [
+    {
+      "slug": "different-purposes-of-writing",
+      "title": "Different purposes of writing",
+      "context": "<p>I splits the act of writing into two different purposes, <a href=\"/thoughts/write-to-attend\">Write to attend</a> and <a href=\"/thoughts/write-to-understand-and-transfer\">Write to understand and to transfer</a>.</p>"
+    }
+  ],
+  "maturity": "seed"
+}

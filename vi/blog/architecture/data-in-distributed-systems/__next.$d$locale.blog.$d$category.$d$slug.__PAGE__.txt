@@ -1,0 +1,182 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta6c,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/vi/blog/architecture/data-in-distributed-systems#article","headline":"Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems","description":"Tách code thường dễ hơn tách dữ liệu. Khi mỗi service cần sở hữu dữ liệu riêng, team phải đối mặt với shared database, eventual consistency, dual-write bug, outbox, saga, CQRS và event sourcing. Bài này đi qua những lựa chọn đó bằng ví dụ thực tế, để bạn hiểu trade-off trước khi hệ thống phân tán bắt đầu làm mọi thứ khó hơn.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/blog/architecture/data-in-distributed-systems","image":"https://nguyenlephong.github.io/og/blog/data-in-distributed-systems.png","mainEntityOfPage":"https://nguyenlephong.github.io/vi/blog/architecture/data-in-distributed-systems","datePublished":"2026-04-10","dateModified":"2026-04-10","keywords":"Software Architecture, Distributed Systems, Saga Pattern, CQRS, Event Sourcing, Data Consistency","articleSection":"Source Code & Software Architecture","isRelatedTo":[{"@type":"BlogPosting","headline":"Event Sourcing cho người mới bắt đầu","url":"https://nguyenlephong.github.io/vi/blog/architecture/event-sourcing-beginners-guide","image":"https://nguyenlephong.github.io/og/blog/event-sourcing-beginners-guide.png"},{"@type":"BlogPosting","headline":"Outbox Pattern","url":"https://nguyenlephong.github.io/vi/blog/architecture/the-outbox-pattern","image":"https://nguyenlephong.github.io/og/blog/the-outbox-pattern.png"},{"@type":"BlogPosting","headline":"Saga Pattern cho distributed transaction","url":"https://nguyenlephong.github.io/vi/blog/architecture/saga-pattern-for-distributed-transactions","image":"https://nguyenlephong.github.io/og/blog/saga-pattern-for-distributed-transactions.png"},{"@type":"BlogPosting","headline":"Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn","url":"https://nguyenlephong.github.io/vi/blog/architecture/event-driven-architecture-and-messaging","image":"https://nguyenlephong.github.io/og/blog/event-driven-architecture-and-messaging.png"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/vi/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/vi/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Source Code & Software Architecture\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture/data-in-distributed-systems\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T5303,<p>Ở phần trước ta đã tách một chuỗi synchronous thành các event. Nhưng tách <em>code</em> mới là nửa dễ. Khoảnh khắc hai service ngừng dùng chung một database, một câu hỏi lặng lẽ và khó hơn xuất hiện: <strong>ai sở hữu dữ liệu, và "đúng" nghĩa là gì khi sự thật được trải ra trên năm service?</strong></p>
+<p>Đây là phần của distributed systems khiến cả những kỹ sư dày dạn phải khiêm tốn, vì nó không thật sự nói về công nghệ. Nó nói về việc từ bỏ một sự tiện nghi bạn đã dựa vào suốt sự nghiệp — cái database transaction duy nhất hoặc xảy ra trọn vẹn hoặc không xảy ra gì cả — và học cách xây đúng mà không có nó.</p>
+
+<figure class="blog-figure blog-photo-panorama">
+  <img src="/assets/blog/data-in-distributed-systems/service-boundaries-on-the-glass.png" width="1600" height="900" loading="lazy" decoding="async" alt="Nguyen Le Phong đứng trước sơ đồ trên vách kính và trao đổi với hai đồng đội về cách mỗi service giữ dữ liệu riêng rồi giao tiếp với nhau bằng event thay vì đụng vào chung một bảng." />
+  <figcaption>Cuộc nói chuyện dữ liệu khó đầu tiên trong distributed system thường không bắt đầu từ scale. Nó bắt đầu từ việc vẽ một ranh giới mà cả team thật sự tôn trọng khi mỗi service giữ sự thật của mình.</figcaption>
+</figure>
+
+<h2 id="the-problem">Cái database dùng chung khiến mọi người dính chặt vào nhau</h2>
+<p>Khi một team tách monolith, lối tắt hấp dẫn là: tách code thành các service, nhưng để tất cả vẫn nói chuyện với cùng một database. Nghe thực dụng. Nó cũng là cách nhanh nhất để xây một <strong>distributed monolith</strong> — tệ nhất của cả hai thế giới.</p>
+<p>Lý do là coupling vô hình. Nếu orders service và billing service cùng đọc ghi bảng <code>orders</code>, thì schema của billing giờ âm thầm trở thành một phần contract của orders. Đổi một cột là bạn làm hỏng một service mà bạn còn chẳng mở ra. Bạn gánh mọi chi phí vận hành của nhiều service mà chẳng có chút độc lập nào.</p>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Lằn ranh định nghĩa một cú tách thật sự</span><p>Một cú tách service chỉ là thật khi <strong>mỗi service sở hữu dữ liệu của nó một cách riêng tư</strong>. Service khác không được đụng vào bảng của nó — chúng hỏi qua API hoặc phản ứng với event của nó. Nếu hai service dùng chung bảng, bạn chưa xây hai service; bạn đã xây một service với một câu chuyện triển khai rối rắm.</p></div>
+
+<h2 id="database-per-service">Database per service: quy tắc và hoá đơn của nó</h2>
+<p>Kỷ luật rất dễ phát biểu: <strong>dữ liệu của một service là riêng tư. Lối duy nhất đi vào là qua service đó.</strong> Đây chính là thứ mua cho bạn sự độc lập mà cả canh bạc microservices nhắm tới — mỗi team có thể đổi schema, chọn storage, và deploy mà không cần một cuộc họp liên team.</p>
+<p>Hoá đơn đến ngay lập tức, và nó đắt:</p>
+<ul>
+<li><strong>Hết JOIN xuyên service.</strong> "Cho mình xem đơn hàng kèm tên khách" từng là một query. Giờ dữ liệu nằm ở hai service và bạn phải ghép nó trong code, cache lại, hoặc nhân bản.</li>
+<li><strong>Hết transaction xuyên service.</strong> Bạn không thể gói "thu tiền" và "giữ hàng" vào một <code>BEGIN / COMMIT</code> khi chúng nằm ở hai database khác nhau. Tấm lưới an toàn biến mất.</li>
+</ul>
+<p>Mất mát thứ hai mới là cái lớn. Mọi thứ còn lại trong bài này đều là kỹ thuật để sống mà không có cái transaction xuyên service bạn từng coi là hiển nhiên.</p>
+
+<h2 id="the-consistency-shift">Cú chuyển: từ ACID sang "đúng sau một khoảnh khắc"</h2>
+<p>Trong một database, bạn có <strong>strong consistency</strong>: ngay khoảnh khắc transaction commit, mọi người thấy sự thật mới. Xuyên service, bảo đảm đó biến mất. Thứ bạn có thay vào là <strong>eventual consistency</strong>: hệ thống sẽ đồng ý về sự thật <em>sớm thôi</em> — thường là mili-giây, đôi khi vài giây — nhưng không trong cùng một khoảnh khắc.</p>
+<p>Đây không phải lỗi cần sửa; đây là vật lý. Một kết quả nổi tiếng (định lý CAP) nói rằng khi mạng giữa các service hỏng — và nó sẽ hỏng — bạn phải chọn giữa giữ <em>availability</em> và giữ <em>consistency hoàn hảo</em>. Hầu hết hệ thống nghiệp vụ chọn availability và thiết kế quanh một khoảng ngắn nơi, ví dụ, đơn hàng đã tồn tại nhưng điểm thưởng chưa kịp về.</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th width="26%">&nbsp;</th><th>Strong consistency</th><th>Eventual consistency</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Khi nào nó đúng?</th><td>Ngay khoảnh khắc commit</td><td>Một khoảnh khắc sau, khi event lan đi</td></tr>
+    <tr><th>Phạm vi</th><td>Một database</td><td>Xuyên service / xuyên region</td></tr>
+    <tr><th>Bạn trả bằng</th><td>Coupling, tranh chấp, khó scale hơn</td><td>Những khoảng bất đồng ngắn bạn phải thiết kế trước</td></tr>
+    <tr><th>Hợp với</th><td>Tiền trong một sổ cái, một aggregate đơn lẻ</td><td>Workflow xuyên service, read model, analytics</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Cách nhìn lại khiến nó chịu được</span><p>Hãy hỏi nghiệp vụ, đừng hỏi database: "việc này đúng trễ một giây có chấp nhận được không?" Với analytics, search index, thông báo và gợi ý — gần như luôn luôn được. Với "đúng cái thẻ này đã bị trừ tiền chưa?" — hãy thiết kế ranh giới đó sao cho tiền nằm trong strong transaction của <em>một</em> service, và để phần còn lại là eventual.</p></div>
+
+<h2 id="the-dual-write-problem">Bài toán dual-write (và outbox)</h2>
+<p>Đây là con bug bắt được gần như tất cả mọi người đầu tiên. Một service cần làm hai việc: lưu vào database của chính nó <em>và</em> publish một event. Code ngây thơ làm chúng lần lượt:</p>
+<pre><code><span class="cmt">// Bug dual-write: hai hệ thống, không có transaction chung</span>
+<span class="kw">await</span> db.orders.insert(order)              <span class="cmt">// 1) đã commit vào database</span>
+<span class="kw">await</span> broker.publish(<span class="str">"OrderPlaced"</span>, order)   <span class="cmt">// 2) nếu crash ngay đây thì sao?</span></code></pre>
+<p>Nếu process chết giữa bước 1 và bước 2, đơn hàng tồn tại nhưng không ai được báo. Payment không bao giờ chạy. Đơn hàng thành một bóng ma. Tệ hơn, bạn không sửa được bằng cách đảo thứ tự — publish trước thì bạn có thể thông báo một đơn hàng chưa từng được lưu.</p>
+<p>Cách sửa gọn gàng là <strong>transactional outbox</strong>. Thay vì publish thẳng, bạn ghi event vào một bảng <code>outbox</code> <em>trong cùng transaction</em> với đơn hàng. Một relay riêng sau đó đọc outbox và publish. Một lần commit, không có khe hở.</p>
+<pre><code><span class="cmt">// Outbox: đơn hàng và event commit cùng nhau, hoặc không gì cả</span>
+<span class="kw">await</span> db.transaction(<span class="kw">async</span> (tx) =&gt; {
+  <span class="kw">await</span> tx.orders.insert(order)
+  <span class="kw">await</span> tx.outbox.insert({ type: <span class="str">"OrderPlaced"</span>, payload: order })
+})
+<span class="cmt">// Một relay poll outbox (hoặc tail log của DB) rồi publish — retry an toàn.</span></code></pre>
+<p>Vì relay retry, việc giao là at-least-once — chính xác là lý do phần trước nhấn mạnh mọi consumer phải idempotent. Hai ý tưởng này là cặp bài trùng.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="/assets/blog/data-in-distributed-systems/transactional-outbox-walkthrough.png" width="1440" height="960" loading="lazy" decoding="async" alt="Nguyen Le Phong ngồi cạnh một đồng đội và chỉ vào luồng database-to-outbox-to-broker trên màn hình để cùng rà lại cách một lần commit trở thành một lần publish an toàn." />
+  <figcaption>Outbox có giá trị ở đúng những lúc như thế này: team có thể chỉ vào một local commit, một relay, và một đường publish không còn phụ thuộc vào việc process có may mắn hay không.</figcaption>
+</figure>
+
+<h2 id="the-saga-pattern">Saga: transaction không có nút rollback</h2>
+<p>Giờ tới ca khó: một hành động nghiệp vụ duy nhất trải qua nhiều service — trừ tiền thẻ, giữ hàng, xác nhận đơn — nơi bước ba có thể lỗi <em>sau khi</em> bước một và hai đã thành công. Không có <code>ROLLBACK</code> nào với tới được ba database. Câu trả lời là <strong>saga</strong>: chia hành động thành một chuỗi local transaction, và với mỗi bước định nghĩa một <em>compensating action</em> (hành động bù trừ) để hoàn tác nó.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 360" role="img" aria-labelledby="dgm-saga">
+    <title id="dgm-saga">Saga chạy các bước nghiệp vụ lần lượt. Nếu một bước sau lỗi, các bước trước được hoàn tác bằng compensating action thay vì một lần rollback duy nhất.</title>
+    <defs>
+      <marker id="sagaAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sagaMute" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="currentColor" opacity="0.5"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-accent" x="380" y="30" text-anchor="middle" font-size="13">KHÔNG ROLLBACK TOÀN CỤC · CHỈ CÓ COMPENSATION</text>
+
+    <rect class="dgm-core" x="40" y="92" width="170" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="125" y="118" text-anchor="middle" font-size="13">1 · Trừ thẻ</text>
+    <text class="dgm-t-muted dgm-t-mono" x="125" y="137" text-anchor="middle" font-size="10.5">Payment service</text>
+
+    <rect class="dgm-core" x="295" y="92" width="170" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="380" y="118" text-anchor="middle" font-size="13">2 · Giữ hàng</text>
+    <text class="dgm-t-muted dgm-t-mono" x="380" y="137" text-anchor="middle" font-size="10.5">Inventory service</text>
+
+    <rect class="dgm-driven" x="550" y="92" width="170" height="58" rx="10"/>
+    <text class="dgm-t-accent" x="635" y="118" text-anchor="middle" font-size="13">3 · Xác nhận &#10007;</text>
+    <text class="dgm-t-muted dgm-t-mono" x="635" y="137" text-anchor="middle" font-size="10.5">hết hàng — lỗi</text>
+
+    <path class="dgm-flow" d="M210,121 H 291" marker-end="url(#sagaAcc)"/>
+    <path class="dgm-flow" d="M465,121 H 546" marker-end="url(#sagaAcc)"/>
+
+    <path class="dgm-line" d="M635,150 C 635,250 380,250 380,156" stroke-dasharray="6 5" marker-end="url(#sagaMute)"/>
+    <path class="dgm-line" d="M380,250 C 200,250 125,250 125,156" stroke-dasharray="6 5" marker-end="url(#sagaMute)"/>
+    <text class="dgm-t-muted" x="505" y="232" text-anchor="middle" font-size="11">bù: trả hàng về kho</text>
+    <text class="dgm-t-muted" x="245" y="288" text-anchor="middle" font-size="11">bù: hoàn tiền thẻ</text>
+    <text class="dgm-t-muted dgm-t-mono" x="380" y="324" text-anchor="middle" font-size="11">mỗi lần hoàn tác là một transaction bình thường</text>
+  </svg>
+  <figcaption>Không có database nào roll ngược cả ba service cùng lúc. Thay vào đó, một bước lỗi kích hoạt các compensating action đi ngược lại các bước đã hoàn tất — hoàn tiền, trả hàng — mỗi cái là một local transaction bình thường.</figcaption>
+</figure>
+
+<p>Nếu "xác nhận đơn" lỗi vì hết hàng, saga không tua ngược một cách thần kỳ. Nó chạy các bước hoàn tác theo chiều ngược: trả hàng về kho, hoàn tiền thẻ. Mỗi compensation là một local transaction bình thường — và để ý nó là một sự đảo ngược <em>nghiệp vụ</em>, không phải kỹ thuật. Hoàn tiền không giống "cú trừ tiền chưa từng xảy ra"; khách hàng có thể đã thấy nó trên sao kê. Saga buộc bạn mô hình hoá thất bại như một sự kiện ngoài đời thực — khó chịu, và cũng thành thật hơn.</p>
+<p>Saga có hai khẩu vị từ phần trước: <strong>orchestrated</strong> (một bộ điều phối dẫn các bước, dễ dõi theo) hoặc <strong>choreographed</strong> (các service phản ứng với event của nhau, decoupled hơn nhưng khó trace hơn). Với bất cứ thứ gì dính tới tiền, hầu hết team thích một orchestrator mà họ có thể nhìn thấy.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="/assets/blog/data-in-distributed-systems/compensation-before-confirmation.png" width="1440" height="960" loading="lazy" decoding="async" alt="Nguyen Le Phong dẫn một buổi thảo luận buổi tối khi cả nhóm kỹ sư cùng trải các bước và compensating action của một workflow nhiều service trước khi chốt kết quả cuối." />
+  <figcaption>Một saga dễ được tin hơn khi team gọi tên các bước bù trừ trước cả khi happy path được ship, lúc mọi người vẫn còn nhìn rõ ai phải gỡ bước nào nếu một chặng phía sau thất bại.</figcaption>
+</figure>
+
+<h2 id="cqrs-and-read-models">CQRS và read model: phục vụ dữ liệu bạn đã làm vương vãi</h2>
+<p>Database-per-service đã phá vỡ các JOIN của bạn. Vậy làm sao render một dashboard cần dữ liệu từ sáu service? Bạn xây một <strong>read model</strong>: một bản sao riêng, denormalised, định hình đúng cho màn hình đó, được giữ cập nhật bằng cách nghe event. Đây là nửa "đọc" của <strong>CQRS</strong> — Command Query Responsibility Segregation — vốn chỉ có nghĩa là <em>model bạn ghi vào và model bạn đọc ra không nhất thiết phải là cùng một model</em>.</p>
+<ul>
+<li><strong>Phía ghi:</strong> nhỏ, nhất quán, kiểm tra luật nghiệp vụ.</li>
+<li><strong>Phía đọc:</strong> rộng, nhanh, thường eventual, tối ưu cho truy vấn.</li>
+</ul>
+<p>CQRS toả sáng khi đọc và ghi có hình dạng hoặc quy mô khác nhau một trời một vực — một catalogue sản phẩm đọc hàng triệu lần và hiếm khi ghi. Nó là quá lố khi một bảng bình thường phục vụ cả hai vẫn ổn, vốn là phần lớn thời gian. Hãy với tới nó để giải một bài toán đọc cụ thể, đừng bao giờ vì nó nghe có vẻ cao cấp.</p>
+
+<h2 id="event-sourcing">Event sourcing: giữ lại event, suy ra trạng thái</h2>
+<p>Tuỳ chọn cao cấp nhất lật ngược việc lưu trữ. Thay vì lưu trạng thái <em>hiện tại</em> rồi ghi đè, bạn lưu toàn bộ chuỗi event dẫn tới đây — <code>AccountOpened</code>, <code>MoneyDeposited</code>, <code>MoneyWithdrawn</code> — và tính số dư bằng cách phát lại chúng. Event trở thành nguồn sự thật; trạng thái chỉ là một ý kiến được cache về chúng.</p>
+<p>Lợi ích là thật: một audit log hoàn hảo miễn phí, khả năng hỏi "thứ Ba tuần trước sự thật là gì?", và tự do dựng read model mới từ lịch sử. Cái giá cũng thật không kém — bạn phải versioning event mãi mãi, snapshot cho hiệu năng, và nghĩ lại cách xoá dữ liệu dưới luật riêng tư. Hầu hết hệ thống không nên bắt đầu từ đây.</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Một khuyến nghị thực tế</span><p>Event sourcing là một con dao sắc cho một vài domain thật sự có hình dạng event — sổ cái, workflow nặng tính audit, bất cứ thứ gì mà "làm sao ta đến được đây" quan trọng ngang với "ta đang ở đâu." Với mọi thứ khác, một outbox cộng một read model cho bạn phần lớn lợi ích với một phần nhỏ chi phí cả đời.</p></div>
+
+<h2 id="comparison">Chọn, không màu mè</h2>
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Bài toán bạn thật sự có</th><th>Câu trả lời thành thật</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Lưu một row rồi báo cho người khác</th><td>Transactional outbox + consumer idempotent</td></tr>
+    <tr><th>Một hành động nghiệp vụ xuyên service</th><td>Saga với compensating action (ưu tiên orchestrated)</td></tr>
+    <tr><th>Một màn hình ghép dữ liệu nhiều service</th><td>Một read model nuôi bằng event (nửa "đọc" của CQRS)</td></tr>
+    <tr><th>Đọc và ghi scale rất khác nhau</th><td>CQRS đầy đủ — tách store ghi và store đọc</td></tr>
+    <tr><th>Lịch sử và audit là công dân hạng nhất</th><td>Event sourcing — và chấp nhận chi phí cả đời của nó</td></tr>
+    <tr><th>Tất cả vừa trong một service / một DB</th><td>Một transaction ACID duy nhất. Đừng phân tán nó.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="by-company-size">Góc nhìn thành thật theo quy mô công ty</h2>
+<ul>
+<li><strong>Solo / startup giai đoạn đầu.</strong> Một database, transaction thật, không saga. Lợi thế dữ liệu lớn nhất bạn đang có là mọi thứ vẫn có thể strongly consistent trong một <code>COMMIT</code>. Đừng đánh đổi điều đó lấy một sơ đồ kiến trúc.</li>
+<li><strong>Scale-up đang lớn.</strong> Khi bạn tách ra vài service đầu tiên, cho mỗi cái dữ liệu riêng và áp dụng outbox ngay ngày bạn publish event đầu tiên. Chỉ đưa saga vào cho một hai workflow thật sự xuyên service và dính tiền. Thêm read model khi một màn hình bắt đầu toả ra thành nhiều lời gọi.</li>
+<li><strong>Doanh nghiệp lớn.</strong> Eventual consistency là mặc định và các team thành thạo với nó. Đầu tư chuyển sang công cụ: quản trị schema/version cho event, giám sát saga, và read model như một phần hạng nhất, có chủ sở hữu, của nền tảng. Event sourcing xuất hiện ở vài domain xứng đáng với nó, không phải khắp nơi.</li>
+</ul>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Những điều cốt lõi</h3>
+<ul>
+  <li><strong>Một cú tách thật sự nghĩa là dữ liệu riêng tư.</strong> Nếu các service dùng chung bảng, bạn đã xây một distributed monolith — đủ mọi chi phí, không chút độc lập.</li>
+  <li><strong>Bạn đánh đổi transaction ACID lấy eventual consistency.</strong> Hỏi nghiệp vụ "đúng trễ một giây có sao không?" — và giữ tiền trong strong transaction của một service.</li>
+  <li><strong>Bug dual-write là có thật; outbox sửa nó.</strong> Commit event và row cùng nhau, rồi relay — đó là lý do consumer phải idempotent.</li>
+  <li><strong>Saga thay rollback bằng compensation.</strong> Mô hình hoá thất bại như một sự đảo ngược ngoài đời (một cú hoàn tiền), không phải undo kỹ thuật. Ưu tiên orchestrator cho bất cứ thứ gì dính tiền.</li>
+  <li><strong>CQRS và event sourcing là dao sắc, không phải mặc định.</strong> Với tới read model để giải một bài toán đọc thật; với tới event sourcing chỉ khi lịch sử chính là sản phẩm.</li>
+</ul>
+</div>
+<p>Giờ bạn đã có thể tách service, để chúng nói chuyện qua event, và giữ dữ liệu của chúng thành thật. Còn một lời hứa chưa giữ — rằng hệ thống vẫn đứng vững khi (không phải nếu) mạng đánh rơi một message, một service đơ, hay một dependency có một ngày tồi tệ. Trả cái "distributed-systems tax" đó bằng timeout, retry, circuit breaker và idempotency là phần cuối của series này.</p>
+3:["$","$L8",null,{"category":"architecture","slug":"data-in-distributed-systems","children":[["$","$L9",null,{"category":"architecture","slug":"data-in-distributed-systems","readingMinutes":14,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/vi/blog/architecture/data-in-distributed-systems","title":"Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems","surface":"blog","category":"architecture","slug":"data-in-distributed-systems","labels":{"share":"Chia sẻ","copyLink":"Sao chép liên kết","copied":"Đã sao chép!","close":"Đóng"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/vi/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Source Code & Software Architecture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Software Architecture Foundations",["$","span",null,{"aria-hidden":"true","children":" · "}],"Phần 8/15"]}],["$","h1",null,{"className":"blog-article__title","children":"Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems"}],["$","p",null,{"className":"blog-article__summary","children":"Tách code thường dễ hơn tách dữ liệu. Khi mỗi service cần sở hữu dữ liệu riêng, team phải đối mặt với shared database, eventual consistency, dual-write bug, outbox, saga, CQRS và event sourcing. Bài này đi qua những lựa chọn đó bằng ví dụ thực tế, để bạn hiểu trade-off trước khi hệ thống phân tán bắt đầu làm mọi thứ khó hơn."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Bởi Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-04-10","children":"10 tháng 4, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"14 phút đọc"}],["$","$Lc",null,{"label":"lượt xem"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Software Architecture",{"children":"Software Architecture"}],["$","li","Distributed Systems",{"children":"Distributed Systems"}],["$","li","Saga Pattern",{"children":"Saga Pattern"}],["$","li","CQRS",{"children":"CQRS"}],["$","li","Event Sourcing",{"children":"Event Sourcing"}],["$","li","Data Consistency",{"children":"Data Consistency"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"Bạn thấy bài viết thế nào?","surface":"blog","category":"architecture","slug":"data-in-distributed-systems","reactionLabels":{"like":"Thích","love":"Yêu thích","insightful":"Sâu sắc","clap":"Tuyệt vời"}}]
+10:["$","$L18",null,{"heading":"Bài liên quan","intro":"Một vài bài gần chủ đề này để bạn đọc tiếp mạch suy nghĩ với nhiều ngữ cảnh hơn.","items":[{"post":{"slug":"event-sourcing-beginners-guide","category":"architecture","title":"Event Sourcing cho người mới bắt đầu","summary":"Một bài nhập môn về Event Sourcing: lưu các sự kiện như lịch sử append-only, dựng current state bằng projection, và hiểu khi nào pattern này đáng với chi phí vận hành.","date":"2026-05-05","readingMinutes":7,"tags":["Software Architecture","Event Sourcing","Event-Driven Architecture","CQRS","System Design","Data Modeling"],"author":"Nguyen Le Phong"},"categoryTitle":"Source Code & Software Architecture","readingLabel":"7 phút đọc"},{"post":{"slug":"the-outbox-pattern","category":"architecture","title":"Outbox Pattern","summary":"Một bài giải thích thực tế về Outbox Pattern: vì sao dual write dễ fail, cách transactional outbox giữ database state và event đi cùng nhau, và những phần team vẫn cần xử lý quanh retry, idempotency, ordering, cleanup và observability.","date":"2026-05-15","readingMinutes":7,"tags":["Software Architecture","Outbox Pattern","Distributed Systems","Event-Driven Architecture","Reliability","Microservices"],"author":"Nguyen Le Phong"},"categoryTitle":"Source Code & Software Architecture","readingLabel":"7 phút đọc"},{"post":{"slug":"saga-pattern-for-distributed-transactions","category":"architecture","title":"Saga Pattern cho distributed transaction","summary":"Một bài giải thích thực tế về Saga pattern trong distributed transaction: vì sao một database transaction không còn đủ khi hệ thống tách service, orchestration và choreography khác nhau thế nào, và vì sao compensation, observability, idempotency lại quan trọng.","date":"2026-04-30","readingMinutes":7,"tags":["Software Architecture","Saga Pattern","Distributed Transactions","Microservices","Eventual Consistency","Observability"],"author":"Nguyen Le Phong"},"categoryTitle":"Source Code & Software Architecture","readingLabel":"7 phút đọc"},{"post":{"slug":"event-driven-architecture-and-messaging","category":"architecture","title":"Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn","summary":"Khi service nào cũng gọi trực tiếp service khác, một dependency chậm có thể kéo cả checkout đi xuống. Bài này giải thích event-driven architecture bằng cách gần gũi: khi nào nên dùng sync hay async, command khác event ra sao, message broker thật sự bảo đảm điều gì, choreography và orchestration khác nhau thế nào, và lúc nào events chỉ làm hệ thống rối hơn.","date":"2026-04-11","readingMinutes":15,"tags":["Software Architecture","Event-Driven Architecture","Message Queues","Asynchronous Messaging","Distributed Systems","System Design"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":7},"categoryTitle":"Source Code & Software Architecture","readingLabel":"15 phút đọc"}],"sourceCategory":"architecture","sourceSlug":"data-in-distributed-systems"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"Software Architecture Foundations","children":[["$","$Lb",null,{"href":"/vi/blog/architecture/event-driven-architecture-and-messaging","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn"}]]}],["$","$Lb",null,{"href":"/vi/blog/architecture/resilience-in-distributed-systems","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Bài tiếp theo"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Timeout, Retry, Circuit Breaker và Idempotency: bộ kỹ năng sống còn của distributed systems"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Về Source Code & Software Architecture"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"Trong bài này","surface":"blog"}]}]
+16:null

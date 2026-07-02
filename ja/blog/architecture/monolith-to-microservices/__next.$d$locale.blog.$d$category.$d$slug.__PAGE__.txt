@@ -1,0 +1,256 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+5:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+f:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+10:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+11:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[70346,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+15:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta31,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/ja/blog/architecture/monolith-to-microservices#article","headline":"モノリス・Modular Monolith・マイクロサービス：正直な意思決定ガイド","description":"マイクロサービスは組織的スケールのために払う税金であり、出発点ではありません。モノリスから Modular Monolith を経てマイクロサービスへの誇大広告なしのウォークスルーと、いつ（そして本当に）分割すべきかを示すシグナルを解説します。","inLanguage":"ja","url":"https://nguyenlephong.github.io/ja/blog/architecture/monolith-to-microservices","image":"https://nguyenlephong.github.io/og/blog/monolith-to-microservices.png","mainEntityOfPage":"https://nguyenlephong.github.io/ja/blog/architecture/monolith-to-microservices","datePublished":"2026-03-03","dateModified":"2026-03-03","keywords":"ソフトウェアアーキテクチャ, Microservices, Modular Monolith, システム設計, 分散システム, スケーラビリティ","articleSection":"ソースコード & アーキテクチャ","isRelatedTo":[{"@type":"BlogPosting","headline":"Micro-Frontends：いつ価値があり、何が実際にかかるか","url":"https://nguyenlephong.github.io/ja/blog/architecture/micro-frontends-when-why-and-cost","image":"https://nguyenlephong.github.io/og/blog/micro-frontends-when-why-and-cost.png"},{"@type":"BlogPosting","headline":"Ports & Adapters（Hexagonal Architecture）をやさしく解説","url":"https://nguyenlephong.github.io/ja/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/og/blog/ports-and-adapters.png"},{"@type":"BlogPosting","headline":"The True Cost of Microservices","url":"https://nguyenlephong.github.io/en/blog/architecture/true-cost-of-microservices","image":"https://nguyenlephong.github.io/og/blog/true-cost-of-microservices.png"},{"@type":"BlogPosting","headline":"Clean・Onion・Hexagonal Architecture：一つの北極星、三つの名前","url":"https://nguyenlephong.github.io/ja/blog/architecture/clean-vs-onion-vs-hexagonal","image":"https://nguyenlephong.github.io/og/blog/clean-vs-onion-vs-hexagonal.png"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/ja/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"ブログ\",\"item\":\"https://nguyenlephong.github.io/ja/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"ソースコード & アーキテクチャ\",\"item\":\"https://nguyenlephong.github.io/ja/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"モノリス・Modular Monolith・マイクロサービス：正直な意思決定ガイド\",\"item\":\"https://nguyenlephong.github.io/ja/blog/architecture/monolith-to-microservices\"}]}"}}],null,["$","$L3",null,{"category":"architecture","slug":"monolith-to-microservices","children":[["$","$L4",null,{"category":"architecture","slug":"monolith-to-microservices","readingMinutes":16,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L5",null,{"url":"https://nguyenlephong.github.io/ja/blog/architecture/monolith-to-microservices","title":"モノリス・Modular Monolith・マイクロサービス：正直な意思決定ガイド","surface":"blog","category":"architecture","slug":"monolith-to-microservices","labels":{"share":"シェア","copyLink":"リンクをコピー","copied":"コピーしました！","close":"閉じる"}}],"$L6"]}],"$L7","$L8","$L9"]}],"$La"]}]]}],["$Lb","$Lc","$Ld"],"$Le"]}],"loading":null,"isPartial":false}
+12:T929e,<p>こんな場面は必要以上によく起きます：三人のスタートアップが初日にマイクロサービスを構築することを決めます。六ヶ月後、彼らは十五のサービス・誰も完全に理解していない Kafka クラスター、そして再現するためにリクエストを八つのサービスにまたがって追跡しなければならないバグを抱えています。チームは疲弊しています。プロダクトは半分しかできていません。そしてどこかの Slack スレッドで誰かが<em>分散モノリスを構築してしまった</em>という言葉をタイプします。</p>
+<p>マイクロサービスは本当に強力です――適切なスケール・適切なチーム・適切な理由があれば。しかしそれは<strong>出発点ではなく、組織的スケールのために払う税金</strong>です。このガイドでは三つのアーキテクチャの形――モノリス・Modular Monolith・マイクロサービス――を正直にウォークスルーし、いつ（そして本当に）それらの間を移行すべきかのシグナルを示します。</p>
+
+<h2 id="monolith">モノリス：一つのデプロイで支配する</h2>
+<p>モノリスは単一のデプロイ可能なユニットです。一つのビルド・一つのバイナリ（またはコンパイルされたアセットのセット）・一つのデプロイステップ。すべての機能・すべてのモジュール・すべてのデータベースクエリが同じプロセスに住んでいます。</p>
+<p>それは制限があるように聞こえますし、言葉自体が少し恥ずかしい響きを帯びてきました――モノリスを持っていることを認めるのは、現代のエンジニアリングに追いついていないことを認めるようなものだと。そのフレーミングは間違っており、多くの不必要な痛みを引き起こしてきました。</p>
+<p><strong>モノリスは正しいデフォルトです。</strong>その理由は：</p>
+<ul>
+  <li><strong>ローカル呼び出しは無料です。</strong>プロセス内の関数呼び出しはナノ秒です。サービス間のネットワーク呼び出しはミリ秒です――そして失敗・タイムアウト・部分的な結果を返す・完全に失われることがあります。その複雑さは必要になるまで持ち歩きません。</li>
+  <li><strong>トランザクションは簡単です。</strong>リレーショナルデータベースはデータモデル全体にわたるACIDトランザクションを提供します。モノリスでは、口座AからBへのお金の移動は一つのトランザクションです。マイクロサービスでは分散トランザクションまたはサガになります――本物の失敗モードを持つ本当に難しい問題です。</li>
+  <li><strong>デバッグは簡単です。</strong>一つのプロセス・一つのログストリーム・一つのスタックトレース。問題を見つけます。分散システムでは、単一のユーザーアクションが複数のサービスにわたる数十の非同期操作を生み出すことがあり、それらを相関付けるには専用の観測可能性ツールが必要です。</li>
+  <li><strong>デプロイはシンプルです。</strong>一つのアーティファクト・一つのパイプライン・一つのロールバック戦略。初日から自信を持って出荷できます。</li>
+  <li><strong>大企業は大きなモノリスを出荷しています。</strong>Shopify は巨大なスケールで何年も Rails モノリスを動かしていました。Stack Overflow はモノリスを動かしている少数のサーバーから一日に何百万ものリクエストを処理しています。モノリスはスケールを妨げません――ただし異なる方法でスケールします。</li>
+</ul>
+<p>モノリスの本物の痛みは本物ですが、人々が期待するよりも後に来ます。<strong>ビルド時間</strong>はコードベースが成長するにつれて増大します――50kラインで二分かかる完全なリビルドは500kラインで十二分かかります。<strong>マージの摩擦</strong>は二十人のエンジニアが同じコードベースを変更するときに増加します；長期ブランチとコンフリクトが日常のルーティンになります。<strong>デプロイのカップリング</strong>はすべてのチームが一緒にデプロイすることを意味します――一つのチームのリスクのある変更が他の全員のリリースを止める可能性があります。</p>
+<p>これらの痛みは本物です。しかし、それらは<em>成功</em>の痛みであり、誇大広告が示唆するよりもはるかに後に来ます。ほとんどのチームはそれらに当たるほど幸運であるべきです。</p>
+
+<h2 id="modular-monolith">Modular Monolith：ほとんどのチームが飛び越えるスイートスポット</h2>
+<p>Modular Monolith はまだ一つのデプロイ可能なユニットです――しかし内部的に<strong>強制されたバウンダリー</strong>を持つモジュールに整理されています。モジュールは明確なインターフェースを通じてコミュニケーションします。一つのモジュールが別のモジュールの内部に直接到達することは許可されていません：兄弟からプライベートクラスをインポートしない・データベーステーブルを共有しない・モジュールの境界線を越えて内部ヘルパー関数を呼ばない。</p>
+<p>これは小さな規律のように聞こえますが、ゲームを大きく変えます。</p>
+<p>家のフロアプランのようなものだと考えてください。モジュールのないモノリスはスタジオアパートです：一つの大きなオープンルームにすべてがあります。Modular Monolith は壁のある部屋を与えます――まだ一つの家に住んでいて、まだ配管と玄関を共有していますが、キッチンとベッドルームは独自の明確な目的を持っており、ベッドで料理はしません。</p>
+<p>モジュールはドメイン駆動設計の<strong>境界付けられたコンテキスト</strong>に自然にマップします：<code>Billing</code> モジュール・<code>Inventory</code> モジュール・<code>Notifications</code> モジュール。それぞれが独自のドメインロジックとデータベーススキーマのスライスを所有します。パブリックインターフェース（サービスファサードまたはパブリック関数のセット）を公開し、他のすべてをプライベートに保ちます。</p>
+<p>実践的な利点は大きいです：</p>
+<ul>
+  <li><strong>独立した推論。</strong><code>Billing</code> に取り組む開発者は、コードベース全体を頭に保つことなくそれを理解・変更できます。</li>
+  <li><strong>安全なリファクタリング。</strong>パブリックインターフェースが保たれている限り、モジュールの内部を書き直せます――アプリの残りは気づきません。</li>
+  <li><strong>明確なオーナーシップ。</strong>チームがモジュールを請け負います。コードレビューが焦点を保ちます。新しい開発者のオンボーディングは200kラインのコードベースではなく一つのモジュールを渡すことを意味します。</li>
+  <li><strong>移行準備ができたシーム。</strong>サービスを抽出する必要が生じても、バウンダリーはすでに引かれています。モジュールがサービスになります。インターフェースがAPIになります。作業は相当ありますが、探索的な手術ではなく既知の作業です。</li>
+</ul>
+<p>Modular Monolith は、ほとんどのチームが絡まったモノリスからマイクロサービスへとここで立ち止まらずに飛び越えるアーキテクチャです。それは間違いです。大多数のプロダクトチーム――100人未満のエンジニア・単桁のサービス・一〜二のデプロイパイプライン――にとって、よく管理された Modular Monolith が最も生産的な場所です。</p>
+
+<h2 id="microservices">マイクロサービス：実際に手に入れるもの</h2>
+<p>マイクロサービスはシステムを独立してデプロイ可能なサービスに分解します。各サービスが独自のプロセス・独自のデプロイパイプライン・そして重要なことに独自のデータストアを所有します。サービスはネットワーク経由でお互いに話します：HTTP・gRPC・メッセージキュー・イベントストリーム。</p>
+<p>マイクロサービスがうまく機能するとき、スケールで他の何も匹敵できない四つのことを提供します：</p>
+<ul>
+  <li><strong>独立したデプロイ。</strong>決済チームは火曜日の午後に、レコメンデーションチーム・検索チーム・通知チームと調整することなく決済サービスへの変更を出荷できます。数百人のエンジニアを持つ企業では、これは変革的です――週に一度のデプロイと一日に百回のデプロイの違いです。</li>
+  <li><strong>独立したスケーリング。</strong><code>ImageProcessing</code> サービスがピーク時に40のCPUコアを必要とし、<code>UserProfile</code> サービスが2つを必要とするなら、それらを別々にスケールできます。モノリスでは全体をスケールします――必要かどうかにかかわらず、すべての機能のために40コアを購入します。</li>
+  <li><strong>チームの自律性。</strong>各サービスは小さな自己完結したプロダクトです。五人のエンジニアのチームがサービスを完全に所有できます：言語・データベース・デプロイケイデンスを選びます。これがマイクロサービスの組織的なスーパーパワーです――Conway の法則があなたに反ではなくあなたのために機能する。</li>
+  <li><strong>障害の分離。</strong><code>RecommendationEngine</code> のメモリリークは <code>RecommendationEngine</code> をダウンさせますが、チェックアウトはダウンさせません。段階的に劣化できます――ストアはまだ機能し、製品にはただパーソナライズされたサジェストがないだけです。モノリスでは、任意のモジュールのキャッチされない例外がプロセス全体をダウンさせる可能性があります。</li>
+</ul>
+<p>パターンに注目してください：そのリストのすべては<em>組織的</em>および<em>運用的</em>なスケールについてです。これらはプロダクトマーケットフィットをまだ見つけていない八人のチームには適用されない懸念事項です。</p>
+
+<h2 id="the-tax">実際に払うもの：分散システムの税金</h2>
+<p>マイクロサービスは無料ではありません。上記のすべての利点には対応するコストがあり、そのコストは軽くありません。それらを過小評価することが、チームが疲弊して目標未達に終わる原因です。</p>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">分散モノリスの警告</span><p>最悪の結果はマイクロサービスでもモノリスでもありません――それは<strong>分散モノリス</strong>です：一緒にデプロイしなければならない・同じデータベースを共有する・一緒に失敗するほど密に結合したマイクロサービス。マイクロサービスのすべてのコストを払い、利点は何も受けません。ビジネスドメインではなく技術レイヤーで分割したとき、またはサービスが長いチェーンで同期的に互いを呼び出すときに起きます。<code>ServiceA</code> が <code>ServiceB</code> の後にしかデプロイできないなら、分散モノリスを構築しています。</p></div>
+
+<p>税金の全貌はこうです：</p>
+<ul>
+  <li><strong>ネットワーク呼び出しは失敗します。</strong>関数呼び出しはバグを除き失敗できません。ネットワーク呼び出しは失敗・タイムアウト・古いキャッシュ値を返す・最初の試みにすでに副作用があった後でリトライで成功することがあります。どこでも常に部分的な失敗を処理しなければなりません。</li>
+  <li><strong>結果整合性。</strong>サービスが独自のデータを所有します。サービスのバウンダリーをまたいでそのデータを一貫して保つには、慎重な設計が必要です――イベント駆動のパターン・サガ・冪等な操作・補償トランザクション。ユーザーが注文を配置できるがすぐに注文履歴に表示されない理由をプロダクトマネージャーに説明するのは厄介です。</li>
+  <li><strong>分散トランザクションは難しい。</strong>二フェーズコミットプロトコルは存在しますが、みじめです。ほとんどのチームは代わりにサガパターンを使いますが、複雑さをデータベースからアプリケーションコードにシフトします。どちらも <code>BEGIN; UPDATE; COMMIT;</code> よりも大幅に複雑です。</li>
+  <li><strong>デバッグは別のスキルです。</strong>スタックトレースはもはや何が間違ったかを教えてくれません。分散トレーシング（Jaeger・Zipkin・Honeycomb）・すべてのログラインのコリレーションID・サービスメッシュ・サービスにまたがるイベントを相関付けるダッシュボードが必要です。この観測可能性インフラを構築・維持することは本物のエンジニアリング作業です。</li>
+  <li><strong>運用オーバーヘッドが倍増します。</strong>一つのサービスに Dockerfile・Kubernetes デプロイメント・イングレスルール・ヘルスチェックエンドポイント・CPUとメモリの制限・ログ集約設定・アラートルールが必要です。三十のサービスで掛け算します。このオーバーヘッドはサービス数に比例してリニアにスケールします；エンジニアの頭数はそうではありません。</li>
+  <li><strong>テストは難しくなります。</strong>ユニットテストはまだ簡単です。しかし、サービスのバウンダリーをまたぐインテグレーションテストは、複数のサービスを同時に実行し、そのバージョンと設定を管理し、データベースにまたがるテストデータを扱うことが必要です。コントラクトテスト（Pact など）は助けになりますが、学ぶ独自の規律を追加します。</li>
+</ul>
+<p>これらのコストはどれも解決不可能ではありません――業界はそのすべてに対して成熟したツールを持っています。重要なのは、それらが毎日払わなければならない<em>本物のコスト</em>であり、それらが解放する利点が実際に必要になるまで払う価値がないということです。</p>
+
+<h2 id="signals">シグナル：いつ分割すべきか（そしていつしないか）</h2>
+<p>では、マイクロサービスがそのコストに見合うしきい値を超えたことをどうやって知るのでしょうか？実際にそれが時期であることを示すシグナルはこれらです：</p>
+<ul>
+  <li><strong>独立したスケーリングのニーズが本物で高価です。</strong>システムの残りの10倍のリソースを必要とする特定のコンポーネントを指摘でき、モノリス全体でそのリソースを支払っています。分割することで意味のあるコストの節約または意味ある性能改善が得られます。</li>
+  <li><strong>デプロイの競合が慢性的です。</strong>チームが他のチームの進行中の変更によって定期的に出荷をブロックされています。共有デプロイの調整オーバーヘッドが測定可能なほど遅くしています――時折ではなく、週次または日次の不満として。</li>
+  <li><strong>チーム数がそれを要求しています。</strong>異なるデプロイケイデンス・異なる技術の好み・本当に独立したロードマップを持つ別々のビジネスドメインに取り組む五人以上のエンジニアの複数のチームがいます。Conway の法則は最終的なアーキテクチャを予測します――計画した方がよい。</li>
+  <li><strong>あるコンポーネントが根本的に異なる信頼性またはセキュリティ要件を持っています。</strong>決済・認証・PII ストレージはしばしばパフォーマンス上の理由ではなく、コンプライアンス・影響範囲の縮小・独立した監査の能力のために分離を正当化します。</li>
+  <li><strong>モジュールはすでに実質的に分離されています。</strong>システムの残りと共有状態がなく、明確に定義されたイベントまたはAPIを通じてのみコミュニケーションし、別のチームが所有しています。組織的なシームはすでに存在します――サービスバウンダリーにすることはすでに真実であることを形式化するだけです。</li>
+</ul>
+<p>そして早く分割しすぎているシグナルはこれらです：</p>
+<ul>
+  <li>エンジニアリング組織全体が二十人未満です。</li>
+  <li>具体的な制限に当たったからではなく、よりスケーラブルに感じられるから分割しています。</li>
+  <li>計画しているサービスは機能するために一緒にデプロイしなければならないでしょう。</li>
+  <li>各サービスが共有テーブルなしに独自のデータを所有するクリーンなバウンダリーをまだ引けません。</li>
+  <li>チームはまだ分散システムをデバッグするための観測可能性インフラ（分散トレーシング・集中ログ・アラート）を持っていません。</li>
+  <li>主な理由がマイクロサービスが求人票や会社のマーケティングコピーに載っているからです。</li>
+</ul>
+
+<h2 id="how-to-split">上手く分割する方法：シーム・ストラングラーフィグ・データオーナーシップ</h2>
+<p>上記のシグナルが分割を指していれば、<em>方法</em>が非常に重要です。悪い分割は上記で説明した分散モノリスを生み出します。良い分割は本当に独立したサービスを生み出し、それらが自分自身の代金を払います。</p>
+<p><strong>技術レイヤーではなく境界付けられたコンテキストで分割する。</strong><code>DatabaseService</code> や <code>ValidationService</code> を作らないでください――それらは技術的な懸念事項であり、ビジネスのものではありません。<code>OrderService</code>・<code>BillingService</code>・<code>InventoryService</code> を作ってください――ドメインに明確で安定した意味を持つビジネス機能の単位。境界付けられたコンテキストは特定のモデルが適用され、言語が一貫しているドメインの部分です。サービスバウンダリーが属するのはそこです。</p>
+<p><strong>ストラングラーフィグパターンを使う。</strong>宿主となる木を徐々に包む蔓にちなんで名付けられたストラングラーフィグパターンは、一度に全部ではなく段階的にサービスを抽出させてくれます。新しいサービスをモノリスの横に立ち上げ、特定のトラフィックのスライスをそちらにルートし、機能を確認し、モノリスから対応するコードを削除します。モノリスは時間とともに縮小します；決して書き直されません。これはより安全で、より可逆的で、決して終わらない六ヶ月の大爆発マイグレーションになる可能性がはるかに低いです。</p>
+<p><strong>一度に一つのサービスを抽出する。</strong>すべての抽出が何かを教えてくれます。二回目の抽出は最初よりもうまくいくでしょう。五つのサービスを同時に抽出しようとすることは、学びを分散させてリスクを倍増させます。</p>
+<p><strong>データオーナーシップは交渉不可能です。</strong>別のサービスとデータベーステーブルを共有するサービスはサービスではありません――余分なネットワークオーバーヘッドを持つモジュールです。各サービスは独自のデータを所有しなければなりません。二つのサービスが同じデータを必要とするなら、一方が権威があり、もう一方がAPI経由でそれを取得するかイベント経由で同期します。この制約を確立することは痛く維持することも痛いですが、それがあなたが求めていた独立したデプロイ可能性と障害の分離を与えるものです。</p>
+<p><strong>抽出する前にポートを使ってシームを定義する。</strong>Modular Monolith 内で <a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a> アプローチを採用していれば、抽出はほぼ機械的になります：ポートがAPIを定義し、その背後のアダプターがサービスクライアントになります。ドメインロジックは変わりません――デリバリーメカニズムだけが変わります。これが最初からポートで構築することの最も強力な実践的論拠の一つです：抽出準備ができたシームを無料で提供します。</p>
+
+<h2 id="comparison">並べて比較</h2>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>次元</th>
+      <th>モノリス</th>
+      <th>Modular Monolith</th>
+      <th>マイクロサービス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>デプロイ単位</th>
+      <td>一つのプロセス・一つのパイプライン</td>
+      <td>一つのプロセス・一つのパイプライン</td>
+      <td>多くのプロセス・多くの独立パイプライン</td>
+    </tr>
+    <tr>
+      <th>データオーナーシップ</th>
+      <td>共有データベース；すべてのコードがすべてのテーブルにアクセス可能</td>
+      <td>共有データベース；モジュールが慣習によってスキーマ領域を所有</td>
+      <td>各サービスが独自のデータベースを所有；共有テーブルなし</td>
+    </tr>
+    <tr>
+      <th>障害モード</th>
+      <td>一つのプロセスクラッシュがアプリ全体をダウンさせる</td>
+      <td>一つのプロセスクラッシュがアプリ全体をダウンさせる</td>
+      <td>サービス障害は隔離される；他は段階的に劣化する</td>
+    </tr>
+    <tr>
+      <th>チームの適合</th>
+      <td>1〜3チームに最適；チーム数とともに摩擦が増大</td>
+      <td>2〜8チームに最適；モジュールがチームオーナーシップに合う</td>
+      <td>独立したケイデンスで出荷する5チーム以上に必要</td>
+    </tr>
+    <tr>
+      <th>運用コスト</th>
+      <td>低い：一つのデプロイ・一つのログストリーム・一セットのアラート</td>
+      <td>低い：プレーンなモノリスと同じ運用フットプリント</td>
+      <td>高い：観測可能性・コンテナオーケストレーション・サービスメッシュ・サービスごとの CI/CD</td>
+    </tr>
+    <tr>
+      <th>トランザクションモデル</th>
+      <td>完全な ACID トランザクションが簡単</td>
+      <td>完全な ACID トランザクションが簡単</td>
+      <td>サガまたは結果整合性；分散トランザクションは難しい</td>
+    </tr>
+    <tr>
+      <th>使う場面</th>
+      <td>新製品・小規模チーム・未知のドメイン</td>
+      <td>明確なドメインバウンダリーを持つ成長中プロダクト・10〜100人のエンジニア</td>
+      <td>複数の自律的チーム・証明されたドメインモデル・本物の独立したスケーリングニーズ</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="by-company-size">会社の規模ごとの正直な見解</h2>
+<p>アーキテクチャのアドバイスは、マイクロサービスが意味をなすしきい値をすでに超えた企業から来ることが多いです――それらがエンジニアリングブログ・カンファレンストーク・詳細なポストモーテムを書くリソースを持っている企業だからです。これは生存者バイアスを生み出します。より正直な地図を示します：</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 900 340" role="img" aria-labelledby="dgm-evo">
+    <title id="dgm-evo">三段階の進化：モノリス・Modular Monolith・マイクロサービスが左から右に矢印付きで示されています。</title>
+    <defs>
+      <marker id="evoAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-muted dgm-t-mono" x="130" y="30" text-anchor="middle" font-size="11">STAGE 1</text>
+    <text class="dgm-t-muted dgm-t-mono" x="450" y="30" text-anchor="middle" font-size="11">STAGE 2</text>
+    <text class="dgm-t-muted dgm-t-mono" x="780" y="30" text-anchor="middle" font-size="11">STAGE 3</text>
+    <rect class="dgm-surface" x="30" y="48" width="200" height="180" rx="14" stroke-width="2"/>
+    <text class="dgm-t-strong" x="130" y="82" text-anchor="middle" font-size="16">Monolith</text>
+    <text class="dgm-t-muted" x="130" y="102" text-anchor="middle" font-size="11">One deployable</text>
+    <rect class="dgm-core" x="58" y="118" width="144" height="80" rx="10"/>
+    <text x="130" y="153" text-anchor="middle" font-size="13">All Code</text>
+    <text class="dgm-t-muted" x="130" y="172" text-anchor="middle" font-size="11">one process</text>
+    <ellipse class="dgm-driven" cx="130" cy="248" rx="36" ry="10" stroke-width="1.5"/>
+    <rect class="dgm-driven" x="94" y="248" width="72" height="28" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="130" cy="276" rx="36" ry="10" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="130" y="300" text-anchor="middle" font-size="11">shared DB</text>
+    <path class="dgm-flow" d="M234,138 H308" marker-end="url(#evoAcc)" stroke-width="2"/>
+    <text class="dgm-t-accent" x="271" y="130" text-anchor="middle" font-size="11">enforce</text>
+    <text class="dgm-t-accent" x="271" y="143" text-anchor="middle" font-size="11">boundaries</text>
+    <rect class="dgm-surface" x="312" y="48" width="276" height="180" rx="14" stroke-width="2"/>
+    <text class="dgm-t-strong" x="450" y="82" text-anchor="middle" font-size="16">Modular Monolith</text>
+    <text class="dgm-t-muted" x="450" y="102" text-anchor="middle" font-size="11">One deployable · internal modules</text>
+    <rect class="dgm-adapter" x="328" y="118" width="72" height="44" rx="8"/>
+    <text x="364" y="144" text-anchor="middle" font-size="12">Billing</text>
+    <rect class="dgm-adapter" x="414" y="118" width="72" height="44" rx="8"/>
+    <text x="450" y="144" text-anchor="middle" font-size="12">Orders</text>
+    <rect class="dgm-adapter" x="500" y="118" width="72" height="44" rx="8"/>
+    <text x="536" y="144" text-anchor="middle" font-size="12">Notif.</text>
+    <line class="dgm-line" x1="400" y1="118" x2="400" y2="162" stroke-dasharray="4 3" stroke-width="1.2"/>
+    <line class="dgm-line" x1="486" y1="118" x2="486" y2="162" stroke-dasharray="4 3" stroke-width="1.2"/>
+    <ellipse class="dgm-driven" cx="450" cy="248" rx="36" ry="10" stroke-width="1.5"/>
+    <rect class="dgm-driven" x="414" y="248" width="72" height="28" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="450" cy="276" rx="36" ry="10" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="450" y="300" text-anchor="middle" font-size="11">shared DB · owned schemas</text>
+    <path class="dgm-flow" d="M592,138 H656" marker-end="url(#evoAcc)" stroke-width="2"/>
+    <text class="dgm-t-accent" x="624" y="130" text-anchor="middle" font-size="11">split at</text>
+    <text class="dgm-t-accent" x="624" y="143" text-anchor="middle" font-size="11">seams</text>
+    <rect class="dgm-adapter" x="660" y="58" width="100" height="50" rx="10" stroke-width="1.5"/>
+    <text x="710" y="88" text-anchor="middle" font-size="13">Billing</text>
+    <ellipse class="dgm-driven" cx="710" cy="122" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="688" y="122" width="44" height="18" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="710" cy="140" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-core" x="774" y="138" width="100" height="50" rx="10" stroke-width="1.5"/>
+    <text x="824" y="168" text-anchor="middle" font-size="13">Orders</text>
+    <ellipse class="dgm-driven" cx="824" cy="202" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="802" y="202" width="44" height="18" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="824" cy="220" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="660" y="218" width="100" height="50" rx="10" stroke-width="1.5"/>
+    <text x="710" y="248" text-anchor="middle" font-size="13">Notif.</text>
+    <ellipse class="dgm-driven" cx="710" cy="282" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="688" y="282" width="44" height="18" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="710" cy="300" rx="22" ry="7" stroke-width="1.2"/>
+    <path class="dgm-flow" d="M760,83 C 790,83 780,158 778,158" marker-end="url(#evoAcc)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <path class="dgm-flow" d="M760,243 C 790,243 840,218 828,192" marker-end="url(#evoAcc)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <path class="dgm-flow" d="M710,108 L710,214" marker-end="url(#evoAcc)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <text class="dgm-t-muted" x="780" y="320" text-anchor="middle" font-size="11">own DBs · network calls</text>
+  </svg>
+  <figcaption>三つのアーキテクチャステージ。ステージ1：一つのボックス、すべてが一緒。ステージ2：強制された内部モジュールバウンダリー（破線）を持つ一つのボックス。ステージ3：ネットワーク呼び出し（破線の矢印）でつながれた別々のボックス、それぞれに独自のデータベースシリンダー。どのステージでも止まれます――適切な形はトレンドではなくチームによって決まります。</figcaption>
+</figure>
+
+<p><strong>スタートアップ（1〜15人のエンジニア）。</strong>モノリスを構築してください。システムのどの部分がスケールを必要とするか・どの機能が生き残るか・どのドメインバウンダリーが本物かをまだ知りません。早まった分解は、決断を下すのに十分な情報を持つ前にそれを固定します。Shopify・GitHub・Basecamp はすべて Rails モノリスとして始まりました。Twitter もそうで、本物の負荷の下で分解する前に何年もかなりのスケールでそれを動かしていました。</p>
+<p><strong>スケールアップ（15〜80人のエンジニア、成長中）。</strong>ここが Modular Monolith が真価を発揮する場所です。単一コードベースの制御されない成長が本物の摩擦を引き起こすのに十分なエンジニアがいますが、フルマイクロサービスのオーバーヘッドが速度を殺すほどではありません。モジュールバウンダリー・チームオーナーシップ・明確なインターフェースに投資してください。サービスを抽出するオプションを保ちますが、具体的なスケーリングニーズが強制しない限りまだ行使しません。</p>
+<p><strong>エンタープライズ / 大規模組織（80人超のエンジニア、複数の自律チーム）。</strong>選択的なマイクロサービスがここで意味をなします――しかし選択的がキーワードです。最も効果的な大規模アーキテクチャは純粋なモノリスでも同じサイズのサービスの海でもありません：それは思慮深い組み合わせです。最も負荷がかかる・ドメインクリティカルな機能のための少数のコアサービス・運用的な中間のための Modular Monolith・独立したスケーリングまたはコンプライアンスが本当に要求する少数の特化したサービス。Amazon はすべてを一度に分解しませんでした；負荷の下でシームを特定し、一つずつ抽出しました。</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Netflix と Amazon からの本当の教訓</span><p>Netflix と Amazon がマイクロサービスの旅を描くとき、引用される部分は何百ものサービスを持つアーキテクチャ図です。省かれる部分は、彼らがモノリスとして始まり、痛みが否定できなくなるまでそれを動かし、その後移行に何年もの巨大なエンジニアリング努力を投資した――現在マイクロサービスを実行可能にするツールの多くを構築することを含む――という事実です。彼らはどこに到達したかを話しているのであって、どこから始めるべきかを話しているのではありません。</p></div>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">まとめ</h3>
+<ul>
+  <li><strong>モノリスは正しいデフォルトです。</strong>構築が簡単・デバッグが容易・トランザクションが自明。痛みは誇大広告が示唆するよりも後に来て、本物のスケールでのみ。</li>
+  <li><strong>Modular Monolith は最も使われていないオプションです。</strong>内部モジュール間の強制されたバウンダリーはチームの明確さ・安全なリファクタリング・抽出準備ができたシームを与えます――分散システムの複雑さなしに。</li>
+  <li><strong>マイクロサービスは機能ではなく税金です。</strong>ネットワーク障害・結果整合性・分散トレーシング・運用オーバーヘッドで払います。見返り――独立したデプロイ・独立したスケーリング・チームの自律性――は本物ですが、それを要求するスケールでのみ。</li>
+  <li><strong>分散モノリスは最悪の結果です。</strong>一緒にデプロイしなければならない密に結合したサービスはマイクロサービスのすべてのコストを与え、利点は何も与えません。技術レイヤーではなく境界付けられたコンテキストで分割してください。</li>
+  <li><strong>データオーナーシップは難しい制約です。</strong>別のサービスとデータベースを共有するサービスはサービスではありません。各サービスは独自のデータを所有しなければなりません；バウンダリーをまたぐ一貫性には明示的な設計が必要です。</li>
+  <li><strong>段階的に分割するためにストラングラーフィグパターンを使う。</strong>一度に一つの境界付けられたコンテキストを抽出してください。各抽出は何かを教えてくれて可逆的です。大爆発分解は決してしないでください。</li>
+  <li><strong>チームサイズに合わせてアーキテクチャを合わせる、願望ではなく。</strong>スタートアップ：モノリス。スケールアップ：Modular Monolith。大規模自律チーム：本当に必要な場所での選択的マイクロサービス。</li>
+</ul>
+</div>
+
+<p>アーキテクチャの決定は時間を超えて波及し、複利で積み重なります。分割を決めた後に多くのチームが直面する次の質問は、フロントエンドについてどうするかです――単一の統一されたUIを提供するか、それも分解するか。そのラビットホールは <a href="/blog/architecture/micro-frontends-when-why-and-cost">Micro-Frontends：いつ価値があり、何が実際にかかるか</a>で探求されています。</p>6:["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lf",null,{"href":"/ja/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ブログ"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lf",null,{"href":"/ja/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ソースコード & アーキテクチャ"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["ソフトウェアアーキテクチャの基礎",["$","span",null,{"aria-hidden":"true","children":" · "}],"全 15 回中第 5 回"]}],["$","h1",null,{"className":"blog-article__title","children":"モノリス・Modular Monolith・マイクロサービス：正直な意思決定ガイド"}],["$","p",null,{"className":"blog-article__summary","children":"マイクロサービスは組織的スケールのために払う税金であり、出発点ではありません。モノリスから Modular Monolith を経てマイクロサービスへの誇大広告なしのウォークスルーと、いつ（そして本当に）分割すべきかを示すシグナルを解説します。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"著者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-03","children":"2026年3月3日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"16 分で読めます"}],["$","$L10",null,{"label":"ビュー"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","ソフトウェアアーキテクチャ",{"children":"ソフトウェアアーキテクチャ"}],["$","li","Microservices",{"children":"Microservices"}],["$","li","Modular Monolith",{"children":"Modular Monolith"}],["$","li","システム設計",{"children":"システム設計"}],["$","li","分散システム",{"children":"分散システム"}],["$","li","スケーラビリティ",{"children":"スケーラビリティ"}]]}]]}],["$","$L11",null,{"html":"$12"}],"$L13","$undefined"]}]
+7:["$","$L14",null,{"heading":"関連する読みもの","intro":"同じ流れをもう少し深く追える、近いテーマの記事です。","items":[{"post":{"slug":"micro-frontends-when-why-and-cost","category":"architecture","title":"Micro-Frontends：いつ価値があり、何が実際にかかるか","summary":"フロントエンドを独立してデプロイ可能なピースに分割することでチームが解放されることも、複雑さに埋もれることもあります。Angular ホスト＋ React モジュールをスケールで出荷した経験から：Micro-Frontends が見返りをもたらす場面と、それに伴うコストを正直にお伝えします。","date":"2026-03-02","readingMinutes":15,"tags":["ソフトウェアアーキテクチャ","Micro-Frontends","フロントエンドアーキテクチャ","Module Federation","スケーラビリティ","システム設計"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":6},"categoryTitle":"ソースコード & アーキテクチャ","readingLabel":"15 分で読めます"},{"post":{"slug":"ports-and-adapters","category":"architecture","title":"Ports & Adapters（Hexagonal Architecture）をやさしく解説","summary":"Hexagonal Architecture の入門ガイドです。ポートとアダプターが実際に何であるか、それを成立させる唯一のルール、そしてどこまで適用すべきかを、ソロ開発者からエンタープライズチームまでに向けてわかりやすく解説します。","date":"2026-03-07","readingMinutes":16,"tags":["ソフトウェアアーキテクチャ","Hexagonal Architecture","Ports and Adapters","Clean Architecture","システム設計","Dependency Inversion"],"author":"Nguyen Le Phong","featured":true,"series":"foundations","seriesOrder":1},"categoryTitle":"ソースコード & アーキテクチャ","readingLabel":"16 分で読めます"},{"post":{"slug":"true-cost-of-microservices","category":"architecture","title":"The True Cost of Microservices","summary":"Microservices can create real team autonomy, but they move cost into operations, data consistency, observability, testing, and coordination. This piece asks when that cost is worth paying and when a modular monolith is the kinder architecture.","date":"2026-04-06","readingMinutes":8,"tags":["Software Architecture","Microservices","Distributed Systems","Modular Monolith","Technical Debt","System Design"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":12},"categoryTitle":"ソースコード & アーキテクチャ","readingLabel":"8 分で読めます"},{"post":{"slug":"clean-vs-onion-vs-hexagonal","category":"architecture","title":"Clean・Onion・Hexagonal Architecture：一つの北極星、三つの名前","summary":"三つのアーキテクチャが対立しているように見えますが、実は同じアイデアです――依存は内向き、フレームワークは端に置く――を三通りに描いたものです。それぞれが何を加えているのか、どれを選べばよいかを解説します。","date":"2026-03-06","readingMinutes":15,"tags":["ソフトウェアアーキテクチャ","Clean Architecture","Onion Architecture","Hexagonal Architecture","システム設計","Dependency Inversion"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":2},"categoryTitle":"ソースコード & アーキテクチャ","readingLabel":"15 分で読めます"}],"sourceCategory":"architecture","sourceSlug":"monolith-to-microservices"}]
+8:["$","nav",null,{"className":"blog-series-nav","aria-label":"ソフトウェアアーキテクチャの基礎","children":[["$","$Lf",null,{"href":"/ja/blog/architecture/structuring-code-feature-vs-layer","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","前の記事"]}],["$","span",null,{"className":"blog-series-nav__title","children":"コードベースの構成：レイヤー・フィーチャー・ドメイン、どれを選ぶ？"}]]}],["$","$Lf",null,{"href":"/ja/blog/architecture/micro-frontends-when-why-and-cost","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["次の記事"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Micro-Frontends：いつ価値があり、何が実際にかかるか"}]]}]]}]
+9:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lf",null,{"href":"/ja/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","ソースコード & アーキテクチャに戻る"]}]}]
+a:["$","aside",null,{"className":"blog-article__toc","children":["$","$L15",null,{"label":"目次","surface":"blog"}]}]
+b:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+c:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+d:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+e:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+13:["$","$L19",null,{"prompt":"記事はいかがでしたか？","surface":"blog","category":"architecture","slug":"monolith-to-microservices","reactionLabels":{"like":"いいね","love":"大好き","insightful":"なるほど","clap":"祝福"}}]
+18:null

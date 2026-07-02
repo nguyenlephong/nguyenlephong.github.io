@@ -1,0 +1,18 @@
+{
+  "slug": "code-run-on-people",
+  "title": "Code có còn chạy trên con người?",
+  "html": "<blockquote>\n<p>\"Chương trình phải được viết cho người đọc, và chỉ tình cờ là cho máy chạy.\"\n﹣Harold Abelson, Structure and Interpretation of Computer Programs</p>\n</blockquote><p>Suốt nhiều thập kỷ câu này từng là kim chỉ nam, kiểu câu mà ta gật gù rồi nhắc đi nhắc lại. Giờ đọc lại thì nghe khá hài hước. Khi các AI agent viết và đọc phần lớn code, còn kỹ sư thì ngày càng &ldquo;điều phối&rdquo; bằng tiếng Anh thay vì cú pháp, câu hỏi hiển nhiên là: rốt cuộc code đang &ldquo;chạy&rdquo; trên ai nữa? Máy đang viết cho máy. Con người trong vòng lặp đã lặng lẽ lùi lại khỏi việc đọc từng dòng code và chuyển sang một thứ khác &mdash; viết ra ý định rõ ràng bằng ngôn ngữ tự nhiên rồi tin tưởng để agent dựng lại nó.</p><p>Vậy mà câu của Abelson có lẽ vẫn đúng, chỉ không theo cách ông từng nghĩ. Cái mà con người giờ viết cho người khác đọc không còn là code nữa; nó là prompt, là spec, là quyết định kiến trúc đóng khung cho cả nỗ lực. Đó là những thứ một đồng đội mở ra để hiểu bạn đã nghĩ gì, những thứ phải còn đọc hiểu được sau sáu tháng. Trọng tâm của tính &ldquo;dễ đọc cho con người&rdquo; chỉ đơn giản là dịch lên một tầng &mdash; từ phần cài đặt sang phần ý định. <em>(Một chuyển dịch tôi lần đầu ngẫm nghĩ trong <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">dòng suy nghĩ của một người bạn</a>.)</em></p>",
+  "backlinks": [
+    {
+      "slug": "programming-beacons",
+      "title": "Những ngọn hải đăng lập trình",
+      "context": "<p>Though, <a href=\"/thoughts/code-run-on-people\">Code có còn chạy trên con người?</a>.</p>"
+    },
+    {
+      "slug": "vocabulary-as-api-for-second-brain",
+      "title": "Vốn từ phong phú, nhất quán là API tốt nhất cho bộ não thứ hai",
+      "context": "<ul>\n<li><a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Kỹ năng diễn đạt</a> - <a href=\"/thoughts/programming-beacons\">Những ngọn hải đăng lập trình</a> - <a href=\"/thoughts/code-run-on-people\">Code có còn chạy trên con người?</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "budding"
+}

@@ -1,0 +1,396 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"default"]
+3:I[37457,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"ViewportBoundary"]
+b:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"MetadataBoundary"]
+d:I[68027,[],"default"]
+:HL["/_next/static/chunks/86cb92de2dbc4a72.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+0:{"P":null,"b":"KR7d5e40vDcl4tos3IAgD","c":["","zh","blog","architecture","ports-and-adapters"],"q":"","i":false,"f":[[["",{"children":[["locale","zh","d"],{"children":["blog",{"children":[["category","architecture","d"],{"children":[["slug","ports-and-adapters","d"],{"children":["__PAGE__",{}]}]}]}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/86cb92de2dbc4a72.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3eb5526bf007241a.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/76607804508f67af.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/_next/static/chunks/ef6dc99b3733f98f.js","async":true,"nonce":"$undefined"}],["$","script","script-3",{"src":"/_next/static/chunks/cd6b51a303fddcb4.js","async":true,"nonce":"$undefined"}],["$","script","script-4",{"src":"/_next/static/chunks/615749f3583e97a0.js","async":true,"nonce":"$undefined"}],["$","script","script-5",{"src":"/_next/static/chunks/adb371ef802fb2d4.js","async":true,"nonce":"$undefined"}]],"$L4"]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true,"nonce":"$undefined"}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],null]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+f:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+10:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+11:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+e:T94f,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters#article","headline":"Ports & Adapters（六边形架构），简单讲清楚","description":"一篇友好、示例驱动的六边形架构指南：ports 和 adapters 到底是什么、让它运转的那条核心规则，以及究竟该用多少——无论你是独立创业者还是企业级团队。","inLanguage":"zh","url":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/og/blog/ports-and-adapters.png","mainEntityOfPage":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters","datePublished":"2026-03-07","dateModified":"2026-03-07","keywords":"软件架构, Hexagonal Architecture, Ports and Adapters, Clean Architecture, 系统设计, Dependency Inversion","articleSection":"源码与架构","isRelatedTo":[{"@type":"BlogPosting","headline":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字","url":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal","image":"https://nguyenlephong.github.io/og/blog/clean-vs-onion-vs-hexagonal.png"},{"@type":"BlogPosting","headline":"Hexagonal Architecture in Practice","url":"https://nguyenlephong.github.io/en/blog/architecture/hexagonal-architecture-in-practice","image":"https://nguyenlephong.github.io/og/blog/hexagonal-architecture-in-practice.png"},{"@type":"BlogPosting","headline":"单体、模块化单体、微服务：一份诚实的决策指南","url":"https://nguyenlephong.github.io/zh/blog/architecture/monolith-to-microservices","image":"https://nguyenlephong.github.io/og/blog/monolith-to-microservices.png"},{"@type":"BlogPosting","headline":"微前端：何时值得，以及它们真正的代价","url":"https://nguyenlephong.github.io/zh/blog/architecture/micro-frontends-when-why-and-cost","image":"https://nguyenlephong.github.io/og/blog/micro-frontends-when-why-and-cost.png"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/zh/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}5:["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$e"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"博客\",\"item\":\"https://nguyenlephong.github.io/zh/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"源码与架构\",\"item\":\"https://nguyenlephong.github.io/zh/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Ports & Adapters（六边形架构），简单讲清楚\",\"item\":\"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters\"}]}"}}],null,["$","$Lf",null,{"category":"architecture","slug":"ports-and-adapters","children":[["$","$L10",null,{"category":"architecture","slug":"ports-and-adapters","readingMinutes":16,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L11",null,{"url":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters","title":"Ports & Adapters（六边形架构），简单讲清楚","surface":"blog","category":"architecture","slug":"ports-and-adapters","labels":{"share":"分享","copyLink":"复制链接","copied":"已复制！","close":"关闭"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":["$L12","$L13","$L14"]}],"$L15","$L16","$L17","$undefined"]}]]}],"$L18","$L19","$L1a"]}],"$L1b"]}]]}]
+1c:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1d:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1f:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+20:I[70346,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+23:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+13:["$","span",null,{"aria-hidden":"true","children":"/"}]
+15:["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["软件架构基础",["$","span",null,{"aria-hidden":"true","children":" · "}],"第 1 篇，共 15 篇"]}],["$","h1",null,{"className":"blog-article__title","children":"Ports & Adapters（六边形架构），简单讲清楚"}],["$","p",null,{"className":"blog-article__summary","children":"一篇友好、示例驱动的六边形架构指南：ports 和 adapters 到底是什么、让它运转的那条核心规则，以及究竟该用多少——无论你是独立创业者还是企业级团队。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"作者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-07","children":"2026年3月7日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"16 分钟阅读"}],["$","$L1c",null,{"label":"次浏览"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","软件架构",{"children":"软件架构"}],["$","li","Hexagonal Architecture",{"children":"Hexagonal Architecture"}],["$","li","Ports and Adapters",{"children":"Ports and Adapters"}],["$","li","Clean Architecture",{"children":"Clean Architecture"}],["$","li","系统设计",{"children":"系统设计"}],["$","li","Dependency Inversion",{"children":"Dependency Inversion"}]]}]]}]
+1e:T6d58,<p>你一定有过这种感受：一个本该花一下午完成的功能，结果耗掉了三天——只因为那个“小改动”（改一下发送邮件的方式）牵连了十几个文件。支付代码知道数据库的存在，数据库代码知道 Web 请求的细节，而夹在中间、几乎被淹没的，才是真正让你的产品<em>成为你产品</em>的那些业务规则。</p>
+<p><strong>Ports &amp; Adapters</strong>（你也会听到它叫 <em>Hexagonal Architecture</em>——六边形架构，由 Alistair Cockburn 于 2005 年提出）是一种代码组织方式，专门用来避免上面这种情况。它不是框架，不需要安装，适用于任何语言。说白了就是一个想法穿了件好听的外衣。我们来一步一步拆开它，配上图解和真实示例，读完你就能清楚地知道什么时候该用它——什么时候不该。</p>
+
+<h2 id="the-problem">问题所在：代码“长歪了”</h2>
+<p>大多数应用最初都一样讨人喜欢——一个 controller 调用一个 service，service 和数据库及几个第三方服务打交道，皆大欢喜。麻烦在于<em>时间一长</em>会发生什么。下面这段 checkout 逻辑只有几个月的历史，已经让人头疼了：</p>
+<pre><code><span class="cmt">// checkout.ts — 所有东西搅在一起</span>
+<span class="kw">class</span> OrderService {
+  <span class="kw">async</span> checkout(cart: Cart) {
+    <span class="kw">const</span> db = <span class="kw">new</span> PgClient(process.env.DB_URL)        <span class="cmt">// 绑定了具体的数据库</span>
+    <span class="kw">const</span> stripe = <span class="kw">new</span> Stripe(process.env.STRIPE_KEY)   <span class="cmt">// 绑定了具体的第三方服务</span>
+    <span class="kw">const</span> sg = <span class="kw">new</span> SendGrid(process.env.SENDGRID_KEY)   <span class="cmt">// 又一个第三方服务</span>
+
+    <span class="cmt">// 真正的业务规则被埋在各种第三方调用之间……</span>
+    <span class="kw">const</span> total = cart.items.reduce((s, i) =&gt; s + i.price, 0)
+    <span class="kw">await</span> stripe.charges.create({ amount: total, source: cart.token })
+    <span class="kw">await</span> db.query(<span class="str">'INSERT INTO orders …'</span>)
+    <span class="kw">await</span> sg.send({ to: cart.email, template: <span class="str">'order-ok'</span> })
+  }
+}</code></pre>
+<p>这里没有哪行代码是“错的”。但业务逻辑（订单<em>是什么</em>、何时有效、“已确认”意味着什么）和三个第三方服务以及数据库驱动紧紧缠绕。你没法在没有真实数据库的情况下测试这些规则。你没法不“动手术”就换掉 SendGrid。新来的队友读这段代码，会先了解 Stripe，然后才了解你的<em>订单</em>。</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">核心问题</span><p>Ports &amp; Adapters 回答的是这一个问题：<strong>怎样把赚钱的部分（业务规则）与早晚要换掉的部分（数据库、第三方服务、框架、UI）分开？</strong></p></div>
+
+<h2 id="core-idea">核心思想，一张图说清楚</h2>
+<p>把业务规则——<strong>domain（领域）</strong>——放在中心。禁止它引入任何框架、数据库驱动或第三方 SDK。然后让外部世界只通过 <strong>port（接口）</strong>与它对话，由 <strong>adapter（适配器）</strong>在另一侧处理那些乱糟糟的真实世界细节。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 800 500" role="img" aria-labelledby="dgm-ov">
+    <title id="dgm-ov">Domain 位于中心，Adapter 通过 Port 与之连接。</title>
+    
+  <defs>
+    <marker id="ovAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+    <text class="dgm-t-muted dgm-t-mono" x="105" y="92" text-anchor="middle" font-size="12">驱动侧 · 调用我们</text>
+    <text class="dgm-t-muted dgm-t-mono" x="695" y="92" text-anchor="middle" font-size="12">被驱动侧 · 我们调用它</text>
+
+    <polygon class="dgm-core" points="550,250 475,380 325,380 250,250 325,120 475,120" stroke-width="2"/>
+    <text class="dgm-t-strong" x="400" y="244" text-anchor="middle" font-size="23">Domain</text>
+    <text class="dgm-t-muted dgm-t-mono" x="400" y="270" text-anchor="middle" font-size="13">业务规则，不依赖第三方</text>
+
+    <!-- driving adapters -->
+    <rect class="dgm-adapter" x="30" y="128" width="150" height="46" rx="9"/>
+    <text x="105" y="156" text-anchor="middle" font-size="14">Web / Mobile UI</text>
+    <rect class="dgm-adapter" x="30" y="234" width="150" height="46" rx="9"/>
+    <text x="105" y="262" text-anchor="middle" font-size="14">REST / GraphQL</text>
+    <rect class="dgm-adapter" x="30" y="340" width="150" height="46" rx="9"/>
+    <text x="105" y="368" text-anchor="middle" font-size="14">Tests / CLI / Cron</text>
+
+    <path class="dgm-flow" d="M180,151 C 220,151 235,186 286,189" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M180,257 H 246" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M180,363 C 220,363 235,316 286,313" marker-end="url(#ovAcc)"/>
+
+    <!-- driven adapters -->
+    <rect class="dgm-driven" x="620" y="128" width="150" height="46" rx="9"/>
+    <text x="695" y="156" text-anchor="middle" font-size="14">Database</text>
+    <rect class="dgm-driven" x="620" y="234" width="150" height="46" rx="9"/>
+    <text x="695" y="262" text-anchor="middle" font-size="14">Email / SMS</text>
+    <rect class="dgm-driven" x="620" y="340" width="150" height="46" rx="9"/>
+    <text x="695" y="368" text-anchor="middle" font-size="14">Payment vendor</text>
+
+    <path class="dgm-flow" d="M514,189 C 560,186 575,151 618,151" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M554,257 H 618" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M514,313 C 560,316 575,363 618,363" marker-end="url(#ovAcc)"/>
+
+    <!-- ports -->
+    <circle class="dgm-fill-accent" cx="286" cy="189" r="8"/>
+    <circle class="dgm-fill-accent" cx="248" cy="250" r="8"/>
+    <circle class="dgm-fill-accent" cx="286" cy="313" r="8"/>
+    <circle class="dgm-fill-accent" cx="514" cy="189" r="8"/>
+    <circle class="dgm-fill-accent" cx="552" cy="250" r="8"/>
+    <circle class="dgm-fill-accent" cx="514" cy="313" r="8"/>
+
+    <text class="dgm-t-accent" x="400" y="455" text-anchor="middle" font-size="13">● = 一个 port（由 domain 定义的接口）</text>
+  </svg>
+  <figcaption>六边形只是一种画法：<strong>domain</strong> 位于中间，从不引入框架或第三方服务。外部所有东西想与它交互，都必须通过一个 <strong>port（接口）</strong>。左侧的 adapter 驱动应用；右侧的 adapter 被应用驱动。</figcaption>
+</figure>
+<p>整体形状就是这样。人们画六边形而不是圆形，有个有趣的原因：六条边提醒我们，应用有<em>很多</em>进出方式（Web UI、API、测试、定时任务、数据库、消息队列……），而不只是“上面”和“下面”。数字六本身没有意义——不要去数你的 port 数量。</p>
+
+<h2 id="vocabulary">核心词汇，用大白话说清楚</h2>
+<p>三个词就能说清楚所有事情。下面不用术语来解释：</p>
+<ul>
+  <li><strong>Domain（领域/核心）：</strong>你的业务规则和概念——<code>Order</code>、<code>Money</code>、“购物车里没有商品就不能结账”。纯逻辑。读起来应该像在描述你的业务，而不是你的技术栈。</li>
+  <li><strong>Port（接口）：</strong>一个由 domain 定义的<em>接口</em>，描述它需要或提供的能力——“我需要能 <code>save(order)</code>”或“我需要能 <code>charge()</code> 一笔付款”。Port 是一个承诺，用 domain 的语言写成，里面看不到任何第三方服务的名字。</li>
+  <li><strong>Adapter（适配器）：</strong>用真实技术实现某个 port 的具体代码——比如 <code>PostgresOrderRepo</code>、<code>StripeGateway</code>。Adapter 是 Stripe、Postgres、React 被允许出现的地方。</li>
+</ul>
+<p>Port 还分两种类型——这是唯一值得深入理解的细节：</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 860 250" role="img" aria-labelledby="dgm-flow">
+    <title id="dgm-flow">一个请求从驱动型 adapter 流入，穿过 domain，再流向被驱动型 adapter。</title>
+    
+  <defs>
+    <marker id="flAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+    <text class="dgm-t-muted dgm-t-mono" x="195" y="40" text-anchor="middle" font-size="12">PRIMARY · driving</text>
+    <text class="dgm-t-muted dgm-t-mono" x="650" y="40" text-anchor="middle" font-size="12">SECONDARY · driven</text>
+
+    <rect class="dgm-adapter" x="12" y="98" width="118" height="60" rx="10"/>
+    <text x="71" y="124" text-anchor="middle" font-size="13">User / Test</text>
+    <text class="dgm-t-muted" x="71" y="142" text-anchor="middle" font-size="11">actor</text>
+
+    <rect class="dgm-adapter" x="172" y="98" width="150" height="60" rx="10"/>
+    <text x="247" y="124" text-anchor="middle" font-size="13">Controller / CLI</text>
+    <text class="dgm-t-muted" x="247" y="142" text-anchor="middle" font-size="11">driving adapter</text>
+
+    <rect class="dgm-core" x="372" y="86" width="150" height="84" rx="12" stroke-width="2"/>
+    <text class="dgm-t-strong" x="447" y="122" text-anchor="middle" font-size="14">Use case</text>
+    <text class="dgm-t-muted" x="447" y="142" text-anchor="middle" font-size="11">domain rules</text>
+
+    <rect class="dgm-driven" x="572" y="98" width="150" height="60" rx="10"/>
+    <text x="647" y="124" text-anchor="middle" font-size="13">Repo / Gateway</text>
+    <text class="dgm-t-muted" x="647" y="142" text-anchor="middle" font-size="11">driven adapter</text>
+
+    <rect class="dgm-driven" x="760" y="98" width="92" height="60" rx="10"/>
+    <text x="806" y="124" text-anchor="middle" font-size="12">DB / Vendor</text>
+
+    <path class="dgm-flow" d="M130,128 H168" marker-end="url(#flAcc)"/>
+    <path class="dgm-flow" d="M322,128 H368" marker-end="url(#flAcc)"/>
+    <path class="dgm-flow" d="M522,128 H568" marker-end="url(#flAcc)"/>
+    <path class="dgm-flow" d="M722,128 H756" marker-end="url(#flAcc)"/>
+
+    <circle class="dgm-fill-accent" cx="347" cy="128" r="7"/>
+    <circle class="dgm-fill-accent" cx="547" cy="128" r="7"/>
+    <text class="dgm-t-accent" x="347" y="200" text-anchor="middle" font-size="12">input port</text>
+    <text class="dgm-t-accent" x="547" y="200" text-anchor="middle" font-size="12">output port</text>
+  </svg>
+  <figcaption>同一个 domain，两种 adapter。<strong>驱动型</strong>（主）adapter 通过 input port 把请求<em>推进来</em>；domain 通过 output port 把工作<em>推出去</em>给<strong>被驱动型</strong>（次）adapter。箭头表示调用方向——不是依赖方向。</figcaption>
+</figure>
+<ul>
+  <li><strong>驱动型（主）adapter</strong> 在左侧，<em>调用</em>你的应用：Web controller、CLI 命令、测试。它们使用 <strong>input port</strong>（你的 use-case 接口）。</li>
+  <li><strong>被驱动型（次）adapter</strong> 在右侧，<em>被</em>你的应用调用：数据库、邮件服务、支付 API。它们实现 domain 定义的 <strong>output port</strong>。</li>
+</ul>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">快速记忆法</span><p>如果某样东西<em>主动发起</em>与你的应用的对话，它就是<strong>驱动方</strong>。如果是你的应用主动发起，另一方就是<strong>被驱动方</strong>。用户点击“购买”是驱动方；支付服务商是被驱动方。</p></div>
+
+<h2 id="before-after">具体示例：改造前后对比</h2>
+<p>来把那段 checkout 代码理清楚。首先，用你业务中的语言写下 domain 需要的东西——<strong>port</strong>——不允许出现任何第三方名称：</p>
+<pre><code><span class="cmt">// ports.ts — domain 的语言词汇表，禁止出现任何第三方名称</span>
+<span class="kw">interface</span> PaymentGateway { charge(amount: Money, token: string): Promise&lt;Receipt&gt; }
+<span class="kw">interface</span> OrderRepository { save(order: Order): Promise&lt;void&gt; }
+<span class="kw">interface</span> Notifier        { orderConfirmed(order: Order): Promise&lt;void&gt; }</code></pre>
+<p>现在 use case 只依赖这些承诺，<em>别无其他</em>。大声读出来：听起来像在描述结账流程，而不是在列举第三方服务清单。</p>
+<pre><code><span class="cmt">// checkout-service.ts — 只依赖 port，绝不依赖第三方服务</span>
+<span class="kw">class</span> CheckoutService {
+  <span class="kw">constructor</span>(
+    <span class="kw">private</span> payments: PaymentGateway,
+    <span class="kw">private</span> orders: OrderRepository,
+    <span class="kw">private</span> notify: Notifier,
+  ) {}
+
+  <span class="kw">async</span> checkout(cart: Cart): Promise&lt;Order&gt; {
+    <span class="kw">const</span> order = Order.fromCart(cart)         <span class="cmt">// 纯业务规则</span>
+    <span class="kw">await</span> <span class="kw">this</span>.payments.charge(order.total, cart.token)
+    <span class="kw">await</span> <span class="kw">this</span>.orders.save(order)
+    <span class="kw">await</span> <span class="kw">this</span>.notify.orderConfirmed(order)
+    <span class="kw">return</span> order
+  }
+}</code></pre>
+<p>最后，真实的第三方服务藏在实现了各自 port 的 adapter 里。换掉任何一个都是局部改动——而在测试中，你可以用 fake 替换它们，在以前一次网络调用所需的时间里跑完成千上万个测试用例：</p>
+<pre><code><span class="cmt">// adapters/*.ts — 第三方服务在这里，藏在它所实现的 port 背后</span>
+<span class="kw">class</span> StripeGateway      <span class="kw">implements</span> PaymentGateway { <span class="cmt">/* Stripe SDK */</span> }
+<span class="kw">class</span> PostgresOrderRepo  <span class="kw">implements</span> OrderRepository { <span class="cmt">/* SQL 在这里 */</span> }
+<span class="kw">class</span> SendGridNotifier   <span class="kw">implements</span> Notifier        { <span class="cmt">/* SendGrid */</span> }
+
+<span class="cmt">// 测试时用内存 fake 替换真实服务——无需网络，毫秒级运行：</span>
+<span class="kw">const</span> service = <span class="kw">new</span> CheckoutService(<span class="kw">new</span> FakePayments(), <span class="kw">new</span> InMemoryOrders(), <span class="kw">new</span> NullNotifier())</code></pre>
+<p>注意发生了什么变化：Stripe、Postgres 和 SendGrid 现在是<em>边缘的细节</em>。真正让你赚钱的东西坐镇中央，清晰可读、易于测试，完全不知道那些第三方服务的存在。</p>
+
+<h2 id="dependency-rule">让一切成立的那一条规则</h2>
+<p>如果只记住一件事，请记住这个：<strong>源码中的依赖关系永远指向内部</strong>。外层（adapter、框架、I/O）可以知道内层。而中心的 domain 被允许对外面的一切<em>一无所知</em>。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 800 360" role="img" aria-labelledby="dgm-dep">
+    <title id="dgm-dep">依赖关系永远指向内部，朝向 domain。</title>
+    
+  <defs>
+    <marker id="depAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+    <rect class="dgm-surface" x="40" y="40" width="720" height="280" rx="18" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="64" y="68" font-size="12">ADAPTERS · frameworks · databases · HTTP · I/O</text>
+
+    <rect class="dgm-port" x="170" y="98" width="460" height="170" rx="15" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="190" y="124" font-size="12">APPLICATION · use cases + ports</text>
+
+    <rect class="dgm-core" x="310" y="150" width="180" height="86" rx="13" stroke-width="2"/>
+    <text class="dgm-t-strong" x="400" y="190" text-anchor="middle" font-size="19">Domain</text>
+    <text class="dgm-t-muted dgm-t-mono" x="400" y="212" text-anchor="middle" font-size="12">pure rules</text>
+
+    <path class="dgm-flow" d="M120,300 L300,210" marker-end="url(#depAcc)"/>
+    <path class="dgm-flow" d="M680,300 L500,210" marker-end="url(#depAcc)"/>
+    <path class="dgm-flow" d="M400,98 L400,146" marker-end="url(#depAcc)"/>
+
+    <text class="dgm-t-accent" x="400" y="345" text-anchor="middle" font-size="13">外层知道内层——反过来绝对不行。</text>
+  </svg>
+  <figcaption>黄金法则：源码依赖关系只能指向<strong>内部</strong>。Domain 不知道数据库的存在；数据库 adapter 才知道 domain。把某个外层翻转，domain 丝毫不受影响。</figcaption>
+</figure>
+<p>这就是为什么你可以替换整个 Web 框架，或者从 MySQL 迁移到 DynamoDB，而 domain 对此毫不知情。依赖箭头永远不会从核心指向外部，所以边缘的改动无法渗透进来。（如果你听说过<em>依赖倒置原则</em>——SOLID 中的“D”——这就是它在实践中的样子：domain 定义接口，adapter 遵从它。）</p>
+
+<h2 id="primary-secondary">驱动方 vs 被驱动方，落地理解</h2>
+<p>主/次之分在日常工作中为什么重要？因为它告诉你<em>谁来定义接口</em>。</p>
+<ul>
+  <li>对于<strong>被驱动型</strong> port（数据库、邮件），<em>domain</em> 定义接口，adapter 按要求去实现。这就是你能随意更换第三方服务的原因。</li>
+  <li>对于<strong>驱动型</strong> port（你的 use case），<em>应用</em>定义接口，外部世界（HTTP、CLI、测试框架）来调用它。这就是同一套逻辑今天能跑 REST API、明天能跑 gRPC 端点或定时任务，而业务规则一行不改的原因。</li>
+</ul>
+<p>一个实用的检验方法：一种全新的接入方式（比如 Slack 机器人）应该<em>只是</em>一个新的驱动型 adapter。一个全新的第三方服务（比如从 Stripe 换到 Adyen）应该<em>只是</em>一个新的被驱动型 adapter。如果任何一方迫使你修改 domain，说明某处发生了“泄漏”。</p>
+
+<h2 id="by-company-size">在不同公司规模下长什么样</h2>
+<p>很多建议在这里走偏——把架构当成“一刀切”的方案。<em>合适的</em> Ports &amp; Adapters 用量在很大程度上取决于你公司所处的阶段。以下是诚实的版本：</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>公司阶段</th><th>它解决的痛点</th><th>建议用量</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>独立开发者 / 早期创业</th>
+      <td>你仓促选了 SQLite 和某个支付服务，现在担心被死死绑定在上面。</td>
+      <td>最多一两个 port——通常是数据库和支付。其他的直接调用就好。这个阶段速度比纯粹更重要。</td>
+    </tr>
+    <tr>
+      <th>小型 / 成长期（约 Series A）</th>
+      <td>测试打到真实数据库和第三方沙箱，又慢又不稳定，开发者干脆不跑了。</td>
+      <td>给所有 I/O 套上 port。用 fake 让单元测试在毫秒内跑完，新同事一天就能理解 domain。</td>
+    </tr>
+    <tr>
+      <th>中型 / 规模化</th>
+      <td>多个团队互相踩脚；一次“换掉 SendGrid 省钱”的决定变成长达一个月的重写。</td>
+      <td>Port 成为团队之间的<em>契约</em>。换一个第三方服务只需要写一个新的 adapter，不是一次迁移。</td>
+    </tr>
+    <tr>
+      <th>大公司 / 企业级</th>
+      <td>遗留系统、区域性第三方服务、审计、以及要求“不得单一供应商锁定”的采购规范。</td>
+      <td>每个 port 对应多个 adapter（旧的 + 新的），strangler-fig 渐进迁移，供应商独立性作为书面要求写进合同。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h3 id="size-stories">三个简短的真实故事</h3>
+<p><strong>小型电商（10 人团队）。</strong>他们把邮件功能藏在一个只有一个方法的 <code>Notifier</code> port 后面——“以防万一”。两年后邮件成本飙升；从 SendGrid 迁移到 Amazon SES 只是写了一个新 adapter 加改了一行连接代码，一个下午搞定。订单逻辑——他们的核心资产——没有被碰过。</p>
+<p><strong>规模化中的金融科技公司（约 120 名工程师）。</strong>支付需要在某个国家走本地服务商、在另一个国家走国际服务商，每笔交易运行时动态决定。因为 <code>PaymentGateway</code> 是一个 port，“用哪个服务商”变成了隐藏在接口背后的路由决策。合规审计员也很满意：这道边界清晰、可测试，一眼就能看到。</p>
+<p><strong>大型银行（1000+ 名工程师）。</strong>一套运行了 20 年的主机系统无法一夜之间被替换。他们定义了一个 <code>AccountLedger</code> port，写了<em>两个</em> adapter——一个与旧主机通信，一个与新的核心银行系统通信——然后逐步迁移流量（“绞杀者无花果”模式）。各团队基于这个 port 开发新功能，而迁移在他们看不见的地方悄然进行。</p>
+
+<h2 id="vs-layered">Ports &amp; Adapters 与经典分层架构的对比</h2>
+<p>大多数团队来自传统分层架构（UI 在上、service 在中、数据库在下）。以下是两者的比较：</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>问题</th><th>经典分层（UI → service → DB）</th><th>Ports &amp; Adapters</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>谁依赖谁？</th><td>自上而下：每一层依赖下面那层，最终落到数据库。</td><td>所有东西依赖<em>内部</em>，落到 domain。数据库只是另一个插件。</td></tr>
+    <tr><th>不连数据库能测业务规则吗？</th><td>通常不行——service 直接打数据库。</td><td>可以——注入一个假的 repository，不需要数据库，不需要网络。</td></tr>
+    <tr><th>换一个第三方服务？</th><td>要动 service 层，并向外扩散影响。</td><td>写一个新 adapter，domain 完全不变。</td></tr>
+    <tr><th>业务规则住在哪里？</th><td>通常散落在 service 和数据库之间。</td><td>集中在 domain，用业务语言表达。</td></tr>
+    <tr><th>成本</th><td>初期仪式感低，但随着时间推移把你锁定在技术栈上。</td><td>前期多几个接口；随着变化加速，逐渐物有所值。</td></tr>
+  </tbody>
+</table>
+</div>
+<p>最核心的差别在于箭头方向。在分层代码中，最终所有东西都依赖数据库。在 Ports &amp; Adapters 中，数据库依赖你。这个倒转，就是全部的意义所在。</p>
+
+<h2 id="when-and-when-not">什么时候用（以及什么时候不用）</h2>
+<p>好的架构是把精力匹配到风险。以下情况适合使用 Ports &amp; Adapters：</p>
+<ul>
+  <li>应用有<strong>真正的业务规则</strong>值得保护（不只是对一张表做 CRUD）。</li>
+  <li>你预期在应用生命周期内会<strong>更换或新增</strong>集成——第三方服务、数据库、接入渠道。</li>
+  <li><strong>测试速度和可靠性</strong>很重要，你希望有快速、确定性的单元测试。</li>
+  <li>多个团队或较长的生命周期使得<strong>清晰的边界</strong>物有所值。</li>
+</ul>
+<p>以下情况应当持怀疑态度，或者只是非常轻量地应用：</p>
+<ul>
+  <li>这是一个<strong>薄薄的 CRUD 应用</strong>或一次性原型；多余的抽象层只是额外开销。</li>
+  <li>“domain”基本上就是你的数据库 schema；没有什么需要保护的。</li>
+  <li>你是<strong>独自开发、需要快速交付</strong>，以后重写的成本比现在搞这些仪式的成本还低。</li>
+</ul>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">别盲目照搬</span><p>把一个毫无价值的 CRUD 端点包裹在三层接口里，并不会让它“干净”——只会让它更难读。架构是你为<em>可变更性</em>付出的代价。如果没有什么会变，你就是在为虚无买单。</p></div>
+
+<h2 id="mistakes">常见错误（以及简单的修复方法）</h2>
+<ul>
+  <li><strong>Port 泄漏。</strong>如果你的 <code>PaymentGateway</code> 返回一个 <code>Stripe.Charge</code> 对象，第三方服务就通过 port 泄漏出来了。修复：port 只使用你自己的类型（<code>Receipt</code>、<code>Money</code>）。</li>
+  <li><strong>贫血型 domain。</strong>如果所有真实逻辑都在 adapter 里，domain 只是数据包，说明边界画错了地方。修复：把规则<em>推进</em>核心。</li>
+  <li><strong>一个巨型 port。</strong>一个有 40 个方法的 <code>IRepository</code> 不是边界，是个杂物抽屉。修复：用小的、有明确目的的 port（<code>OrderRepository</code>、<code>InventoryRepository</code>）。</li>
+  <li><strong>把 DTO 和 domain 模型混淆。</strong>你通过 HTTP 传输的数据形状不是你的 domain 实体。修复：让 adapter 负责在传输格式和 domain 之间做转换。</li>
+  <li><strong>给所有东西都建接口。</strong>不是每个类都需要 port——只有跨越边界的东西才需要（I/O、第三方服务、接入机制）。修复：感受到痛点再加 port，不要提前“预防性”地加。</li>
+</ul>
+
+<h2 id="getting-started">周一就能开始的做法</h2>
+<p>你不需要重写任何东西。只需在最痛的地方引入一道接缝，然后停下来：</p>
+<ul>
+  <li><strong>1. 找出最让你痛苦的依赖。</strong>通常是数据库或某个不稳定的第三方服务。</li>
+  <li><strong>2. 写下你<em>希望</em>拥有的接口。</strong>用业务语言：<code>save(order)</code>，而不是 <code>execSql(...)</code>。</li>
+  <li><strong>3. 把第三方代码移到一个实现该接口的 adapter 后面。</strong>其他什么都先不动。</li>
+  <li><strong>4. 注入 adapter</strong>，而不是在代码里直接构造它，然后为测试写一个 fake。</li>
+  <li><strong>5. 感受那份轻松，然后重复</strong>——但只在频繁变动或测试痛点真正值得再加一个 port 的地方。</li>
+</ul>
+<p>不出一周，你就会拥有围绕最棘手集成的快速测试，以及一个开始读起来像你业务的 domain。这就是全部的收益，可以增量地获得。</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">核心要点</h3>
+<ul>
+  <li><strong>一个核心思想：</strong>业务规则居中，技术细节在边缘，双方只通过接口交流。</li>
+  <li><strong>Port</strong> = 由 domain 定义的接口。<strong>Adapter</strong> = 真正的实现（Stripe、Postgres、React）。</li>
+  <li><strong>依赖指向内部。</strong>Domain 对外部世界一无所知。</li>
+  <li><strong>驱动型</strong> adapter 调用你的应用；<strong>被驱动型</strong> adapter 被你的应用调用。</li>
+  <li><strong>按需取用：</strong>初创公司用几个 port，企业级追求供应商独立，纯 CRUD 应用几乎不需要。</li>
+  <li><strong>增量引入</strong>——每次只处理一个最痛的接缝。永远不需要大规模重写。</li>
+</ul>
+</div>
+<p>本系列的下一篇将在这个基础上，探讨 Ports &amp; Adapters 与 <em>Clean Architecture</em> 以及 <em>Onion Architecture</em> 的关系——三个名字指向同一颗北极星——以及它们在实践中真正的差异所在。</p>16:["$","$L1d",null,{"html":"$1e"}]
+17:["$","$L1f",null,{"prompt":"你觉得这篇文章如何？","surface":"blog","category":"architecture","slug":"ports-and-adapters","reactionLabels":{"like":"赞","love":"喜欢","insightful":"有启发","clap":"鼓掌"}}]
+18:["$","$L20",null,{"heading":"相关阅读","intro":"几篇相近主题的文章，方便沿着同一条思路继续阅读。","items":[{"post":{"slug":"clean-vs-onion-vs-hexagonal","category":"architecture","title":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字","summary":"它们看起来像是三种相互竞争的架构，实则是同一个思想——依赖指向内部，框架置于边缘——用三种方式画出来。本文讲清楚每种方案真正增加了什么，以及应该选哪一个。","date":"2026-03-06","readingMinutes":15,"tags":["软件架构","Clean Architecture","Onion Architecture","Hexagonal Architecture","系统设计","Dependency Inversion"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":2},"categoryTitle":"源码与架构","readingLabel":"15 分钟阅读"},{"post":{"slug":"hexagonal-architecture-in-practice","category":"architecture","title":"Hexagonal Architecture in Practice","summary":"A practical guide to applying Hexagonal Architecture to one small feature: drawing the boundary, naming ports in business language, keeping adapters at the edge, testing the core, and deciding when the extra structure is worth the cost.","date":"2026-04-22","readingMinutes":7,"tags":["Software Architecture","Hexagonal Architecture","Ports and Adapters","Testing","Code Organization","Technical Debt"],"author":"Nguyen Le Phong"},"categoryTitle":"源码与架构","readingLabel":"7 分钟阅读"},{"post":{"slug":"monolith-to-microservices","category":"architecture","title":"单体、模块化单体、微服务：一份诚实的决策指南","summary":"微服务是你为组织规模支付的代价——而不是起点。一篇不炒作地从单体到模块化单体再到微服务的完整导览，附上告诉你何时（以及是否）该拆分的信号。","date":"2026-03-03","readingMinutes":16,"tags":["软件架构","Microservices","Modular Monolith","系统设计","分布式系统","可扩展性"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":5},"categoryTitle":"源码与架构","readingLabel":"16 分钟阅读"},{"post":{"slug":"micro-frontends-when-why-and-cost","category":"architecture","title":"微前端：何时值得，以及它们真正的代价","summary":"将前端拆分成独立可部署的模块可以解放团队——也可能把你埋在复杂性中。本文来自在规模化场景下落地 Angular 宿主 + React 模块的实战经验：微前端何时有回报，以及它带来的账单。","date":"2026-03-02","readingMinutes":15,"tags":["软件架构","Micro-Frontends","前端架构","Module Federation","可扩展性","系统设计"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":6},"categoryTitle":"源码与架构","readingLabel":"15 分钟阅读"}],"sourceCategory":"architecture","sourceSlug":"ports-and-adapters"}]
+19:["$","nav",null,{"className":"blog-series-nav","aria-label":"软件架构基础","children":[["$","span",null,{}],"$L21"]}]
+1a:["$","footer",null,{"className":"blog-article__footer","children":"$L22"}]
+1b:["$","aside",null,{"className":"blog-article__toc","children":["$","$L23",null,{"label":"本页内容","surface":"blog"}]}]
+24:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+12:["$","$L24",null,{"ref":"$undefined","href":"/zh/blog","locale":"$undefined","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"博客"}]
+14:["$","$L24",null,{"ref":"$undefined","href":"/zh/blog/architecture","locale":"$undefined","localeCookie":"$12:props:localeCookie","children":"源码与架构"}]
+21:["$","$L24",null,{"ref":"$undefined","href":"/zh/blog/architecture/clean-vs-onion-vs-hexagonal","locale":"$undefined","localeCookie":"$12:props:localeCookie","className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["下一篇"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字"}]]}]
+22:["$","$L24",null,{"ref":"$undefined","href":"/zh/blog/architecture","locale":"$undefined","localeCookie":"$12:props:localeCookie","className":"blog-back","children":["← ","返回 源码与架构"]}]
+25:T529,{"@context":"https://schema.org","@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","alternateName":["Nguyễn Lê Phong","Phong Nguyen"],"url":"https://nguyenlephong.github.io","image":"https://nguyenlephong.github.io/icon.png","jobTitle":"Senior Software Engineer · Technical Lead · Full-stack Engineer","description":"拥有 8+ 年产品构建、交付领导以及微前端、Kubernetes 与发布系统架构经验的高级软件工程师与技术总监。信息技术学士 — 优秀(GPA 3.36)。","email":"mailto:phongnguyen.itengineer@gmail.com","telephone":"(+84)98-549-0107","address":{"@type":"PostalAddress","addressLocality":"Ho Chi Minh City","addressCountry":"VN"},"knowsAbout":["React","Next.js","TypeScript","Node.js","Java","Spring Framework","Micro-Frontend Architecture","Kubernetes","ArgoCD","CI/CD","System Design","Engineering Leadership","Secure Financial Integrations","Progressive Delivery"],"worksFor":{"@type":"Organization","name":"NDSVN JSC"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Information Technology — Bachelor (GPA 3.36)"},"sameAs":["https://www.linkedin.com/in/phongnguyen-it/","https://github.com/nguyenlephong","https://leetcode.com/nguyenlephong/","https://www.youtube.com/@NguyenLePhong","https://twitter.com/nguyenlephong17"]}4:["$","html",null,{"lang":"zh","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n(function() {\n  try {\n    var key = 'theme_preference';\n    var stored = localStorage.getItem(key);\n    var pref = stored ? JSON.parse(stored).theme_setting : 'system';\n    var dark = pref === 'dark' || (pref === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);\n    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');\n  } catch (e) {\n    document.documentElement.setAttribute('data-theme', 'dark');\n  }\n})();\n"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n(function() {\n  try {\n    var key = 'reading_font_preference';\n    var allowed = [\"inter\",\"source\",\"plex\",\"atkinson\",\"lora\",\"be-vietnam\"];\n    var stored = localStorage.getItem(key);\n    var value = allowed.indexOf(stored) >= 0 ? stored : 'inter';\n    document.documentElement.setAttribute('data-reading-font', value);\n  } catch (e) {\n    document.documentElement.setAttribute('data-reading-font', 'inter');\n  }\n})();\n"}}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n(function() {\n  try {\n    var key = 'reading_background_preference';\n    var allowed = [\"plain\",\"parchment\",\"linen\",\"sepia\",\"sage\",\"mist\",\"night\"];\n    var stored = localStorage.getItem(key);\n    if (allowed.indexOf(stored) >= 0) {\n      document.documentElement.setAttribute('data-reading-background', stored);\n    } else {\n      document.documentElement.removeAttribute('data-reading-background');\n    }\n  } catch (e) {\n    document.documentElement.removeAttribute('data-reading-background');\n  }\n})();\n"}}],["$","meta",null,{"name":"google-adsense-account","content":"ca-pub-2196929070546836"}],["$","link",null,{"rel":"preconnect","href":"https://us.i.posthog.com","crossOrigin":""}],["$","link",null,{"rel":"preconnect","href":"https://us-assets.i.posthog.com","crossOrigin":""}],["$","link",null,{"rel":"dns-prefetch","href":"https://us.i.posthog.com"}],["$","link",null,{"rel":"dns-prefetch","href":"https://us-assets.i.posthog.com"}],["$","link",null,{"rel":"preconnect","href":"https://www.googletagmanager.com","crossOrigin":""}],["$","link",null,{"rel":"dns-prefetch","href":"https://www.googletagmanager.com"}],["$","link",null,{"rel":"dns-prefetch","href":"https://pagead2.googlesyndication.com"}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$25"}}],"$L26"]}],"$L27","$L28","$L29","$L2a","$L2b"]}]
+2c:I[79520,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js"],""]
+26:["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://nguyenlephong.github.io/#website\",\"url\":\"https://nguyenlephong.github.io\",\"name\":\"Nguyen Le Phong — Senior Software Engineer & Technical Lead\",\"description\":\"拥有 8+ 年产品构建、交付领导以及微前端、Kubernetes 与发布系统架构经验的高级软件工程师与技术总监。信息技术学士 — 优秀(GPA 3.36)。\",\"inLanguage\":\"zh\",\"author\":{\"@id\":\"https://nguyenlephong.github.io/#person\"}}"}}]
+27:["$","$L2c",null,{"strategy":"lazyOnload","id":"GTM","src":"https://www.googletagmanager.com/gtag/js?id=G-RLXNC58343"}]
+28:["$","$L2c",null,{"strategy":"lazyOnload","id":"adsbygoogle","src":"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2196929070546836","crossOrigin":"anonymous"}]
+29:["$","$L2c",null,{"id":"GTM_datalayer","strategy":"lazyOnload","dangerouslySetInnerHTML":{"__html":"\n            window.dataLayer = window.dataLayer || [];\n            function gtag(){dataLayer.push(arguments);}\n            gtag('js', new Date());\n            gtag('config', 'G-RLXNC58343', { page_path: window.location.pathname });\n          "}}]
+2d:T601,
+            !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+            posthog.init('phc_Ti11bWc5cshVoQe8AI7SuY56FMFP7Fhc9WyymdOGVSw',{
+              api_host:'https://us.i.posthog.com',
+              defaults:'2026-01-30',
+              capture_pageview: true,
+              capture_pageleave: true,
+              autocapture: false,
+              disable_session_recording: true,
+              respect_dnt: true,
+              persistence: 'localStorage+cookie'
+            });
+            posthog.register({ site: 'nguyenlephong.github.io', surface: 'cv', locale: "zh" });
+          2a:["$","$L2c",null,{"id":"POSTHOG","strategy":"lazyOnload","dangerouslySetInnerHTML":{"__html":"$2d"}}]
+2b:["$","body",null,{"suppressHydrationWarning":true,"children":"$L2e"}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover"}],["$","meta","2",{"name":"theme-color","media":"(prefers-color-scheme: light)","content":"#fafafa"}],["$","meta","3",{"name":"theme-color","media":"(prefers-color-scheme: dark)","content":"#0f1115"}]]
+2f:I[75696,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js"],"default"]
+2e:["$","$L2f",null,{"formats":"$undefined","locale":"zh","messages":{"Nav":{"about":"关于","aboutMe":"关于我","experience":"经验","projects":"项目","contact":"联系","gallery":"作品集","blog":"博客","notes":"笔记","studio":"Studio","resume":"简历","font":{"label":"阅读字体","sans":"无衬线","serif":"衬线"},"background":{"label":"阅读背景","plain":"默认","parchment":"旧纸","linen":"亚麻","sepia":"棕褐","sage":"鼠尾草","mist":"薄雾","night":"夜读"}},"Footer":{"tag":"高级软件工程师 · 技术负责人","copy":"© {year} Nguyen Le Phong.","language":"语言"},"Hero":{"eyebrow":"正在寻找高级 / Lead 机会","role":"高级软件工程师 · 技术负责人","roleSub":"全栈 · 平台工程 · 交付管理","bio":"我设计并运维端到端的系统 — 前端应用、后端服务、CI/CD 流水线、发布流程和生产基础设施。目前带领一支 11 人团队,交付多租户平台、安全的金融系统集成和微前端架构。","location":"越南胡志明市","downloadResume":"下载简历","getInTouch":"联系我","careerHighlights":"职业亮点","socialProfiles":"社交主页","proof":{"scale":"通过 Zalo 和平台产品触达 80M+ 用户","team":"带领 11 人交付团队,覆盖开发与 QC","platform":"支持 30+ 租户的安全集成 rollout platform"},"stats":{"yearsShipping":"交付年数","yearsShippingCaption":"每天交付生产代码","hoursCoding":"编码时长","hoursCodingCaption":"自 2021 年由 WakaTime 追踪","usersTouched":"服务用户数","usersTouchedCaption":"Zalo · CDP · 金融级规模","engineersLed":"带领工程师","engineersLedCaption":"开发 · QC · 跨职能","tenantsPowered":"支持租户","tenantsPoweredCaption":"多租户特性开关","domainsDelivered":"业务领域","domainsDeliveredCaption":"金融 · CDP · 房地产 · 教育","projectsLaunched":"已上线项目","projectsLaunchedCaption":"SDK · 平台 · 移动应用","testCasesAuthored":"编写测试用例","testCasesAuthoredCaption":"BDD · E2E · 回归保障"}},"Sections":{"aboutEyebrow":"简介","aboutTitle":"关于我和我的工作方式","experienceEyebrow":"职业","experienceTitle":"我交付过的地方","projectsEyebrow":"作品","projectsTitle":"精选项目"},"Summary":{"intro1":"拥有信息技术学士学位(软件工程辅修,<b>GPA 3.36</b>),拥有近 <b>8 年</b>全栈软件开发经验,其中 <b>3+ 年</b>参与技术领导、架构决策与跨团队交付协调。","intro2":"亲手设计、构建并运维端到端系统 — 从前端应用、后端服务到 CI/CD 流水线、发布流程和生产基础设施 — 高度强调自动化、运维清晰度和可靠交付。","intro3":"<i>以下是我近几年专注的硬技能:</i>","visionEyebrow":"我的工作方式","hardSkillsEyebrow":"硬技能","pillars":{"endToEnd":{"title":"端到端工程师","body":"前端、后端、CI/CD、发布与生产基础设施 — 一人贯穿整个生命周期。","chip":"FE · BE · 基础设施"},"multiTenant":{"title":"多租户平台","body":"特性开关、RBAC、按比例/分群发布、JSON 配置值、无状态运行时评估。","chip":"30+ 租户在线"},"leadership":{"title":"交付领导","body":"带领 11+ 工程师 — 招聘、组织设计、RFC、Runbook、发布手册、1:1 辅导。","chip":"11 人团队"},"fintech":{"title":"安全金融集成","body":"RSA-4096 握手、AES-256 负载、mTLS、证书锁定、幂等契约、重试队列。","chip":"Gtel · Napas"},"mfe":{"title":"微前端与 SDK","body":"Angular 宿主 + React 模块独立部署。JS SDK 小于 200KB,加载小于 150ms。","chip":"MFE · <150ms"},"ai":{"title":"AI 优先工程","body":"构建 AI 代理用于代码审查、部署辅助、服务配额、API 健康监控与发布分析。","chip":"生产环境代理"}},"skills":{"backend":"<b>后端</b>:<b>Node.js</b> 与 <b>Java (Spring)</b> 深度实战经验;设计 REST/GraphQL API,提供清晰契约、身份验证与加密机制、向后兼容性,并为企业级和第三方集成提供韧性。","frontend":"<b>前端</b>:使用 <b>React</b>(TypeScript、Next.js)、<b>React Native</b> 以及基于 Angular 的微前端宿主构建并维护复杂客户端应用;应用性能优化、状态管理与可扩展的 UI 架构模式。","databases":"<b>数据库</b>:在 <b>MySQL</b> 上有深厚实战经验,专注于 schema 与数据模型设计、索引策略、查询优化、事务边界、迁移规划以及分布式与高吞吐系统的一致性权衡。","infra":"<b>基础设施与平台工程</b>:在多个环境中实际使用 <b>Docker</b> 与 <b>Kubernetes</b>;运维托管集群(<b>AKS</b>、<b>EKS</b>、<b>FKE</b>、<b>K3S</b>)、<b>ArgoCD</b> GitOps 部署、CI/CD 流水线、环境配置以及域名/SSL 管理。","architecture":"<b>架构与交付实践</b>:应用微前端与多租户架构、特性开关驱动的发布、渐进式交付策略以及可观测性实践以支持安全发布和生产诊断。","testing":"<b>测试</b>:实际使用 Jest、Cucumber、Puppeteer 与 Testing Library,确保跨服务和应用的回归安全、发布信心和生产就绪。","libraries":"<b>类库</b>:熟练运用 <b>Firebase</b>、Strapi、Directus、React Flow、Webpack、<b>Redux</b>、React Query 与 G2plot。","other":"<b>其他</b>:熟悉 <b>微前端</b>架构、响应式设计、跨浏览器兼容性、<b>SEO</b>、GraphQL 与 Electron。"}},"Experience":{"labels":{"location":"地点","duration":"时长","keyContributions":"关键贡献","keyTechnologies":"关键技术"},"ndsvn":{"summary":"在 CTO 交接后承担产品交付与技术方向,主导架构决策、发布系统、企业级集成与跨团队协同,管理由 8 名开发(含 4 名 senior)与 3 名 QC 工程师组成的交付团队。","contributions":["设计 .NET Core 多租户特性开关系统 <b>(30+ 租户,~40k 用户)</b>,具备优先级规则引擎、百分比发布(租户/分群/环境)、JSON 配置值与无状态运行时评估 — 驱动移动/Web 应用,并在高流量租户上实现可控的渐进式生产发布。","与 <b>Gtel 和 Napas</b> 建立安全集成:RSA-4096 握手、AES-256 负载加密、<b>mTLS</b> 双向认证、证书锁定、重试队列、幂等 API 契约和 ACK 驱动的不稳定第三方服务监控。","实现 <b>微前端</b> 架构(Angular 宿主 + React 模块),实现独立部署周期与特性隔离 — 减少回归面与跨团队的部署耦合。","引入可观测性栈(PostHog + 指标管道 + 工作流)用于发布影响、特性采用、异常检测与回归追踪 — 显著缩短调试/分析时间。","接手继承的基础设施并保持组织运转 — 默默处理生产事故、流水线故障、集群异常与集成不稳定,使产品和团队不停滞;将 ArgoCD、CI/CD、域名/SSL 与 <b>AKS/FKE/K3S/EKS</b> 集群塑造为<b>可诊断、可恢复、稳定的系统,而不是反复出现的未知问题</b>。","构建 <b>AI 代理</b>,支持代码审查、部署助手、服务配额校验、API 健康监控和发布分析;缩短产品团队的决策与交付循环。","开发集成模拟与 sandbox/demo 模块,处理不稳定合作伙伴并确保与第三方生态的合同前安全验证。","在领导层交接后<b>重组工程组织</b>:定义组织架构、能力矩阵、工作路由与所有权边界 — 释放自主性并缩短技术决策的交付时间。","建立统一的工程手册:分支策略、提交规范、发布打标签、发布标准、API/集成规则与技术规范库(RFC、Runbook、故障排查指南)。","主导招聘与能力增长循环:结构化面试(QC/Fullstack)、入职路径、1:1 辅导、绩效评审与跨团队冲突解决,使交付保持协作与产出导向。","通过文档优先文化和流程护栏(检查表、交接规则、回滚就绪)维持交付质量,在扩张期间保持可预测的发布节奏。"]},"zalo":{"summary1":"跨平台 <b>Zalo PC</b>(Web、macOS、Windows)的核心开发者,服务 <b>15M+ MAU</b>。交付了暗黑模式、动态主题、用户行为追踪等关键功能。主导开发了促销流程和面向 <b>50+ 开发者</b>的可扩展<b>设计系统</b>。通过稳健高效的方案,优化性能、提升可维护性,并推动业务增长。","summary2":"积极维护并改进 <b>Zalo Android</b> 移动端,为近 <b>8000 万用户</b>确保关键功能的<b>稳定性</b>与<b>性能</b>。","contributions":["交付了 <b>10+ 个功能</b>,包括暗黑模式、下载模块、Kiki Bot、日志追踪等,改善 UX 与用户活跃度。","开发了带有集成追踪与监控系统的<b>促销流程</b>,在 <b>15M+ MAU</b> 上推动激活成功。","使用 Storybook 主导构建可扩展的<b>设计系统</b>,为 <b>50+ 开发者</b>确保 UI 一致性与效率。","主动支持 <b>50+ 客户端用户</b>,以<b>专注</b>和<b>有效的问题解决</b>能力迅速处理问题,获得强烈的正面反馈。","在 <b>Zalo Android</b> 应用中维护并改进了 <b>3+</b> 个功能,聚焦<b>稳定性</b>、<b>性能</b>以及近 <b>8000 万用户</b>的无缝体验。"]},"primedata":{"summary":"公司构建了所谓的 CDxP 产品。简而言之,这是一个定制化的数据平台,用于托管和处理客户档案(关键解决方案是如何从不同服务和系统的异构 schema 与格式中识别并统一客户数据)。","contributions":["带领前端团队交付 <b>10+ 个项目</b>,包括 CDxP 应用、Magento 与 WordPress 演示、JS SDK、移动 SDK 等。","管理 <b>4 人团队</b>,与产品路线图保持一致以满足多个主要合作伙伴,提升 UI/UX 并实现 360 档案与 campaign builder 等高级功能。","开发轻量级 JS SDK,功能完整(<b><200kb,<150ms</b> 加载时间),促进跨项目的无缝集成。","展现快速<b>解决问题</b>的能力,确保迅速完成功能演示以打动客户和投资人。"]},"splus":{"summary":"一家外包公司。多数项目围绕<b>移动端与 Web 应用</b>。","contributions":["凭借<b>软件端到端生产流程</b>的专业能力,我<b>带领一支小团队</b>,精通从需求收集到项目安全的各个阶段,为后续的领导角色奠定基础。","在<b>教育、餐饮、银行</b>与<b>电商</b>等领域参与了 <b>8+</b> 个多元化项目,获得了关于 Web 与移动应用开发的宝贵洞察。","作为项目佣兵,我赢得了 Savyu 与 Bank Tool 等重要项目,创造了超过 <b>$20,000</b> 的收入,并因卓越贡献被评为<b>年度最佳新人</b>。"]},"propman":{"summary":"一家<b>房地产领域</b>创业公司。我是创始工程师之一。","contributions":["作为前端开发者首次参与主要 Web 应用开发。获得了基础的 Web 开发技能,专注 <b>React JS</b> 及相关技术。在响应式设计项目上协作,优先提升用户体验。"]}},"Projects":{"sat":{"accomplishments":["统筹从 UI/UX 设计、产品工程到用户行为分析的产品开发,在两个月内取得超过 <b>10,000</b> 次访问与 <b>3,000</b> 次注册的全球用户基础。","通过战略性 SEO 举措(包括 <b>parasite SEO</b> 技术)提升 Google 搜索排名。这些努力带来了显著的性能提升,并使产品在行业中得到有效定位。","通过仅使用一个具有 <b>1 CPU</b> 与 <b>256 MiB</b> 内存上限的 Cloud Run 实例,展示前端应用开发中的效率与资源优化。","以<b>移动优先</b>方式主导开发移动应用,在<b>两天内</b>快速上架应用商店。同时确保所有设备上的 <b>PWA</b> 安装无缝,提升可达性与用户体验。","开发<b>变现功能</b>,包括 <b>Google Ads</b> 集成与 <b>Stripe</b> 支付流程,增强营收能力。"]},"cdp":{"accomplishments":["主导 CDxP 项目的架构与实现,专注于 <b>UI/UX</b> 功能,从而提升了整体用户体验与用户参与度。","配置嵌套路由,维持<b>可扩展</b>的项目结构,展示对 ES6、Typescript 与数据类型的深厚知识,从而<b>提升代码可维护性</b>并减少代码相关问题。","有效<b>追踪错误</b>与改进,支持 bug 修复,确保项目的<b>稳定性</b>,从而提升系统可靠性并减少停机时间。","实现 <b>RBAC</b> Hook 用于验证自适应客户端配置中组件访问的授权。此外,基于模块化设计,构建了超过 <b>20 个可重用的工具功能</b>。","构建 <b>10+ 高级功能</b>,例如档案、活动、分析等。","建立健壮的测试流程,覆盖核心 CDP 功能,包含 <b>100+ 场景</b>与 <b>1000+ 测试用例</b>。","掌握领域专业并精通测试方法,包括 BDD、单元测试与 <b>E2E 测试</b>,提升测试覆盖率,减少软件 bug <b>30%</b>。","开发用于运行时切换的<b>特性开关</b>,支持 A/B 测试与基于客户分群的功能分组,优化功能交付并提升采用率。","为清晰与易于维护对组件进行<b>文档化</b>,提升代码可读性并减少维护时间。"]},"sdk":{"accomplishments":["使用 <b>vanilla JS</b> 成功开发了超过 <b>5 个模块</b>,集成超过 <b>10 个高级功能</b>。实现了 <b><200kb 的 bundle 大小与 <150ms</b> 的加载时间(在采用全部 bundle 优化技术之前测得的数据)。","利用 <b>web worker 与 service worker</b> 在后台进行多任务处理,有效管理复杂功能并处理<b>多种边界情况</b>,例如同时多标签使用。","此外,使用<b>微前端</b>架构设计并实现了<b>个性化推荐功能</b>,具体是展示用户可能喜欢产品的轮播块,从而提升体验与参与度。","构建的高级功能包括 Web 弹窗、Web 推送通知、<b>Web 组件嵌入</b>、WebSocket 集成,以及多标签下烦人弹窗的管理。","进一步利用 <b>JS Closure</b> 组织模块结构,实现无缝功能导出或<b>数据封装</b>,从而<b>避免</b>在全局作用域内的冲突。"]},"vac":{"accomplishments":["在 Vietnam Australia Center 承担<b>教授</b> <b>Front-end Project</b> 课程的责任。","设计并交付<b>引人入胜的讲座</b>,为学生提供前端开发项目的实践指导。","聚焦营造<b>协作</b>学习环境,鼓励 <b>12 名学生</b><b>团队合作</b>,并使课程与行业最佳实践对齐。","提供个性化<b>反馈</b>与<b>指导</b>,支持学生<b>克服挑战</b>并确保对课程内容的全面理解。"]},"mona":{"accomplishments":["使用 <b>React Native</b> 与 Realm DB 开发了一款全面的移动应用 Mona House,用于高效的住所管理。","专注于创建跨平台应用,重点是<b>可重用组件</b>、流畅动画以及与原生模块的无缝集成。","展示出强大的<b>问题解决</b>与<b>故障排查</b>能力,通过高级调试工具与性能剖析迅速识别并解决复杂问题。","展示出对新技术的<b>适应性</b>与<b>快速学习曲线</b>,使新框架、编程语言或工具的无缝实现成为可能,以确保项目完成。"]},"mobivi":{"accomplishments":["在 Mobivi 开发了一个<b>全栈 Web 应用</b>,专注于摄取并处理超过 <b>20 个 Excel 文件</b>,每个文件包含超过 <b>20,000 条记录</b>。","应用旨在高效处理用户的渐进式计算事务数据,<b>确保准确可靠的报表</b>。"]},"savyu":{"accomplishments":["在 Synova 开发<b>两款移动</b>应用中发挥关键作用 - 一款面向商户,另一款面向消费者。","参与创建一个<b>Web 应用</b>,使管理员能高效管理用户数据。","展示<b>移动应用开发</b>的精通,与跨职能团队协作,确保成功交付<b>直观</b>且<b>高性能</b>的应用。"]}},"CTA":{"eyebrow":"一起做点什么","title":"有值得交付的硬核问题吗?","body":"我最擅长的是产品快速扩张、团队需要清晰方向、基础设施必须在高负载下稳定运行的场景。请联系我 — 我会阅读每一条消息。","emailMe":"发邮件","resumePdf":"简历 (PDF)","linkedin":"LinkedIn"},"SEO":{"home":{"title":"Nguyen Le Phong — 高级软件工程师与技术负责人","description":"拥有 8+ 年产品构建、交付领导以及微前端、Kubernetes 与发布系统架构经验的高级软件工程师与技术总监。信息技术学士 — 优秀(GPA 3.36)。"}},"Offline":{"banner":{"syncing":"正在为当前语言准备 offline 阅读…","ready":"当前语言的 offline 阅读已经准备好。","partial":"offline 阅读缓存目前只完成了一部分。请让这个语言页面再保持在线一会儿。","offlineReady":"你当前处于 offline 状态，但已保存的页面和文章仍可继续阅读。","offlinePartial":"你当前处于 offline 状态。有些页面可能需要先在线打开一次，之后才会被保存。","dismiss":"隐藏 offline 提醒"},"page":{"eyebrow":"连接已断开","title":"Offline 阅读","body":"这个页面还没有保存到 offline 阅读包里。你在当前语言里已经打开过的页面和文章应该仍然可读。","hint":"恢复联网后，只要把这个页面打开一次，它就会为之后的阅读保存下来。","actionsLabel":"offline 阅读快捷入口","home":"首页","blog":"Blog","notes":"笔记","about":"关于"}},"Pages":{"about":{"heading":"关于我"},"apps":{"heading":"应用"},"studio":{"eyebrow":"Learning workbench","title":"Studio","intro":"A public shelf for learning notes, machine setup, AI tooling, and the small checklists that make a new engineering laptop feel ready."},"gallery":{"eyebrow":"作品集","title":"工作背后的信号","sub":"一个小小的合集，记录我学过、做过、被认可过，以及持续练习的东西。如果简历展示角色，这里展示角色背后的工作节奏。","back":"← 返回简历","all":"全部","tabsLabel":"职业信号筛选","hero":{"kicker":"Proof portfolio","title":"比几行简历更能说明问题的小信号","lead":"我把证书、认可、项目片段和一些日常瞬间放在这里，让读者能看到我如何学习、如何和团队协作，以及如何长期保持稳定的delivery。","primaryCta":"查看这些信号","scanNote":"给快速浏览的recruiter：先读故事，再按需要打开每一组证据。","proofTitle":"更接近真实工作方式的一面"},"stats":{"label":"作品集信号","proofs":"信号","proofsDetail":"可对照的图片、证书和工作瞬间。","certifications":"证书","certificationsDetail":"为了更谨慎地工作而持续学习。","recognitions":"认可","recognitionsDetail":"来自团队、项目和长期挑战的结果。","builds":"项目","buildsDetail":"已经形成具体形态的产品、demo和作品。"},"trust":{"label":"Recruiter lens","title":"如何阅读这一页","learning":{"title":"持续学习和更新的习惯","body":"证书不是孤立的徽章；它们说明我习惯通过学习把工作处理得更稳。"},"delivery":{"title":"对结果负责","body":"认可和项目片段说明我愿意和团队一起把事情推进到完成。"},"team":{"title":"耐力与协作","body":"活动瞬间展示的是长期工作需要的能量、纪律和稳定性。"}},"story":{"label":"快速阅读方式","title":"不是照片墙，而是一条持续进步的痕迹","body":"每一组都回答一个小问题：我学到了什么，在哪里被信任，做过什么，以及在正式项目之外如何训练长期耐力。"},"categoryNotes":{"all":"从学习到delivery，按一条完整路径阅读。","certificates":"有目的的学习，让工作更扎实。","awards":"对主动性、稳定性和责任感的认可。","projects":"构建、交付、教学或探索留下的痕迹。","activities":"展示能量、纪律和长期习惯的日常瞬间。"},"categoryIntros":{"certificates":{"body":"这一部分展示我如何继续打基础：更理解系统，也更谨慎地处理compliance、security和产品质量。","signal":"持续学习会让工作随着时间变得更扎实、更谨慎。"},"awards":{"body":"这些认可不是终点，而是一些小节点：快速进入状态、承担责任，并在较长的挑战中坚持下去。","signal":"真实团队环境最能看见一个人的稳定性和责任感。"},"projects":{"body":"这里有产品、demo和作品的一些切片。重要的不只是截图，而是把想法变成可运行、可解释、可改进的过程。","signal":"想法变成可运行、可解释、可持续改进的东西时，才更有意义。"},"activities":{"body":"不是所有职业信号都在ticket或release里。有些个人节奏和习惯，支撑着可持续的工作状态。","signal":"个人纪律帮助我和团队保持更长期、稳定的节奏。"}},"captions":{"veryGood":"以Very Good成绩毕业 - 早期认真打下的学习基础。","scoreboard":"学习成绩记录 - 稳定积累的一小段痕迹。","testerCertificate":"Tester certificate - 学会用验证视角看产品质量。","compliance":"Compliance Refresh Training - 让产品工作更安全、更符合流程。","cybersecurity":"Cybersecurity Refresh Training - 在delivery中加强security思维。","bestRookie":"Best Rookie of the Year - 对快速进入状态和持续努力的认可。","splus":"Splus Certificate - 团队环境中的一个小节点。","primeAward":"Award at PrimeData - delivery中ownership和主动性的结果。","upraceMedals":"UpRace medals - 在工作之外训练长期节奏和耐力。","uprace323":"UpRace 323km - 小小的公里数累积成值得记住的结果。","penangHill":"Penang Hill 11km - 一段一段坚持，最后到达山顶。","deskWorking":"一个普通的工作角落 - 纪律每天都在这里重复。","chessProject":"Chess games project - 从逻辑、UI和游戏体验构建产品。","watProject":"WAT project - 团队产品工作留下的痕迹。","essay":"文章与分享 - 练习把想法讲清楚。","teamEssay":"团队协作的一刻 - 想法只有被一起实现时才更有价值。","drone":"Drone applications - 把产品想法探索到可运行模型。"},"featured":"重点信号","supporting":"补充信号","openProof":"打开信号","verified":"已验证来源","original":"完整图片","categories":{"certificates":"证书","awards":"奖项","projects":"项目","activities":"活动"}},"thoughts":{"eyebrow":"思想花园","title":"随想","intro":"一个不断生长的小笔记图谱。点击任意标题阅读全文。","empty":"暂无内容。","backToIndex":"返回列表","backlinks":"反向链接","maturity":{"seed":"种子","budding":"萌芽","evergreen":"常青"},"viewGraph":"关系图","viewList":"列表","viewToggle":"切换视图","share":"分享","copied":"已复制!","copyLink":"复制链接","close":"关闭"},"notes":{"eyebrow":"个人百科","title":"笔记","intro":"一处私人档案——存放我学到、经历过、想要记住的一切。关于生活、工作，以及那些没有简单答案的问题的思考。","stats":{"topics":"专题","articles":"笔记","updated":"更新"},"readingTime":"{minutes} 分钟阅读","empty":"还没有笔记 —— 第一篇即将到来。","backToNotes":"返回笔记","onThisPage":"本页内容","readerTools":{"label":"阅读工具","scrollTop":"回到顶部","scrollBottom":"前往底部","font":"更改阅读字体","background":"更改阅读背景","language":"切换语言"},"faqHeading":"常见问题","nextUp":"下一篇笔记","previously":"上一篇笔记","source":{"heading":"Book information","title":"Book title","originalTitle":"Original title","authors":"Authors","contributors":"Contributors","publisher":"Publisher","published":"Edition","isbn":"ISBN"},"controls":{"searchPlaceholder":"搜索笔记…","searchLabel":"搜索笔记","clearSearch":"清除搜索","filtersLabel":"按专题筛选","allTopics":"全部","popularTags":"热门标签","clear":"清除筛选","results":"{count, plural, =0 {暂无笔记} other {# 篇笔记}}","noResults":"没有符合搜索条件的笔记。","pagination":{"label":"笔记分页","prev":"上一页","next":"下一页","goToPage":"前往第 {page} 页"}},"engagement":{"views":"次浏览","reactionsPrompt":"你觉得怎么样？","share":"分享","copyLink":"复制链接","copied":"已复制！","close":"关闭","reactions":{"like":"赞","love":"喜欢","insightful":"有启发","clap":"致敬"}}},"blog":{"controls":{"searchPlaceholder":"搜索文章…","searchLabel":"搜索文章","clearSearch":"清除搜索","filtersLabel":"按主题筛选","allCategories":"全部","popularTags":"热门标签","clear":"清除筛选","results":"{count, plural, =0 {暂无文章} other {# 篇文章}}","noResults":"没有符合搜索条件的文章。","pagination":{"label":"博客分页","prev":"上一页","next":"下一页","goToPage":"前往第 {page} 页"}},"eyebrow":"文章","title":"博客","intro":"关于软件架构与源码结构的深度文章——写得让初学者也能读懂，同时对大规模交付的团队同样有用。配有图示、真实案例，绝不空谈。","categoriesHeading":"按主题浏览","latestHeading":"最新文章","empty":"暂无文章——第一篇即将发布。","backToBlog":"返回博客","backToCategory":"返回 {category}","readingTime":"{minutes} 分钟阅读","articleCount":"{count, plural, other {# 篇文章}}","writtenBy":"作者：{author}","onThisPage":"本页内容","readerTools":{"label":"阅读工具","scrollTop":"回到顶部","scrollBottom":"前往底部","font":"更改阅读字体","background":"更改阅读背景","language":"切换语言"},"partOf":"第 {part} 篇，共 {total} 篇","nextUp":"下一篇","previously":"上一篇","relatedHeading":"相关阅读","relatedIntro":"几篇相近主题的文章，方便沿着同一条思路继续阅读。","faqHeading":"常见问题","seriesNames":{"foundations":"软件架构基础","ways-of-working":"团队协作方式","ai-in-practice":"AI 实践","kind-engineering":"友善而高效的工程文化"},"engagement":{"reactionsPrompt":"你觉得这篇文章如何？","views":"次浏览","share":"分享","copyLink":"复制链接","copied":"已复制！","reactions":{"like":"赞","love":"喜欢","insightful":"有启发","clap":"鼓掌"},"close":"关闭"}}},"About":{"hero":{"eyebrow":"Engineering profile","title":"I build product systems that can be shipped, observed, and recovered.","lead":"My work now sits between <strong>product engineering</strong> and <strong>platform reliability</strong>: front-end surfaces, backend services, secure integrations, rollout systems, Kubernetes infrastructure, and the operating model that lets a team release with less guesswork.","metricsLabel":"Current engineering signals","metrics":[{"value":"8+","label":"years shipping production software"},{"value":"11","label":"people in the delivery team I lead"},{"value":"30+","label":"tenants served by rollout systems"},{"value":"~40k","label":"users behind the feature-flag platform"}]},"systems":{"eyebrow":"Current focus","title":"The layer I operate in now","intro":"I still care about polished user interfaces, but my current value is broader: connecting product decisions with backend contracts, infrastructure paths, release control, and production diagnosis.","items":[{"title":"Backend services & secure integration","body":"I work with <strong>.NET Core</strong>, <strong>Node.js</strong>, and <strong>Java Spring</strong> services, focusing on REST/GraphQL contracts, auth, encryption, backward compatibility, retry behavior, idempotency, and partner-system instability.","tags":[".NET Core","Node.js","Java Spring","REST/GraphQL","mTLS"]},{"title":"Platform, infra & traffic path","body":"I have been involved in the production path around <strong>Docker</strong>, <strong>Kubernetes</strong>, <strong>AKS/FKE/K3S/EKS</strong>, <strong>ArgoCD</strong>, CI/CD, domains/SSL, ingress and load-balancer routing, and recovery work when the system is already under pressure.","tags":["Kubernetes","ArgoCD","CI/CD","Ingress","Load balancer"]},{"title":"Progressive delivery","body":"I engineered a <strong>multi-tenant feature-flag platform</strong> with priority rules, tenant/segment/env rollout, JSON-config values, and stateless runtime evaluation so releases can move gradually instead of all at once.","tags":["Feature flags","30+ tenants","Rollout rules","Runtime config"]},{"title":"Observability & operating clarity","body":"I build the feedback loops around releases: PostHog, metrics pipelines, API health checks, anomaly review, rollback readiness, RFCs, runbooks, and release criteria that make incidents easier to understand.","tags":["PostHog","Metrics","Runbooks","Rollback","Release review"]}]},"stack":{"eyebrow":"Technical depth","title":"The engineering details I pay attention to","intro":"The systems I prefer are not only feature-complete. They have clear contracts, known failure modes, and enough operational signs for the team to find the problem before users feel it.","groups":[{"title":"Backend techniques","items":["<strong>Backward-compatible API contracts</strong> for mobile, web, and enterprise clients.","<strong>RSA-4096 handshake, AES-256 payload encryption, mTLS, certificate pinning</strong>, and ACK-driven monitoring for financial integrations.","<strong>Retry queues and idempotent APIs</strong> for partners that are slow, unstable, or asynchronous.","<strong>Stateless runtime evaluation</strong> for rollout rules, JSON config, tenant and segment targeting."]},{"title":"Infrastructure techniques","items":["<strong>Kubernetes cluster operations</strong> across AKS, FKE, K3S, and EKS environments.","<strong>Ingress, load balancer, domain and SSL paths</strong> treated as part of the product delivery flow, not as a black box.","<strong>ArgoCD and CI/CD pipelines</strong> for repeatable releases, environment control, and recovery.","<strong>Production diagnosis</strong> through logs, metrics, health checks, and documented recovery steps."]},{"title":"Release architecture","items":["<strong>Micro-Frontend composition</strong> with Angular host and React modules to reduce deployment coupling.","<strong>Feature-flag rollout</strong> by tenant, segment, environment, and percentage.","<strong>Observability workflows</strong> for feature adoption, regression tracing, and anomaly review.","<strong>Rollback criteria and release checklists</strong> so delivery stays deliberate under pressure."]},{"title":"Team systems","items":["<strong>Ownership boundaries</strong>, org chart, competency matrix, and workload routing after leadership transition.","<strong>RFCs, runbooks, technical specs</strong>, and troubleshooting guides that reduce hidden knowledge.","<strong>Hiring, onboarding, 1:1 coaching</strong>, and review loops for developers and QC engineers.","<strong>Branch strategy, commit convention, release tagging</strong>, and integration rules that keep delivery predictable."]}]},"principles":{"eyebrow":"How I work","title":"Principles I bring into production systems","intro":"These are practical habits, not slogans. They come from seeing systems fail in ordinary ways and learning how to make the next release easier to reason about.","items":[{"title":"Trace before rewriting","body":"When a system behaves strangely, I first look for the path: request flow, data contract, logs, metrics, release history, and infrastructure changes."},{"title":"Contracts before code volume","body":"A good backend service is easier to operate when its API, retries, idempotency, security boundary, and compatibility rules are clear."},{"title":"Rollout before big-bang release","body":"Feature flags, tenant targeting, staged deployment, and rollback criteria keep product movement steady without making every release a gamble."},{"title":"Documentation should reduce interruption","body":"Specs, runbooks, and checklists are useful when they let another engineer diagnose, recover, or continue the work without waiting for one person."}]},"closing":{"label":"About closing note","body":"I am most useful in teams where <strong>product ambition</strong>, <strong>backend complexity</strong>, and <strong>production reliability</strong> meet. That is where careful engineering turns unclear systems into something the team can ship, observe, and improve."}},"ReaderTools":{"label":"Reader tools","scrollTop":"Scroll to top","scrollBottom":"Scroll to bottom","font":"Change reading font","background":"Change reading background","language":"Change language"}},"now":"$undefined","timeZone":"Asia/Saigon","children":["$L30","$L31"]}]
+32:I[34416,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js"],"default"]
+33:I[92130,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js"],"default"]
+34:I[46467,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js"],"default"]
+35:I[28746,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js"],"default"]
+36:I[87021,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js"],"default"]
+37:I[25727,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js"],"default"]
+38:I[26564,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js"],"default"]
+39:I[84845,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js"],"default"]
+3a:I[33530,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js"],"default"]
+30:["$","$L32",null,{}]
+31:["$","$L33",null,{"children":[["$","$L34",null,{}],["$","$L35",null,{}],["$","$L36",null,{}],["$","$L37",null,{}],["$","$L38",null,{}],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}],["$","$L39",null,{}],["$","$L3a",null,{"labels":{"label":"Reader tools","scrollTop":"Scroll to top","scrollBottom":"Scroll to bottom","font":"Change reading font","background":"Change reading background","language":"Change language"}}]]}]
+8:null
+c:[["$","title","0",{"children":"Ports & Adapters（六边形架构），简单讲清楚 · Nguyen Le Phong | Senior Software Engineer"}],["$","meta","1",{"name":"description","content":"一篇友好、示例驱动的六边形架构指南：ports 和 adapters 到底是什么、让它运转的那条核心规则，以及究竟该用多少——无论你是独立创业者还是企业级团队。"}],["$","meta","2",{"name":"application-name","content":"Nguyen Le Phong — CV"}],["$","link","3",{"rel":"author","href":"https://nguyenlephong.github.io"}],["$","meta","4",{"name":"author","content":"Nguyen Le Phong"}],["$","link","5",{"rel":"manifest","href":"/manifest.webmanifest","crossOrigin":"$undefined"}],["$","meta","6",{"name":"keywords","content":"软件架构,Hexagonal Architecture,Ports and Adapters,Clean Architecture,系统设计,Dependency Inversion"}],["$","meta","7",{"name":"creator","content":"Nguyen Le Phong"}],["$","meta","8",{"name":"publisher","content":"Nguyen Le Phong"}],["$","meta","9",{"name":"robots","content":"index, follow"}],["$","meta","10",{"name":"googlebot","content":"index, follow, max-image-preview:large, max-snippet:-1"}],["$","meta","11",{"name":"category","content":"technology"}],["$","link","12",{"rel":"canonical","href":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters"}],["$","link","13",{"rel":"alternate","hrefLang":"en","href":"https://nguyenlephong.github.io/en/blog/architecture/ports-and-adapters"}],["$","link","14",{"rel":"alternate","hrefLang":"vi","href":"https://nguyenlephong.github.io/vi/blog/architecture/ports-and-adapters"}],["$","link","15",{"rel":"alternate","hrefLang":"zh","href":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters"}],["$","link","16",{"rel":"alternate","hrefLang":"ja","href":"https://nguyenlephong.github.io/ja/blog/architecture/ports-and-adapters"}],["$","link","17",{"rel":"alternate","hrefLang":"ko","href":"https://nguyenlephong.github.io/ko/blog/architecture/ports-and-adapters"}],["$","link","18",{"rel":"alternate","hrefLang":"fr","href":"https://nguyenlephong.github.io/fr/blog/architecture/ports-and-adapters"}],["$","link","19",{"rel":"alternate","hrefLang":"x-default","href":"https://nguyenlephong.github.io/en/blog/architecture/ports-and-adapters"}],["$","meta","20",{"property":"og:title","content":"Ports & Adapters（六边形架构），简单讲清楚"}],["$","meta","21",{"property":"og:description","content":"一篇友好、示例驱动的六边形架构指南：ports 和 adapters 到底是什么、让它运转的那条核心规则，以及究竟该用多少——无论你是独立创业者还是企业级团队。"}],["$","meta","22",{"property":"og:url","content":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters"}],["$","meta","23",{"property":"og:site_name","content":"Nguyen Le Phong — Senior Software Engineer"}],["$","meta","24",{"property":"og:locale","content":"zh_CN"}],["$","meta","25",{"property":"og:image","content":"https://nguyenlephong.github.io/og/blog/ports-and-adapters.png"}],["$","meta","26",{"property":"og:image:width","content":"1200"}],["$","meta","27",{"property":"og:image:height","content":"630"}],["$","meta","28",{"property":"og:image:alt","content":"Ports & Adapters（六边形架构），简单讲清楚"}],["$","meta","29",{"property":"og:locale:alternate","content":"en_US"}],["$","meta","30",{"property":"og:locale:alternate","content":"vi_VN"}],["$","meta","31",{"property":"og:locale:alternate","content":"ja_JP"}],["$","meta","32",{"property":"og:locale:alternate","content":"ko_KR"}],["$","meta","33",{"property":"og:locale:alternate","content":"fr_FR"}],["$","meta","34",{"property":"og:type","content":"article"}],["$","meta","35",{"property":"article:published_time","content":"2026-03-07"}],["$","meta","36",{"property":"article:modified_time","content":"2026-03-07"}],["$","meta","37",{"property":"article:author","content":"https://nguyenlephong.github.io"}],["$","meta","38",{"property":"article:tag","content":"软件架构"}],["$","meta","39",{"property":"article:tag","content":"Hexagonal Architecture"}],["$","meta","40",{"property":"article:tag","content":"Ports and Adapters"}],["$","meta","41",{"property":"article:tag","content":"Clean Architecture"}],["$","meta","42",{"property":"article:tag","content":"系统设计"}],["$","meta","43",{"property":"article:tag","content":"Dependency Inversion"}],["$","meta","44",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","45",{"name":"twitter:site","content":"@nguyenlephong17"}],"$L3b","$L3c","$L3d","$L3e","$L3f","$L40","$L41","$L42","$L43","$L44","$L45","$L46"]
+47:I[27201,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"IconMark"]
+3b:["$","meta","46",{"name":"twitter:creator","content":"@nguyenlephong17"}]
+3c:["$","meta","47",{"name":"twitter:title","content":"Ports & Adapters（六边形架构），简单讲清楚"}]
+3d:["$","meta","48",{"name":"twitter:description","content":"一篇友好、示例驱动的六边形架构指南：ports 和 adapters 到底是什么、让它运转的那条核心规则，以及究竟该用多少——无论你是独立创业者还是企业级团队。"}]
+3e:["$","meta","49",{"name":"twitter:image","content":"https://nguyenlephong.github.io/og/blog/ports-and-adapters.png"}]
+3f:["$","link","50",{"rel":"shortcut icon","href":"/favicon.ico"}]
+40:["$","link","51",{"rel":"icon","href":"/favicon.ico?favicon.44bce1b2.ico","sizes":"48x48","type":"image/x-icon"}]
+41:["$","link","52",{"rel":"icon","href":"/favicon.ico","sizes":"any"}]
+42:["$","link","53",{"rel":"icon","href":"/icon.png","type":"image/png","sizes":"512x512"}]
+43:["$","link","54",{"rel":"icon","href":"/favicon/favicon-32x32.png","type":"image/png","sizes":"32x32"}]
+44:["$","link","55",{"rel":"icon","href":"/favicon/favicon-16x16.png","type":"image/png","sizes":"16x16"}]
+45:["$","link","56",{"rel":"apple-touch-icon","href":"/apple-icon.png","sizes":"180x180","type":"image/png"}]
+46:["$","$L47","57",{}]

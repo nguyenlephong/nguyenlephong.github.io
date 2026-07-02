@@ -1,0 +1,202 @@
+1:"$Sreact.fragment"
+9:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+a:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+e:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1a:I[70346,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1b:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta2e,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/ko/blog/culture/how-to-be-a-kind-engineer#article","headline":"Kind Engineering: 친절함이 더 나은 엔지니어를 만드는 이유","description":"친절함은 상냥함이 아니고, 약함도 아닙니다. 친절함은 힘을 배가시키는 것입니다 — 더 명확한 피드백, 더 안전한 장애 대응, 더 빠르게 성장하는 팀원들. '엔지니어링에서의 친절함'이 실제로 무엇을 의미하는지, 그리고 코드 리뷰, 장애 대응, 일상 업무에서 어떻게 실천하는지.","inLanguage":"ko","url":"https://nguyenlephong.github.io/ko/blog/culture/how-to-be-a-kind-engineer","image":"https://nguyenlephong.github.io/og/blog/how-to-be-a-kind-engineer.png","mainEntityOfPage":"https://nguyenlephong.github.io/ko/blog/culture/how-to-be-a-kind-engineer","datePublished":"2026-02-28","dateModified":"2026-02-28","keywords":"엔지니어링 문화, Kind Engineering, 심리적 안전감, 공감, 팀 협업, 리더십","articleSection":"엔지니어링 문화","isRelatedTo":[{"@type":"BlogPosting","headline":"잘 전달되는 피드백: 엔지니어로서 비평을 주고받는 방법","url":"https://nguyenlephong.github.io/ko/blog/culture/giving-and-receiving-feedback","image":"https://nguyenlephong.github.io/og/blog/giving-and-receiving-feedback.png"},{"@type":"BlogPosting","headline":"엔지니어 멘토링: 주니어를 시니어로 성장시키는 방법","url":"https://nguyenlephong.github.io/ko/blog/culture/mentoring-engineers","image":"https://nguyenlephong.github.io/og/blog/mentoring-engineers.png"},{"@type":"BlogPosting","headline":"코드 리뷰의 기술: 사람을 무너뜨리지 않고 코드를 비평하는 방법","url":"https://nguyenlephong.github.io/ko/blog/culture/how-to-review-code-kindly","image":"https://nguyenlephong.github.io/og/blog/how-to-review-code-kindly.png"},{"@type":"BlogPosting","headline":"사람들이 실제로 즐겁게 리뷰하는 Pull Request 작성하는 방법","url":"https://nguyenlephong.github.io/ko/blog/culture/how-to-write-a-great-pull-request","image":"https://nguyenlephong.github.io/og/blog/how-to-write-a-great-pull-request.png"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/ko/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:T1273,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/ko/blog/culture/how-to-be-a-kind-engineer#faq","mainEntity":[{"@type":"Question","name":"Kind Engineering이란 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"Kind Engineering은 코드 리뷰, 장애 회고, 설계 토론, 그리고 일상적인 협업에서 팀원들을 솔직함과 진정한 배려로 대우하는 실천입니다. kind.engineering 리소스에 의해 대중화되었으며 세 가지 아이디어를 중심으로 합니다: 소통, 솔직함, 안전감. 친절한 엔지니어는 당신이 성장하기를 원하기 때문에 진실을 말하고, 사람들이 말하는 것이 안전하다고 느끼는 조건을 만들며, 자신의 산출물뿐만 아니라 팀원의 성공에 투자합니다."}},{"@type":"Question","name":"직장에서 친절함과 상냥함의 차이는 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"상냥함은 불편함을 피하는 것을 최적화합니다 — 당신이나 다른 사람의. 결함 있는 pull request를 어색함을 피하려고 승인하고, 일이 좋지 않았을 때 \"잘 했어요\"라고 말하며, 결정이 잘못된 방향으로 가고 있을 때 회의에서 조용히 있습니다. 반면에 친절함은 상대방의 성장을 위하기 때문에 진실을 말합니다. 솔직한 코드 리뷰 댓글을 남기고, 솔직한 설계 피드백을 주며, 회의에서 어려운 말을 합니다 — 하지만 이 모든 것을 사람을 존중하고 개선에 도움이 되는 방식으로 합니다. 상냥함은 쉽고 편안합니다; 친절함은 노력과 투자가 필요합니다."}},{"@type":"Question","name":"소프트웨어 팀에서 심리적 안전감이란 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"심리적 안전감 — 연구자 Amy Edmondson의 개념으로 구글의 Project Aristotle의 핵심 — 은 팀원들 사이에 대인 위험을 감수하는 것이 안전하다는 공유된 믿음입니다: 어리석어 보이지 않고 질문하기, 모른다는 것을 인정하기, 확실하기 전에 우려를 지적하기, 또는 시니어 동료와 의견 달리하기. 엔지니어링 측면에서, 이것은 잠재적인 버그를 발견한 주니어 엔지니어가 말하는 것과 틀릴까봐 두려워 조용히 있는 것의 차이입니다. 심리적 안전감이 높은 팀은 문제를 더 일찍 잡고, 더 빠르게 학습하며, 더 나은 결정을 내립니다 — 중요한 정보가 실제로 흐르기 때문입니다."}},{"@type":"Question","name":"코드 리뷰에서 어떻게 친절하게 할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"몇 가지 습관이 지속적으로 차이를 만듭니다: (1) 판단하기 전에 질문하세요 — \"왜 이 접근법을 선택했는지 궁금합니다\"는 대화를 초대하고 갖지 못했던 맥락을 드러낼 수 있습니다. (2) 사소한 지적에 명시적으로 라벨을 붙이세요 — \"Nit: 여기서 더 설명적인 이름을 고려해보세요, 하지만 차단하지는 않아요\"는 어느 댓글이 진짜 중요한지 알려 줍니다. (3) 코드에 대해 이야기하고, 사람에 대해 이야기하지 마세요 — \"이 함수가 너무 많은 일을 합니다\"는 유용한 피드백입니다; \"당신은 항상 이렇게 합니다\"는 그렇지 않습니다. (4) 많은 피드백에는 통화로 전환하세요 — 여섯 가지 주요 우려 사항을 인라인 댓글로 남기는 것은 공개적인 질책처럼 느껴질 수 있습니다; 10분 통화가 더 해결합니다. 친절하게 코드 리뷰하는 방법 에 대한 동반 글에서 더 자세한 내용을 볼 수 있습니다."}},{"@type":"Question","name":"친절하다는 것이 기준을 낮추는 것을 의미하나요?","acceptedAnswer":{"@type":"Answer","text":"아니요 — 이것이 이해해야 할 가장 중요한 것입니다. 친절한 엔지니어링은 높은 기준과 완전히 양립 가능합니다; 사실, 그것을 요구합니다. 차이는 어떻게 기준을 유지하는지에 있습니다: 친절한 엔지니어는 기준이 무엇인지 명확히 하고, 왜 중요한지 설명하며, 사람들이 그것을 충족하도록 돕습니다. \"테스트 없이는 이것을 머지할 수 없습니다 — 왜 중요한지 그리고 어떻게 접근하겠는지 알려 드릴게요\"는 높은 기준이면서 친절합니다. 마찰을 피하려고 모든 것을 승인하는 것은 '상냥함'이지만 궁극적으로는 도움이 되지 않습니다. 솔직한 피드백을 절대 전달하지 않는 친절함은 단지 위장한 갈등 회피입니다."}}]}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--violet","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"블로그\",\"item\":\"https://nguyenlephong.github.io/ko/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"엔지니어링 문화\",\"item\":\"https://nguyenlephong.github.io/ko/blog/culture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Kind Engineering: 친절함이 더 나은 엔지니어를 만드는 이유\",\"item\":\"https://nguyenlephong.github.io/ko/blog/culture/how-to-be-a-kind-engineer\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],["$L5","$L6","$L7"],"$L8"]}],"loading":null,"isPartial":false}
+f:T6837,<p>팀에서 조용히, 종종 오래 일한 엔지니어들 사이에서 이런 말이 나옵니다: <em>"여기서는 내가 진짜 생각하는 것을 말할 수 있어."</em> 단순하게 들립니다. 실제로는 드문 일이며 — 엄청나게 가치 있습니다. 이것을 가능하게 하는 조건들은 우연히 찾아오지 않습니다. 친절하기로 선택하는 사람들이 한 번의 상호작용을 통해 하나씩 만들어 갑니다.</p>
+<p><em>상냥한</em> 것이 아닙니다. 친절한 것입니다. 그 차이는 처음 보이는 것보다 훨씬 중요하며, 잘못 이해하면 팀에 큰 비용을 치르게 됩니다.</p>
+<p>이 글은 친절한 엔지니어링이 실제로 무엇을 의미하는지에 대한 실용적인 탐구입니다 — 코드 리뷰, 장애 대응, 피드백 대화, 그리고 함께 일하는 사람들을 어떻게 대우하는지에 대한 조용한 선택들이 실제로 중요한 순간들에서. 여기 있는 많은 생각은 <a href="https://kind.engineering/" target="_blank" rel="noopener noreferrer">kind.engineering</a>에 의해 형성되었으며, 건강한 팀을 만들고자 하는 사람이라면 꼭 읽어봐야 할 자료입니다. 아래 아이디어는 저 자신의 합성과 경험입니다; 그 사이트를 필수 추가 읽기로 고려하세요.</p>
+
+<h2 id="kind-vs-nice">친절함은 상냥함과 같지 않습니다</h2>
+<p>친절함과 상냥함의 혼동은 놀랍도록 많은 기능 장애 팀들의 원인입니다. 상냥함은 편안합니다 — 어색한 순간을 부드럽게 하고, 평화를 유지하며, 따뜻하게 느껴집니다. 하지만 종종 공허합니다. 상냥한 사람은 데모에 심각한 결함이 있을 때 훌륭했다고 말합니다. 상냥한 사람은 비판적으로 보일 수 있는 댓글을 남기기보다 pull request를 승인합니다. 상냥한 사람은 회의에서 동의하고 나쁜 결정이 앞으로 나아가는 동안 조용히 있습니다.</p>
+<p>친절함은 다릅니다. 친절함은 <em>당신을 위하기 때문에</em> 진실을 말합니다. 어려운 것을 말하지만, 숨게 만들기보다 성장하고 싶게 만드는 방식으로. kind.engineering의 저자는 이것을 아름답게 포착합니다: 상냥함은 케이크를 가져오고; 친절함은 당신의 매니저에게 가서 "이 사람이 탁월한 일을 하고 있습니다 — 다음 리드 역할에 추천해 주세요"라고 말합니다. 하나의 행동은 쉽고 비용이 없습니다. 다른 하나는 노력과 다른 사람의 미래에 대한 투자가 필요합니다.</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>상황</th><th>불친절함</th><th>상냥함</th><th>친절함</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>결함 있는 PR에 대해</th>
+      <td>"완전히 틀렸어요."</td>
+      <td>마찰을 피하려고 댓글 없이 승인합니다.</td>
+      <td>"24번 줄에 경쟁 조건이 있다고 생각합니다 — 대신 이렇게 해보겠습니다."</td>
+    </tr>
+    <tr>
+      <th>프로덕션 장애 후</th>
+      <td>"누가 이걸 작성했나요? 어떻게 리뷰를 통과했나요?"</td>
+      <td>넘어갑니다; 다시 언급하지 않습니다.</td>
+      <td>비난 없는 회고를 진행합니다; "누가 이것을 허용했나?"가 아니라 "무엇이 이것을 가능하게 했나?"를 묻습니다.</td>
+    </tr>
+    <tr>
+      <th>설계 피드백을 줄 때</th>
+      <td>"이건 말이 안 됩니다."</td>
+      <td>진짜 문제가 있어도 "좋아 보여요!"</td>
+      <td>"캐싱 전략이 현재 트래픽 볼륨에서 부하를 견딜 수 있을지 모르겠습니다 — 예상 읽기 패턴을 함께 살펴볼 수 있을까요?"</td>
+    </tr>
+    <tr>
+      <th>거절할 때</th>
+      <td>"내 문제가 아닙니다."</td>
+      <td>모든 것에 예스라고 말하고; 번아웃이 오거나 과소 달성합니다.</td>
+      <td>"이번 스프린트에는 이것을 맡을 수 없지만, 언제 가능한지, 또는 지금 당장 도와줄 수 있는 사람이 누군지 알려 드릴게요."</td>
+    </tr>
+    <tr>
+      <th>다른 사람의 일을 인정할 때</th>
+      <td>인정하지 않습니다.</td>
+      <td>팀 채널에 막연한 칭찬을 합니다.</td>
+      <td>구체적인 기여를 공개적으로 명명합니다; 리더십에게 가시성을 지지합니다.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>친절함이 세 가지 중 꾸준히 <em>가장 어려운</em> 것임을 주목하세요. 솔직하고, 사려 깊으며, 동시에 투자되어야 합니다. 상냥함은 쉽습니다. 친절함은 노력이 필요합니다. 그리고 불친절함은, 단기적인 효율성이 어떻든, 거의 항상 시간이 지나면서 상황을 악화시킵니다.</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">핵심 구분</span><p>상냥함은 <em>당신의</em> 편안함을 최적화합니다 — 어려운 말을 하는 불편함. 친절함은 <em>그들의</em> 성장을 최적화합니다. 종종 그 두 가지는 반대 방향으로 당깁니다. 친절한 엔지니어링은 지속적으로 편안함보다 성장을 선택하는 것을 의미합니다.</p></div>
+
+<h2 id="why-it-pays">친절함이 힘을 배가시키는 이유</h2>
+<p>친절함이 단지 있으면 좋은 것 — 도덕적 열망이지만 실용적인 레버가 아님 — 에 불과하다면, 그래도 추구할 가치가 있습니다. 하지만 고성과 팀의 연구와 실제 경험은 그것이 더 강한 무언가임을 시사합니다: 엔지니어링 산출물에 대한 진정한 힘의 배가입니다.</p>
+<p>그 메커니즘은 <strong>심리적 안전감</strong>을 통해 작동합니다 — 조직 연구자 Amy Edmondson의 용어로, 이후 구글의 Project Aristotle에 의해 대중화되었습니다. 그녀의 발견은 많은 산업의 팀에서 확인된 것으로, 팀의 효과성을 가장 크게 예측하는 것은 구성원의 평균 IQ, 프로세스의 우아함, 또는 도구의 품질이 아닙니다. 팀원들이 대인 위험을 감수하는 것이 안전하다고 느끼는지 여부입니다: "멍청한" 질문을 하고, 모른다는 것을 인정하고, 확실하기 전에 잠재적인 문제를 지적하고, 시니어 동료와 의견을 달리하는 것.</p>
+<p>심리적으로 안전한 팀에서, 버그가 의심되는 주니어 엔지니어는 그렇게 말합니다. 설계 결정을 이해하지 못하는 엔지니어는 질문합니다 — 잘못된 것을 만들며 사흘을 보내는 대신. 위험한 배포 선택을 발견한 사람은 다른 누군가가 해주기를 바라는 대신 리뷰 회의에서 말합니다. 이것들은 극적인 용기의 행위가 아닙니다. 문제를 일찍 잡는 팀과 프로덕션에서 잡는 팀을 구분하는 일상적인 정보 흐름입니다.</p>
+<p>친절함이 심리적 안전감을 구축합니다. 질문에 어떠한 경멸의 흔적도 없이 응답할 때, 그 사람 — 그리고 모든 관찰자 — 이 미래에 질문하는 것을 더 안전하게 만듭니다. 비난 없는 장애 리뷰를 진행할 때, 다음에 아슬아슬한 순간을 보고하는 것을 더 안전하게 만듭니다. 솔직하고 배려 있는 피드백을 주고 수신자가 그로부터 성장할 때, 팀 전체는 피드백이 위협이 아닌 선물임을 배웁니다.</p>
+<p>실용적인 성과들이 빠르게 복리로 쌓입니다:</p>
+<ul>
+  <li><strong>버그가 더 일찍 드러납니다.</strong> 사람들이 무능해 보이는 것을 두려워하지 않을 때, 실제 장애가 되기 전에 반쯤 형성된 우려를 지적합니다.</li>
+  <li><strong>학습이 가속화됩니다.</strong> 질문이 제기됩니다. 지식이 공유됩니다. 주니어가 더 빠르게 성장합니다.</li>
+  <li><strong>이탈이 줄어듭니다.</strong> 존중받고 투자받는다고 느끼는 팀에서는 사람들이 떠나지 않습니다. 스스로가 위축된다고 느끼는 팀에서 떠납니다.</li>
+  <li><strong>결정이 개선됩니다.</strong> 다양한 관점이 실제로 표현되며, 가장 큰 목소리가 방을 지배하기 때문에 자기 검열되지 않습니다.</li>
+</ul>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 700 380" role="img" aria-labelledby="dgm-flywheel">
+    <title id="dgm-flywheel">친절함의 플라이휠: 심리적 안전감이 사람들을 말하게 하고, 문제를 일찍 드러내며, 신뢰를 구축하고, 안전감을 깊게 합니다.</title>
+    <defs>
+      <marker id="fwAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+
+    <!-- Center label -->
+    <text class="dgm-t-strong" x="350" y="185" text-anchor="middle" font-size="15">Kindness</text>
+    <text class="dgm-t-muted dgm-t-mono" x="350" y="205" text-anchor="middle" font-size="11">flywheel</text>
+
+    <!-- Node 1: top — Psychological Safety -->
+    <rect class="dgm-core" x="230" y="28" width="240" height="54" rx="14" stroke-width="1.5"/>
+    <text class="dgm-t-strong" x="350" y="51" text-anchor="middle" font-size="13">Psychological Safety</text>
+    <text class="dgm-t-muted" x="350" y="71" text-anchor="middle" font-size="11">people feel safe to speak up</text>
+
+    <!-- Node 2: right — Problems Surface Early -->
+    <rect class="dgm-adapter" x="490" y="152" width="190" height="54" rx="14" stroke-width="1.5"/>
+    <text x="585" y="175" text-anchor="middle" font-size="13">Problems Surface</text>
+    <text class="dgm-t-muted" x="585" y="195" text-anchor="middle" font-size="11">early, not in production</text>
+
+    <!-- Node 3: bottom — Trust Grows -->
+    <rect class="dgm-adapter" x="230" y="278" width="240" height="54" rx="14" stroke-width="1.5"/>
+    <text x="350" y="301" text-anchor="middle" font-size="13">Trust Grows</text>
+    <text class="dgm-t-muted" x="350" y="321" text-anchor="middle" font-size="11">honest feedback feels safe</text>
+
+    <!-- Node 4: left — People Speak Up -->
+    <rect class="dgm-driven" x="20" y="152" width="190" height="54" rx="14" stroke-width="1.5"/>
+    <text x="115" y="175" text-anchor="middle" font-size="13">People Speak Up</text>
+    <text class="dgm-t-muted" x="115" y="195" text-anchor="middle" font-size="11">questions, flags, ideas</text>
+
+    <!-- Arrows: clockwise cycle -->
+    <!-- Top → Right (safety → speak up... via top-right arc) -->
+    <path class="dgm-flow" d="M 470,55 Q 580,55 585,148" marker-end="url(#fwAcc)"/>
+    <!-- Right → Bottom -->
+    <path class="dgm-flow" d="M 585,206 Q 585,305 474,305" marker-end="url(#fwAcc)"/>
+    <!-- Bottom → Left -->
+    <path class="dgm-flow" d="M 230,305 Q 115,305 115,210" marker-end="url(#fwAcc)"/>
+    <!-- Left → Top -->
+    <path class="dgm-flow" d="M 115,152 Q 115,55 226,55" marker-end="url(#fwAcc)"/>
+
+    <text class="dgm-t-accent" x="350" y="358" text-anchor="middle" font-size="12">Each turn of the flywheel makes the next turn easier.</text>
+  </svg>
+  <figcaption>친절함의 플라이휠. 심리적 안전감은 사람들이 말하도록 격려합니다; 문제가 더 일찍 드러납니다; 팀이 신뢰를 구축합니다; 신뢰가 안전감을 깊게 합니다. 친절함이 이 루프를 계속 돌아가게 하는 것이며 — 불친절한 행동이 그것을 멈추게 합니다.</figcaption>
+</figure>
+
+<h2 id="in-practice">실천 속의 친절함</h2>
+<p>철학은 금요일 오후 4시에 pull request에 댓글을 남겨야 할 때까지 유용합니다. 친절한 엔지니어링이 실제로 중요한 순간에 어떻게 보이는지입니다.</p>
+
+<h3 id="code-reviews">코드 리뷰에서</h3>
+<p>코드 리뷰는 아마도 엔지니어링에서 가장 높은 빈도의 친절함 테스트입니다. 잘 수행되면, 팀이 가진 가장 가치 있는 실천 중 하나입니다. 불친절하게 수행되면, 사람들이 일을 제출하는 것을 피하게 만들고, 분노로 리뷰를 미루거나, 완전히 이탈하게 만드는 두려움의 원천이 됩니다.</p>
+<p>역동성을 지속적으로 개선하는 몇 가지 원칙:</p>
+<ul>
+  <li><strong>무엇에 대해 댓글 달기 전에 이유를 이해하세요.</strong> 판결 내리기 전에 열린 질문을 하세요. "콜백 대신 폴링 접근법을 사용한 이유가 궁금합니다 — 내가 놓치고 있는 제약이 있나요?"는 대화를 초대합니다. "콜백을 써야 합니다"는 대화를 닫습니다.</li>
+  <li><strong>사소한 지적에 라벨을 붙이세요.</strong> "Nit: 여기서 더 설명적인 변수 이름을 쓰겠지만, 그냥 두어도 완전히 괜찮아요." 그 한 단어는 작성자에게 말합니다: 이것은 선택적이고, 이것 때문에 차단하지 않으며, 더 큰 댓글들이 진짜 주의가 필요한 것입니다.</li>
+  <li><strong>코드와 사람을 구분하세요.</strong> "이 함수가 여러 가지를 합니다"는 코드에 대한 피드백입니다. "당신은 항상 너무 많은 것을 하는 함수를 작성합니다"는 사람에 대한 피드백입니다. 하나는 유용합니다; 다른 하나는 그저 불쾌합니다.</li>
+  <li><strong>많은 피드백에는 동기식 대화로 전환하세요.</strong> 접근법에 대해 여섯 가지 주요 우려가 있다면, 벽 같은 댓글은 공개적인 질책처럼 느껴질 수 있습니다. 10분짜리 통화는 더 친절하고, 더 빠르며, 실제로 문제를 해결할 가능성이 더 높습니다.</li>
+</ul>
+<p><a href="/blog/culture/how-to-review-code-kindly">친절하게 코드 리뷰하는 방법</a>에 대한 동반 글에서도 이 주제를 더 깊이 다루고 있습니다.</p>
+
+<h3 id="incidents">장애 대응에서</h3>
+<p>장애는 팀 문화에 대한 스트레스 테스트입니다. 압박 하에 실제 결과와 함께, 모든 습관 — 좋은 것과 나쁜 것 — 이 증폭됩니다. 가장 친절하고 효과적인 팀은 <strong>비난 없는 회고</strong>를 진행합니다: 사람들은 가진 정보와 도구로 행동했으며, 시스템이 실패할 때는 개인이 아닌 시스템 — 이 변화가 필요하다는 가정.</p>
+<p>이것은 책임감을 낮추는 것이 아닙니다. 같은 실수가 고립되어 일어나는 경우가 드물다는 것을 이해하는 것입니다. 누군가가 잘못된 설정을 배포한 것은 배포 프로세스가 두 번째 눈을 요구하지 않았기 때문입니다. 누군가가 알림을 놓친 것은 그날 아침 발생한 40개 중 하나였기 때문입니다. 비난할 사람을 찾는 것은 종결처럼 느껴지지만 아무것도 고치지 않습니다. 비난 없는 포스트모템은 사람이 빠진 프로세스의 공백을 찾아서 대신 그것을 고칩니다.</p>
+
+<h3 id="meetings">회의에서</h3>
+<p>친절한 엔지니어는 공간을 만듭니다. 말하지 않은 사람을 알아채고 초대합니다. 빠른 말로 조용한 사색가들을 압도하지 않습니다. 가장 적극적이었던 사람들뿐만 아니라 모든 사람이 같은 이해를 갖고 떠날 수 있도록 결정을 요약합니다. 약속을 이행하여 사람들의 시간과 말이 의미 있게 다루어지도록 합니다.</p>
+
+<h3 id="saying-no">거절할 때</h3>
+<p>역설적으로, 명확하고 일찍 거절하는 것이 예스라고 말하고 과소 달성하는 것보다 종종 더 친절합니다. 완료할 수 없는 일을 받아들이면, 요청한 사람은 실현되지 않을 약속 주변으로 계획하며 기다립니다. "15일까지는 이것을 맡을 수 없지만, 더 빨리 도와줄 수 있는 사람이 있습니다"라고 말할 때 — 그것은 그들이 진짜 결정을 내릴 수 있게 해주는 유용한 정보입니다.</p>
+
+<h3 id="glue-work">글루 작업과 스폰서십에서</h3>
+<p>가장 친절한 엔지니어링 작업 중 일부는 거의 보이지 않습니다: 다음 신규 입사자가 사흘 동안 혼란스러워하지 않도록 온보딩 문서를 작성하는 사람, 주니어의 아이디어가 묻히지 않도록 계획 회의에서 지지하는 사람, 동료의 매니저에게 인정받을 만한 일에 대해 알리는 사람. 이것이 스폰서십입니다 — 다른 사람의 성장과 가시성에 적극적으로 투자하는 것. 상대적으로 비용이 적고 엄청나게 복리로 쌓입니다.</p>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">간단한 습관</span><p>일주일에 한 번, 스스로에게 물어보세요: 이 팀에 좋은 일을 하고 있지만 보이지 않는 사람이 있나요? 그런 다음 올바른 방에서, 올바른 사람에게 그것에 대해 구체적인 말을 하세요. 이것은 친절한 엔지니어가 하는 가장 영향력 있는 일 중 하나입니다 — 그리고 거의 아무도 지속적으로 하지 않습니다.</p></div>
+
+<h2 id="kind-not-pushover">친절함은 '예스맨'을 의미하지 않습니다</h2>
+<p>이것은 가장 자주 나오는 반론이며, 직접적인 답이 필요합니다. 친절한 엔지니어링은 높은 기준과 완전히 양립 가능합니다 — 사실, 그것을 요구합니다. 목표는 모든 사람을 편안하게 만드는 것이 아닙니다; 솔직하고 건설적인 참여가 가능하게 만드는 것입니다. 그것들은 다른 것입니다.</p>
+<p>높은 기준을 친절하게 유지한다는 것은: 기준이 무엇인지 명확히 하고, 왜 중요한지 설명하며, 사람들이 그것을 충족하도록 돕는 것을 의미합니다 — 단순히 그들이 부족하다는 것을 지적하는 것이 아니라. "테스트 없이는 이것을 머지할 수 없습니다 — 우리의 커버리지가 여섯 달 전 장애와 우리 사이에 있는 것이기 때문입니다"는 높은 기준이면서 친절합니다. "이건 테스트가 없는데, 명백히 용납할 수 없습니다"는 높은 기준이면서 불친절합니다. 원하는 결과는 같습니다; 거기까지 가는 경로는 매우 다릅니다.</p>
+<p><strong>잘 반박하는 것</strong>도 친절합니다. 결정에 동의하지 않을 때, 이유와 함께 명확히 말하는 것은 선물입니다 — 특히 그 후에 반대편으로 결정이 나면 그 결정에 헌신한다면. 불친절한 것은 수동적 반대입니다: 방에서 동의하고 이후에 결과를 약화시키거나, 말하는 것이 어색했기 때문에 조용히 있으며 나쁜 결정이 진행되도록 하는 것.</p>
+<p>친절한 엔지니어는 또한 팀을 보호합니다. 때로는 비현실적인 일정에 대해 이해관계자들과의 어려운 대화를 의미하거나, 그 방에서 스스로를 변호할 수 없는 사람들을 번아웃시킬 요구를 거부하는 것을 의미합니다. 이것은 상냥함이 아닙니다 — 개인적인 비용을 치르면서 행사하는 진짜 배려입니다.</p>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">"친절함"이 회피가 되지 않도록 주의하세요</span><p>비판적 피드백을 절대 주지 않거나, 회고에서 우려를 제기하지 않거나, 항상 일을 부드럽게 처리한다면 — 그것은 친절함이 아닙니다. 그것은 친절함을 가장한 갈등 회피입니다. 상대방은 당신의 솔직함을 받을 자격이 있습니다. 그들은 당신이 두려워하는 것만큼 취약하지 않습니다.</p></div>
+
+<h2 id="for-yourself">자신에게 친절하기</h2>
+<p>자신에게 불친절한 엔지니어들은 종종 다른 사람들에게도 불친절합니다. 만성적인 과로, 도움 요청 거부, 항상 유능해 보여야 한다는 필요 — 이것들은 미덕이 아닙니다. 판단력을 침식하고, 분노를 만들며, 진정한 협업을 어렵게 만드는 피로한 패턴입니다.</p>
+<p><strong>히어로 문화</strong> — 장애를 밤새워 고친 사람, 혼자서 컴포넌트를 재작성한 사람, 항상 이용 가능하고 항상 달성하는 사람의 찬미 — 는 매혹적이지만 위험합니다. 히어로가 없어서는 안 된다고 느끼게 만들고 모든 다른 사람들에게 같은 방식으로 수행해야 한다는 엄청난 압박을 비밀리에 줍니다. 또한 지식을 위험하게 집중시키고 그 사람이 없을 때 팀을 취약하게 만듭니다.</p>
+<p>지속 가능한 속도는 낮은 야망의 신호가 아닙니다. 명확하게 생각하고, 좋은 피드백을 주며, 대화에 진정으로 존재하고, 몇 달이 아닌 몇 년 동안 좋은 일을 계속 할 수 있게 해주는 것입니다. 자신에게 친절한 엔지니어들 — 경계를 설정하고, 도움을 구하고, 불확실성을 인정하는 — 은 동료들이 가장 함께 일하고 싶어 하는 사람들인 경향이 있습니다. 알고 보니, 취약성은 신뢰를 구축합니다. 취약하지 않음을 연기하는 것은 그렇지 않습니다.</p>
+<p>이것은 또한 나중이 아닌 일찍 도움을 구하는 것을 의미합니다. 두 시간 동안 막혔을 때 하는 질문은 자신과 물어보는 사람에게 친절합니다 — 유용한 맥락과 해결 가능한 문제를 줍니다. 이틀간의 조용한 고투 후에 하는 같은 질문은 모든 사람에게 더 어렵습니다.</p>
+
+<h2 id="by-role">역할과 팀 크기에 따른 친절함의 확장</h2>
+<p>친절한 엔지니어링은 어디에 앉아 있는지와 조직이 얼마나 큰지에 따라 다소 다르게 보이지만, 핵심은 일정하게 유지됩니다.</p>
+<p><strong>개인 기여자로서</strong>, 대부분의 친절함은 로컬입니다: 코드 리뷰, 페어 프로그래밍, Slack에서 질문에 어떻게 응답하는지, 다음 사람이 다시 알아내지 않도록 방금 알아낸 것을 문서화하는지 여부. 이 순간들은 개별적으로 작고 집합적으로 엄청납니다. 모든 IC가 위의 것들을 업무의 일부로 취급하는 팀은 그렇지 않은 팀보다 눈에 띄게 더 좋은 일터입니다.</p>
+<p><strong>테크 리드로서</strong>, 팀의 규범에 불균형적인 영향을 미칩니다. 피드백을 주는 방식이 피드백이 주어지는 방식이 됩니다. 판결을 내리기보다 질문을 한다면, 다른 사람들도 그렇게 합니다. 실수를 비판하기보다 일찍 문제를 드러낸 사람을 축하한다면, 모든 사람이 일찍 문제를 드러내는 것을 더 안전하게 만듭니다. 가장 가치 있는 단 하나의 친절함 투자는 팀 상호작용의 문화를 설정하는 것입니다 — 그리고 그것을 하는 가장 빠른 방법은 모든 코드 리뷰와 모든 회의에서 스스로 그 행동을 모델로 보여 주는 것입니다.</p>
+<p><strong>매니저로서</strong>, 레버가 바뀝니다. 심리적 안전감에는 이제 포함됩니다: 이것을 말하면 내 직업을 잃을까? 그것은 많은 사람들에게 진짜 우려이며, 적극적으로 해소되어야 합니다 — 말로, 위험 감수에 대한 반응으로, 나쁜 소식을 가져올 때 어떻게 하는지로. 나쁜 소식에 좌절로 반응하는 매니저는 팀이 나쁜 소식을 숨기도록 훈련시킵니다. "일찍 알려줘서 고마워요, 함께 생각해봐요"로 응답하는 매니저는 팀이 일찍 알려주도록 훈련시킵니다. 결과의 차이는 극적입니다.</p>
+<p><strong>큰 조직에서</strong>, 규모의 친절함은 종종 친절한 행동을 기본값으로 만드는 구조를 만드는 것을 의미합니다: 비난 없는 포스트모템 템플릿, 엔지니어링 핸드북의 명시적 코드 리뷰 규범, 대인 패턴을 드러내는 360도 피드백 프로세스, 개인이 배포한 것뿐만 아니라 팀원들을 어떻게 성장시키고 지원하는지를 포함하는 승진 기준.</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">핵심 요약</h3>
+<ul>
+  <li><strong>친절함은 상냥함이 아닙니다:</strong> 상냥함은 불편함을 피하고; 친절함은 상대방의 성장을 위하기 때문에 진실을 말합니다.</li>
+  <li><strong>심리적 안전감이 메커니즘입니다:</strong> 사람들이 말하는 것이 안전하다고 느낄 때, 문제가 더 일찍 드러나고, 학습이 가속화되며, 팀이 더 잘 수행합니다.</li>
+  <li><strong>친절함은 실천이 있습니다:</strong> 리뷰에서 판단하기 전에 질문하세요; 비난 없는 회고를 진행하세요; 명확하게 거절하세요; 다른 사람들의 가시성을 후원하세요.</li>
+  <li><strong>높은 기준과 친절함은 양립 가능합니다:</strong> 기준이 무엇인지 명확히 하고, 왜 중요한지 설명하며, 사람들이 충족하도록 도우세요 — 단순히 부족함을 지적하지 마세요.</li>
+  <li><strong>자신에게 친절하는 것은 선택 사항이 아닙니다:</strong> 히어로 문화는 취약한 문화입니다; 지속 가능한 속도, 도움 구하기, 불확실성 인정은 모두 친절함이 요구하는 신뢰를 구축합니다.</li>
+  <li><strong>역할이 레버를 형성합니다:</strong> IC는 일상 상호작용에서 규범을 구축합니다; 리드는 팀 수준에서 행동을 모델로 보여 줍니다; 매니저는 위험과 나쁜 소식에 대한 반응을 통해 구조적 안전감을 만듭니다.</li>
+  <li><strong>추가 읽기:</strong> 이 글의 아이디어는 엔지니어링 팀의 소통, 솔직함, 심리적 안전감에 대한 사려 깊고 실용적인 자료인 <a href="https://kind.engineering/" target="_blank" rel="noopener noreferrer">kind.engineering</a>에 의해 형성되었습니다.</li>
+</ul>
+</div>
+<p>친절함은 복리로 쌓입니다. 잘 전달된 모든 솔직한 리뷰, 경멸 없이 답변된 모든 질문, 실제로 공백을 찾는 모든 비난 없는 포스트모템 — 이것들 각각은 팀 전체가 인출하는 신뢰 계정에 작은 예금입니다. 시간이 지나면서, 그 계정이 좋은 일이 일어나는 것처럼 느껴지는 팀과 그렇지 않은 팀을 구분하는 것입니다. 신중하게 구축할 가치가 있습니다.</p>
+<p>특정 실천에 대해 더 깊이 알고 싶다면, 이 시리즈의 다음 글은 <a href="/blog/culture/how-to-write-a-great-pull-request">훌륭한 Pull Request 작성하는 방법</a>의 기술을 살펴봅니다 — 이것 자체가 리뷰어에 대한 친절함의 행위입니다.</p>4:["$","$L9",null,{"category":"culture","slug":"how-to-be-a-kind-engineer","children":[["$","$La",null,{"category":"culture","slug":"how-to-be-a-kind-engineer","readingMinutes":13,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lb",null,{"url":"https://nguyenlephong.github.io/ko/blog/culture/how-to-be-a-kind-engineer","title":"Kind Engineering: 친절함이 더 나은 엔지니어를 만드는 이유","surface":"blog","category":"culture","slug":"how-to-be-a-kind-engineer","labels":{"share":"공유","copyLink":"링크 복사","copied":"복사됨!","close":"닫기"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lc",null,{"href":"/ko/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"블로그"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lc",null,{"href":"/ko/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"엔지니어링 문화"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["친절하고 효과적인 엔지니어링",["$","span",null,{"aria-hidden":"true","children":" · "}],"5부 중 2부"]}],["$","h1",null,{"className":"blog-article__title","children":"Kind Engineering: 친절함이 더 나은 엔지니어를 만드는 이유"}],["$","p",null,{"className":"blog-article__summary","children":"친절함은 상냥함이 아니고, 약함도 아닙니다. 친절함은 힘을 배가시키는 것입니다 — 더 명확한 피드백, 더 안전한 장애 대응, 더 빠르게 성장하는 팀원들. '엔지니어링에서의 친절함'이 실제로 무엇을 의미하는지, 그리고 코드 리뷰, 장애 대응, 일상 업무에서 어떻게 실천하는지."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"작성자: Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-02-28","children":"2026년 2월 28일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"13분 읽기"}],["$","$Ld",null,{"label":"조회"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","엔지니어링 문화",{"children":"엔지니어링 문화"}],["$","li","Kind Engineering",{"children":"Kind Engineering"}],["$","li","심리적 안전감",{"children":"심리적 안전감"}],["$","li","공감",{"children":"공감"}],["$","li","팀 협업",{"children":"팀 협업"}],["$","li","리더십",{"children":"리더십"}]]}]]}],["$","$Le",null,{"html":"$f"}],"$L10","$L11"]}]]}],"$L12","$L13","$L14"]}],"$L15"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+7:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+8:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+10:["$","$L19",null,{"prompt":"이 글 어떠셨나요?","surface":"blog","category":"culture","slug":"how-to-be-a-kind-engineer","reactionLabels":{"like":"좋아요","love":"최고예요","insightful":"유익해요","clap":"축하해요"}}]
+11:["$","section",null,{"className":"blog-faq","aria-labelledby":"blog-faq-heading","children":[["$","h2",null,{"id":"blog-faq-heading","className":"blog-faq__heading","children":"자주 묻는 질문"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Kind Engineering이란 무엇인가요?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Kind Engineering은 코드 리뷰, 장애 회고, 설계 토론, 그리고 일상적인 협업에서 팀원들을 솔직함과 진정한 배려로 대우하는 실천입니다. <strong>kind.engineering</strong> 리소스에 의해 대중화되었으며 세 가지 아이디어를 중심으로 합니다: 소통, 솔직함, 안전감. 친절한 엔지니어는 당신이 성장하기를 원하기 때문에 진실을 말하고, 사람들이 말하는 것이 안전하다고 느끼는 조건을 만들며, 자신의 산출물뿐만 아니라 팀원의 성공에 투자합니다."}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"직장에서 친절함과 상냥함의 차이는 무엇인가요?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"상냥함은 불편함을 피하는 것을 최적화합니다 — 당신이나 다른 사람의. 결함 있는 pull request를 어색함을 피하려고 승인하고, 일이 좋지 않았을 때 \"잘 했어요\"라고 말하며, 결정이 잘못된 방향으로 가고 있을 때 회의에서 조용히 있습니다. 반면에 친절함은 상대방의 성장을 위하기 때문에 진실을 말합니다. 솔직한 코드 리뷰 댓글을 남기고, 솔직한 설계 피드백을 주며, 회의에서 어려운 말을 합니다 — 하지만 이 모든 것을 사람을 존중하고 개선에 도움이 되는 방식으로 합니다. 상냥함은 쉽고 편안합니다; 친절함은 노력과 투자가 필요합니다."}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"소프트웨어 팀에서 심리적 안전감이란 무엇인가요?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"심리적 안전감 — 연구자 Amy Edmondson의 개념으로 구글의 Project Aristotle의 핵심 — 은 팀원들 사이에 대인 위험을 감수하는 것이 안전하다는 공유된 믿음입니다: 어리석어 보이지 않고 질문하기, 모른다는 것을 인정하기, 확실하기 전에 우려를 지적하기, 또는 시니어 동료와 의견 달리하기. 엔지니어링 측면에서, 이것은 잠재적인 버그를 발견한 주니어 엔지니어가 말하는 것과 틀릴까봐 두려워 조용히 있는 것의 차이입니다. 심리적 안전감이 높은 팀은 문제를 더 일찍 잡고, 더 빠르게 학습하며, 더 나은 결정을 내립니다 — 중요한 정보가 실제로 흐르기 때문입니다."}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"코드 리뷰에서 어떻게 친절하게 할 수 있나요?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"몇 가지 습관이 지속적으로 차이를 만듭니다: (1) 판단하기 전에 질문하세요 — \"왜 이 접근법을 선택했는지 궁금합니다\"는 대화를 초대하고 갖지 못했던 맥락을 드러낼 수 있습니다. (2) 사소한 지적에 명시적으로 라벨을 붙이세요 — \"Nit: 여기서 더 설명적인 이름을 고려해보세요, 하지만 차단하지는 않아요\"는 어느 댓글이 진짜 중요한지 알려 줍니다. (3) 코드에 대해 이야기하고, 사람에 대해 이야기하지 마세요 — \"이 함수가 너무 많은 일을 합니다\"는 유용한 피드백입니다; \"당신은 항상 이렇게 합니다\"는 그렇지 않습니다. (4) 많은 피드백에는 통화로 전환하세요 — 여섯 가지 주요 우려 사항을 인라인 댓글로 남기는 것은 공개적인 질책처럼 느껴질 수 있습니다; 10분 통화가 더 해결합니다. <a href=\"/blog/culture/how-to-review-code-kindly\">친절하게 코드 리뷰하는 방법</a>에 대한 동반 글에서 더 자세한 내용을 볼 수 있습니다."}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"친절하다는 것이 기준을 낮추는 것을 의미하나요?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"아니요 — 이것이 이해해야 할 가장 중요한 것입니다. 친절한 엔지니어링은 높은 기준과 완전히 양립 가능합니다; 사실, 그것을 요구합니다. 차이는 <em>어떻게</em> 기준을 유지하는지에 있습니다: 친절한 엔지니어는 기준이 무엇인지 명확히 하고, 왜 중요한지 설명하며, 사람들이 그것을 충족하도록 돕습니다. \"테스트 없이는 이것을 머지할 수 없습니다 — 왜 중요한지 그리고 어떻게 접근하겠는지 알려 드릴게요\"는 높은 기준이면서 친절합니다. 마찰을 피하려고 모든 것을 승인하는 것은 '상냥함'이지만 궁극적으로는 도움이 되지 않습니다. 솔직한 피드백을 절대 전달하지 않는 친절함은 단지 위장한 갈등 회피입니다."}}]]}]]}]]}]
+12:["$","$L1a",null,{"heading":"함께 읽기 좋은 글","intro":"같은 흐름을 조금 더 이어서 볼 수 있는 가까운 주제의 글입니다.","items":[{"post":{"slug":"giving-and-receiving-feedback","category":"culture","title":"잘 전달되는 피드백: 엔지니어로서 비평을 주고받는 방법","summary":"대부분의 엔지니어들은 피드백을 주는 방법을 배운 적이 없습니다 — 받는 방법도 마찬가지입니다. 구체적이고, 친절하며, 실행 가능한 피드백에 대한 실전 가이드, 그리고 받는 입장에서 열린 자세를 유지하는 방법 — 바로 쓸 수 있는 스크립트와 함께.","date":"2026-02-25","readingMinutes":13,"tags":["엔지니어링 문화","피드백","커뮤니케이션","심리적 안전감","멘토링","팀 협업"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":4},"categoryTitle":"엔지니어링 문화","readingLabel":"13분 읽기"},{"post":{"slug":"mentoring-engineers","category":"culture","title":"엔지니어 멘토링: 주니어를 시니어로 성장시키는 방법","summary":"훌륭한 팀은 채용만으로는 만들어지지 않습니다. 엔지니어링 팀을 이끌어 본 경험에서: 사람들이 빠르게 레벨업하도록 멘토링하는 방법 — 페어링, 가르침으로서의 코드 리뷰, 적절한 크기의 스트레치 과제, 그리고 주니어를 무엇이든 믿고 맡길 수 있는 사람으로 만드는 마인드셋의 전환.","date":"2026-02-24","readingMinutes":14,"tags":["엔지니어링 문화","멘토링","커리어 성장","리더십","팀 협업","코드 리뷰"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":5},"categoryTitle":"엔지니어링 문화","readingLabel":"14분 읽기"},{"post":{"slug":"how-to-review-code-kindly","category":"culture","title":"코드 리뷰의 기술: 사람을 무너뜨리지 않고 코드를 비평하는 방법","summary":"코드 리뷰는 팀 문화가 만들어지거나 무너지는 곳입니다. 코드가 더 잘 배포되고 작성자도 더 강해져서 돌아오도록 리뷰하는 실용적인 가이드 — 구체적인 표현, 리뷰어 체크리스트, 그리고 리뷰를 조용히 독성으로 만드는 습관들.","date":"2026-03-01","readingMinutes":14,"tags":["엔지니어링 문화","코드 리뷰","Pull Requests","피드백","팀 협업","멘토링"],"author":"Nguyen Le Phong","featured":true,"series":"kind-engineering","seriesOrder":1},"categoryTitle":"엔지니어링 문화","readingLabel":"14분 읽기"},{"post":{"slug":"how-to-write-a-great-pull-request","category":"culture","title":"사람들이 실제로 즐겁게 리뷰하는 Pull Request 작성하는 방법","summary":"훌륭한 pull request는 리뷰어에게 주는 선물입니다: 작고, 잘 설명되어 있으며, 쉽게 승인할 수 있습니다. 리뷰 가능한 PR의 해부학 — 크기, 제목, 설명, 커밋 위생, 그리고 셀프 리뷰 — 구체적인 before/after 예제와 함께.","date":"2026-02-27","readingMinutes":13,"tags":["엔지니어링 문화","Pull Requests","코드 리뷰","Git","팀 협업","개발 생산성"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":3},"categoryTitle":"엔지니어링 문화","readingLabel":"13분 읽기"}],"sourceCategory":"culture","sourceSlug":"how-to-be-a-kind-engineer"}]
+13:["$","nav",null,{"className":"blog-series-nav","aria-label":"친절하고 효과적인 엔지니어링","children":[["$","$Lc",null,{"href":"/ko/blog/culture/how-to-review-code-kindly","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","이전 글"]}],["$","span",null,{"className":"blog-series-nav__title","children":"코드 리뷰의 기술: 사람을 무너뜨리지 않고 코드를 비평하는 방법"}]]}],["$","$Lc",null,{"href":"/ko/blog/culture/how-to-write-a-great-pull-request","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["다음 글"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"사람들이 실제로 즐겁게 리뷰하는 Pull Request 작성하는 방법"}]]}]]}]
+14:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lc",null,{"href":"/ko/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","엔지니어링 문화(으)로 돌아가기"]}]}]
+15:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1b",null,{"label":"목차","surface":"blog"}]}]
+18:null

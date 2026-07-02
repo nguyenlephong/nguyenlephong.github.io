@@ -1,0 +1,19 @@
+{
+  "slug": "anatomy-of-a-healthy-one-on-one",
+  "category": "culture",
+  "title": "健全な 1-on-1 のかたち",
+  "summary": "健全な 1-on-1 は、やわらかい status meeting ではありません。context、信頼、feedback、career direction を扱うための小さく定期的な場所です。",
+  "date": "2026-02-08",
+  "readingMinutes": 6,
+  "tags": [
+    "Engineering Culture",
+    "One-on-One",
+    "Management",
+    "Feedback",
+    "Leadership",
+    "Team Trust"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>昼食の少し前、calendar reminder が出る。release、review、長引いた meeting、Slack の通知。1-on-1 はその場では緊急に見えないので、最初に動かされやすい。そして一か月後、本来そこで拾えたはずの小さなずれが高くつく。</p>\n<p>健全な 1-on-1 は、やわらかい status report ではない。status には standup、board、project update、pull request、dashboard がある。1-on-1 はそこに入りにくいもののための場所だ。迷い、context、信頼、feedback、成長の方向、そして小さな違和感。</p>\n<p>一つ目の材料は regularity。完璧な agenda より、ちゃんと起きる rhythm のほうが大事だ。価値は一度の深い会話ではなく、小さな会話の蓄積から生まれる。</p>\n<p>二つ目は shared ownership。engineer は分からないこと、重いこと、面白いこと、詰まっていることを持ってくる。manager は context、feedback、問いを持ってくる。</p>\n<p>三つ目は、未完成の言葉を言えるだけの安全さ。\"成長しているか分からない\"、\"あの decision が理解できなかった\"、\"あの review はうまく扱えなかった\" と言っても、すぐ performance judgment にならない場所であること。</p>\n<p>四つ目は specificity。\"大丈夫\" は安心するが、\"前回の incident write-up は timeline がとても明確だった。あの説明の仕方を続けてほしい\" のほうが行動につながる。</p>\n<p>よい 1-on-1 は、たいてい小さな clarity で終わる。一つの decision が説明される。一つの不安が名前を持つ。一つの feedback が actionable になる。その積み重ねが信頼になる。</p>\n<p>もし 1-on-1 が status meeting になっているなら、小さく戻せばいい。時間を守る。正直な topic を一つ持つ。Jira board では答えられない質問を一つする。それを繰り返す。</p>"
+}

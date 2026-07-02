@@ -1,0 +1,19 @@
+{
+  "slug": "daily-standup-status-report-or-strategy",
+  "category": "ways-of-working",
+  "title": "Daily standup : rapport d'état ou stratégie du jour ?",
+  "summary": "Un daily standup peut devenir un rituel de reporting, ou une courte conversation stratégique sur le flux, les risques et l'attention du jour.",
+  "date": "2026-02-05",
+  "readingMinutes": 6,
+  "tags": [
+    "Agile",
+    "Daily Standup",
+    "Scrum",
+    "Collaboration",
+    "Delivery",
+    "Ways of Working"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>À 9h30, l'appel s'ouvre et le rituel commence. Une personne lit hier, une autre lit le board, quelqu'un dit \"pas de blockers\" avec un visage qui raconte autre chose. La réunion finit à l'heure, mais la journée n'est pas plus claire.</p>\n<p>Le daily standup est si familier que les équipes oublient parfois sa raison d'être. Il devient un tour de table : ce que j'ai fait, ce que je vais faire, si je suis bloqué. Ce n'est pas inutile, mais c'est facile à performer.</p>\n<p>Un meilleur standup est une courte conversation stratégique sur la journée. Où le flux ralentit-il ? Quel risque grandit ? Que faut-il finir avant de commencer autre chose ? Qui a besoin d'aide ?</p>\n<p>Le changement commence quand on regarde le travail, pas les personnes. Parcourir le board de droite à gauche demande : qu'est-ce qui est proche de done, qu'est-ce qui attend une review, qu'est-ce qui est en cours depuis trop longtemps ?</p>\n<p>Les blockers deviennent aussi plus honnêtes. Beaucoup ne sont pas spectaculaires : un contrat API non confirmé, un environnement de test instable, un reviewer surchargé. Si l'équipe ne reconnaît que les blockers dramatiques, elle les voit trop tard.</p>\n<p>Le standup doit protéger le focus. Si cinq nouvelles tâches commencent alors que trois sont presque finies, l'équipe crée du mouvement sans terminer. La question utile devient : que pouvons-nous finir aujourd'hui ?</p>\n<p>Leads et managers doivent rester prudents. Si chaque update reçoit un jugement, la réunion devient une scène. Si chaque blocker devient une longue discussion, la réunion devient lourde. Nommez le sujet, choisissez qui continue après, puis avancez.</p>\n<p>La question simple est : qu'est-ce que ce standup a changé ? S'il ne change rien pendant plusieurs jours, il est peut-être devenu du reporting au lieu de la coordination.</p>"
+}

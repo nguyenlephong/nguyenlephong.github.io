@@ -1,0 +1,19 @@
+{
+  "slug": "daily-standup-status-report-or-strategy",
+  "category": "ways-of-working",
+  "title": "Daily standup: status report 인가, 오늘의 strategy 인가",
+  "summary": "Daily standup 은 어제를 보고하는 의식이 될 수도 있고, 오늘의 flow, risk, attention 을 맞추는 짧은 전략 대화가 될 수도 있습니다.",
+  "date": "2026-02-05",
+  "readingMinutes": 6,
+  "tags": [
+    "Agile",
+    "Daily Standup",
+    "Scrum",
+    "Team Collaboration",
+    "Delivery",
+    "Ways of Working"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>9시 30분, video call 이 열리고 익숙한 작은 의식이 시작됩니다. 한 사람은 어제를 읽고, 다른 사람은 board 를 읽습니다. 누군가는 \"blocker 없습니다\" 라고 말하지만 얼굴은 다른 이야기를 합니다. meeting 은 제시간에 끝나지만 하루가 더 명확해지지는 않습니다.</p>\n<p>daily standup 은 너무 익숙해서 목적을 잊기 쉽습니다. 어제 한 일, 오늘 할 일, 막힌 것이 있는지 차례로 말합니다. 쓸모없지는 않지만 쉽게 performance 가 됩니다.</p>\n<p>더 나은 standup 은 다음 working day 를 위한 짧은 strategy conversation 입니다. flow 는 어디서 느려지는가, 어떤 risk 가 커지는가, 무엇을 더 시작하기 전에 끝내야 하는가, 누가 help 를 필요로 하는가.</p>\n<p>변화는 사람보다 work 를 보는 데서 시작합니다. board 를 오른쪽에서 왼쪽으로 봅니다. done 에 가까운 것은 무엇인가, review 에서 멈춘 것은 무엇인가, 너무 오래 in progress 인 것은 무엇인가.</p>\n<p>blocker 도 더 정직해집니다. 많은 blocker 는 극적이지 않습니다. 확인되지 않은 API contract, 불안정한 test environment, 과부하된 reviewer, 결정되지 않은 edge case 같은 작은 risk 입니다.</p>\n<p>standup 은 focus 도 지켜야 합니다. 거의 끝난 task 세 개가 있는데 새 task 다섯 개를 시작한다면, 팀은 finish 보다 motion 을 늘리고 있을 수 있습니다.</p>\n<p>lead 와 manager 는 조심해야 합니다. 모든 update 에 judgment 가 붙으면 meeting 은 무대가 됩니다. 모든 blocker 를 길게 해결하려 하면 meeting 은 무거워집니다. 문제를 이름 붙이고, 누가 나중에 이어갈지 정한 뒤, 계속 가면 됩니다.</p>\n<p>간단한 질문은 이것입니다. 이 standup 이 무엇을 바꾸었는가? 며칠 동안 아무것도 바꾸지 못했다면, coordination 이 아니라 reporting 이 되었을지도 모릅니다.</p>"
+}

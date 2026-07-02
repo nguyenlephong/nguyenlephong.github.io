@@ -1,0 +1,13 @@
+{
+  "slug": "human-vs-ai-brain-elasticity",
+  "title": "The fundamental advantages of human vs AI",
+  "html": "<p>For all the speed and breadth of modern AI, one thing that AI models as software fall short of compared to the human brain is that this brain &ldquo;wetware&rdquo; is equipped with a biological advantage of <strong>elasticity</strong>. The mind is not a fixed machine running fixed weights; it reshapes itself in the very act of being used.</p>\n<p>AI models do not learn continuously. Once trained, their weights are frozen until someone deliberately retrains them. There&rsquo;s no resemblance to the &ldquo;neurons that fire together, wire together&rdquo; capability of the mind &mdash; that quiet, ongoing rewiring that happens whether or not we notice.</p>\n<p>We have a complicated biochemical machine built in that &ldquo;fine-tunes&rdquo; with every inference. Each time we think, recall, or struggle with something, information patterns are encoded and abstracted into efficient chunks automatically. Consider how a phone number you dialed a hundred times becomes a single fluid gesture rather than ten separate digits &mdash; that compression happens on its own. LLM models, by contrast, start from scratch no matter how much time they spend dealing with the same problem; nothing from one conversation settles into the next.</p>\n<p>The difference runs deeper than memory. The agentic behavior of LLMs acquires contextual connections through wording semantic similarity &mdash; matching things that sound alike. The human mind understands and creates connections based on abstracted relations, effectively performing at a higher dimensional level of thinking, linking ideas by what they <em>mean</em> rather than merely how they are phrased. <em>(A distinction I keep returning to from <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">a friend&rsquo;s thinking</a>.)</em></p>",
+  "backlinks": [
+    {
+      "slug": "23cd8fda-6959-439f-800a-6d4eea5bd681",
+      "title": "AI reduces the information privilege",
+      "context": "<ul>\n<li><a href=\"/thoughts/human-vs-ai-brain-elasticity\">The fundamental advantages of human vs AI</a> - <a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Articulation skill</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "seed"
+}

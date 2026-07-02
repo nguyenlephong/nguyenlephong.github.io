@@ -1,0 +1,182 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta79,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/vi/blog/architecture/resilience-in-distributed-systems#article","headline":"Timeout, Retry, Circuit Breaker và Idempotency: bộ kỹ năng sống còn của distributed systems","description":"Một lời gọi ra khỏi process có thể chậm, lỗi, timeout, hoặc chạy hai lần. Đó không phải chuyện hiếm, mà là đời sống bình thường của distributed systems. Bài này gom lại những kỹ thuật giúp hệ thống bền hơn: timeout, retry với backoff và jitter, idempotency, circuit breaker, bulkhead, graceful degradation và observability.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/blog/architecture/resilience-in-distributed-systems","image":"https://nguyenlephong.github.io/og/blog/resilience-in-distributed-systems.png","mainEntityOfPage":"https://nguyenlephong.github.io/vi/blog/architecture/resilience-in-distributed-systems","datePublished":"2026-04-09","dateModified":"2026-04-09","keywords":"Software Architecture, Resilience, Fault Tolerance, Circuit Breaker, Idempotency, Distributed Systems","articleSection":"Source Code & Software Architecture","isRelatedTo":[{"@type":"BlogPosting","headline":"Thiết kế idempotent API","url":"https://nguyenlephong.github.io/vi/blog/architecture/designing-idempotent-apis","image":"https://nguyenlephong.github.io/og/blog/designing-idempotent-apis.png"},{"@type":"BlogPosting","headline":"Outbox Pattern","url":"https://nguyenlephong.github.io/vi/blog/architecture/the-outbox-pattern","image":"https://nguyenlephong.github.io/og/blog/the-outbox-pattern.png"},{"@type":"BlogPosting","headline":"Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn","url":"https://nguyenlephong.github.io/vi/blog/architecture/event-driven-architecture-and-messaging","image":"https://nguyenlephong.github.io/og/blog/event-driven-architecture-and-messaging.png"},{"@type":"BlogPosting","headline":"Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems","url":"https://nguyenlephong.github.io/vi/blog/architecture/data-in-distributed-systems","image":"https://nguyenlephong.github.io/og/blog/data-in-distributed-systems.png"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/vi/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/vi/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Source Code & Software Architecture\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Timeout, Retry, Circuit Breaker và Idempotency: bộ kỹ năng sống còn của distributed systems\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture/resilience-in-distributed-systems\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T515e,<p>Ba phần trước, khi tách monolith thành microservices, ta có nhắc tới một hoá đơn rồi sẽ phải trả — cái <em>distributed-systems tax</em>. Sau đó ta nối các service bằng event và cho dữ liệu của chúng một mái nhà riêng. Đây là phần hoá đơn đến hạn.</p>
+<p>Cái tax này dễ gọi tên và khó né: <strong>khoảnh khắc một lời gọi rời khỏi process của bạn, nó có thể chậm, có thể lỗi, và có thể xảy ra hai lần — và không cái nào là ngoại lệ, đó là chuyện thường ngày.</strong> Resilience là kỷ luật xây một hệ thống vẫn đứng vững bất chấp. Không phải hệ thống không bao giờ lỗi — thứ đó không tồn tại — mà là hệ thống lỗi nhỏ, lỗi nhanh, và tự hồi phục.</p>
+
+<figure class="blog-figure blog-photo-panorama">
+  <img src="/assets/blog/resilience-in-distributed-systems/resilience-tax-on-the-big-screen.png" width="1600" height="900" loading="lazy" decoding="async" alt="Nguyen Le Phong chỉ vào dashboard hệ thống trên màn hình lớn khi ba đồng đội cùng nhìn lại luồng lỗi quanh bàn họp." />
+  <figcaption>Distributed-systems tax thường trở nên rất thật trong một căn phòng như thế này: một tính năng vẫn đang chạy, nhưng cả team đã thấy dependency chậm đầu tiên bắt đầu kéo phần còn lại của hệ thống xuống theo.</figcaption>
+</figure>
+
+<h2 id="the-fallacies">Những lời nói dối êm tai ta tự kể về mạng</h2>
+<p>Năm 1994, các kỹ sư ở Sun đã liệt kê <strong>các ngộ nhận về distributed computing</strong> — những giả định sai mà mọi team mắc phải khi lần đầu trải công việc ra nhiều máy:</p>
+<ul>
+<li><em>Mạng đáng tin cậy.</em> Không. Gói tin rớt, kết nối reset.</li>
+<li><em>Độ trễ bằng không.</em> Không. Một lời gọi xuyên data center là chậm như rùa so với một lời gọi hàm.</li>
+<li><em>Băng thông vô hạn, topology không đổi, chi phí truyền bằng không.</em> Không cái nào đúng.</li>
+</ul>
+<p>Trong một monolith, một lời gọi method gần như tức thì và không bao giờ "xảy ra một nửa." Khoảnh khắc bạn thay nó bằng một lời gọi mạng, mọi ngộ nhận đó trở thành vấn đề của bạn. Mọi thứ bên dưới là công cụ để đối xử với mạng đúng như cái thứ bất định mà nó vốn là.</p>
+
+<h2 id="timeouts">Timeout: đừng bao giờ đợi mãi mãi</h2>
+<p>Đây là công cụ resilience quan trọng nhất và cũng bị quên nhiều nhất. Một lời gọi không có timeout là một sự cố có hẹn giờ. Đây là phản ứng dây chuyền: một downstream service đơ; lời gọi của bạn đợi; cái thread (hoặc connection) xử lý request đó bị kẹt; thêm request đến và chiếm thêm thread kẹt; trong vài giây service khoẻ mạnh của bạn cạn sạch thread và đổ theo. <strong>Một dependency chậm vừa quật ngã một service vốn đang chạy tốt.</strong></p>
+<pre><code><span class="cmt">// Một lời gọi không timeout có thể treo đến khi cả service cạn kiệt</span>
+<span class="kw">const</span> res = <span class="kw">await</span> fetch(url)                          <span class="cmt">// đợi... mãi mãi?</span>
+
+<span class="cmt">// Hãy giới hạn mọi lời gọi ra ngoài. Lỗi nhanh hơn đợi vô tận.</span>
+<span class="kw">const</span> res = <span class="kw">await</span> fetch(url, { signal: AbortSignal.timeout(<span class="str">800</span>) })</code></pre>
+<p>Quy tắc là tuyệt đối: <strong>mọi lời gọi rời khỏi process của bạn đều phải có timeout.</strong> Một request lỗi trong 800&nbsp;ms thì hồi phục được; một request treo 60 giây kéo cả node xuống cùng nó.</p>
+
+<h2 id="retries-and-backoff">Retry: hữu ích, cho tới khi thành một cuộc giẫm đạp</h2>
+<p>Nhiều lỗi là nhất thời — một cú nghẽn, một lần quá tải ngắn, một node đang restart. Retry thường có tác dụng. Nhưng retry ngây thơ là một khẩu súng đã lên đạn chĩa vào chính chân bạn.</p>
+<p>Hình dung một service chậm lại dưới tải. Mọi caller timeout rồi retry ngay lập tức. Giờ cái service đang vật lộn nhận <em>gấp đôi</em> lưu lượng vào đúng thời điểm tệ nhất, chậm thêm, kích thêm retry… và bạn có một <strong>retry storm</strong> biến một cú loạng choạng thành một sự cố. Cách sửa thì ai cũng biết:</p>
+<ul>
+<li><strong>Exponential backoff.</strong> Đợi lâu hơn giữa mỗi lần thử: 100&nbsp;ms, 200, 400, 800. Cho dependency khoảng thở.</li>
+<li><strong>Jitter.</strong> Thêm ngẫu nhiên để cả nghìn client không retry đồng loạt trong cùng một nhịp — retry đồng bộ là một cuộc giẫm đạp tự thân.</li>
+<li><strong>Một ngân sách retry.</strong> Giới hạn số lần thử (chẳng hạn ba) rồi bỏ cuộc một cách lịch sự. Retry vô hạn chỉ dời sự cố đi chỗ khác.</li>
+<li><strong>Chỉ retry các thao tác idempotent.</strong> Vốn là cả mục tiếp theo.</li>
+</ul>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Thuốc chữa có thể chính là bệnh</span><p>Retry mà không có backoff và jitter không thêm resilience — nó thêm một cú DDoS tự gây ra. Những sự cố tàn phá nhất thường không phải lỗi gốc mà là cơn bão retry các client tung ra khi cố hồi phục từ nó. Hãy nhẹ nhàng với một service đang quỳ gối.</p></div>
+
+<h2 id="idempotency">Idempotency: cái giá để được phép retry</h2>
+<p>Một lần retry chỉ an toàn nếu làm thao tác hai lần cho cùng kết quả như làm một lần. Tính chất đó là <strong>idempotency</strong>, và nó là sợi chỉ xuyên suốt cả series này: ở phần bảy, broker giao <em>at-least-once</em>; ở phần tám, outbox relay retry; ở đây, chính client của bạn retry. Trong mọi trường hợp cùng một phòng tuyến áp dụng — làm cho thao tác an toàn khi lặp lại.</p>
+<p>Kỹ thuật chuẩn là một <strong>idempotency key</strong>: caller đính kèm một id duy nhất, và bên nhận nhớ những id nào nó đã xử lý.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="/assets/blog/resilience-in-distributed-systems/retry-budget-and-idempotency-review.png" width="1440" height="960" loading="lazy" decoding="async" alt="Nguyen Le Phong cùng hai đồng đội nhìn vào sơ đồ trên bàn để xác định chỗ nào retry phải chậm lại và chỗ nào request lặp cần được khử trùng lặp an toàn." />
+  <figcaption>Retry chỉ thật sự hữu ích khi team cùng nhìn ra hai ranh giới: caller phải chậm lại ở đâu, và cùng một request có thể được nhận lại ở đâu mà không làm cùng một việc hai lần.</figcaption>
+</figure>
+<pre><code><span class="cmt">// Caller gửi một key ổn định; server ghi lại đúng một lần.</span>
+<span class="kw">async function</span> charge(req) {
+  <span class="kw">if</span> (<span class="kw">await</span> processed.has(req.idempotencyKey)) {
+    <span class="kw">return</span> processed.get(req.idempotencyKey)   <span class="cmt">// phát lại kết quả đầu tiên, không trừ tiền lần nữa</span>
+  }
+  <span class="kw">const</span> result = <span class="kw">await</span> paymentGateway.charge(req)
+  <span class="kw">await</span> processed.set(req.idempotencyKey, result)
+  <span class="kw">return</span> result
+}</code></pre>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">"Exactly once" là một hư cấu êm tai</span><p>Bạn sẽ thấy nhà cung cấp hứa giao exactly-once. Trên một mạng bất định, trong trường hợp tổng quát nó về cơ bản là bất khả; thứ hệ thống thật xây là <strong>giao at-least-once cộng xử lý idempotent</strong>, vốn nhìn từ bên ngoài không phân biệt được với exactly-once — và thành thật hơn nhiều về cách thế giới vận hành.</p></div>
+
+<h2 id="circuit-breakers">Circuit breaker: ngừng nện vào cái đã sập</h2>
+<p>Khi một dependency thật sự sập — không phải nghẽn nhẹ, mà <em>sập</em> — retry còn tệ hơn vô dụng. Mỗi lời gọi vô vọng phí một timeout, giữ một thread, và trì hoãn đúng cái lỗi mà người dùng dù sao cũng sẽ nhận. Một <strong>circuit breaker</strong> là một mẩu state nhỏ nhận ra dependency đang lỗi và bắt đầu lỗi <em>nhanh</em>, cho dependency khoảng thở để hồi phục và cho caller một câu trả lời tức thì.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 340" role="img" aria-labelledby="dgm-cb">
+    <title id="dgm-cb">Một circuit breaker có ba trạng thái. Closed cho lời gọi đi qua; quá nhiều lỗi làm nó nhảy sang Open, nơi lời gọi lỗi tức thì; sau một khoảng cooldown nó sang Half-Open và cho một lời gọi thử đi qua để quyết định đóng lại hay mở lại.</title>
+    <defs>
+      <marker id="cbAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-accent" x="380" y="28" text-anchor="middle" font-size="13">LỖI NHANH, RỒI DÒ — ĐỪNG NỆN VÀO MỘT SERVICE ĐÃ SẬP</text>
+
+    <rect class="dgm-core" x="60" y="120" width="170" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="145" y="148" text-anchor="middle" font-size="14">CLOSED</text>
+    <text class="dgm-t-muted dgm-t-mono" x="145" y="167" text-anchor="middle" font-size="10.5">lời gọi đi qua</text>
+
+    <rect class="dgm-driven" x="530" y="120" width="170" height="64" rx="10"/>
+    <text class="dgm-t-accent" x="615" y="148" text-anchor="middle" font-size="14">OPEN</text>
+    <text class="dgm-t-muted dgm-t-mono" x="615" y="167" text-anchor="middle" font-size="10.5">lỗi tức thì</text>
+
+    <rect class="dgm-surface" x="295" y="248" width="170" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="380" y="276" text-anchor="middle" font-size="14">HALF-OPEN</text>
+    <text class="dgm-t-muted dgm-t-mono" x="380" y="295" text-anchor="middle" font-size="10.5">cho một lời gọi thử</text>
+
+    <path class="dgm-flow" d="M230,142 H 526" marker-end="url(#cbAcc)"/>
+    <text class="dgm-t-muted" x="378" y="132" text-anchor="middle" font-size="11">lỗi &gt; ngưỡng</text>
+
+    <path class="dgm-flow" d="M560,184 C 540,250 480,272 470,276" marker-end="url(#cbAcc)"/>
+    <text class="dgm-t-muted" x="560" y="240" text-anchor="middle" font-size="11">sau cooldown</text>
+
+    <path class="dgm-flow" d="M295,272 C 200,258 170,210 158,188" marker-end="url(#cbAcc)"/>
+    <text class="dgm-t-muted" x="205" y="246" text-anchor="middle" font-size="11">thử OK &rarr; đóng</text>
+
+    <path class="dgm-flow" d="M465,286 C 600,290 640,220 632,188" marker-end="url(#cbAcc)"/>
+    <text class="dgm-t-muted" x="585" y="298" text-anchor="middle" font-size="11">thử lỗi &rarr; mở lại</text>
+  </svg>
+  <figcaption>Việc của breaker là ngăn một dependency đang vật lộn bị nện đến chết — và ngăn caller phí thread đợi một thứ vốn đã sập. Lỗi nhanh tử tế hơn lỗi chậm.</figcaption>
+</figure>
+
+<p>Nó mượn ẩn dụ từ hệ thống điện. <strong>Closed</strong>: dòng điện chạy, lời gọi đi qua. Quá nhiều lỗi và nó nhảy <strong>Open</strong>: lời gọi lỗi ngay mà chẳng buồn thử. Sau một khoảng cooldown nó sang <strong>Half-Open</strong> và cho đúng một lời gọi thử đi qua — nếu thành công, nó đóng lại; nếu lỗi, nó mở lại và đợi lâu hơn. Cái hay nhân văn ở cả hai đầu: service ốm yếu ngừng bị dội bom, và caller ngừng đốt tài nguyên cho những lời gọi nó biết chắc sẽ lỗi.</p>
+
+<h2 id="bulkheads">Bulkhead: khoanh vùng thiệt hại</h2>
+<p>Một con tàu được chia thành các khoang kín nước để một vết thủng vỏ chỉ làm ngập một khoang, không phải cả con tàu. Pattern <strong>bulkhead</strong> áp dụng đúng ý đó cho tài nguyên. Nếu mọi dependency ra ngoài đều rút từ một pool thread hoặc connection dùng chung, thì một dependency chậm có thể vắt cạn cả pool và bỏ đói các lời gọi tới những dependency <em>khoẻ mạnh</em>. Cho mỗi dependency một pool riêng có giới hạn, và một lỗi ở một chỗ được khoanh lại ở một chỗ.</p>
+<p>Đây là lý do một third-party API đang vật lộn có thể, trong một hệ thống cô lập kém, quật ngã những tính năng chẳng liên quan gì tới nó. Bulkhead biến "cả app sập" thành "một tính năng bị giảm chất lượng."</p>
+
+<h2 id="graceful-degradation">Graceful degradation: một câu trả lời tệ hơn vẫn hơn không có gì</h2>
+<p>Resilience không chỉ là đứng vững — mà là vẫn <em>hữu ích</em> khi thiếu một mảnh. Khi một dependency lỗi, câu hỏi là: ta vẫn còn làm được gì?</p>
+<ul>
+<li><strong>Phục vụ dữ liệu cũ.</strong> Một giá đã cache hơi lỗi thời vẫn hơn một trang trắng.</li>
+<li><strong>Rơi về một giá trị mặc định.</strong> Engine gợi ý sập? Hiện danh sách bán chạy.</li>
+<li><strong>Cắt bỏ tính năng không thiết yếu.</strong> Bỏ cái badge tồn kho real-time để khách vẫn checkout được.</li>
+</ul>
+<p>Cú chuyển tư duy là coi mọi dependency là tuỳ chọn cho tới khi chứng minh được điều ngược lại, và quyết định phương án dự phòng <em>trước</em> sự cố, không phải trong lúc nó đang diễn ra. Một checkout chạy được mà không có widget gợi ý là resilient; một cái trắng màn hình vì một tính năng phụ lỗi thì không.</p>
+
+<h2 id="observability">Observability: không thấy thì không vận hành được</h2>
+<p>Mọi pattern ở đây đều lỗi một cách thầm lặng theo thiết kế. Một timeout lặng lẽ retry, một breaker lặng lẽ open, một queue lặng lẽ dồn ứ — mỗi cái giấu đi triệu chứng, mà đó chính là cái nguy. Không có tầm nhìn, tín hiệu đầu tiên của bạn là một khách hàng giận dữ.</p>
+<p>Ba trụ cột không phải tuỳ chọn trong một distributed system: <strong>metrics</strong> (độ trễ, tỉ lệ lỗi, trạng thái breaker), <strong>logs</strong> (chuyện gì đã xảy ra), và <strong>distributed tracing</strong> (dõi theo một request qua từng chặng — cách duy nhất để tìm ra <em>cái nào</em> trong tám service đã thêm độ trễ). Hãy dựng dashboard và cảnh báo trên dead-letter queue và trên breaker <em>trước khi</em> lên production, không phải sau cú page lúc 2&nbsp;giờ sáng đầu tiên.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="/assets/blog/resilience-in-distributed-systems/trace-before-the-page-arrives.png" width="1440" height="960" loading="lazy" decoding="async" alt="Nguyen Le Phong ngồi làm việc lúc chạng vạng trước hai màn hình và đối chiếu latency chart, trace và log trước khi một sự cố âm thầm biến thành cú page." />
+  <figcaption>Observability đáng giá đúng ở những phút yên ắng trước khi sự cố leo thang, khi một engineer còn kịp ghép trace, log và latency chart đủ sớm để chặn một dependency tệ biến thành một đêm tệ.</figcaption>
+</figure>
+
+<h2 id="the-playbook">Sổ tay, gói gọn trong một trang</h2>
+<p>Không pattern nào ở đây là kỳ bí. Kỹ năng là khớp đúng pattern với cái lỗi trước mặt bạn — và đừng với tới tất cả cùng một lúc.</p>
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Cái lỗi bạn sẽ thật sự gặp</th><th>Pattern trả lời nó</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Một dependency chậm hoặc treo</th><td>Một <strong>timeout</strong> trên mọi lời gọi ra ngoài — không thương lượng</td></tr>
+    <tr><th>Một cú nghẽn nhất thời, ngắn</th><td><strong>Retry</strong> với exponential backoff + jitter + một ngân sách</td></tr>
+    <tr><th>Một dependency sập hẳn</th><td>Một <strong>circuit breaker</strong> — lỗi nhanh, ngừng nện vào nó</td></tr>
+    <tr><th>Cùng một request đến hai lần</th><td>Một <strong>idempotency key</strong> — an toàn khi lặp lại</td></tr>
+    <tr><th>Một dependency chậm bỏ đói tất cả</th><td><strong>Bulkhead</strong> — pool tài nguyên cô lập</td></tr>
+    <tr><th>Một mảnh không thiết yếu không sẵn sàng</th><td><strong>Graceful degradation</strong> — một phương án dự phòng đã định trước</td></tr>
+    <tr><th>"Việc này có đang xảy ra không?"</th><td><strong>Observability</strong> — metrics, logs, distributed tracing</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="by-company-size">Góc nhìn thành thật theo quy mô công ty</h2>
+<ul>
+<li><strong>Solo / startup giai đoạn đầu.</strong> Bạn cần đúng hai thứ: <em>timeout trên mọi lời gọi ra ngoài</em>, và <em>idempotency trên bất cứ thứ gì thu tiền hoặc gửi message</em>. Đó là 80% sự bảo vệ với gần như không công sức. Bỏ qua phần còn lại cho tới khi bạn thấy thiếu nó.</li>
+<li><strong>Scale-up đang lớn.</strong> Thêm retry với backoff và jitter, và một circuit breaker quanh các dependency hay chập chờn nhất. Áp dụng một công cụ tracing ngay ngày một con bug ngốn hơn một tiếng để định vị. Quyết định phương án dự phòng cho các luồng người dùng quan trọng nhất.</li>
+<li><strong>Doanh nghiệp lớn.</strong> Resilience trở nên hệ thống: bulkhead và breaker là mặc định trong thư viện dùng chung hoặc một service mesh, error budget và SLO, và chaos testing cố tình làm hỏng thứ gì đó trên production để chứng minh các pattern thật sự hoạt động. Mục tiêu là không một dependency đơn lẻ nào có thể quật ngã cả hệ thống.</li>
+</ul>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Những điều cốt lõi</h3>
+<ul>
+  <li><strong>Mạng nói dối.</strong> Nó bất định, chậm, và sẽ làm trùng việc. Resilience là thiết kế cho điều đó như trường hợp bình thường, không phải ngoại lệ.</li>
+  <li><strong>Timeout trước, luôn luôn.</strong> Một lời gọi không giới hạn là một sự cố có hẹn giờ; một dependency chậm có thể bỏ đói một service khoẻ mạnh. Hãy giới hạn mọi lời gọi ra ngoài.</li>
+  <li><strong>Retry cần backoff, jitter và một ngân sách.</strong> Retry ngây thơ biến một cú loạng choạng thành một retry storm — một cú DDoS bạn tự chĩa vào mình.</li>
+  <li><strong>Retry an toàn nghĩa là idempotent.</strong> At-least-once cộng xử lý idempotent là phiên bản thành thật, khả thi của "exactly once."</li>
+  <li><strong>Circuit breaker và bulkhead khoanh vùng lỗi; graceful degradation giữ bạn hữu ích; observability cho bạn thấy tất cả.</strong> Quyết định phương án dự phòng trước sự cố, không phải trong lúc nó diễn ra.</li>
+</ul>
+</div>
+<p>Đó là khép lại vòng cung distributed systems của series Foundations này. Ta đi từ một chiếc hộp đến nhiều: cấu trúc code, vẽ ranh giới service, để chúng nói chuyện qua event, cho dữ liệu của chúng một mái nhà thành thật, và cuối cùng giữ cả guồng máy đứng vững khi mạng giở chứng. Sợi chỉ xuyên suốt chưa bao giờ là "hãy dùng pattern hào nhoáng." Nó vẫn là ngôi sao bắc đẩu của phần đầu tiên — <em>chỉ mua sự phức tạp khi bài toán bắt bạn phải mua, và trả cho nó bằng một kỷ luật bạn có thể gọi tên rõ ràng.</em></p>
+3:["$","$L8",null,{"category":"architecture","slug":"resilience-in-distributed-systems","children":[["$","$L9",null,{"category":"architecture","slug":"resilience-in-distributed-systems","readingMinutes":14,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/vi/blog/architecture/resilience-in-distributed-systems","title":"Timeout, Retry, Circuit Breaker và Idempotency: bộ kỹ năng sống còn của distributed systems","surface":"blog","category":"architecture","slug":"resilience-in-distributed-systems","labels":{"share":"Chia sẻ","copyLink":"Sao chép liên kết","copied":"Đã sao chép!","close":"Đóng"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/vi/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Source Code & Software Architecture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Software Architecture Foundations",["$","span",null,{"aria-hidden":"true","children":" · "}],"Phần 9/15"]}],["$","h1",null,{"className":"blog-article__title","children":"Timeout, Retry, Circuit Breaker và Idempotency: bộ kỹ năng sống còn của distributed systems"}],["$","p",null,{"className":"blog-article__summary","children":"Một lời gọi ra khỏi process có thể chậm, lỗi, timeout, hoặc chạy hai lần. Đó không phải chuyện hiếm, mà là đời sống bình thường của distributed systems. Bài này gom lại những kỹ thuật giúp hệ thống bền hơn: timeout, retry với backoff và jitter, idempotency, circuit breaker, bulkhead, graceful degradation và observability."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Bởi Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-04-09","children":"9 tháng 4, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"14 phút đọc"}],["$","$Lc",null,{"label":"lượt xem"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Software Architecture",{"children":"Software Architecture"}],["$","li","Resilience",{"children":"Resilience"}],["$","li","Fault Tolerance",{"children":"Fault Tolerance"}],["$","li","Circuit Breaker",{"children":"Circuit Breaker"}],["$","li","Idempotency",{"children":"Idempotency"}],["$","li","Distributed Systems",{"children":"Distributed Systems"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"Bạn thấy bài viết thế nào?","surface":"blog","category":"architecture","slug":"resilience-in-distributed-systems","reactionLabels":{"like":"Thích","love":"Yêu thích","insightful":"Sâu sắc","clap":"Tuyệt vời"}}]
+10:["$","$L18",null,{"heading":"Bài liên quan","intro":"Một vài bài gần chủ đề này để bạn đọc tiếp mạch suy nghĩ với nhiều ngữ cảnh hơn.","items":[{"post":{"slug":"designing-idempotent-apis","category":"architecture","title":"Thiết kế idempotent API","summary":"Một bài giải thích thực tế về idempotent API design: vì sao retry luôn xảy ra, duplicate request tạo rủi ro thế nào, và cách idempotency key, state transition ổn định cùng response contract rõ ràng làm distributed system bình tĩnh hơn.","date":"2026-01-10","readingMinutes":7,"tags":["Software Architecture","API Design","Idempotency","Distributed Systems","Reliability","System Design"],"author":"Nguyen Le Phong","featured":false},"categoryTitle":"Source Code & Software Architecture","readingLabel":"7 phút đọc"},{"post":{"slug":"the-outbox-pattern","category":"architecture","title":"Outbox Pattern","summary":"Một bài giải thích thực tế về Outbox Pattern: vì sao dual write dễ fail, cách transactional outbox giữ database state và event đi cùng nhau, và những phần team vẫn cần xử lý quanh retry, idempotency, ordering, cleanup và observability.","date":"2026-05-15","readingMinutes":7,"tags":["Software Architecture","Outbox Pattern","Distributed Systems","Event-Driven Architecture","Reliability","Microservices"],"author":"Nguyen Le Phong"},"categoryTitle":"Source Code & Software Architecture","readingLabel":"7 phút đọc"},{"post":{"slug":"event-driven-architecture-and-messaging","category":"architecture","title":"Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn","summary":"Khi service nào cũng gọi trực tiếp service khác, một dependency chậm có thể kéo cả checkout đi xuống. Bài này giải thích event-driven architecture bằng cách gần gũi: khi nào nên dùng sync hay async, command khác event ra sao, message broker thật sự bảo đảm điều gì, choreography và orchestration khác nhau thế nào, và lúc nào events chỉ làm hệ thống rối hơn.","date":"2026-04-11","readingMinutes":15,"tags":["Software Architecture","Event-Driven Architecture","Message Queues","Asynchronous Messaging","Distributed Systems","System Design"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":7},"categoryTitle":"Source Code & Software Architecture","readingLabel":"15 phút đọc"},{"post":{"slug":"data-in-distributed-systems","category":"architecture","title":"Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems","summary":"Tách code thường dễ hơn tách dữ liệu. Khi mỗi service cần sở hữu dữ liệu riêng, team phải đối mặt với shared database, eventual consistency, dual-write bug, outbox, saga, CQRS và event sourcing. Bài này đi qua những lựa chọn đó bằng ví dụ thực tế, để bạn hiểu trade-off trước khi hệ thống phân tán bắt đầu làm mọi thứ khó hơn.","date":"2026-04-10","readingMinutes":14,"tags":["Software Architecture","Distributed Systems","Saga Pattern","CQRS","Event Sourcing","Data Consistency"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":8},"categoryTitle":"Source Code & Software Architecture","readingLabel":"14 phút đọc"}],"sourceCategory":"architecture","sourceSlug":"resilience-in-distributed-systems"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"Software Architecture Foundations","children":[["$","$Lb",null,{"href":"/vi/blog/architecture/data-in-distributed-systems","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems"}]]}],["$","$Lb",null,{"href":"/vi/blog/architecture/scaling-the-database","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Bài tiếp theo"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Scale database theo đúng thứ tự: Index, Read Replica, Cache rồi mới tới Sharding"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Về Source Code & Software Architecture"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"Trong bài này","surface":"blog"}]}]
+16:null

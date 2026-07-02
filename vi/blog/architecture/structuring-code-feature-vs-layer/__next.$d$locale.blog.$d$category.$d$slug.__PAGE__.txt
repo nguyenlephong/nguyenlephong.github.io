@@ -1,0 +1,401 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta55,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/vi/blog/architecture/structuring-code-feature-vs-layer#article","headline":"Tổ chức codebase: theo layer, feature hay domain?","description":"Một codebase bắt đầu lớn lên từ những lựa chọn rất nhỏ: thư mục trên cùng nên là controllers/services/models, hay orders/billing/auth? Bài này so sánh cách tổ chức theo layer, theo feature và theo domain, chỉ ra mỗi kiểu hợp với giai đoạn nào, và vì sao cấu trúc thư mục thật ra đang kể cách team suy nghĩ về sản phẩm.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/blog/architecture/structuring-code-feature-vs-layer","image":"https://nguyenlephong.github.io/og/blog/structuring-code-feature-vs-layer.png","mainEntityOfPage":"https://nguyenlephong.github.io/vi/blog/architecture/structuring-code-feature-vs-layer","datePublished":"2026-03-04","dateModified":"2026-03-04","keywords":"Kiến trúc phần mềm, Cấu trúc dự án, Screaming Architecture, Modularity, Tổ chức mã nguồn, Monorepo","articleSection":"Source Code & Software Architecture","isRelatedTo":[{"@type":"BlogPosting","headline":"Layered và Vertical Slice Architecture","url":"https://nguyenlephong.github.io/vi/blog/architecture/layered-vs-vertical-slice-architecture","image":"https://nguyenlephong.github.io/og/blog/layered-vs-vertical-slice-architecture.png"},{"@type":"BlogPosting","headline":"Dependency direction bằng ngôn ngữ đời thường","url":"https://nguyenlephong.github.io/vi/blog/architecture/dependency-direction-in-plain-language","image":"https://nguyenlephong.github.io/og/blog/dependency-direction-in-plain-language.png"},{"@type":"BlogPosting","headline":"Ports & Adapters: Hexagonal Architecture giải thích bằng ví dụ dễ hiểu","url":"https://nguyenlephong.github.io/vi/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/og/blog/ports-and-adapters.png"},{"@type":"BlogPosting","headline":"Chi phí thật sự của Microservices","url":"https://nguyenlephong.github.io/vi/blog/architecture/true-cost-of-microservices","image":"https://nguyenlephong.github.io/og/blog/true-cost-of-microservices.png"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/vi/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/vi/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Source Code & Software Architecture\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Tổ chức codebase: theo layer, feature hay domain?\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture/structuring-code-feature-vs-layer\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T7c4c,<p>Bạn mở một project mới và việc đầu tiên làm — trước khi viết một dòng logic nào — là tạo một thư mục. Có thể nó tên <code>controllers/</code>. Có thể tên <code>orders/</code>. Dù sao đi nữa, lựa chọn thầm lặng đó đã là một quyết định kiến trúc, và nó sẽ âm thầm định hình mọi thứ tiếp theo: tốc độ đồng đội mới tìm được hướng, số file bạn phải chạm khi một tính năng thay đổi, và liệu sáu tháng sau codebase của bạn đọc giống <em>business</em> hay giống <em>framework</em> của bạn.</p>
+<p>Bài này là chuyến tham quan thực tế qua ba cách tiếp cận chính — <strong>theo lớp</strong>, <strong>theo tính năng</strong>, và <strong>screaming (theo domain)</strong> — với những đánh đổi thành thật ở mỗi quy mô công ty. Không có câu trả lời duy nhất thắng mọi tình huống, nhưng bạn sẽ rời đi với một mô hình tâm trí rõ ràng để lựa chọn có chủ đích thay vì theo mặc định.</p>
+<figure class="blog-figure blog-photo-panorama">
+  <img src="/assets/blog/structuring-code-feature-vs-layer/structure-decision-workshop.png" width="1600" height="900" loading="lazy" decoding="async" alt="Ba kỹ sư ngồi quanh bàn, so sánh các mô hình layer và domain khi bàn cách nhóm codebase." />
+  <figcaption>Lựa chọn cấu trúc chỉ thật sự hiện hình khi team phải chỉ ra phần nào nên được giữ cạnh nhau.</figcaption>
+</figure>
+
+<h2 id="why-it-matters">Tại sao cấu trúc thư mục là quyết định kiến trúc, không phải chuyện vặt</h2>
+<p>Người ta hay gạt bỏ cấu trúc thư mục là "chỉ là tổ chức". Nó nhiều hơn thế rất nhiều. Cách bạn nhóm code kiểm soát ba thứ hóa ra quan trọng cực kỳ:</p>
+<ul>
+  <li><strong>Coupling.</strong> Khi code thay đổi cùng nhau lại sống xa nhau, mỗi cập nhật nhỏ biến thành cuộc thám hiểm qua nhiều thư mục. Khi nó sống cùng nhau, các thay đổi liên quan cụm lại ở một nơi.</li>
+  <li><strong>Khả năng khám phá.</strong> Một developer chưa quen codebase sẽ hỏi, "code billing ở đâu?" Câu trả lời cho câu hỏi đó — một thư mục, hay năm thư mục rải rác — quyết định thời gian onboard.</li>
+  <li><strong>Blast radius.</strong> Bạn phải mở bao nhiêu file để ship một tính năng mới, hay để xóa an toàn một tính năng cũ? Cấu trúc hoặc hạn chế blast radius đó hoặc để nó lan rộng không kiểm soát.</li>
+</ul>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Mô hình tâm trí</span><p>Hãy nghĩ cấu trúc thư mục như một <strong>bản đồ</strong>. Bản đồ tốt nhóm những thứ dựa trên cách chúng liên quan trong thế giới thực — không phải dựa trên chất liệu chúng được làm bằng. Nhóm file theo kiểu (controller, model) giống như sắp xếp biểu tượng bản đồ theo hình dạng. Nhóm theo tính năng giống như sắp xếp theo khu phố. Một cái giúp bạn điều hướng; cái kia kỹ thuật đúng nhưng thực tế vô dụng.</p></div>
+<p>Định luật Conway — quan sát rằng hệ thống phần mềm phản chiếu cấu trúc giao tiếp của các team xây dựng chúng — cũng áp dụng ở đây. Nếu team bạn được tổ chức xung quanh năng lực nghiệp vụ (squad payments, squad orders), cấu trúc theo tính năng sẽ cảm thấy tự nhiên và thực thi đúng ranh giới. Cấu trúc theo lớp sẽ đấu lại bạn.</p>
+
+<h2 id="by-layer">Theo lớp: mặc định quen thuộc</h2>
+<p>Tổ chức theo lớp nhóm file theo vai trò kỹ thuật. Một project Node hoặc Spring Boot điển hình trông như thế này:</p>
+
+<figure class="blog-figure">
+  <pre><code>src/
+├─ controllers/
+│  ├─ OrderController.ts
+│  ├─ UserController.ts
+│  └─ BillingController.ts
+├─ services/
+│  ├─ OrderService.ts
+│  ├─ UserService.ts
+│  └─ BillingService.ts
+├─ repositories/
+│  ├─ OrderRepository.ts
+│  ├─ UserRepository.ts
+│  └─ BillingRepository.ts
+└─ models/
+   ├─ Order.ts
+   ├─ User.ts
+   └─ Invoice.ts</code></pre>
+  <figcaption>Cấu trúc theo lớp: mỗi lớp kỹ thuật có thư mục cấp cao riêng. Thêm một tính năng đồng nghĩa thêm file vào <em>tất cả bốn</em> thư mục.</figcaption>
+</figure>
+
+<p>Mọi tutorial web framework đều đổ bộ ở đây. Rails làm vậy, starter Spring Boot làm vậy, Express generator làm vậy. Sự quen thuộc đó là tài sản chính của nó.</p>
+<p><strong>Khi nào theo lớp tỏa sáng:</strong></p>
+<ul>
+  <li>App nhỏ với hai ba tính năng — cấu trúc phẳng đến mức hầu như không quan trọng.</li>
+  <li>Team nơi mọi người làm trên tất cả tính năng; lớp là đơn vị chuyên biệt hóa.</li>
+  <li>Prototype và công cụ nội bộ nơi tốc độ thiết lập ban đầu quan trọng hơn sự rõ ràng lâu dài.</li>
+</ul>
+<p><strong>Khi nào theo lớp gây đau:</strong></p>
+<ul>
+  <li><em>Một tính năng bị rải rác qua các thư mục.</em> Thêm tính năng "hoàn tiền" có nghĩa chạm vào <code>controllers/</code>, <code>services/</code>, <code>repositories/</code>, và <code>models/</code>. Đó là bốn thư mục cho thứ về mặt khái niệm là một việc.</li>
+  <li><em>Xóa một tính năng là dự án khảo cổ.</em> Làm sao bạn biết file nào trong <code>services/</code> thuộc về billing so với orders? Tên thư mục không nói cho bạn biết.</li>
+  <li><em>Merge conflict nhân lên.</em> Mọi thay đổi tính năng đều chạm vào cùng file theo lớp, gây va chạm khi hai developer làm song song.</li>
+</ul>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Vách đá khi mở rộng</span><p>Theo lớp hoạt động ổn đến khoảng 10–15 tính năng. Vượt qua đó, mỗi thư mục cấp cao trở thành <strong>ngăn kéo tạp nham</strong>: thư mục <code>services/</code> 40 file, không có quyền sở hữu rõ ràng, và pull request chạm vào file mà reviewer chưa từng thấy.</p></div>
+
+<h2 id="by-feature">Theo tính năng: một thay đổi nằm trong một thư mục</h2>
+<p>Tổ chức theo tính năng nhóm file theo phần sản phẩm chúng phục vụ. Các lớp kỹ thuật (controller, service, model) vẫn tồn tại — chúng chỉ sống <em>bên trong</em> mỗi thư mục tính năng thay vì ở cấp cao nhất:</p>
+
+<figure class="blog-figure">
+  <pre><code>src/
+├─ orders/
+│  ├─ OrderController.ts
+│  ├─ OrderService.ts
+│  ├─ OrderRepository.ts
+│  └─ Order.ts
+├─ billing/
+│  ├─ BillingController.ts
+│  ├─ BillingService.ts
+│  ├─ BillingRepository.ts
+│  └─ Invoice.ts
+├─ auth/
+│  ├─ AuthController.ts
+│  ├─ AuthService.ts
+│  └─ User.ts
+└─ shared/
+   ├─ database.ts
+   ├─ logger.ts
+   └─ Money.ts</code></pre>
+  <figcaption>Cấu trúc theo tính năng: mỗi khái niệm sản phẩm sở hữu thư mục riêng. Thêm tính năng hoàn tiền chỉ thêm một thư mục — không có gì khác di chuyển.</figcaption>
+</figure>
+
+<p><strong>Khi nào theo tính năng tỏa sáng:</strong></p>
+<ul>
+  <li><em>Một thay đổi nằm trong một thư mục.</em> Thêm luồng hoàn tiền có nghĩa thêm file bên trong <code>billing/</code> — không thư mục nào khác bị chạm. Blast radius nhỏ và gọn.</li>
+  <li><em>Xóa một tính năng đơn giản.</em> Xóa thư mục. Nếu thứ gì đó bên ngoài vẫn import từ nó, IDE của bạn sẽ báo ngay.</li>
+  <li><em>Quyền sở hữu rõ ràng.</em> Team payments sở hữu <code>billing/</code>; team identity sở hữu <code>auth/</code>. Monorepo tooling và quy tắc code review có thể thực thi điều này cơ học.</li>
+  <li><em>Onboard nhanh hơn.</em> Kỹ sư mới làm về orders chỉ cần đọc <code>orders/</code>. Họ không cần hiểu toàn bộ codebase trước.</li>
+</ul>
+<p><strong>Khi nào theo tính năng cần cẩn thận:</strong></p>
+<ul>
+  <li><em>Vị trí code shared lúng túng.</em> Kiểu <code>Money</code> được dùng bởi cả <code>orders/</code> và <code>billing/</code>. Nó nằm trong <code>orders/</code>? Cảm giác sai. Nó kết thúc trong <code>shared/</code> — cái có thể tự lớn thành ngăn kéo tạp nham thứ hai nếu không ai sở hữu nó.</li>
+  <li><em>Dependency xuyên tính năng cần kỷ luật.</em> Nếu <code>orders/OrderService.ts</code> import trực tiếp từ <code>billing/BillingService.ts</code>, bạn đã tạo một coupling mà cấu trúc thư mục không thể thấy. Các team dùng lint rule (<code>eslint-plugin-import/no-restricted-paths</code>) hay module-boundary tooling (Nx, NestJS module) để làm điều này rõ ràng.</li>
+</ul>
+
+<h2 id="screaming">Screaming Architecture: cấp cao nhất của bạn nói gì?</h2>
+<p>Uncle Bob (Robert C. Martin) đặt ra thuật ngữ <strong>Screaming Architecture</strong> trong một bài blog nổi tiếng: "Kiến trúc ứng dụng của bạn la hét điều gì? Khi bạn nhìn vào cấu trúc thư mục cấp cao nhất, và các file nguồn trong package cấp cao nhất; chúng có la hét: <em>Hệ thống Y tế</em>, hay <em>Hệ thống Kế toán</em>, hay <em>Hệ thống Quản lý Kho</em>? Hay chúng la hét: <em>Rails</em>, hay <em>Spring/Hibernate</em>, hay <em>ASP.Net</em>?"</p>
+<p>Nhận thức này thật thanh lịch: nếu thư mục cấp cao nhất của bạn là <code>controllers/</code>, <code>models/</code>, <code>views/</code>, codebase của bạn đang la hét <em>MVC framework</em>. Framework là công cụ — nó không nên là thứ đầu tiên người đọc gặp.</p>
+<p>Screaming Architecture (còn gọi là <strong>theo domain</strong>) đưa theo tính năng thêm một bước. Không chỉ tính năng ở cấp cao nhất — tên của các tính năng đó được lấy trực tiếp từ <em>ngôn ngữ nghiệp vụ</em> (Ubiquitous Language của Domain-Driven Design), không phải từ vai trò kỹ thuật:</p>
+
+<pre><code><span class="cmt">// La hét "nền tảng thương mại điện tử"</span>
+src/
+├─ catalog/          <span class="cmt">// khái niệm domain: danh mục sản phẩm</span>
+├─ ordering/         <span class="cmt">// khái niệm domain: đặt và theo dõi đơn hàng</span>
+├─ fulfillment/      <span class="cmt">// khái niệm domain: lấy hàng, đóng gói, giao hàng</span>
+├─ payments/         <span class="cmt">// khái niệm domain: tính phí, hoàn tiền, hóa đơn</span>
+└─ identity/         <span class="cmt">// khái niệm domain: tài khoản, auth, quyền hạn</span>
+
+<span class="cmt">// So sánh với phương án la hét framework:</span>
+src/
+├─ controllers/      <span class="cmt">// la hét "MVC"</span>
+├─ models/           <span class="cmt">// la hét "ORM"</span>
+├─ views/            <span class="cmt">// la hét "templating engine"</span>
+└─ services/         <span class="cmt">// la hét "service layer pattern"</span></code></pre>
+
+<p>Bên trong mỗi thư mục domain, bố cục nội bộ tùy team — và điều đó ổn. Lời hứa chính là <em>cấp cao nhất</em> giao tiếp nghiệp vụ, không phải infrastructure. Một developer mới (hoặc CTO, hay chuyên gia domain từ phía business) có thể đọc các thư mục cấp cao nhất và hiểu hệ thống <em>làm gì</em> mà không cần biết nó được xây như thế nào.</p>
+
+<h2 id="side-by-side">So sánh đối chiếu</h2>
+<p>Đây là đánh giá thành thật trên năm chiều thực tế:</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Chiều đánh giá</th>
+      <th>Theo lớp</th>
+      <th>Theo tính năng</th>
+      <th>Theo domain (screaming)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Khả năng khám phá</th>
+      <td>Thấp ở quy mô lớn — "code billing ở đâu?" không có câu trả lời nhanh</td>
+      <td>Cao — một thư mục mỗi khái niệm</td>
+      <td>Cao nhất — tên thư mục đến từ chính nghiệp vụ</td>
+    </tr>
+    <tr>
+      <th>Tính cục bộ của thay đổi</th>
+      <td>Kém — thay đổi một tính năng rải rác qua tất cả các lớp</td>
+      <td>Tốt — thay đổi cụm trong một thư mục</td>
+      <td>Tốt — như theo tính năng, cộng thêm ngôn ngữ domain rõ ràng</td>
+    </tr>
+    <tr>
+      <th>Tốc độ onboard</th>
+      <td>Chậm — người mới phải hiểu toàn bộ lớp trước khi chạm vào gì</td>
+      <td>Nhanh — nghiên cứu một thư mục để làm một tính năng</td>
+      <td>Nhanh nhất — tên domain hướng dẫn hiểu biết mà không cần ngữ cảnh trước</td>
+    </tr>
+    <tr>
+      <th>Rủi ro coupling</th>
+      <td>Cao — lớp shared trở thành bề mặt coupling ngầm</td>
+      <td>Vừa — import xuyên tính năng có thể xảy ra nhưng nhìn thấy được</td>
+      <td>Thấp — bounded context rõ ràng và ranh giới được thực thi</td>
+    </tr>
+    <tr>
+      <th>Rủi ro "Đống bùn khổng lồ"</th>
+      <td>Cao — các lớp trở thành ngăn kéo tạp nham khi tính năng nhân lên</td>
+      <td>Vừa — thư mục shared/ có thể phình to vô hạn</td>
+      <td>Thấp — ranh giới domain làm bùn hiện ra sớm</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<figure class="blog-figure blog-photo-figure">
+  <img src="/assets/blog/structuring-code-feature-vs-layer/layer-feature-domain-tradeoff.png" width="1440" height="960" loading="lazy" decoding="async" alt="Một nhóm kỹ sư di chuyển các khối màu giữa mô hình theo layer và theo domain trong lúc trao đổi thiết kế." />
+  <figcaption>Câu hỏi quan trọng không phải sơ đồ nào đẹp hơn, mà là cách nhóm nào giữ một thay đổi sản phẩm nằm gọn trong một nơi dễ hiểu.</figcaption>
+</figure>
+
+<h2 id="hybrid">Hybrid thực dụng mà hầu hết team giỏi đi đến</h2>
+<p>Trong thực tế, các team tốt nhất không chọn một cách tiếp cận rồi áp dụng nó mọi nơi với tính nhất quán mang tính tôn giáo. Họ dùng hybrid thực dụng: <strong>thư mục tính năng hoặc domain ở cấp cao nhất, các lớp kỹ thuật nhỏ bên trong mỗi cái</strong>.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 380" role="img" aria-labelledby="dgm-hybrid">
+    <title id="dgm-hybrid">Cấu trúc hybrid: thư mục domain/tính năng ở cấp cao nhất, các lớp kỹ thuật bên trong mỗi cái.</title>
+    <defs>
+      <marker id="hybAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+
+    <!-- Top-level label -->
+    <text class="dgm-t-muted dgm-t-mono" x="380" y="28" text-anchor="middle" font-size="11">HYBRID THỰC DỤNG — domain ở cấp cao nhất, lớp bên trong</text>
+
+    <!-- Root node -->
+    <rect class="dgm-surface" x="310" y="42" width="140" height="38" rx="8" stroke-width="1.5"/>
+    <text class="dgm-t-strong" x="380" y="66" text-anchor="middle" font-size="14">src/</text>
+
+    <!-- Domain folders -->
+    <rect class="dgm-core" x="60" y="124" width="120" height="36" rx="8" stroke-width="1.5"/>
+    <text x="120" y="147" text-anchor="middle" font-size="13">orders/</text>
+
+    <rect class="dgm-core" x="320" y="124" width="120" height="36" rx="8" stroke-width="1.5"/>
+    <text x="380" y="147" text-anchor="middle" font-size="13">billing/</text>
+
+    <rect class="dgm-core" x="580" y="124" width="120" height="36" rx="8" stroke-width="1.5"/>
+    <text x="640" y="147" text-anchor="middle" font-size="13">shared/</text>
+
+    <!-- Connectors src → domain -->
+    <path class="dgm-flow" d="M380,80 L120,122" marker-end="url(#hybAcc)"/>
+    <path class="dgm-flow" d="M380,80 L380,122" marker-end="url(#hybAcc)"/>
+    <path class="dgm-flow" d="M380,80 L640,122" marker-end="url(#hybAcc)"/>
+
+    <!-- Inside orders/ -->
+    <rect class="dgm-adapter" x="14" y="206" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="67" y="225" text-anchor="middle" font-size="11">controller.ts</text>
+    <rect class="dgm-adapter" x="14" y="244" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="67" y="263" text-anchor="middle" font-size="11">service.ts</text>
+    <rect class="dgm-adapter" x="14" y="282" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="67" y="301" text-anchor="middle" font-size="11">repository.ts</text>
+    <rect class="dgm-adapter" x="14" y="320" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="67" y="339" text-anchor="middle" font-size="11">Order.ts</text>
+
+    <path class="dgm-line" d="M120,160 L67,204" marker-end="url(#hybAcc)"/>
+
+    <!-- Inside billing/ -->
+    <rect class="dgm-adapter" x="274" y="206" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="327" y="225" text-anchor="middle" font-size="11">controller.ts</text>
+    <rect class="dgm-adapter" x="274" y="244" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="327" y="263" text-anchor="middle" font-size="11">service.ts</text>
+    <rect class="dgm-adapter" x="274" y="282" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="327" y="301" text-anchor="middle" font-size="11">repository.ts</text>
+    <rect class="dgm-adapter" x="274" y="320" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="327" y="339" text-anchor="middle" font-size="11">Invoice.ts</text>
+
+    <path class="dgm-line" d="M380,160 L327,204" marker-end="url(#hybAcc)"/>
+
+    <!-- Inside shared/ -->
+    <rect class="dgm-driven" x="540" y="206" width="100" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="590" y="225" text-anchor="middle" font-size="11">Money.ts</text>
+    <rect class="dgm-driven" x="540" y="244" width="100" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="590" y="263" text-anchor="middle" font-size="11">logger.ts</text>
+    <rect class="dgm-driven" x="540" y="282" width="100" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="590" y="301" text-anchor="middle" font-size="11">database.ts</text>
+
+    <path class="dgm-line" d="M640,160 L590,204" marker-end="url(#hybAcc)"/>
+  </svg>
+  <figcaption>Hybrid mà hầu hết team đi đến: <strong>domain/tính năng ở cấp cao nhất</strong>, rồi các lớp kỹ thuật nhỏ bên trong mỗi thư mục. Các lớp kỹ thuật vẫn ở đây — chúng chỉ không còn là thứ đầu tiên bạn thấy.</figcaption>
+</figure>
+
+<p>Hybrid này mang lại điều tốt nhất của cả hai:</p>
+<ul>
+  <li><em>Cấp cao nhất la hét nghiệp vụ của bạn</em> — người mới biết ngay đây là app thương mại điện tử, không phải khung MVC chung.</li>
+  <li><em>Mỗi tính năng tự chứa</em> — thay đổi luồng billing chỉ chạm vào <code>billing/</code>.</li>
+  <li><em>Lớp kỹ thuật vẫn tồn tại bên trong mỗi thư mục</em>, nên developer nghĩ theo MVC hay Clean Architecture không bị lạc. Họ chỉ nhìn bên trong thư mục tính năng.</li>
+  <li><em>Thư mục <code>shared/</code></em> chứa các mối quan tâm thực sự xuyên suốt (value object <code>Money</code>, logger, kết nối database). Quy tắc chính: nếu thứ gì được thêm vào <code>shared/</code>, nó nên được trích xuất và sở hữu có chủ đích — không phải đổ vào đó như lối thoát.</li>
+</ul>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Đặt tên thư mục shared</span><p>Một số team gọi nó là <code>shared/</code>, những team khác là <code>common/</code>, <code>lib/</code>, hoặc <code>core/</code>. Tên ít quan trọng hơn kỷ luật: hãy đối xử với nó như thư viện nội bộ mini. Nếu một file cứ bị sửa cùng với một tính năng cụ thể, nó không thuộc về shared — nó thuộc về bên trong tính năng đó.</p></div>
+
+<h2 id="at-scale">Ở quy mô team: ranh giới được thực thi và monorepo</h2>
+<p>Khi codebase lớn lên và nhiều team đóng góp, quy ước thư mục một mình không đủ — một developer luôn có thể với tay qua ranh giới bằng một import tương đối nhanh. Bước tiếp theo là làm cho ranh giới <em>được thực thi</em>:</p>
+<ul>
+  <li><strong>NestJS module</strong> làm dependency giữa các module rõ ràng: bạn chỉ có quyền truy cập những gì module khác <code>exports</code>. Import vượt qua ranh giới module mà không đi qua public API là lỗi compile.</li>
+  <li><strong>Nx boundary rule</strong> cho phép bạn khai báo tính năng hay thư viện nào được phép phụ thuộc vào cái nào, rồi thực thi nó như lint error trong CI.</li>
+  <li><strong>Monorepo</strong> đưa điều này đi xa nhất: mỗi domain (orders, billing, auth) trở thành package riêng với <code>package.json</code> riêng, test riêng, và export được công bố rõ ràng. Turborepo và Nx là công cụ thống trị trong hệ sinh thái JavaScript để quản lý điều này. Cấu trúc trông ít giống cây thư mục hơn và giống đồ thị package hơn — nhưng ý tưởng cốt lõi giống hệt: nhóm theo năng lực nghiệp vụ, làm ranh giới rõ ràng, thực thi chúng cơ học.</li>
+</ul>
+<p>Bước nhảy sang monorepo không phải lúc nào cũng cần thiết. Nhiều team hoạt động vui vẻ với một package duy nhất và cấu trúc hybrid kỷ luật tốt trong nhiều năm. Với tới monorepo tooling khi coupling xuyên team trở thành nỗi đau thực sự — không phải phòng xa.</p>
+
+<h2 id="by-company-size">Khuyến nghị theo quy mô công ty</h2>
+<p>Cấu trúc phù hợp phụ thuộc vào tổ chức của bạn đang ở đâu hôm nay. Đây là khuyến nghị trực tiếp cho mỗi giai đoạn:</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Giai đoạn</th>
+      <th>Cấu trúc nên chọn</th>
+      <th>Tại sao</th>
+      <th>Gợi ý thực tế</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Solo / startup trước ra mắt</th>
+      <td>Theo lớp <em>hoặc</em> theo tính năng nông</td>
+      <td>Bạn có 3–5 tính năng. Bất kỳ cấu trúc nào cũng ổn. Tối ưu hóa cho tốc độ và đơn giản.</td>
+      <td>Hầu hết mặc định tutorial Rails/Express đều ổn ở đây. Đừng over-engineer.</td>
+    </tr>
+    <tr>
+      <th>Startup đang lớn (5–20 kỹ sư)</th>
+      <td>Theo tính năng với thư mục <code>shared/</code></td>
+      <td>Tính năng đang nhân lên. Theo lớp bắt đầu gây đau. Thay đổi payments không nên lan sang orders.</td>
+      <td>Nhiều công ty Series A thành công sống ở đây: một repo, một service, tính năng là thư mục cấp cao nhất.</td>
+    </tr>
+    <tr>
+      <th>Scale-up (20–100 kỹ sư)</th>
+      <td>Hybrid (domain ở cấp cao nhất, lớp bên trong) + lint rule ranh giới</td>
+      <td>Các team sở hữu domain. Coupling xuyên domain ngẫu nhiên là rủi ro thực. Thực thi ranh giới trong CI.</td>
+      <td>Đây là điểm ngọt của Nx/NestJS module. Rails app cốt lõi của Shopify nổi tiếng đã áp dụng phân tách domain mạnh ở giai đoạn này.</td>
+    </tr>
+    <tr>
+      <th>Enterprise (100+ kỹ sư)</th>
+      <td>Monorepo với domain package, hoặc service độc lập mỗi bounded context</td>
+      <td>Cô lập ở cấp package, deployment độc lập, và public API được phiên bản hóa giữa các domain trở nên cần thiết.</td>
+      <td>Google, Meta, và Airbnb vận hành monorepo khổng lồ với quyền sở hữu nghiêm ngặt. Nhiều enterprise đi theo hướng ngược lại: microservice mỗi domain, là screaming architecture đưa đến kết luận logic của nó.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<figure class="blog-figure blog-photo-figure">
+  <img src="/assets/blog/structuring-code-feature-vs-layer/team-architecture-review.png" width="1440" height="960" loading="lazy" decoding="async" alt="Ba kỹ sư cùng xem các mô hình kiến trúc để chọn cấu trúc phù hợp với quy mô team đang lớn lên." />
+  <figcaption>Khi team lớn dần, cấu trúc tốt là cấu trúc vẫn giữ ranh giới rõ ràng lúc người, tính năng và dependency đều tăng lên.</figcaption>
+</figure>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Sai lầm phổ biến</span><p>Sai lầm cấu trúc phổ biến nhất không phải là chọn cách tiếp cận sai — mà là <strong>ở lại cách tiếp cận sai quá lâu</strong>. Các team bắt đầu với theo lớp, cảm thấy nỗi đau ở 20 tính năng, và vẫn không refactor vì "cấu trúc vẫn hoạt động, về mặt kỹ thuật". Một buổi chiều tổ chức lại thư mục ở 15 tính năng tiết kiệm nhiều tháng nhầm lẫn ở 50.</p></div>
+
+<h2 id="the-change-diagram">Nhìn thấy sự khác biệt: những ô nào sáng lên khi bạn ship một tính năng</h2>
+<p>Cách cụ thể nhất để cảm nhận sự khác biệt giữa theo lớp và theo tính năng là hỏi: <em>những ô nào sáng lên khi mình thêm một tính năng mới?</em></p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 320" role="img" aria-labelledby="dgm-change">
+    <title id="dgm-change">Theo lớp: một tính năng mới chạm vào tất cả bốn ô lớp. Theo tính năng: một tính năng mới chỉ chạm vào một ô.</title>
+    <defs>
+      <marker id="chgAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+
+    <!-- Left side: by-layer -->
+    <text class="dgm-t-muted dgm-t-mono" x="185" y="28" text-anchor="middle" font-size="11">THEO LỚP — thêm "hoàn tiền"</text>
+
+    <!-- Four highlighted (lit) boxes on by-layer side -->
+    <rect class="dgm-core" x="80" y="42" width="210" height="38" rx="8" stroke-width="2"/>
+    <text x="185" y="66" text-anchor="middle" font-size="13">controllers/  ← chạm</text>
+
+    <rect class="dgm-core" x="80" y="92" width="210" height="38" rx="8" stroke-width="2"/>
+    <text x="185" y="116" text-anchor="middle" font-size="13">services/  ← chạm</text>
+
+    <rect class="dgm-core" x="80" y="142" width="210" height="38" rx="8" stroke-width="2"/>
+    <text x="185" y="166" text-anchor="middle" font-size="13">repositories/  ← chạm</text>
+
+    <rect class="dgm-core" x="80" y="192" width="210" height="38" rx="8" stroke-width="2"/>
+    <text x="185" y="216" text-anchor="middle" font-size="13">models/  ← chạm</text>
+
+    <text class="dgm-t-accent" x="185" y="266" text-anchor="middle" font-size="12">4 thư mục bị chạm</text>
+    <text class="dgm-t-muted" x="185" y="284" text-anchor="middle" font-size="11">blast radius cao</text>
+
+    <!-- Divider -->
+    <line x1="380" y1="30" x2="380" y2="300" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+    <!-- Right side: by-feature -->
+    <text class="dgm-t-muted dgm-t-mono" x="575" y="28" text-anchor="middle" font-size="11">THEO TÍNH NĂNG — thêm "hoàn tiền"</text>
+
+    <!-- Unlit (untouched) feature boxes -->
+    <rect class="dgm-adapter" x="470" y="42" width="210" height="38" rx="8" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="575" y="66" text-anchor="middle" font-size="13">orders/</text>
+
+    <rect class="dgm-core" x="470" y="92" width="210" height="38" rx="8" stroke-width="2"/>
+    <text x="575" y="116" text-anchor="middle" font-size="13">billing/  ← chạm</text>
+
+    <rect class="dgm-adapter" x="470" y="142" width="210" height="38" rx="8" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="575" y="166" text-anchor="middle" font-size="13">auth/</text>
+
+    <rect class="dgm-adapter" x="470" y="192" width="210" height="38" rx="8" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="575" y="216" text-anchor="middle" font-size="13">shared/</text>
+
+    <text class="dgm-t-accent" x="575" y="266" text-anchor="middle" font-size="12">1 thư mục bị chạm</text>
+    <text class="dgm-t-muted" x="575" y="284" text-anchor="middle" font-size="11">blast radius gọn</text>
+  </svg>
+  <figcaption>Thêm tính năng "hoàn tiền". Bên trái (theo lớp), tất cả bốn lớp kỹ thuật sáng lên — mọi thư mục lớp đều bị chạm. Bên phải (theo tính năng), chỉ có <code>billing/</code> sáng lên. Phần còn lại của codebase bị cô lập cấu trúc khỏi thay đổi này.</figcaption>
+</figure>
+
+<p>Sơ đồ này là lập luận rõ ràng nhất cho việc nhóm theo tính năng. "Blast radius" không phải là khái niệm trừu tượng — nó là số thư mục và file bạn mở trong một pull request duy nhất. Reviewer, pipeline CI, và git blame đều hoạt động tốt hơn khi thay đổi tính năng là một đoạn gắn kết, không phải phết rộng qua mọi lớp.</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Những điều cốt lõi cần nhớ</h3>
+<ul>
+  <li><strong>Cấu trúc là kiến trúc.</strong> Bố cục thư mục kiểm soát coupling, khả năng khám phá, và blast radius của mọi thay đổi tương lai.</li>
+  <li><strong>Theo lớp</strong> quen thuộc và ổn cho app nhỏ, nhưng trở thành ngăn kéo tạp nham sau 10–15 tính năng.</li>
+  <li><strong>Theo tính năng</strong> giữ các thay đổi cục bộ. Tính năng mới chạm vào một thư mục. Xóa tính năng là xóa một thư mục.</li>
+  <li><strong>Screaming Architecture</strong> nói cấp cao nhất nên mô tả <em>nghiệp vụ</em> của bạn, không phải framework. Nếu stakeholder không kỹ thuật có thể đọc tên thư mục và hiểu hệ thống làm gì, bạn đã thành công.</li>
+  <li><strong>Hybrid thực dụng</strong> mà hầu hết team giỏi đi đến: tên domain/tính năng ở cấp cao nhất, các lớp kỹ thuật nhỏ bên trong mỗi thư mục.</li>
+  <li><strong>Thực thi ranh giới khi mở rộng.</strong> Quy ước thư mục chỉ là gợi ý; hệ thống module, lint rule, và package monorepo biến chúng thành đảm bảo.</li>
+  <li><strong>Tổ chức lại sớm</strong> — một buổi chiều refactor thư mục ở 15 tính năng tránh được nhiều tháng nhầm lẫn ở 50.</li>
+</ul>
+</div>
+<p>Bây giờ bạn đã thấy cách cấu trúc code bên trong một service duy nhất, câu hỏi tự nhiên tiếp theo là phải làm gì khi một service không đủ. Đọc tiếp: <a href="/blog/architecture/monolith-to-microservices">Monolith → Microservices</a>.</p>3:["$","$L8",null,{"category":"architecture","slug":"structuring-code-feature-vs-layer","children":[["$","$L9",null,{"category":"architecture","slug":"structuring-code-feature-vs-layer","readingMinutes":14,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/vi/blog/architecture/structuring-code-feature-vs-layer","title":"Tổ chức codebase: theo layer, feature hay domain?","surface":"blog","category":"architecture","slug":"structuring-code-feature-vs-layer","labels":{"share":"Chia sẻ","copyLink":"Sao chép liên kết","copied":"Đã sao chép!","close":"Đóng"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/vi/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Source Code & Software Architecture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Software Architecture Foundations",["$","span",null,{"aria-hidden":"true","children":" · "}],"Phần 4/15"]}],["$","h1",null,{"className":"blog-article__title","children":"Tổ chức codebase: theo layer, feature hay domain?"}],["$","p",null,{"className":"blog-article__summary","children":"Một codebase bắt đầu lớn lên từ những lựa chọn rất nhỏ: thư mục trên cùng nên là controllers/services/models, hay orders/billing/auth? Bài này so sánh cách tổ chức theo layer, theo feature và theo domain, chỉ ra mỗi kiểu hợp với giai đoạn nào, và vì sao cấu trúc thư mục thật ra đang kể cách team suy nghĩ về sản phẩm."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Bởi Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-04","children":"4 tháng 3, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"14 phút đọc"}],["$","$Lc",null,{"label":"lượt xem"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Kiến trúc phần mềm",{"children":"Kiến trúc phần mềm"}],["$","li","Cấu trúc dự án",{"children":"Cấu trúc dự án"}],["$","li","Screaming Architecture",{"children":"Screaming Architecture"}],["$","li","Modularity",{"children":"Modularity"}],["$","li","Tổ chức mã nguồn",{"children":"Tổ chức mã nguồn"}],["$","li","Monorepo",{"children":"Monorepo"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"Bạn thấy bài viết thế nào?","surface":"blog","category":"architecture","slug":"structuring-code-feature-vs-layer","reactionLabels":{"like":"Thích","love":"Yêu thích","insightful":"Sâu sắc","clap":"Tuyệt vời"}}]
+10:["$","$L18",null,{"heading":"Bài liên quan","intro":"Một vài bài gần chủ đề này để bạn đọc tiếp mạch suy nghĩ với nhiều ngữ cảnh hơn.","items":[{"post":{"slug":"layered-vs-vertical-slice-architecture","category":"architecture","title":"Layered và Vertical Slice Architecture","summary":"Layered architecture dễ nhận ra và dễ dạy; vertical slice giữ thay đổi gần với feature người dùng chạm vào. Bài viết so sánh hai cách qua những thay đổi code hằng ngày và trade-off về boundary.","date":"2026-02-11","readingMinutes":6,"tags":["Kiến trúc phần mềm","Vertical Slice Architecture","Layered Architecture","Tổ chức mã nguồn","Modularity","Technical Debt"],"author":"Nguyen Le Phong","featured":false,"series":"foundations","seriesOrder":13},"categoryTitle":"Source Code & Software Architecture","readingLabel":"6 phút đọc"},{"post":{"slug":"dependency-direction-in-plain-language","category":"architecture","title":"Dependency direction bằng ngôn ngữ đời thường","summary":"Dependency direction là một quy tắc đơn giản giúp team thống nhất: business rule ổn định không nên phụ thuộc vào chi tiết delivery dễ đổi. Bài viết dùng một tình huống release nhỏ để giải thích vì sao hướng phụ thuộc giúp code, review và trao đổi trong team bình tĩnh hơn.","date":"2026-02-10","readingMinutes":8,"tags":["Kiến trúc phần mềm","Dependency Direction","Tổ chức mã nguồn","Team Alignment","Technical Debt","System Design"],"author":"Nguyen Le Phong","featured":false,"series":"foundations","seriesOrder":14},"categoryTitle":"Source Code & Software Architecture","readingLabel":"8 phút đọc"},{"post":{"slug":"ports-and-adapters","category":"architecture","title":"Ports & Adapters: Hexagonal Architecture giải thích bằng ví dụ dễ hiểu","summary":"Ports & Adapters nghe có vẻ học thuật, nhưng ý tưởng cốt lõi rất thực tế: business logic nên đứng vững dù database, UI hay API bên ngoài thay đổi. Bài này giải thích port, adapter và dependency direction bằng ví dụ gần gũi, để bạn biết áp dụng vừa đủ cho dự án nhỏ lẫn codebase lớn.","date":"2026-03-07","readingMinutes":16,"tags":["Kiến trúc phần mềm","Hexagonal Architecture","Ports and Adapters","Clean Architecture","Thiết kế hệ thống","Dependency Inversion"],"author":"Nguyen Le Phong","featured":true,"series":"foundations","seriesOrder":1},"categoryTitle":"Source Code & Software Architecture","readingLabel":"16 phút đọc"},{"post":{"slug":"true-cost-of-microservices","category":"architecture","title":"Chi phí thật sự của Microservices","summary":"Microservices có thể tạo quyền tự chủ thật cho team, nhưng chuyển chi phí sang vận hành, dữ liệu, observability, testing và phối hợp. Bài viết hỏi khi nào cái giá đó đáng trả, và khi nào modular monolith tử tế hơn.","date":"2026-04-06","readingMinutes":9,"tags":["Kiến trúc phần mềm","Microservices","Distributed Systems","Modular Monolith","Technical Debt","System Design"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":12},"categoryTitle":"Source Code & Software Architecture","readingLabel":"9 phút đọc"}],"sourceCategory":"architecture","sourceSlug":"structuring-code-feature-vs-layer"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"Software Architecture Foundations","children":[["$","$Lb",null,{"href":"/vi/blog/architecture/dependency-injection-and-ioc","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Dependency Injection & Inversion of Control: bớt coupling mà không cần phép thuật"}]]}],["$","$Lb",null,{"href":"/vi/blog/architecture/monolith-to-microservices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Bài tiếp theo"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Monolith, Modular Monolith hay Microservices: chọn theo giai đoạn, không theo trend"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Về Source Code & Software Architecture"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"Trong bài này","surface":"blog"}]}]
+16:null

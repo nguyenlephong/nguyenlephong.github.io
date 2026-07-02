@@ -1,0 +1,13 @@
+{
+  "slug": "write-to-understand-and-transfer",
+  "title": "Viết để hiểu và để truyền đạt",
+  "html": "<p>Viết theo cách này là một cách phũ phàng để phát hiện các lỗ hổng, những điểm đứt gãy âm thầm trong sự hiểu biết của bạn. Bạn có thể gật gù với một ý tưởng trong đầu và thấy mình đã nắm được nó, nhưng ngay khoảnh khắc bạn cố đặt nó xuống thành câu cú đầy đủ, mọi khoảng trống đều tự lộ diện. Những người ghi chú nghiêm túc gọi đây là <strong>permanent notes</strong> &mdash; những ghi chú để dùng lâu dài, được viết sao cho tự đứng vững một mình.</p><p>Quá trình viết theo nghĩa này phải cảm thấy <strong>nỗ lực</strong>, nhưng đồng thời cũng <strong>vui</strong>. Nỗ lực vì bạn đang chủ ý lấp các khoảng trống và thiết lập những kết nối có ý nghĩa với các ý tưởng và mô hình trí tuệ sẵn có &mdash; đó là lao động nhận thức thực sự, và nó cưỡng lại việc bị làm vội. Vui vì ngay trong khi làm điều đó, bạn vấp phải những insight mới, những ý tưởng mới mà bạn không ngờ mình có &mdash; chính những kết nối bạn rèn ra rốt cuộc lại dạy cho bạn điều gì đó.</p><p>Mục tiêu của kiểu viết này là để bạn-trong-tương-lai đọc lại các ghi chú vẫn còn hiểu được mà không thấy chúng nhàm chán hay rỗng tuếch. Nếu không đạt &mdash; hoặc đạt kém &mdash; cái ngưỡng đó, thì đấy là dấu hiệu ngưỡng &ldquo;cụ thể hoá&rdquo; ý tưởng của bạn đang đặt quá thấp, không đủ để thực sự hiểu chủ đề. Một ghi chú mà về sau đọc thấy hiển nhiên thường có nghĩa là ngay từ đầu bạn chưa hề ghim được cái ý đó xuống. Vì thế viết để hiểu nên đồng nghĩa với viết để truyền đạt, dù người nhận là bạn-tương-lai hay một ai khác hoàn toàn.</p><p>Viết để hiểu có quan hệ hai chiều với <span class=\"private-link\">Đọc có chủ đích</span>. &ldquo;Viết&rdquo; cho &ldquo;đọc&rdquo; một mục đích: biết rằng mình định viết lại điều gì đó sẽ thay đổi cách bạn đọc &mdash; chú tâm hơn, và khao khát hơn &mdash; ngay từ đầu. <em>(Một thực hành tôi cứ quay về trong <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">ghi chú của một người bạn</a>.)</em></p>",
+  "backlinks": [
+    {
+      "slug": "different-purposes-of-writing",
+      "title": "Những mục đích khác nhau của việc viết",
+      "context": "<p>I splits the act of writing into two different purposes, <a href=\"/thoughts/write-to-attend\">Viết để chú tâm</a> and <a href=\"/thoughts/write-to-understand-and-transfer\">Viết để hiểu và để truyền đạt</a>.</p>"
+    }
+  ],
+  "maturity": "seed"
+}

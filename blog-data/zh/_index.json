@@ -1,0 +1,409 @@
+{
+  "categories": [
+    {
+      "slug": "architecture",
+      "title": "源码与架构",
+      "tagline": "如何组织代码，让它在增长、团队扩张和需求变化中依然稳固。",
+      "description": "深入浅出地讲解软件架构与代码组织方式——从 Ports & Adapters、Clean Architecture，到依赖管理、模块边界，以及每种方案背后的权衡取舍。内容基于图解、真实示例和可落地的经验，适用于从个人项目到企业级系统的各种规模。",
+      "accent": "ocean",
+      "order": 1
+    },
+    {
+      "slug": "culture",
+      "title": "工程文化",
+      "tagline": "构建软件的人性一面——代码评审、反馈、带新人，以及培养人而非消耗人的团队。",
+      "description": "关于工程文化的实用、以人为本的文章：如何做让代码和人都变得更好的代码评审、如何恰当地给予与接受反馈、如何写出评审者乐于评审的拉取请求、如何把初级工程师培养成资深工程师，以及如何打造友善而高信任的团队。配有真实话术与示例，从两人创业团队到千人组织都适用。",
+      "accent": "violet",
+      "order": 2
+    },
+    {
+      "slug": "ai",
+      "title": "AI 与未来",
+      "tagline": "理解 AI——从上下文工程到构建可靠的 AI 产品。",
+      "description": "面向开发者的实用 AI 写作：如何从 AI 工具获得优质结果、理解语言模型的实际工作原理、构建可靠的 AI 驱动产品，以及驾驭 LLM、智能体和上下文工程快速变化的格局。为希望更智慧地使用 AI 的工程师而写。",
+      "accent": "gold",
+      "order": 3
+    }
+  ],
+  "posts": [
+    {
+      "slug": "ai-agents-explained",
+      "category": "ai",
+      "title": "AI Agent 全解析：它是什么、如何运作、能为你做什么",
+      "summary": "所有人突然都在谈论“AI agent”——一种不只回答问题、而是真正去完成工作的软件。但 agent 究竟是什么？它和你已经在用的 chatbot 有何不同？它真正有帮助的地方在哪里，又在哪里会悄悄制造麻烦？这是一份面向所有人的友好、轻术语指南——无论你是否懂技术：每个 agent 运行的简单循环、构成它的五大要素、从 co-pilot 到 auto-pilot 的自主程度层级、工作与生活中接地气的示例、需要注意的失败模式，以及本周就能让第一个实用 agent 运转起来的具体方法。",
+      "date": "2026-03-12",
+      "readingMinutes": 17,
+      "tags": [
+        "AI",
+        "AI Agent",
+        "Agentic AI",
+        "自动化",
+        "未来工作",
+        "生产力"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "ai-workflows-that-save-hours",
+      "category": "ai",
+      "title": "从 Prompt 到 Workflow：设计每周为你省下数小时的 AI Workflow",
+      "summary": "大多数人每次只用一个问题来使用 AI——也因此把它的大部分价值留在了桌面上。真正的杠杆不是一句巧妙的 prompt，而是一个可重复的 AI workflow：你设计一次、便永远复用的一小串步骤，把每周两小时的重复杂活变成两分钟的审阅。这是一份面向所有人（无论是否懂技术）的实用、案例丰富的指南：prompt 与 workflow 的区别、每个 workflow 都共有的简单结构、可直接照搬到办公室与日常生活的 workflow、从手动到全自动的三个层级、自己动手设计的六个步骤，以及一个用来证明你真正省下多少时间的简易估算法。",
+      "date": "2026-03-11",
+      "readingMinutes": 18,
+      "tags": [
+        "AI",
+        "AI Workflow",
+        "自动化",
+        "生产力",
+        "未来工作",
+        "AI 工具"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 2,
+      "featured": true
+    },
+    {
+      "slug": "ai-trends-2026-into-value",
+      "category": "ai",
+      "title": "2026 年真正值得你关注的 AI 趋势——以及如何把它们变成实实在在的价值",
+      "summary": "每周都冒出又一个“这将改变一切”的 AI 头条，想从噪音里分辨出信号，实在令人疲惫。这是一趟冷静、有据的导览，带你看清 2026 年真正重要的 AI 趋势——agentic AI、多模态（multimodal）、嵌进你已在用的 app 里的 AI、设备端 AI，以及判断力与核查作为人类优势的崛起——再配上几乎所有文章都略过的部分：一套把任何趋势变成工作与生活中真实价值的实用框架。你会得到一个“炒作还是价值”的过滤器、价值阶梯、一个简单的价值方程、一个具体例子，以及一份 30 天计划——好让你不再追逐新闻，而开始累积复利般的收益。",
+      "date": "2026-03-10",
+      "readingMinutes": 18,
+      "tags": [
+        "AI",
+        "AI 趋势",
+        "Agentic AI",
+        "未来工作",
+        "生产力",
+        "Generative AI"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 3,
+      "featured": true
+    },
+    {
+      "slug": "ports-and-adapters",
+      "category": "architecture",
+      "title": "Ports & Adapters（六边形架构），简单讲清楚",
+      "summary": "一篇友好、示例驱动的六边形架构指南：ports 和 adapters 到底是什么、让它运转的那条核心规则，以及究竟该用多少——无论你是独立创业者还是企业级团队。",
+      "date": "2026-03-07",
+      "readingMinutes": 16,
+      "tags": [
+        "软件架构",
+        "Hexagonal Architecture",
+        "Ports and Adapters",
+        "Clean Architecture",
+        "系统设计",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "clean-vs-onion-vs-hexagonal",
+      "category": "architecture",
+      "title": "Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字",
+      "summary": "它们看起来像是三种相互竞争的架构，实则是同一个思想——依赖指向内部，框架置于边缘——用三种方式画出来。本文讲清楚每种方案真正增加了什么，以及应该选哪一个。",
+      "date": "2026-03-06",
+      "readingMinutes": 15,
+      "tags": [
+        "软件架构",
+        "Clean Architecture",
+        "Onion Architecture",
+        "Hexagonal Architecture",
+        "系统设计",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "dependency-injection-and-ioc",
+      "category": "architecture",
+      "title": "Dependency Injection 与 Inversion of Control，去掉魔法讲清楚",
+      "summary": "DI 容器看起来像魔法，直到你看清楚它背后的朴素思想：不要让代码自己创建依赖，而是从外部传进来。一篇从零开始的指南，配上真实示例和测试收益。",
+      "date": "2026-03-05",
+      "readingMinutes": 14,
+      "tags": [
+        "软件架构",
+        "Dependency Injection",
+        "Inversion of Control",
+        "SOLID",
+        "测试",
+        "Design Patterns"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "structuring-code-feature-vs-layer",
+      "category": "architecture",
+      "title": "代码库结构：按层、按功能，还是按领域？",
+      "summary": "顶层文件夹应该叫 controllers/services/models，还是 orders/billing/auth？这个选择悄悄地影响代码库的成长方式。一篇关于按层、按功能和尖叫式架构的实用指南——附上各公司规模下的权衡取舍。",
+      "date": "2026-03-04",
+      "readingMinutes": 14,
+      "tags": [
+        "软件架构",
+        "项目结构",
+        "Screaming Architecture",
+        "Modularity",
+        "代码组织",
+        "Monorepo"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "monolith-to-microservices",
+      "category": "architecture",
+      "title": "单体、模块化单体、微服务：一份诚实的决策指南",
+      "summary": "微服务是你为组织规模支付的代价——而不是起点。一篇不炒作地从单体到模块化单体再到微服务的完整导览，附上告诉你何时（以及是否）该拆分的信号。",
+      "date": "2026-03-03",
+      "readingMinutes": 16,
+      "tags": [
+        "软件架构",
+        "Microservices",
+        "Modular Monolith",
+        "系统设计",
+        "分布式系统",
+        "可扩展性"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 5
+    },
+    {
+      "slug": "micro-frontends-when-why-and-cost",
+      "category": "architecture",
+      "title": "微前端：何时值得，以及它们真正的代价",
+      "summary": "将前端拆分成独立可部署的模块可以解放团队——也可能把你埋在复杂性中。本文来自在规模化场景下落地 Angular 宿主 + React 模块的实战经验：微前端何时有回报，以及它带来的账单。",
+      "date": "2026-03-02",
+      "readingMinutes": 15,
+      "tags": [
+        "软件架构",
+        "Micro-Frontends",
+        "前端架构",
+        "Module Federation",
+        "可扩展性",
+        "系统设计"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 6
+    },
+    {
+      "slug": "how-to-review-code-kindly",
+      "category": "culture",
+      "title": "代码审查的艺术：如何批评代码而不打击人",
+      "summary": "代码审查是团队文化成败的关键所在。这是一份实用指南，教你如何在让代码更好的同时，也让作者越来越强——具体的措辞、审查者清单，以及那些悄悄让审查变成毒药的习惯。",
+      "date": "2026-03-01",
+      "readingMinutes": 14,
+      "tags": [
+        "工程文化",
+        "代码审查",
+        "Pull Requests",
+        "反馈",
+        "团队协作",
+        "指导"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "how-to-be-a-kind-engineer",
+      "category": "culture",
+      "title": "善意工程：为什么善意让你成为更好的工程师",
+      "summary": "善意不是温和，也不是软弱，而是力量倍增器——更清晰的反馈、更安全的事故响应、成长更快的队友。“善意工程”真正的含义，以及如何在代码审查、事故处理和日常工作中实践它。",
+      "date": "2026-02-28",
+      "readingMinutes": 13,
+      "tags": [
+        "工程文化",
+        "Kind Engineering",
+        "心理安全",
+        "同理心",
+        "团队协作",
+        "领导力"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "how-to-write-a-great-pull-request",
+      "category": "culture",
+      "title": "如何写一个让人真正乐于审查的 Pull Request",
+      "summary": "一个出色的 pull request 是给审查者的礼物：简小、描述清晰、容易说是。可审查 PR 的解剖学——大小、标题、描述、提交卫生和自审——附具体的前后对比示例。",
+      "date": "2026-02-27",
+      "readingMinutes": 13,
+      "tags": [
+        "工程文化",
+        "Pull Requests",
+        "代码审查",
+        "Git",
+        "团队协作",
+        "开发效率"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "giving-and-receiving-feedback",
+      "category": "culture",
+      "title": "有效的反馈：作为工程师给出和接受批评",
+      "summary": "大多数工程师从未被教过如何给出反馈——或者如何接受反馈。这是一本关于具体、善意、可操作反馈的实战手册，以及如何在接受批评时保持开放——附即可使用的对话脚本。",
+      "date": "2026-02-25",
+      "readingMinutes": 13,
+      "tags": [
+        "工程文化",
+        "反馈",
+        "沟通",
+        "心理安全",
+        "指导",
+        "团队协作"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "mentoring-engineers",
+      "category": "culture",
+      "title": "指导工程师：如何把初级工程师培养成资深工程师",
+      "summary": "优秀的团队是培养出来的，不只是招聘来的。来自领导工程团队的实战经验：如何通过结对编程、代码审查、恰当的拉伸任务，以及那些把初级工程师变成你愿意托付一切的人的思维转变，让人快速成长。",
+      "date": "2026-02-24",
+      "readingMinutes": 14,
+      "tags": [
+        "工程文化",
+        "指导",
+        "职业成长",
+        "领导力",
+        "团队协作",
+        "代码审查"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 5
+    },
+    {
+      "slug": "context-engineering",
+      "category": "ai",
+      "title": "上下文工程：区分优秀 AI 用户与普通用户的关键技能",
+      "summary": "大多数 AI 结果令人失望，不是因为模型不好，而是因为上下文太薄。上下文工程实用指南——模型窗口中有什么、优质上下文的五大支柱、常见反模式，以及能持续产出更好结果的可复用模板。",
+      "date": "2026-02-22",
+      "readingMinutes": 15,
+      "tags": [
+        "AI",
+        "上下文工程",
+        "提示词工程",
+        "LLM",
+        "开发者生产力",
+        "AI 工具"
+      ]
+    },
+    {
+      "slug": "layered-vs-vertical-slice-architecture",
+      "category": "architecture",
+      "title": "分层架构与 Vertical Slice Architecture",
+      "summary": "分层架构在一开始很整洁，Vertical Slice 则把变化放回真实功能附近。本文平静地比较两者的价值、代价，以及团队何时该调整结构。",
+      "date": "2026-02-11",
+      "readingMinutes": 6,
+      "tags": [
+        "软件架构",
+        "Vertical Slice Architecture",
+        "Layered Architecture",
+        "代码组织",
+        "Modularity",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 13
+    },
+    {
+      "slug": "anatomy-of-a-healthy-one-on-one",
+      "category": "culture",
+      "title": "健康的 1-on-1 长什么样",
+      "summary": "健康的 1-on-1 不是语气更柔和的 status meeting，而是一个稳定的小空间，用来处理 context、信任、feedback 和职业方向。",
+      "date": "2026-02-08",
+      "readingMinutes": 6,
+      "tags": [
+        "工程文化",
+        "One-on-One",
+        "Management",
+        "Feedback",
+        "Leadership",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "prompt-engineering-is-just-communication",
+      "category": "ai",
+      "title": "Prompt Engineering 本质上只是清晰沟通",
+      "summary": "好的 prompt 不是魔法句子，而是清楚地提供 context、意图、constraints、examples 和 feedback。",
+      "date": "2026-02-07",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Prompt Engineering",
+        "沟通",
+        "LLM",
+        "AI Literacy",
+        "Developer Productivity"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "learning-to-say-no-as-a-developer",
+      "category": "perspectives",
+      "title": "开发者如何学习说不",
+      "summary": "说不不是难相处，而是为了保护 focus、quality 和 trust，把 tradeoff 讲清楚。",
+      "date": "2026-02-06",
+      "readingMinutes": 6,
+      "tags": [
+        "Personal Growth",
+        "Software Engineering",
+        "边界",
+        "Career Growth",
+        "沟通",
+        "Focus"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "daily-standup-status-report-or-strategy",
+      "category": "ways-of-working",
+      "title": "Daily standup：status report 还是今天的 strategy？",
+      "summary": "Daily standup 可以变成汇报昨天的仪式，也可以成为关于 flow、risk 和今日注意力的短策略会。",
+      "date": "2026-02-05",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Daily Standup",
+        "Scrum",
+        "Team Collaboration",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    }
+  ]
+}

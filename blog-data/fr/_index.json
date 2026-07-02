@@ -1,0 +1,409 @@
+{
+  "categories": [
+    {
+      "slug": "architecture",
+      "title": "Code source & Architecture",
+      "tagline": "Comment organiser le code source pour qu'il survive à la croissance, aux équipes et aux changements.",
+      "description": "Des analyses approfondies et accessibles aux débutants sur l'architecture logicielle et l'organisation du code source — des Ports & Adapters et Clean Architecture à la gestion des dépendances, aux frontières de modules et aux compromis qui sous-tendent chaque choix. Fondées sur des diagrammes, des exemples concrets et des enseignements qui s'appliquent aussi bien aux projets solo qu'aux systèmes d'entreprise.",
+      "accent": "ocean",
+      "order": 1
+    },
+    {
+      "slug": "culture",
+      "title": "Culture d'ingénierie",
+      "tagline": "Le côté humain de la construction de logiciels — revues, retours, mentorat, et les équipes qui font grandir les personnes plutôt que de les épuiser.",
+      "description": "Des écrits pratiques et centrés sur les personnes sur la culture d'ingénierie : comment mener des revues de code qui améliorent à la fois le code et les personnes, bien donner et recevoir des retours, écrire des pull requests que les relecteurs adorent, mentorer les ingénieurs vers le senior, et construire des équipes bienveillantes et de grande confiance. Des scripts réels, des exemples et des leçons qui s'appliquent d'une startup de deux personnes à une organisation de mille ingénieurs.",
+      "accent": "violet",
+      "order": 2
+    },
+    {
+      "slug": "ai",
+      "title": "IA & L'Avenir",
+      "tagline": "Comprendre l'IA — de l'ingénierie de contexte à la construction de produits IA fiables.",
+      "description": "Des écrits pratiques, orientés développeur sur l'intelligence artificielle : comment obtenir d'excellents résultats des outils IA, comprendre le fonctionnement réel des modèles de langage, construire des produits IA fiables et naviguer dans le paysage en rapide évolution des LLM, agents et ingénierie de contexte.",
+      "accent": "gold",
+      "order": 3
+    }
+  ],
+  "posts": [
+    {
+      "slug": "ai-agents-explained",
+      "category": "ai",
+      "title": "Les AI Agents Démystifiés : Ce Qu'ils Sont, Comment ils Fonctionnent, et Ce Qu'ils Peuvent Faire Pour Vous",
+      "summary": "Tout le monde parle soudainement des \"AI agents\" — des logiciels qui ne se contentent pas de répondre à vos questions, mais qui accomplissent réellement le travail à votre place. Mais qu'est-ce qu'un agent en réalité, en quoi est-il différent du chatbot que vous utilisez déjà, et où apporte-t-il vraiment de la valeur plutôt que de créer discrètement du chaos ? Voici un guide accessible et sans jargon pour tout le monde, technique ou non : la boucle simple que tout agent exécute, les cinq ingrédients qui le composent, les niveaux d'autonomie du co-pilot à l'auto-pilot, des exemples concrets au bureau et à la maison, les modes d'échec à surveiller, et une façon concrète de mettre votre premier agent utile au travail cette semaine.",
+      "date": "2026-03-12",
+      "readingMinutes": 17,
+      "tags": [
+        "IA",
+        "AI Agents",
+        "IA Agentique",
+        "Automatisation",
+        "Avenir du Travail",
+        "Productivité"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "ai-workflows-that-save-hours",
+      "category": "ai",
+      "title": "Des Prompts aux Workflows : Concevoir des AI Workflows Qui Vous Font Gagner des Heures Chaque Semaine",
+      "summary": "La plupart des gens utilisent l'IA une question à la fois — et laissent la majeure partie de sa valeur sur la table. Le vrai levier n'est pas un prompt ingénieux ; c'est un AI workflow réutilisable : une petite chaîne d'étapes que vous concevez une fois et réutilisez indéfiniment, transformant une corvée récurrente de deux heures en une révision de deux minutes. Voici un guide pratique et riche en exemples pour tout le monde, technique ou non : la différence entre un prompt et un workflow, l'anatomie simple que tout workflow partage, des workflows prêts à copier pour le bureau et la vie quotidienne, les trois niveaux du manuel au pleinement automatique, une méthode en six étapes pour concevoir le vôtre, et une façon rapide de prouver le temps que vous économisez réellement.",
+      "date": "2026-03-11",
+      "readingMinutes": 18,
+      "tags": [
+        "IA",
+        "AI Workflow",
+        "Automatisation",
+        "Productivité",
+        "Avenir du Travail",
+        "Outils IA"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 2,
+      "featured": true
+    },
+    {
+      "slug": "ai-trends-2026-into-value",
+      "category": "ai",
+      "title": "Les Tendances IA Qui Méritent Votre Attention en 2026 — et Comment les Transformer en Vraie Valeur",
+      "summary": "Chaque semaine apporte un nouveau titre IA \"qui change tout\", et c'est épuisant d'essayer de distinguer le signal du bruit. Voici un tour d'horizon calme et ancré des tendances IA qui comptent vraiment en 2026 — l'IA agentique, le multimodal, l'IA intégrée dans les applications que vous utilisez déjà, l'intelligence sur l'appareil, et l'émergence du jugement et de la vérification comme avantage humain — accompagné de la partie que la plupart des articles sautent : un cadre pratique pour transformer n'importe quelle tendance en valeur réelle dans votre travail et votre vie. Vous obtiendrez un filtre hype vs. valeur, l'échelle de valeur, une équation de valeur simple, un exemple concret, et un plan sur 30 jours — pour cesser de courir après les nouvelles et commencer à cumuler des bénéfices.",
+      "date": "2026-03-10",
+      "readingMinutes": 18,
+      "tags": [
+        "IA",
+        "Tendances IA",
+        "IA Agentique",
+        "Avenir du Travail",
+        "Productivité",
+        "IA Générative"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "ai-in-practice",
+      "seriesOrder": 3,
+      "featured": true
+    },
+    {
+      "slug": "ports-and-adapters",
+      "category": "architecture",
+      "title": "Ports & Adapters (Hexagonal Architecture), Expliqués Simplement",
+      "summary": "Un guide accessible et riche en exemples sur l'Hexagonal Architecture : ce que sont vraiment les ports et les adapters, la règle unique qui la fait fonctionner, et exactement quelle dose en appliquer — que vous soyez un fondateur solo ou une équipe d'entreprise.",
+      "date": "2026-03-07",
+      "readingMinutes": 16,
+      "tags": [
+        "Architecture logicielle",
+        "Hexagonal Architecture",
+        "Ports and Adapters",
+        "Clean Architecture",
+        "Conception de systèmes",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "clean-vs-onion-vs-hexagonal",
+      "category": "architecture",
+      "title": "Clean, Onion & Hexagonal Architecture : Une étoile du nord, trois noms",
+      "summary": "Elles ressemblent à trois architectures rivales. En réalité, c'est la même idée — les dépendances pointent vers l'intérieur, les frameworks restent à la périphérie — dessinée de trois façons différentes. Voici ce que chacune apporte vraiment, et laquelle choisir.",
+      "date": "2026-03-06",
+      "readingMinutes": 15,
+      "tags": [
+        "Architecture logicielle",
+        "Clean Architecture",
+        "Onion Architecture",
+        "Hexagonal Architecture",
+        "Conception de systèmes",
+        "Dependency Inversion"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "dependency-injection-and-ioc",
+      "category": "architecture",
+      "title": "Dependency Injection & Inversion of Control, Sans la Magie",
+      "summary": "Les conteneurs DI semblent magiques jusqu'à ce que vous voyiez l'idée simple qu'ils cachent : arrêtez de laisser le code créer ses propres dépendances, et passez-les plutôt de l'extérieur. Un guide depuis zéro, avec de vrais exemples et les bénéfices pour les tests.",
+      "date": "2026-03-05",
+      "readingMinutes": 14,
+      "tags": [
+        "Architecture logicielle",
+        "Dependency Injection",
+        "Inversion of Control",
+        "SOLID",
+        "Tests",
+        "Design Patterns"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "structuring-code-feature-vs-layer",
+      "category": "architecture",
+      "title": "Structurer un Codebase : Par Couche, Par Fonctionnalité ou Par Domaine ?",
+      "summary": "Vos dossiers de premier niveau doivent-ils s'appeler controllers/services/models, ou orders/billing/auth ? Ce choix discret façonne silencieusement la façon dont votre codebase grandit. Un tour pratique de la structure par couche, par fonctionnalité et de la Screaming Architecture — avec les compromis à chaque taille d'entreprise.",
+      "date": "2026-03-04",
+      "readingMinutes": 14,
+      "tags": [
+        "Architecture logicielle",
+        "Structure de projet",
+        "Screaming Architecture",
+        "Modularity",
+        "Organisation du code",
+        "Monorepo"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "monolith-to-microservices",
+      "category": "architecture",
+      "title": "Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête",
+      "summary": "Les microservices sont une taxe que vous payez pour la mise à l'échelle organisationnelle — pas un point de départ. Un parcours sans fioriture du monolithe au monolithe modulaire puis aux microservices, avec les signaux qui vous disent quand (et si) diviser.",
+      "date": "2026-03-03",
+      "readingMinutes": 16,
+      "tags": [
+        "Architecture logicielle",
+        "Microservices",
+        "Modular Monolith",
+        "Conception de systèmes",
+        "Systèmes distribués",
+        "Scalabilité"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 5
+    },
+    {
+      "slug": "micro-frontends-when-why-and-cost",
+      "category": "architecture",
+      "title": "Micro-Frontends : Quand Ça Vaut le Coup, et Ce Que Ça Coûte",
+      "summary": "Diviser le frontend en pièces déployables indépendamment peut libérer les équipes — ou vous noyer dans la complexité. Rédigé à partir de l'expérience de livraison d'une configuration Angular-host + modules React à grande échelle : quand les micro-frontends rapportent, et la facture qu'ils entraînent.",
+      "date": "2026-03-02",
+      "readingMinutes": 15,
+      "tags": [
+        "Architecture logicielle",
+        "Micro-Frontends",
+        "Architecture frontend",
+        "Module Federation",
+        "Scalabilité",
+        "Conception de systèmes"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "foundations",
+      "seriesOrder": 6
+    },
+    {
+      "slug": "how-to-review-code-kindly",
+      "category": "culture",
+      "title": "L'Art de la Revue de Code : Critiquer le Code Sans Blesser les Personnes",
+      "summary": "La revue de code est le moment où la culture d'équipe se forge ou se brise. Un guide pratique pour réviser le code afin qu'il soit meilleur ET que l'auteur en ressorte plus fort — des formulations concrètes, une checklist pour le relecteur, et les habitudes qui rendent les revues toxiques en silence.",
+      "date": "2026-03-01",
+      "readingMinutes": 14,
+      "tags": [
+        "Culture d'ingénierie",
+        "Revue de code",
+        "Pull Requests",
+        "Feedback",
+        "Collaboration d'équipe",
+        "Mentorat"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 1,
+      "featured": true
+    },
+    {
+      "slug": "how-to-be-a-kind-engineer",
+      "category": "culture",
+      "title": "Kind Engineering : Pourquoi la Bienveillance Fait de Vous un Meilleur Ingénieur",
+      "summary": "La bienveillance n'est pas de la gentillesse, et ce n'est pas de la faiblesse. C'est un multiplicateur de force — des retours plus clairs, des incidents plus sûrs, des coéquipiers qui progressent plus vite. Ce que le « kind engineering » signifie vraiment, et comment le pratiquer dans les revues de code, les incidents et le travail quotidien.",
+      "date": "2026-02-28",
+      "readingMinutes": 13,
+      "tags": [
+        "Culture d'ingénierie",
+        "Kind Engineering",
+        "Sécurité psychologique",
+        "Empathie",
+        "Collaboration d'équipe",
+        "Leadership"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 2
+    },
+    {
+      "slug": "how-to-write-a-great-pull-request",
+      "category": "culture",
+      "title": "Comment Écrire une Pull Request que les Gens Aiment Vraiment Réviser",
+      "summary": "Une excellente pull request est un cadeau pour votre relecteur : petite, bien décrite, facile à accepter. L'anatomie d'une PR révisable — taille, titre, description, hygiène des commits et auto-revue — avec des exemples concrets avant/après.",
+      "date": "2026-02-27",
+      "readingMinutes": 13,
+      "tags": [
+        "Culture d'ingénierie",
+        "Pull Requests",
+        "Revue de code",
+        "Git",
+        "Collaboration d'équipe",
+        "Productivité des développeurs"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 3
+    },
+    {
+      "slug": "giving-and-receiving-feedback",
+      "category": "culture",
+      "title": "Les Retours qui Atterrissent : Donner et Recevoir la Critique en tant qu'Ingénieur",
+      "summary": "La plupart des ingénieurs n'ont jamais appris à donner des retours — ni à les recevoir. Un guide de terrain pour des retours précis, bienveillants et actionnables, et pour rester ouvert quand c'est vous qui les recevez, avec des scripts prêts à l'emploi.",
+      "date": "2026-02-25",
+      "readingMinutes": 13,
+      "tags": [
+        "Culture d'ingénierie",
+        "Feedback",
+        "Communication",
+        "Sécurité psychologique",
+        "Mentorat",
+        "Collaboration d'équipe"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 4
+    },
+    {
+      "slug": "mentoring-engineers",
+      "category": "culture",
+      "title": "Mentorer les Ingénieurs : Comment Faire Évoluer les Juniors vers le Senior",
+      "summary": "Les grandes équipes se cultivent, elles ne sont pas seulement recrutées. Issu de la direction d'équipes d'ingénierie : comment mentorer pour que les personnes progressent vite — le binômage, la revue de code comme enseignement, l'épreuve de la bonne taille, et les changements de mentalité qui transforment un junior en quelqu'un à qui vous feriez confiance pour tout.",
+      "date": "2026-02-24",
+      "readingMinutes": 14,
+      "tags": [
+        "Culture d'ingénierie",
+        "Mentorat",
+        "Évolution de carrière",
+        "Leadership",
+        "Collaboration d'équipe",
+        "Revue de code"
+      ],
+      "author": "Nguyen Le Phong",
+      "series": "kind-engineering",
+      "seriesOrder": 5
+    },
+    {
+      "slug": "context-engineering",
+      "category": "ai",
+      "title": "L'Ingénierie de Contexte : La Compétence Qui Sépare les Experts IA du Reste",
+      "summary": "La plupart des résultats IA sont décevants non pas parce que les modèles sont mauvais, mais parce que le contexte est trop mince. Un guide pratique de l'ingénierie de contexte — ce qui vit dans la fenêtre du modèle, les cinq piliers d'un excellent contexte, les anti-patterns courants, et des templates réutilisables qui produisent des résultats nettement meilleurs.",
+      "date": "2026-02-22",
+      "readingMinutes": 15,
+      "tags": [
+        "IA",
+        "Ingénierie de Contexte",
+        "Prompt Engineering",
+        "LLM",
+        "Productivité Développeur",
+        "Outils IA"
+      ]
+    },
+    {
+      "slug": "layered-vs-vertical-slice-architecture",
+      "category": "architecture",
+      "title": "Architecture en couches ou Vertical Slice Architecture",
+      "summary": "L'architecture en couches semble ordonnée au début, tandis que les vertical slices rapprochent le changement de la fonctionnalité réelle. Un regard calme sur les deux approches, leurs forces et les signaux qui disent qu'il est temps de changer.",
+      "date": "2026-02-11",
+      "readingMinutes": 6,
+      "tags": [
+        "Architecture logicielle",
+        "Vertical Slice Architecture",
+        "Layered Architecture",
+        "Organisation du code",
+        "Modularity",
+        "Technical Debt"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false,
+      "series": "foundations",
+      "seriesOrder": 13
+    },
+    {
+      "slug": "anatomy-of-a-healthy-one-on-one",
+      "category": "culture",
+      "title": "L'anatomie d'un 1-on-1 sain",
+      "summary": "Un 1-on-1 sain n'est pas une réunion de suivi plus douce. C'est un petit espace régulier pour le contexte, la confiance, le feedback et la direction professionnelle.",
+      "date": "2026-02-08",
+      "readingMinutes": 6,
+      "tags": [
+        "Culture engineering",
+        "One-on-One",
+        "Management",
+        "Feedback",
+        "Leadership",
+        "Confiance"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "prompt-engineering-is-just-communication",
+      "category": "ai",
+      "title": "Le prompt engineering, c'est surtout de la communication",
+      "summary": "Les bons prompts ne sont pas des phrases magiques. Ce sont des communications claires : contexte, intention, contraintes, exemples et feedback.",
+      "date": "2026-02-07",
+      "readingMinutes": 6,
+      "tags": [
+        "IA",
+        "Prompt Engineering",
+        "Communication",
+        "LLM",
+        "AI Literacy",
+        "Productivité développeur"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "learning-to-say-no-as-a-developer",
+      "category": "perspectives",
+      "title": "Apprendre à dire non en tant que développeur",
+      "summary": "Dire non ne consiste pas à être difficile. C'est protéger le focus, la qualité et la confiance en rendant les tradeoffs visibles.",
+      "date": "2026-02-06",
+      "readingMinutes": 6,
+      "tags": [
+        "Développement personnel",
+        "Software Engineering",
+        "Limites",
+        "Carrière",
+        "Communication",
+        "Focus"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    },
+    {
+      "slug": "daily-standup-status-report-or-strategy",
+      "category": "ways-of-working",
+      "title": "Daily standup : rapport d'état ou stratégie du jour ?",
+      "summary": "Un daily standup peut devenir un rituel de reporting, ou une courte conversation stratégique sur le flux, les risques et l'attention du jour.",
+      "date": "2026-02-05",
+      "readingMinutes": 6,
+      "tags": [
+        "Agile",
+        "Daily Standup",
+        "Scrum",
+        "Collaboration",
+        "Delivery",
+        "Ways of Working"
+      ],
+      "author": "Nguyen Le Phong",
+      "featured": false
+    }
+  ]
+}

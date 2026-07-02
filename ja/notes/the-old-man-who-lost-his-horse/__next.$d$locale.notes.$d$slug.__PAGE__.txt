@@ -1,0 +1,171 @@
+1:"$Sreact.fragment"
+a:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"EngagementProvider"]
+b:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+c:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+d:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+e:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+f:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+1a:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T46e,{"@context":"https://schema.org","@type":"Article","@id":"https://nguyenlephong.github.io/en/notes/the-old-man-who-lost-his-horse#article","headline":"The Old Man Who Lost His Horse: Hold the Verdict, Keep the Present","description":"The old story of the man who lost his horse is often told as a lesson about luck changing shape. This reflection reads it in a grounded way: our first judgement about an event is often incomplete. The practice is not to care less, but to delay the verdict, stay present, and respond with more room than the first emotion gives us.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/notes/the-old-man-who-lost-his-horse","image":"https://nguyenlephong.github.io/og/notes/the-old-man-who-lost-his-horse.png","mainEntityOfPage":"https://nguyenlephong.github.io/en/notes/the-old-man-who-lost-his-horse","datePublished":"2026-02-22","dateModified":"2026-02-22","keywords":"Personal Reflection, Life Philosophy, Equanimity, Gratitude, Taoism, Letting Go","author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:Td71,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/en/notes/the-old-man-who-lost-his-horse#faq","mainEntity":[{"@type":"Question","name":"Doesn't \"any event could be good or bad\" just lead to passivity — why try at all?","acceptedAnswer":{"@type":"Answer","text":"It points the other way, if you read it fully. The old man still fed the horse, set his son's leg, and prepared for winter. What changes is not whether you act, but what you demand of the result. You do your part with full effort, and then you release the requirement that life prove your effort \"worked\" on your timeline. Trusting the arrangement removes the anxiety from action; it does not remove the action. Passivity is giving up because nothing matters. Equanimity is acting wholeheartedly because the outcome is not the only thing that matters."}},{"@type":"Question","name":"Is treasuring the present just forced positivity in nicer clothes?","acceptedAnswer":{"@type":"Answer","text":"No — and the difference is important. Forced positivity denies the hard feeling: \"don't be sad, it's actually fine.\" What this essay asks is the opposite: feel the grief or the joy completely, just don't sign a permanent verdict on top of it. You can hold real sorrow about a loss and still be grateful for what remains, in the same hour. Treasuring the present is not pretending everything is good; it is refusing to let uncertainty about the future steal your attention from the good that is genuinely here now."}},{"@type":"Question","name":"How is this different from Stoicism's \"control what you can\"?","acceptedAnswer":{"@type":"Answer","text":"They are cousins, arrived at independently. Stoicism (a Greek and Roman tradition) and the Taoist tale from the Huainanzi both separate what is yours to do from what is not, and counsel a steady face toward the second. The Taoist flavour leans a little more on trusting a larger process you cannot see, and the Stoic flavour leans a little more on disciplined judgment. In practice they reinforce each other: do your duty (Stoic), and hold the result lightly because the chain of cause is longer than you can read (Taoist)."}},{"@type":"Question","name":"When something genuinely terrible happens, isn't \"who knows, maybe it's a blessing\" insulting?","acceptedAnswer":{"@type":"Answer","text":"Yes — said to someone in fresh grief, it can be cruel, and the essay is not a script to hand to others. It is a private posture, not a thing you say at a funeral. For real loss, the first task is to grieve, fully and without a deadline. The \"who knows\" is not a denial of the pain; it is a quiet refusal to also add a second suffering — the despair of having decided, on day one, that the future holds nothing. Hold the grief. Just don't let it write the ending."}},{"@type":"Question","name":"What is one small thing I can actually start doing today?","acceptedAnswer":{"@type":"Answer","text":"Put a comma where you reflexively put a full stop. The next time something lands as clearly \"good\" or clearly \"bad,\" name the feeling honestly, then add five words: \"and I can't yet tell.\" Then, once before you sleep, name a single ordinary presence in your life — a person, a place, your own working body — as if you were remembering it fondly from many years in the future. That pairing — the open comma and the daily thanks — is the whole practice in miniature."}}]}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean notes-accent notes-reading","style":{"--topic-color":"#b45309"},"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"ノート\",\"item\":\"https://nguyenlephong.github.io/en/notes\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Perspectives & Reflections\",\"item\":\"https://nguyenlephong.github.io/en/notes?topic=goc-nhin\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"The Old Man Who Lost His Horse: Hold the Verdict, Keep the Present\",\"item\":\"https://nguyenlephong.github.io/en/notes/the-old-man-who-lost-his-horse\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],["$L5","$L6","$L7","$L8"],"$L9"]}],"loading":null,"isPartial":false}
+10:T3f6b,<blockquote>
+<p><em>The old man lost his horse — how could anyone know it was not a blessing? We name an event the instant it lands, but the story it belongs to is always longer than the moment we are standing in.</em></p>
+</blockquote>
+
+<p>There is an old story from the borderlands that has outlived almost everything written around it. People have carried it across two thousand years for the same reason we keep a smooth stone in a pocket: it fits the hand, and it steadies you.</p>
+<p>This is a quiet essay about that story — and about a habit it gently asks us to put down: the rush to decide, the moment anything happens, whether it is good news or bad. Underneath that habit is a deeper invitation, the one I actually want to write about: to stay open to the situation we cannot yet fully read, and to treasure what is present while it is present.</p>
+
+<h2 id="the-old-man-and-his-horse">1. Tái Ông Thất Mã: a story that refuses to end</h2>
+<p>A man lived near the northern frontier. One day his horse — his most valuable possession — wandered off across the border into the lands of the Hu. The neighbours came to console him. <em>What rotten luck.</em> The old man only shrugged: <em>"How do you know this isn't a blessing?"</em></p>
+<p>Months later the horse came back, and it brought a fine wild horse with it. The neighbours came again, this time to congratulate him. <em>What wonderful luck.</em> Again the old man was unmoved: <em>"How do you know this isn't a disaster?"</em></p>
+<p>His son took to riding the new horse, was thrown, and broke his leg badly. The neighbours returned with their condolences. And again: <em>"How do you know this isn't a blessing?"</em> A year later, war came to the frontier. Every able-bodied young man was conscripted, and most of them died. The son, lame, stayed home — and lived.</p>
+
+<div class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 800 330" role="img" aria-labelledby="dgm-tl-en">
+    <title id="dgm-tl-en">Four turns of the old man's story. Above each event is the verdict the crowd rushed to; the arrows show how each "fortune" or "misfortune" quietly became the next.</title>
+    <defs>
+      <marker id="tlAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-accent" x="400" y="28" text-anchor="middle" font-size="13">THE VERDICT KEEPS FLIPPING — THE STORY NEVER CLOSES</text>
+
+    <text class="dgm-t-muted" x="100" y="92" text-anchor="middle" font-size="12">"misfortune!"</text>
+    <text class="dgm-t-strong" x="300" y="92" text-anchor="middle" font-size="12">"fortune!"</text>
+    <text class="dgm-t-muted" x="500" y="92" text-anchor="middle" font-size="12">"misfortune!"</text>
+    <text class="dgm-t-strong" x="700" y="92" text-anchor="middle" font-size="12">"fortune!"</text>
+
+    <rect class="dgm-core" x="30" y="118" width="140" height="74" rx="10"/>
+    <text class="dgm-t-strong" x="100" y="150" text-anchor="middle" font-size="12.5">Horse runs off</text>
+    <text class="dgm-t-muted dgm-t-mono" x="100" y="170" text-anchor="middle" font-size="10">to the lands of Hu</text>
+
+    <rect class="dgm-core" x="230" y="118" width="140" height="74" rx="10"/>
+    <text class="dgm-t-strong" x="300" y="150" text-anchor="middle" font-size="12.5">Returns — with</text>
+    <text class="dgm-t-strong" x="300" y="167" text-anchor="middle" font-size="12.5">a fine wild horse</text>
+
+    <rect class="dgm-core" x="430" y="118" width="140" height="74" rx="10"/>
+    <text class="dgm-t-strong" x="500" y="150" text-anchor="middle" font-size="12.5">Son rides it,</text>
+    <text class="dgm-t-strong" x="500" y="167" text-anchor="middle" font-size="12.5">breaks his leg</text>
+
+    <rect class="dgm-driven" x="630" y="118" width="140" height="74" rx="10"/>
+    <text class="dgm-t-strong" x="700" y="150" text-anchor="middle" font-size="12.5">War comes;</text>
+    <text class="dgm-t-strong" x="700" y="167" text-anchor="middle" font-size="12.5">the lame son lives</text>
+
+    <path class="dgm-flow" d="M170,155 H 226" marker-end="url(#tlAcc)"/>
+    <path class="dgm-flow" d="M370,155 H 426" marker-end="url(#tlAcc)"/>
+    <path class="dgm-flow" d="M570,155 H 626" marker-end="url(#tlAcc)"/>
+
+    <text class="dgm-t-muted" x="400" y="246" text-anchor="middle" font-size="11.5">Each verdict was true only until the next morning. The arc was always longer than the crowd could see.</text>
+    <path class="dgm-line" d="M100,262 C 300,300 500,300 700,262" stroke-dasharray="5 5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="400" y="318" text-anchor="middle" font-size="10.5">…and it would have kept turning, had the story been allowed to go on</text>
+  </svg>
+  <figcaption>"Tái ông thất mã, an tri họa phúc" — the old man lost his horse; how could anyone know it was not a blessing? The crowd labels each event the moment it lands. The old man waits, because he knows the chain is still being written.</figcaption>
+</div>
+
+<p>The line that travels with the story is <strong>"Tái ông thất mã, an tri họa phúc"</strong> — <em>the old man lost his horse; how could one know it was not fortune?</em> It comes from the <em>Huainanzi</em>, a Han-dynasty book of Taoist philosophy. Strip away the antiquity and what remains is unnervingly modern: a single life, a chain of events, and a crowd that insists on grading each one the moment it arrives.</p>
+
+<h2 id="fortune-and-misfortune-turn">2. Gain and loss can change meaning as the story unfolds</h2>
+<p>The neighbours are not wrong to feel quickly. They are us. When the horse runs off, "this is bad" is simply <em>true</em> — in that frame, at that size. The mistake is not the feeling; it is the full stop we put after it. We treat a comma in a long sentence as if it were the final word.</p>
+<p>What the old man understands is that an event has no fixed value of its own. Its meaning is on loan from everything that comes after it. The lost horse <em>becomes</em> the second horse; the broken leg <em>becomes</em> the saved life. Run the story forward and every "disaster" is quietly carrying the next blessing in its arms, and every "blessing" is carrying the next test. They are not opposites taking turns. They are one process, seen from too close.</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">The reframe</span><p>Try replacing "this is good" / "this is bad" with "this is <em>happening</em>, and I cannot yet see what it is for." It sounds like a small edit. In practice it is the difference between being dragged by events and walking beside them.</p></div>
+
+<h2 id="the-rush-to-judge">3. Why we rush to the verdict</h2>
+<p>If premature judgment costs us so much, why is it so automatic? Because uncertainty is uncomfortable, and a verdict — even a wrong one — feels like relief. Labeling an event "good" or "bad" lets us close the file and stop holding the question open. The trouble is what the verdict then does to us.</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th width="20%">When we rush to…</th><th>What it feels like</th><th>What it quietly costs</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>"This is wonderful"</th><td>Elation; we grab and cling</td><td>We over-attach, and the loss — when the turn comes — lands twice as hard</td></tr>
+    <tr><th>"This is a disaster"</th><td>Despair; we resist and recoil</td><td>We miss the door the closing window just opened, and act from fear</td></tr>
+    <tr><th>Either, too soon</th><td>The relief of a settled story</td><td>We stop paying attention — and attention was the whole gift</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Notice the third row. The deepest cost of grading every moment is not that we are sometimes wrong. It is that a settled verdict makes us stop looking. We decide what a day was before the day is over, and then we live inside the decision instead of the day.</p>
+
+<h2 id="equanimity">4. The middle seat: neither too glad nor too grieved</h2>
+<p>The old man's posture has a name: <strong>equanimity</strong>. It is easy to mistake it for coldness, as if he simply did not care about his horse or his son. He cared enormously. Equanimity is not the absence of feeling; it is the refusal to let a single feeling sign the contract for the whole of life.</p>
+
+<div class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 300" role="img" aria-labelledby="dgm-fork-en">
+    <title id="dgm-fork-en">The same event opens two roads. Rushing to a verdict leaves you tossed by every turn; pausing before the verdict lets you stay steady and treasure what is here.</title>
+    <defs>
+      <marker id="fkAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <rect class="dgm-surface" x="24" y="118" width="150" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="99" y="146" text-anchor="middle" font-size="13">Something</text>
+    <text class="dgm-t-strong" x="99" y="164" text-anchor="middle" font-size="13">happens</text>
+
+    <rect class="dgm-driven" x="300" y="36" width="180" height="58" rx="10"/>
+    <text class="dgm-t-accent" x="390" y="62" text-anchor="middle" font-size="12.5">Rush to a verdict</text>
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="80" text-anchor="middle" font-size="10">cling / resist</text>
+    <rect class="dgm-driven" x="540" y="36" width="196" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="638" y="68" text-anchor="middle" font-size="12.5">tossed by every turn</text>
+
+    <rect class="dgm-core" x="300" y="206" width="180" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="390" y="232" text-anchor="middle" font-size="12.5">Pause: who knows?</text>
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="250" text-anchor="middle" font-size="10">trust the arrangement</text>
+    <rect class="dgm-core" x="540" y="206" width="196" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="638" y="232" text-anchor="middle" font-size="12.5">steady — and free</text>
+    <text class="dgm-t-muted dgm-t-mono" x="638" y="250" text-anchor="middle" font-size="10">to treasure what's here</text>
+
+    <path class="dgm-flow" d="M174,138 C 230,120 250,70 296,65" marker-end="url(#fkAcc)"/>
+    <path class="dgm-flow" d="M174,162 C 230,180 250,232 296,236" marker-end="url(#fkAcc)"/>
+    <path class="dgm-flow" d="M480,65 H 536" marker-end="url(#fkAcc)"/>
+    <path class="dgm-flow" d="M480,235 H 536" marker-end="url(#fkAcc)"/>
+  </svg>
+  <figcaption>Equanimity is not indifference. It is the pause that keeps a single event from yanking you between elation and despair — and frees your attention to notice what is quietly, presently good.</figcaption>
+</div>
+
+<p>Picture it as a middle seat. On one side is the giddy high of "everything is working out"; on the other, the cold drop of "everything is falling apart." Both are real weather. Equanimity is staying in the seat — feeling the weather fully, without grabbing the wheel every time the sky changes. The Stoics, an ocean and a culture away, arrived at the same place: do what is yours to do, and meet what is not yours with a steady face.</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">A small distinction worth keeping</span><p>Equanimity is not passivity. The old man would still feed the horse, set his son's leg, prepare for winter. Trusting the arrangement does not mean doing nothing; it means doing your part <em>without</em> demanding that the result prove you right by tomorrow morning.</p></div>
+
+<h2 id="treasuring-presence">5. From trusting the arrangement to treasuring the presence</h2>
+<p>Here is the turn I most wanted to reach. If you cannot know whether today's event is fortune or misfortune, you might conclude the wise move is to hold everything at arm's length — to care about nothing so that nothing can move you. That is the cynic's misreading, and it gets the lesson exactly backwards.</p>
+<p>The opposite is true. <em>Because</em> the arrangement is larger than I can see, and <em>because</em> every presence in my life is on a timer I did not set, the only sane response to what is here right now is to treasure it. The detour that ruined my plan put me in the room where I met a friend. The job I did not get sent me down the road I am grateful to be on. The ordinary Tuesday — the person across the table, the parent on the phone, the body that still carries me up the stairs — is itself an arrangement, quietly extraordinary, that I will one day look back on as the good old days.</p>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">The cost of waiting to be sure</span><p>If you withhold your gratitude until you are certain an event was "good," you will spend your life waiting for a verdict that never finally arrives — because the chain never closes. The crowd is still waiting to find out if the old man was lucky. The old man was busy being alive.</p></div>
+<p>This is what links the old story to a busy modern life. We cannot control the turning of fortune and misfortune; that wheel is not ours. What is ours is where we point our attention while it turns. Trust handles the part we cannot see. Gratitude handles the part that is right in front of us. Held together, they let you stop auditing your life for whether it is going well, and start actually living the arrangement you are in.</p>
+
+<h2 id="how-to-live-it">6. How to live it, gently</h2>
+<p>None of this requires becoming a sage on a mountain. It is a handful of small, repeatable moves.</p>
+<ul>
+<li><strong>Put a comma where you used to put a full stop.</strong> When something lands, name the feeling, then add: "…and I can't yet see what it's for." Let the sentence stay open.</li>
+<li><strong>Widen the time horizon.</strong> Ask of any "disaster": what door might this be opening? And of any "triumph": what is this quietly asking of me? Not to deny the feeling — to keep it company.</li>
+<li><strong>Do your part, then release the result.</strong> Set the leg, prepare for winter, send the message. Then let go of the demand that life confirm your effort on your schedule.</li>
+<li><strong>Give thanks for the present arrangement, today.</strong> Once a day, name one ordinary presence — a person, a place, a working body — as if you were already remembering it from far in the future. Because one day you will be.</li>
+<li><strong>Hold plans loosely.</strong> Make them, fully. Then carry them the way the old man carried his certainty about the horse: lightly enough that a turn of fortune does not break you.</li>
+</ul>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Key takeaways</h3>
+<ul>
+  <li><strong>An event's meaning is on loan from what comes after it.</strong> The lost horse becomes the second horse; the broken leg becomes the saved life. The chain never finally closes.</li>
+  <li><strong>The verdict, not the feeling, is the mistake.</strong> Feel "this is hard" or "this is wonderful" fully — just don't put a full stop where life only put a comma.</li>
+  <li><strong>Equanimity is not coldness.</strong> It is staying in the middle seat: caring deeply, without letting one turn of fortune sign the contract for your whole life.</li>
+  <li><strong>The lesson is not to care less, but to treasure more.</strong> Precisely because every presence is temporary and the arrangement is larger than we can read, what is here now deserves our gratitude now.</li>
+  <li><strong>Trust the part you can't see; cherish the part in front of you.</strong> Together they let you live the arrangement instead of grading it.</li>
+</ul>
+</div>
+<p>The old man never learned the "ending" of his story, because there wasn't one — only one turn opening onto the next. That is not a sad fact. It is the most freeing one available to us. We do not have to know how it all resolves to live it well. We only have to trust the arrangement enough to stop bracing against it, and love what is present enough to actually be here for it.</p>
+4:["$","$La",null,{"category":"notes","slug":"the-old-man-who-lost-his-horse","children":[["$","$Lb",null,{"category":"notes","slug":"the-old-man-who-lost-his-horse","readingMinutes":13,"surface":"notes"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lc",null,{"url":"https://nguyenlephong.github.io/en/notes/the-old-man-who-lost-his-horse","title":"The Old Man Who Lost His Horse: Hold the Verdict, Keep the Present","surface":"notes","category":"notes","slug":"the-old-man-who-lost-his-horse","labels":{"share":"シェア","copyLink":"リンクをコピー","copied":"コピーしました！","close":"閉じる"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Ld",null,{"href":"/ja/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ノート"}],[["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Ld",null,{"href":"/ja/notes?topic=goc-nhin","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Perspectives & Reflections"}]],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"The Old Man Who Lost His Horse: Hold the Verdict, Keep the Present"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","h1",null,{"className":"blog-article__title","children":"The Old Man Who Lost His Horse: Hold the Verdict, Keep the Present"}],["$","p",null,{"className":"blog-article__summary","children":"The old story of the man who lost his horse is often told as a lesson about luck changing shape. This reflection reads it in a grounded way: our first judgement about an event is often incomplete. The practice is not to care less, but to delay the verdict, stay present, and respond with more room than the first emotion gives us."}],["$","div",null,{"className":"blog-article__meta","children":[["$","time",null,{"dateTime":"2026-02-22","children":"2026年2月22日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"13 分で読めます"}],["$","$Le",null,{"label":"回閲覧"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Personal Reflection",{"children":"Personal Reflection"}],["$","li","Life Philosophy",{"children":"Life Philosophy"}],["$","li","Equanimity",{"children":"Equanimity"}],["$","li","Gratitude",{"children":"Gratitude"}],["$","li","Taoism",{"children":"Taoism"}],["$","li","Letting Go",{"children":"Letting Go"}]]}]]}],["$","$Lf",null,{"html":"$10"}],"$L11",null,"$L12"]}]]}],"$L13","$L14"]}],"$L15"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/579669e8fc8fe057.css","precedence":"next"}]
+6:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+7:["$","script","script-0",{"src":"/_next/static/chunks/60afb5b0374fe7a9.js","async":true}]
+8:["$","script","script-1",{"src":"/_next/static/chunks/0e65e15104575034.js","async":true}]
+9:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+11:["$","section",null,{"className":"blog-faq","aria-labelledby":"notes-faq-heading","children":[["$","h2",null,{"id":"notes-faq-heading","className":"blog-faq__heading","children":"よくある質問"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Doesn't \"any event could be good or bad\" just lead to passivity — why try at all?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"It points the other way, if you read it fully. The old man still fed the horse, set his son's leg, and prepared for winter. What changes is not whether you act, but what you demand of the result. You do your part with full effort, and then you release the requirement that life prove your effort \"worked\" on your timeline. Trusting the arrangement removes the anxiety from action; it does not remove the action. Passivity is giving up because nothing matters. Equanimity is acting wholeheartedly because the outcome is not the only thing that matters."}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Is treasuring the present just forced positivity in nicer clothes?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"No — and the difference is important. Forced positivity denies the hard feeling: \"don't be sad, it's actually fine.\" What this essay asks is the opposite: feel the grief or the joy completely, just don't sign a permanent verdict on top of it. You can hold real sorrow about a loss and still be grateful for what remains, in the same hour. Treasuring the present is not pretending everything is good; it is refusing to let uncertainty about the future steal your attention from the good that is genuinely here now."}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How is this different from Stoicism's \"control what you can\"?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"They are cousins, arrived at independently. Stoicism (a Greek and Roman tradition) and the Taoist tale from the Huainanzi both separate what is yours to do from what is not, and counsel a steady face toward the second. The Taoist flavour leans a little more on trusting a larger process you cannot see, and the Stoic flavour leans a little more on disciplined judgment. In practice they reinforce each other: do your duty (Stoic), and hold the result lightly because the chain of cause is longer than you can read (Taoist)."}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"When something genuinely terrible happens, isn't \"who knows, maybe it's a blessing\" insulting?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Yes — said to someone in fresh grief, it can be cruel, and the essay is not a script to hand to others. It is a private posture, not a thing you say at a funeral. For real loss, the first task is to grieve, fully and without a deadline. The \"who knows\" is not a denial of the pain; it is a quiet refusal to also add a second suffering — the despair of having decided, on day one, that the future holds nothing. Hold the grief. Just don't let it write the ending."}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What is one small thing I can actually start doing today?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Put a comma where you reflexively put a full stop. The next time something lands as clearly \"good\" or clearly \"bad,\" name the feeling honestly, then add five words: \"and I can't yet tell.\" Then, once before you sleep, name a single ordinary presence in your life — a person, a place, your own working body — as if you were remembering it fondly from many years in the future. That pairing — the open comma and the daily thanks — is the whole practice in miniature."}}]]}]]}]]}]
+12:["$","$L19",null,{"prompt":"いかがでしたか？","surface":"notes","category":"notes","slug":"the-old-man-who-lost-his-horse","reactionLabels":{"like":"いいね","love":"お気に入り","insightful":"学びになった","clap":"祝福"}}]
+13:["$","nav",null,{"className":"blog-series-nav","aria-label":"Perspectives & Reflections","children":[["$","$Ld",null,{"href":"/ja/notes/choice-or-fate","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","前のノート"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Choice and Circumstance: Living Well Inside What You Cannot Fully Control"}]]}],["$","$Ld",null,{"href":"/ja/notes/complexity-is-inevitable-simplicity-is-sustainable","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["次のノート"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Complexity Is Inevitable, Simplicity Is Sustainable: Lessons from Systems and Life"}]]}]]}]
+14:["$","footer",null,{"className":"blog-article__footer","children":["$","$Ld",null,{"href":"/ja/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","ノートに戻る"]}]}]
+15:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1a",null,{"label":"このページの内容","surface":"notes"}]}]
+18:null

@@ -1,0 +1,23 @@
+{
+  "slug": "programmable-self",
+  "title": "Programmable Self",
+  "html": "<h2>The Mindset</h2>\n<p>Just do it, feel it, and let yourself get relieved of constantly trusting your system. The point is not to prove the machine works on day one; it is to run it long enough that trust stops being a question. Remember that tangible results take time and patience — the compounding is real, but it is slow, and it rewards the people who stop checking the scoreboard every hour.</p>\n<h2>The Components</h2>\n<p>If you treat the mind as an operating system, there are a couple of programmatic MindOS components that map surprisingly cleanly:</p>\n<ul>\n<li><strong>Calendar</strong> is the <strong>process scheduler</strong> — it decides what runs and when.</li>\n<li><strong>To-do lists</strong> are the <strong>wait queues</strong> — everything blocked, pending, waiting for its slot.</li>\n<li>All the mental models: <strong>Identities</strong>, <strong>Principles</strong>, <strong>Mental Models</strong>, <strong>Operation Modes/Contexts</strong> are just implementation frameworks — the code you write on top of the kernel.</li>\n</ul>\n<h2>Type of Processes</h2>\n<ul>\n<li><strong>Programs</strong>: They should be preemptive with timers, so that no single task can hog the whole day without being interrupted and rescheduled.</li>\n<li><strong>Reflection</strong>: A meta program at the start and end of a cycle. This is the source of MindOS plasticity — the mechanism by which the system rewrites its own rules instead of running the same flawed loop forever.</li>\n</ul>\n<h2>Qualities</h2>\n<ul>\n<li><strong>Reliability</strong>: how instructions are adhered to. In other words, discipline — the quiet quality that decides whether any of the above is more than a diagram.</li>\n</ul>\n<p><em>(Built on an operating-system metaphor I keep returning to in <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">a friend’s garden of thoughts</a>.)</em></p>\n<hr>\n<ul>\n<li><a href=\"/thoughts/life-running-digital-engine\">Life Running Digital Engine</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "life-running-digital-engine",
+      "title": "Life Running Digital Engine",
+      "context": "<ul>\n<li><a href=\"/thoughts/programmable-self\">Programmable Self</a></li>\n</ul>"
+    },
+    {
+      "slug": "modal-thinking",
+      "title": "Modal thinking - Separate decision making and execution",
+      "context": "<ul>\n<li><a href=\"/thoughts/programmable-self\">Programmable Self</a></li>\n</ul>"
+    },
+    {
+      "slug": "trust",
+      "title": "Trust",
+      "context": "<ul>\n<li><a href=\"/thoughts/programmable-self\">Programmable Self</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "budding"
+}

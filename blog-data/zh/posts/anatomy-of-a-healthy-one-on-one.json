@@ -1,0 +1,19 @@
+{
+  "slug": "anatomy-of-a-healthy-one-on-one",
+  "category": "culture",
+  "title": "健康的 1-on-1 长什么样",
+  "summary": "健康的 1-on-1 不是语气更柔和的 status meeting，而是一个稳定的小空间，用来处理 context、信任、feedback 和职业方向。",
+  "date": "2026-02-08",
+  "readingMinutes": 6,
+  "tags": [
+    "工程文化",
+    "One-on-One",
+    "Management",
+    "Feedback",
+    "Leadership",
+    "Team Trust"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>日历提醒在午饭前十分钟出现，两个人都稍微想把它挪走。release 还没完，review 还在等，Slack 还在闪。1-on-1 当下很少显得紧急，所以很容易被牺牲。一个月后，本来能在那里发现的小信号变得昂贵。</p>\n<p>健康的 1-on-1 不是语气更柔和的 status report。status 已经有 standup、board、pull request 和 dashboard。1-on-1 适合那些不容易放进系统里的东西：困惑、context、信任、feedback、成长方向，以及小小的不对劲。</p>\n<p>第一个要素是规律。完美 agenda 不如真实发生的节奏。价值来自积累，而不是一次深刻谈话。</p>\n<p>第二个要素是共同拥有。engineer 带来不清楚、沉重、有趣或卡住的东西。manager 带来 context、feedback，以及把日常工作连到更大方向的问题。</p>\n<p>第三个要素是足够安全，可以说还没整理好的话。\"我不确定自己有没有成长\"、\"我没理解那个决定\"、\"那次 review 我处理得不好\"，这些话不应该立刻变成绩效判断。</p>\n<p>第四个要素是具体。\"你做得不错\" 很温暖，但 \"你上次 incident write-up 把 timeline 讲得很清楚，希望继续练这种表达\" 更能帮助对方重复有价值的行为。</p>\n<p>好的 1-on-1 通常以一点小清晰结束：一个决定被解释，一个担心被命名，一个 feedback 变得可行动，一个下一步被写下。时间久了，这些小清晰会变成信任。</p>\n<p>如果你的 1-on-1 已经变成 status meeting，可以从小处修正：保护时间，带一个真实话题，问一个 Jira board 回答不了的问题，然后重复。</p>"
+}

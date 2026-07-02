@@ -1,0 +1,203 @@
+1:"$Sreact.fragment"
+9:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+a:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+e:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1a:I[70346,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1b:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T943,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/zh/blog/culture/mentoring-engineers#article","headline":"指导工程师：如何把初级工程师培养成资深工程师","description":"优秀的团队是培养出来的，不只是招聘来的。来自领导工程团队的实战经验：如何通过结对编程、代码审查、恰当的拉伸任务，以及那些把初级工程师变成你愿意托付一切的人的思维转变，让人快速成长。","inLanguage":"zh","url":"https://nguyenlephong.github.io/zh/blog/culture/mentoring-engineers","image":"https://nguyenlephong.github.io/og/blog/mentoring-engineers.png","mainEntityOfPage":"https://nguyenlephong.github.io/zh/blog/culture/mentoring-engineers","datePublished":"2026-02-24","dateModified":"2026-02-24","keywords":"工程文化, 指导, 职业成长, 领导力, 团队协作, 代码审查","articleSection":"工程文化","isRelatedTo":[{"@type":"BlogPosting","headline":"代码审查的艺术：如何批评代码而不打击人","url":"https://nguyenlephong.github.io/zh/blog/culture/how-to-review-code-kindly","image":"https://nguyenlephong.github.io/og/blog/how-to-review-code-kindly.png"},{"@type":"BlogPosting","headline":"善意工程：为什么善意让你成为更好的工程师","url":"https://nguyenlephong.github.io/zh/blog/culture/how-to-be-a-kind-engineer","image":"https://nguyenlephong.github.io/og/blog/how-to-be-a-kind-engineer.png"},{"@type":"BlogPosting","headline":"如何写一个让人真正乐于审查的 Pull Request","url":"https://nguyenlephong.github.io/zh/blog/culture/how-to-write-a-great-pull-request","image":"https://nguyenlephong.github.io/og/blog/how-to-write-a-great-pull-request.png"},{"@type":"BlogPosting","headline":"有效的反馈：作为工程师给出和接受批评","url":"https://nguyenlephong.github.io/zh/blog/culture/giving-and-receiving-feedback","image":"https://nguyenlephong.github.io/og/blog/giving-and-receiving-feedback.png"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/zh/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:Ted8,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/zh/blog/culture/mentoring-engineers#faq","mainEntity":[{"@type":"Question","name":"如何指导一名初级开发者？","acceptedAnswer":{"@type":"Answer","text":"最有效的方法结合三件事：给他们刚好超出当前能力的任务（拉伸区），保持可及以疏通卡点但不替他们解决问题，并在结对和代码审查中有意识地制造教学时机。关键是让他们驾驶——把键盘放到他们面前，提引导性问题而不是递出答案，在你们一起做决策时讲出你的推理。有计划的时间也很重要：有真正指导议程的定期一对一——而不只是进度更新——才是让指导真正发生、而不是被紧迫性挤走的区别所在。"}},{"@type":"Question","name":"指导和管理有什么区别？","acceptedAnswer":{"@type":"Answer","text":"管理主要关注结果——确保工作做得好、团队保持一致、组织目标得以实现。指导关注的是人的成长——帮助他们发展技能、判断力和主人翁意识，这些东西他们会在职业生涯中一直带着。在实践中两者高度重叠：最好的管理者会指导，最好的导师理解组织情境。但当两者发生张力时，这种区别很重要。如果你在冲刺阶段替某人解决了问题以便更快发货，你做了一个以牺牲指导机会为代价的管理决策。好的导师注意到这个取舍，并在压力解除后加以弥补。"}},{"@type":"Question","name":"如何帮助工程师晋升到资深级别？","acceptedAnswer":{"@type":"Answer","text":"资深在技术能力上的成分比多数人想象的要小——到了中级，技术门槛通常已经足够接近了。区分资深工程师的是范围、判断力和影响力。要帮助某人到达那里：给他们一个真实问题的所有权（而不只是一系列工单），把他们放进做决策的房间，让他们指导一个更初级的工程师（教学迫使人把直觉说清楚，而那恰恰是中级到资深的那一步），并给他们推动超出直接工作范围的技术决策的机会。成长发生在那些经历里，而不是完成更多工单。确保你公司的职业阶梯对资深的含义有明确说明——模糊的标准让路径变得不可见。"}},{"@type":"Question","name":"指导应该花多少时间？","acceptedAnswer":{"@type":"Answer","text":"如果你做得正确，每位被指导者每周大约需要两到三个小时。通常分解为：一次专注的一对一（30到45分钟）、有意图的代码审查而不只是批准 diff（每周30到60分钟），以及一两次结对或临时对话（共30到60分钟）。这是真实的投入——这才是重点所在。如果指导让你没有任何代价，你大概没有在做任何有意义的事。杠杆论据在这里很重要：每周两到三个小时能实质性地加速一名工程师的成长，其回报远远超过那些时间花在你自己的代码上。"}},{"@type":"Question","name":"如何在指导时不替他们把工作做了？","acceptedAnswer":{"@type":"Answer","text":"最有帮助的规则：对他们带来的问题，你的第一个回应应该永远是一个问题，而不是解决方案。问他们已经尝试了什么，报错信息说的是什么，代码库里是否有类似模式。开口之前先等三十秒——他们往往会在这段时间里自己回答。当他们在结对中卡住时，忍住拿键盘的冲动。换成问他们下一步会检查什么。忍住不出手的不适感，就是真正教到东西的代价。把直接回答留给他们真正穷尽了所有方法、卡点阻碍了一切进展的情况——即便如此，也要解释推理，而不只是给出解决方案。"}}]}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--violet","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"博客\",\"item\":\"https://nguyenlephong.github.io/zh/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"工程文化\",\"item\":\"https://nguyenlephong.github.io/zh/blog/culture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"指导工程师：如何把初级工程师培养成资深工程师\",\"item\":\"https://nguyenlephong.github.io/zh/blog/culture/mentoring-engineers\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],["$L5","$L6","$L7"],"$L8"]}],"loading":null,"isPartial":false}
+f:T52b8,<p>想想你曾经有过的两位领导——一位让你变得更好，另一位没有。那位<em>没有</em>让你进步的领导，大概只是让你保持忙碌：派发工单、通过代码审查、参加站会。而那位<em>确实</em>让你变得更好的领导，做的事更微妙。他们给你一个稍微超出能力范围的问题，在你快要跌倒时守在旁边，然后看着你把它解决出来。这就是“指导”这门手艺的全部。</p>
+<p>我领导过从八人到十一人不等的工程团队，横跨初创公司和规模化企业。团队快速成长与停滞不前之间的差异，几乎总是归结为同一件事：资深工程师是否在为初级工程师投入时间。不是替他们干活，不是对他们照看过度，而是真正的投入——用时间、用信任、用精心设计的挑战。</p>
+<p>这篇文章，是我希望在第一次指导工程师之前就有人告诉我的一切。坦白说，也是我踩过的坑和花力气改掉的错误的记录。如果你是一位被安排了指导职责的资深工程师，或者是一位正在组建团队的技术负责人，希望这些能帮你少走几段弯路。</p>
+
+<h2 id="why-mentor">为什么指导是杠杆</h2>
+<p>有一种诱惑——尤其是如果你是从独立贡献者成长起来的——会把指导视为一种代价。你花时间解释一个概念，就是没有在写代码。但这种看法，把数学完全搞反了。</p>
+<p>如果你的团队有八名工程师，团队的产出就是八个人的工作量。当你帮助一个原本只能发挥60%能力的人提升到80%，你就在不招人、不需要入职培训、不需要等新人三个月才能上手的情况下，给团队产出添加了0.2个人力。乘以整个团队，再乘以一整年，指导是你能做的回报最高的投资之一。</p>
+<p>还有一种“提高地板”的效果。我待过的最好的团队，不是因为有最多的明星球员——而是因为那里的<em>地板最高</em>。当团队中的每一位工程师都能被信任独立应对棘手问题时，你能走得远比那些把所有事情都漏斗给一两个资深人员的团队快得多。指导就是在提高这个地板。</p>
+<p>还有留人这个视角，人们比愿意承认的更在意这件事。工程师不是辞掉工作——他们是辞掉停滞不前。我从离开团队的工程师那里听到的第一大原因，无非是某种版本的“我不再成长了”。一种资深工程师愿意为初级工程师投入的文化，就是人们留下来的文化，也是组织的智识积淀不会每十八个月就出门溜走的文化。</p>
+
+<h2 id="meet-them-where-they-are">在他们所在之处相遇</h2>
+<p>我见过最多的指导错误——也是我早期自己犯过的——是把挑战设在了错误的水平线上。给人一个他们闭着眼都能完成的任务，他们会无聊。给他们一个真正超出他们能力的东西，他们会陷入混乱。魔法发生在两者之间的某个区间。</p>
+<p>发展心理学家 Lev Vygotsky 把这称为<strong>最近发展区</strong>。思路很简单：有些事你能独立完成，有些事即便有帮助也做不到，而在这两者之间——有些事你<em>几乎</em>能做到，在适当的支持下就能完成。那个中间地带，才是学习真正发生的地方。那里住着拉伸而不恐慌。</p>
+<p>在实践中，这意味着找到比他们以前做过的事往前走一步的任务，而不是十步。一个处理过简单API端点的初级工程师，已经准备好独立负责一个中等复杂度的功能，而不是完整的系统重设计。一个独立交付过几个功能的中级工程师，已经准备好带领一个涉及跨团队协调的功能，而不是一夜之间成为技术负责人。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 640 300" role="img" aria-labelledby="dgm-zpd">
+    <title id="dgm-zpd">三个同心区域：中心是舒适区，中间是拉伸/学习区，外层是恐慌区。拉伸区被高亮为学习最佳点。</title>
+    <defs>
+      <marker id="zpdAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <!-- outer: panic -->
+    <ellipse cx="320" cy="150" rx="290" ry="130" class="dgm-surface" stroke-width="1.5"/>
+    <!-- middle: stretch — highlighted -->
+    <ellipse cx="320" cy="150" rx="200" ry="92" class="dgm-port" stroke-width="2"/>
+    <!-- inner: comfort -->
+    <ellipse cx="320" cy="150" rx="108" ry="50" class="dgm-core" stroke-width="2"/>
+
+    <text class="dgm-t-strong" x="320" y="146" text-anchor="middle" font-size="15">舒适区</text>
+    <text class="dgm-t-muted" x="320" y="165" text-anchor="middle" font-size="12">已完全掌握</text>
+
+    <!-- stretch label: placed in the visible ring -->
+    <text class="dgm-t-accent" x="320" y="105" text-anchor="middle" font-size="14">拉伸区（学习最佳点）</text>
+    <text class="dgm-t-muted" x="320" y="122" text-anchor="middle" font-size="11">挑战刚好超出当前能力</text>
+
+    <!-- panic label -->
+    <text class="dgm-t-muted dgm-t-mono" x="320" y="261" text-anchor="middle" font-size="11">恐慌区——走得太远、太快</text>
+
+    <!-- arrow pointing to the stretch ring -->
+    <path class="dgm-flow" d="M460,78 Q 430,85 395,100" marker-end="url(#zpdAcc)"/>
+    <text class="dgm-t-accent" x="480" y="74" text-anchor="middle" font-size="12">← 你的目标</text>
+  </svg>
+  <figcaption><strong>拉伸区</strong>——舒适区与恐慌区之间的环带——是成长发生的地方。好的指导让工程师待在那个环带里：有挑战，但不至于溺水。</figcaption>
+</figure>
+
+<p>怎么知道某人的区域在哪里？你问，你观察。问他们任务的哪些部分感觉清晰，哪些感觉模糊。观察他们在结对编程中哪里慢下来。注意他们提的是哪种问题（大型架构问题通常意味着他们接近边界；小的语法问题通常不是）。只要你用心，你会很快校准出来。</p>
+
+<h2 id="ways-to-teach">具体的教学工具</h2>
+<p>有几种技巧是我一再使用的。它们没有一个是新奇的。</p>
+<h3 id="pairing">结对编程，正确的做法</h3>
+<p>结对是传递隐性知识最快的方式——那种不在文档里的知识，关于问题通常藏在哪里的直觉，或者为什么那种模式以后会造成痛苦。但结对只有在<em>初级工程师驾驶</em>、而不是资深工程师驾驶时才能教到东西。如果你坐下来开始打字让他们旁观，你展示了自己的能力。你没有帮助他们建立任何能力。</p>
+<p>真正有效的结对方式：把键盘放到他们面前，坐在旁边，把你注意到的东西说出来。“我会先看边界情况——如果这个列表是空的会发生什么？”然后等待。让他们思考。让他们犯错。忍住不出手的不适感，就是真正教到东西的入场票。</p>
+<h3 id="code-review-as-teaching">把代码审查当作教学渠道</h3>
+<p>大多数代码审查专注于代码本身。好的指导把它变成一场关于<em>思维方式</em>的对话。不只是标出某个函数太长了，而是解释为什么——随着代码库增长，什么变得难以理解，什么会最先崩溃。关于如何友善有效地做到这一点，我在<a href="/blog/culture/how-to-review-code-kindly">善意地审查代码</a>中写得更详细，但指导的角度值得在这里补充：审查是少数几个你能在某人的思路形成习惯之前截获并重新引导的时机之一。</p>
+<p>我学到的一件事：在审查中提问题，而不是发出纠正。“如果两个请求同时打进来会发生什么？”比“这不是线程安全的”更有用。它邀请他们自己思考问题，而不是直接递给他们答案。</p>
+<h3 id="reasoning-aloud">大声解释你的推理</h3>
+<p>资深工程师拥有大量压缩的、不可见的知识——他们只是忘了自己有这些东西。在你做决策的时候，把它说出来。“我这里用简单的内存映射而不是上 Redis，是因为在这个规模下，额外的复杂性还不值得。”这句话花三秒说出来，却可能让初级工程师用自己摸索的方式花好几个月才学到。</p>
+<p>不需要把每件事都说出来。但把你的推理变得可见——尤其是在答案不显而易见的决策点上——是你能为一个正在学习这门手艺的人做的产出最高的事情之一。</p>
+<h3 id="stretch-tasks">带安全网的拉伸任务</h3>
+<p>我知道的最有效的教学动作，是分配一个稍微太大的任务，然后待在附近。不是盘旋守候——他们需要空间去挣扎——而是可以被找到。在自然的节点检查进度。让他们带着卡点来找你，而不是你预判每一个。目标是让他们感觉自己是独立的，即便安全网就在那里。</p>
+<p>一个重要的护栏：拉伸任务需要有真实截止日期和真实压力，但压力不能大到失败会是灾难性的。那个在一个他们还没准备好应对的任务上燃尽整个on-call周末的初级工程师，会变得更回避风险，而不是更有能力。把拉伸的幅度与系统能承受出错的程度匹配起来。</p>
+<h3 id="dont-solve-it">不要替他们解决问题</h3>
+<p>这是最难的一个。当某人卡住了而你知道答案，忍住不给出来需要真正的自律。但你一旦给了，你就从教学切换到了代劳。下次他们遇到类似问题，他们会回来找你，而不是自己想清楚。</p>
+<p>有效的替代做法：问正确的引导性问题。“报错信息实际上说了什么？”“你看过我们在支付模块里如何处理类似情况吗？”目标是给他们在自己思路中的下一步，而不是答案。</p>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">三十秒规则</span><p>当某人带着问题来找你时，开口之前先等三十秒。他们往往会在这段时间里自己回答问题。如果没有，你的第一个回应应该是一个问题，而不是解决方案。</p></div>
+
+<h2 id="autonomy-ladder">自主阶梯</h2>
+<p>我在指导中发现的最清晰的心智模型之一，是把自主性看作一把梯子。你在梯子上的位置决定了你需要给多少情境、多频繁地检查进度，以及分配哪类任务。指导的目标始终是帮助某人爬上一级——不是一夜之间拉到顶，而是保持他们在移动。</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>梯级</th><th>他们的工作方式</th><th>你的参与方式</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1 — 被指令</th>
+      <td>需要一步一步的指示；对大多数决定没有把握。几乎事事都先询问再行动。</td>
+      <td>你详细定义任务，仔细审查每个 PR，每天检查，并不断讲出你的推理。</td>
+    </tr>
+    <tr>
+      <th>2 — 被引导</th>
+      <td>能独立处理熟悉的工作；遇到新情况需要投入。带着卡点来找你，而不是猜测。</td>
+      <td>你设定清晰目标，定义范围，审查关键决策。每隔几天检查，而不是每天。</td>
+    </tr>
+    <tr>
+      <th>3 — 协作式</th>
+      <td>提出自己的方案，思考权衡，主动标出风险。带着选项来找你，而不只是问题。</td>
+      <td>你更多是作为反弹板而不是引导者。在执行前审查方案，但信任执行过程。</td>
+    </tr>
+    <tr>
+      <th>4 — 被委托</th>
+      <td>完全拥有一个问题：范围界定、执行、利益相关方沟通。只在真正需要时才升级。</td>
+      <td>你在节点检查。他们想要第二意见时你是可以找到的，但他们完全自己驾驶。</td>
+    </tr>
+    <tr>
+      <th>5 — 被信任</th>
+      <td>你会把团队里任何问题交给他们，包括你自己也不确定怎么解决的那些。</td>
+      <td>平等关系。你们相互学习。你的角色是给他们空间，然后退到一边。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>大多数应届毕业生从第一级开始。大多数以两到三年经验入职的工程师落在第二级。从那里开始的旅程，在很大程度上取决于他们的领导和团队是否在有意识地帮助他们往上爬。</p>
+<p>我见过最常见的错误，是把某人当作比他们已经赢得的更低梯级来对待。如果某人已经在第三级运作，你却仍然按第一级管理他们——仔细审查每个 PR、每天检查——你是在拖慢他们，而不是帮助他们。信任是逐步给予的，而不是在某人“明确证明了自己”之后才发放的奖赏。</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">关于信任</span><p>信任是在确定性之前就给予的——这才是信任之所以是信任的原因。如果你等到某人有了完美的记录之后才把难事交给他们，你就剥夺了他们建立那份记录所需的条件。</p></div>
+
+<h2 id="growing-seniors">培养资深工程师，而不只是关闭工单</h2>
+<p>很多指导精力放在初级工程师身上——这完全正确，因为从初级到中级的落差很陡，对支持的需求很明显。但那些在中级停滞成关单机器、始终没能晋升到资深的工程师，是工程团队中最常见也最本不必要的损失之一。</p>
+<p>中级与资深之间的差距，在技术能力上的成分比多数人想象的要小。技术能力强的中级工程师之所以停滞，是因为他们没有机会拥有足够大的东西，从而发展出伴随着范围而来的判断力。</p>
+<p>培养一个资深工程师，意味着给他们：</p>
+<ul>
+  <li><strong>范围，而不只是任务。</strong>给中级工程师一系列工单，他们会完成这些工单，仅此而已。给他们一个问题——一块需要拥有的系统，一个需要构建的能力——他们就必须发展出判断力来分解它、排序它、做出取舍。那种判断力，才是定义“资深”的东西。</li>
+  <li><strong>可见的主人翁意识。</strong>把他们放进做他们负责区域决策的房间里。让他们向利益相关方呈现他们的方案。让他们在方案受到质疑时为它辩护。这一开始会不舒服，随着时间推移会无比宝贵。</li>
+  <li><strong>指导责任。</strong>让中级工程师搭档一个初级工程师来指导，是我知道的最能加速他们成长的催化剂之一。教学需要比动手做更深层次的理解。它还迫使他们把一直以直觉在做的判断说清楚，而那恰恰是从中级到资深的那一步。</li>
+  <li><strong>超出直接工作的技术影响力。</strong>让他们推动一个标准决策、写一份 ADR、主导一次技术复盘——所有这些都在构建资深工程师需要拥有的那种广度影响力。</li>
+</ul>
+
+<h2 id="mistakes">值得点名的指导错误</h2>
+<p>我犯了其中大多数。那些我没有亲身犯过的，我看着其他好工程师犯，他们自己都没有意识到。</p>
+<ul>
+  <li><strong>救援太早。</strong>在某人一遇到困难就冲上去，感觉像是在帮忙。它不是。富有成效的挣扎，就是成长住的地方。救援是针对某人卡了太久、完全没有前进路径的时候——而不是一看到困难的第一个迹象。</li>
+  <li><strong>模糊的反馈。</strong>“这可以更干净”什么都没告诉别人。“这个函数在做三件事——用其中任何一件来命名它都会产生误导，而且随着代码库增长会很难测试”是他们能付诸行动的反馈。具体是一种善意。</li>
+  <li><strong>只把无聊的工作下发。</strong>如果你分派给初级工程师的任务永远是最低风险、最低可见度、最机械的工作，你是在把有意思的学习机会留给自己，而给他们一个沉闷的职业生涯。他们注意到了。他们会离开。拉伸任务也必须包括好东西。</li>
+  <li><strong>并没有真正投入时间。</strong>“有问题来找我”不是指导。指导需要有计划的、受保护的时间——有真正指导议程的定期一对一，而不只是进度更新；有意图的代码审查；刻意的结对编程环节。如果你做对了，一周要花两到三个小时。如果它让你没有任何代价，你大概没有在做这件事。</li>
+  <li><strong>让它变成关于你自己。</strong>目标是他们的成长，不是你对拥有一个上心学员的满足感。有时候对他们正确的选择，涉及其他团队的机会，或者关于你的代码库有问题让他们的学习更艰难的反馈。好的导师把被指导者放在第一位。</li>
+</ul>
+
+<h2 id="by-company-size">在不同规模下指导的运作方式</h2>
+<p>核心原则不随公司规模改变，但围绕它们的基础设施差异会非常大。</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>公司阶段</th><th>指导通常如何运作</th><th>需要警惕的</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>初创公司（&lt;30名工程师）</th>
+      <td>非正式且以关系为驱动。指导发生在工作流中——结对、审查、日常接近。没有正式项目，但往往非常密集，因为工作本身就是一个拉伸任务。</td>
+      <td>资深工程师被产出淹没，无暇投入他人。指导被紧迫性挤走。</td>
+    </tr>
+    <tr>
+      <th>规模化企业（30–150名工程师）</th>
+      <td>公司大到有了职业阶梯，但往往还没有构建正式指导基础设施。指导质量因团队而大相径庭。有些资深工程师很出色；另一些从未思考过这个问题。</td>
+      <td>结果参差不齐。一个团队的初级工程师快速成长；另一个团队的初级工程师停滞两年。公平性成为真实问题。</td>
+    </tr>
+    <tr>
+      <th>企业级（150+名工程师）</th>
+      <td>正式项目：指导配对、结构化职业框架、学习预算、专门时间分配。流程更多，有时有帮助，有时变成挤占真实关系的文书工作。</td>
+      <td>流程取代了真正的投入。纸面上的指导配对，实际上不过是每月一次的咖啡，没有任何真实挑战。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>在我参与过的一家初创公司里，没有正式的指导项目，但团队里的三名资深工程师有一个不成文的约定：每名初级工程师在入职后前六个月内，都要成为至少一个重要功能的主要负责人。这些功能的范围是在支持下可以完成的，而不是微不足道的。资深工程师会在棘手的部分结对，并仔细审查所有代码，但初级工程师驾驶。一年结束时，那些初级工程师在实质上已经是中级工程师了，只差一个头衔。</p>
+<p>在我后来加入的一家大公司，有一套非常精密的指导项目——官方配对、季度检查、共享文档模板用于设定目标。但它大部分没有起作用，因为文档模板变成了指导本身。没有人在追踪初级工程师是否实际上拿到了更好的工作，还是只拿到了更好的文书。我从中得到的教训：关系和刻意的挑战，才是重要的。其他一切都是脚手架。</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">核心要点</h3>
+<ul>
+  <li><strong>指导是杠杆。</strong>提升一名工程师的能力，会在团队产出和留人上产生复利回报——远远超过它所花费的时间。</li>
+  <li><strong>拉伸区是学习住的地方。</strong>任务应该比他们当前能力往前走一步，而不是十步。太容易会滋生无聊；太难会造成瘫痪。</li>
+  <li><strong>有效的教学工具：</strong>初级工程师驾驶的结对编程、代码审查中用问题代替纠正、大声讲出你的推理、带安全网的拉伸任务，以及抵制替他们解决问题的冲动。</li>
+  <li><strong>自主阶梯</strong>给了你一个共同语言，来说明某人在哪里、要去哪里。在你确定之前就提前一级给予信任。</li>
+  <li><strong>中到资深的成长</strong>通过范围、主人翁意识、指导他人和技术影响力来发生——而不只是完成更难的工单。</li>
+  <li><strong>常见陷阱：</strong>救援太早、模糊的反馈、只把无聊的工作下发，以及没有投入真实的时间。</li>
+  <li><strong>关系就是项目。</strong>正式结构在规模下有帮助，但它们只是脚手架。真正的工作是刻意的挑战、诚实的反馈，以及在确定性之前就给予的信任。</li>
+</ul>
+</div>
+
+<p>这是工程文化小系列的第二篇。如果你还没读过，<a href="/blog/culture/how-to-review-code-kindly">第一篇关于善意地审查代码</a>涵盖了以一种能教导而不打击人的方式给出反馈的机制——这是同一种技能，在 PR 层面的应用。更多关于文化、招聘以及团队实际如何运作的内容，正在路上。</p>4:["$","$L9",null,{"category":"culture","slug":"mentoring-engineers","children":[["$","$La",null,{"category":"culture","slug":"mentoring-engineers","readingMinutes":14,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lb",null,{"url":"https://nguyenlephong.github.io/zh/blog/culture/mentoring-engineers","title":"指导工程师：如何把初级工程师培养成资深工程师","surface":"blog","category":"culture","slug":"mentoring-engineers","labels":{"share":"分享","copyLink":"复制链接","copied":"已复制！","close":"关闭"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lc",null,{"href":"/zh/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"博客"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lc",null,{"href":"/zh/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"工程文化"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["友善而高效的工程文化",["$","span",null,{"aria-hidden":"true","children":" · "}],"第 5 篇，共 5 篇"]}],["$","h1",null,{"className":"blog-article__title","children":"指导工程师：如何把初级工程师培养成资深工程师"}],["$","p",null,{"className":"blog-article__summary","children":"优秀的团队是培养出来的，不只是招聘来的。来自领导工程团队的实战经验：如何通过结对编程、代码审查、恰当的拉伸任务，以及那些把初级工程师变成你愿意托付一切的人的思维转变，让人快速成长。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"作者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-02-24","children":"2026年2月24日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"14 分钟阅读"}],["$","$Ld",null,{"label":"次浏览"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","工程文化",{"children":"工程文化"}],["$","li","指导",{"children":"指导"}],["$","li","职业成长",{"children":"职业成长"}],["$","li","领导力",{"children":"领导力"}],["$","li","团队协作",{"children":"团队协作"}],["$","li","代码审查",{"children":"代码审查"}]]}]]}],["$","$Le",null,{"html":"$f"}],"$L10","$L11"]}]]}],"$L12","$L13","$L14"]}],"$L15"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+7:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+8:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+10:["$","$L19",null,{"prompt":"你觉得这篇文章如何？","surface":"blog","category":"culture","slug":"mentoring-engineers","reactionLabels":{"like":"赞","love":"喜欢","insightful":"有启发","clap":"鼓掌"}}]
+11:["$","section",null,{"className":"blog-faq","aria-labelledby":"blog-faq-heading","children":[["$","h2",null,{"id":"blog-faq-heading","className":"blog-faq__heading","children":"常见问题"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"如何指导一名初级开发者？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"最有效的方法结合三件事：给他们刚好超出当前能力的任务（拉伸区），保持可及以疏通卡点但不替他们解决问题，并在结对和代码审查中有意识地制造教学时机。关键是让他们驾驶——把键盘放到他们面前，提引导性问题而不是递出答案，在你们一起做决策时讲出你的推理。有计划的时间也很重要：有真正指导议程的定期一对一——而不只是进度更新——才是让指导真正发生、而不是被紧迫性挤走的区别所在。"}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"指导和管理有什么区别？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"管理主要关注结果——确保工作做得好、团队保持一致、组织目标得以实现。指导关注的是人的成长——帮助他们发展技能、判断力和主人翁意识，这些东西他们会在职业生涯中一直带着。在实践中两者高度重叠：最好的管理者会指导，最好的导师理解组织情境。但当两者发生张力时，这种区别很重要。如果你在冲刺阶段替某人解决了问题以便更快发货，你做了一个以牺牲指导机会为代价的管理决策。好的导师注意到这个取舍，并在压力解除后加以弥补。"}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"如何帮助工程师晋升到资深级别？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"资深在技术能力上的成分比多数人想象的要小——到了中级，技术门槛通常已经足够接近了。区分资深工程师的是范围、判断力和影响力。要帮助某人到达那里：给他们一个真实问题的所有权（而不只是一系列工单），把他们放进做决策的房间，让他们指导一个更初级的工程师（教学迫使人把直觉说清楚，而那恰恰是中级到资深的那一步），并给他们推动超出直接工作范围的技术决策的机会。成长发生在那些经历里，而不是完成更多工单。确保你公司的职业阶梯对资深的含义有明确说明——模糊的标准让路径变得不可见。"}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"指导应该花多少时间？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"如果你做得正确，每位被指导者每周大约需要两到三个小时。通常分解为：一次专注的一对一（30到45分钟）、有意图的代码审查而不只是批准 diff（每周30到60分钟），以及一两次结对或临时对话（共30到60分钟）。这是真实的投入——这才是重点所在。如果指导让你没有任何代价，你大概没有在做任何有意义的事。杠杆论据在这里很重要：每周两到三个小时能实质性地加速一名工程师的成长，其回报远远超过那些时间花在你自己的代码上。"}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"如何在指导时不替他们把工作做了？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"最有帮助的规则：对他们带来的问题，你的第一个回应应该永远是一个问题，而不是解决方案。问他们已经尝试了什么，报错信息说的是什么，代码库里是否有类似模式。开口之前先等三十秒——他们往往会在这段时间里自己回答。当他们在结对中卡住时，忍住拿键盘的冲动。换成问他们下一步会检查什么。忍住不出手的不适感，就是真正教到东西的代价。把直接回答留给他们真正穷尽了所有方法、卡点阻碍了一切进展的情况——即便如此，也要解释推理，而不只是给出解决方案。"}}]]}]]}]]}]
+12:["$","$L1a",null,{"heading":"相关阅读","intro":"几篇相近主题的文章，方便沿着同一条思路继续阅读。","items":[{"post":{"slug":"how-to-review-code-kindly","category":"culture","title":"代码审查的艺术：如何批评代码而不打击人","summary":"代码审查是团队文化成败的关键所在。这是一份实用指南，教你如何在让代码更好的同时，也让作者越来越强——具体的措辞、审查者清单，以及那些悄悄让审查变成毒药的习惯。","date":"2026-03-01","readingMinutes":14,"tags":["工程文化","代码审查","Pull Requests","反馈","团队协作","指导"],"author":"Nguyen Le Phong","featured":true,"series":"kind-engineering","seriesOrder":1},"categoryTitle":"工程文化","readingLabel":"14 分钟阅读"},{"post":{"slug":"how-to-be-a-kind-engineer","category":"culture","title":"善意工程：为什么善意让你成为更好的工程师","summary":"善意不是温和，也不是软弱，而是力量倍增器——更清晰的反馈、更安全的事故响应、成长更快的队友。“善意工程”真正的含义，以及如何在代码审查、事故处理和日常工作中实践它。","date":"2026-02-28","readingMinutes":13,"tags":["工程文化","Kind Engineering","心理安全","同理心","团队协作","领导力"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":2},"categoryTitle":"工程文化","readingLabel":"13 分钟阅读"},{"post":{"slug":"how-to-write-a-great-pull-request","category":"culture","title":"如何写一个让人真正乐于审查的 Pull Request","summary":"一个出色的 pull request 是给审查者的礼物：简小、描述清晰、容易说是。可审查 PR 的解剖学——大小、标题、描述、提交卫生和自审——附具体的前后对比示例。","date":"2026-02-27","readingMinutes":13,"tags":["工程文化","Pull Requests","代码审查","Git","团队协作","开发效率"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":3},"categoryTitle":"工程文化","readingLabel":"13 分钟阅读"},{"post":{"slug":"giving-and-receiving-feedback","category":"culture","title":"有效的反馈：作为工程师给出和接受批评","summary":"大多数工程师从未被教过如何给出反馈——或者如何接受反馈。这是一本关于具体、善意、可操作反馈的实战手册，以及如何在接受批评时保持开放——附即可使用的对话脚本。","date":"2026-02-25","readingMinutes":13,"tags":["工程文化","反馈","沟通","心理安全","指导","团队协作"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":4},"categoryTitle":"工程文化","readingLabel":"13 分钟阅读"}],"sourceCategory":"culture","sourceSlug":"mentoring-engineers"}]
+13:["$","nav",null,{"className":"blog-series-nav","aria-label":"友善而高效的工程文化","children":[["$","$Lc",null,{"href":"/zh/blog/culture/giving-and-receiving-feedback","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","上一篇"]}],["$","span",null,{"className":"blog-series-nav__title","children":"有效的反馈：作为工程师给出和接受批评"}]]}],["$","span",null,{}]]}]
+14:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lc",null,{"href":"/zh/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","返回 工程文化"]}]}]
+15:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1b",null,{"label":"本页内容","surface":"blog"}]}]
+18:null

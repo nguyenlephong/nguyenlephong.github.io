@@ -1,0 +1,240 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta17,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/fr/blog/architecture/micro-frontends-when-why-and-cost#article","headline":"Micro-Frontends : Quand Ça Vaut le Coup, et Ce Que Ça Coûte","description":"Diviser le frontend en pièces déployables indépendamment peut libérer les équipes — ou vous noyer dans la complexité. Rédigé à partir de l'expérience de livraison d'une configuration Angular-host + modules React à grande échelle : quand les micro-frontends rapportent, et la facture qu'ils entraînent.","inLanguage":"fr","url":"https://nguyenlephong.github.io/fr/blog/architecture/micro-frontends-when-why-and-cost","image":"https://nguyenlephong.github.io/og/blog/micro-frontends-when-why-and-cost.png","mainEntityOfPage":"https://nguyenlephong.github.io/fr/blog/architecture/micro-frontends-when-why-and-cost","datePublished":"2026-03-02","dateModified":"2026-03-02","keywords":"Architecture logicielle, Micro-Frontends, Architecture frontend, Module Federation, Scalabilité, Conception de systèmes","articleSection":"Code source & Architecture","isRelatedTo":[{"@type":"BlogPosting","headline":"Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête","url":"https://nguyenlephong.github.io/fr/blog/architecture/monolith-to-microservices","image":"https://nguyenlephong.github.io/og/blog/monolith-to-microservices.png"},{"@type":"BlogPosting","headline":"Ports & Adapters (Hexagonal Architecture), Expliqués Simplement","url":"https://nguyenlephong.github.io/fr/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/og/blog/ports-and-adapters.png"},{"@type":"BlogPosting","headline":"Clean, Onion & Hexagonal Architecture : Une étoile du nord, trois noms","url":"https://nguyenlephong.github.io/fr/blog/architecture/clean-vs-onion-vs-hexagonal","image":"https://nguyenlephong.github.io/og/blog/clean-vs-onion-vs-hexagonal.png"},{"@type":"BlogPosting","headline":"Dependency Injection & Inversion of Control, Sans la Magie","url":"https://nguyenlephong.github.io/fr/blog/architecture/dependency-injection-and-ioc","image":"https://nguyenlephong.github.io/og/blog/dependency-injection-and-ioc.png"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/fr/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/fr/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Code source & Architecture\",\"item\":\"https://nguyenlephong.github.io/fr/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Micro-Frontends : Quand Ça Vaut le Coup, et Ce Que Ça Coûte\",\"item\":\"https://nguyenlephong.github.io/fr/blog/architecture/micro-frontends-when-why-and-cost\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T7463,<p>Imaginez un dépôt qui a démarré comme une app Angular bien rangée pour vingt développeurs et qui, trois ans plus tard, compte cinquante-plus ingénieurs qui y commitent chaque jour. Chaque pull request touche le même bundle. Un correctif de bug dans le flux de caisse casse accidentellement l'assistant d'intégration parce qu'ils importent tous deux un utilitaire partagé que quelqu'un a discrètement modifié. Le calendrier des releases ressemble à un jeu de Tetris — cinq équipes s'alignant pour faire entrer leur fonctionnalité dans <em>l'unique</em> fenêtre de déploiement planifiée. Tout le monde attend tout le monde, et personne ne livre aussi vite qu'il le souhaite.</p>
+<p>C'est la douleur qui pousse les architectes frontend à chuchoter l'expression <strong>micro-frontends</strong>. L'idée semble séduisante : si les microservices ont libéré les équipes backend du monolithe, pourquoi ne pourrait-on pas faire de même pour l'interface ? Donnez à chaque équipe sa propre tranche frontend déployable indépendamment, et laissez le navigateur (ou un serveur) les assembler en un seul produit sans couture.</p>
+<p>Mais l'analogie coupe dans les deux sens. Les microservices ont apporté une vraie liberté — et une vraie douleur opérationnelle. Les micro-frontends ne sont pas différents. Ayant livré un host Angular avec des modules de fonctionnalités React dans une entreprise multi-équipes, je veux vous donner la version honnête : ce qui a fonctionné, ce qui a fait mal, et les questions auxquelles vous devriez répondre <em>avant</em> de commencer à diviser.</p>
+
+<h2 id="what-they-are">Ce que sont les micro-frontends</h2>
+<p>Le terme a été popularisé vers 2016–2017 alors que les équipes remarquaient que la révolution des microservices n'avait pas atteint le navigateur. Dans une application monopage classique, un bundle frontend monolithique possède tout : le routage, l'état, chaque composant, les fonctionnalités de chaque équipe. Les micro-frontends appliquent la même idée de décomposition à la couche UI.</p>
+<p>Un <strong>micro-frontend</strong> est une partie de l'interface utilisateur qui peut être construite et déployée indépendamment, possédée de bout en bout par une seule équipe. Cette équipe contrôle son propre dépôt (ou au moins son propre pipeline de build), son propre cycle de release et ses propres choix technologiques dans des limites convenues. À l'exécution, une <strong>application shell</strong> — parfois appelée le host ou container — compose ces pièces pour former le produit unifié que l'utilisateur voit.</p>
+<p>Le changement clé est la propriété. Dans un monorepo avec du code partagé, un changement dans un utilitaire partagé peut casser la fonctionnalité de n'importe quelle équipe ; la coordination est constante. Avec les micro-frontends, le déploiement de Team A du module de caisse ne nécessite pas un accord de Team B. Le contrat entre elles est l'interface d'intégration convenue, pas du code source partagé.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 820 420" role="img" aria-labelledby="mfe-dgm-title">
+    <title id="mfe-dgm-title">Une app shell/container au sommet compose des modules frontend déployés indépendamment par l'Équipe A, l'Équipe B et l'Équipe C en une seule page dans le navigateur.</title>
+    <defs>
+      <marker id="mfeAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+
+    <!-- Shell / Container -->
+    <rect class="dgm-core" x="260" y="24" width="300" height="72" rx="14" stroke-width="2"/>
+    <text class="dgm-t-strong" x="410" y="56" text-anchor="middle" font-size="17">Shell / Container App</text>
+    <text class="dgm-t-muted dgm-t-mono" x="410" y="78" text-anchor="middle" font-size="12">routing · auth · shared nav · orchestration</text>
+
+    <!-- Vertical connector from shell -->
+    <line class="dgm-flow" x1="410" y1="96" x2="410" y2="158" stroke-width="1.5"/>
+    <!-- Horizontal line across three columns -->
+    <line class="dgm-flow" x1="130" y1="158" x2="690" y2="158" stroke-width="1.5"/>
+    <!-- Drop lines to each module -->
+    <line class="dgm-flow" x1="130" y1="158" x2="130" y2="200" stroke-width="1.5" marker-end="url(#mfeAcc)"/>
+    <line class="dgm-flow" x1="410" y1="158" x2="410" y2="200" stroke-width="1.5" marker-end="url(#mfeAcc)"/>
+    <line class="dgm-flow" x1="690" y1="158" x2="690" y2="200" stroke-width="1.5" marker-end="url(#mfeAcc)"/>
+
+    <!-- Team A module -->
+    <rect class="dgm-adapter" x="40" y="200" width="180" height="90" rx="12" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="130" y="222" text-anchor="middle" font-size="11">TEAM A</text>
+    <text class="dgm-t-strong" x="130" y="246" text-anchor="middle" font-size="15">Checkout MFE</text>
+    <text class="dgm-t-muted" x="130" y="268" text-anchor="middle" font-size="12">React · own deploy</text>
+
+    <!-- Team B module -->
+    <rect class="dgm-adapter" x="320" y="200" width="180" height="90" rx="12" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="410" y="222" text-anchor="middle" font-size="11">TEAM B</text>
+    <text class="dgm-t-strong" x="410" y="246" text-anchor="middle" font-size="15">Dashboard MFE</text>
+    <text class="dgm-t-muted" x="410" y="268" text-anchor="middle" font-size="12">Angular · own deploy</text>
+
+    <!-- Team C module -->
+    <rect class="dgm-adapter" x="600" y="200" width="180" height="90" rx="12" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="690" y="222" text-anchor="middle" font-size="11">TEAM C</text>
+    <text class="dgm-t-strong" x="690" y="246" text-anchor="middle" font-size="15">Profile MFE</text>
+    <text class="dgm-t-muted" x="690" y="268" text-anchor="middle" font-size="12">Vue · own deploy</text>
+
+    <!-- Deploy badges -->
+    <rect class="dgm-driven" x="58" y="310" width="144" height="32" rx="8"/>
+    <text x="130" y="331" text-anchor="middle" font-size="12">v2.4.1 · deployed</text>
+    <rect class="dgm-driven" x="338" y="310" width="144" height="32" rx="8"/>
+    <text x="410" y="331" text-anchor="middle" font-size="12">v1.9.0 · deployed</text>
+    <rect class="dgm-driven" x="618" y="310" width="144" height="32" rx="8"/>
+    <text x="690" y="331" text-anchor="middle" font-size="12">v3.1.2 · deployed</text>
+
+    <!-- Browser label -->
+    <rect class="dgm-surface" x="20" y="360" width="780" height="44" rx="10" stroke-width="1"/>
+    <text class="dgm-t-muted dgm-t-mono" x="410" y="387" text-anchor="middle" font-size="13">BROWSER — composed at runtime into one seamless product</text>
+  </svg>
+  <figcaption>L'app shell possède le routage, l'authentification et la navigation globale. Chaque équipe livre son propre micro-frontend à sa propre cadence. Le navigateur les assemble en une seule expérience — l'utilisateur voit un seul produit, même si trois équipes ont déployé indépendamment.</figcaption>
+</figure>
+
+<h2 id="approaches">Approches d'intégration</h2>
+<p>« Micro-frontends » est une famille de techniques, pas une seule technologie. La façon dont vous assemblez les pièces a d'énormes conséquences sur l'autonomie des équipes, les performances et la complexité opérationnelle. Voici les cinq approches principales :</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Approche</th><th>Comment ça fonctionne</th><th>Principal compromis</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Intégration au moment du build (packages npm)</th>
+      <td>Chaque micro-frontend est publié comme un package npm versionné. Le shell les installe comme dépendances et bundle tout ensemble.</td>
+      <td>Simple à mettre en place, mais les équipes doivent coordonner les releases — mettre à jour un remote signifie que le shell doit se re-déployer. Pas vraiment indépendant.</td>
+    </tr>
+    <tr>
+      <th>Composition côté serveur</th>
+      <td>Un reverse proxy ou une couche edge (ex. Nginx, une edge function Next.js, Tailor de Zalando) récupère des fragments HTML de différents services et les assemble avant que la réponse n'atteigne le navigateur.</td>
+      <td>Idéal pour le SEO et le premier rendu ; ajoute une complexité d'infrastructure et une nouvelle surface de latence entre services.</td>
+    </tr>
+    <tr>
+      <th>À l'exécution via Module Federation</th>
+      <td>Webpack 5 (ou ses équivalents Rspack/Vite) permet aux builds d'exposer des modules chargés par le shell <em>à l'exécution</em> depuis des URLs CDN séparées, sans re-bundling.</td>
+      <td>Vraie indépendance — les remotes se déploient sans toucher le shell — mais le décalage de versions, la négociation des dépendances partagées et les outils de débogage sont difficiles.</td>
+    </tr>
+    <tr>
+      <th>iframes</th>
+      <td>Chaque micro-frontend tourne dans son propre iframe. L'isolation est quasi-parfaite ; la communication se fait via <code>postMessage</code>.</td>
+      <td>Isolation et frontière de sécurité solides, mais UX terrible (scroll, focus, liens profonds, accessibilité — tout nécessite des tuyauteries sur mesure) ; semble dépassé.</td>
+    </tr>
+    <tr>
+      <th>Web Components</th>
+      <td>Chaque micro-frontend expose un élément HTML personnalisé (<code>&lt;checkout-app&gt;</code>). Le shell insère l'élément dans la page ; le navigateur gère le cycle de vie.</td>
+      <td>Indépendant du framework par conception, mais le support SSR est immature, et l'état partagé complexe nécessite toujours un bus d'événements global ou une solution de contexte.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>En pratique, <strong>Module Federation</strong> est devenu le choix dominant pour les grandes équipes recherchant une vraie indépendance à l'exécution. Le plugin Webpack 5 qui le fournit a été porté sur Rspack et a des équivalents Vite (ex. <code>@originjs/vite-plugin-federation</code>). Quand quelqu'un dit aujourd'hui « on fait des micro-frontends », il parle presque toujours de Module Federation.</p>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Conseil : commencez par la composition côté serveur si le SEO compte</span><p>Si votre app doit apparaître dans les résultats de recherche et que vous abordez les micro-frontends pour la première fois, la composition côté serveur vous donne le HTML le plus propre avant que le navigateur y touche. Module Federation est le choix puissant, mais il nécessite une histoire de déploiement plus mature avant de payer.</p></div>
+
+<h2 id="why">Pourquoi les équipes les adoptent</h2>
+<p>Les motivations pour passer aux micro-frontends sont cohérentes parmi les entreprises que j'ai vues. Elles remontent presque toujours à l'une de ces quatre pressions :</p>
+
+<ul>
+  <li><strong>Déploiements indépendants.</strong> La raison la plus citée de loin. Quand quinze équipes partagent un seul build frontend, un déploiement est une taxe de coordination — tout le monde attend que le travail de tout le monde passe le QA. Les micro-frontends permettent à l'Équipe A de livrer le mardi sans attendre que la fonctionnalité à moitié finie de l'Équipe B soit prête. La fréquence des releases augmente ; le rayon d'impact par release diminue.</li>
+  <li><strong>Autonomie et propriété des équipes.</strong> Une équipe qui peut construire, tester et déployer sa tranche de bout en bout avance plus vite et se sent plus responsable. La « propriété full-stack » devient réelle quand le frontend n'est pas un bien commun sur lequel tout le monde trébuche.</li>
+  <li><strong>Migration technologique incrémentale.</strong> C'est sous-estimé. Si vous faites tourner une app AngularJS vieille de cinq ans et que vous voulez passer à React, vous ne pouvez pas tout réécrire d'un coup. Les micro-frontends vous permettent de remplacer une route à la fois avec un nouveau module React pendant que le reste de l'app AngularJS continue de tourner. C'est le pattern strangler fig, appliqué au frontend.</li>
+  <li><strong>Isolation des pannes.</strong> Une erreur JavaScript à l'exécution dans le micro-frontend de caisse plante le module de caisse, pas toute l'app. Le shell peut attraper l'erreur boundary, afficher un fallback et laisser l'utilisateur naviguer ailleurs. Dans un monolithe, une erreur non catchée déchire souvent toute la page.</li>
+</ul>
+
+<h2 id="the-cost">Les vrais coûts</h2>
+<p>C'est là que beaucoup de billets de blog se taisent. Les micro-frontends ont une vraie facture, et vous devriez la voir clairement avant de signer.</p>
+
+<p><strong>Duplication du bundle et des dépendances.</strong> Si trois micro-frontends bundlent chacun leur propre copie de React, l'utilisateur télécharge React trois fois. Le mécanisme de portée partagée de Module Federation peut dédupliquer à l'exécution, mais le configurer correctement entre équipes — surtout quand les versions dérivent — n'est pas trivial. Une architecture micro-frontend naïve peut en fait <em>gonfler</em> votre payload par rapport à un monolithe bien optimisé.</p>
+
+<p><strong>Partager un système de design.</strong> Une apparence et une sensation uniformes nécessitent une bibliothèque de composants partagée. Si cette bibliothèque est consommée au moment du build (npm), chaque micro-frontend qui la met à jour doit être re-déployé. Si elle est consommée à l'exécution via Module Federation, vous avez besoin d'une stratégie de versioning et de compatibilité. Dans les deux cas, le système de design devient un point de coordination inter-équipes — exactement ce que vous essayiez d'éliminer.</p>
+
+<p><strong>État global et communication inter-MFE.</strong> Les micro-frontends sont supposés être indépendants, mais les utilisateurs sont holistiques. Un badge de notification dans le shell a besoin de connaître une action dans le module de caisse. Un événement d'authentification dans un module doit se propager partout. Les solutions vont d'un store Redux partagé (couplage fort) à un bus d'événements personnalisé ou un objet de contexte partagé sur le <code>window</code> global — tous des armes à double tranchant qui nécessitent de la discipline pour être utilisées en sécurité.</p>
+
+<p><strong>Décalage de versions.</strong> Parce que les équipes déploient indépendamment, à tout moment le shell peut faire tourner une version de Module Federation qui attend le format d'entrée remote v1, tandis que le dernier déploiement de l'Équipe C émet le format v2. Ces incompatibilités se manifestent par des erreurs à l'exécution cryptiques difficiles à reproduire en local et encore plus difficiles à tracer en production. Vous avez besoin de contrats de compatibilité explicites et de stratégies de dégradation gracieuse.</p>
+
+<p><strong>Performances à l'exécution.</strong> Plusieurs chargements de bundles asynchrones, négociation de modules à l'exécution, récupérations en cascade des entrées remote — les micro-frontends introduisent une latence qu'un monolithe, avec tout statiquement bundlé, n'a tout simplement pas. Un préchargement soigneux, une stratégie CDN et HTTP/2 push aident tous, mais ils nécessitent un investissement actif.</p>
+
+<p><strong>Opérations et observabilité plus lourdes.</strong> Vous avez maintenant N pipelines de déploiement, N ensembles de règles d'invalidation du cache CDN, N configurations de build et N ensembles de logs d'erreurs à corréler quand quelque chose se passe mal à travers les frontières de modules. La surcharge DevOps est réelle. Vous voudrez du traçage distribué, des logs structurés incluant la version du micro-frontend et un tableau de bord d'alertes partagé avant de passer en production.</p>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">La complexité va toujours quelque part</span><p>Diviser un monolithe en pièces indépendantes ne réduit pas la complexité totale — elle la déplace du code source vers la couche d'intégration, les outils opérationnels et les contrats inter-équipes. Si votre organisation n'est pas prête à investir dans cette infrastructure opérationnelle, vous vous retrouverez avec un monolithe distribué : tout le couplage d'un monolithe, plus toute la surcharge opérationnelle d'un système distribué.</p></div>
+
+<h2 id="real-world">Livrer Angular-host + modules React : le récit honnête</h2>
+<p>Il y a quelques années, j'ai fait partie de l'équipe qui a pris une grande plateforme Angular — plusieurs centaines de milliers de lignes, cinq squads produit, une cadence de release trimestrielle qui ressemblait plus à une prise d'otages qu'à un processus produit — et l'a migrée vers une architecture Module Federation : un shell Angular hébergeant des modules de fonctionnalités React déployés indépendamment.</p>
+
+<p>Voici ce qui a réellement fonctionné.</p>
+<ul>
+  <li><strong>Les cycles de déploiement indépendants ont changé la culture.</strong> En deux mois, des squads qui livraient historiquement chaque trimestre livraient chaque semaine. La boucle de rétroaction s'est compressée. Les ingénieurs ont commencé à se soucier davantage de l'observabilité parce que <em>c'était eux</em> qui regardaient le tableau de bord après que leur propre déploiement soit sorti.</li>
+  <li><strong>L'isolation des fonctionnalités a réduit dramatiquement la surface de régression.</strong> Un changement dans le module de facturation n'avait plus de chemin théorique pour casser la page des paramètres utilisateur. Notre suite de tests de régression a diminué de portée par équipe ; les tests d'intégration se sont concentrés sur les points de contrat plutôt que sur l'app entière.</li>
+  <li><strong>La migration incrémentale a été une bouée de sauvetage.</strong> Nous n'avions pas de gel de réécriture big-bang de six mois. Les modules React ont remplacé les vues Angular une route à la fois, sur dix-huit mois, pendant que le produit continuait de livrer. Les parties prenantes métier ont à peine remarqué la transition — ce qui est exactement ce que vous voulez.</li>
+</ul>
+
+<p>Voici ce qui a fait mal.</p>
+<ul>
+  <li><strong>L'état partagé était un mal de tête permanent.</strong> Nous nous sommes retrouvés avec un bus d'événements personnalisé sur l'objet window global — fonctionnel, mais fragile. Quand deux équipes ont indépendamment changé la forme du payload d'événement, nous avons eu des bugs silencieux qui n'apparaissaient que dans des séquences de navigation spécifiques. Nous avons finalement modélisé les événements inter-MFE comme une API interne, avec un registre de schémas, ce qui a énormément aidé mais a coûté des semaines à construire.</li>
+  <li><strong>Les dépendances en double ont gonflé le bundle.</strong> Bien configurer le <code>shared</code> de Module Federation entre Angular et React — deux systèmes de build différents — a demandé un vrai effort. Pendant plusieurs sprints, les utilisateurs téléchargeaient deux copies de RxJS et presque deux copies d'une bibliothèque de graphiques avant qu'on le détecte. L'analyse automatisée du bundle en CI est devenue indispensable.</li>
+  <li><strong>La coordination des versions n'a jamais complètement disparu.</strong> La version Angular du shell et la matrice de dépendances des modules React devaient rester vaguement compatibles. Quand Angular a sorti une mise à jour majeure, on ne pouvait pas juste mettre à niveau le shell ; on devait d'abord auditer les dépendances peer de chaque module. Le coût de coordination était plus faible qu'avec le monolithe, mais il n'a pas disparu.</li>
+</ul>
+
+<p>Le verdict final : l'architecture était le bon choix pour cette organisation à cette échelle. Mais pour être honnête, nous avons sous-estimé l'investissement opérationnel d'environ trente pour cent, et le problème d'état partagé a pris deux fois plus de temps à résoudre proprement que prévu. Allez-y les yeux ouverts.</p>
+
+<h2 id="when-not">Quand NE PAS utiliser les micro-frontends</h2>
+<p>Le signe le plus clair que les micro-frontends ne conviennent pas à votre situation, c'est quand la principale source de douleur frontend n'est pas la coordination à grande échelle des équipes — c'est autre chose.</p>
+
+<ul>
+  <li><strong>Une seule petite équipe.</strong> Si tout le monde côté frontend peut tenir dans un seul appel vidéo, vous n'avez pas de problème de coordination. Vous avez un codebase à organiser. Les micro-frontends vous donneraient toute la surcharge opérationnelle sans aucun bénéfice d'autonomie des équipes. Utilisez plutôt un frontend monolithique modulaire avec des frontières de modules bien imposées.</li>
+  <li><strong>Une petite application.</strong> Si tout le frontend est quelques routes et quelques milliers de lignes, le diviser crée plus de surface d'infrastructure que le produit lui-même. La surcharge de la configuration de Module Federation et d'un CD multi-pipeline l'emporte largement sur tout bénéfice.</li>
+  <li><strong>Quand un monorepo avec de bonnes frontières ferait l'affaire.</strong> Nx, Turborepo et des outils similaires vous permettent d'imposer des frontières de modules strictes, d'exécuter des builds uniquement pour les packages affectés et de donner aux équipes un certain degré de propriété — sans la complexité de composition à l'exécution. Pour beaucoup d'entreprises dans la tranche 20–80 ingénieurs, un monorepo bien structuré est le meilleur compromis. Il est aussi dramatiquement plus facile à refactoriser.</li>
+  <li><strong>Quand votre équipe n'est pas encore à l'aise avec les bases.</strong> Si votre pipeline CI/CD est peu fiable, votre histoire d'observabilité est mince, ou qu'il y a des dysfonctionnements de communication inter-équipes non résolus, ajouter la complexité des micro-frontends amplifiera tous ces problèmes. Consolidez d'abord les fondations.</li>
+</ul>
+
+<p>C'est étroitement analogue à la décision côté backend. Tous les backends ne devraient pas être une flotte de microservices — et le même raisonnement s'applique ici. Si vous n'avez pas lu <a href="/blog/architecture/monolith-to-microservices">Monolithe → Microservices</a>, les questions qu'il pose avant de diviser un backend s'appliquent presque mot pour mot au frontend : avez-vous des besoins de mise à l'échelle indépendante, des domaines de panne indépendants et des équipes réellement autonomes ? Si non, le monolithe — ou le monolithe modulaire — est probablement la meilleure réponse.</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Le point idéal du monolithe modulaire</span><p>Un monorepo frontend bien organisé avec des frontières de lint strictes, des packages appartenant à chaque équipe et un système de build incrémental rapide vous donne 70–80 % du bénéfice d'autonomie à une fraction du coût opérationnel. Avant de vous tourner vers Module Federation, demandez-vous si des frontières de modules plus propres dans votre codebase actuel résoudraient le vrai problème.</p></div>
+
+<h2 id="by-company-size">Par taille d'entreprise</h2>
+<p>L'une des lentilles les plus utiles pour cette décision est simplement : combien d'ingénieurs frontend avez-vous, et à quel point leurs équipes doivent-elles fonctionner indépendamment ?</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Taille de l'organisation</th><th>Structure typique de l'équipe frontend</th><th>Recommandation</th><th>Pattern d'exemple du monde réel</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Petite (&lt; 15 développeurs FE)</th>
+      <td>Un ou deux squads, tout le monde connaît le code de tout le monde.</td>
+      <td><strong>Non.</strong> Utilisez un monolithe modulaire ou un monorepo bien structuré. La surcharge de coordination des micro-frontends dépasse le bénéfice.</td>
+      <td>Startups SaaS en phase précoce : app Next.js avec des dossiers de fonctionnalités et des imports stricts — livre vite, facile à raisonner.</td>
+    </tr>
+    <tr>
+      <th>Taille moyenne (15–60 développeurs FE)</th>
+      <td>Trois à huit squads, qui commencent à ressentir la contention de déploiement et la friction de propriété.</td>
+      <td><strong>Peut-être, aux coutures.</strong> Envisagez d'extraire uniquement les frontières à friction la plus élevée — ex. une caisse, un tableau de bord de reporting — plutôt que de tout diviser. Un monorepo avec mise en cache du build peut le résoudre d'abord.</td>
+      <td>E-commerce scale-up : monorepo pour la plupart des fonctionnalités, un remote Module Federation uniquement pour le flux de paiement (équipe isolée PCI, déploiement séparé).</td>
+    </tr>
+    <tr>
+      <th>Grande / enterprise (60+ développeurs FE)</th>
+      <td>Plusieurs squads, souvent sur plusieurs fuseaux horaires, avec des frontières de propriété d'équipe strictes et des roadmaps séparées.</td>
+      <td><strong>Souvent justifié.</strong> La surcharge de coordination d'un déploiement partagé est réelle et mesurable. Module Federation ou composition côté serveur avec une équipe plateforme mature est un investissement judicieux.</td>
+      <td>Grandes banques, opérateurs télécom, retail mondial : app shell appartenant à une équipe plateforme ; des dizaines de micro-frontends appartenant à des tribus de fonctionnalités, chacune avec son propre pipeline CD et son contrat de version.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Le blog d'ingénierie de Spotify a documenté leur « modèle de squad » et les décisions d'architecture frontend qui en ont découlé. Zalando a écrit ouvertement sur son approche de composition côté serveur <strong>Tailor</strong>. Les équipes de la plateforme numérique d'IKEA ont discuté de Module Federation à grande échelle. Ce que ces entreprises ont en commun, ce n'est pas la technologie — c'est l'échelle : de nombreuses équipes autonomes avec des roadmaps réellement indépendantes qui, autrement, se bloqueraient mutuellement quotidiennement.</p>
+
+<p>À l'autre bout du spectre, certaines des organisations frontend les plus productives que j'ai vues dans la tranche 20–50 développeurs font tout tourner dans un seul monorepo Nx avec des frontières de modules strictement imposées et un CI incrémental rapide. Elles obtiennent des builds rapides, une propriété claire et zéro bug de composition à l'exécution — parce qu'il n'y a pas de composition à l'exécution. Elles réévaluent la question des micro-frontends tous les six mois à mesure que l'entreprise grandit, et c'est exactement ce qu'il faut faire.</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Points clés à retenir</h3>
+<ul>
+  <li><strong>Les Micro-Frontends</strong> appliquent l'idée de décomposition des microservices à l'UI : des tranches frontend constructibles et déployables indépendamment, chacune appartenant à une seule équipe, composées à l'exécution (ou au build, ou côté serveur) en un seul produit.</li>
+  <li><strong>Module Federation</strong> (Webpack 5 / Rspack / Vite) est l'approche d'exécution dominante — il fournit une vraie indépendance de déploiement mais nécessite une configuration soignée des dépendances partagées et une gestion des contrats de version.</li>
+  <li><strong>Les bénéfices principaux sont l'indépendance de déploiement, l'autonomie des équipes, la migration incrémentale de framework et l'isolation des pannes.</strong> Si vous n'en avez pas réellement besoin à grande échelle, vous payez le coût sans la récompense.</li>
+  <li><strong>Les vrais coûts</strong> sont la duplication du bundle, la gouvernance du système de design partagé, la complexité de l'état inter-MFE, le décalage de versions, la latence à l'exécution et une surcharge DevOps plus lourde. Aucun n'est fatal — mais tous nécessitent un investissement actif.</li>
+  <li><strong>N'utilisez pas les micro-frontends</strong> si vous avez une petite équipe, une petite app, ou si un monorepo bien structuré résoudrait la friction réelle. Le monolithe modulaire est sous-estimé.</li>
+  <li><strong>Adaptez l'architecture à la topologie de l'équipe :</strong> petites équipes → monolithe modulaire ; taille moyenne → monorepo ou divisions MFE chirurgicales ; grande entreprise → plateforme micro-frontend complète avec une équipe plateforme dédiée.</li>
+  <li><strong>La complexité va toujours quelque part.</strong> Les micro-frontends la déplacent du code source vers les contrats d'intégration et l'infrastructure opérationnelle. Assurez-vous que votre organisation est prête à prendre en charge ce changement avant de vous engager.</li>
+</ul>
+</div>
+
+<p>Cet article fait partie d'une série sur l'architecture frontend et backend. Si vous êtes arrivé ici en premier, je vous encourage à revenir au début de la série — <a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a> — qui couvre le pattern d'architecture hexagonale et comment garder votre logique métier centrale propre et testable, quel que soit le framework ou le mécanisme de livraison qui l'entoure. Les idées se complètent : la même pensée qui place des frontières claires à l'intérieur d'un seul service backend s'applique, à un grain plus large, aux frontières entre les équipes frontend. D'autres écrits sur l'architecture sont à venir — revenez bientôt, et j'espère vous y retrouver.</p>3:["$","$L8",null,{"category":"architecture","slug":"micro-frontends-when-why-and-cost","children":[["$","$L9",null,{"category":"architecture","slug":"micro-frontends-when-why-and-cost","readingMinutes":15,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/fr/blog/architecture/micro-frontends-when-why-and-cost","title":"Micro-Frontends : Quand Ça Vaut le Coup, et Ce Que Ça Coûte","surface":"blog","category":"architecture","slug":"micro-frontends-when-why-and-cost","labels":{"share":"Partager","copyLink":"Copier le lien","copied":"Copié !","close":"Fermer"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/fr/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/fr/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Code source & Architecture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Les fondamentaux de l'architecture logicielle",["$","span",null,{"aria-hidden":"true","children":" · "}],"Partie 6 sur 15"]}],["$","h1",null,{"className":"blog-article__title","children":"Micro-Frontends : Quand Ça Vaut le Coup, et Ce Que Ça Coûte"}],["$","p",null,{"className":"blog-article__summary","children":"Diviser le frontend en pièces déployables indépendamment peut libérer les équipes — ou vous noyer dans la complexité. Rédigé à partir de l'expérience de livraison d'une configuration Angular-host + modules React à grande échelle : quand les micro-frontends rapportent, et la facture qu'ils entraînent."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Par Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-02","children":"2 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"15 min de lecture"}],["$","$Lc",null,{"label":"vues"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Architecture logicielle",{"children":"Architecture logicielle"}],["$","li","Micro-Frontends",{"children":"Micro-Frontends"}],["$","li","Architecture frontend",{"children":"Architecture frontend"}],["$","li","Module Federation",{"children":"Module Federation"}],["$","li","Scalabilité",{"children":"Scalabilité"}],["$","li","Conception de systèmes",{"children":"Conception de systèmes"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"Qu'en avez-vous pensé ?","surface":"blog","category":"architecture","slug":"micro-frontends-when-why-and-cost","reactionLabels":{"like":"J'aime","love":"Adoré","insightful":"Pertinent","clap":"Bravo"}}]
+10:["$","$L18",null,{"heading":"Lectures liées","intro":"Quelques articles proches pour poursuivre le même fil avec plus de contexte.","items":[{"post":{"slug":"monolith-to-microservices","category":"architecture","title":"Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête","summary":"Les microservices sont une taxe que vous payez pour la mise à l'échelle organisationnelle — pas un point de départ. Un parcours sans fioriture du monolithe au monolithe modulaire puis aux microservices, avec les signaux qui vous disent quand (et si) diviser.","date":"2026-03-03","readingMinutes":16,"tags":["Architecture logicielle","Microservices","Modular Monolith","Conception de systèmes","Systèmes distribués","Scalabilité"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":5},"categoryTitle":"Code source & Architecture","readingLabel":"16 min de lecture"},{"post":{"slug":"ports-and-adapters","category":"architecture","title":"Ports & Adapters (Hexagonal Architecture), Expliqués Simplement","summary":"Un guide accessible et riche en exemples sur l'Hexagonal Architecture : ce que sont vraiment les ports et les adapters, la règle unique qui la fait fonctionner, et exactement quelle dose en appliquer — que vous soyez un fondateur solo ou une équipe d'entreprise.","date":"2026-03-07","readingMinutes":16,"tags":["Architecture logicielle","Hexagonal Architecture","Ports and Adapters","Clean Architecture","Conception de systèmes","Dependency Inversion"],"author":"Nguyen Le Phong","featured":true,"series":"foundations","seriesOrder":1},"categoryTitle":"Code source & Architecture","readingLabel":"16 min de lecture"},{"post":{"slug":"clean-vs-onion-vs-hexagonal","category":"architecture","title":"Clean, Onion & Hexagonal Architecture : Une étoile du nord, trois noms","summary":"Elles ressemblent à trois architectures rivales. En réalité, c'est la même idée — les dépendances pointent vers l'intérieur, les frameworks restent à la périphérie — dessinée de trois façons différentes. Voici ce que chacune apporte vraiment, et laquelle choisir.","date":"2026-03-06","readingMinutes":15,"tags":["Architecture logicielle","Clean Architecture","Onion Architecture","Hexagonal Architecture","Conception de systèmes","Dependency Inversion"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":2},"categoryTitle":"Code source & Architecture","readingLabel":"15 min de lecture"},{"post":{"slug":"dependency-injection-and-ioc","category":"architecture","title":"Dependency Injection & Inversion of Control, Sans la Magie","summary":"Les conteneurs DI semblent magiques jusqu'à ce que vous voyiez l'idée simple qu'ils cachent : arrêtez de laisser le code créer ses propres dépendances, et passez-les plutôt de l'extérieur. Un guide depuis zéro, avec de vrais exemples et les bénéfices pour les tests.","date":"2026-03-05","readingMinutes":14,"tags":["Architecture logicielle","Dependency Injection","Inversion of Control","SOLID","Tests","Design Patterns"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":3},"categoryTitle":"Code source & Architecture","readingLabel":"14 min de lecture"}],"sourceCategory":"architecture","sourceSlug":"micro-frontends-when-why-and-cost"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"Les fondamentaux de l'architecture logicielle","children":[["$","$Lb",null,{"href":"/fr/blog/architecture/monolith-to-microservices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Précédemment"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête"}]]}],["$","$Lb",null,{"href":"/fr/blog/architecture/event-driven-architecture-and-messaging","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["À suivre"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/fr/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Retour à Code source & Architecture"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"Sur cette page","surface":"blog"}]}]
+16:null

@@ -1,0 +1,18 @@
+User-Agent: *
+Allow: /
+Disallow: /private/
+Disallow: /api/
+Disallow: /en/heartbeats
+Disallow: /en/heartbeats/
+Disallow: /vi/heartbeats
+Disallow: /vi/heartbeats/
+Disallow: /zh/heartbeats
+Disallow: /zh/heartbeats/
+Disallow: /ja/heartbeats
+Disallow: /ja/heartbeats/
+Disallow: /ko/heartbeats
+Disallow: /ko/heartbeats/
+Disallow: /fr/heartbeats
+Disallow: /fr/heartbeats/
+
+Sitemap: https://nguyenlephong.github.io/sitemap.xml

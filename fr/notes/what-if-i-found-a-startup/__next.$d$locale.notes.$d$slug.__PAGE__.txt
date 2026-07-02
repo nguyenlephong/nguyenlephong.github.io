@@ -1,0 +1,86 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+5:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+6:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+15:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+16:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+18:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+19:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+1a:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+1b:"$Sreact.suspense"
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T425,{"@context":"https://schema.org","@type":"Article","@id":"https://nguyenlephong.github.io/en/notes/what-if-i-found-a-startup#article","headline":"What If I Founded a Startup","description":"If I founded a software company tomorrow, these are the principles I would encode into its DNA before writing a line of code: default to open, strong opinions loosely held, no brilliant jerks, builder-first hiring with contract-to-hire, small pods over middle management, a glory list instead of OKRs, and a communication protocol that treats mentions as inbox.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/notes/what-if-i-found-a-startup","image":"https://nguyenlephong.github.io/og/notes/what-if-i-found-a-startup.png","mainEntityOfPage":"https://nguyenlephong.github.io/en/notes/what-if-i-found-a-startup","datePublished":"2026-01-09","dateModified":"2026-01-09","keywords":"Thoughts, Startup, Culture, Hiring","author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean notes-accent notes-reading","style":{"--topic-color":"#4d7c0f"},"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Notes\",\"item\":\"https://nguyenlephong.github.io/en/notes\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Thought Garden\",\"item\":\"https://nguyenlephong.github.io/en/notes?topic=thoughts\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"What If I Founded a Startup\",\"item\":\"https://nguyenlephong.github.io/en/notes/what-if-i-found-a-startup\"}]}"}}],null,["$","$L3",null,{"category":"notes","slug":"what-if-i-found-a-startup","children":[["$","$L4",null,{"category":"notes","slug":"what-if-i-found-a-startup","readingMinutes":3,"surface":"notes"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L5",null,{"url":"https://nguyenlephong.github.io/en/notes/what-if-i-found-a-startup","title":"What If I Founded a Startup","surface":"notes","category":"notes","slug":"what-if-i-found-a-startup","labels":{"share":"Partager","copyLink":"Copier le lien","copied":"Copié !","close":"Fermer"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$L6",null,{"href":"/fr/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Notes"}],[["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$L6",null,{"href":"/fr/notes?topic=thoughts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Thought Garden"}]],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"What If I Founded a Startup"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","h1",null,{"className":"blog-article__title","children":"What If I Founded a Startup"}],["$","p",null,{"className":"blog-article__summary","children":"If I founded a software company tomorrow, these are the principles I would encode into its DNA before writing a line of code: default to open, strong opinions loosely held, no brilliant jerks, builder-first hiring with contract-to-hire, small pods over middle management, a glory list instead of OKRs, and a communication protocol that treats mentions as inbox."}],["$","div",null,{"className":"blog-article__meta","children":[["$","time",null,{"dateTime":"2026-01-09","children":"9 janvier 2026"}],"$L7","$L8","$L9"]}],"$La"]}],"$Lb","$undefined",null,"$Lc"]}]]}],"$Ld","$Le"]}],"$Lf"]}]]}],["$L10","$L11","$L12","$L13"],"$L14"]}],"loading":null,"isPartial":false}
+7:["$","span",null,{"aria-hidden":"true","children":"·"}]
+8:["$","span",null,{"children":"3 min de lecture"}]
+9:["$","$L15",null,{"label":"vues"}]
+a:["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Thoughts",{"children":"Thoughts"}],["$","li","Startup",{"children":"Startup"}],["$","li","Culture",{"children":"Culture"}],["$","li","Hiring",{"children":"Hiring"}]]}]
+17:T1255,<p>If I founded a software company tomorrow, these are the principles I would encode into its DNA before writing a single line of code.</p>
+<p>Before founding anything, the prerequisite is knowing why it should exist: establish <strong>the mission</strong>. Everything below is downstream of that one answer.</p>
+<h2 id="culture-values">Culture &amp; values</h2>
+<ul>
+<li><strong>Default to open</strong> — share work early and often; radical transparency in decisions; learn in public, documenting misses and learnings openly.</li>
+<li><strong>Strong opinions, loosely held</strong> — advocate fiercely, but pivot quickly with new data.</li>
+<li><strong>Ship daily</strong> — bias toward action and visible progress over perfect planning.</li>
+</ul>
+<h3 id="decisions">Decision-making</h3>
+<ul>
+<li><strong>Type 1 vs. Type 2 decisions</strong> — reversible decisions made quickly by individuals; irreversible ones with group input (Jeff Bezos&rsquo;s &ldquo;one-way&rdquo; vs. &ldquo;two-way&rdquo; doors).</li>
+<li><strong>Disagree and commit</strong> — one decision made, full alignment regardless of initial positions.</li>
+<li><strong>Data-informed, not data-driven</strong> — metrics as input, but <em>trust intuition</em> for innovation.</li>
+</ul>
+<h3 id="cultural-principles">Cultural principles</h3>
+<ul>
+<li><strong>No brilliant jerks</strong> — competence never excuses poor collaboration.</li>
+<li><strong>Work-life integration</strong>, not balance — flexible boundaries, results over hours.</li>
+<li><strong>Celebration of craft</strong> — pride in elegant solutions and beautiful code.</li>
+<li><strong>&ldquo;Yes, and&hellip;&rdquo;</strong> culture — build on ideas rather than shooting them down.</li>
+</ul>
+<h2 id="team-hiring">Team &amp; hiring</h2>
+<ul>
+<li><strong>Builder-first mentality</strong> — every hire should be able to ship something independently within the first week.</li>
+<li><strong>Cultural add, not cultural fit</strong> — founding hires should add net-positive to the culture, not mirror it. <em>(<a href="https://x.com/zfellows/status/1824443390244594000?s=46">Reference</a>.)</em></li>
+</ul>
+<h3 id="competencies">Core competencies</h3>
+<p>Assessed in interviews and contract-to-hire projects:</p>
+<ul>
+<li><strong>AI utilization</strong> is expected — leverage AI into the value you produce.</li>
+<li><strong>Excellent writing</strong> — I don&rsquo;t believe someone can be a good thinker and a bad writer.</li>
+<li><strong>Fluent English</strong>, especially written — a proxy that proves you are an intrinsic learner.</li>
+<li><strong>Autonomy and high agency</strong> — they spot the problem before I do, then solve it without being asked.</li>
+</ul>
+<h3 id="composition">Team composition</h3>
+<ul>
+<li><strong>Small pods</strong> (2–3 people) with full ownership of specific products or features.</li>
+<li><strong>No middle management</strong> — flat hierarchy, direct communication.</li>
+<li><strong>Rotating leadership</strong> — different people lead different initiatives by expertise.</li>
+<li><strong>Two-pizza teams</strong> — six to eight people is the sweet spot.</li>
+</ul>
+<h3 id="growth">Growth</h3>
+<ul>
+<li><strong>Slow hiring</strong> — the first ten hires over 12–18 months, each one raising the bar.</li>
+<li><strong>Contract-to-hire</strong> — test compatibility through project work first; interviews are capricious, projects are the best litmus test. (Case study: Kepano became Obsidian&rsquo;s CEO through contractor work.) The bar: I have to be <strong>amazed</strong> by the output to consider hiring.</li>
+</ul>
+<h2 id="performance">Performance evaluation</h2>
+<ul>
+<li><strong>Glory list</strong> — each member keeps their own list of wins, revised together in 1-1s, as the primary input for evaluation. No predefined OKRs or KPIs: plans and directions pivot all the time, rendering those frameworks volatile and inefficient.</li>
+</ul>
+<h2 id="tools-comms">Tools &amp; communication</h2>
+<ul>
+<li>Notion as the company knowledge base; Slack as the main channel — no internal email.</li>
+<li>Treat <strong>mentions</strong> as a mail inbox: process them on a cadence, address each one. Treat non-mentions as a broadcast bulletin board — read them as news.</li>
+<li>If a message <em>should</em> be seen by someone, mention their name. If it <em>must</em> be seen, write <code>ackp</code> (&ldquo;acknowledge please&rdquo;).</li>
+<li>Replying when you see a should/must message is decent etiquette — especially when an action hangs on it.</li>
+<li>If synchronous communication or immediate action is required, tap a shoulder or call. Synchronize sparingly.</li>
+</ul>b:["$","$L16",null,{"html":"$17"}]
+c:["$","$L18",null,{"prompt":"Qu'en avez-vous pensé ?","surface":"notes","category":"notes","slug":"what-if-i-found-a-startup","reactionLabels":{"like":"J'aime","love":"Adoré","insightful":"Pertinent","clap":"Bravo"}}]
+d:["$","nav",null,{"className":"blog-series-nav","aria-label":"Thought Garden","children":[["$","$L6",null,{"href":"/fr/notes/vocabulary-as-api-for-second-brain","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Note précédente"]}],["$","span",null,{"className":"blog-series-nav__title","children":"A Rich, Consistent Vocabulary Is the Best API for Your Second Brain"}]]}],["$","$L6",null,{"href":"/fr/notes/work-messages-aggressive-bias","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Note suivante"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Why Work Messages Can Feel Sharper Than Intended"}]]}]]}]
+e:["$","footer",null,{"className":"blog-article__footer","children":["$","$L6",null,{"href":"/fr/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Retour aux notes"]}]}]
+f:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"Sur cette page","surface":"notes"}]}]
+10:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/579669e8fc8fe057.css","precedence":"next"}]
+11:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+12:["$","script","script-0",{"src":"/_next/static/chunks/60afb5b0374fe7a9.js","async":true}]
+13:["$","script","script-1",{"src":"/_next/static/chunks/0e65e15104575034.js","async":true}]
+14:["$","$L1a",null,{"children":["$","$1b",null,{"name":"Next.MetadataOutlet","children":"$@1c"}]}]
+1c:null

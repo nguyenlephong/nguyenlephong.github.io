@@ -1,0 +1,338 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+5:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+f:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+10:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+11:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[70346,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+15:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta25,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/ja/blog/architecture/ports-and-adapters#article","headline":"Ports & Adapters（Hexagonal Architecture）をやさしく解説","description":"Hexagonal Architecture の入門ガイドです。ポートとアダプターが実際に何であるか、それを成立させる唯一のルール、そしてどこまで適用すべきかを、ソロ開発者からエンタープライズチームまでに向けてわかりやすく解説します。","inLanguage":"ja","url":"https://nguyenlephong.github.io/ja/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/og/blog/ports-and-adapters.png","mainEntityOfPage":"https://nguyenlephong.github.io/ja/blog/architecture/ports-and-adapters","datePublished":"2026-03-07","dateModified":"2026-03-07","keywords":"ソフトウェアアーキテクチャ, Hexagonal Architecture, Ports and Adapters, Clean Architecture, システム設計, Dependency Inversion","articleSection":"ソースコード & アーキテクチャ","isRelatedTo":[{"@type":"BlogPosting","headline":"Clean・Onion・Hexagonal Architecture：一つの北極星、三つの名前","url":"https://nguyenlephong.github.io/ja/blog/architecture/clean-vs-onion-vs-hexagonal","image":"https://nguyenlephong.github.io/og/blog/clean-vs-onion-vs-hexagonal.png"},{"@type":"BlogPosting","headline":"Hexagonal Architecture in Practice","url":"https://nguyenlephong.github.io/en/blog/architecture/hexagonal-architecture-in-practice","image":"https://nguyenlephong.github.io/og/blog/hexagonal-architecture-in-practice.png"},{"@type":"BlogPosting","headline":"モノリス・Modular Monolith・マイクロサービス：正直な意思決定ガイド","url":"https://nguyenlephong.github.io/ja/blog/architecture/monolith-to-microservices","image":"https://nguyenlephong.github.io/og/blog/monolith-to-microservices.png"},{"@type":"BlogPosting","headline":"Micro-Frontends：いつ価値があり、何が実際にかかるか","url":"https://nguyenlephong.github.io/ja/blog/architecture/micro-frontends-when-why-and-cost","image":"https://nguyenlephong.github.io/og/blog/micro-frontends-when-why-and-cost.png"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/ja/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"ブログ\",\"item\":\"https://nguyenlephong.github.io/ja/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"ソースコード & アーキテクチャ\",\"item\":\"https://nguyenlephong.github.io/ja/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Ports & Adapters（Hexagonal Architecture）をやさしく解説\",\"item\":\"https://nguyenlephong.github.io/ja/blog/architecture/ports-and-adapters\"}]}"}}],null,["$","$L3",null,{"category":"architecture","slug":"ports-and-adapters","children":[["$","$L4",null,{"category":"architecture","slug":"ports-and-adapters","readingMinutes":16,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L5",null,{"url":"https://nguyenlephong.github.io/ja/blog/architecture/ports-and-adapters","title":"Ports & Adapters（Hexagonal Architecture）をやさしく解説","surface":"blog","category":"architecture","slug":"ports-and-adapters","labels":{"share":"シェア","copyLink":"リンクをコピー","copied":"コピーしました！","close":"閉じる"}}],"$L6"]}],"$L7","$L8","$L9"]}],"$La"]}]]}],["$Lb","$Lc","$Ld"],"$Le"]}],"loading":null,"isPartial":false}
+12:T84d9,<p>こんな経験、きっとあると思います。午後一つで終わるはずの機能が三日かかってしまう——「メールの送り方をちょっと直すだけ」のはずが、十二ものファイルに絡みついていたから。決済コードがデータベースを知っていて、データベースコードがWebリクエストを知っていて、そのどこか中間に——ほとんど見えないところに——あなたのプロダクトを<em>あなたのプロダクト</em>たらしめる本当のビジネスルールが埋まっている。</p>
+<p><strong>Ports &amp; Adapters</strong>（<em>Hexagonal Architecture</em>とも呼ばれます。Alistair Cockburn が2005年に命名）は、こういうことが起きないようにコードを整理する方法です。フレームワークではありませんし、インストールも不要で、どんな言語でも使えます。実態はシンプルな一つのアイデアに、少し大げさな名前がついているだけです。では、図と実例を使いながらゆっくりほぐしていきましょう。読み終えた頃には、いつ使うべきか——そしていつ使わないか——がはっきりわかるはずです。</p>
+
+<h2 id="the-problem">問題：コードは育ち方を間違えることがある</h2>
+<p>ほとんどのアプリは同じような感じでスタートします。コントローラーがサービスを呼び、サービスがデータベースといくつかのベンダーと話し、みんなハッピー。問題は<em>時間の経過</em>とともに起きます。以下は、生まれてわずか数ヶ月なのにすでに頭が痛いチェックアウト処理の例です：</p>
+<pre><code><span class="cmt">// checkout.ts — すべてが絡み合っている</span>
+<span class="kw">class</span> OrderService {
+  <span class="kw">async</span> checkout(cart: Cart) {
+    <span class="kw">const</span> db = <span class="kw">new</span> PgClient(process.env.DB_URL)        <span class="cmt">// 特定のデータベース</span>
+    <span class="kw">const</span> stripe = <span class="kw">new</span> Stripe(process.env.STRIPE_KEY)   <span class="cmt">// 特定のベンダー</span>
+    <span class="kw">const</span> sg = <span class="kw">new</span> SendGrid(process.env.SENDGRID_KEY)   <span class="cmt">// 別のベンダー</span>
+
+    <span class="cmt">// 本当のビジネスルールはベンダー呼び出しの間に埋もれている…</span>
+    <span class="kw">const</span> total = cart.items.reduce((s, i) =&gt; s + i.price, 0)
+    <span class="kw">await</span> stripe.charges.create({ amount: total, source: cart.token })
+    <span class="kw">await</span> db.query(<span class="str">'INSERT INTO orders …'</span>)
+    <span class="kw">await</span> sg.send({ to: cart.email, template: <span class="str">'order-ok'</span> })
+  }
+}</code></pre>
+<p>どの行も「間違い」ではありません。でも、ビジネスロジック（注文が<em>何であるか</em>、いつ有効か、「確定」とは何を意味するか）が、三つのベンダーとデータベースドライバーに絡みついています。ライブのデータベースなしにルールをテストできません。SendGrid から乗り換えるには大手術が必要です。そして新しいチームメンバーがこれを読んだとき、あなたの<em>注文</em>について学ぶ前に Stripe について学ぶことになります。</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">本質的な問いかけ</span><p>Ports &amp; Adapters が答える問いは一つです：<strong>お金を生む部分（ビジネスルール）を、必ず入れ替えることになる部分（データベース、ベンダー、フレームワーク、UI）からどうやって分離するか？</strong></p></div>
+
+<h2 id="core-idea">コアアイデアを一枚の絵で</h2>
+<p>ビジネスルール——<strong>ドメイン</strong>——を中心に置きます。フレームワーク・データベースドライバー・ベンダーSDKを一切インポートすることを禁じます。そして外の世界は<strong>ポート</strong>（インターフェース）を通じてのみドメインと対話でき、<strong>アダプター</strong>が反対側で現実の汚れ仕事を担います。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 800 500" role="img" aria-labelledby="dgm-ov">
+    <title id="dgm-ov">ドメインは中央に位置します。アダプターはポートを通じてそこに接続されます。</title>
+    
+  <defs>
+    <marker id="ovAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+    <text class="dgm-t-muted dgm-t-mono" x="105" y="92" text-anchor="middle" font-size="12">DRIVING SIDE · calls us</text>
+    <text class="dgm-t-muted dgm-t-mono" x="695" y="92" text-anchor="middle" font-size="12">DRIVEN SIDE · we call it</text>
+
+    <polygon class="dgm-core" points="550,250 475,380 325,380 250,250 325,120 475,120" stroke-width="2"/>
+    <text class="dgm-t-strong" x="400" y="244" text-anchor="middle" font-size="23">Domain</text>
+    <text class="dgm-t-muted dgm-t-mono" x="400" y="270" text-anchor="middle" font-size="13">business rules, no vendors</text>
+
+    <!-- driving adapters -->
+    <rect class="dgm-adapter" x="30" y="128" width="150" height="46" rx="9"/>
+    <text x="105" y="156" text-anchor="middle" font-size="14">Web / Mobile UI</text>
+    <rect class="dgm-adapter" x="30" y="234" width="150" height="46" rx="9"/>
+    <text x="105" y="262" text-anchor="middle" font-size="14">REST / GraphQL</text>
+    <rect class="dgm-adapter" x="30" y="340" width="150" height="46" rx="9"/>
+    <text x="105" y="368" text-anchor="middle" font-size="14">Tests / CLI / Cron</text>
+
+    <path class="dgm-flow" d="M180,151 C 220,151 235,186 286,189" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M180,257 H 246" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M180,363 C 220,363 235,316 286,313" marker-end="url(#ovAcc)"/>
+
+    <!-- driven adapters -->
+    <rect class="dgm-driven" x="620" y="128" width="150" height="46" rx="9"/>
+    <text x="695" y="156" text-anchor="middle" font-size="14">Database</text>
+    <rect class="dgm-driven" x="620" y="234" width="150" height="46" rx="9"/>
+    <text x="695" y="262" text-anchor="middle" font-size="14">Email / SMS</text>
+    <rect class="dgm-driven" x="620" y="340" width="150" height="46" rx="9"/>
+    <text x="695" y="368" text-anchor="middle" font-size="14">Payment vendor</text>
+
+    <path class="dgm-flow" d="M514,189 C 560,186 575,151 618,151" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M554,257 H 618" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M514,313 C 560,316 575,363 618,363" marker-end="url(#ovAcc)"/>
+
+    <!-- ports -->
+    <circle class="dgm-fill-accent" cx="286" cy="189" r="8"/>
+    <circle class="dgm-fill-accent" cx="248" cy="250" r="8"/>
+    <circle class="dgm-fill-accent" cx="286" cy="313" r="8"/>
+    <circle class="dgm-fill-accent" cx="514" cy="189" r="8"/>
+    <circle class="dgm-fill-accent" cx="552" cy="250" r="8"/>
+    <circle class="dgm-fill-accent" cx="514" cy="313" r="8"/>
+
+    <text class="dgm-t-accent" x="400" y="455" text-anchor="middle" font-size="13">● = a port (an interface the domain owns)</text>
+  </svg>
+  <figcaption>六角形はあくまで絵です。<strong>ドメイン</strong>は中央に存在し、フレームワークやベンダーを一切インポートしません。外側のすべては<strong>ポート</strong>を通じてのみドメインに触れられます。左側のアダプターがアプリを駆動し、右側のアダプターはアプリに駆動されます。</figcaption>
+</figure>
+<p>これが全体の形です。円ではなく六角形を描く理由には愛嬌があります。六辺は、アプリには<em>多くの</em>入出口（Web UI、API、テスト、cronジョブ、データベース、キュー…）があることを思い出させてくれるからです。「上」と「下」しかないわけではありません。六という数字自体に意味はありません——ポートの数を数えないでください。</p>
+
+<h2 id="vocabulary">用語を平易な言葉で</h2>
+<p>三つの言葉がすべてを担います。専門用語なしで説明します：</p>
+<ul>
+  <li><strong>ドメイン（コア）：</strong>ビジネスルールと概念——<code>Order</code>、<code>Money</code>、「アイテムゼロのカートはチェックアウトできない」。純粋なロジックです。テックスタックではなく、あなたのビジネスの説明として読めるべきです。</li>
+  <li><strong>ポート：</strong>ドメインが所有する<em>インターフェース</em>で、ドメインが必要とするもの、あるいは提供するものを表します——「<code>save(order)</code>できる必要がある」「<code>charge()</code>で支払いを処理する必要がある」など。ポートはドメインの言葉で書かれた約束であり、ベンダー名は一切登場しません。</li>
+  <li><strong>アダプター：</strong>ポートを実際の技術で実現する具体的なコード——<code>PostgresOrderRepo</code>や<code>StripeGateway</code>など。アダプターこそが、Stripe・Postgres・Reactが存在を許される場所です。</li>
+</ul>
+<p>そしてポートには二種類あります。ここが唯一、覚えておく価値のある細かい点です：</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 860 250" role="img" aria-labelledby="dgm-flow">
+    <title id="dgm-flow">リクエストはドライビングアダプターからドメインを通り、ドリブンアダプターへと流れます。</title>
+    
+  <defs>
+    <marker id="flAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+    <text class="dgm-t-muted dgm-t-mono" x="195" y="40" text-anchor="middle" font-size="12">PRIMARY · driving</text>
+    <text class="dgm-t-muted dgm-t-mono" x="650" y="40" text-anchor="middle" font-size="12">SECONDARY · driven</text>
+
+    <rect class="dgm-adapter" x="12" y="98" width="118" height="60" rx="10"/>
+    <text x="71" y="124" text-anchor="middle" font-size="13">User / Test</text>
+    <text class="dgm-t-muted" x="71" y="142" text-anchor="middle" font-size="11">actor</text>
+
+    <rect class="dgm-adapter" x="172" y="98" width="150" height="60" rx="10"/>
+    <text x="247" y="124" text-anchor="middle" font-size="13">Controller / CLI</text>
+    <text class="dgm-t-muted" x="247" y="142" text-anchor="middle" font-size="11">driving adapter</text>
+
+    <rect class="dgm-core" x="372" y="86" width="150" height="84" rx="12" stroke-width="2"/>
+    <text class="dgm-t-strong" x="447" y="122" text-anchor="middle" font-size="14">Use case</text>
+    <text class="dgm-t-muted" x="447" y="142" text-anchor="middle" font-size="11">domain rules</text>
+
+    <rect class="dgm-driven" x="572" y="98" width="150" height="60" rx="10"/>
+    <text x="647" y="124" text-anchor="middle" font-size="13">Repo / Gateway</text>
+    <text class="dgm-t-muted" x="647" y="142" text-anchor="middle" font-size="11">driven adapter</text>
+
+    <rect class="dgm-driven" x="760" y="98" width="92" height="60" rx="10"/>
+    <text x="806" y="124" text-anchor="middle" font-size="12">DB / Vendor</text>
+
+    <path class="dgm-flow" d="M130,128 H168" marker-end="url(#flAcc)"/>
+    <path class="dgm-flow" d="M322,128 H368" marker-end="url(#flAcc)"/>
+    <path class="dgm-flow" d="M522,128 H568" marker-end="url(#flAcc)"/>
+    <path class="dgm-flow" d="M722,128 H756" marker-end="url(#flAcc)"/>
+
+    <circle class="dgm-fill-accent" cx="347" cy="128" r="7"/>
+    <circle class="dgm-fill-accent" cx="547" cy="128" r="7"/>
+    <text class="dgm-t-accent" x="347" y="200" text-anchor="middle" font-size="12">input port</text>
+    <text class="dgm-t-accent" x="547" y="200" text-anchor="middle" font-size="12">output port</text>
+  </svg>
+  <figcaption>同じドメイン、二種類のアダプター。<strong>ドライビング</strong>（プライマリ）アダプターはインプットポートを通じてリクエストをアプリに<em>押し込み</em>、ドメインはアウトプットポートを通じて<strong>ドリブン</strong>（セカンダリ）アダプターへ処理を<em>送り出します</em>。矢印は呼び出し方向であり、依存方向ではありません。</figcaption>
+</figure>
+<ul>
+  <li><strong>ドライビング（プライマリ）アダプター</strong>は左側に位置し、アプリを<em>呼び出します</em>：Webコントローラー、CLIコマンド、テストなど。<strong>インプットポート</strong>（ユースケースインターフェース）を使用します。</li>
+  <li><strong>ドリブン（セカンダリ）アダプター</strong>は右側に位置し、アプリから<em>呼び出されます</em>：データベース・メールサービス・決済APIなど。ドメインが定義した<strong>アウトプットポート</strong>を実装します。</li>
+</ul>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">覚え方のコツ</span><p>何かがあなたのアプリとの会話を<em>始める</em>なら、それは<strong>ドライビング</strong>側です。アプリが会話を始めるなら、相手は<strong>ドリブン</strong>側です。「購入」をクリックする人間がドライビング側で、決済ベンダーはドリブン側です。</p></div>
+
+<h2 id="before-after">具体的な例：ビフォー＆アフター</h2>
+<p>あのチェックアウト処理を整理してみましょう。まず、ドメインが必要とするもの——<strong>ポート</strong>——をビジネスの言葉だけで書き出します：</p>
+<pre><code><span class="cmt">// ports.ts — ドメインの語彙。ベンダー名は禁止。</span>
+<span class="kw">interface</span> PaymentGateway { charge(amount: Money, token: string): Promise&lt;Receipt&gt; }
+<span class="kw">interface</span> OrderRepository { save(order: Order): Promise&lt;void&gt; }
+<span class="kw">interface</span> Notifier        { orderConfirmed(order: Order): Promise&lt;void&gt; }</code></pre>
+<p>これでユースケースはこれらの約束だけに依存し、<em>それ以外の何にも</em>依存しません。声に出して読んでみてください。ベンダーリストではなく、チェックアウトの説明として聞こえるはずです。</p>
+<pre><code><span class="cmt">// checkout-service.ts — ポートのみに依存し、ベンダーには絶対に依存しない</span>
+<span class="kw">class</span> CheckoutService {
+  <span class="kw">constructor</span>(
+    <span class="kw">private</span> payments: PaymentGateway,
+    <span class="kw">private</span> orders: OrderRepository,
+    <span class="kw">private</span> notify: Notifier,
+  ) {}
+
+  <span class="kw">async</span> checkout(cart: Cart): Promise&lt;Order&gt; {
+    <span class="kw">const</span> order = Order.fromCart(cart)         <span class="cmt">// 純粋なビジネスルール</span>
+    <span class="kw">await</span> <span class="kw">this</span>.payments.charge(order.total, cart.token)
+    <span class="kw">await</span> <span class="kw">this</span>.orders.save(order)
+    <span class="kw">await</span> <span class="kw">this</span>.notify.orderConfirmed(order)
+    <span class="kw">return</span> order
+  }
+}</code></pre>
+<p>最後に、実際のベンダーはポートを実装するアダプターの中に置きます。入れ替えは局所的な変更で済みます——テストではフェイクに差し替えることで、以前はネットワーク呼び出し一回分しかかからなかった時間に、何千ものケースを実行できます：</p>
+<pre><code><span class="cmt">// adapters/*.ts — ベンダーはここに置く。実装するポートの背後に隠れている</span>
+<span class="kw">class</span> StripeGateway      <span class="kw">implements</span> PaymentGateway { <span class="cmt">/* Stripe SDK */</span> }
+<span class="kw">class</span> PostgresOrderRepo  <span class="kw">implements</span> OrderRepository { <span class="cmt">/* SQLはここ */</span> }
+<span class="kw">class</span> SendGridNotifier   <span class="kw">implements</span> Notifier        { <span class="cmt">/* SendGrid */</span> }
+
+<span class="cmt">// テストでは本物のベンダーをインメモリのフェイクに差し替える——ネットワーク不要、ミリ秒単位：</span>
+<span class="kw">const</span> service = <span class="kw">new</span> CheckoutService(<span class="kw">new</span> FakePayments(), <span class="kw">new</span> InMemoryOrders(), <span class="kw">new</span> NullNotifier())</code></pre>
+<p>何が変わったかに注目してください。Stripe・Postgres・SendGrid は今や<em>端にある詳細</em>になりました。お金を生む処理は中央にあり、読みやすくテストしやすい状態で、あのベンダーたちの存在を一切知りません。</p>
+
+<h2 id="dependency-rule">すべてを支える唯一のルール</h2>
+<p>一つだけ覚えるなら、これを覚えてください：<strong>ソースコードの依存は常に内向きです</strong>。外側のリング（アダプター・フレームワーク・I/O）は内側のリングについて知ることが許されます。中央のドメインは外側の何も知ることを<em>許されていません</em>。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 800 360" role="img" aria-labelledby="dgm-dep">
+    <title id="dgm-dep">依存は常に内向き、ドメインに向かって向いています。</title>
+    
+  <defs>
+    <marker id="depAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+    <rect class="dgm-surface" x="40" y="40" width="720" height="280" rx="18" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="64" y="68" font-size="12">ADAPTERS · frameworks · databases · HTTP · I/O</text>
+
+    <rect class="dgm-port" x="170" y="98" width="460" height="170" rx="15" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="190" y="124" font-size="12">APPLICATION · use cases + ports</text>
+
+    <rect class="dgm-core" x="310" y="150" width="180" height="86" rx="13" stroke-width="2"/>
+    <text class="dgm-t-strong" x="400" y="190" text-anchor="middle" font-size="19">Domain</text>
+    <text class="dgm-t-muted dgm-t-mono" x="400" y="212" text-anchor="middle" font-size="12">pure rules</text>
+
+    <path class="dgm-flow" d="M120,300 L300,210" marker-end="url(#depAcc)"/>
+    <path class="dgm-flow" d="M680,300 L500,210" marker-end="url(#depAcc)"/>
+    <path class="dgm-flow" d="M400,98 L400,146" marker-end="url(#depAcc)"/>
+
+    <text class="dgm-t-accent" x="400" y="345" text-anchor="middle" font-size="13">Outer layers know about inner layers — never the other way around.</text>
+  </svg>
+  <figcaption>黄金律：ソースコードの依存は常に<strong>内向き</strong>です。ドメインはデータベースの存在を知らず、データベースアダプターがドメインを知っています。外側のレイヤーをひっくり返しても、ドメインは無傷のままです。</figcaption>
+</figure>
+<p>だからこそ、Webフレームワーク全体を置き換えたり、MySQLからDynamoDBへ移行したりしても、ドメインは気づきません。依存の矢印がコアの外に向くことはないので、端での変更が内部に波及することもないのです。（<em>依存性逆転の原則</em>——SOLIDの「D」——を聞いたことがあれば、これがその実践です。ドメインがインターフェースを定義し、アダプターがそれに従います。）</p>
+
+<h2 id="primary-secondary">ドライビングとドリブン、実践的に理解する</h2>
+<p>プライマリ／セカンダリの区別がなぜ日常的に重要なのでしょうか？それは<em>誰がインターフェースを所有するか</em>を教えてくれるからです。</p>
+<ul>
+  <li><strong>ドリブン</strong>ポート（データベース・メール）の場合、<em>ドメイン</em>がインターフェースを所有し、アダプターがそれに合わせます。これがベンダーを自由に交換できる理由です。</li>
+  <li><strong>ドライビング</strong>ポート（ユースケース）の場合、<em>アプリケーション</em>がインターフェースを所有し、外の世界（HTTP・CLI・テストハーネス）がそれを呼び出します。これにより、同じロジックが今日はREST API、明日はgRPCエンドポイントやスケジュールジョブとして機能できます——ルールの変更なしに。</li>
+</ul>
+<p>役立つリトマステスト：まったく新しい配信メカニズム（例えばSlackボット）は<em>新しいドライビングアダプター一つだけ</em>であるべきです。まったく新しいベンダー（例えばStripeからAdyenへの乗り換え）は<em>新しいドリブンアダプター一つだけ</em>であるべきです。どちらかがドメインを開かせるなら、何かが漏れています。</p>
+
+<h2 id="by-company-size">会社の規模ごとにどう見えるか</h2>
+<p>多くのアドバイスが間違えるポイントがここです——アーキテクチャを「万能サイズ」として扱ってしまう。Ports &amp; Adapters をどの程度適用するかは、会社がどの段階にあるかに大きく依存します。正直なバージョンをお伝えします：</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>会社のステージ</th><th>解消できる痛み</th><th>どの程度適用するか</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ソロ / 初期スタートアップ</th>
+      <td>急いでSQLiteと決済プロバイダーを選んだが、今はロックインされているのではと不安。</td>
+      <td>最大一〜二つのポートに留める——通常はデータベースと決済のみ。それ以外は直接呼び出しのままでOKです。ここではスピードが純粋さに勝ります。</td>
+    </tr>
+    <tr>
+      <th>小規模 / 成長中（≈ Series A）</th>
+      <td>テストが本物のデータベースとベンダーサンドボックスを叩くため遅くて不安定、開発者が走らせなくなった。</td>
+      <td>すべてのI/Oをポートで囲む。フェイクでユニットテストがミリ秒で動き、新メンバーが一日でドメインを理解できます。</td>
+    </tr>
+    <tr>
+      <th>中規模 / スケールアップ</th>
+      <td>複数チームが互いに踏み合い、「SendGridからのコスト削減移行」が一ヶ月の書き直しになる。</td>
+      <td>ポートはチーム間の<em>契約</em>になります。ベンダーの交換は新アダプター一つで済み、移行作業にはなりません。</td>
+    </tr>
+    <tr>
+      <th>大企業 / エンタープライズ</th>
+      <td>レガシーシステム・地域ベンダー・監査・「特定ベンダーへのロックインなし」を求める調達規則。</td>
+      <td>一つのポートに複数のアダプター（旧＋新）、ストラングラーフィグ移行、ベンダー独立性を書面要件として明記。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h3 id="size-stories">三つの短い実例</h3>
+<p><strong>小さなECショップ（10人）。</strong>メールを「念のため」と一メソッドの<code>Notifier</code>ポートの後ろに隠しました。二年後、メールコストが急騰。SendGridからAmazon SESへの移行は新アダプター一つと配線の一行変更で済み、午後一つで完了しました。注文ロジック——彼らの核心——は一切触られませんでした。</p>
+<p><strong>スケールアップ中のフィンテック（約120人のエンジニア）。</strong>決済はある国では国内プロバイダー経由、別の国では国際プロバイダー経由で処理する必要があり、トランザクションごとに実行時に選択しなければなりませんでした。<code>PaymentGateway</code>がポートだったため、「どのプロバイダーを使うか」はインターフェースの背後にあるルーティング判断になりました。コンプライアンス監査人も大喜びでした。境界が明確でテスト可能なシームだったからです。</p>
+<p><strong>大手銀行（1,000人超のエンジニア）。</strong>20年もののメインフレームを一夜で置き換えることはできませんでした。彼らは<code>AccountLedger</code>ポートを定義し、<em>二つの</em>アダプターを書きました——一つは旧メインフレームと通信し、もう一つは新コアバンキングシステムと通信——そして徐々にトラフィックを移行しました（「ストラングラーフィグ」）。チームは移行が水面下で進む中、ポートを対象に新機能を開発し続け、移行は見えないところで行われていました。</p>
+
+<h2 id="vs-layered">Ports &amp; Adapters と従来のレイヤードアーキテクチャの比較</h2>
+<p>多くのチームは従来のレイヤードアーキテクチャ（UI が上、サービスが中間、データベースが下）から来ています。二つを比べてみましょう：</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>問い</th><th>従来のレイヤード（UI → service → DB）</th><th>Ports &amp; Adapters</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>誰が誰に依存するか？</th><td>トップダウン：各レイヤーが一つ下のレイヤーに依存し、データベースで終わる。</td><td>すべてが<em>内向き</em>に依存し、ドメインで終わる。データベースはただのプラグイン。</td></tr>
+    <tr><th>DBなしでルールをテストできるか？</th><td>通常できない——サービスがDBに直接アクセスする。</td><td>できる——フェイクリポジトリを注入。DBもネットワークも不要。</td></tr>
+    <tr><th>ベンダーを交換するには？</th><td>サービスレイヤーを触り、外側に波及する。</td><td>新アダプターを一つ書くだけ。ドメインは変わらない。</td></tr>
+    <tr><th>ビジネスルールはどこにある？</th><td>サービスとDBをまたいで散在していることが多い。</td><td>ドメインに集中し、ビジネス言語で書かれている。</td></tr>
+    <tr><th>コスト</th><td>セレモニーが少ないが、時間とともにスタックへの結合が深まる。</td><td>最初にインターフェースが少し増えるが、変更が加速するほど元が取れる。</td></tr>
+  </tbody>
+</table>
+</div>
+<p>最大の違いは矢印の向きです。レイヤードコードでは、最終的にすべてがデータベースに依存します。Ports &amp; Adapters では、データベースがあなたに依存します。この逆転こそがすべての肝です。</p>
+
+<h2 id="when-and-when-not">使うべき時（使わないべき時）</h2>
+<p>良いアーキテクチャとは、労力を重要度に見合わせることです。以下の場合に Ports &amp; Adapters を検討してください：</p>
+<ul>
+  <li>アプリに保護する価値のある<strong>本物のビジネスルール</strong>がある（テーブルへの単純なCRUDではない）。</li>
+  <li>ライフタイムを通じて統合——ベンダー・データベース・チャンネル——を<strong>交換・追加</strong>することが予想される。</li>
+  <li><strong>テストのスピードと信頼性</strong>が重要で、高速かつ決定論的なユニットテストが欲しい。</li>
+  <li>複数チームや長い寿命により<strong>明確な境界</strong>がコストを自ら回収する。</li>
+</ul>
+<p>以下の場合は懐疑的に——または非常に軽く——適用してください：</p>
+<ul>
+  <li><strong>薄いCRUDアプリ</strong>や使い捨てプロトタイプ。間接層は純粋なオーバーヘッドです。</li>
+  <li>「ドメイン」が基本的にデータベーススキーマそのもの。守るべきものが何もない。</li>
+  <li><strong>スピード優先のソロ開発者</strong>で、将来の書き直しコストが今のセレモニーコストより低い。</li>
+</ul>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">盲目的に真似しないで</span><p>価値のないCRUDエンドポイントを三つのインターフェースで包んでも「クリーン」にはなりません——読みにくくなるだけです。アーキテクチャは<em>変更しやすさ</em>を買うために払うコストです。何も変わらないなら、何も得るものがないコストを払っていることになります。</p></div>
+
+<h2 id="mistakes">よくある間違い（そして簡単な修正方法）</h2>
+<ul>
+  <li><strong>ポートの漏れ。</strong><code>PaymentGateway</code>が<code>Stripe.Charge</code>オブジェクトを返しているなら、ベンダーがポートを通じて漏れています。修正：ポートは自分の型（<code>Receipt</code>・<code>Money</code>）のみで話す。</li>
+  <li><strong>貧血ドメイン。</strong>本当のロジックがすべてアダプターにあり、ドメインがただのデータバッグなら、境界を間違った場所に引いています。修正：ルールをコアに<em>押し込む</em>。</li>
+  <li><strong>巨大な一つのポート。</strong>40メソッドを持つ単一の<code>IRepository</code>は境界ではなく、ガラクタ引き出しです。修正：小さく目的を名前で表したポート（<code>OrderRepository</code>・<code>InventoryRepository</code>）に分ける。</li>
+  <li><strong>DTOとドメインモデルを混同する。</strong>HTTP越しに送る形はドメインエンティティではありません。修正：アダプターにワイヤー形式とドメイン間の変換を任せる。</li>
+  <li><strong>すべてにインターフェース。</strong>すべてのクラスにポートが必要なわけではありません——境界を越えるもの（I/O・ベンダー・配信メカニズム）だけです。修正：痛みを感じてからポートを追加する。先回りして追加しない。</li>
+</ul>
+
+<h2 id="getting-started">月曜日から始める方法</h2>
+<p>何も書き直す必要はありません。最も痛いところに一つの境界線を入れて、そこで止めるだけです：</p>
+<ul>
+  <li><strong>1. 最も痛い依存を選ぶ。</strong>通常はデータベースか不安定なベンダーです。</li>
+  <li><strong>2. 欲しい<em>理想の</em>インターフェースを書く。</strong>ビジネスの言葉で：<code>save(order)</code>であって、<code>execSql(...)</code>ではない。</li>
+  <li><strong>3. ベンダーコードをアダプターの後ろに移す。</strong>それを実装するアダプターに。他は何も変えなくていい。</li>
+  <li><strong>4. アダプターを注入する</strong>——インラインで生成するのではなく——そしてテスト用フェイクを一つ書く。</li>
+  <li><strong>5. 楽になったことを実感し、繰り返す</strong>——ただし、変更の頻発やテストの痛みがもう一つのポートを正当化する場所にだけ。</li>
+</ul>
+<p>一週間以内に、最も厄介な統合を囲む高速テストと、ビジネスのように読めるドメインができあがります。それが全体の報酬であり、少しずつ手に入れられます。</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">まとめ</h3>
+<ul>
+  <li><strong>一つのアイデア：</strong>ビジネスルールは中央に、技術は端に、インターフェースのみを通じて対話する。</li>
+  <li><strong>ポート</strong>＝ドメインが所有するインターフェース。<strong>アダプター</strong>＝本物の実装（Stripe・Postgres・React）。</li>
+  <li><strong>依存は内向き。</strong>ドメインは外の世界を一切知らない。</li>
+  <li><strong>ドライビング</strong>アダプターがアプリを呼び出し、<strong>ドリブン</strong>アダプターはアプリに呼び出される。</li>
+  <li><strong>重要度に見合った分量で：</strong>スタートアップには数ポート、エンタープライズにはベンダー独立の境界、使い捨てCRUDアプリにはほぼ不要。</li>
+  <li><strong>段階的に導入する</strong>——最も痛いシームを一つずつ。大規模な書き直しは一切不要。</li>
+</ul>
+</div>
+<p>このシリーズの次回は、この基礎の上に立ち、Ports &amp; Adapters が<em>Clean Architecture</em>や<em>Onion Architecture</em>とどう関係するかを見ていきます——同じ北極星を指す三つの名前——そして実際にどこで本当に違うのかを掘り下げます。</p>6:["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lf",null,{"href":"/ja/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ブログ"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lf",null,{"href":"/ja/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ソースコード & アーキテクチャ"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["ソフトウェアアーキテクチャの基礎",["$","span",null,{"aria-hidden":"true","children":" · "}],"全 15 回中第 1 回"]}],["$","h1",null,{"className":"blog-article__title","children":"Ports & Adapters（Hexagonal Architecture）をやさしく解説"}],["$","p",null,{"className":"blog-article__summary","children":"Hexagonal Architecture の入門ガイドです。ポートとアダプターが実際に何であるか、それを成立させる唯一のルール、そしてどこまで適用すべきかを、ソロ開発者からエンタープライズチームまでに向けてわかりやすく解説します。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"著者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-07","children":"2026年3月7日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"16 分で読めます"}],["$","$L10",null,{"label":"ビュー"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","ソフトウェアアーキテクチャ",{"children":"ソフトウェアアーキテクチャ"}],["$","li","Hexagonal Architecture",{"children":"Hexagonal Architecture"}],["$","li","Ports and Adapters",{"children":"Ports and Adapters"}],["$","li","Clean Architecture",{"children":"Clean Architecture"}],["$","li","システム設計",{"children":"システム設計"}],["$","li","Dependency Inversion",{"children":"Dependency Inversion"}]]}]]}],["$","$L11",null,{"html":"$12"}],"$L13","$undefined"]}]
+7:["$","$L14",null,{"heading":"関連する読みもの","intro":"同じ流れをもう少し深く追える、近いテーマの記事です。","items":[{"post":{"slug":"clean-vs-onion-vs-hexagonal","category":"architecture","title":"Clean・Onion・Hexagonal Architecture：一つの北極星、三つの名前","summary":"三つのアーキテクチャが対立しているように見えますが、実は同じアイデアです――依存は内向き、フレームワークは端に置く――を三通りに描いたものです。それぞれが何を加えているのか、どれを選べばよいかを解説します。","date":"2026-03-06","readingMinutes":15,"tags":["ソフトウェアアーキテクチャ","Clean Architecture","Onion Architecture","Hexagonal Architecture","システム設計","Dependency Inversion"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":2},"categoryTitle":"ソースコード & アーキテクチャ","readingLabel":"15 分で読めます"},{"post":{"slug":"hexagonal-architecture-in-practice","category":"architecture","title":"Hexagonal Architecture in Practice","summary":"A practical guide to applying Hexagonal Architecture to one small feature: drawing the boundary, naming ports in business language, keeping adapters at the edge, testing the core, and deciding when the extra structure is worth the cost.","date":"2026-04-22","readingMinutes":7,"tags":["Software Architecture","Hexagonal Architecture","Ports and Adapters","Testing","Code Organization","Technical Debt"],"author":"Nguyen Le Phong"},"categoryTitle":"ソースコード & アーキテクチャ","readingLabel":"7 分で読めます"},{"post":{"slug":"monolith-to-microservices","category":"architecture","title":"モノリス・Modular Monolith・マイクロサービス：正直な意思決定ガイド","summary":"マイクロサービスは組織的スケールのために払う税金であり、出発点ではありません。モノリスから Modular Monolith を経てマイクロサービスへの誇大広告なしのウォークスルーと、いつ（そして本当に）分割すべきかを示すシグナルを解説します。","date":"2026-03-03","readingMinutes":16,"tags":["ソフトウェアアーキテクチャ","Microservices","Modular Monolith","システム設計","分散システム","スケーラビリティ"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":5},"categoryTitle":"ソースコード & アーキテクチャ","readingLabel":"16 分で読めます"},{"post":{"slug":"micro-frontends-when-why-and-cost","category":"architecture","title":"Micro-Frontends：いつ価値があり、何が実際にかかるか","summary":"フロントエンドを独立してデプロイ可能なピースに分割することでチームが解放されることも、複雑さに埋もれることもあります。Angular ホスト＋ React モジュールをスケールで出荷した経験から：Micro-Frontends が見返りをもたらす場面と、それに伴うコストを正直にお伝えします。","date":"2026-03-02","readingMinutes":15,"tags":["ソフトウェアアーキテクチャ","Micro-Frontends","フロントエンドアーキテクチャ","Module Federation","スケーラビリティ","システム設計"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":6},"categoryTitle":"ソースコード & アーキテクチャ","readingLabel":"15 分で読めます"}],"sourceCategory":"architecture","sourceSlug":"ports-and-adapters"}]
+8:["$","nav",null,{"className":"blog-series-nav","aria-label":"ソフトウェアアーキテクチャの基礎","children":[["$","span",null,{}],["$","$Lf",null,{"href":"/ja/blog/architecture/clean-vs-onion-vs-hexagonal","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["次の記事"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Clean・Onion・Hexagonal Architecture：一つの北極星、三つの名前"}]]}]]}]
+9:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lf",null,{"href":"/ja/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","ソースコード & アーキテクチャに戻る"]}]}]
+a:["$","aside",null,{"className":"blog-article__toc","children":["$","$L15",null,{"label":"目次","surface":"blog"}]}]
+b:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+c:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+d:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+e:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+13:["$","$L19",null,{"prompt":"記事はいかがでしたか？","surface":"blog","category":"architecture","slug":"ports-and-adapters","reactionLabels":{"like":"いいね","love":"大好き","insightful":"なるほど","clap":"祝福"}}]
+18:null

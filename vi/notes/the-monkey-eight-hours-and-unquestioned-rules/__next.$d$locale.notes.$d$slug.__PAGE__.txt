@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+5:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+6:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+13:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+14:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+16:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+17:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+18:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T4e5,{"@context":"https://schema.org","@type":"Article","@id":"https://nguyenlephong.github.io/vi/notes/the-monkey-eight-hours-and-unquestioned-rules#article","headline":"Con khỉ, nải chuối và câu hỏi tám tiếng","description":"Một thí nghiệm quen thuộc về đàn khỉ, Sơn Tùng M-TP, ngày làm việc tám tiếng và những quy tắc ta vẫn làm theo dù đã quên lý do ban đầu. Bài viết hỏi AI và automation nên trả lại điều gì: không chỉ nhiều output hơn, mà nhiều quyền chủ động hơn với thời gian, sự chú ý và hình dạng của đời sống làm việc.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/notes/the-monkey-eight-hours-and-unquestioned-rules","image":"https://nguyenlephong.github.io/og/notes/the-monkey-eight-hours-and-unquestioned-rules.png","mainEntityOfPage":"https://nguyenlephong.github.io/vi/notes/the-monkey-eight-hours-and-unquestioned-rules","datePublished":"2026-02-10","dateModified":"2026-02-10","keywords":"Công việc, Xã hội, AI, Năng suất, Góc nhìn cá nhân, Tương lai lao động","author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean notes-accent notes-reading","style":{"--topic-color":"#b45309"},"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Ghi chép\",\"item\":\"https://nguyenlephong.github.io/vi/notes\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Góc nhìn & Chiêm nghiệm\",\"item\":\"https://nguyenlephong.github.io/vi/notes?topic=goc-nhin\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Con khỉ, nải chuối và câu hỏi tám tiếng\",\"item\":\"https://nguyenlephong.github.io/vi/notes/the-monkey-eight-hours-and-unquestioned-rules\"}]}"}}],null,["$","$L3",null,{"category":"notes","slug":"the-monkey-eight-hours-and-unquestioned-rules","children":[["$","$L4",null,{"category":"notes","slug":"the-monkey-eight-hours-and-unquestioned-rules","readingMinutes":9,"surface":"notes"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L5",null,{"url":"https://nguyenlephong.github.io/vi/notes/the-monkey-eight-hours-and-unquestioned-rules","title":"Con khỉ, nải chuối và câu hỏi tám tiếng","surface":"notes","category":"notes","slug":"the-monkey-eight-hours-and-unquestioned-rules","labels":{"share":"Chia sẻ","copyLink":"Sao chép liên kết","copied":"Đã sao chép!","close":"Đóng"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$L6",null,{"href":"/vi/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Ghi chép"}],[["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$L6",null,{"href":"/vi/notes?topic=goc-nhin","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Góc nhìn & Chiêm nghiệm"}]],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"Con khỉ, nải chuối và câu hỏi tám tiếng"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","h1",null,{"className":"blog-article__title","children":"Con khỉ, nải chuối và câu hỏi tám tiếng"}],["$","p",null,{"className":"blog-article__summary","children":"Một thí nghiệm quen thuộc về đàn khỉ, Sơn Tùng M-TP, ngày làm việc tám tiếng và những quy tắc ta vẫn làm theo dù đã quên lý do ban đầu. Bài viết hỏi AI và automation nên trả lại điều gì: không chỉ nhiều output hơn, mà nhiều quyền chủ động hơn với thời gian, sự chú ý và hình dạng của đời sống làm việc."}],"$L7","$L8"]}],"$L9","$undefined",null,"$La"]}]]}],"$Lb","$Lc"]}],"$Ld"]}]]}],["$Le","$Lf","$L10","$L11"],"$L12"]}],"loading":null,"isPartial":false}
+7:["$","div",null,{"className":"blog-article__meta","children":[["$","time",null,{"dateTime":"2026-02-10","children":"10 tháng 2, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"9 phút đọc"}],["$","$L13",null,{"label":"lượt xem"}]]}]
+8:["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Công việc",{"children":"Công việc"}],["$","li","Xã hội",{"children":"Xã hội"}],["$","li","AI",{"children":"AI"}],["$","li","Năng suất",{"children":"Năng suất"}],["$","li","Góc nhìn cá nhân",{"children":"Góc nhìn cá nhân"}],["$","li","Tương lai lao động",{"children":"Tương lai lao động"}]]}]
+15:T32d6,<p>Có một thí nghiệm nổi tiếng về đàn khỉ mà mình không thể nào quên mỗi lần nhìn vào thế giới xung quanh.</p>
+
+<p>Người ta nhốt một đàn khỉ vào trong chuồng. Giữa chuồng đặt một chiếc thang, trên đỉnh là một nải chuối chín vàng. Bản năng thôi thúc, một con leo lên. Nhưng ngay lập tức, cả đàn bị xịt nước lạnh. Lần thứ hai, lần thứ ba — kết quả vẫn vậy. Chẳng mấy chốc, đàn khỉ học được quy luật: hễ ai trèo lên thang, tất cả đều bị liên lụy.</p>
+
+<p>Từ đó, mỗi khi một con định leo lên, những con còn lại lập tức kéo xuống và ngăn cản. Không phải vì chống nhau. Mà vì sợ.</p>
+
+<p>Rồi người ta dần thay thế từng con khỉ cũ bằng những con mới chưa bao giờ trải qua vòi nước lạnh. Điều kỳ lạ là mỗi con mới vừa tò mò bước đến chân thang đã bị cả đàn ngăn lại. Những con mới khác nhìn thấy vậy cũng học theo — không leo, và ngăn cản bất kỳ ai định leo.</p>
+
+<p>Cuối cùng, tất cả những con từng bị xịt nước đều đã biến mất. Không còn ai trong chuồng hiểu lý do thực sự nữa. Nhưng luật vẫn tồn tại, vững chắc như một chân lý hiển nhiên:</p>
+
+<blockquote><p><em>Thấy ai leo thang thì phải ngăn.</em></p></blockquote>
+
+<p>Không ai nhớ nó bắt đầu từ đâu. Không ai hiểu vì sao phải làm thế. Nhưng mọi người vẫn làm, vì đó là điều mà những người trước họ đã làm.</p>
+
+<p>Nải chuối vẫn treo trên cao. Cơ hội vẫn ở đó.</p>
+
+<p>Chỉ có điều, bất kỳ ai dám đặt chân lên chiếc thang đều bị kéo xuống — bởi chính những người đã quên mất lý do mình đang ngăn cản.</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Suy nghĩ đọng lại</span><p>Đôi khi điều đáng sợ nhất không phải là những quy tắc sai lầm. Mà là những quy tắc đã mất đi lý do tồn tại — nhưng vẫn được tuân theo như thể chúng được khắc sẵn vào bản chất của thế giới này.</p></div>
+
+<h2 id="8-gio">Câu hỏi giản dị: tại sao 8 tiếng?</h2>
+
+<p>Câu chuyện đàn khỉ ấy cứ kéo mình trở lại với một điều rất đỗi quen thuộc: <strong>tại sao chúng ta làm việc 8 tiếng mỗi ngày?</strong></p>
+
+<p>Hỏi bất kỳ ai, câu trả lời thường là một dạng nào đó của: <em>"Thì từ trước đến nay vẫn vậy."</em></p>
+
+<p>Nhưng quy tắc 8 giờ không phải tự nhiên mà có. Nó được tạo ra trong những phong trào đấu tranh lao động vào thế kỷ 19, thời kỳ bùng nổ công nghiệp hóa — khi công nhân nhà máy phải làm việc 12 đến 16 giờ mỗi ngày trong những điều kiện tàn khốc. Khẩu hiệu của phong trào lúc bấy giờ rất đơn giản:</p>
+
+<blockquote><p><em>"8 giờ làm việc — 8 giờ nghỉ ngơi — 8 giờ cho cuộc sống riêng."</em></p></blockquote>
+
+<p>Vào thời điểm đó, 8 giờ là một cuộc cách mạng thực sự. Là thành quả của hàng thập kỷ đấu tranh, của mồ hôi và nước mắt của những người lao động chân tay. Nó có lý do sâu sắc để tồn tại.</p>
+
+<p>Nhưng từ thế kỷ 19 đến nay, thế giới đã thay đổi đến mức không còn nhận ra nữa. Máy móc thay thế sức người. Máy tính thay thế hàng triệu giờ lao động thủ công. Internet rút ngắn khoảng cách và tăng tốc mọi thứ. Và giờ đây chúng ta đang bước vào kỷ nguyên AI và robot — nơi một cá nhân có thể tạo ra khối lượng công việc từng cần cả một đội ngũ đảm nhận.</p>
+
+<p>Năng suất lao động tăng vọt qua từng thập kỷ.</p>
+
+<p>Thế nhưng câu hỏi <em>"liệu con người có nên làm ít giờ hơn không?"</em> lại rất hiếm khi được đặt ra một cách nghiêm túc — chắc chắn không phải bởi những hệ thống đang tổ chức cuộc sống lao động của chúng ta.</p>
+
+<p>Chúng ta vẫn ở trong chuồng. Vẫn nhìn lên nải chuối. Và vẫn kéo nhau xuống mỗi khi ai đó dám đặt câu hỏi khác đi.</p>
+
+<h2 id="nghich-ly">Nghịch lý của AI: giải phóng hay xiết chặt hơn?</h2>
+
+<p>Đây là phần khiến mình trăn trở nhất.</p>
+
+<p>Nếu một công ty trước đây cần 4 người làm việc 8 tiếng mỗi ngày — tổng cộng 32 giờ lao động — thì với AI, có lẽ chỉ cần 1 người là đủ để hoàn thành khối lượng công việc tương đương. Câu hỏi tự nhiên là: <strong>thành quả năng suất đó đi về đâu?</strong></p>
+
+<p>Trong một kịch bản lý tưởng, xã hội có thể chọn cách khác: giữ lại cả 4 người, mỗi người làm 2 tiếng, và trả về cho họ 6 tiếng mỗi ngày để sống theo cách họ muốn. Đời sống rộng hơn nhờ năng suất mà công nghệ mang lại.</p>
+
+<p>Nhưng thực tế thường xảy ra theo chiều ngược lại.</p>
+
+<ul>
+  <li>Năng suất tăng.</li>
+  <li>Lợi nhuận tăng.</li>
+  <li>Khối lượng công việc trên đầu mỗi người cũng tăng.</li>
+  <li>Trong khi thời gian làm việc gần như không thay đổi.</li>
+</ul>
+
+<p>Câu hỏi thật sự là: AI đang được dùng để giải phóng con người — hay để tối đa hóa lợi nhuận?</p>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Nghịch lý cần nhìn thẳng</span><p>Nếu một cỗ máy có thể làm việc thay cho bốn người, thì xã hội lý tưởng không phải là ba người thất nghiệp và một người làm việc kiệt sức. Mà phải là bốn người cùng được hưởng thành quả của năng suất mới đó — làm ít hơn, và sống nhiều hơn. Đó là một lựa chọn của xã hội, không phải quy luật kinh tế tất yếu.</p></div>
+
+<h2 id="gia-dinh">Những thứ chúng ta đang đánh đổi</h2>
+
+<p>Mỗi sáng, hàng triệu người rời nhà từ lúc trời còn chưa sáng. Chen chúc ngoài đường. Làm việc 8 tiếng — chưa kể thời gian di chuyển, tăng ca, và những tin nhắn công việc dội về sau giờ làm.</p>
+
+<p>Khi về đến nhà, cơ thể đã mệt mỏi, đầu óc đã cạn kiệt. Con cái đã gần đến giờ đi ngủ. Cha mẹ già chưa kịp gọi điện hỏi thăm. Bữa cơm gia đình trở thành một thứ xa xỉ của ngày cuối tuần.</p>
+
+<p>Có một nghịch lý nhức nhối: nhiều người dành thời gian bên cạnh đồng nghiệp nhiều hơn bên cạnh vợ chồng, cha mẹ hay chính những đứa con của mình. Một nhân viên văn phòng có thể ngồi cùng đồng nghiệp 8 đến 10 tiếng mỗi ngày, 5 ngày một tuần. Trong khi thời gian thực sự ăn cơm, nói chuyện hay chơi với con đôi khi chỉ còn vài chục phút.</p>
+
+<p>Chúng ta nói gia đình là điều quan trọng nhất. Nhưng cách xã hội được tổ chức lại cho thấy điều ngược lại.</p>
+
+<p>Nếu AI và robot có thể giúp năng suất tăng gấp nhiều lần, thì thành quả lớn nhất không nên chỉ là lợi nhuận tăng. Mà phải là con người có thêm thời gian để <em>sống</em>.</p>
+
+<ul>
+  <li>Thời gian đưa con đến trường và đón con về.</li>
+  <li>Thời gian tự nấu một bữa ăn cho gia đình.</li>
+  <li>Thời gian chăm sóc cha mẹ khi họ còn ở bên cạnh.</li>
+  <li>Thời gian nhìn con lớn lên từng ngày — thay vì chỉ thấy qua những tấm ảnh trong điện thoại, bắt kịp vào một buổi tối cuối tuần.</li>
+</ul>
+
+<p>Một xã hội văn minh không phải là nơi con người làm việc ngày càng nhiều hơn nhờ công nghệ. Mà là nơi công nghệ giúp con người lấy lại những thứ đã mất dần.</p>
+
+<p>Bởi đến cuối cuộc đời, không ai tiếc vì đã dành quá ít thời gian trong văn phòng. Người ta chỉ tiếc vì đã dành quá ít thời gian cho những người mình yêu thương.</p>
+
+<h2 id="son-tung">Những người dám leo thang</h2>
+
+<p>Gần đây, khi Sơn Tùng M-TP ra mắt ca khúc <em>Come My Way</em> với phần lời tiếng Anh, làn sóng phản ứng đến gần như ngay lập tức:</p>
+
+<blockquote><p><em>"Người Việt Nam thì hát tiếng Việt đi."</em></p></blockquote>
+
+<p>Có thể họ đúng. Có thể họ sai. Mình không đủ tư cách để phán xét chất lượng nghệ thuật của bài hát.</p>
+
+<p>Nhưng điều khiến mình nhớ đến câu chuyện đàn khỉ không phải là bài hát. Mà là <strong>tốc độ và sự chắc chắn mà đám đông dùng để kéo xuống</strong> — trước khi ai đó dừng lại và tự hỏi rằng người kia đang leo lên để đi đâu, hay chuyến leo đó có thể dạy chúng ta điều gì về chỗ đứng của âm nhạc Việt trên sân khấu toàn cầu.</p>
+
+<p>Trong bất kỳ lĩnh vực nào — nghệ thuật, kinh doanh, hay công nghệ — tiến bộ luôn cần những người dám bước lên trước. Có thể cách thử ấy chưa chạy ngay. Có thể họ bị người khác nghi ngờ. Nhưng nếu không có những người dám thử điều khác biệt, chúng ta sẽ mãi đứng dưới đất và tranh cãi xem có nên leo hay không — trong khi nải chuối vẫn treo trên cao, không ai với tới.</p>
+
+<p>Hãy nhìn Elon Musk — người từng bị cười nhạo vì dám tin một công ty tư nhân có thể phóng tên lửa lên vũ trụ. SpaceX giờ đây sắp IPO với định giá hàng nghìn tỷ đô, đã đẩy NASA vào thế phải thuê lại dịch vụ của chính hãng tư nhân đó, và giới tài phiệt đang chen chúc nhau tranh từng cổ phiếu resale. Người ta từng kéo anh xuống — nhưng anh không ở dưới đó mãi.</p>
+
+<p>Lịch sử chưa bao giờ được tạo ra bởi những người làm giống đám đông. Lịch sử luôn được tạo ra bởi những người dám leo lên chiếc thang — dù biết chắc bên dưới sẽ có rất nhiều người muốn kéo mình xuống.</p>
+
+<h2 id="tuong-lai">Tương lai của chiếc thang</h2>
+
+<p>Khi AI, robot và tự động hóa đạt đến trình độ đủ để thay thế phần lớn những gì con người làm ngày nay — cả lao động chân tay lẫn trí óc — ngày làm việc bình thường của tương lai có lẽ sẽ không còn là 8 tiếng nữa.</p>
+
+<p>Mà là 4 tiếng. Rồi 2 tiếng. Hoặc ít hơn nữa.</p>
+
+<p>Bởi mục tiêu cuối cùng của văn minh nhân loại không phải là tạo ra những cỗ máy ngày càng giỏi hơn. Mà là giúp con người có nhiều thời gian hơn để sống — sống đúng nghĩa, trọn vẹn, theo cách của chính mình.</p>
+
+<p>Xu hướng này có thể bắt đầu từ Mỹ hay Bắc Âu, nơi các thí nghiệm tuần làm việc 4 ngày đang được triển khai. Nhưng câu hỏi quan trọng hơn không phải là <em>khi nào</em> hay <em>ở đâu</em>. Mà là: <strong>ai sẽ là người đầu tiên dám leo lên cái thang?</strong></p>
+
+<p>AI đáng lẽ phải biến 8 tiếng của một người thành 2 tiếng của bốn người. Chứ không phải biến công việc của bốn người thành 8 tiếng nặng nhọc của một người duy nhất.</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Điều mình muốn để lại</h3>
+<ul>
+  <li><strong>Mọi quy tắc đều có nguồn gốc:</strong> quy tắc 8 giờ ra đời vì một lý do rất cụ thể, trong một thời đại rất khác. Câu hỏi không phải là có nên tuân theo, mà là nó còn phù hợp không.</li>
+  <li><strong>Năng suất tăng không tự nhiên dẫn đến tự do:</strong> ai quyết định thành quả của AI và tự động hóa được phân bổ như thế nào — đó là lựa chọn của xã hội, không phải quy luật kinh tế tất yếu.</li>
+  <li><strong>Thời gian là thứ không hoàn lại được:</strong> mỗi giờ trong văn phòng là một giờ không ở bên con, bên cha mẹ, bên những người mình yêu thương.</li>
+  <li><strong>Những người leo thang thường bị kéo xuống trước:</strong> nhưng điều đó không có nghĩa là họ sai — đôi khi chỉ có nghĩa là đám đông chưa sẵn sàng.</li>
+</ul>
+</div>9:["$","$L14",null,{"html":"$15"}]
+a:["$","$L16",null,{"prompt":"Bạn thấy bài này thế nào?","surface":"notes","category":"notes","slug":"the-monkey-eight-hours-and-unquestioned-rules","reactionLabels":{"like":"Thích","love":"Yêu thích","insightful":"Sâu sắc","clap":"Tuyệt vời"}}]
+b:["$","nav",null,{"className":"blog-series-nav","aria-label":"Góc nhìn & Chiêm nghiệm","children":[["$","$L6",null,{"href":"/vi/notes/know-your-work-rights","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Quyền lợi khi đi làm: nghỉ việc, chuyển việc, bảo hiểm và thuế tại Việt Nam"}]]}],["$","span",null,{}]]}]
+c:["$","footer",null,{"className":"blog-article__footer","children":["$","$L6",null,{"href":"/vi/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Quay lại Ghi chép"]}]}]
+d:["$","aside",null,{"className":"blog-article__toc","children":["$","$L17",null,{"label":"Trong bài này","surface":"notes"}]}]
+e:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/579669e8fc8fe057.css","precedence":"next"}]
+f:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+10:["$","script","script-0",{"src":"/_next/static/chunks/60afb5b0374fe7a9.js","async":true}]
+11:["$","script","script-1",{"src":"/_next/static/chunks/0e65e15104575034.js","async":true}]
+12:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+1a:null

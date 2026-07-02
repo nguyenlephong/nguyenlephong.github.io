@@ -1,0 +1,19 @@
+{
+  "slug": "prompt-engineering-is-just-communication",
+  "category": "ai",
+  "title": "Le prompt engineering, c'est surtout de la communication",
+  "summary": "Les bons prompts ne sont pas des phrases magiques. Ce sont des communications claires : contexte, intention, contraintes, exemples et feedback.",
+  "date": "2026-02-07",
+  "readingMinutes": 6,
+  "tags": [
+    "IA",
+    "Prompt Engineering",
+    "Communication",
+    "LLM",
+    "AI Literacy",
+    "Productivité développeur"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>Un coéquipier demande de l'aide au milieu d'un après-midi chargé : \"Tu peux regarder ça ?\" Vous ouvrez le fichier, mais il manque le contexte. Vous ne savez pas ce que le code doit faire, ce qui a échoué, ce qui a déjà été essayé, ni le niveau d'aide attendu. Même une personne expérimentée doit demander ou deviner.</p>\n<p>Un modèle IA vit la même situation. Le prompt engineering semble parfois rempli de formules secrètes, mais la compétence profonde est plus ordinaire : communiquer assez clairement pour qu'une autre intelligence puisse travailler sans inventer la situation manquante.</p>\n<p>Un bon prompt donne le contexte : le système, l'audience, l'état actuel, les contraintes importantes. Sans cela, le modèle remplit les blancs avec des hypothèses génériques.</p>\n<p>Un bon prompt nomme aussi la tâche. \"Améliore ceci\" est un souhait. \"Réécris ce résumé pour un product manager non technique, sous 120 mots, en gardant le risque et en retirant le jargon\" est un travail.</p>\n<p>Les contraintes ne tuent pas la créativité. Elles l'orientent. Ne pas ajouter de dépendance, garder un ton calme, préserver l'API publique, expliquer les tradeoffs avant le code : tout cela rapproche la réponse de votre réalité.</p>\n<p>Les exemples aident pour la même raison qu'ils aident les humains. Un before/after, un style préféré ou un test qui échoue donne une forme à imiter.</p>\n<p>Le feedback complète la boucle. \"Trop abstrait\", \"garde la structure mais adoucis le ton\", \"tu as oublié la contrainte database\" ne sont pas des échecs. Ce sont des signaux normaux de collaboration.</p>\n<p>Le prompt engineering, au fond, est une communication sous contraintes. Les habitudes qui rendent un ticket, une review ou un handoff utile rendent aussi une demande IA plus utile.</p>"
+}

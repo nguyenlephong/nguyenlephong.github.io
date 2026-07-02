@@ -1,0 +1,18 @@
+{
+  "slug": "the-trap-of-information-consumption",
+  "title": "The trap of information consumption without action",
+  "html": "<p>This is a common failure mode in learning: we accumulate knowledge without ever progressing through the <span class=\"private-link\">KUB - Three stages of comprehension</span> framework. The input keeps flowing, the shelf keeps filling, and yet nothing ever quite turns into capability. It feels like learning, which is exactly what makes it so hard to notice from the inside.</p>\n<h3>Symptoms</h3>\n<ul>\n<li>Constantly reading new books and articles without applying any of the insights</li>\n<li>Feeling knowledgeable, yet unable to demonstrate real competence</li>\n<li>Collecting information as a form of productive procrastination</li>\n<li>Mistaking recognition for understanding</li>\n</ul>\n<h3>Why it happens</h3>\n<ul>\n<li>Information feels like progress &mdash; the dopamine hit of novelty rewards the intake, not the use</li>\n<li>Action requires vulnerability and carries the real risk of failure</li>\n<li>Hoarding knowledge feels safer than exposing yourself to practice</li>\n<li>Modern information abundance makes consumption effectively endless</li>\n</ul>\n<h3>Breaking the trap</h3>\n<ul>\n<li>Set implementation intentions before you consume content &mdash; decide in advance what you will do with it</li>\n<li>Practice &ldquo;just-in-time&rdquo; learning over &ldquo;just-in-case&rdquo; learning</li>\n<li>Create friction for consumption, and remove friction for practice</li>\n<li>Track the actions you take, not the information you consume</li>\n</ul>\n<p><em>(A pattern I keep checking myself against, sharpened by <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">a friend&rsquo;s notes</a>.)</em></p>\n<h3>Related concepts</h3>\n<ul>\n<li><span class=\"private-link\">Why thinking?</span> - Purposeful vs busy thinking</li>\n<li><span class=\"private-link\">States of Mind</span> - Balance contemplation with flow/action</li>\n</ul>\n<hr>\n<ul>\n<li><a href=\"/thoughts/thinking-excuses\">When thinking becomes the excuse</a></li>\n<li><span class=\"private-link\">What is the line between Knowledge and Skill?</span></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "purpose-of-highlights",
+      "title": "Purpose of of highlights",
+      "context": "<ul>\n<li><a href=\"/thoughts/a-reading-system\">A Reading System</a> - <a href=\"/thoughts/the-trap-of-information-consumption\">The trap of information consumption without action</a></li>\n</ul>"
+    },
+    {
+      "slug": "thinking-excuses",
+      "title": "When thinking becomes the excuse",
+      "context": "<ul>\n<li><a href=\"/thoughts/thinking-and-doing-rhythm\">Thinking and Doing Rhythm</a> - <a href=\"/thoughts/the-trap-of-information-consumption\">The trap of information consumption without action</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "evergreen"
+}

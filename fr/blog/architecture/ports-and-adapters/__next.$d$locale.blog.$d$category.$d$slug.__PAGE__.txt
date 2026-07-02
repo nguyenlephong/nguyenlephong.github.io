@@ -1,0 +1,338 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T9c8,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/fr/blog/architecture/ports-and-adapters#article","headline":"Ports & Adapters (Hexagonal Architecture), Expliqués Simplement","description":"Un guide accessible et riche en exemples sur l'Hexagonal Architecture : ce que sont vraiment les ports et les adapters, la règle unique qui la fait fonctionner, et exactement quelle dose en appliquer — que vous soyez un fondateur solo ou une équipe d'entreprise.","inLanguage":"fr","url":"https://nguyenlephong.github.io/fr/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/og/blog/ports-and-adapters.png","mainEntityOfPage":"https://nguyenlephong.github.io/fr/blog/architecture/ports-and-adapters","datePublished":"2026-03-07","dateModified":"2026-03-07","keywords":"Architecture logicielle, Hexagonal Architecture, Ports and Adapters, Clean Architecture, Conception de systèmes, Dependency Inversion","articleSection":"Code source & Architecture","isRelatedTo":[{"@type":"BlogPosting","headline":"Clean, Onion & Hexagonal Architecture : Une étoile du nord, trois noms","url":"https://nguyenlephong.github.io/fr/blog/architecture/clean-vs-onion-vs-hexagonal","image":"https://nguyenlephong.github.io/og/blog/clean-vs-onion-vs-hexagonal.png"},{"@type":"BlogPosting","headline":"Hexagonal Architecture in Practice","url":"https://nguyenlephong.github.io/en/blog/architecture/hexagonal-architecture-in-practice","image":"https://nguyenlephong.github.io/og/blog/hexagonal-architecture-in-practice.png"},{"@type":"BlogPosting","headline":"Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête","url":"https://nguyenlephong.github.io/fr/blog/architecture/monolith-to-microservices","image":"https://nguyenlephong.github.io/og/blog/monolith-to-microservices.png"},{"@type":"BlogPosting","headline":"Micro-Frontends : Quand Ça Vaut le Coup, et Ce Que Ça Coûte","url":"https://nguyenlephong.github.io/fr/blog/architecture/micro-frontends-when-why-and-cost","image":"https://nguyenlephong.github.io/og/blog/micro-frontends-when-why-and-cost.png"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/fr/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/fr/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Code source & Architecture\",\"item\":\"https://nguyenlephong.github.io/fr/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Ports & Adapters (Hexagonal Architecture), Expliqués Simplement\",\"item\":\"https://nguyenlephong.github.io/fr/blog/architecture/ports-and-adapters\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T79e3,<p>Vous avez déjà vécu ça : une fonctionnalité qui devrait prendre un après-midi en prend trois jours, parce que la « petite modification » dans la façon d'envoyer les e-mails s'avère enchevêtrée dans douze fichiers. Le code de paiement connaît la base de données, le code de la base de données connaît la requête web, et quelque part au milieu — à peine visible — se trouvent les vraies règles métier qui font que votre produit <em>est le vôtre</em>.</p>
+<p><strong>Ports &amp; Adapters</strong> (vous l'entendrez aussi appeler <em>Hexagonal Architecture</em>, terme inventé par Alistair Cockburn en 2005) est une façon d'organiser le code pour que cela cesse d'arriver. Ce n'est pas un framework, vous ne l'installez pas, et ça fonctionne dans n'importe quel langage. C'est en réalité une seule idée portant un nom un peu ronflant. Décortiquons-la lentement, avec des illustrations et des exemples concrets, et à la fin vous saurez exactement quand l'utiliser — et quand ne pas le faire.</p>
+
+<h2 id="the-problem">Le problème : du code qui grandit mal</h2>
+<p>La plupart des applications démarrent de la même façon sympathique — un contrôleur appelle un service, le service parle à une base de données et quelques fournisseurs, et tout le monde est content. L'ennui, c'est ce qui se passe <em>avec le temps</em>. Voici un processus de commande qui n'a que quelques mois et qui est déjà douloureux :</p>
+<pre><code><span class="cmt">// checkout.ts — tout est emmêlé ensemble</span>
+<span class="kw">class</span> OrderService {
+  <span class="kw">async</span> checkout(cart: Cart) {
+    <span class="kw">const</span> db = <span class="kw">new</span> PgClient(process.env.DB_URL)        <span class="cmt">// une base de données spécifique</span>
+    <span class="kw">const</span> stripe = <span class="kw">new</span> Stripe(process.env.STRIPE_KEY)   <span class="cmt">// un fournisseur spécifique</span>
+    <span class="kw">const</span> sg = <span class="kw">new</span> SendGrid(process.env.SENDGRID_KEY)   <span class="cmt">// un autre fournisseur</span>
+
+    <span class="cmt">// les vraies règles métier sont enfouies entre les appels aux fournisseurs…</span>
+    <span class="kw">const</span> total = cart.items.reduce((s, i) =&gt; s + i.price, 0)
+    <span class="kw">await</span> stripe.charges.create({ amount: total, source: cart.token })
+    <span class="kw">await</span> db.query(<span class="str">'INSERT INTO orders …'</span>)
+    <span class="kw">await</span> sg.send({ to: cart.email, template: <span class="str">'order-ok'</span> })
+  }
+}</code></pre>
+<p>Rien ici n'est vraiment « faux ». Mais la logique métier (ce qu'est une commande, quand elle est valide, ce que signifie « confirmée ») est imbriquée dans trois fournisseurs et un driver de base de données. Vous ne pouvez pas tester les règles sans une base de données réelle. Vous ne pouvez pas quitter SendGrid sans une intervention chirurgicale. Et un nouveau coéquipier lisant ceci apprend Stripe avant même d'apprendre ce que sont vos <em>commandes</em>.</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">La question centrale</span><p>Ports &amp; Adapters répond à une seule question : <strong>comment garder la partie qui génère de l'argent (les règles métier) séparée des parties que l'on finit inévitablement par remplacer (bases de données, fournisseurs, frameworks, interfaces utilisateur) ?</strong></p></div>
+
+<h2 id="core-idea">L'idée centrale, en une seule image</h2>
+<p>Placez vos règles métier — le <strong>domaine</strong> — au centre. Interdisez-lui d'importer tout framework, driver de base de données ou SDK fournisseur. Laissez ensuite le monde extérieur lui parler uniquement via des <strong>ports</strong> (interfaces), avec des <strong>adapters</strong> qui font le travail concret et encombrant de l'autre côté.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 800 500" role="img" aria-labelledby="dgm-ov">
+    <title id="dgm-ov">Le domaine se trouve au centre. Les adapters s'y branchent via des ports.</title>
+    
+  <defs>
+    <marker id="ovAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+    <text class="dgm-t-muted dgm-t-mono" x="105" y="92" text-anchor="middle" font-size="12">DRIVING SIDE · calls us</text>
+    <text class="dgm-t-muted dgm-t-mono" x="695" y="92" text-anchor="middle" font-size="12">DRIVEN SIDE · we call it</text>
+
+    <polygon class="dgm-core" points="550,250 475,380 325,380 250,250 325,120 475,120" stroke-width="2"/>
+    <text class="dgm-t-strong" x="400" y="244" text-anchor="middle" font-size="23">Domain</text>
+    <text class="dgm-t-muted dgm-t-mono" x="400" y="270" text-anchor="middle" font-size="13">business rules, no vendors</text>
+
+    <!-- driving adapters -->
+    <rect class="dgm-adapter" x="30" y="128" width="150" height="46" rx="9"/>
+    <text x="105" y="156" text-anchor="middle" font-size="14">Web / Mobile UI</text>
+    <rect class="dgm-adapter" x="30" y="234" width="150" height="46" rx="9"/>
+    <text x="105" y="262" text-anchor="middle" font-size="14">REST / GraphQL</text>
+    <rect class="dgm-adapter" x="30" y="340" width="150" height="46" rx="9"/>
+    <text x="105" y="368" text-anchor="middle" font-size="14">Tests / CLI / Cron</text>
+
+    <path class="dgm-flow" d="M180,151 C 220,151 235,186 286,189" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M180,257 H 246" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M180,363 C 220,363 235,316 286,313" marker-end="url(#ovAcc)"/>
+
+    <!-- driven adapters -->
+    <rect class="dgm-driven" x="620" y="128" width="150" height="46" rx="9"/>
+    <text x="695" y="156" text-anchor="middle" font-size="14">Database</text>
+    <rect class="dgm-driven" x="620" y="234" width="150" height="46" rx="9"/>
+    <text x="695" y="262" text-anchor="middle" font-size="14">Email / SMS</text>
+    <rect class="dgm-driven" x="620" y="340" width="150" height="46" rx="9"/>
+    <text x="695" y="368" text-anchor="middle" font-size="14">Payment vendor</text>
+
+    <path class="dgm-flow" d="M514,189 C 560,186 575,151 618,151" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M554,257 H 618" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M514,313 C 560,316 575,363 618,363" marker-end="url(#ovAcc)"/>
+
+    <!-- ports -->
+    <circle class="dgm-fill-accent" cx="286" cy="189" r="8"/>
+    <circle class="dgm-fill-accent" cx="248" cy="250" r="8"/>
+    <circle class="dgm-fill-accent" cx="286" cy="313" r="8"/>
+    <circle class="dgm-fill-accent" cx="514" cy="189" r="8"/>
+    <circle class="dgm-fill-accent" cx="552" cy="250" r="8"/>
+    <circle class="dgm-fill-accent" cx="514" cy="313" r="8"/>
+
+    <text class="dgm-t-accent" x="400" y="455" text-anchor="middle" font-size="13">● = a port (an interface the domain owns)</text>
+  </svg>
+  <figcaption>L'hexagone n'est qu'une image : le <strong>domaine</strong> vit au centre et n'importe jamais un framework ou un fournisseur. Tout ce qui est à l'extérieur le rejoint via un <strong>port</strong>. Les adapters à gauche pilotent l'application ; les adapters à droite sont pilotés par elle.</figcaption>
+</figure>
+<p>C'est toute la structure. On dessine un hexagone plutôt qu'un cercle pour une raison charmante : les six côtés rappellent qu'une application a <em>de nombreuses</em> entrées et sorties (une interface web, une API, des tests, un cron job, une base de données, une file de messages…), et pas seulement « en haut » et « en bas ». Le nombre six ne signifie rien — n'essayez pas de compter vos ports.</p>
+
+<h2 id="vocabulary">Le vocabulaire, en termes simples</h2>
+<p>Trois mots font tout le travail. Les voici, sans jargon :</p>
+<ul>
+  <li><strong>Domaine (le cœur) :</strong> vos règles et concepts métier — <code>Order</code>, <code>Money</code>, « un panier avec zéro article ne peut pas passer en caisse ». Logique pure. Il devrait se lire comme une description de votre activité, pas de votre stack technique.</li>
+  <li><strong>Port :</strong> une <em>interface</em> dont le domaine est propriétaire, décrivant quelque chose dont il a besoin ou qu'il offre — « j'ai besoin de pouvoir <code>save(order)</code> » ou « j'ai besoin de <code>charge()</code> un paiement ». Un port est une promesse, rédigée dans le langage du domaine, sans qu'aucun nom de fournisseur n'y apparaisse.</li>
+  <li><strong>Adapter :</strong> le code concret qui remplit un port en utilisant une vraie technologie — un <code>PostgresOrderRepo</code>, un <code>StripeGateway</code>. Les adapters sont l'endroit où Stripe, Postgres et React ont le droit d'exister.</li>
+</ul>
+<p>Et les ports se déclinent en deux types, ce qui est la seule subtilité qui vaut la peine d'être apprise :</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 860 250" role="img" aria-labelledby="dgm-flow">
+    <title id="dgm-flow">Une requête circule depuis un adapter pilotant, à travers le domaine, jusqu'à un adapter piloté.</title>
+    
+  <defs>
+    <marker id="flAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+    <text class="dgm-t-muted dgm-t-mono" x="195" y="40" text-anchor="middle" font-size="12">PRIMARY · driving</text>
+    <text class="dgm-t-muted dgm-t-mono" x="650" y="40" text-anchor="middle" font-size="12">SECONDARY · driven</text>
+
+    <rect class="dgm-adapter" x="12" y="98" width="118" height="60" rx="10"/>
+    <text x="71" y="124" text-anchor="middle" font-size="13">User / Test</text>
+    <text class="dgm-t-muted" x="71" y="142" text-anchor="middle" font-size="11">actor</text>
+
+    <rect class="dgm-adapter" x="172" y="98" width="150" height="60" rx="10"/>
+    <text x="247" y="124" text-anchor="middle" font-size="13">Controller / CLI</text>
+    <text class="dgm-t-muted" x="247" y="142" text-anchor="middle" font-size="11">driving adapter</text>
+
+    <rect class="dgm-core" x="372" y="86" width="150" height="84" rx="12" stroke-width="2"/>
+    <text class="dgm-t-strong" x="447" y="122" text-anchor="middle" font-size="14">Use case</text>
+    <text class="dgm-t-muted" x="447" y="142" text-anchor="middle" font-size="11">domain rules</text>
+
+    <rect class="dgm-driven" x="572" y="98" width="150" height="60" rx="10"/>
+    <text x="647" y="124" text-anchor="middle" font-size="13">Repo / Gateway</text>
+    <text class="dgm-t-muted" x="647" y="142" text-anchor="middle" font-size="11">driven adapter</text>
+
+    <rect class="dgm-driven" x="760" y="98" width="92" height="60" rx="10"/>
+    <text x="806" y="124" text-anchor="middle" font-size="12">DB / Vendor</text>
+
+    <path class="dgm-flow" d="M130,128 H168" marker-end="url(#flAcc)"/>
+    <path class="dgm-flow" d="M322,128 H368" marker-end="url(#flAcc)"/>
+    <path class="dgm-flow" d="M522,128 H568" marker-end="url(#flAcc)"/>
+    <path class="dgm-flow" d="M722,128 H756" marker-end="url(#flAcc)"/>
+
+    <circle class="dgm-fill-accent" cx="347" cy="128" r="7"/>
+    <circle class="dgm-fill-accent" cx="547" cy="128" r="7"/>
+    <text class="dgm-t-accent" x="347" y="200" text-anchor="middle" font-size="12">input port</text>
+    <text class="dgm-t-accent" x="547" y="200" text-anchor="middle" font-size="12">output port</text>
+  </svg>
+  <figcaption>Le même domaine, deux types d'adapters. Un adapter <strong>pilotant</strong> (primaire) pousse une requête <em>vers l'intérieur</em> via un port d'entrée ; le domaine pousse du travail <em>vers l'extérieur</em> via un port de sortie vers un adapter <strong>piloté</strong> (secondaire). Les flèches indiquent la direction des appels — pas la direction des dépendances.</figcaption>
+</figure>
+<ul>
+  <li>Les <strong>adapters pilotants (primaires)</strong> se trouvent à gauche et <em>appellent vers</em> votre application : un contrôleur web, une commande CLI, un test. Ils utilisent un <strong>port d'entrée</strong> (votre interface de cas d'utilisation).</li>
+  <li>Les <strong>adapters pilotés (secondaires)</strong> se trouvent à droite et sont <em>appelés par</em> votre application : une base de données, un service d'e-mail, une API de paiement. Ils implémentent un <strong>port de sortie</strong> que le domaine a défini.</li>
+</ul>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Moyen mnémotechnique rapide</span><p>Si quelque chose <em>initie</em> une conversation avec votre application, c'est qu'il est <strong>pilotant</strong>. Si votre application initie la conversation, l'autre partie est <strong>pilotée</strong>. Un utilisateur qui clique sur « Acheter » pilote ; le fournisseur de paiement est piloté.</p></div>
+
+<h2 id="before-after">Un exemple concret : avant et après</h2>
+<p>Démêlons ce processus de commande. Commencez par écrire ce dont le domaine a besoin — les <strong>ports</strong> — en utilisant uniquement les termes de votre métier :</p>
+<pre><code><span class="cmt">// ports.ts — le vocabulaire du domaine. Aucun nom de fournisseur autorisé.</span>
+<span class="kw">interface</span> PaymentGateway { charge(amount: Money, token: string): Promise&lt;Receipt&gt; }
+<span class="kw">interface</span> OrderRepository { save(order: Order): Promise&lt;void&gt; }
+<span class="kw">interface</span> Notifier        { orderConfirmed(order: Order): Promise&lt;void&gt; }</code></pre>
+<p>Maintenant le cas d'utilisation ne dépend que de ces promesses, et <em>de rien d'autre</em>. Lisez-le à voix haute : ça ressemble à une description du processus de commande, pas à une liste de fournisseurs.</p>
+<pre><code><span class="cmt">// checkout-service.ts — dépend uniquement des ports, jamais des fournisseurs</span>
+<span class="kw">class</span> CheckoutService {
+  <span class="kw">constructor</span>(
+    <span class="kw">private</span> payments: PaymentGateway,
+    <span class="kw">private</span> orders: OrderRepository,
+    <span class="kw">private</span> notify: Notifier,
+  ) {}
+
+  <span class="kw">async</span> checkout(cart: Cart): Promise&lt;Order&gt; {
+    <span class="kw">const</span> order = Order.fromCart(cart)         <span class="cmt">// règle métier pure</span>
+    <span class="kw">await</span> <span class="kw">this</span>.payments.charge(order.total, cart.token)
+    <span class="kw">await</span> <span class="kw">this</span>.orders.save(order)
+    <span class="kw">await</span> <span class="kw">this</span>.notify.orderConfirmed(order)
+    <span class="kw">return</span> order
+  }
+}</code></pre>
+<p>Enfin, les vrais fournisseurs vivent dans des adapters qui implémentent les ports. En remplacer un est un changement localisé — et dans les tests, vous les remplacez par des faux et faites tourner des milliers de cas dans le temps qu'un seul appel réseau prenait autrefois :</p>
+<pre><code><span class="cmt">// adapters/*.ts — les fournisseurs vivent ici, derrière le port qu'ils implémentent</span>
+<span class="kw">class</span> StripeGateway      <span class="kw">implements</span> PaymentGateway { <span class="cmt">/* SDK Stripe */</span> }
+<span class="kw">class</span> PostgresOrderRepo  <span class="kw">implements</span> OrderRepository { <span class="cmt">/* SQL ici */</span> }
+<span class="kw">class</span> SendGridNotifier   <span class="kw">implements</span> Notifier        { <span class="cmt">/* SendGrid */</span> }
+
+<span class="cmt">// Dans un test, remplacez les vrais fournisseurs par des faux en mémoire — pas de réseau, quelques millisecondes :</span>
+<span class="kw">const</span> service = <span class="kw">new</span> CheckoutService(<span class="kw">new</span> FakePayments(), <span class="kw">new</span> InMemoryOrders(), <span class="kw">new</span> NullNotifier())</code></pre>
+<p>Remarquez ce qui a bougé : Stripe, Postgres et SendGrid sont désormais des <em>détails à la périphérie</em>. Ce qui vous fait gagner de l'argent se trouve au centre, lisible et testable, et n'a aucune idée que ces fournisseurs existent.</p>
+
+<h2 id="dependency-rule">La règle unique qui tient tout ensemble</h2>
+<p>Si vous ne devez retenir qu'une seule chose, retenez celle-ci : <strong>les dépendances dans le code source pointent toujours vers l'intérieur</strong>. L'anneau extérieur (adapters, frameworks, I/O) peut connaître les anneaux intérieurs. Le domaine au centre n'a le droit de connaître <em>rien</em> en dehors de lui-même.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 800 360" role="img" aria-labelledby="dgm-dep">
+    <title id="dgm-dep">Les dépendances pointent toujours vers l'intérieur, vers le domaine.</title>
+    
+  <defs>
+    <marker id="depAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+    <rect class="dgm-surface" x="40" y="40" width="720" height="280" rx="18" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="64" y="68" font-size="12">ADAPTERS · frameworks · databases · HTTP · I/O</text>
+
+    <rect class="dgm-port" x="170" y="98" width="460" height="170" rx="15" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="190" y="124" font-size="12">APPLICATION · use cases + ports</text>
+
+    <rect class="dgm-core" x="310" y="150" width="180" height="86" rx="13" stroke-width="2"/>
+    <text class="dgm-t-strong" x="400" y="190" text-anchor="middle" font-size="19">Domain</text>
+    <text class="dgm-t-muted dgm-t-mono" x="400" y="212" text-anchor="middle" font-size="12">pure rules</text>
+
+    <path class="dgm-flow" d="M120,300 L300,210" marker-end="url(#depAcc)"/>
+    <path class="dgm-flow" d="M680,300 L500,210" marker-end="url(#depAcc)"/>
+    <path class="dgm-flow" d="M400,98 L400,146" marker-end="url(#depAcc)"/>
+
+    <text class="dgm-t-accent" x="400" y="345" text-anchor="middle" font-size="13">Outer layers know about inner layers — never the other way around.</text>
+  </svg>
+  <figcaption>La règle d'or : les dépendances dans le code source ne pointent que vers <strong>l'intérieur</strong>. Le domaine ne sait pas que la base de données existe ; c'est l'adapter de base de données qui connaît le domaine. Retournez une couche extérieure, le domaine reste intact.</figcaption>
+</figure>
+<p>C'est pourquoi vous pouvez remplacer l'intégralité de votre framework web, ou migrer de MySQL vers DynamoDB, sans que le domaine s'en aperçoive. Les flèches de dépendance ne pointent jamais en dehors du cœur, donc les changements à la périphérie ne peuvent pas y faire des remous. (Si vous avez entendu parler du <em>Principe d'Inversion de Dépendance</em> — le « D » dans SOLID — c'est lui en pratique : le domaine définit l'interface, l'adapter s'y conforme.)</p>
+
+<h2 id="primary-secondary">Pilotant et piloté, mis en pratique</h2>
+<p>Pourquoi la distinction primaire/secondaire compte-t-elle au quotidien ? Parce qu'elle vous dit <em>qui possède l'interface</em>.</p>
+<ul>
+  <li>Pour un port <strong>piloté</strong> (base de données, e-mail), c'est le <em>domaine</em> qui possède l'interface et l'adapter s'adapte à elle. C'est ce qui vous permet de changer de fournisseur librement.</li>
+  <li>Pour un port <strong>pilotant</strong> (vos cas d'utilisation), c'est l'<em>application</em> qui possède l'interface et le monde extérieur (HTTP, CLI, un harnais de test) l'appelle. C'est ce qui permet à la même logique d'alimenter une API REST aujourd'hui et un endpoint gRPC ou un job planifié demain, sans changer une seule règle.</li>
+</ul>
+<p>Un test utile : un tout nouveau mécanisme de diffusion (par exemple un bot Slack) devrait être <em>uniquement</em> un nouvel adapter pilotant. Un tout nouveau fournisseur (par exemple passer de Stripe à Adyen) devrait être <em>uniquement</em> un nouvel adapter piloté. Si l'un ou l'autre vous oblige à ouvrir le domaine, c'est qu'il y a eu une fuite quelque part.</p>
+
+<h2 id="by-company-size">À quoi ça ressemble selon la taille de l'entreprise</h2>
+<p>C'est là que beaucoup de conseils déraillent — ils traitent l'architecture comme une solution universelle. La <em>bonne</em> dose de Ports &amp; Adapters dépend fortement de où en est votre entreprise. Voici la version honnête :</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Stade de l'entreprise</th><th>La douleur qu'il supprime</th><th>Quelle dose appliquer</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Solo / startup précoce</th>
+      <td>Vous avez choisi SQLite et un fournisseur de paiement à la hâte et vous craignez maintenant d'être enfermé dedans.</td>
+      <td>Un ou deux ports maximum — généralement la base de données et les paiements. Laissez tout le reste en direct. La vitesse prime sur la pureté ici.</td>
+    </tr>
+    <tr>
+      <th>Petite / en croissance (≈ Série A)</th>
+      <td>Les tests frappent la vraie base de données et un sandbox fournisseur, donc ils sont lents, fragiles, et les développeurs arrêtent de les lancer.</td>
+      <td>Mettez des ports autour de tous les I/O. Les faux permettent aux tests unitaires de tourner en quelques millisecondes et aux nouvelles recrues de comprendre le domaine en une journée.</td>
+    </tr>
+    <tr>
+      <th>Taille moyenne / scale-up</th>
+      <td>Plusieurs équipes se marchent dessus ; une décision de réduction de coûts « quitter SendGrid » se transforme en une réécriture d'un mois.</td>
+      <td>Les ports deviennent des <em>contrats</em> entre les équipes. Changer de fournisseur, c'est un nouvel adapter, pas une migration.</td>
+    </tr>
+    <tr>
+      <th>Grande entreprise / enterprise</th>
+      <td>Systèmes hérités, fournisseurs régionaux, audits, et règles d'approvisionnement qui exigent « pas d'enfermement chez un seul fournisseur ».</td>
+      <td>Plusieurs adapters par port (ancien + nouveau), migrations en strangler-fig, et l'indépendance vis-à-vis des fournisseurs comme exigence écrite.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h3 id="size-stories">Trois courtes histoires du monde réel</h3>
+<p><strong>La petite boutique e-commerce (10 personnes).</strong> Ils ont encapsulé les e-mails derrière un port <code>Notifier</code> à une seule méthode « au cas où ». Deux ans plus tard, leurs coûts d'e-mail ont grimpé en flèche ; passer de SendGrid à Amazon SES a consisté en un seul nouvel adapter et une modification d'une ligne dans le câblage, livrée en un après-midi. La logique de commande — leurs joyaux — n'a pas été touchée.</p>
+<p><strong>La fintech en scale-up (≈ 120 ingénieurs).</strong> Les paiements devaient transiter par un fournisseur local dans un pays et un fournisseur international dans un autre, le choix étant fait à l'exécution transaction par transaction. Parce que <code>PaymentGateway</code> était un port, « quel fournisseur » est devenu une décision de routage cachée derrière l'interface. Les auditeurs de conformité ont adoré : la frontière était une couture évidente et testable.</p>
+<p><strong>La grande banque (1 000+ ingénieurs).</strong> Un mainframe vieux de 20 ans ne pouvait pas être remplacé du jour au lendemain. Ils ont défini un port <code>AccountLedger</code> et écrit <em>deux</em> adapters — l'un parlant à l'ancien mainframe, l'autre au nouveau système core-banking — puis ont migré le trafic progressivement (un « strangler fig »). Les équipes développaient de nouvelles fonctionnalités contre le port pendant que la migration se déroulait en dessous, invisible.</p>
+
+<h2 id="vs-layered">Ports &amp; Adapters face à l'approche en couches classique</h2>
+<p>La plupart des équipes viennent d'une architecture en couches traditionnelle (UI en haut, services au milieu, base de données en bas). Voici comment les deux se comparent :</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Question</th><th>En couches classique (UI → service → DB)</th><th>Ports &amp; Adapters</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Qui dépend de qui ?</th><td>De haut en bas : chaque couche dépend de celle du dessous, jusqu'à la base de données.</td><td>Tout dépend vers <em>l'intérieur</em>, jusqu'au domaine. La base de données n'est qu'un plugin parmi d'autres.</td></tr>
+    <tr><th>Peut-on tester les règles sans DB ?</th><td>Généralement non — le service accède directement à la DB.</td><td>Oui — injectez un faux dépôt ; pas de DB, pas de réseau.</td></tr>
+    <tr><th>Changer de fournisseur ?</th><td>Touche la couche service et se propage vers l'extérieur.</td><td>Écrivez un nouvel adapter ; le domaine ne change jamais.</td></tr>
+    <tr><th>Où vivent les règles métier ?</th><td>Souvent étalées entre les services et la DB.</td><td>Concentrées dans le domaine, en langage métier.</td></tr>
+    <tr><th>Coût</th><td>Peu de cérémonie, mais vous lie à votre stack avec le temps.</td><td>Quelques interfaces supplémentaires au départ ; rentable à mesure que les changements s'accélèrent.</td></tr>
+  </tbody>
+</table>
+</div>
+<p>La différence principale est la direction des flèches. Dans le code en couches, tout dépend finalement de la base de données. Dans Ports &amp; Adapters, la base de données dépend de vous. Cette inversion est tout l'intérêt.</p>
+
+<h2 id="when-and-when-not">Quand l'adopter (et quand ne pas le faire)</h2>
+<p>Une bonne architecture consiste à calibrer l'effort aux enjeux. Adoptez Ports &amp; Adapters quand :</p>
+<ul>
+  <li>L'application a de <strong>vraies règles métier</strong> qui méritent d'être protégées (pas seulement du CRUD sur une table).</li>
+  <li>Vous prévoyez de <strong>remplacer ou d'ajouter</strong> des intégrations — fournisseurs, bases de données, canaux — au fil de sa vie.</li>
+  <li>La <strong>vitesse et la fiabilité des tests</strong> comptent, et vous voulez des tests unitaires rapides et déterministes.</li>
+  <li>Plusieurs équipes ou une longue durée de vie font que des <strong>frontières claires</strong> rentabilisent d'elles-mêmes l'investissement.</li>
+</ul>
+<p>Soyez sceptique — ou appliquez-le très légèrement — quand :</p>
+<ul>
+  <li>C'est une <strong>application CRUD légère</strong> ou un prototype jetable ; l'indirection n'est qu'une surcharge inutile.</li>
+  <li>Le « domaine » est essentiellement votre schéma de base de données ; il n'y a rien à protéger.</li>
+  <li>Vous êtes un <strong>développeur solo qui livre vite</strong> et le coût d'une réécriture future est inférieur au coût de la cérémonie maintenant.</li>
+</ul>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">N'imitez pas aveuglément</span><p>Envelopper un endpoint CRUD sans valeur dans trois interfaces ne le rend pas « propre » — ça le rend plus difficile à lire. L'architecture est un coût que vous payez pour acheter de la <em>flexibilité au changement</em>. Si rien ne va changer, vous payez pour rien.</p></div>
+
+<h2 id="mistakes">Les erreurs courantes (et des corrections simples)</h2>
+<ul>
+  <li><strong>Des ports qui fuient.</strong> Si votre <code>PaymentGateway</code> renvoie un objet <code>Stripe.Charge</code>, le fournisseur a fuité à travers le port. Correction : les ports ne parlent qu'avec vos propres types (<code>Receipt</code>, <code>Money</code>).</li>
+  <li><strong>Un domaine anémique.</strong> Si toute la vraie logique vit dans les adapters et que le domaine n'est que des sacs de données, vous avez tracé la frontière au mauvais endroit. Correction : poussez les règles <em>vers</em> le cœur.</li>
+  <li><strong>Un port géant.</strong> Un unique <code>IRepository</code> avec 40 méthodes n'est pas une frontière, c'est un fourre-tout. Correction : des ports petits, nommés selon leur objectif (<code>OrderRepository</code>, <code>InventoryRepository</code>).</li>
+  <li><strong>Confondre les DTOs avec les modèles de domaine.</strong> La forme que vous envoyez via HTTP n'est pas votre entité de domaine. Correction : laissez les adapters traduire entre le format de transport et le domaine.</li>
+  <li><strong>Des interfaces pour tout.</strong> Toutes les classes n'ont pas besoin d'un port — seulement celles qui franchissent une frontière (I/O, fournisseurs, mécanismes de diffusion). Correction : ajoutez un port quand vous ressentez la douleur, pas par précaution.</li>
+</ul>
+
+<h2 id="getting-started">Comment commencer lundi matin</h2>
+<p>Vous ne réécrivez rien. Vous introduisez une seule couture là où ça fait le plus mal, et vous vous arrêtez là :</p>
+<ul>
+  <li><strong>1. Choisissez votre dépendance la plus douloureuse.</strong> Généralement la base de données ou un fournisseur peu fiable.</li>
+  <li><strong>2. Rédigez l'interface que vous <em>souhaiteriez</em> avoir.</strong> Avec les mots de votre métier : <code>save(order)</code>, pas <code>execSql(...)</code>.</li>
+  <li><strong>3. Déplacez le code du fournisseur derrière un adapter</strong> qui l'implémente. Rien d'autre ne change pour l'instant.</li>
+  <li><strong>4. Injectez l'adapter</strong> au lieu de l'instancier en ligne, et écrivez un faux pour les tests.</li>
+  <li><strong>5. Savourez le soulagement, puis recommencez</strong> — mais seulement là où la turbulence ou la douleur des tests justifie un nouveau port.</li>
+</ul>
+<p>En une semaine, vous aurez des tests rapides autour de votre intégration la plus épineuse et un domaine qui commence à se lire comme votre métier. C'est tout le bénéfice, disponible de façon incrémentale.</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Points clés à retenir</h3>
+<ul>
+  <li><strong>Une seule idée :</strong> les règles métier au centre, la technologie à la périphérie, communiquant uniquement via des interfaces.</li>
+  <li><strong>Port</strong> = une interface dont le domaine est propriétaire. <strong>Adapter</strong> = l'implémentation réelle (Stripe, Postgres, React).</li>
+  <li><strong>Les dépendances pointent vers l'intérieur.</strong> Le domaine ne sait rien du monde extérieur.</li>
+  <li>Les adapters <strong>pilotants</strong> appellent votre application ; les adapters <strong>pilotés</strong> sont appelés par elle.</li>
+  <li><strong>Adaptez la dose aux enjeux :</strong> quelques ports pour une startup, des frontières indépendantes des fournisseurs pour une grande entreprise, et presque rien pour une application CRUD jetable.</li>
+  <li><strong>Adoptez-le de façon incrémentale</strong> — une couture douloureuse à la fois. Vous n'avez jamais besoin d'une grande réécriture.</li>
+</ul>
+</div>
+<p>Dans le prochain article de cette série, nous construirons sur cette base et examinerons comment Ports &amp; Adapters se relie à <em>Clean Architecture</em> et <em>Onion Architecture</em> — trois noms qui pointent vers la même étoile du nord — et où ils diffèrent vraiment en pratique.</p>3:["$","$L8",null,{"category":"architecture","slug":"ports-and-adapters","children":[["$","$L9",null,{"category":"architecture","slug":"ports-and-adapters","readingMinutes":16,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/fr/blog/architecture/ports-and-adapters","title":"Ports & Adapters (Hexagonal Architecture), Expliqués Simplement","surface":"blog","category":"architecture","slug":"ports-and-adapters","labels":{"share":"Partager","copyLink":"Copier le lien","copied":"Copié !","close":"Fermer"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/fr/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/fr/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Code source & Architecture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Les fondamentaux de l'architecture logicielle",["$","span",null,{"aria-hidden":"true","children":" · "}],"Partie 1 sur 15"]}],["$","h1",null,{"className":"blog-article__title","children":"Ports & Adapters (Hexagonal Architecture), Expliqués Simplement"}],["$","p",null,{"className":"blog-article__summary","children":"Un guide accessible et riche en exemples sur l'Hexagonal Architecture : ce que sont vraiment les ports et les adapters, la règle unique qui la fait fonctionner, et exactement quelle dose en appliquer — que vous soyez un fondateur solo ou une équipe d'entreprise."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Par Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-07","children":"7 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"16 min de lecture"}],["$","$Lc",null,{"label":"vues"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Architecture logicielle",{"children":"Architecture logicielle"}],["$","li","Hexagonal Architecture",{"children":"Hexagonal Architecture"}],["$","li","Ports and Adapters",{"children":"Ports and Adapters"}],["$","li","Clean Architecture",{"children":"Clean Architecture"}],["$","li","Conception de systèmes",{"children":"Conception de systèmes"}],["$","li","Dependency Inversion",{"children":"Dependency Inversion"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"Qu'en avez-vous pensé ?","surface":"blog","category":"architecture","slug":"ports-and-adapters","reactionLabels":{"like":"J'aime","love":"Adoré","insightful":"Pertinent","clap":"Bravo"}}]
+10:["$","$L18",null,{"heading":"Lectures liées","intro":"Quelques articles proches pour poursuivre le même fil avec plus de contexte.","items":[{"post":{"slug":"clean-vs-onion-vs-hexagonal","category":"architecture","title":"Clean, Onion & Hexagonal Architecture : Une étoile du nord, trois noms","summary":"Elles ressemblent à trois architectures rivales. En réalité, c'est la même idée — les dépendances pointent vers l'intérieur, les frameworks restent à la périphérie — dessinée de trois façons différentes. Voici ce que chacune apporte vraiment, et laquelle choisir.","date":"2026-03-06","readingMinutes":15,"tags":["Architecture logicielle","Clean Architecture","Onion Architecture","Hexagonal Architecture","Conception de systèmes","Dependency Inversion"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":2},"categoryTitle":"Code source & Architecture","readingLabel":"15 min de lecture"},{"post":{"slug":"hexagonal-architecture-in-practice","category":"architecture","title":"Hexagonal Architecture in Practice","summary":"A practical guide to applying Hexagonal Architecture to one small feature: drawing the boundary, naming ports in business language, keeping adapters at the edge, testing the core, and deciding when the extra structure is worth the cost.","date":"2026-04-22","readingMinutes":7,"tags":["Software Architecture","Hexagonal Architecture","Ports and Adapters","Testing","Code Organization","Technical Debt"],"author":"Nguyen Le Phong"},"categoryTitle":"Code source & Architecture","readingLabel":"7 min de lecture"},{"post":{"slug":"monolith-to-microservices","category":"architecture","title":"Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête","summary":"Les microservices sont une taxe que vous payez pour la mise à l'échelle organisationnelle — pas un point de départ. Un parcours sans fioriture du monolithe au monolithe modulaire puis aux microservices, avec les signaux qui vous disent quand (et si) diviser.","date":"2026-03-03","readingMinutes":16,"tags":["Architecture logicielle","Microservices","Modular Monolith","Conception de systèmes","Systèmes distribués","Scalabilité"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":5},"categoryTitle":"Code source & Architecture","readingLabel":"16 min de lecture"},{"post":{"slug":"micro-frontends-when-why-and-cost","category":"architecture","title":"Micro-Frontends : Quand Ça Vaut le Coup, et Ce Que Ça Coûte","summary":"Diviser le frontend en pièces déployables indépendamment peut libérer les équipes — ou vous noyer dans la complexité. Rédigé à partir de l'expérience de livraison d'une configuration Angular-host + modules React à grande échelle : quand les micro-frontends rapportent, et la facture qu'ils entraînent.","date":"2026-03-02","readingMinutes":15,"tags":["Architecture logicielle","Micro-Frontends","Architecture frontend","Module Federation","Scalabilité","Conception de systèmes"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":6},"categoryTitle":"Code source & Architecture","readingLabel":"15 min de lecture"}],"sourceCategory":"architecture","sourceSlug":"ports-and-adapters"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"Les fondamentaux de l'architecture logicielle","children":[["$","span",null,{}],["$","$Lb",null,{"href":"/fr/blog/architecture/clean-vs-onion-vs-hexagonal","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["À suivre"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Clean, Onion & Hexagonal Architecture : Une étoile du nord, trois noms"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/fr/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Retour à Code source & Architecture"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"Sur cette page","surface":"blog"}]}]
+16:null

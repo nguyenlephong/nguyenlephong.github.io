@@ -1,0 +1,190 @@
+1:"$Sreact.fragment"
+a:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"EngagementProvider"]
+b:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+c:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+d:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+e:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+f:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+1a:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+1b:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T510,{"@context":"https://schema.org","@type":"Article","@id":"https://nguyenlephong.github.io/en/notes/complexity-is-inevitable-simplicity-is-sustainable#article","headline":"Complexity Is Inevitable, Simplicity Is Sustainable: Lessons from Systems and Life","description":"Early in a technical career, it is easy to mistake more tools, more abstraction and clever code for better architecture. Large systems teach a quieter lesson: growth creates complexity, but clarity keeps systems maintainable. This article connects essential and accidental complexity, technical debt, trade-offs, and the same discipline of simplicity in a busy life.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/notes/complexity-is-inevitable-simplicity-is-sustainable","image":"https://nguyenlephong.github.io/og/notes/complexity-is-inevitable-simplicity-is-sustainable.png","mainEntityOfPage":"https://nguyenlephong.github.io/en/notes/complexity-is-inevitable-simplicity-is-sustainable","datePublished":"2026-02-21","dateModified":"2026-02-21","keywords":"System Design, Software Architecture, Simplicity, Technical Debt, Engineering Philosophy, Personal Reflection","author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:T10bc,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/en/notes/complexity-is-inevitable-simplicity-is-sustainable#faq","mainEntity":[{"@type":"Question","name":"What’s the difference between essential and accidental complexity?","acceptedAnswer":{"@type":"Answer","text":"Essential complexity is baked into the problem itself — the irreducible difficulty you take on the moment you serve tens of millions of users, honour strict SLAs, or meet real security and compliance rules. You can’t delete it any more than a growing city can delete its need for traffic lights. Accidental complexity is the extra weight you add by accident: a “temporary” shortcut that became the architecture, an abstraction that no longer hides anything, code so entangled that one change breaks five things. The healthy goal isn’t zero complexity — it’s making sure all the complexity you carry is essential and earned, with no accidental pile on top. Simplicity is, very literally, the work of shrinking that accidental layer back down."}},{"@type":"Question","name":"Does “keep it simple” mean avoiding new technology or shipping fewer features?","acceptedAnswer":{"@type":"Answer","text":"No — and that’s the most common misreading. Simple is not crude, and it doesn’t mean less code or less tech. In architecture, simple means clear: behaviour you can predict, boundaries you can point to, standard ways to do common things, and changes that stay local instead of rippling everywhere. You can adopt a powerful new technology and still be simple, as long as it earns its place and a normal engineer can reason about it. What simplicity rejects is complexity that nobody can name a reason for — flexibility “just in case,” options nobody uses, and clever magic that only its author understands."}},{"@type":"Question","name":"How do I know my system has too much accidental complexity or technical debt?","acceptedAnswer":{"@type":"Answer","text":"Watch the gap between effort and outcome, and watch people’s fear. Warning signs: a few lines of code take hours just to find the right place to put them; a small change triggers a cascade of unrelated bugs; only one person understands a critical flow; onboarding a new engineer takes painfully long; and — the loudest signal — the team is quietly afraid to touch certain areas. When the system has grown past what any human can hold in their head (its cognitive-load limit), technical debt has crossed from “debt” into compound interest. That fear-to-change is your cue to start refactoring toward clarity, not to keep piling on."}},{"@type":"Question","name":"Isn’t choosing “boring technology” just being afraid of innovation?","acceptedAnswer":{"@type":"Answer","text":"Not at all. Choosing boring, proven technology is a bet on stability and on the humans who have to operate the system — including you, at 3 a.m. when something breaks. Hype-driven tech can be genuinely better, but it also carries hidden costs: immature tooling, thin documentation, few people who can debug it, and surprises in production. The disciplined move isn’t to refuse all new tech; it’s to make new tech earn its risk against a clear, present need rather than adopting it because it’s trending. Innovation that you can operate calmly and hand to the next person is worth far more than novelty you’re afraid to touch."}},{"@type":"Question","name":"How does this systems lesson apply to everyday, non-technical life?","acceptedAnswer":{"@type":"Answer","text":"Modern life behaves a lot like a distributed system: too much information, too many relationships, too much pressure, too many variables. That complexity is inevitable, and trying to “scale” yourself to handle all of it at once, without control, leads straight to overload and burnout. The same principle helps: clear away the noise to focus on what’s most essential, refuse short-term satisfactions that quietly cost you long-term value, and don’t be afraid to pause or even start over so your next steps are steadier. Simplicity in life isn’t escaping a complex world — it’s the ability to control complexity, and that control is what gives you the clarity and stamina to find a happiness that lasts."}}]}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean notes-accent notes-reading","style":{"--topic-color":"#b45309"},"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"ノート\",\"item\":\"https://nguyenlephong.github.io/en/notes\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Perspectives & Reflections\",\"item\":\"https://nguyenlephong.github.io/en/notes?topic=goc-nhin\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Complexity Is Inevitable, Simplicity Is Sustainable: Lessons from Systems and Life\",\"item\":\"https://nguyenlephong.github.io/en/notes/complexity-is-inevitable-simplicity-is-sustainable\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],["$L5","$L6","$L7","$L8"],"$L9"]}],"loading":null,"isPartial":false}
+10:T4865,<blockquote>
+<p><em>Complexity is the inevitable price of growth. Simplicity is the quiet investment in the future. One is what you pay to get big; the other is what lets you stay alive once you are.</em></p>
+</blockquote>
+
+<p>In my first years as an engineer, I held one belief with almost religious conviction: a <em>“great”</em> system was a place where the newest technologies gathered, where abstraction layers stacked floor upon floor, and where the more <em>“magic code”</em> there was, the more it proved the brilliance of whoever wrote it.</p>
+<p>Then years spent wrestling with <strong>large-scale distributed systems</strong> taught me a very different lesson.</p>
+<p>At the scale of tens of millions of users, a line of code is never just “correct or wrong.” It is also operating cost. It is latency. It is the user’s experience and, in the end, the business result. After countless refactors, tear-it-down-and-rebuilds, and sleepless nights chasing problems I had created for myself, one paradox kept showing up:</p>
+<p><strong>Complexity is inevitable when things grow. But simplicity is the foundation of sustainable growth.</strong></p>
+<p>This is a warm, office-sized look at that paradox — why complexity always arrives, the pattern that quietly weakens systems from the inside, what “simple” really means, why staying simple is the harder choice, and how the very same idea steadies a busy modern life.</p>
+
+<h2 id="complexity-is-inevitable">1. Why complexity is inevitable</h2>
+<p>Every great system begins with something tiny: a few APIs, one database, and a small team sitting around the same table. But the law of growth never lets us stand still.</p>
+<p>When traffic multiplies, when the business demands speed (<em>time-to-market</em>), and when constraints around <em>SLA</em> or <em>Security &amp; Privacy</em> tighten, the system is forced to evolve. That is when complexity shows up — uninvited. It arrives wearing many costumes.</p>
+
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th width="22%">Where it grows</th><th width="40%">In the system</th><th>The everyday parallel</th></tr></thead>
+<tbody>
+<tr><td><strong>Infrastructure</strong></td><td>Sharding, Replication, Multi-level Caching, Multi-region</td><td>One shared drive becomes many offices, with backups, branches, and copies kept in sync</td></tr>
+<tr><td><strong>Architecture</strong></td><td>Event-driven, Async processing, Distributed transactions</td><td>One to-do list becomes many teams handing work off to each other across time zones</td></tr>
+<tr><td><strong>Security &amp; Compliance</strong></td><td>Data Encryption, RBAC/ACL, Audit Logging, legal constraints</td><td>One office key becomes badges, sign-in logs, NDAs, and yearly audits</td></tr>
+<tr><td><strong>Process</strong></td><td>Backward compatibility, Zero-downtime migration, CI/CD Automation</td><td>Renovating the shop while it stays open, without ever turning customers away</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>And here is the part we love to forget: complexity also comes from <strong>people and organisations</strong>. Team A needs speed; Team B needs safety. Ops needs stability; Product needs features. Those competing interests turn a software architecture into a tangled map of compromises — and no diagram ever shows that part.</p>
+<p>So complexity is not a mistake. It is the natural consequence of solving harder and harder problems. This is what we call <strong>Essential Complexity</strong> — the irreducible kind that is baked into the problem itself.</p>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">A useful reframe</span><p>You can’t “delete” essential complexity any more than you can wish away the traffic lights a growing city needs. The goal isn’t a system with zero complexity — it’s a system whose complexity is all <em>earned</em>, every piece there for a reason you can name out loud.</p></div>
+
+<h2 id="the-uncontrolled-trap">2. The pattern of uncontrolled complexity</h2>
+<p>If complexity is inevitable, why do systems still end up on the operating table for a full “tear it down and rebuild”? The answer is its unhelpful twin: <strong>Accidental Complexity</strong> — the complexity we add by accident, that the problem never asked for.</p>
+<p>Systems rarely collapse because they got big. They collapse when:</p>
+<ul>
+<li>Temporary, good-enough-for-now solutions “fall asleep” and quietly wake up as the official architecture.</li>
+<li>Abstraction layers stop hiding complexity and start <em>being</em> the complexity — a tax you pay on every change.</li>
+<li>The effort to ship a feature goes wildly out of proportion: a few lines of code, but hours to understand where they even go.</li>
+<li>The code is so entangled that one small change sets off a butterfly effect of cascading bugs.</li>
+</ul>
+
+<div class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 330" role="img" aria-labelledby="dgm-two-kinds">
+    <title id="dgm-two-kinds">A feature should cost only its essential complexity, but in a neglected system it actually costs the essential part plus a thick accidental layer on top. That extra layer is the part discipline can give back.</title>
+    <text class="dgm-t-accent" x="380" y="30" text-anchor="middle" font-size="13">TWO KINDS OF COMPLEXITY</text>
+    <rect class="dgm-core" x="120" y="168" width="170" height="112" rx="10"/>
+    <text class="dgm-t-strong" x="205" y="218" text-anchor="middle" font-size="13">Essential</text>
+    <text class="dgm-t-muted" x="205" y="238" text-anchor="middle" font-size="10.5">the problem itself</text>
+    <text class="dgm-t-muted" x="205" y="304" text-anchor="middle" font-size="11">What it <tspan class="dgm-t-strong">should</tspan> cost</text>
+    <rect class="dgm-core" x="470" y="168" width="170" height="112" rx="10"/>
+    <text class="dgm-t-strong" x="555" y="222" text-anchor="middle" font-size="13">Essential</text>
+    <text class="dgm-t-muted" x="555" y="242" text-anchor="middle" font-size="10.5">same as before</text>
+    <rect class="dgm-driven" x="470" y="64" width="170" height="94" rx="10"/>
+    <text class="dgm-t-accent" x="555" y="106" text-anchor="middle" font-size="13">Accidental</text>
+    <text class="dgm-t-muted" x="555" y="126" text-anchor="middle" font-size="10.5">self-inflicted tangle</text>
+    <text class="dgm-t-muted" x="555" y="304" text-anchor="middle" font-size="11">What it <tspan class="dgm-t-strong">actually</tspan> costs</text>
+    <line class="dgm-line" x1="120" y1="168" x2="700" y2="168" stroke-dasharray="5 5"/>
+    <text class="dgm-t-muted" x="708" y="111" font-size="10.5">the part</text>
+    <text class="dgm-t-muted" x="708" y="126" font-size="10.5">discipline</text>
+    <text class="dgm-t-muted" x="708" y="141" font-size="10.5">gives back</text>
+  </svg>
+  <figcaption>Essential complexity is the floor you can’t go below. Accidental complexity is everything piled on top — and that pile is exactly where simplicity earns its keep.</figcaption>
+</div>
+
+<p>When that pile gets tall enough, the system tips into a state of <strong>stagnation</strong>. It becomes a frightening black box: hard to understand, hard to debug, hard to extend, hard to onboard anyone into, and — most telling of all — everyone becomes <em>afraid to change it.</em></p>
+<p>This is the moment <strong>Technical Debt</strong> stops behaving like “debt” and starts behaving like <em>compound interest</em>. Every shortcut you didn’t pay down quietly charges you again, and the total slips past the team’s <strong>Cognitive Load</strong> — the amount of the system any human can actually hold in their head at once.</p>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">The “temporary” trap</span><p>Nothing is as permanent as a temporary fix that worked. The sticky note you left on Monday is still on the monitor a year later, and now three other things depend on it. Accidental complexity almost never arrives as a big bad decision — it accumulates one reasonable shortcut at a time.</p></div>
+
+<h2 id="simplicity-is-clarity">3. Simplicity: the key to staying alive</h2>
+<p>When we talk about simplicity, the first thing to get straight is what it is <em>not</em>: <strong>simple is not crude.</strong> Simplicity isn’t “less code” or “less technology.” In system architecture, simplicity shows up as one thing above all — <strong>Clarity</strong>.</p>
+
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th width="50%">A system you’re afraid of</th><th>A system you understand</th></tr></thead>
+<tbody>
+<tr><td>Complex business flows live only in one senior’s head</td><td>Complex flows are drawn in models clear enough for many people to share</td></tr>
+<tr><td>Behaviour depends on hidden assumptions and “you just have to know”</td><td>Behaviour is predictable, written down, not folklore</td></tr>
+<tr><td>When it breaks, nobody knows where to even start looking</td><td>When it breaks, you can localise it and know which part to watch first</td></tr>
+<tr><td>Every engineer solves the same thing their own personal way</td><td>There’s a standard way to do common things, by default</td></tr>
+<tr><td>One small change ripples through the whole system</td><td>You can change one part without a chain reaction</td></tr>
+<tr><td>Nobody’s sure whether the DB, the App, or “somewhere” owns a rule</td><td>Responsibilities are bounded: the DB does the DB’s job, the App does the App’s</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Clarity is what keeps a system simple enough to develop on confidently and reliably. And over time, it does something even more valuable: it dramatically lowers the <em>cognitive load</em> of running and maintaining the thing.</p>
+
+<div class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 820 330" role="img" aria-labelledby="dgm-over-time">
+    <title id="dgm-over-time">As a system grows, disciplined simplicity keeps its complexity below the team's cognitive-load limit and stays understandable, while unchecked complexity crosses that limit and becomes an unmaintainable black box.</title>
+    <defs>
+      <marker id="otArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <line class="dgm-line" x1="74" y1="44" x2="74" y2="266" marker-start="url(#otArrow)"/>
+    <line class="dgm-line" x1="74" y1="266" x2="788" y2="266" marker-end="url(#otArrow)"/>
+    <text class="dgm-t-muted" x="74" y="32" text-anchor="middle" font-size="10.5">complexity</text>
+    <text class="dgm-t-muted" x="700" y="286" text-anchor="middle" font-size="10.5">time / growth →</text>
+    <line class="dgm-line" x1="74" y1="120" x2="788" y2="120" stroke-dasharray="6 6"/>
+    <text class="dgm-t-accent" x="300" y="112" text-anchor="middle" font-size="11">the team’s cognitive-load limit</text>
+    <path class="dgm-flow" fill="none" d="M74,250 C 300,224 540,206 788,196"/>
+    <text class="dgm-t-strong" x="600" y="184" font-size="11.5">disciplined simplicity →</text>
+    <text class="dgm-t-muted" x="600" y="200" font-size="10">stays understandable</text>
+    <path class="dgm-flow" fill="none" stroke-dasharray="2 5" d="M74,250 C 330,212 430,150 560,120 C 650,99 700,72 770,54"/>
+    <circle class="dgm-fill-accent" cx="560" cy="120" r="5"/>
+    <text class="dgm-t-accent" x="556" y="86" text-anchor="middle" font-size="11">unchecked complexity ↗</text>
+    <text class="dgm-t-muted" x="556" y="102" text-anchor="middle" font-size="10">crosses the line → stagnation</text>
+  </svg>
+  <figcaption>Two systems can be the same size. The one whose complexity stays under the line of what people can hold in their heads is the one that survives.</figcaption>
+</div>
+
+<p>That is the real prize. When a system is clear, a newcomer — and even the “old hand” who built it but has long since forgotten the details — can look back and understand <em>why</em> it was designed this way, and then keep maintaining and evolving it. Instead of just learning, nervously, how to “make it run.”</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">The throughline</span><p>Only when humans truly master the system does the system get a chance to survive. People are the platform everything long-lasting is built on — not the framework, not the cloud, not the cleverest abstraction.</p></div>
+
+<h2 id="simplicity-is-a-hard-choice">4. Simplicity is a hard choice</h2>
+<p>Making something complex is easy: add a layer, add a technology, and you’re done. Keeping something simple is brutally hard. It demands discipline and a constant willingness to weigh <strong>trade-offs</strong>:</p>
+
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th width="30%">When you’re tempted to…</th><th width="35%">The seductive path</th><th>The simple, disciplined path</th></tr></thead>
+<tbody>
+<tr><td>Build for a need that <em>might</em> come</td><td>“Let’s make it fully flexible now, just in case”</td><td><strong>YAGNI</strong> — build it when the need is real, not imagined</td></tr>
+<tr><td>Reach for a shiny new tool</td><td>Adopt the <em>hype</em> tech everyone’s tweeting about</td><td>Choose the “boring” but proven tech you can still operate calmly at 3 a.m.</td></tr>
+<tr><td>Make everything configurable</td><td>Infinite knobs and options “for flexibility”</td><td>One good default; add a knob only when a real case demands it</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>In short, choosing simplicity means daring to say <strong>“No”</strong> to features you don’t need yet, daring to sacrifice a little fake <em>flexibility</em> in exchange for real stability, and daring to pick the boring-but-effective option over the exciting-but-risky one.</p>
+<p>Honestly? Reaching simplicity has never been easy — not even for me. Not every solution I ship arrives at its ideal, lean form on the first try. Caught between the hard limits of resources and time, the road to simplicity is always full of detours. But here’s how I’ve made peace with it: <strong>simplicity isn’t a final destination — it’s a compass.</strong> It’s the thing that keeps me coming back to <em>refactor</em> the system after every new lesson.</p>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Try this in your next review</span><p>Before adding a layer, an option, or a dependency, ask one question out loud: <em>“What real, present problem does this solve — and what does it cost the next person who has to understand it?”</em> If you can’t answer the first half clearly, you’ve probably just found some accidental complexity before it was born.</p></div>
+
+<p>Because in the lifetime of any system, the technology will age, the people will move on, the management will change, and the business requirements will shift. The only thing that stays behind is your <strong>architectural decisions — and their consequences.</strong></p>
+
+<h2 id="from-systems-to-life">5. From systems to life</h2>
+<p>The longer I do this work, the more I realise this way of thinking isn’t only true on the job. It’s true of my own life.</p>
+<p>Modern life is itself a kind of distributed system: too much information, too many relationships, too much pressure, too many variables. That complexity is inevitable — we can’t escape it. And if we let ourselves get swept along, trying to “scale” ourselves to handle everything at once with no control, we tip into overload and burnout fast.</p>
+<p>So there are moments when the wise move is to pause for a beat and think more carefully — or to accept starting over, so the next steps can be steadier and reach further.</p>
+<p><strong>“Simplicity is sustainable”</strong> isn’t just a working principle for me. It’s a philosophy of living I’m still learning to follow.</p>
+<p>And to be clear, simple here doesn’t mean denying or running from a complex world. Simple is the <em>ability to control</em> complexity:</p>
+<ul>
+<li>Knowing how to clear away the noise to focus on what is most essential.</li>
+<li>Knowing how to refuse the short-term “satisfactions” that quietly cost you long-term value.</li>
+<li>Only by holding on to simplicity do we keep the clarity and stamina to walk through the most complex stretches of a life — and from there, find a happiness that lasts.</li>
+</ul>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Key takeaways</h3>
+<ul>
+<li><strong>Complexity is the price of growth.</strong> As traffic, teams, and constraints grow, infrastructure, architecture, security, and process all get harder. That’s <em>essential</em> complexity — not a flaw, but earned weight.</li>
+<li><strong>The deeper risk is accidental complexity.</strong> Systems rarely die from being big; they die from “temporary” shortcuts that became permanent, abstractions that stopped helping, and tangled code where one change breaks five things.</li>
+<li><strong>Technical debt turns into compound interest.</strong> Once complexity passes the team’s cognitive-load limit, the system becomes a black box everyone’s afraid to touch.</li>
+<li><strong>Simple is not crude — simple is clarity.</strong> Predictable behaviour, clear boundaries, standard ways of doing things, and changes that stay local.</li>
+<li><strong>Staying simple is the harder choice.</strong> It takes discipline: YAGNI, boring-but-proven tech, one good default — and the courage to say “no.”</li>
+<li><strong>People are the real platform.</strong> Tech ages, people leave, requirements shift; what remains is your architectural decisions and their consequences. A system humans can master is one that gets to last.</li>
+<li><strong>The same lesson steadies a life.</strong> You can’t avoid life’s complexity, but you can control it — clear the noise, refuse cheap short-term wins, and keep enough clarity to go the distance.</li>
+</ul>
+</div>
+
+<p>You won’t get to choose whether complexity arrives — in your systems or in your days. It always does. But you do get to choose what you do with it: whether you let it pile up unexamined, or keep gently refactoring toward something clear enough to hand on. Complexity is what you pay to grow. Simplicity is what you invest so that what you built — and who you are — can still be standing long after the hype has moved on.</p>4:["$","$La",null,{"category":"notes","slug":"complexity-is-inevitable-simplicity-is-sustainable","children":[["$","$Lb",null,{"category":"notes","slug":"complexity-is-inevitable-simplicity-is-sustainable","readingMinutes":12,"surface":"notes"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lc",null,{"url":"https://nguyenlephong.github.io/en/notes/complexity-is-inevitable-simplicity-is-sustainable","title":"Complexity Is Inevitable, Simplicity Is Sustainable: Lessons from Systems and Life","surface":"notes","category":"notes","slug":"complexity-is-inevitable-simplicity-is-sustainable","labels":{"share":"シェア","copyLink":"リンクをコピー","copied":"コピーしました！","close":"閉じる"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Ld",null,{"href":"/ja/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ノート"}],[["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Ld",null,{"href":"/ja/notes?topic=goc-nhin","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Perspectives & Reflections"}]],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"Complexity Is Inevitable, Simplicity Is Sustainable: Lessons from Systems and Life"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","h1",null,{"className":"blog-article__title","children":"Complexity Is Inevitable, Simplicity Is Sustainable: Lessons from Systems and Life"}],["$","p",null,{"className":"blog-article__summary","children":"Early in a technical career, it is easy to mistake more tools, more abstraction and clever code for better architecture. Large systems teach a quieter lesson: growth creates complexity, but clarity keeps systems maintainable. This article connects essential and accidental complexity, technical debt, trade-offs, and the same discipline of simplicity in a busy life."}],["$","div",null,{"className":"blog-article__meta","children":[["$","time",null,{"dateTime":"2026-02-21","children":"2026年2月21日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"12 分で読めます"}],["$","$Le",null,{"label":"回閲覧"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","System Design",{"children":"System Design"}],["$","li","Software Architecture",{"children":"Software Architecture"}],["$","li","Simplicity",{"children":"Simplicity"}],["$","li","Technical Debt",{"children":"Technical Debt"}],["$","li","Engineering Philosophy",{"children":"Engineering Philosophy"}],["$","li","Personal Reflection",{"children":"Personal Reflection"}]]}]]}],["$","$Lf",null,{"html":"$10"}],"$L11",null,"$L12"]}]]}],"$L13","$L14"]}],"$L15"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/579669e8fc8fe057.css","precedence":"next"}]
+6:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+7:["$","script","script-0",{"src":"/_next/static/chunks/60afb5b0374fe7a9.js","async":true}]
+8:["$","script","script-1",{"src":"/_next/static/chunks/0e65e15104575034.js","async":true}]
+9:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+11:["$","section",null,{"className":"blog-faq","aria-labelledby":"notes-faq-heading","children":[["$","h2",null,{"id":"notes-faq-heading","className":"blog-faq__heading","children":"よくある質問"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What’s the difference between essential and accidental complexity?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Essential complexity is baked into the problem itself — the irreducible difficulty you take on the moment you serve tens of millions of users, honour strict SLAs, or meet real security and compliance rules. You can’t delete it any more than a growing city can delete its need for traffic lights. Accidental complexity is the extra weight you add by accident: a “temporary” shortcut that became the architecture, an abstraction that no longer hides anything, code so entangled that one change breaks five things. The healthy goal isn’t zero complexity — it’s making sure all the complexity you carry is essential and earned, with no accidental pile on top. Simplicity is, very literally, the work of shrinking that accidental layer back down."}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Does “keep it simple” mean avoiding new technology or shipping fewer features?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"No — and that’s the most common misreading. Simple is not crude, and it doesn’t mean less code or less tech. In architecture, simple means clear: behaviour you can predict, boundaries you can point to, standard ways to do common things, and changes that stay local instead of rippling everywhere. You can adopt a powerful new technology and still be simple, as long as it earns its place and a normal engineer can reason about it. What simplicity rejects is complexity that nobody can name a reason for — flexibility “just in case,” options nobody uses, and clever magic that only its author understands."}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How do I know my system has too much accidental complexity or technical debt?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Watch the gap between effort and outcome, and watch people’s fear. Warning signs: a few lines of code take hours just to find the right place to put them; a small change triggers a cascade of unrelated bugs; only one person understands a critical flow; onboarding a new engineer takes painfully long; and — the loudest signal — the team is quietly afraid to touch certain areas. When the system has grown past what any human can hold in their head (its cognitive-load limit), technical debt has crossed from “debt” into compound interest. That fear-to-change is your cue to start refactoring toward clarity, not to keep piling on."}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Isn’t choosing “boring technology” just being afraid of innovation?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Not at all. Choosing boring, proven technology is a bet on stability and on the humans who have to operate the system — including you, at 3 a.m. when something breaks. Hype-driven tech can be genuinely better, but it also carries hidden costs: immature tooling, thin documentation, few people who can debug it, and surprises in production. The disciplined move isn’t to refuse all new tech; it’s to make new tech earn its risk against a clear, present need rather than adopting it because it’s trending. Innovation that you can operate calmly and hand to the next person is worth far more than novelty you’re afraid to touch."}}]]}],"$L19"]}]]}]
+12:["$","$L1a",null,{"prompt":"いかがでしたか？","surface":"notes","category":"notes","slug":"complexity-is-inevitable-simplicity-is-sustainable","reactionLabels":{"like":"いいね","love":"お気に入り","insightful":"学びになった","clap":"祝福"}}]
+13:["$","nav",null,{"className":"blog-series-nav","aria-label":"Perspectives & Reflections","children":[["$","$Ld",null,{"href":"/ja/notes/the-old-man-who-lost-his-horse","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","前のノート"]}],["$","span",null,{"className":"blog-series-nav__title","children":"The Old Man Who Lost His Horse: Hold the Verdict, Keep the Present"}]]}],["$","$Ld",null,{"href":"/ja/notes/same-facts-different-story","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["次のノート"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Same Facts, Different Story: Position and Language Change the Experience"}]]}]]}]
+14:["$","footer",null,{"className":"blog-article__footer","children":["$","$Ld",null,{"href":"/ja/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","ノートに戻る"]}]}]
+15:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1b",null,{"label":"このページの内容","surface":"notes"}]}]
+18:null
+19:["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How does this systems lesson apply to everyday, non-technical life?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Modern life behaves a lot like a distributed system: too much information, too many relationships, too much pressure, too many variables. That complexity is inevitable, and trying to “scale” yourself to handle all of it at once, without control, leads straight to overload and burnout. The same principle helps: clear away the noise to focus on what’s most essential, refuse short-term satisfactions that quietly cost you long-term value, and don’t be afraid to pause or even start over so your next steps are steadier. Simplicity in life isn’t escaping a complex world — it’s the ability to control complexity, and that control is what gives you the clarity and stamina to find a happiness that lasts."}}]]}]

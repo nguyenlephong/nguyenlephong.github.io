@@ -1,0 +1,147 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+5:I[21245,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+6:I[77105,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+13:I[49784,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+14:I[63047,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+16:I[9450,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+17:I[35757,["/_next/static/chunks/3eb5526bf007241a.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/615749f3583e97a0.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+18:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T471,{"@context":"https://schema.org","@type":"Article","@id":"https://nguyenlephong.github.io/en/notes/the-monkey-eight-hours-and-unquestioned-rules#article","headline":"The Monkey, the Bananas, and the Eight-Hour Question","description":"A familiar monkey experiment, Sơn Tùng M-TP, the eight-hour workday, and the rules we keep following after forgetting why they began. This personal reflection asks what AI and automation should give back: not only more output, but more agency over time, attention and the shape of a working life.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/notes/the-monkey-eight-hours-and-unquestioned-rules","image":"https://nguyenlephong.github.io/og/notes/the-monkey-eight-hours-and-unquestioned-rules.png","mainEntityOfPage":"https://nguyenlephong.github.io/en/notes/the-monkey-eight-hours-and-unquestioned-rules","datePublished":"2026-02-10","dateModified":"2026-02-10","keywords":"Work, Society, AI, Productivity, Personal Reflection, Future of Work","author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"KR7d5e40vDcl4tos3IAgD","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean notes-accent notes-reading","style":{"--topic-color":"#b45309"},"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"笔记\",\"item\":\"https://nguyenlephong.github.io/en/notes\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Perspectives & Reflections\",\"item\":\"https://nguyenlephong.github.io/en/notes?topic=goc-nhin\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"The Monkey, the Bananas, and the Eight-Hour Question\",\"item\":\"https://nguyenlephong.github.io/en/notes/the-monkey-eight-hours-and-unquestioned-rules\"}]}"}}],null,["$","$L3",null,{"category":"notes","slug":"the-monkey-eight-hours-and-unquestioned-rules","children":[["$","$L4",null,{"category":"notes","slug":"the-monkey-eight-hours-and-unquestioned-rules","readingMinutes":9,"surface":"notes"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L5",null,{"url":"https://nguyenlephong.github.io/en/notes/the-monkey-eight-hours-and-unquestioned-rules","title":"The Monkey, the Bananas, and the Eight-Hour Question","surface":"notes","category":"notes","slug":"the-monkey-eight-hours-and-unquestioned-rules","labels":{"share":"分享","copyLink":"复制链接","copied":"已复制！","close":"关闭"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$L6",null,{"href":"/zh/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"笔记"}],[["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$L6",null,{"href":"/zh/notes?topic=goc-nhin","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Perspectives & Reflections"}]],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"The Monkey, the Bananas, and the Eight-Hour Question"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","h1",null,{"className":"blog-article__title","children":"The Monkey, the Bananas, and the Eight-Hour Question"}],["$","p",null,{"className":"blog-article__summary","children":"A familiar monkey experiment, Sơn Tùng M-TP, the eight-hour workday, and the rules we keep following after forgetting why they began. This personal reflection asks what AI and automation should give back: not only more output, but more agency over time, attention and the shape of a working life."}],"$L7","$L8"]}],"$L9","$undefined",null,"$La"]}]]}],"$Lb","$Lc"]}],"$Ld"]}]]}],["$Le","$Lf","$L10","$L11"],"$L12"]}],"loading":null,"isPartial":false}
+7:["$","div",null,{"className":"blog-article__meta","children":[["$","time",null,{"dateTime":"2026-02-10","children":"2026年2月10日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"9 分钟阅读"}],["$","$L13",null,{"label":"次浏览"}]]}]
+8:["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Work",{"children":"Work"}],["$","li","Society",{"children":"Society"}],["$","li","AI",{"children":"AI"}],["$","li","Productivity",{"children":"Productivity"}],["$","li","Personal Reflection",{"children":"Personal Reflection"}],["$","li","Future of Work",{"children":"Future of Work"}]]}]
+15:T28e6,<p>There is a well-known experiment involving a group of monkeys that I keep returning to whenever I look at the world around me.</p>
+
+<p>Researchers placed a group of monkeys in an enclosure. In the centre, they placed a ladder with a bunch of ripe bananas at the top. Driven by instinct, one monkey climbed toward the bananas. The moment it did, the researchers blasted the entire group with cold water. The same thing happened the second time. And the third. It didn't take long for the group to learn the pattern: whenever someone climbs the ladder, everyone suffers.</p>
+
+<p>After that, every time a monkey approached the ladder, the others would rush over to drag it down, beat it, and prevent it from climbing — not out of spite, but out of self-preservation.</p>
+
+<p>Then the researchers began replacing the original monkeys one by one with newcomers who had never experienced the cold water. Each time a new monkey curiously approached the ladder, it was stopped by the group. The newer arrivals, observing this, absorbed the rule without question. They, too, would pull others down.</p>
+
+<p>Eventually, none of the original monkeys remained in the cage. Not a single one who had ever been hit by the water. Yet the rule held firm, as solid as a self-evident truth:</p>
+
+<blockquote><p><em>If anyone climbs that ladder, stop them.</em></p></blockquote>
+
+<p>Nobody remembered where it started. Nobody understood why it still applied. But everyone kept to it, because that was what everyone before them had done.</p>
+
+<p>The bananas were still up there. The opportunity was still real.</p>
+
+<p>Only now, anyone who dared to climb was pulled down — by individuals who had long forgotten the reason they were pulling.</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">The thought that stays with me</span><p>Sometimes the most dangerous thing is not a bad rule. It's a rule that has outlived its reason — but continues to be followed as though it were handed down from nature itself.</p></div>
+
+<h2 id="eight-hours">A simple question: why eight hours?</h2>
+
+<p>That story keeps pulling me back to something we rarely think to question: <strong>why do we work eight hours a day?</strong></p>
+
+<p>Ask almost anyone. The answer, if they give one at all, is some version of: <em>"Because that's how it's always been."</em></p>
+
+<p>But the eight-hour day didn't arrive fully formed from the natural order of things. It was won through decades of labour movement struggle during the industrial revolution of the 19th century — an era when factory workers routinely laboured for 12 to 16 hours a day in brutal conditions. The rallying cry of the movement was straightforward:</p>
+
+<blockquote><p><em>Eight hours for work — eight hours for rest — eight hours for what we will.</em></p></blockquote>
+
+<p>At the time, that was a radical idea. It was the product of real sacrifice — and it had a very clear reason to exist.</p>
+
+<p>But from the 19th century to today, the world has changed almost beyond recognition. Machines replaced physical labour. Computers replaced millions of hours of manual work. The internet compressed time and distance in ways no factory-era reformer could have imagined. And now we are entering an age of AI and robotics — where a single person can produce what once required an entire team.</p>
+
+<p>Productivity per worker has risen dramatically, decade after decade.</p>
+
+<p>And yet the question <em>"should people perhaps work fewer hours?"</em> is almost never asked seriously — certainly not by the systems that organise our working lives.</p>
+
+<p>We are still in the cage. Still looking up at the bananas. And still pulling one another down whenever someone dares to suggest a different way.</p>
+
+<h2 id="paradox">The AI paradox: liberation or consolidation?</h2>
+
+<p>This is the part that troubles me most.</p>
+
+<p>If a company once needed four people working eight hours a day — thirty-two labour-hours in total — and AI means one person can now handle that same workload, the obvious question is: <strong>where does that productivity gain actually go?</strong></p>
+
+<p>In an ideal version of events, society might choose a different path: keep all four people employed, let each one work two hours, and return the remaining six hours of every day to them — to spend however they choose. Lives made richer by the productivity that technology unlocked.</p>
+
+<p>But what tends to happen in practice looks quite different.</p>
+
+<ul>
+  <li>Productivity goes up.</li>
+  <li>Profits go up.</li>
+  <li>The workload per remaining employee goes up.</li>
+  <li>And working hours stay almost exactly the same.</li>
+</ul>
+
+<p>The honest question is whether AI is being used to liberate people — or to maximise returns.</p>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">The real paradox</span><p>If one machine can do the work of four people, the ideal future is not three people unemployed and one person working themselves to exhaustion. It's four people sharing the gain — working less, and living more. That outcome is a choice. It doesn't happen automatically.</p></div>
+
+<h2 id="what-we-trade">What we are trading away</h2>
+
+<p>Every morning, millions of people leave their homes before the sun has properly risen. They sit in traffic, commute across cities, work their eight hours — not counting the travel, the overtime, or the work messages that keep arriving after they're home.</p>
+
+<p>When they return, the body is depleted and the mind is already somewhere else. Children are almost asleep. Ageing parents haven't been called. The family meal together has quietly become a weekend luxury.</p>
+
+<p>There is something quietly uncomfortable about this: many people spend more time with colleagues than with the people they love most. An office worker might sit alongside coworkers for eight or ten hours a day, five days a week. The time actually spent eating, talking, or playing with their children can shrink to a matter of minutes.</p>
+
+<p>We say family is the most important thing. But the way our working lives are arranged tells a different story.</p>
+
+<p>If AI and automation genuinely increase output many times over, then the largest dividend shouldn't be measured only in profit. It should be measured in <em>time returned</em>.</p>
+
+<ul>
+  <li>Time to walk a child to school and be there when they come out.</li>
+  <li>Time to cook a proper meal at home.</li>
+  <li>Time to be present with ageing parents while they are still here.</li>
+  <li>Time to watch children grow in real time — not through photos on a phone, caught up with on a Sunday evening.</li>
+</ul>
+
+<p>A genuinely advanced society is not one where people work more and more because technology makes it possible. It is one where technology gives people back the things they have been slowly losing.</p>
+
+<p>Because at the end of a life, nobody regrets the hours they didn't spend in an office. People regret the hours they didn't spend with the people they loved.</p>
+
+<h2 id="son-tung">The ones who climb the ladder</h2>
+
+<p>Recently, when Vietnamese artist Sơn Tùng M-TP released <em>Come My Way</em> — a track with English lyrics — a wave of criticism arrived almost immediately:</p>
+
+<blockquote><p><em>"A Vietnamese artist should sing in Vietnamese."</em></p></blockquote>
+
+<p>Maybe that's right. Maybe it isn't. I have no standing to judge the artistic merit of the choice.</p>
+
+<p>But what reminded me of the monkey cage wasn't the song. It was the <strong>speed and certainty of the crowd pulling downward</strong> — before anyone had paused to wonder where the climb might lead, or what it might teach us about what Vietnamese music can become on a global stage.</p>
+
+<p>In every field — art, business, technology — progress requires people who are willing to step up first. They may fail. They may be mocked. But without them, we remain on the ground, arguing endlessly about whether we should climb at all, while the bananas stay exactly where they were.</p>
+
+<p>Consider Elon Musk — someone widely mocked for believing a private company could launch rockets into orbit. SpaceX is now heading toward an IPO valued in the trillions, has put NASA in the position of contracting its own launches back from that private company, and investors are fighting over resale shares at extraordinary premiums. People pulled him down. He didn't stay down there.</p>
+
+<p>History has never been made by the people who did what everyone around them was already doing. It has always been made by those who climbed the ladder — knowing full well there would be hands reaching up to pull them back.</p>
+
+<h2 id="future">What comes next</h2>
+
+<p>As AI, robotics, and automation reach the point where they can genuinely substitute for much of what humans do today — both physically and cognitively — the normal working day of the future may look nothing like ours.</p>
+
+<p>Four hours. Two hours. Perhaps less.</p>
+
+<p>Because the ultimate aim of civilisation is not to build increasingly capable machines. It is to give people more time to actually live — fully, and on their own terms.</p>
+
+<p>This shift may start in the United States, or in Northern Europe, where four-day-week experiments are already underway. But the more important question isn't when or where. It's: <strong>who will be the first to climb the ladder?</strong></p>
+
+<p>AI should be turning one person's eight-hour day into four people's two-hour day. Not turning four people's jobs into one person's eight hours of grinding.</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">What I want to leave here</h3>
+<ul>
+  <li><strong>Every rule has an origin:</strong> the eight-hour day was born for a specific reason, in a very different world. The question isn't whether to follow it — it's whether it still fits.</li>
+  <li><strong>Rising productivity does not automatically mean more freedom:</strong> who decides where the gains from AI and automation actually go is a social choice, not an economic inevitability.</li>
+  <li><strong>Time is the one thing you can't get back:</strong> every hour in the office is an hour not spent with children, parents, or the people you love most.</li>
+  <li><strong>Those who climb the ladder are usually pulled down first:</strong> but that doesn't mean they're wrong — sometimes it just means the crowd isn't ready yet.</li>
+</ul>
+</div>9:["$","$L14",null,{"html":"$15"}]
+a:["$","$L16",null,{"prompt":"你觉得怎么样？","surface":"notes","category":"notes","slug":"the-monkey-eight-hours-and-unquestioned-rules","reactionLabels":{"like":"赞","love":"喜欢","insightful":"有启发","clap":"致敬"}}]
+b:["$","nav",null,{"className":"blog-series-nav","aria-label":"Perspectives & Reflections","children":[["$","$L6",null,{"href":"/zh/notes/know-your-work-rights","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","上一篇笔记"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Know Your Rights at Work: Quitting, Switching Jobs, Insurance and Tax in Vietnam"}]]}],["$","span",null,{}]]}]
+c:["$","footer",null,{"className":"blog-article__footer","children":["$","$L6",null,{"href":"/zh/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","返回笔记"]}]}]
+d:["$","aside",null,{"className":"blog-article__toc","children":["$","$L17",null,{"label":"本页内容","surface":"notes"}]}]
+e:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/579669e8fc8fe057.css","precedence":"next"}]
+f:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+10:["$","script","script-0",{"src":"/_next/static/chunks/60afb5b0374fe7a9.js","async":true}]
+11:["$","script","script-1",{"src":"/_next/static/chunks/0e65e15104575034.js","async":true}]
+12:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+1a:null

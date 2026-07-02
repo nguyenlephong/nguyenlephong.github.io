@@ -1,0 +1,18 @@
+{
+  "slug": "code-run-on-people",
+  "title": "Does Code Still Run on People?",
+  "summary": "“Programs must be written for people to read” was gospel for decades — and now AI agents write and read most of the code. Yet the old line may still hold: the artifact people write for other people has simply moved up a layer, from the implementation to the intent — the prompt, the spec, the decision that frames the work.",
+  "cardSummary": "AI writes the code now. What humans write for each other just moved up a layer.",
+  "date": "2026-02-06",
+  "readingMinutes": 2,
+  "tags": [
+    "Thoughts",
+    "Software Engineering",
+    "AI",
+    "Code Readability"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "topic": "thoughts",
+  "html": "<blockquote>\n<p>&ldquo;Programs must be written for people to read, and only incidentally for machines to execute.&rdquo;<br>&mdash; Harold Abelson, <em>Structure and Interpretation of Computer Programs</em></p>\n</blockquote>\n<p>For decades this line was gospel — the kind of sentence you nodded at, repeated in code reviews, and built careers on. Reading it today is genuinely funny. AI coding agents now write and read most of the code, and engineers increasingly orchestrate in English rather than in syntax. So the obvious question: who exactly is the code &ldquo;running on&rdquo; anymore? Machines are writing for machines. The human in the loop has quietly stepped back from reading line by line, toward something else — writing clear intent in natural language and trusting the agent to render it.</p>\n<p>And yet I think Abelson&rsquo;s quote still holds, just not in the way he meant. The artifact that people now write for other people is no longer the code itself; it is the prompt, the spec, the architectural decision that frames the whole effort. Those are what a teammate opens to understand what you were thinking — the things that must still be legible six months from now. The center of gravity of human readability didn&rsquo;t disappear. It migrated up a layer, from the implementation to the intent.</p>"
+}
