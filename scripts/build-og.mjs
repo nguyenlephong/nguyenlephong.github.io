@@ -95,7 +95,8 @@ function getFreshDeepHtmlState(dir, startedAt, depth = 0) {
       continue
     }
 
-    if (!entry.isFile() || !entry.name.endsWith('.html') || depth < 3) continue
+    // Count exported locale routes like out/en/notes/foo.html as a valid export signal.
+    if (!entry.isFile() || !entry.name.endsWith('.html') || depth < 2) continue
 
     let stat
     try {
@@ -199,12 +200,15 @@ function run(command, commandArgs, env, options = {}) {
     let lastExportSignature = ''
     let forceKillTimer = null
     let terminationRequested = false
+    let lastChildOutputAt = Date.now()
     let lastHeartbeatAt = Date.now()
 
     child.stdout?.on('data', (chunk) => {
+      lastChildOutputAt = Date.now()
       process.stdout.write(chunk)
     })
     child.stderr?.on('data', (chunk) => {
+      lastChildOutputAt = Date.now()
       process.stderr.write(chunk)
     })
 
@@ -227,11 +231,9 @@ function run(command, commandArgs, env, options = {}) {
           const exportState = getExportState(startedAt)
           const exportSucceeded = exportState.detailSuccess || exportState.fallbackSatisfied
           const exportSignature = exportSucceeded
-            ? [
-                exportState.detailSuccess ? 'detail' : 'fallback',
-                exportState.latestActivityMtimeMs,
-                exportState.htmlCount,
-              ].join(':')
+            ? exportState.detailSuccess
+              ? ['detail', exportState.latestActivityMtimeMs, exportState.htmlCount].join(':')
+              : ['fallback', exportState.htmlCount].join(':')
             : ''
 
           if (exportSucceeded && exportSignature !== lastExportSignature) {
@@ -243,9 +245,13 @@ function run(command, commandArgs, env, options = {}) {
 
           if (now - lastHeartbeatAt >= BUILD_HEARTBEAT_MS) {
             lastHeartbeatAt = now
+            const exportHeartbeat = exportState.detailSuccess
+              ? '[build-og] next build export detail succeeded; waiting for the output to go quiet'
+              : `[build-og] next build is exporting static HTML (${exportState.htmlCount} routes); waiting for route count and output to settle`
+
             console.log(
               exportSucceeded
-                ? '[build-og] next build export looks complete; waiting for the output to go quiet'
+                ? exportHeartbeat
                 : '[build-og] waiting for next build export to finish'
             )
           }
@@ -253,11 +259,13 @@ function run(command, commandArgs, env, options = {}) {
           if (!exportSucceeded) return
 
           const quietMs = exportState.detailSuccess ? EXPORT_EXIT_GRACE_MS : EXPORT_FALLBACK_QUIET_MS
+          const outputQuiet = now - lastChildOutputAt >= quietMs
           if (
             terminateAfterSuccessfulExport &&
             !terminationRequested &&
             exportStableSince !== null &&
-            Date.now() - exportStableSince >= quietMs
+            Date.now() - exportStableSince >= quietMs &&
+            (exportState.detailSuccess || outputQuiet)
           ) {
             terminationRequested = true
             console.warn(
