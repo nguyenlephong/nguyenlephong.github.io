@@ -17,6 +17,11 @@
 
 # OG image build cache (populated/restored by CI)
 /public/og-cache/*.png
+/public/og/blog/*.png
+/public/og/notes/*.png
+/public/assets/blog/
+/public/assets/notes/
+/public/assets/photos/
 
 # misc
 .DS_Store

@@ -11,6 +11,7 @@ import {
   getPostsByCategory,
   listCategorySlugs,
 } from '@/lib/blog/data'
+import { blogPostOgImageUrl } from '@/lib/og/static-images'
 import PageTracker from '@/components/analytics/PageTracker'
 import BlogPostCard from '@/components/blog/BlogPostCard'
 import '../blog.css'
@@ -90,7 +91,7 @@ export default async function BlogCategoryPage({ params }: Props) {
       '@type': 'BlogPosting',
       headline: p.title,
       url: canonicalFor(locale, `/blog/${p.category}/${p.slug}`),
-      image: canonicalFor(locale, `/blog/${p.category}/${p.slug}/opengraph-image`),
+      image: blogPostOgImageUrl(p.slug),
     })),
   }
 

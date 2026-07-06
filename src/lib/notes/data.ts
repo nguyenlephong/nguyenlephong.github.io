@@ -7,6 +7,7 @@ import {
   readJson,
   readJsonValidated
 } from "@/lib/content/io";
+import { rewriteContentAssetUrls } from "@/lib/assets/icdn";
 import { notesIndexSchema, noteSchema } from "./schema";
 import type { Note, NoteMeta, NotesIndexFile, TopicMeta } from "./types";
 
@@ -152,14 +153,16 @@ export function loadNote(slug: string, locale?: string): Note | null {
     noteSchema
   );
   if (!base) return null;
-  if (contentLocale(locale) !== "vi") return base;
+  if (contentLocale(locale) !== "vi") {
+    return { ...base, html: rewriteContentAssetUrls(base.html) };
+  }
 
   const override = readJson<Partial<Note>>(
     path.join(DATA_DIR, "vi", "posts", `${slug}.json`)
   );
-  if (!override) return base;
+  if (!override) return { ...base, html: rewriteContentAssetUrls(base.html) };
 
-  return {
+  const note = {
     ...base,
     title: override.title ?? base.title,
     summary: override.summary ?? base.summary,
@@ -168,4 +171,6 @@ export function loadNote(slug: string, locale?: string): Note | null {
     book: override.book ?? base.book,
     faqs: override.faqs ?? base.faqs
   };
+
+  return { ...note, html: rewriteContentAssetUrls(note.html) };
 }

@@ -11,6 +11,7 @@ import {
   listTopics,
   NOTE_CONTENT_LOCALES
 } from "@/lib/notes/data";
+import { noteOgImageUrl } from "@/lib/og/static-images";
 import PageTracker from "@/components/analytics/PageTracker";
 import NotesExplorer from "@/components/notes/NotesExplorer";
 import "./notes.css";
@@ -132,7 +133,7 @@ export default async function NotesPage({ params }: Props) {
         "@type": "Article",
         headline: n.title,
         url: canonicalFor(noteLocale, `/notes/${n.slug}`),
-        image: canonicalFor(noteLocale, `/notes/${n.slug}/opengraph-image`),
+        image: noteOgImageUrl(n.slug),
         datePublished: n.date
       };
     })

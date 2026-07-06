@@ -8,6 +8,7 @@
     "build:og": "node scripts/generate-static-og.mjs",
     "build:fast": "node scripts/build-og.mjs --skip",
     "build:force": "node scripts/build-og.mjs --full",
+    "assets:icdn": "node scripts/sync-icdn-assets.mjs",
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",

@@ -1,33 +1,33 @@
 // Extracted from app.const.ts — profile content data. Re-assembled into
 // `profileInfo` by app.const.ts so existing imports keep working.
 
-import { CDN_PATH } from "@/app/app.conf";
+import { icdnAssetUrl } from "@/lib/assets/icdn";
 
 export const gallery = {
     certificates: [
       {
-        src: "/assets/photos/cert_verygood.JPG",
+        src: icdnAssetUrl("/gallery/certificates/very-good-degree.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - Very good",
         width: 320,
         height: 4
       },
       {
-        src: "/assets/photos/scoreboard.jpeg",
+        src: icdnAssetUrl("/gallery/certificates/scoreboard.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - Score board",
         width: 320,
         height: 4
       },
       {
-        src: CDN_PATH + "/images/me/certificate-test.JPG",
+        src: icdnAssetUrl("/gallery/certificates/tester-certificate.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - Tester certificate",
         width: 282,
         height: 4
       },
       {
-        src: "/assets/photos/ComplianceRefreshTraining.png",
+        src: icdnAssetUrl("/gallery/certificates/compliance-refresh-training.webp"),
         refs: "https://coursera.org/verify/78B9OXN1FMDG",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - Compliance Refresh Training certificate",
@@ -35,7 +35,7 @@ export const gallery = {
         height: 232
       },
       {
-        src: "/assets/photos/CybersecurityRefreshTraining.png",
+        src: icdnAssetUrl("/gallery/certificates/cybersecurity-refresh-training.webp"),
         refs: "https://coursera.org/verify/MO66Y2JRPCLE",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - Cybersecurity Refresh Training certificate",
@@ -45,7 +45,7 @@ export const gallery = {
     ],
     activities: [
       {
-        src: CDN_PATH + "/images/me/DSC_1507.JPG",
+        src: icdnAssetUrl("/gallery/activities/desk-working.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - desk working",
         width: 4,
@@ -54,7 +54,7 @@ export const gallery = {
     ],
     awards: [
       {
-        src: CDN_PATH + "/images/me/best_rookie.jpeg",
+        src: icdnAssetUrl("/gallery/awards/best-rookie.webp"),
         alt: "Nguyen Le Phong - Software Engineer - Best rookie of the year",
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         width: 3,
@@ -62,7 +62,7 @@ export const gallery = {
       },
 
       {
-        src: CDN_PATH + "/images/me/certificate_splus.jpeg",
+        src: icdnAssetUrl("/gallery/awards/splus-certificate.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - Splus Certificate",
         width: 4,
@@ -70,28 +70,28 @@ export const gallery = {
       },
 
       {
-        src: CDN_PATH + "/images/me/award_prime.jpeg",
+        src: icdnAssetUrl("/gallery/awards/primedata-award.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - Award at PrimeData",
         width: 4,
         height: 3
       },
       {
-        src: "/assets/photos/medal_uprace.jpeg",
+        src: icdnAssetUrl("/gallery/awards/uprace-medals.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - UpRace - Medal 21km, Medal 10km, Medal 5km",
         width: 3,
         height: 4
       },
       {
-        src: "/assets/photos/uprace_cert.PNG",
+        src: icdnAssetUrl("/gallery/awards/uprace-323km-certificate.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - UpRace Certificate 323km",
         width: 420,
         height: 279
       },
       {
-        src: "/assets/photos/trekking_penang_hill.jpeg",
+        src: icdnAssetUrl("/gallery/awards/trekking-penang-hill.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Trekking Penang Hill - Malaysia Certificate 11km",
         width: 420,
@@ -100,7 +100,7 @@ export const gallery = {
     ],
     projects: [
       {
-        src: CDN_PATH + "/images/project/chess_games.jpg",
+        src: icdnAssetUrl("/gallery/projects/chess-games.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - Chess games project",
         width: 4,
@@ -108,7 +108,7 @@ export const gallery = {
       },
 
       {
-        src: CDN_PATH + "/images/project/wat_overview.png",
+        src: icdnAssetUrl("/gallery/projects/wat-overview.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - Wat project at splus software",
         width: 4,
@@ -116,14 +116,14 @@ export const gallery = {
       },
 
       {
-        src: CDN_PATH + "/images/me/essay-group.JPG",
+        src: icdnAssetUrl("/gallery/projects/essay-group.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - my essay",
         width: 4,
         height: 3
       },
       {
-        src: CDN_PATH + "/images/me/drone.JPG",
+        src: icdnAssetUrl("/gallery/projects/drone-team.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - My team to implement essay",
         width: 4,
@@ -131,7 +131,7 @@ export const gallery = {
       },
 
       {
-        src: CDN_PATH + "/images/me/drone_dev.jpeg",
+        src: icdnAssetUrl("/gallery/projects/drone-development.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
         alt: "Nguyen Le Phong - Software Engineer - drone applications",
         width: 4,

@@ -6,6 +6,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { PAGE_SEO, SITE, SITE_URL } from "@/app/seo.config";
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from "@/lib/blog/seo";
 import { listCategories, listPosts } from "@/lib/blog/data";
+import { blogPostOgImageUrl } from "@/lib/og/static-images";
 import PageTracker from "@/components/analytics/PageTracker";
 import BlogCategoryCard from "@/components/blog/BlogCategoryCard";
 import BlogExplorer from "@/components/blog/BlogExplorer";
@@ -102,7 +103,7 @@ export default async function BlogIndexPage({ params }: Props) {
       "@type": "BlogPosting",
       headline: p.title,
       url: canonicalFor(locale, `/blog/${p.category}/${p.slug}`),
-      image: canonicalFor(locale, `/blog/${p.category}/${p.slug}/opengraph-image`),
+      image: blogPostOgImageUrl(p.slug),
       datePublished: p.date
     }))
   };

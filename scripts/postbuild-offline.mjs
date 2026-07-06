@@ -16,6 +16,7 @@ const HTML_FILE_CONCURRENCY = Math.max(
   1,
   Number.parseInt(process.env.OFFLINE_HTML_CONCURRENCY ?? '16', 10) || 16,
 )
+const CDN_BACKED_EXPORT_PATHS = ['og', 'assets/blog', 'assets/notes', 'assets/photos']
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true })
@@ -29,6 +30,14 @@ async function walk(dir) {
     }
   }
   return files
+}
+
+async function removeCdnBackedExportAssets() {
+  await Promise.all(
+    CDN_BACKED_EXPORT_PATHS.map((relativePath) =>
+      fs.rm(path.join(OUT_DIR, relativePath), { recursive: true, force: true }),
+    ),
+  )
 }
 
 function toPosix(value) {
@@ -115,21 +124,34 @@ async function readAppVersion() {
   return String(parsed.version ?? '0')
 }
 
+function joinUrl(base, assetPath) {
+  return `${base.replace(/\/+$/, '')}${assetPath.startsWith('/') ? assetPath : `/${assetPath}`}`
+}
+
 async function readRemoteGalleryAssets() {
   const [gallerySource, appConfSource] = await Promise.all([
     fs.readFile(GALLERY_FILE, 'utf8'),
     fs.readFile(APP_CONF_FILE, 'utf8'),
   ])
 
+  const remoteAssets = []
+  const icdnMatch = appConfSource.match(/ICDN_BASE_URL\s*=\s*"([^"]+)"/)
+  if (icdnMatch) {
+    const icdnBase = icdnMatch[1]
+    const icdnPathPattern = /icdnAssetUrl\(\s*["']([^"']+)["']\s*\)/g
+    for (const match of gallerySource.matchAll(icdnPathPattern)) {
+      remoteAssets.push(joinUrl(icdnBase, match[1]))
+    }
+  }
+
   const cdnMatch = appConfSource.match(/CDN_PATH\s*=\s*"([^"]+)"/)
-  if (!cdnMatch) return []
+  if (!cdnMatch) return uniqueSorted(remoteAssets)
 
   const cdnBase = cdnMatch[1]
-  const remoteAssets = []
   const pathPattern = /CDN_PATH\s*\+\s*"([^"]+)"/g
   for (const match of gallerySource.matchAll(pathPattern)) {
     const assetPath = match[1]
-    remoteAssets.push(`${cdnBase}${assetPath}`)
+    remoteAssets.push(joinUrl(cdnBase, assetPath))
   }
 
   return uniqueSorted(remoteAssets)
@@ -552,7 +574,10 @@ function isContentData(pathname) {
 }
 
 function isKnownRemoteAsset(url) {
-  return url.hostname === 'cdn.jsdelivr.net';
+  return (
+    url.hostname === 'cdn.jsdelivr.net' &&
+    url.pathname.includes('/gh/nguyenlephong/dom-pub')
+  );
 }
 
 function emptyStats() {
@@ -666,6 +691,7 @@ async function main() {
     return
   }
 
+  await removeCdnBackedExportAssets()
   const files = await walk(OUT_DIR)
   const relativeFiles = files.map((file) => path.relative(OUT_DIR, file))
   const [appVersion, remoteAssets, pageVersions] = await Promise.all([

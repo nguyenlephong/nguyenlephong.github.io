@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { spawn } from 'node:child_process'
-import { existsSync, readFileSync, readdirSync, statSync, unlinkSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync, rmSync, statSync, unlinkSync } from 'node:fs'
 import path from 'node:path'
 
 const args = process.argv.slice(2)
@@ -345,6 +345,7 @@ const summary =
       : `targeted OG generation for ${targets.join(', ')}`
 
 console.log(`[build-og] ${summary}`)
+rmSync(path.join(process.cwd(), 'out'), { recursive: true, force: true })
 if (existsSync(EXPORT_DETAIL)) {
   try {
     unlinkSync(EXPORT_DETAIL)

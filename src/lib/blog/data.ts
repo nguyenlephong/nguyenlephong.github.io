@@ -7,6 +7,7 @@ import {
   readJson,
   readJsonValidated,
 } from '@/lib/content/io'
+import { rewriteContentAssetUrls } from '@/lib/assets/icdn'
 import { blogIndexSchema, blogPostSchema } from './schema'
 import type {
   BlogCategoryMeta,
@@ -119,14 +120,16 @@ export function loadPost(slug: string, locale?: string): BlogPost | null {
     blogPostSchema,
   )
   if (!base) return null
-  if (isDefaultLocale(locale)) return base
+  if (isDefaultLocale(locale)) {
+    return { ...base, html: rewriteContentAssetUrls(base.html) }
+  }
 
   const override = readJson<Partial<BlogPost>>(
     path.join(DATA_DIR, locale as string, 'posts', `${slug}.json`),
   )
-  if (!override) return base
+  if (!override) return { ...base, html: rewriteContentAssetUrls(base.html) }
 
-  return {
+  const post = {
     ...base,
     title: override.title ?? base.title,
     summary: override.summary ?? base.summary,
@@ -137,6 +140,8 @@ export function loadPost(slug: string, locale?: string): BlogPost | null {
     book: override.book ?? base.book,
     faqs: override.faqs ?? base.faqs,
   }
+
+  return { ...post, html: rewriteContentAssetUrls(post.html) }
 }
 
 export function getPostContentLocales(slug: string): string[] {

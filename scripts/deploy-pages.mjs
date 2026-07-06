@@ -61,6 +61,14 @@ if (existsSync(exportedOgCache)) {
   console.log('[deploy-pages] removed build-only out/og-cache')
 }
 
+for (const relativePath of ['og', 'assets/blog', 'assets/notes', 'assets/photos']) {
+  const exportedContentAsset = path.join(OUT_DIR, relativePath)
+  if (!existsSync(exportedContentAsset)) continue
+
+  rmSync(exportedContentAsset, { recursive: true, force: true })
+  console.log(`[deploy-pages] removed CDN-backed out/${relativePath}`)
+}
+
 mkdirSync(CACHE_DIR, { recursive: true })
 rmSync(INDEX_FILE, { force: true })
 rmSync(`${INDEX_FILE}.lock`, { force: true })

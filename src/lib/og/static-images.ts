@@ -1,15 +1,15 @@
-import { SITE_URL } from '@/app/seo.config'
+import { icdnAssetUrl } from '@/lib/assets/icdn'
 
 export function staticOgUrl(path: string): string {
-  return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`
+  return icdnAssetUrl(path)
 }
 
 export function blogPostOgImagePath(slug: string): string {
-  return `/og/blog/${slug}.png`
+  return `/og/blogs/${slug}.jpg`
 }
 
 export function noteOgImagePath(slug: string): string {
-  return `/og/notes/${slug}.png`
+  return `/og/notes/${slug}.jpg`
 }
 
 export function blogPostOgImageUrl(slug: string): string {
