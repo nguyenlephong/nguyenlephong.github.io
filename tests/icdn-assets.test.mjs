@@ -9,8 +9,9 @@ test("content assets route through the semantic icdn namespace", () => {
 
   assert.match(
     appConf,
-    /ICDN_BASE_URL\s*=\s*"https:\/\/cdn\.jsdelivr\.net\/gh\/nguyenlephong\/dom-pub@main\/icdn"/
+    /ICDN_BASE_URL\s*=\s*"https:\/\/nguyenlephong\.github\.io\/dom-pub\/icdn"/
   );
+  assert.doesNotMatch(appConf, /cdn\.jsdelivr/);
   assert.match(icdn, /from:\s*"\/assets\/blog\/",\s*to:\s*"\/blogs\/"/);
   assert.match(icdn, /from:\s*"\/assets\/notes\/",\s*to:\s*"\/notes\/"/);
   assert.match(icdn, /from:\s*"\/assets\/photos\/",\s*to:\s*"\/gallery\/photos\/"/);
@@ -27,5 +28,6 @@ test("pages deploy removes media that is served by dom-pub icdn", () => {
   assert.match(postbuildOffline, /CDN_BACKED_EXPORT_PATHS\s*=\s*\['og', 'assets\/blog', 'assets\/notes', 'assets\/photos'\]/);
   assert.match(postbuildOffline, /removeCdnBackedExportAssets/);
   assert.match(postbuildOffline, /icdnAssetUrl\\\(\\s\*\["'\]\(\[\^"'\]\+\)\["'\]\\s\*\\\)/);
-  assert.match(postbuildOffline, /\/gh\/nguyenlephong\/dom-pub/);
+  assert.match(postbuildOffline, /nguyenlephong\.github\.io/);
+  assert.match(postbuildOffline, /\/dom-pub\//);
 });

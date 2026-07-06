@@ -575,8 +575,10 @@ function isContentData(pathname) {
 
 function isKnownRemoteAsset(url) {
   return (
-    url.hostname === 'cdn.jsdelivr.net' &&
-    url.pathname.includes('/gh/nguyenlephong/dom-pub')
+    (url.hostname === 'nguyenlephong.github.io' &&
+      url.pathname.startsWith('/dom-pub/')) ||
+    (url.hostname === 'raw.githubusercontent.com' &&
+      url.pathname.startsWith('/nguyenlephong/dom-pub/'))
   );
 }
 
