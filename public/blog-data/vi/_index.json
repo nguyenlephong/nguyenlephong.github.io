@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "roadmap-meets-real-capacity",
+      "category": "ways-of-working",
+      "title": "Khi roadmap gặp capacity thật",
+      "summary": "Một góc nhìn thực tế về khoảnh khắc roadmap gặp capacity thật của team: cách làm trade-off hiện rõ, bảo vệ focus và điều chỉnh kế hoạch mà không biến planning thành đổ lỗi.",
+      "date": "2026-05-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Roadmap Planning",
+        "Capacity Planning",
+        "Ways of Working",
+        "Software Delivery",
+        "Prioritization",
+        "Team Focus"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "courage-to-write-the-first-rough-note",
+      "category": "perspectives",
+      "title": "Can đảm viết ghi chú nháp đầu tiên",
+      "summary": "Một bài reflection nhẹ về vì sao ghi chú nháp đầu tiên quan trọng: cách một đoạn viết còn lộn xộn làm suy nghĩ hiện ra, giảm áp lực phải nghe hoàn chỉnh, và giúp ý tưởng yên lặng trở nên hữu ích.",
+      "date": "2026-05-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Writing",
+        "Reflection",
+        "Learning",
+        "Career Growth",
+        "Thinking",
+        "Personal Growth"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "cost-of-trusting-a-fluent-ai-answer",
+      "category": "ai",
+      "title": "Cái giá của việc tin một câu trả lời AI trôi chảy",
+      "summary": "Một góc nhìn thực tế về câu trả lời AI nghe rất trôi chảy: vì sao ngôn ngữ tự tin dễ bị nhầm là bằng chứng, rủi ro nằm ở đâu, và team có thể giữ AI hữu ích bằng cách kiểm chứng claim qua source, test và context thật.",
+      "date": "2026-05-22",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "LLM",
+        "AI Workflow",
+        "Verification",
+        "Engineering Judgment",
+        "Responsible AI"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "calm-script-for-difficult-feedback",
+      "category": "culture",
+      "title": "Một kịch bản bình tĩnh cho feedback khó",
+      "summary": "Một hướng dẫn thực tế cho feedback khó trong engineering team: chuẩn bị dữ kiện, giữ dignity trong phòng, gọi tên behavior rõ ràng và biến cuộc trò chuyện căng thành bước tiếp theo công bằng.",
+      "date": "2026-05-21",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Feedback",
+        "Communication",
+        "Leadership",
+        "Team Trust",
+        "Management"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "observability-as-a-design-choice",
+      "category": "architecture",
+      "title": "Observability là một quyết định thiết kế",
+      "summary": "Một bài giải thích thực tế về observability như một quyết định kiến trúc: vì sao team nên thiết kế log, metric, trace, dashboard và alert vào hệ thống trước khi production đặt những câu hỏi khó.",
+      "date": "2026-05-20",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Observability",
+        "System Design",
+        "Production Readiness",
+        "Reliability",
+        "OpenTelemetry"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "cross-functional-teams",
       "category": "ways-of-working",
       "title": "Cross-functional team",
