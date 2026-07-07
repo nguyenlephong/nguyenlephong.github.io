@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "keeping-meeting-notes-close-to-decisions",
+      "category": "ways-of-working",
+      "title": "Giữ meeting notes gần với decision",
+      "summary": "Một ghi chú thực tế về việc giữ meeting notes gần decision để teammate sau này tìm được context, trade-off và follow-through mà không phải replay cuộc họp.",
+      "date": "2026-06-28",
+      "readingMinutes": 6,
+      "tags": [
+        "Ways of Working",
+        "Documentation",
+        "Decision Making",
+        "Team Communication",
+        "Planning",
+        "Product Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-relief-of-a-well-named-problem",
+      "category": "perspectives",
+      "title": "Sự nhẹ nhõm khi problem được gọi đúng tên",
+      "summary": "Một ghi chú reflection về cách problem được gọi đúng tên làm giảm căng thẳng bằng cách biến cảm giác rải rác thành thứ mọi người có thể cùng xem xét.",
+      "date": "2026-06-27",
+      "readingMinutes": 6,
+      "tags": [
+        "Reflection",
+        "Clarity",
+        "Communication",
+        "Decision Making",
+        "Learning",
+        "Teamwork"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "asking-ai-to-show-its-working-context",
+      "category": "ai",
+      "title": "Yêu cầu AI chỉ ra context nó đang dựa vào",
+      "summary": "Một reflection thực tế về việc yêu cầu AI expose working context để engineer verify evidence, assumption và gap.",
+      "date": "2026-06-26",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Context Engineering",
+        "Verification",
+        "Developer Tools",
+        "Engineering Judgment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "why-good-teams-make-risk-visible-early",
+      "category": "culture",
+      "title": "Vì sao team tốt làm risk visible từ sớm",
+      "summary": "Một ghi chú bình tĩnh về lý do team lành mạnh surface risk sớm: không phải để tạo sợ hãi, mà để công việc có thêm chỗ adjust.",
+      "date": "2026-06-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Risk",
+        "Team Communication",
+        "Trust",
+        "Delivery",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "designing-for-the-change-you-can-actually-see",
+      "category": "architecture",
+      "title": "Thiết kế cho thay đổi mình thật sự nhìn thấy",
+      "summary": "Một reflection thực tế về cách thiết kế phần mềm quanh những pattern thay đổi thật sự visible, thay vì flexibility trừu tượng có thể không bao giờ tới.",
+      "date": "2026-06-24",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Change Management",
+        "Technical Debt",
+        "Design",
+        "Product Engineering",
+        "Sustainable Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "writing-next-steps-that-actually-help",
       "category": "ways-of-working",
       "title": "Viết next step thật sự giúp người khác đi tiếp",

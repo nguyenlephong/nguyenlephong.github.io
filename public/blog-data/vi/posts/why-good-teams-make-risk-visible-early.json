@@ -1,0 +1,14 @@
+{
+  "title": "Vì sao team tốt làm risk visible từ sớm",
+  "summary": "Một ghi chú bình tĩnh về lý do team lành mạnh surface risk sớm: không phải để tạo sợ hãi, mà để công việc có thêm chỗ adjust.",
+  "readingMinutes": 6,
+  "tags": [
+    "Engineering Culture",
+    "Risk",
+    "Team Communication",
+    "Trust",
+    "Delivery",
+    "Sustainable Work"
+  ],
+  "html": "<p>Risk yên lặng nhất trong phòng là risk mà mọi người đều đã tự thấy. Dependency trễ, migration lớn hơn estimate, và test data không giống production. Nhưng update vẫn nghe ổn vì không ai muốn là người đầu tiên làm plan bớt chắc chắn.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/why-good-teams-make-risk-visible-early/early-risk-board.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Một team đặt sticky note đỏ và vàng trống lên risk board với mũi tên và icon đơn giản.' />\n  <figcaption>Risk sớm không phải tín hiệu thất bại; nó là lời mời adjust khi adjustment vẫn còn rẻ.</figcaption>\n</figure>\n<p>Team tốt không làm risk visible vì thích lo. Họ làm vậy vì risk bị giấu trở nên đắt. Khi risk được gọi tên sớm, team có thể giảm scope, đổi thứ tự, thêm test, đổi rollout, hỏi hỗ trợ, hoặc nói thật với stakeholder khi vẫn còn thời gian phản ứng.</p>\n<p>Culture quanh risk thường hiện ra trong những phrase nhỏ. Mọi người nói mình thấy một risk, hay đợi đến khi có thể nói mình đã có solution? Manager xem risk sớm là thông tin hữu ích, hay là thiếu tự tin? Căn phòng chậm lại để hiểu signal, hay vội bảo vệ plan?</p>\n<p>Làm risk visible khác với dramatize nó. Risk note hữu ích phải cụ thể. Import job có thể vượt worker timeout với account trên size này. Provider callback không idempotent trong sandbox. Old app version vẫn đọc field bị remove. Risk cụ thể cho team thứ để test, contain, hoặc accept.</p>\n<p>Risk sớm cũng bảo vệ trust. Stakeholder chịu được sự thật khó nghe tốt hơn surprise muộn. Một team report risk sớm có thể nghe kém chắc hơn trong khoảnh khắc đó, nhưng đáng tin hơn theo thời gian. Mọi người học rằng xanh là xanh, vàng là vàng, và silence không giấu bão.</p>\n<p>Leader có vai trò đặc biệt ở đây. Nếu risk nào cũng thành blame, mọi người sẽ giấu risk đến khi không thể giấu. Nếu risk nào cũng thành panic, mọi người sẽ ngừng phân biệt concern nhỏ và blocker thật. Phản ứng lành mạnh nhất là curiosity bình tĩnh: mình có evidence gì, làm gì được ngay, và ai cần biết?</p>\n<p>Risk visibility nên dẫn đến action, không phải theater. Một board đầy note đỏ tự nó chưa phải maturity. Mỗi risk cần next check, owner và decision point. Một số sẽ được accept. Một số sẽ được retired. Một số sẽ đổi plan. Điểm chính là làm công việc steerable.</p>\n<p>Team surface risk sớm không bi quan. Họ trung thực về việc reality thường đến trước deadline. Risk nào trong công việc hiện tại của bạn sẽ bớt đáng sợ nếu visible ngay hôm nay?</p>"
+}
