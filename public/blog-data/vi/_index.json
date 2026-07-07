@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "turning-unclear-work-into-shared-notes",
+      "category": "ways-of-working",
+      "title": "Biến công việc mơ hồ thành shared notes",
+      "summary": "Một ghi chú thực tế về cách dùng shared notes để biến request mơ hồ thành context, decision, example và next step có thể nhìn thấy.",
+      "date": "2026-06-13",
+      "readingMinutes": 6,
+      "tags": [
+        "Ways of Working",
+        "Product Engineering",
+        "Planning",
+        "Documentation",
+        "Team Communication",
+        "Alignment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-value-of-a-slower-first-answer",
+      "category": "perspectives",
+      "title": "Giá trị của câu trả lời đầu tiên chậm hơn một chút",
+      "summary": "Một ghi chú reflection về việc làm chậm câu trả lời đầu tiên vừa đủ để hiểu context, giảm rework và phản hồi cẩn thận hơn.",
+      "date": "2026-06-12",
+      "readingMinutes": 6,
+      "tags": [
+        "Reflection",
+        "Decision Making",
+        "Communication",
+        "Career Growth",
+        "Learning",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "using-ai-without-outsourcing-judgment",
+      "category": "ai",
+      "title": "Dùng AI mà không outsource phán đoán",
+      "summary": "Một reflection thực tế về cách dùng AI như thinking partner, trong khi judgment của con người vẫn neo vào source code, test, log và product context.",
+      "date": "2026-06-11",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Developer Tools",
+        "Engineering Judgment",
+        "Code Review",
+        "Testing"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-quiet-discipline-of-saying-not-yet",
+      "category": "culture",
+      "title": "Kỷ luật thầm lặng của việc nói chưa nên",
+      "summary": "Một ghi chú bình tĩnh về lý do engineering team lành mạnh đôi khi nói chưa nên: để bảo vệ chất lượng, trust và những người sẽ vận hành release sau đó.",
+      "date": "2026-06-10",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Quality",
+        "Release Management",
+        "Team Trust",
+        "Code Review",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "designing-interfaces-that-outlive-implementations",
+      "category": "architecture",
+      "title": "Thiết kế interface sống lâu hơn implementation",
+      "summary": "Một reflection thực tế về cách thiết kế software interface để behavior ổn định trong khi implementation bên dưới vẫn có thể thay đổi.",
+      "date": "2026-06-09",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Interfaces",
+        "Module Boundaries",
+        "Technical Debt",
+        "API Design",
+        "Sustainable Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "the-calm-way-to-handle-scope-changes",
       "category": "ways-of-working",
       "title": "Cách bình tĩnh để xử lý scope change",
