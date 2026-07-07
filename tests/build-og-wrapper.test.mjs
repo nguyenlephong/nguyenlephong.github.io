@@ -6,6 +6,7 @@ test("build wrapper fallback exit is not reset by html mtime churn", async () =>
   const buildScript = await readFile("scripts/build-og.mjs", "utf8");
 
   assert.match(buildScript, /lastChildOutputAt = Date\.now\(\)/);
+  assert.match(buildScript, /Math\.max\(EXPORT_EXIT_GRACE_MS, 120_000\)/);
   assert.match(buildScript, /\['fallback', exportState\.htmlCount\]\.join\(':'\)/);
   assert.match(buildScript, /next build is exporting static HTML/);
   assert.match(buildScript, /const outputQuiet = now - lastChildOutputAt >= quietMs/);

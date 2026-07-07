@@ -35,7 +35,7 @@ function hasFlag(...names) {
 const EXPORT_DETAIL = path.join(process.cwd(), '.next', 'export-detail.json')
 const EXPORT_EXIT_GRACE_MS = Number(process.env.OG_EXPORT_EXIT_GRACE_MS ?? 5_000)
 const EXPORT_FALLBACK_QUIET_MS = Number(
-  process.env.OG_EXPORT_FALLBACK_QUIET_MS ?? Math.max(EXPORT_EXIT_GRACE_MS, 20_000)
+  process.env.OG_EXPORT_FALLBACK_QUIET_MS ?? Math.max(EXPORT_EXIT_GRACE_MS, 120_000)
 )
 const KILL_GRACE_MS = Number(process.env.OG_KILL_GRACE_MS ?? 5_000)
 const SIGNAL_EXIT_GRACE_MS = Number(process.env.OG_SIGNAL_EXIT_GRACE_MS ?? KILL_GRACE_MS)

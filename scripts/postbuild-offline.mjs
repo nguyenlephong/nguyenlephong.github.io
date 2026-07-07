@@ -12,6 +12,10 @@ const LOCALES = ['en', 'vi', 'zh', 'ja', 'ko', 'fr']
 const DEFAULT_LOCALE = 'en'
 const PAGE_VERSION_PARAM = '__offlineVersion'
 const OFFLINE_MANIFEST_VERSION_META = 'offline-manifest-version'
+const HTML_FILE_CONCURRENCY = Math.max(
+  1,
+  Number.parseInt(process.env.OFFLINE_HTML_CONCURRENCY ?? '16', 10) || 16,
+)
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true })
@@ -47,6 +51,21 @@ function hashRecord(value) {
 
 function uniqueSorted(values) {
   return [...new Set(values)].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
+}
+
+async function mapWithConcurrency(items, concurrency, task) {
+  const limit = Math.max(1, Math.min(concurrency, items.length || 1))
+  let cursor = 0
+
+  await Promise.all(
+    Array.from({ length: limit }, async () => {
+      while (cursor < items.length) {
+        const index = cursor
+        cursor += 1
+        await task(items[index], index)
+      }
+    }),
+  )
 }
 
 function isLocaleScoped(relativePath, locale) {
@@ -122,11 +141,11 @@ async function buildPageVersions(relativeFiles) {
     .filter((relativePath) => relativePath.endsWith('.html'))
     .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
 
-  for (const relativePath of htmlFiles) {
+  await mapWithConcurrency(htmlFiles, HTML_FILE_CONCURRENCY, async (relativePath) => {
     const fullPath = path.join(OUT_DIR, relativePath)
     const content = await fs.readFile(fullPath)
     pageVersions[routeUrlFromOutFile(relativePath)] = hashContent(content)
-  }
+  })
 
   return pageVersions
 }
@@ -162,17 +181,18 @@ function injectOfflineManifestVersion(html, version) {
 }
 
 async function writeOfflineManifestVersion(relativeFiles, version) {
-  const htmlFiles = relativeFiles.filter((relativePath) => relativePath.endsWith('.html'))
-  await Promise.all(
-    htmlFiles.map(async (relativePath) => {
-      const fullPath = path.join(OUT_DIR, relativePath)
-      const html = await fs.readFile(fullPath, 'utf8')
-      const nextHtml = injectOfflineManifestVersion(html, version)
-      if (nextHtml !== html) {
-        await fs.writeFile(fullPath, nextHtml, 'utf8')
-      }
-    }),
-  )
+  const htmlFiles = relativeFiles
+    .filter((relativePath) => relativePath.endsWith('.html'))
+    .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
+
+  await mapWithConcurrency(htmlFiles, HTML_FILE_CONCURRENCY, async (relativePath) => {
+    const fullPath = path.join(OUT_DIR, relativePath)
+    const html = await fs.readFile(fullPath, 'utf8')
+    const nextHtml = injectOfflineManifestVersion(html, version)
+    if (nextHtml !== html) {
+      await fs.writeFile(fullPath, nextHtml, 'utf8')
+    }
+  })
 }
 
 function buildServiceWorkerSource(version) {
