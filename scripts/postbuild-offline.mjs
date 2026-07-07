@@ -12,11 +12,8 @@ const LOCALES = ['en', 'vi', 'zh', 'ja', 'ko', 'fr']
 const DEFAULT_LOCALE = 'en'
 const PAGE_VERSION_PARAM = '__offlineVersion'
 const OFFLINE_MANIFEST_VERSION_META = 'offline-manifest-version'
-const HTML_FILE_CONCURRENCY = Math.max(
-  1,
-  Number.parseInt(process.env.OFFLINE_HTML_CONCURRENCY ?? '16', 10) || 16,
-)
 const CDN_BACKED_EXPORT_PATHS = ['og', 'assets/blog', 'assets/notes', 'assets/photos']
+const DEFAULT_HTML_FILE_CONCURRENCY = 16
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true })
@@ -60,6 +57,12 @@ function hashRecord(value) {
 
 function uniqueSorted(values) {
   return [...new Set(values)].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
+}
+
+function htmlFileConcurrency() {
+  const value = Number(process.env.OFFLINE_HTML_CONCURRENCY ?? DEFAULT_HTML_FILE_CONCURRENCY)
+  if (!Number.isFinite(value) || value < 1) return DEFAULT_HTML_FILE_CONCURRENCY
+  return Math.trunc(value)
 }
 
 async function mapWithConcurrency(items, concurrency, task) {
@@ -163,10 +166,14 @@ async function buildPageVersions(relativeFiles) {
     .filter((relativePath) => relativePath.endsWith('.html'))
     .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
 
-  await mapWithConcurrency(htmlFiles, HTML_FILE_CONCURRENCY, async (relativePath) => {
+  await mapWithConcurrency(htmlFiles, htmlFileConcurrency(), async (relativePath) => {
     const fullPath = path.join(OUT_DIR, relativePath)
-    const content = await fs.readFile(fullPath)
-    pageVersions[routeUrlFromOutFile(relativePath)] = hashContent(content)
+    const stats = await fs.stat(fullPath)
+    pageVersions[routeUrlFromOutFile(relativePath)] = hashRecord({
+      relativePath,
+      size: stats.size,
+      mtimeMs: Math.trunc(stats.mtimeMs),
+    })
   })
 
   return pageVersions
@@ -207,7 +214,7 @@ async function writeOfflineManifestVersion(relativeFiles, version) {
     .filter((relativePath) => relativePath.endsWith('.html'))
     .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
 
-  await mapWithConcurrency(htmlFiles, HTML_FILE_CONCURRENCY, async (relativePath) => {
+  await mapWithConcurrency(htmlFiles, htmlFileConcurrency(), async (relativePath) => {
     const fullPath = path.join(OUT_DIR, relativePath)
     const html = await fs.readFile(fullPath, 'utf8')
     const nextHtml = injectOfflineManifestVersion(html, version)
