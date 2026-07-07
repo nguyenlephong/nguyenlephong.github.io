@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "managing-dependencies-without-blame",
+      "category": "ways-of-working",
+      "title": "Managing Dependencies Without Blame",
+      "summary": "A practical note on delivery dependencies: how teams can make blockers visible early, coordinate calmly, and avoid turning normal coupling into personal blame.",
+      "date": "2026-06-03",
+      "readingMinutes": 5,
+      "tags": [
+        "Ways of Working",
+        "Software Delivery",
+        "Dependencies",
+        "Planning",
+        "Cross-functional Teams",
+        "Team Communication"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "difference-between-confidence-and-evidence",
+      "category": "perspectives",
+      "title": "The Difference Between Confidence and Evidence",
+      "summary": "A reflective field note on why confidence becomes useful only when it is tied to evidence, and how teams can keep conviction without losing humility.",
+      "date": "2026-06-02",
+      "readingMinutes": 5,
+      "tags": [
+        "Reflection",
+        "Decision Making",
+        "Engineering Judgment",
+        "Evidence",
+        "Career Growth",
+        "Learning"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "from-prototype-demo-to-production-behavior",
+      "category": "ai",
+      "title": "From Prototype Demo to Production Behavior",
+      "summary": "A grounded AI product note on the gap between an impressive prototype demo and the production behavior users can safely depend on.",
+      "date": "2026-06-01",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "AI Products",
+        "Production Readiness",
+        "LLM",
+        "Evaluation",
+        "Reliability"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "when-silence-in-a-team-becomes-a-signal",
+      "category": "culture",
+      "title": "When Silence in a Team Becomes a Signal",
+      "summary": "A calm look at team silence: how quiet rooms, missing replies, and low participation can reveal unclear ownership, unsafe disagreement, fatigue, or hidden context.",
+      "date": "2026-05-31",
+      "readingMinutes": 5,
+      "tags": [
+        "Engineering Culture",
+        "Team Communication",
+        "Psychological Safety",
+        "Leadership",
+        "Feedback",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "architecture-decisions-for-future-teammates",
+      "category": "architecture",
+      "title": "Architecture Decisions for Future Teammates",
+      "summary": "A practical reflection on architecture decisions as team memory: how small ADR-style notes help future teammates understand trade-offs, rejected paths, and when to revisit a choice.",
+      "date": "2026-05-30",
+      "readingMinutes": 5,
+      "tags": [
+        "Software Architecture",
+        "Architecture Decisions",
+        "Team Memory",
+        "ADRs",
+        "Technical Leadership",
+        "Knowledge Sharing"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "decision-logs-for-busy-teams",
       "category": "ways-of-working",
       "title": "Decision Logs for Busy Teams",
