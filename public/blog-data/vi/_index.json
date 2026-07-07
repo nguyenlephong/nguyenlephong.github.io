@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "decision-logs-for-busy-teams",
+      "category": "ways-of-working",
+      "title": "Decision log cho những team bận rộn",
+      "summary": "Một góc nhìn thực tế về decision log: cách những bản ghi nhỏ giúp team bận nhớ trade-off, giảm tranh luận lặp lại và giữ delivery aligned mà không thêm process nặng.",
+      "date": "2026-05-29",
+      "readingMinutes": 6,
+      "tags": [
+        "Ways of Working",
+        "Decision Logs",
+        "Software Delivery",
+        "Team Communication",
+        "Architecture Decisions",
+        "Knowledge Sharing"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-note-you-return-to-later",
+      "category": "perspectives",
+      "title": "Ghi chú mà bạn quay lại sau này",
+      "summary": "Một field note nhẹ về vì sao những ghi chú nhỏ chưa hoàn chỉnh vẫn quan trọng: cách quay lại một ý cũ có thể cho thấy sự trưởng thành, làm rõ decision và khiến việc học thầm lặng hiện ra.",
+      "date": "2026-05-28",
+      "readingMinutes": 6,
+      "tags": [
+        "Reflection",
+        "Writing",
+        "Learning",
+        "Career Growth",
+        "Notes",
+        "Personal Development"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "human-feedback-loops-for-ai-work",
+      "category": "ai",
+      "title": "Human feedback loop cho công việc với AI",
+      "summary": "Một góc nhìn grounded về thói quen làm việc với AI: vì sao workflow hữu ích cần human feedback loop, evidence check, test result và team memory thay vì chỉ nhận một lần output từ prompt.",
+      "date": "2026-05-27",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "LLM",
+        "AI Workflow",
+        "Human Feedback",
+        "Verification",
+        "Engineering Judgment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "quiet-skill-of-asking-for-help",
+      "category": "culture",
+      "title": "Kỹ năng yên lặng của việc nhờ giúp đỡ",
+      "summary": "Một góc nhìn bình tĩnh về việc nhờ giúp đỡ trong engineering team: cách làm context hiện rõ, giữ dignity, và biến lúc bị kẹt thành shared learning thay vì áp lực âm thầm.",
+      "date": "2026-05-26",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Team Trust",
+        "Communication",
+        "Mentorship",
+        "Learning",
+        "Psychological Safety"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "choosing-boundaries-before-choosing-tools",
+      "category": "architecture",
+      "title": "Chọn boundary trước khi chọn tool",
+      "summary": "Một góc nhìn thực tế về architecture boundary: vì sao team nên gọi tên ownership, data và pattern thay đổi trước khi chọn framework, service, queue hay database.",
+      "date": "2026-05-25",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "System Design",
+        "Bounded Context",
+        "Architecture Decisions",
+        "Technical Leadership",
+        "Team Ownership"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "roadmap-meets-real-capacity",
       "category": "ways-of-working",
       "title": "Khi roadmap gặp capacity thật",

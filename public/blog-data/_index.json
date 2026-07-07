@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "decision-logs-for-busy-teams",
+      "category": "ways-of-working",
+      "title": "Decision Logs for Busy Teams",
+      "summary": "A practical reflection on decision logs: how small written records help busy teams remember trade-offs, reduce repeated debates, and keep delivery aligned without adding heavy process.",
+      "date": "2026-05-29",
+      "readingMinutes": 5,
+      "tags": [
+        "Ways of Working",
+        "Decision Logs",
+        "Software Delivery",
+        "Team Communication",
+        "Architecture Decisions",
+        "Knowledge Sharing"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-note-you-return-to-later",
+      "category": "perspectives",
+      "title": "The Note You Return to Later",
+      "summary": "A reflective field note on why small unfinished notes matter: how returning to an old thought can reveal growth, clarify decisions, and make quiet learning visible.",
+      "date": "2026-05-28",
+      "readingMinutes": 5,
+      "tags": [
+        "Reflection",
+        "Writing",
+        "Learning",
+        "Career Growth",
+        "Notes",
+        "Personal Development"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "human-feedback-loops-for-ai-work",
+      "category": "ai",
+      "title": "Human Feedback Loops for AI Work",
+      "summary": "A grounded look at AI work habits: why useful AI workflows need human feedback loops, evidence checks, test results, and team memory instead of one-off prompt outputs.",
+      "date": "2026-05-27",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "AI Workflow",
+        "Human Feedback",
+        "Verification",
+        "Engineering Judgment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "quiet-skill-of-asking-for-help",
+      "category": "culture",
+      "title": "The Quiet Skill of Asking for Help",
+      "summary": "A calm look at asking for help in engineering teams: how to make context visible, protect dignity, and turn stuck moments into shared learning instead of silent pressure.",
+      "date": "2026-05-26",
+      "readingMinutes": 5,
+      "tags": [
+        "Engineering Culture",
+        "Team Trust",
+        "Communication",
+        "Mentorship",
+        "Learning",
+        "Psychological Safety"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "choosing-boundaries-before-choosing-tools",
+      "category": "architecture",
+      "title": "Choosing Boundaries Before Choosing Tools",
+      "summary": "A practical reflection on architecture boundaries: why teams should name ownership, data, and change patterns before reaching for frameworks, services, queues, or databases.",
+      "date": "2026-05-25",
+      "readingMinutes": 5,
+      "tags": [
+        "Software Architecture",
+        "System Design",
+        "Bounded Context",
+        "Architecture Decisions",
+        "Technical Leadership",
+        "Team Ownership"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "roadmap-meets-real-capacity",
       "category": "ways-of-working",
       "title": "When the Roadmap Meets Real Capacity",
