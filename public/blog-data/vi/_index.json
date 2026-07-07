@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "the-calm-way-to-handle-scope-changes",
+      "category": "ways-of-working",
+      "title": "Cách bình tĩnh để xử lý scope change",
+      "summary": "Một ghi chú thực tế về scope change: cách team bàn về việc mới bằng cách làm trade-off visible, bảo vệ focus và đổi kế hoạch mà không đổ lỗi.",
+      "date": "2026-06-08",
+      "readingMinutes": 6,
+      "tags": [
+        "Ways of Working",
+        "Scope Management",
+        "Product Engineering",
+        "Planning",
+        "Prioritization",
+        "Team Communication"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "why-quiet-consistency-compounds",
+      "category": "perspectives",
+      "title": "Vì sao sự đều đặn âm thầm tích lũy",
+      "summary": "Một reflection nhẹ về quiet consistency: vì sao những lần quay lại nhỏ với craft, mối quan hệ, codebase hay thói quen thường chỉ trở nên visible sau một khoảng thời gian.",
+      "date": "2026-06-07",
+      "readingMinutes": 6,
+      "tags": [
+        "Reflection",
+        "Consistency",
+        "Learning",
+        "Career Growth",
+        "Personal Growth",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "ai-tools-for-reading-a-codebase",
+      "category": "ai",
+      "title": "Dùng AI tool để đọc codebase",
+      "summary": "Một hướng dẫn thực tế về việc dùng AI khi đọc codebase: summary giúp ở đâu, dễ đánh lừa ở đâu, và engineer nên kết hợp AI với kiểm chứng trực tiếp từ source như thế nào.",
+      "date": "2026-06-06",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Codebase",
+        "LLM",
+        "Developer Tools",
+        "Code Reading",
+        "Engineering Judgment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-reviewer-as-a-future-reader",
+      "category": "culture",
+      "title": "Người review như một future reader",
+      "summary": "Một ghi chú về văn hóa code review: khi xem reviewer như người đọc tương lai, pull request thường rõ hơn, tử tế hơn và hữu ích hơn cho người bảo trì sau này.",
+      "date": "2026-06-05",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Code Review",
+        "Pull Requests",
+        "Communication",
+        "Maintainability",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "refactoring-toward-a-clearer-core",
+      "category": "architecture",
+      "title": "Refactor để phần lõi rõ ràng hơn",
+      "summary": "Một reflection thực tế về refactor phần lõi codebase: cách team giảm coupling, bảo vệ behavior và giúp người đến sau hiểu hệ thống bình tĩnh hơn.",
+      "date": "2026-06-04",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Refactoring",
+        "Codebase",
+        "Technical Debt",
+        "Module Boundaries",
+        "Sustainable Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "managing-dependencies-without-blame",
       "category": "ways-of-working",
       "title": "Quản lý dependency mà không đổ lỗi",

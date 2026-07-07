@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "the-calm-way-to-handle-scope-changes",
+      "category": "ways-of-working",
+      "title": "The Calm Way to Handle Scope Changes",
+      "summary": "A practical note on scope changes: how teams can discuss new work calmly by making trade-offs visible, protecting focus, and changing plans without blame.",
+      "date": "2026-06-08",
+      "readingMinutes": 5,
+      "tags": [
+        "Ways of Working",
+        "Scope Management",
+        "Product Engineering",
+        "Planning",
+        "Prioritization",
+        "Team Communication"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "why-quiet-consistency-compounds",
+      "category": "perspectives",
+      "title": "Why Quiet Consistency Compounds",
+      "summary": "A calm reflection on quiet consistency: why small repeated returns to a craft, relationship, codebase, or habit often become visible long after the effort begins.",
+      "date": "2026-06-07",
+      "readingMinutes": 5,
+      "tags": [
+        "Reflection",
+        "Consistency",
+        "Learning",
+        "Career Growth",
+        "Personal Growth",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "ai-tools-for-reading-a-codebase",
+      "category": "ai",
+      "title": "AI Tools for Reading a Codebase",
+      "summary": "A practical guide to using AI tools while reading a codebase: where summaries help, where they mislead, and how engineers can combine AI assistance with source-level verification.",
+      "date": "2026-06-06",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Codebase",
+        "LLM",
+        "Developer Tools",
+        "Code Reading",
+        "Engineering Judgment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-reviewer-as-a-future-reader",
+      "category": "culture",
+      "title": "The Reviewer as a Future Reader",
+      "summary": "A reflective note on code review culture: how treating the reviewer as a future reader can make pull requests clearer, kinder, and more useful for the people who will maintain the change later.",
+      "date": "2026-06-05",
+      "readingMinutes": 5,
+      "tags": [
+        "Engineering Culture",
+        "Code Review",
+        "Pull Requests",
+        "Communication",
+        "Maintainability",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "refactoring-toward-a-clearer-core",
+      "category": "architecture",
+      "title": "Refactoring Toward a Clearer Core",
+      "summary": "A practical reflection on refactoring toward a clearer core: how teams can reduce coupling, protect behavior, and make the center of a codebase easier for future teammates to understand.",
+      "date": "2026-06-04",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Refactoring",
+        "Codebase",
+        "Technical Debt",
+        "Module Boundaries",
+        "Sustainable Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "managing-dependencies-without-blame",
       "category": "ways-of-working",
       "title": "Managing Dependencies Without Blame",

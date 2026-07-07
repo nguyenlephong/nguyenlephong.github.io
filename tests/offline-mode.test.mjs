@@ -59,6 +59,8 @@ test("offline mode wires the export build, fallback route, and cache warmup flow
   assert.match(offlineScript, /completenessFromStats/);
   assert.match(offlineScript, /const CONTENT_CACHE = 'offline-content'/);
   assert.match(offlineScript, /PAGE_VERSION_PARAM/);
+  assert.match(offlineScript, /OFFLINE_HTML_CONCURRENCY/);
+  assert.match(offlineScript, /mapWithConcurrency/);
   assert.match(offlineScript, /pruneCache/);
   assert.match(offlineScript, /buildContentAllowList/);
   assert.match(offlineScript, /knownNavigationCandidates/);
