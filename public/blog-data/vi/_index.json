@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "managing-dependencies-without-blame",
+      "category": "ways-of-working",
+      "title": "Quản lý dependency mà không đổ lỗi",
+      "summary": "Một ghi chú thực tế về dependency trong delivery: cách team làm blocker hiện sớm, phối hợp bình tĩnh và không biến coupling bình thường thành đổ lỗi cá nhân.",
+      "date": "2026-06-03",
+      "readingMinutes": 6,
+      "tags": [
+        "Ways of Working",
+        "Software Delivery",
+        "Dependencies",
+        "Planning",
+        "Cross-functional Teams",
+        "Team Communication"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "difference-between-confidence-and-evidence",
+      "category": "perspectives",
+      "title": "Khác nhau giữa tự tin và bằng chứng",
+      "summary": "Một field note nhẹ về vì sao sự tự tin chỉ thật sự hữu ích khi đi cùng evidence, và cách team giữ conviction mà không đánh mất humility.",
+      "date": "2026-06-02",
+      "readingMinutes": 6,
+      "tags": [
+        "Reflection",
+        "Decision Making",
+        "Engineering Judgment",
+        "Evidence",
+        "Career Growth",
+        "Learning"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "from-prototype-demo-to-production-behavior",
+      "category": "ai",
+      "title": "Từ prototype demo đến hành vi production",
+      "summary": "Một ghi chú thực tế về AI product: khoảng cách giữa prototype demo ấn tượng và production behavior mà user có thể tin cậy.",
+      "date": "2026-06-01",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "AI Products",
+        "Production Readiness",
+        "LLM",
+        "Evaluation",
+        "Reliability"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "when-silence-in-a-team-becomes-a-signal",
+      "category": "culture",
+      "title": "Khi sự im lặng trong team trở thành tín hiệu",
+      "summary": "Một góc nhìn bình tĩnh về sự im lặng trong team: phòng họp yên, reply thiếu, và participation thấp có thể hé lộ ownership mơ hồ, disagreement không an toàn, mệt mỏi hoặc context bị giấu.",
+      "date": "2026-05-31",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Team Communication",
+        "Psychological Safety",
+        "Leadership",
+        "Feedback",
+        "Team Trust"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "architecture-decisions-for-future-teammates",
+      "category": "architecture",
+      "title": "Architecture decision cho teammate tương lai",
+      "summary": "Một góc nhìn thực tế về architecture decision như team memory: cách những ghi chú ADR nhỏ giúp teammate tương lai hiểu trade-off, option bị từ chối và thời điểm nên revisit.",
+      "date": "2026-05-30",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Architecture Decisions",
+        "Team Memory",
+        "ADRs",
+        "Technical Leadership",
+        "Knowledge Sharing"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "decision-logs-for-busy-teams",
       "category": "ways-of-working",
       "title": "Decision log cho những team bận rộn",
