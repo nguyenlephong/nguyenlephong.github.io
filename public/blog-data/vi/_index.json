@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "writing-next-steps-that-actually-help",
+      "category": "ways-of-working",
+      "title": "Viết next step thật sự giúp người khác đi tiếp",
+      "summary": "Một ghi chú thực tế về cách viết next step đủ cụ thể để công việc đi tiếp: owner, action, evidence và điểm dừng hữu ích.",
+      "date": "2026-06-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Ways of Working",
+        "Planning",
+        "Team Communication",
+        "Execution",
+        "Documentation",
+        "Product Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "a-calm-way-to-carry-uncertainty",
+      "category": "perspectives",
+      "title": "Một cách bình tĩnh để mang theo uncertainty",
+      "summary": "Một ghi chú reflection về cách mang theo uncertainty mà không biến nó thành né tránh: gọi tên, giới hạn, assign và tiếp tục đi với sự cẩn thận.",
+      "date": "2026-06-22",
+      "readingMinutes": 6,
+      "tags": [
+        "Reflection",
+        "Decision Making",
+        "Uncertainty",
+        "Communication",
+        "Learning",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "letting-ai-draft-while-humans-keep-the-map",
+      "category": "ai",
+      "title": "Để AI draft, nhưng con người giữ bản đồ",
+      "summary": "Một reflection thực tế về cách dùng AI để draft nhanh hơn trong khi con người giữ bản đồ system: constraint, source, ownership và đường verify.",
+      "date": "2026-06-21",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Engineering Judgment",
+        "Context Engineering",
+        "Developer Tools",
+        "Verification"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-culture-hidden-in-small-reviews",
+      "category": "culture",
+      "title": "Culture ẩn trong những review nhỏ",
+      "summary": "Một ghi chú bình tĩnh về cách engineering culture hiện ra trong những review nhỏ: wording, patience và care mà team mang vào feedback bình thường.",
+      "date": "2026-06-20",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Code Review",
+        "Feedback",
+        "Team Trust",
+        "Communication",
+        "Quality"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "when-boundaries-need-examples-more-than-names",
+      "category": "architecture",
+      "title": "Khi boundary cần example hơn là tên gọi",
+      "summary": "Một reflection thực tế về lý do software boundary rõ hơn khi team neo chúng vào example, responsibility và behavior thay vì chỉ đặt tên layer.",
+      "date": "2026-06-19",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Boundaries",
+        "Examples",
+        "Module Design",
+        "Team Communication",
+        "Sustainable Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "making-handoffs-easier-to-receive",
       "category": "ways-of-working",
       "title": "Làm handoff dễ nhận hơn",

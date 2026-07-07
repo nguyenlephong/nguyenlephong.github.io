@@ -1,0 +1,18 @@
+{
+  "slug": "letting-ai-draft-while-humans-keep-the-map",
+  "category": "ai",
+  "title": "Letting AI Draft While Humans Keep the Map",
+  "summary": "A practical reflection on using AI to draft faster while humans keep the system map: constraints, sources, ownership, and verification paths.",
+  "date": "2026-06-21",
+  "readingMinutes": 6,
+  "tags": [
+    "AI",
+    "LLM",
+    "Engineering Judgment",
+    "Context Engineering",
+    "Developer Tools",
+    "Verification"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The assistant produced a useful first draft in less than a minute. It found the function, added a guard, wrote a test, and explained the change in a confident paragraph. The speed was impressive. The responsibility was unchanged. Someone still had to know whether this patch belonged on the real map of the system.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/letting-ai-draft-while-humans-keep-the-map/ai-draft-human-map.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Two engineers compare an abstract code screen with a blank system map on paper at a quiet office table.' />\n  <figcaption>AI can draft a path, but humans still need to know where the path sits on the system map.</figcaption>\n</figure>\n<p>This is the distinction that keeps AI useful without letting it become a quiet source of drift. Drafting is not owning. A model can suggest code, summarize options, create examples, and find likely gaps. But the map of the system still belongs to the people accountable for running it.</p>\n<p>The map is not only architecture diagrams. It includes business rules, runtime behavior, migration history, customer expectations, operational runbooks, and the ugly edge cases nobody would invent from a clean prompt. It includes the reasons a simple-looking shortcut is not safe in this codebase.</p>\n<p>When humans keep the map, they choose what context the model sees. They point it to the spec, the failing test, the relevant files, and the live error. They ask for uncertainty, not just a patch. They make the assistant compare options against the system instead of asking it to fill a blank page with plausible code.</p>\n<p>The review also changes. Instead of asking whether the generated code looks good, the reviewer asks whether it lands in the right place. Does it respect the boundary? Does it preserve the invariant? Does it make rollback possible? Does the test protect the behavior that matters, or only the implementation the model happened to write?</p>\n<p>This does not make AI slow. It makes AI less wasteful. A good map lets the assistant draft in the right neighborhood. Without the map, the team may get impressive output that creates a new shortcut, duplicate helper, or policy leak. The patch can pass tests and still make the system harder to understand.</p>\n<p>There is a healthy humility in letting AI draft. It admits that blank-page work is expensive and that machines can help us explore. There is also a necessary discipline in keeping the map. It admits that speed without orientation can still move the team in the wrong direction.</p>\n<p>A practical habit is to end AI-assisted work with a human-owned trace. Which files grounded the answer? Which rule was protected? What was manually verified? What would make us roll this back? The trace keeps future readers from depending on a prompt they will never see.</p>\n<p>Use AI for drafts, alternatives, checklists, and first-pass tests. But keep the map close enough that every generated line has a place to belong. In your next AI-assisted change, who is holding the map?</p>"
+}

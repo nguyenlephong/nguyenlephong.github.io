@@ -1,0 +1,18 @@
+{
+  "slug": "when-boundaries-need-examples-more-than-names",
+  "category": "architecture",
+  "title": "When Boundaries Need Examples More Than Names",
+  "summary": "A practical reflection on why software boundaries become clearer when teams anchor them in examples, responsibilities, and behavior instead of only naming layers.",
+  "date": "2026-06-19",
+  "readingMinutes": 5,
+  "tags": [
+    "Software Architecture",
+    "Boundaries",
+    "Examples",
+    "Module Design",
+    "Team Communication",
+    "Sustainable Engineering"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The name looked good on the whiteboard. There was an API layer, a domain layer, an integration layer, and a small box called policy. Everyone understood the words for a few minutes. Then the first real use case arrived, and the team quietly disagreed about where the validation should live.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/when-boundaries-need-examples-more-than-names/boundary-examples-review.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A small engineering team reviews blank interface cards and simple architecture boxes at a wooden office table.' />\n  <figcaption>A boundary becomes easier to protect when the team can point to examples, not only a name on a diagram.</figcaption>\n</figure>\n<p>This is a common moment in architecture work. We often believe a boundary is clear because it has a name. But names can create a false calm. Repository, service, usecase, adapter, policy, gateway: each word carries a local history. Two engineers can use the same name and still imagine different responsibilities.</p>\n<p>Examples make the boundary harder to fake. Instead of saying the policy layer decides eligibility, write one input and the expected decision. Instead of saying the adapter hides the provider, show one provider error and how the domain should see it. Instead of saying the usecase orchestrates, trace one request from handler to repository and back.</p>\n<p>A good example exposes ownership. If a phone number needs normalization, the example forces the team to decide whether that belongs in the handler, usecase, domain, or repository. The answer may be simple, but writing the example prevents the decision from staying tribal. Future contributors can follow behavior instead of guessing from folder names.</p>\n<p>Examples also reveal when a boundary is too ambitious. A diagram may look clean while the examples keep crossing the line. If every important case requires the domain to know provider details, maybe the adapter contract is too thin. If every usecase duplicates the same eligibility logic, maybe the policy belongs somewhere more explicit.</p>\n<p>The point is not to replace diagrams. Diagrams help people see shape quickly. But a diagram without examples is like a map without distance. It tells you the places, not the effort between them. A few concrete flows make the map honest.</p>\n<p>When teams grow, examples become a kindness. New teammates do not need to inherit every argument that produced the architecture. They need enough visible behavior to understand why the boundary exists and what would count as breaking it. One small example can save many review comments later.</p>\n<p>Before naming another boundary, try writing three examples that should cross it and three that should not. If the examples are hard to place, the name is not enough yet. What boundary in your current system would become clearer if the team wrote one concrete example beside it?</p>"
+}

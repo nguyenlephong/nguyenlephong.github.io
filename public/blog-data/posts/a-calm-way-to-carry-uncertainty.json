@@ -1,0 +1,18 @@
+{
+  "slug": "a-calm-way-to-carry-uncertainty",
+  "category": "perspectives",
+  "title": "A Calm Way to Carry Uncertainty",
+  "summary": "A reflective note on carrying uncertainty without letting it become avoidance: name it, bound it, assign it, and keep moving with care.",
+  "date": "2026-06-22",
+  "readingMinutes": 5,
+  "tags": [
+    "Reflection",
+    "Decision Making",
+    "Uncertainty",
+    "Communication",
+    "Learning",
+    "Sustainable Work"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The team did not know enough yet. That was the most honest sentence in the room, and also the one everyone wanted to move past. A launch date was visible. The design looked close. The implementation had started. Naming uncertainty felt like slowing the work, even though pretending it was gone would slow the work more later.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/a-calm-way-to-carry-uncertainty/calm-uncertainty-map.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A professional calmly arranges blank sticky notes into a small decision map beside a notebook and cup of tea.' />\n  <figcaption>Uncertainty is easier to carry when it has a name, a boundary, and a next check.</figcaption>\n</figure>\n<p>Uncertainty is not the opposite of progress. It is part of progress when the work is real. The problem is not that a team is uncertain. The problem is when uncertainty stays unnamed, grows in private, and finally appears as rework, conflict, or a rushed decision nobody feels proud of.</p>\n<p>A calm way to carry uncertainty starts by naming it specifically. Not this is risky, but we do not know whether the old mobile client depends on this field. Not the timeline is unclear, but the partner response time is still unmeasured. Specific uncertainty becomes smaller because people can see where it begins and ends.</p>\n<p>The next step is bounding it. Some uncertainty blocks action. Some can travel with the work for a while. Some is acceptable if the team adds a guardrail. If every unknown is treated as a blocker, the team freezes. If every unknown is ignored, the team gambles. The skill is deciding which kind of unknown is in front of you.</p>\n<p>Assigning uncertainty also helps. A named unknown without an owner becomes room noise. Who will check the log? Who will confirm the contract? Who will test the old client? Who will decide if the answer is good enough? Ownership does not remove uncertainty, but it stops it from floating.</p>\n<p>There is also a human side. People sometimes avoid naming uncertainty because they fear looking unprepared. In healthier teams, saying I do not know yet is not weakness. It is a useful status update. The team can work with honest uncertainty much better than silent confidence.</p>\n<p>Carrying uncertainty calmly does not mean waiting forever. Each unknown should have a next check. A date, a test, a call, a spike, a decision point. Without a next check, uncertainty becomes a fog machine. With a next check, it becomes part of the plan.</p>\n<p>Some decisions will still be made with incomplete information. That is normal. The question is whether the team knows what it is accepting. We are choosing this path with the payment edge case still open, and we will not broaden rollout until the postback test passes. That sentence is not perfect certainty, but it is responsible movement.</p>\n<p>Uncertainty becomes heavier when we try to hide it. It becomes lighter when it has shape. What uncertainty in your current work needs a name, an owner, and one next check?</p>"
+}

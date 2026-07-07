@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "writing-next-steps-that-actually-help",
+      "category": "ways-of-working",
+      "title": "Writing Next Steps That Actually Help",
+      "summary": "A practical note on writing next steps that are specific enough to move work forward: owner, action, evidence, and a useful stopping point.",
+      "date": "2026-06-23",
+      "readingMinutes": 5,
+      "tags": [
+        "Ways of Working",
+        "Planning",
+        "Team Communication",
+        "Execution",
+        "Documentation",
+        "Product Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "a-calm-way-to-carry-uncertainty",
+      "category": "perspectives",
+      "title": "A Calm Way to Carry Uncertainty",
+      "summary": "A reflective note on carrying uncertainty without letting it become avoidance: name it, bound it, assign it, and keep moving with care.",
+      "date": "2026-06-22",
+      "readingMinutes": 5,
+      "tags": [
+        "Reflection",
+        "Decision Making",
+        "Uncertainty",
+        "Communication",
+        "Learning",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "letting-ai-draft-while-humans-keep-the-map",
+      "category": "ai",
+      "title": "Letting AI Draft While Humans Keep the Map",
+      "summary": "A practical reflection on using AI to draft faster while humans keep the system map: constraints, sources, ownership, and verification paths.",
+      "date": "2026-06-21",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Engineering Judgment",
+        "Context Engineering",
+        "Developer Tools",
+        "Verification"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-culture-hidden-in-small-reviews",
+      "category": "culture",
+      "title": "The Culture Hidden in Small Reviews",
+      "summary": "A calm note on how engineering culture shows up in small reviews: the phrasing, patience, and care teams bring to ordinary feedback.",
+      "date": "2026-06-20",
+      "readingMinutes": 5,
+      "tags": [
+        "Engineering Culture",
+        "Code Review",
+        "Feedback",
+        "Team Trust",
+        "Communication",
+        "Quality"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "when-boundaries-need-examples-more-than-names",
+      "category": "architecture",
+      "title": "When Boundaries Need Examples More Than Names",
+      "summary": "A practical reflection on why software boundaries become clearer when teams anchor them in examples, responsibilities, and behavior instead of only naming layers.",
+      "date": "2026-06-19",
+      "readingMinutes": 5,
+      "tags": [
+        "Software Architecture",
+        "Boundaries",
+        "Examples",
+        "Module Design",
+        "Team Communication",
+        "Sustainable Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "making-handoffs-easier-to-receive",
       "category": "ways-of-working",
       "title": "Making Handoffs Easier to Receive",
