@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "roadmap-meets-real-capacity",
+      "category": "ways-of-working",
+      "title": "When the Roadmap Meets Real Capacity",
+      "summary": "A practical reflection on the moment a roadmap meets real team capacity: how to make trade-offs visible, protect focus, and adjust plans without turning planning into blame.",
+      "date": "2026-05-24",
+      "readingMinutes": 5,
+      "tags": [
+        "Roadmap Planning",
+        "Capacity Planning",
+        "Ways of Working",
+        "Software Delivery",
+        "Prioritization",
+        "Team Focus"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "courage-to-write-the-first-rough-note",
+      "category": "perspectives",
+      "title": "The Courage to Write the First Rough Note",
+      "summary": "A calm reflection on why the first rough note matters: how messy writing makes thinking visible, lowers the pressure to sound finished, and helps quiet ideas become useful.",
+      "date": "2026-05-23",
+      "readingMinutes": 5,
+      "tags": [
+        "Writing",
+        "Reflection",
+        "Learning",
+        "Career Growth",
+        "Thinking",
+        "Personal Growth"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "cost-of-trusting-a-fluent-ai-answer",
+      "category": "ai",
+      "title": "The Cost of Trusting a Fluent AI Answer",
+      "summary": "A grounded look at fluent AI answers: why confident language can feel like evidence, where that creates risk, and how teams can keep AI useful by checking claims against sources, tests, and real context.",
+      "date": "2026-05-22",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "AI Workflow",
+        "Verification",
+        "Engineering Judgment",
+        "Responsible AI"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "calm-script-for-difficult-feedback",
+      "category": "culture",
+      "title": "A Calm Script for Difficult Feedback",
+      "summary": "A practical guide to difficult feedback in engineering teams: how to prepare the facts, keep dignity in the room, name behavior clearly, and turn a tense conversation into a fair next step.",
+      "date": "2026-05-21",
+      "readingMinutes": 5,
+      "tags": [
+        "Engineering Culture",
+        "Feedback",
+        "Communication",
+        "Leadership",
+        "Team Trust",
+        "Management"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "observability-as-a-design-choice",
+      "category": "architecture",
+      "title": "Observability as a Design Choice",
+      "summary": "A practical explanation of observability as an architecture decision: why teams should design logs, metrics, traces, dashboards, and alerts into the system before production asks hard questions.",
+      "date": "2026-05-20",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Observability",
+        "System Design",
+        "Production Readiness",
+        "Reliability",
+        "OpenTelemetry"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "cross-functional-teams",
       "category": "ways-of-working",
       "title": "Cross-Functional Teams",
