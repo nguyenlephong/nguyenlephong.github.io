@@ -1,0 +1,18 @@
+{
+  "slug": "asking-ai-to-show-its-working-context",
+  "category": "ai",
+  "title": "Asking AI to Show Its Working Context",
+  "summary": "A practical reflection on asking AI systems to expose their working context so engineers can verify evidence, assumptions, and gaps.",
+  "date": "2026-06-26",
+  "readingMinutes": 6,
+  "tags": [
+    "AI",
+    "LLM",
+    "Context Engineering",
+    "Verification",
+    "Developer Tools",
+    "Engineering Judgment"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The answer sounded correct, which made it more dangerous. It named the right module, suggested a neat refactor, and even included a test. But when I asked which files supported the conclusion, the confidence became thinner. The model had been reasoning from a small slice of the system and filling the rest with pattern memory.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/asking-ai-to-show-its-working-context/ai-working-context-trace.webp' width='1600' height='900' loading='lazy' decoding='async' alt='An engineer reviews abstract code blocks and colored source cards while sketching linked boxes in a notebook.' />\n  <figcaption>An AI answer becomes easier to trust when the working context is visible enough to inspect.</figcaption>\n</figure>\n<p>One of the most useful habits in AI-assisted engineering is asking the assistant to show its working context. Not the entire hidden chain of thought. The practical context: which files it used, which logs it read, which spec lines matter, which tests support the claim, and which assumptions remain unverified.</p>\n<p>This changes the conversation. Instead of accepting a polished answer, the engineer can inspect the evidence. If the assistant cites a handler but not the usecase, that is a signal. If it found a helper but ignored the migration, that is a signal. If it cannot name the failing test, maybe the answer is still a hypothesis.</p>\n<p>Working context also prevents accidental scope expansion. A model may propose a broad cleanup because broad cleanup is easy to describe. But if the context says the issue is one endpoint, one data shape, and one regression test, the team can keep the change small. Evidence becomes a guardrail against impressive drift.</p>\n<p>The request can be simple. Before giving me the patch, list the files you are relying on and the uncertainty you still have. Or: explain which local evidence supports this diagnosis and what would falsify it. These questions make the assistant slower in a useful way. They move it from confident completion toward inspectable collaboration.</p>\n<p>There is still a human responsibility. The assistant can misread files, overstate evidence, or cite something irrelevant. Showing context does not remove review. It makes review possible. The engineer still has to open the source, run the test, and decide whether the evidence actually supports the answer.</p>\n<p>This is especially important in large systems. The right answer often depends on a boundary, tenant rule, old client, feature flag, or operational convention that will not be obvious from a prompt. A visible context list helps reveal what the model did not see.</p>\n<p>A good AI workflow leaves a trace future humans can use. The final PR or note should say what was generated, what was verified, and what source evidence mattered. That trace is not bureaucracy. It is how the team prevents the prompt from becoming lost history.</p>\n<p>When AI shows its working context, trust becomes less about vibe and more about inspection. The next time an answer sounds right, ask what it is standing on.</p>"
+}

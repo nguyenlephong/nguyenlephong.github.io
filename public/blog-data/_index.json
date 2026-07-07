@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "keeping-meeting-notes-close-to-decisions",
+      "category": "ways-of-working",
+      "title": "Keeping Meeting Notes Close to Decisions",
+      "summary": "A practical note on keeping meeting notes close to decisions so future teammates can find context, trade-offs, and follow-through without replaying the meeting.",
+      "date": "2026-06-28",
+      "readingMinutes": 5,
+      "tags": [
+        "Ways of Working",
+        "Documentation",
+        "Decision Making",
+        "Team Communication",
+        "Planning",
+        "Product Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-relief-of-a-well-named-problem",
+      "category": "perspectives",
+      "title": "The Relief of a Well-Named Problem",
+      "summary": "A reflective note on how a well-named problem reduces tension by turning scattered discomfort into something people can examine together.",
+      "date": "2026-06-27",
+      "readingMinutes": 5,
+      "tags": [
+        "Reflection",
+        "Clarity",
+        "Communication",
+        "Decision Making",
+        "Learning",
+        "Teamwork"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "asking-ai-to-show-its-working-context",
+      "category": "ai",
+      "title": "Asking AI to Show Its Working Context",
+      "summary": "A practical reflection on asking AI systems to expose their working context so engineers can verify evidence, assumptions, and gaps.",
+      "date": "2026-06-26",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Context Engineering",
+        "Verification",
+        "Developer Tools",
+        "Engineering Judgment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "why-good-teams-make-risk-visible-early",
+      "category": "culture",
+      "title": "Why Good Teams Make Risk Visible Early",
+      "summary": "A calm note on why healthy teams surface risk early: not to create fear, but to give the work more room to adjust.",
+      "date": "2026-06-25",
+      "readingMinutes": 5,
+      "tags": [
+        "Engineering Culture",
+        "Risk",
+        "Team Communication",
+        "Trust",
+        "Delivery",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "designing-for-the-change-you-can-actually-see",
+      "category": "architecture",
+      "title": "Designing for the Change You Can Actually See",
+      "summary": "A practical reflection on designing software around visible change patterns instead of abstract future flexibility that may never arrive.",
+      "date": "2026-06-24",
+      "readingMinutes": 5,
+      "tags": [
+        "Software Architecture",
+        "Change Management",
+        "Technical Debt",
+        "Design",
+        "Product Engineering",
+        "Sustainable Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "writing-next-steps-that-actually-help",
       "category": "ways-of-working",
       "title": "Writing Next Steps That Actually Help",

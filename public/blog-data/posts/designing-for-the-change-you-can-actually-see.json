@@ -1,0 +1,18 @@
+{
+  "slug": "designing-for-the-change-you-can-actually-see",
+  "category": "architecture",
+  "title": "Designing for the Change You Can Actually See",
+  "summary": "A practical reflection on designing software around visible change patterns instead of abstract future flexibility that may never arrive.",
+  "date": "2026-06-24",
+  "readingMinutes": 5,
+  "tags": [
+    "Software Architecture",
+    "Change Management",
+    "Technical Debt",
+    "Design",
+    "Product Engineering",
+    "Sustainable Engineering"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The design review became easier when someone stopped asking what if everything changes and asked what has actually changed three times already. The room got quieter. The team could point to the same places: one customer-specific rule, one report shape, one provider response, and one workflow step that kept moving.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/designing-for-the-change-you-can-actually-see/visible-change-path.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Engineers compare two simple unlabeled system sketches and point at one visible change path.' />\n  <figcaption>Visible change gives architecture a better signal than distant guesses about every possible future.</figcaption>\n</figure>\n<p>Software teams often overpay for imaginary flexibility. We add abstraction because a future version might need it, create extension points nobody uses, and split modules before the pressure is real. The intent is good. We want the system to survive change. But design becomes expensive when it protects against every possible weather pattern instead of the one already approaching.</p>\n<p>The more useful question is narrower: what kind of change can we actually see? Maybe pricing rules change often, but payment collection stays stable. Maybe partner payloads vary, but the internal order contract should not. Maybe UI copy changes weekly, but the state machine changes rarely. Visible change helps the team decide where flexibility earns its cost.</p>\n<p>This does not mean ignoring the future. It means letting evidence rank the future. If a part of the system has changed repeatedly, design around that seam. If a change is only a fear, write it down and wait for a stronger signal. A note is cheaper than an abstraction that future readers must maintain forever.</p>\n<p>Designing for visible change also protects simplicity. A simple implementation is not naive when it sits in a stable area. A flexible implementation is not mature when it hides uncertainty behind layers. The maturity is in matching the design to the pressure, not in making every part equally abstract.</p>\n<p>Examples make this concrete. If three providers send different status names, an adapter mapping is probably worth it. If only one provider exists and no second one is planned, an adapter may still be useful for boundary clarity, but it should stay small. The decision should be based on the visible change path, not on a slogan about clean architecture.</p>\n<p>The team should revisit this over time. A stable area can become volatile. A feared change can become irrelevant. Architecture is not a one-time bet; it is a series of adjustments as evidence improves. The goal is not to predict perfectly, but to keep the system understandable while reality speaks.</p>\n<p>Before adding a new layer, ask what change it is buying protection from and where that change has already appeared. If the answer is hard to show, maybe a small note is enough for now. Which part of your system is carrying flexibility for a future nobody has actually seen?</p>"
+}

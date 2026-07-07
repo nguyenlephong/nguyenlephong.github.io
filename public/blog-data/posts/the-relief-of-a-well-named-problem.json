@@ -1,0 +1,18 @@
+{
+  "slug": "the-relief-of-a-well-named-problem",
+  "category": "perspectives",
+  "title": "The Relief of a Well-Named Problem",
+  "summary": "A reflective note on how a well-named problem reduces tension by turning scattered discomfort into something people can examine together.",
+  "date": "2026-06-27",
+  "readingMinutes": 5,
+  "tags": [
+    "Reflection",
+    "Clarity",
+    "Communication",
+    "Decision Making",
+    "Learning",
+    "Teamwork"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The room relaxed only after the problem got a name. Before that, people were arguing about symptoms: the meeting was too long, the spec kept changing, the implementation felt heavy, the review was late. All of those were true, but none of them explained why the work felt stuck.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/the-relief-of-a-well-named-problem/well-named-problem-map.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A professional moves scattered blank sticky notes into one clear central circle with arrows on a desk.' />\n  <figcaption>A named problem gives scattered discomfort a place to gather.</figcaption>\n</figure>\n<p>A well-named problem does not solve the work by itself. It does something more modest and more important: it gives the team a shared object. Instead of each person defending their own frustration, everyone can look at the same thing. The tension moves from personal to inspectable.</p>\n<p>The name needs to be accurate enough to reduce noise. This is not a design problem may be less useful than users are being asked to choose before they understand the consequence. The second name points toward behavior. It invites examples. It makes better questions possible.</p>\n<p>Bad names create their own fog. Calling everything communication issue hides whether the real issue is missing authority, unclear ownership, conflicting incentives, or absent evidence. Calling something technical debt may hide that the problem is actually product ambiguity. A vague name can make a problem feel managed while leaving it untouched.</p>\n<p>There is relief in the right name because it reduces blame. When the problem is unnamed, people often become the explanation. The designer is too slow. Engineering is too cautious. Product keeps changing its mind. Once the problem is named more precisely, the system around the people becomes visible.</p>\n<p>A good name also creates a next step. If the problem is unclear decision ownership, the next step is not another broad meeting. It is naming who decides what, by when, and with which input. If the problem is missing production-like test data, the next step is not more debate about estimates. It is getting the data shape.</p>\n<p>Naming takes patience. The first name is often too large or too emotional. Write it down anyway, then make it smaller. What behavior proves it? Where does it happen? What would change if it were solved? The name improves as the team replaces mood with evidence.</p>\n<p>The best problem names feel almost ordinary after they arrive. Of course that is the issue. Of course that explains the rework. Of course that is why the conversation kept looping. The relief comes from realizing the work was not impossible; it was blurry.</p>\n<p>If a conversation keeps circling, pause and ask whether the problem has a good enough name. Sometimes progress begins not with a solution, but with a sentence everyone can finally point to.</p>"
+}
