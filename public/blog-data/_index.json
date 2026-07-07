@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "turning-unclear-work-into-shared-notes",
+      "category": "ways-of-working",
+      "title": "Turning Unclear Work Into Shared Notes",
+      "summary": "A practical note on using shared notes to turn vague requests into visible context, decisions, examples, and next steps.",
+      "date": "2026-06-13",
+      "readingMinutes": 5,
+      "tags": [
+        "Ways of Working",
+        "Product Engineering",
+        "Planning",
+        "Documentation",
+        "Team Communication",
+        "Alignment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-value-of-a-slower-first-answer",
+      "category": "perspectives",
+      "title": "The Value of a Slower First Answer",
+      "summary": "A reflective note on slowing down the first answer just enough to understand context, reduce rework, and respond with more care.",
+      "date": "2026-06-12",
+      "readingMinutes": 5,
+      "tags": [
+        "Reflection",
+        "Decision Making",
+        "Communication",
+        "Career Growth",
+        "Learning",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "using-ai-without-outsourcing-judgment",
+      "category": "ai",
+      "title": "Using AI Without Outsourcing Judgment",
+      "summary": "A practical reflection on using AI as a thinking partner while keeping human judgment anchored in source code, tests, logs, and product context.",
+      "date": "2026-06-11",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Developer Tools",
+        "Engineering Judgment",
+        "Code Review",
+        "Testing"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-quiet-discipline-of-saying-not-yet",
+      "category": "culture",
+      "title": "The Quiet Discipline of Saying Not Yet",
+      "summary": "A calm note on why healthy engineering teams sometimes say not yet: to protect quality, trust, and the people who will operate the release later.",
+      "date": "2026-06-10",
+      "readingMinutes": 5,
+      "tags": [
+        "Engineering Culture",
+        "Quality",
+        "Release Management",
+        "Team Trust",
+        "Code Review",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "designing-interfaces-that-outlive-implementations",
+      "category": "architecture",
+      "title": "Designing Interfaces That Outlive Implementations",
+      "summary": "A practical reflection on designing software interfaces that keep product behavior stable while implementations change underneath.",
+      "date": "2026-06-09",
+      "readingMinutes": 5,
+      "tags": [
+        "Software Architecture",
+        "Interfaces",
+        "Module Boundaries",
+        "Technical Debt",
+        "API Design",
+        "Sustainable Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "the-calm-way-to-handle-scope-changes",
       "category": "ways-of-working",
       "title": "The Calm Way to Handle Scope Changes",
