@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "making-handoffs-easier-to-receive",
+      "category": "ways-of-working",
+      "title": "Making Handoffs Easier to Receive",
+      "summary": "A practical note on making handoffs easier to receive by carrying context, decisions, risks, and the next useful action instead of only transferring files.",
+      "date": "2026-06-18",
+      "readingMinutes": 5,
+      "tags": [
+        "Ways of Working",
+        "Product Engineering",
+        "Documentation",
+        "Team Communication",
+        "Ownership",
+        "Planning"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-quiet-cost-of-staying-vague",
+      "category": "perspectives",
+      "title": "The Quiet Cost of Staying Vague",
+      "summary": "A reflective note on the quiet cost of staying vague: how unclear words create rework, hidden stress, and decisions nobody feels able to inspect.",
+      "date": "2026-06-17",
+      "readingMinutes": 5,
+      "tags": [
+        "Reflection",
+        "Communication",
+        "Decision Making",
+        "Clarity",
+        "Teamwork",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "what-ai-cannot-know-from-the-prompt-alone",
+      "category": "ai",
+      "title": "What AI Cannot Know From the Prompt Alone",
+      "summary": "A practical reflection on why prompts are not enough: AI needs source context, runtime evidence, domain constraints, and human judgment to become useful engineering help.",
+      "date": "2026-06-16",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Developer Tools",
+        "Engineering Judgment",
+        "Code Review",
+        "Context Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "how-trust-grows-in-ordinary-follow-through",
+      "category": "culture",
+      "title": "How Trust Grows in Ordinary Follow-Through",
+      "summary": "A calm note on how engineering trust grows through ordinary follow-through: small promises kept, visible updates, and repairs when reality changes.",
+      "date": "2026-06-15",
+      "readingMinutes": 5,
+      "tags": [
+        "Engineering Culture",
+        "Trust",
+        "Team Communication",
+        "Reliability",
+        "Leadership",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "keeping-architecture-decisions-small-enough-to-revisit",
+      "category": "architecture",
+      "title": "Keeping Architecture Decisions Small Enough to Revisit",
+      "summary": "A practical reflection on making architecture decisions small, explicit, and revisitable so teams can learn without turning every choice into a permanent monument.",
+      "date": "2026-06-14",
+      "readingMinutes": 5,
+      "tags": [
+        "Software Architecture",
+        "Decision Making",
+        "Technical Debt",
+        "Team Communication",
+        "Design Notes",
+        "Sustainable Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "turning-unclear-work-into-shared-notes",
       "category": "ways-of-working",
       "title": "Turning Unclear Work Into Shared Notes",

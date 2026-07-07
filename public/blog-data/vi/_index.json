@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "making-handoffs-easier-to-receive",
+      "category": "ways-of-working",
+      "title": "Làm handoff dễ nhận hơn",
+      "summary": "Một ghi chú thực tế về cách làm handoff dễ nhận hơn bằng cách chuyển theo context, decision, risk và next action hữu ích, không chỉ chuyển file.",
+      "date": "2026-06-18",
+      "readingMinutes": 6,
+      "tags": [
+        "Ways of Working",
+        "Product Engineering",
+        "Documentation",
+        "Team Communication",
+        "Ownership",
+        "Planning"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-quiet-cost-of-staying-vague",
+      "category": "perspectives",
+      "title": "Cái giá âm thầm của việc giữ mọi thứ mơ hồ",
+      "summary": "Một ghi chú reflection về cái giá âm thầm của việc giữ mọi thứ mơ hồ: ngôn từ không rõ tạo rework, stress ẩn và những decision không ai inspect được.",
+      "date": "2026-06-17",
+      "readingMinutes": 6,
+      "tags": [
+        "Reflection",
+        "Communication",
+        "Decision Making",
+        "Clarity",
+        "Teamwork",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "what-ai-cannot-know-from-the-prompt-alone",
+      "category": "ai",
+      "title": "Điều AI không thể biết chỉ từ prompt",
+      "summary": "Một reflection thực tế về lý do prompt là chưa đủ: AI cần source context, runtime evidence, domain constraint và judgment của con người để trở thành trợ giúp engineering hữu ích.",
+      "date": "2026-06-16",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Developer Tools",
+        "Engineering Judgment",
+        "Code Review",
+        "Context Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "how-trust-grows-in-ordinary-follow-through",
+      "category": "culture",
+      "title": "Trust lớn lên từ những lần follow-through bình thường",
+      "summary": "Một ghi chú bình tĩnh về cách trust trong engineering lớn lên qua follow-through bình thường: lời hứa nhỏ được giữ, update visible, và repair khi thực tế thay đổi.",
+      "date": "2026-06-15",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Trust",
+        "Team Communication",
+        "Reliability",
+        "Leadership",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "keeping-architecture-decisions-small-enough-to-revisit",
+      "category": "architecture",
+      "title": "Giữ architecture decision đủ nhỏ để quay lại",
+      "summary": "Một reflection thực tế về cách giữ architecture decision nhỏ, rõ và có thể quay lại, để team học tiếp mà không biến mọi lựa chọn thành tượng đài vĩnh viễn.",
+      "date": "2026-06-14",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Decision Making",
+        "Technical Debt",
+        "Team Communication",
+        "Design Notes",
+        "Sustainable Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "turning-unclear-work-into-shared-notes",
       "category": "ways-of-working",
       "title": "Biến công việc mơ hồ thành shared notes",
