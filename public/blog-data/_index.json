@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "closing-the-loop-before-starting-the-next-one",
+      "category": "ways-of-working",
+      "title": "Closing the Loop Before Starting the Next One",
+      "summary": "A practical note on closing work loops with evidence, decisions, and handoff context before the team rushes into the next task.",
+      "date": "2026-07-03",
+      "readingMinutes": 5,
+      "tags": [
+        "Ways of Working",
+        "Delivery",
+        "Review",
+        "Documentation",
+        "Team Communication",
+        "Planning"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "when-progress-feels-like-removing-weight",
+      "category": "perspectives",
+      "title": "When Progress Feels Like Removing Weight",
+      "summary": "A reflective note on the kind of progress that comes from reducing load, clearing ambiguity, and making the next step lighter.",
+      "date": "2026-07-02",
+      "readingMinutes": 5,
+      "tags": [
+        "Reflection",
+        "Clarity",
+        "Workload",
+        "Focus",
+        "Sustainable Work",
+        "Decision Making"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "letting-ai-draft-the-boring-first-pass",
+      "category": "ai",
+      "title": "Letting AI Draft the Boring First Pass",
+      "summary": "A practical reflection on using AI for the plain first draft, while keeping human judgment focused on evidence, shape, and responsibility.",
+      "date": "2026-07-01",
+      "readingMinutes": 5,
+      "tags": [
+        "AI",
+        "LLM",
+        "Writing",
+        "Developer Tools",
+        "Review",
+        "Human Judgment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-quiet-skill-of-asking-for-help-early",
+      "category": "culture",
+      "title": "The Quiet Skill of Asking for Help Early",
+      "summary": "A calm note on why asking for help early is not weakness, but one of the small habits that keeps work honest and teams healthy.",
+      "date": "2026-06-30",
+      "readingMinutes": 5,
+      "tags": [
+        "Engineering Culture",
+        "Teamwork",
+        "Communication",
+        "Psychological Safety",
+        "Delivery",
+        "Mentorship"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "making-interfaces-honest-about-system-limits",
+      "category": "architecture",
+      "title": "Making Interfaces Honest About System Limits",
+      "summary": "A practical reflection on designing interfaces that show real system limits before users and operators have to discover them through failure.",
+      "date": "2026-06-29",
+      "readingMinutes": 5,
+      "tags": [
+        "Software Architecture",
+        "Product Design",
+        "Reliability",
+        "Operational UX",
+        "Systems Thinking",
+        "Product Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "keeping-meeting-notes-close-to-decisions",
       "category": "ways-of-working",
       "title": "Keeping Meeting Notes Close to Decisions",
