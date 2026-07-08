@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "writing-status-updates-people-can-act-on",
+      "category": "ways-of-working",
+      "title": "Writing Status Updates People Can Act On",
+      "summary": "A practical note on writing status updates that tell readers what changed, what is blocked, and what action is needed next.",
+      "date": "2026-07-08",
+      "readingMinutes": 5,
+      "tags": [
+        "Ways of Working",
+        "Communication",
+        "Status Updates",
+        "Delivery",
+        "Planning",
+        "Teamwork"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-patience-to-let-context-arrive",
+      "category": "perspectives",
+      "title": "The Patience to Let Context Arrive",
+      "summary": "A reflective note on waiting long enough for missing context to surface before turning uncertainty into a decision.",
+      "date": "2026-07-07",
+      "readingMinutes": 5,
+      "tags": [
+        "Reflection",
+        "Decision Making",
+        "Context",
+        "Patience",
+        "Leadership",
+        "Clarity"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "keeping-ai-changes-small-enough-to-review",
+      "category": "ai",
+      "title": "Keeping AI Changes Small Enough to Review",
+      "summary": "A practical reflection on using AI safely by keeping generated changes narrow, inspectable, and tied to evidence.",
+      "date": "2026-07-06",
+      "readingMinutes": 5,
+      "tags": [
+        "AI",
+        "Code Review",
+        "LLM",
+        "Developer Tools",
+        "Software Engineering",
+        "Quality"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "what-calm-ownership-looks-like-in-practice",
+      "category": "culture",
+      "title": "What Calm Ownership Looks Like in Practice",
+      "summary": "A grounded note on ownership as clear follow-through, explicit handoffs, and steady accountability without drama.",
+      "date": "2026-07-05",
+      "readingMinutes": 5,
+      "tags": [
+        "Engineering Culture",
+        "Ownership",
+        "Leadership",
+        "Teamwork",
+        "Delivery",
+        "Communication"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "designing-with-escape-hatches-not-back-doors",
+      "category": "architecture",
+      "title": "Designing With Escape Hatches, Not Back Doors",
+      "summary": "A practical reflection on building safe operational escape hatches that are explicit, audited, and bounded instead of hidden back doors.",
+      "date": "2026-07-04",
+      "readingMinutes": 5,
+      "tags": [
+        "Software Architecture",
+        "Operations",
+        "Security",
+        "Reliability",
+        "Governance",
+        "Product Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "closing-the-loop-before-starting-the-next-one",
       "category": "ways-of-working",
       "title": "Closing the Loop Before Starting the Next One",
