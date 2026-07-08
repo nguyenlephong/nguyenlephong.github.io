@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "turning-review-evidence-into-team-memory",
+      "category": "ways-of-working",
+      "title": "Turning Review Evidence Into Team Memory",
+      "summary": "A practical note on converting review findings, commands, screenshots, and decisions into reusable team memory instead of one-time approval artifacts.",
+      "date": "2026-07-23",
+      "readingMinutes": 5,
+      "tags": [
+        "Ways of Working",
+        "Review",
+        "Evidence",
+        "Team Memory",
+        "Documentation",
+        "Delivery"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "what-thirty-days-of-small-notes-can-teach",
+      "category": "perspectives",
+      "title": "What Thirty Days of Small Notes Can Teach",
+      "summary": "A reflective note on how a month of small daily observations can reveal patterns that are easy to miss in the middle of work.",
+      "date": "2026-07-22",
+      "readingMinutes": 5,
+      "tags": [
+        "Reflection",
+        "Writing",
+        "Learning",
+        "Daily Notes",
+        "Career",
+        "Attention"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "letting-ai-speed-up-the-search-not-the-judgment",
+      "category": "ai",
+      "title": "Letting AI Speed Up the Search, Not the Judgment",
+      "summary": "A practical reflection on using AI to broaden investigation while keeping source checking, trade-off decisions, and accountability with people.",
+      "date": "2026-07-21",
+      "readingMinutes": 5,
+      "tags": [
+        "AI",
+        "Search",
+        "Judgment",
+        "Verification",
+        "Evidence",
+        "Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "protecting-attention-in-a-busy-team",
+      "category": "culture",
+      "title": "Protecting Attention in a Busy Team",
+      "summary": "A calm note on treating attention as a shared team resource, not an infinite personal budget that people can recover alone.",
+      "date": "2026-07-20",
+      "readingMinutes": 5,
+      "tags": [
+        "Engineering Culture",
+        "Attention",
+        "Focus",
+        "Teamwork",
+        "Meetings",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "designing-defaults-that-fail-safely",
+      "category": "architecture",
+      "title": "Designing Defaults That Fail Safely",
+      "summary": "A practical reflection on choosing defaults that protect users and systems when configuration, rollout, or external dependency behavior is uncertain.",
+      "date": "2026-07-19",
+      "readingMinutes": 5,
+      "tags": [
+        "Software Architecture",
+        "Defaults",
+        "Reliability",
+        "Failure Modes",
+        "Configuration",
+        "Product Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "making-handoffs-honest-about-what-is-unknown",
       "category": "ways-of-working",
       "title": "Making Handoffs Honest About What Is Unknown",

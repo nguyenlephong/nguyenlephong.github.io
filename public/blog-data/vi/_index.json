@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "turning-review-evidence-into-team-memory",
+      "category": "ways-of-working",
+      "title": "Biến review evidence thành team memory",
+      "summary": "Một ghi chú thực tế về cách chuyển review findings, commands, screenshots và decisions thành team memory có thể tái sử dụng thay vì artifact chỉ dùng một lần để approve.",
+      "date": "2026-07-23",
+      "readingMinutes": 6,
+      "tags": [
+        "Ways of Working",
+        "Review",
+        "Evidence",
+        "Team Memory",
+        "Documentation",
+        "Delivery"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "what-thirty-days-of-small-notes-can-teach",
+      "category": "perspectives",
+      "title": "Ba mươi ngày ghi chú nhỏ có thể dạy gì",
+      "summary": "Một ghi chú phản chiếu về cách một tháng quan sát nhỏ mỗi ngày có thể lộ ra những pattern rất dễ bị bỏ sót giữa lúc làm việc.",
+      "date": "2026-07-22",
+      "readingMinutes": 6,
+      "tags": [
+        "Reflection",
+        "Writing",
+        "Learning",
+        "Daily Notes",
+        "Career",
+        "Attention"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "letting-ai-speed-up-the-search-not-the-judgment",
+      "category": "ai",
+      "title": "Để AI tăng tốc search, không thay judgment",
+      "summary": "Một reflection thực tế về cách dùng AI để mở rộng investigation trong khi source checking, trade-off decision và accountability vẫn thuộc về con người.",
+      "date": "2026-07-21",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "Search",
+        "Judgment",
+        "Verification",
+        "Evidence",
+        "Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "protecting-attention-in-a-busy-team",
+      "category": "culture",
+      "title": "Bảo vệ attention trong một team bận rộn",
+      "summary": "Một ghi chú bình tĩnh về việc xem attention như shared team resource, không phải ngân sách cá nhân vô hạn mà ai cũng tự hồi phục được.",
+      "date": "2026-07-20",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Attention",
+        "Focus",
+        "Teamwork",
+        "Meetings",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "designing-defaults-that-fail-safely",
+      "category": "architecture",
+      "title": "Thiết kế default sao cho fail vẫn an toàn",
+      "summary": "Một reflection thực tế về cách chọn default bảo vệ user và system khi configuration, rollout hoặc external dependency còn bất định.",
+      "date": "2026-07-19",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Defaults",
+        "Reliability",
+        "Failure Modes",
+        "Configuration",
+        "Product Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "making-handoffs-honest-about-what-is-unknown",
       "category": "ways-of-working",
       "title": "Làm handoff thành thật về điều chưa biết",

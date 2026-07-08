@@ -1,0 +1,14 @@
+{
+  "title": "Để AI tăng tốc search, không thay judgment",
+  "summary": "Một reflection thực tế về cách dùng AI để mở rộng investigation trong khi source checking, trade-off decision và accountability vẫn thuộc về con người.",
+  "readingMinutes": 6,
+  "tags": [
+    "AI",
+    "Search",
+    "Judgment",
+    "Verification",
+    "Evidence",
+    "Engineering"
+  ],
+  "html": "<p>Model tìm được ba nguyên nhân có thể trong chưa tới một phút. Điều đó hữu ích. Nó cũng nói rất tự tin về một nguyên nhân trước khi team kiểm tra log. Đó là phần nguy hiểm. AI làm search nhanh hơn, nhưng judgment vẫn phải được earned.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/letting-ai-speed-up-the-search-not-the-judgment/ai-search-human-judgment.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Một engineer review các AI-suggested search cards, source evidence markers và judgment checklist trên một bàn product investigation bình tĩnh.' />\n  <figcaption>AI có thể mở rộng search rất nhanh, nhưng evidence vẫn phải quyết định điều gì là thật.</figcaption>\n</figure>\n<p>Đây là một trong những cách lành mạnh nhất để dùng AI trong engineering work: để nó giúp search, compare, summarize và đề xuất hướng đi. Đừng để nó âm thầm thay thế việc quyết định điều gì là đúng.</p>\n<p>Search và judgment là hai kỹ năng khác nhau. Search hỏi điều gì có thể liên quan. Judgment hỏi điều gì được support, risk nằm ở đâu, cái gì đã change, và action nào được justified. AI thường giỏi tạo một bản đồ đầu rộng hơn. Nó không tự động biết path nào là path system thật đang đi.</p>\n<p>Một AI-assisted investigation tốt giữ model gần evidence. Yêu cầu nó chỉ ra file, command, log, assumption và missing check. Yêu cầu nó nói điều gì sẽ disprove explanation của nó. Work càng cụ thể, polished guessing càng ít đất sống.</p>\n<p>Phần con người không chỉ là final approval. Nó là việc quyết định source nào authoritative, trade-off nào quan trọng, failure mode nào chấp nhận được, và proposed change có hợp với product và codebase không. Những quyết định đó mang context mà model không own.</p>\n<p>Cũng có một pace risk. Suggestion nhanh có thể làm evidence yếu trông như đủ vì conversation đang chạy quá nhanh. Chậm lại để source check, reproduce hoặc có một failing test không phải anti-AI. Đó là cách AI work trở thành engineering thay vì performance.</p>\n<p>Mình thích xem AI output như search accelerator có receipt. Nó đã nhìn cái gì? Nó infer điều gì? Cái gì verified? Cái gì vẫn unknown? Nếu answer không trace được, đừng dùng nó làm cơ sở cho change rủi ro.</p>\n<p>Dùng như vậy, AI không làm engineer nhỏ đi. Nó cho engineer nhiều bề mặt hơn để inspect. Giá trị không phải model quyết định thay mình. Giá trị là mình đi tới decision thật với evidence tốt hơn và ít wasted motion hơn.</p>"
+}
