@@ -1,0 +1,18 @@
+{
+  "slug": "keeping-ai-changes-small-enough-to-review",
+  "category": "ai",
+  "title": "Keeping AI Changes Small Enough to Review",
+  "summary": "A practical reflection on using AI safely by keeping generated changes narrow, inspectable, and tied to evidence.",
+  "date": "2026-07-06",
+  "readingMinutes": 5,
+  "tags": [
+    "AI",
+    "Code Review",
+    "LLM",
+    "Developer Tools",
+    "Software Engineering",
+    "Quality"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The first AI suggestion looked impressive because it changed many files. It fixed the visible bug, updated a helper, touched a test, adjusted a type, and quietly reformatted a nearby module. The diff felt productive until the reviewer had to ask which part actually mattered.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/keeping-ai-changes-small-enough-to-review/small-ai-change-review.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Two developers inspect a small AI-generated change set shown as abstract diff cards on a large screen.' />\n  <figcaption>AI output is easier to trust when the change is small enough for a human to really review.</figcaption>\n</figure>\n<p>AI makes large changes cheap to produce. It does not make large changes cheap to understand. Review remains a human bottleneck, and that bottleneck is not a failure. It is where responsibility lives. If the reviewer cannot reasonably inspect the change, the team is not moving faster in any durable sense.</p>\n<p>Small AI changes work better because they preserve attention. One behavior, one boundary, one testable claim. The model may draft the patch, but the human can still trace it: here is the failing case, here is the changed line, here is the test that proves it, here is the part we deliberately did not touch.</p>\n<p>This requires prompt discipline. Ask for a minimal diff. Tell the model not to refactor nearby code unless required. Ask it to list assumptions separately from changes. Ask it to stop after the first pass so review can happen before it widens the scope. These instructions sound basic, but they prevent a lot of accidental expansion.</p>\n<p>Small does not mean trivial. A small change can be important if it hits the right seam. A one-line guard can protect money. A narrow query scope can fix tenant isolation. A focused regression test can prevent a future incident. The size of the diff is not the size of the value.</p>\n<p>The review habit matters too. When AI authored part of the change, reviewers should be more explicit about evidence. Which command ran? Which source file was read? Which generated suggestion was rejected? Which behavior would fail without this patch? The point is not to distrust everything. The point is to keep trust tied to inspection.</p>\n<p>One danger is mixed intent. A patch fixes a bug and cleans naming and changes formatting and updates copy. Humans do this too, but AI can do it faster and with less awareness of why the mix is risky. Separate commits and separate prompts keep the reasoning clearer.</p>\n<p>I also like asking AI to explain the diff after it writes it, but I treat that explanation as another draft. It can help orient review, but it does not replace reading the code. The code, tests, and runtime behavior remain the source of truth.</p>\n<p>The safest AI workflow I know is not dramatic. It is small request, small diff, concrete evidence, human review, then the next small request. That rhythm may feel slower than asking for everything at once. It is often faster than debugging a confident change nobody truly understood.</p>"
+}
