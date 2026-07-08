@@ -1,0 +1,18 @@
+{
+  "slug": "when-progress-feels-like-removing-weight",
+  "category": "perspectives",
+  "title": "When Progress Feels Like Removing Weight",
+  "summary": "A reflective note on the kind of progress that comes from reducing load, clearing ambiguity, and making the next step lighter.",
+  "date": "2026-07-02",
+  "readingMinutes": 5,
+  "tags": [
+    "Reflection",
+    "Clarity",
+    "Workload",
+    "Focus",
+    "Sustainable Work",
+    "Decision Making"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>Nothing dramatic changed that afternoon. No new feature shipped. No big decision was announced. But the work felt lighter after someone removed three duplicate tasks, renamed one vague risk, and wrote down the thing everyone had been carrying in their head.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/when-progress-feels-like-removing-weight/removing-weight-from-work.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A person removes blank paper blocks from a crowded project board, revealing a clearer path of simple cards.' />\n  <figcaption>Some progress is not adding more motion. It is removing the weight that made motion hard.</figcaption>\n</figure>\n<p>We often describe progress as addition. More output, more scope, more meetings, more commits, more metrics moving upward. Addition is visible, so it is easy to celebrate. But many meaningful workdays improve because something heavy is removed.</p>\n<p>A repeated question disappears because the decision is finally documented. A noisy dashboard becomes useful because the team deletes the charts nobody trusts. A project becomes calmer because the owner says which part is out of scope. A person sleeps better because an unnamed worry becomes a concrete risk with a next step.</p>\n<p>This kind of progress is easy to underestimate because it leaves less evidence. The board has fewer cards. The meeting is shorter. The design has fewer branches. The code path has fewer exceptions. The absence is the point, but absence is harder to report than activity.</p>\n<p>Removing weight takes judgment. Delete the wrong thing and you create damage. Keep everything and you create drag. The skill is noticing what no longer carries value: stale assumptions, duplicated work, unclear ownership, hidden decisions, rituals that continue only because they existed last month.</p>\n<p>There is emotional weight too. A team can move slowly because nobody wants to say the plan is too wide. A person can stall because a task has no real definition of done. A review can feel tense because the disagreement is about ownership, not code. Naming those weights often changes the room before any implementation changes.</p>\n<p>I have learned to respect cleanup that creates relief. Not cosmetic cleanup, not refactor as avoidance, but the kind that helps the next person understand faster. A smaller API surface. A clearer error message. A ticket with one owner. A plan that says no to three tempting extras.</p>\n<p>Progress by removal also asks for humility. It admits that some of yesterday’s structure is now unnecessary. It lets old scaffolding come down. It does not treat every artifact as proof of effort that must be preserved forever.</p>\n<p>If the work feels strangely heavy, the next useful move may not be to push harder. It may be to ask what can be removed, named, merged, postponed, or made explicit. Sometimes momentum returns not because we added fuel, but because we stopped dragging something that no longer belonged.</p>"
+}

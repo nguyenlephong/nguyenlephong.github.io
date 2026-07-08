@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "closing-the-loop-before-starting-the-next-one",
+      "category": "ways-of-working",
+      "title": "Đóng vòng trước khi mở vòng tiếp theo",
+      "summary": "Một ghi chú thực tế về việc đóng work loop bằng evidence, decision và handoff context trước khi team vội bước sang task kế tiếp.",
+      "date": "2026-07-03",
+      "readingMinutes": 6,
+      "tags": [
+        "Ways of Working",
+        "Delivery",
+        "Review",
+        "Documentation",
+        "Team Communication",
+        "Planning"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "when-progress-feels-like-removing-weight",
+      "category": "perspectives",
+      "title": "Khi progress giống như bỏ bớt trọng lượng",
+      "summary": "Một ghi chú phản chiếu về kiểu progress đến từ việc giảm tải, làm rõ ambiguity và khiến next step nhẹ hơn.",
+      "date": "2026-07-02",
+      "readingMinutes": 6,
+      "tags": [
+        "Reflection",
+        "Clarity",
+        "Workload",
+        "Focus",
+        "Sustainable Work",
+        "Decision Making"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "letting-ai-draft-the-boring-first-pass",
+      "category": "ai",
+      "title": "Để AI viết bản nháp đầu tiên nhàm chán",
+      "summary": "Một reflection thực tế về việc dùng AI cho bản nháp đầu tiên thật bình thường, trong khi judgment của con người tập trung vào evidence, shape và responsibility.",
+      "date": "2026-07-01",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Writing",
+        "Developer Tools",
+        "Review",
+        "Human Judgment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-quiet-skill-of-asking-for-help-early",
+      "category": "culture",
+      "title": "Kỹ năng yên lặng của việc hỏi giúp sớm",
+      "summary": "Một ghi chú bình tĩnh về vì sao hỏi giúp sớm không phải yếu, mà là một thói quen nhỏ giữ work trung thực và team khỏe mạnh.",
+      "date": "2026-06-30",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Teamwork",
+        "Communication",
+        "Psychological Safety",
+        "Delivery",
+        "Mentorship"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "making-interfaces-honest-about-system-limits",
+      "category": "architecture",
+      "title": "Làm interface thành thật về giới hạn của system",
+      "summary": "Một reflection thực tế về cách thiết kế interface cho thấy giới hạn thật của system trước khi user và operator phải tự phát hiện qua failure.",
+      "date": "2026-06-29",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Product Design",
+        "Reliability",
+        "Operational UX",
+        "Systems Thinking",
+        "Product Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "keeping-meeting-notes-close-to-decisions",
       "category": "ways-of-working",
       "title": "Giữ meeting notes gần với decision",
