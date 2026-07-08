@@ -1,0 +1,18 @@
+{
+  "slug": "choosing-boring-boundaries-on-purpose",
+  "category": "architecture",
+  "title": "Choosing Boring Boundaries on Purpose",
+  "summary": "A practical reflection on choosing simple software boundaries that make ownership, testing, and future change easier to reason about.",
+  "date": "2026-07-09",
+  "readingMinutes": 5,
+  "tags": [
+    "Software Architecture",
+    "Boundaries",
+    "Modularity",
+    "Maintenance",
+    "Product Engineering",
+    "Teamwork"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>In an architecture review, someone drew a new abstraction on the board. It looked elegant. It could support many future cases. It also made the current feature harder to explain. After a few minutes, the most useful question was not whether the design was clever. It was whether the boundary made the next change more boring.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/choosing-boring-boundaries-on-purpose/boring-boundary-map.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A calm software architecture review table with a simple boundary map, service cards, arrows, and muted sticky notes.' />\n  <figcaption>A good boundary often feels plain because it removes surprise from the next change.</figcaption>\n</figure>\n<p>The best boundaries in a codebase often feel almost dull. They do not announce themselves with complex names. They make it obvious where a rule lives, who can change it, and which tests should fail if the rule is broken.</p>\n<p>A boundary is useful when it makes a decision local. If pricing rules change, the change should not require reading the notification sender, the page layout, and the analytics mapper. If authentication changes, most product code should not need to learn a new protocol. A boundary gives a future teammate a smaller room to search.</p>\n<p>Boring boundaries also create boring conversations, in the best sense. Instead of debating taste every time, the team can ask: does this belong to the domain, the adapter, the use case, or the presentation layer? The vocabulary does not solve every problem, but it lowers the cost of starting the conversation.</p>\n<p>The danger is that boundary-making can become decorative. A new folder, interface, or service name does not automatically create clarity. Sometimes it only moves confusion into a more official place. The test is whether the boundary changes how safely the team can modify behavior.</p>\n<p>I like boundaries that protect ownership. The code should show which part of the system owns the truth, which part translates from the outside world, and which part only displays the result. When those responsibilities blur, bugs start traveling farther than they should.</p>\n<p>Choosing a boring boundary on purpose means being able to explain what is allowed to cross it. Data can cross. Intent can cross. A framework detail may not need to cross. A shortcut might be fine for a spike, but production code should not make every future reader pay for that shortcut.</p>\n<p>The next time an abstraction looks impressive, pause long enough to ask what it makes easier tomorrow. If it reduces coordination, narrows the test surface, and gives the next person a clear place to work, boring is not a weakness. It is the design doing its job.</p>"
+}

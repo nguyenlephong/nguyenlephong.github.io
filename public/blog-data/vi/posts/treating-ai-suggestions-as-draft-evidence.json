@@ -1,0 +1,14 @@
+{
+  "title": "Xem AI suggestion như evidence bản nháp",
+  "summary": "Một reflection thực tế về cách dùng AI output như điểm bắt đầu để điều tra, không phải câu trả lời hoàn chỉnh thay cho verification.",
+  "readingMinutes": 6,
+  "tags": [
+    "AI",
+    "LLM",
+    "Evidence",
+    "Code Review",
+    "Developer Tools",
+    "Quality"
+  ],
+  "html": "<p>AI suggestion nghe rất đúng. Nó gọi tên likely cause, chỉ vào một pattern quen thuộc, và đưa ra fix gọn. Vấn đề là log không hoàn toàn đồng ý. Một lệch nhỏ ở timestamp biến câu trả lời tự tin đó thành thứ hữu ích hơn: một clue bản nháp cần evidence.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/treating-ai-suggestions-as-draft-evidence/ai-draft-evidence-board.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Một workspace developer với AI draft notes, log snippets, test results và evidence cards được sắp trên review board.' />\n  <figcaption>AI output an toàn hơn khi mình xem nó là lead để verify, không phải verdict.</figcaption>\n</figure>\n<p>AI tool rất giỏi tạo ra một shape có vẻ hợp lý. Nó có thể summarize, nối pattern và đề xuất đường đi qua thông tin lộn xộn. Điều đó có giá trị. Và chính vì vậy output càng cần verification. Plausible không giống proven.</p>\n<p>Tôi thấy hữu ích khi xem AI suggestion như draft evidence. Nó không vô dụng chỉ vì có thể sai, và cũng không final chỉ vì nó fluent. Nó là một candidate explanation đang chờ log, test, source code hoặc user behavior confirm hay reject.</p>\n<p>Frame này thay đổi cách mình làm việc với tool. Thay vì chỉ hỏi answer, hãy hỏi điều gì sẽ làm answer đó đúng. File nào nên chứa behavior này? Test nào sẽ fail? Metric nào nên dịch chuyển? Assumption yếu nhất là gì?</p>\n<p>Draft evidence đặc biệt hữu ích trong code review. Một AI note nói function này có thể mishandle empty input chưa đủ để kết luận. Nhưng nó có thể dẫn đến một test nhanh, một source check hoặc một câu hỏi cho author. Giá trị nằm ở đường đi từ claim đến confirmation.</p>\n<p>Debugging cũng vậy. Nếu model gợi ý race condition, hãy tìm timing evidence. Nếu nó gợi ý thiếu tenant filter, hãy inspect query. Nếu nó gợi ý config mismatch, hãy so running environment, không chỉ nhìn repository default.</p>\n<p>Thói quen này cũng bảo vệ trust. Khi mọi người thấy AI-backed claim đi kèm evidence, họ có thể evaluate work. Khi claim đến dưới dạng polished certainty, teammate hoặc over-trust hoặc over-correct. Cả hai đều tốn kém.</p>\n<p>AI có thể làm investigation nhanh hơn, nhưng chỉ khi mình giữ nguyên trách nhiệm con người. Hãy để nó draft possibilities. Hãy để nó organize clues. Rồi bắt final answer phải xứng đáng bằng evidence mà team inspect được.</p>"
+}

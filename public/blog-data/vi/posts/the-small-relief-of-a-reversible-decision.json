@@ -1,0 +1,14 @@
+{
+  "title": "Sự nhẹ nhõm nhỏ của một quyết định có thể đảo ngược",
+  "summary": "Một ghi chú phản chiếu về cách giảm căng thẳng khi biết lựa chọn nào có thể đổi lại an toàn sau khi thông tin mới xuất hiện.",
+  "readingMinutes": 6,
+  "tags": [
+    "Reflection",
+    "Decision Making",
+    "Uncertainty",
+    "Leadership",
+    "Product Engineering",
+    "Sustainable Work"
+  ],
+  "html": "<p>Có một decision nằm trên bàn, và mọi người đối xử với nó như một cánh cửa sẽ khóa lại sau lưng. Discussion trở nên nặng hơn mức decision đó đáng có. Rồi có người hỏi nếu hai tuần nữa muốn đảo ngược thì cần gì. Căn phòng đổi khác. Lựa chọn vẫn quan trọng, nhưng nó không còn giả vờ là vĩnh viễn.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/the-small-relief-of-a-reversible-decision/reversible-decision-path.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Một góc bàn yên tĩnh với hai decision path được đánh dấu rõ, một rollback note và một calendar checkpoint nhỏ.' />\n  <figcaption>Biết cách đảo ngược một decision có thể làm bước đầu tiên bình tĩnh hơn.</figcaption>\n</figure>\n<p>Không phải decision nào cũng reversible. Một số chạm vào tiền, trust, data, contract hoặc safety. Những việc đó xứng đáng đi chậm hơn và review mạnh hơn. Nhưng rất nhiều lựa chọn product và engineering hằng ngày không final đến vậy. Chúng chỉ có cảm giác final vì chưa ai mô tả đường quay lại.</p>\n<p>Một reversible decision có vài tính chất làm người ta yên tâm. Blast radius được biết rõ. Rollback path khả thi. Team có thể observe lựa chọn có đang hoạt động không. Chi phí học là chấp nhận được. Khi các điều đó đúng, delay không phải lúc nào cũng là wisdom.</p>\n<p>Điều này không có nghĩa là careless. Reversibility không phải lý do để bỏ qua suy nghĩ. Nó là cách match sức nặng của process với sức nặng thật của lựa chọn. Một decision có thể undo bằng config change không nên dùng cùng ceremony với database migration ảnh hưởng đến customer money.</p>\n<p>Tôi thích viết reversal condition gần ngay decision. Nếu error rate vượt threshold này, rollback. Nếu support ticket nhắc confusion này hai lần, revisit copy. Nếu adoption phẳng sau một tuần, remove experiment. Decision bớt thần bí khi lối ra nhìn thấy được.</p>\n<p>Reversible decision cũng tử tế hơn với team. Nó giảm nhu cầu mọi người phải bảo vệ perfect foresight. Mọi người có thể nói điều mình tin, gọi tên điều mình chưa biết, và thống nhất cách hệ thống sẽ dạy phần còn lại.</p>\n<p>Sự nhẹ nhõm đó nhỏ nhưng thật. Thay vì mang cả tương lai vào một cuộc họp, team mang một next step, một checkpoint và một đường quay lại. Như vậy thường đã đủ để move mà không cần giả vờ certainty đã tới.</p>\n<p>Khi một decision nặng hơn mức cần thiết, hãy hỏi nó có thật sự permanent không. Nếu có, chậm lại. Nếu không, thiết kế reversal path, làm trade-off visible, và để work tiếp tục.</p>"
+}
