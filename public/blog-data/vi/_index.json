@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "making-handoffs-honest-about-what-is-unknown",
+      "category": "ways-of-working",
+      "title": "Làm handoff thành thật về điều chưa biết",
+      "summary": "Một ghi chú thực tế về cách viết handoff có open questions, assumptions và risk thay vì giả vờ work chắc chắn hơn thực tế.",
+      "date": "2026-07-18",
+      "readingMinutes": 6,
+      "tags": [
+        "Ways of Working",
+        "Handoffs",
+        "Communication",
+        "Risk",
+        "Delivery",
+        "Teamwork"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-quiet-discipline-of-finishing-properly",
+      "category": "perspectives",
+      "title": "Kỷ luật thầm lặng của việc hoàn tất đúng cách",
+      "summary": "Một ghi chú phản chiếu về kỷ luật nhỏ khi đóng work bằng evidence, cleanup và context thay vì chỉ chạm tới finish line nhìn thấy được.",
+      "date": "2026-07-17",
+      "readingMinutes": 6,
+      "tags": [
+        "Reflection",
+        "Craft",
+        "Follow Through",
+        "Sustainable Work",
+        "Quality",
+        "Clarity"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "asking-ai-to-name-its-assumptions",
+      "category": "ai",
+      "title": "Yêu cầu AI gọi tên assumption của nó",
+      "summary": "Một reflection thực tế về cách làm AI-assisted work an toàn hơn bằng cách yêu cầu model bộc lộ assumption trước khi chấp nhận answer.",
+      "date": "2026-07-16",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Prompting",
+        "Verification",
+        "Developer Tools",
+        "Judgment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "noticing-friction-before-it-becomes-blame",
+      "category": "culture",
+      "title": "Nhận ra friction trước khi nó thành blame",
+      "summary": "Một ghi chú bình tĩnh về việc xem friction lặp lại trong team như tín hiệu hữu ích trước khi nó đông cứng thành blame cá nhân.",
+      "date": "2026-07-15",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Teamwork",
+        "Feedback",
+        "Process",
+        "Leadership",
+        "Communication"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "keeping-data-contracts-small-enough-to-trust",
+      "category": "architecture",
+      "title": "Giữ data contract đủ nhỏ để tin được",
+      "summary": "Một reflection thực tế về cách thiết kế data contract hẹp, testable và đủ ổn định để team có thể dựa vào.",
+      "date": "2026-07-14",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Data Contracts",
+        "APIs",
+        "Reliability",
+        "Testing",
+        "Product Engineering"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "keeping-checklists-close-to-the-work",
       "category": "ways-of-working",
       "title": "Giữ checklist ở gần nơi công việc diễn ra",

@@ -1,0 +1,14 @@
+{
+  "title": "Làm handoff thành thật về điều chưa biết",
+  "summary": "Một ghi chú thực tế về cách viết handoff có open questions, assumptions và risk thay vì giả vờ work chắc chắn hơn thực tế.",
+  "readingMinutes": 6,
+  "tags": [
+    "Ways of Working",
+    "Handoffs",
+    "Communication",
+    "Risk",
+    "Delivery",
+    "Teamwork"
+  ],
+  "html": "<p>Handoff đó nhìn sạch. Nó liệt kê branch, ticket, test command và next owner. Rồi next owner mở work ra và tìm thấy câu hỏi thật: chưa ai biết một provider case đã được confirm chưa. Handoff gọn, nhưng chưa đủ thành thật.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/making-handoffs-honest-about-what-is-unknown/honest-handoff-notes.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Một bàn handoff bình tĩnh với notebooks, task cards, question markers, vùng known và unknown, và hai người chuyển context công việc.' />\n  <figcaption>Handoff thành thật làm uncertainty visible trước khi nó trở thành rework.</figcaption>\n</figure>\n<p>Handoff không chỉ là list những step đã xong. Nó là transfer context. Nếu context có uncertainty, handoff nên nói rõ. Nếu không, người tiếp theo thừa hưởng một hidden guess.</p>\n<p>Unknown không có gì đáng xấu hổ. Nó là một phần của work thật. Vấn đề không phải có thứ chưa biết. Vấn đề là unknown bị giấu sau wording tự tin, hoặc nằm rải rác trong chat message mà người tiếp theo sẽ không bao giờ tìm thấy.</p>\n<p>Handoff hữu ích tách riêng what is known, what is assumed và what still needs confirmation. Known nghĩa là đã verified. Assumed nghĩa là hợp lý nhưng chưa proven. Needs confirmation nghĩa là đừng xem nó đã safe.</p>\n<p>Phân biệt này tiết kiệm thời gian. Người tiếp theo có thể tiếp tục từ evidence thay vì lặp lại discovery. Họ cũng có thể decide proceed, test, escalate hoặc pause dựa trên shape thật của risk.</p>\n<p>Handoff thành thật cũng giảm blame. Nếu một assumption sau này sai, team có thể inspect vì sao nó từng hợp lý và liệu nó nên được verify sớm hơn không. Đó là cuộc nói chuyện tốt hơn nhiều so với chỉ phát hiện assumption sau failure.</p>\n<p>Format có thể đơn giản. Changed, verified, not verified, risks, next action, owner. Quan trọng không phải template. Quan trọng là từ chối làm uncertainty invisible.</p>\n<p>Trước khi hand off work, hãy đọc note như người tiếp theo. Họ có biết điều gì solid không? Họ có biết điều gì còn soft không? Họ có biết nhìn đâu trước nếu có thứ behave lạ không? Nếu chưa, handoff có thể tidy, nhưng chưa finished.</p>"
+}

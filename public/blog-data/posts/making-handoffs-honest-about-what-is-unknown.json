@@ -1,0 +1,18 @@
+{
+  "slug": "making-handoffs-honest-about-what-is-unknown",
+  "category": "ways-of-working",
+  "title": "Making Handoffs Honest About What Is Unknown",
+  "summary": "A practical note on writing handoffs that include open questions, assumptions, and risk instead of pretending the work is more certain than it is.",
+  "date": "2026-07-18",
+  "readingMinutes": 5,
+  "tags": [
+    "Ways of Working",
+    "Handoffs",
+    "Communication",
+    "Risk",
+    "Delivery",
+    "Teamwork"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The handoff looked clean. It listed the branch, the ticket, the test command, and the next owner. Then the next owner opened the work and found the real question: nobody knew whether one provider case had been confirmed. The handoff was neat, but not honest enough.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/making-handoffs-honest-about-what-is-unknown/honest-handoff-notes.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A calm handoff table with notebooks, task cards, question markers, known and unknown areas, and two people passing work context.' />\n  <figcaption>An honest handoff makes uncertainty visible before it becomes rework.</figcaption>\n</figure>\n<p>A handoff is not only a list of completed steps. It is a transfer of context. If the context includes uncertainty, the handoff should say so clearly. Otherwise the next person inherits a hidden guess.</p>\n<p>Unknowns are not embarrassing. They are part of real work. The problem is not that something is unknown. The problem is when the unknown is hidden behind confident wording, or spread across chat messages that the next person will never find.</p>\n<p>A useful handoff separates what is known, what is assumed, and what still needs confirmation. Known means verified. Assumed means reasonable but not proven. Needs confirmation means do not treat this as safe yet.</p>\n<p>This distinction saves time. The next person can continue from evidence instead of repeating discovery. They can also decide whether to proceed, test, escalate, or pause based on the real shape of the risk.</p>\n<p>Honest handoffs also reduce blame. If an assumption later turns out wrong, the team can inspect why it was reasonable and whether it should have been verified earlier. That is a much better conversation than discovering the assumption only after failure.</p>\n<p>The format can be simple. Changed, verified, not verified, risks, next action, owner. The important part is not the template. The important part is refusing to make uncertainty invisible.</p>\n<p>Before handing off work, read the note as the next person. Would they know what is solid? Would they know what is still soft? Would they know where to look first if something behaves strangely? If not, the handoff is tidy, but not finished.</p>"
+}

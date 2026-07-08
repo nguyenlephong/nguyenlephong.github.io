@@ -1,0 +1,18 @@
+{
+  "slug": "keeping-data-contracts-small-enough-to-trust",
+  "category": "architecture",
+  "title": "Keeping Data Contracts Small Enough to Trust",
+  "summary": "A practical reflection on designing data contracts that are narrow, testable, and stable enough for teams to rely on.",
+  "date": "2026-07-14",
+  "readingMinutes": 5,
+  "tags": [
+    "Software Architecture",
+    "Data Contracts",
+    "APIs",
+    "Reliability",
+    "Testing",
+    "Product Engineering"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The contract looked complete, which was part of the problem. It listed every field anyone might need, several optional shapes, and a few values whose meaning depended on where the data came from. It was generous, but hard to trust. The first useful improvement was not adding another field. It was making the promise smaller.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/keeping-data-contracts-small-enough-to-trust/small-data-contracts.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Engineers review compact data contract cards, abstract schema blocks, and simple test markers on a quiet architecture table.' />\n  <figcaption>A data contract becomes safer when the team can explain and test every promise inside it.</figcaption>\n</figure>\n<p>A data contract is not a place to store hope. It is a shared promise between producers and consumers. When the promise becomes too wide, everyone starts depending on different corners of it, and nobody is sure which parts are stable.</p>\n<p>Small contracts are easier to trust because they are easier to name. This field means this. This value is always present. This timestamp uses this clock. This identifier belongs to this owner. The language gets boring, and that is a good sign.</p>\n<p>Small contracts also make change visible. If a new consumer needs extra data, the team can decide whether the contract should grow, whether a separate read model is better, or whether the consumer is reaching across a boundary it should not cross.</p>\n<p>The opposite is the all-purpose payload. It feels convenient at first because nobody has to ask for a change. Later, every producer is afraid to remove anything and every consumer quietly depends on behavior that was never reviewed.</p>\n<p>Testing is a useful pressure test. If a contract is too vague to test clearly, it is probably too vague to rely on. A good contract should have examples, validation, and failure cases that a future teammate can run without knowing the whole history.</p>\n<p>Versioning also becomes less dramatic when contracts are small. A narrow promise is easier to keep compatible. A wide promise creates accidental API surface area, and accidental surface area ages badly.</p>\n<p>Before adding the next field, ask whether the contract is still small enough to explain. If the team can name its owner, test its meaning, and describe who depends on it, the contract is not just data passing through. It is architecture doing quiet work.</p>"
+}
