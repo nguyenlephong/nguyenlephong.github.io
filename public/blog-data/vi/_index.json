@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "keeping-checklists-close-to-the-work",
+      "category": "ways-of-working",
+      "title": "Giữ checklist ở gần nơi công việc diễn ra",
+      "summary": "Một ghi chú thực tế về cách làm checklist hữu ích bằng cách đặt nó ở nơi mọi người thật sự decide, review, release và hand off work.",
+      "date": "2026-07-13",
+      "readingMinutes": 6,
+      "tags": [
+        "Ways of Working",
+        "Checklists",
+        "Delivery",
+        "Quality",
+        "Teamwork",
+        "Documentation"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-small-relief-of-a-reversible-decision",
+      "category": "perspectives",
+      "title": "Sự nhẹ nhõm nhỏ của một quyết định có thể đảo ngược",
+      "summary": "Một ghi chú phản chiếu về cách giảm căng thẳng khi biết lựa chọn nào có thể đổi lại an toàn sau khi thông tin mới xuất hiện.",
+      "date": "2026-07-12",
+      "readingMinutes": 6,
+      "tags": [
+        "Reflection",
+        "Decision Making",
+        "Uncertainty",
+        "Leadership",
+        "Product Engineering",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "treating-ai-suggestions-as-draft-evidence",
+      "category": "ai",
+      "title": "Xem AI suggestion như evidence bản nháp",
+      "summary": "Một reflection thực tế về cách dùng AI output như điểm bắt đầu để điều tra, không phải câu trả lời hoàn chỉnh thay cho verification.",
+      "date": "2026-07-11",
+      "readingMinutes": 6,
+      "tags": [
+        "AI",
+        "LLM",
+        "Evidence",
+        "Code Review",
+        "Developer Tools",
+        "Quality"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "making-space-for-the-quiet-reviewer",
+      "category": "culture",
+      "title": "Tạo không gian cho người reviewer ít nói",
+      "summary": "Một ghi chú bình tĩnh về cách giúp teammate trầm hơn đóng góp review feedback sâu mà không ép mọi tín hiệu hữu ích đi qua kênh ồn nhất.",
+      "date": "2026-07-10",
+      "readingMinutes": 6,
+      "tags": [
+        "Engineering Culture",
+        "Code Review",
+        "Inclusion",
+        "Teamwork",
+        "Feedback",
+        "Leadership"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "choosing-boring-boundaries-on-purpose",
+      "category": "architecture",
+      "title": "Chủ động chọn những boundary nhàm chán",
+      "summary": "Một reflection thực tế về cách chọn software boundary đơn giản để ownership, testing và future change dễ suy luận hơn.",
+      "date": "2026-07-09",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "Boundaries",
+        "Modularity",
+        "Maintenance",
+        "Product Engineering",
+        "Teamwork"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "writing-status-updates-people-can-act-on",
       "category": "ways-of-working",
       "title": "Viết status update để người khác hành động được",

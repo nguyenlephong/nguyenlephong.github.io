@@ -43,6 +43,91 @@
   ],
   "posts": [
     {
+      "slug": "keeping-checklists-close-to-the-work",
+      "category": "ways-of-working",
+      "title": "Keeping Checklists Close to the Work",
+      "summary": "A practical note on making checklists useful by placing them where people actually decide, review, release, and hand off work.",
+      "date": "2026-07-13",
+      "readingMinutes": 5,
+      "tags": [
+        "Ways of Working",
+        "Checklists",
+        "Delivery",
+        "Quality",
+        "Teamwork",
+        "Documentation"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "the-small-relief-of-a-reversible-decision",
+      "category": "perspectives",
+      "title": "The Small Relief of a Reversible Decision",
+      "summary": "A reflective note on lowering decision stress by knowing which choices can be changed safely after new information arrives.",
+      "date": "2026-07-12",
+      "readingMinutes": 5,
+      "tags": [
+        "Reflection",
+        "Decision Making",
+        "Uncertainty",
+        "Leadership",
+        "Product Engineering",
+        "Sustainable Work"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "treating-ai-suggestions-as-draft-evidence",
+      "category": "ai",
+      "title": "Treating AI Suggestions as Draft Evidence",
+      "summary": "A practical reflection on using AI output as a starting point for investigation, not as a finished answer that replaces verification.",
+      "date": "2026-07-11",
+      "readingMinutes": 5,
+      "tags": [
+        "AI",
+        "LLM",
+        "Evidence",
+        "Code Review",
+        "Developer Tools",
+        "Quality"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "making-space-for-the-quiet-reviewer",
+      "category": "culture",
+      "title": "Making Space for the Quiet Reviewer",
+      "summary": "A calm note on helping quieter teammates contribute thoughtful review feedback without forcing every useful signal into the loudest channel.",
+      "date": "2026-07-10",
+      "readingMinutes": 5,
+      "tags": [
+        "Engineering Culture",
+        "Code Review",
+        "Inclusion",
+        "Teamwork",
+        "Feedback",
+        "Leadership"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "choosing-boring-boundaries-on-purpose",
+      "category": "architecture",
+      "title": "Choosing Boring Boundaries on Purpose",
+      "summary": "A practical reflection on choosing simple software boundaries that make ownership, testing, and future change easier to reason about.",
+      "date": "2026-07-09",
+      "readingMinutes": 5,
+      "tags": [
+        "Software Architecture",
+        "Boundaries",
+        "Modularity",
+        "Maintenance",
+        "Product Engineering",
+        "Teamwork"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "writing-status-updates-people-can-act-on",
       "category": "ways-of-working",
       "title": "Writing Status Updates People Can Act On",

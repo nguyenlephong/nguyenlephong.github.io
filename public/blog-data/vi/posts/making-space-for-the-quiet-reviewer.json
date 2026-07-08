@@ -1,0 +1,14 @@
+{
+  "title": "Tạo không gian cho người reviewer ít nói",
+  "summary": "Một ghi chú bình tĩnh về cách giúp teammate trầm hơn đóng góp review feedback sâu mà không ép mọi tín hiệu hữu ích đi qua kênh ồn nhất.",
+  "readingMinutes": 6,
+  "tags": [
+    "Engineering Culture",
+    "Code Review",
+    "Inclusion",
+    "Teamwork",
+    "Feedback",
+    "Leadership"
+  ],
+  "html": "<p>Buổi review đi khá nhanh. Hai người nói qua trade-off, một người nêu concern, và căn phòng có vẻ sẵn sàng quyết định. Rồi một người nãy giờ im lặng chỉ vào một edge case nhỏ trong migration path. Nó làm plan đổi hướng. Vấn đề không phải là người đó im lặng. Vấn đề là process gần như không chừa chỗ cho tín hiệu đó kịp đến.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/making-space-for-the-quiet-reviewer/quiet-reviewer-table.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Một bàn code review yên tĩnh với laptop, ghi chú pull request có annotation và một comment card được highlight ở gần trung tâm.' />\n  <figcaption>Review sâu thường cần một chút không gian trước khi nó trở nên nhìn thấy được.</figcaption>\n</figure>\n<p>Team thường nói muốn có nhiều perspective khác nhau, nhưng cơ chế review đôi khi lại reward tốc độ, âm lượng và sự tự tin. Feedback to nhất đến trước. Feedback cẩn thận nhất có thể cần thời gian để đọc, so sánh và test một assumption nhỏ.</p>\n<p>Một quiet reviewer không nhất thiết là người disengaged. Họ có thể đang trace failure path, kiểm tra liệu naming có làm support confuse không, hoặc nhận ra test chỉ cover happy path. Contribution của họ có thể ít kịch tính hơn nhưng lại rất load-bearing.</p>\n<p>Tạo không gian bắt đầu trước cuộc họp. Nếu team share context, constraint và decision cần chốt bằng văn bản, reviewer trầm hơn không phải dùng năng lượng đầu tiên để dựng lại problem. Họ có thể dùng năng lượng đó cho judgment.</p>\n<p>Trong discussion, space có thể rất đơn giản. Dừng một nhịp trước khi close. Hỏi xem có ai thấy migration, rollout hoặc customer-support concern không. Cho phép comment bằng chữ sau call. Đừng xem câu trả lời đầu tiên là hình dạng cuối cùng của căn phòng.</p>\n<p>Cũng cần tách urgency khỏi pressure. Một số review thật sự gấp. Ngay cả vậy, deadline rõ ràng vẫn tử tế hơn một căn phòng bị thúc. Please leave comments by 15:00 cho mọi người một boundary. Any thoughts right now thường chỉ mở đường cho những giọng nhanh nhất.</p>\n<p>Quiet review cũng không nên trở thành invisible labor. Khi một comment cẩn thận giúp tránh release xấu, hãy gọi tên contribution đó. Không cần ồn ào, không cần performative, chỉ đủ rõ để team học được loại attention nào quan trọng.</p>\n<p>Review culture lành mạnh không bắt mọi người nói theo cùng một kiểu. Nó cho nhiều dạng attention khác nhau một đường đi vào work. Quiet reviewer không cần trở nên to hơn để hữu ích. Process nên đủ trưởng thành để nghe được họ.</p>"
+}

@@ -1,0 +1,18 @@
+{
+  "slug": "treating-ai-suggestions-as-draft-evidence",
+  "category": "ai",
+  "title": "Treating AI Suggestions as Draft Evidence",
+  "summary": "A practical reflection on using AI output as a starting point for investigation, not as a finished answer that replaces verification.",
+  "date": "2026-07-11",
+  "readingMinutes": 5,
+  "tags": [
+    "AI",
+    "LLM",
+    "Evidence",
+    "Code Review",
+    "Developer Tools",
+    "Quality"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The AI suggestion sounded right. It named the likely cause, pointed to a familiar pattern, and offered a clean fix. The problem was that the logs did not quite agree. A small timestamp mismatch turned the confident answer into something more useful: a draft clue that needed evidence.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/treating-ai-suggestions-as-draft-evidence/ai-draft-evidence-board.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A developer workspace with AI draft notes, log snippets, test results, and evidence cards arranged on a review board.' />\n  <figcaption>AI output becomes safer when we treat it as a lead to verify, not a verdict.</figcaption>\n</figure>\n<p>AI tools are good at producing plausible shape. They can summarize, connect patterns, and propose a path through messy information. That is valuable. It is also exactly why the output deserves verification. Plausible is not the same as proven.</p>\n<p>I find it helpful to treat an AI suggestion as draft evidence. It is not useless because it might be wrong, and it is not final because it sounds fluent. It is a candidate explanation waiting for logs, tests, source code, or user behavior to confirm or reject it.</p>\n<p>This framing changes how we work with the tool. Instead of asking only for the answer, ask what would make the answer true. Which file should contain the behavior? Which test would fail? Which metric should move? Which assumption is the weakest?</p>\n<p>Draft evidence is especially useful in code review. An AI note that says this function may mishandle empty input is not enough by itself. But it can lead to a quick test, a source check, or a question to the author. The value is in the path from claim to confirmation.</p>\n<p>The same applies to debugging. If the model suggests a race condition, look for timing evidence. If it suggests a missing tenant filter, inspect the query. If it suggests a config mismatch, compare the running environment, not just the repository default.</p>\n<p>This habit also protects trust. When people see AI-backed claims arrive with evidence, they can evaluate the work. When claims arrive as polished certainty, teammates either over-trust or over-correct. Both are expensive.</p>\n<p>AI can make investigation faster, but only if we keep the human responsibility intact. Let it draft possibilities. Let it organize clues. Then make the final answer earn its place through evidence the team can inspect.</p>"
+}
