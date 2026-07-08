@@ -1,0 +1,14 @@
+{
+  "title": "Yêu cầu AI gọi tên assumption của nó",
+  "summary": "Một reflection thực tế về cách làm AI-assisted work an toàn hơn bằng cách yêu cầu model bộc lộ assumption trước khi chấp nhận answer.",
+  "readingMinutes": 6,
+  "tags": [
+    "AI",
+    "LLM",
+    "Prompting",
+    "Verification",
+    "Developer Tools",
+    "Judgment"
+  ],
+  "html": "<p>Câu trả lời của AI hữu ích, nhưng nó bỏ qua phần nó đã đoán. Nó assume endpoint là internal, user đã authenticated, data đã tenant-scoped, và test fixture giống production shape. Không assumption nào lạ. Chính vì vậy chúng cần được gọi tên.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/asking-ai-to-name-its-assumptions/ai-assumption-cards.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Một developer review workspace có AI hỗ trợ với code block trừu tượng, assumption cards, evidence marks và checklist viết tay.' />\n  <figcaption>AI work dễ verify hơn khi hidden assumptions được đưa vào cùng căn phòng.</figcaption>\n</figure>\n<p>Language model lấp khoảng trống. Đó là một phần khiến chúng hữu ích. Chúng có thể tiếp tục khi câu hỏi của con người chưa đầy đủ. Nhưng khoảng trống được lấp có thể nguy hiểm khi nó trông như knowledge thay vì assumption.</p>\n<p>Một thói quen đơn giản giúp nhiều: yêu cầu model gọi tên những điều nó đang assume. Không phải sau final answer, mà là một phần của answer. Assumption list trở thành bản đồ cho verification tiếp theo.</p>\n<p>Với code, assumption thường ẩn quanh runtime behavior. Đây là server-side hay client-side? Data có trusted không? Function có thể retry không? Caller đã có authorization chưa? Database có guarantee uniqueness không? Đây không phải chi tiết nhỏ. Chúng thường là khác biệt giữa suggestion sạch và bug.</p>\n<p>Với product writing, assumption ẩn quanh audience và intent. Reader có technical không? Mình đang persuade, explain, warn hay document? Wording cần calm, formal, local hay operational? Draft tốt phụ thuộc vào những câu trả lời đó.</p>\n<p>Khi assumption visible, con người có thể decide. Một số assumption an toàn. Một số cần source check. Một số sai. Một số cho thấy request ban đầu thiếu context quan trọng nhất.</p>\n<p>Điều này cũng làm collaboration bớt bí ẩn. Thay vì tranh luận với AI answer bóng bẩy, team có thể inspect scaffolding bên dưới nó. Conversation chuyển từ model có thông minh không sang assumptions có khớp reality không.</p>\n<p>Trước khi chấp nhận AI suggestion, hãy hỏi assumption list. Rồi verify những assumption load-bearing. Answer vẫn có thể cần sửa, nhưng sẽ rõ hơn rất nhiều responsibility nằm ở đâu.</p>"
+}

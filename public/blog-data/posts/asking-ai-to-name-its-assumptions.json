@@ -1,0 +1,18 @@
+{
+  "slug": "asking-ai-to-name-its-assumptions",
+  "category": "ai",
+  "title": "Asking AI to Name Its Assumptions",
+  "summary": "A practical reflection on making AI-assisted work safer by asking the model to expose assumptions before accepting its answer.",
+  "date": "2026-07-16",
+  "readingMinutes": 5,
+  "tags": [
+    "AI",
+    "LLM",
+    "Prompting",
+    "Verification",
+    "Developer Tools",
+    "Judgment"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The AI answer was useful, but it skipped the part where it guessed. It assumed the endpoint was internal, the user was authenticated, the data was already tenant-scoped, and the test fixture matched production shape. None of those assumptions were strange. That was exactly why they needed to be named.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/asking-ai-to-name-its-assumptions/ai-assumption-cards.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A developer reviews an AI-assisted workspace with abstract code blocks, assumption cards, evidence marks, and a handwritten checklist.' />\n  <figcaption>AI work is easier to verify when hidden assumptions are brought into the room.</figcaption>\n</figure>\n<p>Language models fill gaps. That is part of what makes them useful. They can keep moving when a human question is incomplete. But the filled gap can become dangerous when it looks like knowledge instead of assumption.</p>\n<p>One simple habit helps: ask the model to name what it is assuming. Not after the final answer, but as part of the answer. The assumption list becomes a map of where verification should go next.</p>\n<p>For code, assumptions often hide around runtime behavior. Is this server-side or client-side? Is the data trusted? Can the function be retried? Does the caller already hold authorization? Does the database guarantee uniqueness? These are not small details. They are often the difference between a clean suggestion and a bug.</p>\n<p>For product writing, assumptions hide around audience and intent. Is the reader technical? Are we trying to persuade, explain, warn, or document? Does the wording need to be calm, formal, local, or operational? A good draft depends on those answers.</p>\n<p>Once assumptions are visible, the human can decide. Some are safe. Some need a source check. Some are wrong. Some reveal that the original request was missing the most important context.</p>\n<p>This also makes collaboration less mysterious. Instead of arguing with a polished AI answer, the team can inspect the scaffolding beneath it. The conversation moves from whether the model is smart to whether the assumptions match reality.</p>\n<p>Before accepting an AI suggestion, ask for the assumption list. Then verify the load-bearing ones. The answer may still need editing, but it will be much clearer where responsibility belongs.</p>"
+}

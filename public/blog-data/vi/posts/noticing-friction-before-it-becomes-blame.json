@@ -1,0 +1,14 @@
+{
+  "title": "Nhận ra friction trước khi nó thành blame",
+  "summary": "Một ghi chú bình tĩnh về việc xem friction lặp lại trong team như tín hiệu hữu ích trước khi nó đông cứng thành blame cá nhân.",
+  "readingMinutes": 6,
+  "tags": [
+    "Engineering Culture",
+    "Teamwork",
+    "Feedback",
+    "Process",
+    "Leadership",
+    "Communication"
+  ],
+  "html": "<p>Team không hề cãi nhau. Chính vì vậy friction càng dễ bị bỏ qua. Một review chờ hai ngày. Một handoff mất một decision nhỏ. Tester hỏi cùng một câu cho release thứ ba liên tiếp. Không ai làm điều gì quá tệ, nhưng system đang bắt mọi người âm thầm bù trừ.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/noticing-friction-before-it-becomes-blame/friction-before-blame.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Một team nhỏ nhìn workflow board màu nhẹ với sticky notes, friction marker đơn giản và một bàn review bình tĩnh.' />\n  <figcaption>Friction dễ sửa hơn khi nó còn là tín hiệu, chưa thành câu chuyện về một người.</figcaption>\n</figure>\n<p>Friction không giống failure. Nó là lực cản nhỏ mọi người cảm thấy khi cách work di chuyển không khớp với cách decision, context hoặc ownership thật sự được sắp xếp. Nếu để yên, friction thành story. Story thường thành blame.</p>\n<p>Friction sớm nghe rất bình thường. Tôi không biết việc này là của tôi. Tôi tưởng product đã decide. Tôi đang chờ review. Tôi không thấy acceptance criteria mới. Những câu này chưa phải accusation. Chúng là clue.</p>\n<p>Động tác lành mạnh là nhìn path trước khi đánh giá person. Context biến mất ở đâu? Ownership mơ hồ ở đâu? Decision nào chỉ sống trong meeting? Tool nào làm next action trở nên invisible?</p>\n<p>Điều này không bỏ accountability. Mọi người vẫn cần follow through. Nhưng accountability hoạt động tốt hơn khi process không bắt người tốt phải đoán. Một team không nên cần hero memory cho routine delivery.</p>\n<p>Friction nguy hiểm khi mọi người normalize nó. Một chút delay có thể ổn. Một chút confusion lặp lại thì không. Repetition biến inconvenience nhỏ thành team tax.</p>\n<p>Tôi thích gọi tên friction bằng ngôn ngữ ít drama. Chúng ta đang mất context giữa planning và QA. Review đang chờ vì ownership implicit. Release notes quá trễ cho support. Câu nói nên chỉ vào system trước.</p>\n<p>Nếu team nhận ra friction sớm, team có thể sửa một thứ nhỏ: template, checklist, owner rõ hơn, decision log, handoff tốt hơn. Rẻ hơn rất nhiều so với chờ đến khi mọi người mệt đủ để giải thích vấn đề như character của ai đó.</p>"
+}

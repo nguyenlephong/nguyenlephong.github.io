@@ -1,0 +1,14 @@
+{
+  "title": "Kỷ luật thầm lặng của việc hoàn tất đúng cách",
+  "summary": "Một ghi chú phản chiếu về kỷ luật nhỏ khi đóng work bằng evidence, cleanup và context thay vì chỉ chạm tới finish line nhìn thấy được.",
+  "readingMinutes": 6,
+  "tags": [
+    "Reflection",
+    "Craft",
+    "Follow Through",
+    "Sustainable Work",
+    "Quality",
+    "Clarity"
+  ],
+  "html": "<p>Việc đó basically done. Đây luôn là câu nguy hiểm. Main change đã chạy, demo nhìn ổn, và task tiếp theo đang đợi. Nhưng note còn mỏng, rollback chưa viết, và final check vẫn nằm trong trí nhớ của một người. Finish line nhìn thấy được đã đến trước finish thật.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/the-quiet-discipline-of-finishing-properly/finishing-properly-desk.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Một bàn làm việc gọn cuối ngày với laptop đóng lại, checklist chỉ có icon, notes, đèn bàn ấm và ánh dusk ngoài cửa.' />\n  <figcaption>Hoàn tất đúng cách thường là phần việc yên tĩnh sau khi phần thú vị đã qua.</figcaption>\n</figure>\n<p>Finishing properly không hào nhoáng. Nó là check edge case, update note, remove temporary flag, viết handoff, link evidence, và chắc rằng người tiếp theo không cần hỏi lại chuyện gì đã xảy ra.</p>\n<p>Kỷ luật này quan trọng vì những mép chưa xong trở thành interruption tương lai. Code có thể chạy, nhưng team vẫn trả giá nếu không ai biết verify nó, operate nó, hoặc giải thích vì sao trade-off được chọn.</p>\n<p>Tôi học cách tôn trọng mười phần trăm cuối của công việc. Đó là nơi confidence trở nên inspectable. Passing test hữu ích. Passing test cộng với lý do nó matter còn tốt hơn. Deployed feature hữu ích. Deployed feature cộng rollback criteria thì bình tĩnh hơn.</p>\n<p>Cám dỗ là chạy ngay khi visible problem đã được solve. Cám dỗ đó dễ hiểu. Team có pressure, queue và deadline. Nhưng đi quá nhanh có thể để lại một vệt almost-finished work làm mọi người chậm lại sau này.</p>\n<p>Finishing properly cũng bảo vệ pride khỏi biến thành performance. Mục tiêu không phải chứng minh mọi chi tiết hoàn hảo. Mục tiêu là để work ở trạng thái người khác tiếp tục được mà không phải đoán.</p>\n<p>Một closing ritual nhỏ có ích. What changed? Verified bằng gì? Còn risk nào? Nếu fail thì làm gì? Evidence ở đâu? Những câu hỏi này biến done từ cảm giác thành shared state.</p>\n<p>Kỷ luật thầm lặng của việc hoàn tất đúng cách là một dạng care. Nó care cho teammate tiếp theo, incident tương lai và attention của chính bạn ngày mai. Task không thật sự done khi nó chạy một lần. Nó done khi work đứng được mà không cần bạn giữ nó lên.</p>"
+}

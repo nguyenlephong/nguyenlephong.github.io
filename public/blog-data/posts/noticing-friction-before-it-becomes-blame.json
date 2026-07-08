@@ -1,0 +1,18 @@
+{
+  "slug": "noticing-friction-before-it-becomes-blame",
+  "category": "culture",
+  "title": "Noticing Friction Before It Becomes Blame",
+  "summary": "A calm note on treating repeated team friction as useful signal before it hardens into personal blame.",
+  "date": "2026-07-15",
+  "readingMinutes": 5,
+  "tags": [
+    "Engineering Culture",
+    "Teamwork",
+    "Feedback",
+    "Process",
+    "Leadership",
+    "Communication"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The team was not fighting. That made the friction easier to miss. A review waited two days. A handoff lost one small decision. A tester asked the same question for the third release in a row. Nobody had done anything terrible, but the system was starting to ask people to compensate quietly.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/noticing-friction-before-it-becomes-blame/friction-before-blame.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A small team studies a muted workflow board with sticky notes, simple friction markers, and a calm review table.' />\n  <figcaption>Friction is easier to fix while it is still a signal, not a story about someone.</figcaption>\n</figure>\n<p>Friction is not the same as failure. It is the small resistance people feel when the way work moves does not match the way decisions, context, or ownership are actually arranged. Left alone, friction becomes a story. The story often becomes blame.</p>\n<p>Early friction sounds ordinary. I did not know this was mine. I thought product had decided. I was waiting for review. I did not see the updated acceptance criteria. These sentences are not accusations yet. They are clues.</p>\n<p>The healthy move is to look at the path before judging the person. Where did context disappear? Where was ownership unclear? Which decision lived only in a meeting? Which tool made the next action invisible?</p>\n<p>This does not remove accountability. People still need to follow through. But accountability works better when the process is not forcing good people to guess. A team should not need hero memory for routine delivery.</p>\n<p>Friction becomes dangerous when people normalize it. A little delay is fine. A little repeated confusion is not. Repetition is what turns a small inconvenience into a team tax.</p>\n<p>I like naming friction in low-drama language. We are losing context between planning and QA. Reviews are waiting because ownership is implicit. Release notes are too late for support. The sentence should point at the system first.</p>\n<p>If the team can notice friction early, it can fix something small: a template, a checklist, a clearer owner, a decision log, a better handoff. That is much cheaper than waiting until people are tired enough to explain the problem as someone else's character.</p>"
+}
