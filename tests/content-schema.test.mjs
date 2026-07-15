@@ -9,6 +9,10 @@ const { notesIndexSchema, noteSchema } = await import(
   new URL("../src/lib/notes/schema.ts", import.meta.url)
 );
 
+function readJson(relativePath) {
+  return JSON.parse(readFileSync(new URL(relativePath, import.meta.url), "utf8"));
+}
+
 const validPost = {
   slug: "x",
   category: "c",
@@ -62,6 +66,97 @@ test("notes schemas accept minimal valid shapes", () => {
   };
   assert.equal(noteSchema.safeParse(note).success, true);
   assert.equal(noteSchema.safeParse({ slug: "n" }).success, false);
+});
+
+test("Vietnamese blog index contains the May 10-14 localized posts", () => {
+  const viIndex = readJson("../public/blog-data/vi/_index.json");
+  const scopedSlugs = [
+    "service-mesh-do-you-need-it",
+    "navigating-office-politics",
+    "ai-in-cybersecurity",
+    "learning-a-new-language-every-year",
+    "okrs-for-engineering-teams",
+  ];
+
+  for (const slug of scopedSlugs) {
+    const indexed = viIndex.posts.find((post) => post.slug === slug);
+    const post = readJson(`../public/blog-data/vi/posts/${slug}.json`);
+
+    assert.ok(indexed, `${slug} should be listed in the Vietnamese blog index`);
+    assert.deepEqual(
+      {
+        slug: indexed.slug,
+        category: indexed.category,
+        title: indexed.title,
+        summary: indexed.summary,
+        date: indexed.date,
+        readingMinutes: indexed.readingMinutes,
+        tags: indexed.tags,
+        author: indexed.author,
+      },
+      {
+        slug: post.slug,
+        category: post.category,
+        title: post.title,
+        summary: post.summary,
+        date: post.date,
+        readingMinutes: post.readingMinutes,
+        tags: post.tags,
+        author: post.author,
+      }
+    );
+  }
+});
+
+test("scoped notes keep filename slug and localized index dates aligned", () => {
+  const enIndex = readJson("../public/notes-data/_index.json");
+  const viIndex = readJson("../public/notes-data/vi/_index.json");
+  const scopedNotes = [
+    {
+      slug: "the-trap-of-information-consumption",
+      date: "2026-05-27",
+      readingMinutes: { en: 2 },
+    },
+    {
+      slug: "work-messages-aggressive-bias",
+      date: "2026-05-27",
+      readingMinutes: { en: 2 },
+    },
+    {
+      slug: "tao-niem-tin-khong-phai-tao-ao-giac",
+      date: "2026-05-12",
+      readingMinutes: { en: 4, vi: 7 },
+    },
+    {
+      slug: "su-ro-rang-la-mot-dang-noi-luc",
+      date: "2026-05-13",
+      readingMinutes: { en: 4, vi: 6 },
+    },
+    {
+      slug: "tri-tue-can-duc-hanh",
+      date: "2026-05-14",
+      readingMinutes: { en: 4, vi: 5 },
+    },
+  ];
+
+  for (const note of scopedNotes) {
+    const enPost = readJson(`../public/notes-data/posts/${note.slug}.json`);
+    const viPost = readJson(`../public/notes-data/vi/posts/${note.slug}.json`);
+    const enIndexed = enIndex.posts.find((post) => post.slug === note.slug);
+    const viIndexed = viIndex.posts.find((post) => post.slug === note.slug);
+
+    assert.equal(enPost.slug, note.slug);
+    assert.equal(viPost.slug, note.slug);
+    assert.equal(enPost.date, note.date);
+    assert.equal(viPost.date, note.date);
+    assert.equal(enIndexed?.date, note.date);
+    assert.equal(viIndexed?.date, note.date);
+    assert.equal(enIndexed?.readingMinutes, note.readingMinutes.en);
+
+    if (note.readingMinutes.vi) {
+      assert.equal(viIndexed?.readingMinutes, note.readingMinutes.vi);
+    }
+  }
 });
 
 test("notes expose one canonical slug set across English and Vietnamese", () => {

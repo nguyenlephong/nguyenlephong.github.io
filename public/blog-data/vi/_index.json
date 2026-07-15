@@ -1233,6 +1233,91 @@
       "author": "Nguyen Le Phong"
     },
     {
+      "slug": "okrs-for-engineering-teams",
+      "category": "ways-of-working",
+      "title": "OKRs cho engineering team",
+      "summary": "Một hướng dẫn thực tế về engineering OKRs: nối outcome với delivery work, tránh task list đội lốt objective, chọn key result hữu ích và giữ learning nhìn thấy được trong quý.",
+      "date": "2026-05-14",
+      "readingMinutes": 7,
+      "tags": [
+        "OKRs",
+        "Engineering Management",
+        "Ways of Working",
+        "Software Delivery",
+        "Team Planning",
+        "Metrics"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "learning-a-new-language-every-year",
+      "category": "perspectives",
+      "title": "Mỗi năm học một ngôn ngữ mới",
+      "summary": "Một bài reflection về việc học một programming language hoặc human language mới mỗi năm: grammar lạ, bài tập nhỏ, sự kiên nhẫn và so sánh giúp mình suy nghĩ và giao tiếp sắc hơn.",
+      "date": "2026-05-13",
+      "readingMinutes": 7,
+      "tags": [
+        "Learning",
+        "Programming Languages",
+        "Career Growth",
+        "Reflection",
+        "Software Engineering",
+        "Communication"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "ai-in-cybersecurity",
+      "category": "ai",
+      "title": "AI trong cybersecurity",
+      "summary": "Một bài phản tư thực tế về AI trong cybersecurity: AI giúp detection, triage, secure coding và incident response ra sao, đồng thời tạo rủi ro mới quanh automation, privacy, prompt injection và false confidence.",
+      "date": "2026-05-12",
+      "readingMinutes": 7,
+      "tags": [
+        "AI",
+        "Cybersecurity",
+        "Security Engineering",
+        "Incident Response",
+        "Threat Detection",
+        "Responsible AI"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "navigating-office-politics",
+      "category": "culture",
+      "title": "Đi qua office politics một cách tử tế",
+      "summary": "Một góc nhìn bình tĩnh về office politics trong engineering team: hiểu incentive, xây trust, giao tiếp context, bất đồng sạch sẽ và giữ nguyên tắc mà không ngây thơ.",
+      "date": "2026-05-11",
+      "readingMinutes": 7,
+      "tags": [
+        "Engineering Culture",
+        "Office Politics",
+        "Leadership",
+        "Communication",
+        "Team Trust",
+        "Career Growth"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
+      "slug": "service-mesh-do-you-need-it",
+      "category": "architecture",
+      "title": "Service Mesh: có thật sự cần không?",
+      "summary": "Một bài giải thích thực tế về service mesh: nó gom những vấn đề gì, khi nào hữu ích, và vì sao team nên giải quyết nỗi đau service-to-service thật trước khi thêm một tầng infrastructure mới.",
+      "date": "2026-05-10",
+      "readingMinutes": 7,
+      "tags": [
+        "Software Architecture",
+        "Service Mesh",
+        "Microservices",
+        "Platform Engineering",
+        "Observability",
+        "Reliability"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "trunk-based-development",
       "category": "ways-of-working",
       "title": "Trunk-Based Development",

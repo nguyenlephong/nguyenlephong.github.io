@@ -1,5 +1,5 @@
 {
-  "slug": "work-messages-sharp-bias",
+  "slug": "work-messages-aggressive-bias",
   "title": "Vì sao tin nhắn công việc dễ nghe sắc hơn ý định thật",
   "summary": "Cùng những lời nói nhẹ nhàng qua bàn họp có thể mang thêm một cạnh sắc ngoài ý muốn khi nằm trong khung chat. Không có gương mặt hay giọng nói để bám vào, tâm trí lấp khoảng trống bằng phỏng đoán ít rộng lượng nhất. Vì thiên kiến này đoán trước được, hãy bù lại từ cả hai phía: gửi tin nhắn có bối cảnh, và đọc tin nhắn với thêm một chút khoảng thở.",
   "tags": [
@@ -9,5 +9,6 @@
     "Làm việc nhóm"
   ],
   "html": "<p>Một điều kỳ lạ xảy ra khi cuộc trò chuyện dời từ căn phòng lên màn hình. Y nguyên những lời ấy, nói qua bàn họp kèm một cái nhún vai và nửa nụ cười, sẽ hạ cánh nhẹ nhàng; gõ vào khung chat và được đọc trong im lặng, chúng thường mang đến một lưỡi sắc chẳng ai chủ ý. Khác với trò chuyện mặt đối mặt, tin nhắn có xu hướng được tiếp nhận với thêm một tầng thù địch — có lẽ vì người đọc không có nét mặt hay ngôn ngữ cơ thể nào để bám vào, và tâm trí lặng lẽ lấp khoảng chân không ấy bằng phỏng đoán tệ nhất của nó.</p>\n<figure class=\"blog-figure blog-photo-panorama\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/notes/work-messages-aggressive-bias/tone-without-context.webp\" width=\"1600\" height=\"900\" loading=\"lazy\" decoding=\"async\" alt=\"Một người đi làm nhìn các khối tin nhắn được làm mờ trên tablet, cạnh đó là ghế họp gợi cảm giác cuộc trò chuyện đã chuyển từ phòng lên màn hình.\" />\n  <figcaption>Giọng điệu dễ bị đọc lệch hơn khi nét mặt, cái nhún vai và nửa nụ cười đã rời khỏi cuộc trò chuyện.</figcaption>\n</figure>\n<p>Vì thiên kiến này đoán trước được, cách sửa là chủ đích bù trừ từ cả hai phía. Nếu bạn là người gửi, hãy lịch sự thêm — một hai nấc so với khi gặp trực tiếp; cái ấm áp bạn thấy hơi quá tay thường chỉ được đọc là bình thường ở đầu bên kia. Nếu bạn là người đọc, làm điều ngược lại: hạ mức đánh giá độ gay gắt của tin nhắn xuống vài nấc, và mặc định <a href=\"https://www.linkedin.com/pulse/why-assuming-positive-intent-can-only-benefit-you-yuval-atsmon/\">giả định thiện chí</a>. Một chữ &ldquo;ok&rdquo; cụt lủn nhiều khả năng nghĩa là người ta đang bận, hơn là đang khó chịu với bạn.</p>\n<figure class=\"blog-figure blog-photo-figure\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/notes/work-messages-aggressive-bias/pause-before-reply.webp\" width=\"1440\" height=\"960\" loading=\"lazy\" decoding=\"async\" alt=\"Một người đi làm dừng lại ở bàn làm việc buổi tối trước khi trả lời, bên cạnh màn hình tin nhắn đã làm mờ và cuốn sổ trống.\" />\n  <figcaption>Giả định thiện chí đôi khi nhỏ như một khoảng dừng đủ lâu để cách đọc sắc nhất mềm xuống.</figcaption>\n</figure>",
-  "cardSummary": "Một chữ “ok” ngắn thường chỉ là người kia đang bận, không nhất thiết là khó chịu."
+  "cardSummary": "Một chữ “ok” ngắn thường chỉ là người kia đang bận, không nhất thiết là khó chịu.",
+  "date": "2026-05-27"
 }
