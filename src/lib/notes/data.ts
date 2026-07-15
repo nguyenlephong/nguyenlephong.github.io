@@ -166,6 +166,7 @@ export function loadNote(slug: string, locale?: string): Note | null {
     ...base,
     title: override.title ?? base.title,
     summary: override.summary ?? base.summary,
+    readingMinutes: override.readingMinutes ?? base.readingMinutes,
     html: override.html ?? base.html,
     tags: override.tags ?? base.tags,
     book: override.book ?? base.book,

@@ -1,12 +1,60 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
+import { registerHooks } from "node:module";
+import path from "node:path";
 import test from "node:test";
+import { fileURLToPath, pathToFileURL } from "node:url";
+
+const extensionCandidates = [".ts", ".tsx", ".js", ".mjs"];
+
+function resolveWithProjectExtensions(url) {
+  const basePath = fileURLToPath(url);
+  if (existsSync(basePath)) return url.href;
+
+  for (const extension of extensionCandidates) {
+    const candidate = `${basePath}${extension}`;
+    if (existsSync(candidate)) return pathToFileURL(candidate).href;
+  }
+
+  for (const extension of extensionCandidates) {
+    const candidate = path.join(basePath, `index${extension}`);
+    if (existsSync(candidate)) return pathToFileURL(candidate).href;
+  }
+
+  return null;
+}
+
+registerHooks({
+  resolve(specifier, context, nextResolve) {
+    if (specifier.startsWith("@/")) {
+      const resolved = resolveWithProjectExtensions(
+        new URL(`../src/${specifier.slice(2)}`, import.meta.url)
+      );
+      if (resolved) return { url: resolved, shortCircuit: true };
+    }
+
+    if (
+      context.parentURL?.startsWith("file:") &&
+      (specifier.startsWith("./") || specifier.startsWith("../"))
+    ) {
+      const resolved = resolveWithProjectExtensions(
+        new URL(specifier, context.parentURL)
+      );
+      if (resolved) return { url: resolved, shortCircuit: true };
+    }
+
+    return nextResolve(specifier, context);
+  },
+});
 
 const { blogIndexSchema, blogPostSchema } = await import(
   new URL("../src/lib/blog/schema.ts", import.meta.url)
 );
 const { notesIndexSchema, noteSchema } = await import(
   new URL("../src/lib/notes/schema.ts", import.meta.url)
+);
+const { loadNote } = await import(
+  new URL("../src/lib/notes/data.ts", import.meta.url)
 );
 
 function readJson(relativePath) {
@@ -156,6 +204,19 @@ test("scoped notes keep filename slug and localized index dates aligned", () => 
     if (note.readingMinutes.vi) {
       assert.equal(viIndexed?.readingMinutes, note.readingMinutes.vi);
     }
+  }
+});
+
+test("loadNote overlays localized Vietnamese reading minutes", () => {
+  const scopedNotes = [
+    ["tao-niem-tin-khong-phai-tao-ao-giac", 4, 7],
+    ["su-ro-rang-la-mot-dang-noi-luc", 4, 6],
+    ["tri-tue-can-duc-hanh", 4, 5],
+  ];
+
+  for (const [slug, enReadingMinutes, viReadingMinutes] of scopedNotes) {
+    assert.equal(loadNote(slug, "en")?.readingMinutes, enReadingMinutes);
+    assert.equal(loadNote(slug, "vi")?.readingMinutes, viReadingMinutes);
   }
 });
 

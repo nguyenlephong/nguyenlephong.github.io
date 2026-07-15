@@ -1286,10 +1286,10 @@
     {
       "slug": "navigating-office-politics",
       "category": "culture",
-      "title": "Đi qua office politics một cách tử tế",
-      "summary": "Một góc nhìn bình tĩnh về office politics trong engineering team: hiểu incentive, xây trust, giao tiếp context, bất đồng sạch sẽ và giữ nguyên tắc mà không ngây thơ.",
+      "title": "Khéo ở công sở mà vẫn giữ được mình",
+      "summary": "Công sở có người, có quyền quyết định, có nỗi lo và lợi ích khác nhau. Bài viết này bàn cách nhìn ra điều đang chi phối một quyết định, trao đổi trước cho đàng hoàng, phản biện bằng dữ kiện, giữ ranh giới và biết lúc nào nên bước ra.",
       "date": "2026-05-11",
-      "readingMinutes": 7,
+      "readingMinutes": 8,
       "tags": [
         "Engineering Culture",
         "Office Politics",
@@ -1303,10 +1303,10 @@
     {
       "slug": "service-mesh-do-you-need-it",
       "category": "architecture",
-      "title": "Service Mesh: có thật sự cần không?",
-      "summary": "Một bài giải thích thực tế về service mesh: nó gom những vấn đề gì, khi nào hữu ích, và vì sao team nên giải quyết nỗi đau service-to-service thật trước khi thêm một tầng infrastructure mới.",
+      "title": "Có cần service mesh không? Hãy nhìn vào lỗi trước",
+      "summary": "Service mesh chỉ đáng thêm khi lỗi giữa các dịch vụ đã lặp lại và đo được. Đây là cách đọc số liệu, nhìn trước điểm hỏng, thử trên phạm vi nhỏ và chuẩn bị đường quay lui.",
       "date": "2026-05-10",
-      "readingMinutes": 7,
+      "readingMinutes": 10,
       "tags": [
         "Software Architecture",
         "Service Mesh",
