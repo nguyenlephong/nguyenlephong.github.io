@@ -1,0 +1,187 @@
+1:"$Sreact.fragment"
+a:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"EngagementProvider"]
+b:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+c:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+d:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+e:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+f:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+1a:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+1b:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T4ea,{"@context":"https://schema.org","@type":"Article","@id":"https://nguyenlephong.github.io/vi/notes/the-old-man-who-lost-his-horse#article","headline":"Tái ông mất ngựa: khoan vội kết luận, giữ lấy hiện tại","description":"Câu chuyện cũ về người mất ngựa thường được kể như bài học về may rủi đổi chiều. Bài viết đọc nó theo hướng đời thường hơn: phán đoán đầu tiên của ta về một sự kiện thường chưa đủ dữ kiện. Thực hành không phải là bớt quan tâm, mà là khoan vội kết luận, ở lại với hiện tại và phản hồi rộng hơn cảm xúc đầu tiên.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/notes/the-old-man-who-lost-his-horse","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/notes/the-old-man-who-lost-his-horse.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/vi/notes/the-old-man-who-lost-his-horse","datePublished":"2026-02-22","dateModified":"2026-02-22","keywords":"Personal Reflection, Life Philosophy, Equanimity, Gratitude, Taoism, Letting Go","author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:T11eb,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/vi/notes/the-old-man-who-lost-his-horse#faq","mainEntity":[{"@type":"Question","name":"Chẳng phải \"việc gì cũng có thể tốt hoặc xấu\" sẽ dẫn tới thụ động — vậy cố gắng làm gì?","acceptedAnswer":{"@type":"Answer","text":"Nó chỉ về hướng ngược lại, nếu bạn đọc trọn vẹn. Ông lão vẫn cho ngựa ăn, bó chân cho con, và chuẩn bị cho mùa đông. Cái thay đổi không phải là bạn có hành động hay không, mà là bạn đòi hỏi gì ở kết quả. Bạn làm phần của mình bằng toàn bộ nỗ lực, rồi buông cái yêu cầu rằng đời phải chứng minh nỗ lực ấy \"có tác dụng\" theo lịch của bạn. Tin vào bức tranh chưa đọc hết gỡ bỏ nỗi lo khỏi hành động; nó không gỡ bỏ hành động. Thụ động là bỏ cuộc vì chẳng có gì quan trọng. Bình thản là hành động hết lòng vì kết quả không phải thứ duy nhất quan trọng."}},{"@type":"Question","name":"Trân trọng hiện tại có phải chỉ là \"tích cực gượng ép\" khoác áo đẹp hơn?","acceptedAnswer":{"@type":"Answer","text":"Không — và khác biệt này rất quan trọng. Tích cực gượng ép chối bỏ cảm xúc khó: \"đừng buồn, thật ra ổn mà.\" Điều bài này đề nghị thì ngược lại: hãy cảm trọn vẹn nỗi đau hay niềm vui, chỉ đừng ký một lời phán vĩnh viễn chồng lên trên. Bạn có thể ôm một nỗi buồn thật về một mất mát và vẫn biết ơn những gì còn lại, trong cùng một giờ. Trân trọng hiện tại không phải giả vờ mọi thứ đều tốt; nó là từ chối để sự bất định về tương lai cướp đi sự chú ý của bạn khỏi điều tốt đẹp đang thật sự ở đây lúc này."}},{"@type":"Question","name":"Điều này khác gì với \"kiểm soát thứ trong tầm tay\" của Khắc kỷ?","acceptedAnswer":{"@type":"Answer","text":"Chúng là anh em họ, đến từ hai nơi độc lập. Khắc kỷ (truyền thống Hy Lạp và La Mã) và điển tích Đạo gia trong Hoài Nam Tử đều tách phần việc thuộc về ta khỏi phần không thuộc về ta, và khuyên giữ một gương mặt điềm tĩnh trước phần thứ hai. Hương vị Đạo gia nghiêng nhiều hơn về tin vào một tiến trình lớn ta không thấy, còn hương vị Khắc kỷ nghiêng nhiều hơn về sự phán đoán có kỷ luật. Trên thực tế chúng bổ trợ nhau: làm bổn phận (Khắc kỷ), và giữ kết quả nhẹ tay vì chuỗi nhân quả dài hơn tầm bạn đọc (Đạo gia)."}},{"@type":"Question","name":"Khi một điều thật sự khủng khiếp xảy ra, chẳng phải \"biết đâu lại là phúc\" là xúc phạm sao?","acceptedAnswer":{"@type":"Answer","text":"Đúng — nói với một người đang đau đớn còn tươi mới, nó có thể thiếu tinh tế, và bài này không phải một câu để trao cho người khác. Đó là một tư thế riêng tư, không phải điều bạn nói ở một đám tang. Với mất mát thật, việc đầu tiên là khóc thương, trọn vẹn và không có hạn chót. Cái \"biết đâu\" không phải chối bỏ nỗi đau; nó là một sự từ chối lặng lẽ việc cộng thêm một nỗi khổ thứ hai — sự tuyệt vọng vì đã quyết định, ngay ngày đầu, rằng tương lai chẳng còn gì. Hãy ôm nỗi đau. Chỉ đừng để nó viết đoạn kết."}},{"@type":"Question","name":"Một điều nhỏ mình có thể thật sự bắt đầu làm ngay hôm nay là gì?","acceptedAnswer":{"@type":"Answer","text":"Đặt một dấu phẩy ở chỗ bạn theo phản xạ đặt dấu chấm. Lần tới khi một việc rơi xuống rõ ràng là \"tốt\" hay rõ ràng là \"xấu,\" hãy gọi tên cảm xúc một cách thành thật, rồi thêm năm chữ: \"và mình chưa thể biết.\" Rồi, một lần trước khi ngủ, gọi tên một sự hiện diện bình thường trong đời bạn — một con người, một nơi chốn, chính tấm thân đang khoẻ của bạn — như thể bạn đang nhớ về nó trìu mến từ nhiều năm trong tương lai. Cặp đôi đó — dấu phẩy còn mở và lời cảm ơn mỗi ngày — chính là toàn bộ pháp tu thu nhỏ."}}]}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean notes-accent notes-reading","style":{"--topic-color":"#b45309"},"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Ghi chép\",\"item\":\"https://nguyenlephong.github.io/vi/notes\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Góc nhìn & Chiêm nghiệm\",\"item\":\"https://nguyenlephong.github.io/vi/notes?topic=goc-nhin\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Tái ông mất ngựa: khoan vội kết luận, giữ lấy hiện tại\",\"item\":\"https://nguyenlephong.github.io/vi/notes/the-old-man-who-lost-his-horse\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],["$L5","$L6","$L7","$L8"],"$L9"]}],"loading":null,"isPartial":false}
+10:T558d,<blockquote>
+<p><em>Tái ông mất ngựa — biết đâu lại là phúc? Ta dán nhãn một sự việc ngay khoảnh khắc nó vừa rơi xuống, nhưng câu chuyện mà nó thuộc về luôn dài hơn cái khoảnh khắc ta đang đứng.</em></p>
+</blockquote>
+
+<p>Có một câu chuyện cũ nơi vùng biên ải đã sống lâu hơn gần như mọi thứ từng được viết quanh nó. Người ta mang nó qua hai nghìn năm vì cùng một lý do ta giữ một viên sỏi nhẵn trong túi: nó vừa tay, và nó giúp ta đứng vững.</p>
+<p>Đây là một bài viết lặng lẽ về câu chuyện đó — và về một thói quen mà nó nhẹ nhàng mời ta đặt xuống: cái phản xạ vội phán xét, ngay khi bất cứ điều gì xảy ra, rằng đó là tin vui hay tin buồn. Bên dưới thói quen ấy là một lời mời sâu hơn, cũng là điều mình thật sự muốn viết: hãy thừa nhận rằng bức tranh thường chưa đủ dữ kiện, và trân trọng những gì đang hiện diện khi nó còn hiện diện.</p>
+
+<h2 id="the-old-man-and-his-horse">1. Tái Ông Thất Mã: một câu chuyện không chịu kết thúc</h2>
+<p>Một ông lão sống gần biên ải phương bắc. Một ngày, con ngựa — tài sản quý giá nhất của ông — đi lạc qua biên giới, sang đất người Hồ. Hàng xóm kéo đến chia buồn. <em>Thật xui xẻo.</em> Ông lão chỉ nhún vai: <em>"Sao biết đây chẳng phải là phúc?"</em></p>
+<p>Mấy tháng sau, con ngựa quay về, và dắt theo một con tuấn mã hoang. Hàng xóm lại kéo đến, lần này để chúc mừng. <em>Thật may mắn.</em> Ông lão vẫn điềm nhiên: <em>"Sao biết đây chẳng phải là hoạ?"</em></p>
+<p>Con trai ông mê cưỡi con ngựa mới, bị hất ngã, gãy chân nặng. Hàng xóm trở lại với lời an ủi. Và lại một lần nữa: <em>"Sao biết đây chẳng phải là phúc?"</em> Một năm sau, chiến tranh tràn tới biên cương. Mọi thanh niên khoẻ mạnh đều bị bắt lính, và phần lớn tử trận. Người con, vì què, được ở lại — và sống sót.</p>
+
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/the-old-man-who-lost-his-horse/returning-horses-at-the-gate.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Một ông lão nhìn hai con ngựa trở về qua cổng chuồng quê, trong khi hàng xóm đứng lùi lại dưới ánh sáng buổi sáng." />
+  <figcaption>Cùng một cánh cổng có thể chứa mất mát, trở về và bất định; câu chuyện cũ nhắc ta để khoảnh khắc còn mở.</figcaption>
+</figure>
+
+<div class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 800 330" role="img" aria-labelledby="dgm-tl-vi">
+    <title id="dgm-tl-vi">Bốn lần xoay vần trong câu chuyện của ông lão. Phía trên mỗi sự kiện là lời phán xét đám đông vội buông; mũi tên cho thấy mỗi "phúc" hay "họa" lặng lẽ trở thành cái kế tiếp ra sao.</title>
+    <defs>
+      <marker id="tlAccVi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-accent" x="400" y="28" text-anchor="middle" font-size="13">LỜI PHÁN XÉT CỨ ĐẢO CHIỀU — CÂU CHUYỆN KHÔNG BAO GIỜ KHÉP LẠI</text>
+
+    <text class="dgm-t-muted" x="100" y="92" text-anchor="middle" font-size="12">"xui rồi!"</text>
+    <text class="dgm-t-strong" x="300" y="92" text-anchor="middle" font-size="12">"may quá!"</text>
+    <text class="dgm-t-muted" x="500" y="92" text-anchor="middle" font-size="12">"xui rồi!"</text>
+    <text class="dgm-t-strong" x="700" y="92" text-anchor="middle" font-size="12">"may quá!"</text>
+
+    <rect class="dgm-core" x="30" y="118" width="140" height="74" rx="10"/>
+    <text class="dgm-t-strong" x="100" y="150" text-anchor="middle" font-size="12.5">Ngựa bỏ chạy</text>
+    <text class="dgm-t-muted dgm-t-mono" x="100" y="170" text-anchor="middle" font-size="10">sang đất Hồ</text>
+
+    <rect class="dgm-core" x="230" y="118" width="140" height="74" rx="10"/>
+    <text class="dgm-t-strong" x="300" y="150" text-anchor="middle" font-size="12.5">Trở về — kèm</text>
+    <text class="dgm-t-strong" x="300" y="167" text-anchor="middle" font-size="12.5">một tuấn mã</text>
+
+    <rect class="dgm-core" x="430" y="118" width="140" height="74" rx="10"/>
+    <text class="dgm-t-strong" x="500" y="150" text-anchor="middle" font-size="12.5">Con trai cưỡi,</text>
+    <text class="dgm-t-strong" x="500" y="167" text-anchor="middle" font-size="12.5">ngã gãy chân</text>
+
+    <rect class="dgm-driven" x="630" y="118" width="140" height="74" rx="10"/>
+    <text class="dgm-t-strong" x="700" y="150" text-anchor="middle" font-size="12.5">Chiến tranh nổ;</text>
+    <text class="dgm-t-strong" x="700" y="167" text-anchor="middle" font-size="12.5">con què được sống</text>
+
+    <path class="dgm-flow" d="M170,155 H 226" marker-end="url(#tlAccVi)"/>
+    <path class="dgm-flow" d="M370,155 H 426" marker-end="url(#tlAccVi)"/>
+    <path class="dgm-flow" d="M570,155 H 626" marker-end="url(#tlAccVi)"/>
+
+    <text class="dgm-t-muted" x="400" y="246" text-anchor="middle" font-size="11.5">Mỗi lời phán chỉ đúng tới sáng hôm sau. Cung đường luôn dài hơn tầm mắt của đám đông.</text>
+    <path class="dgm-line" d="M100,262 C 300,300 500,300 700,262" stroke-dasharray="5 5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="400" y="318" text-anchor="middle" font-size="10.5">…và nó sẽ còn xoay tiếp, nếu câu chuyện được phép kể tiếp</text>
+  </svg>
+  <figcaption>"Tái ông thất mã, an tri họa phúc" — ông lão mất ngựa, biết đâu lại là phúc? Đám đông dán nhãn mỗi sự kiện ngay khi nó vừa rơi xuống. Ông lão thì đợi, vì ông biết mắt xích vẫn đang được viết tiếp.</figcaption>
+</div>
+
+<p>Câu đi cùng tích này là <strong>"Tái ông thất mã, an tri hoạ phúc"</strong> — <em>ông lão mất ngựa, biết đâu lại là phúc?</em> Nó đến từ <em>Hoài Nam Tử</em>, một cuốn sách triết học Đạo gia thời Hán. Gạt lớp bụi cổ xưa đi, thứ còn lại lại hiện đại đến giật mình: một kiếp người, một chuỗi sự kiện, và một đám đông cứ khăng khăng chấm điểm từng sự kiện ngay khoảnh khắc nó vừa tới.</p>
+
+<h2 id="fortune-and-misfortune-turn">2. Hoạ và phúc là hai mặt của cùng một vòng xoay</h2>
+<p>Đám hàng xóm không ngốc. Họ chính là chúng ta. Khi con ngựa bỏ chạy, "thế là dở" đơn giản là <em>đúng</em> — trong khung đó, ở cỡ đó. Sai lầm không nằm ở cảm xúc; nó nằm ở cái dấu chấm hết ta đặt ngay sau đó. Ta coi một dấu phẩy trong một câu dài như thể nó là từ cuối cùng.</p>
+<p>Điều ông lão hiểu là: một sự kiện tự nó không có giá trị cố định nào. Ý nghĩa của nó được vay mượn từ tất cả những gì đến sau. Con ngựa mất <em>trở thành</em> con ngựa thứ hai; cái chân gãy <em>trở thành</em> mạng sống được giữ lại. Cứ để câu chuyện chạy tiếp, và mỗi "tai hoạ" đều lặng lẽ ôm sẵn phúc lành kế tiếp trong tay, còn mỗi "phúc lành" lại mang theo thử thách kế tiếp. Chúng không phải hai thứ đối nghịch thay phiên nhau. Chúng là một tiến trình duy nhất, nhìn từ cự ly quá gần.</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Cách nhìn lại</span><p>Thử thay "việc này tốt" / "việc này xấu" bằng "việc này đang <em>diễn ra</em>, và mình chưa thể thấy nó để làm gì." Nghe như một chỉnh sửa nhỏ. Trên thực tế, đó là khác biệt giữa bị sự kiện kéo lê và bước đi bên cạnh nó.</p></div>
+
+<h2 id="the-rush-to-judge">3. Vì sao ta vội buông lời phán xét</h2>
+<p>Nếu phán xét sớm khiến ta mất mát đến thế, vì sao nó lại tự động đến vậy? Vì sự bất định thì khó chịu, còn một lời phán — kể cả sai — lại mang cảm giác nhẹ nhõm. Dán nhãn một sự kiện là "tốt" hay "xấu" cho phép ta đóng hồ sơ lại và thôi phải giữ câu hỏi mở. Rắc rối là ở chỗ lời phán đó sau đó làm gì với ta.</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th width="22%">Khi ta vội kết luận…</th><th>Cảm giác lúc đó</th><th>Cái giá âm thầm</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>"Tuyệt vời quá"</th><td>Hân hoan; ta chụp lấy và bám víu</td><td>Ta gắn bó thái quá, và mất mát — khi vòng xoay tới — đau gấp đôi</td></tr>
+    <tr><th>"Thảm hoạ rồi"</th><td>Tuyệt vọng; ta chống cự và co rúm</td><td>Ta bỏ lỡ cánh cửa mà ô cửa vừa khép vừa mở ra, và hành động từ nỗi sợ</td></tr>
+    <tr><th>Bất kỳ điều gì, quá sớm</th><td>Sự nhẹ nhõm của một câu chuyện đã ngã ngũ</td><td>Ta thôi chú ý — mà chú ý mới chính là toàn bộ món quà</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Hãy để ý dòng thứ ba. Cái giá sâu nhất của việc chấm điểm từng khoảnh khắc không phải là đôi khi ta sai. Mà là một lời phán đã ngã ngũ khiến ta thôi nhìn. Ta quyết định một ngày là thế nào trước khi ngày ấy kết thúc, rồi ta sống bên trong cái quyết định thay vì sống cái ngày đó.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/the-old-man-who-lost-his-horse/pause-before-the-verdict.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Một người đàn ông Việt Nam ngồi bên cửa sổ mưa, cạnh chiếc điện thoại úp xuống, cuốn sổ trắng mở ra và tách trà trên bàn." />
+  <figcaption>Đôi khi bài thực hành nhỏ đến vậy: úp điện thoại xuống, để nhãn đầu tiên trôi qua, và cho ngày ấy thêm chút thời gian tự giải thích.</figcaption>
+</figure>
+
+<h2 id="equanimity">4. Chiếc ghế ở giữa: không quá mừng, cũng không quá đau</h2>
+<p>Tư thế của ông lão có một cái tên: <strong>bình thản</strong> (equanimity). Rất dễ nhầm nó với sự lạnh lùng, như thể ông đơn giản chẳng quan tâm gì tới con ngựa hay con trai mình. Ông quan tâm vô cùng. Bình thản không phải là vắng mặt cảm xúc; nó là sự từ chối để một cảm xúc đơn lẻ ký hợp đồng thay cho cả cuộc đời.</p>
+
+<div class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 300" role="img" aria-labelledby="dgm-fork-vi">
+    <title id="dgm-fork-vi">Cùng một sự kiện mở ra hai con đường. Vội phán xét khiến bạn bị mọi khúc quanh xô đẩy; dừng lại để tin vào bức tranh chưa đọc hết cho bạn đứng vững và trân trọng những gì đang hiện diện.</title>
+    <defs>
+      <marker id="fkAccVi" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <rect class="dgm-surface" x="24" y="118" width="150" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="99" y="154" text-anchor="middle" font-size="13">Một việc</text>
+    <text class="dgm-t-strong" x="99" y="172" text-anchor="middle" font-size="13">xảy ra</text>
+
+    <rect class="dgm-driven" x="300" y="36" width="180" height="58" rx="10"/>
+    <text class="dgm-t-accent" x="390" y="62" text-anchor="middle" font-size="12.5">Vội phán xét</text>
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="80" text-anchor="middle" font-size="10">bám víu / chống cự</text>
+    <rect class="dgm-driven" x="540" y="36" width="196" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="638" y="68" text-anchor="middle" font-size="12.5">bị mỗi khúc quanh xô đẩy</text>
+
+    <rect class="dgm-core" x="300" y="206" width="180" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="390" y="232" text-anchor="middle" font-size="12.5">Dừng lại: biết đâu?</text>
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="250" text-anchor="middle" font-size="10">tin vào bức tranh chưa đọc hết</text>
+    <rect class="dgm-core" x="540" y="206" width="196" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="638" y="232" text-anchor="middle" font-size="12.5">vững — và tự do</text>
+    <text class="dgm-t-muted dgm-t-mono" x="638" y="250" text-anchor="middle" font-size="10">để trân trọng hiện tại</text>
+
+    <path class="dgm-flow" d="M174,138 C 230,120 250,70 296,65" marker-end="url(#fkAccVi)"/>
+    <path class="dgm-flow" d="M174,162 C 230,180 250,232 296,236" marker-end="url(#fkAccVi)"/>
+    <path class="dgm-flow" d="M480,65 H 536" marker-end="url(#fkAccVi)"/>
+    <path class="dgm-flow" d="M480,235 H 536" marker-end="url(#fkAccVi)"/>
+  </svg>
+  <figcaption>Bình thản không phải dửng dưng. Đó là khoảng dừng giữ một sự kiện đơn lẻ khỏi giật bạn qua lại giữa hân hoan và tuyệt vọng — và giải phóng sự chú ý của bạn để nhận ra điều gì đang lặng lẽ, hiện diện, tốt lành.</figcaption>
+</div>
+
+<p>Hãy hình dung nó như một chiếc ghế ở giữa. Một bên là cơn lâng lâng "mọi thứ đang suôn sẻ"; bên kia là cú rơi lạnh "mọi thứ đang sụp đổ." Cả hai đều là thời tiết thật. Bình thản là ngồi yên trên ghế — cảm nhận trọn vẹn thời tiết, mà không chụp lấy vô-lăng mỗi lần bầu trời đổi màu. Các nhà Khắc kỷ (Stoic), cách đó một đại dương và một nền văn hoá, cũng đến cùng một chỗ: hãy làm phần việc thuộc về mình, và đón nhận phần không thuộc về mình bằng một gương mặt điềm tĩnh.</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Một phân biệt nhỏ đáng giữ</span><p>Bình thản không phải thụ động. Ông lão vẫn cho ngựa ăn, bó chân cho con, chuẩn bị cho mùa đông. Tin vào bức tranh chưa đọc hết không có nghĩa là không làm gì; nó có nghĩa là làm phần của mình <em>mà không</em> đòi hỏi kết quả phải chứng minh mình đúng ngay sáng mai.</p></div>
+
+<h2 id="treasuring-presence">5. Từ tin vào bức tranh chưa đọc hết đến trân trọng sự hiện diện</h2>
+<p>Đây là khúc rẽ mình mong tới nhất. Nếu bạn không thể biết sự kiện hôm nay là phúc hay hoạ, bạn có thể kết luận rằng nước đi khôn ngoan là giữ mọi thứ ở khoảng cách một sải tay — chẳng quan tâm gì cả để không gì lay động được mình. Đó là cách đọc lệch của sự hoài nghi, và nó hiểu bài học ngược hoàn toàn.</p>
+<p>Điều ngược lại mới đúng. <em>Chính vì</em> bức tranh chưa đọc hết lớn hơn tầm mình thấy, và <em>chính vì</em> mọi sự hiện diện trong đời mình đều chạy trên một chiếc đồng hồ mình không lên dây, phản ứng tỉnh táo duy nhất với những gì đang ở đây ngay lúc này là trân trọng nó. Khúc đường vòng làm hỏng kế hoạch của mình lại đặt mình vào căn phòng nơi mình gặp một người bạn. Công việc mình không có được lại đẩy mình vào con đường mà mình biết ơn vì được đi. Một ngày thứ Ba bình thường — người ngồi đối diện, cha mẹ ở đầu dây, tấm thân vẫn cõng mình lên cầu thang — tự nó là một bức tranh chưa đọc hết, lặng lẽ phi thường, mà một ngày kia mình sẽ nhìn lại như những ngày xưa tươi đẹp.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/the-old-man-who-lost-his-horse/ordinary-presence-at-the-table.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Một người con trưởng thành ăn tối cùng cha lớn tuổi trong căn bếp ấm, khi chiếc điện thoại được đặt sang bên." />
+  <figcaption>Hiện tại hiếm khi tự giới thiệu rằng nó quý giá; nhiều khi nó chỉ đến như một bữa cơm đơn giản, một giọng nói quen, và thêm một buổi tối còn được ngồi cùng nhau.</figcaption>
+</figure>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Cái giá của việc đợi cho chắc</span><p>Nếu bạn cất lòng biết ơn lại cho tới khi chắc chắn một sự kiện là "tốt," bạn sẽ dành cả đời đợi một lời phán không bao giờ thật sự tới — vì mắt xích không bao giờ khép lại. Đám đông vẫn đang đợi xem rốt cuộc ông lão có may mắn không. Còn ông lão thì bận sống.</p></div>
+<p>Đây chính là sợi dây nối câu chuyện cũ với một cuộc sống hiện đại bận rộn. Ta không kiểm soát được vòng xoay của hoạ và phúc; bánh xe ấy không thuộc về ta. Thứ thuộc về ta là ta hướng sự chú ý vào đâu trong lúc nó xoay. Niềm tin lo phần ta không thấy. Lòng biết ơn lo phần ngay trước mặt. Giữ cả hai lại với nhau, chúng cho phép bạn thôi soát xét đời mình xem nó có đang ổn không, và bắt đầu thật sự sống cái bức tranh chưa đọc hết mà mình đang ở trong.</p>
+
+<h2 id="how-to-live-it">6. Sống điều đó thế nào, một cách nhẹ nhàng</h2>
+<p>Chẳng điều nào ở đây đòi bạn phải thành một bậc hiền triết trên núi. Nó là một nắm những động tác nhỏ, lặp đi lặp lại.</p>
+<ul>
+<li><strong>Đặt một dấu phẩy ở chỗ bạn từng đặt dấu chấm.</strong> Khi một việc xảy đến, gọi tên cảm xúc, rồi thêm: "…và mình chưa thể thấy nó để làm gì." Hãy để câu còn mở.</li>
+<li><strong>Nới rộng đường chân trời thời gian.</strong> Với mọi "tai hoạ," hãy hỏi: điều này có thể đang mở cánh cửa nào? Và với mọi "chiến thắng": điều này đang lặng lẽ đòi hỏi gì ở mình? Không phải để chối bỏ cảm xúc — mà để ngồi cùng nó.</li>
+<li><strong>Làm phần của mình, rồi buông kết quả.</strong> Bó chân, chuẩn bị cho mùa đông, gửi tin nhắn. Rồi buông cái đòi hỏi rằng đời phải xác nhận nỗ lực của bạn theo đúng lịch của bạn.</li>
+<li><strong>Cảm ơn bức tranh chưa đọc hết hiện tại, ngay hôm nay.</strong> Mỗi ngày một lần, gọi tên một sự hiện diện bình thường — một con người, một nơi chốn, một tấm thân còn khoẻ — như thể bạn đang nhớ về nó từ một tương lai rất xa. Vì một ngày kia bạn sẽ làm thế thật.</li>
+<li><strong>Giữ kế hoạch một cách lỏng tay.</strong> Cứ lập, lập trọn vẹn. Rồi mang nó theo cách ông lão mang sự chắc chắn của mình về con ngựa: nhẹ vừa đủ để một vòng xoay của hoàn cảnh không bẻ gãy bạn.</li>
+</ul>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Những điều cốt lõi</h3>
+<ul>
+  <li><strong>Ý nghĩa của một sự kiện được vay mượn từ những gì đến sau.</strong> Con ngựa mất thành con ngựa thứ hai; cái chân gãy thành mạng sống được giữ. Mắt xích không bao giờ khép lại hẳn.</li>
+  <li><strong>Lời phán xét, chứ không phải cảm xúc, mới là sai lầm.</strong> Cứ cảm trọn vẹn "việc này khó" hay "việc này tuyệt" — chỉ đừng đặt dấu chấm hết ở nơi đời chỉ mới đặt một dấu phẩy.</li>
+  <li><strong>Bình thản không phải lạnh lùng.</strong> Đó là ngồi yên trên chiếc ghế giữa: quan tâm sâu sắc, mà không để một vòng xoay hoàn cảnh ký hợp đồng thay cho cả đời mình.</li>
+  <li><strong>Bài học không phải bớt quan tâm, mà là trân trọng nhiều hơn.</strong> Chính vì mọi sự hiện diện đều tạm thời và bức tranh chưa đọc hết thì lớn hơn tầm ta đọc, những gì đang ở đây lúc này xứng đáng với lòng biết ơn của ta ngay bây giờ.</li>
+  <li><strong>Tin phần bạn không thấy; nâng niu phần ngay trước mặt.</strong> Cùng nhau, chúng cho bạn sống cái bức tranh chưa đọc hết thay vì chấm điểm nó.</li>
+</ul>
+</div>
+<p>Ông lão chẳng bao giờ biết "đoạn kết" câu chuyện của mình, vì làm gì có đoạn kết — chỉ có một khúc rẽ mở ra khúc kế tiếp. Đó không phải một sự thật buồn. Đó là sự thật giải phóng nhất mà ta có. Ta đâu cần biết mọi thứ rồi sẽ ngã ngũ ra sao mới sống tốt được nó. Ta chỉ cần tin vào bức tranh chưa đọc hết đủ để thôi gồng mình chống lại nó, và yêu những gì đang hiện diện đủ để thật sự có mặt ở đây vì nó.</p>
+4:["$","$La",null,{"category":"notes","slug":"the-old-man-who-lost-his-horse","children":[["$","$Lb",null,{"category":"notes","slug":"the-old-man-who-lost-his-horse","readingMinutes":13,"surface":"notes"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lc",null,{"url":"https://nguyenlephong.github.io/vi/notes/the-old-man-who-lost-his-horse","title":"Tái ông mất ngựa: khoan vội kết luận, giữ lấy hiện tại","surface":"notes","category":"notes","slug":"the-old-man-who-lost-his-horse","labels":{"share":"Chia sẻ","copyLink":"Sao chép liên kết","copied":"Đã sao chép!","close":"Đóng"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Ld",null,{"href":"/vi/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Ghi chép"}],[["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Ld",null,{"href":"/vi/notes?topic=goc-nhin","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Góc nhìn & Chiêm nghiệm"}]],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"Tái ông mất ngựa: khoan vội kết luận, giữ lấy hiện tại"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","h1",null,{"className":"blog-article__title","children":"Tái ông mất ngựa: khoan vội kết luận, giữ lấy hiện tại"}],["$","p",null,{"className":"blog-article__summary","children":"Câu chuyện cũ về người mất ngựa thường được kể như bài học về may rủi đổi chiều. Bài viết đọc nó theo hướng đời thường hơn: phán đoán đầu tiên của ta về một sự kiện thường chưa đủ dữ kiện. Thực hành không phải là bớt quan tâm, mà là khoan vội kết luận, ở lại với hiện tại và phản hồi rộng hơn cảm xúc đầu tiên."}],["$","div",null,{"className":"blog-article__meta","children":[["$","time",null,{"dateTime":"2026-02-22","children":"22 tháng 2, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"13 phút đọc"}],["$","$Le",null,{"label":"lượt xem"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Personal Reflection",{"children":"Personal Reflection"}],["$","li","Life Philosophy",{"children":"Life Philosophy"}],["$","li","Equanimity",{"children":"Equanimity"}],["$","li","Gratitude",{"children":"Gratitude"}],["$","li","Taoism",{"children":"Taoism"}],["$","li","Letting Go",{"children":"Letting Go"}]]}]]}],["$","$Lf",null,{"html":"$10"}],"$L11",null,"$L12"]}]]}],"$L13","$L14"]}],"$L15"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/579669e8fc8fe057.css","precedence":"next"}]
+6:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+7:["$","script","script-0",{"src":"/_next/static/chunks/60afb5b0374fe7a9.js","async":true}]
+8:["$","script","script-1",{"src":"/_next/static/chunks/0e65e15104575034.js","async":true}]
+9:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+11:["$","section",null,{"className":"blog-faq","aria-labelledby":"notes-faq-heading","children":[["$","h2",null,{"id":"notes-faq-heading","className":"blog-faq__heading","children":"Câu hỏi thường gặp"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Chẳng phải \"việc gì cũng có thể tốt hoặc xấu\" sẽ dẫn tới thụ động — vậy cố gắng làm gì?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Nó chỉ về hướng ngược lại, nếu bạn đọc trọn vẹn. Ông lão vẫn cho ngựa ăn, bó chân cho con, và chuẩn bị cho mùa đông. Cái thay đổi không phải là bạn có hành động hay không, mà là bạn đòi hỏi gì ở kết quả. Bạn làm phần của mình bằng toàn bộ nỗ lực, rồi buông cái yêu cầu rằng đời phải chứng minh nỗ lực ấy \"có tác dụng\" theo lịch của bạn. Tin vào bức tranh chưa đọc hết gỡ bỏ nỗi lo khỏi hành động; nó không gỡ bỏ hành động. Thụ động là bỏ cuộc vì chẳng có gì quan trọng. Bình thản là hành động hết lòng vì kết quả không phải thứ duy nhất quan trọng."}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Trân trọng hiện tại có phải chỉ là \"tích cực gượng ép\" khoác áo đẹp hơn?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Không — và khác biệt này rất quan trọng. Tích cực gượng ép chối bỏ cảm xúc khó: \"đừng buồn, thật ra ổn mà.\" Điều bài này đề nghị thì ngược lại: hãy cảm trọn vẹn nỗi đau hay niềm vui, chỉ đừng ký một lời phán vĩnh viễn chồng lên trên. Bạn có thể ôm một nỗi buồn thật về một mất mát và vẫn biết ơn những gì còn lại, trong cùng một giờ. Trân trọng hiện tại không phải giả vờ mọi thứ đều tốt; nó là từ chối để sự bất định về tương lai cướp đi sự chú ý của bạn khỏi điều tốt đẹp đang thật sự ở đây lúc này."}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Điều này khác gì với \"kiểm soát thứ trong tầm tay\" của Khắc kỷ?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Chúng là anh em họ, đến từ hai nơi độc lập. Khắc kỷ (truyền thống Hy Lạp và La Mã) và điển tích Đạo gia trong Hoài Nam Tử đều tách phần việc thuộc về ta khỏi phần không thuộc về ta, và khuyên giữ một gương mặt điềm tĩnh trước phần thứ hai. Hương vị Đạo gia nghiêng nhiều hơn về tin vào một tiến trình lớn ta không thấy, còn hương vị Khắc kỷ nghiêng nhiều hơn về sự phán đoán có kỷ luật. Trên thực tế chúng bổ trợ nhau: làm bổn phận (Khắc kỷ), và giữ kết quả nhẹ tay vì chuỗi nhân quả dài hơn tầm bạn đọc (Đạo gia)."}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Khi một điều thật sự khủng khiếp xảy ra, chẳng phải \"biết đâu lại là phúc\" là xúc phạm sao?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Đúng — nói với một người đang đau đớn còn tươi mới, nó có thể thiếu tinh tế, và bài này không phải một câu để trao cho người khác. Đó là một tư thế riêng tư, không phải điều bạn nói ở một đám tang. Với mất mát thật, việc đầu tiên là khóc thương, trọn vẹn và không có hạn chót. Cái \"biết đâu\" không phải chối bỏ nỗi đau; nó là một sự từ chối lặng lẽ việc cộng thêm một nỗi khổ thứ hai — sự tuyệt vọng vì đã quyết định, ngay ngày đầu, rằng tương lai chẳng còn gì. Hãy ôm nỗi đau. Chỉ đừng để nó viết đoạn kết."}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Một điều nhỏ mình có thể thật sự bắt đầu làm ngay hôm nay là gì?"}],"$L19"]}]]}]]}]
+12:["$","$L1a",null,{"prompt":"Bạn thấy bài này thế nào?","surface":"notes","category":"notes","slug":"the-old-man-who-lost-his-horse","reactionLabels":{"like":"Thích","love":"Yêu thích","insightful":"Sâu sắc","clap":"Tuyệt vời"}}]
+13:["$","nav",null,{"className":"blog-series-nav","aria-label":"Góc nhìn & Chiêm nghiệm","children":[["$","$Ld",null,{"href":"/vi/notes/choice-or-fate","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Lựa chọn và hoàn cảnh: sống vững trong phần mình không kiểm soát hết"}]]}],["$","$Ld",null,{"href":"/vi/notes/complexity-is-inevitable-simplicity-is-sustainable","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Bài tiếp theo"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Sự phức tạp là tất yếu, sự đơn giản là bền vững: bài học từ hệ thống và đời sống"}]]}]]}]
+14:["$","footer",null,{"className":"blog-article__footer","children":["$","$Ld",null,{"href":"/vi/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Quay lại Ghi chép"]}]}]
+15:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1b",null,{"label":"Trong bài này","surface":"notes"}]}]
+18:null
+19:["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Đặt một dấu phẩy ở chỗ bạn theo phản xạ đặt dấu chấm. Lần tới khi một việc rơi xuống rõ ràng là \"tốt\" hay rõ ràng là \"xấu,\" hãy gọi tên cảm xúc một cách thành thật, rồi thêm năm chữ: \"và mình chưa thể biết.\" Rồi, một lần trước khi ngủ, gọi tên một sự hiện diện bình thường trong đời bạn — một con người, một nơi chốn, chính tấm thân đang khoẻ của bạn — như thể bạn đang nhớ về nó trìu mến từ nhiều năm trong tương lai. Cặp đôi đó — dấu phẩy còn mở và lời cảm ơn mỗi ngày — chính là toàn bộ pháp tu thu nhỏ."}}]

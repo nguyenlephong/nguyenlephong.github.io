@@ -1,0 +1,18 @@
+{
+  "slug": "keeping-checklists-close-to-the-work",
+  "category": "ways-of-working",
+  "title": "Keeping Checklists Close to the Work",
+  "summary": "A practical note on making checklists useful by placing them where people actually decide, review, release, and hand off work.",
+  "date": "2026-07-13",
+  "readingMinutes": 5,
+  "tags": [
+    "Ways of Working",
+    "Checklists",
+    "Delivery",
+    "Quality",
+    "Teamwork",
+    "Documentation"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The checklist existed, but nobody used it. It lived in an old document, three clicks away from the pull request, and people remembered it only after something escaped. The team did not have a checklist problem. It had a distance problem.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/keeping-checklists-close-to-the-work/checklist-near-work.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A delivery desk with a compact checklist beside a pull request, release notes, test result, and deployment marker.' />\n  <figcaption>A checklist works best when it appears at the moment the team needs to decide.</figcaption>\n</figure>\n<p>Checklists are easy to admire and hard to keep alive. They start with good intent after an incident, a missed test, or a painful handoff. Then the work moves on, the checklist stays somewhere else, and memory becomes the real process again.</p>\n<p>A useful checklist sits close to the work. If it guides pull requests, it belongs in the PR template or review habit. If it guides release, it belongs near the deploy command and rollback note. If it guides customer migration, it belongs beside the runbook people actually open.</p>\n<p>Closeness is not only about location. The checklist should use the language of the task. Confirm tenant scope. Verify empty-state copy. Link the migration rollback. These are better than broad reminders like be careful or test thoroughly. Specific checks reduce interpretation at the moment of pressure.</p>\n<p>The best checklists are short enough to survive. A twenty-five item list may be useful for a rare launch, but it will not fit every small change. A daily checklist should protect the most expensive mistakes, not prove that the team remembered every possible concern.</p>\n<p>Checklists also need ownership. Someone should be allowed to remove stale items, add a lesson after a miss, and split a checklist when it starts serving two different kinds of work. Without ownership, checklists become historical artifacts.</p>\n<p>Used well, a checklist does not replace judgment. It protects judgment from fatigue. It catches the simple things so people have more attention for the unusual things.</p>\n<p>When a team says people keep forgetting a step, first look at where that step lives. Move the reminder closer to the decision, make it concrete, and keep it small enough to use. A checklist that is near the work has a chance to become part of the work.</p>"
+}

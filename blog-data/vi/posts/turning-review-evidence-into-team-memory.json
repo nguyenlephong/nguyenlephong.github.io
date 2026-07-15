@@ -1,0 +1,14 @@
+{
+  "title": "Biến review evidence thành team memory",
+  "summary": "Một ghi chú thực tế về cách chuyển review findings, commands, screenshots và decisions thành team memory có thể tái sử dụng thay vì artifact chỉ dùng một lần để approve.",
+  "readingMinutes": 6,
+  "tags": [
+    "Ways of Working",
+    "Review",
+    "Evidence",
+    "Team Memory",
+    "Documentation",
+    "Delivery"
+  ],
+  "html": "<p>Review đó rất kỹ. Nó có screenshot, log, command, edge case và lý do rõ cho final decision. Rồi nó biến mất trong pull request timeline. Hai tháng sau, một người khác lặp lại cùng discovery vì evidence đó chưa bao giờ trở thành team memory.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/turning-review-evidence-into-team-memory/review-evidence-team-memory.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Một team review evidence cards, decision notes, screenshots và reusable checklists trên một project memory board bình tĩnh.' />\n  <figcaption>Review evidence có giá trị hơn khi teammate tiếp theo có thể reuse nó.</figcaption>\n</figure>\n<p>Review evidence rất đắt. Ai đó đã phải chạy test, inspect output, compare behavior, đọc code path, hoặc hỏi câu hỏi khó chịu. Nếu evidence đó chỉ phục vụ một lần approve, team sẽ trả lại cùng chi phí sau này.</p>\n<p>Team memory không cần là document lớn. Đôi khi nó là một note ngắn trong runbook, một checklist item, một known limitation, một test case, một dashboard link, hoặc một câu trong architecture decision record. Quan trọng là chuyển learning bền hơn ra khỏi review thread tạm thời.</p>\n<p>Mấu chốt là quyết định điều gì durable. Không phải comment nào cũng cần giữ. Một typo fix có thể ở lại trong pull request. Một failure mode lặp lại, một dependency gây bất ngờ, một manual verification step, hoặc một decision giải thích vì sao code nhìn hơi lạ thì có lẽ cần một chỗ ở.</p>\n<p>Review note tốt trả lời câu hỏi tương lai trước khi nó thành interruption. Vì sao fallback này conservative? Command nào chứng minh offline path hoạt động? Provider behavior nào làm mình bất ngờ? Assumption nào được accept, và assumption nào vẫn cần monitoring?</p>\n<p>Habit này cũng cải thiện chính review. Khi mọi người biết evidence có thể trở thành shared memory, họ viết nó rõ hơn. Command trở nên reproducible. Screenshot có context. Decision có reason, không chỉ có result.</p>\n<p>Cần có cân bằng. Biến mọi review thành documentation sẽ tạo drag. Không biến review nào thành memory sẽ tạo repeated confusion. Điểm giữa hữu ích là capture những phần thật sự tiết kiệm thời gian hoặc ngăn lỗi thật khi topic đó quay lại.</p>\n<p>Cuối một review, hãy hỏi một câu nhỏ: mình đã học điều gì ở đây mà người tiếp theo không nên phải rediscover? Nếu có answer, review không chỉ là gate. Nó là cơ hội làm team thông minh hơn một chút.</p>"
+}

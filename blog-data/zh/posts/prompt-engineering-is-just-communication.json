@@ -1,0 +1,19 @@
+{
+  "slug": "prompt-engineering-is-just-communication",
+  "category": "ai",
+  "title": "Prompt Engineering 本质上只是清晰沟通",
+  "summary": "好的 prompt 不是魔法句子，而是清楚地提供 context、意图、constraints、examples 和 feedback。",
+  "date": "2026-02-07",
+  "readingMinutes": 6,
+  "tags": [
+    "AI",
+    "Prompt Engineering",
+    "沟通",
+    "LLM",
+    "AI Literacy",
+    "Developer Productivity"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>忙碌的下午，同事问：\"能帮我看一下这个吗？\" 你打开文件，却没有 context。你不知道代码应该做什么、什么失败了、已经试过什么、对方想要快速意见还是认真 review。即使有经验，你也只能追问或猜。</p>\n<p>AI model 也类似。Prompt engineering 有时听起来像神秘公式，但更深的能力其实很普通：把情况讲清楚，让另一个智能体不用发明缺失的背景也能工作。</p>\n<p>好的 prompt 从 context 开始：系统是什么，受众是谁，当前状态如何，最重要的 constraint 是什么。缺少这些，model 会用通用假设填空。</p>\n<p>好的 prompt 也明确任务。\"优化这个\" 是愿望。\"把这段 summary 改写给非技术 product manager，120 words 以内，保留风险，减少 jargon\" 才是可以执行的工作。</p>\n<p>constraints 不会杀死创造力，而是给它方向。不加新 dependency、保持 calm tone、保留 public API、先解释 tradeoff 再写 code，这些都会让答案更贴近现实。</p>\n<p>examples 有用，因为它们对人也有用。before/after、偏好的 style、failing test、小的成功输出，都能说明你想要的形状。</p>\n<p>feedback 是对话的一部分。\"太抽象\"、\"结构保留但语气柔和一点\"、\"漏了 database constraint\"，这些不是失败，而是正常的协作信号。</p>\n<p>所以 prompt engineering 本质上是在 constraints 下沟通。让 ticket、code review、handoff 变好的习惯，也会让 AI request 变好。</p>"
+}

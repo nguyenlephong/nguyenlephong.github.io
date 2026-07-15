@@ -1,0 +1,240 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+e:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+f:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+10:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+11:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+15:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Tb04,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/ja/blog/architecture/micro-frontends-when-why-and-cost#article","headline":"Micro-Frontends：いつ価値があり、何が実際にかかるか","description":"フロントエンドを独立してデプロイ可能なピースに分割することでチームが解放されることも、複雑さに埋もれることもあります。Angular ホスト＋ React モジュールをスケールで出荷した経験から：Micro-Frontends が見返りをもたらす場面と、それに伴うコストを正直にお伝えします。","inLanguage":"ja","url":"https://nguyenlephong.github.io/ja/blog/architecture/micro-frontends-when-why-and-cost","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/micro-frontends-when-why-and-cost.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/ja/blog/architecture/micro-frontends-when-why-and-cost","datePublished":"2026-03-02","dateModified":"2026-03-02","keywords":"ソフトウェアアーキテクチャ, Micro-Frontends, フロントエンドアーキテクチャ, Module Federation, スケーラビリティ, システム設計","articleSection":"ソースコード & アーキテクチャ","isRelatedTo":[{"@type":"BlogPosting","headline":"モノリス・Modular Monolith・マイクロサービス：正直な意思決定ガイド","url":"https://nguyenlephong.github.io/ja/blog/architecture/monolith-to-microservices","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/monolith-to-microservices.jpg"},{"@type":"BlogPosting","headline":"Ports & Adapters（Hexagonal Architecture）をやさしく解説","url":"https://nguyenlephong.github.io/ja/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ports-and-adapters.jpg"},{"@type":"BlogPosting","headline":"Clean・Onion・Hexagonal Architecture：一つの北極星、三つの名前","url":"https://nguyenlephong.github.io/ja/blog/architecture/clean-vs-onion-vs-hexagonal","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/clean-vs-onion-vs-hexagonal.jpg"},{"@type":"BlogPosting","headline":"Dependency Injection と Inversion of Control——魔法なしで理解する","url":"https://nguyenlephong.github.io/ja/blog/architecture/dependency-injection-and-ioc","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/dependency-injection-and-ioc.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/ja/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"ブログ\",\"item\":\"https://nguyenlephong.github.io/ja/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"ソースコード & アーキテクチャ\",\"item\":\"https://nguyenlephong.github.io/ja/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Micro-Frontends：いつ価値があり、何が実際にかかるか\",\"item\":\"https://nguyenlephong.github.io/ja/blog/architecture/micro-frontends-when-why-and-cost\"}]}"}}],null,["$","$L3",null,{"category":"architecture","slug":"micro-frontends-when-why-and-cost","children":[["$","$L4",null,{"category":"architecture","slug":"micro-frontends-when-why-and-cost","readingMinutes":15,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":["$L5","$L6","$L7","$L8"]}],"$L9"]}]]}],["$La","$Lb","$Lc"],"$Ld"]}],"loading":null,"isPartial":false}
+12:T82d4,<p>二十人の開発者のための整然とした Angular アプリとして始まったリポジトリが、三年後には五十人以上のエンジニアが毎日コミットしていると想像してください。すべてのプルリクエストが同じバンドルに触れます。チェックアウトフローのバグ修正が、誰かがこっそり変更した共有ユーティリティを両方インポートしているためにオンボーディングウィザードを偶然壊します。リリースカレンダーはテトリスゲームのように見えます――五つのチームが<em>一つ</em>のスケジュールされたデプロイウィンドウに機能を並べようとしています。全員が全員を待っており、誰も望むほど速く出荷できません。</p>
+<p>これが<strong>Micro-Frontends</strong>というフレーズをフロントエンドアーキテクトが囁き始める痛みです。アイデアは魅力的に聞こえます：マイクロサービスがバックエンドチームをモノリスから解放したなら、UIでも同じことができないのか？各チームに独自の独立してデプロイ可能なフロントエンドスライスを与え、ブラウザー（またはサーバー）がそれらを一つのシームレスなプロダクトにつなぎ合わせるようにします。</p>
+<p>しかし、そのアナロジーは両方向に切れます。マイクロサービスは本物の自由と本物の運用上の痛みをもたらしました。Micro-Frontends も同じです。複数チームの会社で Angular ホストに React 製フィーチャーモジュールを出荷したことから、正直なバージョンをお伝えします：うまくいったこと・痛かったこと・そして分割を始める<em>前に</em>答えるべき質問。</p>
+
+<h2 id="what-they-are">Micro-Frontends とは何か</h2>
+<p>この用語は2016〜2017年頃に、マイクロサービス革命がブラウザーに届いていないことにチームが気づいたとき広まりました。古典的なシングルページアプリケーションでは、一つのモノリシックなフロントエンドバンドルがすべてを所有します：ルーティング・状態・すべてのコンポーネント・すべてのチームの機能。Micro-Frontends はUIレイヤーに同じ分解のアイデアを適用します。</p>
+<p><strong>Micro-Frontend</strong> は一つのチームがエンドツーエンドで所有する、独立してビルド可能で独立してデプロイ可能なUIのピースです。そのチームは独自のリポジトリ（または少なくとも独自のビルドパイプライン）・独自のリリースサイクル・合意されたバウンダリー内での独自の技術選択を管理します。実行時には、<strong>シェルアプリケーション</strong>――ホストまたはコンテナとも呼ばれる――がこれらのピースをユーザーが見る統一されたプロダクトに組み合わせます。</p>
+<p>重要な変化はオーナーシップです。共有コードを持つモノレポでは、共有ユーティリティへの変更がどのチームの機能も壊す可能性があります；調整は常に必要です。Micro-Frontends では、チームAのチェックアウトモジュールのデプロイはチームBのダッシュボードチームの承認を必要としません。彼らの間の契約は共有ソースコードではなく、合意された統合インターフェースです。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 820 420" role="img" aria-labelledby="mfe-dgm-title">
+    <title id="mfe-dgm-title">トップのシェル/コンテナアプリが、チームA・チームB・チームCからの独立してデプロイされたフロントエンドモジュールをブラウザーで一つのページに組み合わせます。</title>
+    <defs>
+      <marker id="mfeAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+
+    <!-- Shell / Container -->
+    <rect class="dgm-core" x="260" y="24" width="300" height="72" rx="14" stroke-width="2"/>
+    <text class="dgm-t-strong" x="410" y="56" text-anchor="middle" font-size="17">Shell / Container App</text>
+    <text class="dgm-t-muted dgm-t-mono" x="410" y="78" text-anchor="middle" font-size="12">routing · auth · shared nav · orchestration</text>
+
+    <!-- Vertical connector from shell -->
+    <line class="dgm-flow" x1="410" y1="96" x2="410" y2="158" stroke-width="1.5"/>
+    <!-- Horizontal line across three columns -->
+    <line class="dgm-flow" x1="130" y1="158" x2="690" y2="158" stroke-width="1.5"/>
+    <!-- Drop lines to each module -->
+    <line class="dgm-flow" x1="130" y1="158" x2="130" y2="200" stroke-width="1.5" marker-end="url(#mfeAcc)"/>
+    <line class="dgm-flow" x1="410" y1="158" x2="410" y2="200" stroke-width="1.5" marker-end="url(#mfeAcc)"/>
+    <line class="dgm-flow" x1="690" y1="158" x2="690" y2="200" stroke-width="1.5" marker-end="url(#mfeAcc)"/>
+
+    <!-- Team A module -->
+    <rect class="dgm-adapter" x="40" y="200" width="180" height="90" rx="12" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="130" y="222" text-anchor="middle" font-size="11">TEAM A</text>
+    <text class="dgm-t-strong" x="130" y="246" text-anchor="middle" font-size="15">Checkout MFE</text>
+    <text class="dgm-t-muted" x="130" y="268" text-anchor="middle" font-size="12">React · own deploy</text>
+
+    <!-- Team B module -->
+    <rect class="dgm-adapter" x="320" y="200" width="180" height="90" rx="12" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="410" y="222" text-anchor="middle" font-size="11">TEAM B</text>
+    <text class="dgm-t-strong" x="410" y="246" text-anchor="middle" font-size="15">Dashboard MFE</text>
+    <text class="dgm-t-muted" x="410" y="268" text-anchor="middle" font-size="12">Angular · own deploy</text>
+
+    <!-- Team C module -->
+    <rect class="dgm-adapter" x="600" y="200" width="180" height="90" rx="12" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="690" y="222" text-anchor="middle" font-size="11">TEAM C</text>
+    <text class="dgm-t-strong" x="690" y="246" text-anchor="middle" font-size="15">Profile MFE</text>
+    <text class="dgm-t-muted" x="690" y="268" text-anchor="middle" font-size="12">Vue · own deploy</text>
+
+    <!-- Deploy badges -->
+    <rect class="dgm-driven" x="58" y="310" width="144" height="32" rx="8"/>
+    <text x="130" y="331" text-anchor="middle" font-size="12">v2.4.1 · deployed</text>
+    <rect class="dgm-driven" x="338" y="310" width="144" height="32" rx="8"/>
+    <text x="410" y="331" text-anchor="middle" font-size="12">v1.9.0 · deployed</text>
+    <rect class="dgm-driven" x="618" y="310" width="144" height="32" rx="8"/>
+    <text x="690" y="331" text-anchor="middle" font-size="12">v3.1.2 · deployed</text>
+
+    <!-- Browser label -->
+    <rect class="dgm-surface" x="20" y="360" width="780" height="44" rx="10" stroke-width="1"/>
+    <text class="dgm-t-muted dgm-t-mono" x="410" y="387" text-anchor="middle" font-size="13">BROWSER — composed at runtime into one seamless product</text>
+  </svg>
+  <figcaption>シェルアプリはルーティング・認証・グローバルナビを所有します。各チームは独自のケイデンスで独自の Micro-Frontend を出荷します。ブラウザーはそれらを一つの体験に組み立てます――三つのチームが独立してデプロイしたにもかかわらず、ユーザーには一つのプロダクトとして見えます。</figcaption>
+</figure>
+
+<h2 id="approaches">統合アプローチ</h2>
+<p>「Micro-Frontends」は単一のテクノロジーではなく、技術の家族です。ピースをどうつなぎ合わせるかはチームの自律性・パフォーマンス・運用上の複雑さに大きな影響を与えます。五つの主なアプローチを紹介します：</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>アプローチ</th><th>どう機能するか</th><th>主なトレードオフ</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ビルド時統合（npmパッケージ）</th>
+      <td>各 Micro-Frontend がバージョン管理された npm パッケージとして公開される。シェルはそれらを依存として インストールし、すべてをバンドルします。</td>
+      <td>設定が簡単ですが、チームはリリースを調整しなければなりません――リモートを更新するにはシェルを再デプロイする必要があります。本当には独立していません。</td>
+    </tr>
+    <tr>
+      <th>サーバーサイドコンポジション</th>
+      <td>リバースプロキシまたはエッジレイヤー（例：Nginx・Next.js エッジ関数・Zalando の Tailor）が異なるサービスから HTML フラグメントを取得し、レスポンスがブラウザーに届く前に組み立てます。</td>
+      <td>SEOと初期描画に優れていますが、インフラの複雑さとサービス間の新しいレイテンシ面を追加します。</td>
+    </tr>
+    <tr>
+      <th>Module Federation によるランタイム統合</th>
+      <td>Webpack 5（または Rspack/Vite の同等物）により、ビルドが別の CDN URL から<em>実行時に</em>シェルによってロードされるモジュールを公開できます。再バンドルなし。</td>
+      <td>本当の独立性――リモートはシェルに触れずにデプロイできます――しかしバージョンのずれ・共有依存の交渉・デバッグツールが難しい。</td>
+    </tr>
+    <tr>
+      <th>iframe</th>
+      <td>各 Micro-Frontend が独自の iframe で実行されます。分離はほぼ完璧で；通信は <code>postMessage</code> 経由です。</td>
+      <td>岩のように堅固な分離とセキュリティバウンダリーですが、UX がひどい（スクロール・フォーカス・ディープリンク・アクセシビリティはすべてカスタム配管が必要）；時代遅れに感じられます。</td>
+    </tr>
+    <tr>
+      <th>Web Components</th>
+      <td>各 Micro-Frontend がカスタム HTML 要素（<code>&lt;checkout-app&gt;</code>）を公開します。シェルがページに要素を配置し；ブラウザーがライフサイクルを処理します。</td>
+      <td>設計上フレームワーク非依存ですが、SSR サポートが未熟で、複雑な共有状態はまだグローバルイベントバスまたはコンテキストソリューションを必要とします。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>実際には、<strong>Module Federation</strong> が本物のランタイム独立性を望む大規模チームの支配的な選択になっています。それを出荷する Webpack 5 プラグインは Rspack に移植されており、Vite の同等物もあります（例：<code>@originjs/vite-plugin-federation</code>）。今日「Micro-Frontends をやっている」と言う人は、ほぼ常に Module Federation を意味します。</p>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">ヒント：SEOが重要なら最初はサーバーサイドコンポジション</span><p>アプリが検索結果でランクされる必要があり、Micro-Frontend のアイデアに初めて触れているなら、サーバーサイドコンポジションはブラウザーが触れる前に最もクリーンな HTML を提供します。Module Federation はパワームーブですが、見返りをもたらす前により成熟したデプロイストーリーが必要です。</p></div>
+
+<h2 id="why">チームが採用する理由</h2>
+<p>Micro-Frontend に移行する動機は、私が見てきた企業全体で一貫しています。ほとんど常に四つのプレッシャーのいずれかに起因しています：</p>
+
+<ul>
+  <li><strong>独立したデプロイ。</strong>最も多く挙げられる理由。十五のチームが一つのフロントエンドビルドを共有していると、デプロイは調整の税金です――全員が全員の作業が QA をクリアするのを待ちます。Micro-Frontends はチームAがチームBの未完成の機能を待たずに火曜日に出荷できるようにします。リリース頻度が上がり；リリースごとの影響範囲が下がります。</li>
+  <li><strong>チームの自律性とオーナーシップ。</strong>自分のスライスをビルド・テスト・デプロイできるチームはより速く動き、より責任を感じます。「フルスタックオーナーシップ」は、フロントエンドが全員が躓く共有コモンズでなければ本物になります。</li>
+  <li><strong>段階的なテクノロジー移行。</strong>これは過小評価されています。五年前の AngularJS アプリを動かしていて React に移行したいなら、全部を一度に書き直すことはできません。Micro-Frontends は残りの AngularJS アプリを動かし続けながら、一度に一つのルートを新しい React モジュールに置き換えることを可能にします。ストラングラーフィグパターンをフロントエンドに適用したものです。</li>
+  <li><strong>障害の分離。</strong>チェックアウト Micro-Frontend での JavaScript ランタイムエラーはチェックアウトモジュールをクラッシュさせますが、アプリ全体はクラッシュさせません。シェルはエラーバウンダリーをキャッチし、フォールバックを表示し、ユーザーがナビゲートできるようにします。モノリスでは、キャッチされないエラーがしばしばページ全体を壊します。</li>
+</ul>
+
+<h2 id="the-cost">本当のコスト</h2>
+<p>ここで多くのブログ記事が静かになります。Micro-Frontends は本物の請求書を持っており、申し込む前にそれを明確に見るべきです。</p>
+
+<p><strong>バンドルと依存の重複。</strong>三つの Micro-Frontend がそれぞれ独自の React のコピーをバンドルすると、ユーザーは React を三回ダウンロードします。Module Federation の共有スコープメカニズムは実行時に重複排除できますが、バージョンがずれるときにチーム間で正しく設定することは自明ではありません。ナイーブな Micro-Frontend アーキテクチャは実際に、よく最適化されたモノリスと比べてペイロードを<em>膨らませる</em>ことがあります。</p>
+
+<p><strong>デザインシステムの共有。</strong>統一されたルック＆フィールは共有コンポーネントライブラリを要求します。そのライブラリがビルド時（npm）に消費されるなら、それを更新するすべての Micro-Frontend が再デプロイしなければなりません。Module Federation 経由で実行時に消費されるなら、バージョニングと互換性の戦略が必要です。どちらにしても、デザインシステムはクロスチームの調整ポイントになります――それを排除しようとしていたまさにそのもの。</p>
+
+<p><strong>グローバル状態と Micro-Frontend をまたぐコミュニケーション。</strong>Micro-Frontends は独立しているべきですが、ユーザーは全体的です。シェルの通知バッジはチェックアウトモジュールのアクションを知る必要があります。一つのモジュールの認証イベントはどこにでも伝播しなければなりません。解決策は共有 Redux ストア（密なカップリング）からカスタムイベントバスまたはグローバル <code>window</code> オブジェクトの共有コンテキストまで多岐にわたり――これらはすべて規律なしに使うと問題になるアンチパターンです。</p>
+
+<p><strong>バージョンのずれ。</strong>チームが独立してデプロイするため、特定の瞬間にシェルがリモートエントリー形式 v1 を期待する Module Federation のバージョンを実行している一方で、チームCの最新デプロイが形式 v2 を発行することがあります。これらの不一致はローカルで再現しにくく、本番でトレースするのがさらに難しい不可解なランタイムエラーとして現れます。明示的な互換性契約と段階的劣化戦略が必要です。</p>
+
+<p><strong>ランタイムパフォーマンス。</strong>複数の非同期バンドルロード・ランタイムモジュール交渉・リモートエントリーのウォーターフォールフェッチ――Micro-Frontends はすべてが静的にバンドルされたモノリスには単純に存在しないレイテンシを導入します。慎重なプリロード・CDN 戦略・HTTP/2 プッシュはすべて助けになりますが、積極的な投資が必要です。</p>
+
+<p><strong>より重い運用と観測可能性。</strong>N個のデプロイパイプライン・N個の CDN キャッシュバスティングルール・N個のビルド設定・そして何かがモジュールバウンダリーをまたいで間違ったときに相関付けるN個のエラーログが生まれます。DevOps オーバーヘッドは本物です。本番に行く前に分散トレーシング・Micro-Frontend バージョンを含む構造化ログ・共有アラートダッシュボードが必要です。</p>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">複雑さは常にどこかに行く</span><p>モノリスを独立したピースに分割しても総複雑さは減りません――それはソースコードから統合レイヤー・運用ツール・クロスチームの契約に移動します。もし組織がその運用インフラへの投資の準備ができていなければ、分散モノリスになるでしょう：モノリスのすべてのカップリングに加えて、分散システムのすべての運用オーバーヘッド。</p></div>
+
+<h2 id="real-world">Angular ホスト＋ React モジュールの出荷：正直な記録</h2>
+<p>数年前、私は大規模な Angular プラットフォーム――数十万行・五つのプロダクトスクワッド・ホスタージ状況のように感じられた四半期リリースケイデンス――を Module Federation アーキテクチャに移行したチームの一員でした：独立してデプロイされた React フィーチャーモジュールをホストする Angular シェル。</p>
+
+<p>本当にうまくいったことを紹介します。</p>
+<ul>
+  <li><strong>独立したデプロイサイクルが文化を変えました。</strong>二ヶ月以内に、歴史的に四半期ごとに出荷していたスクワッドが毎週出荷するようになりました。フィードバックループが圧縮されました。エンジニアは観測可能性をもっと気にし始めました、なぜなら<em>彼ら</em>が自分たちのデプロイが出た後のダッシュボードを見ていたからです。</li>
+  <li><strong>フィーチャーの分離でリグレッションの表面積が劇的に減少しました。</strong>課金モジュールへの変更がユーザー設定ページを壊す理論的なパスがなくなりました。チームごとのリグレッションテストスイートの範囲が縮小しました；インテグレーションテストはアプリ全体ではなく契約ポイントに焦点を当てました。</li>
+  <li><strong>段階的な移行が命綱でした。</strong>六ヶ月の「大爆発」の書き直し凍結がありませんでした。React モジュールは十八ヶ月にわたって一度に一つのルートで Angular ビューを置き換え、プロダクトは出荷を続けました。ビジネス関係者は移行にほとんど気づきませんでした――それがまさに望んでいることです。</li>
+</ul>
+
+<p>痛かったことを紹介します。</p>
+<ul>
+  <li><strong>共有状態は絶え間ない頭痛の種でした。</strong>最終的にグローバル window オブジェクトにカスタムイベントバスを持つことになりました――機能はしますが、脆弱。二つのチームが独立してイベントのペイロード形状を変更したとき、特定のナビゲーションシーケンスでのみ現れる無音のバグが発生しました。最終的に Micro-Frontend をまたぐイベントを内部APIのようにモデル化し、スキーマレジストリを作りました。それは大いに助けになりましたが、構築に何週間もかかりました。</li>
+  <li><strong>重複した依存がバンドルを膨らませました。</strong>Angular と React という二つの異なるビルドシステムにわたって Module Federation の <code>shared</code> 設定を正しく行うには本物の努力が必要でした。何スプリントもの間、ユーザーは私たちが気づく前に RxJS の二つのコピーとグラフライブラリのほぼ二つのコピーをダウンロードしていました。CI での自動バンドル分析が不可欠になりました。</li>
+  <li><strong>バージョン調整は完全にはなくなりませんでした。</strong>シェルの Angular バージョンと React モジュールの依存マトリックスは緩やかに互換性を保たなければなりませんでした。Angular がメジャーアップデートをリリースしたとき、シェルをアップグレードするだけではできませんでした；まず各モジュールのピア依存関係を調査しなければなりませんでした。調整コストはモノリスよりも低かったですが、消えはしませんでした。</li>
+</ul>
+
+<p>最終評価：そのアーキテクチャはそのスケールのその組織にとって正しい選択でした。しかし正直に言えば、私たちは運用への投資を約三十パーセント過小評価しており、共有状態の問題が予測した二倍の時間がかかりました。目を開けて取り組んでください。</p>
+
+<h2 id="when-not">Micro-Frontends を使うべきでないとき</h2>
+<p>Micro-Frontends が状況に合っていない最も明確なサインは、フロントエンドの痛みの主な源がチームスケールの調整ではなく、まったく別のものであるときです。</p>
+
+<ul>
+  <li><strong>一つの小規模チーム。</strong>フロントエンドの全員が一つのビデオ通話に収まるなら、調整の問題はありません。整理すべきコードベースがあります。Micro-Frontends はチームの自律性の利点なしにすべての運用オーバーヘッドを与えます。代わりに、よく強制されたモジュールバウンダリーを持つ Modular Monolith フロントエンドを使ってください。</li>
+  <li><strong>小規模なアプリケーション。</strong>フロントエンド全体が少数のルートと数千行であれば、分割するとプロダクト自体よりも多くのインフラ表面積を作ります。Module Federation の設定とマルチパイプライン CD のオーバーヘッドが利益をはるかに上回ります。</li>
+  <li><strong>良いバウンダリーを持つモノレポで十分な場合。</strong>Nx・Turborepo・類似ツールにより、厳密なモジュールバウンダリーを強制し、影響を受けるパッケージのみのビルドを実行し、チームにある程度のオーナーシップを与えることができます――ランタイムコンポジションの複雑さなしに。20〜80人のエンジニア範囲の多くの企業にとって、よく構成されたモノレポの方が良いトレードオフです。リファクタリングも劇的に簡単です。</li>
+  <li><strong>チームがまだ基礎に慣れていない場合。</strong>CI/CD パイプラインが不安定・観測可能性のストーリーが薄い・未解決のクロスチームのコミュニケーション機能不全がある場合、Micro-Frontend の複雑さを追加するとそれらの問題すべてを増幅します。まず基盤を直してください。</li>
+</ul>
+
+<p>これはバックエンドの決定と密接に類似しています。すべてのバックエンドがマイクロサービスの群れであるべきではありません――そして同じ推論がここにも適用されます。<a href="/blog/architecture/monolith-to-microservices">モノリス → マイクロサービス</a>の解説をまだ読んでいなければ、バックエンドを分割する前に尋ねる質問はフロントエンドにほぼそのまま当てはまります：独立したスケーリングニーズ・独立した障害ドメイン・本当に自律的なチームがありますか？そうでなければ、モノリス――または Modular Monolith――おそらく良い答えです。</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Modular Monolith のスイートスポット</span><p>厳格なリントバウンダリー・チームごとに所有されたパッケージ・高速な増分ビルドシステムを持つよく整理されたフロントエンドモノレポは、運用コストのほんの一部で自律性の利点の70〜80%を与えます。Module Federation に手を伸ばす前に、現在のコードベースのよりクリーンなモジュールバウンダリーが実際の問題を解決するかどうかを尋ねてください。</p></div>
+
+<h2 id="by-company-size">会社の規模ごと</h2>
+<p>この決定に対する最も有用なレンズの一つは単純に：何人のフロントエンドエンジニアがいて、チームはどれだけ独立して運用する必要があるかです？</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>組織の規模</th><th>典型的なフロントエンドチーム構成</th><th>推奨</th><th>実例パターン</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>小規模（FEデベロッパー15人未満）</th>
+      <td>一〜二スクワッド、全員がお互いのコードを知っている。</td>
+      <td><strong>使わない。</strong>Modular Monolith またはよく構成されたモノレポを使う。Micro-Frontends の調整オーバーヘッドが利点を上回る。</td>
+      <td>初期 SaaS スタートアップ：フィーチャーフォルダーと厳格なインポートを持つ Next.js アプリ――速く出荷でき、推論しやすい。</td>
+    </tr>
+    <tr>
+      <th>中規模（FEデベロッパー15〜60人）</th>
+      <td>三〜八スクワッド、デプロイの競合とオーナーシップの摩擦を感じ始めている。</td>
+      <td><strong>場合によっては、シームで。</strong>最も摩擦の高いバウンダリーのみを抽出することを検討する――例えばチェックアウト・レポートダッシュボード――すべてを分割するのではなく。ビルドキャッシングを持つモノレポが先にそれを解決するかもしれない。</td>
+      <td>スケールアップeコマース：ほとんどの機能にモノレポ、決済フローのみ Module Federation リモート（PCI分離チーム・別のデプロイ）。</td>
+    </tr>
+    <tr>
+      <th>大規模 / エンタープライズ（FEデベロッパー60人超）</th>
+      <td>多くのスクワッド、しばしばタイムゾーンをまたいで、ハードなチームオーナーシップバウンダリーと別のロードマップ。</td>
+      <td><strong>多くの場合正当化される。</strong>共有デプロイの調整オーバーヘッドは本物で測定可能です。専任プラットフォームチームを持つ Module Federation またはサーバーサイドコンポジションは妥当な投資です。</td>
+      <td>大手銀行・通信会社・グローバル小売：プラットフォームチームが所有するシェルアプリ；各自のCD パイプラインとバージョン契約を持つ機能部族が所有する数十の Micro-Frontend。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Spotify のエンジニアリングブログは「スクワッドモデル」とそれに伴うフロントエンドアーキテクチャの決定を文書化しています。Zalando は<strong>Tailor</strong>サーバーサイドコンポジションアプローチについてオープンに書いています。IKEA のデジタルプラットフォームチームはスケールでの Module Federation について議論してきました。これらの企業の共通点はテクノロジーではありません――スケールです：本当に独立したロードマップを持ち、そうでなければ毎日お互いをブロックするであろう多くの自律的チーム。</p>
+
+<p>スペクトルの反対側では、20〜50人の開発者の範囲で私が見てきた最も生産的なフロントエンド組織のいくつかは、厳格に強制されたモジュールバウンダリーと高速な増分 CI を持つ単一の Nx モノレポで全てを動かしています。彼らは高速なビルド・明確なオーナーシップ・ゼロのランタイムコンポジションバグを得ています――ランタイムコンポジションがないからです。会社が成長するにつれて六ヶ月ごとに Micro-Frontend の質問を再検討し、それがまさに正しいです。</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">まとめ</h3>
+<ul>
+  <li><strong>Micro-Frontends</strong> はマイクロサービスの分解アイデアをUIに適用します：独立してビルド可能で独立してデプロイ可能なフロントエンドスライス、それぞれが一つのチームに所有され、一つのプロダクトにランタイム（またはビルド時・サーバーサイド）で組み合わせられます。</li>
+  <li><strong>Module Federation</strong>（Webpack 5 / Rspack / Vite）は支配的なランタイムアプローチです――本当のデプロイ独立性を提供しますが、慎重な共有依存の設定とバージョン契約管理が必要です。</li>
+  <li><strong>コアの利点はデプロイ独立性・チームの自律性・段階的なフレームワーク移行・障害の分離です。</strong>スケールでこれらが本当に必要でなければ、コストを払っても見返りがありません。</li>
+  <li><strong>本当のコスト</strong>はバンドルの重複・共有デザインシステムのガバナンス・Micro-Frontend をまたぐ状態の複雑さ・バージョンのずれ・ランタイムレイテンシ・より重い DevOps です。これらはどれも致命的ではありません――しかしすべてが積極的な投資を必要とします。</li>
+  <li><strong>小規模チーム・小規模アプリ・よく構成されたモノレポが実際の摩擦を解決する場合は Micro-Frontends を使わない。</strong>Modular Monolith は過小評価されています。</li>
+  <li><strong>アーキテクチャをチームトポロジーに合わせる：</strong>小規模チーム → Modular Monolith；中規模 → モノレポまたは外科的な MFE 分割；大企業 → 専任プラットフォームチームを持つフル Micro-Frontend プラットフォーム。</li>
+  <li><strong>複雑さは常にどこかに行きます。</strong>Micro-Frontends はそれをソースコードから統合契約と運用インフラに移動します。コミットする前に組織がそのシフトを所有する準備ができているかどうかを確認してください。</li>
+</ul>
+</div>
+
+<p>この記事はフロントエンドとバックエンドアーキテクチャのシリーズの一部です。ここに最初に来た場合は、シリーズが始まるところに戻ることをお勧めします――<a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a>――これは Hexagonal Architecture パターンと、周りにあるフレームワークやデリバリーメカニズムに関係なく、コアビジネスロジックをクリーンでテストしやすい状態に保つ方法をカバーしています。アイデアは補完的です：単一のバックエンドサービス内に明確なバウンダリーを置く同じ考え方が、より大きな粒度でフロントエンドチーム間のバウンダリーに適用されます。より多くのアーキテクチャの記事が来る予定です――サインアップするかまた来てください。ここでお会いできることを楽しみにしています。</p>5:["$","div",null,{"className":"blog-article__reader","children":[["$","$Le",null,{"url":"https://nguyenlephong.github.io/ja/blog/architecture/micro-frontends-when-why-and-cost","title":"Micro-Frontends：いつ価値があり、何が実際にかかるか","surface":"blog","category":"architecture","slug":"micro-frontends-when-why-and-cost","labels":{"share":"シェア","copyLink":"リンクをコピー","copied":"コピーしました！","close":"閉じる"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lf",null,{"href":"/ja/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ブログ"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lf",null,{"href":"/ja/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ソースコード & アーキテクチャ"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["ソフトウェアアーキテクチャの基礎",["$","span",null,{"aria-hidden":"true","children":" · "}],"全 15 回中第 6 回"]}],["$","h1",null,{"className":"blog-article__title","children":"Micro-Frontends：いつ価値があり、何が実際にかかるか"}],["$","p",null,{"className":"blog-article__summary","children":"フロントエンドを独立してデプロイ可能なピースに分割することでチームが解放されることも、複雑さに埋もれることもあります。Angular ホスト＋ React モジュールをスケールで出荷した経験から：Micro-Frontends が見返りをもたらす場面と、それに伴うコストを正直にお伝えします。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"著者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-02","children":"2026年3月2日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"15 分で読めます"}],["$","$L10",null,{"label":"ビュー"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","ソフトウェアアーキテクチャ",{"children":"ソフトウェアアーキテクチャ"}],["$","li","Micro-Frontends",{"children":"Micro-Frontends"}],["$","li","フロントエンドアーキテクチャ",{"children":"フロントエンドアーキテクチャ"}],["$","li","Module Federation",{"children":"Module Federation"}],["$","li","スケーラビリティ",{"children":"スケーラビリティ"}],["$","li","システム設計",{"children":"システム設計"}]]}]]}],["$","$L11",null,{"html":"$12"}],"$L13","$undefined"]}]]}]
+6:["$","$L14",null,{"heading":"関連する読みもの","intro":"同じ流れをもう少し深く追える、近いテーマの記事です。","items":[{"post":{"slug":"monolith-to-microservices","category":"architecture","title":"モノリス・Modular Monolith・マイクロサービス：正直な意思決定ガイド","summary":"マイクロサービスは組織的スケールのために払う税金であり、出発点ではありません。モノリスから Modular Monolith を経てマイクロサービスへの誇大広告なしのウォークスルーと、いつ（そして本当に）分割すべきかを示すシグナルを解説します。","date":"2026-03-03","readingMinutes":16,"tags":["ソフトウェアアーキテクチャ","Microservices","Modular Monolith","システム設計","分散システム","スケーラビリティ"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":5},"categoryTitle":"ソースコード & アーキテクチャ","readingLabel":"16 分で読めます"},{"post":{"slug":"ports-and-adapters","category":"architecture","title":"Ports & Adapters（Hexagonal Architecture）をやさしく解説","summary":"Hexagonal Architecture の入門ガイドです。ポートとアダプターが実際に何であるか、それを成立させる唯一のルール、そしてどこまで適用すべきかを、ソロ開発者からエンタープライズチームまでに向けてわかりやすく解説します。","date":"2026-03-07","readingMinutes":16,"tags":["ソフトウェアアーキテクチャ","Hexagonal Architecture","Ports and Adapters","Clean Architecture","システム設計","Dependency Inversion"],"author":"Nguyen Le Phong","featured":true,"series":"foundations","seriesOrder":1},"categoryTitle":"ソースコード & アーキテクチャ","readingLabel":"16 分で読めます"},{"post":{"slug":"clean-vs-onion-vs-hexagonal","category":"architecture","title":"Clean・Onion・Hexagonal Architecture：一つの北極星、三つの名前","summary":"三つのアーキテクチャが対立しているように見えますが、実は同じアイデアです――依存は内向き、フレームワークは端に置く――を三通りに描いたものです。それぞれが何を加えているのか、どれを選べばよいかを解説します。","date":"2026-03-06","readingMinutes":15,"tags":["ソフトウェアアーキテクチャ","Clean Architecture","Onion Architecture","Hexagonal Architecture","システム設計","Dependency Inversion"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":2},"categoryTitle":"ソースコード & アーキテクチャ","readingLabel":"15 分で読めます"},{"post":{"slug":"dependency-injection-and-ioc","category":"architecture","title":"Dependency Injection と Inversion of Control——魔法なしで理解する","summary":"DIコンテナは、根底にあるシンプルなアイデアを見るまで魔法のように感じられます：コードが自分で依存を作るのをやめ、外から受け取るようにする、それだけです。初歩から始めるガイドで、実例とテストの恩恵をお届けします。","date":"2026-03-05","readingMinutes":14,"tags":["ソフトウェアアーキテクチャ","Dependency Injection","Inversion of Control","SOLID","テスト","デザインパターン"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":3},"categoryTitle":"ソースコード & アーキテクチャ","readingLabel":"14 分で読めます"}],"sourceCategory":"architecture","sourceSlug":"micro-frontends-when-why-and-cost"}]
+7:["$","nav",null,{"className":"blog-series-nav","aria-label":"ソフトウェアアーキテクチャの基礎","children":[["$","$Lf",null,{"href":"/ja/blog/architecture/monolith-to-microservices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","前の記事"]}],["$","span",null,{"className":"blog-series-nav__title","children":"モノリス・Modular Monolith・マイクロサービス：正直な意思決定ガイド"}]]}],["$","$Lf",null,{"href":"/ja/blog/architecture/event-driven-architecture-and-messaging","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["次の記事"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained"}]]}]]}]
+8:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lf",null,{"href":"/ja/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","ソースコード & アーキテクチャに戻る"]}]}]
+9:["$","aside",null,{"className":"blog-article__toc","children":["$","$L15",null,{"label":"目次","surface":"blog"}]}]
+a:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+b:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+c:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+d:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+13:["$","$L19",null,{"prompt":"記事はいかがでしたか？","surface":"blog","category":"architecture","slug":"micro-frontends-when-why-and-cost","reactionLabels":{"like":"いいね","love":"大好き","insightful":"なるほど","clap":"祝福"}}]
+18:null

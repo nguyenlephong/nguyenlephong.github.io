@@ -1,0 +1,65 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+5:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+6:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+13:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+14:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+16:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+17:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+18:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T46a,{"@context":"https://schema.org","@type":"Article","@id":"https://nguyenlephong.github.io/en/notes/the-trap-of-information-consumption#article","headline":"When Information Consumption Replaces Action","description":"A common risk in learning: the input keeps flowing, the shelf keeps filling, yet nothing turns into capability. It feels like learning — which is exactly why it is hard to notice from inside. Symptoms, causes, and the way out: set implementation intentions, prefer just-in-time learning, and track actions taken instead of inputs consumed.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/notes/the-trap-of-information-consumption","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/notes/the-trap-of-information-consumption.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/en/notes/the-trap-of-information-consumption","datePublished":"2026-05-27","dateModified":"2026-05-27","keywords":"Thoughts, Learning, Procrastination, Information Diet","author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean notes-accent notes-reading","style":{"--topic-color":"#4d7c0f"},"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Notes\",\"item\":\"https://nguyenlephong.github.io/en/notes\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Thought Garden\",\"item\":\"https://nguyenlephong.github.io/en/notes?topic=thoughts\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"When Information Consumption Replaces Action\",\"item\":\"https://nguyenlephong.github.io/en/notes/the-trap-of-information-consumption\"}]}"}}],null,["$","$L3",null,{"category":"notes","slug":"the-trap-of-information-consumption","children":[["$","$L4",null,{"category":"notes","slug":"the-trap-of-information-consumption","readingMinutes":2,"surface":"notes"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L5",null,{"url":"https://nguyenlephong.github.io/en/notes/the-trap-of-information-consumption","title":"When Information Consumption Replaces Action","surface":"notes","category":"notes","slug":"the-trap-of-information-consumption","labels":{"share":"Share","copyLink":"Copy link","copied":"Copied!","close":"Close"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$L6",null,{"href":"/en/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Notes"}],[["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$L6",null,{"href":"/en/notes?topic=thoughts","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Thought Garden"}]],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"When Information Consumption Replaces Action"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","h1",null,{"className":"blog-article__title","children":"When Information Consumption Replaces Action"}],["$","p",null,{"className":"blog-article__summary","children":"A common risk in learning: the input keeps flowing, the shelf keeps filling, yet nothing turns into capability. It feels like learning — which is exactly why it is hard to notice from inside. Symptoms, causes, and the way out: set implementation intentions, prefer just-in-time learning, and track actions taken instead of inputs consumed."}],"$L7","$L8"]}],"$L9","$undefined",null,"$La"]}]]}],"$Lb","$Lc"]}],"$Ld"]}]]}],["$Le","$Lf","$L10","$L11"],"$L12"]}],"loading":null,"isPartial":false}
+7:["$","div",null,{"className":"blog-article__meta","children":[["$","time",null,{"dateTime":"2026-05-27","children":"May 27, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"2 min read"}],["$","$L13",null,{"label":"views"}]]}]
+8:["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Thoughts",{"children":"Thoughts"}],["$","li","Learning",{"children":"Learning"}],["$","li","Procrastination",{"children":"Procrastination"}],["$","li","Information Diet",{"children":"Information Diet"}]]}]
+15:Tc90,<p>This is a common risk in learning: we accumulate knowledge without ever moving through the stages of real comprehension — from knowing about a thing, to understanding it, to being able to use it. The input keeps flowing, the shelf keeps filling, and yet nothing quite turns into capability. It feels like learning, which is exactly what makes it so hard to notice from the inside.</p>
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/the-trap-of-information-consumption/consumption-loop-desk.webp" width="1600" height="900" loading="lazy" decoding="async" alt="A Vietnamese adult pauses at a warm desk with a stack of closed books, a tablet, blank papers, a closed notebook, and an unused pencil." />
+  <figcaption>The trap is quiet: the inputs keep arriving while the first useful attempt stays just out of reach.</figcaption>
+</figure>
+<h2 id="symptoms">Symptoms</h2>
+<ul>
+<li>Constantly reading new books and articles without applying any of the insights.</li>
+<li>Feeling knowledgeable, yet unable to demonstrate real competence.</li>
+<li>Collecting information as a form of productive procrastination.</li>
+<li>Mistaking recognition for understanding.</li>
+</ul>
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/the-trap-of-information-consumption/productive-procrastination-desk.webp" width="1440" height="960" loading="lazy" decoding="async" alt="A Vietnamese adult sits beside closed books, a tablet, blank sticky notes, and an untouched practice notebook at an evening desk." />
+  <figcaption>Collecting more input can look productive from the outside while quietly protecting us from the risk of practice.</figcaption>
+</figure>
+<h2 id="why">Why it happens</h2>
+<ul>
+<li>Information feels like progress — the dopamine hit of novelty rewards the intake, not the use.</li>
+<li>Action requires vulnerability and carries the real risk of an imperfect attempt.</li>
+<li>Hoarding knowledge feels safer than exposing yourself to practice.</li>
+<li>Modern information abundance makes consumption effectively endless.</li>
+</ul>
+<h2 id="breaking">Breaking the pattern</h2>
+<ul>
+<li>Set implementation intentions <em>before</em> you consume — decide in advance what you will do with it.</li>
+<li>Practice just-in-time learning over just-in-case learning.</li>
+<li>Create friction for consumption; remove friction for practice.</li>
+<li>Track the actions you take, not the information you consume.</li>
+</ul>
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/the-trap-of-information-consumption/small-practice-start.webp" width="1440" height="960" loading="lazy" decoding="async" alt="A Vietnamese adult begins at a quiet morning desk with a blank notebook, pencil, closed books pushed aside, and a simple unlabeled timer." />
+  <figcaption>The way out begins when practice becomes easier to start than opening one more source.</figcaption>
+</figure>
+<hr>
+<ul>
+<li><a href="/notes/thinking-excuses">When thinking becomes the excuse</a></li>
+<li><a href="/notes/purpose-of-highlights">The purpose of highlights</a></li>
+</ul>9:["$","$L14",null,{"html":"$15"}]
+a:["$","$L16",null,{"prompt":"What did you think?","surface":"notes","category":"notes","slug":"the-trap-of-information-consumption","reactionLabels":{"like":"Like","love":"Love","insightful":"Insightful","clap":"Celebrate"}}]
+b:["$","nav",null,{"className":"blog-series-nav","aria-label":"Thought Garden","children":[["$","span",null,{}],["$","$L6",null,{"href":"/en/notes/work-messages-aggressive-bias","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Next note"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Why Work Messages Can Feel Sharper Than Intended"}]]}]]}]
+c:["$","footer",null,{"className":"blog-article__footer","children":["$","$L6",null,{"href":"/en/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Back to notes"]}]}]
+d:["$","aside",null,{"className":"blog-article__toc","children":["$","$L17",null,{"label":"On this page","surface":"notes"}]}]
+e:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/579669e8fc8fe057.css","precedence":"next"}]
+f:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+10:["$","script","script-0",{"src":"/_next/static/chunks/60afb5b0374fe7a9.js","async":true}]
+11:["$","script","script-1",{"src":"/_next/static/chunks/0e65e15104575034.js","async":true}]
+12:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+1a:null

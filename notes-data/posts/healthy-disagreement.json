@@ -1,0 +1,18 @@
+{
+  "slug": "healthy-disagreement",
+  "title": "Healthy Disagreement",
+  "summary": "When a room agrees with you completely, pause before taking it as approval — unbroken consensus often signals absence of independent minds rather than the presence of a good idea. Neither pole is the goal: a little disagreement is the texture of people actually thinking, something to welcome rather than smooth away.",
+  "cardSummary": "If everyone agrees instantly, the idea may still need a room brave enough to test it.",
+  "date": "2026-02-02",
+  "readingMinutes": 2,
+  "tags": [
+    "Thoughts",
+    "Teamwork",
+    "Communication",
+    "Decision Making"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "topic": "thoughts",
+  "html": "<p>When a room agrees with you completely, it is worth pausing before you take it as approval. One hundred percent agreement can mean the people receiving the idea don&rsquo;t think for themselves, aren&rsquo;t paying attention, or — worst of all — don&rsquo;t dare to speak up. Unbroken consensus often signals absence — of friction, of independent minds chewing on the same problem — rather than the presence of a genuinely good idea.</p>\n<figure class=\"blog-figure blog-photo-panorama\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/notes/healthy-disagreement/question-in-design-review.webp\" width=\"1600\" height=\"900\" loading=\"lazy\" decoding=\"async\" alt=\"A Vietnamese design review team listens while one teammate raises a careful question beside a tablet prototype.\" />\n  <figcaption>A little respectful friction can show that the room is awake, not that the idea is in danger.</figcaption>\n</figure>\n<p>The opposite extreme is no better. When almost nobody can meet you, the problem may not be your idea at all: there may be too many unknowns, too little shared background — or a debating culture where disagreeing has quietly become a way to score points rather than to find the truth. People end up arguing past each other from different maps.</p>\n<figure class=\"blog-figure blog-photo-figure\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/notes/healthy-disagreement/shared-map-review.webp\" width=\"1440\" height=\"960\" loading=\"lazy\" decoding=\"async\" alt=\"Three Vietnamese teammates compare blank sketches and abstract cards to build shared context before deciding.\" />\n  <figcaption>Disagreement becomes healthier when people stop defending separate maps and make the shared picture visible.</figcaption>\n</figure>\n<p>So neither pole is the goal. Picture a design review where every reviewer nods and signs off in minutes: it feels efficient, but more often it means the work was never truly examined. There is no &ldquo;right&rdquo; ratio of agreement — it shifts with the team, the topic, and the stakes. The point is simply that <strong>complete agreement is not necessarily a good sign</strong>. Healthy disagreement is the texture of people actually thinking, and a little of it is something to welcome rather than smooth away.</p>"
+}

@@ -1,0 +1,218 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+e:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+f:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+10:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+11:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+15:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta75,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/ko/blog/architecture/clean-vs-onion-vs-hexagonal#article","headline":"Clean, Onion & Hexagonal Architecture: 하나의 북극성, 세 가지 이름","description":"세 가지 경쟁 아키텍처처럼 보이지만, 사실은 같은 아이디어를 세 가지 방식으로 그린 것입니다 — 의존성은 안쪽을 향하고, 프레임워크는 가장자리에. 각각이 실제로 무엇을 더하는지, 그리고 어떤 상황에 어느 것을 선택해야 하는지 알아봅니다.","inLanguage":"ko","url":"https://nguyenlephong.github.io/ko/blog/architecture/clean-vs-onion-vs-hexagonal","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/clean-vs-onion-vs-hexagonal.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/ko/blog/architecture/clean-vs-onion-vs-hexagonal","datePublished":"2026-03-06","dateModified":"2026-03-06","keywords":"소프트웨어 아키텍처, Clean Architecture, Onion Architecture, Hexagonal Architecture, 시스템 설계, Dependency Inversion","articleSection":"소스 코드 & 아키텍처","isRelatedTo":[{"@type":"BlogPosting","headline":"Ports & Adapters (Hexagonal Architecture), 쉽게 이해하기","url":"https://nguyenlephong.github.io/ko/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ports-and-adapters.jpg"},{"@type":"BlogPosting","headline":"모놀리스, Modular Monolith, 마이크로서비스: 솔직한 의사결정 가이드","url":"https://nguyenlephong.github.io/ko/blog/architecture/monolith-to-microservices","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/monolith-to-microservices.jpg"},{"@type":"BlogPosting","headline":"마이크로 프론트엔드: 언제 가치가 있고, 무엇이 드는가","url":"https://nguyenlephong.github.io/ko/blog/architecture/micro-frontends-when-why-and-cost","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/micro-frontends-when-why-and-cost.jpg"},{"@type":"BlogPosting","headline":"Hexagonal Architecture in Practice","url":"https://nguyenlephong.github.io/en/blog/architecture/hexagonal-architecture-in-practice","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/hexagonal-architecture-in-practice.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/ko/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"블로그\",\"item\":\"https://nguyenlephong.github.io/ko/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"소스 코드 & 아키텍처\",\"item\":\"https://nguyenlephong.github.io/ko/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Clean, Onion & Hexagonal Architecture: 하나의 북극성, 세 가지 이름\",\"item\":\"https://nguyenlephong.github.io/ko/blog/architecture/clean-vs-onion-vs-hexagonal\"}]}"}}],null,["$","$L3",null,{"category":"architecture","slug":"clean-vs-onion-vs-hexagonal","children":[["$","$L4",null,{"category":"architecture","slug":"clean-vs-onion-vs-hexagonal","readingMinutes":15,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":["$L5","$L6","$L7","$L8"]}],"$L9"]}]]}],["$La","$Lb","$Lc"],"$Ld"]}],"loading":null,"isPartial":false}
+12:T60b5,<p>소프트웨어 아키텍처를 공부하다 보면 세 가지 이름이 항상 함께 등장하는 것을 보게 됩니다: <strong>Hexagonal Architecture</strong>, <strong>Onion Architecture</strong>, 그리고 <strong>Clean Architecture</strong>입니다. 각각 자신만의 다이어그램, 자신만의 용어, 그리고 열정적인 지지자들을 가지고 있습니다. 세 가지를 한 번에 읽다 보면 마치 세 사람이 같은 말을 가장 잘 표현하는 방법을 놓고 논쟁하는 것처럼 느껴질 수 있습니다.</p>
+<p>솔직한 버전을 말씀드리겠습니다: 이들은 모두 같은 아이디어입니다. 서로 다른 시기에 독립적으로 발견되어, 약간 다른 그림으로 표현되었을 뿐입니다. 각각은 다른 것들이 크게 강조하지 않은 작은 뉘앙스를 하나씩 더하고 있습니다. 공통된 북극성을 이해하고 나면 차이점이 명확해지고 — 팀이 이미 익숙한 어휘 중 원하는 것을 선택할 수 있게 됩니다.</p>
+
+<h2 id="same-idea">세 가지 모두가 공유하는 단 하나의 아이디어</h2>
+<p>이 아키텍처들은 모두 단 하나의 규칙 위에 세워져 있습니다. 흔히 <strong>의존성 규칙(Dependency Rule)</strong>이라고 불리는 것인데: <em>소스 코드의 의존성은 항상 안쪽, 비즈니스 규칙을 향해야 하며, 프레임워크, 데이터베이스, I/O를 향해 바깥으로 향해서는 절대 안 됩니다.</em></p>
+<p>중력처럼 생각해 보세요. 도메인 — 여러분의 제품을 사용할 가치가 있게 만드는 로직 — 이 중앙에 자리 잡습니다. 그 주변의 모든 것(데이터베이스, 웹 프레임워크, 결제 SDK, 이메일 vendor, CLI 도구)은 바깥쪽을 공전합니다. 바깥 레이어는 안쪽 레이어에 대해 알 수 있습니다. 안쪽 레이어는 바깥 레이어가 존재한다는 것을 절대적으로 알아서는 안 됩니다.</p>
+<p>왜 이것이 중요할까요? 가장 자주 변하는 것들이 바깥쪽에 있기 때문입니다: 결제 제공업체를 바꾸고, 새 데이터베이스로 마이그레이션하고, 프론트엔드를 재작성하고, 모바일 앱을 추가합니다. 비즈니스 규칙이 이런 세부 사항들과 얽혀 있다면, 모든 변경이 가장 중요한 코드에 파급됩니다. 절연되어 있다면, vendor 변경은 가장자리에서 일어나는 국소적인 교체에 불과합니다 — 핵심은 전혀 알아채지 못합니다.</p>
+<p>Alistair Cockburn, Jeffrey Palermo, Robert C. Martin은 각자 다른 각도에서 이 패턴을 발견했습니다. Cockburn은 육각형을 그리고 연결 지점을 "포트"라고 불렀습니다. Palermo는 동심원 고리를 그리고 그것을 "레이어"라고 불렀습니다. Martin은 동심원을 그리고 레이어에 엄격한 이름을 붙였습니다. 모든 다이어그램의 화살표 방향은 동일합니다: 안쪽을 향합니다.</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">단 하나의 규칙</span><p><strong>소스 코드의 의존성은 안쪽을 향합니다.</strong> 도메인이 인터페이스를 정의하고, 외부 세계가 그것을 구현합니다. 어느 곳에서든 그 방향을 뒤집는다면 아키텍처를 깬 것입니다 — 어떤 이름을 사용하든 상관없이.</p></div>
+
+<h2 id="hexagonal">Hexagonal Architecture (Ports &amp; Adapters)</h2>
+<p>Alistair Cockburn은 2005년에 Hexagonal Architecture를 <em>Ports &amp; Adapters</em>라는 별칭으로 소개했습니다. 핵심 통찰은 대칭성입니다: 애플리케이션에는 <em>두 종류</em>의 외부가 있습니다 — 앱을 구동하는 것(버튼을 클릭하는 사용자, 테스트 러너, 예약 작업)과 앱이 구동하는 것(데이터베이스, 이메일 제공업체, 결제 API). 양쪽 모두 <strong>포트(port)</strong> — 도메인이 소유하는 인터페이스 — 와 <strong>어댑터(adapter)</strong> — 실제 기술을 이 인터페이스에 연결하는 구체적인 구현체 — 를 통해 소통합니다. 육각형 모양은 "위"와 "아래"만 있는 것이 아니라 여러 포트가 있다는 시각적 힌트일 뿐입니다. 포트, 어댑터, 주도적/수동적 측면, 실제 코드 예제에 대한 전체 설명은 이 시리즈의 이전 글 — <a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a> — 에서 기초부터 다루고 있습니다. 여기서의 핵심 요약은 Hexagonal이 세 가지 중 가장 <em>대칭적</em>이라는 점입니다: 들어오는 호출과 나가는 호출을 동등한 엄격함으로 다루며, 그 어휘(포트, 어댑터, driving, driven)가 가장 구체적이고 기계적입니다.</p>
+
+<h2 id="onion">Onion Architecture</h2>
+<p>Jeffrey Palermo는 2008년에 Onion Architecture를 설명했습니다. 그는 안쪽을 향하는 의존성 규칙을 유지하되 다른 그림을 선택했습니다: 양파 레이어처럼 <strong>동심원 고리</strong>. 가장 안쪽 고리는 <strong>도메인 모델(Domain Model)</strong> — 핵심 엔티티와 값 객체, 기술이 전혀 없는 순수한 비즈니스 개념입니다. 그것을 둘러싸는 것은 <strong>도메인 서비스(Domain Services)</strong> 고리로, 여러 도메인 객체를 조율하는 로직이 있지만 여전히 외부 세계에 대해 아무것도 모릅니다. 더 바깥에는 유스케이스가 살고 오케스트레이션이 일어나는 <strong>애플리케이션 서비스(Application Services)</strong> 고리가 있습니다. 가장 바깥쪽에는 인프라와 UI 세부 사항 — 데이터베이스, 웹 프레임워크, 외부 API — 이 있습니다.</p>
+<p>Onion이 다른 두 가지보다 더 크게 강조하는 것은 <em>도메인 모델과 도메인 서비스의 구분</em>입니다. Palermo는 "Order를 표현하는 것"과 "Order를 처리하는 서비스"를 종종 혼동하는 .NET 팀을 위해 글을 쓰고 있었습니다 — 이는 진정으로 유용한 분리입니다. Onion은 또한 레이어링을 매우 시각적으로 만들어줍니다: 어느 클래스의 import 목록을 보고 어떤 것을 import할 수 있는지를 기반으로 어느 고리에 속하는지 즉시 파악할 수 있습니다. 도메인 서비스가 데이터베이스 라이브러리를 import하려 한다면, 분명히 잘못된 고리에 있는 것입니다.</p>
+
+<h2 id="clean">Clean Architecture</h2>
+<p>Robert C. Martin(Uncle Bob)은 2017년에 Clean Architecture를 출판하며 수년간 다듬어온 아이디어들을 종합했습니다. 같은 동심원 고리를 그렸지만 각각에 확고한 이름과 목적을 부여했습니다. 안쪽에서 바깥쪽으로: <strong>엔티티(Entities)</strong>(기업 전반의 비즈니스 규칙 — 컴퓨터가 없어도 여전히 사실일 것들), <strong>유스케이스(Use Cases)</strong>(애플리케이션 특정 비즈니스 규칙 — 소프트웨어가 사용자를 위해 해야 하는 정확한 일), <strong>인터페이스 어댑터(Interface Adapters)</strong>(컨트롤러, 프레젠터, 게이트웨이 — 유스케이스 세계와 외부 세계 사이를 번역하는 코드), 그리고 <strong>프레임워크 &amp; 드라이버(Frameworks &amp; Drivers)</strong>(가장 바깥쪽 고리 — 데이터베이스, 웹 프레임워크, UI 라이브러리, 장치 드라이버).</p>
+<p>Clean Architecture가 더하는 가장 독특한 것은 명시적으로 이름 붙여진 <strong>유스케이스(Use Cases)</strong> 레이어입니다. 많은 코드베이스에서 "유스케이스"는 비공식적인 개념입니다 — 열 가지 다른 일을 하는 <code>UserService</code>가 있을 수 있습니다. Martin은 각 유스케이스를 일급 객체, 이름 붙여진 아티팩트로 만들 것을 주장합니다: 이름이 문자 그대로 무엇을 하는지 말하는 클래스나 함수(<code>PlaceOrder</code>, <code>RegisterUser</code>, <code>GenerateInvoice</code>). 그는 이것을 "소리치는 아키텍처(screaming architecture)"라고 부릅니다 — 새 개발자가 프로젝트 구조를 열었을 때, 사용하는 프레임워크가 아니라 시스템이 무엇을 하는지 즉시 보여야 합니다. Martin은 또한 모든 고리 경계에서 명시적인 인터페이스 이음새인 <strong>경계(Boundaries)</strong> 개념과, 경계를 넘는 데이터는 직렬화 가능한 단순 데이터 구조여야 하며 숨겨진 동작을 가진 풍부한 도메인 객체가 아니어야 한다는 아이디어를 공식화했습니다.</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">소리치는 아키텍처</span><p>Martin의 "소리치는 아키텍처"라는 표현은 단순한 열망을 담고 있습니다: 프로젝트의 어느 폴더를 열어도 기술 스택이 아니라 <em>비즈니스 의도</em>를 즉시 이해해야 합니다. <code>PlaceOrder.ts</code>와 <code>RegisterUser.ts</code>를 포함하는 <code>use-cases/</code> 폴더는 그 의도를 소리칩니다. 다른 모든 것을 담은 <code>controllers/</code> 폴더는 유용한 것을 전혀 속삭이지 않습니다.</p></div>
+
+<h2 id="side-by-side">나란히 비교: 어휘 대응표</h2>
+<p>세 가지를 모두 읽을 때 가장 큰 실질적인 장벽은 서로 겹치는 개념에 다른 단어를 사용한다는 점입니다. 다음은 번역 대응표입니다:</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>개념</th>
+      <th>Hexagonal (Cockburn)</th>
+      <th>Onion (Palermo)</th>
+      <th>Clean (Martin)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>가장 안쪽 핵심</th>
+      <td>도메인 (특정 고리 이름 없음)</td>
+      <td>도메인 모델 고리</td>
+      <td>엔티티 고리</td>
+    </tr>
+    <tr>
+      <th>비즈니스 유스케이스</th>
+      <td>육각형 내부의 애플리케이션 로직</td>
+      <td>애플리케이션 서비스 고리</td>
+      <td>유스케이스 고리 (명시적, 이름 붙여짐)</td>
+    </tr>
+    <tr>
+      <th>번역 레이어</th>
+      <td>어댑터 (driving + driven)</td>
+      <td>인프라 고리</td>
+      <td>인터페이스 어댑터 고리</td>
+    </tr>
+    <tr>
+      <th>가장 바깥쪽 기술</th>
+      <td>육각형 바깥 (HTTP, DB 등)</td>
+      <td>UI / 인프라 고리</td>
+      <td>프레임워크 &amp; 드라이버 고리</td>
+    </tr>
+    <tr>
+      <th>연결 이음새</th>
+      <td>포트 (도메인이 소유하는 인터페이스)</td>
+      <td>각 고리 경계에서의 묵시적 인터페이스</td>
+      <td>경계 (각 경계 지점의 명시적 인터페이스)</td>
+    </tr>
+    <tr>
+      <th>주요 강조점</th>
+      <td>대칭적 포트; 테스트 가능성; 모든 어댑터의 교체 가능성</td>
+      <td>레이어 고리; 도메인 모델 vs 도메인 서비스 구분</td>
+      <td>명시적으로 이름 붙여진 유스케이스; 소리치는 구조; 엄격한 데이터 경계</td>
+    </tr>
+    <tr>
+      <th>이런 상황에 최적…</th>
+      <td>많은 통합이 있고 각 어댑터를 독립적으로 교체해야 할 때</td>
+      <td>비트리비얼한 서비스 오케스트레이션이 있는 풍부한 도메인 모델</td>
+      <td>공유 어휘와 "소리치는" 폴더 구조가 필요한 대규모 팀</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="differences">실제로 어디서 차이가 나는가</h2>
+<p>공유된 규칙은 코드를 작성할 때 드러나는 실질적인 강조점 차이를 숨깁니다.</p>
+<p><strong>Hexagonal은 가장 기계적입니다.</strong> 정확한 이름 붙여진 슬롯을 제공합니다: 여기 driving 어댑터, 여기 그것이 호출하는 포트, 여기 처리하는 유스케이스, 여기 출력 포트, 여기 driven 어댑터. 이 슬롯을 충실히 따르면 구조는 거의 스스로 작성됩니다 — 그리고 양쪽이 대칭적이기 때문에, 데이터베이스가 도메인에 스며들지 못하도록 유지하는 훈련은 도메인이 HTTP 레이어에 새어나가지 못하도록 유지하는 훈련과 동일합니다. 트레이드오프는 Hexagonal이 육각형 내부 구조를 어떻게 구성해야 할지 — 도메인 모델 vs 도메인 서비스처럼 서브 레이어가 있어야 하는지 — 에 대해 침묵한다는 것입니다.</p>
+<p><strong>Onion은 가장 레이어화되어 있습니다.</strong> Hexagonal이 하나의 경계를 그리는 곳(육각형 내부 vs 외부)에서, Onion은 핵심 내부에 여러 고리를 그립니다. 이는 도메인이 자체적인 내부 구조가 필요할 만큼 충분히 큰 경우 — 순수한 엔티티를 그것들을 조율하는 도메인 서비스와 구분하고, 도메인 서비스를 유스케이스를 오케스트레이션하는 애플리케이션 서비스와 구분하는 경우 — 에 가치가 있습니다. 고리 은유는 시각적으로 직관적이지만, 그것에 더 엄격할수록 더 많은 훈련이 필요합니다: 바쁠 때 고리를 가로질러 손을 뻗고 싶은 유혹이 있으며, Onion은 Hexagonal의 포트/어댑터 어휘처럼 기계적인 검사를 제공하지 않습니다.</p>
+<p><strong>Clean은 가장 규범적입니다.</strong> Martin은 모든 레이어와 모든 개념에 이름을 붙이는데, 이것은 강점이기도 하고 논쟁의 원천이기도 합니다. 강점은 팀이 모호하지 않은 어휘를 공유한다는 것입니다 — 두 엔지니어가 "유스케이스 경계"에 대해 논의할 때 모두가 그 의미를 압니다. 논쟁의 원천은 규정된 구조가 소규모 애플리케이션에 무겁게 느껴질 수 있다는 것입니다: 모든 기능에 대해 명시적인 <code>InputBoundary</code>, <code>OutputBoundary</code>, <code>UseCase</code> 인터페이스를 만드는 것은 프로토타입을 개발할 때 많은 의식입니다. Clean Architecture는 또한 모든 고리 경계를 넘는 일반 데이터 전송 객체(DTO)를 주장하는데, 코드를 추가하지만 이음새를 매우 명시적으로 만들어줍니다. 그 보상은 레이어 간 "풍부한 객체 누출"을 방지하는 것이 가상의 문제가 아닌 실제 문제가 되는 규모에서 옵니다.</p>
+<p>요약하면: Hexagonal은 사물을 연결하는 방법에 대한 가장 명확한 <em>기계적</em> 지침을 제공합니다. Onion은 가장 명확한 도메인의 <em>내부 레이어링</em>을 제공합니다. Clean은 가장 명확한 <em>어휘</em>와 가장 의견이 강한 폴더 구조를 제공합니다. 대부분의 실제 코드베이스는 그것을 인식하지 못한 채 세 가지를 혼합합니다.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 700 460" role="img" aria-labelledby="dgm-rings-title">
+    <title id="dgm-rings-title">안쪽을 향하는 의존성 아이디어를 동심원 고리로 표현한 그림 — 1부의 육각형과 동일하며 모양만 다릅니다.</title>
+
+    <defs>
+      <marker id="ringsAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+
+    <!-- outermost ring: Frameworks & Drivers / Infrastructure / Adapters -->
+    <ellipse class="dgm-surface" cx="350" cy="228" rx="318" ry="208" stroke-width="1.5"/>
+
+    <!-- middle ring: Interface Adapters / Application Services / Application -->
+    <ellipse class="dgm-port" cx="350" cy="228" rx="228" ry="148" stroke-width="1.5"/>
+
+    <!-- inner ring: Use Cases / Domain Services -->
+    <ellipse class="dgm-driven" cx="350" cy="228" rx="142" ry="92" stroke-width="1.5"/>
+
+    <!-- core: Entities / Domain Model / Domain -->
+    <ellipse class="dgm-core" cx="350" cy="228" rx="66" ry="44" stroke-width="2"/>
+    <text class="dgm-t-strong" x="350" y="224" text-anchor="middle" font-size="15">Domain</text>
+    <text class="dgm-t-muted dgm-t-mono" x="350" y="243" text-anchor="middle" font-size="10">Entities / Model</text>
+
+    <!-- inner ring label -->
+    <text x="350" y="154" text-anchor="middle" font-size="12" class="dgm-t-muted dgm-t-mono">Use Cases / Domain Services</text>
+
+    <!-- middle ring label -->
+    <text x="350" y="93" text-anchor="middle" font-size="12" class="dgm-t-muted dgm-t-mono">Adapters / Interface Adapters / Application Services</text>
+
+    <!-- outer ring label -->
+    <text x="350" y="36" text-anchor="middle" font-size="12" class="dgm-t-muted dgm-t-mono">Frameworks · Databases · UI · External APIs</text>
+
+    <!-- dependency arrows pointing inward -->
+    <path class="dgm-flow" d="M350,420 L350,320" marker-end="url(#ringsAcc)"/>
+    <path class="dgm-flow" d="M350,303 L350,276" marker-end="url(#ringsAcc)"/>
+    <path class="dgm-flow" d="M350,272 L350,248" marker-end="url(#ringsAcc)"/>
+
+    <!-- left side arrows -->
+    <path class="dgm-flow" d="M42,228 L122,228" marker-end="url(#ringsAcc)"/>
+    <path class="dgm-flow" d="M126,228 L208,228" marker-end="url(#ringsAcc)"/>
+    <path class="dgm-flow" d="M212,228 L280,228" marker-end="url(#ringsAcc)"/>
+
+    <!-- arrow label -->
+    <text class="dgm-t-accent" x="350" y="450" text-anchor="middle" font-size="12">Dependencies always point inward — the same rule as the hexagon in part 1.</text>
+  </svg>
+  <figcaption>세 가지 아키텍처 모두 같은 그림을 그립니다: 기술에 영향받지 않는 가장 안쪽 도메인, 바깥쪽으로 세부 사항을 추가하는 고리들로 둘러싸이며, 모든 의존성 화살표가 <strong>안쪽</strong>을 향합니다. Hexagonal은 이것을 이름 붙여진 포트를 가진 육각형으로 그립니다; Onion과 Clean은 이름 붙여진 고리를 가진 동심원으로 그립니다. 모양은 변하지만 화살표 방향은 절대 변하지 않습니다.</figcaption>
+</figure>
+
+<h2 id="which-one">어느 것을 선택해야 하는가</h2>
+<p>세 가지 모두 같은 핵심 규칙을 공유하므로, 그 사이에서 선택하는 것은 실제로 어휘, 팀 규모, 그리고 여러분의 상황에 필요한 뉘앙스에 관한 문제입니다.</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>팀 &amp; 단계</th>
+      <th>권장 접근법</th>
+      <th>이유</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>솔로 / 초기 스타트업</th>
+      <td><strong>Hexagonal, 가볍게.</strong> 데이터베이스와 가장 변동성 높은 vendor 주위에 포트 한두 개.</td>
+      <td>완전함보다 속도가 더 중요합니다. 인터페이스 몇 개로 빠른 테스트와 교체 경로를 확보할 수 있습니다; 전체 의식은 나중으로 미룰 수 있습니다.</td>
+    </tr>
+    <tr>
+      <th>소규모 팀, 성장 중 (≈ Series A)</th>
+      <td>모든 I/O에 걸쳐 명시적인 포트 인터페이스를 가진 <strong>Onion 또는 Hexagonal</strong>.</td>
+      <td>테스트가 병목이 되고 있으며, 신규 입사자들이 도메인을 빠르게 이해해야 합니다. 고리 레이블(또는 포트 이름)이 구조를 한눈에 읽기 쉽게 만들어줍니다.</td>
+    </tr>
+    <tr>
+      <th>중간 규모 (여러 스쿼드)</th>
+      <td>팀 간 공유 계약으로서의 <strong>Clean Architecture 어휘</strong>.</td>
+      <td>경계가 모호할 때 스쿼드들이 서로를 방해합니다. 모든 유스케이스와 모든 경계에 이름을 붙이면 팀들이 독립적으로 작업할 수 있는 깔끔한 이음새가 생깁니다.</td>
+    </tr>
+    <tr>
+      <th>대규모 엔터프라이즈</th>
+      <td>명시적인 경계, 버전화된 계약, 포트당 여러 어댑터를 갖춘 <strong>세 가지 모두 함께</strong>.</td>
+      <td>규제 요구 사항, 레거시 시스템, 멀티 vendor 조달은 모두 전체 Clean + Hexagonal 경계만이 제공하는 명시성을 요구합니다.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>이 표와 일치하는 몇 가지 실제 패턴이 있습니다:</p>
+<p><strong>핀테크 스타트업</strong>(엔지니어 8명)은 두 개의 포트 — <code>PaymentGateway</code>와 <code>LedgerRepository</code> — 를 사용하고 나머지는 직접 호출로 남겨두었습니다. 18개월 후 결제 제공업체를 교체했을 때, 그것은 새 어댑터 클래스 하나와 한 줄짜리 연결 변경이었습니다. 나머지 코드베이스는 손도 대지 않았습니다. 이것이 Hexagonal을 가장 간결하고 효과적으로 사용하는 방식입니다.</p>
+<p><strong>중간 규모 SaaS 회사</strong>(엔지니어 60명)는 Onion 고리 레이블을 코드 리뷰 규칙으로 채택했습니다: "도메인 모델 고리에 있는 어떤 것도 예외 없이 고리 바깥에서 import하지 않는다". 새 엔지니어들은 첫 번째 PR 리뷰에서 경계 정책을 이해했습니다. 고리 어휘가 단축키가 되었습니다 — "여기서 고리를 가로지르고 있습니다"가 모든 사람이 이해하는 완전한 리뷰 코멘트가 되었습니다.</p>
+<p><strong>엔터프라이즈 은행</strong>(수백 명의 엔지니어, 20년 된 코드베이스)은 이름 붙여진 <code>UseCase</code> 인터페이스, 모든 고리 경계에서의 명시적인 DTO 객체, 출력 포트당 두 개의 어댑터(구형 메인프레임 + 새 코어뱅킹 시스템이 나란히 실행)를 갖춘 전체 Clean Architecture 어휘를 사용했습니다. 의식은 무거웠지만, 감사자와 컴플라이언스 팀이 아키텍처를 명세서처럼 읽을 수 있었고, 경계가 코드의 실제 이음새였기 때문에 스쿼드들이 독립적으로 배포할 수 있었습니다.</p>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">용어집 없이 어휘를 섞지 마세요</span><p>진정으로 나쁜 결과는 공유 용어집 없이 같은 팀에서 세 가지 이름을 혼용하는 것입니다. 팀의 절반이 "포트"라고 부르고 나머지 절반이 "경계"라고 부른다면, 코드 리뷰가 번역 작업이 됩니다. 하나의 어휘를 선택하고, 적어두고, 일관성을 유지하세요. 핵심 규칙 — 의존성은 안쪽을 향한다 — 이 중요한 것입니다.</p></div>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">핵심 요약</h3>
+<ul>
+  <li><strong>하나의 규칙, 세 가지 다이어그램.</strong> Hexagonal, Onion, Clean Architecture 모두 같은 의존성 규칙을 강제합니다: 소스 코드의 의존성은 비즈니스 규칙을 향해 안쪽을 향하며, 프레임워크나 I/O를 향해 바깥을 향하지 않습니다.</li>
+  <li><strong>Hexagonal</strong>(Cockburn, 2005)은 가장 기계적인 지침을 제공합니다: 포트와 어댑터, 대칭적인 driving 및 driven 측면. 교체해야 할 통합이 많을 때 최적입니다.</li>
+  <li><strong>Onion</strong>(Palermo, 2008)은 도메인 내에 명시적인 동심원 고리를 추가하여, 도메인 모델을 도메인 서비스와 구분하고, 도메인 서비스를 애플리케이션 서비스와 구분합니다. 도메인이 자체적인 내부 구조가 필요할 만큼 충분히 클 때 최적입니다.</li>
+  <li><strong>Clean</strong>(Martin, 2017)은 모든 레이어에 이름을 붙이고 유스케이스를 일급 아티팩트로 만듭니다. "소리치는 아키텍처"를 추가합니다 — 폴더 구조가 비즈니스 의도를 선언합니다. 공유 어휘와 모든 경계에서의 엄격한 DTO가 필요한 대규모 팀에 최적입니다.</li>
+  <li><strong>이들은 상호 보완적이며, 경쟁하지 않습니다.</strong> 대부분의 성숙한 코드베이스는 세 가지를 혼합합니다: Hexagonal 포트/어댑터 연결, 도메인 내부의 Onion 고리 훈련, 애플리케이션 레이어의 Clean 유스케이스 명명.</li>
+  <li><strong>팀에 맞게 적용량을 조절하세요.</strong> 포트 두 개의 Hexagonal 설정은 스타트업에 충분합니다. 전체 Clean 의식은 엔터프라이즈 규모에서 보상받습니다. 아직 필요하지 않은 어휘에 비용을 지불하지 마세요.</li>
+  <li><strong>팀당 하나의 어휘를 선택</strong>하고 적어두세요. 이름보다 일관성이 더 중요합니다.</li>
+</ul>
+</div>
+<p>이 시리즈의 다음 글은 세 가지 모두를 가능하게 하는 메커니즘 한 수준 더 깊이 들어갑니다: <a href="/blog/architecture/dependency-injection-and-ioc">Dependency Injection &amp; Inversion of Control</a> — 도메인이 프레임워크에 전혀 손대지 않고 런타임에 어댑터를 포트에 연결하는 실용적인 배선입니다.</p>5:["$","div",null,{"className":"blog-article__reader","children":[["$","$Le",null,{"url":"https://nguyenlephong.github.io/ko/blog/architecture/clean-vs-onion-vs-hexagonal","title":"Clean, Onion & Hexagonal Architecture: 하나의 북극성, 세 가지 이름","surface":"blog","category":"architecture","slug":"clean-vs-onion-vs-hexagonal","labels":{"share":"공유","copyLink":"링크 복사","copied":"복사됨!","close":"닫기"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lf",null,{"href":"/ko/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"블로그"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lf",null,{"href":"/ko/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"소스 코드 & 아키텍처"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["소프트웨어 아키텍처 기초",["$","span",null,{"aria-hidden":"true","children":" · "}],"15부 중 2부"]}],["$","h1",null,{"className":"blog-article__title","children":"Clean, Onion & Hexagonal Architecture: 하나의 북극성, 세 가지 이름"}],["$","p",null,{"className":"blog-article__summary","children":"세 가지 경쟁 아키텍처처럼 보이지만, 사실은 같은 아이디어를 세 가지 방식으로 그린 것입니다 — 의존성은 안쪽을 향하고, 프레임워크는 가장자리에. 각각이 실제로 무엇을 더하는지, 그리고 어떤 상황에 어느 것을 선택해야 하는지 알아봅니다."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"작성자: Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-06","children":"2026년 3월 6일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"15분 읽기"}],["$","$L10",null,{"label":"조회"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","소프트웨어 아키텍처",{"children":"소프트웨어 아키텍처"}],["$","li","Clean Architecture",{"children":"Clean Architecture"}],["$","li","Onion Architecture",{"children":"Onion Architecture"}],["$","li","Hexagonal Architecture",{"children":"Hexagonal Architecture"}],["$","li","시스템 설계",{"children":"시스템 설계"}],["$","li","Dependency Inversion",{"children":"Dependency Inversion"}]]}]]}],["$","$L11",null,{"html":"$12"}],"$L13","$undefined"]}]]}]
+6:["$","$L14",null,{"heading":"함께 읽기 좋은 글","intro":"같은 흐름을 조금 더 이어서 볼 수 있는 가까운 주제의 글입니다.","items":[{"post":{"slug":"ports-and-adapters","category":"architecture","title":"Ports & Adapters (Hexagonal Architecture), 쉽게 이해하기","summary":"Hexagonal Architecture를 친근하고 예제 중심으로 설명하는 가이드: port와 adapter가 실제로 무엇인지, 이 아키텍처를 작동시키는 단 하나의 규칙, 그리고 1인 창업자든 엔터프라이즈 팀이든 딱 얼마나 적용해야 하는지.","date":"2026-03-07","readingMinutes":16,"tags":["소프트웨어 아키텍처","Hexagonal Architecture","Ports and Adapters","Clean Architecture","시스템 설계","Dependency Inversion"],"author":"Nguyen Le Phong","featured":true,"series":"foundations","seriesOrder":1},"categoryTitle":"소스 코드 & 아키텍처","readingLabel":"16분 읽기"},{"post":{"slug":"monolith-to-microservices","category":"architecture","title":"모놀리스, Modular Monolith, 마이크로서비스: 솔직한 의사결정 가이드","summary":"마이크로서비스는 출발점이 아니라 조직 규모에 대해 지불하는 세금입니다. 모놀리스에서 Modular Monolith, 마이크로서비스까지의 과장 없는 여정 — 언제(그리고 분리할지 여부를) 알려주는 신호와 함께.","date":"2026-03-03","readingMinutes":16,"tags":["소프트웨어 아키텍처","Microservices","Modular Monolith","시스템 설계","분산 시스템","확장성"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":5},"categoryTitle":"소스 코드 & 아키텍처","readingLabel":"16분 읽기"},{"post":{"slug":"micro-frontends-when-why-and-cost","category":"architecture","title":"마이크로 프론트엔드: 언제 가치가 있고, 무엇이 드는가","summary":"프론트엔드를 독립적으로 배포 가능한 조각들로 분리하면 팀을 해방시킬 수도 — 또는 복잡성에 묻힐 수도 있습니다. Angular 호스트 + React 모듈 설정을 규모에서 출시한 경험을 바탕으로: 마이크로 프론트엔드가 보상을 줄 때, 그리고 그것이 가져오는 청구서.","date":"2026-03-02","readingMinutes":15,"tags":["소프트웨어 아키텍처","Micro-Frontends","프론트엔드 아키텍처","Module Federation","확장성","시스템 설계"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":6},"categoryTitle":"소스 코드 & 아키텍처","readingLabel":"15분 읽기"},{"post":{"slug":"hexagonal-architecture-in-practice","category":"architecture","title":"Hexagonal Architecture in Practice","summary":"A practical guide to applying Hexagonal Architecture to one small feature: drawing the boundary, naming ports in business language, keeping adapters at the edge, testing the core, and deciding when the extra structure is worth the cost.","date":"2026-04-22","readingMinutes":7,"tags":["Software Architecture","Hexagonal Architecture","Ports and Adapters","Testing","Code Organization","Technical Debt"],"author":"Nguyen Le Phong"},"categoryTitle":"소스 코드 & 아키텍처","readingLabel":"7분 읽기"}],"sourceCategory":"architecture","sourceSlug":"clean-vs-onion-vs-hexagonal"}]
+7:["$","nav",null,{"className":"blog-series-nav","aria-label":"소프트웨어 아키텍처 기초","children":[["$","$Lf",null,{"href":"/ko/blog/architecture/ports-and-adapters","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","이전 글"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Ports & Adapters (Hexagonal Architecture), 쉽게 이해하기"}]]}],["$","$Lf",null,{"href":"/ko/blog/architecture/dependency-injection-and-ioc","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["다음 글"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Dependency Injection & Inversion of Control, 마법 없이 이해하기"}]]}]]}]
+8:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lf",null,{"href":"/ko/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","소스 코드 & 아키텍처(으)로 돌아가기"]}]}]
+9:["$","aside",null,{"className":"blog-article__toc","children":["$","$L15",null,{"label":"목차","surface":"blog"}]}]
+a:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+b:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+c:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+d:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+13:["$","$L19",null,{"prompt":"이 글 어떠셨나요?","surface":"blog","category":"architecture","slug":"clean-vs-onion-vs-hexagonal","reactionLabels":{"like":"좋아요","love":"최고예요","insightful":"유익해요","clap":"축하해요"}}]
+18:null

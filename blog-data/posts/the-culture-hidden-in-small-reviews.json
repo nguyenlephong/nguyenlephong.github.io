@@ -1,0 +1,18 @@
+{
+  "slug": "the-culture-hidden-in-small-reviews",
+  "category": "culture",
+  "title": "The Culture Hidden in Small Reviews",
+  "summary": "A calm note on how engineering culture shows up in small reviews: the phrasing, patience, and care teams bring to ordinary feedback.",
+  "date": "2026-06-20",
+  "readingMinutes": 5,
+  "tags": [
+    "Engineering Culture",
+    "Code Review",
+    "Feedback",
+    "Team Trust",
+    "Communication",
+    "Quality"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The pull request was small enough to fit on one screen. A renamed helper, one added test, and a short branch condition. Nobody would remember it next month. But the review still mattered, because the comment left there taught the team something about how people are expected to speak to each other.</p>\n<figure class=\"blog-figure blog-photo-panorama\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/blogs/the-culture-hidden-in-small-reviews/kind-review-comment-anatomy.webp\" width=\"1600\" height=\"900\" loading=\"lazy\" decoding=\"async\" alt=\"Four cards break a constructive review comment into observation, impact, question, and next step.\" />\n  <figcaption>A small review teaches culture through the care and clarity built into each comment.</figcaption>\n</figure>\n<p>Culture is often discussed in large words: ownership, excellence, trust, psychological safety. Those words are useful only if they survive ordinary moments. A small review is one of those moments. It is where a team shows whether quality is a shared craft or a personal judgment.</p>\n<p>The difference can be quiet. One reviewer writes, this name is confusing. Another writes, I had to reread this name because it sounds like it mutates state, but it only formats output. Could we make that distinction clearer? Both comments ask for a change. Only one also gives the author a path to understand the concern.</p>\n<p>Small reviews reveal whether people are trying to win or trying to improve the work. If every suggestion sounds like a verdict, authors become defensive. If every concern is softened until it becomes vague, quality suffers. The healthy middle is direct and generous: clear about the problem, respectful about the person, specific about the desired behavior.</p>\n<p>They also reveal whether the team values context. A reviewer who asks for a test without explaining the risk may be right, but the author learns less. A reviewer who says this branch protects a retry path we broke before gives the author a reason to care. The comment becomes a small transfer of system memory.</p>\n<p>Authors shape culture too. A simple response like good catch, I missed the retry case, added coverage, keeps review collaborative. Ignoring comments, pushing unexplained changes, or treating every suggestion as an attack teaches the team a different norm. Review is a two-sided conversation, not a gate with one person holding the key.</p>\n<p>The size of the change does not make the culture smaller. In fact, small reviews are where habits are easiest to practice because the stakes are lower. If the team cannot be careful and kind on a small diff, it will struggle when a risky migration or incident fix arrives.</p>\n<p>Over time, people learn the emotional weather of a codebase. They learn whether it is safe to ask a basic question, whether a concern will be heard, whether a mistake can be named without shame. That weather is built comment by comment.</p>\n<p>A small review may not change the product in a visible way. But it changes the team that builds the product. What does your last ordinary review teach a new teammate about how quality is discussed here?</p>"
+}

@@ -1,0 +1,18 @@
+{
+  "slug": "closing-the-loop-before-starting-the-next-one",
+  "category": "ways-of-working",
+  "title": "Closing the Loop Before Starting the Next One",
+  "summary": "A practical note on closing work loops with evidence, decisions, and handoff context before the team rushes into the next task.",
+  "date": "2026-07-03",
+  "readingMinutes": 5,
+  "tags": [
+    "Ways of Working",
+    "Delivery",
+    "Review",
+    "Documentation",
+    "Team Communication",
+    "Planning"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The next task was already waiting, but the previous one was not quite finished. The code had merged. The meeting had ended. The message said done. Still, nobody had written what changed, what evidence proved it, and what the next person should know before touching the same area.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/closing-the-loop-before-starting-the-next-one/closing-the-loop-board.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A small team arranges blank cards in a circular flow on a table before placing a new empty card nearby.' />\n  <figcaption>A closed loop gives the next piece of work a cleaner beginning.</figcaption>\n</figure>\n<p>Many teams are good at starting loops. Kickoff, ticket, branch, meeting, spike, experiment. Starting creates energy. Closing requires a quieter kind of discipline because the reward is less immediate. The visible work feels done, and the next thing is already pulling attention.</p>\n<p>A loop is closed when the useful residue is left behind. What decision was made? What shipped? What did we learn? What evidence did we check? What remains risky? Who owns the follow-up? Without those answers, the work may be complete in status but incomplete in memory.</p>\n<p>This matters because teams rarely revisit a clean past. They revisit fragments. A support question appears. A regression touches old code. A new teammate asks why a constraint exists. If the loop was not closed, the team pays the reconstruction cost later, often under more pressure.</p>\n<p>Closing the loop does not need ceremony. A PR can include final verification. A ticket can record the live URL and test command. A meeting note can link the decision. A rollout can mention the rollback condition. A handoff can say what was deliberately not done. Small traces are enough when they are placed where future work will look.</p>\n<p>The best closing notes are factual and boring. Avoid victory language. Avoid vague confidence. Write the thing someone can use: deployed commit, test result, known caveat, owner, next check. The point is not to celebrate the loop. The point is to make it inspectable.</p>\n<p>There is a cultural signal too. Closing loops says that finishing includes care for the people who come next. It says the team values continuity, not only motion. It reduces the dependence on whoever happened to remember the most.</p>\n<p>It also improves planning. When loops close well, future estimates become less foggy. The team can see where work actually ended, which assumptions held, and which follow-ups remained. Closure becomes input for better starts.</p>\n<p>Before beginning the next loop, pause for the smallest useful closure. One sentence may be enough. Here is what changed, here is how we know, and here is what remains. That habit can make the next task feel less like a restart and more like a continuation.</p>"
+}

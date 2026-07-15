@@ -1,0 +1,18 @@
+{
+  "slug": "protecting-attention-in-a-busy-team",
+  "category": "culture",
+  "title": "Protecting Attention in a Busy Team",
+  "summary": "A calm note on treating attention as a shared team resource, not an infinite personal budget that people can recover alone.",
+  "date": "2026-07-20",
+  "readingMinutes": 5,
+  "tags": [
+    "Engineering Culture",
+    "Attention",
+    "Focus",
+    "Teamwork",
+    "Meetings",
+    "Sustainable Work"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The team was not lazy. Everyone was answering quickly, joining calls, reviewing pull requests, checking incidents, and helping unblock each other. The problem was quieter than overload. Nobody had enough uninterrupted attention left to think through the work that actually needed depth.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/protecting-attention-in-a-busy-team/protected-team-attention.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A focused engineering workspace with a protected attention board, quiet desks, soft light, and teammates coordinating without crowding each other.' />\n  <figcaption>Attention becomes easier to protect when the team treats it as shared capacity.</figcaption>\n</figure>\n<p>Attention is often discussed as a personal discipline. Close the tab. Mute the phone. Use a timer. Those habits help, but they are not enough when the whole team system rewards instant response and constant availability.</p>\n<p>A busy team can accidentally turn helpfulness into interruption. A small question here, a quick call there, a review request with no context, a meeting that could have been a written decision. Each one is reasonable alone. Together they make deep work rare.</p>\n<p>Protecting attention starts with making interruption visible. Which requests are urgent? Which can wait? Which need a synchronous conversation? Which only need a clear note and a decision owner? When the team names these differences, people stop guessing whether silence is irresponsible.</p>\n<p>Good norms are practical. Put review context in the pull request before asking someone to look. Batch non-urgent questions. Reserve meetings for decisions that benefit from conversation. Give incident work a clear role split so everyone else can keep moving without pretending to monitor everything.</p>\n<p>Managers and senior engineers have extra leverage here because their interruptions feel important even when they are casual. A thoughtful question from a senior person can still break an hour of concentration. Care means choosing the channel and timing with the same attention we expect in code.</p>\n<p>Protecting attention does not mean making the team less responsive. It means being responsive to the right level of urgency. Real incidents still interrupt. Customer pain still matters. The point is to stop treating every loose thread as if it deserves the same immediate cost.</p>\n<p>A team gets calmer when people can trust that focus time is legitimate, async notes will be read, and urgent paths are clearly marked. That trust is culture, but it is also operations.</p>\n<p>Before adding the next meeting or ping, ask what kind of attention the work needs. Some work needs a room. Some work needs a written decision. Some work needs one person to think without being pulled back every ten minutes.</p>"
+}

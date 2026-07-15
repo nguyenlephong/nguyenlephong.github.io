@@ -1,0 +1,182 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta69,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/en/blog/architecture/data-in-distributed-systems#article","headline":"Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears","description":"Splitting code is the easy half — splitting data is where distributed systems humble you. A practical guide to owning data across services: why a shared database is a distributed monolith, the trade from ACID to eventual consistency, the dual-write bug and the outbox that fixes it, sagas with compensating actions, and when CQRS and event sourcing are worth their lifetime cost.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/blog/architecture/data-in-distributed-systems","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/data-in-distributed-systems.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/en/blog/architecture/data-in-distributed-systems","datePublished":"2026-04-10","dateModified":"2026-04-10","keywords":"Software Architecture, Distributed Systems, Saga Pattern, CQRS, Event Sourcing, Data Consistency","articleSection":"Source & Architecture","isRelatedTo":[{"@type":"BlogPosting","headline":"Event Sourcing: A Beginner's Guide","url":"https://nguyenlephong.github.io/en/blog/architecture/event-sourcing-beginners-guide","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/event-sourcing-beginners-guide.jpg"},{"@type":"BlogPosting","headline":"The Outbox Pattern","url":"https://nguyenlephong.github.io/en/blog/architecture/the-outbox-pattern","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/the-outbox-pattern.jpg"},{"@type":"BlogPosting","headline":"The Saga Pattern for Distributed Transactions","url":"https://nguyenlephong.github.io/en/blog/architecture/saga-pattern-for-distributed-transactions","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/saga-pattern-for-distributed-transactions.jpg"},{"@type":"BlogPosting","headline":"Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained","url":"https://nguyenlephong.github.io/en/blog/architecture/event-driven-architecture-and-messaging","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/event-driven-architecture-and-messaging.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/en/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/en/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Source & Architecture\",\"item\":\"https://nguyenlephong.github.io/en/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears\",\"item\":\"https://nguyenlephong.github.io/en/blog/architecture/data-in-distributed-systems\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T4765,<p>In the previous part we split a synchronous chain into events. But splitting the <em>code</em> is the easy half. The moment two services stop sharing a database, a quieter and harder question arrives: <strong>who owns the data, and what does "true" even mean when the truth is spread across five services?</strong></p>
+<p>This is the part of distributed systems that humbles experienced engineers, because it is not really about technology. It is about giving up a comfort you have leaned on your whole career — the single database transaction that either fully happens or fully does not — and learning to build correctly without it.</p>
+
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/data-in-distributed-systems/service-boundaries-on-the-glass.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Nguyen Le Phong stands beside a glass wall diagram, walking two teammates through how separate services keep their own data and exchange events instead of sharing tables." />
+  <figcaption>The first hard data conversation in a distributed system is usually not about scale. It is about drawing a boundary the team will actually respect when each service owns its truth.</figcaption>
+</figure>
+
+<h2 id="the-problem">The shared database that couples everyone</h2>
+<p>When a team splits a monolith, the tempting shortcut is: split the code into services, but let them all keep talking to the same database. It feels pragmatic. It is also the single fastest way to build a <strong>distributed monolith</strong> — the worst of both worlds.</p>
+<p>The reason is invisible coupling. If the orders service and the billing service both read and write the <code>orders</code> table, then billing's schema is now silently part of orders' contract. Change a column and you break a service you did not even open. You have all the operational cost of many services and none of the independence.</p>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">The line that defines a real split</span><p>A service split is only real when <strong>each service owns its data privately</strong>. Other services may not touch its tables — they ask through its API or react to its events. If two services share tables, you have not built two services; you have built one service with a confusing deployment story.</p></div>
+
+<h2 id="database-per-service">Database per service: the rule and its bill</h2>
+<p>The discipline is simple to state: <strong>a service's data is private. The only way in is through the service.</strong> This is what buys you the independence the whole microservices bet was about — each team can change its schema, pick its storage, and deploy without a cross-team meeting.</p>
+<p>The bill arrives immediately, and it is steep:</p>
+<ul>
+<li><strong>No more cross-service JOINs.</strong> "Show me orders with the customer's name" used to be one query. Now the data lives in two services and you must compose it in code, cache it, or duplicate it.</li>
+<li><strong>No more cross-service transactions.</strong> You cannot wrap "take payment" and "reserve stock" in one <code>BEGIN / COMMIT</code> when they live in different databases. The safety net is gone.</li>
+</ul>
+<p>That second loss is the big one. Everything else in this article is a technique for living without the cross-service transaction you used to take for granted.</p>
+
+<h2 id="the-consistency-shift">The shift: from ACID to "true in a moment"</h2>
+<p>Inside one database, you get <strong>strong consistency</strong>: the instant a transaction commits, everyone sees the new truth. Across services, that guarantee is gone. What you get instead is <strong>eventual consistency</strong>: the system will agree on the truth <em>soon</em> — usually milliseconds, sometimes seconds — but not in the same instant.</p>
+<p>This is not a bug to be fixed; it is physics. A famous result (the CAP theorem) says that when the network between services fails — and it will — you must choose between staying <em>available</em> and staying <em>perfectly consistent</em>. Most business systems choose availability and design around a brief window where, say, the order exists but the loyalty points have not landed yet.</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th width="26%">&nbsp;</th><th>Strong consistency</th><th>Eventual consistency</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>When is it true?</th><td>The instant you commit</td><td>A moment later, once events propagate</td></tr>
+    <tr><th>Scope</th><td>One database</td><td>Across services / regions</td></tr>
+    <tr><th>You pay in</th><td>Coupling, contention, harder scaling</td><td>Brief disagreement windows you must design for</td></tr>
+    <tr><th>Right for</th><td>Money inside one ledger, a single aggregate</td><td>Cross-service workflows, read models, analytics</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">The reframe that makes it bearable</span><p>Ask the business, not the database: "is it acceptable for this to be true a second later?" For analytics, search indexes, notifications, and recommendations — almost always yes. For "did this exact card already get charged?" — design that boundary so the money lives inside <em>one</em> service's strong transaction, and let the rest be eventual.</p></div>
+
+<h2 id="the-dual-write-problem">The dual-write problem (and the outbox)</h2>
+<p>Here is the bug that catches almost everyone first. A service needs to do two things: save to its own database <em>and</em> publish an event. The naive code does them one after another:</p>
+<pre><code><span class="cmt">// The dual-write bug: two systems, no shared transaction</span>
+<span class="kw">await</span> db.orders.insert(order)              <span class="cmt">// 1) committed to the database</span>
+<span class="kw">await</span> broker.publish(<span class="str">"OrderPlaced"</span>, order)   <span class="cmt">// 2) what if we crash right here?</span></code></pre>
+<p>If the process dies between step 1 and step 2, the order exists but nobody was told. Payment never runs. The order is a ghost. Worse, you cannot fix it by reordering — publish first and you might announce an order that never saved.</p>
+<p>The clean fix is the <strong>transactional outbox</strong>. Instead of publishing directly, you write the event into an <code>outbox</code> table <em>in the same transaction</em> as the order. A separate relay then reads the outbox and publishes. One commit, no gap.</p>
+<pre><code><span class="cmt">// Outbox: order and event commit together, or not at all</span>
+<span class="kw">await</span> db.transaction(<span class="kw">async</span> (tx) =&gt; {
+  <span class="kw">await</span> tx.orders.insert(order)
+  <span class="kw">await</span> tx.outbox.insert({ type: <span class="str">"OrderPlaced"</span>, payload: order })
+})
+<span class="cmt">// A relay polls the outbox (or tails the DB log) and publishes — retrying safely.</span></code></pre>
+<p>Because the relay retries, delivery is at-least-once — which is exactly why the previous part insisted every consumer be idempotent. The two ideas are partners.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/data-in-distributed-systems/transactional-outbox-walkthrough.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Nguyen Le Phong sits beside a teammate at a workstation, pointing at a simple database-to-outbox-to-broker flow while they review how one commit becomes a safe publish." />
+  <figcaption>The outbox earns its keep in moments like this: the team can point to one local commit, one relay, and a publish path that no longer depends on lucky timing.</figcaption>
+</figure>
+
+<h2 id="the-saga-pattern">Sagas: transactions without a rollback button</h2>
+<p>Now the hard case: a single business action that spans services — charge the card, reserve the stock, confirm the order — where step three can fail <em>after</em> steps one and two succeeded. There is no <code>ROLLBACK</code> that reaches across three databases. The answer is the <strong>saga</strong>: break the action into a sequence of local transactions, and for each step define a <em>compensating action</em> that undoes it.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 360" role="img" aria-labelledby="dgm-saga">
+    <title id="dgm-saga">A saga runs business steps one by one. If a later step fails, earlier steps are undone by compensating actions rather than a single rollback.</title>
+    <defs>
+      <marker id="sagaAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sagaMute" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="currentColor" opacity="0.5"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-accent" x="380" y="30" text-anchor="middle" font-size="13">NO GLOBAL ROLLBACK · ONLY COMPENSATION</text>
+
+    <rect class="dgm-core" x="40" y="92" width="170" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="125" y="118" text-anchor="middle" font-size="13">1 · Charge Card</text>
+    <text class="dgm-t-muted dgm-t-mono" x="125" y="137" text-anchor="middle" font-size="10.5">Payment service</text>
+
+    <rect class="dgm-core" x="295" y="92" width="170" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="380" y="118" text-anchor="middle" font-size="13">2 · Reserve Stock</text>
+    <text class="dgm-t-muted dgm-t-mono" x="380" y="137" text-anchor="middle" font-size="10.5">Inventory service</text>
+
+    <rect class="dgm-driven" x="550" y="92" width="170" height="58" rx="10"/>
+    <text class="dgm-t-accent" x="635" y="118" text-anchor="middle" font-size="13">3 · Confirm &#10007;</text>
+    <text class="dgm-t-muted dgm-t-mono" x="635" y="137" text-anchor="middle" font-size="10.5">out of stock — fails</text>
+
+    <path class="dgm-flow" d="M210,121 H 291" marker-end="url(#sagaAcc)"/>
+    <path class="dgm-flow" d="M465,121 H 546" marker-end="url(#sagaAcc)"/>
+
+    <path class="dgm-line" d="M635,150 C 635,250 380,250 380,156" stroke-dasharray="6 5" marker-end="url(#sagaMute)"/>
+    <path class="dgm-line" d="M380,250 C 200,250 125,250 125,156" stroke-dasharray="6 5" marker-end="url(#sagaMute)"/>
+    <text class="dgm-t-muted" x="505" y="232" text-anchor="middle" font-size="11">compensate: release stock</text>
+    <text class="dgm-t-muted" x="245" y="288" text-anchor="middle" font-size="11">compensate: refund card</text>
+    <text class="dgm-t-muted dgm-t-mono" x="380" y="324" text-anchor="middle" font-size="11">each undo is its own ordinary transaction</text>
+  </svg>
+  <figcaption>There is no database that can roll all three services back at once. Instead, a failed step triggers compensating actions that walk the completed steps backward — a refund, a stock release — each one a normal local transaction.</figcaption>
+</figure>
+
+<p>If "confirm order" fails because stock ran out, the saga does not magically rewind. It runs the undo steps in reverse: release the reservation, refund the card. Each compensation is an ordinary local transaction — and notice it is a <em>business</em> reversal, not a technical one. A refund is not the same as "the charge never happened"; the customer may have seen it on their statement. Sagas force you to model failure as a real-world event, which is uncomfortable and also more honest.</p>
+<p>Sagas come in the two flavours from the last part: <strong>orchestrated</strong> (a coordinator drives the steps and is easy to follow) or <strong>choreographed</strong> (services react to each other's events, more decoupled but harder to trace). For anything money touches, most teams prefer an orchestrator they can watch.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/data-in-distributed-systems/compensation-before-confirmation.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Nguyen Le Phong leads a dusk planning session where a small engineering group maps the steps and compensations of a multi-service workflow before confirming the final outcome." />
+  <figcaption>A saga becomes easier to trust when the team names the compensations before the happy path ships, while everyone can still see who must undo what if a later step fails.</figcaption>
+</figure>
+
+<h2 id="cqrs-and-read-models">CQRS and read models: serving the data you scattered</h2>
+<p>Database-per-service broke your JOINs. So how do you render a dashboard that needs data from six services? You build a <strong>read model</strong>: a separate, denormalised copy shaped exactly for that screen, kept up to date by listening to events. This is the readable half of <strong>CQRS</strong> — Command Query Responsibility Segregation — which simply means <em>the model you write through and the model you read from do not have to be the same model</em>.</p>
+<ul>
+<li><strong>Write side:</strong> small, consistent, validates business rules.</li>
+<li><strong>Read side:</strong> wide, fast, often eventually consistent, optimised for queries.</li>
+</ul>
+<p>CQRS shines when reads and writes have wildly different shapes or scale — a product catalogue read millions of times and written rarely. It is overkill when a plain table serves both fine, which is most of the time. Reach for it to solve a specific read problem, never because it sounds advanced.</p>
+
+<h2 id="event-sourcing">Event sourcing: keep the events, derive the state</h2>
+<p>The most advanced option flips storage on its head. Instead of saving the <em>current</em> state and overwriting it, you store the full sequence of events that led here — <code>AccountOpened</code>, <code>MoneyDeposited</code>, <code>MoneyWithdrawn</code> — and compute the balance by replaying them. The events become the source of truth; state is just a cached opinion of them.</p>
+<p>The upside is real: a perfect audit log for free, the ability to ask "what was true last Tuesday?", and the freedom to build new read models from history. The costs are equally real — you must version events forever, snapshot for performance, and rethink how you delete data under privacy law. Most systems should not start here.</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">A grounded recommendation</span><p>Event sourcing is a sharp tool for a few genuinely event-shaped domains — ledgers, audit-heavy workflows, anything where "how we got here" matters as much as "where we are." For everything else, an outbox plus a read model gives you most of the benefit at a fraction of the lifetime cost.</p></div>
+
+<h2 id="comparison">Choosing, without the hype</h2>
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Problem you actually have</th><th>The honest answer</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Save a row and tell others</th><td>Transactional outbox + idempotent consumers</td></tr>
+    <tr><th>One business action across services</th><td>Saga with compensating actions (prefer orchestrated)</td></tr>
+    <tr><th>A screen joining many services' data</th><td>A read model fed by events (the read half of CQRS)</td></tr>
+    <tr><th>Reads and writes scale very differently</th><td>Full CQRS — separate write and read stores</td></tr>
+    <tr><th>History and audit are first-class</th><td>Event sourcing — and accept its lifetime costs</td></tr>
+    <tr><th>It all fits in one service / one DB</th><td>A single ACID transaction. Do not distribute it.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="by-company-size">The honest view by company size</h2>
+<ul>
+<li><strong>Solo / early startup.</strong> One database, real transactions, no sagas. The single biggest data advantage you have is that everything can still be strongly consistent in one <code>COMMIT</code>. Do not give that up for an architecture diagram.</li>
+<li><strong>Growing scale-up.</strong> As you carve off your first few services, give each its own data and adopt the outbox the day you publish your first event. Introduce a saga only for the one or two workflows that genuinely cross services and money. Add read models when a screen starts fanning out into many calls.</li>
+<li><strong>Enterprise.</strong> Eventual consistency is the default and teams are fluent in it. The investment shifts to tooling: schema/version governance for events, saga monitoring, and read models as a first-class, owned part of the platform. Event sourcing appears in the few domains that earn it, not everywhere.</li>
+</ul>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Key takeaways</h3>
+<ul>
+  <li><strong>A real split means private data.</strong> If services share tables, you built a distributed monolith — all the cost, none of the independence.</li>
+  <li><strong>You trade the ACID transaction for eventual consistency.</strong> Ask the business "is it fine for this to be true a second later?" — and keep money inside one service's strong transaction.</li>
+  <li><strong>The dual-write bug is real; the outbox fixes it.</strong> Commit the event and the row together, then relay — which is why consumers must be idempotent.</li>
+  <li><strong>Sagas replace rollback with compensation.</strong> Model failure as a real-world reversal (a refund), not a technical undo. Prefer an orchestrator for anything touching money.</li>
+  <li><strong>CQRS and event sourcing are sharp tools, not defaults.</strong> Reach for a read model to solve a real query problem; reach for event sourcing only when history itself is the product.</li>
+</ul>
+</div>
+<p>You can now split services, let them talk through events, and keep their data honest. There is one promise left unkept — that the system stays standing when, not if, the network drops a message, a service stalls, or a dependency has a bad day. Paying that "distributed-systems tax" with timeouts, retries, circuit breakers, and idempotency is the final part of this series.</p>
+3:["$","$L8",null,{"category":"architecture","slug":"data-in-distributed-systems","children":[["$","$L9",null,{"category":"architecture","slug":"data-in-distributed-systems","readingMinutes":13,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/en/blog/architecture/data-in-distributed-systems","title":"Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears","surface":"blog","category":"architecture","slug":"data-in-distributed-systems","labels":{"share":"Share","copyLink":"Copy link","copied":"Copied!","close":"Close"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/en/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/en/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Source & Architecture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Foundations of Software Architecture",["$","span",null,{"aria-hidden":"true","children":" · "}],"Part 8 of 15"]}],["$","h1",null,{"className":"blog-article__title","children":"Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears"}],["$","p",null,{"className":"blog-article__summary","children":"Splitting code is the easy half — splitting data is where distributed systems humble you. A practical guide to owning data across services: why a shared database is a distributed monolith, the trade from ACID to eventual consistency, the dual-write bug and the outbox that fixes it, sagas with compensating actions, and when CQRS and event sourcing are worth their lifetime cost."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"By Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-04-10","children":"April 10, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"13 min read"}],["$","$Lc",null,{"label":"views"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Software Architecture",{"children":"Software Architecture"}],["$","li","Distributed Systems",{"children":"Distributed Systems"}],["$","li","Saga Pattern",{"children":"Saga Pattern"}],["$","li","CQRS",{"children":"CQRS"}],["$","li","Event Sourcing",{"children":"Event Sourcing"}],["$","li","Data Consistency",{"children":"Data Consistency"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"What did you think?","surface":"blog","category":"architecture","slug":"data-in-distributed-systems","reactionLabels":{"like":"Like","love":"Love","insightful":"Insightful","clap":"Celebrate"}}]
+10:["$","$L18",null,{"heading":"Related reading","intro":"A few nearby pieces to keep following the same thread with more context.","items":[{"post":{"slug":"event-sourcing-beginners-guide","category":"architecture","title":"Event Sourcing: A Beginner's Guide","summary":"A beginner-friendly guide to Event Sourcing: storing facts as an append-only event history, rebuilding current state through projections, and understanding when the pattern is worth its operational cost.","date":"2026-05-05","readingMinutes":6,"tags":["Software Architecture","Event Sourcing","Event-Driven Architecture","CQRS","System Design","Data Modeling"],"author":"Nguyen Le Phong"},"categoryTitle":"Source & Architecture","readingLabel":"6 min read"},{"post":{"slug":"the-outbox-pattern","category":"architecture","title":"The Outbox Pattern","summary":"A practical explanation of the Outbox Pattern: why dual writes fail, how a transactional outbox keeps database state and events aligned, and what teams still need to handle around retries, idempotency, ordering, cleanup, and observability.","date":"2026-05-15","readingMinutes":6,"tags":["Software Architecture","Outbox Pattern","Distributed Systems","Event-Driven Architecture","Reliability","Microservices"],"author":"Nguyen Le Phong"},"categoryTitle":"Source & Architecture","readingLabel":"6 min read"},{"post":{"slug":"saga-pattern-for-distributed-transactions","category":"architecture","title":"The Saga Pattern for Distributed Transactions","summary":"A practical explanation of the Saga pattern for distributed transactions: why one database transaction stops working across services, how orchestration and choreography differ, and why compensation, observability, and idempotency matter.","date":"2026-04-30","readingMinutes":6,"tags":["Software Architecture","Saga Pattern","Distributed Transactions","Microservices","Eventual Consistency","Observability"],"author":"Nguyen Le Phong"},"categoryTitle":"Source & Architecture","readingLabel":"6 min read"},{"post":{"slug":"event-driven-architecture-and-messaging","category":"architecture","title":"Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained","summary":"When services hold hands through synchronous calls, latency adds up and one slow dependency takes down checkout. A no-hype guide to event-driven architecture: sync vs async, commands vs events, what brokers really promise (at-least-once, not exactly-once), choreography vs orchestration, and exactly when NOT to reach for events.","date":"2026-04-11","readingMinutes":13,"tags":["Software Architecture","Event-Driven Architecture","Message Queues","Asynchronous Messaging","Distributed Systems","System Design"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":7},"categoryTitle":"Source & Architecture","readingLabel":"13 min read"}],"sourceCategory":"architecture","sourceSlug":"data-in-distributed-systems"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"Foundations of Software Architecture","children":[["$","$Lb",null,{"href":"/en/blog/architecture/event-driven-architecture-and-messaging","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Previously"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained"}]]}],["$","$Lb",null,{"href":"/en/blog/architecture/resilience-in-distributed-systems","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Next up"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"The Distributed-Systems Tax, Paid: Timeouts, Retries, Circuit Breakers, and Idempotency"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/en/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Back to Source & Architecture"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"On this page","surface":"blog"}]}]
+16:null

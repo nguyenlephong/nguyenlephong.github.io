@@ -1,0 +1,18 @@
+{
+  "slug": "letting-ai-draft-the-boring-first-pass",
+  "category": "ai",
+  "title": "Letting AI Draft the Boring First Pass",
+  "summary": "A practical reflection on using AI for the plain first draft, while keeping human judgment focused on evidence, shape, and responsibility.",
+  "date": "2026-07-01",
+  "readingMinutes": 5,
+  "tags": [
+    "AI",
+    "LLM",
+    "Writing",
+    "Developer Tools",
+    "Review",
+    "Human Judgment"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The hardest part of the document was not the insight. The insight had been said three times in meetings. The hard part was turning scattered notes into a first version plain enough that other people could react to it. That is where AI can be useful in a very ordinary way.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/letting-ai-draft-the-boring-first-pass/ai-boring-first-pass.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A developer reviews plain AI draft cards while another person checks printed evidence at a shared desk.' />\n  <figcaption>The boring first pass is useful when it gives human judgment something concrete to inspect.</figcaption>\n</figure>\n<p>There is a temptation to ask AI for the brilliant version. The polished memo, the clever naming, the complete plan. I have found more value in asking for the boring first pass: organize these notes, list the assumptions, make the structure visible, turn the scattered context into something reviewable.</p>\n<p>A boring first pass lowers the activation energy. It gives the team a page instead of a fog. People can point to a paragraph, delete a weak claim, add a missing example, and argue about sequence. The draft does not need to be right to be useful. It needs to be specific enough to make disagreement cheaper.</p>\n<p>This works best when the prompt is grounded. AI should receive source notes, constraints, audience, and the intended decision. Without that, it often fills gaps with fluent generality. With that, it can do the mechanical arrangement that humans often postpone because it feels unglamorous.</p>\n<p>The human job does not disappear. It becomes sharper. Which claims are backed by evidence? Which examples are real? Which part sounds confident because the model is confident, not because the source supports it? Which trade-off should be named rather than smoothed away? The draft is material, not authority.</p>\n<p>I like using AI this way for PR descriptions, meeting summaries, design note outlines, acceptance criteria, and content drafts. In each case, the first pass creates shape. Then human review adds judgment: remove what is false, clarify what is vague, preserve what is useful, and decide what should not be published.</p>\n<p>The word boring matters. A first draft that is too styled can hide its weakness. A plain draft is easier to inspect. It does not ask to be admired. It asks to be corrected. That posture is healthier for collaboration with tools that can sound more certain than they are.</p>\n<p>There is still risk. If the team accepts the first pass because it looks complete, AI has made the work worse. If the team treats the first pass as a scaffold, AI has made the work easier to begin. The difference is not the model alone. It is the review habit around it.</p>\n<p>So I increasingly ask AI for the plain version first. Not the final voice. Not the final conclusion. Just a clean surface where the real human work can happen. Sometimes the best use of a fast tool is to make the slow judgment visible sooner.</p>"
+}

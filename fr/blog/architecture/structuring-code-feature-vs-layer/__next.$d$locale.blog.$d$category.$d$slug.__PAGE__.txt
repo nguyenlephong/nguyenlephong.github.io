@@ -1,0 +1,389 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta74,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/fr/blog/architecture/structuring-code-feature-vs-layer#article","headline":"Structurer un Codebase : Par Couche, Par Fonctionnalité ou Par Domaine ?","description":"Vos dossiers de premier niveau doivent-ils s'appeler controllers/services/models, ou orders/billing/auth ? Ce choix discret façonne silencieusement la façon dont votre codebase grandit. Un tour pratique de la structure par couche, par fonctionnalité et de la Screaming Architecture — avec les compromis à chaque taille d'entreprise.","inLanguage":"fr","url":"https://nguyenlephong.github.io/fr/blog/architecture/structuring-code-feature-vs-layer","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/structuring-code-feature-vs-layer.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/fr/blog/architecture/structuring-code-feature-vs-layer","datePublished":"2026-03-04","dateModified":"2026-03-04","keywords":"Architecture logicielle, Structure de projet, Screaming Architecture, Modularity, Organisation du code, Monorepo","articleSection":"Code source & Architecture","isRelatedTo":[{"@type":"BlogPosting","headline":"Architecture en couches ou Vertical Slice Architecture","url":"https://nguyenlephong.github.io/fr/blog/architecture/layered-vs-vertical-slice-architecture","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/layered-vs-vertical-slice-architecture.jpg"},{"@type":"BlogPosting","headline":"Ports & Adapters (Hexagonal Architecture), Expliqués Simplement","url":"https://nguyenlephong.github.io/fr/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ports-and-adapters.jpg"},{"@type":"BlogPosting","headline":"Choosing Boring Boundaries on Purpose","url":"https://nguyenlephong.github.io/en/blog/architecture/choosing-boring-boundaries-on-purpose","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/choosing-boring-boundaries-on-purpose.jpg"},{"@type":"BlogPosting","headline":"Clean, Onion & Hexagonal Architecture : Une étoile du nord, trois noms","url":"https://nguyenlephong.github.io/fr/blog/architecture/clean-vs-onion-vs-hexagonal","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/clean-vs-onion-vs-hexagonal.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/fr/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/fr/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Code source & Architecture\",\"item\":\"https://nguyenlephong.github.io/fr/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Structurer un Codebase : Par Couche, Par Fonctionnalité ou Par Domaine ?\",\"item\":\"https://nguyenlephong.github.io/fr/blog/architecture/structuring-code-feature-vs-layer\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T777c,<p>Vous ouvrez un nouveau projet et la première chose que vous faites — avant d'écrire une seule ligne de logique — c'est créer un dossier. Peut-être qu'il s'appelle <code>controllers/</code>. Peut-être qu'il s'appelle <code>orders/</code>. Dans les deux cas, ce choix tranquille est déjà une décision architecturale, et il façonnera silencieusement tout ce qui suit : la vitesse à laquelle un nouveau coéquipier prend ses marques, le nombre de fichiers que vous touchez quand une seule fonctionnalité change, et si dans six mois votre codebase se lit comme votre <em>métier</em> ou comme votre <em>framework</em>.</p>
+<p>Cet article est un tour pratique des trois approches principales — <strong>par couche</strong>, <strong>par fonctionnalité</strong> et <strong>screaming (par domaine)</strong> — avec des compromis honnêtes à chaque taille d'entreprise. Aucune réponse unique ne gagne dans toutes les situations, mais vous repartirez avec un modèle mental clair pour choisir délibérément plutôt que par défaut.</p>
+
+<h2 id="why-it-matters">Pourquoi la structure des dossiers est une décision architecturale, pas du pinaillage</h2>
+<p>Les gens balaient la structure des dossiers d'un revers de main en disant « c'est juste de l'organisation ». C'est bien plus que ça. La façon dont vous regroupez le code contrôle trois choses qui s'avèrent énormément importantes :</p>
+<ul>
+  <li><strong>Couplage.</strong> Quand du code qui change ensemble vit loin les uns des autres, chaque petite mise à jour devient une expédition entre dossiers. Quand il vit ensemble, les changements connexes se regroupent en un seul endroit.</li>
+  <li><strong>Découvrabilité.</strong> Un développeur qui ne connaît pas votre codebase va demander : « où est le code pour la facturation ? » La réponse à cette question — un dossier, ou cinq dossiers éparpillés — détermine le temps d'intégration.</li>
+  <li><strong>Rayon d'impact.</strong> Combien de fichiers devez-vous ouvrir pour livrer une nouvelle fonctionnalité, ou pour supprimer en toute sécurité une ancienne ? La structure contraint ce rayon d'impact ou le laisse se propager sans limites.</li>
+</ul>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Le modèle mental</span><p>Pensez à votre structure de dossiers comme à une <strong>carte</strong>. Une bonne carte regroupe les choses par leur relation dans le monde réel — pas par le matériau dont elles sont faites. Regrouper les fichiers par type (controllers, models) revient à trier les icônes d'une carte par leur forme. Regrouper par fonctionnalité revient à trier par quartier. L'un aide à naviguer ; l'autre est techniquement correct mais pratiquement inutile.</p></div>
+<p>La Loi de Conway — l'observation que les systèmes logiciels reflètent les structures de communication des équipes qui les construisent — s'applique ici aussi. Si votre équipe est organisée autour de capacités métier (une squad paiements, une squad commandes), une structure par fonctionnalité semblera naturelle et imposera les bonnes frontières. Une structure par couche se battra contre vous.</p>
+
+<h2 id="by-layer">Par couche : le défaut familier</h2>
+<p>L'organisation par couche regroupe les fichiers par leur rôle technique. Un projet Node ou Spring Boot typique finit par ressembler à quelque chose comme ça :</p>
+
+<figure class="blog-figure">
+  <pre><code>src/
+├─ controllers/
+│  ├─ OrderController.ts
+│  ├─ UserController.ts
+│  └─ BillingController.ts
+├─ services/
+│  ├─ OrderService.ts
+│  ├─ UserService.ts
+│  └─ BillingService.ts
+├─ repositories/
+│  ├─ OrderRepository.ts
+│  ├─ UserRepository.ts
+│  └─ BillingRepository.ts
+└─ models/
+   ├─ Order.ts
+   ├─ User.ts
+   └─ Invoice.ts</code></pre>
+  <figcaption>Structure par couche : chaque couche technique obtient son propre dossier de premier niveau. Ajouter une fonctionnalité signifie ajouter des fichiers dans les <em>quatre</em> dossiers.</figcaption>
+</figure>
+
+<p>Tous les tutoriels de frameworks web aboutissent ici. Rails le fait, le starter Spring Boot le fait, les générateurs Express le font. Cette familiarité est son principal atout.</p>
+<p><strong>Là où la structure par couche brille :</strong></p>
+<ul>
+  <li>Les petites apps avec deux ou trois fonctionnalités — la structure est si plate qu'elle a peu d'importance.</li>
+  <li>Les équipes où tout le monde travaille sur toutes les fonctionnalités ; la couche est l'unité de spécialisation.</li>
+  <li>Les prototypes et les outils internes où la rapidité de mise en place initiale prime sur la clarté à long terme.</li>
+</ul>
+<p><strong>Là où la structure par couche fait mal :</strong></p>
+<ul>
+  <li><em>Une seule fonctionnalité est dispersée dans plusieurs dossiers.</em> Ajouter une fonctionnalité « remboursement » signifie toucher <code>controllers/</code>, <code>services/</code>, <code>repositories/</code> et <code>models/</code>. C'est quatre dossiers pour ce qui est conceptuellement une seule chose.</li>
+  <li><em>Supprimer une fonctionnalité est un projet d'archéologie.</em> Comment savoir quels fichiers dans <code>services/</code> appartiennent à la facturation versus aux commandes ? Le nom du dossier ne vous le dit pas.</li>
+  <li><em>Les conflits de fusion se multiplient.</em> Chaque modification de fonctionnalité touche les mêmes fichiers au niveau des couches, provoquant des collisions quand deux développeurs travaillent en parallèle.</li>
+</ul>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">La falaise de mise à l'échelle</span><p>La structure par couche fonctionne bien jusqu'à environ 10–15 fonctionnalités. Au-delà, chaque dossier de premier niveau devient un <strong>tiroir à tout</strong> : des dossiers <code>services/</code> avec 40 fichiers, aucune propriété claire, et des pull requests qui touchent des fichiers qu'un relecteur n'a jamais vus avant.</p></div>
+
+<h2 id="by-feature">Par fonctionnalité : un changement vit dans un seul dossier</h2>
+<p>L'organisation par fonctionnalité regroupe les fichiers selon la tranche du produit qu'ils servent. Les couches techniques (controller, service, model) existent toujours — elles vivent juste <em>à l'intérieur</em> de chaque dossier de fonctionnalité au lieu d'être au premier niveau :</p>
+
+<figure class="blog-figure">
+  <pre><code>src/
+├─ orders/
+│  ├─ OrderController.ts
+│  ├─ OrderService.ts
+│  ├─ OrderRepository.ts
+│  └─ Order.ts
+├─ billing/
+│  ├─ BillingController.ts
+│  ├─ BillingService.ts
+│  ├─ BillingRepository.ts
+│  └─ Invoice.ts
+├─ auth/
+│  ├─ AuthController.ts
+│  ├─ AuthService.ts
+│  └─ User.ts
+└─ shared/
+   ├─ database.ts
+   ├─ logger.ts
+   └─ Money.ts</code></pre>
+  <figcaption>Structure par fonctionnalité : chaque concept produit possède son propre dossier. Ajouter une fonctionnalité de remboursement ajoute un seul dossier — rien d'autre ne bouge.</figcaption>
+</figure>
+
+<p><strong>Là où la structure par fonctionnalité brille :</strong></p>
+<ul>
+  <li><em>Un changement vit dans un seul dossier.</em> Ajouter un flux de remboursement signifie ajouter des fichiers dans <code>billing/</code> — aucun autre dossier n'est touché. Le rayon d'impact est petit et contenu.</li>
+  <li><em>Supprimer une fonctionnalité est simple.</em> Supprimez le dossier. Si quelque chose en dehors importe encore depuis lui, votre IDE vous le dira immédiatement.</li>
+  <li><em>La propriété est évidente.</em> L'équipe paiements possède <code>billing/</code> ; l'équipe identité possède <code>auth/</code>. Les outils de monorepo et les règles de revue de code peuvent l'imposer mécaniquement.</li>
+  <li><em>L'intégration est plus rapide.</em> Un nouveau développeur travaillant sur les commandes ne lit que <code>orders/</code>. Il n'a pas besoin de comprendre tout le codebase d'abord.</li>
+</ul>
+<p><strong>Là où la structure par fonctionnalité nécessite de l'attention :</strong></p>
+<ul>
+  <li><em>Le placement du code partagé est gênant.</em> Le type <code>Money</code> est utilisé à la fois par <code>orders/</code> et <code>billing/</code>. Doit-il vivre dans <code>orders/</code> ? Ça semble bizarre. Il finit dans <code>shared/</code> — qui peut lui-même devenir un second tiroir à tout si personne ne le possède.</li>
+  <li><em>Les dépendances entre fonctionnalités nécessitent de la discipline.</em> Si <code>orders/OrderService.ts</code> importe directement depuis <code>billing/BillingService.ts</code>, vous avez créé un couplage que la structure des dossiers ne peut pas voir. Les équipes utilisent des règles de lint (<code>eslint-plugin-import/no-restricted-paths</code>) ou des outils de frontières de modules (Nx, modules NestJS) pour les rendre explicites.</li>
+</ul>
+
+<h2 id="screaming">Screaming Architecture : que dit votre premier niveau ?</h2>
+<p>Uncle Bob (Robert C. Martin) a inventé le terme <strong>Screaming Architecture</strong> dans un célèbre billet de blog : « Que crie l'architecture de votre application ? Quand vous regardez la structure du répertoire de premier niveau, et les fichiers sources dans le package de plus haut niveau ; crient-ils : <em>Système de soins de santé</em>, ou <em>Système de comptabilité</em>, ou <em>Système de gestion des stocks</em> ? Ou crient-ils : <em>Rails</em>, ou <em>Spring/Hibernate</em>, ou <em>ASP.Net</em> ? »</p>
+<p>L'intuition est élégante : si vos dossiers de premier niveau sont <code>controllers/</code>, <code>models/</code>, <code>views/</code>, votre codebase crie <em>framework MVC</em>. Le framework est un outil — il ne devrait pas être la première chose qu'un lecteur rencontre.</p>
+<p>La Screaming Architecture (aussi appelée <strong>par domaine</strong>) pousse la structure par fonctionnalité un cran plus loin. Non seulement les fonctionnalités sont au premier niveau — mais les noms de ces fonctionnalités sont tirés directement du <em>langage métier</em> (le Langage Ubiquitaire du Domain-Driven Design), et non des rôles techniques :</p>
+
+<pre><code><span class="cmt">// Crie « plateforme e-commerce »</span>
+src/
+├─ catalog/          <span class="cmt">// le concept de domaine : un catalogue de produits</span>
+├─ ordering/         <span class="cmt">// le concept de domaine : passer et suivre des commandes</span>
+├─ fulfillment/      <span class="cmt">// le concept de domaine : préparation, emballage, expédition</span>
+├─ payments/         <span class="cmt">// le concept de domaine : débits, remboursements, factures</span>
+└─ identity/         <span class="cmt">// le concept de domaine : comptes, auth, permissions</span>
+
+<span class="cmt">// Comparez avec l'alternative qui crie « framework » :</span>
+src/
+├─ controllers/      <span class="cmt">// crie « MVC »</span>
+├─ models/           <span class="cmt">// crie « ORM »</span>
+├─ views/            <span class="cmt">// crie « moteur de templates »</span>
+└─ services/         <span class="cmt">// crie « pattern couche de service »</span></code></pre>
+
+<p>À l'intérieur de chaque dossier de domaine, la mise en page interne est laissée à l'équipe — et c'est bien. La promesse clé est que le <em>premier niveau</em> communique le métier, pas l'infrastructure. Un nouveau développeur (ou votre directeur technique, ou un expert métier du côté business) peut lire les dossiers de premier niveau et comprendre ce que fait le système <em>sans savoir comment il est construit</em>.</p>
+
+<h2 id="side-by-side">Comparaison côte à côte</h2>
+<p>Voici une évaluation honnête selon cinq dimensions pratiques :</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Dimension</th>
+      <th>Par couche</th>
+      <th>Par fonctionnalité</th>
+      <th>Par domaine (screaming)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Découvrabilité</th>
+      <td>Faible à grande échelle — « où est le code de facturation ? » n'a pas de réponse rapide</td>
+      <td>Élevée — un dossier par concept</td>
+      <td>Maximale — les noms de dossiers viennent du métier lui-même</td>
+    </tr>
+    <tr>
+      <th>Localité des changements</th>
+      <td>Mauvaise — un changement de fonctionnalité se disperse dans toutes les couches</td>
+      <td>Bonne — les changements se regroupent dans un dossier</td>
+      <td>Bonne — identique à par fonctionnalité, plus le langage de domaine explicite</td>
+    </tr>
+    <tr>
+      <th>Vitesse d'intégration</th>
+      <td>Lente — les nouveaux venus doivent comprendre toute la couche avant de toucher quoi que ce soit</td>
+      <td>Rapide — étudiez un dossier pour travailler sur une fonctionnalité</td>
+      <td>Maximale — les noms de domaine guident la compréhension sans contexte préalable</td>
+    </tr>
+    <tr>
+      <th>Risque de couplage</th>
+      <td>Élevé — les couches partagées deviennent des surfaces de couplage implicites</td>
+      <td>Moyen — les imports inter-fonctionnalités sont possibles mais visibles</td>
+      <td>Faible — contextes délimités explicites et frontières imposées</td>
+    </tr>
+    <tr>
+      <th>Risque de « Grande Boule de Boue »</th>
+      <td>Élevé — les couches deviennent des tiroirs à tout quand les fonctionnalités se multiplient</td>
+      <td>Moyen — le dossier shared/ peut croître sans limites</td>
+      <td>Faible — les frontières de domaine rendent la boue visible tôt</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="hybrid">Le hybride pragmatique sur lequel la plupart des bonnes équipes atterrissent</h2>
+<p>En pratique, les meilleures équipes ne choisissent pas une seule approche et ne l'appliquent pas partout avec une cohérence religieuse. Elles utilisent un hybride pragmatique : <strong>dossiers de fonctionnalité ou de domaine au premier niveau, petites couches techniques à l'intérieur de chacun</strong>.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 380" role="img" aria-labelledby="dgm-hybrid">
+    <title id="dgm-hybrid">Structure hybride : dossiers de domaine/fonctionnalité au premier niveau, couches techniques à l'intérieur de chacun.</title>
+    <defs>
+      <marker id="hybAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+
+    <!-- Top-level label -->
+    <text class="dgm-t-muted dgm-t-mono" x="380" y="28" text-anchor="middle" font-size="11">PRAGMATIC HYBRID — domain on top, layers inside</text>
+
+    <!-- Root node -->
+    <rect class="dgm-surface" x="310" y="42" width="140" height="38" rx="8" stroke-width="1.5"/>
+    <text class="dgm-t-strong" x="380" y="66" text-anchor="middle" font-size="14">src/</text>
+
+    <!-- Domain folders -->
+    <rect class="dgm-core" x="60" y="124" width="120" height="36" rx="8" stroke-width="1.5"/>
+    <text x="120" y="147" text-anchor="middle" font-size="13">orders/</text>
+
+    <rect class="dgm-core" x="320" y="124" width="120" height="36" rx="8" stroke-width="1.5"/>
+    <text x="380" y="147" text-anchor="middle" font-size="13">billing/</text>
+
+    <rect class="dgm-core" x="580" y="124" width="120" height="36" rx="8" stroke-width="1.5"/>
+    <text x="640" y="147" text-anchor="middle" font-size="13">shared/</text>
+
+    <!-- Connectors src → domain -->
+    <path class="dgm-flow" d="M380,80 L120,122" marker-end="url(#hybAcc)"/>
+    <path class="dgm-flow" d="M380,80 L380,122" marker-end="url(#hybAcc)"/>
+    <path class="dgm-flow" d="M380,80 L640,122" marker-end="url(#hybAcc)"/>
+
+    <!-- Inside orders/ -->
+    <rect class="dgm-adapter" x="14" y="206" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="67" y="225" text-anchor="middle" font-size="11">controller.ts</text>
+    <rect class="dgm-adapter" x="14" y="244" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="67" y="263" text-anchor="middle" font-size="11">service.ts</text>
+    <rect class="dgm-adapter" x="14" y="282" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="67" y="301" text-anchor="middle" font-size="11">repository.ts</text>
+    <rect class="dgm-adapter" x="14" y="320" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="67" y="339" text-anchor="middle" font-size="11">Order.ts</text>
+
+    <path class="dgm-line" d="M120,160 L67,204" marker-end="url(#hybAcc)"/>
+
+    <!-- Inside billing/ -->
+    <rect class="dgm-adapter" x="274" y="206" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="327" y="225" text-anchor="middle" font-size="11">controller.ts</text>
+    <rect class="dgm-adapter" x="274" y="244" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="327" y="263" text-anchor="middle" font-size="11">service.ts</text>
+    <rect class="dgm-adapter" x="274" y="282" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="327" y="301" text-anchor="middle" font-size="11">repository.ts</text>
+    <rect class="dgm-adapter" x="274" y="320" width="106" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="327" y="339" text-anchor="middle" font-size="11">Invoice.ts</text>
+
+    <path class="dgm-line" d="M380,160 L327,204" marker-end="url(#hybAcc)"/>
+
+    <!-- Inside shared/ -->
+    <rect class="dgm-driven" x="540" y="206" width="100" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="590" y="225" text-anchor="middle" font-size="11">Money.ts</text>
+    <rect class="dgm-driven" x="540" y="244" width="100" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="590" y="263" text-anchor="middle" font-size="11">logger.ts</text>
+    <rect class="dgm-driven" x="540" y="282" width="100" height="30" rx="6"/>
+    <text class="dgm-t-muted" x="590" y="301" text-anchor="middle" font-size="11">database.ts</text>
+
+    <path class="dgm-line" d="M640,160 L590,204" marker-end="url(#hybAcc)"/>
+  </svg>
+  <figcaption>L'hybride sur lequel la plupart des équipes convergent : <strong>domaine/fonctionnalité au premier niveau</strong>, puis de petites couches techniques à l'intérieur de chaque dossier. Les couches techniques sont toujours là — elles ne sont juste plus la première chose que vous voyez.</figcaption>
+</figure>
+
+<p>Cet hybride vous offre le meilleur des deux mondes :</p>
+<ul>
+  <li>Le <em>premier niveau crie votre métier</em> — les nouveaux venus savent immédiatement que c'est une app e-commerce, pas un squelette MVC générique.</li>
+  <li><em>Chaque fonctionnalité est autonome</em> — un changement dans le flux de facturation ne touche que <code>billing/</code>.</li>
+  <li><em>Les couches techniques existent toujours à l'intérieur de chaque dossier</em>, donc les développeurs qui pensent en termes de MVC ou de couches Clean Architecture ne sont pas perdus. Ils regardent juste à l'intérieur du dossier de fonctionnalité.</li>
+  <li><em>Un dossier <code>shared/</code></em> contient les préoccupations vraiment transverses (un objet-valeur <code>Money</code>, un logger, une connexion de base de données). La règle clé : si quelque chose est ajouté à <code>shared/</code>, il doit être extrait et possédé délibérément — et non déversé là comme échappatoire.</li>
+</ul>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Nommer le dossier partagé</span><p>Certaines équipes l'appellent <code>shared/</code>, d'autres <code>common/</code>, <code>lib/</code> ou <code>core/</code>. Le nom compte moins que la discipline : traitez-le comme une mini bibliothèque interne. Si un fichier est régulièrement modifié parallèlement à une fonctionnalité spécifique, il n'appartient pas à shared — il appartient à l'intérieur de cette fonctionnalité.</p></div>
+
+<h2 id="at-scale">À grande échelle : frontières imposées et monorepos</h2>
+<p>À mesure qu'un codebase grandit et que plusieurs équipes contribuent, les conventions de dossiers seules ne suffisent plus — un développeur peut toujours traverser une frontière avec un import relatif rapide. L'étape suivante consiste à rendre les frontières <em>imposées</em> :</p>
+<ul>
+  <li><strong>Les modules NestJS</strong> rendent les dépendances inter-modules explicites : vous n'avez accès qu'à ce qu'un autre module <code>exporte</code>. Un import qui traverse une frontière de module sans passer par l'API publique est une erreur de compilation.</li>
+  <li><strong>Les règles de frontière Nx</strong> vous permettent de déclarer quelles fonctionnalités ou bibliothèques sont autorisées à dépendre de quelles autres, puis de l'imposer comme erreur de lint en CI.</li>
+  <li><strong>Les Monorepos</strong> vont le plus loin : chaque domaine (orders, billing, auth) devient son propre package avec son propre <code>package.json</code>, ses propres tests et ses exports publiés explicites. Turborepo et Nx sont les outils dominants dans l'écosystème JavaScript pour gérer ça. La structure ressemble moins à un arbre de dossiers et plus à un graphe de packages — mais l'idée sous-jacente est identique : regrouper par capacité métier, rendre les frontières explicites, les imposer mécaniquement.</li>
+</ul>
+<p>Passer à un monorepo n'est pas toujours nécessaire. Beaucoup d'équipes fonctionnent heureusement avec un seul package et une structure hybride bien disciplinée pendant des années. Tournez-vous vers les outils de monorepo quand le couplage inter-équipes devient une vraie douleur — pas de façon préventive.</p>
+
+<h2 id="by-company-size">Recommandations par taille d'entreprise</h2>
+<p>La bonne structure dépend de l'endroit où votre organisation en est aujourd'hui. Voici une recommandation directe pour chaque stade :</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Stade</th>
+      <th>Structure à choisir</th>
+      <th>Pourquoi</th>
+      <th>Conseil du monde réel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Solo / startup pré-lancement</th>
+      <td>Par couche <em>ou</em> par fonctionnalité superficiellement</td>
+      <td>Vous avez 3–5 fonctionnalités. N'importe quelle structure fonctionne. Optimisez pour la vitesse et la simplicité.</td>
+      <td>Les défauts des tutoriels Rails/Express conviennent bien ici. Ne sur-ingénieriez pas.</td>
+    </tr>
+    <tr>
+      <th>Startup en croissance (5–20 ingénieurs)</th>
+      <td>Par fonctionnalité avec un dossier <code>shared/</code></td>
+      <td>Les fonctionnalités se multiplient. La structure par couche commence à faire mal. Un changement dans les paiements ne devrait pas se propager dans les commandes.</td>
+      <td>De nombreuses entreprises Série A réussies vivent ici : un dépôt, un service, des fonctionnalités comme dossiers de premier niveau.</td>
+    </tr>
+    <tr>
+      <th>Scale-up (20–100 ingénieurs)</th>
+      <td>Hybride (domaine en haut, couches à l'intérieur) + règles de lint pour les frontières</td>
+      <td>Les équipes possèdent des domaines. Le couplage accidentel inter-domaines est un risque réel. Imposez les frontières en CI.</td>
+      <td>C'est le point idéal de Nx/modules NestJS. L'app Rails principale de Shopify a adopté une séparation forte des domaines à ce stade.</td>
+    </tr>
+    <tr>
+      <th>Enterprise (100+ ingénieurs)</th>
+      <td>Monorepo avec des packages de domaine, ou services indépendants par contexte délimité</td>
+      <td>L'isolation au niveau du package, le déploiement indépendant et les APIs publiques versionnées entre les domaines deviennent nécessaires.</td>
+      <td>Google, Meta et Airbnb gèrent des monorepos géants avec une propriété stricte. Beaucoup d'entreprises vont dans l'autre sens : des microservices par domaine, ce qui est la Screaming Architecture poussée à sa conclusion logique.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">L'erreur courante</span><p>L'erreur structurelle la plus courante n'est pas de choisir la mauvaise approche — c'est de <strong>rester trop longtemps sur la mauvaise approche</strong>. Les équipes démarrent par couche, ressentent la douleur à 20 fonctionnalités, et ne refactorisent toujours pas parce que « la structure fonctionne, techniquement ». Une réorganisation de dossiers d'un après-midi à 15 fonctionnalités évite des mois de confusion à 50.</p></div>
+
+<h2 id="the-change-diagram">Voir la différence : ce qui s'allume quand vous livrez une fonctionnalité</h2>
+<p>La façon la plus concrète de ressentir la différence entre par couche et par fonctionnalité est de demander : <em>quelles boîtes s'allument quand j'ajoute une nouvelle fonctionnalité ?</em></p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 320" role="img" aria-labelledby="dgm-change">
+    <title id="dgm-change">Par couche : une nouvelle fonctionnalité touche les quatre boîtes de couches. Par fonctionnalité : une nouvelle fonctionnalité ne touche qu'une seule boîte.</title>
+    <defs>
+      <marker id="chgAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+
+    <!-- Left side: by-layer -->
+    <text class="dgm-t-muted dgm-t-mono" x="185" y="28" text-anchor="middle" font-size="11">BY LAYER — adding "refunds"</text>
+
+    <!-- Four highlighted (lit) boxes on by-layer side -->
+    <rect class="dgm-core" x="80" y="42" width="210" height="38" rx="8" stroke-width="2"/>
+    <text x="185" y="66" text-anchor="middle" font-size="13">controllers/  ← touched</text>
+
+    <rect class="dgm-core" x="80" y="92" width="210" height="38" rx="8" stroke-width="2"/>
+    <text x="185" y="116" text-anchor="middle" font-size="13">services/  ← touched</text>
+
+    <rect class="dgm-core" x="80" y="142" width="210" height="38" rx="8" stroke-width="2"/>
+    <text x="185" y="166" text-anchor="middle" font-size="13">repositories/  ← touched</text>
+
+    <rect class="dgm-core" x="80" y="192" width="210" height="38" rx="8" stroke-width="2"/>
+    <text x="185" y="216" text-anchor="middle" font-size="13">models/  ← touched</text>
+
+    <text class="dgm-t-accent" x="185" y="266" text-anchor="middle" font-size="12">4 folders touched</text>
+    <text class="dgm-t-muted" x="185" y="284" text-anchor="middle" font-size="11">high blast radius</text>
+
+    <!-- Divider -->
+    <line x1="380" y1="30" x2="380" y2="300" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+    <!-- Right side: by-feature -->
+    <text class="dgm-t-muted dgm-t-mono" x="575" y="28" text-anchor="middle" font-size="11">BY FEATURE — adding "refunds"</text>
+
+    <!-- Unlit (untouched) feature boxes -->
+    <rect class="dgm-adapter" x="470" y="42" width="210" height="38" rx="8" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="575" y="66" text-anchor="middle" font-size="13">orders/</text>
+
+    <rect class="dgm-core" x="470" y="92" width="210" height="38" rx="8" stroke-width="2"/>
+    <text x="575" y="116" text-anchor="middle" font-size="13">billing/  ← touched</text>
+
+    <rect class="dgm-adapter" x="470" y="142" width="210" height="38" rx="8" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="575" y="166" text-anchor="middle" font-size="13">auth/</text>
+
+    <rect class="dgm-adapter" x="470" y="192" width="210" height="38" rx="8" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="575" y="216" text-anchor="middle" font-size="13">shared/</text>
+
+    <text class="dgm-t-accent" x="575" y="266" text-anchor="middle" font-size="12">1 folder touched</text>
+    <text class="dgm-t-muted" x="575" y="284" text-anchor="middle" font-size="11">contained blast radius</text>
+  </svg>
+  <figcaption>Ajouter une fonctionnalité « remboursements ». À gauche (par couche), les quatre couches techniques s'allument — chaque dossier de couche est touché. À droite (par fonctionnalité), seul <code>billing/</code> s'allume. Le reste du codebase est structurellement isolé de ce changement.</figcaption>
+</figure>
+
+<p>Ce diagramme est l'argument le plus clair pour le regroupement par fonctionnalité. Le « rayon d'impact » n'est pas un concept abstrait — c'est le nombre de dossiers et de fichiers que vous ouvrez dans une seule pull request. Les relecteurs, les pipelines CI et git blame fonctionnent tous mieux quand un changement de fonctionnalité est un bloc cohésif, pas une traînée à travers chaque couche.</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Points clés à retenir</h3>
+<ul>
+  <li><strong>La structure, c'est l'architecture.</strong> Votre organisation de dossiers contrôle le couplage, la découvrabilité et le rayon d'impact de chaque changement futur.</li>
+  <li><strong>Par couche</strong> est familier et convient aux petites apps, mais devient un tiroir à tout au-delà de 10–15 fonctionnalités.</li>
+  <li><strong>Par fonctionnalité</strong> garde les changements locaux. Une nouvelle fonctionnalité touche un seul dossier. Supprimer une fonctionnalité signifie supprimer un seul dossier.</li>
+  <li><strong>La Screaming Architecture</strong> dit que le premier niveau doit décrire votre <em>métier</em>, pas votre framework. Si une partie prenante non technique peut lire vos noms de dossiers et comprendre ce que fait le système, vous avez réussi.</li>
+  <li><strong>L'hybride pragmatique</strong> sur lequel la plupart des bonnes équipes atterrissent : noms de domaine/fonctionnalité au premier niveau, petites couches techniques à l'intérieur de chaque dossier.</li>
+  <li><strong>Imposez les frontières quand vous grandissez.</strong> Les conventions de dossiers sont des suggestions ; les systèmes de modules, les règles de lint et les packages de monorepo en font des garanties.</li>
+  <li><strong>Réorganisez tôt</strong> — un refactoring de dossiers d'un après-midi à 15 fonctionnalités évite des mois de confusion à 50.</li>
+</ul>
+</div>
+<p>Maintenant que vous avez vu comment structurer le code à l'intérieur d'un seul service, la question naturelle suivante est ce qu'il faut faire quand un seul service ne suffit plus. Continuez la lecture : <a href="/blog/architecture/monolith-to-microservices">Monolithe → Microservices</a>.</p>3:["$","$L8",null,{"category":"architecture","slug":"structuring-code-feature-vs-layer","children":[["$","$L9",null,{"category":"architecture","slug":"structuring-code-feature-vs-layer","readingMinutes":14,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/fr/blog/architecture/structuring-code-feature-vs-layer","title":"Structurer un Codebase : Par Couche, Par Fonctionnalité ou Par Domaine ?","surface":"blog","category":"architecture","slug":"structuring-code-feature-vs-layer","labels":{"share":"Partager","copyLink":"Copier le lien","copied":"Copié !","close":"Fermer"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/fr/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/fr/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Code source & Architecture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Les fondamentaux de l'architecture logicielle",["$","span",null,{"aria-hidden":"true","children":" · "}],"Partie 4 sur 15"]}],["$","h1",null,{"className":"blog-article__title","children":"Structurer un Codebase : Par Couche, Par Fonctionnalité ou Par Domaine ?"}],["$","p",null,{"className":"blog-article__summary","children":"Vos dossiers de premier niveau doivent-ils s'appeler controllers/services/models, ou orders/billing/auth ? Ce choix discret façonne silencieusement la façon dont votre codebase grandit. Un tour pratique de la structure par couche, par fonctionnalité et de la Screaming Architecture — avec les compromis à chaque taille d'entreprise."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Par Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-04","children":"4 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"14 min de lecture"}],["$","$Lc",null,{"label":"vues"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Architecture logicielle",{"children":"Architecture logicielle"}],["$","li","Structure de projet",{"children":"Structure de projet"}],["$","li","Screaming Architecture",{"children":"Screaming Architecture"}],["$","li","Modularity",{"children":"Modularity"}],["$","li","Organisation du code",{"children":"Organisation du code"}],["$","li","Monorepo",{"children":"Monorepo"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"Qu'en avez-vous pensé ?","surface":"blog","category":"architecture","slug":"structuring-code-feature-vs-layer","reactionLabels":{"like":"J'aime","love":"Adoré","insightful":"Pertinent","clap":"Bravo"}}]
+10:["$","$L18",null,{"heading":"Lectures liées","intro":"Quelques articles proches pour poursuivre le même fil avec plus de contexte.","items":[{"post":{"slug":"layered-vs-vertical-slice-architecture","category":"architecture","title":"Architecture en couches ou Vertical Slice Architecture","summary":"L'architecture en couches semble ordonnée au début, tandis que les vertical slices rapprochent le changement de la fonctionnalité réelle. Un regard calme sur les deux approches, leurs forces et les signaux qui disent qu'il est temps de changer.","date":"2026-02-11","readingMinutes":6,"tags":["Architecture logicielle","Vertical Slice Architecture","Layered Architecture","Organisation du code","Modularity","Technical Debt"],"author":"Nguyen Le Phong","featured":false,"series":"foundations","seriesOrder":13},"categoryTitle":"Code source & Architecture","readingLabel":"6 min de lecture"},{"post":{"slug":"ports-and-adapters","category":"architecture","title":"Ports & Adapters (Hexagonal Architecture), Expliqués Simplement","summary":"Un guide accessible et riche en exemples sur l'Hexagonal Architecture : ce que sont vraiment les ports et les adapters, la règle unique qui la fait fonctionner, et exactement quelle dose en appliquer — que vous soyez un fondateur solo ou une équipe d'entreprise.","date":"2026-03-07","readingMinutes":16,"tags":["Architecture logicielle","Hexagonal Architecture","Ports and Adapters","Clean Architecture","Conception de systèmes","Dependency Inversion"],"author":"Nguyen Le Phong","featured":true,"series":"foundations","seriesOrder":1},"categoryTitle":"Code source & Architecture","readingLabel":"16 min de lecture"},{"post":{"slug":"choosing-boring-boundaries-on-purpose","category":"architecture","title":"Choosing Boring Boundaries on Purpose","summary":"A practical reflection on choosing simple software boundaries that make ownership, testing, and future change easier to reason about.","date":"2026-07-09","readingMinutes":5,"tags":["Software Architecture","Boundaries","Modularity","Maintenance","Product Engineering","Teamwork"],"author":"Nguyen Le Phong"},"categoryTitle":"Code source & Architecture","readingLabel":"5 min de lecture"},{"post":{"slug":"clean-vs-onion-vs-hexagonal","category":"architecture","title":"Clean, Onion & Hexagonal Architecture : Une étoile du nord, trois noms","summary":"Elles ressemblent à trois architectures rivales. En réalité, c'est la même idée — les dépendances pointent vers l'intérieur, les frameworks restent à la périphérie — dessinée de trois façons différentes. Voici ce que chacune apporte vraiment, et laquelle choisir.","date":"2026-03-06","readingMinutes":15,"tags":["Architecture logicielle","Clean Architecture","Onion Architecture","Hexagonal Architecture","Conception de systèmes","Dependency Inversion"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":2},"categoryTitle":"Code source & Architecture","readingLabel":"15 min de lecture"}],"sourceCategory":"architecture","sourceSlug":"structuring-code-feature-vs-layer"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"Les fondamentaux de l'architecture logicielle","children":[["$","$Lb",null,{"href":"/fr/blog/architecture/dependency-injection-and-ioc","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Précédemment"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Dependency Injection & Inversion of Control, Sans la Magie"}]]}],["$","$Lb",null,{"href":"/fr/blog/architecture/monolith-to-microservices","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["À suivre"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/fr/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Retour à Code source & Architecture"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"Sur cette page","surface":"blog"}]}]
+16:null

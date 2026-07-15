@@ -1,0 +1,14 @@
+{
+  "title": "Giữ data contract đủ nhỏ để tin được",
+  "summary": "Một reflection thực tế về cách thiết kế data contract hẹp, testable và đủ ổn định để team có thể dựa vào.",
+  "readingMinutes": 6,
+  "tags": [
+    "Software Architecture",
+    "Data Contracts",
+    "APIs",
+    "Reliability",
+    "Testing",
+    "Product Engineering"
+  ],
+  "html": "<p>Contract đó trông rất đầy đủ, và đó lại là một phần của vấn đề. Nó liệt kê mọi field có thể có người cần, vài optional shape, và vài value mà meaning phụ thuộc vào data đến từ đâu. Nó rộng rãi, nhưng khó tin. Cải thiện hữu ích đầu tiên không phải thêm field nữa. Đó là làm lời hứa nhỏ lại.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/keeping-data-contracts-small-enough-to-trust/small-data-contracts.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Các engineer review những data contract card gọn, schema block trừu tượng và test marker đơn giản trên một bàn architecture yên tĩnh.' />\n  <figcaption>Data contract an toàn hơn khi team giải thích và test được từng lời hứa bên trong nó.</figcaption>\n</figure>\n<p>Data contract không phải nơi để cất hy vọng. Nó là shared promise giữa producer và consumer. Khi promise quá rộng, mỗi người bắt đầu phụ thuộc vào một góc khác nhau của nó, và không ai chắc phần nào thật sự stable.</p>\n<p>Contract nhỏ dễ tin hơn vì dễ gọi tên hơn. Field này nghĩa là điều này. Value này luôn có mặt. Timestamp này dùng clock này. Identifier này thuộc owner này. Ngôn ngữ trở nên boring, và đó là dấu hiệu tốt.</p>\n<p>Contract nhỏ cũng làm change visible hơn. Nếu một consumer mới cần thêm data, team có thể decide contract có nên lớn lên không, một read model riêng có tốt hơn không, hay consumer đó đang với tay qua boundary không nên vượt.</p>\n<p>Ngược lại là all-purpose payload. Ban đầu nó tiện vì không ai cần request change. Về sau, producer sợ remove bất cứ thứ gì, còn consumer âm thầm phụ thuộc vào behavior chưa từng được review.</p>\n<p>Testing là pressure test hữu ích. Nếu contract quá mơ hồ để test rõ, nó có lẽ cũng quá mơ hồ để dựa vào. Contract tốt nên có example, validation và failure case mà teammate tương lai chạy được mà không cần biết toàn bộ lịch sử.</p>\n<p>Versioning cũng bớt kịch tính khi contract nhỏ. Promise hẹp dễ giữ compatible hơn. Promise rộng tạo accidental API surface area, và surface area vô tình thì già đi rất tệ.</p>\n<p>Trước khi thêm field tiếp theo, hãy hỏi contract còn đủ nhỏ để giải thích không. Nếu team gọi được owner của nó, test được meaning của nó, và mô tả được ai đang depend vào nó, contract không chỉ là data đi qua. Nó là architecture đang làm việc âm thầm.</p>"
+}

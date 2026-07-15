@@ -1,0 +1,246 @@
+1:"$Sreact.fragment"
+a:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+b:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+e:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+f:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+17:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+18:"$Sreact.suspense"
+1a:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1b:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1c:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta1c,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/fr/blog/culture/how-to-write-a-great-pull-request#article","headline":"Comment Écrire une Pull Request que les Gens Aiment Vraiment Réviser","description":"Une excellente pull request est un cadeau pour votre relecteur : petite, bien décrite, facile à accepter. L'anatomie d'une PR révisable — taille, titre, description, hygiène des commits et auto-revue — avec des exemples concrets avant/après.","inLanguage":"fr","url":"https://nguyenlephong.github.io/fr/blog/culture/how-to-write-a-great-pull-request","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/how-to-write-a-great-pull-request.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/fr/blog/culture/how-to-write-a-great-pull-request","datePublished":"2026-02-27","dateModified":"2026-02-27","keywords":"Culture d'ingénierie, Pull Requests, Revue de code, Git, Collaboration d'équipe, Productivité des développeurs","articleSection":"Culture d'ingénierie","isRelatedTo":[{"@type":"BlogPosting","headline":"L'Art de la Revue de Code : Critiquer le Code Sans Blesser les Personnes","url":"https://nguyenlephong.github.io/fr/blog/culture/how-to-review-code-kindly","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/how-to-review-code-kindly.jpg"},{"@type":"BlogPosting","headline":"Mentorer les Ingénieurs : Comment Faire Évoluer les Juniors vers le Senior","url":"https://nguyenlephong.github.io/fr/blog/culture/mentoring-engineers","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/mentoring-engineers.jpg"},{"@type":"BlogPosting","headline":"Kind Engineering : Pourquoi la Bienveillance Fait de Vous un Meilleur Ingénieur","url":"https://nguyenlephong.github.io/fr/blog/culture/how-to-be-a-kind-engineer","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/how-to-be-a-kind-engineer.jpg"},{"@type":"BlogPosting","headline":"Les Retours qui Atterrissent : Donner et Recevoir la Critique en tant qu'Ingénieur","url":"https://nguyenlephong.github.io/fr/blog/culture/giving-and-receiving-feedback","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/giving-and-receiving-feedback.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/fr/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--violet","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/fr/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Culture d'ingénierie\",\"item\":\"https://nguyenlephong.github.io/fr/blog/culture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Comment Écrire une Pull Request que les Gens Aiment Vraiment Réviser\",\"item\":\"https://nguyenlephong.github.io/fr/blog/culture/how-to-write-a-great-pull-request\"}]}"}}],"$L3","$L4"]}],["$L5","$L6","$L7"],"$L8"]}],"loading":null,"isPartial":false}
+9:Tdd9,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/fr/blog/culture/how-to-write-a-great-pull-request#faq","mainEntity":[{"@type":"Question","name":"Quelle taille devrait avoir une pull request ?","acceptedAnswer":{"@type":"Answer","text":"En règle générale, visez moins de 400 lignes de code modifiées. Plus important encore, pensez en termes de portée logique plutôt que de nombre brut de lignes : une PR devrait contenir un seul changement cohérent qui peut être compris, testé et annulé indépendamment. Si vous ne pouvez pas décrire la PR en une seule phrase sans le mot « et », elle est probablement trop grande."}},{"@type":"Question","name":"Qu'est-ce qui fait une bonne description de pull request ?","acceptedAnswer":{"@type":"Answer","text":"Une bonne description répond aux trois questions que votre relecteur se pose dans les dix premières secondes : Qu'est-ce qui a changé et où ? Pourquoi ce changement était-il nécessaire ? Comment vérifier que ça fonctionne ? Concrètement : une courte section « Quoi » résumant le changement, une section « Pourquoi » donnant la motivation ou le contexte du bug, et une section « Comment tester » avec des étapes de reproduction ou une commande de test. Pour les changements UI, une capture d'écran vaut cent mots. Les risques et les notes de rollback sont un bonus pour les changements sensibles."}},{"@type":"Question","name":"Comment diviser une grande pull request ?","acceptedAnswer":{"@type":"Answer","text":"Trois stratégies fonctionnent bien ensemble. Premièrement, séparez le refactoring des changements de comportement : restructurez dans une PR sans nouvelle logique, puis ajoutez la fonctionnalité dans la suivante. Deuxièmement, livrez l'infrastructure en premier — migrations, types et scaffolding — avant l'interface qui l'utilise, pour que chaque PR soit déployable indépendamment. Troisièmement, utilisez les feature flags pour merger du travail incomplet en toute sécurité derrière un toggle désactivé par défaut. Les PRs empilées (où la PR B est basée sur la PR A) sont une option plus avancée si votre équipe a le support d'outils."}},{"@type":"Question","name":"Dois-je d'abord réviser ma propre pull request ?","acceptedAnswer":{"@type":"Answer","text":"Oui, toujours. Avant de demander la revue, ouvrez le diff sur votre hébergeur de code et lisez-le comme si vous le voyiez pour la première fois. Cherchez les sorties de débogage oubliées, les tests manquants, les changements d'espaces blancs non intentionnels et la logique non évidente. Laissez des commentaires guidants sur tout ce qui nécessite du contexte avant l'arrivée de votre relecteur. L'auto-revue détecte les erreurs embarrassantes avant qu'elles ne deviennent des commentaires permanents de revue, et elle montre du respect pour le temps de votre relecteur."}},{"@type":"Question","name":"Que devrait contenir un message de commit ?","acceptedAnswer":{"@type":"Answer","text":"Un message de commit devrait avoir une courte ligne de sujet à l'impératif (50 caractères ou moins) décrivant ce que fait le commit. Utilisez le format des commits conventionnels : type(scope): sujet — par exemple 'fix(cart): add row-level lock to prevent oversell'. Si le pourquoi n'est pas évident dans le diff, ajoutez une ligne vide après le sujet et un bref corps expliquant la motivation ou toute décision de conception non évidente. Le diff montre ce qui a changé ; le message devrait expliquer pourquoi."}}]}3:["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$9"}}]
+10:T5705,<p>Vous connaissez celle-là. Elle arrive dans votre file de revue un mardi après-midi : une pull request intitulée <strong>« fixes »</strong>, un diff couvrant 2 347 lignes sur 41 fichiers, aucune description, et un joyeux « PTAL » en commentaire. Le cœur vous tombe. Vous l'ouvrez quand même. Vingt minutes plus tard, vous avez lu la même méthode trois fois, vous n'arrivez toujours pas à savoir quel problème elle résout, et vous avez laissé un seul commentaire nerveux : « ça a l'air bien dans l'ensemble, peut-être renommer cette variable ? » Vous venez de valider du code que vous n'avez pas compris.</p>
+<p>L'auteur n'était pas malveillant — il était probablement la tête dans le guidon, fier du travail, et a simplement oublié que livrer du code n'est que la moitié du travail. L'autre moitié consiste à le faire réviser, comprendre et merger en toute sécurité. Une pull request n'est pas une formalité à franchir avant de merger ; c'est une conversation, et comme toutes les conversations, elle se passe mieux quand quelqu'un fait l'effort d'être compris.</p>
+<p>Cet article porte sur cet effort : comment écrire des PRs que vos coéquipiers prennent vraiment plaisir à réviser — petites, ciblées, faciles à suivre et faciles à accepter.</p>
+
+<h2 id="pr-is-communication">Une PR est de la communication, pas seulement du code</h2>
+<p>Avant une seule ligne de diff, une pull request est un message à un autre être humain. Cet être humain a un temps limité, un contexte limité sur ce à quoi vous pensiez à 23h, et une dizaine d'autres choses qui se disputent son attention. Votre travail en tant qu'auteur est de faciliter son travail.</p>
+<p>Pensez au relecteur comme à votre audience, pas à votre juge. Il n'est pas là pour vous piéger — c'est un collaborateur qui vous aide à livrer quelque chose de solide. Plus vous l'aidez à comprendre le <em>pourquoi</em> derrière le changement, plus la revue sera rapide et de qualité. Une bonne description de PR est comme une lettre de motivation pour votre code : elle plante le décor, explique la motivation et dit au relecteur exactement quoi regarder.</p>
+<p>Ce changement de mentalité change tout. Une fois que vous arrêtez d'écrire des PRs pour vous-même et que vous commencez à les écrire pour votre relecteur, vous voudrez naturellement les rendre plus petites, les décrire mieux et les soigner avant de demander des regards.</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">La règle d'or du relecteur</span><p>Si un relecteur doit lire le code pour comprendre <em>pourquoi</em> le changement existe, la description de la PR n'a pas fait son travail. Le code explique <em>ce qui</em> a changé ; la description explique <em>pourquoi c'était nécessaire</em>.</p></div>
+
+<h2 id="keep-it-small">Gardez-la petite et focalisée</h2>
+<p>La chose la plus efficace que vous puissiez faire pour améliorer vos pull requests est de les rendre plus petites. Plus une PR est grande, moins elle est révisée minutieusement, plus elle prend de temps à merger, et plus de bugs passent au travers.</p>
+<p>Une bonne PR contient <strong>un seul changement logique</strong>. Pas un ticket, pas une fonctionnalité, pas le travail d'un sprint — une idée cohérente qui peut être comprise, testée et annulée indépendamment. « Ajouter l'upload d'avatar utilisateur » est un changement. « Ajouter l'upload d'avatar utilisateur et refactorer le contrôleur de profil et mettre à jour trois dépendances » est trois changements dans un seul manteau.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 780 320" role="img" aria-labelledby="dgm-prsize">
+    <title id="dgm-prsize">À mesure que la taille de la PR augmente, la qualité de la revue baisse et le temps de merge augmente.</title>
+    <defs>
+      <marker id="szAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <line class="dgm-line" x1="80" y1="260" x2="700" y2="260" stroke-width="1.5" marker-end="url(#szAcc)"/>
+    <line class="dgm-line" x1="80" y1="260" x2="80" y2="50" stroke-width="1.5" marker-end="url(#szAcc)"/>
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="296" text-anchor="middle" font-size="12">PR size (lines changed)</text>
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="30" text-anchor="middle" font-size="12">EFFECT ON REVIEW</text>
+    <path class="dgm-flow" d="M100,80 C200,85 300,130 460,200 C560,235 630,248 680,255" stroke-width="2.5" fill="none"/>
+    <text class="dgm-t-accent" x="108" y="70" font-size="12" font-weight="700">Review quality</text>
+    <text class="dgm-t-muted" x="108" y="83" font-size="11">(high to low)</text>
+    <path d="M100,245 C200,240 300,210 460,155 C560,120 630,95 680,75" stroke="#d97706" stroke-width="2.5" fill="none"/>
+    <text x="600" y="65" font-size="12" font-weight="700" fill="#d97706">Time to merge</text>
+    <text x="600" y="78" font-size="11" fill="#d97706">(low to high)</text>
+    <rect class="dgm-core" x="95" y="58" width="120" height="198" rx="6" opacity="0.18"/>
+    <text class="dgm-t-accent" x="155" y="278" text-anchor="middle" font-size="11" font-weight="700">Small PRs</text>
+    <text class="dgm-t-muted" x="155" y="291" text-anchor="middle" font-size="10">&lt; 400 lines</text>
+    <rect x="490" y="58" width="170" height="198" rx="6" fill="#d97706" opacity="0.08"/>
+    <text x="575" y="278" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">Large PRs</text>
+    <text x="575" y="291" text-anchor="middle" font-size="10" fill="#d97706">&gt; 1000 lines</text>
+  </svg>
+  <figcaption>À mesure que la taille d'une PR augmente, les relecteurs survolent plutôt que lisent, tamponnent plutôt que raisonnent, et les bugs passent au travers. Les PRs plus petites obtiennent une meilleure revue <em>et</em> mergent plus vite — les deux résultats s'améliorent en même temps.</figcaption>
+</figure>
+
+<h3 id="how-to-split">Comment diviser un grand travail</h3>
+<p>Les grandes fonctionnalités n'ont pas besoin d'arriver sous forme de grandes PRs. Quelques stratégies de division pratiques :</p>
+<ul>
+  <li><strong>Séparez le refactoring des changements de comportement.</strong> Première PR : renommer, restructurer, extraire — pas de nouvelle logique. Deuxième PR : la fonctionnalité réelle. Les relecteurs peuvent vérifier que le refactoring n'a pas d'effets secondaires, puis se concentrer entièrement sur la nouvelle logique.</li>
+  <li><strong>Livrez l'infrastructure en premier.</strong> Ajoutez la colonne de base de données, la migration, le type — tout ça sans aucune interface. Puis ajoutez l'interface qui l'utilise. Chaque PR est déployable indépendamment.</li>
+  <li><strong>Utilisez les feature flags.</strong> Mergez du travail incomplet derrière un flag désactivé par défaut. La PR est petite et sûre ; la fonctionnalité n'est pas « terminée » avant que vous activiez le flag.</li>
+  <li><strong>PRs empilées.</strong> La PR B dépend de la PR A. Certaines équipes utilisent des outils de PR empilées pour réviser chaque couche indépendamment. Si votre équipe n'utilise pas l'empilement, restez simple : terminez et mergez A d'abord, puis ouvrez B.</li>
+</ul>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Une heuristique utile</span><p>Si vous ne pouvez pas décrire votre PR en une seule phrase sans le mot « et », elle contient probablement plus d'un changement logique. Trouvez la couture et divisez.</p></div>
+
+<h2 id="title-and-description">Rédiger un titre et une description qui valent la lecture</h2>
+<p>Le titre est le titre de l'article. Il doit dire <em>ce qui</em> a changé et pourquoi ça compte, en une ligne. Évitez les verbes vagues comme « mettre à jour », « corriger des trucs », ou « modifications » et visez la spécificité. Voici des odeurs courantes de titre de PR et comment les corriger :</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Odeur de PR</th><th>Ce qui ne va pas</th><th>Version améliorée</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>« fixes »</th>
+      <td>Aucun contexte whatsoever — le relecteur doit lire chaque ligne pour deviner ce qui se passe.</td>
+      <td>« Fix race condition dans le checkout panier lors de sessions concurrentes »</td>
+    </tr>
+    <tr>
+      <th>« WIP : divers changements »</th>
+      <td>Signale que l'auteur n'est pas prêt. Les PR en Draft existent pour une raison.</td>
+      <td>Ouvrez en tant que Draft GitHub jusqu'à ce que ce soit vraiment prêt pour la revue.</td>
+    </tr>
+    <tr>
+      <th>« Update UserService »</th>
+      <td>Décrit où, pas quoi ni pourquoi. Chaque PR met à jour quelque chose.</td>
+      <td>« Ajouter le flux de vérification de changement d'email à UserService »</td>
+    </tr>
+    <tr>
+      <th>« JIRA-1234 »</th>
+      <td>Force le relecteur à ouvrir un deuxième onglet juste pour comprendre la motivation.</td>
+      <td>« Limiter l'API à 100 req/min par IP (JIRA-1234) » — le ticket comme contexte, pas comme substitut.</td>
+    </tr>
+    <tr>
+      <th>« Refactor + nouvelle fonctionnalité + bump deps »</th>
+      <td>Trois PRs dans un trench-coat. Chaque préoccupation mérite sa propre revue.</td>
+      <td>Divisez en trois PRs séparées et focalisées.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>La <strong>description</strong> est là où la vraie communication se passe. Une bonne description répond aux trois questions que tout relecteur se pose dans les dix premières secondes :</p>
+<ul>
+  <li><strong>Quoi</strong> a changé et où ?</li>
+  <li><strong>Pourquoi</strong> ce changement était-il nécessaire — le contexte, le bug, la user story ?</li>
+  <li><strong>Comment vérifier</strong> que ça fonctionne — étapes de test, captures d'écran, cas limites concernés ?</li>
+</ul>
+<p>Voici un avant-après pour rendre ça concret :</p>
+<pre><code><span class="cmt">--- AVANT (la PR « fixes » de 2 000 lignes) ---</span>
+
+<span class="kw">Titre :</span> <span class="str">fixes</span>
+
+<span class="kw">Description :</span> (vide)
+
+
+<span class="cmt">--- APRÈS (le même changement, rédigé pour un relecteur) ---</span>
+
+<span class="kw">Titre :</span> <span class="str">Fix race condition dans le checkout panier sur sessions concurrentes</span>
+
+<span class="kw">## Quoi</span>
+Deux requêtes de checkout concurrentes du même utilisateur pouvaient toutes les deux
+passer la vérification d'inventaire avant que l'une ou l'autre ne décrémente le
+compteur de stock, entraînant des surventes. Cette PR ajoute un verrou de ligne DB
+autour du décrément du stock.
+
+<span class="kw">## Pourquoi</span>
+Le support client a signalé 12 incidents de survente au cours des 30 derniers jours
+(voir Sentry issue #4421). La cause racine est deux requêtes en concurrence entre le
+SELECT et l'UPDATE sur la table d'inventaire.
+
+<span class="kw">## Comment tester</span>
+1. Lancer le nouveau test de régression de concurrence : npm test -- cart.concurrency
+2. En staging : ouvrir deux onglets de navigateur, cliquer sur « Acheter »
+   simultanément sur un produit avec stock = 1. Un seul devrait réussir.
+
+<span class="kw">## Risques / notes</span>
+- Le verrou est limité à une seule ligne produit ; n'affecte pas le débit
+  quand différents produits passent en caisse en même temps.
+- Pas de migration nécessaire — utilise SELECT FOR UPDATE sur la table existante.</code></pre>
+
+<h2 id="commit-hygiene">Hygiène des commits</h2>
+<p>La façon dont vous organisez vos commits compte — pas seulement pour satisfaire le processus, mais parce que les commits sont la trace permanente de comment un changement est venu à exister. Dans un an, quelqu'un (probablement vous) lancera <code>git blame</code> sur une ligne et suivra le hash de commit dans l'historique. Ce qu'il trouvera devrait raconter une histoire, pas ressembler à un flux de conscience.</p>
+<p>Un bon message de commit suit le format conventionnel : une ligne de sujet courte à l'impératif (50 caractères ou moins), une ligne vide optionnelle, et un corps optionnel expliquant <em>pourquoi</em> — pas ce que le diff montre déjà.</p>
+<pre><code><span class="cmt"># Le format conventionnel :</span>
+<span class="kw">type(scope): sujet impératif court</span>
+
+<span class="str">Corps optionnel : pourquoi ce changement a été fait, quel problème il résout,
+les décisions non évidentes et le raisonnement derrière elles.</span>
+
+<span class="cmt"># Exemples réels :</span>
+<span class="kw">fix(cart):</span> add row-level lock to prevent oversell on concurrent checkout
+
+<span class="kw">feat(auth):</span> add email-change verification flow
+
+<span class="kw">refactor(profile):</span> extract avatar upload to dedicated service</code></pre>
+<p>Au-delà du format du message, pensez à la <em>forme</em> des commits. Chaque commit devrait représenter une étape cohérente — un refactoring, un test, un nouveau comportement. Un relecteur qui regarde les commits individuels (plutôt que le diff entier) devrait pouvoir suivre la progression logique : « extraire la méthode → ajouter un test → implémenter le comportement » raconte une meilleure histoire que vingt commits « WIP » squashés à la dernière seconde.</p>
+<p>Utilisez le rebase interactif pour nettoyer une branche désordonnée avant d'ouvrir la PR. Vous n'avez pas besoin de commits parfaits dès le début — polissez-les avant de demander des regards.</p>
+
+<h2 id="self-review">Auto-revue avant de demander la revue</h2>
+<p>Avant de contacter un coéquipier, devenez votre propre premier relecteur. Ouvrez le diff sur GitHub (ou votre hébergeur de code) et lisez-le comme si vous n'aviez jamais vu le code. Ce changement de contexte détecte plus de problèmes que vous ne l'attendriez : les sorties de débogage oubliées, une fonction qui a trop grossi, un import que vous avez oublié de supprimer, un commentaire qui était vrai autrefois.</p>
+<p>Une checklist d'auto-revue qui mérite d'être parcourue :</p>
+<ul>
+  <li><strong>Lisez le diff de haut en bas.</strong> Ne survolez pas. Faites semblant de le voir pour la première fois.</li>
+  <li><strong>Vérifiez les restes de débogage.</strong> <code>console.log</code>, commentaires TODO marqués « supprimer », blocs commentés, valeurs temporaires codées en dur.</li>
+  <li><strong>Vérifiez que les tests sont là.</strong> Si vous avez ajouté de la logique, y a-t-il un test ? Si vous avez corrigé un bug, y a-t-il un test de régression ?</li>
+  <li><strong>Cherchez les changements non intentionnels.</strong> Agitation des espaces blancs, fichiers reformatés, dérive de portée accidentelle. Déplacez-les dans une PR séparée ou annulez-les.</li>
+  <li><strong>Laissez vous-même des commentaires guidants.</strong> Si une section n'est pas évidente, ajoutez un commentaire PR expliquant le raisonnement avant que votre relecteur le voie. Ce n'est pas un signe de faiblesse — c'est de la considération.</li>
+</ul>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Une règle simple</span><p>Si vous ne seriez pas à l'aise avec un ingénieur senior révisant la PR à froid en ce moment — sans votre explication — elle n'est pas prête à sortir. Corrigez d'abord, puis demandez la revue.</p></div>
+<p>L'auto-revue rapporte aussi un dividende égoïste : elle détecte les erreurs embarrassantes avant qu'elles ne deviennent des commentaires permanents dans l'historique de revue. Tout le monde a une histoire de la faute de frappe qu'il a repérée dix secondes après avoir appuyé sur « Demander la revue ». Dix minutes d'auto-revue élimine la plupart de celles-là.</p>
+
+<h2 id="responding">Répondre à la revue</h2>
+<p>Une PR n'est pas terminée quand vous poussez le code — elle est terminée quand elle merge. Entre ces deux événements se trouve le cycle de revue, et la façon dont vous gérez les retours compte autant que le code lui-même.</p>
+<p>Quelques principes qui gardent les revues en mouvement et les relations intactes :</p>
+<ul>
+  <li><strong>Répondez à chaque commentaire.</strong> Même juste pour dire « fait » ou « bon point, corrigé dans le dernier commit ». Le silence laisse les relecteurs se demander si vous avez vu leur note.</li>
+  <li><strong>Décrivez votre correctif quand vous le poussez.</strong> « Corrigé dans le dernier commit — déplacé la logique dans un helper et ajouté un test » est bien plus clair qu'un nouveau commit sans contexte.</li>
+  <li><strong>Résolvez les fils de manière réfléchie.</strong> Dans la plupart des équipes, c'est le commentateur qui résout quand il est satisfait. Ne vous auto-résolvez pas sans reconnaître le retour. Si vous n'êtes pas sûr de la convention, demandez.</li>
+  <li><strong>Soyez en désaccord avec respect.</strong> Si vous pensez qu'une suggestion est fausse, dites-le clairement et avec du raisonnement — ne l'ignorez pas simplement. « J'ai envisagé cette approche, mais [raison] — heureux d'en discuter si vous vous sentez fortement » maintient la conversation professionnelle et productive. Voir aussi : <a href="/blog/culture/how-to-review-code-kindly">comment réviser le code avec bienveillance</a> pour la perspective du relecteur sur la même conversation.</li>
+  <li><strong>Re-demandez la revue explicitement.</strong> Après avoir adressé les retours, n'attendez pas que les relecteurs le remarquent. Re-demandez la revue et laissez un court résumé : « Adressé tous les commentaires. Changements principaux : extrait l'utilitaire, ajouté deux tests, gardé l'approche originale pour X parce que Y. »</li>
+</ul>
+
+<h2 id="by-team-size">Comment les normes de PR évoluent selon la taille de l'équipe</h2>
+<p>Ce qui fait une excellente PR n'est pas fixe — ça évolue à mesure que l'équipe grandit et que la base de code mûrit. Voici comment les attentes évoluent :</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Contexte d'équipe</th><th>Ce qui compte le plus</th><th>Normes pratiques</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Solo / freelance</th>
+      <td>Vous-du-futur est le relecteur. Les PRs sont la documentation des décisions pour quand vous reviendrez au code dans six mois.</td>
+      <td>Même sans relecteur : un titre clair, un bref « pourquoi » dans la description. Des messages de commit qui rendent <code>git log</code> lisible plus tard.</td>
+    </tr>
+    <tr>
+      <th>Petite équipe (2–8)</th>
+      <td>La vitesse compte. Tout le monde connaît la base de code. Les revues sont conversationnelles. La confiance est élevée.</td>
+      <td>Gardez les PRs petites et rapides. Les descriptions peuvent être plus légères — une phrase ou deux de contexte. Une revue async avec un retour le même jour est une attente raisonnable.</td>
+    </tr>
+    <tr>
+      <th>Équipe de taille moyenne (10–50)</th>
+      <td>Les relecteurs peuvent ne pas connaître tout le contexte. L'intégration est constante. Les changements couvrent les équipes.</td>
+      <td>Descriptions complètes quoi/pourquoi/comment. Captures d'écran pour le travail UI. Un plan de test. Les changements inter-équipes nécessitent un soin supplémentaire et possiblement une revue plus large.</td>
+    </tr>
+    <tr>
+      <th>Grande / entreprise (50+)</th>
+      <td>Les relecteurs sont parfois des inconnus. La conformité, les pistes d'audit et les revues d'exactitude comptent. Des SLAs de délai d'exécution existent.</td>
+      <td>Templates PR formels imposés par les outils. Approbations requises. Revue de sécurité pour les changements sensibles. Liens vers les docs de conception et les tickets. Plan de rollback pour les changements risqués.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Une équipe startup de quatre personnes n'a pas besoin d'un plan de rollback dans chaque description de PR. Une banque en a besoin. Adaptez la cérémonie aux enjeux, et revisitez les normes à mesure que l'équipe grandit — ce qui fonctionnait à dix ingénieurs semblera insuffisant à cinquante.</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Points clés à retenir</h3>
+<ul>
+  <li><strong>Une PR est un message à un humain.</strong> Écrivez-la pour votre relecteur, pas pour vous-même. Son temps et son contexte sont limités.</li>
+  <li><strong>Gardez-la petite et focalisée.</strong> Un changement logique par PR. Séparez le refactoring des changements de comportement. Utilisez les feature flags pour merger du travail incomplet en toute sécurité derrière un toggle.</li>
+  <li><strong>Titre + description = orientation.</strong> Répondez à ce qui a changé, pourquoi c'était nécessaire et comment vérifier. Le code montre le quoi ; la description fournit le pourquoi.</li>
+  <li><strong>Un historique de commits propre raconte une histoire.</strong> Messages conventionnels, commits logiques, un rebase soigné avant de demander la revue.</li>
+  <li><strong>Auto-revue en premier.</strong> Lisez votre propre diff sur GitHub avant quiconque d'autre. Laissez des commentaires guidants. Détectez les erreurs évidentes vous-même.</li>
+  <li><strong>Fermez la boucle sur les retours.</strong> Répondez à chaque commentaire, re-demandez la revue après avoir adressé les notes, et soyez en désaccord avec du raisonnement — jamais avec le silence.</li>
+  <li><strong>Adaptez la cérémonie à la taille de l'équipe.</strong> Une startup de quatre personnes et une banque de 500 personnes ont besoin de normes PR différentes. Revisitez les vôtres à mesure que vous grandissez.</li>
+</ul>
+</div>
+
+<p>La prochaine étape est l'autre côté de la table : comment la personne qui reçoit votre PR devrait donner des retours qui aident plutôt que piquent. Si vous avez déjà écrit une PR soigneusement rédigée pour ne recevoir en retour qu'un sec « c'est faux, réécrivez », vous apprécierez <a href="/blog/culture/giving-and-receiving-feedback">Les Retours qui Atterrissent</a> — la suite de cet article.</p>4:["$","$La",null,{"category":"culture","slug":"how-to-write-a-great-pull-request","children":[["$","$Lb",null,{"category":"culture","slug":"how-to-write-a-great-pull-request","readingMinutes":13,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lc",null,{"url":"https://nguyenlephong.github.io/fr/blog/culture/how-to-write-a-great-pull-request","title":"Comment Écrire une Pull Request que les Gens Aiment Vraiment Réviser","surface":"blog","category":"culture","slug":"how-to-write-a-great-pull-request","labels":{"share":"Partager","copyLink":"Copier le lien","copied":"Copié !","close":"Fermer"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Ld",null,{"href":"/fr/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Ld",null,{"href":"/fr/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Culture d'ingénierie"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Une ingénierie bienveillante et efficace",["$","span",null,{"aria-hidden":"true","children":" · "}],"Partie 3 sur 5"]}],["$","h1",null,{"className":"blog-article__title","children":"Comment Écrire une Pull Request que les Gens Aiment Vraiment Réviser"}],["$","p",null,{"className":"blog-article__summary","children":"Une excellente pull request est un cadeau pour votre relecteur : petite, bien décrite, facile à accepter. L'anatomie d'une PR révisable — taille, titre, description, hygiène des commits et auto-revue — avec des exemples concrets avant/après."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Par Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-02-27","children":"27 février 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"13 min de lecture"}],["$","$Le",null,{"label":"vues"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Culture d'ingénierie",{"children":"Culture d'ingénierie"}],["$","li","Pull Requests",{"children":"Pull Requests"}],["$","li","Revue de code",{"children":"Revue de code"}],["$","li","Git",{"children":"Git"}],["$","li","Collaboration d'équipe",{"children":"Collaboration d'équipe"}],["$","li","Productivité des développeurs",{"children":"Productivité des développeurs"}]]}]]}],["$","$Lf",null,{"html":"$10"}],"$L11","$L12"]}]]}],"$L13","$L14","$L15"]}],"$L16"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+7:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+8:["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]
+11:["$","$L1a",null,{"prompt":"Qu'en avez-vous pensé ?","surface":"blog","category":"culture","slug":"how-to-write-a-great-pull-request","reactionLabels":{"like":"J'aime","love":"Adoré","insightful":"Pertinent","clap":"Bravo"}}]
+12:["$","section",null,{"className":"blog-faq","aria-labelledby":"blog-faq-heading","children":[["$","h2",null,{"id":"blog-faq-heading","className":"blog-faq__heading","children":"Questions fréquentes"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Quelle taille devrait avoir une pull request ?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"En règle générale, visez moins de 400 lignes de code modifiées. Plus important encore, pensez en termes de portée logique plutôt que de nombre brut de lignes : une PR devrait contenir un seul changement cohérent qui peut être compris, testé et annulé indépendamment. Si vous ne pouvez pas décrire la PR en une seule phrase sans le mot « et », elle est probablement trop grande."}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Qu'est-ce qui fait une bonne description de pull request ?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Une bonne description répond aux trois questions que votre relecteur se pose dans les dix premières secondes : Qu'est-ce qui a changé et où ? Pourquoi ce changement était-il nécessaire ? Comment vérifier que ça fonctionne ? Concrètement : une courte section « Quoi » résumant le changement, une section « Pourquoi » donnant la motivation ou le contexte du bug, et une section « Comment tester » avec des étapes de reproduction ou une commande de test. Pour les changements UI, une capture d'écran vaut cent mots. Les risques et les notes de rollback sont un bonus pour les changements sensibles."}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Comment diviser une grande pull request ?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Trois stratégies fonctionnent bien ensemble. Premièrement, séparez le refactoring des changements de comportement : restructurez dans une PR sans nouvelle logique, puis ajoutez la fonctionnalité dans la suivante. Deuxièmement, livrez l'infrastructure en premier — migrations, types et scaffolding — avant l'interface qui l'utilise, pour que chaque PR soit déployable indépendamment. Troisièmement, utilisez les feature flags pour merger du travail incomplet en toute sécurité derrière un toggle désactivé par défaut. Les PRs empilées (où la PR B est basée sur la PR A) sont une option plus avancée si votre équipe a le support d'outils."}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Dois-je d'abord réviser ma propre pull request ?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Oui, toujours. Avant de demander la revue, ouvrez le diff sur votre hébergeur de code et lisez-le comme si vous le voyiez pour la première fois. Cherchez les sorties de débogage oubliées, les tests manquants, les changements d'espaces blancs non intentionnels et la logique non évidente. Laissez des commentaires guidants sur tout ce qui nécessite du contexte avant l'arrivée de votre relecteur. L'auto-revue détecte les erreurs embarrassantes avant qu'elles ne deviennent des commentaires permanents de revue, et elle montre du respect pour le temps de votre relecteur."}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Que devrait contenir un message de commit ?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Un message de commit devrait avoir une courte ligne de sujet à l'impératif (50 caractères ou moins) décrivant ce que fait le commit. Utilisez le format des commits conventionnels : type(scope): sujet — par exemple 'fix(cart): add row-level lock to prevent oversell'. Si le pourquoi n'est pas évident dans le diff, ajoutez une ligne vide après le sujet et un bref corps expliquant la motivation ou toute décision de conception non évidente. Le diff montre ce qui a changé ; le message devrait expliquer pourquoi."}}]]}]]}]]}]
+13:["$","$L1b",null,{"heading":"Lectures liées","intro":"Quelques articles proches pour poursuivre le même fil avec plus de contexte.","items":[{"post":{"slug":"how-to-review-code-kindly","category":"culture","title":"L'Art de la Revue de Code : Critiquer le Code Sans Blesser les Personnes","summary":"La revue de code est le moment où la culture d'équipe se forge ou se brise. Un guide pratique pour réviser le code afin qu'il soit meilleur ET que l'auteur en ressorte plus fort — des formulations concrètes, une checklist pour le relecteur, et les habitudes qui rendent les revues toxiques en silence.","date":"2026-03-01","readingMinutes":14,"tags":["Culture d'ingénierie","Revue de code","Pull Requests","Feedback","Collaboration d'équipe","Mentorat"],"author":"Nguyen Le Phong","featured":true,"series":"kind-engineering","seriesOrder":1},"categoryTitle":"Culture d'ingénierie","readingLabel":"14 min de lecture"},{"post":{"slug":"mentoring-engineers","category":"culture","title":"Mentorer les Ingénieurs : Comment Faire Évoluer les Juniors vers le Senior","summary":"Les grandes équipes se cultivent, elles ne sont pas seulement recrutées. Issu de la direction d'équipes d'ingénierie : comment mentorer pour que les personnes progressent vite — le binômage, la revue de code comme enseignement, l'épreuve de la bonne taille, et les changements de mentalité qui transforment un junior en quelqu'un à qui vous feriez confiance pour tout.","date":"2026-02-24","readingMinutes":14,"tags":["Culture d'ingénierie","Mentorat","Évolution de carrière","Leadership","Collaboration d'équipe","Revue de code"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":5},"categoryTitle":"Culture d'ingénierie","readingLabel":"14 min de lecture"},{"post":{"slug":"how-to-be-a-kind-engineer","category":"culture","title":"Kind Engineering : Pourquoi la Bienveillance Fait de Vous un Meilleur Ingénieur","summary":"La bienveillance n'est pas de la gentillesse, et ce n'est pas de la faiblesse. C'est un multiplicateur de force — des retours plus clairs, des incidents plus sûrs, des coéquipiers qui progressent plus vite. Ce que le « kind engineering » signifie vraiment, et comment le pratiquer dans les revues de code, les incidents et le travail quotidien.","date":"2026-02-28","readingMinutes":13,"tags":["Culture d'ingénierie","Kind Engineering","Sécurité psychologique","Empathie","Collaboration d'équipe","Leadership"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":2},"categoryTitle":"Culture d'ingénierie","readingLabel":"13 min de lecture"},{"post":{"slug":"giving-and-receiving-feedback","category":"culture","title":"Les Retours qui Atterrissent : Donner et Recevoir la Critique en tant qu'Ingénieur","summary":"La plupart des ingénieurs n'ont jamais appris à donner des retours — ni à les recevoir. Un guide de terrain pour des retours précis, bienveillants et actionnables, et pour rester ouvert quand c'est vous qui les recevez, avec des scripts prêts à l'emploi.","date":"2026-02-25","readingMinutes":13,"tags":["Culture d'ingénierie","Feedback","Communication","Sécurité psychologique","Mentorat","Collaboration d'équipe"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":4},"categoryTitle":"Culture d'ingénierie","readingLabel":"13 min de lecture"}],"sourceCategory":"culture","sourceSlug":"how-to-write-a-great-pull-request"}]
+14:["$","nav",null,{"className":"blog-series-nav","aria-label":"Une ingénierie bienveillante et efficace","children":[["$","$Ld",null,{"href":"/fr/blog/culture/how-to-be-a-kind-engineer","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Précédemment"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Kind Engineering : Pourquoi la Bienveillance Fait de Vous un Meilleur Ingénieur"}]]}],["$","$Ld",null,{"href":"/fr/blog/culture/giving-and-receiving-feedback","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["À suivre"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Les Retours qui Atterrissent : Donner et Recevoir la Critique en tant qu'Ingénieur"}]]}]]}]
+15:["$","footer",null,{"className":"blog-article__footer","children":["$","$Ld",null,{"href":"/fr/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Retour à Culture d'ingénierie"]}]}]
+16:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1c",null,{"label":"Sur cette page","surface":"blog"}]}]
+19:null

@@ -1,0 +1,35 @@
+{
+  "slug": "thinking-fast-and-slow-tu-duy-nhanh-va-cham",
+  "title": "Thinking, Fast and Slow: Catching My Mind Moving Too Quickly",
+  "summary": "A book reflection on Daniel Kahneman's Thinking, Fast and Slow, centered on everyday moments where quick judgment feels confident before slow thinking has checked the evidence.",
+  "cardSummary": "The mind can feel certain before it has done the work. That is exactly when it is worth slowing down.",
+  "date": "2026-04-18",
+  "readingMinutes": 4,
+  "tags": [
+    "Book Notes",
+    "Thinking Fast and Slow",
+    "Daniel Kahneman",
+    "Thinking",
+    "Decision Making"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": true,
+  "topic": "sach",
+  "baseLocale": "en",
+  "locales": [
+    "en",
+    "vi"
+  ],
+  "book": {
+    "title": "Thinking, Fast and Slow",
+    "originalTitle": "Thinking, Fast and Slow",
+    "authors": [
+      "Daniel Kahneman"
+    ],
+    "publisher": "Farrar, Straus and Giroux",
+    "published": "2011",
+    "isbn": "9780374275631 (hardcover)",
+    "note": "Bài viết này là ghi chú đọc và chiêm nghiệm cá nhân từ cuốn sách, không thay thế cho việc đọc tác phẩm gốc."
+  },
+  "html": "<p>In code review, my brain sometimes decides before my eyes have read enough context. That is the kind of everyday moment that made Thinking, Fast and Slow stay with me. The book is useful not because it gives a sentence to repeat, but because it gives a better way to notice what is already happening.</p>\n<p>The book gave me a calmer way to notice when confidence arrives before evidence. I read it less as a summary of a subject and more as a tool for looking at work, decisions, and relationships with a little more discipline.</p>\n<figure class=\"blog-figure blog-photo-panorama\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/notes/thinking-fast-and-slow-tu-duy-nhanh-va-cham/second-pass-code-review.webp\" width=\"1600\" height=\"900\" loading=\"lazy\" decoding=\"async\" alt=\"A developer pauses during code review with notes open, giving a quick judgment a second pass.\" />\n  <figcaption>The useful pause begins when the first confident answer is asked to survive one more pass through the evidence.</figcaption>\n</figure>\n<p>The practical lesson is that ideas become valuable only when they survive contact with real constraints. A framework should help us ask better questions: what is the incentive, what is the trade-off, what evidence is missing, and who carries the cost if the idea is wrong?</p>\n<figure class=\"blog-figure blog-photo-figure\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/notes/thinking-fast-and-slow-tu-duy-nhanh-va-cham/independent-notes-before-meeting.webp\" width=\"1440\" height=\"960\" loading=\"lazy\" decoding=\"async\" alt=\"Teammates write independent notes before a meeting discussion to reduce the pull of first impressions.\" />\n  <figcaption>A meeting becomes more honest when the first confident voice does not get to become the room's default answer.</figcaption>\n</figure>\n<p>Fast thinking is useful, but high-stakes decisions need a second pass from the slower part of the mind. This is why the book feels relevant beyond its original topic. It helps turn vague impressions into things that can be discussed, tested, and improved.</p>\n<p>I do not want to treat any book as a complete answer. A good book should make the reader more attentive, not more certain too quickly. The useful part is the pause it creates before the next decision.</p>\n<p>The practical habit is not to distrust every instinct, but to test instinct when the cost of being wrong is real. That is the note I want to keep: learning is not collecting impressive concepts, but letting a concept make the next ordinary choice a little more honest.</p>\n<figure class=\"blog-figure blog-photo-figure\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/notes/thinking-fast-and-slow-tu-duy-nhanh-va-cham/checklist-outside-view.webp\" width=\"1440\" height=\"960\" loading=\"lazy\" decoding=\"async\" alt=\"A checklist and blank assumption cards help separate instinct from evidence before a costly decision.\" />\n  <figcaption>Instinct is easier to use wisely when the facts, assumptions, and possible cost are visible on the table.</figcaption>\n</figure>"
+}

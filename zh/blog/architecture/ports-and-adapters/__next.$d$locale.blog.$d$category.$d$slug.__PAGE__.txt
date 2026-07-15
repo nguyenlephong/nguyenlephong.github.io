@@ -1,0 +1,338 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+5:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+f:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+10:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+11:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+15:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T995,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters#article","headline":"Ports & Adapters（六边形架构），简单讲清楚","description":"一篇友好、示例驱动的六边形架构指南：ports 和 adapters 到底是什么、让它运转的那条核心规则，以及究竟该用多少——无论你是独立创业者还是企业级团队。","inLanguage":"zh","url":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ports-and-adapters.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters","datePublished":"2026-03-07","dateModified":"2026-03-07","keywords":"软件架构, Hexagonal Architecture, Ports and Adapters, Clean Architecture, 系统设计, Dependency Inversion","articleSection":"源码与架构","isRelatedTo":[{"@type":"BlogPosting","headline":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字","url":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/clean-vs-onion-vs-hexagonal.jpg"},{"@type":"BlogPosting","headline":"Hexagonal Architecture in Practice","url":"https://nguyenlephong.github.io/en/blog/architecture/hexagonal-architecture-in-practice","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/hexagonal-architecture-in-practice.jpg"},{"@type":"BlogPosting","headline":"单体、模块化单体、微服务：一份诚实的决策指南","url":"https://nguyenlephong.github.io/zh/blog/architecture/monolith-to-microservices","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/monolith-to-microservices.jpg"},{"@type":"BlogPosting","headline":"微前端：何时值得，以及它们真正的代价","url":"https://nguyenlephong.github.io/zh/blog/architecture/micro-frontends-when-why-and-cost","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/micro-frontends-when-why-and-cost.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/zh/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"博客\",\"item\":\"https://nguyenlephong.github.io/zh/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"源码与架构\",\"item\":\"https://nguyenlephong.github.io/zh/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Ports & Adapters（六边形架构），简单讲清楚\",\"item\":\"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters\"}]}"}}],null,["$","$L3",null,{"category":"architecture","slug":"ports-and-adapters","children":[["$","$L4",null,{"category":"architecture","slug":"ports-and-adapters","readingMinutes":16,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L5",null,{"url":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters","title":"Ports & Adapters（六边形架构），简单讲清楚","surface":"blog","category":"architecture","slug":"ports-and-adapters","labels":{"share":"分享","copyLink":"复制链接","copied":"已复制！","close":"关闭"}}],"$L6"]}],"$L7","$L8","$L9"]}],"$La"]}]]}],["$Lb","$Lc","$Ld"],"$Le"]}],"loading":null,"isPartial":false}
+12:T6d58,<p>你一定有过这种感受：一个本该花一下午完成的功能，结果耗掉了三天——只因为那个“小改动”（改一下发送邮件的方式）牵连了十几个文件。支付代码知道数据库的存在，数据库代码知道 Web 请求的细节，而夹在中间、几乎被淹没的，才是真正让你的产品<em>成为你产品</em>的那些业务规则。</p>
+<p><strong>Ports &amp; Adapters</strong>（你也会听到它叫 <em>Hexagonal Architecture</em>——六边形架构，由 Alistair Cockburn 于 2005 年提出）是一种代码组织方式，专门用来避免上面这种情况。它不是框架，不需要安装，适用于任何语言。说白了就是一个想法穿了件好听的外衣。我们来一步一步拆开它，配上图解和真实示例，读完你就能清楚地知道什么时候该用它——什么时候不该。</p>
+
+<h2 id="the-problem">问题所在：代码“长歪了”</h2>
+<p>大多数应用最初都一样讨人喜欢——一个 controller 调用一个 service，service 和数据库及几个第三方服务打交道，皆大欢喜。麻烦在于<em>时间一长</em>会发生什么。下面这段 checkout 逻辑只有几个月的历史，已经让人头疼了：</p>
+<pre><code><span class="cmt">// checkout.ts — 所有东西搅在一起</span>
+<span class="kw">class</span> OrderService {
+  <span class="kw">async</span> checkout(cart: Cart) {
+    <span class="kw">const</span> db = <span class="kw">new</span> PgClient(process.env.DB_URL)        <span class="cmt">// 绑定了具体的数据库</span>
+    <span class="kw">const</span> stripe = <span class="kw">new</span> Stripe(process.env.STRIPE_KEY)   <span class="cmt">// 绑定了具体的第三方服务</span>
+    <span class="kw">const</span> sg = <span class="kw">new</span> SendGrid(process.env.SENDGRID_KEY)   <span class="cmt">// 又一个第三方服务</span>
+
+    <span class="cmt">// 真正的业务规则被埋在各种第三方调用之间……</span>
+    <span class="kw">const</span> total = cart.items.reduce((s, i) =&gt; s + i.price, 0)
+    <span class="kw">await</span> stripe.charges.create({ amount: total, source: cart.token })
+    <span class="kw">await</span> db.query(<span class="str">'INSERT INTO orders …'</span>)
+    <span class="kw">await</span> sg.send({ to: cart.email, template: <span class="str">'order-ok'</span> })
+  }
+}</code></pre>
+<p>这里没有哪行代码是“错的”。但业务逻辑（订单<em>是什么</em>、何时有效、“已确认”意味着什么）和三个第三方服务以及数据库驱动紧紧缠绕。你没法在没有真实数据库的情况下测试这些规则。你没法不“动手术”就换掉 SendGrid。新来的队友读这段代码，会先了解 Stripe，然后才了解你的<em>订单</em>。</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">核心问题</span><p>Ports &amp; Adapters 回答的是这一个问题：<strong>怎样把赚钱的部分（业务规则）与早晚要换掉的部分（数据库、第三方服务、框架、UI）分开？</strong></p></div>
+
+<h2 id="core-idea">核心思想，一张图说清楚</h2>
+<p>把业务规则——<strong>domain（领域）</strong>——放在中心。禁止它引入任何框架、数据库驱动或第三方 SDK。然后让外部世界只通过 <strong>port（接口）</strong>与它对话，由 <strong>adapter（适配器）</strong>在另一侧处理那些乱糟糟的真实世界细节。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 800 500" role="img" aria-labelledby="dgm-ov">
+    <title id="dgm-ov">Domain 位于中心，Adapter 通过 Port 与之连接。</title>
+    
+  <defs>
+    <marker id="ovAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+    <text class="dgm-t-muted dgm-t-mono" x="105" y="92" text-anchor="middle" font-size="12">驱动侧 · 调用我们</text>
+    <text class="dgm-t-muted dgm-t-mono" x="695" y="92" text-anchor="middle" font-size="12">被驱动侧 · 我们调用它</text>
+
+    <polygon class="dgm-core" points="550,250 475,380 325,380 250,250 325,120 475,120" stroke-width="2"/>
+    <text class="dgm-t-strong" x="400" y="244" text-anchor="middle" font-size="23">Domain</text>
+    <text class="dgm-t-muted dgm-t-mono" x="400" y="270" text-anchor="middle" font-size="13">业务规则，不依赖第三方</text>
+
+    <!-- driving adapters -->
+    <rect class="dgm-adapter" x="30" y="128" width="150" height="46" rx="9"/>
+    <text x="105" y="156" text-anchor="middle" font-size="14">Web / Mobile UI</text>
+    <rect class="dgm-adapter" x="30" y="234" width="150" height="46" rx="9"/>
+    <text x="105" y="262" text-anchor="middle" font-size="14">REST / GraphQL</text>
+    <rect class="dgm-adapter" x="30" y="340" width="150" height="46" rx="9"/>
+    <text x="105" y="368" text-anchor="middle" font-size="14">Tests / CLI / Cron</text>
+
+    <path class="dgm-flow" d="M180,151 C 220,151 235,186 286,189" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M180,257 H 246" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M180,363 C 220,363 235,316 286,313" marker-end="url(#ovAcc)"/>
+
+    <!-- driven adapters -->
+    <rect class="dgm-driven" x="620" y="128" width="150" height="46" rx="9"/>
+    <text x="695" y="156" text-anchor="middle" font-size="14">Database</text>
+    <rect class="dgm-driven" x="620" y="234" width="150" height="46" rx="9"/>
+    <text x="695" y="262" text-anchor="middle" font-size="14">Email / SMS</text>
+    <rect class="dgm-driven" x="620" y="340" width="150" height="46" rx="9"/>
+    <text x="695" y="368" text-anchor="middle" font-size="14">Payment vendor</text>
+
+    <path class="dgm-flow" d="M514,189 C 560,186 575,151 618,151" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M554,257 H 618" marker-end="url(#ovAcc)"/>
+    <path class="dgm-flow" d="M514,313 C 560,316 575,363 618,363" marker-end="url(#ovAcc)"/>
+
+    <!-- ports -->
+    <circle class="dgm-fill-accent" cx="286" cy="189" r="8"/>
+    <circle class="dgm-fill-accent" cx="248" cy="250" r="8"/>
+    <circle class="dgm-fill-accent" cx="286" cy="313" r="8"/>
+    <circle class="dgm-fill-accent" cx="514" cy="189" r="8"/>
+    <circle class="dgm-fill-accent" cx="552" cy="250" r="8"/>
+    <circle class="dgm-fill-accent" cx="514" cy="313" r="8"/>
+
+    <text class="dgm-t-accent" x="400" y="455" text-anchor="middle" font-size="13">● = 一个 port（由 domain 定义的接口）</text>
+  </svg>
+  <figcaption>六边形只是一种画法：<strong>domain</strong> 位于中间，从不引入框架或第三方服务。外部所有东西想与它交互，都必须通过一个 <strong>port（接口）</strong>。左侧的 adapter 驱动应用；右侧的 adapter 被应用驱动。</figcaption>
+</figure>
+<p>整体形状就是这样。人们画六边形而不是圆形，有个有趣的原因：六条边提醒我们，应用有<em>很多</em>进出方式（Web UI、API、测试、定时任务、数据库、消息队列……），而不只是“上面”和“下面”。数字六本身没有意义——不要去数你的 port 数量。</p>
+
+<h2 id="vocabulary">核心词汇，用大白话说清楚</h2>
+<p>三个词就能说清楚所有事情。下面不用术语来解释：</p>
+<ul>
+  <li><strong>Domain（领域/核心）：</strong>你的业务规则和概念——<code>Order</code>、<code>Money</code>、“购物车里没有商品就不能结账”。纯逻辑。读起来应该像在描述你的业务，而不是你的技术栈。</li>
+  <li><strong>Port（接口）：</strong>一个由 domain 定义的<em>接口</em>，描述它需要或提供的能力——“我需要能 <code>save(order)</code>”或“我需要能 <code>charge()</code> 一笔付款”。Port 是一个承诺，用 domain 的语言写成，里面看不到任何第三方服务的名字。</li>
+  <li><strong>Adapter（适配器）：</strong>用真实技术实现某个 port 的具体代码——比如 <code>PostgresOrderRepo</code>、<code>StripeGateway</code>。Adapter 是 Stripe、Postgres、React 被允许出现的地方。</li>
+</ul>
+<p>Port 还分两种类型——这是唯一值得深入理解的细节：</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 860 250" role="img" aria-labelledby="dgm-flow">
+    <title id="dgm-flow">一个请求从驱动型 adapter 流入，穿过 domain，再流向被驱动型 adapter。</title>
+    
+  <defs>
+    <marker id="flAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+    <text class="dgm-t-muted dgm-t-mono" x="195" y="40" text-anchor="middle" font-size="12">PRIMARY · driving</text>
+    <text class="dgm-t-muted dgm-t-mono" x="650" y="40" text-anchor="middle" font-size="12">SECONDARY · driven</text>
+
+    <rect class="dgm-adapter" x="12" y="98" width="118" height="60" rx="10"/>
+    <text x="71" y="124" text-anchor="middle" font-size="13">User / Test</text>
+    <text class="dgm-t-muted" x="71" y="142" text-anchor="middle" font-size="11">actor</text>
+
+    <rect class="dgm-adapter" x="172" y="98" width="150" height="60" rx="10"/>
+    <text x="247" y="124" text-anchor="middle" font-size="13">Controller / CLI</text>
+    <text class="dgm-t-muted" x="247" y="142" text-anchor="middle" font-size="11">driving adapter</text>
+
+    <rect class="dgm-core" x="372" y="86" width="150" height="84" rx="12" stroke-width="2"/>
+    <text class="dgm-t-strong" x="447" y="122" text-anchor="middle" font-size="14">Use case</text>
+    <text class="dgm-t-muted" x="447" y="142" text-anchor="middle" font-size="11">domain rules</text>
+
+    <rect class="dgm-driven" x="572" y="98" width="150" height="60" rx="10"/>
+    <text x="647" y="124" text-anchor="middle" font-size="13">Repo / Gateway</text>
+    <text class="dgm-t-muted" x="647" y="142" text-anchor="middle" font-size="11">driven adapter</text>
+
+    <rect class="dgm-driven" x="760" y="98" width="92" height="60" rx="10"/>
+    <text x="806" y="124" text-anchor="middle" font-size="12">DB / Vendor</text>
+
+    <path class="dgm-flow" d="M130,128 H168" marker-end="url(#flAcc)"/>
+    <path class="dgm-flow" d="M322,128 H368" marker-end="url(#flAcc)"/>
+    <path class="dgm-flow" d="M522,128 H568" marker-end="url(#flAcc)"/>
+    <path class="dgm-flow" d="M722,128 H756" marker-end="url(#flAcc)"/>
+
+    <circle class="dgm-fill-accent" cx="347" cy="128" r="7"/>
+    <circle class="dgm-fill-accent" cx="547" cy="128" r="7"/>
+    <text class="dgm-t-accent" x="347" y="200" text-anchor="middle" font-size="12">input port</text>
+    <text class="dgm-t-accent" x="547" y="200" text-anchor="middle" font-size="12">output port</text>
+  </svg>
+  <figcaption>同一个 domain，两种 adapter。<strong>驱动型</strong>（主）adapter 通过 input port 把请求<em>推进来</em>；domain 通过 output port 把工作<em>推出去</em>给<strong>被驱动型</strong>（次）adapter。箭头表示调用方向——不是依赖方向。</figcaption>
+</figure>
+<ul>
+  <li><strong>驱动型（主）adapter</strong> 在左侧，<em>调用</em>你的应用：Web controller、CLI 命令、测试。它们使用 <strong>input port</strong>（你的 use-case 接口）。</li>
+  <li><strong>被驱动型（次）adapter</strong> 在右侧，<em>被</em>你的应用调用：数据库、邮件服务、支付 API。它们实现 domain 定义的 <strong>output port</strong>。</li>
+</ul>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">快速记忆法</span><p>如果某样东西<em>主动发起</em>与你的应用的对话，它就是<strong>驱动方</strong>。如果是你的应用主动发起，另一方就是<strong>被驱动方</strong>。用户点击“购买”是驱动方；支付服务商是被驱动方。</p></div>
+
+<h2 id="before-after">具体示例：改造前后对比</h2>
+<p>来把那段 checkout 代码理清楚。首先，用你业务中的语言写下 domain 需要的东西——<strong>port</strong>——不允许出现任何第三方名称：</p>
+<pre><code><span class="cmt">// ports.ts — domain 的语言词汇表，禁止出现任何第三方名称</span>
+<span class="kw">interface</span> PaymentGateway { charge(amount: Money, token: string): Promise&lt;Receipt&gt; }
+<span class="kw">interface</span> OrderRepository { save(order: Order): Promise&lt;void&gt; }
+<span class="kw">interface</span> Notifier        { orderConfirmed(order: Order): Promise&lt;void&gt; }</code></pre>
+<p>现在 use case 只依赖这些承诺，<em>别无其他</em>。大声读出来：听起来像在描述结账流程，而不是在列举第三方服务清单。</p>
+<pre><code><span class="cmt">// checkout-service.ts — 只依赖 port，绝不依赖第三方服务</span>
+<span class="kw">class</span> CheckoutService {
+  <span class="kw">constructor</span>(
+    <span class="kw">private</span> payments: PaymentGateway,
+    <span class="kw">private</span> orders: OrderRepository,
+    <span class="kw">private</span> notify: Notifier,
+  ) {}
+
+  <span class="kw">async</span> checkout(cart: Cart): Promise&lt;Order&gt; {
+    <span class="kw">const</span> order = Order.fromCart(cart)         <span class="cmt">// 纯业务规则</span>
+    <span class="kw">await</span> <span class="kw">this</span>.payments.charge(order.total, cart.token)
+    <span class="kw">await</span> <span class="kw">this</span>.orders.save(order)
+    <span class="kw">await</span> <span class="kw">this</span>.notify.orderConfirmed(order)
+    <span class="kw">return</span> order
+  }
+}</code></pre>
+<p>最后，真实的第三方服务藏在实现了各自 port 的 adapter 里。换掉任何一个都是局部改动——而在测试中，你可以用 fake 替换它们，在以前一次网络调用所需的时间里跑完成千上万个测试用例：</p>
+<pre><code><span class="cmt">// adapters/*.ts — 第三方服务在这里，藏在它所实现的 port 背后</span>
+<span class="kw">class</span> StripeGateway      <span class="kw">implements</span> PaymentGateway { <span class="cmt">/* Stripe SDK */</span> }
+<span class="kw">class</span> PostgresOrderRepo  <span class="kw">implements</span> OrderRepository { <span class="cmt">/* SQL 在这里 */</span> }
+<span class="kw">class</span> SendGridNotifier   <span class="kw">implements</span> Notifier        { <span class="cmt">/* SendGrid */</span> }
+
+<span class="cmt">// 测试时用内存 fake 替换真实服务——无需网络，毫秒级运行：</span>
+<span class="kw">const</span> service = <span class="kw">new</span> CheckoutService(<span class="kw">new</span> FakePayments(), <span class="kw">new</span> InMemoryOrders(), <span class="kw">new</span> NullNotifier())</code></pre>
+<p>注意发生了什么变化：Stripe、Postgres 和 SendGrid 现在是<em>边缘的细节</em>。真正让你赚钱的东西坐镇中央，清晰可读、易于测试，完全不知道那些第三方服务的存在。</p>
+
+<h2 id="dependency-rule">让一切成立的那一条规则</h2>
+<p>如果只记住一件事，请记住这个：<strong>源码中的依赖关系永远指向内部</strong>。外层（adapter、框架、I/O）可以知道内层。而中心的 domain 被允许对外面的一切<em>一无所知</em>。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 800 360" role="img" aria-labelledby="dgm-dep">
+    <title id="dgm-dep">依赖关系永远指向内部，朝向 domain。</title>
+    
+  <defs>
+    <marker id="depAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+    <rect class="dgm-surface" x="40" y="40" width="720" height="280" rx="18" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="64" y="68" font-size="12">ADAPTERS · frameworks · databases · HTTP · I/O</text>
+
+    <rect class="dgm-port" x="170" y="98" width="460" height="170" rx="15" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="190" y="124" font-size="12">APPLICATION · use cases + ports</text>
+
+    <rect class="dgm-core" x="310" y="150" width="180" height="86" rx="13" stroke-width="2"/>
+    <text class="dgm-t-strong" x="400" y="190" text-anchor="middle" font-size="19">Domain</text>
+    <text class="dgm-t-muted dgm-t-mono" x="400" y="212" text-anchor="middle" font-size="12">pure rules</text>
+
+    <path class="dgm-flow" d="M120,300 L300,210" marker-end="url(#depAcc)"/>
+    <path class="dgm-flow" d="M680,300 L500,210" marker-end="url(#depAcc)"/>
+    <path class="dgm-flow" d="M400,98 L400,146" marker-end="url(#depAcc)"/>
+
+    <text class="dgm-t-accent" x="400" y="345" text-anchor="middle" font-size="13">外层知道内层——反过来绝对不行。</text>
+  </svg>
+  <figcaption>黄金法则：源码依赖关系只能指向<strong>内部</strong>。Domain 不知道数据库的存在；数据库 adapter 才知道 domain。把某个外层翻转，domain 丝毫不受影响。</figcaption>
+</figure>
+<p>这就是为什么你可以替换整个 Web 框架，或者从 MySQL 迁移到 DynamoDB，而 domain 对此毫不知情。依赖箭头永远不会从核心指向外部，所以边缘的改动无法渗透进来。（如果你听说过<em>依赖倒置原则</em>——SOLID 中的“D”——这就是它在实践中的样子：domain 定义接口，adapter 遵从它。）</p>
+
+<h2 id="primary-secondary">驱动方 vs 被驱动方，落地理解</h2>
+<p>主/次之分在日常工作中为什么重要？因为它告诉你<em>谁来定义接口</em>。</p>
+<ul>
+  <li>对于<strong>被驱动型</strong> port（数据库、邮件），<em>domain</em> 定义接口，adapter 按要求去实现。这就是你能随意更换第三方服务的原因。</li>
+  <li>对于<strong>驱动型</strong> port（你的 use case），<em>应用</em>定义接口，外部世界（HTTP、CLI、测试框架）来调用它。这就是同一套逻辑今天能跑 REST API、明天能跑 gRPC 端点或定时任务，而业务规则一行不改的原因。</li>
+</ul>
+<p>一个实用的检验方法：一种全新的接入方式（比如 Slack 机器人）应该<em>只是</em>一个新的驱动型 adapter。一个全新的第三方服务（比如从 Stripe 换到 Adyen）应该<em>只是</em>一个新的被驱动型 adapter。如果任何一方迫使你修改 domain，说明某处发生了“泄漏”。</p>
+
+<h2 id="by-company-size">在不同公司规模下长什么样</h2>
+<p>很多建议在这里走偏——把架构当成“一刀切”的方案。<em>合适的</em> Ports &amp; Adapters 用量在很大程度上取决于你公司所处的阶段。以下是诚实的版本：</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>公司阶段</th><th>它解决的痛点</th><th>建议用量</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>独立开发者 / 早期创业</th>
+      <td>你仓促选了 SQLite 和某个支付服务，现在担心被死死绑定在上面。</td>
+      <td>最多一两个 port——通常是数据库和支付。其他的直接调用就好。这个阶段速度比纯粹更重要。</td>
+    </tr>
+    <tr>
+      <th>小型 / 成长期（约 Series A）</th>
+      <td>测试打到真实数据库和第三方沙箱，又慢又不稳定，开发者干脆不跑了。</td>
+      <td>给所有 I/O 套上 port。用 fake 让单元测试在毫秒内跑完，新同事一天就能理解 domain。</td>
+    </tr>
+    <tr>
+      <th>中型 / 规模化</th>
+      <td>多个团队互相踩脚；一次“换掉 SendGrid 省钱”的决定变成长达一个月的重写。</td>
+      <td>Port 成为团队之间的<em>契约</em>。换一个第三方服务只需要写一个新的 adapter，不是一次迁移。</td>
+    </tr>
+    <tr>
+      <th>大公司 / 企业级</th>
+      <td>遗留系统、区域性第三方服务、审计、以及要求“不得单一供应商锁定”的采购规范。</td>
+      <td>每个 port 对应多个 adapter（旧的 + 新的），strangler-fig 渐进迁移，供应商独立性作为书面要求写进合同。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h3 id="size-stories">三个简短的真实故事</h3>
+<p><strong>小型电商（10 人团队）。</strong>他们把邮件功能藏在一个只有一个方法的 <code>Notifier</code> port 后面——“以防万一”。两年后邮件成本飙升；从 SendGrid 迁移到 Amazon SES 只是写了一个新 adapter 加改了一行连接代码，一个下午搞定。订单逻辑——他们的核心资产——没有被碰过。</p>
+<p><strong>规模化中的金融科技公司（约 120 名工程师）。</strong>支付需要在某个国家走本地服务商、在另一个国家走国际服务商，每笔交易运行时动态决定。因为 <code>PaymentGateway</code> 是一个 port，“用哪个服务商”变成了隐藏在接口背后的路由决策。合规审计员也很满意：这道边界清晰、可测试，一眼就能看到。</p>
+<p><strong>大型银行（1000+ 名工程师）。</strong>一套运行了 20 年的主机系统无法一夜之间被替换。他们定义了一个 <code>AccountLedger</code> port，写了<em>两个</em> adapter——一个与旧主机通信，一个与新的核心银行系统通信——然后逐步迁移流量（“绞杀者无花果”模式）。各团队基于这个 port 开发新功能，而迁移在他们看不见的地方悄然进行。</p>
+
+<h2 id="vs-layered">Ports &amp; Adapters 与经典分层架构的对比</h2>
+<p>大多数团队来自传统分层架构（UI 在上、service 在中、数据库在下）。以下是两者的比较：</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>问题</th><th>经典分层（UI → service → DB）</th><th>Ports &amp; Adapters</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>谁依赖谁？</th><td>自上而下：每一层依赖下面那层，最终落到数据库。</td><td>所有东西依赖<em>内部</em>，落到 domain。数据库只是另一个插件。</td></tr>
+    <tr><th>不连数据库能测业务规则吗？</th><td>通常不行——service 直接打数据库。</td><td>可以——注入一个假的 repository，不需要数据库，不需要网络。</td></tr>
+    <tr><th>换一个第三方服务？</th><td>要动 service 层，并向外扩散影响。</td><td>写一个新 adapter，domain 完全不变。</td></tr>
+    <tr><th>业务规则住在哪里？</th><td>通常散落在 service 和数据库之间。</td><td>集中在 domain，用业务语言表达。</td></tr>
+    <tr><th>成本</th><td>初期仪式感低，但随着时间推移把你锁定在技术栈上。</td><td>前期多几个接口；随着变化加速，逐渐物有所值。</td></tr>
+  </tbody>
+</table>
+</div>
+<p>最核心的差别在于箭头方向。在分层代码中，最终所有东西都依赖数据库。在 Ports &amp; Adapters 中，数据库依赖你。这个倒转，就是全部的意义所在。</p>
+
+<h2 id="when-and-when-not">什么时候用（以及什么时候不用）</h2>
+<p>好的架构是把精力匹配到风险。以下情况适合使用 Ports &amp; Adapters：</p>
+<ul>
+  <li>应用有<strong>真正的业务规则</strong>值得保护（不只是对一张表做 CRUD）。</li>
+  <li>你预期在应用生命周期内会<strong>更换或新增</strong>集成——第三方服务、数据库、接入渠道。</li>
+  <li><strong>测试速度和可靠性</strong>很重要，你希望有快速、确定性的单元测试。</li>
+  <li>多个团队或较长的生命周期使得<strong>清晰的边界</strong>物有所值。</li>
+</ul>
+<p>以下情况应当持怀疑态度，或者只是非常轻量地应用：</p>
+<ul>
+  <li>这是一个<strong>薄薄的 CRUD 应用</strong>或一次性原型；多余的抽象层只是额外开销。</li>
+  <li>“domain”基本上就是你的数据库 schema；没有什么需要保护的。</li>
+  <li>你是<strong>独自开发、需要快速交付</strong>，以后重写的成本比现在搞这些仪式的成本还低。</li>
+</ul>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">别盲目照搬</span><p>把一个毫无价值的 CRUD 端点包裹在三层接口里，并不会让它“干净”——只会让它更难读。架构是你为<em>可变更性</em>付出的代价。如果没有什么会变，你就是在为虚无买单。</p></div>
+
+<h2 id="mistakes">常见错误（以及简单的修复方法）</h2>
+<ul>
+  <li><strong>Port 泄漏。</strong>如果你的 <code>PaymentGateway</code> 返回一个 <code>Stripe.Charge</code> 对象，第三方服务就通过 port 泄漏出来了。修复：port 只使用你自己的类型（<code>Receipt</code>、<code>Money</code>）。</li>
+  <li><strong>贫血型 domain。</strong>如果所有真实逻辑都在 adapter 里，domain 只是数据包，说明边界画错了地方。修复：把规则<em>推进</em>核心。</li>
+  <li><strong>一个巨型 port。</strong>一个有 40 个方法的 <code>IRepository</code> 不是边界，是个杂物抽屉。修复：用小的、有明确目的的 port（<code>OrderRepository</code>、<code>InventoryRepository</code>）。</li>
+  <li><strong>把 DTO 和 domain 模型混淆。</strong>你通过 HTTP 传输的数据形状不是你的 domain 实体。修复：让 adapter 负责在传输格式和 domain 之间做转换。</li>
+  <li><strong>给所有东西都建接口。</strong>不是每个类都需要 port——只有跨越边界的东西才需要（I/O、第三方服务、接入机制）。修复：感受到痛点再加 port，不要提前“预防性”地加。</li>
+</ul>
+
+<h2 id="getting-started">周一就能开始的做法</h2>
+<p>你不需要重写任何东西。只需在最痛的地方引入一道接缝，然后停下来：</p>
+<ul>
+  <li><strong>1. 找出最让你痛苦的依赖。</strong>通常是数据库或某个不稳定的第三方服务。</li>
+  <li><strong>2. 写下你<em>希望</em>拥有的接口。</strong>用业务语言：<code>save(order)</code>，而不是 <code>execSql(...)</code>。</li>
+  <li><strong>3. 把第三方代码移到一个实现该接口的 adapter 后面。</strong>其他什么都先不动。</li>
+  <li><strong>4. 注入 adapter</strong>，而不是在代码里直接构造它，然后为测试写一个 fake。</li>
+  <li><strong>5. 感受那份轻松，然后重复</strong>——但只在频繁变动或测试痛点真正值得再加一个 port 的地方。</li>
+</ul>
+<p>不出一周，你就会拥有围绕最棘手集成的快速测试，以及一个开始读起来像你业务的 domain。这就是全部的收益，可以增量地获得。</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">核心要点</h3>
+<ul>
+  <li><strong>一个核心思想：</strong>业务规则居中，技术细节在边缘，双方只通过接口交流。</li>
+  <li><strong>Port</strong> = 由 domain 定义的接口。<strong>Adapter</strong> = 真正的实现（Stripe、Postgres、React）。</li>
+  <li><strong>依赖指向内部。</strong>Domain 对外部世界一无所知。</li>
+  <li><strong>驱动型</strong> adapter 调用你的应用；<strong>被驱动型</strong> adapter 被你的应用调用。</li>
+  <li><strong>按需取用：</strong>初创公司用几个 port，企业级追求供应商独立，纯 CRUD 应用几乎不需要。</li>
+  <li><strong>增量引入</strong>——每次只处理一个最痛的接缝。永远不需要大规模重写。</li>
+</ul>
+</div>
+<p>本系列的下一篇将在这个基础上，探讨 Ports &amp; Adapters 与 <em>Clean Architecture</em> 以及 <em>Onion Architecture</em> 的关系——三个名字指向同一颗北极星——以及它们在实践中真正的差异所在。</p>6:["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lf",null,{"href":"/zh/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"博客"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lf",null,{"href":"/zh/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"源码与架构"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["软件架构基础",["$","span",null,{"aria-hidden":"true","children":" · "}],"第 1 篇，共 15 篇"]}],["$","h1",null,{"className":"blog-article__title","children":"Ports & Adapters（六边形架构），简单讲清楚"}],["$","p",null,{"className":"blog-article__summary","children":"一篇友好、示例驱动的六边形架构指南：ports 和 adapters 到底是什么、让它运转的那条核心规则，以及究竟该用多少——无论你是独立创业者还是企业级团队。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"作者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-07","children":"2026年3月7日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"16 分钟阅读"}],["$","$L10",null,{"label":"次浏览"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","软件架构",{"children":"软件架构"}],["$","li","Hexagonal Architecture",{"children":"Hexagonal Architecture"}],["$","li","Ports and Adapters",{"children":"Ports and Adapters"}],["$","li","Clean Architecture",{"children":"Clean Architecture"}],["$","li","系统设计",{"children":"系统设计"}],["$","li","Dependency Inversion",{"children":"Dependency Inversion"}]]}]]}],["$","$L11",null,{"html":"$12"}],"$L13","$undefined"]}]
+7:["$","$L14",null,{"heading":"相关阅读","intro":"几篇相近主题的文章，方便沿着同一条思路继续阅读。","items":[{"post":{"slug":"clean-vs-onion-vs-hexagonal","category":"architecture","title":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字","summary":"它们看起来像是三种相互竞争的架构，实则是同一个思想——依赖指向内部，框架置于边缘——用三种方式画出来。本文讲清楚每种方案真正增加了什么，以及应该选哪一个。","date":"2026-03-06","readingMinutes":15,"tags":["软件架构","Clean Architecture","Onion Architecture","Hexagonal Architecture","系统设计","Dependency Inversion"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":2},"categoryTitle":"源码与架构","readingLabel":"15 分钟阅读"},{"post":{"slug":"hexagonal-architecture-in-practice","category":"architecture","title":"Hexagonal Architecture in Practice","summary":"A practical guide to applying Hexagonal Architecture to one small feature: drawing the boundary, naming ports in business language, keeping adapters at the edge, testing the core, and deciding when the extra structure is worth the cost.","date":"2026-04-22","readingMinutes":7,"tags":["Software Architecture","Hexagonal Architecture","Ports and Adapters","Testing","Code Organization","Technical Debt"],"author":"Nguyen Le Phong"},"categoryTitle":"源码与架构","readingLabel":"7 分钟阅读"},{"post":{"slug":"monolith-to-microservices","category":"architecture","title":"单体、模块化单体、微服务：一份诚实的决策指南","summary":"微服务是你为组织规模支付的代价——而不是起点。一篇不炒作地从单体到模块化单体再到微服务的完整导览，附上告诉你何时（以及是否）该拆分的信号。","date":"2026-03-03","readingMinutes":16,"tags":["软件架构","Microservices","Modular Monolith","系统设计","分布式系统","可扩展性"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":5},"categoryTitle":"源码与架构","readingLabel":"16 分钟阅读"},{"post":{"slug":"micro-frontends-when-why-and-cost","category":"architecture","title":"微前端：何时值得，以及它们真正的代价","summary":"将前端拆分成独立可部署的模块可以解放团队——也可能把你埋在复杂性中。本文来自在规模化场景下落地 Angular 宿主 + React 模块的实战经验：微前端何时有回报，以及它带来的账单。","date":"2026-03-02","readingMinutes":15,"tags":["软件架构","Micro-Frontends","前端架构","Module Federation","可扩展性","系统设计"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":6},"categoryTitle":"源码与架构","readingLabel":"15 分钟阅读"}],"sourceCategory":"architecture","sourceSlug":"ports-and-adapters"}]
+8:["$","nav",null,{"className":"blog-series-nav","aria-label":"软件架构基础","children":[["$","span",null,{}],["$","$Lf",null,{"href":"/zh/blog/architecture/clean-vs-onion-vs-hexagonal","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["下一篇"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字"}]]}]]}]
+9:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lf",null,{"href":"/zh/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","返回 源码与架构"]}]}]
+a:["$","aside",null,{"className":"blog-article__toc","children":["$","$L15",null,{"label":"本页内容","surface":"blog"}]}]
+b:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+c:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+d:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+e:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+13:["$","$L19",null,{"prompt":"你觉得这篇文章如何？","surface":"blog","category":"architecture","slug":"ports-and-adapters","reactionLabels":{"like":"赞","love":"喜欢","insightful":"有启发","clap":"鼓掌"}}]
+18:null

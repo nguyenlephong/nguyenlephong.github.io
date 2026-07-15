@@ -1,0 +1,173 @@
+1:"$Sreact.fragment"
+a:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"EngagementProvider"]
+b:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+c:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+d:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+e:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+f:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+1a:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+1b:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T49b,{"@context":"https://schema.org","@type":"Article","@id":"https://nguyenlephong.github.io/en/notes/you-are-not-a-machine#article","headline":"You Are Not a Machine: Why Rest Is Part of Doing Good Work","description":"Modern work can make rest feel suspicious, as if pausing means falling behind. This reflection looks at why busyness is often confused with worth, why real rest is different from numbing out, what over-scheduling costs adults and children, and what the science of strain and recovery makes clear: pause is not the opposite of progress; it is one condition that lets progress continue.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/notes/you-are-not-a-machine","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/notes/you-are-not-a-machine.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/en/notes/you-are-not-a-machine","datePublished":"2026-03-01","dateModified":"2026-03-01","keywords":"Personal Reflection, Mental Wellbeing, Rest and Recovery, Burnout, Work-Life Balance, Life Philosophy","author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:Te91,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/en/notes/you-are-not-a-machine#faq","mainEntity":[{"@type":"Question","name":"Isn't this just a comfortable excuse for laziness and avoiding hard work?","acceptedAnswer":{"@type":"Answer","text":"It's the opposite, and the essay draws the line carefully. Laziness is avoidance — hiding from things you need to do, which tends to leave you feeling worse, not restored. Real rest is deliberate recovery in service of doing your work well and sustainably. The test is how you feel afterward: genuine rest leaves you clearer and more capable; avoidance leaves you foggy and guilty. This isn't an argument against effort — it's an argument for the kind of effort you can sustain across decades instead of burning out in a few intense years."}},{"@type":"Question","name":"I 'rest' by scrolling my phone for hours but never feel recharged. Why?","acceptedAnswer":{"@type":"Answer","text":"Because scrolling isn't rest — it's stimulation that happens to be sedentary. Your body is still, but your mind is being fed a constant stream of inputs, comparisons, and small dopamine hits, so the pressure system never actually switches off. Real rest requires lowering stimulation, not just activity: a walk without the phone, a quiet meal, a book, or genuinely doing nothing for ten minutes. Try swapping even one scrolling session for something unstimulating and notice the difference in how your head feels afterward. The goal is a quiet mind, not just idle hands."}},{"@type":"Question","name":"My job and life are genuinely demanding — I don't have hours for this. What can I realistically do?","acceptedAnswer":{"@type":"Answer","text":"Rest scales down further than people think; you don't need a retreat. The research on breaks applies to small ones too: a few minutes of real disconnection between tasks, a short walk at lunch without your phone, protecting the first or last fifteen minutes of your day. The key is quality, not quantity — a genuinely unstimulated ten minutes beats a distracted hour. Start by defending one small pocket of white space and treating it as non-negotiable. Tiny, consistent recovery compounds, exactly like the rested curve in the essay."}},{"@type":"Question","name":"How do I rest without the guilt actually ruining the rest?","acceptedAnswer":{"@type":"Answer","text":"First, reframe what you're doing: you're not slacking, you're maintaining the instrument you work with — your mind. Recovery is part of the work, not a betrayal of it. Second, when the guilty 'you should be doing something' thought appears, don't fight it; just recognise it as a learned reflex from a busyness-worship culture, and let it pass without obeying it. It loses power once you stop treating it as the truth. Over time, as you see that rested weeks are actually more productive and clear-headed, the guilt fades on its own because the evidence contradicts it."}},{"@type":"Question","name":"What about kids — isn't keeping them busy with classes genuinely good for their future?","acceptedAnswer":{"@type":"Answer","text":"Some structured learning is valuable; the problem is when the schedule becomes so full there's no room left for anything else. Children grow into healthy, resilient adults not only through grades but through unmeasured time — free play, boredom that sparks imagination, wandering, friendships, observing the world. Those hours build emotional regulation, creativity, and a stable inner life, which matter at least as much as test scores for a good future. The aim isn't to remove all structure; it's to protect genuine free time as something essential, not as the first thing sacrificed."}}]}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean notes-accent notes-reading","style":{"--topic-color":"#b45309"},"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"노트\",\"item\":\"https://nguyenlephong.github.io/en/notes\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Perspectives & Reflections\",\"item\":\"https://nguyenlephong.github.io/en/notes?topic=goc-nhin\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"You Are Not a Machine: Why Rest Is Part of Doing Good Work\",\"item\":\"https://nguyenlephong.github.io/en/notes/you-are-not-a-machine\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],["$L5","$L6","$L7","$L8"],"$L9"]}],"loading":null,"isPartial":false}
+10:T3c24,<blockquote>
+<p><em>Sometimes a pause doesn't set you back. It just lets you breathe again. You are not a machine — and no machine runs forever without recovery, let alone a mind.</em></p>
+</blockquote>
+
+<p>There's a strange contradiction in how grown-ups live now. Work too much, and we're exhausted. Rest, and we feel guilty. Sit still for a few minutes — no phone, no course to finish, nothing that produces visible "value" — and within moments a restlessness creeps in, a quiet voice insisting we're falling behind everyone else.</p>
+<p>Slowly, rest gets filed under <em>waste</em>, and busyness becomes the measure of a person's worth. This is a warm essay about why that belief is both false and costly — and about giving yourself permission to stop, not as a reward you must earn, but as a basic condition of working and living well.</p>
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/you-are-not-a-machine/unscheduled-hour-at-desk.webp" width="1600" height="900" loading="lazy" decoding="async" alt="A quiet home desk with a closed laptop, phone face down, tea, and a person sitting back during an unscheduled hour of rest." />
+  <figcaption>The first pause can feel unfamiliar when a packed day has become the proof that we are doing enough.</figcaption>
+</figure>
+
+<h2 id="the-guilt-of-resting">1. The strange guilt of resting</h2>
+<p>Notice the feeling first, because it runs deeper than logic. You finally have an unscheduled hour, and instead of relief you feel a faint dread — you <em>should</em> be doing something. A packed calendar feels virtuous; an empty one feels like a personal failing. We've quietly absorbed a story that says a good life is a maximally productive one, and that any minute not visibly building toward a goal is a minute lost.</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">The guilt is learned, not true</span><p>No one is born feeling guilty for resting; a tired toddler simply sleeps. The guilt is installed later, by a culture that rewards visible output and treats stillness as suspicious. Naming it as <em>learned</em> is the first step to loosening its grip — it's a story you absorbed, not a law of nature.</p></div>
+
+<h2 id="nothing-in-nature">2. Nothing in nature runs without a fallow season</h2>
+<p>Step outside the human noise for a moment. After the harvest, a field is left fallow so the soil can recover. In winter, trees go quiet — not dead, but storing energy underground for the bloom that's coming. Rest isn't the opposite of growth in nature; it's a <em>phase</em> of it. The pause is what makes the next season possible.</p>
+
+<div class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 220" role="img" aria-labelledby="dgm-fallow-en">
+    <title id="dgm-fallow-en">Three stages in a line: effort and harvest, then a rest or fallow season, then renewal and bloom — with rest shown as the bridge that makes renewal possible.</title>
+    <defs>
+      <marker id="fallowAccEn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-accent" x="380" y="34" text-anchor="middle" font-size="13">REST IS A PHASE OF GROWTH, NOT A BREAK FROM IT</text>
+    <rect class="dgm-surface" x="40" y="86" width="180" height="70" rx="10"/>
+    <text class="dgm-t-strong" x="130" y="118" text-anchor="middle" font-size="12.5">Effort &amp; harvest</text>
+    <text class="dgm-t-muted dgm-t-mono" x="130" y="138" text-anchor="middle" font-size="9.5">you give it everything</text>
+
+    <rect class="dgm-driven" x="290" y="78" width="180" height="86" rx="10"/>
+    <text class="dgm-t-accent" x="380" y="112" text-anchor="middle" font-size="12.5">Rest — the fallow season</text>
+    <text class="dgm-t-muted dgm-t-mono" x="380" y="132" text-anchor="middle" font-size="9.5">the soil recovers</text>
+
+    <rect class="dgm-core" x="540" y="86" width="180" height="70" rx="10"/>
+    <text class="dgm-t-strong" x="630" y="118" text-anchor="middle" font-size="12.5">Renewal — bloom</text>
+    <text class="dgm-t-muted dgm-t-mono" x="630" y="138" text-anchor="middle" font-size="9.5">stronger than before</text>
+
+    <path class="dgm-flow" d="M220,121 H 286" marker-end="url(#fallowAccEn)"/>
+    <path class="dgm-flow" d="M470,121 H 536" marker-end="url(#fallowAccEn)"/>
+  </svg>
+  <figcaption>Skip the middle stage and the third rarely fully arrives. A mind kept under constant strain slowly loses the one thing it most needs: the ability to see itself clearly.</figcaption>
+</div>
+
+<p>People are no different. A mind held under continuous tension gradually loses the capacity to see itself clearly — to notice what it actually feels, needs, or is drifting away from. The very clarity we're trying to achieve by pushing harder is the first casualty of never stopping.</p>
+
+<h2 id="what-real-rest-is">3. Real rest isn't laziness — and it isn't doomscrolling either</h2>
+<p>Part of the confusion is that we've never been taught what real rest is. It isn't lying in bed all day to hide from life — that's avoidance, and it leaves you feeling worse. But it's also not the thing most of us reach for: an evening of restless scrolling, which keeps the mind stimulated and the comparison machine running. Both look like "not working," but neither restores you.</p>
+<p>Real rest is when the mind is genuinely released from pressure. It's slowing down enough to observe yourself, look up and check your direction, and let your mental energy refill. Often it's small and unglamorous: an afternoon walk without your phone, a quiet meal with family, a few hours reading in silence. Any one of these can lighten a heavy head far more than another hour of grinding.</p>
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/you-are-not-a-machine/real-rest-phone-away.webp" width="1440" height="960" loading="lazy" decoding="async" alt="A person reads quietly near a window with a phone placed face down and out of reach." />
+  <figcaption>Real rest begins when the mind is no longer being pulled by the same pressure in a quieter costume.</figcaption>
+</figure>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th width="40%">What rest gets mistaken for</th><th>What real rest actually is</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Laziness</th><td>Deliberate recovery, so you can go further</td></tr>
+    <tr><th>Escaping life under the covers</th><td>Stepping back far enough to see it clearly</td></tr>
+    <tr><th>Scrolling until you're numb</th><td>Letting the mind go quiet and unstimulated</td></tr>
+    <tr><th>Falling behind</th><td>Refuelling the focus that everything else runs on</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="no-white-space">4. A society with no white space</h2>
+<p>The real problem is that modern life barely leaves room for any of this. Adults are swept into work; children are swept into extra classes. Many kids finish the school year and immediately start running from one tutoring session to the next, schedules so full there's no time left to play, explore, or simply be a child. We call it "preparing for the future" — but sometimes what's quietly being traded away is the childhood and the mental health of the very people we're trying to protect.</p>
+
+<div class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 740 250" role="img" aria-labelledby="dgm-whitespace-en">
+    <title id="dgm-whitespace-en">Two timelines. The top is packed edge to edge with blocks and leads to depletion; the bottom has breathing gaps between blocks and is sustainable.</title>
+    <text class="dgm-t-accent" x="370" y="30" text-anchor="middle" font-size="13">WHITE SPACE IS NOT WASTED SPACE</text>
+
+    <text class="dgm-t-muted dgm-t-mono" x="40" y="84" font-size="9.5">packed</text>
+    <rect class="dgm-driven" x="40" y="92" width="104" height="40" rx="4"/>
+    <rect class="dgm-driven" x="146" y="92" width="104" height="40" rx="4"/>
+    <rect class="dgm-driven" x="252" y="92" width="104" height="40" rx="4"/>
+    <rect class="dgm-driven" x="358" y="92" width="104" height="40" rx="4"/>
+    <rect class="dgm-driven" x="464" y="92" width="104" height="40" rx="4"/>
+    <rect class="dgm-driven" x="570" y="92" width="104" height="40" rx="4"/>
+    <text class="dgm-t-muted" x="690" y="117" text-anchor="start" font-size="10.5">→ depletion</text>
+
+    <text class="dgm-t-muted dgm-t-mono" x="40" y="178" font-size="9.5">spacious</text>
+    <rect class="dgm-core" x="40" y="186" width="120" height="40" rx="4"/>
+    <rect class="dgm-core" x="210" y="186" width="120" height="40" rx="4"/>
+    <rect class="dgm-core" x="380" y="186" width="120" height="40" rx="4"/>
+    <rect class="dgm-core" x="550" y="186" width="120" height="40" rx="4"/>
+    <text class="dgm-t-muted" x="690" y="211" text-anchor="start" font-size="10.5">→ sustainable</text>
+  </svg>
+  <figcaption>The gaps aren't empty time to be eliminated. They're where attention recovers, ideas connect, and a person — child or adult — actually catches their breath.</figcaption>
+</div>
+
+<p>Because a child doesn't grow on grades alone. They grow from wandering somewhere by themselves, tending a single potted plant, playing with friends, watching the ordinary world go by. Those unmeasured hours are exactly what build a person with a healthy inner life. The same is true, quietly, for the adult version of us — we are also still growing, and we also need the unscheduled hours.</p>
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/you-are-not-a-machine/protected-white-space-evening.webp" width="1440" height="960" loading="lazy" decoding="async" alt="A child tends a small potted plant while an adult keeps a closed laptop nearby in a quiet living room." />
+  <figcaption>White space protects the unmeasured hours where both children and adults recover attention and grow an inner life.</figcaption>
+</figure>
+
+<h2 id="the-science">5. What the science actually says</h2>
+<p>This isn't soft sentiment; it's how brains work. A large body of modern research points the same way: the brain does not perform well under unbroken strain. After genuine breaks, focus, creativity, and memory all measurably improve. It's why the solution to a stuck problem so often arrives in the shower, on a walk, or after a night's sleep — the mind keeps working on it once you stop forcing it. Rest doesn't make you weaker. Done right, it's exactly what lets you go further.</p>
+
+<div class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 740 290" role="img" aria-labelledby="dgm-curve-en">
+    <title id="dgm-curve-en">Two curves over time. Constant strain rises then declines toward burnout; work punctuated by real rest dips at each break but trends steadily higher and ends well above.</title>
+    <text class="dgm-t-accent" x="370" y="28" text-anchor="middle" font-size="13">STRAIN BURNS DOWN; REST COMPOUNDS UP</text>
+    <line class="dgm-line" x1="80" y1="250" x2="690" y2="250"/>
+    <line class="dgm-line" x1="80" y1="250" x2="80" y2="56"/>
+    <text class="dgm-t-muted dgm-t-mono" x="372" y="276" text-anchor="middle" font-size="9.5">time →</text>
+    <text class="dgm-t-muted dgm-t-mono" x="60" y="150" text-anchor="middle" font-size="9.5" transform="rotate(-90 60 150)">capacity →</text>
+
+    <path class="dgm-line" fill="none" stroke-dasharray="6 4" d="M100,190 C 200,96 250,92 300,104 C 430,140 560,214 670,236"/>
+    <text class="dgm-t-muted" x="600" y="222" text-anchor="end" font-size="10">constant strain → burnout</text>
+
+    <polyline class="dgm-flow" fill="none" points="100,214 190,150 226,176 320,112 356,140 452,86 488,112 590,66 660,74"/>
+    <text class="dgm-t-accent" x="560" y="58" text-anchor="middle" font-size="10">work + real rest → further</text>
+  </svg>
+  <figcaption>The strained line looks like it's winning early — and that is the risk. The rested line gives up a little at each pause and ends far ahead, because it never burns down its own foundation.</figcaption>
+</div>
+
+<h2 id="you-are-not-a-machine">6. You are not a machine</h2>
+<p>Maybe the most frightening thing isn't working hard. It's spending an entire life in a state of constant pressure, until you forget what genuine peace even feels like — until "fine" just means "not currently on fire." At some point we have to relearn something very basic that the culture trained out of us: <strong>a human being is not a machine, and no one can run forever without recovering.</strong></p>
+<p>So give yourself the fallow season without apology. A few practices to make it real:</p>
+<ul>
+<li><strong>Schedule the white space.</strong> Put a phoneless walk or a free evening on the calendar like any other commitment — protected, not optional. What isn't scheduled gets eaten.</li>
+<li><strong>Separate rest from stimulation.</strong> Doomscrolling is not rest. Trade some of it for something genuinely quieting — a walk, a meal, a book, doing nothing at all for ten minutes.</li>
+<li><strong>Let "off" mean off.</strong> When you rest, actually rest; half-working through your downtime gives you neither the work nor the recovery.</li>
+<li><strong>Protect the unmeasured hours</strong> — for yourself and, if you have them, your kids. Play, wandering, and quiet are not gaps in a productive life; they're where healthy minds are built.</li>
+<li><strong>Notice the guilt, and let it pass.</strong> When the "you should be doing something" voice arrives, greet it as the learned story it is — and rest anyway.</li>
+</ul>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Key takeaways</h3>
+<ul>
+  <li><strong>The guilt of resting is learned, not true.</strong> We've absorbed a story that equates busyness with worth and stillness with waste — and it's costing us.</li>
+  <li><strong>Nothing in nature grows without a fallow season.</strong> Fields recover, trees store energy in winter; rest is a phase of growth, not a break from it.</li>
+  <li><strong>Real rest isn't laziness — or doomscrolling.</strong> It's releasing the mind from pressure: a phoneless walk, a quiet meal, silence. Scrolling keeps the machine running.</li>
+  <li><strong>White space isn't wasted space.</strong> Over-scheduling adults and children alike trades away the unmeasured hours where attention recovers and inner lives are built.</li>
+  <li><strong>The science agrees:</strong> brains don't perform under unbroken strain. After real rest, focus, creativity, and memory improve — rest is what lets you go further.</li>
+  <li><strong>You are not a machine.</strong> The pause doesn't set you back; it lets you breathe again — and that's the condition for everything else.</li>
+</ul>
+</div>
+<p>None of this is an argument against hard work or ambition; it's an argument for being able to sustain them across a whole life instead of a frantic few years. The goal was never to run at maximum until something breaks. It was to grow — and growth, in soil and in people, has always needed its quiet seasons. So when you finally sit still and the old guilt whispers that you're falling behind, you can answer it honestly: you're not falling behind. You're just, at last, breathing again.</p>
+4:["$","$La",null,{"category":"notes","slug":"you-are-not-a-machine","children":[["$","$Lb",null,{"category":"notes","slug":"you-are-not-a-machine","readingMinutes":11,"surface":"notes"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lc",null,{"url":"https://nguyenlephong.github.io/en/notes/you-are-not-a-machine","title":"You Are Not a Machine: Why Rest Is Part of Doing Good Work","surface":"notes","category":"notes","slug":"you-are-not-a-machine","labels":{"share":"공유","copyLink":"링크 복사","copied":"복사됨!","close":"닫기"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Ld",null,{"href":"/ko/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"노트"}],[["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Ld",null,{"href":"/ko/notes?topic=goc-nhin","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Perspectives & Reflections"}]],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"You Are Not a Machine: Why Rest Is Part of Doing Good Work"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","h1",null,{"className":"blog-article__title","children":"You Are Not a Machine: Why Rest Is Part of Doing Good Work"}],["$","p",null,{"className":"blog-article__summary","children":"Modern work can make rest feel suspicious, as if pausing means falling behind. This reflection looks at why busyness is often confused with worth, why real rest is different from numbing out, what over-scheduling costs adults and children, and what the science of strain and recovery makes clear: pause is not the opposite of progress; it is one condition that lets progress continue."}],["$","div",null,{"className":"blog-article__meta","children":[["$","time",null,{"dateTime":"2026-03-01","children":"2026년 3월 1일"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"11분 읽기"}],["$","$Le",null,{"label":"조회"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Personal Reflection",{"children":"Personal Reflection"}],["$","li","Mental Wellbeing",{"children":"Mental Wellbeing"}],["$","li","Rest and Recovery",{"children":"Rest and Recovery"}],["$","li","Burnout",{"children":"Burnout"}],["$","li","Work-Life Balance",{"children":"Work-Life Balance"}],["$","li","Life Philosophy",{"children":"Life Philosophy"}]]}]]}],["$","$Lf",null,{"html":"$10"}],"$L11",null,"$L12"]}]]}],"$L13","$L14"]}],"$L15"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/579669e8fc8fe057.css","precedence":"next"}]
+6:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+7:["$","script","script-0",{"src":"/_next/static/chunks/60afb5b0374fe7a9.js","async":true}]
+8:["$","script","script-1",{"src":"/_next/static/chunks/0e65e15104575034.js","async":true}]
+9:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+11:["$","section",null,{"className":"blog-faq","aria-labelledby":"notes-faq-heading","children":[["$","h2",null,{"id":"notes-faq-heading","className":"blog-faq__heading","children":"자주 묻는 질문"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Isn't this just a comfortable excuse for laziness and avoiding hard work?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"It's the opposite, and the essay draws the line carefully. Laziness is avoidance — hiding from things you need to do, which tends to leave you feeling worse, not restored. Real rest is deliberate recovery in service of doing your work well and sustainably. The test is how you feel afterward: genuine rest leaves you clearer and more capable; avoidance leaves you foggy and guilty. This isn't an argument against effort — it's an argument for the kind of effort you can sustain across decades instead of burning out in a few intense years."}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"I 'rest' by scrolling my phone for hours but never feel recharged. Why?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Because scrolling isn't rest — it's stimulation that happens to be sedentary. Your body is still, but your mind is being fed a constant stream of inputs, comparisons, and small dopamine hits, so the pressure system never actually switches off. Real rest requires lowering stimulation, not just activity: a walk without the phone, a quiet meal, a book, or genuinely doing nothing for ten minutes. Try swapping even one scrolling session for something unstimulating and notice the difference in how your head feels afterward. The goal is a quiet mind, not just idle hands."}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"My job and life are genuinely demanding — I don't have hours for this. What can I realistically do?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Rest scales down further than people think; you don't need a retreat. The research on breaks applies to small ones too: a few minutes of real disconnection between tasks, a short walk at lunch without your phone, protecting the first or last fifteen minutes of your day. The key is quality, not quantity — a genuinely unstimulated ten minutes beats a distracted hour. Start by defending one small pocket of white space and treating it as non-negotiable. Tiny, consistent recovery compounds, exactly like the rested curve in the essay."}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How do I rest without the guilt actually ruining the rest?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"First, reframe what you're doing: you're not slacking, you're maintaining the instrument you work with — your mind. Recovery is part of the work, not a betrayal of it. Second, when the guilty 'you should be doing something' thought appears, don't fight it; just recognise it as a learned reflex from a busyness-worship culture, and let it pass without obeying it. It loses power once you stop treating it as the truth. Over time, as you see that rested weeks are actually more productive and clear-headed, the guilt fades on its own because the evidence contradicts it."}}]]}],"$L19"]}]]}]
+12:["$","$L1a",null,{"prompt":"어떻게 보셨나요?","surface":"notes","category":"notes","slug":"you-are-not-a-machine","reactionLabels":{"like":"좋아요","love":"사랑","insightful":"통찰","clap":"축하"}}]
+13:["$","nav",null,{"className":"blog-series-nav","aria-label":"Perspectives & Reflections","children":[["$","$Ld",null,{"href":"/ko/notes/salary-is-seed-capital","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","이전 노트"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Your Salary Is Seed Capital, Not the Finish Line"}]]}],["$","$Ld",null,{"href":"/ko/notes/things-no-one-teaches-you","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["다음 노트"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Things Experience Slowly Teaches You"}]]}]]}]
+14:["$","footer",null,{"className":"blog-article__footer","children":["$","$Ld",null,{"href":"/ko/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","노트로 돌아가기"]}]}]
+15:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1b",null,{"label":"이 페이지에서","surface":"notes"}]}]
+18:null
+19:["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What about kids — isn't keeping them busy with classes genuinely good for their future?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Some structured learning is valuable; the problem is when the schedule becomes so full there's no room left for anything else. Children grow into healthy, resilient adults not only through grades but through unmeasured time — free play, boredom that sparks imagination, wandering, friendships, observing the world. Those hours build emotional regulation, creativity, and a stable inner life, which matter at least as much as test scores for a good future. The aim isn't to remove all structure; it's to protect genuine free time as something essential, not as the first thing sacrificed."}}]]}]

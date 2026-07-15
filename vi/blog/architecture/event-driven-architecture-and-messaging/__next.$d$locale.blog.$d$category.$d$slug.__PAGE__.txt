@@ -1,0 +1,222 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Tb6f,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/vi/blog/architecture/event-driven-architecture-and-messaging#article","headline":"Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn","description":"Khi service nào cũng gọi trực tiếp service khác, một dependency chậm có thể kéo cả checkout đi xuống. Bài này giải thích event-driven architecture bằng cách gần gũi: khi nào nên dùng sync hay async, command khác event ra sao, message broker thật sự bảo đảm điều gì, choreography và orchestration khác nhau thế nào, và lúc nào events chỉ làm hệ thống rối hơn.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/blog/architecture/event-driven-architecture-and-messaging","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/event-driven-architecture-and-messaging.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/vi/blog/architecture/event-driven-architecture-and-messaging","datePublished":"2026-04-11","dateModified":"2026-04-11","keywords":"Software Architecture, Event-Driven Architecture, Message Queues, Asynchronous Messaging, Distributed Systems, System Design","articleSection":"Source Code & Software Architecture","isRelatedTo":[{"@type":"BlogPosting","headline":"Outbox Pattern: để dữ liệu và sự kiện không lạc nhau","url":"https://nguyenlephong.github.io/vi/blog/architecture/the-outbox-pattern","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/the-outbox-pattern.jpg"},{"@type":"BlogPosting","headline":"Event Sourcing cho người mới: lưu cả chuyện đã xảy ra","url":"https://nguyenlephong.github.io/vi/blog/architecture/event-sourcing-beginners-guide","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/event-sourcing-beginners-guide.jpg"},{"@type":"BlogPosting","headline":"Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems","url":"https://nguyenlephong.github.io/vi/blog/architecture/data-in-distributed-systems","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/data-in-distributed-systems.jpg"},{"@type":"BlogPosting","headline":"Timeout, Retry, Circuit Breaker và Idempotency: bộ kỹ năng sống còn của distributed systems","url":"https://nguyenlephong.github.io/vi/blog/architecture/resilience-in-distributed-systems","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/resilience-in-distributed-systems.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/vi/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/vi/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Source Code & Software Architecture\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture/event-driven-architecture-and-messaging\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T5c08,<p>Bạn từng gặp cảnh này. Một <code>POST /checkout</code> lẽ ra chỉ mất 200&nbsp;ms giờ liên tục timeout, và khi bạn mở trace ra thì hiểu ngay: order service gọi payment, payment gọi inventory, inventory gọi email service, email service lại gọi một bên thứ ba đang có một buổi chiều chậm chạp. Bốn service nắm tay nhau, và khách hàng thì nhìn cái spinner quay mãi chỉ vì service <em>cuối cùng</em> trong chuỗi đang mệt.</p>
+<p>Sáu phần đầu của series này nói về <strong>cấu trúc</strong>: cách vẽ ranh giới bên trong codebase và giữa các service. Phần này nói về vấn đề tiếp theo xuất hiện ngay khi bạn có nhiều hơn một service — <strong>chúng nói chuyện với nhau thế nào</strong>. Event-driven architecture là câu trả lời bị hiểu lầm nhiều nhất cho câu hỏi đó: được tôn sùng như viên đạn bạc, bị sợ như sự phức tạp thừa thãi, và hiếm khi được giải thích bằng lời lẽ giản dị. Hãy sửa điều đó.</p>
+
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/event-driven-architecture-and-messaging/trace-before-the-queue-shift.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Nguyen Le Phong ngồi trước hai màn hình phát triển và lần theo cảnh một thao tác của user đang phải đợi quá nhiều service phía sau." />
+  <figcaption>Nhiều thay đổi kiến trúc bắt đầu từ một lúc debug rất yên: có người nhìn ra một thao tác của user đang phải đợi quá nhiều phản ứng phía sau.</figcaption>
+</figure>
+
+<h2 id="the-problem">Vấn đề: những service nắm tay nhau</h2>
+<p>Khi một service gọi một service khác rồi đợi câu trả lời, ta gọi đó là <strong>synchronous</strong> (đồng bộ). Đây là bản năng đầu tiên, vì nó đọc giống một lời gọi hàm bình thường. Rắc rối nằm ở chỗ điều gì xảy ra khi bạn nối chúng thành chuỗi.</p>
+<ul>
+<li><strong>Độ trễ cộng dồn.</strong> Nếu mỗi chặng mất 80&nbsp;ms, một chuỗi bốn chặng đã là 320&nbsp;ms trước khi có ai làm việc thật sự.</li>
+<li><strong>Lỗi lan ra.</strong> Nếu email service chết, checkout chết theo — dù gửi hoá đơn không phải là mục đích của việc mua hàng.</li>
+<li><strong>Coupling cứng lại.</strong> Order service buộc phải <em>biết về</em> payment, inventory và email. Thêm một phản ứng thứ năm là bạn lại phải sửa order service.</li>
+</ul>
+<p>Vấn đề sâu xa là caller đang làm hai việc khác nhau cùng lúc: <em>hoàn tất đơn hàng</em> và <em>điều phối tất cả những ai quan tâm đến đơn hàng</em>. Đó không phải cùng một việc, và việc đóng đinh chúng vào nhau chính là thứ làm cái spinner quay mãi.</p>
+
+<h2 id="sync-vs-async">Hai cách để các service nói chuyện</h2>
+<p>Chỉ có đúng hai hình dạng hội thoại, và phần lớn các cuộc tranh luận về kiến trúc thực ra là tranh luận xem nên dùng cái nào ở đâu.</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th width="22%">&nbsp;</th><th>Synchronous (request/response)</th><th>Asynchronous (messaging)</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Mô hình tư duy</th><td>Một cuộc gọi điện — hai bên cùng trên đường dây</td><td>Một lá thư gửi bưu điện — gửi bây giờ, đọc sau</td></tr>
+    <tr><th>Coupling</th><td>Caller biết callee và đợi nó</td><td>Bên gửi chỉ biết broker, không biết ai đọc</td></tr>
+    <tr><th>Khi lỗi</th><td>Callee chết &rarr; caller lỗi ngay</td><td>Bên đọc chết &rarr; message nằm chờ trong queue</td></tr>
+    <tr><th>Độ trễ</th><td>Tổng của mọi chặng</td><td>Bên gửi trả về ngay; việc chạy nền</td></tr>
+    <tr><th>Hợp nhất với</th><td>"Mình cần câu trả lời để đi tiếp" (đọc số dư, kiểm tra token)</td><td>"Việc này đã xảy ra; ai quan tâm thì phản ứng" (đặt hàng, upload file)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Để ý dòng cuối. Synchronous là công cụ đúng khi bạn thật sự <em>cần câu trả lời để tiếp tục</em>. Asynchronous là công cụ đúng khi bạn đang thông báo rằng <em>có chuyện đã xảy ra</em> và phản ứng của người khác là việc của họ, không phải của bạn. Event-driven architecture là thứ bạn có khi nghiêng hẳn về hình dạng thứ hai một cách có chủ đích.</p>
+<p>Đây là cùng một checkout, trước và sau. Bản synchronous bắt khách hàng đợi tất cả mọi người:</p>
+<pre><code><span class="cmt">// Trước: checkout sở hữu — và đợi — mọi thứ phía sau</span>
+<span class="kw">async function</span> checkout(cart) {
+  <span class="kw">const</span> order = <span class="kw">await</span> orders.create(cart)
+  <span class="kw">await</span> payment.charge(order)        <span class="cmt">// chậm</span>
+  <span class="kw">await</span> inventory.reserve(order)      <span class="cmt">// chậm</span>
+  <span class="kw">await</span> email.sendReceipt(order)      <span class="cmt">// chậm, và không phải điểm chính</span>
+  <span class="kw">return</span> order                        <span class="cmt">// khách đợi cả bốn</span>
+}</code></pre>
+<p>Bản event-driven hoàn tất đơn hàng rồi <em>thông báo</em> nó. Ai quan tâm thì phản ứng theo nhịp của riêng mình:</p>
+<pre><code><span class="cmt">// Sau: checkout hoàn tất, rồi publish một sự thật và trả về</span>
+<span class="kw">async function</span> checkout(cart) {
+  <span class="kw">const</span> order = <span class="kw">await</span> orders.create(cart)
+  <span class="kw">await</span> broker.publish(<span class="str">"orders"</span>, { type: <span class="str">"OrderPlaced"</span>, order })
+  <span class="kw">return</span> order                        <span class="cmt">// nhanh — payment, inventory, email phản ứng sau</span>
+}</code></pre>
+<p>Khách hàng không còn phải trả giá cho buổi chiều chậm chạp của email service. Quan trọng không kém, thêm chấm điểm gian lận ngày mai chỉ là viết một subscriber mới, không phải sửa lại <code>checkout</code> lần nữa.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/event-driven-architecture-and-messaging/from-call-chain-to-queue-model.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Ba kỹ sư Việt Nam đứng trước bảng trắng và biến một call chain rối thành queue với các subscriber độc lập." />
+  <figcaption>Event-driven chỉ trở nên thực dụng khi team chỉ rõ được đoạn nào phải synchronous, và phản ứng nào nên rời khỏi critical path.</figcaption>
+</figure>
+
+<h2 id="vocabulary">Từ vựng, bằng lời giản dị</h2>
+<p>Đám thuật ngữ rất nhỏ một khi bạn lột bỏ lớp huyền bí khỏi nó.</p>
+<ul>
+<li><strong>Message</strong> — bất kỳ khối dữ liệu nào một service trao cho service khác qua một người trung gian.</li>
+<li><strong>Command</strong> (lệnh) — message <em>yêu cầu</em> một việc xảy ra: <code>ChargeCard</code>. Nó có một người xử lý dự kiến và có thể bị từ chối.</li>
+<li><strong>Event</strong> (sự kiện) — message <em>thông báo</em> một việc đã xảy ra: <code>OrderPlaced</code>. Đó là một sự thật ở thì quá khứ, không gửi cho riêng ai.</li>
+<li><strong>Broker</strong> — người trung gian giữ message và giao đi: RabbitMQ, Kafka, NATS, AWS SNS/SQS, Google Pub/Sub.</li>
+<li><strong>Topic</strong> / <strong>queue</strong> — cái hộp thư có tên nơi message rơi vào. Producer ghi vào; consumer đọc ra.</li>
+<li><strong>Producer</strong> / <strong>consumer</strong> — bên publish, và bên subscribe rồi phản ứng.</li>
+</ul>
+<p>Phân biệt quan trọng nhất là <strong>command và event</strong>, vì nó quyết định ai là người chỉ huy. Command là "<em>này, làm việc này đi</em>." Event là "<em>chuyện này đã xảy ra; làm gì bạn thấy đúng thì làm</em>." Lẫn lộn hai thứ và bạn sẽ xây một hệ thống trông có vẻ event-driven nhưng thực chất là một đống nút điều khiển từ xa.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 380" role="img" aria-labelledby="dgm-eda">
+    <title id="dgm-eda">Một service publish một event lên broker; nhiều service độc lập subscribe và phản ứng theo nhịp của riêng chúng.</title>
+    <defs>
+      <marker id="edaAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-accent" x="380" y="30" text-anchor="middle" font-size="13">PUBLISH MỘT LẦN · PHẢN ỨNG NHIỀU</text>
+
+    <rect class="dgm-core" x="30" y="158" width="160" height="66" rx="10"/>
+    <text class="dgm-t-strong" x="110" y="188" text-anchor="middle" font-size="14">Order Service</text>
+    <text class="dgm-t-muted dgm-t-mono" x="110" y="207" text-anchor="middle" font-size="11">phát OrderPlaced</text>
+
+    <rect class="dgm-surface" x="300" y="150" width="150" height="82" rx="10"/>
+    <text class="dgm-t-strong" x="375" y="184" text-anchor="middle" font-size="14">Message Broker</text>
+    <text class="dgm-t-muted dgm-t-mono" x="375" y="203" text-anchor="middle" font-size="11">topic: orders</text>
+
+    <path class="dgm-flow" d="M190,191 H 296" marker-end="url(#edaAcc)"/>
+
+    <rect class="dgm-adapter" x="580" y="56" width="150" height="52" rx="9"/>
+    <text x="655" y="87" text-anchor="middle" font-size="13">Payment</text>
+    <rect class="dgm-adapter" x="580" y="165" width="150" height="52" rx="9"/>
+    <text x="655" y="196" text-anchor="middle" font-size="13">Inventory</text>
+    <rect class="dgm-adapter" x="580" y="274" width="150" height="52" rx="9"/>
+    <text x="655" y="305" text-anchor="middle" font-size="13">Email / Analytics</text>
+
+    <path class="dgm-flow" d="M450,178 C 510,150 520,90 576,82" marker-end="url(#edaAcc)"/>
+    <path class="dgm-flow" d="M450,191 H 576" marker-end="url(#edaAcc)"/>
+    <path class="dgm-flow" d="M450,204 C 510,232 520,292 576,300" marker-end="url(#edaAcc)"/>
+
+    <text class="dgm-t-muted dgm-t-mono" x="513" y="44" text-anchor="middle" font-size="11">subscribe</text>
+  </svg>
+  <figcaption>Bên publish không biết ai đang nghe. Thêm một phản ứng mới — chấm điểm gian lận, cập nhật điểm thưởng, một webhook — chỉ là thêm một subscriber, không phải sửa order service.</figcaption>
+</figure>
+
+<h2 id="styles">Ba "khẩu vị" của event</h2>
+<p>"Bọn em dùng events" có thể mang ba ý nghĩa khá khác nhau. Biết mình đang nói về cái nào sẽ tiết kiệm rất nhiều tranh cãi.</p>
+<ol>
+<li><strong>Event notification.</strong> Một tiếng ping mỏng: "đơn 1234 vừa được đặt." Nếu consumer cần chi tiết, nó gọi ngược lại để hỏi. Payload nhỏ nhất, nhưng có thể sinh ra nhiều cuộc gọi ngược lắm lời.</li>
+<li><strong>Event-carried state transfer.</strong> Event mang theo mọi thứ consumer cần — cả đơn hàng — nên không cần gọi ngược. Message nặng hơn, nhưng consumer giữ được độc lập. Đây là con ngựa thồ của hầu hết hệ thống event-driven.</li>
+<li><strong>Event sourcing.</strong> Các event <em>chính là</em> nguồn sự thật; trạng thái hiện tại được dựng lại bằng cách phát lại chúng. Mạnh và hiếm — phần lớn team không cần, và ta sẽ xem nó như một tuỳ chọn nâng cao ở phần sau.</li>
+</ol>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Một lựa chọn mặc định đơn giản</span><p>Hãy bắt đầu với <strong>event-carried state transfer</strong> cho dăm ba sự thật mà team khác quan tâm, và những lời gọi synchronous bình thường cho mọi thứ cần câu trả lời ngay. Bạn có thể sống một đời dài và hạnh phúc chỉ với hai thứ đó trước khi cần đụng đến event sourcing.</p></div>
+
+<h2 id="delivery">Broker thật sự hứa điều gì</h2>
+<p>Đây là chỗ thiện chí gặp vật lý. Broker không hứa cái thế giới sạch sẽ "đúng một lần, đúng thứ tự" mà bạn tưởng tượng. Nó hứa một điều thành thật hơn và khó chịu hơn.</p>
+<ul>
+<li><strong>At-least-once là chuẩn mực.</strong> Broker có thể giao cùng một message hai lần — sau một cú nghẽn mạng, một lần crash, hay một lần redeliver. "Exactly once" phần lớn là chiêu marketing; thứ hệ thống thật làm là <em>at-least-once cộng với consumer idempotent</em>.</li>
+<li><strong>Thứ tự có giới hạn.</strong> Sắp thứ tự toàn cục trên một topic rất đắt; phần lớn broker chỉ bảo đảm thứ tự trong một partition hoặc theo key. Hãy thiết kế sao cho việc message đến sai thứ tự vẫn sống sót được.</li>
+<li><strong>Message lỗi cần một mái nhà.</strong> Một message cứ lỗi mãi nên rơi vào <strong>dead-letter queue</strong> thay vì chặn cả hàng đợi mãi mãi.</li>
+</ul>
+<p>Hệ quả thực tế là một quy tắc đáng xăm lên người cả team: <strong>mọi consumer phải an toàn khi chạy hai lần.</strong> Tính chất đó gọi là <em>idempotency</em>, và nó là khác biệt giữa một hệ thống vững vàng với một hệ thống gửi cho khách ba cái hoá đơn.</p>
+
+<pre><code><span class="cmt">// Không idempotent: giao trùng sẽ trừ tiền hai lần và gửi mail hai lần</span>
+<span class="kw">async function</span> onOrderPlaced(evt) {
+  <span class="kw">await</span> payment.charge(evt.amount)        <span class="cmt">// chạy lại khi redeliver</span>
+  <span class="kw">await</span> email.sendReceipt(evt.customerId)
+}
+
+<span class="cmt">// Idempotent: event id là người gác cổng. An toàn khi chạy hai lần.</span>
+<span class="kw">async function</span> onOrderPlaced(evt) {
+  <span class="kw">if</span> (<span class="kw">await</span> seen.has(evt.id)) <span class="kw">return</span>   <span class="cmt">// đã xử lý rồi — không làm gì</span>
+  <span class="kw">await</span> payment.charge(evt.amount)
+  <span class="kw">await</span> email.sendReceipt(evt.customerId)
+  <span class="kw">await</span> seen.add(evt.id)
+}</code></pre>
+
+<h2 id="choreography-vs-orchestration">Ai chỉ huy: choreography và orchestration</h2>
+<p>Một khi công việc trải qua nhiều service, phải có thứ gì đó điều phối nó. Có hai triết lý, và lựa chọn này định hình cách bạn sẽ debug lúc 2&nbsp;giờ sáng.</p>
+<ul>
+<li><strong>Choreography (biên đạo).</strong> Không có nhạc trưởng. Mỗi service nghe event và phản ứng, rồi lần lượt phát event của riêng mình. Order phát <code>OrderPlaced</code>; payment nghe được rồi phát <code>PaymentTaken</code>; shipping nghe <em>cái đó</em>. Decoupled rất đẹp — và thật sự khó dõi theo, vì "luồng" không nằm ở bất kỳ chỗ nào duy nhất.</li>
+<li><strong>Orchestration (dàn nhạc).</strong> Một bộ điều phối (một "order saga") nói rõ cho từng service phải làm gì tiếp theo và theo dõi tiến độ. Dễ nhìn và dễ suy luận hơn; cái giá là bộ điều phối trở thành một thứ bạn phải sở hữu và giữ cho đơn giản.</li>
+</ul>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Một quy tắc ngón tay cái hữu ích</span><p>Dùng <strong>choreography</strong> cho những phản ứng "fan-out" lỏng lẻo mà không ai cần biết toàn bộ câu chuyện (analytics, thông báo, đánh index tìm kiếm). Dùng <strong>orchestration</strong> cho một giao dịch nghiệp vụ thật sự với các bước phải cùng thành công hoặc cùng được hoàn tác — đó chính xác là bài toán <em>saga</em> ta sẽ mổ xẻ ở phần sau về dữ liệu.</p></div>
+
+<h2 id="when-it-helps">Event-driven architecture phát huy ở đâu</h2>
+<ul>
+<li><strong>Fan-out.</strong> Một việc xảy ra và kéo theo nhiều phản ứng không liên quan. Thêm phản ứng thứ bảy không nên đồng nghĩa với sửa lại cái việc đã xảy ra.</li>
+<li><strong>Việc dồn cục hoặc chậm.</strong> Encode video, sinh PDF, gửi một triệu email — đẩy lên queue và để worker gặm dần mà không bắt người dùng đợi.</li>
+<li><strong>Đệm tải.</strong> Một queue hấp thụ cú spike traffic mà lẽ ra sẽ quật ngã một downstream service đồng bộ.</li>
+<li><strong>Tách rời các team.</strong> Team sở hữu "orders" có thể publish sự thật mà không cần học về mọi team tiêu thụ chúng.</li>
+</ul>
+
+<h2 id="when-not">Khi nào ĐỪNG với tới events</h2>
+<p>Events không miễn phí, và với tới chúng quá sớm là một trong những cách phổ biến nhất để tự chế ra accidental complexity.</p>
+<ul>
+<li><strong>Bạn cần câu trả lời ngay.</strong> "Coupon này còn hợp lệ không?" là một câu hỏi, không phải lời thông báo. Cứ gọi thẳng service.</li>
+<li><strong>Đó là app hai service.</strong> Một broker, một schema registry và một dead-letter queue là quá nhiều máy móc để né một lời gọi trực tiếp giữa hai service duy nhất của bạn.</li>
+<li><strong>Team chưa từng vận hành broker.</strong> Lỗi async mặc định là vô hình. Không có tracing và dashboard tốt, một queue bị kẹt là một sự cố thầm lặng mà bạn phát hiện ra qua những khách hàng giận dữ.</li>
+<li><strong>Strong consistency là bắt buộc.</strong> Nếu nghiệp vụ không chịu nổi "đúng sau một hai giây," eventual consistency sẽ làm bạn đau — xem phần sau.</li>
+</ul>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Cái bẫy "cái gì cũng là event"</span><p>Kiểu hỏng là biến mọi lời gọi hàm thành event và kết thúc với một hệ thống mà logic rải rác qua hai mươi subscriber và không thể nào trace nổi. Bất đồng bộ là công cụ để <em>tách rời những thứ thật sự độc lập</em> — không phải mặc định cho tất cả. Nếu bạn không thể giải thích một luồng mà thiếu bảng trắng và bốn màu bút, bạn đã lạm dụng nó.</p></div>
+
+<h2 id="by-company-size">Góc nhìn thành thật theo quy mô công ty</h2>
+<ul>
+<li><strong>Solo / startup giai đoạn đầu.</strong> Gần như chắc chắn bạn chưa cần broker. Một bảng background job ngay trong database hiện có (poll bảng <code>jobs</code>, đánh dấu xong) lo được 90% nhu cầu "làm việc này sau" mà không gánh chút sức nặng vận hành nào.</li>
+<li><strong>Scale-up đang lớn.</strong> Đưa vào một managed broker (SQS, Pub/Sub, Kafka hosted) cho hai ba điểm fan-out thật sự: order events, xử lý file, thông báo. Giữ synchronous cho mọi thứ cần câu trả lời. Đầu tư vào tracing <em>trước khi</em> đầu tư thêm topic.</li>
+<li><strong>Doanh nghiệp lớn.</strong> Events trở thành xương sống giữa các team, với quản trị schema, xử lý dead-letter, công cụ replay, và quyền sở hữu rõ ràng cho từng topic. Phần khó không còn là công nghệ; mà là <em>contract</em> — thống nhất một event nghĩa là gì và không bao giờ phá vỡ nó một cách tuỳ tiện.</li>
+</ul>
+
+<h2 id="getting-started">Bắt đầu từ thứ Hai thế nào</h2>
+<ol>
+<li>Tìm một chỗ mà caller đang đợi một công việc người dùng không cần đợi — gửi email, sinh báo cáo, đồng bộ sang bên thứ ba. Đó là event đầu tiên của bạn.</li>
+<li>Publish một sự thật ở thì quá khứ (<code>OrderPlaced</code>), không phải một command. Để email service subscribe thay vì bị gọi.</li>
+<li>Làm consumer idempotent ngay từ ngày đầu, khoá theo event id. Hãy giả định nó sẽ được giao hai lần.</li>
+<li>Thêm dead-letter queue và một cảnh báo trên đó <em>trước khi</em> lên production. Một dead-letter queue đang phình to là dấu hiệu cảnh báo sớm nhất của bạn.</li>
+<li>Thêm tracing để một request có thể được dõi theo qua từng chặng. Async mà không có observability là debug khi bịt mắt.</li>
+</ol>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/event-driven-architecture-and-messaging/fan-out-needs-a-clear-owner.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Một team engineering nhỏ ngồi quanh bàn lúc chạng vạng để bàn ai nên phản ứng với cùng một event và ai không nên bị kéo vào flow." />
+  <figcaption>Fan-out chỉ giữ được sự lành mạnh khi vẫn có người sở hữu câu chuyện của flow: publish gì, ai phản ứng, và bước nào được phép chờ.</figcaption>
+</figure>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Những điều cốt lõi</h3>
+<ul>
+  <li><strong>Sync là cuộc gọi điện; async là lá thư.</strong> Dùng lời gọi synchronous khi bạn cần câu trả lời để đi tiếp, và dùng messaging khi bạn thông báo rằng có chuyện đã xảy ra.</li>
+  <li><strong>Command yêu cầu; event thông báo.</strong> Phân biệt command/event quyết định ai chỉ huy — hãy làm đúng nó trước mọi thứ khác.</li>
+  <li><strong>Broker hứa at-least-once, không phải exactly-once.</strong> Vì thế mọi consumer phải idempotent và an toàn khi chạy hai lần. Điều này không thể thương lượng.</li>
+  <li><strong>Choreography tách rời; orchestration làm rõ.</strong> Phản ứng fan-out hợp với choreography; giao dịch nhiều bước thật sự cần một bộ điều phối — chính là saga của phần sau.</li>
+  <li><strong>Events dành cho sự độc lập thật, không cho tất cả.</strong> Với tới broker trong một app hai service, hay biến mọi lời gọi thành event, là tự chế ra đúng cái phức tạp mà bạn đang muốn tránh.</li>
+</ul>
+</div>
+<p>Tách việc ra mới là nửa dễ. Khoảnh khắc các service ngừng dùng chung một database, một câu hỏi khó hơn xuất hiện: <em>ai sở hữu dữ liệu, và "đúng" có nghĩa là gì khi sự thật được trải ra trên năm service?</em> Đó là phần tiếp theo của series này.</p>
+3:["$","$L8",null,{"category":"architecture","slug":"event-driven-architecture-and-messaging","children":[["$","$L9",null,{"category":"architecture","slug":"event-driven-architecture-and-messaging","readingMinutes":15,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/vi/blog/architecture/event-driven-architecture-and-messaging","title":"Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn","surface":"blog","category":"architecture","slug":"event-driven-architecture-and-messaging","labels":{"share":"Chia sẻ","copyLink":"Sao chép liên kết","copied":"Đã sao chép!","close":"Đóng"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/vi/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Source Code & Software Architecture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Software Architecture Foundations",["$","span",null,{"aria-hidden":"true","children":" · "}],"Phần 7/15"]}],["$","h1",null,{"className":"blog-article__title","children":"Event-Driven Architecture: khi service bớt gọi trực tiếp và hệ thống dễ thở hơn"}],["$","p",null,{"className":"blog-article__summary","children":"Khi service nào cũng gọi trực tiếp service khác, một dependency chậm có thể kéo cả checkout đi xuống. Bài này giải thích event-driven architecture bằng cách gần gũi: khi nào nên dùng sync hay async, command khác event ra sao, message broker thật sự bảo đảm điều gì, choreography và orchestration khác nhau thế nào, và lúc nào events chỉ làm hệ thống rối hơn."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Bởi Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-04-11","children":"11 tháng 4, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"15 phút đọc"}],["$","$Lc",null,{"label":"lượt xem"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Software Architecture",{"children":"Software Architecture"}],["$","li","Event-Driven Architecture",{"children":"Event-Driven Architecture"}],["$","li","Message Queues",{"children":"Message Queues"}],["$","li","Asynchronous Messaging",{"children":"Asynchronous Messaging"}],["$","li","Distributed Systems",{"children":"Distributed Systems"}],["$","li","System Design",{"children":"System Design"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"Bạn thấy bài viết thế nào?","surface":"blog","category":"architecture","slug":"event-driven-architecture-and-messaging","reactionLabels":{"like":"Thích","love":"Yêu thích","insightful":"Sâu sắc","clap":"Tuyệt vời"}}]
+10:["$","$L18",null,{"heading":"Bài liên quan","intro":"Một vài bài gần chủ đề này để bạn đọc tiếp mạch suy nghĩ với nhiều ngữ cảnh hơn.","items":[{"post":{"slug":"the-outbox-pattern","category":"architecture","title":"Outbox Pattern: để dữ liệu và sự kiện không lạc nhau","summary":"Outbox Pattern xử lý một lỗi rất đời của hệ thống phân tán: dữ liệu đã ghi vào database nhưng event lại không được gửi đi. Mẫu này khép khoảng hở của dual write, nhưng vẫn đòi hỏi retry, idempotency, ordering, dọn dữ liệu và observability nghiêm túc.","date":"2026-05-15","readingMinutes":7,"tags":["Software Architecture","Outbox Pattern","Distributed Systems","Event-Driven Architecture","Reliability","Microservices"],"author":"Nguyen Le Phong"},"categoryTitle":"Source Code & Software Architecture","readingLabel":"7 phút đọc"},{"post":{"slug":"event-sourcing-beginners-guide","category":"architecture","title":"Event Sourcing cho người mới: lưu cả chuyện đã xảy ra","summary":"Event Sourcing giữ chuỗi event chỉ nối thêm làm bản ghi gốc, rồi dựng trạng thái hiện tại qua projection. Đổi lại khả năng audit và replay là chi phí versioning, vận hành và phục hồi.","date":"2026-05-05","readingMinutes":7,"tags":["Software Architecture","Event Sourcing","Event-Driven Architecture","CQRS","System Design","Data Modeling"],"author":"Nguyen Le Phong"},"categoryTitle":"Source Code & Software Architecture","readingLabel":"7 phút đọc"},{"post":{"slug":"data-in-distributed-systems","category":"architecture","title":"Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems","summary":"Tách code thường dễ hơn tách dữ liệu. Khi mỗi service cần sở hữu dữ liệu riêng, team phải đối mặt với shared database, eventual consistency, dual-write bug, outbox, saga, CQRS và event sourcing. Bài này đi qua những lựa chọn đó bằng ví dụ thực tế, để bạn hiểu trade-off trước khi hệ thống phân tán bắt đầu làm mọi thứ khó hơn.","date":"2026-04-10","readingMinutes":14,"tags":["Software Architecture","Distributed Systems","Saga Pattern","CQRS","Event Sourcing","Data Consistency"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":8},"categoryTitle":"Source Code & Software Architecture","readingLabel":"14 phút đọc"},{"post":{"slug":"resilience-in-distributed-systems","category":"architecture","title":"Timeout, Retry, Circuit Breaker và Idempotency: bộ kỹ năng sống còn của distributed systems","summary":"Một lời gọi ra khỏi process có thể chậm, lỗi, timeout, hoặc chạy hai lần. Đó không phải chuyện hiếm, mà là đời sống bình thường của distributed systems. Bài này gom lại những kỹ thuật giúp hệ thống bền hơn: timeout, retry với backoff và jitter, idempotency, circuit breaker, bulkhead, graceful degradation và observability.","date":"2026-04-09","readingMinutes":14,"tags":["Software Architecture","Resilience","Fault Tolerance","Circuit Breaker","Idempotency","Distributed Systems"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":9},"categoryTitle":"Source Code & Software Architecture","readingLabel":"14 phút đọc"}],"sourceCategory":"architecture","sourceSlug":"event-driven-architecture-and-messaging"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"Software Architecture Foundations","children":[["$","$Lb",null,{"href":"/vi/blog/architecture/micro-frontends-when-why-and-cost","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Micro-Frontends: khi nào đáng tách, khi nào chỉ thêm rối"}]]}],["$","$Lb",null,{"href":"/vi/blog/architecture/data-in-distributed-systems","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Bài tiếp theo"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Database-per-Service, Saga và Eventual Consistency: dữ liệu sống thế nào trong distributed systems"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Về Source Code & Software Architecture"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"Trong bài này","surface":"blog"}]}]
+16:null

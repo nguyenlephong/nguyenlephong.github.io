@@ -1,0 +1,18 @@
+{
+  "slug": "letting-ai-speed-up-the-search-not-the-judgment",
+  "category": "ai",
+  "title": "Letting AI Speed Up the Search, Not the Judgment",
+  "summary": "A practical reflection on using AI to broaden investigation while keeping source checking, trade-off decisions, and accountability with people.",
+  "date": "2026-07-21",
+  "readingMinutes": 5,
+  "tags": [
+    "AI",
+    "Search",
+    "Judgment",
+    "Verification",
+    "Evidence",
+    "Engineering"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The model found three possible causes in less than a minute. That was useful. It also sounded confident about one of them before we had checked the logs. That was the dangerous part. AI had made the search faster, but the judgment still had to be earned.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/letting-ai-speed-up-the-search-not-the-judgment/ai-search-human-judgment.webp' width='1600' height='900' loading='lazy' decoding='async' alt='An engineer reviews AI-suggested search cards, source evidence markers, and a judgment checklist on a calm product investigation desk.' />\n  <figcaption>AI can widen the search quickly, but evidence still has to decide what is true.</figcaption>\n</figure>\n<p>This is one of the healthiest ways to use AI in engineering work: let it help search, compare, summarize, and propose paths. Do not let it silently replace the act of deciding what is true.</p>\n<p>Search and judgment are different skills. Search asks what might matter. Judgment asks what is supported, what is risky, what changed, and what action is justified. AI is often good at producing a wider first map. It is not automatically good at knowing which path the real system is on.</p>\n<p>A good AI-assisted investigation keeps the model close to evidence. Ask it to point to files, commands, logs, assumptions, and missing checks. Ask it to say what would disprove its explanation. The more concrete the work becomes, the less room there is for polished guessing.</p>\n<p>The human part is not just final approval. It is deciding which sources are authoritative, which trade-offs matter, which failure mode is acceptable, and whether the proposed change fits the product and codebase. Those decisions carry context the model does not own.</p>\n<p>There is also a pace risk. Fast suggestions can make weak evidence feel sufficient because the conversation is moving. Slowing down for one source check, one reproduction, or one failing test is not anti-AI. It is how AI work becomes engineering instead of performance.</p>\n<p>I like treating AI output as a search accelerator with a receipt. What did it look at? What did it infer? What is verified? What remains unknown? If the answer cannot be traced, it should not be used as the basis for a risky change.</p>\n<p>Used this way, AI does not make the engineer smaller. It gives the engineer more surface area to inspect. The value is not that the model decides for us. The value is that we can reach the real decision with better evidence and less wasted motion.</p>"
+}

@@ -1,0 +1,257 @@
+1:"$Sreact.fragment"
+a:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+b:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+e:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+f:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+17:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+18:"$Sreact.suspense"
+1a:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1b:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1c:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta90,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/vi/blog/culture/how-to-write-a-great-pull-request#article","headline":"Viết Pull Request dễ review: giúp reviewer hiểu nhanh và góp ý đúng chỗ","description":"Một pull request tốt giúp reviewer tiết kiệm năng lượng: phạm vi gọn, title rõ, mô tả có bối cảnh, screenshot hoặc test note đủ dùng, commit sạch và self-review trước khi gửi. Bài này chỉ cách biến PR từ một đống thay đổi khó đọc thành một câu chuyện dễ theo dõi để review nhanh hơn và ít hiểu lầm hơn.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/blog/culture/how-to-write-a-great-pull-request","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/how-to-write-a-great-pull-request.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/vi/blog/culture/how-to-write-a-great-pull-request","datePublished":"2026-02-27","dateModified":"2026-02-27","keywords":"Văn hoá kỹ thuật, Pull Requests, Code Review, Git, Cộng tác nhóm, Năng suất lập trình viên","articleSection":"Engineering Culture","isRelatedTo":[{"@type":"BlogPosting","headline":"Code review tử tế: góp ý để code tốt hơn và người viết vẫn muốn tiến lên","url":"https://nguyenlephong.github.io/vi/blog/culture/how-to-review-code-kindly","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/how-to-review-code-kindly.jpg"},{"@type":"BlogPosting","headline":"Pull Request khiến reviewer có thể tin tưởng","url":"https://nguyenlephong.github.io/vi/blog/culture/pull-request-that-reviewers-can-trust","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/pull-request-that-reviewers-can-trust.jpg"},{"@type":"BlogPosting","headline":"Mentoring engineer: giúp junior lớn lên thành người đáng tin","url":"https://nguyenlephong.github.io/vi/blog/culture/mentoring-engineers","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/mentoring-engineers.jpg"},{"@type":"BlogPosting","headline":"Reviewer là người đọc đến sớm","url":"https://nguyenlephong.github.io/vi/blog/culture/the-reviewer-as-a-future-reader","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/the-reviewer-as-a-future-reader.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/vi/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--violet","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/vi/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Engineering Culture\",\"item\":\"https://nguyenlephong.github.io/vi/blog/culture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Viết Pull Request dễ review: giúp reviewer hiểu nhanh và góp ý đúng chỗ\",\"item\":\"https://nguyenlephong.github.io/vi/blog/culture/how-to-write-a-great-pull-request\"}]}"}}],"$L3","$L4"]}],["$L5","$L6","$L7"],"$L8"]}],"loading":null,"isPartial":false}
+9:Td18,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/vi/blog/culture/how-to-write-a-great-pull-request#faq","mainEntity":[{"@type":"Question","name":"Pull request nên lớn bao nhiêu?","acceptedAnswer":{"@type":"Answer","text":"Theo quy tắc chung, hướng tới dưới 400 dòng code thay đổi. Quan trọng hơn, hãy suy nghĩ theo phạm vi logic thay vì số dòng thô: một PR nên chứa một thay đổi mạch lạc có thể được hiểu, test, và revert độc lập. Nếu bạn không thể mô tả PR trong một câu mà không dùng từ \"và\", nó có thể quá lớn."}},{"@type":"Question","name":"Điều gì tạo nên một pull request description tốt?","acceptedAnswer":{"@type":"Answer","text":"Một mô tả tốt trả lời ba câu hỏi reviewer có trong mười giây đầu tiên: Cái gì đã thay đổi và ở đâu? Tại sao thay đổi này cần thiết? Làm thế nào để verify nó hoạt động? Cụ thể: phần 'What' ngắn tóm tắt thay đổi, phần 'Why' cung cấp động lực hay ngữ cảnh bug, và phần 'How to test' với các bước tái hiện hay lệnh test. Với thay đổi UI, screenshot đáng giá trăm lời. Risk và rollback note là bonus cho thay đổi nhạy cảm."}},{"@type":"Question","name":"Làm thế nào để tách một pull request lớn?","acceptedAnswer":{"@type":"Answer","text":"Ba chiến lược hoạt động tốt cùng nhau. Đầu tiên, tách refactoring khỏi thay đổi hành vi: tái cấu trúc trong một PR không có logic mới, rồi thêm tính năng trong PR tiếp theo. Thứ hai, ship infrastructure trước — migration, type, và scaffolding — trước UI sử dụng nó, để mỗi PR có thể deploy độc lập. Thứ ba, dùng feature flag để merge công việc chưa hoàn chỉnh an toàn đằng sau toggle tắt mặc định. Stacked PR (PR B dựa trên PR A) là tùy chọn nâng cao nếu nhóm bạn có hỗ trợ tooling."}},{"@type":"Question","name":"Mình có nên review pull request của chính mình trước không?","acceptedAnswer":{"@type":"Answer","text":"Có, luôn luôn. Trước khi đề nghị review, mở diff trên code host và đọc nó như thể bạn đang thấy lần đầu. Tìm debug output còn sót, test còn thiếu, thay đổi whitespace không có ý định, và logic không rõ ràng. Để lại comment hướng dẫn về bất cứ thứ gì cần ngữ cảnh trước khi reviewer đến. Self-review bắt lỗi đáng xấu hổ trước khi chúng trở thành comment review vĩnh viễn, và nó thể hiện sự tôn trọng thời gian reviewer."}},{"@type":"Question","name":"Commit message nên chứa gì?","acceptedAnswer":{"@type":"Answer","text":"Commit message nên có dòng subject ngắn dạng imperative (tối đa 50 ký tự) mô tả commit làm gì. Dùng định dạng conventional commits: type(scope): subject — ví dụ 'fix(cart): add row-level lock to prevent oversell'. Nếu lý do không rõ ràng từ diff, thêm một dòng trống sau subject và một body ngắn giải thích động lực hay bất kỳ quyết định thiết kế không rõ ràng nào. Diff cho thấy cái gì đã thay đổi; message nên giải thích tại sao."}}]}3:["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$9"}}]
+10:T5bc1,<p>Bạn biết cái đó rồi đấy. Nó xuất hiện trong queue review của bạn vào một chiều thứ Ba: một pull request tiêu đề <strong>"fixes"</strong>, diff trải dài 2.347 dòng qua 41 file, không có mô tả, và một "PTAL" vui vẻ trong comment. Tim bạn chìm xuống. Bạn vẫn mở nó ra. Hai mươi phút sau bạn đã đọc cùng một method ba lần, vẫn không biết nó giải quyết vấn đề gì, và bạn đã để lại một comment lo lắng duy nhất: "nhìn chung ổn, có thể đổi tên biến này không?" Bạn vừa rubber-stamp code mà bạn không hiểu.</p>
+<p>Tác giả không ác ý — có lẽ họ đang chú tâm làm việc, tự hào về công việc, và chỉ quên rằng ship code chỉ là một nửa công việc. Nửa kia là được review, được hiểu, và được merge an toàn. Một pull request không phải là thủ tục hành chính bạn dọn sạch trước khi merge; đó là một cuộc trò chuyện, và như mọi cuộc trò chuyện, nó diễn ra tốt hơn khi ai đó bỏ công sức để được hiểu.</p>
+<p>Bài này nói về công sức đó: cách viết PR mà đồng đội thực sự thích review — nhỏ gọn, có mục đích, dễ theo dõi, và dễ nói có.</p>
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/how-to-write-a-great-pull-request/review-queue.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Nguyen Le Phong tự đọc lại code ở bàn hai màn hình trước khi gửi pull request đi review." />
+  <figcaption>Một PR cẩn thận bắt đầu từ trước nút gửi: tác giả chậm lại, đọc lại thay đổi, và tự hỏi người khác có hiểu nó hay không.</figcaption>
+</figure>
+
+<h2 id="pr-is-communication">PR là giao tiếp, không chỉ là code</h2>
+<p>Trước một dòng diff, một pull request là một thông điệp đến một người khác. Người đó có thời gian hạn chế, ngữ cảnh hạn chế về những gì bạn đang nghĩ lúc 11 giờ đêm, và hàng chục thứ khác cạnh tranh sự chú ý của họ. Công việc của bạn với tư cách tác giả là làm công việc của họ dễ dàng.</p>
+<p>Hãy nghĩ về reviewer như khán giả của bạn, không phải quan toà của bạn. Họ không ở đó để bắt bạn — họ là người cộng tác giúp bạn ship thứ gì đó vững chắc. Bạn giúp họ hiểu <em>lý do</em> đằng sau thay đổi càng nhiều, review sẽ càng nhanh và tốt hơn. Một mô tả PR xuất sắc như một thư xin việc cho code của bạn: nó đặt bối cảnh, giải thích động lực, và cho reviewer biết chính xác nên nhìn vào đâu.</p>
+<p>Sự thay đổi tư duy này thay đổi tất cả. Một khi bạn ngừng viết PR cho chính mình và bắt đầu viết cho reviewer, bạn sẽ tự nhiên muốn làm chúng nhỏ hơn, mô tả tốt hơn, và dọn sạch trước khi đề nghị ai nhìn vào.</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Quy tắc vàng của reviewer</span><p>Nếu reviewer phải đọc code để hiểu <em>tại sao</em> thay đổi tồn tại, PR description chưa làm xong việc của nó. Code giải thích <em>cái gì</em> đã thay đổi; description giải thích <em>tại sao nó cần thay đổi</em>.</p></div>
+
+<h2 id="keep-it-small">Giữ nhỏ và tập trung</h2>
+<p>Điều hiệu quả nhất bạn có thể làm để cải thiện pull request là làm chúng nhỏ hơn. PR càng lớn, review càng kém kỹ lưỡng, mất nhiều thời gian hơn để merge, và nhiều lỗi hơn lọt qua.</p>
+<p>Một PR tốt chứa <strong>một thay đổi logic</strong>. Không phải một ticket, không phải một tính năng, không phải một sprint công việc — một ý tưởng mạch lạc có thể được hiểu, test, và revert độc lập. "Thêm avatar upload cho người dùng" là một thay đổi. "Thêm avatar upload và refactor profile controller và bump ba dependency" là ba thay đổi mặc cùng một chiếc áo.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 780 320" role="img" aria-labelledby="dgm-prsize">
+    <title id="dgm-prsize">Khi kích thước PR tăng, chất lượng review giảm và thời gian merge tăng.</title>
+    <defs>
+      <marker id="szAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <line class="dgm-line" x1="80" y1="260" x2="700" y2="260" stroke-width="1.5" marker-end="url(#szAcc)"/>
+    <line class="dgm-line" x1="80" y1="260" x2="80" y2="50" stroke-width="1.5" marker-end="url(#szAcc)"/>
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="296" text-anchor="middle" font-size="12">Kích thước PR (dòng thay đổi)</text>
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="30" text-anchor="middle" font-size="12">ẢNH HƯỞNG ĐẾN REVIEW</text>
+    <path class="dgm-flow" d="M100,80 C200,85 300,130 460,200 C560,235 630,248 680,255" stroke-width="2.5" fill="none"/>
+    <text class="dgm-t-accent" x="108" y="70" font-size="12" font-weight="700">Chất lượng review</text>
+    <text class="dgm-t-muted" x="108" y="83" font-size="11">(cao đến thấp)</text>
+    <path d="M100,245 C200,240 300,210 460,155 C560,120 630,95 680,75" stroke="#d97706" stroke-width="2.5" fill="none"/>
+    <text x="600" y="65" font-size="12" font-weight="700" fill="#d97706">Thời gian merge</text>
+    <text x="600" y="78" font-size="11" fill="#d97706">(thấp đến cao)</text>
+    <rect class="dgm-core" x="95" y="58" width="120" height="198" rx="6" opacity="0.18"/>
+    <text class="dgm-t-accent" x="155" y="278" text-anchor="middle" font-size="11" font-weight="700">PR nhỏ</text>
+    <text class="dgm-t-muted" x="155" y="291" text-anchor="middle" font-size="10">&lt; 400 dòng</text>
+    <rect x="490" y="58" width="170" height="198" rx="6" fill="#d97706" opacity="0.08"/>
+    <text x="575" y="278" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">PR lớn</text>
+    <text x="575" y="291" text-anchor="middle" font-size="10" fill="#d97706">&gt; 1000 dòng</text>
+  </svg>
+  <figcaption>Khi kích thước PR tăng, reviewer lướt qua thay vì đọc kỹ, rubber-stamp thay vì suy luận, và lỗi lọt qua. PR nhỏ hơn nhận được review tốt hơn <em>và</em> merge nhanh hơn — cả hai kết quả cùng cải thiện.</figcaption>
+</figure>
+
+<h3 id="how-to-split">Cách tách công việc lớn</h3>
+<p>Tính năng lớn không phải đến dưới dạng PR lớn. Một số chiến lược tách thực tế:</p>
+<ul>
+  <li><strong>Tách refactoring khỏi thay đổi hành vi.</strong> PR đầu tiên: đổi tên, tái cấu trúc, extract — không có logic mới. PR thứ hai: tính năng thực sự. Reviewer có thể xác minh refactor không có side effect, rồi tập trung hoàn toàn vào logic mới.</li>
+  <li><strong>Ship infrastructure trước.</strong> Thêm cột database, migration, type — tất cả không có UI. Rồi thêm UI sử dụng nó. Mỗi PR độc lập có thể deploy.</li>
+  <li><strong>Dùng feature flag.</strong> Merge công việc chưa hoàn chỉnh đằng sau flag tắt mặc định. PR nhỏ và an toàn; tính năng không "xong" cho đến khi bạn bật flag.</li>
+  <li><strong>Stacked PR.</strong> PR B phụ thuộc PR A. Một số nhóm dùng công cụ stacked-PR để review từng lớp độc lập. Nếu nhóm bạn không dùng stacking, hãy giữ đơn giản: hoàn thành và merge A trước, rồi mở B.</li>
+</ul>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Heuristic hữu ích</span><p>Nếu bạn không thể mô tả PR trong một câu mà không dùng từ "và", nó có thể chứa nhiều hơn một thay đổi logic. Tìm đường nối và tách ra.</p></div>
+
+<h2 id="title-and-description">Viết tiêu đề và mô tả đáng đọc</h2>
+<p>Tiêu đề là tít bài. Nó nên nói <em>cái gì</em> đã thay đổi và tại sao quan trọng, trong một dòng. Tránh các động từ mơ hồ như "update", "fix stuff", hay "changes" và hướng đến sự cụ thể. Đây là các mùi của tiêu đề PR phổ biến và cách sửa:</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Mùi PR</th><th>Vấn đề là gì</th><th>Phiên bản tốt hơn</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>"fixes"</th>
+      <td>Không có ngữ cảnh gì — reviewer phải đọc từng dòng để đoán chuyện gì đang xảy ra.</td>
+      <td>"Sửa race condition trong cart checkout khi concurrent session va chạm"</td>
+    </tr>
+    <tr>
+      <th>"WIP: various changes"</th>
+      <td>Báo hiệu tác giả chưa sẵn sàng. Draft PR tồn tại có lý do.</td>
+      <td>Mở như GitHub Draft cho đến khi thực sự sẵn sàng review.</td>
+    </tr>
+    <tr>
+      <th>"Update UserService"</th>
+      <td>Mô tả nơi, không phải cái gì hay tại sao. Mọi PR đều update thứ gì đó.</td>
+      <td>"Thêm luồng xác minh đổi email vào UserService"</td>
+    </tr>
+    <tr>
+      <th>"JIRA-1234"</th>
+      <td>Bắt reviewer mở tab thứ hai chỉ để hiểu động lực.</td>
+      <td>"Giới hạn API rate 100 req/min mỗi IP (JIRA-1234)" — ticket là ngữ cảnh, không phải thay thế.</td>
+    </tr>
+    <tr>
+      <th>"Refactor + new feature + bump deps"</th>
+      <td>Ba PR trong một cái áo khoác. Mỗi mối quan tâm xứng đáng có review riêng.</td>
+      <td>Tách thành ba PR riêng biệt, tập trung.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>Mô tả</strong> là nơi giao tiếp thật sự xảy ra. Một mô tả tốt trả lời ba câu hỏi mỗi reviewer có trong mười giây đầu tiên:</p>
+<ul>
+  <li><strong>Cái gì</strong> đã thay đổi và ở đâu?</li>
+  <li><strong>Tại sao</strong> thay đổi này cần thiết — ngữ cảnh, bug, user story?</li>
+  <li><strong>Làm thế nào để verify</strong> nó hoạt động — các bước test, screenshot, edge case bị ảnh hưởng?</li>
+</ul>
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/how-to-write-a-great-pull-request/pr-context.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Ba kỹ sư phần mềm Đông Nam Á cùng xem pull request ở góc cafe sân vườn có bóng cây." />
+  <figcaption>Ngữ cảnh tốt biến một diff mơ hồ thành cuộc trò chuyện chung: đổi gì, vì sao quan trọng, và cả nhóm nên verify theo cách nào.</figcaption>
+</figure>
+<p>Đây là trước/sau để làm rõ:</p>
+<pre><code><span class="cmt">--- TRƯỚC (PR "fixes" 2.000 dòng) ---</span>
+
+<span class="kw">Title:</span> <span class="str">fixes</span>
+
+<span class="kw">Description:</span> (trống)
+
+
+<span class="cmt">--- SAU (cùng thay đổi, viết cho reviewer) ---</span>
+
+<span class="kw">Title:</span> <span class="str">Sửa race condition trong cart checkout trên concurrent session</span>
+
+<span class="kw">## What</span>
+Hai concurrent checkout request từ cùng một người dùng đều có thể pass
+kiểm tra inventory trước khi cái nào giảm stock, dẫn đến overselling.
+PR này thêm row-level DB lock quanh việc giảm stock.
+
+<span class="kw">## Why</span>
+Customer support đã ghi nhận 12 sự cố oversell trong 30 ngày qua (xem
+Sentry issue #4421). Root cause là hai request đang đua giữa SELECT và
+UPDATE trên bảng inventory.
+
+<span class="kw">## How to test</span>
+1. Chạy regression test concurrency mới: npm test -- cart.concurrency
+2. Trên staging: mở hai tab trình duyệt, nhấn "Mua" đồng thời trên
+   sản phẩm có stock = 1. Chỉ một cái nên thành công.
+
+<span class="kw">## Risk / notes</span>
+- Lock được scope cho một row product; không ảnh hưởng throughput
+  khi các product khác nhau checkout cùng lúc.
+- Không cần migration — dùng SELECT FOR UPDATE trên bảng hiện có.</code></pre>
+
+<h2 id="commit-hygiene">Vệ sinh commit</h2>
+<p>Cách bạn tổ chức commit quan trọng — không chỉ để đáp ứng quy trình, mà vì commit là bản ghi vĩnh viễn về cách thay đổi ra đời. Một năm sau, ai đó (có thể là bạn) sẽ chạy <code>git blame</code> trên một dòng và theo commit hash vào lịch sử. Những gì họ tìm thấy nên kể một câu chuyện, không phải đọc như một dòng suy nghĩ hỗn loạn.</p>
+<p>Một commit message tốt theo định dạng conventional: một dòng subject ngắn dạng imperative (tối đa 50 ký tự), một dòng trống tuỳ chọn, và một body tuỳ chọn giải thích <em>tại sao</em> — không phải những gì diff đã cho thấy.</p>
+<pre><code><span class="cmt"># Định dạng conventional:</span>
+<span class="kw">type(scope): short imperative subject</span>
+
+<span class="str">Body tuỳ chọn: tại sao thay đổi này được thực hiện, vấn đề nó giải quyết,
+bất kỳ quyết định không rõ ràng nào và lý luận đằng sau.</span>
+
+<span class="cmt"># Ví dụ thực tế:</span>
+<span class="kw">fix(cart):</span> add row-level lock to prevent oversell on concurrent checkout
+
+<span class="kw">feat(auth):</span> add email-change verification flow
+
+<span class="kw">refactor(profile):</span> extract avatar upload to dedicated service</code></pre>
+<p>Ngoài định dạng message, hãy suy nghĩ về <em>hình dạng</em> commit. Mỗi commit nên đại diện cho một bước mạch lạc — một refactor, một test, một hành vi mới. Reviewer nhìn vào từng commit (thay vì toàn bộ diff) nên có thể theo dõi tiến trình logic: "extract method → add test → implement behaviour" kể câu chuyện tốt hơn hai mươi commit "WIP" được squash vào phút chót.</p>
+<p>Dùng interactive rebase để dọn sạch branch lộn xộn trước khi mở PR. Bạn không cần commit hoàn hảo từ đầu — đánh bóng trước khi đề nghị ai nhìn vào.</p>
+
+<h2 id="self-review">Self-review trước khi đề nghị review</h2>
+<p>Trước khi ping đồng đội, hãy trở thành reviewer đầu tiên của chính bạn. Mở diff trên GitHub (hoặc code host của bạn) và đọc nó như thể bạn chưa bao giờ thấy code. Sự chuyển đổi ngữ cảnh này bắt được nhiều vấn đề hơn bạn nghĩ: debug output còn sót, một function đã lớn quá, một import bạn quên remove, một comment đã từng đúng.</p>
+<p>Checklist self-review đáng chạy qua:</p>
+<ul>
+  <li><strong>Đọc diff từ đầu đến cuối.</strong> Đừng lướt qua. Giả vờ bạn đang thấy nó lần đầu.</li>
+  <li><strong>Kiểm tra debug còn sót.</strong> <code>console.log</code>, comment TODO đánh dấu "remove", các block bị comment out, giá trị hardcode tạm thời.</li>
+  <li><strong>Xác minh test có mặt.</strong> Nếu bạn thêm logic, có test không? Nếu bạn sửa bug, có regression test không?</li>
+  <li><strong>Tìm thay đổi không có ý định.</strong> Whitespace churn, file được reformat, scope creep vô tình. Chuyển chúng sang PR riêng hoặc revert chúng.</li>
+  <li><strong>Để lại comment hướng dẫn cho chính mình.</strong> Nếu một phần không rõ ràng, thêm PR comment giải thích lý luận trước khi reviewer thấy nó. Đây không phải dấu hiệu yếu đuối — đó là sự chu đáo.</li>
+</ul>
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/how-to-write-a-great-pull-request/self-review.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Một kỹ sư tự review vào buổi tối ở bàn làm việc tại nhà với tách trà, quạt bàn và checklist trống." />
+  <figcaption>Self-review là lượt đọc yên tĩnh ở nhà, nơi tác giả gỡ bớt ma sát trước khi nó trở thành việc chen ngang của người khác trong giờ làm.</figcaption>
+</figure>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Một quy tắc đơn giản</span><p>Nếu bạn không thoải mái với một senior engineer review PR ngay bây giờ — không có giải thích của bạn — nó chưa sẵn sàng gửi ra. Sửa trước, rồi đề nghị review.</p></div>
+<p>Self-review cũng mang lại lợi tức ích kỷ: nó bắt những lỗi đáng xấu hổ trước khi chúng trở thành comment review vĩnh viễn. Ai cũng có câu chuyện về typo họ phát hiện mười giây sau khi nhấn "Request review". Mười phút self-review loại bỏ hầu hết những cái đó.</p>
+
+<h2 id="responding">Trả lời review</h2>
+<p>PR không xong khi bạn push code — nó xong khi merge. Giữa hai sự kiện đó là chu kỳ review, và cách bạn xử lý phản hồi quan trọng không kém bản thân code.</p>
+<p>Một số nguyên tắc giữ review tiến lên và mối quan hệ lành mạnh:</p>
+<ul>
+  <li><strong>Trả lời mọi comment.</strong> Dù chỉ để nói "done" hay "bắt tốt, đã sửa trong commit mới nhất". Im lặng khiến reviewer tự hỏi liệu họ có xem note của mình không.</li>
+  <li><strong>Mô tả sửa chữa khi bạn push.</strong> "Đã sửa trong commit mới nhất — chuyển logic vào helper và thêm test" rõ ràng hơn nhiều so với một commit mới không có ngữ cảnh.</li>
+  <li><strong>Resolve thread một cách chu đáo.</strong> Trong hầu hết nhóm, người comment resolve khi họ hài lòng. Đừng self-resolve mà không thừa nhận phản hồi. Nếu không chắc về quy ước, hãy hỏi.</li>
+  <li><strong>Bất đồng một cách tôn trọng.</strong> Nếu bạn nghĩ một đề xuất sai, hãy nói rõ ràng với lý lẽ — đừng chỉ bỏ qua nó. "Mình đã cân nhắc cách tiếp cận đó, nhưng [lý do] — sẵn sàng thảo luận nếu bạn thấy quan trọng" giữ cuộc trò chuyện chuyên nghiệp và hiệu quả. Xem thêm: <a href="/blog/culture/how-to-review-code-kindly">cách review code nhã nhặn</a> cho quan điểm của reviewer về cùng cuộc trò chuyện.</li>
+  <li><strong>Re-request review một cách rõ ràng.</strong> Sau khi xử lý phản hồi, đừng chờ reviewer tự nhận ra. Re-request review và để lại tóm tắt ngắn: "Đã xử lý tất cả comment. Thay đổi chính: extract util, thêm hai test, giữ cách tiếp cận ban đầu cho X vì Y."</li>
+</ul>
+
+<h2 id="by-team-size">Chuẩn mực PR mở rộng theo quy mô nhóm như thế nào</h2>
+<p>Điều gì tạo ra PR xuất sắc không cố định — nó thay đổi khi nhóm lớn lên và codebase trưởng thành. Đây là cách kỳ vọng phát triển:</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Ngữ cảnh nhóm</th><th>Điều quan trọng nhất</th><th>Chuẩn mực thực tế</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Solo / freelance</th>
+      <td>Bạn-tương-lai là reviewer. PR là tài liệu về quyết định cho khi bạn quay lại code sau sáu tháng.</td>
+      <td>Kể cả không có reviewer: tiêu đề rõ ràng, "tại sao" ngắn gọn trong description. Commit message làm <code>git log</code> có thể đọc được sau này.</td>
+    </tr>
+    <tr>
+      <th>Nhóm nhỏ (2–8)</th>
+      <td>Tốc độ quan trọng. Mọi người biết codebase. Review là đàm thoại. Tin tưởng cao.</td>
+      <td>Giữ PR nhỏ và nhanh chóng. Description có thể nhẹ hơn — một hai câu ngữ cảnh. Review async với turnaround trong ngày là kỳ vọng hợp lý.</td>
+    </tr>
+    <tr>
+      <th>Nhóm cỡ trung (10–50)</th>
+      <td>Reviewer có thể không biết đầy đủ ngữ cảnh. Onboarding là liên tục. Thay đổi trải rộng các nhóm.</td>
+      <td>Mô tả what/why/how đầy đủ. Screenshot cho công việc UI. Test plan. Thay đổi xuyên nhóm cần thêm chú ý và có thể review rộng hơn.</td>
+    </tr>
+    <tr>
+      <th>Lớn / enterprise (50+)</th>
+      <td>Reviewer đôi khi là người lạ. Tuân thủ, audit trail, và review tính đúng đắn quan trọng. SLA turnaround tồn tại.</td>
+      <td>Template PR chính thức được thực thi bởi tooling. Required approval. Security review cho thay đổi nhạy cảm. Link đến design doc và ticket. Rollback plan cho thay đổi rủi ro.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Một nhóm startup bốn người không cần rollback plan trong mọi PR description. Một ngân hàng thì có. Hãy khớp nghi lễ với mức độ quan trọng, và xem lại chuẩn mực khi nhóm lớn lên — những gì hiệu quả ở mười kỹ sư sẽ cảm thấy không đủ ở năm mươi.</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Những điều cốt lõi cần nhớ</h3>
+<ul>
+  <li><strong>PR là thông điệp đến người.</strong> Viết cho reviewer, không phải cho chính bạn. Thời gian và ngữ cảnh của họ hạn chế.</li>
+  <li><strong>Giữ nhỏ và tập trung.</strong> Một thay đổi logic mỗi PR. Tách refactoring khỏi thay đổi hành vi. Dùng feature flag để merge công việc chưa hoàn chỉnh an toàn đằng sau toggle.</li>
+  <li><strong>Tiêu đề + mô tả = định hướng.</strong> Trả lời cái gì đã thay đổi, tại sao cần thay đổi, và làm thế nào để verify nó. Code cho thấy cái gì; description cung cấp tại sao.</li>
+  <li><strong>Lịch sử commit sạch kể một câu chuyện.</strong> Message conventional, commit logic, rebase gọn gàng trước khi đề nghị review.</li>
+  <li><strong>Self-review trước.</strong> Đọc diff của chính mình trên GitHub trước khi ai khác làm. Để lại comment hướng dẫn. Bắt lỗi hiển nhiên cho chính mình.</li>
+  <li><strong>Đóng vòng lặp về phản hồi.</strong> Trả lời mọi comment, re-request review sau khi xử lý note, và bất đồng với lý lẽ — không bao giờ bằng im lặng.</li>
+  <li><strong>Khớp nghi lễ với quy mô nhóm.</strong> Startup bốn người và ngân hàng 500 người cần chuẩn mực PR khác nhau. Xem lại của bạn khi lớn lên.</li>
+</ul>
+</div>
+
+<p>Bước tiếp theo là phía bên kia của bàn: cách người nhận PR của bạn nên đưa ra phản hồi giúp ích chứ không gây đau. Nếu bạn từng viết một PR được tạo ra cẩn thận chỉ để nhận lại "cái này sai, viết lại đi", bạn sẽ đánh giá cao <a href="/blog/culture/giving-and-receiving-feedback">Phản hồi Đánh Đúng Chỗ</a> — bài tiếp theo trong loạt này.</p>4:["$","$La",null,{"category":"culture","slug":"how-to-write-a-great-pull-request","children":[["$","$Lb",null,{"category":"culture","slug":"how-to-write-a-great-pull-request","readingMinutes":13,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lc",null,{"url":"https://nguyenlephong.github.io/vi/blog/culture/how-to-write-a-great-pull-request","title":"Viết Pull Request dễ review: giúp reviewer hiểu nhanh và góp ý đúng chỗ","surface":"blog","category":"culture","slug":"how-to-write-a-great-pull-request","labels":{"share":"Chia sẻ","copyLink":"Sao chép liên kết","copied":"Đã sao chép!","close":"Đóng"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Ld",null,{"href":"/vi/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Ld",null,{"href":"/vi/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Engineering Culture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Kind Engineering",["$","span",null,{"aria-hidden":"true","children":" · "}],"Phần 3/5"]}],["$","h1",null,{"className":"blog-article__title","children":"Viết Pull Request dễ review: giúp reviewer hiểu nhanh và góp ý đúng chỗ"}],["$","p",null,{"className":"blog-article__summary","children":"Một pull request tốt giúp reviewer tiết kiệm năng lượng: phạm vi gọn, title rõ, mô tả có bối cảnh, screenshot hoặc test note đủ dùng, commit sạch và self-review trước khi gửi. Bài này chỉ cách biến PR từ một đống thay đổi khó đọc thành một câu chuyện dễ theo dõi để review nhanh hơn và ít hiểu lầm hơn."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Bởi Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-02-27","children":"27 tháng 2, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"13 phút đọc"}],["$","$Le",null,{"label":"lượt xem"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Văn hoá kỹ thuật",{"children":"Văn hoá kỹ thuật"}],["$","li","Pull Requests",{"children":"Pull Requests"}],["$","li","Code Review",{"children":"Code Review"}],["$","li","Git",{"children":"Git"}],["$","li","Cộng tác nhóm",{"children":"Cộng tác nhóm"}],["$","li","Năng suất lập trình viên",{"children":"Năng suất lập trình viên"}]]}]]}],["$","$Lf",null,{"html":"$10"}],"$L11","$L12"]}]]}],"$L13","$L14","$L15"]}],"$L16"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+7:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+8:["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]
+11:["$","$L1a",null,{"prompt":"Bạn thấy bài viết thế nào?","surface":"blog","category":"culture","slug":"how-to-write-a-great-pull-request","reactionLabels":{"like":"Thích","love":"Yêu thích","insightful":"Sâu sắc","clap":"Tuyệt vời"}}]
+12:["$","section",null,{"className":"blog-faq","aria-labelledby":"blog-faq-heading","children":[["$","h2",null,{"id":"blog-faq-heading","className":"blog-faq__heading","children":"Câu hỏi thường gặp"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Pull request nên lớn bao nhiêu?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Theo quy tắc chung, hướng tới dưới 400 dòng code thay đổi. Quan trọng hơn, hãy suy nghĩ theo phạm vi logic thay vì số dòng thô: một PR nên chứa một thay đổi mạch lạc có thể được hiểu, test, và revert độc lập. Nếu bạn không thể mô tả PR trong một câu mà không dùng từ \"và\", nó có thể quá lớn."}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Điều gì tạo nên một pull request description tốt?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Một mô tả tốt trả lời ba câu hỏi reviewer có trong mười giây đầu tiên: Cái gì đã thay đổi và ở đâu? Tại sao thay đổi này cần thiết? Làm thế nào để verify nó hoạt động? Cụ thể: phần 'What' ngắn tóm tắt thay đổi, phần 'Why' cung cấp động lực hay ngữ cảnh bug, và phần 'How to test' với các bước tái hiện hay lệnh test. Với thay đổi UI, screenshot đáng giá trăm lời. Risk và rollback note là bonus cho thay đổi nhạy cảm."}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Làm thế nào để tách một pull request lớn?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Ba chiến lược hoạt động tốt cùng nhau. Đầu tiên, tách refactoring khỏi thay đổi hành vi: tái cấu trúc trong một PR không có logic mới, rồi thêm tính năng trong PR tiếp theo. Thứ hai, ship infrastructure trước — migration, type, và scaffolding — trước UI sử dụng nó, để mỗi PR có thể deploy độc lập. Thứ ba, dùng feature flag để merge công việc chưa hoàn chỉnh an toàn đằng sau toggle tắt mặc định. Stacked PR (PR B dựa trên PR A) là tùy chọn nâng cao nếu nhóm bạn có hỗ trợ tooling."}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Mình có nên review pull request của chính mình trước không?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Có, luôn luôn. Trước khi đề nghị review, mở diff trên code host và đọc nó như thể bạn đang thấy lần đầu. Tìm debug output còn sót, test còn thiếu, thay đổi whitespace không có ý định, và logic không rõ ràng. Để lại comment hướng dẫn về bất cứ thứ gì cần ngữ cảnh trước khi reviewer đến. Self-review bắt lỗi đáng xấu hổ trước khi chúng trở thành comment review vĩnh viễn, và nó thể hiện sự tôn trọng thời gian reviewer."}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Commit message nên chứa gì?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Commit message nên có dòng subject ngắn dạng imperative (tối đa 50 ký tự) mô tả commit làm gì. Dùng định dạng conventional commits: type(scope): subject — ví dụ 'fix(cart): add row-level lock to prevent oversell'. Nếu lý do không rõ ràng từ diff, thêm một dòng trống sau subject và một body ngắn giải thích động lực hay bất kỳ quyết định thiết kế không rõ ràng nào. Diff cho thấy cái gì đã thay đổi; message nên giải thích tại sao."}}]]}]]}]]}]
+13:["$","$L1b",null,{"heading":"Bài liên quan","intro":"Một vài bài gần chủ đề này để bạn đọc tiếp mạch suy nghĩ với nhiều ngữ cảnh hơn.","items":[{"post":{"slug":"how-to-review-code-kindly","category":"culture","title":"Code review tử tế: góp ý để code tốt hơn và người viết vẫn muốn tiến lên","summary":"Code review không chỉ là tìm lỗi. Đó là nơi team học cách nói chuyện về chất lượng, trade-off và tiêu chuẩn chung. Bài này đưa ra cách review rõ ràng mà không làm người viết chùn bước: góp ý cụ thể, phân biệt blocker với suggestion, hỏi trước khi kết luận, và giữ cho review trở thành nơi code lẫn con người cùng tốt lên.","date":"2026-03-01","readingMinutes":14,"tags":["Văn hoá kỹ thuật","Code Review","Pull Requests","Phản hồi","Cộng tác nhóm","Cố vấn"],"author":"Nguyen Le Phong","featured":true,"series":"kind-engineering","seriesOrder":1},"categoryTitle":"Engineering Culture","readingLabel":"14 phút đọc"},{"post":{"slug":"pull-request-that-reviewers-can-trust","category":"culture","title":"Pull Request khiến reviewer có thể tin tưởng","summary":"Một pull request đáng tin không chỉ gọn gàng. Nó gọi đúng hành vi đang thay đổi, cho thấy pattern tốt hơn, và đưa đủ bằng chứng để reviewer approve bằng sự tự tin thật thay vì đoán.","date":"2026-02-26","readingMinutes":8,"tags":["Văn hoá kỹ thuật","Pull Requests","Code Review","Niềm tin trong team","Trải nghiệm reviewer","Giao tiếp kỹ thuật"],"author":"Nguyen Le Phong"},"categoryTitle":"Engineering Culture","readingLabel":"8 phút đọc"},{"post":{"slug":"mentoring-engineers","category":"culture","title":"Mentoring engineer: giúp junior lớn lên thành người đáng tin","summary":"Một junior không trở thành senior chỉ nhờ nhận task khó hơn. Họ cần context, feedback, cơ hội thử sức và một người biết khi nào nên hướng dẫn, khi nào nên lùi lại. Bài này chia sẻ cách mentoring qua pairing, code review, stretch task, câu hỏi tốt và những thói quen giúp engineer trẻ dần tự tin nhận việc lớn hơn.","date":"2026-02-24","readingMinutes":14,"tags":["Văn hoá kỹ thuật","Cố vấn","Phát triển sự nghiệp","Lãnh đạo","Cộng tác nhóm","Code Review"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":5},"categoryTitle":"Engineering Culture","readingLabel":"14 phút đọc"},{"post":{"slug":"the-reviewer-as-a-future-reader","category":"culture","title":"Reviewer là người đọc đến sớm","summary":"Xem reviewer như người đầu tiên đọc thay cho tương lai giúp pull request rõ hơn, câu hỏi bớt gây nhiễu và quyết định dễ bảo trì hơn.","date":"2026-06-05","readingMinutes":6,"tags":["Engineering Culture","Code Review","Pull Requests","Communication","Maintainability","Team Trust"],"author":"Nguyen Le Phong"},"categoryTitle":"Engineering Culture","readingLabel":"6 phút đọc"}],"sourceCategory":"culture","sourceSlug":"how-to-write-a-great-pull-request"}]
+14:["$","nav",null,{"className":"blog-series-nav","aria-label":"Kind Engineering","children":[["$","$Ld",null,{"href":"/vi/blog/culture/how-to-be-a-kind-engineer","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Kind Engineering: tử tế không làm team chậm hơn"}]]}],["$","$Ld",null,{"href":"/vi/blog/culture/giving-and-receiving-feedback","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Bài tiếp theo"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Feedback trong team kỹ thuật: thẳng, rõ và vẫn giữ được sự tôn trọng"}]]}]]}]
+15:["$","footer",null,{"className":"blog-article__footer","children":["$","$Ld",null,{"href":"/vi/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Về Engineering Culture"]}]}]
+16:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1c",null,{"label":"Trong bài này","surface":"blog"}]}]
+19:null

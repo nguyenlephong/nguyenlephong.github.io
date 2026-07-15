@@ -1,0 +1,18 @@
+{
+  "slug": "writing-next-steps-that-actually-help",
+  "category": "ways-of-working",
+  "title": "Writing Next Steps That Actually Help",
+  "summary": "A practical note on writing next steps that are specific enough to move work forward: owner, action, evidence, and a useful stopping point.",
+  "date": "2026-06-23",
+  "readingMinutes": 5,
+  "tags": [
+    "Ways of Working",
+    "Planning",
+    "Team Communication",
+    "Execution",
+    "Documentation",
+    "Product Engineering"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The meeting ended with a familiar phrase: we will follow up. Everyone heard it, nobody owned it, and by the next morning the work had become slightly heavier. The problem was not bad intention. The problem was that the next step was written like a mood instead of a path.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/writing-next-steps-that-actually-help/helpful-next-steps-board.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Two teammates turn blank sticky notes into a clear next-step board with arrows and simple check marks.' />\n  <figcaption>A useful next step reduces guessing for the next person who touches the work.</figcaption>\n</figure>\n<p>A next step is helpful when it lets someone begin without reopening the whole conversation. It should answer four plain questions: who will act, what will they do, what evidence will show progress, and where should they stop or hand off. Without those pieces, the note may feel complete while still leaving the work suspended.</p>\n<p>Owner matters because work without an owner becomes background noise. Team to check the logs sounds collaborative, but it often means nobody checks them. Linh to check the failed import logs and paste two examples into the ticket gives the work a place to land. Ownership is not blame. It is a handle.</p>\n<p>The action should be visible. Investigate issue is usually too wide. Reproduce the 500 on staging with account type B is better. Confirm whether the old endpoint is still called by the mobile app is better. A concrete verb helps the owner know what done looks like before they start.</p>\n<p>Evidence keeps the next step from becoming performance. If the action is to check a risk, what should be brought back? A screenshot, a log line, a test result, a short note, a yes/no answer, a link to the PR. Evidence gives the team something to inspect instead of relying on a vague sense that someone looked at it.</p>\n<p>A stopping point is just as useful. Many next steps turn into open-ended tunnels because nobody says when enough is enough. Check the last seven days of logs, not all logs forever. Spike for two hours, then bring options. Ask legal for the sentence, not the whole policy. A boundary protects focus.</p>\n<p>Good next steps also preserve context. If the next action depends on a decision, link it. If a trade-off was accepted, write it. If a word has a specific meaning in this work, define it once. The person doing the next step should not have to reconstruct the meeting from memory.</p>\n<p>This does not require a heavy template. A useful next step can be one sentence: Minh will reproduce the retry failure on staging, attach the request ID and screenshot, and stop if it does not reproduce after three attempts. That sentence is small, but it gives the work traction.</p>\n<p>The next step is the bridge between discussion and movement. If it is too vague, the bridge becomes fog. If it is specific enough, the next person can cross. What follow-up in your current work would become lighter if it were rewritten as a real next step?</p>"
+}

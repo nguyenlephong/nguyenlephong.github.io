@@ -1,0 +1,14 @@
+{
+  "slug": "programming-beacons",
+  "title": "Những tín hiệu nhỏ giúp code dễ đọc hơn",
+  "summary": "Code dễ đọc không chỉ nhờ comment dài hay tài liệu đầy đủ. Nhiều khi nó đến từ những tín hiệu rất nhỏ: tên biến, cấu trúc, cách đặt hàm, những dấu hiệu giúp người sau đoán đúng bối cảnh trước khi truy vết chi tiết. Ghi chú này gọi chúng là những ngọn hải đăng trong code.",
+  "tags": [
+    "Thoughts",
+    "Kỹ thuật phần mềm",
+    "Code dễ đọc",
+    "Đặt tên"
+  ],
+  "html": "<p>Hải đăng là những manh mối nhỏ trong code kích hoạt một phỏng đoán về chuyện gì đang diễn ra — phỏng đoán mà, phần lớn thời gian, hóa ra là đúng. Vì chúng cho phép bộ não nhảy cóc về phía trước với độ tự tin hợp lý, chúng tiết kiệm một khoản chi phí tinh thần rất thật: thay vì đọc từng dòng để dựng lại ý nghĩa, bạn nhận ra một tín hiệu quen và đi tiếp.</p>\n<figure class=\"blog-figure blog-photo-panorama\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/notes/programming-beacons/code-cue-at-the-desk.webp\" width=\"1600\" height=\"900\" loading=\"lazy\" decoding=\"async\" alt=\"Một software engineer Việt Nam chỉ vào sơ đồ node trừu tượng bên cạnh laptop có các khối code được làm mờ.\" />\n  <figcaption>Một tín hiệu nhỏ có thể giúp người đọc sau nhận ra hình dạng của code trước khi truy từng dòng.</figcaption>\n</figure>\n<p>Một ngọn hải đăng thường chỉ là một quy ước đặt tên phổ biến. Nếu một biến tên là <code>node</code>, khả năng cao nó là phần tử của một cái cây, một đồ thị, hay một cấu trúc liên kết nào đó. Bạn không phải truy về gốc gác của nó để hình thành kỳ vọng ấy; cái tên đã làm việc đó. Code tốt đầy những cột mốc lặng lẽ như vậy, và đọc nó thấy nhanh chính bởi các hải đăng cứ liên tục xác nhận điều bạn vừa đoán.</p>\n<p>Bạn có thể chủ đích làm giàu code của mình bằng cách rải hải đăng vào đó. Và khi tín hiệu phù hợp khó cài vào chính các câu lệnh — khi không cái tên hay cấu trúc nào tải nổi gợi ý — hãy thả nó vào một dòng comment, để người đọc kế tiếp thừa hưởng đúng lối tắt mà bạn từng ước có.</p>\n<figure class=\"blog-figure blog-photo-figure\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/notes/programming-beacons/quiet-comment-for-next-reader.webp\" width=\"1440\" height=\"960\" loading=\"lazy\" decoding=\"async\" alt=\"Hai engineer Việt Nam xem laptop và ghi chú lề trống, chuẩn bị một tín hiệu nhỏ cho người đọc tiếp theo.\" />\n  <figcaption>Khi tên gọi hay cấu trúc không chở hết gợi ý, một dòng comment lặng lẽ có thể giữ lại lối tắt ấy.</figcaption>\n</figure>\n<p>Dẫu vậy — <a href=\"/notes/code-run-on-people\">code có còn chạy trên con người?</a></p>",
+  "cardSummary": "Tên gọi và cấu trúc tốt là những ngọn đèn nhỏ giúp người đọc code đi đúng hướng.",
+  "date": "2026-01-23"
+}

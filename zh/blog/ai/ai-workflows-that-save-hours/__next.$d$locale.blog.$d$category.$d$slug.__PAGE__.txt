@@ -1,0 +1,176 @@
+1:"$Sreact.fragment"
+9:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+a:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+e:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1a:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1b:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Tb40,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/zh/blog/ai/ai-workflows-that-save-hours#article","headline":"从 Prompt 到 Workflow：设计每周为你省下数小时的 AI Workflow","description":"大多数人每次只用一个问题来使用 AI——也因此把它的大部分价值留在了桌面上。真正的杠杆不是一句巧妙的 prompt，而是一个可重复的 AI workflow：你设计一次、便永远复用的一小串步骤，把每周两小时的重复杂活变成两分钟的审阅。这是一份面向所有人（无论是否懂技术）的实用、案例丰富的指南：prompt 与 workflow 的区别、每个 workflow 都共有的简单结构、可直接照搬到办公室与日常生活的 workflow、从手动到全自动的三个层级、自己动手设计的六个步骤，以及一个用来证明你真正省下多少时间的简易估算法。","inLanguage":"zh","url":"https://nguyenlephong.github.io/zh/blog/ai/ai-workflows-that-save-hours","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ai-workflows-that-save-hours.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/zh/blog/ai/ai-workflows-that-save-hours","datePublished":"2026-03-11","dateModified":"2026-03-11","keywords":"AI, AI Workflow, 自动化, 生产力, 未来工作, AI 工具","articleSection":"AI 与未来","isRelatedTo":[{"@type":"BlogPosting","headline":"AI Agent 全解析：它是什么、如何运作、能为你做什么","url":"https://nguyenlephong.github.io/zh/blog/ai/ai-agents-explained","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ai-agents-explained.jpg"},{"@type":"BlogPosting","headline":"2026 年真正值得你关注的 AI 趋势——以及如何把它们变成实实在在的价值","url":"https://nguyenlephong.github.io/zh/blog/ai/ai-trends-2026-into-value","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ai-trends-2026-into-value.jpg"},{"@type":"BlogPosting","headline":"Khi AI chạm vào việc hằng ngày, ý tưởng bắt đầu nở ra","url":"https://nguyenlephong.github.io/en/blog/ai/ai-ideas-bloom-inside-everyday-work","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ai-ideas-bloom-inside-everyday-work.jpg"},{"@type":"BlogPosting","headline":"When an AI Answer Needs a Test","url":"https://nguyenlephong.github.io/en/blog/ai/when-an-ai-answer-needs-a-test","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/when-an-ai-answer-needs-a-test.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/zh/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:Tda3,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/zh/blog/ai/ai-workflows-that-save-hours#faq","mainEntity":[{"@type":"Question","name":"AI workflow 是什么，它和 prompt 有何不同？","acceptedAnswer":{"@type":"Answer","text":"一个 prompt 是你给 AI 的单条指令——一步棋。一个 AI workflow 是一个 可重复的步骤序列，中间由 AI 承担重活 ，把一个已知输入变成一个已知输出：有东西触发它，workflow 收集输入，AI 起草结果，你审阅并批准，然后它交付。关键差别在于复用。一句好 prompt 只帮你省一次；一个好 workflow 设计一次，便在一项重复任务的每次重复中都帮你省下同样的时间——于是回报是复利累积，而不是平的。"}},{"@type":"Question","name":"搭建 AI workflow 需要会写代码或用特殊软件吗？","acceptedAnswer":{"@type":"Answer","text":"不需要。大部分价值来自前两个层级，它们完全不需要代码。 第 1 级（手动） 只是把步骤和 prompt 存在一则笔记里、手动跑。 第 2 级（模板化） 把这份“食谱”存成一个自定义助手、一个“custom GPT”或一个项目，一键即可加载。只有 第 3 级（自动化） ——按排程或事件触发 workflow——才会用到 Zapier、Make 或 n8n 这样的 tool，而即便如此它们也是无代码的。先从手动开始；在你自动化之前就能拿到大部分好处。"}},{"@type":"Question","name":"哪些任务值得变成一个 AI workflow？","acceptedAnswer":{"@type":"Answer","text":"最好的候选 会定期重复、每次大致同一个形状、并且输出可核对 ——周报、会议摘要、收件箱分拣、内容再利用、线索筛选、餐食计划、学习计划。一个快速的回报核算让你保持诚实：每月省下的小时数 ≈（每次省下的分钟 × 每月运行次数）÷ 60 − 搭建小时数。由此掉出的实用规则是“自动化频繁的，而非困难的”。一件你每天做的小任务几乎总值得那份搭建；一件你一年做两次的痛苦任务则很少值得。"}},{"@type":"Question","name":"如何防止 AI workflow 在规模化时出错？","acceptedAnswer":{"@type":"Answer","text":"workflow 的优点——每次都以同样方式运行——也是它的风险，因为一条糟糕的指令会在每次运行中都出错，直到你抓到它。三个习惯能防住大部分麻烦：对任何会送到别人手里或不可逆的东西，保留一个 人工审阅关卡 ；写 具体的步骤 （“5 个要点，不要术语，先说结论”，而不是“写得好一点”），让输出保持一致；并按排程 抽查 自动化的 workflow，因为输入和 tool 会随时间漂移。先用手把流程跑到无聊地正确，再让它无人值守地运行。"}},{"@type":"Question","name":"AI workflow 和 AI agent 有什么区别？","acceptedAnswer":{"@type":"Answer","text":"它们密切相关。一个 AI workflow 是 你 设计的步骤序列——你决定顺序，AI 在每一步里填上起草与排序。一个 AI agent 则从你给的目标里 自己 想出步骤。实践中它们会融合：workflow 里的一步可以由一个 agent 来完成，而一个 agent 在底层往往跑的就是一个实质上的 workflow。一个好用的经验法则：当步骤已知且稳定时，用设计好的 workflow；当路径多变、你宁愿描述目标而非路线时，依靠 agent。"}}]}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--gold","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"博客\",\"item\":\"https://nguyenlephong.github.io/zh/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"AI 与未来\",\"item\":\"https://nguyenlephong.github.io/zh/blog/ai\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"从 Prompt 到 Workflow：设计每周为你省下数小时的 AI Workflow\",\"item\":\"https://nguyenlephong.github.io/zh/blog/ai/ai-workflows-that-save-hours\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],["$L5","$L6","$L7"],"$L8"]}],"loading":null,"isPartial":false}
+f:T450b,<p>有一笔我们大多数人都在不知不觉中缴纳的小小“税”。每个周五你都写着同一类的工作汇报。每次开完会你都敲着同一类的纪要。每次来了新客户你都起草着同一类的回复邮件。每件事都只花几分钟——但“几分钟”，一个月重复几十次，就是一份你正在用手做的兼职。</p>
+<p>大多数人正是在这里遇见 AI，却提前一步停下了。他们打开一个对话框，写一句不错的 prompt，得到一个不错的结果……然后关掉标签页，下周再从头来一遍。prompt 很好，被浪费掉的是那个<em>习惯</em>。真正从 AI 拿到杠杆的人，不是写出更好的一次性 prompt，而是搭建 <strong>workflow</strong>：他们设计一次、便永远复用的一小串步骤，把每周两小时的重复杂活变成两分钟的审阅。</p>
+<p>本文是实用的“怎么做”。大多数情况下不需要写代码，也不需要安装什么——只需要改变你看待工作的方式。我们会讲清楚 workflow 究竟是什么、它们共有的简单形状、一堆可直接照搬到工作与生活中的例子、如何从“我手动跑”走向“它自己跑”，以及如何证明你省下的时间是真的。</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">这里的“AI workflow”指什么</span><p>AI workflow 是一个<strong>可重复的步骤序列，中间由 AI 承担重活</strong>，把一个已知的输入变成一个已知的输出。一个 prompt 是一步棋。一个 workflow 是整盘棋——收集输入、让 AI 起草、你来审阅、它来交付——并被保存下来，让你下次重跑而不必在脑子里重建。</p></div>
+
+<h2 id="prompt-vs-workflow">Prompt 与 workflow：改变一切的那一跃</h2>
+<p>单个 prompt 是回答一次性问题的绝佳工具。workflow 则是你为那些<em>会回来的</em>工作而搭建的东西。这区别，就像回一封邮件与建立一套流程的区别。</p>
+
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th width="26%">&nbsp;</th><th>一次性 prompt</th><th>一个 AI workflow</th></tr></thead>
+<tbody>
+<tr><td><strong>适合</strong></td><td>只问一次的问题</td><td>每周都回来的任务</td></tr>
+<tr><td><strong>你要重建它……</strong></td><td>每一次都要</td><td>一次——然后复用</td></tr>
+<tr><td><strong>一致性</strong></td><td>随你的心情波动</td><td>每次运行同样的质量</td></tr>
+<tr><td><strong>谁能跑</strong></td><td>只有当下的你</td><td>你、同事，或一个排程</td></tr>
+<tr><td><strong>随时间的回报</strong></td><td>平的——只省你一次</td><td>复利——永远在省</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>最后一行是全部要点。一句好的 prompt 帮你省二十分钟，一次而已。一个好的 workflow 帮你<em>在一整年里每周都省二十分钟</em>——同样的力气，乘以重复。看出你的哪些任务在重复，是这里第一也是最有价值的技能。</p>
+
+<h2 id="anatomy">一个 AI workflow 的解剖</h2>
+<p>每个 workflow——从最简单到最精巧——都由同样的几个部件搭成。把这个形状学会一次，你就能为任何事情设计自己的 workflow。</p>
+
+<div class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 880 250" role="img" aria-labelledby="dgm-workflow">
+    <title id="dgm-workflow">把 AI workflow 看作一条流水线：一个 trigger 启动它，workflow 收集输入，AI 起草输出，你在人工关卡审阅并批准，然后交付——当输出不合格时，有一条返修回路从审阅环节回到起草环节。</title>
+    <defs>
+      <marker id="wfArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <rect class="dgm-core" x="10" y="70" width="110" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="65" y="94" text-anchor="middle" font-size="14">Trigger</text>
+    <text class="dgm-t-muted" x="65" y="112" text-anchor="middle" font-size="10.5">时间或事件</text>
+    <rect class="dgm-surface" x="150" y="70" width="130" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="215" y="94" text-anchor="middle" font-size="14">收集</text>
+    <text class="dgm-t-muted" x="215" y="112" text-anchor="middle" font-size="10.5">拉取输入</text>
+    <rect class="dgm-surface" x="320" y="70" width="130" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="385" y="94" text-anchor="middle" font-size="14">起草</text>
+    <text class="dgm-t-muted" x="385" y="112" text-anchor="middle" font-size="10.5">AI 生成</text>
+    <rect class="dgm-port" x="490" y="70" width="130" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="555" y="94" text-anchor="middle" font-size="14">审阅</text>
+    <text class="dgm-t-muted" x="555" y="112" text-anchor="middle" font-size="10.5">你来批准</text>
+    <rect class="dgm-core" x="660" y="70" width="130" height="58" rx="10"/>
+    <text class="dgm-t-strong" x="725" y="94" text-anchor="middle" font-size="14">交付</text>
+    <text class="dgm-t-muted" x="725" y="112" text-anchor="middle" font-size="10.5">发送 / 保存</text>
+    <path class="dgm-flow" marker-end="url(#wfArrow)" d="M120,99 L150,99"/>
+    <path class="dgm-flow" marker-end="url(#wfArrow)" d="M280,99 L320,99"/>
+    <path class="dgm-flow" marker-end="url(#wfArrow)" d="M450,99 L490,99"/>
+    <path class="dgm-flow" marker-end="url(#wfArrow)" d="M620,99 L660,99"/>
+    <path class="dgm-line" marker-end="url(#wfArrow)" d="M555,128 C555,182 385,182 385,131"/>
+    <text class="dgm-t-muted" x="470" y="172" text-anchor="middle" font-size="10.5">不行？返修</text>
+    <text class="dgm-t-accent" x="385" y="36" text-anchor="middle" font-size="12">AI 承担重活</text>
+    <path class="dgm-line" d="M150,52 L450,52" stroke-dasharray="4 4"/>
+  </svg>
+  <figcaption>workflow 只是一条你设计一次的流水线：有东西触发它，AI 承担重活，你守在审阅关卡，然后它交付。设计一次，永远复用。</figcaption>
+</div>
+
+<p>用文字说：一个 <strong>trigger</strong> 把它启动（一周中的某天、一封新邮件、你点击“运行”）。workflow <strong>收集</strong>它需要的输入（这一周的笔记、会议记录、新客户的资料）。AI 按你保存好的指令<strong>起草</strong>输出。你在一个人工关卡<strong>审阅</strong>——这是你几乎从不自动化掉的一步。然后它<strong>交付</strong>：发邮件、更新文档、贴出摘要。如果草稿不对，一条<strong>返修回路</strong>把它退回上一步。就这样。每个 workflow 都是这样。</p>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">你真正在串联的四个动作</span><p>在这些方框之下，AI 归根结底只做四类事：<strong>生成</strong>（写一份草稿）、<strong>转换</strong>（把输入 A 改成格式 B）、<strong>抽取</strong>（从一团乱麻里拎出关键事实）、<strong>判定</strong>（分类、排序、路由）。几乎任何 workflow 都是这四个动作的串联——也就是说，一旦你能把每个动作说清楚，你几乎能搭出任何东西。</p></div>
+
+<h2 id="office-workflows">可直接照搬到办公室的 workflow</h2>
+<p>别管理论了——这里是你这周就能照抄的完整 workflow。每一个都用一次快速审阅替换掉一件重复杂活。</p>
+
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th width="30%">Workflow</th><th>Trigger → 步骤 → 输出</th></tr></thead>
+<tbody>
+<tr><td><strong>每周工作汇报</strong></td><td>每个周五 → 拉取你的笔记、commit 或任务更新 → AI 按你的模板起草一份结构化更新 → 你微调 → 发给经理。二十分钟变两分钟。</td></tr>
+<tr><td><strong>会议 → 行动项</strong></td><td>会议结束 → 丢进 transcript → AI 抽取决定、负责人和下一步 → 你确认 → 它起草跟进消息和任务清单。</td></tr>
+<tr><td><strong>内容再利用</strong></td><td>新文章或演讲 → AI 把它变成一条 LinkedIn 帖、一段邮件文案、三条推文和一段简短摘要 → 你来挑选打磨。一份变五份。</td></tr>
+<tr><td><strong>收件箱分拣</strong></td><td>每天早上 → AI 把收件箱分成立即回复 / 稍后阅读 / 忽略 → 为紧急的起草回复 → 你批准并发送。</td></tr>
+<tr><td><strong>线索 / 候选人初筛</strong></td><td>新一批到达 → AI 按你的标准给每个打分 → 选出最好的几个并各附一行理由 → 你在短名单上做出由人来做的判断。</td></tr>
+<tr><td><strong>客户反馈汇总</strong></td><td>每周 → 汇集评价、ticket、问卷回复 → AI 把它们聚成若干主题，配上示例引文和一条“与上周相比有何变化”的备注。</td></tr>
+<tr><td><strong>文档 → 摘要</strong></td><td>长 PDF 或讨论串到了 → AI 产出一页纸的简报，含要点、风险和你需要做的决定 → 你读那一页，而不是那 40 页。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 id="life-workflows">用于日常生活的 workflow</h2>
+<p>同样的形状在办公室之外也很好用。几个悄悄把周末还给人们的例子：</p>
+<ul>
+<li><strong>每周餐食计划。</strong>Trigger：周日。步骤：告诉它你这一周的安排、饮食需求和冰箱里有什么 → 它排出七顿晚餐和一份分好类的购物清单。输出：少一点“今晚吃什么”的焦虑，少一点食物浪费。</li>
+<li><strong>行程规划师。</strong>Trigger：一个目的地和预算。步骤：按你的节奏排出逐日行程、一份打包清单和一份住宿短名单 → 你调整并预订。</li>
+<li><strong>学习回路。</strong>Trigger：一项技能和一个截止日期。步骤：逐周计划 → 每天一道简短练习 → 一个会根据你做错的地方自我调整的周五小测。输出：稳定的进步，而非美好的决心。</li>
+<li><strong>每月财务回顾。</strong>Trigger：月末。步骤：贴上你的支出分类 → AI 总结钱花到了哪里、标出哪一项悄悄涨了，并建议两处改动 → 你来决定。输出：不用养成做表格的习惯，也能心中有数。</li>
+</ul>
+
+<h2 id="three-levels">从手动到自动：workflow 的三个层级</h2>
+<p>workflow 不必“自己跑”才值得做。这里有三级台阶，而大多数人光靠前两级就能获得巨大价值，根本不必碰自动化软件。</p>
+
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th width="16%">层级</th><th width="24%">形态</th><th>如何运作</th></tr></thead>
+<tbody>
+<tr><td><strong>1. 手动</strong></td><td>一份保存好的“食谱”</td><td>你把步骤和 prompt 存在一则笔记里，需要时手动跑。零搭建，立刻见效。从这里开始。</td></tr>
+<tr><td><strong>2. 模板化</strong></td><td>一个可复用的助手</td><td>你把它存成一个自定义助手、一个“custom GPT”或一个内置好指令的项目。一键加载整份“食谱”。</td></tr>
+<tr><td><strong>3. 自动化</strong></td><td>它按 trigger 运行</td><td>像 Zapier、Make 或 n8n 这样的 tool 按排程或事件触发 workflow，并在中间调用 AI——到审阅之前无需人工（对安全的任务，甚至完全无需人工）。</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">别过度工程化</span><p>直接跳到完全自动化的冲动是经典陷阱。一个你手动两分钟跑完的 workflow，相比每次从头重建已经是巨大的胜利——而且它会在你接上自动化<em>之前</em>，准确地告诉你哪里还毛糙。要去<em>挣得</em>第 3 级，别一上来就从那里开始。</p></div>
+
+<h2 id="design-your-own">六步设计你自己的 workflow</h2>
+<p>挑一件重复的任务，按这套流程走一遍。它适用于任何事，工作或在家都行。</p>
+<ol>
+<li><strong>找一件会重复的任务。</strong>最好的候选每周都回来、每次大致同一个形状、并有一个清晰的“完成”。如果这个月你已经做了三遍，那它就是一个等着成形的 workflow。</li>
+<li><strong>写下你手动做的步骤。</strong>就按你现在做的方式、按顺序描述出来。这就是 workflow——你只是把它教给 AI。</li>
+<li><strong>决定 AI 起草什么、你保留什么。</strong>把生成、转换、抽取和排序交给 AI。把判断、批准和任何不可逆的事留给自己。</li>
+<li><strong>把每个 AI 步骤写成清晰的指令。</strong>给它目标、输入、格式，以及一个“好”的范例。具体的指令是一个可靠 workflow 的 80%。</li>
+<li><strong>手动跑几遍，修掉毛糙处。</strong>它在哪里跑偏？就收紧那条指令。两三轮就稳了。</li>
+<li><strong>保存它——只有在值得时才自动化。</strong>把它变成一个 template。如果它跑得够频繁，连加载 template 都成了摩擦，那就接上一个 trigger。</li>
+</ol>
+
+<h2 id="measure">衡量回报（让它是真的，而非感觉）</h2>
+<p>感觉很有效率却什么都没省下，是很容易的。一个十秒钟的估算让你保持诚实，并告诉你哪个 workflow 真正值得搭。</p>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">回报核算</span><p><strong>每月省下的小时数 ≈（每次运行省下的分钟 × 每月运行次数）÷ 60 − 搭建小时数。</strong>一份每次省 18 分钟、每月跑 4 次、搭建花一小时的周报，给你带来大约 <strong>(18 × 4) ÷ 60 − 1 ≈ 第一个月 0.2 小时，之后每月约 1.2 小时</strong>——永远如此。搭建只付一次；节省不断重复。这就是为什么让一个 workflow 盈利的是重复，而不是聪明。</p></div>
+
+<p>从那条公式里掉出两个诚实的推论。第一：<strong>自动化频繁的，而非困难的。</strong>一件你一年做两次的痛苦任务，很少值得那份搭建；一件你每天做的小任务，几乎总是值得。第二：<strong>把搭建时间也算进去。</strong>一个花四小时打磨、每月只省五分钟的 workflow 是一项爱好，而不是帮助——这也没关系，只要你知道自己在搭哪一种。</p>
+
+<h2 id="pitfalls">要绕开的陷阱</h2>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">workflow 悄悄出错的地方</span><p>workflow 的危险正是它的力量：它每次都以同样的方式运行——包括它错了的时候。一条糟糕的指令不是错一次；它会在每次运行中都出错，直到你注意到。对任何会送到别人手里的东西，保留审阅关卡；并按排程抽查自动化的 workflow。</p></div>
+<ul>
+<li><strong>太早撤掉人工关卡。</strong>在质量稳定到无聊之前就自动化交付，正是一个 AI 的笔误被发给上百位客户的方式。先挣得信任。</li>
+<li><strong>模糊的步骤。</strong>“写得好一点”每次运行都给出不同的输出。“用 5 个要点总结，不要术语，先说结论”每次都给出同样的好输出。</li>
+<li><strong>给一个坏掉的流程做自动化。</strong>如果手动版本一团糟，自动化只是让这团糟更快。先用手把步骤理顺。</li>
+<li><strong>一劳永逸式的漂移。</strong>输入会变、tool 会更新、世界在动。一个你六个月前搭好的 workflow，值得偶尔瞥一眼。</li>
+<li><strong>自动驾驶式的隐私问题。</strong>一个自动化的 workflow 可能在你来不及每次思考的情况下，把敏感数据灌进某个 tool。请有意识地、一次性地决定：什么数据被允许流向哪里。</li>
+</ul>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">核心要点</h3>
+<ul>
+<li><strong>Prompt 只回答一次；workflow 永远盈利。</strong>杠杆不是一句聪明的 prompt——而是把一条可重复的链设计一次、然后复用。</li>
+<li><strong>每个 workflow 都有同一个形状：</strong>trigger → 收集 → AI 起草 → 你审阅 → 交付，外加一条返修回路。学一次，处处可用。</li>
+<li><strong>AI 只做四个动作：</strong>生成、转换、抽取、判定。把它们串起来，你几乎能搭出任何东西。</li>
+<li><strong>照抄办公室与生活的例子：</strong>周报、会议纪要、内容再利用、收件箱分拣、餐食计划、学习回路——都是同一个模子。</li>
+<li><strong>三个层级——手动、模板化、自动化。</strong>从手动开始；大部分价值在你碰自动化工具之前就出现了。</li>
+<li><strong>用六步设计，</strong>把判断和任何不可逆的事留在审阅关卡你这一侧。</li>
+<li><strong>证明回报：</strong>省下的分钟 × 运行次数 − 搭建。自动化频繁的，而非困难的——并留意那些没有你也在跑的 workflow。</li>
+</ul>
+</div>
+
+<p>从 prompt 到 workflow 的转变，描述起来很小，活出来却很大。那是 AI 不再是一个你偶尔造访的聪明玩意儿、而开始成为在你这一周底下安静运转的引擎的时刻。你不必把整个人生都自动化——你只需注意到那些一再回来的任务，把其中一件教给 AI，并保存好那份“食谱”。这周就对一件杂活这么做，你便搭出了一件一次性 prompt 永远做不到的东西：会一次又一次回到你身边、而你不必开口要第二次的时间。</p>4:["$","$L9",null,{"category":"ai","slug":"ai-workflows-that-save-hours","children":[["$","$La",null,{"category":"ai","slug":"ai-workflows-that-save-hours","readingMinutes":18,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lb",null,{"url":"https://nguyenlephong.github.io/zh/blog/ai/ai-workflows-that-save-hours","title":"从 Prompt 到 Workflow：设计每周为你省下数小时的 AI Workflow","surface":"blog","category":"ai","slug":"ai-workflows-that-save-hours","labels":{"share":"分享","copyLink":"复制链接","copied":"已复制！","close":"关闭"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lc",null,{"href":"/zh/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"博客"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lc",null,{"href":"/zh/blog/ai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"AI 与未来"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["AI 实践",["$","span",null,{"aria-hidden":"true","children":" · "}],"第 2 篇，共 5 篇"]}],["$","h1",null,{"className":"blog-article__title","children":"从 Prompt 到 Workflow：设计每周为你省下数小时的 AI Workflow"}],["$","p",null,{"className":"blog-article__summary","children":"大多数人每次只用一个问题来使用 AI——也因此把它的大部分价值留在了桌面上。真正的杠杆不是一句巧妙的 prompt，而是一个可重复的 AI workflow：你设计一次、便永远复用的一小串步骤，把每周两小时的重复杂活变成两分钟的审阅。这是一份面向所有人（无论是否懂技术）的实用、案例丰富的指南：prompt 与 workflow 的区别、每个 workflow 都共有的简单结构、可直接照搬到办公室与日常生活的 workflow、从手动到全自动的三个层级、自己动手设计的六个步骤，以及一个用来证明你真正省下多少时间的简易估算法。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"作者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-11","children":"2026年3月11日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"18 分钟阅读"}],["$","$Ld",null,{"label":"次浏览"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","AI",{"children":"AI"}],["$","li","AI Workflow",{"children":"AI Workflow"}],["$","li","自动化",{"children":"自动化"}],["$","li","生产力",{"children":"生产力"}],["$","li","未来工作",{"children":"未来工作"}],["$","li","AI 工具",{"children":"AI 工具"}]]}]]}],["$","$Le",null,{"html":"$f"}],"$L10","$L11"]}]]}],"$L12","$L13","$L14"]}],"$L15"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+7:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+8:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+10:["$","$L19",null,{"prompt":"你觉得这篇文章如何？","surface":"blog","category":"ai","slug":"ai-workflows-that-save-hours","reactionLabels":{"like":"赞","love":"喜欢","insightful":"有启发","clap":"鼓掌"}}]
+11:["$","section",null,{"className":"blog-faq","aria-labelledby":"blog-faq-heading","children":[["$","h2",null,{"id":"blog-faq-heading","className":"blog-faq__heading","children":"常见问题"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"AI workflow 是什么，它和 prompt 有何不同？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"一个 prompt 是你给 AI 的单条指令——一步棋。一个 AI workflow 是一个<strong>可重复的步骤序列，中间由 AI 承担重活</strong>，把一个已知输入变成一个已知输出：有东西触发它，workflow 收集输入，AI 起草结果，你审阅并批准，然后它交付。关键差别在于复用。一句好 prompt 只帮你省一次；一个好 workflow 设计一次，便在一项重复任务的每次重复中都帮你省下同样的时间——于是回报是复利累积，而不是平的。"}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"搭建 AI workflow 需要会写代码或用特殊软件吗？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"不需要。大部分价值来自前两个层级，它们完全不需要代码。<strong>第 1 级（手动）</strong>只是把步骤和 prompt 存在一则笔记里、手动跑。<strong>第 2 级（模板化）</strong>把这份“食谱”存成一个自定义助手、一个“custom GPT”或一个项目，一键即可加载。只有<strong>第 3 级（自动化）</strong>——按排程或事件触发 workflow——才会用到 Zapier、Make 或 n8n 这样的 tool，而即便如此它们也是无代码的。先从手动开始；在你自动化之前就能拿到大部分好处。"}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"哪些任务值得变成一个 AI workflow？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"最好的候选<strong>会定期重复、每次大致同一个形状、并且输出可核对</strong>——周报、会议摘要、收件箱分拣、内容再利用、线索筛选、餐食计划、学习计划。一个快速的回报核算让你保持诚实：每月省下的小时数 ≈（每次省下的分钟 × 每月运行次数）÷ 60 − 搭建小时数。由此掉出的实用规则是“自动化频繁的，而非困难的”。一件你每天做的小任务几乎总值得那份搭建；一件你一年做两次的痛苦任务则很少值得。"}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"如何防止 AI workflow 在规模化时出错？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"workflow 的优点——每次都以同样方式运行——也是它的风险，因为一条糟糕的指令会在每次运行中都出错，直到你抓到它。三个习惯能防住大部分麻烦：对任何会送到别人手里或不可逆的东西，保留一个<strong>人工审阅关卡</strong>；写<strong>具体的步骤</strong>（“5 个要点，不要术语，先说结论”，而不是“写得好一点”），让输出保持一致；并按排程<strong>抽查</strong>自动化的 workflow，因为输入和 tool 会随时间漂移。先用手把流程跑到无聊地正确，再让它无人值守地运行。"}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"AI workflow 和 AI agent 有什么区别？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"它们密切相关。一个 <strong>AI workflow</strong> 是<em>你</em>设计的步骤序列——你决定顺序，AI 在每一步里填上起草与排序。一个 <strong>AI agent</strong> 则从你给的目标里<em>自己</em>想出步骤。实践中它们会融合：workflow 里的一步可以由一个 agent 来完成，而一个 agent 在底层往往跑的就是一个实质上的 workflow。一个好用的经验法则：当步骤已知且稳定时，用设计好的 workflow；当路径多变、你宁愿描述目标而非路线时，依靠 agent。"}}]]}]]}]]}]
+12:["$","$L1a",null,{"heading":"相关阅读","intro":"几篇相近主题的文章，方便沿着同一条思路继续阅读。","items":[{"post":{"slug":"ai-agents-explained","category":"ai","title":"AI Agent 全解析：它是什么、如何运作、能为你做什么","summary":"所有人突然都在谈论“AI agent”——一种不只回答问题、而是真正去完成工作的软件。但 agent 究竟是什么？它和你已经在用的 chatbot 有何不同？它真正有帮助的地方在哪里，又在哪里会悄悄制造麻烦？这是一份面向所有人的友好、轻术语指南——无论你是否懂技术：每个 agent 运行的简单循环、构成它的五大要素、从 co-pilot 到 auto-pilot 的自主程度层级、工作与生活中接地气的示例、需要注意的失败模式，以及本周就能让第一个实用 agent 运转起来的具体方法。","date":"2026-03-12","readingMinutes":17,"tags":["AI","AI Agent","Agentic AI","自动化","未来工作","生产力"],"author":"Nguyen Le Phong","featured":true,"series":"ai-in-practice","seriesOrder":1},"categoryTitle":"AI 与未来","readingLabel":"17 分钟阅读"},{"post":{"slug":"ai-trends-2026-into-value","category":"ai","title":"2026 年真正值得你关注的 AI 趋势——以及如何把它们变成实实在在的价值","summary":"每周都冒出又一个“这将改变一切”的 AI 头条，想从噪音里分辨出信号，实在令人疲惫。这是一趟冷静、有据的导览，带你看清 2026 年真正重要的 AI 趋势——agentic AI、多模态（multimodal）、嵌进你已在用的 app 里的 AI、设备端 AI，以及判断力与核查作为人类优势的崛起——再配上几乎所有文章都略过的部分：一套把任何趋势变成工作与生活中真实价值的实用框架。你会得到一个“炒作还是价值”的过滤器、价值阶梯、一个简单的价值方程、一个具体例子，以及一份 30 天计划——好让你不再追逐新闻，而开始累积复利般的收益。","date":"2026-03-10","readingMinutes":18,"tags":["AI","AI 趋势","Agentic AI","未来工作","生产力","Generative AI"],"author":"Nguyen Le Phong","featured":true,"series":"ai-in-practice","seriesOrder":3},"categoryTitle":"AI 与未来","readingLabel":"18 分钟阅读"},{"post":{"slug":"ai-ideas-bloom-inside-everyday-work","category":"ai","title":"Khi AI chạm vào việc hằng ngày, ý tưởng bắt đầu nở ra","summary":"Khi AI đủ thực tế để bước vào những việc nhỏ trong văn phòng, ý tưởng không còn nằm ở các bản demo xa xôi. Chúng xuất hiện ngay trong onboarding, hỗ trợ khách hàng, đối chiếu tài chính, chuẩn bị họp, đọc tin tức, kiểm tra tài liệu và rất nhiều workflow lặp lại khác. Bài viết là một góc nhìn bình tĩnh về cách nhận ra các điểm nghẽn ấy, cải tiến từng chút và giữ con người ở phần phán đoán quan trọng.","date":"2026-04-12","readingMinutes":7,"tags":["AI","AI Workflow","Năng suất","Future of Work","Tự động hóa"],"author":"Nguyen Le Phong","series":"ai-in-practice","seriesOrder":4},"categoryTitle":"AI 与未来","readingLabel":"7 分钟阅读"},{"post":{"slug":"when-an-ai-answer-needs-a-test","category":"ai","title":"When an AI Answer Needs a Test","summary":"A calm explainer on treating AI answers as claims that need proportionate verification. The article shows how engineers can keep responsibility by testing AI output against evidence, context, and real system behavior before acting on it.","date":"2026-04-15","readingMinutes":7,"tags":["AI","AI Workflow","Verification","Software Engineering","Human Judgment"],"author":"Nguyen Le Phong","series":"ai-in-practice","seriesOrder":5},"categoryTitle":"AI 与未来","readingLabel":"7 分钟阅读"}],"sourceCategory":"ai","sourceSlug":"ai-workflows-that-save-hours"}]
+13:["$","nav",null,{"className":"blog-series-nav","aria-label":"AI 实践","children":[["$","$Lc",null,{"href":"/zh/blog/ai/ai-agents-explained","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","上一篇"]}],["$","span",null,{"className":"blog-series-nav__title","children":"AI Agent 全解析：它是什么、如何运作、能为你做什么"}]]}],["$","$Lc",null,{"href":"/zh/blog/ai/ai-trends-2026-into-value","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["下一篇"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"2026 年真正值得你关注的 AI 趋势——以及如何把它们变成实实在在的价值"}]]}]]}]
+14:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lc",null,{"href":"/zh/blog/ai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","返回 AI 与未来"]}]}]
+15:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1b",null,{"label":"本页内容","surface":"blog"}]}]
+18:null

@@ -1,0 +1,18 @@
+{
+  "slug": "code-run-on-people",
+  "title": "Does code still run on people?",
+  "html": "<blockquote>\n<p>“Programs must be written for people to read, and only incidentally for machines to execute.”\n﹣Harold Abelson, Structure and Interpretation of Computer Programs</p>\n</blockquote><p>For decades this line was gospel, the kind of sentence you nodded at and repeated. Now it is genuinely funny to read. As AI coding agents write and read most of the code, and engineers increasingly orchestrate in English rather than in syntax, the obvious question is: who exactly is the code &ldquo;running on&rdquo; anymore? The machines are writing for machines. The human in the loop has quietly stepped back from reading code line by line and moved toward something else &mdash; writing clear intent in natural language and trusting the agent to render it.</p><p>And yet Abelson&rsquo;s quote might still hold, just not in the way he meant. The artifact that people now write for other people to read is no longer the code itself; it is the prompt, the spec, the architectural decision that frames the whole effort. Those are the things a teammate opens to understand what you were thinking, the things that must be legible six months from now. The center of gravity for human readability simply migrated up a layer &mdash; from the implementation to the intent. <em>(A shift I first turned over in <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">a friend&rsquo;s thinking</a>.)</em></p>",
+  "backlinks": [
+    {
+      "slug": "programming-beacons",
+      "title": "Programming beacons",
+      "context": "<p>Though, <a href=\"/thoughts/code-run-on-people\">Does code still run on people?</a>.</p>"
+    },
+    {
+      "slug": "vocabulary-as-api-for-second-brain",
+      "title": "Your rich and consistent vocabulary is the best API for your second brain",
+      "context": "<ul>\n<li><a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Articulation skill</a> - <a href=\"/thoughts/programming-beacons\">Programming beacons</a> - <a href=\"/thoughts/code-run-on-people\">Does code still run on people?</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "budding"
+}

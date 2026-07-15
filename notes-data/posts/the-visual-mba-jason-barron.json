@@ -1,0 +1,36 @@
+{
+  "slug": "the-visual-mba-jason-barron",
+  "title": "The Visual MBA: Reading Business as a System That Has to Run",
+  "summary": "A book reflection on The Visual MBA by Jason Barron, focusing less on business vocabulary and more on seeing a company as an operating system of customers, money, people, positioning, execution, and feedback loops.",
+  "cardSummary": "Business becomes easier to understand when it is seen as a system that must actually run, not a pile of impressive terms.",
+  "date": "2026-04-19",
+  "readingMinutes": 4,
+  "tags": [
+    "Book Notes",
+    "The Visual MBA",
+    "Jason Barron",
+    "Business",
+    "Management",
+    "Startup"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": true,
+  "topic": "sach",
+  "baseLocale": "en",
+  "locales": [
+    "en",
+    "vi"
+  ],
+  "book": {
+    "title": "The Visual MBA",
+    "originalTitle": "The Visual MBA: Two Years of Business School Packed into One Priceless Book of Pure Awesomeness",
+    "authors": [
+      "Jason Barron"
+    ],
+    "publisher": "Harper Business",
+    "published": "2019",
+    "isbn": "9780358023951",
+    "note": "Bài viết này là ghi chú đọc và chiêm nghiệm cá nhân từ cuốn sách, không thay thế cho việc đọc tác phẩm gốc."
+  },
+  "html": "<p>A business discussion can become crowded with frameworks before the basic motion is understood. That is the kind of everyday moment that made. The Visual MBA stay with me. The book is useful not because it gives a sentence to repeat, but because it gives a better way to notice what is already happening.</p>\n<p>The sketches helped me see business as connected motion: value, customer, money, operations, positioning, and people. I read it less as a summary of a subject and more as a tool for looking at work, decisions, and relationships with a little more discipline.</p>\n<figure class=\"blog-figure blog-photo-panorama\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/notes/the-visual-mba-jason-barron/business-system-table.webp\" width=\"1600\" height=\"900\" loading=\"lazy\" decoding=\"async\" alt=\"A small team studies customer notes, money, product sketches, and operations artifacts on one table.\" />\n  <figcaption>Business becomes clearer when the moving parts are close enough to be seen as one system.</figcaption>\n</figure>\n<p>The practical lesson is that ideas become valuable only when they survive contact with real constraints. A framework should help us ask better questions: what is the incentive, what is the trade-off, what evidence is missing, and who carries the cost if the idea is wrong?</p>\n<figure class=\"blog-figure blog-photo-figure\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/notes/the-visual-mba-jason-barron/unit-economics-review.webp\" width=\"1440\" height=\"960\" loading=\"lazy\" decoding=\"async\" alt=\"Two people review a calculator, simple charts, and notes while weighing the constraints behind a business idea.\" />\n  <figcaption>A useful framework earns its place when it makes trade-offs, incentives, and missing evidence easier to see.</figcaption>\n</figure>\n<p>For engineers, this matters because technical decisions affect support cost, sales promises, retention, and operational trust. This is why the book feels relevant beyond its original topic. It helps turn vague impressions into things that can be discussed, tested, and improved.</p>\n<figure class=\"blog-figure blog-photo-figure\">\n  <img src=\"https://nguyenlephong.github.io/dom-pub/icdn/notes/the-visual-mba-jason-barron/feedback-loop-operations.webp\" width=\"1440\" height=\"960\" loading=\"lazy\" decoding=\"async\" alt=\"Colleagues adjust an operations flow beside abstract dashboards and notes, turning feedback into the next decision.\" />\n  <figcaption>Execution improves when feedback loops are visible enough for ordinary decisions to change.</figcaption>\n</figure>\n<p>I do not want to treat any book as a complete answer. A good book should make the reader more attentive, not more certain too quickly. The useful part is the pause it creates before the next decision.</p>\n<p>A company is not improved by vocabulary alone; it improves when its loops become clearer. That is the note I want to keep: learning is not collecting impressive concepts, but letting a concept make the next ordinary choice a little more honest.</p>"
+}

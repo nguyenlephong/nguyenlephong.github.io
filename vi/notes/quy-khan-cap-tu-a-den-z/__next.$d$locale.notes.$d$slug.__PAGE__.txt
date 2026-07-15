@@ -1,0 +1,101 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+5:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+6:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+13:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+14:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+16:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+17:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+18:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T543,{"@context":"https://schema.org","@type":"Article","@id":"https://nguyenlephong.github.io/vi/notes/quy-khan-cap-tu-a-den-z#article","headline":"Quỹ khẩn cấp từ A đến Z — tấm đệm giúp bạn đi qua biến cố","description":"Một khoản dự phòng không làm tài sản tăng lên ngay, nhưng giúp bạn bình tĩnh hơn khi cuộc sống có biến cố: giảm thu nhập, chi phí y tế, xe hỏng, nhà cần sửa hoặc một việc gia đình cần tiền gấp. Bài này giữ lại đầy đủ cách tính quỹ khẩn cấp theo 3–6 tháng chi phí thiết yếu, khi nào cần 9–12 tháng, nên để tiền ở đâu, khi nào được dùng, khi nào nên có sinking fund riêng và cách tái lập quỹ sau khi đã dùng.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/notes/quy-khan-cap-tu-a-den-z","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/notes/quy-khan-cap-tu-a-den-z.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/vi/notes/quy-khan-cap-tu-a-den-z","datePublished":"2026-03-28","dateModified":"2026-03-28","keywords":"Tài chính cá nhân, Quỹ khẩn cấp, An toàn tài chính, Tiết kiệm, Kế hoạch","author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean notes-accent notes-reading","style":{"--topic-color":"#d97706"},"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Ghi chép\",\"item\":\"https://nguyenlephong.github.io/vi/notes\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Tài chính & Tiết kiệm\",\"item\":\"https://nguyenlephong.github.io/vi/notes?topic=tiet-kiem\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Quỹ khẩn cấp từ A đến Z — tấm đệm giúp bạn đi qua biến cố\",\"item\":\"https://nguyenlephong.github.io/vi/notes/quy-khan-cap-tu-a-den-z\"}]}"}}],null,["$","$L3",null,{"category":"notes","slug":"quy-khan-cap-tu-a-den-z","children":[["$","$L4",null,{"category":"notes","slug":"quy-khan-cap-tu-a-den-z","readingMinutes":13,"surface":"notes"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L5",null,{"url":"https://nguyenlephong.github.io/vi/notes/quy-khan-cap-tu-a-den-z","title":"Quỹ khẩn cấp từ A đến Z — tấm đệm giúp bạn đi qua biến cố","surface":"notes","category":"notes","slug":"quy-khan-cap-tu-a-den-z","labels":{"share":"Chia sẻ","copyLink":"Sao chép liên kết","copied":"Đã sao chép!","close":"Đóng"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$L6",null,{"href":"/vi/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Ghi chép"}],[["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$L6",null,{"href":"/vi/notes?topic=tiet-kiem","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Tài chính & Tiết kiệm"}]],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"Quỹ khẩn cấp từ A đến Z — tấm đệm giúp bạn đi qua biến cố"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","h1",null,{"className":"blog-article__title","children":"Quỹ khẩn cấp từ A đến Z — tấm đệm giúp bạn đi qua biến cố"}],["$","p",null,{"className":"blog-article__summary","children":"Một khoản dự phòng không làm tài sản tăng lên ngay, nhưng giúp bạn bình tĩnh hơn khi cuộc sống có biến cố: giảm thu nhập, chi phí y tế, xe hỏng, nhà cần sửa hoặc một việc gia đình cần tiền gấp. Bài này giữ lại đầy đủ cách tính quỹ khẩn cấp theo 3–6 tháng chi phí thiết yếu, khi nào cần 9–12 tháng, nên để tiền ở đâu, khi nào được dùng, khi nào nên có sinking fund riêng và cách tái lập quỹ sau khi đã dùng."}],"$L7","$L8"]}],"$L9","$undefined",null,"$La"]}]]}],"$Lb","$Lc"]}],"$Ld"]}]]}],["$Le","$Lf","$L10","$L11"],"$L12"]}],"loading":null,"isPartial":false}
+7:["$","div",null,{"className":"blog-article__meta","children":[["$","time",null,{"dateTime":"2026-03-28","children":"28 tháng 3, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"13 phút đọc"}],["$","$L13",null,{"label":"lượt xem"}]]}]
+8:["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Tài chính cá nhân",{"children":"Tài chính cá nhân"}],["$","li","Quỹ khẩn cấp",{"children":"Quỹ khẩn cấp"}],["$","li","An toàn tài chính",{"children":"An toàn tài chính"}],["$","li","Tiết kiệm",{"children":"Tiết kiệm"}],["$","li","Kế hoạch",{"children":"Kế hoạch"}]]}]
+15:T2cad,<h2 id="vi-sao-quan-trong-nhat">Vì sao quỹ khẩn cấp là nền móng quan trọng nhất</h2>
+<p>Hãy tưởng tượng hai người đồng nghiệp cùng nhận tin xấu: công ty cắt giảm nhân sự, cả hai mất việc cùng ngày. Người thứ nhất có một khoản dự phòng đủ sống 6 tháng — anh hơi lo, nhưng vẫn bình tĩnh cập nhật CV, chọn lọc cơ hội, và tìm được công việc tốt sau hai tháng. Người thứ hai không có đồng dự phòng nào — chỉ sau hai tuần, áp lực tiền nhà buộc anh nhận đại một việc lương thấp, đồng thời quẹt thẻ tín dụng để cầm cự, rơi vào vòng xoáy nợ.</p>
+<p>Cùng một biến cố, hai mức độ chủ động rất khác nhau — và khác biệt không nằm ở tài năng, mà ở <strong>tấm đệm tài chính</strong>.</p>
+<blockquote><p>Quỹ khẩn cấp không làm tài sản tăng lên ngay. Nó làm một việc còn quan trọng hơn: nó đảm bảo một biến cố không dễ đẩy bạn vào nợ lãi cao hoặc làm gián đoạn toàn bộ tiến bộ đã gây dựng.</p></blockquote>
+<p>Đây là lý do trong thứ tự ưu tiên tài chính, quỹ khẩn cấp đứng <em>trước cả đầu tư</em>. Đầu tư khi chưa có đệm giống như đi xa mà không có điểm tựa — có thể đi nhanh, nhưng một biến cố nhỏ cũng có thể buộc bạn quay lại từ đầu. Quỹ khẩn cấp chính là sợi dây đó.</p>
+
+<h2 id="bao-nhieu-la-du">Bao nhiêu là đủ? Con số cho riêng bạn</h2>
+<p>Câu trả lời kinh điển là <strong>3 đến 6 tháng chi phí sinh hoạt thiết yếu</strong>. Nhưng con số chính xác phụ thuộc vào hoàn cảnh của bạn — ổn định càng thấp thì đệm càng phải dày:</p>
+<ul>
+<li><strong>3 tháng:</strong> đủ cho người có công việc rất ổn định, thu nhập đều, có nhiều người cùng gánh chi phí gia đình, hoặc dễ tìm việc mới.</li>
+<li><strong>6 tháng:</strong> mức an toàn tiêu chuẩn cho phần lớn người đi làm.</li>
+<li><strong>9–12 tháng:</strong> cho người thu nhập thất thường (freelancer, kinh doanh tự do), người làm trong ngành dễ biến động, người là trụ cột thu nhập duy nhất của gia đình, hoặc người có người phụ thuộc.</li>
+</ul>
+<p>Lưu ý quan trọng: con số dựa trên <strong>chi phí thiết yếu</strong> (needs) — tiền nhà, ăn cơ bản, điện nước, đi lại, bảo hiểm, trả nợ tối thiểu — <em>không phải</em> mức sống đầy đủ có cà phê, du lịch, mua sắm. Khi khủng hoảng, bạn sẽ cắt phần "muốn" và sống bằng phần "cần", nên quỹ tính theo phần "cần" là đủ.</p>
+<blockquote><p><strong>Cách tính nhanh:</strong> cộng các chi phí bắt buộc một tháng của bạn, rồi nhân với số tháng phù hợp hoàn cảnh. Ví dụ chi phí thiết yếu 10 triệu/tháng, mục tiêu 6 tháng → quỹ khẩn cấp cần 60 triệu. Có một con số cụ thể giúp bạn có đích để nhắm.</p></blockquote>
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/quy-khan-cap-tu-a-den-z/monthly-cost-cards.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Một người Việt Nam sắp các thẻ chi phí trơn cạnh máy tính và sổ tay để biến mục tiêu quỹ khẩn cấp thành một con số rõ hơn." />
+  <figcaption>Con số dự phòng bớt mơ hồ khi chi phí thiết yếu, rủi ro và mức đệm cần có được đặt ra trước lúc áp lực xuất hiện.</figcaption>
+</figure>
+
+<h2 id="de-tien-o-dau">Để tiền ở đâu? Hai tiêu chí: an toàn và dễ rút</h2>
+<p>Quỹ khẩn cấp có một nhiệm vụ duy nhất: <strong>sẵn sàng ngay khi bạn cần, với giá trị không bị mất đi</strong>. Vì vậy nơi cất nó phải thỏa hai tiêu chí — an toàn (không biến động) và thanh khoản cao (rút được nhanh). Cụ thể:</p>
+<ul>
+<li><strong>NÊN:</strong> tài khoản tiết kiệm riêng, hoặc tiền gửi kỳ hạn ngắn linh hoạt mà bạn có thể rút khi cần. Lý tưởng là một tài khoản <em>tách biệt</em> khỏi tài khoản chi tiêu hằng ngày — để bạn không vô tình tiêu lẹm vào, và không thấy nó mỗi ngày rồi dễ dùng nhầm.</li>
+<li><strong>KHÔNG NÊN:</strong> để trong cổ phiếu, chứng chỉ quỹ hay bất cứ kênh biến động nào. Vì khủng hoảng cá nhân hay ập đến đúng lúc thị trường giảm — bạn sẽ buộc phải bán lỗ ngay đáy. Cũng không nên để dưới dạng tài sản khó bán nhanh (vàng miếng cất kỹ, bất động sản).</li>
+</ul>
+<p>Một mẹo cân bằng: phần lớn quỹ để ở nơi sinh chút lãi (tiền gửi linh hoạt) nhưng giữ một phần nhỏ thật sự "tiền mặt" có thể chạm tới trong vài giờ. Đừng chạy theo lãi mà đánh đổi mục đích cốt lõi: quỹ này tồn tại để <em>có mặt khi bạn cần</em>, không phải để sinh lời.</p>
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/quy-khan-cap-tu-a-den-z/separate-emergency-drawer.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Một người Việt Nam đặt phong bì trơn vào ngăn kéo riêng gần chìa khóa, tách tiền khẩn cấp khỏi tiền chi tiêu hằng ngày." />
+  <figcaption>Một nơi cất riêng giúp khoản tiền giữ đúng nhiệm vụ: đủ gần để dùng khi có biến cố thật, nhưng đủ xa khỏi thói quen chi tiêu mỗi ngày.</figcaption>
+</figure>
+
+<h2 id="khi-nao-duoc-dung">Khi nào được dùng — và khi nào nên tách quỹ riêng</h2>
+<p>Quỹ khẩn cấp chỉ hữu ích nếu bạn giữ kỷ luật về định nghĩa "khẩn cấp". Ranh giới này quan trọng, vì lý do hợp lý hóa luôn rất dễ tìm.</p>
+<p><strong>ĐƯỢC dùng</strong> — một sự kiện thỏa cả ba điều: <em>bất ngờ, cần thiết, và cấp bách</em>:</p>
+<ul>
+<li>Mất việc, giảm thu nhập đột ngột</li>
+<li>Chi phí y tế khẩn cấp không lường trước</li>
+<li>Sửa chữa cấp thiết (xe hỏng cần để đi làm, nhà hư hại)</li>
+<li>Việc gia đình khẩn cấp buộc phải có tiền ngay</li>
+</ul>
+<p><strong>KHÔNG nên dùng</strong> — những thứ chỉ <em>cảm giác</em> như khẩn cấp:</p>
+<ul>
+<li>Đợt sale lớn, "cơ hội mua hời"</li>
+<li>Du lịch, nâng cấp điện thoại, mua sắm</li>
+<li>Một "cơ hội đầu tư hấp dẫn" ai đó mách</li>
+<li>Các khoản đã biết trước (cưới hỏi, Tết, bảo hiểm) — những thứ này nên có <em>sinking fund</em> riêng, không đụng quỹ khẩn cấp</li>
+</ul>
+<blockquote><p>Phép thử đơn giản: "Nếu không có tiền này ngay bây giờ, cuộc sống hay sinh kế của mình có bị đe dọa không?" Nếu câu trả lời là không, thì đó không phải khẩn cấp.</p></blockquote>
+
+<h2 id="xay-dan-tu-con-so-0">Cách xây quỹ từ con số 0 mà không nản</h2>
+<p>Nhìn vào con số mục tiêu (vài chục triệu) khi chưa có khoản dự phòng có thể khiến bạn nản ngay. Bí quyết là chia nhỏ và bắt đầu, đừng chờ "có nhiều tiền":</p>
+<ol>
+<li><strong>Mốc đầu tiên — một khoản đệm nhỏ:</strong> đặt mục tiêu trước mắt rất khiêm tốn, ví dụ một tháng chi phí, hoặc thậm chí 5–10 triệu. Khoản nhỏ này đã đủ chặn phần lớn sự cố thường ngày khiến người ta phải quẹt thẻ.</li>
+<li><strong>Tự động hóa:</strong> đặt lệnh chuyển một khoản cố định vào quỹ ngay ngày nhận lương — pay yourself first. Khi tiền tự đi, bạn không phải dựa vào ý chí.</li>
+<li><strong>Dồn các khoản bất thường:</strong> thưởng dự án, lương tháng 13, tiền mừng, khoản hoàn thuế — thay vì tiêu hết, hãy bơm thẳng vào quỹ để rút ngắn thời gian.</li>
+<li><strong>Tăng tốc bằng tiền bịt lỗ rò:</strong> mỗi khoản chi rò rỉ bạn cắt được (hủy subscription, mang cơm) chuyển thẳng vào quỹ — biến việc tiết kiệm thành xây đệm.</li>
+</ol>
+<p>Hãy ăn mừng từng mốc nhỏ. Cảm giác nhìn quỹ lớn dần là một trong những động lực tài chính mạnh nhất — vì lần đầu trong đời, bạn cảm nhận được sự <em>vững vàng</em>.</p>
+
+<h2 id="tai-lap-sau-khi-dung">Sau khi dùng quỹ — tái lập ngay, không tự trách</h2>
+<p>Sẽ có ngày bạn phải dùng đến nó. Đó <em>không phải</em> vấn đề cần tự trách — đó chính xác là lúc quỹ làm đúng nhiệm vụ của mình. Quỹ khẩn cấp được tạo ra để bị dùng; nếu nó cứu bạn khỏi một khoản nợ lãi cao, nó đã hoàn thành sứ mệnh.</p>
+<p>Điều quan trọng sau đó là <strong>ưu tiên tái lập</strong>: tạm thời dồn lực bơm lại quỹ về mức an toàn trước khi quay lại các mục tiêu khác như đầu tư. Coi việc tái lập như một "khoản khẩn cấp" mới trong kế hoạch của bạn. Và nếu sự cố vừa rồi cho thấy đệm của bạn hơi mỏng, hãy cân nhắc nâng mục tiêu lên cao hơn một chút cho lần sau.</p>
+
+<h2 id="key-takeaways">Key takeaways — bỏ túi mang về</h2>
+<ul>
+<li><strong>Quỹ khẩn cấp là nền móng, đứng trước cả đầu tư.</strong> Nó đảm bảo một biến cố không đẩy bạn vào nợ.</li>
+<li><strong>3–6 tháng chi phí thiết yếu</strong> là chuẩn; thu nhập càng bấp bênh, đệm càng phải dày (9–12 tháng).</li>
+<li><strong>Tính theo chi phí "cần", không phải mức sống đầy đủ.</strong></li>
+<li><strong>Để nơi an toàn và dễ rút,</strong> tách biệt khỏi tài khoản chi tiêu — không bao giờ để trong kênh biến động.</li>
+<li><strong>Chỉ dùng cho việc bất ngờ + cần thiết + cấp bách.</strong> Sale và "cơ hội" không phải khẩn cấp.</li>
+<li><strong>Bắt đầu nhỏ, tự động hóa, dồn khoản bất thường.</strong> Đừng chờ có nhiều tiền mới xây.</li>
+<li><strong>Dùng quỹ không phải vấn đề cần tự trách.</strong> Tái lập ngay sau đó, đừng tự trách.</li>
+</ul>
+<p>Trong tất cả các bước tài chính, xây quỹ khẩn cấp có lẽ là bước ít hào nhoáng nhất — không có lãi kép mở rộng rõ rệt, không có biểu đồ tăng vọt để khoe. Nhưng nó là bước cho bạn thứ quý giá nhất mà tiền có thể mua: <strong>sự an tâm để ngủ ngon</strong>, và sự vững vàng để không bao giờ bị một biến cố đời thường đánh gục. Hãy bắt đầu xây tấm đệm đó ngay tuần này, dù chỉ bằng một lệnh chuyển khoản nhỏ. Tương lai của bạn sẽ thầm cảm ơn con người hôm nay.</p>9:["$","$L14",null,{"html":"$15"}]
+a:["$","$L16",null,{"prompt":"Bạn thấy bài này thế nào?","surface":"notes","category":"notes","slug":"quy-khan-cap-tu-a-den-z","reactionLabels":{"like":"Thích","love":"Yêu thích","insightful":"Sâu sắc","clap":"Tuyệt vời"}}]
+b:["$","nav",null,{"className":"blog-series-nav","aria-label":"Tài chính & Tiết kiệm","children":[["$","$L6",null,{"href":"/vi/notes/lap-ngan-sach-lam-chu-dong-tien","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Lập ngân sách & làm chủ dòng tiền — bản đồ nhẹ nhàng cho từng đồng bạn kiếm được"}]]}],["$","$L6",null,{"href":"/vi/notes/thoat-no-thong-minh","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Bài tiếp theo"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Thoát nợ thông minh — từng bước xử lý nợ lãi cao"}]]}]]}]
+c:["$","footer",null,{"className":"blog-article__footer","children":["$","$L6",null,{"href":"/vi/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Quay lại Ghi chép"]}]}]
+d:["$","aside",null,{"className":"blog-article__toc","children":["$","$L17",null,{"label":"Trong bài này","surface":"notes"}]}]
+e:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/579669e8fc8fe057.css","precedence":"next"}]
+f:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+10:["$","script","script-0",{"src":"/_next/static/chunks/60afb5b0374fe7a9.js","async":true}]
+11:["$","script","script-1",{"src":"/_next/static/chunks/0e65e15104575034.js","async":true}]
+12:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+1a:null

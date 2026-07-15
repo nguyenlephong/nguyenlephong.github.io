@@ -1,0 +1,48 @@
+1:"$Sreact.fragment"
+3:I[48677,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/0b1b953501cc1989.js","/_next/static/chunks/44d80e401a0155d3.js"],"default"]
+4:I[55526,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/0b1b953501cc1989.js","/_next/static/chunks/44d80e401a0155d3.js"],"default"]
+5:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+6:"$Sreact.suspense"
+2:T731,
+            body:has(.studio-route-shell),
+            body.studio-app-shell-active {
+              overflow: hidden;
+              background: var(--bg, #fafafa) !important;
+            }
+
+            body:has(.studio-route-shell) .studio-route-shell,
+            body.studio-app-shell-active .studio-route-shell {
+              height: 100vh !important;
+              min-height: 100vh !important;
+              overflow: hidden !important;
+              padding-top: 0 !important;
+              padding-bottom: 0 !important;
+            }
+
+            body:has(.studio-route-shell) [data-studio-shadow-host],
+            body.studio-app-shell-active [data-studio-shadow-host] {
+              height: 100vh !important;
+              min-height: 100vh !important;
+              overflow: hidden !important;
+            }
+
+            body:has(.studio-route-shell) .app-nav,
+            body:has(.studio-route-shell) .nav-mobile-panel,
+            body:has(.studio-route-shell) .nav-mobile-backdrop,
+            body:has(.studio-route-shell) .app-footer,
+            body:has(.studio-route-shell) .blog-reader-tools,
+            body:has(.studio-route-shell) .font-switcher,
+            body:has(.studio-route-shell) .reading-background-switcher,
+            body:has(.studio-route-shell) .locale-menu,
+            body.studio-app-shell-active .app-nav,
+            body.studio-app-shell-active .nav-mobile-panel,
+            body.studio-app-shell-active .nav-mobile-backdrop,
+            body.studio-app-shell-active .app-footer,
+            body.studio-app-shell-active .blog-reader-tools,
+            body.studio-app-shell-active .font-switcher,
+            body.studio-app-shell-active .reading-background-switcher,
+            body.studio-app-shell-active .locale-menu {
+              display: none !important;
+            }
+          0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"studio-route-shell","children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"@id\":\"https://nguyenlephong.github.io/zh/studio#studio\",\"name\":\"Studio — Engineering Notes, Checklists, and System Flows\",\"description\":\"A public workspace for the notes, checklists, and visual flows I use to review architecture, prepare releases, set up tools, and work with AI responsibly.\",\"url\":\"https://nguyenlephong.github.io/zh/studio\",\"inLanguage\":\"zh\",\"isPartOf\":{\"@type\":\"WebSite\",\"@id\":\"https://nguyenlephong.github.io/#website\"},\"author\":{\"@type\":\"Person\",\"@id\":\"https://nguyenlephong.github.io/#person\"}}"}}],["$","$L3",null,{"page":"studio","eventName":"studio_view","section":"notes_admin"}],["$","$L4",null,{"locale":"zh"}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/0b1b953501cc1989.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/44d80e401a0155d3.js","async":true}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],"loading":null,"isPartial":false}
+7:null

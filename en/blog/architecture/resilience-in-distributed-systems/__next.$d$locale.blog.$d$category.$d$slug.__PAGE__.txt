@@ -1,0 +1,182 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Tab8,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/en/blog/architecture/resilience-in-distributed-systems#article","headline":"The Distributed-Systems Tax, Paid: Timeouts, Retries, Circuit Breakers, and Idempotency","description":"The moment a call leaves your process it can be slow, fail, or happen twice — and that is the normal case, not the exception. The resilience toolkit, explained plainly: why timeouts come first, how retries become a self-inflicted DDoS without backoff and jitter, why idempotency is the price of retrying, and how circuit breakers, bulkheads, graceful degradation, and observability keep one bad dependency from taking down everything.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/blog/architecture/resilience-in-distributed-systems","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/resilience-in-distributed-systems.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/en/blog/architecture/resilience-in-distributed-systems","datePublished":"2026-04-09","dateModified":"2026-04-09","keywords":"Software Architecture, Resilience, Fault Tolerance, Circuit Breaker, Idempotency, Distributed Systems","articleSection":"Source & Architecture","isRelatedTo":[{"@type":"BlogPosting","headline":"Designing Idempotent APIs","url":"https://nguyenlephong.github.io/en/blog/architecture/designing-idempotent-apis","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/designing-idempotent-apis.jpg"},{"@type":"BlogPosting","headline":"The Outbox Pattern","url":"https://nguyenlephong.github.io/en/blog/architecture/the-outbox-pattern","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/the-outbox-pattern.jpg"},{"@type":"BlogPosting","headline":"Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained","url":"https://nguyenlephong.github.io/en/blog/architecture/event-driven-architecture-and-messaging","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/event-driven-architecture-and-messaging.jpg"},{"@type":"BlogPosting","headline":"Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears","url":"https://nguyenlephong.github.io/en/blog/architecture/data-in-distributed-systems","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/data-in-distributed-systems.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/en/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/en/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Source & Architecture\",\"item\":\"https://nguyenlephong.github.io/en/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"The Distributed-Systems Tax, Paid: Timeouts, Retries, Circuit Breakers, and Idempotency\",\"item\":\"https://nguyenlephong.github.io/en/blog/architecture/resilience-in-distributed-systems\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T45eb,<p>Three parts ago, splitting a monolith into microservices, we mentioned a bill we would eventually have to pay — the <em>distributed-systems tax</em>. Then we wired services together with events and gave their data a private home. This is the part where the bill comes due.</p>
+<p>The tax is simple to name and hard to dodge: <strong>the moment a call leaves your process, it can be slow, it can fail, and it can happen twice — and none of that is an exception, it is Tuesday.</strong> Resilience is the discipline of building a system that stays standing anyway. Not a system that never fails — that does not exist — but one that fails small, fails fast, and recovers on its own.</p>
+
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/resilience-in-distributed-systems/resilience-tax-on-the-big-screen.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Nguyen Le Phong points at a live systems dashboard on a large screen while three teammates study the failure flow around a meeting table." />
+  <figcaption>The distributed-systems tax usually becomes real in a room like this: a healthy feature is still shipping work, but everyone can already see the first slow dependency starting to drag the rest of the system with it.</figcaption>
+</figure>
+
+<h2 id="the-fallacies">The comforting lies we tell about the network</h2>
+<p>In 1994, engineers at Sun catalogued the <strong>fallacies of distributed computing</strong> — the false assumptions every team makes when they first spread work across machines:</p>
+<ul>
+<li><em>The network is reliable.</em> It is not. Packets drop, connections reset.</li>
+<li><em>Latency is zero.</em> It is not. A call across a data centre is glacial next to a function call.</li>
+<li><em>Bandwidth is infinite, the topology never changes, transport cost is zero.</em> None of these hold.</li>
+</ul>
+<p>Inside a monolith, a method call is effectively instant and never "half-happens." The instant you replace it with a network call, all of those fallacies become your problem. Everything below is a tool for treating the network as the unreliable thing it actually is.</p>
+
+<h2 id="timeouts">Timeouts: never wait forever</h2>
+<p>This is the most important resilience tool and the most commonly forgotten one. A call with no timeout is an outage with a delay. Here is the chain reaction: a downstream service hangs; your call waits; the thread (or connection) handling that request is stuck; more requests arrive and grab more stuck threads; within seconds your healthy service has no threads left and falls over too. <strong>One slow dependency took down a service that was working fine.</strong></p>
+<pre><code><span class="cmt">// A call with no timeout can hang until your whole service starves</span>
+<span class="kw">const</span> res = <span class="kw">await</span> fetch(url)                          <span class="cmt">// waits... forever?</span>
+
+<span class="cmt">// Bound every outbound call. A fast failure beats an endless wait.</span>
+<span class="kw">const</span> res = <span class="kw">await</span> fetch(url, { signal: AbortSignal.timeout(<span class="str">800</span>) })</code></pre>
+<p>The rule is absolute: <strong>every call that leaves your process gets a timeout.</strong> A request that fails in 800&nbsp;ms is recoverable; one that hangs for 60 seconds takes the whole node down with it.</p>
+
+<h2 id="retries-and-backoff">Retries: helpful, until they are a stampede</h2>
+<p>Many failures are transient — a blip, a brief overload, a node restarting. Retrying often works. But the naive retry is a loaded gun pointed at your own foot.</p>
+<p>Picture a service that slows under load. Every caller times out and immediately retries. Now the struggling service receives <em>double</em> the traffic at the worst possible moment, slows further, triggers more retries… and you have a <strong>retry storm</strong> that turns a wobble into an outage. The fixes are well known:</p>
+<ul>
+<li><strong>Exponential backoff.</strong> Wait longer between each attempt: 100&nbsp;ms, 200, 400, 800. Give the dependency room to breathe.</li>
+<li><strong>Jitter.</strong> Add randomness so a thousand clients do not retry in lockstep on the same tick — synchronised retries are their own stampede.</li>
+<li><strong>A retry budget.</strong> Cap attempts (say, three) and then give up gracefully. Infinite retries just move the outage around.</li>
+<li><strong>Only retry idempotent operations.</strong> Which is the whole next section.</li>
+</ul>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">The cure can be the disease</span><p>Retries without backoff and jitter do not add resilience — they add a self-inflicted DDoS. The most damaging outages are often not the original failure but the retry storm the clients unleash trying to recover from it. Be gentle with a service that is already on its knees.</p></div>
+
+<h2 id="idempotency">Idempotency: the price of being allowed to retry</h2>
+<p>A retry is only safe if doing the operation twice has the same effect as doing it once. That property is <strong>idempotency</strong>, and it is the thread tying this whole series together: in part seven, brokers deliver <em>at-least-once</em>; in part eight, the outbox relay retries; here, your own client retries. In every case the same defence applies — make the operation safe to repeat.</p>
+<p>The standard technique is an <strong>idempotency key</strong>: the caller attaches a unique id, and the receiver remembers which ids it has already processed.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/resilience-in-distributed-systems/retry-budget-and-idempotency-review.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Nguyen Le Phong and two teammates review a flow diagram on the table, mapping where retries should slow down and where repeated requests must be deduplicated safely." />
+  <figcaption>Retries become useful only when the team can point to two boundaries at once: where callers must back off, and where the same request is safe to accept again without doing the work twice.</figcaption>
+</figure>
+<pre><code><span class="cmt">// The caller sends a stable key; the server records it once.</span>
+<span class="kw">async function</span> charge(req) {
+  <span class="kw">if</span> (<span class="kw">await</span> processed.has(req.idempotencyKey)) {
+    <span class="kw">return</span> processed.get(req.idempotencyKey)   <span class="cmt">// replay the first result, don't charge again</span>
+  }
+  <span class="kw">const</span> result = <span class="kw">await</span> paymentGateway.charge(req)
+  <span class="kw">await</span> processed.set(req.idempotencyKey, result)
+  <span class="kw">return</span> result
+}</code></pre>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">"Exactly once" is a comforting fiction</span><p>You will see vendors promise exactly-once delivery. Across an unreliable network it is essentially unachievable in the general case; what real systems build is <strong>at-least-once delivery plus idempotent handling</strong>, which is indistinguishable from exactly-once from the outside — and far more honest about how the world works.</p></div>
+
+<h2 id="circuit-breakers">Circuit breakers: stop hammering what is already down</h2>
+<p>When a dependency is genuinely down — not blipping, <em>down</em> — retrying is worse than useless. Every doomed call wastes a timeout, ties up a thread, and delays the error your user is going to get anyway. A <strong>circuit breaker</strong> is a small piece of state that notices the dependency is failing and starts failing <em>fast</em> instead, giving the dependency room to recover and your callers an instant answer.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 340" role="img" aria-labelledby="dgm-cb">
+    <title id="dgm-cb">A circuit breaker has three states. Closed lets calls through; too many failures trip it Open, where calls fail fast; after a cooldown it goes Half-Open and lets one trial through to decide whether to close again or re-open.</title>
+    <defs>
+      <marker id="cbAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-accent" x="380" y="28" text-anchor="middle" font-size="13">FAIL FAST, THEN PROBE — DON'T HAMMER A SERVICE THAT IS DOWN</text>
+
+    <rect class="dgm-core" x="60" y="120" width="170" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="145" y="148" text-anchor="middle" font-size="14">CLOSED</text>
+    <text class="dgm-t-muted dgm-t-mono" x="145" y="167" text-anchor="middle" font-size="10.5">calls pass through</text>
+
+    <rect class="dgm-driven" x="530" y="120" width="170" height="64" rx="10"/>
+    <text class="dgm-t-accent" x="615" y="148" text-anchor="middle" font-size="14">OPEN</text>
+    <text class="dgm-t-muted dgm-t-mono" x="615" y="167" text-anchor="middle" font-size="10.5">fail instantly</text>
+
+    <rect class="dgm-surface" x="295" y="248" width="170" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="380" y="276" text-anchor="middle" font-size="14">HALF-OPEN</text>
+    <text class="dgm-t-muted dgm-t-mono" x="380" y="295" text-anchor="middle" font-size="10.5">let one trial through</text>
+
+    <path class="dgm-flow" d="M230,142 H 526" marker-end="url(#cbAcc)"/>
+    <text class="dgm-t-muted" x="378" y="132" text-anchor="middle" font-size="11">failures &gt; threshold</text>
+
+    <path class="dgm-flow" d="M560,184 C 540,250 480,272 470,276" marker-end="url(#cbAcc)"/>
+    <text class="dgm-t-muted" x="560" y="240" text-anchor="middle" font-size="11">after cooldown</text>
+
+    <path class="dgm-flow" d="M295,272 C 200,258 170,210 158,188" marker-end="url(#cbAcc)"/>
+    <text class="dgm-t-muted" x="205" y="246" text-anchor="middle" font-size="11">trial OK &rarr; close</text>
+
+    <path class="dgm-flow" d="M465,286 C 600,290 640,220 632,188" marker-end="url(#cbAcc)"/>
+    <text class="dgm-t-muted" x="585" y="298" text-anchor="middle" font-size="11">trial fails &rarr; re-open</text>
+  </svg>
+  <figcaption>The breaker's job is to stop a struggling dependency from being hammered to death — and to stop callers from wasting threads waiting on something that is already down. Failing fast is kinder than failing slowly.</figcaption>
+</figure>
+
+<p>It borrows the metaphor from electrical wiring. <strong>Closed</strong>: current flows, calls go through. Too many failures and it trips <strong>Open</strong>: calls fail immediately without even trying. After a cooldown it goes <strong>Half-Open</strong> and lets a single trial call through — if that succeeds, it closes again; if it fails, it re-opens and waits longer. The point is humane on both ends: the sick service stops being flooded, and the caller stops burning resources on calls it knows will fail.</p>
+
+<h2 id="bulkheads">Bulkheads: contain the damage</h2>
+<p>A ship is divided into watertight compartments so a single hull breach floods one section, not the whole vessel. The <strong>bulkhead</strong> pattern applies the same idea to resources. If every outbound dependency draws from one shared pool of threads or connections, then one slow dependency can drain the entire pool and starve calls to <em>healthy</em> dependencies. Give each dependency its own bounded pool, and a failure in one is contained to one.</p>
+<p>This is why a single struggling third-party API can, in a poorly isolated system, take down features that have nothing to do with it. Bulkheads turn "the whole app is down" into "one feature is degraded."</p>
+
+<h2 id="graceful-degradation">Graceful degradation: a worse answer beats no answer</h2>
+<p>Resilience is not only about staying up — it is about staying <em>useful</em> when a piece is missing. When a dependency fails, the question is: what can we still do?</p>
+<ul>
+<li><strong>Serve stale data.</strong> A slightly out-of-date cached price beats a blank page.</li>
+<li><strong>Fall back to a default.</strong> Recommendations engine down? Show the bestsellers list.</li>
+<li><strong>Shed non-essential features.</strong> Drop the live-inventory badge so customers can still check out.</li>
+</ul>
+<p>The mindset shift is to treat every dependency as optional until proven otherwise, and to decide the fallback <em>before</em> the incident, not during it. A checkout that works without the recommendation widget is resilient; one that white-screens because a side feature failed is not.</p>
+
+<h2 id="observability">Observability: you cannot operate what you cannot see</h2>
+<p>Every pattern here fails silently by design. A timeout that quietly retries, a breaker that quietly opens, a queue that quietly backs up — each hides the symptom, which is exactly the danger. Without visibility, your first signal is an angry customer.</p>
+<p>The three pillars are not optional in a distributed system: <strong>metrics</strong> (latency, error rate, breaker state), <strong>logs</strong> (what happened), and <strong>distributed tracing</strong> (follow one request across every hop — the only way to find <em>which</em> of eight services added the latency). Build the dashboard and the alert on the dead-letter queue and the breaker <em>before</em> you go live, not after the first 2&nbsp;a.m. page.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/resilience-in-distributed-systems/trace-before-the-page-arrives.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Nguyen Le Phong works alone at dusk across two monitors, comparing latency charts, traces, and logs before a quiet system issue turns into a page." />
+  <figcaption>Observability earns its cost in the quiet minutes before an incident escalates, when one engineer can still line up the trace, the logs, and the latency chart early enough to stop a bad dependency from turning into a bad night.</figcaption>
+</figure>
+
+<h2 id="the-playbook">The playbook, on one page</h2>
+<p>None of these patterns is exotic. The skill is matching the right one to the failure in front of you — and not reaching for all of them at once.</p>
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>The failure you will actually see</th><th>The pattern that answers it</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>A dependency is slow or hanging</th><td>A <strong>timeout</strong> on every outbound call — non-negotiable</td></tr>
+    <tr><th>A brief, transient blip</th><td><strong>Retry</strong> with exponential backoff + jitter + a budget</td></tr>
+    <tr><th>A dependency is fully down</th><td>A <strong>circuit breaker</strong> — fail fast, stop hammering it</td></tr>
+    <tr><th>The same request arrives twice</th><td>An <strong>idempotency key</strong> — safe to repeat</td></tr>
+    <tr><th>One slow dependency starves everything</th><td><strong>Bulkheads</strong> — isolated resource pools</td></tr>
+    <tr><th>A non-critical piece is unavailable</th><td><strong>Graceful degradation</strong> — a pre-decided fallback</td></tr>
+    <tr><th>"Is this even happening?"</th><td><strong>Observability</strong> — metrics, logs, distributed tracing</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="by-company-size">The honest view by company size</h2>
+<ul>
+<li><strong>Solo / early startup.</strong> You need exactly two things: <em>timeouts on every external call</em>, and <em>idempotency on anything that takes money or sends a message</em>. That is 80% of the protection for almost none of the effort. Skip the rest until you feel its absence.</li>
+<li><strong>Growing scale-up.</strong> Add retries with backoff and jitter, and a circuit breaker around your flakiest dependencies. Adopt a tracing tool the day a bug takes more than an hour to locate. Decide fallbacks for your top user flows.</li>
+<li><strong>Enterprise.</strong> Resilience becomes systematic: bulkheads and breakers as defaults in shared libraries or a service mesh, error budgets and SLOs, and chaos testing that deliberately breaks things in production to prove the patterns actually work. The goal is that no single dependency can ever take the whole system down.</li>
+</ul>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Key takeaways</h3>
+<ul>
+  <li><strong>The network lies.</strong> It is unreliable, slow, and will duplicate work. Resilience is designing for that as the normal case, not the exception.</li>
+  <li><strong>Timeouts first, always.</strong> An unbounded call is an outage waiting to happen; one slow dependency can starve a healthy service. Bound every outbound call.</li>
+  <li><strong>Retries need backoff, jitter, and a budget.</strong> Naive retries turn a wobble into a retry storm — a DDoS you aimed at yourself.</li>
+  <li><strong>Retry safely means idempotently.</strong> At-least-once plus idempotent handling is the honest, achievable version of "exactly once."</li>
+  <li><strong>Circuit breakers and bulkheads contain failure; graceful degradation keeps you useful; observability lets you see any of it.</strong> Decide the fallback before the incident, not during it.</li>
+</ul>
+</div>
+<p>That closes the distributed-systems arc of this Foundations series. We went from one box to many: structuring the code, drawing service boundaries, letting them talk through events, giving their data an honest home, and finally keeping the whole thing standing when the network misbehaves. The through-line was never "use the fancy pattern." It was the same north star as the very first part — <em>buy complexity only when the problem makes you, and pay for it with discipline you can name out loud.</em></p>
+3:["$","$L8",null,{"category":"architecture","slug":"resilience-in-distributed-systems","children":[["$","$L9",null,{"category":"architecture","slug":"resilience-in-distributed-systems","readingMinutes":13,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/en/blog/architecture/resilience-in-distributed-systems","title":"The Distributed-Systems Tax, Paid: Timeouts, Retries, Circuit Breakers, and Idempotency","surface":"blog","category":"architecture","slug":"resilience-in-distributed-systems","labels":{"share":"Share","copyLink":"Copy link","copied":"Copied!","close":"Close"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/en/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/en/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Source & Architecture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Foundations of Software Architecture",["$","span",null,{"aria-hidden":"true","children":" · "}],"Part 9 of 15"]}],["$","h1",null,{"className":"blog-article__title","children":"The Distributed-Systems Tax, Paid: Timeouts, Retries, Circuit Breakers, and Idempotency"}],["$","p",null,{"className":"blog-article__summary","children":"The moment a call leaves your process it can be slow, fail, or happen twice — and that is the normal case, not the exception. The resilience toolkit, explained plainly: why timeouts come first, how retries become a self-inflicted DDoS without backoff and jitter, why idempotency is the price of retrying, and how circuit breakers, bulkheads, graceful degradation, and observability keep one bad dependency from taking down everything."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"By Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-04-09","children":"April 9, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"13 min read"}],["$","$Lc",null,{"label":"views"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Software Architecture",{"children":"Software Architecture"}],["$","li","Resilience",{"children":"Resilience"}],["$","li","Fault Tolerance",{"children":"Fault Tolerance"}],["$","li","Circuit Breaker",{"children":"Circuit Breaker"}],["$","li","Idempotency",{"children":"Idempotency"}],["$","li","Distributed Systems",{"children":"Distributed Systems"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"What did you think?","surface":"blog","category":"architecture","slug":"resilience-in-distributed-systems","reactionLabels":{"like":"Like","love":"Love","insightful":"Insightful","clap":"Celebrate"}}]
+10:["$","$L18",null,{"heading":"Related reading","intro":"A few nearby pieces to keep following the same thread with more context.","items":[{"post":{"slug":"designing-idempotent-apis","category":"architecture","title":"Designing Idempotent APIs","summary":"A practical explanation of idempotent API design: why retries happen, how duplicate requests create risk, and how idempotency keys, stable state transitions, and clear response contracts make distributed systems calmer.","date":"2026-01-10","readingMinutes":6,"tags":["Software Architecture","API Design","Idempotency","Distributed Systems","Reliability","System Design"],"author":"Nguyen Le Phong","featured":false},"categoryTitle":"Source & Architecture","readingLabel":"6 min read"},{"post":{"slug":"the-outbox-pattern","category":"architecture","title":"The Outbox Pattern","summary":"A practical explanation of the Outbox Pattern: why dual writes fail, how a transactional outbox keeps database state and events aligned, and what teams still need to handle around retries, idempotency, ordering, cleanup, and observability.","date":"2026-05-15","readingMinutes":6,"tags":["Software Architecture","Outbox Pattern","Distributed Systems","Event-Driven Architecture","Reliability","Microservices"],"author":"Nguyen Le Phong"},"categoryTitle":"Source & Architecture","readingLabel":"6 min read"},{"post":{"slug":"event-driven-architecture-and-messaging","category":"architecture","title":"Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained","summary":"When services hold hands through synchronous calls, latency adds up and one slow dependency takes down checkout. A no-hype guide to event-driven architecture: sync vs async, commands vs events, what brokers really promise (at-least-once, not exactly-once), choreography vs orchestration, and exactly when NOT to reach for events.","date":"2026-04-11","readingMinutes":13,"tags":["Software Architecture","Event-Driven Architecture","Message Queues","Asynchronous Messaging","Distributed Systems","System Design"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":7},"categoryTitle":"Source & Architecture","readingLabel":"13 min read"},{"post":{"slug":"data-in-distributed-systems","category":"architecture","title":"Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears","summary":"Splitting code is the easy half — splitting data is where distributed systems humble you. A practical guide to owning data across services: why a shared database is a distributed monolith, the trade from ACID to eventual consistency, the dual-write bug and the outbox that fixes it, sagas with compensating actions, and when CQRS and event sourcing are worth their lifetime cost.","date":"2026-04-10","readingMinutes":13,"tags":["Software Architecture","Distributed Systems","Saga Pattern","CQRS","Event Sourcing","Data Consistency"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":8},"categoryTitle":"Source & Architecture","readingLabel":"13 min read"}],"sourceCategory":"architecture","sourceSlug":"resilience-in-distributed-systems"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"Foundations of Software Architecture","children":[["$","$Lb",null,{"href":"/en/blog/architecture/data-in-distributed-systems","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Previously"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears"}]]}],["$","$Lb",null,{"href":"/en/blog/architecture/scaling-the-database","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Next up"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Scaling the Database: Indexes, Read Replicas, Caching, and Sharding — In That Order"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/en/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Back to Source & Architecture"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"On this page","surface":"blog"}]}]
+16:null

@@ -1,0 +1,256 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T9f5,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/fr/blog/architecture/monolith-to-microservices#article","headline":"Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête","description":"Les microservices sont une taxe que vous payez pour la mise à l'échelle organisationnelle — pas un point de départ. Un parcours sans fioriture du monolithe au monolithe modulaire puis aux microservices, avec les signaux qui vous disent quand (et si) diviser.","inLanguage":"fr","url":"https://nguyenlephong.github.io/fr/blog/architecture/monolith-to-microservices","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/monolith-to-microservices.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/fr/blog/architecture/monolith-to-microservices","datePublished":"2026-03-03","dateModified":"2026-03-03","keywords":"Architecture logicielle, Microservices, Modular Monolith, Conception de systèmes, Systèmes distribués, Scalabilité","articleSection":"Code source & Architecture","isRelatedTo":[{"@type":"BlogPosting","headline":"Micro-Frontends : Quand Ça Vaut le Coup, et Ce Que Ça Coûte","url":"https://nguyenlephong.github.io/fr/blog/architecture/micro-frontends-when-why-and-cost","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/micro-frontends-when-why-and-cost.jpg"},{"@type":"BlogPosting","headline":"Ports & Adapters (Hexagonal Architecture), Expliqués Simplement","url":"https://nguyenlephong.github.io/fr/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ports-and-adapters.jpg"},{"@type":"BlogPosting","headline":"The True Cost of Microservices","url":"https://nguyenlephong.github.io/en/blog/architecture/true-cost-of-microservices","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/true-cost-of-microservices.jpg"},{"@type":"BlogPosting","headline":"Clean, Onion & Hexagonal Architecture : Une étoile du nord, trois noms","url":"https://nguyenlephong.github.io/fr/blog/architecture/clean-vs-onion-vs-hexagonal","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/clean-vs-onion-vs-hexagonal.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/fr/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/fr/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Code source & Architecture\",\"item\":\"https://nguyenlephong.github.io/fr/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête\",\"item\":\"https://nguyenlephong.github.io/fr/blog/architecture/monolith-to-microservices\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T82e8,<p>Voici une scène qui se joue plus souvent qu'elle ne le devrait : une startup de trois personnes décide, dès le premier jour, de construire des microservices. Six mois plus tard, ils ont quinze services, un cluster Kafka que personne ne comprend vraiment, et un bug qui nécessite de tracer une requête à travers huit services pour le reproduire. L'équipe est épuisée. Le produit est à moitié fini. Et quelque part dans un thread Slack, quelqu'un écrit les mots <em>on a essentiellement construit un monolithe distribué.</em></p>
+<p>Les microservices sont réellement puissants — à la bonne échelle, avec la bonne équipe, pour les bonnes raisons. Mais ce sont <strong>une taxe que vous payez pour la mise à l'échelle organisationnelle, pas un point de départ</strong>. Ce guide parcourt honnêtement les trois formes architecturales — monolithe, monolithe modulaire et microservices — et vous donne les signaux pour savoir quand (et si) passer de l'une à l'autre.</p>
+
+<h2 id="monolith">Le monolithe : un seul déployable pour les gouverner tous</h2>
+<p>Un monolithe est une unité déployable unique. Un seul build, un seul binaire (ou un seul ensemble d'assets compilés), une seule étape de déploiement. Chaque fonctionnalité, chaque module, chaque requête de base de données vit dans le même processus.</p>
+<p>Ça semble limité, et le mot lui-même a acquis une connotation légèrement embarrassante — comme si admettre que vous avez un monolithe revenait à admettre que vous n'êtes pas à jour avec l'ingénierie moderne. Ce cadrage est erroné, et il a causé beaucoup de douleur inutile.</p>
+<p><strong>Un monolithe est le bon défaut.</strong> Voici pourquoi :</p>
+<ul>
+  <li><strong>Les appels locaux sont gratuits.</strong> Un appel de fonction à l'intérieur d'un processus prend des nanosecondes. Un appel réseau entre services prend des millisecondes — et il peut échouer, expirer, renvoyer un résultat partiel ou se perdre entièrement. Vous ne portez pas cette complexité jusqu'à ce que vous en ayez besoin.</li>
+  <li><strong>Les transactions sont faciles.</strong> Une base de données relationnelle vous donne des transactions ACID sur tout votre modèle de données. Dans un monolithe, transférer de l'argent du compte A au compte B est une seule transaction. Dans les microservices, ça devient une transaction distribuée ou un saga — de vrais problèmes difficiles avec de vraies modalités d'échec.</li>
+  <li><strong>Le débogage est direct.</strong> Un seul processus, un seul flux de logs, une seule trace de pile. Vous trouvez le problème. Dans un système distribué, une seule action utilisateur peut générer des dizaines d'opérations asynchrones à travers plusieurs services, et les corréler nécessite des outils d'observabilité dédiés.</li>
+  <li><strong>Le déploiement est simple.</strong> Un seul artefact, un seul pipeline, une seule stratégie de rollback. Vous pouvez livrer en toute confiance dès le premier jour.</li>
+  <li><strong>Les grandes entreprises livrent de grands monolithes.</strong> Shopify a fait tourner un monolithe Rails pendant des années à une énorme échelle. Stack Overflow sert des millions de requêtes par jour depuis une poignée de serveurs exécutant un monolithe. Un monolithe ne vous empêche pas de passer à l'échelle — il se met simplement à l'échelle différemment.</li>
+</ul>
+<p>Les vraies douleurs d'un monolithe sont réelles, mais elles arrivent plus tard que les gens ne le pensent. Les <strong>temps de build</strong> augmentent avec le codebase — un rebuild complet qui prend deux minutes à 50k lignes en prend douze à 500k. La <strong>friction lors des fusions</strong> augmente quand vingt ingénieurs modifient tous le même codebase ; les branches longues et les conflits deviennent un rituel quotidien. Le <strong>couplage de déploiement</strong> signifie que chaque équipe déploie ensemble — un changement risqué d'une équipe peut bloquer la release de tout le monde.</p>
+<p>Ces douleurs sont réelles. Mais ce sont des douleurs du <em>succès</em>, et elles arrivent bien plus tard que le battage médiatique ne le suggère. La plupart des équipes seraient chanceux d'y arriver.</p>
+
+<h2 id="modular-monolith">Le monolithe modulaire : le point idéal que la plupart des équipes passent</h2>
+<p>Un monolithe modulaire est toujours une unité déployable unique — mais en interne, il est organisé en modules avec des <strong>frontières imposées</strong>. Les modules communiquent via des interfaces claires. Un module n'est pas autorisé à accéder directement aux internes d'un autre module : pas d'import de classes privées d'un voisin, pas de partage de tables de base de données, pas d'appel de fonctions d'aide internes à travers les lignes de modules.</p>
+<p>Ça ressemble à une petite discipline, mais ça change considérablement le jeu.</p>
+<p>Pensez-y comme au plan d'une maison. Un monolithe sans modules est un appartement studio : une grande pièce ouverte où tout est partout. Un monolithe modulaire vous donne des pièces avec des murs — vous vivez toujours dans une seule maison, vous partagez toujours la plomberie et la porte d'entrée, mais la cuisine et la chambre ont leurs propres destinations distinctes et vous ne cuisinez pas sur le lit.</p>
+<p>Les modules correspondent naturellement aux <strong>contextes délimités</strong> du Domain-Driven Design : un module <code>Billing</code>, un module <code>Inventory</code>, un module <code>Notifications</code>. Chacun possède sa propre logique de domaine et sa propre tranche du schéma de base de données. Ils exposent une interface publique (une façade de service ou un ensemble de fonctions publiques) et gardent tout le reste privé.</p>
+<p>Les bénéfices pratiques sont substantiels :</p>
+<ul>
+  <li><strong>Raisonnement indépendant.</strong> Un développeur travaillant sur <code>Billing</code> peut le comprendre et le modifier sans avoir tout le codebase en tête.</li>
+  <li><strong>Refactoring sûr.</strong> Vous pouvez réécrire les internes d'un module tant que l'interface publique est préservée — le reste de l'app ne le remarque pas.</li>
+  <li><strong>Propriété claire.</strong> Les équipes revendiquent les modules. La revue de code reste focalisée. Intégrer un nouveau développeur signifie lui confier un module, pas un codebase de 200k lignes.</li>
+  <li><strong>Coutures prêtes pour la migration.</strong> Si vous avez jamais besoin d'extraire un service, la frontière est déjà tracée. Le module devient un service. L'interface devient une API. Le travail est significatif, mais c'est un travail connu, pas de la chirurgie exploratoire.</li>
+</ul>
+<p>Le monolithe modulaire est l'architecture que la plupart des équipes sautent directement, passant d'un monolithe enchevêtré aux microservices sans s'arrêter ici. C'est une erreur. Pour la majorité des équipes produit — moins de 100 ingénieurs, services comptés sur les doigts d'une main, un ou deux pipelines de déploiement — un monolithe modulaire bien maintenu est l'endroit le plus productif pour vivre.</p>
+
+<h2 id="microservices">Les microservices : ce que vous achetez réellement</h2>
+<p>Les microservices décomposent le système en services déployables indépendamment. Chaque service possède son propre processus, son propre pipeline de déploiement et — crucialement — son propre magasin de données. Les services se parlent via un réseau : HTTP, gRPC, files de messages, flux d'événements.</p>
+<p>Quand les microservices fonctionnent bien, ils livrent quatre choses qu'aucune autre architecture ne peut égaler à grande échelle :</p>
+<ul>
+  <li><strong>Déploiement indépendant.</strong> L'équipe paiements peut livrer un changement au service de paiements mardi après-midi sans coordonner avec l'équipe recommandations, l'équipe recherche ou l'équipe notifications. Dans une entreprise avec des centaines d'ingénieurs, c'est transformationnel — c'est la différence entre déployer une fois par semaine et déployer cent fois par jour.</li>
+  <li><strong>Mise à l'échelle indépendante.</strong> Si votre service <code>ImageProcessing</code> a besoin de quarante cœurs CPU aux heures de pointe et que votre service <code>UserProfile</code> n'en a besoin que de deux, vous pouvez les mettre à l'échelle séparément. Dans un monolithe, vous mettez l'ensemble à l'échelle — vous achetez quarante cœurs pour chaque fonctionnalité que vous en ayez besoin ou non.</li>
+  <li><strong>Autonomie des équipes.</strong> Chaque service est un petit produit autonome. Une équipe de cinq ingénieurs peut posséder un service complètement : choisir son langage, sa base de données, son cadence de déploiement. C'est le superpouvoir organisationnel des microservices — la Loi de Conway qui travaille pour vous plutôt que contre vous.</li>
+  <li><strong>Isolation des pannes.</strong> Une fuite de mémoire dans le <code>RecommendationEngine</code> fait tomber le <code>RecommendationEngine</code>, pas la caisse. Vous pouvez dégrader gracieusement — le magasin fonctionne toujours, les produits n'ont juste pas de suggestions personnalisées. Dans un monolithe, une exception non catchée dans n'importe quel module peut faire tomber tout le processus.</li>
+</ul>
+<p>Remarquez le pattern : tout dans cette liste concerne la mise à l'échelle <em>organisationnelle</em> et <em>opérationnelle</em>. Ce ne sont pas des préoccupations qui s'appliquent à une équipe de huit personnes construisant un produit qui n'a pas encore trouvé son product-market fit.</p>
+
+<h2 id="the-tax">Ce que vous payez réellement : la taxe des systèmes distribués</h2>
+<p>Les microservices ne sont pas gratuits. Chaque bénéfice ci-dessus a un coût correspondant, et les coûts sont non négligeables. Les sous-estimer, c'est comment des équipes finissent épuisées et sous-livrées.</p>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">L'avertissement du monolithe distribué</span><p>Le pire résultat n'est ni les microservices ni un monolithe — c'est un <strong>monolithe distribué</strong> : des microservices tellement couplés qu'ils doivent être déployés ensemble, partagent la même base de données ou tombent ensemble. Vous payez chaque coût des microservices sans recevoir aucun des bénéfices. Ça arrive quand les équipes divisent par couche technique plutôt que par domaine métier, ou quand les services s'appellent mutuellement en synchrone dans de longues chaînes. Si le <code>ServiceA</code> ne peut se déployer qu'après le <code>ServiceB</code>, vous avez construit un monolithe distribué.</p></div>
+
+<p>Voici la taxe en détail :</p>
+<ul>
+  <li><strong>Les appels réseau échouent.</strong> Un appel de fonction ne peut pas échouer (sauf bug). Un appel réseau peut échouer, expirer, renvoyer une valeur mise en cache périmée, ou réussir lors d'une nouvelle tentative alors que la première avait déjà eu des effets de bord. Vous devez gérer les échecs partiels partout, en permanence.</li>
+  <li><strong>Cohérence éventuelle.</strong> Les services possèdent leurs propres données. Maintenir cette cohérence à travers les frontières de services nécessite une conception soignée — patterns event-driven, sagas, opérations idempotentes, transactions compensatoires. Expliquer à un chef de produit pourquoi un utilisateur peut passer une commande mais ne la voit pas immédiatement dans son historique est délicat.</li>
+  <li><strong>Les transactions distribuées sont difficiles.</strong> Le protocole à deux phases de validation existe et est pénible. La plupart des équipes utilisent le pattern Saga à la place, ce qui déplace la complexité de la base de données vers votre code applicatif. Les deux sont nettement plus complexes que <code>BEGIN; UPDATE; COMMIT;</code>.</li>
+  <li><strong>Le débogage est une compétence différente.</strong> Une trace de pile ne vous dit plus ce qui s'est passé. Vous avez besoin de traçage distribué (Jaeger, Zipkin, Honeycomb), d'IDs de corrélation dans chaque ligne de log, de service meshes et de tableaux de bord qui corrèlent les événements entre services. Construire et maintenir cette infrastructure d'observabilité est un vrai travail d'ingénierie.</li>
+  <li><strong>La charge opérationnelle se multiplie.</strong> Un service a besoin d'un Dockerfile, d'un déploiement Kubernetes, d'une règle d'ingress, d'un endpoint de health check, de limites CPU et mémoire, d'une configuration d'agrégation de logs et de règles d'alerte. Multipliez par trente services. Cette charge évolue linéairement avec le nombre de services ; vos effectifs d'ingénierie n'en font pas autant.</li>
+  <li><strong>Les tests sont plus difficiles.</strong> Les tests unitaires sont toujours faciles. Mais les tests d'intégration qui traversent les frontières de services nécessitent d'exécuter plusieurs services simultanément, de gérer leurs versions et configurations, et de traiter les données de test à travers plusieurs bases de données. Les tests de contrat (Pact, etc.) aident mais ajoutent leur propre discipline à apprendre.</li>
+</ul>
+<p>Aucun de ces coûts n'est insoluble — l'industrie dispose d'outils matures pour tous. Le point est qu'il s'agit de <em>vrais coûts</em> qui doivent être payés chaque jour, et ils ne valent pas la peine d'être payés tant que les bénéfices qu'ils débloquent ne sont pas réellement nécessaires.</p>
+
+<h2 id="signals">Signaux : quand diviser (et quand ne pas le faire)</h2>
+<p>Alors comment savoir quand vous avez franchi le seuil où les microservices valent leur coût ? Voici les signaux qui indiquent réellement qu'il est temps :</p>
+<ul>
+  <li><strong>Les besoins de mise à l'échelle indépendante sont réels et coûteux.</strong> Vous pouvez pointer un composant spécifique qui a besoin de 10 fois plus de ressources que le reste du système, et vous payez pour ces ressources à travers tout le monolithe. La division permettrait d'économiser un argent significatif ou améliorerait significativement les performances.</li>
+  <li><strong>La contention de déploiement est chronique.</strong> Des équipes sont régulièrement bloquées dans leurs livraisons par les changements en cours d'autres équipes. La charge de coordination d'un déploiement partagé vous ralentit de façon mesurable — pas occasionnellement, mais comme une frustration hebdomadaire ou quotidienne.</li>
+  <li><strong>Le nombre d'équipes l'exige.</strong> Vous avez plusieurs équipes de cinq ingénieurs ou plus travaillant sur des domaines métier distincts avec des cadences de déploiement différentes, des préférences technologiques différentes et des roadmaps vraiment indépendantes. La Loi de Conway prédit l'architecture sur laquelle vous allez aboutir — autant le planifier.</li>
+  <li><strong>Un composant a des exigences fondamentalement différentes de fiabilité ou de sécurité.</strong> Les paiements, l'authentification et le stockage de PII justifient souvent une isolation non pour des raisons de performance mais pour la conformité, la réduction du rayon d'impact et la capacité à les auditer indépendamment.</li>
+  <li><strong>Un module est déjà effectivement séparé.</strong> Il n'a aucun état partagé avec le reste du système, ne communique que via des événements ou APIs bien définis, et une équipe différente le possède. La couture organisationnelle existe déjà — en faire une frontière de service, c'est formaliser ce qui est déjà vrai.</li>
+</ul>
+<p>Et voici les signaux que vous divisez trop tôt :</p>
+<ul>
+  <li>Votre organisation d'ingénierie entière compte moins de vingt personnes.</li>
+  <li>Vous divisez parce que ça semble plus évolutif plutôt que parce que vous avez atteint une limite concrète.</li>
+  <li>Les services que vous planifiez devraient être déployés ensemble pour fonctionner.</li>
+  <li>Vous ne pouvez pas encore tracer une frontière nette où chaque service possède ses propres données sans tables partagées.</li>
+  <li>Votre équipe ne dispose pas encore de l'infrastructure d'observabilité (traçage distribué, journalisation centralisée, alertes) pour déboguer un système distribué.</li>
+  <li>La principale raison est que les microservices figurent dans les offres d'emploi ou dans le marketing de l'entreprise.</li>
+</ul>
+
+<h2 id="how-to-split">Comment bien diviser : coutures, strangler figs et propriété des données</h2>
+<p>Si les signaux ci-dessus pointent vers une division, le <em>comment</em> importe énormément. Diviser mal produit le monolithe distribué décrit plus haut. Diviser bien produit des services réellement indépendants qui se justifient d'eux-mêmes.</p>
+<p><strong>Divisez selon les contextes délimités, pas les couches techniques.</strong> Ne créez pas un <code>DatabaseService</code> ou un <code>ValidationService</code> — ce sont des préoccupations techniques, pas métier. Créez un <code>OrderService</code>, un <code>BillingService</code>, un <code>InventoryService</code> — des unités de capacité métier avec des significations claires et stables dans votre domaine. Un contexte délimité est une partie du domaine où un modèle spécifique s'applique et où le langage est cohérent. C'est là qu'appartiennent les frontières de service.</p>
+<p><strong>Utilisez le pattern strangler fig.</strong> Nommé d'après une liane qui enveloppe progressivement un arbre hôte, le pattern strangler fig vous permet d'extraire des services de façon incrémentale plutôt que tout d'un coup. Vous démarrez le nouveau service aux côtés du monolithe, routez une tranche spécifique du trafic vers lui, vérifiez qu'il fonctionne, puis supprimez le code correspondant du monolithe. Le monolithe rétrécit avec le temps ; il n'est jamais réécrit. C'est plus sûr, plus réversible et bien moins susceptible d'aboutir à une migration big-bang de six mois qui ne se termine jamais vraiment.</p>
+<p><strong>Extrayez un service à la fois.</strong> Chaque extraction vous apprend quelque chose. La deuxième extraction se passera mieux que la première. Essayer d'extraire cinq services simultanément distribue l'apprentissage et multiplie le risque.</p>
+<p><strong>La propriété des données est non négociable.</strong> Un service qui partage une table de base de données avec un autre service n'est pas un service — c'est un module avec une surcharge réseau supplémentaire. Chaque service doit posséder ses propres données. Si deux services ont besoin des mêmes données, l'un est autoritaire et l'autre les récupère via une API ou les synchronise via des événements. Cette contrainte est douloureuse à établir et douloureuse à maintenir, mais c'est ce qui vous donne le déploiement indépendant et l'isolation des pannes pour lesquels vous êtes venu.</p>
+<p><strong>Utilisez des ports pour définir les coutures avant de les extraire.</strong> Si vous avez suivi une approche <a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a> à l'intérieur de votre monolithe modulaire, l'extraction devient presque mécanique : le port définit l'API, l'adapter derrière lui devient le client du service. La logique de domaine ne change pas — seul le mécanisme de livraison change. C'est l'un des arguments pratiques les plus forts pour construire avec des ports dès le départ : ils vous donnent des coutures prêtes à l'extraction gratuitement.</p>
+
+<h2 id="comparison">Comparaison côte à côte</h2>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Dimension</th>
+      <th>Monolithe</th>
+      <th>Monolithe Modulaire</th>
+      <th>Microservices</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Unité de déploiement</th>
+      <td>Un processus, un pipeline</td>
+      <td>Un processus, un pipeline</td>
+      <td>Plusieurs processus, plusieurs pipelines indépendants</td>
+    </tr>
+    <tr>
+      <th>Propriété des données</th>
+      <td>Base de données partagée ; tout le code peut toucher toutes les tables</td>
+      <td>Base de données partagée ; les modules possèdent leurs zones de schéma par convention</td>
+      <td>Chaque service possède sa propre base de données ; pas de tables partagées</td>
+    </tr>
+    <tr>
+      <th>Mode de panne</th>
+      <td>Un crash du processus fait tomber toute l'app</td>
+      <td>Un crash du processus fait tomber toute l'app</td>
+      <td>Les pannes de service sont isolées ; les autres dégradent gracieusement</td>
+    </tr>
+    <tr>
+      <th>Adapté aux équipes</th>
+      <td>Idéal pour 1–3 équipes ; la friction augmente avec le nombre d'équipes</td>
+      <td>Idéal pour 2–8 équipes ; les modules s'alignent sur la propriété des équipes</td>
+      <td>Nécessaire pour 5+ équipes livrant à des cadences indépendantes</td>
+    </tr>
+    <tr>
+      <th>Coût opérationnel</th>
+      <td>Faible : un déploiement, un flux de logs, un ensemble d'alertes</td>
+      <td>Faible : même empreinte opérationnelle qu'un monolithe simple</td>
+      <td>Élevé : observabilité, orchestration de conteneurs, service mesh, CI/CD par service</td>
+    </tr>
+    <tr>
+      <th>Modèle de transaction</th>
+      <td>Transactions ACID complètes trivialement</td>
+      <td>Transactions ACID complètes trivialement</td>
+      <td>Sagas ou cohérence éventuelle ; les transactions distribuées sont difficiles</td>
+    </tr>
+    <tr>
+      <th>Quand utiliser</th>
+      <td>Nouveaux produits, petites équipes, domaine inconnu</td>
+      <td>Produit en croissance avec des frontières de domaine claires, 10–100 ingénieurs</td>
+      <td>Plusieurs équipes autonomes, modèle de domaine éprouvé, vrais besoins de mise à l'échelle indépendante</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="by-company-size">La vue honnête par taille d'entreprise</h2>
+<p>Les conseils d'architecture ont tendance à venir d'entreprises qui ont déjà franchi le seuil où les microservices font sens — parce que ce sont celles qui ont des blogs d'ingénierie, des conférences et les ressources pour écrire des post-mortems détaillés. Ça crée un biais de survie. Voici une carte plus honnête :</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 900 340" role="img" aria-labelledby="dgm-evo">
+    <title id="dgm-evo">Évolution en trois étapes : Monolithe, Monolithe Modulaire et Microservices présentés de gauche à droite avec des flèches entre eux.</title>
+    <defs>
+      <marker id="evoAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-muted dgm-t-mono" x="130" y="30" text-anchor="middle" font-size="11">STAGE 1</text>
+    <text class="dgm-t-muted dgm-t-mono" x="450" y="30" text-anchor="middle" font-size="11">STAGE 2</text>
+    <text class="dgm-t-muted dgm-t-mono" x="780" y="30" text-anchor="middle" font-size="11">STAGE 3</text>
+    <rect class="dgm-surface" x="30" y="48" width="200" height="180" rx="14" stroke-width="2"/>
+    <text class="dgm-t-strong" x="130" y="82" text-anchor="middle" font-size="16">Monolith</text>
+    <text class="dgm-t-muted" x="130" y="102" text-anchor="middle" font-size="11">One deployable</text>
+    <rect class="dgm-core" x="58" y="118" width="144" height="80" rx="10"/>
+    <text x="130" y="153" text-anchor="middle" font-size="13">All Code</text>
+    <text class="dgm-t-muted" x="130" y="172" text-anchor="middle" font-size="11">one process</text>
+    <ellipse class="dgm-driven" cx="130" cy="248" rx="36" ry="10" stroke-width="1.5"/>
+    <rect class="dgm-driven" x="94" y="248" width="72" height="28" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="130" cy="276" rx="36" ry="10" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="130" y="300" text-anchor="middle" font-size="11">shared DB</text>
+    <path class="dgm-flow" d="M234,138 H308" marker-end="url(#evoAcc)" stroke-width="2"/>
+    <text class="dgm-t-accent" x="271" y="130" text-anchor="middle" font-size="11">enforce</text>
+    <text class="dgm-t-accent" x="271" y="143" text-anchor="middle" font-size="11">boundaries</text>
+    <rect class="dgm-surface" x="312" y="48" width="276" height="180" rx="14" stroke-width="2"/>
+    <text class="dgm-t-strong" x="450" y="82" text-anchor="middle" font-size="16">Modular Monolith</text>
+    <text class="dgm-t-muted" x="450" y="102" text-anchor="middle" font-size="11">One deployable · internal modules</text>
+    <rect class="dgm-adapter" x="328" y="118" width="72" height="44" rx="8"/>
+    <text x="364" y="144" text-anchor="middle" font-size="12">Billing</text>
+    <rect class="dgm-adapter" x="414" y="118" width="72" height="44" rx="8"/>
+    <text x="450" y="144" text-anchor="middle" font-size="12">Orders</text>
+    <rect class="dgm-adapter" x="500" y="118" width="72" height="44" rx="8"/>
+    <text x="536" y="144" text-anchor="middle" font-size="12">Notif.</text>
+    <line class="dgm-line" x1="400" y1="118" x2="400" y2="162" stroke-dasharray="4 3" stroke-width="1.2"/>
+    <line class="dgm-line" x1="486" y1="118" x2="486" y2="162" stroke-dasharray="4 3" stroke-width="1.2"/>
+    <ellipse class="dgm-driven" cx="450" cy="248" rx="36" ry="10" stroke-width="1.5"/>
+    <rect class="dgm-driven" x="414" y="248" width="72" height="28" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="450" cy="276" rx="36" ry="10" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="450" y="300" text-anchor="middle" font-size="11">shared DB · owned schemas</text>
+    <path class="dgm-flow" d="M592,138 H656" marker-end="url(#evoAcc)" stroke-width="2"/>
+    <text class="dgm-t-accent" x="624" y="130" text-anchor="middle" font-size="11">split at</text>
+    <text class="dgm-t-accent" x="624" y="143" text-anchor="middle" font-size="11">seams</text>
+    <rect class="dgm-adapter" x="660" y="58" width="100" height="50" rx="10" stroke-width="1.5"/>
+    <text x="710" y="88" text-anchor="middle" font-size="13">Billing</text>
+    <ellipse class="dgm-driven" cx="710" cy="122" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="688" y="122" width="44" height="18" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="710" cy="140" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-core" x="774" y="138" width="100" height="50" rx="10" stroke-width="1.5"/>
+    <text x="824" y="168" text-anchor="middle" font-size="13">Orders</text>
+    <ellipse class="dgm-driven" cx="824" cy="202" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="802" y="202" width="44" height="18" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="824" cy="220" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="660" y="218" width="100" height="50" rx="10" stroke-width="1.5"/>
+    <text x="710" y="248" text-anchor="middle" font-size="13">Notif.</text>
+    <ellipse class="dgm-driven" cx="710" cy="282" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="688" y="282" width="44" height="18" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="710" cy="300" rx="22" ry="7" stroke-width="1.2"/>
+    <path class="dgm-flow" d="M760,83 C 790,83 780,158 778,158" marker-end="url(#evoAcc)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <path class="dgm-flow" d="M760,243 C 790,243 840,218 828,192" marker-end="url(#evoAcc)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <path class="dgm-flow" d="M710,108 L710,214" marker-end="url(#evoAcc)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <text class="dgm-t-muted" x="780" y="320" text-anchor="middle" font-size="11">own DBs · network calls</text>
+  </svg>
+  <figcaption>Les trois étapes architecturales. Étape 1 : une seule boîte, tout ensemble. Étape 2 : une seule boîte avec des frontières de modules internes imposées (lignes en pointillé). Étape 3 : des boîtes séparées connectées par des appels réseau (flèches en pointillé), chacune avec son propre cylindre de base de données. Vous pouvez vous arrêter à n'importe quelle étape — la bonne forme dépend de votre équipe, pas de ce qui est à la mode.</figcaption>
+</figure>
+
+<p><strong>Startup (1–15 ingénieurs).</strong> Construisez un monolithe. Vous ne savez pas quelles parties de votre système auront besoin d'être mises à l'échelle, quelles fonctionnalités survivront, ni quelles frontières de domaine sont réelles. La décomposition prématurée fixe des décisions avant que vous ayez suffisamment d'informations pour les prendre. Shopify, GitHub et Basecamp ont tous démarré comme des monolithes Rails. Twitter aussi, et ils l'ont fait tourner pendant des années à une échelle significative avant de le décomposer sous une vraie charge.</p>
+<p><strong>Scale-up (15–80 ingénieurs, en croissance).</strong> C'est là que le monolithe modulaire justifie son existence. Vous avez suffisamment d'ingénieurs pour que la croissance non contrôlée dans un seul codebase cause une friction réelle, mais vous déployez encore en équipe et la surcharge des microservices complets tuerait votre vélocité. Investissez dans les frontières de modules, la propriété des équipes et des interfaces propres. Gardez l'option d'extraire des services, mais ne l'exercez pas encore sauf si un besoin de mise à l'échelle concret vous y force.</p>
+<p><strong>Enterprise / grande organisation (80+ ingénieurs, plusieurs équipes autonomes).</strong> Les microservices sélectifs font sens ici — mais <em>sélectifs</em> est le mot-clé. Les architectures les plus efficaces à grande échelle ne sont ni des monolithes purs ni une mer de services de taille identique : ce sont un mélange réfléchi. Une poignée de services core pour les capacités les plus critiques, un monolithe modulaire pour le milieu opérationnel, et quelques services spécialisés où la mise à l'échelle indépendante ou la conformité l'exige réellement. Amazon n'a pas tout décomposé d'un coup ; ils ont identifié les coutures sous charge et les ont extraites une par une.</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">La vraie leçon de Netflix et Amazon</span><p>Quand Netflix et Amazon décrivent leurs parcours avec les microservices, la partie qui est citée est le diagramme d'architecture avec des centaines de services. La partie qui est omise est qu'ils ont démarré comme des monolithes, les ont fait tourner jusqu'à ce que la douleur soit indéniable, puis ont investi des années et d'énormes efforts d'ingénierie dans la transition — y compris la construction d'une grande partie des outils qui rendent aujourd'hui les microservices viables. Ils vous disent où ils sont arrivés, pas où vous devriez commencer.</p></div>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Points clés à retenir</h3>
+<ul>
+  <li><strong>Le monolithe est le bon défaut.</strong> Simple à construire, facile à déboguer, trivial pour les transactions. Les douleurs arrivent plus tard que le battage médiatique ne le suggère et seulement à une vraie échelle.</li>
+  <li><strong>Le monolithe modulaire est l'option la plus sous-utilisée.</strong> Les frontières imposées entre les modules internes vous donnent la clarté d'équipe, le refactoring sûr et des coutures prêtes à l'extraction — sans aucune complexité de systèmes distribués.</li>
+  <li><strong>Les microservices sont une taxe, pas une fonctionnalité.</strong> Vous payez en pannes réseau, cohérence éventuelle, traçage distribué et charge opérationnelle. La contrepartie — déploiement indépendant, mise à l'échelle indépendante, autonomie des équipes — est réelle mais seulement à l'échelle qui l'exige.</li>
+  <li><strong>Le monolithe distribué est le pire résultat.</strong> Des services étroitement couplés qui doivent être déployés ensemble vous donnent tous les coûts des microservices et aucun des bénéfices. Divisez selon les contextes délimités, pas les couches techniques.</li>
+  <li><strong>La propriété des données est la contrainte dure.</strong> Un service qui partage une base de données avec un autre service n'est pas un service. Chaque service doit posséder ses propres données ; la cohérence à travers les frontières nécessite une conception explicite.</li>
+  <li><strong>Utilisez le pattern strangler fig pour diviser de façon incrémentale.</strong> Extrayez un contexte délimité à la fois. Chaque extraction vous apprend quelque chose et est réversible. Ne faites jamais une décomposition big-bang.</li>
+  <li><strong>Adaptez l'architecture à la taille de l'équipe, pas à l'aspiration.</strong> Startup : monolithe. Scale-up : monolithe modulaire. Grandes équipes autonomes : microservices sélectifs là où c'est vraiment nécessaire.</li>
+</ul>
+</div>
+
+<p>Les décisions d'architecture se propagent dans le temps et s'accumulent. La prochaine question que beaucoup d'équipes affrontent après avoir décidé de diviser est ce qu'il faut faire avec le frontend — s'il faut servir une interface unifiée unique ou la décomposer aussi. Ce terrier de lapin est exploré dans <a href="/blog/architecture/micro-frontends-when-why-and-cost">Micro-Frontends : Quand, Pourquoi et Ce Qu'ils Coûtent Réellement</a>.</p>3:["$","$L8",null,{"category":"architecture","slug":"monolith-to-microservices","children":[["$","$L9",null,{"category":"architecture","slug":"monolith-to-microservices","readingMinutes":16,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/fr/blog/architecture/monolith-to-microservices","title":"Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête","surface":"blog","category":"architecture","slug":"monolith-to-microservices","labels":{"share":"Partager","copyLink":"Copier le lien","copied":"Copié !","close":"Fermer"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/fr/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/fr/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Code source & Architecture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Les fondamentaux de l'architecture logicielle",["$","span",null,{"aria-hidden":"true","children":" · "}],"Partie 5 sur 15"]}],["$","h1",null,{"className":"blog-article__title","children":"Monolithe, Monolithe Modulaire, Microservices : Un Guide de Décision Honnête"}],["$","p",null,{"className":"blog-article__summary","children":"Les microservices sont une taxe que vous payez pour la mise à l'échelle organisationnelle — pas un point de départ. Un parcours sans fioriture du monolithe au monolithe modulaire puis aux microservices, avec les signaux qui vous disent quand (et si) diviser."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Par Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-03","children":"3 mars 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"16 min de lecture"}],["$","$Lc",null,{"label":"vues"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Architecture logicielle",{"children":"Architecture logicielle"}],["$","li","Microservices",{"children":"Microservices"}],["$","li","Modular Monolith",{"children":"Modular Monolith"}],["$","li","Conception de systèmes",{"children":"Conception de systèmes"}],["$","li","Systèmes distribués",{"children":"Systèmes distribués"}],["$","li","Scalabilité",{"children":"Scalabilité"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"Qu'en avez-vous pensé ?","surface":"blog","category":"architecture","slug":"monolith-to-microservices","reactionLabels":{"like":"J'aime","love":"Adoré","insightful":"Pertinent","clap":"Bravo"}}]
+10:["$","$L18",null,{"heading":"Lectures liées","intro":"Quelques articles proches pour poursuivre le même fil avec plus de contexte.","items":[{"post":{"slug":"micro-frontends-when-why-and-cost","category":"architecture","title":"Micro-Frontends : Quand Ça Vaut le Coup, et Ce Que Ça Coûte","summary":"Diviser le frontend en pièces déployables indépendamment peut libérer les équipes — ou vous noyer dans la complexité. Rédigé à partir de l'expérience de livraison d'une configuration Angular-host + modules React à grande échelle : quand les micro-frontends rapportent, et la facture qu'ils entraînent.","date":"2026-03-02","readingMinutes":15,"tags":["Architecture logicielle","Micro-Frontends","Architecture frontend","Module Federation","Scalabilité","Conception de systèmes"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":6},"categoryTitle":"Code source & Architecture","readingLabel":"15 min de lecture"},{"post":{"slug":"ports-and-adapters","category":"architecture","title":"Ports & Adapters (Hexagonal Architecture), Expliqués Simplement","summary":"Un guide accessible et riche en exemples sur l'Hexagonal Architecture : ce que sont vraiment les ports et les adapters, la règle unique qui la fait fonctionner, et exactement quelle dose en appliquer — que vous soyez un fondateur solo ou une équipe d'entreprise.","date":"2026-03-07","readingMinutes":16,"tags":["Architecture logicielle","Hexagonal Architecture","Ports and Adapters","Clean Architecture","Conception de systèmes","Dependency Inversion"],"author":"Nguyen Le Phong","featured":true,"series":"foundations","seriesOrder":1},"categoryTitle":"Code source & Architecture","readingLabel":"16 min de lecture"},{"post":{"slug":"true-cost-of-microservices","category":"architecture","title":"The True Cost of Microservices","summary":"Microservices can create real team autonomy, but they move cost into operations, data consistency, observability, testing, and coordination. This piece asks when that cost is worth paying and when a modular monolith is the kinder architecture.","date":"2026-04-06","readingMinutes":8,"tags":["Software Architecture","Microservices","Distributed Systems","Modular Monolith","Technical Debt","System Design"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":12},"categoryTitle":"Code source & Architecture","readingLabel":"8 min de lecture"},{"post":{"slug":"clean-vs-onion-vs-hexagonal","category":"architecture","title":"Clean, Onion & Hexagonal Architecture : Une étoile du nord, trois noms","summary":"Elles ressemblent à trois architectures rivales. En réalité, c'est la même idée — les dépendances pointent vers l'intérieur, les frameworks restent à la périphérie — dessinée de trois façons différentes. Voici ce que chacune apporte vraiment, et laquelle choisir.","date":"2026-03-06","readingMinutes":15,"tags":["Architecture logicielle","Clean Architecture","Onion Architecture","Hexagonal Architecture","Conception de systèmes","Dependency Inversion"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":2},"categoryTitle":"Code source & Architecture","readingLabel":"15 min de lecture"}],"sourceCategory":"architecture","sourceSlug":"monolith-to-microservices"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"Les fondamentaux de l'architecture logicielle","children":[["$","$Lb",null,{"href":"/fr/blog/architecture/structuring-code-feature-vs-layer","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Précédemment"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Structurer un Codebase : Par Couche, Par Fonctionnalité ou Par Domaine ?"}]]}],["$","$Lb",null,{"href":"/fr/blog/architecture/micro-frontends-when-why-and-cost","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["À suivre"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Micro-Frontends : Quand Ça Vaut le Coup, et Ce Que Ça Coûte"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/fr/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Retour à Code source & Architecture"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"Sur cette page","surface":"blog"}]}]
+16:null

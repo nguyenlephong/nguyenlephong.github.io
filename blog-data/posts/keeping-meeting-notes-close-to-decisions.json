@@ -1,0 +1,18 @@
+{
+  "slug": "keeping-meeting-notes-close-to-decisions",
+  "category": "ways-of-working",
+  "title": "Keeping Meeting Notes Close to Decisions",
+  "summary": "A practical note on keeping meeting notes close to decisions so future teammates can find context, trade-offs, and follow-through without replaying the meeting.",
+  "date": "2026-06-28",
+  "readingMinutes": 5,
+  "tags": [
+    "Ways of Working",
+    "Documentation",
+    "Decision Making",
+    "Team Communication",
+    "Planning",
+    "Product Engineering"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The decision was made in a meeting, but the trace disappeared into three places. The notes lived in a document nobody linked. The ticket had only the final sentence. The pull request mentioned the outcome but not the trade-off. Two months later, someone asked why the simpler option had been rejected, and the team had to reconstruct the room from memory.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/keeping-meeting-notes-close-to-decisions/meeting-notes-decision-trace.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Teammates connect blank meeting notes, decision cards, and a simple timeline with arrows on an office table.' />\n  <figcaption>Meeting notes matter most when they stay close to the decisions they produced.</figcaption>\n</figure>\n<p>Meeting notes are often treated as a record of conversation. That is useful, but incomplete. The highest value is not that a note proves a meeting happened. The value is that it keeps the decision, context, and next action together long enough for future work to inherit them.</p>\n<p>A note close to a decision answers a few simple questions. What did we decide? Why was this option chosen? What alternatives were considered? What evidence mattered? What follow-up remains? These answers do not need a long transcript. They need enough shape that someone can understand the decision without asking everyone to remember.</p>\n<p>The distance between notes and decisions creates drag. If the decision lives in chat, the rationale in a meeting doc, and the action in a ticket, the team pays a search tax later. People either stop looking, or they ask the same questions again. Both outcomes weaken the usefulness of the original meeting.</p>\n<p>Keeping notes close can be simple. Link the meeting note from the ticket. Paste the decision summary into the PR. Add the final option and trade-off to the issue description. If the decision is architecture-heavy, create a small decision note and link it where the code changes. The exact tool matters less than the trace.</p>\n<p>Good notes also separate decision from discussion. A full conversation may contain disagreement, ideas, and discarded branches. That is fine. But the final decision should be findable. Future readers should not need to read twenty paragraphs to discover the one sentence that changed the work.</p>\n<p>This habit protects people too. When context is close to the decision, fewer teammates become living archives. The person who remembers the meeting can take a day off. The team can onboard someone new. Reviewers can ask better questions because the reasoning is not hidden in private memory.</p>\n<p>The goal is not to document everything. It is to keep the load-bearing parts near the work they affect. A decision without nearby context becomes a rule. A note without nearby action becomes storage. Together, they become useful history.</p>\n<p>After your next meeting, do not only ask whether notes were taken. Ask where the decision now lives, and whether the next person will be able to find it at the moment they need it.</p>"
+}

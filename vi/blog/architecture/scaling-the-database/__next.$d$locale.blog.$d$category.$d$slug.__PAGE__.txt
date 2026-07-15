@@ -1,0 +1,241 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta82,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/vi/blog/architecture/scaling-the-database#article","headline":"Scale database theo đúng thứ tự: Index, Read Replica, Cache rồi mới tới Sharding","description":"Khi traffic tăng, database thường là nơi kêu cứu đầu tiên. Nhưng không phải cứ chậm là lao vào sharding. Bài này đưa ra một nấc thang thực tế để scale data layer: đo trước, thêm index, dùng read replica, cache đúng chỗ, hiểu replication lag và chỉ đụng tới partitioning hoặc sharding khi thật sự đã đến lúc.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/blog/architecture/scaling-the-database","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/scaling-the-database.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/vi/blog/architecture/scaling-the-database","datePublished":"2026-04-08","dateModified":"2026-04-08","keywords":"Software Architecture, Database Scaling, Scalability, Read Replicas, Sharding, Caching","articleSection":"Source Code & Software Architecture","isRelatedTo":[{"@type":"BlogPosting","headline":"Caching: chiến lược và những cái bẫy dễ gặp","url":"https://nguyenlephong.github.io/vi/blog/architecture/caching-strategies-and-pitfalls","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/caching-strategies-and-pitfalls.jpg"},{"@type":"BlogPosting","headline":"CQRS: tách phần ghi và phần đọc cho đúng việc","url":"https://nguyenlephong.github.io/vi/blog/architecture/cqrs-command-query-responsibility-segregation","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/cqrs-command-query-responsibility-segregation.jpg"},{"@type":"BlogPosting","headline":"Database sharding: khi nào cần và vì sao","url":"https://nguyenlephong.github.io/vi/blog/architecture/database-sharding-when-and-why","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/database-sharding-when-and-why.jpg"},{"@type":"BlogPosting","headline":"Ports & Adapters: Hexagonal Architecture giải thích bằng ví dụ dễ hiểu","url":"https://nguyenlephong.github.io/vi/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ports-and-adapters.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/vi/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/vi/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Source Code & Software Architecture\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Scale database theo đúng thứ tự: Index, Read Replica, Cache rồi mới tới Sharding\",\"item\":\"https://nguyenlephong.github.io/vi/blog/architecture/scaling-the-database\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T6e83,<p>App server là phần dễ của chuyện scaling. Chúng không giữ state, nên khi traffic gấp đôi bạn nhân bản chúng sau một load balancer rồi đi chỗ khác. Database mới là phần khó, vì nó giữ <em>state</em> — đúng cái thứ bạn không thể nhân bản rồi quên đi. Đó là lý do, trong gần như mọi hệ thống đang lớn, <strong>database là thứ gục ngã đầu tiên.</strong></p>
+<p>Nó cũng là thứ kỹ sư over-engineer đầu tiên trong cơn hoảng. Bản năng khi bị tải nặng là với ngay tới chiêu kịch tính nhất trên menu — &ldquo;shard thôi,&rdquo; &ldquo;qua NoSQL đi,&rdquo; &ldquo;tách microservices nào.&rdquo; Gần như luôn sai thứ tự. Ở đây có một cái thang, với những bước rẻ nhất và ít xâm lấn nhất ở dưới cùng, và câu trả lời đúng là leo từng bậc một — chỉ bước lên khi bậc dưới thật sự hết tác dụng.</p>
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/scaling-the-database/database-first-bottleneck-desk.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Nguyen Le Phong ngồi ở bàn làm việc chật với hai màn hình mở sẵn, lần theo đúng query nào đang làm database chậm trước khi nghĩ tới scale." />
+  <figcaption>Phần lớn câu chuyện scale database nên bắt đầu ngay ở bàn làm việc, với một query chậm và đủ kiên nhẫn để đo trước khi trả tiền cho máy lớn hơn.</figcaption>
+</figure>
+
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 848 210" role="img" aria-labelledby="dgm-ladder">
+    <title id="dgm-ladder">LEO THEO THỨ TỰ — RẺ &amp; DỄ QUAY ĐẦU TRƯỚC, ĐẮT &amp; VĨNH VIỄN SAU</title>
+    <defs>
+      <marker id="ladArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-accent" x="424" y="28" text-anchor="middle" font-size="13">LEO THEO THỨ TỰ — RẺ &amp; DỄ QUAY ĐẦU TRƯỚC, ĐẮT &amp; VĨNH VIỄN SAU</text>
+    <rect class="dgm-core" x="18" y="78" width="148" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="92" y="104" text-anchor="middle" font-size="13">1 · Index</text>
+    <text class="dgm-t-muted dgm-t-mono" x="92" y="124" text-anchor="middle" font-size="10">sửa query</text>
+    <rect class="dgm-core" x="184" y="78" width="148" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="258" y="104" text-anchor="middle" font-size="13">2 · Scale up</text>
+    <text class="dgm-t-muted dgm-t-mono" x="258" y="124" text-anchor="middle" font-size="10">máy to hơn</text>
+    <rect class="dgm-core" x="350" y="78" width="148" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="424" y="104" text-anchor="middle" font-size="13">3 · Read replica</text>
+    <text class="dgm-t-muted dgm-t-mono" x="424" y="124" text-anchor="middle" font-size="10">tách phần đọc</text>
+    <rect class="dgm-core" x="516" y="78" width="148" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="590" y="104" text-anchor="middle" font-size="13">4 · Cache</text>
+    <text class="dgm-t-muted dgm-t-mono" x="590" y="124" text-anchor="middle" font-size="10">khỏi query</text>
+    <rect class="dgm-driven" x="682" y="78" width="148" height="64" rx="10"/>
+    <text class="dgm-t-accent" x="756" y="104" text-anchor="middle" font-size="13">5 · Shard</text>
+    <text class="dgm-t-muted dgm-t-mono" x="756" y="124" text-anchor="middle" font-size="10">tách dữ liệu</text>
+    <path class="dgm-flow" d="M40,176 H 826" marker-end="url(#ladArr)"/>
+    <text class="dgm-t-muted dgm-t-mono" x="60" y="196" text-anchor="start" font-size="10.5">rẻ hơn · dễ quay đầu</text>
+    <text class="dgm-t-muted dgm-t-mono" x="806" y="196" text-anchor="end" font-size="10.5">đắt · khó quay đầu</text>
+  </svg>
+  <figcaption>Cái thang scaling. Mỗi bậc rẻ hơn và dễ quay đầu hơn bậc bên phải nó. Gần như mọi team gặp rắc rối đều nhảy thẳng lên bậc năm cho một vấn đề mà bậc một đã giải xong.</figcaption>
+</figure>
+
+<h2 id="rung-0">Bậc 0: Đo trước đã — thường chỉ là một query</h2>
+<p>Trước khi scale bất cứ thứ gì, hãy tìm ra <em>vì sao</em> nó chậm. Chín trên mười lần, ở giai đoạn đầu, câu trả lời không phải &ldquo;database quá nhỏ.&rdquo; Đó là một index thiếu, một vòng lặp <code>N+1</code> bắn cả trăm query để render một trang, hoặc một query trông vô hại đang full table scan cả triệu dòng.</p>
+<p>Một <strong>index</strong> là thứ có đòn bẩy cao nhất và rẻ nhất trong cả bài này. Cái index đúng có thể biến một query hai giây thành hai mili-giây mà không cần thêm một server nào — vì nó cho database nhảy thẳng tới đúng những dòng cần thay vì đọc cả bảng.</p>
+<pre><code><span class="cmt">-- Hỏi database xem nó thật sự đang làm gì</span>
+<span class="kw">EXPLAIN ANALYZE</span> <span class="kw">SELECT</span> * <span class="kw">FROM</span> orders <span class="kw">WHERE</span> customer_id = <span class="str">42</span>;
+<span class="cmt">-- "Seq Scan on orders ... rows=2,000,000"  ← đọc sạch mọi thứ</span>
+
+<span class="cmt">-- Một dòng đổi tất cả</span>
+<span class="kw">CREATE INDEX</span> idx_orders_customer <span class="kw">ON</span> orders (customer_id);
+<span class="cmt">-- giờ: "Index Scan ... rows=37"  ← nhảy thẳng tới chỗ khớp</span></code></pre>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Sai lầm đắt nhất trên trang này</span><p>Ném phần cứng vào một index đang thiếu. Bạn sẽ trả hoá đơn server to hơn mỗi tháng, mãi mãi, chỉ để tránh viết một migration một dòng đúng một lần. Hãy luôn với tới <code>EXPLAIN</code> trước khi với tới ví tiền.</p></div>
+
+<h2 id="rung-1">Bậc 1: Scale up trước khi scale out</h2>
+<p>Khi chính cái máy mới là giới hạn thật — CPU kịch trần, RAM cạn, disk I/O nghẽn — nước đi tiếp theo là nước nhàm chán: <strong>vertical scaling</strong>. Cho database một cái máy to hơn. Nhiều RAM hơn (để nhiều dữ liệu nằm trong bộ nhớ hơn), disk nhanh hơn, nhiều core hơn.</p>
+<p>Nó không hào nhoáng, và đó chính xác là điểm hay. Không đổi code, không sinh failure mode mới, không khái niệm mới để cả team phải học. Nó mua cho bạn thời gian và khoảng trống trong khi bạn làm điều gì đó khôn hơn.</p>
+<p>Nó cũng có ba giới hạn thành thật. Có một <em>trần</em> — cái instance to nhất tiền thuê được. Có một <em>vách chi phí</em> — giá tăng siêu tuyến tính rất gắt ở khúc cao, nên lần gấp đôi cuối đắt hơn lần đầu rất nhiều. Và nó vẫn là một <em>single point of failure</em>: một cái máy, và reboot nó để nâng cấp là downtime. Nhưng đừng để mấy điều đó doạ bạn rời bậc này quá sớm. Những instance managed lớn nhất hôm nay khổng lồ; một database tinh chỉnh tốt phục vụ nhiều traffic hơn tuyệt đại đa số công ty từng có. Đừng phân tán cho tới khi bạn thật sự đụng tường.</p>
+
+<h2 id="rung-2">Bậc 2: Sự bất đối xứng đọc/ghi → read replica</h2>
+<p>Đây là cái insight mà hai bậc tiếp theo dựng lên trên: <strong>gần như mọi ứng dụng đọc nhiều hơn ghi rất, rất nhiều.</strong> Một feed mạng xã hội, một catalogue sản phẩm, một trang tin — chúng có thể phục vụ cả trăm hay nghìn lượt đọc cho mỗi lượt ghi. Tải ghi của bạn tí xíu; tải đọc mới là vòi rồng.</p>
+<p>Vậy thì đừng bắt một máy gánh cả hai. Giữ một <strong>primary</strong> duy nhất nhận mọi lệnh ghi, và thêm <strong>read replica</strong> — những bản sao liên tục stream dữ liệu của primary và phục vụ query đọc. Giờ bạn có thể thêm replica để hút tải đọc gần như tuyến tính, và còn được tặng kèm một ứng viên failover nếu primary chết.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 780 318" role="img" aria-labelledby="dgm-replica">
+    <title id="dgm-replica">Ứng dụng gửi mọi lệnh ghi tới một primary duy nhất, còn các lệnh đọc được trải ra trên nhiều read replica sao chép dữ liệu của primary một cách bất đồng bộ.</title>
+    <defs>
+      <marker id="repAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="repMute" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="currentColor" opacity="0.5"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-accent" x="390" y="28" text-anchor="middle" font-size="13">ĐỌC SCALE RA NHIỀU MÁY · GHI Ở LẠI MỘT PRIMARY</text>
+
+    <rect class="dgm-core" x="300" y="44" width="180" height="50" rx="10"/>
+    <text class="dgm-t-strong" x="390" y="74" text-anchor="middle" font-size="13">Ứng dụng</text>
+
+    <rect class="dgm-core" x="64" y="158" width="192" height="62" rx="10"/>
+    <text class="dgm-t-strong" x="160" y="184" text-anchor="middle" font-size="13">Primary</text>
+    <text class="dgm-t-muted dgm-t-mono" x="160" y="203" text-anchor="middle" font-size="10.5">writes</text>
+
+    <rect class="dgm-driven" x="520" y="138" width="192" height="52" rx="10"/>
+    <text class="dgm-t-accent" x="616" y="168" text-anchor="middle" font-size="13">Replica A</text>
+
+    <rect class="dgm-driven" x="520" y="222" width="192" height="52" rx="10"/>
+    <text class="dgm-t-accent" x="616" y="252" text-anchor="middle" font-size="13">Replica B</text>
+
+    <path class="dgm-flow" d="M338,90 C 250,124 160,124 160,156" marker-end="url(#repAcc)"/>
+    <text class="dgm-t-strong" x="206" y="120" text-anchor="middle" font-size="11">mọi lệnh ghi</text>
+
+    <path class="dgm-flow" d="M444,92 C 560,108 616,104 616,136" marker-end="url(#repAcc)"/>
+    <path class="dgm-flow" d="M452,94 C 600,150 616,210 616,220" marker-end="url(#repAcc)"/>
+    <text class="dgm-t-strong" x="556" y="98" text-anchor="middle" font-size="11">đọc trải ra</text>
+
+    <path class="dgm-line" d="M258,180 C 380,180 400,164 518,164" stroke-dasharray="6 5" marker-end="url(#repMute)"/>
+    <path class="dgm-line" d="M258,196 C 380,224 400,248 518,248" stroke-dasharray="6 5" marker-end="url(#repMute)"/>
+    <text class="dgm-t-muted" x="388" y="214" text-anchor="middle" font-size="11">replication async · trễ ~ms</text>
+
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="304" text-anchor="middle" font-size="10.5">replica luôn chậm hơn một chút — khoảng cách đó là replication lag</text>
+  </svg>
+  <figcaption>Hầu hết ứng dụng đọc nhiều hơn ghi rất nhiều, nên một primary nhận mọi lệnh ghi và một đội replica hứng phần đọc. Cái giá là replication lag: replica luôn chậm hơn primary một nhịp.</figcaption>
+</figure>
+
+<p>Cái bẫy có tên hẳn hoi: <strong>replication lag</strong>. Replication là bất đồng bộ, nên replica luôn chậm hơn một chút — thường là mili-giây, đôi khi vài giây khi nó bận. Đây là <a href="/blog/architecture/data-in-distributed-systems">eventual consistency</a> ghé thăm ngay trong database của bạn, và nó đẻ ra một con bug kinh điển: người dùng đăng một bình luận (ghi → primary), trang reload và đọc một replica chưa kịp bắt kịp, và bình luận của họ như bốc hơi. Họ đăng lại. Giờ có hai cái.</p>
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/scaling-the-database/read-replica-lag-review.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Một nhóm backend Việt Nam cùng xem sơ đồ một primary database với hai read replica trên bảng trắng để quyết định lệnh đọc nào bắt buộc phải còn tươi." />
+  <figcaption>Read replica chỉ thật sự hữu ích khi team nói rõ request nào chấp nhận dữ liệu hơi cũ, và request nào nhất định phải quay về primary.</figcaption>
+</figure>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Sống chung với độ trễ</span><p>Định tuyến những lệnh đọc <em>bắt buộc</em> phải thấy lệnh ghi mới nhất quay về primary — &ldquo;read-your-own-writes&rdquo; cho vài luồng cần nó (người dùng nhìn đúng cái thứ họ vừa đổi). Còn lại — search, feed, dashboard, analytics — cứ để chúng đọc một replica hơi cũ một cách vui vẻ. Kỹ năng nằm ở chỗ quyết định, theo từng query, rằng một câu trả lời cũ một giây có ổn không. Thường là ổn.</p></div>
+
+<h2 id="rung-3">Bậc 3: Đừng đụng tới database luôn → caching</h2>
+<p>Query nhanh nhất là query bạn không bao giờ chạy. Với dữ liệu được đọc thường xuyên, đắt để tính, và hiếm khi đổi, hãy đặt một <strong>cache</strong> (Redis, Memcached) phía trước database và trả lời thẳng từ bộ nhớ.</p>
+<p>Mẫu thường ngày là <strong>cache-aside</strong>: nhìn vào cache trước; nếu trượt, đọc database, lưu kết quả lại, rồi trả về.</p>
+<pre><code><span class="kw">async function</span> getProduct(id) {
+  <span class="kw">const</span> hit = <span class="kw">await</span> cache.get(<span class="str">`product:${id}`</span>)
+  <span class="kw">if</span> (hit) <span class="kw">return</span> JSON.parse(hit)        <span class="cmt">// đường nhanh: trả từ bộ nhớ</span>
+
+  <span class="kw">const</span> row = <span class="kw">await</span> db.products.findById(id)  <span class="cmt">// trượt: trả giá cho query đúng một lần</span>
+  <span class="kw">await</span> cache.set(<span class="str">`product:${id}`</span>, JSON.stringify(row), { ttl: <span class="str">300</span> })
+  <span class="kw">return</span> row
+}</code></pre>
+<p>Caching là nước đi có tỉ lệ lợi-ích-trên-công-sức cao nhất trên thang — và cũng là nước sắc cạnh nhất. Có một câu đùa cũ rằng hai bài toán khó nhất khoa học máy tính là cache invalidation và đặt tên cho biến. Câu đùa nói về cái đầu tiên. Khoảnh khắc dữ liệu gốc thay đổi, cache của bạn <em>sai</em>, và quyết định khi nào cùng cách nào làm mới nó (hết hạn theo giờ? xoá khi ghi? cả hai?) mới là việc thật. Cái bẫy thứ hai là <strong>cache stampede</strong>: một key nóng hết hạn, cả nghìn request cùng trượt một lúc, và tất cả cùng nện vào database — đúng cái đỉnh tải mà cache sinh ra để ngăn.</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Cache là tối ưu, không bao giờ là sự thật</span><p>Database là nguồn ghi nhận; cache là một ý kiến nhanh và bỏ đi được về nó. Hãy thiết kế sao cho nếu cả cache bốc hơi ngay giây này, bạn chỉ phục vụ chậm hơn vài phút — chứ không mất dữ liệu hay phục vụ thứ hỏng. Nếu mất cache là mất dữ liệu, bạn đã xây một database mong manh, không phải một cache.</p></div>
+
+<h2 id="rung-4">Bậc 4: Khi một máy không chứa nổi phần ghi → partitioning &amp; sharding</h2>
+<p>Mọi thứ tới giờ scale phần <em>đọc</em> và giữ một primary duy nhất cho phần <em>ghi</em>. Cuối cùng — và với hầu hết công ty thì lúc này tới muộn hơn họ sợ rất nhiều — lượng ghi hoặc cỡ dữ liệu thuần lớn vượt một máy. Giờ bạn không còn lựa chọn nào ngoài tách chính dữ liệu ra. Có hai hình dạng.</p>
+<p><strong>Vertical partitioning</strong> tách theo cột hoặc bảng: dời một cột <code>blob</code> khổng lồ hiếm dùng, hoặc cả một bảng, sang database riêng của nó. Đẩy tới tận cùng logic của nó trên cả một doanh nghiệp, đây chính là <a href="/blog/architecture/data-in-distributed-systems">database-per-service</a> — mỗi service sở hữu lát của mình.</p>
+<p><strong>Horizontal partitioning</strong>, quen thuộc hơn với tên <strong>sharding</strong>, tách các <em>dòng</em> của một bảng lớn ra nhiều database theo một <strong>shard key</strong> — <code>user_id</code> theo hash, khách theo vùng, đơn theo khoảng ngày. Mỗi shard là một database bình thường giữ lát dòng của nó.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 780 300" role="img" aria-labelledby="dgm-shard">
+    <title id="dgm-shard">Một shard router dùng shard key, ví dụ user_id chia lấy dư cho ba, để quyết định trong vài shard database độc lập thì shard nào lưu mỗi dòng.</title>
+    <defs>
+      <marker id="shdAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-accent" x="390" y="28" text-anchor="middle" font-size="13">SHARD KEY LÀ QUYẾT ĐỊNH DUY NHẤT BẠN KHÓ QUAY ĐẦU</text>
+
+    <rect class="dgm-driven" x="268" y="46" width="244" height="58" rx="10"/>
+    <text class="dgm-t-accent" x="390" y="72" text-anchor="middle" font-size="13">Shard router</text>
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="91" text-anchor="middle" font-size="10.5">key → shard nào?</text>
+
+    <rect class="dgm-core" x="40" y="180" width="200" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="140" y="208" text-anchor="middle" font-size="13">Shard 0</text>
+    <text class="dgm-t-muted dgm-t-mono" x="140" y="228" text-anchor="middle" font-size="10.5">user_id % 3 == 0</text>
+    <rect class="dgm-core" x="290" y="180" width="200" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="390" y="208" text-anchor="middle" font-size="13">Shard 1</text>
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="228" text-anchor="middle" font-size="10.5">user_id % 3 == 1</text>
+    <rect class="dgm-core" x="540" y="180" width="200" height="64" rx="10"/>
+    <text class="dgm-t-strong" x="640" y="208" text-anchor="middle" font-size="13">Shard 2</text>
+    <text class="dgm-t-muted dgm-t-mono" x="640" y="228" text-anchor="middle" font-size="10.5">user_id % 3 == 2</text>
+
+    <path class="dgm-flow" d="M372,106 C 300,140 150,140 140,176" marker-end="url(#shdAcc)"/>
+    <path class="dgm-flow" d="M390,106 V 176" marker-end="url(#shdAcc)"/>
+    <path class="dgm-flow" d="M408,106 C 480,140 630,140 640,176" marker-end="url(#shdAcc)"/>
+
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="286" text-anchor="middle" font-size="10.5">key đúng → đa số query trúng một shard · key sai → hot shard + scatter-gather</text>
+  </svg>
+  <figcaption>Sharding tách các dòng của một bảng ra nhiều database độc lập theo một shard key. Chọn key tốt thì đa số query chỉ chạm đúng một shard; chọn key tệ thì bạn lãnh hot shard và những query xuyên shard chậm chạp.</figcaption>
+</figure>
+
+<p>Shard key là <strong>quyết định quan trọng nhất và vĩnh viễn nhất trong cả bài này.</strong> Một key tốt làm hai việc: nó trải tải đều (để bạn không bị một &ldquo;hot shard&rdquo; cháy trong khi mấy cái kia rảnh rỗi), và nó khớp với query phổ biến nhất của bạn (để query đó rơi vào đúng một shard). Chọn sai là bạn sống với hậu quả nhiều năm.</p>
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/scaling-the-database/shard-key-before-it-hardens.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Nguyen Le Phong cùng hai đồng nghiệp trải bản đồ vùng và tải lên bàn lớn, tranh luận về shard key trước khi tách dữ liệu sang nhiều database." />
+  <figcaption>Cái giá của sharding bắt đầu từ rất sớm; phần khó thật nằm ở việc chọn một key vừa trải tải đều vừa không phá những câu hỏi sản phẩm cần hỏi mỗi ngày.</figcaption>
+</figure>
+
+<p>Và hoá đơn rất đắt, đó chính xác là lý do đây là bậc trên cùng:</p>
+<ul>
+<li><strong>Query xuyên shard đau đớn.</strong> &ldquo;Top 10 đơn hàng trên toàn bộ khách&rdquo; giờ nghĩa là hỏi từng shard rồi gộp kết quả — một cú scatter-gather vừa chậm vừa lằng nhằng.</li>
+<li><strong>Transaction xuyên shard biến mất.</strong> Bạn quay lại với <a href="/blog/architecture/data-in-distributed-systems">saga và eventual consistency</a> — bài toán dữ liệu phân tán, giờ nằm ngay trong tầng lưu trữ của bạn.</li>
+<li><strong>Resharding là một dự án thật sự.</strong> Tách một shard lớn quá nóng, hoặc đổi key, nghĩa là di trú dữ liệu sống mà không downtime. Các team lên kế hoạch cho việc này trước hàng tháng.</li>
+</ul>
+
+<h2 id="sql-vs-nosql">Một ghi chú về SQL với NoSQL: là chuyện access pattern, không phải &ldquo;web scale&rdquo;</h2>
+<p>Đâu đó trên đường đi sẽ có người bảo bạn cần &ldquo;chuyển qua NoSQL để scale.&rdquo; Thường thì đó là một huyền thoại. Một relational database, leo lên cái thang ở trên, scale tới một cỡ thật sự khổng lồ — những công ty bạn từng nghe tên chạy tải kinh người trên Postgres hay MySQL đã shard một cách nhàm chán.</p>
+<p>Bạn với tới một store khác khi <em>access pattern</em> thật sự khác, không phải vì relational &ldquo;không scale được.&rdquo; Một key-value store cho throughput tra cứu đơn giản cực lớn; một document store cho schema linh hoạt, lồng nhau; một search engine (Elasticsearch) cho full-text; một time-series database cho metric; một wide-column store (Cassandra) cho workload nặng ghi với một hình dạng query đã biết. Mỗi cái là một công cụ chính xác cho một pattern mà relational SQL phục vụ vụng về.</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Mặc định thành thật</span><p>Hãy ở lại với cái relational database nhàm chán của bạn lâu hơn nhiều so với những gì internet gợi ý. &ldquo;Polyglot persistence&rdquo; — đúng store cho đúng việc — là một ý tưởng thật và hay ở quy mô lớn, nhưng mỗi datastore mới là thêm một thứ phải vận hành, backup, giám sát, và suy luận về tính nhất quán xuyên qua. Hãy thêm database thứ hai khi một pattern cụ thể đòi hỏi, không phải vì cái tên nghe có vẻ cao cấp hơn.</p></div>
+
+<h2 id="decision-table">Leo thang theo đúng thứ tự</h2>
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Triệu chứng bạn thật sự có</th><th>Cách sửa rẻ nhất mà hiệu quả</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Một endpoint chậm</th><td><code>EXPLAIN</code> nó — thêm index đang thiếu, diệt N+1</td></tr>
+    <tr><th>Cả DB gần kịch CPU/RAM</th><td>Scale up lên instance to hơn trước đã</td></tr>
+    <tr><th>Đọc là nút thắt, ghi vẫn ổn</th><td>Read replica — và định tuyến lệnh đọc cần tươi về primary</td></tr>
+    <tr><th>Cùng những lệnh đọc đắt, lặp đi lặp lại</th><td>Một cache phía trước (cache-aside + TTL)</td></tr>
+    <tr><th>Lượng ghi hoặc cỡ dữ liệu vượt một máy</th><td>Partition, rồi shard theo một key chọn cẩn thận</td></tr>
+    <tr><th>Một pattern cụ thể chống lại mô hình relational</th><td>Thêm một store chuyên dụng — và chấp nhận vận hành nó</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="by-company-size">Góc nhìn thành thật theo quy mô công ty</h2>
+<ul>
+<li><strong>Solo / startup giai đoạn đầu.</strong> Một database, index tử tế, backup đều đặn, thử restore một lần. Đó là toàn bộ chiến lược scaling của bạn, và nó đúng. Sai lầm lớn nhất ở giai đoạn này là shard cho một tải bạn không có — một Postgres managed duy nhất phục vụ nhiều traffic hơn 99% startup từng chạm tới.</li>
+<li><strong>Scale-up đang lớn.</strong> Thêm một read replica khi đọc áp đảo (và để an tâm failover). Đặt cache lên vài đường nóng hiển nhiên. Scale primary lên khi buộc phải. Cưỡng lại sharding cho tới khi lượng ghi thật sự ép tay bạn — và khi nó tới, hãy dành thời gian thật để chọn shard key. Đo lường không ngừng; để dữ liệu, đừng để nỗi sợ, đẩy bạn lên một bậc.</li>
+<li><strong>Doanh nghiệp lớn.</strong> Replica, các tầng cache, và sharding (hoặc một distributed-SQL database managed tự shard giùm) là đồ đạc bình thường. Đầu tư chuyển từ &ldquo;bậc nào&rdquo; sang kỷ luật vận hành: quản trị shard key, cache invalidation như một mối quan tâm của nền tảng, failover replica tự động, và lập kế hoạch dung lượng. Polyglot persistence ở đây là có chủ đích và có chủ sở hữu — không phải sự lan man tình cờ của cả tá team mỗi nhóm chọn một database ưa thích.</li>
+</ul>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Những điều cốt lõi</h3>
+<ul>
+  <li><strong>Database gục trước vì nó giữ state bạn không thể nhân bản đơn thuần.</strong> Hãy leo thang; đừng nhảy thẳng lên đỉnh.</li>
+  <li><strong>Đo trước khi scale.</strong> Index là cách sửa rẻ nhất, đòn bẩy cao nhất cả trang — với tới <code>EXPLAIN</code> trước khi với tới phần cứng.</li>
+  <li><strong>Scale up trước khi scale out.</strong> Một cái máy tinh chỉnh tốt đi xa hơn hầu hết team tưởng.</li>
+  <li><strong>Read replica khai thác sự bất đối xứng đọc/ghi — nhưng mang theo replication lag.</strong> Định tuyến lệnh đọc cần thấy ghi mới nhất về primary; còn lại cứ đọc hơi cũ.</li>
+  <li><strong>Caching biến query nhanh nhất thành query bạn không bao giờ chạy.</strong> Invalidation mới là phần khó, và cache không bao giờ là nguồn sự thật.</li>
+  <li><strong>Sharding là bậc trên cùng vì shard key khó quay đầu.</strong> Chỉ với tới nó khi ghi hoặc cỡ dữ liệu thật sự vượt một máy — và chọn key như thể nó là vĩnh viễn, vì nó đúng là vậy.</li>
+</ul>
+</div>
+<p>Scale tầng dữ liệu phần lớn là kỷ luật <em>không</em> làm cái việc hấp dẫn trước. Cùng với tách code thành service, quyết định <a href="/blog/architecture/data-in-distributed-systems">ai sở hữu dữ liệu</a>, và trả cái <a href="/blog/architecture/resilience-in-distributed-systems">thuế resilience</a>, nó là mảnh lặng lẽ cuối cùng để giữ một hệ thống đứng vững khi nó lớn lên — từng bước rẻ, quay đầu được, chừng nào bước đó còn hiệu quả.</p>
+3:["$","$L8",null,{"category":"architecture","slug":"scaling-the-database","children":[["$","$L9",null,{"category":"architecture","slug":"scaling-the-database","readingMinutes":15,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/vi/blog/architecture/scaling-the-database","title":"Scale database theo đúng thứ tự: Index, Read Replica, Cache rồi mới tới Sharding","surface":"blog","category":"architecture","slug":"scaling-the-database","labels":{"share":"Chia sẻ","copyLink":"Sao chép liên kết","copied":"Đã sao chép!","close":"Đóng"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/vi/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Source Code & Software Architecture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Software Architecture Foundations",["$","span",null,{"aria-hidden":"true","children":" · "}],"Phần 10/15"]}],["$","h1",null,{"className":"blog-article__title","children":"Scale database theo đúng thứ tự: Index, Read Replica, Cache rồi mới tới Sharding"}],["$","p",null,{"className":"blog-article__summary","children":"Khi traffic tăng, database thường là nơi kêu cứu đầu tiên. Nhưng không phải cứ chậm là lao vào sharding. Bài này đưa ra một nấc thang thực tế để scale data layer: đo trước, thêm index, dùng read replica, cache đúng chỗ, hiểu replication lag và chỉ đụng tới partitioning hoặc sharding khi thật sự đã đến lúc."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"Bởi Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-04-08","children":"8 tháng 4, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"15 phút đọc"}],["$","$Lc",null,{"label":"lượt xem"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Software Architecture",{"children":"Software Architecture"}],["$","li","Database Scaling",{"children":"Database Scaling"}],["$","li","Scalability",{"children":"Scalability"}],["$","li","Read Replicas",{"children":"Read Replicas"}],["$","li","Sharding",{"children":"Sharding"}],["$","li","Caching",{"children":"Caching"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"Bạn thấy bài viết thế nào?","surface":"blog","category":"architecture","slug":"scaling-the-database","reactionLabels":{"like":"Thích","love":"Yêu thích","insightful":"Sâu sắc","clap":"Tuyệt vời"}}]
+10:["$","$L18",null,{"heading":"Bài liên quan","intro":"Một vài bài gần chủ đề này để bạn đọc tiếp mạch suy nghĩ với nhiều ngữ cảnh hơn.","items":[{"post":{"slug":"caching-strategies-and-pitfalls","category":"architecture","title":"Caching: chiến lược và những cái bẫy dễ gặp","summary":"Một bài giải thích thực tế về caching: cache giúp ở đâu, cache-aside, read-through, write-through, TTL và invalidation khác nhau thế nào, và vì sao stale data, cache stampede, key design cùng observability quan trọng không kém tốc độ.","date":"2026-01-25","readingMinutes":7,"tags":["Software Architecture","Caching","Performance","System Design","Scalability","Observability"],"author":"Nguyen Le Phong","featured":false},"categoryTitle":"Source Code & Software Architecture","readingLabel":"7 phút đọc"},{"post":{"slug":"cqrs-command-query-responsibility-segregation","category":"architecture","title":"CQRS: tách phần ghi và phần đọc cho đúng việc","summary":"Một bài giải thích thực tế về CQRS: tách command khỏi query, khi nào read model và write model nên có hình dạng khác nhau, và cách tránh biến một pattern hữu ích thành kiến trúc thừa.","date":"2026-02-04","readingMinutes":6,"tags":["Software Architecture","CQRS","Read Models","Event-Driven Architecture","System Design","Scalability"],"author":"Nguyen Le Phong","featured":false},"categoryTitle":"Source Code & Software Architecture","readingLabel":"6 phút đọc"},{"post":{"slug":"database-sharding-when-and-why","category":"architecture","title":"Database sharding: khi nào cần và vì sao","summary":"Một bài giải thích thực tế về database sharding: điều gì thay đổi khi một database được chia thành nhiều partition nhỏ hơn, khi nào sharding đáng với chi phí vận hành, và vì sao shard key, hotspot, rebalancing cùng observability rất quan trọng.","date":"2026-01-20","readingMinutes":7,"tags":["Software Architecture","Database Sharding","Scalability","System Design","Data Partitioning","Observability"],"author":"Nguyen Le Phong","featured":false},"categoryTitle":"Source Code & Software Architecture","readingLabel":"7 phút đọc"},{"post":{"slug":"ports-and-adapters","category":"architecture","title":"Ports & Adapters: Hexagonal Architecture giải thích bằng ví dụ dễ hiểu","summary":"Ports & Adapters nghe có vẻ học thuật, nhưng ý tưởng cốt lõi rất thực tế: business logic nên đứng vững dù database, UI hay API bên ngoài thay đổi. Bài này giải thích port, adapter và dependency direction bằng ví dụ gần gũi, để bạn biết áp dụng vừa đủ cho dự án nhỏ lẫn codebase lớn.","date":"2026-03-07","readingMinutes":16,"tags":["Kiến trúc phần mềm","Hexagonal Architecture","Ports and Adapters","Clean Architecture","Thiết kế hệ thống","Dependency Inversion"],"author":"Nguyen Le Phong","featured":true,"series":"foundations","seriesOrder":1},"categoryTitle":"Source Code & Software Architecture","readingLabel":"16 phút đọc"}],"sourceCategory":"architecture","sourceSlug":"scaling-the-database"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"Software Architecture Foundations","children":[["$","$Lb",null,{"href":"/vi/blog/architecture/resilience-in-distributed-systems","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Timeout, Retry, Circuit Breaker và Idempotency: bộ kỹ năng sống còn của distributed systems"}]]}],["$","$Lb",null,{"href":"/vi/blog/architecture/observability-at-scale","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Bài tiếp theo"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Observability ở quy mô lớn: Logs, Metrics, Traces và SLO giúp mình thấy gì"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/vi/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Về Source Code & Software Architecture"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"Trong bài này","surface":"blog"}]}]
+16:null

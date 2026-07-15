@@ -1,0 +1,245 @@
+1:"$Sreact.fragment"
+9:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+a:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+e:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1a:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1b:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Taa2,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/ja/blog/culture/how-to-write-a-great-pull-request#article","headline":"レビューしたくなるプルリクエストの書き方","description":"優れたプルリクエストはレビュアーへの贈り物です：小さく、説明が丁寧で、Yesと言いやすい。レビュー可能なプルリクエストの解剖——サイズ、タイトル、説明、コミット衛生、セルフレビュー——を具体的なビフォー・アフターの例で解説します。","inLanguage":"ja","url":"https://nguyenlephong.github.io/ja/blog/culture/how-to-write-a-great-pull-request","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/how-to-write-a-great-pull-request.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/ja/blog/culture/how-to-write-a-great-pull-request","datePublished":"2026-02-27","dateModified":"2026-02-27","keywords":"エンジニアリング文化, Pull Requests, コードレビュー, Git, チームコラボレーション, 開発生産性","articleSection":"エンジニアリング文化","isRelatedTo":[{"@type":"BlogPosting","headline":"コードレビューという技術：人を傷つけずにコードを批評する方法","url":"https://nguyenlephong.github.io/ja/blog/culture/how-to-review-code-kindly","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/how-to-review-code-kindly.jpg"},{"@type":"BlogPosting","headline":"エンジニアのメンタリング：ジュニアをシニアに育てる方法","url":"https://nguyenlephong.github.io/ja/blog/culture/mentoring-engineers","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/mentoring-engineers.jpg"},{"@type":"BlogPosting","headline":"Kind Engineering：優しさがあなたをより良いエンジニアにする理由","url":"https://nguyenlephong.github.io/ja/blog/culture/how-to-be-a-kind-engineer","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/how-to-be-a-kind-engineer.jpg"},{"@type":"BlogPosting","headline":"届くフィードバック：エンジニアとして批評を与え、受け取る方法","url":"https://nguyenlephong.github.io/ja/blog/culture/giving-and-receiving-feedback","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/giving-and-receiving-feedback.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/ja/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:Tf5f,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/ja/blog/culture/how-to-write-a-great-pull-request#faq","mainEntity":[{"@type":"Question","name":"プルリクエストはどのくらいの大きさにすべきですか？","acceptedAnswer":{"@type":"Answer","text":"目安として、変更されたコードが400行以下を目指してください。さらに重要なのは、生の行数ではなく論理的なスコープで考えることです：一つのプルリクエントには、独立して理解、テスト、リバートできる一つの一貫した変更が含まれるべきです。「and」という言葉を使わずにプルリクエントを一文で説明できない場合、おそらく大きすぎます。"}},{"@type":"Question","name":"良いプルリクエントの説明の条件は何ですか？","acceptedAnswer":{"@type":"Answer","text":"良い説明は、レビュアーが最初の10秒間に持つ三つの質問に答えます：何が変わり、どこで？なぜこの変更が必要でしたか？どうやって動作を確認しますか？具体的には：変更をまとめた短い「What」セクション、動機やバグのコンテキストを示す「Why」セクション、再現手順やテストコマンドが含まれる「How to test」セクション。UI変更にはスクリーンショットが百文字に値します。機密変更にはリスクとロールバックのメモが追加価値をもたらします。"}},{"@type":"Question","name":"大きなプルリクエントをどう分割すればいいですか？","acceptedAnswer":{"@type":"Answer","text":"三つの戦略がうまく組み合わさります。まず、リファクタリングと動作変更を分ける：新しいロジックなしで一つのプルリクエントで再構造化し、次のプルリクエントで機能を追加する。次に、インフラを先に出荷する——マイグレーション、型、足場を——それを使うUIの前に出荷し、各プルリクエントが独立してデプロイ可能にする。第三に、機能フラグを使ってデフォルトでオフのトグルの後ろに未完成の作業を安全にマージする。スタック型プルリクエント（プルリクエントBがプルリクエントAをベースにしている）は、チームがツールのサポートを持っている場合のより高度なオプションです。"}},{"@type":"Question","name":"自分のプルリクエントを最初にレビューすべきですか？","acceptedAnswer":{"@type":"Answer","text":"はい、常に。レビューを依頼する前に、コードホストで差分を開き、初めて見るかのように読んでください。残ったデバッグ出力、欠けているテスト、意図しない空白の変更、自明でないロジックを探してください。レビュアーが来る前に文脈が必要なものにガイドコメントを残してください。セルフレビューは、恒久的なレビューコメントになる前に恥ずかしい間違いを発見し、レビュアーの時間への敬意を示します。"}},{"@type":"Question","name":"コミットメッセージに何を含めるべきですか？","acceptedAnswer":{"@type":"Answer","text":"コミットメッセージには、コミットが何をするかを説明する短い命令形の件名行（50文字以下）が必要です。慣例的コミットフォーマットを使ってください：type(scope): subject——例：'fix(cart): add row-level lock to prevent oversell'。差分からなぜが明らかでない場合は、件名の後に空行を追加し、動機や明白でない設計上の決定を説明する短い本文を加えてください。差分は何が変わったかを示します；メッセージはなぜを説明すべきです。"}}]}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--violet","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"ブログ\",\"item\":\"https://nguyenlephong.github.io/ja/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"エンジニアリング文化\",\"item\":\"https://nguyenlephong.github.io/ja/blog/culture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"レビューしたくなるプルリクエストの書き方\",\"item\":\"https://nguyenlephong.github.io/ja/blog/culture/how-to-write-a-great-pull-request\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],["$L5","$L6","$L7"],"$L8"]}],"loading":null,"isPartial":false}
+f:T637c,<p>あの光景を知っていますか。火曜日の午後、レビューキューにあるプルリクエスト——タイトルは<strong>「fixes」</strong>、差分は41ファイルにわたる2,347行、説明はなし、そして陽気な「PTAL」のコメント。心が沈みます。それでも開きます。20分後、同じメソッドを三回読んでも何の問題を解決しているのかわからない、残したコメントはたった一つ：「全体的に良さそうです、この変数名を変えてもいいかも？」理解できなかったコードにゴム印を押してしまいました。</p>
+<p>著者は悪意があったわけではありません——おそらく没頭していて、仕事に誇りを持っており、コードを出荷することが仕事の半分でしかないことをつい忘れていただけです。もう半分は、レビューされ、理解され、安全にマージされることです。プルリクエストはマージ前にクリアする形式的な手続きではありません；それは会話であり、あらゆる会話と同様に、誰かが理解してもらうための努力をすると、うまくいきます。</p>
+<p>この記事はその努力についてのものです：チームメンバーが本当にレビューを楽しめるプルリクエストの書き方——小さく、目的があり、わかりやすく、Yesと言いやすいもの。</p>
+
+<h2 id="pr-is-communication">プルリクエストはコードではなく、コミュニケーションだ</h2>
+<p>差分の一行も入る前に、プルリクエストは別の人間へのメッセージです。その人間は限られた時間を持ち、午後11時にあなたが何を考えていたかについて限られたコンテキストを持ち、注目を競う十数個の他のことがあります。著者としてのあなたの仕事は、彼らの仕事を簡単にすることです。</p>
+<p>レビュアーを裁判官ではなく聴衆と考えてください。彼らはあなたを捕まえるためにいるのではなく——あなたが堅実なものを出荷するのを助ける協力者です。変更の背後にある<em>なぜ</em>を理解してもらうほど、レビューは速くなり質が上がります。優れたプルリクエストの説明はコードへのカバーレターのようなものです：場面を設定し、動機を説明し、レビュアーに何を見るべきかを正確に伝えます。</p>
+<p>このマインドセットの転換がすべてを変えます。プルリクエストを自分のために書くのをやめてレビュアーのために書き始めると、自然に小さくしたいと思い、より良く説明したいと思い、目を頼む前にクリーンアップしたいと思うようになります。</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">レビュアーの黄金律</span><p>レビュアーが変更が<em>なぜ</em>存在するかを理解するためにコードを読まなければならないなら、プルリクエストの説明は仕事を果たしていません。コードは<em>何が</em>変わったかを説明します；説明は<em>なぜ変更が必要だったか</em>を説明します。</p></div>
+
+<h2 id="keep-it-small">小さく、焦点を絞る</h2>
+<p>プルリクエストを改善するために最もできる効果的なことは、小さくすることです。プルリクエストが大きくなるほど、徹底的にレビューされなくなり、マージに時間がかかり、より多くのバグが滑り込みます。</p>
+<p>良いプルリクエストには<strong>一つの論理的な変更</strong>が含まれます。一つのチケットでも、一つの機能でも、一スプリントの作業でもありません——独立して理解、テスト、リバートできる一つの一貫したアイデアです。「ユーザーアバターのアップロードを追加する」は一つの変更です。「ユーザーアバターのアップロードを追加し、プロファイルコントローラーをリファクタリングし、三つの依存関係をバンプする」は一つのコートを着た三つの変更です。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 780 320" role="img" aria-labelledby="dgm-prsize">
+    <title id="dgm-prsize">プルリクエストのサイズが大きくなるにつれ、レビュー品質が下がりマージまでの時間が増える。</title>
+    <defs>
+      <marker id="szAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <line class="dgm-line" x1="80" y1="260" x2="700" y2="260" stroke-width="1.5" marker-end="url(#szAcc)"/>
+    <line class="dgm-line" x1="80" y1="260" x2="80" y2="50" stroke-width="1.5" marker-end="url(#szAcc)"/>
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="296" text-anchor="middle" font-size="12">PR size (lines changed)</text>
+    <text class="dgm-t-muted dgm-t-mono" x="390" y="30" text-anchor="middle" font-size="12">EFFECT ON REVIEW</text>
+    <path class="dgm-flow" d="M100,80 C200,85 300,130 460,200 C560,235 630,248 680,255" stroke-width="2.5" fill="none"/>
+    <text class="dgm-t-accent" x="108" y="70" font-size="12" font-weight="700">Review quality</text>
+    <text class="dgm-t-muted" x="108" y="83" font-size="11">(high to low)</text>
+    <path d="M100,245 C200,240 300,210 460,155 C560,120 630,95 680,75" stroke="#d97706" stroke-width="2.5" fill="none"/>
+    <text x="600" y="65" font-size="12" font-weight="700" fill="#d97706">Time to merge</text>
+    <text x="600" y="78" font-size="11" fill="#d97706">(low to high)</text>
+    <rect class="dgm-core" x="95" y="58" width="120" height="198" rx="6" opacity="0.18"/>
+    <text class="dgm-t-accent" x="155" y="278" text-anchor="middle" font-size="11" font-weight="700">Small PRs</text>
+    <text class="dgm-t-muted" x="155" y="291" text-anchor="middle" font-size="10">&lt; 400 lines</text>
+    <rect x="490" y="58" width="170" height="198" rx="6" fill="#d97706" opacity="0.08"/>
+    <text x="575" y="278" text-anchor="middle" font-size="11" font-weight="700" fill="#d97706">Large PRs</text>
+    <text x="575" y="291" text-anchor="middle" font-size="10" fill="#d97706">&gt; 1000 lines</text>
+  </svg>
+  <figcaption>プルリクエストのサイズが大きくなるにつれ、レビュアーは読む代わりにざっと流し、考える代わりにゴム印を押し、バグが滑り込みます。小さなプルリクエストはより良いレビューを受け<em>かつ</em>より速くマージされます——両方の結果が同時に改善します。</figcaption>
+</figure>
+
+<h3 id="how-to-split">大きな作業を分割する方法</h3>
+<p>大きな機能は大きなプルリクエストとして届く必要はありません。実践的な分割戦略：</p>
+<ul>
+  <li><strong>リファクタリングと動作変更を分ける。</strong>最初のプルリクエスト：名前変更、再構造化、抽出——新しいロジックなし。二番目のプルリクエスト：実際の機能。レビュアーはリファクタリングに副作用がないことを確認してから、新しいロジックだけに集中できます。</li>
+  <li><strong>インフラを先に出荷する。</strong>データベースカラム、マイグレーション、型——すべてUIなしで追加。それからそれを使うUIを追加。各プルリクエストは独立してデプロイ可能です。</li>
+  <li><strong>機能フラグを使う。</strong>デフォルトでオフのフラグの後ろに未完成の作業をマージする。プルリクエストは小さく安全で；機能はフラグを切り替えるまで「完成」していません。</li>
+  <li><strong>スタック型プルリクエスト。</strong>プルリクエストBがプルリクエストAに依存する。一部のチームは各レイヤーを独立してレビューするためにスタック型プルリクエストのツールを使います。チームがスタッキングを使わない場合は、シンプルに：まずAを完了してマージし、次にBを開きます。</li>
+</ul>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">役立つヒューリスティック</span><p>「and」という言葉を使わずにプルリクエストを一文で説明できない場合、おそらく複数の論理的な変更が含まれています。継ぎ目を見つけて分割しましょう。</p></div>
+
+<h2 id="title-and-description">読む価値のあるタイトルと説明を書く</h2>
+<p>タイトルは見出しです。一行で<em>何が</em>変わったかとなぜそれが重要かを言うべきです。「update」「fix stuff」「changes」のような曖昧な動詞を避け、具体性を目指してください。よくあるプルリクエストのタイトルの臭いとその修正方法：</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>プルリクエストの臭い</th><th>問題</th><th>より良いバージョン</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>「fixes」</th>
+      <td>コンテキストが一切なし——レビュアーは何が起きているか推測するためにすべての行を読まなければならない。</td>
+      <td>「同時セッションの衝突時のカートチェックアウトの競合状態を修正」</td>
+    </tr>
+    <tr>
+      <th>「WIP: various changes」</th>
+      <td>著者の準備ができていないことを示す。ドラフトプルリクエストはそのためにある。</td>
+      <td>本当にレビューの準備ができるまでGitHubのドラフトとして開く。</td>
+    </tr>
+    <tr>
+      <th>「Update UserService」</th>
+      <td>どこを、ではなく何をなぜを説明していない。すべてのプルリクエストは何かを更新する。</td>
+      <td>「UserServiceにメール変更確認フローを追加」</td>
+    </tr>
+    <tr>
+      <th>「JIRA-1234」</th>
+      <td>動機を理解するためだけにレビュアーが別のタブを開かなければならない。</td>
+      <td>「API レートを IP 当たり100 req/min に制限 (JIRA-1234)」——チケットはコンテキストとして、代替としてではなく。</td>
+    </tr>
+    <tr>
+      <th>「Refactor + new feature + bump deps」</th>
+      <td>コートを着た三つのプルリクエスト。各懸念には独自のレビューが必要。</td>
+      <td>三つの別々の焦点を絞ったプルリクエストに分割する。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>説明</strong>こそが本当のコミュニケーションが起こる場所です。良い説明は、最初の10秒間にすべてのレビュアーが持つ三つの質問に答えます：</p>
+<ul>
+  <li><strong>何が</strong>変わり、どこで？</li>
+  <li><strong>なぜ</strong>この変更が必要だったか——コンテキスト、バグ、ユーザーストーリー？</li>
+  <li><strong>どうやって検証するか</strong>——テスト手順、スクリーンショット、影響するエッジケース？</li>
+</ul>
+<p>具体的にするためのビフォー・アフター：</p>
+<pre><code><span class="cmt">--- BEFORE (2,000行の「fixes」プルリクエスト) ---</span>
+
+<span class="kw">Title:</span> <span class="str">fixes</span>
+
+<span class="kw">Description:</span> (空)
+
+
+<span class="cmt">--- AFTER (同じ変更、レビュアーのために書かれたもの) ---</span>
+
+<span class="kw">Title:</span> <span class="str">同時セッションのカートチェックアウトの競合状態を修正</span>
+
+<span class="kw">## What</span>
+同じユーザーからの二つの同時チェックアウトリクエストが、どちらも
+在庫数をデクリメントする前に在庫チェックを通過してしまい、
+過剰販売が生じていた。このプルリクエストは在庫デクリメントの周りに
+行レベルのDBロックを追加する。
+
+<span class="kw">## Why</span>
+カスタマーサポートが過去30日間に12件の過剰販売インシデントを
+報告した（Sentryのissue #4421参照）。根本原因はインベントリテーブルの
+SELECTとUPDATEの間で二つのリクエストが競合すること。
+
+<span class="kw">## How to test</span>
+1. 新しい同時実行リグレッションテストを実行: npm test -- cart.concurrency
+2. ステージング環境で: 二つのブラウザタブを開き、在庫=1の商品で
+   「購入」を同時にクリックする。一つだけが成功するはず。
+
+<span class="kw">## Risk / notes</span>
+- ロックは一つの商品行にスコープされており、異なる商品が同時に
+  チェックアウトする場合のスループットには影響しない。
+- マイグレーション不要——既存テーブルのSELECT FOR UPDATEを使用。</code></pre>
+
+<h2 id="commit-hygiene">コミット衛生</h2>
+<p>コミットをどのように整理するかは重要です——プロセスを満たすためだけでなく、コミットは変更がどのように生まれたかの永久的な記録だからです。一年後、誰か（おそらくあなた）がある行に<code>git blame</code>を実行し、コミットハッシュを辿って歴史を調べます。彼らが見つけるものはストーリーを語るべきであり、意識の流れのように読まれるべきではありません。</p>
+<p>良いコミットメッセージは慣例的なフォーマットに従います：短い命令形の件名行（50文字以下）、オプションの空行、そして<em>なぜ</em>を説明するオプションの本文——差分が既に示していることを説明するのではなく。</p>
+<pre><code><span class="cmt"># 慣例的なフォーマット：</span>
+<span class="kw">type(scope): short imperative subject</span>
+
+<span class="str">Optional body: この変更がなぜ行われたか、何の問題を解決するか、
+明白でない決定とその背後にある理由。</span>
+
+<span class="cmt"># 実例：</span>
+<span class="kw">fix(cart):</span> add row-level lock to prevent oversell on concurrent checkout
+
+<span class="kw">feat(auth):</span> add email-change verification flow
+
+<span class="kw">refactor(profile):</span> extract avatar upload to dedicated service</code></pre>
+<p>メッセージのフォーマット以外に、コミットの<em>形</em>についても考えましょう。各コミットは一つの一貫したステップを表すべきです——リファクタリング、テスト、新しい動作。個々のコミットを（差分全体ではなく）見るレビュアーは、論理的な進行を追えるべきです：「メソッドを抽出 → テストを追加 → 動作を実装」は、最後の瞬間にスクワッシュされた20個の「WIP」コミットよりも良いストーリーを語ります。</p>
+<p>プルリクエストを開く前に、インタラクティブリベースを使って乱雑なブランチをクリーンアップしましょう。最初から完璧なコミットは必要ありません——目を頼む前に磨いてください。</p>
+
+<h2 id="self-review">レビューを依頼する前にセルフレビューをする</h2>
+<p>チームメンバーに知らせる前に、自分自身が最初のレビュアーになりましょう。GitHub（または選択したコードホスト）で差分を開き、コードを一度も見たことがないかのように読んでください。このコンテキストの切り替えは予想以上に多くの問題を発見します：残ったデバッグ出力、大きくなりすぎた関数、削除を忘れたインポート、以前は正しかったコメント。</p>
+<p>実行する価値のあるセルフレビューチェックリスト：</p>
+<ul>
+  <li><strong>差分を最初から最後まで読む。</strong>ざっと流さない。初めて見るふりをする。</li>
+  <li><strong>デバッグの残留物を確認する。</strong><code>console.log</code>、「削除」とマークされたTODOコメント、コメントアウトされたブロック、一時的にハードコードされた値。</li>
+  <li><strong>テストがあることを確認する。</strong>ロジックを追加したなら、テストはありますか？バグを修正したなら、リグレッションテストはありますか？</li>
+  <li><strong>意図しない変更を探す。</strong>空白の乱れ、再フォーマットされたファイル、偶発的なスコープクリープ。それらを別のプルリクエストに移すかリバートする。</li>
+  <li><strong>自分でガイドコメントを残す。</strong>セクションが自明でない場合、レビュアーが見る前に理由を説明するプルリクエストコメントを追加する。これは弱さの表れではありません——思いやりです。</li>
+</ul>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">シンプルなルール</span><p>シニアエンジニアがあなたの説明なしに今すぐプルリクエストをコールドレビューしても快適でないなら——まだ出す準備ができていません。まず修正してから、レビューを依頼しましょう。</p></div>
+<p>セルフレビューはまた利己的な配当ももたらします：永久的なレビューコメントになる前に恥ずかしい間違いを発見します。「レビューリクエスト」を押した10秒後に気づいたタイポの話は誰でも持っています。10分間のセルフレビューでそのほとんどをなくせます。</p>
+
+<h2 id="responding">レビューへの返答</h2>
+<p>プルリクエストはコードをプッシュしたときではなく、マージしたときに完了します。その二つのイベントの間にはレビューサイクルがあり、フィードバックの扱い方はコード自体と同じくらい重要です。</p>
+<p>レビューが進み、関係が維持されるいくつかの原則：</p>
+<ul>
+  <li><strong>すべてのコメントに返信する。</strong>「done」または「良い指摘、最新コミットで修正しました」だけでも良いです。沈黙はレビュアーに自分のコメントを見たかどうか疑問に思わせます。</li>
+  <li><strong>プッシュするときに修正を説明する。</strong>「最新コミットで修正——ロジックをヘルパーに移してテストを追加しました」は、コンテキストのない新しいコミットよりはるかに明確です。</li>
+  <li><strong>スレッドを思慮深くリゾルブする。</strong>ほとんどのチームでは、コメンターが満足したときにリゾルブします。フィードバックを認めずに自己リゾルブしないでください。慣例が不明な場合は聞いてください。</li>
+  <li><strong>丁寧に意見を言う。</strong>提案が間違っていると思うなら、無視せずに理由とともに明確にそれを言ってください。「そのアプローチを検討しましたが、[理由]です——まだ強く感じるなら話し合いましょう」はプロフェッショナルで生産的な会話を保ちます。レビュアーの視点からの同じ会話については<a href="/blog/culture/how-to-review-code-kindly">コードを優しくレビューする方法</a>も参照してください。</li>
+  <li><strong>レビューを明示的に再依頼する。</strong>フィードバックに対処した後、レビュアーが気づくのを待たないでください。レビューを再依頼し、短い要約を残してください：「すべてのコメントに対処しました。主な変更：ユーティルを抽出し、二つのテストを追加し、XはYの理由で元のアプローチを維持しました。」</li>
+</ul>
+
+<h2 id="by-team-size">チームの規模によってプルリクエストの規範がどう変わるか</h2>
+<p>良いプルリクエストとは何かは固定ではありません——チームが成長しコードベースが成熟するにつれて変化します。期待がどのように進化するか：</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>チームのコンテキスト</th><th>最も重要なこと</th><th>実践的な規範</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ソロ / フリーランス</th>
+      <td>未来の自分がレビュアーです。プルリクエストは六ヶ月後にコードに戻ったときのための意思決定のドキュメントです。</td>
+      <td>レビュアーなしでも：明確なタイトル、説明に短い「なぜ」を。後で<code>git log</code>を読みやすくするコミットメッセージ。</td>
+    </tr>
+    <tr>
+      <th>小さなチーム（2〜8人）</th>
+      <td>スピードが重要。全員がコードベースを知っている。レビューは会話的。信頼が高い。</td>
+      <td>プルリクエストを小さく速く動かし続ける。説明は軽くて良い——一〜二文のコンテキスト。同日の返答が非同期レビューの合理的な期待です。</td>
+    </tr>
+    <tr>
+      <th>中規模チーム（10〜50人）</th>
+      <td>レビュアーが全体のコンテキストを知らないかもしれない。オンボーディングが継続的。変更がチームをまたぐ。</td>
+      <td>完全なwhat/why/howの説明。UIの作業にはスクリーンショット。テスト計画。チーム横断の変更は特別な注意と場合によってはより広いレビューが必要。</td>
+    </tr>
+    <tr>
+      <th>大規模 / エンタープライズ（50人以上）</th>
+      <td>レビュアーは時として見知らぬ人。コンプライアンス、監査証跡、正しさのレビューが重要。ターンアラウンドのSLAが存在する。</td>
+      <td>ツールによって強制される正式なプルリクエストテンプレート。必須の承認。機密変更のセキュリティレビュー。設計ドキュメントとチケットへのリンク。リスクの高い変更のロールバック計画。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>4人のスタートアップのチームはすべてのプルリクエントの説明にロールバック計画を必要としません。銀行は必要です。ステークスに合わせて形式を調整し、チームが成長するにつれて規範を見直してください——10人のエンジニアで機能したものが50人では不十分に感じられます。</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">まとめ</h3>
+<ul>
+  <li><strong>プルリクエストは人間へのメッセージです。</strong>自分のためではなくレビュアーのために書きましょう。彼らの時間とコンテキストは限られています。</li>
+  <li><strong>小さく焦点を絞る。</strong>プルリクエストごとに一つの論理的な変更。リファクタリングと動作変更を分ける。機能フラグを使って未完成の作業を安全にトグルの後ろにマージする。</li>
+  <li><strong>タイトル + 説明 = オリエンテーション。</strong>何が変わったか、なぜ変更が必要だったか、どう検証するかに答えましょう。コードはwhatを示し；説明はwhyを提供します。</li>
+  <li><strong>クリーンなコミット履歴はストーリーを語ります。</strong>慣例的なメッセージ、論理的なコミット、レビューを依頼する前のきれいなリベース。</li>
+  <li><strong>まずセルフレビューをする。</strong>GitHubで自分の差分を誰かが見る前に読みましょう。ガイドコメントを残しましょう。明らかな間違いを自分で発見しましょう。</li>
+  <li><strong>フィードバックのループを閉じる。</strong>すべてのコメントに返信し、コメントに対処した後でレビューを再依頼し、感情ではなく理由と共に意見を言いましょう——沈黙ではなく。</li>
+  <li><strong>形式をチームの規模に合わせる。</strong>4人のスタートアップと500人の銀行では異なるプルリクエントの規範が必要です。成長するにつれて見直しましょう。</li>
+</ul>
+</div>
+
+<p>次のステップはテーブルの反対側です：あなたのプルリクエントを受け取った人が、刺さるのではなく助けになるフィードバックをどう与えるか。丁寧に作ったプルリクエントに対して「これは間違っています、書き直してください」と返ってきたことがあれば、<a href="/blog/culture/giving-and-receiving-feedback">届くフィードバック</a>——この記事のフォローアップ——が理解できるでしょう。</p>4:["$","$L9",null,{"category":"culture","slug":"how-to-write-a-great-pull-request","children":[["$","$La",null,{"category":"culture","slug":"how-to-write-a-great-pull-request","readingMinutes":13,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lb",null,{"url":"https://nguyenlephong.github.io/ja/blog/culture/how-to-write-a-great-pull-request","title":"レビューしたくなるプルリクエストの書き方","surface":"blog","category":"culture","slug":"how-to-write-a-great-pull-request","labels":{"share":"シェア","copyLink":"リンクをコピー","copied":"コピーしました！","close":"閉じる"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lc",null,{"href":"/ja/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ブログ"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lc",null,{"href":"/ja/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"エンジニアリング文化"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["やさしく効果的なエンジニアリング",["$","span",null,{"aria-hidden":"true","children":" · "}],"全 5 回中第 3 回"]}],["$","h1",null,{"className":"blog-article__title","children":"レビューしたくなるプルリクエストの書き方"}],["$","p",null,{"className":"blog-article__summary","children":"優れたプルリクエストはレビュアーへの贈り物です：小さく、説明が丁寧で、Yesと言いやすい。レビュー可能なプルリクエストの解剖——サイズ、タイトル、説明、コミット衛生、セルフレビュー——を具体的なビフォー・アフターの例で解説します。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"著者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-02-27","children":"2026年2月27日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"13 分で読めます"}],["$","$Ld",null,{"label":"ビュー"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","エンジニアリング文化",{"children":"エンジニアリング文化"}],["$","li","Pull Requests",{"children":"Pull Requests"}],["$","li","コードレビュー",{"children":"コードレビュー"}],["$","li","Git",{"children":"Git"}],["$","li","チームコラボレーション",{"children":"チームコラボレーション"}],["$","li","開発生産性",{"children":"開発生産性"}]]}]]}],["$","$Le",null,{"html":"$f"}],"$L10","$L11"]}]]}],"$L12","$L13","$L14"]}],"$L15"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+7:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+8:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+10:["$","$L19",null,{"prompt":"記事はいかがでしたか？","surface":"blog","category":"culture","slug":"how-to-write-a-great-pull-request","reactionLabels":{"like":"いいね","love":"大好き","insightful":"なるほど","clap":"祝福"}}]
+11:["$","section",null,{"className":"blog-faq","aria-labelledby":"blog-faq-heading","children":[["$","h2",null,{"id":"blog-faq-heading","className":"blog-faq__heading","children":"よくある質問"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"プルリクエストはどのくらいの大きさにすべきですか？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"目安として、変更されたコードが400行以下を目指してください。さらに重要なのは、生の行数ではなく論理的なスコープで考えることです：一つのプルリクエントには、独立して理解、テスト、リバートできる一つの一貫した変更が含まれるべきです。「and」という言葉を使わずにプルリクエントを一文で説明できない場合、おそらく大きすぎます。"}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"良いプルリクエントの説明の条件は何ですか？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"良い説明は、レビュアーが最初の10秒間に持つ三つの質問に答えます：何が変わり、どこで？なぜこの変更が必要でしたか？どうやって動作を確認しますか？具体的には：変更をまとめた短い「What」セクション、動機やバグのコンテキストを示す「Why」セクション、再現手順やテストコマンドが含まれる「How to test」セクション。UI変更にはスクリーンショットが百文字に値します。機密変更にはリスクとロールバックのメモが追加価値をもたらします。"}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"大きなプルリクエントをどう分割すればいいですか？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"三つの戦略がうまく組み合わさります。まず、リファクタリングと動作変更を分ける：新しいロジックなしで一つのプルリクエントで再構造化し、次のプルリクエントで機能を追加する。次に、インフラを先に出荷する——マイグレーション、型、足場を——それを使うUIの前に出荷し、各プルリクエントが独立してデプロイ可能にする。第三に、機能フラグを使ってデフォルトでオフのトグルの後ろに未完成の作業を安全にマージする。スタック型プルリクエント（プルリクエントBがプルリクエントAをベースにしている）は、チームがツールのサポートを持っている場合のより高度なオプションです。"}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"自分のプルリクエントを最初にレビューすべきですか？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"はい、常に。レビューを依頼する前に、コードホストで差分を開き、初めて見るかのように読んでください。残ったデバッグ出力、欠けているテスト、意図しない空白の変更、自明でないロジックを探してください。レビュアーが来る前に文脈が必要なものにガイドコメントを残してください。セルフレビューは、恒久的なレビューコメントになる前に恥ずかしい間違いを発見し、レビュアーの時間への敬意を示します。"}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"コミットメッセージに何を含めるべきですか？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"コミットメッセージには、コミットが何をするかを説明する短い命令形の件名行（50文字以下）が必要です。慣例的コミットフォーマットを使ってください：type(scope): subject——例：'fix(cart): add row-level lock to prevent oversell'。差分からなぜが明らかでない場合は、件名の後に空行を追加し、動機や明白でない設計上の決定を説明する短い本文を加えてください。差分は何が変わったかを示します；メッセージはなぜを説明すべきです。"}}]]}]]}]]}]
+12:["$","$L1a",null,{"heading":"関連する読みもの","intro":"同じ流れをもう少し深く追える、近いテーマの記事です。","items":[{"post":{"slug":"how-to-review-code-kindly","category":"culture","title":"コードレビューという技術：人を傷つけずにコードを批評する方法","summary":"コードレビューは、チームカルチャーが育まれるか壊れるかの分岐点です。コードをより良く仕上げながら、書いた人がより成長して戻ってこられるレビューの実践ガイド——具体的なフレーズ、レビュアーのチェックリスト、そしてレビューを静かに有害にしてしまう習慣を紹介します。","date":"2026-03-01","readingMinutes":14,"tags":["エンジニアリング文化","コードレビュー","Pull Requests","フィードバック","チームコラボレーション","メンタリング"],"author":"Nguyen Le Phong","featured":true,"series":"kind-engineering","seriesOrder":1},"categoryTitle":"エンジニアリング文化","readingLabel":"14 分で読めます"},{"post":{"slug":"mentoring-engineers","category":"culture","title":"エンジニアのメンタリング：ジュニアをシニアに育てる方法","summary":"優れたチームは採用するだけでなく育てることで生まれます。エンジニアリングチームのリードとして得た経験から：ペアプログラミング、教えるチャンネルとしてのコードレビュー、ちょうど良いストレッチ課題、そしてジュニアを誰にでも任せられる存在に変えるマインドセットの転換を紹介します。","date":"2026-02-24","readingMinutes":14,"tags":["エンジニアリング文化","メンタリング","キャリア成長","リーダーシップ","チームコラボレーション","コードレビュー"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":5},"categoryTitle":"エンジニアリング文化","readingLabel":"14 分で読めます"},{"post":{"slug":"how-to-be-a-kind-engineer","category":"culture","title":"Kind Engineering：優しさがあなたをより良いエンジニアにする理由","summary":"優しさはお人好しでも、柔弱でもありません。フォース・マルティプライヤーです——より明確なフィードバック、より安全なインシデント対応、より速く成長するチームメンバーを生み出します。「Kind Engineering」とは何か、そしてコードレビュー、インシデント対応、日常の仕事の中でそれをどう実践するかを解説します。","date":"2026-02-28","readingMinutes":13,"tags":["エンジニアリング文化","Kind Engineering","心理的安全性","共感","チームコラボレーション","リーダーシップ"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":2},"categoryTitle":"エンジニアリング文化","readingLabel":"13 分で読めます"},{"post":{"slug":"giving-and-receiving-feedback","category":"culture","title":"届くフィードバック：エンジニアとして批評を与え、受け取る方法","summary":"フィードバックの与え方を学んでいるエンジニアはほとんどいません——受け取り方も同様です。具体的で、優しく、実行可能なフィードバックへのフィールドガイド、そして受け取る側で開かれた姿勢を保つための方法。すぐに使えるスクリプト付き。","date":"2026-02-25","readingMinutes":13,"tags":["エンジニアリング文化","フィードバック","コミュニケーション","心理的安全性","メンタリング","チームコラボレーション"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":4},"categoryTitle":"エンジニアリング文化","readingLabel":"13 分で読めます"}],"sourceCategory":"culture","sourceSlug":"how-to-write-a-great-pull-request"}]
+13:["$","nav",null,{"className":"blog-series-nav","aria-label":"やさしく効果的なエンジニアリング","children":[["$","$Lc",null,{"href":"/ja/blog/culture/how-to-be-a-kind-engineer","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","前の記事"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Kind Engineering：優しさがあなたをより良いエンジニアにする理由"}]]}],["$","$Lc",null,{"href":"/ja/blog/culture/giving-and-receiving-feedback","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["次の記事"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"届くフィードバック：エンジニアとして批評を与え、受け取る方法"}]]}]]}]
+14:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lc",null,{"href":"/ja/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","エンジニアリング文化に戻る"]}]}]
+15:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1b",null,{"label":"目次","surface":"blog"}]}]
+18:null

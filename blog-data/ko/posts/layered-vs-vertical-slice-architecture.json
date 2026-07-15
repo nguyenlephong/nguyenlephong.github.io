@@ -1,0 +1,21 @@
+{
+  "slug": "layered-vs-vertical-slice-architecture",
+  "category": "architecture",
+  "title": "레이어드 아키텍처와 Vertical Slice Architecture",
+  "summary": "레이어드 구조는 처음에는 깔끔해 보이고, vertical slice 는 변경을 실제 기능 가까이에 둡니다. 두 방식의 장점과 비용, 그리고 팀이 언제 방향을 바꿔야 하는지 차분히 살펴봅니다.",
+  "date": "2026-02-11",
+  "readingMinutes": 6,
+  "tags": [
+    "소프트웨어 아키텍처",
+    "Vertical Slice Architecture",
+    "Layered Architecture",
+    "코드 구조",
+    "Modularity",
+    "Technical Debt"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "series": "foundations",
+  "seriesOrder": 13,
+  "html": "<p>아침은 보통 작게 시작됩니다. 누군가 payment rule 하나를 추가하는 pull request 를 열었는데, 변경은 작아 보여도 파일 목록은 길어집니다. controller, service, repository, mapper, validator, 멀리 떨어진 test 까지. 규칙은 단순하지만, 그 규칙이 들어갈 길은 단순하지 않습니다.</p>\n<p>이 순간 architecture 는 다이어그램이 아니라 매일의 감각이 됩니다. layered architecture 는 기술적 역할별로 코드를 정리합니다. 익숙하고 가르치기 쉽고, 작은 애플리케이션에서는 충분히 친절합니다.</p>\n<p>Vertical Slice Architecture 는 다른 질문을 던집니다. 이 변경은 어떤 product capability 에 속하는가? route, validation, use case, data access, test 를 실제 동작 가까이에 둡니다. 폴더가 framework 보다 product 를 더 많이 말하게 됩니다.</p>\n<p>layered 방식이 틀린 것은 아닙니다. 문제는 feature 가 늘어난 뒤 천천히 나타납니다. 작은 변경이 모든 layer 를 건드리고, 오래된 기능을 지우는 일이 흩어진 조각을 찾는 작업이 됩니다.</p>\n<p>vertical slice 는 blast radius 를 줄입니다. refund approval 이 바뀌면 대부분의 변경은 그 slice 안에 남습니다. 기술적 layer 는 사라지지 않습니다. 다만 feature 안으로 들어갑니다.</p>\n<p>물론 규율이 필요합니다. slice 가 너무 많은 작은 섬이 될 수도 있고, shared abstraction 을 너무 빨리 만들 수도 있습니다. 작은 중복이 조기 추상화보다 더 정직할 때도 있습니다.</p>\n<p>많은 팀은 중간 지점에 도착합니다. 상위에는 feature folder, 그 안에는 작은 layer, 정말 공통이 된 것만 담는 조용한 shared folder.</p>\n<p>중요한 기준은 단순합니다. 구조는 의도와 변경 사이의 거리를 줄여야 합니다. 개발자가 폴더 이름을 읽고, business action 을 이해하고, 수정하고, 테스트하고, 나머지를 건드리지 않을 수 있다면 architecture 는 일을 하고 있는 것입니다.</p>"
+}

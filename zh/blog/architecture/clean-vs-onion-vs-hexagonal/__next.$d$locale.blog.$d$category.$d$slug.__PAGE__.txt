@@ -1,0 +1,218 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+5:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+f:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+10:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+11:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+15:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T9be,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal#article","headline":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字","description":"它们看起来像是三种相互竞争的架构，实则是同一个思想——依赖指向内部，框架置于边缘——用三种方式画出来。本文讲清楚每种方案真正增加了什么，以及应该选哪一个。","inLanguage":"zh","url":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/clean-vs-onion-vs-hexagonal.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal","datePublished":"2026-03-06","dateModified":"2026-03-06","keywords":"软件架构, Clean Architecture, Onion Architecture, Hexagonal Architecture, 系统设计, Dependency Inversion","articleSection":"源码与架构","isRelatedTo":[{"@type":"BlogPosting","headline":"Ports & Adapters（六边形架构），简单讲清楚","url":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ports-and-adapters.jpg"},{"@type":"BlogPosting","headline":"单体、模块化单体、微服务：一份诚实的决策指南","url":"https://nguyenlephong.github.io/zh/blog/architecture/monolith-to-microservices","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/monolith-to-microservices.jpg"},{"@type":"BlogPosting","headline":"微前端：何时值得，以及它们真正的代价","url":"https://nguyenlephong.github.io/zh/blog/architecture/micro-frontends-when-why-and-cost","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/micro-frontends-when-why-and-cost.jpg"},{"@type":"BlogPosting","headline":"Hexagonal Architecture in Practice","url":"https://nguyenlephong.github.io/en/blog/architecture/hexagonal-architecture-in-practice","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/hexagonal-architecture-in-practice.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/zh/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"博客\",\"item\":\"https://nguyenlephong.github.io/zh/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"源码与架构\",\"item\":\"https://nguyenlephong.github.io/zh/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字\",\"item\":\"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal\"}]}"}}],null,["$","$L3",null,{"category":"architecture","slug":"clean-vs-onion-vs-hexagonal","children":[["$","$L4",null,{"category":"architecture","slug":"clean-vs-onion-vs-hexagonal","readingMinutes":15,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L5",null,{"url":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal","title":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字","surface":"blog","category":"architecture","slug":"clean-vs-onion-vs-hexagonal","labels":{"share":"分享","copyLink":"复制链接","copied":"已复制！","close":"关闭"}}],"$L6"]}],"$L7","$L8","$L9"]}],"$La"]}]]}],["$Lb","$Lc","$Ld"],"$Le"]}],"loading":null,"isPartial":false}
+12:T4bfb,<p>如果你花时间读过软件架构方面的文章，一定见过反复出现的三个名字：<strong>Hexagonal Architecture</strong>、<strong>Onion Architecture</strong> 和 <strong>Clean Architecture</strong>。它们各有自己的图示、自己的术语，以及各自热情的拥趸。一口气读完三篇，感觉就像在看三个人争论用哪种方式说同一句话。</p>
+<p>诚实的版本是这样的：它们是同一个思想，在不同时期被独立发现，用略有不同的图形画出来。每一种方案都在另外两种没有大声强调的地方增加了一点细微的差别。一旦你看到共同的北极星，差异就变得显而易见——你可以选择团队已经最熟悉的那套词汇。</p>
+
+<h2 id="same-idea">三者共享的同一个思想</h2>
+<p>这三种架构都建立在同一条规则之上，有时被称为<strong>依赖规则</strong>：<em>源码中的依赖关系必须永远指向内部，指向业务规则，而不是指向外部的框架、数据库或 I/O</em>。</p>
+<p>可以把它想象成重力。你的 domain——让产品值得使用的核心逻辑——坐落在中心。围绕它的一切（数据库、Web 框架、支付 SDK、邮件服务商、CLI 工具）都运行在外圈。外层被允许知道内层的存在。内层则被严格禁止知道外层的存在。</p>
+<p>为什么这很重要？因为变化最频繁的东西恰恰在外面：你更换支付服务商、迁移到新数据库、重写前端、增加移动端。如果业务规则与这些细节纠缠在一起，每次变化都会涟漪式地波及你最在乎的代码。如果它们被隔离，一次供应商更换就是边缘处的局部替换——核心根本不会察觉。</p>
+<p>Alistair Cockburn、Jeffrey Palermo 和 Robert C. Martin 各自从不同角度发现了这个模式。Cockburn 画了一个六边形，把连接点叫做“ports”。Palermo 画了同心圆环，称之为“layers”。Martin 画了同心圆，并为每层起了严格的名字。每张图中的箭头方向都指向同一个方向：内部。</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">那条唯一的规则</span><p><strong>源码依赖指向内部。</strong>Domain 定义接口；外部世界实现它们。在任何地方翻转这个方向，架构就被破坏了——无论你用的是哪个名字。</p></div>
+
+<h2 id="hexagonal">Hexagonal Architecture（Ports &amp; Adapters）</h2>
+<p>Alistair Cockburn 于 2005 年以 <em>Ports &amp; Adapters</em> 为别名提出了 Hexagonal Architecture。核心洞见是对称性：你的应用有<em>两类</em>外部——驱动它的东西（用户点击按钮、测试运行器、定时任务）和被它驱动的东西（数据库、邮件服务商、支付 API）。两侧都通过 <strong>ports</strong>——domain 拥有的接口——以及 <strong>adapters</strong>——把真实技术连接到这些接口的具体实现——进行通信。六边形的形状只是一个视觉提示：应用有<em>很多</em>这样的 port，而不仅仅是“上面”和“下面”。如果你想了解 ports、adapters、主/次两侧和代码示例的完整讲解，本系列的上一篇——<a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a>——从第一原理开始讲透了这些内容。这里的核心结论是：Hexagonal 是三者中最<em>对称</em>的：它以同等的严格程度对待传入调用和传出调用，它的词汇（port、adapter、driving、driven）也是最具体、最机械的。</p>
+
+<h2 id="onion">Onion Architecture</h2>
+<p>Jeffrey Palermo 于 2008 年描述了 Onion Architecture。他保留了同样的依赖指向内部的规则，但选择了不同的图形：<strong>同心圆环</strong>，就像洋葱的层次。最内圈是 <strong>Domain Model</strong>——你的核心实体和值对象，纯粹的业务概念，没有任何技术痕迹。围绕它的是 <strong>Domain Services</strong> 圈，这里存放协调多个 domain 对象的逻辑，但仍然对外部世界一无所知。再往外是 <strong>Application Services</strong> 圈，use case 在这里存活，编排工作在这里发生。最外层是基础设施和 UI 细节——数据库、Web 框架、外部 API。</p>
+<p>Onion 强调了另外两种方案没有大声说出的一点：<em>domain model 与 domain services 的区分</em>。Palermo 是为 .NET 团队写的，这些团队经常混淆“代表一个 Order 的东西”和“处理 Orders 的 service”——这是一个真正有用的分离。Onion 也让分层变得非常直观：你可以看一眼任何类的 import 列表，立即根据它允许 import 的内容判断它属于哪个圈。如果一个 domain service 试图 import 一个数据库库，它显然待错了地方。</p>
+
+<h2 id="clean">Clean Architecture</h2>
+<p>Robert C. Martin（Uncle Bob）于 2017 年发表了 Clean Architecture，综合了他多年来一直在完善的思想。他画了同样的同心圆，但给每一个圆起了明确的名字和明确的用途。从内到外：<strong>Entities</strong>（企业级业务规则——即使没有计算机也依然成立的东西）、<strong>Use Cases</strong>（应用特定的业务规则——软件究竟要为用户做什么）、<strong>Interface Adapters</strong>（controllers、presenters、gateways——在 use case 世界和外部世界之间做转换的代码）、<strong>Frameworks &amp; Drivers</strong>（最外圈——数据库、Web 框架、UI 库、设备驱动）。</p>
+<p>Clean Architecture 最显著的补充是明确命名的 <strong>Use Cases</strong> 层。在许多代码库中，“use case”是一个非正式的概念——你可能有一个做十件事情的 <code>UserService</code>。Martin 坚持把每个 use case 做成一个一等的、命名的产物：一个类或函数，其名称字面上就说明它做什么（<code>PlaceOrder</code>、<code>RegisterUser</code>、<code>GenerateInvoice</code>）。他把这称为“尖叫式架构”——当新开发者打开项目结构时，他们应该立刻看到系统<em>做什么</em>，而不是它用了什么框架。Martin 还正式化了 <strong>Boundaries</strong> 的概念——每个圈之间都有明确的接口边界——以及跨越边界的数据必须是可序列化的、简单的数据结构，而不是携带隐藏行为的富 domain 对象。</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">尖叫式架构</span><p>Martin 的“尖叫式架构”这个短语表达了一个简单的愿望：打开项目中的任何一个文件夹，你应该立刻理解<em>业务意图</em>，而不是技术栈。一个叫 <code>use-cases/</code> 的文件夹里放着 <code>PlaceOrder.ts</code> 和 <code>RegisterUser.ts</code>，它的意图在尖叫。而一个叫 <code>controllers/</code> 的文件夹装着其他所有东西，什么也没说出来。</p></div>
+
+<h2 id="side-by-side">并排比较：词汇对照表</h2>
+<p>读完这三种方案后最大的实际障碍，是它们用不同的词指代重叠的概念。以下是翻译对照表：</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>概念</th>
+      <th>Hexagonal（Cockburn）</th>
+      <th>Onion（Palermo）</th>
+      <th>Clean（Martin）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>最内层的核心</th>
+      <td>Domain（没有具体圈名）</td>
+      <td>Domain Model 圈</td>
+      <td>Entities 圈</td>
+    </tr>
+    <tr>
+      <th>业务 use case</th>
+      <td>六边形内部的应用逻辑</td>
+      <td>Application Services 圈</td>
+      <td>Use Cases 圈（明确命名）</td>
+    </tr>
+    <tr>
+      <th>转换层</th>
+      <td>Adapters（driving + driven）</td>
+      <td>Infrastructure 圈</td>
+      <td>Interface Adapters 圈</td>
+    </tr>
+    <tr>
+      <th>最外层技术</th>
+      <td>六边形外部（HTTP、DB 等）</td>
+      <td>UI / Infrastructure 圈</td>
+      <td>Frameworks &amp; Drivers 圈</td>
+    </tr>
+    <tr>
+      <th>连接缝</th>
+      <td>Port（由 domain 拥有的接口）</td>
+      <td>每个圈边界处的隐式接口</td>
+      <td>Boundary（每个跨越处的显式接口）</td>
+    </tr>
+    <tr>
+      <th>主要强调</th>
+      <td>对称 port；可测试性；每个 adapter 的可替换性</td>
+      <td>分层圆环；domain model 与 domain services 的区分</td>
+      <td>明确命名的 use case；尖叫式结构；严格的数据边界</td>
+    </tr>
+    <tr>
+      <th>最适合……</th>
+      <td>有大量集成需要独立替换的场景</td>
+      <td>有非平凡服务编排的富 domain model</td>
+      <td>需要共享词汇和“尖叫式”文件夹结构的大型团队</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="differences">它们在实践中真正不同的地方</h2>
+<p>共同规则掩盖了真实的侧重差异，这些差异在你坐下来写代码时会显现出来。</p>
+<p><strong>Hexagonal 是最机械的。</strong>它给你精确的、命名的槽位：这里是驱动型 adapter，这里是它调用的 port，这里是处理它的 use case，这里是 output port，这里是被驱动型 adapter。如果你忠实地遵循这些槽位，结构几乎会自动生成——而且因为两侧是对称的，防止数据库悄悄进入 domain 的规则，与防止 domain 泄漏到 HTTP 层的规则是同一套。代价是 Hexagonal 不告诉你如何组织六边形的内部——它对核心是否应该有子层（如 domain model 与 domain services）保持沉默。</p>
+<p><strong>Onion 是最有层次感的。</strong>Hexagonal 画一道边界（六边形内部与外部），Onion 在核心内部画了好几圈。当你的 domain 足够大、需要自己的内部结构时，这很有价值——区分纯实体、协调它们的 domain services，以及编排 use case 的 application services。圆环的比喻在视觉上很直观，但要严格遵守它就需要更多的自律：赶进度时很容易跨圈取巧，而 Onion 没有像 Hexagonal 的 port/adapter 词汇那样给你机械性的检验。</p>
+<p><strong>Clean 是最规范的。</strong>Martin 给每一层和每一个概念都起了名字，这既是优点，也是争议的来源。优点在于团队共享了无歧义的词汇——当两位工程师讨论“use case boundary”时，每个人都知道那是什么意思。争议的来源在于，规定好的结构对小型应用来说可能显得繁重：为每个功能创建明确的 <code>InputBoundary</code>、<code>OutputBoundary</code> 和 <code>UseCase</code> 接口，在构建原型时仪式感太重了。Clean Architecture 还坚持在每个圈边界处使用纯数据传输对象（DTO），这增加了代码量，但让边界非常清晰。规模扩大后，当防止“富对象跨层泄漏”成为真实问题而不是假设时，回报才会显现。</p>
+<p>简而言之：Hexagonal 给你最清晰的<em>机械指导</em>，告诉你如何连接各部分。Onion 给你最清晰的 domain<em>内部分层</em>。Clean 给你最清晰的<em>词汇</em>和最有主张的文件夹结构。现实世界的大多数代码库在不知不觉中混合了三者。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 700 460" role="img" aria-labelledby="dgm-rings-title">
+    <title id="dgm-rings-title">同一个依赖指向内部的思想，用同心圆环画出——与第一篇的六边形完全相同，只是形状不同。</title>
+
+    <defs>
+      <marker id="ringsAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+
+    <!-- outermost ring: Frameworks & Drivers / Infrastructure / Adapters -->
+    <ellipse class="dgm-surface" cx="350" cy="228" rx="318" ry="208" stroke-width="1.5"/>
+
+    <!-- middle ring: Interface Adapters / Application Services / Application -->
+    <ellipse class="dgm-port" cx="350" cy="228" rx="228" ry="148" stroke-width="1.5"/>
+
+    <!-- inner ring: Use Cases / Domain Services -->
+    <ellipse class="dgm-driven" cx="350" cy="228" rx="142" ry="92" stroke-width="1.5"/>
+
+    <!-- core: Entities / Domain Model / Domain -->
+    <ellipse class="dgm-core" cx="350" cy="228" rx="66" ry="44" stroke-width="2"/>
+    <text class="dgm-t-strong" x="350" y="224" text-anchor="middle" font-size="15">Domain</text>
+    <text class="dgm-t-muted dgm-t-mono" x="350" y="243" text-anchor="middle" font-size="10">Entities / Model</text>
+
+    <!-- inner ring label -->
+    <text x="350" y="154" text-anchor="middle" font-size="12" class="dgm-t-muted dgm-t-mono">Use Cases / Domain Services</text>
+
+    <!-- middle ring label -->
+    <text x="350" y="93" text-anchor="middle" font-size="12" class="dgm-t-muted dgm-t-mono">Adapters / Interface Adapters / Application Services</text>
+
+    <!-- outer ring label -->
+    <text x="350" y="36" text-anchor="middle" font-size="12" class="dgm-t-muted dgm-t-mono">Frameworks · Databases · UI · External APIs</text>
+
+    <!-- dependency arrows pointing inward -->
+    <path class="dgm-flow" d="M350,420 L350,320" marker-end="url(#ringsAcc)"/>
+    <path class="dgm-flow" d="M350,303 L350,276" marker-end="url(#ringsAcc)"/>
+    <path class="dgm-flow" d="M350,272 L350,248" marker-end="url(#ringsAcc)"/>
+
+    <!-- left side arrows -->
+    <path class="dgm-flow" d="M42,228 L122,228" marker-end="url(#ringsAcc)"/>
+    <path class="dgm-flow" d="M126,228 L208,228" marker-end="url(#ringsAcc)"/>
+    <path class="dgm-flow" d="M212,228 L280,228" marker-end="url(#ringsAcc)"/>
+
+    <!-- arrow label -->
+    <text class="dgm-t-accent" x="350" y="450" text-anchor="middle" font-size="12">依赖关系永远指向内部——与第一篇中的六边形规则完全相同。</text>
+  </svg>
+  <figcaption>三种架构画的都是同一张图：最内层的 domain 不受技术侵染，被向外添加细节的圆环包围，每条依赖箭头都<strong>指向内部</strong>。Hexagonal 把它画成带标记 port 的六边形；Onion 和 Clean 把它画成带命名圆环的同心圆。形状在变；箭头的方向从不改变。</figcaption>
+</figure>
+
+<h2 id="which-one">该选哪一个</h2>
+<p>因为三者共享相同的核心规则，在它们之间做选择实际上是词汇、团队规模和具体场景需要哪种细微差别的问题。</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>团队与阶段</th>
+      <th>建议方案</th>
+      <th>原因</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>独立开发者 / 早期创业</th>
+      <td><strong>Hexagonal，轻量应用。</strong>围绕数据库和最易变的供应商建立一两个 port。</td>
+      <td>速度比完整性更重要。几个接口带来快速测试和替换路径；完整的仪式可以等等。</td>
+    </tr>
+    <tr>
+      <th>小团队，成长期（约 Series A）</th>
+      <td><strong>Onion 或 Hexagonal</strong>，对所有 I/O 使用明确的 port 接口。</td>
+      <td>测试开始成为瓶颈，新员工需要快速理解 domain。圆环标签（或 port 名称）让结构一目了然。</td>
+    </tr>
+    <tr>
+      <th>中型（多个小队）</th>
+      <td>以 <strong>Clean Architecture 词汇</strong>作为团队间的共同契约。</td>
+      <td>边界模糊时小队会相互踩脚。给每个 use case 和每条边界命名，让团队能够在清晰的缝合处独立工作。</td>
+    </tr>
+    <tr>
+      <th>大型企业</th>
+      <td><strong>三者结合</strong>，有明确边界、版本化契约，以及每个 port 对应多个 adapter。</td>
+      <td>监管要求、遗留系统和多供应商采购，都需要只有完整 Clean + Hexagonal 边界才能提供的明确性。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>几个与这张表对应的真实场景：</p>
+<p><strong>一家金融科技初创公司</strong>（8 名工程师）使用了两个 port——<code>PaymentGateway</code> 和 <code>LedgerRepository</code>——其他一切都直接调用。十八个月后他们更换了支付服务商，只需要写一个新的 adapter 类和改一行连接代码。其余代码库未受影响。这就是 Hexagonal 最精简、最有效的样子。</p>
+<p><strong>一家中型 SaaS 公司</strong>（60 名工程师）把 Onion 圆环标签作为代码审查规则：“domain model 圈里的任何东西都不允许 import 圈外的东西，没有例外”。新工程师在第一次 PR 审查时就理解了边界策略。圆环词汇成为了一种快捷语——“你在这里跨圈了”就是一条完整的审查意见，人人都懂。</p>
+<p><strong>一家企业级银行</strong>（数百名工程师，20 年历史的代码库）使用了完整的 Clean Architecture 词汇，有命名的 <code>UseCase</code> 接口、每个圈之间明确的 DTO 对象，以及每个 output port 两个 adapter（旧主机 + 新核心银行系统并行运行）。仪式感很重，但审计员和合规团队可以像读规格说明书一样读懂架构，各小队可以独立部署，因为边界是代码中真实的缝合处。</p>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">不要混用词汇却没有词汇表</span><p>唯一真正糟糕的结果是在同一个团队中混用三个名字，却没有共同的词汇表。如果一半人叫它“port”，另一半叫它“boundary”，代码审查就变成了翻译练习。选一套词汇，写下来，坚持用。底层规则——依赖指向内部——才是最重要的。</p></div>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">核心要点</h3>
+<ul>
+  <li><strong>一条规则，三张图。</strong>Hexagonal、Onion 和 Clean Architecture 都在执行同一条依赖规则：源码依赖指向内部，指向业务规则，而不是指向框架或 I/O。</li>
+  <li><strong>Hexagonal</strong>（Cockburn，2005）给你最机械的指导：ports 和 adapters，对称的 driving 侧和 driven 侧。有大量集成需要替换时最适用。</li>
+  <li><strong>Onion</strong>（Palermo，2008）在 domain 内部增加了明确的同心圆环，将 domain model 与 domain services 和 application services 分开。domain 足够大、需要内部结构时最适用。</li>
+  <li><strong>Clean</strong>（Martin，2017）给每一层命名，让 use case 成为一等产物。增加了“尖叫式架构”——文件夹结构声明业务意图。需要共享词汇和每个边界处严格 DTO 的大型团队最适用。</li>
+  <li><strong>它们是叠加的，不是竞争的。</strong>大多数成熟的代码库混合了三者：Hexagonal 的 port/adapter 接线、Onion 的 domain 内部圆环规律、Clean 的 application 层 use case 命名。</li>
+  <li><strong>按需取用。</strong>两个 port 的 Hexagonal 设置对初创公司已足够。完整的 Clean 仪式在企业规模下才物有所值。不要为还不需要的词汇付出代价。</li>
+  <li><strong>每个团队选一套词汇</strong>并写下来。名字本身不如一致性重要。</li>
+</ul>
+</div>
+<p>本系列的下一篇文章将深入探讨让这三种方案成为可能的机制：<a href="/blog/architecture/dependency-injection-and-ioc">Dependency Injection &amp; Inversion of Control</a>——在运行时把 adapter 连接到 port 的实际接线，而无需 domain 触及任何框架。</p>6:["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lf",null,{"href":"/zh/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"博客"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lf",null,{"href":"/zh/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"源码与架构"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["软件架构基础",["$","span",null,{"aria-hidden":"true","children":" · "}],"第 2 篇，共 15 篇"]}],["$","h1",null,{"className":"blog-article__title","children":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字"}],["$","p",null,{"className":"blog-article__summary","children":"它们看起来像是三种相互竞争的架构，实则是同一个思想——依赖指向内部，框架置于边缘——用三种方式画出来。本文讲清楚每种方案真正增加了什么，以及应该选哪一个。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"作者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-06","children":"2026年3月6日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"15 分钟阅读"}],["$","$L10",null,{"label":"次浏览"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","软件架构",{"children":"软件架构"}],["$","li","Clean Architecture",{"children":"Clean Architecture"}],["$","li","Onion Architecture",{"children":"Onion Architecture"}],["$","li","Hexagonal Architecture",{"children":"Hexagonal Architecture"}],["$","li","系统设计",{"children":"系统设计"}],["$","li","Dependency Inversion",{"children":"Dependency Inversion"}]]}]]}],["$","$L11",null,{"html":"$12"}],"$L13","$undefined"]}]
+7:["$","$L14",null,{"heading":"相关阅读","intro":"几篇相近主题的文章，方便沿着同一条思路继续阅读。","items":[{"post":{"slug":"ports-and-adapters","category":"architecture","title":"Ports & Adapters（六边形架构），简单讲清楚","summary":"一篇友好、示例驱动的六边形架构指南：ports 和 adapters 到底是什么、让它运转的那条核心规则，以及究竟该用多少——无论你是独立创业者还是企业级团队。","date":"2026-03-07","readingMinutes":16,"tags":["软件架构","Hexagonal Architecture","Ports and Adapters","Clean Architecture","系统设计","Dependency Inversion"],"author":"Nguyen Le Phong","featured":true,"series":"foundations","seriesOrder":1},"categoryTitle":"源码与架构","readingLabel":"16 分钟阅读"},{"post":{"slug":"monolith-to-microservices","category":"architecture","title":"单体、模块化单体、微服务：一份诚实的决策指南","summary":"微服务是你为组织规模支付的代价——而不是起点。一篇不炒作地从单体到模块化单体再到微服务的完整导览，附上告诉你何时（以及是否）该拆分的信号。","date":"2026-03-03","readingMinutes":16,"tags":["软件架构","Microservices","Modular Monolith","系统设计","分布式系统","可扩展性"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":5},"categoryTitle":"源码与架构","readingLabel":"16 分钟阅读"},{"post":{"slug":"micro-frontends-when-why-and-cost","category":"architecture","title":"微前端：何时值得，以及它们真正的代价","summary":"将前端拆分成独立可部署的模块可以解放团队——也可能把你埋在复杂性中。本文来自在规模化场景下落地 Angular 宿主 + React 模块的实战经验：微前端何时有回报，以及它带来的账单。","date":"2026-03-02","readingMinutes":15,"tags":["软件架构","Micro-Frontends","前端架构","Module Federation","可扩展性","系统设计"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":6},"categoryTitle":"源码与架构","readingLabel":"15 分钟阅读"},{"post":{"slug":"hexagonal-architecture-in-practice","category":"architecture","title":"Hexagonal Architecture in Practice","summary":"A practical guide to applying Hexagonal Architecture to one small feature: drawing the boundary, naming ports in business language, keeping adapters at the edge, testing the core, and deciding when the extra structure is worth the cost.","date":"2026-04-22","readingMinutes":7,"tags":["Software Architecture","Hexagonal Architecture","Ports and Adapters","Testing","Code Organization","Technical Debt"],"author":"Nguyen Le Phong"},"categoryTitle":"源码与架构","readingLabel":"7 分钟阅读"}],"sourceCategory":"architecture","sourceSlug":"clean-vs-onion-vs-hexagonal"}]
+8:["$","nav",null,{"className":"blog-series-nav","aria-label":"软件架构基础","children":[["$","$Lf",null,{"href":"/zh/blog/architecture/ports-and-adapters","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","上一篇"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Ports & Adapters（六边形架构），简单讲清楚"}]]}],["$","$Lf",null,{"href":"/zh/blog/architecture/dependency-injection-and-ioc","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["下一篇"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Dependency Injection 与 Inversion of Control，去掉魔法讲清楚"}]]}]]}]
+9:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lf",null,{"href":"/zh/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","返回 源码与架构"]}]}]
+a:["$","aside",null,{"className":"blog-article__toc","children":["$","$L15",null,{"label":"本页内容","surface":"blog"}]}]
+b:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+c:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+d:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+e:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+13:["$","$L19",null,{"prompt":"你觉得这篇文章如何？","surface":"blog","category":"architecture","slug":"clean-vs-onion-vs-hexagonal","reactionLabels":{"like":"赞","love":"喜欢","insightful":"有启发","clap":"鼓掌"}}]
+18:null

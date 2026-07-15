@@ -1,0 +1,294 @@
+1:"$Sreact.fragment"
+a:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"EngagementProvider"]
+b:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+c:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+d:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+e:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+f:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+1b:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+1c:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T494,{"@context":"https://schema.org","@type":"Article","@id":"https://nguyenlephong.github.io/en/notes/know-your-work-rights#article","headline":"Know Your Rights at Work: Quitting, Switching Jobs, Insurance and Tax in Vietnam","description":"Every month, a meaningful part of salary flows into insurance and tax, yet many workers do not know what they can claim in return. This plain-language guide covers quitting, handover, social-insurance book finalization, unemployment benefits, contracts, required papers, onboarding at a new company, worked examples and do/don’t checklists.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/notes/know-your-work-rights","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/notes/know-your-work-rights.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/en/notes/know-your-work-rights","datePublished":"2026-02-11","dateModified":"2026-02-11","keywords":"Employee Rights, Social Insurance, Unemployment Insurance, Personal Income Tax, Employment Contract, Changing Jobs","author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:Tcb3,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/en/notes/know-your-work-rights#faq","mainEntity":[{"@type":"Question","name":"What percentage of salary goes to social insurance each month?","acceptedAnswer":{"@type":"Answer","text":"On the insurance salary base, the employee has 10.5% deducted (social insurance 8% + health 1.5% + unemployment 1%), and the employer pays an additional 21.5% (social insurance 17.5% + health 3% + unemployment 1%) — 32% combined. Note that every benefit (pension, maternity, unemployment) is calculated on the insurance salary base , which is often lower than take-home pay if the company registers a low base."}},{"@type":"Question","name":"How are unemployment benefits calculated, and where do I file?","acceptedAnswer":{"@type":"Answer","text":"The monthly benefit = 60% × the average unemployment-insurance salary of the last 6 months before leaving. Contributing 12–36 months earns 3 months of benefit; each additional 12 months adds 1 month, up to 12. You must file at the Employment Service Center within 3 months of the contract ending, with the termination decision and finalized social-insurance book. Missing the 3-month window forfeits this round's benefit."}},{"@type":"Question","name":"What documents should I collect from the company when I leave?","acceptedAnswer":{"@type":"Answer","text":"The three most important: (1) the finalized social-insurance book — the company must return it within 14 working days; (2) the termination decision — mandatory for the unemployment claim; and (3) the tax-withholding certificate for year-end finalization. You should also clearly sign the work and asset handover records to avoid later disputes."}},{"@type":"Question","name":"What's the difference between Gross and Net salary?","acceptedAnswer":{"@type":"Answer","text":"Gross is total pay before deducting mandatory insurance (10.5%) and personal income tax. Net is the amount you actually receive after all deductions. When you get an offer, always ask whether the figure is gross or net, because the misunderstanding can leave you 'short' several million a month versus expectations."}},{"@type":"Question","name":"Should I withdraw my social insurance as a lump sum?","acceptedAnswer":{"@type":"Answer","text":"Be very cautious. A lump-sum withdrawal erases your contribution history and gives up the chance of a pension — income that stays with you to the end of life and is adjusted for inflation. The amount withdrawn is usually far less than the total value you and your employer contributed. Prefer reserving it to keep contributing at a new job, and treat the lump sum as a last resort."}},{"@type":"Question","name":"How do I get a personal income tax refund?","acceptedAnswer":{"@type":"Answer","text":"You get a refund when the tax provisionally withheld during the year is more than what you actually owe — common when you leave a job mid-year, register dependents late, or have 10% withheld on casual income. To reclaim it, you complete the year-end tax finalization (yourself, or authorize your employer if you have a single income source). Register your tax code and dependents early so the correct deductions apply from the start."}}]}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean notes-accent notes-reading","style":{"--topic-color":"#b45309"},"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"笔记\",\"item\":\"https://nguyenlephong.github.io/en/notes\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Perspectives & Reflections\",\"item\":\"https://nguyenlephong.github.io/en/notes?topic=goc-nhin\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Know Your Rights at Work: Quitting, Switching Jobs, Insurance and Tax in Vietnam\",\"item\":\"https://nguyenlephong.github.io/en/notes/know-your-work-rights\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],["$L5","$L6","$L7","$L8"],"$L9"]}],"loading":null,"isPartial":false}
+10:T72f5,<p>Here's a small question to start: <strong>every month, where does about 32% of your salary go?</strong> A third of your income — combining the part deducted from you and the part your employer pays on your behalf — flows steadily into insurance and tax. And yet, if you ask most working people "what do you get back from that money," they'll hesitate. We're good at our jobs, but strangely vague about our own rights.</p>
+<p>The sad part is that most of these benefits won't come find you. Unemployment benefits needs to be claimed within a short window. Overpaid tax only comes back if you file for it. Your social-insurance book must be finalized and handed back — often only if you ask. Nobody loses a benefit because the law is unfair. They lose it because they <strong>didn't know, or found out too late</strong>.</p>
+<p>This article is a map. It follows the natural journey of a working person — <em>thinking about leaving → doing the paperwork → the gap between jobs → starting the new role → settling in</em> — and at every stage spells out what you're entitled to, what to do, and what to avoid. No jargon, no scare tactics. Just the things everyone should have been taught before their first day at work.</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">An honest note before we start</span><p>This guide describes Vietnam's labor and social-insurance system. The <em>rates</em> and <em>formulas</em> (contribution percentages, the unemployment-benefit formula) have been stable for years. But the <em>absolute numbers</em> — the base salary used for caps, the personal tax deduction, the regional minimum wage — are adjusted over time. Learn the <strong>principles</strong> here, then confirm the latest figures with the social-insurance agency, the tax authority, or your HR team before making a decision.</p></div>
+
+<h2 id="the-big-picture">The big picture: where does 32% of your salary go?</h2>
+<p>Before we talk about quitting or switching, understand the machine running behind your payslip. Every month, on top of your <em>insurance salary base</em>, two streams flow into shared funds: the part <strong>you</strong> have deducted, and the part your <strong>employer</strong> pays for you (not taken from your salary, but still a cost they bear on your behalf).</p>
+
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th width="40%">Fund</th><th>You pay</th><th>Employer pays</th></tr></thead>
+<tbody>
+<tr><td><strong>Social insurance</strong> (pension, sickness, maternity, survivorship, work injury)</td><td>8%</td><td>17.5%</td></tr>
+<tr><td><strong>Health insurance</strong></td><td>1.5%</td><td>3%</td></tr>
+<tr><td><strong>Unemployment insurance</strong></td><td>1%</td><td>1%</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>10.5%</strong></td><td><strong>21.5%</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Together that's <strong>32%</strong> of your insurance salary base. This isn't money "lost" — it's your own safety net: sick pay when you're ill, maternity benefits when you have a child, an allowance when you lose your job, a pension in old age, health coverage when you visit a clinic. Understanding this figure reveals three important things:</p>
+<ul>
+<li><strong>Your "insurance salary" is often lower than your take-home pay.</strong> Many companies register a low insurance base to cut costs. The lower that base, the lower your future pension, maternity, and unemployment benefits — because every entitlement is calculated on it.</li>
+<li><strong>Every benefit rides on your social-insurance book.</strong> It records each month you contribute. A broken streak, a lost book, or a company that owes back-contributions directly affects your future wallet.</li>
+<li><strong>There's a contribution ceiling.</strong> The salary used for social and health insurance is capped at 20× the base salary; unemployment insurance is capped at 20× the regional minimum wage. Above the cap, the excess isn't contributed (and isn't counted toward benefits).</li>
+</ul>
+
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/know-your-work-rights/salary-review.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Two Vietnamese office workers review a payslip and benefit documents at a desk with a calculator and laptop." />
+  <figcaption>The first step is seeing the insurance salary base clearly enough to know what your benefits are built on.</figcaption>
+</figure>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Try this today</span><p>Open your latest payslip and find the line for <em>"insurance contribution salary."</em> Compare it to your actual take-home pay. If the gap is large, you now know why your future benefits are being quietly thinned out — and that's worth raising the next time you negotiate.</p></div>
+
+<h2 id="before-you-quit">Stage 1 — Before you quit: think it through and prepare</h2>
+<p>Quitting is an emotional decision, but the paperwork is pure logic. The period <em>before you hand in your notice</em> is when you hold the most leverage — don't spend it all drafting the resignation message. Use it to <strong>count what's yours</strong>.</p>
+
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th width="34%">What to review</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td><strong>Remaining annual leave</strong></td><td>Unused annual leave is <strong>paid out in cash</strong> when you leave. The base is usually 12 days/year, plus more for seniority. Don't let it vanish.</td></tr>
+<tr><td><strong>Bonus &amp; timing</strong></td><td>13th-month bonus, project bonus, and stock awards often have a "must still be employed on date X" cliff. Leaving a few weeks early can cost you a full month's pay.</td></tr>
+<tr><td><strong>Training commitments</strong></td><td>If you signed an agreement to repay training costs (sponsored courses, certifications), leaving early may trigger compensation. Re-read it before deciding.</td></tr>
+<tr><td><strong>Notice period</strong></td><td>Giving lawful notice is what makes your departure "by the book" — the condition for keeping every benefit and avoiding penalties.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>On notice periods, this is the milestone people most often get wrong:</p>
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th width="55%">Type of labor contract</th><th>Minimum notice</th></tr></thead>
+<tbody>
+<tr><td>Indefinite-term</td><td><strong>45 days</strong></td></tr>
+<tr><td>Fixed-term (12–36 months)</td><td><strong>30 days</strong></td></tr>
+<tr><td>Under 12 months</td><td><strong>3 working days</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Some cases let you leave immediately, no notice required</span><p>The law lets an employee terminate the contract <em>without notice</em> in certain situations: not being paid on time, not being assigned the agreed role/location, being mistreated or harassed, a pregnant worker advised to stop by a doctor, and more. If you're in one of these, <strong>keep evidence</strong> (emails, messages, payslips) before you leave.</p></div>
+
+<h2 id="the-handover">Stage 2 — Doing the paperwork cleanly</h2>
+<p>How you leave says more about you than how you arrived. A professional exit protects your benefits and preserves relationships — and in any career, people cross paths again more often than you'd expect. A clean process has four parts:</p>
+<ul>
+<li><strong>Written resignation / notice.</strong> Saying it out loud isn't enough. Submit a letter (or an email with confirmation) stating your last working day. This is the legal anchor for the notice period.</li>
+<li><strong>Work handover record.</strong> List open tasks, accounts, documents, and who receives them. A good handover is a gift to the colleagues who stay — and a shield for you if there's ever a dispute over "who broke what."</li>
+<li><strong>Asset handover record.</strong> Laptop, phone, access card, uniform, equipment. Sign for everything clearly so you're not unfairly docked or blamed later.</li>
+<li><strong>Termination decision.</strong> A document from the company confirming you've left. This is <em>mandatory</em> for the unemployment-benefit application.</li>
+</ul>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/know-your-work-rights/exit-handover.webp" width="1440" height="960" loading="lazy" decoding="async" alt="A Vietnamese employee reviews exit paperwork with HR while returned office equipment sits on the meeting table." />
+  <figcaption>A clean handover protects both the relationship and the documents you need for the next stage.</figcaption>
+</figure>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Don't sign what you haven't read — even on the way out</span><p>At the end of the journey, people sign everything quickly just to be free. Read the <strong>contract-liquidation record</strong> carefully: does it correctly show the unused leave being paid out, the final month's salary, and any amounts owed either way? A hasty signature can mean confirming "received in full" when you haven't.</p></div>
+
+<h2 id="finalize-insurance-book">Stage 3 — Finalizing your social-insurance book and the papers to take with you</h2>
+<p>This is the <strong>most important part that the fewest people notice</strong>. When you leave, the company is responsible for <em>finalizing your social-insurance book</em> (reporting the headcount reduction, certifying your contribution history) and <strong>returning the book and documents</strong> to you. Holding the finalized book means your entire contribution history is "sealed" and portable to your next job or usable to claim benefits.</p>
+
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th width="40%">Documents to collect when you leave</th><th>What it's for</th></tr></thead>
+<tbody>
+<tr><td><strong>Finalized social-insurance book</strong></td><td>Continue contributions at the new job; claim unemployment, maternity, pension, lump-sum benefits.</td></tr>
+<tr><td><strong>Termination decision</strong></td><td><strong>Mandatory</strong> document to register for unemployment benefits.</td></tr>
+<tr><td><strong>Tax-withholding certificate</strong> (on request)</td><td>To finalize your year-end tax and claim a refund if you overpaid.</td></tr>
+<tr><td><strong>Payslips / income confirmation</strong></td><td>For tax finalization, loan applications, or future reconciliation.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">A deadline to remember</span><p>The company must complete the procedure and return your social-insurance book within <strong>14 working days</strong> of the contract ending (it can take longer in special cases, but not beyond 30 days). If the deadline passes and you haven't received it, ask HR proactively in writing — don't be shy, this is your right.</p></div>
+
+<p>If the company <strong>owes insurance contributions</strong>, your book may not be fully finalized. You have the right to ask the social-insurance agency to certify the period already paid and to report the issue so you're protected. Don't let a company's difficulty become your permanent loss.</p>
+
+<h2 id="unemployment-benefits">Stage 4 — Unemployment benefits: real cash that many forget</h2>
+<p>This is the most wasted benefit of all. Throughout your working life you've paid 1% of your salary into this fund every month. When you leave and don't yet have a new job, some of it comes back to you in cash — but <strong>only if you actively register, on time</strong>.</p>
+
+<h3 id="ui-eligibility">Eligibility</h3>
+<ul>
+<li>You <strong>terminated the contract lawfully</strong> (excluding unlawful unilateral termination, drawing a pension, etc.).</li>
+<li>You contributed to unemployment insurance for <strong>at least 12 months</strong> within the 24 months before leaving.</li>
+<li>You <strong>haven't found a job</strong> within 15 days of filing.</li>
+<li>You file within <strong>3 months</strong> of the contract ending.</li>
+</ul>
+
+<h3 id="ui-amount">The amount and how it's calculated</h3>
+<p>The formula is easy to remember:</p>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Unemployment-benefit formula</span><p><strong>Monthly benefit = 60% × the average insurance salary of the last 6 months</strong> before leaving.<br/>On duration: 12–36 months contributed earns <strong>3 months</strong> of benefit; every additional 12 months adds 1 month, up to a <strong>maximum of 12 months</strong>.</p></div>
+
+<p><strong>A relatable example:</strong> Lan works in an office; her average unemployment-insurance salary over the last 6 months is 15 million VND/month. She contributed for 4 years total (48 months).</p>
+<ul>
+<li>Monthly benefit = 60% × 15 million = <strong>9 million VND</strong>.</li>
+<li>Duration: first 36 months = 3 months; remaining 12 months = +1 month → <strong>4 months</strong>.</li>
+<li>In total, Lan can receive around <strong>36 million VND</strong> during her job search — if she registers on time.</li>
+</ul>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Two deadlines that can cost you benefits</span><p><strong>1. Missing the 3-month window</strong> → you lose this round's benefit (the contribution time is reserved for next time, but this round's cash is gone).<br/><strong>2. Starting a new job before filing</strong> → once you have a new job and resume contributions, you're no longer "unemployed" and can't claim. Register <em>before</em> signing a new contract if there's a gap.</p></div>
+
+<h3 id="ui-where">Where to file, and what you need</h3>
+<p>File at the <strong>Employment Service Center</strong> under the provincial labor department (many now allow online filing via the public-service portal). The basic file: the benefit application, the termination decision, the finalized social-insurance book, and your ID card. Once receiving benefits, you must <strong>report your job-search status</strong> on schedule each month — miss a reporting period and your benefit can be suspended.</p>
+<p>Beyond cash, unemployment insurance also entitles you to free <strong>career counseling, job referrals</strong>, and <strong>vocational-training support</strong>. The gap between jobs is a great chance to level up — a perspective explored more fully in <a href="/notes/lam-chu-su-nghiep-bien-cong-viec-thanh-be-phong">Owning Your Career</a>.</p>
+
+<h2 id="health-insurance-switch">Stage 5 — Health insurance when switching: don't break the streak</h2>
+<p>Health insurance is the shield for the moments nobody hopes for: illness, hospital stays, surgery. When switching jobs, one quiet but valuable detail matters: <strong>5 continuous years of health-insurance participation</strong>.</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Why "5 continuous years" is precious</span><p>Once you've participated continuously for 5 years and your co-payment in the year exceeds a set threshold (6 months of the base salary), you qualify for <strong>higher coverage</strong> — many treatment costs are covered almost entirely. A long gap can reset your "5-year" clock.</p></div>
+
+<p>So when you leave, watch for:</p>
+<ul>
+<li><strong>Your employer health card expires</strong> when your headcount is reduced. If you join a new company immediately, it's reissued and the streak continues.</li>
+<li><strong>If there's a long gap</strong>, consider buying <strong>household health insurance</strong> so you're never uncovered — both a safety net when ill and a way to preserve continuity.</li>
+<li>Keep your social/health-insurance number (usually a single lifetime ID) for easy lookup and continuation.</li>
+</ul>
+
+<h2 id="the-gap">Stage 6 — The gap between two jobs</h2>
+<p>If you're lucky enough to jump straight across with no break, you can skip this part. But if there's a pause — to rest, to study, or simply because you haven't found the right place — this is when you most need to be proactive, because <em>no company is looking after you anymore</em>.</p>
+<ul>
+<li><strong>Unemployment benefits:</strong> register right away, as above — it's legitimate income that eases the financial pressure.</li>
+<li><strong>Health insurance:</strong> buy household coverage so you don't break the streak.</li>
+<li><strong>Voluntary social insurance:</strong> if you want to keep your contribution history unbroken to reach the years needed for a pension, you can pay voluntary social insurance during the break.</li>
+<li><strong>Emergency fund:</strong> this is exactly when it earns its keep. If you don't have one yet, read <a href="/notes/quy-khan-cap-tu-a-den-z">The Emergency Fund from A to Z</a> and build one for next time.</li>
+</ul>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/know-your-work-rights/benefits-gap-planning.webp" width="1440" height="960" loading="lazy" decoding="async" alt="A Vietnamese professional plans next steps during a job gap at home with a laptop, calendar, calculator, and benefit documents." />
+  <figcaption>A career gap is easier to carry when unemployment benefits, health insurance, and tax paperwork are handled early.</figcaption>
+</figure>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">A healthy mindset</span><p>A career gap isn't a scratch on your record. Taking time to recharge, learn a skill, or clear-headedly pick the right next place is an <em>investment</em>. The key is not letting it erode your finances or the continuity of your insurance.</p></div>
+
+<h2 id="read-the-contract">Stage 7 — Starting a new job: read the contract BEFORE you sign</h2>
+<p>The joy of an offer tempts people to sign fast to "lock it in." But a labor contract governs years of your working life. Spend an evening reading it carefully — here are the clauses worth the most scrutiny.</p>
+
+<h3 id="contract-type">Contract type &amp; probation</h3>
+<ul>
+<li><strong>Contract type:</strong> fixed-term or indefinite-term — it affects your benefits and the notice period you'll owe later.</li>
+<li><strong>Probation:</strong> only <em>one</em> probation period per position; the maximum length depends on the role (typically up to 60 days for jobs requiring a college degree or higher). Probation pay must be <strong>at least 85%</strong> of the full salary.</li>
+<li><strong>Beware "disguised probation":</strong> watch out for endless probation or repeated probation re-signings — that's an unhealthy sign.</li>
+</ul>
+
+<h3 id="gross-net">Gross or Net — ask explicitly</h3>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Gross ≠ Net</span><p><strong>Gross</strong> is total pay before insurance (10.5%) and personal income tax. <strong>Net</strong> is what actually lands in your hands. With the same number on paper, mistaking gross for net can leave you "short" several million a month. Ask clearly whether the offer figure is gross or net, and who bears the insurance and tax.</p></div>
+
+<h3 id="clauses-to-watch">Clauses to scrutinize</h3>
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th width="30%">Clause</th><th>What to ask / watch for</th></tr></thead>
+<tbody>
+<tr><td><strong>Insurance salary base</strong></td><td>Contributed on real salary or a lower figure? Directly affects future pension, maternity, and unemployment benefits.</td></tr>
+<tr><td><strong>Confidentiality (NDA)</strong></td><td>Normal and reasonable — but read it to understand the scope of confidential info and how long it binds you.</td></tr>
+<tr><td><strong>Non-compete</strong></td><td>Banned from working for competitors after leaving? Scope, duration, any compensation? An overly broad clause can shackle your career.</td></tr>
+<tr><td><strong>Training commitment</strong></td><td>If the company sponsors training, how long must you stay, and what's the repayment if you leave early?</td></tr>
+<tr><td><strong>Penalties / compensation</strong></td><td>Any penalty for resigning? The law limits such penalties — don't sign unreasonable ones.</td></tr>
+<tr><td><strong>Bonus &amp; KPI annexes</strong></td><td>Bonuses "per company policy" are vague. Ask for specific conditions, timelines, and calculation.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">The golden rule of signing</span><p>You're fully entitled to say: <em>"May I take the contract to read for a day or two first?"</em> A decent company will respect that. Keep a copy <strong>signed by both parties</strong> for yourself — this is your legal asset, not HR's alone.</p></div>
+
+<h2 id="onboarding">Stage 8 — Onboarding: papers and the registrations worth doing early</h2>
+<p>Your first week at a new company is usually drowning in forms. A few small early actions will save you millions in tax and avoid headaches later:</p>
+<ul>
+<li><strong>Provide your existing social-insurance number</strong> so contributions continue — don't end up with two duplicate books.</li>
+<li><strong>Register a personal tax code</strong> if you don't have one, and give it to the company so tax is withheld correctly (on the progressive scale rather than a flat 10%).</li>
+<li><strong>Register dependents</strong> (young children, elderly parents without income, etc.) to claim the <strong>family deduction</strong> — each dependent reduces a meaningful slice of taxable income every month. Many forget this and overpay tax all year.</li>
+<li><strong>Complete your employment file</strong>: contract, ID card, qualifications, and salary bank account.</li>
+</ul>
+
+<h2 id="income-tax">Stage 9 — Personal income tax: understand it so you don't overpay</h2>
+<p>Income tax sounds complex, but the principle is very human: <strong>you're only taxed on the income left after subtracting what supports you and your family</strong>. And tax is <em>progressive in brackets</em> — not the whole income at one rate, but each "slice" of income at its own rate.</p>
+
+<h3 id="tax-deductions">Step 1: Subtract the deductions</h3>
+<p>Taxable income = Assessable income − Mandatory insurance − Family deductions.</p>
+<ul>
+<li><strong>Personal deduction:</strong> a fixed amount for yourself each month.</li>
+<li><strong>Dependent deduction:</strong> an amount for each registered dependent.</li>
+<li><strong>Mandatory insurance</strong> (10.5%) is also subtracted before tax is calculated.</li>
+</ul>
+
+<h3 id="tax-brackets">Step 2: Apply the 7-bracket progressive scale</h3>
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th>Bracket</th><th>Taxable income / month</th><th>Rate</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Up to 5 million</td><td>5%</td></tr>
+<tr><td>2</td><td>Over 5 – 10 million</td><td>10%</td></tr>
+<tr><td>3</td><td>Over 10 – 18 million</td><td>15%</td></tr>
+<tr><td>4</td><td>Over 18 – 32 million</td><td>20%</td></tr>
+<tr><td>5</td><td>Over 32 – 52 million</td><td>25%</td></tr>
+<tr><td>6</td><td>Over 52 – 80 million</td><td>30%</td></tr>
+<tr><td>7</td><td>Over 80 million</td><td>35%</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">A common myth: "moving up a bracket means losing money"</span><p>Many fear a raise because of "jumping a tax bracket." Wrong! Because it's <em>progressive by slice</em>, only the <strong>portion above the threshold</strong> is taxed at the higher rate, not your whole income. A raise always increases your take-home pay — only the extra slice is taxed a little more.</p></div>
+
+<h3 id="casual-income">Casual income &amp; the 10% withholding</h3>
+<p>If you freelance, tutor, or take side gigs <strong>without a labor contract, or with one under 3 months</strong>, each payment of 2 million or more is usually subject to a <strong>10% withholding</strong> at source. Don't despair — if your annual income falls below the taxable threshold, you can <strong>file to get it back</strong>.</p>
+
+<h3 id="tax-finalization">Finalization &amp; refunds — don't leave your own money behind</h3>
+<p>At year-end (or when you've changed jobs across several employers), you should <strong>finalize your personal income tax</strong>. This is when you and the state settle up: if you were withheld <em>more</em> than you actually owe (because of late-registered dependents, an unpaid gap, or 10% withholdings on casual income), you get a <strong>refund</strong>.</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">When refunds are very common</span><p>You leave a job mid-year and have a few months with no income; or you register dependents late; or you hop across several companies. In those cases your total annual deductions usually exceed what was provisionally withheld — finalization is how you lawfully reclaim your own money.</p></div>
+
+<h2 id="lump-sum">Stage 10 — Lump-sum social insurance vs. waiting for a pension: a big decision</h2>
+<p>During a long break that needs cash, many people consider "withdrawing social insurance as a lump sum." This is your right, but it's also one of the <strong>most regrettable financial decisions</strong> if done in haste.</p>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Think hard before taking the lump sum</span><p>Taking the lump sum means <strong>erasing your contribution history</strong> and giving up the chance of a pension — nearly the only income that stays with you to the end of life, and that's adjusted for inflation. The amount withdrawn is usually <em>far less</em> than the total value you and your employer contributed. Treat this as a last resort, after weighing the option of reserving it to keep contributing later.</p></div>
+<p>If you're torn between spending now and long-term security, the "make your money work for you" mindset in <a href="/notes/thinh-vuong-tai-chinh-de-tien-lam-viec-cho-ban">Financial Prosperity</a> can help you look past the immediate withdrawal.</p>
+
+<h2 id="do-and-dont">Summary: do / don't</h2>
+<div class="blog-table-wrap">
+<table>
+<thead><tr><th width="50%">✅ Do</th><th>❌ Don't</th></tr></thead>
+<tbody>
+<tr><td>Give the right notice for your contract type</td><td>Walk out without notice → lose benefits, risk paying compensation</td></tr>
+<tr><td>Collect your finalized insurance book + termination decision</td><td>Leave empty-handed because you're shy to ask HR</td></tr>
+<tr><td>Register unemployment benefits within 3 months, before re-employment</td><td>Miss the window and only then learn you were owed cash</td></tr>
+<tr><td>Keep health insurance continuous (household plan in a gap)</td><td>Break the streak and reset your 5-year mark</td></tr>
+<tr><td>Read the contract, ask gross/net, scrutinize binding clauses</td><td>Sign quickly, then be shocked at your first payslip</td></tr>
+<tr><td>Register dependents + tax code early for correct deductions</td><td>Forget to register and overpay tax all year</td></tr>
+<tr><td>Finalize tax at year-end to claim a refund</td><td>Leave your own tax refund behind</td></tr>
+<tr><td>Weigh carefully; prefer reserving your insurance history</td><td>Take the lump sum on impulse and lose your pension</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Key takeaways</h3>
+<ul>
+<li><strong>That 32% of your salary is a safety net, not money lost.</strong> Knowing your contribution and your insurance salary base is the first step to protecting yourself.</li>
+<li><strong>Benefits won't come find you.</strong> Unemployment benefits, tax refunds, and your insurance book all require you to act, on time.</li>
+<li><strong>When you leave: collect every document.</strong> The finalized insurance book and termination decision are the "keys" to every benefit that follows.</li>
+<li><strong>Unemployment insurance = real cash.</strong> 60% of salary, up to 12 months — but you must register within 3 months and before starting a new job.</li>
+<li><strong>Don't let health insurance lapse.</strong> The 5-continuous-year mark is worth protecting.</li>
+<li><strong>Read the contract before signing.</strong> Gross/net, insurance base, NDA, non-compete, training commitments — know them up front to avoid being constrained later.</li>
+<li><strong>Understanding tax protects your wallet.</strong> Progressive by slice, register dependents, and finalize to get refunds.</li>
+<li><strong>Think hard before a lump-sum withdrawal.</strong> A pension is the income that stays with you to the end.</li>
+</ul>
+</div>
+
+<p>Working isn't only about doing the job well — it's also about understanding the rules of the game so no one can accidentally take what's yours. You don't need to memorize every number; just remember that <strong>each stage of the journey carries its own entitlements</strong>, and most of them only ask for a little initiative, at the right moment. Save this article, and the next time you — or a friend — are about to switch jobs, open it up. One careful evening of reading today can hold onto tens of millions and a great deal of peace of mind tomorrow.</p>4:["$","$La",null,{"category":"notes","slug":"know-your-work-rights","children":[["$","$Lb",null,{"category":"notes","slug":"know-your-work-rights","readingMinutes":22,"surface":"notes"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lc",null,{"url":"https://nguyenlephong.github.io/en/notes/know-your-work-rights","title":"Know Your Rights at Work: Quitting, Switching Jobs, Insurance and Tax in Vietnam","surface":"notes","category":"notes","slug":"know-your-work-rights","labels":{"share":"分享","copyLink":"复制链接","copied":"已复制！","close":"关闭"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Ld",null,{"href":"/zh/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"笔记"}],[["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Ld",null,{"href":"/zh/notes?topic=goc-nhin","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Perspectives & Reflections"}]],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"Know Your Rights at Work: Quitting, Switching Jobs, Insurance and Tax in Vietnam"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","h1",null,{"className":"blog-article__title","children":"Know Your Rights at Work: Quitting, Switching Jobs, Insurance and Tax in Vietnam"}],["$","p",null,{"className":"blog-article__summary","children":"Every month, a meaningful part of salary flows into insurance and tax, yet many workers do not know what they can claim in return. This plain-language guide covers quitting, handover, social-insurance book finalization, unemployment benefits, contracts, required papers, onboarding at a new company, worked examples and do/don’t checklists."}],["$","div",null,{"className":"blog-article__meta","children":[["$","time",null,{"dateTime":"2026-02-11","children":"2026年2月11日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"22 分钟阅读"}],["$","$Le",null,{"label":"次浏览"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Employee Rights",{"children":"Employee Rights"}],["$","li","Social Insurance",{"children":"Social Insurance"}],["$","li","Unemployment Insurance",{"children":"Unemployment Insurance"}],["$","li","Personal Income Tax",{"children":"Personal Income Tax"}],["$","li","Employment Contract",{"children":"Employment Contract"}],["$","li","Changing Jobs",{"children":"Changing Jobs"}]]}]]}],["$","$Lf",null,{"html":"$10"}],"$L11",null,"$L12"]}]]}],"$L13","$L14"]}],"$L15"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/579669e8fc8fe057.css","precedence":"next"}]
+6:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+7:["$","script","script-0",{"src":"/_next/static/chunks/60afb5b0374fe7a9.js","async":true}]
+8:["$","script","script-1",{"src":"/_next/static/chunks/0e65e15104575034.js","async":true}]
+9:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+11:["$","section",null,{"className":"blog-faq","aria-labelledby":"notes-faq-heading","children":[["$","h2",null,{"id":"notes-faq-heading","className":"blog-faq__heading","children":"常见问题"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What percentage of salary goes to social insurance each month?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"On the insurance salary base, the employee has <strong>10.5%</strong> deducted (social insurance 8% + health 1.5% + unemployment 1%), and the employer pays an additional <strong>21.5%</strong> (social insurance 17.5% + health 3% + unemployment 1%) — 32% combined. Note that every benefit (pension, maternity, unemployment) is calculated on the <em>insurance salary base</em>, which is often lower than take-home pay if the company registers a low base."}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How are unemployment benefits calculated, and where do I file?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"The monthly benefit = <strong>60% × the average unemployment-insurance salary of the last 6 months</strong> before leaving. Contributing 12–36 months earns 3 months of benefit; each additional 12 months adds 1 month, up to 12. You must file at the <strong>Employment Service Center</strong> within <strong>3 months</strong> of the contract ending, with the termination decision and finalized social-insurance book. Missing the 3-month window forfeits this round's benefit."}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What documents should I collect from the company when I leave?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"The three most important: (1) the <strong>finalized social-insurance book</strong> — the company must return it within 14 working days; (2) the <strong>termination decision</strong> — mandatory for the unemployment claim; and (3) the <strong>tax-withholding certificate</strong> for year-end finalization. You should also clearly sign the work and asset handover records to avoid later disputes."}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What's the difference between Gross and Net salary?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"<strong>Gross</strong> is total pay before deducting mandatory insurance (10.5%) and personal income tax. <strong>Net</strong> is the amount you actually receive after all deductions. When you get an offer, always ask whether the figure is gross or net, because the misunderstanding can leave you 'short' several million a month versus expectations."}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"Should I withdraw my social insurance as a lump sum?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Be very cautious. A lump-sum withdrawal erases your contribution history and gives up the chance of a pension — income that stays with you to the end of life and is adjusted for inflation. The amount withdrawn is usually far less than the total value you and your employer contributed. Prefer reserving it to keep contributing at a new job, and treat the lump sum as a last resort."}}]]}],["$","div","5",{"className":"blog-faq__item","children":["$L19","$L1a"]}]]}]]}]
+12:["$","$L1b",null,{"prompt":"你觉得怎么样？","surface":"notes","category":"notes","slug":"know-your-work-rights","reactionLabels":{"like":"赞","love":"喜欢","insightful":"有启发","clap":"致敬"}}]
+13:["$","nav",null,{"className":"blog-series-nav","aria-label":"Perspectives & Reflections","children":[["$","$Ld",null,{"href":"/zh/notes/wedding-prep-for-grooms","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","上一篇笔记"]}],["$","span",null,{"className":"blog-series-nav__title","children":"A Groom’s Practical Guide to Wedding Preparation: Stages and Budget in Vietnam"}]]}],["$","$Ld",null,{"href":"/zh/notes/the-monkey-eight-hours-and-unquestioned-rules","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["下一篇笔记"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"The Monkey, the Bananas, and the Eight-Hour Question"}]]}]]}]
+14:["$","footer",null,{"className":"blog-article__footer","children":["$","$Ld",null,{"href":"/zh/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","返回笔记"]}]}]
+15:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1c",null,{"label":"本页内容","surface":"notes"}]}]
+18:null
+19:["$","dt",null,{"className":"blog-faq__q","children":"How do I get a personal income tax refund?"}]
+1a:["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"You get a refund when the tax provisionally withheld during the year is <em>more</em> than what you actually owe — common when you leave a job mid-year, register dependents late, or have 10% withheld on casual income. To reclaim it, you complete the <strong>year-end tax finalization</strong> (yourself, or authorize your employer if you have a single income source). Register your tax code and dependents early so the correct deductions apply from the start."}}]

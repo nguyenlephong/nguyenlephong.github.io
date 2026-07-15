@@ -1,0 +1,19 @@
+{
+  "slug": "daily-standup-status-report-or-strategy",
+  "category": "ways-of-working",
+  "title": "Daily standup は status report か、それとも今日の strategy か",
+  "summary": "Daily standup は昨日を報告する儀式にも、今日の flow、risk、attention を整える短い戦略会話にもなります。",
+  "date": "2026-02-05",
+  "readingMinutes": 6,
+  "tags": [
+    "Agile",
+    "Daily Standup",
+    "Scrum",
+    "Team Collaboration",
+    "Delivery",
+    "Ways of Working"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>9:30、video call が開く。同じ小さな儀式が始まる。一人が昨日を読む。別の人が board を読む。誰かが \"no blockers\" と言うが、顔は違うことを言っている。meeting は時間通り終わる。でも一日はあまり明確になっていない。</p>\n<p>Daily standup はとても馴染みがあるので、何のためかを忘れやすい。昨日やったこと、今日やること、block されているかを順番に話す。それは無意味ではないが、演じやすい。</p>\n<p>よりよい standup は、次の working day のための短い strategy conversation だ。flow はどこで遅いか。risk はどこで大きくなっているか。何を start する前に finish すべきか。誰が help を必要としているか。</p>\n<p>変化は people ではなく work を見るところから始まる。board を右から左へ歩く。done に近いものは何か。review で止まっているものは何か。長すぎる in progress はどれか。</p>\n<p>blocker も正直になりやすい。多くの blocker は劇的ではない。未確認の API contract、不安定な test environment、忙しすぎる reviewer、決まっていない edge case。こういう小さな risk を早く見ることが大切だ。</p>\n<p>Standup は focus も守る。三つの task がほぼ終わっているのに五つ始めるなら、team は finish ではなく motion を増やしているかもしれない。</p>\n<p>lead と manager は注意が必要だ。すべての update に judgment が返ると、meeting は stage になる。すべての blocker を長く解くと、meeting は重くなる。問題を名づけ、誰が後で話すか決めて、進む。</p>\n<p>問いはシンプルだ。この standup は何を変えたか。何日も何も変えないなら、それは coordination ではなく reporting になっているのかもしれない。</p>"
+}

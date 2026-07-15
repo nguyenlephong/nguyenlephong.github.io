@@ -1,0 +1,18 @@
+{
+  "slug": "the-small-relief-of-a-reversible-decision",
+  "category": "perspectives",
+  "title": "The Small Relief of a Reversible Decision",
+  "summary": "A reflective note on lowering decision stress by knowing which choices can be changed safely after new information arrives.",
+  "date": "2026-07-12",
+  "readingMinutes": 5,
+  "tags": [
+    "Reflection",
+    "Decision Making",
+    "Uncertainty",
+    "Leadership",
+    "Product Engineering",
+    "Sustainable Work"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>There was a decision on the table, and everyone treated it like a door that would lock behind us. The discussion became heavier than the decision deserved. Then someone asked what it would take to reverse it in two weeks. The room changed. The choice was still important, but it was no longer pretending to be permanent.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/the-small-relief-of-a-reversible-decision/reversible-decision-path.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A quiet desk scene with two clearly marked decision paths, a rollback note, and a small calendar checkpoint.' />\n  <figcaption>Knowing how to reverse a decision can make the first step calmer.</figcaption>\n</figure>\n<p>Not every decision is reversible. Some touch money, trust, data, contracts, or safety. Those deserve slower movement and stronger review. But many daily product and engineering choices are not that final. They only feel final because nobody has described the way back.</p>\n<p>A reversible decision has a few comforting properties. The blast radius is known. The rollback path is possible. The team can observe whether the choice is working. The cost of learning is acceptable. Once those are true, delay is not always wisdom.</p>\n<p>This does not mean being careless. Reversibility is not an excuse to skip thinking. It is a way to match the weight of the process to the real weight of the choice. A decision that can be undone with a config change should not consume the same ceremony as a database migration that changes customer money.</p>\n<p>I like writing the reversal condition near the decision itself. If error rate rises above this threshold, roll back. If support tickets mention this confusion twice, revisit copy. If adoption is flat after one week, remove the experiment. The decision becomes less mystical when the exit is visible.</p>\n<p>Reversible decisions are also kinder to teams. They reduce the need for everyone to defend perfect foresight. People can say what they believe, name what they do not know, and agree on how the system will teach them the rest.</p>\n<p>The relief is small but real. Instead of carrying the whole future in one meeting, the team carries a next step, a checkpoint, and a way back. That is often enough to move without pretending certainty has arrived.</p>\n<p>When a decision feels heavier than it should, ask whether it is actually permanent. If it is, slow down. If it is not, design the reversal path, make the trade-off visible, and let the work continue.</p>"
+}

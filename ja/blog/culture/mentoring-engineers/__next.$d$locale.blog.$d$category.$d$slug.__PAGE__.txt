@@ -1,0 +1,203 @@
+1:"$Sreact.fragment"
+9:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+a:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+e:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1a:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1b:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Tae8,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/ja/blog/culture/mentoring-engineers#article","headline":"エンジニアのメンタリング：ジュニアをシニアに育てる方法","description":"優れたチームは採用するだけでなく育てることで生まれます。エンジニアリングチームのリードとして得た経験から：ペアプログラミング、教えるチャンネルとしてのコードレビュー、ちょうど良いストレッチ課題、そしてジュニアを誰にでも任せられる存在に変えるマインドセットの転換を紹介します。","inLanguage":"ja","url":"https://nguyenlephong.github.io/ja/blog/culture/mentoring-engineers","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/mentoring-engineers.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/ja/blog/culture/mentoring-engineers","datePublished":"2026-02-24","dateModified":"2026-02-24","keywords":"エンジニアリング文化, メンタリング, キャリア成長, リーダーシップ, チームコラボレーション, コードレビュー","articleSection":"エンジニアリング文化","isRelatedTo":[{"@type":"BlogPosting","headline":"コードレビューという技術：人を傷つけずにコードを批評する方法","url":"https://nguyenlephong.github.io/ja/blog/culture/how-to-review-code-kindly","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/how-to-review-code-kindly.jpg"},{"@type":"BlogPosting","headline":"Kind Engineering：優しさがあなたをより良いエンジニアにする理由","url":"https://nguyenlephong.github.io/ja/blog/culture/how-to-be-a-kind-engineer","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/how-to-be-a-kind-engineer.jpg"},{"@type":"BlogPosting","headline":"レビューしたくなるプルリクエストの書き方","url":"https://nguyenlephong.github.io/ja/blog/culture/how-to-write-a-great-pull-request","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/how-to-write-a-great-pull-request.jpg"},{"@type":"BlogPosting","headline":"届くフィードバック：エンジニアとして批評を与え、受け取る方法","url":"https://nguyenlephong.github.io/ja/blog/culture/giving-and-receiving-feedback","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/giving-and-receiving-feedback.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/ja/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:T1549,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/ja/blog/culture/mentoring-engineers#faq","mainEntity":[{"@type":"Question","name":"ジュニア開発者をどのようにメンタリングすればいいですか？","acceptedAnswer":{"@type":"Answer","text":"最も効果的なアプローチは三つのことを組み合わせます：現在の能力のすぐ先のタスクを与える（ストレッチゾーン）、彼らのために問題を解決せずにブロックを解除するために利用可能でいる、そしてペアリングとコードレビューの中で意図的な教えの瞬間に投資する。重要なのは彼らにドライブさせることです——キーボードを彼らの前に置き、答えを渡すのではなく誘導的な質問をし、一緒に決定を下すときに自分の推論を語る。スケジュールされた時間も重要：ステータスアップデートだけでなく真のメンタリングのアジェンダを持つ定期的な1対1が、実際に起きるメンタリングと緊急性に押し出されるメンタリングの違いをもたらします。"}},{"@type":"Question","name":"メンタリングとマネジメントの違いは何ですか？","acceptedAnswer":{"@type":"Answer","text":"マネジメントは主に結果についてです——仕事がうまく完了され、チームが整合し、組織の目標が達成されることを確保する。メンタリングは個人の成長についてです——彼らがキャリアで持ち続けるスキル、判断力、所有権の開発を助ける。実際には大きく重なります：最良のマネージャーはメンタリングし、最良のメンターは組織のコンテキストを理解します。しかし、この区別は緊張するときに重要です。危機の中で誰かの問題を自分で解決して速く出荷した場合、メンタリングの機会を犠牲にしてマネジメントの決定を下しました。良いメンターはそのトレードオフに気づき、プレッシャーが下がったときに補います。"}},{"@type":"Question","name":"エンジニアがシニアに昇進するのをどのように助けられますか？","acceptedAnswer":{"@type":"Answer","text":"シニアはほとんどの人が思うよりテクニカルスキルについてではありません——ミドルレベルになると、テクニカルバーは通常十分に近いです。シニアエンジニアを際立てるのはスコープ、判断力、影響力です。そこに到達するのを助けるために：本物の問題の所有権を与える（チケットのシーケンスではなく）、決定が行われる部屋に入れる、彼らにより若いジュニアをメンタリングさせる（教えることはシニアの思考を定義する直感の表現を強制します）、そして即時の仕事を超えたテクニカルな決定を推進する機会を与える。成長はそれらの経験の中で起きます、より難しいチケットの完了ではなく。会社のキャリアラダーがシニアが実際に何を意味するかについて明示的であることを確認してください——曖昧な基準はパスを見えなくします。"}},{"@type":"Question","name":"メンタリングにはどのくらいの時間がかかりますか？","acceptedAnswer":{"@type":"Answer","text":"適切にやっているなら、メンティーあたり週約2〜3時間。典型的にはこのように分解されます：一回の集中した1対1（30〜45分）、差分を承認するだけでなくそれを超える意図的なコードレビュー（週を通じて30〜60分）、一〜二回のペアリングセッションまたはアドホックな会話（計30〜60分）。それは本物の投資です——それが要点です。メンタリングにコストがゼロなら、おそらく意味のある形でやっていません。レバレッジの議論はここで重要です：一人のエンジニアの成長を大幅に加速させる週2〜3時間は、それらの時間を自分のコードに費やすよりはるかに多くを返します。"}},{"@type":"Question","name":"彼らの代わりに仕事をせずにメンタリングするにはどうすればいいですか？","acceptedAnswer":{"@type":"Answer","text":"最も助けになるルール：彼らが持ってくる問題への最初の反応は常に質問であり、解決策ではあってはなりません。すでに試したこと、エラーメッセージが何を言っているか、コードベースの他の場所に似たパターンがあるかを尋ねましょう。何も言う前に30秒待ちましょう——その間に自分で答えを出すことがよくあります。ペアリングセッションで行き詰まったとき、キーボードを奪う衝動に抵抗しましょう。代わりに：「次は何を確認しますか？」と尋ねましょう。飛び込まない不快感は実際に何かを教えるための代償です。直接の答えは、本当にアプローチを尽くして他のすべてを妨げるブロッカーがある状況のために取っておいてください——そしてその場合でも、単に解決策を提供するのではなく推論を説明しましょう。"}}]}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--violet","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"ブログ\",\"item\":\"https://nguyenlephong.github.io/ja/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"エンジニアリング文化\",\"item\":\"https://nguyenlephong.github.io/ja/blog/culture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"エンジニアのメンタリング：ジュニアをシニアに育てる方法\",\"item\":\"https://nguyenlephong.github.io/ja/blog/culture/mentoring-engineers\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],["$L5","$L6","$L7"],"$L8"]}],"loading":null,"isPartial":false}
+f:T70c2,<p>二人のマネージャーのことを考えてください——一人はあなたをより良くしてくれた人、もう一人はそうでなかった人。そうでなかった人はおそらくあなたを忙しくしておきました：割り当てられたチケット、承認されたレビュー、出席したスタンドアップ。あなたをより良く<em>した</em>人はおそらくより微妙なことをしていました。少し大きすぎる問題を与え、あなたが倒れたときにキャッチできるほど近くにいて、それからあなたが自力で解決するのを見ていた。それがメンタリングの全技術であり、そこに凝縮されています。</p>
+<p>私はスタートアップとスケールアップで8〜11人のエンジニアリングチームを率いてきましたが、速く成長したチームと停滞したチームの違いは、ほぼ常に一つのことに帰着しました：シニアの人々がジュニアの人々に投資していたかどうか。彼らの面倒を見ることではありません。彼らの仕事をすることでもありません。投資——時間、信頼、慎重に設計された難しさを伴う投資。</p>
+<p>この記事は、エンジニアのメンタリングを初めて試みる前に誰かが教えてくれていたら良かったと思うすべてです。また、正直に言えば、私が犯して修正しなければならなかった間違いの記録でもあります。メンタリングするエンジニアを任されたシニアエンジニアやチームを構築中のテックリードに、これがいくつかの教訓を節約することを願っています。</p>
+
+<h2 id="why-mentor">メンタリングがレバレッジである理由</h2>
+<p>誘惑があります——特に個人貢献者として育ってきた場合——メンタリングをコストとして考えることです。概念を説明するのに費やす時間はコードを書かない時間です。しかし、このフレーミングは数学をまったく逆にしています。</p>
+<p>チームに8人のエンジニアがいる場合、チームとしての生産量は8人分の仕事です。60%の能力で動いていた人が80%になるのを助けた瞬間、チームの生産量に20%の一人分を追加したことになります——採用なしに、オンボーディングのオーバーヘッドなしに、新入りが効果的になるまでの三ヶ月なしに。チームを通じて一年間でそれを掛け合わせると、メンタリングは最も高いレバレッジのある投資の一つです。</p>
+<p>天井を上げる効果もあります。私が最も良いと思ったチームはスタープレイヤーが最も多いチームではありませんでした——<em>フロア</em>が最も高かったチームでした。チームのすべてのエンジニアが難しい問題を独立して処理できると信頼できるとき、一〜二人のシニアにすべてを通わせるチームよりもはるかに速く動けます。メンタリングはそのフロアを上げます。</p>
+<p>そして、人々が認めるより重要な定着率の側面があります。エンジニアは仕事を辞めるのではなく——停滞を辞めます。チームを去るエンジニアから聞いた最大の理由は「成長が止まった」というものの何らかのバリエーションです。シニアの人々がジュニアの人々に投資するカルチャーは、人々が留まるカルチャーであり、あなたの組織の知識が18ヶ月ごとに扉を出て行かないカルチャーです。</p>
+
+<h2 id="meet-them-where-they-are">人々がいる場所で会う</h2>
+<p>私が見る——そして自分でも早い段階で犯した——最大のメンタリングの間違いは、間違ったレベルで課題を設定することです。眠りながらできるタスクを与えると退屈します。本当に手の届かないものを与えると溺れます。魔法は二つの間にあるバンドで起きます。</p>
+<p>発達心理学者Lev Vygotskyはこれを<strong>最近接発達領域</strong>と呼びました。アイデアはシンプルです：独立してできることがあり、助けを借りてもできないことがあり、そしてその間に——適切なサポートがあれば<em>できそうな</em>もの——があります。その中間地帯こそが学習が実際に起きる場所です。パニックなしのストレッチが存在する場所です。</p>
+<p>実際には、これは彼らがこれまでやってきたことの一歩先のタスクを見つけることを意味し、十歩先ではありません。シンプルなAPIエンドポイントを処理したジュニアは、完全なシステムの再設計ではなく、中程度の複雑さの機能を所有する準備ができています。いくつかの機能を単独で届けたミドルレベルのエンジニアは、一夜でテックリードになるのではなく、チーム横断の調整が必要な機能をリードする準備ができています。</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 640 300" role="img" aria-labelledby="dgm-zpd">
+    <title id="dgm-zpd">三つの入れ子のゾーン：中央にコンフォートゾーン、中間にストレッチ/学習ゾーン、外側にパニックゾーン。ストレッチゾーンが学習の最適スポットとして強調されています。</title>
+    <defs>
+      <marker id="zpdAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <!-- outer: panic -->
+    <ellipse cx="320" cy="150" rx="290" ry="130" class="dgm-surface" stroke-width="1.5"/>
+    <!-- middle: stretch — highlighted -->
+    <ellipse cx="320" cy="150" rx="200" ry="92" class="dgm-port" stroke-width="2"/>
+    <!-- inner: comfort -->
+    <ellipse cx="320" cy="150" rx="108" ry="50" class="dgm-core" stroke-width="2"/>
+
+    <text class="dgm-t-strong" x="320" y="146" text-anchor="middle" font-size="15">コンフォートゾーン</text>
+    <text class="dgm-t-muted" x="320" y="165" text-anchor="middle" font-size="12">すでにマスターした</text>
+
+    <!-- stretch label: placed in the visible ring -->
+    <text class="dgm-t-accent" x="320" y="105" text-anchor="middle" font-size="14">Stretch zone（学習の最適スポット）</text>
+    <text class="dgm-t-muted" x="320" y="122" text-anchor="middle" font-size="11">現在の能力のすぐ先の課題</text>
+
+    <!-- panic label -->
+    <text class="dgm-t-muted dgm-t-mono" x="320" y="261" text-anchor="middle" font-size="11">PANIC ZONE — 遠すぎて速すぎる</text>
+
+    <!-- arrow pointing to the stretch ring -->
+    <path class="dgm-flow" d="M460,78 Q 430,85 395,100" marker-end="url(#zpdAcc)"/>
+    <text class="dgm-t-accent" x="480" y="74" text-anchor="middle" font-size="12">← あなたの目標</text>
+  </svg>
+  <figcaption><strong>ストレッチゾーン</strong>——コンフォートとパニックの間の輪——こそ成長が起きる場所です。良いメンタリングはエンジニアをその輪の中に保ちます：挑戦されているが、溺れていない。</figcaption>
+</figure>
+
+<p>誰かのゾーンがどこにあるかをどうやって知るか？聞き、見る。タスクのどの部分が明確でどの部分が不明確かを尋ねましょう。ペアリングセッションでどこで遅くなるかを観察しましょう。彼らが尋ねる質問の種類に注目してください（大きなアーキテクチャ的な質問は通常端に近いことを示し；小さな構文的な質問は通常そうではありません）。注意を払っていれば、すぐにキャリブレートできます。</p>
+
+<h2 id="ways-to-teach">具体的な教えのツール</h2>
+<p>繰り返し戻ってくるいくつかのテクニックがあります。どれも目新しいものではありません。</p>
+<h3 id="pairing">ペアプログラミング、正しくやる</h3>
+<p>ペアリングは暗黙の知識を最も速く伝達する方法です——ドキュメントに住んでいない種類、問題が通常どこに潜むかについての本能、そのパターンが後で痛みを引き起こす理由。しかし、ペアリングは<em>ジュニア</em>がドライビングするときにのみ教えます、シニアではなく。もし座って彼らが見ている間にタイプし始めたら、能力を実証しました。でも、彼らが何かを構築するのを助けていません。</p>
+<p>実際に機能するペアリングのバージョン：キーボードを彼らの前に置き、隣に座り、気づいていることを語りましょう。「最初にエッジケースを見てみます——このリストが空の場合はどうなりますか？」待ちましょう。考えさせましょう。間違わせましょう。飛び込まない不快感は、実際に何かを教えるための入場料です。</p>
+<h3 id="code-review-as-teaching">コードレビューを教えのチャンネルとして</h3>
+<p>ほとんどのコードレビューはコードに焦点を当てています。良いメンタリングはそれを<em>思考</em>についての会話に変えます。関数が長すぎると指摘するだけでなく、なぜを説明しましょう——何が理解しにくくなるか、コードベースが成長するにつれて何が最初に壊れるか。このテーマをどのように優しく効果的にやるかについてより詳しく<a href="/blog/culture/how-to-review-code-kindly">コードを優しくレビューする方法</a>で書きましたが、メンタリングの角度はここで追加する価値があります：レビューは習慣になる前に誰かの推論をキャッチしてリダイレクトできる数少ない場所の一つです。</p>
+<p>私が学んだ一つのこと：レビューで指摘するのではなく質問をする。「二つのリクエストが同時にこれに当たったらどうなりますか？」は「これはスレッドセーフではありません」より有用です。問題を考えさせます；答えを渡すのではなく。</p>
+<h3 id="reasoning-aloud">推論を声に出して説明する</h3>
+<p>シニアエンジニアは圧縮された膨大な見えない知識を持っています——ただそれを持っていることを忘れているだけです。決定を下すとき、それを語りましょう。「このスケールではまだ余分な複雑さの価値がないので、Redisに手を伸ばすのではなくシンプルなインメモリのマップにします。」三秒かかるその一文は、ジュニアエンジニアが独自の試行錯誤で学ぶのに何ヶ月もかかることがあります。</p>
+<p>すべてを語る必要はありません。でも、推論を見えるようにすること——特に答えが明白でない決定のポイントで——は、工芸を学ぶ人のためにできる最も高い収益のものの一つです。</p>
+<h3 id="stretch-tasks">セーフティーネット付きのストレッチタスク</h3>
+<p>私が知っている最も効果的な教えの動きは、少し大きすぎるものを割り当て、それから近くにいることです。監視ではありません——彼らは苦労するためのスペースが必要です——しかし利用可能です。自然なマイルストーンでチェックインしましょう。あなたが先取りするのではなく、彼らがブロッカーを持ってくるようにしましょう。目標は、セーフティーネットがそこにあっても、彼らが独立していると感じることです。</p>
+<p>一つの重要な防護柵：ストレッチタスクには本物の期限と本物のステークスが必要ですが、失敗が壊滅的でないステークスではなければなりません。準備ができていなかったタスクのオンコールの週末を燃やすジュニアエンジニアは、より有能になるのではなく、よりリスク回避になります。ストレッチのサイズをシステムがどのくらい間違いを許容できるかに合わせましょう。</p>
+<h3 id="dont-solve-it">代わりに解決しない</h3>
+<p>これが最も難しいものです。誰かが行き詰まっていてあなたが答えを知っているとき、それを与えないのに本物の訓練が要ります。でも、与えた瞬間に、教えることからすることに切り替わっています。次に同様の問題に当たったとき、彼らは自分で乗り越えるのではなくあなたのところに戻ってきます。</p>
+<p>代わりに機能するもの：正しい誘導的な質問をする。「エラーメッセージは実際に何と言っていますか？」「支払いモジュールで同様のケースをどのように処理したかを見ましたか？」目標は彼ら自身の考えの次のステップを与えることで、答えではありません。</p>
+
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">30秒ルール</span><p>誰かが問題を持ってきたとき、何も言う前に30秒待ちましょう。その間に自分で答えを出すことがよくあります。もし出さなければ、あなたの最初の反応は解決策ではなく質問であるべきです。</p></div>
+
+<h2 id="autonomy-ladder">自律性のラダー</h2>
+<p>メンタリングのために最も明確なメンタルモデルの一つは、自律性をラダーとして考えることです。ラダーのどこにいるかによって、与える必要のあるコンテキストの量、チェックインの頻度、割り当てるタスクの種類が決まります。メンタリングの目標は常に誰かを一段上に動かすことです——一夜でトップに引き上げることではなく、動き続けること。</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>段</th><th>どのように動いているか</th><th>あなたの関与はどのように見えるか</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1 — 指示型</th>
+      <td>ステップバイステップの指示が必要；ほとんどの決定について不確か。ほとんどのことについて行動する前に尋ねる。</td>
+      <td>あなたがタスクを詳細に定義し、すべてのプルリクエントを綿密にレビューし、毎日チェックインし、常に推論を語る。</td>
+    </tr>
+    <tr>
+      <th>2 — 誘導型</th>
+      <td>慣れた仕事は独立して扱える；新しい状況では意見が必要。推測するのではなくブロッカーをあなたに持ってくる。</td>
+      <td>あなたが明確な目標を設定し、スコープを定義し、重要な決定をレビューする。毎日ではなく数日ごとにチェックインする。</td>
+    </tr>
+    <tr>
+      <th>3 — 協働型</th>
+      <td>自分自身のアプローチを提案し、トレードオフを考え、リスクを積極的に示す。問題だけでなく選択肢を持ってくる。</td>
+      <td>あなたはガイドよりもサウンドボードとして機能する。実行前にアプローチをレビューするが、実行を信頼する。</td>
+    </tr>
+    <tr>
+      <th>4 — 委任型</th>
+      <td>問題の完全なオーナーシップを持つ：スコーピング、実行、ステークホルダーとのコミュニケーション。本当に必要なときだけエスカレートする。</td>
+      <td>マイルストーンでチェックインする。第二の意見が欲しいときに利用可能だが、彼らが完全にドライブする。</td>
+    </tr>
+    <tr>
+      <th>5 — 信頼型</th>
+      <td>自分でどう解決するかわからない問題を含め、チームのどんな問題でも任せられる。</td>
+      <td>ピア関係。お互いから学ぶ。あなたの役割はスコープを与えて道を開けることです。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>ほとんどの新卒者は段1からスタートします。2〜3年の経験で採用されたほとんどのエンジニアは段2に着地します。そこからの旅はマネージャーとチームがどれだけ意図的に彼らを上に動かすことに投資しているかに大きく依存します。</p>
+<p>最もよくある間違いは、誰かが稼いだより低い段にいるかのように扱うことです。誰かが段3で機能しているのに段1で管理されている——すべてのプルリクエントを詳細にレビューし、毎日チェックインする——なら、彼らを遅らせているのであり助けていません。信頼は漸進的に延長されるものです；誰かが決定的に「証明した」ときの報酬ではありません。</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">信頼について</span><p>信頼は確実性の前に延長されます——それが信頼である理由です。誰かが完璧な実績を持つまで難しいことを信頼するのを待てば、そのトラックレコードを築くために必要な条件を拒否したことになります。</p></div>
+
+<h2 id="growing-seniors">チケットを閉じるだけでなく、シニアを育てる</h2>
+<p>多くのメンタリングの注目はジュニアに向けられています——そして、ジュニアからミドルレベルへのデルタが急激でサポートの必要性が明白なので、それは正当です。しかし、チケットクローザーに停滞してシニアにたどり着けないミドルレベルのエンジニアは、エンジニアリングチームで最も一般的で最も防ぐことができる損失の一つです。</p>
+<p>ミドルレベルとシニアの間のギャップは、ほとんどの人が思うよりテクニカルスキルについてではありません。技術的に強いミドルレベルエンジニアが停滞するのは、スコープが持つ判断力を開発する機会を持っていなかったからです。</p>
+<p>シニアを育てることは彼らに以下を与えることを意味します：</p>
+<ul>
+  <li><strong>タスクではなく、スコープ。</strong>チケットのシーケンスを与えられたミドルレベルのエンジニアはそれらのチケットを完了し、それ以外のことはしません。問題を与えましょう——所有するシステムの領域、構築する機能——そして彼らはそれを分解し、シーケンスし、トレードオフを行う判断力を開発しなければなりません。その判断力がシニアを定義するものです。</li>
+  <li><strong>見える所有権。</strong>彼らのエリアに関する決定が行われる部屋に入れましょう。ステークホルダーにアプローチを発表させましょう。挑戦されたときにそれを守らせましょう。最初は不快で、時間とともに非常に価値があります。</li>
+  <li><strong>メンタリングの責任。</strong>ミドルレベルのエンジニアをジュニアとペアにしてメンタリングすることは、彼らの成長の最良の促進要因の一つです。教えることはやることとは異なるレベルの理解を必要とします。また、直感的に行ってきた判断を明確に表現することを強制し、それがミドルレベルからシニアへのステップです。</li>
+  <li><strong>即時の仕事を超えたテクニカルな影響。</strong>標準の決定を推進させ、ADRを書かせ、テクニカルな事後分析をリードさせること——これらすべてがシニアエンジニアが持つ必要のある幅広い影響力を構築します。</li>
+</ul>
+
+<h2 id="mistakes">名前をつける価値のあるメンタリングの間違い</h2>
+<p>私はこれらのほとんどを犯しました。個人的に犯していないものは、気づかずに他の良いエンジニアが犯すのを見ました。</p>
+<ul>
+  <li><strong>早すぎる救出。</strong>誰かが苦労した瞬間に飛び込むことは助けのように感じます。そうではありません。生産的な苦労こそ成長が宿る場所です。救出は誰かが前進する方法なしに長すぎるほど行き詰まっているときのためです——困難の最初の兆候ではなく。</li>
+  <li><strong>曖昧なフィードバック。</strong>「これはよりクリーンにできる」は誰にも何も伝えません。「この関数は三つのことをしています——どれかにちなんで名前をつけると誤解を招き、テストしにくくなります」は行動できるフィードバックです。具体性は優しさです。</li>
+  <li><strong>退屈な仕事だけを委任する。</strong>ジュニアエンジニアに手渡すタスクが常に最低リスク、最低可視性、最も機械的な仕事なら、面白い学習を自分のために取っておき、彼らに雑用のキャリアを与えています。彼らは気づきます。去ります。ストレッチタスクには良いものも含まれなければなりません。</li>
+  <li><strong>本当に時間を投資しない。</strong>「質問があれば利用可能です」はメンタリングではありません。メンタリングにはスケジュールされた保護された時間が必要です——ステータスアップデートだけでなくメンタリングのアジェンダを持つ定期的な1対1；意図的なコードレビュー；意図的なペアリングセッション。正しくやっていれば、週2〜3時間かかります。コストゼロなら、おそらくやっていません。</li>
+  <li><strong>自分のことにする。</strong>目標は彼らの成長であり、あなたが思慮深いメンティーを持つことへの満足ではありません。時として彼らにとって正しい動きは別のチームでの機会を含む場合や、あなたのコードベースには彼らの学習を難しくしている問題があるというフィードバックを含む場合があります。良いメンターはメンティーを最初に置きます。</li>
+</ul>
+
+<h2 id="by-company-size">異なる規模でのメンタリングの機能の仕方</h2>
+<p>核心的な原則は会社の規模では変わりませんが、周囲のインフラは大きく変わります。</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>会社のステージ</th><th>メンタリングが典型的にどのように機能するか</th><th>注意すること</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>スタートアップ（30人未満のエンジニア）</th>
+      <td>非公式で関係主導型。メンタリングは仕事の流れの中で起きます——ペアリング、レビュー、日常的な近さ。正式なプログラムはないが、仕事自体がストレッチタスクなので、しばしば非常に濃密です。</td>
+      <td>アウトプットに忙しすぎて他者に投資できないシニアエンジニア。メンタリングが緊急性によって押し出される。</td>
+    </tr>
+    <tr>
+      <th>スケールアップ（30〜150人のエンジニア）</th>
+      <td>会社はキャリアラダーを持つほど大きいが、正式なメンタリングインフラをまだ構築していないことが多い。メンタリングの質はチームによって大きく異なる。一部のシニアは優秀；他の人は考えたことさえない。</td>
+      <td>一貫しない結果。一つのチームのジュニアは速く成長する；別のチームのジュニアは二年間停滞する。公平性が本物の問題になる。</td>
+    </tr>
+    <tr>
+      <th>エンタープライズ（150人以上のエンジニア）</th>
+      <td>正式なプログラム：メンターシップのペアリング、構造化されたキャリアフレームワーク、学習予算、専用の時間配分。よりプロセスが多く、時として助けになり、時として実際の関係を押し出す書類仕事になる。</td>
+      <td>本物の投資の代わりにプロセス。書類上のメンターシップのペアリングが、月次のコーヒーと実際の挑戦なしになる。</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>私が参加したあるスタートアップでは、正式なメンタリングプログラムはありませんでしたが、チームの三人のシニアエンジニアは暗黙の合意を持っていました：すべてのジュニアエンジニアは最初の六ヶ月以内に少なくとも一つの重要な機能の主要オーナーになると。機能はサポートがあれば達成可能にスコープされていましたが、些細ではありませんでした。シニアは難しい部分でペアリングしてすべてを綿密にレビューしましたが、ジュニアがドライブしました。一年の終わりに、それらのジュニアエンジニアはタイトル以外のすべてでミドルレベルになっていました。</p>
+<p>後に参加したより大きな会社では、非常に洗練されたメンタリングプログラムがありました——公式なペアリング、四半期ごとのチェックイン、目標のための共有ドキュメントテンプレート。そしてほとんど機能しませんでした、なぜならドキュメントテンプレートがメンタリングになったからです。ジュニアエンジニアが実際により良い仕事を得ているかどうか、またはより良い書類を得ているだけかを誰も追跡していませんでした。私がそこから取った教訓：関係と意図的な挑戦が重要なものです。その他はすべて足場です。</p>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">まとめ</h3>
+<ul>
+  <li><strong>メンタリングはレバレッジです。</strong>一人のエンジニアの能力を育てることは、チームのアウトプットと定着率において複利の見返りを持ちます——かかる時間よりはるかに多くです。</li>
+  <li><strong>ストレッチゾーンこそ学習が起きる場所です。</strong>タスクは現在の能力の一歩先であるべきで、十歩先ではありません。簡単すぎると退屈が生まれ；難しすぎると麻痺が生まれます。</li>
+  <li><strong>機能する教えのツール：</strong>ジュニアドライブのペアリング、コードレビューでの指摘ではなく質問、推論を声に出して語る、セーフティーネット付きのストレッチタスク、代わりに解決したい衝動に抵抗する。</li>
+  <li><strong>自律性のラダー</strong>は誰かがどこにいてどこに向かっているかの共通言語を与えます。確実性の一段先で信頼を延長しましょう。</li>
+  <li><strong>ミドルからシニアへの成長</strong>はスコープ、所有権、他者のメンタリング、テクニカルな影響を通じて起きます——難しいチケットの完了だけではありません。</li>
+  <li><strong>よくある罠：</strong>早すぎる救出、曖昧なフィードバック、退屈な仕事だけを委任すること、本物の時間を投資しないこと。</li>
+  <li><strong>関係がプログラムです。</strong>正式な構造は規模で助けになりますが、それらは足場です。実際の作業は、意図的な挑戦、正直なフィードバック、確実性の前に延長された信頼です。</li>
+</ul>
+</div>
+
+<p>これはエンジニアリング文化に関する小シリーズの第二弾です。まだ読んでいなければ、<a href="/blog/culture/how-to-review-code-kindly">コードを優しくレビューする方法についてのパート1</a>は、士気を下げずに教えるフィードバックを与える仕組みをカバーしています——PRレベルで適用される同じスキルです。文化、採用、チームの実際の動き方についての執筆はさらに続きます。</p>4:["$","$L9",null,{"category":"culture","slug":"mentoring-engineers","children":[["$","$La",null,{"category":"culture","slug":"mentoring-engineers","readingMinutes":14,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lb",null,{"url":"https://nguyenlephong.github.io/ja/blog/culture/mentoring-engineers","title":"エンジニアのメンタリング：ジュニアをシニアに育てる方法","surface":"blog","category":"culture","slug":"mentoring-engineers","labels":{"share":"シェア","copyLink":"リンクをコピー","copied":"コピーしました！","close":"閉じる"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lc",null,{"href":"/ja/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"ブログ"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lc",null,{"href":"/ja/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"エンジニアリング文化"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["やさしく効果的なエンジニアリング",["$","span",null,{"aria-hidden":"true","children":" · "}],"全 5 回中第 5 回"]}],["$","h1",null,{"className":"blog-article__title","children":"エンジニアのメンタリング：ジュニアをシニアに育てる方法"}],["$","p",null,{"className":"blog-article__summary","children":"優れたチームは採用するだけでなく育てることで生まれます。エンジニアリングチームのリードとして得た経験から：ペアプログラミング、教えるチャンネルとしてのコードレビュー、ちょうど良いストレッチ課題、そしてジュニアを誰にでも任せられる存在に変えるマインドセットの転換を紹介します。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"著者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-02-24","children":"2026年2月24日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"14 分で読めます"}],["$","$Ld",null,{"label":"ビュー"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","エンジニアリング文化",{"children":"エンジニアリング文化"}],["$","li","メンタリング",{"children":"メンタリング"}],["$","li","キャリア成長",{"children":"キャリア成長"}],["$","li","リーダーシップ",{"children":"リーダーシップ"}],["$","li","チームコラボレーション",{"children":"チームコラボレーション"}],["$","li","コードレビュー",{"children":"コードレビュー"}]]}]]}],["$","$Le",null,{"html":"$f"}],"$L10","$L11"]}]]}],"$L12","$L13","$L14"]}],"$L15"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+7:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+8:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+10:["$","$L19",null,{"prompt":"記事はいかがでしたか？","surface":"blog","category":"culture","slug":"mentoring-engineers","reactionLabels":{"like":"いいね","love":"大好き","insightful":"なるほど","clap":"祝福"}}]
+11:["$","section",null,{"className":"blog-faq","aria-labelledby":"blog-faq-heading","children":[["$","h2",null,{"id":"blog-faq-heading","className":"blog-faq__heading","children":"よくある質問"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"ジュニア開発者をどのようにメンタリングすればいいですか？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"最も効果的なアプローチは三つのことを組み合わせます：現在の能力のすぐ先のタスクを与える（ストレッチゾーン）、彼らのために問題を解決せずにブロックを解除するために利用可能でいる、そしてペアリングとコードレビューの中で意図的な教えの瞬間に投資する。重要なのは彼らにドライブさせることです——キーボードを彼らの前に置き、答えを渡すのではなく誘導的な質問をし、一緒に決定を下すときに自分の推論を語る。スケジュールされた時間も重要：ステータスアップデートだけでなく真のメンタリングのアジェンダを持つ定期的な1対1が、実際に起きるメンタリングと緊急性に押し出されるメンタリングの違いをもたらします。"}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"メンタリングとマネジメントの違いは何ですか？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"マネジメントは主に結果についてです——仕事がうまく完了され、チームが整合し、組織の目標が達成されることを確保する。メンタリングは個人の成長についてです——彼らがキャリアで持ち続けるスキル、判断力、所有権の開発を助ける。実際には大きく重なります：最良のマネージャーはメンタリングし、最良のメンターは組織のコンテキストを理解します。しかし、この区別は緊張するときに重要です。危機の中で誰かの問題を自分で解決して速く出荷した場合、メンタリングの機会を犠牲にしてマネジメントの決定を下しました。良いメンターはそのトレードオフに気づき、プレッシャーが下がったときに補います。"}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"エンジニアがシニアに昇進するのをどのように助けられますか？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"シニアはほとんどの人が思うよりテクニカルスキルについてではありません——ミドルレベルになると、テクニカルバーは通常十分に近いです。シニアエンジニアを際立てるのはスコープ、判断力、影響力です。そこに到達するのを助けるために：本物の問題の所有権を与える（チケットのシーケンスではなく）、決定が行われる部屋に入れる、彼らにより若いジュニアをメンタリングさせる（教えることはシニアの思考を定義する直感の表現を強制します）、そして即時の仕事を超えたテクニカルな決定を推進する機会を与える。成長はそれらの経験の中で起きます、より難しいチケットの完了ではなく。会社のキャリアラダーがシニアが実際に何を意味するかについて明示的であることを確認してください——曖昧な基準はパスを見えなくします。"}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"メンタリングにはどのくらいの時間がかかりますか？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"適切にやっているなら、メンティーあたり週約2〜3時間。典型的にはこのように分解されます：一回の集中した1対1（30〜45分）、差分を承認するだけでなくそれを超える意図的なコードレビュー（週を通じて30〜60分）、一〜二回のペアリングセッションまたはアドホックな会話（計30〜60分）。それは本物の投資です——それが要点です。メンタリングにコストがゼロなら、おそらく意味のある形でやっていません。レバレッジの議論はここで重要です：一人のエンジニアの成長を大幅に加速させる週2〜3時間は、それらの時間を自分のコードに費やすよりはるかに多くを返します。"}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"彼らの代わりに仕事をせずにメンタリングするにはどうすればいいですか？"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"最も助けになるルール：彼らが持ってくる問題への最初の反応は常に質問であり、解決策ではあってはなりません。すでに試したこと、エラーメッセージが何を言っているか、コードベースの他の場所に似たパターンがあるかを尋ねましょう。何も言う前に30秒待ちましょう——その間に自分で答えを出すことがよくあります。ペアリングセッションで行き詰まったとき、キーボードを奪う衝動に抵抗しましょう。代わりに：「次は何を確認しますか？」と尋ねましょう。飛び込まない不快感は実際に何かを教えるための代償です。直接の答えは、本当にアプローチを尽くして他のすべてを妨げるブロッカーがある状況のために取っておいてください——そしてその場合でも、単に解決策を提供するのではなく推論を説明しましょう。"}}]]}]]}]]}]
+12:["$","$L1a",null,{"heading":"関連する読みもの","intro":"同じ流れをもう少し深く追える、近いテーマの記事です。","items":[{"post":{"slug":"how-to-review-code-kindly","category":"culture","title":"コードレビューという技術：人を傷つけずにコードを批評する方法","summary":"コードレビューは、チームカルチャーが育まれるか壊れるかの分岐点です。コードをより良く仕上げながら、書いた人がより成長して戻ってこられるレビューの実践ガイド——具体的なフレーズ、レビュアーのチェックリスト、そしてレビューを静かに有害にしてしまう習慣を紹介します。","date":"2026-03-01","readingMinutes":14,"tags":["エンジニアリング文化","コードレビュー","Pull Requests","フィードバック","チームコラボレーション","メンタリング"],"author":"Nguyen Le Phong","featured":true,"series":"kind-engineering","seriesOrder":1},"categoryTitle":"エンジニアリング文化","readingLabel":"14 分で読めます"},{"post":{"slug":"how-to-be-a-kind-engineer","category":"culture","title":"Kind Engineering：優しさがあなたをより良いエンジニアにする理由","summary":"優しさはお人好しでも、柔弱でもありません。フォース・マルティプライヤーです——より明確なフィードバック、より安全なインシデント対応、より速く成長するチームメンバーを生み出します。「Kind Engineering」とは何か、そしてコードレビュー、インシデント対応、日常の仕事の中でそれをどう実践するかを解説します。","date":"2026-02-28","readingMinutes":13,"tags":["エンジニアリング文化","Kind Engineering","心理的安全性","共感","チームコラボレーション","リーダーシップ"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":2},"categoryTitle":"エンジニアリング文化","readingLabel":"13 分で読めます"},{"post":{"slug":"how-to-write-a-great-pull-request","category":"culture","title":"レビューしたくなるプルリクエストの書き方","summary":"優れたプルリクエストはレビュアーへの贈り物です：小さく、説明が丁寧で、Yesと言いやすい。レビュー可能なプルリクエストの解剖——サイズ、タイトル、説明、コミット衛生、セルフレビュー——を具体的なビフォー・アフターの例で解説します。","date":"2026-02-27","readingMinutes":13,"tags":["エンジニアリング文化","Pull Requests","コードレビュー","Git","チームコラボレーション","開発生産性"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":3},"categoryTitle":"エンジニアリング文化","readingLabel":"13 分で読めます"},{"post":{"slug":"giving-and-receiving-feedback","category":"culture","title":"届くフィードバック：エンジニアとして批評を与え、受け取る方法","summary":"フィードバックの与え方を学んでいるエンジニアはほとんどいません——受け取り方も同様です。具体的で、優しく、実行可能なフィードバックへのフィールドガイド、そして受け取る側で開かれた姿勢を保つための方法。すぐに使えるスクリプト付き。","date":"2026-02-25","readingMinutes":13,"tags":["エンジニアリング文化","フィードバック","コミュニケーション","心理的安全性","メンタリング","チームコラボレーション"],"author":"Nguyen Le Phong","series":"kind-engineering","seriesOrder":4},"categoryTitle":"エンジニアリング文化","readingLabel":"13 分で読めます"}],"sourceCategory":"culture","sourceSlug":"mentoring-engineers"}]
+13:["$","nav",null,{"className":"blog-series-nav","aria-label":"やさしく効果的なエンジニアリング","children":[["$","$Lc",null,{"href":"/ja/blog/culture/giving-and-receiving-feedback","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","前の記事"]}],["$","span",null,{"className":"blog-series-nav__title","children":"届くフィードバック：エンジニアとして批評を与え、受け取る方法"}]]}],["$","span",null,{}]]}]
+14:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lc",null,{"href":"/ja/blog/culture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","エンジニアリング文化に戻る"]}]}]
+15:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1b",null,{"label":"目次","surface":"blog"}]}]
+18:null

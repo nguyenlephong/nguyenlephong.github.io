@@ -1,0 +1,18 @@
+{
+  "slug": "writing-status-updates-people-can-act-on",
+  "category": "ways-of-working",
+  "title": "Writing Status Updates People Can Act On",
+  "summary": "A practical note on writing status updates that tell readers what changed, what is blocked, and what action is needed next.",
+  "date": "2026-07-08",
+  "readingMinutes": 5,
+  "tags": [
+    "Ways of Working",
+    "Communication",
+    "Status Updates",
+    "Delivery",
+    "Planning",
+    "Teamwork"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The update was accurate but not useful. It said the work was in progress, the team was investigating, and the next step would be shared soon. Nobody could tell whether to wait, help, escalate, or ignore it. The status existed, but it did not give anyone a handle.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/writing-status-updates-people-can-act-on/actionable-status-update.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A team reviews a structured board of blank status cards with simple icons for blocker, owner, next action, and evidence.' />\n  <figcaption>A useful status update helps someone decide, unblock, or stop worrying.</figcaption>\n</figure>\n<p>Status updates are not just reports. They are coordination tools. A good update reduces the number of private pings, repeated questions, and anxious guesses around the work. It tells the reader what changed and what, if anything, they should do.</p>\n<p>I find that actionable updates usually include five pieces: current state, evidence, blocker or risk, owner, and next action. Not every update needs all five in full detail, but when one is missing, the reader often has to infer it. Inference is where confusion grows.</p>\n<p>Current state should be concrete. Almost done is weaker than deployed to staging and waiting for payment callback verification. Investigating is weaker than checking whether retries doubled after the provider timeout. The goal is not verbosity. The goal is a state someone else can place on a map.</p>\n<p>Evidence keeps the update from becoming mood. A test result, log sample, screenshot, PR link, metric, or customer example helps the reader understand why the state is trustworthy. Without evidence, green can mean done, hopeful, or merely quiet.</p>\n<p>Blockers and risks should name the needed action. Blocked by backend is too wide. Need Minh to confirm whether the new field is nullable before 15:00 is actionable. Waiting for product is too wide. Need decision on whether guest checkout is included in this release is actionable.</p>\n<p>Ownership matters because updates without owners become ambient noise. If nobody owns the next action, the update is just weather. A named owner does not create blame. It creates a place for follow-through to land.</p>\n<p>The best updates also say what not to do. No customer action needed. Do not retry manually. No release risk yet. Escalate only if there is no callback by 17:00. These boundaries protect people from inventing unnecessary work.</p>\n<p>Writing a useful status update takes a little more effort than writing a vague one. But it saves effort for everyone else. Before posting, ask: after reading this, can someone decide, unblock, or stop worrying? If not, the update may be true, but it is not finished.</p>"
+}

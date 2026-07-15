@@ -1,0 +1,14 @@
+{
+  "title": "Thiết kế default sao cho fail vẫn an toàn",
+  "summary": "Một reflection thực tế về cách chọn default bảo vệ user và system khi configuration, rollout hoặc external dependency còn bất định.",
+  "readingMinutes": 6,
+  "tags": [
+    "Software Architecture",
+    "Defaults",
+    "Reliability",
+    "Failure Modes",
+    "Configuration",
+    "Product Engineering"
+  ],
+  "html": "<p>Default đó nhìn vô hại. Nó chỉ là một option nhỏ trong configuration panel, và hầu hết mọi người sẽ không bao giờ đổi nó. Rồi một dependency bắt đầu trả response chậm hơn, và default nhỏ đó trở thành behavior mà mọi user trải nghiệm. Câu hỏi không còn là setting đó có tiện không. Câu hỏi là nó fail có an toàn không.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/designing-defaults-that-fail-safely/safe-defaults-panel.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Một bàn architecture bình tĩnh với configuration panels, fallback paths, warning markers và các engineer review safe default behavior.' />\n  <figcaption>Default tốt bảo vệ system khi không ai đang nhìn sát setting đó.</figcaption>\n</figure>\n<p>Default là architecture thầm lặng. Nó quyết định chuyện gì xảy ra khi user không làm gì, khi operator quên một setting, khi environment variable bị thiếu, hoặc khi rollout gặp case chưa ai test. Vì vậy default xứng đáng được chú ý hơn bề mặt nhỏ của nó.</p>\n<p>Default an toàn không phải lúc nào cũng là behavior mạnh nhất. Thường nó là behavior dễ đảo ngược nhất, ít bất ngờ nhất và dễ giải thích nhất. Nó nên giữ trust của user, giữ data đúng scope, tránh write không thể undo, và chọn đường boring khi confidence thấp.</p>\n<p>Default nguy hiểm là default giả định mọi thứ xung quanh đều khỏe. Nó giả định provider luôn available, cache luôn warm, permission luôn đúng, record luôn scoped, hoặc feature flag luôn resolve được. Những assumption này có thể hợp lý lúc development nhưng vẫn mong manh trong production.</p>\n<p>Thiết kế default nghĩa là gọi tên failure mode. Nếu dependency down thì sao? Nếu account anonymous thì sao? Nếu flag không evaluate được thì sao? Nếu payload thiếu thì sao? Mỗi câu trả lời nên là quyết định có chủ ý, không phải thứ code tình cờ làm đầu tiên.</p>\n<p>Safe default cũng cần visibility. Nếu system fallback, ai đó nên biết. Silent fallback có thể bảo vệ user trong một lúc, nhưng cũng có thể giấu một broken path nhiều tuần. Pattern an toàn hơn là behavior graceful cho user và signal rõ cho team.</p>\n<p>Mình thích một bài test nhỏ: mình có thấy ổn nếu default này áp dụng cho mọi user trong một giờ khi team đang investigate problem không? Nếu câu trả lời là không, default đó có lẽ đang mang quá nhiều risk.</p>\n<p>Default tốt làm system bình tĩnh hơn vì nó giảm số emergency sinh ra từ uncertainty rất bình thường. Nó không thay thế judgment. Nó cho judgment một nơi an toàn hơn để bắt đầu.</p>"
+}

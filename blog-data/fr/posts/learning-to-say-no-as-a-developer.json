@@ -1,0 +1,19 @@
+{
+  "slug": "learning-to-say-no-as-a-developer",
+  "category": "perspectives",
+  "title": "Apprendre à dire non en tant que développeur",
+  "summary": "Dire non ne consiste pas à être difficile. C'est protéger le focus, la qualité et la confiance en rendant les tradeoffs visibles.",
+  "date": "2026-02-06",
+  "readingMinutes": 6,
+  "tags": [
+    "Développement personnel",
+    "Software Engineering",
+    "Limites",
+    "Carrière",
+    "Communication",
+    "Focus"
+  ],
+  "author": "Nguyen Le Phong",
+  "featured": false,
+  "html": "<p>La demande arrive en fin de journée. Elle a l'air petite, comme beaucoup de demandes au moment où elles apparaissent. \"On peut aussi ajouter ça avant demain ?\" La release approche, tout le monde est fatigué, et une version plus jeune de moi aurait dit oui très vite.</p>\n<p>Les développeurs sont souvent entraînés à résoudre, pas à refuser. Nous aimons être utiles. Dans certaines équipes, dire oui ressemble à de la collaboration, tandis que faire une pause ressemble à de la résistance.</p>\n<p>Apprendre à dire non n'est pas apprendre à être négatif. C'est protéger les conditions qui rendent un vrai oui possible. Un oui qui cache les risques n'est pas une gentillesse durable.</p>\n<p>La première étape est de parler en tradeoffs. Nous pouvons le faire demain, mais cela déplace cette autre tâche. Nous pouvons l'inclure dans la release, mais il faut retirer quelque chose ou accepter un test pass plus étroit.</p>\n<p>La deuxième étape est de séparer urgence et importance. Certaines urgences sont réelles : production down, client bloqué, risque sécurité. D'autres sont surtout émotionnelles parce qu'une discussion vient de créer de la pression.</p>\n<p>La troisième étape est d'offrir une alternative utile. Pas dans cette release, mais je peux écrire une note technique et estimer le bon chemin. Pas avec cette API, mais voici une version plus petite et plus sûre.</p>\n<p>Le meilleur non est souvent calme, spécifique et tôt. Calme, parce que la panique rend défensif. Spécifique, parce qu'une résistance vague ressemble à une préférence. Tôt, parce qu'un non tardif ressemble à une trahison.</p>\n<p>Il y a une maturité tranquille dans la phrase : je veux aider, et cette version du plan va nous faire mal. Dans une bonne équipe, ce genre de non devient une forme de fiabilité.</p>"
+}

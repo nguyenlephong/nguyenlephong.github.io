@@ -1,0 +1,14 @@
+{
+  "title": "Giữ checklist ở gần nơi công việc diễn ra",
+  "summary": "Một ghi chú thực tế về cách làm checklist hữu ích bằng cách đặt nó ở nơi mọi người thật sự decide, review, release và hand off work.",
+  "readingMinutes": 6,
+  "tags": [
+    "Ways of Working",
+    "Checklists",
+    "Delivery",
+    "Quality",
+    "Teamwork",
+    "Documentation"
+  ],
+  "html": "<p>Checklist có tồn tại, nhưng không ai dùng. Nó nằm trong một document cũ, cách pull request ba lần click, và mọi người chỉ nhớ đến nó sau khi có thứ lọt ra ngoài. Team không có vấn đề về checklist. Team có vấn đề về khoảng cách.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/keeping-checklists-close-to-the-work/checklist-near-work.webp' width='1600' height='900' loading='lazy' decoding='async' alt='Một bàn delivery với checklist gọn đặt cạnh pull request, release notes, test result và deployment marker.' />\n  <figcaption>Checklist hiệu quả nhất khi nó xuất hiện đúng lúc team cần decide.</figcaption>\n</figure>\n<p>Checklist dễ được ngưỡng mộ nhưng khó giữ sống. Chúng thường bắt đầu từ ý tốt sau một incident, một test bị quên hoặc một handoff đau. Rồi work đi tiếp, checklist nằm ở chỗ khác, và memory lại trở thành process thật.</p>\n<p>Một checklist hữu ích nằm gần công việc. Nếu nó hướng dẫn pull request, nó nên ở PR template hoặc review habit. Nếu nó hướng dẫn release, nó nên ở gần deploy command và rollback note. Nếu nó hướng dẫn customer migration, nó nên nằm cạnh runbook mà mọi người thật sự mở.</p>\n<p>Gần không chỉ là vị trí. Checklist nên dùng ngôn ngữ của task. Confirm tenant scope. Verify empty-state copy. Link the migration rollback. Những câu này tốt hơn reminder rộng như be careful hoặc test thoroughly. Check cụ thể giảm interpretation ở thời điểm có pressure.</p>\n<p>Checklist tốt nhất đủ ngắn để sống sót. List hai mươi lăm item có thể hữu ích cho một launch hiếm, nhưng nó sẽ không fit mọi small change. Daily checklist nên bảo vệ những mistake đắt nhất, không phải chứng minh team nhớ mọi concern có thể có.</p>\n<p>Checklist cũng cần ownership. Phải có người được phép bỏ item cũ, thêm lesson sau một miss, và tách checklist khi nó bắt đầu phục vụ hai loại work khác nhau. Không có ownership, checklist trở thành artifact lịch sử.</p>\n<p>Dùng đúng, checklist không thay judgment. Nó bảo vệ judgment khỏi fatigue. Nó bắt những việc đơn giản để con người còn attention cho những việc bất thường.</p>\n<p>Khi team nói mọi người cứ quên một step, trước tiên hãy nhìn step đó đang sống ở đâu. Đưa reminder lại gần decision, làm nó cụ thể, và giữ nó đủ nhỏ để dùng. Checklist ở gần work mới có cơ hội trở thành một phần của work.</p>"
+}

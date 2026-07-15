@@ -1,0 +1,256 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+5:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+f:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+10:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+11:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+15:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+16:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T978,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/zh/blog/architecture/monolith-to-microservices#article","headline":"单体、模块化单体、微服务：一份诚实的决策指南","description":"微服务是你为组织规模支付的代价——而不是起点。一篇不炒作地从单体到模块化单体再到微服务的完整导览，附上告诉你何时（以及是否）该拆分的信号。","inLanguage":"zh","url":"https://nguyenlephong.github.io/zh/blog/architecture/monolith-to-microservices","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/monolith-to-microservices.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/zh/blog/architecture/monolith-to-microservices","datePublished":"2026-03-03","dateModified":"2026-03-03","keywords":"软件架构, Microservices, Modular Monolith, 系统设计, 分布式系统, 可扩展性","articleSection":"源码与架构","isRelatedTo":[{"@type":"BlogPosting","headline":"微前端：何时值得，以及它们真正的代价","url":"https://nguyenlephong.github.io/zh/blog/architecture/micro-frontends-when-why-and-cost","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/micro-frontends-when-why-and-cost.jpg"},{"@type":"BlogPosting","headline":"Ports & Adapters（六边形架构），简单讲清楚","url":"https://nguyenlephong.github.io/zh/blog/architecture/ports-and-adapters","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ports-and-adapters.jpg"},{"@type":"BlogPosting","headline":"The True Cost of Microservices","url":"https://nguyenlephong.github.io/en/blog/architecture/true-cost-of-microservices","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/true-cost-of-microservices.jpg"},{"@type":"BlogPosting","headline":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字","url":"https://nguyenlephong.github.io/zh/blog/architecture/clean-vs-onion-vs-hexagonal","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/clean-vs-onion-vs-hexagonal.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/zh/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"博客\",\"item\":\"https://nguyenlephong.github.io/zh/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"源码与架构\",\"item\":\"https://nguyenlephong.github.io/zh/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"单体、模块化单体、微服务：一份诚实的决策指南\",\"item\":\"https://nguyenlephong.github.io/zh/blog/architecture/monolith-to-microservices\"}]}"}}],null,["$","$L3",null,{"category":"architecture","slug":"monolith-to-microservices","children":[["$","$L4",null,{"category":"architecture","slug":"monolith-to-microservices","readingMinutes":16,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L5",null,{"url":"https://nguyenlephong.github.io/zh/blog/architecture/monolith-to-microservices","title":"单体、模块化单体、微服务：一份诚实的决策指南","surface":"blog","category":"architecture","slug":"monolith-to-microservices","labels":{"share":"分享","copyLink":"复制链接","copied":"已复制！","close":"关闭"}}],"$L6"]}],"$L7","$L8","$L9"]}],"$La"]}]]}],["$Lb","$Lc","$Ld"],"$Le"]}],"loading":null,"isPartial":false}
+12:T6a43,<p>这种场景比应该发生的还要常见：一个三人初创公司在第一天就决定构建微服务。六个月后，他们有了十五个服务，一个没人完全理解的 Kafka 集群，以及一个需要追踪跨越八个服务的请求才能复现的 bug。团队精疲力竭，产品完成了一半。而在某个 Slack 消息串里，有人打出了这几个字：<em>我们基本上构建了一个分布式单体。</em></p>
+<p>微服务确实很强大——在合适的规模、合适的团队、合适的原因下。但它们是<strong>你为组织规模支付的代价，而不是起点</strong>。本文诚实地引导你走过三种架构形态——单体、模块化单体和微服务——并给你识别何时（以及是否）应该在它们之间迁移的信号。</p>
+
+<h2 id="monolith">单体：一个可部署单元统治一切</h2>
+<p>单体是一个单一的可部署单元。一次构建，一个二进制文件（或一套编译产物），一个部署步骤。每个功能、每个模块、每个数据库查询都住在同一个进程里。</p>
+<p>这听起来很有局限性，“单体”这个词本身也带上了一点略显尴尬的味道——仿佛承认自己有单体就是承认自己没跟上现代工程的节奏。这种框架是错的，它已经造成了很多不必要的痛苦。</p>
+<p><strong>单体是正确的默认选择。</strong>原因如下：</p>
+<ul>
+  <li><strong>本地调用是免费的。</strong>进程内的函数调用是纳秒级的。服务间的网络调用是毫秒级的——而且它可以失败、超时、返回部分结果，或者完全丢失。在你真正需要之前，不必承担这种复杂性。</li>
+  <li><strong>事务是简单的。</strong>关系型数据库在整个数据模型上提供 ACID 事务。在单体中，从账户 A 向账户 B 转账是一次事务。在微服务中，它变成了分布式事务或 saga——这是有真实失败模式的真正困难问题。</li>
+  <li><strong>调试是直接的。</strong>一个进程，一个日志流，一个栈跟踪。你找到问题。在分布式系统中，一次用户操作可能在多个服务间派生出几十个异步操作，关联它们需要专门构建的可观测性工具。</li>
+  <li><strong>部署是简单的。</strong>一个产物，一个流水线，一个回滚策略。你可以在第一天就自信地发布。</li>
+  <li><strong>大公司也在运营大型单体。</strong>Shopify 以单体 Rails 应用运营了多年，规模相当可观。Stack Overflow 用少数几台服务器上运行的单体每天处理数百万请求。单体并不妨碍你扩展——只是扩展方式不同。</li>
+</ul>
+<p>单体真正的痛点是真实的，但它们比人们预期的来得更晚。<strong>构建时间</strong>随着代码库增长——50k 行时两分钟的完整重建，在 500k 行时需要十二分钟。<strong>合并摩擦</strong>随着二十名工程师都在修改同一个代码库而增加；长期分支和冲突变成日常仪式。<strong>部署耦合</strong>意味着每个团队都一起部署——一个团队的高风险变更可能阻塞其他所有人的发布。</p>
+<p>这些痛点是真实的。但它们是<em>成功</em>的痛点，而且比炒作所暗示的晚得多。大多数团队能遇到这些问题算是幸运了。</p>
+
+<h2 id="modular-monolith">模块化单体：大多数团队跳过的甜蜜点</h2>
+<p>模块化单体仍然是一个可部署单元——但内部它被组织成有<strong>强制边界</strong>的模块。模块通过清晰的接口通信。一个模块不允许直接进入另一个模块的内部：不能从兄弟模块 import 私有类，不能共享数据库表，不能跨模块行调用内部辅助函数。</p>
+<p>这听起来像是一个小小的纪律，但它显著地改变了局面。</p>
+<p>把它想象成一座房子的平面图。没有模块的单体是一个开放式公寓：一个大开间，所有东西都到处摆着。模块化单体给了你带墙的房间——你仍然住在一栋房子里，仍然共用管道和前门，但厨房和卧室各有自己明确的用途，你不会在床上做饭。</p>
+<p>模块自然地映射到领域驱动设计中的<strong>限界上下文</strong>：一个 <code>Billing</code> 模块，一个 <code>Inventory</code> 模块，一个 <code>Notifications</code> 模块。每个模块拥有自己的领域逻辑和自己的数据库 schema 切片。它们暴露一个公开接口（一个 service facade 或一组公开函数），并把其他一切保持私有。</p>
+<p>实际收益是可观的：</p>
+<ul>
+  <li><strong>独立推理。</strong>一个在 <code>Billing</code> 上工作的开发者可以理解并修改它，而不需要把整个代码库装在脑子里。</li>
+  <li><strong>安全重构。</strong>只要公开接口保留，你可以重写一个模块的内部——应用的其余部分不会察觉。</li>
+  <li><strong>明确的所有权。</strong>团队认领模块。代码审查保持聚焦。引导新开发者意味着给他们一个模块，而不是一个 20 万行的代码库。</li>
+  <li><strong>迁移就绪的缝合处。</strong>如果你以后确实需要提取一个服务，边界已经画好了。模块变成服务，接口变成 API。工作量很大，但是已知的工作，不是探索性手术。</li>
+</ul>
+<p>模块化单体是大多数团队直接跳过的架构，从纠缠的单体直接冲向微服务，而没有在这里停留。这是个错误。对于大多数产品团队——不到 100 名工程师、个位数服务、一两条部署流水线——一个维护良好的模块化单体是最富有生产力的居所。</p>
+
+<h2 id="microservices">微服务：你真正买到了什么</h2>
+<p>微服务将系统分解为独立可部署的服务。每个服务拥有自己的进程、自己的部署流水线，以及——至关重要的——自己的数据存储。服务之间通过网络通信：HTTP、gRPC、消息队列、事件流。</p>
+<p>当微服务运转良好时，它们在规模上提供了其他方式无法匹敌的四件事：</p>
+<ul>
+  <li><strong>独立部署。</strong>支付团队可以在周二下午发布支付服务的变更，而无需与推荐团队、搜索团队或通知团队协调。对于拥有数百名工程师的公司，这是革命性的——这是一周部署一次和一天部署一百次的差别。</li>
+  <li><strong>独立扩展。</strong>如果你的 <code>ImageProcessing</code> 服务在峰值时间需要四十个 CPU 核心，而你的 <code>UserProfile</code> 服务只需要两个，你可以分别扩展它们。在单体中，你扩展整体——你为每个功能购买四十个核心，不管它是否需要。</li>
+  <li><strong>团队自治。</strong>每个服务是一个小的、自包含的产品。五名工程师的团队可以完全拥有一个服务：选择自己的语言、数据库、部署节奏。这是微服务的组织超能力——康威定律为你所用，而不是对你作对。</li>
+  <li><strong>故障隔离。</strong><code>RecommendationEngine</code> 的内存泄漏让 <code>RecommendationEngine</code> 宕机，而不是结账。你可以优雅降级——商店仍然工作，产品只是没有个性化建议。在单体中，任何模块中未捕获的异常都可能让整个进程宕机。</li>
+</ul>
+<p>注意这个模式：那个列表里的一切都是关于<em>组织</em>和<em>运营</em>规模的。这些不是适用于一个有八个人还没找到产品市场契合点的团队的问题。</p>
+
+<h2 id="the-tax">你真正支付的代价：分布式系统税</h2>
+<p>微服务不是免费的。上面每个好处都有一个对应的成本，而这些成本绝非微不足道。低估它们是团队最终筋疲力竭、交付不足的原因。</p>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">分布式单体警告</span><p>最糟糕的结果既不是微服务也不是单体——而是<strong>分布式单体</strong>：耦合如此紧密以至于必须一起部署、共享同一个数据库或一起失败的微服务。你付出了微服务的每一分成本，却没有得到任何好处。这种情况在团队按技术层而不是按业务领域拆分时会发生，或者当服务在长链中同步调用彼此时。如果 <code>ServiceA</code> 只能在 <code>ServiceB</code> 之后部署，你就构建了一个分布式单体。</p></div>
+
+<p>以下是全部的税：</p>
+<ul>
+  <li><strong>网络调用会失败。</strong>函数调用不会失败（除非有 bug）。网络调用可以失败、超时、返回陈旧的缓存值，或者在第一次尝试已经产生副作用之后重试成功。你必须在每个地方、随时处理部分失败。</li>
+  <li><strong>最终一致性。</strong>服务拥有各自的数据。在服务边界之间保持数据一致性需要仔细的设计——事件驱动模式、saga、幂等操作、补偿事务。向产品经理解释为什么用户可以下订单但不能立即在订单历史中看到它，是很尴尬的。</li>
+  <li><strong>分布式事务很难。</strong>两阶段提交协议存在且令人痛苦。大多数团队使用 Saga 模式代替，这把复杂性从数据库转移到了应用代码。两者都比 <code>BEGIN; UPDATE; COMMIT;</code> 复杂得多。</li>
+  <li><strong>调试是一种不同的技能。</strong>栈跟踪不再能告诉你出了什么问题。你需要分布式追踪（Jaeger、Zipkin、Honeycomb），每行日志里的关联 ID，服务网格，以及跨服务关联事件的仪表板。构建和维护这套可观测性基础设施是真实的工程工作。</li>
+  <li><strong>运维开销成倍增加。</strong>一个服务需要一个 Dockerfile、一个 Kubernetes 部署、一个 ingress 规则、一个健康检查端点、CPU 和内存限制、日志聚合配置，以及告警规则。乘以三十个服务。这个开销随服务数量线性增长；你的工程师人数不是。</li>
+  <li><strong>测试更难。</strong>单元测试仍然容易。但跨越服务边界的集成测试需要同时运行多个服务，管理它们的版本和配置，以及处理跨数据库的测试数据。契约测试（Pact 等）有帮助，但带来了自己需要学习的规范。</li>
+</ul>
+<p>这些成本没有一个是无法解决的——业界为所有这些都有成熟的工具。关键在于它们是每天都必须支付的<em>真实成本</em>，在它们解锁的好处真正被需要之前，是不值得支付的。</p>
+
+<h2 id="signals">信号：何时应该拆分（以及何时不应该）</h2>
+<p>那么你如何知道你已经跨越了微服务值得其成本的阈值？以下是真正表明是时候拆分的信号：</p>
+<ul>
+  <li><strong>独立扩展需求是真实的且昂贵的。</strong>你能指出一个特定组件需要系统其他部分十倍资源的情况，而你正在整个单体中为这些资源付费。拆分会节省可观的资金或明显提升性能。</li>
+  <li><strong>部署竞争是慢性的。</strong>团队经常被其他团队正在进行中的变更所阻塞，无法发布。共享部署的协调开销正在可测量地拖慢你——不是偶尔，而是作为每周或每天的挫折。</li>
+  <li><strong>团队数量要求如此。</strong>你有多个五人以上的团队在不同的业务领域工作，有不同的部署节奏、不同的技术偏好，以及真正独立的路线图。康威定律预测了你最终会得到的架构——你不妨为此做好规划。</li>
+  <li><strong>一个组件有根本不同的可靠性或安全要求。</strong>支付、认证和 PII 存储通常值得隔离，不是出于性能原因，而是出于合规、减少爆炸半径，以及独立审计它们的能力。</li>
+  <li><strong>一个模块已经实际上是独立的。</strong>它与系统的其余部分没有共享状态，只通过定义明确的事件或 API 通信，由不同的团队拥有。组织上的缝合处已经存在——把它变成服务边界只是在正式化已经存在的事实。</li>
+</ul>
+<p>以下是你拆分得太早的信号：</p>
+<ul>
+  <li>你的整个工程团队不到二十人。</li>
+  <li>你在拆分是因为它感觉更具可扩展性，而不是因为你遇到了具体的限制。</li>
+  <li>你计划中的服务需要一起部署才能工作。</li>
+  <li>你还无法画出一个清晰的边界，让每个服务拥有自己的数据，而没有共享表。</li>
+  <li>你的团队还没有调试分布式系统所需的可观测性基础设施（分布式追踪、集中式日志、告警）。</li>
+  <li>主要原因是微服务出现在职位描述或公司的市场宣传中。</li>
+</ul>
+
+<h2 id="how-to-split">如何优雅地拆分：缝合处、绞杀者无花果和数据所有权</h2>
+<p>如果以上信号指向拆分，<em>如何</em>拆分至关重要。拆分得不好会产生上面描述的分布式单体。拆分得好会产生真正独立的、值回票价的服务。</p>
+<p><strong>沿着限界上下文拆分，而不是技术层。</strong>不要创建 <code>DatabaseService</code> 或 <code>ValidationService</code>——这些是技术关切，不是业务关切。创建 <code>OrderService</code>、<code>BillingService</code>、<code>InventoryService</code>——在你的领域中有清晰、稳定含义的业务能力单元。限界上下文是特定模型适用且语言一致的领域部分。这就是服务边界应该属于的地方。</p>
+<p><strong>使用绞杀者无花果模式。</strong>以一种逐渐缠绕宿主树的藤蔓命名，绞杀者无花果模式让你逐步提取服务，而不是一次性全部提取。你在单体旁边建立新服务，将特定的流量切片路由到它，验证它工作正常，然后从单体中删除相应的代码。单体随时间收缩；它从不被重写。这更安全，更可逆，而且远不可能导致一个从未真正完成的六个月大爆炸迁移。</p>
+<p><strong>每次提取一个服务。</strong>每次提取都教给你一些东西。第二次提取会比第一次做得更好。试图同时提取五个服务会分散学习并成倍增加风险。</p>
+<p><strong>数据所有权是不可谈判的。</strong>一个与另一个服务共享数据库表的服务不是服务——它是一个带有额外网络开销的模块。每个服务必须拥有自己的数据。如果两个服务需要相同的数据，其中一个是权威的，另一个通过 API 获取或通过事件同步。这个约束建立起来很痛苦，维护起来也很痛苦，但它给了你独立部署性和你期待已久的故障隔离。</p>
+<p><strong>在提取之前用 port 定义缝合处。</strong>如果你在模块化单体内部遵循了 <a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a> 方式，提取几乎变成机械性的：port 定义 API，其后面的 adapter 变成服务客户端。领域逻辑不变——只有交付机制改变。这是首先用 port 构建最强有力的实际论据之一：它们免费给你提取就绪的缝合处。</p>
+
+<h2 id="comparison">并排比较</h2>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>维度</th>
+      <th>单体</th>
+      <th>模块化单体</th>
+      <th>微服务</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>部署单元</th>
+      <td>一个进程，一条流水线</td>
+      <td>一个进程，一条流水线</td>
+      <td>多个进程，多条独立流水线</td>
+    </tr>
+    <tr>
+      <th>数据所有权</th>
+      <td>共享数据库；所有代码可访问所有表</td>
+      <td>共享数据库；模块按约定拥有各自的 schema 区域</td>
+      <td>每个服务拥有自己的数据库；没有共享表</td>
+    </tr>
+    <tr>
+      <th>故障模式</th>
+      <td>一个进程崩溃会让整个应用宕机</td>
+      <td>一个进程崩溃会让整个应用宕机</td>
+      <td>服务故障被隔离；其他服务优雅降级</td>
+    </tr>
+    <tr>
+      <th>团队适配</th>
+      <td>最适合 1–3 个团队；摩擦随团队数增长</td>
+      <td>最适合 2–8 个团队；模块与团队所有权对齐</td>
+      <td>5 个以上团队以独立节奏发布时是必要的</td>
+    </tr>
+    <tr>
+      <th>运维成本</th>
+      <td>低：一次部署，一个日志流，一套告警</td>
+      <td>低：与普通单体相同的运维足迹</td>
+      <td>高：可观测性、容器编排、服务网格、每个服务的 CI/CD</td>
+    </tr>
+    <tr>
+      <th>事务模型</th>
+      <td>轻松实现完整 ACID 事务</td>
+      <td>轻松实现完整 ACID 事务</td>
+      <td>Saga 或最终一致性；分布式事务很难</td>
+    </tr>
+    <tr>
+      <th>何时使用</th>
+      <td>新产品、小团队、未知领域</td>
+      <td>有清晰领域边界的成长产品，10–100 名工程师</td>
+      <td>多个自治团队、经过验证的领域模型、真实的独立扩展需求</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="by-company-size">按公司规模的诚实视角</h2>
+<p>架构建议往往来自那些已经跨越了微服务有意义的阈值的公司——因为这些公司有工程博客、会议演讲，以及写详细事后分析的资源。这造成了幸存者偏差。以下是更诚实的地图：</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 900 340" role="img" aria-labelledby="dgm-evo">
+    <title id="dgm-evo">三阶段演进：从左到右依次展示单体、模块化单体和微服务，各阶段之间有箭头。</title>
+    <defs>
+      <marker id="evoAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-muted dgm-t-mono" x="130" y="30" text-anchor="middle" font-size="11">阶段 1</text>
+    <text class="dgm-t-muted dgm-t-mono" x="450" y="30" text-anchor="middle" font-size="11">阶段 2</text>
+    <text class="dgm-t-muted dgm-t-mono" x="780" y="30" text-anchor="middle" font-size="11">阶段 3</text>
+    <rect class="dgm-surface" x="30" y="48" width="200" height="180" rx="14" stroke-width="2"/>
+    <text class="dgm-t-strong" x="130" y="82" text-anchor="middle" font-size="16">单体</text>
+    <text class="dgm-t-muted" x="130" y="102" text-anchor="middle" font-size="11">一个可部署单元</text>
+    <rect class="dgm-core" x="58" y="118" width="144" height="80" rx="10"/>
+    <text x="130" y="153" text-anchor="middle" font-size="13">所有代码</text>
+    <text class="dgm-t-muted" x="130" y="172" text-anchor="middle" font-size="11">一个进程</text>
+    <ellipse class="dgm-driven" cx="130" cy="248" rx="36" ry="10" stroke-width="1.5"/>
+    <rect class="dgm-driven" x="94" y="248" width="72" height="28" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="130" cy="276" rx="36" ry="10" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="130" y="300" text-anchor="middle" font-size="11">共享数据库</text>
+    <path class="dgm-flow" d="M234,138 H308" marker-end="url(#evoAcc)" stroke-width="2"/>
+    <text class="dgm-t-accent" x="271" y="130" text-anchor="middle" font-size="11">强制</text>
+    <text class="dgm-t-accent" x="271" y="143" text-anchor="middle" font-size="11">边界</text>
+    <rect class="dgm-surface" x="312" y="48" width="276" height="180" rx="14" stroke-width="2"/>
+    <text class="dgm-t-strong" x="450" y="82" text-anchor="middle" font-size="16">模块化单体</text>
+    <text class="dgm-t-muted" x="450" y="102" text-anchor="middle" font-size="11">一个可部署单元 · 内部模块</text>
+    <rect class="dgm-adapter" x="328" y="118" width="72" height="44" rx="8"/>
+    <text x="364" y="144" text-anchor="middle" font-size="12">Billing</text>
+    <rect class="dgm-adapter" x="414" y="118" width="72" height="44" rx="8"/>
+    <text x="450" y="144" text-anchor="middle" font-size="12">Orders</text>
+    <rect class="dgm-adapter" x="500" y="118" width="72" height="44" rx="8"/>
+    <text x="536" y="144" text-anchor="middle" font-size="12">Notif.</text>
+    <line class="dgm-line" x1="400" y1="118" x2="400" y2="162" stroke-dasharray="4 3" stroke-width="1.2"/>
+    <line class="dgm-line" x1="486" y1="118" x2="486" y2="162" stroke-dasharray="4 3" stroke-width="1.2"/>
+    <ellipse class="dgm-driven" cx="450" cy="248" rx="36" ry="10" stroke-width="1.5"/>
+    <rect class="dgm-driven" x="414" y="248" width="72" height="28" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="450" cy="276" rx="36" ry="10" stroke-width="1.5"/>
+    <text class="dgm-t-muted" x="450" y="300" text-anchor="middle" font-size="11">共享数据库 · 各自拥有 schema</text>
+    <path class="dgm-flow" d="M592,138 H656" marker-end="url(#evoAcc)" stroke-width="2"/>
+    <text class="dgm-t-accent" x="624" y="130" text-anchor="middle" font-size="11">沿缝合处</text>
+    <text class="dgm-t-accent" x="624" y="143" text-anchor="middle" font-size="11">拆分</text>
+    <rect class="dgm-adapter" x="660" y="58" width="100" height="50" rx="10" stroke-width="1.5"/>
+    <text x="710" y="88" text-anchor="middle" font-size="13">Billing</text>
+    <ellipse class="dgm-driven" cx="710" cy="122" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="688" y="122" width="44" height="18" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="710" cy="140" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-core" x="774" y="138" width="100" height="50" rx="10" stroke-width="1.5"/>
+    <text x="824" y="168" text-anchor="middle" font-size="13">Orders</text>
+    <ellipse class="dgm-driven" cx="824" cy="202" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="802" y="202" width="44" height="18" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="824" cy="220" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="660" y="218" width="100" height="50" rx="10" stroke-width="1.5"/>
+    <text x="710" y="248" text-anchor="middle" font-size="13">Notif.</text>
+    <ellipse class="dgm-driven" cx="710" cy="282" rx="22" ry="7" stroke-width="1.2"/>
+    <rect class="dgm-driven" x="688" y="282" width="44" height="18" stroke-width="0"/>
+    <ellipse class="dgm-driven" cx="710" cy="300" rx="22" ry="7" stroke-width="1.2"/>
+    <path class="dgm-flow" d="M760,83 C 790,83 780,158 778,158" marker-end="url(#evoAcc)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <path class="dgm-flow" d="M760,243 C 790,243 840,218 828,192" marker-end="url(#evoAcc)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <path class="dgm-flow" d="M710,108 L710,214" marker-end="url(#evoAcc)" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <text class="dgm-t-muted" x="780" y="320" text-anchor="middle" font-size="11">各自的数据库 · 网络调用</text>
+  </svg>
+  <figcaption>三个架构阶段。阶段 1：一个盒子，所有东西在一起。阶段 2：一个盒子，内部有强制边界（虚线）。阶段 3：通过网络调用（虚线箭头）连接的独立盒子，每个都有自己的数据库圆柱。你可以在任意阶段停下来——正确的形态取决于你的团队，而不是什么时髦的东西。</figcaption>
+</figure>
+
+<p><strong>初创公司（1–15 名工程师）。</strong>构建单体。你还不知道系统的哪些部分需要扩展，哪些功能会存活，或者哪些领域边界是真实的。过早分解会在你有足够信息做出决策之前锁定决策。Shopify、GitHub 和 Basecamp 都是从 Rails 单体起步的。Twitter 也是，他们在真正的负载下分解之前用了多年。</p>
+<p><strong>规模化公司（15–80 名工程师，成长中）。</strong>这是模块化单体展现价值的时候。你有足够多的工程师，以至于单个代码库的不受控增长造成了真实摩擦，但你仍然作为一个团队部署，完整微服务的开销会扼杀你的速度。投资于模块边界、团队所有权和清晰接口。保留提取服务的选项，但除非具体的扩展需求迫使你，否则不要行使它。</p>
+<p><strong>企业级 / 大型组织（80+ 名工程师，多个自治团队）。</strong>选择性的微服务在这里有意义——但“选择性”是关键词。最有效的大规模架构既不是纯单体，也不是一片一样大小的服务：它们是经过深思熟虑的混合。少数核心服务用于最承载负载、最关键领域的能力，模块化单体用于运营中间层，以及少数需要独立扩展或合规真正需要的专业服务。Amazon 没有一次性分解一切；他们在负载下识别出缝合处，一个一个地提取。</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Netflix 和 Amazon 带给我们的真正教训</span><p>当 Netflix 和 Amazon 描述他们的微服务历程时，被引用的部分是那张有数百个服务的架构图。被略去的部分是，他们起步于单体，把它们运行到痛苦不可否认，然后投入了数年时间和巨大的工程努力进行过渡——包括构建了现在让微服务可行的大量工具。他们在告诉你他们到达了哪里，而不是你应该从哪里开始。</p></div>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">核心要点</h3>
+<ul>
+  <li><strong>单体是正确的默认选择。</strong>构建简单，调试容易，事务轻松。痛苦比炒作所暗示的来得晚，而且只在真正的规模下出现。</li>
+  <li><strong>模块化单体是最被低估的选项。</strong>内部模块之间的强制边界给你团队清晰度、安全重构和提取就绪的缝合处——没有任何分布式系统复杂性。</li>
+  <li><strong>微服务是税，不是功能。</strong>你在网络失败、最终一致性、分布式追踪和运维开销上支付代价。回报——独立部署、独立扩展、团队自治——是真实的，但只在真正需要的规模下才有意义。</li>
+  <li><strong>分布式单体是最糟糕的结果。</strong>必须一起部署的紧耦合服务让你付出微服务的所有成本，却得不到任何好处。沿着限界上下文拆分，而不是技术层。</li>
+  <li><strong>数据所有权是硬约束。</strong>与另一个服务共享数据库的服务不是服务。每个服务必须拥有自己的数据；跨边界的一致性需要明确的设计。</li>
+  <li><strong>使用绞杀者无花果模式逐步拆分。</strong>每次提取一个限界上下文。每次提取都教给你一些东西，而且是可逆的。永远不要做大爆炸式的分解。</li>
+  <li><strong>让架构与团队规模匹配，而不是与愿景匹配。</strong>初创公司：单体。规模化公司：模块化单体。大型自治团队：真正需要时选择性微服务。</li>
+</ul>
+</div>
+
+<p>架构决策在时间上向前涟漪并复利。很多团队在决定拆分后面临的下一个问题是对前端该怎么办——是提供一个统一的 UI 还是把它也分解。这个兔子洞在 <a href="/blog/architecture/micro-frontends-when-why-and-cost">微前端：何时值得，以及它们真正的代价</a> 中探讨。</p>6:["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lf",null,{"href":"/zh/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"博客"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lf",null,{"href":"/zh/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"源码与架构"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["软件架构基础",["$","span",null,{"aria-hidden":"true","children":" · "}],"第 5 篇，共 15 篇"]}],["$","h1",null,{"className":"blog-article__title","children":"单体、模块化单体、微服务：一份诚实的决策指南"}],["$","p",null,{"className":"blog-article__summary","children":"微服务是你为组织规模支付的代价——而不是起点。一篇不炒作地从单体到模块化单体再到微服务的完整导览，附上告诉你何时（以及是否）该拆分的信号。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"作者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-03","children":"2026年3月3日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"16 分钟阅读"}],["$","$L10",null,{"label":"次浏览"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","软件架构",{"children":"软件架构"}],["$","li","Microservices",{"children":"Microservices"}],["$","li","Modular Monolith",{"children":"Modular Monolith"}],["$","li","系统设计",{"children":"系统设计"}],["$","li","分布式系统",{"children":"分布式系统"}],["$","li","可扩展性",{"children":"可扩展性"}]]}]]}],["$","$L11",null,{"html":"$12"}],"$L13","$undefined"]}]
+7:["$","$L14",null,{"heading":"相关阅读","intro":"几篇相近主题的文章，方便沿着同一条思路继续阅读。","items":[{"post":{"slug":"micro-frontends-when-why-and-cost","category":"architecture","title":"微前端：何时值得，以及它们真正的代价","summary":"将前端拆分成独立可部署的模块可以解放团队——也可能把你埋在复杂性中。本文来自在规模化场景下落地 Angular 宿主 + React 模块的实战经验：微前端何时有回报，以及它带来的账单。","date":"2026-03-02","readingMinutes":15,"tags":["软件架构","Micro-Frontends","前端架构","Module Federation","可扩展性","系统设计"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":6},"categoryTitle":"源码与架构","readingLabel":"15 分钟阅读"},{"post":{"slug":"ports-and-adapters","category":"architecture","title":"Ports & Adapters（六边形架构），简单讲清楚","summary":"一篇友好、示例驱动的六边形架构指南：ports 和 adapters 到底是什么、让它运转的那条核心规则，以及究竟该用多少——无论你是独立创业者还是企业级团队。","date":"2026-03-07","readingMinutes":16,"tags":["软件架构","Hexagonal Architecture","Ports and Adapters","Clean Architecture","系统设计","Dependency Inversion"],"author":"Nguyen Le Phong","featured":true,"series":"foundations","seriesOrder":1},"categoryTitle":"源码与架构","readingLabel":"16 分钟阅读"},{"post":{"slug":"true-cost-of-microservices","category":"architecture","title":"The True Cost of Microservices","summary":"Microservices can create real team autonomy, but they move cost into operations, data consistency, observability, testing, and coordination. This piece asks when that cost is worth paying and when a modular monolith is the kinder architecture.","date":"2026-04-06","readingMinutes":8,"tags":["Software Architecture","Microservices","Distributed Systems","Modular Monolith","Technical Debt","System Design"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":12},"categoryTitle":"源码与架构","readingLabel":"8 分钟阅读"},{"post":{"slug":"clean-vs-onion-vs-hexagonal","category":"architecture","title":"Clean、Onion 与 Hexagonal 架构：同一颗北极星，三个名字","summary":"它们看起来像是三种相互竞争的架构，实则是同一个思想——依赖指向内部，框架置于边缘——用三种方式画出来。本文讲清楚每种方案真正增加了什么，以及应该选哪一个。","date":"2026-03-06","readingMinutes":15,"tags":["软件架构","Clean Architecture","Onion Architecture","Hexagonal Architecture","系统设计","Dependency Inversion"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":2},"categoryTitle":"源码与架构","readingLabel":"15 分钟阅读"}],"sourceCategory":"architecture","sourceSlug":"monolith-to-microservices"}]
+8:["$","nav",null,{"className":"blog-series-nav","aria-label":"软件架构基础","children":[["$","$Lf",null,{"href":"/zh/blog/architecture/structuring-code-feature-vs-layer","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","上一篇"]}],["$","span",null,{"className":"blog-series-nav__title","children":"代码库结构：按层、按功能，还是按领域？"}]]}],["$","$Lf",null,{"href":"/zh/blog/architecture/micro-frontends-when-why-and-cost","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["下一篇"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"微前端：何时值得，以及它们真正的代价"}]]}]]}]
+9:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lf",null,{"href":"/zh/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","返回 源码与架构"]}]}]
+a:["$","aside",null,{"className":"blog-article__toc","children":["$","$L15",null,{"label":"本页内容","surface":"blog"}]}]
+b:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+c:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+d:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+e:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+13:["$","$L19",null,{"prompt":"你觉得这篇文章如何？","surface":"blog","category":"architecture","slug":"monolith-to-microservices","reactionLabels":{"like":"赞","love":"喜欢","insightful":"有启发","clap":"鼓掌"}}]
+18:null

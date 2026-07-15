@@ -1,0 +1,223 @@
+1:"$Sreact.fragment"
+3:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"EngagementProvider"]
+4:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+5:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+6:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+13:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+14:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+16:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+17:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/60afb5b0374fe7a9.js","/_next/static/chunks/0e65e15104575034.js"],"default"]
+18:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+:HL["/_next/static/chunks/579669e8fc8fe057.css","style"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T53d,{"@context":"https://schema.org","@type":"Article","@id":"https://nguyenlephong.github.io/vi/notes/doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong#article","headline":"Đọc bản vẽ thiết kế và đánh giá chất lượng nhà: nhìn phần không xuất hiện trên ảnh","description":"Một căn nhà đẹp trên ảnh chưa chắc là một căn nhà tốt để sống lâu dài. Phần quan trọng thường nằm ở layout, ánh sáng, thông gió, kết cấu, điện nước âm tường, chống thấm, thoát nước mùa mưa, vật liệu và chất lượng thi công. Bài này giữ lại các cách đọc bản vẽ, checklist xem nhà và dấu hiệu cần hỏi thêm người có chuyên môn.","inLanguage":"vi","url":"https://nguyenlephong.github.io/vi/notes/doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/notes/doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/vi/notes/doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong","datePublished":"2026-03-13","dateModified":"2026-03-13","keywords":"Mua nhà, Bất động sản, Xây dựng, Thiết kế, Kinh nghiệm","author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean notes-accent notes-reading","style":{"--topic-color":"#059669"},"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Ghi chép\",\"item\":\"https://nguyenlephong.github.io/vi/notes\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Mua nhà\",\"item\":\"https://nguyenlephong.github.io/vi/notes?topic=mua-nha\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Đọc bản vẽ thiết kế và đánh giá chất lượng nhà: nhìn phần không xuất hiện trên ảnh\",\"item\":\"https://nguyenlephong.github.io/vi/notes/doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong\"}]}"}}],null,["$","$L3",null,{"category":"notes","slug":"doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong","children":[["$","$L4",null,{"category":"notes","slug":"doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong","readingMinutes":20,"surface":"notes"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$L5",null,{"url":"https://nguyenlephong.github.io/vi/notes/doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong","title":"Đọc bản vẽ thiết kế và đánh giá chất lượng nhà: nhìn phần không xuất hiện trên ảnh","surface":"notes","category":"notes","slug":"doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong","labels":{"share":"Chia sẻ","copyLink":"Sao chép liên kết","copied":"Đã sao chép!","close":"Đóng"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$L6",null,{"href":"/vi/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Ghi chép"}],[["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$L6",null,{"href":"/vi/notes?topic=mua-nha","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Mua nhà"}]],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","span",null,{"children":"Đọc bản vẽ thiết kế và đánh giá chất lượng nhà: nhìn phần không xuất hiện trên ảnh"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","h1",null,{"className":"blog-article__title","children":"Đọc bản vẽ thiết kế và đánh giá chất lượng nhà: nhìn phần không xuất hiện trên ảnh"}],["$","p",null,{"className":"blog-article__summary","children":"Một căn nhà đẹp trên ảnh chưa chắc là một căn nhà tốt để sống lâu dài. Phần quan trọng thường nằm ở layout, ánh sáng, thông gió, kết cấu, điện nước âm tường, chống thấm, thoát nước mùa mưa, vật liệu và chất lượng thi công. Bài này giữ lại các cách đọc bản vẽ, checklist xem nhà và dấu hiệu cần hỏi thêm người có chuyên môn."}],"$L7","$L8"]}],"$L9","$undefined",null,"$La"]}]]}],"$Lb","$Lc"]}],"$Ld"]}]]}],["$Le","$Lf","$L10","$L11"],"$L12"]}],"loading":null,"isPartial":false}
+7:["$","div",null,{"className":"blog-article__meta","children":[["$","time",null,{"dateTime":"2026-03-13","children":"13 tháng 3, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"20 phút đọc"}],["$","$L13",null,{"label":"lượt xem"}]]}]
+8:["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Mua nhà",{"children":"Mua nhà"}],["$","li","Bất động sản",{"children":"Bất động sản"}],["$","li","Xây dựng",{"children":"Xây dựng"}],["$","li","Thiết kế",{"children":"Thiết kế"}],["$","li","Kinh nghiệm",{"children":"Kinh nghiệm"}]]}]
+15:T5cdd,<p>Người mua nhà lần đầu thường đánh giá một căn nhà bằng những thứ <strong>nhìn thấy được</strong>: sơn mới, gạch bóng, bếp đẹp, ánh sáng đẹp. Nhưng những thứ quyết định việc bạn sống yên ổn hay khổ sở trong 20 năm tới lại nằm ở chỗ <strong>không nhìn thấy</strong>: móng, kết cấu, đường điện âm tường, ống nước, lớp chống thấm, hướng thoát nước. Đẹp thì sửa được; kết cấu và hệ thống ngầm hỏng thì gần như phải đập đi làm lại.</p>
+
+<p>Bài này mình viết cho người trẻ mua nhà lần đầu, chưa từng xây hay sửa nhà, để có một bộ khung tư duy và checklist khi đọc bản vẽ thiết kế và đi khảo sát thực tế. Mục tiêu: giúp bạn phân biệt được <em>một căn nhà đẹp</em> với <em>một căn nhà tốt</em>.</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Trước khi bắt đầu</span><p>Bạn không cần trở thành kỹ sư xây dựng. Bạn chỉ cần biết <strong>đặt đúng câu hỏi</strong> và <strong>nhận ra dấu hiệu nguy hiểm</strong>. Với những hạng mục lớn (kết cấu, thấm nặng), hãy luôn thuê một người có chuyên môn đi cùng kiểm tra — chi phí vài triệu để tránh mất vài trăm triệu luôn là khoản đầu tư đáng giá nhất khi mua nhà.</p></div>
+
+<h2 id="doc-ban-ve">Phần 1: Đọc bản vẽ thiết kế cần chú ý gì</h2>
+
+<p>Khi mua nhà xây sẵn, nhà phố, hoặc căn hộ, bạn có thể được cung cấp bản vẽ thiết kế (hoặc bản vẽ hoàn công). Đừng chỉ lướt qua xem "nhà có mấy phòng". Hãy đọc kỹ những lớp thông tin sau:</p>
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong/floor-plan-reading.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Hai người đối chiếu bản vẽ mặt bằng không có chữ với thước dây trên bàn gỗ trong một căn hộ." />
+  <figcaption>Bản vẽ chỉ có ý nghĩa khi được đối chiếu với luồng đi lại, cách kê đồ và căn phòng thật trước mắt.</figcaption>
+</figure>
+
+<h3 id="ban-ve-loai">Các loại bản vẽ và đọc gì ở mỗi loại</h3>
+
+<ul>
+  <li><strong>Mặt bằng (bố trí công năng):</strong> Xem luồng di chuyển có hợp lý không, phòng có vuông vức không (phòng méo, góc chéo gây khó kê đồ và lãng phí diện tích). Để ý chiều rộng hành lang, cửa, cầu thang.</li>
+  <li><strong>Mặt cắt:</strong> Cho biết chiều cao thông thủy từng tầng (khoảng cách từ sàn đến trần thực tế). Trần dưới 2,7m sẽ cảm thấy thấp; cần để ý cả độ dày sàn và dầm.</li>
+  <li><strong>Bản vẽ kết cấu:</strong> Vị trí cột, dầm, móng, mác bê tông, đường kính và mật độ thép. Đây là phần quan trọng nhất nhưng người mua thường bỏ qua.</li>
+  <li><strong>Bản vẽ điện:</strong> Sơ đồ mạch, vị trí ổ cắm, công tắc, tủ điện, aptomat, đường dây.</li>
+  <li><strong>Bản vẽ cấp - thoát nước:</strong> Đường ống cấp nước, thoát nước thải, thoát nước mưa, vị trí hố ga, bể phốt, bể nước.</li>
+  <li><strong>Bản vẽ hoàn công:</strong> Ghi lại hiện trạng thực tế sau khi xây xong (khác bản thiết kế ban đầu). So sánh hai bản này để biết có sai khác gì không.</li>
+</ul>
+
+<h3 id="dien-tich-thuc">Diện tích: tim tường, thông thủy và phần chênh lệch cần hiểu rõ</h3>
+
+<p>Đây là chỗ người mua trẻ hay nhầm. Có hai cách đo diện tích căn hộ:</p>
+
+<ul>
+  <li><strong>Diện tích tim tường:</strong> Đo đến giữa tường bao và tường chung — bao gồm cả phần tường, cột, hộp kỹ thuật. Con số này lớn hơn.</li>
+  <li><strong>Diện tích thông thủy (lọt lòng):</strong> Diện tích sử dụng thực tế bên trong, không tính tường bao, cột, hộp kỹ thuật. Đây mới là phần bạn thật sự dùng được.</li>
+</ul>
+
+<p>Chênh lệch giữa hai cách đo có thể lên đến 5–10%. Luôn hỏi rõ <strong>giá tính theo loại diện tích nào</strong>, và để ý các phần "ăn" diện tích sử dụng: cột chịu lực nằm trong phòng, hộp kỹ thuật, dầm thấp, ban công/lô gia tính diện tích ra sao.</p>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Kinh nghiệm</span><p>Với nhà phố/nhà đất, hãy đối chiếu diện tích trên <strong>sổ đỏ</strong>, trên <strong>bản vẽ</strong>, và <strong>đo thực tế</strong>. Ba con số này phải khớp. Nếu diện tích thực tế lớn hơn sổ (lấn chiếm, xây vượt) — đó là rủi ro pháp lý, phần xây vượt có thể bị buộc tháo dỡ và không được công nhận khi sang tên.</p></div>
+
+<h2 id="ket-cau">Phần 2: Kết cấu — thứ không sửa được</h2>
+
+<p>Nếu chỉ được kiểm tra một thứ, hãy kiểm tra kết cấu. Mọi thứ khác đều có thể cải tạo; kết cấu yếu thì cả căn nhà là một rủi ro.</p>
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong/structural-crack-check.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Hai người dùng đèn pin kiểm tra vết nứt nhỏ gần khung cửa, bên cạnh thước, bảng kẹp giấy và viên bi trên sàn." />
+  <figcaption>Những dấu hiệu nhỏ như vết nứt, cửa kẹt hay viên bi tự lăn có thể nói nhiều hơn một tấm ảnh đẹp.</figcaption>
+</figure>
+
+<h3 id="mong-cot-dam">Móng, cột, dầm, sàn</h3>
+
+<ul>
+  <li><strong>Móng:</strong> Hỏi loại móng (móng đơn, móng băng, móng cọc) và nền đất khu vực. Đất yếu, gần sông, ao lấp mà làm móng sơ sài là nguyên nhân số một gây lún nứt sau vài năm.</li>
+  <li><strong>Mác bê tông:</strong> Nhà ở dân dụng thường dùng mác 250 trở lên cho kết cấu chịu lực. Hỏi mác bê tông được ghi trong bản vẽ kết cấu.</li>
+  <li><strong>Thép ("sắt"):</strong> Đường kính và mật độ thép trong cột, dầm, sàn quyết định khả năng chịu lực. Đây là chỗ nhà thầu hay "rút ruột" nhất — giảm đường kính thép, thưa thép đai, dùng thép kém chất lượng. Với nhà xây sẵn bạn khó kiểm tra trực tiếp, nên bản vẽ hoàn công và uy tín nhà thầu rất quan trọng.</li>
+</ul>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Lưu ý về "sắt tre"</span><p>Trong ngành xây dựng có hiện tượng "rút ruột công trình": thay vì dùng đủ thép theo thiết kế, nhà thầu giảm số lượng, giảm đường kính, hoặc dùng thép tái chế kém chất lượng — dân trong nghề hay nói mỉa là làm "cốt tre" thay cốt thép. Bê tông trộn thiếu xi măng, nhiều cát, mác thấp hơn thiết kế cũng phổ biến. Hậu quả không xuất hiện ngay mà sau 3–7 năm: nứt kết cấu, sàn võng, thấm dột. Đây là lý do <strong>uy tín và lịch sử của nhà thầu/chủ đầu tư</strong> quan trọng ngang với bản vẽ.</p></div>
+
+<h3 id="vet-nut">Đọc vết nứt: loại nào lo, loại nào không</h3>
+
+<p>Không phải vết nứt nào cũng nguy hiểm, nhưng phải biết phân biệt:</p>
+
+<ul>
+  <li><strong>Nứt chân chim, nứt mạng nhện nhỏ trên bề mặt tường/sơn:</strong> Thường do co ngót lớp trát/sơn, ít nguy hiểm về kết cấu — nhưng cũng cần xem có kèm thấm không.</li>
+  <li><strong>Nứt chéo 45 độ ở góc cửa, góc tường, đặc biệt nứt rộng:</strong> Dấu hiệu của lún không đều hoặc kết cấu chịu lực có vấn đề — RẤT đáng lo.</li>
+  <li><strong>Nứt ngang/dọc trên cột, dầm, hoặc nứt theo phương đứng kéo dài:</strong> Có thể là nứt kết cấu nghiêm trọng — cần chuyên gia đánh giá ngay.</li>
+  <li><strong>Nứt tách giữa hai khối nhà, nhà bị nghiêng, sàn không phẳng (đặt viên bi tự lăn):</strong> Dấu hiệu lún lệch — cực kỳ nguy hiểm.</li>
+</ul>
+
+<p><strong>Mẹo kiểm tra nhanh:</strong> Mang theo một viên bi hoặc quả bóng nhỏ, đặt lên sàn nhiều vị trí xem có tự lăn không (kiểm tra độ phẳng/nghiêng). Mở/đóng tất cả cửa xem có bị kẹt, cọ sàn không (cửa kẹt có thể do nhà bị xô lệch, không chỉ do bản lề).</p>
+
+<h2 id="chong-tham">Phần 3: Chống thấm và thoát nước — vấn đề cần kiểm tra kỹ nhất</h2>
+
+<p>Mình để hẳn một phần cho chủ đề này vì thấm dột là vấn đề phổ biến nhất, dai dẳng nhất, và tốn kém nhất sau khi mua nhà. Một căn nhà thấm nặng có thể "ngốn" hàng chục đến hàng trăm triệu để xử lý triệt để, và nhiều khi không bao giờ hết hẳn.</p>
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/notes/doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong/rainy-drainage-check.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Hai người kiểm tra thoát nước ban công và vệt ẩm chân tường trong lúc trời mưa trước khi mua nhà." />
+  <figcaption>Một buổi mưa giúp kiểm tra chống thấm và thoát nước như một hệ thống, không chỉ là lớp hoàn thiện bên ngoài.</figcaption>
+</figure>
+
+<h3 id="diem-tham">Những điểm dễ thấm cần kiểm tra</h3>
+
+<ul>
+  <li><strong>Trần và tường nhà vệ sinh, đặc biệt tầng trên dội xuống tầng dưới.</strong></li>
+  <li><strong>Tường giáp nhà bên cạnh</strong> (khe tiếp giáp giữa hai nhà phố là điểm thấm kinh điển).</li>
+  <li><strong>Sân thượng, mái, ban công</strong> — nơi tiếp xúc trực tiếp nước mưa.</li>
+  <li><strong>Chân tường tầng trệt</strong> (thấm ngược từ nền đất ẩm lên).</li>
+  <li><strong>Quanh cửa sổ, ô thoáng, vị trí ống xuyên tường.</strong></li>
+</ul>
+
+<p><strong>Dấu hiệu nhận biết:</strong> Vết ố vàng/nâu loang lổ trên trần và tường, sơn bị phồng rộp bong tróc, lớp vôi mục, mùi ẩm mốc, rêu mốc đen ở góc tường và trần nhà vệ sinh. Người bán có thể sơn đè lên để che — nên hãy đi xem nhà <strong>sau một trận mưa lớn</strong> nếu có thể, và để ý kỹ các góc khuất.</p>
+
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">Kinh nghiệm thực tế</span><p>Mùi ẩm mốc khó che giấu hơn vết ố. Khi vào nhà, hãy <strong>ngửi</strong> — đặc biệt ở phòng kín, gầm cầu thang, nhà vệ sinh, tầng trệt. Một căn nhà mới sơn lại toàn bộ nhưng vẫn phảng phất mùi ẩm là dấu hiệu đáng ngờ: có thể họ vừa sơn để che vết thấm. Cũng nên xem lớp sơn — nếu chỉ một mảng tường được sơn mới trong khi xung quanh cũ, hãy hỏi vì sao.</p></div>
+
+<h3 id="thoat-nuoc-mua">Thoát nước mùa mưa — yếu tố rất quan trọng</h3>
+
+<p>Đây là điểm người mua trẻ gần như luôn bỏ qua, cho đến khi mùa mưa đầu tiên đến và nhà ngập. Cần kiểm tra:</p>
+
+<ul>
+  <li><strong>Cốt nền nhà so với mặt đường:</strong> Nền nhà thấp hơn hoặc bằng mặt đường là nguy cơ ngập cao. Lý tưởng nền cao hơn mặt đường ít nhất một bậc.</li>
+  <li><strong>Khu vực có lịch sử ngập không:</strong> Hỏi hàng xóm, người dân xung quanh (không hỏi môi giới) — "mùa mưa khu này có ngập không, ngập sâu bao nhiêu, bao lâu rút?". Đây là thông tin vàng mà chỉ người sống ở đó mới biết.</li>
+  <li><strong>Hệ thống thoát nước khu vực:</strong> Cống rãnh có thông thoáng không, có bị tắc, có nhỏ so với mật độ dân cư không.</li>
+  <li><strong>Hướng dốc và thoát nước của chính căn nhà:</strong> Sân, ban công, sân thượng có độ dốc thoát nước hợp lý không, hay đọng nước. Phễu thu, ống thoát có đủ và đúng vị trí không.</li>
+  <li><strong>Hố ga, bể phốt:</strong> Vị trí, tình trạng, có mùi không, có nguy cơ trào ngược khi mưa lớn không.</li>
+</ul>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Kinh nghiệm thực tế</span><p>Hãy đi xem nhà <strong>vào hoặc ngay sau một trận mưa to</strong> ít nhất một lần trước khi quyết định. Một buổi chiều mưa sẽ cho bạn biết nhiều về căn nhà hơn mười buổi nắng đẹp: nước có đọng không, thấm chỗ nào, đường vào có ngập không, mái có dột không. Người bán thường tránh cho xem nhà lúc mưa — và đó cũng là một tín hiệu.</p></div>
+
+<h2 id="dien">Phần 4: Hệ thống điện</h2>
+
+<p>Điện là hạng mục vừa liên quan an toàn (cháy nổ, giật), vừa khó và tốn kém sửa vì phần lớn đi âm tường. Cần kiểm tra:</p>
+
+<ul>
+  <li><strong>Tủ điện và aptomat:</strong> Có chia nhánh hợp lý không (mỗi tầng/khu vực một aptomat riêng), có aptomat chống giật (ELCB/RCBO) cho khu vực ẩm như nhà vệ sinh, bếp không.</li>
+  <li><strong>Tiết diện dây:</strong> Dây điện phải đủ lớn cho tải, đặc biệt cho thiết bị công suất cao (điều hòa, bình nóng lạnh, bếp từ). Dây quá nhỏ gây nóng, sụt áp, nguy cơ cháy.</li>
+  <li><strong>Số lượng và vị trí ổ cắm:</strong> Nhà cũ thường thiếu ổ cắm, phải dùng dây nối kéo lằng nhằng — bất tiện và nguy hiểm.</li>
+  <li><strong>Tiếp địa (nối đất):</strong> Hệ thống có dây tiếp địa an toàn không — quan trọng cho thiết bị và an toàn tính mạng.</li>
+  <li><strong>Dấu hiệu xuống cấp:</strong> Ổ cắm ố vàng/cháy xém, công tắc lỏng, đèn chập chờn, mùi khét — đều là cảnh báo.</li>
+</ul>
+
+<p><strong>Cách test nhanh:</strong> Bật đồng thời nhiều thiết bị công suất lớn xem có nhảy aptomat hay sụt áp không. Mang theo bút thử điện và một thiết bị sạc để kiểm tra ổ cắm hoạt động.</p>
+
+<h2 id="nuoc">Phần 5: Hệ thống cấp nước</h2>
+
+<ul>
+  <li><strong>Áp lực nước:</strong> Mở vòi ở tầng cao nhất xem nước có yếu không. Mở đồng thời nhiều vòi (sen tắm + bồn rửa) xem áp lực có tụt mạnh không.</li>
+  <li><strong>Nguồn nước:</strong> Nước máy hay nước giếng/khoan? Có bể chứa, máy bơm tăng áp không? Bể nước có sạch không?</li>
+  <li><strong>Chất lượng nước:</strong> Hứng một cốc xem có cặn, màu, mùi không. Vòi/bồn có ố vàng, đóng cặn (dấu hiệu nước nhiễm phèn, cứng) không.</li>
+  <li><strong>Tốc độ thoát:</strong> Xả nước bồn rửa, bồn cầu, sàn nhà vệ sinh xem thoát nhanh hay ứ đọng (dấu hiệu ống tắc, độ dốc kém).</li>
+  <li><strong>Rò rỉ:</strong> Kiểm tra gầm bồn rửa, quanh bồn cầu, các điểm nối ống có ẩm ướt, rỉ nước không.</li>
+</ul>
+
+<h2 id="cua-vach">Phần 6: Cửa, vách, tường</h2>
+
+<ul>
+  <li><strong>Cửa:</strong> Đóng mở trơn tru không, có kẹt/cọ sàn (dấu hiệu nhà xô lệch) không. Chất liệu cửa (gỗ tự nhiên, gỗ công nghiệp, nhôm, sắt) và độ kín khít. Cửa chính có chắc chắn, an toàn không.</li>
+  <li><strong>Vách ngăn:</strong> Tường gạch đặc, gạch lỗ, hay vách thạch cao/tấm nhẹ? Gõ vào nghe đặc hay rỗng. Vách nhẹ cách âm kém và không treo được vật nặng — cần biết để tính toán.</li>
+  <li><strong>Tường:</strong> Gõ kiểm tra trát có bị bộp (lớp vữa tách khỏi tường, sẽ bong) không. Tường có phẳng không (nhìn nghiêng theo ánh sáng), có ẩm mốc, nứt không.</li>
+  <li><strong>Cách âm, cách nhiệt:</strong> Đặc biệt với căn hộ — nghe tiếng ồn từ căn bên, hành lang, đường phố. Tường giáp ngoài hướng tây có nóng không.</li>
+</ul>
+
+<h2 id="vat-lieu">Phần 7: Vật liệu và hoàn thiện — phân biệt thật và "đánh bóng"</h2>
+
+<p>Người bán thường đầu tư vào những thứ <strong>gây ấn tượng thị giác tức thì</strong>: sơn mới, đèn trang trí, một góc bếp đẹp — vì đó là thứ tạo cảm xúc mua. Nhưng chất lượng thật nằm ở vật liệu nền và phần khuất.</p>
+
+<ul>
+  <li><strong>Sàn:</strong> Gạch men, granite, gỗ tự nhiên hay gỗ công nghiệp (laminate)? Gỗ công nghiệp gặp nước sẽ phồng. Gạch lát có phẳng, có bị bộp (gõ nghe rỗng = sắp bong) không, mạch ron có đều không.</li>
+  <li><strong>Thiết bị vệ sinh, bếp:</strong> Thương hiệu, chất lượng vòi sen, bồn cầu, lavabo. Đồ rẻ tiền nhanh hỏng, rỉ sét, rò rỉ.</li>
+  <li><strong>Sơn:</strong> Sơn trong nhà, sơn ngoài trời (chống thấm, chống nắng), loại và số lớp. Sơn mới đẹp có thể đang che khuyết điểm.</li>
+  <li><strong>Trần:</strong> Trần bê tông, trần thạch cao thả, hay trần thạch cao chìm? Trần thạch cao gặp thấm sẽ ố, võng, sập.</li>
+  <li><strong>Lan can, cầu thang, ban công:</strong> Vật liệu, độ chắc chắn, độ cao an toàn (đặc biệt nhà có trẻ nhỏ).</li>
+</ul>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">Tư duy cốt lõi</span><p>Hãy phân biệt rõ <strong>"chi phí dễ thấy"</strong> (sơn, đèn, nội thất — sửa rẻ, làm sau cũng được) và <strong>"chi phí ẩn"</strong> (kết cấu, chống thấm, điện nước âm tường — sửa cực đắt và phiền). Đừng để một lớp hoàn thiện đẹp đánh lừa bạn về một phần khuất tệ. Một căn nhà thô nhưng kết cấu tốt, không thấm, điện nước chuẩn — luôn đáng giá hơn một căn lung linh nhưng có nhiều vấn đề khuất bên trong.</p></div>
+
+<h2 id="ngoai-that">Phần 8: Ngoại thất và môi trường xung quanh</h2>
+
+<ul>
+  <li><strong>Mái:</strong> Mái bằng (dễ thấm, cần chống thấm tốt) hay mái dốc/ngói (thoát nước tốt hơn). Tình trạng mái, máng xối, ống thoát nước mưa.</li>
+  <li><strong>Mặt tiền và tường ngoài:</strong> Nứt, thấm, bong tróc, rêu mốc — phản ánh chất lượng chống thấm và tuổi thật của công trình.</li>
+  <li><strong>Hướng nhà và nắng gió:</strong> Hướng tây nóng, cần che chắn. Nhà có thông gió tự nhiên, đón sáng không, hay bí bách ẩm thấp.</li>
+  <li><strong>Hạ tầng xung quanh:</strong> Đường vào (xe vào được không, cứu hỏa vào được không), điện khu vực có ổn định không, sóng điện thoại, nguồn nước chung.</li>
+  <li><strong>Hàng xóm và môi trường:</strong> Gần nguồn ồn, mùi (chợ, nhà máy, cống), nguy cơ ngập, an ninh khu vực.</li>
+</ul>
+
+<h2 id="tuoi-nha">Phần 9: Tuổi nhà và "tuổi thọ còn lại"</h2>
+
+<p>Một câu hỏi người mua trẻ ít đặt ra: <strong>căn nhà này còn ở tốt được bao nhiêu năm nữa?</strong></p>
+
+<ul>
+  <li><strong>Năm xây dựng thật:</strong> Hỏi rõ và đối chiếu. Nhà 15–20 năm bắt đầu xuống cấp hệ thống điện nước, chống thấm, cần tính chi phí cải tạo vào giá mua.</li>
+  <li><strong>Lịch sử sửa chữa:</strong> Đã sửa gì, khi nào, vì sao. Nhà sửa nhiều lần vì cùng một vấn đề (thấm, nứt) là dấu hiệu lỗi gốc chưa được giải quyết.</li>
+  <li><strong>Với căn hộ chung cư:</strong> Hỏi về quỹ bảo trì, ban quản lý, tình trạng thang máy, hệ thống PCCC, máy bơm, bể nước chung — những thứ ảnh hưởng chất lượng sống nhưng nằm ngoài căn hộ của bạn.</li>
+</ul>
+
+<h2 id="checklist">Checklist mang theo khi đi xem nhà</h2>
+
+<p>In ra hoặc lưu vào điện thoại, dùng cho mỗi căn:</p>
+
+<ol>
+  <li>Mang theo: đèn pin, bút thử điện, viên bi (test sàn nghiêng), thiết bị để test ổ cắm, thước, và nếu được — một người có chuyên môn.</li>
+  <li>Đi xem ít nhất hai lần, một lần ban ngày, một lần (nếu được) sau mưa.</li>
+  <li>Ngửi mùi ẩm mốc ở mọi phòng kín và nhà vệ sinh.</li>
+  <li>Mở/đóng tất cả cửa, kiểm tra kẹt và cọ sàn.</li>
+  <li>Đặt viên bi nhiều chỗ kiểm tra độ phẳng sàn.</li>
+  <li>Bật nhiều thiết bị điện cùng lúc, kiểm tra aptomat và sụt áp.</li>
+  <li>Mở nhiều vòi nước cùng lúc ở tầng cao, kiểm tra áp lực và tốc độ thoát.</li>
+  <li>Soi đèn vào các góc trần, chân tường, gầm cầu thang tìm vết ố, nứt, mốc.</li>
+  <li>Kiểm tra trần/tường nhà vệ sinh và khu vực giáp nhà bên.</li>
+  <li>Hỏi hàng xóm về lịch sử ngập và các vấn đề của khu vực.</li>
+  <li>Đối chiếu diện tích: sổ — bản vẽ — đo thực tế.</li>
+  <li>Hỏi rõ tuổi nhà, lịch sử sửa chữa, và nhà thầu/chủ đầu tư.</li>
+</ol>
+
+<div class="blog-takeaways">
+<h3 id="loi-ket">Một điều để nhớ</h3>
+<p>Mua nhà là một trong số ít quyết định mà bạn phải <strong>nhìn xuyên qua vẻ ngoài</strong>. Người bán bán cho bạn cảm xúc qua những thứ đẹp đẽ trên bề mặt; nhưng bạn sẽ sống với những thứ nằm sau lớp sơn đó trong hàng chục năm. Kết cấu, chống thấm, thoát nước, điện nước âm tường — đó mới là những thứ quyết định một căn nhà có bền vững và đáng sống lâu dài hay không.</p>
+<p style="margin-top: 1rem;">Bạn không cần biết mọi thứ về xây dựng. Bạn chỉ cần ghi nhớ nguyên tắc: <strong>thứ gì sửa được thì đừng lo nhiều, thứ gì khuất và đắt thì phải kiểm tra kỹ.</strong> Và với những hạng mục lớn — kết cấu, thấm nặng — đừng tiếc vài triệu thuê người có chuyên môn đi cùng. Đó luôn là khoản tiền rẻ nhất bạn từng chi khi mua nhà.</p>
+<p style="margin-top: 1rem;">Nếu bài này hữu ích, hãy chia sẻ cho người thân, bạn bè đang chuẩn bị mua căn nhà đầu tiên — để họ bước vào đó với con mắt của người hiểu chuyện, không phải của người chỉ nhìn thấy lớp sơn đẹp.</p>
+</div>9:["$","$L14",null,{"html":"$15"}]
+a:["$","$L16",null,{"prompt":"Bạn thấy bài này thế nào?","surface":"notes","category":"notes","slug":"doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong","reactionLabels":{"like":"Thích","love":"Yêu thích","insightful":"Sâu sắc","clap":"Tuyệt vời"}}]
+b:["$","nav",null,{"className":"blog-series-nav","aria-label":"Mua nhà","children":[["$","$L6",null,{"href":"/vi/notes/chung-cu-vs-nha-dat-va-mua-nha-du-an","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Bài trước"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Chung cư, nhà đất hay nhà dự án: chọn theo cách mình sống"}]]}],["$","$L6",null,{"href":"/vi/notes/tam-ly-mua-nha-tranh-bay-nguoi-ban","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Bài tiếp theo"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Tâm lý khi mua nhà: giữ khoảng lùi trước các áp lực chốt nhanh"}]]}]]}]
+c:["$","footer",null,{"className":"blog-article__footer","children":["$","$L6",null,{"href":"/vi/notes","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Quay lại Ghi chép"]}]}]
+d:["$","aside",null,{"className":"blog-article__toc","children":["$","$L17",null,{"label":"Trong bài này","surface":"notes"}]}]
+e:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/579669e8fc8fe057.css","precedence":"next"}]
+f:["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+10:["$","script","script-0",{"src":"/_next/static/chunks/60afb5b0374fe7a9.js","async":true}]
+11:["$","script","script-1",{"src":"/_next/static/chunks/0e65e15104575034.js","async":true}]
+12:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+1a:null

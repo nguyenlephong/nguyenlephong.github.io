@@ -1,0 +1,18 @@
+{
+  "slug": "turning-review-evidence-into-team-memory",
+  "category": "ways-of-working",
+  "title": "Turning Review Evidence Into Team Memory",
+  "summary": "A practical note on converting review findings, commands, screenshots, and decisions into reusable team memory instead of one-time approval artifacts.",
+  "date": "2026-07-23",
+  "readingMinutes": 5,
+  "tags": [
+    "Ways of Working",
+    "Review",
+    "Evidence",
+    "Team Memory",
+    "Documentation",
+    "Delivery"
+  ],
+  "author": "Nguyen Le Phong",
+  "html": "<p>The review was thorough. It had screenshots, logs, commands, edge cases, and a clear reason for the final decision. Then it disappeared into the pull request timeline. Two months later, another person repeated the same discovery because the evidence had never become team memory.</p>\n<figure class='blog-figure blog-photo-panorama'>\n  <img src='https://nguyenlephong.github.io/dom-pub/icdn/blogs/turning-review-evidence-into-team-memory/review-evidence-team-memory.webp' width='1600' height='900' loading='lazy' decoding='async' alt='A team reviews evidence cards, decision notes, screenshots, and reusable checklists on a calm project memory board.' />\n  <figcaption>Review evidence becomes more valuable when the next teammate can reuse it.</figcaption>\n</figure>\n<p>Review evidence is expensive. Someone had to run the test, inspect the output, compare behavior, read the code path, or ask the uncomfortable question. If that evidence only serves one approval, the team pays the same cost again later.</p>\n<p>Team memory does not require a large document. Sometimes it is a short note in a runbook, a checklist item, a known limitation, a test case, a dashboard link, or a sentence in the architecture decision record. The important part is moving durable learning out of the transient review thread.</p>\n<p>The trick is deciding what is durable. Not every comment deserves preservation. A typo fix can stay in the pull request. A repeated failure mode, a surprising dependency, a manual verification step, or a decision that explains why the code looks unusual probably deserves a home.</p>\n<p>Good review notes answer future questions before they become interruptions. Why is this fallback conservative? Which command proves the offline path works? Which provider behavior surprised us? Which assumption was accepted, and which one still needs monitoring?</p>\n<p>This habit also improves reviews themselves. When people know evidence may become shared memory, they write it more clearly. Commands become reproducible. Screenshots get context. Decisions include the reason, not only the result.</p>\n<p>There is a balance. Turning every review into documentation creates drag. Turning none of them into memory creates repeated confusion. The useful middle is to capture the parts that would save real time or prevent real mistakes if the same topic returns.</p>\n<p>At the end of a review, ask one small question: what did we learn here that the next person should not have to rediscover? If there is an answer, the review is not only a gate. It is a chance to make the team a little smarter.</p>"
+}

@@ -1,0 +1,23 @@
+{
+  "slug": "96524a51-8a13-4db4-950c-e365c69a017d",
+  "title": "§ Kỹ năng diễn đạt",
+  "html": "<p>Diễn đạt là sự kiểm chứng tối hậu cho suy nghĩ. Nếu bạn không thể đưa một ý tưởng vào lời &mdash; viết, nói, hay prompt cho một LLM &mdash; thì hoặc là suy nghĩ ấy chưa bao giờ được kết luận, hoặc bạn chưa thực sự hiểu nó. Cái cảm giác dễ chịu &ldquo;tôi hiểu rồi&rdquo; có thể tồn tại trong đầu gần như vô hạn, bởi cái đầu chẳng bao giờ đòi hỏi các mảnh phải khớp vào nhau. Trang giấy thì có. Hành động ngôn từ hoá buộc phải chính xác: trực giác mơ hồ phải trở thành nhận định cụ thể, những liên tưởng lỏng lẻo phải cam kết một trật tự, và các khoảng trống tự lộ ra ngay khoảnh khắc bạn cố bắc một câu qua chúng. Đây là lý do viết chính là tư duy, chứ không chỉ là bản ghi của tư duy &mdash; viết chính là nơi tư duy thực sự được hoàn tất. Đây cũng là lý do vốn từ phong phú và nhất quán quan trọng: nó là interface qua đó tâm trí bạn truy xuất và kết nối những gì nó biết, và interface ấy càng tinh, bạn càng chạm tới được nhiều hơn chính sự thấu hiểu của mình. <em>(Một mạch suy nghĩ tôi lần đầu đi theo trong <a href=\"https://huylenq.github.io\" target=\"_blank\" rel=\"noopener noreferrer\">vườn ý nghĩ của một người bạn</a>.)</em></p>\n<hr>\n<ul>\n<li><span class=\"private-link\">Ma sát khi ngôn từ hoá các ý tưởng trừu tượng vào prompt LLM</span></li>\n<li><a href=\"/thoughts/recognizable-patterns-of-valuable-thoughts\">Liệu có khuôn mẫu nhận biết được của những suy nghĩ giá trị?</a></li>\n<li><a href=\"/thoughts/vocabulary-as-api-for-second-brain\">Vốn từ phong phú, nhất quán là API tốt nhất cho bộ não thứ hai</a></li>\n<li><a href=\"/thoughts/different-purposes-of-writing\">Những mục đích khác nhau của việc viết</a></li>\n<li><a href=\"/thoughts/how-i-write-notes\">Cách tôi viết ghi chú</a></li>\n</ul>",
+  "backlinks": [
+    {
+      "slug": "23cd8fda-6959-439f-800a-6d4eea5bd681",
+      "title": "AI làm giảm đặc quyền thông tin",
+      "context": "<ul>\n<li><a href=\"/thoughts/human-vs-ai-brain-elasticity\">Ưu thế nền tảng của con người so với AI</a> - <a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Kỹ năng diễn đạt</a></li>\n</ul>"
+    },
+    {
+      "slug": "how-i-write-notes",
+      "title": "Cách tôi viết ghi chú",
+      "context": "<ul>\n<li><a href=\"/thoughts/516f2efb-2e65-4809-81e6-ed40c245d331\">Tại sao phải ghi chú?</a> - <a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Kỹ năng diễn đạt</a></li>\n</ul>"
+    },
+    {
+      "slug": "vocabulary-as-api-for-second-brain",
+      "title": "Vốn từ phong phú, nhất quán là API tốt nhất cho bộ não thứ hai",
+      "context": "<ul>\n<li><a href=\"/thoughts/96524a51-8a13-4db4-950c-e365c69a017d\">§ Kỹ năng diễn đạt</a> - <a href=\"/thoughts/programming-beacons\">Những ngọn hải đăng lập trình</a> - <a href=\"/thoughts/code-run-on-people\">Code có còn chạy trên con người?</a></li>\n</ul>"
+    }
+  ],
+  "maturity": "budding"
+}

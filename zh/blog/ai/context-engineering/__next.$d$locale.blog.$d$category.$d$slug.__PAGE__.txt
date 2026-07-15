@@ -1,0 +1,172 @@
+1:"$Sreact.fragment"
+9:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+a:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+e:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+15:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+16:"$Sreact.suspense"
+18:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+1a:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T974,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/zh/blog/ai/context-engineering#article","headline":"上下文工程：区分优秀 AI 用户与普通用户的关键技能","description":"大多数 AI 结果令人失望，不是因为模型不好，而是因为上下文太薄。上下文工程实用指南——模型窗口中有什么、优质上下文的五大支柱、常见反模式，以及能持续产出更好结果的可复用模板。","inLanguage":"zh","url":"https://nguyenlephong.github.io/zh/blog/ai/context-engineering","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/context-engineering.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/zh/blog/ai/context-engineering","datePublished":"2026-02-22","dateModified":"2026-02-22","keywords":"AI, 上下文工程, 提示词工程, LLM, 开发者生产力, AI 工具","articleSection":"AI 与未来","isRelatedTo":[{"@type":"BlogPosting","headline":"从 Prompt 到 Workflow：设计每周为你省下数小时的 AI Workflow","url":"https://nguyenlephong.github.io/zh/blog/ai/ai-workflows-that-save-hours","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/ai-workflows-that-save-hours.jpg"},{"@type":"BlogPosting","headline":"Asking AI to Name Its Assumptions","url":"https://nguyenlephong.github.io/en/blog/ai/asking-ai-to-name-its-assumptions","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/asking-ai-to-name-its-assumptions.jpg"},{"@type":"BlogPosting","headline":"Treating AI Suggestions as Draft Evidence","url":"https://nguyenlephong.github.io/en/blog/ai/treating-ai-suggestions-as-draft-evidence","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/treating-ai-suggestions-as-draft-evidence.jpg"},{"@type":"BlogPosting","headline":"Keeping AI Changes Small Enough to Review","url":"https://nguyenlephong.github.io/en/blog/ai/keeping-ai-changes-small-enough-to-review","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/keeping-ai-changes-small-enough-to-review.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/zh/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}3:Td1f,{"@context":"https://schema.org","@type":"FAQPage","@id":"https://nguyenlephong.github.io/zh/blog/ai/context-engineering#faq","mainEntity":[{"@type":"Question","name":"What is context engineering and why does it matter for developers?","acceptedAnswer":{"@type":"Answer","text":"Context engineering is the skill of deliberately designing the information you provide to an AI — its role, background state, task, constraints, and output format — so it produces useful results without back-and-forth. It matters because the quality of AI output is almost entirely determined by the quality of input: vague, thin context produces generic, off-target answers, while rich, structured context produces specific, actionable ones. Most developers underestimate this and focus on rephrasing prompts instead."}},{"@type":"Question","name":"What is the difference between context engineering and prompt engineering?","acceptedAnswer":{"@type":"Answer","text":"Prompt engineering is about word choice — how to phrase a request so the model interprets it correctly. Context engineering is a level deeper: it's about what information you make available before the model generates anything. You can have a perfectly phrased prompt and still get a poor answer because the model lacks background, state, or constraints. Context engineering addresses the information architecture; prompt engineering addresses the wording within it."}},{"@type":"Question","name":"What are the five pillars of great context?","acceptedAnswer":{"@type":"Answer","text":"The five pillars are: (1) Role — who the model should be (persona, expertise, audience perspective); (2) State — what already exists, what's been tried, what constraints apply; (3) Task — exactly what you want done, not a vague category; (4) Constraints — what to avoid, scope limits, hard rules; (5) Format — the shape of the output (length, structure, level of detail). Addressing all five reduces back-and-forth dramatically and improves first-draft quality."}},{"@type":"Question","name":"How do I build a reusable context template?","acceptedAnswer":{"@type":"Answer","text":"Structure your template around the five pillars: Role (who the model is and for whom), Background State (tech stack, what exists, what's been tried), Task (one precise sentence), Constraints (explicit negatives: what not to do), and Output Format (length, structure, detail level). You don't need to fill in every field every time — for a simple lookup, role + task + format is enough. For complex debugging or code review, all five matter. The template is a scaffold, not a form."}},{"@type":"Question","name":"What does 'token budget' mean in context engineering?","acceptedAnswer":{"@type":"Answer","text":"Every interaction with an AI happens inside a context window with a fixed size measured in tokens. Everything you include — the system prompt, pasted code, conversation history, your question — competes for space in that window. Token budget management means being selective about what you include: paste specific functions rather than whole files, strip boilerplate from pasted code, summarize conversation history after long sessions, and put standing instructions in the system prompt rather than repeating them per-message. Irrelevant content isn't neutral — it's noise the model has to reason through."}}]}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--gold","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"博客\",\"item\":\"https://nguyenlephong.github.io/zh/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"AI 与未来\",\"item\":\"https://nguyenlephong.github.io/zh/blog/ai\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"上下文工程：区分优秀 AI 用户与普通用户的关键技能\",\"item\":\"https://nguyenlephong.github.io/zh/blog/ai/context-engineering\"}]}"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$3"}}],"$L4"]}],["$L5","$L6","$L7"],"$L8"]}],"loading":null,"isPartial":false}
+f:T348d,<p>你一定有过这种感受。你输入了一个看似清晰的问题，AI 给出的回答却……偏差了。技术上相关，但没抓住重点。于是你换个方式重问，再试一次，又得到一个稍微偏差的答案。五轮对话后终于得到有用的东西——但耗时比自己动手还长。</p>
+<p>实际发生的是：<strong>模型只能根据你放在它面前的内容来工作</strong>。它不知道你的代码库是什么样子，不了解你的约束条件，看不到你已经尝试过什么，也不明白你为什么要问。当 AI 回答跑偏时，根本原因几乎总是<em>信息不足</em>——而非措辞不当或缺少"咒语式"技巧。这就是 AI 社区所称的<strong>上下文工程</strong>的核心所在。</p>
+
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">定义</span><p>上下文工程是一种技能：有意识地设计提供给 AI 的信息——角色、背景状态、任务、约束条件和输出格式——使其无需反复对话便能产出真正有用的结果。</p></div>
+
+<h2 id="what-is-ce">上下文工程究竟是什么</h2>
+<p>2025 年，Andrej Karpathy 推广了这个术语。与"提示词工程"的区别至关重要：提示词工程关注的是<em>措辞选择</em>；上下文工程深入一层，关注的是<em>在模型生成任何内容之前，你提供了哪些信息</em>。</p>
+<p>可以把它想象成<em>米其林式准备</em>（mise en place）——厨师在开始烹饪前备齐所有食材的习惯。优秀的厨师不会在烹饪中途因缺少食材而即兴发挥。上下文工程就是为你的 AI 协作者做好这种准备工作。</p>
+
+<h2 id="anatomy">上下文窗口的解剖</h2>
+<p>与 AI 的每次交互都发生在一个"上下文窗口"这一固定工作内存中，它包含模型在生成回复时能"看到"的所有内容，分为四个层次。</p>
+
+<figure class="blog-figure">
+<svg class="dgm-svg" viewBox="0 0 700 430" role="img" aria-labelledby="ctx-anat">
+  <title id="ctx-anat">Four layers inside an AI context window: System Prompt, Injected Context, Conversation History, and User Message feed into the LLM to produce a response.</title>
+  <defs>
+    <marker id="arr-ctx" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+  <text class="dgm-t-muted dgm-t-mono" x="24" y="16" font-size="10">CONTEXT WINDOW — everything the model sees before writing a single word</text>
+  <rect class="dgm-surface" x="10" y="22" width="680" height="304" rx="14" stroke-width="1.5"/>
+  <rect class="dgm-core" x="22" y="34" width="656" height="64" rx="8" stroke-width="1.5"/>
+  <rect class="dgm-fill-accent" x="28" y="43" width="44" height="18" rx="4"/>
+  <text fill="white" x="50" y="57" text-anchor="middle" font-size="10" font-weight="700">ROLE</text>
+  <text x="84" y="56" font-size="13">System Prompt</text>
+  <text class="dgm-t-muted" x="84" y="74" font-size="11">Persona, role, standing instructions — the model's "constitution" for this session</text>
+  <rect class="dgm-adapter" x="22" y="106" width="656" height="64" rx="8" stroke-width="1.5"/>
+  <rect class="dgm-fill-accent" x="28" y="115" width="44" height="18" rx="4" opacity="0.7"/>
+  <text fill="white" x="50" y="129" text-anchor="middle" font-size="10" font-weight="700">DOCS</text>
+  <text x="84" y="128" font-size="13">Injected Context</text>
+  <text class="dgm-t-muted" x="84" y="146" font-size="11">Files, search results, tool outputs, docs — raw material the model reasons over</text>
+  <rect class="dgm-driven" x="22" y="178" width="656" height="64" rx="8" stroke-width="1.5"/>
+  <rect class="dgm-fill-accent" x="28" y="187" width="44" height="18" rx="4" opacity="0.5"/>
+  <text fill="white" x="50" y="201" text-anchor="middle" font-size="10" font-weight="700">MEM</text>
+  <text x="84" y="200" font-size="13">Conversation History</text>
+  <text class="dgm-t-muted" x="84" y="218" font-size="11">Prior messages, decisions — working memory of everything that has happened so far</text>
+  <rect class="dgm-core" x="22" y="250" width="656" height="64" rx="8" stroke-width="1.5"/>
+  <rect class="dgm-fill-accent" x="28" y="259" width="44" height="18" rx="4"/>
+  <text fill="white" x="50" y="273" text-anchor="middle" font-size="10" font-weight="700">TASK</text>
+  <text class="dgm-t-strong" x="84" y="272" font-size="13">User Message</text>
+  <text class="dgm-t-muted" x="84" y="290" font-size="11">The actual question or task — often under 5% of total tokens, but triggers everything</text>
+  <path class="dgm-flow" d="M 350,330 L 350,360" marker-end="url(#arr-ctx)" stroke-width="2"/>
+  <rect class="dgm-core" x="268" y="364" width="164" height="52" rx="12" stroke-width="2"/>
+  <text class="dgm-t-strong" x="350" y="389" text-anchor="middle" font-size="14">LLM</text>
+  <text class="dgm-t-muted dgm-t-mono" x="350" y="407" text-anchor="middle" font-size="10">attention + generation</text>
+  <path class="dgm-flow" d="M 436,390 L 484,390" marker-end="url(#arr-ctx)" stroke-width="2"/>
+  <rect class="dgm-driven" x="488" y="366" width="196" height="48" rx="10" stroke-width="1.5"/>
+  <text x="586" y="387" text-anchor="middle" font-size="12">Response</text>
+  <text class="dgm-t-muted" x="586" y="404" text-anchor="middle" font-size="11">quality = f(context quality)</text>
+  <text class="dgm-t-accent" x="350" y="426" text-anchor="middle" font-size="11">All four layers share the same token budget. Context engineering is choosing wisely.</text>
+</svg>
+  <figcaption>上下文窗口的四个层次。大多数人只关注第 4 层（用户消息），但最强大、最常被忽视的是前两层。</figcaption>
+</figure>
+
+<p><strong>系统提示词</strong>是最强大却最容易被忽略的层。它设定了模型的角色、专业水平以及每次回复都遵循的规则。</p>
+<p><strong>注入上下文</strong>是你提供原材料的地方：代码文件、文档、错误日志、数据库架构。模型在此基础上进行推理。</p>
+<p><strong>对话历史</strong>随着会话的推进而累积，有用但也消耗 token。</p>
+<p><strong>用户消息</strong>是实际的问题或任务。尽管是大家最关注的部分，在设计良好的配置中它通常只占总 token 的 5% 以下。</p>
+
+<h2 id="five-pillars">优质上下文的五大支柱</h2>
+
+<figure class="blog-figure">
+<svg class="dgm-svg" viewBox="0 0 700 195" role="img" aria-labelledby="five-pil">
+  <title id="five-pil">The five pillars of great context: Role, State, Task, Constraints, Format.</title>
+  <rect class="dgm-core" x="8" y="10" width="124" height="170" rx="10" stroke-width="1.5"/>
+  <text class="dgm-t-accent" x="70" y="55" text-anchor="middle" font-size="36" font-weight="700">1</text>
+  <text class="dgm-t-strong" x="70" y="80" text-anchor="middle" font-size="13">Role</text>
+  <text class="dgm-t-muted" x="70" y="100" text-anchor="middle" font-size="10">Who should</text>
+  <text class="dgm-t-muted" x="70" y="114" text-anchor="middle" font-size="10">the model</text>
+  <text class="dgm-t-muted" x="70" y="128" text-anchor="middle" font-size="10">behave as?</text>
+  <rect class="dgm-adapter" x="140" y="10" width="124" height="170" rx="10" stroke-width="1.5"/>
+  <text class="dgm-t-accent" x="202" y="55" text-anchor="middle" font-size="36" font-weight="700">2</text>
+  <text x="202" y="80" text-anchor="middle" font-size="13">State</text>
+  <text class="dgm-t-muted" x="202" y="100" text-anchor="middle" font-size="10">What's known,</text>
+  <text class="dgm-t-muted" x="202" y="114" text-anchor="middle" font-size="10">decided, or</text>
+  <text class="dgm-t-muted" x="202" y="128" text-anchor="middle" font-size="10">already tried?</text>
+  <rect class="dgm-core" x="272" y="10" width="156" height="170" rx="10" stroke-width="2"/>
+  <text class="dgm-t-accent" x="350" y="55" text-anchor="middle" font-size="36" font-weight="700">3</text>
+  <text class="dgm-t-strong" x="350" y="80" text-anchor="middle" font-size="13">Task</text>
+  <text class="dgm-t-muted" x="350" y="100" text-anchor="middle" font-size="10">What exactly</text>
+  <text class="dgm-t-muted" x="350" y="114" text-anchor="middle" font-size="10">do you want</text>
+  <text class="dgm-t-muted" x="350" y="128" text-anchor="middle" font-size="10">done?</text>
+  <text class="dgm-t-accent dgm-t-mono" x="350" y="162" text-anchor="middle" font-size="9">MOST CRITICAL</text>
+  <rect class="dgm-driven" x="436" y="10" width="124" height="170" rx="10" stroke-width="1.5"/>
+  <text class="dgm-t-accent" x="498" y="55" text-anchor="middle" font-size="36" font-weight="700">4</text>
+  <text x="498" y="80" text-anchor="middle" font-size="13">Constraints</text>
+  <text class="dgm-t-muted" x="498" y="100" text-anchor="middle" font-size="10">What to avoid,</text>
+  <text class="dgm-t-muted" x="498" y="114" text-anchor="middle" font-size="10">scope limits,</text>
+  <text class="dgm-t-muted" x="498" y="128" text-anchor="middle" font-size="10">hard rules</text>
+  <rect class="dgm-adapter" x="568" y="10" width="124" height="170" rx="10" stroke-width="1.5"/>
+  <text class="dgm-t-accent" x="630" y="55" text-anchor="middle" font-size="36" font-weight="700">5</text>
+  <text x="630" y="80" text-anchor="middle" font-size="13">Format</text>
+  <text class="dgm-t-muted" x="630" y="100" text-anchor="middle" font-size="10">Output shape,</text>
+  <text class="dgm-t-muted" x="630" y="114" text-anchor="middle" font-size="10">length, level</text>
+  <text class="dgm-t-muted" x="630" y="128" text-anchor="middle" font-size="10">of detail</text>
+</svg>
+  <figcaption>五大支柱。第 3 支柱（任务）获得了最多关注，但正是其他四个支柱让任务能够被很好地回答。</figcaption>
+</figure>
+
+<h3 id="pillar-role">支柱 1：角色（Role）</h3>
+<p>定义模型应该扮演什么角色——专业知识、视角、沟通风格。</p>
+<div class="blog-table-wrap"><table><thead><tr><th width="50%">无角色</th><th>有角色</th></tr></thead><tbody><tr><td><code>解释一下认证。</code></td><td><code>你是一位专注于安全的高级后端工程师，正在为一名了解 JavaScript 但从未实现过 auth 的初级开发者写作。解释 JWT，重点关注安全权衡和可能出现的问题。</code></td></tr></tbody></table></div>
+
+<h3 id="pillar-state">支柱 2：状态（State）</h3>
+<p>告诉模型当前的情况——代码库结构、已尝试的内容、不起作用的内容、已做出的决定。</p>
+<div class="blog-table-wrap"><table><thead><tr><th width="50%">无状态</th><th>有状态</th></tr></thead><tbody><tr><td><code>修复这个 bug。</code><br><em>（仅粘贴代码）</em></td><td><code>[代码] 这个 debounce 函数在普通输入时正常，但在快速滚动时立即触发而非等待。已尝试在开头添加 clearTimeout，仍然触发。Stack: React 18, TypeScript。控制台错误：[消息]。</code></td></tr></tbody></table></div>
+
+<h3 id="pillar-task">支柱 3：任务（Task）</h3>
+<p>精确指定你想要什么，而不是一个类别。"帮我处理 API"是类别。"写一个 Express 中间件，验证 JWT token，无效或缺失时返回 401，并将解码后的用户附加到 req.user"是任务。</p>
+
+<h3 id="pillar-constraints">支柱 4：约束（Constraints）</h3>
+<p>告诉模型不能做什么、应该避免什么。约束听起来像限制，但实际上<em>解放</em>了回答——它消除了整类"技术正确但对我的情况无用"的答案。</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">约束的写法</span><p>用明确的"不要"或"避免"陈述来书写约束。模型被训练为尽可能有帮助，会自然地扩大范围。明确的否定是最可靠的护栏。</p></div>
+
+<h3 id="pillar-format">支柱 5：格式（Format）</h3>
+<p>指定输出的形态：长度、结构、详细程度。没有格式指导，你得到的是模型认为合适的内容——可能是你想要简洁要点时给了 500 字的论述。</p>
+
+<h2 id="templates">构建可复用的上下文模板</h2>
+<pre><code><span class="cmt">## 角色</span>
+你是 [角色]，专注于 [领域]。
+目标受众是 [受众] 的 [关键背景]。
+
+<span class="cmt">## 背景状态</span>
+技术栈：[语言 / 框架 / 工具]
+当前情况：[简短描述]
+已尝试：[尝试和结果]
+相关错误：[如有]
+
+<span class="cmt">## 任务</span>
+[精确的一句话：动词 + 对象 + 范围]
+
+<span class="cmt">## 约束</span>
+- 不要使用 [库 / 方法]
+- 将 [方面] 控制在 [限制] 以内
+
+<span class="cmt">## 输出格式</span>
+[长度] — [结构] — [详细程度]</code></pre>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">核心要点</h3>
+<ul>
+<li><strong>上下文工程 &gt; 提示词工程：</strong>你提供的信息比你的措辞更重要。更好的输入 = 更好的输出。</li>
+<li><strong>四个层次，一个预算：</strong>系统提示词、注入上下文、对话历史、用户消息——各有不同用途，共享同一个 token 预算。</li>
+<li><strong>五大支柱，五个缺口：</strong>角色、状态、任务、约束、格式。覆盖全部五项，反复对话的次数会显著减少。</li>
+<li><strong>质量胜于数量：</strong>相关、聚焦、结构化的上下文始终优于大量无焦点的内容堆砌。</li>
+</ul>
+</div>4:["$","$L9",null,{"category":"ai","slug":"context-engineering","children":[["$","$La",null,{"category":"ai","slug":"context-engineering","readingMinutes":15,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$Lb",null,{"url":"https://nguyenlephong.github.io/zh/blog/ai/context-engineering","title":"上下文工程：区分优秀 AI 用户与普通用户的关键技能","surface":"blog","category":"ai","slug":"context-engineering","labels":{"share":"分享","copyLink":"复制链接","copied":"已复制！","close":"关闭"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lc",null,{"href":"/zh/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"博客"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lc",null,{"href":"/zh/blog/ai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"AI 与未来"}]]}],["$","header",null,{"className":"blog-article__head","children":[null,["$","h1",null,{"className":"blog-article__title","children":"上下文工程：区分优秀 AI 用户与普通用户的关键技能"}],["$","p",null,{"className":"blog-article__summary","children":"大多数 AI 结果令人失望，不是因为模型不好，而是因为上下文太薄。上下文工程实用指南——模型窗口中有什么、优质上下文的五大支柱、常见反模式，以及能持续产出更好结果的可复用模板。"}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"作者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-02-22","children":"2026年2月22日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"15 分钟阅读"}],["$","$Ld",null,{"label":"次浏览"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","AI",{"children":"AI"}],["$","li","上下文工程",{"children":"上下文工程"}],["$","li","提示词工程",{"children":"提示词工程"}],["$","li","LLM",{"children":"LLM"}],["$","li","开发者生产力",{"children":"开发者生产力"}],["$","li","AI 工具",{"children":"AI 工具"}]]}]]}],["$","$Le",null,{"html":"$f"}],"$L10","$L11"]}]]}],"$L12",null,"$L13"]}],"$L14"]}]
+5:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+7:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+8:["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]
+10:["$","$L18",null,{"prompt":"你觉得这篇文章如何？","surface":"blog","category":"ai","slug":"context-engineering","reactionLabels":{"like":"赞","love":"喜欢","insightful":"有启发","clap":"鼓掌"}}]
+11:["$","section",null,{"className":"blog-faq","aria-labelledby":"blog-faq-heading","children":[["$","h2",null,{"id":"blog-faq-heading","className":"blog-faq__heading","children":"常见问题"}],["$","dl",null,{"className":"blog-faq__list","children":[["$","div","0",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What is context engineering and why does it matter for developers?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Context engineering is the skill of deliberately designing the information you provide to an AI — its role, background state, task, constraints, and output format — so it produces useful results without back-and-forth. It matters because the quality of AI output is almost entirely determined by the quality of input: vague, thin context produces generic, off-target answers, while rich, structured context produces specific, actionable ones. Most developers underestimate this and focus on rephrasing prompts instead."}}]]}],["$","div","1",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What is the difference between context engineering and prompt engineering?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Prompt engineering is about <em>word choice</em> — how to phrase a request so the model interprets it correctly. Context engineering is a level deeper: it's about <em>what information you make available</em> before the model generates anything. You can have a perfectly phrased prompt and still get a poor answer because the model lacks background, state, or constraints. Context engineering addresses the information architecture; prompt engineering addresses the wording within it."}}]]}],["$","div","2",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What are the five pillars of great context?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"The five pillars are: (1) <strong>Role</strong> — who the model should be (persona, expertise, audience perspective); (2) <strong>State</strong> — what already exists, what's been tried, what constraints apply; (3) <strong>Task</strong> — exactly what you want done, not a vague category; (4) <strong>Constraints</strong> — what to avoid, scope limits, hard rules; (5) <strong>Format</strong> — the shape of the output (length, structure, level of detail). Addressing all five reduces back-and-forth dramatically and improves first-draft quality."}}]]}],["$","div","3",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"How do I build a reusable context template?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Structure your template around the five pillars: Role (who the model is and for whom), Background State (tech stack, what exists, what's been tried), Task (one precise sentence), Constraints (explicit negatives: what not to do), and Output Format (length, structure, detail level). You don't need to fill in every field every time — for a simple lookup, role + task + format is enough. For complex debugging or code review, all five matter. The template is a scaffold, not a form."}}]]}],["$","div","4",{"className":"blog-faq__item","children":[["$","dt",null,{"className":"blog-faq__q","children":"What does 'token budget' mean in context engineering?"}],["$","dd",null,{"className":"blog-faq__a","dangerouslySetInnerHTML":{"__html":"Every interaction with an AI happens inside a context window with a fixed size measured in tokens. Everything you include — the system prompt, pasted code, conversation history, your question — competes for space in that window. Token budget management means being selective about what you include: paste specific functions rather than whole files, strip boilerplate from pasted code, summarize conversation history after long sessions, and put standing instructions in the system prompt rather than repeating them per-message. Irrelevant content isn't neutral — it's noise the model has to reason through."}}]]}]]}]]}]
+12:["$","$L19",null,{"heading":"相关阅读","intro":"几篇相近主题的文章，方便沿着同一条思路继续阅读。","items":[{"post":{"slug":"ai-workflows-that-save-hours","category":"ai","title":"从 Prompt 到 Workflow：设计每周为你省下数小时的 AI Workflow","summary":"大多数人每次只用一个问题来使用 AI——也因此把它的大部分价值留在了桌面上。真正的杠杆不是一句巧妙的 prompt，而是一个可重复的 AI workflow：你设计一次、便永远复用的一小串步骤，把每周两小时的重复杂活变成两分钟的审阅。这是一份面向所有人（无论是否懂技术）的实用、案例丰富的指南：prompt 与 workflow 的区别、每个 workflow 都共有的简单结构、可直接照搬到办公室与日常生活的 workflow、从手动到全自动的三个层级、自己动手设计的六个步骤，以及一个用来证明你真正省下多少时间的简易估算法。","date":"2026-03-11","readingMinutes":18,"tags":["AI","AI Workflow","自动化","生产力","未来工作","AI 工具"],"author":"Nguyen Le Phong","featured":true,"series":"ai-in-practice","seriesOrder":2},"categoryTitle":"AI 与未来","readingLabel":"18 分钟阅读"},{"post":{"slug":"asking-ai-to-name-its-assumptions","category":"ai","title":"Asking AI to Name Its Assumptions","summary":"A practical reflection on making AI-assisted work safer by asking the model to expose assumptions before accepting its answer.","date":"2026-07-16","readingMinutes":5,"tags":["AI","LLM","Prompting","Verification","Developer Tools","Judgment"],"author":"Nguyen Le Phong"},"categoryTitle":"AI 与未来","readingLabel":"5 分钟阅读"},{"post":{"slug":"treating-ai-suggestions-as-draft-evidence","category":"ai","title":"Treating AI Suggestions as Draft Evidence","summary":"A practical reflection on using AI output as a starting point for investigation, not as a finished answer that replaces verification.","date":"2026-07-11","readingMinutes":5,"tags":["AI","LLM","Evidence","Code Review","Developer Tools","Quality"],"author":"Nguyen Le Phong"},"categoryTitle":"AI 与未来","readingLabel":"5 分钟阅读"},{"post":{"slug":"keeping-ai-changes-small-enough-to-review","category":"ai","title":"Keeping AI Changes Small Enough to Review","summary":"A practical reflection on using AI safely by keeping generated changes narrow, inspectable, and tied to evidence.","date":"2026-07-06","readingMinutes":5,"tags":["AI","Code Review","LLM","Developer Tools","Software Engineering","Quality"],"author":"Nguyen Le Phong"},"categoryTitle":"AI 与未来","readingLabel":"5 分钟阅读"}],"sourceCategory":"ai","sourceSlug":"context-engineering"}]
+13:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lc",null,{"href":"/zh/blog/ai","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","返回 AI 与未来"]}]}]
+14:["$","aside",null,{"className":"blog-article__toc","children":["$","$L1a",null,{"label":"本页内容","surface":"blog"}]}]
+17:null

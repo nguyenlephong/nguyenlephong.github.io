@@ -1,0 +1,375 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:T9d9,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/en/blog/architecture/dependency-injection-and-ioc#article","headline":"Dependency Injection & Inversion of Control, Without the Magic","description":"DI containers feel like wizardry until you see the plain idea underneath: stop letting code create its own dependencies, and hand them in instead. A from-scratch guide, with real examples and the testing payoff.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/blog/architecture/dependency-injection-and-ioc","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/dependency-injection-and-ioc.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/en/blog/architecture/dependency-injection-and-ioc","datePublished":"2026-03-05","dateModified":"2026-03-05","keywords":"Software Architecture, Dependency Injection, Inversion of Control, SOLID, Testing, Design Patterns","articleSection":"Source & Architecture","isRelatedTo":[{"@type":"BlogPosting","headline":"Keeping Data Contracts Small Enough to Trust","url":"https://nguyenlephong.github.io/en/blog/architecture/keeping-data-contracts-small-enough-to-trust","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/keeping-data-contracts-small-enough-to-trust.jpg"},{"@type":"BlogPosting","headline":"Hexagonal Architecture in Practice","url":"https://nguyenlephong.github.io/en/blog/architecture/hexagonal-architecture-in-practice","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/hexagonal-architecture-in-practice.jpg"},{"@type":"BlogPosting","headline":"TDD, BDD, DDD, and the Rest of the \"-Driven Development\" Family, Explained for Engineers","url":"https://nguyenlephong.github.io/en/blog/ways-of-working/tdd-bdd-ddd-driven-development","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/tdd-bdd-ddd-driven-development.jpg"},{"@type":"BlogPosting","headline":"Using AI Without Outsourcing Judgment","url":"https://nguyenlephong.github.io/en/blog/ai/using-ai-without-outsourcing-judgment","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/using-ai-without-outsourcing-judgment.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/en/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Blog\",\"item\":\"https://nguyenlephong.github.io/en/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Source & Architecture\",\"item\":\"https://nguyenlephong.github.io/en/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Dependency Injection & Inversion of Control, Without the Magic\",\"item\":\"https://nguyenlephong.github.io/en/blog/architecture/dependency-injection-and-ioc\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T7c05,<p>At some point every developer hits the same wall. You want to write a test for a piece of code, but the code secretly calls <code>new Database()</code> inside itself. No matter what you do, a real database connection fires up. You want to swap out the email provider, but the email SDK is buried three layers deep. You want to run the same logic for both an HTTP request and a scheduled job, but the framework is bolted in so tightly that it's basically impossible.</p>
+<p>These are symptoms of one root cause: code that <strong>creates its own dependencies</strong>. The fix has a formal name — <em>Dependency Injection</em> — but the idea underneath it is refreshingly simple. You stop letting code find its own collaborators, and you <em>hand them in from the outside</em>. That's it. Everything else — IoC containers, DI frameworks, injection tokens — is just machinery built on top of that one idea.</p>
+<p>This guide unpacks it from scratch: the problem, the principle, the pattern, and the practical payoff in tests. TypeScript is used throughout because it reads clearly for engineers coming from any web or server background.</p>
+
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/dependency-injection-and-ioc/swap-one-module-keep-the-rule.webp" width="1600" height="900" loading="lazy" decoding="async" alt="At a workshop table, Nguyen Le Phong swaps a small module beside a laptop and a compact test board, showing how one collaborator can change while the core setup stays calm." />
+  <figcaption>Dependency injection becomes easier to feel when the core setup stays still and only the collaborator in your hand needs to change.</figcaption>
+</figure>
+
+<h2 id="the-problem">Hard-wired dependencies: when code calls <code>new</code> on its own</h2>
+<p>Here is a service that processes an order. It looks perfectly reasonable at first glance:</p>
+<pre><code><span class="cmt">// order-service.ts — "before" version</span>
+<span class="kw">class</span> OrderService {
+  <span class="kw">async</span> placeOrder(cart: Cart): Promise&lt;Order&gt; {
+    <span class="kw">const</span> db     = <span class="kw">new</span> PostgresClient(process.env.DATABASE_URL!)  <span class="cmt">// hard-wired DB</span>
+    <span class="kw">const</span> stripe = <span class="kw">new</span> Stripe(process.env.STRIPE_SECRET_KEY!)        <span class="cmt">// hard-wired vendor</span>
+    <span class="kw">const</span> mailer = <span class="kw">new</span> SendGridMailer(process.env.SENDGRID_KEY!)    <span class="cmt">// hard-wired vendor</span>
+
+    <span class="kw">const</span> order = Order.fromCart(cart)
+    <span class="kw">await</span> stripe.charges.create({ amount: order.total, source: cart.token })
+    <span class="kw">await</span> db.query(<span class="str">'INSERT INTO orders …'</span>, [order])
+    <span class="kw">await</span> mailer.send({ to: cart.email, template: <span class="str">'order-confirmed'</span> })
+    <span class="kw">return</span> order
+  }
+}</code></pre>
+<p>Three problems crystallise the moment you try to work with this:</p>
+<ul>
+  <li><strong>Untestable in isolation.</strong> You cannot run <code>placeOrder</code> in a unit test without real credentials, a live database, and a live Stripe sandbox. Every test is a slow, brittle integration test by default.</li>
+  <li><strong>Rigidly coupled to specific implementations.</strong> If the business moves from Stripe to Adyen, you open this file and do surgery. If staging needs a dummy mailer, there's no clean way to plug one in.</li>
+  <li><strong>Hidden dependencies.</strong> A reader of the class signature sees <code>placeOrder(cart)</code> and has no idea the method secretly needs three external services. The dependencies are invisible until you read every line.</li>
+</ul>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">The pattern to notice</span><p>Every time you see <code>new SomeExternalThing()</code> <em>inside</em> a method or constructor body — not at the composition root — that's a hard-wired dependency. The class is responsible both for doing its own work <em>and</em> for finding and building the tools it needs to do that work. Those are two jobs, and they pull in opposite directions.</p></div>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/dependency-injection-and-ioc/hidden-dependencies-at-the-desk.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Nguyen Le Phong studies a crowded multi-monitor desk where cables, devices, notes, and code all compete for attention on the same working surface." />
+  <figcaption>When one class keeps creating its own tools, the desk starts telling the truth: too many responsibilities are packed into one place.</figcaption>
+</figure>
+
+<h2 id="inversion-of-control">Inversion of Control: who is in charge of creation?</h2>
+<p>Before solving the problem with code, it helps to name the principle involved. <strong>Inversion of Control</strong> (IoC) is the idea that a piece of code should not be responsible for obtaining its own dependencies. Instead, something external — a framework, a test harness, a composition root — takes charge of creating things and handing them in.</p>
+<p>You might have heard the so-called <em>Hollywood Principle</em>: <strong>"Don't call us, we'll call you."</strong> In classic imperative code, your business logic calls its dependencies directly — it reaches out and grabs a database. With IoC, the dependency comes to you. The control of that relationship is inverted: you no longer decide when or how to fetch your collaborators; the outside world decides and delivers them.</p>
+<p>IoC is a broad principle, not a specific technique. Frameworks implement it in a variety of ways:</p>
+<ul>
+  <li><strong>Dependency Injection (DI)</strong> — pass collaborators as constructor arguments or method parameters. The most common and most explicit form.</li>
+  <li><strong>Service Locator</strong> — a global registry from which code retrieves its dependencies by name. (More on why this is an anti-pattern later.)</li>
+  <li><strong>Template Method</strong> — a base class calls hook methods that subclasses override, so the base controls the flow and subclasses fill in the blanks.</li>
+  <li><strong>Event / Observer</strong> — components publish events; the framework routes them to subscribers. Neither side knows the other exists.</li>
+</ul>
+<p>Of these, <strong>Dependency Injection is the most transparent and the most testable</strong>. It is also the one most often conflated with IoC itself, which is why the two terms are worth untangling: IoC is the <em>principle</em>, DI is one <em>implementation</em> of that principle.</p>
+
+<h2 id="dependency-injection">Dependency Injection: passing dependencies in</h2>
+<p>The mechanics of DI are almost embarrassingly simple once you see them. Instead of constructing collaborators inside your class, you declare them as parameters and let the caller provide them.</p>
+<p>There are three flavours — but one clear winner for most situations:</p>
+<h3 id="constructor-injection">Constructor injection (preferred)</h3>
+<p>Dependencies are declared in the constructor. This is the standard choice: every dependency is visible in the class signature, required at construction time, and can be made <code>readonly</code> so nothing reassigns it later.</p>
+<pre><code><span class="cmt">// order-service.ts — "after" version with constructor injection</span>
+<span class="kw">interface</span> PaymentGateway { charge(amount: Money, token: string): Promise&lt;Receipt&gt; }
+<span class="kw">interface</span> OrderRepository { save(order: Order): Promise&lt;void&gt; }
+<span class="kw">interface</span> Mailer          { send(to: string, template: string): Promise&lt;void&gt; }
+
+<span class="kw">class</span> OrderService {
+  <span class="kw">constructor</span>(
+    <span class="kw">private readonly</span> payments: PaymentGateway,
+    <span class="kw">private readonly</span> orders:   OrderRepository,
+    <span class="kw">private readonly</span> mailer:   Mailer,
+  ) {}
+
+  <span class="kw">async</span> placeOrder(cart: Cart): Promise&lt;Order&gt; {
+    <span class="kw">const</span> order = Order.fromCart(cart)                   <span class="cmt">// pure business rule</span>
+    <span class="kw">await</span> <span class="kw">this</span>.payments.charge(order.total, cart.token)
+    <span class="kw">await</span> <span class="kw">this</span>.orders.save(order)
+    <span class="kw">await</span> <span class="kw">this</span>.mailer.send(cart.email, <span class="str">'order-confirmed'</span>)
+    <span class="kw">return</span> order
+  }
+}</code></pre>
+<p>Read that constructor signature out loud: "To create an <code>OrderService</code> you need a payment gateway, an order repository, and a mailer." It's a contract, written in plain code, visible without reading a single method body.</p>
+<h3 id="setter-injection">Setter / method injection (occasional use)</h3>
+<p>Dependencies are set via a method after construction. Useful for optional collaborators or for frameworks that construct objects in two phases (e.g., some test frameworks, some IoC containers). Use sparingly — it allows an object to exist in a partially-configured state, which is a subtle source of bugs.</p>
+<pre><code><span class="cmt">// setter injection — use only when construction-time wiring is impossible</span>
+<span class="kw">class</span> ReportGenerator {
+  <span class="kw">private</span> formatter: ReportFormatter = <span class="kw">new</span> DefaultFormatter()
+
+  setFormatter(f: ReportFormatter) { <span class="kw">this</span>.formatter = f }  <span class="cmt">// optional override</span>
+
+  generate(data: ReportData): string {
+    <span class="kw">return this</span>.formatter.format(data)
+  }
+}</code></pre>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Simple rule of thumb</span><p>Reach for <strong>constructor injection by default</strong>. Every dependency the class <em>always</em> needs belongs in the constructor. Only reach for setter injection when a dependency is genuinely optional, or when a framework forces it. Never use setter injection as an escape hatch to avoid thinking about your dependency graph.</p></div>
+
+<h2 id="composition-root">The composition root: one place to wire everything together</h2>
+<p>Once you inject dependencies through constructors, a new question arrives: <em>who actually calls <code>new</code> and wires the pieces together?</em> The answer is the <strong>composition root</strong>: a single place at the entry point of your application where all real objects are constructed and injected into each other.</p>
+<p>Think of it as the only place in your whole codebase where <code>new ConcreteImplementation()</code> is allowed to appear freely. Everything else talks in terms of interfaces. The composition root is the seam between "the abstract system" and "the real world".</p>
+<pre><code><span class="cmt">// composition-root.ts — the one place real things are wired up</span>
+<span class="kw">import</span> { PostgresOrderRepository } <span class="kw">from</span> <span class="str">'./adapters/postgres-order-repository'</span>
+<span class="kw">import</span> { StripePaymentGateway }    <span class="kw">from</span> <span class="str">'./adapters/stripe-payment-gateway'</span>
+<span class="kw">import</span> { SendGridMailer }          <span class="kw">from</span> <span class="str">'./adapters/sendgrid-mailer'</span>
+<span class="kw">import</span> { OrderService }            <span class="kw">from</span> <span class="str">'./domain/order-service'</span>
+<span class="kw">import</span> { OrderController }         <span class="kw">from</span> <span class="str">'./http/order-controller'</span>
+
+<span class="kw">export function</span> buildApp() {
+  <span class="cmt">// 1. Build leaf-level dependencies first (no deps of their own)</span>
+  <span class="kw">const</span> db      = <span class="kw">new</span> PostgresOrderRepository(process.env.DATABASE_URL!)
+  <span class="kw">const</span> stripe  = <span class="kw">new</span> StripePaymentGateway(process.env.STRIPE_SECRET_KEY!)
+  <span class="kw">const</span> mailer  = <span class="kw">new</span> SendGridMailer(process.env.SENDGRID_KEY!)
+
+  <span class="cmt">// 2. Build services, injecting their dependencies</span>
+  <span class="kw">const</span> orderSvc = <span class="kw">new</span> OrderService(stripe, db, mailer)
+
+  <span class="cmt">// 3. Build delivery layer, injecting the service</span>
+  <span class="kw">const</span> orderCtrl = <span class="kw">new</span> OrderController(orderSvc)
+
+  <span class="kw">return</span> orderCtrl
+}</code></pre>
+<p>Notice how the composition root reads almost like a recipe: "make these ingredients, combine them into services, put the services into controllers." There is one place in the whole codebase where you go to understand <em>how everything connects</em>. That's a tremendous asset when onboarding a new engineer, or when you need to swap an ingredient.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/dependency-injection-and-ioc/wire-it-once-at-the-edge.webp" width="1440" height="960" loading="lazy" decoding="async" alt="A prototype frame, laptop, and visible wiring sit on a lab bench where the real parts are connected in one deliberate place before anything runs." />
+  <figcaption>A composition root is less like magic and more like a workbench: the concrete pieces are wired together once at the edge, so the inner rule can stay focused.</figcaption>
+</figure>
+<p>In a test, you write a <em>test-specific composition root</em> — a tiny equivalent that wires in fakes instead of real adapters:</p>
+<pre><code><span class="cmt">// in a test file — same service, fake collaborators</span>
+<span class="kw">const</span> fakePayments = <span class="kw">new</span> InMemoryPaymentGateway()
+<span class="kw">const</span> fakeOrders   = <span class="kw">new</span> InMemoryOrderRepository()
+<span class="kw">const</span> fakeMailer   = <span class="kw">new</span> NoOpMailer()
+
+<span class="kw">const</span> svc = <span class="kw">new</span> OrderService(fakePayments, fakeOrders, fakeMailer)
+<span class="cmt">// runs in milliseconds; no network, no database</span></code></pre>
+
+<h2 id="by-hand-vs-container">Manual DI vs a DI container — what changes and when it matters</h2>
+<p>Everything above is <em>manual DI</em>, also called <em>Pure DI</em>. You write the wiring code yourself. For many projects — especially small ones — this is the right choice: it's plain code, there's no magic, it's immediately debuggable, and a new developer can understand the entire wiring by reading one file.</p>
+<p>As applications grow, the manual approach starts to chafe. A DI container (sometimes called an IoC container) automates the registration and resolution of dependencies, and adds lifetime management on top.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 860 440" role="img" aria-labelledby="dgm-di-title">
+    <title id="dgm-di-title">Control inversion diagram: before (class reaches out for its own deps) versus after (composition root injects deps inward).</title>
+    <defs>
+      <marker id="diAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="diRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#d97706"/>
+      </marker>
+    </defs>
+
+    <!-- LEFT PANEL: BEFORE -->
+    <rect class="dgm-surface" x="20" y="20" width="380" height="400" rx="16" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="210" y="50" text-anchor="middle" font-size="12">BEFORE — class reaches out</text>
+
+    <rect class="dgm-core" x="120" y="70" width="180" height="56" rx="10" stroke-width="2"/>
+    <text class="dgm-t-strong" x="210" y="100" text-anchor="middle" font-size="15">OrderService</text>
+    <text class="dgm-t-muted" x="210" y="118" text-anchor="middle" font-size="11">calls new() internally</text>
+
+    <rect class="dgm-driven" x="55" y="195" width="140" height="46" rx="9"/>
+    <text x="125" y="223" text-anchor="middle" font-size="13">PostgresClient</text>
+
+    <rect class="dgm-driven" x="222" y="195" width="140" height="46" rx="9"/>
+    <text x="292" y="223" text-anchor="middle" font-size="13">Stripe SDK</text>
+
+    <rect class="dgm-driven" x="138" y="310" width="145" height="46" rx="9"/>
+    <text x="210" y="338" text-anchor="middle" font-size="13">SendGrid SDK</text>
+
+    <!-- outward arrows (problematic) -->
+    <path d="M155,126 L125,192" stroke="#d97706" stroke-width="1.8" fill="none" marker-end="url(#diRed)"/>
+    <path d="M265,126 L292,192" stroke="#d97706" stroke-width="1.8" fill="none" marker-end="url(#diRed)"/>
+    <path d="M210,126 L210,307" stroke="#d97706" stroke-width="1.8" fill="none" marker-end="url(#diRed)"/>
+
+    <text x="210" y="390" text-anchor="middle" font-size="11" fill="#d97706">deps created inside the class — untestable</text>
+
+    <!-- RIGHT PANEL: AFTER -->
+    <rect class="dgm-surface" x="460" y="20" width="380" height="400" rx="16" stroke-width="1.5"/>
+    <text class="dgm-t-muted dgm-t-mono" x="650" y="50" text-anchor="middle" font-size="12">AFTER — composition root injects in</text>
+
+    <rect class="dgm-adapter" x="560" y="68" width="180" height="46" rx="9"/>
+    <text x="650" y="96" text-anchor="middle" font-size="13">Composition Root</text>
+    <text class="dgm-t-muted" x="650" y="112" text-anchor="middle" font-size="10">calls new() — only here</text>
+
+    <rect class="dgm-core" x="560" y="185" width="180" height="56" rx="10" stroke-width="2"/>
+    <text class="dgm-t-strong" x="650" y="215" text-anchor="middle" font-size="15">OrderService</text>
+    <text class="dgm-t-muted" x="650" y="233" text-anchor="middle" font-size="11">accepts interfaces only</text>
+
+    <rect class="dgm-driven" x="480" y="315" width="120" height="46" rx="9"/>
+    <text x="540" y="343" text-anchor="middle" font-size="12">Postgres</text>
+
+    <rect class="dgm-driven" x="616" y="315" width="120" height="46" rx="9"/>
+    <text x="676" y="343" text-anchor="middle" font-size="12">Stripe</text>
+
+    <!-- inward arrows (correct) -->
+    <path class="dgm-flow" d="M650,114 L650,182" marker-end="url(#diAcc)"/>
+    <path class="dgm-flow" d="M590,241 L540,312" marker-end="url(#diAcc)"/>
+    <path class="dgm-flow" d="M710,241 L676,312" marker-end="url(#diAcc)"/>
+
+    <text class="dgm-t-accent" x="650" y="390" text-anchor="middle" font-size="11">deps flow IN — easy to swap, easy to test</text>
+  </svg>
+  <figcaption>On the left, <code>OrderService</code> reaches <em>outward</em> to construct its own dependencies — each arrow is a coupling baked into the class body. On the right, a composition root constructs the concrete objects and injects them <em>inward</em>. The arrows reverse. The service knows only about interfaces; the concrete types are a detail at the edge.</figcaption>
+</figure>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Question</th><th>Manual / Pure DI</th><th>DI Container (NestJS, InversifyJS, tsyringe…)</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>How are types registered?</th>
+      <td>You write the wiring explicitly in a composition root.</td>
+      <td>Decorators, tokens, or metadata — the container scans and registers automatically.</td>
+    </tr>
+    <tr>
+      <th>How are instances resolved?</th>
+      <td>By calling <code>new</code> yourself, in the right order.</td>
+      <td>Ask the container for a type; it builds the full graph recursively.</td>
+    </tr>
+    <tr>
+      <th>Lifetime / scope management</th>
+      <td>You decide: one instance per module, per request, or transient — and you hold the reference.</td>
+      <td>Declarative: <code>@Singleton()</code>, <code>@RequestScoped()</code>, etc. Container handles disposal.</td>
+    </tr>
+    <tr>
+      <th>Debuggability</th>
+      <td>Everything is plain code — set a breakpoint anywhere, follow the call stack.</td>
+      <td>Resolution happens inside the container; "why did I get this instance?" requires understanding the container's internals.</td>
+    </tr>
+    <tr>
+      <th>Boilerplate</th>
+      <td>High for large graphs — wiring a 50-class app by hand is verbose.</td>
+      <td>Low — the container walks the dependency tree and builds everything automatically.</td>
+    </tr>
+    <tr>
+      <th>Build-time safety</th>
+      <td>TypeScript catches missing constructor args at compile time.</td>
+      <td>Depends on the container; token-based systems may fail at runtime if a binding is missing.</td>
+    </tr>
+    <tr>
+      <th>Best for</th>
+      <td>Small–medium apps, teams new to DI, microservices with a focused scope.</td>
+      <td>Large apps with many services, teams that want convention-over-configuration, frameworks like NestJS where DI is central.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>The threshold where a container earns its keep varies, but a rough guide: if your composition root feels like it's becoming its own maintenance burden — you're always scrolling it, forgetting to add a new binding, or fighting with object lifetimes — that's the signal to reach for a container. Until then, the plain version is easier to understand and debug.</p>
+
+<h2 id="testing">The testing payoff: inject fakes, get fast tests</h2>
+<p>The reason DI is worth learning — more than any architectural elegance — is what it does to your test suite. When every dependency arrives through the constructor, writing a test means writing a tiny composition root with fakes instead of real adapters. No database, no network, no vendor sandbox. Tests run in milliseconds and never fail because the staging Stripe account has a rate limit.</p>
+<pre><code><span class="cmt">// order-service.test.ts</span>
+<span class="kw">class</span> InMemoryPaymentGateway <span class="kw">implements</span> PaymentGateway {
+  receipts: Receipt[] = []
+  <span class="kw">async</span> charge(amount: Money, token: string): Promise&lt;Receipt&gt; {
+    <span class="kw">const</span> r = { id: <span class="str">'fake-receipt'</span>, amount }
+    <span class="kw">this</span>.receipts.push(r)
+    <span class="kw">return</span> r
+  }
+}
+
+<span class="kw">class</span> InMemoryOrderRepository <span class="kw">implements</span> OrderRepository {
+  store: Order[] = []
+  <span class="kw">async</span> save(order: Order) { <span class="kw">this</span>.store.push(order) }
+}
+
+<span class="kw">class</span> SpyMailer <span class="kw">implements</span> Mailer {
+  sent: string[] = []
+  <span class="kw">async</span> send(to: string) { <span class="kw">this</span>.sent.push(to) }
+}
+
+<span class="cmt">// The test itself is pure, fast, deterministic:</span>
+<span class="kw">it</span>(<span class="str">'confirms an order and notifies the customer'</span>, <span class="kw">async</span> () =&gt; {
+  <span class="kw">const</span> payments = <span class="kw">new</span> InMemoryPaymentGateway()
+  <span class="kw">const</span> repo     = <span class="kw">new</span> InMemoryOrderRepository()
+  <span class="kw">const</span> mailer   = <span class="kw">new</span> SpyMailer()
+
+  <span class="kw">const</span> svc   = <span class="kw">new</span> OrderService(payments, repo, mailer)
+  <span class="kw">const</span> order = <span class="kw">await</span> svc.placeOrder(testCart)
+
+  expect(payments.receipts).toHaveLength(1)
+  expect(repo.store).toContainEqual(order)
+  expect(mailer.sent).toContain(testCart.email)
+})</code></pre>
+<p>This is the same insight at the heart of <a href="/blog/architecture/ports-and-adapters">Ports &amp; Adapters</a> — the in-memory fake is just the test-time adapter, and the real Stripe or Postgres implementation is the production adapter. DI is the mechanism that makes the swap possible; ports &amp; adapters is the architectural pattern that makes the boundary intentional and explicit.</p>
+<p>It's also worth pausing on SOLID here. The "D" stands for the <strong>Dependency Inversion Principle</strong>: high-level modules should not depend on low-level modules; both should depend on abstractions. The interfaces above (<code>PaymentGateway</code>, <code>OrderRepository</code>, <code>Mailer</code>) are those abstractions. <code>OrderService</code> is the high-level module. <code>StripePaymentGateway</code> and <code>PostgresOrderRepository</code> are the low-level modules. Neither knows directly about the other — they meet at the interface, and the composition root snaps them together.</p>
+
+<h2 id="pitfalls">Anti-patterns: the ways DI goes wrong</h2>
+<p>The idea is simple, but there are a few well-worn ways to undermine it.</p>
+<h3 id="service-locator">The Service Locator</h3>
+<p>A Service Locator is a global registry that code calls to retrieve its dependencies at runtime:</p>
+<pre><code><span class="cmt">// anti-pattern: Service Locator — looks like DI but isn't</span>
+<span class="kw">class</span> OrderService {
+  <span class="kw">async</span> placeOrder(cart: Cart) {
+    <span class="kw">const</span> payments = ServiceLocator.get&lt;PaymentGateway&gt;(<span class="str">'PaymentGateway'</span>)
+    <span class="kw">const</span> repo     = ServiceLocator.get&lt;OrderRepository&gt;(<span class="str">'OrderRepository'</span>)
+    <span class="cmt">// … continues</span>
+  }
+}</code></pre>
+<p>This feels cleaner than <code>new Stripe()</code> inline, but it's hiding the same problem. The dependencies are still invisible in the signature. Tests have to configure a global registry before they run. And the class can request <em>anything at all</em> at any point — you've lost the explicitness that makes DI valuable.</p>
+<h3 id="over-injection">Over-injection (the 10-argument constructor)</h3>
+<p>When a constructor accumulates seven, eight, or ten parameters, it is usually a sign that the class is doing too much — not that DI is the wrong tool. The fix is to decompose the class into smaller, more focused collaborators, each with a short dependency list. Constructor length is a useful health metric.</p>
+<h3 id="hidden-globals">Hidden global containers</h3>
+<p>Accessing the DI container directly from within a service — rather than only at the composition root — is the Service Locator pattern under a different name. The rule is strict: only the composition root talks to the container. Services talk only to their injected interfaces.</p>
+<h3 id="magic-you-cant-trace">Magic you can't trace</h3>
+<p>Some frameworks wire dependencies through decorators and reflect metadata in ways that are genuinely hard to follow when something breaks. If you're spending more time reading container docs than reading your own business logic, that's a sign to reach for a simpler approach — or at minimum to add a well-documented composition root that spells out the major bindings explicitly.</p>
+
+<h2 id="by-company-size">Right-sizing DI: from solo project to enterprise</h2>
+<p>Like most architectural ideas, DI scales with the problem. The goal is always the same — testable, changeable code — but the right machinery to get there changes as the team and codebase grow.</p>
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th>Company stage</th><th>Recommended approach</th><th>Typical shape</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Solo / early startup</th>
+      <td>Manual DI with a single composition root file.</td>
+      <td>One <code>buildApp()</code> function; maybe 10–20 lines. Fast to write, easy to read.</td>
+    </tr>
+    <tr>
+      <th>Small team (5–20 engineers)</th>
+      <td>Still manual DI, possibly split into domain modules, each with its own wiring function.</td>
+      <td><code>buildOrderModule()</code>, <code>buildBillingModule()</code> — each self-contained, composed once at startup.</td>
+    </tr>
+    <tr>
+      <th>Growing scale-up (20–100 engineers)</th>
+      <td>A lightweight container starts paying off. Consider <em>tsyringe</em>, <em>InversifyJS</em>, or the container baked into your framework.</td>
+      <td>Decorators on classes, a container configured per module; request-scoped services for web apps.</td>
+    </tr>
+    <tr>
+      <th>Enterprise / large platform</th>
+      <td>A full DI framework is almost necessary. NestJS, Spring Boot, or ASP.NET Core are built around this idea at scale.</td>
+      <td>Convention-over-configuration, lifecycle hooks, module imports/exports, multi-tenant scoping.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>A fintech startup might start with a 30-line composition root that wires up three services. Two years later, the same codebase has 60 services: manual wiring has become a maintenance task of its own, and the team reaches for NestJS or InversifyJS to handle the graph automatically. The switch is straightforward because the <em>underlying pattern</em> — constructor injection, interfaces, a clear composition root — stays the same. The container is a mechanical assistant, not a different idea.</p>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">Practical advice</span><p>Start with manual DI and a composition root. You can introduce a container any time the wiring file becomes a burden, and the migration is mechanical: you're replacing explicit <code>new</code> calls with registrations. Nothing in your domain, services, or tests has to change — only the composition root.</p></div>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Key takeaways</h3>
+<ul>
+  <li><strong>The root cause</strong> of rigid, untestable code is a class that calls <code>new</code> on its own dependencies. The fix is to pass them in.</li>
+  <li><strong>Inversion of Control</strong> is the principle (someone else is in charge of providing your dependencies). <strong>Dependency Injection</strong> is the most explicit and testable way to implement it.</li>
+  <li><strong>Constructor injection</strong> is the default choice. Dependencies are visible in the signature, required at construction time, and easily swappable in tests.</li>
+  <li><strong>The composition root</strong> is the one place in your codebase where real objects are wired together. Everything else talks through interfaces.</li>
+  <li><strong>Manual DI</strong> is simpler and more debuggable for small codebases. A <strong>DI container</strong> earns its keep when the composition root itself becomes a maintenance burden.</li>
+  <li><strong>The testing payoff</strong> is immediate: inject fakes in tests, skip the network and the database, and run thousands of cases in seconds.</li>
+  <li>This is also the <strong>Dependency Inversion Principle</strong> (the "D" in SOLID) in action: high-level modules and low-level modules both depend on abstractions, never on each other directly.</li>
+  <li>Avoid <strong>Service Locator</strong> (hidden global registry), over-injection (ten-argument constructors), and accessing the container outside the composition root.</li>
+</ul>
+</div>
+
+<p>With a solid understanding of how dependencies flow, the natural next question is how to <em>organise the files themselves</em>. In the next part of this series we look at exactly that: <a href="/blog/architecture/structuring-code-feature-vs-layer">Structuring a Codebase: Feature Folders vs Layers</a> — and why the answer depends on the shape of your team as much as the shape of your code.</p>3:["$","$L8",null,{"category":"architecture","slug":"dependency-injection-and-ioc","children":[["$","$L9",null,{"category":"architecture","slug":"dependency-injection-and-ioc","readingMinutes":14,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/en/blog/architecture/dependency-injection-and-ioc","title":"Dependency Injection & Inversion of Control, Without the Magic","surface":"blog","category":"architecture","slug":"dependency-injection-and-ioc","labels":{"share":"Share","copyLink":"Copy link","copied":"Copied!","close":"Close"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/en/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Blog"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/en/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"Source & Architecture"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["Foundations of Software Architecture",["$","span",null,{"aria-hidden":"true","children":" · "}],"Part 3 of 15"]}],["$","h1",null,{"className":"blog-article__title","children":"Dependency Injection & Inversion of Control, Without the Magic"}],["$","p",null,{"className":"blog-article__summary","children":"DI containers feel like wizardry until you see the plain idea underneath: stop letting code create its own dependencies, and hand them in instead. A from-scratch guide, with real examples and the testing payoff."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"By Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-03-05","children":"March 5, 2026"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"14 min read"}],["$","$Lc",null,{"label":"views"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Software Architecture",{"children":"Software Architecture"}],["$","li","Dependency Injection",{"children":"Dependency Injection"}],["$","li","Inversion of Control",{"children":"Inversion of Control"}],["$","li","SOLID",{"children":"SOLID"}],["$","li","Testing",{"children":"Testing"}],["$","li","Design Patterns",{"children":"Design Patterns"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"What did you think?","surface":"blog","category":"architecture","slug":"dependency-injection-and-ioc","reactionLabels":{"like":"Like","love":"Love","insightful":"Insightful","clap":"Celebrate"}}]
+10:["$","$L18",null,{"heading":"Related reading","intro":"A few nearby pieces to keep following the same thread with more context.","items":[{"post":{"slug":"keeping-data-contracts-small-enough-to-trust","category":"architecture","title":"Keeping Data Contracts Small Enough to Trust","summary":"A practical reflection on designing data contracts that are narrow, testable, and stable enough for teams to rely on.","date":"2026-07-14","readingMinutes":5,"tags":["Software Architecture","Data Contracts","APIs","Reliability","Testing","Product Engineering"],"author":"Nguyen Le Phong"},"categoryTitle":"Source & Architecture","readingLabel":"5 min read"},{"post":{"slug":"hexagonal-architecture-in-practice","category":"architecture","title":"Hexagonal Architecture in Practice","summary":"A practical guide to applying Hexagonal Architecture to one small feature: drawing the boundary, naming ports in business language, keeping adapters at the edge, testing the core, and deciding when the extra structure is worth the cost.","date":"2026-04-22","readingMinutes":7,"tags":["Software Architecture","Hexagonal Architecture","Ports and Adapters","Testing","Code Organization","Technical Debt"],"author":"Nguyen Le Phong"},"categoryTitle":"Source & Architecture","readingLabel":"7 min read"},{"post":{"slug":"tdd-bdd-ddd-driven-development","category":"ways-of-working","title":"TDD, BDD, DDD, and the Rest of the \"-Driven Development\" Family, Explained for Engineers","summary":"TDD, BDD, DDD, ATDD, EDD, CDD, FDD — the \"-Driven Development\" alphabet soup confuses even experienced engineers, partly because they're not rivals: they answer different questions and compose together. This is a practical, example-rich guide for software engineers: what each one really means, the core loop or concept, concrete code and Gherkin examples, when to reach for it, the pitfalls — and a clear map of how they fit together on a single real feature.","date":"2026-03-09","readingMinutes":22,"tags":["TDD","BDD","Domain-Driven Design","Software Architecture","Testing","Software Development"],"author":"Nguyen Le Phong","featured":true},"categoryTitle":"Ways of Working","readingLabel":"22 min read"},{"post":{"slug":"using-ai-without-outsourcing-judgment","category":"ai","title":"Using AI Without Outsourcing Judgment","summary":"A practical reflection on using AI as a thinking partner while keeping human judgment anchored in source code, tests, logs, and product context.","date":"2026-06-11","readingMinutes":6,"tags":["AI","LLM","Developer Tools","Engineering Judgment","Code Review","Testing"],"author":"Nguyen Le Phong"},"categoryTitle":"AI & The Future","readingLabel":"6 min read"}],"sourceCategory":"architecture","sourceSlug":"dependency-injection-and-ioc"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"Foundations of Software Architecture","children":[["$","$Lb",null,{"href":"/en/blog/architecture/clean-vs-onion-vs-hexagonal","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","Previously"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Clean, Onion & Hexagonal Architecture: One North Star, Three Names"}]]}],["$","$Lb",null,{"href":"/en/blog/architecture/structuring-code-feature-vs-layer","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["Next up"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Structuring a Codebase: By Layer, By Feature, or By Domain?"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/en/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","Back to Source & Architecture"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"On this page","surface":"blog"}]}]
+16:null

@@ -1,0 +1,222 @@
+1:"$Sreact.fragment"
+8:I[25840,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"EngagementProvider"]
+9:I[43002,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+a:I[21245,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+b:I[77105,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+c:I[49784,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+d:I[63047,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+14:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/3a5e603c646a4d7a.js"],"OutletBoundary"]
+15:"$Sreact.suspense"
+17:I[9450,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+18:I[70346,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+19:I[35757,["/_next/static/chunks/16c2dd2e25c265a8.js","/_next/static/chunks/76607804508f67af.js","/_next/static/chunks/ef6dc99b3733f98f.js","/_next/static/chunks/cd6b51a303fddcb4.js","/_next/static/chunks/7953f310ecb9a4bb.js","/_next/static/chunks/adb371ef802fb2d4.js","/_next/static/chunks/c03971d9562ccba2.js","/_next/static/chunks/d4a1c38fb1c944c7.js"],"default"]
+:HL["/_next/static/chunks/23e99d777adb6816.css","style"]
+2:Ta7d,{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://nguyenlephong.github.io/en/blog/architecture/event-driven-architecture-and-messaging#article","headline":"Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained","description":"When services hold hands through synchronous calls, latency adds up and one slow dependency takes down checkout. A no-hype guide to event-driven architecture: sync vs async, commands vs events, what brokers really promise (at-least-once, not exactly-once), choreography vs orchestration, and exactly when NOT to reach for events.","inLanguage":"en","url":"https://nguyenlephong.github.io/en/blog/architecture/event-driven-architecture-and-messaging","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/event-driven-architecture-and-messaging.jpg","mainEntityOfPage":"https://nguyenlephong.github.io/en/blog/architecture/event-driven-architecture-and-messaging","datePublished":"2026-04-11","dateModified":"2026-04-11","keywords":"Software Architecture, Event-Driven Architecture, Message Queues, Asynchronous Messaging, Distributed Systems, System Design","articleSection":"源码与架构","isRelatedTo":[{"@type":"BlogPosting","headline":"The Outbox Pattern","url":"https://nguyenlephong.github.io/en/blog/architecture/the-outbox-pattern","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/the-outbox-pattern.jpg"},{"@type":"BlogPosting","headline":"Event Sourcing: A Beginner's Guide","url":"https://nguyenlephong.github.io/en/blog/architecture/event-sourcing-beginners-guide","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/event-sourcing-beginners-guide.jpg"},{"@type":"BlogPosting","headline":"Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears","url":"https://nguyenlephong.github.io/en/blog/architecture/data-in-distributed-systems","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/data-in-distributed-systems.jpg"},{"@type":"BlogPosting","headline":"The Distributed-Systems Tax, Paid: Timeouts, Retries, Circuit Breakers, and Idempotency","url":"https://nguyenlephong.github.io/en/blog/architecture/resilience-in-distributed-systems","image":"https://nguyenlephong.github.io/dom-pub/icdn/og/blogs/resilience-in-distributed-systems.jpg"}],"isPartOf":{"@type":"Blog","@id":"https://nguyenlephong.github.io/en/blog#blog"},"author":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"},"publisher":{"@type":"Person","@id":"https://nguyenlephong.github.io/#person","name":"Nguyen Le Phong","url":"https://nguyenlephong.github.io"}}0:{"buildId":"jAauriS-0po9payu18RjP","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"blog-article blog-article--ocean","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"博客\",\"item\":\"https://nguyenlephong.github.io/en/blog\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"源码与架构\",\"item\":\"https://nguyenlephong.github.io/en/blog/architecture\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained\",\"item\":\"https://nguyenlephong.github.io/en/blog/architecture/event-driven-architecture-and-messaging\"}]}"}}],null,"$L3"]}],["$L4","$L5","$L6"],"$L7"]}],"loading":null,"isPartial":false}
+e:T4f4c,<p>You have felt this before. An <code>POST /checkout</code> that should take 200&nbsp;ms is now timing out, and when you open the trace you see why: the order service calls payment, which calls inventory, which calls the email service, which calls a third-party that is having a slow afternoon. Four services holding hands, and the customer is staring at a spinner because the <em>last</em> one in the chain is tired.</p>
+<p>The first six parts of this series were about <strong>structure</strong>: how to draw boundaries inside a codebase and between services. This part is about the next problem that shows up the moment you have more than one service — <strong>how they talk to each other</strong>. Event-driven architecture is the most misunderstood answer to that question: loved as a silver bullet, feared as needless complexity, and rarely explained in plain words. Let us fix that.</p>
+
+<figure class="blog-figure blog-photo-panorama">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/event-driven-architecture-and-messaging/trace-before-the-queue-shift.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Nguyen Le Phong studies two development monitors at his desk, tracing how one user action is waiting on too many downstream services." />
+  <figcaption>Many architecture shifts begin with a quiet debugging moment: someone finally sees that one user action is waiting on too many downstream reactions.</figcaption>
+</figure>
+
+<h2 id="the-problem">The problem: services that hold hands</h2>
+<p>When one service calls another and waits for the reply, we call it <strong>synchronous</strong>. It is the natural first instinct, because it reads like a normal function call. The trouble is what happens when you chain them.</p>
+<ul>
+<li><strong>Latency adds up.</strong> If each hop takes 80&nbsp;ms, a four-hop chain is 320&nbsp;ms before anyone does real work.</li>
+<li><strong>Failure spreads.</strong> If the email service is down, checkout fails — even though emailing a receipt is not the point of buying something.</li>
+<li><strong>Coupling hardens.</strong> The order service has to <em>know about</em> payment, inventory, and email. Add a fifth reaction and you edit the order service again.</li>
+</ul>
+<p>The deep issue is that the caller is doing two different jobs at once: <em>completing the order</em> and <em>orchestrating everyone who cares about the order</em>. Those are not the same job, and bolting them together is what makes the spinner spin.</p>
+
+<h2 id="sync-vs-async">Two ways for services to talk</h2>
+<p>There are exactly two shapes of conversation, and most architecture arguments are really arguments about which one to use where.</p>
+
+<div class="blog-table-wrap">
+<table>
+  <thead>
+    <tr><th width="22%">&nbsp;</th><th>Synchronous (request/response)</th><th>Asynchronous (messaging)</th></tr>
+  </thead>
+  <tbody>
+    <tr><th>Mental model</th><td>A phone call — both sides on the line at once</td><td>A letter in the post — sent now, read later</td></tr>
+    <tr><th>Coupling</th><td>Caller knows the callee and waits for it</td><td>Sender knows only the broker, not the readers</td></tr>
+    <tr><th>Failure</th><td>Callee down &rarr; caller fails now</td><td>Reader down &rarr; message waits in the queue</td></tr>
+    <tr><th>Latency</th><td>Sum of every hop</td><td>Sender returns immediately; work happens in the background</td></tr>
+    <tr><th>Best for</th><td>"I need the answer to continue" (read a balance, validate a token)</td><td>"This happened; whoever cares can react" (order placed, file uploaded)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Notice the last row. Synchronous is the right tool when you genuinely <em>need the answer to keep going</em>. Asynchronous is the right tool when you are announcing that <em>something happened</em> and other people's reactions are their business, not yours. Event-driven architecture is what you get when you lean into that second shape on purpose.</p>
+<p>Here is the same checkout, before and after. The synchronous version makes the customer wait for everyone:</p>
+<pre><code><span class="cmt">// Before: checkout owns — and waits on — everybody downstream</span>
+<span class="kw">async function</span> checkout(cart) {
+  <span class="kw">const</span> order = <span class="kw">await</span> orders.create(cart)
+  <span class="kw">await</span> payment.charge(order)        <span class="cmt">// slow</span>
+  <span class="kw">await</span> inventory.reserve(order)      <span class="cmt">// slow</span>
+  <span class="kw">await</span> email.sendReceipt(order)      <span class="cmt">// slow, and not the point</span>
+  <span class="kw">return</span> order                        <span class="cmt">// customer waited for all four</span>
+}</code></pre>
+<p>The event-driven version finishes the order and <em>announces</em> it. Whoever cares reacts on their own time:</p>
+<pre><code><span class="cmt">// After: checkout completes, then publishes a fact and returns</span>
+<span class="kw">async function</span> checkout(cart) {
+  <span class="kw">const</span> order = <span class="kw">await</span> orders.create(cart)
+  <span class="kw">await</span> broker.publish(<span class="str">"orders"</span>, { type: <span class="str">"OrderPlaced"</span>, order })
+  <span class="kw">return</span> order                        <span class="cmt">// fast — payment, inventory, email react later</span>
+}</code></pre>
+<p>The customer no longer pays the email service's slow afternoon. Just as importantly, adding fraud scoring tomorrow means writing a new subscriber, not editing <code>checkout</code> again.</p>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/event-driven-architecture-and-messaging/from-call-chain-to-queue-model.webp" width="1440" height="960" loading="lazy" decoding="async" alt="Three Vietnamese engineers stand at a whiteboard, turning a tangled call chain into a queue with independent subscribers." />
+  <figcaption>Event-driven design becomes practical when the team can point to one flow and agree which work must stay synchronous and which reactions should leave the critical path.</figcaption>
+</figure>
+
+<h2 id="vocabulary">The vocabulary, in plain words</h2>
+<p>The jargon is small once you strip the mystique off it.</p>
+<ul>
+<li><strong>Message</strong> — any blob of data one service hands to another through a middleman.</li>
+<li><strong>Command</strong> — a message that <em>asks</em> for something to happen: <code>ChargeCard</code>. It has one intended handler and can be refused.</li>
+<li><strong>Event</strong> — a message that <em>announces</em> something already happened: <code>OrderPlaced</code>. It is a fact in the past tense, addressed to no one in particular.</li>
+<li><strong>Broker</strong> — the middleman that holds messages and delivers them: RabbitMQ, Kafka, NATS, AWS SNS/SQS, Google Pub/Sub.</li>
+<li><strong>Topic</strong> / <strong>queue</strong> — the named mailbox a message lands in. Producers write to it; consumers read from it.</li>
+<li><strong>Producer</strong> / <strong>consumer</strong> — the one who publishes, and the one who subscribes and reacts.</li>
+</ul>
+<p>The single most important distinction is <strong>command vs. event</strong>, because it decides who is in charge. A command is "<em>you, do this</em>." An event is "<em>this happened; do whatever you think is right</em>." Confuse the two and you build a system that looks event-driven but is secretly a pile of remote-control buttons.</p>
+
+<figure class="blog-figure">
+  <svg class="dgm-svg" viewBox="0 0 760 380" role="img" aria-labelledby="dgm-eda">
+    <title id="dgm-eda">One service publishes an event to a broker; several independent services subscribe and react on their own time.</title>
+    <defs>
+      <marker id="edaAcc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path class="dgm-fill-accent" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+    <text class="dgm-t-accent" x="380" y="30" text-anchor="middle" font-size="13">PUBLISH ONCE · REACT MANY</text>
+
+    <rect class="dgm-core" x="30" y="158" width="160" height="66" rx="10"/>
+    <text class="dgm-t-strong" x="110" y="188" text-anchor="middle" font-size="14">Order Service</text>
+    <text class="dgm-t-muted dgm-t-mono" x="110" y="207" text-anchor="middle" font-size="11">emits OrderPlaced</text>
+
+    <rect class="dgm-surface" x="300" y="150" width="150" height="82" rx="10"/>
+    <text class="dgm-t-strong" x="375" y="184" text-anchor="middle" font-size="14">Message Broker</text>
+    <text class="dgm-t-muted dgm-t-mono" x="375" y="203" text-anchor="middle" font-size="11">topic: orders</text>
+
+    <path class="dgm-flow" d="M190,191 H 296" marker-end="url(#edaAcc)"/>
+
+    <rect class="dgm-adapter" x="580" y="56" width="150" height="52" rx="9"/>
+    <text x="655" y="87" text-anchor="middle" font-size="13">Payment</text>
+    <rect class="dgm-adapter" x="580" y="165" width="150" height="52" rx="9"/>
+    <text x="655" y="196" text-anchor="middle" font-size="13">Inventory</text>
+    <rect class="dgm-adapter" x="580" y="274" width="150" height="52" rx="9"/>
+    <text x="655" y="305" text-anchor="middle" font-size="13">Email / Analytics</text>
+
+    <path class="dgm-flow" d="M450,178 C 510,150 520,90 576,82" marker-end="url(#edaAcc)"/>
+    <path class="dgm-flow" d="M450,191 H 576" marker-end="url(#edaAcc)"/>
+    <path class="dgm-flow" d="M450,204 C 510,232 520,292 576,300" marker-end="url(#edaAcc)"/>
+
+    <text class="dgm-t-muted dgm-t-mono" x="513" y="44" text-anchor="middle" font-size="11">subscribe</text>
+  </svg>
+  <figcaption>The publisher does not know who listens. Adding a new reaction — fraud scoring, a loyalty update, a webhook — means adding a subscriber, not editing the order service.</figcaption>
+</figure>
+
+<h2 id="styles">Three flavours of "event"</h2>
+<p>"We use events" can mean three quite different things. Knowing which one you mean saves a lot of arguments.</p>
+<ol>
+<li><strong>Event notification.</strong> A thin ping: "order 1234 was placed." If a consumer needs details, it calls back to ask. Smallest payload, but it can create chatty call-backs.</li>
+<li><strong>Event-carried state transfer.</strong> The event carries everything a consumer needs — the whole order — so no call-back is required. Heavier messages, but consumers stay independent. This is the workhorse of most event-driven systems.</li>
+<li><strong>Event sourcing.</strong> The events <em>are</em> the source of truth; current state is rebuilt by replaying them. Powerful and rare — most teams do not need it, and we will treat it as an advanced option in the next part.</li>
+</ol>
+<div class="blog-callout blog-callout--tip"><span class="blog-callout__label">A simple default</span><p>Start with <strong>event-carried state transfer</strong> for the handful of facts other teams care about, and plain synchronous calls for everything that needs an immediate answer. You can live a long, happy life on just those two before you ever reach for event sourcing.</p></div>
+
+<h2 id="delivery">What the broker actually promises</h2>
+<p>Here is where good intentions meet physics. Brokers do not promise the clean "exactly once, in order" world you imagine. They promise something more honest and more awkward.</p>
+<ul>
+<li><strong>At-least-once delivery is the norm.</strong> The broker may deliver the same message twice — after a network blip, a crash, or a redelivery. "Exactly once" is mostly marketing; what real systems do is <em>at-least-once delivery plus idempotent consumers</em>.</li>
+<li><strong>Ordering is limited.</strong> Global ordering across a topic is expensive; most brokers only guarantee order within a partition or key. Design so that out-of-order arrivals are survivable.</li>
+<li><strong>Failed messages need a home.</strong> A message that keeps failing should land in a <strong>dead-letter queue</strong> rather than blocking the line forever.</li>
+</ul>
+<p>The practical consequence is one rule worth tattooing on the team: <strong>every consumer must be safe to run twice.</strong> That property is called <em>idempotency</em>, and it is the difference between a robust system and one that emails the customer three receipts.</p>
+
+<pre><code><span class="cmt">// Not idempotent: a duplicate delivery double-charges and double-emails</span>
+<span class="kw">async function</span> onOrderPlaced(evt) {
+  <span class="kw">await</span> payment.charge(evt.amount)        <span class="cmt">// runs again on redelivery</span>
+  <span class="kw">await</span> email.sendReceipt(evt.customerId)
+}
+
+<span class="cmt">// Idempotent: the event id is the guard. Safe to run twice.</span>
+<span class="kw">async function</span> onOrderPlaced(evt) {
+  <span class="kw">if</span> (<span class="kw">await</span> seen.has(evt.id)) <span class="kw">return</span>   <span class="cmt">// already handled — do nothing</span>
+  <span class="kw">await</span> payment.charge(evt.amount)
+  <span class="kw">await</span> email.sendReceipt(evt.customerId)
+  <span class="kw">await</span> seen.add(evt.id)
+}</code></pre>
+
+<h2 id="choreography-vs-orchestration">Who is in charge: choreography vs. orchestration</h2>
+<p>Once work spans several services, something has to coordinate it. There are two philosophies, and the choice shapes how you will debug at 2&nbsp;a.m.</p>
+<ul>
+<li><strong>Choreography.</strong> No conductor. Each service listens for events and reacts, emitting its own events in turn. Order emits <code>OrderPlaced</code>; payment hears it and emits <code>PaymentTaken</code>; shipping hears <em>that</em>. Beautifully decoupled — and genuinely hard to follow, because the "flow" lives in no single place.</li>
+<li><strong>Orchestration.</strong> A coordinator (an "order saga") explicitly tells each service what to do next and tracks progress. Easier to see and to reason about; the trade-off is that the coordinator becomes a thing you must own and keep simple.</li>
+</ul>
+<div class="blog-callout blog-callout--note"><span class="blog-callout__label">A useful rule of thumb</span><p>Use <strong>choreography</strong> for loose "fan-out" reactions where no one needs to know the whole story (analytics, notifications, search indexing). Use <strong>orchestration</strong> for a real business transaction with steps that must succeed or be undone together — which is exactly the <em>saga</em> problem we unpack in the next part on data.</p></div>
+
+<h2 id="when-it-helps">Where event-driven architecture earns its keep</h2>
+<ul>
+<li><strong>Fan-out.</strong> One thing happens and many unrelated reactions follow. Adding the seventh reaction should not mean editing the thing that happened.</li>
+<li><strong>Spiky or slow work.</strong> Video encoding, PDF generation, sending a million emails — push it onto a queue and let workers chew through it without making the user wait.</li>
+<li><strong>Buffering load.</strong> A queue absorbs a traffic spike that would otherwise knock over a synchronous downstream service.</li>
+<li><strong>Decoupling teams.</strong> The team that owns "orders" can publish facts without learning about every team that consumes them.</li>
+</ul>
+
+<h2 id="when-not">When NOT to reach for events</h2>
+<p>Events are not free, and reaching for them too early is one of the most common ways to manufacture accidental complexity.</p>
+<ul>
+<li><strong>You need an immediate answer.</strong> "Is this coupon valid?" is a question, not an announcement. Just call the service.</li>
+<li><strong>It is a two-service app.</strong> A broker, a schema registry, and a dead-letter queue are a lot of machinery to avoid a direct call between your only two services.</li>
+<li><strong>The team has never operated a broker.</strong> Async failures are invisible by default. Without tracing and good dashboards, a stuck queue is a silent outage you discover from angry customers.</li>
+<li><strong>Strong consistency is mandatory.</strong> If the business cannot tolerate "true in a second or two," eventual consistency will hurt — see the next part.</li>
+</ul>
+<div class="blog-callout blog-callout--warn"><span class="blog-callout__label">The "everything is an event" trap</span><p>The failure mode is turning every function call into an event and ending up with a system whose logic is scattered across twenty subscribers and impossible to trace. Asynchrony is a tool for <em>decoupling things that are genuinely independent</em> — not a default for everything. If you cannot explain a flow without a whiteboard and four colours, you have over-applied it.</p></div>
+
+<h2 id="by-company-size">The honest view by company size</h2>
+<ul>
+<li><strong>Solo / early startup.</strong> You almost certainly do not need a broker yet. A background job table in your existing database (poll a <code>jobs</code> table, mark rows done) covers 90% of "do this later" needs with none of the operational weight.</li>
+<li><strong>Growing scale-up.</strong> Introduce a managed broker (SQS, Pub/Sub, a hosted Kafka) for the two or three genuine fan-out points: order events, file processing, notifications. Keep synchronous calls for everything that needs an answer. Invest in tracing <em>before</em> you invest in more topics.</li>
+<li><strong>Enterprise.</strong> Events become the backbone between teams, with schema governance, dead-letter handling, replay tooling, and explicit ownership of each topic. The hard part is no longer technology; it is <em>contracts</em> — agreeing on what an event means and never breaking it casually.</li>
+</ul>
+
+<h2 id="getting-started">How to start on Monday</h2>
+<ol>
+<li>Find one place where a caller is waiting on work the user does not need to wait for — sending email, generating a report, syncing to a third party. That is your first event.</li>
+<li>Publish a past-tense fact (<code>OrderPlaced</code>), not a command. Let the email service subscribe instead of being called.</li>
+<li>Make the consumer idempotent from day one, keyed on the event id. Assume it will be delivered twice.</li>
+<li>Add a dead-letter queue and an alert on it <em>before</em> you go live. A growing dead-letter queue is your earliest warning sign.</li>
+<li>Add tracing so a single request can be followed across the hop. Async without observability is debugging blindfolded.</li>
+</ol>
+
+<figure class="blog-figure blog-photo-figure">
+  <img src="https://nguyenlephong.github.io/dom-pub/icdn/blogs/event-driven-architecture-and-messaging/fan-out-needs-a-clear-owner.webp" width="1440" height="960" loading="lazy" decoding="async" alt="A small engineering team reviews an event fan-out plan around a table at dusk, deciding who should react to one shared event and who should stay out of the flow." />
+  <figcaption>Fan-out only stays healthy when someone still owns the story of the flow: what gets published, who reacts, and which steps are allowed to wait.</figcaption>
+</figure>
+
+<div class="blog-takeaways">
+<h3 id="takeaways">Key takeaways</h3>
+<ul>
+  <li><strong>Sync is a phone call; async is a letter.</strong> Use synchronous calls when you need the answer to continue, and messaging when you are announcing that something happened.</li>
+  <li><strong>Commands ask; events announce.</strong> The command/event distinction decides who is in charge — get it right before anything else.</li>
+  <li><strong>Brokers promise at-least-once, not exactly-once.</strong> Therefore every consumer must be idempotent and safe to run twice. This is non-negotiable.</li>
+  <li><strong>Choreography decouples; orchestration clarifies.</strong> Fan-out reactions love choreography; real multi-step transactions want an orchestrator — the saga of the next part.</li>
+  <li><strong>Events are for genuine independence, not for everything.</strong> Reaching for a broker in a two-service app, or turning every call into an event, manufactures the very complexity you were trying to avoid.</li>
+</ul>
+</div>
+<p>Splitting the work was the easy half. The moment services stop sharing a database, a harder question arrives: <em>who owns the data, and what does "true" even mean when the truth is spread across five services?</em> That is the next part of this series.</p>
+3:["$","$L8",null,{"category":"architecture","slug":"event-driven-architecture-and-messaging","children":[["$","$L9",null,{"category":"architecture","slug":"event-driven-architecture-and-messaging","readingMinutes":13,"surface":"blog"}],["$","div",null,{"className":"blog-article__main","children":[["$","div",null,{"className":"blog-article__reader","children":[["$","$La",null,{"url":"https://nguyenlephong.github.io/en/blog/architecture/event-driven-architecture-and-messaging","title":"Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained","surface":"blog","category":"architecture","slug":"event-driven-architecture-and-messaging","labels":{"share":"分享","copyLink":"复制链接","copied":"已复制！","close":"关闭"}}],["$","div",null,{"className":"blog-article__reader-content","children":[["$","nav",null,{"className":"blog-breadcrumb","aria-label":"Breadcrumb","children":[["$","$Lb",null,{"href":"/zh/blog","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"博客"}],["$","span",null,{"aria-hidden":"true","children":"/"}],["$","$Lb",null,{"href":"/zh/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"children":"源码与架构"}]]}],["$","header",null,{"className":"blog-article__head","children":[["$","p",null,{"className":"blog-article__series","children":["软件架构基础",["$","span",null,{"aria-hidden":"true","children":" · "}],"第 7 篇，共 15 篇"]}],["$","h1",null,{"className":"blog-article__title","children":"Events, Queues, and the Art of Not Calling Each Other: Event-Driven Architecture, Explained"}],["$","p",null,{"className":"blog-article__summary","children":"When services hold hands through synchronous calls, latency adds up and one slow dependency takes down checkout. A no-hype guide to event-driven architecture: sync vs async, commands vs events, what brokers really promise (at-least-once, not exactly-once), choreography vs orchestration, and exactly when NOT to reach for events."}],["$","div",null,{"className":"blog-article__meta","children":[["$","span",null,{"children":"作者：Nguyen Le Phong"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","time",null,{"dateTime":"2026-04-11","children":"2026年4月11日"}],["$","span",null,{"aria-hidden":"true","children":"·"}],["$","span",null,{"children":"13 分钟阅读"}],["$","$Lc",null,{"label":"次浏览"}]]}],["$","ul",null,{"className":"blog-article__tags","children":[["$","li","Software Architecture",{"children":"Software Architecture"}],["$","li","Event-Driven Architecture",{"children":"Event-Driven Architecture"}],["$","li","Message Queues",{"children":"Message Queues"}],["$","li","Asynchronous Messaging",{"children":"Asynchronous Messaging"}],["$","li","Distributed Systems",{"children":"Distributed Systems"}],["$","li","System Design",{"children":"System Design"}]]}]]}],["$","$Ld",null,{"html":"$e"}],"$Lf","$undefined"]}]]}],"$L10","$L11","$L12"]}],"$L13"]}]
+4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/23e99d777adb6816.css","precedence":"next"}]
+5:["$","script","script-0",{"src":"/_next/static/chunks/c03971d9562ccba2.js","async":true}]
+6:["$","script","script-1",{"src":"/_next/static/chunks/d4a1c38fb1c944c7.js","async":true}]
+7:["$","$L14",null,{"children":["$","$15",null,{"name":"Next.MetadataOutlet","children":"$@16"}]}]
+f:["$","$L17",null,{"prompt":"你觉得这篇文章如何？","surface":"blog","category":"architecture","slug":"event-driven-architecture-and-messaging","reactionLabels":{"like":"赞","love":"喜欢","insightful":"有启发","clap":"鼓掌"}}]
+10:["$","$L18",null,{"heading":"相关阅读","intro":"几篇相近主题的文章，方便沿着同一条思路继续阅读。","items":[{"post":{"slug":"the-outbox-pattern","category":"architecture","title":"The Outbox Pattern","summary":"A practical explanation of the Outbox Pattern: why dual writes fail, how a transactional outbox keeps database state and events aligned, and what teams still need to handle around retries, idempotency, ordering, cleanup, and observability.","date":"2026-05-15","readingMinutes":6,"tags":["Software Architecture","Outbox Pattern","Distributed Systems","Event-Driven Architecture","Reliability","Microservices"],"author":"Nguyen Le Phong"},"categoryTitle":"源码与架构","readingLabel":"6 分钟阅读"},{"post":{"slug":"event-sourcing-beginners-guide","category":"architecture","title":"Event Sourcing: A Beginner's Guide","summary":"A beginner-friendly guide to Event Sourcing: storing facts as an append-only event history, rebuilding current state through projections, and understanding when the pattern is worth its operational cost.","date":"2026-05-05","readingMinutes":6,"tags":["Software Architecture","Event Sourcing","Event-Driven Architecture","CQRS","System Design","Data Modeling"],"author":"Nguyen Le Phong"},"categoryTitle":"源码与架构","readingLabel":"6 分钟阅读"},{"post":{"slug":"data-in-distributed-systems","category":"architecture","title":"Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears","summary":"Splitting code is the easy half — splitting data is where distributed systems humble you. A practical guide to owning data across services: why a shared database is a distributed monolith, the trade from ACID to eventual consistency, the dual-write bug and the outbox that fixes it, sagas with compensating actions, and when CQRS and event sourcing are worth their lifetime cost.","date":"2026-04-10","readingMinutes":13,"tags":["Software Architecture","Distributed Systems","Saga Pattern","CQRS","Event Sourcing","Data Consistency"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":8},"categoryTitle":"源码与架构","readingLabel":"13 分钟阅读"},{"post":{"slug":"resilience-in-distributed-systems","category":"architecture","title":"The Distributed-Systems Tax, Paid: Timeouts, Retries, Circuit Breakers, and Idempotency","summary":"The moment a call leaves your process it can be slow, fail, or happen twice — and that is the normal case, not the exception. The resilience toolkit, explained plainly: why timeouts come first, how retries become a self-inflicted DDoS without backoff and jitter, why idempotency is the price of retrying, and how circuit breakers, bulkheads, graceful degradation, and observability keep one bad dependency from taking down everything.","date":"2026-04-09","readingMinutes":13,"tags":["Software Architecture","Resilience","Fault Tolerance","Circuit Breaker","Idempotency","Distributed Systems"],"author":"Nguyen Le Phong","series":"foundations","seriesOrder":9},"categoryTitle":"源码与架构","readingLabel":"13 分钟阅读"}],"sourceCategory":"architecture","sourceSlug":"event-driven-architecture-and-messaging"}]
+11:["$","nav",null,{"className":"blog-series-nav","aria-label":"软件架构基础","children":[["$","$Lb",null,{"href":"/zh/blog/architecture/micro-frontends-when-why-and-cost","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--prev","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["← ","上一篇"]}],["$","span",null,{"className":"blog-series-nav__title","children":"微前端：何时值得，以及它们真正的代价"}]]}],["$","$Lb",null,{"href":"/zh/blog/architecture/data-in-distributed-systems","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-series-nav__link blog-series-nav__link--next","children":[["$","span",null,{"className":"blog-series-nav__dir","children":["下一篇"," →"]}],["$","span",null,{"className":"blog-series-nav__title","children":"Who Owns the Data? Database-per-Service, Sagas, and Eventual Consistency Without Tears"}]]}]]}]
+12:["$","footer",null,{"className":"blog-article__footer","children":["$","$Lb",null,{"href":"/zh/blog/architecture","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"className":"blog-back","children":["← ","返回 源码与架构"]}]}]
+13:["$","aside",null,{"className":"blog-article__toc","children":["$","$L19",null,{"label":"本页内容","surface":"blog"}]}]
+16:null
