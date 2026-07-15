@@ -207,10 +207,10 @@ const baseStudioAiSkills: StudioAiSkill[] = [
   {
     id: "code-review",
     category: "engineering",
-    title: "Code Review Expert",
-    summary: "Review diffs like a Staff engineer: correctness first, security/privacy next, then maintainability, tests, and operational risk.",
+    title: "Code Review",
+    summary: "Review diffs for correctness, security, privacy, maintainability, test coverage, and operational risk.",
     tags: ["Code Review", "Correctness", "Security", "Test Strategy"],
-    markdown: `# Code Review Skill
+    markdown: `# Code Review
 
 Use this skill when reviewing pull requests, local diffs, generated code, refactors, migrations, or production bug fixes.
 
@@ -253,7 +253,7 @@ Use this skill when reviewing pull requests, local diffs, generated code, refact
     title: "Frontend Architecture",
     summary: "Shape frontend systems around route boundaries, state ownership, accessibility, telemetry, and Core Web Vitals.",
     tags: ["Frontend", "React", "Web Vitals", "Accessibility"],
-    markdown: `# Frontend Architecture Skill
+    markdown: `# Frontend Architecture
 
 Use this skill when designing routes, dashboards, component systems, forms, filters, search UIs, or frontend refactors.
 
@@ -287,9 +287,9 @@ Use this skill when designing routes, dashboards, component systems, forms, filt
     id: "backend-architecture",
     category: "engineering",
     title: "Backend Architecture",
-    summary: "Design backend systems with clear domain ownership, explicit contracts, resilient data flows, and operable failure modes.",
+    summary: "Design backend systems with clear domain ownership, explicit contracts, resilient data flows, and failure modes the team can detect, contain, and recover from.",
     tags: ["Backend", "API Design", "Distributed Systems", "Reliability"],
-    markdown: `# Backend Architecture Skill
+    markdown: `# Backend Architecture
 
 Use this skill for APIs, services, background jobs, webhooks, event streams, data migrations, and integrations.
 
@@ -322,10 +322,10 @@ Use this skill for APIs, services, background jobs, webhooks, event streams, dat
   {
     id: "blog-content-writer",
     category: "content",
-    title: "Technical Content Strategist",
-    summary: "Write technical content with a clear thesis, grounded evidence, semantic SEO, and calm expert authority.",
+    title: "Technical Writing",
+    summary: "Write clear technical content with a focused thesis, grounded evidence, useful SEO metadata, and a calm professional voice.",
     tags: ["Technical Writing", "SEO", "Editorial Strategy"],
-    markdown: `# Blog Content Writer Skill
+    markdown: `# Technical Writing
 
 Use this skill for engineering articles, technical explainers, architectural postmortems, product notes, and public documentation.
 
@@ -358,10 +358,10 @@ Use this skill for engineering articles, technical explainers, architectural pos
   {
     id: "prompt-writing",
     category: "content",
-    title: "Prompt Engineering Expert",
-    summary: "Design prompts and system instructions with explicit roles, bounded context, injection resistance, and verifiable output schemas.",
+    title: "Prompt Design",
+    summary: "Design prompts and system instructions with clear roles, bounded context, injection resistance, and verifiable output formats.",
     tags: ["Prompt Engineering", "LLM", "Agents", "Evaluation"],
-    markdown: `# Prompt Writing Skill
+    markdown: `# Prompt Design
 
 Use this skill to design system prompts, task prompts, few-shot examples, agent policies, extraction prompts, and output schemas.
 
@@ -394,10 +394,10 @@ Use this skill to design system prompts, task prompts, few-shot examples, agent 
   {
     id: "status-report",
     category: "operations",
-    title: "Executive Status & Operations",
-    summary: "Turn workstream noise into executive signal: health, impact, blockers, decisions, owners, and path to green.",
+    title: "Executive Status Reporting",
+    summary: "Turn scattered workstream updates into a clear view of health, impact, blockers, decisions, owners, and recovery actions.",
     tags: ["Operations", "Reporting", "OKR", "Escalation"],
-    markdown: `# Status Report Skill
+    markdown: `# Executive Status Reporting
 
 Use this skill for daily standups, weekly status reports, monthly OKR reviews, incident updates, and stakeholder escalations.
 
@@ -433,7 +433,7 @@ Use this skill for daily standups, weekly status reports, monthly OKR reviews, i
     title: "Technical Specification & RFC",
     summary: "Write decision-ready specs that bind product intent to architecture, NFRs, threat model, rollout, and verification.",
     tags: ["RFC", "ADR", "Architecture", "NFR"],
-    markdown: `# Doc / Spec / Tech Spec Skill
+    markdown: `# Technical Specification & RFC
 
 Use this skill for RFCs, ADRs, technical specifications, migration plans, system designs, and implementation handoffs.
 
@@ -469,7 +469,7 @@ Use this skill for RFCs, ADRs, technical specifications, migration plans, system
     title: "Strategic Pitch & Proposal",
     summary: "Build proposals that connect pain, value, ROI, risk, proof, and a concrete decision request.",
     tags: ["Proposal", "Strategy", "Executive Communication"],
-    markdown: `# Proposal / Slide / Pitch Deck Skill
+    markdown: `# Strategic Pitch & Proposal
 
 Use this skill for executive proposals, product strategy memos, budget asks, pitch decks, and technical-business trade-off narratives.
 
@@ -502,10 +502,10 @@ Use this skill for executive proposals, product strategy memos, budget asks, pit
   {
     id: "ai-operating-system",
     category: "strategy",
-    title: "AI Operating System & Orchestration",
-    summary: "Design agent workflows with model routing, context control, tool boundaries, RAG grounding, and human approval gates.",
+    title: "AI Workflow Design",
+    summary: "Design agent workflows with deliberate model routing, controlled context, clear tool boundaries, source grounding, and human approval gates.",
     tags: ["AI Orchestration", "Agents", "RAG", "MCP"],
-    markdown: `# AI Operating System Skill
+    markdown: `# AI Workflow Design
 
 Use this skill to design multi-agent workflows, AI workbenches, RAG pipelines, Codex/Claude/GPT task routing, and MCP tool policies.
 
@@ -538,10 +538,10 @@ Use this skill to design multi-agent workflows, AI workbenches, RAG pipelines, C
   {
     id: "daily-ai-learning-coach",
     category: "learning",
-    title: "Continuous AI Learning & Neuroplasticity",
-    summary: "Compound AI skill through deliberate practice, active recall, feedback loops, and reusable artifacts.",
+    title: "Continuous AI Learning",
+    summary: "Build practical AI skills through deliberate practice, active recall, feedback, and reusable work notes.",
     tags: ["Learning", "Deliberate Practice", "AI Fluency", "Feedback"],
-    markdown: `# Daily AI Learning Coach Skill
+    markdown: `# Continuous AI Learning
 
 Use this skill to plan daily AI up-skilling, technical practice, tool fluency, and long-term knowledge compounding.
 
@@ -574,10 +574,10 @@ Use this skill to plan daily AI up-skilling, technical practice, tool fluency, a
   {
     id: "notebooklm-source-of-truth",
     category: "learning",
-    title: "RAG-Grounded Knowledge Extraction",
-    summary: "Extract source-grounded answers from trusted documents with citations, contradiction checks, and explicit unknowns.",
+    title: "Source-Grounded Knowledge Extraction",
+    summary: "Extract answers from trusted documents with citations, contradiction checks, and explicit unknowns.",
     tags: ["RAG", "Citations", "Research", "Knowledge Graph"],
-    markdown: `# NotebookLM Source Of Truth Skill
+    markdown: `# Source-Grounded Knowledge Extraction
 
 Use this skill for dense document sets, NotebookLM-style corpora, PRDs, RFCs, research papers, financial reports, and knowledge bases.
 
@@ -610,10 +610,10 @@ Use this skill for dense document sets, NotebookLM-style corpora, PRDs, RFCs, re
   {
     id: "ai-delivery-factory",
     category: "engineering",
-    title: "Autonomous Delivery & CI/CD",
-    summary: "Run AI-assisted delivery from scoped requirement to implementation, verification, PR, and release-ready handoff.",
+    title: "AI-Assisted Delivery & CI/CD",
+    summary: "Guide AI-assisted delivery from a scoped requirement through implementation, verification, PR review, and a release-ready handoff.",
     tags: ["AI Delivery", "CI/CD", "Testing", "Automation"],
-    markdown: `# AI Delivery Factory Skill
+    markdown: `# AI-Assisted Delivery & CI/CD
 
 Use this skill when AI agents help implement features, refactors, migrations, test suites, CI changes, or release handoffs.
 
@@ -646,10 +646,10 @@ Use this skill when AI agents help implement features, refactors, migrations, te
   {
     id: "claude-deep-review",
     category: "engineering",
-    title: "Adversarial Semantic Review",
-    summary: "Use adversarial review to expose hidden assumptions, failure modes, ambiguity, and system-level fragility.",
+    title: "Adversarial Design Review",
+    summary: "Challenge a design to expose hidden assumptions, failure modes, ambiguity, and system-level fragility.",
     tags: ["Adversarial Review", "Red Teaming", "Architecture", "Security"],
-    markdown: `# Claude Deep Review Skill
+    markdown: `# Adversarial Design Review
 
 Use this skill for deep critique of PRs, RFCs, architecture proposals, incident narratives, strategy memos, or AI-generated plans.
 
@@ -682,10 +682,10 @@ Use this skill for deep critique of PRs, RFCs, architecture proposals, incident 
   {
     id: "career-ai-strategy",
     category: "strategy",
-    title: "Capability Compounding & Leverage",
-    summary: "Build durable career leverage through Staff-level scope, AI fluency, portfolio evidence, and compounding systems.",
+    title: "Building Durable Engineering Skills",
+    summary: "Develop broader engineering judgment through larger scope, responsible AI use, visible work evidence, and repeatable learning habits.",
     tags: ["Career Strategy", "Staff Engineer", "Leverage", "Portfolio"],
-    markdown: `# Career AI Strategy Skill
+    markdown: `# Building Durable Engineering Skills
 
 Use this skill for career planning, Staff/Principal path design, promotion packets, AI leverage strategy, and portfolio roadmaps.
 
@@ -718,10 +718,10 @@ Use this skill for career planning, Staff/Principal path design, promotion packe
   {
     id: "engineering-decision-map",
     category: "engineering",
-    title: "Systemic Decision Topography",
+    title: "Architecture Decision Mapping",
     summary: "Map business requirements to domain invariants, architecture options, trade-offs, risks, and operational readiness.",
     tags: ["Decision Matrix", "Systems Thinking", "Trade-offs", "Requirements"],
-    markdown: `# Engineering Decision Map Skill
+    markdown: `# Architecture Decision Mapping
 
 Use this skill when requirements are ambiguous, decisions are cross-functional, or architecture must balance product, data, and operations.
 
@@ -754,10 +754,10 @@ Use this skill when requirements are ambiguous, decisions are cross-functional, 
   {
     id: "staff-engineer-ai-review-pack",
     category: "engineering",
-    title: "Staff-Level Architectural Audit",
-    summary: "Audit high-risk technical changes through Staff-level lenses: product, architecture, security, data, SRE, QA, and rollout.",
+    title: "Architecture Risk Audit",
+    summary: "Audit high-risk technical changes across product behavior, architecture, security, data, reliability, testing, and rollout.",
     tags: ["Staff Engineer", "Architecture Review", "PRR", "Risk Audit"],
-    markdown: `# Staff Engineer AI Review Pack Skill
+    markdown: `# Architecture Risk Audit
 
 Use this skill for major architectural changes, multi-system integrations, sensitive-data features, migrations, and launch readiness reviews.
 
@@ -793,7 +793,7 @@ Use this skill for major architectural changes, multi-system integrations, sensi
     title: "Distributed Resilience & Telemetry",
     summary: "Review data integrity, distributed resilience, telemetry, and recovery plans before systems carry production load.",
     tags: ["Data", "Resilience", "Observability", "SRE"],
-    markdown: `# Data, Resilience, Observability Review Skill
+    markdown: `# Distributed Resilience & Telemetry
 
 Use this skill for databases, caches, queues, search indexes, event streams, third-party integrations, and production readiness reviews.
 
@@ -826,10 +826,10 @@ Use this skill for databases, caches, queues, search indexes, event streams, thi
   {
     id: "installed-skill-library-cartographer",
     category: "strategy",
-    title: "Installed Skill Library Cartographer",
-    summary: "Inventory installed agent skills, remove duplicates, classify capabilities, and turn scattered playbooks into a usable routing system.",
+    title: "Skill Library Inventory",
+    summary: "Inventory installed agent skills, remove duplicates, classify capabilities, and organize scattered playbooks into a usable library.",
     tags: ["Skill Inventory", "Agent Routing", "Taxonomy", "Governance"],
-    markdown: `# Installed Skill Library Cartographer Skill
+    markdown: `# Skill Library Inventory
 
 Use this skill when consolidating installed Codex, Claude, Gemini, Antigravity, local .agents, marketplace, plugin, or project skills into a coherent operating library.
 
@@ -864,10 +864,10 @@ Use this skill when consolidating installed Codex, Claude, Gemini, Antigravity, 
   {
     id: "ai-product-evaluation",
     category: "strategy",
-    title: "AI Product & Evaluation",
+    title: "AI Product Evaluation",
     summary: "Move AI features from impressive demos to trustworthy products with evals, safety boundaries, cost controls, and measurable user value.",
     tags: ["AI Product", "Evals", "LLM Quality", "Trust"],
-    markdown: `# AI Product & Evaluation Skill
+    markdown: `# AI Product Evaluation
 
 Use this skill when designing, auditing, or shipping AI-powered product features, agents, copilots, chat interfaces, retrieval systems, or model-powered workflows.
 
@@ -903,7 +903,7 @@ Use this skill when designing, auditing, or shipping AI-powered product features
     title: "Agent Tools, MCP & Workflow Automation",
     summary: "Design reliable tool-using agents across MCP, GitHub, Slack, Gmail, Outlook, Notion, Airtable, browsers, and local CLIs.",
     tags: ["MCP", "Automation", "Integrations", "Tool Use"],
-    markdown: `# Agent Tools, MCP & Workflow Automation Skill
+    markdown: `# Agent Tools, MCP & Workflow Automation
 
 Use this skill when an agent needs to use tools, connectors, MCP servers, CLIs, browsers, or app integrations to complete a workflow.
 
@@ -939,7 +939,7 @@ Use this skill when an agent needs to use tools, connectors, MCP servers, CLIs, 
     title: "Product Analytics & Growth Experimentation",
     summary: "Turn behavior data into decisions through event taxonomy, funnels, cohorts, A/B tests, attribution, and growth loops.",
     tags: ["Analytics", "Growth", "Experimentation", "PostHog"],
-    markdown: `# Product Analytics & Growth Experimentation Skill
+    markdown: `# Product Analytics & Growth Experimentation
 
 Use this skill when designing analytics, auditing tracking, planning growth experiments, measuring funnels, or deciding whether a feature worked.
 
@@ -975,7 +975,7 @@ Use this skill when designing analytics, auditing tracking, planning growth expe
     title: "Research & Market Intelligence",
     summary: "Produce grounded research from local docs, web sources, competitors, customers, papers, and market signals with explicit confidence.",
     tags: ["Research", "Market Intelligence", "Source Grounding", "Synthesis"],
-    markdown: `# Research & Market Intelligence Skill
+    markdown: `# Research & Market Intelligence
 
 Use this skill for market research, competitor analysis, product discovery, customer insight synthesis, technical literature review, or strategic scanning.
 
@@ -1011,7 +1011,7 @@ Use this skill for market research, competitor analysis, product discovery, cust
     title: "Security, Privacy & Threat Modeling",
     summary: "Audit systems for abuse paths, auth flaws, PII exposure, supply-chain risk, compliance gaps, and secure rollout.",
     tags: ["Security", "Privacy", "Threat Modeling", "Compliance"],
-    markdown: `# Security, Privacy & Threat Modeling Skill
+    markdown: `# Security, Privacy & Threat Modeling
 
 Use this skill when a change touches authentication, authorization, user input, sensitive data, payments, file uploads, integrations, AI tools, infrastructure, or production operations.
 
@@ -1047,7 +1047,7 @@ Use this skill when a change touches authentication, authorization, user input, 
     title: "Design System & UI Craft",
     summary: "Create polished, accessible, responsive interfaces using design systems, component libraries, visual hierarchy, and interaction states.",
     tags: ["Design System", "UI", "Accessibility", "Responsive"],
-    markdown: `# Design System & UI Craft Skill
+    markdown: `# Design System & UI Craft
 
 Use this skill when building or refining product UI, design systems, dashboards, landing pages, mobile layouts, component libraries, or visual prototypes.
 
@@ -1083,7 +1083,7 @@ Use this skill when building or refining product UI, design systems, dashboards,
     title: "Mobile Platform Engineering",
     summary: "Build and review iOS, Android, SwiftUI, Kotlin, React Native, and app-store workflows with performance and release discipline.",
     tags: ["Mobile", "iOS", "Android", "SwiftUI"],
-    markdown: `# Mobile Platform Engineering Skill
+    markdown: `# Mobile Platform Engineering
 
 Use this skill for native iOS, Android, SwiftUI, Kotlin, React Native, app packaging, app-store release work, or mobile UI/performance audits.
 
@@ -1119,7 +1119,7 @@ Use this skill for native iOS, Android, SwiftUI, Kotlin, React Native, app packa
     title: "Data, ML & Scientific Workflow",
     summary: "Handle data, ML, and science tasks with reproducible notebooks, trustworthy sources, evaluation, provenance, and statistical caution.",
     tags: ["Data", "ML", "Science", "Reproducibility"],
-    markdown: `# Data, ML & Scientific Workflow Skill
+    markdown: `# Data, ML & Scientific Workflow
 
 Use this skill for data analysis, ML experiments, scientific APIs, bioinformatics, finance data, geospatial work, notebooks, dashboards, or model evaluation.
 
@@ -1584,15 +1584,15 @@ export const studioAiSkills: StudioAiSkill[] = baseStudioAiSkills.map((skill) =>
 export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   {
     id: "ticket-intake-to-start",
-    title: "Ticket intake to first commit",
-    summary: "A checklist for turning a ticket into clear scope, context, plan, and first implementation step.",
+    title: "From Ticket to First Commit",
+    summary: "A practical checklist for clarifying scope, gathering the right context, choosing a plan, and making the first reviewable change.",
     whenToUse: "Use before coding when a task arrives from product, support, design, or another engineer.",
     tags: ["Ticket", "Scoping", "Start work"],
     sections: [
       {
         id: "understand",
         title: "Understand the task",
-        detail: "Make sure the work is a real problem, not only a requested change.",
+        detail: "Clarify the underlying problem before deciding what to change.",
         steps: [
           { id: "read-ticket", label: "Read the ticket and restate the goal in one sentence." },
           { id: "identify-user", label: "Identify the affected user, route, workflow, or system boundary." },
@@ -1626,9 +1626,9 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "ai-driven-engineering-foundation-roadmap",
-    title: "AI-driven engineering foundation roadmap",
-    summary: "A layered roadmap for building senior engineering judgment in the AI era.",
-    whenToUse: "Use as a daily study map before or after engineering work, especially when a task touches architecture, data, reliability, or rollout.",
+    title: "Engineering Foundations for AI-Assisted Work",
+    summary: "A layered study plan for strengthening design, data, reliability, and production judgment while using AI.",
+    whenToUse: "Use before or after engineering work, especially when a task touches architecture, data, reliability, or rollout.",
     tags: ["Engineering foundation", "Architecture", "Production"],
     sections: [
       {
@@ -1695,9 +1695,9 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "engineering-delivery-checklist",
-    title: "Engineering delivery checklist",
+    title: "Engineering Delivery Checklist",
     summary: "An eight-phase checklist from task intake to post-rollout review.",
-    whenToUse: "Use whenever a task might affect architecture, data, traffic, users, production operation, or team handoff.",
+    whenToUse: "Use whenever a task may affect architecture, data, traffic, users, production behavior, or team handoff.",
     tags: ["Task", "Delivery", "Rollout"],
     sections: [
       {
@@ -1785,9 +1785,9 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "senior-engineer-reflex",
-    title: "Senior engineer reflex",
-    summary: "A compact question set for any feature: business, product, domain, API, data, consistency, resilience, security, observability, and rollout.",
-    whenToUse: "Use before implementation when the task feels simple but could hide production, data, or user risk.",
+    title: "Senior Engineering Questions",
+    summary: "A compact set of questions covering business, product, domain, API, data, consistency, resilience, security, observability, and rollout.",
+    whenToUse: "Use before implementation when a task looks simple but may hide production, data, or user risk.",
     tags: ["Senior reflex", "Questions", "Risk"],
     sections: [
       {
@@ -1834,9 +1834,9 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "capstone-production-project",
-    title: "Capstone production project",
-    summary: "A long-running e-commerce, subscription, or booking lab that combines architecture, data, resilience, events, and observability.",
-    whenToUse: "Use as the practical lab for turning the roadmap into visible evidence and reusable engineering muscle.",
+    title: "Production Systems Practice Project",
+    summary: "A long-running e-commerce, subscription, or booking project for practicing architecture, data, resilience, events, and observability together.",
+    whenToUse: "Use to turn the roadmap into practical experience, visible evidence, and reusable engineering notes.",
     tags: ["Capstone", "Practice", "Portfolio"],
     sections: [
       {
@@ -1884,8 +1884,8 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "module-creation",
-    title: "Create a new module",
-    summary: "A checklist for adding a route, feature module, service module, or reusable component without leaking responsibility.",
+    title: "Create a New Module",
+    summary: "A checklist for adding a route, feature module, service module, or reusable component without blurring ownership.",
     whenToUse: "Use when adding a new feature surface or reusable module.",
     tags: ["Module", "Architecture", "Frontend", "Backend"],
     sections: [
@@ -1946,9 +1946,9 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "ai-system-engineering-roadmap",
-    title: "AI system engineering roadmap",
-    summary: "A daily learning checklist for SDLC ownership, distributed architecture, storage systems, and AI-assisted engineering review.",
-    whenToUse: "Use as the daily AI up-skill map when the goal is to become stronger at technical decisions, not only faster at code generation.",
+    title: "System Engineering Roadmap for AI-Assisted Work",
+    summary: "A study checklist for SDLC ownership, distributed architecture, storage systems, and AI-assisted engineering review.",
+    whenToUse: "Use when the goal is to improve technical decisions, not only generate code faster.",
     tags: ["AI up-skill", "System engineering", "Distributed systems", "Storage", "SDLC"],
     sections: [
       {
@@ -2063,7 +2063,7 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "release-readiness",
-    title: "Release readiness",
+    title: "Release Readiness",
     summary: "A checklist for deciding whether a change is ready to leave the branch.",
     whenToUse: "Use before merging, tagging, or preparing a production deployment.",
     tags: ["Release", "QA", "Merge"],
@@ -2105,7 +2105,7 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "rollout-plan",
-    title: "Rollout plan",
+    title: "Rollout Plan",
     summary: "A checklist for moving from merged code to production adoption with guardrails.",
     whenToUse: "Use for staged releases, feature flags, customer cohorts, migrations, or high-impact UI changes.",
     tags: ["Rollout", "Feature flag", "Monitoring"],
@@ -2156,9 +2156,9 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "daily-ai-learning-loop",
-    title: "Daily AI learning loop",
-    summary: "A short daily loop for improving AI skill through one useful practice, one saved artifact, and one review.",
-    whenToUse: "Use every morning and evening when the goal is steady AI skill compounding without overloading the day.",
+    title: "Daily AI Practice Loop",
+    summary: "A short daily routine built around one useful practice, one saved note or artifact, and one review.",
+    whenToUse: "Use at the start and end of the workday to build AI skills steadily without overloading the day.",
     tags: ["Daily", "AI learning", "Habit"],
     sections: [
       {
@@ -2198,9 +2198,9 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "weekly-ai-os-review",
-    title: "Weekly AI OS review",
-    summary: "A weekly review for work, learning, finance, life, and the AI workflows that should compound.",
-    whenToUse: "Use at the end of the week to convert scattered AI usage into reusable systems.",
+    title: "Weekly AI Workflow Review",
+    summary: "A weekly review of recurring work, learning, and personal workflows that are worth keeping or improving.",
+    whenToUse: "Use at the end of the week to turn scattered AI usage into reusable habits, notes, and templates.",
     tags: ["Weekly review", "Life OS", "Career"],
     sections: [
       {
@@ -2240,9 +2240,9 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "ai-tool-routing-decision-tree",
-    title: "AI tool routing decision tree",
+    title: "AI Tool Routing Guide",
     summary: "A checklist for choosing NotebookLM, GPT, Claude, Codex, or Antigravity before starting work.",
-    whenToUse: "Use when a task is vague, large, or tempting to ask every AI tool at once.",
+    whenToUse: "Use when a task is broad or unclear and you need to choose one tool or a deliberate sequence.",
     tags: ["Tool routing", "Decision", "Guardrails"],
     sections: [
       {
@@ -2284,7 +2284,7 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "ai-assisted-feature-workflow",
-    title: "AI-assisted feature workflow",
+    title: "AI-Assisted Feature Workflow",
     summary: "A full feature workflow from idea to spec, implementation, review, rollout, and knowledge archive.",
     whenToUse: "Use for meaningful product or engineering changes where multiple AI tools can help without losing ownership.",
     tags: ["Feature", "GPT", "Claude", "Codex", "Antigravity"],
@@ -2324,9 +2324,9 @@ export const studioWorkflowChecklists: StudioWorkflowChecklist[] = [
   },
   {
     id: "ninety-day-ai-skill-plan",
-    title: "90-day AI skill plan",
-    summary: "A phased plan for turning AI tools into daily practice, engineering leverage, career assets, and personal operating systems.",
-    whenToUse: "Use as the quarterly roadmap for raising AI literacy and turning the stack into durable leverage.",
+    title: "90-Day AI Practice Plan",
+    summary: "A phased plan for building daily habits, improving engineering work, documenting evidence, and creating useful personal workflows.",
+    whenToUse: "Use as a quarterly guide for building AI literacy through small, repeatable practices.",
     tags: ["90 days", "Roadmap", "AI literacy"],
     sections: [
       {
@@ -2432,33 +2432,33 @@ export const studioNotes: StudioNote[] = [
   {
     id: "ai-operating-system",
     folderId: "machine-bootstrap",
-    title: "AI Operating System",
-    subtitle: "Daily direction for using NotebookLM, GPT, Claude, Codex, and Antigravity as one system.",
+    title: "My AI Working System",
+    subtitle: "How I use NotebookLM, GPT, Claude, Codex, and Antigravity across research, review, and implementation.",
     status: "ready",
     updatedAt: "2026-06-21",
     tags: ["AI OS", "NotebookLM", "GPT", "Claude", "Codex", "Antigravity", "Daily learning"],
     summary:
-      "This note turns the AI stack into a daily operating system: NotebookLM keeps source-backed truth, GPT plans, Claude critiques, Codex ships code, Antigravity verifies prototypes, and every useful lesson becomes a reusable artifact.",
+      "This note records how I divide research, planning, review, and repository work across several AI tools while keeping verification and final decisions with me.",
     sections: [
       {
-        heading: "The operating principle",
+        heading: "The working principle",
         body:
-          "The bottleneck is not a lack of AI tools. The bottleneck is scattered context. The system should capture facts first, clarify the real problem, route work to the right tool, review risky output, and archive the lesson so tomorrow starts from a better baseline."
+          "More tools do not help when the context is scattered. I start with the facts, clarify the problem, choose the tool that fits the task, review risky output, and save the useful lesson for the next time."
       },
       {
         heading: "Tool roles",
         body:
-          "NotebookLM is the source-backed memory. GPT is the chief of staff for planning, research, decision support, and weekly reviews. Claude is the deep reviewer for architecture, writing, assumptions, and sensitive communication. Codex is the repo execution engine for PRs, tests, refactors, and migrations. Antigravity is the agentic lab for prototypes, UI flows, browser verification, and multi-agent dev experiments."
+          "I use NotebookLM to review source material; GPT for planning and research; Claude for critique and writing; Codex for repository changes; and Antigravity for prototypes, UI flows, browser checks, and multi-agent experiments. These roles are working preferences, not fixed rules."
       },
       {
         heading: "Daily learning direction",
         body:
-          "Each day should produce one small improvement: a better prompt, a reusable checklist, a reviewed diff, a clearer decision, a sourced note, or one saved workflow. The goal is not to use every tool every day; the goal is to make the right tool choice repeatable."
+          "A useful day leaves one small improvement behind: a better prompt, a reusable checklist, a reviewed diff, a clearer decision, a sourced note, or a saved workflow. I do not need to use every tool every day; I need to make good tool choices repeatable."
       },
       {
         heading: "Career direction",
         body:
-          "The strongest path is AI-native Staff Engineer / Tech Lead: software architecture, agent orchestration, engineering leadership, product thinking, communication, and financial discipline. The assets to build are an AI engineering playbook, architecture portfolio, public writing, and automation demos."
+          "The direction I am working toward combines software architecture, responsible AI use, engineering leadership, product judgment, and clear communication. I want to keep building practical playbooks, architecture examples, public writing, and small automation demos that show the work honestly."
       }
     ],
     commands: [
@@ -2509,13 +2509,13 @@ export const studioNotes: StudioNote[] = [
   {
     id: "ai-driven-engineering-foundation",
     folderId: "machine-bootstrap",
-    title: "AI-Driven Engineering Foundation",
-    subtitle: "Daily roadmap for technical decision-making from task intake to production operation.",
+    title: "Engineering Foundations for AI-Assisted Work",
+    subtitle: "A practical roadmap for technical decisions from task intake through production operations.",
     status: "ready",
     updatedAt: "2026-06-21",
     tags: ["Engineering roadmap", "Architecture", "Data", "Resilience", "Observability", "AI workflow"],
     summary:
-      "This note keeps the long-term learning direction visible: AI can generate code quickly, but senior leverage comes from asking the right technical questions, choosing the right trade-offs, verifying failure modes, and owning production behavior.",
+      "This note keeps the long-term learning direction visible: AI can generate code quickly, but sound engineering still depends on good questions, explicit trade-offs, tested failure modes, and ownership of production behavior.",
     sections: [
       {
         heading: "Why this matters",
@@ -2586,13 +2586,13 @@ export const studioNotes: StudioNote[] = [
   {
     id: "ai-system-engineering-roadmap",
     folderId: "ai-learning",
-    title: "AI-Driven System Engineering Roadmap",
+    title: "System Engineering Roadmap for AI-Assisted Work",
     subtitle: "Daily map for SDLC ownership, distributed systems, storage scale, and AI-assisted review.",
     status: "ready",
     updatedAt: "2026-06-21",
     tags: ["AI up-skill", "System engineering", "SDLC", "Distributed systems", "Storage", "AI workflow"],
     summary:
-      "This roadmap keeps the next learning layer visible: AI can write code faster, but a senior engineer must own architecture decisions, verify distributed failure modes, understand storage trade-offs, and use AI as a disciplined reviewer.",
+      "This roadmap keeps the next learning layer visible: architecture decisions, distributed failure modes, storage trade-offs, and disciplined review still need clear human ownership when AI helps write the code.",
     sections: [
       {
         heading: "Core shift",
@@ -2665,7 +2665,7 @@ export const studioNotes: StudioNote[] = [
     id: "antigravity-awesome-skills",
     folderId: "machine-bootstrap",
     title: "Antigravity Awesome Skills",
-    subtitle: "The command that installs my reusable agent skill library.",
+    subtitle: "Setup notes for reinstalling the reusable agent skill library I use.",
     status: "ready",
     updatedAt: "2026-06-20",
     tags: ["AI setup", "Antigravity", "Codex", "Claude", "Gemini", "Skills"],
@@ -2753,27 +2753,27 @@ export const studioNotes: StudioNote[] = [
     id: "open-design",
     folderId: "design-tools",
     title: "Open Design",
-    subtitle: "Design workspace and MCP helper for agent-driven UI artifacts.",
+    subtitle: "A local-first design workspace with MCP support for AI-assisted UI work.",
     status: "ready",
     updatedAt: "2026-06-20",
     tags: ["Design", "MCP", "Codex", "Claude", "Gemini", "Antigravity"],
     summary:
-      "Open Design can support this Studio direction as a design reference and future MCP integration. I do not have a callable Open Design tool in this session, but the project itself is worth keeping in the setup notes.",
+      "Open Design is kept here as a design reference and a possible MCP integration for UI work. Its current setup commands and supported tools should be checked in the project documentation before installation.",
     sections: [
       {
         heading: "What it is",
         body:
-          "Open Design describes itself as a local-first, open-source Claude Design alternative. It focuses on agent-native design artifacts: prototypes, dashboards, decks, images, videos, HyperFrames, design systems, plugins, and exportable HTML/PDF/PPTX/MP4 outputs."
+          "The project describes itself as a local-first, open-source workspace for creating design artifacts with AI agents. I keep the note focused on the parts relevant to this Studio: interface prototypes, design systems, and exportable review material."
       },
       {
-        heading: "Why it belongs in this setup",
+        heading: "Why I keep it here",
         body:
-          "It matches the direction of this route: a Studio surface where agents can help create or polish interface artifacts. It also supports mainstream coding agents through an MCP install command."
+          "It may be useful when an agent needs to create or refine an interface artifact without moving the work into a separate design process. The MCP path also makes it relevant to the agent setup notes."
       },
       {
         heading: "How to use it later",
         body:
-          "On a new machine, install Open Design first, then wire MCP into the agent I want to use. For this repo, Codex and Antigravity are the first targets; Claude and Gemini are next."
+          "On a new machine, first check the current project documentation, then install the app and connect MCP only to the agent that needs it. Start with one integration and verify it before adding more."
       }
     ],
     commands: [
@@ -2915,7 +2915,7 @@ export const studioNotes: StudioNote[] = [
     updatedAt: "2026-06-20",
     tags: ["AI learning", "Multi-agent", "Workflow"],
     summary:
-      "Future note for patterns where multiple agents help plan, code, review, test, or research without turning the workflow into noise.",
+      "Planned research into when several agents improve planning, implementation, review, testing, or research—and when they only add coordination cost.",
     sections: [
       {
         heading: "Question to answer",
@@ -2936,12 +2936,12 @@ export const studioNotes: StudioNote[] = [
     id: "openhands",
     folderId: "ai-learning",
     title: "OpenHands",
-    subtitle: "Place to capture setup notes and real use cases later.",
+    subtitle: "Planned research on setup, sandboxing, and longer coding tasks.",
     status: "next",
     updatedAt: "2026-06-20",
     tags: ["AI learning", "OpenHands"],
     summary:
-      "A placeholder note for OpenHands. The useful future version should include install commands, project fit, and where it overlaps with Codex or Claude.",
+      "A planned evaluation of OpenHands covering installation, repository fit, sandbox boundaries, longer tasks, and overlap with Codex or Claude.",
     sections: [
       {
         heading: "Question to answer",
@@ -2954,12 +2954,12 @@ export const studioNotes: StudioNote[] = [
     id: "crewai",
     folderId: "ai-learning",
     title: "CrewAI",
-    subtitle: "Place to capture crew patterns after practical experiments.",
+    subtitle: "Planned research on explicit agent roles, memory, and handoffs.",
     status: "next",
     updatedAt: "2026-06-20",
     tags: ["AI learning", "CrewAI", "Agents"],
     summary:
-      "A placeholder note for CrewAI. The future note should focus on when a crew abstraction helps more than a plain script or a single agent.",
+      "A planned evaluation of CrewAI focused on when structured roles, memory, and handoffs help more than a plain script or a single agent.",
     sections: [
       {
         heading: "Question to answer",
@@ -2974,33 +2974,33 @@ export const studioFlowGroups: StudioFlowGroup[] = [
   {
     id: "architecture",
     title: "Architecture & System Design",
-    subtitle: "Decide before drawing boxes.",
+    subtitle: "Clarify the problem before drawing the system.",
     description:
-      "Flows for system design interviews, architecture reviews, and trade-off decisions where the hard part is choosing boundaries.",
+      "Guides for system design and architecture decisions, with an emphasis on boundaries, trade-offs, and the cost of change.",
     flowIds: ["system-design", "architecture-decision"]
   },
   {
     id: "production",
     title: "Production & Delivery",
-    subtitle: "Move carefully when real users are involved.",
+    subtitle: "Protect users while change moves forward.",
     description:
-      "Flows for incidents, release readiness, rollout gates, and operational handoffs that protect reliability without slowing every change.",
+      "Guides for incident response, release readiness, rollout decisions, and operational handoffs with clear ownership.",
     flowIds: ["incident-response", "release-readiness"]
   },
   {
     id: "ai-and-career",
-    title: "AI Delivery & Career Proof",
-    subtitle: "Turn work into leverage.",
+    title: "AI Delivery & Engineering Portfolio",
+    subtitle: "Make useful work easier to review and explain.",
     description:
-      "Flows for AI-assisted delivery and portfolio stories that make engineering judgment visible without turning the work into marketing copy.",
+      "Guides for using AI responsibly in delivery and documenting engineering work without turning it into marketing copy.",
     flowIds: ["ai-delivery", "portfolio-story"]
   },
   {
     id: "react-flow-library",
-    title: "React Flow",
-    subtitle: "Switch between example shapes before choosing a diagram.",
+    title: "React Flow Patterns",
+    subtitle: "Compare diagram patterns before choosing a structure.",
     description:
-      "A React Flow showcase for example families: built-in nodes, custom architecture shapes, grouping, layout, validation, annotation, edge styles, labels, markers, minimap, controls, and background.",
+      "An interactive library of React Flow patterns for nodes, edges, groups, layouts, annotations, and architecture diagrams.",
     flowIds: ["react-flow-architecture-demo", "react-flow-system-blueprint"]
   }
 ];
@@ -3009,16 +3009,16 @@ export const studioFlows: StudioFlow[] = [
   {
     id: "system-design",
     groupId: "architecture",
-    title: "System Design Interview Flow",
+    title: "System Design Flow",
     summary:
-      "A calm path from vague prompt to clear architecture, with capacity, data, API, failure modes, and trade-offs handled in order.",
-    seoTitle: "System Design Interview Flow for Senior Software Engineers",
+      "A practical path from an open-ended problem to clear boundaries, interfaces, data choices, failure handling, and trade-offs.",
+    seoTitle: "Practical System Design Flow for Software Engineers",
     seoDescription:
-      "A practical system design flow for framing requirements, choosing boundaries, modeling data, handling scale, and explaining trade-offs clearly.",
+      "A system design flow for framing requirements, choosing boundaries, modeling data, handling scale, and explaining trade-offs clearly.",
     useWhen:
-      "Use this when a prompt starts broad, such as designing a notification system, a booking platform, a feed, or an internal workflow tool.",
+      "Use when a design request starts broad, such as a notification system, booking platform, feed, or internal workflow tool.",
     outcome:
-      "A shareable design narrative that shows senior judgment: what matters, what can wait, where the risks are, and how the system evolves.",
+      "A shareable design narrative that makes priorities, deferred decisions, risks, and the evolution path explicit.",
     officeExample:
       "A product manager asks for a new partner onboarding flow. Instead of jumping to services and queues, this flow starts with who changes what data, which steps need approval, and where rollback matters.",
     tags: ["System Design", "Architecture", "Trade-offs", "Interview"],
@@ -3092,14 +3092,14 @@ export const studioFlows: StudioFlow[] = [
     groupId: "architecture",
     title: "Architecture Decision Flow",
     summary:
-      "A lightweight RFC/ADR path for turning messy options into one clear recommendation, including trade-offs and rollback.",
-    seoTitle: "Architecture Decision Flow with RFC and ADR Thinking",
+      "A lightweight RFC/ADR process for comparing practical options and recording a clear recommendation, trade-offs, and rollback path.",
+    seoTitle: "Architecture Decision Flow for RFCs and ADRs",
     seoDescription:
-      "A practical architecture decision flow for comparing options, scoring trade-offs, documenting risks, and aligning teams before implementation.",
+      "A practical process for comparing architecture options, documenting trade-offs and risks, and aligning a team before implementation.",
     useWhen:
-      "Use this before a feature crosses module boundaries, changes data ownership, adds a new integration, or introduces a hard-to-reverse dependency.",
+      "Use before a feature crosses module boundaries, changes data ownership, adds an integration, or introduces a hard-to-reverse dependency.",
     outcome:
-      "A decision note that helps teammates understand not only what was chosen, but why the rejected paths were rejected.",
+      "A concise decision record that explains what was chosen, why it fits, and why the practical alternatives were not selected.",
     officeExample:
       "A team debates whether to add a queue for partner sync. This flow separates the real need, failure behavior, team support cost, and the moment where async processing actually earns its complexity.",
     tags: ["RFC", "ADR", "Architecture Review", "Decision Matrix"],
@@ -3164,14 +3164,14 @@ export const studioFlows: StudioFlow[] = [
     groupId: "production",
     title: "Production Incident Flow",
     summary:
-      "A practical incident path from first signal to rollback, communication, root cause, and follow-up work.",
+      "A practical sequence from the first signal through mitigation, communication, recovery, root cause, and follow-up work.",
     seoTitle: "Production Incident Response Flow for Engineering Teams",
     seoDescription:
       "A production incident flow for triage, blast-radius control, rollback, communication, root cause analysis, and follow-up tracking.",
     useWhen:
-      "Use this when alerts, customer reports, deploy regressions, or partner failures create pressure and the team needs calm sequencing.",
+      "Use when alerts, customer reports, deployment regressions, or partner failures require a clear order of operations.",
     outcome:
-      "A controlled incident response where decisions are visible, users are protected, and the postmortem produces real prevention work.",
+      "A controlled incident response with visible decisions, protected users, and specific prevention work with owners.",
     officeExample:
       "After a release, checkout latency climbs and support sees duplicate complaints. This flow keeps the team from guessing by separating signal, mitigation, rollback, and root-cause work.",
     tags: ["Incident", "SRE", "Rollback", "Postmortem"],
@@ -3236,14 +3236,14 @@ export const studioFlows: StudioFlow[] = [
     groupId: "production",
     title: "Release Readiness Flow",
     summary:
-      "A rollout gate for checking scope, tests, observability, migration safety, communication, and rollback before release.",
-    seoTitle: "Release Readiness Flow for Safe Software Rollouts",
+      "A pre-release check for scope, tests, observability, migration safety, communication, rollout, and rollback.",
+    seoTitle: "Release Readiness Checklist and Rollout Flow",
     seoDescription:
-      "A release readiness flow for validating tests, analytics, migration safety, observability, communication, rollout gates, and rollback plans.",
+      "A release readiness flow for checking tests, analytics, migration safety, observability, communication, rollout decisions, and rollback plans.",
     useWhen:
-      "Use this before a feature reaches production, especially when it touches checkout, authentication, data migration, integrations, or user-facing routes.",
+      "Use before a change reaches production, especially when it touches checkout, authentication, data migration, integrations, or public routes.",
     outcome:
-      "A release that can be explained, monitored, paused, and rolled back without heroic cleanup after the fact.",
+      "A release that can be explained, monitored, paused, and rolled back with clear ownership.",
     officeExample:
       "A team is shipping a new dashboard filter with analytics and SEO changes. This flow makes sure behavior, tracking, empty states, and rollback are covered before the deploy button becomes tempting.",
     tags: ["Release", "Rollout", "QA", "Observability"],
@@ -3308,14 +3308,14 @@ export const studioFlows: StudioFlow[] = [
     groupId: "ai-and-career",
     title: "AI-Assisted Delivery Flow",
     summary:
-      "A controlled way to use AI agents for implementation without losing scope, privacy, tests, or human judgment.",
+      "A bounded process for using AI agents in implementation without losing scope, privacy, verification, or human judgment.",
     seoTitle: "AI-Assisted Software Delivery Flow with Human Review",
     seoDescription:
       "An AI-assisted delivery flow for scoping tasks, packaging context, applying changes, verifying behavior, and handing off review-ready work.",
     useWhen:
-      "Use this when an AI agent helps with coding, review, research, docs, refactors, or test generation inside a real codebase.",
+      "Use when an AI agent assists with coding, review, research, documentation, refactoring, or test generation in a real codebase.",
     outcome:
-      "A review-ready change where AI helped with speed and coverage, while the engineer still owns scope, correctness, and release risk.",
+      "A review-ready change in which AI improves speed or coverage while the engineer retains ownership of scope, correctness, and release risk.",
     officeExample:
       "A teammate asks for a Studio feature. This flow turns the request into bounded context, tells the agent what not to touch, verifies analytics and SEO, then reviews the diff before commit.",
     tags: ["AI Delivery", "Agents", "Code Review", "Verification"],
@@ -3380,12 +3380,12 @@ export const studioFlows: StudioFlow[] = [
     groupId: "ai-and-career",
     title: "Portfolio Story Flow",
     summary:
-      "A way to turn real engineering work into a clear CV, blog, or interview story without over-polishing the truth.",
-    seoTitle: "Engineering Portfolio Story Flow for CV and Interview Proof",
+      "A practical way to turn real engineering work into a clear CV, blog, interview, or portfolio story without overstating it.",
+    seoTitle: "Engineering Portfolio Story Flow for CVs and Interviews",
     seoDescription:
-      "A portfolio story flow for turning engineering work into clear context, actions, trade-offs, impact, evidence, and next-step learning.",
+      "A portfolio story flow for documenting engineering context, actions, trade-offs, impact, evidence, and next-step learning.",
     useWhen:
-      "Use this after a project, incident, migration, release, leadership moment, or hard trade-off that should become career evidence.",
+      "Use after a project, incident, migration, release, leadership moment, or difficult trade-off that is worth documenting.",
     outcome:
       "A grounded story that can become a CV bullet, blog post, interview answer, or portfolio case study.",
     officeExample:
@@ -3450,16 +3450,16 @@ export const studioFlows: StudioFlow[] = [
   {
     id: "react-flow-architecture-demo",
     groupId: "react-flow-library",
-    title: "Example",
+    title: "React Flow Pattern Library",
     summary:
-      "A library-style canvas showing what @xyflow/react can express across overview, interaction, grouping, layout, styling, whiteboard, and software architecture examples.",
-    seoTitle: "React Flow Example for Software Diagrams",
+      "An interactive library of React Flow patterns for nodes, edges, grouping, layouts, annotations, and software architecture diagrams.",
+    seoTitle: "React Flow Pattern Library for Software Diagrams",
     seoDescription:
-      "A React Flow studio demo with built-in node styles, custom architecture shapes, grouping, layout, validation, whiteboard annotation, edge types, labels, markers, minimap, controls, and background.",
+      "A React Flow pattern library with built-in nodes, custom architecture shapes, grouping, layouts, validation, annotations, edge styles, labels, markers, a minimap, and canvas controls.",
     useWhen:
-      "Use this when choosing how to model a system architecture, service map, platform topology, event flow, deployment boundary, or graph-editor interaction with React Flow.",
+      "Use when choosing how to model a system architecture, service map, platform topology, event flow, deployment boundary, or graph-editor interaction with React Flow.",
     outcome:
-      "A visual catalog of React Flow node, edge, grouping, layout, interaction, whiteboard, and architecture patterns without turning the page into a product use-case map.",
+      "A visual reference for choosing node, edge, grouping, layout, interaction, annotation, and architecture patterns.",
     officeExample:
       "A team wants to choose how a technical diagram should look before drawing the real system. This gallery lets them compare overview, subflow, layout, validation, whiteboard, event-driven, topology, and data-lineage views in one React Flow canvas.",
     tags: ["React Flow", "XYFlow", "Architecture Diagram", "Node Shapes", "Edge Types"],
@@ -3534,14 +3534,14 @@ export const studioFlows: StudioFlow[] = [
     groupId: "react-flow-library",
     title: "System Design Blueprint",
     summary:
-      "A poster-scale React Flow system design map that shows DNS, edge policy, load balancing, backend services, cache, data stores, media queues, workers, and fan-out services.",
-    seoTitle: "React Flow System Design Blueprint Example",
+      "A detailed React Flow map of DNS, edge policy, load balancing, backend services, cache, data stores, media queues, workers, and downstream services.",
+    seoTitle: "Interactive React Flow Blueprint for System Design",
     seoDescription:
-      "A large React Flow system design blueprint with grouped architecture zones, custom nodes, labeled edges, animated async paths, minimap, controls, and focused diagram views.",
+      "An interactive React Flow system design blueprint with grouped architecture zones, custom nodes, labeled edges, asynchronous paths, a minimap, controls, and focused views.",
     useWhen:
-      "Use this when a diagram needs to prove React Flow can handle dense system design posters, not only small workflow charts.",
+      "Use when an architecture review needs a dense, interactive system map rather than a static image or a small workflow chart.",
     outcome:
-      "A powerful architecture canvas that stays inspectable: overview for the full story, focused views for DNS, runtime, storage, media processing, and fan-out.",
+      "An inspectable architecture map with an overview for the full system and focused views for DNS, runtime, storage, media processing, and fan-out.",
     officeExample:
       "A team wants a poster-style architecture map for a review. This example keeps the diagram interactive, searchable by zone, and zoomable instead of freezing it as a static image.",
     tags: ["React Flow", "System Design", "Blueprint", "Distributed Systems", "Media Pipeline"],

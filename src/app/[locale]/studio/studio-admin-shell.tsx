@@ -20,6 +20,8 @@ import {
   getLocalizedStudioAiSkills,
   getLocalizedStudioWorkflowChecklists
 } from "./studio.localized-content";
+import { getLocalizedStudioFolders, getLocalizedStudioNotes } from "./studio.localized-workspace";
+import { getLocalizedStudioDemoFlows } from "./studio.localized-demos";
 import type {
   StudioAiSkill,
   StudioChecklistStep,
@@ -354,6 +356,10 @@ type StudioFlowCanvasNodeData = {
   detail: string;
   badge?: string;
   tone: StudioFlowCanvasTone;
+  kindLabel?: string;
+  toneLabel?: string;
+  scratchLabel?: string;
+  hiddenLabel?: string;
   active?: boolean;
   compact?: boolean;
   collapsed?: boolean;
@@ -520,6 +526,7 @@ type StudioUiCopy = {
     chartOutcome: string;
     exampleFamily: string;
     exampleView: string;
+    exampleSelectorLabel: string;
     boardTools: string;
     viewNotes: string;
     useWhen: string;
@@ -575,6 +582,13 @@ type StudioUiCopy = {
     edgeCount: string;
     groupCount: string;
     hiddenCount: string;
+    tags: string;
+    details: string;
+    scratch: string;
+    reviewNote: string;
+    temporaryAnnotation: string;
+    nodeLabels: Record<string, string>;
+    familyLabels: Record<string, string>;
     collapseGroup: string;
     expandGroup: string;
     boardSandbox: string;
@@ -632,6 +646,7 @@ type StudioUiCopy = {
     structureDetail: (sections: number, steps: number) => string;
     markdownCopy: string;
     markdownUseWhen: string;
+    detailsLabel: string;
   };
   preferences: {
     title: string;
@@ -659,9 +674,9 @@ type StudioUiCopy = {
 
 const englishStudioCopy: StudioUiCopy = {
   brand: "Studio",
-  navLabel: "Personal Studio",
+  navLabel: "Nguyen Le Phong's personal Studio",
   navItems: {
-    welcome: "Welcome",
+    welcome: "Start here",
     "ai-agent-setup": "AI Setup",
     "ai-skills": "AI Skills",
     "delivery-checklists": "Checklists",
@@ -672,8 +687,8 @@ const englishStudioCopy: StudioUiCopy = {
     "flow-release-readiness": "Release Readiness",
     "flow-ai-delivery": "AI Delivery",
     "flow-portfolio-story": "Portfolio Story",
-    "flow-react-flow-architecture-demo": "Example",
-    "flow-react-flow-system-blueprint": "Blueprint"
+    "flow-react-flow-architecture-demo": "Flow examples",
+    "flow-react-flow-system-blueprint": "System blueprint"
   },
   profileItems: {
     home: { label: "Home", detail: "Profile overview." },
@@ -686,12 +701,12 @@ const englishStudioCopy: StudioUiCopy = {
   },
   profileMenuTitle: "Profile menu",
   profileNavigationTitle: "Profile navigation",
-  profileNavigationDetail: "Move between the public profile sections from this Studio workspace.",
+  profileNavigationDetail: "Open any public profile section without leaving the Studio workspace.",
   openProfileHome: "Open profile home",
-  findSetupNote: "Find setup note",
+  findSetupNote: "Search Studio",
   search: "Search",
-  searchPlaceholder: "Search AI setup...",
-  commandPaletteLabel: "Search Studio routes",
+  searchPlaceholder: "Search Studio pages...",
+  commandPaletteLabel: "Search Studio pages",
   closeSearch: "Close search",
   openStudio: "Open Studio",
   closeNavigation: "Close navigation",
@@ -701,13 +716,13 @@ const englishStudioCopy: StudioUiCopy = {
   openAccountMenu: "Open account menu",
   routeKicker: {
     legacy: "Legacy",
-    studio: "Studio route"
+    studio: "Studio"
   },
-  routeMetricsLabel: "Route metrics",
+  routeMetricsLabel: "Page summary",
   status: {
     ready: "Ready",
     draft: "Draft",
-    next: "Next"
+    next: "Planned"
   },
   categories: {
     all: "All",
@@ -720,26 +735,26 @@ const englishStudioCopy: StudioUiCopy = {
   },
   routes: {
     welcome: {
-      title: "Welcome",
-      description: "A quiet starting point for the personal Studio: working notes, reusable workflows, and the public profile links I reach for most.",
-      panels: ["Start here", "Useful links", "Studio routes"],
-      timeline: ["Open the right workspace", "Keep context close", "Move from idea to proof"]
+      title: "Start here",
+      description: "A practical index of my setup notes, reusable workflows, delivery checklists, and visual system maps.",
+      panels: ["Choose a workspace", "Useful links", "Studio pages"],
+      timeline: ["Choose the right workspace", "Keep the source material close", "Finish with something concrete"]
     },
     "ai-agent-setup": {
-      title: "AI Agent Setup",
-      description: "Personal setup notes for my AI agent tools, MCP paths, and safe machine bootstrap.",
+      title: "AI Setup",
+      description: "Working notes for AI tools, MCP integrations, and a safe new-machine setup.",
       panels: ["Setup library", "Agent workflow", "Command runbook"],
       timeline: ["Skill library reviewed", "MCP install path captured", "Credential guardrail checked"]
     },
     "ai-skills": {
       title: "AI Skills",
-      description: "Reusable agent skills distilled from installed Codex, Claude, Gemini, Antigravity, and local skill libraries.",
+      description: "Reusable instructions for focused work with Codex, Claude, Gemini, Antigravity, and other AI tools.",
       panels: ["Skill taxonomy", "Markdown preview", "Copy-ready prompt"],
       timeline: ["Installed skills inventoried", "Capability gaps mapped", "English and Vietnamese prompts prepared"]
     },
     "delivery-checklists": {
-      title: "Delivery Checklists",
-      description: "Operating checklists from task intake through module work, release readiness, and rollout.",
+      title: "Engineering Checklists",
+      description: "Practical checklists for understanding a task, making a change, reviewing it, and releasing it safely.",
       panels: ["Task intake", "Module creation", "Release and rollout"],
       timeline: ["Ticket intake path mapped", "Module checklist nested", "Rollout phases captured"]
     },
@@ -780,31 +795,31 @@ const englishStudioCopy: StudioUiCopy = {
       timeline: ["Context captured", "Impact evidence selected", "Story draft shaped"]
     },
     "flow-react-flow-architecture-demo": {
-      title: "Example",
-      description: "A library-style React Flow canvas with dropdown views for overview, interaction, grouping, layout, styling, whiteboard, and software architecture examples.",
-      panels: ["Example selector", "Canvas gallery", "Architecture zones"],
-      timeline: ["Example families mapped", "Dropdown views wired", "Canvas controls enabled"]
+      title: "React Flow Examples",
+      description: "An interactive collection of React Flow patterns for navigation, grouping, layout, whiteboarding, and software architecture.",
+      panels: ["Choose an example", "Explore the canvas", "Inspect architecture zones"],
+      timeline: ["Choose a pattern", "Inspect its relationships", "Try the canvas controls"]
     },
     "flow-react-flow-system-blueprint": {
       title: "System Design Blueprint",
-      description: "A dense React Flow blueprint that maps DNS, edge policy, load balancing, storage, media processing, queues, and fan-out services.",
-      panels: ["Full blueprint", "Focused views", "Production vocabulary"],
-      timeline: ["DNS path mapped", "Runtime and storage linked", "Media fan-out modeled"]
+      description: "A detailed system map covering DNS, edge policy, load balancing, storage, media processing, queues, and fan-out services.",
+      panels: ["Full system map", "Focused views", "Production components"],
+      timeline: ["Trace the request path", "Inspect runtime and storage", "Follow media processing and fan-out"]
     }
   },
   welcome: {
-    eyebrow: "Studio home",
-    lead: "This space is where I keep the practical parts of my work close together: setup notes, reusable AI skills, delivery checklists, and visual flows that help turn rough context into something I can ship or explain.",
-    note: "Use it as a calm control room. Start with the route that matches the job, keep the source material honest, then leave with a concrete artifact instead of another open tab.",
+    eyebrow: "Personal workbench",
+    lead: "I keep the practical parts of my engineering work here: setup notes, reusable AI instructions, delivery checklists, and visual system maps.",
+    note: "Choose the page that matches the job, check the source material, and finish with a useful decision, checklist, diagram, or verified change.",
     studioLinks: "Studio shortcuts",
     publicLinks: "Useful profile links",
     open: "Open",
     routeCards: {
-      "ai-agent-setup": { label: "AI Setup", detail: "Machine notes, MCP paths, and personal agent setup references." },
-      "ai-skills": { label: "AI Skills", detail: "Reusable prompts and operating rules for focused agent sessions." },
-      "delivery-checklists": { label: "Checklists", detail: "Working checklists for task intake, release readiness, and rollout." },
-      "flow-react-flow-architecture-demo": { label: "Example", detail: "React Flow examples for architecture, layout, grouping, styling, and interactions." },
-      "flow-react-flow-system-blueprint": { label: "Blueprint", detail: "A poster-scale system design canvas with DNS, runtime, storage, media, and fan-out zones." }
+      "ai-agent-setup": { label: "AI Setup", detail: "Tool roles, MCP integrations, and new-machine setup notes." },
+      "ai-skills": { label: "AI Skills", detail: "Reusable instructions for focused research, review, and implementation." },
+      "delivery-checklists": { label: "Checklists", detail: "Step-by-step checks for task intake, implementation, review, and release." },
+      "flow-react-flow-architecture-demo": { label: "Flow examples", detail: "Interactive patterns for architecture, layout, grouping, styling, and navigation." },
+      "flow-react-flow-system-blueprint": { label: "System blueprint", detail: "A detailed map of DNS, runtime, storage, media processing, and fan-out." }
     },
     linkCards: {
       home: { label: "Home", detail: "Public profile overview." },
@@ -815,25 +830,26 @@ const englishStudioCopy: StudioUiCopy = {
     }
   },
   flows: {
-    emptyTitle: "Flow library is empty",
-    emptyDescription: "Add studio flows before opening this menu.",
+    emptyTitle: "No flows are available yet",
+    emptyDescription: "Published flows will appear here when they are ready.",
     menu: "Flow menu",
-    menuDetail: "Reusable work paths for system design, production delivery, AI-assisted coding, and career proof.",
+    menuDetail: "Reusable paths for system design, production delivery, AI-assisted engineering, and portfolio writing.",
     groupMenuLabel: "Flow groups",
     flowListLabel: "Shareable Studio flows",
     selectedFlow: "Selected Studio flow",
     chartLabel: "Flow chart",
-    chartHint: "Read the path from left to right: each node is a decision point, not a long note.",
+    chartHint: "Read from left to right. Each node marks an action or decision, with evidence and output kept nearby.",
     chartOutcome: "Target outcome",
     exampleFamily: "Example family",
     exampleView: "View",
+    exampleSelectorLabel: "React Flow example selector",
     boardTools: "Board tools",
     viewNotes: "View notes",
     useWhen: "Use when",
     outcome: "Outcome",
-    officeExample: "Office example",
-    artifacts: "Artifacts",
-    cvSignals: "CV signals",
+    officeExample: "Practical example",
+    artifacts: "Working artifacts",
+    cvSignals: "Portfolio evidence",
     evidence: "Evidence",
     output: "Output",
     shareFlow: "Share flow",
@@ -882,9 +898,50 @@ const englishStudioCopy: StudioUiCopy = {
     edgeCount: "Edges",
     groupCount: "Groups",
     hiddenCount: "Hidden",
+    tags: "Flow tags",
+    details: "Flow details",
+    scratch: "Scratch",
+    reviewNote: "Review note",
+    temporaryAnnotation: "Temporary annotation for this Studio session.",
+    nodeLabels: {
+      hub: "Hub",
+      step: "Step",
+      detail: "Detail",
+      input: "Input",
+      default: "Default",
+      output: "Output",
+      group: "Group",
+      service: "Service",
+      gateway: "Gateway",
+      database: "Database",
+      queue: "Queue",
+      topic: "Topic",
+      cache: "Cache",
+      worker: "Worker",
+      external: "External",
+      decision: "Decision",
+      risk: "Risk",
+      note: "Note",
+      system: "System",
+      source: "Source",
+      process: "Process",
+      agent: "Agent",
+      review: "Review",
+      storage: "Storage",
+      event: "Event"
+    },
+    familyLabels: {
+      overview: "Overview",
+      interaction: "Interaction",
+      grouping: "Subflows & Grouping",
+      layout: "Layout",
+      styling: "Styling",
+      whiteboard: "Whiteboard",
+      architecture: "Software Architecture"
+    },
     collapseGroup: "Collapse group",
     expandGroup: "Expand group",
-    boardSandbox: "Session sandbox: edits can be undone or reset and do not change the source diagram."
+    boardSandbox: "Your edits stay in this browser session. Undo or reset them at any time; the source diagram is unchanged."
   },
   aiSetup: {
     addNote: "Add note",
@@ -899,36 +956,36 @@ const englishStudioCopy: StudioUiCopy = {
     setupCommands: "Setup commands",
     referenceLinks: "Reference links",
     aiWorkflow: "AI workflow",
-    aiWorkflowDetail: "First container for research and operating notes.",
+    aiWorkflowDetail: "A simple path from source material to a checked, reusable result.",
     setupChecklist: "Setup checklist",
     researchQueue: "Research queue"
   },
   aiSkills: {
-    emptyTitle: "Skill library is empty",
-    emptyDescription: "Add markdown skills to Studio data before opening this menu.",
+    emptyTitle: "No AI skills are available yet",
+    emptyDescription: "Published skills will appear here when they are ready.",
     copyMarkdown: "Copy markdown",
     copied: "Copied",
     copy: "Copy",
     skillLibrary: "Skill library",
-    skillLibraryDetail: "Markdown prompts that can be copied into an agent session.",
+    skillLibraryDetail: "Reusable instructions you can copy into an AI work session.",
     categoriesLabel: "Skill categories",
     skillCountLabel: (count) => `${count} skills`,
     selectedSkill: "Selected AI skill markdown",
     skillTags: "Skill tags",
     useThisWhen: "Use this when",
     copyBehavior: "Copy behavior",
-    copyBehaviorDetail: "The button copies the raw markdown block, including headings, process, output format, and guardrails.",
+    copyBehaviorDetail: "The button copies the complete markdown instruction, including its process, expected output, and guardrails.",
     operatingRule: "Operating rule",
-    operatingRuleDetail: "Keep the skill specific enough to be useful, but short enough to paste into Codex, Claude, Gemini, or another agent tool."
+    operatingRuleDetail: "Use the instruction as a starting point. Keep the task boundaries, source material, and final judgment explicit."
   },
   checklists: {
-    emptyTitle: "Checklist library is empty",
-    emptyDescription: "Add workflow checklists to Studio data before opening this menu.",
+    emptyTitle: "No checklists are available yet",
+    emptyDescription: "Published checklists will appear here when they are ready.",
     copyChecklist: "Copy checklist",
     copied: "Copied",
     copy: "Copy",
     menu: "Checklist menu",
-    menuDetail: "Operating lists from ticket intake to rollout.",
+    menuDetail: "Step-by-step checks from task intake through release and rollout.",
     workflowListLabel: "Workflow checklists",
     selectedChecklist: "Selected workflow checklist",
     checklistTags: "Checklist tags",
@@ -938,23 +995,24 @@ const englishStudioCopy: StudioUiCopy = {
     structure: "Structure",
     structureDetail: (sections, steps) => `${sections} sections, ${steps} nested steps, copy-ready as markdown.`,
     markdownCopy: "Markdown copy",
-    markdownUseWhen: "Use when"
+    markdownUseWhen: "Use when",
+    detailsLabel: "Checklist details"
   },
   preferences: {
     title: "Preferences",
     description: "Theme, font, and layout for this Studio workspace.",
-    palette: "CV palette",
+    palette: "Appearance",
     themeMode: "Theme mode",
-    resolvedNow: "Resolved now",
+    resolvedNow: "Currently using",
     font: "Font",
     pageLayout: "Page layout",
-    pageLayoutHelp: "Centered keeps reading calm. Full width gives wider operations surfaces.",
+    pageLayoutHelp: "Centered is easier to read. Full width gives diagrams and workspaces more room.",
     navbarBehavior: "Navbar behavior",
-    navbarHelp: "Sticky keeps controls visible. Scroll lets the whole workspace move together.",
+    navbarHelp: "Sticky keeps the controls visible. Scroll moves them with the page.",
     sidebarStyle: "Sidebar style",
-    sidebarStyleHelp: "Choose the density that matches the current setup work.",
+    sidebarStyleHelp: "Choose how closely the navigation sits beside the workspace.",
     collapseMode: "Collapse mode",
-    collapseModeHelp: "Icon keeps the rail visible. Offcanvas hides it completely on desktop.",
+    collapseModeHelp: "Icon leaves a narrow navigation rail. Offcanvas hides the sidebar completely on desktop.",
     restoreDefaults: "Restore layout defaults",
     themeOptions: { light: "Light", system: "System", dark: "Dark" },
     contentLayoutOptions: { centered: "Centered", "full-width": "Full width" },
@@ -1016,49 +1074,49 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
   en: englishStudioCopy,
   vi: {
     ...englishStudioCopy,
-    navLabel: "Studio cá nhân",
+    navLabel: "Studio cá nhân của Nguyễn Lê Phong",
     navItems: {
-      welcome: "Welcome",
+      welcome: "Bắt đầu",
       "ai-agent-setup": "AI Setup",
-      "ai-skills": "AI Skill",
-      "delivery-checklists": "Checklist",
+      "ai-skills": "AI Skills",
+      "delivery-checklists": "Checklists",
       "flow-menu": "Flow",
       "flow-system-design": "System Design",
-      "flow-architecture-decision": "Quyết định kiến trúc",
-      "flow-incident-response": "Xử lý incident",
-      "flow-release-readiness": "Release readiness",
-      "flow-ai-delivery": "AI delivery",
-      "flow-portfolio-story": "Portfolio story",
-      "flow-react-flow-architecture-demo": "Example",
-      "flow-react-flow-system-blueprint": "Blueprint"
+      "flow-architecture-decision": "Architecture Decision",
+      "flow-incident-response": "Incident Response",
+      "flow-release-readiness": "Release Readiness",
+      "flow-ai-delivery": "AI-assisted Delivery",
+      "flow-portfolio-story": "Portfolio Story",
+      "flow-react-flow-architecture-demo": "React Flow Examples",
+      "flow-react-flow-system-blueprint": "System Blueprint"
     },
     profileItems: {
-      home: { label: "Trang chủ", detail: "Tổng quan profile." },
+      home: { label: "Trang chủ", detail: "Tổng quan hồ sơ cá nhân." },
       about: { label: "Giới thiệu", detail: "Kinh nghiệm và nền tảng." },
-      gallery: { label: "Gallery", detail: "Một số hình ảnh chọn lọc." },
+      gallery: { label: "Hình ảnh", detail: "Những dấu mốc và hình ảnh chọn lọc." },
       blog: { label: "Blog", detail: "Bài viết dài." },
-      notes: { label: "Note", detail: "Ghi chú làm việc ngắn." },
-      apps: { label: "Apps", detail: "Công cụ và thử nghiệm nhỏ." },
-      resume: { label: "Resume", detail: "Mở CV PDF." }
+      notes: { label: "Ghi chép", detail: "Ghi chép ngắn từ công việc và đời sống." },
+      apps: { label: "Ứng dụng", detail: "Công cụ nhỏ và những thử nghiệm cá nhân." },
+      resume: { label: "CV", detail: "Mở bản CV dạng PDF." }
     },
-    profileMenuTitle: "Menu profile",
-    profileNavigationTitle: "Menu profile",
-    profileNavigationDetail: "Đi tới các phần public profile ngay trong Studio.",
-    openProfileHome: "Mở trang chủ profile",
-    findSetupNote: "Tìm setup note",
+    profileMenuTitle: "Hồ sơ cá nhân",
+    profileNavigationTitle: "Đi tới trang khác",
+    profileNavigationDetail: "Mở các phần trong hồ sơ công khai mà không phải rời Studio.",
+    openProfileHome: "Mở trang hồ sơ chính",
+    findSetupNote: "Tìm trong Studio",
     search: "Tìm kiếm",
-    searchPlaceholder: "Tìm AI setup...",
-    commandPaletteLabel: "Tìm route Studio",
+    searchPlaceholder: "Tìm một trang trong Studio...",
+    commandPaletteLabel: "Tìm trang trong Studio",
     closeSearch: "Đóng tìm kiếm",
     openStudio: "Mở Studio",
     closeNavigation: "Đóng menu",
     toggleNavigation: "Ẩn/hiện menu",
     openPreferences: "Mở tùy chỉnh Studio",
-    openGithubProfile: "Mở GitHub profile",
+    openGithubProfile: "Mở hồ sơ GitHub",
     openAccountMenu: "Mở menu tài khoản",
-    routeKicker: { legacy: "Legacy", studio: "Studio route" },
-    routeMetricsLabel: "Chỉ số route",
-    status: { ready: "Sẵn sàng", draft: "Nháp", next: "Tiếp theo" },
+    routeKicker: { legacy: "Bản cũ", studio: "Studio" },
+    routeMetricsLabel: "Tóm tắt trang",
+    status: { ready: "Dùng được", draft: "Đang viết", next: "Dự kiến" },
     categories: {
       all: "Tất cả",
       engineering: "Kỹ thuật",
@@ -1070,253 +1128,296 @@ const studioCopyByLocale: Record<string, StudioUiCopy> = {
     },
     routes: {
       welcome: {
-        title: "Welcome",
-        description: "Điểm bắt đầu nhẹ nhàng của Studio cá nhân: ghi chú làm việc, workflow tái dùng và các link profile cần mở thường xuyên.",
-        panels: ["Bắt đầu", "Link tiện ích", "Route Studio"],
-        timeline: ["Mở đúng workspace", "Giữ context gần", "Rời đi với artifact rõ"]
+        title: "Bắt đầu",
+        description: "Mục lục gọn cho các ghi chú thiết lập, hướng dẫn dùng AI, danh sách kiểm tra và sơ đồ hệ thống tôi thường dùng.",
+        panels: ["Chọn nơi cần mở", "Liên kết hữu ích", "Các trang trong Studio"],
+        timeline: ["Chọn đúng chỗ làm việc", "Giữ tài liệu gốc bên cạnh", "Kết thúc bằng một kết quả cụ thể"]
       },
       "ai-agent-setup": {
-        title: "AI Agent Setup",
-        description: "Ghi chú setup cá nhân cho công cụ AI agent, MCP path và bootstrap máy an toàn.",
-        panels: ["Thư viện setup", "Luồng agent", "Runbook lệnh"],
-        timeline: ["Đã review skill library", "Đã lưu MCP install path", "Đã kiểm tra guardrail credential"]
+        title: "AI Setup",
+        description: "Ghi chú về vai trò của từng công cụ AI, cách nối MCP và cách chuẩn bị máy mới an toàn.",
+        panels: ["Ghi chú thiết lập", "Cách phối hợp công cụ", "Lệnh cần dùng"],
+        timeline: ["Kiểm lại thư viện hướng dẫn", "Lưu đúng đường cài MCP", "Không mang theo thông tin đăng nhập từ máy cũ"]
       },
       "ai-skills": {
-        title: "AI Skill",
-        description: "Bộ agent skill cô đọng từ các skill đã cài trong Codex, Claude, Gemini, Antigravity và local workspace.",
-        panels: ["Taxonomy skill", "Markdown preview", "Prompt copy-ready"],
-        timeline: ["Đã inventory skill đã cài", "Đã map capability gaps", "Đã chuẩn bị prompt tiếng Anh và tiếng Việt"]
+        title: "AI Skills",
+        description: "Những hướng dẫn có thể dùng lại khi nghiên cứu, phản biện, viết và làm việc với mã nguồn bằng các công cụ AI.",
+        panels: ["Nhóm công việc", "Nội dung Markdown", "Bản có thể sao chép"],
+        timeline: ["Kiểm kê hướng dẫn đang có", "Nhìn ra phần còn thiếu", "Chuẩn bị bản tiếng Anh và tiếng Việt"]
       },
       "delivery-checklists": {
-        title: "Checklist làm việc",
-        description: "Checklist vận hành từ nhận task, tạo module, chuẩn bị release đến rollout.",
-        panels: ["Nhận task", "Tạo module", "Release và rollout"],
-        timeline: ["Đã map intake ticket", "Checklist module có bước con", "Đã ghi lại phase rollout"]
+        title: "Engineering Checklists",
+        description: "Các bước cần kiểm từ lúc hiểu yêu cầu, sửa code, tự review đến khi release an toàn.",
+        panels: ["Nhận việc", "Thực hiện thay đổi", "Release và theo dõi"],
+        timeline: ["Làm rõ yêu cầu", "Review từng phần thay đổi", "Ghi rõ kế hoạch release và rollback"]
       },
       "flow-system-design": {
-        title: "Flow System Design",
-        description: "Luồng share được từ đề bài còn mơ hồ tới trade-off kiến trúc, failure modes và hướng tiến hóa.",
-        panels: ["Problem frame", "Runtime map", "Failure modes"],
-        timeline: ["Requirement đã đóng khung", "Data ownership đã map", "Evolution path đã ghi lại"]
+        title: "System Design Flow",
+        description: "Cách đi từ một đề bài còn mơ hồ tới kiến trúc có ranh giới rõ, biết đánh đổi gì và sẽ hỏng ở đâu.",
+        panels: ["Đóng khung bài toán", "Sơ đồ khi vận hành", "Tình huống hỏng hóc"],
+        timeline: ["Làm rõ yêu cầu", "Chỉ ra nơi sở hữu dữ liệu", "Ghi lại hướng mở rộng về sau"]
       },
       "flow-architecture-decision": {
-        title: "Flow quyết định kiến trúc",
-        description: "Luồng RFC/ADR gọn để chọn giữa các option với trade-off, risk gate và rollback rõ.",
-        panels: ["Scope quyết định", "Option matrix", "Risk gates"],
-        timeline: ["Invariant đã liệt kê", "Option đã so sánh", "Decision note sẵn sàng"]
+        title: "Architecture Decision Flow",
+        description: "Khung RFC/ADR gọn để so sánh phương án, nêu rõ đánh đổi, ngưỡng rủi ro và đường quay lui.",
+        panels: ["Phạm vi quyết định", "Bảng so sánh phương án", "Ngưỡng rủi ro"],
+        timeline: ["Liệt kê điều không được phá vỡ", "So sánh các phương án", "Hoàn tất biên bản quyết định"]
       },
       "flow-incident-response": {
-        title: "Flow xử lý incident",
-        description: "Luồng production incident cho triage, mitigation, communication, recovery và follow-up.",
-        panels: ["Signal", "Mitigation", "Postmortem"],
-        timeline: ["Signal đã xác nhận", "Blast radius đã giới hạn", "Follow-up có owner"]
+        title: "Incident Response Flow",
+        description: "Các bước xác minh, giảm thiệt hại, thông báo, khôi phục và rút kinh nghiệm sau sự cố thật.",
+        panels: ["Dấu hiệu", "Giảm thiệt hại", "Rút kinh nghiệm"],
+        timeline: ["Xác nhận sự cố", "Khoanh vùng ảnh hưởng", "Giao rõ người xử lý việc còn lại"]
       },
       "flow-release-readiness": {
-        title: "Flow release readiness",
-        description: "Rollout gate để kiểm scope, verification, data, observability và rollback trước production.",
-        panels: ["Scope", "Verification", "Rollout decision"],
-        timeline: ["Scope đã kiểm", "Analytics và SEO đã review", "Rollback trigger đã gọi tên"]
+        title: "Release Readiness Flow",
+        description: "Cửa kiểm cuối cho scope, dữ liệu, testing, observability và rollback trước khi lên production.",
+        panels: ["Phạm vi", "Bằng chứng kiểm tra", "Quyết định phát hành"],
+        timeline: ["Rà lại scope", "Kiểm tra analytics và SEO", "Nêu rõ lúc nào phải rollback"]
       },
       "flow-ai-delivery": {
-        title: "Flow delivery có AI hỗ trợ",
-        description: "Luồng delivery có kiểm soát để dùng AI agent mà vẫn giữ scope, privacy, test và judgment.",
-        panels: ["Task brief", "Context pack", "Verification"],
-        timeline: ["Boundary đã chốt", "Focused diff đã review", "Handoff đã chuẩn bị"]
+        title: "AI-assisted Delivery Flow",
+        description: "Cách dùng AI mà vẫn giữ đúng phạm vi, bảo vệ dữ liệu, kiểm thử đầy đủ và để con người chịu trách nhiệm quyết định.",
+        panels: ["Đề bài", "Tài liệu cần thiết", "Kiểm chứng"],
+        timeline: ["Chốt ranh giới", "Rà đúng phần thay đổi", "Chuẩn bị bàn giao"]
       },
       "flow-portfolio-story": {
-        title: "Flow kể câu chuyện portfolio",
-        description: "Luồng biến công việc engineering thật thành câu chuyện CV, blog và phỏng vấn có bằng chứng.",
-        panels: ["Context", "Trade-off", "Impact"],
-        timeline: ["Context đã ghi lại", "Evidence impact đã chọn", "Story draft đã định hình"]
+        title: "Portfolio Story Flow",
+        description: "Cách biến một việc kỹ thuật có thật thành câu chuyện cho CV, blog hoặc phỏng vấn mà không thổi phồng đóng góp.",
+        panels: ["Bối cảnh", "Đánh đổi", "Kết quả"],
+        timeline: ["Ghi đủ bối cảnh", "Chọn bằng chứng phù hợp", "Viết thành câu chuyện rõ ràng"]
       },
       "flow-react-flow-architecture-demo": {
-        title: "Example",
-        description: "Canvas React Flow kiểu thư viện demo với dropdown view cho overview, interaction, grouping, layout, styling, whiteboard và software architecture example.",
-        panels: ["Chọn example", "Canvas gallery", "Vùng kiến trúc"],
-        timeline: ["Nhóm example đã map", "Dropdown view đã nối", "Canvas control đã bật"]
+        title: "React Flow Examples",
+        description: "Bộ ví dụ tương tác về điều hướng, gom nhóm, bố cục, bảng phác thảo và sơ đồ kiến trúc bằng React Flow.",
+        panels: ["Chọn ví dụ", "Khám phá sơ đồ", "Xem từng vùng kiến trúc"],
+        timeline: ["Chọn kiểu sơ đồ", "Xem các mối liên hệ", "Thử công cụ trên bảng"]
       },
       "flow-react-flow-system-blueprint": {
-        title: "System Design Blueprint",
-        description: "Blueprint React Flow dày đặc, mô hình hóa DNS, edge policy, load balancing, storage, media processing, queue và fan-out service.",
-        panels: ["Blueprint đầy đủ", "View tập trung", "Từ vựng production"],
-        timeline: ["DNS path đã map", "Runtime và storage đã nối", "Media fan-out đã mô hình hóa"]
+        title: "System Blueprint",
+        description: "Sơ đồ chi tiết cho DNS, edge policy, load balancing, storage, media processing, queue và các fan-out service.",
+        panels: ["Sơ đồ đầy đủ", "Góc nhìn tập trung", "Thành phần khi vận hành"],
+        timeline: ["Lần theo đường đi của yêu cầu", "Xem tầng chạy và lưu trữ", "Theo dõi xử lý media và phân phối dữ liệu"]
       }
     },
     welcome: {
       ...englishStudioCopy.welcome,
-      eyebrow: "Studio home",
-      lead: "Đây là nơi em gom những phần thực dụng nhất của công việc vào cùng một chỗ: setup note, AI skill có thể tái dùng, checklist delivery và flow trực quan để biến context rời rạc thành thứ có thể làm, ship hoặc giải thích lại được.",
-      note: "Cứ xem Studio như một bàn làm việc yên tĩnh. Chọn đúng route cho việc đang làm, giữ nguồn và bằng chứng rõ ràng, rồi rời khỏi trang với một artifact cụ thể thay vì thêm một tab còn dang dở.",
+      eyebrow: "Bàn làm việc cá nhân",
+      lead: "Tôi gom ở đây những thứ dùng thường xuyên trong công việc kỹ thuật: ghi chú thiết lập, hướng dẫn làm việc với AI, danh sách kiểm tra và sơ đồ hệ thống.",
+      note: "Hãy chọn đúng trang cho việc đang làm, kiểm lại tài liệu gốc, rồi kết thúc bằng một quyết định, danh sách, sơ đồ hoặc thay đổi đã được kiểm chứng.",
       studioLinks: "Lối tắt trong Studio",
-      publicLinks: "Link profile tiện ích",
+      publicLinks: "Liên kết trong hồ sơ",
       open: "Mở",
       routeCards: {
-        "ai-agent-setup": { label: "AI Setup", detail: "Ghi chú máy, MCP path và setup cá nhân cho agent." },
-        "ai-skills": { label: "AI Skill", detail: "Prompt và operating rule có thể copy vào phiên agent." },
-        "delivery-checklists": { label: "Checklist", detail: "Checklist nhận task, release readiness và rollout." },
-        "flow-react-flow-architecture-demo": { label: "Example", detail: "Demo React Flow cho kiến trúc, layout, grouping, styling và interaction." },
-        "flow-react-flow-system-blueprint": { label: "Blueprint", detail: "Canvas system design cỡ poster với DNS, runtime, storage, media và fan-out zone." }
+        "ai-agent-setup": { label: "AI Setup", detail: "Vai trò của từng công cụ, cách nối MCP và ghi chú chuẩn bị máy mới." },
+        "ai-skills": { label: "AI Skills", detail: "Các skill dùng lại cho research, code và review." },
+        "delivery-checklists": { label: "Checklists", detail: "Checklist từ lúc nhận task, code, review đến release." },
+        "flow-react-flow-architecture-demo": { label: "React Flow Examples", detail: "Các React Flow pattern cho architecture diagram, layout, grouping và interaction." },
+        "flow-react-flow-system-blueprint": { label: "System Blueprint", detail: "System map cho DNS, runtime, storage, media pipeline và fan-out." }
       },
       linkCards: {
-        home: { label: "Trang chủ", detail: "Tổng quan public profile." },
-        notes: { label: "Note", detail: "Ghi chú ngắn và suy nghĩ đang dùng." },
+        home: { label: "Trang chủ", detail: "Tổng quan hồ sơ cá nhân." },
+        notes: { label: "Ghi chép", detail: "Những ghi chép ngắn từ công việc và đời sống." },
         blog: { label: "Blog", detail: "Bài viết dài hơn về kỹ thuật và trải nghiệm." },
-        apps: { label: "Apps", detail: "Công cụ nhỏ và thử nghiệm cá nhân." },
-        resume: { label: "Resume", detail: "Mở bản CV PDF mới nhất." }
+        apps: { label: "Ứng dụng", detail: "Công cụ nhỏ và thử nghiệm cá nhân." },
+        resume: { label: "CV", detail: "Mở bản CV PDF mới nhất." }
       }
     },
     flows: {
       ...englishStudioCopy.flows,
-      emptyTitle: "Thư viện flow đang trống",
-      emptyDescription: "Thêm Studio flow vào data trước khi mở menu này.",
-      menu: "Menu flow",
-      menuDetail: "Các đường làm việc có thể tái dùng cho system design, production delivery, coding có AI hỗ trợ và career proof.",
-      groupMenuLabel: "Nhóm flow",
-      flowListLabel: "Studio flow có thể share",
-      selectedFlow: "Flow Studio đang chọn",
-      chartLabel: "Sơ đồ flow",
-      chartHint: "Đọc từ trái sang phải: mỗi node là một điểm quyết định, không phải một ghi chú dài.",
+      emptyTitle: "Chưa có Flow nào",
+      emptyDescription: "Flow đã hoàn thiện sẽ xuất hiện ở đây.",
+      menu: "Flow Library",
+      menuDetail: "Các flow dùng lại cho System Design, release lên production, AI-assisted engineering và xây portfolio.",
+      groupMenuLabel: "Nhóm Flow",
+      flowListLabel: "Các Flow trong Studio",
+      selectedFlow: "Flow đang chọn",
+      chartLabel: "Flow chart",
+      chartHint: "Đọc từ trái sang phải. Mỗi node là một bước xử lý hoặc điểm ra quyết định, kèm evidence và output cần có.",
       chartOutcome: "Kết quả cần đạt",
-      exampleFamily: "Nhóm example",
-      exampleView: "Kiểu view",
-      boardTools: "Công cụ board",
-      viewNotes: "Ghi chú view",
+      exampleFamily: "Example family",
+      exampleView: "View",
+      exampleSelectorLabel: "Chọn ví dụ React Flow",
+      boardTools: "Board tools",
+      viewNotes: "View notes",
       useWhen: "Dùng khi",
       outcome: "Kết quả",
-      officeExample: "Ví dụ nơi làm việc",
-      artifacts: "Artifact",
-      cvSignals: "Signal cho CV",
+      officeExample: "Ví dụ thực tế",
+      artifacts: "Artifacts",
+      cvSignals: "Portfolio evidence",
       evidence: "Evidence",
       output: "Output",
-      shareFlow: "Share flow",
-      copied: "Đã copy",
-      openFlow: "Mở flow",
-      enterFullscreen: "Phóng to board",
-      exitFullscreen: "Thoát fullscreen",
-      canvasMode: "Chế độ canvas",
+      shareFlow: "Chia sẻ Flow",
+      copied: "Đã sao chép",
+      openFlow: "Mở quy trình",
+      enterFullscreen: "Mở toàn màn hình",
+      exitFullscreen: "Thoát toàn màn hình",
+      canvasMode: "Canvas mode",
       inspectMode: "Inspect",
       editMode: "Edit sandbox",
       layoutMode: "Layout",
-      layoutSource: "Gốc",
+      layoutSource: "Source",
       layoutHorizontal: "Ngang",
       layoutVertical: "Dọc",
       layoutGrid: "Lưới",
-      layoutPreset: "Preset layout",
-      layoutPresetSource: "Gốc",
+      layoutPreset: "Layout presets",
+      layoutPresetSource: "Source",
       layoutPresetCompact: "Compact",
       layoutPresetWide: "Wide",
       layoutPresetTall: "Tall",
       layoutPresetGrid: "Grid",
-      applyLayout: "Áp layout",
-      resetBoard: "Reset",
-      undo: "Undo",
-      redo: "Redo",
+      applyLayout: "Áp dụng layout",
+      resetBoard: "Đặt lại",
+      undo: "Hoàn tác",
+      redo: "Làm lại",
       copyNode: "Copy node",
       pasteNode: "Paste node",
-      addNote: "Thêm note",
+      addNote: "Thêm ghi chú",
       deleteNode: "Xóa node",
-      fitBoard: "Fit board",
+      fitBoard: "Vừa khung nhìn",
       isolate: "Isolate",
-      fullGraph: "Toàn bộ graph",
+      fullGraph: "Full graph",
       upstream: "Upstream",
       current: "Đang chọn",
       downstream: "Downstream",
-      trailEmpty: "Chưa có link",
+      trailEmpty: "Chưa có liên kết",
       trailMore: (count) => `+${count} nữa`,
       relationMap: "Relation map",
-      nodeDetails: "Chi tiết node",
-      edgeDetails: "Chi tiết edge",
+      nodeDetails: "Node details",
+      edgeDetails: "Edge details",
       inspector: "Inspector",
       selectedNode: "Node đang chọn",
       selectedEdge: "Edge đang chọn",
       noSelection: "Chọn một node hoặc edge để xem chi tiết.",
-      nodeCount: "Node",
-      edgeCount: "Edge",
-      groupCount: "Group",
+      nodeCount: "Nodes",
+      edgeCount: "Edges",
+      groupCount: "Groups",
       hiddenCount: "Đang ẩn",
+      tags: "Chủ đề của quy trình",
+      details: "Thông tin quy trình",
+      scratch: "Scratch",
+      reviewNote: "Review note",
+      temporaryAnnotation: "Ghi chú tạm trong phiên Studio này.",
+      nodeLabels: {
+        hub: "Hub",
+        step: "Step",
+        detail: "Detail",
+        input: "Input",
+        default: "Default",
+        output: "Output",
+        group: "Group",
+        service: "Service",
+        gateway: "Gateway",
+        database: "Database",
+        queue: "Queue",
+        topic: "Topic",
+        cache: "Cache",
+        worker: "Worker",
+        external: "External",
+        decision: "Decision",
+        risk: "Risk",
+        note: "Note",
+        system: "System",
+        source: "Source",
+        process: "Process",
+        agent: "Agent",
+        review: "Review",
+        storage: "Storage",
+        event: "Event"
+      },
+      familyLabels: {
+        overview: "Overview",
+        interaction: "Interaction",
+        grouping: "Subflows & Grouping",
+        layout: "Layout",
+        styling: "Styling",
+        whiteboard: "Whiteboard",
+        architecture: "Software Architecture"
+      },
       collapseGroup: "Thu gọn group",
-      expandGroup: "Mở group",
-      boardSandbox: "Sandbox theo phiên: chỉnh sửa có thể undo hoặc reset và không đổi source diagram."
+      expandGroup: "Mở rộng group",
+      boardSandbox: "Các chỉnh sửa chỉ tồn tại trong session này. Có thể undo hoặc reset bất cứ lúc nào; source diagram không bị thay đổi."
     },
     aiSetup: {
       ...englishStudioCopy.aiSetup,
       addNote: "Thêm note",
-      setupLibrary: "Thư viện setup",
-      agentSetupNotes: "Ghi chú setup agent",
-      agentRuntimes: "Agent runtime",
-      selectedNote: "Note AI setup đang chọn",
+      setupLibrary: "Setup notes",
+      agentSetupNotes: "AI setup notes",
+      agentRuntimes: "AI runtimes",
+      selectedNote: "Note đang chọn",
       updated: "Cập nhật",
-      setupNoteTags: "Tag setup note",
-      commandRunbook: "Runbook lệnh",
-      commandRunbookDetail: "Các lệnh cần kiểm chứng trước khi dùng trên máy mới.",
-      setupCommands: "Lệnh setup",
-      referenceLinks: "Link tham khảo",
+      setupNoteTags: "Chủ đề của ghi chú",
+      commandRunbook: "Command runbook",
+      commandRunbookDetail: "Luôn đối chiếu tài liệu mới nhất trước khi chạy trên máy mới.",
+      setupCommands: "Setup commands",
+      referenceLinks: "Tài liệu tham khảo",
       aiWorkflow: "AI workflow",
-      aiWorkflowDetail: "Container đầu tiên cho research và operating note.",
-      setupChecklist: "Checklist setup",
-      researchQueue: "Hàng đợi nghiên cứu"
+      aiWorkflowDetail: "Một đường đi đơn giản từ tài liệu gốc đến kết quả đã được kiểm chứng và có thể dùng lại.",
+      setupChecklist: "Setup checklist",
+      researchQueue: "Research queue"
     },
     aiSkills: {
       ...englishStudioCopy.aiSkills,
-      emptyTitle: "Thư viện skill đang trống",
-      emptyDescription: "Thêm markdown skill vào Studio data trước khi mở menu này.",
-      copyMarkdown: "Copy markdown",
-      copied: "Đã copy",
-      copy: "Copy",
-      skillLibrary: "Thư viện skill",
-      skillLibraryDetail: "Prompt markdown có thể copy vào một phiên agent.",
-      categoriesLabel: "Nhóm skill",
-      skillCountLabel: (count) => `${count} skill`,
-      selectedSkill: "Markdown skill đang chọn",
-      skillTags: "Tag skill",
+      emptyTitle: "Chưa có AI Skill nào",
+      emptyDescription: "Skill đã hoàn thiện sẽ xuất hiện ở đây.",
+      copyMarkdown: "Sao chép Markdown",
+      copied: "Đã sao chép",
+      copy: "Sao chép",
+      skillLibrary: "Skill Library",
+      skillLibraryDetail: "Các skill có thể copy thẳng vào một phiên làm việc với AI.",
+      categoriesLabel: "Nhóm công việc",
+      skillCountLabel: (count) => `${count} skills`,
+      selectedSkill: "Skill đang chọn",
+      skillTags: "Chủ đề",
       useThisWhen: "Dùng khi",
-      copyBehavior: "Cách copy",
-      copyBehaviorDetail: "Nút này copy nguyên khối markdown, gồm heading, process, output format và guardrail.",
-      operatingRule: "Quy tắc vận hành",
-      operatingRuleDetail: "Giữ skill đủ cụ thể để dùng được, nhưng đủ ngắn để paste vào Codex, Claude, Gemini hoặc agent khác."
+      copyBehavior: "Nội dung được sao chép",
+      copyBehaviorDetail: "Nút này copy toàn bộ Markdown, gồm workflow, expected output và guardrails.",
+      operatingRule: "Cách dùng",
+      operatingRuleDetail: "Hãy xem đây là điểm bắt đầu. Vẫn cần nêu rõ phạm vi, cung cấp đúng tài liệu gốc và tự chịu trách nhiệm cho quyết định cuối cùng."
     },
     checklists: {
       ...englishStudioCopy.checklists,
-      emptyTitle: "Thư viện checklist đang trống",
-      emptyDescription: "Thêm workflow checklist vào Studio data trước khi mở menu này.",
+      emptyTitle: "Chưa có checklist nào",
+      emptyDescription: "Checklist đã hoàn thiện sẽ xuất hiện ở đây.",
       copyChecklist: "Copy checklist",
-      copied: "Đã copy",
-      copy: "Copy",
-      menu: "Menu checklist",
-      menuDetail: "Danh sách vận hành từ nhận ticket đến rollout.",
-      workflowListLabel: "Workflow checklist",
+      copied: "Đã sao chép",
+      copy: "Sao chép",
+      menu: "Checklist Library",
+      menuDetail: "Các checklist từ lúc nhận task đến release và rollout.",
+      workflowListLabel: "Workflow checklists",
       selectedChecklist: "Checklist đang chọn",
-      checklistTags: "Tag checklist",
+      checklistTags: "Chủ đề",
       sections: "phần",
       steps: "bước",
       whenToUse: "Khi dùng",
       structure: "Cấu trúc",
-      structureDetail: (sections, steps) => `${sections} phần, ${steps} bước con, có thể copy dạng markdown.`,
-      markdownCopy: "Markdown copy",
-      markdownUseWhen: "Dùng khi"
+      structureDetail: (sections, steps) => `${sections} phần, ${steps} bước chi tiết, có thể sao chép dưới dạng Markdown.`,
+      markdownCopy: "Bản Markdown",
+      markdownUseWhen: "Dùng khi",
+      detailsLabel: "Chi tiết checklist"
     },
     preferences: {
       ...englishStudioCopy.preferences,
       title: "Tùy chỉnh",
-      description: "Theme, font và layout cho Studio workspace.",
-      palette: "CV palette",
-      themeMode: "Chế độ theme",
+      description: "Chọn giao diện, phông chữ và cách trình bày cho Studio.",
+      palette: "Giao diện",
+      themeMode: "Chế độ màu",
       resolvedNow: "Đang áp dụng",
-      font: "Font",
-      pageLayout: "Layout trang",
-      pageLayoutHelp: "Centered giúp đọc bình tĩnh hơn. Full width phù hợp bề mặt thao tác rộng.",
-      navbarBehavior: "Navbar",
-      navbarHelp: "Sticky giữ control luôn thấy được. Scroll cho toàn bộ workspace cuộn cùng nhau.",
-      sidebarStyle: "Kiểu sidebar",
-      sidebarStyleHelp: "Chọn density phù hợp với việc setup hiện tại.",
+      font: "Phông chữ",
+      pageLayout: "Bề rộng nội dung",
+      pageLayoutHelp: "Căn giữa dễ đọc hơn. Toàn chiều rộng cho sơ đồ và khu làm việc nhiều chỗ hơn.",
+      navbarBehavior: "Thanh công cụ",
+      navbarHelp: "Cố định để luôn thấy các nút điều khiển. Cuộn để thanh này đi cùng nội dung.",
+      sidebarStyle: "Kiểu thanh bên",
+      sidebarStyleHelp: "Chọn cách thanh điều hướng nằm cạnh khu làm việc.",
       collapseMode: "Cách thu gọn",
-      collapseModeHelp: "Icon giữ rail còn thấy được. Offcanvas ẩn hẳn trên desktop.",
-      restoreDefaults: "Khôi phục layout mặc định",
+      collapseModeHelp: "Biểu tượng giữ lại một dải điều hướng nhỏ. Ẩn hoàn toàn sẽ cất thanh bên trên máy tính.",
+      restoreDefaults: "Khôi phục cách trình bày mặc định",
       themeOptions: { light: "Sáng", system: "Hệ thống", dark: "Tối" },
-      contentLayoutOptions: { centered: "Căn giữa", "full-width": "Full width" },
-      navbarStyleOptions: { sticky: "Sticky", scroll: "Scroll" },
-      sidebarVariantOptions: { inset: "Inset", sidebar: "Sidebar", floating: "Floating" },
-      sidebarCollapsibleOptions: { icon: "Icon", offcanvas: "Offcanvas" }
+      contentLayoutOptions: { centered: "Căn giữa", "full-width": "Toàn chiều rộng" },
+      navbarStyleOptions: { sticky: "Cố định", scroll: "Cuộn theo trang" },
+      sidebarVariantOptions: { inset: "Liền khối", sidebar: "Thanh bên", floating: "Tách nền" },
+      sidebarCollapsibleOptions: { icon: "Thu còn biểu tượng", offcanvas: "Ẩn hoàn toàn" }
     }
   },
   zh: createCompactStudioCopy({
@@ -2422,6 +2523,33 @@ const aiWorkflowSteps = [
     state: "next"
   }
 ];
+
+function getAiWorkflowSteps(locale: string) {
+  if (locale !== "vi") return aiWorkflowSteps;
+
+  return [
+    {
+      title: "Thu thập nguồn",
+      detail: "Đưa dữ kiện, tài liệu gốc, log và ghi chú vào NotebookLM hoặc một dự án riêng trước khi nhờ AI đưa ra nhận định.",
+      state: "ready"
+    },
+    {
+      title: "Làm rõ bài toán",
+      detail: "Dùng GPT để tách mục tiêu, giả định, giới hạn, quyết định cần đưa ra và việc tiếp theo.",
+      state: "active"
+    },
+    {
+      title: "Phản biện",
+      detail: "Dùng Claude để soi giả định yếu, rủi ro kiến trúc, trường hợp khó và độ rõ của cách trình bày.",
+      state: "required"
+    },
+    {
+      title: "Thực hiện và lưu lại",
+      detail: "Dùng Codex hoặc Antigravity cho phần việc có ranh giới rõ, rồi lưu câu lệnh, kết quả, bằng chứng kiểm tra và bài học.",
+      state: "next"
+    }
+  ];
+}
 
 const aiRuntimeTargets = ["NotebookLM", "GPT", "Claude", "Codex", "Antigravity"];
 
@@ -3578,18 +3706,21 @@ function AiAgentSetupPage({
   copy: StudioUiCopy;
   profileActions: StudioProfileMenuItem[];
 }) {
-  const setupFolder = studioFolders.find((folder) => folder.id === "machine-bootstrap");
+  const localizedFolders = useMemo(() => getLocalizedStudioFolders(locale), [locale]);
+  const localizedNotes = useMemo(() => getLocalizedStudioNotes(locale), [locale]);
+  const localizedWorkflowSteps = useMemo(() => getAiWorkflowSteps(locale), [locale]);
+  const setupFolder = localizedFolders.find((folder) => folder.id === "machine-bootstrap");
   const setupGroups = setupFolder?.groups ?? [];
   const setupNoteIds = new Set(setupGroups.flatMap((group) => group.noteIds));
-  const setupNotes = studioNotes.filter((note) => setupNoteIds.has(note.id));
+  const setupNotes = localizedNotes.filter((note) => setupNoteIds.has(note.id));
   const initialNoteId = setupNotes.some((note) => note.id === defaultStudioNoteId)
     ? defaultStudioNoteId
     : setupNotes[0]?.id ?? defaultStudioNoteId;
   const [selectedNoteId, setSelectedNoteId] = useState(initialNoteId);
-  const selectedNote = setupNotes.find((note) => note.id === selectedNoteId) ?? setupNotes[0] ?? studioNotes[0];
-  const workflowFolder = studioFolders.find((folder) => folder.id === "ai-learning");
+  const selectedNote = setupNotes.find((note) => note.id === selectedNoteId) ?? setupNotes[0] ?? localizedNotes[0];
+  const workflowFolder = localizedFolders.find((folder) => folder.id === "ai-learning");
   const workflowNoteIds = new Set(workflowFolder?.groups.flatMap((group) => group.noteIds) ?? []);
-  const workflowNotes = studioNotes.filter((note) => workflowNoteIds.has(note.id));
+  const workflowNotes = localizedNotes.filter((note) => workflowNoteIds.has(note.id));
 
   return (
     <section className="route-page ai-setup-route">
@@ -3615,10 +3746,6 @@ function AiAgentSetupPage({
               </a>
             );
           })}
-          <button type="button" className="outline-button">
-            <LuPlusCircle aria-hidden="true" />
-            {copy.aiSetup.addNote}
-          </button>
         </div>
       </RouteHeading>
 
@@ -3644,7 +3771,7 @@ function AiAgentSetupPage({
                 <p>{group.label}</p>
                 <div>
                   {group.noteIds.map((noteId) => {
-                    const note = studioNotes.find((item) => item.id === noteId);
+                    const note = localizedNotes.find((item) => item.id === noteId);
                     if (!note) return null;
 
                     return (
@@ -3668,7 +3795,7 @@ function AiAgentSetupPage({
           </div>
         </aside>
 
-        <article className="ai-setup-reader" aria-label={copy.aiSetup.selectedNote}>
+        <article id={selectedNote.id} className="ai-setup-reader" aria-label={copy.aiSetup.selectedNote}>
           <div className="ai-reader-head">
             <div>
               <span className={`ai-status-pill status-${selectedNote.status}`}>{statusText(selectedNote.status, copy)}</span>
@@ -3736,7 +3863,7 @@ function AiAgentSetupPage({
           </div>
 
           <div className="ai-workflow-steps">
-            {aiWorkflowSteps.map((step, index) => (
+            {localizedWorkflowSteps.map((step, index) => (
               <article key={step.title} className={`ai-workflow-step state-${step.state}`}>
                 <span>{index + 1}</span>
                 <div>
@@ -4100,7 +4227,7 @@ function DeliveryChecklistsPage({ route, locale, copy }: { route: StudioRoute; l
           </div>
         </article>
 
-        <aside className="checklist-side-pane" aria-label="Checklist details">
+        <aside className="checklist-side-pane" aria-label={copy.checklists.detailsLabel}>
           <section>
             <h3>{copy.checklists.whenToUse}</h3>
             <p>{selectedChecklist.whenToUse}</p>
@@ -4276,8 +4403,8 @@ const reactFlowExampleFamilyLabels: Record<string, string> = {
   architecture: "Software Architecture"
 };
 
-function getReactFlowFamilyLabel(family: string) {
-  return reactFlowExampleFamilyLabels[family] ?? family;
+function getReactFlowFamilyLabel(family: string, copy: StudioUiCopy["flows"]) {
+  return copy.familyLabels[family] ?? reactFlowExampleFamilyLabels[family] ?? family;
 }
 
 function formatStudioFlowLabel(value: string) {
@@ -4309,10 +4436,10 @@ function renderStudioFlowNodeIcon(kind: StudioFlowCanvasNodeKind, badge?: string
 function StudioFlowCanvasNodeCard({ data, selected }: NodeProps<StudioFlowCanvasNode>) {
   const canConnect = data.kind !== "group";
   const detail = data.collapsed && data.hiddenChildCount
-    ? `${data.detail} ${data.hiddenChildCount} hidden.`
+    ? `${data.detail} ${data.hiddenChildCount} ${data.hiddenLabel ?? "hidden"}.`
     : data.detail;
-  const kindLabel = formatStudioFlowLabel(data.kind);
-  const toneLabel = formatStudioFlowLabel(data.tone);
+  const kindLabel = data.kindLabel ?? formatStudioFlowLabel(data.kind);
+  const toneLabel = data.toneLabel ?? formatStudioFlowLabel(data.tone);
 
   return (
     <div className={`flow-react-node flow-react-node--${data.kind} tone-${data.tone}${data.active ? " is-active" : ""}${data.compact ? " is-compact" : ""}${data.collapsed ? " is-collapsed" : ""}${data.scratch ? " is-scratch" : ""}${data.dimmed ? " is-dimmed" : ""}${selected ? " is-selected" : ""}`}>
@@ -4329,8 +4456,8 @@ function StudioFlowCanvasNodeCard({ data, selected }: NodeProps<StudioFlowCanvas
       <small>{detail}</small>
       <div className="flow-react-node-footer">
         <span>{toneLabel}</span>
-        {data.scratch && <em>Scratch</em>}
-        {data.hiddenChildCount ? <em>{data.hiddenChildCount} hidden</em> : null}
+        {data.scratch && <em>{data.scratchLabel ?? "Scratch"}</em>}
+        {data.hiddenChildCount ? <em>{data.hiddenChildCount} {data.hiddenLabel ?? "hidden"}</em> : null}
       </div>
       {canConnect && <Handle type="source" position={Position.Right} />}
       {canConnect && <Handle className="flow-react-handle-bottom" type="source" position={Position.Bottom} />}
@@ -4338,12 +4465,12 @@ function StudioFlowCanvasNodeCard({ data, selected }: NodeProps<StudioFlowCanvas
   );
 }
 
-function buildStudioFlowCanvas(flow: StudioFlow, viewId?: string): {
+function buildStudioFlowCanvas(flow: StudioFlow, copy: StudioUiCopy["flows"], viewId?: string): {
   nodes: StudioFlowCanvasNode[];
   edges: Edge[];
 } {
   if (flow.architectureDemo) {
-    return buildArchitectureDemoCanvas(flow, viewId);
+    return buildArchitectureDemoCanvas(flow, copy, viewId);
   }
 
   const nodes = flow.steps.map<StudioFlowCanvasNode>((step, index) => {
@@ -4360,7 +4487,11 @@ function buildStudioFlowCanvas(flow: StudioFlow, viewId?: string): {
         title: step.title,
         detail: step.output,
         badge: String(index + 1).padStart(2, "0"),
-        tone
+        tone,
+        kindLabel: copy.nodeLabels["step"],
+        toneLabel: copy.nodeLabels[tone],
+        scratchLabel: copy.scratch,
+        hiddenLabel: copy.hiddenCount.toLocaleLowerCase()
       }
     };
   });
@@ -4371,10 +4502,14 @@ function buildStudioFlowCanvas(flow: StudioFlow, viewId?: string): {
     position: { x: flow.steps.length * 270 + 16, y: 90 },
     data: {
       kind: "detail",
-      title: "Outcome",
+      title: copy.chartOutcome,
       detail: flow.outcome,
       badge: "goal",
-      tone: "output"
+      tone: "output",
+      kindLabel: copy.nodeLabels["detail"],
+      toneLabel: copy.nodeLabels["output"],
+      scratchLabel: copy.scratch,
+      hiddenLabel: copy.hiddenCount.toLocaleLowerCase()
     }
   };
 
@@ -4417,7 +4552,7 @@ function getStudioFlowEdgeMarker(marker: StudioFlowArchitectureEdgeSpec["marker"
   return undefined;
 }
 
-function buildArchitectureDemoCanvas(flow: StudioFlow, viewId?: string): {
+function buildArchitectureDemoCanvas(flow: StudioFlow, copy: StudioUiCopy["flows"], viewId?: string): {
   nodes: StudioFlowCanvasNode[];
   edges: Edge[];
 } {
@@ -4441,6 +4576,10 @@ function buildArchitectureDemoCanvas(flow: StudioFlow, viewId?: string): {
       detail: node.detail,
       badge: node.badge,
       tone: node.tone,
+      kindLabel: copy.nodeLabels[node.kind],
+      toneLabel: copy.nodeLabels[node.tone],
+      scratchLabel: copy.scratch,
+      hiddenLabel: copy.hiddenCount.toLocaleLowerCase(),
       active: node.kind !== "group",
       compact: node.compact
     }
@@ -4656,7 +4795,7 @@ function createScratchNodeId(prefix: string) {
   return `${prefix}-${Date.now().toString(36)}-${scratchNodeSequence.toString(36)}-${uniquePart}`;
 }
 
-function createScratchNoteNode(anchorNode?: StudioFlowCanvasNode): StudioFlowCanvasNode {
+function createScratchNoteNode(copy: StudioUiCopy["flows"], anchorNode?: StudioFlowCanvasNode): StudioFlowCanvasNode {
   const position = anchorNode
     ? { x: anchorNode.position.x + 280, y: anchorNode.position.y + 24 }
     : { x: 40, y: 40 };
@@ -4666,10 +4805,14 @@ function createScratchNoteNode(anchorNode?: StudioFlowCanvasNode): StudioFlowCan
     position,
     data: {
       kind: "note",
-      title: "Review note",
-      detail: "Temporary annotation for this Studio session.",
+      title: copy.reviewNote,
+      detail: copy.temporaryAnnotation,
       badge: "note",
       tone: "review",
+      kindLabel: copy.nodeLabels["note"],
+      toneLabel: copy.nodeLabels["review"],
+      scratchLabel: copy.scratch,
+      hiddenLabel: copy.hiddenCount.toLocaleLowerCase(),
       active: true,
       scratch: true
     }
@@ -4850,10 +4993,10 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
   const familyOptions = useMemo(() => {
     const families = new Map<string, string>();
     demoViews.forEach((view) => {
-      if (!families.has(view.family)) families.set(view.family, getReactFlowFamilyLabel(view.family));
+      if (!families.has(view.family)) families.set(view.family, getReactFlowFamilyLabel(view.family, copy.flows));
     });
     return Array.from(families, ([value, label]) => ({ value, label }));
-  }, [demoViews]);
+  }, [copy.flows, demoViews]);
   const selectedFamilyViews = useMemo(
     () => demoViews.filter((view) => view.family === selectedFamily),
     [demoViews, selectedFamily]
@@ -4861,7 +5004,10 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
   const selectedView = demoViews.find((view) => view.id === selectedViewId)
     ?? selectedFamilyViews[0]
     ?? initialDemoView;
-  const sourceCanvas = useMemo(() => buildStudioFlowCanvas(flow, selectedView?.id), [flow, selectedView?.id]);
+  const sourceCanvas = useMemo(
+    () => buildStudioFlowCanvas(flow, copy.flows, selectedView?.id),
+    [copy.flows, flow, selectedView?.id]
+  );
   const [canvasNodes, setCanvasNodes] = useState<StudioFlowCanvasNode[]>(() => cloneStudioFlowNodes(sourceCanvas.nodes));
   const [canvasEdges, setCanvasEdges] = useState<Edge[]>(() => cloneStudioFlowEdges(sourceCanvas.edges));
   const canvasNodesRef = useRef(canvasNodes);
@@ -4967,7 +5113,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
   }, [layoutMode]);
 
   const resetCanvasToSource = useCallback((viewId?: string) => {
-    const nextCanvas = buildStudioFlowCanvas(flow, viewId);
+    const nextCanvas = buildStudioFlowCanvas(flow, copy.flows, viewId);
     setCanvasNodes(cloneStudioFlowNodes(nextCanvas.nodes));
     setCanvasEdges(cloneStudioFlowEdges(nextCanvas.edges));
     setHiddenGroupIds([]);
@@ -4981,7 +5127,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
     setPendingLayoutMode("source");
     setHelperLines({ x: null, y: null });
     scheduleFitBoard();
-  }, [flow, scheduleFitBoard]);
+  }, [copy.flows, flow, scheduleFitBoard]);
 
   useEffect(() => {
     if (!isBoardFullscreen) return undefined;
@@ -5203,7 +5349,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
 
   const handleAddNote = () => {
     captureHistory();
-    const noteNode = createScratchNoteNode(selectedNode ?? undefined);
+    const noteNode = createScratchNoteNode(copy.flows, selectedNode ?? undefined);
     setCanvasNodes((current) => [
       ...current.map((node) => ({ ...node, selected: false })),
       noteNode
@@ -5298,7 +5444,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
 
       <div className={`flow-board-toolbar${demo && selectedView ? " has-selectors" : ""}`} aria-label={copy.flows.boardTools}>
         {demo && selectedView && (
-          <div className="flow-example-toolbar" aria-label="React Flow example selector">
+          <div className="flow-example-toolbar" aria-label={copy.flows.exampleSelectorLabel}>
             <label>
               <span>{copy.flows.exampleFamily}</span>
               <select
@@ -5691,7 +5837,10 @@ function StudioFlowMenuPage({
   copy: StudioUiCopy;
   onActivate: (routeId: StudioRouteId, source?: StudioRouteActivationSource) => void;
 }) {
-  const localizedFlows = useMemo(() => getLocalizedStudioFlows(locale), [locale]);
+  const localizedFlows = useMemo(
+    () => getLocalizedStudioDemoFlows(getLocalizedStudioFlows(locale), locale),
+    [locale]
+  );
   const localizedGroups = useMemo(() => getLocalizedStudioFlowGroups(locale), [locale]);
   const [copiedFlowId, setCopiedFlowId] = useState<string | null>(null);
   const selectedFlowId = flowIdFromRoute(route.id) ?? localizedFlows[0]?.id ?? "";
@@ -5747,6 +5896,7 @@ function StudioFlowMenuPage({
 
   return (
     <section className="route-page studio-flow-route">
+      {selectedFlow.architectureDemo && <h1 className="sr-only">{selectedFlow.title}</h1>}
       {!selectedFlow.architectureDemo && (
         <>
           <RouteHeading route={route} copy={copy}>
@@ -5831,7 +5981,7 @@ function StudioFlowMenuPage({
                 </a>
               </div>
 
-              <div className="ai-tag-list" aria-label="Flow tags">
+              <div className="ai-tag-list" aria-label={copy.flows.tags}>
                 {selectedFlow.tags.map((tag) => (
                   <span key={tag}>{tag}</span>
                 ))}
@@ -5839,7 +5989,7 @@ function StudioFlowMenuPage({
             </>
           )}
 
-          <StudioFlowChart key={selectedFlow.id} flow={selectedFlow} copy={copy} />
+          <StudioFlowChart key={`${locale}:${selectedFlow.id}`} flow={selectedFlow} copy={copy} />
 
           {!selectedFlow.architectureDemo && (
             <ol className="flow-step-map" aria-label={`${copy.flows.evidence} / ${copy.flows.output}`}>
@@ -5867,7 +6017,7 @@ function StudioFlowMenuPage({
         </article>
 
         {!selectedFlow.architectureDemo && (
-          <aside className="flow-side-pane" aria-label="Flow details">
+          <aside className="flow-side-pane" aria-label={copy.flows.details}>
             <section>
               <h3>{copy.flows.useWhen}</h3>
               <p>{selectedFlow.useWhen}</p>

@@ -266,9 +266,9 @@
       "heading": "Ứng dụng"
     },
     "studio": {
-      "eyebrow": "Góc học tập",
+      "eyebrow": "Bàn làm việc kỹ thuật",
       "title": "Studio",
-      "intro": "Một kệ public cho ghi chú học tập, setup máy, AI tooling và những checklist nhỏ để một laptop engineering mới sẵn sàng làm việc."
+      "intro": "Không gian công khai tập hợp ghi chú, checklists và system flows tôi dùng để review architecture, chuẩn bị release, setup công cụ và làm việc với AI có trách nhiệm."
     },
     "gallery": {
       "eyebrow": "Bộ sưu tập",
