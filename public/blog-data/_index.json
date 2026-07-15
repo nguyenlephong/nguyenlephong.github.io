@@ -1286,10 +1286,10 @@
     {
       "slug": "navigating-office-politics",
       "category": "culture",
-      "title": "Navigating Office Politics",
-      "summary": "A calm look at office politics in engineering teams: how to understand incentives, build trust, communicate context, disagree cleanly, and stay principled without becoming naive.",
+      "title": "Office Politics Without Losing Your Principles",
+      "summary": "A practical guide to reading incentives, sharing context, pre-aligning openly, disagreeing with evidence, protecting boundaries, and knowing when a workplace is no longer worth the cost.",
       "date": "2026-05-11",
-      "readingMinutes": 6,
+      "readingMinutes": 7,
       "tags": [
         "Engineering Culture",
         "Office Politics",
@@ -1303,10 +1303,10 @@
     {
       "slug": "service-mesh-do-you-need-it",
       "category": "architecture",
-      "title": "Service Mesh: Do You Need It?",
-      "summary": "A practical explanation of service mesh trade-offs: what it centralizes, when it helps, and why teams should solve real service-to-service pain before adopting another infrastructure layer.",
+      "title": "Do You Need a Service Mesh? Let Production Evidence Decide",
+      "summary": "A practical decision guide for service mesh adoption: which production signals justify it, where the extra layer can fail, and how to pilot and roll back without betting the whole platform.",
       "date": "2026-05-10",
-      "readingMinutes": 6,
+      "readingMinutes": 7,
       "tags": [
         "Software Architecture",
         "Service Mesh",
