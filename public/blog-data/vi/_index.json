@@ -436,8 +436,8 @@
     {
       "slug": "the-quiet-skill-of-asking-for-help-early",
       "category": "culture",
-      "title": "Kỹ năng yên lặng của việc hỏi giúp sớm",
-      "summary": "Một ghi chú bình tĩnh về vì sao hỏi giúp sớm không phải yếu, mà là một thói quen nhỏ giữ work trung thực và team khỏe mạnh.",
+      "title": "Biết hỏi giúp khi chuyện còn nhỏ",
+      "summary": "Hỏi giúp từ sớm không làm ta yếu đi; đó là cách giữ một chỗ chưa chắc chắn khỏi âm thầm kéo cả công việc lệch hướng.",
       "date": "2026-06-30",
       "readingMinutes": 6,
       "tags": [
@@ -453,8 +453,8 @@
     {
       "slug": "making-interfaces-honest-about-system-limits",
       "category": "architecture",
-      "title": "Làm interface thành thật về giới hạn của system",
-      "summary": "Một reflection thực tế về cách thiết kế interface cho thấy giới hạn thật của system trước khi user và operator phải tự phát hiện qua failure.",
+      "title": "Giao diện cần nói thật về giới hạn của hệ thống",
+      "summary": "Khi hệ thống chậm, thiếu dữ liệu hoặc chưa chắc chắn, giao diện nên nói rõ phần người dùng cần biết trước khi họ tự phát hiện qua lỗi.",
       "date": "2026-06-29",
       "readingMinutes": 6,
       "tags": [
@@ -470,8 +470,8 @@
     {
       "slug": "keeping-meeting-notes-close-to-decisions",
       "category": "ways-of-working",
-      "title": "Giữ meeting notes gần với decision",
-      "summary": "Một ghi chú thực tế về việc giữ meeting notes gần decision để teammate sau này tìm được context, trade-off và follow-through mà không phải replay cuộc họp.",
+      "title": "Để ghi chú cuộc họp ở ngay cạnh quyết định",
+      "summary": "Ghi chú chỉ thật sự có ích khi quyết định, lý do và việc cần làm tiếp theo vẫn tìm thấy nhau sau khi cuộc họp kết thúc.",
       "date": "2026-06-28",
       "readingMinutes": 6,
       "tags": [
@@ -487,8 +487,8 @@
     {
       "slug": "the-relief-of-a-well-named-problem",
       "category": "perspectives",
-      "title": "Sự nhẹ nhõm khi problem được gọi đúng tên",
-      "summary": "Một ghi chú reflection về cách problem được gọi đúng tên làm giảm căng thẳng bằng cách biến cảm giác rải rác thành thứ mọi người có thể cùng xem xét.",
+      "title": "Nhẹ người khi gọi đúng tên vấn đề",
+      "summary": "Một cái tên đủ chính xác có thể gom những bức bối rời rạc thành vấn đề mà mọi người cùng nhìn, cùng bàn và cùng xử lý.",
       "date": "2026-06-27",
       "readingMinutes": 6,
       "tags": [
@@ -504,8 +504,8 @@
     {
       "slug": "asking-ai-to-show-its-working-context",
       "category": "ai",
-      "title": "Yêu cầu AI chỉ ra context nó đang dựa vào",
-      "summary": "Một reflection thực tế về việc yêu cầu AI expose working context để engineer verify evidence, assumption và gap.",
+      "title": "Hỏi AI: câu trả lời này đang dựa vào đâu?",
+      "summary": "Một câu trả lời của AI chỉ đáng tin hơn khi ta thấy được những tệp, nhật ký, kết quả kiểm thử và giả định đang nâng đỡ nó.",
       "date": "2026-06-26",
       "readingMinutes": 6,
       "tags": [
@@ -521,8 +521,8 @@
     {
       "slug": "why-good-teams-make-risk-visible-early",
       "category": "culture",
-      "title": "Vì sao team tốt làm risk visible từ sớm",
-      "summary": "Một ghi chú bình tĩnh về lý do team lành mạnh surface risk sớm: không phải để tạo sợ hãi, mà để công việc có thêm chỗ adjust.",
+      "title": "Đội tốt không để rủi ro nằm im trong bóng tối",
+      "summary": "Đưa rủi ro ra ánh sáng từ sớm không phải để làm mọi người lo, mà để cả đội còn thời gian xoay xở.",
       "date": "2026-06-25",
       "readingMinutes": 6,
       "tags": [
@@ -538,8 +538,8 @@
     {
       "slug": "designing-for-the-change-you-can-actually-see",
       "category": "architecture",
-      "title": "Thiết kế cho thay đổi mình thật sự nhìn thấy",
-      "summary": "Một reflection thực tế về cách thiết kế phần mềm quanh những pattern thay đổi thật sự visible, thay vì flexibility trừu tượng có thể không bao giờ tới.",
+      "title": "Thiết kế theo những thay đổi đã hiện hình",
+      "summary": "Thiết kế phần mềm nên ưu tiên những kiểu thay đổi đã lặp lại, thay vì trả trước quá nhiều cho một tương lai còn mơ hồ.",
       "date": "2026-06-24",
       "readingMinutes": 6,
       "tags": [
@@ -555,8 +555,8 @@
     {
       "slug": "writing-next-steps-that-actually-help",
       "category": "ways-of-working",
-      "title": "Viết next step thật sự giúp người khác đi tiếp",
-      "summary": "Một ghi chú thực tế về cách viết next step đủ cụ thể để công việc đi tiếp: owner, action, evidence và điểm dừng hữu ích.",
+      "title": "Viết bước tiếp theo để công việc thật sự đi tiếp",
+      "summary": "Một bước tiếp theo hữu ích phải đủ rõ về người phụ trách, hành động, bằng chứng cần mang về và điểm dừng, để công việc không treo sau cuộc họp.",
       "date": "2026-06-23",
       "readingMinutes": 6,
       "tags": [
@@ -572,8 +572,8 @@
     {
       "slug": "a-calm-way-to-carry-uncertainty",
       "category": "perspectives",
-      "title": "Một cách bình tĩnh để mang theo uncertainty",
-      "summary": "Một ghi chú reflection về cách mang theo uncertainty mà không biến nó thành né tránh: gọi tên, giới hạn, assign và tiếp tục đi với sự cẩn thận.",
+      "title": "Bình tĩnh đi cùng điều chưa chắc chắn",
+      "summary": "Chưa biết đủ không đồng nghĩa với đứng yên. Ta có thể gọi đúng tên phần chưa chắc, khoanh phạm vi, giao người kiểm tra và tiếp tục tiến lên có trách nhiệm.",
       "date": "2026-06-22",
       "readingMinutes": 6,
       "tags": [
@@ -589,8 +589,8 @@
     {
       "slug": "letting-ai-draft-while-humans-keep-the-map",
       "category": "ai",
-      "title": "Để AI draft, nhưng con người giữ bản đồ",
-      "summary": "Một reflection thực tế về cách dùng AI để draft nhanh hơn trong khi con người giữ bản đồ system: constraint, source, ownership và đường verify.",
+      "title": "Để AI phác thảo, con người giữ bản đồ",
+      "summary": "AI có thể tạo bản nháp rất nhanh. Con người vẫn phải giữ bản đồ hệ thống: nguồn dữ liệu, ràng buộc, quyền sở hữu và con đường kiểm chứng.",
       "date": "2026-06-21",
       "readingMinutes": 6,
       "tags": [
@@ -606,8 +606,8 @@
     {
       "slug": "the-culture-hidden-in-small-reviews",
       "category": "culture",
-      "title": "Culture ẩn trong những review nhỏ",
-      "summary": "Một ghi chú bình tĩnh về cách engineering culture hiện ra trong những review nhỏ: wording, patience và care mà team mang vào feedback bình thường.",
+      "title": "Một lượt review nhỏ nói gì về văn hóa",
+      "summary": "Văn hóa kỹ thuật không chỉ nằm trong những tuyên bố lớn. Nó hiện ra qua cách một đội ngũ góp ý, giải thích và đối xử với nhau trong từng lần góp ý mã nguồn rất bình thường.",
       "date": "2026-06-20",
       "readingMinutes": 6,
       "tags": [
@@ -623,8 +623,8 @@
     {
       "slug": "when-boundaries-need-examples-more-than-names",
       "category": "architecture",
-      "title": "Khi boundary cần example hơn là tên gọi",
-      "summary": "Một reflection thực tế về lý do software boundary rõ hơn khi team neo chúng vào example, responsibility và behavior thay vì chỉ đặt tên layer.",
+      "title": "Ranh giới phần mềm cần ví dụ hơn là tên gọi",
+      "summary": "Tên một lớp chỉ cho ta cái nhãn. Ranh giới kiến trúc chỉ thật sự rõ khi đội ngũ có ví dụ cụ thể về trách nhiệm, hành vi và những gì được phép đi qua.",
       "date": "2026-06-19",
       "readingMinutes": 6,
       "tags": [
@@ -640,8 +640,8 @@
     {
       "slug": "making-handoffs-easier-to-receive",
       "category": "ways-of-working",
-      "title": "Làm handoff dễ nhận hơn",
-      "summary": "Một ghi chú thực tế về cách làm handoff dễ nhận hơn bằng cách chuyển theo context, decision, risk và next action hữu ích, không chỉ chuyển file.",
+      "title": "Bàn giao sao cho người nhận có thể bắt đầu",
+      "summary": "Một lần bàn giao tốt không chỉ gửi đủ tệp và đường dẫn; nó mang theo trạng thái, quyết định, rủi ro và bước kế tiếp để người nhận bớt phải dò đường.",
       "date": "2026-06-18",
       "readingMinutes": 6,
       "tags": [
@@ -657,8 +657,8 @@
     {
       "slug": "the-quiet-cost-of-staying-vague",
       "category": "perspectives",
-      "title": "Cái giá âm thầm của việc giữ mọi thứ mơ hồ",
-      "summary": "Một ghi chú reflection về cái giá âm thầm của việc giữ mọi thứ mơ hồ: ngôn từ không rõ tạo rework, stress ẩn và những decision không ai inspect được.",
+      "title": "Cái giá lặng lẽ của sự mơ hồ",
+      "summary": "Những lời nghe có vẻ vô hại như “sạch hơn” hay “vững hơn” có thể để lại việc làm lại, áp lực âm thầm và những quyết định không ai kiểm tra được.",
       "date": "2026-06-17",
       "readingMinutes": 6,
       "tags": [
@@ -674,8 +674,8 @@
     {
       "slug": "what-ai-cannot-know-from-the-prompt-alone",
       "category": "ai",
-      "title": "Điều AI không thể biết chỉ từ prompt",
-      "summary": "Một reflection thực tế về lý do prompt là chưa đủ: AI cần source context, runtime evidence, domain constraint và judgment của con người để trở thành trợ giúp engineering hữu ích.",
+      "title": "Những điều AI không thể biết chỉ qua một prompt",
+      "summary": "Prompt chỉ là điểm mở đầu. Muốn AI hỗ trợ kỹ thuật đáng tin cậy, ta còn cần ngữ cảnh từ mã nguồn, bằng chứng vận hành, ràng buộc nghiệp vụ và phán đoán của con người.",
       "date": "2026-06-16",
       "readingMinutes": 6,
       "tags": [
@@ -691,10 +691,10 @@
     {
       "slug": "how-trust-grows-in-ordinary-follow-through",
       "category": "culture",
-      "title": "Trust lớn lên từ những lần follow-through bình thường",
-      "summary": "Một ghi chú bình tĩnh về cách trust trong engineering lớn lên qua follow-through bình thường: lời hứa nhỏ được giữ, update visible, và repair khi thực tế thay đổi.",
+      "title": "Niềm tin lớn lên từ những việc nhỏ được làm tới nơi",
+      "summary": "Trong một nhóm kỹ thuật, niềm tin hiếm khi đến từ lời nói lớn. Nó tích lại qua những cam kết nhỏ được giữ, chậm trễ được báo sớm, quyết định được cập nhật và sai sót được sửa đàng hoàng — để người khác có thể yên tâm xây phần việc của họ lên trên.",
       "date": "2026-06-15",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Engineering Culture",
         "Trust",
@@ -708,8 +708,8 @@
     {
       "slug": "keeping-architecture-decisions-small-enough-to-revisit",
       "category": "architecture",
-      "title": "Giữ architecture decision đủ nhỏ để quay lại",
-      "summary": "Một reflection thực tế về cách giữ architecture decision nhỏ, rõ và có thể quay lại, để team học tiếp mà không biến mọi lựa chọn thành tượng đài vĩnh viễn.",
+      "title": "Giữ quyết định kiến trúc đủ nhỏ để còn sửa được",
+      "summary": "Quyết định kiến trúc nên nói rõ điều đang chốt, điều cố ý để sau, invariant cần bảo vệ và tín hiệu sẽ khiến nhóm xem lại lựa chọn. Phạm vi đủ nhỏ giúp hệ thống tiếp tục học mà không biến lý lẽ của hôm qua thành luật bất di bất dịch.",
       "date": "2026-06-14",
       "readingMinutes": 6,
       "tags": [
@@ -725,10 +725,10 @@
     {
       "slug": "turning-unclear-work-into-shared-notes",
       "category": "ways-of-working",
-      "title": "Biến công việc mơ hồ thành shared notes",
-      "summary": "Một ghi chú thực tế về cách dùng shared notes để biến request mơ hồ thành context, decision, example và next step có thể nhìn thấy.",
+      "title": "Gỡ việc mơ hồ bằng một trang ghi chú chung",
+      "summary": "Một yêu cầu ngắn có thể che nhiều cách hiểu, ngoại lệ và quyết định cũ. Trang ghi chú chung giúp cả nhóm đặt bối cảnh, ví dụ, điều chưa biết, quyết định và bước tiếp theo lên cùng một mặt bàn — đủ nhẹ để dùng, đủ rõ để tránh xây nhầm thứ.",
       "date": "2026-06-13",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Ways of Working",
         "Product Engineering",
@@ -742,10 +742,10 @@
     {
       "slug": "the-value-of-a-slower-first-answer",
       "category": "perspectives",
-      "title": "Giá trị của câu trả lời đầu tiên chậm hơn một chút",
-      "summary": "Một ghi chú reflection về việc làm chậm câu trả lời đầu tiên vừa đủ để hiểu context, giảm rework và phản hồi cẩn thận hơn.",
+      "title": "Câu trả lời đầu tiên chậm hơn một nhịp",
+      "summary": "Chậm lại vài phút không phải là né tránh nếu khoảng dừng ấy được dùng để đọc bối cảnh, tách dữ kiện khỏi phỏng đoán và hẹn một bước tiếp theo rõ ràng. Một phản hồi có căn cứ thường tiết kiệm nhiều vòng làm lại hơn một câu trả lời nhanh nhưng khóa cả nhóm vào cách hiểu sai.",
       "date": "2026-06-12",
-      "readingMinutes": 6,
+      "readingMinutes": 5,
       "tags": [
         "Reflection",
         "Decision Making",
@@ -759,8 +759,8 @@
     {
       "slug": "using-ai-without-outsourcing-judgment",
       "category": "ai",
-      "title": "Dùng AI mà không outsource phán đoán",
-      "summary": "Một reflection thực tế về cách dùng AI như thinking partner, trong khi judgment của con người vẫn neo vào source code, test, log và product context.",
+      "title": "Dùng AI, đừng giao luôn quyền phán đoán",
+      "summary": "AI có thể đọc nhanh, gợi ý rộng và rút ngắn bản nháp đầu tiên. Nhưng kết luận kỹ thuật vẫn phải bám vào source code, test, log, dữ liệu thật và bối cảnh sản phẩm — những thứ người chịu trách nhiệm cần tự kiểm chứng.",
       "date": "2026-06-11",
       "readingMinutes": 6,
       "tags": [
@@ -776,8 +776,8 @@
     {
       "slug": "the-quiet-discipline-of-saying-not-yet",
       "category": "culture",
-      "title": "Kỷ luật thầm lặng của việc nói chưa nên",
-      "summary": "Một ghi chú bình tĩnh về lý do engineering team lành mạnh đôi khi nói chưa nên: để bảo vệ chất lượng, trust và những người sẽ vận hành release sau đó.",
+      "title": "Kỷ luật của một câu “chưa” đúng lúc",
+      "summary": "Một câu “chưa” có căn cứ không chống lại release; nó bảo vệ chất lượng, niềm tin và những người sẽ vận hành phần mềm sau khi phòng họp tan.",
       "date": "2026-06-10",
       "readingMinutes": 6,
       "tags": [
@@ -793,8 +793,8 @@
     {
       "slug": "designing-interfaces-that-outlive-implementations",
       "category": "architecture",
-      "title": "Thiết kế interface sống lâu hơn implementation",
-      "summary": "Một reflection thực tế về cách thiết kế software interface để behavior ổn định trong khi implementation bên dưới vẫn có thể thay đổi.",
+      "title": "Giữ interface ổn định khi implementation thay đổi",
+      "summary": "Một interface bền là lời hứa rõ với caller: giữ hành vi sản phẩm ổn định trong khi storage, provider và implementation bên dưới tiếp tục tiến hóa.",
       "date": "2026-06-09",
       "readingMinutes": 6,
       "tags": [
@@ -810,8 +810,8 @@
     {
       "slug": "the-calm-way-to-handle-scope-changes",
       "category": "ways-of-working",
-      "title": "Cách bình tĩnh để xử lý scope change",
-      "summary": "Một ghi chú thực tế về scope change: cách team bàn về việc mới bằng cách làm trade-off visible, bảo vệ focus và đổi kế hoạch mà không đổ lỗi.",
+      "title": "Bình tĩnh khi phạm vi công việc thay đổi",
+      "summary": "Phạm vi có thể đổi khi thông tin mới xuất hiện; điều quan trọng là làm rõ năng lực còn lại và các đánh đổi để cả nhóm chọn mà không đổ lỗi.",
       "date": "2026-06-08",
       "readingMinutes": 6,
       "tags": [
@@ -827,8 +827,8 @@
     {
       "slug": "why-quiet-consistency-compounds",
       "category": "perspectives",
-      "title": "Vì sao sự đều đặn âm thầm tích lũy",
-      "summary": "Một reflection nhẹ về quiet consistency: vì sao những lần quay lại nhỏ với craft, mối quan hệ, codebase hay thói quen thường chỉ trở nên visible sau một khoảng thời gian.",
+      "title": "Sức nặng của những việc đều đặn, không ồn ào",
+      "summary": "Những lần quay lại nhỏ với một kỹ năng, mối quan hệ, codebase hay thói quen thường tích lũy bằng cách giảm ma sát trước khi tạo ra kết quả dễ thấy.",
       "date": "2026-06-07",
       "readingMinutes": 6,
       "tags": [
@@ -844,8 +844,8 @@
     {
       "slug": "ai-tools-for-reading-a-codebase",
       "category": "ai",
-      "title": "Dùng AI tool để đọc codebase",
-      "summary": "Một hướng dẫn thực tế về việc dùng AI khi đọc codebase: summary giúp ở đâu, dễ đánh lừa ở đâu, và engineer nên kết hợp AI với kiểm chứng trực tiếp từ source như thế nào.",
+      "title": "Dùng AI đọc codebase, nhưng đừng giao luôn việc hiểu",
+      "summary": "AI có thể mở nhanh những cánh cửa đầu tiên trong codebase; hiểu đúng vẫn cần giả thuyết bám vào mã nguồn, kiểm chứng trực tiếp và phán đoán của người đọc.",
       "date": "2026-06-06",
       "readingMinutes": 6,
       "tags": [
@@ -861,8 +861,8 @@
     {
       "slug": "the-reviewer-as-a-future-reader",
       "category": "culture",
-      "title": "Người review như một future reader",
-      "summary": "Một ghi chú về văn hóa code review: khi xem reviewer như người đọc tương lai, pull request thường rõ hơn, tử tế hơn và hữu ích hơn cho người bảo trì sau này.",
+      "title": "Reviewer là người đọc đến sớm",
+      "summary": "Xem reviewer như người đầu tiên đọc thay cho tương lai giúp pull request rõ hơn, câu hỏi bớt gây nhiễu và quyết định dễ bảo trì hơn.",
       "date": "2026-06-05",
       "readingMinutes": 6,
       "tags": [
@@ -878,8 +878,8 @@
     {
       "slug": "refactoring-toward-a-clearer-core",
       "category": "architecture",
-      "title": "Refactor để phần lõi rõ ràng hơn",
-      "summary": "Một reflection thực tế về refactor phần lõi codebase: cách team giảm coupling, bảo vệ behavior và giúp người đến sau hiểu hệ thống bình tĩnh hơn.",
+      "title": "Refactor để phần lõi bớt rối",
+      "summary": "Cách lần theo luật nghiệp vụ, giảm coupling và gom phần quan trọng về một lõi dễ tìm, dễ đọc, khó vô tình đi vòng qua.",
       "date": "2026-06-04",
       "readingMinutes": 6,
       "tags": [
@@ -895,8 +895,8 @@
     {
       "slug": "managing-dependencies-without-blame",
       "category": "ways-of-working",
-      "title": "Quản lý dependency mà không đổ lỗi",
-      "summary": "Một ghi chú thực tế về dependency trong delivery: cách team làm blocker hiện sớm, phối hợp bình tĩnh và không biến coupling bình thường thành đổ lỗi cá nhân.",
+      "title": "Quản lý phụ thuộc mà không tìm người để trách",
+      "summary": "Cách làm các điểm phụ thuộc và blocker lộ diện sớm, phối hợp có nhịp, giữ trách nhiệm rõ mà không biến sự chậm trễ thành lỗi cá nhân.",
       "date": "2026-06-03",
       "readingMinutes": 6,
       "tags": [
@@ -912,8 +912,8 @@
     {
       "slug": "difference-between-confidence-and-evidence",
       "category": "perspectives",
-      "title": "Khác nhau giữa tự tin và bằng chứng",
-      "summary": "Một field note nhẹ về vì sao sự tự tin chỉ thật sự hữu ích khi đi cùng evidence, và cách team giữ conviction mà không đánh mất humility.",
+      "title": "Tự tin không phải là bằng chứng",
+      "summary": "Sự tự tin giúp một quyết định tiến lên; bằng chứng giúp nó đứng vững, có giới hạn và sẵn sàng được sửa khi thực tế lên tiếng.",
       "date": "2026-06-02",
       "readingMinutes": 6,
       "tags": [
@@ -929,8 +929,8 @@
     {
       "slug": "from-prototype-demo-to-production-behavior",
       "category": "ai",
-      "title": "Từ prototype demo đến hành vi production",
-      "summary": "Một ghi chú thực tế về AI product: khoảng cách giữa prototype demo ấn tượng và production behavior mà user có thể tin cậy.",
+      "title": "Từ bản demo chạy được đến sản phẩm đáng tin",
+      "summary": "Khoảng cách giữa một bản demo AI gây ấn tượng và hành vi đủ rõ, có thể kiểm chứng, phục hồi và vận hành an toàn trong production.",
       "date": "2026-06-01",
       "readingMinutes": 7,
       "tags": [
@@ -946,8 +946,8 @@
     {
       "slug": "when-silence-in-a-team-becomes-a-signal",
       "category": "culture",
-      "title": "Khi sự im lặng trong team trở thành tín hiệu",
-      "summary": "Một góc nhìn bình tĩnh về sự im lặng trong team: phòng họp yên, reply thiếu, và participation thấp có thể hé lộ ownership mơ hồ, disagreement không an toàn, mệt mỏi hoặc context bị giấu.",
+      "title": "Khi sự im lặng trong đội là một tín hiệu",
+      "summary": "Im lặng có thể là đồng thuận, cũng có thể là bối rối, mệt mỏi, quyền quyết định mơ hồ hoặc nỗi ngại bất đồng. Đội ngũ khỏe không ép mọi người nói; họ không vội dùng khoảng yên làm bằng chứng đồng ý.",
       "date": "2026-05-31",
       "readingMinutes": 6,
       "tags": [
@@ -963,8 +963,8 @@
     {
       "slug": "architecture-decisions-for-future-teammates",
       "category": "architecture",
-      "title": "Architecture decision cho teammate tương lai",
-      "summary": "Một góc nhìn thực tế về architecture decision như team memory: cách những ghi chú ADR nhỏ giúp teammate tương lai hiểu trade-off, option bị từ chối và thời điểm nên revisit.",
+      "title": "Ghi quyết định kiến trúc cho người đến sau",
+      "summary": "Code chỉ cho thấy hình dạng cuối cùng, không cho biết vì sao nó ra đời. Một ghi chú kiến trúc ngắn giữ lại trade-off, hướng đã bỏ và lúc nên xem lại để người đến sau thay đổi hệ thống an toàn hơn.",
       "date": "2026-05-30",
       "readingMinutes": 6,
       "tags": [
@@ -980,8 +980,8 @@
     {
       "slug": "decision-logs-for-busy-teams",
       "category": "ways-of-working",
-      "title": "Decision log cho những team bận rộn",
-      "summary": "Một góc nhìn thực tế về decision log: cách những bản ghi nhỏ giúp team bận nhớ trade-off, giảm tranh luận lặp lại và giữ delivery aligned mà không thêm process nặng.",
+      "title": "Ghi lại quyết định khi cả đội đều bận",
+      "summary": "Một bản ghi ngắn giúp quyết định không bốc hơi sau cuộc họp: giữ lại lựa chọn, lý do, phương án đã bỏ và lúc cần xem lại, để cả đội bớt tranh luận từ những ký ức khác nhau.",
       "date": "2026-05-29",
       "readingMinutes": 6,
       "tags": [
@@ -997,8 +997,8 @@
     {
       "slug": "the-note-you-return-to-later",
       "category": "perspectives",
-      "title": "Ghi chú mà bạn quay lại sau này",
-      "summary": "Một field note nhẹ về vì sao những ghi chú nhỏ chưa hoàn chỉnh vẫn quan trọng: cách quay lại một ý cũ có thể cho thấy sự trưởng thành, làm rõ decision và khiến việc học thầm lặng hiện ra.",
+      "title": "Một ghi chú để dành cho mình về sau",
+      "summary": "Có những ghi chú chỉ lộ giá trị khi ta quay lại với nhiều bối cảnh hơn. Chúng không cần được giữ như kỷ vật; chỉ cần để lại đủ dấu vết cho việc học có chỗ đáp xuống.",
       "date": "2026-05-28",
       "readingMinutes": 6,
       "tags": [
@@ -1014,8 +1014,8 @@
     {
       "slug": "human-feedback-loops-for-ai-work",
       "category": "ai",
-      "title": "Human feedback loop cho công việc với AI",
-      "summary": "Một góc nhìn grounded về thói quen làm việc với AI: vì sao workflow hữu ích cần human feedback loop, evidence check, test result và team memory thay vì chỉ nhận một lần output từ prompt.",
+      "title": "Vòng phản hồi của con người khi làm việc với AI",
+      "summary": "Đầu ra đầu tiên của AI đến rất nhanh; chất lượng nằm ở những gì xảy ra sau đó. Một vòng phản hồi gọn giúp đội ngũ kiểm chứng bằng nguồn và test, lưu bài học rồi làm yêu cầu kế tiếp tốt hơn.",
       "date": "2026-05-27",
       "readingMinutes": 7,
       "tags": [
@@ -1031,8 +1031,8 @@
     {
       "slug": "quiet-skill-of-asking-for-help",
       "category": "culture",
-      "title": "Kỹ năng yên lặng của việc nhờ giúp đỡ",
-      "summary": "Một góc nhìn bình tĩnh về việc nhờ giúp đỡ trong engineering team: cách làm context hiện rõ, giữ dignity, và biến lúc bị kẹt thành shared learning thay vì áp lực âm thầm.",
+      "title": "Biết nhờ giúp đỡ cũng là một kỹ năng",
+      "summary": "Nhờ giúp đỡ không đối lập với tinh thần chịu trách nhiệm. Khi câu hỏi có đủ bối cảnh và người nghe không vội phán xét, một buổi chiều mắc kẹt có thể trở thành hiểu biết chung của cả đội.",
       "date": "2026-05-26",
       "readingMinutes": 6,
       "tags": [
@@ -1048,8 +1048,8 @@
     {
       "slug": "choosing-boundaries-before-choosing-tools",
       "category": "architecture",
-      "title": "Chọn boundary trước khi chọn tool",
-      "summary": "Một góc nhìn thực tế về architecture boundary: vì sao team nên gọi tên ownership, data và pattern thay đổi trước khi chọn framework, service, queue hay database.",
+      "title": "Chọn ranh giới trước, chọn công cụ sau",
+      "summary": "Kiến trúc nên bắt đầu từ quyền sở hữu, dữ liệu và nhịp thay đổi của nghiệp vụ. Khi ranh giới đã rõ, framework, queue, database hay service mới có một bài toán thật để giải.",
       "date": "2026-05-25",
       "readingMinutes": 6,
       "tags": [
@@ -1065,8 +1065,8 @@
     {
       "slug": "roadmap-meets-real-capacity",
       "category": "ways-of-working",
-      "title": "Khi roadmap gặp capacity thật",
-      "summary": "Một góc nhìn thực tế về khoảnh khắc roadmap gặp capacity thật của team: cách làm trade-off hiện rõ, bảo vệ focus và điều chỉnh kế hoạch mà không biến planning thành đổ lỗi.",
+      "title": "Khi roadmap chạm vào sức làm thật của đội",
+      "summary": "Roadmap chỉ thật sự có ích khi đi qua cuộc nói chuyện về sức làm, rủi ro và phần việc vô hình. Một cách điều chỉnh kế hoạch mà không đổ lỗi, giấu nợ hay ép mọi thứ cùng chen vào.",
       "date": "2026-05-24",
       "readingMinutes": 6,
       "tags": [
@@ -1082,8 +1082,8 @@
     {
       "slug": "courage-to-write-the-first-rough-note",
       "category": "perspectives",
-      "title": "Can đảm viết ghi chú nháp đầu tiên",
-      "summary": "Một bài reflection nhẹ về vì sao ghi chú nháp đầu tiên quan trọng: cách một đoạn viết còn lộn xộn làm suy nghĩ hiện ra, giảm áp lực phải nghe hoàn chỉnh, và giúp ý tưởng yên lặng trở nên hữu ích.",
+      "title": "Dám viết dòng nháp đầu tiên",
+      "summary": "Dòng nháp đầu tiên làm lộ những chỗ suy nghĩ còn vụng, nhưng cũng cho ý tưởng một hình hài để sửa, nối và giữ lại. Đôi khi can đảm chỉ là cho một ý còn non được nằm xuống trang giấy.",
       "date": "2026-05-23",
       "readingMinutes": 6,
       "tags": [
@@ -1099,8 +1099,8 @@
     {
       "slug": "cost-of-trusting-a-fluent-ai-answer",
       "category": "ai",
-      "title": "Cái giá của việc tin một câu trả lời AI trôi chảy",
-      "summary": "Một góc nhìn thực tế về câu trả lời AI nghe rất trôi chảy: vì sao ngôn ngữ tự tin dễ bị nhầm là bằng chứng, rủi ro nằm ở đâu, và team có thể giữ AI hữu ích bằng cách kiểm chứng claim qua source, test và context thật.",
+      "title": "Cái giá của một câu trả lời AI nghe quá xuôi tai",
+      "summary": "Câu trả lời AI càng trôi chảy càng dễ bị nhầm với bằng chứng. Bài viết chỉ ra cái giá của sự tin vội và cách kiểm tra theo đúng mức rủi ro bằng nguồn, log, test và hệ thống thật.",
       "date": "2026-05-22",
       "readingMinutes": 7,
       "tags": [
@@ -1116,8 +1116,8 @@
     {
       "slug": "calm-script-for-difficult-feedback",
       "category": "culture",
-      "title": "Một kịch bản bình tĩnh cho feedback khó",
-      "summary": "Một hướng dẫn thực tế cho feedback khó trong engineering team: chuẩn bị dữ kiện, giữ dignity trong phòng, gọi tên behavior rõ ràng và biến cuộc trò chuyện căng thành bước tiếp theo công bằng.",
+      "title": "Một cách nói bình tĩnh khi phải góp ý chuyện khó",
+      "summary": "Một cách chuẩn bị và nói lời góp ý khó mà vẫn thẳng thắn, công bằng: bám vào điều đã xảy ra, nói rõ ảnh hưởng, nghe thêm hoàn cảnh và chốt một thay đổi có thể nhìn thấy.",
       "date": "2026-05-21",
       "readingMinutes": 6,
       "tags": [
@@ -1133,8 +1133,8 @@
     {
       "slug": "observability-as-a-design-choice",
       "category": "architecture",
-      "title": "Observability là một quyết định thiết kế",
-      "summary": "Một bài giải thích thực tế về observability như một quyết định kiến trúc: vì sao team nên thiết kế log, metric, trace, dashboard và alert vào hệ thống trước khi production đặt những câu hỏi khó.",
+      "title": "Observability là một lựa chọn thiết kế",
+      "summary": "Observability không phải lớp trang trí gắn thêm sau khi hệ thống đã chạy. Log, metric, trace, dashboard và alert cần được thiết kế từ sớm để khi production có vấn đề, hệ thống đủ khả năng kể lại chuyện gì vừa xảy ra.",
       "date": "2026-05-20",
       "readingMinutes": 7,
       "tags": [
@@ -1150,8 +1150,8 @@
     {
       "slug": "cross-functional-teams",
       "category": "ways-of-working",
-      "title": "Cross-functional team",
-      "summary": "Một góc nhìn thực tế về cross-functional team: vì sao mô hình này tồn tại, shared outcome giảm handoff friction thế nào, và team cần gì quanh ownership, ritual, decision-making, specialist depth và bất đồng lành mạnh.",
+      "title": "Nhóm nhiều chuyên môn: cùng giữ một bài toán",
+      "summary": "Nhóm gồm nhiều chuyên môn không làm vai trò nào mất đi. Nó đưa những góc nhìn cần thiết tới gần cùng một kết quả, để bớt thất thoát thông tin qua bàn giao và để bất đồng xuất hiện khi công việc còn dễ thay đổi.",
       "date": "2026-05-19",
       "readingMinutes": 7,
       "tags": [
@@ -1167,8 +1167,8 @@
     {
       "slug": "loneliness-of-the-solo-developer",
       "category": "perspectives",
-      "title": "Sự cô đơn của solo developer",
-      "summary": "Một bài reflection về solo development: sự tự do và áp lực khi làm một mình, những feedback loop bị thiếu, và các hệ thống nhỏ giúp solo work bền hơn, ít cô lập hơn.",
+      "title": "Nỗi cô đơn khi làm phần mềm một mình",
+      "summary": "Làm phần mềm một mình đem lại tự do, nhưng cũng gom mọi quyết định và mọi lần hệ thống trục trặc về cùng một người. Những vòng phản hồi, ghi chép và nhịp nghỉ nhỏ có thể giúp công việc ấy bền hơn mà không phải giả vờ mình chẳng cần ai.",
       "date": "2026-05-18",
       "readingMinutes": 7,
       "tags": [
@@ -1184,8 +1184,8 @@
     {
       "slug": "vector-databases-explained",
       "category": "ai",
-      "title": "Vector database được giải thích dễ hiểu",
-      "summary": "Một bài giải thích dễ vào về vector database: embedding biểu diễn meaning như thế nào, vì sao similarity search hữu ích cho AI product, và team cần xử lý gì quanh chunking, metadata, freshness, evaluation và cost.",
+      "title": "Cơ sở dữ liệu vector: hiểu từ chuyện tìm theo nghĩa",
+      "summary": "Cơ sở dữ liệu vector giúp tìm nội dung gần nhau về nghĩa dù không dùng cùng từ. Để khả năng ấy thành một sản phẩm AI đáng tin, đội ngũ vẫn phải làm tốt embedding, chunking, metadata, cập nhật dữ liệu, đánh giá chất lượng và kiểm soát chi phí.",
       "date": "2026-05-17",
       "readingMinutes": 7,
       "tags": [
@@ -1201,8 +1201,8 @@
     {
       "slug": "fostering-innovation-in-teams",
       "category": "culture",
-      "title": "Nuôi dưỡng innovation trong team",
-      "summary": "Một góc nhìn thực tế về cách nuôi dưỡng innovation trong engineering team: psychological safety, slack, user context, experiment nhỏ, technical quality và prioritization trung thực giúp ý tưởng trở thành thay đổi hữu ích.",
+      "title": "Nuôi dưỡng khả năng đổi mới trong đội ngũ",
+      "summary": "Đổi mới hiếm khi bắt đầu bằng một ý tưởng hoành tráng. Nó thường đến từ người đủ gần vấn đề để nhận ra một vướng mắc nhỏ, đủ an toàn để nói sớm, và có đủ thời gian cùng nền tảng kỹ thuật để thử một cách làm khác.",
       "date": "2026-05-16",
       "readingMinutes": 7,
       "tags": [
@@ -1218,8 +1218,8 @@
     {
       "slug": "the-outbox-pattern",
       "category": "architecture",
-      "title": "Outbox Pattern",
-      "summary": "Một bài giải thích thực tế về Outbox Pattern: vì sao dual write dễ fail, cách transactional outbox giữ database state và event đi cùng nhau, và những phần team vẫn cần xử lý quanh retry, idempotency, ordering, cleanup và observability.",
+      "title": "Outbox Pattern: để dữ liệu và sự kiện không lạc nhau",
+      "summary": "Outbox Pattern xử lý một lỗi rất đời của hệ thống phân tán: dữ liệu đã ghi vào database nhưng event lại không được gửi đi. Mẫu này khép khoảng hở của dual write, nhưng vẫn đòi hỏi retry, idempotency, ordering, dọn dữ liệu và observability nghiêm túc.",
       "date": "2026-05-15",
       "readingMinutes": 7,
       "tags": [
@@ -1235,8 +1235,8 @@
     {
       "slug": "okrs-for-engineering-teams",
       "category": "ways-of-working",
-      "title": "OKRs cho engineering team",
-      "summary": "Một hướng dẫn thực tế về engineering OKRs: nối outcome với delivery work, tránh task list đội lốt objective, chọn key result hữu ích và giữ learning nhìn thấy được trong quý.",
+      "title": "OKR cho đội ngũ kỹ thuật",
+      "summary": "OKR chỉ đáng dùng khi giúp đội ngũ nối việc đang làm với thay đổi muốn tạo ra. Nếu mọi ô đều xanh mà người dùng, hệ thống và cách ra quyết định vẫn như cũ, đó chỉ là một danh sách việc được trang trí đẹp hơn.",
       "date": "2026-05-14",
       "readingMinutes": 7,
       "tags": [
@@ -1252,8 +1252,8 @@
     {
       "slug": "learning-a-new-language-every-year",
       "category": "perspectives",
-      "title": "Mỗi năm học một ngôn ngữ mới",
-      "summary": "Một bài reflection về việc học một programming language hoặc human language mới mỗi năm: grammar lạ, bài tập nhỏ, sự kiên nhẫn và so sánh giúp mình suy nghĩ và giao tiếp sắc hơn.",
+      "title": "Mỗi năm học thêm một ngôn ngữ",
+      "summary": "Một ngôn ngữ mới, dù là ngôn ngữ lập trình hay tiếng nói của con người, buộc ta chậm lại và nhìn rõ những thói quen vốn đã quá quen. Không cần thành thạo trong một năm; chỉ cần học đủ sâu để cách nghĩ của mình rộng thêm.",
       "date": "2026-05-13",
       "readingMinutes": 7,
       "tags": [
@@ -1269,8 +1269,8 @@
     {
       "slug": "ai-in-cybersecurity",
       "category": "ai",
-      "title": "AI trong cybersecurity",
-      "summary": "Một bài phản tư thực tế về AI trong cybersecurity: AI giúp detection, triage, secure coding và incident response ra sao, đồng thời tạo rủi ro mới quanh automation, privacy, prompt injection và false confidence.",
+      "title": "AI trong an ninh mạng",
+      "summary": "AI có thể giúp đội ngũ an ninh mạng sàng lọc cảnh báo, hỗ trợ viết mã an toàn và ứng phó sự cố nhanh hơn. Nhưng tốc độ chỉ có ích khi bằng chứng, quyền hạn và trách nhiệm kiểm chứng vẫn nằm trong tầm mắt.",
       "date": "2026-05-12",
       "readingMinutes": 7,
       "tags": [
@@ -1304,7 +1304,7 @@
       "slug": "service-mesh-do-you-need-it",
       "category": "architecture",
       "title": "Có cần service mesh không? Hãy nhìn vào lỗi trước",
-      "summary": "Service mesh chỉ đáng thêm khi lỗi giữa các dịch vụ đã lặp lại và đo được. Đây là cách đọc số liệu, nhìn trước điểm hỏng, thử trên phạm vi nhỏ và chuẩn bị đường quay lui.",
+      "summary": "Service mesh chỉ đáng thêm khi lỗi giữa các dịch vụ đã lặp lại và đo được. Đây là cách đọc số liệu, nhìn trước điểm hỏng, thử trên phạm vi nhỏ và chuẩn bị đường rút.",
       "date": "2026-05-10",
       "readingMinutes": 10,
       "tags": [
@@ -1320,8 +1320,8 @@
     {
       "slug": "trunk-based-development",
       "category": "ways-of-working",
-      "title": "Trunk-Based Development",
-      "summary": "Một bài nhập môn thực tế về trunk-based development: merge nhỏ và thường xuyên, feature flag, test nhanh, code review discipline và thói quen team cần có để giữ main branch khỏe.",
+      "title": "Trunk-Based Development: merge sớm để đừng trả nợ cuối sprint",
+      "summary": "Trunk-based development giữ branch ngắn, merge thay đổi nhỏ và tách lúc tích hợp code khỏi lúc phát hành tính năng. Muốn làm được, nhóm cần test nhanh, review nhanh và quản lý feature flag có kỷ luật.",
       "date": "2026-05-09",
       "readingMinutes": 7,
       "tags": [
@@ -1337,8 +1337,8 @@
     {
       "slug": "overcoming-analysis-paralysis",
       "category": "perspectives",
-      "title": "Vượt qua analysis paralysis",
-      "summary": "Một bài reflection về analysis paralysis: vì sao suy nghĩ cẩn thận có thể biến thành trì hoãn, cách tách decision reversible và irreversible, và cách experiment nhỏ giúp quyết định di chuyển mà không hấp tấp.",
+      "title": "Khi suy nghĩ kỹ biến thành đứng yên",
+      "summary": "Analysis paralysis thường bắt đầu từ ý định cẩn thận rồi trượt thành trì hoãn. Tách quyết định có thể quay lại và dùng thử nghiệm nhỏ giúp ta tiến mà không hấp tấp.",
       "date": "2026-05-08",
       "readingMinutes": 7,
       "tags": [
@@ -1354,8 +1354,8 @@
     {
       "slug": "reducing-hallucinations-in-llms",
       "category": "ai",
-      "title": "Giảm hallucination trong LLM",
-      "summary": "Một hướng dẫn thực tế để giảm hallucination trong LLM bằng task rõ hơn, context có giới hạn, retrieval, citation, verification, refusal, evaluation set và product design làm uncertainty nhìn thấy được.",
+      "title": "Khi LLM bịa: đừng chỉ trông vào prompt",
+      "summary": "Muốn giảm những câu trả lời bịa, cần đề bài rõ, ngữ cảnh đúng, RAG có nguồn, quyền từ chối, công cụ kiểm tra và bộ đánh giá. Độ tin cậy là việc của cả hệ thống.",
       "date": "2026-05-07",
       "readingMinutes": 7,
       "tags": [
@@ -1371,8 +1371,8 @@
     {
       "slug": "mentorship-vs-sponsorship",
       "category": "culture",
-      "title": "Mentorship và sponsorship khác nhau thế nào?",
-      "summary": "Một bài giải thích bình tĩnh về mentorship và sponsorship trong career engineering: advice, feedback, advocacy, visibility, trust và opportunity phối hợp với nhau thế nào mà không biến growth thành chính trị.",
+      "title": "Mentor chỉ đường, sponsor lên tiếng đúng lúc",
+      "summary": "Mentorship giúp một người tiến bộ bằng lời khuyên và góp ý; sponsorship dùng uy tín để nối năng lực đã được chứng minh với cơ hội thật. Sự nghiệp khỏe cần cả hai.",
       "date": "2026-05-06",
       "readingMinutes": 7,
       "tags": [
@@ -1388,8 +1388,8 @@
     {
       "slug": "event-sourcing-beginners-guide",
       "category": "architecture",
-      "title": "Event Sourcing cho người mới bắt đầu",
-      "summary": "Một bài nhập môn về Event Sourcing: lưu các sự kiện như lịch sử append-only, dựng current state bằng projection, và hiểu khi nào pattern này đáng với chi phí vận hành.",
+      "title": "Event Sourcing cho người mới: lưu cả chuyện đã xảy ra",
+      "summary": "Event Sourcing giữ chuỗi event chỉ nối thêm làm bản ghi gốc, rồi dựng trạng thái hiện tại qua projection. Đổi lại khả năng audit và replay là chi phí versioning, vận hành và phục hồi.",
       "date": "2026-05-05",
       "readingMinutes": 7,
       "tags": [
@@ -1405,8 +1405,8 @@
     {
       "slug": "tdd-is-it-worth-the-time",
       "category": "ways-of-working",
-      "title": "TDD có đáng thời gian không?",
-      "summary": "Một bài nhìn lại thực tế về khi nào Test-Driven Development đáng với chi phí bỏ ra: TDD định hình design thế nào, chỗ nào làm team chậm lại, và cách dùng vòng red-green-refactor mà không biến nó thành giáo điều.",
+      "title": "TDD có đáng công không?",
+      "summary": "TDD đáng giá khi logic quan trọng và một thay đổi nhỏ có thể gây hậu quả, nhưng không phải nghi thức cho mọi dòng code. Điều cần cân là rủi ro, khả năng bảo trì và loại test phù hợp.",
       "date": "2026-05-04",
       "readingMinutes": 7,
       "tags": [
@@ -1422,8 +1422,8 @@
     {
       "slug": "reading-code-is-harder-than-writing-it",
       "category": "perspectives",
-      "title": "Đọc code khó hơn viết code",
-      "summary": "Một bài nhìn lại vì sao đọc code thường khó hơn viết code, và cách tracing kiên nhẫn, test, naming, lịch sử decision, cùng những note nhỏ giúp engineer hiểu codebase mà không vội rewrite.",
+      "title": "Vì sao đọc code thường mệt hơn viết code?",
+      "summary": "Đọc code là lần theo cách hệ thống vận hành, lịch sử và những ràng buộc không nằm trên màn hình. Đi từng luồng, dựa vào test và để lại bối cảnh giúp ta hiểu trước khi vội viết lại.",
       "date": "2026-05-03",
       "readingMinutes": 7,
       "tags": [
@@ -1439,8 +1439,8 @@
     {
       "slug": "fine-tuning-vs-prompting-vs-rag",
       "category": "ai",
-      "title": "Fine-tuning, prompting và RAG khác nhau thế nào?",
-      "summary": "Một bài so sánh thực tế giữa prompting, RAG và fine-tuning khi xây AI product: mỗi cách thay đổi phần nào của hệ thống, khi nào hữu ích, thường vấp ở đâu, và làm sao chọn can thiệp nhỏ nhất nhưng đủ đáng tin.",
+      "title": "Prompting, RAG hay fine-tuning: sửa đúng chỗ mới đỡ tốn",
+      "summary": "Prompting làm rõ việc cần làm, RAG đưa kiến thức hiện hành vào câu trả lời, còn fine-tuning giúp model giữ ổn định một kiểu phản hồi. Cần gọi đúng lỗi trước khi chọn công cụ.",
       "date": "2026-05-02",
       "readingMinutes": 7,
       "tags": [
@@ -1456,8 +1456,8 @@
     {
       "slug": "onboarding-that-actually-helps-new-teammates",
       "category": "culture",
-      "title": "Onboarding giúp người mới thật sự hòa vào team",
-      "summary": "Một góc nhìn bình tĩnh về onboarding trong engineering team: context, small win đầu tiên, ownership rõ, buddy support, documentation, feedback loop và những thói quen kiên nhẫn giúp người mới bớt lạc.",
+      "title": "Onboarding sao cho người mới đỡ tự bơi",
+      "summary": "Onboarding tốt không phải nhồi thật nhiều tài liệu trong tuần đầu, mà là giúp người mới có bản đồ, có chỗ hỏi, có một việc thật để bắt đầu và có đủ an toàn để học.",
       "date": "2026-05-01",
       "readingMinutes": 7,
       "tags": [

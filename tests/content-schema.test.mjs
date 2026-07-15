@@ -183,7 +183,7 @@ test("scoped notes keep filename slug and localized index dates aligned", () => 
     {
       slug: "tri-tue-can-duc-hanh",
       date: "2026-05-14",
-      readingMinutes: { en: 4, vi: 5 },
+      readingMinutes: { en: 4, vi: 6 },
     },
   ];
 
@@ -211,7 +211,7 @@ test("loadNote overlays localized Vietnamese reading minutes", () => {
   const scopedNotes = [
     ["tao-niem-tin-khong-phai-tao-ao-giac", 4, 7],
     ["su-ro-rang-la-mot-dang-noi-luc", 4, 6],
-    ["tri-tue-can-duc-hanh", 4, 5],
+    ["tri-tue-can-duc-hanh", 4, 6],
   ];
 
   for (const [slug, enReadingMinutes, viReadingMinutes] of scopedNotes) {

@@ -113,10 +113,10 @@
     },
     {
       "slug": "bat-gioi-sa-tang-bach-long-ma-nhung-vai-tham-lang-trong-team",
-      "title": "Bát Giới, Sa Tăng và Bạch Long Mã: những vai ít hào nhoáng vẫn giữ team đi tiếp",
-      "summary": "Một ghi chép từ tư liệu quản trị Tây Du Ký về các vai ít được tung hô trong team: người làm không khí bớt căng, người giữ vận hành đều, người làm hạ tầng thầm lặng. Bài viết nhìn các vai này bằng sự công bằng hơn, đồng thời nhắc rằng sự chăm chỉ cần được nâng cấp thành năng lực thấy được.",
-      "cardSummary": "Không phải ai cũng là người cứu nguy trước sân khấu, nhưng team sẽ đứt nhịp nếu thiếu những vai giữ không khí, nhịp vận hành và hạ tầng.",
-      "readingMinutes": 8,
+      "title": "Bát Giới, Sa Tăng và Bạch Long Mã: những vai thầm lặng giữ nhóm khỏi đứt nhịp",
+      "summary": "Một ghi chép từ tư liệu Tây Du Ký về ba kiểu đóng góp dễ bị bỏ qua trong công việc: người làm căn phòng bớt căng, người giữ vận hành đều và phần hạ tầng chỉ được nhớ tới khi hỏng — cùng câu hỏi làm sao để sự chăm chỉ ngày càng có chiều sâu.",
+      "cardSummary": "Có đóng góp chỉ hiện ra khi người làm nó vắng mặt: không khí nặng hơn, thông tin đứt hơn và phần việc nhỏ bắt đầu rơi xuống sàn.",
+      "readingMinutes": 7,
       "tags": [
         "Tây Du Ký",
         "Bát Giới",
@@ -129,9 +129,9 @@
     },
     {
       "slug": "bay-thoi-quen-hieu-qua-stephen-covey",
-      "title": "7 Habits: hiệu quả cá nhân bắt đầu từ cách mình giữ lời với chính mình",
-      "summary": "Một ghi chú đọc The 7 Habits of Highly Effective People của Stephen R. Covey qua lăng kính đi làm và tự phát triển: chủ động, bắt đầu với đích đến, ưu tiên điều quan trọng, win-win, lắng nghe trước khi được hiểu, cộng hưởng, và làm mới bản thân như một hệ thống cần bảo trì.",
-      "cardSummary": "Hiệu quả không chỉ là làm được nhiều hơn, mà là sống và làm việc theo những nguyên tắc mình còn tôn trọng sau này.",
+      "title": "7 Habits: làm việc hiệu quả bắt đầu từ lời hứa mình tự giữ",
+      "summary": "Một ghi chú đọc The 7 Habits of Highly Effective People của Stephen R. Covey, nhìn bảy thói quen như cách chọn điều đáng làm, giữ lời với chính mình, hợp tác cho đàng hoàng và biết nghỉ để đi đường dài — chứ không phải bảy mẹo nhồi thêm việc vào lịch.",
+      "cardSummary": "Hiệu quả không nằm ở một ngày làm được bao nhiêu việc, mà ở việc mình còn tôn trọng cách mình đã sống và làm việc sau ngày đó.",
       "tags": [
         "Ghi chú sách",
         "7 Habits",
@@ -286,10 +286,10 @@
     },
     {
       "slug": "duong-tang-giu-vision-va-trao-quyen",
-      "title": "Đường Tăng giữ vision: leader không cần giỏi mọi việc, nhưng phải giữ hướng",
-      "summary": "Một ghi chép từ tư liệu quản trị Tây Du Ký về Đường Tăng dưới góc nhìn công sở: người lãnh đạo không nhất thiết là người xử lý kỹ thuật giỏi nhất, nhưng phải giữ được mục tiêu, hiểu năng lực từng người, biết trao quyền, biết kiểm tra vừa đủ và biết bảo vệ giá trị chung khi team đi qua khủng hoảng.",
-      "cardSummary": "Leader không cần tự làm hết, nhưng phải giữ được hướng đi để những người giỏi không kéo team về nhiều phía khác nhau.",
-      "readingMinutes": 7,
+      "title": "Đường Tăng giữ hướng: người dẫn dắt không cần giỏi hết, nhưng phải biết trao quyền",
+      "summary": "Một ghi chép từ tư liệu Tây Du Ký về vai trò người giữ mục tiêu: không cần xử lý mọi chi tiết giỏi nhất, nhưng phải biết chọn điều không làm, đặt việc đúng người, trao quyền đủ rộng và kiểm tra đúng chỗ.",
+      "cardSummary": "Người dẫn dắt không cần cầm mọi vô lăng; người dẫn dắt cần giữ được hướng để nhiều người giỏi không kéo nhóm về nhiều phía.",
+      "readingMinutes": 6,
       "tags": [
         "Tây Du Ký",
         "Đường Tăng",
@@ -345,10 +345,10 @@
     },
     {
       "slug": "giua-luu-bi-va-tao-thao-di-lam-can-ca-tinh-nguoi-va-luat-choi",
-      "title": "Giữa Lưu Bị và Tào Tháo: đi làm cần tình người, nhưng cũng cần luật chơi rõ",
-      "summary": "Một ghi chép suy ngẫm từ tư liệu quản trị Tam Quốc về cách cân bằng nhân trị và pháp trị trong đời sống công sở: khi nào cần lòng tin, khi nào cần hệ thống, vì sao startup và scale-up cần cách quản khác nhau, và làm sao để sự tử tế không mơ hồ còn kỷ luật không trở nên lạnh.",
-      "cardSummary": "Team khỏe không chọn giữa tình người và hệ thống; team khỏe học cách để hai thứ đó nâng đỡ nhau.",
-      "readingMinutes": 8,
+      "title": "Giữa Lưu Bị và Tào Tháo: đi làm cần tình người, nhưng không thể thiếu luật chơi",
+      "summary": "Một ghi chép từ tư liệu quản trị Tam Quốc về hai lực một nhóm đều cần: lòng tin để người ta dám đi cùng nhau, và hệ thống để công việc không phải sống nhờ ký ức, quan hệ hay tâm trạng của vài người.",
+      "cardSummary": "Nhóm khỏe không chọn tình người hay hệ thống; nhóm khỏe biết lúc nào cần thêm lòng tin và lúc nào phải viết luật chơi cho rõ.",
+      "readingMinutes": 7,
       "tags": [
         "Tam Quốc",
         "Leadership",
@@ -529,10 +529,10 @@
     },
     {
       "slug": "luu-bi-nhan-tri-noi-cong-so",
-      "title": "Lưu Bị và nhân trị nơi công sở: giữ người bằng lòng tin, không phải chỉ bằng lời hay",
-      "summary": "Một ghi chép từ tư liệu quản trị trong Tam Quốc về phong cách nhân trị của Lưu Bị: cách một người lãnh đạo giữ người bằng lòng tin, biết hạ mình cầu hiền, đặt con người vào trung tâm, nhưng cũng cần tỉnh táo để tình nghĩa không che mất năng lực, ranh giới và lợi ích chung của tổ chức.",
-      "cardSummary": "Lòng tin là chất keo của một team nhỏ, nhưng nếu thiếu ranh giới, nó cũng có thể làm quyết định quản trị trở nên mờ đi.",
-      "readingMinutes": 7,
+      "title": "Lưu Bị và nhân trị nơi công sở: giữ người bằng việc làm, không phải lời hay",
+      "summary": "Một ghi chép từ tư liệu quản trị Tam Quốc về cách lãnh đạo lấy con người làm gốc: lòng tin là tài sản vận hành thật, sự khiêm tốn mở chỗ cho người giỏi, nhưng tình nghĩa vẫn cần ranh giới để không che mất năng lực và lợi ích chung.",
+      "cardSummary": "Lòng tin giữ một nhóm non trẻ đi cùng nhau; ranh giới giữ lòng tin khỏi biến thành thiên vị và né tránh.",
+      "readingMinutes": 6,
       "tags": [
         "Tam Quốc",
         "Lưu Bị",
@@ -972,9 +972,9 @@
     },
     {
       "slug": "tao-thao-phap-tri-trong-van-phong",
-      "title": "Tào Tháo và pháp trị trong văn phòng: hệ thống tốt giúp bớt quản bằng cảm xúc",
-      "summary": "Một ghi chép từ tư liệu quản trị trong Tam Quốc về phong cách pháp trị và thực dụng của Tào Tháo: trọng dụng năng lực, đặt đúng người đúng việc, xây hệ thống vận hành, dùng luật chơi rõ ràng để giảm mơ hồ, nhưng cũng cần tránh biến kỷ luật thành kiểm soát và nghi ngờ.",
-      "cardSummary": "Một team lớn không thể chỉ chạy bằng tình cảm; nó cần luật chơi rõ để người tử tế không phải đoán nhau mỗi ngày.",
+      "title": "Tào Tháo và pháp trị ở văn phòng: bớt quản người bằng cảm xúc",
+      "summary": "Một ghi chép từ tư liệu quản trị Tam Quốc về phần đáng học trong cách dùng người và xây hệ thống gắn với Tào Tháo: đúng người đúng việc, luồng vận hành rõ, luật chơi nhất quán — cùng lời cảnh báo khi kỷ luật trượt thành soi xét và nghi ngờ.",
+      "cardSummary": "Nhóm lớn không thể chạy bằng quan hệ và trí nhớ; luật chơi tốt lấy bớt phần đoán mò khỏi một ngày làm việc.",
       "readingMinutes": 7,
       "tags": [
         "Tam Quốc",
@@ -988,10 +988,10 @@
     },
     {
       "slug": "tay-du-ky-nhu-mot-project-team-di-qua-81-kiep-nan",
-      "title": "Tây Du Ký như một project team: mỗi chặng khó là một bài học về phối hợp",
-      "summary": "Một ghi chép từ tư liệu quản trị Tây Du Ký nhìn hành trình thỉnh kinh như một project team dài hạn: có vision, sponsor, PO, lead engineer, ops, hạ tầng, incident, escalation và rất nhiều lần team phải học cách đi tiếp dù không ai hoàn hảo.",
-      "cardSummary": "Một team bền không phải vì ai cũng hoàn hảo, mà vì mỗi người hiểu vai của mình và biết phối hợp khi blocker xuất hiện.",
-      "readingMinutes": 8,
+      "title": "Tây Du Ký như một nhóm dự án: đường dài mới lộ cách phối hợp",
+      "summary": "Một cách đọc vui nhưng thực tế về hành trình thỉnh kinh như một dự án dài: mục tiêu chung, nhiều vai không hoàn hảo, vướng mắc nối tiếp, lúc cần chuyển cấp và những bài học chỉ xuất hiện sau khi nhóm đã cùng vấp.",
+      "cardSummary": "Nhóm bền không phải vì ai cũng toàn năng; nhóm bền vì biết ai giữ hướng, ai phá khó, ai giữ nhịp và lúc nào cần nhờ quyền lực bên ngoài.",
+      "readingMinutes": 7,
       "tags": [
         "Tây Du Ký",
         "Project Management",
@@ -1005,8 +1005,8 @@
     {
       "slug": "thay-nguoi-khac-thanh-cong-ma-long-minh-khong-hep-lai",
       "title": "Thấy người khác thành công mà lòng mình không hẹp lại",
-      "summary": "Một ghi chép về cảm giác so sánh, sự rộng lòng và khả năng học từ thành công của người khác trong môi trường làm việc. Bài viết chuyển ý niệm chúc phúc cho người đồng hành thành hành vi rất thực tế: chúc mừng mà không thu mình lại, quan sát điều đã hiệu quả, chọn đi cùng người giỏi hơn và giữ tham vọng sạch thay vì biến so sánh thành sự khó chịu âm thầm.",
-      "cardSummary": "Thành công của người khác không nhất thiết làm con đường của mình nhỏ lại; đôi khi nó chỉ cho mình thấy một căn phòng rộng hơn để lớn lên.",
+      "summary": "Một ghi chép thẳng thắn về cảm giác so sánh ở nơi làm việc: có thể vừa mừng cho người khác vừa thấy mình chùng xuống, rồi biến cái nhói đó thành câu hỏi để học thay vì một lý do để thu nhỏ thành quả của họ.",
+      "cardSummary": "Thành công của người khác không lấy mất phần của mình; đôi khi nó chỉ làm lộ ra điều mình còn muốn học và muốn có.",
       "readingMinutes": 6,
       "tags": [
         "Sự nghiệp",
@@ -1179,9 +1179,9 @@
     },
     {
       "slug": "the-trap-of-information-consumption",
-      "title": "Khi tiêu thụ thông tin thay thế hành động",
-      "summary": "Một rủi ro quen thuộc trong việc học: đầu vào cứ chảy, giá sách cứ đầy, mà chẳng gì biến thành năng lực. Nó cho cảm giác như đang học — và chính vì thế khó nhận ra từ bên trong. Triệu chứng, nguyên nhân, và lối ra: đặt ý định áp dụng trước khi tiêu thụ, ưu tiên học just-in-time, và đếm hành động đã làm thay vì đầu vào đã nạp.",
-      "cardSummary": "Học chỉ thật sự chắc lại khi có hành động nhỏ, thử nghiệm hoặc câu hỏi rõ hơn.",
+      "title": "Cái bẫy học mãi mà chưa làm",
+      "summary": "Đọc thêm tạo cảm giác đang tiến lên, nhưng năng lực chỉ hình thành khi kiến thức đi qua một lần thử cụ thể. Lối ra không phải ngừng đọc, mà là chọn đầu ra trước khi chọn đầu vào, học đúng lúc cần và đếm những việc đã làm thay vì số thứ đã lưu.",
+      "cardSummary": "Chọn đầu ra trước khi chọn đầu vào, để điều đã đọc có một chỗ biến thành việc làm.",
       "tags": [
         "Thoughts",
         "Học tập",
@@ -1293,9 +1293,9 @@
     },
     {
       "slug": "ton-ngo-khong-nhan-tai-10x-va-vong-kim-co",
-      "title": "Tôn Ngộ Không trong công sở: nhân tài 10x cần đất diễn và ranh giới",
-      "summary": "Một ghi chép từ tư liệu quản trị Tây Du Ký về Tôn Ngộ Không như hình ảnh của nhân tài 10x trong công sở: năng lực giải quyết vấn đề rất lớn, tốc độ cao, mạng lưới rộng, nhưng cũng dễ bốc đồng, khó hợp tác nếu thiếu ranh giới, cơ chế phản hồi và mục tiêu chung đủ rõ.",
-      "cardSummary": "Người giỏi nhất team không cần bị kìm lại, nhưng cần một ranh giới đủ rõ để tài năng không trở thành rủi ro.",
+      "title": "Tôn Ngộ Không ở công sở: người 10x cũng cần một “Vòng Kim Cô”",
+      "summary": "Một ghi chép từ tư liệu Tây Du Ký về nhân tài 10x trong công việc: tốc độ và năng lực phá khó có thể cứu cả nhóm, nhưng chỉ thật sự bền khi đi cùng phạm vi tự quyết rõ, cơ chế phản hồi và trách nhiệm làm năng lực ấy lan ra ngoài một người.",
+      "cardSummary": "Đừng kìm người giỏi cho dễ quản; hãy cho họ đường chạy rõ để tốc độ không biến thành rủi ro cho cả nhóm.",
       "readingMinutes": 7,
       "tags": [
         "Tây Du Ký",
@@ -1309,10 +1309,10 @@
     },
     {
       "slug": "truoc-khi-cham-chi-hon-hay-chon-huong-co-don-bay",
-      "title": "Trước khi chăm chỉ hơn, hãy nhìn xem hướng đi có thể lớn lên không",
-      "summary": "Một ghi chép bình tĩnh về việc nỗ lực cần đi cùng hướng đi, đòn bẩy và tài sản kỹ năng. Lương ổn định là quan trọng, nhưng nếu mọi đồng thu nhập chỉ phụ thuộc vào giờ làm tiếp theo, người đi làm rất dễ mệt hơn mà không tự do hơn. Bài viết nhìn lại bẫy thu nhập tuyến tính, kỹ năng có tính tích lũy, hệ thống có thể tái sử dụng và cách biến công việc hằng ngày thành thứ còn lớn lên sau giờ làm.",
-      "cardSummary": "Chăm chỉ vẫn cần, nhưng điều đáng hỏi là sau một ngày làm việc, mình có để lại kỹ năng, hệ thống và đòn bẩy cho ngày mai không.",
-      "readingMinutes": 7,
+      "title": "Trước khi chăm chỉ hơn, hãy chọn hướng có đòn bẩy",
+      "summary": "Một ghi chép về cách để nỗ lực hôm nay không mất sạch sau giờ làm: biến việc lặp thành kỹ năng, tài liệu, danh sách kiểm tra, công cụ và khoảng thở tài chính — những thứ có thể tiếp tục tạo giá trị mà không đòi mình luôn có mặt.",
+      "cardSummary": "Chăm chỉ vẫn cần; câu hỏi đáng tiền hơn là sau một ngày làm việc, mình đã để lại gì cho ngày mai ngoài sự mệt.",
+      "readingMinutes": 6,
       "tags": [
         "Sự nghiệp",
         "Đòn bẩy",
@@ -1338,9 +1338,9 @@
     },
     {
       "slug": "tu-duy-he-thong-trong-cong-viec-steven-schuster",
-      "title": "The Art of Thinking in Systems: đừng sửa triệu chứng rồi gọi đó là giải pháp",
-      "summary": "Một ghi chú đọc The Art of Thinking in Systems qua lăng kính công việc: nhiều vấn đề không nằm ở một người hay một sự kiện đơn lẻ, mà nằm trong vòng lặp phản hồi, độ trễ, nút nghẽn, incentive và những hệ quả cấp hai mà ta thường bỏ qua khi vội sửa triệu chứng.",
-      "cardSummary": "Muốn sửa vấn đề bền hơn, phải nhìn vòng lặp tạo ra nó chứ không chỉ nhìn triệu chứng đang ồn nhất.",
+      "title": "The Art of Thinking in Systems: đừng dập triệu chứng rồi gọi là giải pháp",
+      "summary": "Một ghi chú đọc The Art of Thinking in Systems qua chuyện đi làm: vấn đề lặp lại thường không nằm ở một người hay một sự cố riêng lẻ, mà ở nút nghẽn, độ trễ, cơ chế khuyến khích và vòng phản hồi vẫn đang âm thầm tạo ra cùng một kết quả.",
+      "cardSummary": "Khi một lỗi cứ quay lại, đừng chỉ nhìn chỗ đang ồn nhất; hãy nhìn vòng lặp vẫn đều đặn sản xuất ra nó.",
       "tags": [
         "Ghi chú sách",
         "Systems Thinking",
@@ -1407,9 +1407,9 @@
     },
     {
       "slug": "work-messages-aggressive-bias",
-      "title": "Vì sao tin nhắn công việc dễ nghe sắc hơn ý định thật",
-      "summary": "Cùng những lời nói nhẹ nhàng qua bàn họp có thể mang thêm một cạnh sắc ngoài ý muốn khi nằm trong khung chat. Không có gương mặt hay giọng nói để bám vào, tâm trí lấp khoảng trống bằng phỏng đoán ít rộng lượng nhất. Vì thiên kiến này đoán trước được, hãy bù lại từ cả hai phía: gửi tin nhắn có bối cảnh, và đọc tin nhắn với thêm một chút khoảng thở.",
-      "cardSummary": "Một chữ “ok” ngắn thường chỉ là người kia đang bận, không nhất thiết là khó chịu.",
+      "title": "Vì sao tin nhắn công việc thường nghe sắc hơn ý người gửi",
+      "summary": "Khi nét mặt, giọng nói và hoàn cảnh biến mất khỏi khung chat, người đọc phải tự điền phần còn thiếu — thường bằng cách hiểu căng hơn dự định của người gửi. Có thể bù lại từ hai phía: người viết thêm bối cảnh vừa đủ, người đọc chừa một nhịp trước khi kết luận.",
+      "cardSummary": "Khung chat làm mất giọng nói và nét mặt; thêm bối cảnh khi viết, thêm khoảng thở khi đọc.",
       "tags": [
         "Thoughts",
         "Giao tiếp",
@@ -1462,8 +1462,8 @@
     {
       "slug": "su-ro-rang-la-mot-dang-noi-luc",
       "title": "Sự rõ ràng là một dạng nội lực",
-      "summary": "Một ghi chép về sự minh bạch, thẳng thắn và cảm giác dễ thở khi ở cạnh người có nội lực. Người vững bên trong thường không cần tạo mê cung bằng lời nói; họ nói rõ điều mình biết, điều mình chưa chắc, điều mình sẽ làm, và để kết quả trả lời. Sự rõ ràng không làm người ta yếu đi, mà giúp niềm tin bớt phải dựa vào suy đoán.",
-      "cardSummary": "Người có nội lực không cần làm mình bí ẩn; họ tạo niềm tin bằng sự rõ ràng và nhất quán.",
+      "summary": "Rõ ràng không làm mọi cuộc trò chuyện dễ chịu ngay lập tức, nhưng giúp người khác biết điều gì đã chắc, điều gì còn bỏ ngỏ và họ có thể dựa vào đâu. Đó là một dạng nội lực yên lặng: không dùng lời mập mờ để giữ thế, không giấu ranh giới sau những câu hứa lửng, và không bắt người khác trả phí bằng việc đoán ý.",
+      "cardSummary": "Rõ ràng là khi lời nói có ranh giới, lời hứa có trọng lượng và người khác không phải trả phí bằng việc đoán ý.",
       "date": "2026-05-13",
       "readingMinutes": 6,
       "tags": [
@@ -1495,11 +1495,11 @@
     },
     {
       "slug": "tri-tue-can-duc-hanh",
-      "title": "Trí tuệ cần đức hạnh để không trở thành dao sắc",
-      "summary": "Một ghi chép bình tĩnh về trí tuệ, tài năng và đức hạnh. Trí tuệ tự nó không thiện cũng không ác; nó chỉ khuếch đại hướng đi của người cầm nó. Người có năng lực nhưng thiếu nhân cách có thể gây hại xa hơn người bình thường, nên điều đáng quý không chỉ là thông minh, mà là dùng sự thông minh đó để bảo vệ, xây dựng và làm người khác an toàn hơn.",
-      "cardSummary": "Trí tuệ là năng lực khuếch đại; đức hạnh mới quyết định năng lực đó đi về phía xây dựng hay gây hại.",
+      "title": "Trí tuệ cần đức hạnh để không hóa thành dao sắc",
+      "summary": "Trí tuệ giúp ta nhìn nhanh hơn, nói thuyết phục hơn và tác động xa hơn; tự nó không chọn hướng. Đức hạnh nằm trong những quyết định rất đời thường: có dùng điểm yếu mình nhìn thấy để thắng hay không, có nói đủ sự thật để người khác tự quyết hay không, và có biến một nhận xét đúng thành điều thật sự hữu ích hay không.",
+      "cardSummary": "Trí tuệ tạo độ sắc; đức hạnh quyết định độ sắc ấy đang phục vụ điều gì và phải dừng ở đâu.",
       "date": "2026-05-14",
-      "readingMinutes": 5,
+      "readingMinutes": 6,
       "tags": [
         "Đức hạnh",
         "Trí tuệ",
