@@ -1,15 +1,35 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { PAGE_SEO, SITE, SITE_URL, absoluteUrl } from "@/app/seo.config";
 import PageTracker from "@/components/analytics/PageTracker";
 import { routing, type Locale } from "@/i18n/routing";
 import StudioWorkspace from "./StudioWorkspace";
-import { studioNotes } from "./studio.data";
-import { getLocalizedStudioFlows } from "./studio.localized-content";
 
 const seo = PAGE_SEO.studio;
+
+const studioSeoByLocale: Record<string, { title: string; description: string; keywords: string[] }> = {
+  en: {
+    title: "Studio — Engineering Notes, Checklists, and System Flows",
+    description:
+      "A public workspace for the notes, checklists, and visual flows I use to review architecture, prepare releases, set up tools, and work with AI responsibly.",
+    keywords: ["engineering notes", "software checklists", "system design flows", "AI-assisted engineering"]
+  },
+  vi: {
+    title: "Studio — Ghi chú kỹ thuật, Checklists và System Flows",
+    description:
+      "Không gian công khai tập hợp ghi chú, checklists và system flows tôi dùng để review architecture, chuẩn bị release, setup công cụ và làm việc với AI có trách nhiệm.",
+    keywords: ["ghi chú kỹ thuật", "engineering checklists", "system design flows", "AI-assisted engineering"]
+  }
+};
+
+function getStudioSeo(locale: string) {
+  const localized = studioSeoByLocale[locale];
+  return localized
+    ? { ...localized, keywords: [...(seo.keywords ?? []), ...localized.keywords] }
+    : { title: seo.title, description: seo.description, keywords: seo.keywords ?? [] };
+}
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -29,24 +49,25 @@ function localeAlternates(path: string): Record<string, string> {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const canonical = `/${locale}${seo.path}`;
+  const localizedSeo = getStudioSeo(locale);
 
   return {
-    title: seo.title,
-    description: seo.description,
-    keywords: seo.keywords,
+    title: localizedSeo.title,
+    description: localizedSeo.description,
+    keywords: localizedSeo.keywords,
     alternates: { canonical, languages: localeAlternates(seo.path) },
     openGraph: {
       type: "website",
       url: absoluteUrl(canonical),
-      title: seo.title,
-      description: seo.description,
+      title: localizedSeo.title,
+      description: localizedSeo.description,
       siteName: SITE.name,
-      locale: locale.replace("-", "_")
+      locale: locale === "vi" ? "vi_VN" : locale === "en" ? "en_US" : locale.replace("-", "_")
     },
     twitter: {
       card: "summary_large_image",
-      title: seo.title,
-      description: seo.description,
+      title: localizedSeo.title,
+      description: localizedSeo.description,
       site: SITE.twitter,
       creator: SITE.twitter
     },
@@ -62,46 +83,22 @@ export default async function StudioPage({ params }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
-  await getTranslations({ locale, namespace: "Pages.studio" });
-  const localizedFlows = getLocalizedStudioFlows(locale);
+  const localizedSeo = getStudioSeo(locale);
 
   const collectionLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "@id": `${SITE_URL}/${locale}/studio#studio`,
-    name: seo.title,
-    description: seo.description,
+    name: localizedSeo.title,
+    description: localizedSeo.description,
     url: `${SITE_URL}/${locale}/studio`,
     inLanguage: locale as Locale,
     isPartOf: { "@type": "WebSite", "@id": `${SITE_URL}/#website` },
-    author: { "@type": "Person", "@id": `${SITE_URL}/#person` },
-    hasPart: [
-      ...studioNotes.map((note) => ({
-        "@type": "TechArticle",
-        headline: note.title,
-        description: note.summary,
-        url: `${SITE_URL}/${locale}/studio#${note.id}`,
-        dateModified: note.updatedAt,
-        keywords: note.tags.join(", ")
-      })),
-      ...localizedFlows.map((flow) => ({
-        "@type": "HowTo",
-        name: flow.seoTitle,
-        description: flow.seoDescription,
-        url: `${SITE_URL}/${locale}/studio?route=flow-${flow.id}&flow=${flow.id}#flow-${flow.id}`,
-        keywords: flow.tags.join(", "),
-        step: flow.steps.map((step, index) => ({
-          "@type": "HowToStep",
-          position: index + 1,
-          name: step.title,
-          text: `${step.detail} ${step.output}`
-        }))
-      }))
-    ]
+    author: { "@type": "Person", "@id": `${SITE_URL}/#person` }
   };
 
   return (
-    <main className="studio-route-shell">
+    <div className="studio-route-shell">
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -111,8 +108,8 @@ export default async function StudioPage({ params }: Props) {
               background: var(--bg, #fafafa) !important;
             }
 
-            body:has(.studio-route-shell) main.studio-route-shell,
-            body.studio-app-shell-active main.studio-route-shell {
+            body:has(.studio-route-shell) .studio-route-shell,
+            body.studio-app-shell-active .studio-route-shell {
               height: 100vh !important;
               min-height: 100vh !important;
               overflow: hidden !important;
@@ -154,6 +151,6 @@ export default async function StudioPage({ params }: Props) {
       />
       <PageTracker page="studio" eventName="studio_view" section="notes_admin" />
       <StudioWorkspace locale={locale} />
-    </main>
+    </div>
   );
 }

@@ -109,9 +109,9 @@ export const PAGE_SEO: Record<
     ogAlt: 'Blog — software architecture and engineering, explained simply',
   },
   studio: {
-    title: 'Studio — Engineering Flows, AI Notes & System Design',
+    title: 'Studio — Engineering Notes, Checklists, and System Flows',
     description:
-      'A public working shelf for system design flows, release readiness, AI-assisted delivery, machine setup, daily learning checklists, and skill libraries.',
+      'A public workspace for the notes, checklists, and visual flows I use to review architecture, prepare releases, set up tools, and work with AI responsibly.',
     path: '/studio',
     keywords: [
       'Nguyen Le Phong studio',

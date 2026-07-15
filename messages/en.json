@@ -266,9 +266,9 @@
       "heading": "Apps"
     },
     "studio": {
-      "eyebrow": "Learning workbench",
+      "eyebrow": "Engineering workbench",
       "title": "Studio",
-      "intro": "A public shelf for learning notes, machine setup, AI tooling, and the small checklists that make a new engineering laptop feel ready."
+      "intro": "A public workspace for the notes, checklists, and visual flows I use to review architecture, prepare releases, set up tools, and work with AI responsibly."
     },
     "gallery": {
       "eyebrow": "Gallery",

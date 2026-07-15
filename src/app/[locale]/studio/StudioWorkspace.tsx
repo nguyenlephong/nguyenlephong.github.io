@@ -15,8 +15,12 @@ export default function StudioWorkspace({ locale }: StudioWorkspaceProps) {
     return () => document.body.classList.remove("studio-app-shell-active");
   }, []);
 
+  const workspaceLabel = locale === "vi"
+    ? "Không gian làm việc Studio của Nguyễn Lê Phong"
+    : "Nguyen Le Phong's personal Studio workspace";
+
   return (
-    <ShadowIsland styles={studioShadowStyles} label="Studio Admin dashboard">
+    <ShadowIsland styles={studioShadowStyles} label={workspaceLabel}>
       <StudioAdminShell locale={locale} />
     </ShadowIsland>
   );

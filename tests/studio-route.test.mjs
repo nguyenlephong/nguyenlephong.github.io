@@ -64,6 +64,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.ok(existsSync("src/app/[locale]/studio/studio-admin-shell.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.shadow-styles.ts"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.data.ts"));
+  assert.ok(existsSync("src/app/[locale]/studio/studio.localized-content.ts"));
+  assert.ok(existsSync("src/app/[locale]/studio/studio.localized-workspace.ts"));
+  assert.ok(existsSync("src/app/[locale]/studio/studio.localized-demos.ts"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.react-flow-architecture-demo.ts"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.react-flow-system-blueprint.ts"));
   assert.ok(existsSync("src/components/studio-kit/index.ts"));
@@ -87,6 +90,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     adminShell,
     data,
     localizedContent,
+    localizedWorkspace,
+    localizedDemos,
     shadowCss,
     kitIndex,
     shadowIsland,
@@ -109,6 +114,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8"),
     readFile("src/app/[locale]/studio/studio.data.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio.localized-content.ts", "utf8"),
+    readFile("src/app/[locale]/studio/studio.localized-workspace.ts", "utf8"),
+    readFile("src/app/[locale]/studio/studio.localized-demos.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio.shadow-styles.ts", "utf8"),
     readFile("src/components/studio-kit/index.ts", "utf8"),
     readFile("src/components/studio-kit/shadow-island.tsx", "utf8"),
@@ -149,11 +156,17 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
 
   assert.match(page, /generateStaticParams/);
   assert.match(page, /generateMetadata/);
+  assert.match(page, /Studio — Engineering Notes, Checklists, and System Flows/);
+  assert.match(page, /Studio — Ghi chú kỹ thuật, Checklists và System Flows/);
   assert.match(page, /PageTracker page="studio" eventName="studio_view"/);
-  assert.match(page, /"@type":\s*"HowTo"/);
-  assert.match(page, /flow-\$\{flow\.id\}/);
+  assert.match(page, /"@type":\s*"CollectionPage"/);
+  assert.doesNotMatch(page, /"@type":\s*"HowTo"/);
+  assert.doesNotMatch(page, /"@type":\s*"TechArticle"/);
+  assert.doesNotMatch(page, /getLocalizedStudioNotes|getLocalizedStudioFlows/);
   assert.match(page, /StudioWorkspace/);
   assert.match(page, /studio-route-shell/);
+  assert.match(page, /<div className="studio-route-shell">/);
+  assert.doesNotMatch(page, /<main className="studio-route-shell">/);
   assert.match(page, /body:has\(\.studio-route-shell\) \.app-nav/);
   assert.match(page, /body:has\(\.studio-route-shell\) \.app-footer/);
   assert.doesNotMatch(page, /studio\.css/);
@@ -222,7 +235,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studioCopyByLocale/);
   assert.match(adminShell, /getStudioCopy/);
   assert.match(adminShell, /getLocalizedRouteDefinitions/);
-  assert.match(adminShell, /navLabel:\s*"Studio cá nhân"/);
+  assert.match(adminShell, /navLabel:\s*"Studio cá nhân của Nguyễn Lê Phong"/);
   assert.match(adminShell, /navLabel:\s*"个人 Studio"/);
   assert.match(adminShell, /navLabel:\s*"パーソナル Studio"/);
   assert.match(adminShell, /navLabel:\s*"개인 Studio"/);
@@ -231,7 +244,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studio-topbar/);
   assert.match(adminShell, /metric-grid/);
   assert.match(adminShell, /<span>Studio<\/span>/);
-  assert.match(adminShell, /Find setup note/);
+  assert.match(adminShell, /Search Studio/);
   assert.match(adminShell, /Profile navigation/);
   assert.match(adminShell, /Profile menu/);
   assert.match(adminShell, /label:\s*"Home"/);
@@ -334,11 +347,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /title:\s*"Delivery Checklists"/);
   assert.match(adminShell, /title:\s*"Welcome"/);
   assert.match(adminShell, /title:\s*"System Design Flow"/);
-  assert.match(adminShell, /"flow-react-flow-architecture-demo":\s*"Example"/);
-  assert.match(adminShell, /"flow-react-flow-system-blueprint":\s*"Blueprint"/);
+  assert.match(adminShell, /"flow-react-flow-architecture-demo":\s*"React Flow Examples"/);
+  assert.match(adminShell, /"flow-react-flow-system-blueprint":\s*"System Blueprint"/);
   assert.match(adminShell, /chartLabel:\s*"Flow chart"/);
-  assert.match(adminShell, /Read the path from left to right/);
-  assert.match(adminShell, /chartLabel:\s*"Sơ đồ flow"/);
+  assert.match(adminShell, /Read from left to right/);
   assert.match(adminShell, /Đọc từ trái sang phải/);
   assert.doesNotMatch(adminShell, /Mail preview/);
   assert.doesNotMatch(adminShell, /Chat preview/);
@@ -568,104 +580,52 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.route-actions,\s*\.calendar-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
 
   for (const expected of [
-    "AI setup",
+    "Machine bootstrap",
+    "My AI Working System",
+    "Engineering Foundations for AI-Assisted Work",
+    "System Engineering Roadmap for AI-Assisted Work",
+    "Antigravity Awesome Skills",
+    "Open Design",
     "Computer setup",
     "Terminal setup",
-    "Machine bootstrap",
-    "AI Operating System",
-    "Daily direction for using NotebookLM, GPT, Claude, Codex, and Antigravity as one system.",
-    "NotebookLM keeps source-backed truth",
-    "AI-Driven Engineering Foundation",
-    "Daily roadmap for technical decision-making from task intake to production operation.",
-    "Seven layers from task to production",
-    "Production readiness prompt",
-    "Morning planning prompt",
-    "Weekly command center prompt",
-    "Codex",
-    "Claude",
-    "Antigravity",
-    "Gemini",
-    "Open Design",
+    "Multi-agent AI",
+    "OpenHands",
+    "CrewAI",
     "npx antigravity-awesome-skills",
     "https://github.com/sickn33/antigravity-awesome-skills",
     "od mcp install codex",
-    "od mcp install antigravity",
-    "Code Review Skill",
-    "Code Shape Review",
-    "Data structures",
-    "Strategy for replaceable rules",
-    "Clean architecture",
-    "Service boundaries",
-    "Utility extraction",
-    "Frontend Architecture Skill",
-    "Backend Architecture Skill",
-    "Blog Content Writer Skill",
-    "Prompt Writing Skill",
-    "Status Report Skill",
-    "Doc / Spec / Tech Spec Skill",
-    "Proposal / Slide / Pitch Deck Skill",
-    "AI Operating System Skill",
-    "Daily AI Learning Coach Skill",
-    "NotebookLM Source Of Truth Skill",
-    "AI Delivery Factory Skill",
-    "Claude Deep Review Skill",
-    "Career AI Strategy Skill",
-    "Engineering Decision Map Skill",
-    "Staff Engineer AI Review Pack Skill",
-    "Data, Resilience, Observability Review Skill",
-    "Ticket intake to first commit",
-    "AI-driven engineering foundation roadmap",
-    "Engineering delivery checklist",
-    "Senior engineer reflex",
-    "Capstone production project",
-    "AI system engineering roadmap",
-    "SDLC ownership",
-    "Distributed architecture and resilience",
-    "Large-scale storage",
-    "B-Tree and LSM-Tree",
-    "AI-Driven System Engineering Roadmap",
-    "AI-first elicitation prompt",
-    "Circuit Breaker",
-    "Event Sourcing",
-    "OpenTelemetry",
-    "Create a new module",
-    "Release readiness",
-    "Rollout plan",
-    "Roll out by phase.",
-    "Daily AI learning loop",
-    "Weekly AI OS review",
-    "AI tool routing decision tree",
-    "AI-assisted feature workflow",
-    "90-day AI skill plan",
-    "Create five ChatGPT Projects.",
-    "Create five NotebookLM notebooks.",
-    "Architecture & System Design",
-    "React Flow",
-    "React Flow Example for Software Diagrams",
-    "A React Flow showcase for example families",
-    "overview",
-    "interaction",
-    "grouping",
-    "layout",
-    "styling",
-    "whiteboard",
-    "architecture",
-    "Node Shapes",
-    "Edge Types",
-    "System Design Interview Flow",
+    "Code Review",
+    "Frontend Architecture",
+    "Backend Architecture",
+    "Technical Writing",
+    "Prompt Design",
+    "Executive Status Reporting",
+    "Technical Specification & RFC",
+    "AI Workflow Design",
+    "Continuous AI Learning",
+    "Source-Grounded Knowledge Extraction",
+    "AI-Assisted Delivery & CI/CD",
+    "Adversarial Design Review",
+    "Architecture Decision Mapping",
+    "Architecture Risk Audit",
+    "Skill Library Inventory",
+    "From Ticket to First Commit",
+    "Engineering Delivery Checklist",
+    "Production Systems Practice Project",
+    "Create a New Module",
+    "Release Readiness",
+    "Rollout Plan",
+    "Daily AI Practice Loop",
+    "Weekly AI Workflow Review",
+    "AI Tool Routing Guide",
+    "90-Day AI Practice Plan",
+    "React Flow Pattern Library",
     "Architecture Decision Flow",
     "Production Incident Flow",
     "Release Readiness Flow",
     "AI-Assisted Delivery Flow",
     "Portfolio Story Flow",
-    "System Design Blueprint",
-    "A product manager asks for a new partner onboarding flow.",
-    "A team debates whether to add a queue for partner sync.",
-    "checkout latency climbs",
-    "dashboard filter with analytics and SEO changes",
-    "AI agent helps with coding",
-    "CV bullet, STAR answer, blog outline, or case-study draft",
-    "poster-style architecture map"
+    "System Design Blueprint"
   ]) {
     assert.match(data, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
@@ -676,33 +636,64 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   for (const expected of [
     "getLocalizedStudioAiSkills",
     "getLocalizedStudioWorkflowChecklists",
-    "Review thay đổi theo correctness",
-    "Review data structure",
-    "Review design pattern",
-    "Review clean architecture",
-    "application service giữ orchestration",
-    "generic utility bắt đầu giữ product state",
+    "Rà soát mã nguồn",
+    "tính đúng đắn trước",
     "Kiến trúc frontend",
-    "Viết blog content",
-    "Từ ticket đến commit đầu tiên",
-    "Checklist delivery engineering",
+    "Kiến trúc backend",
+    "Viết nội dung kỹ thuật",
+    "Thiết kế prompt",
+    "Báo cáo tiến độ và vận hành",
+    "Hệ thống làm việc với AI",
+    "Đánh giá sản phẩm AI",
+    "Bảo mật, quyền riêng tư và mô hình đe dọa",
+    "Danh sách kiểm tra khi giao phần mềm",
+    "Lộ trình kỹ thuật hệ thống với AI",
+    "Vòng học AI hằng ngày",
     "getLocalizedStudioFlows",
     "getLocalizedStudioFlowGroups",
-    "Flow System Design",
-    "React Flow",
-    "Example",
-    "System Design Blueprint",
-    "Đổi các dạng example trước khi chọn sơ đồ",
-    "onboarding đối tác",
-    "release readiness",
-    "support noise",
-    "Catalog node shape React Flow",
-    "Canvas software architecture",
-    "Blueprint system design lớn bằng React Flow",
+    "Quy trình thiết kế hệ thống",
+    "Quy trình ra quyết định kiến trúc",
+    "Quy trình xử lý sự cố",
+    "Quy trình AI-assisted Delivery",
+    "Bộ ví dụ React Flow",
+    "Bản thiết kế hệ thống bằng React Flow",
     "isVietnameseLocale"
   ]) {
     assert.match(localizedContent, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
+
+  for (const expected of [
+    "Chuẩn bị máy mới",
+    "Cách tôi phối hợp các công cụ AI",
+    "Nền tảng kỹ thuật khi làm việc cùng AI",
+    "Lộ trình kỹ thuật hệ thống khi làm việc cùng AI",
+    "Thiết lập máy tính",
+    "Thiết lập dòng lệnh",
+    "Multi-agent AI",
+    "getLocalizedStudioFolders",
+    "getLocalizedStudioNotes"
+  ]) {
+    assert.match(localizedWorkspace, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+
+  for (const expected of [
+    "getLocalizedStudioDemoFlows",
+    "locale.toLowerCase().split",
+    "Sơ đồ dày thông tin theo phong cách production",
+    "title: localized?.title ?? node.title",
+    "title: localized?.title ?? view.title",
+    "label: copy.edges[edge.id] ?? edge.label"
+  ]) {
+    assert.match(localizedDemos, new RegExp(expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+  }
+
+  assert.match(localizedContent, /title:\s*"Design system và chất lượng UI"/);
+  assert.match(localizedContent, /tags:\s*\["Design system", "UI", "Accessibility", "Responsive"\]/);
+
+  assert.doesNotMatch(adminShell, /Đây là nơi em gom/);
+  assert.doesNotMatch(adminShell, /Tìm AI setup/);
+  assert.doesNotMatch(adminShell, /Studio Admin dashboard/);
+  assert.doesNotMatch(adminShell, /Container đầu tiên cho research/);
 
   for (const expected of [
     "Built-in primitives",
