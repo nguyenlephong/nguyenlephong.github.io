@@ -12,7 +12,7 @@ test('workflows, package metadata, lockfile, and Node types share the Node 22 ru
   assert.equal(nodeVersion, '22')
 
   for (const currentWorkflow of [workflow, ciWorkflow]) {
-    const setupNodeCount = currentWorkflow.match(/uses: actions\/setup-node@v4/g)?.length ?? 0
+    const setupNodeCount = currentWorkflow.match(/uses: actions\/setup-node@v5/g)?.length ?? 0
     const versionFileCount = currentWorkflow.match(/node-version-file: \.nvmrc/g)?.length ?? 0
     assert.ok(setupNodeCount > 0)
     assert.equal(versionFileCount, setupNodeCount)
@@ -60,7 +60,7 @@ test('Pages workflow refuses manual or deploy jobs outside refs/heads/main', () 
 
 test('CI is read-only, never persists checkout credentials, and scopes SONAR_TOKEN to the scan step', () => {
   assert.match(ciWorkflow, /^permissions:\n  contents: read$/m)
-  const checkoutCount = ciWorkflow.match(/uses: actions\/checkout@v4/g)?.length ?? 0
+  const checkoutCount = ciWorkflow.match(/uses: actions\/checkout@v5/g)?.length ?? 0
   const credentialCount = ciWorkflow.match(/persist-credentials: false/g)?.length ?? 0
   assert.equal(credentialCount, checkoutCount)
   assert.equal(ciWorkflow.match(/SONAR_TOKEN:/g)?.length, 1)
@@ -78,6 +78,17 @@ test('CI verifies offline browser behavior after its single smoke build', () => 
   assert.ok(buildIndex >= 0 && buildIndex < offlineIndex)
   assert.equal(ciWorkflow.match(/run: npm run build:fast\s*$/gm)?.length, 1)
   assert.match(ciWorkflow, /npx playwright install --with-deps chromium/)
+})
+
+test('workflows use Node 24 action majors instead of deprecated Node 20 runtimes', () => {
+  for (const currentWorkflow of [workflow, ciWorkflow]) {
+    assert.doesNotMatch(currentWorkflow, /uses: actions\/(?:checkout|setup-node)@v4/)
+  }
+
+  assert.match(workflow, /uses: actions\/cache@v5/)
+  assert.doesNotMatch(workflow, /uses: actions\/cache@v4/)
+  assert.match(ciWorkflow, /uses: actions\/setup-java@v5/)
+  assert.doesNotMatch(ciWorkflow, /uses: actions\/setup-java@v4/)
 })
 
 test('Firebase hosting verifies the fixed out artifact immediately before publish', () => {

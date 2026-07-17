@@ -20,12 +20,12 @@ jobs:
       contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           persist-credentials: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -34,7 +34,7 @@ jobs:
         run: npm ci
 
       - name: Cache generated OpenGraph images
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: public/og-cache
           key: og-images-v2-${{ hashFiles('public/blog-data/**/*.json', 'public/notes-data/**/*.json', 'scripts/generate-static-og.mjs', 'src/app/**/*opengraph*', 'src/app/_og/**') }}
