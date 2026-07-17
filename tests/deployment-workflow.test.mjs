@@ -38,6 +38,11 @@ test('Pages workflow grants deployment credentials only to the deploy job', () =
   assert.doesNotMatch(deployJob, /contents: write/)
 })
 
+test('Pages workflow configures Pages without rewriting the composed Next config', () => {
+  assert.match(workflow, /uses: actions\/configure-pages@v6/)
+  assert.doesNotMatch(workflow, /static_site_generator:/)
+})
+
 test('Pages workflow verifies the built out tree before uploading it', () => {
   const buildIndex = workflow.indexOf('run: npm run build')
   const verifyIndex = workflow.indexOf('run: npm run verify:artifact')

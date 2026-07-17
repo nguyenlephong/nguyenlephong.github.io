@@ -43,8 +43,6 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6
-        with:
-          static_site_generator: next
 
       - name: Run source quality gates
         run: npm run check
