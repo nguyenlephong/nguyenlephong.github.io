@@ -1,7 +1,7 @@
 import { routing, type Locale } from '@/i18n/routing'
 import { SITE_URL } from '@/app/seo.config'
 
-const MAX_DESC = 170
+const MAX_DESC = 160
 
 /** Strip HTML tags and decode a few common entities; collapse whitespace. */
 export function htmlToPlainText(html: string): string {
@@ -40,8 +40,15 @@ export function localeAlternates(
   for (const l of locales) {
     map[l] = `${SITE_URL}/${l}${pathAfterLocale}`
   }
-  map['x-default'] = `${SITE_URL}/${routing.defaultLocale}${pathAfterLocale}`
+  const defaultLocale = preferredContentLocale(locales)
+  map['x-default'] = `${SITE_URL}/${defaultLocale}${pathAfterLocale}`
   return map
+}
+
+/** Selects the stable default among real content variants. */
+export function preferredContentLocale<T extends string>(locales: readonly T[]): T {
+  const siteDefault = locales.find((locale) => locale === routing.defaultLocale)
+  return siteDefault ?? locales[0] ?? (routing.defaultLocale as T)
 }
 
 export function canonicalFor(locale: string, pathAfterLocale: string): string {

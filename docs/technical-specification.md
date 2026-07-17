@@ -114,36 +114,36 @@ It must either be built ahead of time or handled by client-side JavaScript.
 
 ## 6. Routing and Page Behavior
 
-### Locale Shell
+### Locale and public-site shells
 
-`src/app/[locale]/layout.tsx` is the main application shell. It:
+`src/app/[locale]/layout.tsx` is the shared locale document boundary. It
+validates and sets the locale, provides `next-intl`, owns shared locale
+metadata, and loads global analytics.
 
-- validates the locale
-- sets the request locale for `next-intl`
-- loads Google fonts through `next/font`
-- injects global SEO schema for `Person` and `WebSite`
-- initializes theme, font, and reading-background scripts before hydration
-- lazy-loads Google Analytics, Google AdSense, and PostHog
-- mounts global UI such as header, footer, route progress, web vitals reporting,
-  and reader tools
+`src/app/[locale]/(site)/layout.tsx` is the public-site boundary. It initializes
+theme, font, and reading-background preferences, then mounts the header,
+footer, motion and route progress, offline support, Web Vitals reporting, and
+reader tools. The pathless `(site)` segment does not appear in public URLs.
+Studio remains outside this route group, so it does not render or hydrate the
+public-site shell.
 
 ### Route Table
 
 | Route                              | File                                               | Rendering notes                                                                           |
 |------------------------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------|
 | `/`                                | `src/app/page.tsx`                                 | Static redirect to `/en` with crawler-readable metadata.                                  |
-| `/{locale}`                        | `src/app/[locale]/page.tsx`                        | Main CV/profile page, built from `profileInfo` and translated section labels.             |
-| `/{locale}/about`                  | `src/app/[locale]/about/page.tsx`                  | Translated about sections from `messages`.                                                |
-| `/{locale}/gallery`                | `src/app/[locale]/gallery/page.tsx`                | Gallery from `profileInfo.gallery`, with ImageGallery JSON-LD.                            |
-| `/{locale}/apps`                   | `src/app/[locale]/apps/page.tsx`                   | Static app showcase from `apps.data.ts`.                                                  |
-| `/{locale}/apps/english`           | `src/app/[locale]/apps/english/page.tsx`           | Private/noindex E-Slang practice app.                                                     |
-| `/{locale}/blog`                   | `src/app/[locale]/blog/page.tsx`                   | Blog index with categories, quick filters, and Blog JSON-LD.                              |
-| `/{locale}/blog/{category}`        | `src/app/[locale]/blog/[category]/page.tsx`        | Category landing page.                                                                    |
-| `/{locale}/blog/{category}/{slug}` | `src/app/[locale]/blog/[category]/[slug]/page.tsx` | Article page with schema, related posts, reading tracker, reactions, share dock, and TOC. |
-| `/{locale}/notes`                  | `src/app/[locale]/notes/page.tsx`                  | Notes index with topic filters and CollectionPage JSON-LD.                                |
+| `/{locale}`                        | `src/app/[locale]/(site)/page.tsx`                        | Main CV/profile page, built from `profileInfo` and translated section labels.             |
+| `/{locale}/about`                  | `src/app/[locale]/(site)/about/page.tsx`                  | Translated about sections from `messages`.                                                |
+| `/{locale}/gallery`                | `src/app/[locale]/(site)/gallery/page.tsx`                | Gallery from `profileInfo.gallery`, with ImageGallery JSON-LD.                            |
+| `/{locale}/apps`                   | `src/app/[locale]/(site)/apps/page.tsx`                   | Static app showcase from `apps.data.ts`.                                                  |
+| `/{locale}/apps/english`           | `src/app/[locale]/(site)/apps/english/page.tsx`           | Private/noindex E-Slang practice app.                                                     |
+| `/{locale}/blog`                   | `src/app/[locale]/(site)/blog/page.tsx`                   | Blog index with categories, quick filters, and Blog JSON-LD.                              |
+| `/{locale}/blog/{category}`        | `src/app/[locale]/(site)/blog/[category]/page.tsx`        | Category landing page.                                                                    |
+| `/{locale}/blog/{category}/{slug}` | `src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx` | Article page with schema, related posts, reading tracker, reactions, share dock, and TOC. |
+| `/{locale}/notes`                  | `src/app/[locale]/(site)/notes/page.tsx`                  | Notes index with topic filters and CollectionPage JSON-LD.                                |
 | `/{locale}/studio`                 | `src/app/[locale]/studio/page.tsx`                 | Shadow-DOM admin workbench, route-isolated from the main profile shell.                   |
-| `/{locale}/notes/{slug}`           | `src/app/[locale]/notes/[slug]/page.tsx`           | Note article page, source-book card, topic breadcrumb, FAQ support, engagement widgets.   |
-| `/{locale}/heartbeats`             | `src/app/[locale]/heartbeats/page.tsx`             | Private/noindex family time visualization with placeholder public data.                   |
+| `/{locale}/notes/{slug}`           | `src/app/[locale]/(site)/notes/[slug]/page.tsx`           | Note article page, source-book card, topic breadcrumb, FAQ support, engagement widgets.   |
+| `/{locale}/heartbeats`             | `src/app/[locale]/(site)/heartbeats/page.tsx`             | Private/noindex family time visualization with placeholder public data.                   |
 
 Most routes expose `generateStaticParams()`, which lets Next.js enumerate every
 static localized page during build.
@@ -263,6 +263,13 @@ SEO is a first-class part of the app.
 | Sitemap                | `src/app/sitemap.ts`                | Locale-aware static route, blog, and notes URL generation.                                    |
 | Robots                 | `src/app/robots.ts`                 | Allows public pages, blocks `/private`, `/api`, and localized `/heartbeats`.                  |
 | OpenGraph image routes | `src/app/**/opengraph-image.tsx`    | Dynamic social images rendered during static export.                                          |
+| Artifact SEO verifier  | `scripts/verify-static-artifact.mjs`| Checks exported sitemap URLs, canonicals, titles, descriptions, language metadata, and robots. |
+
+The artifact verifier works against the generated `out/` directory rather than
+source-code patterns. Every sitemap URL must resolve to exported HTML, use the
+configured HTTPS origin, have one matching canonical URL, remain indexable, and
+include a title, description, and document language. Sitemap alternates must
+also point to an indexable URL in the same sitemap.
 
 ### OpenGraph Build Flow
 
@@ -345,8 +352,11 @@ Important behavior:
 - If Firebase environment variables are missing, engagement quietly no-ops.
 - One view is recorded per browser session through `sessionStorage`.
 - Reactions are remembered per browser through `localStorage`.
-- Writes use Firestore atomic increments.
+- Views and shares use Firestore atomic increments. Reaction toggles and
+  switches use one transaction so old/new counters cannot partially apply.
 - Failed writes roll back optimistic UI updates where needed.
+- UI code targets the provider-neutral `EngagementRepository`; the Firebase
+  adapter remains lazy and client-only.
 
 Required public build-time variables:
 
@@ -362,13 +372,20 @@ Optional variables:
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY
 ```
 
 `firestore.rules` allows anyone to read `postStats` and allows constrained
-counter writes. The rules protect the shape of the data and prevent arbitrary
-overwrites, but they do not make the counters audit-grade. A determined client
-can still loop valid increments. Treat the counters as public engagement signals,
-not financial or security records.
+counter writes. The rules constrain ids, exact fields, types, reaction keys,
+nonnegative values, affected fields, and deltas, but do not make counters
+audit-grade. A determined valid client can still loop allowed increments.
+
+When the App Check site key is configured, reCAPTCHA Enterprise App Check is
+initialized before Firestore. Roll out with enforcement disabled, monitor valid
+and invalid request metrics across a representative traffic cycle, fix legitimate
+invalid traffic, then enable Firestore enforcement. Never ship App Check debug
+tokens in the static artifact. See `specs/engagement-provider-boundary.md` for
+the monitor-to-enforce and rollback runbook.
 
 ## 11. Client UX Systems
 
@@ -419,6 +436,7 @@ Current test focus:
 npm run build
 npm run build:fast
 npm run build:og
+npm run verify:artifact
 ```
 
 | Command      | Meaning                                                               |
@@ -426,30 +444,103 @@ npm run build:og
 | `build`      | Full static export with full OG generation.                           |
 | `build:fast` | Static export with dynamic OG generation skipped/restored from cache. |
 | `build:og`   | Targeted OG build helper.                                             |
+| `verify:artifact` | Verifies output size, route assets, SEO output, and public-secret guardrails without rebuilding. |
+
+`config/static-artifact-budgets.json` contains the static artifact limits. The
+limits deliberately sit close to the measured export so new growth is visible
+while route and content duplication are reduced:
+
+| Budget | Current limit |
+|--------|---------------|
+| Total artifact | 850 MiB |
+| Total files | 27,500 |
+| Largest HTML file | 430 KiB |
+| Largest JavaScript file | 1.35 MiB |
+| Largest CSS file | 210 KiB |
+| JavaScript referenced by one route | 2.2 MiB |
+| CSS referenced by one route | 220 KiB |
+| Sitemap URL floor | 904 |
+
+The pathless `(site)` route group intentionally adds about 2,144 Next.js RSC
+segment files so public pages and Studio can have separate runtime boundaries
+without changing public URLs. The complete export measures 26,463 files and
+673.7 MiB: the route-group isolation adds only about 6.5 MiB, but its file
+inventory requires the 27,500-file ceiling. That cap leaves only 1,037 files,
+or about 3.9 percent, of headroom. The 850 MiB byte ceiling remains unchanged;
+the adjustment is a measured compatibility allowance rather than permission
+for general artifact growth.
+
+The verifier warns at 90 percent of the total-byte and file-count limits. These
+are temporary ceilings, not performance targets. Tighten them after the
+locale-route and Studio bundle work reduces the baseline. All recognized public
+text formats, including exported HTML and Next RSC `.txt` payloads, are scanned
+with bounded concurrency for high-confidence private keys and provider tokens.
+A PEM finding requires a complete header, credible base64 payload, and matching
+footer; a documentation-only header is not treated as a leak. Route-asset
+budgets sample the home, blog, notes, and Studio entry points across English,
+Vietnamese, Chinese, Japanese, Korean, and French routes. Individual file limits
+still cover every emitted HTML, JavaScript, and CSS file.
+
+The SEO gate keeps the current 904-URL sitemap baseline, requires core public
+routes for every supported locale, validates every sitemap URL against its
+exported canonical HTML, and performs the reverse check for self-canonical,
+indexable HTML. Firebase web configuration remains allowed because it is a
+public client identifier; authorization still belongs in Firebase Rules and
+App Check.
 
 ### Deploy Commands
 
+After the control-plane migration below, the authoritative deployment path is
+`.github/workflows/nextjs.yml`. A push to `main` runs source checks, performs one
+full production build, verifies the artifact, uploads it with the supported
+GitHub Pages artifact action, and then deploys that exact verified artifact.
+The repository's Pages source must be set to **GitHub Actions** for that deploy
+job to become authoritative.
+
+The old branch publisher remains available only as an explicit emergency
+fallback:
+
 ```bash
-npm run deploy
-npm run deploy:fast
-npm run deploy:og
+npm run build
+npm run deploy:legacy
 ```
 
-The deploy scripts publish `out/` with `gh-pages`. `predeploy` bumps
-`app-version.json` and runs a full build through Bun:
+`deploy:legacy` requires the opt-in set by its npm script and force-with-lease
+publishes the existing `out/` directory to `gh-pages`. After its final cleanup,
+the publisher always runs `verify:artifact` on that exact tree before staging
+and pushing it. The target branch is fixed: any `PAGES_BRANCH` environment
+override is rejected. It is not a normal release path.
+`deploy:legacy:build` additionally bumps `app-version.json` and performs the
+full build. `npm run fb-deploy` uses the same fixed artifact verifier immediately
+before publishing `out/` to Firebase Hosting. CI and deployment both use npm
+and Node 22 (minimum 22.18.0).
 
-```bash
-node scripts/bump-version.mjs && bun run build
-```
+Merging this change does **not** mutate the repository's live Pages setting. At
+the time of this migration, GitHub Pages still uses the legacy branch source.
+Perform the control-plane migration after the PR is merged:
 
-CI uses npm and Node 20.
+1. Leave the existing `gh-pages` deployment serving traffic while the PR lands.
+2. Open **Settings → Environments → github-pages → Deployment branches and
+   tags**, choose **Selected branches and tags**, and allow only `main`. The
+   workflow also checks `github.ref == 'refs/heads/main'`, including manual
+   dispatches, but the environment policy is the independent deployment guard.
+3. Change **Settings → Pages → Build and deployment → Source** to
+   **GitHub Actions** (API `build_type: workflow`).
+4. Manually dispatch `nextjs.yml` from `main`, wait for its verified artifact to deploy,
+   and validate the public canonical URLs and `sitemap.xml`.
+5. If deployment fails, switch the Pages source back to the `gh-pages` branch;
+   the guarded legacy publisher remains available until the migration is
+   confirmed.
+6. After the rollback window, remove the `gh-pages` branch deliberately. The
+   source switch does not delete that branch or its last published tree, so it
+   remains a live legacy residual until this explicit cleanup is completed.
 
 ### GitHub Actions
 
 | Workflow                            | Trigger                           | Responsibility                                                      |
 |-------------------------------------|-----------------------------------|---------------------------------------------------------------------|
-| `.github/workflows/ci-frontend.yml` | Pull requests and pushes to `dev` | Type-check, lint, tests, fast smoke build.                          |
-| `.github/workflows/nextjs.yml`      | Pushes to `master`                | Full build, cache OG images, upload `out/`, deploy to GitHub Pages. |
+| `.github/workflows/ci-frontend.yml` | Pull requests and pushes to `dev` | Type-check, lint, tests, one fast smoke build, artifact/SEO verification, and offline browser verification. |
+| `.github/workflows/nextjs.yml`      | Pushes to `main` or manual dispatch from `main` | Source checks, one full build, artifact/SEO/offline verification, official Pages artifact upload and deployment. |
 
 ## 13. Deployment View
 
@@ -458,12 +549,14 @@ See [C4 Deployment Diagram](./diagrams/c4-deployment.puml).
 Main deployment path:
 
 1. Developer commits source and content.
-2. GitHub Actions installs dependencies with Node 20.
-3. Next.js builds a static export into `out/`.
-4. OG images are generated, cached, renamed, and linked as `.png`.
-5. GitHub Pages publishes `out/`.
-6. Visitor browsers load static files and optional external scripts.
-7. Browser-side engagement calls go to Firebase Firestore.
+2. GitHub Actions installs dependencies with Node 22 (minimum 22.18.0).
+3. Source quality checks run before publication.
+4. Next.js performs one full static export into `out/`.
+5. OG images are generated, cached, renamed, and linked as `.png`.
+6. Architecture, SEO, and public-secret budgets verify the generated artifact.
+7. GitHub Actions uploads and deploys that exact artifact to GitHub Pages.
+8. Visitor browsers load static files and optional external scripts.
+9. Browser-side engagement calls go to Firebase Firestore.
 
 `firebase.json` also points hosting at `out/`, so Firebase Hosting can serve the
 same static export if used.

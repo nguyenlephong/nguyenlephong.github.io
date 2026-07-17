@@ -15,9 +15,9 @@ Deployment_Node(dev_machine, "Developer Machine", "macOS / Node.js", "Local edit
 
 Deployment_Node(github, "GitHub", "Repository and automation") {
   Container(source_repo, "Remote Repository", "GitHub", "Stores committed source and content.")
-  Deployment_Node(actions, "GitHub Actions Runner", "Ubuntu / Node 20") {
-    Container(ci_quality, "Quality Job", "npm", "Runs typecheck, lint, node tests, and fast smoke build.")
-    Container(build_job, "Pages Build Job", "Next.js static export", "Runs full build, generates OG images, restores cache, and prepares out.")
+  Deployment_Node(actions, "GitHub Actions Runner", "Ubuntu / Node 22") {
+    Container(ci_quality, "Quality Job", "npm", "Runs typecheck, lint, node tests, fast smoke build, and artifact budgets.")
+    Container(build_job, "Pages Build Job", "Next.js static export", "Runs source checks, one full build, SEO and artifact verification, then uploads the Pages artifact.")
     ContainerDb(actions_cache, "Actions Cache", "GitHub cache", "Caches node dependencies and public/og-cache entries.")
   }
 }
@@ -44,10 +44,10 @@ Rel(owner, repo, "Edits locally")
 Rel(repo, dev_server, "Runs local preview", "npm run dev")
 Rel(owner, source_repo, "Pushes commits", "Git")
 Rel(source_repo, ci_quality, "Triggers on PR and dev branch pushes")
-Rel(source_repo, build_job, "Triggers on master branch pushes")
+Rel(source_repo, build_job, "Triggers on main branch pushes or manual dispatch")
 Rel(ci_quality, actions_cache, "Restores dependency cache")
 Rel(build_job, actions_cache, "Restores and saves OG image cache")
-Rel(build_job, out_dir, "Deploys static export", "GitHub Pages artifact")
+Rel(build_job, out_dir, "Deploys the verified static export", "Official GitHub Pages artifact")
 Rel(visitor, out_dir, "Requests pages and assets", "HTTPS")
 Rel(out_dir, static_runtime, "Loads HTML, CSS, JS, images, and PDFs")
 Rel(static_runtime, browser_storage, "Persists local preferences and markers")

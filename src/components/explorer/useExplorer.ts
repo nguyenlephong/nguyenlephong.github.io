@@ -2,6 +2,7 @@
 
 import { type RefObject, useEffect, useMemo, useRef, useState } from 'react'
 import { useDebouncedValue } from '@/components/blog/useDebouncedValue'
+import type { Locale } from '@/i18n/routing'
 import { normalizeSearch, readUrlParam } from '@/lib/content/search'
 
 /** A selectable filter (blog category / notes topic). `color` drives `--blog-accent`. */
@@ -34,6 +35,21 @@ export interface UseExplorerOptions {
   /** URL query key for the active filter (`cat` | `topic`). */
   filterParam: string
   pageSize: number
+  /** Current static archive page. Used while no client-side filter is active. */
+  staticPagination: StaticPagination
+  /** Full-corpus items loaded on demand after search/filter intent. */
+  searchItems?: readonly unknown[] | null
+  /** Keeps static browsing usable when the optional search index fails. */
+  searchFailed?: boolean
+}
+
+export interface StaticPagination {
+  current: number
+  total: number
+  totalItems: number
+  basePath: string
+  /** Locale that owns the exported archive chain. Defaults to the active UI locale. */
+  linkLocale?: Locale
 }
 
 export interface ExplorerApi<T> {
@@ -50,6 +66,8 @@ export interface ExplorerApi<T> {
   hasFilters: boolean
   activeFilter: ExplorerFilterOption | null
   activeColor: string | undefined
+  isStaticBrowsing: boolean
+  staticPagination: StaticPagination
   onSearch: (value: string) => void
   openPalette: () => void
   togglePaletteVisibility: () => void
@@ -74,7 +92,13 @@ export function useExplorer<T>(
   filters: ExplorerFilterOption[],
   popularTags: string[],
   accessors: ExplorerAccessors<T>,
-  { filterParam, pageSize }: UseExplorerOptions,
+  {
+    filterParam,
+    pageSize,
+    staticPagination,
+    searchItems: untypedSearchItems,
+    searchFailed = false,
+  }: UseExplorerOptions,
 ): ExplorerApi<T> {
   const [view, setView] = useState<ExplorerView>(INITIAL_VIEW)
   const [paletteOpen, setPaletteOpen] = useState(false)
@@ -87,25 +111,18 @@ export function useExplorer<T>(
   const listTopRef = useRef<HTMLDivElement>(null)
   const hydratedFromUrl = useRef(false)
 
-  // Precompute a normalised search blob per item once.
-  const searchable = useMemo(
-    () => items.map((item) => ({ item, blob: normalizeSearch(accessors.searchText(item)) })),
-    // accessors are pure/static; recompute only when items change.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [items],
-  )
-
   // Restore state from the URL on mount so deep links / bookmarks work.
   useEffect(() => {
     const q = readUrlParam('q') ?? ''
     const f = readUrlParam(filterParam)
     const tg = readUrlParam('tag')
     const pg = Number(readUrlParam('page'))
+    const hasSearchState = Boolean(q || f || tg)
     const next: ExplorerView = {
       query: q,
       filter: f && filters.some((x) => x.id === f) ? f : null,
       tag: tg && popularTags.includes(tg) ? tg : null,
-      page: Number.isInteger(pg) && pg > 1 ? pg : 1,
+      page: hasSearchState && Number.isInteger(pg) && pg > 1 ? pg : 1,
     }
     hydratedFromUrl.current = true
     if (next.query || next.filter || next.tag || next.page > 1) {
@@ -120,20 +137,46 @@ export function useExplorer<T>(
     [debouncedQuery],
   )
 
-  const filtered = useMemo(
+  const hasFilters = Boolean(view.query || view.filter || view.tag)
+  const searchItems = untypedSearchItems as readonly T[] | null | undefined
+  const hasSearchIndex = searchItems !== null && searchItems !== undefined
+  const isStaticBrowsing = !hasFilters || !hasSearchIndex || searchFailed
+  const activeItems = isStaticBrowsing ? items : searchItems
+
+  // Precompute a normalised blob only for the active data source. The full
+  // corpus does not exist in memory until the optional search index resolves.
+  const searchable = useMemo(
     () =>
-      searchable
+      activeItems.map((item) => ({
+        item,
+        blob: normalizeSearch(accessors.searchText(item)),
+      })),
+    // accessors are pure/static; recompute only when the active source changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [activeItems],
+  )
+
+  const filtered = useMemo(
+    () => {
+      if (isStaticBrowsing) return [...items]
+      return searchable
         .filter(({ item }) => !view.filter || accessors.filterId(item) === view.filter)
         .filter(({ item }) => !view.tag || accessors.tags(item).includes(view.tag as string))
         .filter(({ blob }) => queryTerms.every((term) => blob.includes(term)))
-        .map(({ item }) => item),
+        .map(({ item }) => item)
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [searchable, view.filter, view.tag, queryTerms],
+    [isStaticBrowsing, items, searchable, view.filter, view.tag, queryTerms],
   )
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize))
-  const safePage = Math.min(view.page, totalPages)
-  const pageItems = filtered.slice((safePage - 1) * pageSize, safePage * pageSize)
+  const clientTotalPages = Math.max(1, Math.ceil(filtered.length / pageSize))
+  const clientSafePage = Math.min(view.page, clientTotalPages)
+  const totalPages = isStaticBrowsing ? staticPagination.total : clientTotalPages
+  const safePage = isStaticBrowsing ? staticPagination.current : clientSafePage
+  const pageItems = isStaticBrowsing
+    ? [...items]
+    : filtered.slice((clientSafePage - 1) * pageSize, clientSafePage * pageSize)
+  const count = isStaticBrowsing ? staticPagination.totalItems : filtered.length
 
   // Keep the URL in sync with the active view (skip first render so we don't
   // clobber an incoming deep link before it's been read).
@@ -143,14 +186,14 @@ export function useExplorer<T>(
     if (debouncedQuery.trim()) params.set('q', debouncedQuery.trim())
     if (view.filter) params.set(filterParam, view.filter)
     if (view.tag) params.set('tag', view.tag)
-    if (safePage > 1) params.set('page', String(safePage))
+    if (hasFilters && clientSafePage > 1) params.set('page', String(clientSafePage))
     const qs = params.toString()
     window.history.replaceState(
       null,
       '',
       qs ? `${window.location.pathname}?${qs}` : window.location.pathname,
     )
-  }, [debouncedQuery, view.filter, view.tag, safePage, filterParam])
+  }, [debouncedQuery, view.filter, view.tag, hasFilters, clientSafePage, filterParam])
 
   // Close the palette on outside pointer / Escape.
   useEffect(() => {
@@ -213,7 +256,6 @@ export function useExplorer<T>(
     setPaletteOpen(false)
   }
 
-  const hasFilters = Boolean(view.query || view.filter || view.tag)
   const activeFilter = view.filter
     ? (filters.find((f) => f.id === view.filter) ?? null)
     : null
@@ -224,7 +266,7 @@ export function useExplorer<T>(
     pageItems,
     totalPages,
     safePage,
-    count: filtered.length,
+    count,
     paletteOpen,
     palettePlacement,
     commandRef,
@@ -232,6 +274,8 @@ export function useExplorer<T>(
     hasFilters,
     activeFilter,
     activeColor: activeFilter?.color,
+    isStaticBrowsing,
+    staticPagination,
     onSearch,
     openPalette,
     togglePaletteVisibility,

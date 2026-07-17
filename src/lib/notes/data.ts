@@ -1,14 +1,18 @@
-import { existsSync } from "node:fs";
 import path from "node:path";
-import { routing } from "@/i18n/routing";
+import { routing, type Locale } from "@/i18n/routing";
 import {
   byDateDesc,
   overlayByKey,
-  readJson,
   readJsonValidated
 } from "@/lib/content/io";
-import { rewriteContentAssetUrls } from "@/lib/assets/icdn";
-import { notesIndexSchema, noteSchema } from "./schema";
+import { pageCount } from "@/lib/content/pagination";
+import { rewriteContentAssetValues } from "@/lib/assets/icdn";
+import {
+  noteOverrideSchema,
+  notesIndexOverrideSchema,
+  notesIndexSchema,
+  noteSchema
+} from "./schema";
 import type { Note, NoteMeta, NotesIndexFile, TopicMeta } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "public", "notes-data");
@@ -38,19 +42,15 @@ function noteLocales(): string[] {
   return [...NOTE_CONTENT_LOCALES];
 }
 
-export function getNoteContentLocales(slug: string): string[] {
-  return [
-    "en",
-    ...(existsSync(path.join(DATA_DIR, "vi", "posts", `${slug}.json`))
-      ? ["vi"]
-      : [])
-  ];
+export function getNoteContentLocales(slug: string): Locale[] {
+  const note = baseIndex().posts.find((entry) => entry.slug === slug);
+  return note?.locales ? [...note.locales] : [];
 }
 
 function baseIndex(): NotesIndexFile {
-  return (
+  return rewriteContentAssetValues(
     readJsonValidated(path.join(DATA_DIR, "_index.json"), notesIndexSchema) ??
-    EMPTY_INDEX
+      EMPTY_INDEX
   );
 }
 
@@ -63,15 +63,16 @@ export function loadNotesIndex(locale?: string): NotesIndexFile {
   const base = baseIndex();
   if (contentLocale(locale) !== "vi") return base;
 
-  const override = readJson<Partial<NotesIndexFile>>(
-    path.join(DATA_DIR, "vi", "_index.json")
+  const override = readJsonValidated(
+    path.join(DATA_DIR, "vi", "_index.json"),
+    notesIndexOverrideSchema
   );
   if (!override) return base;
 
-  return {
+  return rewriteContentAssetValues({
     topics: overlayByKey(base.topics, override.topics, (t) => t.id),
     posts: overlayByKey(base.posts, override.posts, (p) => p.slug)
-  };
+  });
 }
 
 /** Notes visible for a locale — both English and Vietnamese serve the shared set. */
@@ -80,6 +81,14 @@ export function listNotes(locale?: string): NoteMeta[] {
   return loadNotesIndex(locale)
     .posts.filter(() => noteLocales().includes(eff))
     .sort(byDateDesc);
+}
+
+/** Real note archive locales whose authored corpus reaches this page. */
+export function listNotesArchiveLocales(page: number): Locale[] {
+  if (!Number.isInteger(page) || page < 1) return [];
+  return NOTE_CONTENT_LOCALES.filter(
+    (locale) => page <= pageCount(listNotes(locale).length)
+  );
 }
 
 /** Topics that have at least one visible note for the locale. */
@@ -154,13 +163,14 @@ export function loadNote(slug: string, locale?: string): Note | null {
   );
   if (!base) return null;
   if (contentLocale(locale) !== "vi") {
-    return { ...base, html: rewriteContentAssetUrls(base.html) };
+    return rewriteContentAssetValues(base);
   }
 
-  const override = readJson<Partial<Note>>(
-    path.join(DATA_DIR, "vi", "posts", `${slug}.json`)
+  const override = readJsonValidated(
+    path.join(DATA_DIR, "vi", "posts", `${slug}.json`),
+    noteOverrideSchema
   );
-  if (!override) return { ...base, html: rewriteContentAssetUrls(base.html) };
+  if (!override) return rewriteContentAssetValues(base);
 
   const note = {
     ...base,
@@ -173,5 +183,5 @@ export function loadNote(slug: string, locale?: string): Note | null {
     faqs: override.faqs ?? base.faqs
   };
 
-  return { ...note, html: rewriteContentAssetUrls(note.html) };
+  return rewriteContentAssetValues(note);
 }

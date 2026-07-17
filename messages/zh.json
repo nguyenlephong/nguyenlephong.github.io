@@ -440,11 +440,14 @@
         "clear": "清除筛选",
         "results": "{count, plural, =0 {暂无笔记} other {# 篇笔记}}",
         "noResults": "没有符合搜索条件的笔记。",
+        "searchUnavailable": "搜索暂时不可用。你仍可以继续浏览下方页面。",
         "pagination": {
           "label": "笔记分页",
           "prev": "上一页",
           "next": "下一页",
-          "goToPage": "前往第 {page} 页"
+          "goToPage": "前往第 {page} 页",
+          "pageLabel": "第 {page} 页，共 {total} 页",
+          "pageDescription": "浏览笔记归档的第 {page}/{total} 页，阅读关于生活、工作与持续思考的记录。"
         }
       },
       "engagement": {
@@ -473,11 +476,14 @@
         "clear": "清除筛选",
         "results": "{count, plural, =0 {暂无文章} other {# 篇文章}}",
         "noResults": "没有符合搜索条件的文章。",
+        "searchUnavailable": "搜索暂时不可用。你仍可以继续浏览下方页面。",
         "pagination": {
           "label": "博客分页",
           "prev": "上一页",
           "next": "下一页",
-          "goToPage": "前往第 {page} 页"
+          "goToPage": "前往第 {page} 页",
+          "pageLabel": "第 {page} 页，共 {total} 页",
+          "pageDescription": "浏览博客的第 {page}/{total} 页，阅读关于软件架构、源代码、AI 与工程协作的实用文章。"
         }
       },
       "eyebrow": "文章",
@@ -527,5 +533,10 @@
         "close": "关闭"
       }
     }
+  },
+  "ContentFallback": {
+    "eyebrow": "译文正在准备中",
+    "description": "此语言的完整版本尚未提供。你可以继续阅读下方已有的语言版本。",
+    "action": "阅读{language}版本"
   }
 }

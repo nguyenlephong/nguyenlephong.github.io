@@ -1,6 +1,10 @@
 #!/usr/bin/env node
+import { execFile } from 'node:child_process'
 import { promises as fs } from 'node:fs'
+import os from 'node:os'
 import path from 'node:path'
+import { promisify } from 'node:util'
+import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 
 const ROOT = process.cwd()
@@ -9,8 +13,23 @@ const ICDN_DIR = path.join(DOM_PUB_DIR, 'icdn')
 const WEBP_QUALITY = Number(process.env.ICDN_WEBP_QUALITY ?? 82)
 const OG_JPEG_QUALITY = Number(process.env.ICDN_OG_JPEG_QUALITY ?? 86)
 const BATCH_SIZE = Number(process.env.ICDN_SYNC_BATCH_SIZE ?? 8)
+const EXPECTED_DOM_PUB_REPOSITORY = 'nguyenlephong/dom-pub'
+const execFileAsync = promisify(execFile)
 
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp', '.gif'])
+const OWNED_DIRS = ['blogs', 'notes', 'gallery', 'og']
+
+const DIRECTORY_GROUPS = [
+  { sourceDir: 'public/assets/blog', targetDir: 'blogs', kind: 'webp' },
+  { sourceDir: 'public/assets/notes', targetDir: 'notes', kind: 'webp' },
+  {
+    sourceDir: 'public/assets/photos',
+    targetDir: 'gallery/photos',
+    kind: 'webp',
+  },
+  { sourceDir: 'public/og/blog', targetDir: 'og/blogs', kind: 'og' },
+  { sourceDir: 'public/og/notes', targetDir: 'og/notes', kind: 'og' },
+]
 
 const LEGACY_GALLERY_ASSETS = [
   {
@@ -130,93 +149,280 @@ async function ensureParent(filePath) {
 
 async function convertToWebp(from, to) {
   await ensureParent(to)
-  await sharp(from)
-    .rotate()
-    .webp({ quality: WEBP_QUALITY, effort: 4 })
-    .toFile(to)
+  await sharp(from).rotate().webp({ quality: WEBP_QUALITY, effort: 4 }).toFile(to)
 }
 
 async function convertToOgJpeg(from, to) {
   await ensureParent(to)
-  await sharp(from)
-    .flatten({ background: '#ffffff' })
-    .jpeg({ quality: OG_JPEG_QUALITY, mozjpeg: true })
-    .toFile(to)
+  await sharp(from).flatten({ background: '#ffffff' }).jpeg({ quality: OG_JPEG_QUALITY, mozjpeg: true }).toFile(to)
 }
 
-async function removeOwnedDirs() {
-  for (const dir of ['blogs', 'notes', 'gallery', 'og']) {
-    await fs.rm(path.join(ICDN_DIR, dir), { recursive: true, force: true })
+async function assertDirectory(filePath) {
+  try {
+    const stats = await fs.stat(filePath)
+    return stats.isDirectory()
+  } catch {
+    return false
   }
 }
 
-async function buildJobs() {
+async function assertFile(filePath) {
+  try {
+    const stats = await fs.stat(filePath)
+    return stats.isFile()
+  } catch {
+    return false
+  }
+}
+
+async function lstatOrNull(filePath) {
+  try {
+    return await fs.lstat(filePath)
+  } catch (error) {
+    if (error?.code === 'ENOENT') return null
+    throw error
+  }
+}
+
+function isPathInside(parentPath, candidatePath) {
+  const relative = path.relative(parentPath, candidatePath)
+  return relative !== '' && !relative.startsWith('..') && !path.isAbsolute(relative)
+}
+
+function assertPathInside(parentPath, candidatePath, label) {
+  if (!isPathInside(parentPath, candidatePath)) {
+    throw new Error(`[sync-icdn] safety check failed; ${label} escapes ${parentPath}`)
+  }
+}
+
+async function assertCanonicalDirectory(filePath, label) {
+  const resolvedPath = path.resolve(filePath)
+  const stats = await lstatOrNull(resolvedPath)
+  if (stats?.isSymbolicLink()) {
+    throw new Error(`[sync-icdn] safety check failed; ${label} must not be a symlink: ${resolvedPath}`)
+  }
+  if (!stats?.isDirectory()) {
+    throw new Error(`[sync-icdn] safety check failed; ${label} is not a directory: ${resolvedPath}`)
+  }
+
+  return fs.realpath(resolvedPath)
+}
+
+async function assertOptionalOwnedDirectory(filePath, parentRealPath, label) {
+  const stats = await lstatOrNull(filePath)
+  if (!stats) return
+  if (stats.isSymbolicLink()) {
+    throw new Error(`[sync-icdn] safety check failed; ${label} must not be a symlink: ${filePath}`)
+  }
+  if (!stats.isDirectory()) {
+    throw new Error(`[sync-icdn] safety check failed; ${label} is not a directory: ${filePath}`)
+  }
+  const realPath = await fs.realpath(filePath)
+  assertPathInside(parentRealPath, realPath, label)
+}
+
+function githubRepositoryFromRemote(remoteUrl) {
+  const match = remoteUrl.trim().match(/github\.com[/:]([^/\s]+)\/([^/\s]+?)(?:\.git)?$/i)
+  return match ? `${match[1]}/${match[2]}`.toLowerCase() : null
+}
+
+async function assertRepositoryIdentity(domPubRealPath, allowTestFixture) {
+  if (allowTestFixture) {
+    const tempRealPath = await fs.realpath(os.tmpdir())
+    assertPathInside(tempRealPath, domPubRealPath, 'test fixture')
+    return
+  }
+
+  let topLevel
+  let remoteUrl
+  try {
+    const topLevelResult = await execFileAsync('git', ['-C', domPubRealPath, 'rev-parse', '--show-toplevel'], {
+      encoding: 'utf8',
+    })
+    const remoteUrlResult = await execFileAsync('git', ['-C', domPubRealPath, 'remote', 'get-url', 'origin'], {
+      encoding: 'utf8',
+    })
+    topLevel = topLevelResult.stdout
+    remoteUrl = remoteUrlResult.stdout
+  } catch (error) {
+    throw new Error(
+      `[sync-icdn] safety check failed; DOM_PUB_DIR must be the ${EXPECTED_DOM_PUB_REPOSITORY} checkout`,
+      { cause: error },
+    )
+  }
+
+  const repositoryRealPath = await fs.realpath(topLevel.trim())
+  if (repositoryRealPath !== domPubRealPath) {
+    throw new Error(`[sync-icdn] safety check failed; DOM_PUB_DIR is not the repository root: ${domPubRealPath}`)
+  }
+  const repository = githubRepositoryFromRemote(remoteUrl)
+  if (repository !== EXPECTED_DOM_PUB_REPOSITORY) {
+    throw new Error(
+      `[sync-icdn] safety check failed; expected origin ${EXPECTED_DOM_PUB_REPOSITORY}, received ${repository ?? 'unknown'}`,
+    )
+  }
+}
+
+async function validateDomPubTarget({ domPubDir, ownedDirs, allowTestFixture }) {
+  const domPubRealPath = await assertCanonicalDirectory(domPubDir, 'DOM_PUB_DIR')
+  await assertRepositoryIdentity(domPubRealPath, allowTestFixture)
+
+  const expectedIcdnDir = path.join(domPubRealPath, 'icdn')
+  const icdnRealPath = await assertCanonicalDirectory(expectedIcdnDir, 'ICDN target')
+  assertPathInside(domPubRealPath, icdnRealPath, 'ICDN target')
+
+  for (const ownedDir of ownedDirs) {
+    await assertOptionalOwnedDirectory(path.join(icdnRealPath, ownedDir), icdnRealPath, `owned target ${ownedDir}`)
+  }
+
+  return { domPubRealPath, icdnRealPath }
+}
+
+async function validateReplacementTargets({ stagingIcdnDir, icdnDir, domPubDir, ownedDirs }) {
+  const domPubRealPath = await assertCanonicalDirectory(domPubDir, 'DOM_PUB_DIR')
+  const icdnRealPath = await assertCanonicalDirectory(icdnDir, 'ICDN target')
+  const stagingRealPath = await assertCanonicalDirectory(stagingIcdnDir, 'ICDN staging target')
+
+  if (icdnRealPath !== path.join(domPubRealPath, 'icdn')) {
+    throw new Error('[sync-icdn] safety check failed; ICDN target must be DOM_PUB_DIR/icdn')
+  }
+  assertPathInside(domPubRealPath, stagingRealPath, 'ICDN staging target')
+
+  for (const ownedDir of ownedDirs) {
+    await assertOptionalOwnedDirectory(path.join(icdnRealPath, ownedDir), icdnRealPath, `owned target ${ownedDir}`)
+    const stagedOwnedDir = path.join(stagingRealPath, ownedDir)
+    await assertCanonicalDirectory(stagedOwnedDir, `staged owned target ${ownedDir}`)
+    assertPathInside(stagingRealPath, await fs.realpath(stagedOwnedDir), `staged owned target ${ownedDir}`)
+  }
+}
+
+function assertTargetInsideIcdn(icdnDir, targetPath) {
+  const relative = path.relative(icdnDir, targetPath)
+  if (!relative || relative.startsWith('..') || path.isAbsolute(relative)) {
+    throw new Error(`[sync-icdn] invalid target outside icdn: ${targetPath}`)
+  }
+}
+
+function assertOwnedDirectories(ownedDirs) {
+  if (ownedDirs.length === 0) {
+    throw new Error('[sync-icdn] preflight failed; no owned directories configured')
+  }
+
+  const unique = new Set()
+  for (const ownedDir of ownedDirs) {
+    if (!ownedDir || ownedDir === '.' || ownedDir === '..' || path.basename(ownedDir) !== ownedDir) {
+      throw new Error(`[sync-icdn] preflight failed; invalid owned directory: ${ownedDir}`)
+    }
+    if (unique.has(ownedDir)) {
+      throw new Error(`[sync-icdn] preflight failed; duplicate owned directory: ${ownedDir}`)
+    }
+    unique.add(ownedDir)
+  }
+}
+
+function assertBatchSize(batchSize) {
+  if (!Number.isFinite(batchSize) || !Number.isInteger(batchSize) || batchSize < 1) {
+    throw new Error(
+      `[sync-icdn] preflight failed; ICDN_SYNC_BATCH_SIZE must be a finite positive integer, received: ${String(batchSize)}`,
+    )
+  }
+}
+
+export async function buildJobs({
+  root = ROOT,
+  domPubDir = DOM_PUB_DIR,
+  icdnDir = ICDN_DIR,
+  directoryGroups = DIRECTORY_GROUPS,
+  localMappings = LOCAL_GALLERY_ASSETS,
+  legacyMappings = LEGACY_GALLERY_ASSETS,
+} = {}) {
+  const missingDirectories = []
+  for (const group of directoryGroups) {
+    const sourceDir = path.join(root, group.sourceDir)
+    if (!(await assertDirectory(sourceDir))) missingDirectories.push(sourceDir)
+  }
+  if (missingDirectories.length > 0) {
+    throw new Error(
+      `[sync-icdn] preflight failed; missing source directories:\n${missingDirectories
+        .map((filePath) => `- ${toPosix(filePath)}`)
+        .join('\n')}`,
+    )
+  }
+
   const jobs = []
+  const emptyDirectories = []
 
-  for (const [sourceDir, targetDir] of [
-    ['public/assets/blog', 'blogs'],
-    ['public/assets/notes', 'notes'],
-    ['public/assets/photos', 'gallery/photos'],
-  ]) {
-    const absoluteSourceDir = path.join(ROOT, sourceDir)
-    for (const file of await walk(absoluteSourceDir)) {
+  for (const { sourceDir, targetDir, kind } of directoryGroups) {
+    const absoluteSourceDir = path.join(root, sourceDir)
+    const sourceFiles = await walk(absoluteSourceDir)
+    if (sourceFiles.length === 0) emptyDirectories.push(absoluteSourceDir)
+
+    for (const file of sourceFiles) {
       const relative = path.relative(absoluteSourceDir, file)
       jobs.push({
-        kind: 'webp',
+        kind,
         from: file,
-        to: path.join(ICDN_DIR, targetDir, replaceExtension(relative, 'webp')),
+        to: path.join(icdnDir, targetDir, replaceExtension(relative, kind === 'og' ? 'jpg' : 'webp')),
       })
     }
   }
+  if (emptyDirectories.length > 0) {
+    throw new Error(
+      `[sync-icdn] preflight failed; source directories contain no images:\n${emptyDirectories
+        .map((filePath) => `- ${toPosix(filePath)}`)
+        .join('\n')}`,
+    )
+  }
 
-  for (const [sourceDir, targetDir] of [
-    ['public/og/blog', 'og/blogs'],
-    ['public/og/notes', 'og/notes'],
-  ]) {
-    const absoluteSourceDir = path.join(ROOT, sourceDir)
-    for (const file of await walk(absoluteSourceDir)) {
-      const relative = path.relative(absoluteSourceDir, file)
-      jobs.push({
-        kind: 'og',
-        from: file,
-        to: path.join(ICDN_DIR, targetDir, replaceExtension(relative, 'jpg')),
-      })
+  for (const mapping of localMappings) {
+    jobs.push({
+      kind: 'webp',
+      from: path.join(root, mapping.from),
+      to: path.join(icdnDir, mapping.to),
+    })
+  }
+
+  for (const mapping of legacyMappings) {
+    jobs.push({
+      kind: 'webp',
+      from: path.join(domPubDir, mapping.from),
+      to: path.join(icdnDir, mapping.to),
+    })
+  }
+
+  const missingFiles = []
+  const destinations = new Set()
+  for (const job of jobs) {
+    assertTargetInsideIcdn(icdnDir, job.to)
+    if (!(await assertFile(job.from))) missingFiles.push(job.from)
+
+    const destination = path.resolve(job.to)
+    if (destinations.has(destination)) {
+      throw new Error(`[sync-icdn] preflight failed; duplicate target: ${toPosix(job.to)}`)
     }
+    destinations.add(destination)
   }
-
-  for (const mapping of LOCAL_GALLERY_ASSETS) {
-    jobs.push({
-      kind: 'webp',
-      from: path.join(ROOT, mapping.from),
-      to: path.join(ICDN_DIR, mapping.to),
-    })
+  if (missingFiles.length > 0) {
+    throw new Error(
+      `[sync-icdn] preflight failed; missing source files:\n${missingFiles
+        .map((filePath) => `- ${toPosix(filePath)}`)
+        .join('\n')}`,
+    )
   }
-
-  for (const mapping of LEGACY_GALLERY_ASSETS) {
-    jobs.push({
-      kind: 'webp',
-      from: path.join(DOM_PUB_DIR, mapping.from),
-      to: path.join(ICDN_DIR, mapping.to),
-    })
+  if (jobs.length === 0) {
+    throw new Error('[sync-icdn] preflight failed; no source assets found')
   }
 
   return jobs
 }
 
-async function runBatches(jobs) {
+async function runBatches(jobs, batchSize = BATCH_SIZE) {
   let converted = 0
-  let skipped = 0
 
-  for (let index = 0; index < jobs.length; index += BATCH_SIZE) {
-    const batch = jobs.slice(index, index + BATCH_SIZE)
+  for (let index = 0; index < jobs.length; index += batchSize) {
+    const batch = jobs.slice(index, index + batchSize)
     await Promise.all(
       batch.map(async (job) => {
-        if (!(await exists(job.from))) {
-          skipped += 1
-          console.warn(`[sync-icdn] missing ${toPosix(path.relative(ROOT, job.from))}`)
-          return
-        }
-
         if (job.kind === 'og') {
           await convertToOgJpeg(job.from, job.to)
         } else {
@@ -226,31 +432,172 @@ async function runBatches(jobs) {
       }),
     )
 
-    if (converted % 100 < BATCH_SIZE || index + BATCH_SIZE >= jobs.length) {
+    if (converted % 100 < batchSize || index + batchSize >= jobs.length) {
       console.log(`[sync-icdn] converted ${converted}/${jobs.length}`)
     }
   }
 
-  return { converted, skipped }
+  return { converted }
+}
+
+export async function replaceOwnedDirectories({
+  stagingIcdnDir,
+  icdnDir,
+  domPubDir,
+  ownedDirs,
+  beforeOperation = async () => {},
+}) {
+  assertOwnedDirectories(ownedDirs)
+  await validateReplacementTargets({
+    stagingIcdnDir,
+    icdnDir,
+    domPubDir,
+    ownedDirs,
+  })
+  const backupRoot = await fs.mkdtemp(path.join(domPubDir, '.icdn-backup-'))
+  const backedUp = []
+  const installed = []
+  let removeBackup = false
+
+  try {
+    await fs.mkdir(icdnDir, { recursive: true })
+
+    for (const ownedDir of ownedDirs) {
+      const staged = path.join(stagingIcdnDir, ownedDir)
+      const target = path.join(icdnDir, ownedDir)
+      const backup = path.join(backupRoot, ownedDir)
+
+      if (await exists(target)) {
+        await ensureParent(backup)
+        await beforeOperation({
+          operation: 'backup',
+          ownedDir,
+          source: target,
+          target: backup,
+        })
+        await fs.rename(target, backup)
+        backedUp.push({ target, backup })
+      }
+
+      await beforeOperation({
+        operation: 'install',
+        ownedDir,
+        source: staged,
+        target,
+      })
+      await fs.rename(staged, target)
+      installed.push(target)
+    }
+    removeBackup = true
+  } catch (error) {
+    const rollbackErrors = []
+
+    for (const target of installed.reverse()) {
+      try {
+        await beforeOperation({ operation: 'rollback-remove', target })
+        await fs.rm(target, { recursive: true, force: true })
+      } catch (rollbackError) {
+        rollbackErrors.push(rollbackError)
+      }
+    }
+    for (const { target, backup } of backedUp.reverse()) {
+      try {
+        await ensureParent(target)
+        await beforeOperation({
+          operation: 'rollback-restore',
+          source: backup,
+          target,
+        })
+        await fs.rename(backup, target)
+      } catch (rollbackError) {
+        rollbackErrors.push(rollbackError)
+      }
+    }
+
+    if (rollbackErrors.length > 0) {
+      const rollbackFailure = new AggregateError(
+        [error, ...rollbackErrors],
+        `[sync-icdn] replacement failed and rollback was incomplete; backups preserved for manual recovery at: ${backupRoot}`,
+      )
+      rollbackFailure.recoveryPath = backupRoot
+      throw rollbackFailure
+    }
+    removeBackup = true
+    throw error
+  } finally {
+    // An incomplete rollback needs the backup tree for manual recovery. Only
+    // successful publication or a fully successful rollback may remove it.
+    if (removeBackup) {
+      await fs.rm(backupRoot, { recursive: true, force: true })
+    }
+  }
+}
+
+export async function syncIcdnAssets({
+  root = ROOT,
+  domPubDir = DOM_PUB_DIR,
+  directoryGroups = DIRECTORY_GROUPS,
+  localMappings = LOCAL_GALLERY_ASSETS,
+  legacyMappings = LEGACY_GALLERY_ASSETS,
+  ownedDirs = OWNED_DIRS,
+  batchSize = BATCH_SIZE,
+  allowTestFixture = false,
+} = {}) {
+  if (!(await assertDirectory(domPubDir))) {
+    throw new Error(`[sync-icdn] missing dom-pub directory: ${domPubDir}`)
+  }
+  assertOwnedDirectories(ownedDirs)
+  assertBatchSize(batchSize)
+
+  const { domPubRealPath, icdnRealPath: icdnDir } = await validateDomPubTarget({
+    domPubDir,
+    ownedDirs,
+    allowTestFixture,
+  })
+  // Preflight is read-only: an absent source must not create, delete, or rename
+  // anything in the sibling dom-pub checkout.
+  const validatedJobs = await buildJobs({
+    root,
+    domPubDir,
+    icdnDir,
+    directoryGroups,
+    localMappings,
+    legacyMappings,
+  })
+  const stagingRoot = await fs.mkdtemp(path.join(domPubRealPath, '.icdn-sync-'))
+  const stagingIcdnDir = path.join(stagingRoot, 'icdn')
+
+  try {
+    const jobs = validatedJobs.map((job) => ({
+      ...job,
+      to: path.join(stagingIcdnDir, path.relative(icdnDir, job.to)),
+    }))
+    await Promise.all(ownedDirs.map((ownedDir) => fs.mkdir(path.join(stagingIcdnDir, ownedDir), { recursive: true })))
+    const result = await runBatches(jobs, batchSize)
+
+    // Staging lives beside dom-pub so each directory install uses a same-volume rename.
+    await replaceOwnedDirectories({
+      stagingIcdnDir,
+      icdnDir,
+      domPubDir: domPubRealPath,
+      ownedDirs,
+    })
+
+    return { ...result, icdnDir }
+  } finally {
+    await fs.rm(stagingRoot, { recursive: true, force: true })
+  }
 }
 
 async function main() {
-  if (!(await exists(DOM_PUB_DIR))) {
-    console.error(`[sync-icdn] missing dom-pub directory: ${DOM_PUB_DIR}`)
-    process.exit(1)
-  }
+  const result = await syncIcdnAssets()
 
-  await removeOwnedDirs()
-  const jobs = await buildJobs()
-  const result = await runBatches(jobs)
-  console.log(
-    `[sync-icdn] wrote ${result.converted} asset(s) to ${toPosix(
-      path.relative(ROOT, ICDN_DIR),
-    )}${result.skipped ? `, skipped ${result.skipped}` : ''}`,
-  )
+  console.log(`[sync-icdn] wrote ${result.converted} asset(s) to ${toPosix(path.relative(ROOT, result.icdnDir))}`)
 }
 
-main().catch((error) => {
-  console.error('[sync-icdn] failed:', error)
-  process.exit(1)
-})
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error('[sync-icdn] failed:', error)
+    process.exitCode = 1
+  })
+}

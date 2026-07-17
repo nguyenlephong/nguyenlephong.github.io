@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const page = await readFile("src/app/[locale]/about/page.tsx", "utf8");
+const page = await readFile("src/app/[locale]/(site)/about/page.tsx", "utf8");
 const globals = await readFile("src/app/globals.css", "utf8");
 const seo = await readFile("src/app/seo.config.ts", "utf8");
 const en = JSON.parse(await readFile("messages/en.json", "utf8"));

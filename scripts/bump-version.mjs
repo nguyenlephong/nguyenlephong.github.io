@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Bumps the patch version in app-version.json.
- * Run automatically via `predeploy` before every `bun run deploy`.
+ * Run explicitly by `npm run deploy:legacy:build` before its production build.
  *
  *   1.0.0 → 1.0.1 → 1.0.2 → ...
  */

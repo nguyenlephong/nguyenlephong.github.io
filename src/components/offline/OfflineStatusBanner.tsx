@@ -108,7 +108,7 @@ function persistDismissed(locale: string, dismissed: boolean): void {
 
 function postToWorker(
   registration: ServiceWorkerRegistration,
-  message: { type: 'OFFLINE_WARM_LOCALE'; locale: string; pathname: string | null } | { type: 'OFFLINE_WARM_PATH'; pathname: string },
+  message: { type: 'OFFLINE_WARM_PATH'; pathname: string },
 ) {
   const target =
     navigator.serviceWorker.controller ||
@@ -183,8 +183,6 @@ function OfflineStatusBannerInner({
   useEffect(() => {
     if (!('serviceWorker' in navigator)) return
 
-    let cancelled = false
-
     const onMessage = (event: MessageEvent) => {
       const data = event.data as
         | {
@@ -229,40 +227,21 @@ function OfflineStatusBannerInner({
       })
     }
 
-    const registerAndWarm = async () => {
+    const registerWorker = async () => {
       try {
         await navigator.serviceWorker.register(serviceWorkerUrl())
-        if (cancelled) return
-
-        setOfflineState((current) => {
-          if (current.phase === 'reading' || current.phase === 'extended') return current
-          return {
-            phase: 'syncing',
-            completeness: current.completeness,
-          }
-        })
-
-        const readyRegistration = await navigator.serviceWorker.ready
-        if (cancelled) return
-
-        postToWorker(readyRegistration, {
-          type: 'OFFLINE_WARM_LOCALE',
-          locale,
-          pathname,
-        })
       } catch {
         // Offline support is best-effort; the site must still work without it.
       }
     }
 
     navigator.serviceWorker.addEventListener('message', onMessage)
-    registerAndWarm()
+    registerWorker()
 
     return () => {
-      cancelled = true
       navigator.serviceWorker.removeEventListener('message', onMessage)
     }
-  }, [locale, pathname])
+  }, [locale])
 
   useEffect(() => {
     if (!('serviceWorker' in navigator) || !pathname) return

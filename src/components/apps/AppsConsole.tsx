@@ -18,7 +18,7 @@ import {
   LuX,
 } from 'react-icons/lu'
 import { APP_ROUTE } from '@/app/app.const'
-import type { AppShowcaseItem } from '@/app/[locale]/apps/apps.data'
+import type { AppShowcaseItem } from '@/app/[locale]/(site)/apps/apps.data'
 import { Link } from '@/i18n/navigation'
 import { track } from '@/lib/analytics'
 import EnglishVisual from './EnglishVisual'

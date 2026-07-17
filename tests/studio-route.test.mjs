@@ -61,6 +61,13 @@ function parseLayeredSystemNodeBounds(source) {
 test("studio route is wired into routing, seo, navigation, analytics, and inventory content", async () => {
   assert.ok(existsSync("src/app/[locale]/studio/page.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioWorkspace.tsx"));
+  assert.ok(existsSync("src/app/[locale]/studio/StudioStaticOverview.tsx"));
+  assert.ok(existsSync("src/app/[locale]/studio/studio-static-content.ts"));
+  assert.ok(existsSync("src/app/[locale]/studio/StudioDeliverySignalChart.tsx"));
+  assert.ok(existsSync("src/app/[locale]/studio/StudioDeliverySignalFeature.tsx"));
+  assert.ok(existsSync("src/app/[locale]/studio/StudioFeatureErrorBoundary.tsx"));
+  assert.ok(existsSync("src/app/[locale]/studio/StudioFlowCanvasRuntime.tsx"));
+  assert.ok(existsSync("src/app/[locale]/studio/StudioFlowCanvasFeature.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/studio-admin-shell.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.shadow-styles.ts"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.data.ts"));
@@ -87,6 +94,14 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     tracker,
     page,
     workspace,
+    staticOverview,
+    staticContent,
+    deliveryChart,
+    deliveryFeature,
+    featureBoundary,
+    flowRuntime,
+    flowFeature,
+    flowLoader,
     adminShell,
     data,
     localizedContent,
@@ -111,6 +126,14 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/components/analytics/PageTracker.tsx", "utf8"),
     readFile("src/app/[locale]/studio/page.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8"),
+    readFile("src/app/[locale]/studio/StudioStaticOverview.tsx", "utf8"),
+    readFile("src/app/[locale]/studio/studio-static-content.ts", "utf8"),
+    readFile("src/app/[locale]/studio/StudioDeliverySignalChart.tsx", "utf8"),
+    readFile("src/app/[locale]/studio/StudioDeliverySignalFeature.tsx", "utf8"),
+    readFile("src/app/[locale]/studio/StudioFeatureErrorBoundary.tsx", "utf8"),
+    readFile("src/app/[locale]/studio/StudioFlowCanvasRuntime.tsx", "utf8"),
+    readFile("src/app/[locale]/studio/StudioFlowCanvasFeature.tsx", "utf8"),
+    readFile("src/app/[locale]/studio/studio-flow-runtime-loader.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8"),
     readFile("src/app/[locale]/studio/studio.data.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio.localized-content.ts", "utf8"),
@@ -160,6 +183,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(page, /Studio — Ghi chú kỹ thuật, Checklists và System Flows/);
   assert.match(page, /PageTracker page="studio" eventName="studio_view"/);
   assert.match(page, /"@type":\s*"CollectionPage"/);
+  assert.match(page, /hasPart:/);
+  assert.match(page, /getStudioStaticModuleHref/);
+  assert.match(page, /images:\s*\[\{ url: socialImage, width: 1200, height: 630/);
+  assert.match(page, /images:\s*\[socialImage\]/);
   assert.doesNotMatch(page, /"@type":\s*"HowTo"/);
   assert.doesNotMatch(page, /"@type":\s*"TechArticle"/);
   assert.doesNotMatch(page, /getLocalizedStudioNotes|getLocalizedStudioFlows/);
@@ -167,8 +194,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(page, /studio-route-shell/);
   assert.match(page, /<div className="studio-route-shell">/);
   assert.doesNotMatch(page, /<main className="studio-route-shell">/);
-  assert.match(page, /body:has\(\.studio-route-shell\) \.app-nav/);
-  assert.match(page, /body:has\(\.studio-route-shell\) \.app-footer/);
+  assert.doesNotMatch(page, /body:has\(\.studio-route-shell\) \.app-nav/);
+  assert.doesNotMatch(page, /body:has\(\.studio-route-shell\) \.app-footer/);
   assert.doesNotMatch(page, /studio\.css/);
   assert.doesNotMatch(page, /studio-kit\/studio-kit\.css/);
 
@@ -177,24 +204,43 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(workspace, /ShadowIsland/);
   assert.match(workspace, /StudioAdminShell/);
   assert.match(workspace, /studioShadowStyles/);
+  assert.match(page, /fallback=\{<StudioStaticOverview locale=\{locale\} \/>\}/);
+  assert.match(workspace, /fallback=\{fallback\}/);
+  assert.match(staticOverview, /data-studio-static-overview="true"/);
+  assert.match(staticOverview, /<h1>\{content\.title\}<\/h1>/);
+  assert.match(staticOverview, /data-studio-module-link=\{module\.id\}/);
+  assert.match(staticContent, /en:\s*\{/);
+  assert.match(staticContent, /vi:\s*\{/);
+  assert.match(staticContent, /zh:\s*\{/);
+  assert.match(staticContent, /ja:\s*\{/);
+  assert.match(staticContent, /ko:\s*\{/);
+  assert.match(staticContent, /fr:\s*\{/);
   assert.match(adminShell, /^"use client"/);
   assert.match(adminShell, /StudioAdminShell/);
   assert.match(adminShell, /const DEFAULT_ROUTE:\s*StudioRouteId = "welcome"/);
-  assert.match(adminShell, /@xyflow\/react/);
-  assert.match(adminShell, /applyNodeChanges/);
-  assert.match(adminShell, /applyEdgeChanges/);
-  assert.match(adminShell, /addEdge/);
-  assert.match(adminShell, /ViewportPortal/);
-  assert.match(adminShell, /ReactFlow/);
-  assert.match(adminShell, /MiniMap/);
-  assert.match(adminShell, /maskStrokeColor/);
-  assert.match(adminShell, /bgColor="var\(--flow-minimap-bg\)"/);
-  assert.match(adminShell, /nodeColor="var\(--flow-minimap-node-fill\)"/);
-  assert.match(adminShell, /nodeStrokeWidth=\{isBlueprintDiagram \? 1\.15 : 2\.6\}/);
-  assert.match(adminShell, /nodeBorderRadius=\{isBlueprintDiagram \? 4 : 8\}/);
+  assert.doesNotMatch(adminShell, /@xyflow\/react/);
+  assert.match(adminShell, /StudioFlowCanvasFeature/);
+  assert.match(adminShell, /loadStudioFlowRuntime/);
+  assert.match(flowFeature, /dynamic<StudioFlowCanvasRuntimeProps>/);
+  assert.match(flowFeature, /StudioFeatureErrorBoundary/);
+  assert.match(flowFeature, /onRetry=\{\(\) => window\.location\.reload\(\)\}/);
+  assert.match(flowFeature, /Tải lại Studio/);
+  assert.match(flowLoader, /import\("\.\/StudioFlowCanvasRuntime"\)/);
+  assert.match(flowRuntime, /@xyflow\/react/);
+  assert.match(flowRuntime, /applyNodeChanges/);
+  assert.match(flowRuntime, /applyEdgeChanges/);
+  assert.match(flowRuntime, /addEdge/);
+  assert.match(flowRuntime, /ViewportPortal/);
+  assert.match(flowRuntime, /ReactFlow/);
+  assert.match(flowRuntime, /MiniMap/);
+  assert.match(flowRuntime, /maskStrokeColor/);
+  assert.match(flowRuntime, /bgColor="var\(--flow-minimap-bg\)"/);
+  assert.match(flowRuntime, /nodeColor="var\(--flow-minimap-node-fill\)"/);
+  assert.match(flowRuntime, /nodeStrokeWidth=\{blueprint \? 1\.15 : 2\.6\}/);
+  assert.match(flowRuntime, /nodeBorderRadius=\{blueprint \? 4 : 8\}/);
   assert.match(adminShell, /fitViewOptions/);
   assert.match(adminShell, /function buildArchitectureDemoCanvas/);
-  assert.match(adminShell, /function StudioFlowCanvasNodeCard/);
+  assert.match(flowRuntime, /function StudioFlowCanvasNodeCard/);
   assert.match(adminShell, /const isBlueprintDiagram = flow\.id === "react-flow-system-blueprint"/);
   assert.match(adminShell, /isBoardFullscreen/);
   assert.match(adminShell, /studio_flow_board_fullscreen_toggle/);
@@ -208,10 +254,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /flow-board-toolbar/);
   assert.match(adminShell, /flow-canvas-toolbar/);
   assert.match(adminShell, /flow-inspector-panel/);
-  assert.match(adminShell, /flow-helper-line/);
+  assert.match(flowRuntime, /flow-helper-line/);
   assert.match(adminShell, /flow-board-fullscreen-button/);
   assert.match(adminShell, /flow-chart-surface\$\{isReactFlowDemo \? " is-architecture-demo" : ""\}\$\{isBlueprintDiagram \? " is-blueprint-diagram" : ""\}\$\{isCompactDiagram \? " is-compact-diagram" : ""\}\$\{isBoardFullscreen \? " is-fullscreen" : ""\}/);
-  assert.match(adminShell, /function renderStudioFlowNodeIcon/);
+  assert.match(flowRuntime, /function renderStudioFlowNodeIcon/);
   assert.match(adminShell, /const isCompactDiagram = displayNodes\.some/);
   assert.match(adminShell, /getLayoutedStudioFlowNodes/);
   assert.match(adminShell, /getSourcePositionedStudioFlowNodes/);
@@ -402,14 +448,23 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /Release Signal/);
   assert.match(adminShell, /Component Inventory/);
   assert.match(adminShell, /System Workstreams/);
-  assert.match(adminShell, /DeliverySignalChart/);
-  assert.match(adminShell, /ResponsiveContainer/);
-  assert.match(adminShell, /ComposedChart/);
-  assert.match(adminShell, /Tooltip/);
-  assert.match(adminShell, /releaseSignalChartData/);
-  assert.match(adminShell, /rolloutVolume/);
-  assert.match(adminShell, /platformHealth/);
-  assert.match(adminShell, /incidentNoise/);
+  assert.match(adminShell, /StudioDeliverySignalFeature/);
+  assert.doesNotMatch(adminShell, /from "recharts"/);
+  assert.match(deliveryFeature, /dynamic\(\(\) => import\("\.\/StudioDeliverySignalChart"\)/);
+  assert.match(deliveryFeature, /StudioFeatureErrorBoundary/);
+  assert.match(deliveryFeature, /Tải lại Studio/);
+  assert.match(deliveryFeature, /onRetry=\{\(\) => window\.location\.reload\(\)\}/);
+  assert.match(deliveryFeature, /onClick=\{retry\}/);
+  assert.match(featureBoundary, /getDerivedStateFromError/);
+  assert.match(featureBoundary, /this\.props\.onRetry\(\)/);
+  assert.doesNotMatch(featureBoundary, /attempt/);
+  assert.match(deliveryChart, /from "recharts"/);
+  assert.match(deliveryChart, /ResponsiveContainer/);
+  assert.match(deliveryChart, /ComposedChart/);
+  assert.match(deliveryChart, /releaseSignalChartData/);
+  assert.match(deliveryChart, /rolloutVolume/);
+  assert.match(deliveryChart, /platformHealth/);
+  assert.match(deliveryChart, /incidentNoise/);
   assert.match(adminShell, /distributionSegments/);
   assert.match(adminShell, /componentInventory/);
   assert.doesNotMatch(adminShell, /Customer Activity/);
@@ -427,6 +482,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(kitIndex, /export \* from "\.\/shadow-island"/);
   assert.match(shadowIsland, /attachShadow\(\{ mode: "open", delegatesFocus: true \}\)/);
   assert.match(shadowIsland, /createPortal/);
+  assert.match(shadowIsland, /fallback\s*=\s*null/);
+  assert.match(shadowIsland, /:\s*fallback\}/);
   assert.match(kitReadme, /Reusable admin\/workspace components/);
   assert.doesNotMatch(kitReadme, /next-shadcn-admin-dashboard/);
   assert.doesNotMatch(kitReadme, /upstream/);

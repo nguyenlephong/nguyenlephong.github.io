@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const component = await readFile("src/components/motion/RouteProgressBar.tsx", "utf8");
-const layout = await readFile("src/app/[locale]/layout.tsx", "utf8");
+const layout = await readFile("src/app/[locale]/(site)/layout.tsx", "utf8");
 const globals = await readFile("src/app/globals.css", "utf8");
 
 test("route progress bar is mounted and styled as a smooth determinate loader", () => {

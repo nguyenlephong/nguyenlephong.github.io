@@ -1,75 +1,86 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
-name: Deploy Next.js site to Pages
+name: Deploy static site to GitHub Pages
+
 on:
   push:
-    branches:
-      - master
+    branches: [main]
+  workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+permissions: {}
 
 concurrency:
-  group: "pages"
+  group: pages-${{ github.repository }}
   cancel-in-progress: false
 
 jobs:
   build:
+    name: Build and verify static artifact
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js ⚙️
-        uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v5
         with:
-          node-version: 20
+          persist-credentials: false
 
-      - name: Cache dependencies ⚡
-        id: cache_dependencies
-        uses: actions/cache@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
         with:
-          path: node_modules
-          key: node-modules-${{ hashFiles('package-lock.json') }}
+          node-version-file: .nvmrc
+          cache: npm
 
-      - name: Install dependencies 🔧
-        shell: bash
-        if: steps.cache_dependencies.outputs.cache-hit != 'true'
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Cache OG images ⚡
-        uses: actions/cache@v3
+      - name: Cache generated OpenGraph images
+        uses: actions/cache@v5
         with:
           path: public/og-cache
-          key: og-images-v1-${{ hashFiles('public/blog-data/**/*.json', 'src/app/**/*opengraph*', 'src/app/_og/**') }}
+          key: og-images-v2-${{ hashFiles('public/blog-data/**/*.json', 'public/notes-data/**/*.json', 'scripts/generate-static-og.mjs', 'src/app/**/*opengraph*', 'src/app/_og/**') }}
           restore-keys: |
-            og-images-v1-
+            og-images-v2-
 
-      - name: Setup Pages ⚙️
-        uses: actions/configure-pages@v4
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
         with:
           static_site_generator: next
 
-      - name: Build with Next.js 🏗️
+      - name: Run source quality gates
+        run: npm run check
+
+      - name: Build production static export
         run: npm run build
 
-      - name: Upload artifact 📡
-        uses: actions/upload-pages-artifact@v3
+      - name: Verify architecture and SEO budgets
+        run: npm run verify:artifact
+
+      - name: Verify crawlable content pagination
+        run: npm run verify:pagination
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Verify offline browser behavior
+        run: npm run verify:offline
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./out
 
   deploy:
+    name: Deploy verified artifact
+    if: github.ref == 'refs/heads/main' && needs.build.result == 'success'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
-    needs: build
-
     steps:
-      - name: Publish to GitHub Pages 🚀
+      - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

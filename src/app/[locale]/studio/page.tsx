@@ -5,7 +5,12 @@ import { setRequestLocale } from "next-intl/server";
 import { PAGE_SEO, SITE, SITE_URL, absoluteUrl } from "@/app/seo.config";
 import PageTracker from "@/components/analytics/PageTracker";
 import { routing, type Locale } from "@/i18n/routing";
+import StudioStaticOverview from "./StudioStaticOverview";
 import StudioWorkspace from "./StudioWorkspace";
+import {
+  getStudioStaticContent,
+  getStudioStaticModuleHref
+} from "./studio-static-content";
 
 const seo = PAGE_SEO.studio;
 
@@ -26,9 +31,10 @@ const studioSeoByLocale: Record<string, { title: string; description: string; ke
 
 function getStudioSeo(locale: string) {
   const localized = studioSeoByLocale[locale];
+  const staticContent = getStudioStaticContent(locale);
   return localized
     ? { ...localized, keywords: [...(seo.keywords ?? []), ...localized.keywords] }
-    : { title: seo.title, description: seo.description, keywords: seo.keywords ?? [] };
+    : { title: staticContent.title, description: staticContent.intro, keywords: seo.keywords ?? [] };
 }
 
 type Props = { params: Promise<{ locale: string }> };
@@ -50,6 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const canonical = `/${locale}${seo.path}`;
   const localizedSeo = getStudioSeo(locale);
+  const socialImage = absoluteUrl(`/${locale}/opengraph-image`);
 
   return {
     title: localizedSeo.title,
@@ -62,14 +69,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: localizedSeo.title,
       description: localizedSeo.description,
       siteName: SITE.name,
-      locale: locale === "vi" ? "vi_VN" : locale === "en" ? "en_US" : locale.replace("-", "_")
+      locale: locale === "vi" ? "vi_VN" : locale === "en" ? "en_US" : locale.replace("-", "_"),
+      images: [{ url: socialImage, width: 1200, height: 630, alt: localizedSeo.title }]
     },
     twitter: {
       card: "summary_large_image",
       title: localizedSeo.title,
       description: localizedSeo.description,
       site: SITE.twitter,
-      creator: SITE.twitter
+      creator: SITE.twitter,
+      images: [socialImage]
     },
     robots: {
       index: true,
@@ -84,6 +93,7 @@ export default async function StudioPage({ params }: Props) {
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const localizedSeo = getStudioSeo(locale);
+  const staticContent = getStudioStaticContent(locale);
 
   const collectionLd = {
     "@context": "https://schema.org",
@@ -94,7 +104,15 @@ export default async function StudioPage({ params }: Props) {
     url: `${SITE_URL}/${locale}/studio`,
     inLanguage: locale as Locale,
     isPartOf: { "@type": "WebSite", "@id": `${SITE_URL}/#website` },
-    author: { "@type": "Person", "@id": `${SITE_URL}/#person` }
+    author: { "@type": "Person", "@id": `${SITE_URL}/#person` },
+    hasPart: staticContent.modules.map((module) => ({
+      "@type": "CreativeWork",
+      "@id": absoluteUrl(getStudioStaticModuleHref(locale, module)),
+      name: module.title,
+      description: module.description,
+      url: absoluteUrl(getStudioStaticModuleHref(locale, module)),
+      inLanguage: locale as Locale
+    }))
   };
 
   return (
@@ -124,24 +142,6 @@ export default async function StudioPage({ params }: Props) {
               overflow: hidden !important;
             }
 
-            body:has(.studio-route-shell) .app-nav,
-            body:has(.studio-route-shell) .nav-mobile-panel,
-            body:has(.studio-route-shell) .nav-mobile-backdrop,
-            body:has(.studio-route-shell) .app-footer,
-            body:has(.studio-route-shell) .blog-reader-tools,
-            body:has(.studio-route-shell) .font-switcher,
-            body:has(.studio-route-shell) .reading-background-switcher,
-            body:has(.studio-route-shell) .locale-menu,
-            body.studio-app-shell-active .app-nav,
-            body.studio-app-shell-active .nav-mobile-panel,
-            body.studio-app-shell-active .nav-mobile-backdrop,
-            body.studio-app-shell-active .app-footer,
-            body.studio-app-shell-active .blog-reader-tools,
-            body.studio-app-shell-active .font-switcher,
-            body.studio-app-shell-active .reading-background-switcher,
-            body.studio-app-shell-active .locale-menu {
-              display: none !important;
-            }
           `
         }}
       />
@@ -150,7 +150,7 @@ export default async function StudioPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionLd) }}
       />
       <PageTracker page="studio" eventName="studio_view" section="notes_admin" />
-      <StudioWorkspace locale={locale} />
+      <StudioWorkspace locale={locale} fallback={<StudioStaticOverview locale={locale} />} />
     </div>
   );
 }

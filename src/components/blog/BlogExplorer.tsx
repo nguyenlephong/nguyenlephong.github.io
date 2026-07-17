@@ -1,18 +1,25 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { getAllPostStats, postStatsId } from '@/lib/firebase/postStats'
+import { getPostStatsByIds, postStatsId } from '@/lib/firebase/postStats'
 import BlogPostCard from './BlogPostCard'
 import {
   useExplorer,
   type ExplorerFilterOption,
 } from '@/components/explorer/useExplorer'
 import { ExplorerShell, type ExplorerLabels } from '@/components/explorer/ExplorerShell'
-import type { BlogAccent, BlogPostMeta } from '@/lib/blog/types'
+import type { BlogAccent } from '@/lib/blog/types'
+import { CONTENT_PAGE_SIZE } from '@/lib/content/pagination'
+import {
+  fetchVersionedSearchIndex,
+  isBlogSearchIndex,
+  type BlogSearchIndex,
+  type BlogSearchItem,
+} from '@/lib/content/search-index'
 
 interface CardMeta {
-  post: BlogPostMeta
+  post: BlogSearchItem
   accent: BlogAccent
   categoryTitle: string
   readingLabel: string
@@ -21,6 +28,7 @@ interface CardMeta {
 interface CategoryOption {
   slug: string
   title: string
+  accent: BlogAccent
 }
 
 interface BlogExplorerProps {
@@ -28,32 +36,121 @@ interface BlogExplorerProps {
   categories: CategoryOption[]
   popularTags: string[]
   locale: string
-  pageSize?: number
+  currentPage: number
+  totalPages: number
+  totalItems: number
+  searchIndexUrl: string
   /** Threshold below which the view badge is hidden (default 100). */
   viewThreshold?: number
 }
 
 /**
- * Client-side blog index: instant search, category + tag filters, and numbered
- * pagination over a pre-rendered post list (all posts ship in the initial HTML;
- * JS only narrows what is shown). Thin wrapper over the shared
- * {@link useExplorer} engine + {@link ExplorerShell}.
+ * Progressive blog explorer. The initial payload contains one static page;
+ * full-corpus card metadata is fetched only after search/filter intent.
  */
 export default function BlogExplorer({
   cards,
   categories,
   popularTags,
   locale,
-  pageSize = 9,
+  currentPage,
+  totalPages,
+  totalItems,
+  searchIndexUrl,
   viewThreshold = 100,
 }: BlogExplorerProps) {
   const t = useTranslations('Pages.blog')
   const [viewCounts, setViewCounts] = useState<Record<string, number>>({})
+  const [loadedSearch, setLoadedSearch] = useState<{
+    cards: CardMeta[]
+    url: string
+  } | null>(null)
+  const searchCards = loadedSearch?.url === searchIndexUrl ? loadedSearch.cards : null
+  const [searchStatus, setSearchStatus] = useState<
+    'idle' | 'loading' | 'ready' | 'error'
+  >('idle')
+  const searchLoadRef = useRef<{
+    controller: AbortController
+    promise: Promise<void>
+    url: string
+  } | null>(null)
 
   const filters: ExplorerFilterOption[] = useMemo(
     () => categories.map((c) => ({ id: c.slug, label: c.title })),
     [categories],
   )
+
+  const categoryBySlug = useMemo(
+    () => new Map(categories.map((category) => [category.slug, category])),
+    [categories],
+  )
+
+  const loadSearchIndex = useCallback(() => {
+    if (searchCards) return Promise.resolve()
+    if (searchLoadRef.current?.url === searchIndexUrl) {
+      return searchLoadRef.current.promise
+    }
+
+    searchLoadRef.current?.controller.abort()
+    const controller = new AbortController()
+
+    setSearchStatus('loading')
+    const pending = (async () => {
+      try {
+        const payload = await fetchVersionedSearchIndex<BlogSearchIndex>(
+          searchIndexUrl,
+          isBlogSearchIndex,
+          controller.signal,
+        )
+        if (!payload) {
+          throw new Error('Invalid or stale blog search index')
+        }
+        if (controller.signal.aborted || searchLoadRef.current?.controller !== controller) {
+          return
+        }
+
+        setLoadedSearch({
+          url: searchIndexUrl,
+          cards: payload.items.map((post) => {
+            const category = categoryBySlug.get(post.category)
+            return {
+              post,
+              accent: category?.accent ?? 'ocean',
+              categoryTitle: category?.title ?? post.category,
+              readingLabel: t('readingTime', { minutes: post.readingMinutes }),
+            }
+          }),
+        })
+        setSearchStatus('ready')
+      } catch {
+        if (controller.signal.aborted || searchLoadRef.current?.controller !== controller) {
+          return
+        }
+        setSearchStatus('error')
+      }
+    })().finally(() => {
+      if (searchLoadRef.current?.controller === controller) {
+        searchLoadRef.current = null
+      }
+    })
+
+    searchLoadRef.current = { controller, promise: pending, url: searchIndexUrl }
+    return pending
+  }, [categoryBySlug, searchCards, searchIndexUrl, t])
+
+  useEffect(() => () => {
+    searchLoadRef.current?.controller.abort()
+    searchLoadRef.current = null
+  }, [])
+
+  // A bookmarked query/filter is explicit search intent, so restore it without
+  // making every ordinary archive visit download the index.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.has('q') || params.has('cat') || params.has('tag')) {
+      void loadSearchIndex()
+    }
+  }, [loadSearchIndex])
 
   const explorer = useExplorer<CardMeta>(
     cards,
@@ -66,28 +163,42 @@ export default function BlogExplorer({
       searchText: (c) =>
         [c.post.title, c.post.summary, c.categoryTitle, c.post.tags.join(' ')].join(' '),
     },
-    { filterParam: 'cat', pageSize },
+    {
+      filterParam: 'cat',
+      pageSize: CONTENT_PAGE_SIZE,
+      staticPagination: {
+        current: currentPage,
+        total: totalPages,
+        totalItems,
+        basePath: '/blog',
+      },
+      searchItems: searchCards,
+      searchFailed: searchStatus === 'error',
+    },
   )
 
-  // Fetch view counts once after mount in a single batched read, badge popular ones.
+  const visibleStatsKey = explorer.pageItems
+    .map((card) => postStatsId(card.post.category, card.post.slug))
+    .join('\u0000')
+
+  // Read only the currently rendered page and make the provider budget explicit.
   useEffect(() => {
     let cancelled = false
-    async function fetchAll() {
-      const all = await getAllPostStats()
+    async function fetchVisible() {
+      const ids = visibleStatsKey ? visibleStatsKey.split('\u0000') : []
+      const visible = await getPostStatsByIds(ids, CONTENT_PAGE_SIZE)
       if (cancelled) return
       const counts: Record<string, number> = {}
-      for (const { post } of cards) {
-        const views = all.get(postStatsId(post.category, post.slug))?.views ?? 0
-        if (views >= viewThreshold) counts[post.slug] = views
+      for (const [id, stats] of visible) {
+        if (stats.views >= viewThreshold) counts[id] = stats.views
       }
       setViewCounts(counts)
     }
-    fetchAll()
+    void fetchVisible()
     return () => {
       cancelled = true
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewThreshold])
+  }, [viewThreshold, visibleStatsKey])
 
   const labels: ExplorerLabels = {
     searchPlaceholder: t('controls.searchPlaceholder'),
@@ -115,6 +226,11 @@ export default function BlogExplorer({
       labels={labels}
       paletteId="blog-command-palette"
       trackingSurface="blog"
+      searchStatus={searchStatus}
+      searchUnavailableLabel={t('controls.searchUnavailable')}
+      onSearchIntent={() => {
+        void loadSearchIndex()
+      }}
       renderItem={(c) => (
         <BlogPostCard
           key={c.post.slug}
@@ -123,9 +239,10 @@ export default function BlogExplorer({
           categoryTitle={c.categoryTitle}
           locale={locale}
           readingLabel={c.readingLabel}
-          viewCount={viewCounts[c.post.slug]}
+          viewCount={viewCounts[postStatsId(c.post.category, c.post.slug)]}
           viewsLabel={t('engagement.views')}
           source="blog_explorer"
+          contentLocale={locale}
         />
       )}
     />

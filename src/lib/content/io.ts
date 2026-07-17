@@ -97,15 +97,15 @@ export function byDateDesc<T extends { date: string }>(a: T, b: T): number {
  * translation never blanks out an entry. Used to merge `_index.json` locale
  * overrides for both blog (key: slug) and notes (key: topic id / post slug).
  */
-export function overlayByKey<T extends object>(
+export function overlayByKey<T extends object, Override extends Partial<T>>(
   base: T[],
-  overrides: T[] | undefined,
-  key: (item: T) => string,
+  overrides: Override[] | undefined,
+  key: (item: T | Override) => string,
 ): T[] {
   if (!overrides?.length) return base
   const map = new Map(overrides.map((o) => [key(o), o]))
   return base.map((item) => {
     const override = map.get(key(item))
-    return override ? { ...item, ...override } : item
+    return override ? ({ ...item, ...override } as T) : item
   })
 }

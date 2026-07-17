@@ -86,6 +86,7 @@ export type AnalyticsEvent =
   | 'notes_share'
   | 'notes_reaction'
   | 'notes_nav_jump'
+  | 'content_fallback_language_click'
   // Reader controls
   | 'reader_tool_scroll'
   | 'reader_tool_toggle'

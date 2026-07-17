@@ -57,7 +57,11 @@
         "Documentation",
         "Delivery"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "what-thirty-days-of-small-notes-can-teach",
@@ -74,7 +78,11 @@
         "Career",
         "Attention"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "letting-ai-speed-up-the-search-not-the-judgment",
@@ -91,7 +99,11 @@
         "Evidence",
         "Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "protecting-attention-in-a-busy-team",
@@ -108,7 +120,11 @@
         "Meetings",
         "Sustainable Work"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "designing-defaults-that-fail-safely",
@@ -125,7 +141,11 @@
         "Configuration",
         "Product Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "making-handoffs-honest-about-what-is-unknown",
@@ -142,7 +162,11 @@
         "Delivery",
         "Teamwork"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-quiet-discipline-of-finishing-properly",
@@ -159,7 +183,11 @@
         "Quality",
         "Clarity"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "asking-ai-to-name-its-assumptions",
@@ -176,7 +204,11 @@
         "Developer Tools",
         "Judgment"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "noticing-friction-before-it-becomes-blame",
@@ -193,7 +225,11 @@
         "Leadership",
         "Communication"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "keeping-data-contracts-small-enough-to-trust",
@@ -210,7 +246,11 @@
         "Testing",
         "Product Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "keeping-checklists-close-to-the-work",
@@ -227,7 +267,11 @@
         "Teamwork",
         "Documentation"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-small-relief-of-a-reversible-decision",
@@ -244,7 +288,11 @@
         "Product Engineering",
         "Sustainable Work"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "treating-ai-suggestions-as-draft-evidence",
@@ -261,7 +309,11 @@
         "Developer Tools",
         "Quality"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "making-space-for-the-quiet-reviewer",
@@ -278,7 +330,11 @@
         "Feedback",
         "Leadership"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "choosing-boring-boundaries-on-purpose",
@@ -295,7 +351,11 @@
         "Product Engineering",
         "Teamwork"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "writing-status-updates-people-can-act-on",
@@ -312,7 +372,11 @@
         "Planning",
         "Teamwork"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-patience-to-let-context-arrive",
@@ -329,7 +393,11 @@
         "Leadership",
         "Clarity"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "keeping-ai-changes-small-enough-to-review",
@@ -346,7 +414,11 @@
         "Software Engineering",
         "Quality"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "what-calm-ownership-looks-like-in-practice",
@@ -363,7 +435,11 @@
         "Delivery",
         "Communication"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "designing-with-escape-hatches-not-back-doors",
@@ -380,7 +456,11 @@
         "Governance",
         "Product Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "closing-the-loop-before-starting-the-next-one",
@@ -397,7 +477,11 @@
         "Team Communication",
         "Planning"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "when-progress-feels-like-removing-weight",
@@ -414,7 +498,11 @@
         "Sustainable Work",
         "Decision Making"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "letting-ai-draft-the-boring-first-pass",
@@ -431,7 +519,11 @@
         "Review",
         "Human Judgment"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-quiet-skill-of-asking-for-help-early",
@@ -448,7 +540,11 @@
         "Delivery",
         "Mentorship"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "making-interfaces-honest-about-system-limits",
@@ -465,7 +561,11 @@
         "Systems Thinking",
         "Product Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "keeping-meeting-notes-close-to-decisions",
@@ -482,7 +582,11 @@
         "Planning",
         "Product Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-relief-of-a-well-named-problem",
@@ -499,7 +603,11 @@
         "Learning",
         "Teamwork"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "asking-ai-to-show-its-working-context",
@@ -516,7 +624,11 @@
         "Developer Tools",
         "Engineering Judgment"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "why-good-teams-make-risk-visible-early",
@@ -533,7 +645,11 @@
         "Delivery",
         "Sustainable Work"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "designing-for-the-change-you-can-actually-see",
@@ -550,7 +666,11 @@
         "Product Engineering",
         "Sustainable Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "writing-next-steps-that-actually-help",
@@ -567,7 +687,11 @@
         "Documentation",
         "Product Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "a-calm-way-to-carry-uncertainty",
@@ -584,7 +708,11 @@
         "Learning",
         "Sustainable Work"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "letting-ai-draft-while-humans-keep-the-map",
@@ -601,7 +729,11 @@
         "Developer Tools",
         "Verification"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-culture-hidden-in-small-reviews",
@@ -618,7 +750,11 @@
         "Communication",
         "Quality"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "when-boundaries-need-examples-more-than-names",
@@ -635,7 +771,11 @@
         "Team Communication",
         "Sustainable Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "making-handoffs-easier-to-receive",
@@ -652,7 +792,11 @@
         "Ownership",
         "Planning"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-quiet-cost-of-staying-vague",
@@ -669,7 +813,11 @@
         "Teamwork",
         "Sustainable Work"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "what-ai-cannot-know-from-the-prompt-alone",
@@ -686,7 +834,11 @@
         "Code Review",
         "Context Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "how-trust-grows-in-ordinary-follow-through",
@@ -703,7 +855,11 @@
         "Leadership",
         "Sustainable Work"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "keeping-architecture-decisions-small-enough-to-revisit",
@@ -720,7 +876,11 @@
         "Design Notes",
         "Sustainable Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "turning-unclear-work-into-shared-notes",
@@ -737,7 +897,11 @@
         "Team Communication",
         "Alignment"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-value-of-a-slower-first-answer",
@@ -754,7 +918,11 @@
         "Learning",
         "Sustainable Work"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "using-ai-without-outsourcing-judgment",
@@ -771,7 +939,11 @@
         "Code Review",
         "Testing"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-quiet-discipline-of-saying-not-yet",
@@ -788,7 +960,11 @@
         "Code Review",
         "Sustainable Work"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "designing-interfaces-that-outlive-implementations",
@@ -805,7 +981,11 @@
         "API Design",
         "Sustainable Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-calm-way-to-handle-scope-changes",
@@ -822,7 +1002,11 @@
         "Prioritization",
         "Team Communication"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "why-quiet-consistency-compounds",
@@ -839,7 +1023,11 @@
         "Personal Growth",
         "Sustainable Work"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "ai-tools-for-reading-a-codebase",
@@ -856,7 +1044,11 @@
         "Code Reading",
         "Engineering Judgment"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-reviewer-as-a-future-reader",
@@ -873,7 +1065,11 @@
         "Maintainability",
         "Team Trust"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "refactoring-toward-a-clearer-core",
@@ -890,7 +1086,11 @@
         "Module Boundaries",
         "Sustainable Engineering"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "managing-dependencies-without-blame",
@@ -907,7 +1107,11 @@
         "Cross-functional Teams",
         "Team Communication"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "difference-between-confidence-and-evidence",
@@ -924,7 +1128,11 @@
         "Career Growth",
         "Learning"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "from-prototype-demo-to-production-behavior",
@@ -941,7 +1149,11 @@
         "Evaluation",
         "Reliability"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "when-silence-in-a-team-becomes-a-signal",
@@ -958,7 +1170,11 @@
         "Feedback",
         "Team Trust"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "architecture-decisions-for-future-teammates",
@@ -975,7 +1191,11 @@
         "Technical Leadership",
         "Knowledge Sharing"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "decision-logs-for-busy-teams",
@@ -992,7 +1212,11 @@
         "Architecture Decisions",
         "Knowledge Sharing"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-note-you-return-to-later",
@@ -1009,7 +1233,11 @@
         "Notes",
         "Personal Development"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "human-feedback-loops-for-ai-work",
@@ -1026,7 +1254,11 @@
         "Verification",
         "Engineering Judgment"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "quiet-skill-of-asking-for-help",
@@ -1043,7 +1275,11 @@
         "Learning",
         "Psychological Safety"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "choosing-boundaries-before-choosing-tools",
@@ -1060,7 +1296,11 @@
         "Technical Leadership",
         "Team Ownership"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "roadmap-meets-real-capacity",
@@ -1077,7 +1317,11 @@
         "Prioritization",
         "Team Focus"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "courage-to-write-the-first-rough-note",
@@ -1094,7 +1338,11 @@
         "Thinking",
         "Personal Growth"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "cost-of-trusting-a-fluent-ai-answer",
@@ -1111,7 +1359,11 @@
         "Engineering Judgment",
         "Responsible AI"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "calm-script-for-difficult-feedback",
@@ -1128,7 +1380,11 @@
         "Team Trust",
         "Management"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "observability-as-a-design-choice",
@@ -1145,7 +1401,11 @@
         "Reliability",
         "OpenTelemetry"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "cross-functional-teams",
@@ -1162,7 +1422,11 @@
         "Software Delivery",
         "Ownership"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "loneliness-of-the-solo-developer",
@@ -1179,7 +1443,11 @@
         "Sustainable Work",
         "Decision Making"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "vector-databases-explained",
@@ -1196,7 +1464,11 @@
         "RAG",
         "AI Product"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "fostering-innovation-in-teams",
@@ -1213,7 +1485,11 @@
         "Product Engineering",
         "Continuous Improvement"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-outbox-pattern",
@@ -1230,7 +1506,11 @@
         "Reliability",
         "Microservices"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "okrs-for-engineering-teams",
@@ -1247,7 +1527,11 @@
         "Team Planning",
         "Metrics"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "learning-a-new-language-every-year",
@@ -1264,7 +1548,11 @@
         "Software Engineering",
         "Communication"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "ai-in-cybersecurity",
@@ -1281,7 +1569,11 @@
         "Threat Detection",
         "Responsible AI"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "navigating-office-politics",
@@ -1298,7 +1590,11 @@
         "Team Trust",
         "Career Growth"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "service-mesh-do-you-need-it",
@@ -1315,7 +1611,11 @@
         "Observability",
         "Reliability"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "trunk-based-development",
@@ -1332,7 +1632,11 @@
         "Code Review",
         "Ways of Working"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "overcoming-analysis-paralysis",
@@ -1349,7 +1653,11 @@
         "Learning",
         "Work"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "reducing-hallucinations-in-llms",
@@ -1366,7 +1674,11 @@
         "AI Product",
         "Evaluation"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "mentorship-vs-sponsorship",
@@ -1383,7 +1695,11 @@
         "Leadership",
         "Team Trust"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "event-sourcing-beginners-guide",
@@ -1400,7 +1716,11 @@
         "System Design",
         "Data Modeling"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "tdd-is-it-worth-the-time",
@@ -1417,7 +1737,11 @@
         "Refactoring",
         "Ways of Working"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "reading-code-is-harder-than-writing-it",
@@ -1434,7 +1758,11 @@
         "Debugging",
         "Reflection"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "fine-tuning-vs-prompting-vs-rag",
@@ -1451,7 +1779,11 @@
         "LLM",
         "AI Product"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "onboarding-that-actually-helps-new-teammates",
@@ -1468,7 +1800,11 @@
         "Documentation",
         "Developer Experience"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "saga-pattern-for-distributed-transactions",
@@ -1485,7 +1821,11 @@
         "Eventual Consistency",
         "Observability"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "retrospectives-that-actually-cause-change",
@@ -1502,7 +1842,11 @@
         "Decision Records",
         "Ways of Working"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "mentoring-junior-developers-effectively",
@@ -1519,7 +1863,11 @@
         "Psychological Safety",
         "Career Growth"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "ethical-considerations-in-ai-products",
@@ -1536,7 +1884,11 @@
         "Data Privacy",
         "Human Review"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "async-communication-for-remote-teams",
@@ -1553,7 +1905,11 @@
         "Team Trust",
         "Collaboration"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "api-gateway-patterns",
@@ -1570,7 +1926,11 @@
         "System Design",
         "Observability"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "retrieval-augmented-generation-rag-basics",
@@ -1587,7 +1947,11 @@
         "Vector Search",
         "AI Evaluation"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "value-of-a-boring-tech-stack",
@@ -1604,7 +1968,11 @@
         "Team Collaboration",
         "Reflection"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "hexagonal-architecture-in-practice",
@@ -1621,7 +1989,11 @@
         "Code Organization",
         "Technical Debt"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "writing-good-acceptance-criteria",
@@ -1638,7 +2010,11 @@
         "Team Collaboration",
         "Ways of Working"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "kanban-vs-scrum-which-fits-better",
@@ -1655,7 +2031,11 @@
         "Delivery",
         "Ways of Working"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "why-i-stopped-writing-perfect-code",
@@ -1671,7 +2051,11 @@
         "Career Growth",
         "Reflection"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "context-window-bottleneck",
@@ -1688,7 +2072,11 @@
         "Software Engineering",
         "Human Judgment"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "handling-toxic-rockstars",
@@ -1705,7 +2093,11 @@
         "Psychological Safety",
         "Management"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "hiring-for-potential-vs-experience",
@@ -1722,7 +2114,11 @@
         "Career Growth",
         "Mentorship"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "when-an-ai-answer-needs-a-test",
@@ -1740,7 +2136,11 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "ai-in-practice",
-      "seriesOrder": 5
+      "seriesOrder": 5,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "why-preparation-often-looks-invisible",
@@ -1756,7 +2156,11 @@
         "Software Engineering",
         "Reflection"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "daily-standup-that-changes-decisions",
@@ -1773,7 +2177,11 @@
         "Delivery",
         "Ways of Working"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "ai-ideas-bloom-inside-everyday-work",
@@ -1791,7 +2199,11 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "ai-in-practice",
-      "seriesOrder": 4
+      "seriesOrder": 4,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "event-driven-architecture-and-messaging",
@@ -1810,7 +2222,11 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "foundations",
-      "seriesOrder": 7
+      "seriesOrder": 7,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "data-in-distributed-systems",
@@ -1829,7 +2245,11 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "foundations",
-      "seriesOrder": 8
+      "seriesOrder": 8,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "resilience-in-distributed-systems",
@@ -1848,7 +2268,11 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "foundations",
-      "seriesOrder": 9
+      "seriesOrder": 9,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "scaling-the-database",
@@ -1867,7 +2291,11 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "foundations",
-      "seriesOrder": 10
+      "seriesOrder": 10,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "observability-at-scale",
@@ -1886,7 +2314,11 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "foundations",
-      "seriesOrder": 11
+      "seriesOrder": 11,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "true-cost-of-microservices",
@@ -1905,7 +2337,11 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "foundations",
-      "seriesOrder": 12
+      "seriesOrder": 12,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "cognitive-debt-ai-assisted-development",
@@ -1923,7 +2359,11 @@
         "Engineering Culture"
       ],
       "author": "Nguyen Le Phong",
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "beyond-the-hype-what-llms-actually-understand",
@@ -1941,7 +2381,11 @@
         "Critical Thinking"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "lean-business-analysis-value-needs-business-case",
@@ -1961,7 +2405,11 @@
       "author": "Nguyen Le Phong",
       "featured": false,
       "series": "lean-business-analysis",
-      "seriesOrder": 1
+      "seriesOrder": 1,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "lean-ba-planning-stakeholders-elicitation",
@@ -1981,7 +2429,11 @@
       "author": "Nguyen Le Phong",
       "featured": false,
       "series": "lean-business-analysis",
-      "seriesOrder": 2
+      "seriesOrder": 2,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "requirements-modeling-for-business-analysis",
@@ -2001,7 +2453,11 @@
       "author": "Nguyen Le Phong",
       "featured": false,
       "series": "lean-business-analysis",
-      "seriesOrder": 3
+      "seriesOrder": 3,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "requirements-quality-traceability-solution-evaluation",
@@ -2021,7 +2477,11 @@
       "author": "Nguyen Le Phong",
       "featured": false,
       "series": "lean-business-analysis",
-      "seriesOrder": 4
+      "seriesOrder": 4,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "data-mastery-kinh-chan-gio-cho-doanh-nghiep",
@@ -2041,7 +2501,11 @@
       "author": "Nguyen Le Phong",
       "featured": true,
       "series": "data-eos-operating-system",
-      "seriesOrder": 1
+      "seriesOrder": 1,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "data-mastery-scorecard-mot-trang-so-de-thay-som-van-de",
@@ -2061,7 +2525,11 @@
       "author": "Nguyen Le Phong",
       "featured": false,
       "series": "data-eos-operating-system",
-      "seriesOrder": 2
+      "seriesOrder": 2,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "data-mastery-everyone-has-a-number",
@@ -2081,7 +2549,11 @@
       "author": "Nguyen Le Phong",
       "featured": false,
       "series": "data-eos-operating-system",
-      "seriesOrder": 3
+      "seriesOrder": 3,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "data-mastery-cash-khong-phai-doanh-thu",
@@ -2101,7 +2573,11 @@
       "author": "Nguyen Le Phong",
       "featured": false,
       "series": "data-eos-operating-system",
-      "seriesOrder": 4
+      "seriesOrder": 4,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "software-measurement-estimation-practical-approach",
@@ -2119,7 +2595,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "agile-estimating-planning-estimates-are-conversations",
@@ -2137,7 +2617,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "agile-release-planning-value-risk-feedback",
@@ -2155,7 +2639,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "agile-is-dead-long-live-agile",
@@ -2173,7 +2661,11 @@
         "Team Culture"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "design-of-everyday-things-clear-signals-feedback",
@@ -2191,7 +2683,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "design-of-everyday-things-human-error-system-design",
@@ -2209,7 +2705,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "ai-literacy-from-prompts-to-agents",
@@ -2227,7 +2727,11 @@
         "Productivity"
       ],
       "author": "Nguyen Le Phong",
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "ambition-in-the-age-of-ai",
@@ -2245,7 +2749,11 @@
         "Personal Growth"
       ],
       "author": "Nguyen Le Phong",
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "se-to-technical-manager",
@@ -2263,7 +2771,11 @@
         "Mentorship"
       ],
       "author": "Nguyen Le Phong",
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "sdlc-to-adlc-agentic-development",
@@ -2281,7 +2793,11 @@
         "Future of Work"
       ],
       "author": "Nguyen Le Phong",
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "how-teams-work-big-corp-startup-outsourcing",
@@ -2301,7 +2817,11 @@
       "author": "Nguyen Le Phong",
       "series": "ways-of-working",
       "seriesOrder": 1,
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "working-in-a-big-corp",
@@ -2321,7 +2841,11 @@
       "author": "Nguyen Le Phong",
       "series": "ways-of-working",
       "seriesOrder": 2,
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "working-in-a-startup",
@@ -2341,7 +2865,11 @@
       "author": "Nguyen Le Phong",
       "series": "ways-of-working",
       "seriesOrder": 3,
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "working-in-outsourcing-software-services",
@@ -2361,7 +2889,11 @@
       "author": "Nguyen Le Phong",
       "series": "ways-of-working",
       "seriesOrder": 4,
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "ai-agents-explained",
@@ -2381,7 +2913,15 @@
       "author": "Nguyen Le Phong",
       "series": "ai-in-practice",
       "seriesOrder": 1,
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "ai-workflows-that-save-hours",
@@ -2401,7 +2941,15 @@
       "author": "Nguyen Le Phong",
       "series": "ai-in-practice",
       "seriesOrder": 2,
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "ai-trends-2026-into-value",
@@ -2421,7 +2969,15 @@
       "author": "Nguyen Le Phong",
       "series": "ai-in-practice",
       "seriesOrder": 3,
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "tdd-bdd-ddd-driven-development",
@@ -2439,7 +2995,11 @@
         "Software Development"
       ],
       "author": "Nguyen Le Phong",
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "agile-scrum-in-practice",
@@ -2457,7 +3017,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "ports-and-adapters",
@@ -2477,7 +3041,15 @@
       "author": "Nguyen Le Phong",
       "series": "foundations",
       "seriesOrder": 1,
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "clean-vs-onion-vs-hexagonal",
@@ -2496,7 +3068,15 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "foundations",
-      "seriesOrder": 2
+      "seriesOrder": 2,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "dependency-injection-and-ioc",
@@ -2515,7 +3095,15 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "foundations",
-      "seriesOrder": 3
+      "seriesOrder": 3,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "structuring-code-feature-vs-layer",
@@ -2534,7 +3122,15 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "foundations",
-      "seriesOrder": 4
+      "seriesOrder": 4,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "monolith-to-microservices",
@@ -2553,7 +3149,15 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "foundations",
-      "seriesOrder": 5
+      "seriesOrder": 5,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "micro-frontends-when-why-and-cost",
@@ -2572,7 +3176,15 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "foundations",
-      "seriesOrder": 6
+      "seriesOrder": 6,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "how-to-review-code-kindly",
@@ -2592,7 +3204,15 @@
       "author": "Nguyen Le Phong",
       "series": "kind-engineering",
       "seriesOrder": 1,
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "how-to-be-a-kind-engineer",
@@ -2611,7 +3231,15 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "kind-engineering",
-      "seriesOrder": 2
+      "seriesOrder": 2,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "how-to-write-a-great-pull-request",
@@ -2630,7 +3258,15 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "kind-engineering",
-      "seriesOrder": 3
+      "seriesOrder": 3,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "pull-request-that-reviewers-can-trust",
@@ -2647,7 +3283,11 @@
         "Reviewer Experience",
         "Developer Communication"
       ],
-      "author": "Nguyen Le Phong"
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "giving-and-receiving-feedback",
@@ -2666,7 +3306,15 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "kind-engineering",
-      "seriesOrder": 4
+      "seriesOrder": 4,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "mentoring-engineers",
@@ -2685,7 +3333,15 @@
       ],
       "author": "Nguyen Le Phong",
       "series": "kind-engineering",
-      "seriesOrder": 5
+      "seriesOrder": 5,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "how-ai-changes-software-roles",
@@ -2703,7 +3359,11 @@
         "Product Development"
       ],
       "author": "Nguyen Le Phong",
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "context-engineering",
@@ -2721,7 +3381,15 @@
         "AI Tools"
       ],
       "author": "Nguyen Le Phong",
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "generative-ai-everyday-uses",
@@ -2739,7 +3407,11 @@
         "Future of Work"
       ],
       "author": "Nguyen Le Phong",
-      "featured": true
+      "featured": true,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "pre-mortem-thinking",
@@ -2757,7 +3429,11 @@
         "Decision Making"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-first-time-i-broke-production",
@@ -2774,7 +3450,11 @@
         "Software Engineering"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "quiet-accumulation-on-the-trail",
@@ -2792,7 +3472,11 @@
       ],
       "author": "Nguyen Le Phong",
       "featured": false,
-      "updated": "2026-06-16"
+      "updated": "2026-06-16",
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "over-managed-and-under-led",
@@ -2811,7 +3495,11 @@
       "author": "Nguyen Le Phong",
       "featured": true,
       "series": "leadership-and-management",
-      "seriesOrder": 1
+      "seriesOrder": 1,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "vision-without-craft",
@@ -2830,7 +3518,11 @@
       "author": "Nguyen Le Phong",
       "featured": true,
       "series": "leadership-and-management",
-      "seriesOrder": 2
+      "seriesOrder": 2,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "signals-or-messages",
@@ -2849,7 +3541,11 @@
       "author": "Nguyen Le Phong",
       "featured": true,
       "series": "leadership-and-management",
-      "seriesOrder": 3
+      "seriesOrder": 3,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "sitting-with-the-problem",
@@ -2868,7 +3564,11 @@
       "author": "Nguyen Le Phong",
       "featured": true,
       "series": "leadership-and-management",
-      "seriesOrder": 4
+      "seriesOrder": 4,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "pull-dont-push",
@@ -2887,7 +3587,11 @@
       "author": "Nguyen Le Phong",
       "featured": true,
       "series": "leadership-and-management",
-      "seriesOrder": 5
+      "seriesOrder": 5,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "why-culture-fit-is-often-a-trap",
@@ -2905,7 +3609,11 @@
         "Psychological Safety"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "layered-vs-vertical-slice-architecture",
@@ -2925,7 +3633,15 @@
       "author": "Nguyen Le Phong",
       "featured": false,
       "series": "foundations",
-      "seriesOrder": 13
+      "seriesOrder": 13,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "dependency-direction-in-plain-language",
@@ -2945,7 +3661,11 @@
       "author": "Nguyen Le Phong",
       "featured": false,
       "series": "foundations",
-      "seriesOrder": 14
+      "seriesOrder": 14,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "eventual-consistency-in-the-real-world",
@@ -2965,7 +3685,11 @@
       "author": "Nguyen Le Phong",
       "featured": false,
       "series": "foundations",
-      "seriesOrder": 15
+      "seriesOrder": 15,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "anatomy-of-a-healthy-one-on-one",
@@ -2983,7 +3707,15 @@
         "Team Trust"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "prompt-engineering-is-just-communication",
@@ -3001,7 +3733,15 @@
         "Developer Productivity"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "learning-to-say-no-as-a-developer",
@@ -3019,7 +3759,15 @@
         "Focus"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "daily-standup-status-report-or-strategy",
@@ -3037,7 +3785,15 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi",
+        "zh",
+        "ja",
+        "ko",
+        "fr"
+      ]
     },
     {
       "slug": "cqrs-command-query-responsibility-segregation",
@@ -3055,7 +3811,11 @@
         "Scalability"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "celebrating-failure",
@@ -3073,7 +3833,11 @@
         "Leadership"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "ai-in-qa-automated-test-generation",
@@ -3091,7 +3855,11 @@
         "Developer Productivity"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "when-to-walk-away-from-a-project",
@@ -3109,7 +3877,11 @@
         "Reflection"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "definition-of-done-vs-ready",
@@ -3127,7 +3899,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "serverless-trade-offs-and-truths",
@@ -3145,7 +3921,11 @@
         "Cost"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "building-diverse-engineering-teams",
@@ -3163,7 +3943,11 @@
         "Collaboration"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "running-local-llms-for-privacy",
@@ -3181,7 +3965,11 @@
         "LLM"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "myth-of-the-10x-developer",
@@ -3199,7 +3987,11 @@
         "Leadership"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "pair-programming-love-it-or-hate-it",
@@ -3217,7 +4009,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "caching-strategies-and-pitfalls",
@@ -3235,7 +4031,11 @@
         "Observability"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "managing-up-communicating-with-non-technical-leadership",
@@ -3253,7 +4053,11 @@
         "Decision Making"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "ai-agents-next-frontier",
@@ -3271,7 +4075,11 @@
         "Human Review"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "why-side-projects-matter",
@@ -3289,7 +4097,11 @@
         "Reflection"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "feature-flags-for-safer-deployments",
@@ -3307,7 +4119,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "database-sharding-when-and-why",
@@ -3325,7 +4141,11 @@
         "Observability"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "performance-reviews-that-matter",
@@ -3343,7 +4163,11 @@
         "Team Trust"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "data-privacy-in-the-era-of-ai",
@@ -3361,7 +4185,11 @@
         "AI Product"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "the-tech-transition",
@@ -3379,7 +4207,11 @@
         "Personal Development"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "continuous-integration-vs-continuous-delivery",
@@ -3397,7 +4229,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "graphql-vs-rest",
@@ -3415,7 +4251,11 @@
         "Frontend Backend"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "handling-burnout-before-it-happens",
@@ -3433,7 +4273,11 @@
         "Workload"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "multimodal-ai-text-vision-and-audio",
@@ -3451,7 +4295,11 @@
         "AI Product"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "dealing-with-legacy-code",
@@ -3469,7 +4317,11 @@
         "Reflection"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "shift-left-security",
@@ -3487,7 +4339,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "designing-idempotent-apis",
@@ -3505,7 +4361,11 @@
         "System Design"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "creating-a-blameless-culture",
@@ -3523,7 +4383,11 @@
         "Team Learning"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "ai-for-code-refactoring",
@@ -3541,7 +4405,11 @@
         "Developer Tools"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "art-of-meaningful-commit-message",
@@ -3559,7 +4427,11 @@
         "Reflection"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "behavior-driven-development-bdd",
@@ -3577,7 +4449,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "rate-limiting-and-throttling",
@@ -3595,7 +4471,11 @@
         "System Design"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "giving-constructive-feedback",
@@ -3613,7 +4493,11 @@
         "Leadership"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "evaluating-llm-performance",
@@ -3631,7 +4515,11 @@
         "Observability"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "why-i-love-writing-documentation",
@@ -3649,7 +4537,11 @@
         "Reflection"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     },
     {
       "slug": "minimum-viable-product-mvp-traps",
@@ -3667,7 +4559,11 @@
         "Ways of Working"
       ],
       "author": "Nguyen Le Phong",
-      "featured": false
+      "featured": false,
+      "locales": [
+        "en",
+        "vi"
+      ]
     }
   ]
 }

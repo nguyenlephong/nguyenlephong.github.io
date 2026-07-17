@@ -1,60 +1,125 @@
 rules_version = '2';
 
-// Firestore rules for blog/notes/thoughts post engagement.
-//
-// Any visitor may read stats and bump counters on the postStats collection,
-// but writes are constrained to monotonic, integer increments so a hostile
-// client cannot overwrite a counter to an arbitrary value, set a negative /
-// non-numeric value, or decrement views/shares. Reactions stay a map (a key
-// may move ±1 when a user toggles a reaction on/off).
-//
-// NOTE: these rules bound the *shape* of each write but cannot stop a
-// determined attacker from looping +1 writes. The real mitigation for that is
-// Firebase App Check, which a static GitHub Pages deploy cannot host. Treat
-// the counters as best-effort, not audit-grade.
-
+// Public article counters are intentionally readable and writable without
+// Firebase Auth. Rules constrain document ids, fields, types, and every delta;
+// App Check provides abuse resistance. These remain best-effort signals, not
+// financial, entitlement, or audit-grade records.
 service cloud.firestore {
   match /databases/{database}/documents {
+    function validPostId(postId) {
+      return postId.size() <= 256
+        && postId.matches('^[a-z0-9][a-z0-9-]*__[a-z0-9][a-z0-9-]*$');
+    }
+
+    function reactionMap(data) {
+      return data.get('reactions', {});
+    }
+
+    function reactionValue(reactions, key) {
+      return reactions.get(key, 0);
+    }
+
+    function validReactionMap(reactions) {
+      return reactions is map
+        && reactions.keys().hasOnly(['like', 'love', 'insightful', 'clap'])
+        && reactionValue(reactions, 'like') is int
+        && reactionValue(reactions, 'like') >= 0
+        && reactionValue(reactions, 'love') is int
+        && reactionValue(reactions, 'love') >= 0
+        && reactionValue(reactions, 'insightful') is int
+        && reactionValue(reactions, 'insightful') >= 0
+        && reactionValue(reactions, 'clap') is int
+        && reactionValue(reactions, 'clap') >= 0;
+    }
+
+    function validDocumentShape(data) {
+      return data.keys().hasOnly(['views', 'shares', 'reactions'])
+        && data.get('views', 0) is int
+        && data.get('views', 0) >= 0
+        && data.get('shares', 0) is int
+        && data.get('shares', 0) >= 0
+        && validReactionMap(reactionMap(data));
+    }
+
+    function reactionTotal(reactions) {
+      return reactionValue(reactions, 'like')
+        + reactionValue(reactions, 'love')
+        + reactionValue(reactions, 'insightful')
+        + reactionValue(reactions, 'clap');
+    }
+
+    function validCreate(data) {
+      return validDocumentShape(data)
+        && data.get('views', 0) <= 1
+        && data.get('shares', 0) <= 1
+        && reactionValue(reactionMap(data), 'like') <= 1
+        && reactionValue(reactionMap(data), 'love') <= 1
+        && reactionValue(reactionMap(data), 'insightful') <= 1
+        && reactionValue(reactionMap(data), 'clap') <= 1
+        && reactionTotal(reactionMap(data)) <= 1
+        && data.get('views', 0)
+          + data.get('shares', 0)
+          + reactionTotal(reactionMap(data)) <= 1;
+    }
+
+    function reactionDelta(next, previous, key) {
+      return reactionValue(next, key) - reactionValue(previous, key);
+    }
+
+    function validReactionDelta(next, previous) {
+      let changed = next.diff(previous).affectedKeys();
+      let totalDelta = reactionTotal(next) - reactionTotal(previous);
+      return changed.size() >= 1
+        && changed.size() <= 2
+        && reactionDelta(next, previous, 'like') >= -1
+        && reactionDelta(next, previous, 'like') <= 1
+        && reactionDelta(next, previous, 'love') >= -1
+        && reactionDelta(next, previous, 'love') <= 1
+        && reactionDelta(next, previous, 'insightful') >= -1
+        && reactionDelta(next, previous, 'insightful') <= 1
+        && reactionDelta(next, previous, 'clap') >= -1
+        && reactionDelta(next, previous, 'clap') <= 1
+        && (
+          (changed.size() == 1 && (totalDelta == 1 || totalDelta == -1))
+          || (changed.size() == 2 && totalDelta == 0)
+        );
+    }
+
+    function isViewIncrement() {
+      return request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['views'])
+        && request.resource.data.get('views', 0)
+          == resource.data.get('views', 0) + 1;
+    }
+
+    function isShareIncrement() {
+      return request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['shares'])
+        && request.resource.data.get('shares', 0)
+          == resource.data.get('shares', 0) + 1;
+    }
+
+    function isReactionChange() {
+      return request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['reactions'])
+        && validReactionDelta(
+          reactionMap(request.resource.data),
+          reactionMap(resource.data)
+        );
+    }
 
     match /postStats/{postId} {
-      allow read: if true;
-      allow create: if isValidCreate();
-      allow update: if isValidUpdate();
+      allow read: if validPostId(postId);
+      allow create: if validPostId(postId)
+        && validCreate(request.resource.data);
+      allow update: if validPostId(postId)
+        && validDocumentShape(request.resource.data)
+        && (isViewIncrement() || isShareIncrement() || isReactionChange());
       allow delete: if false;
     }
 
-    // Deny everything else.
     match /{document=**} {
       allow read, write: if false;
     }
   }
-}
-
-// Only the three known top-level fields may appear in the written document.
-function onlyEngagementKeys(data) {
-  return data.keys().hasOnly(['views', 'shares', 'reactions']);
-}
-
-// First write for a post: counters may only be 0 or 1, reactions a map.
-function isValidCreate() {
-  let d = request.resource.data;
-  return onlyEngagementKeys(d)
-    && d.get('views', 0) is int && d.get('views', 0) >= 0 && d.get('views', 0) <= 1
-    && d.get('shares', 0) is int && d.get('shares', 0) >= 0 && d.get('shares', 0) <= 1
-    && d.get('reactions', {}) is map;
-}
-
-// Subsequent writes: views/shares are integer and may increase by at most 1
-// (never decrease); reactions stays a map.
-function isValidUpdate() {
-  let d = request.resource.data;
-  let p = resource.data;
-  return onlyEngagementKeys(d)
-    && d.get('views', 0) is int
-    && d.get('views', 0) >= p.get('views', 0)
-    && d.get('views', 0) <= p.get('views', 0) + 1
-    && d.get('shares', 0) is int
-    && d.get('shares', 0) >= p.get('shares', 0)
-    && d.get('shares', 0) <= p.get('shares', 0) + 1
-    && d.get('reactions', {}) is map;
 }

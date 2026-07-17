@@ -41,6 +41,7 @@ yarn-error.log*
 
 # build/debug noise
 firebase-debug.log
+firestore-debug.log
 tsconfig.tsbuildinfo
 
 .agent_context

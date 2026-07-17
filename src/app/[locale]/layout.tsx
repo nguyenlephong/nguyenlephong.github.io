@@ -2,27 +2,11 @@ import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { profileInfo, SEO } from '@/app/app.const'
 import Script from 'next/script'
-import AppHeader from '@/components/AppHeader'
-import AppFooter from '@/components/AppFooter'
-import ThemeScript from '@/components/theme/ThemeScript'
-import ThemeSync from '@/components/theme/ThemeSync'
-import FontScript from '@/components/font/FontScript'
-import ReadingBackgroundScript from '@/components/reading/ReadingBackgroundScript'
-import MotionProvider from '@/components/motion/MotionProvider'
-import RouteProgressBar from '@/components/motion/RouteProgressBar'
-import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
-import BlogReaderTools from '@/components/blog/BlogReaderTools'
-import OfflineNavigationCapture from '@/components/offline/OfflineNavigationCapture'
-import OfflineStatusBanner from '@/components/offline/OfflineStatusBanner'
 import { SITE_URL } from '@/app/seo.config'
 import { routing, type Locale } from '@/i18n/routing'
-import { Person, WithContext } from 'schema-dts'
 import React from 'react'
 import '../globals.css'
-
-const PROFILE_AVATAR = `${SITE_URL}/icon.png`
 
 const LOCALE_OG_MAP: Record<Locale, string> = {
   en: 'en_US',
@@ -56,10 +40,11 @@ export async function generateMetadata({
 
   const languages: Record<string, string> = {}
   for (const l of routing.locales) languages[l] = `/${l}`
+  languages['x-default'] = `/${routing.defaultLocale}`
 
   return {
     title: {
-      template: '%s · ' + SEO.title_tail,
+      template: '%s | Nguyen Le Phong',
       default: title,
     },
     description,
@@ -153,88 +138,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
   setRequestLocale(locale)
 
-  const t = await getTranslations({ locale, namespace: 'SEO.home' })
-  const seoDescription = t('description')
-
-  // Global reading-preferences float button (font, background, language,
-  // scroll) — available on every page, not only article detail pages.
-  const rt = await getTranslations('ReaderTools')
-  const readerLabels = {
-    label: rt('label'),
-    scrollTop: rt('scrollTop'),
-    scrollBottom: rt('scrollBottom'),
-    font: rt('font'),
-    background: rt('background'),
-    language: rt('language'),
-  }
-
-  const personSchema: WithContext<Person> = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    '@id': `${SITE_URL}/#person`,
-    name: 'Nguyen Le Phong',
-    alternateName: ['Nguyễn Lê Phong', 'Phong Nguyen'],
-    url: SITE_URL,
-    image: PROFILE_AVATAR,
-    jobTitle: 'Senior Software Engineer · Technical Lead · Full-stack Engineer',
-    description: seoDescription,
-    email: `mailto:${profileInfo.contact.email}`,
-    telephone: profileInfo.contact.phone,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Ho Chi Minh City',
-      addressCountry: 'VN',
-    },
-    knowsAbout: [
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Node.js',
-      'Java',
-      'Spring Framework',
-      'Micro-Frontend Architecture',
-      'Kubernetes',
-      'ArgoCD',
-      'CI/CD',
-      'System Design',
-      'Engineering Leadership',
-      'Secure Financial Integrations',
-      'Progressive Delivery',
-    ],
-    worksFor: {
-      '@type': 'Organization',
-      name: 'NDSVN JSC',
-    },
-    alumniOf: {
-      '@type': 'CollegeOrUniversity',
-      name: 'Information Technology — Bachelor (GPA 3.36)',
-    },
-    sameAs: [
-      profileInfo.contact.linkedin,
-      profileInfo.contact.github,
-      profileInfo.contact.leetcode,
-      profileInfo.contact.youtube,
-      profileInfo.contact.twitter,
-    ],
-  }
-
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    '@id': `${SITE_URL}/#website`,
-    url: SITE_URL,
-    name: 'Nguyen Le Phong — Senior Software Engineer & Technical Lead',
-    description: seoDescription,
-    inLanguage: locale,
-    author: { '@id': `${SITE_URL}/#person` },
-  }
-
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        <ThemeScript />
-        <FontScript />
-        <ReadingBackgroundScript />
         <meta name="google-adsense-account" content="ca-pub-2196929070546836" />
         <link rel="preconnect" href="https://us.i.posthog.com" crossOrigin="" />
         <link rel="preconnect" href="https://us-assets.i.posthog.com" crossOrigin="" />
@@ -243,14 +149,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
       </head>
 
       <Script
@@ -298,19 +196,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       />
 
       <body suppressHydrationWarning>
-        <NextIntlClientProvider>
-          <ThemeSync />
-          <MotionProvider>
-            <RouteProgressBar />
-            <OfflineNavigationCapture />
-            <OfflineStatusBanner />
-            <WebVitalsReporter />
-            <AppHeader />
-            {children}
-            <AppFooter />
-            <BlogReaderTools labels={readerLabels} />
-          </MotionProvider>
-        </NextIntlClientProvider>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>
   )

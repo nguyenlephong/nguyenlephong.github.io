@@ -4,6 +4,7 @@ import { routing } from "@/i18n/routing";
 import {
   getPostContentLocales,
   getPostsByCategory,
+  listBlogArchiveLocales,
   listCategoryPostPairs,
   listCategorySlugs,
   listPosts,
@@ -12,9 +13,12 @@ import {
 import {
   getNoteContentLocales,
   listNotes,
+  listNotesArchiveLocales,
   loadNote,
   NOTE_CONTENT_LOCALES
 } from "@/lib/notes/data";
+import { collectionPagePath, paginate } from "@/lib/content/pagination";
+import { latestNonFutureDate } from "@/lib/seo/dates";
 
 export const dynamic = "force-static";
 
@@ -32,7 +36,7 @@ const PATHS: Array<{
     priority: 0.9,
     freq: "weekly",
     lastModifiedForLocale: (locale) =>
-      latestDate(listPosts(locale).map((post) => post.updated ?? post.date))
+      latestNonFutureDate(listPosts(locale).map((post) => post.updated ?? post.date))
   },
   { path: "/studio", priority: 0.85, freq: "weekly" },
   { path: "/about", priority: 0.8, freq: "monthly" },
@@ -43,22 +47,9 @@ const PATHS: Array<{
     freq: "weekly",
     locales: NOTE_CONTENT_LOCALES,
     lastModifiedForLocale: (locale) =>
-      latestDate(listNotes(locale).map((note) => note.updated ?? note.date))
+      latestNonFutureDate(listNotes(locale).map((note) => note.updated ?? note.date))
   }
 ];
-
-function latestDate(values: Array<string | undefined>): Date | undefined {
-  let latest: Date | undefined;
-
-  for (const value of values) {
-    if (!value) continue;
-    const candidate = new Date(value);
-    if (Number.isNaN(candidate.getTime())) continue;
-    if (!latest || candidate > latest) latest = candidate;
-  }
-
-  return latest;
-}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
@@ -92,6 +83,48 @@ export default function sitemap(): MetadataRoute.Sitemap {
     pushPath(path, priority, freq, locales, lastModifiedForLocale);
   }
 
+  const blogPageTotal = Math.max(
+    ...routing.locales.map(
+      (locale) => paginate(listPosts(locale), 1)?.totalPages ?? 1
+    )
+  );
+  for (let page = 2; page <= blogPageTotal; page += 1) {
+    const pageLocales = listBlogArchiveLocales(page);
+    pushPath(
+      collectionPagePath("/blog", page),
+      0.75,
+      "weekly",
+      pageLocales,
+      (locale) => {
+        const pageData = paginate(listPosts(locale), page);
+        return latestNonFutureDate(
+          pageData?.items.map((post) => post.updated ?? post.date) ?? []
+        );
+      }
+    );
+  }
+
+  const notesPageTotal = Math.max(
+    ...NOTE_CONTENT_LOCALES.map(
+      (locale) => paginate(listNotes(locale), 1)?.totalPages ?? 1
+    )
+  );
+  for (let page = 2; page <= notesPageTotal; page += 1) {
+    const pageLocales = listNotesArchiveLocales(page);
+    pushPath(
+      collectionPagePath("/notes", page),
+      0.7,
+      "weekly",
+      pageLocales,
+      (locale) => {
+        const pageData = paginate(listNotes(locale), page);
+        return latestNonFutureDate(
+          pageData?.items.map((note) => note.updated ?? note.date) ?? []
+        );
+      }
+    );
+  }
+
   for (const category of listCategorySlugs()) {
     pushPath(
       `/blog/${category}`,
@@ -99,7 +132,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "weekly",
       undefined,
       (locale) =>
-        latestDate(
+        latestNonFutureDate(
           getPostsByCategory(category, locale).map((post) => post.updated ?? post.date)
         )
     );
@@ -113,7 +146,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       getPostContentLocales(slug),
       (locale) => {
         const post = loadPost(slug, locale);
-        return post ? latestDate([post.updated ?? post.date]) : undefined;
+        return post
+          ? latestNonFutureDate([post.updated ?? post.date])
+          : undefined;
       }
     );
   }
@@ -127,7 +162,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       (locale) => {
         const localizedNote = loadNote(note.slug, locale);
         return localizedNote
-          ? latestDate([localizedNote.updated ?? localizedNote.date])
+          ? latestNonFutureDate([localizedNote.updated ?? localizedNote.date])
           : undefined;
       }
     );
