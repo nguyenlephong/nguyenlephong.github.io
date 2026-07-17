@@ -184,12 +184,12 @@ export default function NotesExplorer({
     .map((card) => postStatsId('notes', card.note.slug))
     .join('\u0000')
 
-  // Read only the currently rendered page. The data layer hard-caps this at 9 docs.
+  // Read only the currently rendered page and make the provider budget explicit.
   useEffect(() => {
     let cancelled = false
     async function fetchVisible() {
       const ids = visibleStatsKey ? visibleStatsKey.split('\u0000') : []
-      const visible = await getPostStatsByIds(ids)
+      const visible = await getPostStatsByIds(ids, CONTENT_PAGE_SIZE)
       if (cancelled) return
       const counts: Record<string, number> = {}
       for (const [id, stats] of visible) {

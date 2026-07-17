@@ -153,7 +153,7 @@ test('archive routes and explorers keep pagination crawlable and search progress
     readFile('src/app/[locale]/(site)/search/blog.json/route.ts', 'utf8'),
     readFile('src/app/[locale]/(site)/search/notes.json/route.ts', 'utf8'),
     readFile('src/components/explorer/ExplorerShell.tsx', 'utf8'),
-    readFile('src/lib/firebase/postStats.ts', 'utf8'),
+    readFile('src/lib/engagement/firebase-repository.ts', 'utf8'),
     readFile('scripts/verify-content-pagination.mjs', 'utf8'),
     readFile('.github/workflows/ci-frontend.yml', 'utf8'),
     readFile('.github/workflows/nextjs.yml', 'utf8'),
@@ -207,6 +207,7 @@ test('archive routes and explorers keep pagination crawlable and search progress
     assert.match(explorer, /searchLoadRef/)
     assert.match(explorer, /AbortController/)
     assert.match(explorer, /getPostStatsByIds/)
+    assert.match(explorer, /getPostStatsByIds\(ids, CONTENT_PAGE_SIZE\)/)
     assert.doesNotMatch(explorer, /getAllPostStats/)
     assert.match(explorer, /params\.has\('q'\)/)
     assert.match(explorer, /searchFailed: searchStatus === 'error'/)
@@ -214,7 +215,9 @@ test('archive routes and explorers keep pagination crawlable and search progress
 
   assert.match(explorerShell, /onFocus=\{\(\) => \{\s*onSearchIntent\(\)/)
   assert.match(explorerShell, /onChange=\{\(e\) => \{\s*onSearchIntent\(\)/)
-  assert.match(postStats, /\.slice\(0, CONTENT_PAGE_SIZE\)/)
+  assert.doesNotMatch(postStats, /CONTENT_PAGE_SIZE/)
+  assert.match(postStats, /\.slice\(0, limit\)/)
+  assert.match(postStats, /Number\.isSafeInteger\(limit\)/)
   assert.match(postStats, /Promise\.allSettled/)
   assert.doesNotMatch(postStats, /getDocs\(collection/)
 

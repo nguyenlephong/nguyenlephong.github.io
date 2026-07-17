@@ -51,6 +51,25 @@ export function isFirebaseConfigured(): boolean {
 
 let dbPromise: Promise<Firestore | null> | null = null
 
+async function initialiseOptionalAppCheck(app: FirebaseApp): Promise<void> {
+  const siteKey =
+    process.env['NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY']?.trim() ?? ''
+  if (!siteKey) return
+
+  try {
+    const { initializeAppCheck, ReCaptchaEnterpriseProvider } = await import(
+      'firebase/app-check'
+    )
+    initializeAppCheck(app, {
+      provider: new ReCaptchaEnterpriseProvider(siteKey),
+      isTokenAutoRefreshEnabled: true,
+    })
+  } catch {
+    // App Check is defence-in-depth. A bootstrap/configuration failure keeps
+    // engagement fail-soft instead of breaking article rendering.
+  }
+}
+
 /**
  * Returns a memoised Firestore instance, or `null` when unconfigured or when
  * called on the server (static export has no client runtime there).
@@ -65,11 +84,13 @@ export function getDb(): Promise<Firestore | null> {
 
     try {
       const { initializeApp, getApps, getApp } = await import('firebase/app')
-      const { getFirestore } = await import('firebase/firestore')
 
       const app: FirebaseApp = getApps().length
         ? getApp()
         : initializeApp(config)
+      // Firebase requires App Check to be initialized before Firestore access.
+      await initialiseOptionalAppCheck(app)
+      const { getFirestore } = await import('firebase/firestore')
       return getFirestore(app)
     } catch {
       // Network/SDK failure must not surface to the reader.

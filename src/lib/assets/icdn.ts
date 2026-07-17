@@ -1,4 +1,8 @@
-import { ICDN_BASE_URL } from "@/app/app.conf";
+import {
+  mediaUrlResolver,
+  rewriteOwnedLegacyMediaUrls,
+  type MediaUrlResolver,
+} from "@/lib/media/url-resolver";
 
 const CONTENT_ASSET_MAPPINGS: Array<{
   from: string;
@@ -28,16 +32,18 @@ function replaceExtension(path: string, extension: string): string {
   return `${base}.${extension}${suffix}`;
 }
 
-export function icdnAssetUrl(path: string): string {
-  if (/^https?:\/\//i.test(path)) return path;
-
-  const base = ICDN_BASE_URL.replace(/\/+$/, "");
-  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  return `${base}${normalizedPath}`;
+export function icdnAssetUrl(
+  path: string,
+  resolver: MediaUrlResolver = mediaUrlResolver,
+): string {
+  return resolver.resolve(path);
 }
 
-export function localContentAssetToIcdn(path: string): string {
-  if (/^https?:\/\//i.test(path)) return path;
+export function localContentAssetToIcdn(
+  path: string,
+  resolver: MediaUrlResolver = mediaUrlResolver,
+): string {
+  if (/^https?:\/\//i.test(path)) return resolver.resolve(path);
 
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
   const mapping = CONTENT_ASSET_MAPPINGS.find(({ from }) =>
@@ -50,13 +56,40 @@ export function localContentAssetToIcdn(path: string): string {
     mapping.extension
   );
 
-  return icdnAssetUrl(semanticPath);
+  return icdnAssetUrl(semanticPath, resolver);
 }
 
-export function rewriteContentAssetUrls(html: string): string {
-  return html.replace(
+export function rewriteContentAssetUrls(
+  value: string,
+  resolver: MediaUrlResolver = mediaUrlResolver,
+): string {
+  const withMappedLocalAssets = value.replace(
     /(["'(])\/((?:assets\/(?:blog|notes)|og\/(?:blog|notes))\/[^"')\s<>]+)/g,
     (_match, prefix: string, assetPath: string) =>
-      `${prefix}${localContentAssetToIcdn(`/${assetPath}`)}`
+      `${prefix}${localContentAssetToIcdn(`/${assetPath}`, resolver)}`
   );
+
+  return rewriteOwnedLegacyMediaUrls(withMappedLocalAssets, resolver);
+}
+
+/** Rewrites media references in article bodies and every metadata/search field. */
+export function rewriteContentAssetValues<T>(
+  value: T,
+  resolver: MediaUrlResolver = mediaUrlResolver,
+): T {
+  if (typeof value === "string") {
+    return rewriteContentAssetUrls(value, resolver) as T;
+  }
+  if (Array.isArray(value)) {
+    return value.map((item) => rewriteContentAssetValues(item, resolver)) as T;
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [
+        key,
+        rewriteContentAssetValues(item, resolver),
+      ]),
+    ) as T;
+  }
+  return value;
 }

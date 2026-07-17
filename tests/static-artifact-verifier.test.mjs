@@ -218,6 +218,7 @@ test('verifies artifact budgets, sitemap canonicals, robots, and public secrets'
   assert.deepEqual(report.failures, [])
   assert.equal(report.seo.urlCount, 1)
   assert.equal(report.secrets.matches.length, 0)
+  assert.equal(report.secrets.privateQueryUrlMatches.length, 0)
   assert.equal(report.secrets.scanConcurrency, 2)
   assert.equal(report.artifact.largestRouteJavaScript[0].path, 'en.html')
 })
@@ -339,6 +340,40 @@ test('allows Firebase public web configuration while rejecting only private cred
 
   const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
   assert.equal(report.secrets.matches.some(({ path: matchPath }) => matchPath === 'public-firebase.env'), false)
+})
+
+test('rejects case-insensitive and encoded signed URLs in public HTML, RSC, and JSON', async (t) => {
+  const { rootDir, outDir } = createFixture(t, { limits: { fileCount: 20 } })
+  const fixtures = {
+    'signed.html': '<img src="https://r2.example/private.webp?X-Amz-Signature=do-not-log">',
+    'encoded.rsc.txt': '1:["https://storage.example/private.webp?x%252DgOoG%252DcReDeNtIaL=do-not-log"]',
+    'payload.json': JSON.stringify({
+      src: 'https://cdn.example/private.webp?width=800&ACCESS_TOKEN=do-not-log',
+    }),
+  }
+
+  for (const [name, content] of Object.entries(fixtures)) {
+    writeFileSync(path.join(outDir, name), content)
+  }
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const failures = report.failures.join('\n')
+
+  for (const name of Object.keys(fixtures)) assert.match(failures, new RegExp(name.replace('.', '\\.')))
+  assert.equal(report.secrets.privateQueryUrlMatches.length, 3)
+  assert.doesNotMatch(failures, /do-not-log/)
+})
+
+test('allows normal third-party query URLs in public artifacts', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeFileSync(
+    path.join(outDir, 'public-links.json'),
+    JSON.stringify({ src: 'https://images.example/public.webp?width=800&format=webp' }),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  assert.equal(report.secrets.privateQueryUrlMatches.length, 0)
+  assert.doesNotMatch(report.failures.join('\n'), /Signed or private query URL/)
 })
 
 test('requires every indexable self-canonical HTML page to appear in sitemap', async (t) => {

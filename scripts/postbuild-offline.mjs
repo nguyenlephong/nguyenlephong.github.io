@@ -7,8 +7,6 @@ import { fileURLToPath } from 'node:url'
 const ROOT = process.cwd()
 const OUT_DIR = path.resolve(ROOT, 'out')
 const APP_VERSION_FILE = path.resolve(ROOT, 'app-version.json')
-const GALLERY_FILE = path.resolve(ROOT, 'src/content/gallery.ts')
-const APP_CONF_FILE = path.resolve(ROOT, 'src/app/app.conf.ts')
 const LOCALES = ['en', 'vi', 'zh', 'ja', 'ko', 'fr']
 const DEFAULT_LOCALE = 'en'
 const PAGE_VERSION_PARAM = '__offlineVersion'
@@ -125,36 +123,64 @@ async function readAppVersion() {
   return String(parsed.version ?? '0')
 }
 
-function joinUrl(base, assetPath) {
-  return `${base.replace(/\/+$/, '')}${assetPath.startsWith('/') ? assetPath : `/${assetPath}`}`
-}
+export function hasPrivateOrSignedRemoteMediaQuery(input) {
+  const url = typeof input === 'string' ? new URL(input) : input
 
-async function readRemoteGalleryAssets() {
-  const [gallerySource, appConfSource] = await Promise.all([
-    fs.readFile(GALLERY_FILE, 'utf8'),
-    fs.readFile(APP_CONF_FILE, 'utf8'),
-  ])
+  for (const rawName of url.searchParams.keys()) {
+    let name = rawName
+    for (let index = 0; index < 3; index += 1) {
+      try {
+        const decoded = decodeURIComponent(name)
+        if (decoded === name) break
+        name = decoded
+      } catch {
+        break
+      }
+    }
+    name = name.trim().toLowerCase().replace(/^(?:amp;)+/, '')
 
-  const remoteAssets = []
-  const icdnMatch = appConfSource.match(/ICDN_BASE_URL\s*=\s*"([^"]+)"/)
-  if (icdnMatch) {
-    const icdnBase = icdnMatch[1]
-    const icdnPathPattern = /icdnAssetUrl\(\s*["']([^"']+)["']\s*\)/g
-    for (const match of gallerySource.matchAll(icdnPathPattern)) {
-      remoteAssets.push(joinUrl(icdnBase, match[1]))
+    if (
+      name === 'googleaccessid' ||
+      /^(?:x-amz|x-goog|goog)-/.test(name) ||
+      /(?:^|[-_.])(signature|token|expires|credential)(?:$|[-_.])/.test(name)
+    ) {
+      return true
     }
   }
 
-  const cdnMatch = appConfSource.match(/CDN_PATH\s*=\s*"([^"]+)"/)
-  if (!cdnMatch) return uniqueSorted(remoteAssets)
+  return false
+}
 
-  const cdnBase = cdnMatch[1]
-  const pathPattern = /CDN_PATH\s*\+\s*"([^"]+)"/g
-  for (const match of gallerySource.matchAll(pathPattern)) {
-    const assetPath = match[1]
-    remoteAssets.push(joinUrl(cdnBase, assetPath))
+export function extractResolvedRemoteMediaAssets(html) {
+  const remoteAssets = []
+  const sourcePattern = /\b(?:src|poster)=["'](https?:\/\/[^"'<>]+)["']/gi
+  for (const match of html.matchAll(sourcePattern)) {
+    try {
+      const url = new URL(match[1])
+      if (
+        !url.username &&
+        !url.password &&
+        !hasPrivateOrSignedRemoteMediaQuery(url)
+      ) {
+        remoteAssets.push(url.href)
+      }
+    } catch {
+      // Artifact verification owns malformed output; do not broaden ownership.
+    }
   }
+  return uniqueSorted(remoteAssets)
+}
 
+async function readRemoteGalleryAssets() {
+  const remoteAssets = []
+  for (const locale of LOCALES) {
+    try {
+      const html = await fs.readFile(path.join(OUT_DIR, locale, 'gallery.html'), 'utf8')
+      remoteAssets.push(...extractResolvedRemoteMediaAssets(html))
+    } catch (error) {
+      if (error?.code !== 'ENOENT') throw error
+    }
+  }
   return uniqueSorted(remoteAssets)
 }
 
@@ -264,7 +290,15 @@ function buildOwnedSameOriginPaths(manifest) {
 function buildServiceWorkerSource(manifest) {
   const version = manifest.version
   const ownedSameOriginPaths = buildOwnedSameOriginPaths(manifest)
-  const ownedRemoteUrls = uniqueSorted((manifest.shared?.remoteAssets ?? []).filter((url) => /^https?:\/\//i.test(url)))
+  const ownedRemoteUrls = uniqueSorted(
+    (manifest.shared?.remoteAssets ?? []).filter((value) => {
+      try {
+        return /^https?:\/\//i.test(value) && !hasPrivateOrSignedRemoteMediaQuery(value)
+      } catch {
+        return false
+      }
+    }),
+  )
 
   return `/* eslint-disable no-restricted-globals */
 const OFFLINE_VERSION = ${JSON.stringify(version)};
@@ -281,6 +315,8 @@ const OWNED_REMOTE_URLS = new Set(${JSON.stringify(ownedRemoteUrls)});
 const PAGE_VERSION_PARAM = ${JSON.stringify(PAGE_VERSION_PARAM)};
 const NETWORK_TIMEOUT_MS = 5000;
 let manifestPromise = null;
+
+${hasPrivateOrSignedRemoteMediaQuery.toString()}
 
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
@@ -331,6 +367,10 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(handleNavigation(request, url));
     return;
   }
+
+  // Signed URLs are bearer credentials. Never claim or cache them, even if a
+  // malformed or stale manifest accidentally contains the exact URL.
+  if (hasPrivateOrSignedRemoteMediaQuery(url)) return;
 
   // dom-pub is a sibling path on the production origin. Exact remote
   // allowlisting must win before the generic same-origin sibling guard.

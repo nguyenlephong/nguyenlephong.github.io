@@ -25,6 +25,7 @@ const PUBLIC_TEXT_EXTENSIONS = new Set([
   '.mjs',
   '.pem',
   '.rss',
+  '.rsc',
   '.srt',
   '.svg',
   '.tsv',
@@ -35,6 +36,14 @@ const PUBLIC_TEXT_EXTENSIONS = new Set([
   '.yaml',
   '.yml',
 ])
+const PRIVATE_QUERY_URL_SCAN_EXTENSIONS = new Set([
+  '.htm',
+  '.html',
+  '.json',
+  '.rsc',
+  '.txt',
+])
+const ABSOLUTE_HTTP_URL_PATTERN = /https?:\/\/[^\s"'<>]+/gi
 
 function containsCrediblePrivateKeyBlock(content) {
   // Firebase service-account JSON and generated JavaScript commonly retain
@@ -279,6 +288,67 @@ function inspectSecrets(content, relativePath, failures, secretMatches) {
     if (!(detect ? detect(content) : pattern.test(content))) continue
     secretMatches.push({ path: relativePath, pattern: name })
     failures.push(`Potential ${name} is present in public artifact: ${relativePath}`)
+  }
+}
+
+function normalizeSensitiveQueryName(value) {
+  let normalized = value
+  for (let index = 0; index < 3; index += 1) {
+    try {
+      const decoded = decodeURIComponent(normalized)
+      if (decoded === normalized) break
+      normalized = decoded
+    } catch {
+      break
+    }
+  }
+
+  return normalized.trim().toLowerCase().replace(/^(?:amp;)+/, '')
+}
+
+function hasPrivateOrSignedQuery(url) {
+  for (const rawName of url.searchParams.keys()) {
+    const name = normalizeSensitiveQueryName(rawName)
+    if (
+      name === 'googleaccessid' ||
+      /^(?:x-amz|x-goog|goog)-/.test(name) ||
+      /(?:^|[-_.])(signature|token|expires|credential)(?:$|[-_.])/.test(name)
+    ) {
+      return true
+    }
+  }
+  return false
+}
+
+function normalizePublicArtifactUrlEncoding(content) {
+  return content
+    .replaceAll('\\/', '/')
+    .replace(/\\u0026/gi, '&')
+    .replace(/\\u003f/gi, '?')
+    .replace(/\\u003d/gi, '=')
+    .replace(/&#(?:0*38|x0*26);/gi, '&')
+}
+
+function inspectPrivateQueryUrls(content, relativePath, failures, matches) {
+  const normalizedContent = normalizePublicArtifactUrlEncoding(content)
+  const seen = new Set()
+
+  for (const candidate of normalizedContent.match(ABSOLUTE_HTTP_URL_PATTERN) ?? []) {
+    let url
+    try {
+      url = new URL(candidate)
+    } catch {
+      continue
+    }
+    if (!hasPrivateOrSignedQuery(url)) continue
+
+    // Report path only. Echoing the URL could expose the credential value that
+    // this artifact gate is intended to keep out of a public deployment log.
+    const key = `${url.origin}${url.pathname}`
+    if (seen.has(key)) continue
+    seen.add(key)
+    matches.push({ path: relativePath })
+    failures.push(`Signed or private query URL is present in public artifact: ${relativePath}`)
   }
 }
 
@@ -864,6 +934,7 @@ export async function verifyStaticArtifact({
   const extensionEntries = { '.html': [], '.js': [], '.css': [] }
   const routeEntries = []
   const secretMatches = []
+  const privateQueryUrlMatches = []
   const secretExtensions = new Set([
     ...PUBLIC_TEXT_EXTENSIONS,
     ...(config.additionalSecretScanExtensions ?? config.secretScanExtensions ?? []),
@@ -892,6 +963,14 @@ export async function verifyStaticArtifact({
   await mapWithConcurrency(textFiles, secretScanConcurrency, async (entry) => {
     const content = await readFile(entry.absolutePath, 'utf8')
     inspectSecrets(content, entry.relativePath, failures, secretMatches)
+    if (PRIVATE_QUERY_URL_SCAN_EXTENSIONS.has(entry.extension)) {
+      inspectPrivateQueryUrls(
+        content,
+        entry.relativePath,
+        failures,
+        privateQueryUrlMatches,
+      )
+    }
     if (entry.extension === '.html' || entry.extension === '.htm') {
       htmlMetadataByPath.set(
         entry.relativePath,
@@ -957,6 +1036,7 @@ export async function verifyStaticArtifact({
       scannedTextFiles: textFiles.length,
       scanConcurrency: secretScanConcurrency,
       matches: secretMatches,
+      privateQueryUrlMatches,
     },
     failures,
     warnings: [],

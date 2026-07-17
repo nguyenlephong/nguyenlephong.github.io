@@ -14,6 +14,7 @@
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
+    "test:firestore-rules": "firebase emulators:exec --only firestore --project demo-engagement-rules \"node --test tests/firestore-rules.test.mjs\"",
     "check": "npm run typecheck && npm run lint && npm test",
     "quality": "npm run check && npm run build:fast && npm run verify:pagination && npm run verify:artifact && npm run verify:offline",
     "verify:artifact": "node scripts/verify-static-artifact.mjs",
@@ -39,12 +40,10 @@
     "d3-selection": "3.0.0",
     "d3-transition": "3.0.1",
     "dayjs": "1.11.13",
-    "eslint-config-prettier": "9.1.0",
     "firebase": "^12.14.0",
     "framer-motion": "12.9.4",
-    "next": "16.1.1",
+    "next": "16.2.10",
     "next-intl": "4.12.0",
-    "prettier": "3.2.5",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-icons": "5.0.1",
@@ -53,6 +52,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "5.0.1",
     "@types/d3-drag": "3.0.7",
     "@types/d3-force": "3.0.10",
     "@types/d3-selection": "3.0.11",
@@ -61,13 +61,17 @@
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "eslint": "9",
-    "eslint-config-next": "16.1.1",
+    "eslint-config-next": "16.2.10",
+    "eslint-config-prettier": "9.1.0",
+    "firebase-tools": "15.24.0",
     "playwright": "1.61.1",
+    "prettier": "3.2.5",
     "sharp": "^0.33.5",
     "typescript": "5"
   },
   "overrides": {
     "@types/react": "19.2.7",
-    "@types/react-dom": "19.2.3"
+    "@types/react-dom": "19.2.3",
+    "nanoid": "3.3.8"
   }
 }

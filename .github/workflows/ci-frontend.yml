@@ -40,6 +40,33 @@ jobs:
       - name: Unit tests
         run: npm test
 
+  firestore-rules:
+    name: Firestore security rules
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test Firestore security rules in the emulator
+        run: npm run test:firestore-rules
+
   sonarqube:
     name: SonarQube
     runs-on: ubuntu-latest

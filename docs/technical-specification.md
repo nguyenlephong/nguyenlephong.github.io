@@ -352,8 +352,11 @@ Important behavior:
 - If Firebase environment variables are missing, engagement quietly no-ops.
 - One view is recorded per browser session through `sessionStorage`.
 - Reactions are remembered per browser through `localStorage`.
-- Writes use Firestore atomic increments.
+- Views and shares use Firestore atomic increments. Reaction toggles and
+  switches use one transaction so old/new counters cannot partially apply.
 - Failed writes roll back optimistic UI updates where needed.
+- UI code targets the provider-neutral `EngagementRepository`; the Firebase
+  adapter remains lazy and client-only.
 
 Required public build-time variables:
 
@@ -369,13 +372,20 @@ Optional variables:
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY
 ```
 
 `firestore.rules` allows anyone to read `postStats` and allows constrained
-counter writes. The rules protect the shape of the data and prevent arbitrary
-overwrites, but they do not make the counters audit-grade. A determined client
-can still loop valid increments. Treat the counters as public engagement signals,
-not financial or security records.
+counter writes. The rules constrain ids, exact fields, types, reaction keys,
+nonnegative values, affected fields, and deltas, but do not make counters
+audit-grade. A determined valid client can still loop allowed increments.
+
+When the App Check site key is configured, reCAPTCHA Enterprise App Check is
+initialized before Firestore. Roll out with enforcement disabled, monitor valid
+and invalid request metrics across a representative traffic cycle, fix legitimate
+invalid traffic, then enable Firestore enforcement. Never ship App Check debug
+tokens in the static artifact. See `specs/engagement-provider-boundary.md` for
+the monitor-to-enforce and rollback runbook.
 
 ## 11. Client UX Systems
 

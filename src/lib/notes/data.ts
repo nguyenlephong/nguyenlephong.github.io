@@ -6,7 +6,7 @@ import {
   readJsonValidated
 } from "@/lib/content/io";
 import { pageCount } from "@/lib/content/pagination";
-import { rewriteContentAssetUrls } from "@/lib/assets/icdn";
+import { rewriteContentAssetValues } from "@/lib/assets/icdn";
 import {
   noteOverrideSchema,
   notesIndexOverrideSchema,
@@ -48,9 +48,9 @@ export function getNoteContentLocales(slug: string): Locale[] {
 }
 
 function baseIndex(): NotesIndexFile {
-  return (
+  return rewriteContentAssetValues(
     readJsonValidated(path.join(DATA_DIR, "_index.json"), notesIndexSchema) ??
-    EMPTY_INDEX
+      EMPTY_INDEX
   );
 }
 
@@ -69,10 +69,10 @@ export function loadNotesIndex(locale?: string): NotesIndexFile {
   );
   if (!override) return base;
 
-  return {
+  return rewriteContentAssetValues({
     topics: overlayByKey(base.topics, override.topics, (t) => t.id),
     posts: overlayByKey(base.posts, override.posts, (p) => p.slug)
-  };
+  });
 }
 
 /** Notes visible for a locale — both English and Vietnamese serve the shared set. */
@@ -163,14 +163,14 @@ export function loadNote(slug: string, locale?: string): Note | null {
   );
   if (!base) return null;
   if (contentLocale(locale) !== "vi") {
-    return { ...base, html: rewriteContentAssetUrls(base.html) };
+    return rewriteContentAssetValues(base);
   }
 
   const override = readJsonValidated(
     path.join(DATA_DIR, "vi", "posts", `${slug}.json`),
     noteOverrideSchema
   );
-  if (!override) return { ...base, html: rewriteContentAssetUrls(base.html) };
+  if (!override) return rewriteContentAssetValues(base);
 
   const note = {
     ...base,
@@ -183,5 +183,5 @@ export function loadNote(slug: string, locale?: string): Note | null {
     faqs: override.faqs ?? base.faqs
   };
 
-  return { ...note, html: rewriteContentAssetUrls(note.html) };
+  return rewriteContentAssetValues(note);
 }

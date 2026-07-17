@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import {
-  applyReaction,
+  changeReaction,
   emptyReactions,
   getPostStats,
   incrementShare,
@@ -11,6 +11,8 @@ import {
   type ReactionCounts,
   type ReactionKey,
 } from '@/lib/firebase/postStats'
+import { ReactionMutationQueue } from '@/lib/engagement/reaction-mutation-queue'
+import { isReactionKey } from '@/lib/engagement/domain'
 
 interface EngagementState {
   views: number
@@ -62,10 +64,25 @@ function safeRemove(store: 'local' | 'session', key: string): void {
   }
 }
 
+function transitionReaction(
+  state: EngagementState,
+  nextReaction: ReactionKey | null,
+): EngagementState {
+  const previous = state.myReaction
+  if (previous === nextReaction) return state
+
+  const reactions = { ...state.reactions }
+  if (previous) reactions[previous] = Math.max(0, reactions[previous] - 1)
+  if (nextReaction) reactions[nextReaction] += 1
+
+  return { ...state, reactions, myReaction: nextReaction }
+}
+
 /**
  * Drives the engagement bar for one article. Loads counters, records a single
  * view per browser session, and applies optimistic reaction/share toggles
- * backed by `localStorage`. Failed writes roll the optimistic update back.
+ * backed by committed `localStorage`. Optimistic reactions remain in memory;
+ * failed writes roll the UI back without persisting an uncommitted intent.
  *
  * Both the blog/notes engagement bar (via `EngagementProvider`) and the
  * thoughts surface share this hook — pass `{ withReactions: false }` for the
@@ -89,23 +106,68 @@ export function usePostEngagement(
     ready: false,
   })
 
-  // Mirror the latest state so the callbacks below can read it and roll back
-  // without performing side effects inside a setState updater (React may invoke
-  // an updater more than once, which would double-fire the Firestore write).
   const stateRef = useRef(state)
-  useEffect(() => {
-    stateRef.current = state
-  }, [state])
+  const reactionQueueRef = useRef<{
+    id: string
+    queue: ReactionMutationQueue
+  } | null>(null)
+
+  // Publish state and its imperative mirror in the same tick. Rapid clicks can
+  // therefore derive from the latest optimistic state before React rerenders.
+  const updateState = useCallback(
+    (updater: (current: EngagementState) => EngagementState) => {
+      const next = updater(stateRef.current)
+      stateRef.current = next
+      setState(next)
+      return next
+    },
+    [],
+  )
 
   // Initial load + once-per-session view increment.
   useEffect(() => {
     let cancelled = false
+    const storedReaction = safeGet('local', reactionStoreKey)
+    const mine =
+      withReactions && isReactionKey(storedReaction) ? storedReaction : null
+    let queue: ReactionMutationQueue | null = null
+
+    if (withReactions) {
+      queue = new ReactionMutationQueue({
+        initialCommitted: mine,
+        mutate: (previous, next) => changeReaction(id, previous, next),
+        onCommitted: (committed) => {
+          // Remote settlement outlives the component. Always publish the last
+          // committed state, even when route navigation has unmounted this UI.
+          if (committed) safeSet('local', reactionStoreKey, committed)
+          else safeRemove('local', reactionStoreKey)
+        },
+        onLatestSettled: ({ committed }) => {
+          if (
+            cancelled ||
+            reactionQueueRef.current?.id !== id ||
+            reactionQueueRef.current.queue !== queue
+          ) {
+            return
+          }
+
+          updateState((current) => transitionReaction(current, committed))
+        },
+      })
+      reactionQueueRef.current = { id, queue }
+    } else {
+      reactionQueueRef.current = null
+    }
+
+    updateState(() => ({
+      views: 0,
+      shares: 0,
+      reactions: emptyReactions(),
+      myReaction: mine,
+      ready: false,
+    }))
 
     async function init() {
-      const mine = withReactions
-        ? (safeGet('local', reactionStoreKey) as ReactionKey | null)
-        : null
-
       if (safeGet('session', viewedKey) !== '1') {
         safeSet('session', viewedKey, '1')
         await incrementView(id)
@@ -114,70 +176,52 @@ export function usePostEngagement(
       const stats = await getPostStats(id)
       if (cancelled) return
 
-      setState({
+      updateState(() => ({
         views: stats?.views ?? 0,
         shares: stats?.shares ?? 0,
         reactions: stats ? stats.reactions : emptyReactions(),
         myReaction: mine,
         ready: true,
-      })
+      }))
     }
 
     init()
     return () => {
       cancelled = true
+      // Do not cancel or drain the queue: its remote mutation must settle and
+      // publish committed browser state after navigation/unmount.
+      if (reactionQueueRef.current?.queue === queue) {
+        reactionQueueRef.current = null
+      }
     }
-  }, [id, viewedKey, reactionStoreKey, withReactions])
+  }, [id, viewedKey, reactionStoreKey, updateState, withReactions])
 
   const react = useCallback(
     (next: ReactionKey) => {
       if (!withReactions) return
 
       const snapshot = stateRef.current
-      const prevReaction = snapshot.myReaction
-      const reactions = { ...snapshot.reactions }
+      const queueEntry = reactionQueueRef.current
+      if (!snapshot.ready || queueEntry?.id !== id) return
 
-      // Toggle off.
-      if (prevReaction === next) {
-        reactions[next] = Math.max(0, reactions[next] - 1)
-        setState({ ...snapshot, reactions, myReaction: null })
-        safeRemove('local', reactionStoreKey)
-        applyReaction(id, next, -1).then((ok) => {
-          if (!ok) {
-            setState(snapshot)
-            safeSet('local', reactionStoreKey, next)
-          }
-        })
-        return
-      }
-
-      // Switch or set.
-      if (prevReaction) reactions[prevReaction] = Math.max(0, reactions[prevReaction] - 1)
-      reactions[next] += 1
-      setState({ ...snapshot, reactions, myReaction: next })
-      safeSet('local', reactionStoreKey, next)
-
-      const writes: Promise<boolean>[] = []
-      if (prevReaction) writes.push(applyReaction(id, prevReaction, -1))
-      writes.push(applyReaction(id, next, 1))
-      Promise.all(writes).then((results) => {
-        if (results.some((ok) => !ok)) {
-          setState(snapshot)
-          if (prevReaction) safeSet('local', reactionStoreKey, prevReaction)
-          else safeRemove('local', reactionStoreKey)
-        }
-      })
+      const requested = snapshot.myReaction === next ? null : next
+      updateState((current) => transitionReaction(current, requested))
+      queueEntry.queue.enqueue(requested)
     },
-    [id, reactionStoreKey, withReactions],
+    [id, updateState, withReactions],
   )
 
   const recordShare = useCallback(() => {
-    const snapshot = stateRef.current
-    setState({ ...snapshot, shares: snapshot.shares + 1 })
+    updateState((current) => ({ ...current, shares: current.shares + 1 }))
     incrementShare(id).then((ok) => {
-      if (!ok) setState((s) => ({ ...s, shares: Math.max(0, s.shares - 1) }))
+      if (!ok) {
+        updateState((current) => ({
+          ...current,
+          shares: Math.max(0, current.shares - 1),
+        }))
+      }
     })
-  }, [id])
+  }, [id, updateState])
 
   return { ...state, react, recordShare }
 }

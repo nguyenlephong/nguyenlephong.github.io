@@ -7,7 +7,7 @@ import {
   readJsonValidated,
 } from '@/lib/content/io'
 import { pageCount } from '@/lib/content/pagination'
-import { rewriteContentAssetUrls } from '@/lib/assets/icdn'
+import { rewriteContentAssetValues } from '@/lib/assets/icdn'
 import {
   blogIndexOverrideSchema,
   blogIndexSchema,
@@ -27,9 +27,9 @@ const EMPTY_INDEX: BlogIndexFile = { categories: [], posts: [] }
 
 /** Canonical index (English) — used for static-param generation. */
 function baseIndex(): BlogIndexFile {
-  return (
+  return rewriteContentAssetValues(
     readJsonValidated(path.join(DATA_DIR, '_index.json'), blogIndexSchema) ??
-    EMPTY_INDEX
+      EMPTY_INDEX,
   )
 }
 
@@ -49,14 +49,14 @@ export function loadIndex(locale?: string): BlogIndexFile {
   )
   if (!override) return base
 
-  return {
+  return rewriteContentAssetValues({
     categories: overlayByKey(
       base.categories,
       override.categories,
       (c) => c.slug,
     ),
     posts: overlayByKey(base.posts, override.posts, (p) => p.slug),
-  }
+  })
 }
 
 export function listCategories(locale?: string): BlogCategoryMeta[] {
@@ -144,11 +144,10 @@ export function loadPost(slug: string, locale?: string): BlogPost | null {
   )
   if (!base) return null
   if (isDefaultLocale(locale)) {
-    return {
+    return rewriteContentAssetValues({
       ...base,
       locales: [...indexedPost.locales],
-      html: rewriteContentAssetUrls(base.html),
-    }
+    })
   }
 
   const override = readJsonValidated(
@@ -156,11 +155,10 @@ export function loadPost(slug: string, locale?: string): BlogPost | null {
     blogPostOverrideSchema,
   )
   if (!override) {
-    return {
+    return rewriteContentAssetValues({
       ...base,
       locales: [...indexedPost.locales],
-      html: rewriteContentAssetUrls(base.html),
-    }
+    })
   }
 
   const post = {
@@ -176,7 +174,7 @@ export function loadPost(slug: string, locale?: string): BlogPost | null {
     faqs: override.faqs ?? base.faqs,
   }
 
-  return { ...post, html: rewriteContentAssetUrls(post.html) }
+  return rewriteContentAssetValues(post)
 }
 
 export function getPostContentLocales(slug: string): BlogPostMeta['locales'] {

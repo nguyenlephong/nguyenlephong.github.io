@@ -32,7 +32,7 @@ test("offline mode wires bounded cache warming and owned-route fallbacks", async
     readFile("src/app/[locale]/(site)/offline/page.tsx", "utf8"),
     readFile("src/components/offline/OfflineNavigationCapture.tsx", "utf8"),
     readFile("src/components/offline/OfflineStatusBanner.tsx", "utf8"),
-    readFile("src/lib/firebase/postStats.ts", "utf8"),
+    readFile("src/lib/engagement/firebase-repository.ts", "utf8"),
     readFile("messages/en.json", "utf8"),
     readFile("messages/vi.json", "utf8")
   ]);
@@ -92,6 +92,11 @@ test("offline mode wires bounded cache warming and owned-route fallbacks", async
   assert.match(offlineScript, /OWNED_SAME_ORIGIN_PATHS/);
   assert.match(offlineScript, /OWNED_REMOTE_URLS/);
   assert.match(offlineScript, /OWNED_REMOTE_URLS\.has\(url\.href\)/);
+  assert.match(offlineScript, /hasPrivateOrSignedRemoteMediaQuery/);
+  assert.match(
+    offlineScript,
+    /if \(hasPrivateOrSignedRemoteMediaQuery\(url\)\) return/,
+  );
   assert.ok(exactRemoteHandlerIndex >= 0);
   assert.ok(exactRemoteHandlerIndex < genericSameOriginHandlerIndex);
   assert.match(offlineScript, /isExplicitlyVersionedRemoteUrl/);
