@@ -23,7 +23,7 @@ import {
   englishSlangDeck,
   warmupLines,
   type SlangEntry,
-} from '@/app/[locale]/apps/english/english.data'
+} from '@/app/[locale]/(site)/apps/english/english.data'
 import { Link } from '@/i18n/navigation'
 import { track } from '@/lib/analytics'
 

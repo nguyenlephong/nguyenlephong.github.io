@@ -220,7 +220,7 @@ test("future source dates are omitted from freshness signals deterministically",
 test("root and localized homes split WebSite and profile schema ownership", () => {
   const rootPage = readFileSync(new URL("../src/app/page.tsx", import.meta.url), "utf8");
   const localizedPage = readFileSync(
-    new URL("../src/app/[locale]/page.tsx", import.meta.url),
+    new URL("../src/app/[locale]/(site)/page.tsx", import.meta.url),
     "utf8"
   );
   const localizedLayout = readFileSync(
@@ -357,11 +357,11 @@ test("notes expose one canonical slug set across English and Vietnamese", () => 
     "utf8"
   );
   const notePage = readFileSync(
-    new URL("../src/app/[locale]/notes/[slug]/page.tsx", import.meta.url),
+    new URL("../src/app/[locale]/(site)/notes/[slug]/page.tsx", import.meta.url),
     "utf8"
   );
   const blogPostPage = readFileSync(
-    new URL("../src/app/[locale]/blog/[category]/[slug]/page.tsx", import.meta.url),
+    new URL("../src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx", import.meta.url),
     "utf8"
   );
   const blogDataSource = readFileSync(

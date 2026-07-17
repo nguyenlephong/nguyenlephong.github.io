@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { AppShowcaseItem } from '@/app/[locale]/apps/apps.data'
+import { AppShowcaseItem } from '@/app/[locale]/(site)/apps/apps.data'
 import { Link } from '@/i18n/navigation'
 import EnglishVisual from './EnglishVisual'
 import GlanceVisual from './GlanceVisual'

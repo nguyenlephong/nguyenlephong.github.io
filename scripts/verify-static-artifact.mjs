@@ -315,6 +315,14 @@ function findMetaContent(html, name) {
   return null
 }
 
+function findMetaProperty(html, property) {
+  for (const tag of collectTags(html, 'meta')) {
+    const attributes = attributesFromTag(tag)
+    if (attributes.get('property')?.toLowerCase() === property) return attributes.get('content') ?? ''
+  }
+  return null
+}
+
 function collectJsonLd(html) {
   const values = []
   const errors = []
@@ -410,6 +418,13 @@ function collectHtmlMetadata({ absolutePath, html, outDir }) {
 
   const htmlTag = collectTags(html, 'html')[0]
   const jsonLd = collectJsonLd(html)
+  const studioModuleLinks = collectTags(html, 'a')
+    .map(attributesFromTag)
+    .filter((attributes) => attributes.has('data-studio-module-link'))
+    .map((attributes) => ({
+      id: attributes.get('data-studio-module-link') ?? '',
+      href: attributes.get('href') ?? '',
+    }))
   return {
     absolutePath,
     relativePath: relativeArtifactPath(outDir, absolutePath),
@@ -423,6 +438,79 @@ function collectHtmlMetadata({ absolutePath, html, outDir }) {
     jsonLdObjects: flattenJsonLd(jsonLd.values),
     language: htmlTag ? attributesFromTag(htmlTag).get('lang')?.trim() ?? '' : '',
     noindex: findMetaContent(html, 'robots')?.toLowerCase().includes('noindex') ?? false,
+    openGraphImage: findMetaProperty(html, 'og:image')?.trim() ?? '',
+    twitterImage: findMetaContent(html, 'twitter:image')?.trim() ?? '',
+    studioHeadingCount: collectTags(html, 'h1').length,
+    studioModuleLinks,
+    hasStudioStaticOverview: /data-studio-static-overview=["']true["']/i.test(html),
+  }
+}
+
+function verifyStudioHtmlContracts({ htmlMetadataByPath, siteOrigin, failures }) {
+  const collectionPageTypes = new Set(['CollectionPage'])
+
+  for (const metadata of htmlMetadataByPath.values()) {
+    if (metadata.canonicalUrls.length !== 1) continue
+
+    let canonical
+    try {
+      canonical = new URL(metadata.canonicalUrls[0], siteOrigin)
+    } catch {
+      continue
+    }
+    if (!canonical.pathname.endsWith('/studio')) continue
+
+    if (!metadata.hasStudioStaticOverview) {
+      failures.push(`${metadata.relativePath} Studio route must export a no-JavaScript static overview`)
+    }
+    if (!metadata.openGraphImage || !metadata.twitterImage) {
+      failures.push(`${metadata.relativePath} Studio route must export Open Graph and Twitter images`)
+    }
+    if (metadata.studioHeadingCount !== 1) {
+      failures.push(
+        `${metadata.relativePath} Studio static overview must contain exactly one H1; found ${metadata.studioHeadingCount}`,
+      )
+    }
+
+    const moduleLinks = metadata.studioModuleLinks.filter(({ id, href }) => id && href)
+    if (moduleLinks.length === 0) {
+      failures.push(`${metadata.relativePath} Studio static overview must contain crawlable module links`)
+    }
+    if (new Set(moduleLinks.map(({ id }) => id)).size !== moduleLinks.length) {
+      failures.push(`${metadata.relativePath} Studio static overview contains duplicate module link identifiers`)
+    }
+
+    const collectionPages = metadata.jsonLdObjects.filter((value) =>
+      schemaHasType(value, collectionPageTypes),
+    )
+    if (collectionPages.length !== 1) {
+      failures.push(
+        `${metadata.relativePath} Studio route must emit exactly one CollectionPage object; found ${collectionPages.length}`,
+      )
+      continue
+    }
+
+    const hasPart = Array.isArray(collectionPages[0].hasPart)
+      ? collectionPages[0].hasPart
+      : collectionPages[0].hasPart
+        ? [collectionPages[0].hasPart]
+        : []
+    const visibleUrls = new Set(
+      moduleLinks.map(({ href }) => new URL(href, siteOrigin).toString()),
+    )
+    const structuredUrls = new Set(
+      hasPart
+        .map((part) => part?.url)
+        .filter((value) => typeof value === 'string')
+        .map((value) => new URL(value, siteOrigin).toString()),
+    )
+
+    if (
+      visibleUrls.size !== structuredUrls.size ||
+      [...visibleUrls].some((url) => !structuredUrls.has(url))
+    ) {
+      failures.push(`${metadata.relativePath} Studio CollectionPage hasPart URLs do not match visible module links`)
+    }
   }
 }
 
@@ -840,6 +928,7 @@ export async function verifyStaticArtifact({
   if (largestCss[0]) addLimitFailure(failures, `Largest CSS (${largestCss[0].path})`, largestCss[0].bytes, limits.maxCssBytes)
 
   verifyRobots({ outDir, siteOrigin, failures })
+  verifyStudioHtmlContracts({ htmlMetadataByPath, siteOrigin, failures })
   const seo = verifySitemap({
     outDir,
     siteOrigin,
@@ -879,7 +968,7 @@ export async function verifyStaticArtifact({
   ]) {
     const percentage = (actual / limit) * 100
     if (percentage >= config.warnAtPercent && actual <= limit) {
-      report.warnings.push(`${label} uses ${percentage.toFixed(1)}% of its Phase 1 limit`)
+      report.warnings.push(`${label} uses ${percentage.toFixed(1)}% of its configured limit`)
     }
   }
 

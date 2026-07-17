@@ -10,7 +10,8 @@ test("offline mode wires bounded cache warming and owned-route fallbacks", async
     offlineVerifyScript,
     manifestRoute,
     localePage,
-    layout,
+    rootLayout,
+    siteLayout,
     swRoute,
     offlinePage,
     offlineNavigationCapture,
@@ -24,10 +25,11 @@ test("offline mode wires bounded cache warming and owned-route fallbacks", async
     readFile("scripts/postbuild-offline.mjs", "utf8"),
     readFile("scripts/verify-offline.mjs", "utf8"),
     readFile("src/app/manifest.ts", "utf8"),
-    readFile("src/app/[locale]/page.tsx", "utf8"),
+    readFile("src/app/[locale]/(site)/page.tsx", "utf8"),
     readFile("src/app/[locale]/layout.tsx", "utf8"),
+    readFile("src/app/[locale]/(site)/layout.tsx", "utf8"),
     readFile("src/app/sw.js/route.ts", "utf8"),
-    readFile("src/app/[locale]/offline/page.tsx", "utf8"),
+    readFile("src/app/[locale]/(site)/offline/page.tsx", "utf8"),
     readFile("src/components/offline/OfflineNavigationCapture.tsx", "utf8"),
     readFile("src/components/offline/OfflineStatusBanner.tsx", "utf8"),
     readFile("src/lib/firebase/postStats.ts", "utf8"),
@@ -160,9 +162,9 @@ test("offline mode wires bounded cache warming and owned-route fallbacks", async
   assert.match(localePage, /export function generateStaticParams\(\)/);
   assert.match(localePage, /PageTracker page="home" eventName="page_view"/);
 
-  assert.match(layout, /manifest: '\/manifest\.webmanifest'/);
-  assert.match(layout, /<OfflineNavigationCapture \/>/);
-  assert.match(layout, /<OfflineStatusBanner \/>/);
+  assert.match(rootLayout, /manifest: '\/manifest\.webmanifest'/);
+  assert.match(siteLayout, /<OfflineNavigationCapture \/>/);
+  assert.match(siteLayout, /<OfflineStatusBanner \/>/);
 
   assert.match(swRoute, /export const dynamic = 'force-static'/);
   assert.match(swRoute, /Development fallback only/);

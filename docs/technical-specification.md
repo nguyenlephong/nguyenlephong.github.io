@@ -114,36 +114,36 @@ It must either be built ahead of time or handled by client-side JavaScript.
 
 ## 6. Routing and Page Behavior
 
-### Locale Shell
+### Locale and public-site shells
 
-`src/app/[locale]/layout.tsx` is the main application shell. It:
+`src/app/[locale]/layout.tsx` is the shared locale document boundary. It
+validates and sets the locale, provides `next-intl`, owns shared locale
+metadata, and loads global analytics.
 
-- validates the locale
-- sets the request locale for `next-intl`
-- loads Google fonts through `next/font`
-- injects global SEO schema for `Person` and `WebSite`
-- initializes theme, font, and reading-background scripts before hydration
-- lazy-loads Google Analytics, Google AdSense, and PostHog
-- mounts global UI such as header, footer, route progress, web vitals reporting,
-  and reader tools
+`src/app/[locale]/(site)/layout.tsx` is the public-site boundary. It initializes
+theme, font, and reading-background preferences, then mounts the header,
+footer, motion and route progress, offline support, Web Vitals reporting, and
+reader tools. The pathless `(site)` segment does not appear in public URLs.
+Studio remains outside this route group, so it does not render or hydrate the
+public-site shell.
 
 ### Route Table
 
 | Route                              | File                                               | Rendering notes                                                                           |
 |------------------------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------|
 | `/`                                | `src/app/page.tsx`                                 | Static redirect to `/en` with crawler-readable metadata.                                  |
-| `/{locale}`                        | `src/app/[locale]/page.tsx`                        | Main CV/profile page, built from `profileInfo` and translated section labels.             |
-| `/{locale}/about`                  | `src/app/[locale]/about/page.tsx`                  | Translated about sections from `messages`.                                                |
-| `/{locale}/gallery`                | `src/app/[locale]/gallery/page.tsx`                | Gallery from `profileInfo.gallery`, with ImageGallery JSON-LD.                            |
-| `/{locale}/apps`                   | `src/app/[locale]/apps/page.tsx`                   | Static app showcase from `apps.data.ts`.                                                  |
-| `/{locale}/apps/english`           | `src/app/[locale]/apps/english/page.tsx`           | Private/noindex E-Slang practice app.                                                     |
-| `/{locale}/blog`                   | `src/app/[locale]/blog/page.tsx`                   | Blog index with categories, quick filters, and Blog JSON-LD.                              |
-| `/{locale}/blog/{category}`        | `src/app/[locale]/blog/[category]/page.tsx`        | Category landing page.                                                                    |
-| `/{locale}/blog/{category}/{slug}` | `src/app/[locale]/blog/[category]/[slug]/page.tsx` | Article page with schema, related posts, reading tracker, reactions, share dock, and TOC. |
-| `/{locale}/notes`                  | `src/app/[locale]/notes/page.tsx`                  | Notes index with topic filters and CollectionPage JSON-LD.                                |
+| `/{locale}`                        | `src/app/[locale]/(site)/page.tsx`                        | Main CV/profile page, built from `profileInfo` and translated section labels.             |
+| `/{locale}/about`                  | `src/app/[locale]/(site)/about/page.tsx`                  | Translated about sections from `messages`.                                                |
+| `/{locale}/gallery`                | `src/app/[locale]/(site)/gallery/page.tsx`                | Gallery from `profileInfo.gallery`, with ImageGallery JSON-LD.                            |
+| `/{locale}/apps`                   | `src/app/[locale]/(site)/apps/page.tsx`                   | Static app showcase from `apps.data.ts`.                                                  |
+| `/{locale}/apps/english`           | `src/app/[locale]/(site)/apps/english/page.tsx`           | Private/noindex E-Slang practice app.                                                     |
+| `/{locale}/blog`                   | `src/app/[locale]/(site)/blog/page.tsx`                   | Blog index with categories, quick filters, and Blog JSON-LD.                              |
+| `/{locale}/blog/{category}`        | `src/app/[locale]/(site)/blog/[category]/page.tsx`        | Category landing page.                                                                    |
+| `/{locale}/blog/{category}/{slug}` | `src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx` | Article page with schema, related posts, reading tracker, reactions, share dock, and TOC. |
+| `/{locale}/notes`                  | `src/app/[locale]/(site)/notes/page.tsx`                  | Notes index with topic filters and CollectionPage JSON-LD.                                |
 | `/{locale}/studio`                 | `src/app/[locale]/studio/page.tsx`                 | Shadow-DOM admin workbench, route-isolated from the main profile shell.                   |
-| `/{locale}/notes/{slug}`           | `src/app/[locale]/notes/[slug]/page.tsx`           | Note article page, source-book card, topic breadcrumb, FAQ support, engagement widgets.   |
-| `/{locale}/heartbeats`             | `src/app/[locale]/heartbeats/page.tsx`             | Private/noindex family time visualization with placeholder public data.                   |
+| `/{locale}/notes/{slug}`           | `src/app/[locale]/(site)/notes/[slug]/page.tsx`           | Note article page, source-book card, topic breadcrumb, FAQ support, engagement widgets.   |
+| `/{locale}/heartbeats`             | `src/app/[locale]/(site)/heartbeats/page.tsx`             | Private/noindex family time visualization with placeholder public data.                   |
 
 Most routes expose `generateStaticParams()`, which lets Next.js enumerate every
 static localized page during build.
@@ -436,20 +436,29 @@ npm run verify:artifact
 | `build:og`   | Targeted OG build helper.                                             |
 | `verify:artifact` | Verifies output size, route assets, SEO output, and public-secret guardrails without rebuilding. |
 
-`config/static-artifact-budgets.json` contains the Phase 1 artifact limits. The
-initial limits deliberately sit close to the measured export so new growth is
-visible while route and content duplication are reduced:
+`config/static-artifact-budgets.json` contains the static artifact limits. The
+limits deliberately sit close to the measured export so new growth is visible
+while route and content duplication are reduced:
 
-| Budget | Phase 1 limit |
+| Budget | Current limit |
 |--------|---------------|
 | Total artifact | 850 MiB |
-| Total files | 24,000 |
+| Total files | 27,500 |
 | Largest HTML file | 430 KiB |
 | Largest JavaScript file | 1.35 MiB |
 | Largest CSS file | 210 KiB |
 | JavaScript referenced by one route | 2.2 MiB |
 | CSS referenced by one route | 220 KiB |
-| Sitemap URL floor | 824 |
+| Sitemap URL floor | 904 |
+
+The pathless `(site)` route group intentionally adds about 2,144 Next.js RSC
+segment files so public pages and Studio can have separate runtime boundaries
+without changing public URLs. The complete export measures 26,463 files and
+673.7 MiB: the route-group isolation adds only about 6.5 MiB, but its file
+inventory requires the 27,500-file ceiling. That cap leaves only 1,037 files,
+or about 3.9 percent, of headroom. The 850 MiB byte ceiling remains unchanged;
+the adjustment is a measured compatibility allowance rather than permission
+for general artifact growth.
 
 The verifier warns at 90 percent of the total-byte and file-count limits. These
 are temporary ceilings, not performance targets. Tighten them after the
@@ -462,7 +471,7 @@ budgets sample the home, blog, notes, and Studio entry points across English,
 Vietnamese, Chinese, Japanese, Korean, and French routes. Individual file limits
 still cover every emitted HTML, JavaScript, and CSS file.
 
-The SEO gate keeps the current 824-URL sitemap baseline, requires core public
+The SEO gate keeps the current 904-URL sitemap baseline, requires core public
 routes for every supported locale, validates every sitemap URL against its
 exported canonical HTML, and performs the reverse check for self-canonical,
 indexable HTML. Firebase web configuration remains allowed because it is a

@@ -5,11 +5,12 @@ import { createPortal } from "react-dom";
 
 type ShadowIslandProps = {
   children: ReactNode;
+  fallback?: ReactNode;
   styles: string;
   label?: string;
 };
 
-export function ShadowIsland({ children, styles, label }: ShadowIslandProps) {
+export function ShadowIsland({ children, fallback = null, styles, label }: ShadowIslandProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const [root, setRoot] = useState<ShadowRoot | null>(null);
 
@@ -37,8 +38,7 @@ export function ShadowIsland({ children, styles, label }: ShadowIslandProps) {
             </>,
             root
           )
-        : null}
+        : fallback}
     </div>
   );
 }
-

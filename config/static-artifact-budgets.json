@@ -5,7 +5,7 @@
   "warnAtPercent": 90,
   "limits": {
     "totalBytes": 891289600,
-    "fileCount": 25000,
+    "fileCount": 27500,
     "maxHtmlBytes": 440320,
     "maxJavaScriptBytes": 1415578,
     "maxCssBytes": 215040,

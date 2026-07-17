@@ -9,8 +9,8 @@ function read(path) {
 }
 
 test("family members expose aliases without a public name field", () => {
-  const data = read("src/app/[locale]/heartbeats/family.data.ts");
-  const client = read("src/app/[locale]/heartbeats/HeartbeatsClient.tsx");
+  const data = read("src/app/[locale]/(site)/heartbeats/family.data.ts");
+  const client = read("src/app/[locale]/(site)/heartbeats/HeartbeatsClient.tsx");
   const entries = [...data.matchAll(/id: 'm\d+', alias: '([^']+)'/g)];
 
   assert.ok(entries.length > 0, "expected family member entries");
@@ -20,7 +20,7 @@ test("family members expose aliases without a public name field", () => {
 });
 
 test("family member birthdates keep their original month and day", () => {
-  const data = read("src/app/[locale]/heartbeats/family.data.ts");
+  const data = read("src/app/[locale]/(site)/heartbeats/family.data.ts");
   const expected = new Map([
     ["m01", "1997-07-01"],
     ["m02", "2005-06-09"],
@@ -40,8 +40,8 @@ test("family member birthdates keep their original month and day", () => {
 });
 
 test("heartbeats renders as a daily dashboard without the old aurora shell", () => {
-  const client = read("src/app/[locale]/heartbeats/HeartbeatsClient.tsx");
-  const css = read("src/app/[locale]/heartbeats/heartbeats.css");
+  const client = read("src/app/[locale]/(site)/heartbeats/HeartbeatsClient.tsx");
+  const css = read("src/app/[locale]/(site)/heartbeats/heartbeats.css");
 
   assert.match(client, /className="heartbeats-focus"/);
   assert.match(client, /className="heartbeats-overview"/);
@@ -53,7 +53,7 @@ test("heartbeats renders as a daily dashboard without the old aurora shell", () 
 });
 
 test("heartbeats birthday countdown is calculated by date, not current hour", () => {
-  const client = read("src/app/[locale]/heartbeats/HeartbeatsClient.tsx");
+  const client = read("src/app/[locale]/(site)/heartbeats/HeartbeatsClient.tsx");
 
   assert.match(client, /const today = now\.startOf\('day'\)/);
   assert.match(
@@ -64,7 +64,7 @@ test("heartbeats birthday countdown is calculated by date, not current hour", ()
 });
 
 test("heartbeats copy stays positive and avoids life-countdown framing", () => {
-  const client = read("src/app/[locale]/heartbeats/HeartbeatsClient.tsx");
+  const client = read("src/app/[locale]/(site)/heartbeats/HeartbeatsClient.tsx");
 
   assert.match(client, /chuẩn bị một lời nhắn đúng lúc/);
   assert.match(client, /dịp gia đình quan\s+trọng/);

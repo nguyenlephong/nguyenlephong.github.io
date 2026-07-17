@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import test from 'node:test'
@@ -155,6 +155,61 @@ function writeLocalizedArticleFixture(outDir) {
   return articleUrls
 }
 
+function writeStudioFixture(outDir, { broken = false } = {}) {
+  const studioUrl = 'https://example.com/en/studio'
+  const moduleUrls = [
+    'https://example.com/en/studio?route=ai-skills#ai-skills',
+    'https://example.com/en/studio?route=delivery-checklists#delivery-checklists',
+  ]
+  const structuredUrls = broken ? [moduleUrls[0]] : moduleUrls
+  const collectionPage = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${studioUrl}#studio`,
+    name: 'Engineering Studio',
+    description: 'A useful public engineering workspace.',
+    url: studioUrl,
+    inLanguage: 'en',
+    hasPart: structuredUrls.map((url, index) => ({
+      '@type': 'CreativeWork',
+      name: index === 0 ? 'AI skills' : 'Delivery checklists',
+      url,
+    })),
+  }
+
+  mkdirSync(path.join(outDir, 'en'), { recursive: true })
+  writeFileSync(
+    path.join(outDir, 'en/studio.html'),
+    [
+      '<!doctype html><html lang="en"><head>',
+      '<title>Engineering Studio</title>',
+      '<meta name="description" content="A useful public engineering workspace.">',
+      broken ? '' : '<meta property="og:image" content="https://example.com/en/opengraph-image">',
+      broken ? '' : '<meta name="twitter:image" content="https://example.com/en/opengraph-image">',
+      `<link rel="canonical" href="${studioUrl}">`,
+      '</head><body>',
+      `<main${broken ? '' : ' data-studio-static-overview="true"'}>`,
+      '<h1>Engineering Studio</h1>',
+      broken ? '<h1>Duplicate heading</h1>' : '',
+      '<a data-studio-module-link="ai-skills" href="/en/studio?route=ai-skills#ai-skills">AI skills</a>',
+      '<a data-studio-module-link="delivery-checklists" href="/en/studio?route=delivery-checklists#delivery-checklists">Delivery checklists</a>',
+      '</main>',
+      `<script type="application/ld+json">${JSON.stringify(collectionPage)}</script>`,
+      '</body></html>',
+    ].join(''),
+  )
+
+  const sitemapPath = path.join(outDir, 'sitemap.xml')
+  const sitemap = readFileSync(sitemapPath, 'utf8')
+  writeFileSync(
+    sitemapPath,
+    sitemap.replace(
+      '</urlset>',
+      `<url><loc>${studioUrl}</loc><xhtml:link rel="alternate" hreflang="en" href="${studioUrl}" /><xhtml:link rel="alternate" hreflang="x-default" href="${studioUrl}" /></url></urlset>`,
+    ),
+  )
+}
+
 test('verifies artifact budgets, sitemap canonicals, robots, and public secrets', async (t) => {
   const { rootDir, outDir } = createFixture(t)
   writeFileSync(path.join(outDir, 'google-site-verification.html'), 'google-site-verification: fixture')
@@ -165,6 +220,37 @@ test('verifies artifact budgets, sitemap canonicals, robots, and public secrets'
   assert.equal(report.secrets.matches.length, 0)
   assert.equal(report.secrets.scanConcurrency, 2)
   assert.equal(report.artifact.largestRouteJavaScript[0].path, 'en.html')
+})
+
+test('reports near-limit warnings against the configured artifact budget', async (t) => {
+  const { rootDir } = createFixture(t, { config: { warnAtPercent: 1 } })
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.ok(report.warnings.some((warning) => warning.endsWith('of its configured limit')))
+  assert.doesNotMatch(report.warnings.join('\n'), /Phase 1/)
+})
+
+test('accepts a no-JavaScript Studio overview whose module links match CollectionPage data', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeStudioFixture(outDir)
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.failures, [])
+})
+
+test('rejects blank or duplicate-heading Studio HTML and structured-data link drift', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeStudioFixture(outDir, { broken: true })
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const failures = report.failures.join('\n')
+
+  assert.match(failures, /must export a no-JavaScript static overview/)
+  assert.match(failures, /must export Open Graph and Twitter images/)
+  assert.match(failures, /must contain exactly one H1; found 2/)
+  assert.match(failures, /hasPart URLs do not match visible module links/)
 })
 
 test('reports budget growth and a sitemap canonical mismatch', async (t) => {

@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const css = await readFile("src/app/[locale]/blog/blog.css", "utf8");
+const css = await readFile("src/app/[locale]/(site)/blog/blog.css", "utf8");
 const globalCss = await readFile("src/app/globals.css", "utf8");
 const blogExplorer = await readFile("src/components/blog/BlogExplorer.tsx", "utf8");
 const notesExplorer = await readFile(

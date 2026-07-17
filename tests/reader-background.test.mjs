@@ -11,9 +11,9 @@ function read(path) {
 test("reader background preferences are available from the floating tools", () => {
   const script = read("src/components/reading/ReadingBackgroundScript.tsx");
   const tools = read("src/components/blog/BlogReaderTools.tsx");
-  const layout = read("src/app/[locale]/layout.tsx");
+  const layout = read("src/app/[locale]/(site)/layout.tsx");
   const globals = read("src/app/globals.css");
-  const notesCss = read("src/app/[locale]/notes/notes.css");
+  const notesCss = read("src/app/[locale]/(site)/notes/notes.css");
 
   assert.match(script, /READING_BACKGROUND_STORAGE_KEY = 'reading_background_preference'/);
   for (const background of [

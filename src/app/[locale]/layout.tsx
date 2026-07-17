@@ -3,18 +3,6 @@ import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import Script from 'next/script'
-import AppHeader from '@/components/AppHeader'
-import AppFooter from '@/components/AppFooter'
-import ThemeScript from '@/components/theme/ThemeScript'
-import ThemeSync from '@/components/theme/ThemeSync'
-import FontScript from '@/components/font/FontScript'
-import ReadingBackgroundScript from '@/components/reading/ReadingBackgroundScript'
-import MotionProvider from '@/components/motion/MotionProvider'
-import RouteProgressBar from '@/components/motion/RouteProgressBar'
-import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
-import BlogReaderTools from '@/components/blog/BlogReaderTools'
-import OfflineNavigationCapture from '@/components/offline/OfflineNavigationCapture'
-import OfflineStatusBanner from '@/components/offline/OfflineStatusBanner'
 import { SITE_URL } from '@/app/seo.config'
 import { routing, type Locale } from '@/i18n/routing'
 import React from 'react'
@@ -150,24 +138,9 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
 
   setRequestLocale(locale)
 
-  // Global reading-preferences float button (font, background, language,
-  // scroll) — available on every page, not only article detail pages.
-  const rt = await getTranslations('ReaderTools')
-  const readerLabels = {
-    label: rt('label'),
-    scrollTop: rt('scrollTop'),
-    scrollBottom: rt('scrollBottom'),
-    font: rt('font'),
-    background: rt('background'),
-    language: rt('language'),
-  }
-
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        <ThemeScript />
-        <FontScript />
-        <ReadingBackgroundScript />
         <meta name="google-adsense-account" content="ca-pub-2196929070546836" />
         <link rel="preconnect" href="https://us.i.posthog.com" crossOrigin="" />
         <link rel="preconnect" href="https://us-assets.i.posthog.com" crossOrigin="" />
@@ -223,19 +196,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       />
 
       <body suppressHydrationWarning>
-        <NextIntlClientProvider>
-          <ThemeSync />
-          <MotionProvider>
-            <RouteProgressBar />
-            <OfflineNavigationCapture />
-            <OfflineStatusBanner />
-            <WebVitalsReporter />
-            <AppHeader />
-            {children}
-            <AppFooter />
-            <BlogReaderTools labels={readerLabels} />
-          </MotionProvider>
-        </NextIntlClientProvider>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>
   )

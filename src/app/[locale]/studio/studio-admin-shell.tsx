@@ -22,6 +22,24 @@ import {
 } from "./studio.localized-content";
 import { getLocalizedStudioFolders, getLocalizedStudioNotes } from "./studio.localized-workspace";
 import { getLocalizedStudioDemoFlows } from "./studio.localized-demos";
+import StudioDeliverySignalFeature from "./StudioDeliverySignalFeature";
+import StudioFlowCanvasFeature from "./StudioFlowCanvasFeature";
+import type {
+  StudioFlowCanvasMode,
+  StudioFlowCanvasTone,
+  StudioFlowHelperLines,
+  StudioFlowLayoutMode
+} from "./studio-flow-contract";
+import { loadStudioFlowRuntime } from "./studio-flow-runtime-loader";
+import type {
+  StudioFlowCanvasNode,
+  StudioFlowConnection,
+  StudioFlowEdge,
+  StudioFlowEdgeChange,
+  StudioFlowInstance,
+  StudioFlowMarkerType,
+  StudioFlowNodeChange
+} from "./StudioFlowCanvasRuntime";
 import type {
   StudioAiSkill,
   StudioChecklistStep,
@@ -112,38 +130,6 @@ import {
   LuWorkflow,
   LuX
 } from "react-icons/lu";
-import {
-  addEdge,
-  applyEdgeChanges,
-  applyNodeChanges,
-  Background,
-  Controls,
-  Handle,
-  MarkerType,
-  MiniMap,
-  Panel,
-  Position,
-  ReactFlow,
-  ViewportPortal,
-  type Edge,
-  type EdgeChange,
-  type Connection,
-  type Node,
-  type NodeChange,
-  type NodeProps,
-  type ReactFlowInstance
-} from "@xyflow/react";
-import {
-  Area,
-  CartesianGrid,
-  ComposedChart,
-  Line,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis
-} from "recharts";
-
 type StudioAdminShellProps = {
   locale: string;
 };
@@ -318,60 +304,6 @@ type StudioProfileMenuItem = {
   icon: IconType;
   external?: boolean;
 };
-
-type StudioFlowCanvasNodeKind =
-  | "hub"
-  | "step"
-  | "detail"
-  | "input"
-  | "default"
-  | "output"
-  | "group"
-  | "service"
-  | "gateway"
-  | "database"
-  | "queue"
-  | "topic"
-  | "cache"
-  | "worker"
-  | "external"
-  | "decision"
-  | "risk"
-  | "note"
-  | "system";
-type StudioFlowCanvasTone =
-  | "source"
-  | "process"
-  | "agent"
-  | "review"
-  | "output"
-  | "storage"
-  | "event"
-  | "external"
-  | "risk";
-
-type StudioFlowCanvasNodeData = {
-  kind: StudioFlowCanvasNodeKind;
-  title: string;
-  detail: string;
-  badge?: string;
-  tone: StudioFlowCanvasTone;
-  kindLabel?: string;
-  toneLabel?: string;
-  scratchLabel?: string;
-  hiddenLabel?: string;
-  active?: boolean;
-  compact?: boolean;
-  collapsed?: boolean;
-  dimmed?: boolean;
-  editable?: boolean;
-  hiddenChildCount?: number;
-  scratch?: boolean;
-};
-
-type StudioFlowCanvasMode = "inspect" | "edit";
-type StudioFlowLayoutMode = "source" | "compact" | "horizontal" | "wide" | "vertical" | "grid";
-type StudioFlowHelperLines = { x: number | null; y: number | null };
 
 const DEFAULT_ROUTE: StudioRouteId = "welcome";
 const STUDIO_THEME_STORAGE_KEY = "studio_theme_preference";
@@ -2582,46 +2514,6 @@ const distributionSegments = [
   { label: "Runbooks", value: 20, color: "#d4d4d4" }
 ];
 
-const rolloutPulseMap = new Map([
-  [0, 44],
-  [6, 28],
-  [11, 52],
-  [15, 38],
-  [23, 26],
-  [30, 50],
-  [36, 36],
-  [45, 62],
-  [53, 34],
-  [60, 45],
-  [66, 31],
-  [73, 54],
-  [79, 39],
-  [86, 30]
-]);
-
-const releaseSignalChartData = Array.from({ length: 89 }, (_, index) => {
-  const date = new Date(2026, 2, 24);
-  date.setDate(date.getDate() + index);
-
-  const baseline = 38 + ((index * 13) % 22) + Math.round(Math.sin(index * 0.62) * 6);
-  const pulse = rolloutPulseMap.get(index) ?? 0;
-
-  return {
-    date: formatDateKey(date),
-    rolloutVolume: Math.min(124, Math.max(24, baseline + pulse)),
-    platformHealth: 64 + Math.round(Math.sin(index * 0.22) * 2) + (index % 11 === 0 ? 1 : 0),
-    incidentNoise: 56 + Math.round(Math.cos(index * 0.18) * 2) - (index % 17 === 0 ? 1 : 0)
-  };
-});
-
-const releaseSignalSeries = [
-  { key: "platformHealth", label: "Platform health", color: "#525252" },
-  { key: "rolloutVolume", label: "Rollout volume", color: "#d4d4d4" },
-  { key: "incidentNoise", label: "Incident noise", color: "#171717" }
-] as const;
-
-type ReleaseSignalSeriesKey = (typeof releaseSignalSeries)[number]["key"];
-
 const flatRouteResults = navGroups.flatMap((group) =>
   group.items.flatMap((item) => {
     if (item.subItems) return item.subItems.filter((subItem) => subItem.routeId);
@@ -2695,26 +2587,6 @@ function isItemActive(item: StudioNavItem, activeRoute: StudioRouteId): boolean 
   return item.subItems?.some((subItem) => subItem.routeId === activeRoute) ?? false;
 }
 
-function formatDateKey(date: Date): string {
-  const year = date.getFullYear();
-  const month = `${date.getMonth() + 1}`.padStart(2, "0");
-  const day = `${date.getDate()}`.padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
-function parseChartDate(value: string): Date {
-  const [year, month, day] = value.split("-").map(Number);
-  return new Date(year, month - 1, day);
-}
-
-function formatChartTick(value: string): string {
-  return parseChartDate(value).toLocaleDateString("en-US", { month: "short", day: "numeric" });
-}
-
-function formatChartTooltipLabel(value: string): string {
-  return parseChartDate(value).toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" });
-}
-
 function getInitials(name: string): string {
   return name
     .split(" ")
@@ -2781,130 +2653,6 @@ function MetricCard({ item }: { item: StudioMetric }) {
       </div>
       <span className="metric-helper">{item.helper}</span>
     </article>
-  );
-}
-
-type StudioTooltipPayload = {
-  color?: string;
-  dataKey?: string | number;
-  name?: string | number;
-  value?: number | string;
-};
-
-function StudioChartTooltip({
-  active,
-  label,
-  payload
-}: {
-  active?: boolean;
-  label?: string | number;
-  payload?: StudioTooltipPayload[];
-}) {
-  if (!active || !payload?.length) return null;
-
-  return (
-    <div className="studio-chart-tooltip">
-      <strong>{typeof label === "string" ? formatChartTooltipLabel(label) : label}</strong>
-      <div>
-        {payload.map((item) => {
-          const series = releaseSignalSeries.find((entry) => entry.key === item.dataKey);
-          if (!series || item.value == null) return null;
-
-          return (
-            <span key={series.key}>
-              <i style={{ background: series.color }} />
-              <em>{series.label}</em>
-              <b>{Number(item.value).toLocaleString("en-US")}</b>
-            </span>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function DeliverySignalChart() {
-  const [activeSeries, setActiveSeries] = useState<ReleaseSignalSeriesKey | "all">("all");
-  const isDimmed = (key: ReleaseSignalSeriesKey) => activeSeries !== "all" && activeSeries !== key;
-
-  return (
-    <div className="studio-chart-shell">
-      <div className="chart-legend interactive" aria-label="Release signal series">
-        {releaseSignalSeries.map((series) => (
-          <button
-            key={series.key}
-            type="button"
-            className={activeSeries === series.key ? "is-active" : undefined}
-            onBlur={() => setActiveSeries("all")}
-            onClick={() => setActiveSeries((current) => (current === series.key ? "all" : series.key))}
-            onFocus={() => setActiveSeries(series.key)}
-            onMouseEnter={() => setActiveSeries(series.key)}
-            onMouseLeave={() => setActiveSeries("all")}
-          >
-            <i style={{ background: series.color }} />
-            {series.label}
-          </button>
-        ))}
-      </div>
-      <div className="studio-chart" role="img" aria-label="Release volume, platform health, and incident noise chart">
-        <ResponsiveContainer width="100%" height="100%" minWidth={0} initialDimension={{ width: 640, height: 320 }}>
-          <ComposedChart data={releaseSignalChartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
-            <defs>
-              <linearGradient id="studioFillRolloutVolume" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#d4d4d4" stopOpacity={0.5} />
-                <stop offset="95%" stopColor="#d4d4d4" stopOpacity={0.05} />
-              </linearGradient>
-            </defs>
-            <CartesianGrid vertical={false} stroke="#e5e5e5" strokeOpacity={0.72} />
-            <XAxis
-              dataKey="date"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={10}
-              minTickGap={42}
-              tickFormatter={formatChartTick}
-            />
-            <YAxis hide domain={[0, 128]} />
-            <Tooltip cursor={false} content={<StudioChartTooltip />} />
-            <Area
-              dataKey="rolloutVolume"
-              type="natural"
-              fill="url(#studioFillRolloutVolume)"
-              stroke="#d4d4d4"
-              strokeWidth={1.35}
-              dot={false}
-              activeDot={{ r: 4, strokeWidth: 0 }}
-              fillOpacity={isDimmed("rolloutVolume") ? 0.28 : 1}
-              opacity={isDimmed("rolloutVolume") ? 0.35 : 1}
-              isAnimationActive
-              animationDuration={850}
-            />
-            <Line
-              dataKey="platformHealth"
-              type="natural"
-              stroke="#525252"
-              strokeWidth={1.55}
-              dot={false}
-              activeDot={{ r: 4, strokeWidth: 0 }}
-              opacity={isDimmed("platformHealth") ? 0.25 : 1}
-              isAnimationActive
-              animationDuration={900}
-            />
-            <Line
-              dataKey="incidentNoise"
-              type="natural"
-              stroke="#171717"
-              strokeWidth={1.35}
-              dot={false}
-              activeDot={{ r: 4, strokeWidth: 0 }}
-              opacity={isDimmed("incidentNoise") ? 0.25 : 1}
-              isAnimationActive
-              animationDuration={950}
-            />
-          </ComposedChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
   );
 }
 
@@ -3179,7 +2927,7 @@ function ReleaseChecklistCard() {
   );
 }
 
-function DashboardRoutePage({ route }: { route: StudioRoute }) {
+function DashboardRoutePage({ route, locale }: { route: StudioRoute; locale: string }) {
   return (
     <section className="route-page">
       <RouteHeading route={route}>
@@ -3210,7 +2958,7 @@ function DashboardRoutePage({ route }: { route: StudioRoute }) {
               <button type="button" className="outline-button">View report</button>
             </div>
           </header>
-          <DeliverySignalChart />
+          <StudioDeliverySignalFeature locale={locale} />
         </section>
         <TimelineCard route={route} />
         <PanelsCard route={route} />
@@ -3261,7 +3009,7 @@ function FinanceLikePage({ route }: { route: StudioRoute }) {
   );
 }
 
-function AnalyticsPage({ route }: { route: StudioRoute }) {
+function AnalyticsPage({ route, locale }: { route: StudioRoute; locale: string }) {
   const [tab, setTab] = useState("overview");
   const tabs = ["overview", "audience", "acquisition", "engagement", "conversions"];
   return (
@@ -3291,7 +3039,7 @@ function AnalyticsPage({ route }: { route: StudioRoute }) {
                 </div>
                 <button type="button" className="outline-button">View report</button>
               </header>
-              <DeliverySignalChart />
+              <StudioDeliverySignalFeature locale={locale} />
             </section>
             <TimelineCard route={route} />
             <PanelsCard route={route} />
@@ -4351,11 +4099,9 @@ function WelcomePage({
   );
 }
 
-type StudioFlowCanvasNode = Node<StudioFlowCanvasNodeData, "studioFlow">;
-
 type StudioFlowSnapshot = {
   nodes: StudioFlowCanvasNode[];
-  edges: Edge[];
+  edges: StudioFlowEdge[];
   hiddenGroupIds: string[];
   layoutMode: StudioFlowLayoutMode;
 };
@@ -4364,10 +4110,8 @@ const FLOW_HISTORY_LIMIT = 24;
 const FLOW_NODE_WIDTH = 240;
 const FLOW_NODE_HEIGHT = 112;
 const FLOW_GROUP_MARGIN = 24;
-
-const studioFlowNodeTypes = {
-  studioFlow: StudioFlowCanvasNodeCard
-};
+const FLOW_MARKER_ARROW = "arrow" as StudioFlowMarkerType;
+const FLOW_MARKER_ARROW_CLOSED = "arrowclosed" as StudioFlowMarkerType;
 
 const flowCanvasTones: StudioFlowCanvasTone[] = [
   "source",
@@ -4415,59 +4159,9 @@ function formatStudioFlowLabel(value: string) {
     .join(" ");
 }
 
-function renderStudioFlowNodeIcon(kind: StudioFlowCanvasNodeKind, badge?: string) {
-  if (kind === "database" || badge === "db") return <LuDatabase />;
-  if (kind === "cache" || badge === "cache") return <LuArchive />;
-  if (kind === "queue" || kind === "topic" || badge === "event") return <LuWorkflow />;
-  if (kind === "worker" || badge === "async") return <LuSettings />;
-  if (kind === "external" || badge === "external" || badge === "edge") return <LuGlobe />;
-  if (kind === "gateway" || badge === "service") return <LuServer />;
-  if (kind === "input" || badge === "client") return <LuUsers />;
-  if (kind === "output") return <LuCheckCircle2 />;
-  if (kind === "risk") return <LuFlag />;
-  if (kind === "note") return <LuFileText />;
-  if (kind === "decision") return <LuHelpCircle />;
-  if (badge === "security") return <LuLock />;
-  if (badge === "ops") return <LuLineChart />;
-  if (badge === "analytics") return <LuBarChart />;
-  return <LuServer />;
-}
-
-function StudioFlowCanvasNodeCard({ data, selected }: NodeProps<StudioFlowCanvasNode>) {
-  const canConnect = data.kind !== "group";
-  const detail = data.collapsed && data.hiddenChildCount
-    ? `${data.detail} ${data.hiddenChildCount} ${data.hiddenLabel ?? "hidden"}.`
-    : data.detail;
-  const kindLabel = data.kindLabel ?? formatStudioFlowLabel(data.kind);
-  const toneLabel = data.toneLabel ?? formatStudioFlowLabel(data.tone);
-
-  return (
-    <div className={`flow-react-node flow-react-node--${data.kind} tone-${data.tone}${data.active ? " is-active" : ""}${data.compact ? " is-compact" : ""}${data.collapsed ? " is-collapsed" : ""}${data.scratch ? " is-scratch" : ""}${data.dimmed ? " is-dimmed" : ""}${selected ? " is-selected" : ""}`}>
-      {canConnect && <Handle type="target" position={Position.Left} />}
-      {canConnect && <Handle className="flow-react-handle-top" type="target" position={Position.Top} />}
-      <div className="flow-react-node-topline">
-        <span className="flow-react-node-icon" aria-hidden="true">
-          {renderStudioFlowNodeIcon(data.kind, data.badge)}
-        </span>
-        <span className="flow-react-node-type">{kindLabel}</span>
-        {data.badge && <span className="flow-react-node-badge">{data.badge}</span>}
-      </div>
-      <strong>{data.title}</strong>
-      <small>{detail}</small>
-      <div className="flow-react-node-footer">
-        <span>{toneLabel}</span>
-        {data.scratch && <em>{data.scratchLabel ?? "Scratch"}</em>}
-        {data.hiddenChildCount ? <em>{data.hiddenChildCount} {data.hiddenLabel ?? "hidden"}</em> : null}
-      </div>
-      {canConnect && <Handle type="source" position={Position.Right} />}
-      {canConnect && <Handle className="flow-react-handle-bottom" type="source" position={Position.Bottom} />}
-    </div>
-  );
-}
-
 function buildStudioFlowCanvas(flow: StudioFlow, copy: StudioUiCopy["flows"], viewId?: string): {
   nodes: StudioFlowCanvasNode[];
-  edges: Edge[];
+  edges: StudioFlowEdge[];
 } {
   if (flow.architectureDemo) {
     return buildArchitectureDemoCanvas(flow, copy, viewId);
@@ -4513,7 +4207,7 @@ function buildStudioFlowCanvas(flow: StudioFlow, copy: StudioUiCopy["flows"], vi
     }
   };
 
-  const edges: Edge[] = [];
+  const edges: StudioFlowEdge[] = [];
   for (let index = 1; index < nodes.length; index += 1) {
     const source = nodes[index - 1];
     const target = nodes[index];
@@ -4526,7 +4220,7 @@ function buildStudioFlowCanvas(flow: StudioFlow, copy: StudioUiCopy["flows"], vi
       target: target.id,
       type: "smoothstep",
       animated: index < 3,
-      markerEnd: { type: MarkerType.ArrowClosed },
+      markerEnd: { type: FLOW_MARKER_ARROW_CLOSED },
       style: { stroke: flowCanvasToneColors[tone], strokeWidth: 2 }
     });
   }
@@ -4538,7 +4232,7 @@ function buildStudioFlowCanvas(flow: StudioFlow, copy: StudioUiCopy["flows"], vi
       source: lastStep.id,
       target: outcomeNode.id,
       type: "smoothstep",
-      markerEnd: { type: MarkerType.ArrowClosed },
+      markerEnd: { type: FLOW_MARKER_ARROW_CLOSED },
       style: { stroke: flowCanvasToneColors.output, strokeWidth: 2 }
     });
   }
@@ -4546,15 +4240,15 @@ function buildStudioFlowCanvas(flow: StudioFlow, copy: StudioUiCopy["flows"], vi
   return { nodes: [...nodes, outcomeNode], edges };
 }
 
-function getStudioFlowEdgeMarker(marker: StudioFlowArchitectureEdgeSpec["marker"]): Edge["markerEnd"] {
-  if (marker === "arrow") return { type: MarkerType.Arrow };
-  if (marker === "arrowClosed") return { type: MarkerType.ArrowClosed };
+function getStudioFlowEdgeMarker(marker: StudioFlowArchitectureEdgeSpec["marker"]): StudioFlowEdge["markerEnd"] {
+  if (marker === "arrow") return { type: FLOW_MARKER_ARROW };
+  if (marker === "arrowClosed") return { type: FLOW_MARKER_ARROW_CLOSED };
   return undefined;
 }
 
 function buildArchitectureDemoCanvas(flow: StudioFlow, copy: StudioUiCopy["flows"], viewId?: string): {
   nodes: StudioFlowCanvasNode[];
-  edges: Edge[];
+  edges: StudioFlowEdge[];
 } {
   const demo = flow.architectureDemo;
   if (!demo) return { nodes: [], edges: [] };
@@ -4585,7 +4279,7 @@ function buildArchitectureDemoCanvas(flow: StudioFlow, copy: StudioUiCopy["flows
     }
   }));
 
-  const edges = viewEdges.map<Edge>((edge) => ({
+  const edges = viewEdges.map<StudioFlowEdge>((edge) => ({
     id: edge.id,
     source: edge.source,
     target: edge.target,
@@ -4612,7 +4306,7 @@ function cloneStudioFlowNodes(nodes: StudioFlowCanvasNode[]): StudioFlowCanvasNo
   }));
 }
 
-function cloneStudioFlowEdges(edges: Edge[]): Edge[] {
+function cloneStudioFlowEdges(edges: StudioFlowEdge[]): StudioFlowEdge[] {
   return edges.map((edge) => ({
     ...edge,
     data: edge.data ? { ...edge.data } : undefined,
@@ -4626,7 +4320,7 @@ function cloneStudioFlowEdges(edges: Edge[]): Edge[] {
 
 function createStudioFlowSnapshot(
   nodes: StudioFlowCanvasNode[],
-  edges: Edge[],
+  edges: StudioFlowEdge[],
   hiddenGroupIds: string[],
   layoutMode: StudioFlowLayoutMode
 ): StudioFlowSnapshot {
@@ -4782,7 +4476,7 @@ function getDisplayStudioFlowNodes(
   });
 }
 
-function getDisplayStudioFlowEdges(edges: Edge[], nodes: StudioFlowCanvasNode[]) {
+function getDisplayStudioFlowEdges(edges: StudioFlowEdge[], nodes: StudioFlowCanvasNode[]) {
   const visibleNodeIds = new Set(nodes.filter((node) => !node.hidden).map((node) => node.id));
   return edges.filter((edge) => visibleNodeIds.has(edge.source) && visibleNodeIds.has(edge.target));
 }
@@ -4833,7 +4527,7 @@ function cloneStudioFlowNodeForPaste(node: StudioFlowCanvasNode): StudioFlowCanv
   };
 }
 
-function getStudioFlowMetrics(nodes: StudioFlowCanvasNode[], edges: Edge[]) {
+function getStudioFlowMetrics(nodes: StudioFlowCanvasNode[], edges: StudioFlowEdge[]) {
   return {
     nodeCount: nodes.filter((node) => !node.hidden && node.data.kind !== "group").length,
     edgeCount: edges.length,
@@ -4842,7 +4536,7 @@ function getStudioFlowMetrics(nodes: StudioFlowCanvasNode[], edges: Edge[]) {
   };
 }
 
-function getConnectedStudioFlowNodeIds(activeNodeId: string | null, edges: Edge[]) {
+function getConnectedStudioFlowNodeIds(activeNodeId: string | null, edges: StudioFlowEdge[]) {
   if (!activeNodeId) return null;
   const ids = new Set<string>([activeNodeId]);
   edges.forEach((edge) => {
@@ -4853,14 +4547,14 @@ function getConnectedStudioFlowNodeIds(activeNodeId: string | null, edges: Edge[
 }
 
 type StudioFlowTrailItem = {
-  edge: Edge;
+  edge: StudioFlowEdge;
   node: StudioFlowCanvasNode;
 };
 
 function getStudioFlowTrail(
   activeNodeId: string | null,
   nodes: StudioFlowCanvasNode[],
-  edges: Edge[]
+  edges: StudioFlowEdge[]
 ): { incoming: StudioFlowTrailItem[]; outgoing: StudioFlowTrailItem[] } {
   if (!activeNodeId) return { incoming: [], outgoing: [] };
   const nodeById = new Map(nodes.map((node) => [node.id, node]));
@@ -4958,7 +4652,7 @@ function StudioFlowTrailPanel({
   );
 }
 
-function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy }) {
+function StudioFlowChart({ flow, copy, locale }: { flow: StudioFlow; copy: StudioUiCopy; locale: string }) {
   const demo = flow.architectureDemo;
   const demoViews = useMemo(() => demo?.views ?? [], [demo]);
   const initialDemoView = demoViews.find((view) => view.id === demo?.defaultViewId) ?? demoViews[0];
@@ -4974,7 +4668,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
   const [history, setHistory] = useState<StudioFlowSnapshot[]>([]);
   const [future, setFuture] = useState<StudioFlowSnapshot[]>([]);
   const [helperLines, setHelperLines] = useState<StudioFlowHelperLines>({ x: null, y: null });
-  const flowInstanceRef = useRef<ReactFlowInstance<StudioFlowCanvasNode, Edge> | null>(null);
+  const flowInstanceRef = useRef<StudioFlowInstance | null>(null);
   const [demoSelection, setDemoSelection] = useState<{ flowId: StudioFlowId; family: string; viewId: string }>({
     flowId: flow.id,
     family: initialDemoView?.family ?? "architecture",
@@ -5009,7 +4703,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
     [copy.flows, flow, selectedView?.id]
   );
   const [canvasNodes, setCanvasNodes] = useState<StudioFlowCanvasNode[]>(() => cloneStudioFlowNodes(sourceCanvas.nodes));
-  const [canvasEdges, setCanvasEdges] = useState<Edge[]>(() => cloneStudioFlowEdges(sourceCanvas.edges));
+  const [canvasEdges, setCanvasEdges] = useState<StudioFlowEdge[]>(() => cloneStudioFlowEdges(sourceCanvas.edges));
   const canvasNodesRef = useRef(canvasNodes);
   const canvasEdgesRef = useRef(canvasEdges);
   const hiddenGroupIdsRef = useRef(hiddenGroupIds);
@@ -5049,7 +4743,7 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
     [focusedDisplayNodes, relatedNodeIds]
   );
   const displayEdges = useMemo(
-    () => focusedDisplayEdges.map<Edge>((edge) => {
+    () => focusedDisplayEdges.map<StudioFlowEdge>((edge) => {
       const isRelated = relatedNodeIds ? relatedNodeIds.has(edge.source) && relatedNodeIds.has(edge.target) : false;
       return {
         ...edge,
@@ -5206,12 +4900,16 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
     });
   };
 
-  const handleNodesChange = useCallback((changes: NodeChange<StudioFlowCanvasNode>[]) => {
-    setCanvasNodes((current) => applyNodeChanges(changes, current));
+  const handleNodesChange = useCallback((changes: StudioFlowNodeChange[]) => {
+    void loadStudioFlowRuntime().then(({ applyStudioFlowNodeChanges }) => {
+      setCanvasNodes((current) => applyStudioFlowNodeChanges(changes, current));
+    });
   }, []);
 
-  const handleEdgesChange = useCallback((changes: EdgeChange<Edge>[]) => {
-    setCanvasEdges((current) => applyEdgeChanges(changes, current));
+  const handleEdgesChange = useCallback((changes: StudioFlowEdgeChange[]) => {
+    void loadStudioFlowRuntime().then(({ applyStudioFlowEdgeChanges }) => {
+      setCanvasEdges((current) => applyStudioFlowEdgeChanges(changes, current));
+    });
   }, []);
 
   const updateHelperLines = useCallback((node: StudioFlowCanvasNode) => {
@@ -5227,22 +4925,24 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
     setHelperLines({ x: nextX, y: nextY });
   }, []);
 
-  const handleConnect = useCallback((connection: Connection) => {
+  const handleConnect = useCallback((connection: StudioFlowConnection) => {
     if (canvasMode !== "edit" || !connection.source || !connection.target || connection.source === connection.target) return;
     captureHistory();
-    const newEdge: Edge = {
+    const newEdge: StudioFlowEdge = {
       ...connection,
       id: createScratchNodeId("scratch-edge"),
       type: "smoothstep",
       label: "review link",
-      markerEnd: { type: MarkerType.ArrowClosed },
+      markerEnd: { type: FLOW_MARKER_ARROW_CLOSED },
       style: { stroke: flowCanvasToneColors.review, strokeWidth: 2.2 },
       labelStyle: { fill: flowCanvasToneColors.review, fontSize: 11, fontWeight: 700 },
       labelBgStyle: { fill: "var(--card)", fillOpacity: 0.9 },
       labelBgPadding: [6, 4],
       labelBgBorderRadius: 6
     };
-    setCanvasEdges((current) => addEdge(newEdge, current));
+    void loadStudioFlowRuntime().then(({ addStudioFlowEdge }) => {
+      setCanvasEdges((current) => addStudioFlowEdge(newEdge, current));
+    });
     track("studio_flow_node_action", {
       flow_id: flow.id,
       view_id: selectedView?.id,
@@ -5610,129 +5310,109 @@ function StudioFlowChart({ flow, copy }: { flow: StudioFlow; copy: StudioUiCopy 
       </div>
 
       <div className="flow-canvas-shell">
-        <div className={`flow-react-surface${isReactFlowDemo ? " is-architecture-demo" : ""}${isBlueprintDiagram ? " is-blueprint-diagram" : ""}${isCompactDiagram ? " is-compact-diagram" : ""}${canvasMode === "edit" ? " is-edit-mode" : ""}`}>
-          <ReactFlow
-            key={selectedView?.id ?? flow.id}
-            className="flow-react-canvas"
-            nodes={displayNodes}
-            edges={displayEdges}
-            nodeTypes={studioFlowNodeTypes}
-            onInit={(instance) => {
-              flowInstanceRef.current = instance;
-            }}
-            onNodesChange={handleNodesChange}
-            onEdgesChange={handleEdgesChange}
-            onConnect={handleConnect}
-            onNodeClick={(event, node) => {
-              event.stopPropagation();
-              setSelectedNodeId(node.id);
-              setSelectedEdgeId(null);
-              track("studio_flow_node_select", {
-                flow_id: flow.id,
-                view_id: selectedView?.id,
-                node_id: node.id,
-                node_kind: node.data.kind,
-                node_tone: node.data.tone
-              });
-            }}
-            onNodeDoubleClick={(event, node) => {
-              event.stopPropagation();
-              setSelectedNodeId(node.id);
-              setSelectedEdgeId(null);
-              setFocusMode(true);
-              scheduleFitBoard();
-              track("studio_flow_focus_toggle", {
-                flow_id: flow.id,
-                view_id: selectedView?.id,
-                node_id: node.id,
-                enabled: true,
-                source: "double_click"
-              });
-            }}
-            onEdgeClick={(event, edge) => {
-              event.stopPropagation();
-              setSelectedEdgeId(edge.id);
-              setSelectedNodeId(null);
-              setFocusMode(false);
-              track("studio_flow_node_select", {
-                flow_id: flow.id,
-                view_id: selectedView?.id,
-                edge_id: edge.id,
-                source_id: edge.source,
-                target_id: edge.target
-              });
-            }}
-            onPaneClick={() => {
-              setSelectedNodeId(null);
-              setSelectedEdgeId(null);
-              setFocusMode(false);
-            }}
-            onNodeDragStart={(_, node) => {
-              if (canvasMode !== "edit") return;
-              captureHistory();
-              setSelectedNodeId(node.id);
-              setSelectedEdgeId(null);
-            }}
-            onNodeDrag={(_, node) => {
-              if (canvasMode === "edit") updateHelperLines(node);
-            }}
-            onNodeDragStop={(_, node) => {
-              setHelperLines({ x: null, y: null });
-              if (canvasMode !== "edit") return;
-              track("studio_flow_node_action", {
-                flow_id: flow.id,
-                view_id: selectedView?.id,
-                action: "move",
-                node_id: node.id,
-                node_kind: node.data.kind
-              });
-            }}
-            fitView
-            fitViewOptions={{
-              padding: fitViewPadding,
-              minZoom: isBlueprintDiagram ? 0.16 : isReactFlowDemo ? 0.26 : 0.5
-            }}
-            minZoom={isBlueprintDiagram ? 0.1 : 0.18}
-            maxZoom={isBlueprintDiagram ? 1.9 : 1.6}
-            nodesDraggable={canvasMode === "edit"}
-            nodesConnectable={canvasMode === "edit"}
-            deleteKeyCode={null}
-            elementsSelectable
-            proOptions={{ hideAttribution: true }}
-          >
-            <Background color="color-mix(in srgb, var(--foreground) 12%, transparent)" gap={22} />
-            <Controls showInteractive={false} />
-            <Panel position="top-center" className="flow-trail-panel-host">
-              <StudioFlowTrailPanel
-                activeNode={selectedNode}
-                incoming={trail.incoming}
-                outgoing={trail.outgoing}
-                focusMode={focusMode}
-                copy={copy.flows}
-                onSelectNode={handleTrailNodeSelect}
-              />
-            </Panel>
-            <ViewportPortal>
-              {helperLines.x !== null && <div className="flow-helper-line is-vertical" style={{ left: helperLines.x }} />}
-              {helperLines.y !== null && <div className="flow-helper-line is-horizontal" style={{ top: helperLines.y }} />}
-            </ViewportPortal>
-            {showMiniMap && (
-              <MiniMap
-                position="bottom-right"
-                pannable
-                zoomable
-                bgColor="var(--flow-minimap-bg)"
-                maskColor="var(--flow-minimap-mask)"
-                maskStrokeColor="var(--flow-minimap-stroke)"
-                maskStrokeWidth={isBlueprintDiagram ? 1.15 : 1.8}
-                nodeColor="var(--flow-minimap-node-fill)"
-                nodeStrokeColor="var(--flow-minimap-node-stroke)"
-                nodeStrokeWidth={isBlueprintDiagram ? 1.15 : 2.6}
-                nodeBorderRadius={isBlueprintDiagram ? 4 : 8}
-              />
-            )}
-          </ReactFlow>
-        </div>
+        <StudioFlowCanvasFeature
+          key={selectedView?.id ?? flow.id}
+          locale={locale}
+          surfaceClassName={`flow-react-surface${isReactFlowDemo ? " is-architecture-demo" : ""}${isBlueprintDiagram ? " is-blueprint-diagram" : ""}${isCompactDiagram ? " is-compact-diagram" : ""}${canvasMode === "edit" ? " is-edit-mode" : ""}`}
+          className="flow-react-canvas"
+          nodes={displayNodes}
+          edges={displayEdges}
+          onInit={(instance) => {
+            flowInstanceRef.current = instance;
+          }}
+          onNodesChange={handleNodesChange}
+          onEdgesChange={handleEdgesChange}
+          onConnect={handleConnect}
+          onNodeClick={(event, node) => {
+            event.stopPropagation();
+            setSelectedNodeId(node.id);
+            setSelectedEdgeId(null);
+            track("studio_flow_node_select", {
+              flow_id: flow.id,
+              view_id: selectedView?.id,
+              node_id: node.id,
+              node_kind: node.data.kind,
+              node_tone: node.data.tone
+            });
+          }}
+          onNodeDoubleClick={(event, node) => {
+            event.stopPropagation();
+            setSelectedNodeId(node.id);
+            setSelectedEdgeId(null);
+            setFocusMode(true);
+            scheduleFitBoard();
+            track("studio_flow_focus_toggle", {
+              flow_id: flow.id,
+              view_id: selectedView?.id,
+              node_id: node.id,
+              enabled: true,
+              source: "double_click"
+            });
+          }}
+          onEdgeClick={(event, edge) => {
+            event.stopPropagation();
+            setSelectedEdgeId(edge.id);
+            setSelectedNodeId(null);
+            setFocusMode(false);
+            track("studio_flow_node_select", {
+              flow_id: flow.id,
+              view_id: selectedView?.id,
+              edge_id: edge.id,
+              source_id: edge.source,
+              target_id: edge.target
+            });
+          }}
+          onPaneClick={() => {
+            setSelectedNodeId(null);
+            setSelectedEdgeId(null);
+            setFocusMode(false);
+          }}
+          onNodeDragStart={(_, node) => {
+            if (canvasMode !== "edit") return;
+            captureHistory();
+            setSelectedNodeId(node.id);
+            setSelectedEdgeId(null);
+          }}
+          onNodeDrag={(_, node) => {
+            if (canvasMode === "edit") updateHelperLines(node);
+          }}
+          onNodeDragStop={(_, node) => {
+            setHelperLines({ x: null, y: null });
+            if (canvasMode !== "edit") return;
+            track("studio_flow_node_action", {
+              flow_id: flow.id,
+              view_id: selectedView?.id,
+              action: "move",
+              node_id: node.id,
+              node_kind: node.data.kind
+            });
+          }}
+          fitView
+          fitViewOptions={{
+            padding: fitViewPadding,
+            minZoom: isBlueprintDiagram ? 0.16 : isReactFlowDemo ? 0.26 : 0.5
+          }}
+          minZoom={isBlueprintDiagram ? 0.1 : 0.18}
+          maxZoom={isBlueprintDiagram ? 1.9 : 1.6}
+          nodesDraggable={canvasMode === "edit"}
+          nodesConnectable={canvasMode === "edit"}
+          deleteKeyCode={null}
+          elementsSelectable
+          proOptions={{ hideAttribution: true }}
+          blueprint={isBlueprintDiagram}
+          helperLines={helperLines}
+          showMiniMap={showMiniMap}
+          trailPanel={(
+            <StudioFlowTrailPanel
+              activeNode={selectedNode}
+              incoming={trail.incoming}
+              outgoing={trail.outgoing}
+              focusMode={focusMode}
+              copy={copy.flows}
+              onSelectNode={handleTrailNodeSelect}
+            />
+          )}
+        />
 
         <aside className="flow-inspector-panel" aria-label={copy.flows.inspector}>
           <div className="flow-inspector-head">
@@ -5989,7 +5669,7 @@ function StudioFlowMenuPage({
             </>
           )}
 
-          <StudioFlowChart key={`${locale}:${selectedFlow.id}`} flow={selectedFlow} copy={copy} />
+          <StudioFlowChart key={`${locale}:${selectedFlow.id}`} flow={selectedFlow} copy={copy} locale={locale} />
 
           {!selectedFlow.architectureDemo && (
             <ol className="flow-step-map" aria-label={`${copy.flows.evidence} / ${copy.flows.output}`}>
@@ -6221,6 +5901,7 @@ function AuthPage({ route }: { route: StudioRoute }) {
 }
 
 function DefaultDashboard({
+  locale,
   workstreamSearch,
   statusFilter,
   sortMode,
@@ -6228,6 +5909,7 @@ function DefaultDashboard({
   onStatusFilter,
   onSortMode
 }: {
+  locale: string;
   workstreamSearch: string;
   statusFilter: string;
   sortMode: string;
@@ -6275,7 +5957,7 @@ function DefaultDashboard({
             </a>
           </div>
         </header>
-        <DeliverySignalChart />
+        <StudioDeliverySignalFeature locale={locale} />
       </section>
 
       <section className="card records-card workstreams-card" id="system-workstreams" data-slot="card">
@@ -6389,6 +6071,7 @@ function RouteContent({
   if (route.kind === "default") {
     return (
       <DefaultDashboard
+        locale={locale}
         workstreamSearch={workstreamSearch}
         statusFilter={statusFilter}
         sortMode={sortMode}
@@ -6399,7 +6082,7 @@ function RouteContent({
     );
   }
   if (route.kind === "finance") return <FinanceLikePage route={route} />;
-  if (route.kind === "analytics") return <AnalyticsPage route={route} />;
+  if (route.kind === "analytics") return <AnalyticsPage route={route} locale={locale} />;
   if (route.kind === "productivity") return <ProductivityPage route={route} />;
   if (route.kind === "ecommerce" || route.kind === "academy" || route.kind === "logistics" || route.kind === "infrastructure") return <CommerceAcademyPage route={route} />;
   if (route.kind === "mail") return <MailRoutePage route={route} />;
@@ -6413,7 +6096,7 @@ function RouteContent({
   if (route.kind === "invoice") return <InvoicePage route={route} />;
   if (route.kind === "users" || route.kind === "roles") return <UsersRolesPage route={route} />;
   if (route.kind === "auth") return <AuthPage route={route} />;
-  return <DashboardRoutePage route={route} />;
+  return <DashboardRoutePage route={route} locale={locale} />;
 }
 
 function CommandDialog({
