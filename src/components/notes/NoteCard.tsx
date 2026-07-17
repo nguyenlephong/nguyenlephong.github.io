@@ -4,16 +4,18 @@ import { LuEye } from "react-icons/lu";
 import { Link } from "@/i18n/navigation";
 import { track } from "@/lib/analytics";
 import { formatCount } from "@/lib/firebase/postStats";
-import type { NoteMeta } from "@/lib/notes/types";
+import type { NoteSearchItem } from "@/lib/content/search-index";
 
 interface NoteCardProps {
-  note: NoteMeta;
+  note: NoteSearchItem;
   /** Translated topic name shown as a chip */
   topicLabel: string;
   /** Topic accent colour (drives chip + hover) */
   topicColor: string;
   /** Active locale, used to format the publish date */
   locale: string;
+  /** Locale that owns the linked article body. Defaults to the active locale. */
+  contentLocale?: string;
   /** Pre-translated reading-time string, e.g. "12 min read" */
   readingLabel: string;
   /** View count injected client-side; shown only when >= 100 */
@@ -39,6 +41,7 @@ export default function NoteCard({
   topicLabel,
   topicColor,
   locale,
+  contentLocale = locale,
   readingLabel,
   viewCount,
   viewsLabel,
@@ -51,6 +54,7 @@ export default function NoteCard({
     >
       <Link
         href={`/notes/${note.slug}`}
+        locale={contentLocale}
         className="blog-card__link"
         onClick={() => {
           track("notes_card_click", {

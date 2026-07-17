@@ -20,8 +20,10 @@ test("public content surfaces have explicit posthog page and interaction events"
     analytics,
     pageTracker,
     blogIndex,
+    blogCollection,
     blogCategory,
     notesIndex,
+    notesCollection,
     offlinePage,
     blogArticle,
     noteArticle,
@@ -41,8 +43,10 @@ test("public content surfaces have explicit posthog page and interaction events"
     readFile("src/lib/analytics.ts", "utf8"),
     readFile("src/components/analytics/PageTracker.tsx", "utf8"),
     readFile("src/app/[locale]/blog/page.tsx", "utf8"),
+    readFile("src/components/blog/BlogCollectionPage.tsx", "utf8"),
     readFile("src/app/[locale]/blog/[category]/page.tsx", "utf8"),
     readFile("src/app/[locale]/notes/page.tsx", "utf8"),
+    readFile("src/components/notes/NotesCollectionPage.tsx", "utf8"),
     readFile("src/app/[locale]/offline/page.tsx", "utf8"),
     readFile("src/app/[locale]/blog/[category]/[slug]/page.tsx", "utf8"),
     readFile("src/app/[locale]/notes/[slug]/page.tsx", "utf8"),
@@ -96,9 +100,13 @@ test("public content surfaces have explicit posthog page and interaction events"
   assert.match(pageTracker, /'blog_category_view'/);
   assert.match(pageTracker, /'notes_view'/);
   assert.match(pageTracker, /'offline_view'/);
-  assert.match(blogIndex, /PageTracker page="blog" eventName="blog_view"/);
+  assert.match(blogIndex, /BlogCollectionPage/);
+  assert.match(blogCollection, /page="blog"/);
+  assert.match(blogCollection, /eventName="blog_view"/);
   assert.match(blogCategory, /PageTracker page="blog_category" eventName="blog_category_view"/);
-  assert.match(notesIndex, /PageTracker page="notes" eventName="notes_view"/);
+  assert.match(notesIndex, /NotesCollectionPage/);
+  assert.match(notesCollection, /page="notes"/);
+  assert.match(notesCollection, /eventName="notes_view"/);
   assert.match(offlinePage, /PageTracker page="offline" eventName="offline_view"/);
 
   assert.match(blogArticle, /surface="blog"/);

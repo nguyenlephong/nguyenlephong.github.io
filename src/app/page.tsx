@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { routing } from '@/i18n/routing'
 import { SITE_URL } from '@/app/seo.config'
+import { buildWebsiteSchema } from '@/lib/seo/profile-schema'
 
 const DEFAULT = `/${routing.defaultLocale}`
 
@@ -43,6 +44,7 @@ export const metadata: Metadata = {
 }
 
 export default function RootPage() {
+  const websiteSchema = buildWebsiteSchema(SEO_DESCRIPTION)
   return (
     <html lang="en">
       <head>
@@ -53,6 +55,10 @@ export default function RootPage() {
         <meta httpEquiv="refresh" content={`0;url=${DEFAULT}`} />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.location.replace(${JSON.stringify(DEFAULT)});`,

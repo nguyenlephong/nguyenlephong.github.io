@@ -1,14 +1,19 @@
-import { existsSync } from 'node:fs'
 import path from 'node:path'
+import { routing, type Locale } from '@/i18n/routing'
 import {
   byDateDesc,
   isDefaultLocale,
   overlayByKey,
-  readJson,
   readJsonValidated,
 } from '@/lib/content/io'
+import { pageCount } from '@/lib/content/pagination'
 import { rewriteContentAssetUrls } from '@/lib/assets/icdn'
-import { blogIndexSchema, blogPostSchema } from './schema'
+import {
+  blogIndexOverrideSchema,
+  blogIndexSchema,
+  blogPostOverrideSchema,
+  blogPostSchema,
+} from './schema'
 import type {
   BlogCategoryMeta,
   BlogIndexFile,
@@ -18,8 +23,6 @@ import type {
 import { compareSeriesPosts } from './series'
 
 const DATA_DIR = path.join(process.cwd(), 'public', 'blog-data')
-const BLOG_OVERRIDE_LOCALES = ['vi', 'zh', 'ja', 'ko', 'fr'] as const
-
 const EMPTY_INDEX: BlogIndexFile = { categories: [], posts: [] }
 
 /** Canonical index (English) — used for static-param generation. */
@@ -40,8 +43,9 @@ export function loadIndex(locale?: string): BlogIndexFile {
   const base = baseIndex()
   if (isDefaultLocale(locale)) return base
 
-  const override = readJson<Partial<BlogIndexFile>>(
+  const override = readJsonValidated(
     path.join(DATA_DIR, locale as string, '_index.json'),
+    blogIndexOverrideSchema,
   )
   if (!override) return base
 
@@ -70,8 +74,13 @@ export function getPostsByCategory(
   category: string,
   locale?: string,
 ): BlogPostMeta[] {
+  const contentLocale = locale ?? routing.defaultLocale
   return loadIndex(locale)
-    .posts.filter((p) => p.category === category)
+    .posts.filter(
+      (post) =>
+        post.category === category &&
+        post.locales.includes(contentLocale as Locale),
+    )
     .sort(byDateDesc)
 }
 
@@ -92,7 +101,7 @@ export function getSeriesContext(
   slug: string,
   locale?: string,
 ): SeriesContext | null {
-  const all = loadIndex(locale).posts
+  const all = listPosts(locale)
   const current = all.find((p) => p.slug === slug)
   if (!current?.series) return null
 
@@ -111,26 +120,52 @@ export function getSeriesContext(
 }
 
 export function listPosts(locale?: string): BlogPostMeta[] {
-  return [...loadIndex(locale).posts].sort(byDateDesc)
+  const contentLocale = (locale ?? routing.defaultLocale) as Locale
+  return loadIndex(locale)
+    .posts.filter((post) => post.locales.includes(contentLocale))
+    .sort(byDateDesc)
+}
+
+/** Locales whose authored corpus reaches a given static archive page. */
+export function listBlogArchiveLocales(page: number): Locale[] {
+  if (!Number.isInteger(page) || page < 1) return []
+  return routing.locales.filter(
+    (locale) => page <= pageCount(listPosts(locale).length),
+  )
 }
 
 export function loadPost(slug: string, locale?: string): BlogPost | null {
+  const indexedPost = baseIndex().posts.find((post) => post.slug === slug)
+  if (!indexedPost) return null
+
   const base = readJsonValidated(
     path.join(DATA_DIR, 'posts', `${slug}.json`),
     blogPostSchema,
   )
   if (!base) return null
   if (isDefaultLocale(locale)) {
-    return { ...base, html: rewriteContentAssetUrls(base.html) }
+    return {
+      ...base,
+      locales: [...indexedPost.locales],
+      html: rewriteContentAssetUrls(base.html),
+    }
   }
 
-  const override = readJson<Partial<BlogPost>>(
+  const override = readJsonValidated(
     path.join(DATA_DIR, locale as string, 'posts', `${slug}.json`),
+    blogPostOverrideSchema,
   )
-  if (!override) return { ...base, html: rewriteContentAssetUrls(base.html) }
+  if (!override) {
+    return {
+      ...base,
+      locales: [...indexedPost.locales],
+      html: rewriteContentAssetUrls(base.html),
+    }
+  }
 
   const post = {
     ...base,
+    locales: [...indexedPost.locales],
     title: override.title ?? base.title,
     summary: override.summary ?? base.summary,
     readingMinutes: override.readingMinutes ?? base.readingMinutes,
@@ -144,13 +179,9 @@ export function loadPost(slug: string, locale?: string): BlogPost | null {
   return { ...post, html: rewriteContentAssetUrls(post.html) }
 }
 
-export function getPostContentLocales(slug: string): string[] {
-  return [
-    'en',
-    ...BLOG_OVERRIDE_LOCALES.filter((locale) =>
-      existsSync(path.join(DATA_DIR, locale, 'posts', `${slug}.json`)),
-    ),
-  ]
+export function getPostContentLocales(slug: string): BlogPostMeta['locales'] {
+  const post = baseIndex().posts.find((entry) => entry.slug === slug)
+  return post ? [...post.locales] : []
 }
 
 /** Canonical category slugs — drives static-param generation. */

@@ -440,11 +440,14 @@
         "clear": "フィルターをクリア",
         "results": "{count, plural, =0 {ノートがありません} other {# 件のノート}}",
         "noResults": "検索に一致するノートがありません。",
+        "searchUnavailable": "検索を一時的に利用できません。下のページから引き続き記事を読めます。",
         "pagination": {
           "label": "ノートのページ",
           "prev": "前へ",
           "next": "次へ",
-          "goToPage": "{page} ページ目へ"
+          "goToPage": "{page} ページ目へ",
+          "pageLabel": "{total}ページ中{page}ページ",
+          "pageDescription": "ノートアーカイブの{page}/{total}ページです。暮らし、仕事、考え続けている問いについての記録を読めます。"
         }
       },
       "engagement": {
@@ -473,11 +476,14 @@
         "clear": "フィルターをクリア",
         "results": "{count, plural, =0 {記事がありません} other {# 件の記事}}",
         "noResults": "検索に一致する記事がありません。",
+        "searchUnavailable": "検索を一時的に利用できません。下のページから引き続き記事を読めます。",
         "pagination": {
           "label": "ブログのページ",
           "prev": "前へ",
           "next": "次へ",
-          "goToPage": "{page} ページ目へ"
+          "goToPage": "{page} ページ目へ",
+          "pageLabel": "{total}ページ中{page}ページ",
+          "pageDescription": "ブログの{page}/{total}ページです。ソフトウェアアーキテクチャ、ソースコード、AI、エンジニアリングチームについての実践的な記事を読めます。"
         }
       },
       "eyebrow": "記事",
@@ -527,5 +533,10 @@
         "close": "閉じる"
       }
     }
+  },
+  "ContentFallback": {
+    "eyebrow": "翻訳を準備しています",
+    "description": "この言語の完全版はまだありません。以下の利用可能な言語版をお読みいただけます。",
+    "action": "{language}で読む"
   }
 }

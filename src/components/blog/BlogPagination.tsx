@@ -1,13 +1,23 @@
 "use client";
 
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import { Link } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
+import { collectionPagePath } from "@/lib/content/pagination";
 
 interface BlogPaginationProps {
   /** 1-based current page */
   current: number;
   /** Total number of pages (>= 1) */
   total: number;
-  onChange: (page: number) => void;
+  /** Client-only pagination callback, used for filtered search results. */
+  onChange?: (page: number) => void;
+  /** Static collection path. When present, controls render crawlable links. */
+  basePath?: string;
+  /** Locale that owns the exported archive chain. */
+  linkLocale?: Locale;
+  /** Optional analytics callback for a static page navigation. */
+  onNavigate?: (page: number) => void;
   navLabel: string;
   prevLabel: string;
   nextLabel: string;
@@ -43,6 +53,9 @@ export default function BlogPagination({
   current,
   total,
   onChange,
+  basePath,
+  linkLocale,
+  onNavigate,
   navLabel,
   prevLabel,
   nextLabel,
@@ -53,38 +66,104 @@ export default function BlogPagination({
   const tokens = buildPageTokens(current, total);
   const go = (page: number) => {
     const next = Math.min(Math.max(page, 1), total);
-    if (next !== current) onChange(next);
+    if (next !== current) onChange?.(next);
+  };
+
+  const pageHref = (page: number) => collectionPagePath(basePath ?? "", page);
+
+  const pageControl = (page: number) => {
+    const className = `blog-pager__page${page === current ? " is-active" : ""}`;
+    const ariaLabel = goToPageLabel.replace("{page}", String(page));
+
+    if (basePath) {
+      return (
+        <Link
+          href={pageHref(page)}
+          locale={linkLocale}
+          prefetch={false}
+          className={className}
+          aria-label={ariaLabel}
+          aria-current={page === current ? "page" : undefined}
+          onClick={() => onNavigate?.(page)}
+        >
+          {page}
+        </Link>
+      );
+    }
+
+    return (
+      <button
+        type="button"
+        className={className}
+        onClick={() => go(page)}
+        aria-label={ariaLabel}
+        aria-current={page === current ? "page" : undefined}
+      >
+        {page}
+      </button>
+    );
+  };
+
+  const edgeControl = (page: number, direction: "prev" | "next") => {
+    const disabled = page < 1 || page > total;
+    const label = direction === "prev" ? prevLabel : nextLabel;
+    const icon =
+      direction === "prev" ? (
+        <LuChevronLeft aria-hidden="true" />
+      ) : (
+        <LuChevronRight aria-hidden="true" />
+      );
+    const content = (
+      <>
+        {direction === "prev" && icon}
+        <span className="blog-pager__edge-text">{label}</span>
+        {direction === "next" && icon}
+      </>
+    );
+
+    if (disabled) {
+      return (
+        <span className="blog-pager__edge is-disabled" aria-disabled="true">
+          {content}
+        </span>
+      );
+    }
+
+    if (basePath) {
+      return (
+        <Link
+          href={pageHref(page)}
+          locale={linkLocale}
+          prefetch={false}
+          className="blog-pager__edge"
+          aria-label={label}
+          onClick={() => onNavigate?.(page)}
+        >
+          {content}
+        </Link>
+      );
+    }
+
+    return (
+      <button
+        type="button"
+        className="blog-pager__edge"
+        onClick={() => go(page)}
+        aria-label={label}
+      >
+        {content}
+      </button>
+    );
   };
 
   return (
     <nav className="blog-pager" aria-label={navLabel}>
-      <button
-        type="button"
-        className="blog-pager__edge"
-        onClick={() => go(current - 1)}
-        disabled={current <= 1}
-        aria-label={prevLabel}
-      >
-        <LuChevronLeft aria-hidden="true" />
-        <span className="blog-pager__edge-text">{prevLabel}</span>
-      </button>
+      {edgeControl(current - 1, "prev")}
 
       <ul className="blog-pager__pages">
         {tokens.map((token) =>
           typeof token === "number" ? (
-            <li key={token}>
-              <button
-                type="button"
-                className={`blog-pager__page${
-                  token === current ? " is-active" : ""
-                }`}
-                onClick={() => go(token)}
-                aria-label={goToPageLabel.replace("{page}", String(token))}
-                aria-current={token === current ? "page" : undefined}
-              >
-                {token}
-              </button>
-            </li>
+            <li key={token}>{pageControl(token)}</li>
           ) : (
             <li key={token} className="blog-pager__gap" aria-hidden="true">
               …
@@ -93,16 +172,7 @@ export default function BlogPagination({
         )}
       </ul>
 
-      <button
-        type="button"
-        className="blog-pager__edge"
-        onClick={() => go(current + 1)}
-        disabled={current >= total}
-        aria-label={nextLabel}
-      >
-        <span className="blog-pager__edge-text">{nextLabel}</span>
-        <LuChevronRight aria-hidden="true" />
-      </button>
+      {edgeControl(current + 1, "next")}
     </nav>
   );
 }

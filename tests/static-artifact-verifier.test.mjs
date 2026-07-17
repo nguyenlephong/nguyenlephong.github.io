@@ -69,6 +69,92 @@ function createFixture(t, overrides = {}) {
   return { rootDir, outDir }
 }
 
+function writeLocalizedArticleFixture(outDir) {
+  const articlePath = 'blog/architecture/static-seo'
+  const articleUrls = {
+    en: `https://example.com/en/${articlePath}`,
+    vi: `https://example.com/vi/${articlePath}`,
+    zh: `https://example.com/zh/${articlePath}`,
+  }
+  const alternateMarkup = [
+    `<link rel="alternate" hreflang="en" href="${articleUrls.en}">`,
+    `<link rel="alternate" hreflang="vi" href="${articleUrls.vi}">`,
+    `<link rel="alternate" hreflang="x-default" href="${articleUrls.en}">`,
+  ].join('')
+
+  for (const locale of ['en', 'vi']) {
+    const directory = path.join(outDir, locale, 'blog', 'architecture')
+    mkdirSync(directory, { recursive: true })
+    const articleLd = {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: locale === 'en' ? 'Static SEO' : 'SEO cho trang tĩnh',
+      inLanguage: locale,
+      url: articleUrls[locale],
+      mainEntityOfPage: articleUrls[locale],
+      datePublished: '2026-07-17',
+      image: 'https://example.com/assets/static-seo.jpg',
+      author: {
+        '@type': 'Person',
+        name: 'Example Author',
+        url: 'https://example.com/en/about',
+      },
+    }
+    writeFileSync(
+      path.join(directory, 'static-seo.html'),
+      [
+        `<!doctype html><html lang="${locale}"><head>`,
+        `<title>${articleLd.headline}</title>`,
+        '<meta name="description" content="A localized static SEO article.">',
+        `<link rel="canonical" href="${articleUrls[locale]}">`,
+        alternateMarkup,
+        '</head><body><article>',
+        `<h1>${articleLd.headline}</h1>`,
+        `<script type="application/ld+json">${JSON.stringify(articleLd)}</script>`,
+        '</article></body></html>',
+      ].join(''),
+    )
+  }
+
+  const fallbackDirectory = path.join(outDir, 'zh', 'blog', 'architecture')
+  mkdirSync(fallbackDirectory, { recursive: true })
+  writeFileSync(
+    path.join(fallbackDirectory, 'static-seo.html'),
+    [
+      '<!doctype html><html lang="zh"><head>',
+      '<title>Static SEO</title>',
+      '<meta name="description" content="Choose an available article language.">',
+      `<link rel="canonical" href="${articleUrls.en}">`,
+      '</head><body><main data-content-locale-fallback="true">',
+      '<h1>Static SEO</h1><a href="/en/blog/architecture/static-seo">Read in English</a>',
+      '</main></body></html>',
+    ].join(''),
+  )
+
+  writeFileSync(
+    path.join(outDir, 'sitemap.xml'),
+    [
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+      '<url><loc>https://example.com/en</loc>',
+      '<xhtml:link rel="alternate" hreflang="en" href="https://example.com/en" />',
+      '<xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/en" />',
+      '</url>',
+      ...['en', 'vi'].map(
+        (locale) =>
+          `<url><loc>${articleUrls[locale]}</loc>` +
+          `<xhtml:link rel="alternate" hreflang="en" href="${articleUrls.en}" />` +
+          `<xhtml:link rel="alternate" hreflang="vi" href="${articleUrls.vi}" />` +
+          `<xhtml:link rel="alternate" hreflang="x-default" href="${articleUrls.en}" />` +
+          '</url>',
+      ),
+      '</urlset>',
+    ].join(''),
+  )
+
+  return articleUrls
+}
+
 test('verifies artifact budgets, sitemap canonicals, robots, and public secrets', async (t) => {
   const { rootDir, outDir } = createFixture(t)
   writeFileSync(path.join(outDir, 'google-site-verification.html'), 'google-site-verification: fixture')
@@ -252,4 +338,91 @@ test('requires configured core routes for every supported locale', async (t) => 
 
   const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
   assert.match(report.failures.join('\n'), /missing required localized route: https:\/\/example\.com\/vi/)
+})
+
+test('verifies localized Article schema, reciprocal hreflang, and lightweight fallback HTML', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeLocalizedArticleFixture(outDir)
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.failures, [])
+  assert.equal(report.seo.urlCount, 3)
+})
+
+test('rejects noindex, hreflang, and Article schema on a locale fallback route', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  const articleUrls = writeLocalizedArticleFixture(outDir)
+  const fallbackPath = path.join(outDir, 'zh/blog/architecture/static-seo.html')
+  writeFileSync(
+    fallbackPath,
+    [
+      '<!doctype html><html lang="zh"><head><title>Static SEO</title>',
+      '<meta name="description" content="Invalid fallback metadata.">',
+      '<meta name="robots" content="noindex, follow">',
+      `<link rel="canonical" href="${articleUrls.en}">`,
+      `<link rel="alternate" hreflang="en" href="${articleUrls.en}">`,
+      '</head><body><main data-content-locale-fallback="true">',
+      `<script type="application/ld+json">${JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: 'Static SEO',
+        inLanguage: 'en',
+        url: articleUrls.en,
+        mainEntityOfPage: articleUrls.en,
+        datePublished: '2026-07-17',
+        image: 'https://example.com/assets/static-seo.jpg',
+      })}</script>`,
+      '</main></body></html>',
+    ].join(''),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const failures = report.failures.join('\n')
+
+  assert.match(failures, /canonical consolidation without noindex/)
+  assert.match(failures, /fallback URL must not emit hreflang alternates/)
+  assert.match(failures, /fallback notice must not emit Article structured data/)
+})
+
+test('does not classify paginated blog or notes archives as articles', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  const routes = ['en/blog/page/2', 'en/notes/page/2']
+
+  for (const route of routes) {
+    const directory = path.join(outDir, path.dirname(route))
+    mkdirSync(directory, { recursive: true })
+    const url = `https://example.com/${route}`
+    writeFileSync(
+      path.join(outDir, `${route}.html`),
+      [
+        '<!doctype html><html lang="en"><head>',
+        '<title>Archive page two</title>',
+        '<meta name="description" content="A crawlable archive page.">',
+        `<link rel="canonical" href="${url}">`,
+        `<link rel="alternate" hreflang="en" href="${url}">`,
+        `<link rel="alternate" hreflang="x-default" href="${url}">`,
+        '</head><body><main><h1>Archive</h1></main></body></html>',
+      ].join(''),
+    )
+  }
+
+  writeFileSync(
+    path.join(outDir, 'sitemap.xml'),
+    [
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+      ...['https://example.com/en', ...routes.map((route) => `https://example.com/${route}`)].map(
+        (url) =>
+          `<url><loc>${url}</loc>` +
+          `<xhtml:link rel="alternate" hreflang="en" href="${url}" />` +
+          `<xhtml:link rel="alternate" hreflang="x-default" href="${url}" />` +
+          '</url>',
+      ),
+      '</urlset>',
+    ].join(''),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  assert.deepEqual(report.failures, [])
 })

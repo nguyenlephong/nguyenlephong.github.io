@@ -30,6 +30,9 @@ interface ExplorerShellProps<T> {
   /** Extra wrapper class, e.g. `notes-explorer`. */
   className?: string
   trackingSurface?: 'blog' | 'notes'
+  searchStatus?: 'idle' | 'loading' | 'ready' | 'error'
+  searchUnavailableLabel: string
+  onSearchIntent: () => void
   renderItem: (item: T) => ReactNode
 }
 
@@ -50,6 +53,9 @@ export function ExplorerShell<T>({
   paletteId,
   className,
   trackingSurface,
+  searchStatus = 'idle',
+  searchUnavailableLabel,
+  onSearchIntent,
   renderItem,
 }: ExplorerShellProps<T>) {
   const {
@@ -65,6 +71,8 @@ export function ExplorerShell<T>({
     hasFilters,
     activeFilter,
     activeColor,
+    isStaticBrowsing,
+    staticPagination,
     onSearch,
     openPalette,
     togglePaletteVisibility,
@@ -92,6 +100,7 @@ export function ExplorerShell<T>({
     <div
       className={['blog-explorer', className].filter(Boolean).join(' ')}
       style={accentStyle(activeColor)}
+      aria-busy={searchStatus === 'loading'}
     >
       <div className="blog-explorer__controls">
         <div
@@ -104,8 +113,14 @@ export function ExplorerShell<T>({
               type="search"
               className="blog-search__input"
               value={view.query}
-              onChange={(e) => onSearch(e.target.value)}
-              onFocus={openPalette}
+              onChange={(e) => {
+                onSearchIntent()
+                onSearch(e.target.value)
+              }}
+              onFocus={() => {
+                onSearchIntent()
+                openPalette()
+              }}
               onBlur={() => {
                 const query = view.query.trim()
                 if (!query) return
@@ -136,6 +151,7 @@ export function ExplorerShell<T>({
               type="button"
               className="blog-command__toggle"
               onClick={() => {
+                onSearchIntent()
                 trackExplorer('explorer_palette_toggle', { open_next: !paletteOpen })
                 togglePaletteVisibility()
               }}
@@ -211,6 +227,7 @@ export function ExplorerShell<T>({
                     type="button"
                     className={`blog-command__option${!view.filter ? ' is-active' : ''}`}
                     onClick={() => {
+                      onSearchIntent()
                       trackExplorer('explorer_filter_select', { filter_id: 'all' })
                       chooseAllFilters()
                     }}
@@ -225,6 +242,7 @@ export function ExplorerShell<T>({
                       className={`blog-command__option${view.filter === f.id ? ' is-active' : ''}`}
                       style={accentStyle(f.color)}
                       onClick={() => {
+                        onSearchIntent()
                         trackExplorer('explorer_filter_select', { filter_id: f.id })
                         chooseFilter(f.id)
                       }}
@@ -246,6 +264,7 @@ export function ExplorerShell<T>({
                           type="button"
                           className={`blog-command__tag${view.tag === tg ? ' is-active' : ''}`}
                           onClick={() => {
+                            onSearchIntent()
                             trackExplorer('explorer_tag_select', { tag: tg })
                             chooseTag(tg)
                           }}
@@ -289,6 +308,12 @@ export function ExplorerShell<T>({
             </div>
           )}
         </noscript>
+
+        {searchStatus === 'error' && (
+          <p className="blog-explorer__search-status" role="status">
+            {searchUnavailableLabel}
+          </p>
+        )}
       </div>
 
       <div ref={listTopRef} className="blog-explorer__scroll-anchor" />
@@ -300,10 +325,20 @@ export function ExplorerShell<T>({
           <BlogPagination
             current={safePage}
             total={totalPages}
-            onChange={(page) => {
-              trackExplorer('explorer_page_change', { target_page: page })
-              changePage(page)
-            }}
+            {...(isStaticBrowsing
+              ? {
+                  basePath: staticPagination.basePath,
+                  linkLocale: staticPagination.linkLocale,
+                  onNavigate: (page: number) => {
+                    trackExplorer('explorer_page_change', { target_page: page })
+                  },
+                }
+              : {
+                  onChange: (page: number) => {
+                    trackExplorer('explorer_page_change', { target_page: page })
+                    changePage(page)
+                  },
+                })}
             navLabel={labels.pagination.label}
             prevLabel={labels.pagination.prev}
             nextLabel={labels.pagination.next}

@@ -10,4 +10,5 @@ export {
   canonicalFor,
   htmlToPlainText,
   localeAlternates,
+  preferredContentLocale,
 } from '@/lib/thoughts/seo'

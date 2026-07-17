@@ -437,11 +437,14 @@
         "clear": "Xóa bộ lọc",
         "results": "{count, plural, =0 {Không có bài viết} other {# bài viết}}",
         "noResults": "Không có bài viết nào khớp với tìm kiếm của bạn.",
+        "searchUnavailable": "Hiện chưa thể tải tìm kiếm. Bạn vẫn có thể tiếp tục đọc các trang bên dưới.",
         "pagination": {
           "label": "Trang ghi chép",
           "prev": "Trước",
           "next": "Sau",
-          "goToPage": "Tới trang {page}"
+          "goToPage": "Tới trang {page}",
+          "pageLabel": "Trang {page}/{total}",
+          "pageDescription": "Đọc trang {page}/{total} trong kho ghi chép về cuộc sống, công việc và những câu hỏi còn đang được suy ngẫm."
         }
       },
       "engagement": {
@@ -470,11 +473,14 @@
         "clear": "Xóa bộ lọc",
         "results": "{count, plural, =0 {Không có bài viết} other {# bài viết}}",
         "noResults": "Không có bài viết nào khớp với tìm kiếm của bạn.",
+        "searchUnavailable": "Hiện chưa thể tải tìm kiếm. Bạn vẫn có thể tiếp tục đọc các trang bên dưới.",
         "pagination": {
           "label": "Trang blog",
           "prev": "Trước",
           "next": "Sau",
-          "goToPage": "Tới trang {page}"
+          "goToPage": "Tới trang {page}",
+          "pageLabel": "Trang {page}/{total}",
+          "pageDescription": "Đọc trang {page}/{total} với các bài viết thực tế về software architecture, source code, AI và cách team kỹ thuật làm việc."
         }
       },
       "eyebrow": "Bài viết",
@@ -655,5 +661,10 @@
     "font": "Đổi font đọc",
     "background": "Đổi nền đọc",
     "language": "Đổi ngôn ngữ"
+  },
+  "ContentFallback": {
+    "eyebrow": "Đang hoàn thiện bản dịch",
+    "description": "Phiên bản đầy đủ chưa có ở ngôn ngữ này. Bạn có thể tiếp tục với một trong các bản hiện có bên dưới.",
+    "action": "Đọc bằng {language}"
   }
 }

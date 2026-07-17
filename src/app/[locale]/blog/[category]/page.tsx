@@ -122,6 +122,7 @@ export default async function BlogCategoryPage({ params }: Props) {
               accent={cat.accent}
               categoryTitle={cat.title}
               locale={locale}
+              contentLocale={locale}
               readingLabel={t('readingTime', { minutes: p.readingMinutes })}
               source="blog_category"
             />

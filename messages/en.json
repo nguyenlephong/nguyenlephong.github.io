@@ -437,11 +437,14 @@
         "clear": "Clear filters",
         "results": "{count, plural, =0 {No notes} one {# note} other {# notes}}",
         "noResults": "No notes match your search.",
+        "searchUnavailable": "Search is temporarily unavailable. You can continue browsing the pages below.",
         "pagination": {
           "label": "Notes pages",
           "prev": "Previous",
           "next": "Next",
-          "goToPage": "Go to page {page}"
+          "goToPage": "Go to page {page}",
+          "pageLabel": "Page {page} of {total}",
+          "pageDescription": "Browse page {page} of {total} in the notes archive, with reflections on life, work, and ongoing questions."
         }
       },
       "engagement": {
@@ -470,11 +473,14 @@
         "clear": "Clear filters",
         "results": "{count, plural, =0 {No articles} one {# article} other {# articles}}",
         "noResults": "No articles match your search.",
+        "searchUnavailable": "Search is temporarily unavailable. You can continue browsing the pages below.",
         "pagination": {
           "label": "Blog pages",
           "prev": "Previous",
           "next": "Next",
-          "goToPage": "Go to page {page}"
+          "goToPage": "Go to page {page}",
+          "pageLabel": "Page {page} of {total}",
+          "pageDescription": "Browse page {page} of {total} for practical writing on software architecture, source code, AI, and engineering teamwork."
         }
       },
       "eyebrow": "Writing",
@@ -655,5 +661,10 @@
     "font": "Change reading font",
     "background": "Change reading background",
     "language": "Change language"
+  },
+  "ContentFallback": {
+    "eyebrow": "Translation in progress",
+    "description": "A complete version is not available in this language yet. You can continue with one of the editions below.",
+    "action": "Read in {language}"
   }
 }

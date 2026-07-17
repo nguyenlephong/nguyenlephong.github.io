@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
-import { routing, type Locale } from '@/i18n/routing'
+import { LOCALE_LABELS, routing, type Locale } from '@/i18n/routing'
 import { SITE, SITE_URL } from '@/app/seo.config'
 import {
   OG_LOCALE_MAP,
@@ -11,6 +11,7 @@ import {
   canonicalFor,
   htmlToPlainText,
   localeAlternates,
+  preferredContentLocale,
 } from '@/lib/blog/seo'
 import {
   getCategory,
@@ -30,6 +31,7 @@ import BlogViewCount from '@/components/blog/BlogViewCount'
 import BlogShareDock from '@/components/blog/BlogShareDock'
 import BlogReactions from '@/components/blog/BlogReactions'
 import BlogRelatedPosts from '@/components/blog/BlogRelatedPosts'
+import LocalizedArticleFallback from '@/components/content/LocalizedArticleFallback'
 import '../../blog.css'
 
 type Props = {
@@ -55,23 +57,28 @@ function formatDate(iso: string, locale: string): string {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, category, slug } = await params
-  const post = loadPost(slug, locale)
-  if (!post || post.category !== category) return { title: 'Post not found' }
   const contentLocales = getPostContentLocales(slug)
-  const indexable = contentLocales.includes(locale)
-  const canonicalLocale = indexable ? locale : 'en'
+  const hasLocalizedContent = contentLocales.includes(locale as Locale)
+  const canonicalLocale = hasLocalizedContent
+    ? (locale as Locale)
+    : preferredContentLocale(contentLocales)
+  const post = loadPost(slug, canonicalLocale)
+  if (!post || post.category !== category) return { title: 'Post not found' }
 
   const title = post.title
-  const description = post.summary || buildDescription(post.html)
+  const description = buildDescription(post.summary || post.html)
   const canonical = canonicalFor(canonicalLocale, `/blog/${category}/${slug}`)
   const imageUrl = blogPostOgImageUrl(slug)
   const languages = localeAlternates(`/blog/${category}/${slug}`, contentLocales)
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords: post.tags,
-    alternates: { canonical, languages },
+    alternates: {
+      canonical,
+      ...(hasLocalizedContent ? { languages } : {}),
+    },
     openGraph: {
       type: 'article',
       url: canonical,
@@ -83,7 +90,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         .filter((l) => l !== canonicalLocale)
         .map((l) => OG_LOCALE_MAP[l as Locale]),
       publishedTime: post.date,
-      modifiedTime: post.updated ?? post.date,
+      ...(post.updated ? { modifiedTime: post.updated } : {}),
       authors: [SITE_URL],
       tags: post.tags,
       images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
@@ -96,16 +103,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       creator: SITE.twitter,
       images: [imageUrl],
     },
-    robots: {
-      index: indexable,
-      follow: true,
-      googleBot: {
-        index: indexable,
-        follow: true,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
-    },
   }
 }
 
@@ -114,11 +111,39 @@ export default async function BlogPostPage({ params }: Props) {
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
 
-  const post = loadPost(slug, locale)
-  if (!post || post.category !== category) notFound()
   const contentLocales = getPostContentLocales(slug)
-  const indexable = contentLocales.includes(locale)
-  const canonicalLocale = indexable ? locale : 'en'
+  const requestedLocale = locale as Locale
+  const hasLocalizedContent = contentLocales.includes(requestedLocale)
+  const canonicalLocale = hasLocalizedContent
+    ? requestedLocale
+    : preferredContentLocale(contentLocales)
+  const post = loadPost(slug, canonicalLocale)
+  if (!post || post.category !== category) notFound()
+
+  if (!hasLocalizedContent) {
+    const fallbackT = await getTranslations({ locale, namespace: 'ContentFallback' })
+    const accent = getCategory(category, canonicalLocale)?.accent ?? 'ocean'
+    return (
+      <LocalizedArticleFallback
+        articlePath={`/blog/${category}/${slug}`}
+        availableVariants={contentLocales.map((contentLocale) => ({
+          label: fallbackT('action', {
+            language: LOCALE_LABELS[contentLocale].name,
+          }),
+          locale: contentLocale,
+        }))}
+        className={`blog-article blog-article--${accent}`}
+        requestedLocale={requestedLocale}
+        slug={slug}
+        surface="blog"
+        title={post.title}
+        labels={{
+          description: fallbackT('description'),
+          eyebrow: fallbackT('eyebrow'),
+        }}
+      />
+    )
+  }
 
   const cat = getCategory(category, locale)
   const series = getSeriesContext(slug, locale)
@@ -149,7 +174,7 @@ export default async function BlogPostPage({ params }: Props) {
     image: imageUrl,
     mainEntityOfPage: canonical,
     datePublished: post.date,
-    dateModified: post.updated ?? post.date,
+    ...(post.updated ? { dateModified: post.updated } : {}),
     keywords: post.tags.join(', '),
     articleSection: cat?.title ?? category,
     isRelatedTo: relatedPosts.map((relatedPost) => ({
@@ -158,7 +183,7 @@ export default async function BlogPostPage({ params }: Props) {
       url: canonicalFor(
         getPostContentLocales(relatedPost.slug).includes(canonicalLocale)
           ? canonicalLocale
-          : 'en',
+          : preferredContentLocale(getPostContentLocales(relatedPost.slug)),
         `/blog/${relatedPost.category}/${relatedPost.slug}`,
       ),
       image: blogPostOgImageUrl(relatedPost.slug),
@@ -186,7 +211,7 @@ export default async function BlogPostPage({ params }: Props) {
     author: {
       '@type': 'Person',
       '@id': `${SITE_URL}/#person`,
-      name: 'Nguyen Le Phong',
+      name: post.author,
       url: SITE_URL,
     },
     publisher: {

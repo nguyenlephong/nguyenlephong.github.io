@@ -440,11 +440,14 @@
         "clear": "Réinitialiser les filtres",
         "results": "{count, plural, =0 {Aucune note} one {# note} other {# notes}}",
         "noResults": "Aucune note ne correspond à votre recherche.",
+        "searchUnavailable": "La recherche est temporairement indisponible. Vous pouvez continuer à parcourir les pages ci-dessous.",
         "pagination": {
           "label": "Pages des notes",
           "prev": "Précédent",
           "next": "Suivant",
-          "goToPage": "Aller à la page {page}"
+          "goToPage": "Aller à la page {page}",
+          "pageLabel": "Page {page} sur {total}",
+          "pageDescription": "Parcourez la page {page} sur {total} des notes, consacrées à la vie, au travail et aux questions qui restent ouvertes."
         }
       },
       "engagement": {
@@ -473,11 +476,14 @@
         "clear": "Réinitialiser les filtres",
         "results": "{count, plural, =0 {Aucun article} one {# article} other {# articles}}",
         "noResults": "Aucun article ne correspond à votre recherche.",
+        "searchUnavailable": "La recherche est temporairement indisponible. Vous pouvez continuer à parcourir les pages ci-dessous.",
         "pagination": {
           "label": "Pages du blog",
           "prev": "Précédent",
           "next": "Suivant",
-          "goToPage": "Aller à la page {page}"
+          "goToPage": "Aller à la page {page}",
+          "pageLabel": "Page {page} sur {total}",
+          "pageDescription": "Parcourez la page {page} sur {total} pour lire des articles pratiques sur l’architecture logicielle, le code source, l’IA et le travail en équipe."
         }
       },
       "eyebrow": "Articles",
@@ -527,5 +533,10 @@
         "close": "Fermer"
       }
     }
+  },
+  "ContentFallback": {
+    "eyebrow": "Traduction en cours",
+    "description": "La version complète n’est pas encore disponible dans cette langue. Vous pouvez poursuivre avec l’une des versions proposées ci-dessous.",
+    "action": "Lire en {language}"
   }
 }

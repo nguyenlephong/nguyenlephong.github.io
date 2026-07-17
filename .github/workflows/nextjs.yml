@@ -55,6 +55,9 @@ jobs:
       - name: Verify architecture and SEO budgets
         run: npm run verify:artifact
 
+      - name: Verify crawlable content pagination
+        run: npm run verify:pagination
+
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 

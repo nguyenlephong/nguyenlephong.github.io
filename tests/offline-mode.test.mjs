@@ -53,7 +53,7 @@ test("offline mode wires bounded cache warming and owned-route fallbacks", async
   );
   assert.equal(
     pkg.scripts.quality,
-    "npm run check && npm run build:fast && npm run verify:artifact && npm run verify:offline"
+    "npm run check && npm run build:fast && npm run verify:pagination && npm run verify:artifact && npm run verify:offline"
   );
 
   assert.match(offlineScript, /offline-manifest\.json/);

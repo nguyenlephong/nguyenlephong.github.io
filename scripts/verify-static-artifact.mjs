@@ -315,25 +315,227 @@ function findMetaContent(html, name) {
   return null
 }
 
+function collectJsonLd(html) {
+  const values = []
+  const errors = []
+  const pattern = /<script\b[^>]*>([\s\S]*?)<\/script>/gi
+
+  for (const match of html.matchAll(pattern)) {
+    const openingTag = match[0].slice(0, match[0].indexOf('>') + 1)
+    const attributes = attributesFromTag(openingTag)
+    if (attributes.get('type')?.toLowerCase() !== 'application/ld+json') continue
+
+    try {
+      values.push(JSON.parse(match[1].trim()))
+    } catch (error) {
+      errors.push(error instanceof Error ? error.message : String(error))
+    }
+  }
+
+  return { values, errors }
+}
+
+function flattenJsonLd(values) {
+  const flattened = []
+  const visit = (value) => {
+    if (Array.isArray(value)) {
+      for (const item of value) visit(item)
+      return
+    }
+    if (!value || typeof value !== 'object') return
+    flattened.push(value)
+    if (Array.isArray(value['@graph'])) visit(value['@graph'])
+  }
+  visit(values)
+  return flattened
+}
+
+function pageUrlFromArtifactPath(relativePath, siteOrigin) {
+  const normalizedPath = relativePath.split(path.sep).join('/')
+  let route
+  if (normalizedPath === 'index.html') route = ''
+  else if (normalizedPath.endsWith('/index.html')) route = normalizedPath.slice(0, -'/index.html'.length)
+  else if (normalizedPath.endsWith('.html')) route = normalizedPath.slice(0, -'.html'.length)
+  else return null
+  return normalizeUrl(`${siteOrigin}/${route}`)
+}
+
+function isLocalizedArticleUrl(value) {
+  const segments = new URL(value).pathname.split('/').filter(Boolean)
+  return (
+    (segments.length === 3 && segments[1] === 'notes' && segments[2] !== 'page') ||
+    (segments.length === 4 &&
+      segments[1] === 'blog' &&
+      segments[2] !== 'page')
+  )
+}
+
+function schemaHasType(value, expectedTypes) {
+  const types = Array.isArray(value?.['@type']) ? value['@type'] : [value?.['@type']]
+  return types.some((type) => expectedTypes.has(type))
+}
+
+function normalizedLanguageMap(entries) {
+  const normalized = new Map()
+  for (const [language, value] of Object.entries(entries)) {
+    try {
+      normalized.set(language, normalizeUrl(value))
+    } catch {
+      normalized.set(language, value)
+    }
+  }
+  return normalized
+}
+
+function sameLanguageMap(left, right) {
+  if (left.size !== right.size) return false
+  for (const [language, value] of left) {
+    if (right.get(language) !== value) return false
+  }
+  return true
+}
+
 function collectHtmlMetadata({ absolutePath, html, outDir }) {
   const canonicalUrls = []
+  const alternateLanguages = {}
   for (const tag of collectTags(html, 'link')) {
     const attributes = attributesFromTag(tag)
-    if (attributes.get('rel')?.toLowerCase() !== 'canonical') continue
+    const relation = attributes.get('rel')?.toLowerCase()
     const href = attributes.get('href')
-    if (href) canonicalUrls.push(href)
+    if (relation === 'canonical' && href) canonicalUrls.push(href)
+    if (relation === 'alternate' && href && attributes.get('hreflang')) {
+      alternateLanguages[attributes.get('hreflang')] = href
+    }
   }
 
   const htmlTag = collectTags(html, 'html')[0]
+  const jsonLd = collectJsonLd(html)
   return {
     absolutePath,
     relativePath: relativeArtifactPath(outDir, absolutePath),
     canonicalUrls,
+    alternateLanguages,
     description: findMetaContent(html, 'description')?.trim() ?? '',
+    hasContentLocaleFallback: /data-content-locale-fallback=["']true["']/i.test(html),
     hasTitle: /<title>\s*[^<][\s\S]*?<\/title>/i.test(html),
     isDocument: Boolean(htmlTag),
+    jsonLdErrors: jsonLd.errors,
+    jsonLdObjects: flattenJsonLd(jsonLd.values),
     language: htmlTag ? attributesFromTag(htmlTag).get('lang')?.trim() ?? '' : '',
     noindex: findMetaContent(html, 'robots')?.toLowerCase().includes('noindex') ?? false,
+  }
+}
+
+function verifyArticleHtmlContracts({
+  htmlMetadataByPath,
+  locationSet,
+  sitemapLanguagesByLocation,
+  siteOrigin,
+  failures,
+}) {
+  const articleTypes = new Set(['Article', 'BlogPosting', 'NewsArticle'])
+  const metadataByUrl = new Map()
+
+  for (const metadata of htmlMetadataByPath.values()) {
+    const pageUrl = pageUrlFromArtifactPath(metadata.relativePath, siteOrigin)
+    if (pageUrl) metadataByUrl.set(pageUrl, metadata)
+  }
+
+  for (const [pageUrl, metadata] of metadataByUrl) {
+    if (!isLocalizedArticleUrl(pageUrl)) continue
+    if (metadata.canonicalUrls.length !== 1) continue
+
+    let canonical
+    try {
+      canonical = normalizeUrl(metadata.canonicalUrls[0])
+    } catch {
+      continue
+    }
+
+    const isCanonicalVariant = canonical === pageUrl
+    const articleObjects = metadata.jsonLdObjects.filter((value) => schemaHasType(value, articleTypes))
+    const htmlLanguages = normalizedLanguageMap(metadata.alternateLanguages)
+
+    if (!isCanonicalVariant) {
+      if (!metadata.hasContentLocaleFallback) {
+        failures.push(`${metadata.relativePath} is a non-canonical article route without a fallback notice`)
+      }
+      if (metadata.noindex) {
+        failures.push(`${metadata.relativePath} must use canonical consolidation without noindex`)
+      }
+      if (locationSet.has(pageUrl)) failures.push(`${metadata.relativePath} fallback URL leaked into sitemap.xml`)
+      if (!locationSet.has(canonical)) {
+        failures.push(`${metadata.relativePath} fallback canonical is not an indexable sitemap URL: ${canonical}`)
+      }
+      if (htmlLanguages.size > 0) {
+        failures.push(`${metadata.relativePath} fallback URL must not emit hreflang alternates`)
+      }
+      if (articleObjects.length > 0) {
+        failures.push(`${metadata.relativePath} fallback notice must not emit Article structured data`)
+      }
+      continue
+    }
+
+    if (metadata.hasContentLocaleFallback) {
+      failures.push(`${metadata.relativePath} self-canonical article rendered a fallback notice`)
+    }
+    if (metadata.jsonLdErrors.length > 0) {
+      failures.push(`${metadata.relativePath} contains invalid JSON-LD`)
+    }
+    if (articleObjects.length !== 1) {
+      failures.push(`${metadata.relativePath} must emit exactly one Article object; found ${articleObjects.length}`)
+      continue
+    }
+
+    const article = articleObjects[0]
+    const routeLocale = new URL(pageUrl).pathname.split('/').filter(Boolean)[0]
+    const mainEntity =
+      typeof article.mainEntityOfPage === 'string'
+        ? article.mainEntityOfPage
+        : article.mainEntityOfPage?.['@id']
+
+    if (normalizeUrl(article.url ?? siteOrigin) !== canonical) {
+      failures.push(`${metadata.relativePath} Article url does not match its canonical`)
+    }
+    if (normalizeUrl(mainEntity ?? siteOrigin) !== canonical) {
+      failures.push(`${metadata.relativePath} Article mainEntityOfPage does not match its canonical`)
+    }
+    if (article.inLanguage !== routeLocale) {
+      failures.push(`${metadata.relativePath} Article inLanguage must be ${routeLocale}`)
+    }
+    if (!article.headline || !article.datePublished || !article.image) {
+      failures.push(`${metadata.relativePath} Article is missing source-backed headline, datePublished, or image`)
+    }
+    if (article.author) {
+      const authors = Array.isArray(article.author) ? article.author : [article.author]
+      if (authors.some((author) => !author?.url)) {
+        failures.push(`${metadata.relativePath} Article author must include a stable URL`)
+      }
+    }
+
+    if (htmlLanguages.get(routeLocale) !== pageUrl) {
+      failures.push(`${metadata.relativePath} hreflang cluster must include its own locale and URL`)
+    }
+    const xDefault = htmlLanguages.get('x-default')
+    if (!xDefault || !locationSet.has(xDefault)) {
+      failures.push(`${metadata.relativePath} hreflang x-default must point to a canonical article URL`)
+    }
+
+    const sitemapLanguages = sitemapLanguagesByLocation.get(pageUrl) ?? new Map()
+    if (!sameLanguageMap(htmlLanguages, sitemapLanguages)) {
+      failures.push(`${metadata.relativePath} HTML and sitemap hreflang clusters do not match`)
+    }
+
+    for (const [alternateLocale, alternateUrl] of htmlLanguages) {
+      if (alternateLocale === 'x-default') continue
+      const alternateMetadata = metadataByUrl.get(alternateUrl)
+      const reciprocal = alternateMetadata
+        ? normalizedLanguageMap(alternateMetadata.alternateLanguages).get(routeLocale)
+        : undefined
+      if (reciprocal !== pageUrl) {
+        failures.push(`${metadata.relativePath} hreflang ${alternateLocale} is not reciprocal`)
+      }
+    }
   }
 }
 
@@ -446,6 +648,7 @@ function verifySitemap({ outDir, siteOrigin, limits, seoConfig, failures, htmlMe
   const blocks = [...sitemap.matchAll(/<url\b[^>]*>([\s\S]*?)<\/url>/gi)].map((match) => match[1])
   const locations = []
   const alternates = []
+  const sitemapLanguageEntries = []
 
   for (const block of blocks) {
     const locMatch = block.match(/<loc>([\s\S]*?)<\/loc>/i)
@@ -463,7 +666,11 @@ function verifySitemap({ outDir, siteOrigin, limits, seoConfig, failures, htmlMe
     }
     for (const attributes of alternateAttributes) {
       const href = attributes.get('href')
-      if (attributes.get('rel') === 'alternate' && href) alternates.push({ loc, href })
+      const language = attributes.get('hreflang')
+      if (attributes.get('rel') === 'alternate' && href) {
+        alternates.push({ loc, href })
+        if (language) sitemapLanguageEntries.push({ loc, language, href })
+      }
     }
   }
 
@@ -491,6 +698,21 @@ function verifySitemap({ outDir, siteOrigin, limits, seoConfig, failures, htmlMe
 
   const locationSet = new Set(normalizedLocations)
   if (locationSet.size !== normalizedLocations.length) failures.push('sitemap.xml contains duplicate <loc> URLs')
+  const sitemapLanguagesByLocation = new Map()
+
+  for (const { loc, language, href } of sitemapLanguageEntries) {
+    let normalizedLocation
+    let normalizedHref
+    try {
+      normalizedLocation = normalizeUrl(loc)
+      normalizedHref = normalizeUrl(href)
+    } catch {
+      continue
+    }
+    const languageMap = sitemapLanguagesByLocation.get(normalizedLocation) ?? new Map()
+    languageMap.set(language, normalizedHref)
+    sitemapLanguagesByLocation.set(normalizedLocation, languageMap)
+  }
 
   for (const { loc, href } of alternates) {
     let normalizedHref
@@ -513,6 +735,13 @@ function verifySitemap({ outDir, siteOrigin, limits, seoConfig, failures, htmlMe
     htmlMetadataByPath,
     locationSet,
     outDir,
+    siteOrigin,
+    failures,
+  })
+  verifyArticleHtmlContracts({
+    htmlMetadataByPath,
+    locationSet,
+    sitemapLanguagesByLocation,
     siteOrigin,
     failures,
   })

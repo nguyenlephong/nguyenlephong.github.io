@@ -14,6 +14,7 @@
  * reading experience is never blocked by analytics.
  */
 import { getDb } from './client'
+import { CONTENT_PAGE_SIZE } from '@/lib/content/pagination'
 
 export const REACTION_KEYS = ['like', 'love', 'insightful', 'clap'] as const
 export type ReactionKey = (typeof REACTION_KEYS)[number]
@@ -27,6 +28,10 @@ export interface PostStats {
 }
 
 const COLLECTION = 'postStats'
+
+export function boundPostStatsIds(ids: readonly string[]): string[] {
+  return [...new Set(ids.filter(Boolean))].slice(0, CONTENT_PAGE_SIZE)
+}
 
 function emptyReactions(): ReactionCounts {
   return { like: 0, love: 0, insightful: 0, clap: 0 }
@@ -76,20 +81,32 @@ export async function getPostStats(id: string): Promise<PostStats | null> {
 }
 
 /**
- * Reads every post's counters in a single query, keyed by document id. List /
- * explorer views use this instead of issuing one `getPostStats` per card, which
- * turned a page of N cards into N round-trips plus N dynamic `firebase/firestore`
- * imports. Returns an empty map when unconfigured or on error.
+ * Reads counters only for visible archive cards. Input is de-duplicated and
+ * hard-capped to the static page size, so a search can never scan the corpus.
+ * Individual failures are omitted while successful documents remain usable.
  */
-export async function getAllPostStats(): Promise<Map<string, PostStats>> {
+export async function getPostStatsByIds(
+  ids: readonly string[],
+): Promise<Map<string, PostStats>> {
   const out = new Map<string, PostStats>()
   if (isNavigatorOffline()) return out
+  const boundedIds = boundPostStatsIds(ids)
+  if (boundedIds.length === 0) return out
   const db = await getDb()
   if (!db) return out
   try {
-    const { collection, getDocs } = await import('firebase/firestore')
-    const snap = await getDocs(collection(db, COLLECTION))
-    snap.forEach((d) => out.set(d.id, normalise(d.data())))
+    const { doc, getDoc } = await import('firebase/firestore')
+    const snapshots = await Promise.allSettled(
+      boundedIds.map(async (id) => ({
+        id,
+        snap: await getDoc(doc(db, COLLECTION, id)),
+      })),
+    )
+    for (const result of snapshots) {
+      if (result.status !== 'fulfilled') continue
+      const { id, snap } = result.value
+      out.set(id, normalise(snap.exists() ? snap.data() : undefined))
+    }
     return out
   } catch {
     return out

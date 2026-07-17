@@ -1,4 +1,5 @@
 import type { BookSource, Faq } from "@/lib/content/types";
+import type { Locale } from "@/i18n/routing";
 
 /** @see {@link Faq} — shared with blog. */
 export type NoteFaq = Faq;
@@ -24,9 +25,9 @@ export interface NoteMeta {
   author?: string;
   featured?: boolean;
   /** Language the canonical note body is authored in. */
-  baseLocale?: string;
+  baseLocale?: Locale;
   /** Content locales served for this shared note slug. */
-  locales?: string[];
+  locales?: Locale[];
 }
 
 export interface Note extends NoteMeta {

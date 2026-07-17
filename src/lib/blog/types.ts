@@ -1,4 +1,5 @@
 import type { BookSource, Faq } from '@/lib/content/types'
+import type { Locale } from '@/i18n/routing'
 
 export type BlogAccent = 'ocean' | 'gold' | 'violet' | 'dark' | 'light'
 
@@ -31,6 +32,8 @@ export interface BlogPostMeta {
   readingMinutes: number
   tags: string[]
   author: string
+  /** Locales that contain an authored article body for this slug. */
+  locales: Locale[]
   featured?: boolean
   /** Series identifier (e.g. "foundations"); groups related posts */
   series?: string

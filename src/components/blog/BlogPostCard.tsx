@@ -3,17 +3,20 @@
 import { LuEye } from 'react-icons/lu'
 import { Link } from '@/i18n/navigation'
 import { track } from '@/lib/analytics'
-import type { BlogAccent, BlogPostMeta } from '@/lib/blog/types'
+import type { BlogAccent } from '@/lib/blog/types'
+import type { BlogSearchItem } from '@/lib/content/search-index'
 import { formatCount } from '@/lib/firebase/postStats'
 
 interface BlogPostCardProps {
-  post: BlogPostMeta
+  post: BlogSearchItem
   /** Accent family from the owning category, drives the chip color */
   accent: BlogAccent
   /** Translated category name shown as a chip */
   categoryTitle: string
   /** Active locale, used to format the publish date */
   locale: string
+  /** Locale that owns the linked article body. Defaults to the active locale. */
+  contentLocale?: string
   /** Pre-translated reading-time string, e.g. "12 min read" */
   readingLabel: string
   /** View count injected client-side; shown only when >= 100 */
@@ -39,6 +42,7 @@ export default function BlogPostCard({
   accent,
   categoryTitle,
   locale,
+  contentLocale = locale,
   readingLabel,
   viewCount,
   viewsLabel,
@@ -48,6 +52,7 @@ export default function BlogPostCard({
     <article className={`blog-card blog-card--${accent}`}>
       <Link
         href={`/blog/${post.category}/${post.slug}`}
+        locale={contentLocale}
         className="blog-card__link"
         onClick={() => {
           track('blog_card_click', {

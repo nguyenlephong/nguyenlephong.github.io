@@ -12,6 +12,11 @@ import Projects from '@/components/cv/Projects'
 import ContactCTA from '@/components/cv/ContactCTA'
 import PageViewTracker from '@/components/PageViewTracker'
 import PageTracker from '@/components/analytics/PageTracker'
+import type { Locale } from '@/i18n/routing'
+import {
+  buildPersonSchema,
+  buildProfilePageSchema,
+} from '@/lib/seo/profile-schema'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -27,9 +32,22 @@ export default async function MainPage({ params }: Props) {
   setRequestLocale(locale)
 
   const t = await getTranslations('Sections')
+  const seoT = await getTranslations({ locale, namespace: 'SEO.home' })
+  const title = seoT('title')
+  const description = seoT('description')
+  const personSchema = buildPersonSchema(description)
+  const profilePageSchema = buildProfilePageSchema(locale as Locale, title, description)
 
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
+      />
       <PageViewTracker />
       <PageTracker page="home" eventName="page_view" section="cv_main" />
       <div className="container">

@@ -3,14 +3,15 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { routing, type Locale } from "@/i18n/routing";
+import { LOCALE_LABELS, routing, type Locale } from "@/i18n/routing";
 import { SITE, SITE_URL } from "@/app/seo.config";
 import {
   OG_LOCALE_MAP,
   buildDescription,
   canonicalFor,
   htmlToPlainText,
-  localeAlternates
+  localeAlternates,
+  preferredContentLocale
 } from "@/lib/blog/seo";
 import {
   getTopic,
@@ -28,6 +29,7 @@ import BlogShareDock from "@/components/blog/BlogShareDock";
 import BlogReactions from "@/components/blog/BlogReactions";
 import BlogReadingTracker from "@/components/blog/BlogReadingTracker";
 import { EngagementProvider } from "@/components/blog/EngagementProvider";
+import LocalizedArticleFallback from "@/components/content/LocalizedArticleFallback";
 import "../notes.css";
 import "../../blog/blog.css";
 
@@ -51,23 +53,28 @@ function formatDate(iso: string, locale: string): string {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const note = loadNote(slug, locale);
-  if (!note) return { title: "Not found" };
   const contentLocales = getNoteContentLocales(slug);
-  const indexable = contentLocales.includes(locale);
-  const canonicalLocale = indexable ? locale : "en";
+  const hasLocalizedContent = contentLocales.includes(locale as Locale);
+  const canonicalLocale = hasLocalizedContent
+    ? (locale as Locale)
+    : preferredContentLocale(contentLocales);
+  const note = loadNote(slug, canonicalLocale);
+  if (!note) return { title: "Not found" };
 
   const title = note.title;
-  const description = note.summary || buildDescription(note.html);
+  const description = buildDescription(note.summary || note.html);
   const canonical = canonicalFor(canonicalLocale, `/notes/${slug}`);
   const imageUrl = noteOgImageUrl(slug);
   const languages = localeAlternates(`/notes/${slug}`, contentLocales);
 
   return {
-    title,
+    title: { absolute: title },
     description,
     keywords: note.tags,
-    alternates: { canonical, languages },
+    alternates: {
+      canonical,
+      ...(hasLocalizedContent ? { languages } : {})
+    },
     openGraph: {
       type: "article",
       url: canonical,
@@ -75,8 +82,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       siteName: SITE.name,
       locale: OG_LOCALE_MAP[canonicalLocale as Locale] ?? OG_LOCALE_MAP.en,
+      alternateLocale: contentLocales
+        .filter((contentLocale) => contentLocale !== canonicalLocale)
+        .map((contentLocale) => OG_LOCALE_MAP[contentLocale]),
       publishedTime: note.date,
-      modifiedTime: note.updated ?? note.date,
+      ...(note.updated ? { modifiedTime: note.updated } : {}),
       authors: [SITE_URL],
       tags: note.tags,
       images: [{ url: imageUrl, width: 1200, height: 630, alt: title }]
@@ -88,11 +98,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       site: SITE.twitter,
       creator: SITE.twitter,
       images: [imageUrl]
-    },
-    robots: {
-      index: indexable,
-      follow: true,
-      googleBot: { index: indexable, follow: true, "max-image-preview": "large" }
     }
   };
 }
@@ -102,11 +107,41 @@ export default async function NotePage({ params }: Props) {
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
 
-  const note = loadNote(slug, locale);
-  if (!note) notFound();
   const contentLocales = getNoteContentLocales(slug);
-  const indexable = contentLocales.includes(locale);
-  const canonicalLocale = indexable ? locale : "en";
+  const requestedLocale = locale as Locale;
+  const hasLocalizedContent = contentLocales.includes(requestedLocale);
+  const canonicalLocale = hasLocalizedContent
+    ? requestedLocale
+    : preferredContentLocale(contentLocales);
+  const note = loadNote(slug, canonicalLocale);
+  if (!note) notFound();
+
+  if (!hasLocalizedContent) {
+    const fallbackT = await getTranslations({
+      locale,
+      namespace: "ContentFallback"
+    });
+    return (
+      <LocalizedArticleFallback
+        articlePath={`/notes/${slug}`}
+        availableVariants={contentLocales.map((contentLocale) => ({
+          label: fallbackT("action", {
+            language: LOCALE_LABELS[contentLocale].name
+          }),
+          locale: contentLocale
+        }))}
+        className="blog-article blog-article--ocean notes-accent notes-reading"
+        requestedLocale={requestedLocale}
+        slug={slug}
+        surface="notes"
+        title={note.title}
+        labels={{
+          description: fallbackT("description"),
+          eyebrow: fallbackT("eyebrow")
+        }}
+      />
+    );
+  }
 
   const t = await getTranslations({ locale, namespace: "Pages.notes" });
   const canonical = canonicalFor(canonicalLocale, `/notes/${slug}`);
@@ -177,14 +212,18 @@ export default async function NotePage({ params }: Props) {
     image: imageUrl,
     mainEntityOfPage: canonical,
     datePublished: note.date,
-    dateModified: note.updated ?? note.date,
+    ...(note.updated ? { dateModified: note.updated } : {}),
     keywords: note.tags.join(", "),
-    author: {
-      "@type": "Person",
-      "@id": `${SITE_URL}/#person`,
-      name: "Nguyen Le Phong",
-      url: SITE_URL
-    },
+    ...(note.author
+      ? {
+          author: {
+            "@type": "Person",
+            "@id": `${SITE_URL}/#person`,
+            name: note.author,
+            url: SITE_URL
+          }
+        }
+      : {}),
     ...(note.book
       ? {
           about: {

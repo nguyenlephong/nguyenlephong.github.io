@@ -440,11 +440,14 @@
         "clear": "필터 지우기",
         "results": "{count, plural, =0 {노트가 없습니다} other {# 개의 노트}}",
         "noResults": "검색과 일치하는 노트가 없습니다.",
+        "searchUnavailable": "검색을 일시적으로 사용할 수 없습니다. 아래 페이지를 계속 둘러볼 수 있습니다.",
         "pagination": {
           "label": "노트 페이지",
           "prev": "이전",
           "next": "다음",
-          "goToPage": "{page} 페이지로 이동"
+          "goToPage": "{page} 페이지로 이동",
+          "pageLabel": "전체 {total}페이지 중 {page}페이지",
+          "pageDescription": "노트 아카이브 {page}/{total}페이지에서 삶과 일, 계속 생각해 보는 질문에 관한 기록을 읽어 보세요."
         }
       },
       "engagement": {
@@ -473,11 +476,14 @@
         "clear": "필터 지우기",
         "results": "{count, plural, =0 {글이 없습니다} other {# 개의 글}}",
         "noResults": "검색과 일치하는 글이 없습니다.",
+        "searchUnavailable": "검색을 일시적으로 사용할 수 없습니다. 아래 페이지를 계속 둘러볼 수 있습니다.",
         "pagination": {
           "label": "블로그 페이지",
           "prev": "이전",
           "next": "다음",
-          "goToPage": "{page} 페이지로 이동"
+          "goToPage": "{page} 페이지로 이동",
+          "pageLabel": "전체 {total}페이지 중 {page}페이지",
+          "pageDescription": "블로그 {page}/{total}페이지에서 소프트웨어 아키텍처, 소스 코드, AI, 엔지니어링 협업에 관한 실용적인 글을 읽어 보세요."
         }
       },
       "eyebrow": "글",
@@ -527,5 +533,10 @@
         "close": "닫기"
       }
     }
+  },
+  "ContentFallback": {
+    "eyebrow": "번역을 준비하고 있습니다",
+    "description": "이 언어의 전체 글은 아직 준비되지 않았습니다. 아래에서 제공되는 언어로 계속 읽을 수 있습니다.",
+    "action": "{language}로 읽기"
   }
 }
