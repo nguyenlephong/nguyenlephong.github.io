@@ -263,6 +263,13 @@ SEO is a first-class part of the app.
 | Sitemap                | `src/app/sitemap.ts`                | Locale-aware static route, blog, and notes URL generation.                                    |
 | Robots                 | `src/app/robots.ts`                 | Allows public pages, blocks `/private`, `/api`, and localized `/heartbeats`.                  |
 | OpenGraph image routes | `src/app/**/opengraph-image.tsx`    | Dynamic social images rendered during static export.                                          |
+| Artifact SEO verifier  | `scripts/verify-static-artifact.mjs`| Checks exported sitemap URLs, canonicals, titles, descriptions, language metadata, and robots. |
+
+The artifact verifier works against the generated `out/` directory rather than
+source-code patterns. Every sitemap URL must resolve to exported HTML, use the
+configured HTTPS origin, have one matching canonical URL, remain indexable, and
+include a title, description, and document language. Sitemap alternates must
+also point to an indexable URL in the same sitemap.
 
 ### OpenGraph Build Flow
 
@@ -419,6 +426,7 @@ Current test focus:
 npm run build
 npm run build:fast
 npm run build:og
+npm run verify:artifact
 ```
 
 | Command      | Meaning                                                               |
@@ -426,30 +434,94 @@ npm run build:og
 | `build`      | Full static export with full OG generation.                           |
 | `build:fast` | Static export with dynamic OG generation skipped/restored from cache. |
 | `build:og`   | Targeted OG build helper.                                             |
+| `verify:artifact` | Verifies output size, route assets, SEO output, and public-secret guardrails without rebuilding. |
+
+`config/static-artifact-budgets.json` contains the Phase 1 artifact limits. The
+initial limits deliberately sit close to the measured export so new growth is
+visible while route and content duplication are reduced:
+
+| Budget | Phase 1 limit |
+|--------|---------------|
+| Total artifact | 850 MiB |
+| Total files | 24,000 |
+| Largest HTML file | 430 KiB |
+| Largest JavaScript file | 1.35 MiB |
+| Largest CSS file | 210 KiB |
+| JavaScript referenced by one route | 2.2 MiB |
+| CSS referenced by one route | 220 KiB |
+| Sitemap URL floor | 824 |
+
+The verifier warns at 90 percent of the total-byte and file-count limits. These
+are temporary ceilings, not performance targets. Tighten them after the
+locale-route and Studio bundle work reduces the baseline. All recognized public
+text formats, including exported HTML and Next RSC `.txt` payloads, are scanned
+with bounded concurrency for high-confidence private keys and provider tokens.
+A PEM finding requires a complete header, credible base64 payload, and matching
+footer; a documentation-only header is not treated as a leak. Route-asset
+budgets sample the home, blog, notes, and Studio entry points across English,
+Vietnamese, Chinese, Japanese, Korean, and French routes. Individual file limits
+still cover every emitted HTML, JavaScript, and CSS file.
+
+The SEO gate keeps the current 824-URL sitemap baseline, requires core public
+routes for every supported locale, validates every sitemap URL against its
+exported canonical HTML, and performs the reverse check for self-canonical,
+indexable HTML. Firebase web configuration remains allowed because it is a
+public client identifier; authorization still belongs in Firebase Rules and
+App Check.
 
 ### Deploy Commands
 
+After the control-plane migration below, the authoritative deployment path is
+`.github/workflows/nextjs.yml`. A push to `main` runs source checks, performs one
+full production build, verifies the artifact, uploads it with the supported
+GitHub Pages artifact action, and then deploys that exact verified artifact.
+The repository's Pages source must be set to **GitHub Actions** for that deploy
+job to become authoritative.
+
+The old branch publisher remains available only as an explicit emergency
+fallback:
+
 ```bash
-npm run deploy
-npm run deploy:fast
-npm run deploy:og
+npm run build
+npm run deploy:legacy
 ```
 
-The deploy scripts publish `out/` with `gh-pages`. `predeploy` bumps
-`app-version.json` and runs a full build through Bun:
+`deploy:legacy` requires the opt-in set by its npm script and force-with-lease
+publishes the existing `out/` directory to `gh-pages`. After its final cleanup,
+the publisher always runs `verify:artifact` on that exact tree before staging
+and pushing it. The target branch is fixed: any `PAGES_BRANCH` environment
+override is rejected. It is not a normal release path.
+`deploy:legacy:build` additionally bumps `app-version.json` and performs the
+full build. `npm run fb-deploy` uses the same fixed artifact verifier immediately
+before publishing `out/` to Firebase Hosting. CI and deployment both use npm
+and Node 20.
 
-```bash
-node scripts/bump-version.mjs && bun run build
-```
+Merging this change does **not** mutate the repository's live Pages setting. At
+the time of this migration, GitHub Pages still uses the legacy branch source.
+Perform the control-plane migration after the PR is merged:
 
-CI uses npm and Node 20.
+1. Leave the existing `gh-pages` deployment serving traffic while the PR lands.
+2. Open **Settings → Environments → github-pages → Deployment branches and
+   tags**, choose **Selected branches and tags**, and allow only `main`. The
+   workflow also checks `github.ref == 'refs/heads/main'`, including manual
+   dispatches, but the environment policy is the independent deployment guard.
+3. Change **Settings → Pages → Build and deployment → Source** to
+   **GitHub Actions** (API `build_type: workflow`).
+4. Manually dispatch `nextjs.yml` from `main`, wait for its verified artifact to deploy,
+   and validate the public canonical URLs and `sitemap.xml`.
+5. If deployment fails, switch the Pages source back to the `gh-pages` branch;
+   the guarded legacy publisher remains available until the migration is
+   confirmed.
+6. After the rollback window, remove the `gh-pages` branch deliberately. The
+   source switch does not delete that branch or its last published tree, so it
+   remains a live legacy residual until this explicit cleanup is completed.
 
 ### GitHub Actions
 
 | Workflow                            | Trigger                           | Responsibility                                                      |
 |-------------------------------------|-----------------------------------|---------------------------------------------------------------------|
-| `.github/workflows/ci-frontend.yml` | Pull requests and pushes to `dev` | Type-check, lint, tests, fast smoke build.                          |
-| `.github/workflows/nextjs.yml`      | Pushes to `master`                | Full build, cache OG images, upload `out/`, deploy to GitHub Pages. |
+| `.github/workflows/ci-frontend.yml` | Pull requests and pushes to `dev` | Type-check, lint, tests, one fast smoke build, artifact/SEO verification, and offline browser verification. |
+| `.github/workflows/nextjs.yml`      | Pushes to `main` or manual dispatch from `main` | Source checks, one full build, artifact/SEO/offline verification, official Pages artifact upload and deployment. |
 
 ## 13. Deployment View
 
@@ -459,11 +531,13 @@ Main deployment path:
 
 1. Developer commits source and content.
 2. GitHub Actions installs dependencies with Node 20.
-3. Next.js builds a static export into `out/`.
-4. OG images are generated, cached, renamed, and linked as `.png`.
-5. GitHub Pages publishes `out/`.
-6. Visitor browsers load static files and optional external scripts.
-7. Browser-side engagement calls go to Firebase Firestore.
+3. Source quality checks run before publication.
+4. Next.js performs one full static export into `out/`.
+5. OG images are generated, cached, renamed, and linked as `.png`.
+6. Architecture, SEO, and public-secret budgets verify the generated artifact.
+7. GitHub Actions uploads and deploys that exact artifact to GitHub Pages.
+8. Visitor browsers load static files and optional external scripts.
+9. Browser-side engagement calls go to Firebase Firestore.
 
 `firebase.json` also points hosting at `out/`, so Firebase Hosting can serve the
 same static export if used.

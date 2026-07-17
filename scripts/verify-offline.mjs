@@ -3,12 +3,15 @@ import assert from 'node:assert/strict'
 import { createServer } from 'node:http'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const ROOT = process.cwd()
 const OUT_DIR = path.join(ROOT, 'out')
 const HOST = '127.0.0.1'
 const PORT = Number(process.env.OFFLINE_VERIFY_PORT ?? '4173')
 const LOCALE = process.env.OFFLINE_VERIFY_LOCALE ?? 'en'
+const SIBLING_ASSET_PATH = '/dom-pub/offline-probe.js'
+const SIBLING_ASSET_BODY = 'sibling-project-network-response'
 
 const CONTENT_TYPES = {
   '.css': 'text/css; charset=utf-8',
@@ -33,8 +36,19 @@ function hasExtension(value) {
   return path.posix.extname(value) !== ''
 }
 
-function routeCandidates(requestPath) {
-  const clean = decodeURIComponent(requestPath.split('?')[0] || '/')
+function isPathInside(parentPath, candidatePath) {
+  const relative = path.relative(parentPath, candidatePath)
+  return relative !== '' && !relative.startsWith('..') && !path.isAbsolute(relative)
+}
+
+export function routeCandidates(requestPath) {
+  let clean
+  try {
+    clean = decodeURIComponent(requestPath.split('?')[0] || '/')
+  } catch {
+    return []
+  }
+  if (clean.includes('\0')) return []
 
   if (clean === '/') return ['/index.html']
   if (hasExtension(clean)) return [clean]
@@ -43,13 +57,17 @@ function routeCandidates(requestPath) {
   return [`${normalized}.html`, `${normalized}/index.html`]
 }
 
-async function resolveFile(requestPath) {
+export async function resolveFile(requestPath, outDir = OUT_DIR) {
+  const outRealPath = await fs.realpath(outDir)
   for (const candidate of routeCandidates(requestPath)) {
     const relative = candidate.replace(/^\/+/, '')
-    const fullPath = path.join(OUT_DIR, relative)
+    const fullPath = path.resolve(outRealPath, relative)
+    if (!isPathInside(outRealPath, fullPath)) continue
     try {
-      const stats = await fs.stat(fullPath)
-      if (stats.isFile()) return fullPath
+      const realPath = await fs.realpath(fullPath)
+      if (!isPathInside(outRealPath, realPath)) continue
+      const stats = await fs.stat(realPath)
+      if (stats.isFile()) return realPath
     } catch {
       // Try the next candidate.
     }
@@ -62,11 +80,27 @@ function contentTypeFor(filePath) {
 }
 
 async function startStaticServer() {
+  let originOffline = false
   const server = createServer(async (req, res) => {
+    if (originOffline) {
+      req.socket.destroy()
+      return
+    }
+
     const method = req.method ?? 'GET'
     if (method !== 'GET' && method !== 'HEAD') {
       res.writeHead(405)
       res.end()
+      return
+    }
+
+    if ((req.url ?? '').split('?')[0] === SIBLING_ASSET_PATH) {
+      res.writeHead(200, {
+        'Content-Type': 'text/javascript; charset=utf-8',
+        'Content-Length': String(Buffer.byteLength(SIBLING_ASSET_BODY)),
+        'Cache-Control': 'no-store',
+      })
+      res.end(method === 'HEAD' ? undefined : SIBLING_ASSET_BODY)
       return
     }
 
@@ -81,7 +115,8 @@ async function startStaticServer() {
     res.writeHead(200, {
       'Content-Type': contentTypeFor(filePath),
       'Content-Length': String(body.byteLength),
-      'Cache-Control': 'no-cache',
+      // Browser HTTP cache must not mask service-worker cache behavior.
+      'Cache-Control': 'no-store',
     })
 
     if (method === 'HEAD') {
@@ -97,7 +132,12 @@ async function startStaticServer() {
     server.listen(PORT, HOST, () => resolve(undefined))
   })
 
-  return server
+  return {
+    server,
+    setOriginOffline(value) {
+      originOffline = value
+    },
+  }
 }
 
 async function assertArtifacts() {
@@ -128,11 +168,41 @@ async function assertArtifacts() {
   assert.match(swSource, /offline-remote/)
   assert.match(swSource, /pageVersions/)
   assert.match(swSource, /__offlineVersion/)
+  assert.ok(swSource.includes(`const OFFLINE_VERSION = ${JSON.stringify(manifest.version)};`))
+  assert.ok(
+    swSource.includes('const CONTENT_CACHE = `${CONTENT_CACHE_PREFIX}${OFFLINE_VERSION}`;'),
+    'content cache should be isolated by manifest version',
+  )
+  assert.match(swSource, /key\.startsWith\(CONTENT_CACHE_PREFIX\) && key !== CONTENT_CACHE/)
+  assert.match(swSource, /key\.startsWith\(REMOTE_CACHE_PREFIX\) && key !== REMOTE_CACHE/)
+  assert.match(swSource, /const REMOTE_CACHE = `\$\{REMOTE_CACHE_PREFIX\}\$\{OFFLINE_VERSION\}`/)
+  assert.match(swSource, /isExplicitlyVersionedRemoteUrl/)
+  assert.match(swSource, /networkFirst\(request, REMOTE_CACHE, url\.href\)/)
+  const remoteAllowlistIndex = swSource.indexOf('if (OWNED_REMOTE_URLS.has(url.href))')
+  const genericSameOriginIndex = swSource.indexOf('if (url.origin === self.location.origin)')
+  assert.ok(remoteAllowlistIndex >= 0, 'service worker should handle exact remote allowlist entries')
+  assert.ok(
+    remoteAllowlistIndex < genericSameOriginIndex,
+    'exact dom-pub allowlisting must run before the generic same-origin sibling guard',
+  )
+  assert.ok(manifest.shared.remoteAssets.length > 0, 'offline manifest should include remote asset allowlist entries')
+  assert.match(swSource, /assertManifestVersion\(manifest, OFFLINE_VERSION\)/)
+  assert.match(swSource, /const cached = await shellCache\.match\('\/offline-manifest\.json'\)/)
+  assert.match(swSource, /fetchWithTimeout\('\/offline-manifest\.json'/)
+  assert.doesNotMatch(swSource, /OFFLINE_WARM_LOCALE/)
+  const ownedPathsMatch = swSource.match(/const OWNED_SAME_ORIGIN_PATHS = new Set\((\[[^;]+\])\);/)
+  assert.ok(ownedPathsMatch, 'service worker should embed its exact same-origin ownership list')
+  const ownedPaths = JSON.parse(ownedPathsMatch[1])
+  assert.equal(
+    ownedPaths.some((ownedPath) => ownedPath.startsWith('/dom-pub/')),
+    false,
+    'sibling-project paths must not be owned by the root-scoped worker',
+  )
   assert.match(homeHtml, new RegExp(`<meta\\s+name="offline-manifest-version"\\s+content="${manifest.version}"`))
   assert.equal(webManifest.start_url, '/en')
 }
 
-async function verifyBrowserFlow() {
+async function verifyBrowserFlow(setOriginOffline) {
   const { chromium } = await import('playwright')
   const browser = await chromium.launch({ headless: true })
   const context = await browser.newContext()
@@ -140,11 +210,33 @@ async function verifyBrowserFlow() {
   const baseUrl = `http://${HOST}:${PORT}`
   const startPath = `/${LOCALE}/blog`
   const warmPath = `/${LOCALE}/notes`
-  const probePath = `/${LOCALE}/offline-probe`
-  const storageKey = `offline-locale-state:v2:${LOCALE}`
+  const fallbackPath = `/${LOCALE}/apps/english`
+  const siblingPath = '/dom-pub/offline-probe'
+
+  const waitForCachedNavigation = (pathname) =>
+    page.waitForFunction(
+      async (pathToMatch) => {
+        const manifest = await fetch('/offline-manifest.json', {
+          cache: 'no-store',
+        }).then((response) => response.json())
+        const clean = pathToMatch.replace(/\/+$/, '')
+        const candidates = [`${clean}.html`, `${clean}/index.html`]
+
+        for (const candidate of candidates) {
+          const version = manifest.shared?.pageVersions?.[candidate]
+          const cacheKey = version ? `${candidate}?__offlineVersion=${encodeURIComponent(version)}` : candidate
+          if (await caches.match(cacheKey)) return true
+        }
+        return false
+      },
+      pathname,
+      { timeout: 30000 },
+    )
 
   try {
-    await page.goto(`${baseUrl}${startPath}`, { waitUntil: 'domcontentloaded' })
+    await page.goto(`${baseUrl}${startPath}`, {
+      waitUntil: 'domcontentloaded',
+    })
     const onlineTitle = await page.title()
     assert.ok(onlineTitle.length > 0, 'expected the online page to render a title')
 
@@ -161,51 +253,196 @@ async function verifyBrowserFlow() {
     await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller), {
       timeout: 30000,
     })
-    await page.waitForFunction(
-      (key) => {
-        const raw = window.localStorage.getItem(key)
-        if (!raw) return false
-        try {
-          const parsed = JSON.parse(raw)
-          return (
-            (parsed.phase === 'reading' || parsed.phase === 'extended') &&
-            parsed.completeness === 'complete'
-          )
-        } catch {
-          return false
+    await waitForCachedNavigation(startPath)
+
+    const allowlistedRemoteUrl = await page.evaluate(async () => {
+      const manifest = await fetch('/offline-manifest.json', { cache: 'no-store' }).then((response) => response.json())
+      return manifest.shared?.remoteAssets?.[0] ?? null
+    })
+    assert.equal(typeof allowlistedRemoteUrl, 'string')
+    const allowlistedRemoteOnline = await page.evaluate(async (assetUrl) => {
+      const response = await fetch(assetUrl, { cache: 'no-store' })
+      const body = await response.arrayBuffer()
+      return {
+        ok: response.ok,
+        bytes: body.byteLength,
+        cached: Boolean(await caches.match(assetUrl)),
+      }
+    }, allowlistedRemoteUrl)
+    assert.equal(allowlistedRemoteOnline.ok, true)
+    assert.ok(allowlistedRemoteOnline.bytes > 0)
+    assert.equal(allowlistedRemoteOnline.cached, true, 'exactly allowlisted dom-pub asset should enter remote cache')
+
+    const siblingAssetResult = await page.evaluate(
+      async ({ siblingAssetPath, expectedBody }) => {
+        const response = await fetch(siblingAssetPath, { cache: 'no-store' })
+        const body = await response.text()
+        return {
+          body,
+          cached: Boolean(await caches.match(siblingAssetPath)),
+          expectedBody,
         }
       },
-      storageKey,
-      { timeout: 60000 },
+      { siblingAssetPath: SIBLING_ASSET_PATH, expectedBody: SIBLING_ASSET_BODY },
+    )
+    assert.equal(siblingAssetResult.body, siblingAssetResult.expectedBody)
+    assert.equal(
+      siblingAssetResult.cached,
+      false,
+      'same-origin sibling assets must pass through without entering offline caches',
     )
 
+    const queryVariantResult = await page.evaluate(async () => {
+      const pathWithQuery = '/offline-manifest.json?untrusted-cache-variant=1'
+      const response = await fetch(pathWithQuery, { cache: 'no-store' })
+      return {
+        ok: response.ok,
+        cached: Boolean(await caches.match(pathWithQuery)),
+      }
+    })
+    assert.equal(queryVariantResult.ok, true)
+    assert.equal(
+      queryVariantResult.cached,
+      false,
+      'arbitrary query variants of owned assets must pass through without multiplying cache keys',
+    )
+
+    // Only explicitly visited routes are warmed by default. This keeps the
+    // offline footprint bounded instead of downloading an entire locale.
+    await page.goto(`${baseUrl}${warmPath}`, { waitUntil: 'domcontentloaded' })
+    await waitForCachedNavigation(warmPath)
+    await page.goto(`${baseUrl}${startPath}?utm_source=offline-verifier`, {
+      waitUntil: 'domcontentloaded',
+    })
+
+    setOriginOffline(true)
     await context.setOffline(true)
 
-    await page.goto(`${baseUrl}${startPath}`, { waitUntil: 'domcontentloaded' })
+    const gotoOfflineDocument = async (pathname) => {
+      await page.goto(`${baseUrl}${pathname}`, {
+        waitUntil: 'commit',
+        timeout: 15000,
+      })
+      await page.waitForFunction(() => document.title.length > 0, null, { timeout: 10000 })
+    }
+
+    const siblingAssetAvailableOffline = await page.evaluate(async (siblingAssetPath) => {
+      try {
+        await fetch(siblingAssetPath, { cache: 'no-store' })
+        return true
+      } catch {
+        return false
+      }
+    }, SIBLING_ASSET_PATH)
     assert.equal(
-      await page.title(),
-      onlineTitle,
-      'expected a previously opened page to render from offline cache',
+      siblingAssetAvailableOffline,
+      false,
+      'same-origin sibling assets must not be served from this site offline cache',
     )
 
-    await Promise.all([
-      page.waitForURL(`${baseUrl}${warmPath}`, { timeout: 30000 }),
-      page.locator(`a[href="/${LOCALE}/notes"]`).first().click(),
-    ])
+    const allowlistedRemoteOffline = await page.evaluate(async (assetUrl) => {
+      const response = await fetch(assetUrl, { cache: 'no-store' })
+      const body = await response.arrayBuffer()
+      return { ok: response.ok, bytes: body.byteLength }
+    }, allowlistedRemoteUrl)
+    assert.equal(allowlistedRemoteOffline.ok, true)
+    assert.equal(
+      allowlistedRemoteOffline.bytes,
+      allowlistedRemoteOnline.bytes,
+      'exactly allowlisted dom-pub asset should remain available from remote cache offline',
+    )
+
+    await gotoOfflineDocument(startPath)
+    assert.equal(await page.title(), onlineTitle, 'expected a previously opened page to render from offline cache')
+
+    // Use a document navigation so this assertion isolates service-worker
+    // behavior from Next.js client-router prefetch and transition timing.
+    await gotoOfflineDocument(warmPath)
     const warmedTitle = await page.title()
     assert.ok(
       !/offline|ngoại tuyến|hors ligne/i.test(warmedTitle),
       'expected an offline internal link to fall back to the warmed HTML route',
     )
 
-    await page.goto(`${baseUrl}${probePath}`, { waitUntil: 'domcontentloaded' })
+    const fallbackCacheProbe = await page.evaluate(async (locale) => {
+      const manifest = await caches.match('/offline-manifest.json').then((response) => response?.json())
+      const fallbackUrl = `/${locale}/offline.html`
+      const version = manifest?.shared?.pageVersions?.[fallbackUrl]
+      const cacheKey = version ? `${fallbackUrl}?__offlineVersion=${encodeURIComponent(version)}` : fallbackUrl
+      return {
+        cacheKey,
+        cached: Boolean(await caches.match(cacheKey)),
+        controller: navigator.serviceWorker.controller?.scriptURL ?? null,
+      }
+    }, LOCALE)
     assert.equal(
-      await page.locator('.offline-page-shell').isVisible(),
+      fallbackCacheProbe.cached,
       true,
-      'expected an unknown page to fall back to the offline route when offline',
+      `offline fallback must be present in the shell cache; received ${JSON.stringify(fallbackCacheProbe)}`,
+    )
+
+    const uncachedRouteProbe = await page.evaluate(async (pathname) => {
+      const manifest = await caches.match('/offline-manifest.json').then((response) => response?.json())
+      const clean = pathname.replace(/\/+$/, '')
+      const candidates = [`${clean}.html`, `${clean}/index.html`]
+      const keys = await caches.keys()
+      for (const candidate of candidates) {
+        const version = manifest?.shared?.pageVersions?.[candidate]
+        const versioned = version ? `${candidate}?__offlineVersion=${encodeURIComponent(version)}` : candidate
+        for (const cacheName of keys) {
+          const cache = await caches.open(cacheName)
+          await cache.delete(candidate)
+          await cache.delete(versioned)
+        }
+      }
+      return Promise.all(
+        candidates.map(async (candidate) => {
+          const version = manifest?.shared?.pageVersions?.[candidate]
+          const versioned = version ? `${candidate}?__offlineVersion=${encodeURIComponent(version)}` : candidate
+          return Boolean((await caches.match(candidate)) || (await caches.match(versioned)))
+        }),
+      )
+    }, fallbackPath)
+    assert.deepEqual(uncachedRouteProbe, [false, false], 'fallback probe route must be explicitly uncached')
+
+    await gotoOfflineDocument(`${fallbackPath}?offline-probe=${Date.now()}`)
+    const fallbackVisible = await page
+      .locator('.offline-page-shell')
+      .waitFor({ state: 'visible', timeout: 10000 })
+      .then(() => true)
+      .catch(() => false)
+    const fallbackState = {
+      visible: fallbackVisible,
+      url: page.url(),
+      title: await page.title(),
+      fallbackCacheProbe,
+    }
+    assert.equal(
+      fallbackState.visible,
+      true,
+      `expected an owned but uncached page to fall back to the offline route; received ${JSON.stringify(fallbackState)}`,
     )
     assert.match(await page.title(), /offline|ngoại tuyến|hors ligne/i)
+
+    const siblingPage = await context.newPage()
+    let siblingNavigationFailed = false
+    try {
+      await siblingPage.goto(`${baseUrl}${siblingPath}`, {
+        waitUntil: 'domcontentloaded',
+        timeout: 10000,
+      })
+    } catch {
+      siblingNavigationFailed = true
+    } finally {
+      await siblingPage.close()
+    }
+    assert.equal(
+      siblingNavigationFailed,
+      true,
+      'the root service worker must not return this site fallback for sibling project routes',
+    )
   } finally {
+    setOriginOffline(false)
     await context.close()
     await browser.close()
   }
@@ -215,9 +452,9 @@ async function main() {
   await fs.access(OUT_DIR)
   await assertArtifacts()
 
-  const server = await startStaticServer()
+  const { server, setOriginOffline } = await startStaticServer()
   try {
-    await verifyBrowserFlow()
+    await verifyBrowserFlow(setOriginOffline)
   } finally {
     await new Promise((resolve, reject) => {
       server.close((error) => {
@@ -233,7 +470,9 @@ async function main() {
   console.log('[verify-offline] artifacts and browser offline flow look good')
 }
 
-main().catch((error) => {
-  console.error('[verify-offline] failed:', error)
-  process.exit(1)
-})
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error('[verify-offline] failed:', error)
+    process.exit(1)
+  })
+}

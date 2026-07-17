@@ -2,6 +2,7 @@
 import { createHash } from 'node:crypto'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 const ROOT = process.cwd()
 const OUT_DIR = path.resolve(ROOT, 'out')
@@ -99,10 +100,7 @@ function isReadingAsset(relativePath) {
 }
 
 function isExtendedAsset(relativePath) {
-  return (
-    relativePath.startsWith('assets/photos/') ||
-    relativePath === 'assets/full-bg.svg'
-  )
+  return relativePath.startsWith('assets/photos/') || relativePath === 'assets/full-bg.svg'
 }
 
 function isCoreSharedFile(relativePath) {
@@ -160,26 +158,57 @@ async function readRemoteGalleryAssets() {
   return uniqueSorted(remoteAssets)
 }
 
-async function buildPageVersions(relativeFiles) {
-  const pageVersions = {}
+function stripOfflineManifestVersion(html) {
+  const metaPattern = new RegExp(
+    `[ \\t]*<meta\\s+name=["']${OFFLINE_MANIFEST_VERSION_META}["'][^>]*>\\r?\\n?`,
+    'gi',
+  )
+  return html.replace(metaPattern, '')
+}
+
+export function pageVersionForHtml(relativePath, html) {
+  return hashRecord({
+    relativePath: toPosix(relativePath),
+    html: stripOfflineManifestVersion(html),
+  })
+}
+
+export function assertManifestVersion(manifest, expectedVersion) {
+  if (manifest?.version !== expectedVersion) {
+    throw new Error(
+      'offline manifest version mismatch: expected ' +
+        expectedVersion +
+        ', received ' +
+        String(manifest?.version),
+    )
+  }
+  return manifest
+}
+
+export async function buildPageVersions(relativeFiles) {
   const htmlFiles = relativeFiles
     .filter((relativePath) => relativePath.endsWith('.html'))
     .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
+  const entries = new Array(htmlFiles.length)
 
-  await mapWithConcurrency(htmlFiles, htmlFileConcurrency(), async (relativePath) => {
+  await mapWithConcurrency(htmlFiles, htmlFileConcurrency(), async (relativePath, index) => {
     const fullPath = path.join(OUT_DIR, relativePath)
-    const stats = await fs.stat(fullPath)
-    pageVersions[routeUrlFromOutFile(relativePath)] = hashRecord({
-      relativePath,
-      size: stats.size,
-      mtimeMs: Math.trunc(stats.mtimeMs),
-    })
+    const html = await fs.readFile(fullPath, 'utf8')
+    entries[index] = [routeUrlFromOutFile(relativePath), pageVersionForHtml(relativePath, html)]
   })
 
-  return pageVersions
+  return Object.fromEntries(entries)
 }
 
-function buildManifestVersion({ appVersion, shell, readingData, readingAssets, extendedAssets, remoteAssets, pageVersions }) {
+function buildManifestVersion({
+  appVersion,
+  shell,
+  readingData,
+  readingAssets,
+  extendedAssets,
+  remoteAssets,
+  pageVersions,
+}) {
   return hashRecord({
     appVersion,
     shell,
@@ -193,10 +222,7 @@ function buildManifestVersion({ appVersion, shell, readingData, readingAssets, e
 
 function injectOfflineManifestVersion(html, version) {
   const metaTag = `<meta name="${OFFLINE_MANIFEST_VERSION_META}" content="${version}">`
-  const metaPattern = new RegExp(
-    `<meta\\s+name=["']${OFFLINE_MANIFEST_VERSION_META}["'][^>]*>`,
-    'i',
-  )
+  const metaPattern = new RegExp(`<meta\\s+name=["']${OFFLINE_MANIFEST_VERSION_META}["'][^>]*>`, 'i')
 
   if (metaPattern.test(html)) {
     return html.replace(metaPattern, metaTag)
@@ -224,22 +250,43 @@ async function writeOfflineManifestVersion(relativeFiles, version) {
   })
 }
 
-function buildServiceWorkerSource(version) {
+function buildOwnedSameOriginPaths(manifest) {
+  const paths = [
+    ...(manifest.shared?.shell ?? []),
+    ...(manifest.shared?.readingData ?? []),
+    ...(manifest.shared?.readingAssets ?? []),
+    ...(manifest.shared?.extendedAssets ?? []),
+    ...Object.values(manifest.locales ?? {}).flat(),
+  ]
+  return uniqueSorted(paths.filter((url) => url.startsWith('/')))
+}
+
+function buildServiceWorkerSource(manifest) {
+  const version = manifest.version
+  const ownedSameOriginPaths = buildOwnedSameOriginPaths(manifest)
+  const ownedRemoteUrls = uniqueSorted((manifest.shared?.remoteAssets ?? []).filter((url) => /^https?:\/\//i.test(url)))
+
   return `/* eslint-disable no-restricted-globals */
 const OFFLINE_VERSION = ${JSON.stringify(version)};
 const SHELL_CACHE = \`offline-shell-\${OFFLINE_VERSION}\`;
 const SHELL_CACHE_PREFIX = 'offline-shell-';
-const CONTENT_CACHE = 'offline-content';
-const REMOTE_CACHE = 'offline-remote';
+const CONTENT_CACHE_PREFIX = 'offline-content-';
+const CONTENT_CACHE = \`\${CONTENT_CACHE_PREFIX}\${OFFLINE_VERSION}\`;
+const REMOTE_CACHE_PREFIX = 'offline-remote-';
+const REMOTE_CACHE = \`\${REMOTE_CACHE_PREFIX}\${OFFLINE_VERSION}\`;
+const LEGACY_CONTENT_CACHES = new Set(['offline-content']);
+const LEGACY_REMOTE_CACHES = new Set(['offline-remote', 'offline-remote-v2']);
+const OWNED_SAME_ORIGIN_PATHS = new Set(${JSON.stringify(ownedSameOriginPaths)});
+const OWNED_REMOTE_URLS = new Set(${JSON.stringify(ownedRemoteUrls)});
 const PAGE_VERSION_PARAM = ${JSON.stringify(PAGE_VERSION_PARAM)};
+const NETWORK_TIMEOUT_MS = 5000;
 let manifestPromise = null;
-const localeWarmups = new Map();
 
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
     const manifest = await loadManifest();
     const shellCache = await caches.open(SHELL_CACHE);
-    await cacheFiles(shellCache, manifest.shared.shell, false, manifest.shared.pageVersions);
+    await cacheFiles(shellCache, manifest.shared.shell, manifest.shared.pageVersions);
     self.skipWaiting();
   })());
 });
@@ -249,6 +296,14 @@ self.addEventListener('activate', (event) => {
     const keys = await caches.keys();
     await Promise.all(
       keys.map((key) => {
+        if (LEGACY_CONTENT_CACHES.has(key)) return caches.delete(key);
+        if (LEGACY_REMOTE_CACHES.has(key)) return caches.delete(key);
+        if (key.startsWith(CONTENT_CACHE_PREFIX) && key !== CONTENT_CACHE) {
+          return caches.delete(key);
+        }
+        if (key.startsWith(REMOTE_CACHE_PREFIX) && key !== REMOTE_CACHE) {
+          return caches.delete(key);
+        }
         if (!key.startsWith(SHELL_CACHE_PREFIX)) return Promise.resolve();
         if (key === SHELL_CACHE) return Promise.resolve();
         return caches.delete(key);
@@ -260,10 +315,6 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('message', (event) => {
   const data = event.data ?? {};
-  if (data.type === 'OFFLINE_WARM_LOCALE' && typeof data.locale === 'string') {
-    event.waitUntil(warmLocale(data.locale, typeof data.pathname === 'string' ? data.pathname : null));
-    return;
-  }
   if (data.type === 'OFFLINE_WARM_PATH' && typeof data.pathname === 'string') {
     event.waitUntil(warmPath(data.pathname));
     return;
@@ -276,109 +327,97 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(request.url);
   if (request.mode === 'navigate') {
+    if (url.origin !== self.location.origin || !isOwnedNavigationPath(url.pathname)) return;
     event.respondWith(handleNavigation(request, url));
     return;
   }
 
-  if (url.origin === self.location.origin) {
-    if (isStaticAsset(url.pathname)) {
-      event.respondWith(cacheFirst(request, CONTENT_CACHE));
-      return;
-    }
-    if (isContentData(url.pathname)) {
-      event.respondWith(staleWhileRevalidate(request, CONTENT_CACHE));
-      return;
-    }
+  // dom-pub is a sibling path on the production origin. Exact remote
+  // allowlisting must win before the generic same-origin sibling guard.
+  if (OWNED_REMOTE_URLS.has(url.href)) {
+    event.respondWith(
+      isExplicitlyVersionedRemoteUrl(url)
+        ? cacheFirst(request, REMOTE_CACHE, url.href)
+        : networkFirst(request, REMOTE_CACHE, url.href),
+    );
     return;
   }
 
-  if (isKnownRemoteAsset(url)) {
-    event.respondWith(cacheFirst(request, REMOTE_CACHE, true));
+  if (url.origin === self.location.origin) {
+    // This worker is root-scoped on GitHub Pages. Never intercept a sibling
+    // project: only paths materialized in this build's manifest are owned.
+    const cacheKey = ownedSameOriginCacheKey(url);
+    if (!cacheKey) return;
+    if (isContentData(url.pathname)) {
+      event.respondWith(staleWhileRevalidate(request, CONTENT_CACHE, cacheKey, [SHELL_CACHE]));
+      return;
+    }
+    event.respondWith(cacheFirst(request, CONTENT_CACHE, cacheKey, [SHELL_CACHE]));
+    return;
   }
+
 });
+
+const assertManifestVersion = ${assertManifestVersion.toString()};
+
+function assertCurrentManifest(manifest) {
+  return assertManifestVersion(manifest, OFFLINE_VERSION);
+}
 
 async function loadManifest() {
   if (!manifestPromise) {
     manifestPromise = (async () => {
-      const live = await fetch('/offline-manifest.json', { cache: 'no-store' }).catch(() => null);
-      if (live?.ok) return live.json();
+      // A restarted worker must route offline immediately. Read only from this
+      // worker version's shell cache so an older manifest cannot claim routes,
+      // then use a bounded network request during the first installation.
+      const shellCache = await caches.open(SHELL_CACHE);
+      const cached = await shellCache.match('/offline-manifest.json');
+      let manifestCacheError = null;
+      if (cached) {
+        try {
+          return assertCurrentManifest(await cached.json());
+        } catch (error) {
+          await shellCache.delete('/offline-manifest.json');
+          // A corrupt entry may recover from the bounded live request below.
+          if (error instanceof Error && error.message.includes('version mismatch')) {
+            // Preserve the mismatch if a bounded recovery request is unavailable.
+            manifestCacheError = error;
+          }
+        }
+      }
 
-      const cached = await caches.match('/offline-manifest.json');
-      if (!cached) throw new Error('offline manifest unavailable');
-      return cached.json();
-    })();
+      const live = await fetchWithTimeout('/offline-manifest.json', { cache: 'no-store' }).catch(() => null);
+      if (live?.ok) {
+        const liveForCache = live.clone();
+        const manifest = assertCurrentManifest(await live.json());
+        await shellCache.put('/offline-manifest.json', liveForCache);
+        return manifest;
+      }
+      if (manifestCacheError) throw manifestCacheError;
+      throw new Error('offline manifest unavailable');
+    })().catch((error) => {
+      manifestPromise = null;
+      throw error;
+    });
   }
   return manifestPromise;
 }
 
-async function warmLocale(locale, pathname) {
-  if (localeWarmups.has(locale)) {
-    if (pathname) {
-      const pending = localeWarmups.get(locale);
-      await pending;
-      await warmPath(pathname);
-    }
-    return;
-  }
-
-  const job = (async () => {
-    const manifest = await loadManifest();
-    const contentCache = await caches.open(CONTENT_CACHE);
-    const localeFiles = manifest.locales?.[locale] ?? manifest.locales?.[${JSON.stringify(
-      DEFAULT_LOCALE,
-    )}] ?? [];
-
-    const readingStats = mergeStats(
-      await cacheFiles(contentCache, manifest.shared.readingData),
-      await cacheFiles(contentCache, localeFiles, false, manifest.shared.pageVersions),
-      pathname ? await cacheNavigationCandidates(contentCache, manifest, pathname) : emptyStats(),
-    );
-    await broadcast({
-      type: 'OFFLINE_CACHE_READY',
-      locale,
-      phase: 'reading',
-      completeness: completenessFromStats(readingStats),
-      requested: readingStats.requested,
-      fulfilled: readingStats.fulfilled,
-      failed: readingStats.failed,
-      version: OFFLINE_VERSION,
-    });
-
-    const remoteCache = await caches.open(REMOTE_CACHE);
-    const extendedStats = mergeStats(
-      readingStats,
-      await cacheFiles(contentCache, manifest.shared.readingAssets),
-      await cacheFiles(contentCache, manifest.shared.extendedAssets),
-      await cacheFiles(remoteCache, manifest.shared.remoteAssets, true),
-    );
-    if (completenessFromStats(extendedStats) === 'complete') {
-      await pruneCache(contentCache, buildContentAllowList(manifest));
-      await pruneCache(remoteCache, new Set(manifest.shared.remoteAssets ?? []));
-    }
-    await broadcast({
-      type: 'OFFLINE_CACHE_READY',
-      locale,
-      phase: 'extended',
-      completeness: completenessFromStats(extendedStats),
-      requested: extendedStats.requested,
-      fulfilled: extendedStats.fulfilled,
-      failed: extendedStats.failed,
-      version: OFFLINE_VERSION,
-    });
-  })();
-
-  localeWarmups.set(locale, job);
-  try {
-    await job;
-  } finally {
-    localeWarmups.delete(locale);
-  }
-}
-
 async function warmPath(pathname) {
   const manifest = await loadManifest();
+  if (!isOwnedNavigation(manifest, pathname)) return;
   const contentCache = await caches.open(CONTENT_CACHE);
-  await cacheNavigationCandidates(contentCache, manifest, pathname);
+  const stats = await cacheNavigationCandidates(contentCache, manifest, pathname);
+  await broadcast({
+    type: 'OFFLINE_CACHE_READY',
+    locale: localeFromPath(pathname),
+    phase: 'reading',
+    completeness: stats.failed === 0 ? 'complete' : 'partial',
+    requested: stats.requested,
+    fulfilled: stats.fulfilled,
+    failed: stats.failed,
+    version: OFFLINE_VERSION,
+  });
 }
 
 function pageVersionForUrl(manifest, url) {
@@ -447,12 +486,18 @@ async function matchVersionedCandidates(manifest, candidates) {
 }
 
 function navigationCandidates(pathname) {
-  const clean = pathname === '/' ? '/' : pathname.replace(/\\/+$/, '');
+  let decoded = pathname;
+  try {
+    decoded = decodeURIComponent(pathname);
+  } catch {
+    // Keep the browser-provided path when a malformed escape cannot be decoded.
+  }
+  const clean = decoded === '/' ? '/' : decoded.replace(/\\/+$/, '');
   if (clean === '/') {
     return ['/index.html'];
-  } else {
-    return [\`\${clean}.html\`, \`\${clean}/index.html\`];
   }
+  if (/\\.html$/i.test(clean)) return [clean];
+  return [\`\${clean}.html\`, \`\${clean}/index.html\`];
 }
 
 function knownNavigationCandidates(manifest, pathname) {
@@ -469,8 +514,45 @@ function knownNavigationCandidates(manifest, pathname) {
   }
 
   const candidates = navigationCandidates(pathname);
-  const existing = candidates.filter((candidate) => knownRoutes.has(candidate));
-  return existing.length > 0 ? existing : candidates;
+  return candidates.filter((candidate) => knownRoutes.has(candidate));
+}
+
+function isOwnedNavigation(manifest, pathname) {
+  return knownNavigationCandidates(manifest, pathname).length > 0;
+}
+
+function decodedPathname(pathname) {
+  try {
+    return decodeURIComponent(pathname);
+  } catch {
+    return pathname;
+  }
+}
+
+function ownedSameOriginCacheKey(url) {
+  const decodedPath = decodedPathname(url.pathname);
+  const exactKey = decodedPath + url.search;
+  if (OWNED_SAME_ORIGIN_PATHS.has(exactKey)) return exactKey;
+  // Manifest paths normally have no query string. Do not let arbitrary query
+  // variants multiply cache entries or seed a canonical key with a variant response.
+  if (!url.search && OWNED_SAME_ORIGIN_PATHS.has(decodedPath)) return decodedPath;
+  return null;
+}
+
+function isOwnedNavigationPath(pathname) {
+  return navigationCandidates(pathname).some((candidate) => OWNED_SAME_ORIGIN_PATHS.has(candidate));
+}
+
+function isExplicitlyVersionedRemoteUrl(url) {
+  if (
+    ['v', 'version', 'rev', 'revision', 'hash'].some(
+      (key) => (url.searchParams.get(key) ?? '').length > 0,
+    )
+  ) {
+    return true;
+  }
+  const filename = url.pathname.split('/').pop() ?? '';
+  return /(?:^|[._-])[a-f0-9]{12,}(?=\.[a-z0-9]+$)/i.test(filename);
 }
 
 function localeFromPath(pathname) {
@@ -484,11 +566,23 @@ function offlineFallbackCandidates(pathname) {
 }
 
 async function handleNavigation(request, url) {
-  const manifest = await loadManifest();
+  let manifest;
+  try {
+    manifest = await loadManifest();
+  } catch {
+    // Without a manifest we cannot establish ownership or choose a fallback.
+    // Preserve normal browser/network semantics instead of claiming the path.
+    return fetch(request);
+  }
+  if (!isOwnedNavigation(manifest, url.pathname)) {
+    // The root-scoped worker also sees sibling GitHub Pages projects. Leave
+    // those navigations entirely to their own origin response/error handling.
+    return fetch(request);
+  }
   try {
     const version = pageVersionForUrl(manifest, url.pathname);
     const requestUrl = navigationCacheKey(url.pathname + url.search, version);
-    const fresh = await fetch(requestUrl, { cache: 'reload' });
+    const fresh = await fetchWithTimeout(requestUrl, { cache: 'reload' });
     const contentCache = await caches.open(CONTENT_CACHE);
     if (fresh?.ok) {
       await cacheNavigationResponse(contentCache, manifest, url.pathname, fresh);
@@ -525,25 +619,61 @@ async function handleNavigation(request, url) {
   }
 }
 
-async function cacheFirst(request, cacheName, allowOpaque = false) {
-  const cached = await caches.match(request);
+async function matchNamedCaches(cacheName, cacheKey, fallbackCacheNames = []) {
+  const cache = await caches.open(cacheName);
+  const primary = await cache.match(cacheKey);
+  if (primary) return primary;
+  for (const fallbackCacheName of fallbackCacheNames) {
+    const fallbackCache = await caches.open(fallbackCacheName);
+    const fallback = await fallbackCache.match(cacheKey);
+    if (fallback) return fallback;
+  }
+  return null;
+}
+
+async function cacheFirst(request, cacheName, cacheKey = request, fallbackCacheNames = []) {
+  const cached = await matchNamedCaches(cacheName, cacheKey, fallbackCacheNames);
   if (cached) return cached;
 
   const response = await fetch(request);
-  if (response && (response.ok || (allowOpaque && response.type === 'opaque'))) {
+  if (response?.ok) {
     const cache = await caches.open(cacheName);
-    await cache.put(request, response.clone());
+    await cache.put(cacheKey, response.clone());
   }
   return response;
 }
 
-async function staleWhileRevalidate(request, cacheName) {
-  const cached = await caches.match(request);
+async function fetchWithTimeout(request, options = {}) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), NETWORK_TIMEOUT_MS);
+  try {
+    return await fetch(request, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function networkFirst(request, cacheName, cacheKey = request) {
+  const cache = await caches.open(cacheName);
+  try {
+    const response = await fetchWithTimeout(request);
+    if (response?.ok) await cache.put(cacheKey, response.clone());
+    if (response) return response;
+  } catch {
+    // Fall through to the current manifest version's offline copy.
+  }
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached;
+  throw new Error('network unavailable');
+}
+
+async function staleWhileRevalidate(request, cacheName, cacheKey = request, fallbackCacheNames = []) {
+  const cache = await caches.open(cacheName);
+  const cached = await matchNamedCaches(cacheName, cacheKey, fallbackCacheNames);
   const refresh = fetch(request)
     .then(async (response) => {
       if (response?.ok) {
-        const cache = await caches.open(cacheName);
-        await cache.put(request, response.clone());
+        await cache.put(cacheKey, response.clone());
       }
       return response;
     })
@@ -559,17 +689,6 @@ async function staleWhileRevalidate(request, cacheName) {
   throw new Error('network unavailable');
 }
 
-function isStaticAsset(pathname) {
-  return (
-    pathname.startsWith('/_next/') ||
-    pathname.startsWith('/assets/') ||
-    pathname.startsWith('/favicon/') ||
-    pathname.startsWith('/og/') ||
-    pathname.startsWith('/og-cache/') ||
-    /\\.(?:png|jpg|jpeg|webp|gif|svg|ico|css|js|woff2?|ttf|otf|xml|pdf)$/i.test(pathname)
-  );
-}
-
 function isContentData(pathname) {
   return (
     pathname.startsWith('/blog-data/') ||
@@ -577,15 +696,6 @@ function isContentData(pathname) {
     pathname.startsWith('/thoughts-data/') ||
     pathname.endsWith('.txt') ||
     pathname.endsWith('.json')
-  );
-}
-
-function isKnownRemoteAsset(url) {
-  return (
-    (url.hostname === 'nguyenlephong.github.io' &&
-      url.pathname.startsWith('/dom-pub/')) ||
-    (url.hostname === 'raw.githubusercontent.com' &&
-      url.pathname.startsWith('/nguyenlephong/dom-pub/'))
   );
 }
 
@@ -597,34 +707,6 @@ function emptyStats() {
   };
 }
 
-function mergeStats(...statsList) {
-  return statsList.reduce((merged, stats) => ({
-    requested: merged.requested + (stats?.requested ?? 0),
-    fulfilled: merged.fulfilled + (stats?.fulfilled ?? 0),
-    failed: merged.failed + (stats?.failed ?? 0),
-  }), emptyStats());
-}
-
-function completenessFromStats(stats) {
-  return stats.failed === 0 ? 'complete' : 'partial';
-}
-
-function buildContentAllowList(manifest) {
-  const allowed = new Set([
-    ...(manifest.shared?.readingData ?? []),
-    ...(manifest.shared?.readingAssets ?? []),
-    ...(manifest.shared?.extendedAssets ?? []),
-  ]);
-
-  for (const localeFiles of Object.values(manifest.locales ?? {})) {
-    for (const url of localeFiles) {
-      allowed.add(url);
-    }
-  }
-
-  return allowed;
-}
-
 function cacheKeyForUrl(url, pageVersions) {
   const version = pageVersions?.[url] ?? null;
   if (!version) return url;
@@ -632,7 +714,7 @@ function cacheKeyForUrl(url, pageVersions) {
   return url + separator + PAGE_VERSION_PARAM + '=' + encodeURIComponent(version);
 }
 
-async function cacheFiles(cache, urls, allowOpaque = false, pageVersions = null) {
+async function cacheFiles(cache, urls, pageVersions = null) {
   const unique = [...new Set(urls)].filter(Boolean);
   const stats = emptyStats();
   const batchSize = 12;
@@ -648,14 +730,14 @@ async function cacheFiles(cache, urls, allowOpaque = false, pageVersions = null)
           return;
         }
         const response = await fetch(cacheKey, {
-          mode: allowOpaque ? 'no-cors' : 'cors',
+          mode: 'cors',
           cache: 'reload',
         });
         if (!response) {
           stats.failed += 1;
           return;
         }
-        if (!response.ok && !(allowOpaque && response.type === 'opaque')) {
+        if (!response.ok || response.type === 'opaque') {
           stats.failed += 1;
           return;
         }
@@ -670,25 +752,11 @@ async function cacheFiles(cache, urls, allowOpaque = false, pageVersions = null)
   return stats;
 }
 
-async function pruneCache(cache, allowedUrls) {
-  const requests = await cache.keys();
-  await Promise.all(
-    requests.map(async (request) => {
-      const url = new URL(request.url);
-      const cacheKey =
-        url.origin === self.location.origin
-          ? url.pathname
-          : request.url;
-      if (allowedUrls.has(cacheKey)) return;
-      await cache.delete(request);
-    }),
-  );
-}
-
 async function broadcast(message) {
   const clients = await self.clients.matchAll({ includeUncontrolled: true, type: 'window' });
   for (const client of clients) client.postMessage(message);
 }
+
 `
 }
 
@@ -708,25 +776,20 @@ async function main() {
     readRemoteGalleryAssets(),
     buildPageVersions(relativeFiles),
   ])
-  const shell = uniqueSorted(
-    ['/offline-manifest.json', ...relativeFiles.filter(isCoreSharedFile).map(routeUrlFromOutFile)],
-  )
+  const shell = uniqueSorted([
+    '/offline-manifest.json',
+    ...relativeFiles.filter(isCoreSharedFile).map(routeUrlFromOutFile),
+  ])
   // Reading routes already ship their content in static HTML, so warming the
   // document set is enough for offline reading without fetching auxiliary data.
   const readingData = []
-  const readingAssets = uniqueSorted(
-    relativeFiles.filter(isReadingAsset).map(routeUrlFromOutFile),
-  )
-  const extendedAssets = uniqueSorted(
-    relativeFiles.filter(isExtendedAsset).map(routeUrlFromOutFile),
-  )
+  const readingAssets = uniqueSorted(relativeFiles.filter(isReadingAsset).map(routeUrlFromOutFile))
+  const extendedAssets = uniqueSorted(relativeFiles.filter(isExtendedAsset).map(routeUrlFromOutFile))
 
   const locales = {}
   for (const locale of LOCALES) {
     locales[locale] = uniqueSorted(
-      relativeFiles
-        .filter((relativePath) => isLocaleOfflineFile(relativePath, locale))
-        .map(routeUrlFromOutFile),
+      relativeFiles.filter((relativePath) => isLocaleOfflineFile(relativePath, locale)).map(routeUrlFromOutFile),
     )
   }
 
@@ -754,24 +817,16 @@ async function main() {
     },
   }
 
-  await fs.writeFile(
-    path.join(OUT_DIR, 'offline-manifest.json'),
-    `${JSON.stringify(manifest, null, 2)}\n`,
-    'utf8',
-  )
+  await fs.writeFile(path.join(OUT_DIR, 'offline-manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`, 'utf8')
   await writeOfflineManifestVersion(relativeFiles, manifest.version)
-  await fs.writeFile(
-    path.join(OUT_DIR, 'sw.js'),
-    buildServiceWorkerSource(manifest.version),
-    'utf8',
-  )
+  await fs.writeFile(path.join(OUT_DIR, 'sw.js'), buildServiceWorkerSource(manifest), 'utf8')
 
-  console.log(
-    `[postbuild-offline] wrote offline-manifest.json and sw.js for ${LOCALES.length} locales`,
-  )
+  console.log(`[postbuild-offline] wrote offline-manifest.json and sw.js for ${LOCALES.length} locales`)
 }
 
-main().catch((error) => {
-  console.error('[postbuild-offline] failed:', error)
-  process.exit(1)
-})
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error('[postbuild-offline] failed:', error)
+    process.exit(1)
+  })
+}

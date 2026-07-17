@@ -15,16 +15,15 @@
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
     "check": "npm run typecheck && npm run lint && npm test",
-    "quality": "npm run check && npm run build:fast && npm run verify:offline",
+    "quality": "npm run check && npm run build:fast && npm run verify:artifact && npm run verify:offline",
+    "verify:artifact": "node scripts/verify-static-artifact.mjs",
     "verify:offline": "node scripts/verify-offline.mjs",
     "og:generate": "node scripts/generate-static-og.mjs",
     "sonar": "sonar-scanner",
     "sonar:check": "sonar-scanner -Dsonar.qualitygate.wait=true",
-    "predeploy": "node scripts/bump-version.mjs && bun run build",
-    "fb-deploy": "firebase deploy",
-    "deploy": "bun run deploy:out",
-    "deploy:out": "node scripts/deploy-pages.mjs",
-    "deploy:fast": "node scripts/bump-version.mjs && bun run build && bun run deploy:out"
+    "fb-deploy": "npm run verify:artifact && firebase deploy --only hosting",
+    "deploy:legacy": "ALLOW_LEGACY_PAGES_DEPLOY=1 node scripts/deploy-pages.mjs",
+    "deploy:legacy:build": "node scripts/bump-version.mjs && npm run build && npm run deploy:legacy"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
@@ -42,7 +41,6 @@
     "eslint-config-prettier": "9.1.0",
     "firebase": "^12.14.0",
     "framer-motion": "12.9.4",
-    "gh-pages": "6.1.1",
     "next": "16.1.1",
     "next-intl": "4.12.0",
     "prettier": "3.2.5",

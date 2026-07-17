@@ -45,8 +45,10 @@ test("pages deploy removes media that is served by dom-pub icdn", () => {
   assert.match(postbuildOffline, /CDN_BACKED_EXPORT_PATHS\s*=\s*\['og', 'assets\/blog', 'assets\/notes', 'assets\/photos'\]/);
   assert.match(postbuildOffline, /removeCdnBackedExportAssets/);
   assert.match(postbuildOffline, /icdnAssetUrl\\\(\\s\*\["'\]\(\[\^"'\]\+\)\["'\]\\s\*\\\)/);
-  assert.match(postbuildOffline, /nguyenlephong\.github\.io/);
-  assert.match(postbuildOffline, /\/dom-pub\//);
+  assert.match(postbuildOffline, /readRemoteGalleryAssets/);
+  assert.match(postbuildOffline, /OWNED_REMOTE_URLS/);
+  assert.match(postbuildOffline, /url\.origin !== self\.location\.origin/);
+  assert.doesNotMatch(postbuildOffline, /url\.hostname === 'nguyenlephong\.github\.io'/);
 });
 
 test("public reading data does not expose local content image paths", () => {

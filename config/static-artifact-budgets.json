@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "outputDirectory": "out",
+  "siteOrigin": "https://nguyenlephong.github.io",
+  "warnAtPercent": 90,
+  "limits": {
+    "totalBytes": 891289600,
+    "fileCount": 24000,
+    "maxHtmlBytes": 440320,
+    "maxJavaScriptBytes": 1415578,
+    "maxCssBytes": 215040,
+    "maxRouteJavaScriptBytes": 2306868,
+    "maxRouteCssBytes": 225280,
+    "minimumSitemapUrls": 824
+  },
+  "routeAssetSamples": [
+    "en.html",
+    "en/blog.html",
+    "en/notes.html",
+    "en/studio.html",
+    "vi.html",
+    "zh/blog.html",
+    "ja/studio.html",
+    "ko/about.html",
+    "fr/gallery.html"
+  ],
+  "secretScanConcurrency": 32,
+  "seo": {
+    "locales": ["en", "vi", "zh", "ja", "ko", "fr"],
+    "requiredLocalizedRoutes": ["", "apps", "blog", "studio", "about", "gallery"]
+  }
+}
