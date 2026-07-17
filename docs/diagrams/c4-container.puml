@@ -23,7 +23,7 @@ System_Ext(google, "Google Analytics / AdSense", "Analytics and ads scripts.")
 
 Rel(owner, content_files, "Edits content and code", "Git")
 Rel(github_actions, content_files, "Checks out repository")
-Rel(github_actions, static_app, "Runs typecheck, lint, tests, and static build", "Node 20 / npm")
+Rel(github_actions, static_app, "Runs typecheck, lint, tests, and static build", "Node 22 / npm")
 Rel(static_app, content_files, "Reads content at build time", "Node fs + Zod")
 Rel(static_app, og_pipeline, "Invokes OG image routes during build", "Next build")
 Rel(og_pipeline, content_files, "Reads indexes and writes public/og-cache", "Node fs")

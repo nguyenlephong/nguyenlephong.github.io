@@ -2,6 +2,9 @@
   "name": "nguyenlephong",
   "version": "3.0.0",
   "private": true,
+  "engines": {
+    "node": ">=22.18.0"
+  },
   "scripts": {
     "dev": "next dev -p 10505",
     "build": "node scripts/build-og.mjs --full",
@@ -57,7 +60,7 @@
     "@types/d3-force": "3.0.10",
     "@types/d3-selection": "3.0.11",
     "@types/d3-transition": "3.0.9",
-    "@types/node": "20",
+    "@types/node": "22",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "eslint": "9",

@@ -513,7 +513,7 @@ override is rejected. It is not a normal release path.
 `deploy:legacy:build` additionally bumps `app-version.json` and performs the
 full build. `npm run fb-deploy` uses the same fixed artifact verifier immediately
 before publishing `out/` to Firebase Hosting. CI and deployment both use npm
-and Node 20.
+and Node 22 (minimum 22.18.0).
 
 Merging this change does **not** mutate the repository's live Pages setting. At
 the time of this migration, GitHub Pages still uses the legacy branch source.
@@ -549,7 +549,7 @@ See [C4 Deployment Diagram](./diagrams/c4-deployment.puml).
 Main deployment path:
 
 1. Developer commits source and content.
-2. GitHub Actions installs dependencies with Node 20.
+2. GitHub Actions installs dependencies with Node 22 (minimum 22.18.0).
 3. Source quality checks run before publication.
 4. Next.js performs one full static export into `out/`.
 5. OG images are generated, cached, renamed, and linked as `.png`.

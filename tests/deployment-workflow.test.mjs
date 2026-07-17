@@ -5,6 +5,26 @@ import test from 'node:test'
 const workflow = readFileSync(new URL('../.github/workflows/nextjs.yml', import.meta.url), 'utf8')
 const ciWorkflow = readFileSync(new URL('../.github/workflows/ci-frontend.yml', import.meta.url), 'utf8')
 const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
+const lock = JSON.parse(readFileSync(new URL('../package-lock.json', import.meta.url), 'utf8'))
+const nodeVersion = readFileSync(new URL('../.nvmrc', import.meta.url), 'utf8').trim()
+
+test('workflows, package metadata, lockfile, and Node types share the Node 22 runtime contract', () => {
+  assert.equal(nodeVersion, '22')
+
+  for (const currentWorkflow of [workflow, ciWorkflow]) {
+    const setupNodeCount = currentWorkflow.match(/uses: actions\/setup-node@v4/g)?.length ?? 0
+    const versionFileCount = currentWorkflow.match(/node-version-file: \.nvmrc/g)?.length ?? 0
+    assert.ok(setupNodeCount > 0)
+    assert.equal(versionFileCount, setupNodeCount)
+    assert.doesNotMatch(currentWorkflow, /node-version:\s*/)
+  }
+
+  assert.equal(pkg.engines.node, '>=22.18.0')
+  assert.equal(pkg.devDependencies['@types/node'], '22')
+  assert.equal(lock.packages[''].engines.node, pkg.engines.node)
+  assert.equal(lock.packages[''].devDependencies['@types/node'], pkg.devDependencies['@types/node'])
+  assert.match(lock.packages['node_modules/@types/node'].version, /^22\./)
+})
 
 test('Pages workflow grants deployment credentials only to the deploy job', () => {
   assert.match(workflow, /^permissions: \{\}$/m)
