@@ -20,7 +20,8 @@ export default defineConfig([{
         "out/**",
         "node_modules/**",
         "public/og-cache/**",
-        "coverage/**"
+        "coverage/**",
+        "src/lib/content/publication-contract.d.mts"
     ],
 }, {
     extends: [...nextCoreWebVitals, ...next, ...compat.extends("prettier")],

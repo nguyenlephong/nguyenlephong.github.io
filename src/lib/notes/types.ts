@@ -1,4 +1,5 @@
 import type { BookSource, Faq } from "@/lib/content/types";
+import type { ContentPublicationStatus } from "@/lib/content/publication";
 import type { Locale } from "@/i18n/routing";
 
 /** @see {@link Faq} — shared with blog. */
@@ -19,6 +20,10 @@ export interface NoteMeta {
   cardSummary?: string;
   date: string;
   updated?: string;
+  /** Optional embargo date; defaults to `date`. */
+  publishAt?: string;
+  /** Missing means published; drafts never enter a public build. */
+  status?: ContentPublicationStatus;
   readingMinutes: number;
   tags: string[];
   topic?: string;

@@ -78,6 +78,15 @@ const { localeAlternates, preferredContentLocale } = await import(
 const { latestNonFutureDate } = await import(
   new URL("../src/lib/seo/dates.ts", import.meta.url)
 );
+const { getContentBuildDate, isContentPublished } = await import(
+  new URL("../src/lib/content/publication.ts", import.meta.url)
+);
+const { listBlogPostParams } = await import(
+  new URL("../src/lib/blog/data.ts", import.meta.url)
+);
+const { listNoteParams } = await import(
+  new URL("../src/lib/notes/data.ts", import.meta.url)
+);
 const { default: buildSitemap } = await import(
   new URL("../src/app/sitemap.ts", import.meta.url)
 );
@@ -108,6 +117,22 @@ const validCategory = {
 
 test("blog post schema accepts a valid post", () => {
   assert.equal(blogPostSchema.safeParse(validPost).success, true);
+  assert.equal(
+    blogPostSchema.safeParse({
+      ...validPost,
+      status: "draft",
+      publishAt: "2026-07-19"
+    }).success,
+    true
+  );
+  assert.equal(
+    blogPostSchema.safeParse({ ...validPost, status: "scheduled" }).success,
+    false
+  );
+  assert.equal(
+    blogPostSchema.safeParse({ ...validPost, publishAt: "2026-02-30" }).success,
+    false
+  );
 });
 
 test("blog post schema rejects a missing required field", () => {
@@ -164,6 +189,15 @@ test("notes schemas accept minimal valid shapes", () => {
     html: "<p>n</p>"
   };
   assert.equal(noteSchema.safeParse(note).success, true);
+  assert.equal(
+    noteSchema.safeParse({
+      ...note,
+      status: "published",
+      publishAt: "2026-07-19"
+    }).success,
+    true
+  );
+  assert.equal(noteSchema.safeParse({ ...note, status: "scheduled" }).success, false);
   assert.equal(noteSchema.safeParse({ slug: "n" }).success, false);
 });
 
@@ -201,7 +235,15 @@ test("all authored locale overrides satisfy strict partial schemas", () => {
 });
 
 test("archive corpora and sitemap pages follow authored locale availability", () => {
-  const expectedBlogCounts = { en: 204, vi: 204, zh: 20, ja: 20, ko: 20, fr: 20 };
+  const blogIndex = readJson("../public/blog-data/_index.json");
+  const expectedBlogCounts = Object.fromEntries(
+    ["en", "vi", "zh", "ja", "ko", "fr"].map((locale) => [
+      locale,
+      blogIndex.posts.filter(
+        (post) => isContentPublished(post) && post.locales.includes(locale)
+      ).length
+    ])
+  );
   for (const [locale, count] of Object.entries(expectedBlogCounts)) {
     assert.equal(listPosts(locale).length, count, `${locale} blog archive count`);
   }
@@ -210,11 +252,27 @@ test("archive corpora and sitemap pages follow authored locale availability", ()
   assert.deepEqual(listNotesArchiveLocales(15), ["en", "vi"]);
   assert.deepEqual(listNotesArchiveLocales(16), []);
   const sitemap = buildSitemap();
-  assert.equal(sitemap.length, 904);
-  const now = Date.now();
+  assert.equal(new Set(sitemap.map((entry) => entry.url)).size, sitemap.length);
+  const sitemapUrls = new Set(sitemap.map((entry) => entry.url));
+  for (const { locale, category, slug } of listBlogPostParams()) {
+    assert.ok(
+      sitemapUrls.has(
+        `https://nguyenlephong.github.io/${locale}/blog/${category}/${slug}`
+      )
+    );
+  }
+  for (const { locale, slug } of listNoteParams()) {
+    assert.ok(
+      sitemapUrls.has(`https://nguyenlephong.github.io/${locale}/notes/${slug}`)
+    );
+  }
+  const cutoff = new Date(getContentBuildDate()).getTime();
   for (const entry of sitemap) {
     if (entry.lastModified) {
-      assert.ok(new Date(entry.lastModified).getTime() <= now, `${entry.url} future lastmod`);
+      assert.ok(
+        new Date(entry.lastModified).getTime() <= cutoff,
+        `${entry.url} future lastmod`
+      );
     }
   }
 });
@@ -389,7 +447,10 @@ test("notes expose one canonical slug set across English and Vietnamese", () => 
   assert.match(notesDataSource, /getNoteContentLocales/);
   assert.match(notesDataSource, /note\?\.locales/);
   assert.match(blogDataSource, /getPostContentLocales/);
-  assert.match(blogDataSource, /post \? \[\.\.\.post\.locales\] : \[\]/);
+  assert.match(
+    blogDataSource,
+    /post && isContentPublished\(post\) \? \[\.\.\.post\.locales\] : \[\]/
+  );
   assert.match(sitemapSource, /for \(const note of listNotes\("en"\)\)/);
   assert.match(sitemapSource, /locales:\s*NOTE_CONTENT_LOCALES/);
   assert.match(sitemapSource, /getPostContentLocales\(slug\)/);
@@ -432,7 +493,10 @@ test("declared article locales match authored blog and notes files", () => {
       )
     ];
     assert.deepEqual(post.locales, expected, `${post.slug} blog locales`);
-    assert.deepEqual(getPostContentLocales(post.slug), expected);
+    assert.deepEqual(
+      getPostContentLocales(post.slug),
+      isContentPublished(post) ? expected : []
+    );
   }
 
   for (const note of notesIndex.posts) {
@@ -446,7 +510,10 @@ test("declared article locales match authored blog and notes files", () => {
     ];
     assert.equal(note.baseLocale, "en", `${note.slug} base locale`);
     assert.deepEqual(note.locales, expected, `${note.slug} note locales`);
-    assert.deepEqual(getNoteContentLocales(note.slug), expected);
+    assert.deepEqual(
+      getNoteContentLocales(note.slug),
+      isContentPublished(note) ? expected : []
+    );
   }
 });
 

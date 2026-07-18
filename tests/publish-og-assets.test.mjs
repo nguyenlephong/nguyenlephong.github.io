@@ -34,7 +34,15 @@ async function initializeRepository(directory, origin) {
   await git(directory, ['remote', 'add', 'origin', origin])
 }
 
-async function createFixture(t, { blogCount = 2, notesCount = 1, existingBlogSlugs = [] } = {}) {
+async function createFixture(
+  t,
+  {
+    blogCount = 2,
+    notesCount = 1,
+    existingBlogSlugs = [],
+    futureBlogSlugs = [],
+  } = {},
+) {
   const fixtureRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'publish-og-assets-'))
   const siteDir = path.join(fixtureRoot, 'site')
   const domPubDir = path.join(fixtureRoot, 'dom-pub')
@@ -75,6 +83,7 @@ async function createFixture(t, { blogCount = 2, notesCount = 1, existingBlogSlu
   }
   const blogSlugs = Array.from({ length: blogCount }, (_, index) => `blog-post-${index + 1}`)
   const noteSlugs = Array.from({ length: notesCount }, (_, index) => `note-post-${index + 1}`)
+  const futureBlogSlugSet = new Set(futureBlogSlugs)
   const png = await sharp({
     create: {
       width: 1200,
@@ -89,11 +98,18 @@ async function createFixture(t, { blogCount = 2, notesCount = 1, existingBlogSlu
     fs.writeFile(path.join(siteDir, 'config/media-publication.json'), JSON.stringify(contract)),
     fs.writeFile(
       path.join(siteDir, 'public/blog-data/_index.json'),
-      JSON.stringify({ posts: blogSlugs.map((slug) => ({ slug })) }),
+      JSON.stringify({
+        posts: blogSlugs.map((slug) => ({
+          slug,
+          date: futureBlogSlugSet.has(slug) ? '2999-01-01' : '2020-01-01',
+        })),
+      }),
     ),
     fs.writeFile(
       path.join(siteDir, 'public/notes-data/_index.json'),
-      JSON.stringify({ posts: noteSlugs.map((slug) => ({ slug })) }),
+      JSON.stringify({
+        posts: noteSlugs.map((slug) => ({ slug, date: '2020-01-01' })),
+      }),
     ),
     fs.writeFile(path.join(domPubDir, 'icdn/og/blogs/.gitkeep'), ''),
     fs.writeFile(path.join(domPubDir, 'icdn/og/notes/.gitkeep'), ''),
@@ -218,6 +234,35 @@ test('missing-only skips existing valid files and never overwrites them', async 
   assert.deepEqual(await fs.readFile(existingPath), before)
   assert.deepEqual(before, jpeg)
   assert.ok(await fs.stat(path.join(domPubDir, `icdn/og/blogs/${blogSlugs[1]}.jpg`)))
+})
+
+test('publication ignores future entries without deleting an existing stale destination', async (t) => {
+  const { domPubDir, siteDir } = await createFixture(t, {
+    blogCount: 2,
+    existingBlogSlugs: ['blog-post-2'],
+    futureBlogSlugs: ['blog-post-2'],
+  })
+  const stalePath = path.join(domPubDir, 'icdn/og/blogs/blog-post-2.jpg')
+  const staleBefore = await fs.readFile(stalePath)
+
+  const summary = await publishOgAssets({
+    rootDir: siteDir,
+    domPubDir,
+    surface: 'blog',
+    missingOnly: true,
+  })
+
+  assert.deepEqual(summary, {
+    surface: 'blog',
+    mode: 'published',
+    expected: 1,
+    added: 1,
+    changed: 0,
+    unchanged: 0,
+    skipped: 0,
+    deleted: 0,
+  })
+  assert.deepEqual(await fs.readFile(stalePath), staleBefore)
 })
 
 test('missing-only refuses a destination created after preflight instead of overwriting it', async (t) => {

@@ -66,6 +66,9 @@ and [Article structured data](https://developers.google.com/search/docs/appearan
 - **AC-SEO-LOC-010:** The origin-level `WebSite` entity is emitted once at the
   root URL. Localized visible homes retain their `Person` and `ProfilePage`
   entities and share a complete home `hreflang` cluster including `x-default`.
+- **AC-SEO-LOC-011:** Future-dated and draft articles are absent from static
+  params, locale clusters, search indexes, collection/related links, and the
+  sitemap until the shared publication contract makes them visible.
 
 ## Verification
 

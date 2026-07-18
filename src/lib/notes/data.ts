@@ -15,6 +15,7 @@ import {
 } from "@/lib/content/catalog";
 import { pageCount } from "@/lib/content/pagination";
 import { getContentVersionTracker } from "@/lib/content/freshness";
+import { isContentPublished } from "@/lib/content/publication";
 import { rewriteContentAssetValues } from "@/lib/assets/icdn";
 import {
   noteOverrideSchema,
@@ -36,6 +37,8 @@ const NOTE_METADATA_FIELDS = [
   "cardSummary",
   "date",
   "updated",
+  "publishAt",
+  "status",
   "readingMinutes",
   "tags",
   "topic"
@@ -43,6 +46,8 @@ const NOTE_METADATA_FIELDS = [
 const NOTE_CANONICAL_OVERRIDE_FIELDS = [
   "slug",
   "date",
+  "publishAt",
+  "status",
   "topic",
   "featured"
 ] as const;
@@ -100,7 +105,7 @@ function noteLocales(): string[] {
 
 export function getNoteContentLocales(slug: string): Locale[] {
   const note = baseIndex().posts.find((entry) => entry.slug === slug);
-  return note?.locales ? [...note.locales] : [];
+  return note?.locales && isContentPublished(note) ? [...note.locales] : [];
 }
 
 function baseIndex(): NotesIndexFile {
@@ -185,8 +190,9 @@ export function loadNotesIndex(locale?: string): NotesIndexFile {
     const cached = localizedIndexCache.get("vi");
     if (cached?.version === version) return cached.index;
 
+    const overridePath = path.join(DATA_DIR, "vi", "_index.json");
     const override = readJsonValidated(
-      path.join(DATA_DIR, "vi", "_index.json"),
+      overridePath,
       notesIndexOverrideSchema
     );
     if (!override) {
@@ -204,6 +210,17 @@ export function loadNotesIndex(locale?: string): NotesIndexFile {
       catalog.index.posts.map((post) => post.slug),
       override.posts?.map((post) => post.slug) ?? []
     );
+    for (const localizedNote of override.posts ?? []) {
+      const canonicalNote = catalog.postsBySlug.get(localizedNote.slug);
+      if (!canonicalNote) continue;
+      assertProvidedMetadataParity(
+        "Localized notes index (vi)",
+        canonicalNote as unknown as Record<string, unknown>,
+        localizedNote as unknown as Record<string, unknown>,
+        overridePath,
+        NOTE_CANONICAL_OVERRIDE_FIELDS
+      );
+    }
 
     const index = notesIndexSchema.parse(rewriteContentAssetValues({
       topics: overlayByKey(catalog.index.topics, override.topics, (t) => t.id),
@@ -250,7 +267,9 @@ export function loadNotesIndex(locale?: string): NotesIndexFile {
 export function listNotes(locale?: string): NoteMeta[] {
   const eff = contentLocale(locale);
   return loadNotesIndex(locale)
-    .posts.filter(() => noteLocales().includes(eff))
+    .posts.filter(
+      (note) => noteLocales().includes(eff) && isContentPublished(note)
+    )
     .sort(byDateDesc);
 }
 
@@ -289,10 +308,10 @@ export function getTopicReadingContext(
   slug: string,
   locale?: string
 ): TopicReadingContext | null {
-  const current = loadNotesIndex(locale).posts.find((p) => p.slug === slug);
+  const visibleNotes = listNotes(locale);
+  const current = visibleNotes.find((p) => p.slug === slug);
   if (!current) return null;
 
-  const visibleNotes = listNotes(locale);
   const topic = current.topic ? getTopic(current.topic, locale) : null;
   const topicNotes = current.topic
     ? visibleNotes.filter((p) => p.topic === current.topic)
@@ -315,17 +334,20 @@ export function getTopicReadingContext(
 
 /** (locale, slug) pairs for static generation — one per locale a note serves. */
 export function listNoteParams(): Array<{ locale: Locale; slug: string }> {
-  return baseIndex().posts.flatMap((note) =>
-    (note.locales ?? [note.baseLocale ?? "en"]).map((locale) => ({
-      locale,
-      slug: note.slug
-    }))
-  );
+  return baseIndex()
+    .posts.filter((note) => isContentPublished(note))
+    .flatMap((note) =>
+      (note.locales ?? [note.baseLocale ?? "en"]).map((locale) => ({
+        locale,
+        slug: note.slug
+      }))
+    );
 }
 
 /** Loads a single note, overlaying the Vietnamese body when serving `vi`. */
 export function loadNote(slug: string, locale?: string): Note | null {
-  if (!baseCatalog().postsBySlug.has(slug)) return null;
+  const indexedNote = baseCatalog().postsBySlug.get(slug);
+  if (!indexedNote || !isContentPublished(indexedNote)) return null;
   return loadNoteBody(slug, locale);
 }
 

@@ -1,5 +1,9 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
+import {
+  isContentPublishedAtBuildDate,
+  resolveContentBuildDate,
+} from '../../src/lib/content/publication-contract.mjs'
 
 const CONTRACT_PATH = 'config/media-publication.json'
 const SAFE_SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
@@ -97,8 +101,12 @@ export async function expectedArticleOgPublications({
   rootDir = process.cwd(),
   contract,
   surface: requestedSurface,
+  contentBuildDate,
 } = {}) {
   const resolvedContract = contract ?? (await loadMediaPublicationContract(rootDir))
+  const resolvedBuildDate = resolveContentBuildDate(
+    contentBuildDate ?? process.env.CONTENT_BUILD_DATE,
+  )
   const expected = []
   const keys = new Set()
 
@@ -124,6 +132,17 @@ export async function expectedArticleOgPublications({
         throw new Error(`[media-publication] ${surface} contains duplicate slug: ${slug}`)
       }
       surfaceSlugs.add(slug)
+
+      let published
+      try {
+        published = isContentPublishedAtBuildDate(post, resolvedBuildDate)
+      } catch (error) {
+        throw new Error(
+          `[media-publication] invalid publication metadata for ${surface}/${slug}: ${error instanceof Error ? error.message : error}`,
+          { cause: error },
+        )
+      }
+      if (!published) continue
 
       const key = `${publication.publicationDirectory}/${slug}${publication.publicationExtension}`
       if (keys.has(key)) throw new Error(`[media-publication] duplicate publication key: ${key}`)

@@ -38,6 +38,19 @@ test('Pages workflow grants deployment credentials only to the deploy job', () =
   assert.doesNotMatch(deployJob, /contents: write/)
 })
 
+test('Pages rebuilds scheduled content daily against one deterministic UTC date', () => {
+  assert.match(workflow, /schedule:\n\s+- cron: '12 0 \* \* \*'/)
+  assert.equal(
+    workflow.match(/CONTENT_BUILD_DATE=\$\(date -u \+%F\)/g)?.length,
+    1,
+  )
+  const resolveDateIndex = workflow.indexOf('CONTENT_BUILD_DATE=$(date -u +%F)')
+  const qualityIndex = workflow.indexOf('run: npm run check')
+  const buildIndex = workflow.indexOf('run: npm run build')
+  assert.ok(resolveDateIndex >= 0 && resolveDateIndex < qualityIndex)
+  assert.ok(resolveDateIndex < buildIndex)
+})
+
 test('Pages build job has a bounded timeout for build and network verification', () => {
   const buildJob = workflow.slice(workflow.indexOf('  build:'), workflow.indexOf('  deploy:'))
   assert.match(buildJob, /timeout-minutes: 30/)

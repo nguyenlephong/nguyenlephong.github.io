@@ -30,15 +30,18 @@ route group to give public pages and Studio different runtime boundaries.
 
 The pathless `(site)` route group adds one App Router segment to each public
 route without changing its URL. Next.js consequently emits about 2,144
-additional route-group RSC segment files. In the complete production artifact,
-that isolation costs only about 6.5 MiB but raises the inventory to 26,463
-files and 673.7 MiB.
+additional route-group RSC segment files. This remains an intentional cost of
+isolating Studio from public-site runtime code, but it no longer justifies a
+special compatibility ceiling. The optimized artifact uses the repository-wide
+limits in `config/static-artifact-budgets.json`: 600 MiB and 20,000 files, with
+warnings beginning at 75 percent of either limit.
 
-The file-count ceiling is therefore 27,500. This is a compatibility allowance
-for the measured runtime-isolation cost, not a new growth target: it leaves
-only 1,037 files (about 3.9 percent) of headroom. The 850 MiB byte ceiling and
-904-URL sitemap floor remain unchanged so unrelated output growth or SEO
-regressions still fail verification.
+SEO verification has no fixed sitemap-count floor. The sitemap URL set must
+exactly equal the exported, indexable, self-canonical HTML URL set in both
+directions after `status`, `date`, `publishAt`, and `CONTENT_BUILD_DATE` have
+resolved the published corpus. This permits intentional draft or scheduled
+content changes without allowing orphaned sitemap URLs or published pages that
+are missing from the sitemap.
 
 ## Non-goals
 
@@ -75,6 +78,7 @@ existing IDs must not be renamed or renumbered.
 - Compare normalized route-entry inventories before and after the move.
 - Run the static runtime boundary test and path-sensitive public route tests.
 - Run `npm run verify:artifact` against the complete export and confirm the
-  27,500-file, 850 MiB, and 904-sitemap-URL budgets.
+  20,000-file and 600 MiB limits, 75-percent warning threshold, and exact
+  bidirectional sitemap-to-published-HTML parity.
 - Run `npm run typecheck` and `npm run lint`.
 - Do not require a runtime backend or server-only route for this boundary.

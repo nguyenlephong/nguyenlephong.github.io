@@ -1109,7 +1109,7 @@ function verifyCanonicalHtmlParity({ htmlMetadataByPath, locationSet, outDir, si
   return canonicalHtmlCount
 }
 
-function verifySitemap({ outDir, siteOrigin, limits, seoConfig, failures, htmlMetadataByPath }) {
+function verifySitemap({ outDir, siteOrigin, seoConfig, failures, htmlMetadataByPath }) {
   const sitemapPath = path.join(outDir, 'sitemap.xml')
   if (!existsSync(sitemapPath)) {
     failures.push('Missing sitemap.xml')
@@ -1144,12 +1144,6 @@ function verifySitemap({ outDir, siteOrigin, limits, seoConfig, failures, htmlMe
         if (language) sitemapLanguageEntries.push({ loc, language, href })
       }
     }
-  }
-
-  if (locations.length < limits.minimumSitemapUrls) {
-    failures.push(
-      `sitemap.xml contains ${locations.length.toLocaleString('en-US')} URLs; expected at least ${limits.minimumSitemapUrls.toLocaleString('en-US')}`,
-    )
   }
 
   const normalizedLocations = []
@@ -1210,6 +1204,11 @@ function verifySitemap({ outDir, siteOrigin, limits, seoConfig, failures, htmlMe
     siteOrigin,
     failures,
   })
+  if (locationSet.size !== canonicalHtmlCount) {
+    failures.push(
+      `sitemap.xml contains ${locationSet.size.toLocaleString('en-US')} unique URLs but the export contains ${canonicalHtmlCount.toLocaleString('en-US')} indexable self-canonical pages`,
+    )
+  }
   verifyArticleHtmlContracts({
     htmlMetadataByPath,
     locationSet,
@@ -1358,7 +1357,6 @@ export async function verifyStaticArtifact({
   const seo = verifySitemap({
     outDir,
     siteOrigin,
-    limits,
     seoConfig: config.seo,
     failures,
     htmlMetadataByPath,

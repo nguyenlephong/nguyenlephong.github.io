@@ -26,7 +26,6 @@ function createFixture(t, overrides = {}) {
     maxCssBytes: 2_000,
     maxRouteJavaScriptBytes: 2_000,
     maxRouteCssBytes: 2_000,
-    minimumSitemapUrls: 1,
     ...overrides.limits,
   }
   const config = {
@@ -326,7 +325,7 @@ function writeMediaPublicationFixture(rootDir) {
   )
   writeFileSync(
     path.join(rootDir, 'public/blog-data/_index.json'),
-    JSON.stringify({ posts: [{ slug: 'static' }] }),
+    JSON.stringify({ posts: [{ slug: 'static', date: '2020-01-01' }] }),
   )
   writeFileSync(path.join(rootDir, 'public/notes-data/_index.json'), JSON.stringify({ posts: [] }))
 }

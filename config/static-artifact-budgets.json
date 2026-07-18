@@ -10,8 +10,7 @@
     "maxJavaScriptBytes": 1415578,
     "maxCssBytes": 215040,
     "maxRouteJavaScriptBytes": 2306868,
-    "maxRouteCssBytes": 225280,
-    "minimumSitemapUrls": 904
+    "maxRouteCssBytes": 225280
   },
   "routeAssetSamples": [
     "en.html",

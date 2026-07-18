@@ -60,6 +60,9 @@ const { localeSwitchPath } = await import(
 const { default: buildSitemap } = await import(
   new URL('../src/app/sitemap.ts', import.meta.url)
 )
+const { isContentPublished } = await import(
+  new URL('../src/lib/content/publication.ts', import.meta.url)
+)
 
 function readJson(relativePath) {
   return JSON.parse(readFileSync(new URL(relativePath, import.meta.url), 'utf8'))
@@ -70,14 +73,18 @@ test('article static params contain authored locale routes only', () => {
   const notesIndex = readJson('../public/notes-data/_index.json')
   const blogParams = listBlogPostParams()
   const noteParams = listNoteParams()
-  const expectedBlogRoutes = blogIndex.posts.reduce(
-    (total, post) => total + post.locales.length,
-    0,
-  )
-  const expectedNoteRoutes = notesIndex.posts.reduce(
-    (total, note) => total + note.locales.length,
-    0,
-  )
+  const expectedBlogRoutes = blogIndex.posts
+    .filter((post) => isContentPublished(post))
+    .reduce(
+      (total, post) => total + post.locales.length,
+      0,
+    )
+  const expectedNoteRoutes = notesIndex.posts
+    .filter((note) => isContentPublished(note))
+    .reduce(
+      (total, note) => total + note.locales.length,
+      0,
+    )
 
   assert.equal(blogParams.length, expectedBlogRoutes)
   assert.equal(noteParams.length, expectedNoteRoutes)
@@ -165,4 +172,5 @@ test('artifact budgets are rebased below the previous near-limit output', () => 
   assert.equal(budget.warnAtPercent, 75)
   assert.equal(budget.limits.fileCount, 20_000)
   assert.equal(budget.limits.totalBytes, 600 * 1024 * 1024)
+  assert.equal(Object.hasOwn(budget.limits, 'minimumSitemapUrls'), false)
 })

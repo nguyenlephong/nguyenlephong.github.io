@@ -373,6 +373,173 @@ test("raw locale metadata drift cannot be hidden by a merged catalog", () => {
   );
 });
 
+test("localized indexes cannot override canonical publication lifecycle fields", async () => {
+  const projectRoot = mkdtempSync(path.join(tmpdir(), "content-publication-override-"));
+  const blogDirectory = path.join(projectRoot, "public", "blog-data");
+  const notesDirectory = path.join(projectRoot, "public", "notes-data");
+  for (const directory of [
+    path.join(blogDirectory, "posts"),
+    path.join(blogDirectory, "vi", "posts"),
+    path.join(notesDirectory, "posts"),
+    path.join(notesDirectory, "vi", "posts")
+  ]) {
+    mkdirSync(directory, { recursive: true });
+  }
+
+  const publicationMetadata = {
+    slug: "fixture-post",
+    title: "Fixture title",
+    summary: "Fixture summary",
+    date: "2020-01-01",
+    publishAt: "2020-01-01",
+    status: "published",
+    readingMinutes: 1,
+    tags: []
+  };
+  const blogMetadata = {
+    ...publicationMetadata,
+    category: "architecture",
+    author: "Nguyen Le Phong"
+  };
+  const noteMetadata = {
+    ...publicationMetadata,
+    topic: "engineering"
+  };
+
+  writeFileSync(path.join(blogDirectory, "_index.json"), JSON.stringify({
+    categories: [{
+      slug: "architecture",
+      title: "Architecture",
+      tagline: "Systems",
+      description: "Architecture notes",
+      accent: "ocean",
+      order: 1
+    }],
+    posts: [{ ...blogMetadata, locales: ["en", "vi"] }]
+  }));
+  writeFileSync(
+    path.join(blogDirectory, "posts", "fixture-post.json"),
+    JSON.stringify({ ...blogMetadata, html: "<p>English fixture</p>" })
+  );
+  writeFileSync(
+    path.join(blogDirectory, "vi", "posts", "fixture-post.json"),
+    JSON.stringify({ slug: "fixture-post", html: "<p>Vietnamese fixture</p>" })
+  );
+
+  writeFileSync(path.join(notesDirectory, "_index.json"), JSON.stringify({
+    topics: [{
+      id: "engineering",
+      label: "Engineering",
+      description: "Engineering notes",
+      color: "teal"
+    }],
+    posts: [{ ...noteMetadata, baseLocale: "en", locales: ["en", "vi"] }]
+  }));
+  writeFileSync(
+    path.join(notesDirectory, "posts", "fixture-post.json"),
+    JSON.stringify({ ...noteMetadata, html: "<p>English fixture</p>" })
+  );
+  writeFileSync(
+    path.join(notesDirectory, "vi", "posts", "fixture-post.json"),
+    JSON.stringify({ slug: "fixture-post", html: "<p>Vietnamese fixture</p>" })
+  );
+
+  const originalCwd = process.cwd();
+  const originalNodeEnv = process.env.NODE_ENV;
+  let fixtureBlogData;
+  let fixtureNotesData;
+  process.chdir(projectRoot);
+  process.env.NODE_ENV = "production";
+  try {
+    const cacheKey = Date.now();
+    [fixtureBlogData, fixtureNotesData] = await Promise.all([
+      import(new URL(`../src/lib/blog/data.ts?publication-guard=${cacheKey}`, import.meta.url)),
+      import(new URL(`../src/lib/notes/data.ts?publication-guard=${cacheKey}`, import.meta.url))
+    ]);
+  } finally {
+    process.chdir(originalCwd);
+    if (originalNodeEnv === undefined) delete process.env.NODE_ENV;
+    else process.env.NODE_ENV = originalNodeEnv;
+  }
+
+  const maliciousValues = [
+    ["date", "2020-01-02"],
+    ["publishAt", "2020-01-03"],
+    ["status", "draft"]
+  ];
+
+  try {
+    for (const [field, value] of maliciousValues) {
+      writeFileSync(
+        path.join(blogDirectory, "vi", "_index.json"),
+        JSON.stringify({ posts: [{ slug: "fixture-post", [field]: value }] })
+      );
+      fixtureBlogData.invalidateBlogContentCatalog();
+      assert.throws(
+        () => fixtureBlogData.loadIndex("vi"),
+        new RegExp(`Localized blog index .*override drift.*for ${field}:`)
+      );
+
+      writeFileSync(
+        path.join(notesDirectory, "vi", "_index.json"),
+        JSON.stringify({ posts: [{ slug: "fixture-post", [field]: value }] })
+      );
+      fixtureNotesData.invalidateNotesContentCatalog();
+      assert.throws(
+        () => fixtureNotesData.loadNotesIndex("vi"),
+        new RegExp(`Localized notes index .*override drift.*for ${field}:`)
+      );
+
+      writeFileSync(
+        path.join(blogDirectory, "vi", "_index.json"),
+        JSON.stringify({ posts: [{ slug: "fixture-post" }] })
+      );
+      writeFileSync(
+        path.join(blogDirectory, "vi", "posts", "fixture-post.json"),
+        JSON.stringify({
+          slug: "fixture-post",
+          [field]: value,
+          html: "<p>Vietnamese fixture</p>"
+        })
+      );
+      fixtureBlogData.invalidateBlogContentCatalog();
+      assert.throws(
+        () => fixtureBlogData.loadIndex("vi"),
+        new RegExp(`Localized blog body .*override drift.*for ${field}:`)
+      );
+
+      writeFileSync(
+        path.join(notesDirectory, "vi", "_index.json"),
+        JSON.stringify({ posts: [{ slug: "fixture-post" }] })
+      );
+      writeFileSync(
+        path.join(notesDirectory, "vi", "posts", "fixture-post.json"),
+        JSON.stringify({
+          slug: "fixture-post",
+          [field]: value,
+          html: "<p>Vietnamese fixture</p>"
+        })
+      );
+      fixtureNotesData.invalidateNotesContentCatalog();
+      assert.throws(
+        () => fixtureNotesData.loadNotesIndex("vi"),
+        new RegExp(`Localized note body .*override drift.*for ${field}:`)
+      );
+
+      writeFileSync(
+        path.join(blogDirectory, "vi", "posts", "fixture-post.json"),
+        JSON.stringify({ slug: "fixture-post", html: "<p>Vietnamese fixture</p>" })
+      );
+      writeFileSync(
+        path.join(notesDirectory, "vi", "posts", "fixture-post.json"),
+        JSON.stringify({ slug: "fixture-post", html: "<p>Vietnamese fixture</p>" })
+      );
+    }
+  } finally {
+    rmSync(projectRoot, { recursive: true, force: true });
+  }
+});
+
 test("choice-or-fate metadata stays aligned across indexes and localized bodies", () => {
   const expectedTag = "Choice and Circumstance";
   const enIndex = readJson("../public/notes-data/_index.json");

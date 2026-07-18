@@ -16,6 +16,7 @@ import {
 } from '@/lib/content/catalog'
 import { pageCount } from '@/lib/content/pagination'
 import { getContentVersionTracker } from '@/lib/content/freshness'
+import { isContentPublished } from '@/lib/content/publication'
 import { rewriteContentAssetValues } from '@/lib/assets/icdn'
 import {
   blogIndexOverrideSchema,
@@ -43,6 +44,8 @@ const BLOG_METADATA_FIELDS = [
   'summary',
   'date',
   'updated',
+  'publishAt',
+  'status',
   'readingMinutes',
   'tags',
   'author',
@@ -51,6 +54,8 @@ const BLOG_CANONICAL_OVERRIDE_FIELDS = [
   'slug',
   'category',
   'date',
+  'publishAt',
+  'status',
   'author',
   'featured',
   'series',
@@ -174,8 +179,9 @@ export function loadIndex(locale?: string): BlogIndexFile {
     const cached = localizedIndexCache.get(locale as string)
     if (cached?.version === version) return cached.index
 
+    const overridePath = path.join(DATA_DIR, locale as string, '_index.json')
     const override = readJsonValidated(
-      path.join(DATA_DIR, locale as string, '_index.json'),
+      overridePath,
       blogIndexOverrideSchema,
     )
     if (!override) {
@@ -193,6 +199,17 @@ export function loadIndex(locale?: string): BlogIndexFile {
       catalog.index.posts.map((post) => post.slug),
       override.posts?.map((post) => post.slug) ?? [],
     )
+    for (const localizedPost of override.posts ?? []) {
+      const canonicalPost = catalog.postsBySlug.get(localizedPost.slug)
+      if (!canonicalPost) continue
+      assertProvidedMetadataParity(
+        `Localized blog index (${locale})`,
+        canonicalPost as unknown as Record<string, unknown>,
+        localizedPost as unknown as Record<string, unknown>,
+        overridePath,
+        BLOG_CANONICAL_OVERRIDE_FIELDS,
+      )
+    }
 
     const index = blogIndexSchema.parse(rewriteContentAssetValues({
       categories: overlayByKey(
@@ -260,6 +277,7 @@ export function getPostsByCategory(
     .posts.filter(
       (post) =>
         post.category === category &&
+        isContentPublished(post) &&
         post.locales.includes(contentLocale as Locale),
     )
     .sort(byDateDesc)
@@ -303,7 +321,10 @@ export function getSeriesContext(
 export function listPosts(locale?: string): BlogPostMeta[] {
   const contentLocale = (locale ?? routing.defaultLocale) as Locale
   return loadIndex(locale)
-    .posts.filter((post) => post.locales.includes(contentLocale))
+    .posts.filter(
+      (post) =>
+        isContentPublished(post) && post.locales.includes(contentLocale),
+    )
     .sort(byDateDesc)
 }
 
@@ -317,7 +338,7 @@ export function listBlogArchiveLocales(page: number): Locale[] {
 
 export function loadPost(slug: string, locale?: string): BlogPost | null {
   const indexedPost = baseCatalog().postsBySlug.get(slug)
-  if (!indexedPost) return null
+  if (!indexedPost || !isContentPublished(indexedPost)) return null
 
   return loadPostBody(slug, indexedPost, locale)
 }
@@ -376,7 +397,7 @@ function loadPostBody(
 
 export function getPostContentLocales(slug: string): BlogPostMeta['locales'] {
   const post = baseIndex().posts.find((entry) => entry.slug === slug)
-  return post ? [...post.locales] : []
+  return post && isContentPublished(post) ? [...post.locales] : []
 }
 
 /** Authored article routes only; untranslated locale paths must not be exported. */
@@ -385,13 +406,15 @@ export function listBlogPostParams(): Array<{
   category: string
   slug: string
 }> {
-  return baseIndex().posts.flatMap((post) =>
-    post.locales.map((locale) => ({
-      locale,
-      category: post.category,
-      slug: post.slug,
-    })),
-  )
+  return baseIndex().posts
+    .filter((post) => isContentPublished(post))
+    .flatMap((post) =>
+      post.locales.map((locale) => ({
+        locale,
+        category: post.category,
+        slug: post.slug,
+      })),
+    )
 }
 
 /** Canonical category slugs — drives static-param generation. */
@@ -404,5 +427,7 @@ export function listCategoryPostPairs(): Array<{
   category: string
   slug: string
 }> {
-  return baseIndex().posts.map((p) => ({ category: p.category, slug: p.slug }))
+  return baseIndex()
+    .posts.filter((post) => isContentPublished(post))
+    .map((post) => ({ category: post.category, slug: post.slug }))
 }

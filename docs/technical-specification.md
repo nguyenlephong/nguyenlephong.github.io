@@ -265,13 +265,17 @@ SEO is a first-class part of the app.
 | Artifact SEO verifier  | `scripts/verify-static-artifact.mjs`| Checks exported sitemap URLs, canonicals, titles, descriptions, language metadata, and robots. |
 
 The artifact verifier works against the generated `out/` directory rather than
-source-code patterns. Every sitemap URL must resolve to exported HTML, use the
-configured HTTPS origin, have one matching canonical URL, remain indexable, and
-include a title, description, and document language. Sitemap alternates must
-also point to an indexable URL in the same sitemap. Any emitted file whose path
-contains a `heartbeats` segment fails the build. The same fail-closed check scans
-public text artifacts, including HTML, route payloads, manifests, and service
-workers, so they cannot retain a reference to the removed route.
+source-code patterns. Its sitemap URL set must exactly equal the exported,
+indexable, self-canonical HTML URL set in both directions after the publication
+lifecycle has applied `status`, `date`, `publishAt`, and the build-wide
+`CONTENT_BUILD_DATE`. Every sitemap URL must therefore resolve to exported HTML,
+use the configured HTTPS origin, have one matching canonical URL, remain
+indexable, and include a title, description, and document language. Sitemap
+alternates must also point to an indexable URL in the same sitemap. Any emitted
+file whose path contains a `heartbeats` segment fails the build. The same
+fail-closed check scans public text artifacts, including HTML, route payloads,
+manifests, and service workers, so they cannot retain a reference to the removed
+route.
 
 ### OpenGraph Build Flow
 
@@ -485,41 +489,37 @@ while route and content duplication are reduced:
 
 | Budget | Current limit |
 |--------|---------------|
-| Total artifact | 850 MiB |
-| Total files | 27,500 |
+| Total artifact | 600 MiB |
+| Total files | 20,000 |
+| Total-size and file-count warning threshold | 75 percent |
 | Largest HTML file | 430 KiB |
 | Largest JavaScript file | 1.35 MiB |
 | Largest CSS file | 210 KiB |
 | JavaScript referenced by one route | 2.2 MiB |
 | CSS referenced by one route | 220 KiB |
-| Sitemap URL floor | 904 |
+| Sitemap coverage | Exact bidirectional parity with published, indexable, self-canonical HTML |
 
 The pathless `(site)` route group intentionally adds about 2,144 Next.js RSC
 segment files so public pages and Studio can have separate runtime boundaries
-without changing public URLs. The complete export measures 26,463 files and
-673.7 MiB: the route-group isolation adds only about 6.5 MiB, but its file
-inventory requires the 27,500-file ceiling. That cap leaves only 1,037 files,
-or about 3.9 percent, of headroom. The 850 MiB byte ceiling remains unchanged;
-the adjustment is a measured compatibility allowance rather than permission
-for general artifact growth.
+without changing public URLs. The current 600 MiB and 20,000-file limits are
+repository-wide post-optimization guardrails, not performance targets or a
+route-group growth allowance. The verifier warns at 75 percent of the total-byte
+and file-count limits so growth is visible before either hard ceiling is close.
 
-The verifier warns at 90 percent of the total-byte and file-count limits. These
-are temporary ceilings, not performance targets. Tighten them after the
-locale-route and Studio bundle work reduces the baseline. All recognized public
-text formats, including exported HTML and Next RSC `.txt` payloads, are scanned
-with bounded concurrency for high-confidence private keys and provider tokens.
-A PEM finding requires a complete header, credible base64 payload, and matching
-footer; a documentation-only header is not treated as a leak. Route-asset
-budgets sample the home, blog, notes, and Studio entry points across English,
-Vietnamese, Chinese, Japanese, Korean, and French routes. Individual file limits
-still cover every emitted HTML, JavaScript, and CSS file.
+All recognized public text formats, including exported HTML and Next RSC `.txt`
+payloads, are scanned with bounded concurrency for high-confidence private keys
+and provider tokens. A PEM finding requires a complete header, credible base64
+payload, and matching footer; a documentation-only header is not treated as a
+leak. Route-asset budgets sample the home, blog, notes, and Studio entry points
+across English, Vietnamese, Chinese, Japanese, Korean, and French routes.
+Individual file limits still cover every emitted HTML, JavaScript, and CSS file.
 
-The SEO gate keeps the current 904-URL sitemap baseline, requires core public
-routes for every supported locale, validates every sitemap URL against its
-exported canonical HTML, and performs the reverse check for self-canonical,
-indexable HTML. Firebase web configuration remains allowed because it is a
-public client identifier; authorization still belongs in Firebase Rules and
-App Check.
+The SEO gate requires core public routes for every supported locale and exact
+bidirectional parity between sitemap URLs and the published, indexable,
+self-canonical HTML set. It deliberately has no fixed URL-count floor because
+scheduled and draft content can change the valid corpus. Firebase web
+configuration remains allowed because it is a public client identifier;
+authorization still belongs in Firebase Rules and App Check.
 
 ### Deploy Commands
 

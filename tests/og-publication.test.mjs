@@ -8,6 +8,7 @@ import {
   parseVerifierArgs,
   verifyOgPublication,
 } from '../scripts/verify-og-publication.mjs'
+import { expectedArticleOgPublications } from '../scripts/lib/media-publication-contract.mjs'
 
 const JPEG_FIXTURE = Buffer.from([0xff, 0xd8, 0xff, 0xd9])
 
@@ -52,16 +53,74 @@ async function createFixture(t) {
     fs.writeFile(path.join(siteDir, 'config/media-publication.json'), JSON.stringify(contract)),
     fs.writeFile(
       path.join(siteDir, 'public/blog-data/_index.json'),
-      JSON.stringify({ posts: [{ slug: 'static-first' }, { slug: 'safe-boundaries' }] }),
+      JSON.stringify({
+        posts: [
+          { slug: 'static-first', date: '2020-01-01' },
+          { slug: 'safe-boundaries', date: '2020-01-02' },
+        ],
+      }),
     ),
     fs.writeFile(
       path.join(siteDir, 'public/notes-data/_index.json'),
-      JSON.stringify({ posts: [{ slug: 'calm-systems' }] }),
+      JSON.stringify({ posts: [{ slug: 'calm-systems', date: '2020-01-03' }] }),
     ),
   ])
   t.after(() => fs.rm(rootDir, { recursive: true, force: true }))
   return { contract, domPubDir, siteDir }
 }
+
+test('expects only published article OG assets and ignores stale unpublished files', async (t) => {
+  const { domPubDir, siteDir } = await createFixture(t)
+  await Promise.all([
+    fs.writeFile(
+      path.join(siteDir, 'public/blog-data/_index.json'),
+      JSON.stringify({
+        posts: [
+          { slug: 'static-first', date: '2026-07-18' },
+          { slug: 'safe-boundaries', date: '2026-07-19' },
+          { slug: 'draft-entry', date: '2020-01-01', status: 'draft' },
+        ],
+      }),
+    ),
+    fs.writeFile(
+      path.join(siteDir, 'public/notes-data/_index.json'),
+      JSON.stringify({
+        posts: [{ slug: 'calm-systems', date: '2020-01-01', publishAt: '2026-07-19' }],
+      }),
+    ),
+    fs.writeFile(path.join(domPubDir, 'icdn/og/blogs/static-first.jpg'), JPEG_FIXTURE),
+    fs.writeFile(path.join(domPubDir, 'icdn/og/blogs/safe-boundaries.jpg'), JPEG_FIXTURE),
+  ])
+
+  const expected = await expectedArticleOgPublications({
+    rootDir: siteDir,
+    contentBuildDate: '2026-07-18',
+  })
+  assert.deepEqual(expected.map(({ slug }) => slug), ['static-first'])
+
+  const report = await verifyOgPublication({
+    rootDir: siteDir,
+    contentBuildDate: '2026-07-18',
+    localDomPubDir: domPubDir,
+  })
+  assert.equal(report.expected, 1)
+  assert.deepEqual(report.expectedBySurface, { blog: 1, notes: 0 })
+  assert.deepEqual(report.failures, [])
+  assert.deepEqual(await fs.readFile(path.join(domPubDir, 'icdn/og/blogs/safe-boundaries.jpg')), JPEG_FIXTURE)
+})
+
+test('fails closed when a raw OG publication index has invalid lifecycle metadata', async (t) => {
+  const { siteDir } = await createFixture(t)
+  await fs.writeFile(
+    path.join(siteDir, 'public/blog-data/_index.json'),
+    JSON.stringify({ posts: [{ slug: 'static-first', date: '2026-02-30' }] }),
+  )
+
+  await assert.rejects(
+    expectedArticleOgPublications({ rootDir: siteDir, contentBuildDate: '2026-07-18' }),
+    /invalid publication metadata for blog\/static-first: Content date must be a real UTC date/,
+  )
+})
 
 test('proves all expected article OG keys from a read-only local dom-pub tree', async (t) => {
   const { domPubDir, siteDir } = await createFixture(t)
