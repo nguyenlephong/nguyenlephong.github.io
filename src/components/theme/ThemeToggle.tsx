@@ -1,24 +1,23 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { LuSun, LuMoon, LuMonitor } from 'react-icons/lu'
-import { THEME_STORAGE_KEY } from './ThemeScript'
 import { track } from '@/lib/analytics'
-
-type ThemeSetting = 'light' | 'dark' | 'system'
-
-function resolveTheme(setting: ThemeSetting): 'light' | 'dark' {
-  if (setting === 'system') {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  }
-  return setting
-}
+import {
+  parseThemeSetting,
+  resolveTheme,
+  serializeThemePreference,
+  THEME_MEDIA_QUERY,
+  THEME_STORAGE_KEY,
+  type ThemeSetting,
+} from './theme-preference'
 
 function applyTheme(setting: ThemeSetting): void {
-  const resolved = resolveTheme(setting)
+  const prefersDark = window.matchMedia(THEME_MEDIA_QUERY).matches
+  const resolved = resolveTheme(setting, prefersDark)
   document.documentElement.setAttribute('data-theme', resolved)
   localStorage.setItem(
     THEME_STORAGE_KEY,
-    JSON.stringify({ theme: resolved, theme_setting: setting })
+    serializeThemePreference(setting, prefersDark),
   )
 }
 
@@ -33,10 +32,7 @@ export default function ThemeToggle() {
       setMounted(true)
       try {
         const stored = localStorage.getItem(THEME_STORAGE_KEY)
-        if (stored) {
-          const parsed = JSON.parse(stored) as { theme_setting?: ThemeSetting }
-          if (parsed.theme_setting) setSetting(parsed.theme_setting)
-        }
+        setSetting(parseThemeSetting(stored))
       } catch {
         // ignore
       }
@@ -49,7 +45,7 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     if (setting !== 'system') return
-    const mq = window.matchMedia('(prefers-color-scheme: dark)')
+    const mq = window.matchMedia(THEME_MEDIA_QUERY)
     const handler = () => applyTheme('system')
     mq.addEventListener('change', handler)
     return () => mq.removeEventListener('change', handler)
