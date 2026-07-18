@@ -12,6 +12,7 @@ const DEFAULT_LOCALE = 'en'
 const PAGE_VERSION_PARAM = '__offlineVersion'
 const OFFLINE_MANIFEST_VERSION_META = 'offline-manifest-version'
 const CDN_BACKED_EXPORT_PATHS = ['og', 'assets/blog', 'assets/notes', 'assets/photos']
+const BUILD_ONLY_EXPORT_PATHS = ['og-cache']
 const DEFAULT_HTML_FILE_CONCURRENCY = 16
 
 async function walk(dir) {
@@ -32,6 +33,14 @@ async function removeCdnBackedExportAssets() {
   await Promise.all(
     CDN_BACKED_EXPORT_PATHS.map((relativePath) =>
       fs.rm(path.join(OUT_DIR, relativePath), { recursive: true, force: true }),
+    ),
+  )
+}
+
+export async function pruneBuildOnlyExportAssets(outDir = OUT_DIR) {
+  await Promise.all(
+    BUILD_ONLY_EXPORT_PATHS.map((relativePath) =>
+      fs.rm(path.join(outDir, relativePath), { recursive: true, force: true }),
     ),
   )
 }
@@ -98,7 +107,7 @@ function isReadingAsset(relativePath) {
 }
 
 function isExtendedAsset(relativePath) {
-  return relativePath.startsWith('assets/photos/') || relativePath === 'assets/full-bg.svg'
+  return relativePath.startsWith('assets/photos/')
 }
 
 function isCoreSharedFile(relativePath) {
@@ -808,7 +817,10 @@ async function main() {
     return
   }
 
-  await removeCdnBackedExportAssets()
+  await Promise.all([
+    removeCdnBackedExportAssets(),
+    pruneBuildOnlyExportAssets(),
+  ])
   const files = await walk(OUT_DIR)
   const relativeFiles = files.map((file) => path.relative(OUT_DIR, file))
   const [appVersion, remoteAssets, pageVersions] = await Promise.all([

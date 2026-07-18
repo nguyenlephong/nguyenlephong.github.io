@@ -17,7 +17,7 @@ import {
   getCategory,
   getPostContentLocales,
   getSeriesContext,
-  listCategoryPostPairs,
+  listBlogPostParams,
   listPosts,
   loadPost,
 } from '@/lib/blog/data'
@@ -38,11 +38,10 @@ type Props = {
   params: Promise<{ locale: string; category: string; slug: string }>
 }
 
+export const dynamicParams = false
+
 export function generateStaticParams() {
-  const pairs = listCategoryPostPairs()
-  return routing.locales.flatMap((locale) =>
-    pairs.map(({ category, slug }) => ({ locale, category, slug })),
-  )
+  return listBlogPostParams()
 }
 
 function formatDate(iso: string, locale: string): string {
@@ -262,7 +261,11 @@ export default async function BlogPostPage({ params }: Props) {
       : null
 
   return (
-    <main className={`blog-article blog-article--${cat?.accent ?? 'ocean'}`}>
+    <main
+      className={`blog-article blog-article--${cat?.accent ?? 'ocean'}`}
+      data-content-locales={contentLocales.join(' ')}
+      data-content-locale-fallback="/blog"
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
