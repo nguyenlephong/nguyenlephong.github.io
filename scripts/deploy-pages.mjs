@@ -67,7 +67,12 @@ export function publishLegacyPages(options = {}) {
   const { root, outDir, cacheDir, remote, branch, commitMessage, env: processEnv } = config
   const commandRunner = options.commandRunner ?? createCommandRunner(root, processEnv)
   const indexFile = path.join(cacheDir, 'deploy-pages.index')
-  const verifierPath = path.join(root, 'scripts', 'verify-static-artifact.mjs')
+  const staticVerifierPath = path.join(root, 'scripts', 'verify-static-artifact.mjs')
+  const performanceVerifierPath = path.join(
+    root,
+    'scripts',
+    'verify-performance-artifact.mjs',
+  )
 
   if (!existsSync(outDir)) {
     throw new Error('missing out directory. Run `npm run build` first.')
@@ -94,7 +99,14 @@ export function publishLegacyPages(options = {}) {
   const verificationEnv = { ...processEnv }
   delete verificationEnv.STATIC_ARTIFACT_BUDGET_CONFIG
   delete verificationEnv.STATIC_ARTIFACT_OUTPUT_DIR
-  commandRunner.run(process.execPath, [verifierPath], { cwd: root, env: verificationEnv })
+  commandRunner.run(process.execPath, [staticVerifierPath], {
+    cwd: root,
+    env: verificationEnv,
+  })
+  commandRunner.run(process.execPath, [performanceVerifierPath], {
+    cwd: root,
+    env: verificationEnv,
+  })
 
   const gitDir = commandRunner.output('git', ['rev-parse', '--absolute-git-dir'])
   const outputTreeGitArgs = ['--git-dir', gitDir, '--work-tree', outDir]

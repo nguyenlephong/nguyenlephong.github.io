@@ -13,6 +13,7 @@ import {
   compareSearchAnalytics,
   evaluateSeoHealth,
   exchangeServiceAccountToken,
+  missingSeoFieldCredentials,
   renderMarkdown,
   searchDateRange
 } from "../scripts/monitor-seo-field-data.mjs";
@@ -477,6 +478,36 @@ test("missing required credentials are action-required without making requests",
   assert.match(renderMarkdown(report), /Action required: \*\*yes\*\*/);
 });
 
+test("credential preflight names only missing variables", () => {
+  assert.deepEqual(missingSeoFieldCredentials({}), [
+    "GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON",
+    "CRUX_API_KEY"
+  ]);
+  assert.deepEqual(
+    missingSeoFieldCredentials({
+      GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON: "configured",
+      CRUX_API_KEY: "configured"
+    }),
+    []
+  );
+
+  const env = { ...process.env };
+  delete env.GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON;
+  delete env.CRUX_API_KEY;
+  const run = spawnSync(
+    process.execPath,
+    ["scripts/monitor-seo-field-data.mjs", "--check-credentials"],
+    { cwd: process.cwd(), env, encoding: "utf8" }
+  );
+
+  assert.equal(run.status, 1);
+  assert.equal(run.stdout, "");
+  assert.match(run.stderr, /missing required repository secret\(s\)/);
+  assert.match(run.stderr, /GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON/);
+  assert.match(run.stderr, /CRUX_API_KEY/);
+  assert.doesNotMatch(run.stderr, /private_key|BEGIN PRIVATE KEY/i);
+});
+
 test("CLI exits non-zero with a sanitized action-required report when secrets are missing", () => {
   const env = { ...process.env };
   delete env.GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON;
@@ -519,7 +550,12 @@ test("workflow is standalone, weekly, manual, read-only, and action-requiring", 
   assert.doesNotMatch(workflow, /continue-on-error/);
   assert.match(workflow, /GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON:/);
   assert.match(workflow, /CRUX_API_KEY:/);
+  assert.match(
+    workflow,
+    /node scripts\/monitor-seo-field-data\.mjs --check-credentials/
+  );
   assert.match(workflow, /node scripts\/monitor-seo-field-data\.mjs/);
+  assert.doesNotMatch(workflow, /report-search-opportunities/);
   assert.doesNotMatch(workflow, /upload-artifact|upload-pages-artifact/);
   assert.doesNotMatch(
     workflow,

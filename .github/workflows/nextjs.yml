@@ -62,6 +62,9 @@ jobs:
       - name: Verify architecture and SEO budgets
         run: npm run verify:artifact
 
+      - name: Verify compressed performance budgets
+        run: npm run verify:performance-artifact
+
       - name: Verify Studio static artifact
         run: npm run verify:studio-artifact
 

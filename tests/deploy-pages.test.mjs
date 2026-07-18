@@ -19,6 +19,10 @@ function createRoot(t) {
   writeFileSync(path.join(root, 'out/og-cache/generated.png'), 'generated')
   writeFileSync(path.join(root, 'out/assets/blog/cdn-backed.png'), 'remote')
   writeFileSync(path.join(root, 'scripts/verify-static-artifact.mjs'), '// fixture verifier')
+  writeFileSync(
+    path.join(root, 'scripts/verify-performance-artifact.mjs'),
+    '// fixture performance verifier',
+  )
   t.after(() => rmSync(root, { recursive: true, force: true }))
   return root
 }
@@ -47,14 +51,19 @@ test('legacy deploy is opt-in and cannot override the gh-pages target', () => {
 test('legacy deploy verifies the final out tree before staging and force-pushing gh-pages', (t) => {
   const root = createRoot(t)
   const calls = []
-  let verifiedFinalTree = false
+  const verifiedFinalTree = []
   const commandRunner = {
     run(command, args, options = {}) {
       calls.push({ command, args, options })
       if (command !== process.execPath) return
 
-      verifiedFinalTree = true
-      assert.equal(args[0], path.join(root, 'scripts/verify-static-artifact.mjs'))
+      verifiedFinalTree.push(args[0])
+      assert.ok(
+        [
+          path.join(root, 'scripts/verify-static-artifact.mjs'),
+          path.join(root, 'scripts/verify-performance-artifact.mjs'),
+        ].includes(args[0]),
+      )
       assert.equal(Object.hasOwn(options.env, 'STATIC_ARTIFACT_BUDGET_CONFIG'), false)
       assert.equal(Object.hasOwn(options.env, 'STATIC_ARTIFACT_OUTPUT_DIR'), false)
       assert.ok(existsSync(path.join(root, 'out/.nojekyll')))
@@ -81,12 +90,27 @@ test('legacy deploy verifies the final out tree before staging and force-pushing
     commandRunner,
   })
 
-  assert.equal(verifiedFinalTree, true)
+  assert.deepEqual(verifiedFinalTree, [
+    path.join(root, 'scripts/verify-static-artifact.mjs'),
+    path.join(root, 'scripts/verify-performance-artifact.mjs'),
+  ])
   assert.equal(result.branch, LEGACY_PAGES_BRANCH)
-  const verifierIndex = calls.findIndex(({ command }) => command === process.execPath)
+  const staticVerifierIndex = calls.findIndex(
+    ({ command, args }) =>
+      command === process.execPath && args[0].endsWith('verify-static-artifact.mjs'),
+  )
+  const performanceVerifierIndex = calls.findIndex(
+    ({ command, args }) =>
+      command === process.execPath && args[0].endsWith('verify-performance-artifact.mjs'),
+  )
   const stageIndex = calls.findIndex(({ args }) => args.includes('add'))
   const pushIndex = calls.findIndex(({ args }) => args[0] === 'push')
-  assert.ok(verifierIndex >= 0 && verifierIndex < stageIndex && stageIndex < pushIndex)
+  assert.ok(
+    staticVerifierIndex >= 0 &&
+      staticVerifierIndex < performanceVerifierIndex &&
+      performanceVerifierIndex < stageIndex &&
+      stageIndex < pushIndex,
+  )
   assert.deepEqual(calls[pushIndex].args, [
     'push',
     'origin',

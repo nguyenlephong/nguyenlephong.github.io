@@ -473,7 +473,9 @@ Current test focus:
 npm run build
 npm run build:fast
 npm run build:og
+npm run analyze
 npm run verify:artifact
+npm run verify:performance-artifact
 ```
 
 | Command      | Meaning                                                               |
@@ -481,7 +483,9 @@ npm run verify:artifact
 | `build`      | Full static export with full OG generation.                           |
 | `build:fast` | Static export with dynamic OG generation skipped/restored from cache. |
 | `build:og`   | Targeted OG build helper.                                             |
+| `analyze`    | Writes the official Next.js bundle analysis to `.next/diagnostics/analyze` without starting a server. |
 | `verify:artifact` | Verifies output size, route assets, SEO output, and public-secret guardrails without rebuilding. |
+| `verify:performance-artifact` | Verifies route Brotli, RSC payload, Studio runtime, and third-party connection budgets without rebuilding. |
 
 `config/static-artifact-budgets.json` contains the static artifact limits. The
 limits deliberately sit close to the measured export so new growth is visible
@@ -514,6 +518,38 @@ leak. Route-asset budgets sample the home, blog, notes, and Studio entry points
 across English, Vietnamese, Chinese, Japanese, Korean, and French routes.
 Individual file limits still cover every emitted HTML, JavaScript, and CSS file.
 
+`verify:performance-artifact` adds compressed and route-level RSC regression
+budgets without replacing those raw ceilings. Total RSC size is an advisory
+capacity signal because valid content growth increases it; average and
+per-surface route payloads remain hard gates. The initial fixed-date baseline
+and limits are:
+
+| Surface or payload | 2026-07-18 baseline | Gate |
+|--------------------|---------------------:|-----:|
+| Home initial JavaScript, Brotli | 237,412 bytes | Hard limit: 242,688 bytes |
+| Blog initial JavaScript, Brotli | 237,538 bytes | Hard limit: 242,688 bytes |
+| Notes initial JavaScript, Brotli | 237,450 bytes | Hard limit: 242,688 bytes |
+| Studio initial JavaScript, Brotli | 338,476 bytes | Hard limit: 346,112 bytes |
+| All exported RSC `.txt` payloads | 210,620,976 bytes | Advisory warning: 251,658,240 bytes |
+| Average of 24 localized home/Blog/Notes/Studio RSC samples | 70,612 bytes | Hard limit: 72,704 bytes |
+| Largest localized home RSC sample | 81,086 bytes | Hard limit: 83,968 bytes |
+| Largest localized Blog RSC sample | 81,927 bytes | Hard limit: 84,992 bytes |
+| Largest localized Notes RSC sample | 73,996 bytes | Hard limit: 76,800 bytes |
+| Largest localized Studio RSC sample | 67,542 bytes | Hard limit: 70,656 bytes |
+
+The hard limits include only a narrow regression allowance; the aggregate RSC
+warning leaves more room for legitimate content growth. Hard limits must be
+reduced after locale-message scoping, Studio splitting, or other optimizations
+lower the measured baseline. The Studio contract also rejects eagerly loaded
+heavy dashboard, ReactFlow, Recharts, and Firebase markers, and rejects new
+third-party connection origins unless they are explicitly reviewed in
+`config/static-artifact-budgets.json`.
+
+`npm run analyze` uses the official Next.js 16
+`next experimental-analyze --output` command and adds no package. The generated
+analysis remains below the ignored `.next/` directory and is diagnostic input,
+not a deploy artifact.
+
 The SEO gate requires core public routes for every supported locale and exact
 bidirectional parity between sitemap URLs and the published, indexable,
 self-canonical HTML set. It deliberately has no fixed URL-count floor because
@@ -523,12 +559,14 @@ authorization still belongs in Firebase Rules and App Check.
 
 ### Deploy Commands
 
-After the control-plane migration below, the authoritative deployment path is
+The authoritative deployment path is
 `.github/workflows/nextjs.yml`. A push to `main` runs source checks, performs one
 full production build, verifies the artifact, uploads it with the supported
 GitHub Pages artifact action, and then deploys that exact verified artifact.
-The repository's Pages source must be set to **GitHub Actions** for that deploy
-job to become authoritative.
+The live Pages API reports `build_type: workflow`, so GitHub Actions is already
+the active control-plane source. The API may still expose `gh-pages` under its
+legacy `source` field; that residual branch is retained only for rollback and
+does not replace the workflow deployment path.
 
 The old branch publisher remains available only as an explicit emergency
 fallback:
@@ -540,33 +578,27 @@ npm run deploy:legacy
 
 `deploy:legacy` requires the opt-in set by its npm script and force-with-lease
 publishes the existing `out/` directory to `gh-pages`. After its final cleanup,
-the publisher always runs `verify:artifact` on that exact tree before staging
-and pushing it. The target branch is fixed: any `PAGES_BRANCH` environment
-override is rejected. It is not a normal release path.
+the publisher runs both `verify:artifact` and
+`verify:performance-artifact` on that exact tree before staging and pushing it.
+The target branch is fixed: any `PAGES_BRANCH` environment override is
+rejected. It is not a normal release path.
 `deploy:legacy:build` additionally bumps `app-version.json` and performs the
-full build. `npm run fb-deploy` uses the same fixed artifact verifier immediately
-before publishing `out/` to Firebase Hosting. CI and deployment both use npm
-and Node 22 (minimum 22.18.0).
+full build. `npm run fb-deploy` runs both verifiers immediately before
+publishing `out/` to Firebase Hosting. CI and deployment both use npm and Node
+22 (minimum 22.18.0).
 
-Merging this change does **not** mutate the repository's live Pages setting. At
-the time of this migration, GitHub Pages still uses the legacy branch source.
-Perform the control-plane migration after the PR is merged:
+An emergency rollback is an explicit control-plane operation:
 
-1. Leave the existing `gh-pages` deployment serving traffic while the PR lands.
-2. Open **Settings → Environments → github-pages → Deployment branches and
-   tags**, choose **Selected branches and tags**, and allow only `main`. The
-   workflow also checks `github.ref == 'refs/heads/main'`, including manual
-   dispatches, but the environment policy is the independent deployment guard.
-3. Change **Settings → Pages → Build and deployment → Source** to
-   **GitHub Actions** (API `build_type: workflow`).
-4. Manually dispatch `nextjs.yml` from `main`, wait for its verified artifact to deploy,
-   and validate the public canonical URLs and `sitemap.xml`.
-5. If deployment fails, switch the Pages source back to the `gh-pages` branch;
-   the guarded legacy publisher remains available until the migration is
-   confirmed.
-6. After the rollback window, remove the `gh-pages` branch deliberately. The
-   source switch does not delete that branch or its last published tree, so it
-   remains a live legacy residual until this explicit cleanup is completed.
+1. Build and inspect `out/`, then run the guarded `deploy:legacy` publisher.
+2. Its lease pins the observed remote `gh-pages` SHA, or an empty expected SHA
+   when the branch does not exist, so a concurrent branch update is not silently
+   overwritten.
+3. Change **Settings → Pages → Build and deployment → Source** from
+   **GitHub Actions** to the `gh-pages` branch only when the rollback is required.
+4. Validate canonical URLs and `sitemap.xml`, then restore **GitHub Actions**
+   after the incident is resolved.
+5. Keep or delete `gh-pages` only through a deliberate rollback-policy change;
+   deleting it removes this recovery option.
 
 ### GitHub Actions
 
@@ -586,7 +618,8 @@ Main deployment path:
 3. Source quality checks run before publication.
 4. Next.js performs one full static export into `out/`.
 5. OG images are generated, cached, renamed, and linked as `.png`.
-6. Architecture, SEO, and public-secret budgets verify the generated artifact.
+6. Architecture, SEO, public-secret, compressed JavaScript, RSC, and Studio
+   runtime budgets verify the generated artifact.
 7. GitHub Actions uploads and deploys that exact artifact to GitHub Pages.
 8. Visitor browsers load static files and optional external scripts.
 9. Browser-side engagement calls go to Firebase Firestore.

@@ -29,6 +29,12 @@ jobs:
         with:
           node-version-file: .nvmrc
 
+      - name: Validate monitoring credentials
+        env:
+          GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON }}
+          CRUX_API_KEY: ${{ secrets.CRUX_API_KEY }}
+        run: node scripts/monitor-seo-field-data.mjs --check-credentials
+
       - name: Collect sanitized field data
         env:
           GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON }}
