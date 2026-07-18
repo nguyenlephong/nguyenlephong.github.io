@@ -5,9 +5,11 @@ import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { profileInfo, APP_ROUTE } from '@/app/app.const'
-import { PAGE_SEO, absoluteUrl } from '@/app/seo.config'
+import { PAGE_SEO } from '@/app/seo.config'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import PageTracker from '@/components/analytics/PageTracker'
+import { serializeJsonLd } from '@/lib/seo/json-ld'
+import { localizedPageIdentity } from '@/lib/seo/locale'
 
 const seo = PAGE_SEO.gallery
 
@@ -20,16 +22,19 @@ type Props = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
+  const identity = localizedPageIdentity(locale, seo.path)
   return {
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
-    alternates: { canonical: `/${locale}${seo.path}` },
+    alternates: { canonical: identity.canonical, languages: identity.languages },
     openGraph: {
       title: seo.title,
       description: seo.description,
-      url: absoluteUrl(`/${locale}${seo.path}`),
+      url: identity.canonical,
       type: 'website',
+      locale: identity.ogLocale,
+      alternateLocale: identity.alternateOgLocales,
     },
     twitter: {
       card: 'summary_large_image',
@@ -43,6 +48,7 @@ export default async function GalleryPage({ params }: Props) {
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+  const identity = localizedPageIdentity(locale, seo.path)
   const t = await getTranslations({ locale, namespace: 'Pages.gallery' })
   const categories = [
     { id: 'certificates', label: t('categories.certificates'), items: profileInfo.gallery.certificates },
@@ -54,10 +60,10 @@ export default async function GalleryPage({ params }: Props) {
   const galleryLd = {
     '@context': 'https://schema.org',
     '@type': 'ImageGallery',
-    '@id': 'https://nguyenlephong.github.io/gallery#gallery',
+    '@id': `${identity.canonical}#gallery`,
     name: seo.title,
     description: seo.description,
-    url: 'https://nguyenlephong.github.io/gallery',
+    url: identity.canonical,
     image: categories.flatMap((c) =>
       c.items.map((it) => ({
         '@type': 'ImageObject',
@@ -71,7 +77,7 @@ export default async function GalleryPage({ params }: Props) {
     <main className="gallery-showcase">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(galleryLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(galleryLd) }}
       />
       <PageTracker page="gallery" eventName="gallery_view" />
       <div className="container">

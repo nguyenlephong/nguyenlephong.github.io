@@ -16,6 +16,7 @@ jobs:
     name: Build and verify static artifact
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:
@@ -56,6 +57,15 @@ jobs:
       - name: Verify architecture and SEO budgets
         run: npm run verify:artifact
 
+      - name: Verify Studio static artifact
+        run: npm run verify:studio-artifact
+
+      - name: Verify article OG publication tree
+        run: npm run verify:og-publication -- --remote-tree
+
+      - name: Verify live article OG responses
+        run: npm run verify:og-publication:live
+
       - name: Verify crawlable content pagination
         run: npm run verify:pagination
 
@@ -78,6 +88,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && needs.build.result == 'success'
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       pages: write
       id-token: write

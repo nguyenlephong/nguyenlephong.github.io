@@ -2743,6 +2743,7 @@
       "title": "Pre-mortem: nghĩ trước điều có thể hỏng để chuẩn bị tốt hơn",
       "summary": "Pre-mortem là một cách chuẩn bị rất thực tế: tưởng tượng kế hoạch đã thất bại, rồi lần ngược lại xem điều gì có thể đã làm nó hỏng. Bài này chỉ cách dùng pre-mortem trong code, system design, release, promotion, phỏng vấn và mục tiêu cá nhân, để mình nhìn rủi ro sớm hơn mà không biến sự cẩn thận thành bi quan.",
       "date": "2026-02-20",
+      "updated": "2026-06-13",
       "readingMinutes": 12,
       "tags": [
         "Pre-mortem",

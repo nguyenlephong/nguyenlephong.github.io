@@ -23,7 +23,9 @@ views, shares, and reactions.
 
 ## 2. Product Scope
 
-The application has seven public-facing surfaces and one private/noindex surface.
+The current application source has seven public-facing surfaces. Private family
+data is excluded from the current source tree and every newly generated GitHub
+Pages artifact.
 
 | Surface           | Main route                               | Purpose                                                                                                             |
 |-------------------|------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
@@ -34,7 +36,6 @@ The application has seven public-facing surfaces and one private/noindex surface
 | Blog              | `/{locale}/blog` and nested post routes  | Engineering articles with SEO metadata, categories, related posts, and engagement widgets.                          |
 | Notes             | `/{locale}/notes` and nested note routes | Personal notes and book reflections with bilingual content behavior.                                                |
 | Studio            | `/{locale}/studio`                       | Shadow-DOM admin-style workbench for learning notes and engineering setup.                                          |
-| Heartbeats        | `/{locale}/heartbeats`                   | Private family-time visualization. It is blocked from search indexing and uses placeholder data in the public repo. |
 
 `/` is a static redirect page to `/en`. It still includes metadata so crawlers
 can read the canonical profile information before following the redirect.
@@ -62,7 +63,6 @@ The locale prefix is always present in public URLs.
 | Motion                  | `framer-motion` with `LazyMotion`         | Lightweight reveal/count/progress animations.                                                            |
 | Icons                   | `react-icons`                             | Navigation, cards, controls, app visuals.                                                                |
 | Graph/visual tools      | D3 packages                               | Thought graph components exist in the repo, although no active App Router thoughts route is present now. |
-| Dates                   | `dayjs`                                   | Heartbeats age and countdown calculations.                                                               |
 | Analytics               | PostHog, Google Analytics, Google AdSense | Page views, scroll depth, read time, outbound clicks, app interactions, ads script.                      |
 | Engagement storage      | Firebase Firestore                        | Public article counters for views, shares, and reactions.                                                |
 | Static hosting          | GitHub Pages                              | Main deployment target for the `out/` static export.                                                     |
@@ -143,7 +143,6 @@ public-site shell.
 | `/{locale}/notes`                  | `src/app/[locale]/(site)/notes/page.tsx`                  | Notes index with topic filters and CollectionPage JSON-LD.                                |
 | `/{locale}/studio`                 | `src/app/[locale]/studio/page.tsx`                 | Shadow-DOM admin workbench, route-isolated from the main profile shell.                   |
 | `/{locale}/notes/{slug}`           | `src/app/[locale]/(site)/notes/[slug]/page.tsx`           | Note article page, source-book card, topic breadcrumb, FAQ support, engagement widgets.   |
-| `/{locale}/heartbeats`             | `src/app/[locale]/(site)/heartbeats/page.tsx`             | Private/noindex family time visualization with placeholder public data.                   |
 
 Most routes expose `generateStaticParams()`, which lets Next.js enumerate every
 static localized page during build.
@@ -261,7 +260,7 @@ SEO is a first-class part of the app.
 | Page metadata          | `generateMetadata()` in route files | Title, description, canonical, OpenGraph, Twitter cards, robots.                              |
 | Structured data        | Layout and page files               | Person, WebSite, Blog, BlogPosting, Article, FAQPage, BreadcrumbList, ImageGallery, ItemList. |
 | Sitemap                | `src/app/sitemap.ts`                | Locale-aware static route, blog, and notes URL generation.                                    |
-| Robots                 | `src/app/robots.ts`                 | Allows public pages, blocks `/private`, `/api`, and localized `/heartbeats`.                  |
+| Robots                 | `src/app/robots.ts`                 | Allows public and removed routes to be crawled while retaining `/private` and `/api` blocks.                 |
 | OpenGraph image routes | `src/app/**/opengraph-image.tsx`    | Dynamic social images rendered during static export.                                          |
 | Artifact SEO verifier  | `scripts/verify-static-artifact.mjs`| Checks exported sitemap URLs, canonicals, titles, descriptions, language metadata, and robots. |
 
@@ -269,7 +268,10 @@ The artifact verifier works against the generated `out/` directory rather than
 source-code patterns. Every sitemap URL must resolve to exported HTML, use the
 configured HTTPS origin, have one matching canonical URL, remain indexable, and
 include a title, description, and document language. Sitemap alternates must
-also point to an indexable URL in the same sitemap.
+also point to an indexable URL in the same sitemap. Any emitted file whose path
+contains a `heartbeats` segment fails the build. The same fail-closed check scans
+public text artifacts, including HTML, route payloads, manifests, and service
+workers, so they cannot retain a reference to the removed route.
 
 ### OpenGraph Build Flow
 
@@ -297,6 +299,19 @@ The flow:
    URLs.
 7. In fast or targeted builds, missing dynamic OG files can be restored from the
    cache.
+
+The wrapper accepts a terminated `next build` only when the same wrapper
+actually sent the observed signal after reading a fresh successful
+`.next/export-detail.json` whose `outDirectory` resolves to the current `out/`
+tree. A stale detail file must be removed before the previous output is
+deleted; an unlink failure aborts the build. Exported HTML is diagnostic
+evidence only; it never authorizes termination or converts a non-zero exit into
+success. A build that does not exit cleanly is failed after 20 minutes by
+default. The local timeout can be changed explicitly, for example:
+
+```bash
+OG_BUILD_TIMEOUT_MS=900000 npm run build:fast
+```
 
 This exists because GitHub Pages can serve extensionless image files with a
 generic content type. Some social scrapers reject those files, so the project
@@ -350,7 +365,10 @@ Important behavior:
 
 - Firebase is imported dynamically only on the client.
 - If Firebase environment variables are missing, engagement quietly no-ops.
-- One view is recorded per browser session through `sessionStorage`.
+- One view is recorded per browser session through `sessionStorage`. The marker
+  is committed only after Firestore confirms the increment. A failed write is
+  never retried immediately because atomic increments are not idempotent; one
+  later mount may retry, capped at two attempts per page runtime.
 - Reactions are remembered per browser through `localStorage`.
 - Views and shares use Firestore atomic increments. Reaction toggles and
   switches use one transaction so old/new counters cannot partially apply.
@@ -372,8 +390,18 @@ Optional variables:
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+NEXT_PUBLIC_FIREBASE_APPCHECK_MODE
 NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY
 ```
+
+`NEXT_PUBLIC_FIREBASE_APPCHECK_MODE` defaults to `optional`. Runtime App Check
+status explicitly distinguishes `not-configured`, `pending`, `active`, and
+`failed`, including invalid-mode, missing-key, and bootstrap-failure reasons.
+An unknown non-empty mode is invalid and fails closed. In `optional`
+mode, engagement retains its legacy fail-soft reads and writes. In `required`
+mode, reads remain fail-soft but all view, share, and reaction writes are
+disabled unless App Check bootstrap is active. A missing site key or bootstrap
+failure therefore cannot silently fall through to an unprotected write.
 
 `firestore.rules` allows anyone to read `postStats` and allows constrained
 counter writes. The rules constrain ids, exact fields, types, reaction keys,
@@ -381,17 +409,22 @@ nonnegative values, affected fields, and deltas, but do not make counters
 audit-grade. A determined valid client can still loop allowed increments.
 
 When the App Check site key is configured, reCAPTCHA Enterprise App Check is
-initialized before Firestore. Roll out with enforcement disabled, monitor valid
-and invalid request metrics across a representative traffic cycle, fix legitimate
-invalid traffic, then enable Firestore enforcement. Never ship App Check debug
-tokens in the static artifact. See `specs/engagement-provider-boundary.md` for
-the monitor-to-enforce and rollback runbook.
+initialized before Firestore. An `active` client status means initial App Check
+token acquisition succeeded; it does not mean backend enforcement is enabled or
+that future token refreshes will succeed. Token bootstrap has a bounded timeout
+so optional reads cannot remain stuck behind a blocked provider. Enforcement remains
+an external Firebase Console setting. Roll out with enforcement disabled,
+monitor valid and invalid request metrics across a representative traffic
+cycle, fix legitimate invalid traffic, then enable Firestore enforcement in the
+console. Never ship App Check debug tokens in the static artifact. See
+`specs/engagement-provider-boundary.md` for the monitor-to-enforce and rollback
+runbook.
 
 ## 11. Client UX Systems
 
 | System             | Files                                                  | Behavior                                                                            |
 |--------------------|--------------------------------------------------------|-------------------------------------------------------------------------------------|
-| Theme              | `ThemeScript`, `ThemeSync`, `useThemeSetting`          | Applies `data-theme` early to avoid flashes, persists dark/light/system preference. |
+| Theme              | `ThemeScript`, `ThemeSync`, `ThemeToggle`, `theme-preference` | Applies `data-theme` early to avoid flashes and shares one parser/resolver for the persisted dark/light/system preference. |
 | Fonts              | `FontScript`, `FontSwitcher`                           | Lets readers change reading font preferences.                                       |
 | Reading background | `ReadingBackgroundScript`, `ReadingBackgroundSwitcher` | Applies optional material-style reading backgrounds for long-form pages.            |
 | Reader tools       | `BlogReaderTools`                                      | Floating toolbar for scroll controls, font, background, and language switching.     |
@@ -568,9 +601,18 @@ before relying on it as the primary production path.
 
 ## 14. Privacy and Security Notes
 
-- The public repository contains placeholder Heartbeats family dates and aliases,
-  not real private family data.
-- `/{locale}/heartbeats` is noindex and blocked in `robots.ts`.
+- The current public source tree contains no Heartbeats route or family seed
+  data. The artifact gate keeps those routes and references out of new builds.
+- Removed `/{locale}/heartbeats` URLs are deliberately not blocked by
+  `robots.ts`, allowing crawlers to observe the deployed `404`. A Search Console
+  temporary removal request is a separate operational follow-up, not access
+  control.
+- A future private implementation must follow
+  [the private Heartbeats boundary](../specs/private-heartbeats-boundary.md).
+- Source removal only protects future artifacts. Older Git history, remote
+  branches, clones or caches, and an already published Pages artifact can still
+  retain the data. Purge, deployment, and post-deploy `404` verification are
+  separate, explicitly approved operations.
 - Analytics respects Do-Not-Track in the local `track()` helper.
 - Firebase engagement uses public client config by design. Firestore rules
   restrict the shape of writes.
@@ -593,7 +635,7 @@ decision to change them:
 - OpenGraph `.png` post-build rewrite behavior for GitHub Pages.
 - PostHog and Google tracking behavior, including Do-Not-Track handling.
 - Firebase engagement no-op behavior when env vars are missing.
-- Heartbeats privacy boundary and placeholder public data.
+- The private Heartbeats boundary stays outside the public static artifact.
 - Static export compatibility.
 
 ## 16. Common Change Recipes

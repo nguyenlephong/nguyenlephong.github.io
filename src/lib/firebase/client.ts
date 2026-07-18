@@ -11,6 +11,15 @@
  */
 import type { FirebaseApp } from 'firebase/app'
 import type { Firestore } from 'firebase/firestore'
+import { bootstrapAppCheckToken } from './app-check-bootstrap'
+import {
+  activateAppCheck,
+  createInitialAppCheckStatus,
+  engagementWritesAllowed,
+  failAppCheck,
+  parseAppCheckMode,
+  type FirebaseAppCheckStatus,
+} from './app-check-policy'
 
 interface FirebaseConfig {
   apiKey: string
@@ -51,22 +60,30 @@ export function isFirebaseConfigured(): boolean {
 
 let dbPromise: Promise<Firestore | null> | null = null
 
-async function initialiseOptionalAppCheck(app: FirebaseApp): Promise<void> {
-  const siteKey =
-    process.env['NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY']?.trim() ?? ''
-  if (!siteKey) return
+const appCheckSiteKey =
+  process.env['NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY']?.trim() ?? ''
+let appCheckStatus = createInitialAppCheckStatus(
+  parseAppCheckMode(process.env['NEXT_PUBLIC_FIREBASE_APPCHECK_MODE']),
+  appCheckSiteKey,
+)
 
-  try {
-    const { initializeAppCheck, ReCaptchaEnterpriseProvider } = await import(
-      'firebase/app-check'
-    )
-    initializeAppCheck(app, {
-      provider: new ReCaptchaEnterpriseProvider(siteKey),
-      isTokenAutoRefreshEnabled: true,
-    })
-  } catch {
-    // App Check is defence-in-depth. A bootstrap/configuration failure keeps
-    // engagement fail-soft instead of breaking article rendering.
+/** Current status; `active` means initial App Check token acquisition succeeded. */
+export function getFirebaseAppCheckStatus(): Readonly<FirebaseAppCheckStatus> {
+  return appCheckStatus
+}
+
+/** Policy gate used by every engagement mutation after `getDb()` settles. */
+export function areFirebaseEngagementWritesEnabled(): boolean {
+  return engagementWritesAllowed(getFirebaseAppCheckStatus())
+}
+
+async function initialiseAppCheck(app: FirebaseApp): Promise<void> {
+  if (!appCheckSiteKey || appCheckStatus.mode === 'invalid') return
+
+  if (await bootstrapAppCheckToken(app, appCheckSiteKey)) {
+    appCheckStatus = activateAppCheck(appCheckStatus)
+  } else {
+    appCheckStatus = failAppCheck(appCheckStatus)
   }
 }
 
@@ -80,7 +97,12 @@ export function getDb(): Promise<Firestore | null> {
 
   dbPromise = (async () => {
     const config = readConfig()
-    if (!config) return null
+    if (!config) {
+      if (appCheckStatus.state === 'pending') {
+        appCheckStatus = failAppCheck(appCheckStatus)
+      }
+      return null
+    }
 
     try {
       const { initializeApp, getApps, getApp } = await import('firebase/app')
@@ -89,10 +111,13 @@ export function getDb(): Promise<Firestore | null> {
         ? getApp()
         : initializeApp(config)
       // Firebase requires App Check to be initialized before Firestore access.
-      await initialiseOptionalAppCheck(app)
+      await initialiseAppCheck(app)
       const { getFirestore } = await import('firebase/firestore')
       return getFirestore(app)
     } catch {
+      if (appCheckStatus.state === 'pending') {
+        appCheckStatus = failAppCheck(appCheckStatus)
+      }
       // Network/SDK failure must not surface to the reader.
       return null
     }

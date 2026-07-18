@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { routing } from '@/i18n/routing'
 import { SITE_URL } from '@/app/seo.config'
 import { buildWebsiteSchema } from '@/lib/seo/profile-schema'
+import { serializeJsonLd } from '@/lib/seo/json-ld'
 
 const DEFAULT = `/${routing.defaultLocale}`
 
@@ -57,7 +58,7 @@ export default function RootPage() {
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteSchema) }}
         />
         <script
           dangerouslySetInnerHTML={{

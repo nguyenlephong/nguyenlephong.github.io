@@ -12,7 +12,8 @@ export interface EngagementRepository {
     ids: readonly string[],
     limit: number,
   ): Promise<Map<string, PostStats>>
-  recordView(id: string): Promise<void>
+  /** Returns true only after the provider confirms the atomic increment. */
+  recordView(id: string): Promise<boolean>
   recordShare(id: string): Promise<boolean>
   changeReaction(id: string, change: ReactionChange): Promise<boolean>
 }

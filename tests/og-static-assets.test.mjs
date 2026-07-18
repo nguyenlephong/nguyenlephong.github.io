@@ -23,6 +23,12 @@ test("article metadata uses CDN-backed static OG images", () => {
     "utf8"
   );
   const staticImages = readFileSync("src/lib/og/static-images.ts", "utf8");
+  const generator = readFileSync("scripts/generate-static-og.mjs", "utf8");
+  const sync = readFileSync("scripts/sync-icdn-assets.mjs", "utf8");
+  const publisher = readFileSync("scripts/publish-og-assets.mjs", "utf8");
+  const publicationContract = JSON.parse(
+    readFileSync("config/media-publication.json", "utf8")
+  );
 
   assert.match(blogPage, /blogPostOgImageUrl\(slug\)/);
   assert.match(blogPage, /blogPostOgImageUrl\(relatedPost\.slug\)/);
@@ -40,8 +46,18 @@ test("article metadata uses CDN-backed static OG images", () => {
   assert.doesNotMatch(notesCollectionPage, /\/notes\/\$\{note\.slug\}\/opengraph-image/);
 
   assert.match(staticImages, /icdnAssetUrl\(path\)/);
-  assert.match(staticImages, /\/og\/blogs\/\$\{slug\}\.jpg/);
-  assert.match(staticImages, /\/og\/notes\/\$\{slug\}\.jpg/);
+  assert.match(staticImages, /mediaPublication\.articleOg\[surface\]/);
+  assert.match(staticImages, /media-publication\.json' with \{ type: 'json' \}/);
+  assert.equal(publicationContract.articleOg.blog.publicPathPrefix, "/og/blogs");
+  assert.equal(publicationContract.articleOg.notes.publicPathPrefix, "/og/notes");
+  assert.equal(publicationContract.articleOg.blog.publicationExtension, ".jpg");
+  assert.equal(publicationContract.articleOg.notes.publicationExtension, ".jpg");
+  assert.match(generator, /publication\.sourceDirectory/);
+  assert.match(generator, /publication\.sourceExtension/);
+  assert.match(publisher, /publication\.publicationDirectory/);
+  assert.match(publisher, /publication\.publicationExtension/);
+  assert.doesNotMatch(sync, /mediaPublicationContract|kind:\s*['"]og['"]/);
+  assert.doesNotMatch(sync, /OWNED_DIRS\s*=\s*\[[^\]]*['"]og['"]/s);
 });
 
 test("article dynamic OG routes are removed from the build graph", () => {

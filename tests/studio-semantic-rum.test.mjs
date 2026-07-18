@@ -1,7 +1,23 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
 import test from "node:test";
 import ts from "typescript";
+
+const require = createRequire(import.meta.url);
+
+require.extensions[".ts"] = (module, filename) => {
+  const source = readFileSync(filename, "utf8");
+  const output = ts.transpileModule(source, {
+    compilerOptions: {
+      esModuleInterop: true,
+      module: ts.ModuleKind.CommonJS,
+      target: ts.ScriptTarget.ES2022
+    }
+  }).outputText;
+  module._compile(output, filename);
+};
 
 async function importTypeScriptModule(path) {
   const source = await readFile(path, "utf8");
@@ -16,15 +32,15 @@ async function importTypeScriptModule(path) {
 }
 
 test("Studio keeps one localized light-DOM H1 through the shadow lifecycle", async () => {
-  const [page, workspace, overview, shadowIsland, adminShell, shadowStyles, staticContent] =
+  const staticContent = require("../src/app/[locale]/studio/studio-static-content.ts");
+  const [page, workspace, overview, shadowIsland, adminShell, shadowStyles] =
     await Promise.all([
       readFile("src/app/[locale]/studio/page.tsx", "utf8"),
       readFile("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8"),
       readFile("src/app/[locale]/studio/StudioStaticOverview.tsx", "utf8"),
       readFile("src/components/studio-kit/shadow-island.tsx", "utf8"),
       readFile("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8"),
-      readFile("src/app/[locale]/studio/studio.shadow-styles.ts", "utf8"),
-      importTypeScriptModule("src/app/[locale]/studio/studio-static-content.ts")
+      readFile("public/studio/studio-shadow.css", "utf8")
     ]);
 
   assert.equal(page.match(/<h1\b/g)?.length, 1);
@@ -34,8 +50,10 @@ test("Studio keeps one localized light-DOM H1 through the shadow lifecycle", asy
   assert.doesNotMatch(page, /studio-page-heading__title[^}]*display:\s*none/);
 
   assert.match(workspace, /heading=\{heading\}/);
-  assert.match(shadowIsland, /data-shadow-ready=\{root \? "true" : "false"\}/);
+  assert.match(shadowIsland, /data-shadow-ready=\{root && stylesheetReady \? "true" : "false"\}/);
   assert.match(shadowIsland, /\{heading\}[\s\S]*\{root[\s\S]*createPortal/);
+  assert.match(shadowIsland, /<slot name="studio-page-heading" \/>/);
+  assert.match(shadowIsland, /<slot name="studio-loading-fallback" \/>/);
   assert.match(adminShell, /<slot name="studio-page-heading" \/>/);
   assert.match(adminShell, /<h2>\{route\.title\}<\/h2>/);
 
@@ -75,6 +93,8 @@ test("one root RUM reporter covers site and Studio without losing metric precisi
   assert.match(reporter, /rating:\s*metric\.rating/);
   assert.match(reporter, /navigation_type:\s*metric\.navigationType/);
   assert.match(reporter, /path,/);
+  assert.match(reporter, /const path = getAnalyticsPathname\(\)/);
+  assert.doesNotMatch(reporter, /location\.search/);
   assert.match(reporter, /surface:\s*resolveWebVitalSurface/);
   assert.match(reporter, /locale:\s*context\.locale/);
   assert.doesNotMatch(reporter, /Math\.round/);

@@ -7,17 +7,21 @@ import { promisify } from 'node:util'
 import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 
+import { githubRepositoryFromRemote } from './lib/github-origin.mjs'
+
 const ROOT = process.cwd()
 const DOM_PUB_DIR = path.resolve(process.env.DOM_PUB_DIR ?? path.join(ROOT, '..', 'dom-pub'))
 const ICDN_DIR = path.join(DOM_PUB_DIR, 'icdn')
 const WEBP_QUALITY = Number(process.env.ICDN_WEBP_QUALITY ?? 82)
-const OG_JPEG_QUALITY = Number(process.env.ICDN_OG_JPEG_QUALITY ?? 86)
 const BATCH_SIZE = Number(process.env.ICDN_SYNC_BATCH_SIZE ?? 8)
+const EXPECTED_SITE_REPOSITORY = 'nguyenlephong/nguyenlephong.github.io'
 const EXPECTED_DOM_PUB_REPOSITORY = 'nguyenlephong/dom-pub'
 const execFileAsync = promisify(execFile)
+const DEPRECATION_NOTICE =
+  '[sync-icdn] deprecated legacy full sync; article OG assets are exclusively owned by publish-og-assets.mjs'
 
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp', '.gif'])
-const OWNED_DIRS = ['blogs', 'notes', 'gallery', 'og']
+const OWNED_DIRS = ['blogs', 'notes', 'gallery']
 
 const DIRECTORY_GROUPS = [
   { sourceDir: 'public/assets/blog', targetDir: 'blogs', kind: 'webp' },
@@ -27,8 +31,6 @@ const DIRECTORY_GROUPS = [
     targetDir: 'gallery/photos',
     kind: 'webp',
   },
-  { sourceDir: 'public/og/blog', targetDir: 'og/blogs', kind: 'og' },
-  { sourceDir: 'public/og/notes', targetDir: 'og/notes', kind: 'og' },
 ]
 
 const LEGACY_GALLERY_ASSETS = [
@@ -152,11 +154,6 @@ async function convertToWebp(from, to) {
   await sharp(from).rotate().webp({ quality: WEBP_QUALITY, effort: 4 }).toFile(to)
 }
 
-async function convertToOgJpeg(from, to) {
-  await ensureParent(to)
-  await sharp(from).flatten({ background: '#ffffff' }).jpeg({ quality: OG_JPEG_QUALITY, mozjpeg: true }).toFile(to)
-}
-
 async function assertDirectory(filePath) {
   try {
     const stats = await fs.stat(filePath)
@@ -221,51 +218,55 @@ async function assertOptionalOwnedDirectory(filePath, parentRealPath, label) {
   assertPathInside(parentRealPath, realPath, label)
 }
 
-function githubRepositoryFromRemote(remoteUrl) {
-  const match = remoteUrl.trim().match(/github\.com[/:]([^/\s]+)\/([^/\s]+?)(?:\.git)?$/i)
-  return match ? `${match[1]}/${match[2]}`.toLowerCase() : null
-}
-
-async function assertRepositoryIdentity(domPubRealPath, allowTestFixture) {
+async function validateGitCheckout({ directory, expectedRepository, label, allowTestFixture }) {
+  const realPath = await assertCanonicalDirectory(directory, label)
   if (allowTestFixture) {
     const tempRealPath = await fs.realpath(os.tmpdir())
-    assertPathInside(tempRealPath, domPubRealPath, 'test fixture')
-    return
+    assertPathInside(tempRealPath, realPath, 'test fixture')
+    return realPath
   }
 
-  let topLevel
-  let remoteUrl
+  let topLevelResult
+  let remoteUrlResult
+  let statusResult
   try {
-    const topLevelResult = await execFileAsync('git', ['-C', domPubRealPath, 'rev-parse', '--show-toplevel'], {
-      encoding: 'utf8',
-    })
-    const remoteUrlResult = await execFileAsync('git', ['-C', domPubRealPath, 'remote', 'get-url', 'origin'], {
-      encoding: 'utf8',
-    })
-    topLevel = topLevelResult.stdout
-    remoteUrl = remoteUrlResult.stdout
+    ;[topLevelResult, remoteUrlResult, statusResult] = await Promise.all([
+      execFileAsync('git', ['-C', realPath, 'rev-parse', '--show-toplevel'], { encoding: 'utf8' }),
+      execFileAsync('git', ['-C', realPath, 'remote', 'get-url', 'origin'], { encoding: 'utf8' }),
+      execFileAsync('git', ['-C', realPath, 'status', '--porcelain=v1', '--untracked-files=all'], {
+        encoding: 'utf8',
+      }),
+    ])
   } catch (error) {
     throw new Error(
-      `[sync-icdn] safety check failed; DOM_PUB_DIR must be the ${EXPECTED_DOM_PUB_REPOSITORY} checkout`,
+      `[sync-icdn] safety check failed; ${label} must be the ${expectedRepository} checkout`,
       { cause: error },
     )
   }
 
-  const repositoryRealPath = await fs.realpath(topLevel.trim())
-  if (repositoryRealPath !== domPubRealPath) {
-    throw new Error(`[sync-icdn] safety check failed; DOM_PUB_DIR is not the repository root: ${domPubRealPath}`)
+  const repositoryRealPath = await fs.realpath(topLevelResult.stdout.trim())
+  if (repositoryRealPath !== realPath) {
+    throw new Error(`[sync-icdn] safety check failed; ${label} is not the repository root: ${realPath}`)
   }
-  const repository = githubRepositoryFromRemote(remoteUrl)
-  if (repository !== EXPECTED_DOM_PUB_REPOSITORY) {
+  const repository = githubRepositoryFromRemote(remoteUrlResult.stdout)
+  if (repository !== expectedRepository) {
     throw new Error(
-      `[sync-icdn] safety check failed; expected origin ${EXPECTED_DOM_PUB_REPOSITORY}, received ${repository ?? 'unknown'}`,
+      `[sync-icdn] safety check failed; ${label} expected origin ${expectedRepository}, received ${repository ?? 'unknown'}`,
     )
   }
+  if (statusResult.stdout.trim()) {
+    throw new Error(`[sync-icdn] safety check failed; ${label} must be clean before full replacement`)
+  }
+  return realPath
 }
 
 async function validateDomPubTarget({ domPubDir, ownedDirs, allowTestFixture }) {
-  const domPubRealPath = await assertCanonicalDirectory(domPubDir, 'DOM_PUB_DIR')
-  await assertRepositoryIdentity(domPubRealPath, allowTestFixture)
+  const domPubRealPath = await validateGitCheckout({
+    directory: domPubDir,
+    expectedRepository: EXPECTED_DOM_PUB_REPOSITORY,
+    label: 'DOM_PUB_DIR',
+    allowTestFixture,
+  })
 
   const expectedIcdnDir = path.join(domPubRealPath, 'icdn')
   const icdnRealPath = await assertCanonicalDirectory(expectedIcdnDir, 'ICDN target')
@@ -301,6 +302,12 @@ function assertTargetInsideIcdn(icdnDir, targetPath) {
   if (!relative || relative.startsWith('..') || path.isAbsolute(relative)) {
     throw new Error(`[sync-icdn] invalid target outside icdn: ${targetPath}`)
   }
+  const [namespace] = relative.split(path.sep)
+  if (namespace.toLowerCase() === 'og') {
+    throw new Error(
+      '[sync-icdn] article OG namespace is exclusively owned by publish-og-assets.mjs',
+    )
+  }
 }
 
 function assertOwnedDirectories(ownedDirs) {
@@ -310,8 +317,19 @@ function assertOwnedDirectories(ownedDirs) {
 
   const unique = new Set()
   for (const ownedDir of ownedDirs) {
-    if (!ownedDir || ownedDir === '.' || ownedDir === '..' || path.basename(ownedDir) !== ownedDir) {
+    if (
+      typeof ownedDir !== 'string' ||
+      !ownedDir ||
+      ownedDir === '.' ||
+      ownedDir === '..' ||
+      path.basename(ownedDir) !== ownedDir
+    ) {
       throw new Error(`[sync-icdn] preflight failed; invalid owned directory: ${ownedDir}`)
+    }
+    if (ownedDir.toLowerCase() === 'og') {
+      throw new Error(
+        '[sync-icdn] article OG namespace is exclusively owned by publish-og-assets.mjs',
+      )
     }
     if (unique.has(ownedDir)) {
       throw new Error(`[sync-icdn] preflight failed; duplicate owned directory: ${ownedDir}`)
@@ -353,6 +371,9 @@ export async function buildJobs({
   const emptyDirectories = []
 
   for (const { sourceDir, targetDir, kind } of directoryGroups) {
+    if (kind !== 'webp') {
+      throw new Error(`[sync-icdn] preflight failed; unsupported legacy conversion kind: ${kind}`)
+    }
     const absoluteSourceDir = path.join(root, sourceDir)
     const sourceFiles = await walk(absoluteSourceDir)
     if (sourceFiles.length === 0) emptyDirectories.push(absoluteSourceDir)
@@ -362,7 +383,11 @@ export async function buildJobs({
       jobs.push({
         kind,
         from: file,
-        to: path.join(icdnDir, targetDir, replaceExtension(relative, kind === 'og' ? 'jpg' : 'webp')),
+        to: path.join(
+          icdnDir,
+          targetDir,
+          replaceExtension(relative, 'webp'),
+        ),
       })
     }
   }
@@ -423,11 +448,7 @@ async function runBatches(jobs, batchSize = BATCH_SIZE) {
     const batch = jobs.slice(index, index + batchSize)
     await Promise.all(
       batch.map(async (job) => {
-        if (job.kind === 'og') {
-          await convertToOgJpeg(job.from, job.to)
-        } else {
-          await convertToWebp(job.from, job.to)
-        }
+        await convertToWebp(job.from, job.to)
         converted += 1
       }),
     )
@@ -445,8 +466,12 @@ export async function replaceOwnedDirectories({
   icdnDir,
   domPubDir,
   ownedDirs,
+  fullReplace = false,
   beforeOperation = async () => {},
 }) {
+  if (fullReplace !== true) {
+    throw new Error('[sync-icdn] destructive replacement requires explicit --full-replace opt-in')
+  }
   assertOwnedDirectories(ownedDirs)
   await validateReplacementTargets({
     stagingIcdnDir,
@@ -542,12 +567,23 @@ export async function syncIcdnAssets({
   ownedDirs = OWNED_DIRS,
   batchSize = BATCH_SIZE,
   allowTestFixture = false,
+  fullReplace = false,
 } = {}) {
+  if (fullReplace !== true) {
+    throw new Error('[sync-icdn] destructive replacement requires explicit --full-replace opt-in')
+  }
   if (!(await assertDirectory(domPubDir))) {
     throw new Error(`[sync-icdn] missing dom-pub directory: ${domPubDir}`)
   }
   assertOwnedDirectories(ownedDirs)
   assertBatchSize(batchSize)
+
+  const siteRealPath = await validateGitCheckout({
+    directory: root,
+    expectedRepository: EXPECTED_SITE_REPOSITORY,
+    label: 'source checkout',
+    allowTestFixture,
+  })
 
   const { domPubRealPath, icdnRealPath: icdnDir } = await validateDomPubTarget({
     domPubDir,
@@ -557,7 +593,7 @@ export async function syncIcdnAssets({
   // Preflight is read-only: an absent source must not create, delete, or rename
   // anything in the sibling dom-pub checkout.
   const validatedJobs = await buildJobs({
-    root,
+    root: siteRealPath,
     domPubDir,
     icdnDir,
     directoryGroups,
@@ -581,6 +617,7 @@ export async function syncIcdnAssets({
       icdnDir,
       domPubDir: domPubRealPath,
       ownedDirs,
+      fullReplace: true,
     })
 
     return { ...result, icdnDir }
@@ -589,8 +626,25 @@ export async function syncIcdnAssets({
   }
 }
 
+export function parseSyncArgs(argv) {
+  let fullReplace = false
+  for (const argument of argv) {
+    if (argument !== '--full-replace') {
+      throw new Error(`[sync-icdn] unknown argument: ${argument}`)
+    }
+    if (fullReplace) throw new Error('[sync-icdn] duplicate flag: --full-replace')
+    fullReplace = true
+  }
+  if (!fullReplace) {
+    throw new Error('[sync-icdn] destructive replacement requires explicit --full-replace opt-in')
+  }
+  return { fullReplace }
+}
+
 async function main() {
-  const result = await syncIcdnAssets()
+  console.warn(DEPRECATION_NOTICE)
+  const options = parseSyncArgs(process.argv.slice(2))
+  const result = await syncIcdnAssets(options)
 
   console.log(`[sync-icdn] wrote ${result.converted} asset(s) to ${toPosix(path.relative(ROOT, result.icdnDir))}`)
 }

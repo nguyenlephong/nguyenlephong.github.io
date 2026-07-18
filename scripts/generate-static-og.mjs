@@ -3,6 +3,8 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import sharp from 'sharp'
 
+import { loadMediaPublicationContract } from './lib/media-publication-contract.mjs'
+
 const WIDTH = 1200
 const HEIGHT = 630
 const SITE = 'nguyenlephong.github.io'
@@ -26,6 +28,7 @@ function hasFlag(name) {
 
 const surfaceArg = arg('--surface')
 const slugArg = arg('--slug')
+const publicationContract = await loadMediaPublicationContract()
 
 function escapeXml(value) {
   return String(value)
@@ -141,9 +144,8 @@ async function writeOgImage(target) {
   console.log(`[static-og] ${path.relative(process.cwd(), target.outfile)}`)
 }
 
-async function blogTargets(slug) {
-  const dataDir = path.join(process.cwd(), 'public', 'blog-data')
-  const index = await readJson(path.join(dataDir, '_index.json'))
+async function blogTargets(slug, publication) {
+  const index = await readJson(path.join(process.cwd(), publication.sourceIndex))
   const categories = new Map(index.categories.map((category) => [category.slug, category]))
   return index.posts
     .filter((post) => !slug || post.slug === slug)
@@ -156,14 +158,17 @@ async function blogTargets(slug) {
         tags: post.tags,
         date: post.date,
         themeKey: category?.accent ?? 'ocean',
-        outfile: path.join(process.cwd(), 'public', 'og', 'blog', `${post.slug}.png`),
+        outfile: path.join(
+          process.cwd(),
+          publication.sourceDirectory,
+          `${post.slug}${publication.sourceExtension}`,
+        ),
       }
     })
 }
 
-async function noteTargets(slug) {
-  const dataDir = path.join(process.cwd(), 'public', 'notes-data')
-  const index = await readJson(path.join(dataDir, '_index.json'))
+async function noteTargets(slug, publication) {
+  const index = await readJson(path.join(process.cwd(), publication.sourceIndex))
   const topics = new Map(index.topics.map((topic) => [topic.id, topic]))
   return index.posts
     .filter((post) => !slug || post.slug === slug)
@@ -174,13 +179,21 @@ async function noteTargets(slug) {
       tags: post.tags,
       date: post.date,
       themeKey: 'ocean',
-      outfile: path.join(process.cwd(), 'public', 'og', 'notes', `${post.slug}.png`),
+      outfile: path.join(
+        process.cwd(),
+        publication.sourceDirectory,
+        `${post.slug}${publication.sourceExtension}`,
+      ),
     }))
 }
 
 const targets = []
-if (!surfaceArg || surfaceArg === 'blog') targets.push(...(await blogTargets(slugArg)))
-if (!surfaceArg || surfaceArg === 'notes') targets.push(...(await noteTargets(slugArg)))
+if (!surfaceArg || surfaceArg === 'blog') {
+  targets.push(...(await blogTargets(slugArg, publicationContract.articleOg.blog)))
+}
+if (!surfaceArg || surfaceArg === 'notes') {
+  targets.push(...(await noteTargets(slugArg, publicationContract.articleOg.notes)))
+}
 
 if (targets.length === 0) {
   console.error(`No OG target found${surfaceArg ? ` for ${surfaceArg}` : ''}${slugArg ? `/${slugArg}` : ''}`)

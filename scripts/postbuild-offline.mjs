@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { createArtifactIndex } from './lib/artifact-index.mjs'
 
 const ROOT = process.cwd()
 const OUT_DIR = path.resolve(ROOT, 'out')
@@ -14,34 +15,31 @@ const OFFLINE_MANIFEST_VERSION_META = 'offline-manifest-version'
 const CDN_BACKED_EXPORT_PATHS = ['og', 'assets/blog', 'assets/notes', 'assets/photos']
 const BUILD_ONLY_EXPORT_PATHS = ['og-cache']
 const DEFAULT_HTML_FILE_CONCURRENCY = 16
+const ESSENTIAL_SHELL_FILES = [
+  'index.html',
+  '404.html',
+  '_not-found.html',
+  'favicon.ico',
+  'icon.png',
+  'apple-icon.png',
+  'manifest.webmanifest',
+  ...LOCALES.map((locale) => `${locale}.html`),
+  ...LOCALES.map((locale) => `${locale}/offline.html`),
+]
 
-async function walk(dir) {
-  const entries = await fs.readdir(dir, { withFileTypes: true })
-  const files = []
-  for (const entry of entries) {
-    const full = path.join(dir, entry.name)
-    if (entry.isDirectory()) {
-      files.push(...(await walk(full)))
-    } else {
-      files.push(full)
-    }
-  }
-  return files
-}
-
-async function removeCdnBackedExportAssets() {
+async function removeCdnBackedExportAssets(outDir, artifactIndex) {
   await Promise.all(
-    CDN_BACKED_EXPORT_PATHS.map((relativePath) =>
-      fs.rm(path.join(OUT_DIR, relativePath), { recursive: true, force: true }),
-    ),
+    CDN_BACKED_EXPORT_PATHS.map((relativePath) => artifactIndex
+      ? artifactIndex.removeTree(relativePath)
+      : fs.rm(path.join(outDir, relativePath), { recursive: true, force: true })),
   )
 }
 
-export async function pruneBuildOnlyExportAssets(outDir = OUT_DIR) {
+export async function pruneBuildOnlyExportAssets(outDir = OUT_DIR, artifactIndex = null) {
   await Promise.all(
-    BUILD_ONLY_EXPORT_PATHS.map((relativePath) =>
-      fs.rm(path.join(outDir, relativePath), { recursive: true, force: true }),
-    ),
+    BUILD_ONLY_EXPORT_PATHS.map((relativePath) => artifactIndex
+      ? artifactIndex.removeTree(relativePath)
+      : fs.rm(path.join(outDir, relativePath), { recursive: true, force: true })),
   )
 }
 
@@ -92,10 +90,6 @@ function isLocaleScoped(relativePath, locale) {
   return relativePath === `${locale}.html` || relativePath.startsWith(`${locale}/`)
 }
 
-function isOfflineFallbackFile(relativePath) {
-  return LOCALES.some((locale) => relativePath === `${locale}/offline.html`)
-}
-
 function isLocaleOfflineFile(relativePath, locale) {
   if (!isLocaleScoped(relativePath, locale)) return false
   if (relativePath.endsWith('opengraph-image.png')) return false
@@ -110,20 +104,8 @@ function isExtendedAsset(relativePath) {
   return relativePath.startsWith('assets/photos/')
 }
 
-function isCoreSharedFile(relativePath) {
-  return (
-    relativePath.startsWith('_next/') ||
-    relativePath.startsWith('favicon/') ||
-    relativePath === 'index.html' ||
-    relativePath === '404.html' ||
-    relativePath === '_not-found.html' ||
-    relativePath === 'favicon.ico' ||
-    relativePath === 'icon.png' ||
-    relativePath === 'apple-icon.png' ||
-    relativePath === 'manifest.webmanifest' ||
-    relativePath === 'offline-manifest.json' ||
-    isOfflineFallbackFile(relativePath)
-  )
+function isRuntimeAsset(relativePath) {
+  return relativePath.startsWith('_next/')
 }
 
 async function readAppVersion() {
@@ -180,17 +162,57 @@ export function extractResolvedRemoteMediaAssets(html) {
   return uniqueSorted(remoteAssets)
 }
 
-async function readRemoteGalleryAssets() {
+async function readRemoteGalleryAssets(artifactIndex) {
   const remoteAssets = []
   for (const locale of LOCALES) {
-    try {
-      const html = await fs.readFile(path.join(OUT_DIR, locale, 'gallery.html'), 'utf8')
-      remoteAssets.push(...extractResolvedRemoteMediaAssets(html))
-    } catch (error) {
-      if (error?.code !== 'ENOENT') throw error
-    }
+    const relativePath = `${locale}/gallery.html`
+    if (!artifactIndex.has(relativePath)) continue
+    const html = await artifactIndex.readText(relativePath)
+    remoteAssets.push(...extractResolvedRemoteMediaAssets(html))
   }
   return uniqueSorted(remoteAssets)
+}
+
+export function extractDocumentAssetReferences(html) {
+  const references = []
+  const attributePattern = /\b(?:src|href)=["']([^"'<>]+)["']/gi
+
+  for (const match of html.matchAll(attributePattern)) {
+    const raw = match[1].replaceAll('&amp;', '&')
+    if (!raw.startsWith('/')) continue
+    try {
+      const url = new URL(raw, 'https://artifact.invalid')
+      if (url.origin !== 'https://artifact.invalid') continue
+      const relativePath = decodeURIComponent(url.pathname).replace(/^\/+/, '')
+      if (relativePath) references.push(relativePath)
+    } catch {
+      // Final artifact verification remains independent and owns malformed URLs.
+    }
+  }
+
+  return uniqueSorted(references)
+}
+
+export async function deriveInstallShell(artifactIndex) {
+  const missing = ESSENTIAL_SHELL_FILES.filter((relativePath) => !artifactIndex.has(relativePath))
+  if (missing.length > 0) {
+    throw new Error(`[postbuild-offline] missing essential shell file(s): ${missing.join(', ')}`)
+  }
+
+  const referencedAssets = []
+  const shellDocuments = ESSENTIAL_SHELL_FILES.filter((relativePath) => relativePath.endsWith('.html'))
+  for (const relativePath of shellDocuments) {
+    const html = await artifactIndex.readText(relativePath)
+    referencedAssets.push(
+      ...extractDocumentAssetReferences(html).filter((assetPath) => artifactIndex.has(assetPath)),
+    )
+  }
+
+  return uniqueSorted([
+    '/offline-manifest.json',
+    ...ESSENTIAL_SHELL_FILES.map(routeUrlFromOutFile),
+    ...referencedAssets.map(routeUrlFromOutFile),
+  ])
 }
 
 function stripOfflineManifestVersion(html) {
@@ -220,15 +242,14 @@ export function assertManifestVersion(manifest, expectedVersion) {
   return manifest
 }
 
-export async function buildPageVersions(relativeFiles) {
+export async function buildPageVersions(relativeFiles, artifactIndex) {
   const htmlFiles = relativeFiles
     .filter((relativePath) => relativePath.endsWith('.html'))
     .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
   const entries = new Array(htmlFiles.length)
 
   await mapWithConcurrency(htmlFiles, htmlFileConcurrency(), async (relativePath, index) => {
-    const fullPath = path.join(OUT_DIR, relativePath)
-    const html = await fs.readFile(fullPath, 'utf8')
+    const html = await artifactIndex.readText(relativePath)
     entries[index] = [routeUrlFromOutFile(relativePath), pageVersionForHtml(relativePath, html)]
   })
 
@@ -241,6 +262,7 @@ function buildManifestVersion({
   readingData,
   readingAssets,
   extendedAssets,
+  runtimeAssets,
   remoteAssets,
   pageVersions,
 }) {
@@ -250,6 +272,7 @@ function buildManifestVersion({
     readingData,
     readingAssets,
     extendedAssets,
+    runtimeAssets,
     remoteAssets,
     pageVersions,
   })
@@ -270,17 +293,16 @@ function injectOfflineManifestVersion(html, version) {
   return html
 }
 
-async function writeOfflineManifestVersion(relativeFiles, version) {
+async function writeOfflineManifestVersion(relativeFiles, version, artifactIndex) {
   const htmlFiles = relativeFiles
     .filter((relativePath) => relativePath.endsWith('.html'))
     .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
 
   await mapWithConcurrency(htmlFiles, htmlFileConcurrency(), async (relativePath) => {
-    const fullPath = path.join(OUT_DIR, relativePath)
-    const html = await fs.readFile(fullPath, 'utf8')
+    const html = await artifactIndex.readText(relativePath)
     const nextHtml = injectOfflineManifestVersion(html, version)
     if (nextHtml !== html) {
-      await fs.writeFile(fullPath, nextHtml, 'utf8')
+      await artifactIndex.write(relativePath, nextHtml)
     }
   })
 }
@@ -291,9 +313,55 @@ function buildOwnedSameOriginPaths(manifest) {
     ...(manifest.shared?.readingData ?? []),
     ...(manifest.shared?.readingAssets ?? []),
     ...(manifest.shared?.extendedAssets ?? []),
+    ...(manifest.shared?.runtimeAssets ?? []),
     ...Object.values(manifest.locales ?? {}).flat(),
   ]
   return uniqueSorted(paths.filter((url) => url.startsWith('/')))
+}
+
+export async function installRequiredShell({
+  manifest,
+  shellCacheName,
+  shellCachePreexisted,
+  openCache,
+  deleteCache,
+  cacheFiles,
+  skipWaiting,
+}) {
+  const shellUrls = manifest?.shared?.shell
+  if (!Array.isArray(shellUrls) || shellUrls.length === 0) {
+    throw new Error('[offline] required shell manifest is empty')
+  }
+
+  const expectedCount = [...new Set(shellUrls)].filter(Boolean).length
+  try {
+    const shellCache = await openCache(shellCacheName)
+    const stats = await cacheFiles(shellCache, shellUrls, manifest.shared?.pageVersions)
+    const complete =
+      stats?.requested === expectedCount &&
+      stats?.fulfilled === expectedCount &&
+      stats?.failed === 0
+
+    if (!complete) {
+      throw new Error(
+        '[offline] required shell cache incomplete: ' +
+          `${stats?.fulfilled ?? 0}/${expectedCount} fulfilled, ` +
+          `${stats?.failed ?? expectedCount} failed`,
+      )
+    }
+
+    await skipWaiting()
+    return stats
+  } catch (error) {
+    if (!shellCachePreexisted) {
+      try {
+        await deleteCache(shellCacheName)
+      } catch {
+        // The install still rejects, so a brand-new partial worker cannot activate.
+      }
+    }
+    throw error
+  }
 }
 
 function buildServiceWorkerSource(manifest) {
@@ -326,13 +394,21 @@ const NETWORK_TIMEOUT_MS = 5000;
 let manifestPromise = null;
 
 ${hasPrivateOrSignedRemoteMediaQuery.toString()}
+${installRequiredShell.toString()}
 
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
+    const shellCachePreexisted = await caches.has(SHELL_CACHE);
     const manifest = await loadManifest();
-    const shellCache = await caches.open(SHELL_CACHE);
-    await cacheFiles(shellCache, manifest.shared.shell, manifest.shared.pageVersions);
-    self.skipWaiting();
+    await installRequiredShell({
+      manifest,
+      shellCacheName: SHELL_CACHE,
+      shellCachePreexisted,
+      openCache: (cacheName) => caches.open(cacheName),
+      deleteCache: (cacheName) => caches.delete(cacheName),
+      cacheFiles,
+      skipWaiting: () => self.skipWaiting(),
+    });
   })());
 });
 
@@ -793,7 +869,7 @@ async function cacheFiles(cache, urls, pageVersions = null) {
         await cache.put(cacheKey, response.clone());
         stats.fulfilled += 1;
       } catch {
-        // Ignore individual cache misses so one failed asset never blocks the pack.
+        // Record individual misses; the caller decides whether the batch is required.
         stats.failed += 1;
       }
     }));
@@ -809,34 +885,34 @@ async function broadcast(message) {
 `
 }
 
-async function main() {
+export async function generateOfflineArtifacts({ outDir = OUT_DIR, artifactIndex } = {}) {
   try {
-    await fs.access(OUT_DIR)
+    await fs.access(outDir)
   } catch {
-    console.warn(`[postbuild-offline] skip: ${OUT_DIR} does not exist`)
-    return
+    return { skipped: true }
   }
 
+  const index = artifactIndex ?? (await createArtifactIndex(outDir))
+  if (path.resolve(index.root) !== path.resolve(outDir)) {
+    throw new Error('[postbuild-offline] artifact index root does not match outDir')
+  }
   await Promise.all([
-    removeCdnBackedExportAssets(),
-    pruneBuildOnlyExportAssets(),
+    removeCdnBackedExportAssets(outDir, index),
+    pruneBuildOnlyExportAssets(outDir, index),
   ])
-  const files = await walk(OUT_DIR)
-  const relativeFiles = files.map((file) => path.relative(OUT_DIR, file))
-  const [appVersion, remoteAssets, pageVersions] = await Promise.all([
+  const relativeFiles = index.files()
+  const [appVersion, remoteAssets, pageVersions, shell] = await Promise.all([
     readAppVersion(),
-    readRemoteGalleryAssets(),
-    buildPageVersions(relativeFiles),
-  ])
-  const shell = uniqueSorted([
-    '/offline-manifest.json',
-    ...relativeFiles.filter(isCoreSharedFile).map(routeUrlFromOutFile),
+    readRemoteGalleryAssets(index),
+    buildPageVersions(relativeFiles, index),
+    deriveInstallShell(index),
   ])
   // Reading routes already ship their content in static HTML, so warming the
   // document set is enough for offline reading without fetching auxiliary data.
   const readingData = []
   const readingAssets = uniqueSorted(relativeFiles.filter(isReadingAsset).map(routeUrlFromOutFile))
   const extendedAssets = uniqueSorted(relativeFiles.filter(isExtendedAsset).map(routeUrlFromOutFile))
+  const runtimeAssets = uniqueSorted(relativeFiles.filter(isRuntimeAsset).map(routeUrlFromOutFile))
 
   const locales = {}
   for (const locale of LOCALES) {
@@ -851,6 +927,7 @@ async function main() {
     readingData,
     readingAssets,
     extendedAssets,
+    runtimeAssets,
     remoteAssets,
     pageVersions,
   })
@@ -864,16 +941,34 @@ async function main() {
       readingData,
       readingAssets,
       extendedAssets,
+      runtimeAssets,
       remoteAssets,
       pageVersions,
     },
   }
 
-  await fs.writeFile(path.join(OUT_DIR, 'offline-manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`, 'utf8')
-  await writeOfflineManifestVersion(relativeFiles, manifest.version)
-  await fs.writeFile(path.join(OUT_DIR, 'sw.js'), buildServiceWorkerSource(manifest), 'utf8')
+  await index.write('offline-manifest.json', `${JSON.stringify(manifest, null, 2)}\n`)
+  await writeOfflineManifestVersion(relativeFiles, manifest.version, index)
+  await index.write('sw.js', buildServiceWorkerSource(manifest))
 
-  console.log(`[postbuild-offline] wrote offline-manifest.json and sw.js for ${LOCALES.length} locales`)
+  return {
+    skipped: false,
+    manifest,
+    inventoryMetrics: index.metrics(),
+  }
+}
+
+async function main() {
+  const result = await generateOfflineArtifacts()
+  if (result.skipped) {
+    console.warn(`[postbuild-offline] skip: ${OUT_DIR} does not exist`)
+    return
+  }
+
+  console.log(
+    `[postbuild-offline] wrote offline-manifest.json and sw.js for ${LOCALES.length} locales ` +
+      `(install shell ${result.manifest.shared.shell.length}/${result.manifest.shared.runtimeAssets.length} runtime assets)`,
+  )
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

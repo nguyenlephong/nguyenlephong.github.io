@@ -2,17 +2,22 @@
 import { useEffect } from 'react'
 import { useLocale } from 'next-intl'
 import { usePathname } from 'next/navigation'
-import { THEME_STORAGE_KEY } from './ThemeScript'
+import {
+  parseThemeSetting,
+  resolveTheme,
+  THEME_MEDIA_QUERY,
+  THEME_STORAGE_KEY,
+} from './theme-preference'
 
 function applyStoredTheme(): void {
   try {
     const stored = localStorage.getItem(THEME_STORAGE_KEY)
-    const setting = stored ? (JSON.parse(stored).theme_setting ?? 'system') : 'system'
-    const dark =
-      setting === 'dark' ||
-      (setting === 'system' &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
+    const setting = parseThemeSetting(stored)
+    const theme = resolveTheme(
+      setting,
+      window.matchMedia(THEME_MEDIA_QUERY).matches,
+    )
+    document.documentElement.setAttribute('data-theme', theme)
   } catch {
     /* keep current theme on parse failure */
   }

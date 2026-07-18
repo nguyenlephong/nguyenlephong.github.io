@@ -5,10 +5,16 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import {
+  expectedArticleOgPublications,
+  loadMediaPublicationContract,
+} from './lib/media-publication-contract.mjs'
+
 const DEFAULT_CONFIG = 'config/static-artifact-budgets.json'
 const DEFAULT_OUTPUT_DIRECTORY = 'out'
 const TOP_RESULT_COUNT = 5
 const DEFAULT_SECRET_SCAN_CONCURRENCY = 8
+const FORBIDDEN_PUBLIC_ROUTE_SEGMENTS = new Set(['heartbeats'])
 const PUBLIC_TEXT_EXTENSIONS = new Set([
   '.atom',
   '.cjs',
@@ -44,6 +50,30 @@ const PRIVATE_QUERY_URL_SCAN_EXTENSIONS = new Set([
   '.txt',
 ])
 const ABSOLUTE_HTTP_URL_PATTERN = /https?:\/\/[^\s"'<>]+/gi
+const LOCALIZED_PAGE_SCHEMA_CONTRACTS = new Map([
+  ['about', new Set(['AboutPage'])],
+  ['apps', new Set(['ItemList'])],
+  ['gallery', new Set(['ImageGallery'])],
+  ['studio', new Set(['CollectionPage'])],
+])
+const SOCIAL_IMAGE_SIGNATURES = new Map([
+  ['.png', (bytes) => bytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))],
+  ['.jpg', (bytes) => bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff],
+  ['.jpeg', (bytes) => bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff],
+  ['.gif', (bytes) => ['GIF87a', 'GIF89a'].includes(bytes.subarray(0, 6).toString('ascii'))],
+  [
+    '.webp',
+    (bytes) =>
+      bytes.subarray(0, 4).toString('ascii') === 'RIFF' &&
+      bytes.subarray(8, 12).toString('ascii') === 'WEBP',
+  ],
+  [
+    '.avif',
+    (bytes) =>
+      bytes.subarray(4, 8).toString('ascii') === 'ftyp' &&
+      /^(?:avif|avis)$/.test(bytes.subarray(8, 12).toString('ascii')),
+  ],
+])
 
 function containsCrediblePrivateKeyBlock(content) {
   // Firebase service-account JSON and generated JavaScript commonly retain
@@ -164,6 +194,103 @@ function normalizeUrl(value) {
 
 function relativeArtifactPath(outDir, absolutePath) {
   return path.relative(outDir, absolutePath).split(path.sep).join('/')
+}
+
+function normalizeArtifactPathSegment(value) {
+  let normalized = value
+  for (let index = 0; index < 3; index += 1) {
+    try {
+      const decoded = decodeURIComponent(normalized)
+      if (decoded === normalized) break
+      normalized = decoded
+    } catch {
+      break
+    }
+  }
+  return normalized.toLowerCase()
+}
+
+function forbiddenPublicRouteSegment(relativePath) {
+  for (const rawSegment of relativePath.split('/')) {
+    const segment = normalizeArtifactPathSegment(rawSegment)
+    for (const forbidden of FORBIDDEN_PUBLIC_ROUTE_SEGMENTS) {
+      if (segment === forbidden || segment.startsWith(forbidden + '.')) return forbidden
+    }
+  }
+  return null
+}
+
+function decodeHtmlCodePoint(match, value, radix) {
+  const codePoint = Number.parseInt(value, radix)
+  return codePoint <= 0x10ffff ? String.fromCodePoint(codePoint) : match
+}
+
+function normalizePublicRouteReferenceContent(content) {
+  let normalized = content.replaceAll('\\/', '/')
+
+  for (let index = 0; index < 3; index += 1) {
+    const decoded = normalized
+      .replace(/\\u00([0-9a-f]{2})/gi, (_, hex) =>
+        String.fromCharCode(Number.parseInt(hex, 16)),
+      )
+      .replace(/\\x([0-9a-f]{2})/gi, (_, hex) =>
+        String.fromCharCode(Number.parseInt(hex, 16)),
+      )
+      .replace(/&#x([0-9a-f]{1,6});/gi, (match, hex) =>
+        decodeHtmlCodePoint(match, hex, 16),
+      )
+      .replace(/&#([0-9]{1,7});/g, (match, decimal) =>
+        decodeHtmlCodePoint(match, decimal, 10),
+      )
+      .replace(/&sol;/gi, '/')
+      .replace(/%([0-9a-f]{2})/gi, (_, hex) =>
+        String.fromCharCode(Number.parseInt(hex, 16)),
+      )
+
+    if (decoded === normalized) break
+    normalized = decoded
+  }
+
+  return normalized
+}
+
+function inspectForbiddenPublicRouteReferences(
+  content,
+  relativePath,
+  failures,
+  referenceMatches,
+) {
+  const normalized = normalizePublicRouteReferenceContent(content)
+
+  for (const forbidden of FORBIDDEN_PUBLIC_ROUTE_SEGMENTS) {
+    const pathReference = new RegExp(
+      `/${forbidden}(?=$|[/?#.\\s"'\\x60,;:)}\\]])`,
+      'i',
+    )
+    const segmentLiteral = new RegExp(`["'\\x60]${forbidden}["'\\x60]`, 'i')
+    const routeFile = new RegExp(
+      `(?:^|["'\\x60\\s:=,(\\[])${forbidden}\\.(?:html?|txt|rsc)(?=$|[?#"'\\x60\\s,;:)}\\]])`,
+      'i',
+    )
+
+    if (
+      !pathReference.test(normalized) &&
+      !segmentLiteral.test(normalized) &&
+      !routeFile.test(normalized)
+    ) {
+      continue
+    }
+
+    referenceMatches.push({ path: relativePath, segment: forbidden })
+    // Report only the artifact path. Echoing content could repeat private data
+    // from a generated page, route manifest, or service-worker cache list.
+    failures.push(
+      'Forbidden private route reference "' +
+        forbidden +
+        '" is present in public artifact content: ' +
+        relativePath,
+    )
+  }
 }
 
 function artifactPathFromUrl(value, siteOrigin, outDir) {
@@ -385,14 +512,6 @@ function findMetaContent(html, name) {
   return null
 }
 
-function findMetaProperty(html, property) {
-  for (const tag of collectTags(html, 'meta')) {
-    const attributes = attributesFromTag(tag)
-    if (attributes.get('property')?.toLowerCase() === property) return attributes.get('content') ?? ''
-  }
-  return null
-}
-
 function collectJsonLd(html) {
   const values = []
   const errors = []
@@ -487,6 +606,19 @@ function collectHtmlMetadata({ absolutePath, html, outDir }) {
   }
 
   const htmlTag = collectTags(html, 'html')[0]
+  const metaAttributes = collectTags(html, 'meta').map(attributesFromTag)
+  const openGraphImages = metaAttributes
+    .filter((attributes) => attributes.get('property')?.toLowerCase() === 'og:image')
+    .map((attributes) => attributes.get('content')?.trim() ?? '')
+    .filter(Boolean)
+  const openGraphUrls = metaAttributes
+    .filter((attributes) => attributes.get('property')?.toLowerCase() === 'og:url')
+    .map((attributes) => attributes.get('content')?.trim() ?? '')
+    .filter(Boolean)
+  const twitterImages = metaAttributes
+    .filter((attributes) => attributes.get('name')?.toLowerCase() === 'twitter:image')
+    .map((attributes) => attributes.get('content')?.trim() ?? '')
+    .filter(Boolean)
   const jsonLd = collectJsonLd(html)
   const studioModuleLinks = collectTags(html, 'a')
     .map(attributesFromTag)
@@ -508,12 +640,194 @@ function collectHtmlMetadata({ absolutePath, html, outDir }) {
     jsonLdObjects: flattenJsonLd(jsonLd.values),
     language: htmlTag ? attributesFromTag(htmlTag).get('lang')?.trim() ?? '' : '',
     noindex: findMetaContent(html, 'robots')?.toLowerCase().includes('noindex') ?? false,
-    openGraphImage: findMetaProperty(html, 'og:image')?.trim() ?? '',
-    twitterImage: findMetaContent(html, 'twitter:image')?.trim() ?? '',
+    openGraphImage: openGraphImages[0] ?? '',
+    openGraphImages,
+    openGraphUrls,
+    twitterImage: twitterImages[0] ?? '',
+    twitterImages,
     studioHeadingCount: collectTags(html, 'h1').length,
     studioModuleLinks,
     hasStudioStaticOverview: /data-studio-static-overview=["']true["']/i.test(html),
   }
+}
+
+function normalizeAbsolutePageIdentity(value) {
+  if (typeof value !== 'string' || value.trim() === '') return null
+  try {
+    return normalizeUrl(value)
+  } catch {
+    return null
+  }
+}
+
+function verifyLocalizedPageIdentityContracts({
+  htmlMetadataByPath,
+  siteOrigin,
+  seoConfig,
+  failures,
+}) {
+  const configuredRoutes = new Set(seoConfig?.requiredLocalizedRoutes ?? [])
+  const contracts = [...LOCALIZED_PAGE_SCHEMA_CONTRACTS].filter(([route]) =>
+    configuredRoutes.has(route),
+  )
+  if (contracts.length === 0) return
+
+  const metadataByPageUrl = new Map()
+  for (const metadata of htmlMetadataByPath.values()) {
+    const pageUrl = pageUrlFromArtifactPath(metadata.relativePath, siteOrigin)
+    if (pageUrl) metadataByPageUrl.set(pageUrl, metadata)
+  }
+
+  for (const locale of seoConfig?.locales ?? []) {
+    for (const [route, schemaTypes] of contracts) {
+      const expectedPageUrl = normalizeUrl(`${siteOrigin}/${locale}/${route}`)
+      const metadata = metadataByPageUrl.get(expectedPageUrl)
+      if (!metadata) {
+        failures.push(`Missing emitted HTML for localized ${route} page: ${expectedPageUrl}`)
+        continue
+      }
+
+      if (
+        metadata.canonicalUrls.length !== 1 ||
+        normalizeAbsolutePageIdentity(metadata.canonicalUrls[0]) !== expectedPageUrl
+      ) {
+        failures.push(
+          `${metadata.relativePath} canonical must match localized page identity: ${expectedPageUrl}`,
+        )
+      }
+
+      if (
+        metadata.openGraphUrls.length !== 1 ||
+        normalizeAbsolutePageIdentity(metadata.openGraphUrls[0]) !== expectedPageUrl
+      ) {
+        failures.push(
+          `${metadata.relativePath} og:url must match localized page identity: ${expectedPageUrl}`,
+        )
+      }
+
+      if (metadata.jsonLdErrors.length > 0) {
+        failures.push(`${metadata.relativePath} contains invalid JSON-LD`)
+      }
+      const pageObjects = metadata.jsonLdObjects.filter((value) =>
+        schemaHasType(value, schemaTypes),
+      )
+      const schemaLabel = [...schemaTypes].join(' or ')
+      if (pageObjects.length !== 1) {
+        failures.push(
+          `${metadata.relativePath} must emit exactly one ${schemaLabel} object; found ${pageObjects.length}`,
+        )
+      } else {
+        const pageObject = pageObjects[0]
+        for (const property of ['@id', 'url']) {
+          if (normalizeAbsolutePageIdentity(pageObject[property]) !== expectedPageUrl) {
+            failures.push(
+              `${metadata.relativePath} ${schemaLabel} ${property} must match localized page identity: ${expectedPageUrl}`,
+            )
+          }
+        }
+      }
+
+      if (route !== 'studio') continue
+      const expectedSocialImage = normalizeUrl(`${siteOrigin}/opengraph-image.png`)
+      for (const [name, value] of [
+        ['og:image', metadata.openGraphImage],
+        ['twitter:image', metadata.twitterImage],
+      ]) {
+        if (normalizeAbsolutePageIdentity(value) !== expectedSocialImage) {
+          failures.push(
+            `${metadata.relativePath} Studio ${name} must resolve to the root opengraph-image.png`,
+          )
+        }
+      }
+    }
+  }
+}
+
+async function loadRemoteSocialImageContract(rootDir) {
+  const contractPath = path.join(rootDir, 'config/media-publication.json')
+  if (!existsSync(contractPath)) return { baseUrl: null, expectedUrls: new Set() }
+
+  const contract = await loadMediaPublicationContract(rootDir)
+  const expected = await expectedArticleOgPublications({ rootDir, contract })
+  const baseUrl = new URL(contract.liveBaseUrl)
+  const expectedUrls = new Set(
+    expected.map(({ publicPath }) =>
+      new URL(publicPath.replace(/^\/+/, ''), `${contract.liveBaseUrl}/`).href,
+    ),
+  )
+  return { baseUrl, expectedUrls }
+}
+
+function isWithinRemotePublication(url, baseUrl) {
+  if (!baseUrl || url.origin !== baseUrl.origin) return false
+  const basePath = baseUrl.pathname.replace(/\/+$/, '')
+  return url.pathname === basePath || url.pathname.startsWith(`${basePath}/`)
+}
+
+function verifyLocalSocialImages({
+  htmlMetadataByPath,
+  outDir,
+  siteOrigin,
+  remotePublication,
+  failures,
+}) {
+  let verified = 0
+
+  for (const metadata of htmlMetadataByPath.values()) {
+    for (const [name, value] of [
+      ...metadata.openGraphImages.map((image) => ['og:image', image]),
+      ...metadata.twitterImages.map((image) => ['twitter:image', image]),
+    ]) {
+      if (!value) continue
+
+      let url
+      try {
+        url = new URL(value, siteOrigin)
+      } catch {
+        failures.push(`${metadata.relativePath} has an invalid ${name} URL`)
+        continue
+      }
+      if (remotePublication.expectedUrls.has(url.href)) continue
+      if (isWithinRemotePublication(url, remotePublication.baseUrl)) {
+        failures.push(
+          `${metadata.relativePath} ${name} is not declared by the media publication contract: ${url.href}`,
+        )
+        continue
+      }
+      if (url.origin !== siteOrigin) {
+        failures.push(
+          `${metadata.relativePath} ${name} remote URL is not declared by the media publication contract: ${url.href}`,
+        )
+        continue
+      }
+
+      const extension = path.extname(url.pathname).toLowerCase()
+      const matchesSignature = SOCIAL_IMAGE_SIGNATURES.get(extension)
+      if (!matchesSignature) {
+        failures.push(
+          `${metadata.relativePath} ${name} must use a supported image extension: ${url.pathname}`,
+        )
+        continue
+      }
+
+      const artifactPath = artifactPathFromUrl(url.href, siteOrigin, outDir)
+      if (!artifactPath || !existsSync(artifactPath) || !statSync(artifactPath).isFile()) {
+        failures.push(`${metadata.relativePath} ${name} references a missing local image: ${url.pathname}`)
+        continue
+      }
+
+      const signature = readFileSync(artifactPath).subarray(0, 32)
+      if (!matchesSignature(signature)) {
+        failures.push(
+          `${metadata.relativePath} ${name} extension does not match its image signature: ${url.pathname}`,
+        )
+        continue
+      }
+      verified += 1
+    }
+  }
+
+  return verified
 }
 
 function verifyStudioHtmlContracts({ htmlMetadataByPath, siteOrigin, failures }) {
@@ -935,6 +1249,8 @@ export async function verifyStaticArtifact({
   const routeEntries = []
   const secretMatches = []
   const privateQueryUrlMatches = []
+  const forbiddenRouteMatches = []
+  const forbiddenRouteReferenceMatches = []
   const secretExtensions = new Set([
     ...PUBLIC_TEXT_EXTENSIONS,
     ...(config.additionalSecretScanExtensions ?? config.secretScanExtensions ?? []),
@@ -948,6 +1264,17 @@ export async function verifyStaticArtifact({
     const relativePath = relativeArtifactPath(outDir, absolutePath)
     const extension = path.extname(relativePath).toLowerCase()
     totalBytes += stat.size
+
+    const forbiddenRoute = forbiddenPublicRouteSegment(relativePath)
+    if (forbiddenRoute) {
+      forbiddenRouteMatches.push({ path: relativePath, segment: forbiddenRoute })
+      failures.push(
+        'Forbidden private route segment "' +
+          forbiddenRoute +
+          '" is present in public artifact: ' +
+          relativePath,
+      )
+    }
 
     if (extensionEntries[extension]) extensionEntries[extension].push({ path: relativePath, bytes: stat.size })
 
@@ -963,6 +1290,12 @@ export async function verifyStaticArtifact({
   await mapWithConcurrency(textFiles, secretScanConcurrency, async (entry) => {
     const content = await readFile(entry.absolutePath, 'utf8')
     inspectSecrets(content, entry.relativePath, failures, secretMatches)
+    inspectForbiddenPublicRouteReferences(
+      content,
+      entry.relativePath,
+      failures,
+      forbiddenRouteReferenceMatches,
+    )
     if (PRIVATE_QUERY_URL_SCAN_EXTENSIONS.has(entry.extension)) {
       inspectPrivateQueryUrls(
         content,
@@ -1007,6 +1340,20 @@ export async function verifyStaticArtifact({
   if (largestCss[0]) addLimitFailure(failures, `Largest CSS (${largestCss[0].path})`, largestCss[0].bytes, limits.maxCssBytes)
 
   verifyRobots({ outDir, siteOrigin, failures })
+  verifyLocalizedPageIdentityContracts({
+    htmlMetadataByPath,
+    siteOrigin,
+    seoConfig: config.seo,
+    failures,
+  })
+  const remotePublication = await loadRemoteSocialImageContract(rootDir)
+  const localSocialImageCount = verifyLocalSocialImages({
+    htmlMetadataByPath,
+    outDir,
+    siteOrigin,
+    remotePublication,
+    failures,
+  })
   verifyStudioHtmlContracts({ htmlMetadataByPath, siteOrigin, failures })
   const seo = verifySitemap({
     outDir,
@@ -1031,12 +1378,18 @@ export async function verifyStaticArtifact({
       ),
       largestRouteCss: topLargest(routeEntries.map((entry) => ({ path: entry.path, bytes: entry.routeCssBytes }))),
     },
-    seo,
+    seo: { ...seo, localSocialImageCount },
     secrets: {
       scannedTextFiles: textFiles.length,
       scanConcurrency: secretScanConcurrency,
       matches: secretMatches,
       privateQueryUrlMatches,
+    },
+    privacy: {
+      forbiddenRouteMatches,
+      forbiddenRouteReferenceMatches: forbiddenRouteReferenceMatches.sort((left, right) =>
+        left.path.localeCompare(right.path),
+      ),
     },
     failures,
     warnings: [],

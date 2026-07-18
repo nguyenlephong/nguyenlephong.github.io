@@ -8,7 +8,7 @@ title C4 Component - Routing, Content, SEO, and OG Generation
 Container_Boundary(app, "Static Next.js App") {
   Component(root_page, "Root Redirect Page", "src/app/page.tsx", "Sends / to /en while keeping metadata for crawlers.")
   Component(locale_layout, "Locale Layout", "src/app/[locale]/layout.tsx", "Main shell for locale validation, providers, scripts, JSON-LD, header, footer, and global tools.")
-  Component(route_pages, "Route Pages", "Next.js server components", "Profile, about, CV, gallery, apps, blog, notes, and heartbeats pages.")
+  Component(route_pages, "Route Pages", "Next.js server components", "Profile, about, CV, gallery, apps, blog, notes, and Studio pages.")
   Component(i18n, "i18n Routing", "next-intl", "Defines locales, locale-aware links, message loading, and English fallback merging.")
   Component(content_io, "Content IO", "src/lib/content/io.ts", "Reads JSON, caches production reads, overlays translated fields, and validates canonical files.")
   Component(blog_loader, "Blog Loader", "src/lib/blog/data.ts", "Loads canonical blog categories/posts and locale overrides.")

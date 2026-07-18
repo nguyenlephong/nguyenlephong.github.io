@@ -43,7 +43,7 @@ export function getPostStatsByIds(
   return firebaseEngagementRepository.getStatsByIds(ids, limit)
 }
 
-export function incrementView(id: string): Promise<void> {
+export function incrementView(id: string): Promise<boolean> {
   return firebaseEngagementRepository.recordView(id)
 }
 

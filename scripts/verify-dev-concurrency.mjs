@@ -34,7 +34,7 @@ const CASES = [
   ["/en/blog/architecture/ports-and-adapters", 200],
   ["/en/blog/page/2", 200],
   ["/en/gallery", 200],
-  ["/en/heartbeats", 200],
+  ["/en/heartbeats", 404],
   ["/en/notes", 200],
   ["/en/notes/tri-tue-can-duc-hanh", 200],
   ["/en/notes/page/2", 200],

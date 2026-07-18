@@ -1,3 +1,5 @@
+import { sanitizeAnalyticsProperties } from '@/lib/posthog-privacy'
+
 declare global {
   interface Window {
     posthog?: PostHogClient
@@ -8,6 +10,7 @@ type PostHogClient = {
   capture: (event: string, props?: Record<string, unknown>) => void
   identify: (id: string, props?: Record<string, unknown>) => void
   register: (props: Record<string, unknown>) => void
+  unregister: (key: string) => void
   register_once?: (props: Record<string, unknown>) => void
   set_config?: (props: Record<string, unknown>) => void
 }
@@ -152,11 +155,55 @@ export interface TrackOptions {
   beacon?: boolean
   /** Omit the browser URL for surfaces where the requested path may contain secrets. */
   omitLocation?: boolean
+  /**
+   * Attribute an event to a previously captured route. Only the normalized
+   * pathname is accepted; origins, query strings, and hashes are discarded.
+   */
+  pathnameOverride?: string
 }
 
-function safePath(): string {
+const PAGE_CONTEXT_KEYS = [
+  'page_type',
+  'page_section',
+  'content_surface',
+  'content_category',
+  'content_slug',
+  'blog_category',
+  'blog_slug',
+  'notes_category',
+  'notes_slug',
+  'detected_locale',
+  'requested_surface',
+] as const
+
+/** Return the stable route identity used by custom events and RUM. */
+export function getAnalyticsPathname(): string {
   if (typeof window === 'undefined') return ''
-  return window.location.pathname + window.location.search
+  return window.location.pathname
+}
+
+function normalizeAnalyticsPathname(pathname: string | undefined): string | undefined {
+  if (!pathname) return undefined
+  const candidate = pathname.trim()
+  if (!candidate.startsWith('/') || candidate.startsWith('//')) return undefined
+
+  try {
+    const baseUrl = 'https://analytics-path.invalid'
+    const normalized = new URL(candidate, baseUrl)
+    return normalized.origin === baseUrl ? normalized.pathname : undefined
+  } catch {
+    return undefined
+  }
+}
+
+/** Create a callback that can safely be wired to several page-leave signals. */
+export function createOnceReporter(report: () => void): () => void {
+  let reported = false
+  return () => {
+    if (reported) return
+    reported = true
+    report()
+  }
 }
 
 /** Honour the browser's Do-Not-Track signal across vendor prefixes. */
@@ -185,6 +232,9 @@ function ensurePostHogClient(): PostHogClient {
   queue.register = (props) => {
     queue.push(['register', props])
   }
+  queue.unregister = (key) => {
+    queue.push(['unregister', key])
+  }
   window.posthog = queue
   return queue
 }
@@ -197,15 +247,19 @@ export function track(
   if (typeof window === 'undefined') return
   if (isDoNotTrack()) return
   try {
+    const omitLocation = options?.omitLocation === true
+    const safeProps = sanitizeAnalyticsProperties(props ?? {}, omitLocation)
+    const pathname =
+      normalizeAnalyticsPathname(options?.pathnameOverride) ?? getAnalyticsPathname()
     const payload: Record<string, unknown> = {
       ts: Date.now(),
-      ...(options?.omitLocation
+      ...safeProps,
+      ...(omitLocation
         ? {}
         : {
-            path: safePath(),
-            pathname: window.location.pathname,
+            path: pathname,
+            pathname,
           }),
-      ...props,
     }
     if (options?.beacon) payload['$set_once'] = { last_outbound_ts: Date.now() }
     ensurePostHogClient().capture(event, payload)
@@ -218,7 +272,14 @@ export function track(
 export function registerPageContext(props: Record<string, unknown>): void {
   if (typeof window === 'undefined') return
   try {
-    ensurePostHogClient().register(props)
+    const client = ensurePostHogClient()
+    const nextContext = PAGE_CONTEXT_KEYS.reduce<Record<string, unknown>>((context, key) => {
+      if (Object.hasOwn(props, key)) context[key] = props[key]
+      return context
+    }, {})
+
+    for (const key of PAGE_CONTEXT_KEYS) client.unregister(key)
+    client.register(sanitizeAnalyticsProperties(nextContext, false))
   } catch {
     // ignore
   }

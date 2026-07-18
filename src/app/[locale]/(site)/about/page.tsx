@@ -13,8 +13,10 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import { PAGE_SEO, absoluteUrl } from '@/app/seo.config'
+import { PAGE_SEO } from '@/app/seo.config'
 import PageTracker from '@/components/analytics/PageTracker'
+import { serializeJsonLd } from '@/lib/seo/json-ld'
+import { localizedPageIdentity } from '@/lib/seo/locale'
 
 const seo = PAGE_SEO.about
 
@@ -52,16 +54,19 @@ const stackIcons = [LuCode2, LuShieldCheck, LuBoxes, LuGitBranch]
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
+  const identity = localizedPageIdentity(locale, seo.path)
   return {
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
-    alternates: { canonical: `/${locale}${seo.path}` },
+    alternates: { canonical: identity.canonical, languages: identity.languages },
     openGraph: {
       title: seo.title,
       description: seo.description,
-      url: absoluteUrl(`/${locale}${seo.path}`),
+      url: identity.canonical,
       type: 'profile',
+      locale: identity.ogLocale,
+      alternateLocale: identity.alternateOgLocales,
     },
     twitter: {
       card: 'summary_large_image',
@@ -71,20 +76,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-const aboutPageLd = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  '@id': 'https://nguyenlephong.github.io/about#aboutpage',
-  name: seo.title,
-  description: seo.description,
-  mainEntity: { '@id': 'https://nguyenlephong.github.io/#person' },
-  url: 'https://nguyenlephong.github.io/about',
-}
-
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+  const identity = localizedPageIdentity(locale, seo.path)
+  const aboutPageLd = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': `${identity.canonical}#aboutpage`,
+    name: seo.title,
+    description: seo.description,
+    mainEntity: { '@id': 'https://nguyenlephong.github.io/#person' },
+    url: identity.canonical,
+  }
 
   const t = await getTranslations('About')
   const metrics = t.raw('hero.metrics') as Metric[]
@@ -96,7 +101,7 @@ export default async function AboutPage({ params }: Props) {
     <main className="about-page about-page-v2">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(aboutPageLd) }}
       />
       <PageTracker page="about" eventName="about_view" />
 

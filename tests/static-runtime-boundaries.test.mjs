@@ -18,7 +18,6 @@ const expectedRoutes = [
   "blog/page/[page]/page.tsx",
   "gallery/opengraph-image.tsx",
   "gallery/page.tsx",
-  "heartbeats/page.tsx",
   "notes/[slug]/page.tsx",
   "notes/page.tsx",
   "notes/page/[page]/page.tsx",
@@ -139,6 +138,7 @@ test("development renders static params on demand without concurrent manifest wr
   }
 
   assert.match(verifier, /Promise\.all/);
+  assert.match(verifier, /\["\/en\/heartbeats", 404\]/);
   assert.match(verifier, /\["\/__dev-concurrency-missing__", 404\]/);
   assert.match(verifier, /prerender-manifest\.json/);
   assert.match(verifier, /JSON\.parse/);

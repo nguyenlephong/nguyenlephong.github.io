@@ -1,14 +1,17 @@
 /**
- * Blog reuses the generic, content-agnostic SEO helpers that already power the
- * Thoughts surface (hreflang alternates, canonical URLs, OG locale codes, and
- * HTML→description extraction). Re-exported here so blog modules import from a
- * single, intention-revealing path instead of reaching into the thoughts lib.
+ * Compatibility exports for older content modules. Locale identity lives at
+ * the neutral SEO boundary; only HTML description extraction remains shared
+ * with the legacy Thoughts helper.
  */
 export {
-  OG_LOCALE_MAP,
   buildDescription,
-  canonicalFor,
   htmlToPlainText,
-  localeAlternates,
-  preferredContentLocale,
 } from '@/lib/thoughts/seo'
+export {
+  OG_LOCALE_MAP,
+  canonicalFor,
+  localeAlternates,
+  localizedPageIdentity,
+  ogLocaleFor,
+  preferredContentLocale,
+} from '@/lib/seo/locale'

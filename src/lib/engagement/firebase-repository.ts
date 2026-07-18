@@ -1,4 +1,7 @@
-import { getDb } from '@/lib/firebase/client'
+import {
+  areFirebaseEngagementWritesEnabled,
+  getDb,
+} from '@/lib/firebase/client'
 import {
   emptyPostStats,
   isReactionKey,
@@ -115,10 +118,10 @@ export class FirebaseEngagementRepository implements EngagementRepository {
     }
   }
 
-  async recordView(id: string): Promise<void> {
-    if (isNavigatorOffline()) return
+  async recordView(id: string): Promise<boolean> {
+    if (isNavigatorOffline()) return false
     const db = await getDb()
-    if (!db) return
+    if (!db || !areFirebaseEngagementWritesEnabled()) return false
     try {
       const { doc, increment, setDoc } = await import('firebase/firestore')
       await setDoc(
@@ -126,15 +129,16 @@ export class FirebaseEngagementRepository implements EngagementRepository {
         { views: increment(1) },
         { merge: true },
       )
+      return true
     } catch {
-      // Public counters are best-effort and must never block reading.
+      return false
     }
   }
 
   async recordShare(id: string): Promise<boolean> {
     if (isNavigatorOffline()) return false
     const db = await getDb()
-    if (!db) return false
+    if (!db || !areFirebaseEngagementWritesEnabled()) return false
     try {
       const { doc, increment, setDoc } = await import('firebase/firestore')
       await setDoc(
@@ -152,7 +156,7 @@ export class FirebaseEngagementRepository implements EngagementRepository {
     if (isNavigatorOffline() || !isValidReactionChange(change)) return false
     if (change.previous === change.next) return true
     const db = await getDb()
-    if (!db) return false
+    if (!db || !areFirebaseEngagementWritesEnabled()) return false
 
     try {
       const { doc, runTransaction } = await import('firebase/firestore')

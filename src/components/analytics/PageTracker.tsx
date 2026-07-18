@@ -1,7 +1,12 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { registerPageContext, track } from '@/lib/analytics'
+import {
+  createOnceReporter,
+  getAnalyticsPathname,
+  registerPageContext,
+  track,
+} from '@/lib/analytics'
 
 export type PageType =
   | 'home'
@@ -52,7 +57,6 @@ export default function PageTracker({
   const visibleMsRef = useRef<number>(0)
   const lastVisibleAtRef = useRef<number>(0)
   const reportedRef = useRef<Set<number>>(new Set())
-  const finalReportedRef = useRef<boolean>(false)
 
   useEffect(() => {
     const startedAt = Date.now()
@@ -60,8 +64,10 @@ export default function PageTracker({
     lastVisibleAtRef.current = startedAt
     visibleMsRef.current = 0
     reportedRef.current = new Set()
-    finalReportedRef.current = false
-    const trackOptions = omitLocation ? { omitLocation: true } : undefined
+    const pagePathname = getAnalyticsPathname()
+    const trackOptions = omitLocation
+      ? { omitLocation: true }
+      : { pathnameOverride: pagePathname }
 
     registerPageContext({
       ...context,
@@ -117,11 +123,10 @@ export default function PageTracker({
       }
     }
 
-    const reportTime = (): void => {
+    const reportTime = createOnceReporter((): void => {
       // `pagehide` and `beforeunload` can both fire on the same navigation;
-      // only emit the final time-on-page once.
-      if (finalReportedRef.current) return
-      finalReportedRef.current = true
+      // React cleanup also runs on client-side navigation. The once wrapper
+      // keeps all three exit paths idempotent.
       const now = Date.now()
       if (document.visibilityState === 'visible') {
         visibleMsRef.current += now - lastVisibleAtRef.current
@@ -136,7 +141,7 @@ export default function PageTracker({
         },
         trackOptions,
       )
-    }
+    })
 
     window.addEventListener('scroll', onScroll, { passive: true })
     document.addEventListener('visibilitychange', onVisibility)
@@ -144,6 +149,7 @@ export default function PageTracker({
     window.addEventListener('beforeunload', reportTime)
 
     return () => {
+      reportTime()
       window.removeEventListener('scroll', onScroll)
       document.removeEventListener('visibilitychange', onVisibility)
       window.removeEventListener('pagehide', reportTime)

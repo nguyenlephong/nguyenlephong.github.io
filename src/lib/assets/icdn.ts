@@ -3,17 +3,33 @@ import {
   rewriteOwnedLegacyMediaUrls,
   type MediaUrlResolver,
 } from "@/lib/media/url-resolver";
+import mediaPublication from "../../../config/media-publication.json" with { type: "json" };
 
-const CONTENT_ASSET_MAPPINGS: Array<{
+type ContentAssetMapping = {
   from: string;
   to: string;
   extension: "webp" | "jpg";
-}> = [
+};
+
+function articleOgAssetMappings(): ContentAssetMapping[] {
+  return Object.values(mediaPublication.articleOg).map((publication) => {
+    if (publication.publicationExtension !== ".jpg") {
+      throw new Error("Article OG publication extension must be .jpg");
+    }
+
+    return {
+      from: `/${publication.sourceDirectory.replace(/^public\//, "")}/`,
+      to: `${publication.publicPathPrefix}/`,
+      extension: "jpg"
+    };
+  });
+}
+
+const CONTENT_ASSET_MAPPINGS: ContentAssetMapping[] = [
   { from: "/assets/blog/", to: "/blogs/", extension: "webp" },
   { from: "/assets/notes/", to: "/notes/", extension: "webp" },
   { from: "/assets/photos/", to: "/gallery/photos/", extension: "webp" },
-  { from: "/og/blog/", to: "/og/blogs/", extension: "jpg" },
-  { from: "/og/notes/", to: "/og/notes/", extension: "jpg" },
+  ...articleOgAssetMappings()
 ];
 
 function splitSuffix(path: string) {

@@ -5,7 +5,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { routing, type Locale } from '@/i18n/routing'
 import { SITE, SITE_URL } from '@/app/seo.config'
-import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/blog/seo'
+import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
+import { serializeJsonLd } from '@/lib/seo/json-ld'
 import {
   getCategory,
   getPostsByCategory,
@@ -101,7 +102,7 @@ export default async function BlogCategoryPage({ params }: Props) {
       <PageTracker page="blog_category" eventName="blog_category_view" section={category} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionLd) }}
       />
       <Link href="/blog" className="blog-back">
         ← {t('backToBlog')}
