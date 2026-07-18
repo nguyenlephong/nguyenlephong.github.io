@@ -1,7 +1,7 @@
 'use client'
 
 import { LuEye } from 'react-icons/lu'
-import { Link } from '@/i18n/navigation'
+import IntentPrefetchLink from '@/components/navigation/IntentPrefetchLink'
 import { track } from '@/lib/analytics'
 import type { BlogAccent } from '@/lib/blog/types'
 import type { BlogSearchItem } from '@/lib/content/search-index'
@@ -50,7 +50,7 @@ export default function BlogPostCard({
 }: BlogPostCardProps) {
   return (
     <article className={`blog-card blog-card--${accent}`}>
-      <Link
+      <IntentPrefetchLink
         href={`/blog/${post.category}/${post.slug}`}
         locale={contentLocale}
         className="blog-card__link"
@@ -82,7 +82,7 @@ export default function BlogPostCard({
             )}
           </div>
         </div>
-      </Link>
+      </IntentPrefetchLink>
     </article>
   )
 }

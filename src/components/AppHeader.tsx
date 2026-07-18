@@ -46,10 +46,13 @@ export default function AppHeader() {
             onClick={() => track("cv_nav_click", { target: "home" })}
           >
             <Image
-              src="/icon.png"
+              src="/favicon/android-icon-72x72.png"
               alt="Nguyen Le Phong"
               width={36}
               height={36}
+              sizes="36px"
+              loading="eager"
+              fetchPriority="high"
               className="brand-avatar"
             />
             <span className="brand-text">Nguyen Le Phong</span>
