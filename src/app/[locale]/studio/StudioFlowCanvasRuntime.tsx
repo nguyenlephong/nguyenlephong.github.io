@@ -44,6 +44,7 @@ import type {
   StudioFlowCanvasNodeKind,
   StudioFlowHelperLines
 } from "./studio-flow-contract";
+import { formatStudioFlowLabel } from "./studio-flow-format";
 
 export type StudioFlowCanvasNode = Node<StudioFlowCanvasNodeData, "studioFlow">;
 export type StudioFlowEdge = Edge;
@@ -63,14 +64,6 @@ export type StudioFlowCanvasRuntimeProps = Omit<
   surfaceClassName: string;
   trailPanel: ReactNode;
 };
-
-function formatStudioFlowLabel(value: string) {
-  return value
-    .split(/[-_]/)
-    .filter(Boolean)
-    .map((part) => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
-    .join(" ");
-}
 
 function renderStudioFlowNodeIcon(kind: StudioFlowCanvasNodeKind, badge?: string) {
   if (kind === "database" || badge === "db") return <LuDatabase />;
@@ -143,7 +136,7 @@ export default function StudioFlowCanvasRuntime({
   ...flowProps
 }: StudioFlowCanvasRuntimeProps) {
   return (
-    <div className={surfaceClassName}>
+    <div className={surfaceClassName} data-studio-flow-runtime="true">
       <ReactFlow {...flowProps} nodeTypes={studioFlowNodeTypes}>
         <Background color="color-mix(in srgb, var(--foreground) 12%, transparent)" gap={22} />
         <Controls showInteractive={false} />

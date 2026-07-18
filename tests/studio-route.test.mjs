@@ -69,7 +69,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.ok(existsSync("src/app/[locale]/studio/StudioFlowCanvasRuntime.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioFlowCanvasFeature.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/studio-admin-shell.tsx"));
-  assert.ok(existsSync("src/app/[locale]/studio/studio.shadow-styles.ts"));
+  assert.ok(existsSync("src/app/[locale]/studio/studio-route-catalog.ts"));
+  assert.ok(existsSync("public/studio/studio-shadow.css"));
+  assert.ok(!existsSync("src/app/[locale]/studio/studio.shadow-styles.ts"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.data.ts"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.localized-content.ts"));
   assert.ok(existsSync("src/app/[locale]/studio/studio.localized-workspace.ts"));
@@ -96,6 +98,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     workspace,
     staticOverview,
     staticContent,
+    routeCatalog,
+    routePrimitives,
     deliveryChart,
     deliveryFeature,
     featureBoundary,
@@ -128,6 +132,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioStaticOverview.tsx", "utf8"),
     readFile("src/app/[locale]/studio/studio-static-content.ts", "utf8"),
+    readFile("src/app/[locale]/studio/studio-route-catalog.ts", "utf8"),
+    readFile("src/app/[locale]/studio/StudioRoutePrimitives.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioDeliverySignalChart.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioDeliverySignalFeature.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioFeatureErrorBoundary.tsx", "utf8"),
@@ -139,7 +145,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/app/[locale]/studio/studio.localized-content.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio.localized-workspace.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio.localized-demos.ts", "utf8"),
-    readFile("src/app/[locale]/studio/studio.shadow-styles.ts", "utf8"),
+    readFile("public/studio/studio-shadow.css", "utf8"),
     readFile("src/components/studio-kit/index.ts", "utf8"),
     readFile("src/components/studio-kit/shadow-island.tsx", "utf8"),
     readFile("src/components/studio-kit/README.md", "utf8"),
@@ -205,7 +211,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(workspace, /@\/components\/studio-kit/);
   assert.match(workspace, /ShadowIsland/);
   assert.match(workspace, /StudioAdminShell/);
-  assert.match(workspace, /studioShadowStyles/);
+  assert.match(workspace, /STUDIO_STYLESHEET_HREF = "\/studio\/studio-shadow\.css"/);
+  assert.match(workspace, /stylesheetHref=\{STUDIO_STYLESHEET_HREF\}/);
+  assert.doesNotMatch(workspace, /studioShadowStyles|studio\.shadow-styles/);
   assert.match(page, /fallback=\{<StudioStaticOverview locale=\{locale\} \/>\}/);
   assert.match(workspace, /fallback=\{fallback\}/);
   assert.match(workspace, /heading=\{heading\}/);
@@ -220,7 +228,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(staticContent, /fr:\s*\{/);
   assert.match(adminShell, /^"use client"/);
   assert.match(adminShell, /StudioAdminShell/);
-  assert.match(adminShell, /const DEFAULT_ROUTE:\s*StudioRouteId = "welcome"/);
+  assert.match(adminShell, /const DEFAULT_ROUTE:\s*StudioRouteId = studioCatalog\.defaultRouteId/);
   assert.doesNotMatch(adminShell, /@xyflow\/react/);
   assert.match(adminShell, /StudioFlowCanvasFeature/);
   assert.match(adminShell, /loadStudioFlowRuntime/);
@@ -233,6 +241,12 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(flowRuntime, /applyNodeChanges/);
   assert.match(flowRuntime, /applyEdgeChanges/);
   assert.match(flowRuntime, /addEdge/);
+  assert.match(shadowIsland, /<link[\s\S]*rel="stylesheet"[\s\S]*href=\{stylesheetHref\}/);
+  assert.match(shadowIsland, /stylesheetReady\s*\?\s*children/);
+  assert.match(shadowIsland, /slot="studio-loading-fallback"/);
+  assert.match(shadowIsland, /data-shadow-stylesheet=\{stylesheetStatus\}/);
+  assert.doesNotMatch(shadowIsland, /<style>\{styles\}<\/style>/);
+  assert.doesNotMatch(shadowCss, /export const studioShadowStyles|`;/);
   assert.match(flowRuntime, /ViewportPortal/);
   assert.match(flowRuntime, /ReactFlow/);
   assert.match(flowRuntime, /MiniMap/);
@@ -279,8 +293,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /reactFlowExampleFamilyLabels/);
   assert.match(adminShell, /flow-example-toolbar/);
   assert.match(adminShell, /selectedViewId/);
-  assert.match(adminShell, /routeId:\s*"flow-react-flow-architecture-demo"/);
-  assert.match(adminShell, /routeId:\s*"flow-react-flow-system-blueprint"/);
+  assert.match(routeCatalog, /routeId:\s*"flow-react-flow-architecture-demo"/);
+  assert.match(routeCatalog, /routeId:\s*"flow-react-flow-system-blueprint"/);
   assert.match(adminShell, /studioCopyByLocale/);
   assert.match(adminShell, /getStudioCopy/);
   assert.match(adminShell, /getLocalizedRouteDefinitions/);
@@ -291,7 +305,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /navLabel:\s*"Studio personnel"/);
   assert.match(adminShell, /studio-sidebar/);
   assert.match(adminShell, /studio-topbar/);
-  assert.match(adminShell, /metric-grid/);
+  assert.match(routePrimitives, /metric-grid/);
   assert.match(adminShell, /<span>Studio<\/span>/);
   assert.match(adminShell, /Search Studio/);
   assert.match(adminShell, /Profile navigation/);
@@ -326,9 +340,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /Sidebar style/);
   assert.match(adminShell, /Collapse mode/);
   assert.match(adminShell, /Restore layout defaults/);
-  const navGroupsBlock = adminShell.slice(
-    adminShell.indexOf("const navGroups"),
-    adminShell.indexOf("const studioMails")
+  const navGroupsBlock = routeCatalog.slice(
+    routeCatalog.indexOf("export const studioNavCatalog"),
+    routeCatalog.indexOf("export type StudioPublicModuleRouteId")
   );
   assert.match(navGroupsBlock, /label:\s*"Personal Studio"/);
   assert.match(navGroupsBlock, /title:\s*"Welcome"/);
@@ -359,6 +373,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(navGroupsBlock, /Invoice/);
   assert.doesNotMatch(navGroupsBlock, /Authentication/);
   assert.doesNotMatch(navGroupsBlock, /Legacy/);
+  assert.match(adminShell, /studioCatalog\.navGroups\.map/);
   assert.match(adminShell, /"crm"/);
   assert.match(adminShell, /"finance"/);
   assert.match(adminShell, /"analytics"/);

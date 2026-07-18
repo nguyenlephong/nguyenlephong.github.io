@@ -5,6 +5,8 @@ import { setRequestLocale } from "next-intl/server";
 import { PAGE_SEO, SITE, SITE_URL, absoluteUrl } from "@/app/seo.config";
 import PageTracker from "@/components/analytics/PageTracker";
 import { routing, type Locale } from "@/i18n/routing";
+import { serializeJsonLd } from "@/lib/seo/json-ld";
+import { localizedPageIdentity } from "@/lib/seo/locale";
 import StudioStaticOverview from "./StudioStaticOverview";
 import StudioWorkspace from "./StudioWorkspace";
 import {
@@ -44,33 +46,25 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-function localeAlternates(path: string): Record<string, string> {
-  const languages: Record<string, string> = {};
-  for (const locale of routing.locales) {
-    languages[locale] = `/${locale}${path}`;
-  }
-  languages["x-default"] = `/${routing.defaultLocale}${path}`;
-  return languages;
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const canonical = `/${locale}${seo.path}`;
+  const identity = localizedPageIdentity(locale, seo.path);
   const localizedSeo = getStudioSeo(locale);
-  const socialImage = absoluteUrl(`/${locale}/opengraph-image`);
+  const socialImage = absoluteUrl("/opengraph-image.png");
 
   return {
     title: localizedSeo.title,
     description: localizedSeo.description,
     keywords: localizedSeo.keywords,
-    alternates: { canonical, languages: localeAlternates(seo.path) },
+    alternates: { canonical: identity.canonical, languages: identity.languages },
     openGraph: {
       type: "website",
-      url: absoluteUrl(canonical),
+      url: identity.canonical,
       title: localizedSeo.title,
       description: localizedSeo.description,
       siteName: SITE.name,
-      locale: locale === "vi" ? "vi_VN" : locale === "en" ? "en_US" : locale.replace("-", "_"),
+      locale: identity.ogLocale,
+      alternateLocale: identity.alternateOgLocales,
       images: [{ url: socialImage, width: 1200, height: 630, alt: localizedSeo.title }]
     },
     twitter: {
@@ -95,14 +89,15 @@ export default async function StudioPage({ params }: Props) {
   setRequestLocale(locale);
   const localizedSeo = getStudioSeo(locale);
   const staticContent = getStudioStaticContent(locale);
+  const identity = localizedPageIdentity(locale, seo.path);
 
   const collectionLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": `${SITE_URL}/${locale}/studio#studio`,
+    "@id": `${identity.canonical}#studio`,
     name: localizedSeo.title,
     description: localizedSeo.description,
-    url: `${SITE_URL}/${locale}/studio`,
+    url: identity.canonical,
     inLanguage: locale as Locale,
     isPartOf: { "@type": "WebSite", "@id": `${SITE_URL}/#website` },
     author: { "@type": "Person", "@id": `${SITE_URL}/#person` },
@@ -216,7 +211,7 @@ export default async function StudioPage({ params }: Props) {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionLd) }}
       />
       <PageTracker page="studio" eventName="studio_view" section="notes_admin" />
       <StudioWorkspace

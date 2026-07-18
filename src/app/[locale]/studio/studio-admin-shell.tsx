@@ -22,15 +22,26 @@ import {
 } from "./studio.localized-content";
 import { getLocalizedStudioFolders, getLocalizedStudioNotes } from "./studio.localized-workspace";
 import { getLocalizedStudioDemoFlows } from "./studio.localized-demos";
+import {
+  studioCatalog,
+  type StudioNavCatalogItem,
+  type StudioNavIconKey,
+  type StudioRouteId
+} from "./studio-route-catalog";
+import StudioAuxiliaryDashboardsFeature from "./StudioAuxiliaryDashboardsFeature";
 import StudioDeliverySignalFeature from "./StudioDeliverySignalFeature";
 import StudioFlowCanvasFeature from "./StudioFlowCanvasFeature";
+import { RouteHeading, RouteMetricGrid } from "./StudioRoutePrimitives";
+import type { StudioMetric, StudioRoute } from "./studio-route-contract";
 import type {
   StudioFlowCanvasMode,
   StudioFlowCanvasTone,
   StudioFlowHelperLines,
   StudioFlowLayoutMode
 } from "./studio-flow-contract";
+import { formatStudioFlowLabel } from "./studio-flow-format";
 import { loadStudioFlowRuntime } from "./studio-flow-runtime-loader";
+import { StudioRouteOpenDeduper } from "./studio-route-open-deduper";
 import type {
   StudioFlowCanvasNode,
   StudioFlowConnection,
@@ -134,90 +145,6 @@ type StudioAdminShellProps = {
   locale: string;
 };
 
-type StudioRouteId =
-  | "welcome"
-  | "default"
-  | "crm"
-  | "finance"
-  | "analytics"
-  | "productivity"
-  | "ecommerce"
-  | "academy"
-  | "logistics"
-  | "infrastructure"
-  | "email"
-  | "chat"
-  | "ai-agent-setup"
-  | "ai-skills"
-  | "delivery-checklists"
-  | "flow-system-design"
-  | "flow-architecture-decision"
-  | "flow-incident-response"
-  | "flow-release-readiness"
-  | "flow-ai-delivery"
-  | "flow-portfolio-story"
-  | "flow-react-flow-architecture-demo"
-  | "flow-react-flow-system-blueprint"
-  | "calendar"
-  | "kanban"
-  | "invoice"
-  | "users"
-  | "roles"
-  | "auth-login-v1"
-  | "auth-login-v2"
-  | "auth-register-v1"
-  | "auth-register-v2"
-  | "legacy-default"
-  | "legacy-crm"
-  | "legacy-finance"
-  | "legacy-analytics";
-
-type StudioRouteKind =
-  | "welcome"
-  | "default"
-  | "dashboard"
-  | "finance"
-  | "analytics"
-  | "productivity"
-  | "ecommerce"
-  | "academy"
-  | "logistics"
-  | "infrastructure"
-  | "mail"
-  | "chat"
-  | "ai-setup"
-  | "ai-skills"
-  | "checklists"
-  | "flows"
-  | "calendar"
-  | "kanban"
-  | "invoice"
-  | "users"
-  | "roles"
-  | "auth"
-  | "legacy";
-
-type StudioMetric = {
-  label: string;
-  value: string;
-  helper: string;
-  badge: string;
-  trend: "up" | "down";
-  icon: IconType;
-};
-
-type StudioRoute = {
-  id: StudioRouteId;
-  title: string;
-  description: string;
-  kind: StudioRouteKind;
-  icon: IconType;
-  badge?: "new" | "soon";
-  metrics: StudioMetric[];
-  panels: string[];
-  timeline: string[];
-};
-
 type MailAttachment = {
   id: string;
   name: string;
@@ -305,7 +232,7 @@ type StudioProfileMenuItem = {
   external?: boolean;
 };
 
-const DEFAULT_ROUTE: StudioRouteId = "welcome";
+const DEFAULT_ROUTE: StudioRouteId = studioCatalog.defaultRouteId;
 const STUDIO_THEME_STORAGE_KEY = "studio_theme_preference";
 const STUDIO_FONT_STORAGE_KEY = "studio_font_preference";
 const LAYOUT_STORAGE_KEY = "studio_layout_preference";
@@ -331,7 +258,7 @@ type StudioContentLayout = "centered" | "full-width";
 type StudioNavbarStyle = "sticky" | "scroll";
 type StudioSidebarVariant = "inset" | "sidebar" | "floating";
 type StudioSidebarCollapsible = "icon" | "offcanvas";
-type StudioRouteActivationSource = "brand" | "sidebar" | "command" | "route_actions" | "browser_history" | "unknown";
+type StudioRouteActivationSource = "initial_location" | "brand" | "sidebar" | "command" | "route_actions" | "browser_history" | "unknown";
 
 type StudioLayoutPreference = {
   contentLayout: StudioContentLayout;
@@ -2125,60 +2052,26 @@ const routeDefinitions: Record<StudioRouteId, StudioRoute> = {
   }
 };
 
-const navGroups: StudioNavGroup[] = [
-  {
-    id: 1,
-    label: "Personal Studio",
-    items: [
-      {
-        id: "welcome",
-        title: "Welcome",
-        routeId: "welcome",
-        icon: LuSmile
-      },
-      {
-        id: "ai-agent-setup",
-        title: "AI Setup",
-        routeId: "ai-agent-setup",
-        icon: LuSparkles,
-        badge: "new"
-      },
-      {
-        id: "ai-skills",
-        title: "AI Skills",
-        routeId: "ai-skills",
-        icon: LuCommand,
-        badge: "new"
-      },
-      {
-        id: "delivery-checklists",
-        title: "Checklists",
-        routeId: "delivery-checklists",
-        icon: LuClipboardList,
-        badge: "new"
-      },
-      {
-        id: "flow-menu",
-        title: "Flow Menu",
-        routeId: "flow-react-flow-architecture-demo",
-        icon: LuWorkflow,
-        badge: "new",
-        subItems: [
-          {
-            id: "flow-react-flow-architecture-demo",
-            title: "Example",
-            routeId: "flow-react-flow-architecture-demo"
-          },
-          {
-            id: "flow-react-flow-system-blueprint",
-            title: "Blueprint",
-            routeId: "flow-react-flow-system-blueprint"
-          }
-        ]
-      }
-    ]
-  }
-];
+const studioNavIcons: Record<StudioNavIconKey, IconType> = {
+  smile: LuSmile,
+  sparkles: LuSparkles,
+  command: LuCommand,
+  "clipboard-list": LuClipboardList,
+  workflow: LuWorkflow
+};
+
+function hydrateStudioNavItem(item: StudioNavCatalogItem): StudioNavItem {
+  return {
+    ...item,
+    icon: item.icon ? studioNavIcons[item.icon] : undefined,
+    subItems: item.subItems?.map(hydrateStudioNavItem)
+  };
+}
+
+const navGroups: StudioNavGroup[] = studioCatalog.navGroups.map((group) => ({
+  ...group,
+  items: group.items.map(hydrateStudioNavItem)
+}));
 
 const studioMails: StudioMail[] = [
   {
@@ -2525,6 +2418,13 @@ const visibleRouteIds = new Set(
     .map((item) => item.routeId)
     .filter((routeId): routeId is StudioRouteId => Boolean(routeId))
 );
+const studioRouteIdSet = new Set<StudioRouteId>(studioCatalog.routeIds);
+const studioDeepLinkRouteIdSet = new Set<StudioRouteId>(studioCatalog.deepLinkRouteIds);
+
+function isLocationRouteId(candidate: string): candidate is StudioRouteId {
+  const routeId = candidate as StudioRouteId;
+  return studioRouteIdSet.has(routeId) && (visibleRouteIds.has(routeId) || studioDeepLinkRouteIdSet.has(routeId));
+}
 
 function routeHref(routeId: StudioRouteId): string {
   const flowId = flowIdFromRoute(routeId);
@@ -2534,9 +2434,7 @@ function routeHref(routeId: StudioRouteId): string {
 
 function normalizeHash(hash: string): StudioRouteId {
   const candidate = hash.replace(/^#\/?/, "");
-  return candidate in routeDefinitions && visibleRouteIds.has(candidate as StudioRouteId)
-    ? (candidate as StudioRouteId)
-    : DEFAULT_ROUTE;
+  return isLocationRouteId(candidate) ? candidate : DEFAULT_ROUTE;
 }
 
 function normalizeLocationRoute(): StudioRouteId {
@@ -2544,13 +2442,11 @@ function normalizeLocationRoute(): StudioRouteId {
   const flowId = params.get("flow");
   if (flowId && studioFlows.some((flow) => flow.id === flowId)) {
     const routeId = flowRouteId(flowId);
-    if (visibleRouteIds.has(routeId)) return routeId;
+    if (isLocationRouteId(routeId)) return routeId;
   }
 
   const routeId = params.get("route");
-  if (routeId && routeId in routeDefinitions && visibleRouteIds.has(routeId as StudioRouteId)) {
-    return routeId as StudioRouteId;
-  }
+  if (routeId && isLocationRouteId(routeId)) return routeId;
 
   return normalizeHash(window.location.hash);
 }
@@ -2633,27 +2529,6 @@ function renderChecklistMarkdown(checklist: StudioWorkflowChecklist, copy: Studi
 
 function countChecklistSteps(steps: StudioChecklistStep[]): number {
   return steps.reduce((total, step) => total + 1 + countChecklistSteps(step.children ?? []), 0);
-}
-
-function MetricCard({ item }: { item: StudioMetric }) {
-  const Icon = item.icon;
-
-  return (
-    <article className="metric-card" data-slot="card">
-      <div className="metric-icon" aria-hidden="true">
-        <Icon />
-      </div>
-      <p>{item.label}</p>
-      <div className="metric-value-row">
-        <strong>{item.value}</strong>
-        <span className={`trend-badge trend-${item.trend}`}>
-          <LuLineChart aria-hidden="true" />
-          {item.badge}
-        </span>
-      </div>
-      <span className="metric-helper">{item.helper}</span>
-    </article>
-  );
 }
 
 function SidebarGroup({
@@ -2748,75 +2623,6 @@ function SidebarGroup({
             </a>
           );
         })}
-      </div>
-    </section>
-  );
-}
-
-function RouteHeading({ route, copy = englishStudioCopy, children }: { route: StudioRoute; copy?: StudioUiCopy; children?: React.ReactNode }) {
-  const Icon = route.icon;
-  return (
-    <div className="route-heading">
-      <div>
-        <div className="route-kicker">
-          <Icon aria-hidden="true" />
-          <span>{route.kind === "legacy" ? copy.routeKicker.legacy : copy.routeKicker.studio}</span>
-        </div>
-        <h2>{route.title}</h2>
-        <p>{route.description}</p>
-      </div>
-      {children}
-    </div>
-  );
-}
-
-function RouteMetricGrid({ metrics, copy = englishStudioCopy }: { metrics: StudioMetric[]; copy?: StudioUiCopy }) {
-  return (
-    <section className="metric-grid" aria-label={copy.routeMetricsLabel}>
-      {metrics.map((item) => (
-        <MetricCard key={item.label} item={item} />
-      ))}
-    </section>
-  );
-}
-
-function TimelineCard({ route }: { route: StudioRoute }) {
-  return (
-    <section className="card route-panel" data-slot="card">
-      <header className="card-header">
-        <div>
-          <h2>Activity</h2>
-          <p>Recent events from this Studio view.</p>
-        </div>
-      </header>
-      <div className="timeline-list">
-        {route.timeline.map((item, index) => (
-          <div className="timeline-item" key={item}>
-            <span>{index + 1}</span>
-            <p>{item}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function PanelsCard({ route }: { route: StudioRoute }) {
-  return (
-    <section className="card route-panel" data-slot="card">
-      <header className="card-header">
-        <div>
-          <h2>{route.title} modules</h2>
-          <p>Route-specific sections are mounted without leaving `/studio`.</p>
-        </div>
-      </header>
-      <div className="module-grid">
-        {route.panels.map((panel) => (
-          <article className="module-card" key={panel}>
-            <strong>{panel}</strong>
-            <span>Active</span>
-          </article>
-        ))}
       </div>
     </section>
   );
@@ -2922,188 +2728,6 @@ function ReleaseChecklistCard() {
             </span>
           </label>
         ))}
-      </div>
-    </section>
-  );
-}
-
-function DashboardRoutePage({ route, locale }: { route: StudioRoute; locale: string }) {
-  return (
-    <section className="route-page">
-      <RouteHeading route={route}>
-        <div className="route-actions">
-          <button type="button" className="outline-button">
-            <LuRotateCw aria-hidden="true" />
-            Refresh
-          </button>
-          <button type="button" className="outline-button">
-            <LuDownload aria-hidden="true" />
-            Export
-          </button>
-        </div>
-      </RouteHeading>
-      <RouteMetricGrid metrics={route.metrics} />
-      <div className="route-grid">
-        <section className="card activity-card route-wide-card" data-slot="card">
-          <header className="card-header activity-header">
-            <div>
-              <h2>{route.panels[0]}</h2>
-              <p>{route.description}</p>
-            </div>
-            <div className="card-actions">
-              <button type="button" className="select-button">
-                Overview
-                <LuChevronDown aria-hidden="true" />
-              </button>
-              <button type="button" className="outline-button">View report</button>
-            </div>
-          </header>
-          <StudioDeliverySignalFeature locale={locale} />
-        </section>
-        <TimelineCard route={route} />
-        <PanelsCard route={route} />
-      </div>
-    </section>
-  );
-}
-
-function FinanceLikePage({ route }: { route: StudioRoute }) {
-  const [tab, setTab] = useState("dashboard");
-  return (
-    <section className="route-page">
-      <RouteHeading route={route}>
-        <div className="route-actions">
-          <button type="button" className="outline-button">
-            <LuSettings aria-hidden="true" />
-            Settings
-          </button>
-          <button type="button" className="outline-button">
-            <LuDownload aria-hidden="true" />
-            Export
-          </button>
-        </div>
-      </RouteHeading>
-      <div className="tabs-row" role="tablist" aria-label={`${route.title} tabs`}>
-        {["dashboard", "accounts", "transactions"].map((item) => (
-          <button key={item} type="button" className={tab === item ? "is-active" : ""} onClick={() => setTab(item)}>
-            {item === "dashboard" ? "Dashboard" : item === "accounts" ? "Accounts" : "Transactions"}
-          </button>
-        ))}
-      </div>
-      {tab === "dashboard" ? (
-        <>
-          <RouteMetricGrid metrics={route.metrics} />
-          <div className="route-grid">
-            <PanelsCard route={route} />
-            <TimelineCard route={route} />
-          </div>
-        </>
-      ) : (
-        <section className="empty-route card">
-          <LuCreditCard aria-hidden="true" />
-          <strong>{tab === "accounts" ? "Accounts view" : "Transactions view"}</strong>
-          <p>This tab is mounted and switchable, keeping the Studio shell state intact.</p>
-        </section>
-      )}
-    </section>
-  );
-}
-
-function AnalyticsPage({ route, locale }: { route: StudioRoute; locale: string }) {
-  const [tab, setTab] = useState("overview");
-  const tabs = ["overview", "audience", "acquisition", "engagement", "conversions"];
-  return (
-    <section className="route-page">
-      <RouteHeading route={route}>
-        <button type="button" className="outline-button">
-          <LuSlidersHorizontal aria-hidden="true" />
-          Filters
-        </button>
-      </RouteHeading>
-      <div className="tabs-row tabs-wrap" role="tablist" aria-label="Analytics tabs">
-        {tabs.map((item) => (
-          <button key={item} type="button" className={tab === item ? "is-active" : ""} onClick={() => setTab(item)}>
-            {item[0].toUpperCase() + item.slice(1)}
-          </button>
-        ))}
-      </div>
-      {tab === "overview" ? (
-        <>
-          <RouteMetricGrid metrics={route.metrics} />
-          <div className="route-grid">
-            <section className="card activity-card route-wide-card" data-slot="card">
-              <header className="card-header activity-header">
-                <div>
-                  <h2>Traffic Quality</h2>
-                  <p>{route.description}</p>
-                </div>
-                <button type="button" className="outline-button">View report</button>
-              </header>
-              <StudioDeliverySignalFeature locale={locale} />
-            </section>
-            <TimelineCard route={route} />
-            <PanelsCard route={route} />
-          </div>
-        </>
-      ) : (
-        <section className="empty-route card">
-          <LuGauge aria-hidden="true" />
-          <strong>{tab[0].toUpperCase() + tab.slice(1)} view</strong>
-          <p>The tab changes without a reload, keeping the Studio shell state intact.</p>
-        </section>
-      )}
-    </section>
-  );
-}
-
-function ProductivityPage({ route }: { route: StudioRoute }) {
-  return (
-    <section className="route-page">
-      <RouteHeading route={route}>
-        <button type="button" className="outline-button">
-          <LuListTodo aria-hidden="true" />
-          New task
-        </button>
-      </RouteHeading>
-      <RouteMetricGrid metrics={route.metrics} />
-      <div className="productivity-layout">
-        <PanelsCard route={route} />
-        <section className="card route-panel">
-          <h2>Today</h2>
-          <div className="task-list">
-            {["Review dashboard shell", "Validate route behavior", "Ship PR update"].map((task) => (
-              <label key={task} className="check-row">
-                <input type="checkbox" />
-                <span>{task}</span>
-              </label>
-            ))}
-          </div>
-        </section>
-        <TimelineCard route={route} />
-      </div>
-    </section>
-  );
-}
-
-function CommerceAcademyPage({ route }: { route: StudioRoute }) {
-  return (
-    <section className="route-page">
-      <RouteHeading route={route}>
-        <div className="route-actions">
-          <button type="button" className="outline-button">
-            <LuSettings aria-hidden="true" />
-            Options
-          </button>
-          <button type="button" className="outline-button">
-            <LuDownload aria-hidden="true" />
-            Export
-          </button>
-        </div>
-      </RouteHeading>
-      <RouteMetricGrid metrics={route.metrics} />
-      <div className="route-grid">
-        <PanelsCard route={route} />
-        <TimelineCard route={route} />
       </div>
     </section>
   );
@@ -4007,7 +3631,7 @@ function WelcomePage({
 }>) {
   const localizedRoutes = getLocalizedRouteDefinitions(copy);
   const usefulLinks = getLocalizedProfileItems(copy).filter((item) => ["home", "notes", "blog", "apps", "resume"].includes(item.id));
-  const studioShortcuts: StudioRouteId[] = ["ai-agent-setup", "ai-skills", "delivery-checklists", "flow-react-flow-architecture-demo"];
+  const studioShortcuts: StudioRouteId[] = studioCatalog.welcomeRouteIds;
 
   return (
     <section className="route-page welcome-route" data-studio-module="welcome">
@@ -4149,14 +3773,6 @@ const reactFlowExampleFamilyLabels: Record<string, string> = {
 
 function getReactFlowFamilyLabel(family: string, copy: StudioUiCopy["flows"]) {
   return copy.familyLabels[family] ?? reactFlowExampleFamilyLabels[family] ?? family;
-}
-
-function formatStudioFlowLabel(value: string) {
-  return value
-    .split(/[-_]/)
-    .filter(Boolean)
-    .map((part) => `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
-    .join(" ");
 }
 
 function buildStudioFlowCanvas(flow: StudioFlow, copy: StudioUiCopy["flows"], viewId?: string): {
@@ -6081,10 +5697,6 @@ function RouteContent({
       />
     );
   }
-  if (route.kind === "finance") return <FinanceLikePage route={route} />;
-  if (route.kind === "analytics") return <AnalyticsPage route={route} locale={locale} />;
-  if (route.kind === "productivity") return <ProductivityPage route={route} />;
-  if (route.kind === "ecommerce" || route.kind === "academy" || route.kind === "logistics" || route.kind === "infrastructure") return <CommerceAcademyPage route={route} />;
   if (route.kind === "mail") return <MailRoutePage route={route} />;
   if (route.kind === "chat") return <ChatRoutePage route={route} />;
   if (route.kind === "ai-setup") return <AiAgentSetupPage route={route} locale={locale} copy={copy} profileActions={profileActions} />;
@@ -6096,7 +5708,7 @@ function RouteContent({
   if (route.kind === "invoice") return <InvoicePage route={route} />;
   if (route.kind === "users" || route.kind === "roles") return <UsersRolesPage route={route} />;
   if (route.kind === "auth") return <AuthPage route={route} />;
-  return <DashboardRoutePage route={route} locale={locale} />;
+  return <StudioAuxiliaryDashboardsFeature route={route} locale={locale} />;
 }
 
 function CommandDialog({
@@ -6391,6 +6003,8 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
   const [statusFilter, setStatusFilter] = useState("all");
   const [sortMode, setSortMode] = useState("joined");
   const preferencesRef = useRef<HTMLDivElement>(null);
+  const initialRouteRef = useRef(activeRoute);
+  const routeOpenDeduperRef = useRef(new StudioRouteOpenDeduper());
   const copy = useMemo(() => getStudioCopy(locale), [locale]);
   const localizedRoutes = useMemo(() => getLocalizedRouteDefinitions(copy), [copy]);
   const localizedNavGroups = useMemo(() => getLocalizedNavGroups(copy), [copy]);
@@ -6403,13 +6017,23 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
   const route = localizedRoutes[activeRoute];
 
   useEffect(() => {
+    if (!routeOpenDeduperRef.current.claimInitialLocation()) return;
+    const initialRoute = initialRouteRef.current;
+    track("studio_route_open", {
+      route_id: initialRoute,
+      route_kind: studioCatalog.routeKindById[initialRoute],
+      source: "initial_location"
+    });
+  }, []);
+
+  useEffect(() => {
     const syncRoute = () => {
       const nextRoute = normalizeLocationRoute();
       setActiveRoute((currentRoute) => {
-        if (currentRoute !== nextRoute) {
+        if (routeOpenDeduperRef.current.isHistoryTransition(currentRoute, nextRoute)) {
           track("studio_route_open", {
             route_id: nextRoute,
-            route_kind: routeDefinitions[nextRoute].kind,
+            route_kind: studioCatalog.routeKindById[nextRoute],
             previous_route: currentRoute,
             source: "browser_history"
           });
@@ -6483,7 +6107,7 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
   const activateRoute = useCallback((routeId: StudioRouteId, source: StudioRouteActivationSource = "unknown") => {
     track("studio_route_open", {
       route_id: routeId,
-      route_kind: routeDefinitions[routeId].kind,
+      route_kind: studioCatalog.routeKindById[routeId],
       previous_route: activeRoute,
       source
     });

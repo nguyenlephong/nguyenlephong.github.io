@@ -116,7 +116,7 @@ export default function StudioDeliverySignalChart() {
   const isDimmed = (key: ReleaseSignalSeriesKey) => activeSeries !== "all" && activeSeries !== key;
 
   return (
-    <div className="studio-chart-shell">
+    <div className="studio-chart-shell" data-studio-recharts-runtime="true">
       <div className="chart-legend interactive" aria-label="Release signal series">
         {releaseSignalSeries.map((series) => (
           <button

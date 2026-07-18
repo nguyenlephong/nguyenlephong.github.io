@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import type { ReactNode } from "react";
 import { ShadowIsland } from "@/components/studio-kit";
 import { StudioAdminShell } from "./studio-admin-shell";
-import { studioShadowStyles } from "./studio.shadow-styles";
+
+const STUDIO_STYLESHEET_HREF = "/studio/studio-shadow.css";
 
 type StudioWorkspaceProps = {
   fallback: ReactNode;
@@ -24,7 +25,7 @@ export default function StudioWorkspace({ fallback, heading, locale }: StudioWor
 
   return (
     <ShadowIsland
-      styles={studioShadowStyles}
+      stylesheetHref={STUDIO_STYLESHEET_HREF}
       label={workspaceLabel}
       fallback={fallback}
       heading={heading}
