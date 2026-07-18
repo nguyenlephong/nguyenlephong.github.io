@@ -47,8 +47,8 @@ test("offline mode wires bounded cache warming and owned-route fallbacks", async
     "if (url.origin === self.location.origin)"
   );
 
-  assert.match(buildScript, /postbuild-offline\.mjs/);
-  assert.match(buildScript, /depth < 2/);
+  assert.match(buildScript, /scripts\/postbuild\.mjs/);
+  assert.doesNotMatch(buildScript, /scripts\/postbuild-offline\.mjs/);
   assert.equal(
     pkg.scripts["verify:offline"],
     "node scripts/verify-offline.mjs"
@@ -59,6 +59,8 @@ test("offline mode wires bounded cache warming and owned-route fallbacks", async
   );
 
   assert.match(offlineScript, /offline-manifest\.json/);
+  assert.match(offlineScript, /deriveInstallShell/);
+  assert.match(offlineScript, /runtimeAssets/);
   assert.doesNotMatch(offlineScript, /OFFLINE_WARM_LOCALE/);
   assert.match(offlineScript, /OFFLINE_WARM_PATH/);
   assert.match(offlineScript, /OFFLINE_CACHE_READY/);

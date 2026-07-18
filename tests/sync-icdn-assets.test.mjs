@@ -1,10 +1,18 @@
 import assert from 'node:assert/strict'
+import { execFile } from 'node:child_process'
 import { promises as fs } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
+import { promisify } from 'node:util'
 import test from 'node:test'
 
-import { replaceOwnedDirectories, syncIcdnAssets } from '../scripts/sync-icdn-assets.mjs'
+import {
+  parseSyncArgs,
+  replaceOwnedDirectories,
+  syncIcdnAssets,
+} from '../scripts/sync-icdn-assets.mjs'
+
+const execFileAsync = promisify(execFile)
 
 const ONE_PIXEL_PNG = Buffer.from(
   'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=',
@@ -27,6 +35,42 @@ async function withFixture(run) {
   }
 }
 
+async function git(cwd, args) {
+  return execFileAsync('git', ['-C', cwd, ...args], { encoding: 'utf8' })
+}
+
+async function initializeRepository(directory, origin) {
+  await git(directory, ['init', '--quiet'])
+  await git(directory, ['config', 'user.name', 'ICDN Sync Test'])
+  await git(directory, ['config', 'user.email', 'icdn-sync@example.test'])
+  await git(directory, ['remote', 'add', 'origin', origin])
+  await git(directory, ['add', '-A'])
+  await git(directory, ['commit', '--allow-empty', '-m', 'fixture', '--quiet'])
+}
+
+test('legacy sync requires explicit destructive opt-in and rejects unknown CLI arguments', async () => {
+  await withFixture(async ({ root, domPubDir }) => {
+    await assert.rejects(
+      syncIcdnAssets({ root, domPubDir, allowTestFixture: true }),
+      /requires explicit --full-replace opt-in/,
+    )
+  })
+
+  assert.deepEqual(parseSyncArgs(['--full-replace']), { fullReplace: true })
+  assert.throws(() => parseSyncArgs([]), /requires explicit --full-replace opt-in/)
+  assert.throws(() => parseSyncArgs(['--wat']), /unknown argument: --wat/)
+  assert.throws(
+    () => parseSyncArgs(['--full-replace', '--full-replace']),
+    /duplicate flag: --full-replace/,
+  )
+
+  const pkg = JSON.parse(await fs.readFile('package.json', 'utf8'))
+  const source = await fs.readFile('scripts/sync-icdn-assets.mjs', 'utf8')
+  assert.equal(pkg.scripts['assets:icdn'], 'node scripts/sync-icdn-assets.mjs')
+  assert.doesNotMatch(pkg.scripts['assets:icdn'], /--full-replace/)
+  assert.match(source, /deprecated legacy full sync/)
+})
+
 test('icdn sync leaves the target untouched when a source directory is absent', async () => {
   await withFixture(async ({ root, domPubDir }) => {
     const marker = path.join(domPubDir, 'icdn', 'blogs', 'keep.txt')
@@ -36,6 +80,7 @@ test('icdn sync leaves the target untouched when a source directory is absent', 
       syncIcdnAssets({
         root,
         domPubDir,
+        fullReplace: true,
         allowTestFixture: true,
         directoryGroups: [{ sourceDir: 'public/assets/blog', targetDir: 'blogs', kind: 'webp' }],
         localMappings: [],
@@ -63,6 +108,7 @@ test('icdn sync leaves the target untouched when an explicit source file is abse
       syncIcdnAssets({
         root,
         domPubDir,
+        fullReplace: true,
         allowTestFixture: true,
         directoryGroups: [],
         localMappings: [{ from: 'missing.png', to: 'blogs/missing.webp' }],
@@ -90,6 +136,7 @@ test('icdn sync refuses an empty source directory before staging', async () => {
       syncIcdnAssets({
         root,
         domPubDir,
+        fullReplace: true,
         allowTestFixture: true,
         directoryGroups: [{ sourceDir: 'public/assets/blog', targetDir: 'blogs', kind: 'webp' }],
         localMappings: [],
@@ -118,6 +165,7 @@ test('icdn sync rejects invalid batch sizes before staging or source discovery',
           syncIcdnAssets({
             root,
             domPubDir,
+            fullReplace: true,
             allowTestFixture: true,
             directoryGroups: [
               {
@@ -149,17 +197,19 @@ test('icdn sync requires the expected repository identity outside explicit temp 
   await withFixture(async ({ root, domPubDir }) => {
     const marker = path.join(domPubDir, 'icdn', 'blogs', 'keep.txt')
     await fs.writeFile(marker, 'do not delete', 'utf8')
+    await initializeRepository(root, 'git@github.com:nguyenlephong/nguyenlephong.github.io.git')
 
     await assert.rejects(
       syncIcdnAssets({
         root,
         domPubDir,
+        fullReplace: true,
         directoryGroups: [],
         localMappings: [],
         legacyMappings: [],
         ownedDirs: ['blogs'],
       }),
-      /must be the nguyenlephong\/dom-pub checkout/,
+      /DOM_PUB_DIR must be the nguyenlephong\/dom-pub checkout/,
     )
 
     assert.equal(await fs.readFile(marker, 'utf8'), 'do not delete')
@@ -181,6 +231,7 @@ test('icdn sync rejects symlinked DOM_PUB_DIR, icdn, and owned roots before stag
         syncIcdnAssets({
           root,
           domPubDir: linkedDomPub,
+          fullReplace: true,
           allowTestFixture: true,
           directoryGroups: [],
           localMappings: [],
@@ -206,6 +257,7 @@ test('icdn sync rejects symlinked DOM_PUB_DIR, icdn, and owned roots before stag
         syncIcdnAssets({
           root,
           domPubDir,
+          fullReplace: true,
           allowTestFixture: true,
           directoryGroups: [],
           localMappings: [],
@@ -232,6 +284,7 @@ test('icdn sync rejects symlinked DOM_PUB_DIR, icdn, and owned roots before stag
         syncIcdnAssets({
           root,
           domPubDir,
+          fullReplace: true,
           allowTestFixture: true,
           directoryGroups: [],
           localMappings: [],
@@ -251,16 +304,22 @@ test('icdn sync stages a complete replacement and preserves unowned files', asyn
     const sourceFile = path.join(sourceDir, 'new-image.png')
     const oldMarker = path.join(domPubDir, 'icdn', 'blogs', 'old.txt')
     const unownedMarker = path.join(domPubDir, 'icdn', 'manual.txt')
-    await fs.mkdir(sourceDir, { recursive: true })
+    const articleOgMarker = path.join(domPubDir, 'icdn', 'og', 'blogs', 'published.jpg')
+    await Promise.all([
+      fs.mkdir(sourceDir, { recursive: true }),
+      fs.mkdir(path.dirname(articleOgMarker), { recursive: true }),
+    ])
     await Promise.all([
       fs.writeFile(sourceFile, ONE_PIXEL_PNG),
       fs.writeFile(oldMarker, 'old', 'utf8'),
       fs.writeFile(unownedMarker, 'preserve', 'utf8'),
+      fs.writeFile(articleOgMarker, 'publisher-owned', 'utf8'),
     ])
 
     const result = await syncIcdnAssets({
       root,
       domPubDir,
+      fullReplace: true,
       allowTestFixture: true,
       directoryGroups: [{ sourceDir: 'public/assets/blog', targetDir: 'blogs', kind: 'webp' }],
       localMappings: [],
@@ -271,6 +330,7 @@ test('icdn sync stages a complete replacement and preserves unowned files', asyn
 
     assert.equal(result.converted, 1)
     assert.equal(await fs.readFile(unownedMarker, 'utf8'), 'preserve')
+    assert.equal(await fs.readFile(articleOgMarker, 'utf8'), 'publisher-owned')
     await assert.rejects(fs.access(oldMarker))
     const output = path.join(domPubDir, 'icdn', 'blogs', 'new-image.webp')
     assert.ok((await fs.stat(output)).size > 0)
@@ -278,6 +338,110 @@ test('icdn sync stages a complete replacement and preserves unowned files', asyn
       (await fs.readdir(domPubDir)).filter((entry) => entry.startsWith('.icdn-')),
       [],
     )
+  })
+})
+
+test('legacy sync refuses custom ownership of the article OG namespace', async () => {
+  await withFixture(async ({ root, domPubDir }) => {
+    const sourceDir = path.join(root, 'public', 'og', 'blog')
+    const articleOgMarker = path.join(domPubDir, 'icdn', 'og', 'blogs', 'published.jpg')
+    await Promise.all([
+      fs.mkdir(sourceDir, { recursive: true }),
+      fs.mkdir(path.dirname(articleOgMarker), { recursive: true }),
+    ])
+    await Promise.all([
+      fs.writeFile(path.join(sourceDir, 'attempt.png'), ONE_PIXEL_PNG),
+      fs.writeFile(articleOgMarker, 'publisher-owned', 'utf8'),
+    ])
+
+    await assert.rejects(
+      syncIcdnAssets({
+        root,
+        domPubDir,
+        fullReplace: true,
+        allowTestFixture: true,
+        directoryGroups: [
+          { sourceDir: 'public/og/blog', targetDir: 'og/blogs', kind: 'webp' },
+        ],
+        localMappings: [],
+        legacyMappings: [],
+        ownedDirs: ['blogs'],
+      }),
+      /article OG namespace is exclusively owned by publish-og-assets/,
+    )
+
+    assert.equal(await fs.readFile(articleOgMarker, 'utf8'), 'publisher-owned')
+  })
+})
+
+test('legacy sync rejects lookalike origins and dirty source or target trees', async (t) => {
+  async function prepareGitFixture(run) {
+    await withFixture(async ({ root, domPubDir }) => {
+      await Promise.all([
+        initializeRepository(root, 'git@github.com:nguyenlephong/nguyenlephong.github.io.git'),
+        initializeRepository(domPubDir, 'https://github.com/nguyenlephong/dom-pub.git'),
+      ])
+      await run({ root, domPubDir })
+    })
+  }
+
+  await t.test('lookalike target origin', async () => {
+    await prepareGitFixture(async ({ root, domPubDir }) => {
+      await git(domPubDir, [
+        'remote',
+        'set-url',
+        'origin',
+        'https://evilgithub.com/nguyenlephong/dom-pub.git',
+      ])
+      await assert.rejects(
+        syncIcdnAssets({
+          root,
+          domPubDir,
+          fullReplace: true,
+          directoryGroups: [],
+          localMappings: [],
+          legacyMappings: [],
+          ownedDirs: ['blogs'],
+        }),
+        /expected origin nguyenlephong\/dom-pub, received unknown/,
+      )
+    })
+  })
+
+  await t.test('dirty source checkout', async () => {
+    await prepareGitFixture(async ({ root, domPubDir }) => {
+      await fs.writeFile(path.join(root, 'dirty.txt'), 'dirty')
+      await assert.rejects(
+        syncIcdnAssets({
+          root,
+          domPubDir,
+          fullReplace: true,
+          directoryGroups: [],
+          localMappings: [],
+          legacyMappings: [],
+          ownedDirs: ['blogs'],
+        }),
+        /source checkout must be clean before full replacement/,
+      )
+    })
+  })
+
+  await t.test('dirty target checkout', async () => {
+    await prepareGitFixture(async ({ root, domPubDir }) => {
+      await fs.writeFile(path.join(domPubDir, 'dirty.txt'), 'dirty')
+      await assert.rejects(
+        syncIcdnAssets({
+          root,
+          domPubDir,
+          fullReplace: true,
+          directoryGroups: [],
+          localMappings: [],
+          legacyMappings: [],
+          ownedDirs: ['blogs'],
+        }),
+        /DOM_PUB_DIR must be clean before full replacement/,
+      )
+    })
   })
 })
 
@@ -308,6 +472,7 @@ test('owned-directory replacement restores every original after a partial swap f
         icdnDir,
         domPubDir,
         ownedDirs: ['blogs', 'notes'],
+        fullReplace: true,
         beforeOperation: async ({ operation, ownedDir }) => {
           if (operation === 'install' && ownedDir === 'notes') {
             throw new Error('fault injection: publish failed')
@@ -355,6 +520,7 @@ test('owned-directory replacement preserves the backup and reports its path afte
         icdnDir,
         domPubDir,
         ownedDirs: ['blogs', 'notes'],
+        fullReplace: true,
         beforeOperation: async ({ operation, ownedDir, target }) => {
           if (operation === 'install' && ownedDir === 'notes') {
             throw new Error('fault injection: publish failed')

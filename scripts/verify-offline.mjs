@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import assert from 'node:assert/strict'
 import { createServer } from 'node:http'
-import { promises as fs } from 'node:fs'
+import { promises as fs, statSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -10,6 +10,7 @@ const OUT_DIR = path.join(ROOT, 'out')
 const HOST = '127.0.0.1'
 const PORT = Number(process.env.OFFLINE_VERIFY_PORT ?? '4173')
 const LOCALE = process.env.OFFLINE_VERIFY_LOCALE ?? 'en'
+const LOCALES = ['en', 'vi', 'zh', 'ja', 'ko', 'fr']
 const SIBLING_ASSET_PATH = '/dom-pub/offline-probe.js'
 const SIBLING_ASSET_BODY = 'sibling-project-network-response'
 
@@ -150,6 +151,8 @@ async function assertArtifacts() {
 
   const manifest = JSON.parse(manifestRaw)
   const webManifest = JSON.parse(manifestRouteRaw)
+  const shell = manifest.shared?.shell ?? []
+  const runtimeAssets = manifest.shared?.runtimeAssets ?? []
 
   assert.equal(typeof manifest.version, 'string')
   assert.ok(Array.isArray(manifest.locales?.[LOCALE]), `missing locale pack for ${LOCALE}`)
@@ -158,9 +161,51 @@ async function assertArtifacts() {
     `locale pack for ${LOCALE} should include the locale home html`,
   )
   assert.ok(
-    manifest.shared?.shell?.includes('/offline-manifest.json'),
+    shell.includes('/offline-manifest.json'),
     'shell cache should include offline-manifest.json',
   )
+  assert.ok(runtimeAssets.length > 0, 'runtime asset ownership must be explicit')
+  assert.ok(
+    runtimeAssets.some((asset) => !shell.includes(asset)),
+    'route runtime assets must be cached on demand instead of all being install-preloaded',
+  )
+
+  const shellDocuments = [
+    'index.html',
+    '404.html',
+    '_not-found.html',
+    ...LOCALES.map((locale) => `${locale}.html`),
+    ...LOCALES.map((locale) => `${locale}/offline.html`),
+  ]
+  const referencedRuntimeAssets = new Set()
+  for (const relativePath of shellDocuments) {
+    const html = await fs.readFile(path.join(OUT_DIR, relativePath), 'utf8')
+    for (const match of html.matchAll(/\b(?:src|href)=["']([^"'<>]+)["']/gi)) {
+      const raw = match[1].replaceAll('&amp;', '&')
+      if (!raw.startsWith('/_next/')) continue
+      referencedRuntimeAssets.add(new URL(raw, 'https://artifact.invalid').pathname)
+    }
+  }
+  assert.deepEqual(
+    shell.filter((asset) => asset.startsWith('/_next/')).sort(),
+    [...referencedRuntimeAssets].sort(),
+    'install shell must contain exactly the runtime assets referenced by home and fallback documents',
+  )
+
+  const heavyweightChunks = { ReactFlow: [], Recharts: [] }
+  for (const asset of runtimeAssets.filter((value) => value.endsWith('.js'))) {
+    const source = await fs.readFile(path.join(OUT_DIR, asset.slice(1)), 'utf8')
+    if (source.includes('ReactFlowProvider')) heavyweightChunks.ReactFlow.push(asset)
+    if (source.includes('recharts-responsive-container')) heavyweightChunks.Recharts.push(asset)
+  }
+  for (const [library, assets] of Object.entries(heavyweightChunks)) {
+    assert.ok(assets.length > 0, `expected to identify the ${library} runtime chunk`)
+    assert.equal(
+      assets.some((asset) => shell.includes(asset)),
+      false,
+      `${library} chunks must not enter the install precache`,
+    )
+  }
   assert.equal(typeof manifest.shared?.pageVersions?.[`/${LOCALE}.html`], 'string')
   assert.match(swSource, /offline-shell-/)
   assert.match(swSource, /OFFLINE_CACHE_READY/)
@@ -200,6 +245,15 @@ async function assertArtifacts() {
   )
   assert.match(homeHtml, new RegExp(`<meta\\s+name="offline-manifest-version"\\s+content="${manifest.version}"`))
   assert.equal(webManifest.start_url, '/en')
+
+  const shellRawBytes = shell.reduce((total, asset) => {
+    if (asset === '/offline-manifest.json') return total + Buffer.byteLength(manifestRaw)
+    return total + statSync(path.join(OUT_DIR, asset.slice(1))).size
+  }, 0)
+  console.log(
+    `[verify-offline] install shell ${shell.length} files / ${(shellRawBytes / 1048576).toFixed(2)} MiB; ` +
+      `${runtimeAssets.length} runtime assets owned on demand`,
+  )
 }
 
 async function verifyBrowserFlow(setOriginOffline) {
@@ -315,6 +369,22 @@ async function verifyBrowserFlow(setOriginOffline) {
       waitUntil: 'domcontentloaded',
     })
 
+    const runtimeCacheProbe = await page.evaluate(async () => {
+      const manifest = await caches.match('/offline-manifest.json').then((response) => response?.json())
+      const shell = new Set(manifest?.shared?.shell ?? [])
+      const runtimeOnly = (manifest?.shared?.runtimeAssets ?? []).filter((asset) => !shell.has(asset))
+      const cached = []
+      for (const asset of runtimeOnly) {
+        if (await caches.match(asset)) cached.push(asset)
+      }
+      return { runtimeOnly: runtimeOnly.length, cached }
+    })
+    assert.ok(runtimeCacheProbe.runtimeOnly > 0, 'expected runtime-only assets outside install shell')
+    assert.ok(
+      runtimeCacheProbe.cached.length > 0,
+      'visited route chunks must enter the on-demand content cache',
+    )
+
     setOriginOffline(true)
     await context.setOffline(true)
 
@@ -350,6 +420,12 @@ async function verifyBrowserFlow(setOriginOffline) {
       allowlistedRemoteOffline.bytes,
       allowlistedRemoteOnline.bytes,
       'exactly allowlisted dom-pub asset should remain available from remote cache offline',
+    )
+
+    await gotoOfflineDocument(`/${LOCALE}`)
+    assert.ok(
+      !/offline|ngoại tuyến|hors ligne/i.test(await page.title()),
+      'locale home must remain available from the install shell',
     )
 
     await gotoOfflineDocument(startPath)

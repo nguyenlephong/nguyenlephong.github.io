@@ -6,6 +6,11 @@ import test from 'node:test'
 
 import { verifyStaticArtifact } from '../scripts/verify-static-artifact.mjs'
 
+const ONE_PIXEL_PNG = Buffer.from(
+  'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=',
+  'base64',
+)
+
 function createFixture(t, overrides = {}) {
   const rootDir = mkdtempSync(path.join(tmpdir(), 'static-artifact-verifier-'))
   const outDir = path.join(rootDir, 'out')
@@ -184,8 +189,8 @@ function writeStudioFixture(outDir, { broken = false } = {}) {
       '<!doctype html><html lang="en"><head>',
       '<title>Engineering Studio</title>',
       '<meta name="description" content="A useful public engineering workspace.">',
-      broken ? '' : '<meta property="og:image" content="https://example.com/en/opengraph-image">',
-      broken ? '' : '<meta name="twitter:image" content="https://example.com/en/opengraph-image">',
+      broken ? '' : '<meta property="og:image" content="https://example.com/en/opengraph-image.png">',
+      broken ? '' : '<meta name="twitter:image" content="https://example.com/en/opengraph-image.png">',
       `<link rel="canonical" href="${studioUrl}">`,
       '</head><body>',
       `<main${broken ? '' : ' data-studio-static-overview="true"'}>`,
@@ -198,6 +203,7 @@ function writeStudioFixture(outDir, { broken = false } = {}) {
       '</body></html>',
     ].join(''),
   )
+  if (!broken) writeFileSync(path.join(outDir, 'en/opengraph-image.png'), ONE_PIXEL_PNG)
 
   const sitemapPath = path.join(outDir, 'sitemap.xml')
   const sitemap = readFileSync(sitemapPath, 'utf8')
@@ -208,6 +214,121 @@ function writeStudioFixture(outDir, { broken = false } = {}) {
       `<url><loc>${studioUrl}</loc><xhtml:link rel="alternate" hreflang="en" href="${studioUrl}" /><xhtml:link rel="alternate" hreflang="x-default" href="${studioUrl}" /></url></urlset>`,
     ),
   )
+}
+
+const GENERIC_SEO_LOCALES = ['en', 'vi', 'zh', 'ja', 'ko', 'fr']
+const GENERIC_SEO_ROUTES = {
+  about: { type: 'AboutPage', fragment: 'aboutpage' },
+  apps: { type: 'ItemList', fragment: 'itemlist' },
+  gallery: { type: 'ImageGallery', fragment: 'gallery' },
+  studio: { type: 'CollectionPage', fragment: 'studio' },
+}
+
+function writeLocalizedGenericSeoFixtures(outDir) {
+  const sitemapEntries = []
+
+  for (const locale of GENERIC_SEO_LOCALES) {
+    for (const [route, contract] of Object.entries(GENERIC_SEO_ROUTES)) {
+      const pageUrl = `https://example.com/${locale}/${route}`
+      const pageLd = {
+        '@context': 'https://schema.org',
+        '@type': contract.type,
+        '@id': `${pageUrl}#${contract.fragment}`,
+        name: `${route} ${locale}`,
+        description: `Localized ${route} page for ${locale}.`,
+        url: pageUrl,
+      }
+      const isStudio = route === 'studio'
+      if (isStudio) {
+        pageLd.hasPart = [
+          {
+            '@type': 'CreativeWork',
+            '@id': `${pageUrl}?route=ai-skills#ai-skills`,
+            name: 'AI skills',
+            url: `${pageUrl}?route=ai-skills#ai-skills`,
+          },
+        ]
+      }
+
+      mkdirSync(path.join(outDir, locale), { recursive: true })
+      writeFileSync(
+        path.join(outDir, locale, `${route}.html`),
+        [
+          `<!doctype html><html lang="${locale}"><head>`,
+          `<title>${route} ${locale}</title>`,
+          `<meta name="description" content="Localized ${route} page for ${locale}.">`,
+          `<meta property="og:url" content="${pageUrl}">`,
+          isStudio
+            ? '<meta property="og:image" content="https://example.com/opengraph-image.png">'
+            : '',
+          isStudio
+            ? '<meta name="twitter:image" content="https://example.com/opengraph-image.png">'
+            : '',
+          `<link rel="canonical" href="${pageUrl}">`,
+          '</head><body>',
+          isStudio ? '<main data-studio-static-overview="true">' : '<main>',
+          `<h1>${route} ${locale}</h1>`,
+          isStudio
+            ? `<a data-studio-module-link="ai-skills" href="/${locale}/studio?route=ai-skills#ai-skills">AI skills</a>`
+            : '',
+          '</main>',
+          // Shared entity schemas intentionally prove the verifier selects the
+          // route-owned page object instead of rejecting valid multi-schema HTML.
+          '<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://example.com/#person","url":"https://example.com/en/about"}</script>',
+          `<script type="application/ld+json">${JSON.stringify(pageLd)}</script>`,
+          '</body></html>',
+        ].join(''),
+      )
+      sitemapEntries.push(
+        `<url><loc>${pageUrl}</loc><xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/en/${route}" /></url>`,
+      )
+    }
+  }
+
+  writeFileSync(path.join(outDir, 'opengraph-image.png'), ONE_PIXEL_PNG)
+  const sitemapPath = path.join(outDir, 'sitemap.xml')
+  writeFileSync(
+    sitemapPath,
+    readFileSync(sitemapPath, 'utf8').replace('</urlset>', `${sitemapEntries.join('')}</urlset>`),
+  )
+}
+
+function writeMediaPublicationFixture(rootDir) {
+  mkdirSync(path.join(rootDir, 'public/blog-data'), { recursive: true })
+  mkdirSync(path.join(rootDir, 'public/notes-data'), { recursive: true })
+  writeFileSync(
+    path.join(rootDir, 'config/media-publication.json'),
+    JSON.stringify({
+      schemaVersion: 1,
+      remoteTreeUrl: 'https://api.example.com/tree',
+      liveBaseUrl: 'https://example.com/dom-pub/icdn',
+      articleOg: {
+        blog: {
+          sourceIndex: 'public/blog-data/_index.json',
+          sourceDirectory: 'public/og/blog',
+          sourceExtension: '.png',
+          publicPathPrefix: '/og/blogs',
+          publicationDirectory: 'og/blogs',
+          publicationExtension: '.jpg',
+          publicationFormat: 'jpeg',
+        },
+        notes: {
+          sourceIndex: 'public/notes-data/_index.json',
+          sourceDirectory: 'public/og/notes',
+          sourceExtension: '.png',
+          publicPathPrefix: '/og/notes',
+          publicationDirectory: 'og/notes',
+          publicationExtension: '.jpg',
+          publicationFormat: 'jpeg',
+        },
+      },
+    }),
+  )
+  writeFileSync(
+    path.join(rootDir, 'public/blog-data/_index.json'),
+    JSON.stringify({ posts: [{ slug: 'static' }] }),
+  )
+  writeFileSync(path.join(rootDir, 'public/notes-data/_index.json'), JSON.stringify({ posts: [] }))
 }
 
 test('verifies artifact budgets, sitemap canonicals, robots, and public secrets', async (t) => {
@@ -221,6 +342,68 @@ test('verifies artifact budgets, sitemap canonicals, robots, and public secrets'
   assert.equal(report.secrets.privateQueryUrlMatches.length, 0)
   assert.equal(report.secrets.scanConcurrency, 2)
   assert.equal(report.artifact.largestRouteJavaScript[0].path, 'en.html')
+})
+
+test('fails closed when any emitted path contains a Heartbeats route segment', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  const privateRouteDirectory = path.join(outDir, 'en', 'heartbeats')
+  mkdirSync(privateRouteDirectory, { recursive: true })
+  writeFileSync(path.join(privateRouteDirectory, 'route-data.bin'), Buffer.from([0x00]))
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.privacy.forbiddenRouteMatches, [
+    { path: 'en/heartbeats/route-data.bin', segment: 'heartbeats' },
+  ])
+  assert.match(
+    report.failures.join('\n'),
+    /Forbidden private route segment "heartbeats" is present in public artifact: en\/heartbeats\/route-data\.bin/,
+  )
+})
+
+test('fails closed when generated pages, route payloads, manifests, or service workers reference Heartbeats', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeFileSync(
+    path.join(outDir, 'en.html'),
+    readFileSync(path.join(outDir, 'en.html'), 'utf8').replace(
+      '</body>',
+      '<a href="/en/heartbeats">private</a></body>',
+    ),
+  )
+  writeFileSync(path.join(outDir, 'route-data.txt'), 'route=/en/heartbeats.txt')
+  writeFileSync(path.join(outDir, 'route-data.rsc'), 'route=/en/%68eartbeats')
+  writeFileSync(
+    path.join(outDir, 'manifest.webmanifest'),
+    JSON.stringify({ start_url: '%252Fen%252Fheartbeats' }),
+  )
+  writeFileSync(
+    path.join(outDir, 'sw.js'),
+    '/* malformed entity must not crash the scan: &#9999999; */ cache.add("\\u002fen\\u002fheartbeats")',
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.privacy.forbiddenRouteReferenceMatches, [
+    { path: 'en.html', segment: 'heartbeats' },
+    { path: 'manifest.webmanifest', segment: 'heartbeats' },
+    { path: 'route-data.rsc', segment: 'heartbeats' },
+    { path: 'route-data.txt', segment: 'heartbeats' },
+    { path: 'sw.js', segment: 'heartbeats' },
+  ])
+  for (const relativePath of [
+    'en.html',
+    'manifest.webmanifest',
+    'route-data.rsc',
+    'route-data.txt',
+    'sw.js',
+  ]) {
+    assert.match(
+      report.failures.join('\n'),
+      new RegExp(
+        `Forbidden private route reference "heartbeats" is present in public artifact content: ${relativePath.replace('.', '\\.')}`,
+      ),
+    )
+  }
 })
 
 test('reports near-limit warnings against the configured artifact budget', async (t) => {
@@ -252,6 +435,169 @@ test('rejects blank or duplicate-heading Studio HTML and structured-data link dr
   assert.match(failures, /must export Open Graph and Twitter images/)
   assert.match(failures, /must contain exactly one H1; found 2/)
   assert.match(failures, /hasPart URLs do not match visible module links/)
+})
+
+test('validates localized canonical, Open Graph, and page JSON-LD identity across generic routes', async (t) => {
+  const { rootDir, outDir } = createFixture(t, {
+    limits: { fileCount: 100 },
+    config: {
+      seo: {
+        locales: GENERIC_SEO_LOCALES,
+        requiredLocalizedRoutes: Object.keys(GENERIC_SEO_ROUTES),
+      },
+    },
+  })
+  writeLocalizedGenericSeoFixtures(outDir)
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.failures, [])
+  assert.equal(report.seo.localSocialImageCount, GENERIC_SEO_LOCALES.length * 2)
+})
+
+test('rejects unlocalized generic page identities and a non-root Studio social image', async (t) => {
+  const { rootDir, outDir } = createFixture(t, {
+    limits: { fileCount: 100 },
+    config: {
+      seo: {
+        locales: GENERIC_SEO_LOCALES,
+        requiredLocalizedRoutes: Object.keys(GENERIC_SEO_ROUTES),
+      },
+    },
+  })
+  writeLocalizedGenericSeoFixtures(outDir)
+
+  const replaceInFixture = (relativePath, search, replacement) => {
+    const fixturePath = path.join(outDir, relativePath)
+    writeFileSync(fixturePath, readFileSync(fixturePath, 'utf8').replace(search, replacement))
+  }
+  replaceInFixture(
+    'vi/about.html',
+    '<meta property="og:url" content="https://example.com/vi/about">',
+    '<meta property="og:url" content="https://example.com/about">',
+  )
+  replaceInFixture(
+    'zh/apps.html',
+    'https://example.com/zh/apps#itemlist',
+    'https://example.com/apps#itemlist',
+  )
+  replaceInFixture(
+    'ja/gallery.html',
+    '"url":"https://example.com/ja/gallery"',
+    '"url":"https://example.com/gallery"',
+  )
+  replaceInFixture(
+    'ko/studio.html',
+    'https://example.com/opengraph-image.png',
+    'https://example.com/ko/opengraph-image.png',
+  )
+  replaceInFixture(
+    'fr/studio.html',
+    '<link rel="canonical" href="https://example.com/fr/studio">',
+    '<link rel="canonical" href="https://example.com/en/studio">',
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const failures = report.failures.join('\n')
+
+  assert.match(failures, /vi\/about\.html og:url must match localized page identity/)
+  assert.match(failures, /zh\/apps\.html ItemList @id must match localized page identity/)
+  assert.match(failures, /ja\/gallery\.html ImageGallery url must match localized page identity/)
+  assert.match(failures, /ko\/studio\.html Studio og:image must resolve to the root opengraph-image\.png/)
+  assert.match(failures, /fr\/studio\.html canonical must match localized page identity/)
+})
+
+test('requires local social images to have an emitted image file and matching signature', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  const htmlPath = path.join(outDir, 'en.html')
+  const html = readFileSync(htmlPath, 'utf8').replace(
+    '</head>',
+    [
+      '<meta property="og:image" content="https://example.com/opengraph-image-hashed?revision">',
+      '<meta property="og:image" content="https://example.com/missing-social-image.png">',
+      '<meta name="twitter:image" content="/twitter-image.png">',
+      '</head>',
+    ].join(''),
+  )
+  writeFileSync(htmlPath, html)
+  writeFileSync(path.join(outDir, 'opengraph-image-hashed'), ONE_PIXEL_PNG)
+  writeFileSync(path.join(outDir, 'twitter-image.png'), 'not a png')
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const failures = report.failures.join('\n')
+
+  assert.match(failures, /og:image must use a supported image extension/)
+  assert.match(failures, /og:image references a missing local image/)
+  assert.match(failures, /twitter:image extension does not match its image signature/)
+})
+
+test('allows only manifest-declared same-origin remote social image publications', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeMediaPublicationFixture(rootDir)
+  const htmlPath = path.join(outDir, 'en.html')
+  const html = readFileSync(htmlPath, 'utf8').replace(
+    '</head>',
+    '<meta property="og:image" content="https://example.com/dom-pub/icdn/og/blogs/static.jpg"></head>',
+  )
+  writeFileSync(htmlPath, html)
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.failures, [])
+})
+
+test('rejects undeclared images under the same-origin publication namespace', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeMediaPublicationFixture(rootDir)
+  const htmlPath = path.join(outDir, 'en.html')
+  const html = readFileSync(htmlPath, 'utf8').replace(
+    '</head>',
+    '<meta property="og:image" content="https://example.com/dom-pub/icdn/og/blogs/not-declared.jpg"></head>',
+  )
+  writeFileSync(htmlPath, html)
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.match(
+    report.failures.join('\n'),
+    /og:image is not declared by the media publication contract/,
+  )
+})
+
+test('rejects arbitrary external-origin social images outside the publication manifest', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeMediaPublicationFixture(rootDir)
+  const htmlPath = path.join(outDir, 'en.html')
+  const html = readFileSync(htmlPath, 'utf8').replace(
+    '</head>',
+    '<meta property="og:image" content="https://images.example.net/arbitrary.jpg"></head>',
+  )
+  writeFileSync(htmlPath, html)
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.match(
+    report.failures.join('\n'),
+    /og:image remote URL is not declared by the media publication contract: https:\/\/images\.example\.net\/arbitrary\.jpg/,
+  )
+})
+
+test('requires an exact manifest URL without undeclared query or fragment suffixes', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeMediaPublicationFixture(rootDir)
+  const htmlPath = path.join(outDir, 'en.html')
+  const html = readFileSync(htmlPath, 'utf8').replace(
+    '</head>',
+    '<meta property="og:image" content="https://example.com/dom-pub/icdn/og/blogs/static.jpg?variant=unreviewed"></head>',
+  )
+  writeFileSync(htmlPath, html)
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.match(
+    report.failures.join('\n'),
+    /og:image is not declared by the media publication contract/,
+  )
 })
 
 test('reports budget growth and a sitemap canonical mismatch', async (t) => {

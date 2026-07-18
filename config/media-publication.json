@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "remoteTreeUrl": "https://api.github.com/repos/nguyenlephong/dom-pub/git/trees/main?recursive=1",
+  "liveBaseUrl": "https://nguyenlephong.github.io/dom-pub/icdn",
+  "articleOg": {
+    "blog": {
+      "sourceIndex": "public/blog-data/_index.json",
+      "sourceDirectory": "public/og/blog",
+      "sourceExtension": ".png",
+      "publicPathPrefix": "/og/blogs",
+      "publicationDirectory": "og/blogs",
+      "publicationExtension": ".jpg",
+      "publicationFormat": "jpeg"
+    },
+    "notes": {
+      "sourceIndex": "public/notes-data/_index.json",
+      "sourceDirectory": "public/og/notes",
+      "sourceExtension": ".png",
+      "publicPathPrefix": "/og/notes",
+      "publicationDirectory": "og/notes",
+      "publicationExtension": ".jpg",
+      "publicationFormat": "jpeg"
+    }
+  }
+}

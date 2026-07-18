@@ -58,7 +58,10 @@ test("global not-found uses one static document with safe SEO metadata", async (
   assert.match(routingSource, /routing\.defaultLocale/);
   assert.match(routingSource, /return `\/\$\{locale\}`/);
   assert.match(routingSource, /return `\/\$\{locale\}\/\$\{target\}`/);
-  assert.match(postbuild, /relativePath === '404\.html'/);
+  assert.match(
+    postbuild,
+    /const ESSENTIAL_SHELL_FILES = \[[\s\S]*'404\.html'[\s\S]*'_not-found\.html'/,
+  );
   assert.match(spec, /AC-404-006/);
 });
 
@@ -131,13 +134,14 @@ test("every supported locale has calm and complete recovery copy", async () => {
 });
 
 test("not-found analytics shares the existing privacy-safe bootstrap", async () => {
-  const [layout, globalNotFound, bootstrap, tracker, analytics] =
+  const [layout, globalNotFound, bootstrap, tracker, analytics, verifier] =
     await Promise.all([
       readFile("src/app/[locale]/layout.tsx", "utf8"),
       readFile("src/app/global-not-found.tsx", "utf8"),
       readFile("src/components/analytics/PostHogBootstrap.tsx", "utf8"),
       readFile("src/components/analytics/PageTracker.tsx", "utf8"),
-      readFile("src/lib/analytics.ts", "utf8")
+      readFile("src/lib/analytics.ts", "utf8"),
+      readFile("scripts/verify-static-not-found.mjs", "utf8")
     ]);
 
   assert.match(layout, /<PostHogBootstrap locale=\{locale\} \/>/);
@@ -174,6 +178,10 @@ test("not-found analytics shares the existing privacy-safe bootstrap", async () 
   assert.match(analytics, /\| 'not_found_recovery_click'/);
   assert.match(analytics, /omitLocation\?: boolean/);
   assert.match(analytics, /options\?\.omitLocation/);
+  assert.match(verifier, /verifyCommonPrivacyCase/);
+  assert.match(verifier, /captureResult, false/);
+  assert.match(verifier, /captureResult, true/);
+  assert.match(verifier, /normal pages must install a PostHog before_send callback/);
 });
 
 test("CI verifies the generated not-found document in a browser", async () => {

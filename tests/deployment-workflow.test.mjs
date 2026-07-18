@@ -38,6 +38,16 @@ test('Pages workflow grants deployment credentials only to the deploy job', () =
   assert.doesNotMatch(deployJob, /contents: write/)
 })
 
+test('Pages build job has a bounded timeout for build and network verification', () => {
+  const buildJob = workflow.slice(workflow.indexOf('  build:'), workflow.indexOf('  deploy:'))
+  assert.match(buildJob, /timeout-minutes: 30/)
+})
+
+test('Pages deploy job has a bounded deployment timeout', () => {
+  const deployJob = workflow.slice(workflow.indexOf('  deploy:'))
+  assert.match(deployJob, /timeout-minutes: 10/)
+})
+
 test('Pages workflow configures Pages without rewriting the composed Next config', () => {
   assert.match(workflow, /uses: actions\/configure-pages@v6/)
   assert.doesNotMatch(workflow, /static_site_generator:/)
@@ -46,13 +56,35 @@ test('Pages workflow configures Pages without rewriting the composed Next config
 test('Pages workflow verifies the built out tree before uploading it', () => {
   const buildIndex = workflow.indexOf('run: npm run build')
   const verifyIndex = workflow.indexOf('run: npm run verify:artifact')
+  const studioIndex = workflow.indexOf('run: npm run verify:studio-artifact')
+  const publicationTreeIndex = workflow.indexOf('run: npm run verify:og-publication -- --remote-tree')
+  const publicationLiveIndex = workflow.indexOf('run: npm run verify:og-publication:live')
   const offlineIndex = workflow.indexOf('run: npm run verify:offline')
   const uploadIndex = workflow.indexOf('uses: actions/upload-pages-artifact@')
 
-  assert.ok(buildIndex >= 0 && buildIndex < verifyIndex && verifyIndex < offlineIndex && offlineIndex < uploadIndex)
+  assert.ok(
+    buildIndex >= 0 &&
+      buildIndex < verifyIndex &&
+      verifyIndex < studioIndex &&
+      studioIndex < publicationTreeIndex &&
+      publicationTreeIndex < publicationLiveIndex &&
+      publicationLiveIndex < offlineIndex &&
+      offlineIndex < uploadIndex,
+  )
   assert.equal(workflow.match(/run: npm run build\s*$/gm)?.length, 1)
+  assert.equal(workflow.match(/run: npm run verify:studio-artifact\s*$/gm)?.length, 1)
   assert.match(workflow, /group: pages-\$\{\{ github\.repository \}\}/)
   assert.match(workflow, /cancel-in-progress: false/)
+})
+
+test('Pages upload is gated by read-only tree and live OG publication checks', () => {
+  assert.equal(pkg.scripts['verify:og-publication'], 'node scripts/verify-og-publication.mjs')
+  assert.equal(
+    pkg.scripts['verify:og-publication:live'],
+    'node scripts/verify-og-publication.mjs --live',
+  )
+  assert.match(workflow, /run: npm run verify:og-publication -- --remote-tree/)
+  assert.match(workflow, /run: npm run verify:og-publication:live/)
 })
 
 test('Pages workflow refuses manual or deploy jobs outside refs/heads/main', () => {
@@ -77,11 +109,20 @@ test('CI is read-only, never persists checkout credentials, and scopes SONAR_TOK
   assert.match(sonarScan, /SONAR_TOKEN: \$\{\{ secrets\.SONAR_TOKEN \}\}/)
 })
 
-test('CI verifies offline browser behavior after its single smoke build', () => {
+test('CI verifies Studio and offline behavior after its single smoke build', () => {
   const buildIndex = ciWorkflow.indexOf('run: npm run build:fast')
+  const artifactIndex = ciWorkflow.indexOf('run: npm run verify:artifact')
+  const studioIndex = ciWorkflow.indexOf('run: npm run verify:studio-artifact')
   const offlineIndex = ciWorkflow.indexOf('run: npm run verify:offline')
-  assert.ok(buildIndex >= 0 && buildIndex < offlineIndex)
+  assert.ok(
+    buildIndex >= 0 &&
+      buildIndex < artifactIndex &&
+      artifactIndex < studioIndex &&
+      studioIndex < offlineIndex,
+  )
   assert.equal(ciWorkflow.match(/run: npm run build:fast\s*$/gm)?.length, 1)
+  assert.equal(ciWorkflow.match(/run: npm run verify:studio-artifact\s*$/gm)?.length, 1)
+  assert.equal(pkg.scripts['verify:studio-artifact'], 'node scripts/verify-studio-artifact.mjs')
   assert.match(ciWorkflow, /npx playwright install --with-deps chromium/)
 })
 

@@ -144,6 +144,9 @@ jobs:
       - name: Verify architecture and SEO budgets
         run: npm run verify:artifact
 
+      - name: Verify Studio static artifact
+        run: npm run verify:studio-artifact
+
       - name: Verify crawlable content pagination
         run: npm run verify:pagination
 

@@ -7,115 +7,178 @@
  * which causes Facebook/Twitter/LinkedIn scrapers to reject the image.
  *
  * This script:
- *   1. Renames every `out/.../opengraph-image` file (and its `.body` cousin
- *      if present) to `opengraph-image.png`.
+ *   1. Renames every `out/.../opengraph-image[-hash]` file (and its `.body`
+ *      cousin if present) to `opengraph-image[-hash].png`.
  *   2. Rewrites every emitted `*.html` file to point at the new `.png`
  *      URL (preserving the `?hash` cache buster Next appends).
- * Article OG images are committed static assets under `public/og`, so this
- * post-build step only needs to normalize the few remaining route-level OG
- * files that Next emits.
+ * Article OG images are generated under `public/og` and published through the
+ * media pipeline, so this step only normalizes route-level files Next emits.
  */
 import { promises as fs } from 'node:fs'
+import { createHash } from 'node:crypto'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { createArtifactIndex } from './lib/artifact-index.mjs'
 
 const OUT_DIR = path.resolve(process.env.OG_OUT_DIR ?? path.join(process.cwd(), 'out'))
 const MAX_RENAME_LOGS = 40
+const DEFAULT_METADATA_CONCURRENCY = 32
+const OG_ARTIFACT_PATTERN = /^(opengraph-image|twitter-image)(-[a-z0-9]+)?(?:\.body)?$/i
+const FINAL_OG_ARTIFACT_PATTERN = /^((?:opengraph-image|twitter-image)(?:-[a-z0-9]+)?)\.png$/i
+const OG_METADATA_CONSUMER_EXTENSIONS = new Set(['.html', '.txt'])
+const OG_URL_PATTERN =
+  /(?<![a-z0-9_./:-])((?:https?:\/\/[a-z0-9.-]+(?::\d+)?)?)(\/(?:[a-z0-9._~-]+\/)*((?:opengraph-image|twitter-image)(?:-[a-z0-9]+)?))(\?[^"'\\\s<>]*)?(?=\\?["']|["'\s<>),\]}]|$)/gi
 
-async function walk(dir) {
-  const entries = await fs.readdir(dir, { withFileTypes: true })
-  const files = []
-  for (const entry of entries) {
-    const full = path.join(dir, entry.name)
-    if (entry.isDirectory()) {
-      files.push(...(await walk(full)))
-    } else {
-      files.push(full)
-    }
-  }
-  return files
+function metadataConcurrency() {
+  const value = Number(process.env.POSTBUILD_METADATA_CONCURRENCY ?? DEFAULT_METADATA_CONCURRENCY)
+  if (!Number.isFinite(value) || value < 1) return DEFAULT_METADATA_CONCURRENCY
+  return Math.trunc(value)
 }
 
-async function renameOgFiles(files) {
+async function mapWithConcurrency(items, concurrency, task) {
+  const limit = Math.max(1, Math.min(concurrency, items.length || 1))
+  let cursor = 0
+  await Promise.all(
+    Array.from({ length: limit }, async () => {
+      while (cursor < items.length) {
+        const index = cursor
+        cursor += 1
+        await task(items[index])
+      }
+    }),
+  )
+}
+
+async function renameOgFiles(artifactIndex) {
   const renamed = []
-  for (const file of files) {
-    const base = path.basename(file)
-    if (base === 'opengraph-image' || base === 'twitter-image') {
-      const target = `${file}.png`
-      await fs.rename(file, target)
-      renamed.push({ from: file, to: target })
+  for (const file of artifactIndex.files()) {
+    const base = path.posix.basename(file)
+    const match = base.match(OG_ARTIFACT_PATTERN)
+    if (!match) continue
+
+    const target = path.posix.join(
+      path.posix.dirname(file),
+      `${match[1]}${match[2] ?? ''}.png`,
+    )
+    if (artifactIndex.has(target)) {
+      throw new Error(
+        `[postbuild-og] refusing to overwrite existing normalized OG artifact: ${artifactIndex.resolve(target)}`,
+      )
     }
+    await artifactIndex.rename(file, target)
+    renamed.push({ from: file, to: target })
   }
   return renamed
 }
 
-function htmlCandidatesForOgRoutes(files) {
-  const candidates = new Set()
-  for (const file of files) {
-    const base = path.basename(file)
-    if (
-      base !== 'opengraph-image' &&
-      base !== 'opengraph-image.png' &&
-      base !== 'twitter-image' &&
-      base !== 'twitter-image.png'
-    ) {
-      continue
-    }
-
-    const routeDir = path.dirname(file)
-    if (routeDir === OUT_DIR) {
-      candidates.add(path.join(OUT_DIR, 'index.html'))
-      continue
-    }
-
-    candidates.add(`${routeDir}.html`)
-    candidates.add(path.join(routeDir, 'index.html'))
-  }
-  return [...candidates]
+function artifactUrl(file) {
+  return `/${file}`
 }
 
-async function rewriteHtml(files) {
-  let updated = 0
-  for (const file of htmlCandidatesForOgRoutes(files)) {
-    let original
-    try {
-      original = await fs.readFile(file, 'utf8')
-    } catch (err) {
-      if (err?.code === 'ENOENT') continue
-      throw err
-    }
-    let next = original
-    // Match the URL exactly so we only touch our OG endpoints and preserve
-    // the query string Next appends for cache busting.
-    next = next.replace(
-      /(\/(?:[a-z0-9_-]+\/)*opengraph-image)(\?[^"'\s>]*)?(?=["'\s>])/gi,
-      '$1.png$2'
-    )
-    next = next.replace(
-      /(\/(?:[a-z0-9_-]+\/)*twitter-image)(\?[^"'\s>]*)?(?=["'\s>])/gi,
-      '$1.png$2'
-    )
-    if (next !== original) {
-      await fs.writeFile(file, next, 'utf8')
-      updated += 1
-    }
+async function buildOgUrlMappings({ artifactIndex, renamed }) {
+  const normalizedFiles = new Set(renamed.map(({ to }) => to))
+  for (const file of artifactIndex.files()) {
+    if (FINAL_OG_ARTIFACT_PATTERN.test(path.posix.basename(file))) normalizedFiles.add(file)
   }
+
+  const exact = new Map()
+  const candidatesByStem = new Map()
+  for (const file of [...normalizedFiles].sort()) {
+    const match = path.posix.basename(file).match(FINAL_OG_ARTIFACT_PATTERN)
+    if (!match) continue
+
+    const finalUrl = artifactUrl(file)
+    const sourceUrl = finalUrl.slice(0, -'.png'.length)
+    const existing = exact.get(sourceUrl)
+    if (existing && existing !== finalUrl) {
+      throw new Error(`[postbuild-og] conflicting normalized OG route: ${sourceUrl}`)
+    }
+    exact.set(sourceUrl, finalUrl)
+
+    const content = await artifactIndex.readBuffer(file)
+    const digest = createHash('sha256').update(content).digest('hex')
+    const stem = match[1].toLowerCase()
+    const candidates = candidatesByStem.get(stem) ?? []
+    candidates.push({ digest, finalUrl })
+    candidatesByStem.set(stem, candidates)
+  }
+
+  const sharedByStem = new Map()
+  for (const [stem, candidates] of candidatesByStem) {
+    if (new Set(candidates.map(({ digest }) => digest)).size !== 1) continue
+    const finalUrl = candidates.map(({ finalUrl: value }) => value).sort()[0]
+    sharedByStem.set(stem, finalUrl)
+  }
+
+  return { exact, sharedByStem }
+}
+
+function rewriteOgUrls(content, mappings) {
+  return content.replace(
+    OG_URL_PATTERN,
+    (match, origin, sourceUrl, stem, query = '') => {
+      const target = mappings.exact.get(sourceUrl) ?? mappings.sharedByStem.get(stem.toLowerCase())
+      return target ? `${origin}${target}${query}` : match
+    },
+  )
+}
+
+async function rewriteMetadataConsumers(artifactIndex, mappings) {
+  const updated = { html: 0, text: 0 }
+  const consumers = artifactIndex.files().filter((file) =>
+    OG_METADATA_CONSUMER_EXTENSIONS.has(path.posix.extname(file).toLowerCase()),
+  )
+
+  await mapWithConcurrency(consumers, metadataConcurrency(), async (file) => {
+    const extension = path.posix.extname(file).toLowerCase()
+    const original = await artifactIndex.readText(file)
+    const next = rewriteOgUrls(original, mappings)
+    if (next !== original) {
+      await artifactIndex.write(file, next)
+      if (extension === '.html') updated.html += 1
+      else updated.text += 1
+    }
+  })
   return updated
 }
 
-async function main() {
+export async function normalizeStaticOgArtifacts({ outDir = OUT_DIR, artifactIndex } = {}) {
   try {
-    await fs.access(OUT_DIR)
+    await fs.access(outDir)
   } catch {
+    return { skipped: true, renamed: [], updatedHtml: 0, updatedText: 0 }
+  }
+
+  const index = artifactIndex ?? (await createArtifactIndex(outDir))
+  if (path.resolve(index.root) !== path.resolve(outDir)) {
+    throw new Error('[postbuild-og] artifact index root does not match outDir')
+  }
+  const renamed = await renameOgFiles(index)
+  const mappings = await buildOgUrlMappings({ artifactIndex: index, renamed })
+  const updated = await rewriteMetadataConsumers(index, mappings)
+
+  return {
+    skipped: false,
+    renamed: renamed.map(({ from, to }) => ({
+      from: index.resolve(from),
+      to: index.resolve(to),
+    })),
+    updatedHtml: updated.html,
+    updatedText: updated.text,
+  }
+}
+
+async function main() {
+  const result = await normalizeStaticOgArtifacts()
+  if (result.skipped) {
     console.warn(`[postbuild-og] skip: ${OUT_DIR} does not exist`)
     return
   }
 
-  const files = await walk(OUT_DIR)
-  const renamed = await renameOgFiles(files)
-  const updatedHtml = await rewriteHtml(files)
+  const { renamed, updatedHtml, updatedText } = result
 
   console.log(
-    `[postbuild-og] renamed ${renamed.length} OG file(s), rewrote ${updatedHtml} HTML file(s)`
+    `[postbuild-og] renamed ${renamed.length} OG file(s), rewrote ${updatedHtml} HTML and ${updatedText} text metadata file(s)`
   )
   for (const r of renamed.slice(0, MAX_RENAME_LOGS)) {
     console.log(`  ${path.relative(OUT_DIR, r.from)} → ${path.relative(OUT_DIR, r.to)}`)
@@ -125,11 +188,9 @@ async function main() {
   }
 }
 
-main()
-  .then(() => {
-    process.exit(0)
-  })
-  .catch((err) => {
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((err) => {
     console.error('[postbuild-og] failed:', err)
-    process.exit(1)
+    process.exitCode = 1
   })
+}
