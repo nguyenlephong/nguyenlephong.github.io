@@ -59,6 +59,9 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
+      - name: Verify localized 404 recovery
+        run: npm run verify:not-found
+
       - name: Verify offline browser behavior
         run: npm run verify:offline
 

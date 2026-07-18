@@ -15,6 +15,7 @@ const nextConfig = {
   // Tree-shake icon + animation libraries with deep barrel exports so we
   // only ship the few we actually use. Saves tens of KB and reduces TBT.
   experimental: {
+    globalNotFound: true,
     optimizePackageImports: [
       "react-icons",
       "react-icons/lu",
