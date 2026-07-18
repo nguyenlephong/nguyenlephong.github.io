@@ -4,9 +4,18 @@ import {
   byDateDesc,
   isDefaultLocale,
   overlayByKey,
+  readRequiredJsonValidated,
   readJsonValidated,
 } from '@/lib/content/io'
+import {
+  assertExactSlugSet,
+  assertIndexBodyMetadataParity,
+  assertKnownKeys,
+  assertProvidedMetadataParity,
+  listJsonSlugs,
+} from '@/lib/content/catalog'
 import { pageCount } from '@/lib/content/pagination'
+import { getContentVersionTracker } from '@/lib/content/freshness'
 import { rewriteContentAssetValues } from '@/lib/assets/icdn'
 import {
   blogIndexOverrideSchema,
@@ -23,14 +32,129 @@ import type {
 import { compareSeriesPosts } from './series'
 
 const DATA_DIR = path.join(process.cwd(), 'public', 'blog-data')
-const EMPTY_INDEX: BlogIndexFile = { categories: [], posts: [] }
+const contentVersionTracker =
+  process.env.NODE_ENV === 'production'
+    ? null
+    : getContentVersionTracker(DATA_DIR)
+const BLOG_METADATA_FIELDS = [
+  'slug',
+  'category',
+  'title',
+  'summary',
+  'date',
+  'updated',
+  'readingMinutes',
+  'tags',
+  'author',
+] as const
+const BLOG_CANONICAL_OVERRIDE_FIELDS = [
+  'slug',
+  'category',
+  'date',
+  'author',
+  'featured',
+  'series',
+  'seriesOrder',
+] as const
+
+interface BlogCatalog {
+  index: BlogIndexFile
+  postsBySlug: Map<string, BlogPostMeta>
+}
+
+interface BlogCatalogSnapshot {
+  version: number
+  catalog: BlogCatalog
+}
+
+const MAX_STABLE_SNAPSHOT_ATTEMPTS = 3
+let baseCatalogCache: BlogCatalogSnapshot | null = null
+const localizedIndexCache = new Map<
+  string,
+  { version: number; index: BlogIndexFile }
+>()
+
+function contentVersion(): number {
+  return contentVersionTracker?.currentVersion() ?? 0
+}
+
+/**
+ * Catalog validation scans every authored body, so keep it once per module
+ * instance in every environment. A Next.js HMR reload naturally replaces this
+ * module state; tests and content tooling can invalidate it explicitly.
+ */
+export function invalidateBlogContentCatalog(): void {
+  baseCatalogCache = null
+  localizedIndexCache.clear()
+}
+
+/**
+ * Returns a base catalog proven to belong to one stable content version.
+ * A concurrent edit invalidates the attempted build instead of letting callers
+ * associate an old catalog with a newer version.
+ */
+function baseCatalogSnapshot(): BlogCatalogSnapshot {
+  for (let attempt = 1; attempt <= MAX_STABLE_SNAPSHOT_ATTEMPTS; attempt += 1) {
+    const version = contentVersion()
+    if (baseCatalogCache?.version === version) return baseCatalogCache
+
+    const catalog = buildBaseCatalog()
+    if (contentVersion() !== version) continue
+
+    const snapshot = { version, catalog }
+    baseCatalogCache = snapshot
+    localizedIndexCache.clear()
+    return snapshot
+  }
+
+  throw new Error('Blog content changed repeatedly while building a stable catalog snapshot')
+}
 
 /** Canonical index (English) — used for static-param generation. */
-function baseIndex(): BlogIndexFile {
-  return rewriteContentAssetValues(
-    readJsonValidated(path.join(DATA_DIR, '_index.json'), blogIndexSchema) ??
-      EMPTY_INDEX,
+function buildBaseCatalog(): BlogCatalog {
+  const indexPath = path.join(DATA_DIR, '_index.json')
+  const rawIndex = readRequiredJsonValidated(
+    indexPath,
+    blogIndexSchema,
+    'canonical blog index',
   )
+  const expectedSlugs = rawIndex.posts.map((post) => post.slug)
+  assertExactSlugSet(
+    'Canonical blog',
+    expectedSlugs,
+    listJsonSlugs(path.join(DATA_DIR, 'posts')),
+  )
+
+  for (const entry of rawIndex.posts) {
+    const bodyPath = path.join(DATA_DIR, 'posts', `${entry.slug}.json`)
+    const body = readRequiredJsonValidated(
+      bodyPath,
+      blogPostSchema,
+      `canonical blog body for "${entry.slug}"`,
+    )
+    assertIndexBodyMetadataParity(
+      'Canonical blog',
+      entry as unknown as Record<string, unknown>,
+      body as unknown as Record<string, unknown>,
+      bodyPath,
+      BLOG_METADATA_FIELDS,
+    )
+  }
+
+  const index = rewriteContentAssetValues(rawIndex)
+  const catalog = {
+    index,
+    postsBySlug: new Map(index.posts.map((post) => [post.slug, post])),
+  }
+  return catalog
+}
+
+function baseCatalog(): BlogCatalog {
+  return baseCatalogSnapshot().catalog
+}
+
+function baseIndex(): BlogIndexFile {
+  return baseCatalog().index
 }
 
 /**
@@ -40,23 +164,80 @@ function baseIndex(): BlogIndexFile {
  * the index stays complete instead of going blank.
  */
 export function loadIndex(locale?: string): BlogIndexFile {
-  const base = baseIndex()
-  if (isDefaultLocale(locale)) return base
+  if (isDefaultLocale(locale)) return baseIndex()
 
-  const override = readJsonValidated(
-    path.join(DATA_DIR, locale as string, '_index.json'),
-    blogIndexOverrideSchema,
+  for (let attempt = 1; attempt <= MAX_STABLE_SNAPSHOT_ATTEMPTS; attempt += 1) {
+    const baseSnapshot = baseCatalogSnapshot()
+    const { version, catalog } = baseSnapshot
+    if (contentVersion() !== version) continue
+
+    const cached = localizedIndexCache.get(locale as string)
+    if (cached?.version === version) return cached.index
+
+    const override = readJsonValidated(
+      path.join(DATA_DIR, locale as string, '_index.json'),
+      blogIndexOverrideSchema,
+    )
+    if (!override) {
+      if (contentVersion() === version) return catalog.index
+      continue
+    }
+
+    assertKnownKeys(
+      `Localized blog categories (${locale})`,
+      catalog.index.categories.map((category) => category.slug),
+      override.categories?.map((category) => category.slug) ?? [],
+    )
+    assertKnownKeys(
+      `Localized blog posts (${locale})`,
+      catalog.index.posts.map((post) => post.slug),
+      override.posts?.map((post) => post.slug) ?? [],
+    )
+
+    const index = blogIndexSchema.parse(rewriteContentAssetValues({
+      categories: overlayByKey(
+        catalog.index.categories,
+        override.categories,
+        (c) => c.slug,
+      ),
+      posts: overlayByKey(catalog.index.posts, override.posts, (p) => p.slug),
+    }))
+
+    const expectedSlugs = catalog.index.posts
+      .filter((post) => post.locales.includes(locale as Locale))
+      .map((post) => post.slug)
+    const bodyDirectory = path.join(DATA_DIR, locale as string, 'posts')
+    assertExactSlugSet(
+      `Localized blog (${locale})`,
+      expectedSlugs,
+      listJsonSlugs(bodyDirectory),
+    )
+    const indexBySlug = new Map(index.posts.map((post) => [post.slug, post]))
+    for (const slug of expectedSlugs) {
+      const bodyPath = path.join(bodyDirectory, `${slug}.json`)
+      const baseEntry = catalog.postsBySlug.get(slug)
+      const body = baseEntry ? loadPostBody(slug, baseEntry, locale) : null
+      const indexedPost = indexBySlug.get(slug)
+      if (!body || !indexedPost) {
+        throw new Error(`Localized blog (${locale}) could not resolve "${slug}"`)
+      }
+      assertIndexBodyMetadataParity(
+        `Localized blog (${locale})`,
+        indexedPost as unknown as Record<string, unknown>,
+        body as unknown as Record<string, unknown>,
+        bodyPath,
+        BLOG_METADATA_FIELDS,
+      )
+    }
+
+    if (contentVersion() !== version) continue
+    localizedIndexCache.set(locale as string, { version, index })
+    return index
+  }
+
+  throw new Error(
+    `Blog content (${locale}) changed repeatedly while building a stable localized catalog`,
   )
-  if (!override) return base
-
-  return rewriteContentAssetValues({
-    categories: overlayByKey(
-      base.categories,
-      override.categories,
-      (c) => c.slug,
-    ),
-    posts: overlayByKey(base.posts, override.posts, (p) => p.slug),
-  })
 }
 
 export function listCategories(locale?: string): BlogCategoryMeta[] {
@@ -135,9 +316,17 @@ export function listBlogArchiveLocales(page: number): Locale[] {
 }
 
 export function loadPost(slug: string, locale?: string): BlogPost | null {
-  const indexedPost = baseIndex().posts.find((post) => post.slug === slug)
+  const indexedPost = baseCatalog().postsBySlug.get(slug)
   if (!indexedPost) return null
 
+  return loadPostBody(slug, indexedPost, locale)
+}
+
+function loadPostBody(
+  slug: string,
+  indexedPost: BlogPostMeta,
+  locale?: string,
+): BlogPost | null {
   const base = readJsonValidated(
     path.join(DATA_DIR, 'posts', `${slug}.json`),
     blogPostSchema,
@@ -160,6 +349,14 @@ export function loadPost(slug: string, locale?: string): BlogPost | null {
       locales: [...indexedPost.locales],
     })
   }
+
+  assertProvidedMetadataParity(
+    `Localized blog body (${locale})`,
+    base as unknown as Record<string, unknown>,
+    override as unknown as Record<string, unknown>,
+    path.join(DATA_DIR, locale as string, 'posts', `${slug}.json`),
+    BLOG_CANONICAL_OVERRIDE_FIELDS,
+  )
 
   const post = {
     ...base,

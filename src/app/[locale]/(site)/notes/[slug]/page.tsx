@@ -6,13 +6,16 @@ import { Link } from "@/i18n/navigation";
 import { LOCALE_LABELS, routing, type Locale } from "@/i18n/routing";
 import { SITE, SITE_URL } from "@/app/seo.config";
 import {
-  OG_LOCALE_MAP,
   buildDescription,
-  canonicalFor,
   htmlToPlainText,
+} from "@/lib/blog/seo";
+import {
+  OG_LOCALE_MAP,
+  canonicalFor,
   localeAlternates,
   preferredContentLocale
-} from "@/lib/blog/seo";
+} from "@/lib/seo/locale";
+import { serializeJsonLd } from "@/lib/seo/json-ld";
 import {
   getTopic,
   getNoteContentLocales,
@@ -292,16 +295,16 @@ export default async function NotePage({ params }: Props) {
     >
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
       />
       {faqLd && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqLd) }}
         />
       )}
 

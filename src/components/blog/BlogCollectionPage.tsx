@@ -9,7 +9,8 @@ import {
   listCategories,
   listPosts,
 } from '@/lib/blog/data'
-import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/blog/seo'
+import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
+import { serializeJsonLd } from '@/lib/seo/json-ld'
 import {
   collectionPagePath,
   paginate,
@@ -166,7 +167,7 @@ export default async function BlogCollectionPage({
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(blogLd) }}
       />
       <header className="blog-home__head">
         <p className="blog-home__eyebrow">{t('eyebrow')}</p>

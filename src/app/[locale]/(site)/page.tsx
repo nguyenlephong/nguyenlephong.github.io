@@ -17,6 +17,7 @@ import {
   buildPersonSchema,
   buildProfilePageSchema,
 } from '@/lib/seo/profile-schema'
+import { serializeJsonLd } from '@/lib/seo/json-ld'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -43,11 +44,11 @@ export default async function MainPage({ params }: Props) {
     <main>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(personSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(profilePageSchema) }}
       />
       <PageViewTracker />
       <PageTracker page="home" eventName="page_view" section="cv_main" />

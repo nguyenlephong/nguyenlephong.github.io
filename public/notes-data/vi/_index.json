@@ -140,7 +140,8 @@
         "Sự nghiệp",
         "Kỷ luật"
       ],
-      "date": "2026-05-01"
+      "date": "2026-05-01",
+      "readingMinutes": 6
     },
     {
       "slug": "be-mindful-of-what-you-put-into-your-bucket",
@@ -163,7 +164,7 @@
       "tags": [
         "Personal Reflection",
         "Life Philosophy",
-        "Choice and Destiny",
+        "Choice and Circumstance",
         "Equanimity",
         "Self-Mastery",
         "Inner Freedom"
@@ -387,7 +388,8 @@
         "Mục tiêu",
         "Công sở"
       ],
-      "date": "2026-04-17"
+      "date": "2026-04-17",
+      "readingMinutes": 7
     },
     {
       "slug": "healthy-disagreement",
@@ -659,7 +661,8 @@
         "Mối quan hệ",
         "Phát triển bản thân"
       ],
-      "date": "2026-04-20"
+      "date": "2026-04-20",
+      "readingMinutes": 11
     },
     {
       "slug": "perfect-tools-syndrome",
@@ -1188,7 +1191,8 @@
         "Trì hoãn",
         "Khẩu phần thông tin"
       ],
-      "date": "2026-05-27"
+      "date": "2026-05-27",
+      "readingMinutes": 4
     },
     {
       "slug": "the-visual-mba-jason-barron",
@@ -1203,7 +1207,8 @@
         "Quản trị",
         "Startup"
       ],
-      "date": "2026-04-19"
+      "date": "2026-04-19",
+      "readingMinutes": 12
     },
     {
       "slug": "the-world-is-flat-thomas-friedman",
@@ -1289,7 +1294,8 @@
         "Tư duy",
         "Ra quyết định"
       ],
-      "date": "2026-04-18"
+      "date": "2026-04-18",
+      "readingMinutes": 12
     },
     {
       "slug": "ton-ngo-khong-nhan-tai-10x-va-vong-kim-co",
@@ -1416,7 +1422,8 @@
         "Làm việc từ xa",
         "Làm việc nhóm"
       ],
-      "date": "2026-05-27"
+      "date": "2026-05-27",
+      "readingMinutes": 3
     },
     {
       "slug": "write-to-attend",

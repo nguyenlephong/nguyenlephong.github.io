@@ -1,4 +1,10 @@
 import { z } from 'zod'
+import {
+  contentDateSchema,
+  contentSlugSchema,
+  readingMinutesSchema,
+  reportDuplicateValues,
+} from '@/lib/content/schema'
 
 /**
  * Zod schemas for the canonical blog content files. Used by the data layer to
@@ -12,22 +18,22 @@ const accent = z.enum(['ocean', 'gold', 'violet', 'dark', 'light'])
 const contentLocale = z.enum(['en', 'vi', 'zh', 'ja', 'ko', 'fr'])
 
 const category = z.object({
-  slug: z.string(),
+  slug: contentSlugSchema,
   title: z.string(),
   tagline: z.string(),
   description: z.string(),
   accent,
-  order: z.number(),
+  order: z.number().int(),
 }).strict()
 
 const postMeta = z.object({
-  slug: z.string(),
-  category: z.string(),
+  slug: contentSlugSchema,
+  category: contentSlugSchema,
   title: z.string(),
   summary: z.string(),
-  date: z.string(),
-  updated: z.string().optional(),
-  readingMinutes: z.number(),
+  date: contentDateSchema,
+  updated: contentDateSchema.optional(),
+  readingMinutes: readingMinutesSchema,
   tags: z.array(z.string()),
   author: z.string(),
   featured: z.boolean().optional(),
@@ -57,10 +63,25 @@ const book = z.object({
 
 const faq = z.object({ q: z.string(), a: z.string() }).strict()
 
-export const blogIndexSchema = z.object({
-  categories: z.array(category),
-  posts: z.array(indexedPostMeta),
-})
+export const blogIndexSchema = z
+  .object({
+    categories: z.array(category),
+    posts: z.array(indexedPostMeta),
+  })
+  .superRefine((index, ctx) => {
+    reportDuplicateValues(index.categories, (entry) => entry.slug, ctx, 'categories')
+    reportDuplicateValues(index.posts, (entry) => entry.slug, ctx, 'posts')
+    const categories = new Set(index.categories.map((entry) => entry.slug))
+    index.posts.forEach((post, postIndex) => {
+      if (!categories.has(post.category)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['posts', postIndex, 'category'],
+          message: `Unknown category "${post.category}"`,
+        })
+      }
+    })
+  })
 
 export const blogPostSchema = postMeta.extend({
   html: z.string(),
@@ -68,8 +89,36 @@ export const blogPostSchema = postMeta.extend({
   faqs: z.array(faq).optional(),
 }).strict()
 
-const categoryOverride = category.partial().extend({ slug: z.string() }).strict()
-const postMetaOverride = postMeta.partial().extend({ slug: z.string() }).strict()
+const categoryOverride = category
+  .pick({
+    slug: true,
+    title: true,
+    tagline: true,
+    description: true,
+    accent: true,
+    order: true,
+  })
+  .partial()
+  .extend({ slug: contentSlugSchema })
+  .strict()
+const postMetaOverride = postMeta
+  .pick({
+    slug: true,
+    category: true,
+    title: true,
+    summary: true,
+    date: true,
+    updated: true,
+    readingMinutes: true,
+    tags: true,
+    author: true,
+    featured: true,
+    series: true,
+    seriesOrder: true,
+  })
+  .partial()
+  .extend({ slug: contentSlugSchema })
+  .strict()
 
 export const blogIndexOverrideSchema = z
   .object({
@@ -78,4 +127,23 @@ export const blogIndexOverrideSchema = z
   })
   .strict()
 
-export const blogPostOverrideSchema = blogPostSchema.partial().strict()
+export const blogPostOverrideSchema = blogPostSchema
+  .pick({
+    slug: true,
+    category: true,
+    title: true,
+    summary: true,
+    date: true,
+    updated: true,
+    readingMinutes: true,
+    tags: true,
+    author: true,
+    featured: true,
+    series: true,
+    seriesOrder: true,
+    html: true,
+    book: true,
+    faqs: true,
+  })
+  .partial()
+  .strict()

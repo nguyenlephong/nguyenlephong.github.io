@@ -81,6 +81,19 @@ export function readJsonValidated<S extends z.ZodTypeAny>(
   return result.data
 }
 
+/** Required variant for canonical indexes whose absence must stop a build. */
+export function readRequiredJsonValidated<S extends z.ZodTypeAny>(
+  file: string,
+  schema: S,
+  label = 'canonical content index',
+): z.infer<S> {
+  const value = readJsonValidated(file, schema)
+  if (value === null) {
+    throw new Error(`Missing required ${label}: ${file}`)
+  }
+  return value
+}
+
 /** True when no locale is given, or it is the canonical (default) locale. */
 export function isDefaultLocale(locale?: string): boolean {
   return !locale || locale === routing.defaultLocale

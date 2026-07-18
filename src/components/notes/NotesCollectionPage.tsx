@@ -4,7 +4,8 @@ import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { SITE, SITE_URL } from '@/app/seo.config'
 import { routing, type Locale } from '@/i18n/routing'
-import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/blog/seo'
+import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
+import { serializeJsonLd } from '@/lib/seo/json-ld'
 import { collectionPagePath, paginate } from '@/lib/content/pagination'
 import { toNoteSearchItem } from '@/lib/content/search-index'
 import {
@@ -182,7 +183,7 @@ export default async function NotesCollectionPage({
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionLd) }}
       />
       <header className="notes-archive__title-page">
         <p className="notes-archive__eyebrow">{t('eyebrow')}</p>

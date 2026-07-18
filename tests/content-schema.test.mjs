@@ -97,6 +97,14 @@ const validPost = {
   author: "me",
   html: "<p>x</p>"
 };
+const validCategory = {
+  slug: "c",
+  title: "Category",
+  tagline: "Tagline",
+  description: "Description",
+  accent: "ocean",
+  order: 1
+};
 
 test("blog post schema accepts a valid post", () => {
   assert.equal(blogPostSchema.safeParse(validPost).success, true);
@@ -116,11 +124,14 @@ test("blog post schema rejects a wrong field type", () => {
 
 test("blog index schema validates nested posts", () => {
   const { html: _html, ...validMeta } = validPost;
-  const good = { categories: [], posts: [{ ...validMeta, locales: ["en", "vi"] }] };
+  const good = {
+    categories: [validCategory],
+    posts: [{ ...validMeta, locales: ["en", "vi"] }]
+  };
   assert.equal(blogIndexSchema.safeParse(good).success, true);
   assert.equal(
     blogIndexSchema.safeParse({
-      categories: [],
+      categories: [validCategory],
       posts: [{ ...validMeta, locales: ["en", "en"] }]
     }).success,
     false
@@ -132,7 +143,7 @@ test("blog index schema validates nested posts", () => {
     }).success,
     false
   );
-  const bad = { categories: [], posts: [{ slug: "x" }] };
+  const bad = { categories: [validCategory], posts: [{ slug: "x" }] };
   assert.equal(blogIndexSchema.safeParse(bad).success, false);
 });
 

@@ -1,4 +1,10 @@
 import { z } from 'zod'
+import {
+  contentDateSchema,
+  contentSlugSchema,
+  readingMinutesSchema,
+  reportDuplicateValues,
+} from '@/lib/content/schema'
 
 /**
  * Zod schemas for the canonical notes content files (`_index.json`,
@@ -8,7 +14,7 @@ import { z } from 'zod'
  */
 
 const topic = z.object({
-  id: z.string(),
+  id: contentSlugSchema,
   label: z.string(),
   description: z.string(),
   color: z.string(),
@@ -17,15 +23,15 @@ const topic = z.object({
 const contentLocale = z.enum(['en', 'vi'])
 
 const noteMeta = z.object({
-  slug: z.string(),
+  slug: contentSlugSchema,
   title: z.string(),
   summary: z.string(),
   cardSummary: z.string().optional(),
-  date: z.string(),
-  updated: z.string().optional(),
-  readingMinutes: z.number(),
+  date: contentDateSchema,
+  updated: contentDateSchema.optional(),
+  readingMinutes: readingMinutesSchema,
   tags: z.array(z.string()),
-  topic: z.string().optional(),
+  topic: contentSlugSchema.optional(),
   author: z.string().optional(),
   featured: z.boolean().optional(),
   baseLocale: contentLocale.optional(),
@@ -55,10 +61,25 @@ const book = z.object({
 
 const faq = z.object({ q: z.string(), a: z.string() }).strict()
 
-export const notesIndexSchema = z.object({
-  topics: z.array(topic),
-  posts: z.array(indexedNoteMeta),
-})
+export const notesIndexSchema = z
+  .object({
+    topics: z.array(topic),
+    posts: z.array(indexedNoteMeta),
+  })
+  .superRefine((index, ctx) => {
+    reportDuplicateValues(index.topics, (entry) => entry.id, ctx, 'topics')
+    reportDuplicateValues(index.posts, (entry) => entry.slug, ctx, 'posts')
+    const topics = new Set(index.topics.map((entry) => entry.id))
+    index.posts.forEach((post, postIndex) => {
+      if (post.topic && !topics.has(post.topic)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['posts', postIndex, 'topic'],
+          message: `Unknown topic "${post.topic}"`,
+        })
+      }
+    })
+  })
 
 export const noteSchema = noteMeta.extend({
   html: z.string(),
@@ -66,8 +87,28 @@ export const noteSchema = noteMeta.extend({
   faqs: z.array(faq).optional(),
 }).strict()
 
-const topicOverride = topic.partial().extend({ id: z.string() }).strict()
-const noteMetaOverride = noteMeta.partial().extend({ slug: z.string() }).strict()
+const topicOverride = topic
+  .pick({ id: true, label: true, description: true, color: true })
+  .partial()
+  .extend({ id: contentSlugSchema })
+  .strict()
+const noteMetaOverride = noteMeta
+  .pick({
+    slug: true,
+    title: true,
+    summary: true,
+    cardSummary: true,
+    date: true,
+    updated: true,
+    readingMinutes: true,
+    tags: true,
+    topic: true,
+    author: true,
+    featured: true,
+  })
+  .partial()
+  .extend({ slug: contentSlugSchema })
+  .strict()
 
 export const notesIndexOverrideSchema = z
   .object({
@@ -76,4 +117,24 @@ export const notesIndexOverrideSchema = z
   })
   .strict()
 
-export const noteOverrideSchema = noteSchema.partial().strict()
+export const noteOverrideSchema = noteSchema
+  .pick({
+    slug: true,
+    title: true,
+    summary: true,
+    cardSummary: true,
+    date: true,
+    updated: true,
+    readingMinutes: true,
+    tags: true,
+    topic: true,
+    author: true,
+    featured: true,
+    baseLocale: true,
+    locales: true,
+    html: true,
+    book: true,
+    faqs: true,
+  })
+  .partial()
+  .strict()
