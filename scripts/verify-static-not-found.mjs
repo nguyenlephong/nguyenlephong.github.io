@@ -100,9 +100,94 @@ async function assertRawArtifact() {
   assert.match(html, /capture_pageview: false/);
   assert.match(html, /capture_pageleave: false/);
   assert.match(html, /before_send:/);
+  assert.match(
+    html,
+    /captureResult, true/,
+    "shared 404 must use the strict location-removal privacy policy"
+  );
   assert.match(localeHtml, /capture_pageview: true/);
   assert.match(localeHtml, /capture_pageleave: true/);
-  assert.doesNotMatch(localeHtml, /before_send:/);
+  assert.match(
+    localeHtml,
+    /before_send:/,
+    "normal pages must sanitize PostHog URL properties before sending"
+  );
+  assert.match(
+    localeHtml,
+    /captureResult, false/,
+    "normal pages must preserve route identity while stripping URL secrets"
+  );
+}
+
+async function verifyCommonPrivacyCase(page, origin) {
+  const response = await page.goto(
+    `${origin}/en?q=${encodeURIComponent(SENSITIVE_EMAIL_SENTINEL)}#${SENSITIVE_PATH_SENTINEL}`,
+    { waitUntil: "domcontentloaded" }
+  );
+  assert.equal(response?.status(), 200);
+  await page.waitForFunction(() => window.__posthogAudit?.inits.length > 0);
+
+  const audit = await page.evaluate(
+    ({ pathSecret, emailSecret }) => {
+      const options = window.__posthogAudit.inits.at(-1)?.options;
+      if (!options || typeof options.before_send !== "function") return null;
+
+      const captureResult = options.before_send({
+        event: "$pageview",
+        properties: {
+          $current_url: window.location.href,
+          $pathname: `${window.location.pathname}?q=${emailSecret}#${pathSecret}`,
+          $session_entry_url: window.location.href,
+          $initial_current_url: window.location.href,
+          $referrer: `https://search.example/results?q=${emailSecret}#${pathSecret}`,
+          path: `${window.location.pathname}?q=${emailSecret}#${pathSecret}`,
+          q: emailSecret,
+          query: emailSecret,
+          search: emailSecret,
+          search_query: emailSecret,
+          search_term: emailSecret,
+          page: 2,
+          nested: {
+            session_entry_url: window.location.href,
+            pathname: `${window.location.pathname}?q=${emailSecret}#${pathSecret}`,
+            q: emailSecret,
+            query_length: emailSecret.length
+          }
+        }
+      });
+
+      return {
+        capturePageview: options.capture_pageview,
+        capturePageleave: options.capture_pageleave,
+        event: captureResult?.event,
+        properties: captureResult?.properties
+      };
+    },
+    {
+      pathSecret: SENSITIVE_PATH_SENTINEL,
+      emailSecret: SENSITIVE_EMAIL_SENTINEL
+    }
+  );
+
+  assert.ok(audit, "normal pages must install a PostHog before_send callback");
+  assert.equal(audit.capturePageview, true);
+  assert.equal(audit.capturePageleave, true);
+  assert.equal(audit.event, "$pageview");
+  assert.equal(audit.properties.$current_url, `${origin}/en`);
+  assert.equal(audit.properties.$pathname, "/en");
+  assert.equal(audit.properties.$session_entry_url, `${origin}/en`);
+  assert.equal(audit.properties.$initial_current_url, `${origin}/en`);
+  assert.equal(audit.properties.$referrer, "https://search.example/results");
+  assert.equal(audit.properties.path, "/en");
+  assert.equal(audit.properties.page, 2);
+  assert.deepEqual(audit.properties.nested, {
+    session_entry_url: `${origin}/en`,
+    pathname: "/en",
+    query_length: SENSITIVE_EMAIL_SENTINEL.length
+  });
+  const serializedAudit = JSON.stringify(audit);
+  assert.equal(serializedAudit.includes(SENSITIVE_PATH_SENTINEL), false);
+  assert.equal(serializedAudit.includes(SENSITIVE_EMAIL_SENTINEL), false);
 }
 
 async function verifyHydratedCase(page, origin, testCase) {
@@ -242,6 +327,7 @@ async function verifyBrowserBehavior(origin) {
       inits: [],
       events: [],
       registrations: [],
+      unregistrations: [],
       pending: []
     };
     window.__notFoundEvents = window.__posthogAudit.events;
@@ -297,12 +383,17 @@ async function verifyBrowserBehavior(origin) {
       },
       register(props) {
         window.__posthogAudit.registrations.push(props);
+      },
+      unregister(key) {
+        window.__posthogAudit.unregistrations.push(key);
       }
     };
   });
   const page = await context.newPage();
 
   try {
+    await verifyCommonPrivacyCase(page, origin);
+
     for (const testCase of [
       {
         path: `/zh/blog/${SENSITIVE_PATH_SENTINEL}?email=${encodeURIComponent(SENSITIVE_EMAIL_SENTINEL)}&token=${SENSITIVE_PATH_SENTINEL}`,

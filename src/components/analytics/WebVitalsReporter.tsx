@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { useReportWebVitals } from "next/web-vitals";
-import { track } from "@/lib/analytics";
+import { getAnalyticsPathname, track } from "@/lib/analytics";
 import type { WebVitalAnalyticsPayload } from "@/lib/analytics";
 import { resolveWebVitalSurface } from "./web-vitals-context";
 
@@ -23,7 +23,7 @@ export default function WebVitalsReporter({ locale }: WebVitalsReporterProps) {
 
   const reportWebVitals = useCallback<ReportWebVitalsCallback>((metric) => {
     const context = contextRef.current;
-    const path = window.location.pathname + window.location.search;
+    const path = getAnalyticsPathname();
 
     const payload = {
       name: metric.name,
