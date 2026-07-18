@@ -13,6 +13,7 @@ import {
 } from '@/lib/firebase/postStats'
 import { ReactionMutationQueue } from '@/lib/engagement/reaction-mutation-queue'
 import { isReactionKey } from '@/lib/engagement/domain'
+import { recordSessionView } from '@/lib/engagement/view-session'
 
 interface EngagementState {
   views: number
@@ -168,10 +169,12 @@ export function usePostEngagement(
     }))
 
     async function init() {
-      if (safeGet('session', viewedKey) !== '1') {
-        safeSet('session', viewedKey, '1')
-        await incrementView(id)
-      }
+      void recordSessionView({
+        key: viewedKey,
+        isViewed: () => safeGet('session', viewedKey) === '1',
+        markViewed: () => safeSet('session', viewedKey, '1'),
+        increment: () => incrementView(id),
+      })
 
       const stats = await getPostStats(id)
       if (cancelled) return

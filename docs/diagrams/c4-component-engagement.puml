@@ -16,7 +16,7 @@ Container_Boundary(browser, "Visitor Browser") {
   Component(engagement_hook, "usePostEngagement", "src/components/blog/usePostEngagement.ts", "Loads counters, increments one view per session, persists browser reaction state, and performs optimistic updates.")
   Component(firebase_client, "Firebase Client", "src/lib/firebase/client.ts", "Dynamically imports Firebase only when configured and running in the browser.")
   Component(post_stats, "Post Stats Access", "src/lib/firebase/postStats.ts", "Normalizes counters and applies atomic view, share, and reaction increments.")
-  Component(local_storage, "Browser Storage", "localStorage and sessionStorage", "Stores reaction choice and one-view-per-session markers.")
+  Component(local_storage, "Browser Storage", "localStorage and sessionStorage", "Stores committed reaction choices and confirmed one-view-per-session markers.")
 }
 
 System_Ext(posthog, "PostHog", "Receives browser analytics events.")

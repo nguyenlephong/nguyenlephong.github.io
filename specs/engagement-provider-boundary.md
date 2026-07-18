@@ -24,6 +24,11 @@ React engagement UI
 - The caller passes the visible-page read limit explicitly; the Firebase adapter
   has no dependency on content pagination policy.
 - Views and shares remain atomic `increment(1)` writes.
+- The per-session view marker is written only after `recordView` reports a
+  successful increment. A small shared coordinator deduplicates concurrent
+  mounts and bounds retries to two separate mount attempts per page runtime.
+  It never immediately retries an ambiguous non-idempotent increment result,
+  and the stats read does not wait for a pending view write.
 - A reaction toggle or switch is one Firestore transaction. The callback reads
   the latest counters and computes document writes only; it never mutates React
   state or browser storage because Firestore may rerun it after contention.
@@ -47,26 +52,37 @@ React engagement UI
 - **ENG-005:** Emulator tests cover allowed view/share/reaction transitions and
   reject malformed ids, fields, maps, types, negative counters, oversized
   deltas, multi-counter writes, and deletes.
-- **ENG-006:** If `NEXT_PUBLIC_FIREBASE_APPCHECK_SITE_KEY` is present, reCAPTCHA
-  Enterprise App Check initializes before Firestore. If absent or initialization
-  fails, static content remains available and engagement stays fail-soft.
+- **ENG-006:** App Check reports explicit configured/active/failure status and
+  becomes active only after initial token acquisition. Unknown non-empty modes
+  fail closed, and token bootstrap has a bounded timeout. In
+  default `optional` mode, missing or failed App Check preserves legacy
+  best-effort engagement. In `required` mode, reads remain fail-soft but every
+  engagement write is denied unless App Check is active.
 - **ENG-007:** Firestore Rules emulator tests run as an unconditional CI job
   with Java; the normal local unit suite may skip them when no emulator exists.
+- **ENG-008:** A failed view increment never commits the session marker. Tests
+  cover a transient failure followed by a later-mount bounded retry, retry
+  exhaustion, pending-write liveness, and concurrent/sequential idempotency.
 
 ## App Check rollout runbook
 
 1. Register every production hostname in Firebase App Check and create a public
    reCAPTCHA Enterprise site key. Never add a secret/API credential to a
    `NEXT_PUBLIC_*` variable.
-2. Deploy the site key with enforcement **disabled**. Confirm Firestore requests
+2. Deploy the site key in `optional` mode with enforcement **disabled**. Confirm
+   Firestore requests
    include App Check tokens and monitor valid, outdated, and invalid request
    metrics for at least one representative traffic cycle.
 3. Investigate invalid legitimate traffic, local development, preview domains,
    blocked scripts, and older cached clients. Configure the official debug
    provider only for local/CI; never ship a debug token in the static artifact.
-4. Enable Firestore enforcement only after legitimate traffic is consistently
-   valid. Keep counters best-effort and monitor denied requests and usage.
-5. Roll back enforcement first if valid readers lose engagement. Static article
+4. Switch the client to `required` mode only after legitimate traffic is
+   consistently valid. This prevents missing/failed App Check bootstrap from
+   falling through to engagement writes.
+5. Enable Firestore enforcement only after the required-mode rollout is clean.
+   This is a separate external Firebase Console operation; client configuration
+   cannot enable backend enforcement. Keep monitoring denied requests and usage.
+6. Roll back enforcement first if valid readers lose engagement. Static article
    content, metadata, and SEO must remain unaffected throughout.
 
 ## Verification
