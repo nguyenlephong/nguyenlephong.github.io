@@ -11,36 +11,18 @@ export default function StudioStaticOverview({ locale }: Readonly<{ locale: stri
       <style>{`
         .studio-static-overview {
           box-sizing: border-box;
-          min-height: 100vh;
-          max-height: 100vh;
-          overflow: auto;
-          padding: clamp(2rem, 6vw, 5.5rem) clamp(1.25rem, 5vw, 4rem);
-          color: #171717;
-          background:
-            radial-gradient(circle at top right, rgba(23, 23, 23, 0.06), transparent 34rem),
-            #fafafa;
-          font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          min-height: calc(100vh - 9rem);
+          padding: 1.35rem clamp(1.25rem, 5vw, 4rem) clamp(2rem, 6vw, 5.5rem);
+          color: inherit;
+          background: transparent;
+          font: inherit;
         }
         .studio-static-overview * { box-sizing: border-box; }
         .studio-static-overview > header,
         .studio-static-overview > section { width: min(72rem, 100%); margin-inline: auto; }
-        .studio-static-overview .studio-static-eyebrow {
-          margin: 0 0 0.9rem;
-          color: #525252;
-          font-size: 0.78rem;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-        }
-        .studio-static-overview h1 {
-          margin: 0;
-          font-size: clamp(2.25rem, 7vw, 5.25rem);
-          letter-spacing: -0.055em;
-          line-height: 0.98;
-        }
         .studio-static-overview .studio-static-intro {
           max-width: 48rem;
-          margin: 1.35rem 0 0;
+          margin: 0;
           color: #525252;
           font-size: clamp(1rem, 2vw, 1.2rem);
           line-height: 1.7;
@@ -68,8 +50,6 @@ export default function StudioStaticOverview({ locale }: Readonly<{ locale: stri
         .studio-static-overview li p { margin: 0.9rem 0 1.2rem; color: #525252; line-height: 1.65; }
         .studio-static-overview li > a { color: #171717; font-size: 0.82rem; font-weight: 700; }
         @media (prefers-color-scheme: dark) {
-          .studio-static-overview { color: #f5f5f5; background: #0a0a0a; }
-          .studio-static-overview .studio-static-eyebrow,
           .studio-static-overview .studio-static-intro,
           .studio-static-overview li p { color: #a3a3a3; }
           .studio-static-overview li { border-color: #262626; background: #171717; }
@@ -78,8 +58,6 @@ export default function StudioStaticOverview({ locale }: Readonly<{ locale: stri
         }
       `}</style>
       <header>
-        <p className="studio-static-eyebrow">{content.eyebrow}</p>
-        <h1>{content.title}</h1>
         <p className="studio-static-intro">{content.intro}</p>
       </header>
       <section aria-labelledby="studio-static-modules-heading">

@@ -191,6 +191,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(page, /"@type":\s*"TechArticle"/);
   assert.doesNotMatch(page, /getLocalizedStudioNotes|getLocalizedStudioFlows/);
   assert.match(page, /StudioWorkspace/);
+  assert.match(page, /data-studio-page-heading="true"/);
+  assert.match(page, /<h1 className="studio-page-heading__title">\{staticContent\.title\}<\/h1>/);
   assert.match(page, /studio-route-shell/);
   assert.match(page, /<div className="studio-route-shell">/);
   assert.doesNotMatch(page, /<main className="studio-route-shell">/);
@@ -206,8 +208,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(workspace, /studioShadowStyles/);
   assert.match(page, /fallback=\{<StudioStaticOverview locale=\{locale\} \/>\}/);
   assert.match(workspace, /fallback=\{fallback\}/);
+  assert.match(workspace, /heading=\{heading\}/);
   assert.match(staticOverview, /data-studio-static-overview="true"/);
-  assert.match(staticOverview, /<h1>\{content\.title\}<\/h1>/);
+  assert.doesNotMatch(staticOverview, /<h1\b/);
   assert.match(staticOverview, /data-studio-module-link=\{module\.id\}/);
   assert.match(staticContent, /en:\s*\{/);
   assert.match(staticContent, /vi:\s*\{/);

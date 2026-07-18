@@ -2762,7 +2762,7 @@ function RouteHeading({ route, copy = englishStudioCopy, children }: { route: St
           <Icon aria-hidden="true" />
           <span>{route.kind === "legacy" ? copy.routeKicker.legacy : copy.routeKicker.studio}</span>
         </div>
-        <h1>{route.title}</h1>
+        <h2>{route.title}</h2>
         <p>{route.description}</p>
       </div>
       {children}
@@ -4014,7 +4014,7 @@ function WelcomePage({
       <div className="welcome-shell">
         <div className="welcome-intro">
           <span className="welcome-eyebrow"><LuSparkles aria-hidden="true" /> {copy.welcome.eyebrow}</span>
-          <h1>{route.title}</h1>
+          <h2>{route.title}</h2>
           <p>{copy.welcome.lead}</p>
           <div className="welcome-note-strip">
             <LuSmile aria-hidden="true" />
@@ -5576,7 +5576,7 @@ function StudioFlowMenuPage({
 
   return (
     <section className="route-page studio-flow-route">
-      {selectedFlow.architectureDemo && <h1 className="sr-only">{selectedFlow.title}</h1>}
+      {selectedFlow.architectureDemo && <h2 className="sr-only">{selectedFlow.title}</h2>}
       {!selectedFlow.architectureDemo && (
         <>
           <RouteHeading route={route} copy={copy}>
@@ -5878,7 +5878,7 @@ function AuthPage({ route }: { route: StudioRoute }) {
           <LuCommand aria-hidden="true" />
           <span>Studio</span>
         </div>
-        <h1>{route.title}</h1>
+        <h3>{route.title}</h3>
         <p>{route.description}</p>
         <label className="form-row">
           <span>Email</span>
@@ -6728,6 +6728,8 @@ export function StudioAdminShell({ locale }: StudioAdminShellProps) {
             <button type="button" className="icon-button" aria-label={copy.toggleNavigation} onClick={toggleSidebar}>
               {mobileSidebarOpen ? <LuX aria-hidden="true" /> : <LuPanelLeft aria-hidden="true" />}
             </button>
+            <span className="topbar-separator" aria-hidden="true" />
+            <slot name="studio-page-heading" />
             <span className="topbar-separator" aria-hidden="true" />
             <button
               type="button"

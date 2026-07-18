@@ -10,11 +10,13 @@ even when a visitor opened the lightweight welcome route.
 
 ## Decision
 
-- Export a concise, localized Studio overview as ordinary HTML inside the
+- Export a concise, localized Studio overview as ordinary light DOM inside the
   shadow host. It remains visible without JavaScript and is replaced only after
   the ShadowRoot is ready.
-- Keep exactly one visible page heading: the static overview owns the H1 before
-  hydration; the active Studio module owns it after the fallback is removed.
+- Keep exactly one localized, visible page H1 in light DOM for the complete
+  route lifetime. Hydration projects that same node through a named slot in the
+  Studio top bar; active Studio module titles are H2 and the ShadowRoot owns no
+  H1.
 - Publish crawlable module links in the overview and mirror those exact URLs in
   the `CollectionPage.hasPart` graph.
 - Keep the existing query/hash Studio navigation contract and analytics event
@@ -40,7 +42,7 @@ even when a visitor opened the lightweight welcome route.
 ## Acceptance criteria
 
 - **AC-STUDIO-STATIC-001:** Every supported locale exports a meaningful Studio
-  overview containing one visible H1, a concise introduction, module
+  overview with one visible page H1, a concise introduction, module
   descriptions, and ordinary anchor links.
 - **AC-STUDIO-STATIC-002:** The overview is the initial ShadowIsland fallback,
   is identical for server render and first hydration render, and is removed
@@ -71,6 +73,10 @@ even when a visitor opened the lightweight welcome route.
   rejected dynamic module.
 - **AC-STUDIO-STATIC-012:** All Studio locales emit explicit `og:image` and
   `twitter:image` metadata; artifact verification rejects either omission.
+- **AC-STUDIO-STATIC-013:** Server HTML, first hydration, and the interactive
+  workspace retain the same localized H1 node in light DOM. A named slot makes
+  it visible inside the hydrated shell, no Shadow DOM subtree contains an H1,
+  and internal view titles use H2 or lower.
 
 ## Verification
 

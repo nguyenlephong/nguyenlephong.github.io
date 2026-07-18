@@ -135,11 +135,79 @@ export default async function StudioPage({ params }: Props) {
               padding-bottom: 0 !important;
             }
 
-            body:has(.studio-route-shell) [data-studio-shadow-host],
-            body.studio-app-shell-active [data-studio-shadow-host] {
+            body:has(.studio-route-shell) [data-studio-shadow-host][data-shadow-ready="true"],
+            body.studio-app-shell-active [data-studio-shadow-host][data-shadow-ready="true"] {
               height: 100vh !important;
               min-height: 100vh !important;
               overflow: hidden !important;
+            }
+
+            [data-studio-shadow-host][data-shadow-ready="false"] {
+              height: 100vh;
+              overflow: auto !important;
+              color: #171717;
+              background:
+                radial-gradient(circle at top right, rgba(23, 23, 23, 0.06), transparent 34rem),
+                #fafafa;
+              font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            }
+
+            [data-studio-shadow-host] > .studio-page-heading {
+              box-sizing: border-box;
+              color: inherit;
+            }
+
+            [data-studio-shadow-host][data-shadow-ready="false"] > .studio-page-heading {
+              width: min(72rem, 100%);
+              margin-inline: auto;
+              padding: clamp(2rem, 6vw, 5.5rem) clamp(1.25rem, 5vw, 4rem) 0;
+            }
+
+            .studio-page-heading__eyebrow {
+              margin: 0 0 0.9rem;
+              color: #525252;
+              font-size: 0.78rem;
+              font-weight: 700;
+              letter-spacing: 0.12em;
+              text-transform: uppercase;
+            }
+
+            .studio-page-heading h1 {
+              margin: 0;
+              font-size: clamp(2.25rem, 7vw, 5.25rem);
+              letter-spacing: -0.055em;
+              line-height: 0.98;
+            }
+
+            [data-studio-shadow-host][data-shadow-ready="true"] > .studio-page-heading {
+              display: block;
+              max-width: min(28vw, 18rem);
+              overflow: hidden;
+            }
+
+            [data-studio-shadow-host][data-shadow-ready="true"] .studio-page-heading__eyebrow {
+              display: none;
+            }
+
+            [data-studio-shadow-host][data-shadow-ready="true"] .studio-page-heading__title {
+              overflow: hidden;
+              font-size: 0.875rem;
+              font-weight: 650;
+              letter-spacing: 0;
+              line-height: 1.2;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+
+            @media (prefers-color-scheme: dark) {
+              [data-studio-shadow-host][data-shadow-ready="false"] {
+                color: #f5f5f5;
+                background: #0a0a0a;
+              }
+
+              [data-studio-shadow-host][data-shadow-ready="false"] .studio-page-heading__eyebrow {
+                color: #a3a3a3;
+              }
             }
 
           `
@@ -150,7 +218,20 @@ export default async function StudioPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionLd) }}
       />
       <PageTracker page="studio" eventName="studio_view" section="notes_admin" />
-      <StudioWorkspace locale={locale} fallback={<StudioStaticOverview locale={locale} />} />
+      <StudioWorkspace
+        locale={locale}
+        heading={(
+          <div
+            slot="studio-page-heading"
+            className="studio-page-heading"
+            data-studio-page-heading="true"
+          >
+            <p className="studio-page-heading__eyebrow">{staticContent.eyebrow}</p>
+            <h1 className="studio-page-heading__title">{staticContent.title}</h1>
+          </div>
+        )}
+        fallback={<StudioStaticOverview locale={locale} />}
+      />
     </div>
   );
 }
