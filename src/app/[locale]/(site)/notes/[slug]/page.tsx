@@ -37,9 +37,8 @@ type Props = { params: Promise<{ locale: string; slug: string }> };
 
 const FALLBACK_TOPIC_COLOR = "#b45309";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === "development") return [];
   return listNoteParams();
 }
 

@@ -21,6 +21,7 @@
     "check": "npm run typecheck && npm run lint && npm test",
     "quality": "npm run check && npm run build:fast && npm run verify:pagination && npm run verify:artifact && npm run verify:offline",
     "verify:artifact": "node scripts/verify-static-artifact.mjs",
+    "verify:dev-concurrency": "node scripts/verify-dev-concurrency.mjs",
     "verify:not-found": "node scripts/verify-static-not-found.mjs",
     "verify:pagination": "node scripts/verify-content-pagination.mjs",
     "verify:offline": "node scripts/verify-offline.mjs",

@@ -20,6 +20,7 @@ const LOCALE_OG_MAP: Record<Locale, string> = {
 }
 
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   return routing.locales.map((locale) => ({ locale }))
 }
 

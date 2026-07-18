@@ -1,14 +1,18 @@
 declare global {
   interface Window {
-    posthog?: {
-      capture: (event: string, props?: Record<string, unknown>) => void
-      identify: (id: string, props?: Record<string, unknown>) => void
-      register: (props: Record<string, unknown>) => void
-      register_once?: (props: Record<string, unknown>) => void
-      set_config?: (props: Record<string, unknown>) => void
-    }
+    posthog?: PostHogClient
   }
 }
+
+type PostHogClient = {
+  capture: (event: string, props?: Record<string, unknown>) => void
+  identify: (id: string, props?: Record<string, unknown>) => void
+  register: (props: Record<string, unknown>) => void
+  register_once?: (props: Record<string, unknown>) => void
+  set_config?: (props: Record<string, unknown>) => void
+}
+
+type PostHogQueue = PostHogClient & Array<unknown>
 
 export type AnalyticsEvent =
   // CV (legacy + still in use)
@@ -164,10 +168,31 @@ function isDoNotTrack(): boolean {
   return dnt === '1' || dnt === 'yes'
 }
 
+/**
+ * Queue explicit events immediately, even when the lazy PostHog bootstrap has
+ * not run yet. The official loader consumes this same array once initialized.
+ */
+function ensurePostHogClient(): PostHogClient {
+  if (window.posthog) return window.posthog
+
+  const queue = [] as unknown as PostHogQueue
+  queue.capture = (event, props) => {
+    queue.push(['capture', event, props])
+  }
+  queue.identify = (id, props) => {
+    queue.push(['identify', id, props])
+  }
+  queue.register = (props) => {
+    queue.push(['register', props])
+  }
+  window.posthog = queue
+  return queue
+}
+
 export function track(
   event: AnalyticsEvent | string,
   props?: Record<string, unknown>,
-  options?: TrackOptions
+  options?: TrackOptions,
 ): void {
   if (typeof window === 'undefined') return
   if (isDoNotTrack()) return
@@ -183,7 +208,7 @@ export function track(
       ...props,
     }
     if (options?.beacon) payload['$set_once'] = { last_outbound_ts: Date.now() }
-    window.posthog?.capture(event, payload)
+    ensurePostHogClient().capture(event, payload)
   } catch {
     // swallow — analytics must never break UX
   }
@@ -193,7 +218,7 @@ export function track(
 export function registerPageContext(props: Record<string, unknown>): void {
   if (typeof window === 'undefined') return
   try {
-    window.posthog?.register(props)
+    ensurePostHogClient().register(props)
   } catch {
     // ignore
   }

@@ -133,6 +133,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify concurrent development first hits
+        run: npm run verify:dev-concurrency
+
       # Skip OG-image generation for speed; this still runs the full
       # `next build` and fails on any compile / type / lint error.
       - name: Build (static export, OG skipped)

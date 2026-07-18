@@ -9,6 +9,7 @@ import {
   collectCrux,
   collectSearchConsole,
   collectSeoFieldData,
+  compareCanonicalUrls,
   compareSearchAnalytics,
   evaluateSeoHealth,
   exchangeServiceAccountToken,
@@ -135,6 +136,7 @@ test("Search Console requests stay aggregate and reports discard sensitive dimen
       });
     }
     if (url === ENDPOINTS.urlInspection) {
+      const { inspectionUrl } = JSON.parse(init.body);
       return jsonResponse({
         inspectionResult: {
           indexStatusResult: {
@@ -144,8 +146,8 @@ test("Search Console requests stay aggregate and reports discard sensitive dimen
             pageFetchState: "SUCCESSFUL",
             robotsTxtState: "ALLOWED",
             lastCrawlTime: "2026-07-12T01:02:03Z",
-            googleCanonical: "https://nguyenlephong.github.io/en",
-            userCanonical: "https://nguyenlephong.github.io/en",
+            googleCanonical: inspectionUrl,
+            userCanonical: inspectionUrl,
             referringUrls: ["https://private.example/referrer"]
           }
         }
@@ -184,6 +186,15 @@ test("Search Console requests stay aggregate and reports discard sensitive dimen
   assert.equal(report.inspections.length, 4);
   assert.equal(
     report.inspections.every((item) => item.canonicalMatches),
+    true
+  );
+  assert.equal(
+    report.inspections.every(
+      (item) =>
+        item.canonicalAgreement &&
+        item.googleMatchesExpected &&
+        item.userMatchesExpected
+    ),
     true
   );
 
@@ -358,6 +369,22 @@ test("health is action-required for aggregate drops, sitemap defects, URL failur
   );
 });
 
+test("matching Google and user canonicals still fail when they target the wrong page", () => {
+  assert.deepEqual(
+    compareCanonicalUrls(
+      "https://nguyenlephong.github.io/en",
+      "https://nguyenlephong.github.io/en/",
+      "https://nguyenlephong.github.io/en/blog"
+    ),
+    {
+      canonicalAgreement: true,
+      googleMatchesExpected: false,
+      userMatchesExpected: false,
+      canonicalMatches: false
+    }
+  );
+});
+
 test("missing page-level CrUX stays unknown without becoming healthy or actionable", () => {
   const { searchConsole, crux } = healthyObservedData();
   crux.availability = "partial";
@@ -486,6 +513,7 @@ test("workflow is standalone, weekly, manual, read-only, and action-requiring", 
   assert.match(workflow, /schedule:/);
   assert.match(workflow, /cron: '17 5 \* \* 2'/);
   assert.match(workflow, /workflow_dispatch:/);
+  assert.match(workflow, /if: github\.ref == 'refs\/heads\/main'/);
   assert.match(workflow, /permissions:\n  contents: read/);
   assert.match(workflow, /persist-credentials: false/);
   assert.doesNotMatch(workflow, /continue-on-error/);

@@ -8,6 +8,7 @@ import { familyMembers } from './family.data'
 import './heartbeats.css'
 
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   return routing.locales.map((locale) => ({ locale }))
 }
 

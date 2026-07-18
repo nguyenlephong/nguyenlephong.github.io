@@ -137,7 +137,7 @@ test('locale switching never fabricates an untranslated article path', () => {
   assert.equal(localeSwitchPath('/about', 'zh', null), '/about')
 })
 
-test('article pages and locale control keep the static-routing contract wired', async () => {
+test('article pages keep production static params while development resolves them on demand', async () => {
   const [blogPage, notePage, localeSwitcher] = await Promise.all([
     readFile('src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx', 'utf8'),
     readFile('src/app/[locale]/(site)/notes/[slug]/page.tsx', 'utf8'),
@@ -145,7 +145,11 @@ test('article pages and locale control keep the static-routing contract wired', 
   ])
 
   for (const page of [blogPage, notePage]) {
-    assert.match(page, /export const dynamicParams = false/)
+    assert.match(
+      page,
+      /generateStaticParams\(\) \{\s+if \(process\.env\.NODE_ENV === ["']development["']\) return \[\]/,
+    )
+    assert.doesNotMatch(page, /export const dynamicParams = false/)
     assert.match(page, /data-content-locales/)
     assert.match(page, /data-content-locale-fallback/)
   }

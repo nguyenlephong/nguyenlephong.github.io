@@ -11,6 +11,7 @@ import EnglishPracticeApp from '@/components/apps/english/EnglishPracticeApp'
 type Props = { params: Promise<{ locale: string }> }
 
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   return routing.locales.map((locale) => ({ locale }))
 }
 

@@ -5,11 +5,47 @@ type PostHogBootstrapProps = {
   surface?: "cv" | "not_found";
 };
 
+const NOT_FOUND_BEFORE_SEND = `function(captureResult) {
+  if (!captureResult || typeof captureResult !== 'object') return captureResult;
+
+  var isLocationKey = function(key) {
+    var normalized = String(key).replace(/^\\$/, '').toLowerCase();
+    return normalized === 'url' ||
+      normalized === 'path' ||
+      normalized === 'pathname' ||
+      normalized === 'referrer' ||
+      normalized === 'referring_domain' ||
+      normalized.endsWith('_url') ||
+      normalized.endsWith('_path') ||
+      normalized.endsWith('_pathname') ||
+      normalized.endsWith('_referrer') ||
+      normalized.endsWith('_referring_domain');
+  };
+
+  var scrub = function(value) {
+    if (Array.isArray(value)) return value.map(scrub);
+    if (!value || typeof value !== 'object') return value;
+
+    return Object.keys(value).reduce(function(safe, key) {
+      if (!isLocationKey(key)) safe[key] = scrub(value[key]);
+      return safe;
+    }, {});
+  };
+
+  return Object.assign({}, captureResult, {
+    properties: scrub(captureResult.properties)
+  });
+}`;
+
 export default function PostHogBootstrap({
   locale,
   surface = "cv"
 }: PostHogBootstrapProps) {
   const captureAutomaticPageLifecycle = surface !== "not_found";
+  const beforeSendConfig =
+    surface === "not_found"
+      ? `,\n            before_send: ${NOT_FOUND_BEFORE_SEND}`
+      : "";
 
   return (
     <Script
@@ -26,7 +62,7 @@ export default function PostHogBootstrap({
             autocapture: false,
             disable_session_recording: true,
             respect_dnt: true,
-            persistence: 'localStorage+cookie'
+            persistence: 'localStorage+cookie'${beforeSendConfig}
           });
           posthog.register({ site: 'nguyenlephong.github.io', surface: ${JSON.stringify(surface)}, locale: ${JSON.stringify(locale)} });
         `

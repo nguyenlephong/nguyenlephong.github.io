@@ -85,6 +85,13 @@ test('CI verifies offline browser behavior after its single smoke build', () => 
   assert.match(ciWorkflow, /npx playwright install --with-deps chromium/)
 })
 
+test('CI and deploy workflows gate concurrent clean-cache development startup', () => {
+  assert.equal(pkg.scripts['verify:dev-concurrency'], 'node scripts/verify-dev-concurrency.mjs')
+  for (const currentWorkflow of [workflow, ciWorkflow]) {
+    assert.match(currentWorkflow, /run: npm run verify:dev-concurrency/)
+  }
+})
+
 test('workflows use Node 24 action majors instead of deprecated Node 20 runtimes', () => {
   for (const currentWorkflow of [workflow, ciWorkflow]) {
     assert.doesNotMatch(currentWorkflow, /uses: actions\/(?:checkout|setup-node)@v4/)

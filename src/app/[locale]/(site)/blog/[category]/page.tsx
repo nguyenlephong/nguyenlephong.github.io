@@ -19,6 +19,7 @@ import '../blog.css'
 type Props = { params: Promise<{ locale: string; category: string }> }
 
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   const slugs = listCategorySlugs()
   return routing.locales.flatMap((locale) =>
     slugs.map((category) => ({ locale, category })),

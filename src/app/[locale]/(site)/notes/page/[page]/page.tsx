@@ -11,9 +11,8 @@ import '../../../blog/blog.css'
 
 type Props = { params: Promise<{ locale: string; page: string }> }
 
-export const dynamicParams = false
-
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   return NOTE_CONTENT_LOCALES.flatMap((locale) =>
     Array.from({ length: Math.max(0, notesPageCount(locale) - 1) }, (_, index) => ({
       locale,

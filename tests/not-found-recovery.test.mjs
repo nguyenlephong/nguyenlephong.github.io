@@ -26,7 +26,10 @@ test("global not-found uses one static document with safe SEO metadata", async (
       readFile("specs/static-not-found-recovery.md", "utf8")
     ]);
 
-  assert.match(config, /experimental:\s*\{[\s\S]*globalNotFound:\s*true/);
+  assert.match(
+    config,
+    /experimental:\s*\{[\s\S]*globalNotFound:\s*!isDevelopment/
+  );
   assert.match(globalNotFound, /<html lang="en" suppressHydrationWarning>/);
   assert.match(globalNotFound, /metadataBase: new URL\(SITE_URL\)/);
   assert.doesNotMatch(

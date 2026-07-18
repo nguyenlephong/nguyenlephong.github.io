@@ -75,6 +75,40 @@ function safeIsoDateTime(value) {
   return Number.isNaN(date.getTime()) ? null : date.toISOString();
 }
 
+function normalizeCanonicalUrl(value) {
+  if (typeof value !== "string" || !value.trim()) return null;
+  try {
+    const url = new URL(value);
+    url.hash = "";
+    if (url.pathname.length > 1) {
+      url.pathname = url.pathname.replace(/\/+$/, "");
+    }
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
+
+export function compareCanonicalUrls(
+  googleCanonical,
+  userCanonical,
+  expectedCanonical
+) {
+  const google = normalizeCanonicalUrl(googleCanonical);
+  const user = normalizeCanonicalUrl(userCanonical);
+  const expected = normalizeCanonicalUrl(expectedCanonical);
+  const googleMatchesExpected = google && expected ? google === expected : null;
+  const userMatchesExpected = user && expected ? user === expected : null;
+
+  return {
+    canonicalAgreement: google && user ? google === user : null,
+    googleMatchesExpected,
+    userMatchesExpected,
+    canonicalMatches:
+      googleMatchesExpected === true && userMatchesExpected === true
+  };
+}
+
 function requestReason(error) {
   return error instanceof MonitorError ? error.reason : "request_failed";
 }
@@ -295,6 +329,11 @@ function sanitizeInspection(response, canary) {
   }
   const googleCanonical = safeText(result.googleCanonical, 500);
   const userCanonical = safeText(result.userCanonical, 500);
+  const canonicalComparison = compareCanonicalUrls(
+    googleCanonical,
+    userCanonical,
+    canary.expectedCanonical ?? canary.url
+  );
 
   return {
     label: canary.label,
@@ -305,10 +344,7 @@ function sanitizeInspection(response, canary) {
     pageFetchState: safeText(result.pageFetchState, 40),
     robotsTxtState: safeText(result.robotsTxtState, 40),
     lastCrawlTime: safeIsoDateTime(result.lastCrawlTime),
-    canonicalMatches:
-      googleCanonical && userCanonical
-        ? googleCanonical === userCanonical
-        : null
+    ...canonicalComparison
   };
 }
 
@@ -701,7 +737,10 @@ function validateConfig(config) {
     !Array.isArray(search.inspectionCanaries) ||
     search.inspectionCanaries.some(
       (canary) =>
-        typeof canary?.label !== "string" || typeof canary?.url !== "string"
+        typeof canary?.label !== "string" ||
+        typeof canary?.url !== "string" ||
+        (canary.expectedCanonical !== undefined &&
+          typeof canary.expectedCanonical !== "string")
     ) ||
     !Number.isInteger(search.windowDays) ||
     search.windowDays < 1 ||
@@ -729,6 +768,9 @@ function validateConfig(config) {
   const publicUrls = [
     search.sitemapUrl,
     ...search.inspectionCanaries.map((canary) => canary.url),
+    ...search.inspectionCanaries.map(
+      (canary) => canary.expectedCanonical ?? canary.url
+    ),
     ...crux.pages.map((page) => page.url)
   ];
   let origin;
@@ -869,12 +911,12 @@ export function renderMarkdown(report) {
   if (Array.isArray(report.searchConsole.inspections)) {
     lines.push(
       "",
-      "| Canary | Availability | Verdict | Fetch | Canonical match |",
-      "| --- | --- | --- | --- | --- |"
+      "| Canary | Availability | Verdict | Fetch | User expected | Google expected | Agreement |",
+      "| --- | --- | --- | --- | --- | --- | --- |"
     );
     for (const item of report.searchConsole.inspections) {
       lines.push(
-        `| ${markdownCell(item.label)} | ${markdownCell(item.availability)} | ${markdownCell(item.verdict ?? item.reason)} | ${markdownCell(item.pageFetchState)} | ${markdownCell(item.canonicalMatches)} |`
+        `| ${markdownCell(item.label)} | ${markdownCell(item.availability)} | ${markdownCell(item.verdict ?? item.reason)} | ${markdownCell(item.pageFetchState)} | ${markdownCell(item.userMatchesExpected)} | ${markdownCell(item.googleMatchesExpected)} | ${markdownCell(item.canonicalAgreement)} |`
       );
     }
   }

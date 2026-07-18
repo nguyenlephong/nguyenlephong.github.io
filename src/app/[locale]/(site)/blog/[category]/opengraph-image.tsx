@@ -10,6 +10,7 @@ export const contentType = OG_CONTENT_TYPE
 export const alt = 'Blog category — Nguyen Le Phong'
 
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   const slugs = listCategorySlugs()
   const params = routing.locales.flatMap((locale) =>
     slugs.map((category) => ({ locale, category })),

@@ -47,6 +47,9 @@ jobs:
       - name: Run source quality gates
         run: npm run check
 
+      - name: Verify concurrent development first hits
+        run: npm run verify:dev-concurrency
+
       - name: Build production static export
         run: npm run build
 

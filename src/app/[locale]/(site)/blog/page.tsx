@@ -8,6 +8,7 @@ import './blog.css'
 type Props = { params: Promise<{ locale: string }> }
 
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   return routing.locales.map((locale) => ({ locale }))
 }
 

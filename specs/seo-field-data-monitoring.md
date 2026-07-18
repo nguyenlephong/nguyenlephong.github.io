@@ -3,7 +3,7 @@
 ## What
 
 A standalone, read-only GitHub Actions workflow observes SEO field data every
-Tuesday and can also be started manually. It writes a sanitized job summary and
+Tuesday and can also be started manually from `main`. It writes a sanitized job summary and
 log entry; it does not commit reports, upload public artifacts, submit URLs, or
 modify the Search Console property. The workflow has no `push` or pull-request
 trigger, so a failed observation cannot gate a deployment or merge.
@@ -82,6 +82,8 @@ References:
   them.
 - URL Inspection referring URLs, discovered sitemaps, raw canonicals, rich
   results, and mobile-usability details are not retained.
+- Each canary compares both the user and Google canonical with its configured
+  expected canonical. Agreement on the same wrong URL is still a failure.
 - CrUX API keys remain request-only and never appear in the sanitized report.
 - A CrUX `404` for a configured target is treated as unavailable field data,
   not as a healthy value. Page-level absence stays `unknown`, which is expected
@@ -91,8 +93,8 @@ References:
 
 ## Acceptance criteria
 
-1. The standalone workflow supports weekly and manual execution with read-only
-   repository permission and no deploy or pull-request trigger.
+1. The standalone workflow supports weekly and `main`-only manual execution
+   with read-only repository permission and no deploy or pull-request trigger.
 2. Missing secrets, invalid permissions, and API failures produce a sanitized
    action-required summary and fail this observation workflow.
 3. Current and prior Search Analytics requests contain no dimensions or

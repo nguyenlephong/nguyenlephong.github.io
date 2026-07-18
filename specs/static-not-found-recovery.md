@@ -52,6 +52,25 @@ behavior are verified by this change.
   SDK host, DNT support, disabled autocapture, disabled session recording, and
   persistence configuration cannot drift. Only one root document is rendered
   for a request, so the bootstrap is not duplicated at runtime.
+- A not-found `before_send` hook recursively removes SDK-added URL, path, and
+  referrer properties, including session/initial and `$set`/`$set_once` data.
+  Explicit analytics calls queue locally until the lazy SDK bootstrap is ready.
+
+## Development boundary
+
+- Production keeps `output: "export"` and emits the same static artifact.
+- Production enables the custom global not-found document; development uses
+  Next.js's built-in 404 so a missing-route compile cannot race valid first hits.
+- `next dev` intentionally omits export mode. Next.js 16 can otherwise race
+  concurrent first-route compilation while updating
+  `.next/dev/prerender-manifest.json`, corrupting the manifest and poisoning the
+  development server with 500 responses.
+- Every route-level `generateStaticParams` returns an empty list in development,
+  so routes render on demand instead of concurrently rewriting Next.js's shared
+  prerender manifest. Production still enumerates the complete static route set.
+- CI starts an isolated, clean-cache development server, requests representative
+  public, Studio, and missing routes concurrently, and requires expected
+  responses plus a parseable prerender manifest before the production build runs.
 
 ## Acceptance criteria
 
@@ -65,3 +84,6 @@ behavior are verified by this change.
 - **AC-404-005:** View and recovery events use the dedicated not-found
   taxonomy without renaming existing events.
 - **AC-404-006:** `404.html` remains part of the offline shared shell.
+- **AC-404-007:** Production remains a static export while clean-cache concurrent
+  first hits in development return valid responses without corrupting the
+  prerender manifest.

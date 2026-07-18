@@ -118,3 +118,28 @@ test("nested localized layouts bind translations to static locale params", () =>
     }
   }
 });
+
+test("development renders static params on demand without concurrent manifest writes", () => {
+  const config = readFileSync("next.config.mjs", "utf8");
+  const verifier = readFileSync("scripts/verify-dev-concurrency.mjs", "utf8");
+  const staticParamEntries = walk(localeRoot).filter((path) =>
+    /export function generateStaticParams/.test(readFileSync(path, "utf8"))
+  );
+
+  assert.match(config, /output: isDevelopment \? undefined : ["']export["']/);
+  assert.match(config, /globalNotFound: !isDevelopment/);
+  assert.ok(staticParamEntries.length > 0);
+  for (const entry of staticParamEntries) {
+    const source = readFileSync(entry, "utf8");
+    assert.match(
+      source,
+      /generateStaticParams\(\) \{\s+if \(process\.env\.NODE_ENV === ["']development["']\) return \[\]/
+    );
+    assert.doesNotMatch(source, /dynamicParams\s*=\s*false/);
+  }
+
+  assert.match(verifier, /Promise\.all/);
+  assert.match(verifier, /\["\/__dev-concurrency-missing__", 404\]/);
+  assert.match(verifier, /prerender-manifest\.json/);
+  assert.match(verifier, /JSON\.parse/);
+});

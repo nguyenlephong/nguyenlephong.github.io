@@ -7,15 +7,22 @@ const { version: appVersion } = JSON.parse(
 )
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  // The production build remains a pure static export. Keeping export mode on
+  // during `next dev` makes concurrent first-route compilation race while
+  // updating prerender-manifest.json in Next 16.
+  output: isDevelopment ? undefined : "export",
   turbopack: {},
   // Tree-shake icon + animation libraries with deep barrel exports so we
   // only ship the few we actually use. Saves tens of KB and reduces TBT.
   experimental: {
-    globalNotFound: true,
+    // The custom document is required by the exported production artifact.
+    // Development uses Next's built-in 404 so a concurrent missing-route
+    // compile cannot contend with valid first-route compilation.
+    globalNotFound: !isDevelopment,
     optimizePackageImports: [
       "react-icons",
       "react-icons/lu",

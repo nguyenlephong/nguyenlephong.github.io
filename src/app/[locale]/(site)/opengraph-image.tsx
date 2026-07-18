@@ -10,6 +10,7 @@ export const contentType = OG_CONTENT_TYPE
 export const dynamic = 'force-static'
 
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   return routing.locales.map((locale) => ({ locale }))
 }
 

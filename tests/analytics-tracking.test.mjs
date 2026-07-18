@@ -1,6 +1,19 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import ts from "typescript";
+
+async function importTypeScript(source) {
+  const output = ts.transpileModule(source, {
+    compilerOptions: {
+      module: ts.ModuleKind.ESNext,
+      target: ts.ScriptTarget.ES2022
+    }
+  }).outputText;
+  return import(
+    `data:text/javascript;base64,${Buffer.from(output).toString("base64")}`
+  );
+}
 
 test("posthog initialization uses the current sdk host contract", async () => {
   const [layout, bootstrap] = await Promise.all([
@@ -16,7 +29,54 @@ test("posthog initialization uses the current sdk host contract", async () => {
   assert.match(bootstrap, /autocapture:\s*false/);
   assert.match(bootstrap, /disable_session_recording:\s*true/);
   assert.match(bootstrap, /respect_dnt:\s*true/);
+  assert.match(bootstrap, /before_send:/);
+  assert.match(bootstrap, /normalized\.endsWith\('_url'\)/);
   assert.doesNotMatch(bootstrap, /api_host:'https:\/\/app\.posthog\.com'/);
+});
+
+test("analytics queues events before the lazy PostHog bootstrap", async () => {
+  const analyticsSource = await readFile("src/lib/analytics.ts", "utf8");
+  const originalWindow = Object.getOwnPropertyDescriptor(globalThis, "window");
+  const originalNavigator = Object.getOwnPropertyDescriptor(
+    globalThis,
+    "navigator"
+  );
+
+  Object.defineProperty(globalThis, "window", {
+    configurable: true,
+    value: {
+      location: { pathname: "/en/blog", search: "?page=2" }
+    }
+  });
+  Object.defineProperty(globalThis, "navigator", {
+    configurable: true,
+    value: { doNotTrack: "0" }
+  });
+
+  try {
+    const analytics = await importTypeScript(analyticsSource);
+    analytics.registerPageContext({ page_type: "blog" });
+    analytics.track("blog_view", { section: "index" });
+
+    assert.equal(Array.isArray(window.posthog), true);
+    assert.deepEqual(window.posthog[0], ["register", { page_type: "blog" }]);
+    assert.equal(window.posthog[1][0], "capture");
+    assert.equal(window.posthog[1][1], "blog_view");
+    assert.equal(window.posthog[1][2].path, "/en/blog?page=2");
+    assert.equal(window.posthog[1][2].pathname, "/en/blog");
+    assert.equal(window.posthog[1][2].section, "index");
+  } finally {
+    if (originalWindow) {
+      Object.defineProperty(globalThis, "window", originalWindow);
+    } else {
+      delete globalThis.window;
+    }
+    if (originalNavigator) {
+      Object.defineProperty(globalThis, "navigator", originalNavigator);
+    } else {
+      delete globalThis.navigator;
+    }
+  }
 });
 
 test("public content surfaces have explicit posthog page and interaction events", async () => {
@@ -107,11 +167,17 @@ test("public content surfaces have explicit posthog page and interaction events"
   assert.match(blogIndex, /BlogCollectionPage/);
   assert.match(blogCollection, /page="blog"/);
   assert.match(blogCollection, /eventName="blog_view"/);
-  assert.match(blogCategory, /PageTracker page="blog_category" eventName="blog_category_view"/);
+  assert.match(
+    blogCategory,
+    /PageTracker page="blog_category" eventName="blog_category_view"/
+  );
   assert.match(notesIndex, /NotesCollectionPage/);
   assert.match(notesCollection, /page="notes"/);
   assert.match(notesCollection, /eventName="notes_view"/);
-  assert.match(offlinePage, /PageTracker page="offline" eventName="offline_view"/);
+  assert.match(
+    offlinePage,
+    /PageTracker page="offline" eventName="offline_view"/
+  );
 
   assert.match(blogArticle, /surface="blog"/);
   assert.match(noteArticle, /surface="notes"/);
@@ -180,8 +246,14 @@ test("studio analytics and agent rules cover new workspace interactions", async 
     assert.match(adminShell, new RegExp(`"${eventName}"`));
   }
 
-  assert.match(adminShell, /onActivate\(subItem\.routeId \?\? DEFAULT_ROUTE, "sidebar"\)/);
-  assert.match(adminShell, /onActivate\(item\.routeId \?\? DEFAULT_ROUTE, "sidebar"\)/);
+  assert.match(
+    adminShell,
+    /onActivate\(subItem\.routeId \?\? DEFAULT_ROUTE, "sidebar"\)/
+  );
+  assert.match(
+    adminShell,
+    /onActivate\(item\.routeId \?\? DEFAULT_ROUTE, "sidebar"\)/
+  );
   assert.match(adminShell, /onActivate\(route\.id, "command"\)/);
   assert.match(adminShell, /source:\s*"route_actions"/);
   assert.match(adminShell, /source:\s*"sidebar_profile_grid"/);

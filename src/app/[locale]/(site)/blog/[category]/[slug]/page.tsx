@@ -38,9 +38,8 @@ type Props = {
   params: Promise<{ locale: string; category: string; slug: string }>
 }
 
-export const dynamicParams = false
-
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   return listBlogPostParams()
 }
 

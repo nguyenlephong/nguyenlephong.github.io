@@ -99,8 +99,10 @@ async function assertRawArtifact() {
   assert.doesNotMatch(html, /<link[^>]+hreflang=/i);
   assert.match(html, /capture_pageview: false/);
   assert.match(html, /capture_pageleave: false/);
+  assert.match(html, /before_send:/);
   assert.match(localeHtml, /capture_pageview: true/);
   assert.match(localeHtml, /capture_pageleave: true/);
+  assert.doesNotMatch(localeHtml, /before_send:/);
 }
 
 async function verifyHydratedCase(page, origin, testCase) {
@@ -205,6 +207,17 @@ async function verifyHydratedCase(page, origin, testCase) {
     assert.equal("path" in event.props, false);
     assert.equal("pathname" in event.props, false);
     assert.equal("referrer" in event.props, false);
+    const serializedProperties = JSON.stringify(event.props);
+    for (const sdkLocationKey of [
+      "$current_url",
+      "$pathname",
+      "$session_entry_url",
+      "$session_entry_pathname",
+      "$initial_current_url",
+      "$referrer"
+    ]) {
+      assert.equal(serializedProperties.includes(sdkLocationKey), false);
+    }
   }
   const serializedAudit = JSON.stringify(posthogAudit);
   for (const sensitiveValue of testCase.sensitiveValues ?? []) {
@@ -228,16 +241,59 @@ async function verifyBrowserBehavior(origin) {
     window.__posthogAudit = {
       inits: [],
       events: [],
-      registrations: []
+      registrations: [],
+      pending: []
     };
     window.__notFoundEvents = window.__posthogAudit.events;
+
+    const emit = (event, props = {}) => {
+      const options = window.__posthogAudit.inits.at(-1)?.options;
+      if (!options) {
+        window.__posthogAudit.pending.push({ event, props });
+        return;
+      }
+
+      let captureResult = {
+        event,
+        properties: {
+          ...props,
+          $current_url: window.location.href,
+          $pathname: window.location.pathname,
+          $session_entry_url: window.location.href,
+          $session_entry_pathname: window.location.pathname,
+          $referrer: document.referrer,
+          $initial_current_url: window.location.href,
+          $set: {
+            $initial_current_url: window.location.href,
+            $initial_referrer: document.referrer
+          },
+          $set_once: {
+            $session_entry_url: window.location.href,
+            $session_entry_pathname: window.location.pathname
+          }
+        }
+      };
+      if (typeof options.before_send === "function") {
+        captureResult = options.before_send(captureResult);
+      }
+      if (captureResult) {
+        window.__posthogAudit.events.push({
+          event: captureResult.event,
+          props: captureResult.properties
+        });
+      }
+    };
+
     window.posthog = {
       __SV: 1,
       init(projectKey, options) {
         window.__posthogAudit.inits.push({ projectKey, options });
+        for (const pending of window.__posthogAudit.pending.splice(0)) {
+          emit(pending.event, pending.props);
+        }
       },
       capture(event, props = {}) {
-        window.__posthogAudit.events.push({ event, props });
+        emit(event, props);
       },
       register(props) {
         window.__posthogAudit.registrations.push(props);
