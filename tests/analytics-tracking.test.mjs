@@ -3,16 +3,20 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 test("posthog initialization uses the current sdk host contract", async () => {
-  const layout = await readFile("src/app/[locale]/layout.tsx", "utf8");
+  const [layout, bootstrap] = await Promise.all([
+    readFile("src/app/[locale]/layout.tsx", "utf8"),
+    readFile("src/components/analytics/PostHogBootstrap.tsx", "utf8")
+  ]);
 
   assert.match(layout, /https:\/\/us\.i\.posthog\.com/);
   assert.match(layout, /https:\/\/us-assets\.i\.posthog\.com/);
-  assert.match(layout, /defaults:'2026-01-30'/);
-  assert.match(layout, /crossOrigin="anonymous"/);
-  assert.match(layout, /autocapture:\s*false/);
-  assert.match(layout, /disable_session_recording:\s*true/);
-  assert.match(layout, /respect_dnt:\s*true/);
-  assert.doesNotMatch(layout, /api_host:'https:\/\/app\.posthog\.com'/);
+  assert.match(layout, /<PostHogBootstrap locale=\{locale\} \/>/);
+  assert.match(bootstrap, /defaults:'2026-01-30'/);
+  assert.match(bootstrap, /crossOrigin="anonymous"/);
+  assert.match(bootstrap, /autocapture:\s*false/);
+  assert.match(bootstrap, /disable_session_recording:\s*true/);
+  assert.match(bootstrap, /respect_dnt:\s*true/);
+  assert.doesNotMatch(bootstrap, /api_host:'https:\/\/app\.posthog\.com'/);
 });
 
 test("public content surfaces have explicit posthog page and interaction events", async () => {

@@ -1,17 +1,45 @@
-'use client'
+"use client";
 
-import { useReportWebVitals } from 'next/web-vitals'
-import { track } from '@/lib/analytics'
+import { useCallback, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import { useReportWebVitals } from "next/web-vitals";
+import { track } from "@/lib/analytics";
+import type { WebVitalAnalyticsPayload } from "@/lib/analytics";
+import { resolveWebVitalSurface } from "./web-vitals-context";
 
-export default function WebVitalsReporter() {
-  useReportWebVitals((metric) => {
-    track('web_vital', {
+type ReportWebVitalsCallback = Parameters<typeof useReportWebVitals>[0];
+
+type WebVitalsReporterProps = {
+  locale: string;
+};
+
+export default function WebVitalsReporter({ locale }: WebVitalsReporterProps) {
+  const pathname = usePathname();
+  const contextRef = useRef({ locale, pathname });
+
+  useEffect(() => {
+    contextRef.current = { locale, pathname };
+  }, [locale, pathname]);
+
+  const reportWebVitals = useCallback<ReportWebVitalsCallback>((metric) => {
+    const context = contextRef.current;
+    const path = window.location.pathname + window.location.search;
+
+    const payload = {
       name: metric.name,
-      value: Math.round(metric.value),
-      rating: (metric as { rating?: string }).rating,
+      value: metric.value,
+      delta: metric.delta,
+      rating: metric.rating,
       id: metric.id,
-      navigation_type: (metric as { navigationType?: string }).navigationType,
-    })
-  })
-  return null
+      navigation_type: metric.navigationType,
+      path,
+      surface: resolveWebVitalSurface(context.pathname),
+      locale: context.locale
+    } satisfies WebVitalAnalyticsPayload;
+
+    track("web_vital", payload);
+  }, []);
+
+  useReportWebVitals(reportWebVitals);
+  return null;
 }

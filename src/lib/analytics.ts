@@ -97,6 +97,9 @@ export type AnalyticsEvent =
   | 'offline_mode_ready'
   | 'offline_status_change'
   | 'offline_banner_dismiss'
+  // Not found recovery
+  | 'not_found_view'
+  | 'not_found_recovery_click'
   // Studio
   | 'studio_view'
   | 'studio_route_open'
@@ -128,9 +131,23 @@ export type AnalyticsEvent =
   // Outbound
   | 'outbound_click'
 
+export type WebVitalAnalyticsPayload = {
+  name: string
+  value: number
+  delta: number
+  rating: string
+  id: string
+  navigation_type: string
+  path: string
+  surface: 'site' | 'studio'
+  locale: string
+}
+
 export interface TrackOptions {
   /** When true, posthog will flush immediately (used for outbound nav). */
   beacon?: boolean
+  /** Omit the browser URL for surfaces where the requested path may contain secrets. */
+  omitLocation?: boolean
 }
 
 function safePath(): string {
@@ -157,8 +174,12 @@ export function track(
   try {
     const payload: Record<string, unknown> = {
       ts: Date.now(),
-      path: safePath(),
-      pathname: window.location.pathname,
+      ...(options?.omitLocation
+        ? {}
+        : {
+            path: safePath(),
+            pathname: window.location.pathname,
+          }),
       ...props,
     }
     if (options?.beacon) payload['$set_once'] = { last_outbound_ts: Date.now() }

@@ -77,7 +77,6 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
     "RouteProgressBar",
     "OfflineNavigationCapture",
     "OfflineStatusBanner",
-    "WebVitalsReporter",
     "BlogReaderTools",
     "ThemeSync",
   ];
@@ -88,7 +87,10 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
     assert.doesNotMatch(studioPage, new RegExp(`\\b${component}\\b`));
   }
 
-  assert.match(rootLayout, /<NextIntlClientProvider>\{children\}<\/NextIntlClientProvider>/);
+  assert.match(rootLayout, /<WebVitalsReporter locale=\{locale\} \/>/);
+  assert.doesNotMatch(siteLayout, /\bWebVitalsReporter\b/);
+  assert.doesNotMatch(studioPage, /\bWebVitalsReporter\b/);
+  assert.match(rootLayout, /<NextIntlClientProvider>[\s\S]*\{children\}[\s\S]*<\/NextIntlClientProvider>/);
   assert.doesNotMatch(studioPage, /\.app-nav|\.app-footer|\.blog-reader-tools/);
 });
 

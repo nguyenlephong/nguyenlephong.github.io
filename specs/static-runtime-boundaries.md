@@ -14,13 +14,13 @@ route group to give public pages and Studio different runtime boundaries.
 
 - `src/app/[locale]/layout.tsx` remains the locale document boundary. It owns
   locale validation, static locale parameters, shared metadata, the
-  internationalization provider, and global analytics scripts.
+  internationalization provider, global analytics scripts, and one shared Web
+  Vitals reporter for both public pages and Studio.
 - All localized routes except Studio live under
   `src/app/[locale]/(site)`. Route groups are omitted from generated URLs.
 - `src/app/[locale]/(site)/layout.tsx` owns public-only chrome and runtime:
   theme and reading-preference scripts, motion, route progress, offline
-  navigation and status, Web Vitals reporting, header, footer, and reader
-  tools.
+  navigation and status, header, footer, and reader tools.
 - Studio remains at `src/app/[locale]/studio`, outside the public route group.
   It must not render, hydrate, or hide public-only chrome.
 - Canonicals, `hreflang`, static parameters, metadata routes, analytics event
@@ -58,15 +58,17 @@ existing IDs must not be renamed or renumbered.
   duplicate URL paths after route-group segments are removed.
 - **AC-SRB-003:** The locale root layout retains locale validation, static
   locale parameters, metadata, internationalization, and global analytics.
-- **AC-SRB-004:** Header, footer, motion, route progress, offline runtime, Web
-  Vitals reporting, and reader tools are mounted only by the public-site
-  layout.
+- **AC-SRB-004:** Header, footer, motion, route progress, offline runtime, and
+  reader tools are mounted only by the public-site layout.
 - **AC-SRB-005:** Studio is outside `(site)` and neither renders nor hides
   public-site chrome through CSS selectors.
 - **AC-SRB-006:** Public pages preserve their canonical paths, metadata,
   static parameters, localization, and analytics wiring.
 - **AC-SRB-007:** Source-contract tests follow the new route-group paths and
   enforce the public/Studio runtime boundary.
+- **AC-SRB-008:** The locale root mounts exactly one Web Vitals reporter with
+  locale and route context. Public routes and Studio share this reporter
+  without pulling public-only chrome into Studio.
 
 ## Verification
 
