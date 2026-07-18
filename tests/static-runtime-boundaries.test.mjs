@@ -77,7 +77,6 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
     "RouteProgressBar",
     "OfflineNavigationCapture",
     "OfflineStatusBanner",
-    "WebVitalsReporter",
     "BlogReaderTools",
     "ThemeSync",
   ];
@@ -88,7 +87,10 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
     assert.doesNotMatch(studioPage, new RegExp(`\\b${component}\\b`));
   }
 
-  assert.match(rootLayout, /<NextIntlClientProvider>\{children\}<\/NextIntlClientProvider>/);
+  assert.match(rootLayout, /<WebVitalsReporter locale=\{locale\} \/>/);
+  assert.doesNotMatch(siteLayout, /\bWebVitalsReporter\b/);
+  assert.doesNotMatch(studioPage, /\bWebVitalsReporter\b/);
+  assert.match(rootLayout, /<NextIntlClientProvider>[\s\S]*\{children\}[\s\S]*<\/NextIntlClientProvider>/);
   assert.doesNotMatch(studioPage, /\.app-nav|\.app-footer|\.blog-reader-tools/);
 });
 
@@ -115,4 +117,29 @@ test("nested localized layouts bind translations to static locale params", () =>
       assert.match(call, /\bnamespace\b/);
     }
   }
+});
+
+test("development renders static params on demand without concurrent manifest writes", () => {
+  const config = readFileSync("next.config.mjs", "utf8");
+  const verifier = readFileSync("scripts/verify-dev-concurrency.mjs", "utf8");
+  const staticParamEntries = walk(localeRoot).filter((path) =>
+    /export function generateStaticParams/.test(readFileSync(path, "utf8"))
+  );
+
+  assert.match(config, /output: isDevelopment \? undefined : ["']export["']/);
+  assert.match(config, /globalNotFound: !isDevelopment/);
+  assert.ok(staticParamEntries.length > 0);
+  for (const entry of staticParamEntries) {
+    const source = readFileSync(entry, "utf8");
+    assert.match(
+      source,
+      /generateStaticParams\(\) \{\s+if \(process\.env\.NODE_ENV === ["']development["']\) return \[\]/
+    );
+    assert.doesNotMatch(source, /dynamicParams\s*=\s*false/);
+  }
+
+  assert.match(verifier, /Promise\.all/);
+  assert.match(verifier, /\["\/__dev-concurrency-missing__", 404\]/);
+  assert.match(verifier, /prerender-manifest\.json/);
+  assert.match(verifier, /JSON\.parse/);
 });

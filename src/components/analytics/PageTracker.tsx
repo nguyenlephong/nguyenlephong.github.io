@@ -13,12 +13,17 @@ export type PageType =
   | 'blog_category'
   | 'notes'
   | 'offline'
+  | 'not_found'
   | 'home_alt'
 
 interface PageTrackerProps {
   page: PageType
   /** Optional section grouping that rides along every event on this page. */
   section?: string
+  /** Stable, surface-specific context included with the initial page event. */
+  context?: Readonly<Record<string, unknown>>
+  /** Prevent potentially sensitive fallback URLs and referrers from being captured. */
+  omitLocation?: boolean
   /** Override the page_view event name (default: `page_view`). */
   eventName?:
     | 'page_view'
@@ -31,11 +36,18 @@ interface PageTrackerProps {
     | 'blog_category_view'
     | 'notes_view'
     | 'offline_view'
+    | 'not_found_view'
 }
 
 const SCROLL_BUCKETS = [25, 50, 75, 100] as const
 
-export default function PageTracker({ page, section, eventName = 'page_view' }: PageTrackerProps) {
+export default function PageTracker({
+  page,
+  section,
+  context,
+  omitLocation = false,
+  eventName = 'page_view',
+}: PageTrackerProps) {
   const startedAtRef = useRef<number>(0)
   const visibleMsRef = useRef<number>(0)
   const lastVisibleAtRef = useRef<number>(0)
@@ -49,18 +61,29 @@ export default function PageTracker({ page, section, eventName = 'page_view' }: 
     visibleMsRef.current = 0
     reportedRef.current = new Set()
     finalReportedRef.current = false
+    const trackOptions = omitLocation ? { omitLocation: true } : undefined
 
     registerPageContext({
+      ...context,
       page_type: page,
       page_section: section ?? null,
     })
 
-    track(eventName, {
-      page_type: page,
-      referrer: typeof document !== 'undefined' ? document.referrer || null : null,
-      screen_w: typeof window !== 'undefined' ? window.innerWidth : null,
-      screen_h: typeof window !== 'undefined' ? window.innerHeight : null,
-    })
+    track(
+      eventName,
+      {
+        ...context,
+        page_type: page,
+        ...(omitLocation
+          ? {}
+          : {
+              referrer: typeof document !== 'undefined' ? document.referrer || null : null,
+              screen_w: typeof window !== 'undefined' ? window.innerWidth : null,
+              screen_h: typeof window !== 'undefined' ? window.innerHeight : null,
+            }),
+      },
+      trackOptions,
+    )
 
     const onScroll = (): void => {
       const doc = document.documentElement
@@ -70,7 +93,7 @@ export default function PageTracker({ page, section, eventName = 'page_view' }: 
       for (const bucket of SCROLL_BUCKETS) {
         if (pct >= bucket && !reportedRef.current.has(bucket)) {
           reportedRef.current.add(bucket)
-          track('page_scroll_depth', { page_type: page, depth: bucket })
+          track('page_scroll_depth', { page_type: page, depth: bucket }, trackOptions)
         }
       }
     }
@@ -79,14 +102,18 @@ export default function PageTracker({ page, section, eventName = 'page_view' }: 
       const now = Date.now()
       if (document.visibilityState === 'hidden') {
         visibleMsRef.current += now - lastVisibleAtRef.current
-        track('page_visibility_change', {
-          page_type: page,
-          to: 'hidden',
-          visible_ms: visibleMsRef.current,
-        })
+        track(
+          'page_visibility_change',
+          {
+            page_type: page,
+            to: 'hidden',
+            visible_ms: visibleMsRef.current,
+          },
+          trackOptions,
+        )
       } else {
         lastVisibleAtRef.current = now
-        track('page_visibility_change', { page_type: page, to: 'visible' })
+        track('page_visibility_change', { page_type: page, to: 'visible' }, trackOptions)
       }
     }
 
@@ -100,11 +127,15 @@ export default function PageTracker({ page, section, eventName = 'page_view' }: 
         visibleMsRef.current += now - lastVisibleAtRef.current
         lastVisibleAtRef.current = now
       }
-      track('page_time_on_page', {
-        page_type: page,
-        total_ms: now - startedAtRef.current,
-        visible_ms: visibleMsRef.current,
-      })
+      track(
+        'page_time_on_page',
+        {
+          page_type: page,
+          total_ms: now - startedAtRef.current,
+          visible_ms: visibleMsRef.current,
+        },
+        trackOptions,
+      )
     }
 
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -118,7 +149,7 @@ export default function PageTracker({ page, section, eventName = 'page_view' }: 
       window.removeEventListener('pagehide', reportTime)
       window.removeEventListener('beforeunload', reportTime)
     }
-  }, [page, section, eventName])
+  }, [page, section, context, omitLocation, eventName])
 
   return null
 }

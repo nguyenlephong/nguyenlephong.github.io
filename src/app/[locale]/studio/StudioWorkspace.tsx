@@ -8,10 +8,11 @@ import { studioShadowStyles } from "./studio.shadow-styles";
 
 type StudioWorkspaceProps = {
   fallback: ReactNode;
+  heading: ReactNode;
   locale: string;
 };
 
-export default function StudioWorkspace({ fallback, locale }: StudioWorkspaceProps) {
+export default function StudioWorkspace({ fallback, heading, locale }: StudioWorkspaceProps) {
   useEffect(() => {
     document.body.classList.add("studio-app-shell-active");
     return () => document.body.classList.remove("studio-app-shell-active");
@@ -26,6 +27,7 @@ export default function StudioWorkspace({ fallback, locale }: StudioWorkspacePro
       styles={studioShadowStyles}
       label={workspaceLabel}
       fallback={fallback}
+      heading={heading}
     >
       <StudioAdminShell locale={locale} />
     </ShadowIsland>

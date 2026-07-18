@@ -38,6 +38,7 @@ type Props = { params: Promise<{ locale: string; slug: string }> };
 const FALLBACK_TOPIC_COLOR = "#b45309";
 
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === "development") return [];
   return listNoteParams();
 }
 
@@ -285,6 +286,8 @@ export default async function NotePage({ params }: Props) {
   return (
     <main
       className="blog-article blog-article--ocean notes-accent notes-reading"
+      data-content-locales={contentLocales.join(" ")}
+      data-content-locale-fallback="/notes"
       style={{ "--topic-color": topicColor } as React.CSSProperties}
     >
       <script

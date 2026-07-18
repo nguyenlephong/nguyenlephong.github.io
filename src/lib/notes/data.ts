@@ -1,5 +1,5 @@
 import path from "node:path";
-import { routing, type Locale } from "@/i18n/routing";
+import type { Locale } from "@/i18n/routing";
 import {
   byDateDesc,
   overlayByKey,
@@ -143,16 +143,13 @@ export function getTopicReadingContext(
 }
 
 /** (locale, slug) pairs for static generation — one per locale a note serves. */
-export function listNoteParams(): Array<{ locale: string; slug: string }> {
-  const posts = baseIndex().posts;
-  const out: Array<{ locale: string; slug: string }> = [];
-  for (const locale of routing.locales) {
-    const eff = contentLocale(locale);
-    for (const p of posts) {
-      if (noteLocales().includes(eff)) out.push({ locale, slug: p.slug });
-    }
-  }
-  return out;
+export function listNoteParams(): Array<{ locale: Locale; slug: string }> {
+  return baseIndex().posts.flatMap((note) =>
+    (note.locales ?? [note.baseLocale ?? "en"]).map((locale) => ({
+      locale,
+      slug: note.slug
+    }))
+  );
 }
 
 /** Loads a single note, overlaying the Vietnamese body when serving `vi`. */

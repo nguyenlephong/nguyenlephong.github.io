@@ -160,9 +160,20 @@ test('archive routes and explorers keep pagination crawlable and search progress
   ])
 
   for (const route of [blogRoute, notesRoute]) {
-    assert.match(route, /export const dynamicParams = false/)
-    assert.match(route, /generateStaticParams/)
+    assert.match(
+      route,
+      /generateStaticParams\(\) \{\s+if \(process\.env\.NODE_ENV === ["']development["']\) return \[\]/,
+    )
+    assert.doesNotMatch(route, /export const dynamicParams = false/)
     assert.match(route, /parsePageNumber/)
+  }
+
+  for (const route of [blogSearchRoute, notesSearchRoute]) {
+    assert.match(
+      route,
+      /generateStaticParams\(\) \{\s+if \(process\.env\.NODE_ENV === ["']development["']\) return \[\]/,
+    )
+    assert.doesNotMatch(route, /export const dynamicParams = false/)
   }
 
   for (const collection of [blogCollection, notesCollection]) {

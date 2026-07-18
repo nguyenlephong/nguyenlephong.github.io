@@ -12,6 +12,7 @@ import AppsLinkTracker from '@/components/analytics/AppsLinkTracker'
 const seo = PAGE_SEO.apps
 
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   return routing.locales.map((locale) => ({ locale }))
 }
 

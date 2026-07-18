@@ -10,9 +10,8 @@ import '../../blog.css'
 
 type Props = { params: Promise<{ locale: string; page: string }> }
 
-export const dynamicParams = false
-
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   return listBlogArchiveLocales(1).flatMap((locale) =>
     Array.from({ length: Math.max(0, blogPageCount(locale) - 1) }, (_, index) => ({
       locale,

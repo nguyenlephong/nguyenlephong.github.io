@@ -12,6 +12,7 @@ import PageTracker from '@/components/analytics/PageTracker'
 const seo = PAGE_SEO.gallery
 
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   return routing.locales.map((locale) => ({ locale }))
 }
 

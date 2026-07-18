@@ -681,6 +681,13 @@ a {
   gap: 0.75rem;
 }
 
+slot[name="studio-page-heading"] {
+  display: block;
+  flex: 0 1 auto;
+  max-width: clamp(8rem, 24vw, 18rem);
+  overflow: hidden;
+}
+
 .topbar-actions {
   gap: 0.5rem;
 }
@@ -975,7 +982,7 @@ a {
   gap: 1rem;
 }
 
-.route-heading h1 {
+.route-heading h2 {
   margin: 0.25rem 0 0;
   color: var(--foreground);
   font-size: 1.875rem;
@@ -1031,7 +1038,7 @@ a {
 }
 
 .route-panel h2,
-.auth-card h1,
+.auth-card h3,
 .invoice-paper strong,
 .kanban-column h2 {
   margin: 0;
@@ -1141,7 +1148,7 @@ a {
   font-weight: 600;
 }
 
-.welcome-intro h1 {
+.welcome-intro h2 {
   margin: 0.9rem 0 0;
   color: var(--foreground);
   font-size: clamp(2.35rem, 5vw, 4.5rem);
@@ -5445,7 +5452,7 @@ tbody tr:hover {
     min-width: 0;
   }
 
-  .route-heading h1 {
+  .route-heading h2 {
     font-size: 1.375rem;
     line-height: 1.15;
   }

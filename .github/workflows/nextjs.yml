@@ -47,6 +47,9 @@ jobs:
       - name: Run source quality gates
         run: npm run check
 
+      - name: Verify concurrent development first hits
+        run: npm run verify:dev-concurrency
+
       - name: Build production static export
         run: npm run build
 
@@ -58,6 +61,9 @@ jobs:
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
+
+      - name: Verify localized 404 recovery
+        run: npm run verify:not-found
 
       - name: Verify offline browser behavior
         run: npm run verify:offline

@@ -182,6 +182,21 @@ export function getPostContentLocales(slug: string): BlogPostMeta['locales'] {
   return post ? [...post.locales] : []
 }
 
+/** Authored article routes only; untranslated locale paths must not be exported. */
+export function listBlogPostParams(): Array<{
+  locale: Locale
+  category: string
+  slug: string
+}> {
+  return baseIndex().posts.flatMap((post) =>
+    post.locales.map((locale) => ({
+      locale,
+      category: post.category,
+      slug: post.slug,
+    })),
+  )
+}
+
 /** Canonical category slugs — drives static-param generation. */
 export function listCategorySlugs(): string[] {
   return baseIndex().categories.map((c) => c.slug)

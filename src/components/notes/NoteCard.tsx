@@ -1,7 +1,7 @@
 "use client";
 
 import { LuEye } from "react-icons/lu";
-import { Link } from "@/i18n/navigation";
+import IntentPrefetchLink from "@/components/navigation/IntentPrefetchLink";
 import { track } from "@/lib/analytics";
 import { formatCount } from "@/lib/firebase/postStats";
 import type { NoteSearchItem } from "@/lib/content/search-index";
@@ -52,7 +52,7 @@ export default function NoteCard({
       className="blog-card"
       style={{ "--blog-accent": topicColor } as React.CSSProperties}
     >
-      <Link
+      <IntentPrefetchLink
         href={`/notes/${note.slug}`}
         locale={contentLocale}
         className="blog-card__link"
@@ -85,7 +85,7 @@ export default function NoteCard({
             )}
           </div>
         </div>
-      </Link>
+      </IntentPrefetchLink>
     </article>
   );
 }

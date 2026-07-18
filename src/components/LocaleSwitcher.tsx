@@ -5,10 +5,28 @@ import { useRouter, usePathname } from '@/i18n/navigation'
 import { routing, LOCALE_LABELS, type Locale } from '@/i18n/routing'
 import { LuCheck, LuChevronDown } from 'react-icons/lu'
 import { track } from '@/lib/analytics'
+import {
+  localeSwitchPath,
+  type ContentLocaleRoute,
+} from '@/lib/content/locale-navigation'
 
 interface LocaleSwitcherProps {
   placement?: 'up' | 'down'
   compact?: boolean
+}
+
+function readContentLocaleRoute(): ContentLocaleRoute | null {
+  const element = document.querySelector<HTMLElement>('[data-content-locales]')
+  const fallbackPath = element?.dataset['contentLocaleFallback']
+  if (!element || !fallbackPath) return null
+
+  const availableLocales = (element.dataset['contentLocales'] ?? '')
+    .split(/\s+/)
+    .filter((locale): locale is Locale =>
+      routing.locales.includes(locale as Locale),
+    )
+
+  return { availableLocales, fallbackPath }
 }
 
 export default function LocaleSwitcher({
@@ -52,7 +70,10 @@ export default function LocaleSwitcher({
     track('locale_change', { from: currentLocale, to: nextLocale })
     setOpen(false)
     startTransition(() => {
-      router.replace(pathname, { locale: nextLocale })
+      router.replace(
+        localeSwitchPath(pathname, nextLocale, readContentLocaleRoute()),
+        { locale: nextLocale },
+      )
     })
   }
 

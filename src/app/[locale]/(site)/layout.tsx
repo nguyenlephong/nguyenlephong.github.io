@@ -4,7 +4,6 @@ import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import AppFooter from '@/components/AppFooter'
 import AppHeader from '@/components/AppHeader'
-import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
 import BlogReaderTools from '@/components/blog/BlogReaderTools'
 import FontScript from '@/components/font/FontScript'
 import MotionProvider from '@/components/motion/MotionProvider'
@@ -47,7 +46,6 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
         <RouteProgressBar />
         <OfflineNavigationCapture />
         <OfflineStatusBanner />
-        <WebVitalsReporter />
         <AppHeader />
         {children}
         <AppFooter />

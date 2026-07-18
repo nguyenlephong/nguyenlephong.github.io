@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "outputDirectory": "out",
   "siteOrigin": "https://nguyenlephong.github.io",
-  "warnAtPercent": 90,
+  "warnAtPercent": 75,
   "limits": {
-    "totalBytes": 891289600,
-    "fileCount": 27500,
+    "totalBytes": 629145600,
+    "fileCount": 20000,
     "maxHtmlBytes": 440320,
     "maxJavaScriptBytes": 1415578,
     "maxCssBytes": 215040,

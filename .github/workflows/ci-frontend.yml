@@ -133,6 +133,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify concurrent development first hits
+        run: npm run verify:dev-concurrency
+
       # Skip OG-image generation for speed; this still runs the full
       # `next build` and fails on any compile / type / lint error.
       - name: Build (static export, OG skipped)
@@ -146,6 +149,9 @@ jobs:
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
+
+      - name: Verify localized 404 recovery
+        run: npm run verify:not-found
 
       - name: Verify offline browser behavior
         run: npm run verify:offline

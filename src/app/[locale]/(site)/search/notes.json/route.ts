@@ -10,9 +10,8 @@ import { createSearchIndex } from '@/lib/content/search-index.server'
 
 type Context = { params: Promise<{ locale: string }> }
 
-export const dynamicParams = false
-
 export function generateStaticParams() {
+  if (process.env.NODE_ENV === 'development') return []
   return routing.locales.map((locale) => ({ locale }))
 }
 

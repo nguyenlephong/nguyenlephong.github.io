@@ -6,11 +6,12 @@ import { createPortal } from "react-dom";
 type ShadowIslandProps = {
   children: ReactNode;
   fallback?: ReactNode;
+  heading: ReactNode;
   styles: string;
   label?: string;
 };
 
-export function ShadowIsland({ children, fallback = null, styles, label }: ShadowIslandProps) {
+export function ShadowIsland({ children, fallback = null, heading, styles, label }: ShadowIslandProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const [root, setRoot] = useState<ShadowRoot | null>(null);
 
@@ -28,8 +29,10 @@ export function ShadowIsland({ children, fallback = null, styles, label }: Shado
       ref={hostRef}
       aria-label={label}
       data-studio-shadow-host=""
+      data-shadow-ready={root ? "true" : "false"}
       style={{ display: "block", minHeight: "100vh" }}
     >
+      {heading}
       {root
         ? createPortal(
             <>
