@@ -44,7 +44,6 @@
     "d3-force": "3.0.0",
     "d3-selection": "3.0.0",
     "d3-transition": "3.0.1",
-    "dayjs": "1.11.13",
     "firebase": "^12.14.0",
     "framer-motion": "12.9.4",
     "next": "16.2.10",
