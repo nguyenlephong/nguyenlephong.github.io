@@ -1,0 +1,35 @@
+name: Observe SEO field data
+
+on:
+  schedule:
+    - cron: '17 5 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: seo-field-monitoring
+  cancel-in-progress: true
+
+jobs:
+  observe:
+    name: Search Console and CrUX observation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+
+      - name: Collect sanitized field data
+        env:
+          GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON }}
+          CRUX_API_KEY: ${{ secrets.CRUX_API_KEY }}
+        run: node scripts/monitor-seo-field-data.mjs

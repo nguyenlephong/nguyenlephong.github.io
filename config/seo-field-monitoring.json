@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "searchConsole": {
+    "property": "https://nguyenlephong.github.io/",
+    "sitemapUrl": "https://nguyenlephong.github.io/sitemap.xml",
+    "windowDays": 28,
+    "finalDataLagDays": 3,
+    "minimumPriorImpressions": 200,
+    "impressionDropThresholdPercent": 30,
+    "inspectionCanaries": [
+      {
+        "label": "home",
+        "url": "https://nguyenlephong.github.io/en"
+      },
+      {
+        "label": "blog-index",
+        "url": "https://nguyenlephong.github.io/en/blog"
+      },
+      {
+        "label": "studio",
+        "url": "https://nguyenlephong.github.io/en/studio"
+      },
+      {
+        "label": "article",
+        "url": "https://nguyenlephong.github.io/en/blog/architecture/ports-and-adapters"
+      }
+    ]
+  },
+  "crux": {
+    "origin": "https://nguyenlephong.github.io",
+    "formFactor": "PHONE",
+    "collectionPeriodCount": 8,
+    "metrics": [
+      "largest_contentful_paint",
+      "interaction_to_next_paint",
+      "cumulative_layout_shift"
+    ],
+    "pages": [
+      {
+        "label": "home",
+        "url": "https://nguyenlephong.github.io/en"
+      },
+      {
+        "label": "blog-index",
+        "url": "https://nguyenlephong.github.io/en/blog"
+      },
+      {
+        "label": "notes-index",
+        "url": "https://nguyenlephong.github.io/en/notes"
+      },
+      {
+        "label": "studio",
+        "url": "https://nguyenlephong.github.io/en/studio"
+      }
+    ]
+  }
+}
