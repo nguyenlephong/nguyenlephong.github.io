@@ -1,5 +1,4 @@
-import PageTracker from '@/components/analytics/PageTracker'
-import ContentHubClickTracker from '@/components/analytics/ContentHubClickTracker'
+import ContentHubPageTracker from '@/components/analytics/ContentHubPageTracker'
 import { collectionPagePath } from '@/lib/content/pagination'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 
@@ -98,7 +97,7 @@ export default function ContentHubPage({
 
   return (
     <main className={`content-hub content-hub--${kind}`}>
-      <PageTracker
+      <ContentHubPageTracker
         page={kind}
         eventName="content_hub_view"
         section={currentPage === 1 ? 'index' : `page_${currentPage}`}
@@ -110,7 +109,6 @@ export default function ContentHubPage({
           total_pages: totalPages,
         }}
       />
-      <ContentHubClickTracker />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionJsonLd) }}
@@ -121,7 +119,16 @@ export default function ContentHubPage({
       />
 
       <nav className="content-hub__breadcrumb" aria-label="Breadcrumb">
-        <a href={localizedHref(locale, backHref)}>{backLabel}</a>
+        <a
+          href={localizedHref(locale, backHref)}
+          data-content-hub-action="archive"
+          data-content-hub-kind={kind}
+          data-content-hub-id={hubId}
+          data-content-hub-page={currentPage}
+          data-source="content_hub_breadcrumb"
+        >
+          {backLabel}
+        </a>
         <span aria-hidden="true">/</span>
         <span>{title}</span>
       </nav>

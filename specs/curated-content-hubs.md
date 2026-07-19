@@ -200,7 +200,9 @@ the delegated hub tracker emits:
 
 - `content_hub_view` with hub kind, stable hub ID, current page, content
   surface, and total pages;
-- `content_hub_click` from a Blog or Notes root catalog;
+- `content_hub_click` from a Blog or Notes root catalog or a curated article
+  hierarchy link, with a stable source and destination pathname;
+- `content_hub_archive_click` from a hub breadcrumb back to its parent archive;
 - `content_hub_article_click` with stable content slug and global position;
 - `content_hub_page_change` with current and destination page.
 
@@ -255,8 +257,9 @@ Track and the central property sanitizer.
   emit article `dateModified`.
 - **AC-CCH-011:** The 24 corrected Notes authors match between canonical index
   and body, while the one exact unresolved slug remains authorless.
-- **AC-CCH-012:** Hub interactions emit stable hub/page/position context while
-  preserving the existing card and pagination event names.
+- **AC-CCH-012:** Hub interactions emit stable hub/page/position, source, and
+  destination context while preserving the existing card and pagination event
+  names.
 - **AC-CCH-013:** Hub pages remain static-first and do not import Explorer,
   search-index, Firebase, or another runtime content service.
 - **AC-CCH-014:** Nested Blog and Notes hub artifacts stay within existing

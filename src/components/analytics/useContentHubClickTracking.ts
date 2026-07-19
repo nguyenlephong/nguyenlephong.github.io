@@ -10,13 +10,19 @@ function numericData(value: string | undefined): number | undefined {
   return Number(value)
 }
 
+function destinationPath(link: HTMLAnchorElement): string | undefined {
+  if (link.origin !== window.location.origin) return undefined
+  return link.pathname.startsWith('/') ? link.pathname : undefined
+}
+
 /**
- * Delegated tracking keeps every hub link as plain server-rendered HTML while
- * preserving the established card/pagination events alongside the new hub
- * taxonomy.
+ * Attach the delegated hub listener to an existing client boundary so static
+ * links do not require a second serialized client component per route.
  */
-export default function ContentHubClickTracker() {
+export function useContentHubClickTracking(enabled = false): void {
   useEffect(() => {
+    if (!enabled) return
+
     const onClick = (event: MouseEvent): void => {
       const target = event.target
       if (!(target instanceof Element)) return
@@ -34,16 +40,30 @@ export default function ContentHubClickTracker() {
       const destinationPage = numericData(
         link.dataset['contentHubDestinationPage'],
       )
+      const source = link.dataset['source']
+      const destination = destinationPath(link)
       const common = {
         content_hub_kind: kind,
         content_hub_id: hubId,
         content_hub_page: page,
       }
 
-      if (action === 'catalog') {
+      if (action === 'catalog' || action === 'hub') {
+        if (page === undefined || !source || !destination) return
         track('content_hub_click', {
           ...common,
-          source: link.dataset['source'],
+          source,
+          destination,
+        })
+        return
+      }
+
+      if (action === 'archive') {
+        if (page === undefined || !source || !destination) return
+        track('content_hub_archive_click', {
+          ...common,
+          source,
+          destination,
         })
         return
       }
@@ -78,7 +98,5 @@ export default function ContentHubClickTracker() {
 
     document.addEventListener('click', onClick)
     return () => document.removeEventListener('click', onClick)
-  }, [])
-
-  return null
+  }, [enabled])
 }

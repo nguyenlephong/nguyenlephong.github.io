@@ -20,14 +20,34 @@ const CONTENT_HUB_CASES = [
     kind: "blog_series",
     hubId: "foundations",
     surface: "blog",
-    legacyCardEvent: "blog_card_click"
+    legacyCardEvent: "blog_card_click",
+    archiveDestination: "/en/blog"
   },
   {
     path: "/vi/notes/topics/thoughts",
     kind: "notes_topic",
     hubId: "thoughts",
     surface: "notes",
-    legacyCardEvent: "notes_card_click"
+    legacyCardEvent: "notes_card_click",
+    archiveDestination: "/vi/notes"
+  }
+];
+const ARTICLE_HUB_CASES = [
+  {
+    path: "/en/blog/architecture/dependency-direction-in-plain-language",
+    viewEvent: "blog_article_view",
+    kind: "blog_series",
+    hubId: "foundations",
+    destination: "/en/blog/series/foundations",
+    sources: ["blog_article_breadcrumb", "blog_article_series"]
+  },
+  {
+    path: "/vi/notes/a-reading-system",
+    viewEvent: "notes_article_view",
+    kind: "notes_topic",
+    hubId: "thoughts",
+    destination: "/vi/notes/topics/thoughts",
+    sources: ["notes_article_breadcrumb"]
   }
 ];
 
@@ -354,6 +374,16 @@ async function verifyContentHubAnalytics(browser, origin) {
     await installExternalRuntimeStubs(context);
     const page = await context.newPage();
     const results = [];
+    const internalRequests = [];
+    page.on("request", (request) => {
+      const url = new URL(request.url());
+      if (url.origin === origin) {
+        internalRequests.push({
+          pathname: url.pathname,
+          resourceType: request.resourceType()
+        });
+      }
+    });
 
     for (const scenario of CONTENT_HUB_CASES) {
       const response = await page.goto(`${origin}${scenario.path}`, {
@@ -494,14 +524,149 @@ async function verifyContentHubAnalytics(browser, origin) {
         );
       }
 
+      await page.evaluate(() => {
+        window.__contentHubAnalyticsEvents = [];
+      });
+      const archiveLink = page.locator(
+        'a[data-content-hub-action="archive"]'
+      );
+      assert.equal(await archiveLink.count(), 1);
+      await archiveLink.click();
+      await page.waitForFunction(
+        () =>
+          window.__contentHubAnalyticsEvents.filter(
+            ({ event }) => event === "content_hub_archive_click"
+          ).length >= 1
+      );
+      await page.waitForTimeout(50);
+      const archiveEvents = await page.evaluate(() =>
+        window.__contentHubAnalyticsEvents.filter(
+          ({ event }) =>
+            event.startsWith("content_hub_") ||
+            event === "blog_card_click" ||
+            event === "notes_card_click" ||
+            event === "explorer_page_change"
+        )
+      );
+      assert.deepEqual(
+        archiveEvents.map(({ event }) => event),
+        ["content_hub_archive_click"]
+      );
+      assert.deepEqual(
+        {
+          kind: archiveEvents[0].properties.content_hub_kind,
+          hubId: archiveEvents[0].properties.content_hub_id,
+          page: archiveEvents[0].properties.content_hub_page,
+          source: archiveEvents[0].properties.source,
+          destination: archiveEvents[0].properties.destination
+        },
+        {
+          kind: scenario.kind,
+          hubId: scenario.hubId,
+          page: 1,
+          source: "content_hub_breadcrumb",
+          destination: scenario.archiveDestination
+        }
+      );
+
       results.push({
         path: scenario.path,
         cardEvents: cardEvents.length,
-        paginationEvents: paginationEvents.length
+        paginationEvents: paginationEvents.length,
+        archiveEvents: archiveEvents.length
       });
     }
 
-    return results;
+    const articleResults = [];
+    for (const scenario of ARTICLE_HUB_CASES) {
+      internalRequests.length = 0;
+      const response = await page.goto(`${origin}${scenario.path}`, {
+        waitUntil: "domcontentloaded"
+      });
+      assert.equal(response?.status(), 200);
+      await page.waitForFunction(
+        (viewEvent) =>
+          window.__contentHubAnalyticsEvents.some(
+            ({ event }) => event === viewEvent
+          ),
+        scenario.viewEvent
+      );
+      await page.waitForTimeout(100);
+      const eagerHubRequests = internalRequests.filter(
+        ({ pathname, resourceType }) =>
+          (resourceType === "fetch" || resourceType === "document") &&
+          (pathname === scenario.destination ||
+            pathname === `${scenario.destination}.txt` ||
+            pathname.startsWith(`${scenario.destination}/`))
+      );
+      assert.deepEqual(
+        eagerHubRequests,
+        [],
+        `hub destination prefetched before intent: ${scenario.destination}`
+      );
+      await page.evaluate(() => {
+        document.addEventListener("click", (event) => event.preventDefault(), {
+          capture: true
+        });
+        window.__contentHubAnalyticsEvents = [];
+      });
+
+      for (const source of scenario.sources) {
+        const hubLink = page.locator(
+          `a[data-content-hub-action="hub"][data-source="${source}"]`
+        );
+        assert.equal(await hubLink.count(), 1);
+        assert.equal(await hubLink.getAttribute("href"), scenario.destination);
+        await hubLink.click();
+        await page.waitForFunction(
+          () =>
+            window.__contentHubAnalyticsEvents.filter(
+              ({ event }) => event === "content_hub_click"
+            ).length >= 1
+        );
+        await page.waitForTimeout(50);
+        const hubEvents = await page.evaluate(() =>
+          window.__contentHubAnalyticsEvents.filter(
+            ({ event }) =>
+              event.startsWith("content_hub_") ||
+              event === "blog_card_click" ||
+              event === "notes_card_click" ||
+              event === "explorer_page_change"
+          )
+        );
+        assert.deepEqual(
+          hubEvents.map(({ event }) => event),
+          ["content_hub_click"]
+        );
+        assert.deepEqual(
+          {
+            kind: hubEvents[0].properties.content_hub_kind,
+            hubId: hubEvents[0].properties.content_hub_id,
+            page: hubEvents[0].properties.content_hub_page,
+            source: hubEvents[0].properties.source,
+            destination: hubEvents[0].properties.destination
+          },
+          {
+            kind: scenario.kind,
+            hubId: scenario.hubId,
+            page: 1,
+            source,
+            destination: scenario.destination
+          }
+        );
+        articleResults.push({
+          path: scenario.path,
+          source,
+          hubEvents: hubEvents.length,
+          eagerHubRequests: eagerHubRequests.length
+        });
+        await page.evaluate(() => {
+          window.__contentHubAnalyticsEvents = [];
+        });
+      }
+    }
+
+    return { hubPages: results, articleLinks: articleResults };
   } finally {
     await context.close();
   }

@@ -489,6 +489,99 @@ test("public content surfaces have explicit posthog page and interaction events"
   assert.match(offlineBanner, /offline_banner_dismiss/);
 });
 
+test("content hub hierarchy links reuse existing client boundaries without eager prefetch", async () => {
+  const [
+    analytics,
+    trackerHook,
+    contentHubPageTracker,
+    contentHubReadingTracker,
+    hubPage,
+    blogCollection,
+    noteCollection,
+    blogArticle,
+    noteArticle
+  ] = await Promise.all([
+      readFile("src/lib/analytics.ts", "utf8"),
+      readFile(
+        "src/components/analytics/useContentHubClickTracking.ts",
+        "utf8"
+      ),
+      readFile(
+        "src/components/analytics/ContentHubPageTracker.tsx",
+        "utf8"
+      ),
+      readFile("src/components/blog/ContentHubReadingTracker.tsx", "utf8"),
+      readFile("src/components/content/ContentHubPage.tsx", "utf8"),
+      readFile("src/components/blog/BlogCollectionPage.tsx", "utf8"),
+      readFile("src/components/notes/NotesCollectionPage.tsx", "utf8"),
+      readFile(
+        "src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx",
+        "utf8"
+      ),
+      readFile("src/app/[locale]/(site)/notes/[slug]/page.tsx", "utf8")
+    ]);
+
+  assert.match(analytics, /'content_hub_archive_click'/);
+  assert.match(trackerHook, /action === 'catalog' \|\| action === 'hub'/);
+  assert.match(trackerHook, /track\('content_hub_click'/);
+  assert.match(trackerHook, /action === 'archive'/);
+  assert.match(trackerHook, /track\('content_hub_archive_click'/);
+  assert.match(trackerHook, /source,/);
+  assert.match(trackerHook, /destination,/);
+  assert.doesNotMatch(trackerHook, /router\.prefetch|prefetch\(/);
+  assert.match(contentHubPageTracker, /useContentHubClickTracking\(true\)/);
+  assert.match(contentHubPageTracker, /return <PageTracker \{\.\.\.props\} \/>/);
+  assert.match(
+    contentHubReadingTracker,
+    /useContentHubClickTracking\(true\)/
+  );
+  assert.match(
+    contentHubReadingTracker,
+    /return <BlogReadingTracker \{\.\.\.props\} \/>/
+  );
+
+  assert.match(hubPage, /data-content-hub-action="archive"/);
+  assert.match(hubPage, /data-source="content_hub_breadcrumb"/);
+  assert.match(hubPage, /<ContentHubPageTracker/);
+  assert.match(
+    blogCollection,
+    /page === 1 && hasCuratedHubs \?[\s\S]*<ContentHubPageTracker[\s\S]*:[\s\S]*<PageTracker/
+  );
+  assert.match(
+    noteCollection,
+    /page === 1 && hasCuratedHubs \?[\s\S]*<ContentHubPageTracker[\s\S]*:[\s\S]*<PageTracker/
+  );
+
+  assert.match(
+    blogArticle,
+    /seriesMeta && seriesHubLocale \?[\s\S]*<ContentHubReadingTracker[\s\S]*:[\s\S]*<BlogReadingTracker/
+  );
+  assert.equal(
+    (blogArticle.match(/data-content-hub-action="hub"/g) ?? []).length,
+    2
+  );
+  assert.match(blogArticle, /data-source="blog_article_breadcrumb"/);
+  assert.match(blogArticle, /data-source="blog_article_series"/);
+  assert.equal((blogArticle.match(/prefetch=\{false\}/g) ?? []).length, 2);
+
+  assert.match(
+    noteArticle,
+    /topicHub \?[\s\S]*<ContentHubReadingTracker[\s\S]*:[\s\S]*<BlogReadingTracker/
+  );
+  assert.equal(
+    (noteArticle.match(/data-content-hub-action="hub"/g) ?? []).length,
+    1
+  );
+  assert.match(noteArticle, /data-source="notes_article_breadcrumb"/);
+  assert.equal((noteArticle.match(/prefetch=\{false\}/g) ?? []).length, 1);
+  assert.doesNotMatch(
+    [hubPage, blogCollection, noteCollection, blogArticle, noteArticle].join(
+      "\n"
+    ),
+    /<ContentHubClickTracker/
+  );
+});
+
 test("studio analytics and agent rules cover new workspace interactions", async () => {
   const [analytics, adminShell, agents, claude, gemini] = await Promise.all([
     readFile("src/lib/analytics.ts", "utf8"),

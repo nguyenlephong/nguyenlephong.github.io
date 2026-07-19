@@ -82,6 +82,7 @@ export type AnalyticsEvent =
   // Curated static content hubs
   | 'content_hub_view'
   | 'content_hub_click'
+  | 'content_hub_archive_click'
   | 'content_hub_article_click'
   | 'content_hub_page_change'
   // Blog articles

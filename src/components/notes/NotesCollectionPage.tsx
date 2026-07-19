@@ -21,8 +21,8 @@ import {
   NOTE_CONTENT_LOCALES,
 } from '@/lib/notes/data'
 import { noteOgImageUrl } from '@/lib/og/static-images'
+import ContentHubPageTracker from '@/components/analytics/ContentHubPageTracker'
 import PageTracker from '@/components/analytics/PageTracker'
-import ContentHubClickTracker from '@/components/analytics/ContentHubClickTracker'
 import NotesExplorer from '@/components/notes/NotesExplorer'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 
@@ -186,12 +186,19 @@ export default async function NotesCollectionPage({
 
   return (
     <main className="notes-archive notes-home">
-      <PageTracker
-        page="notes"
-        eventName="notes_view"
-        section={page === 1 ? 'index' : `index_page_${page}`}
-      />
-      {page === 1 && hasCuratedHubs && <ContentHubClickTracker />}
+      {page === 1 && hasCuratedHubs ? (
+        <ContentHubPageTracker
+          page="notes"
+          eventName="notes_view"
+          section="index"
+        />
+      ) : (
+        <PageTracker
+          page="notes"
+          eventName="notes_view"
+          section={page === 1 ? 'index' : `index_page_${page}`}
+        />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionLd) }}

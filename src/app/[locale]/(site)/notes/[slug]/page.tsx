@@ -30,6 +30,7 @@ import BlogViewCount from "@/components/blog/BlogViewCount";
 import BlogShareDock from "@/components/blog/BlogShareDock";
 import BlogReactions from "@/components/blog/BlogReactions";
 import BlogReadingTracker from "@/components/blog/BlogReadingTracker";
+import ContentHubReadingTracker from "@/components/blog/ContentHubReadingTracker";
 import { EngagementProvider } from "@/components/blog/EngagementProvider";
 import LocalizedArticleFallback from "@/components/content/LocalizedArticleFallback";
 import "../notes.css";
@@ -350,12 +351,21 @@ export default async function NotePage({ params }: Props) {
       )}
 
       <EngagementProvider category="notes" slug={slug}>
-        <BlogReadingTracker
-          category="notes"
-          slug={slug}
-          readingMinutes={note.readingMinutes}
-          surface="notes"
-        />
+        {topicHub ? (
+          <ContentHubReadingTracker
+            category="notes"
+            slug={slug}
+            readingMinutes={note.readingMinutes}
+            surface="notes"
+          />
+        ) : (
+          <BlogReadingTracker
+            category="notes"
+            slug={slug}
+            readingMinutes={note.readingMinutes}
+            surface="notes"
+          />
+        )}
         <div className="blog-article__main">
           <div className="blog-article__reader">
             <BlogShareDock
@@ -377,7 +387,21 @@ export default async function NotePage({ params }: Props) {
                 {topic && (
                   <>
                     <span aria-hidden="true">/</span>
-                    <Link href={topicHref ?? "/notes"}>{topic.label}</Link>
+                    {topicHub ? (
+                      <Link
+                        href={`/notes/topics/${topicHub.topic}`}
+                        prefetch={false}
+                        data-content-hub-action="hub"
+                        data-content-hub-kind="notes_topic"
+                        data-content-hub-id={topicHub.topic}
+                        data-content-hub-page="1"
+                        data-source="notes_article_breadcrumb"
+                      >
+                        {topic.label}
+                      </Link>
+                    ) : (
+                      <Link href={topicHref ?? "/notes"}>{topic.label}</Link>
+                    )}
                   </>
                 )}
                 <span aria-hidden="true">/</span>

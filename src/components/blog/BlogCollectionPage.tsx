@@ -19,8 +19,8 @@ import {
   versionedSearchIndexUrl,
 } from '@/lib/content/search-index.server'
 import { blogPostOgImageUrl } from '@/lib/og/static-images'
+import ContentHubPageTracker from '@/components/analytics/ContentHubPageTracker'
 import PageTracker from '@/components/analytics/PageTracker'
-import ContentHubClickTracker from '@/components/analytics/ContentHubClickTracker'
 import BlogCategoryCard from '@/components/blog/BlogCategoryCard'
 import BlogExplorer from '@/components/blog/BlogExplorer'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
@@ -169,12 +169,19 @@ export default async function BlogCollectionPage({
 
   return (
     <main className="blog-home">
-      <PageTracker
-        page="blog"
-        eventName="blog_view"
-        section={page === 1 ? 'index' : `index_page_${page}`}
-      />
-      {page === 1 && hasCuratedHubs && <ContentHubClickTracker />}
+      {page === 1 && hasCuratedHubs ? (
+        <ContentHubPageTracker
+          page="blog"
+          eventName="blog_view"
+          section="index"
+        />
+      ) : (
+        <PageTracker
+          page="blog"
+          eventName="blog_view"
+          section={page === 1 ? 'index' : `index_page_${page}`}
+        />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(blogLd) }}

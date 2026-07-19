@@ -32,6 +32,7 @@ import { blogPostOgImageUrl } from '@/lib/og/static-images'
 import BlogContent from '@/components/blog/BlogContent'
 import BlogToc from '@/components/blog/BlogToc'
 import BlogReadingTracker from '@/components/blog/BlogReadingTracker'
+import ContentHubReadingTracker from '@/components/blog/ContentHubReadingTracker'
 import { EngagementProvider } from '@/components/blog/EngagementProvider'
 import BlogViewCount from '@/components/blog/BlogViewCount'
 import BlogShareDock from '@/components/blog/BlogShareDock'
@@ -358,12 +359,21 @@ export default async function BlogPostPage({ params }: Props) {
       )}
 
       <EngagementProvider category={category} slug={slug}>
-        <BlogReadingTracker
-          category={category}
-          slug={slug}
-          readingMinutes={post.readingMinutes}
-          surface="blog"
-        />
+        {seriesMeta && seriesHubLocale ? (
+          <ContentHubReadingTracker
+            category={category}
+            slug={slug}
+            readingMinutes={post.readingMinutes}
+            surface="blog"
+          />
+        ) : (
+          <BlogReadingTracker
+            category={category}
+            slug={slug}
+            readingMinutes={post.readingMinutes}
+            surface="blog"
+          />
+        )}
         <div className="blog-article__main">
           <div className="blog-article__reader">
             <BlogShareDock
@@ -387,6 +397,12 @@ export default async function BlogPostPage({ params }: Props) {
                   <Link
                     href={`/blog/series/${seriesMeta.id}`}
                     locale={seriesHubLocale}
+                    prefetch={false}
+                    data-content-hub-action="hub"
+                    data-content-hub-kind="blog_series"
+                    data-content-hub-id={seriesMeta.id}
+                    data-content-hub-page="1"
+                    data-source="blog_article_breadcrumb"
                   >
                     {seriesMeta.title}
                   </Link>
@@ -402,6 +418,12 @@ export default async function BlogPostPage({ params }: Props) {
                       <Link
                         href={`/blog/series/${series.series}`}
                         locale={seriesHubLocale}
+                        prefetch={false}
+                        data-content-hub-action="hub"
+                        data-content-hub-kind="blog_series"
+                        data-content-hub-id={series.series}
+                        data-content-hub-page="1"
+                        data-source="blog_article_series"
                       >
                         {seriesLabel}
                       </Link>
