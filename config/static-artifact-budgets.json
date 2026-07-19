@@ -16,23 +16,23 @@
     "routeInitialJavaScript": {
       "home": {
         "html": "en.html",
-        "maxBrotliBytes": 242688
+        "maxBrotliBytes": 240640
       },
       "blog": {
         "html": "en/blog.html",
-        "maxBrotliBytes": 242688
+        "maxBrotliBytes": 240640
       },
       "notes": {
         "html": "en/notes.html",
-        "maxBrotliBytes": 242688
+        "maxBrotliBytes": 240640
       },
       "studio": {
         "html": "en/studio.html",
-        "maxBrotliBytes": 346112
+        "maxBrotliBytes": 337920
       }
     },
     "rsc": {
-      "warnTotalBytes": 251658240,
+      "warnTotalBytes": 157286400,
       "localizedRouteSamples": [
         { "locale": "en", "surface": "home", "path": "en.txt" },
         { "locale": "en", "surface": "blog", "path": "en/blog.txt" },
@@ -59,12 +59,44 @@
         { "locale": "fr", "surface": "notes", "path": "fr/notes.txt" },
         { "locale": "fr", "surface": "studio", "path": "fr/studio.txt" }
       ],
-      "maxAverageLocalizedRouteBytes": 72704,
+      "maxAverageLocalizedRouteBytes": 47104,
       "surfaceMaxBytes": {
-        "home": 83968,
-        "blog": 84992,
-        "notes": 76800,
-        "studio": 70656
+        "home": 67584,
+        "blog": 50176,
+        "notes": 43008,
+        "studio": 30720
+      }
+    },
+    "clientMessages": {
+      "scopes": {
+        "site": ["Nav", "Footer", "Offline.banner"],
+        "home": ["Hero", "Summary", "Experience", "Projects", "CTA"],
+        "blog": ["Pages.blog"],
+        "notes": ["Pages.notes"],
+        "gallery": ["Pages.gallery"],
+        "thoughts": ["Pages.thoughts"]
+      },
+      "localizedRouteSamples": {
+        "home": {
+          "path": "{locale}.txt",
+          "requiredScopes": ["site", "home"]
+        },
+        "blog": {
+          "path": "{locale}/blog.txt",
+          "requiredScopes": ["site", "blog"]
+        },
+        "notes": {
+          "path": "{locale}/notes.txt",
+          "requiredScopes": ["site", "notes"]
+        },
+        "gallery": {
+          "path": "{locale}/gallery.txt",
+          "requiredScopes": ["site", "gallery"]
+        },
+        "studio": {
+          "path": "{locale}/studio.txt",
+          "requiredScopes": []
+        }
       }
     },
     "studioInitialRuntime": {

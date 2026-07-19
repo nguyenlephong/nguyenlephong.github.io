@@ -117,15 +117,18 @@ It must either be built ahead of time or handled by client-side JavaScript.
 ### Locale and public-site shells
 
 `src/app/[locale]/layout.tsx` is the shared locale document boundary. It
-validates and sets the locale, provides `next-intl`, owns shared locale
-metadata, and loads global analytics.
+validates and sets the server request locale, owns shared locale metadata,
+loads global analytics, and mounts the shared Web Vitals reporter. It does not
+mount `NextIntlClientProvider` or serialize a client message catalog.
 
 `src/app/[locale]/(site)/layout.tsx` is the public-site boundary. It initializes
-theme, font, and reading-background preferences, then mounts the header,
-footer, motion and route progress, offline support, Web Vitals reporting, and
-reader tools. The pathless `(site)` segment does not appear in public URLs.
-Studio remains outside this route group, so it does not render or hydrate the
-public-site shell.
+theme, font, and reading-background preferences, then mounts the scoped site
+message provider, header, footer, motion and route progress, offline support,
+and reader tools. Home, Blog, Notes, and Gallery add a second provider only
+around their message-consuming client subtree. The pathless `(site)` segment
+does not appear in public URLs. Studio remains outside this route group, so it
+does not render or hydrate the public-site shell and receives no client message
+catalog.
 
 ### Route Table
 
@@ -236,6 +239,23 @@ localePrefix: 'always'
 `src/i18n/request.ts` loads default English messages and deep-merges locale
 messages on top. This keeps partially translated locale files usable: missing
 keys fall back to English instead of breaking the page.
+
+Server Components read this merged catalog through `getTranslations` without
+shipping it to the browser. `src/i18n/client-message-scopes.ts` is the
+fail-closed contract for Client Components: the public shell and each
+interactive surface receive only their declared namespace branches. A
+TypeScript-AST inventory scans `.js`, `.jsx`, `.ts`, `.tsx`, `.mjs`, and `.mts`
+modules, maps every provider-dependent `next-intl` hook and locale-navigation
+import to an allowed route scope, and requires `useTranslations` namespaces to
+be static string literals. It reserves raw `NextIntlClientProvider` usage for
+the scoped adapter and `next-intl/navigation` for the canonical navigation
+adapter, rejects direct `use-intl` imports, and locks each
+`ScopedIntlProvider` to its declared route boundary and literal scope. A
+transitive local dependency graph also prevents Studio entry and Client
+Component roots from reaching those provider-dependent runtimes through shared
+modules. Artifact tests compare the complete message structure, including empty
+object and array branches, and reject missing, duplicate, overlapping, or
+undeclared scopes.
 
 Navigation uses `createNavigation(routing)` from `next-intl`, which keeps links
 locale-aware.
@@ -485,7 +505,7 @@ npm run verify:performance-artifact
 | `build:og`   | Targeted OG build helper.                                             |
 | `analyze`    | Writes the official Next.js bundle analysis to `.next/diagnostics/analyze` without starting a server. |
 | `verify:artifact` | Verifies output size, route assets, SEO output, and public-secret guardrails without rebuilding. |
-| `verify:performance-artifact` | Verifies route Brotli, RSC payload, Studio runtime, and third-party connection budgets without rebuilding. |
+| `verify:performance-artifact` | Verifies route Brotli, RSC payload, scoped client messages, Studio runtime, and third-party connection budgets without rebuilding. |
 
 `config/static-artifact-budgets.json` contains the static artifact limits. The
 limits deliberately sit close to the measured export so new growth is visible
@@ -526,23 +546,31 @@ and limits are:
 
 | Surface or payload | 2026-07-18 baseline | Gate |
 |--------------------|---------------------:|-----:|
-| Home initial JavaScript, Brotli | 237,412 bytes | Hard limit: 242,688 bytes |
-| Blog initial JavaScript, Brotli | 237,538 bytes | Hard limit: 242,688 bytes |
-| Notes initial JavaScript, Brotli | 237,450 bytes | Hard limit: 242,688 bytes |
-| Studio initial JavaScript, Brotli | 338,476 bytes | Hard limit: 346,112 bytes |
-| All exported RSC `.txt` payloads | 210,620,976 bytes | Advisory warning: 251,658,240 bytes |
-| Average of 24 localized home/Blog/Notes/Studio RSC samples | 70,612 bytes | Hard limit: 72,704 bytes |
-| Largest localized home RSC sample | 81,086 bytes | Hard limit: 83,968 bytes |
-| Largest localized Blog RSC sample | 81,927 bytes | Hard limit: 84,992 bytes |
-| Largest localized Notes RSC sample | 73,996 bytes | Hard limit: 76,800 bytes |
-| Largest localized Studio RSC sample | 67,542 bytes | Hard limit: 70,656 bytes |
+| Home initial JavaScript, Brotli | 237,656 bytes | Hard limit: 240,640 bytes |
+| Blog initial JavaScript, Brotli | 237,782 bytes | Hard limit: 240,640 bytes |
+| Notes initial JavaScript, Brotli | 237,694 bytes | Hard limit: 240,640 bytes |
+| Studio initial JavaScript, Brotli | 327,860 bytes | Hard limit: 337,920 bytes |
+| All exported RSC `.txt` payloads | 122,768,517 bytes | Advisory warning: 157,286,400 bytes |
+| Average of 24 localized home/Blog/Notes/Studio RSC samples | 40,253 bytes | Hard limit: 47,104 bytes |
+| Largest localized home RSC sample | 62,117 bytes | Hard limit: 67,584 bytes |
+| Largest localized Blog RSC sample | 44,738 bytes | Hard limit: 50,176 bytes |
+| Largest localized Notes RSC sample | 37,936 bytes | Hard limit: 43,008 bytes |
+| Largest localized Studio RSC sample | 25,924 bytes | Hard limit: 30,720 bytes |
 
 The hard limits include only a narrow regression allowance; the aggregate RSC
-warning leaves more room for legitimate content growth. Hard limits must be
-reduced after locale-message scoping, Studio splitting, or other optimizations
-lower the measured baseline. The Studio contract also rejects eagerly loaded
-heavy dashboard, ReactFlow, Recharts, and Firebase markers, and rejects new
-third-party connection origins unless they are explicitly reviewed in
+warning leaves more room for legitimate content growth. Client messages are
+checked on every localized route-level `.txt` payload that has a sibling HTML
+page. The locale root layout injects no global catalog. Every public route
+contains exactly one scoped site provider; only home, Gallery, Blog
+collection/category/pagination, and Notes collection/pagination add their
+surface provider. Article and other static pages keep the site provider only,
+while Studio serializes zero client message providers. Every serialized
+`messages` occurrence is counted, including null, malformed, primitive, or
+empty values, and must match a recognized non-empty scope. Each public Client
+Component boundary receives only its declared namespace allowlist. The Studio
+contract rejects transitive provider-dependent internationalization as well as
+eagerly loaded heavy dashboard, ReactFlow, Recharts, and Firebase markers, and
+rejects new third-party connection origins unless they are explicitly reviewed in
 `config/static-artifact-budgets.json`.
 
 `npm run analyze` uses the official Next.js 16

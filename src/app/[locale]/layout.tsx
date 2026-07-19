@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
-import { hasLocale, NextIntlClientProvider } from 'next-intl'
+import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import Script from 'next/script'
 import { SITE_URL } from '@/app/seo.config'
@@ -180,10 +180,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
       <PostHogBootstrap locale={locale} />
 
       <body suppressHydrationWarning>
-        <NextIntlClientProvider>
-          <WebVitalsReporter locale={locale} />
-          {children}
-        </NextIntlClientProvider>
+        <WebVitalsReporter locale={locale} />
+        {children}
       </body>
     </html>
   )

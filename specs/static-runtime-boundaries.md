@@ -2,10 +2,11 @@
 
 ## Context
 
-The localized root layout currently mounts the public navigation, footer,
-offline runtime, motion runtime, route progress, and reader controls for every
-route. Studio then hides those elements with CSS even though their client code,
-effects, event listeners, and markup still load and hydrate.
+Before the pathless route group was introduced, the localized root layout
+mounted public navigation, footer, offline runtime, motion runtime, route
+progress, and reader controls for every route. Studio then hid those elements
+with CSS even though their client code, effects, event listeners, and markup
+still loaded and hydrated.
 
 This change keeps every public URL stable while using a pathless App Router
 route group to give public pages and Studio different runtime boundaries.
@@ -14,15 +15,27 @@ route group to give public pages and Studio different runtime boundaries.
 
 - `src/app/[locale]/layout.tsx` remains the locale document boundary. It owns
   locale validation, static locale parameters, shared metadata, the
-  internationalization provider, global analytics scripts, and one shared Web
-  Vitals reporter for both public pages and Studio.
+  server request locale, global analytics scripts, and one shared Web Vitals
+  reporter for both public pages and Studio. It does not mount a client
+  internationalization provider or serialize the full message catalog.
 - All localized routes except Studio live under
   `src/app/[locale]/(site)`. Route groups are omitted from generated URLs.
 - `src/app/[locale]/(site)/layout.tsx` owns public-only chrome and runtime:
   theme and reading-preference scripts, motion, route progress, offline
-  navigation and status, header, footer, and reader tools.
+  navigation and status, header, footer, reader tools, and the scoped site
+  client-message provider. Individual surfaces add only their own scoped
+  provider around message-consuming client subtrees.
+- Source inventory permits scoped providers only at the public-site, home,
+  Gallery, Blog collection/category, and Notes collection boundaries. Provider
+  scopes must be direct string literals. Raw provider usage remains inside the
+  scoped adapter, and provider-dependent locale navigation must resolve to a
+  non-empty public scope. Collection providers wrap both populated and empty
+  branches so the route contract does not depend on content cardinality.
 - Studio remains at `src/app/[locale]/studio`, outside the public route group.
-  It must not render, hydrate, or hide public-only chrome.
+  It must not render, hydrate, or hide public-only chrome. A static local
+  dependency graph starts from the Studio page and each Studio Client Component
+  root, then rejects any transitive path to public providers, provider-dependent
+  hooks, or locale-navigation runtime.
 - Canonicals, `hreflang`, static parameters, metadata routes, analytics event
   names, and static export behavior remain unchanged.
 
@@ -60,7 +73,8 @@ existing IDs must not be renamed or renumbered.
 - **AC-SRB-002:** The normalized route-entry inventory has no missing or
   duplicate URL paths after route-group segments are removed.
 - **AC-SRB-003:** The locale root layout retains locale validation, static
-  locale parameters, metadata, internationalization, and global analytics.
+  locale parameters, metadata, server internationalization context, and global
+  analytics without serializing a client message catalog.
 - **AC-SRB-004:** Header, footer, motion, route progress, offline runtime, and
   reader tools are mounted only by the public-site layout.
 - **AC-SRB-005:** Studio is outside `(site)` and neither renders nor hides
@@ -72,6 +86,16 @@ existing IDs must not be renamed or renumbered.
 - **AC-SRB-008:** The locale root mounts exactly one Web Vitals reporter with
   locale and route context. Public routes and Studio share this reporter
   without pulling public-only chrome into Studio.
+- **AC-SRB-009:** Public route artifacts contain only the declared scoped site
+  and surface client-message providers; Studio contains none.
+- **AC-SRB-010:** Every localized RSC route with a sibling HTML page is checked
+  against its derived provider contract, including article and pagination paths;
+  source-level provider placement and locale-navigation imports cannot bypass
+  the public/Studio boundary.
+- **AC-SRB-011:** Empty collection branches retain their declared scoped
+  provider, and Studio cannot reach provider-dependent internationalization
+  through alias or relative imports, value re-exports, literal dynamic imports,
+  or CommonJS loading.
 
 ## Verification
 

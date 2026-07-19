@@ -4,6 +4,7 @@ import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { routing, type Locale } from '@/i18n/routing'
+import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 import { SITE, SITE_URL } from '@/app/seo.config'
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
@@ -115,24 +116,26 @@ export default async function BlogCategoryPage({ params }: Props) {
         <p className="blog-category__description">{cat.description}</p>
       </header>
 
-      {posts.length > 0 ? (
-        <div className="blog-post-list">
-          {posts.map((p) => (
-            <BlogPostCard
-              key={p.slug}
-              post={p}
-              accent={cat.accent}
-              categoryTitle={cat.title}
-              locale={locale}
-              contentLocale={locale}
-              readingLabel={t('readingTime', { minutes: p.readingMinutes })}
-              source="blog_category"
-            />
-          ))}
-        </div>
-      ) : (
-        <p className="blog-empty">{t('empty')}</p>
-      )}
+      <ScopedIntlProvider scope="blog">
+        {posts.length > 0 ? (
+          <div className="blog-post-list">
+            {posts.map((p) => (
+              <BlogPostCard
+                key={p.slug}
+                post={p}
+                accent={cat.accent}
+                categoryTitle={cat.title}
+                locale={locale}
+                contentLocale={locale}
+                readingLabel={t('readingTime', { minutes: p.readingMinutes })}
+                source="blog_category"
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="blog-empty">{t('empty')}</p>
+        )}
+      </ScopedIntlProvider>
     </main>
   )
 }

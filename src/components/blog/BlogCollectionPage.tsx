@@ -24,6 +24,7 @@ import { blogPostOgImageUrl } from '@/lib/og/static-images'
 import PageTracker from '@/components/analytics/PageTracker'
 import BlogCategoryCard from '@/components/blog/BlogCategoryCard'
 import BlogExplorer from '@/components/blog/BlogExplorer'
+import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 
 const POPULAR_TAG_LIMIT = 12
 const seo = PAGE_SEO.blog
@@ -197,32 +198,34 @@ export default async function BlogCollectionPage({
           {t('latestHeading')}
           {page > 1 && <span className="content-page-label"> — {pageLabel}</span>}
         </h2>
-        {pageData.items.length > 0 ? (
-          <BlogExplorer
-            cards={pageData.items.map((post) => {
-              const category = categoryBySlug.get(post.category)
-              return {
-                post,
-                accent: category?.accent ?? 'ocean',
-                categoryTitle: category?.title ?? post.category,
-                readingLabel: t('readingTime', { minutes: post.readingMinutes }),
-              }
-            })}
-            categories={categories.map((category) => ({
-              slug: category.slug,
-              title: category.title,
-              accent: category.accent,
-            }))}
-            popularTags={popularTags(posts)}
-            locale={locale}
-            currentPage={page}
-            totalPages={pageData.totalPages}
-            totalItems={pageData.totalItems}
-            searchIndexUrl={versionedSearchIndexUrl(locale, 'blog', searchRevision)}
-          />
-        ) : (
-          <p className="blog-empty">{t('empty')}</p>
-        )}
+        <ScopedIntlProvider scope="blog">
+          {pageData.items.length > 0 ? (
+            <BlogExplorer
+              cards={pageData.items.map((post) => {
+                const category = categoryBySlug.get(post.category)
+                return {
+                  post,
+                  accent: category?.accent ?? 'ocean',
+                  categoryTitle: category?.title ?? post.category,
+                  readingLabel: t('readingTime', { minutes: post.readingMinutes }),
+                }
+              })}
+              categories={categories.map((category) => ({
+                slug: category.slug,
+                title: category.title,
+                accent: category.accent,
+              }))}
+              popularTags={popularTags(posts)}
+              locale={locale}
+              currentPage={page}
+              totalPages={pageData.totalPages}
+              totalItems={pageData.totalItems}
+              searchIndexUrl={versionedSearchIndexUrl(locale, 'blog', searchRevision)}
+            />
+          ) : (
+            <p className="blog-empty">{t('empty')}</p>
+          )}
+        </ScopedIntlProvider>
       </section>
     </main>
   )

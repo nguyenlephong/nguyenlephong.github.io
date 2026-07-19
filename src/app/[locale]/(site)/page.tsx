@@ -18,6 +18,7 @@ import {
   buildProfilePageSchema,
 } from '@/lib/seo/profile-schema'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
+import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -52,33 +53,35 @@ export default async function MainPage({ params }: Props) {
       />
       <PageViewTracker />
       <PageTracker page="home" eventName="page_view" section="cv_main" />
-      <div className="container">
-        <Hero />
+      <ScopedIntlProvider scope="home">
+        <div className="container">
+          <Hero />
 
-        <Section id="about" eyebrow={t('aboutEyebrow')} title={t('aboutTitle')}>
-          <Summary />
-        </Section>
+          <Section id="about" eyebrow={t('aboutEyebrow')} title={t('aboutTitle')}>
+            <Summary />
+          </Section>
 
-        <Section
-          id="experience"
-          eyebrow={t('experienceEyebrow')}
-          title={t('experienceTitle')}
-        >
-          <Experience data={profileInfo.experience} />
-        </Section>
+          <Section
+            id="experience"
+            eyebrow={t('experienceEyebrow')}
+            title={t('experienceTitle')}
+          >
+            <Experience data={profileInfo.experience} />
+          </Section>
 
-        <Section
-          id="projects"
-          eyebrow={t('projectsEyebrow')}
-          title={t('projectsTitle')}
-        >
-          <Projects data={profileInfo.projects} />
-        </Section>
+          <Section
+            id="projects"
+            eyebrow={t('projectsEyebrow')}
+            title={t('projectsTitle')}
+          >
+            <Projects data={profileInfo.projects} />
+          </Section>
 
-        <div id="contact">
-          <ContactCTA />
+          <div id="contact">
+            <ContactCTA />
+          </div>
         </div>
-      </div>
+      </ScopedIntlProvider>
     </main>
   )
 }

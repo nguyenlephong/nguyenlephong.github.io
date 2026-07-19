@@ -69,6 +69,10 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
   const rootLayout = readFileSync(`${localeRoot}/layout.tsx`, "utf8");
   const siteLayout = readFileSync(`${localeRoot}/(site)/layout.tsx`, "utf8");
   const studioPage = readFileSync(`${localeRoot}/studio/page.tsx`, "utf8");
+  const scopedIntlProvider = readFileSync(
+    "src/i18n/ScopedIntlProvider.tsx",
+    "utf8"
+  );
   const publicRuntime = [
     "AppHeader",
     "AppFooter",
@@ -89,7 +93,20 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
   assert.match(rootLayout, /<WebVitalsReporter locale=\{locale\} \/>/);
   assert.doesNotMatch(siteLayout, /\bWebVitalsReporter\b/);
   assert.doesNotMatch(studioPage, /\bWebVitalsReporter\b/);
-  assert.match(rootLayout, /<NextIntlClientProvider>[\s\S]*\{children\}[\s\S]*<\/NextIntlClientProvider>/);
+  assert.doesNotMatch(rootLayout, /\bNextIntlClientProvider\b/);
+  assert.match(
+    siteLayout,
+    /<ScopedIntlProvider scope="site">[\s\S]*\{children\}[\s\S]*<\/ScopedIntlProvider>/
+  );
+  assert.match(
+    scopedIntlProvider,
+    /const selectedMessages = selectClientMessages\(messages, scope\)/
+  );
+  assert.match(
+    scopedIntlProvider,
+    /<NextIntlClientProvider\s+messages=\{toSerializableClientMessages\(selectedMessages\)\}\s*>/
+  );
+  assert.doesNotMatch(studioPage, /\bScopedIntlProvider\b|\bNextIntlClientProvider\b/);
   assert.doesNotMatch(studioPage, /\.app-nav|\.app-footer|\.blog-reader-tools/);
 });
 

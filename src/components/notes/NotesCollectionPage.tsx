@@ -22,6 +22,7 @@ import {
 import { noteOgImageUrl } from '@/lib/og/static-images'
 import PageTracker from '@/components/analytics/PageTracker'
 import NotesExplorer from '@/components/notes/NotesExplorer'
+import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 
 export const FALLBACK_TOPIC_COLOR = '#b45309'
 const POPULAR_TAG_LIMIT = 12
@@ -209,34 +210,36 @@ export default async function NotesCollectionPage({
         </dl>
       </header>
 
-      {pageData.items.length > 0 ? (
-        <NotesExplorer
-          cards={pageData.items.map((note) => {
-            const topic = note.topic ? topicBySlug.get(note.topic) : undefined
-            return {
-              note,
-              topicLabel: topic?.label ?? note.topic ?? '',
-              topicColor: topic?.color ?? FALLBACK_TOPIC_COLOR,
-              readingLabel: t('readingTime', { minutes: note.readingMinutes }),
-            }
-          })}
-          topics={topics.map((topic) => ({
-            id: topic.id,
-            label: topic.label,
-            color: topic.color,
-          }))}
-          popularTags={popularTags(notes)}
-          locale={locale}
-          archiveLocale={archiveLocale}
-          currentPage={page}
-          totalPages={pageData.totalPages}
-          totalItems={pageData.totalItems}
-          searchIndexUrl={versionedSearchIndexUrl(archiveLocale, 'notes', searchRevision)}
-          fallbackTopicColor={FALLBACK_TOPIC_COLOR}
-        />
-      ) : (
-        <p className="blog-empty">{t('empty')}</p>
-      )}
+      <ScopedIntlProvider scope="notes">
+        {pageData.items.length > 0 ? (
+          <NotesExplorer
+            cards={pageData.items.map((note) => {
+              const topic = note.topic ? topicBySlug.get(note.topic) : undefined
+              return {
+                note,
+                topicLabel: topic?.label ?? note.topic ?? '',
+                topicColor: topic?.color ?? FALLBACK_TOPIC_COLOR,
+                readingLabel: t('readingTime', { minutes: note.readingMinutes }),
+              }
+            })}
+            topics={topics.map((topic) => ({
+              id: topic.id,
+              label: topic.label,
+              color: topic.color,
+            }))}
+            popularTags={popularTags(notes)}
+            locale={locale}
+            archiveLocale={archiveLocale}
+            currentPage={page}
+            totalPages={pageData.totalPages}
+            totalItems={pageData.totalItems}
+            searchIndexUrl={versionedSearchIndexUrl(archiveLocale, 'notes', searchRevision)}
+            fallbackTopicColor={FALLBACK_TOPIC_COLOR}
+          />
+        ) : (
+          <p className="blog-empty">{t('empty')}</p>
+        )}
+      </ScopedIntlProvider>
     </main>
   )
 }

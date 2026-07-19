@@ -6,6 +6,14 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { createArtifactIndex } from "./lib/artifact-index.mjs";
+import {
+  validateClientMessageConfig,
+  verifyClientMessageRoutes
+} from "./lib/client-message-artifact.mjs";
+
+export {
+  expectedClientMessageScopesForLocalizedRoute
+} from "./lib/client-message-artifact.mjs";
 
 const DEFAULT_CONFIG = "config/static-artifact-budgets.json";
 const DEFAULT_OUTPUT_DIRECTORY = "out";
@@ -115,6 +123,7 @@ function validateConfig(config) {
   const performance = config?.performance;
   const routes = performance?.routeInitialJavaScript;
   const rsc = performance?.rsc;
+  const clientMessages = performance?.clientMessages;
   const studio = performance?.studioInitialRuntime;
   const locales = config?.seo?.locales;
   const requiredRouteEntries = Object.entries(
@@ -155,6 +164,7 @@ function validateConfig(config) {
         !Number.isInteger(rsc.surfaceMaxBytes[surface]) ||
         rsc.surfaceMaxBytes[surface] < 1
     ) ||
+    !validateClientMessageConfig(clientMessages) ||
     !Array.isArray(studio?.requiredMarkers) ||
     studio.requiredMarkers.some(
       (marker) => typeof marker !== "string" || marker.length === 0
@@ -377,6 +387,12 @@ export async function verifyPerformanceArtifact({
     })
   );
 
+  const clientMessages = await verifyClientMessageRoutes({
+    index,
+    config: performance.clientMessages,
+    failures
+  });
+
   const studioSource = routeSources.get("studio") ?? "";
   for (const marker of performance.studioInitialRuntime.requiredMarkers) {
     if (!studioSource.includes(marker)) {
@@ -421,6 +437,7 @@ export async function verifyPerformanceArtifact({
       maxAverageLocalizedRouteBytes:
         performance.rsc.maxAverageLocalizedRouteBytes
     },
+    clientMessages,
     studio: {
       thirdPartyConnectionOrigins: studioThirdPartyOrigins,
       requiredInitialMarkers: performance.studioInitialRuntime.requiredMarkers,
@@ -454,6 +471,11 @@ function printReport(report) {
   }
   console.log(
     `[performance] RSC text: ${report.rsc.fileCount.toLocaleString("en-US")} files / ${formatBytes(report.rsc.totalBytes)}; localized sample average ${formatBytes(report.rsc.averageLocalizedRouteBytes)}`
+  );
+  console.log(
+    `[performance] client messages: ${report.clientMessages.routeCount.toLocaleString("en-US")} localized routes / ${report.clientMessages.providerCount.toLocaleString("en-US")} providers; ${Object.entries(report.clientMessages.scopeCounts)
+      .map(([scope, count]) => `${scope}=${count}`)
+      .join(", ")}`
   );
   console.log(
     `[performance] Studio third-party connection origins: ${report.studio.thirdPartyConnectionOrigins.join(", ") || "none"}`

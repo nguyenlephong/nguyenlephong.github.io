@@ -14,6 +14,7 @@ import ReadingBackgroundScript from '@/components/reading/ReadingBackgroundScrip
 import ThemeScript from '@/components/theme/ThemeScript'
 import ThemeSync from '@/components/theme/ThemeSync'
 import { routing } from '@/i18n/routing'
+import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 
 type SiteLayoutProps = {
   children: ReactNode
@@ -37,7 +38,7 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
   }
 
   return (
-    <>
+    <ScopedIntlProvider scope="site">
       <ThemeScript />
       <FontScript />
       <ReadingBackgroundScript />
@@ -51,6 +52,6 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
         <AppFooter />
         <BlogReaderTools labels={readerLabels} />
       </MotionProvider>
-    </>
+    </ScopedIntlProvider>
   )
 }

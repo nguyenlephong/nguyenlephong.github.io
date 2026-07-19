@@ -10,6 +10,7 @@ import GalleryGrid from '@/components/gallery/GalleryGrid'
 import PageTracker from '@/components/analytics/PageTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import { localizedPageIdentity } from '@/lib/seo/locale'
+import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 
 const seo = PAGE_SEO.gallery
 
@@ -92,7 +93,9 @@ export default async function GalleryPage({ params }: Props) {
           </Link>
         </header>
 
-        <GalleryGrid categories={categories} />
+        <ScopedIntlProvider scope="gallery">
+          <GalleryGrid categories={categories} />
+        </ScopedIntlProvider>
       </div>
     </main>
   )
