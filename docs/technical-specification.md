@@ -104,9 +104,9 @@ It must either be built ahead of time or handled by client-side JavaScript.
 | `src/lib/firebase`     | Client-only Firebase initialization and Firestore post engagement access.                   |
 | `src/lib/og`           | OpenGraph image cache and build-target filtering.                                           |
 | `messages`             | Locale message files for UI copy.                                                           |
-| `public/blog-data`     | Canonical blog metadata/posts and locale overrides.                                         |
-| `public/notes-data`    | Canonical notes metadata/posts and Vietnamese overrides.                                    |
-| `public/thoughts-data` | Thought graph/content data used by thought components, currently without an active route.   |
+| `content/blog-data`    | Build-only canonical blog metadata/posts and locale overrides.                              |
+| `content/notes-data`   | Build-only canonical notes metadata/posts and Vietnamese overrides.                         |
+| `content/thoughts-data` | Thought graph/content data used by thought components, currently without an active route.   |
 | `public/og-cache`      | Cached generated OpenGraph PNGs.                                                            |
 | `scripts`              | Build helpers for OG generation, post-build rewriting, version bumping, favicon generation. |
 | `tests`                | Node test-runner tests for schemas, route/UI contracts, privacy rules, and OG targeting.    |
@@ -169,18 +169,18 @@ existing imports across the app.
 
 ### Blog Content
 
-Canonical blog content lives under `public/blog-data`:
+Canonical blog content lives under `content/blog-data`:
 
 ```text
-public/blog-data/_index.json
-public/blog-data/posts/<slug>.json
+content/blog-data/_index.json
+content/blog-data/posts/<slug>.json
 ```
 
 Per-locale overrides live under:
 
 ```text
-public/blog-data/<locale>/_index.json
-public/blog-data/<locale>/posts/<slug>.json
+content/blog-data/<locale>/_index.json
+content/blog-data/<locale>/posts/<slug>.json
 ```
 
 Important behavior:
@@ -192,21 +192,23 @@ Important behavior:
 - Missing translated fields fall back to English instead of creating blank cards
   or missing metadata.
 - Canonical blog index and post files are validated by Zod during build.
+- The source directory is outside `public/`; readers receive generated static
+  routes and `/search/blog.json`, never the raw authoring corpus.
 
 ### Notes Content
 
-Canonical notes content lives under `public/notes-data`:
+Canonical notes content lives under `content/notes-data`:
 
 ```text
-public/notes-data/_index.json
-public/notes-data/posts/<slug>.json
+content/notes-data/_index.json
+content/notes-data/posts/<slug>.json
 ```
 
 Vietnamese overrides live under:
 
 ```text
-public/notes-data/vi/_index.json
-public/notes-data/vi/posts/<slug>.json
+content/notes-data/vi/_index.json
+content/notes-data/vi/posts/<slug>.json
 ```
 
 Important behavior:
@@ -218,6 +220,8 @@ Important behavior:
   visible.
 - Vietnamese-only notes are included in the sitemap only as `/vi/notes/...`.
 - Bilingual notes get a full hreflang cluster.
+- The source directory is outside `public/`; readers receive generated static
+  routes and `/search/notes.json`, never the raw authoring corpus.
 
 ### Trusted HTML Boundary
 
@@ -496,6 +500,7 @@ npm run build:og
 npm run analyze
 npm run verify:artifact
 npm run verify:performance-artifact
+npm run verify:og-publication
 ```
 
 | Command      | Meaning                                                               |
@@ -506,6 +511,19 @@ npm run verify:performance-artifact
 | `analyze`    | Writes the official Next.js bundle analysis to `.next/diagnostics/analyze` without starting a server. |
 | `verify:artifact` | Verifies output size, route assets, SEO output, and public-secret guardrails without rebuilding. |
 | `verify:performance-artifact` | Verifies route Brotli, RSC payload, scoped client messages, Studio runtime, and third-party connection budgets without rebuilding. |
+| `verify:og-publication` | Verifies that every currently published article has its declared managed OG asset. |
+
+Raw authored JSON is a build input, not a deployable API. The artifact verifier
+fails if `blog-data`, `notes-data`, or `thoughts-data` paths, browser references,
+or scheduled/draft article records appear in `out/`.
+
+`scripts/publish-og-assets.mjs` is the only owner of generated article JPEGs in
+`dom-pub/icdn/og/blogs` and `dom-pub/icdn/og/notes`. Stale pruning requires both
+`--prune-stale` and the explicit `--apply-prune` flag. Only current-index slugs
+with unpublished lifecycle state are managed deletion candidates; unknown files
+and extensions are preserved. Each transaction reports the previous `dom-pub`
+HEAD and enforces the contract's count and percentage deletion caps. The tool
+does not commit or push the cross-repository change.
 
 `config/static-artifact-budgets.json` contains the static artifact limits. The
 limits deliberately sit close to the measured export so new growth is visible
@@ -715,18 +733,18 @@ decision to change them:
 
 ### Add a Blog Post
 
-1. Add canonical metadata to `public/blog-data/_index.json`.
-2. Add canonical body to `public/blog-data/posts/<slug>.json`.
+1. Add canonical metadata to `content/blog-data/_index.json`.
+2. Add canonical body to `content/blog-data/posts/<slug>.json`.
 3. Add locale override files only for translated fields that exist.
 4. Run `npm test` to validate schema assumptions.
 5. Run a build or targeted OG build so social images are generated or restored.
 
 ### Add a Note
 
-1. Add metadata to `public/notes-data/_index.json`.
-2. Add canonical body to `public/notes-data/posts/<slug>.json`.
+1. Add metadata to `content/notes-data/_index.json`.
+2. Add canonical body to `content/notes-data/posts/<slug>.json`.
 3. Set `locales` intentionally.
-4. Add Vietnamese override under `public/notes-data/vi` if needed.
+4. Add Vietnamese override under `content/notes-data/vi` if needed.
 5. Check sitemap behavior if the note is Vietnamese-only.
 
 ### Add a New Public Page

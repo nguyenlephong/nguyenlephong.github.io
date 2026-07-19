@@ -6,7 +6,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import {
-  expectedArticleOgPublications,
+  articleOgPublicationInventory,
   loadMediaPublicationContract,
 } from './lib/media-publication-contract.mjs'
 
@@ -14,7 +14,12 @@ const DEFAULT_CONFIG = 'config/static-artifact-budgets.json'
 const DEFAULT_OUTPUT_DIRECTORY = 'out'
 const TOP_RESULT_COUNT = 5
 const DEFAULT_SECRET_SCAN_CONCURRENCY = 8
-const FORBIDDEN_PUBLIC_ROUTE_SEGMENTS = new Set(['heartbeats'])
+const FORBIDDEN_PUBLIC_ROUTE_SEGMENTS = new Set([
+  'heartbeats',
+  'blog-data',
+  'notes-data',
+  'thoughts-data',
+])
 const PUBLIC_TEXT_EXTENSIONS = new Set([
   '.atom',
   '.cjs',
@@ -42,6 +47,16 @@ const PUBLIC_TEXT_EXTENSIONS = new Set([
   '.yaml',
   '.yml',
 ])
+const STATIC_ROUTE_EXTENSION_PATTERN = [...PUBLIC_TEXT_EXTENSIONS]
+  .sort((left, right) => right.length - left.length)
+  .map((extension) => escapeRegExp(extension))
+  .join('|')
+const CONTENT_REFERENCE_TOKEN_PATTERN = new RegExp(
+  `["']slug["']\\s*:\\s*["'](?<rawSlug>[^"']+)["']` +
+    `|/(?:[a-z]{2}/)?blog/[^/\\s"'<>?#]+/(?<blogSlug>[a-z0-9]+(?:-[a-z0-9]+)*)(?:${STATIC_ROUTE_EXTENSION_PATTERN})?(?=$|[/?#"'<>\\s])` +
+    `|/(?:[a-z]{2}/)?notes/(?<notesSlug>[a-z0-9]+(?:-[a-z0-9]+)*)(?:${STATIC_ROUTE_EXTENSION_PATTERN})?(?=$|[/?#"'<>\\s])`,
+  'gi',
+)
 const PRIVATE_QUERY_URL_SCAN_EXTENSIONS = new Set([
   '.htm',
   '.html',
@@ -289,6 +304,73 @@ function inspectForbiddenPublicRouteReferences(
         forbidden +
         '" is present in public artifact content: ' +
         relativePath,
+    )
+  }
+
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function buildUnpublishedContentLookup(unpublishedContent) {
+  const bySlug = new Map()
+  const bySurface = new Map([
+    ['blog', new Map()],
+    ['notes', new Map()],
+  ])
+
+  for (const entry of unpublishedContent) {
+    if (bySlug.has(entry.slug)) {
+      throw new Error(`Unpublished content contains a globally duplicate slug: ${entry.slug}`)
+    }
+    bySlug.set(entry.slug, entry)
+    bySurface.get(entry.surface)?.set(entry.slug, entry)
+  }
+  return { bySlug, bySurface }
+}
+
+function extractPublicContentReferenceTokens(content) {
+  const normalized = normalizePublicRouteReferenceContent(content).replaceAll('\\"', '"')
+  const rawSlugs = new Set()
+  const routeSlugs = new Map([
+    ['blog', new Set()],
+    ['notes', new Set()],
+  ])
+
+  for (const match of normalized.matchAll(CONTENT_REFERENCE_TOKEN_PATTERN)) {
+    if (match.groups.rawSlug) rawSlugs.add(match.groups.rawSlug)
+    else if (match.groups.blogSlug) routeSlugs.get('blog').add(match.groups.blogSlug)
+    else if (match.groups.notesSlug) routeSlugs.get('notes').add(match.groups.notesSlug)
+  }
+  return { rawSlugs, routeSlugs }
+}
+
+function inspectUnpublishedContentReferences(
+  content,
+  relativePath,
+  unpublishedContentLookup,
+  failures,
+  referenceMatches,
+) {
+  const tokens = extractPublicContentReferenceTokens(content)
+  const matched = new Map()
+  for (const slug of tokens.rawSlugs) {
+    const entry = unpublishedContentLookup.bySlug.get(slug)
+    if (entry) matched.set(`${entry.surface}:${entry.slug}`, entry)
+  }
+  for (const [surface, slugs] of tokens.routeSlugs) {
+    const surfaceLookup = unpublishedContentLookup.bySurface.get(surface)
+    for (const slug of slugs) {
+      const entry = surfaceLookup?.get(slug)
+      if (entry) matched.set(`${entry.surface}:${entry.slug}`, entry)
+    }
+  }
+
+  for (const entry of matched.values()) {
+    referenceMatches.push({ path: relativePath, slug: entry.slug, surface: entry.surface })
+    failures.push(
+      `Unpublished ${entry.surface} content is present in the public artifact: ${relativePath} (${entry.slug})`,
     )
   }
 }
@@ -745,17 +827,28 @@ function verifyLocalizedPageIdentityContracts({
 
 async function loadRemoteSocialImageContract(rootDir) {
   const contractPath = path.join(rootDir, 'config/media-publication.json')
-  if (!existsSync(contractPath)) return { baseUrl: null, expectedUrls: new Set() }
+  if (!existsSync(contractPath)) {
+    return { baseUrl: null, expectedUrls: new Set(), unpublishedContent: [] }
+  }
 
   const contract = await loadMediaPublicationContract(rootDir)
-  const expected = await expectedArticleOgPublications({ rootDir, contract })
+  const inventory = await articleOgPublicationInventory({ rootDir, contract })
   const baseUrl = new URL(contract.liveBaseUrl)
   const expectedUrls = new Set(
-    expected.map(({ publicPath }) =>
+    inventory.expected.map(({ publicPath }) =>
       new URL(publicPath.replace(/^\/+/, ''), `${contract.liveBaseUrl}/`).href,
     ),
   )
-  return { baseUrl, expectedUrls }
+  return {
+    baseUrl,
+    expectedUrls,
+    unpublishedContent: inventory.known
+      .filter((entry) => !entry.published)
+      .map(({ slug, surface }) => ({
+        slug,
+        surface,
+      })),
+  }
 }
 
 function isWithinRemotePublication(url, baseUrl) {
@@ -1250,12 +1343,17 @@ export async function verifyStaticArtifact({
   const privateQueryUrlMatches = []
   const forbiddenRouteMatches = []
   const forbiddenRouteReferenceMatches = []
+  const unpublishedContentReferenceMatches = []
   const secretExtensions = new Set([
     ...PUBLIC_TEXT_EXTENSIONS,
     ...(config.additionalSecretScanExtensions ?? config.secretScanExtensions ?? []),
   ])
   const htmlMetadataByPath = new Map()
   const textFiles = []
+  const remotePublication = await loadRemoteSocialImageContract(rootDir)
+  const unpublishedContentLookup = buildUnpublishedContentLookup(
+    remotePublication.unpublishedContent,
+  )
   let totalBytes = 0
 
   for (const absolutePath of files) {
@@ -1294,6 +1392,13 @@ export async function verifyStaticArtifact({
       entry.relativePath,
       failures,
       forbiddenRouteReferenceMatches,
+    )
+    inspectUnpublishedContentReferences(
+      content,
+      entry.relativePath,
+      unpublishedContentLookup,
+      failures,
+      unpublishedContentReferenceMatches,
     )
     if (PRIVATE_QUERY_URL_SCAN_EXTENSIONS.has(entry.extension)) {
       inspectPrivateQueryUrls(
@@ -1345,7 +1450,6 @@ export async function verifyStaticArtifact({
     seoConfig: config.seo,
     failures,
   })
-  const remotePublication = await loadRemoteSocialImageContract(rootDir)
   const localSocialImageCount = verifyLocalSocialImages({
     htmlMetadataByPath,
     outDir,
@@ -1387,6 +1491,9 @@ export async function verifyStaticArtifact({
       forbiddenRouteMatches,
       forbiddenRouteReferenceMatches: forbiddenRouteReferenceMatches.sort((left, right) =>
         left.path.localeCompare(right.path),
+      ),
+      unpublishedContentReferenceMatches: unpublishedContentReferenceMatches.sort((left, right) =>
+        left.path.localeCompare(right.path) || left.slug.localeCompare(right.slug),
       ),
     },
     failures,

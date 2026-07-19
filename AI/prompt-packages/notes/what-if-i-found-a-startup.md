@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `what-if-i-found-a-startup`.
 
 Source read:
-- `public/notes-data/posts/what-if-i-found-a-startup.json`
-- `public/notes-data/vi/posts/what-if-i-found-a-startup.json`
+- `content/notes-data/posts/what-if-i-found-a-startup.json`
+- `content/notes-data/vi/posts/what-if-i-found-a-startup.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

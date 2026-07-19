@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `reading-is-catching-balls`.
 
 Source read:
-- `public/notes-data/posts/reading-is-catching-balls.json`
-- `public/notes-data/vi/posts/reading-is-catching-balls.json`
+- `content/notes-data/posts/reading-is-catching-balls.json`
+- `content/notes-data/vi/posts/reading-is-catching-balls.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

@@ -20,8 +20,8 @@ Container_Boundary(app, "Static Next.js App") {
 }
 
 ContainerDb(messages, "Locale Messages", "messages/*.json", "Translated UI copy.")
-ContainerDb(blog_json, "Blog JSON", "public/blog-data", "Canonical blog content and locale overrides.")
-ContainerDb(notes_json, "Notes JSON", "public/notes-data", "Canonical notes content and Vietnamese overrides.")
+ContainerDb(blog_json, "Blog JSON", "content/blog-data", "Canonical blog content and locale overrides.")
+ContainerDb(notes_json, "Notes JSON", "content/notes-data", "Canonical notes content and Vietnamese overrides.")
 ContainerDb(og_cache, "OG Cache", "public/og-cache", "Cached generated social-image PNGs.")
 
 Rel(root_page, i18n, "Reads default locale")

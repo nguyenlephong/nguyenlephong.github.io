@@ -48,8 +48,8 @@ async function createFixture(
   const domPubDir = path.join(fixtureRoot, 'dom-pub')
   await Promise.all([
     fs.mkdir(path.join(siteDir, 'config'), { recursive: true }),
-    fs.mkdir(path.join(siteDir, 'public/blog-data'), { recursive: true }),
-    fs.mkdir(path.join(siteDir, 'public/notes-data'), { recursive: true }),
+    fs.mkdir(path.join(siteDir, 'content/blog-data'), { recursive: true }),
+    fs.mkdir(path.join(siteDir, 'content/notes-data'), { recursive: true }),
     fs.mkdir(path.join(siteDir, 'public/og/blog'), { recursive: true }),
     fs.mkdir(path.join(siteDir, 'public/og/notes'), { recursive: true }),
     fs.mkdir(path.join(domPubDir, 'icdn/og/blogs'), { recursive: true }),
@@ -62,22 +62,39 @@ async function createFixture(
     liveBaseUrl: 'https://nguyenlephong.github.io/dom-pub/icdn',
     articleOg: {
       blog: {
-        sourceIndex: 'public/blog-data/_index.json',
+        sourceIndex: 'content/blog-data/_index.json',
         sourceDirectory: 'public/og/blog',
         sourceExtension: '.png',
         publicPathPrefix: '/og/blogs',
         publicationDirectory: 'og/blogs',
         publicationExtension: '.jpg',
         publicationFormat: 'jpeg',
+        prunePolicy: { maxDeleteCount: 20, maxDeletePercent: 100 },
       },
       notes: {
-        sourceIndex: 'public/notes-data/_index.json',
+        sourceIndex: 'content/notes-data/_index.json',
         sourceDirectory: 'public/og/notes',
         sourceExtension: '.png',
         publicPathPrefix: '/og/notes',
         publicationDirectory: 'og/notes',
         publicationExtension: '.jpg',
         publicationFormat: 'jpeg',
+        prunePolicy: { maxDeleteCount: 20, maxDeletePercent: 100 },
+      },
+    },
+  }
+  const publicContract = {
+    schemaVersion: 1,
+    articleOg: {
+      blog: {
+        localPathPrefix: '/og/blog',
+        publicPathPrefix: '/og/blogs',
+        publicationExtension: '.jpg',
+      },
+      notes: {
+        localPathPrefix: '/og/notes',
+        publicPathPrefix: '/og/notes',
+        publicationExtension: '.jpg',
       },
     },
   }
@@ -97,7 +114,11 @@ async function createFixture(
   await Promise.all([
     fs.writeFile(path.join(siteDir, 'config/media-publication.json'), JSON.stringify(contract)),
     fs.writeFile(
-      path.join(siteDir, 'public/blog-data/_index.json'),
+      path.join(siteDir, 'config/media-publication-public.json'),
+      JSON.stringify(publicContract),
+    ),
+    fs.writeFile(
+      path.join(siteDir, 'content/blog-data/_index.json'),
       JSON.stringify({
         posts: blogSlugs.map((slug) => ({
           slug,
@@ -106,7 +127,7 @@ async function createFixture(
       }),
     ),
     fs.writeFile(
-      path.join(siteDir, 'public/notes-data/_index.json'),
+      path.join(siteDir, 'content/notes-data/_index.json'),
       JSON.stringify({
         posts: noteSlugs.map((slug) => ({ slug, date: '2020-01-01' })),
       }),
@@ -147,6 +168,15 @@ async function coloredJpeg({ r, g, b }) {
       background: { r, g, b },
     },
   }).jpeg({ quality: 86, mozjpeg: true }).toBuffer()
+}
+
+async function createAlternateDomPubHead(domPubDir) {
+  const originalHead = (await git(domPubDir, ['rev-parse', 'HEAD'])).stdout.trim()
+  await fs.writeFile(path.join(domPubDir, 'head-drift-marker.txt'), 'alternate head\n')
+  await commitAll(domPubDir, 'alternate head for drift test')
+  const alternateHead = (await git(domPubDir, ['rev-parse', 'HEAD'])).stdout.trim()
+  await git(domPubDir, ['checkout', '--detach', '--quiet', originalHead])
+  return { alternateHead, originalHead }
 }
 
 async function publicationLockArtifacts(domPubDir) {
@@ -265,6 +295,196 @@ test('publication ignores future entries without deleting an existing stale dest
   assert.deepEqual(await fs.readFile(stalePath), staleBefore)
 })
 
+test('stale prune dry-run inventories only known generated assets and preserves manual media', async (t) => {
+  const { domPubDir, jpeg, siteDir } = await createFixture(t, {
+    blogCount: 3,
+    existingBlogSlugs: ['blog-post-1', 'blog-post-2', 'blog-post-3'],
+    futureBlogSlugs: ['blog-post-2', 'blog-post-3'],
+  })
+  const manualPath = path.join(domPubDir, 'icdn/og/blogs/manual-banner.jpg')
+  await fs.writeFile(manualPath, jpeg)
+  await commitAll(domPubDir, 'add manual media')
+  const previousHeadSha = (await git(domPubDir, ['rev-parse', 'HEAD'])).stdout.trim()
+
+  const summary = await publishOgAssets({
+    rootDir: siteDir,
+    domPubDir,
+    surface: 'blog',
+    missingOnly: true,
+    pruneStale: true,
+    dryRun: true,
+  })
+
+  assert.equal(summary.deleted, 0)
+  assert.deepEqual(summary.prune, {
+    applied: false,
+    candidates: 2,
+    keys: ['og/blogs/blog-post-2.jpg', 'og/blogs/blog-post-3.jpg'],
+    previousHeadSha,
+  })
+  assert.deepEqual(await fs.readFile(manualPath), jpeg)
+  assert.equal((await git(domPubDir, ['status', '--porcelain=v1'])).stdout, '')
+})
+
+test('explicit stale prune is idempotent and a later publication re-adds the released asset', async (t) => {
+  const { blogSlugs, domPubDir, siteDir } = await createFixture(t, {
+    blogCount: 2,
+    existingBlogSlugs: ['blog-post-1', 'blog-post-2'],
+  })
+  await fs.writeFile(
+    path.join(siteDir, 'content/blog-data/_index.json'),
+    JSON.stringify({
+      posts: [
+        { slug: blogSlugs[0], date: '2026-07-19' },
+        { slug: blogSlugs[1], date: '2026-07-20' },
+      ],
+    }),
+  )
+  await commitAll(siteDir, 'schedule second publication')
+  const stalePath = path.join(domPubDir, 'icdn/og/blogs/blog-post-2.jpg')
+
+  const pruned = await publishOgAssets({
+    rootDir: siteDir,
+    domPubDir,
+    surface: 'blog',
+    missingOnly: true,
+    pruneStale: true,
+    applyPrune: true,
+    contentBuildDate: '2026-07-19',
+  })
+  assert.equal(pruned.deleted, 1)
+  assert.equal(pruned.prune.applied, true)
+  await assertMissing(stalePath)
+  await commitAll(domPubDir, 'prune scheduled asset')
+
+  const repeated = await publishOgAssets({
+    rootDir: siteDir,
+    domPubDir,
+    surface: 'blog',
+    missingOnly: true,
+    pruneStale: true,
+    applyPrune: true,
+    contentBuildDate: '2026-07-19',
+  })
+  assert.equal(repeated.deleted, 0)
+  assert.equal(repeated.prune.candidates, 0)
+  assert.equal((await git(domPubDir, ['status', '--porcelain=v1'])).stdout, '')
+
+  const released = await publishOgAssets({
+    rootDir: siteDir,
+    domPubDir,
+    surface: 'blog',
+    missingOnly: true,
+    pruneStale: true,
+    applyPrune: true,
+    contentBuildDate: '2026-07-20',
+  })
+  assert.equal(released.added, 1)
+  assert.equal(released.deleted, 0)
+  await validateOgImage(stalePath, { format: 'jpeg', label: 'released scheduled asset' })
+})
+
+test('a partial stale-prune failure restores the complete managed tree', async (t) => {
+  const { domPubDir, siteDir } = await createFixture(t, {
+    blogCount: 3,
+    existingBlogSlugs: ['blog-post-1', 'blog-post-2', 'blog-post-3'],
+    futureBlogSlugs: ['blog-post-2', 'blog-post-3'],
+  })
+  const stalePaths = [
+    path.join(domPubDir, 'icdn/og/blogs/blog-post-2.jpg'),
+    path.join(domPubDir, 'icdn/og/blogs/blog-post-3.jpg'),
+  ]
+  const before = await Promise.all(stalePaths.map((filePath) => fs.readFile(filePath)))
+  let deletes = 0
+
+  await assert.rejects(
+    publishOgAssets({
+      rootDir: siteDir,
+      domPubDir,
+      surface: 'blog',
+      missingOnly: true,
+      pruneStale: true,
+      applyPrune: true,
+      beforeOperation: async ({ operation }) => {
+        if (operation !== 'delete') return
+        deletes += 1
+        if (deletes === 2) throw new Error('fault injection: second prune failed')
+      },
+    }),
+    /fault injection: second prune failed/,
+  )
+
+  assert.deepEqual(await Promise.all(stalePaths.map((filePath) => fs.readFile(filePath))), before)
+  assert.deepEqual(await stagingEntries(domPubDir), [])
+  assert.equal((await git(domPubDir, ['status', '--porcelain=v1'])).stdout, '')
+})
+
+test('stale prune enforces count and percentage caps before mutation', async (t) => {
+  const cases = [
+    { maxDeleteCount: 1, maxDeletePercent: 100, expected: /prune safety cap exceeded/ },
+    { maxDeleteCount: 20, maxDeletePercent: 25, expected: /prune safety percentage exceeded/ },
+  ]
+
+  for (const prunePolicy of cases) {
+    await t.test(prunePolicy.expected.source, async (t) => {
+      const { domPubDir, siteDir } = await createFixture(t, {
+        blogCount: 3,
+        existingBlogSlugs: ['blog-post-1', 'blog-post-2', 'blog-post-3'],
+        futureBlogSlugs: ['blog-post-2', 'blog-post-3'],
+      })
+      const contractPath = path.join(siteDir, 'config/media-publication.json')
+      const contract = JSON.parse(await fs.readFile(contractPath, 'utf8'))
+      contract.articleOg.blog.prunePolicy = {
+        maxDeleteCount: prunePolicy.maxDeleteCount,
+        maxDeletePercent: prunePolicy.maxDeletePercent,
+      }
+      await fs.writeFile(contractPath, JSON.stringify(contract))
+      await commitAll(siteDir, 'tighten prune cap')
+
+      await assert.rejects(
+        publishOgAssets({
+          rootDir: siteDir,
+          domPubDir,
+          surface: 'blog',
+          missingOnly: true,
+          pruneStale: true,
+          dryRun: true,
+        }),
+        prunePolicy.expected,
+      )
+      assert.equal((await git(domPubDir, ['status', '--porcelain=v1'])).stdout, '')
+      assert.deepEqual(await stagingEntries(domPubDir), [])
+    })
+  }
+})
+
+test('stale prune rejects a managed symlink and never follows it', async (t) => {
+  const { domPubDir, fixtureRoot, jpeg, siteDir } = await createFixture(t, {
+    blogCount: 2,
+    existingBlogSlugs: ['blog-post-2'],
+    futureBlogSlugs: ['blog-post-2'],
+  })
+  const externalPath = path.join(fixtureRoot, 'external.jpg')
+  const stalePath = path.join(domPubDir, 'icdn/og/blogs/blog-post-2.jpg')
+  await fs.writeFile(externalPath, jpeg)
+  await fs.unlink(stalePath)
+  await fs.symlink(externalPath, stalePath)
+  await commitAll(domPubDir, 'seed unsafe managed symlink')
+
+  await assert.rejects(
+    publishOgAssets({
+      rootDir: siteDir,
+      domPubDir,
+      surface: 'blog',
+      missingOnly: true,
+      pruneStale: true,
+      dryRun: true,
+    }),
+    /destination must not be a symlink: icdn\/og\/blogs\/blog-post-2\.jpg/,
+  )
+  assert.deepEqual(await fs.readFile(externalPath), jpeg)
+})
+
 test('missing-only refuses a destination created after preflight instead of overwriting it', async (t) => {
   const { domPubDir, jpeg, siteDir } = await createFixture(t, { blogCount: 1 })
   const destination = path.join(domPubDir, 'icdn/og/blogs/blog-post-1.jpg')
@@ -329,6 +549,63 @@ test('a partial install failure rolls additions back and removes staging', async
     (await fs.readdir(path.join(domPubDir, 'icdn/og/blogs'))).sort(),
     ['.gitkeep'],
   )
+  assert.deepEqual(await stagingEntries(domPubDir), [])
+  assert.equal((await git(domPubDir, ['status', '--porcelain=v1'])).stdout, '')
+})
+
+test('a checkout drift after install is detected and rolls the installed tree back', async (t) => {
+  const { domPubDir, siteDir } = await createFixture(t, { blogCount: 1 })
+  const { alternateHead } = await createAlternateDomPubHead(domPubDir)
+
+  await assert.rejects(
+    publishOgAssets({
+      rootDir: siteDir,
+      domPubDir,
+      surface: 'blog',
+      beforeOperation: async ({ operation }) => {
+        if (operation === 'verify-installed') {
+          await git(domPubDir, ['checkout', '--detach', '--quiet', alternateHead])
+        }
+      },
+    }),
+    /dom-pub HEAD changed after verify-installed hook/,
+  )
+
+  assert.deepEqual(
+    (await fs.readdir(path.join(domPubDir, 'icdn/og/blogs'))).sort(),
+    ['.gitkeep'],
+  )
+  assert.deepEqual(await stagingEntries(domPubDir), [])
+  assert.equal((await git(domPubDir, ['status', '--porcelain=v1'])).stdout, '')
+})
+
+test('a checkout drift after stale deletion is detected and restores the deleted tree', async (t) => {
+  const { domPubDir, jpeg, siteDir } = await createFixture(t, {
+    blogCount: 2,
+    existingBlogSlugs: ['blog-post-2'],
+    futureBlogSlugs: ['blog-post-2'],
+  })
+  const { alternateHead } = await createAlternateDomPubHead(domPubDir)
+  const stalePath = path.join(domPubDir, 'icdn/og/blogs/blog-post-2.jpg')
+
+  await assert.rejects(
+    publishOgAssets({
+      rootDir: siteDir,
+      domPubDir,
+      surface: 'blog',
+      missingOnly: true,
+      pruneStale: true,
+      applyPrune: true,
+      beforeOperation: async ({ operation }) => {
+        if (operation === 'verify-deleted') {
+          await git(domPubDir, ['checkout', '--detach', '--quiet', alternateHead])
+        }
+      },
+    }),
+    /dom-pub HEAD changed after verify-deleted hook/,
+  )
+
+  assert.deepEqual(await fs.readFile(stalePath), jpeg)
   assert.deepEqual(await stagingEntries(domPubDir), [])
   assert.equal((await git(domPubDir, ['status', '--porcelain=v1'])).stdout, '')
 })
@@ -670,6 +947,26 @@ test('rejects traversal and symlinked publication roots before staging', async (
   })
 })
 
+test('direct publisher rejects a localized Blog alias owned by Notes', async (t) => {
+  const { domPubDir, noteSlugs, siteDir } = await createFixture(t, {
+    blogCount: 1,
+    notesCount: 1,
+  })
+  const localizedDirectory = path.join(siteDir, 'content/blog-data/vi')
+  await fs.mkdir(localizedDirectory, { recursive: true })
+  await fs.writeFile(
+    path.join(localizedDirectory, '_index.json'),
+    JSON.stringify({ posts: [{ slug: noteSlugs[0] }] }),
+  )
+  await commitAll(siteDir, 'invalid localized alias')
+
+  await assert.rejects(
+    publishOgAssets({ rootDir: siteDir, domPubDir, surface: 'blog', dryRun: true }),
+    new RegExp(`localized blog slug "${noteSlugs[0]}".*does not exist in its canonical index`),
+  )
+  assert.deepEqual(await stagingEntries(domPubDir), [])
+})
+
 test('rejects wrong origins, nested roots, and dirty source or destination repositories', async (t) => {
   await t.test('wrong dom-pub origin', async (t) => {
     const { domPubDir, siteDir } = await createFixture(t)
@@ -785,9 +1082,30 @@ test('CLI parser requires scoped arguments and rejects unknown or duplicate flag
     {
       surface: 'blog',
       domPubDir: '../dom-pub',
+      applyPrune: false,
       missingOnly: true,
+      pruneStale: false,
       dryRun: true,
       recoverStaleLock: true,
+    },
+  )
+  assert.deepEqual(
+    parsePublisherArgs([
+      '--surface',
+      'blog',
+      '--dom-pub',
+      '../dom-pub',
+      '--prune-stale',
+      '--apply-prune',
+    ]),
+    {
+      surface: 'blog',
+      domPubDir: '../dom-pub',
+      applyPrune: true,
+      missingOnly: false,
+      pruneStale: true,
+      dryRun: false,
+      recoverStaleLock: false,
     },
   )
   assert.throws(() => parsePublisherArgs(['--wat']), /unknown argument/)
@@ -797,4 +1115,21 @@ test('CLI parser requires scoped arguments and rejects unknown or duplicate flag
   )
   assert.throws(() => parsePublisherArgs(['--surface', 'gallery', '--dom-pub', 'x']), /blog, notes/)
   assert.throws(() => parsePublisherArgs(['--surface', 'blog']), /--dom-pub is required/)
+  assert.throws(
+    () => parsePublisherArgs(['--surface', 'blog', '--dom-pub', 'x', '--apply-prune']),
+    /--apply-prune requires --prune-stale/,
+  )
+  assert.throws(
+    () =>
+      parsePublisherArgs([
+        '--surface',
+        'blog',
+        '--dom-pub',
+        'x',
+        '--prune-stale',
+        '--apply-prune',
+        '--dry-run',
+      ]),
+    /--apply-prune cannot be combined with --dry-run/,
+  )
 })

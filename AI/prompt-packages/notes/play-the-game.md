@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `play-the-game`.
 
 Source read:
-- `public/notes-data/posts/play-the-game.json`
-- `public/notes-data/vi/posts/play-the-game.json`
+- `content/notes-data/posts/play-the-game.json`
+- `content/notes-data/vi/posts/play-the-game.json`
 - Approved reference: commit `48ac924f16`, `cross-functional-teams`
 
 Reference style:

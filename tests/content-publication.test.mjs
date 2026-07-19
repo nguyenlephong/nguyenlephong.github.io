@@ -124,7 +124,7 @@ test("publication contract is deterministic at date, embargo, and draft boundari
 test("all unpublished blog posts stay out of every public route and discovery consumer", () => {
   const source = JSON.parse(
     readFileSync(
-      new URL("../public/blog-data/_index.json", import.meta.url),
+      new URL("../content/blog-data/_index.json", import.meta.url),
       "utf8"
     )
   );
@@ -173,7 +173,7 @@ test("all unpublished blog posts stay out of every public route and discovery co
 test("static OG listing uses the same unpublished corpus boundary", () => {
   const source = JSON.parse(
     readFileSync(
-      new URL("../public/blog-data/_index.json", import.meta.url),
+      new URL("../content/blog-data/_index.json", import.meta.url),
       "utf8"
     )
   );

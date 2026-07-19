@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `start-new-behaviors-in-boring-easy-mode`.
 
 Source read:
-- `public/notes-data/posts/start-new-behaviors-in-boring-easy-mode.json`
-- `public/notes-data/vi/posts/start-new-behaviors-in-boring-easy-mode.json`
+- `content/notes-data/posts/start-new-behaviors-in-boring-easy-mode.json`
+- `content/notes-data/vi/posts/start-new-behaviors-in-boring-easy-mode.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

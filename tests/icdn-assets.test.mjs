@@ -27,6 +27,9 @@ test("content assets route through the semantic icdn namespace", () => {
   const publication = JSON.parse(
     readFileSync("config/media-publication.json", "utf8")
   );
+  const publicPublicationPath = "config/media-publication-public.json";
+  const publicPublicationRaw = readFileSync(publicPublicationPath, "utf8");
+  const publicPublication = JSON.parse(publicPublicationRaw);
 
   assert.match(
     mediaResolver,
@@ -39,10 +42,26 @@ test("content assets route through the semantic icdn namespace", () => {
   assert.match(icdn, /from:\s*"\/assets\/notes\/",\s*to:\s*"\/notes\/"/);
   assert.match(icdn, /from:\s*"\/assets\/photos\/",\s*to:\s*"\/gallery\/photos\/"/);
   assert.match(icdn, /Object\.values\(mediaPublication\.articleOg\)/);
-  assert.match(icdn, /media-publication\.json" with \{ type: "json" \}/);
+  assert.match(icdn, /media-publication-public\.json" with \{ type: "json" \}/);
+  assert.doesNotMatch(icdn, /media-publication\.json" with \{ type: "json" \}/);
+  assert.doesNotMatch(publicPublicationRaw, /(?:blog-data|notes-data|thoughts-data|sourceIndex|sourceDirectory|prunePolicy)/);
   assert.doesNotMatch(icdn, /from:\s*"\/og\/(?:blog|notes)\//);
   assert.equal(publication.articleOg.blog.publicPathPrefix, "/og/blogs");
   assert.equal(publication.articleOg.notes.publicPathPrefix, "/og/notes");
+  for (const surface of ["blog", "notes"]) {
+    assert.equal(
+      publicPublication.articleOg[surface].publicPathPrefix,
+      publication.articleOg[surface].publicPathPrefix
+    );
+    assert.equal(
+      publicPublication.articleOg[surface].publicationExtension,
+      publication.articleOg[surface].publicationExtension
+    );
+    assert.equal(
+      publicPublication.articleOg[surface].localPathPrefix,
+      `/${publication.articleOg[surface].sourceDirectory.replace(/^public\//, "")}`
+    );
+  }
   assert.match(icdn, /rewriteOwnedLegacyMediaUrls/);
   assert.match(icdn, /rewriteContentAssetValues/);
   assert.match(gallery, /icdnAssetUrl\("\/gallery\/certificates\/very-good-degree\.webp"\)/);
@@ -67,8 +86,8 @@ test("pages deploy removes media that is served by dom-pub icdn", () => {
 
 test("public reading data does not expose local content image paths", () => {
   const dataFiles = [
-    ...readJsonDataFiles("public/blog-data"),
-    ...readJsonDataFiles("public/notes-data"),
+    ...readJsonDataFiles("content/blog-data"),
+    ...readJsonDataFiles("content/notes-data"),
   ];
   const data = dataFiles.map((file) => readFileSync(file, "utf8")).join("\n");
 

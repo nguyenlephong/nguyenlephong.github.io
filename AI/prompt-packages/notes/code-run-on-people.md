@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `code-run-on-people`.
 
 Source read:
-- `public/notes-data/posts/code-run-on-people.json`
-- `public/notes-data/vi/posts/code-run-on-people.json`
+- `content/notes-data/posts/code-run-on-people.json`
+- `content/notes-data/vi/posts/code-run-on-people.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

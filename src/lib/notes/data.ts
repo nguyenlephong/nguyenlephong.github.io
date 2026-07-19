@@ -25,7 +25,7 @@ import {
 } from "./schema";
 import type { Note, NoteMeta, NotesIndexFile, TopicMeta } from "./types";
 
-const DATA_DIR = path.join(process.cwd(), "public", "notes-data");
+const DATA_DIR = path.join(process.cwd(), "content", "notes-data");
 const contentVersionTracker =
   process.env.NODE_ENV === "production"
     ? null

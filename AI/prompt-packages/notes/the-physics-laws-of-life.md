@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `the-physics-laws-of-life`.
 
 Source read:
-- `public/notes-data/posts/the-physics-laws-of-life.json`
-- `public/notes-data/vi/posts/the-physics-laws-of-life.json`
+- `content/notes-data/posts/the-physics-laws-of-life.json`
+- `content/notes-data/vi/posts/the-physics-laws-of-life.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

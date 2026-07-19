@@ -32,7 +32,7 @@ import type {
 } from './types'
 import { compareSeriesPosts } from './series'
 
-const DATA_DIR = path.join(process.cwd(), 'public', 'blog-data')
+const DATA_DIR = path.join(process.cwd(), 'content', 'blog-data')
 const contentVersionTracker =
   process.env.NODE_ENV === 'production'
     ? null

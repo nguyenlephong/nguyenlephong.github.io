@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `ai-reduces-the-information-privilege`.
 
 Source read:
-- `public/notes-data/posts/ai-reduces-the-information-privilege.json`
-- `public/notes-data/vi/posts/ai-reduces-the-information-privilege.json`
+- `content/notes-data/posts/ai-reduces-the-information-privilege.json`
+- `content/notes-data/vi/posts/ai-reduces-the-information-privilege.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 - Repo content guidance: `AI/skills/calm-content-writer/SKILL.md`
 

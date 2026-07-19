@@ -293,8 +293,8 @@ function writeLocalizedGenericSeoFixtures(outDir) {
 }
 
 function writeMediaPublicationFixture(rootDir) {
-  mkdirSync(path.join(rootDir, 'public/blog-data'), { recursive: true })
-  mkdirSync(path.join(rootDir, 'public/notes-data'), { recursive: true })
+  mkdirSync(path.join(rootDir, 'content/blog-data'), { recursive: true })
+  mkdirSync(path.join(rootDir, 'content/notes-data'), { recursive: true })
   writeFileSync(
     path.join(rootDir, 'config/media-publication.json'),
     JSON.stringify({
@@ -303,31 +303,51 @@ function writeMediaPublicationFixture(rootDir) {
       liveBaseUrl: 'https://example.com/dom-pub/icdn',
       articleOg: {
         blog: {
-          sourceIndex: 'public/blog-data/_index.json',
+          sourceIndex: 'content/blog-data/_index.json',
           sourceDirectory: 'public/og/blog',
           sourceExtension: '.png',
           publicPathPrefix: '/og/blogs',
           publicationDirectory: 'og/blogs',
           publicationExtension: '.jpg',
           publicationFormat: 'jpeg',
+          prunePolicy: { maxDeleteCount: 20, maxDeletePercent: 100 },
         },
         notes: {
-          sourceIndex: 'public/notes-data/_index.json',
+          sourceIndex: 'content/notes-data/_index.json',
           sourceDirectory: 'public/og/notes',
           sourceExtension: '.png',
           publicPathPrefix: '/og/notes',
           publicationDirectory: 'og/notes',
           publicationExtension: '.jpg',
           publicationFormat: 'jpeg',
+          prunePolicy: { maxDeleteCount: 20, maxDeletePercent: 100 },
         },
       },
     }),
   )
   writeFileSync(
-    path.join(rootDir, 'public/blog-data/_index.json'),
+    path.join(rootDir, 'config/media-publication-public.json'),
+    JSON.stringify({
+      schemaVersion: 1,
+      articleOg: {
+        blog: {
+          localPathPrefix: '/og/blog',
+          publicPathPrefix: '/og/blogs',
+          publicationExtension: '.jpg',
+        },
+        notes: {
+          localPathPrefix: '/og/notes',
+          publicPathPrefix: '/og/notes',
+          publicationExtension: '.jpg',
+        },
+      },
+    }),
+  )
+  writeFileSync(
+    path.join(rootDir, 'content/blog-data/_index.json'),
     JSON.stringify({ posts: [{ slug: 'static', date: '2020-01-01' }] }),
   )
-  writeFileSync(path.join(rootDir, 'public/notes-data/_index.json'), JSON.stringify({ posts: [] }))
+  writeFileSync(path.join(rootDir, 'content/notes-data/_index.json'), JSON.stringify({ posts: [] }))
 }
 
 test('verifies artifact budgets, sitemap canonicals, robots, and public secrets', async (t) => {
@@ -403,6 +423,195 @@ test('fails closed when generated pages, route payloads, manifests, or service w
       ),
     )
   }
+})
+
+test('fails closed when raw authored corpus paths or runtime references reach the artifact', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  const rawDirectory = path.join(outDir, 'blog-data', 'posts')
+  mkdirSync(rawDirectory, { recursive: true })
+  writeFileSync(
+    path.join(rawDirectory, 'leaked.json'),
+    JSON.stringify({ slug: 'leaked', html: '<p>raw body</p>' }),
+  )
+  writeFileSync(
+    path.join(outDir, 'assets/app.js'),
+    'fetch("/notes-data/posts/leaked.json")',
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.ok(
+    report.privacy.forbiddenRouteMatches.some(
+      (match) => match.segment === 'blog-data' && match.path === 'blog-data/posts/leaked.json',
+    ),
+  )
+  assert.ok(
+    report.privacy.forbiddenRouteReferenceMatches.some(
+      (match) => match.segment === 'notes-data' && match.path === 'assets/app.js',
+    ),
+  )
+  assert.match(report.failures.join('\n'), /blog-data\/posts\/leaked\.json/)
+  assert.match(report.failures.join('\n'), /notes-data.*assets\/app\.js/)
+})
+
+test('fails closed when scheduled or draft metadata is serialized under an unrelated path', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeMediaPublicationFixture(rootDir)
+  writeFileSync(
+    path.join(rootDir, 'content/blog-data/_index.json'),
+    JSON.stringify({
+      posts: [
+        { slug: 'released', category: 'architecture', date: '2026-07-19' },
+        { slug: 'scheduled-secret', category: 'architecture', date: '2999-01-01' },
+        {
+          slug: 'draft-secret',
+          category: 'architecture',
+          date: '2020-01-01',
+          status: 'draft',
+        },
+      ],
+    }),
+  )
+  writeFileSync(
+    path.join(outDir, 'assets/app.js'),
+    JSON.stringify({
+      slug: 'scheduled-secret',
+      category: 'architecture',
+      html: '<p>unreleased body</p>',
+    }),
+  )
+  writeFileSync(
+    path.join(outDir, 'en.html'),
+    readFileSync(path.join(outDir, 'en.html'), 'utf8').replace(
+      '</body>',
+      '<a href="/en/blog/architecture/draft-secret">draft</a></body>',
+    ),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.privacy.unpublishedContentReferenceMatches, [
+    { path: 'assets/app.js', slug: 'scheduled-secret', surface: 'blog' },
+    { path: 'en.html', slug: 'draft-secret', surface: 'blog' },
+  ])
+  assert.match(report.failures.join('\n'), /scheduled-secret/)
+  assert.match(report.failures.join('\n'), /draft-secret/)
+})
+
+test('route-only leaks accept static extensions without matching longer slug substrings', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeMediaPublicationFixture(rootDir)
+  writeFileSync(
+    path.join(rootDir, 'content/blog-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'route-blog-secret', category: 'architecture', date: '2999-01-01' }],
+    }),
+  )
+  writeFileSync(
+    path.join(rootDir, 'content/notes-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'route-note-secret', topic: 'thoughts', date: '2999-01-01' }],
+    }),
+  )
+  const clientPath = path.join(outDir, 'assets/app.js')
+  writeFileSync(
+    clientPath,
+    [
+      '"/en/blog/architecture/route-blog-secret-extra.html"',
+      '"/vi/notes/route-note-secret-copy.txt"',
+      '"/notes/route-note-secret.htmlish"',
+    ].join(','),
+  )
+
+  const decoys = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  assert.deepEqual(decoys.privacy.unpublishedContentReferenceMatches, [])
+
+  writeFileSync(
+    clientPath,
+    [
+      '"/en/blog/architecture/route-blog-secret.html"',
+      '"/blog/architecture/route-blog-secret.txt?segment=1"',
+      '"/vi/notes/route-note-secret.rsc"',
+      '"/notes/route-note-secret.json#payload"',
+    ].join(','),
+  )
+  const leaks = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  assert.deepEqual(leaks.privacy.unpublishedContentReferenceMatches, [
+    { path: 'assets/app.js', slug: 'route-blog-secret', surface: 'blog' },
+    { path: 'assets/app.js', slug: 'route-note-secret', surface: 'notes' },
+  ])
+})
+
+test('topic-less and category-less unpublished metadata fail closed on exact slug tokens', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeMediaPublicationFixture(rootDir)
+  writeFileSync(
+    path.join(rootDir, 'content/blog-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'categoryless-blog-secret', date: '2999-01-01' }],
+    }),
+  )
+  writeFileSync(
+    path.join(rootDir, 'content/notes-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'topicless-note-secret', date: '2999-01-01' }],
+    }),
+  )
+  writeFileSync(
+    path.join(outDir, 'assets/app.js'),
+    JSON.stringify([
+      { slug: 'categoryless-blog-secret', html: '<p>unreleased blog post</p>' },
+      { slug: 'topicless-note-secret', html: '<p>unreleased note</p>' },
+    ]),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.privacy.unpublishedContentReferenceMatches, [
+    { path: 'assets/app.js', slug: 'categoryless-blog-secret', surface: 'blog' },
+    { path: 'assets/app.js', slug: 'topicless-note-secret', surface: 'notes' },
+  ])
+})
+
+test('exact slug tokens survive nested, escaped metadata records larger than 16 KiB', async (t) => {
+  const { rootDir, outDir } = createFixture(t, {
+    limits: { maxJavaScriptBytes: 100_000, totalBytes: 200_000 },
+  })
+  writeMediaPublicationFixture(rootDir)
+  writeFileSync(
+    path.join(rootDir, 'content/blog-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'long-blog-secret', category: 'architecture', date: '2999-01-01' }],
+    }),
+  )
+  writeFileSync(
+    path.join(rootDir, 'content/notes-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'long-note-secret', topic: 'thoughts', date: '2999-01-01' }],
+    }),
+  )
+  writeFileSync(
+    path.join(outDir, 'assets/app.js'),
+    JSON.stringify({
+      nested: {
+        slug: 'long-blog-secret',
+        category: 'architecture',
+        html: `<p>${'b'.repeat(20_000)}</p>`,
+      },
+      escaped: JSON.stringify({
+        slug: 'long-note-secret',
+        topic: 'thoughts',
+        html: `<p>${'n'.repeat(20_000)}</p>`,
+      }),
+    }),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.privacy.unpublishedContentReferenceMatches, [
+    { path: 'assets/app.js', slug: 'long-blog-secret', surface: 'blog' },
+    { path: 'assets/app.js', slug: 'long-note-secret', surface: 'notes' },
+  ])
 })
 
 test('reports near-limit warnings against the configured artifact budget', async (t) => {

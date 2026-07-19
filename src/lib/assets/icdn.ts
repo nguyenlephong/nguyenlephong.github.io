@@ -3,7 +3,7 @@ import {
   rewriteOwnedLegacyMediaUrls,
   type MediaUrlResolver,
 } from "@/lib/media/url-resolver";
-import mediaPublication from "../../../config/media-publication.json" with { type: "json" };
+import mediaPublication from "../../../config/media-publication-public.json" with { type: "json" };
 
 type ContentAssetMapping = {
   from: string;
@@ -18,7 +18,7 @@ function articleOgAssetMappings(): ContentAssetMapping[] {
     }
 
     return {
-      from: `/${publication.sourceDirectory.replace(/^public\//, "")}/`,
+      from: `${publication.localPathPrefix}/`,
       to: `${publication.publicPathPrefix}/`,
       extension: "jpg"
     };

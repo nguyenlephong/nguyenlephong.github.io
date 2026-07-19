@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `purpose-of-highlights`.
 
 Source read:
-- `public/notes-data/posts/purpose-of-highlights.json`
-- `public/notes-data/vi/posts/purpose-of-highlights.json`
+- `content/notes-data/posts/purpose-of-highlights.json`
+- `content/notes-data/vi/posts/purpose-of-highlights.json`
 - `AI/skills/calm-content-writer/SKILL.md`
 - Approved reference pattern: commit `48ac924f16`, article `cross-functional-teams`
 

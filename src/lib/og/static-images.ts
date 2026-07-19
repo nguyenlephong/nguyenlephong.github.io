@@ -1,5 +1,5 @@
 import { icdnAssetUrl } from '@/lib/assets/icdn'
-import mediaPublication from '../../../config/media-publication.json' with { type: 'json' }
+import mediaPublication from '../../../config/media-publication-public.json' with { type: 'json' }
 
 type ArticleOgSurface = keyof typeof mediaPublication.articleOg
 

@@ -3,7 +3,7 @@ import path from 'node:path'
 import { isDefaultLocale, readJson } from '@/lib/content/io'
 import type { ThoughtApiResponse, ThoughtGraphFile } from './types'
 
-const DATA_DIR = path.join(process.cwd(), 'public', 'thoughts-data')
+const DATA_DIR = path.join(process.cwd(), 'content', 'thoughts-data')
 
 const EMPTY_GRAPH: ThoughtGraphFile = { thoughts: {}, edges: [] }
 

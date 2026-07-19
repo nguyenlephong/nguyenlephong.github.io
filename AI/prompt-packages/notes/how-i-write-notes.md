@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `how-i-write-notes`.
 
 Source read:
-- `public/notes-data/posts/how-i-write-notes.json`
-- `public/notes-data/vi/posts/how-i-write-notes.json`
+- `content/notes-data/posts/how-i-write-notes.json`
+- `content/notes-data/vi/posts/how-i-write-notes.json`
 - Approved reference: commit `48ac924f16`, `cross-functional-teams`
 
 Reference style:

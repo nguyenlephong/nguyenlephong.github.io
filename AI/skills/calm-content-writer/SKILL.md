@@ -18,7 +18,7 @@ Use this skill to write public-facing content for this repository in the author'
 
 ## Language And Terminology
 
-- Preserve the codebase's multi-language structure. In this project, notes commonly use English canonical content in `public/notes-data/posts/` and Vietnamese overrides in `public/notes-data/vi/posts/`.
+- Preserve the codebase's multi-language structure. In this project, notes commonly use English canonical content in `content/notes-data/posts/` and Vietnamese overrides in `content/notes-data/vi/posts/`.
 - Keep technical and industry terms as reserved words when translation would feel awkward or imprecise: `release`, `bug`, `codebase`, `refactor`, `technical debt`, `system failure`, `scaling`, `lag`, `downtime`, `DAU`, `tracking`, `PostHog`, `commitment device`, `social proof`, etc.
 - Prefer natural local language around reserved words instead of forcing unnatural local equivalents.
 - Write SEO metadata naturally: specific title, useful summary, relevant tags, and crawlable article body. Do not keyword-stuff.

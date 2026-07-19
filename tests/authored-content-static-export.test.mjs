@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { registerHooks } from 'node:module'
 import path from 'node:path'
@@ -63,14 +63,48 @@ const { default: buildSitemap } = await import(
 const { isContentPublished } = await import(
   new URL('../src/lib/content/publication.ts', import.meta.url)
 )
+const { validateAuthoredArticleSlugUniqueness } = await import(
+  new URL('../scripts/lib/article-slug-contract.mjs', import.meta.url)
+)
 
 function readJson(relativePath) {
   return JSON.parse(readFileSync(new URL(relativePath, import.meta.url), 'utf8'))
 }
 
+function sourceFiles(directory, files = []) {
+  for (const entry of readdirSync(directory)) {
+    const absolutePath = path.join(directory, entry)
+    if (statSync(absolutePath).isDirectory()) sourceFiles(absolutePath, files)
+    else if (/\.(?:js|jsx|mjs|ts|tsx)$/.test(entry)) files.push(absolutePath)
+  }
+  return files
+}
+
+test('authored corpus is build-only and no browser source references its former public URLs', () => {
+  for (const directory of ['blog-data', 'notes-data', 'thoughts-data']) {
+    assert.equal(existsSync(path.join('public', directory)), false)
+    assert.equal(existsSync(path.join('content', directory)), true)
+  }
+
+  const publicCorpusUrl = /["'`]\/(?:blog-data|notes-data|thoughts-data)(?:\/|["'`])/i
+  for (const filePath of sourceFiles('src')) {
+    assert.doesNotMatch(readFileSync(filePath, 'utf8'), publicCorpusUrl, filePath)
+  }
+})
+
+test('canonical and localized Blog and Notes indexes preserve the global slug contract', async () => {
+  const blogIndex = readJson('../content/blog-data/_index.json')
+  const notesIndex = readJson('../content/notes-data/_index.json')
+  const report = await validateAuthoredArticleSlugUniqueness()
+
+  assert.equal(report.blog, blogIndex.posts.length)
+  assert.equal(report.notes, notesIndex.posts.length)
+  assert.ok(report.localizedIndexes > 0)
+})
+
 test('article static params contain authored locale routes only', () => {
-  const blogIndex = readJson('../public/blog-data/_index.json')
-  const notesIndex = readJson('../public/notes-data/_index.json')
+  const blogIndex = readJson('../content/blog-data/_index.json')
+  const notesIndex = readJson('../content/notes-data/_index.json')
   const blogParams = listBlogPostParams()
   const noteParams = listNoteParams()
   const expectedBlogRoutes = blogIndex.posts

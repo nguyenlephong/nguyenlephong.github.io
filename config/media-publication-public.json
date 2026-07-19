@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "articleOg": {
+    "blog": {
+      "localPathPrefix": "/og/blog",
+      "publicPathPrefix": "/og/blogs",
+      "publicationExtension": ".jpg"
+    },
+    "notes": {
+      "localPathPrefix": "/og/notes",
+      "publicPathPrefix": "/og/notes",
+      "publicationExtension": ".jpg"
+    }
+  }
+}

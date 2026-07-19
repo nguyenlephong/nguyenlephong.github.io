@@ -148,7 +148,7 @@ test("content schemas reject invalid identifiers, references, dates, and reading
 test("canonical indexes are required rather than failing open to an empty corpus", () => {
   assert.throws(
     () => readRequiredJsonValidated(
-      fileURLToPath(new URL("../public/blog-data/__missing-index__.json", import.meta.url)),
+      fileURLToPath(new URL("../content/blog-data/__missing-index__.json", import.meta.url)),
       blogIndexSchema,
       "canonical blog index"
     ),
@@ -194,7 +194,7 @@ test("content catalogs stay memoized in development and support explicit invalid
 
 test("development content freshness observes an edited JSON file without rescanning per call", async () => {
   const projectRoot = mkdtempSync(path.join(tmpdir(), "content-freshness-"));
-  const dataDirectory = path.join(projectRoot, "public", "blog-data");
+  const dataDirectory = path.join(projectRoot, "content", "blog-data");
   const postsDirectory = path.join(dataDirectory, "posts");
   const indexPath = path.join(dataDirectory, "_index.json");
   const bodyPath = path.join(postsDirectory, "fixture-post.json");
@@ -268,7 +268,7 @@ test("development content freshness observes an edited JSON file without rescann
 
 test("localized catalog retries when the base snapshot invalidates before overlay", async () => {
   const projectRoot = mkdtempSync(path.join(tmpdir(), "content-snapshot-race-"));
-  const dataDirectory = path.join(projectRoot, "public", "blog-data");
+  const dataDirectory = path.join(projectRoot, "content", "blog-data");
   const postsDirectory = path.join(dataDirectory, "posts");
   const viPostsDirectory = path.join(dataDirectory, "vi", "posts");
   const indexPath = path.join(dataDirectory, "_index.json");
@@ -375,8 +375,8 @@ test("raw locale metadata drift cannot be hidden by a merged catalog", () => {
 
 test("localized indexes cannot override canonical publication lifecycle fields", async () => {
   const projectRoot = mkdtempSync(path.join(tmpdir(), "content-publication-override-"));
-  const blogDirectory = path.join(projectRoot, "public", "blog-data");
-  const notesDirectory = path.join(projectRoot, "public", "notes-data");
+  const blogDirectory = path.join(projectRoot, "content", "blog-data");
+  const notesDirectory = path.join(projectRoot, "content", "notes-data");
   for (const directory of [
     path.join(blogDirectory, "posts"),
     path.join(blogDirectory, "vi", "posts"),
@@ -542,8 +542,8 @@ test("localized indexes cannot override canonical publication lifecycle fields",
 
 test("choice-or-fate metadata stays aligned across indexes and localized bodies", () => {
   const expectedTag = "Choice and Circumstance";
-  const enIndex = readJson("../public/notes-data/_index.json");
-  const viIndex = readJson("../public/notes-data/vi/_index.json");
+  const enIndex = readJson("../content/notes-data/_index.json");
+  const viIndex = readJson("../content/notes-data/vi/_index.json");
   assert.ok(enIndex.posts.find((post) => post.slug === "choice-or-fate").tags.includes(expectedTag));
   assert.ok(viIndex.posts.find((post) => post.slug === "choice-or-fate").tags.includes(expectedTag));
   assert.ok(loadNote("choice-or-fate", "en")?.tags.includes(expectedTag));
@@ -551,17 +551,17 @@ test("choice-or-fate metadata stays aligned across indexes and localized bodies"
 });
 
 test("note card summaries and topics have one shared index-body value", () => {
-  const enIndex = readJson("../public/notes-data/_index.json");
+  const enIndex = readJson("../content/notes-data/_index.json");
   const viIndex = loadNotesIndex("vi");
 
   for (const indexedNote of enIndex.posts) {
-    const body = readJson(`../public/notes-data/posts/${indexedNote.slug}.json`);
+    const body = readJson(`../content/notes-data/posts/${indexedNote.slug}.json`);
     assert.equal(body.cardSummary, indexedNote.cardSummary, `${indexedNote.slug} EN cardSummary`);
     assert.equal(body.topic, indexedNote.topic, `${indexedNote.slug} EN topic`);
   }
 
   for (const indexedNote of viIndex.posts) {
-    const body = readJson(`../public/notes-data/vi/posts/${indexedNote.slug}.json`);
+    const body = readJson(`../content/notes-data/vi/posts/${indexedNote.slug}.json`);
     assert.equal(body.cardSummary, indexedNote.cardSummary, `${indexedNote.slug} VI cardSummary`);
     assert.equal(loadNote(indexedNote.slug, "vi")?.topic, indexedNote.topic);
   }

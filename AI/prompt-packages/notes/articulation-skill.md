@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `articulation-skill`.
 
 Source read:
-- `public/notes-data/posts/articulation-skill.json`
-- `public/notes-data/vi/posts/articulation-skill.json`
+- `content/notes-data/posts/articulation-skill.json`
+- `content/notes-data/vi/posts/articulation-skill.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

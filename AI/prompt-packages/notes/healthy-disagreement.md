@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `healthy-disagreement`.
 
 Source read:
-- `public/notes-data/posts/healthy-disagreement.json`
-- `public/notes-data/vi/posts/healthy-disagreement.json`
+- `content/notes-data/posts/healthy-disagreement.json`
+- `content/notes-data/vi/posts/healthy-disagreement.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

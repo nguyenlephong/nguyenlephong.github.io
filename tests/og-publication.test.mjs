@@ -8,6 +8,7 @@ import {
   parseVerifierArgs,
   verifyOgPublication,
 } from '../scripts/verify-og-publication.mjs'
+import { validateAuthoredArticleSlugUniqueness } from '../scripts/lib/article-slug-contract.mjs'
 import { expectedArticleOgPublications } from '../scripts/lib/media-publication-contract.mjs'
 
 const JPEG_FIXTURE = Buffer.from([0xff, 0xd8, 0xff, 0xd9])
@@ -22,37 +23,58 @@ async function createFixture(t) {
     liveBaseUrl: 'https://media.example.test',
     articleOg: {
       blog: {
-        sourceIndex: 'public/blog-data/_index.json',
+        sourceIndex: 'content/blog-data/_index.json',
         sourceDirectory: 'public/og/blog',
         sourceExtension: '.png',
         publicPathPrefix: '/og/blogs',
         publicationDirectory: 'og/blogs',
         publicationExtension: '.jpg',
         publicationFormat: 'jpeg',
+        prunePolicy: { maxDeleteCount: 20, maxDeletePercent: 100 },
       },
       notes: {
-        sourceIndex: 'public/notes-data/_index.json',
+        sourceIndex: 'content/notes-data/_index.json',
         sourceDirectory: 'public/og/notes',
         sourceExtension: '.png',
         publicPathPrefix: '/og/notes',
         publicationDirectory: 'og/notes',
         publicationExtension: '.jpg',
         publicationFormat: 'jpeg',
+        prunePolicy: { maxDeleteCount: 20, maxDeletePercent: 100 },
+      },
+    },
+  }
+  const publicContract = {
+    schemaVersion: 1,
+    articleOg: {
+      blog: {
+        localPathPrefix: '/og/blog',
+        publicPathPrefix: '/og/blogs',
+        publicationExtension: '.jpg',
+      },
+      notes: {
+        localPathPrefix: '/og/notes',
+        publicPathPrefix: '/og/notes',
+        publicationExtension: '.jpg',
       },
     },
   }
 
   await Promise.all([
     fs.mkdir(path.join(siteDir, 'config'), { recursive: true }),
-    fs.mkdir(path.join(siteDir, 'public/blog-data'), { recursive: true }),
-    fs.mkdir(path.join(siteDir, 'public/notes-data'), { recursive: true }),
+    fs.mkdir(path.join(siteDir, 'content/blog-data'), { recursive: true }),
+    fs.mkdir(path.join(siteDir, 'content/notes-data'), { recursive: true }),
     fs.mkdir(path.join(domPubDir, 'icdn/og/blogs'), { recursive: true }),
     fs.mkdir(path.join(domPubDir, 'icdn/og/notes'), { recursive: true }),
   ])
   await Promise.all([
     fs.writeFile(path.join(siteDir, 'config/media-publication.json'), JSON.stringify(contract)),
     fs.writeFile(
-      path.join(siteDir, 'public/blog-data/_index.json'),
+      path.join(siteDir, 'config/media-publication-public.json'),
+      JSON.stringify(publicContract),
+    ),
+    fs.writeFile(
+      path.join(siteDir, 'content/blog-data/_index.json'),
       JSON.stringify({
         posts: [
           { slug: 'static-first', date: '2020-01-01' },
@@ -61,7 +83,7 @@ async function createFixture(t) {
       }),
     ),
     fs.writeFile(
-      path.join(siteDir, 'public/notes-data/_index.json'),
+      path.join(siteDir, 'content/notes-data/_index.json'),
       JSON.stringify({ posts: [{ slug: 'calm-systems', date: '2020-01-03' }] }),
     ),
   ])
@@ -73,7 +95,7 @@ test('expects only published article OG assets and ignores stale unpublished fil
   const { domPubDir, siteDir } = await createFixture(t)
   await Promise.all([
     fs.writeFile(
-      path.join(siteDir, 'public/blog-data/_index.json'),
+      path.join(siteDir, 'content/blog-data/_index.json'),
       JSON.stringify({
         posts: [
           { slug: 'static-first', date: '2026-07-18' },
@@ -83,7 +105,7 @@ test('expects only published article OG assets and ignores stale unpublished fil
       }),
     ),
     fs.writeFile(
-      path.join(siteDir, 'public/notes-data/_index.json'),
+      path.join(siteDir, 'content/notes-data/_index.json'),
       JSON.stringify({
         posts: [{ slug: 'calm-systems', date: '2020-01-01', publishAt: '2026-07-19' }],
       }),
@@ -112,7 +134,7 @@ test('expects only published article OG assets and ignores stale unpublished fil
 test('fails closed when a raw OG publication index has invalid lifecycle metadata', async (t) => {
   const { siteDir } = await createFixture(t)
   await fs.writeFile(
-    path.join(siteDir, 'public/blog-data/_index.json'),
+    path.join(siteDir, 'content/blog-data/_index.json'),
     JSON.stringify({ posts: [{ slug: 'static-first', date: '2026-02-30' }] }),
   )
 
@@ -120,6 +142,80 @@ test('fails closed when a raw OG publication index has invalid lifecycle metadat
     expectedArticleOgPublications({ rootDir: siteDir, contentBuildDate: '2026-07-18' }),
     /invalid publication metadata for blog\/static-first: Content date must be a real UTC date/,
   )
+})
+
+test('rejects cross-surface duplicate slugs before build or publication regardless of lifecycle', async (t) => {
+  const { siteDir } = await createFixture(t)
+  await fs.writeFile(
+    path.join(siteDir, 'content/notes-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'static-first', date: '2020-01-01', status: 'draft' }],
+    }),
+  )
+
+  await assert.rejects(
+    validateAuthoredArticleSlugUniqueness({ rootDir: siteDir }),
+    /Blog and Notes slugs must be globally unique; "static-first"/,
+  )
+  await assert.rejects(
+    expectedArticleOgPublications({ rootDir: siteDir, surface: 'blog' }),
+    /Blog and Notes slugs must be globally unique; "static-first"/,
+  )
+})
+
+test('localized indexes may only alias canonical slugs from their own surface', async (t) => {
+  const { siteDir } = await createFixture(t)
+  const localizedDirectory = path.join(siteDir, 'content/blog-data/vi')
+  await fs.mkdir(localizedDirectory, { recursive: true })
+  await fs.writeFile(
+    path.join(localizedDirectory, '_index.json'),
+    JSON.stringify({ posts: [{ slug: 'calm-systems' }] }),
+  )
+
+  await assert.rejects(
+    validateAuthoredArticleSlugUniqueness({ rootDir: siteDir }),
+    /localized blog slug "calm-systems".*does not exist in its canonical index/,
+  )
+  await assert.rejects(
+    expectedArticleOgPublications({ rootDir: siteDir, surface: 'blog' }),
+    /localized blog slug "calm-systems".*does not exist in its canonical index/,
+  )
+})
+
+test('rejects symlinked or externally resolved publication indexes', async (t) => {
+  await t.test('direct index symlink', async (t) => {
+    const { siteDir } = await createFixture(t)
+    const rootDir = path.dirname(siteDir)
+    const indexPath = path.join(siteDir, 'content/blog-data/_index.json')
+    const externalIndex = path.join(rootDir, 'external-blog-index.json')
+    await fs.writeFile(externalIndex, JSON.stringify({ posts: [] }))
+    await fs.unlink(indexPath)
+    await fs.symlink(externalIndex, indexPath)
+
+    await assert.rejects(
+      expectedArticleOgPublications({ rootDir: siteDir }),
+      /blog sourceIndex must not be a symlink/,
+    )
+  })
+
+  await t.test('intermediate directory escapes the site root', async (t) => {
+    const { siteDir } = await createFixture(t)
+    const rootDir = path.dirname(siteDir)
+    const dataDirectory = path.join(siteDir, 'content/blog-data')
+    const externalDirectory = path.join(rootDir, 'external-blog-data')
+    await fs.rm(dataDirectory, { recursive: true })
+    await fs.mkdir(externalDirectory, { recursive: true })
+    await fs.writeFile(
+      path.join(externalDirectory, '_index.json'),
+      JSON.stringify({ posts: [] }),
+    )
+    await fs.symlink(externalDirectory, dataDirectory)
+
+    await assert.rejects(
+      expectedArticleOgPublications({ rootDir: siteDir }),
+      /blog sourceIndex escapes the canonical site root/,
+    )
+  })
 })
 
 test('proves all expected article OG keys from a read-only local dom-pub tree', async (t) => {

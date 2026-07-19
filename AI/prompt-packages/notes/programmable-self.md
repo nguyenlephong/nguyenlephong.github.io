@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `programmable-self`.
 
 Source read:
-- `public/notes-data/posts/programmable-self.json`
-- `public/notes-data/vi/posts/programmable-self.json`
+- `content/notes-data/posts/programmable-self.json`
+- `content/notes-data/vi/posts/programmable-self.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

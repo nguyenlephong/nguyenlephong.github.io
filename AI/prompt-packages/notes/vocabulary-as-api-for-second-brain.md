@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `vocabulary-as-api-for-second-brain`.
 
 Source read:
-- `public/notes-data/posts/vocabulary-as-api-for-second-brain.json`
-- `public/notes-data/vi/posts/vocabulary-as-api-for-second-brain.json`
+- `content/notes-data/posts/vocabulary-as-api-for-second-brain.json`
+- `content/notes-data/vi/posts/vocabulary-as-api-for-second-brain.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

@@ -203,10 +203,10 @@ test("notes schemas accept minimal valid shapes", () => {
 
 test("all authored locale overrides satisfy strict partial schemas", () => {
   for (const locale of ["vi", "zh", "ja", "ko", "fr"]) {
-    const index = readJson(`../public/blog-data/${locale}/_index.json`);
+    const index = readJson(`../content/blog-data/${locale}/_index.json`);
     assert.equal(blogIndexOverrideSchema.safeParse(index).success, true, `blog ${locale} index`);
     const directory = fileURLToPath(
-      new URL(`../public/blog-data/${locale}/posts`, import.meta.url)
+      new URL(`../content/blog-data/${locale}/posts`, import.meta.url)
     );
     for (const file of readdirSync(directory).filter((name) => name.endsWith(".json"))) {
       const post = JSON.parse(readFileSync(path.join(directory, file), "utf8"));
@@ -219,11 +219,11 @@ test("all authored locale overrides satisfy strict partial schemas", () => {
   }
 
   assert.equal(
-    notesIndexOverrideSchema.safeParse(readJson("../public/notes-data/vi/_index.json")).success,
+    notesIndexOverrideSchema.safeParse(readJson("../content/notes-data/vi/_index.json")).success,
     true
   );
   const notesDirectory = fileURLToPath(
-    new URL("../public/notes-data/vi/posts", import.meta.url)
+    new URL("../content/notes-data/vi/posts", import.meta.url)
   );
   for (const file of readdirSync(notesDirectory).filter((name) => name.endsWith(".json"))) {
     const note = JSON.parse(readFileSync(path.join(notesDirectory, file), "utf8"));
@@ -235,7 +235,7 @@ test("all authored locale overrides satisfy strict partial schemas", () => {
 });
 
 test("archive corpora and sitemap pages follow authored locale availability", () => {
-  const blogIndex = readJson("../public/blog-data/_index.json");
+  const blogIndex = readJson("../content/blog-data/_index.json");
   const expectedBlogCounts = Object.fromEntries(
     ["en", "vi", "zh", "ja", "ko", "fr"].map((locale) => [
       locale,
@@ -305,7 +305,7 @@ test("root and localized homes split WebSite and profile schema ownership", () =
 });
 
 test("Vietnamese blog index contains the May 10-14 localized posts", () => {
-  const viIndex = readJson("../public/blog-data/vi/_index.json");
+  const viIndex = readJson("../content/blog-data/vi/_index.json");
   const scopedSlugs = [
     "service-mesh-do-you-need-it",
     "navigating-office-politics",
@@ -316,7 +316,7 @@ test("Vietnamese blog index contains the May 10-14 localized posts", () => {
 
   for (const slug of scopedSlugs) {
     const indexed = viIndex.posts.find((post) => post.slug === slug);
-    const post = readJson(`../public/blog-data/vi/posts/${slug}.json`);
+    const post = readJson(`../content/blog-data/vi/posts/${slug}.json`);
 
     assert.ok(indexed, `${slug} should be listed in the Vietnamese blog index`);
     assert.deepEqual(
@@ -345,8 +345,8 @@ test("Vietnamese blog index contains the May 10-14 localized posts", () => {
 });
 
 test("scoped notes keep filename slug and localized index dates aligned", () => {
-  const enIndex = readJson("../public/notes-data/_index.json");
-  const viIndex = readJson("../public/notes-data/vi/_index.json");
+  const enIndex = readJson("../content/notes-data/_index.json");
+  const viIndex = readJson("../content/notes-data/vi/_index.json");
   const scopedNotes = [
     {
       slug: "the-trap-of-information-consumption",
@@ -376,8 +376,8 @@ test("scoped notes keep filename slug and localized index dates aligned", () => 
   ];
 
   for (const note of scopedNotes) {
-    const enPost = readJson(`../public/notes-data/posts/${note.slug}.json`);
-    const viPost = readJson(`../public/notes-data/vi/posts/${note.slug}.json`);
+    const enPost = readJson(`../content/notes-data/posts/${note.slug}.json`);
+    const viPost = readJson(`../content/notes-data/vi/posts/${note.slug}.json`);
     const enIndexed = enIndex.posts.find((post) => post.slug === note.slug);
     const viIndexed = viIndex.posts.find((post) => post.slug === note.slug);
 
@@ -438,7 +438,7 @@ test("notes expose one canonical slug set across English and Vietnamese", () => 
     "utf8"
   );
   const notesIndex = JSON.parse(
-    readFileSync(new URL("../public/notes-data/_index.json", import.meta.url), "utf8")
+    readFileSync(new URL("../content/notes-data/_index.json", import.meta.url), "utf8")
   );
   const canonicalSlugs = notesIndex.posts.map((post) => post.slug);
 
@@ -476,8 +476,8 @@ test("notes expose one canonical slug set across English and Vietnamese", () => 
 });
 
 test("declared article locales match authored blog and notes files", () => {
-  const blogIndex = readJson("../public/blog-data/_index.json");
-  const notesIndex = readJson("../public/notes-data/_index.json");
+  const blogIndex = readJson("../content/blog-data/_index.json");
+  const notesIndex = readJson("../content/notes-data/_index.json");
   const optionalBlogLocales = ["vi", "zh", "ja", "ko", "fr"];
 
   for (const post of blogIndex.posts) {
@@ -486,7 +486,7 @@ test("declared article locales match authored blog and notes files", () => {
       ...optionalBlogLocales.filter((locale) =>
         existsSync(
           new URL(
-            `../public/blog-data/${locale}/posts/${post.slug}.json`,
+            `../content/blog-data/${locale}/posts/${post.slug}.json`,
             import.meta.url
           )
         )
@@ -503,7 +503,7 @@ test("declared article locales match authored blog and notes files", () => {
     const expected = [
       "en",
       ...(existsSync(
-        new URL(`../public/notes-data/vi/posts/${note.slug}.json`, import.meta.url)
+        new URL(`../content/notes-data/vi/posts/${note.slug}.json`, import.meta.url)
       )
         ? ["vi"]
         : [])

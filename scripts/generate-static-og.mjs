@@ -4,6 +4,7 @@ import path from 'node:path'
 import sharp from 'sharp'
 
 import { loadMediaPublicationContract } from './lib/media-publication-contract.mjs'
+import { validateAuthoredArticleSlugUniqueness } from './lib/article-slug-contract.mjs'
 import {
   isContentPublishedAtBuildDate,
   resolveContentBuildDate,
@@ -33,6 +34,7 @@ function hasFlag(name) {
 const surfaceArg = arg('--surface')
 const slugArg = arg('--slug')
 const contentBuildDate = resolveContentBuildDate(process.env.CONTENT_BUILD_DATE)
+await validateAuthoredArticleSlugUniqueness()
 const publicationContract = await loadMediaPublicationContract()
 
 function escapeXml(value) {

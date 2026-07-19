@@ -12,6 +12,7 @@ import {
   resolveBuildExitCode,
 } from './lib/build-export-guard.mjs'
 import { resolveContentBuildDate } from '../src/lib/content/publication-contract.mjs'
+import { validateAuthoredArticleSlugUniqueness } from './lib/article-slug-contract.mjs'
 
 const args = process.argv.slice(2)
 
@@ -321,6 +322,7 @@ const strictCache = hasFlag('--strict-cache')
 let contentBuildDate
 try {
   contentBuildDate = resolveContentBuildDate(process.env.CONTENT_BUILD_DATE)
+  await validateAuthoredArticleSlugUniqueness()
 } catch (error) {
   console.error(`[build-og] ${error instanceof Error ? error.message : error}`)
   process.exit(1)

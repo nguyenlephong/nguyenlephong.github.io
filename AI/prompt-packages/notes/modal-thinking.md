@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `modal-thinking`.
 
 Source read:
-- `public/notes-data/posts/modal-thinking.json`
-- `public/notes-data/vi/posts/modal-thinking.json`
+- `content/notes-data/posts/modal-thinking.json`
+- `content/notes-data/vi/posts/modal-thinking.json`
 - Approved reference: commit `48ac924f16`, `cross-functional-teams`
 
 Reference style:
