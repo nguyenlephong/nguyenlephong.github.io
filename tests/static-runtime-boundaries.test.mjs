@@ -186,6 +186,84 @@ test("document CSS, public CSS, and third-party resources follow route ownership
   assert.match(publicResources, /id="GTM_datalayer"/);
 });
 
+test("runtime documentation matches route and artifact ownership", () => {
+  const boundarySpec = readFileSync(
+    "specs/static-runtime-boundaries.md",
+    "utf8"
+  );
+  const technicalSpec = readFileSync(
+    "docs/technical-specification.md",
+    "utf8"
+  );
+  const budgets = JSON.parse(
+    readFileSync("config/static-artifact-budgets.json", "utf8")
+  );
+  const routeBudgets = budgets.performance.routeInitialJavaScript;
+  const studioBudgets = budgets.performance.studioInitialRuntime;
+
+  for (const document of [boundarySpec, technicalSpec]) {
+    assert.match(document, /MotionProvider[\s\S]{0,100}Home and Gallery/);
+    assert.match(
+      document,
+      /ArticleReaderTools[\s\S]{0,120}Blog and Notes article/
+    );
+    assert.match(
+      document,
+      /prepaint scripts (?:remain site-wide for|on) every\s+public route/
+    );
+    assert.match(document, /full-document\s+navigation/);
+    assert.match(document, /Studio[\s\S]{0,160}no[\s\S]{0,80}Google/);
+  }
+
+  const expectedRows = [
+    ["Home initial JavaScript, Brotli", routeBudgets.home.maxBrotliBytes],
+    ["Blog initial JavaScript, Brotli", routeBudgets.blog.maxBrotliBytes],
+    ["Notes initial JavaScript, Brotli", routeBudgets.notes.maxBrotliBytes],
+    [
+      "Studio direct initial JavaScript, Brotli",
+      routeBudgets.studio.maxBrotliBytes
+    ],
+    [
+      "Studio English default route, Brotli",
+      routeBudgets.studio.maxDefaultRouteBrotliBytes
+    ],
+    [
+      "Studio initial document CSS, Brotli",
+      studioBudgets.maxInitialDocumentCssBrotliBytes
+    ],
+    [
+      "Studio required Shadow CSS, Brotli",
+      studioBudgets.maxShadowCssBrotliBytes
+    ],
+    [
+      "Studio total initial CSS, Brotli",
+      studioBudgets.maxTotalInitialCssBrotliBytes
+    ]
+  ];
+  for (const [label, bytes] of expectedRows) {
+    const escapedLabel = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    assert.match(
+      technicalSpec,
+      new RegExp(
+        `\\| ${escapedLabel} \\| Hard limit: ${bytes.toLocaleString("en-US")} bytes \\|`
+      )
+    );
+  }
+
+  for (const bytes of [
+    studioBudgets.maxInitialDocumentCssBrotliBytes,
+    studioBudgets.maxShadowCssBrotliBytes,
+    studioBudgets.maxTotalInitialCssBrotliBytes
+  ]) {
+    assert.match(boundarySpec, new RegExp(bytes.toLocaleString("en-US")));
+  }
+
+  assert.doesNotMatch(
+    technicalSpec,
+    /237,656|237,782|237,694|240,640/
+  );
+});
+
 test("every public UI path into Studio uses the document navigation boundary", () => {
   const publicUiFiles = walk("src/components").filter(
     (file) =>

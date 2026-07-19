@@ -60,7 +60,7 @@ The locale prefix is always present in public URLs.
 | SEO structured data     | `schema-dts` and manual JSON-LD           | Person, WebSite, Blog, BlogPosting, Article, BreadcrumbList, FAQPage, ImageGallery, ItemList.            |
 | Social images           | `next/og`, `ImageResponse`, Node scripts  | Generates and caches OpenGraph images for profile, blog, notes, apps, and gallery pages.                 |
 | Styling                 | Global CSS, CSS variables, `next/font`    | Theme system, reading backgrounds, responsive layout, typography.                                        |
-| Motion             | `MotionProvider`                                       | Uses `framer-motion` `LazyMotion` with the smaller DOM animation bundle.            |
+| Motion                  | `MotionProvider` on Home and Gallery      | Uses `framer-motion` `LazyMotion` only on the two public surfaces that animate.                         |
 | Icons                   | `react-icons`                             | Navigation, cards, controls, app visuals.                                                                |
 | Graph/visual tools      | D3 packages                               | Thought graph components exist in the repo, although no active App Router thoughts route is present now. |
 | Analytics               | PostHog, Google Analytics, Google AdSense | Page views, scroll depth, read time, outbound clicks, app interactions, ads script.                      |
@@ -118,17 +118,26 @@ It must either be built ahead of time or handled by client-side JavaScript.
 
 `src/app/[locale]/layout.tsx` is the shared locale document boundary. It
 validates and sets the server request locale, owns shared locale metadata,
-loads global analytics, and mounts the shared Web Vitals reporter. It does not
-mount `NextIntlClientProvider` or serialize a client message catalog.
+loads the shared PostHog bootstrap, and mounts the shared Web Vitals reporter.
+It does not load Google Analytics or AdSense, mount
+`NextIntlClientProvider`, or serialize a client message catalog.
 
-`src/app/[locale]/(site)/layout.tsx` is the public-site boundary. It initializes
-theme, font, and reading-background preferences, then mounts the scoped site
-message provider, header, footer, motion and route progress, offline support,
-and reader tools. Home, Blog, Notes, and Gallery add a second provider only
-around their message-consuming client subtree. The pathless `(site)` segment
-does not appear in public URLs. Studio remains outside this route group, so it
-does not render or hydrate the public-site shell and receives no client message
-catalog.
+`src/app/[locale]/(site)/layout.tsx` is the public-site boundary. It runs the
+theme, font, and reading-background prepaint scripts on every public route,
+then mounts Google Analytics and AdSense resources, the scoped site message
+provider, header, footer, route progress, and offline support.
+`MotionProvider` is narrower: only the Home and Gallery page entries mount it.
+`ArticleReaderTools` is mounted only by the nested Blog and Notes article
+layouts. Home, Blog, Notes, and Gallery add a second provider only around their
+message-consuming client subtree. The pathless `(site)` segment does not appear
+in public URLs. Studio remains outside this route group, so it does not render
+or hydrate the public-site shell and receives no client message catalog.
+
+The footer's public-to-Studio link deliberately performs a full-document
+navigation. Session storage survives, but the public DOM and JavaScript realm
+do not: the Studio document has no Google Analytics or AdSense scripts,
+resource hints, account metadata, data-layer node, browser globals, or new
+Google requests left from the public page.
 
 ### Route Table
 
@@ -412,18 +421,24 @@ Main event sources:
   time
 - app/gallery/blog/notes components for clicks, filters, share actions, and
   reader tools
-- curated hub catalogs and pages for hub views, catalog clicks, article clicks,
-  and page changes with stable hub ID, page, content slug, and global position
+- curated hub catalogs, pages, and article hierarchy links for hub views,
+  source-aware hub/archive navigation, article clicks, and page changes with
+  stable hub ID, page, destination, content slug, and global position
 - `WebVitalsReporter` for web vitals
 
 Curated hubs emit `content_hub_view`, `content_hub_click`,
-`content_hub_article_click`, and `content_hub_page_change`. They also preserve
-the existing `blog_card_click` or `notes_card_click` event on article selection
-and `explorer_page_change` on pagination so established dashboards do not lose
+`content_hub_archive_click`, `content_hub_article_click`, and
+`content_hub_page_change`. Article hierarchy links reuse `content_hub_click`
+with a stable source and destination. They also preserve the existing
+`blog_card_click` or `notes_card_click` event on article selection and
+`explorer_page_change` on pagination so established dashboards do not lose
 their current taxonomy.
 
-PostHog, Google Analytics, and AdSense scripts are loaded from
-`src/app/[locale]/layout.tsx`.
+PostHog is loaded by the shared locale document in
+`src/app/[locale]/layout.tsx`. Google Analytics and AdSense belong to
+`src/app/[locale]/(site)/layout.tsx`, so Studio does not request or retain their
+public runtime. The public footer uses a full-document Studio link; its existing
+`cv_nav_click` event is sent with `sendBeacon` before navigation.
 
 ### Firebase Engagement
 
@@ -501,15 +516,15 @@ runbook.
 
 ## 11. Client UX Systems
 
-| System             | Files                                                  | Behavior                                                                            |
-|--------------------|--------------------------------------------------------|-------------------------------------------------------------------------------------|
-| Theme              | `ThemeScript`, `ThemeSync`, `ThemeToggle`, `theme-preference` | Applies `data-theme` early to avoid flashes and shares one parser/resolver for the persisted dark/light/system preference. |
-| Fonts              | `FontScript`, `FontSwitcher`                           | Lets readers change reading font preferences.                                       |
-| Reading background | `ReadingBackgroundScript`, `ReadingBackgroundSwitcher` | Applies optional material-style reading backgrounds for long-form pages.            |
-| Reader tools       | `BlogReaderTools`                                      | Floating toolbar for scroll controls, font, background, and language switching.     |
-| Route progress     | `RouteProgressBar`                                     | Click/popstate-aware progress bar for internal navigation.                          |
-| Motion             | `MotionProvider`                                       | Uses `framer-motion` `LazyMotion` with the smaller DOM animation bundle.            |
-| Explorer filters   | `ExplorerShell`, `useExplorer`, blog/notes explorers   | Search, filter, tag, and topic/category exploration on content indexes.             |
+| System             | Files                                                          | Behavior                                                                                                              |
+|--------------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| Theme              | `ThemeScript`, `ThemeSync`, `ThemeToggle`, `theme-preference` | Applies `data-theme` before paint on every public route and shares one parser/resolver for the persisted preference.  |
+| Fonts              | `FontScript`, `FontSwitcher`                                   | Applies the saved font before paint site-wide; interactive switching remains available where the UI exposes it.       |
+| Reading background | `ReadingBackgroundScript`, `ReadingBackgroundSwitcher`         | Applies the saved reading background before paint on every public route.                                               |
+| Reader tools       | `ArticleReaderTools`, `BlogReaderTools`                         | Mounts the floating toolbar only in nested Blog and Notes article layouts.                                             |
+| Route progress     | `RouteProgressBar`                                             | Provides click/popstate-aware progress on every public route.                                                          |
+| Motion             | `MotionProvider`                                               | Mounts `LazyMotion` only on Home and Gallery, not in the shared public-site layout.                                    |
+| Explorer filters   | `ExplorerShell`, `useExplorer`, blog/notes explorers`           | Provides search, filter, tag, and topic/category exploration on content indexes.                                      |
 
 ## 12. Build, Test, and Deploy
 
@@ -613,25 +628,28 @@ emitted HTML, JavaScript, and CSS file.
 `verify:performance-artifact` adds compressed and route-level RSC regression
 budgets without replacing those raw ceilings. Total RSC size is an advisory
 capacity signal because valid content growth increases it; average and
-per-surface route payloads remain hard gates. The initial fixed-date baseline
-and limits are:
+per-surface route payloads remain hard gates. The current configured gates are:
 
-| Surface or payload | 2026-07-18 baseline | Gate |
-|--------------------|---------------------:|-----:|
-| Home initial JavaScript, Brotli | 237,656 bytes | Hard limit: 240,640 bytes |
-| Blog initial JavaScript, Brotli | 237,782 bytes | Hard limit: 240,640 bytes |
-| Notes initial JavaScript, Brotli | 237,694 bytes | Hard limit: 240,640 bytes |
-| Studio initial JavaScript, Brotli | 169,964 bytes (2026-07-19 six-locale route-split baseline) | Hard limit: 176,128 bytes |
-| Studio English default route, Brotli | 199,659 bytes (complete locale/Welcome loader groups) | Hard limit: 204,800 bytes |
-| All exported RSC `.txt` payloads | 122,768,517 bytes | Advisory warning: 157,286,400 bytes |
-| Average of 24 localized home/Blog/Notes/Studio RSC samples | 40,253 bytes | Hard limit: 47,104 bytes |
-| Largest localized home RSC sample | 62,117 bytes | Hard limit: 67,584 bytes |
-| Largest localized Blog RSC sample | 44,738 bytes | Hard limit: 50,176 bytes |
-| Largest localized Notes RSC sample | 37,936 bytes | Hard limit: 43,008 bytes |
-| Largest localized Studio RSC sample | 25,924 bytes | Hard limit: 30,720 bytes |
+| Surface or payload | Current gate |
+|--------------------|-------------:|
+| Home initial JavaScript, Brotli | Hard limit: 238,592 bytes |
+| Blog initial JavaScript, Brotli | Hard limit: 219,136 bytes |
+| Notes initial JavaScript, Brotli | Hard limit: 219,136 bytes |
+| Studio direct initial JavaScript, Brotli | Hard limit: 176,128 bytes |
+| Studio English default route, Brotli | Hard limit: 204,800 bytes |
+| Studio initial document CSS, Brotli | Hard limit: 3,072 bytes |
+| Studio required Shadow CSS, Brotli | Hard limit: 16,384 bytes |
+| Studio total initial CSS, Brotli | Hard limit: 18,432 bytes |
+| All exported RSC `.txt` payloads | Advisory warning: 157,286,400 bytes |
+| Average of 24 localized Home/Blog/Notes/Studio RSC samples | Hard limit: 47,104 bytes |
+| Largest localized Home RSC sample | Hard limit: 67,584 bytes |
+| Largest localized Blog RSC sample | Hard limit: 50,176 bytes |
+| Largest localized Notes RSC sample | Hard limit: 43,008 bytes |
+| Largest localized Studio RSC sample | Hard limit: 30,720 bytes |
 
-The hard limits include only a narrow regression allowance; the aggregate RSC
-warning leaves more room for legitimate content growth. Client messages are
+These values are configuration gates, not frozen measurements. The verifier
+prints the observed values from each checked export. The aggregate RSC warning
+leaves room for legitimate content growth. Client messages are
 checked on every localized route-level `.txt` payload that has a sibling HTML
 page. The locale root layout injects no global catalog. Every public route
 contains exactly one scoped site provider; only home, Gallery, Blog
@@ -647,6 +665,15 @@ contract rejects transitive provider-dependent internationalization as well as
 eagerly loaded heavy dashboard, ReactFlow, Recharts, and Firebase markers, and
 rejects new third-party connection origins unless they are explicitly reviewed
 in `config/static-artifact-budgets.json`.
+
+Studio CSS accounting follows actual runtime ownership. Initial document CSS is
+the set of local stylesheets plus combined inline style blocks referenced by
+the Studio HTML. Required Shadow CSS is `studio/studio-shadow.css`, referenced
+by reachable Studio JavaScript and applied inside the Shadow root. Total initial
+CSS combines both measured groups, so Shadow CSS is neither mislabeled as a
+document stylesheet nor omitted from the initial cost. The three Brotli caps
+are 3,072, 16,384, and 18,432 bytes respectively; external stylesheets fail the
+gate unless their origins are explicitly allowlisted.
 
 The Studio artifact gate additionally reports the Brotli/raw totals for every
 JavaScript chunk transitively reachable from the English Studio entry. Its
