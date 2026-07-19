@@ -31,6 +31,8 @@ const REQUIRED_RSC_SURFACES = Object.freeze([
   "notes",
   "studio"
 ]);
+const CHUNK_REFERENCE_PATTERN =
+  /(?:\/?_next\/)?static\/chunks\/[^"'`\\\s?#]+\.js/g;
 
 function attributeValue(tag, name) {
   const expression = new RegExp(
@@ -70,6 +72,40 @@ function directScriptReferences(html) {
         .filter(Boolean)
     )
   ];
+}
+
+function referencedScriptChunks(source) {
+  return [
+    ...new Set(
+      [...source.matchAll(CHUNK_REFERENCE_PATTERN)].map((match) => {
+        const reference = match[0].replace(/^\//, "");
+        return reference.startsWith("_next/") ? reference : `_next/${reference}`;
+      })
+    )
+  ];
+}
+
+async function collectReachableJavaScript({ index, initialFiles, failures }) {
+  const queue = [...initialFiles];
+  const seen = new Set(queue);
+  const sources = [];
+
+  for (let cursor = 0; cursor < queue.length; cursor += 1) {
+    const file = queue[cursor];
+    const source = await index.readText(file);
+    sources.push(source);
+    for (const reference of referencedScriptChunks(source)) {
+      if (seen.has(reference)) continue;
+      if (!index.has(reference)) {
+        failures.push(`Studio JavaScript references missing chunk: ${reference}`);
+        continue;
+      }
+      seen.add(reference);
+      queue.push(reference);
+    }
+  }
+
+  return { files: queue, source: sources.join("\n") };
 }
 
 function thirdPartyConnectionOrigins(html, siteOrigin) {
@@ -167,6 +203,10 @@ function validateConfig(config) {
     !validateClientMessageConfig(clientMessages) ||
     !Array.isArray(studio?.requiredMarkers) ||
     studio.requiredMarkers.some(
+      (marker) => typeof marker !== "string" || marker.length === 0
+    ) ||
+    !Array.isArray(studio?.requiredReachableMarkers) ||
+    studio.requiredReachableMarkers.some(
       (marker) => typeof marker !== "string" || marker.length === 0
     ) ||
     !Array.isArray(studio?.forbiddenMarkers) ||
@@ -394,10 +434,22 @@ export async function verifyPerformanceArtifact({
   });
 
   const studioSource = routeSources.get("studio") ?? "";
+  const studioReachable = await collectReachableJavaScript({
+    index,
+    initialFiles: routeInitialJavaScript.studio?.files ?? [],
+    failures
+  });
   for (const marker of performance.studioInitialRuntime.requiredMarkers) {
     if (!studioSource.includes(marker)) {
       failures.push(
         `Studio initial JavaScript is missing required marker: ${marker}`
+      );
+    }
+  }
+  for (const marker of performance.studioInitialRuntime.requiredReachableMarkers) {
+    if (!studioReachable.source.includes(marker)) {
+      failures.push(
+        `Studio reachable JavaScript is missing required marker: ${marker}`
       );
     }
   }
@@ -441,6 +493,9 @@ export async function verifyPerformanceArtifact({
     studio: {
       thirdPartyConnectionOrigins: studioThirdPartyOrigins,
       requiredInitialMarkers: performance.studioInitialRuntime.requiredMarkers,
+      requiredReachableMarkers:
+        performance.studioInitialRuntime.requiredReachableMarkers,
+      reachableJavaScriptFiles: studioReachable.files,
       forbiddenInitialMarkers: performance.studioInitialRuntime.forbiddenMarkers
     },
     artifactIndex: index.metrics(),

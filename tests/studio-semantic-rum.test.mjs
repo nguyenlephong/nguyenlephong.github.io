@@ -19,6 +19,19 @@ require.extensions[".ts"] = (module, filename) => {
   module._compile(output, filename);
 };
 
+require.extensions[".tsx"] = (module, filename) => {
+  const source = readFileSync(filename, "utf8");
+  const output = ts.transpileModule(source, {
+    compilerOptions: {
+      esModuleInterop: true,
+      jsx: ts.JsxEmit.ReactJSX,
+      module: ts.ModuleKind.CommonJS,
+      target: ts.ScriptTarget.ES2022
+    }
+  }).outputText;
+  module._compile(output, filename);
+};
+
 async function importTypeScriptModule(path) {
   const source = await readFile(path, "utf8");
   const { outputText } = ts.transpileModule(source, {
@@ -33,13 +46,14 @@ async function importTypeScriptModule(path) {
 
 test("Studio keeps one localized light-DOM H1 through the shadow lifecycle", async () => {
   const staticContent = require("../src/app/[locale]/studio/studio-static-content.ts");
-  const [page, workspace, overview, shadowIsland, adminShell, shadowStyles] =
+  const [page, workspace, overview, shadowIsland, adminShell, welcomeFeature, shadowStyles] =
     await Promise.all([
       readFile("src/app/[locale]/studio/page.tsx", "utf8"),
       readFile("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8"),
       readFile("src/app/[locale]/studio/StudioStaticOverview.tsx", "utf8"),
       readFile("src/components/studio-kit/shadow-island.tsx", "utf8"),
       readFile("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8"),
+      readFile("src/app/[locale]/studio/StudioWelcomeFeature.tsx", "utf8"),
       readFile("public/studio/studio-shadow.css", "utf8")
     ]);
 
@@ -55,9 +69,9 @@ test("Studio keeps one localized light-DOM H1 through the shadow lifecycle", asy
   assert.match(shadowIsland, /<slot name="studio-page-heading" \/>/);
   assert.match(shadowIsland, /<slot name="studio-loading-fallback" \/>/);
   assert.match(adminShell, /<slot name="studio-page-heading" \/>/);
-  assert.match(adminShell, /<h2>\{route\.title\}<\/h2>/);
+  assert.match(welcomeFeature, /<h2>\{route\.title\}<\/h2>/);
 
-  for (const shadowSource of [overview, shadowIsland, adminShell]) {
+  for (const shadowSource of [overview, shadowIsland, adminShell, welcomeFeature]) {
     assert.doesNotMatch(shadowSource, /<h1\b/);
   }
   assert.doesNotMatch(shadowStyles, /route-heading h1|welcome-intro h1|auth-card h1/);
@@ -66,6 +80,32 @@ test("Studio keeps one localized light-DOM H1 through the shadow lifecycle", asy
     const content = staticContent.getStudioStaticContent(locale);
     assert.ok(content.title.trim().length > 0, `${locale} Studio title must be localized`);
   }
+});
+
+test("Studio deferred shell keeps the named heading and overview slots projected", () => {
+  const React = require("react");
+  const { renderToStaticMarkup } = require("react-dom/server");
+  const shellBoundaryModule = require(
+    "../src/app/[locale]/studio/StudioShellErrorBoundary.tsx"
+  );
+  const workspace = readFileSync("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8");
+  const markup = renderToStaticMarkup(React.createElement(shellBoundaryModule.StudioDeferredShellFallback));
+
+  assert.match(markup, /<slot name="studio-page-heading"><\/slot>/);
+  assert.match(markup, /<slot name="studio-loading-fallback"><\/slot>/);
+  assert.doesNotMatch(workspace, /loading:\s*\(\) => null/);
+  assert.equal(workspace.match(/loading:\s*StudioDeferredShellFallback/g)?.length, 6);
+  assert.match(workspace, /StudioShellErrorBoundary/);
+
+  const boundary = new shellBoundaryModule.default({
+    children: "shell",
+    copy: { title: "Unavailable", detail: "Reload required", reload: "Reload Studio" }
+  });
+  boundary.state = { failed: true };
+  const errorMarkup = renderToStaticMarkup(boundary.render());
+  assert.match(errorMarkup, /<slot name="studio-page-heading"><\/slot>/);
+  assert.match(errorMarkup, /<slot name="studio-loading-fallback"><\/slot>/);
+  assert.match(errorMarkup, /Reload Studio/);
 });
 
 test("one root RUM reporter covers site and Studio without losing metric precision", async () => {

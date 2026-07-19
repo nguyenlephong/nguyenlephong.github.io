@@ -1,16 +1,12 @@
+
 "use client";
 
-import dynamic from "next/dynamic";
+import { track } from "@/lib/analytics";
+import StudioAuxiliaryDashboardsRuntime from "./StudioAuxiliaryDashboardsRuntime";
 import StudioFeatureErrorBoundary from "./StudioFeatureErrorBoundary";
-import type { StudioAuxiliaryDashboardsRuntimeProps } from "./StudioAuxiliaryDashboardsRuntime";
-
-const StudioAuxiliaryDashboardsRuntime = dynamic<StudioAuxiliaryDashboardsRuntimeProps>(
-  () => import("./StudioAuxiliaryDashboardsRuntime"),
-  {
-    ssr: false,
-    loading: () => <div className="route-page studio-feature-loading" role="status" aria-label="Loading dashboard" />
-  }
-);
+import { createStudioFeatureLoadErrorCallback } from "./studio-feature-load-error";
+import type { StudioRoute } from "./studio-route-contract";
+import { routeMetrics } from "./studio-auxiliary-route-metrics";
 
 const fallbackCopy: Record<string, { title: string; detail: string; retry: string }> = {
   en: { title: "Dashboard unavailable", detail: "This dashboard could not be loaded. Studio navigation is still available.", retry: "Reload Studio" },
@@ -21,23 +17,35 @@ const fallbackCopy: Record<string, { title: string; detail: string; retry: strin
   fr: { title: "Tableau de bord indisponible", detail: "Ce tableau de bord n’a pas pu être chargé. La navigation du Studio reste disponible.", retry: "Recharger Studio" }
 };
 
-export default function StudioAuxiliaryDashboardsFeature(
-  props: StudioAuxiliaryDashboardsRuntimeProps
-) {
-  const copy = fallbackCopy[props.locale] ?? fallbackCopy["en"];
+export default function StudioDashboardRoutesFeature({ route, locale }: { route: StudioRoute; locale: string }) {
+  const copy = fallbackCopy[locale] ?? fallbackCopy["en"];
 
   return (
     <StudioFeatureErrorBoundary
+      onError={createStudioFeatureLoadErrorCallback(
+        {
+          featureId: "auxiliary-dashboard",
+          routeId: route.id,
+          routeKind: route.kind,
+          locale
+        },
+        track
+      )}
       onRetry={() => window.location.reload()}
       renderFallback={(retry) => (
         <div className="route-page studio-feature-fallback" role="status">
           <strong>{copy.title}</strong>
           <p>{copy.detail}</p>
-          <button type="button" className="outline-button" onClick={retry}>{copy.retry}</button>
+          <button type="button" className="outline-button" onClick={retry}>
+            {copy.retry}
+          </button>
         </div>
       )}
     >
-      <StudioAuxiliaryDashboardsRuntime {...props} />
+      <StudioAuxiliaryDashboardsRuntime
+        route={{ ...route, metrics: routeMetrics[route.id] ?? [] }}
+        locale={locale}
+      />
     </StudioFeatureErrorBoundary>
   );
 }

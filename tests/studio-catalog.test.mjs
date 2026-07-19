@@ -95,17 +95,19 @@ function flattenNavRouteIds(groups) {
 test("Studio route, nav, welcome, and static identities share one data-only catalog", () => {
   const { studioCatalog } = catalogModule;
   const catalogSource = readFileSync("src/app/[locale]/studio/studio-route-catalog.ts", "utf8");
-  const shellSource = readFileSync("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8");
+  const routeDefinitionSource = readFileSync("src/app/[locale]/studio/studio-route-definitions.ts", "utf8");
+  const navigationSource = readFileSync("src/app/[locale]/studio/studio-shell-navigation.ts", "utf8");
+  const registrySource = readFileSync("src/app/[locale]/studio/StudioRouteFeatureRegistry.tsx", "utf8");
   const routeIds = studioCatalog.routeIds;
 
   assert.equal(new Set(routeIds).size, routeIds.length, "catalog route IDs must be unique");
   assert.ok(routeIds.includes(studioCatalog.defaultRouteId));
   assert.deepEqual(
-    [...routeDefinitionIds(shellSource)].sort(),
+    [...routeDefinitionIds(routeDefinitionSource)].sort(),
     [...routeIds].sort(),
     "hydrated route definitions must cover the catalog exactly"
   );
-  const hydratedKinds = routeDefinitionKinds(shellSource);
+  const hydratedKinds = routeDefinitionKinds(routeDefinitionSource);
   studioCatalog.routes.forEach((route) => {
     assert.equal(
       hydratedKinds.get(route.id),
@@ -177,8 +179,14 @@ test("Studio route, nav, welcome, and static identities share one data-only cata
   }
 
   assert.doesNotMatch(catalogSource, /from\s+["']react(?:-icons)?|<\w+[\s>]/);
-  assert.match(shellSource, /studioCatalog\.navGroups/);
-  assert.match(shellSource, /studioCatalog\.welcomeRouteIds/);
-  assert.match(shellSource, /studioCatalog\.deepLinkRouteIds/);
-  assert.match(shellSource, /isLocationRouteId/);
+  assert.match(navigationSource, /studioCatalog\.navGroups/);
+  assert.match(navigationSource, /studioCatalog\.deepLinkRouteIds/);
+  assert.match(navigationSource, /isLocationRouteId/);
+  assert.match(registrySource, /case "welcome":/);
+  assert.match(registrySource, /case "ai-setup":/);
+  assert.match(registrySource, /case "ai-skills":/);
+  assert.match(registrySource, /case "checklists":/);
+  assert.match(registrySource, /case "flows":/);
+  assert.match(registrySource, /return <StudioAuxiliaryRoutesFeatureAdapter/);
+  assert.match(registrySource, /assertNeverRouteKind/);
 });

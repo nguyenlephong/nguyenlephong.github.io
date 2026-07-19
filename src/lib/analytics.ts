@@ -117,6 +117,7 @@ export type AnalyticsEvent =
   | 'studio_preference_change'
   | 'studio_preference_restore'
   | 'studio_sidebar_toggle'
+  | 'studio_feature_load_error'
   | 'studio_ai_skill_filter'
   | 'studio_ai_skill_select'
   | 'studio_ai_skill_copy'

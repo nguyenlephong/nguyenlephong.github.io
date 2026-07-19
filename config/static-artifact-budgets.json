@@ -28,7 +28,8 @@
       },
       "studio": {
         "html": "en/studio.html",
-        "maxBrotliBytes": 337920
+        "maxBrotliBytes": 176128,
+        "maxDefaultRouteBrotliBytes": 204800
       }
     },
     "rsc": {
@@ -100,11 +101,8 @@
       }
     },
     "studioInitialRuntime": {
-      "requiredMarkers": [
-        "studio_route_open",
-        "data-studio-module",
-        "data-studio-shadow-host"
-      ],
+      "requiredMarkers": ["data-studio-shadow-host"],
+      "requiredReachableMarkers": ["studio_route_open", "data-studio-module"],
       "forbiddenMarkers": [
         "data-studio-auxiliary-dashboard",
         "data-studio-flow-runtime",

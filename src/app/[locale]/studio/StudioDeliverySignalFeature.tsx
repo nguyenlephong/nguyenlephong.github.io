@@ -1,7 +1,10 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { track } from "@/lib/analytics";
 import StudioFeatureErrorBoundary from "./StudioFeatureErrorBoundary";
+import { createStudioFeatureLoadErrorCallback } from "./studio-feature-load-error";
+import type { StudioRouteId, StudioRouteKind } from "./studio-route-catalog";
 
 const DeliverySignalChart = dynamic(() => import("./StudioDeliverySignalChart"), {
   ssr: false,
@@ -17,11 +20,25 @@ const fallbackCopy: Record<string, { title: string; detail: string; retry: strin
   fr: { title: "Graphique indisponible", detail: "Les signaux de livraison n’ont pas pu être chargés. Le reste du Studio reste disponible.", retry: "Recharger Studio" }
 };
 
-export default function StudioDeliverySignalFeature({ locale }: Readonly<{ locale: string }>) {
+type StudioDeliverySignalFeatureProps = Readonly<{
+  locale: string;
+  routeId: StudioRouteId;
+  routeKind: StudioRouteKind;
+}>;
+
+export default function StudioDeliverySignalFeature({
+  locale,
+  routeId,
+  routeKind
+}: StudioDeliverySignalFeatureProps) {
   const copy = fallbackCopy[locale] ?? fallbackCopy["en"];
 
   return (
     <StudioFeatureErrorBoundary
+      onError={createStudioFeatureLoadErrorCallback(
+        { featureId: "delivery-signal", routeId, routeKind, locale },
+        track
+      )}
       onRetry={() => window.location.reload()}
       renderFallback={(retry) => (
         <div className="studio-chart-shell studio-feature-fallback" role="status">

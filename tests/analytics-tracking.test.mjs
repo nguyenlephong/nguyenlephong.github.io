@@ -3,6 +3,10 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import ts from "typescript";
 
+async function readSources(paths) {
+  return (await Promise.all(paths.map((path) => readFile(path, "utf8")))).join("\n");
+}
+
 async function importTypeScript(source) {
   const output = ts.transpileModule(source, {
     compilerOptions: {
@@ -452,7 +456,22 @@ test("public content surfaces have explicit posthog page and interaction events"
 test("studio analytics and agent rules cover new workspace interactions", async () => {
   const [analytics, adminShell, agents, claude, gemini] = await Promise.all([
     readFile("src/lib/analytics.ts", "utf8"),
-    readFile("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8"),
+    readSources([
+      "src/app/[locale]/studio/studio-admin-shell.tsx",
+      "src/app/[locale]/studio/StudioShellChrome.tsx",
+      "src/app/[locale]/studio/studio-shell-navigation.ts",
+      "src/app/[locale]/studio/StudioWelcomeFeature.tsx",
+      "src/app/[locale]/studio/StudioAiSkillsFeature.tsx",
+      "src/app/[locale]/studio/StudioChecklistsFeature.tsx",
+      "src/app/[locale]/studio/StudioFlowFeature.tsx",
+      "src/app/[locale]/studio/StudioFlowChart.tsx",
+      "src/app/[locale]/studio/StudioRouteFeatureRegistry.tsx",
+      "src/app/[locale]/studio/StudioWorkspace.tsx",
+      "src/app/[locale]/studio/StudioDeliverySignalFeature.tsx",
+      "src/app/[locale]/studio/StudioFlowCanvasFeature.tsx",
+      "src/app/[locale]/studio/StudioDashboardRoutesFeature.tsx",
+      "src/app/[locale]/studio/studio-feature-load-error.ts"
+    ]),
     readFile("AGENTS.md", "utf8"),
     readFile("CLAUDE.md", "utf8"),
     readFile("GEMINI.md", "utf8")
@@ -467,6 +486,7 @@ test("studio analytics and agent rules cover new workspace interactions", async 
     "studio_preference_change",
     "studio_preference_restore",
     "studio_sidebar_toggle",
+    "studio_feature_load_error",
     "studio_ai_skill_filter",
     "studio_ai_skill_select",
     "studio_ai_skill_copy",
@@ -499,7 +519,7 @@ test("studio analytics and agent rules cover new workspace interactions", async 
     /onActivate\(item\.routeId \?\? DEFAULT_ROUTE, "sidebar"\)/
   );
   assert.match(adminShell, /onActivate\(route\.id, "command"\)/);
-  assert.match(adminShell, /source:\s*"route_actions"/);
+  assert.match(adminShell, /onActivate\([^\n]+, "route_actions"\)/);
   assert.match(adminShell, /source:\s*"sidebar_profile_grid"/);
   assert.match(adminShell, /source:\s*"account_menu"/);
   assert.match(adminShell, /source:\s*"topbar"/);

@@ -1,0 +1,508 @@
+import type { StudioUiCopy } from "./studio-shell-copy";
+
+export const englishStudioCopy: StudioUiCopy = {
+  brand: "Studio",
+  navLabel: "Nguyen Le Phong's personal Studio",
+  navItems: {
+    welcome: "Start here",
+    "ai-agent-setup": "AI Setup",
+    "ai-skills": "AI Skills",
+    "delivery-checklists": "Checklists",
+    "flow-menu": "Flow Menu",
+    "flow-system-design": "System Design",
+    "flow-architecture-decision": "Architecture Decision",
+    "flow-incident-response": "Incident Response",
+    "flow-release-readiness": "Release Readiness",
+    "flow-ai-delivery": "AI Delivery",
+    "flow-portfolio-story": "Portfolio Story",
+    "flow-react-flow-architecture-demo": "Flow examples",
+    "flow-react-flow-system-blueprint": "System blueprint"
+  },
+  profileItems: {
+    home: {
+      label: "Home",
+      detail: "Profile overview."
+    },
+    about: {
+      label: "About",
+      detail: "Experience and background."
+    },
+    gallery: {
+      label: "Gallery",
+      detail: "Selected visual records."
+    },
+    blog: {
+      label: "Blog",
+      detail: "Long-form writing."
+    },
+    notes: {
+      label: "Notes",
+      detail: "Shorter working notes."
+    },
+    apps: {
+      label: "Apps",
+      detail: "Small tools and experiments."
+    },
+    resume: {
+      label: "Resume",
+      detail: "Open the CV PDF."
+    }
+  },
+  profileMenuTitle: "Profile menu",
+  profileNavigationTitle: "Profile navigation",
+  profileNavigationDetail:
+    "Open any public profile section without leaving the Studio workspace.",
+  openProfileHome: "Open profile home",
+  findSetupNote: "Search Studio",
+  search: "Search",
+  searchPlaceholder: "Search Studio pages...",
+  commandPaletteLabel: "Search Studio pages",
+  closeSearch: "Close search",
+  openStudio: "Open Studio",
+  closeNavigation: "Close navigation",
+  toggleNavigation: "Toggle navigation",
+  openPreferences: "Open Studio preferences",
+  openGithubProfile: "Open GitHub profile",
+  openAccountMenu: "Open account menu",
+  routeKicker: {
+    legacy: "Legacy",
+    studio: "Studio"
+  },
+  routeMetricsLabel: "Page summary",
+  runtime: {
+    loading: "Loading Studio workspace…",
+    loadErrorTitle: "Workspace unavailable",
+    loadErrorDetail:
+      "This workspace could not be loaded. Navigation and preferences are still available.",
+    reload: "Reload Studio"
+  },
+  dashboard: {
+    workstreamCount: (count) => `${count} workstream${count === 1 ? "" : "s"}`,
+    emptyTitle: "No matching workstreams",
+    emptyDescription: "Adjust the search or status filter to see workstreams.",
+    clearFilters: "Clear filters"
+  },
+  status: {
+    ready: "Ready",
+    draft: "Draft",
+    next: "Planned"
+  },
+  categories: {
+    all: "All",
+    engineering: "Engineering",
+    content: "Content",
+    operations: "Operations",
+    communication: "Communication",
+    strategy: "Strategy",
+    learning: "Learning"
+  },
+  routes: {
+    welcome: {
+      title: "Start here",
+      description:
+        "A practical index of my setup notes, reusable workflows, delivery checklists, and visual system maps.",
+      panels: ["Choose a workspace", "Useful links", "Studio pages"],
+      timeline: [
+        "Choose the right workspace",
+        "Keep the source material close",
+        "Finish with something concrete"
+      ]
+    },
+    "ai-agent-setup": {
+      title: "AI Setup",
+      description:
+        "Working notes for AI tools, MCP integrations, and a safe new-machine setup.",
+      panels: ["Setup library", "Agent workflow", "Command runbook"],
+      timeline: [
+        "Skill library reviewed",
+        "MCP install path captured",
+        "Credential guardrail checked"
+      ]
+    },
+    "ai-skills": {
+      title: "AI Skills",
+      description:
+        "Reusable instructions for focused work with Codex, Claude, Gemini, Antigravity, and other AI tools.",
+      panels: ["Skill taxonomy", "Markdown preview", "Copy-ready prompt"],
+      timeline: [
+        "Installed skills inventoried",
+        "Capability gaps mapped",
+        "English and Vietnamese prompts prepared"
+      ]
+    },
+    "delivery-checklists": {
+      title: "Engineering Checklists",
+      description:
+        "Practical checklists for understanding a task, making a change, reviewing it, and releasing it safely.",
+      panels: ["Task intake", "Module creation", "Release and rollout"],
+      timeline: [
+        "Ticket intake path mapped",
+        "Module checklist nested",
+        "Rollout phases captured"
+      ]
+    },
+    "flow-system-design": {
+      title: "System Design Flow",
+      description:
+        "A shareable system design path from vague prompt to architecture trade-offs, failure modes, and evolution plan.",
+      panels: ["Problem frame", "Runtime map", "Failure modes"],
+      timeline: [
+        "Requirement frame set",
+        "Data ownership mapped",
+        "Evolution path documented"
+      ]
+    },
+    "flow-architecture-decision": {
+      title: "Architecture Decision Flow",
+      description:
+        "A lightweight RFC/ADR flow for choosing between options with clear trade-offs, risk gates, and rollback.",
+      panels: ["Decision scope", "Option matrix", "Risk gates"],
+      timeline: ["Invariants listed", "Options compared", "Decision note ready"]
+    },
+    "flow-incident-response": {
+      title: "Incident Response Flow",
+      description:
+        "A production incident flow for triage, mitigation, communication, recovery, and follow-up work.",
+      panels: ["Signal", "Mitigation", "Postmortem"],
+      timeline: [
+        "Signal confirmed",
+        "Blast radius contained",
+        "Follow-up owners assigned"
+      ]
+    },
+    "flow-release-readiness": {
+      title: "Release Readiness Flow",
+      description:
+        "A rollout gate for checking scope, verification, data, observability, and rollback before production.",
+      panels: ["Scope", "Verification", "Rollout decision"],
+      timeline: [
+        "Scope checked",
+        "Analytics and SEO reviewed",
+        "Rollback trigger named"
+      ]
+    },
+    "flow-ai-delivery": {
+      title: "AI-Assisted Delivery Flow",
+      description:
+        "A controlled delivery path for using AI agents without losing scope, privacy, tests, or human judgment.",
+      panels: ["Task brief", "Context pack", "Verification"],
+      timeline: ["Boundaries set", "Focused diff reviewed", "Handoff prepared"]
+    },
+    "flow-portfolio-story": {
+      title: "Portfolio Story Flow",
+      description:
+        "A career-proof flow for turning real engineering work into grounded CV, blog, and interview stories.",
+      panels: ["Context", "Trade-offs", "Impact"],
+      timeline: [
+        "Context captured",
+        "Impact evidence selected",
+        "Story draft shaped"
+      ]
+    },
+    "flow-react-flow-architecture-demo": {
+      title: "React Flow Examples",
+      description:
+        "An interactive collection of React Flow patterns for navigation, grouping, layout, whiteboarding, and software architecture.",
+      panels: [
+        "Choose an example",
+        "Explore the canvas",
+        "Inspect architecture zones"
+      ],
+      timeline: [
+        "Choose a pattern",
+        "Inspect its relationships",
+        "Try the canvas controls"
+      ]
+    },
+    "flow-react-flow-system-blueprint": {
+      title: "System Design Blueprint",
+      description:
+        "A detailed system map covering DNS, edge policy, load balancing, storage, media processing, queues, and fan-out services.",
+      panels: ["Full system map", "Focused views", "Production components"],
+      timeline: [
+        "Trace the request path",
+        "Inspect runtime and storage",
+        "Follow media processing and fan-out"
+      ]
+    }
+  },
+  welcome: {
+    eyebrow: "Personal workbench",
+    lead: "I keep the practical parts of my engineering work here: setup notes, reusable AI instructions, delivery checklists, and visual system maps.",
+    note: "Choose the page that matches the job, check the source material, and finish with a useful decision, checklist, diagram, or verified change.",
+    studioLinks: "Studio shortcuts",
+    publicLinks: "Useful profile links",
+    open: "Open",
+    routeCards: {
+      "ai-agent-setup": {
+        label: "AI Setup",
+        detail: "Tool roles, MCP integrations, and new-machine setup notes."
+      },
+      "ai-skills": {
+        label: "AI Skills",
+        detail:
+          "Reusable instructions for focused research, review, and implementation."
+      },
+      "delivery-checklists": {
+        label: "Checklists",
+        detail:
+          "Step-by-step checks for task intake, implementation, review, and release."
+      },
+      "flow-react-flow-architecture-demo": {
+        label: "Flow examples",
+        detail:
+          "Interactive patterns for architecture, layout, grouping, styling, and navigation."
+      },
+      "flow-react-flow-system-blueprint": {
+        label: "System blueprint",
+        detail:
+          "A detailed map of DNS, runtime, storage, media processing, and fan-out."
+      }
+    },
+    linkCards: {
+      home: {
+        label: "Home",
+        detail: "Public profile overview."
+      },
+      notes: {
+        label: "Notes",
+        detail: "Short working notes and reflections."
+      },
+      blog: {
+        label: "Blog",
+        detail: "Longer technical and personal essays."
+      },
+      apps: {
+        label: "Apps",
+        detail: "Small tools and experiments."
+      },
+      resume: {
+        label: "Resume",
+        detail: "Open the latest PDF CV."
+      }
+    }
+  },
+  flows: {
+    emptyTitle: "No flows are available yet",
+    emptyDescription: "Published flows will appear here when they are ready.",
+    menu: "Flow menu",
+    menuDetail:
+      "Reusable paths for system design, production delivery, AI-assisted engineering, and portfolio writing.",
+    groupMenuLabel: "Flow groups",
+    flowListLabel: "Shareable Studio flows",
+    selectedFlow: "Selected Studio flow",
+    chartLabel: "Flow chart",
+    chartHint:
+      "Read from left to right. Each node marks an action or decision, with evidence and output kept nearby.",
+    chartOutcome: "Target outcome",
+    exampleFamily: "Example family",
+    exampleView: "View",
+    exampleSelectorLabel: "React Flow example selector",
+    boardTools: "Board tools",
+    viewNotes: "View notes",
+    useWhen: "Use when",
+    outcome: "Outcome",
+    officeExample: "Practical example",
+    artifacts: "Working artifacts",
+    cvSignals: "Portfolio evidence",
+    evidence: "Evidence",
+    output: "Output",
+    shareFlow: "Share flow",
+    copied: "Copied",
+    openFlow: "Open flow",
+    enterFullscreen: "Fullscreen board",
+    exitFullscreen: "Exit fullscreen",
+    canvasMode: "Canvas mode",
+    inspectMode: "Inspect",
+    editMode: "Edit sandbox",
+    layoutMode: "Layout",
+    layoutSource: "Source",
+    layoutHorizontal: "Horizontal",
+    layoutVertical: "Vertical",
+    layoutGrid: "Grid",
+    layoutPreset: "Layout presets",
+    layoutPresetSource: "Source",
+    layoutPresetCompact: "Compact",
+    layoutPresetWide: "Wide",
+    layoutPresetTall: "Tall",
+    layoutPresetGrid: "Grid",
+    applyLayout: "Apply layout",
+    resetBoard: "Reset",
+    undo: "Undo",
+    redo: "Redo",
+    copyNode: "Copy node",
+    pasteNode: "Paste node",
+    addNote: "Add note",
+    deleteNode: "Delete node",
+    fitBoard: "Fit board",
+    isolate: "Isolate",
+    fullGraph: "Full graph",
+    upstream: "Upstream",
+    current: "Current",
+    downstream: "Downstream",
+    trailEmpty: "No link",
+    trailMore: (count) => `+${count} more`,
+    relationMap: "Relation map",
+    nodeDetails: "Node details",
+    edgeDetails: "Edge details",
+    inspector: "Inspector",
+    selectedNode: "Selected node",
+    selectedEdge: "Selected edge",
+    noSelection: "Select a node or edge to inspect it.",
+    nodeCount: "Nodes",
+    edgeCount: "Edges",
+    groupCount: "Groups",
+    hiddenCount: "Hidden",
+    tags: "Flow tags",
+    details: "Flow details",
+    scratch: "Scratch",
+    reviewNote: "Review note",
+    temporaryAnnotation: "Temporary annotation for this Studio session.",
+    nodeLabels: {
+      hub: "Hub",
+      step: "Step",
+      detail: "Detail",
+      input: "Input",
+      default: "Default",
+      output: "Output",
+      group: "Group",
+      service: "Service",
+      gateway: "Gateway",
+      database: "Database",
+      queue: "Queue",
+      topic: "Topic",
+      cache: "Cache",
+      worker: "Worker",
+      external: "External",
+      decision: "Decision",
+      risk: "Risk",
+      note: "Note",
+      system: "System",
+      source: "Source",
+      process: "Process",
+      agent: "Agent",
+      review: "Review",
+      storage: "Storage",
+      event: "Event"
+    },
+    familyLabels: {
+      overview: "Overview",
+      interaction: "Interaction",
+      grouping: "Subflows & Grouping",
+      layout: "Layout",
+      styling: "Styling",
+      whiteboard: "Whiteboard",
+      architecture: "Software Architecture"
+    },
+    collapseGroup: "Collapse group",
+    expandGroup: "Expand group",
+    boardSandbox:
+      "Your edits stay in this browser session. Undo or reset them at any time; the source diagram is unchanged."
+  },
+  aiSetup: {
+    addNote: "Add note",
+    setupLibrary: "Setup library",
+    agentSetupNotes: "Agent setup notes",
+    agentRuntimes: "Agent runtimes",
+    selectedNote: "Selected AI setup note",
+    updated: "Updated",
+    setupNoteTags: "Setup note tags",
+    commandRunbook: "Command runbook",
+    commandRunbookDetail:
+      "Commands to verify before using them on a new machine.",
+    setupCommands: "Setup commands",
+    referenceLinks: "Reference links",
+    aiWorkflow: "AI workflow",
+    aiWorkflowDetail:
+      "A simple path from source material to a checked, reusable result.",
+    setupChecklist: "Setup checklist",
+    researchQueue: "Research queue"
+  },
+  aiSkills: {
+    emptyTitle: "No AI skills are available yet",
+    emptyDescription: "Published skills will appear here when they are ready.",
+    copyMarkdown: "Copy markdown",
+    copied: "Copied",
+    copy: "Copy",
+    skillLibrary: "Skill library",
+    skillLibraryDetail:
+      "Reusable instructions you can copy into an AI work session.",
+    categoriesLabel: "Skill categories",
+    skillCountLabel: (count) => `${count} skills`,
+    selectedSkill: "Selected AI skill markdown",
+    skillTags: "Skill tags",
+    useThisWhen: "Use this when",
+    copyBehavior: "Copy behavior",
+    copyBehaviorDetail:
+      "The button copies the complete markdown instruction, including its process, expected output, and guardrails.",
+    operatingRule: "Operating rule",
+    operatingRuleDetail:
+      "Use the instruction as a starting point. Keep the task boundaries, source material, and final judgment explicit."
+  },
+  checklists: {
+    emptyTitle: "No checklists are available yet",
+    emptyDescription:
+      "Published checklists will appear here when they are ready.",
+    copyChecklist: "Copy checklist",
+    copied: "Copied",
+    copy: "Copy",
+    menu: "Checklist menu",
+    menuDetail:
+      "Step-by-step checks from task intake through release and rollout.",
+    workflowListLabel: "Workflow checklists",
+    selectedChecklist: "Selected workflow checklist",
+    checklistTags: "Checklist tags",
+    sections: "sections",
+    steps: "steps",
+    whenToUse: "When to use",
+    structure: "Structure",
+    structureDetail: (sections, steps) =>
+      `${sections} sections, ${steps} nested steps, copy-ready as markdown.`,
+    markdownCopy: "Markdown copy",
+    markdownUseWhen: "Use when",
+    detailsLabel: "Checklist details"
+  },
+  preferences: {
+    title: "Preferences",
+    description: "Theme, font, and layout for this Studio workspace.",
+    palette: "Appearance",
+    themeMode: "Theme mode",
+    resolvedNow: "Currently using",
+    font: "Font",
+    pageLayout: "Page layout",
+    pageLayoutHelp:
+      "Centered is easier to read. Full width gives diagrams and workspaces more room.",
+    navbarBehavior: "Navbar behavior",
+    navbarHelp:
+      "Sticky keeps the controls visible. Scroll moves them with the page.",
+    sidebarStyle: "Sidebar style",
+    sidebarStyleHelp:
+      "Choose how closely the navigation sits beside the workspace.",
+    collapseMode: "Collapse mode",
+    collapseModeHelp:
+      "Icon leaves a narrow navigation rail. Offcanvas hides the sidebar completely on desktop.",
+    restoreDefaults: "Restore layout defaults",
+    themeOptions: {
+      light: "Light",
+      system: "System",
+      dark: "Dark"
+    },
+    contentLayoutOptions: {
+      centered: "Centered",
+      "full-width": "Full width"
+    },
+    navbarStyleOptions: {
+      sticky: "Sticky",
+      scroll: "Scroll"
+    },
+    sidebarVariantOptions: {
+      inset: "Inset",
+      sidebar: "Sidebar",
+      floating: "Floating"
+    },
+    sidebarCollapsibleOptions: {
+      icon: "Icon",
+      offcanvas: "Offcanvas"
+    }
+  }
+};

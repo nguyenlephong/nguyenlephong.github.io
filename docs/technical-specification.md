@@ -549,7 +549,8 @@ and limits are:
 | Home initial JavaScript, Brotli | 237,656 bytes | Hard limit: 240,640 bytes |
 | Blog initial JavaScript, Brotli | 237,782 bytes | Hard limit: 240,640 bytes |
 | Notes initial JavaScript, Brotli | 237,694 bytes | Hard limit: 240,640 bytes |
-| Studio initial JavaScript, Brotli | 327,860 bytes | Hard limit: 337,920 bytes |
+| Studio initial JavaScript, Brotli | 169,964 bytes (2026-07-19 six-locale route-split baseline) | Hard limit: 176,128 bytes |
+| Studio English default route, Brotli | 199,659 bytes (complete locale/Welcome loader groups) | Hard limit: 204,800 bytes |
 | All exported RSC `.txt` payloads | 122,768,517 bytes | Advisory warning: 157,286,400 bytes |
 | Average of 24 localized home/Blog/Notes/Studio RSC samples | 40,253 bytes | Hard limit: 47,104 bytes |
 | Largest localized home RSC sample | 62,117 bytes | Hard limit: 67,584 bytes |
@@ -570,8 +571,19 @@ empty values, and must match a recognized non-empty scope. Each public Client
 Component boundary receives only its declared namespace allowlist. The Studio
 contract rejects transitive provider-dependent internationalization as well as
 eagerly loaded heavy dashboard, ReactFlow, Recharts, and Firebase markers, and
-rejects new third-party connection origins unless they are explicitly reviewed in
-`config/static-artifact-budgets.json`.
+rejects new third-party connection origins unless they are explicitly reviewed
+in `config/static-artifact-budgets.json`.
+
+The Studio artifact gate additionally reports the Brotli/raw totals for every
+JavaScript chunk transitively reachable from the English Studio entry. Its
+direct entry retains the 176,128-byte ceiling. The default-route hard gate
+parses Turbopack `Promise.all` loaders and counts every sibling chunk needed by
+the selected English locale and Welcome route; the full reachable async total
+remains visible separately. Mail, AI Skills, Delivery Checklists, auxiliary
+dashboards, ReactFlow, and Recharts must remain reachable lazy chunks and are
+forbidden from that default path. Stable sentinels verify isolated loaders for
+English, Vietnamese, Chinese, Japanese, Korean, and French and reject
+cross-locale copy from the selected English entry.
 
 `npm run analyze` uses the official Next.js 16
 `next experimental-analyze --output` command and adds no package. The generated

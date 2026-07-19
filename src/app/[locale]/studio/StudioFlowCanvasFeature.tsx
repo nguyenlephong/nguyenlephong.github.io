@@ -1,7 +1,10 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { track } from "@/lib/analytics";
 import StudioFeatureErrorBoundary from "./StudioFeatureErrorBoundary";
+import { createStudioFeatureLoadErrorCallback } from "./studio-feature-load-error";
+import type { StudioRouteId } from "./studio-route-catalog";
 import type { StudioFlowCanvasRuntimeProps } from "./StudioFlowCanvasRuntime";
 
 const StudioFlowCanvasRuntime = dynamic<StudioFlowCanvasRuntimeProps>(
@@ -20,12 +23,17 @@ const fallbackCopy: Record<string, { title: string; detail: string; retry: strin
 
 export default function StudioFlowCanvasFeature({
   locale,
+  routeId,
   ...runtimeProps
-}: StudioFlowCanvasRuntimeProps & Readonly<{ locale: string }>) {
+}: StudioFlowCanvasRuntimeProps & Readonly<{ locale: string; routeId: StudioRouteId }>) {
   const copy = fallbackCopy[locale] ?? fallbackCopy["en"];
 
   return (
     <StudioFeatureErrorBoundary
+      onError={createStudioFeatureLoadErrorCallback(
+        { featureId: "flow-canvas", routeId, routeKind: "flows", locale },
+        track
+      )}
       onRetry={() => window.location.reload()}
       renderFallback={(retry) => (
         <div className="flow-react-surface studio-feature-fallback" role="status">

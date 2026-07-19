@@ -141,7 +141,8 @@ function createFixture(t, overrides = {}) {
         )
       },
       studioInitialRuntime: {
-        requiredMarkers: ["studio_route_open", "data-studio-module"],
+        requiredMarkers: ["data-studio-shadow-host"],
+        requiredReachableMarkers: ["studio_route_open", "data-studio-module"],
         forbiddenMarkers: ["data-studio-flow-runtime", "getFirestore"],
         allowedThirdPartyConnectionOrigins: ["https://analytics.example"]
       }
@@ -151,7 +152,11 @@ function createFixture(t, overrides = {}) {
 
   writeFileSync(
     path.join(chunksDir, "initial.js"),
-    "studio_route_open;data-studio-module;globalThis.site=true"
+    "data-studio-shadow-host;static/chunks/studio-runtime.js;globalThis.site=true"
+  );
+  writeFileSync(
+    path.join(chunksDir, "studio-runtime.js"),
+    "studio_route_open;data-studio-module"
   );
   for (const locale of LOCALES) {
     for (const surface of Object.keys(SURFACE_ROUTES)) {
@@ -253,7 +258,7 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
     "https://analytics.example"
   ]);
   assert.equal(report.artifactIndex.walks, 1);
-  assert.equal(report.artifactIndex.diskReads, 5);
+  assert.equal(report.artifactIndex.diskReads, 6);
   assert.ok(report.artifactIndex.cacheHits >= 3);
 });
 
@@ -503,7 +508,7 @@ test("keeps total RSC capacity advisory while enforcing average and Studio contr
   assert.doesNotMatch(failures, /Total RSC text bytes/);
   assert.match(report.warnings.join("\n"), /Total RSC text bytes/);
   assert.match(failures, /Average localized RSC route bytes/);
-  assert.match(failures, /missing required marker: data-studio-module/);
+  assert.match(failures, /reachable JavaScript is missing required marker: data-studio-module/);
   assert.match(failures, /contains forbidden marker: data-studio-flow-runtime/);
   assert.match(failures, /contains forbidden marker: getFirestore/);
   assert.match(

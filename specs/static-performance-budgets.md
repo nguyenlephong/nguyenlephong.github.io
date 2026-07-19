@@ -58,8 +58,24 @@ route-oriented measurements.
   scope, and each route must contain exactly one instance of every required
   scope with no extras or duplicates.
 - Keep heavy Studio dashboards, ReactFlow, Recharts, and Firebase/Firestore
-  markers out of the initial Studio scripts. Require stable Studio shell and
-  analytics markers so an accidental empty or unrelated bundle cannot pass.
+  markers out of the initial Studio scripts. Require the Shadow host marker in
+  the direct scripts and require Studio route analytics/module markers in the
+  reachable chunk graph, so valid route splitting cannot look like a missing
+  runtime and an accidental empty or unrelated bundle cannot pass.
+- Enforce the Studio direct-script ceiling at 176,128 bytes Brotli, a narrow
+  allowance over the 2026-07-19 measured 169,964-byte entry. Parse emitted
+  Turbopack `Promise.all` loader groups as atomic downloads, including every
+  sibling chunk needed by the selected locale and Welcome route. Hard-gate the
+  resulting default-route total at 204,800 bytes Brotli over its measured
+  199,659-byte baseline. Continue to report the complete reachable asynchronous
+  and combined totals as observability signals because feature growth and
+  entry-route latency are separate concerns.
+- Require representative lazy markers for Mail, AI Skills, Delivery
+  Checklists, auxiliary dashboards, ReactFlow, and Recharts in reachable async
+  chunks, and reject any of them from the default-route loader path. Locate all
+  six locale loaders with stable, locale-specific sentinels, require an isolated
+  Turbopack loader group for each one, and reject cross-locale copy from the
+  selected English entry/default set.
 - Allow only the documented analytics and advertising origins in Studio
   preconnect or DNS-prefetch markup. This is an allowlist, not a requirement to
   keep every current provider; later runtime work may remove an origin and
@@ -86,7 +102,8 @@ ceiling after its new baseline is verified.
   warning, while the average localized route sample remains a hard limit.
 - **AC-SPB-003:** Adding a heavy Studio runtime marker, Firebase marker, or an
   unapproved third-party connection to the initial Studio surface fails the
-  build gate.
+  build gate; required route/module markers must remain reachable through the
+  emitted chunk graph.
 - **AC-SPB-004:** Missing route, script, or localized payload samples fail
   closed instead of reporting a zero-sized success.
 - **AC-SPB-005:** The verifier scans the artifact inventory once and avoids
@@ -125,6 +142,19 @@ ceiling after its new baseline is verified.
   declared surface provider, and Studio transitive dependencies cannot reach a
   scoped provider, provider-dependent hook consumer, or locale-navigation
   runtime through an intermediate local module.
+- **AC-SPB-017:** The direct English Studio entry is strictly smaller than 250
+  KiB Brotli, while the Studio verifier reports async-reachable and combined
+  JavaScript totals from the same emitted chunk graph.
+- **AC-SPB-018:** Representative Studio features remain reachable but absent
+  from direct scripts; Vietnamese core copy is emitted but absent from the
+  English direct, Welcome, and default-locale chunks.
+- **AC-SPB-019:** The Studio default-route budget includes every sibling in the
+  selected Turbopack locale and Welcome loader groups, remains at or below
+  204,800 bytes Brotli, and cannot preload any representative non-default route.
+- **AC-SPB-020:** English, Vietnamese, Chinese, Japanese, Korean, and French
+  each expose a distinct reachable locale sentinel through an isolated loader
+  group; the selected English route path contains no sentinel from another
+  locale.
 
 ## Verification
 
@@ -135,6 +165,9 @@ ceiling after its new baseline is verified.
   placement and client-import escapes, empty collection placement, transitive
   Studio imports, Studio markers, missing artifacts, and third-party origin
   drift.
+- Run the focused Studio artifact fixtures for direct/default budget overflow,
+  complete `Promise.all` sibling accounting, reachable async accounting,
+  all-route preload rejection, eager feature markers, and six-locale isolation.
 - Run `npm run verify:performance-artifact` against the fixed-date production
   export.
 - Run `npm run analyze` when investigating a bundle regression; the interactive
