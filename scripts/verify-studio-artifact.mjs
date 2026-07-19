@@ -1,12 +1,17 @@
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, realpathSync } from "node:fs";
 import { brotliCompressSync } from "node:zlib";
-import { extname, join, relative, resolve, sep } from "node:path";
+import { extname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const STYLESHEET_RELATIVE_PATH = "studio/studio-shadow.css";
 const SHADOW_CSS_SENTINEL = '.studio-admin[data-navbar-style="scroll"]';
 const MIN_SHADOW_CSS_BYTES = 100_000;
 const DEFAULT_BUDGET_CONFIG = "config/static-artifact-budgets.json";
+const REPOSITORY_ROOT = realpathSync(
+  fileURLToPath(new URL("..", import.meta.url))
+);
+const CLI_OUT_DIR = join(REPOSITORY_ROOT, "out");
+const CLI_BUDGET_CONFIG = join(REPOSITORY_ROOT, DEFAULT_BUDGET_CONFIG);
 const STUDIO_INITIAL_BROTLI_LIMIT_EXCLUSIVE = 250 * 1024;
 const STUDIO_DEFAULT_ROUTE_BROTLI_LIMIT_EXCLUSIVE = 220 * 1024;
 const DEFAULT_ROUTE_MARKER = "welcome-route";
@@ -42,6 +47,22 @@ function listFiles(directory) {
   });
 }
 
+function canonicalArtifactPath(outDir, path) {
+  const canonicalPath = realpathSync(path);
+  const relativePath = relative(outDir, canonicalPath);
+  if (
+    relativePath === "" ||
+    relativePath === ".." ||
+    relativePath.startsWith(`..${sep}`) ||
+    isAbsolute(relativePath)
+  ) {
+    throw new Error(
+      `Studio artifact path resolves outside its root: ${relative(outDir, resolve(path))}`
+    );
+  }
+  return canonicalPath;
+}
+
 function assetPath(outDir, assetRef) {
   const normalized = assetRef.split("?", 1)[0].replace(/^\//, "");
   const candidate = resolve(outDir, normalized);
@@ -52,9 +73,10 @@ function assetPath(outDir, assetRef) {
 }
 
 function directStudioScripts(outDir, locale) {
-  const htmlPath = join(outDir, locale, "studio.html");
-  if (!existsSync(htmlPath))
-    throw new Error(`Missing Studio HTML: ${htmlPath}`);
+  const htmlCandidate = join(outDir, locale, "studio.html");
+  if (!existsSync(htmlCandidate))
+    throw new Error(`Missing Studio HTML: ${htmlCandidate}`);
+  const htmlPath = canonicalArtifactPath(outDir, htmlCandidate);
   const html = readFileSync(htmlPath, "utf8");
   const refs = [
     ...html.matchAll(/<script\b[^>]*\bsrc="([^"]+\.js(?:\?[^"]*)?)"[^>]*>/g)
@@ -62,10 +84,10 @@ function directStudioScripts(outDir, locale) {
   return [...new Set(refs)].map((ref) => assetPath(outDir, ref));
 }
 
-function compressedSize(files) {
+function compressedSize(outDir, files) {
   return files.reduce(
     (totals, file) => {
-      const bytes = readFileSync(file);
+      const bytes = readFileSync(canonicalArtifactPath(outDir, file));
       totals.raw += bytes.length;
       totals.brotli += brotliCompressSync(bytes).length;
       return totals;
@@ -256,19 +278,30 @@ export function verifyStudioArtifact({
   maxInitialBrotliBytes,
   maxDefaultRouteBrotliBytes
 } = {}) {
-  const absoluteOutDir = resolve(outDir);
+  if (!Object.hasOwn(STUDIO_LOCALE_SENTINELS, locale)) {
+    throw new Error(`Unsupported Studio artifact locale: ${locale}`);
+  }
+  const resolvedOutDir = resolve(outDir);
+  if (!existsSync(resolvedOutDir)) {
+    throw new Error(`Missing Studio artifact directory: ${resolvedOutDir}`);
+  }
+  const absoluteOutDir = realpathSync(resolvedOutDir);
   const studioBudgets = configuredStudioBudgets(
     configPath,
     maxInitialBrotliBytes,
     maxDefaultRouteBrotliBytes
   );
   const initialBrotliBudget = studioBudgets.initial;
-  const stylesheetPath = join(absoluteOutDir, STYLESHEET_RELATIVE_PATH);
-  if (!existsSync(stylesheetPath)) {
+  const stylesheetCandidate = join(absoluteOutDir, STYLESHEET_RELATIVE_PATH);
+  if (!existsSync(stylesheetCandidate)) {
     throw new Error(
-      `Missing external Studio Shadow stylesheet: ${stylesheetPath}`
+      `Missing external Studio Shadow stylesheet: ${stylesheetCandidate}`
     );
   }
+  const stylesheetPath = canonicalArtifactPath(
+    absoluteOutDir,
+    stylesheetCandidate
+  );
 
   const stylesheet = readFileSync(stylesheetPath);
   const stylesheetText = stylesheet.toString("utf8");
@@ -288,7 +321,7 @@ export function verifyStudioArtifact({
 
   const sourceCache = new Map();
   const sourceFor = (file) => {
-    const absoluteFile = resolve(file);
+    const absoluteFile = canonicalArtifactPath(absoluteOutDir, file);
     if (!sourceCache.has(absoluteFile)) {
       sourceCache.set(absoluteFile, readFileSync(absoluteFile, "utf8"));
     }
@@ -302,16 +335,17 @@ export function verifyStudioArtifact({
     );
   }
 
-  const initialJs = compressedSize(initialScripts);
+  const initialJs = compressedSize(absoluteOutDir, initialScripts);
   if (initialJs.brotli > initialBrotliBudget) {
     throw new Error(
       `Studio initial JavaScript Brotli bytes ${initialJs.brotli} exceed ${initialBrotliBudget}`
     );
   }
 
-  const chunksDir = join(absoluteOutDir, "_next", "static", "chunks");
-  if (!existsSync(chunksDir))
-    throw new Error(`Missing Next.js chunks: ${chunksDir}`);
+  const chunksCandidate = join(absoluteOutDir, "_next", "static", "chunks");
+  if (!existsSync(chunksCandidate))
+    throw new Error(`Missing Next.js chunks: ${chunksCandidate}`);
+  const chunksDir = canonicalArtifactPath(absoluteOutDir, chunksCandidate);
   const allScripts = listFiles(chunksDir).filter(
     (file) => extname(file) === ".js"
   );
@@ -345,10 +379,6 @@ export function verifyStudioArtifact({
       }
     )
   );
-  if (!Object.hasOwn(STUDIO_LOCALE_SENTINELS, locale)) {
-    throw new Error(`Unsupported Studio artifact locale: ${locale}`);
-  }
-
   const localeLoaderGroups = {};
   const localeLoaderPaths = {};
   for (const sentinelLocale of Object.keys(STUDIO_LOCALE_SENTINELS)) {
@@ -531,7 +561,10 @@ export function verifyStudioArtifact({
   const defaultRouteAsyncScripts = [...defaultRouteScriptSet].filter(
     (file) => !initialScriptSet.has(resolve(file))
   );
-  const defaultRouteAsyncJs = compressedSize(defaultRouteAsyncScripts);
+  const defaultRouteAsyncJs = compressedSize(
+    absoluteOutDir,
+    defaultRouteAsyncScripts
+  );
   const defaultRouteTotalJs = {
     raw: initialJs.raw + defaultRouteAsyncJs.raw,
     brotli: initialJs.brotli + defaultRouteAsyncJs.brotli
@@ -575,7 +608,7 @@ export function verifyStudioArtifact({
     }
   }
 
-  const asyncJs = compressedSize(asyncScripts);
+  const asyncJs = compressedSize(absoluteOutDir, asyncScripts);
 
   return {
     locale,
@@ -651,7 +684,15 @@ const isCli =
 
 if (isCli) {
   try {
-    const summary = verifyStudioArtifact({ outDir: process.argv[2] ?? "out" });
+    if (process.argv.length > 2) {
+      throw new Error(
+        "Studio artifact verification does not accept a custom artifact path"
+      );
+    }
+    const summary = verifyStudioArtifact({
+      outDir: canonicalArtifactPath(REPOSITORY_ROOT, CLI_OUT_DIR),
+      configPath: canonicalArtifactPath(REPOSITORY_ROOT, CLI_BUDGET_CONFIG)
+    });
     console.log(JSON.stringify(summary, null, 2));
   } catch (error) {
     console.error(error instanceof Error ? error.message : error);

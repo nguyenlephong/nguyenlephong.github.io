@@ -1,15 +1,25 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import {
+  copyFileSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
+  realpathSync,
+  renameSync,
   rmSync,
+  symlinkSync,
   writeFileSync
 } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 import { verifyStudioArtifact } from "../scripts/verify-studio-artifact.mjs";
+
+const VERIFIER_SCRIPT = fileURLToPath(
+  new URL("../scripts/verify-studio-artifact.mjs", import.meta.url)
+);
 
 const VIETNAMESE_ONLY_SENTINEL = "Khôi phục cách trình bày mặc định";
 const LOCALE_SENTINELS = {
@@ -182,6 +192,92 @@ test("Studio artifact verifier rejects representative feature code in direct scr
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("Studio artifact verifier rejects scripts symlinked outside the artifact root", () => {
+  const root = createFixture();
+  const outsideRoot = mkdtempSync(join(tmpdir(), "studio-artifact-outside-"));
+  try {
+    const initialPath = join(root, "_next/static/chunks/initial.js");
+    const outsidePath = join(outsideRoot, "initial.js");
+    writeFileSync(outsidePath, readFileSync(initialPath));
+    rmSync(initialPath);
+    symlinkSync(outsidePath, initialPath);
+
+    assert.throws(
+      () => verifyStudioArtifact({ outDir: root }),
+      /artifact path resolves outside its root/
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+    rmSync(outsideRoot, { recursive: true, force: true });
+  }
+});
+
+test("Studio artifact verifier rejects unsupported locales before reading HTML", () => {
+  const root = createFixture();
+  try {
+    assert.throws(
+      () => verifyStudioArtifact({ outDir: root, locale: "../../outside" }),
+      /Unsupported Studio artifact locale/
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("Studio artifact verifier CLI rejects caller-controlled artifact roots", () => {
+  const result = spawnSync(process.execPath, [VERIFIER_SCRIPT, "../outside"], {
+    encoding: "utf8"
+  });
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /does not accept a custom artifact path/);
+});
+
+test("Studio artifact verifier CLI rejects a fixed out path symlinked outside its repository", () => {
+  const artifactRoot = createFixture();
+  const cliRoot = mkdtempSync(join(tmpdir(), "studio-artifact-cli-"));
+  try {
+    const copiedScript = join(cliRoot, "scripts/verify-studio-artifact.mjs");
+    mkdirSync(join(cliRoot, "scripts"), { recursive: true });
+    copyFileSync(VERIFIER_SCRIPT, copiedScript);
+    symlinkSync(artifactRoot, join(cliRoot, "out"), "dir");
+
+    const result = spawnSync(process.execPath, [realpathSync(copiedScript)], {
+      encoding: "utf8"
+    });
+
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /artifact path resolves outside its root/);
+  } finally {
+    rmSync(cliRoot, { recursive: true, force: true });
+    rmSync(artifactRoot, { recursive: true, force: true });
+  }
+});
+
+test("Studio artifact verifier validates the chunks directory before enumeration", () => {
+  const root = createFixture();
+  const outsideRoot = mkdtempSync(join(tmpdir(), "studio-chunks-outside-"));
+  try {
+    const chunksPath = join(root, "_next/static/chunks");
+    const outsideChunks = join(outsideRoot, "chunks");
+    copyFileSync(join(chunksPath, "initial.js"), join(root, "initial.js"));
+    writeFileSync(
+      join(root, "en/studio.html"),
+      '<script src="/initial.js"></script>'
+    );
+    renameSync(chunksPath, outsideChunks);
+    symlinkSync(outsideChunks, chunksPath, "dir");
+
+    assert.throws(
+      () => verifyStudioArtifact({ outDir: root }),
+      /artifact path resolves outside its root/
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+    rmSync(outsideRoot, { recursive: true, force: true });
   }
 });
 
