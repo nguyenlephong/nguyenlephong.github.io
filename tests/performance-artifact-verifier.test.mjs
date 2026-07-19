@@ -144,6 +144,15 @@ function createFixture(t, overrides = {}) {
         requiredMarkers: ["data-studio-shadow-host"],
         requiredReachableMarkers: ["studio_route_open", "data-studio-module"],
         forbiddenMarkers: ["data-studio-flow-runtime", "getFirestore"],
+        maxInitialDocumentCssBrotliBytes:
+          overrides.maxInitialDocumentCssBrotliBytes ?? 10_000,
+        requiredShadowCssFiles: ["studio/studio-shadow.css"],
+        maxShadowCssBrotliBytes:
+          overrides.maxShadowCssBrotliBytes ?? 10_000,
+        maxTotalInitialCssBrotliBytes:
+          overrides.maxTotalInitialCssBrotliBytes ?? 20_000,
+        allowedExternalStylesheetOrigins:
+          overrides.allowedExternalStylesheetOrigins ?? [],
         allowedThirdPartyConnectionOrigins: ["https://analytics.example"]
       }
     }
@@ -156,7 +165,13 @@ function createFixture(t, overrides = {}) {
   );
   writeFileSync(
     path.join(chunksDir, "studio-runtime.js"),
-    "studio_route_open;data-studio-module"
+    "studio_route_open;data-studio-module;/studio/studio-shadow.css"
+  );
+  writeFileSync(path.join(chunksDir, "document.css"), ":root{color-scheme:light dark}");
+  mkdirSync(path.join(outDir, "studio"), { recursive: true });
+  writeFileSync(
+    path.join(outDir, "studio/studio-shadow.css"),
+    ".studio-admin{display:block}"
   );
   for (const locale of LOCALES) {
     for (const surface of Object.keys(SURFACE_ROUTES)) {
@@ -168,7 +183,11 @@ function createFixture(t, overrides = {}) {
         [
           "<!doctype html><html><head>",
           locale === "en" && surface === "studio"
-            ? '<link rel="preconnect" href="https://analytics.example">'
+            ? [
+                '<link rel="preconnect" href="https://analytics.example">',
+                '<link rel="stylesheet" href="/_next/static/chunks/document.css">',
+                '<style>.studio-static-overview{display:block}</style>'
+              ].join("")
             : "",
           '<script src="/_next/static/chunks/initial.js"></script>',
           "</head><body></body></html>"
@@ -257,9 +276,122 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
   assert.deepEqual(report.studio.thirdPartyConnectionOrigins, [
     "https://analytics.example"
   ]);
+  assert.deepEqual(report.studio.documentCss.localFiles, [
+    "_next/static/chunks/document.css"
+  ]);
+  assert.equal(report.studio.documentCss.inlineStyles.length, 1);
+  assert.deepEqual(report.studio.documentCss.externalStylesheets, []);
+  assert.deepEqual(report.studio.shadowCss.files, ["studio/studio-shadow.css"]);
+  assert.equal(
+    report.studio.totalInitialCss.rawBytes,
+    report.studio.documentCss.rawBytes + report.studio.shadowCss.rawBytes
+  );
+  assert.equal(
+    report.studio.totalInitialCss.brotliBytes,
+    report.studio.documentCss.brotliBytes + report.studio.shadowCss.brotliBytes
+  );
   assert.equal(report.artifactIndex.walks, 1);
-  assert.equal(report.artifactIndex.diskReads, 6);
+  assert.equal(report.artifactIndex.diskReads, 8);
   assert.ok(report.artifactIndex.cacheHits >= 3);
+});
+
+test("counts oversized inline CSS in the Studio document budget", async (t) => {
+  const { rootDir, outDir, chunksDir } = createFixture(t, {
+    maxInitialDocumentCssBrotliBytes: 20,
+    maxTotalInitialCssBrotliBytes: 100_000
+  });
+  writeFileSync(path.join(chunksDir, "document.css"), "");
+  const studioHtmlPath = path.join(outDir, "en/studio.html");
+  const oversizedInlineCss = Array.from(
+    { length: 200 },
+    (_, index) => `.inline-${index}{color:#${index.toString(16).padStart(6, "0")}}`
+  ).join("");
+  writeFileSync(
+    studioHtmlPath,
+    readFileSync(studioHtmlPath, "utf8")
+      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
+      .replace("</head>", `<style>${oversizedInlineCss}</style></head>`)
+  );
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.equal(report.studio.documentCss.inlineStyles.length, 1);
+  assert.match(
+    report.failures.join("\n"),
+    /Studio initial document CSS Brotli bytes/
+  );
+});
+
+test("enforces the required Studio Shadow stylesheet and its budget", async (t) => {
+  const oversized = createFixture(t, {
+    maxShadowCssBrotliBytes: 1,
+    maxTotalInitialCssBrotliBytes: 100_000
+  });
+  const oversizedReport = await verifyPerformanceArtifact({
+    rootDir: oversized.rootDir,
+    configPath: "budgets.json"
+  });
+  assert.match(
+    oversizedReport.failures.join("\n"),
+    /Studio required Shadow CSS Brotli bytes/
+  );
+
+  const missing = createFixture(t);
+  rmSync(path.join(missing.outDir, "studio/studio-shadow.css"));
+  const missingReport = await verifyPerformanceArtifact({
+    rootDir: missing.rootDir,
+    configPath: "budgets.json"
+  });
+  assert.match(
+    missingReport.failures.join("\n"),
+    /Studio required Shadow stylesheet is missing: studio\/studio-shadow\.css/
+  );
+});
+
+test("rejects a pure external Studio stylesheet without an explicit allowlist", async (t) => {
+  const { rootDir, outDir } = createFixture(t);
+  const studioHtmlPath = path.join(outDir, "en/studio.html");
+  writeFileSync(
+    studioHtmlPath,
+    readFileSync(studioHtmlPath, "utf8").replace(
+      "</head>",
+      '<link rel="stylesheet" href="https://cdn.example/studio.css"></head>'
+    )
+  );
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.deepEqual(report.studio.documentCss.externalStylesheets, [
+    "https://cdn.example/studio.css"
+  ]);
+  assert.match(
+    report.failures.join("\n"),
+    /Studio declares an unapproved external stylesheet: https:\/\/cdn\.example\/studio\.css/
+  );
+});
+
+test("requires the budgeted Shadow stylesheet to match the runtime reference", async (t) => {
+  const { rootDir, chunksDir } = createFixture(t);
+  writeFileSync(
+    path.join(chunksDir, "studio-runtime.js"),
+    "studio_route_open;data-studio-module"
+  );
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.match(
+    report.failures.join("\n"),
+    /missing required Shadow stylesheet reference: \/studio\/studio-shadow\.css/
+  );
 });
 
 test("rejects a full or unrelated client catalog on Studio", async (t) => {
@@ -482,6 +614,9 @@ test("rejects missing, extra, or aliased initial route mappings", async (t) => {
 test("keeps total RSC capacity advisory while enforcing average and Studio contracts", async (t) => {
   const { rootDir, outDir, chunksDir } = createFixture(t, {
     maxBrotliBytes: 1,
+    maxInitialDocumentCssBrotliBytes: 1,
+    maxShadowCssBrotliBytes: 1,
+    maxTotalInitialCssBrotliBytes: 1,
     warnTotalBytes: 1,
     maxAverageLocalizedRouteBytes: 1
   });
@@ -494,7 +629,7 @@ test("keeps total RSC capacity advisory while enforcing average and Studio contr
     studioHtmlPath,
     readFileSync(studioHtmlPath, "utf8").replace(
       "</head>",
-      '<link rel="stylesheet preconnect" href="https://unexpected.example"></head>'
+      '<link rel="preconnect" href="https://unexpected.example"></head>'
     )
   );
 
@@ -505,6 +640,9 @@ test("keeps total RSC capacity advisory while enforcing average and Studio contr
   const failures = report.failures.join("\n");
 
   assert.match(failures, /home initial JavaScript Brotli bytes/);
+  assert.match(failures, /Studio initial document CSS Brotli bytes/);
+  assert.match(failures, /Studio required Shadow CSS Brotli bytes/);
+  assert.match(failures, /Studio total initial CSS Brotli bytes/);
   assert.doesNotMatch(failures, /Total RSC text bytes/);
   assert.match(report.warnings.join("\n"), /Total RSC text bytes/);
   assert.match(failures, /Average localized RSC route bytes/);

@@ -103,6 +103,11 @@ test("analytics strips search data and clears stale page context before lazy boo
       path: "/unsafe?q=private-email%40example.com",
       referrer: "https://search.example/?q=private-email%40example.com#result"
     });
+    analytics.track(
+      "cv_nav_click",
+      { target: "studio_footer" },
+      { beacon: true }
+    );
 
     assert.equal(Array.isArray(window.posthog), true);
     const pageContextKeys = [
@@ -144,6 +149,17 @@ test("analytics strips search data and clears stale page context before lazy boo
     assert.equal(Object.hasOwn(capture[2], "q"), false);
     assert.equal(Object.hasOwn(capture[2], "search"), false);
     assert.doesNotMatch(JSON.stringify(window.posthog), /private-email/);
+    const boundaryCapture = window.posthog.find(
+      ([operation, event]) => operation === "capture" && event === "cv_nav_click"
+    );
+    assert.equal(
+      typeof boundaryCapture[2].$set_once.last_outbound_ts,
+      "number"
+    );
+    assert.deepEqual(boundaryCapture[3], {
+      send_instantly: true,
+      transport: "sendBeacon"
+    });
 
     assert.equal(analytics.getAnalyticsPathname(), "/en/blog");
   } finally {

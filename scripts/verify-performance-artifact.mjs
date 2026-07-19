@@ -74,6 +74,42 @@ function directScriptReferences(html) {
   ];
 }
 
+function directStylesheetReferences(html) {
+  return [
+    ...new Set(
+      collectTags(html, "link")
+        .filter((tag) =>
+          (attributeValue(tag, "rel") ?? "")
+            .toLowerCase()
+            .split(/[\t\n\f\r ]+/)
+            .includes("stylesheet")
+        )
+        .map((tag) => attributeValue(tag, "href"))
+        .filter(Boolean)
+    )
+  ];
+}
+
+function inlineStyleSources(html) {
+  return [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].map(
+    (match) => match[1]
+  );
+}
+
+function summarizeCssResources(resources) {
+  const unique = new Map();
+  for (const resource of resources) {
+    if (!unique.has(resource.key)) unique.set(resource.key, resource);
+  }
+  return [...unique.values()].reduce(
+    (summary, resource) => ({
+      rawBytes: summary.rawBytes + resource.rawBytes,
+      brotliBytes: summary.brotliBytes + resource.brotliBytes
+    }),
+    { rawBytes: 0, brotliBytes: 0 }
+  );
+}
+
 function referencedScriptChunks(source) {
   return [
     ...new Set(
@@ -213,6 +249,31 @@ function validateConfig(config) {
     studio.forbiddenMarkers.some(
       (marker) => typeof marker !== "string" || marker.length === 0
     ) ||
+    !Number.isInteger(studio?.maxInitialDocumentCssBrotliBytes) ||
+    studio.maxInitialDocumentCssBrotliBytes < 1 ||
+    !Array.isArray(studio?.requiredShadowCssFiles) ||
+    studio.requiredShadowCssFiles.length < 1 ||
+    studio.requiredShadowCssFiles.some((file) => {
+      if (typeof file !== "string" || !file.endsWith(".css")) return true;
+      const normalized = path.posix.normalize(file);
+      return (
+        normalized !== file ||
+        normalized.startsWith("../") ||
+        path.posix.isAbsolute(normalized)
+      );
+    }) ||
+    !Number.isInteger(studio?.maxShadowCssBrotliBytes) ||
+    studio.maxShadowCssBrotliBytes < 1 ||
+    !Number.isInteger(studio?.maxTotalInitialCssBrotliBytes) ||
+    studio.maxTotalInitialCssBrotliBytes < 1 ||
+    !Array.isArray(studio?.allowedExternalStylesheetOrigins) ||
+    studio.allowedExternalStylesheetOrigins.some((origin) => {
+      try {
+        return new URL(origin).origin !== origin;
+      } catch {
+        return true;
+      }
+    }) ||
     !Array.isArray(studio?.allowedThirdPartyConnectionOrigins) ||
     studio.allowedThirdPartyConnectionOrigins.some((origin) => {
       try {
@@ -279,6 +340,104 @@ async function collectInitialJavaScript({
     source: sources.join("\n"),
     html
   };
+}
+
+async function collectInitialDocumentCss({
+  index,
+  html,
+  siteOrigin,
+  allowedExternalStylesheetOrigins,
+  failures
+}) {
+  const localFiles = [];
+  const externalStylesheets = [];
+  const inlineStyles = [];
+  const resources = [];
+  const seen = new Set();
+
+  for (const reference of directStylesheetReferences(html)) {
+    let relativePath;
+    try {
+      relativePath = localArtifactPath(reference, siteOrigin);
+    } catch (error) {
+      failures.push(error instanceof Error ? error.message : String(error));
+      continue;
+    }
+    if (!relativePath) {
+      const origin = new URL(reference, siteOrigin).origin;
+      externalStylesheets.push(reference);
+      if (!allowedExternalStylesheetOrigins.has(origin)) {
+        failures.push(
+          `Studio declares an unapproved external stylesheet: ${reference}`
+        );
+      }
+      continue;
+    }
+    if (seen.has(relativePath)) continue;
+    seen.add(relativePath);
+    if (!index.has(relativePath)) {
+      failures.push(`Studio references missing local stylesheet: ${relativePath}`);
+      continue;
+    }
+    const bytes = await index.readBuffer(relativePath);
+    const resource = {
+      key: `file:${relativePath}`,
+      rawBytes: bytes.length,
+      brotliBytes: brotliCompressSync(bytes).length
+    };
+    localFiles.push(relativePath);
+    resources.push(resource);
+  }
+
+  const inlineBuffers = [];
+  for (const [index, source] of inlineStyleSources(html).entries()) {
+    const bytes = Buffer.from(source);
+    inlineBuffers.push(bytes);
+    inlineStyles.push({ index, rawBytes: bytes.length });
+  }
+  if (inlineBuffers.length > 0) {
+    const combinedInlineCss = Buffer.concat(inlineBuffers);
+    resources.push({
+      key: "inline:document",
+      rawBytes: combinedInlineCss.length,
+      brotliBytes: brotliCompressSync(combinedInlineCss).length
+    });
+  }
+
+  if (localFiles.length === 0) {
+    failures.push("Studio HTML has no direct local stylesheet");
+  }
+
+  return {
+    localFiles,
+    inlineStyles,
+    externalStylesheets,
+    resources,
+    ...summarizeCssResources(resources)
+  };
+}
+
+async function collectRequiredShadowCss({ index, requiredFiles, failures }) {
+  const files = [];
+  const resources = [];
+
+  for (const relativePath of requiredFiles) {
+    if (!index.has(relativePath)) {
+      failures.push(
+        `Studio required Shadow stylesheet is missing: ${relativePath}`
+      );
+      continue;
+    }
+    const bytes = await index.readBuffer(relativePath);
+    files.push(relativePath);
+    resources.push({
+      key: `file:${relativePath}`,
+      rawBytes: bytes.length,
+      brotliBytes: brotliCompressSync(bytes).length
+    });
+  }
+
+  return { files, resources, ...summarizeCssResources(resources) };
 }
 
 export async function verifyPerformanceArtifact({
@@ -434,11 +593,56 @@ export async function verifyPerformanceArtifact({
   });
 
   const studioSource = routeSources.get("studio") ?? "";
+  const allowedExternalStylesheetOrigins = new Set(
+    performance.studioInitialRuntime.allowedExternalStylesheetOrigins
+  );
+  const studioDocumentCss = await collectInitialDocumentCss({
+    index,
+    html: routeHtml.get("studio") ?? "",
+    siteOrigin,
+    allowedExternalStylesheetOrigins,
+    failures
+  });
+  const studioShadowCss = await collectRequiredShadowCss({
+    index,
+    requiredFiles: performance.studioInitialRuntime.requiredShadowCssFiles,
+    failures
+  });
+  const studioTotalInitialCss = summarizeCssResources([
+    ...studioDocumentCss.resources,
+    ...studioShadowCss.resources
+  ]);
+  addLimitFailure(
+    failures,
+    "Studio initial document CSS Brotli bytes",
+    studioDocumentCss.brotliBytes,
+    performance.studioInitialRuntime.maxInitialDocumentCssBrotliBytes
+  );
+  addLimitFailure(
+    failures,
+    "Studio required Shadow CSS Brotli bytes",
+    studioShadowCss.brotliBytes,
+    performance.studioInitialRuntime.maxShadowCssBrotliBytes
+  );
+  addLimitFailure(
+    failures,
+    "Studio total initial CSS Brotli bytes",
+    studioTotalInitialCss.brotliBytes,
+    performance.studioInitialRuntime.maxTotalInitialCssBrotliBytes
+  );
   const studioReachable = await collectReachableJavaScript({
     index,
     initialFiles: routeInitialJavaScript.studio?.files ?? [],
     failures
   });
+  for (const stylesheet of performance.studioInitialRuntime.requiredShadowCssFiles) {
+    const reference = `/${stylesheet}`;
+    if (!studioReachable.source.includes(reference)) {
+      failures.push(
+        `Studio reachable JavaScript is missing required Shadow stylesheet reference: ${reference}`
+      );
+    }
+  }
   for (const marker of performance.studioInitialRuntime.requiredMarkers) {
     if (!studioSource.includes(marker)) {
       failures.push(
@@ -492,6 +696,26 @@ export async function verifyPerformanceArtifact({
     clientMessages,
     studio: {
       thirdPartyConnectionOrigins: studioThirdPartyOrigins,
+      documentCss: {
+        localFiles: studioDocumentCss.localFiles,
+        inlineStyles: studioDocumentCss.inlineStyles,
+        externalStylesheets: studioDocumentCss.externalStylesheets,
+        rawBytes: studioDocumentCss.rawBytes,
+        brotliBytes: studioDocumentCss.brotliBytes,
+        maxBrotliBytes:
+          performance.studioInitialRuntime.maxInitialDocumentCssBrotliBytes
+      },
+      shadowCss: {
+        files: studioShadowCss.files,
+        rawBytes: studioShadowCss.rawBytes,
+        brotliBytes: studioShadowCss.brotliBytes,
+        maxBrotliBytes: performance.studioInitialRuntime.maxShadowCssBrotliBytes
+      },
+      totalInitialCss: {
+        ...studioTotalInitialCss,
+        maxBrotliBytes:
+          performance.studioInitialRuntime.maxTotalInitialCssBrotliBytes
+      },
       requiredInitialMarkers: performance.studioInitialRuntime.requiredMarkers,
       requiredReachableMarkers:
         performance.studioInitialRuntime.requiredReachableMarkers,
@@ -534,6 +758,15 @@ function printReport(report) {
   );
   console.log(
     `[performance] Studio third-party connection origins: ${report.studio.thirdPartyConnectionOrigins.join(", ") || "none"}`
+  );
+  console.log(
+    `[performance] Studio initial document CSS: ${formatBytes(report.studio.documentCss.brotliBytes)} Brotli / ${formatBytes(report.studio.documentCss.rawBytes)} raw (${report.studio.documentCss.localFiles.length} local file(s), ${report.studio.documentCss.inlineStyles.length} inline block(s))`
+  );
+  console.log(
+    `[performance] Studio required Shadow CSS: ${formatBytes(report.studio.shadowCss.brotliBytes)} Brotli / ${formatBytes(report.studio.shadowCss.rawBytes)} raw`
+  );
+  console.log(
+    `[performance] Studio total initial CSS: ${formatBytes(report.studio.totalInitialCss.brotliBytes)} Brotli / ${formatBytes(report.studio.totalInitialCss.rawBytes)} raw`
   );
   for (const warning of report.warnings) console.warn(`[warning] ${warning}`);
 

@@ -207,6 +207,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(footer, /APP_ROUTE\.STUDIO/);
   assert.match(footer, /LuOrbit/);
   assert.match(footer, /studio_footer/);
+  assert.match(footer, /data-document-navigation="studio"/);
+  assert.match(footer, /href=\{studioHref\}/);
+  assert.doesNotMatch(footer, /<Link\s+href=\{APP_ROUTE\.STUDIO\}/);
   assert.match(seo, /studio/);
   assert.match(analytics, /'studio_view'/);
   assert.doesNotMatch(analytics, /studio_blog_roadmap/);

@@ -156,6 +156,9 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
+      - name: Verify public and Studio runtime boundaries
+        run: npm run verify:runtime-boundaries
+
       - name: Verify localized 404 recovery
         run: npm run verify:not-found
 

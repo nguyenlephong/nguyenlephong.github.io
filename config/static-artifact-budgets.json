@@ -16,15 +16,15 @@
     "routeInitialJavaScript": {
       "home": {
         "html": "en.html",
-        "maxBrotliBytes": 240640
+        "maxBrotliBytes": 238592
       },
       "blog": {
         "html": "en/blog.html",
-        "maxBrotliBytes": 240640
+        "maxBrotliBytes": 219136
       },
       "notes": {
         "html": "en/notes.html",
-        "maxBrotliBytes": 240640
+        "maxBrotliBytes": 219136
       },
       "studio": {
         "html": "en/studio.html",
@@ -111,11 +111,14 @@
         "initializeFirestore",
         "firebaseapp.com"
       ],
+      "maxInitialDocumentCssBrotliBytes": 3072,
+      "requiredShadowCssFiles": ["studio/studio-shadow.css"],
+      "maxShadowCssBrotliBytes": 16384,
+      "maxTotalInitialCssBrotliBytes": 18432,
+      "allowedExternalStylesheetOrigins": [],
       "allowedThirdPartyConnectionOrigins": [
         "https://us.i.posthog.com",
-        "https://us-assets.i.posthog.com",
-        "https://www.googletagmanager.com",
-        "https://pagead2.googlesyndication.com"
+        "https://us-assets.i.posthog.com"
       ]
     }
   },

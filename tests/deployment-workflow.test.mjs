@@ -71,6 +71,7 @@ test('Pages workflow verifies the built out tree before uploading it', () => {
   const verifyIndex = workflow.indexOf('run: npm run verify:artifact')
   const performanceIndex = workflow.indexOf('run: npm run verify:performance-artifact')
   const studioIndex = workflow.indexOf('run: npm run verify:studio-artifact')
+  const runtimeBoundaryIndex = workflow.indexOf('run: npm run verify:runtime-boundaries')
   const publicationTreeIndex = workflow.indexOf('run: npm run verify:og-publication -- --remote-tree')
   const publicationLiveIndex = workflow.indexOf('run: npm run verify:og-publication:live')
   const offlineIndex = workflow.indexOf('run: npm run verify:offline')
@@ -83,12 +84,14 @@ test('Pages workflow verifies the built out tree before uploading it', () => {
       performanceIndex < studioIndex &&
       studioIndex < publicationTreeIndex &&
       publicationTreeIndex < publicationLiveIndex &&
-      publicationLiveIndex < offlineIndex &&
+      publicationLiveIndex < runtimeBoundaryIndex &&
+      runtimeBoundaryIndex < offlineIndex &&
       offlineIndex < uploadIndex,
   )
   assert.equal(workflow.match(/run: npm run build\s*$/gm)?.length, 1)
   assert.equal(workflow.match(/run: npm run verify:performance-artifact\s*$/gm)?.length, 1)
   assert.equal(workflow.match(/run: npm run verify:studio-artifact\s*$/gm)?.length, 1)
+  assert.equal(workflow.match(/run: npm run verify:runtime-boundaries\s*$/gm)?.length, 1)
   assert.match(workflow, /group: pages-\$\{\{ github\.repository \}\}/)
   assert.match(workflow, /cancel-in-progress: false/)
 })
@@ -130,19 +133,23 @@ test('CI verifies Studio and offline behavior after its single smoke build', () 
   const artifactIndex = ciWorkflow.indexOf('run: npm run verify:artifact')
   const performanceIndex = ciWorkflow.indexOf('run: npm run verify:performance-artifact')
   const studioIndex = ciWorkflow.indexOf('run: npm run verify:studio-artifact')
+  const runtimeBoundaryIndex = ciWorkflow.indexOf('run: npm run verify:runtime-boundaries')
   const offlineIndex = ciWorkflow.indexOf('run: npm run verify:offline')
   assert.ok(
     buildIndex >= 0 &&
       buildIndex < artifactIndex &&
       artifactIndex < performanceIndex &&
       performanceIndex < studioIndex &&
-      studioIndex < offlineIndex,
+      studioIndex < runtimeBoundaryIndex &&
+      runtimeBoundaryIndex < offlineIndex,
   )
   assert.equal(ciWorkflow.match(/run: npm run build:fast\s*$/gm)?.length, 1)
   assert.equal(ciWorkflow.match(/run: npm run verify:performance-artifact\s*$/gm)?.length, 1)
   assert.equal(ciWorkflow.match(/run: npm run verify:studio-artifact\s*$/gm)?.length, 1)
+  assert.equal(ciWorkflow.match(/run: npm run verify:runtime-boundaries\s*$/gm)?.length, 1)
   assert.equal(pkg.scripts['verify:performance-artifact'], 'node scripts/verify-performance-artifact.mjs')
   assert.equal(pkg.scripts['verify:studio-artifact'], 'node scripts/verify-studio-artifact.mjs')
+  assert.equal(pkg.scripts['verify:runtime-boundaries'], 'node scripts/verify-runtime-boundaries.mjs')
   assert.match(ciWorkflow, /npx playwright install --with-deps chromium/)
 })
 

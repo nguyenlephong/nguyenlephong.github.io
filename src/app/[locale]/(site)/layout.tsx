@@ -1,12 +1,12 @@
+import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
-import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { setRequestLocale } from 'next-intl/server'
 import AppFooter from '@/components/AppFooter'
 import AppHeader from '@/components/AppHeader'
-import BlogReaderTools from '@/components/blog/BlogReaderTools'
+import PublicThirdPartyResources from '@/components/analytics/PublicThirdPartyResources'
 import FontScript from '@/components/font/FontScript'
-import MotionProvider from '@/components/motion/MotionProvider'
 import RouteProgressBar from '@/components/motion/RouteProgressBar'
 import OfflineNavigationCapture from '@/components/offline/OfflineNavigationCapture'
 import OfflineStatusBanner from '@/components/offline/OfflineStatusBanner'
@@ -15,6 +15,14 @@ import ThemeScript from '@/components/theme/ThemeScript'
 import ThemeSync from '@/components/theme/ThemeSync'
 import { routing } from '@/i18n/routing'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
+import { PUBLIC_THIRD_PARTY } from '@/lib/public-third-party'
+import '../../globals.css'
+
+export const metadata: Metadata = {
+  other: {
+    'google-adsense-account': PUBLIC_THIRD_PARTY.adsenseClientId,
+  },
+}
 
 type SiteLayoutProps = {
   children: ReactNode
@@ -27,31 +35,21 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
 
   setRequestLocale(locale)
 
-  const rt = await getTranslations({ locale, namespace: 'ReaderTools' })
-  const readerLabels = {
-    label: rt('label'),
-    scrollTop: rt('scrollTop'),
-    scrollBottom: rt('scrollBottom'),
-    font: rt('font'),
-    background: rt('background'),
-    language: rt('language'),
-  }
-
   return (
-    <ScopedIntlProvider scope="site">
-      <ThemeScript />
-      <FontScript />
-      <ReadingBackgroundScript />
-      <ThemeSync />
-      <MotionProvider>
+    <>
+      <PublicThirdPartyResources />
+      <ScopedIntlProvider scope="site">
+        <ThemeScript />
+        <FontScript />
+        <ReadingBackgroundScript />
+        <ThemeSync />
         <RouteProgressBar />
         <OfflineNavigationCapture />
         <OfflineStatusBanner />
         <AppHeader />
         {children}
         <AppFooter />
-        <BlogReaderTools labels={readerLabels} />
-      </MotionProvider>
-    </ScopedIntlProvider>
+      </ScopedIntlProvider>
+    </>
   )
 }

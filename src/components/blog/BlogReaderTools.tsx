@@ -6,6 +6,7 @@ import {
   LuArrowUpToLine,
   LuSettings2,
 } from 'react-icons/lu'
+import { usePathname } from 'next/navigation'
 import LocaleSwitcher from '@/components/LocaleSwitcher'
 import FontSwitcher from '@/components/font/FontSwitcher'
 import ReadingBackgroundSwitcher from '@/components/reading/ReadingBackgroundSwitcher'
@@ -33,7 +34,7 @@ function scrollToY(top: number) {
   })
 }
 
-export default function BlogReaderTools({ labels }: BlogReaderToolsProps) {
+function ReaderTools({ labels }: BlogReaderToolsProps) {
   const [visible, setVisible] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const [nearTop, setNearTop] = useState(true)
@@ -159,4 +160,9 @@ export default function BlogReaderTools({ labels }: BlogReaderToolsProps) {
       )}
     </div>
   )
+}
+
+export default function BlogReaderTools(props: BlogReaderToolsProps) {
+  const pathname = usePathname()
+  return <ReaderTools key={pathname} {...props} />
 }

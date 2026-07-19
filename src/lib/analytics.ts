@@ -7,7 +7,11 @@ declare global {
 }
 
 type PostHogClient = {
-  capture: (event: string, props?: Record<string, unknown>) => void
+  capture: (
+    event: string,
+    props?: Record<string, unknown>,
+    options?: { send_instantly?: boolean; transport?: 'sendBeacon' },
+  ) => void
   identify: (id: string, props?: Record<string, unknown>) => void
   register: (props: Record<string, unknown>) => void
   unregister: (key: string) => void
@@ -224,8 +228,12 @@ function ensurePostHogClient(): PostHogClient {
   if (window.posthog) return window.posthog
 
   const queue = [] as unknown as PostHogQueue
-  queue.capture = (event, props) => {
-    queue.push(['capture', event, props])
+  queue.capture = (event, props, options) => {
+    queue.push(
+      options
+        ? ['capture', event, props, options]
+        : ['capture', event, props],
+    )
   }
   queue.identify = (id, props) => {
     queue.push(['identify', id, props])
@@ -262,8 +270,16 @@ export function track(
             pathname,
           }),
     }
-    if (options?.beacon) payload['$set_once'] = { last_outbound_ts: Date.now() }
-    ensurePostHogClient().capture(event, payload)
+    if (options?.beacon) {
+      payload['$set_once'] = { last_outbound_ts: Date.now() }
+    }
+    ensurePostHogClient().capture(
+      event,
+      payload,
+      options?.beacon
+        ? { send_instantly: true, transport: 'sendBeacon' }
+        : undefined,
+    )
   } catch {
     // swallow — analytics must never break UX
   }
