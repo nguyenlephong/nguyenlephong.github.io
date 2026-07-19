@@ -10,15 +10,126 @@
     "maxJavaScriptBytes": 1415578,
     "maxCssBytes": 215040,
     "maxRouteJavaScriptBytes": 2306868,
-    "maxRouteCssBytes": 225280,
-    "minimumSitemapUrls": 904
+    "maxRouteCssBytes": 225280
+  },
+  "performance": {
+    "routeInitialJavaScript": {
+      "home": {
+        "html": "en.html",
+        "maxBrotliBytes": 238592
+      },
+      "blog": {
+        "html": "en/blog.html",
+        "maxBrotliBytes": 219136
+      },
+      "notes": {
+        "html": "en/notes.html",
+        "maxBrotliBytes": 219136
+      },
+      "studio": {
+        "html": "en/studio.html",
+        "maxBrotliBytes": 176128,
+        "maxDefaultRouteBrotliBytes": 204800
+      }
+    },
+    "rsc": {
+      "warnTotalBytes": 157286400,
+      "localizedRouteSamples": [
+        { "locale": "en", "surface": "home", "path": "en.txt" },
+        { "locale": "en", "surface": "blog", "path": "en/blog.txt" },
+        { "locale": "en", "surface": "notes", "path": "en/notes.txt" },
+        { "locale": "en", "surface": "studio", "path": "en/studio.txt" },
+        { "locale": "vi", "surface": "home", "path": "vi.txt" },
+        { "locale": "vi", "surface": "blog", "path": "vi/blog.txt" },
+        { "locale": "vi", "surface": "notes", "path": "vi/notes.txt" },
+        { "locale": "vi", "surface": "studio", "path": "vi/studio.txt" },
+        { "locale": "zh", "surface": "home", "path": "zh.txt" },
+        { "locale": "zh", "surface": "blog", "path": "zh/blog.txt" },
+        { "locale": "zh", "surface": "notes", "path": "zh/notes.txt" },
+        { "locale": "zh", "surface": "studio", "path": "zh/studio.txt" },
+        { "locale": "ja", "surface": "home", "path": "ja.txt" },
+        { "locale": "ja", "surface": "blog", "path": "ja/blog.txt" },
+        { "locale": "ja", "surface": "notes", "path": "ja/notes.txt" },
+        { "locale": "ja", "surface": "studio", "path": "ja/studio.txt" },
+        { "locale": "ko", "surface": "home", "path": "ko.txt" },
+        { "locale": "ko", "surface": "blog", "path": "ko/blog.txt" },
+        { "locale": "ko", "surface": "notes", "path": "ko/notes.txt" },
+        { "locale": "ko", "surface": "studio", "path": "ko/studio.txt" },
+        { "locale": "fr", "surface": "home", "path": "fr.txt" },
+        { "locale": "fr", "surface": "blog", "path": "fr/blog.txt" },
+        { "locale": "fr", "surface": "notes", "path": "fr/notes.txt" },
+        { "locale": "fr", "surface": "studio", "path": "fr/studio.txt" }
+      ],
+      "maxAverageLocalizedRouteBytes": 47104,
+      "surfaceMaxBytes": {
+        "home": 67584,
+        "blog": 50176,
+        "notes": 43008,
+        "studio": 30720
+      }
+    },
+    "clientMessages": {
+      "scopes": {
+        "site": ["Nav", "Footer", "Offline.banner"],
+        "home": ["Hero", "Summary", "Experience", "Projects", "CTA"],
+        "blog": ["Pages.blog"],
+        "notes": ["Pages.notes"],
+        "gallery": ["Pages.gallery"],
+        "thoughts": ["Pages.thoughts"]
+      },
+      "localizedRouteSamples": {
+        "home": {
+          "path": "{locale}.txt",
+          "requiredScopes": ["site", "home"]
+        },
+        "blog": {
+          "path": "{locale}/blog.txt",
+          "requiredScopes": ["site", "blog"]
+        },
+        "notes": {
+          "path": "{locale}/notes.txt",
+          "requiredScopes": ["site", "notes"]
+        },
+        "gallery": {
+          "path": "{locale}/gallery.txt",
+          "requiredScopes": ["site", "gallery"]
+        },
+        "studio": {
+          "path": "{locale}/studio.txt",
+          "requiredScopes": []
+        }
+      }
+    },
+    "studioInitialRuntime": {
+      "requiredMarkers": ["data-studio-shadow-host"],
+      "requiredReachableMarkers": ["studio_route_open", "data-studio-module"],
+      "forbiddenMarkers": [
+        "data-studio-auxiliary-dashboard",
+        "data-studio-flow-runtime",
+        "data-studio-recharts-runtime",
+        "getFirestore",
+        "initializeFirestore",
+        "firebaseapp.com"
+      ],
+      "maxInitialDocumentCssBrotliBytes": 3072,
+      "requiredShadowCssFiles": ["studio/studio-shadow.css"],
+      "maxShadowCssBrotliBytes": 16384,
+      "maxTotalInitialCssBrotliBytes": 18432,
+      "allowedExternalStylesheetOrigins": [],
+      "allowedThirdPartyConnectionOrigins": [
+        "https://us.i.posthog.com",
+        "https://us-assets.i.posthog.com"
+      ]
+    }
   },
   "routeAssetSamples": [
     "en.html",
     "en/blog.html",
     "en/blog/page/23.html",
+    "en/blog/series/foundations/page/2.html",
     "en/notes.html",
     "vi/notes/page/15.html",
+    "vi/notes/topics/thoughts/page/5.html",
     "en/studio.html",
     "vi.html",
     "zh/blog.html",
@@ -30,6 +141,13 @@
   "secretScanConcurrency": 32,
   "seo": {
     "locales": ["en", "vi", "zh", "ja", "ko", "fr"],
-    "requiredLocalizedRoutes": ["", "apps", "blog", "studio", "about", "gallery"]
+    "requiredLocalizedRoutes": [
+      "",
+      "apps",
+      "blog",
+      "studio",
+      "about",
+      "gallery"
+    ]
   }
 }

@@ -816,9 +816,6 @@ async function staleWhileRevalidate(request, cacheName, cacheKey = request, fall
 
 function isContentData(pathname) {
   return (
-    pathname.startsWith('/blog-data/') ||
-    pathname.startsWith('/notes-data/') ||
-    pathname.startsWith('/thoughts-data/') ||
     pathname.endsWith('.txt') ||
     pathname.endsWith('.json')
   );

@@ -69,6 +69,9 @@ const { loadNote } = await import(
 const { getPostContentLocales, listPosts, listBlogArchiveLocales } = await import(
   new URL("../src/lib/blog/data.ts", import.meta.url)
 );
+const { LEGACY_BLOG_LOCALE_FALLBACKS } = await import(
+  new URL("../src/lib/blog/legacy-locale-fallbacks.ts", import.meta.url)
+);
 const { getNoteContentLocales, listNotesArchiveLocales } = await import(
   new URL("../src/lib/notes/data.ts", import.meta.url)
 );
@@ -77,6 +80,15 @@ const { localeAlternates, preferredContentLocale } = await import(
 );
 const { latestNonFutureDate } = await import(
   new URL("../src/lib/seo/dates.ts", import.meta.url)
+);
+const { getContentBuildDate, isContentPublished } = await import(
+  new URL("../src/lib/content/publication.ts", import.meta.url)
+);
+const { listBlogPostParams } = await import(
+  new URL("../src/lib/blog/data.ts", import.meta.url)
+);
+const { listNoteParams } = await import(
+  new URL("../src/lib/notes/data.ts", import.meta.url)
 );
 const { default: buildSitemap } = await import(
   new URL("../src/app/sitemap.ts", import.meta.url)
@@ -108,6 +120,22 @@ const validCategory = {
 
 test("blog post schema accepts a valid post", () => {
   assert.equal(blogPostSchema.safeParse(validPost).success, true);
+  assert.equal(
+    blogPostSchema.safeParse({
+      ...validPost,
+      status: "draft",
+      publishAt: "2026-07-19"
+    }).success,
+    true
+  );
+  assert.equal(
+    blogPostSchema.safeParse({ ...validPost, status: "scheduled" }).success,
+    false
+  );
+  assert.equal(
+    blogPostSchema.safeParse({ ...validPost, publishAt: "2026-02-30" }).success,
+    false
+  );
 });
 
 test("blog post schema rejects a missing required field", () => {
@@ -164,15 +192,24 @@ test("notes schemas accept minimal valid shapes", () => {
     html: "<p>n</p>"
   };
   assert.equal(noteSchema.safeParse(note).success, true);
+  assert.equal(
+    noteSchema.safeParse({
+      ...note,
+      status: "published",
+      publishAt: "2026-07-19"
+    }).success,
+    true
+  );
+  assert.equal(noteSchema.safeParse({ ...note, status: "scheduled" }).success, false);
   assert.equal(noteSchema.safeParse({ slug: "n" }).success, false);
 });
 
 test("all authored locale overrides satisfy strict partial schemas", () => {
   for (const locale of ["vi", "zh", "ja", "ko", "fr"]) {
-    const index = readJson(`../public/blog-data/${locale}/_index.json`);
+    const index = readJson(`../content/blog-data/${locale}/_index.json`);
     assert.equal(blogIndexOverrideSchema.safeParse(index).success, true, `blog ${locale} index`);
     const directory = fileURLToPath(
-      new URL(`../public/blog-data/${locale}/posts`, import.meta.url)
+      new URL(`../content/blog-data/${locale}/posts`, import.meta.url)
     );
     for (const file of readdirSync(directory).filter((name) => name.endsWith(".json"))) {
       const post = JSON.parse(readFileSync(path.join(directory, file), "utf8"));
@@ -185,11 +222,11 @@ test("all authored locale overrides satisfy strict partial schemas", () => {
   }
 
   assert.equal(
-    notesIndexOverrideSchema.safeParse(readJson("../public/notes-data/vi/_index.json")).success,
+    notesIndexOverrideSchema.safeParse(readJson("../content/notes-data/vi/_index.json")).success,
     true
   );
   const notesDirectory = fileURLToPath(
-    new URL("../public/notes-data/vi/posts", import.meta.url)
+    new URL("../content/notes-data/vi/posts", import.meta.url)
   );
   for (const file of readdirSync(notesDirectory).filter((name) => name.endsWith(".json"))) {
     const note = JSON.parse(readFileSync(path.join(notesDirectory, file), "utf8"));
@@ -201,7 +238,15 @@ test("all authored locale overrides satisfy strict partial schemas", () => {
 });
 
 test("archive corpora and sitemap pages follow authored locale availability", () => {
-  const expectedBlogCounts = { en: 204, vi: 204, zh: 20, ja: 20, ko: 20, fr: 20 };
+  const blogIndex = readJson("../content/blog-data/_index.json");
+  const expectedBlogCounts = Object.fromEntries(
+    ["en", "vi", "zh", "ja", "ko", "fr"].map((locale) => [
+      locale,
+      blogIndex.posts.filter(
+        (post) => isContentPublished(post) && post.locales.includes(locale)
+      ).length
+    ])
+  );
   for (const [locale, count] of Object.entries(expectedBlogCounts)) {
     assert.equal(listPosts(locale).length, count, `${locale} blog archive count`);
   }
@@ -210,11 +255,27 @@ test("archive corpora and sitemap pages follow authored locale availability", ()
   assert.deepEqual(listNotesArchiveLocales(15), ["en", "vi"]);
   assert.deepEqual(listNotesArchiveLocales(16), []);
   const sitemap = buildSitemap();
-  assert.equal(sitemap.length, 904);
-  const now = Date.now();
+  assert.equal(new Set(sitemap.map((entry) => entry.url)).size, sitemap.length);
+  const sitemapUrls = new Set(sitemap.map((entry) => entry.url));
+  for (const { locale, category, slug } of listBlogPostParams()) {
+    assert.ok(
+      sitemapUrls.has(
+        `https://nguyenlephong.github.io/${locale}/blog/${category}/${slug}`
+      )
+    );
+  }
+  for (const { locale, slug } of listNoteParams()) {
+    assert.ok(
+      sitemapUrls.has(`https://nguyenlephong.github.io/${locale}/notes/${slug}`)
+    );
+  }
+  const cutoff = new Date(getContentBuildDate()).getTime();
   for (const entry of sitemap) {
     if (entry.lastModified) {
-      assert.ok(new Date(entry.lastModified).getTime() <= now, `${entry.url} future lastmod`);
+      assert.ok(
+        new Date(entry.lastModified).getTime() <= cutoff,
+        `${entry.url} future lastmod`
+      );
     }
   }
 });
@@ -247,7 +308,7 @@ test("root and localized homes split WebSite and profile schema ownership", () =
 });
 
 test("Vietnamese blog index contains the May 10-14 localized posts", () => {
-  const viIndex = readJson("../public/blog-data/vi/_index.json");
+  const viIndex = readJson("../content/blog-data/vi/_index.json");
   const scopedSlugs = [
     "service-mesh-do-you-need-it",
     "navigating-office-politics",
@@ -258,7 +319,7 @@ test("Vietnamese blog index contains the May 10-14 localized posts", () => {
 
   for (const slug of scopedSlugs) {
     const indexed = viIndex.posts.find((post) => post.slug === slug);
-    const post = readJson(`../public/blog-data/vi/posts/${slug}.json`);
+    const post = readJson(`../content/blog-data/vi/posts/${slug}.json`);
 
     assert.ok(indexed, `${slug} should be listed in the Vietnamese blog index`);
     assert.deepEqual(
@@ -287,8 +348,8 @@ test("Vietnamese blog index contains the May 10-14 localized posts", () => {
 });
 
 test("scoped notes keep filename slug and localized index dates aligned", () => {
-  const enIndex = readJson("../public/notes-data/_index.json");
-  const viIndex = readJson("../public/notes-data/vi/_index.json");
+  const enIndex = readJson("../content/notes-data/_index.json");
+  const viIndex = readJson("../content/notes-data/vi/_index.json");
   const scopedNotes = [
     {
       slug: "the-trap-of-information-consumption",
@@ -318,8 +379,8 @@ test("scoped notes keep filename slug and localized index dates aligned", () => 
   ];
 
   for (const note of scopedNotes) {
-    const enPost = readJson(`../public/notes-data/posts/${note.slug}.json`);
-    const viPost = readJson(`../public/notes-data/vi/posts/${note.slug}.json`);
+    const enPost = readJson(`../content/notes-data/posts/${note.slug}.json`);
+    const viPost = readJson(`../content/notes-data/vi/posts/${note.slug}.json`);
     const enIndexed = enIndex.posts.find((post) => post.slug === note.slug);
     const viIndexed = viIndex.posts.find((post) => post.slug === note.slug);
 
@@ -380,7 +441,7 @@ test("notes expose one canonical slug set across English and Vietnamese", () => 
     "utf8"
   );
   const notesIndex = JSON.parse(
-    readFileSync(new URL("../public/notes-data/_index.json", import.meta.url), "utf8")
+    readFileSync(new URL("../content/notes-data/_index.json", import.meta.url), "utf8")
   );
   const canonicalSlugs = notesIndex.posts.map((post) => post.slug);
 
@@ -389,7 +450,10 @@ test("notes expose one canonical slug set across English and Vietnamese", () => 
   assert.match(notesDataSource, /getNoteContentLocales/);
   assert.match(notesDataSource, /note\?\.locales/);
   assert.match(blogDataSource, /getPostContentLocales/);
-  assert.match(blogDataSource, /post \? \[\.\.\.post\.locales\] : \[\]/);
+  assert.match(
+    blogDataSource,
+    /post && isContentPublished\(post\) \? \[\.\.\.post\.locales\] : \[\]/
+  );
   assert.match(sitemapSource, /for \(const note of listNotes\("en"\)\)/);
   assert.match(sitemapSource, /locales:\s*NOTE_CONTENT_LOCALES/);
   assert.match(sitemapSource, /getPostContentLocales\(slug\)/);
@@ -411,42 +475,61 @@ test("notes expose one canonical slug set across English and Vietnamese", () => 
   assert.match(blogPostPage, /inLanguage:\s*canonicalLocale/);
   assert.match(blogPostPage, /LocalizedArticleFallback/);
   assert.match(blogPostPage, /hasLocalizedContent/);
-  assert.doesNotMatch(blogPostPage, /robots:\s*\{/);
+  assert.match(blogPostPage, /getLegacyBlogLocaleFallback/);
+  assert.match(
+    blogPostPage,
+    /legacyFallback[\s\S]*robots:\s*\{[\s\S]*index:\s*false/
+  );
 });
 
 test("declared article locales match authored blog and notes files", () => {
-  const blogIndex = readJson("../public/blog-data/_index.json");
-  const notesIndex = readJson("../public/notes-data/_index.json");
+  const blogIndex = readJson("../content/blog-data/_index.json");
+  const notesIndex = readJson("../content/notes-data/_index.json");
   const optionalBlogLocales = ["vi", "zh", "ja", "ko", "fr"];
+  const legacyFallbackBySlug = new Map(
+    LEGACY_BLOG_LOCALE_FALLBACKS.map((fallback) => [fallback.slug, fallback])
+  );
 
   for (const post of blogIndex.posts) {
+    const legacyFallback = legacyFallbackBySlug.get(post.slug);
     const expected = [
-      "en",
+      ...(legacyFallback ? [] : ["en"]),
       ...optionalBlogLocales.filter((locale) =>
         existsSync(
           new URL(
-            `../public/blog-data/${locale}/posts/${post.slug}.json`,
+            `../content/blog-data/${locale}/posts/${post.slug}.json`,
             import.meta.url
           )
         )
       )
     ];
     assert.deepEqual(post.locales, expected, `${post.slug} blog locales`);
-    assert.deepEqual(getPostContentLocales(post.slug), expected);
+    assert.deepEqual(
+      getPostContentLocales(post.slug),
+      isContentPublished(post) ? expected : []
+    );
+
+    if (legacyFallback) {
+      assert.equal(post.locales.includes(legacyFallback.locale), false);
+      assert.equal(post.locales.includes(legacyFallback.targetLocale), true);
+    }
   }
 
   for (const note of notesIndex.posts) {
     const expected = [
       "en",
       ...(existsSync(
-        new URL(`../public/notes-data/vi/posts/${note.slug}.json`, import.meta.url)
+        new URL(`../content/notes-data/vi/posts/${note.slug}.json`, import.meta.url)
       )
         ? ["vi"]
         : [])
     ];
     assert.equal(note.baseLocale, "en", `${note.slug} base locale`);
     assert.deepEqual(note.locales, expected, `${note.slug} note locales`);
-    assert.deepEqual(getNoteContentLocales(note.slug), expected);
+    assert.deepEqual(
+      getNoteContentLocales(note.slug),
+      isContentPublished(note) ? expected : []
+    );
   }
 });
 

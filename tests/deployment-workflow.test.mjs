@@ -38,6 +38,19 @@ test('Pages workflow grants deployment credentials only to the deploy job', () =
   assert.doesNotMatch(deployJob, /contents: write/)
 })
 
+test('Pages rebuilds scheduled content daily against one deterministic UTC date', () => {
+  assert.match(workflow, /schedule:\n\s+- cron: '12 0 \* \* \*'/)
+  assert.equal(
+    workflow.match(/CONTENT_BUILD_DATE=\$\(date -u \+%F\)/g)?.length,
+    1,
+  )
+  const resolveDateIndex = workflow.indexOf('CONTENT_BUILD_DATE=$(date -u +%F)')
+  const qualityIndex = workflow.indexOf('run: npm run check')
+  const buildIndex = workflow.indexOf('run: npm run build')
+  assert.ok(resolveDateIndex >= 0 && resolveDateIndex < qualityIndex)
+  assert.ok(resolveDateIndex < buildIndex)
+})
+
 test('Pages build job has a bounded timeout for build and network verification', () => {
   const buildJob = workflow.slice(workflow.indexOf('  build:'), workflow.indexOf('  deploy:'))
   assert.match(buildJob, /timeout-minutes: 30/)
@@ -56,7 +69,9 @@ test('Pages workflow configures Pages without rewriting the composed Next config
 test('Pages workflow verifies the built out tree before uploading it', () => {
   const buildIndex = workflow.indexOf('run: npm run build')
   const verifyIndex = workflow.indexOf('run: npm run verify:artifact')
+  const performanceIndex = workflow.indexOf('run: npm run verify:performance-artifact')
   const studioIndex = workflow.indexOf('run: npm run verify:studio-artifact')
+  const runtimeBoundaryIndex = workflow.indexOf('run: npm run verify:runtime-boundaries')
   const publicationTreeIndex = workflow.indexOf('run: npm run verify:og-publication -- --remote-tree')
   const publicationLiveIndex = workflow.indexOf('run: npm run verify:og-publication:live')
   const offlineIndex = workflow.indexOf('run: npm run verify:offline')
@@ -65,14 +80,18 @@ test('Pages workflow verifies the built out tree before uploading it', () => {
   assert.ok(
     buildIndex >= 0 &&
       buildIndex < verifyIndex &&
-      verifyIndex < studioIndex &&
+      verifyIndex < performanceIndex &&
+      performanceIndex < studioIndex &&
       studioIndex < publicationTreeIndex &&
       publicationTreeIndex < publicationLiveIndex &&
-      publicationLiveIndex < offlineIndex &&
+      publicationLiveIndex < runtimeBoundaryIndex &&
+      runtimeBoundaryIndex < offlineIndex &&
       offlineIndex < uploadIndex,
   )
   assert.equal(workflow.match(/run: npm run build\s*$/gm)?.length, 1)
+  assert.equal(workflow.match(/run: npm run verify:performance-artifact\s*$/gm)?.length, 1)
   assert.equal(workflow.match(/run: npm run verify:studio-artifact\s*$/gm)?.length, 1)
+  assert.equal(workflow.match(/run: npm run verify:runtime-boundaries\s*$/gm)?.length, 1)
   assert.match(workflow, /group: pages-\$\{\{ github\.repository \}\}/)
   assert.match(workflow, /cancel-in-progress: false/)
 })
@@ -112,17 +131,25 @@ test('CI is read-only, never persists checkout credentials, and scopes SONAR_TOK
 test('CI verifies Studio and offline behavior after its single smoke build', () => {
   const buildIndex = ciWorkflow.indexOf('run: npm run build:fast')
   const artifactIndex = ciWorkflow.indexOf('run: npm run verify:artifact')
+  const performanceIndex = ciWorkflow.indexOf('run: npm run verify:performance-artifact')
   const studioIndex = ciWorkflow.indexOf('run: npm run verify:studio-artifact')
+  const runtimeBoundaryIndex = ciWorkflow.indexOf('run: npm run verify:runtime-boundaries')
   const offlineIndex = ciWorkflow.indexOf('run: npm run verify:offline')
   assert.ok(
     buildIndex >= 0 &&
       buildIndex < artifactIndex &&
-      artifactIndex < studioIndex &&
-      studioIndex < offlineIndex,
+      artifactIndex < performanceIndex &&
+      performanceIndex < studioIndex &&
+      studioIndex < runtimeBoundaryIndex &&
+      runtimeBoundaryIndex < offlineIndex,
   )
   assert.equal(ciWorkflow.match(/run: npm run build:fast\s*$/gm)?.length, 1)
+  assert.equal(ciWorkflow.match(/run: npm run verify:performance-artifact\s*$/gm)?.length, 1)
   assert.equal(ciWorkflow.match(/run: npm run verify:studio-artifact\s*$/gm)?.length, 1)
+  assert.equal(ciWorkflow.match(/run: npm run verify:runtime-boundaries\s*$/gm)?.length, 1)
+  assert.equal(pkg.scripts['verify:performance-artifact'], 'node scripts/verify-performance-artifact.mjs')
   assert.equal(pkg.scripts['verify:studio-artifact'], 'node scripts/verify-studio-artifact.mjs')
+  assert.equal(pkg.scripts['verify:runtime-boundaries'], 'node scripts/verify-runtime-boundaries.mjs')
   assert.match(ciWorkflow, /npx playwright install --with-deps chromium/)
 })
 
@@ -145,6 +172,9 @@ test('workflows use Node 24 action majors instead of deprecated Node 20 runtimes
 })
 
 test('Firebase hosting verifies the fixed out artifact immediately before publish', () => {
-  assert.equal(pkg.scripts['fb-deploy'], 'npm run verify:artifact && firebase deploy --only hosting')
+  assert.equal(
+    pkg.scripts['fb-deploy'],
+    'npm run verify:artifact && npm run verify:performance-artifact && firebase deploy --only hosting',
+  )
   assert.equal(Object.hasOwn(pkg.dependencies, 'gh-pages'), false)
 })

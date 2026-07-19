@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `indecisiveness`.
 
 Source read:
-- `public/notes-data/posts/indecisiveness.json`
-- `public/notes-data/vi/posts/indecisiveness.json`
+- `content/notes-data/posts/indecisiveness.json`
+- `content/notes-data/vi/posts/indecisiveness.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

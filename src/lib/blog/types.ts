@@ -1,4 +1,5 @@
-import type { BookSource, Faq } from '@/lib/content/types'
+import type { BookSource, EditorialMetadata, Faq } from '@/lib/content/types'
+import type { ContentPublicationStatus } from '@/lib/content/publication'
 import type { Locale } from '@/i18n/routing'
 
 export type BlogAccent = 'ocean' | 'gold' | 'violet' | 'dark' | 'light'
@@ -18,7 +19,16 @@ export interface BlogCategoryMeta {
   order: number
 }
 
-export interface BlogPostMeta {
+export interface BlogSeriesMeta {
+  /** Stable route/catalog identifier shared with `BlogPostMeta.series`. */
+  id: string
+  title: string
+  intro: string
+  /** Explicit editorial order; lower numbers appear first. */
+  order: number
+}
+
+export interface BlogPostMeta extends EditorialMetadata {
   slug: string
   /** Owning category slug */
   category: string
@@ -28,6 +38,10 @@ export interface BlogPostMeta {
   date: string
   /** ISO date of last meaningful update */
   updated?: string
+  /** Optional embargo date; defaults to `date`. */
+  publishAt?: string
+  /** Missing means published; drafts never enter a public build. */
+  status?: ContentPublicationStatus
   /** Estimated reading time in minutes */
   readingMinutes: number
   tags: string[]
@@ -57,6 +71,7 @@ export interface BlogPost extends BlogPostMeta {
 }
 
 export interface BlogIndexFile {
+  series: BlogSeriesMeta[]
   categories: BlogCategoryMeta[]
   posts: BlogPostMeta[]
 }

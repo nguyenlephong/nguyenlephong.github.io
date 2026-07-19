@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `thinking-excuses`.
 
 Source read:
-- `public/notes-data/posts/thinking-excuses.json`
-- `public/notes-data/vi/posts/thinking-excuses.json`
+- `content/notes-data/posts/thinking-excuses.json`
+- `content/notes-data/vi/posts/thinking-excuses.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 - Repo content guidance: `AI/skills/calm-content-writer/SKILL.md`
 

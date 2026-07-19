@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { spawnSync } from 'node:child_process'
 import { promises as fs } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
@@ -316,6 +317,26 @@ test('build wrapper uses one shared postbuild and a stable authoritative success
     /child\.on\('close', \(code, signal\) => \{\s+const exportState = getExportState\(startedAt\)/,
   )
   assert.match(buildScript, /scripts\/postbuild\.mjs/)
+  assert.equal(buildScript.match(/resolveContentBuildDate\(/g)?.length, 1)
+  assert.match(
+    buildScript,
+    /contentBuildDate = resolveContentBuildDate\(process\.env\.CONTENT_BUILD_DATE\)/,
+  )
+  assert.match(buildScript, /CONTENT_BUILD_DATE: contentBuildDate/)
+  assert.match(buildScript, /run\(nextBin, \['build', '--turbopack'\], env,/)
+  assert.match(buildScript, /run\(process\.execPath, \['scripts\/postbuild\.mjs'\], env\)/)
   assert.doesNotMatch(buildScript, /scripts\/postbuild-og\.mjs/)
   assert.doesNotMatch(buildScript, /scripts\/postbuild-offline\.mjs/)
+})
+
+test('build wrapper rejects an invalid explicit publication date before spawning Next', () => {
+  const result = spawnSync(process.execPath, ['scripts/build-og.mjs', '--skip'], {
+    cwd: process.cwd(),
+    encoding: 'utf8',
+    env: { ...process.env, CONTENT_BUILD_DATE: '2026-02-30' },
+  })
+
+  assert.equal(result.status, 1)
+  assert.match(result.stderr, /CONTENT_BUILD_DATE must be a real UTC date/)
+  assert.doesNotMatch(result.stdout, /dynamic OG cache restore only/)
 })

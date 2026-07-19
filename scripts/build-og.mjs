@@ -11,6 +11,8 @@ import {
   removeStaleExportDetail,
   resolveBuildExitCode,
 } from './lib/build-export-guard.mjs'
+import { resolveContentBuildDate } from '../src/lib/content/publication-contract.mjs'
+import { validateAuthoredArticleSlugUniqueness } from './lib/article-slug-contract.mjs'
 
 const args = process.argv.slice(2)
 
@@ -317,12 +319,22 @@ const forceFull = hasFlag('--full', '--force')
 const skipDynamicOg = hasFlag('--skip', '--cache-only')
 const strictCache = hasFlag('--strict-cache')
 
+let contentBuildDate
+try {
+  contentBuildDate = resolveContentBuildDate(process.env.CONTENT_BUILD_DATE)
+  await validateAuthoredArticleSlugUniqueness()
+} catch (error) {
+  console.error(`[build-og] ${error instanceof Error ? error.message : error}`)
+  process.exit(1)
+}
+
 let mode = 'targeted'
 if (forceFull) mode = 'full'
 else if (skipDynamicOg || targets.length === 0) mode = 'skip'
 
 const env = {
   ...process.env,
+  CONTENT_BUILD_DATE: contentBuildDate,
   OG_BUILD_MODE: mode,
   OG_TARGETS: targets.join(','),
   OG_CACHE_STRICT: strictCache ? '1' : process.env.OG_CACHE_STRICT,

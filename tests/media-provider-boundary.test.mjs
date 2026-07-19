@@ -208,8 +208,8 @@ test("content, static search metadata, and OG use the configured media domain", 
 
 test("the current authored corpus migrates through one configured media base", () => {
   const corpus = [
-    ...readJsonCorpus("public/blog-data"),
-    ...readJsonCorpus("public/notes-data"),
+    ...readJsonCorpus("content/blog-data"),
+    ...readJsonCorpus("content/notes-data"),
   ];
   const raw = JSON.stringify(corpus);
   const legacyCount = raw.match(

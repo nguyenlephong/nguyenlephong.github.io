@@ -10,6 +10,7 @@
 /.pnp
 /build
 /out
+/.private/seo/
 .pnp.js
 
 # testing

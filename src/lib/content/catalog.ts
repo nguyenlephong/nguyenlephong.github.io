@@ -81,10 +81,46 @@ export function assertExactSlugSet(
   )
 }
 
-export function assertKnownKeys(label: string, knownKeys: readonly string[], candidateKeys: readonly string[]): void {
+/** Fails when an explicit catalog differs from its reviewed identifier set. */
+export function assertExactIdentifierSet(
+  label: string,
+  expectedIdentifiers: readonly string[],
+  actualIdentifiers: readonly string[],
+): void {
+  const expected = new Set(expectedIdentifiers)
+  const actual = new Set(actualIdentifiers)
+  const missing = [...expected].filter((identifier) => !actual.has(identifier))
+  const unexpected = [...actual].filter(
+    (identifier) => !expected.has(identifier),
+  )
+
+  if (
+    missing.length === 0 &&
+    unexpected.length === 0 &&
+    expected.size === expectedIdentifiers.length &&
+    actual.size === actualIdentifiers.length
+  ) {
+    return
+  }
+
+  throw new Error(
+    `${label} identifier set is inconsistent` +
+      `${missing.length ? `; missing: ${missing.join(', ')}` : ''}` +
+      `${unexpected.length ? `; unexpected: ${unexpected.join(', ')}` : ''}` +
+      `${actual.size !== actualIdentifiers.length ? '; duplicates are not allowed' : ''}`,
+  )
+}
+
+export function assertKnownKeys(
+  label: string,
+  knownKeys: readonly string[],
+  candidateKeys: readonly string[],
+): void {
   const known = new Set(knownKeys)
   const unknown = candidateKeys.filter((key) => !known.has(key))
   if (unknown.length > 0) {
-    throw new Error(`${label} references unknown identifiers: ${unknown.join(', ')}`)
+    throw new Error(
+      `${label} references unknown identifiers: ${unknown.join(', ')}`,
+    )
   }
 }

@@ -326,6 +326,7 @@ async function livePublicationKeys({
 
 export async function verifyOgPublication({
   rootDir = process.cwd(),
+  contentBuildDate,
   localDomPubDir,
   remoteTreeUrl,
   liveBaseUrl,
@@ -344,7 +345,11 @@ export async function verifyOgPublication({
   }
 
   const contract = await loadMediaPublicationContract(rootDir)
-  const expected = await expectedArticleOgPublications({ rootDir, contract })
+  const expected = await expectedArticleOgPublications({
+    rootDir,
+    contract,
+    contentBuildDate,
+  })
   const failures = []
   let publishedKeys
   let source

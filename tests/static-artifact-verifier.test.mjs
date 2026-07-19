@@ -26,7 +26,6 @@ function createFixture(t, overrides = {}) {
     maxCssBytes: 2_000,
     maxRouteJavaScriptBytes: 2_000,
     maxRouteCssBytes: 2_000,
-    minimumSitemapUrls: 1,
     ...overrides.limits,
   }
   const config = {
@@ -74,7 +73,20 @@ function createFixture(t, overrides = {}) {
   return { rootDir, outDir }
 }
 
-function writeLocalizedArticleFixture(outDir) {
+function writeLocalizedArticleFixture(
+  outDir,
+  {
+    author = {
+      '@type': 'Person',
+      name: 'Example Author',
+      url: 'https://example.com/en/about',
+    },
+    omitAuthor = false,
+    visibleTitle,
+    documentTitle,
+    schemaHeadline,
+  } = {},
+) {
   const articlePath = 'blog/architecture/static-seo'
   const articleUrls = {
     en: `https://example.com/en/${articlePath}`,
@@ -90,31 +102,28 @@ function writeLocalizedArticleFixture(outDir) {
   for (const locale of ['en', 'vi']) {
     const directory = path.join(outDir, locale, 'blog', 'architecture')
     mkdirSync(directory, { recursive: true })
+    const localizedTitle = visibleTitle ?? (locale === 'en' ? 'Static SEO' : 'SEO cho trang tĩnh')
     const articleLd = {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
-      headline: locale === 'en' ? 'Static SEO' : 'SEO cho trang tĩnh',
+      headline: schemaHeadline ?? localizedTitle,
       inLanguage: locale,
       url: articleUrls[locale],
       mainEntityOfPage: articleUrls[locale],
       datePublished: '2026-07-17',
       image: 'https://example.com/assets/static-seo.jpg',
-      author: {
-        '@type': 'Person',
-        name: 'Example Author',
-        url: 'https://example.com/en/about',
-      },
+      ...(omitAuthor ? {} : { author }),
     }
     writeFileSync(
       path.join(directory, 'static-seo.html'),
       [
         `<!doctype html><html lang="${locale}"><head>`,
-        `<title>${articleLd.headline}</title>`,
+        `<title>${documentTitle ?? localizedTitle}</title>`,
         '<meta name="description" content="A localized static SEO article.">',
         `<link rel="canonical" href="${articleUrls[locale]}">`,
         alternateMarkup,
         '</head><body><article>',
-        `<h1>${articleLd.headline}</h1>`,
+        `<h1>${localizedTitle}</h1>`,
         `<script type="application/ld+json">${JSON.stringify(articleLd)}</script>`,
         '</article></body></html>',
       ].join(''),
@@ -294,8 +303,8 @@ function writeLocalizedGenericSeoFixtures(outDir) {
 }
 
 function writeMediaPublicationFixture(rootDir) {
-  mkdirSync(path.join(rootDir, 'public/blog-data'), { recursive: true })
-  mkdirSync(path.join(rootDir, 'public/notes-data'), { recursive: true })
+  mkdirSync(path.join(rootDir, 'content/blog-data'), { recursive: true })
+  mkdirSync(path.join(rootDir, 'content/notes-data'), { recursive: true })
   writeFileSync(
     path.join(rootDir, 'config/media-publication.json'),
     JSON.stringify({
@@ -304,31 +313,51 @@ function writeMediaPublicationFixture(rootDir) {
       liveBaseUrl: 'https://example.com/dom-pub/icdn',
       articleOg: {
         blog: {
-          sourceIndex: 'public/blog-data/_index.json',
+          sourceIndex: 'content/blog-data/_index.json',
           sourceDirectory: 'public/og/blog',
           sourceExtension: '.png',
           publicPathPrefix: '/og/blogs',
           publicationDirectory: 'og/blogs',
           publicationExtension: '.jpg',
           publicationFormat: 'jpeg',
+          prunePolicy: { maxDeleteCount: 20, maxDeletePercent: 100 },
         },
         notes: {
-          sourceIndex: 'public/notes-data/_index.json',
+          sourceIndex: 'content/notes-data/_index.json',
           sourceDirectory: 'public/og/notes',
           sourceExtension: '.png',
           publicPathPrefix: '/og/notes',
           publicationDirectory: 'og/notes',
           publicationExtension: '.jpg',
           publicationFormat: 'jpeg',
+          prunePolicy: { maxDeleteCount: 20, maxDeletePercent: 100 },
         },
       },
     }),
   )
   writeFileSync(
-    path.join(rootDir, 'public/blog-data/_index.json'),
-    JSON.stringify({ posts: [{ slug: 'static' }] }),
+    path.join(rootDir, 'config/media-publication-public.json'),
+    JSON.stringify({
+      schemaVersion: 1,
+      articleOg: {
+        blog: {
+          localPathPrefix: '/og/blog',
+          publicPathPrefix: '/og/blogs',
+          publicationExtension: '.jpg',
+        },
+        notes: {
+          localPathPrefix: '/og/notes',
+          publicPathPrefix: '/og/notes',
+          publicationExtension: '.jpg',
+        },
+      },
+    }),
   )
-  writeFileSync(path.join(rootDir, 'public/notes-data/_index.json'), JSON.stringify({ posts: [] }))
+  writeFileSync(
+    path.join(rootDir, 'content/blog-data/_index.json'),
+    JSON.stringify({ posts: [{ slug: 'static', date: '2020-01-01' }] }),
+  )
+  writeFileSync(path.join(rootDir, 'content/notes-data/_index.json'), JSON.stringify({ posts: [] }))
 }
 
 test('verifies artifact budgets, sitemap canonicals, robots, and public secrets', async (t) => {
@@ -404,6 +433,224 @@ test('fails closed when generated pages, route payloads, manifests, or service w
       ),
     )
   }
+})
+
+test('fails closed when raw authored corpus paths or runtime references reach the artifact', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  const rawDirectory = path.join(outDir, 'blog-data', 'posts')
+  mkdirSync(rawDirectory, { recursive: true })
+  writeFileSync(
+    path.join(rawDirectory, 'leaked.json'),
+    JSON.stringify({ slug: 'leaked', html: '<p>raw body</p>' }),
+  )
+  writeFileSync(
+    path.join(outDir, 'assets/app.js'),
+    'fetch("/notes-data/posts/leaked.json")',
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.ok(
+    report.privacy.forbiddenRouteMatches.some(
+      (match) => match.segment === 'blog-data' && match.path === 'blog-data/posts/leaked.json',
+    ),
+  )
+  assert.ok(
+    report.privacy.forbiddenRouteReferenceMatches.some(
+      (match) => match.segment === 'notes-data' && match.path === 'assets/app.js',
+    ),
+  )
+  assert.match(report.failures.join('\n'), /blog-data\/posts\/leaked\.json/)
+  assert.match(report.failures.join('\n'), /notes-data.*assets\/app\.js/)
+})
+
+test('fails closed when scheduled or draft metadata is serialized under an unrelated path', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeMediaPublicationFixture(rootDir)
+  writeFileSync(
+    path.join(rootDir, 'content/blog-data/_index.json'),
+    JSON.stringify({
+      posts: [
+        { slug: 'released', category: 'architecture', date: '2026-07-19' },
+        { slug: 'scheduled-secret', category: 'architecture', date: '2999-01-01' },
+        {
+          slug: 'draft-secret',
+          category: 'architecture',
+          date: '2020-01-01',
+          status: 'draft',
+        },
+      ],
+    }),
+  )
+  writeFileSync(
+    path.join(outDir, 'assets/app.js'),
+    JSON.stringify({
+      slug: 'scheduled-secret',
+      category: 'architecture',
+      html: '<p>unreleased body</p>',
+    }),
+  )
+  writeFileSync(
+    path.join(outDir, 'en.html'),
+    readFileSync(path.join(outDir, 'en.html'), 'utf8').replace(
+      '</body>',
+      '<a href="/en/blog/architecture/draft-secret">draft</a></body>',
+    ),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.privacy.unpublishedContentReferenceMatches, [
+    { path: 'assets/app.js', slug: 'scheduled-secret', surface: 'blog' },
+    { path: 'en.html', slug: 'draft-secret', surface: 'blog' },
+  ])
+  assert.match(report.failures.join('\n'), /scheduled-secret/)
+  assert.match(report.failures.join('\n'), /draft-secret/)
+})
+
+test('route-only leaks accept static extensions without matching longer slug substrings', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeMediaPublicationFixture(rootDir)
+  writeFileSync(
+    path.join(rootDir, 'content/blog-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'route-blog-secret', category: 'architecture', date: '2999-01-01' }],
+    }),
+  )
+  writeFileSync(
+    path.join(rootDir, 'content/notes-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'route-note-secret', topic: 'thoughts', date: '2999-01-01' }],
+    }),
+  )
+  const clientPath = path.join(outDir, 'assets/app.js')
+  writeFileSync(
+    clientPath,
+    [
+      '"/en/blog/architecture/route-blog-secret-extra.html"',
+      '"/vi/notes/route-note-secret-copy.txt"',
+      '"/notes/route-note-secret.htmlish"',
+    ].join(','),
+  )
+
+  const decoys = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  assert.deepEqual(decoys.privacy.unpublishedContentReferenceMatches, [])
+
+  writeFileSync(
+    clientPath,
+    [
+      '"/en/blog/architecture/route-blog-secret.html"',
+      '"/blog/architecture/route-blog-secret.txt?segment=1"',
+      '"/vi/notes/route-note-secret.rsc"',
+      '"/notes/route-note-secret.json#payload"',
+    ].join(','),
+  )
+  const leaks = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  assert.deepEqual(leaks.privacy.unpublishedContentReferenceMatches, [
+    { path: 'assets/app.js', slug: 'route-blog-secret', surface: 'blog' },
+    { path: 'assets/app.js', slug: 'route-note-secret', surface: 'notes' },
+  ])
+})
+
+test('curated hub route segments do not masquerade as unpublished article references', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeMediaPublicationFixture(rootDir)
+  writeFileSync(
+    path.join(rootDir, 'content/blog-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'foundations', category: 'architecture', date: '2999-01-01' }],
+    }),
+  )
+  writeFileSync(
+    path.join(rootDir, 'content/notes-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'thoughts', topic: 'thoughts', date: '2999-01-01' }],
+    }),
+  )
+  writeFileSync(
+    path.join(outDir, 'assets/app.js'),
+    [
+      '"/en/blog/series/foundations"',
+      '"/vi/blog/series/foundations/page/2"',
+      '"/en/notes/topics/thoughts"',
+      '"/vi/notes/topics/thoughts/page/5"',
+    ].join(','),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  assert.deepEqual(report.privacy.unpublishedContentReferenceMatches, [])
+})
+
+test('topic-less and category-less unpublished metadata fail closed on exact slug tokens', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeMediaPublicationFixture(rootDir)
+  writeFileSync(
+    path.join(rootDir, 'content/blog-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'categoryless-blog-secret', date: '2999-01-01' }],
+    }),
+  )
+  writeFileSync(
+    path.join(rootDir, 'content/notes-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'topicless-note-secret', date: '2999-01-01' }],
+    }),
+  )
+  writeFileSync(
+    path.join(outDir, 'assets/app.js'),
+    JSON.stringify([
+      { slug: 'categoryless-blog-secret', html: '<p>unreleased blog post</p>' },
+      { slug: 'topicless-note-secret', html: '<p>unreleased note</p>' },
+    ]),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.privacy.unpublishedContentReferenceMatches, [
+    { path: 'assets/app.js', slug: 'categoryless-blog-secret', surface: 'blog' },
+    { path: 'assets/app.js', slug: 'topicless-note-secret', surface: 'notes' },
+  ])
+})
+
+test('exact slug tokens survive nested, escaped metadata records larger than 16 KiB', async (t) => {
+  const { rootDir, outDir } = createFixture(t, {
+    limits: { maxJavaScriptBytes: 100_000, totalBytes: 200_000 },
+  })
+  writeMediaPublicationFixture(rootDir)
+  writeFileSync(
+    path.join(rootDir, 'content/blog-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'long-blog-secret', category: 'architecture', date: '2999-01-01' }],
+    }),
+  )
+  writeFileSync(
+    path.join(rootDir, 'content/notes-data/_index.json'),
+    JSON.stringify({
+      posts: [{ slug: 'long-note-secret', topic: 'thoughts', date: '2999-01-01' }],
+    }),
+  )
+  writeFileSync(
+    path.join(outDir, 'assets/app.js'),
+    JSON.stringify({
+      nested: {
+        slug: 'long-blog-secret',
+        category: 'architecture',
+        html: `<p>${'b'.repeat(20_000)}</p>`,
+      },
+      escaped: JSON.stringify({
+        slug: 'long-note-secret',
+        topic: 'thoughts',
+        html: `<p>${'n'.repeat(20_000)}</p>`,
+      }),
+    }),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.privacy.unpublishedContentReferenceMatches, [
+    { path: 'assets/app.js', slug: 'long-blog-secret', surface: 'blog' },
+    { path: 'assets/app.js', slug: 'long-note-secret', surface: 'notes' },
+  ])
 })
 
 test('reports near-limit warnings against the configured artifact budget', async (t) => {
@@ -817,6 +1064,187 @@ test('verifies localized Article schema, reciprocal hreflang, and lightweight fa
   assert.equal(report.seo.urlCount, 3)
 })
 
+test('keeps Article headline aligned with the visible title when the document SEO title differs', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeLocalizedArticleFixture(outDir, {
+    visibleTitle: 'Visible canonical article title',
+    documentTitle: 'Focused SEO document title',
+  })
+
+  const valid = await verifyStaticArtifact({
+    rootDir,
+    configPath: 'budgets.json',
+  })
+  assert.deepEqual(valid.failures, [])
+
+  writeLocalizedArticleFixture(outDir, {
+    visibleTitle: 'Visible canonical article title',
+    documentTitle: 'Focused SEO document title',
+    schemaHeadline: 'Focused SEO document title',
+  })
+  const invalid = await verifyStaticArtifact({
+    rootDir,
+    configPath: 'budgets.json',
+  })
+  assert.match(invalid.failures.join('\n'), /Article headline must match its visible H1/)
+})
+
+test('accepts a named guest Person author without a URL or identifier', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeLocalizedArticleFixture(outDir, {
+    author: { '@type': 'Person', name: 'Guest Author' },
+  })
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.failures, [])
+})
+
+test('allows an omitted Article author for intentionally unresolved authorship', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeLocalizedArticleFixture(outDir, { omitAuthor: true })
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.failures, [])
+})
+
+test('rejects every explicit-empty Article author representation', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  const explicitEmptyAuthors = [null, false, '', [], {}]
+
+  for (const author of explicitEmptyAuthors) {
+    writeLocalizedArticleFixture(outDir, { author })
+    const report = await verifyStaticArtifact({
+      rootDir,
+      configPath: 'budgets.json',
+    })
+    assert.match(report.failures.join('\n'), /Article author property must contain at least one named Person/)
+  }
+})
+
+test('rejects a Person author without a non-empty name', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeLocalizedArticleFixture(outDir, {
+    author: { '@type': 'Person', name: '   ' },
+  })
+
+  const report = await verifyStaticArtifact({
+    rootDir,
+    configPath: 'budgets.json',
+  })
+
+  assert.match(report.failures.join('\n'), /Article author must be a Person with a non-empty name/)
+})
+
+test('requires the site owner author to use the exact owner identity', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeLocalizedArticleFixture(outDir, {
+    author: { '@type': 'Person', name: 'Nguyen Le Phong' },
+  })
+
+  const missingIdentity = await verifyStaticArtifact({
+    rootDir,
+    configPath: 'budgets.json',
+  })
+  assert.match(
+    missingIdentity.failures.join('\n'),
+    /site owner Article author must use https:\/\/example\.com\/#person and https:\/\/example\.com/,
+  )
+
+  writeLocalizedArticleFixture(outDir, {
+    author: {
+      '@type': 'Person',
+      '@id': 'https://example.com/#person',
+      name: 'Nguyen Le Phong',
+      url: 'https://example.com/en/about',
+    },
+  })
+  const wrongIdentity = await verifyStaticArtifact({
+    rootDir,
+    configPath: 'budgets.json',
+  })
+  assert.match(
+    wrongIdentity.failures.join('\n'),
+    /site owner Article author must use https:\/\/example\.com\/#person and https:\/\/example\.com/,
+  )
+})
+
+test('rejects invalid optional guest identities and owner identity spoofing', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  const invalidAuthors = [
+    {
+      '@type': 'Person',
+      name: 'Guest Author',
+      url: 'javascript:alert(1)',
+    },
+    {
+      '@type': 'Person',
+      '@id': '/authors/guest-author',
+      name: 'Guest Author',
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://example.com/#person',
+      name: 'Guest Author',
+      url: 'https://example.com',
+    },
+  ]
+
+  for (const author of invalidAuthors) {
+    writeLocalizedArticleFixture(outDir, { author })
+    const report = await verifyStaticArtifact({
+      rootDir,
+      configPath: 'budgets.json',
+    })
+    assert.match(
+      report.failures.join('\n'),
+      /Article author (?:url|@id) must be a safe stable absolute HTTPS identity|Article author must not claim the site owner identity with another name/,
+    )
+  }
+})
+
+test('accepts an explicit noindex locale redirect only when meta refresh matches canonical', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  const articleUrls = writeLocalizedArticleFixture(outDir)
+  const fallbackPath = path.join(outDir, 'zh/blog/architecture/static-seo.html')
+  const redirectPage = (target, titleLocale = 'en') =>
+    [
+      '<!doctype html><html lang="zh"><head><title>Static SEO</title>',
+      '<meta name="description" content="This article is available in English.">',
+      '<meta name="robots" content="noindex, follow">',
+      `<link rel="canonical" href="${articleUrls.en}">`,
+      '</head><body><main data-content-locale-fallback="true" data-content-locale-redirect="true">',
+      `<meta http-equiv="refresh" content="0;url=${target}">`,
+      `<h1 lang="${titleLocale}">Static SEO</h1><a href="/en/blog/architecture/static-seo">Read in English</a>`,
+      '</main></body></html>',
+    ].join('')
+  writeFileSync(fallbackPath, redirectPage('/en/blog/architecture/static-seo'))
+
+  const valid = await verifyStaticArtifact({
+    rootDir,
+    configPath: 'budgets.json',
+  })
+  assert.deepEqual(valid.failures, [])
+
+  writeFileSync(fallbackPath, redirectPage('/en/blog/architecture/static-seo', 'vi'))
+  const wrongHeadingLanguage = await verifyStaticArtifact({
+    rootDir,
+    configPath: 'budgets.json',
+  })
+  assert.match(
+    wrongHeadingLanguage.failures.join('\n'),
+    /legacy locale redirect H1 lang must match canonical locale en/,
+  )
+
+  writeFileSync(fallbackPath, redirectPage('/vi/blog/architecture/static-seo'))
+  const invalid = await verifyStaticArtifact({
+    rootDir,
+    configPath: 'budgets.json',
+  })
+  assert.match(invalid.failures.join('\n'), /legacy locale redirect must meta-refresh to its canonical/)
+})
+
 test('rejects noindex, hreflang, and Article schema on a locale fallback route', async (t) => {
   const { rootDir, outDir } = createFixture(t)
   const articleUrls = writeLocalizedArticleFixture(outDir)
@@ -844,7 +1272,10 @@ test('rejects noindex, hreflang, and Article schema on a locale fallback route',
     ].join(''),
   )
 
-  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const report = await verifyStaticArtifact({
+    rootDir,
+    configPath: 'budgets.json',
+  })
   const failures = report.failures.join('\n')
 
   assert.match(failures, /canonical consolidation without noindex/)
@@ -854,12 +1285,20 @@ test('rejects noindex, hreflang, and Article schema on a locale fallback route',
 
 test('does not classify paginated blog or notes archives as articles', async (t) => {
   const { rootDir, outDir } = createFixture(t)
-  const routes = ['en/blog/page/2', 'en/notes/page/2']
+  const routes = [
+    'en/blog/page/2',
+    'en/notes/page/2',
+    'en/blog/series/foundations',
+    'en/blog/series/foundations/page/2',
+    'en/notes/topics/thoughts',
+    'en/notes/topics/thoughts/page/2',
+  ]
 
   for (const route of routes) {
     const directory = path.join(outDir, path.dirname(route))
     mkdirSync(directory, { recursive: true })
     const url = `https://example.com/${route}`
+    const isHub = /\/(?:series|topics)\//.test(`/${route}`)
     writeFileSync(
       path.join(outDir, `${route}.html`),
       [
@@ -869,6 +1308,8 @@ test('does not classify paginated blog or notes archives as articles', async (t)
         `<link rel="canonical" href="${url}">`,
         `<link rel="alternate" hreflang="en" href="${url}">`,
         `<link rel="alternate" hreflang="x-default" href="${url}">`,
+        isHub ? '<meta property="og:image" content="https://example.com/opengraph-image.png">' : '',
+        isHub ? '<meta name="twitter:image" content="https://example.com/opengraph-image.png">' : '',
         '</head><body><main><h1>Archive</h1></main></body></html>',
       ].join(''),
     )
@@ -889,7 +1330,49 @@ test('does not classify paginated blog or notes archives as articles', async (t)
       '</urlset>',
     ].join(''),
   )
+  writeFileSync(path.join(outDir, 'opengraph-image.png'), ONE_PIXEL_PNG)
 
-  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const report = await verifyStaticArtifact({
+    rootDir,
+    configPath: 'budgets.json',
+  })
   assert.deepEqual(report.failures, [])
+})
+
+test('requires deterministic Open Graph and Twitter images on content hubs', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  const route = 'en/blog/series/foundations'
+  const url = `https://example.com/${route}`
+  mkdirSync(path.join(outDir, path.dirname(route)), { recursive: true })
+  writeFileSync(
+    path.join(outDir, `${route}.html`),
+    [
+      '<!doctype html><html lang="en"><head>',
+      '<title>Foundations</title>',
+      '<meta name="description" content="A curated architecture series.">',
+      `<link rel="canonical" href="${url}">`,
+      `<link rel="alternate" hreflang="en" href="${url}">`,
+      `<link rel="alternate" hreflang="x-default" href="${url}">`,
+      '</head><body><main><h1>Foundations</h1></main></body></html>',
+    ].join(''),
+  )
+  const sitemap = readFileSync(path.join(outDir, 'sitemap.xml'), 'utf8')
+  writeFileSync(
+    path.join(outDir, 'sitemap.xml'),
+    sitemap.replace(
+      '</urlset>',
+      `<url><loc>${url}</loc>` +
+        `<xhtml:link rel="alternate" hreflang="en" href="${url}" />` +
+        `<xhtml:link rel="alternate" hreflang="x-default" href="${url}" />` +
+        '</url></urlset>',
+    ),
+  )
+
+  const report = await verifyStaticArtifact({
+    rootDir,
+    configPath: 'budgets.json',
+  })
+  const failures = report.failures.join('\n')
+  assert.match(failures, /content hub must emit exactly one og:image/)
+  assert.match(failures, /content hub must emit exactly one twitter:image/)
 })

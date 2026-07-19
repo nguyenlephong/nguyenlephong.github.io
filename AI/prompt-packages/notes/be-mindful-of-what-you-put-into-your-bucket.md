@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `be-mindful-of-what-you-put-into-your-bucket`.
 
 Source read:
-- `public/notes-data/posts/be-mindful-of-what-you-put-into-your-bucket.json`
-- `public/notes-data/vi/posts/be-mindful-of-what-you-put-into-your-bucket.json`
+- `content/notes-data/posts/be-mindful-of-what-you-put-into-your-bucket.json`
+- `content/notes-data/vi/posts/be-mindful-of-what-you-put-into-your-bucket.json`
 - Approved reference: commit `48ac924f16`, `cross-functional-teams`
 
 Reference style:

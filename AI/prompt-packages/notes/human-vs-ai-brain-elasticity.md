@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `human-vs-ai-brain-elasticity`.
 
 Source read:
-- `public/notes-data/posts/human-vs-ai-brain-elasticity.json`
-- `public/notes-data/vi/posts/human-vs-ai-brain-elasticity.json`
+- `content/notes-data/posts/human-vs-ai-brain-elasticity.json`
+- `content/notes-data/vi/posts/human-vs-ai-brain-elasticity.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

@@ -23,6 +23,10 @@ const CRUX_METRIC_KEYS = Object.freeze({
   interaction_to_next_paint: "inp",
   cumulative_layout_shift: "cls"
 });
+export const REQUIRED_SEO_FIELD_CREDENTIALS = Object.freeze([
+  "GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON",
+  "CRUX_API_KEY"
+]);
 
 class MonitorError extends Error {
   constructor(reason) {
@@ -87,6 +91,12 @@ function normalizeCanonicalUrl(value) {
   } catch {
     return null;
   }
+}
+
+export function missingSeoFieldCredentials(env = process.env) {
+  return REQUIRED_SEO_FIELD_CREDENTIALS.filter(
+    (name) => typeof env[name] !== "string" || env[name].trim() === ""
+  );
 }
 
 export function compareCanonicalUrls(
@@ -955,6 +965,18 @@ async function emitReport(report, env) {
 
 async function main() {
   const now = new Date();
+  if (process.argv.slice(2).includes("--check-credentials")) {
+    const missing = missingSeoFieldCredentials(process.env);
+    if (missing.length > 0) {
+      console.error(
+        `[seo-field-monitoring] missing required repository secret(s): ${missing.join(", ")}`
+      );
+      process.exitCode = 1;
+    } else {
+      console.log("[seo-field-monitoring] required credentials are configured");
+    }
+    return;
+  }
   try {
     const config = JSON.parse(await readFile(CONFIG_PATH, "utf8"));
     const report = await collectSeoFieldData(config, { now });

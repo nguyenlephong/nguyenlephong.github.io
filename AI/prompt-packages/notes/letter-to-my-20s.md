@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `letter-to-my-20s`.
 
 Source read:
-- `public/notes-data/posts/letter-to-my-20s.json`
-- `public/notes-data/vi/posts/letter-to-my-20s.json`
+- `content/notes-data/posts/letter-to-my-20s.json`
+- `content/notes-data/vi/posts/letter-to-my-20s.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

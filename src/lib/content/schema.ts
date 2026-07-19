@@ -1,21 +1,39 @@
 import { z, type RefinementCtx } from 'zod'
+import {
+  CONTENT_PUBLICATION_STATUSES,
+  isRealContentDate,
+} from '@/lib/content/publication-contract.mjs'
 
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
-const ISO_DATE_PATTERN = /^(\d{4})-(\d{2})-(\d{2})$/
 
-function isRealIsoDate(value: string): boolean {
-  const match = ISO_DATE_PATTERN.exec(value)
-  if (!match) return false
-  const year = Number(match[1])
-  const month = Number(match[2])
-  const day = Number(match[3])
-  const date = new Date(Date.UTC(year, month - 1, day))
-  return date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day
-}
+export const contentSlugSchema = z
+  .string()
+  .regex(SLUG_PATTERN, 'Use a lowercase kebab-case content identifier')
 
-export const contentSlugSchema = z.string().regex(SLUG_PATTERN, 'Use a lowercase kebab-case content identifier')
+export const contentDateSchema = z
+  .string()
+  .refine(isRealContentDate, 'Use a real ISO date in YYYY-MM-DD format')
 
-export const contentDateSchema = z.string().refine(isRealIsoDate, 'Use a real ISO date in YYYY-MM-DD format')
+export const contentPublicationStatusSchema = z.enum(
+  CONTENT_PUBLICATION_STATUSES,
+)
+
+export const contentModeSchema = z.enum([
+  'technical',
+  'reflective',
+  'book-reflection',
+  'decision-guide',
+])
+
+export const seoTitleSchema = z
+  .string()
+  .trim()
+  .min(1, 'SEO title must not be empty')
+
+export const seoDescriptionSchema = z
+  .string()
+  .trim()
+  .min(1, 'SEO description must not be empty')
 
 export const readingMinutesSchema = z
   .number()

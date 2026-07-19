@@ -1,14 +1,13 @@
 import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
-import { hasLocale, NextIntlClientProvider } from 'next-intl'
+import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import Script from 'next/script'
 import { SITE_URL } from '@/app/seo.config'
 import PostHogBootstrap from '@/components/analytics/PostHogBootstrap'
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
 import { routing, type Locale } from '@/i18n/routing'
 import React from 'react'
-import '../globals.css'
+import '../document.css'
 
 const LOCALE_OG_MAP: Record<Locale, string> = {
   en: 'en_US',
@@ -144,46 +143,16 @@ export default async function LocaleLayout({ children, params }: LayoutProps) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        <meta name="google-adsense-account" content="ca-pub-2196929070546836" />
         <link rel="preconnect" href="https://us.i.posthog.com" crossOrigin="" />
         <link rel="preconnect" href="https://us-assets.i.posthog.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://us.i.posthog.com" />
         <link rel="dns-prefetch" href="https://us-assets.i.posthog.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
       </head>
-
-      <Script
-        strategy="lazyOnload"
-        id="GTM"
-        src="https://www.googletagmanager.com/gtag/js?id=G-RLXNC58343"
-      />
-      <Script
-        strategy="lazyOnload"
-        id="adsbygoogle"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2196929070546836"
-        crossOrigin="anonymous"
-      />
-      <Script
-        id="GTM_datalayer"
-        strategy="lazyOnload"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-RLXNC58343', { page_path: window.location.pathname });
-          `,
-        }}
-      />
       <PostHogBootstrap locale={locale} />
 
       <body suppressHydrationWarning>
-        <NextIntlClientProvider>
-          <WebVitalsReporter locale={locale} />
-          {children}
-        </NextIntlClientProvider>
+        <WebVitalsReporter locale={locale} />
+        {children}
       </body>
     </html>
   )

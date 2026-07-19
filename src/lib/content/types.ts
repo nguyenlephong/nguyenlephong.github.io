@@ -12,6 +12,27 @@ export interface Faq {
   a: string
 }
 
+/**
+ * A small editorial classification used by metadata and structured data.
+ * This is deliberately a closed vocabulary rather than a free-form theme tag.
+ */
+export type ContentMode =
+  | 'technical'
+  | 'reflective'
+  | 'book-reflection'
+  | 'decision-guide'
+
+/** Optional editorial controls shared by authored Blog and Notes content. */
+export interface EditorialMetadata {
+  contentMode?: ContentMode
+  /** Search-specific title. The visible article heading remains `title`. */
+  seoTitle?: string
+  /** Search-specific description. The visible summary remains `summary`. */
+  seoDescription?: string
+  /** Date the content was reviewed for accuracy; never an edit timestamp. */
+  reviewedAt?: string
+}
+
 /** Source-book metadata for book reflections. */
 export interface BookSource {
   /** Localized or commonly used title used in this piece. */

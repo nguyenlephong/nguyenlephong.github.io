@@ -3,6 +3,12 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import ts from "typescript";
 
+async function readSources(paths) {
+  return (await Promise.all(paths.map((path) => readFile(path, "utf8")))).join(
+    "\n"
+  );
+}
+
 async function importTypeScript(source) {
   const output = ts.transpileModule(source, {
     compilerOptions: {
@@ -53,7 +59,10 @@ test("posthog initialization uses the current sdk host contract", async () => {
   assert.match(bootstrap, /disable_session_recording:\s*true/);
   assert.match(bootstrap, /respect_dnt:\s*true/);
   assert.match(bootstrap, /before_send:/);
-  assert.match(bootstrap, /getPostHogBeforeSendSource\(surface === "not_found"\)/);
+  assert.match(
+    bootstrap,
+    /getPostHogBeforeSendSource\(surface === "not_found"\)/
+  );
   assert.match(privacy, /normalized\.endsWith\('_url'\)/);
   assert.match(privacy, /normalized\.endsWith\('_referrer'\)/);
   assert.doesNotMatch(bootstrap, /api_host:'https:\/\/app\.posthog\.com'/);
@@ -99,6 +108,11 @@ test("analytics strips search data and clears stale page context before lazy boo
       path: "/unsafe?q=private-email%40example.com",
       referrer: "https://search.example/?q=private-email%40example.com#result"
     });
+    analytics.track(
+      "cv_nav_click",
+      { target: "studio_footer" },
+      { beacon: true }
+    );
 
     assert.equal(Array.isArray(window.posthog), true);
     const pageContextKeys = [
@@ -111,10 +125,15 @@ test("analytics strips search data and clears stale page context before lazy boo
       "blog_slug",
       "notes_category",
       "notes_slug",
+      "content_hub_kind",
+      "content_hub_id",
+      "content_hub_page",
       "detected_locale",
       "requested_surface"
     ];
-    const registers = window.posthog.filter(([operation]) => operation === "register");
+    const registers = window.posthog.filter(
+      ([operation]) => operation === "register"
+    );
     assert.deepEqual(registers, [
       ["register", { page_type: "blog_article", blog_slug: "stale-article" }],
       ["register", { page_type: "apps", page_section: "showroom" }]
@@ -131,7 +150,9 @@ test("analytics strips search data and clears stale page context before lazy boo
       previousRegisterIndex = registerIndex;
     }
 
-    const capture = window.posthog.find(([operation]) => operation === "capture");
+    const capture = window.posthog.find(
+      ([operation]) => operation === "capture"
+    );
     assert.equal(capture[1], "apps_view");
     assert.equal(capture[2].path, "/en/blog");
     assert.equal(capture[2].pathname, "/en/blog");
@@ -140,6 +161,18 @@ test("analytics strips search data and clears stale page context before lazy boo
     assert.equal(Object.hasOwn(capture[2], "q"), false);
     assert.equal(Object.hasOwn(capture[2], "search"), false);
     assert.doesNotMatch(JSON.stringify(window.posthog), /private-email/);
+    const boundaryCapture = window.posthog.find(
+      ([operation, event]) =>
+        operation === "capture" && event === "cv_nav_click"
+    );
+    assert.equal(
+      typeof boundaryCapture[2].$set_once.last_outbound_ts,
+      "number"
+    );
+    assert.deepEqual(boundaryCapture[3], {
+      send_instantly: true,
+      transport: "sendBeacon"
+    });
 
     assert.equal(analytics.getAnalyticsPathname(), "/en/blog");
   } finally {
@@ -207,7 +240,11 @@ test("posthog before_send sanitizes SDK URL properties and keeps 404 strict", as
     session_entry_url: "https://nguyenlephong.github.io/en",
     query_length: 6
   });
-  assert.equal(capture.properties.q, "secret", "sanitizing must not mutate the SDK input");
+  assert.equal(
+    capture.properties.q,
+    "secret",
+    "sanitizing must not mutate the SDK input"
+  );
 
   const notFoundBeforeSend = Function(
     `return (${privacy.getPostHogBeforeSendSource(true)})`
@@ -314,7 +351,10 @@ test("page exit reporting keeps the outgoing pathname exactly once", async (t) =
 });
 
 test("PageTracker wires the same final reporter to all three exit paths", async () => {
-  const pageTracker = await readFile("src/components/analytics/PageTracker.tsx", "utf8");
+  const pageTracker = await readFile(
+    "src/components/analytics/PageTracker.tsx",
+    "utf8"
+  );
   assert.match(pageTracker, /const pagePathname = getAnalyticsPathname\(\)/);
   assert.match(pageTracker, /pathnameOverride: pagePathname/);
   assert.match(pageTracker, /const reportTime = createOnceReporter/);
@@ -449,10 +489,118 @@ test("public content surfaces have explicit posthog page and interaction events"
   assert.match(offlineBanner, /offline_banner_dismiss/);
 });
 
+test("content hub hierarchy links reuse existing client boundaries without eager prefetch", async () => {
+  const [
+    analytics,
+    trackerHook,
+    contentHubPageTracker,
+    contentHubReadingTracker,
+    hubPage,
+    blogCollection,
+    noteCollection,
+    blogArticle,
+    noteArticle
+  ] = await Promise.all([
+      readFile("src/lib/analytics.ts", "utf8"),
+      readFile(
+        "src/components/analytics/useContentHubClickTracking.ts",
+        "utf8"
+      ),
+      readFile(
+        "src/components/analytics/ContentHubPageTracker.tsx",
+        "utf8"
+      ),
+      readFile("src/components/blog/ContentHubReadingTracker.tsx", "utf8"),
+      readFile("src/components/content/ContentHubPage.tsx", "utf8"),
+      readFile("src/components/blog/BlogCollectionPage.tsx", "utf8"),
+      readFile("src/components/notes/NotesCollectionPage.tsx", "utf8"),
+      readFile(
+        "src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx",
+        "utf8"
+      ),
+      readFile("src/app/[locale]/(site)/notes/[slug]/page.tsx", "utf8")
+    ]);
+
+  assert.match(analytics, /'content_hub_archive_click'/);
+  assert.match(trackerHook, /action === 'catalog' \|\| action === 'hub'/);
+  assert.match(trackerHook, /track\('content_hub_click'/);
+  assert.match(trackerHook, /action === 'archive'/);
+  assert.match(trackerHook, /track\('content_hub_archive_click'/);
+  assert.match(trackerHook, /source,/);
+  assert.match(trackerHook, /destination,/);
+  assert.doesNotMatch(trackerHook, /router\.prefetch|prefetch\(/);
+  assert.match(contentHubPageTracker, /useContentHubClickTracking\(true\)/);
+  assert.match(contentHubPageTracker, /return <PageTracker \{\.\.\.props\} \/>/);
+  assert.match(
+    contentHubReadingTracker,
+    /useContentHubClickTracking\(true\)/
+  );
+  assert.match(
+    contentHubReadingTracker,
+    /return <BlogReadingTracker \{\.\.\.props\} \/>/
+  );
+
+  assert.match(hubPage, /data-content-hub-action="archive"/);
+  assert.match(hubPage, /data-source="content_hub_breadcrumb"/);
+  assert.match(hubPage, /<ContentHubPageTracker/);
+  assert.match(
+    blogCollection,
+    /page === 1 && hasCuratedHubs \?[\s\S]*<ContentHubPageTracker[\s\S]*:[\s\S]*<PageTracker/
+  );
+  assert.match(
+    noteCollection,
+    /page === 1 && hasCuratedHubs \?[\s\S]*<ContentHubPageTracker[\s\S]*:[\s\S]*<PageTracker/
+  );
+
+  assert.match(
+    blogArticle,
+    /seriesMeta && seriesHubLocale \?[\s\S]*<ContentHubReadingTracker[\s\S]*:[\s\S]*<BlogReadingTracker/
+  );
+  assert.equal(
+    (blogArticle.match(/data-content-hub-action="hub"/g) ?? []).length,
+    2
+  );
+  assert.match(blogArticle, /data-source="blog_article_breadcrumb"/);
+  assert.match(blogArticle, /data-source="blog_article_series"/);
+  assert.equal((blogArticle.match(/prefetch=\{false\}/g) ?? []).length, 2);
+
+  assert.match(
+    noteArticle,
+    /topicHub \?[\s\S]*<ContentHubReadingTracker[\s\S]*:[\s\S]*<BlogReadingTracker/
+  );
+  assert.equal(
+    (noteArticle.match(/data-content-hub-action="hub"/g) ?? []).length,
+    1
+  );
+  assert.match(noteArticle, /data-source="notes_article_breadcrumb"/);
+  assert.equal((noteArticle.match(/prefetch=\{false\}/g) ?? []).length, 1);
+  assert.doesNotMatch(
+    [hubPage, blogCollection, noteCollection, blogArticle, noteArticle].join(
+      "\n"
+    ),
+    /<ContentHubClickTracker/
+  );
+});
+
 test("studio analytics and agent rules cover new workspace interactions", async () => {
   const [analytics, adminShell, agents, claude, gemini] = await Promise.all([
     readFile("src/lib/analytics.ts", "utf8"),
-    readFile("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8"),
+    readSources([
+      "src/app/[locale]/studio/studio-admin-shell.tsx",
+      "src/app/[locale]/studio/StudioShellChrome.tsx",
+      "src/app/[locale]/studio/studio-shell-navigation.ts",
+      "src/app/[locale]/studio/StudioWelcomeFeature.tsx",
+      "src/app/[locale]/studio/StudioAiSkillsFeature.tsx",
+      "src/app/[locale]/studio/StudioChecklistsFeature.tsx",
+      "src/app/[locale]/studio/StudioFlowFeature.tsx",
+      "src/app/[locale]/studio/StudioFlowChart.tsx",
+      "src/app/[locale]/studio/StudioRouteFeatureRegistry.tsx",
+      "src/app/[locale]/studio/StudioWorkspace.tsx",
+      "src/app/[locale]/studio/StudioDeliverySignalFeature.tsx",
+      "src/app/[locale]/studio/StudioFlowCanvasFeature.tsx",
+      "src/app/[locale]/studio/StudioDashboardRoutesFeature.tsx",
+      "src/app/[locale]/studio/studio-feature-load-error.ts"
+    ]),
     readFile("AGENTS.md", "utf8"),
     readFile("CLAUDE.md", "utf8"),
     readFile("GEMINI.md", "utf8")
@@ -467,6 +615,7 @@ test("studio analytics and agent rules cover new workspace interactions", async 
     "studio_preference_change",
     "studio_preference_restore",
     "studio_sidebar_toggle",
+    "studio_feature_load_error",
     "studio_ai_skill_filter",
     "studio_ai_skill_select",
     "studio_ai_skill_copy",
@@ -499,7 +648,7 @@ test("studio analytics and agent rules cover new workspace interactions", async 
     /onActivate\(item\.routeId \?\? DEFAULT_ROUTE, "sidebar"\)/
   );
   assert.match(adminShell, /onActivate\(route\.id, "command"\)/);
-  assert.match(adminShell, /source:\s*"route_actions"/);
+  assert.match(adminShell, /onActivate\([^\n]+, "route_actions"\)/);
   assert.match(adminShell, /source:\s*"sidebar_profile_grid"/);
   assert.match(adminShell, /source:\s*"account_menu"/);
   assert.match(adminShell, /source:\s*"topbar"/);
@@ -522,7 +671,11 @@ test("Studio emits one initial-location route event and ignores same-route histo
   const deduper = new StudioRouteOpenDeduper();
 
   assert.equal(deduper.claimInitialLocation(), true);
-  assert.equal(deduper.claimInitialLocation(), false, "hydration/effect replay must not emit twice");
+  assert.equal(
+    deduper.claimInitialLocation(),
+    false,
+    "hydration/effect replay must not emit twice"
+  );
   assert.equal(deduper.isHistoryTransition("welcome", "welcome"), false);
   assert.equal(deduper.isHistoryTransition("welcome", "ai-skills"), true);
 
@@ -531,6 +684,12 @@ test("Studio emits one initial-location route event and ignores same-route histo
     1,
     "the shell must contain one initial-location studio_route_open emission"
   );
-  assert.match(adminShell, /routeOpenDeduperRef\.current\.claimInitialLocation\(\)/);
-  assert.match(adminShell, /routeOpenDeduperRef\.current\.isHistoryTransition\(currentRoute, nextRoute\)/);
+  assert.match(
+    adminShell,
+    /routeOpenDeduperRef\.current\.claimInitialLocation\(\)/
+  );
+  assert.match(
+    adminShell,
+    /routeOpenDeduperRef\.current\.isHistoryTransition\(currentRoute, nextRoute\)/
+  );
 });

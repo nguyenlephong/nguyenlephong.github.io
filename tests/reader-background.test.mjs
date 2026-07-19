@@ -11,7 +11,14 @@ function read(path) {
 test("reader background preferences are available from the floating tools", () => {
   const script = read("src/components/reading/ReadingBackgroundScript.tsx");
   const tools = read("src/components/blog/BlogReaderTools.tsx");
-  const layout = read("src/app/[locale]/(site)/layout.tsx");
+  const siteLayout = read("src/app/[locale]/(site)/layout.tsx");
+  const articleTools = read("src/components/blog/ArticleReaderTools.tsx");
+  const blogArticleLayout = read(
+    "src/app/[locale]/(site)/blog/[category]/[slug]/layout.tsx"
+  );
+  const notesArticleLayout = read(
+    "src/app/[locale]/(site)/notes/[slug]/layout.tsx"
+  );
   const globals = read("src/app/globals.css");
   const notesCss = read("src/app/[locale]/(site)/notes/notes.css");
 
@@ -33,8 +40,17 @@ test("reader background preferences are available from the floating tools", () =
   assert.match(tools, /blog-reader-tools__trigger/);
   assert.match(tools, /aria-expanded=\{expanded\}/);
   assert.match(tools, /expanded &&/);
-  assert.match(layout, /background: rt\('background'\)/);
-  assert.match(layout, /<BlogReaderTools labels=\{readerLabels\} \/>/);
+  assert.match(tools, /const pathname = usePathname\(\)/);
+  assert.match(tools, /<ReaderTools key=\{pathname\} \{\.\.\.props\} \/>/);
+  assert.doesNotMatch(tools, /expandedPathname/);
+  assert.match(articleTools, /namespace: 'ReaderTools'/);
+  assert.match(articleTools, /background: t\('background'\)/);
+  assert.match(articleTools, /<BlogReaderTools/);
+  assert.match(blogArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
+  assert.match(notesArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
+  assert.doesNotMatch(siteLayout, /\bArticleReaderTools\b|\bBlogReaderTools\b/);
+  assert.match(siteLayout, /<FontScript \/>/);
+  assert.match(siteLayout, /<ReadingBackgroundScript \/>/);
   assert.match(globals, /\.blog-reader-tools__controls \{[^}]*flex-direction: column/s);
   assert.match(notesCss, /html\[data-reading-background\] \.notes-reading/);
 });

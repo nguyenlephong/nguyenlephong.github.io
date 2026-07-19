@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { existsSync, readFileSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { registerHooks } from 'node:module'
 import path from 'node:path'
@@ -48,8 +48,13 @@ registerHooks({
   },
 })
 
-const { getPostContentLocales, listBlogPostParams } = await import(
-  new URL('../src/lib/blog/data.ts', import.meta.url)
+const {
+  getPostContentLocales,
+  listBlogArticleRouteParams,
+  listBlogPostParams,
+} = await import(new URL('../src/lib/blog/data.ts', import.meta.url))
+const { LEGACY_BLOG_LOCALE_FALLBACKS } = await import(
+  new URL('../src/lib/blog/legacy-locale-fallbacks.ts', import.meta.url)
 )
 const { getNoteContentLocales, listNoteParams } = await import(
   new URL('../src/lib/notes/data.ts', import.meta.url)
@@ -60,29 +65,77 @@ const { localeSwitchPath } = await import(
 const { default: buildSitemap } = await import(
   new URL('../src/app/sitemap.ts', import.meta.url)
 )
+const { isContentPublished } = await import(
+  new URL('../src/lib/content/publication.ts', import.meta.url)
+)
+const { validateAuthoredArticleSlugUniqueness } = await import(
+  new URL('../scripts/lib/article-slug-contract.mjs', import.meta.url)
+)
 
 function readJson(relativePath) {
-  return JSON.parse(readFileSync(new URL(relativePath, import.meta.url), 'utf8'))
+  return JSON.parse(
+    readFileSync(new URL(relativePath, import.meta.url), 'utf8'),
+  )
 }
 
+function sourceFiles(directory, files = []) {
+  for (const entry of readdirSync(directory)) {
+    const absolutePath = path.join(directory, entry)
+    if (statSync(absolutePath).isDirectory()) sourceFiles(absolutePath, files)
+    else if (/\.(?:js|jsx|mjs|ts|tsx)$/.test(entry)) files.push(absolutePath)
+  }
+  return files
+}
+
+test('authored corpus is build-only and no browser source references its former public URLs', () => {
+  for (const directory of ['blog-data', 'notes-data', 'thoughts-data']) {
+    assert.equal(existsSync(path.join('public', directory)), false)
+    assert.equal(existsSync(path.join('content', directory)), true)
+  }
+
+  const publicCorpusUrl =
+    /["'`]\/(?:blog-data|notes-data|thoughts-data)(?:\/|["'`])/i
+  for (const filePath of sourceFiles('src')) {
+    assert.doesNotMatch(
+      readFileSync(filePath, 'utf8'),
+      publicCorpusUrl,
+      filePath,
+    )
+  }
+})
+
+test('canonical and localized Blog and Notes indexes preserve the global slug contract', async () => {
+  const blogIndex = readJson('../content/blog-data/_index.json')
+  const notesIndex = readJson('../content/notes-data/_index.json')
+  const report = await validateAuthoredArticleSlugUniqueness()
+
+  assert.equal(report.blog, blogIndex.posts.length)
+  assert.equal(report.notes, notesIndex.posts.length)
+  assert.ok(report.localizedIndexes > 0)
+})
+
 test('article static params contain authored locale routes only', () => {
-  const blogIndex = readJson('../public/blog-data/_index.json')
-  const notesIndex = readJson('../public/notes-data/_index.json')
+  const blogIndex = readJson('../content/blog-data/_index.json')
+  const notesIndex = readJson('../content/notes-data/_index.json')
   const blogParams = listBlogPostParams()
   const noteParams = listNoteParams()
-  const expectedBlogRoutes = blogIndex.posts.reduce(
-    (total, post) => total + post.locales.length,
-    0,
-  )
-  const expectedNoteRoutes = notesIndex.posts.reduce(
-    (total, note) => total + note.locales.length,
-    0,
-  )
+  const expectedBlogRoutes = blogIndex.posts
+    .filter((post) => isContentPublished(post))
+    .reduce((total, post) => total + post.locales.length, 0)
+  const expectedNoteRoutes = notesIndex.posts
+    .filter((note) => isContentPublished(note))
+    .reduce((total, note) => total + note.locales.length, 0)
 
   assert.equal(blogParams.length, expectedBlogRoutes)
   assert.equal(noteParams.length, expectedNoteRoutes)
-  assert.equal(new Set(blogParams.map((param) => JSON.stringify(param))).size, blogParams.length)
-  assert.equal(new Set(noteParams.map((param) => JSON.stringify(param))).size, noteParams.length)
+  assert.equal(
+    new Set(blogParams.map((param) => JSON.stringify(param))).size,
+    blogParams.length,
+  )
+  assert.equal(
+    new Set(noteParams.map((param) => JSON.stringify(param))).size,
+    noteParams.length,
+  )
 
   for (const param of blogParams) {
     assert.ok(getPostContentLocales(param.slug).includes(param.locale))
@@ -93,6 +146,41 @@ test('article static params contain authored locale routes only', () => {
 
   assert.ok(blogParams.length < blogIndex.posts.length * 6)
   assert.ok(noteParams.length < notesIndex.posts.length * 6)
+})
+
+test('one proven locale mistake keeps a non-authored compatibility route outside sitemap', () => {
+  const slug = 'ai-ideas-bloom-inside-everyday-work'
+  const authored = listBlogPostParams()
+  const routes = listBlogArticleRouteParams()
+
+  assert.deepEqual(LEGACY_BLOG_LOCALE_FALLBACKS, [
+    { locale: 'en', category: 'ai', slug, targetLocale: 'vi' },
+  ])
+  assert.equal(routes.length, authored.length + 1)
+  assert.equal(
+    authored.some((entry) => entry.locale === 'en' && entry.slug === slug),
+    false,
+  )
+  assert.equal(
+    authored.some((entry) => entry.locale === 'vi' && entry.slug === slug),
+    true,
+  )
+  assert.ok(
+    routes.some(
+      (entry) =>
+        entry.locale === 'en' && entry.category === 'ai' && entry.slug === slug,
+    ),
+  )
+
+  const sitemapUrls = new Set(buildSitemap().map((entry) => entry.url))
+  assert.equal(
+    sitemapUrls.has(`https://nguyenlephong.github.io/en/blog/ai/${slug}`),
+    false,
+  )
+  assert.equal(
+    sitemapUrls.has(`https://nguyenlephong.github.io/vi/blog/ai/${slug}`),
+    true,
+  )
 })
 
 test('sitemap article URLs equal generated authored routes', () => {
@@ -138,10 +226,11 @@ test('locale switching never fabricates an untranslated article path', () => {
 })
 
 test('article pages keep production static params while development resolves them on demand', async () => {
-  const [blogPage, notePage, localeSwitcher] = await Promise.all([
+  const [blogPage, notePage, localeSwitcher, fallback] = await Promise.all([
     readFile('src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx', 'utf8'),
     readFile('src/app/[locale]/(site)/notes/[slug]/page.tsx', 'utf8'),
     readFile('src/components/LocaleSwitcher.tsx', 'utf8'),
+    readFile('src/components/content/LocalizedArticleFallback.tsx', 'utf8'),
   ])
 
   for (const page of [blogPage, notePage]) {
@@ -153,8 +242,15 @@ test('article pages keep production static params while development resolves the
     assert.match(page, /data-content-locales/)
     assert.match(page, /data-content-locale-fallback/)
   }
-  assert.match(blogPage, /return listBlogPostParams\(\)/)
+  assert.match(blogPage, /return listBlogArticleRouteParams\(\)/)
   assert.match(notePage, /return listNoteParams\(\)/)
+  assert.match(blogPage, /getLegacyBlogLocaleFallback/)
+  assert.match(blogPage, /index:\s*false/)
+  assert.match(fallback, /data-content-locale-redirect/)
+  assert.match(fallback, /httpEquiv="refresh"/)
+  assert.match(fallback, /lang=\{titleLocale\}/)
+  assert.match(blogPage, /titleLocale=\{canonicalLocale\}/)
+  assert.match(notePage, /titleLocale=\{canonicalLocale\}/)
   assert.match(localeSwitcher, /localeSwitchPath/)
   assert.match(localeSwitcher, /track\('locale_change'/)
 })
@@ -165,4 +261,5 @@ test('artifact budgets are rebased below the previous near-limit output', () => 
   assert.equal(budget.warnAtPercent, 75)
   assert.equal(budget.limits.fileCount, 20_000)
   assert.equal(budget.limits.totalBytes, 600 * 1024 * 1024)
+  assert.equal(Object.hasOwn(budget.limits, 'minimumSitemapUrls'), false)
 })

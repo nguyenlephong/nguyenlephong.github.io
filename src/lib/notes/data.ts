@@ -8,13 +8,23 @@ import {
 } from "@/lib/content/io";
 import {
   assertExactSlugSet,
+  assertExactIdentifierSet,
   assertIndexBodyMetadataParity,
   assertKnownKeys,
   assertProvidedMetadataParity,
   listJsonSlugs
 } from "@/lib/content/catalog";
 import { pageCount } from "@/lib/content/pagination";
+import {
+  contentHubPageLocales,
+  listContentHubRoutes
+} from "@/lib/content/hub-page";
+import {
+  CONTENT_HUB_LOCALES,
+  NOTE_HUB_TOPIC_IDS
+} from "@/lib/content/route-contract";
 import { getContentVersionTracker } from "@/lib/content/freshness";
+import { isContentPublished } from "@/lib/content/publication";
 import { rewriteContentAssetValues } from "@/lib/assets/icdn";
 import {
   noteOverrideSchema,
@@ -22,9 +32,16 @@ import {
   notesIndexSchema,
   noteSchema
 } from "./schema";
-import type { Note, NoteMeta, NotesIndexFile, TopicMeta } from "./types";
+import { UNRESOLVED_NOTE_AUTHOR_SLUGS } from "./content-quality";
+import type {
+  Note,
+  NoteHubMeta,
+  NoteMeta,
+  NotesIndexFile,
+  TopicMeta
+} from "./types";
 
-const DATA_DIR = path.join(process.cwd(), "public", "notes-data");
+const DATA_DIR = path.join(process.cwd(), "content", "notes-data");
 const contentVersionTracker =
   process.env.NODE_ENV === "production"
     ? null
@@ -36,14 +53,26 @@ const NOTE_METADATA_FIELDS = [
   "cardSummary",
   "date",
   "updated",
+  "publishAt",
+  "status",
   "readingMinutes",
   "tags",
-  "topic"
+  "topic",
+  "author",
+  "contentMode",
+  "seoTitle",
+  "seoDescription",
+  "reviewedAt"
 ] as const;
 const NOTE_CANONICAL_OVERRIDE_FIELDS = [
   "slug",
   "date",
+  "publishAt",
+  "status",
   "topic",
+  "author",
+  "contentMode",
+  "reviewedAt",
   "featured"
 ] as const;
 
@@ -100,7 +129,7 @@ function noteLocales(): string[] {
 
 export function getNoteContentLocales(slug: string): Locale[] {
   const note = baseIndex().posts.find((entry) => entry.slug === slug);
-  return note?.locales ? [...note.locales] : [];
+  return note?.locales && isContentPublished(note) ? [...note.locales] : [];
 }
 
 function baseIndex(): NotesIndexFile {
@@ -134,6 +163,18 @@ function buildBaseCatalog(): NotesCatalog {
     notesIndexSchema,
     "canonical notes index"
   );
+  const hasCuratedTopic = rawIndex.posts.some(
+    (post) =>
+      post.topic &&
+      (NOTE_HUB_TOPIC_IDS as readonly string[]).includes(post.topic)
+  );
+  if (hasCuratedTopic) {
+    assertExactIdentifierSet(
+      "Canonical Notes hub catalog",
+      NOTE_HUB_TOPIC_IDS,
+      rawIndex.hubs.map((entry) => entry.topic)
+    );
+  }
   const expectedSlugs = rawIndex.posts.map((post) => post.slug);
   assertExactSlugSet(
     "Canonical notes",
@@ -154,6 +195,13 @@ function buildBaseCatalog(): NotesCatalog {
       body as unknown as Record<string, unknown>,
       bodyPath,
       NOTE_METADATA_FIELDS
+    );
+  }
+  if (hasCuratedTopic) {
+    assertExactIdentifierSet(
+      "Unresolved Notes author allowlist",
+      UNRESOLVED_NOTE_AUTHOR_SLUGS,
+      rawIndex.posts.filter((entry) => !entry.author).map((entry) => entry.slug)
     );
   }
 
@@ -185,8 +233,9 @@ export function loadNotesIndex(locale?: string): NotesIndexFile {
     const cached = localizedIndexCache.get("vi");
     if (cached?.version === version) return cached.index;
 
+    const overridePath = path.join(DATA_DIR, "vi", "_index.json");
     const override = readJsonValidated(
-      path.join(DATA_DIR, "vi", "_index.json"),
+      overridePath,
       notesIndexOverrideSchema
     );
     if (!override) {
@@ -194,6 +243,31 @@ export function loadNotesIndex(locale?: string): NotesIndexFile {
       continue;
     }
 
+    assertKnownKeys(
+      "Localized note hubs (vi)",
+      catalog.index.hubs.map((hub) => hub.topic),
+      override.hubs?.map((hub) => hub.topic) ?? []
+    );
+    if (catalog.index.hubs.length > 0) {
+      assertExactIdentifierSet(
+        "Vietnamese Notes hub catalog",
+        catalog.index.hubs.map((hub) => hub.topic),
+        override.hubs?.map((hub) => hub.topic) ?? []
+      );
+    }
+    for (const localizedHub of override.hubs ?? []) {
+      const canonicalHub = catalog.index.hubs.find(
+        (hub) => hub.topic === localizedHub.topic
+      );
+      if (!canonicalHub) continue;
+      assertProvidedMetadataParity(
+        "Localized Notes hub (vi)",
+        canonicalHub as unknown as Record<string, unknown>,
+        localizedHub as unknown as Record<string, unknown>,
+        overridePath,
+        ["topic", "order"]
+      );
+    }
     assertKnownKeys(
       "Localized note topics (vi)",
       catalog.index.topics.map((topic) => topic.id),
@@ -204,9 +278,29 @@ export function loadNotesIndex(locale?: string): NotesIndexFile {
       catalog.index.posts.map((post) => post.slug),
       override.posts?.map((post) => post.slug) ?? []
     );
+    for (const localizedNote of override.posts ?? []) {
+      const canonicalNote = catalog.postsBySlug.get(localizedNote.slug);
+      if (!canonicalNote) continue;
+      assertProvidedMetadataParity(
+        "Localized notes index (vi)",
+        canonicalNote as unknown as Record<string, unknown>,
+        localizedNote as unknown as Record<string, unknown>,
+        overridePath,
+        NOTE_CANONICAL_OVERRIDE_FIELDS
+      );
+    }
 
     const index = notesIndexSchema.parse(rewriteContentAssetValues({
-      topics: overlayByKey(catalog.index.topics, override.topics, (t) => t.id),
+      hubs: overlayByKey(
+        catalog.index.hubs,
+        override.hubs,
+        (hub) => hub.topic
+      ),
+      topics: overlayByKey(
+        catalog.index.topics,
+        override.topics,
+        (t) => t.id
+      ),
       posts: overlayByKey(catalog.index.posts, override.posts, (p) => p.slug)
     }));
 
@@ -250,7 +344,9 @@ export function loadNotesIndex(locale?: string): NotesIndexFile {
 export function listNotes(locale?: string): NoteMeta[] {
   const eff = contentLocale(locale);
   return loadNotesIndex(locale)
-    .posts.filter(() => noteLocales().includes(eff))
+    .posts.filter(
+      (note) => noteLocales().includes(eff) && isContentPublished(note)
+    )
     .sort(byDateDesc);
 }
 
@@ -268,6 +364,74 @@ export function listTopics(locale?: string): TopicMeta[] {
     listNotes(locale).map((p) => p.topic ?? "__uncategorized__")
   );
   return loadNotesIndex(locale).topics.filter((t) => visible.has(t.id));
+}
+
+export function listNoteHubs(locale?: string): NoteHubMeta[] {
+  return [...loadNotesIndex(locale).hubs].sort(
+    (left, right) => left.order - right.order
+  );
+}
+
+export function getNoteHub(topic: string, locale?: string): NoteHubMeta | null {
+  return loadNotesIndex(locale).hubs.find((hub) => hub.topic === topic) ?? null;
+}
+
+export function getNotesByHub(topic: string, locale?: string): NoteMeta[] {
+  if (!getNoteHub(topic, locale)) return [];
+  return listNotes(locale).filter((note) => note.topic === topic);
+}
+
+export function listNoteHubPages(): Array<{
+  topic: string;
+  page: number;
+  locales: Array<(typeof CONTENT_HUB_LOCALES)[number]>;
+}> {
+  return listContentHubRoutes({
+    locales: CONTENT_HUB_LOCALES,
+    listHubIds: (locale) => listNoteHubs(locale).map((hub) => hub.topic),
+    itemCount: (topic, locale) => getNotesByHub(topic, locale).length
+  }).map(({ hubId, page, locales }) => ({
+    topic: hubId,
+    page,
+    locales
+  }));
+}
+
+export function listNoteHubPageLocales(
+  topic: string,
+  page: number
+): Array<(typeof CONTENT_HUB_LOCALES)[number]> {
+  const routes = listNoteHubPages().map(
+    ({ topic: hubTopic, page: routePage, locales }) => ({
+      hubId: hubTopic,
+      page: routePage,
+      locales
+    })
+  );
+  return contentHubPageLocales(routes, topic, page);
+}
+
+export function listNoteHubParams(): Array<{
+  locale: (typeof CONTENT_HUB_LOCALES)[number];
+  topic: string;
+}> {
+  return listNoteHubPages()
+    .filter(({ page }) => page === 1)
+    .flatMap(({ topic, locales }) =>
+      locales.map((locale) => ({ locale, topic }))
+    );
+}
+
+export function listNoteHubPageParams(): Array<{
+  locale: (typeof CONTENT_HUB_LOCALES)[number];
+  topic: string;
+  page: string;
+}> {
+  return listNoteHubPages()
+    .filter(({ page }) => page > 1)
+    .flatMap(({ topic, page, locales }) =>
+      locales.map((locale) => ({ locale, topic, page: String(page) }))
+    );
 }
 
 export function getTopic(id: string, locale?: string): TopicMeta | null {
@@ -289,10 +453,10 @@ export function getTopicReadingContext(
   slug: string,
   locale?: string
 ): TopicReadingContext | null {
-  const current = loadNotesIndex(locale).posts.find((p) => p.slug === slug);
+  const visibleNotes = listNotes(locale);
+  const current = visibleNotes.find((p) => p.slug === slug);
   if (!current) return null;
 
-  const visibleNotes = listNotes(locale);
   const topic = current.topic ? getTopic(current.topic, locale) : null;
   const topicNotes = current.topic
     ? visibleNotes.filter((p) => p.topic === current.topic)
@@ -315,17 +479,20 @@ export function getTopicReadingContext(
 
 /** (locale, slug) pairs for static generation — one per locale a note serves. */
 export function listNoteParams(): Array<{ locale: Locale; slug: string }> {
-  return baseIndex().posts.flatMap((note) =>
-    (note.locales ?? [note.baseLocale ?? "en"]).map((locale) => ({
-      locale,
-      slug: note.slug
-    }))
-  );
+  return baseIndex()
+    .posts.filter((note) => isContentPublished(note))
+    .flatMap((note) =>
+      (note.locales ?? [note.baseLocale ?? "en"]).map((locale) => ({
+        locale,
+        slug: note.slug
+      }))
+    );
 }
 
 /** Loads a single note, overlaying the Vietnamese body when serving `vi`. */
 export function loadNote(slug: string, locale?: string): Note | null {
-  if (!baseCatalog().postsBySlug.has(slug)) return null;
+  const indexedNote = baseCatalog().postsBySlug.get(slug);
+  if (!indexedNote || !isContentPublished(indexedNote)) return null;
   return loadNoteBody(slug, locale);
 }
 
@@ -377,6 +544,8 @@ function loadNoteBody(slug: string, locale?: string): Note | null {
     html: override.html ?? base.html,
     tags: override.tags ?? base.tags,
     author: override.author ?? base.author,
+    seoTitle: override.seoTitle ?? base.seoTitle,
+    seoDescription: override.seoDescription ?? base.seoDescription,
     book: override.book ?? base.book,
     faqs: override.faqs ?? base.faqs
   };

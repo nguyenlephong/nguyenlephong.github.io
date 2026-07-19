@@ -10,6 +10,8 @@ import GalleryGrid from '@/components/gallery/GalleryGrid'
 import PageTracker from '@/components/analytics/PageTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import { localizedPageIdentity } from '@/lib/seo/locale'
+import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
+import MotionProvider from '@/components/motion/MotionProvider'
 
 const seo = PAGE_SEO.gallery
 
@@ -74,26 +76,30 @@ export default async function GalleryPage({ params }: Props) {
   }
 
   return (
-    <main className="gallery-showcase">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(galleryLd) }}
-      />
-      <PageTracker page="gallery" eventName="gallery_view" />
-      <div className="container">
-        <header className="page-header gallery-page-header">
-          <span className="eyebrow">
-            <span className="eyebrow-dot" aria-hidden="true" /> {t('eyebrow')}
-          </span>
-          <h1 className="page-title">{t('title')}</h1>
-          <p className="page-sub">{t('sub')}</p>
-          <Link href={APP_ROUTE.HOME} className="page-back">
-            {t('back')}
-          </Link>
-        </header>
+    <MotionProvider>
+      <main className="gallery-showcase">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(galleryLd) }}
+        />
+        <PageTracker page="gallery" eventName="gallery_view" />
+        <div className="container">
+          <header className="page-header gallery-page-header">
+            <span className="eyebrow">
+              <span className="eyebrow-dot" aria-hidden="true" /> {t('eyebrow')}
+            </span>
+            <h1 className="page-title">{t('title')}</h1>
+            <p className="page-sub">{t('sub')}</p>
+            <Link href={APP_ROUTE.HOME} className="page-back">
+              {t('back')}
+            </Link>
+          </header>
 
-        <GalleryGrid categories={categories} />
-      </div>
-    </main>
+          <ScopedIntlProvider scope="gallery">
+            <GalleryGrid categories={categories} />
+          </ScopedIntlProvider>
+        </div>
+      </main>
+    </MotionProvider>
   )
 }

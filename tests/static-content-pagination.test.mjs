@@ -191,7 +191,7 @@ test('archive routes and explorers keep pagination crawlable and search progress
 
   assert.match(notesCollection, /const archiveLocale = NOTE_CONTENT_LOCALES\.includes/)
   assert.match(notesCollection, /archiveLocale=\{archiveLocale\}/)
-  assert.match(notesCollection, /versionedSearchIndexUrl\(archiveLocale, 'notes'/)
+  assert.match(notesCollection, /versionedSearchIndexUrl\(\s*archiveLocale,\s*'notes'/)
   assert.match(notesExplorer, /linkLocale: archiveLocale/)
   assert.match(notesExplorer, /contentLocale=\{archiveLocale\}/)
 
@@ -202,6 +202,12 @@ test('archive routes and explorers keep pagination crawlable and search progress
   )
   assert.match(paginationVerifier, /pagination href \$\{pagerLink\} has no exported HTML/)
   assert.match(paginationVerifier, /policy: fullArchive \? 'full' : 'landing-only'/)
+  assert.match(paginationVerifier, /\{ locale: 'fr', expectsHub: false \}/)
+  assert.match(paginationVerifier, /\{ locale: 'ja', expectsHub: false \}/)
+  assert.match(paginationVerifier, /\{ locale: 'en', expectsHub: true \}/)
+  assert.match(paginationVerifier, /\{ locale: 'vi', expectsHub: true \}/)
+  assert.match(paginationVerifier, /Article isPartOf must remain the localized Blog/)
+  assert.match(paginationVerifier, /Article isPartOf must reference its localized series hub/)
 
   for (const workflow of [frontendWorkflow, pagesWorkflow]) {
     const artifactGate = workflow.indexOf('run: npm run verify:artifact')

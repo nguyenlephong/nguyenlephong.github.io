@@ -29,6 +29,9 @@ test("article metadata uses CDN-backed static OG images", () => {
   const publicationContract = JSON.parse(
     readFileSync("config/media-publication.json", "utf8")
   );
+  const publicPublicationContract = JSON.parse(
+    readFileSync("config/media-publication-public.json", "utf8")
+  );
 
   assert.match(blogPage, /blogPostOgImageUrl\(slug\)/);
   assert.match(blogPage, /blogPostOgImageUrl\(relatedPost\.slug\)/);
@@ -47,11 +50,20 @@ test("article metadata uses CDN-backed static OG images", () => {
 
   assert.match(staticImages, /icdnAssetUrl\(path\)/);
   assert.match(staticImages, /mediaPublication\.articleOg\[surface\]/);
-  assert.match(staticImages, /media-publication\.json' with \{ type: 'json' \}/);
+  assert.match(staticImages, /media-publication-public\.json' with \{ type: 'json' \}/);
+  assert.doesNotMatch(staticImages, /media-publication\.json' with \{ type: 'json' \}/);
   assert.equal(publicationContract.articleOg.blog.publicPathPrefix, "/og/blogs");
   assert.equal(publicationContract.articleOg.notes.publicPathPrefix, "/og/notes");
   assert.equal(publicationContract.articleOg.blog.publicationExtension, ".jpg");
   assert.equal(publicationContract.articleOg.notes.publicationExtension, ".jpg");
+  assert.equal(
+    publicPublicationContract.articleOg.blog.publicPathPrefix,
+    publicationContract.articleOg.blog.publicPathPrefix
+  );
+  assert.equal(
+    publicPublicationContract.articleOg.notes.publicPathPrefix,
+    publicationContract.articleOg.notes.publicPathPrefix
+  );
   assert.match(generator, /publication\.sourceDirectory/);
   assert.match(generator, /publication\.sourceExtension/);
   assert.match(publisher, /publication\.publicationDirectory/);

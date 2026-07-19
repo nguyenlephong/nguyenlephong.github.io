@@ -144,6 +144,9 @@ jobs:
       - name: Verify architecture and SEO budgets
         run: npm run verify:artifact
 
+      - name: Verify compressed performance budgets
+        run: npm run verify:performance-artifact
+
       - name: Verify Studio static artifact
         run: npm run verify:studio-artifact
 
@@ -152,6 +155,9 @@ jobs:
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
+
+      - name: Verify public and Studio runtime boundaries
+        run: npm run verify:runtime-boundaries
 
       - name: Verify localized 404 recovery
         run: npm run verify:not-found

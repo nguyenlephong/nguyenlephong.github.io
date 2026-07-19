@@ -22,14 +22,17 @@ const { formatStudioFlowLabel } = require(
 );
 
 test("Studio flow labels use one shared pure formatter", () => {
-  const shell = readFileSync("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8");
+  const flowFeature = [
+    "src/app/[locale]/studio/StudioFlowChart.tsx",
+    "src/app/[locale]/studio/StudioFlowTrail.tsx"
+  ].map((path) => readFileSync(path, "utf8")).join("\n");
   const runtime = readFileSync("src/app/[locale]/studio/StudioFlowCanvasRuntime.tsx", "utf8");
 
   assert.equal(formatStudioFlowLabel("arrow_closed"), "Arrow Closed");
   assert.equal(formatStudioFlowLabel("flow-step"), "Flow Step");
   assert.equal(formatStudioFlowLabel("already"), "Already");
-  assert.match(shell, /import \{ formatStudioFlowLabel \} from "\.\/studio-flow-format"/);
+  assert.match(flowFeature, /import \{ formatStudioFlowLabel \} from "\.\/studio-flow-format"/);
   assert.match(runtime, /import \{ formatStudioFlowLabel \} from "\.\/studio-flow-format"/);
-  assert.doesNotMatch(shell, /function formatStudioFlowLabel/);
+  assert.doesNotMatch(flowFeature, /function formatStudioFlowLabel/);
   assert.doesNotMatch(runtime, /function formatStudioFlowLabel/);
 });

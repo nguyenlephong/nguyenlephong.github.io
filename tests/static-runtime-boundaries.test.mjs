@@ -16,17 +16,21 @@ const expectedRoutes = [
   "blog/opengraph-image.tsx",
   "blog/page.tsx",
   "blog/page/[page]/page.tsx",
+  "blog/series/[series]/page.tsx",
+  "blog/series/[series]/page/[page]/page.tsx",
   "gallery/opengraph-image.tsx",
   "gallery/page.tsx",
   "notes/[slug]/page.tsx",
   "notes/page.tsx",
   "notes/page/[page]/page.tsx",
+  "notes/topics/[topic]/page.tsx",
+  "notes/topics/[topic]/page/[page]/page.tsx",
   "offline/page.tsx",
   "opengraph-image.tsx",
   "page.tsx",
   "search/blog.json/route.ts",
   "search/notes.json/route.ts",
-  "studio/page.tsx",
+  "studio/page.tsx"
 ].sort();
 
 function walk(directory) {
@@ -68,29 +72,218 @@ test("localized route groups preserve the complete unique URL inventory", () => 
 test("public runtime and chrome stay outside the Studio layout boundary", () => {
   const rootLayout = readFileSync(`${localeRoot}/layout.tsx`, "utf8");
   const siteLayout = readFileSync(`${localeRoot}/(site)/layout.tsx`, "utf8");
+  const homePage = readFileSync(`${localeRoot}/(site)/page.tsx`, "utf8");
+  const galleryPage = readFileSync(
+    `${localeRoot}/(site)/gallery/page.tsx`,
+    "utf8"
+  );
+  const blogArticleLayout = readFileSync(
+    `${localeRoot}/(site)/blog/[category]/[slug]/layout.tsx`,
+    "utf8"
+  );
+  const notesArticleLayout = readFileSync(
+    `${localeRoot}/(site)/notes/[slug]/layout.tsx`,
+    "utf8"
+  );
   const studioPage = readFileSync(`${localeRoot}/studio/page.tsx`, "utf8");
-  const publicRuntime = [
+  const scopedIntlProvider = readFileSync(
+    "src/i18n/ScopedIntlProvider.tsx",
+    "utf8"
+  );
+  const sharedPublicRuntime = [
     "AppHeader",
     "AppFooter",
-    "MotionProvider",
     "RouteProgressBar",
     "OfflineNavigationCapture",
     "OfflineStatusBanner",
-    "BlogReaderTools",
-    "ThemeSync",
+    "ThemeSync"
   ];
 
-  for (const component of publicRuntime) {
+  for (const component of sharedPublicRuntime) {
     assert.match(siteLayout, new RegExp(`<${component}(?:[\\s/>])`));
     assert.doesNotMatch(rootLayout, new RegExp(`\\b${component}\\b`));
     assert.doesNotMatch(studioPage, new RegExp(`\\b${component}\\b`));
   }
 
+  assert.doesNotMatch(siteLayout, /\bMotionProvider\b|\bBlogReaderTools\b/);
+  assert.match(
+    homePage,
+    /<MotionProvider>[\s\S]*<main>[\s\S]*<\/MotionProvider>/
+  );
+  assert.match(
+    galleryPage,
+    /<MotionProvider>[\s\S]*<main className="gallery-showcase">[\s\S]*<\/MotionProvider>/
+  );
+  assert.match(blogArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
+  assert.match(notesArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
+  assert.doesNotMatch(homePage, /\bBlogReaderTools\b|\bArticleReaderTools\b/);
+  assert.doesNotMatch(
+    galleryPage,
+    /\bBlogReaderTools\b|\bArticleReaderTools\b/
+  );
+
   assert.match(rootLayout, /<WebVitalsReporter locale=\{locale\} \/>/);
   assert.doesNotMatch(siteLayout, /\bWebVitalsReporter\b/);
   assert.doesNotMatch(studioPage, /\bWebVitalsReporter\b/);
-  assert.match(rootLayout, /<NextIntlClientProvider>[\s\S]*\{children\}[\s\S]*<\/NextIntlClientProvider>/);
+  assert.doesNotMatch(rootLayout, /\bNextIntlClientProvider\b/);
+  assert.match(
+    siteLayout,
+    /<ScopedIntlProvider scope="site">[\s\S]*\{children\}[\s\S]*<\/ScopedIntlProvider>/
+  );
+  assert.match(
+    scopedIntlProvider,
+    /const selectedMessages = selectClientMessages\(messages, scope\)/
+  );
+  assert.match(
+    scopedIntlProvider,
+    /<NextIntlClientProvider\s+messages=\{toSerializableClientMessages\(selectedMessages\)\}\s*>/
+  );
+  assert.doesNotMatch(
+    studioPage,
+    /\bScopedIntlProvider\b|\bNextIntlClientProvider\b/
+  );
   assert.doesNotMatch(studioPage, /\.app-nav|\.app-footer|\.blog-reader-tools/);
+});
+
+test("document CSS, public CSS, and third-party resources follow route ownership", () => {
+  const rootLayout = readFileSync(`${localeRoot}/layout.tsx`, "utf8");
+  const siteLayout = readFileSync(`${localeRoot}/(site)/layout.tsx`, "utf8");
+  const documentCss = readFileSync("src/app/document.css", "utf8");
+  const publicCss = readFileSync("src/app/globals.css", "utf8");
+  const publicResources = readFileSync(
+    "src/components/analytics/PublicThirdPartyResources.tsx",
+    "utf8"
+  );
+
+  assert.match(rootLayout, /import ['"]\.\.\/document\.css['"]/);
+  assert.doesNotMatch(rootLayout, /globals\.css/);
+  assert.match(siteLayout, /import ['"]\.\.\/\.\.\/globals\.css['"]/);
+
+  for (const token of ["--bg", "--fg", "--accent", "--font-reading-source"]) {
+    assert.match(documentCss, new RegExp(token));
+  }
+  assert.match(documentCss, /\[data-theme='dark'\]/);
+  assert.doesNotMatch(
+    documentCss,
+    /\.app-nav|\.blog-reader-tools|\.route-progress/
+  );
+  assert.match(publicCss, /\.app-nav/);
+  assert.match(publicCss, /\.blog-reader-tools/);
+  assert.match(publicCss, /\.route-progress/);
+
+  assert.match(rootLayout, /<PostHogBootstrap locale=\{locale\} \/>/);
+  assert.match(rootLayout, /us\.i\.posthog\.com/);
+  assert.doesNotMatch(
+    rootLayout,
+    /google-adsense-account|googletagmanager|googlesyndication|GTM_datalayer/
+  );
+  assert.match(siteLayout, /<PublicThirdPartyResources \/>/);
+  assert.match(siteLayout, /google-adsense-account/);
+  assert.match(publicResources, /ReactDOM\.preconnect/);
+  assert.match(publicResources, /ReactDOM\.prefetchDNS/);
+  assert.match(publicResources, /id="GTM"/);
+  assert.match(publicResources, /id="adsbygoogle"/);
+  assert.match(publicResources, /id="GTM_datalayer"/);
+});
+
+test("runtime documentation matches route and artifact ownership", () => {
+  const boundarySpec = readFileSync(
+    "specs/static-runtime-boundaries.md",
+    "utf8"
+  );
+  const technicalSpec = readFileSync(
+    "docs/technical-specification.md",
+    "utf8"
+  );
+  const budgets = JSON.parse(
+    readFileSync("config/static-artifact-budgets.json", "utf8")
+  );
+  const routeBudgets = budgets.performance.routeInitialJavaScript;
+  const studioBudgets = budgets.performance.studioInitialRuntime;
+
+  for (const document of [boundarySpec, technicalSpec]) {
+    assert.match(document, /MotionProvider[\s\S]{0,100}Home and Gallery/);
+    assert.match(
+      document,
+      /ArticleReaderTools[\s\S]{0,120}Blog and Notes article/
+    );
+    assert.match(
+      document,
+      /prepaint scripts (?:remain site-wide for|on) every\s+public route/
+    );
+    assert.match(document, /full-document\s+navigation/);
+    assert.match(document, /Studio[\s\S]{0,160}no[\s\S]{0,80}Google/);
+  }
+
+  const expectedRows = [
+    ["Home initial JavaScript, Brotli", routeBudgets.home.maxBrotliBytes],
+    ["Blog initial JavaScript, Brotli", routeBudgets.blog.maxBrotliBytes],
+    ["Notes initial JavaScript, Brotli", routeBudgets.notes.maxBrotliBytes],
+    [
+      "Studio direct initial JavaScript, Brotli",
+      routeBudgets.studio.maxBrotliBytes
+    ],
+    [
+      "Studio English default route, Brotli",
+      routeBudgets.studio.maxDefaultRouteBrotliBytes
+    ],
+    [
+      "Studio initial document CSS, Brotli",
+      studioBudgets.maxInitialDocumentCssBrotliBytes
+    ],
+    [
+      "Studio required Shadow CSS, Brotli",
+      studioBudgets.maxShadowCssBrotliBytes
+    ],
+    [
+      "Studio total initial CSS, Brotli",
+      studioBudgets.maxTotalInitialCssBrotliBytes
+    ]
+  ];
+  for (const [label, bytes] of expectedRows) {
+    const escapedLabel = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    assert.match(
+      technicalSpec,
+      new RegExp(
+        `\\| ${escapedLabel} \\| Hard limit: ${bytes.toLocaleString("en-US")} bytes \\|`
+      )
+    );
+  }
+
+  for (const bytes of [
+    studioBudgets.maxInitialDocumentCssBrotliBytes,
+    studioBudgets.maxShadowCssBrotliBytes,
+    studioBudgets.maxTotalInitialCssBrotliBytes
+  ]) {
+    assert.match(boundarySpec, new RegExp(bytes.toLocaleString("en-US")));
+  }
+
+  assert.doesNotMatch(
+    technicalSpec,
+    /237,656|237,782|237,694|240,640/
+  );
+});
+
+test("every public UI path into Studio uses the document navigation boundary", () => {
+  const publicUiFiles = walk("src/components").filter(
+    (file) =>
+      /\.(?:ts|tsx)$/.test(file) &&
+      !file.includes(`${sep}studio${sep}`) &&
+      !file.includes(`${sep}studio-kit${sep}`)
+  );
+  const studioTargets = publicUiFiles
+    .filter((file) =>
+      /APP_ROUTE\.STUDIO|["'`]\/studio(?:[?/#"'`]|$)/.test(
+        readFileSync(file, "utf8")
+      )
+    )
+    .map((file) => file.split(sep).join("/"));
+
+  assert.deepEqual(studioTargets, ["src/components/AppFooter.tsx"]);
+  const footer = readFileSync("src/components/AppFooter.tsx", "utf8");
+  assert.match(footer, /getPathname\(\{[\s\S]*href: APP_ROUTE\.STUDIO/);
+  assert.match(footer, /<a[\s\S]*data-document-navigation="studio"/);
+  assert.doesNotMatch(footer, /<Link[\s\S]*href=\{APP_ROUTE\.STUDIO\}/);
 });
 
 test("nested localized layouts bind translations to static locale params", () => {

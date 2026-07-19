@@ -93,7 +93,11 @@ function DashboardRoutePage({ route, locale }: StudioAuxiliaryDashboardsRuntimeP
               <button type="button" className="outline-button">View report</button>
             </div>
           </header>
-          <StudioDeliverySignalFeature locale={locale} />
+          <StudioDeliverySignalFeature
+            locale={locale}
+            routeId={route.id}
+            routeKind={route.kind}
+          />
         </section>
         <TimelineCard route={route} />
         <PanelsCard route={route} />
@@ -174,7 +178,11 @@ function AnalyticsPage({ route, locale }: StudioAuxiliaryDashboardsRuntimeProps)
                 </div>
                 <button type="button" className="outline-button">View report</button>
               </header>
-              <StudioDeliverySignalFeature locale={locale} />
+              <StudioDeliverySignalFeature
+                locale={locale}
+                routeId={route.id}
+                routeKind={route.kind}
+              />
             </section>
             <TimelineCard route={route} />
             <PanelsCard route={route} />

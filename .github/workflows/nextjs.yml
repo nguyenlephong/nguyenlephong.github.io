@@ -3,6 +3,8 @@ name: Deploy static site to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '12 0 * * *'
   workflow_dispatch:
 
 permissions: {}
@@ -25,6 +27,9 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Resolve deterministic content build date
+        run: echo "CONTENT_BUILD_DATE=$(date -u +%F)" >> "$GITHUB_ENV"
+
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
@@ -38,7 +43,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: public/og-cache
-          key: og-images-v2-${{ hashFiles('public/blog-data/**/*.json', 'public/notes-data/**/*.json', 'scripts/generate-static-og.mjs', 'src/app/**/*opengraph*', 'src/app/_og/**') }}
+          key: og-images-v2-${{ hashFiles('content/blog-data/**/*.json', 'content/notes-data/**/*.json', 'scripts/generate-static-og.mjs', 'src/app/**/*opengraph*', 'src/app/_og/**') }}
           restore-keys: |
             og-images-v2-
 
@@ -57,6 +62,9 @@ jobs:
       - name: Verify architecture and SEO budgets
         run: npm run verify:artifact
 
+      - name: Verify compressed performance budgets
+        run: npm run verify:performance-artifact
+
       - name: Verify Studio static artifact
         run: npm run verify:studio-artifact
 
@@ -71,6 +79,9 @@ jobs:
 
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
+
+      - name: Verify public and Studio runtime boundaries
+        run: npm run verify:runtime-boundaries
 
       - name: Verify localized 404 recovery
         run: npm run verify:not-found

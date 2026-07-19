@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `trust`.
 
 Source read:
-- `public/notes-data/posts/trust.json`
-- `public/notes-data/vi/posts/trust.json`
+- `content/notes-data/posts/trust.json`
+- `content/notes-data/vi/posts/trust.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

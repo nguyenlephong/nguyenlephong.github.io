@@ -17,7 +17,7 @@ if (!['blog', 'notes'].includes(surface) || !slug || !/^\d{4}-\d{2}-\d{2}$/.test
 }
 
 const root = process.cwd()
-const dataDir = path.join(root, 'public', surface === 'blog' ? 'blog-data' : 'notes-data')
+const dataDir = path.join(root, 'content', surface === 'blog' ? 'blog-data' : 'notes-data')
 
 async function readJson(file) {
   return JSON.parse(await fs.readFile(file, 'utf8'))

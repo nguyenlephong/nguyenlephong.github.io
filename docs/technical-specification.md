@@ -60,7 +60,7 @@ The locale prefix is always present in public URLs.
 | SEO structured data     | `schema-dts` and manual JSON-LD           | Person, WebSite, Blog, BlogPosting, Article, BreadcrumbList, FAQPage, ImageGallery, ItemList.            |
 | Social images           | `next/og`, `ImageResponse`, Node scripts  | Generates and caches OpenGraph images for profile, blog, notes, apps, and gallery pages.                 |
 | Styling                 | Global CSS, CSS variables, `next/font`    | Theme system, reading backgrounds, responsive layout, typography.                                        |
-| Motion                  | `framer-motion` with `LazyMotion`         | Lightweight reveal/count/progress animations.                                                            |
+| Motion                  | `MotionProvider` on Home and Gallery      | Uses `framer-motion` `LazyMotion` only on the two public surfaces that animate.                         |
 | Icons                   | `react-icons`                             | Navigation, cards, controls, app visuals.                                                                |
 | Graph/visual tools      | D3 packages                               | Thought graph components exist in the repo, although no active App Router thoughts route is present now. |
 | Analytics               | PostHog, Google Analytics, Google AdSense | Page views, scroll depth, read time, outbound clicks, app interactions, ads script.                      |
@@ -104,9 +104,9 @@ It must either be built ahead of time or handled by client-side JavaScript.
 | `src/lib/firebase`     | Client-only Firebase initialization and Firestore post engagement access.                   |
 | `src/lib/og`           | OpenGraph image cache and build-target filtering.                                           |
 | `messages`             | Locale message files for UI copy.                                                           |
-| `public/blog-data`     | Canonical blog metadata/posts and locale overrides.                                         |
-| `public/notes-data`    | Canonical notes metadata/posts and Vietnamese overrides.                                    |
-| `public/thoughts-data` | Thought graph/content data used by thought components, currently without an active route.   |
+| `content/blog-data`    | Build-only canonical blog metadata/posts and locale overrides.                              |
+| `content/notes-data`   | Build-only canonical notes metadata/posts and Vietnamese overrides.                         |
+| `content/thoughts-data` | Thought graph/content data used by thought components, currently without an active route.   |
 | `public/og-cache`      | Cached generated OpenGraph PNGs.                                                            |
 | `scripts`              | Build helpers for OG generation, post-build rewriting, version bumping, favicon generation. |
 | `tests`                | Node test-runner tests for schemas, route/UI contracts, privacy rules, and OG targeting.    |
@@ -117,15 +117,27 @@ It must either be built ahead of time or handled by client-side JavaScript.
 ### Locale and public-site shells
 
 `src/app/[locale]/layout.tsx` is the shared locale document boundary. It
-validates and sets the locale, provides `next-intl`, owns shared locale
-metadata, and loads global analytics.
+validates and sets the server request locale, owns shared locale metadata,
+loads the shared PostHog bootstrap, and mounts the shared Web Vitals reporter.
+It does not load Google Analytics or AdSense, mount
+`NextIntlClientProvider`, or serialize a client message catalog.
 
-`src/app/[locale]/(site)/layout.tsx` is the public-site boundary. It initializes
-theme, font, and reading-background preferences, then mounts the header,
-footer, motion and route progress, offline support, Web Vitals reporting, and
-reader tools. The pathless `(site)` segment does not appear in public URLs.
-Studio remains outside this route group, so it does not render or hydrate the
-public-site shell.
+`src/app/[locale]/(site)/layout.tsx` is the public-site boundary. It runs the
+theme, font, and reading-background prepaint scripts on every public route,
+then mounts Google Analytics and AdSense resources, the scoped site message
+provider, header, footer, route progress, and offline support.
+`MotionProvider` is narrower: only the Home and Gallery page entries mount it.
+`ArticleReaderTools` is mounted only by the nested Blog and Notes article
+layouts. Home, Blog, Notes, and Gallery add a second provider only around their
+message-consuming client subtree. The pathless `(site)` segment does not appear
+in public URLs. Studio remains outside this route group, so it does not render
+or hydrate the public-site shell and receives no client message catalog.
+
+The footer's public-to-Studio link deliberately performs a full-document
+navigation. Session storage survives, but the public DOM and JavaScript realm
+do not: the Studio document has no Google Analytics or AdSense scripts,
+resource hints, account metadata, data-layer node, browser globals, or new
+Google requests left from the public page.
 
 ### Route Table
 
@@ -138,9 +150,15 @@ public-site shell.
 | `/{locale}/apps`                   | `src/app/[locale]/(site)/apps/page.tsx`                   | Static app showcase from `apps.data.ts`.                                                  |
 | `/{locale}/apps/english`           | `src/app/[locale]/(site)/apps/english/page.tsx`           | Private/noindex E-Slang practice app.                                                     |
 | `/{locale}/blog`                   | `src/app/[locale]/(site)/blog/page.tsx`                   | Blog index with categories, quick filters, and Blog JSON-LD.                              |
+| `/{locale}/blog/page/{page}`                 | `src/app/[locale]/(site)/blog/page/[page]/page.tsx`                 | Static Blog archive pagination; page one remains at `/blog`.                              |
 | `/{locale}/blog/{category}`        | `src/app/[locale]/(site)/blog/[category]/page.tsx`        | Category landing page.                                                                    |
 | `/{locale}/blog/{category}/{slug}` | `src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx` | Article page with schema, related posts, reading tracker, reactions, share dock, and TOC. |
+| `/{en\|vi}/blog/series/{series}`             | `src/app/[locale]/(site)/blog/series/[series]/page.tsx`             | Curated Blog series page one with static cards and collection schema.                     |
+| `/{en\|vi}/blog/series/{series}/page/{page}` | `src/app/[locale]/(site)/blog/series/[series]/page/[page]/page.tsx` | Later curated series pages; `/page/1` is not generated.                                   |
 | `/{locale}/notes`                  | `src/app/[locale]/(site)/notes/page.tsx`                  | Notes index with topic filters and CollectionPage JSON-LD.                                |
+| `/{locale}/notes/page/{page}`                | `src/app/[locale]/(site)/notes/page/[page]/page.tsx`                | Static Notes archive pagination; page one remains at `/notes`.                            |
+| `/{en\|vi}/notes/topics/{topic}`             | `src/app/[locale]/(site)/notes/topics/[topic]/page.tsx`             | Curated Notes topic page one with static cards and collection schema.                     |
+| `/{en\|vi}/notes/topics/{topic}/page/{page}` | `src/app/[locale]/(site)/notes/topics/[topic]/page/[page]/page.tsx` | Later curated topic pages; `/page/1` is not generated.                                    |
 | `/{locale}/studio`                 | `src/app/[locale]/studio/page.tsx`                 | Shadow-DOM admin workbench, route-isolated from the main profile shell.                   |
 | `/{locale}/notes/{slug}`           | `src/app/[locale]/(site)/notes/[slug]/page.tsx`           | Note article page, source-book card, topic breadcrumb, FAQ support, engagement widgets.   |
 
@@ -166,44 +184,51 @@ existing imports across the app.
 
 ### Blog Content
 
-Canonical blog content lives under `public/blog-data`:
+Canonical blog content lives under `content/blog-data`:
 
 ```text
-public/blog-data/_index.json
-public/blog-data/posts/<slug>.json
+content/blog-data/_index.json
+content/blog-data/posts/<slug>.json
 ```
 
 Per-locale overrides live under:
 
 ```text
-public/blog-data/<locale>/_index.json
-public/blog-data/<locale>/posts/<slug>.json
+content/blog-data/<locale>/_index.json
+content/blog-data/<locale>/posts/<slug>.json
 ```
 
 Important behavior:
 
 - English is the canonical/default content.
-- `_index.json` holds category metadata and post metadata.
+- `_index.json` holds category metadata, the explicit ordered series catalog,
+  and post metadata. Series membership and `seriesOrder` are authored data;
+  they are not inferred from tags or dates.
 - `posts/<slug>.json` holds the full HTML article body.
 - `src/lib/blog/data.ts` overlays translated fields on top of canonical entries.
 - Missing translated fields fall back to English instead of creating blank cards
   or missing metadata.
 - Canonical blog index and post files are validated by Zod during build.
+- Seven promoted series generate static collection routes only for `en` and
+  `vi`; see [the curated content hub specification](../specs/curated-content-hubs.md)
+  for the exact catalog and snapshot.
+- The source directory is outside `public/`; readers receive generated static
+  routes and `/search/blog.json`, never the raw authoring corpus.
 
 ### Notes Content
 
-Canonical notes content lives under `public/notes-data`:
+Canonical notes content lives under `content/notes-data`:
 
 ```text
-public/notes-data/_index.json
-public/notes-data/posts/<slug>.json
+content/notes-data/_index.json
+content/notes-data/posts/<slug>.json
 ```
 
 Vietnamese overrides live under:
 
 ```text
-public/notes-data/vi/_index.json
-public/notes-data/vi/posts/<slug>.json
+content/notes-data/vi/_index.json
+content/notes-data/vi/posts/<slug>.json
 ```
 
 Important behavior:
@@ -213,8 +238,28 @@ Important behavior:
 - Every other locale serves the English/international content.
 - A note can define `locales`, such as `["en", "vi"]`, to decide where it is
   visible.
+- `_index.json` contains an explicit ordered `hubs` catalog. Its six promoted
+  topics generate EN/VI-only routes under `/notes/topics/{topic}`; `mua-xe`
+  remains a normal filter topic and is deliberately not a curated hub.
 - Vietnamese-only notes are included in the sitemap only as `/vi/notes/...`.
 - Bilingual notes get a full hreflang cluster.
+- The source directory is outside `public/`; readers receive generated static
+  routes and `/search/notes.json`, never the raw authoring corpus.
+
+### Shared Editorial Metadata
+
+Blog and Notes entries may define `contentMode`, `seoTitle`, `seoDescription`,
+and `reviewedAt`. The SEO fields can specialize search metadata without
+changing the visible title or summary. `reviewedAt` records an accuracy review
+and emits `WebPage.lastReviewed`; it is never an edit timestamp and must not be
+used as `dateModified`. The existing `updated` field remains the source for
+`dateModified`. These fields stay optional and are added only after an
+individual editorial review.
+
+The Notes author-quality contract backfills 24 confirmed canonical authors and
+keeps `chi-phi-mua-nha-toan-bo-nhung-khoan-can-biet` as the one exact unresolved
+slug. Index and body author values must agree; the unresolved value must not be
+inferred from neighboring content.
 
 ### Trusted HTML Boundary
 
@@ -236,6 +281,23 @@ localePrefix: 'always'
 `src/i18n/request.ts` loads default English messages and deep-merges locale
 messages on top. This keeps partially translated locale files usable: missing
 keys fall back to English instead of breaking the page.
+
+Server Components read this merged catalog through `getTranslations` without
+shipping it to the browser. `src/i18n/client-message-scopes.ts` is the
+fail-closed contract for Client Components: the public shell and each
+interactive surface receive only their declared namespace branches. A
+TypeScript-AST inventory scans `.js`, `.jsx`, `.ts`, `.tsx`, `.mjs`, and `.mts`
+modules, maps every provider-dependent `next-intl` hook and locale-navigation
+import to an allowed route scope, and requires `useTranslations` namespaces to
+be static string literals. It reserves raw `NextIntlClientProvider` usage for
+the scoped adapter and `next-intl/navigation` for the canonical navigation
+adapter, rejects direct `use-intl` imports, and locks each
+`ScopedIntlProvider` to its declared route boundary and literal scope. A
+transitive local dependency graph also prevents Studio entry and Client
+Component roots from reaching those provider-dependent runtimes through shared
+modules. Artifact tests compare the complete message structure, including empty
+object and array branches, and reject missing, duplicate, overlapping, or
+undeclared scopes.
 
 Navigation uses `createNavigation(routing)` from `next-intl`, which keeps links
 locale-aware.
@@ -265,13 +327,31 @@ SEO is a first-class part of the app.
 | Artifact SEO verifier  | `scripts/verify-static-artifact.mjs`| Checks exported sitemap URLs, canonicals, titles, descriptions, language metadata, and robots. |
 
 The artifact verifier works against the generated `out/` directory rather than
-source-code patterns. Every sitemap URL must resolve to exported HTML, use the
-configured HTTPS origin, have one matching canonical URL, remain indexable, and
-include a title, description, and document language. Sitemap alternates must
-also point to an indexable URL in the same sitemap. Any emitted file whose path
-contains a `heartbeats` segment fails the build. The same fail-closed check scans
-public text artifacts, including HTML, route payloads, manifests, and service
-workers, so they cannot retain a reference to the removed route.
+source-code patterns. Its sitemap URL set must exactly equal the exported,
+indexable, self-canonical HTML URL set in both directions after the publication
+lifecycle has applied `status`, `date`, `publishAt`, and the build-wide
+`CONTENT_BUILD_DATE`. Every sitemap URL must therefore resolve to exported HTML,
+use the configured HTTPS origin, have one matching canonical URL, remain
+indexable, and include a title, description, and document language. Sitemap
+alternates must also point to an indexable URL in the same sitemap. Any emitted
+file whose path contains a `heartbeats` segment fails the build. The same
+fail-closed check scans public text artifacts, including HTML, route payloads,
+manifests, and service workers, so they cannot retain a reference to the removed
+route.
+
+Curated Blog series and Notes topic pages are first-class indexable collections.
+They use self-canonicals, localized descriptions, `CollectionPage`, page-local
+`ItemList` entries with global positions, `BreadcrumbList`, and static parent,
+pagination, and article links. Their hreflang clusters contain only `en`, `vi`,
+and an English `x-default`; no other locale exports those routes. With
+`CONTENT_BUILD_DATE=2026-07-19`, the 16 Blog series URLs and 36 Notes hub URLs
+add exactly 52 entries. The valid pre-hub baseline is 895 URLs after removing
+one mislabeled English article variant, so the fixed-date sitemap contains 947
+unique URLs. The former English URL remains only as a `noindex` compatibility
+artifact that canonical/meta-refreshes to its authored Vietnamese variant and
+is absent from sitemap and hreflang output. This total is a fixed-date
+regression assertion, not a permanent sitemap floor; artifact parity remains
+the general rule as content changes.
 
 ### OpenGraph Build Flow
 
@@ -341,10 +421,24 @@ Main event sources:
   time
 - app/gallery/blog/notes components for clicks, filters, share actions, and
   reader tools
+- curated hub catalogs, pages, and article hierarchy links for hub views,
+  source-aware hub/archive navigation, article clicks, and page changes with
+  stable hub ID, page, destination, content slug, and global position
 - `WebVitalsReporter` for web vitals
 
-PostHog, Google Analytics, and AdSense scripts are loaded from
-`src/app/[locale]/layout.tsx`.
+Curated hubs emit `content_hub_view`, `content_hub_click`,
+`content_hub_archive_click`, `content_hub_article_click`, and
+`content_hub_page_change`. Article hierarchy links reuse `content_hub_click`
+with a stable source and destination. They also preserve the existing
+`blog_card_click` or `notes_card_click` event on article selection and
+`explorer_page_change` on pagination so established dashboards do not lose
+their current taxonomy.
+
+PostHog is loaded by the shared locale document in
+`src/app/[locale]/layout.tsx`. Google Analytics and AdSense belong to
+`src/app/[locale]/(site)/layout.tsx`, so Studio does not request or retain their
+public runtime. The public footer uses a full-document Studio link; its existing
+`cv_nav_click` event is sent with `sendBeacon` before navigation.
 
 ### Firebase Engagement
 
@@ -422,15 +516,15 @@ runbook.
 
 ## 11. Client UX Systems
 
-| System             | Files                                                  | Behavior                                                                            |
-|--------------------|--------------------------------------------------------|-------------------------------------------------------------------------------------|
-| Theme              | `ThemeScript`, `ThemeSync`, `ThemeToggle`, `theme-preference` | Applies `data-theme` early to avoid flashes and shares one parser/resolver for the persisted dark/light/system preference. |
-| Fonts              | `FontScript`, `FontSwitcher`                           | Lets readers change reading font preferences.                                       |
-| Reading background | `ReadingBackgroundScript`, `ReadingBackgroundSwitcher` | Applies optional material-style reading backgrounds for long-form pages.            |
-| Reader tools       | `BlogReaderTools`                                      | Floating toolbar for scroll controls, font, background, and language switching.     |
-| Route progress     | `RouteProgressBar`                                     | Click/popstate-aware progress bar for internal navigation.                          |
-| Motion             | `MotionProvider`                                       | Uses `framer-motion` `LazyMotion` with the smaller DOM animation bundle.            |
-| Explorer filters   | `ExplorerShell`, `useExplorer`, blog/notes explorers   | Search, filter, tag, and topic/category exploration on content indexes.             |
+| System             | Files                                                          | Behavior                                                                                                              |
+|--------------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| Theme              | `ThemeScript`, `ThemeSync`, `ThemeToggle`, `theme-preference` | Applies `data-theme` before paint on every public route and shares one parser/resolver for the persisted preference.  |
+| Fonts              | `FontScript`, `FontSwitcher`                                   | Applies the saved font before paint site-wide; interactive switching remains available where the UI exposes it.       |
+| Reading background | `ReadingBackgroundScript`, `ReadingBackgroundSwitcher`         | Applies the saved reading background before paint on every public route.                                               |
+| Reader tools       | `ArticleReaderTools`, `BlogReaderTools`                         | Mounts the floating toolbar only in nested Blog and Notes article layouts.                                             |
+| Route progress     | `RouteProgressBar`                                             | Provides click/popstate-aware progress on every public route.                                                          |
+| Motion             | `MotionProvider`                                               | Mounts `LazyMotion` only on Home and Gallery, not in the shared public-site layout.                                    |
+| Explorer filters   | `ExplorerShell`, `useExplorer`, blog/notes explorers`           | Provides search, filter, tag, and topic/category exploration on content indexes.                                      |
 
 ## 12. Build, Test, and Deploy
 
@@ -469,7 +563,10 @@ Current test focus:
 npm run build
 npm run build:fast
 npm run build:og
+npm run analyze
 npm run verify:artifact
+npm run verify:performance-artifact
+npm run verify:og-publication
 ```
 
 | Command      | Meaning                                                               |
@@ -477,7 +574,22 @@ npm run verify:artifact
 | `build`      | Full static export with full OG generation.                           |
 | `build:fast` | Static export with dynamic OG generation skipped/restored from cache. |
 | `build:og`   | Targeted OG build helper.                                             |
+| `analyze`    | Writes the official Next.js bundle analysis to `.next/diagnostics/analyze` without starting a server. |
 | `verify:artifact` | Verifies output size, route assets, SEO output, and public-secret guardrails without rebuilding. |
+| `verify:performance-artifact` | Verifies route Brotli, RSC payload, scoped client messages, Studio runtime, and third-party connection budgets without rebuilding. |
+| `verify:og-publication` | Verifies that every currently published article has its declared managed OG asset. |
+
+Raw authored JSON is a build input, not a deployable API. The artifact verifier
+fails if `blog-data`, `notes-data`, or `thoughts-data` paths, browser references,
+or scheduled/draft article records appear in `out/`.
+
+`scripts/publish-og-assets.mjs` is the only owner of generated article JPEGs in
+`dom-pub/icdn/og/blogs` and `dom-pub/icdn/og/notes`. Stale pruning requires both
+`--prune-stale` and the explicit `--apply-prune` flag. Only current-index slugs
+with unpublished lifecycle state are managed deletion candidates; unknown files
+and extensions are preserved. Each transaction reports the previous `dom-pub`
+HEAD and enforces the contract's count and percentage deletion caps. The tool
+does not commit or push the cross-repository change.
 
 `config/static-artifact-budgets.json` contains the static artifact limits. The
 limits deliberately sit close to the measured export so new growth is visible
@@ -485,50 +597,117 @@ while route and content duplication are reduced:
 
 | Budget | Current limit |
 |--------|---------------|
-| Total artifact | 850 MiB |
-| Total files | 27,500 |
+| Total artifact | 600 MiB |
+| Total files | 20,000 |
+| Total-size and file-count warning threshold | 75 percent |
 | Largest HTML file | 430 KiB |
 | Largest JavaScript file | 1.35 MiB |
 | Largest CSS file | 210 KiB |
 | JavaScript referenced by one route | 2.2 MiB |
 | CSS referenced by one route | 220 KiB |
-| Sitemap URL floor | 904 |
+| Sitemap coverage | Exact bidirectional parity with published, indexable, self-canonical HTML |
 
 The pathless `(site)` route group intentionally adds about 2,144 Next.js RSC
 segment files so public pages and Studio can have separate runtime boundaries
-without changing public URLs. The complete export measures 26,463 files and
-673.7 MiB: the route-group isolation adds only about 6.5 MiB, but its file
-inventory requires the 27,500-file ceiling. That cap leaves only 1,037 files,
-or about 3.9 percent, of headroom. The 850 MiB byte ceiling remains unchanged;
-the adjustment is a measured compatibility allowance rather than permission
-for general artifact growth.
+without changing public URLs. The current 600 MiB and 20,000-file limits are
+repository-wide post-optimization guardrails, not performance targets or a
+route-group growth allowance. The verifier warns at 75 percent of the total-byte
+and file-count limits so growth is visible before either hard ceiling is close.
 
-The verifier warns at 90 percent of the total-byte and file-count limits. These
-are temporary ceilings, not performance targets. Tighten them after the
-locale-route and Studio bundle work reduces the baseline. All recognized public
-text formats, including exported HTML and Next RSC `.txt` payloads, are scanned
-with bounded concurrency for high-confidence private keys and provider tokens.
-A PEM finding requires a complete header, credible base64 payload, and matching
-footer; a documentation-only header is not treated as a leak. Route-asset
-budgets sample the home, blog, notes, and Studio entry points across English,
-Vietnamese, Chinese, Japanese, Korean, and French routes. Individual file limits
-still cover every emitted HTML, JavaScript, and CSS file.
+All recognized public text formats, including exported HTML and Next RSC `.txt`
+payloads, are scanned with bounded concurrency for high-confidence private keys
+and provider tokens. A PEM finding requires a complete header, credible base64
+payload, and matching footer; a documentation-only header is not treated as a
+leak. Route-asset budgets sample the home, blog, notes, and Studio entry points
+across English, Vietnamese, Chinese, Japanese, Korean, and French routes. They
+also include the nested curated routes
+`en/blog/series/foundations/page/2.html` and
+`vi/notes/topics/thoughts/page/5.html`. Individual file limits still cover every
+emitted HTML, JavaScript, and CSS file.
 
-The SEO gate keeps the current 904-URL sitemap baseline, requires core public
-routes for every supported locale, validates every sitemap URL against its
-exported canonical HTML, and performs the reverse check for self-canonical,
-indexable HTML. Firebase web configuration remains allowed because it is a
-public client identifier; authorization still belongs in Firebase Rules and
-App Check.
+`verify:performance-artifact` adds compressed and route-level RSC regression
+budgets without replacing those raw ceilings. Total RSC size is an advisory
+capacity signal because valid content growth increases it; average and
+per-surface route payloads remain hard gates. The current configured gates are:
+
+| Surface or payload | Current gate |
+|--------------------|-------------:|
+| Home initial JavaScript, Brotli | Hard limit: 238,592 bytes |
+| Blog initial JavaScript, Brotli | Hard limit: 219,136 bytes |
+| Notes initial JavaScript, Brotli | Hard limit: 219,136 bytes |
+| Studio direct initial JavaScript, Brotli | Hard limit: 176,128 bytes |
+| Studio English default route, Brotli | Hard limit: 204,800 bytes |
+| Studio initial document CSS, Brotli | Hard limit: 3,072 bytes |
+| Studio required Shadow CSS, Brotli | Hard limit: 16,384 bytes |
+| Studio total initial CSS, Brotli | Hard limit: 18,432 bytes |
+| All exported RSC `.txt` payloads | Advisory warning: 157,286,400 bytes |
+| Average of 24 localized Home/Blog/Notes/Studio RSC samples | Hard limit: 47,104 bytes |
+| Largest localized Home RSC sample | Hard limit: 67,584 bytes |
+| Largest localized Blog RSC sample | Hard limit: 50,176 bytes |
+| Largest localized Notes RSC sample | Hard limit: 43,008 bytes |
+| Largest localized Studio RSC sample | Hard limit: 30,720 bytes |
+
+These values are configuration gates, not frozen measurements. The verifier
+prints the observed values from each checked export. The aggregate RSC warning
+leaves room for legitimate content growth. Client messages are
+checked on every localized route-level `.txt` payload that has a sibling HTML
+page. The locale root layout injects no global catalog. Every public route
+contains exactly one scoped site provider; only home, Gallery, Blog
+collection/category/pagination, and Notes collection/pagination add their
+surface provider. Article and other static pages keep the site provider only,
+as do curated series and topic hubs, while Studio serializes zero client
+message providers. Hub grouping and nine-card slicing stay server-side; those
+pages do not mount Explorer or ship a full search index. Every serialized
+`messages` occurrence is counted, including null, malformed, primitive, or
+empty values, and must match a recognized non-empty scope. Each public Client
+Component boundary receives only its declared namespace allowlist. The Studio
+contract rejects transitive provider-dependent internationalization as well as
+eagerly loaded heavy dashboard, ReactFlow, Recharts, and Firebase markers, and
+rejects new third-party connection origins unless they are explicitly reviewed
+in `config/static-artifact-budgets.json`.
+
+Studio CSS accounting follows actual runtime ownership. Initial document CSS is
+the set of local stylesheets plus combined inline style blocks referenced by
+the Studio HTML. Required Shadow CSS is `studio/studio-shadow.css`, referenced
+by reachable Studio JavaScript and applied inside the Shadow root. Total initial
+CSS combines both measured groups, so Shadow CSS is neither mislabeled as a
+document stylesheet nor omitted from the initial cost. The three Brotli caps
+are 3,072, 16,384, and 18,432 bytes respectively; external stylesheets fail the
+gate unless their origins are explicitly allowlisted.
+
+The Studio artifact gate additionally reports the Brotli/raw totals for every
+JavaScript chunk transitively reachable from the English Studio entry. Its
+direct entry retains the 176,128-byte ceiling. The default-route hard gate
+parses Turbopack `Promise.all` loaders and counts every sibling chunk needed by
+the selected English locale and Welcome route; the full reachable async total
+remains visible separately. Mail, AI Skills, Delivery Checklists, auxiliary
+dashboards, ReactFlow, and Recharts must remain reachable lazy chunks and are
+forbidden from that default path. Stable sentinels verify isolated loaders for
+English, Vietnamese, Chinese, Japanese, Korean, and French and reject
+cross-locale copy from the selected English entry.
+
+`npm run analyze` uses the official Next.js 16
+`next experimental-analyze --output` command and adds no package. The generated
+analysis remains below the ignored `.next/` directory and is diagnostic input,
+not a deploy artifact.
+
+The SEO gate requires core public routes for every supported locale and exact
+bidirectional parity between sitemap URLs and the published, indexable,
+self-canonical HTML set. It deliberately has no fixed URL-count floor because
+scheduled and draft content can change the valid corpus. Firebase web
+configuration remains allowed because it is a public client identifier;
+authorization still belongs in Firebase Rules and App Check.
 
 ### Deploy Commands
 
-After the control-plane migration below, the authoritative deployment path is
+The authoritative deployment path is
 `.github/workflows/nextjs.yml`. A push to `main` runs source checks, performs one
 full production build, verifies the artifact, uploads it with the supported
 GitHub Pages artifact action, and then deploys that exact verified artifact.
-The repository's Pages source must be set to **GitHub Actions** for that deploy
-job to become authoritative.
+The live Pages API reports `build_type: workflow`, so GitHub Actions is already
+the active control-plane source. The API may still expose `gh-pages` under its
+legacy `source` field; that residual branch is retained only for rollback and
+does not replace the workflow deployment path.
 
 The old branch publisher remains available only as an explicit emergency
 fallback:
@@ -540,33 +719,27 @@ npm run deploy:legacy
 
 `deploy:legacy` requires the opt-in set by its npm script and force-with-lease
 publishes the existing `out/` directory to `gh-pages`. After its final cleanup,
-the publisher always runs `verify:artifact` on that exact tree before staging
-and pushing it. The target branch is fixed: any `PAGES_BRANCH` environment
-override is rejected. It is not a normal release path.
+the publisher runs both `verify:artifact` and
+`verify:performance-artifact` on that exact tree before staging and pushing it.
+The target branch is fixed: any `PAGES_BRANCH` environment override is
+rejected. It is not a normal release path.
 `deploy:legacy:build` additionally bumps `app-version.json` and performs the
-full build. `npm run fb-deploy` uses the same fixed artifact verifier immediately
-before publishing `out/` to Firebase Hosting. CI and deployment both use npm
-and Node 22 (minimum 22.18.0).
+full build. `npm run fb-deploy` runs both verifiers immediately before
+publishing `out/` to Firebase Hosting. CI and deployment both use npm and Node
+22 (minimum 22.18.0).
 
-Merging this change does **not** mutate the repository's live Pages setting. At
-the time of this migration, GitHub Pages still uses the legacy branch source.
-Perform the control-plane migration after the PR is merged:
+An emergency rollback is an explicit control-plane operation:
 
-1. Leave the existing `gh-pages` deployment serving traffic while the PR lands.
-2. Open **Settings → Environments → github-pages → Deployment branches and
-   tags**, choose **Selected branches and tags**, and allow only `main`. The
-   workflow also checks `github.ref == 'refs/heads/main'`, including manual
-   dispatches, but the environment policy is the independent deployment guard.
-3. Change **Settings → Pages → Build and deployment → Source** to
-   **GitHub Actions** (API `build_type: workflow`).
-4. Manually dispatch `nextjs.yml` from `main`, wait for its verified artifact to deploy,
-   and validate the public canonical URLs and `sitemap.xml`.
-5. If deployment fails, switch the Pages source back to the `gh-pages` branch;
-   the guarded legacy publisher remains available until the migration is
-   confirmed.
-6. After the rollback window, remove the `gh-pages` branch deliberately. The
-   source switch does not delete that branch or its last published tree, so it
-   remains a live legacy residual until this explicit cleanup is completed.
+1. Build and inspect `out/`, then run the guarded `deploy:legacy` publisher.
+2. Its lease pins the observed remote `gh-pages` SHA, or an empty expected SHA
+   when the branch does not exist, so a concurrent branch update is not silently
+   overwritten.
+3. Change **Settings → Pages → Build and deployment → Source** from
+   **GitHub Actions** to the `gh-pages` branch only when the rollback is required.
+4. Validate canonical URLs and `sitemap.xml`, then restore **GitHub Actions**
+   after the incident is resolved.
+5. Keep or delete `gh-pages` only through a deliberate rollback-policy change;
+   deleting it removes this recovery option.
 
 ### GitHub Actions
 
@@ -586,7 +759,8 @@ Main deployment path:
 3. Source quality checks run before publication.
 4. Next.js performs one full static export into `out/`.
 5. OG images are generated, cached, renamed, and linked as `.png`.
-6. Architecture, SEO, and public-secret budgets verify the generated artifact.
+6. Architecture, SEO, public-secret, compressed JavaScript, RSC, and Studio
+   runtime budgets verify the generated artifact.
 7. GitHub Actions uploads and deploys that exact artifact to GitHub Pages.
 8. Visitor browsers load static files and optional external scripts.
 9. Browser-side engagement calls go to Firebase Firestore.
@@ -642,18 +816,18 @@ decision to change them:
 
 ### Add a Blog Post
 
-1. Add canonical metadata to `public/blog-data/_index.json`.
-2. Add canonical body to `public/blog-data/posts/<slug>.json`.
+1. Add canonical metadata to `content/blog-data/_index.json`.
+2. Add canonical body to `content/blog-data/posts/<slug>.json`.
 3. Add locale override files only for translated fields that exist.
 4. Run `npm test` to validate schema assumptions.
 5. Run a build or targeted OG build so social images are generated or restored.
 
 ### Add a Note
 
-1. Add metadata to `public/notes-data/_index.json`.
-2. Add canonical body to `public/notes-data/posts/<slug>.json`.
+1. Add metadata to `content/notes-data/_index.json`.
+2. Add canonical body to `content/notes-data/posts/<slug>.json`.
 3. Set `locales` intentionally.
-4. Add Vietnamese override under `public/notes-data/vi` if needed.
+4. Add Vietnamese override under `content/notes-data/vi` if needed.
 5. Check sitemap behavior if the note is Vietnamese-only.
 
 ### Add a New Public Page

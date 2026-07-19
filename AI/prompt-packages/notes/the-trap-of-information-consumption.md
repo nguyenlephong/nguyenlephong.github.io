@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `the-trap-of-information-consumption`.
 
 Source read:
-- `public/notes-data/posts/the-trap-of-information-consumption.json`
-- `public/notes-data/vi/posts/the-trap-of-information-consumption.json`
+- `content/notes-data/posts/the-trap-of-information-consumption.json`
+- `content/notes-data/vi/posts/the-trap-of-information-consumption.json`
 - `AI/skills/calm-content-writer/SKILL.md`
 - Approved reference pattern: commit `48ac924f16`, article `cross-functional-teams`
 

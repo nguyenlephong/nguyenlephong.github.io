@@ -6,7 +6,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import {
-  expectedArticleOgPublications,
+  articleOgPublicationInventory,
   loadMediaPublicationContract,
 } from './lib/media-publication-contract.mjs'
 
@@ -14,7 +14,12 @@ const DEFAULT_CONFIG = 'config/static-artifact-budgets.json'
 const DEFAULT_OUTPUT_DIRECTORY = 'out'
 const TOP_RESULT_COUNT = 5
 const DEFAULT_SECRET_SCAN_CONCURRENCY = 8
-const FORBIDDEN_PUBLIC_ROUTE_SEGMENTS = new Set(['heartbeats'])
+const FORBIDDEN_PUBLIC_ROUTE_SEGMENTS = new Set([
+  'heartbeats',
+  'blog-data',
+  'notes-data',
+  'thoughts-data',
+])
 const PUBLIC_TEXT_EXTENSIONS = new Set([
   '.atom',
   '.cjs',
@@ -42,6 +47,16 @@ const PUBLIC_TEXT_EXTENSIONS = new Set([
   '.yaml',
   '.yml',
 ])
+const STATIC_ROUTE_EXTENSION_PATTERN = [...PUBLIC_TEXT_EXTENSIONS]
+  .sort((left, right) => right.length - left.length)
+  .map((extension) => escapeRegExp(extension))
+  .join('|')
+const CONTENT_REFERENCE_TOKEN_PATTERN = new RegExp(
+  `["']slug["']\\s*:\\s*["'](?<rawSlug>[^"']+)["']` +
+    `|/(?:[a-z]{2}/)?blog/(?!series(?:/|$)|page(?:/|$))[^/\\s"'<>?#]+/(?<blogSlug>[a-z0-9]+(?:-[a-z0-9]+)*)(?:${STATIC_ROUTE_EXTENSION_PATTERN})?(?=$|[/?#"'<>\\s])` +
+    `|/(?:[a-z]{2}/)?notes/(?!topics(?:/|$)|page(?:/|$))(?<notesSlug>[a-z0-9]+(?:-[a-z0-9]+)*)(?:${STATIC_ROUTE_EXTENSION_PATTERN})?(?=$|[/?#"'<>\\s])`,
+  'gi',
+)
 const PRIVATE_QUERY_URL_SCAN_EXTENSIONS = new Set([
   '.htm',
   '.html',
@@ -56,6 +71,8 @@ const LOCALIZED_PAGE_SCHEMA_CONTRACTS = new Map([
   ['gallery', new Set(['ImageGallery'])],
   ['studio', new Set(['CollectionPage'])],
 ])
+const PERSON_SCHEMA_TYPES = new Set(['Person'])
+const SITE_OWNER_NAME = 'Nguyen Le Phong'
 const SOCIAL_IMAGE_SIGNATURES = new Map([
   ['.png', (bytes) => bytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))],
   ['.jpg', (bytes) => bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff],
@@ -168,6 +185,19 @@ function attributesFromTag(tag) {
 
 function collectTags(html, tagName) {
   return html.match(new RegExp(`<${tagName}\\b[^>]*>`, 'gi')) ?? []
+}
+
+function collectElementTexts(html, tagName) {
+  const pattern = new RegExp(`<${tagName}\\b[^>]*>([\\s\\S]*?)<\\/${tagName}\\s*>`, 'gi')
+
+  return [...html.matchAll(pattern)].map((match) =>
+    decodeXml(match[1].replace(/<[^>]*>/g, ' '))
+      .replace(/&#x([0-9a-f]{1,6});/gi, (entity, hex) => decodeHtmlCodePoint(entity, hex, 16))
+      .replace(/&#([0-9]{1,7});/g, (entity, decimal) => decodeHtmlCodePoint(entity, decimal, 10))
+      .replace(/&nbsp;/gi, ' ')
+      .replace(/\s+/g, ' ')
+      .trim(),
+  )
 }
 
 async function mapWithConcurrency(items, concurrency, task) {
@@ -289,6 +319,72 @@ function inspectForbiddenPublicRouteReferences(
         forbidden +
         '" is present in public artifact content: ' +
         relativePath,
+    )
+  }
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function buildUnpublishedContentLookup(unpublishedContent) {
+  const bySlug = new Map()
+  const bySurface = new Map([
+    ['blog', new Map()],
+    ['notes', new Map()],
+  ])
+
+  for (const entry of unpublishedContent) {
+    if (bySlug.has(entry.slug)) {
+      throw new Error(`Unpublished content contains a globally duplicate slug: ${entry.slug}`)
+    }
+    bySlug.set(entry.slug, entry)
+    bySurface.get(entry.surface)?.set(entry.slug, entry)
+  }
+  return { bySlug, bySurface }
+}
+
+function extractPublicContentReferenceTokens(content) {
+  const normalized = normalizePublicRouteReferenceContent(content).replaceAll('\\"', '"')
+  const rawSlugs = new Set()
+  const routeSlugs = new Map([
+    ['blog', new Set()],
+    ['notes', new Set()],
+  ])
+
+  for (const match of normalized.matchAll(CONTENT_REFERENCE_TOKEN_PATTERN)) {
+    if (match.groups.rawSlug) rawSlugs.add(match.groups.rawSlug)
+    else if (match.groups.blogSlug) routeSlugs.get('blog').add(match.groups.blogSlug)
+    else if (match.groups.notesSlug) routeSlugs.get('notes').add(match.groups.notesSlug)
+  }
+  return { rawSlugs, routeSlugs }
+}
+
+function inspectUnpublishedContentReferences(
+  content,
+  relativePath,
+  unpublishedContentLookup,
+  failures,
+  referenceMatches,
+) {
+  const tokens = extractPublicContentReferenceTokens(content)
+  const matched = new Map()
+  for (const slug of tokens.rawSlugs) {
+    const entry = unpublishedContentLookup.bySlug.get(slug)
+    if (entry) matched.set(`${entry.surface}:${entry.slug}`, entry)
+  }
+  for (const [surface, slugs] of tokens.routeSlugs) {
+    const surfaceLookup = unpublishedContentLookup.bySurface.get(surface)
+    for (const slug of slugs) {
+      const entry = surfaceLookup?.get(slug)
+      if (entry) matched.set(`${entry.surface}:${entry.slug}`, entry)
+    }
+  }
+
+  for (const entry of matched.values()) {
+    referenceMatches.push({ path: relativePath, slug: entry.slug, surface: entry.surface })
+    failures.push(
+      `Unpublished ${entry.surface} content is present in the public artifact: ${relativePath} (${entry.slug})`,
     )
   }
 }
@@ -560,10 +656,19 @@ function pageUrlFromArtifactPath(relativePath, siteOrigin) {
 function isLocalizedArticleUrl(value) {
   const segments = new URL(value).pathname.split('/').filter(Boolean)
   return (
-    (segments.length === 3 && segments[1] === 'notes' && segments[2] !== 'page') ||
-    (segments.length === 4 &&
-      segments[1] === 'blog' &&
-      segments[2] !== 'page')
+    (segments.length === 3 && segments[1] === 'notes' && !['page', 'topics'].includes(segments[2])) ||
+    (segments.length === 4 && segments[1] === 'blog' && !['page', 'series'].includes(segments[2]))
+  )
+}
+
+function isContentHubPageUrl(value) {
+  const segments = new URL(value).pathname.split('/').filter(Boolean)
+  const baseHub =
+    (segments[1] === 'blog' && segments[2] === 'series') ||
+    (segments[1] === 'notes' && segments[2] === 'topics')
+  if (!baseHub || !segments[3]) return false
+  return (
+    segments.length === 4 || (segments.length === 6 && segments[4] === 'page' && /^\d+$/.test(segments[5]))
   )
 }
 
@@ -606,6 +711,10 @@ function collectHtmlMetadata({ absolutePath, html, outDir }) {
   }
 
   const htmlTag = collectTags(html, 'html')[0]
+  const headingLanguages = collectTags(html, 'h1').map(
+    (tag) => attributesFromTag(tag).get('lang')?.trim() ?? '',
+  )
+  const headingTexts = collectElementTexts(html, 'h1')
   const metaAttributes = collectTags(html, 'meta').map(attributesFromTag)
   const openGraphImages = metaAttributes
     .filter((attributes) => attributes.get('property')?.toLowerCase() === 'og:image')
@@ -618,6 +727,16 @@ function collectHtmlMetadata({ absolutePath, html, outDir }) {
   const twitterImages = metaAttributes
     .filter((attributes) => attributes.get('name')?.toLowerCase() === 'twitter:image')
     .map((attributes) => attributes.get('content')?.trim() ?? '')
+    .filter(Boolean)
+  const metaRefreshTargets = metaAttributes
+    .filter((attributes) => attributes.get('http-equiv')?.toLowerCase() === 'refresh')
+    .map(
+      (attributes) =>
+        attributes
+          .get('content')
+          ?.match(/^\s*\d+\s*;\s*url=(.+)\s*$/i)?.[1]
+          ?.trim() ?? '',
+    )
     .filter(Boolean)
   const jsonLd = collectJsonLd(html)
   const studioModuleLinks = collectTags(html, 'a')
@@ -634,11 +753,15 @@ function collectHtmlMetadata({ absolutePath, html, outDir }) {
     alternateLanguages,
     description: findMetaContent(html, 'description')?.trim() ?? '',
     hasContentLocaleFallback: /data-content-locale-fallback=["']true["']/i.test(html),
+    hasContentLocaleRedirect: /data-content-locale-redirect=["']true["']/i.test(html),
     hasTitle: /<title>\s*[^<][\s\S]*?<\/title>/i.test(html),
+    headingLanguages,
+    headingTexts,
     isDocument: Boolean(htmlTag),
     jsonLdErrors: jsonLd.errors,
     jsonLdObjects: flattenJsonLd(jsonLd.values),
     language: htmlTag ? attributesFromTag(htmlTag).get('lang')?.trim() ?? '' : '',
+    metaRefreshTargets,
     noindex: findMetaContent(html, 'robots')?.toLowerCase().includes('noindex') ?? false,
     openGraphImage: openGraphImages[0] ?? '',
     openGraphImages,
@@ -657,6 +780,78 @@ function normalizeAbsolutePageIdentity(value) {
     return normalizeUrl(value)
   } catch {
     return null
+  }
+}
+
+function safeStableIdentityUrl(value) {
+  if (typeof value !== 'string' || value === '' || value !== value.trim()) return null
+  try {
+    const url = new URL(value)
+    if (url.protocol !== 'https:' || url.username !== '' || url.password !== '' || url.search !== '') {
+      return null
+    }
+    return url
+  } catch {
+    return null
+  }
+}
+
+function verifyArticleAuthorContracts({ article, metadata, siteOrigin, failures }) {
+  if (!Object.hasOwn(article, 'author')) return
+
+  const authors = Array.isArray(article.author) ? article.author : [article.author]
+  const explicitEmptyAuthor =
+    authors.length === 0 ||
+    article.author === null ||
+    article.author === false ||
+    article.author === '' ||
+    (typeof article.author === 'object' &&
+      !Array.isArray(article.author) &&
+      Object.keys(article.author).length === 0)
+  if (explicitEmptyAuthor) {
+    failures.push(`${metadata.relativePath} Article author property must contain at least one named Person`)
+    return
+  }
+
+  const expectedOwnerId = `${siteOrigin}/#person`
+  for (const author of authors) {
+    const name = typeof author?.name === 'string' ? author.name.trim() : ''
+    if (!author || !schemaHasType(author, PERSON_SCHEMA_TYPES) || !name) {
+      failures.push(`${metadata.relativePath} Article author must be a Person with a non-empty name`)
+      continue
+    }
+
+    const identities = new Map()
+    for (const property of ['url', '@id']) {
+      if (!Object.hasOwn(author, property)) continue
+      const identity = safeStableIdentityUrl(author[property])
+      if (!identity) {
+        failures.push(
+          `${metadata.relativePath} Article author ${property} must be a safe stable absolute HTTPS identity`,
+        )
+      }
+      identities.set(property, identity)
+    }
+
+    if (name === SITE_OWNER_NAME) {
+      if (author['@id'] !== expectedOwnerId || author.url !== siteOrigin) {
+        failures.push(
+          `${metadata.relativePath} site owner Article author must use ${expectedOwnerId} and ${siteOrigin}`,
+        )
+      }
+      continue
+    }
+
+    const authorId = identities.get('@id')
+    const authorUrl = identities.get('url')
+    const claimsOwnerId =
+      authorId?.origin === siteOrigin && authorId.pathname === '/' && authorId.hash === '#person'
+    const claimsOwnerUrl = authorUrl?.origin === siteOrigin && authorUrl.pathname === '/'
+    if (claimsOwnerId || claimsOwnerUrl) {
+      failures.push(
+        `${metadata.relativePath} Article author must not claim the site owner identity with another name`,
+      )
+    }
   }
 }
 
@@ -745,17 +940,28 @@ function verifyLocalizedPageIdentityContracts({
 
 async function loadRemoteSocialImageContract(rootDir) {
   const contractPath = path.join(rootDir, 'config/media-publication.json')
-  if (!existsSync(contractPath)) return { baseUrl: null, expectedUrls: new Set() }
+  if (!existsSync(contractPath)) {
+    return { baseUrl: null, expectedUrls: new Set(), unpublishedContent: [] }
+  }
 
   const contract = await loadMediaPublicationContract(rootDir)
-  const expected = await expectedArticleOgPublications({ rootDir, contract })
+  const inventory = await articleOgPublicationInventory({ rootDir, contract })
   const baseUrl = new URL(contract.liveBaseUrl)
   const expectedUrls = new Set(
-    expected.map(({ publicPath }) =>
+    inventory.expected.map(({ publicPath }) =>
       new URL(publicPath.replace(/^\/+/, ''), `${contract.liveBaseUrl}/`).href,
     ),
   )
-  return { baseUrl, expectedUrls }
+  return {
+    baseUrl,
+    expectedUrls,
+    unpublishedContent: inventory.known
+      .filter((entry) => !entry.published)
+      .map(({ slug, surface }) => ({
+        slug,
+        surface,
+      })),
+  }
 }
 
 function isWithinRemotePublication(url, baseUrl) {
@@ -828,6 +1034,66 @@ function verifyLocalSocialImages({
   }
 
   return verified
+}
+
+function verifyContentHubSocialMetadata({ htmlMetadataByPath, siteOrigin, failures }) {
+  const expectedImage = normalizeUrl(`${siteOrigin}/opengraph-image.png`)
+
+  for (const metadata of htmlMetadataByPath.values()) {
+    const pageUrl = pageUrlFromArtifactPath(metadata.relativePath, siteOrigin)
+    if (!pageUrl || !isContentHubPageUrl(pageUrl)) continue
+
+    for (const [name, values] of [
+      ['og:image', metadata.openGraphImages],
+      ['twitter:image', metadata.twitterImages],
+    ]) {
+      if (values.length !== 1 || normalizeAbsolutePageIdentity(values[0]) !== expectedImage) {
+        failures.push(
+          `${metadata.relativePath} content hub must emit exactly one ${name} using the root opengraph-image.png`,
+        )
+      }
+    }
+  }
+}
+
+function verifyContentHubLanguageContracts({
+  htmlMetadataByPath,
+  sitemapLanguagesByLocation,
+  locationSet,
+  siteOrigin,
+  failures,
+}) {
+  const metadataByUrl = new Map()
+  for (const metadata of htmlMetadataByPath.values()) {
+    const pageUrl = pageUrlFromArtifactPath(metadata.relativePath, siteOrigin)
+    if (pageUrl) metadataByUrl.set(pageUrl, metadata)
+  }
+
+  for (const [pageUrl, metadata] of metadataByUrl) {
+    if (!isContentHubPageUrl(pageUrl) || !locationSet.has(pageUrl)) continue
+    const htmlLanguages = normalizedLanguageMap(metadata.alternateLanguages)
+    const sitemapLanguages = sitemapLanguagesByLocation.get(pageUrl) ?? new Map()
+    if (!sameLanguageMap(htmlLanguages, sitemapLanguages)) {
+      failures.push(`${metadata.relativePath} content hub HTML and sitemap hreflang clusters do not match`)
+    }
+
+    const xDefault = htmlLanguages.get('x-default')
+    if (!xDefault || !locationSet.has(xDefault)) {
+      failures.push(`${metadata.relativePath} content hub x-default must point to an exported indexable page`)
+    }
+
+    const routeLocale = new URL(pageUrl).pathname.split('/').filter(Boolean)[0]
+    for (const [alternateLocale, alternateUrl] of htmlLanguages) {
+      if (alternateLocale === 'x-default') continue
+      const alternateMetadata = metadataByUrl.get(alternateUrl)
+      const reciprocal = alternateMetadata
+        ? normalizedLanguageMap(alternateMetadata.alternateLanguages).get(routeLocale)
+        : undefined
+      if (reciprocal !== pageUrl) {
+        failures.push(`${metadata.relativePath} content hub hreflang ${alternateLocale} is not reciprocal`)
+      }
+    }
+  }
 }
 
 function verifyStudioHtmlContracts({ htmlMetadataByPath, siteOrigin, failures }) {
@@ -932,7 +1198,24 @@ function verifyArticleHtmlContracts({
       if (!metadata.hasContentLocaleFallback) {
         failures.push(`${metadata.relativePath} is a non-canonical article route without a fallback notice`)
       }
-      if (metadata.noindex) {
+      if (metadata.hasContentLocaleRedirect) {
+        if (!metadata.noindex) {
+          failures.push(`${metadata.relativePath} legacy locale redirect must be noindex`)
+        }
+        if (
+          metadata.metaRefreshTargets.length !== 1 ||
+          normalizeAbsolutePageIdentity(new URL(metadata.metaRefreshTargets[0] ?? '', pageUrl).toString()) !==
+            canonical
+        ) {
+          failures.push(`${metadata.relativePath} legacy locale redirect must meta-refresh to its canonical`)
+        }
+        const canonicalLocale = new URL(canonical).pathname.split('/').filter(Boolean)[0]
+        if (metadata.headingLanguages.length !== 1 || metadata.headingLanguages[0] !== canonicalLocale) {
+          failures.push(
+            `${metadata.relativePath} legacy locale redirect H1 lang must match canonical locale ${canonicalLocale}`,
+          )
+        }
+      } else if (metadata.noindex) {
         failures.push(`${metadata.relativePath} must use canonical consolidation without noindex`)
       }
       if (locationSet.has(pageUrl)) failures.push(`${metadata.relativePath} fallback URL leaked into sitemap.xml`)
@@ -978,12 +1261,16 @@ function verifyArticleHtmlContracts({
     if (!article.headline || !article.datePublished || !article.image) {
       failures.push(`${metadata.relativePath} Article is missing source-backed headline, datePublished, or image`)
     }
-    if (article.author) {
-      const authors = Array.isArray(article.author) ? article.author : [article.author]
-      if (authors.some((author) => !author?.url)) {
-        failures.push(`${metadata.relativePath} Article author must include a stable URL`)
-      }
+    const schemaHeadline =
+      typeof article.headline === 'string' ? article.headline.replace(/\s+/g, ' ').trim() : ''
+    if (metadata.headingTexts.length !== 1) {
+      failures.push(
+        `${metadata.relativePath} canonical Article page must render exactly one visible H1; found ${metadata.headingTexts.length}`,
+      )
+    } else if (schemaHeadline && schemaHeadline !== metadata.headingTexts[0]) {
+      failures.push(`${metadata.relativePath} Article headline must match its visible H1`)
     }
+    verifyArticleAuthorContracts({ article, metadata, siteOrigin, failures })
 
     if (htmlLanguages.get(routeLocale) !== pageUrl) {
       failures.push(`${metadata.relativePath} hreflang cluster must include its own locale and URL`)
@@ -1109,7 +1396,7 @@ function verifyCanonicalHtmlParity({ htmlMetadataByPath, locationSet, outDir, si
   return canonicalHtmlCount
 }
 
-function verifySitemap({ outDir, siteOrigin, limits, seoConfig, failures, htmlMetadataByPath }) {
+function verifySitemap({ outDir, siteOrigin, seoConfig, failures, htmlMetadataByPath }) {
   const sitemapPath = path.join(outDir, 'sitemap.xml')
   if (!existsSync(sitemapPath)) {
     failures.push('Missing sitemap.xml')
@@ -1144,12 +1431,6 @@ function verifySitemap({ outDir, siteOrigin, limits, seoConfig, failures, htmlMe
         if (language) sitemapLanguageEntries.push({ loc, language, href })
       }
     }
-  }
-
-  if (locations.length < limits.minimumSitemapUrls) {
-    failures.push(
-      `sitemap.xml contains ${locations.length.toLocaleString('en-US')} URLs; expected at least ${limits.minimumSitemapUrls.toLocaleString('en-US')}`,
-    )
   }
 
   const normalizedLocations = []
@@ -1210,10 +1491,22 @@ function verifySitemap({ outDir, siteOrigin, limits, seoConfig, failures, htmlMe
     siteOrigin,
     failures,
   })
+  if (locationSet.size !== canonicalHtmlCount) {
+    failures.push(
+      `sitemap.xml contains ${locationSet.size.toLocaleString('en-US')} unique URLs but the export contains ${canonicalHtmlCount.toLocaleString('en-US')} indexable self-canonical pages`,
+    )
+  }
   verifyArticleHtmlContracts({
     htmlMetadataByPath,
     locationSet,
     sitemapLanguagesByLocation,
+    siteOrigin,
+    failures,
+  })
+  verifyContentHubLanguageContracts({
+    htmlMetadataByPath,
+    sitemapLanguagesByLocation,
+    locationSet,
     siteOrigin,
     failures,
   })
@@ -1251,12 +1544,17 @@ export async function verifyStaticArtifact({
   const privateQueryUrlMatches = []
   const forbiddenRouteMatches = []
   const forbiddenRouteReferenceMatches = []
+  const unpublishedContentReferenceMatches = []
   const secretExtensions = new Set([
     ...PUBLIC_TEXT_EXTENSIONS,
     ...(config.additionalSecretScanExtensions ?? config.secretScanExtensions ?? []),
   ])
   const htmlMetadataByPath = new Map()
   const textFiles = []
+  const remotePublication = await loadRemoteSocialImageContract(rootDir)
+  const unpublishedContentLookup = buildUnpublishedContentLookup(
+    remotePublication.unpublishedContent,
+  )
   let totalBytes = 0
 
   for (const absolutePath of files) {
@@ -1295,6 +1593,13 @@ export async function verifyStaticArtifact({
       entry.relativePath,
       failures,
       forbiddenRouteReferenceMatches,
+    )
+    inspectUnpublishedContentReferences(
+      content,
+      entry.relativePath,
+      unpublishedContentLookup,
+      failures,
+      unpublishedContentReferenceMatches,
     )
     if (PRIVATE_QUERY_URL_SCAN_EXTENSIONS.has(entry.extension)) {
       inspectPrivateQueryUrls(
@@ -1346,7 +1651,6 @@ export async function verifyStaticArtifact({
     seoConfig: config.seo,
     failures,
   })
-  const remotePublication = await loadRemoteSocialImageContract(rootDir)
   const localSocialImageCount = verifyLocalSocialImages({
     htmlMetadataByPath,
     outDir,
@@ -1355,10 +1659,14 @@ export async function verifyStaticArtifact({
     failures,
   })
   verifyStudioHtmlContracts({ htmlMetadataByPath, siteOrigin, failures })
+  verifyContentHubSocialMetadata({
+    htmlMetadataByPath,
+    siteOrigin,
+    failures,
+  })
   const seo = verifySitemap({
     outDir,
     siteOrigin,
-    limits,
     seoConfig: config.seo,
     failures,
     htmlMetadataByPath,
@@ -1389,6 +1697,9 @@ export async function verifyStaticArtifact({
       forbiddenRouteMatches,
       forbiddenRouteReferenceMatches: forbiddenRouteReferenceMatches.sort((left, right) =>
         left.path.localeCompare(right.path),
+      ),
+      unpublishedContentReferenceMatches: unpublishedContentReferenceMatches.sort((left, right) =>
+        left.path.localeCompare(right.path) || left.slug.localeCompare(right.slug),
       ),
     },
     failures,

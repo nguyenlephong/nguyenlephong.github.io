@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `recognizable-patterns-of-valuable-thoughts`.
 
 Source read:
-- `public/notes-data/posts/recognizable-patterns-of-valuable-thoughts.json`
-- `public/notes-data/vi/posts/recognizable-patterns-of-valuable-thoughts.json`
+- `content/notes-data/posts/recognizable-patterns-of-valuable-thoughts.json`
+- `content/notes-data/vi/posts/recognizable-patterns-of-valuable-thoughts.json`
 - `AI/skills/calm-content-writer/SKILL.md`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 

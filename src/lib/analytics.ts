@@ -7,7 +7,11 @@ declare global {
 }
 
 type PostHogClient = {
-  capture: (event: string, props?: Record<string, unknown>) => void
+  capture: (
+    event: string,
+    props?: Record<string, unknown>,
+    options?: { send_instantly?: boolean; transport?: 'sendBeacon' },
+  ) => void
   identify: (id: string, props?: Record<string, unknown>) => void
   register: (props: Record<string, unknown>) => void
   unregister: (key: string) => void
@@ -75,6 +79,12 @@ export type AnalyticsEvent =
   | 'explorer_page_change'
   | 'explorer_clear'
   | 'explorer_palette_toggle'
+  // Curated static content hubs
+  | 'content_hub_view'
+  | 'content_hub_click'
+  | 'content_hub_archive_click'
+  | 'content_hub_article_click'
+  | 'content_hub_page_change'
   // Blog articles
   | 'blog_article_view'
   | 'blog_scroll_depth'
@@ -117,6 +127,7 @@ export type AnalyticsEvent =
   | 'studio_preference_change'
   | 'studio_preference_restore'
   | 'studio_sidebar_toggle'
+  | 'studio_feature_load_error'
   | 'studio_ai_skill_filter'
   | 'studio_ai_skill_select'
   | 'studio_ai_skill_copy'
@@ -172,6 +183,9 @@ const PAGE_CONTEXT_KEYS = [
   'blog_slug',
   'notes_category',
   'notes_slug',
+  'content_hub_kind',
+  'content_hub_id',
+  'content_hub_page',
   'detected_locale',
   'requested_surface',
 ] as const
@@ -223,8 +237,12 @@ function ensurePostHogClient(): PostHogClient {
   if (window.posthog) return window.posthog
 
   const queue = [] as unknown as PostHogQueue
-  queue.capture = (event, props) => {
-    queue.push(['capture', event, props])
+  queue.capture = (event, props, options) => {
+    queue.push(
+      options
+        ? ['capture', event, props, options]
+        : ['capture', event, props],
+    )
   }
   queue.identify = (id, props) => {
     queue.push(['identify', id, props])
@@ -261,8 +279,16 @@ export function track(
             pathname,
           }),
     }
-    if (options?.beacon) payload['$set_once'] = { last_outbound_ts: Date.now() }
-    ensurePostHogClient().capture(event, payload)
+    if (options?.beacon) {
+      payload['$set_once'] = { last_outbound_ts: Date.now() }
+    }
+    ensurePostHogClient().capture(
+      event,
+      payload,
+      options?.beacon
+        ? { send_instantly: true, transport: 'sendBeacon' }
+        : undefined,
+    )
   } catch {
     // swallow — analytics must never break UX
   }

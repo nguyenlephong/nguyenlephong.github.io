@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `programming-abstractions`.
 
 Source read:
-- `public/notes-data/posts/programming-abstractions.json`
-- `public/notes-data/vi/posts/programming-abstractions.json`
+- `content/notes-data/posts/programming-abstractions.json`
+- `content/notes-data/vi/posts/programming-abstractions.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

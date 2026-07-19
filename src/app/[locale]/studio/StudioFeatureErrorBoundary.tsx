@@ -4,6 +4,7 @@ import { Component, type ErrorInfo, type ReactNode } from "react";
 
 type StudioFeatureErrorBoundaryProps = {
   children: ReactNode;
+  onError?: () => void;
   onRetry: () => void;
   renderFallback: (retry: () => void) => ReactNode;
 };
@@ -23,8 +24,7 @@ export default class StudioFeatureErrorBoundary extends Component<
   }
 
   override componentDidCatch(_error: Error, _info: ErrorInfo): void {
-    // The localized fallback keeps the rest of Studio usable. Reporting stays
-    // with the site's existing global error/telemetry boundary.
+    this.props.onError?.();
   }
 
   private readonly retry = (): void => {

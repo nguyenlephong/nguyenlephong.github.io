@@ -3,6 +3,10 @@ import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
+async function readSources(paths) {
+  return (await Promise.all(paths.map((path) => readFile(path, "utf8")))).join("\n");
+}
+
 const compactSystemNodeSize = { width: 136, height: 108 };
 
 const layeredPlatformOwnership = new Map([
@@ -140,7 +144,51 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/app/[locale]/studio/StudioFlowCanvasRuntime.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioFlowCanvasFeature.tsx", "utf8"),
     readFile("src/app/[locale]/studio/studio-flow-runtime-loader.ts", "utf8"),
-    readFile("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8"),
+    readSources([
+      "src/app/[locale]/studio/studio-admin-shell.tsx",
+      "src/app/[locale]/studio/StudioShellChrome.tsx",
+      "src/app/[locale]/studio/studio-shell-copy.ts",
+      "src/app/[locale]/studio/studio-shell-copy.en.ts",
+      "src/app/[locale]/studio/studio-shell-copy.vi.ts",
+      "src/app/[locale]/studio/studio-shell-copy.zh.ts",
+      "src/app/[locale]/studio/studio-shell-copy.ja.ts",
+      "src/app/[locale]/studio/studio-shell-copy.ko.ts",
+      "src/app/[locale]/studio/studio-shell-copy.fr.ts",
+      "src/app/[locale]/studio/studio-shell-copy.en.json",
+      "src/app/[locale]/studio/studio-shell-copy.vi.json",
+      "src/app/[locale]/studio/studio-shell-copy.zh.json",
+      "src/app/[locale]/studio/studio-shell-copy.ja.json",
+      "src/app/[locale]/studio/studio-shell-copy.ko.json",
+      "src/app/[locale]/studio/studio-shell-copy.fr.json",
+      "src/app/[locale]/studio/studio-shell-navigation.ts",
+      "src/app/[locale]/studio/studio-shell-preferences.ts",
+      "src/app/[locale]/studio/studio-route-definitions.ts",
+      "src/app/[locale]/studio/StudioRouteFeatureRegistry.tsx",
+      "src/app/[locale]/studio/StudioWelcomeFeature.tsx",
+      "src/app/[locale]/studio/StudioAiSetupFeature.tsx",
+      "src/app/[locale]/studio/StudioAiSetupFeature.en.tsx",
+      "src/app/[locale]/studio/StudioAiSetupFeature.vi.tsx",
+      "src/app/[locale]/studio/StudioAiSkillsFeature.tsx",
+      "src/app/[locale]/studio/StudioAiSkillsFeature.en.tsx",
+      "src/app/[locale]/studio/StudioAiSkillsFeature.vi.tsx",
+      "src/app/[locale]/studio/StudioChecklistsFeature.tsx",
+      "src/app/[locale]/studio/StudioChecklistsFeature.en.tsx",
+      "src/app/[locale]/studio/StudioChecklistsFeature.vi.tsx",
+      "src/app/[locale]/studio/StudioFlowFeature.tsx",
+      "src/app/[locale]/studio/StudioFlowFeature.en.tsx",
+      "src/app/[locale]/studio/StudioFlowFeature.vi.tsx",
+      "src/app/[locale]/studio/StudioFlowChart.tsx",
+      "src/app/[locale]/studio/StudioFlowToolbar.tsx",
+      "src/app/[locale]/studio/StudioFlowTrail.tsx",
+      "src/app/[locale]/studio/studio-flow-model.ts",
+      "src/app/[locale]/studio/StudioAuxiliaryRoutesFeature.tsx",
+      "src/app/[locale]/studio/StudioMailFeature.tsx",
+      "src/app/[locale]/studio/StudioChatFeature.tsx",
+      "src/app/[locale]/studio/StudioDefaultDashboardFeature.tsx",
+      "src/app/[locale]/studio/StudioUtilityRoutesFeature.tsx",
+      "src/app/[locale]/studio/StudioDashboardRoutesFeature.tsx",
+      "src/app/[locale]/studio/studio-auxiliary-route-metrics.ts"
+    ]),
     readFile("src/app/[locale]/studio/studio.data.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio.localized-content.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio.localized-workspace.ts", "utf8"),
@@ -165,6 +213,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(footer, /APP_ROUTE\.STUDIO/);
   assert.match(footer, /LuOrbit/);
   assert.match(footer, /studio_footer/);
+  assert.match(footer, /data-document-navigation="studio"/);
+  assert.match(footer, /href=\{studioHref\}/);
+  assert.doesNotMatch(footer, /<Link\s+href=\{APP_ROUTE\.STUDIO\}/);
   assert.match(seo, /studio/);
   assert.match(analytics, /'studio_view'/);
   assert.doesNotMatch(analytics, /studio_blog_roadmap/);
@@ -295,14 +346,18 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /selectedViewId/);
   assert.match(routeCatalog, /routeId:\s*"flow-react-flow-architecture-demo"/);
   assert.match(routeCatalog, /routeId:\s*"flow-react-flow-system-blueprint"/);
-  assert.match(adminShell, /studioCopyByLocale/);
-  assert.match(adminShell, /getStudioCopy/);
+  assert.doesNotMatch(adminShell, /studioCopyByLocale|getStudioCopy/);
+  assert.match(adminShell, /normalizeStudioLocale/);
+  assert.match(adminShell, /case "zh":/);
+  assert.match(adminShell, /case "ja":/);
+  assert.match(adminShell, /case "ko":/);
+  assert.match(adminShell, /case "fr":/);
   assert.match(adminShell, /getLocalizedRouteDefinitions/);
-  assert.match(adminShell, /navLabel:\s*"Studio cá nhân của Nguyễn Lê Phong"/);
-  assert.match(adminShell, /navLabel:\s*"个人 Studio"/);
-  assert.match(adminShell, /navLabel:\s*"パーソナル Studio"/);
-  assert.match(adminShell, /navLabel:\s*"개인 Studio"/);
-  assert.match(adminShell, /navLabel:\s*"Studio personnel"/);
+  assert.match(adminShell, /"navLabel":\s*"Studio cá nhân của Nguyễn Lê Phong"/);
+  assert.match(adminShell, /"navLabel":\s*"个人 Studio"/);
+  assert.match(adminShell, /"navLabel":\s*"パーソナル Studio"/);
+  assert.match(adminShell, /"navLabel":\s*"개인 Studio"/);
+  assert.match(adminShell, /"navLabel":\s*"Studio personnel"/);
   assert.match(adminShell, /studio-sidebar/);
   assert.match(adminShell, /studio-topbar/);
   assert.match(routePrimitives, /metric-grid/);
@@ -310,9 +365,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /Search Studio/);
   assert.match(adminShell, /Profile navigation/);
   assert.match(adminShell, /Profile menu/);
-  assert.match(adminShell, /label:\s*"Home"/);
-  assert.match(adminShell, /label:\s*"Blog"/);
-  assert.match(adminShell, /label:\s*"Notes"/);
+  assert.match(adminShell, /"label":\s*"Home"/);
+  assert.match(adminShell, /"label":\s*"Blog"/);
+  assert.match(adminShell, /"label":\s*"Notes"/);
   assert.match(adminShell, /APP_ROUTE\.CV_PDF/);
   assert.match(adminShell, /function routeHref/);
   assert.match(adminShell, /function profileHref/);
@@ -394,16 +449,16 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /"auth-login-v1"/);
   assert.match(adminShell, /function MailRoutePage/);
   assert.match(adminShell, /function ChatRoutePage/);
-  assert.match(adminShell, /function AiAgentSetupPage/);
-  assert.match(adminShell, /function AiSkillsPage/);
+  assert.match(adminShell, /function StudioAiSetupFeature/);
+  assert.match(adminShell, /function StudioAiSkillsFeature/);
   assert.match(adminShell, /className="skill-filter-control"/);
   assert.match(adminShell, /className="skill-use-case"/);
   assert.doesNotMatch(adminShell, /className="skill-side-pane"/);
-  assert.match(adminShell, /function DeliveryChecklistsPage/);
-  assert.match(adminShell, /function WelcomePage/);
+  assert.match(adminShell, /function StudioChecklistsFeature/);
+  assert.match(adminShell, /function StudioWelcomeFeature/);
   assert.doesNotMatch(adminShell, /function BlogRoadmapPage/);
   assert.match(adminShell, /function StudioFlowChart/);
-  assert.match(adminShell, /function StudioFlowMenuPage/);
+  assert.match(adminShell, /function StudioFlowFeature/);
   assert.match(adminShell, /title:\s*"Email"/);
   assert.match(adminShell, /title:\s*"Chat"/);
   assert.match(adminShell, /title:\s*"AI Agent Setup"/);
@@ -413,7 +468,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /title:\s*"System Design Flow"/);
   assert.match(adminShell, /"flow-react-flow-architecture-demo":\s*"React Flow Examples"/);
   assert.match(adminShell, /"flow-react-flow-system-blueprint":\s*"System Blueprint"/);
-  assert.match(adminShell, /chartLabel:\s*"Flow chart"/);
+  assert.match(adminShell, /"chartLabel":\s*"Flow chart"/);
   assert.match(adminShell, /Read from left to right/);
   assert.match(adminShell, /Đọc từ trái sang phải/);
   assert.doesNotMatch(adminShell, /Mail preview/);
@@ -458,7 +513,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(adminShell, /getLocalizedBlogRoadmap/);
   assert.match(adminShell, /getLocalizedStudioFlowGroups/);
   assert.match(adminShell, /getLocalizedStudioFlows/);
-  assert.match(adminShell, /aiWorkflowSteps/);
+  assert.match(adminShell, /workflowSteps/);
   assert.match(adminShell, /Attachments \(\{selectedMail\.attachments\.length\}\)/);
   assert.match(adminShell, /Internal note/);
   assert.doesNotMatch(adminShell, /function MailChatPage/);
@@ -475,6 +530,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(deliveryFeature, /onClick=\{retry\}/);
   assert.match(featureBoundary, /getDerivedStateFromError/);
   assert.match(featureBoundary, /this\.props\.onRetry\(\)/);
+  assert.doesNotMatch(featureBoundary, /this\.setState\(\{ failed: false/);
   assert.doesNotMatch(featureBoundary, /attempt/);
   assert.match(deliveryChart, /from "recharts"/);
   assert.match(deliveryChart, /ResponsiveContainer/);

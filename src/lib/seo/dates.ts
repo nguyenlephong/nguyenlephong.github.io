@@ -1,12 +1,15 @@
+import { getContentBuildDate } from '@/lib/content/publication'
+
 /**
- * Returns the latest valid source date that is not later than `now`.
+ * Returns the latest valid source date that is not later than the build date.
  * Future editorial dates are left untouched in source, but are omitted from
- * sitemap/hub freshness signals until that date arrives. This avoids inventing
- * a clamped modification date while keeping the build deterministic in tests.
+ * sitemap/hub freshness signals until that date arrives. The default shares
+ * the exact CONTENT_BUILD_DATE used by route publication, so one export cannot
+ * disagree with itself when it runs across UTC midnight.
  */
 export function latestNonFutureDate(
   values: readonly (string | undefined)[],
-  now = new Date(),
+  now = new Date(getContentBuildDate()),
 ): Date | undefined {
   const cutoff = now.getTime()
   if (Number.isNaN(cutoff)) return undefined

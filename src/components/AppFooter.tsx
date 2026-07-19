@@ -1,6 +1,7 @@
 'use client'
-import { Link } from '@/i18n/navigation'
-import { useTranslations } from 'next-intl'
+import { getPathname, Link } from '@/i18n/navigation'
+import type { Locale } from '@/i18n/routing'
+import { useLocale, useTranslations } from 'next-intl'
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { LuAppWindow, LuOrbit } from 'react-icons/lu'
 import { SiLeetcode } from 'react-icons/si'
@@ -11,7 +12,12 @@ const year = new Date().getFullYear()
 
 export default function AppFooter() {
   const t = useTranslations('Footer')
+  const locale = useLocale()
   const c = profileInfo.contact
+  const studioHref = getPathname({
+    href: APP_ROUTE.STUDIO,
+    locale: locale as Locale,
+  })
   return (
     <footer className="app-footer">
       <div className="app-footer-inner">
@@ -33,14 +39,21 @@ export default function AppFooter() {
               </Link>
             </li>
             <li>
-              <Link
-                href={APP_ROUTE.STUDIO}
+              <a
+                href={studioHref}
                 aria-label="Studio"
                 title="Studio"
-                onClick={() => track('cv_nav_click', { target: 'studio_footer' })}
+                data-document-navigation="studio"
+                onClick={() =>
+                  track(
+                    'cv_nav_click',
+                    { target: 'studio_footer' },
+                    { beacon: true },
+                  )
+                }
               >
                 <LuOrbit size={18} />
-              </Link>
+              </a>
             </li>
             <li>
               <Link

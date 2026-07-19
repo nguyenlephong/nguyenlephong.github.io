@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `software-engineering-fatigue`.
 
 Source read:
-- `public/notes-data/posts/software-engineering-fatigue.json`
-- `public/notes-data/vi/posts/software-engineering-fatigue.json`
+- `content/notes-data/posts/software-engineering-fatigue.json`
+- `content/notes-data/vi/posts/software-engineering-fatigue.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

@@ -5,10 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LOCALE_LABELS, routing, type Locale } from "@/i18n/routing";
 import { SITE, SITE_URL } from "@/app/seo.config";
-import {
-  buildDescription,
-  htmlToPlainText,
-} from "@/lib/blog/seo";
+import { buildDescription, htmlToPlainText } from "@/lib/blog/seo";
 import {
   OG_LOCALE_MAP,
   canonicalFor,
@@ -18,12 +15,14 @@ import {
 import { serializeJsonLd } from "@/lib/seo/json-ld";
 import {
   getTopic,
+  getNoteHub,
   getNoteContentLocales,
   getTopicReadingContext,
   listNoteParams,
   loadNote
 } from "@/lib/notes/data";
 import { buildNotesTopicHref } from "@/lib/notes/urls";
+import { resolveNoteAuthorIdentity } from "@/lib/notes/authorship";
 import { noteOgImageUrl } from "@/lib/og/static-images";
 import BlogContent from "@/components/blog/BlogContent";
 import BlogToc from "@/components/blog/BlogToc";
@@ -31,6 +30,7 @@ import BlogViewCount from "@/components/blog/BlogViewCount";
 import BlogShareDock from "@/components/blog/BlogShareDock";
 import BlogReactions from "@/components/blog/BlogReactions";
 import BlogReadingTracker from "@/components/blog/BlogReadingTracker";
+import ContentHubReadingTracker from "@/components/blog/ContentHubReadingTracker";
 import { EngagementProvider } from "@/components/blog/EngagementProvider";
 import LocalizedArticleFallback from "@/components/content/LocalizedArticleFallback";
 import "../notes.css";
@@ -65,11 +65,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const note = loadNote(slug, canonicalLocale);
   if (!note) return { title: "Not found" };
 
-  const title = note.title;
-  const description = buildDescription(note.summary || note.html);
+  const title = note.seoTitle ?? note.title;
+  const description =
+    note.seoDescription ?? buildDescription(note.summary || note.html);
   const canonical = canonicalFor(canonicalLocale, `/notes/${slug}`);
   const imageUrl = noteOgImageUrl(slug);
   const languages = localeAlternates(`/notes/${slug}`, contentLocales);
+  const authorIdentity = resolveNoteAuthorIdentity(note.author);
 
   return {
     title: { absolute: title },
@@ -91,7 +93,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         .map((contentLocale) => OG_LOCALE_MAP[contentLocale]),
       publishedTime: note.date,
       ...(note.updated ? { modifiedTime: note.updated } : {}),
-      authors: [SITE_URL],
+      ...(authorIdentity?.profileUrl
+        ? { authors: [authorIdentity.profileUrl] }
+        : {}),
       tags: note.tags,
       images: [{ url: imageUrl, width: 1200, height: 630, alt: title }]
     },
@@ -139,6 +143,7 @@ export default async function NotePage({ params }: Props) {
         slug={slug}
         surface="notes"
         title={note.title}
+        titleLocale={canonicalLocale}
         labels={{
           description: fallbackT("description"),
           eyebrow: fallbackT("eyebrow")
@@ -150,9 +155,12 @@ export default async function NotePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "Pages.notes" });
   const canonical = canonicalFor(canonicalLocale, `/notes/${slug}`);
   const imageUrl = noteOgImageUrl(slug);
-  const description = note.summary || buildDescription(note.html);
+  const description =
+    note.seoDescription ?? (note.summary || buildDescription(note.html));
+  const authorIdentity = resolveNoteAuthorIdentity(note.author);
 
   const topic = note.topic ? getTopic(note.topic, locale) : null;
+  const topicHub = note.topic ? getNoteHub(note.topic, locale) : null;
   const topicReading = getTopicReadingContext(slug, locale);
   const topicColor = topic?.color ?? FALLBACK_TOPIC_COLOR;
   const topicHref = topic ? buildNotesTopicHref(topic.id) : null;
@@ -217,17 +225,9 @@ export default async function NotePage({ params }: Props) {
     mainEntityOfPage: canonical,
     datePublished: note.date,
     ...(note.updated ? { dateModified: note.updated } : {}),
+    ...(note.contentMode ? { genre: note.contentMode } : {}),
     keywords: note.tags.join(", "),
-    ...(note.author
-      ? {
-          author: {
-            "@type": "Person",
-            "@id": `${SITE_URL}/#person`,
-            name: note.author,
-            url: SITE_URL
-          }
-        }
-      : {}),
+    ...(authorIdentity ? { author: authorIdentity.structuredData } : {}),
     ...(note.book
       ? {
           about: {
@@ -240,8 +240,41 @@ export default async function NotePage({ params }: Props) {
             }))
           }
         }
-      : {})
+      : {}),
+    publisher: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: "Nguyen Le Phong",
+      url: SITE_URL
+    },
+    isPartOf: topicHub
+      ? {
+          "@type": "CollectionPage",
+          "@id": `${canonicalFor(
+            canonicalLocale,
+            `/notes/topics/${topicHub.topic}`
+          )}#collection`
+        }
+      : {
+          "@type": "CollectionPage",
+          "@id": `${canonicalFor(canonicalLocale, "/notes")}#notes`
+        }
   };
+
+  const reviewedPageLd = note.reviewedAt
+    ? {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${canonical}#webpage`,
+        url: canonical,
+        name: note.seoTitle ?? note.title,
+        description,
+        inLanguage: canonicalLocale,
+        lastReviewed: note.reviewedAt,
+        mainEntity: { "@id": `${canonical}#article` },
+        isPartOf: { "@id": `${SITE_URL}/#website` }
+      }
+    : null;
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -253,19 +286,22 @@ export default async function NotePage({ params }: Props) {
         name: t("title"),
         item: canonicalFor(canonicalLocale, "/notes")
       },
-      ...(topic && topicHref
+      ...(topicHub
         ? [
             {
               "@type": "ListItem",
               position: 2,
-              name: topic.label,
-              item: canonicalFor(canonicalLocale, topicHref)
+              name: topicHub.title,
+              item: canonicalFor(
+                canonicalLocale,
+                `/notes/topics/${topicHub.topic}`
+              )
             }
           ]
         : []),
       {
         "@type": "ListItem",
-        position: topic ? 3 : 2,
+        position: topicHub ? 3 : 2,
         name: note.title,
         item: canonical
       }
@@ -297,6 +333,12 @@ export default async function NotePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleLd) }}
       />
+      {reviewedPageLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(reviewedPageLd) }}
+        />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
@@ -309,12 +351,21 @@ export default async function NotePage({ params }: Props) {
       )}
 
       <EngagementProvider category="notes" slug={slug}>
-        <BlogReadingTracker
-          category="notes"
-          slug={slug}
-          readingMinutes={note.readingMinutes}
-          surface="notes"
-        />
+        {topicHub ? (
+          <ContentHubReadingTracker
+            category="notes"
+            slug={slug}
+            readingMinutes={note.readingMinutes}
+            surface="notes"
+          />
+        ) : (
+          <BlogReadingTracker
+            category="notes"
+            slug={slug}
+            readingMinutes={note.readingMinutes}
+            surface="notes"
+          />
+        )}
         <div className="blog-article__main">
           <div className="blog-article__reader">
             <BlogShareDock
@@ -336,7 +387,21 @@ export default async function NotePage({ params }: Props) {
                 {topic && (
                   <>
                     <span aria-hidden="true">/</span>
-                    <Link href={topicHref ?? "/notes"}>{topic.label}</Link>
+                    {topicHub ? (
+                      <Link
+                        href={`/notes/topics/${topicHub.topic}`}
+                        prefetch={false}
+                        data-content-hub-action="hub"
+                        data-content-hub-kind="notes_topic"
+                        data-content-hub-id={topicHub.topic}
+                        data-content-hub-page="1"
+                        data-source="notes_article_breadcrumb"
+                      >
+                        {topic.label}
+                      </Link>
+                    ) : (
+                      <Link href={topicHref ?? "/notes"}>{topic.label}</Link>
+                    )}
                   </>
                 )}
                 <span aria-hidden="true">/</span>

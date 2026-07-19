@@ -11,9 +11,11 @@ interface LocalizedArticleFallbackProps {
   availableVariants: Array<{ label: string; locale: Locale }>
   className: string
   requestedLocale: Locale
+  redirectHref?: string
   slug: string
   surface: Surface
   title: string
+  titleLocale: Locale
   labels: {
     description: string
     eyebrow: string
@@ -25,19 +27,37 @@ export default function LocalizedArticleFallback({
   availableVariants,
   className,
   requestedLocale,
+  redirectHref,
   slug,
   surface,
   title,
+  titleLocale,
   labels,
 }: LocalizedArticleFallbackProps) {
   return (
-    <main className={className} data-content-locale-fallback="true">
-      <section className="blog-locale-fallback" aria-labelledby="content-fallback-title">
+    <main
+      className={className}
+      data-content-locale-fallback="true"
+      data-content-locale-redirect={redirectHref ? 'true' : undefined}
+    >
+      {redirectHref && (
+        <meta httpEquiv="refresh" content={`0;url=${redirectHref}`} />
+      )}
+      <section
+        className="blog-locale-fallback"
+        aria-labelledby="content-fallback-title"
+      >
         <p className="blog-locale-fallback__eyebrow">{labels.eyebrow}</p>
-        <h1 id="content-fallback-title" className="blog-locale-fallback__title">
+        <h1
+          id="content-fallback-title"
+          className="blog-locale-fallback__title"
+          lang={titleLocale}
+        >
           {title}
         </h1>
-        <p className="blog-locale-fallback__description">{labels.description}</p>
+        <p className="blog-locale-fallback__description">
+          {labels.description}
+        </p>
         <ul className="blog-locale-fallback__actions">
           {availableVariants.map(({ label, locale }) => {
             return (

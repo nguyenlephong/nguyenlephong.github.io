@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `why-taking-notes`.
 
 Source read:
-- `public/notes-data/posts/why-taking-notes.json`
-- `public/notes-data/vi/posts/why-taking-notes.json`
+- `content/notes-data/posts/why-taking-notes.json`
+- `content/notes-data/vi/posts/why-taking-notes.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

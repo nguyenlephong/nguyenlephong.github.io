@@ -4,6 +4,11 @@ import path from 'node:path'
 import sharp from 'sharp'
 
 import { loadMediaPublicationContract } from './lib/media-publication-contract.mjs'
+import { validateAuthoredArticleSlugUniqueness } from './lib/article-slug-contract.mjs'
+import {
+  isContentPublishedAtBuildDate,
+  resolveContentBuildDate,
+} from '../src/lib/content/publication-contract.mjs'
 
 const WIDTH = 1200
 const HEIGHT = 630
@@ -28,6 +33,8 @@ function hasFlag(name) {
 
 const surfaceArg = arg('--surface')
 const slugArg = arg('--slug')
+const contentBuildDate = resolveContentBuildDate(process.env.CONTENT_BUILD_DATE)
+await validateAuthoredArticleSlugUniqueness()
 const publicationContract = await loadMediaPublicationContract()
 
 function escapeXml(value) {
@@ -148,6 +155,7 @@ async function blogTargets(slug, publication) {
   const index = await readJson(path.join(process.cwd(), publication.sourceIndex))
   const categories = new Map(index.categories.map((category) => [category.slug, category]))
   return index.posts
+    .filter((post) => isContentPublishedAtBuildDate(post, contentBuildDate))
     .filter((post) => !slug || post.slug === slug)
     .map((post) => {
       const category = categories.get(post.category)
@@ -171,6 +179,7 @@ async function noteTargets(slug, publication) {
   const index = await readJson(path.join(process.cwd(), publication.sourceIndex))
   const topics = new Map(index.topics.map((topic) => [topic.id, topic]))
   return index.posts
+    .filter((post) => isContentPublishedAtBuildDate(post, contentBuildDate))
     .filter((post) => !slug || post.slug === slug)
     .map((post) => ({
       eyebrow: `Notes - ${topics.get(post.topic)?.label ?? 'Reflection'}`,

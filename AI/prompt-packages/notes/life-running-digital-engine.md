@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `life-running-digital-engine`.
 
 Source read:
-- `public/notes-data/posts/life-running-digital-engine.json`
-- `public/notes-data/vi/posts/life-running-digital-engine.json`
+- `content/notes-data/posts/life-running-digital-engine.json`
+- `content/notes-data/vi/posts/life-running-digital-engine.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:

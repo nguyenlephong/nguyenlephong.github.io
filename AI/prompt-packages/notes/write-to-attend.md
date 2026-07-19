@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `write-to-attend`.
 
 Source read:
-- `public/notes-data/posts/write-to-attend.json`
-- `public/notes-data/vi/posts/write-to-attend.json`
+- `content/notes-data/posts/write-to-attend.json`
+- `content/notes-data/vi/posts/write-to-attend.json`
 - Approved reference: commit `48ac924f16`, `cross-functional-teams`
 
 Reference style:

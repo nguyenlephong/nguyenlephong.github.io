@@ -3,8 +3,8 @@
 Scope: `notes` article only, slug `programming-beacons`.
 
 Source read:
-- `public/notes-data/posts/programming-beacons.json`
-- `public/notes-data/vi/posts/programming-beacons.json`
+- `content/notes-data/posts/programming-beacons.json`
+- `content/notes-data/vi/posts/programming-beacons.json`
 - Approved reference: commit `48ac924f16`, article `cross-functional-teams`
 
 Reference style:
