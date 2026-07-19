@@ -141,7 +141,9 @@ function dependencyGroups(outDir, parent, source) {
 }
 
 function loaderGroupSignature(group) {
-  return [...group.chunks].sort().join("\n");
+  return [...group.chunks]
+    .sort((left, right) => left.localeCompare(right))
+    .join("\n");
 }
 
 function uniqueLoaderGroups(groups) {

@@ -714,7 +714,7 @@ function inspectNextIntlClientHooks(source, fileName = "fixture.tsx") {
     namespaces,
     bindings: [...directBindings.entries()]
       .map(([localName, binding]) => `${binding.hook}:${localName}`)
-      .sort()
+      .sort((left, right) => left.localeCompare(right))
   };
 }
 

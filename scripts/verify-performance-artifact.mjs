@@ -166,7 +166,7 @@ function thirdPartyConnectionOrigins(html, siteOrigin) {
     if (url.origin !== siteOrigin) origins.add(url.origin);
   }
 
-  return [...origins].sort();
+  return [...origins].sort((left, right) => left.localeCompare(right));
 }
 
 function isRscTextFile(index, relativePath) {

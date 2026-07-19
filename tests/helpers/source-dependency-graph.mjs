@@ -247,7 +247,7 @@ export function collectStudioRoots(
         hasUseClientDirective(source, fileName)
     )
     .map(([fileName]) => fileName)
-    .sort();
+    .sort((left, right) => left.localeCompare(right));
   return [...new Set([normalizedPage, ...clientRoots])];
 }
 

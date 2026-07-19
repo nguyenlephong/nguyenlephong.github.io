@@ -111,8 +111,9 @@ function validatePublicProjection(surface, publication, projection) {
     throw new Error(`[media-publication] public articleOg.${surface} must be an object`)
   }
   const expectedKeys = ['localPathPrefix', 'publicPathPrefix', 'publicationExtension']
-  const actualKeys = Object.keys(projection).sort()
-  if (JSON.stringify(actualKeys) !== JSON.stringify(expectedKeys)) {
+  const actualKeys = Object.keys(projection).sort((left, right) => left.localeCompare(right))
+  const sortedExpectedKeys = [...expectedKeys].sort((left, right) => left.localeCompare(right))
+  if (JSON.stringify(actualKeys) !== JSON.stringify(sortedExpectedKeys)) {
     throw new Error(
       `[media-publication] public articleOg.${surface} must contain only ${expectedKeys.join(', ')}`,
     )
@@ -172,8 +173,12 @@ export async function loadMediaPublicationContract(rootDir = process.cwd()) {
     }
     publicationDirectories.add(publication.publicationDirectory)
   }
-  const publicSurfaces = Object.keys(publicContract.articleOg).sort()
-  const buildSurfaces = surfaces.map(([surface]) => surface).sort()
+  const publicSurfaces = Object.keys(publicContract.articleOg).sort((left, right) =>
+    left.localeCompare(right),
+  )
+  const buildSurfaces = surfaces
+    .map(([surface]) => surface)
+    .sort((left, right) => left.localeCompare(right))
   if (JSON.stringify(publicSurfaces) !== JSON.stringify(buildSurfaces)) {
     throw new Error('[media-publication] public and build articleOg surfaces must match exactly')
   }

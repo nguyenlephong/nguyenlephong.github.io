@@ -434,8 +434,12 @@ async function verifyContentHubAnalytics(browser, origin) {
         ["content_hub_article_click", scenario.legacyCardEvent]
       );
       assert.deepEqual(
-        cardEvents.map(({ event }) => event).sort(),
-        ["content_hub_article_click", scenario.legacyCardEvent].sort()
+        cardEvents
+          .map(({ event }) => event)
+          .sort((left, right) => left.localeCompare(right)),
+        ["content_hub_article_click", scenario.legacyCardEvent].sort(
+          (left, right) => left.localeCompare(right)
+        )
       );
       const hubCardEvent = cardEvents.find(
         ({ event }) => event === "content_hub_article_click"
@@ -498,8 +502,12 @@ async function verifyContentHubAnalytics(browser, origin) {
         )
       );
       assert.deepEqual(
-        paginationEvents.map(({ event }) => event).sort(),
-        ["content_hub_page_change", "explorer_page_change"].sort()
+        paginationEvents
+          .map(({ event }) => event)
+          .sort((left, right) => left.localeCompare(right)),
+        ["content_hub_page_change", "explorer_page_change"].sort(
+          (left, right) => left.localeCompare(right)
+        )
       );
       for (const { properties } of paginationEvents) {
         assert.deepEqual(
