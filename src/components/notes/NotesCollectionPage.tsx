@@ -16,11 +16,13 @@ import {
   getNoteContentLocales,
   listNotes,
   listNotesArchiveLocales,
+  listNoteHubs,
   listTopics,
   NOTE_CONTENT_LOCALES,
 } from '@/lib/notes/data'
 import { noteOgImageUrl } from '@/lib/og/static-images'
 import PageTracker from '@/components/analytics/PageTracker'
+import ContentHubClickTracker from '@/components/analytics/ContentHubClickTracker'
 import NotesExplorer from '@/components/notes/NotesExplorer'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 
@@ -69,7 +71,10 @@ export async function notesCollectionMetadata(
     page,
     total: pageData.totalPages,
   })
-  const title = page === 1 ? `${t('title')} — ${t('eyebrow')}` : `${t('title')} — ${pageLabel}`
+  const title =
+    page === 1
+      ? `${t('title')} — ${t('eyebrow')}`
+      : `${t('title')} — ${pageLabel}`
   const description =
     page === 1
       ? t('intro')
@@ -129,6 +134,8 @@ export default async function NotesCollectionPage({
     : 'en'
   const notes = listNotes(archiveLocale)
   const topics = listTopics(archiveLocale)
+  const hasCuratedHubs = locale === 'en' || locale === 'vi'
+  const hubCatalog = hasCuratedHubs ? listNoteHubs(archiveLocale) : []
   const pageData = paginate(notes, page)
   if (!pageData) notFound()
   const searchRevision = createSearchIndex(notes.map(toNoteSearchItem)).revision
@@ -157,7 +164,9 @@ export default async function NotesCollectionPage({
       numberOfItems: pageData.items.length,
       itemListOrder: 'https://schema.org/ItemListOrderDescending',
       itemListElement: pageData.items.map((note, index) => {
-        const noteLocale = getNoteContentLocales(note.slug).includes(archiveLocale)
+        const noteLocale = getNoteContentLocales(note.slug).includes(
+          archiveLocale,
+        )
           ? archiveLocale
           : 'en'
         return {
@@ -182,6 +191,7 @@ export default async function NotesCollectionPage({
         eventName="notes_view"
         section={page === 1 ? 'index' : `index_page_${page}`}
       />
+      {page === 1 && hasCuratedHubs && <ContentHubClickTracker />}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionLd) }}
@@ -210,6 +220,34 @@ export default async function NotesCollectionPage({
         </dl>
       </header>
 
+      {page === 1 && hubCatalog.length > 0 && (
+        <section
+          className="blog-home__section"
+          aria-labelledby="notes-hubs-heading"
+        >
+          <h2 id="notes-hubs-heading" className="blog-home__section-title">
+            {locale === 'vi' ? 'Đọc theo chủ đề' : 'Read by topic'}
+          </h2>
+          <div className="content-hub-catalog">
+            {hubCatalog.map((hub) => (
+              <a
+                key={hub.topic}
+                href={`/${archiveLocale}/notes/topics/${hub.topic}`}
+                className="content-hub-catalog__link"
+                data-content-hub-action="catalog"
+                data-content-hub-kind="notes_topic"
+                data-content-hub-id={hub.topic}
+                data-content-hub-page="1"
+                data-source="notes_index"
+              >
+                <h3 className="content-hub-catalog__title">{hub.title}</h3>
+                <p className="content-hub-catalog__intro">{hub.intro}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
       <ScopedIntlProvider scope="notes">
         {pageData.items.length > 0 ? (
           <NotesExplorer
@@ -219,7 +257,9 @@ export default async function NotesCollectionPage({
                 note,
                 topicLabel: topic?.label ?? note.topic ?? '',
                 topicColor: topic?.color ?? FALLBACK_TOPIC_COLOR,
-                readingLabel: t('readingTime', { minutes: note.readingMinutes }),
+                readingLabel: t('readingTime', {
+                  minutes: note.readingMinutes,
+                }),
               }
             })}
             topics={topics.map((topic) => ({
@@ -233,7 +273,11 @@ export default async function NotesCollectionPage({
             currentPage={page}
             totalPages={pageData.totalPages}
             totalItems={pageData.totalItems}
-            searchIndexUrl={versionedSearchIndexUrl(archiveLocale, 'notes', searchRevision)}
+            searchIndexUrl={versionedSearchIndexUrl(
+              archiveLocale,
+              'notes',
+              searchRevision,
+            )}
             fallbackTopicColor={FALLBACK_TOPIC_COLOR}
           />
         ) : (

@@ -1,4 +1,48 @@
 {
+  "series": [
+    {
+      "id": "foundations",
+      "title": "Nền tảng kiến trúc phần mềm",
+      "intro": "Một lộ trình thực tế qua ranh giới code, dependency direction, distributed systems, resilience, dữ liệu và những trade-off xuất hiện khi phần mềm lớn dần.",
+      "order": 1
+    },
+    {
+      "id": "ways-of-working",
+      "title": "Cách đội ngũ phần mềm vận hành",
+      "intro": "Những ghi chép thực tế về cách công việc phần mềm thay đổi giữa công ty lớn, startup và đội ngũ outsourcing—từ ownership, quy trình và nhịp độ đến cách giao tiếp.",
+      "order": 2
+    },
+    {
+      "id": "ai-in-practice",
+      "title": "AI trong công việc thực tế",
+      "intro": "Những hướng dẫn gần với công việc hằng ngày về agents, workflow lặp lại, xu hướng hữu ích, cách nhận ra cơ hội và kiểm chứng AI bằng evidence.",
+      "order": 3
+    },
+    {
+      "id": "kind-engineering",
+      "title": "Kỹ thuật tử tế và hiệu quả",
+      "intro": "Những thói quen thực tế trong code review, pull request, feedback và mentoring để công việc tốt hơn mà vẫn tôn trọng người cùng làm.",
+      "order": 4
+    },
+    {
+      "id": "lean-business-analysis",
+      "title": "Business Analysis tinh gọn",
+      "intro": "Một lộ trình gọn từ giá trị, stakeholders và elicitation đến mô hình, requirements, traceability, rollout và việc kiểm tra giải pháp có thật sự hữu ích hay không.",
+      "order": 5
+    },
+    {
+      "id": "data-eos-operating-system",
+      "title": "Dữ liệu trong hệ điều hành EOS",
+      "intro": "Bốn ghi chép về cách dùng một nhóm chỉ số nhỏ, rõ người sở hữu để nhìn sức khỏe vận hành sớm hơn—từ Scorecard và role-level measurables đến doanh thu, lợi nhuận và dòng tiền.",
+      "order": 6
+    },
+    {
+      "id": "leadership-and-management",
+      "title": "Lãnh đạo và quản lý",
+      "intro": "Những suy ngẫm về định hướng, craft, thông điệp rõ ràng, khả năng ở lại với điều chưa chắc chắn, và khác biệt giữa thúc ép với tạo ra ý nghĩa để mọi người cùng tiến.",
+      "order": 7
+    }
+  ],
   "categories": [
     {
       "slug": "architecture",

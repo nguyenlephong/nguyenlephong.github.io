@@ -18,13 +18,16 @@ import {
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import {
   getCategory,
+  getBlogSeries,
   getPostContentLocales,
   getSeriesContext,
-  listBlogPostParams,
+  listBlogArticleRouteParams,
   listPosts,
   loadPost,
 } from '@/lib/blog/data'
+import { getLegacyBlogLocaleFallback } from '@/lib/blog/legacy-locale-fallbacks'
 import { getRelatedPosts } from '@/lib/blog/related'
+import { CONTENT_HUB_LOCALES } from '@/lib/content/route-contract'
 import { blogPostOgImageUrl } from '@/lib/og/static-images'
 import BlogContent from '@/components/blog/BlogContent'
 import BlogToc from '@/components/blog/BlogToc'
@@ -43,7 +46,7 @@ type Props = {
 
 export function generateStaticParams() {
   if (process.env.NODE_ENV === 'development') return []
-  return listBlogPostParams()
+  return listBlogArticleRouteParams()
 }
 
 function formatDate(iso: string, locale: string): string {
@@ -66,11 +69,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = loadPost(slug, canonicalLocale)
   if (!post || post.category !== category) return { title: 'Post not found' }
 
-  const title = post.title
-  const description = buildDescription(post.summary || post.html)
+  const title = post.seoTitle ?? post.title
+  const description = post.seoDescription ?? buildDescription(post.summary || post.html)
   const canonical = canonicalFor(canonicalLocale, `/blog/${category}/${slug}`)
   const imageUrl = blogPostOgImageUrl(slug)
   const languages = localeAlternates(`/blog/${category}/${slug}`, contentLocales)
+  const legacyFallback = getLegacyBlogLocaleFallback(locale, category, slug)
 
   return {
     title: { absolute: title },
@@ -104,6 +108,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       creator: SITE.twitter,
       images: [imageUrl],
     },
+    ...(legacyFallback
+      ? {
+          robots: {
+            index: false,
+            follow: true,
+            googleBot: { index: false, follow: true },
+          },
+        }
+      : {}),
   }
 }
 
@@ -124,6 +137,10 @@ export default async function BlogPostPage({ params }: Props) {
   if (!hasLocalizedContent) {
     const fallbackT = await getTranslations({ locale, namespace: 'ContentFallback' })
     const accent = getCategory(category, canonicalLocale)?.accent ?? 'ocean'
+    const legacyFallback = getLegacyBlogLocaleFallback(locale, category, slug)
+    const redirectHref = legacyFallback
+      ? `/${legacyFallback.targetLocale}/blog/${category}/${slug}`
+      : undefined
     return (
       <LocalizedArticleFallback
         articlePath={`/blog/${category}/${slug}`}
@@ -135,9 +152,11 @@ export default async function BlogPostPage({ params }: Props) {
         }))}
         className={`blog-article blog-article--${accent}`}
         requestedLocale={requestedLocale}
+        redirectHref={redirectHref}
         slug={slug}
         surface="blog"
         title={post.title}
+        titleLocale={canonicalLocale}
         labels={{
           description: fallbackT('description'),
           eyebrow: fallbackT('eyebrow'),
@@ -148,10 +167,21 @@ export default async function BlogPostPage({ params }: Props) {
 
   const cat = getCategory(category, locale)
   const series = getSeriesContext(slug, locale)
+  const seriesHubLocale = CONTENT_HUB_LOCALES.find(
+    (candidate) => candidate === canonicalLocale,
+  )
+  const seriesMeta =
+    series && seriesHubLocale
+      ? getBlogSeries(series.series, seriesHubLocale)
+      : null
   const t = await getTranslations({ locale, namespace: 'Pages.blog' })
+  const seriesLabel = series
+    ? seriesMeta?.title ?? t(`seriesNames.${series.series}`)
+    : null
   const canonical = canonicalFor(canonicalLocale, `/blog/${category}/${slug}`)
   const imageUrl = blogPostOgImageUrl(slug)
-  const description = post.summary || buildDescription(post.html)
+  const description =
+    post.seoDescription ?? (post.summary || buildDescription(post.html))
   const relatedPosts = getRelatedPosts(post, listPosts(locale))
   const relatedItems = relatedPosts.map((relatedPost) => {
     const categoryTitle =
@@ -176,6 +206,7 @@ export default async function BlogPostPage({ params }: Props) {
     mainEntityOfPage: canonical,
     datePublished: post.date,
     ...(post.updated ? { dateModified: post.updated } : {}),
+    ...(post.contentMode ? { genre: post.contentMode } : {}),
     keywords: post.tags.join(', '),
     articleSection: cat?.title ?? category,
     isRelatedTo: relatedPosts.map((relatedPost) => ({
@@ -189,10 +220,18 @@ export default async function BlogPostPage({ params }: Props) {
       ),
       image: blogPostOgImageUrl(relatedPost.slug),
     })),
-    isPartOf: {
-      '@type': 'Blog',
-      '@id': canonicalFor(canonicalLocale, '/blog') + '#blog',
-    },
+    isPartOf: seriesMeta && seriesHubLocale
+      ? {
+          '@type': 'CollectionPage',
+          '@id': `${canonicalFor(
+            seriesHubLocale,
+            `/blog/series/${seriesMeta.id}`,
+          )}#collection`,
+        }
+      : {
+          '@type': 'Blog',
+          '@id': canonicalFor(canonicalLocale, '/blog') + '#blog',
+        },
     ...(post.book
       ? {
           isBasedOn: {
@@ -223,6 +262,21 @@ export default async function BlogPostPage({ params }: Props) {
     },
   }
 
+  const reviewedPageLd = post.reviewedAt
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${canonical}#webpage`,
+        url: canonical,
+        name: post.seoTitle ?? post.title,
+        description,
+        inLanguage: canonicalLocale,
+        lastReviewed: post.reviewedAt,
+        mainEntity: { '@id': `${canonical}#article` },
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+      }
+    : null
+
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -233,12 +287,26 @@ export default async function BlogPostPage({ params }: Props) {
         name: t('title'),
         item: canonicalFor(canonicalLocale, '/blog'),
       },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: cat?.title ?? category,
-        item: canonicalFor(canonicalLocale, `/blog/${category}`),
-      },
+      ...(seriesMeta && seriesHubLocale
+        ? [
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: seriesMeta.title,
+              item: canonicalFor(
+                seriesHubLocale,
+                `/blog/series/${seriesMeta.id}`,
+              ),
+            },
+          ]
+        : [
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: cat?.title ?? category,
+              item: canonicalFor(canonicalLocale, `/blog/${category}`),
+            },
+          ]),
       {
         '@type': 'ListItem',
         position: 3,
@@ -272,6 +340,12 @@ export default async function BlogPostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleLd) }}
       />
+      {reviewedPageLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(reviewedPageLd) }}
+        />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
@@ -309,13 +383,31 @@ export default async function BlogPostPage({ params }: Props) {
               <nav className="blog-breadcrumb" aria-label="Breadcrumb">
                 <Link href="/blog">{t('title')}</Link>
                 <span aria-hidden="true">/</span>
-                <Link href={`/blog/${category}`}>{cat?.title ?? category}</Link>
+                {seriesMeta && seriesHubLocale ? (
+                  <Link
+                    href={`/blog/series/${seriesMeta.id}`}
+                    locale={seriesHubLocale}
+                  >
+                    {seriesMeta.title}
+                  </Link>
+                ) : (
+                  <Link href={`/blog/${category}`}>{cat?.title ?? category}</Link>
+                )}
               </nav>
 
               <header className="blog-article__head">
                 {series && (
                   <p className="blog-article__series">
-                    {t(`seriesNames.${series.series}`)}
+                    {seriesMeta && seriesHubLocale ? (
+                      <Link
+                        href={`/blog/series/${series.series}`}
+                        locale={seriesHubLocale}
+                      >
+                        {seriesLabel}
+                      </Link>
+                    ) : (
+                      seriesLabel
+                    )}
                     <span aria-hidden="true"> · </span>
                     {t('partOf', { part: series.part, total: series.total })}
                   </p>
@@ -386,7 +478,7 @@ export default async function BlogPostPage({ params }: Props) {
           {series && (series.prev || series.next) && (
             <nav
               className="blog-series-nav"
-              aria-label={t(`seriesNames.${series.series}`)}
+              aria-label={seriesLabel ?? series.series}
             >
               {series.prev ? (
                 <Link

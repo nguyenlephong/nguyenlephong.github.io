@@ -1,4 +1,42 @@
 {
+  "hubs": [
+    {
+      "topic": "mua-nha",
+      "title": "Home Buying",
+      "intro": "Practical notes on buying a home: money, legal checks, location, process, build quality, and decisions that are easier to make calmly.",
+      "order": 1
+    },
+    {
+      "topic": "tiet-kiem",
+      "title": "Personal Finance & Saving",
+      "intro": "How to manage personal cash flow, keep more money available, and build healthy financial habits for everyday working life.",
+      "order": 2
+    },
+    {
+      "topic": "su-nghiep",
+      "title": "Career & Growth",
+      "intro": "Owning a career path with clearer skills, market value, income negotiation, and sustainable self-development.",
+      "order": 3
+    },
+    {
+      "topic": "sach",
+      "title": "Book Notes",
+      "intro": "Reading notes and reflections from books, translated into practical ideas for work, study, and personal growth.",
+      "order": 4
+    },
+    {
+      "topic": "goc-nhin",
+      "title": "Perspectives & Reflections",
+      "intro": "Personal reflections on life, work, and the questions that do not have tidy answers.",
+      "order": 5
+    },
+    {
+      "topic": "thoughts",
+      "title": "Thought Garden",
+      "intro": "Short, living notes—small observations and half-formed ideas from work and life, written down before they slip away. They grow a little every time I return to them.",
+      "order": 6
+    }
+  ],
   "topics": [
     {
       "id": "mua-nha",
@@ -1061,6 +1099,7 @@
     },
     {
       "slug": "mua-xe-lan-dau-chi-phi-va-quyet-dinh",
+      "author": "Nguyen Le Phong",
       "title": "Buying a First Car: Seeing the Full Cost Before Paying",
       "summary": "A practical note for first-time car buyers on looking beyond the purchase price. The real decision includes cash flow, loan terms, maintenance, insurance, depreciation, parking, fuel, time, and the way the car will actually be used.",
       "cardSummary": "The car price is only the front door. The real decision is the monthly life that comes after it.",
@@ -1106,6 +1145,7 @@
     },
     {
       "slug": "lam-chu-su-nghiep-bien-cong-viec-thanh-be-phong",
+      "author": "Nguyen Le Phong",
       "title": "Owning Your Career: Turning Work into a Long-Term Platform",
       "summary": "A career note on treating daily work as a platform for capability, trust, proof, and future options. A job becomes more valuable when it builds skills, relationships, judgment, and evidence that remain useful beyond one role.",
       "cardSummary": "A job pays the present. A well-owned career also builds proof for the future.",
@@ -1127,6 +1167,7 @@
     },
     {
       "slug": "lap-ngan-sach-lam-chu-dong-tien",
+      "author": "Nguyen Le Phong",
       "title": "Budgeting and Cash Flow: A Gentle Map for Every Dollar You Earn",
       "summary": "A personal finance note on budgeting without shame. A useful budget helps money move with intention: essentials, buffer, saving, investing, family needs, and small joys all become visible before the month disappears.",
       "cardSummary": "A budget is not a punishment. It is a map that helps money stop disappearing silently.",
@@ -1148,6 +1189,7 @@
     },
     {
       "slug": "quy-khan-cap-tu-a-den-z",
+      "author": "Nguyen Le Phong",
       "title": "Emergency Funds from A to Z: A Buffer for Unplanned Shocks",
       "summary": "A practical note on emergency funds: why they matter, what they should cover, where to keep them, and how to build one gradually without turning financial safety into constant anxiety.",
       "cardSummary": "An emergency fund does not make life risk-free, but it gives a difficult month more room to breathe.",
@@ -1169,6 +1211,7 @@
     },
     {
       "slug": "thoat-no-thong-minh",
+      "author": "Nguyen Le Phong",
       "title": "Getting Out of Debt Wisely: Step by Step Through High-Interest Debt",
       "summary": "A personal finance note on handling debt with clarity rather than shame. The first task is to understand balances, interest, minimum payments, cash flow, and the order of repayment before trying to move faster.",
       "cardSummary": "Debt becomes less frightening when it is turned from a vague weight into a clear repayment system.",
@@ -1190,6 +1233,7 @@
     },
     {
       "slug": "dau-tu-cho-nguoi-moi-bat-dau",
+      "author": "Nguyen Le Phong",
       "title": "Investing for Beginners: Starting from a Stable Foundation",
       "summary": "A beginner-friendly note on investing after the basic foundation is in place: cash flow, emergency fund, debt control, time horizon, risk tolerance, diversification, and patience.",
       "cardSummary": "Beginner investing starts best when the foundation is boring enough to hold during noise.",
@@ -1211,6 +1255,7 @@
     },
     {
       "slug": "lam-phat-va-suc-mua",
+      "author": "Nguyen Le Phong",
       "title": "Inflation and Purchasing Power: Why Money Needs Protection Over Time",
       "summary": "A plain-language note on inflation and purchasing power. The same amount of money may buy less over time, so savings, income growth, emergency funds, and investing need to be thought about together.",
       "cardSummary": "Inflation is quiet until the same money buys less life than it used to.",
@@ -1232,6 +1277,7 @@
     },
     {
       "slug": "bao-hiem-dung-va-du",
+      "author": "Nguyen Le Phong",
       "title": "The Right Insurance: Buying Protection, Not Anxiety",
       "summary": "A practical note on approaching insurance calmly. Good insurance transfers risks that would damage the whole financial plan, while avoiding unnecessary complexity, unclear promises, and products bought mainly from fear.",
       "cardSummary": "Good insurance protects the right risk, at the right level, within a budget the household can keep.",
@@ -1253,6 +1299,7 @@
     },
     {
       "slug": "tranh-bay-lua-dao-dau-tu",
+      "author": "Nguyen Le Phong",
       "title": "Avoiding Investment Scams: Recognizing Risk Before Sending Money",
       "summary": "A practical note on spotting investment scams and high-risk promises. Pressure, guaranteed returns, unclear products, referral incentives, and secrecy are all signals to slow down before transferring money.",
       "cardSummary": "The safest moment to avoid a scam is before money leaves your account.",
@@ -1274,6 +1321,7 @@
     },
     {
       "slug": "tai-chinh-theo-do-tuoi",
+      "author": "Nguyen Le Phong",
       "title": "Personal Finance by Age: What to Prioritize in Your 20s, 30s, and 40s",
       "summary": "A life-stage note on personal finance priorities. Each decade brings different pressures, but the core remains similar: cash flow, protection, skill growth, thoughtful investing, and decisions that keep future options open.",
       "cardSummary": "Each decade has different pressure, but financial clarity is built from repeated basics.",
@@ -1295,6 +1343,7 @@
     },
     {
       "slug": "tien-bac-trong-gia-dinh",
+      "author": "Nguyen Le Phong",
       "title": "Money in the Family: Talking About Finance Calmly",
       "summary": "A note on family money conversations: income, spending, support, debt, goals, and expectations are easier to handle when they are discussed calmly before pressure turns them into conflict.",
       "cardSummary": "Family money is rarely only about numbers. It is also about trust, fear, care, and expectations.",
@@ -1316,6 +1365,7 @@
     },
     {
       "slug": "thinh-vuong-tai-chinh-de-tien-lam-viec-cho-ban",
+      "author": "Nguyen Le Phong",
       "title": "Financial Prosperity: A Path for Money to Slowly Work for You",
       "summary": "A personal finance note on building prosperity gradually through earning, saving, protecting, investing, avoiding fragile commitments, and letting time work with consistent behavior.",
       "cardSummary": "Money starts working for you only after enough of it stops leaking away from you.",
@@ -1337,6 +1387,7 @@
     },
     {
       "slug": "giu-tien-trong-tui-cach-de-giau",
+      "author": "Nguyen Le Phong",
       "title": "Keeping Money in Your Pocket: Protecting the Value You Create",
       "summary": "A note on saving as the skill of keeping part of the value we create. Building wealth is not only about earning more; it also requires awareness of leaks, habits, lifestyle pressure, and recurring commitments.",
       "cardSummary": "Earning creates value. Saving keeps enough of that value close enough to build with.",
@@ -1358,6 +1409,7 @@
     },
     {
       "slug": "vay-ngan-hang-mua-nha-don-bay-thong-minh",
+      "author": "Nguyen Le Phong",
       "title": "Borrowing for a Home: Using Leverage with Clear Eyes",
       "summary": "A practical note on home loans as leverage. Borrowing can make ownership possible earlier, but it needs careful attention to income stability, interest rate changes, repayment pressure, emergency buffers, and downside scenarios.",
       "cardSummary": "A home loan can be useful leverage, but only if the monthly pressure stays survivable.",
@@ -1379,6 +1431,7 @@
     },
     {
       "slug": "dinh-gia-va-thuong-luong-gia-mua-nha",
+      "author": "Nguyen Le Phong",
       "title": "Valuation and Negotiation When Buying a Home: Pay with Evidence, Not Emotion",
       "summary": "A practical note on valuing and negotiating a home purchase. Buyers need comparable prices, legal checks, repair estimates, location context, and emotional distance before making an offer.",
       "cardSummary": "Good negotiation starts before the offer, with enough evidence to stay calm.",
@@ -1400,6 +1453,7 @@
     },
     {
       "slug": "chon-vi-tri-va-quy-hoach-khi-mua-nha",
+      "author": "Nguyen Le Phong",
       "title": "Location and Planning When Buying a Home: The Hardest Thing to Fix Later",
       "summary": "A home buying note on location, zoning, planning, commute, infrastructure, noise, flooding, schools, hospitals, and daily convenience. The house can be improved, but location is difficult to repair after purchase.",
       "cardSummary": "Paint can be changed. Location is much harder to repair.",
@@ -1421,6 +1475,7 @@
     },
     {
       "slug": "quy-trinh-mua-nha-tu-a-den-z",
+      "author": "Nguyen Le Phong",
       "title": "The Home Buying Process from A to Z: A Slow Map for First-Time Buyers",
       "summary": "A practical overview of the home buying process: financial readiness, search criteria, legal checks, valuation, negotiation, deposit, loan approval, contract, handover, and post-purchase buffer.",
       "cardSummary": "A slow process is not wasted time when the decision is large and difficult to reverse.",
@@ -1442,6 +1497,7 @@
     },
     {
       "slug": "chung-cu-vs-nha-dat-va-mua-nha-du-an",
+      "author": "Nguyen Le Phong",
       "title": "Apartment, Landed House, or Project Home: Choose by the Way You Live",
       "summary": "A practical note comparing apartments, landed houses, and project homes. The right choice depends on lifestyle, commute, management, privacy, maintenance, liquidity, legal status, and long-term household needs.",
       "cardSummary": "The best home type is not universal. It should fit the life that will happen inside and around it.",
@@ -1463,6 +1519,7 @@
     },
     {
       "slug": "doc-ban-ve-thiet-ke-nha-danh-gia-chat-luong",
+      "author": "Nguyen Le Phong",
       "title": "Reading House Plans and Evaluating Build Quality: Seeing What Photos Do Not Show",
       "summary": "A practical home buying note on reading floor plans and checking build quality. Photos show surfaces, but buyers also need to notice layout logic, structure, ventilation, light, waterproofing, electrical systems, plumbing, and maintenance risks.",
       "cardSummary": "A beautiful photo shows the surface. A careful inspection asks how the home will age.",
@@ -1484,6 +1541,7 @@
     },
     {
       "slug": "tam-ly-mua-nha-tranh-bay-nguoi-ban",
+      "author": "Nguyen Le Phong",
       "title": "The Psychology of Buying a Home: Keeping Distance from Fast-Closing Pressure",
       "summary": "A home buying reflection on the emotional traps of urgency, scarcity, family pressure, seller pressure, comparison, and fear of missing out. A large purchase needs enough distance for the buyer to think clearly.",
       "cardSummary": "When a decision is large, emotional distance is not hesitation. It is protection.",
@@ -1526,6 +1584,7 @@
     },
     {
       "slug": "bay-mat-tien-khi-mua-nha-cac-kich-ban-can-tranh",
+      "author": "Nguyen Le Phong",
       "title": "Risk Scenarios When Buying a Home: Loans, Deposits, and Disputes",
       "summary": "A practical warning note on common home buying risks: unclear ownership, rushed deposits, loan failure, planning issues, disputes, hidden defects, and contracts that do not protect the buyer.",
       "cardSummary": "Many home buying losses begin before the contract, when pressure replaces verification.",
@@ -1547,6 +1606,7 @@
     },
     {
       "slug": "phap-ly-bat-dong-san-nhung-dieu-can-biet",
+      "author": "Nguyen Le Phong",
       "title": "Real Estate Legal Checks: What to Review Before Paying",
       "summary": "A practical note on legal checks before buying property. Buyers should verify ownership, land-use rights, planning status, disputes, mortgages, construction legality, contract terms, taxes, and transfer procedures.",
       "cardSummary": "Legal clarity is not paperwork for later. It is part of the property itself.",
@@ -1568,6 +1628,7 @@
     },
     {
       "slug": "phong-thuy-mua-nha-tieu-chi-can-biet",
+      "author": "Nguyen Le Phong",
       "title": "Feng Shui When Buying a Home: Reading Light, Air, and Daily Habits",
       "summary": "A grounded note on reading feng shui through practical living factors: light, airflow, noise, moisture, layout, privacy, movement, and the daily comfort of the people who will live there.",
       "cardSummary": "The most useful feng shui questions are often practical: light, air, noise, flow, and habit.",
@@ -1588,6 +1649,7 @@
     },
     {
       "slug": "mua-nha-nhung-dieu-can-biet",
+      "author": "Nguyen Le Phong",
       "title": "What to Think About When You First Consider Buying a Home",
       "summary": "A beginner note for the earliest stage of home buying. Before viewing properties seriously, it helps to understand motivation, budget, loan capacity, lifestyle needs, location trade-offs, legal basics, and emotional pressure.",
       "cardSummary": "Before looking for the right home, it helps to understand the life the home is supposed to support.",

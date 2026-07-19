@@ -4,7 +4,9 @@ import test from "node:test";
 import ts from "typescript";
 
 async function readSources(paths) {
-  return (await Promise.all(paths.map((path) => readFile(path, "utf8")))).join("\n");
+  return (await Promise.all(paths.map((path) => readFile(path, "utf8")))).join(
+    "\n"
+  );
 }
 
 async function importTypeScript(source) {
@@ -57,7 +59,10 @@ test("posthog initialization uses the current sdk host contract", async () => {
   assert.match(bootstrap, /disable_session_recording:\s*true/);
   assert.match(bootstrap, /respect_dnt:\s*true/);
   assert.match(bootstrap, /before_send:/);
-  assert.match(bootstrap, /getPostHogBeforeSendSource\(surface === "not_found"\)/);
+  assert.match(
+    bootstrap,
+    /getPostHogBeforeSendSource\(surface === "not_found"\)/
+  );
   assert.match(privacy, /normalized\.endsWith\('_url'\)/);
   assert.match(privacy, /normalized\.endsWith\('_referrer'\)/);
   assert.doesNotMatch(bootstrap, /api_host:'https:\/\/app\.posthog\.com'/);
@@ -120,10 +125,15 @@ test("analytics strips search data and clears stale page context before lazy boo
       "blog_slug",
       "notes_category",
       "notes_slug",
+      "content_hub_kind",
+      "content_hub_id",
+      "content_hub_page",
       "detected_locale",
       "requested_surface"
     ];
-    const registers = window.posthog.filter(([operation]) => operation === "register");
+    const registers = window.posthog.filter(
+      ([operation]) => operation === "register"
+    );
     assert.deepEqual(registers, [
       ["register", { page_type: "blog_article", blog_slug: "stale-article" }],
       ["register", { page_type: "apps", page_section: "showroom" }]
@@ -140,7 +150,9 @@ test("analytics strips search data and clears stale page context before lazy boo
       previousRegisterIndex = registerIndex;
     }
 
-    const capture = window.posthog.find(([operation]) => operation === "capture");
+    const capture = window.posthog.find(
+      ([operation]) => operation === "capture"
+    );
     assert.equal(capture[1], "apps_view");
     assert.equal(capture[2].path, "/en/blog");
     assert.equal(capture[2].pathname, "/en/blog");
@@ -150,7 +162,8 @@ test("analytics strips search data and clears stale page context before lazy boo
     assert.equal(Object.hasOwn(capture[2], "search"), false);
     assert.doesNotMatch(JSON.stringify(window.posthog), /private-email/);
     const boundaryCapture = window.posthog.find(
-      ([operation, event]) => operation === "capture" && event === "cv_nav_click"
+      ([operation, event]) =>
+        operation === "capture" && event === "cv_nav_click"
     );
     assert.equal(
       typeof boundaryCapture[2].$set_once.last_outbound_ts,
@@ -227,7 +240,11 @@ test("posthog before_send sanitizes SDK URL properties and keeps 404 strict", as
     session_entry_url: "https://nguyenlephong.github.io/en",
     query_length: 6
   });
-  assert.equal(capture.properties.q, "secret", "sanitizing must not mutate the SDK input");
+  assert.equal(
+    capture.properties.q,
+    "secret",
+    "sanitizing must not mutate the SDK input"
+  );
 
   const notFoundBeforeSend = Function(
     `return (${privacy.getPostHogBeforeSendSource(true)})`
@@ -334,7 +351,10 @@ test("page exit reporting keeps the outgoing pathname exactly once", async (t) =
 });
 
 test("PageTracker wires the same final reporter to all three exit paths", async () => {
-  const pageTracker = await readFile("src/components/analytics/PageTracker.tsx", "utf8");
+  const pageTracker = await readFile(
+    "src/components/analytics/PageTracker.tsx",
+    "utf8"
+  );
   assert.match(pageTracker, /const pagePathname = getAnalyticsPathname\(\)/);
   assert.match(pageTracker, /pathnameOverride: pagePathname/);
   assert.match(pageTracker, /const reportTime = createOnceReporter/);
@@ -558,7 +578,11 @@ test("Studio emits one initial-location route event and ignores same-route histo
   const deduper = new StudioRouteOpenDeduper();
 
   assert.equal(deduper.claimInitialLocation(), true);
-  assert.equal(deduper.claimInitialLocation(), false, "hydration/effect replay must not emit twice");
+  assert.equal(
+    deduper.claimInitialLocation(),
+    false,
+    "hydration/effect replay must not emit twice"
+  );
   assert.equal(deduper.isHistoryTransition("welcome", "welcome"), false);
   assert.equal(deduper.isHistoryTransition("welcome", "ai-skills"), true);
 
@@ -567,6 +591,12 @@ test("Studio emits one initial-location route event and ignores same-route histo
     1,
     "the shell must contain one initial-location studio_route_open emission"
   );
-  assert.match(adminShell, /routeOpenDeduperRef\.current\.claimInitialLocation\(\)/);
-  assert.match(adminShell, /routeOpenDeduperRef\.current\.isHistoryTransition\(currentRoute, nextRoute\)/);
+  assert.match(
+    adminShell,
+    /routeOpenDeduperRef\.current\.claimInitialLocation\(\)/
+  );
+  assert.match(
+    adminShell,
+    /routeOpenDeduperRef\.current\.isHistoryTransition\(currentRoute, nextRoute\)/
+  );
 });

@@ -1,4 +1,48 @@
 {
+  "series": [
+    {
+      "id": "foundations",
+      "title": "Foundations of Software Architecture",
+      "intro": "A practical path through code boundaries, dependency direction, distributed systems, resilience, data, and the trade-offs that appear as software grows.",
+      "order": 1
+    },
+    {
+      "id": "ways-of-working",
+      "title": "Ways of Working",
+      "intro": "A field guide to how software work changes across large companies, startups, and outsourcing teams—and how ownership, process, pace, and communication change with it.",
+      "order": 2
+    },
+    {
+      "id": "ai-in-practice",
+      "title": "AI in Practice",
+      "intro": "Grounded guides to agents, repeatable workflows, useful trends, everyday ideas, and the checks that keep AI output tied to evidence.",
+      "order": 3
+    },
+    {
+      "id": "kind-engineering",
+      "title": "Kind & Effective Engineering",
+      "intro": "Practical habits for code review, pull requests, feedback, and mentoring that improve the work without losing care for the people doing it.",
+      "order": 4
+    },
+    {
+      "id": "lean-business-analysis",
+      "title": "Lean Business Analysis",
+      "intro": "A calm path from value and stakeholder questions to models, requirements, traceability, rollout, and checking whether a solution actually helped.",
+      "order": 5
+    },
+    {
+      "id": "data-eos-operating-system",
+      "title": "Data in the EOS Operating System",
+      "intro": "Four reflections on using a small, owned set of numbers to see operating health earlier—from the Scorecard and role measurables to revenue, profit, and cash.",
+      "order": 6
+    },
+    {
+      "id": "leadership-and-management",
+      "title": "Leadership and Management",
+      "intro": "Reflections on direction, craft, clear messages, ambiguity, and the difference between pushing people and helping meaningful work pull them forward.",
+      "order": 7
+    }
+  ],
   "categories": [
     {
       "slug": "architecture",
@@ -2201,7 +2245,6 @@
       "series": "ai-in-practice",
       "seriesOrder": 4,
       "locales": [
-        "en",
         "vi"
       ]
     },

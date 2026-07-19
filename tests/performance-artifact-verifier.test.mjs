@@ -147,8 +147,7 @@ function createFixture(t, overrides = {}) {
         maxInitialDocumentCssBrotliBytes:
           overrides.maxInitialDocumentCssBrotliBytes ?? 10_000,
         requiredShadowCssFiles: ["studio/studio-shadow.css"],
-        maxShadowCssBrotliBytes:
-          overrides.maxShadowCssBrotliBytes ?? 10_000,
+        maxShadowCssBrotliBytes: overrides.maxShadowCssBrotliBytes ?? 10_000,
         maxTotalInitialCssBrotliBytes:
           overrides.maxTotalInitialCssBrotliBytes ?? 20_000,
         allowedExternalStylesheetOrigins:
@@ -167,7 +166,10 @@ function createFixture(t, overrides = {}) {
     path.join(chunksDir, "studio-runtime.js"),
     "studio_route_open;data-studio-module;/studio/studio-shadow.css"
   );
-  writeFileSync(path.join(chunksDir, "document.css"), ":root{color-scheme:light dark}");
+  writeFileSync(
+    path.join(chunksDir, "document.css"),
+    ":root{color-scheme:light dark}"
+  );
   mkdirSync(path.join(outDir, "studio"), { recursive: true });
   writeFileSync(
     path.join(outDir, "studio/studio-shadow.css"),
@@ -186,7 +188,7 @@ function createFixture(t, overrides = {}) {
             ? [
                 '<link rel="preconnect" href="https://analytics.example">',
                 '<link rel="stylesheet" href="/_next/static/chunks/document.css">',
-                '<style>.studio-static-overview{display:block}</style>'
+                "<style>.studio-static-overview{display:block}</style>"
               ].join("")
             : "",
           '<script src="/_next/static/chunks/initial.js"></script>',
@@ -197,8 +199,8 @@ function createFixture(t, overrides = {}) {
         path.join(outDir, localizedPath(locale, surface, "txt")),
         [
           `route payload for ${html}`,
-          ...REQUIRED_CLIENT_MESSAGE_SCOPES[surface].map(
-            (scope) => serializedProvider(locale, scope)
+          ...REQUIRED_CLIENT_MESSAGE_SCOPES[surface].map((scope) =>
+            serializedProvider(locale, scope)
           )
         ].join("\n")
       );
@@ -235,10 +237,14 @@ test("derives future-safe client message scopes from localized route shape", () 
     ["en/blog/page/02.txt", ["site"]],
     ["en/blog/architecture/static-sites.txt", ["site"]],
     ["en/blog/architecture/static-sites/appendix.txt", ["site"]],
+    ["en/blog/series/foundations.txt", ["site"]],
+    ["vi/blog/series/foundations/page/2.txt", ["site"]],
     ["ko/notes.txt", ["site", "notes"]],
     ["ko/notes/page/4.txt", ["site", "notes"]],
     ["ko/notes/page/latest.txt", ["site"]],
     ["ko/notes/a-book-reflection.txt", ["site"]],
+    ["en/notes/topics/thoughts.txt", ["site"]],
+    ["vi/notes/topics/thoughts/page/5.txt", ["site"]],
     ["zh/apps/new-static-tool.txt", ["site"]],
     ["de/blog.txt", null],
     ["en/blog.html", null]
@@ -304,7 +310,8 @@ test("counts oversized inline CSS in the Studio document budget", async (t) => {
   const studioHtmlPath = path.join(outDir, "en/studio.html");
   const oversizedInlineCss = Array.from(
     { length: 200 },
-    (_, index) => `.inline-${index}{color:#${index.toString(16).padStart(6, "0")}}`
+    (_, index) =>
+      `.inline-${index}{color:#${index.toString(16).padStart(6, "0")}}`
   ).join("");
   writeFileSync(
     studioHtmlPath,
@@ -646,7 +653,10 @@ test("keeps total RSC capacity advisory while enforcing average and Studio contr
   assert.doesNotMatch(failures, /Total RSC text bytes/);
   assert.match(report.warnings.join("\n"), /Total RSC text bytes/);
   assert.match(failures, /Average localized RSC route bytes/);
-  assert.match(failures, /reachable JavaScript is missing required marker: data-studio-module/);
+  assert.match(
+    failures,
+    /reachable JavaScript is missing required marker: data-studio-module/
+  );
   assert.match(failures, /contains forbidden marker: data-studio-flow-runtime/);
   assert.match(failures, /contains forbidden marker: getFirestore/);
   assert.match(

@@ -60,7 +60,7 @@ The locale prefix is always present in public URLs.
 | SEO structured data     | `schema-dts` and manual JSON-LD           | Person, WebSite, Blog, BlogPosting, Article, BreadcrumbList, FAQPage, ImageGallery, ItemList.            |
 | Social images           | `next/og`, `ImageResponse`, Node scripts  | Generates and caches OpenGraph images for profile, blog, notes, apps, and gallery pages.                 |
 | Styling                 | Global CSS, CSS variables, `next/font`    | Theme system, reading backgrounds, responsive layout, typography.                                        |
-| Motion                  | `framer-motion` with `LazyMotion`         | Lightweight reveal/count/progress animations.                                                            |
+| Motion             | `MotionProvider`                                       | Uses `framer-motion` `LazyMotion` with the smaller DOM animation bundle.            |
 | Icons                   | `react-icons`                             | Navigation, cards, controls, app visuals.                                                                |
 | Graph/visual tools      | D3 packages                               | Thought graph components exist in the repo, although no active App Router thoughts route is present now. |
 | Analytics               | PostHog, Google Analytics, Google AdSense | Page views, scroll depth, read time, outbound clicks, app interactions, ads script.                      |
@@ -141,9 +141,15 @@ catalog.
 | `/{locale}/apps`                   | `src/app/[locale]/(site)/apps/page.tsx`                   | Static app showcase from `apps.data.ts`.                                                  |
 | `/{locale}/apps/english`           | `src/app/[locale]/(site)/apps/english/page.tsx`           | Private/noindex E-Slang practice app.                                                     |
 | `/{locale}/blog`                   | `src/app/[locale]/(site)/blog/page.tsx`                   | Blog index with categories, quick filters, and Blog JSON-LD.                              |
+| `/{locale}/blog/page/{page}`                 | `src/app/[locale]/(site)/blog/page/[page]/page.tsx`                 | Static Blog archive pagination; page one remains at `/blog`.                              |
 | `/{locale}/blog/{category}`        | `src/app/[locale]/(site)/blog/[category]/page.tsx`        | Category landing page.                                                                    |
 | `/{locale}/blog/{category}/{slug}` | `src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx` | Article page with schema, related posts, reading tracker, reactions, share dock, and TOC. |
+| `/{en\|vi}/blog/series/{series}`             | `src/app/[locale]/(site)/blog/series/[series]/page.tsx`             | Curated Blog series page one with static cards and collection schema.                     |
+| `/{en\|vi}/blog/series/{series}/page/{page}` | `src/app/[locale]/(site)/blog/series/[series]/page/[page]/page.tsx` | Later curated series pages; `/page/1` is not generated.                                   |
 | `/{locale}/notes`                  | `src/app/[locale]/(site)/notes/page.tsx`                  | Notes index with topic filters and CollectionPage JSON-LD.                                |
+| `/{locale}/notes/page/{page}`                | `src/app/[locale]/(site)/notes/page/[page]/page.tsx`                | Static Notes archive pagination; page one remains at `/notes`.                            |
+| `/{en\|vi}/notes/topics/{topic}`             | `src/app/[locale]/(site)/notes/topics/[topic]/page.tsx`             | Curated Notes topic page one with static cards and collection schema.                     |
+| `/{en\|vi}/notes/topics/{topic}/page/{page}` | `src/app/[locale]/(site)/notes/topics/[topic]/page/[page]/page.tsx` | Later curated topic pages; `/page/1` is not generated.                                    |
 | `/{locale}/studio`                 | `src/app/[locale]/studio/page.tsx`                 | Shadow-DOM admin workbench, route-isolated from the main profile shell.                   |
 | `/{locale}/notes/{slug}`           | `src/app/[locale]/(site)/notes/[slug]/page.tsx`           | Note article page, source-book card, topic breadcrumb, FAQ support, engagement widgets.   |
 
@@ -186,12 +192,17 @@ content/blog-data/<locale>/posts/<slug>.json
 Important behavior:
 
 - English is the canonical/default content.
-- `_index.json` holds category metadata and post metadata.
+- `_index.json` holds category metadata, the explicit ordered series catalog,
+  and post metadata. Series membership and `seriesOrder` are authored data;
+  they are not inferred from tags or dates.
 - `posts/<slug>.json` holds the full HTML article body.
 - `src/lib/blog/data.ts` overlays translated fields on top of canonical entries.
 - Missing translated fields fall back to English instead of creating blank cards
   or missing metadata.
 - Canonical blog index and post files are validated by Zod during build.
+- Seven promoted series generate static collection routes only for `en` and
+  `vi`; see [the curated content hub specification](../specs/curated-content-hubs.md)
+  for the exact catalog and snapshot.
 - The source directory is outside `public/`; readers receive generated static
   routes and `/search/blog.json`, never the raw authoring corpus.
 
@@ -218,10 +229,28 @@ Important behavior:
 - Every other locale serves the English/international content.
 - A note can define `locales`, such as `["en", "vi"]`, to decide where it is
   visible.
+- `_index.json` contains an explicit ordered `hubs` catalog. Its six promoted
+  topics generate EN/VI-only routes under `/notes/topics/{topic}`; `mua-xe`
+  remains a normal filter topic and is deliberately not a curated hub.
 - Vietnamese-only notes are included in the sitemap only as `/vi/notes/...`.
 - Bilingual notes get a full hreflang cluster.
 - The source directory is outside `public/`; readers receive generated static
   routes and `/search/notes.json`, never the raw authoring corpus.
+
+### Shared Editorial Metadata
+
+Blog and Notes entries may define `contentMode`, `seoTitle`, `seoDescription`,
+and `reviewedAt`. The SEO fields can specialize search metadata without
+changing the visible title or summary. `reviewedAt` records an accuracy review
+and emits `WebPage.lastReviewed`; it is never an edit timestamp and must not be
+used as `dateModified`. The existing `updated` field remains the source for
+`dateModified`. These fields stay optional and are added only after an
+individual editorial review.
+
+The Notes author-quality contract backfills 24 confirmed canonical authors and
+keeps `chi-phi-mua-nha-toan-bo-nhung-khoan-can-biet` as the one exact unresolved
+slug. Index and body author values must agree; the unresolved value must not be
+inferred from neighboring content.
 
 ### Trusted HTML Boundary
 
@@ -301,6 +330,20 @@ fail-closed check scans public text artifacts, including HTML, route payloads,
 manifests, and service workers, so they cannot retain a reference to the removed
 route.
 
+Curated Blog series and Notes topic pages are first-class indexable collections.
+They use self-canonicals, localized descriptions, `CollectionPage`, page-local
+`ItemList` entries with global positions, `BreadcrumbList`, and static parent,
+pagination, and article links. Their hreflang clusters contain only `en`, `vi`,
+and an English `x-default`; no other locale exports those routes. With
+`CONTENT_BUILD_DATE=2026-07-19`, the 16 Blog series URLs and 36 Notes hub URLs
+add exactly 52 entries. The valid pre-hub baseline is 895 URLs after removing
+one mislabeled English article variant, so the fixed-date sitemap contains 947
+unique URLs. The former English URL remains only as a `noindex` compatibility
+artifact that canonical/meta-refreshes to its authored Vietnamese variant and
+is absent from sitemap and hreflang output. This total is a fixed-date
+regression assertion, not a permanent sitemap floor; artifact parity remains
+the general rule as content changes.
+
 ### OpenGraph Build Flow
 
 The normal build script is:
@@ -369,7 +412,15 @@ Main event sources:
   time
 - app/gallery/blog/notes components for clicks, filters, share actions, and
   reader tools
+- curated hub catalogs and pages for hub views, catalog clicks, article clicks,
+  and page changes with stable hub ID, page, content slug, and global position
 - `WebVitalsReporter` for web vitals
+
+Curated hubs emit `content_hub_view`, `content_hub_click`,
+`content_hub_article_click`, and `content_hub_page_change`. They also preserve
+the existing `blog_card_click` or `notes_card_click` event on article selection
+and `explorer_page_change` on pagination so established dashboards do not lose
+their current taxonomy.
 
 PostHog, Google Analytics, and AdSense scripts are loaded from
 `src/app/[locale]/layout.tsx`.
@@ -553,8 +604,11 @@ payloads, are scanned with bounded concurrency for high-confidence private keys
 and provider tokens. A PEM finding requires a complete header, credible base64
 payload, and matching footer; a documentation-only header is not treated as a
 leak. Route-asset budgets sample the home, blog, notes, and Studio entry points
-across English, Vietnamese, Chinese, Japanese, Korean, and French routes.
-Individual file limits still cover every emitted HTML, JavaScript, and CSS file.
+across English, Vietnamese, Chinese, Japanese, Korean, and French routes. They
+also include the nested curated routes
+`en/blog/series/foundations/page/2.html` and
+`vi/notes/topics/thoughts/page/5.html`. Individual file limits still cover every
+emitted HTML, JavaScript, and CSS file.
 
 `verify:performance-artifact` adds compressed and route-level RSC regression
 budgets without replacing those raw ceilings. Total RSC size is an advisory
@@ -583,7 +637,9 @@ page. The locale root layout injects no global catalog. Every public route
 contains exactly one scoped site provider; only home, Gallery, Blog
 collection/category/pagination, and Notes collection/pagination add their
 surface provider. Article and other static pages keep the site provider only,
-while Studio serializes zero client message providers. Every serialized
+as do curated series and topic hubs, while Studio serializes zero client
+message providers. Hub grouping and nine-card slicing stay server-side; those
+pages do not mount Explorer or ship a full search index. Every serialized
 `messages` occurrence is counted, including null, malformed, primitive, or
 empty values, and must match a recognized non-empty scope. Each public Client
 Component boundary receives only its declared namespace allowlist. The Studio

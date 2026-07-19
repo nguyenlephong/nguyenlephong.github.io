@@ -14,6 +14,22 @@ const HOST = "127.0.0.1";
 const REQUESTED_PORT = Number(process.env.RUNTIME_BOUNDARY_VERIFY_PORT ?? "0");
 const PUBLIC_ARTICLE = "/en/blog/culture/how-to-be-a-kind-engineer";
 const SECOND_ARTICLE = "/en/blog/culture/how-to-review-code-kindly";
+const CONTENT_HUB_CASES = [
+  {
+    path: "/en/blog/series/foundations",
+    kind: "blog_series",
+    hubId: "foundations",
+    surface: "blog",
+    legacyCardEvent: "blog_card_click"
+  },
+  {
+    path: "/vi/notes/topics/thoughts",
+    kind: "notes_topic",
+    hubId: "thoughts",
+    surface: "notes",
+    legacyCardEvent: "notes_card_click"
+  }
+];
 
 const CONTENT_TYPES = {
   ".css": "text/css; charset=utf-8",
@@ -316,6 +332,181 @@ async function verifyReaderPathnameRemount(browser, origin) {
   }
 }
 
+async function verifyContentHubAnalytics(browser, origin) {
+  const context = await browser.newContext({ serviceWorkers: "block" });
+  await context.addInitScript(() => {
+    window.__contentHubAnalyticsEvents = [];
+    window.posthog = {
+      __SV: 1,
+      init() {},
+      capture(event, properties) {
+        window.__contentHubAnalyticsEvents.push({ event, properties });
+      },
+      identify() {},
+      register() {},
+      unregister() {},
+      register_once() {},
+      set_config() {}
+    };
+  });
+
+  try {
+    await installExternalRuntimeStubs(context);
+    const page = await context.newPage();
+    const results = [];
+
+    for (const scenario of CONTENT_HUB_CASES) {
+      const response = await page.goto(`${origin}${scenario.path}`, {
+        waitUntil: "domcontentloaded"
+      });
+      assert.equal(response?.status(), 200);
+      await page.waitForFunction(
+        ({ kind, hubId }) =>
+          window.__contentHubAnalyticsEvents.some(
+            ({ event, properties }) =>
+              event === "content_hub_view" &&
+              properties?.content_hub_kind === kind &&
+              properties?.content_hub_id === hubId
+          ),
+        { kind: scenario.kind, hubId: scenario.hubId }
+      );
+      await page.evaluate(() => {
+        document.addEventListener("click", (event) => event.preventDefault(), {
+          capture: true
+        });
+        window.__contentHubAnalyticsEvents = [];
+      });
+
+      const card = page.locator('a[data-content-hub-action="article"]').first();
+      const cardData = await card.evaluate((link) => ({
+        category: link.dataset.contentCategory,
+        page: Number(link.dataset.contentHubPage),
+        position: Number(link.dataset.contentPosition),
+        slug: link.dataset.contentSlug
+      }));
+      await card.locator(".blog-card__title").click();
+      await page.waitForFunction(
+        ({ first, second }) =>
+          window.__contentHubAnalyticsEvents.filter(
+            ({ event }) => event === first || event === second
+          ).length >= 2,
+        {
+          first: "content_hub_article_click",
+          second: scenario.legacyCardEvent
+        }
+      );
+      await page.waitForTimeout(50);
+      const cardEvents = await page.evaluate(
+        (eventNames) =>
+          window.__contentHubAnalyticsEvents.filter(({ event }) =>
+            eventNames.includes(event)
+          ),
+        ["content_hub_article_click", scenario.legacyCardEvent]
+      );
+      assert.deepEqual(
+        cardEvents.map(({ event }) => event).sort(),
+        ["content_hub_article_click", scenario.legacyCardEvent].sort()
+      );
+      const hubCardEvent = cardEvents.find(
+        ({ event }) => event === "content_hub_article_click"
+      );
+      assert.deepEqual(
+        {
+          kind: hubCardEvent.properties.content_hub_kind,
+          hubId: hubCardEvent.properties.content_hub_id,
+          page: hubCardEvent.properties.content_hub_page,
+          position: hubCardEvent.properties.position,
+          slug: hubCardEvent.properties.content_slug
+        },
+        {
+          kind: scenario.kind,
+          hubId: scenario.hubId,
+          page: cardData.page,
+          position: cardData.position,
+          slug: cardData.slug
+        }
+      );
+      const legacyCardEvent = cardEvents.find(
+        ({ event }) => event === scenario.legacyCardEvent
+      );
+      assert.deepEqual(
+        {
+          surface: legacyCardEvent.properties.content_surface,
+          category: legacyCardEvent.properties.content_category,
+          slug: legacyCardEvent.properties.content_slug,
+          source: legacyCardEvent.properties.source
+        },
+        {
+          surface: scenario.surface,
+          category: cardData.category,
+          slug: cardData.slug,
+          source: scenario.kind
+        }
+      );
+
+      await page.evaluate(() => {
+        window.__contentHubAnalyticsEvents = [];
+      });
+      const pagination = page.locator(
+        'a[data-content-hub-action="pagination"][data-content-hub-destination-page="2"]'
+      ).first();
+      await pagination.click();
+      await page.waitForFunction(
+        () =>
+          window.__contentHubAnalyticsEvents.filter(
+            ({ event }) =>
+              event === "content_hub_page_change" ||
+              event === "explorer_page_change"
+          ).length >= 2
+      );
+      await page.waitForTimeout(50);
+      const paginationEvents = await page.evaluate(() =>
+        window.__contentHubAnalyticsEvents.filter(
+          ({ event }) =>
+            event === "content_hub_page_change" ||
+            event === "explorer_page_change"
+        )
+      );
+      assert.deepEqual(
+        paginationEvents.map(({ event }) => event).sort(),
+        ["content_hub_page_change", "explorer_page_change"].sort()
+      );
+      for (const { properties } of paginationEvents) {
+        assert.deepEqual(
+          {
+            kind: properties.content_hub_kind,
+            hubId: properties.content_hub_id,
+            page: properties.content_hub_page,
+            destinationPage: properties.destination_page,
+            targetPage: properties.target_page,
+            surface: properties.content_surface,
+            source: properties.source
+          },
+          {
+            kind: scenario.kind,
+            hubId: scenario.hubId,
+            page: 1,
+            destinationPage: 2,
+            targetPage: 2,
+            surface: scenario.surface,
+            source: scenario.kind
+          }
+        );
+      }
+
+      results.push({
+        path: scenario.path,
+        cardEvents: cardEvents.length,
+        paginationEvents: paginationEvents.length
+      });
+    }
+
+    return results;
+  } finally {
+    await context.close();
+  }
+}
+
 async function main() {
   await fs.access(OUT_DIR);
   const { chromium } = await import("playwright");
@@ -324,8 +515,13 @@ async function main() {
   try {
     const publicToStudio = await verifyPublicToStudioBoundary(browser, origin);
     const readerRemount = await verifyReaderPathnameRemount(browser, origin);
+    const contentHubAnalytics = await verifyContentHubAnalytics(browser, origin);
     console.log(
-      JSON.stringify({ status: "ok", publicToStudio, readerRemount }, null, 2)
+      JSON.stringify(
+        { status: "ok", publicToStudio, readerRemount, contentHubAnalytics },
+        null,
+        2
+      )
     );
   } finally {
     await browser.close();

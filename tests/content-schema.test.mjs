@@ -69,6 +69,9 @@ const { loadNote } = await import(
 const { getPostContentLocales, listPosts, listBlogArchiveLocales } = await import(
   new URL("../src/lib/blog/data.ts", import.meta.url)
 );
+const { LEGACY_BLOG_LOCALE_FALLBACKS } = await import(
+  new URL("../src/lib/blog/legacy-locale-fallbacks.ts", import.meta.url)
+);
 const { getNoteContentLocales, listNotesArchiveLocales } = await import(
   new URL("../src/lib/notes/data.ts", import.meta.url)
 );
@@ -472,17 +475,25 @@ test("notes expose one canonical slug set across English and Vietnamese", () => 
   assert.match(blogPostPage, /inLanguage:\s*canonicalLocale/);
   assert.match(blogPostPage, /LocalizedArticleFallback/);
   assert.match(blogPostPage, /hasLocalizedContent/);
-  assert.doesNotMatch(blogPostPage, /robots:\s*\{/);
+  assert.match(blogPostPage, /getLegacyBlogLocaleFallback/);
+  assert.match(
+    blogPostPage,
+    /legacyFallback[\s\S]*robots:\s*\{[\s\S]*index:\s*false/
+  );
 });
 
 test("declared article locales match authored blog and notes files", () => {
   const blogIndex = readJson("../content/blog-data/_index.json");
   const notesIndex = readJson("../content/notes-data/_index.json");
   const optionalBlogLocales = ["vi", "zh", "ja", "ko", "fr"];
+  const legacyFallbackBySlug = new Map(
+    LEGACY_BLOG_LOCALE_FALLBACKS.map((fallback) => [fallback.slug, fallback])
+  );
 
   for (const post of blogIndex.posts) {
+    const legacyFallback = legacyFallbackBySlug.get(post.slug);
     const expected = [
-      "en",
+      ...(legacyFallback ? [] : ["en"]),
       ...optionalBlogLocales.filter((locale) =>
         existsSync(
           new URL(
@@ -497,6 +508,11 @@ test("declared article locales match authored blog and notes files", () => {
       getPostContentLocales(post.slug),
       isContentPublished(post) ? expected : []
     );
+
+    if (legacyFallback) {
+      assert.equal(post.locales.includes(legacyFallback.locale), false);
+      assert.equal(post.locales.includes(legacyFallback.targetLocale), true);
+    }
   }
 
   for (const note of notesIndex.posts) {

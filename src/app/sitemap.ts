@@ -3,15 +3,19 @@ import { SITE_URL } from "@/app/seo.config";
 import { routing } from "@/i18n/routing";
 import {
   getPostContentLocales,
+  getPostsBySeries,
   getPostsByCategory,
   listBlogArchiveLocales,
   listCategoryPostPairs,
   listCategorySlugs,
+  listBlogSeriesHubPages,
   listPosts,
   loadPost
 } from "@/lib/blog/data";
 import {
   getNoteContentLocales,
+  getNotesByHub,
+  listNoteHubPages,
   listNotes,
   listNotesArchiveLocales,
   loadNote,
@@ -19,6 +23,7 @@ import {
 } from "@/lib/notes/data";
 import { collectionPagePath, paginate } from "@/lib/content/pagination";
 import { latestNonFutureDate } from "@/lib/seo/dates";
+import { preferredContentLocale } from "@/lib/seo/locale";
 
 export const dynamic = "force-static";
 
@@ -36,7 +41,9 @@ const PATHS: Array<{
     priority: 0.9,
     freq: "weekly",
     lastModifiedForLocale: (locale) =>
-      latestNonFutureDate(listPosts(locale).map((post) => post.updated ?? post.date))
+      latestNonFutureDate(
+        listPosts(locale).map((post) => post.updated ?? post.date)
+      )
   },
   { path: "/studio", priority: 0.85, freq: "weekly" },
   { path: "/about", priority: 0.8, freq: "monthly" },
@@ -47,7 +54,9 @@ const PATHS: Array<{
     freq: "weekly",
     locales: NOTE_CONTENT_LOCALES,
     lastModifiedForLocale: (locale) =>
-      latestNonFutureDate(listNotes(locale).map((note) => note.updated ?? note.date))
+      latestNonFutureDate(
+        listNotes(locale).map((note) => note.updated ?? note.date)
+      )
   }
 ];
 
@@ -65,7 +74,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const locale of locales) {
       languages[locale] = `${SITE_URL}/${locale}${path}`;
     }
-    languages["x-default"] = `${SITE_URL}/${routing.defaultLocale}${path}`;
+    languages["x-default"] = `${SITE_URL}/${preferredContentLocale(locales)}${path}`;
 
     for (const locale of locales) {
       const lastModified = lastModifiedForLocale?.(locale);
@@ -79,7 +88,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   };
 
-  for (const { path, priority, freq, locales, lastModifiedForLocale } of PATHS) {
+  for (const {
+    path,
+    priority,
+    freq,
+    locales,
+    lastModifiedForLocale
+  } of PATHS) {
     pushPath(path, priority, freq, locales, lastModifiedForLocale);
   }
 
@@ -125,16 +140,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
     );
   }
 
-  for (const category of listCategorySlugs()) {
+  for (const { series, page, locales } of listBlogSeriesHubPages()) {
     pushPath(
-      `/blog/${category}`,
+      collectionPagePath(`/blog/series/${series}`, page),
       0.7,
       "weekly",
-      undefined,
+      locales,
       (locale) =>
         latestNonFutureDate(
-          getPostsByCategory(category, locale).map((post) => post.updated ?? post.date)
+          paginate(getPostsBySeries(series, locale), page)?.items.map(
+            (post) => post.updated ?? post.date
+          ) ?? []
         )
+    );
+  }
+
+  for (const { topic, page, locales } of listNoteHubPages()) {
+    pushPath(
+      collectionPagePath(`/notes/topics/${topic}`, page),
+      0.65,
+      "weekly",
+      locales,
+      (locale) =>
+        latestNonFutureDate(
+          paginate(getNotesByHub(topic, locale), page)?.items.map(
+            (note) => note.updated ?? note.date
+          ) ?? []
+        )
+    );
+  }
+
+  for (const category of listCategorySlugs()) {
+    pushPath(`/blog/${category}`, 0.7, "weekly", undefined, (locale) =>
+      latestNonFutureDate(
+        getPostsByCategory(category, locale).map(
+          (post) => post.updated ?? post.date
+        )
+      )
     );
   }
 

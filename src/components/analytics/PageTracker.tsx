@@ -17,6 +17,8 @@ export type PageType =
   | 'blog'
   | 'blog_category'
   | 'notes'
+  | 'blog_series'
+  | 'notes_topic'
   | 'offline'
   | 'not_found'
   | 'home_alt'
@@ -40,6 +42,7 @@ interface PageTrackerProps {
     | 'blog_view'
     | 'blog_category_view'
     | 'notes_view'
+    | 'content_hub_view'
     | 'offline_view'
     | 'not_found_view'
 }

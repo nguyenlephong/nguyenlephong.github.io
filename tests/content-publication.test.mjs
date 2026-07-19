@@ -182,6 +182,10 @@ test("static OG listing uses the same unpublished corpus boundary", () => {
       .filter((post) => !isContentPublished(post))
       .map((post) => post.slug)
   );
+  const publishedSlugs = source.posts
+    .filter((post) => isContentPublished(post))
+    .map((post) => post.slug)
+    .sort();
   const output = execFileSync(
     process.execPath,
     ["scripts/generate-static-og.mjs", "--surface", "blog", "--list"],
@@ -199,7 +203,7 @@ test("static OG listing uses the same unpublished corpus boundary", () => {
       .map((file) => path.basename(file, path.extname(file)))
   );
 
-  assert.equal(listedSlugs.size, listPosts("en").length);
+  assert.deepEqual([...listedSlugs].sort(), publishedSlugs);
   for (const slug of unpublishedSlugs) {
     assert.equal(listedSlugs.has(slug), false, `${slug} OG source`);
   }

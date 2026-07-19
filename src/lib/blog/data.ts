@@ -9,12 +9,21 @@ import {
 } from '@/lib/content/io'
 import {
   assertExactSlugSet,
+  assertExactIdentifierSet,
   assertIndexBodyMetadataParity,
   assertKnownKeys,
   assertProvidedMetadataParity,
   listJsonSlugs,
 } from '@/lib/content/catalog'
 import { pageCount } from '@/lib/content/pagination'
+import {
+  contentHubPageLocales,
+  listContentHubRoutes,
+} from '@/lib/content/hub-page'
+import {
+  BLOG_SERIES_IDS,
+  CONTENT_HUB_LOCALES,
+} from '@/lib/content/route-contract'
 import { getContentVersionTracker } from '@/lib/content/freshness'
 import { isContentPublished } from '@/lib/content/publication'
 import { rewriteContentAssetValues } from '@/lib/assets/icdn'
@@ -29,8 +38,10 @@ import type {
   BlogIndexFile,
   BlogPost,
   BlogPostMeta,
+  BlogSeriesMeta,
 } from './types'
 import { compareSeriesPosts } from './series'
+import { LEGACY_BLOG_LOCALE_FALLBACKS } from './legacy-locale-fallbacks'
 
 const DATA_DIR = path.join(process.cwd(), 'content', 'blog-data')
 const contentVersionTracker =
@@ -49,6 +60,10 @@ const BLOG_METADATA_FIELDS = [
   'readingMinutes',
   'tags',
   'author',
+  'contentMode',
+  'seoTitle',
+  'seoDescription',
+  'reviewedAt',
 ] as const
 const BLOG_CANONICAL_OVERRIDE_FIELDS = [
   'slug',
@@ -57,6 +72,8 @@ const BLOG_CANONICAL_OVERRIDE_FIELDS = [
   'publishAt',
   'status',
   'author',
+  'contentMode',
+  'reviewedAt',
   'featured',
   'series',
   'seriesOrder',
@@ -123,6 +140,13 @@ function buildBaseCatalog(): BlogCatalog {
     blogIndexSchema,
     'canonical blog index',
   )
+  if (rawIndex.posts.some((post) => post.series)) {
+    assertExactIdentifierSet(
+      'Canonical Blog series catalog',
+      BLOG_SERIES_IDS,
+      rawIndex.series.map((entry) => entry.id),
+    )
+  }
   const expectedSlugs = rawIndex.posts.map((post) => post.slug)
   assertExactSlugSet(
     'Canonical blog',
@@ -190,6 +214,31 @@ export function loadIndex(locale?: string): BlogIndexFile {
     }
 
     assertKnownKeys(
+      `Localized blog series (${locale})`,
+      catalog.index.series.map((entry) => entry.id),
+      override.series?.map((entry) => entry.id) ?? [],
+    )
+    if (locale === 'vi' && catalog.index.series.length > 0) {
+      assertExactIdentifierSet(
+        'Vietnamese Blog series catalog',
+        catalog.index.series.map((entry) => entry.id),
+        override.series?.map((entry) => entry.id) ?? [],
+      )
+    }
+    for (const localizedSeries of override.series ?? []) {
+      const canonicalSeries = catalog.index.series.find(
+        (entry) => entry.id === localizedSeries.id,
+      )
+      if (!canonicalSeries) continue
+      assertProvidedMetadataParity(
+        `Localized Blog series (${locale})`,
+        canonicalSeries as unknown as Record<string, unknown>,
+        localizedSeries as unknown as Record<string, unknown>,
+        overridePath,
+        ['id', 'order'],
+      )
+    }
+    assertKnownKeys(
       `Localized blog categories (${locale})`,
       catalog.index.categories.map((category) => category.slug),
       override.categories?.map((category) => category.slug) ?? [],
@@ -212,6 +261,11 @@ export function loadIndex(locale?: string): BlogIndexFile {
     }
 
     const index = blogIndexSchema.parse(rewriteContentAssetValues({
+      series: overlayByKey(
+        catalog.index.series,
+        override.series,
+        (entry) => entry.id,
+      ),
       categories: overlayByKey(
         catalog.index.categories,
         override.categories,
@@ -259,6 +313,83 @@ export function loadIndex(locale?: string): BlogIndexFile {
 
 export function listCategories(locale?: string): BlogCategoryMeta[] {
   return [...loadIndex(locale).categories].sort((a, b) => a.order - b.order)
+}
+
+export function listBlogSeries(locale?: string): BlogSeriesMeta[] {
+  return [...loadIndex(locale).series].sort(
+    (left, right) => left.order - right.order,
+  )
+}
+
+export function getBlogSeries(
+  id: string,
+  locale?: string,
+): BlogSeriesMeta | null {
+  return loadIndex(locale).series.find((entry) => entry.id === id) ?? null
+}
+
+export function getPostsBySeries(
+  seriesId: string,
+  locale?: string,
+): BlogPostMeta[] {
+  return listPosts(locale)
+    .filter((post) => post.series === seriesId)
+    .sort(compareSeriesPosts)
+}
+
+export function listBlogSeriesHubPages(): Array<{
+  series: string
+  page: number
+  locales: Array<(typeof CONTENT_HUB_LOCALES)[number]>
+}> {
+  return listContentHubRoutes({
+    locales: CONTENT_HUB_LOCALES,
+    listHubIds: (locale) =>
+      listBlogSeries(locale).map((entry) => entry.id),
+    itemCount: (seriesId, locale) =>
+      getPostsBySeries(seriesId, locale).length,
+  }).map(({ hubId, page, locales }) => ({
+    series: hubId,
+    page,
+    locales,
+  }))
+}
+
+export function listBlogSeriesPageLocales(
+  seriesId: string,
+  page: number,
+): Array<(typeof CONTENT_HUB_LOCALES)[number]> {
+  const routes = listBlogSeriesHubPages().map(
+    ({ series, page: routePage, locales }) => ({
+      hubId: series,
+      page: routePage,
+      locales,
+    }),
+  )
+  return contentHubPageLocales(routes, seriesId, page)
+}
+
+export function listBlogSeriesParams(): Array<{
+  locale: (typeof CONTENT_HUB_LOCALES)[number]
+  series: string
+}> {
+  return listBlogSeriesHubPages()
+    .filter(({ page }) => page === 1)
+    .flatMap(({ series, locales }) =>
+      locales.map((locale) => ({ locale, series })),
+    )
+}
+
+export function listBlogSeriesPageParams(): Array<{
+  locale: (typeof CONTENT_HUB_LOCALES)[number]
+  series: string
+  page: string
+}> {
+  return listBlogSeriesHubPages()
+    .filter(({ page }) => page > 1)
+    .flatMap(({ series, page, locales }) =>
+      locales.map((locale) => ({ locale, series, page: String(page) })),
+    )
 }
 
 export function getCategory(
@@ -388,6 +519,8 @@ function loadPostBody(
     updated: override.updated ?? base.updated,
     html: override.html ?? base.html,
     tags: override.tags ?? base.tags,
+    seoTitle: override.seoTitle ?? base.seoTitle,
+    seoDescription: override.seoDescription ?? base.seoDescription,
     book: override.book ?? base.book,
     faqs: override.faqs ?? base.faqs,
   }
@@ -415,6 +548,59 @@ export function listBlogPostParams(): Array<{
         slug: post.slug,
       })),
     )
+}
+
+/** Authored routes plus the exact non-indexable compatibility fallback set. */
+export function listBlogArticleRouteParams(): Array<{
+  locale: Locale
+  category: string
+  slug: string
+}> {
+  const authored = listBlogPostParams()
+  const authoredKeys = new Set(
+    authored.map(
+      ({ locale, category, slug }) => `${locale}/${category}/${slug}`,
+    ),
+  )
+  const fallbackKeys = new Set<string>()
+
+  for (const fallback of LEGACY_BLOG_LOCALE_FALLBACKS) {
+    const key = `${fallback.locale}/${fallback.category}/${fallback.slug}`
+    if (fallbackKeys.has(key) || authoredKeys.has(key)) {
+      throw new Error(
+        `Legacy Blog locale fallback duplicates a public route: ${key}`,
+      )
+    }
+    fallbackKeys.add(key)
+
+    const post = baseCatalog().postsBySlug.get(fallback.slug)
+    if (
+      !post ||
+      !isContentPublished(post) ||
+      post.category !== fallback.category
+    ) {
+      throw new Error(
+        `Legacy Blog locale fallback references an unavailable article: ${key}`,
+      )
+    }
+    if (
+      post.locales.includes(fallback.locale) ||
+      !post.locales.includes(fallback.targetLocale)
+    ) {
+      throw new Error(
+        `Legacy Blog locale fallback has invalid authored locales: ${key} -> ${fallback.targetLocale}`,
+      )
+    }
+  }
+
+  return [
+    ...authored,
+    ...LEGACY_BLOG_LOCALE_FALLBACKS.map(({ locale, category, slug }) => ({
+      locale,
+      category,
+      slug,
+    })),
+  ]
 }
 
 /** Canonical category slugs — drives static-param generation. */

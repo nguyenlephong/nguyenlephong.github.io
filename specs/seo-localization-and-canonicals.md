@@ -20,12 +20,14 @@ and [Article structured data](https://developers.google.com/search/docs/appearan
 - A real localized article is self-canonical and participates in one complete,
   reciprocal `hreflang` cluster. `x-default` points to the default content
   locale, or the first declared content locale when the site default is absent.
-- Locale-prefixed URLs remain stable even before a translation exists. Those
-  URLs render a small localized availability notice and links to real variants;
-  they do not render or serialize the fallback article body.
-- A fallback URL points `rel=canonical` to the preferred real variant. It is
-  omitted from the sitemap and `hreflang` cluster. It is not marked `noindex`;
-  the canonical is the consolidation signal.
+- Production static params normally omit locale URLs without an authored body.
+  A narrowly allowlisted compatibility URL may render a small localized
+  availability notice and links to real variants; it never renders or
+  serializes the fallback article body.
+- An ordinary fallback URL points `rel=canonical` to the preferred real
+  variant and is omitted from the sitemap and `hreflang` cluster. An explicit
+  legacy locale redirect adds `noindex` and meta-refreshes to that same
+  canonical; the verifier requires both signals to agree.
 - Article JSON-LD is emitted only beside the visible full article. It describes
   that localized body and only includes author, modification date, image, and
   other optional properties when the source data provides them.
@@ -37,7 +39,7 @@ and [Article structured data](https://developers.google.com/search/docs/appearan
 - This change does not redesign list/explorer pages or their pagination.
 - This change does not create machine translations or infer missing editorial
   metadata.
-- This change does not change article slugs or remove existing locale routes.
+- This change does not create a translated article without an authored body.
 
 ## Acceptance criteria
 
@@ -46,9 +48,11 @@ and [Article structured data](https://developers.google.com/search/docs/appearan
 - **AC-SEO-LOC-002:** Every real localized article has a self-canonical URL and
   the same reciprocal alternates for all and only its real variants, including
   a valid `x-default`.
-- **AC-SEO-LOC-003:** An untranslated locale route remains available but renders
-  only a localized availability notice and links to real variants. It has no
-  Article JSON-LD, no fallback article body, and no `noindex` directive.
+- **AC-SEO-LOC-003:** A generated untranslated locale route renders only a
+  localized availability notice and links to real variants. It has no Article
+  JSON-LD or fallback article body. An explicitly marked legacy redirect must
+  be `noindex` and meta-refresh to its canonical; other fallbacks do not add
+  `noindex`.
 - **AC-SEO-LOC-004:** Fallback article URLs are absent from sitemap locations and
   language alternates. Canonical article URLs have source-derived `lastmod`.
 - **AC-SEO-LOC-005:** Article JSON-LD matches the visible variant's canonical

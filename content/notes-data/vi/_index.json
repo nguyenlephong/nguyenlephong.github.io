@@ -1,4 +1,42 @@
 {
+  "hubs": [
+    {
+      "topic": "mua-nha",
+      "title": "Mua nhà",
+      "intro": "Những ghi chép thực tế về mua nhà: tài chính, pháp lý, vị trí, quy trình, chất lượng nhà và các quyết định cần nhìn bằng sự bình tĩnh.",
+      "order": 1
+    },
+    {
+      "topic": "tiet-kiem",
+      "title": "Tài chính & Tiết kiệm",
+      "intro": "Cách quản lý dòng tiền cá nhân, giữ tiền trong túi và xây thói quen tài chính lành mạnh—viết cho người đi làm bình thường.",
+      "order": 2
+    },
+    {
+      "topic": "su-nghiep",
+      "title": "Sự nghiệp & phát triển",
+      "intro": "Làm chủ con đường sự nghiệp của chính mình—xây kỹ năng, nâng giá trị thị trường, đàm phán thu nhập và phát triển bản thân bền vững cho người đi làm.",
+      "order": 3
+    },
+    {
+      "topic": "sach",
+      "title": "Sách & ghi chú đọc",
+      "intro": "Những ghi chú và suy ngẫm từ sách, được chuyển thành ý tưởng thực tế cho công việc, học tập và phát triển bản thân.",
+      "order": 4
+    },
+    {
+      "topic": "goc-nhin",
+      "title": "Góc nhìn & Chiêm nghiệm",
+      "intro": "Những chiêm nghiệm cá nhân về cuộc sống, công việc và những câu hỏi không có lời đáp gọn gàng.",
+      "order": 5
+    },
+    {
+      "topic": "thoughts",
+      "title": "Vườn suy nghĩ",
+      "intro": "Những ghi chú ngắn còn đang lớn—quan sát nhỏ và ý nghĩ chưa tròn từ công việc và đời sống, được ghi lại trước khi chúng kịp trôi đi. Mỗi lần quay lại, chúng lại lớn thêm một chút.",
+      "order": 6
+    }
+  ],
   "topics": [
     {
       "id": "mua-nha",

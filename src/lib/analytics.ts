@@ -79,6 +79,11 @@ export type AnalyticsEvent =
   | 'explorer_page_change'
   | 'explorer_clear'
   | 'explorer_palette_toggle'
+  // Curated static content hubs
+  | 'content_hub_view'
+  | 'content_hub_click'
+  | 'content_hub_article_click'
+  | 'content_hub_page_change'
   // Blog articles
   | 'blog_article_view'
   | 'blog_scroll_depth'
@@ -177,6 +182,9 @@ const PAGE_CONTEXT_KEYS = [
   'blog_slug',
   'notes_category',
   'notes_slug',
+  'content_hub_kind',
+  'content_hub_id',
+  'content_hub_page',
   'detected_locale',
   'requested_surface',
 ] as const

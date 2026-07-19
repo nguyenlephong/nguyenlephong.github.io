@@ -27,6 +27,11 @@ route-oriented measurements.
 - Enforce an exact, unique 24-route matrix covering six locales and home,
   Blog, Notes, and Studio. The average payload and each route's surface ceiling
   are hard gates, catching both broad regressions and a single localized spike.
+- Extend the raw route-asset samples with the most nested fixed-date curated
+  hubs: `en/blog/series/foundations/page/2.html` and
+  `vi/notes/topics/thoughts/page/5.html`. The 52 new EN/VI routes increase
+  capacity usage but do not raise a file, byte, route-asset, JavaScript, CSS, or
+  RSC ceiling.
 - Keep the locale root server-only for translations. Client Components receive
   messages through fail-closed, surface-scoped providers: shared site chrome,
   home, Blog, Notes, Gallery, and the currently dormant Thoughts surface each
@@ -50,8 +55,10 @@ route-oriented measurements.
   home scopes. Gallery requires site and Gallery. Blog collection, category,
   and positive-integer pagination routes require site and Blog; Notes collection
   and positive-integer pagination routes require site and Notes. Articles and
-  other public static pages require site only, while every Studio route requires
-  zero providers.
+  other public static pages require site only. Curated Blog series and Notes
+  topic hubs are intentionally in this site-only class: their grouping and
+  nine-card slice are server-rendered and they do not mount Explorer. Every
+  Studio route requires zero providers.
 - Count every serialized `messages` occurrence before classification. Null,
   primitive, array, malformed, and empty values are providers but cannot match a
   scope. Every valid non-empty message structure must match exactly one declared
@@ -155,16 +162,24 @@ ceiling after its new baseline is verified.
   each expose a distinct reachable locale sentinel through an isolated loader
   group; the selected English route path contains no sentinel from another
   locale.
+- **AC-SPB-021:** Raw route-asset verification includes the nested Blog series
+  page two and Notes `thoughts` page five artifacts without increasing an
+  existing ceiling for the 52-route expansion.
+- **AC-SPB-022:** Curated series and topic routes serialize exactly the shared
+  `site` message scope, with no Blog/Notes surface provider or full Explorer
+  search payload.
 
 ## Verification
 
 - Run mocked artifact fixtures for compressed growth, advisory total RSC
   growth, average and single-route RSC growth, duplicate or missing samples,
   aliased initial routes, all-route scoped client message drift, empty structural
-  branches, null providers, article and pagination route derivation, provider
-  placement and client-import escapes, empty collection placement, transitive
-  Studio imports, Studio markers, missing artifacts, and third-party origin
-  drift.
+  branches, null providers, article, archive pagination, and curated hub route
+  derivation, provider placement and client-import escapes, empty collection
+  placement, transitive Studio imports, Studio markers, missing artifacts, and
+  third-party origin drift.
+- Verify route assets for `en/blog/series/foundations/page/2.html` and
+  `vi/notes/topics/thoughts/page/5.html` in the fixed-date production export.
 - Run the focused Studio artifact fixtures for direct/default budget overflow,
   complete `Promise.all` sibling accounting, reachable async accounting,
   all-route preload rejection, eager feature markers, and six-locale isolation.

@@ -6,11 +6,34 @@ import {
 
 const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
-export const contentSlugSchema = z.string().regex(SLUG_PATTERN, 'Use a lowercase kebab-case content identifier')
+export const contentSlugSchema = z
+  .string()
+  .regex(SLUG_PATTERN, 'Use a lowercase kebab-case content identifier')
 
-export const contentDateSchema = z.string().refine(isRealContentDate, 'Use a real ISO date in YYYY-MM-DD format')
+export const contentDateSchema = z
+  .string()
+  .refine(isRealContentDate, 'Use a real ISO date in YYYY-MM-DD format')
 
-export const contentPublicationStatusSchema = z.enum(CONTENT_PUBLICATION_STATUSES)
+export const contentPublicationStatusSchema = z.enum(
+  CONTENT_PUBLICATION_STATUSES,
+)
+
+export const contentModeSchema = z.enum([
+  'technical',
+  'reflective',
+  'book-reflection',
+  'decision-guide',
+])
+
+export const seoTitleSchema = z
+  .string()
+  .trim()
+  .min(1, 'SEO title must not be empty')
+
+export const seoDescriptionSchema = z
+  .string()
+  .trim()
+  .min(1, 'SEO description must not be empty')
 
 export const readingMinutesSchema = z
   .number()

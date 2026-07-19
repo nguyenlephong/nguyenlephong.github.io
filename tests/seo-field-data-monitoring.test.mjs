@@ -184,7 +184,7 @@ test("Search Console requests stay aggregate and reports discard sensitive dimen
   assert.equal(report.analytics.comparison.impressionDropPercent, 35.7);
   assert.equal(report.sitemap.errors, null);
   assert.equal(report.sitemap.warnings, 1);
-  assert.equal(report.inspections.length, 4);
+  assert.equal(report.inspections.length, 6);
   assert.equal(
     report.inspections.every((item) => item.canonicalMatches),
     true

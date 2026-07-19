@@ -7,6 +7,13 @@ content. A locale switch from an article keeps the article path when that
 translation exists; otherwise it opens the translated collection page instead
 of constructing a non-canonical article URL.
 
+One evidence-backed compatibility exception preserves the former English URL
+for `ai-ideas-bloom-inside-everyday-work`, whose source and history show only a
+Vietnamese article. The route is not part of the authored static-param set. It
+is emitted through a separate exact allowlist as a `noindex` availability page
+that canonical/meta-refreshes to the Vietnamese article, without serializing
+the body or Article structured data.
+
 The postbuild step also removes `out/og-cache`, which is an input cache for OG
 generation rather than a deployable asset. The unused `public/assets/full-bg.svg`
 asset is removed from the source and offline manifest policy.
@@ -64,6 +71,9 @@ unowned and must remain untouched.
 14. Blog and Notes slugs are globally unique across published, scheduled, and
     draft canonical entries. Localized indexes may only reuse slugs from their
     own canonical surface, and the build fails before Next.js starts otherwise.
+15. A compatibility locale route requires an exact allowlist entry, a published
+    authored target, `noindex`, canonical and meta-refresh agreement, no Article
+    JSON-LD, and exclusion from sitemap and hreflang output.
 
 ## OG prune operation
 

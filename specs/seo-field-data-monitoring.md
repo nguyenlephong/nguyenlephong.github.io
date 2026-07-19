@@ -32,8 +32,25 @@ path. It is never called by the public monitoring workflow.
 
 ## Configuration and access
 
-The public targets live in `config/seo-field-monitoring.json`. Two repository
-secrets are required for live observations:
+The public targets live in `config/seo-field-monitoring.json`.
+
+The fixed URL Inspection set includes two curated-hub canaries at the deepest
+published pagination points in the 2026-07-19 snapshot:
+
+- `blog-series-page`:
+  `https://nguyenlephong.github.io/en/blog/series/foundations/page/2`
+- `notes-topic-page`:
+  `https://nguyenlephong.github.io/vi/notes/topics/thoughts/page/5`
+
+These canaries verify fetch, indexing, robots, and canonical agreement for the
+new route family without logging query data. They are deliberately not in the
+page-level CrUX target list yet. New collection pages often have no eligible
+field sample; adding them before traffic exists would produce repeated
+`unknown` observations without improving the release decision. Origin and
+existing representative-page CrUX monitoring remain active, and the two hub
+pages can be promoted to page targets when real traffic is sufficient.
+
+Two repository secrets are required for live observations:
 
 1. `GOOGLE_SEARCH_CONSOLE_SERVICE_ACCOUNT_JSON`: a Google service-account JSON
    key. Enable the Search Console API and add the service account email as a
@@ -146,3 +163,6 @@ export.
 8. The local opportunity request pins `page`/`query`, `auto` aggregation, final
    data, and the official 25,000-row ceiling, while GitHub Actions execution is
    rejected before credentials are read.
+9. URL Inspection includes the fixed `blog-series-page` and `notes-topic-page`
+   canaries with their exact self-canonical URLs; neither is reported as a
+   page-level CrUX target until traffic supports a useful field sample.

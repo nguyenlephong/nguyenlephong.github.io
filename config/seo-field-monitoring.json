@@ -23,6 +23,14 @@
       {
         "label": "article",
         "url": "https://nguyenlephong.github.io/en/blog/architecture/ports-and-adapters"
+      },
+      {
+        "label": "blog-series-page",
+        "url": "https://nguyenlephong.github.io/en/blog/series/foundations/page/2"
+      },
+      {
+        "label": "notes-topic-page",
+        "url": "https://nguyenlephong.github.io/vi/notes/topics/thoughts/page/5"
       }
     ]
   },

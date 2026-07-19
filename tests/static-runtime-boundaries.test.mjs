@@ -16,17 +16,21 @@ const expectedRoutes = [
   "blog/opengraph-image.tsx",
   "blog/page.tsx",
   "blog/page/[page]/page.tsx",
+  "blog/series/[series]/page.tsx",
+  "blog/series/[series]/page/[page]/page.tsx",
   "gallery/opengraph-image.tsx",
   "gallery/page.tsx",
   "notes/[slug]/page.tsx",
   "notes/page.tsx",
   "notes/page/[page]/page.tsx",
+  "notes/topics/[topic]/page.tsx",
+  "notes/topics/[topic]/page/[page]/page.tsx",
   "offline/page.tsx",
   "opengraph-image.tsx",
   "page.tsx",
   "search/blog.json/route.ts",
   "search/notes.json/route.ts",
-  "studio/page.tsx",
+  "studio/page.tsx"
 ].sort();
 
 function walk(directory) {
@@ -92,7 +96,7 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
     "RouteProgressBar",
     "OfflineNavigationCapture",
     "OfflineStatusBanner",
-    "ThemeSync",
+    "ThemeSync"
   ];
 
   for (const component of sharedPublicRuntime) {
@@ -102,7 +106,10 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
   }
 
   assert.doesNotMatch(siteLayout, /\bMotionProvider\b|\bBlogReaderTools\b/);
-  assert.match(homePage, /<MotionProvider>[\s\S]*<main>[\s\S]*<\/MotionProvider>/);
+  assert.match(
+    homePage,
+    /<MotionProvider>[\s\S]*<main>[\s\S]*<\/MotionProvider>/
+  );
   assert.match(
     galleryPage,
     /<MotionProvider>[\s\S]*<main className="gallery-showcase">[\s\S]*<\/MotionProvider>/
@@ -110,7 +117,10 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
   assert.match(blogArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
   assert.match(notesArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
   assert.doesNotMatch(homePage, /\bBlogReaderTools\b|\bArticleReaderTools\b/);
-  assert.doesNotMatch(galleryPage, /\bBlogReaderTools\b|\bArticleReaderTools\b/);
+  assert.doesNotMatch(
+    galleryPage,
+    /\bBlogReaderTools\b|\bArticleReaderTools\b/
+  );
 
   assert.match(rootLayout, /<WebVitalsReporter locale=\{locale\} \/>/);
   assert.doesNotMatch(siteLayout, /\bWebVitalsReporter\b/);
@@ -128,7 +138,10 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
     scopedIntlProvider,
     /<NextIntlClientProvider\s+messages=\{toSerializableClientMessages\(selectedMessages\)\}\s*>/
   );
-  assert.doesNotMatch(studioPage, /\bScopedIntlProvider\b|\bNextIntlClientProvider\b/);
+  assert.doesNotMatch(
+    studioPage,
+    /\bScopedIntlProvider\b|\bNextIntlClientProvider\b/
+  );
   assert.doesNotMatch(studioPage, /\.app-nav|\.app-footer|\.blog-reader-tools/);
 });
 
@@ -150,7 +163,10 @@ test("document CSS, public CSS, and third-party resources follow route ownership
     assert.match(documentCss, new RegExp(token));
   }
   assert.match(documentCss, /\[data-theme='dark'\]/);
-  assert.doesNotMatch(documentCss, /\.app-nav|\.blog-reader-tools|\.route-progress/);
+  assert.doesNotMatch(
+    documentCss,
+    /\.app-nav|\.blog-reader-tools|\.route-progress/
+  );
   assert.match(publicCss, /\.app-nav/);
   assert.match(publicCss, /\.blog-reader-tools/);
   assert.match(publicCss, /\.route-progress/);
