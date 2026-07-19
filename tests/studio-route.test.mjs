@@ -154,6 +154,12 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
       "src/app/[locale]/studio/studio-shell-copy.ja.ts",
       "src/app/[locale]/studio/studio-shell-copy.ko.ts",
       "src/app/[locale]/studio/studio-shell-copy.fr.ts",
+      "src/app/[locale]/studio/studio-shell-copy.en.json",
+      "src/app/[locale]/studio/studio-shell-copy.vi.json",
+      "src/app/[locale]/studio/studio-shell-copy.zh.json",
+      "src/app/[locale]/studio/studio-shell-copy.ja.json",
+      "src/app/[locale]/studio/studio-shell-copy.ko.json",
+      "src/app/[locale]/studio/studio-shell-copy.fr.json",
       "src/app/[locale]/studio/studio-shell-navigation.ts",
       "src/app/[locale]/studio/studio-shell-preferences.ts",
       "src/app/[locale]/studio/studio-route-definitions.ts",
@@ -347,11 +353,11 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /case "ko":/);
   assert.match(adminShell, /case "fr":/);
   assert.match(adminShell, /getLocalizedRouteDefinitions/);
-  assert.match(adminShell, /navLabel:\s*"Studio cá nhân của Nguyễn Lê Phong"/);
-  assert.match(adminShell, /navLabel:\s*"个人 Studio"/);
-  assert.match(adminShell, /navLabel:\s*"パーソナル Studio"/);
-  assert.match(adminShell, /navLabel:\s*"개인 Studio"/);
-  assert.match(adminShell, /navLabel:\s*"Studio personnel"/);
+  assert.match(adminShell, /"navLabel":\s*"Studio cá nhân của Nguyễn Lê Phong"/);
+  assert.match(adminShell, /"navLabel":\s*"个人 Studio"/);
+  assert.match(adminShell, /"navLabel":\s*"パーソナル Studio"/);
+  assert.match(adminShell, /"navLabel":\s*"개인 Studio"/);
+  assert.match(adminShell, /"navLabel":\s*"Studio personnel"/);
   assert.match(adminShell, /studio-sidebar/);
   assert.match(adminShell, /studio-topbar/);
   assert.match(routePrimitives, /metric-grid/);
@@ -359,9 +365,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /Search Studio/);
   assert.match(adminShell, /Profile navigation/);
   assert.match(adminShell, /Profile menu/);
-  assert.match(adminShell, /label:\s*"Home"/);
-  assert.match(adminShell, /label:\s*"Blog"/);
-  assert.match(adminShell, /label:\s*"Notes"/);
+  assert.match(adminShell, /"label":\s*"Home"/);
+  assert.match(adminShell, /"label":\s*"Blog"/);
+  assert.match(adminShell, /"label":\s*"Notes"/);
   assert.match(adminShell, /APP_ROUTE\.CV_PDF/);
   assert.match(adminShell, /function routeHref/);
   assert.match(adminShell, /function profileHref/);
@@ -462,7 +468,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /title:\s*"System Design Flow"/);
   assert.match(adminShell, /"flow-react-flow-architecture-demo":\s*"React Flow Examples"/);
   assert.match(adminShell, /"flow-react-flow-system-blueprint":\s*"System Blueprint"/);
-  assert.match(adminShell, /chartLabel:\s*"Flow chart"/);
+  assert.match(adminShell, /"chartLabel":\s*"Flow chart"/);
   assert.match(adminShell, /Read from left to right/);
   assert.match(adminShell, /Đọc từ trái sang phải/);
   assert.doesNotMatch(adminShell, /Mail preview/);

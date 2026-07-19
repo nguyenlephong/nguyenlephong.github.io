@@ -122,14 +122,19 @@ test("Studio dashboard exposes a localized zero-result state and clears through 
   assert.match(dispatcher, /dashboardCopy=\{props\.dashboardCopy\}/);
 
   for (const locale of ["en", "vi", "zh", "ja", "ko", "fr"]) {
-    const localeCopy = readFileSync(
+    const localeData = JSON.parse(
+      readFileSync(
+        `src/app/[locale]/studio/studio-shell-copy.${locale}.json`,
+        "utf8"
+      )
+    );
+    const localeAdapter = readFileSync(
       `src/app/[locale]/studio/studio-shell-copy.${locale}.ts`,
       "utf8"
     );
-    assert.match(localeCopy, /dashboard:\s*\{/);
-    assert.match(localeCopy, /workstreamCount:/);
-    assert.match(localeCopy, /emptyTitle:/);
-    assert.match(localeCopy, /emptyDescription:/);
-    assert.match(localeCopy, /clearFilters:/);
+    assert.match(localeAdapter, /workstreamCount:/);
+    assert.equal(typeof localeData.dashboard.emptyTitle, "string");
+    assert.equal(typeof localeData.dashboard.emptyDescription, "string");
+    assert.equal(typeof localeData.dashboard.clearFilters, "string");
   }
 });

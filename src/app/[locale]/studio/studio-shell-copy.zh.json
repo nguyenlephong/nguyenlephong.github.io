@@ -1,0 +1,393 @@
+{
+  "brand": "Studio",
+  "navLabel": "个人 Studio",
+  "navItems": {
+    "welcome": "Welcome",
+    "ai-agent-setup": "AI 设置",
+    "ai-skills": "AI 技能",
+    "delivery-checklists": "清单",
+    "flow-menu": "Flow Menu",
+    "flow-system-design": "System Design",
+    "flow-architecture-decision": "Architecture Decision",
+    "flow-incident-response": "Incident Response",
+    "flow-release-readiness": "Release Readiness",
+    "flow-ai-delivery": "AI Delivery",
+    "flow-portfolio-story": "Portfolio Story",
+    "flow-react-flow-architecture-demo": "Flow examples",
+    "flow-react-flow-system-blueprint": "System blueprint"
+  },
+  "profileItems": {
+    "home": {
+      "label": "Home",
+      "detail": "Profile overview."
+    },
+    "about": {
+      "label": "About",
+      "detail": "Experience and background."
+    },
+    "gallery": {
+      "label": "Gallery",
+      "detail": "Selected visual records."
+    },
+    "blog": {
+      "label": "Blog",
+      "detail": "Long-form writing."
+    },
+    "notes": {
+      "label": "Notes",
+      "detail": "Shorter working notes."
+    },
+    "apps": {
+      "label": "Apps",
+      "detail": "Small tools and experiments."
+    },
+    "resume": {
+      "label": "Resume",
+      "detail": "Open the CV PDF."
+    }
+  },
+  "profileMenuTitle": "Profile menu",
+  "profileNavigationTitle": "个人资料导航",
+  "profileNavigationDetail": "从 Studio 进入公开个人资料页面。",
+  "openProfileHome": "打开个人主页",
+  "findSetupNote": "查找设置笔记",
+  "search": "搜索",
+  "searchPlaceholder": "搜索 AI 设置...",
+  "commandPaletteLabel": "Search Studio pages",
+  "closeSearch": "Close search",
+  "openStudio": "Open Studio",
+  "closeNavigation": "Close navigation",
+  "toggleNavigation": "Toggle navigation",
+  "openPreferences": "Open Studio preferences",
+  "openGithubProfile": "Open GitHub profile",
+  "openAccountMenu": "Open account menu",
+  "routeKicker": {
+    "legacy": "Legacy",
+    "studio": "Studio"
+  },
+  "routeMetricsLabel": "Page summary",
+  "runtime": {
+    "loading": "正在加载 Studio 工作区…",
+    "loadErrorTitle": "工作区不可用",
+    "loadErrorDetail": "无法加载此工作区。导航和偏好设置仍然可用。",
+    "reload": "重新加载 Studio"
+  },
+  "dashboard": {
+    "emptyTitle": "没有匹配的工作流",
+    "emptyDescription": "请调整搜索词或状态筛选条件以查看工作流。",
+    "clearFilters": "清除筛选"
+  },
+  "status": {
+    "ready": "就绪",
+    "draft": "草稿",
+    "next": "下一步"
+  },
+  "categories": {
+    "all": "全部",
+    "engineering": "工程",
+    "content": "内容",
+    "operations": "运营",
+    "communication": "沟通",
+    "strategy": "策略",
+    "learning": "学习"
+  },
+  "routes": {
+    "welcome": {
+      "title": "Welcome",
+      "description": "A practical index of my setup notes, reusable workflows, delivery checklists, and visual system maps.",
+      "panels": ["Choose a workspace", "Useful links", "Studio pages"],
+      "timeline": [
+        "Choose the right workspace",
+        "Keep the source material close",
+        "Finish with something concrete"
+      ]
+    },
+    "ai-agent-setup": {
+      "title": "AI Agent 设置",
+      "description": "用于 AI agent 工具、MCP 路径和安全机器初始化的个人设置笔记。",
+      "panels": ["Setup library", "Agent workflow", "Command runbook"],
+      "timeline": [
+        "Skill library reviewed",
+        "MCP install path captured",
+        "Credential guardrail checked"
+      ]
+    },
+    "ai-skills": {
+      "title": "AI 技能",
+      "description": "可复制的 markdown 技能，用于代码评审、架构、内容、提示词、报告、规格和提案。",
+      "panels": ["Skill taxonomy", "Markdown preview", "Copy-ready prompt"],
+      "timeline": [
+        "Installed skills inventoried",
+        "Capability gaps mapped",
+        "English and Vietnamese prompts prepared"
+      ]
+    },
+    "delivery-checklists": {
+      "title": "交付清单",
+      "description": "从任务接收到模块工作、发布准备和上线的操作清单。",
+      "panels": ["Task intake", "Module creation", "Release and rollout"],
+      "timeline": [
+        "Ticket intake path mapped",
+        "Module checklist nested",
+        "Rollout phases captured"
+      ]
+    }
+  },
+  "welcome": {
+    "eyebrow": "Personal workbench",
+    "lead": "I keep the practical parts of my engineering work here: setup notes, reusable AI instructions, delivery checklists, and visual system maps.",
+    "note": "Choose the page that matches the job, check the source material, and finish with a useful decision, checklist, diagram, or verified change.",
+    "studioLinks": "Studio shortcuts",
+    "publicLinks": "Useful profile links",
+    "open": "Open",
+    "routeCards": {
+      "ai-agent-setup": {
+        "label": "AI Setup",
+        "detail": "Tool roles, MCP integrations, and new-machine setup notes."
+      },
+      "ai-skills": {
+        "label": "AI Skills",
+        "detail": "Reusable instructions for focused research, review, and implementation."
+      },
+      "delivery-checklists": {
+        "label": "Checklists",
+        "detail": "Step-by-step checks for task intake, implementation, review, and release."
+      },
+      "flow-react-flow-architecture-demo": {
+        "label": "Flow examples",
+        "detail": "Interactive patterns for architecture, layout, grouping, styling, and navigation."
+      },
+      "flow-react-flow-system-blueprint": {
+        "label": "System blueprint",
+        "detail": "A detailed map of DNS, runtime, storage, media processing, and fan-out."
+      }
+    },
+    "linkCards": {
+      "home": {
+        "label": "Home",
+        "detail": "Public profile overview."
+      },
+      "notes": {
+        "label": "Notes",
+        "detail": "Short working notes and reflections."
+      },
+      "blog": {
+        "label": "Blog",
+        "detail": "Longer technical and personal essays."
+      },
+      "apps": {
+        "label": "Apps",
+        "detail": "Small tools and experiments."
+      },
+      "resume": {
+        "label": "Resume",
+        "detail": "Open the latest PDF CV."
+      }
+    }
+  },
+  "flows": {
+    "emptyTitle": "No flows are available yet",
+    "emptyDescription": "Published flows will appear here when they are ready.",
+    "menu": "Flow menu",
+    "menuDetail": "Reusable paths for system design, production delivery, AI-assisted engineering, and portfolio writing.",
+    "groupMenuLabel": "Flow groups",
+    "flowListLabel": "Shareable Studio flows",
+    "selectedFlow": "Selected Studio flow",
+    "chartLabel": "Flow chart",
+    "chartHint": "Read from left to right. Each node marks an action or decision, with evidence and output kept nearby.",
+    "chartOutcome": "Target outcome",
+    "exampleFamily": "Example family",
+    "exampleView": "View",
+    "exampleSelectorLabel": "React Flow example selector",
+    "boardTools": "Board tools",
+    "viewNotes": "View notes",
+    "useWhen": "Use when",
+    "outcome": "Outcome",
+    "officeExample": "Practical example",
+    "artifacts": "Working artifacts",
+    "cvSignals": "Portfolio evidence",
+    "evidence": "Evidence",
+    "output": "Output",
+    "shareFlow": "Share flow",
+    "copied": "Copied",
+    "openFlow": "Open flow",
+    "enterFullscreen": "Fullscreen board",
+    "exitFullscreen": "Exit fullscreen",
+    "canvasMode": "Canvas mode",
+    "inspectMode": "Inspect",
+    "editMode": "Edit sandbox",
+    "layoutMode": "Layout",
+    "layoutSource": "Source",
+    "layoutHorizontal": "Horizontal",
+    "layoutVertical": "Vertical",
+    "layoutGrid": "Grid",
+    "layoutPreset": "Layout presets",
+    "layoutPresetSource": "Source",
+    "layoutPresetCompact": "Compact",
+    "layoutPresetWide": "Wide",
+    "layoutPresetTall": "Tall",
+    "layoutPresetGrid": "Grid",
+    "applyLayout": "Apply layout",
+    "resetBoard": "Reset",
+    "undo": "Undo",
+    "redo": "Redo",
+    "copyNode": "Copy node",
+    "pasteNode": "Paste node",
+    "addNote": "Add note",
+    "deleteNode": "Delete node",
+    "fitBoard": "Fit board",
+    "isolate": "Isolate",
+    "fullGraph": "Full graph",
+    "upstream": "Upstream",
+    "current": "Current",
+    "downstream": "Downstream",
+    "trailEmpty": "No link",
+    "relationMap": "Relation map",
+    "nodeDetails": "Node details",
+    "edgeDetails": "Edge details",
+    "inspector": "Inspector",
+    "selectedNode": "Selected node",
+    "selectedEdge": "Selected edge",
+    "noSelection": "Select a node or edge to inspect it.",
+    "nodeCount": "Nodes",
+    "edgeCount": "Edges",
+    "groupCount": "Groups",
+    "hiddenCount": "Hidden",
+    "tags": "Flow tags",
+    "details": "Flow details",
+    "scratch": "Scratch",
+    "reviewNote": "Review note",
+    "temporaryAnnotation": "Temporary annotation for this Studio session.",
+    "nodeLabels": {
+      "hub": "Hub",
+      "step": "Step",
+      "detail": "Detail",
+      "input": "Input",
+      "default": "Default",
+      "output": "Output",
+      "group": "Group",
+      "service": "Service",
+      "gateway": "Gateway",
+      "database": "Database",
+      "queue": "Queue",
+      "topic": "Topic",
+      "cache": "Cache",
+      "worker": "Worker",
+      "external": "External",
+      "decision": "Decision",
+      "risk": "Risk",
+      "note": "Note",
+      "system": "System",
+      "source": "Source",
+      "process": "Process",
+      "agent": "Agent",
+      "review": "Review",
+      "storage": "Storage",
+      "event": "Event"
+    },
+    "familyLabels": {
+      "overview": "Overview",
+      "interaction": "Interaction",
+      "grouping": "Subflows & Grouping",
+      "layout": "Layout",
+      "styling": "Styling",
+      "whiteboard": "Whiteboard",
+      "architecture": "Software Architecture"
+    },
+    "collapseGroup": "Collapse group",
+    "expandGroup": "Expand group",
+    "boardSandbox": "Your edits stay in this browser session. Undo or reset them at any time; the source diagram is unchanged."
+  },
+  "aiSetup": {
+    "addNote": "添加笔记",
+    "setupLibrary": "Setup library",
+    "agentSetupNotes": "Agent setup notes",
+    "agentRuntimes": "Agent runtimes",
+    "selectedNote": "Selected AI setup note",
+    "updated": "Updated",
+    "setupNoteTags": "Setup note tags",
+    "commandRunbook": "命令 runbook",
+    "commandRunbookDetail": "Commands to verify before using them on a new machine.",
+    "setupCommands": "Setup commands",
+    "referenceLinks": "Reference links",
+    "aiWorkflow": "AI workflow",
+    "aiWorkflowDetail": "A simple path from source material to a checked, reusable result.",
+    "setupChecklist": "设置清单",
+    "researchQueue": "研究队列"
+  },
+  "aiSkills": {
+    "emptyTitle": "No AI skills are available yet",
+    "emptyDescription": "Published skills will appear here when they are ready.",
+    "copyMarkdown": "复制 markdown",
+    "copied": "已复制",
+    "copy": "Copy",
+    "skillLibrary": "技能库",
+    "skillLibraryDetail": "Reusable instructions you can copy into an AI work session.",
+    "categoriesLabel": "技能分类",
+    "selectedSkill": "Selected AI skill markdown",
+    "skillTags": "Skill tags",
+    "useThisWhen": "Use this when",
+    "copyBehavior": "Copy behavior",
+    "copyBehaviorDetail": "The button copies the complete markdown instruction, including its process, expected output, and guardrails.",
+    "operatingRule": "Operating rule",
+    "operatingRuleDetail": "Use the instruction as a starting point. Keep the task boundaries, source material, and final judgment explicit."
+  },
+  "checklists": {
+    "emptyTitle": "No checklists are available yet",
+    "emptyDescription": "Published checklists will appear here when they are ready.",
+    "copyChecklist": "Copy checklist",
+    "copied": "已复制",
+    "copy": "Copy",
+    "menu": "清单菜单",
+    "menuDetail": "Step-by-step checks from task intake through release and rollout.",
+    "workflowListLabel": "Workflow checklists",
+    "selectedChecklist": "Selected workflow checklist",
+    "checklistTags": "Checklist tags",
+    "sections": "部分",
+    "steps": "步骤",
+    "whenToUse": "When to use",
+    "structure": "Structure",
+    "markdownCopy": "Markdown copy",
+    "markdownUseWhen": "Use when",
+    "detailsLabel": "Checklist details"
+  },
+  "preferences": {
+    "title": "偏好设置",
+    "description": "Studio 工作区的主题、字体和布局。",
+    "palette": "Appearance",
+    "themeMode": "主题模式",
+    "resolvedNow": "当前解析",
+    "font": "Font",
+    "pageLayout": "页面布局",
+    "pageLayoutHelp": "Centered is easier to read. Full width gives diagrams and workspaces more room.",
+    "navbarBehavior": "导航栏行为",
+    "navbarHelp": "Sticky keeps the controls visible. Scroll moves them with the page.",
+    "sidebarStyle": "侧边栏样式",
+    "sidebarStyleHelp": "Choose how closely the navigation sits beside the workspace.",
+    "collapseMode": "折叠模式",
+    "collapseModeHelp": "Icon leaves a narrow navigation rail. Offcanvas hides the sidebar completely on desktop.",
+    "restoreDefaults": "恢复默认布局",
+    "themeOptions": {
+      "light": "浅色",
+      "system": "系统",
+      "dark": "深色"
+    },
+    "contentLayoutOptions": {
+      "centered": "居中",
+      "full-width": "全宽"
+    },
+    "navbarStyleOptions": {
+      "sticky": "固定",
+      "scroll": "滚动"
+    },
+    "sidebarVariantOptions": {
+      "inset": "内嵌",
+      "sidebar": "侧边栏",
+      "floating": "浮动"
+    },
+    "sidebarCollapsibleOptions": {
+      "icon": "图标",
+      "offcanvas": "抽屉"
+    }
+  }
+}

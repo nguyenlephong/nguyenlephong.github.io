@@ -249,6 +249,48 @@ export type StudioUiCopy = {
   };
 };
 
+export type StudioUiCopyData = Omit<
+  StudioUiCopy,
+  "dashboard" | "flows" | "aiSkills" | "checklists"
+> & {
+  dashboard: Omit<StudioUiCopy["dashboard"], "workstreamCount">;
+  flows: Omit<StudioUiCopy["flows"], "trailMore">;
+  aiSkills: Omit<StudioUiCopy["aiSkills"], "skillCountLabel">;
+  checklists: Omit<StudioUiCopy["checklists"], "structureDetail">;
+};
+
+export type StudioUiCopyFormatters = {
+  workstreamCount: StudioUiCopy["dashboard"]["workstreamCount"];
+  trailMore: StudioUiCopy["flows"]["trailMore"];
+  skillCountLabel: StudioUiCopy["aiSkills"]["skillCountLabel"];
+  structureDetail: StudioUiCopy["checklists"]["structureDetail"];
+};
+
+export function createStudioUiCopy(
+  data: StudioUiCopyData,
+  formatters: StudioUiCopyFormatters
+): StudioUiCopy {
+  return {
+    ...data,
+    dashboard: {
+      ...data.dashboard,
+      workstreamCount: formatters.workstreamCount
+    },
+    flows: {
+      ...data.flows,
+      trailMore: formatters.trailMore
+    },
+    aiSkills: {
+      ...data.aiSkills,
+      skillCountLabel: formatters.skillCountLabel
+    },
+    checklists: {
+      ...data.checklists,
+      structureDetail: formatters.structureDetail
+    }
+  };
+}
+
 export function normalizeStudioLocale(locale: string): StudioLocale {
   switch (locale) {
     case "en":
