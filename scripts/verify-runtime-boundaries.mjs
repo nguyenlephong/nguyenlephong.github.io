@@ -57,6 +57,10 @@ const ARTICLE_HUB_CASES = [
     sources: ["notes_article_breadcrumb"]
   }
 ];
+const PAGE_BACK_PREFETCH_CASES = [
+  { name: "gallery", path: "/en/gallery", homePath: "/en", intent: "focus" },
+  { name: "apps", path: "/vi/apps", homePath: "/vi", intent: "hover" }
+];
 const PUBLIC_CSS_RUNTIME_CASES = [
   { name: "home", path: "/en", selector: ".hero", property: "position", value: "relative", stylesheets: 3 },
   { name: "about", path: "/en/about", selector: ".about-page-v2", property: "paddingBottom", notValue: "0px", stylesheets: 3 },
@@ -218,6 +222,205 @@ function isRscRequestForDestination(request, origin, destination) {
     requestedStem === destinationStem ||
     requestedStem.startsWith(`${destinationStem}/`)
   );
+}
+
+function isRscPathForExactDestination(localPath, destination) {
+  if (!localPath.endsWith(".txt")) return false;
+  const destinationStem = destination.replace(/^\/+|\/+$/g, "");
+  return (
+    localPath === `${destinationStem}.txt` ||
+    localPath.startsWith(`${destinationStem}/__next.`)
+  );
+}
+
+function htmlAttribute(tag, name) {
+  const match = tag.match(
+    new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, "i")
+  );
+  return match?.[1] ?? match?.[2] ?? match?.[3] ?? null;
+}
+
+async function routeStylesheetPaths(routePath, origin) {
+  const routeStem = routePath.replace(/^\/+|\/+$/g, "");
+  const html = await fs.readFile(path.join(OUT_DIR, `${routeStem}.html`), "utf8");
+  const stylesheetPaths = new Set();
+
+  for (const [tag] of html.matchAll(/<link\b[^>]*>/gi)) {
+    const rel = htmlAttribute(tag, "rel")
+      ?.toLowerCase()
+      .split(/[\t\n\f\r ]+/);
+    if (!rel?.includes("stylesheet")) continue;
+    const href = htmlAttribute(tag, "href");
+    if (!href) continue;
+    const localPath = localRequestPath(new URL(href, origin).href, origin);
+    if (localPath) stylesheetPaths.add(localPath);
+  }
+
+  return stylesheetPaths;
+}
+
+async function verifyPageBackPrefetchBoundaries(browser, origin) {
+  const results = [];
+
+  for (const scenario of PAGE_BACK_PREFETCH_CASES) {
+    const homeStylesheets = await routeStylesheetPaths(
+      scenario.homePath,
+      origin
+    );
+    const routeStylesheets = await routeStylesheetPaths(scenario.path, origin);
+    const homeOnlyStylesheets = new Set(
+      [...homeStylesheets].filter((stylesheet) => !routeStylesheets.has(stylesheet))
+    );
+    assert.ok(
+      homeOnlyStylesheets.size > 0,
+      `${scenario.name} has no distinguishable Home stylesheet boundary`
+    );
+
+    const context = await browser.newContext({ serviceWorkers: "block" });
+    const pageErrors = [];
+    const requests = [];
+    let phase = "initial";
+
+    try {
+      await installExternalRuntimeStubs(context, {
+        stubGalleryImages: scenario.name === "gallery"
+      });
+      const page = await context.newPage();
+      page.on("pageerror", (error) => pageErrors.push(error.message));
+      page.on("request", (request) => {
+        const localPath = localRequestPath(request.url(), origin);
+        if (!localPath) return;
+        requests.push({
+          localPath,
+          phase,
+          resourceType: request.resourceType()
+        });
+      });
+
+      const response = await page.goto(`${origin}${scenario.path}`, {
+        waitUntil: "domcontentloaded"
+      });
+      assert.equal(response?.status(), 200);
+      const pageBack = page.locator("a.page-back", { hasText: /.+/ }).first();
+      await pageBack.waitFor({ state: "visible" });
+      const accessibleName = (await pageBack.innerText()).trim();
+      assert.ok(accessibleName, `${scenario.name} page-back has no accessible name`);
+      assert.match(
+        await pageBack.ariaSnapshot(),
+        /link "[^"]+"/,
+        `${scenario.name} page-back is missing link semantics`
+      );
+      assert.equal(await pageBack.getAttribute("href"), scenario.homePath);
+      await page.waitForLoadState("networkidle");
+
+      const documentIdentity = `${scenario.name}-page-back-document`;
+      await page.evaluate((identity) => {
+        window.__pageBackDocumentIdentity = identity;
+      }, documentIdentity);
+
+      const initialHomeRsc = requests.filter(
+        (request) =>
+          request.phase === "initial" &&
+          isRscPathForExactDestination(request.localPath, scenario.homePath)
+      );
+      const initialHomeCss = requests.filter(
+        (request) =>
+          request.phase === "initial" &&
+          homeOnlyStylesheets.has(request.localPath)
+      );
+      assert.deepEqual(
+        initialHomeRsc,
+        [],
+        `${scenario.name} prefetched Home RSC before page-back intent`
+      );
+      assert.deepEqual(
+        initialHomeCss,
+        [],
+        `${scenario.name} prefetched Home CSS before page-back intent`
+      );
+
+      phase = "page-back-intent";
+      const intentRequest = page.waitForRequest((request) => {
+        const localPath = localRequestPath(request.url(), origin);
+        return Boolean(
+          localPath &&
+            isRscPathForExactDestination(localPath, scenario.homePath)
+        );
+      });
+      if (scenario.intent === "focus") {
+        await pageBack.focus();
+      } else {
+        await pageBack.hover();
+      }
+      await intentRequest;
+      await page.waitForLoadState("networkidle");
+
+      const intentRsc = requests.filter(
+        (request) =>
+          request.phase === "page-back-intent" &&
+          request.localPath.endsWith(".txt")
+      );
+      const intentCss = requests.filter(
+        (request) =>
+          request.phase === "page-back-intent" &&
+          request.resourceType === "stylesheet"
+      );
+      assert.ok(
+        intentRsc.length > 0,
+        `${scenario.name} page-back intent did not prefetch Home RSC`
+      );
+      assert.ok(
+        intentRsc.every((request) =>
+          isRscPathForExactDestination(request.localPath, scenario.homePath)
+        ),
+        `${scenario.name} page-back intent prefetched another RSC destination: ${JSON.stringify(intentRsc)}`
+      );
+      assert.ok(
+        intentCss.every((request) => homeStylesheets.has(request.localPath)),
+        `${scenario.name} page-back intent fetched non-Home CSS: ${JSON.stringify(intentCss)}`
+      );
+      assert.deepEqual(pageErrors, []);
+
+      phase = "navigation";
+      await Promise.all([
+        page.waitForURL(`${origin}${scenario.homePath}`),
+        pageBack.click()
+      ]);
+      await page.waitForLoadState("networkidle");
+      const navigationDocuments = requests.filter(
+        (request) =>
+          request.phase === "navigation" &&
+          request.resourceType === "document"
+      );
+      assert.deepEqual(
+        navigationDocuments,
+        [],
+        `${scenario.name} page-back used a full document navigation`
+      );
+      assert.equal(
+        await page.evaluate(() => window.__pageBackDocumentIdentity),
+        documentIdentity,
+        `${scenario.name} page-back replaced the active document`
+      );
+      assert.equal(new URL(page.url()).pathname, scenario.homePath);
+
+      results.push({
+        accessibleName,
+        homePath: scenario.homePath,
+        intent: scenario.intent,
+        path: scenario.path,
+        initialHomeCss: initialHomeCss.length,
+        initialHomeRsc: initialHomeRsc.length,
+        intentCss: intentCss.length,
+        intentRsc: intentRsc.length,
+        navigationDocuments: navigationDocuments.length
+      });
+    } finally {
+      await context.close();
+    }
+  }
+
+  return results;
 }
 
 async function findEngagementProviderChunks() {
@@ -1518,6 +1721,10 @@ async function main() {
       browser,
       origin
     );
+    const pageBackPrefetch = await verifyPageBackPrefetchBoundaries(
+      browser,
+      origin
+    );
     const persistedReadingFont = await verifyPersistedReadingFont(browser, origin);
     const readerRemount = await verifyReaderPathnameRemount(browser, origin);
     const contentHubAnalytics = await verifyContentHubAnalytics(browser, origin);
@@ -1543,6 +1750,7 @@ async function main() {
           publicToStudio,
           publicCss,
           galleryPreloadAndLcp,
+          pageBackPrefetch,
           persistedReadingFont,
           readerRemount,
           contentHubAnalytics,

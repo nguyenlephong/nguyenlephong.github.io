@@ -19,6 +19,7 @@ import {
 } from 'react-icons/lu'
 import { APP_ROUTE } from '@/app/app.const'
 import type { AppShowcaseItem } from '@/app/[locale]/(site)/apps/apps.data'
+import IntentPrefetchLink from '@/components/navigation/IntentPrefetchLink'
 import { Link } from '@/i18n/navigation'
 import { track } from '@/lib/analytics'
 import EnglishVisual from './EnglishVisual'
@@ -301,9 +302,15 @@ export default function AppsConsole({ apps, locale }: AppsConsoleProps) {
           </h1>
           <p className="apps-hero-sub">{t.intro}</p>
           <div className="apps-hero-actions">
-            <Link href={APP_ROUTE.HOME} className="page-back">
+            <IntentPrefetchLink
+              href={APP_ROUTE.HOME}
+              className="page-back"
+              data-track="cv_nav_click"
+              data-track-target="home"
+              data-track-source="apps_page_back"
+            >
               {t.back}
-            </Link>
+            </IntentPrefetchLink>
             <Link
               href="https://github.com/nguyenlephong"
               target="_blank"

@@ -1,10 +1,9 @@
 import { Metadata } from 'next'
-import { Link } from '@/i18n/navigation'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import { profileInfo, APP_ROUTE } from '@/app/app.const'
+import { profileInfo } from '@/app/app.const'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import PageTracker from '@/components/analytics/PageTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
@@ -14,6 +13,7 @@ import {
 } from '@/lib/seo/static-page-localization'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 import MotionProvider from '@/components/motion/MotionProvider'
+import GalleryPageBackLink from '@/components/gallery/GalleryPageBackLink'
 import './gallery.css'
 
 export function generateStaticParams() {
@@ -84,9 +84,9 @@ export default async function GalleryPage({ params }: Props) {
             </span>
             <h1 className="page-title">{t('title')}</h1>
             <p className="page-sub">{t('sub')}</p>
-            <Link href={APP_ROUTE.HOME} className="page-back">
+            <GalleryPageBackLink>
               {t('back')}
-            </Link>
+            </GalleryPageBackLink>
           </header>
 
           <ScopedIntlProvider scope="gallery">

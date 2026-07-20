@@ -61,6 +61,54 @@ test("public navigation and archive links use shared intent prefetch without los
   assert.match(footer, /data-document-navigation="studio"/);
 });
 
+test("Gallery and Apps page-back links wait for navigation intent before prefetching Home", async () => {
+  const [galleryPage, galleryBackLink, appsConsole, header] = await Promise.all([
+    readFile("src/app/[locale]/(site)/gallery/page.tsx", "utf8"),
+    readFile("src/components/gallery/GalleryPageBackLink.tsx", "utf8"),
+    readFile("src/components/apps/AppsConsole.tsx", "utf8"),
+    readFile("src/components/AppHeader.tsx", "utf8")
+  ]);
+
+  assert.match(galleryPage, /<GalleryPageBackLink>/);
+  assert.match(galleryBackLink, /<IntentPrefetchLink/);
+  assert.match(galleryBackLink, /href=\{APP_ROUTE\.HOME\}/);
+  assert.match(galleryBackLink, /className="page-back"/);
+  assert.match(
+    appsConsole,
+    /<IntentPrefetchLink\s+href=\{APP_ROUTE\.HOME\}\s+className="page-back"/
+  );
+
+  assert.equal((header.match(/<IntentPrefetchLink/g) ?? []).length, 3);
+  assert.match(header, /<IntentPrefetchLink\s+href=\{APP_ROUTE\.HOME\}/);
+});
+
+test("runtime verification rejects eager Home payloads from Gallery and Apps", async () => {
+  const runtimeVerifier = await readFile(
+    "scripts/verify-runtime-boundaries.mjs",
+    "utf8"
+  );
+
+  assert.match(
+    runtimeVerifier,
+    /verifyPageBackPrefetchBoundaries\(browser, origin\)/
+  );
+  assert.match(
+    runtimeVerifier,
+    /path: "\/en\/gallery", homePath: "\/en", intent: "focus"/
+  );
+  assert.match(
+    runtimeVerifier,
+    /path: "\/vi\/apps", homePath: "\/vi", intent: "hover"/
+  );
+  assert.match(runtimeVerifier, /initialHomeRsc/);
+  assert.match(runtimeVerifier, /initialHomeCss/);
+  assert.match(runtimeVerifier, /intentRsc/);
+  assert.match(runtimeVerifier, /accessibleName/);
+  assert.match(runtimeVerifier, /__pageBackDocumentIdentity/);
+  assert.match(runtimeVerifier, /navigationDocuments/);
+  assert.match(runtimeVerifier, /pageBackPrefetch/);
+});
+
 test("archive post stats stay provider-free until browsing intent", async () => {
   const [hook, store, facade, provider, ids, blogExplorer, notesExplorer, shell] =
     await Promise.all([

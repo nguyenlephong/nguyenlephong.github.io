@@ -363,6 +363,45 @@ test("PageTracker wires the same final reporter to all three exit paths", async 
   assert.match(pageTracker, /return \(\) => \{\s*reportTime\(\)/);
 });
 
+test("Gallery and Apps page-back links keep the existing CV navigation analytics contract", async () => {
+  const [
+    analytics,
+    galleryPage,
+    galleryBackLink,
+    appsPage,
+    appsConsole,
+    appsLinkTracker
+  ] = await Promise.all([
+    readFile("src/lib/analytics.ts", "utf8"),
+    readFile("src/app/[locale]/(site)/gallery/page.tsx", "utf8"),
+    readFile("src/components/gallery/GalleryPageBackLink.tsx", "utf8"),
+    readFile("src/app/[locale]/(site)/apps/page.tsx", "utf8"),
+    readFile("src/components/apps/AppsConsole.tsx", "utf8"),
+    readFile("src/components/analytics/AppsLinkTracker.tsx", "utf8")
+  ]);
+
+  assert.match(analytics, /'cv_nav_click'/);
+  assert.match(
+    galleryPage,
+    /<GalleryPageBackLink>\s*\{t\('back'\)\}\s*<\/GalleryPageBackLink>/
+  );
+  assert.match(galleryBackLink, /<IntentPrefetchLink/);
+  assert.match(galleryBackLink, /href=\{APP_ROUTE\.HOME\}/);
+  assert.match(galleryBackLink, /className="page-back"/);
+  assert.match(
+    galleryBackLink,
+    /track\('cv_nav_click',\s*\{\s*target: 'home',\s*source: 'gallery_page_back',?\s*\}\)/
+  );
+
+  assert.match(appsPage, /<AppsLinkTracker \/>/);
+  assert.match(
+    appsConsole,
+    /<IntentPrefetchLink\s+href=\{APP_ROUTE\.HOME\}\s+className="page-back"\s+data-track="cv_nav_click"\s+data-track-target="home"\s+data-track-source="apps_page_back"\s*>/
+  );
+  assert.match(appsLinkTracker, /target\.closest<HTMLElement>\('\[data-track\]'\)/);
+  assert.match(appsLinkTracker, /track\(name, props\)/);
+});
+
 test("public content surfaces have explicit posthog page and interaction events", async () => {
   const [
     analytics,
@@ -386,7 +425,8 @@ test("public content surfaces have explicit posthog page and interaction events"
     explorerShell,
     blogExplorer,
     notesExplorer,
-    offlineBanner
+    offlineBanner,
+    offlineVerifier
   ] = await Promise.all([
     readFile("src/lib/analytics.ts", "utf8"),
     readFile("src/components/analytics/PageTracker.tsx", "utf8"),
@@ -409,7 +449,8 @@ test("public content surfaces have explicit posthog page and interaction events"
     readFile("src/components/explorer/ExplorerShell.tsx", "utf8"),
     readFile("src/components/blog/BlogExplorer.tsx", "utf8"),
     readFile("src/components/notes/NotesExplorer.tsx", "utf8"),
-    readFile("src/components/offline/OfflineStatusBanner.tsx", "utf8")
+    readFile("src/components/offline/OfflineStatusBanner.tsx", "utf8"),
+    readFile("scripts/verify-offline.mjs", "utf8")
   ]);
 
   for (const eventName of [
@@ -487,6 +528,18 @@ test("public content surfaces have explicit posthog page and interaction events"
   assert.match(offlineBanner, /offline_mode_ready/);
   assert.match(offlineBanner, /offline_status_change/);
   assert.match(offlineBanner, /offline_banner_dismiss/);
+  assert.match(offlineVerifier, /provider\.capture =/);
+  assert.match(offlineVerifier, /initial mount must seed network status/);
+  assert.match(offlineVerifier, /context\.setOffline\(true\)/);
+  assert.match(offlineVerifier, /context\.setOffline\(false\)/);
+  assert.match(offlineVerifier, /event: 'offline_status_change'/);
+  assert.match(offlineVerifier, /dispatchRepeatedStatus\('offline'\)/);
+  assert.match(offlineVerifier, /dispatchRepeatedStatus\('online'\)/);
+  assert.match(offlineVerifier, /assertNoMountOfflineStatusAnalytics/);
+  assert.match(
+    offlineVerifier,
+    /const assertHydratedOfflineRuntime[\s\S]*await assertNoMountOfflineStatusAnalytics\(\)/
+  );
 });
 
 test("content hub hierarchy links reuse existing client boundaries without eager prefetch", async () => {
