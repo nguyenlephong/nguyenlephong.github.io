@@ -20,26 +20,53 @@ collections, search indexes, related content, and the sitemap.
   never be public before its displayed publication date.
 - The same predicate gates collection data, pagination, topic/series context,
   article loading, static params, locale availability, search indexes,
-  related content, sitemap entries, source OG generation, and the expected OG
-  publication manifest.
+  related content, sitemap entries, source OG generation, and the released OG
+  publication manifest. The publication inventory additionally classifies
+  non-draft future entries as `scheduled` and canonical `status: "draft"`
+  entries as `prunable`.
 - Locale indexes and bodies may translate presentation fields, but cannot
   override canonical `date`, `publishAt`, or `status` values.
 - GitHub Pages resolves one UTC build date and rebuilds daily so scheduled
-  static content becomes public without a source commit.
+  static content becomes public without a source commit. PR CI and Pages both
+  verify the public CDN responses for released plus scheduled OG assets before
+  building; the post-build live check remains released-only.
 - Sitemap verification uses exact bidirectional parity with exported,
   indexable, self-canonical HTML instead of a fixed URL-count floor. Scheduled
   or draft content therefore cannot be retained merely to satisfy a budget.
 
-The OG publisher intentionally remains add/replace-only. An unpublished entry
-is neither generated nor expected, but a stale file already present in
-`dom-pub` is not deleted automatically. Safe pruning needs an explicit remote
-inventory, namespace allowlist, approval boundary, and rollback contract; the
-current publisher has none of those delete guarantees.
+The OG publisher is add/replace-only by default. Deletion is a separate,
+transactional local operation that requires both `--prune-stale` and
+`--apply-prune`; dry-run inventory remains available without mutation. It may
+delete only a `.jpg` whose canonical source-index entry explicitly has
+`status: "draft"`. Scheduled entries are reservations and are never prune
+candidates. Unknown names, removed-source names, other extensions, and manual
+media remain unowned. Count/percentage caps, a clean pinned `dom-pub` HEAD,
+quarantine, and rollback protect partial failure. The tool never commits or
+pushes.
 
-The authored JSON corpus remains a build input. Moving it out of `public/` is
-deferred to the artifact-boundary phase of this optimization PR and must retain
-regression coverage proving unpublished metadata is absent from the deployed
-artifact.
+Readiness intentionally trades embargo strength for deterministic release:
+the scheduled JPEG must already exist at its public, guessable CDN URL, even
+though no article route, collection entry, search record, sitemap URL, or
+metadata link exists before release. Authors can generate the ignored local
+PNG source against the effective future date, publish the JPEG through the
+reviewed cross-repository flow, and then open the content PR. The CI and Pages
+checks request bytes zero through three from the public media URL. In the
+supported Node 22+ runtime they use a BYOB reader to retain and inspect at most
+four decoded body bytes, then cancel the stream. This does not guarantee that
+only four bytes cross the network when a CDN ignores `Range` and returns
+`200`; socket or Undici buffers may receive more before cancellation. A
+declared `200` `Content-Length` must be a safe integer no larger than 5 MiB,
+while an absent length remains compatible with chunked CDN responses. They
+receive no cross-repository write credential. A missing reservation, redirect,
+non-BYOB body, invalid MIME type, invalid JPEG signature, or exhausted retry
+fails before the expensive static build. After build, the released-only live check
+repeats the same fail-closed validation before artifact upload. Remote-tree
+mode remains an operator inventory aid; it is not release-readiness evidence
+because a repository entry does not prove the deployed public response.
+
+The canonical authored JSON corpus already lives under repository-only
+`content/`. It remains a build input, with regression coverage proving raw or
+unpublished metadata is absent from the deployed artifact.
 
 ## Acceptance criteria
 
@@ -57,20 +84,32 @@ artifact.
   have exact parity without a fixed minimum URL count.
 - **AC-CPL-007:** The Pages workflow runs daily and exports against one resolved
   `CONTENT_BUILD_DATE` before quality, build, and verification steps.
-- **AC-CPL-008:** Future, embargoed, and draft entries have no generated or
-  expected OG publication, while publication tooling never deletes an existing
-  remote asset implicitly.
+- **AC-CPL-008:** **Superseded by AC-CPL-011 and AC-CPL-012.** Future, embargoed,
+  and draft entries have no generated or expected OG publication, while
+  publication tooling never deletes an existing remote asset implicitly.
 - **AC-CPL-009:** Localized indexes and bodies fail closed if they attempt to
   change canonical publication lifecycle fields.
+- **AC-CPL-010:** PR CI and Pages fail before build when the public live response
+  for a released or scheduled reservation is missing, redirected, mistyped, or
+  not a JPEG; the Pages live check runs again after build against released
+  entries only.
+- **AC-CPL-011:** Future and embargoed entries have no article route or linked
+  OG metadata before release, but their publicly reachable JPEG reservations
+  are required by pre-build live readiness.
+- **AC-CPL-012:** Draft entries are excluded from readiness and are the only
+  canonical entries eligible for explicit, transactional pruning. No remote
+  asset is deleted implicitly.
 
 ## Verification
 
 - Unit-test publication, embargo, draft, and invalid-date boundaries.
 - Pin a regression build to 2026-07-18 and prove the five posts dated
   2026-07-19 through 2026-07-23 remain in the dynamically derived unpublished
-  corpus and are absent from every public consumer and generated OG target.
-- Exercise add/replace publication against an existing stale future asset and
-  prove the summary remains `deleted: 0` and the bytes remain unchanged.
+  corpus and are absent from every public consumer while appearing in the
+  scheduled live-readiness inventory.
+- Exercise explicit pruning against published, scheduled, draft, unknown, and
+  manual assets; prove only canonical drafts are candidates and rollback
+  restores the complete managed tree after partial failure.
 - Inject valid-but-conflicting locale `date`, `publishAt`, and `status` values
   in both indexes and bodies and prove the loaders reject the override drift.
 - Run schema, authored-route, deployment-workflow, and artifact-verifier tests.

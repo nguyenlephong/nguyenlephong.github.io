@@ -286,18 +286,19 @@ async function preflightPublication({
 
   const deletionPlans = []
   if (pruneStale) {
-    const expectedKeys = new Set(expected.map((entry) => entry.key))
-    const knownByKey = new Map(inventory.known.map((entry) => [entry.key, entry]))
+    const prunableByKey = new Map(inventory.prunable.map((entry) => [entry.key, entry]))
     const directoryEntries = await fs.readdir(surfaceRoot, { withFileTypes: true })
 
     for (const directoryEntry of directoryEntries) {
       if (!directoryEntry.name.endsWith(publication.publicationExtension)) continue
       const key = `${expectedNamespace}/${directoryEntry.name}`
-      const entry = knownByKey.get(key)
+      const entry = prunableByKey.get(key)
 
       // This namespace predates the managed-prune contract. Unknown names are
       // deliberately treated as unowned/manual media and never removed.
-      if (!entry || expectedKeys.has(key)) continue
+      // Scheduled entries are also reservations: readiness verification may
+      // require them before release, so only canonical drafts are prunable.
+      if (!entry) continue
       const destinationPath = path.resolve(surfaceRoot, directoryEntry.name)
       assertStrictlyInside(surfaceRoot, destinationPath, `stale destination icdn/${key}`)
       if (path.dirname(destinationPath) !== surfaceRoot) {

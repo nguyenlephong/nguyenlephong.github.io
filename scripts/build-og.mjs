@@ -13,6 +13,8 @@ import {
 } from './lib/build-export-guard.mjs'
 import { resolveContentBuildDate } from '../src/lib/content/publication-contract.mjs'
 import { validateAuthoredArticleSlugUniqueness } from './lib/article-slug-contract.mjs'
+import { reportBuildOgFailure } from './lib/build-og-error.mjs'
+import { runBuildUnderPostbuildLock } from './lib/build-og-lock.mjs'
 
 const args = process.argv.slice(2)
 
@@ -49,6 +51,7 @@ function positiveDurationFromEnv(name, fallback) {
 }
 
 const EXPORT_DETAIL = path.join(process.cwd(), '.next', 'export-detail.json')
+const POSTBUILD_OG_STATE = path.join(process.cwd(), '.next', 'postbuild-og-state.json')
 const EXPECTED_OUT_DIR = path.join(process.cwd(), 'out')
 const EXPORT_EXIT_GRACE_MS = Number(process.env.OG_EXPORT_EXIT_GRACE_MS ?? 5_000)
 const KILL_GRACE_MS = Number(process.env.OG_KILL_GRACE_MS ?? 5_000)
@@ -355,24 +358,50 @@ const summary =
       : `targeted OG generation for ${targets.join(', ')}`
 
 console.log(`[build-og] ${summary}`)
+
+let buildCode = 1
 try {
-  removeStaleExportDetail({
-    exists: () => existsSync(EXPORT_DETAIL),
-    unlink: () => unlinkSync(EXPORT_DETAIL),
+  buildCode = await runBuildUnderPostbuildLock({
+    async build() {
+      const buildStartedAt = Date.now()
+      return run(nextBin, ['build', '--turbopack'], env, {
+        acceptSuccessfulExportSignal: true,
+        detached: true,
+        terminateAfterSuccessfulExport: true,
+        startedAt: buildStartedAt,
+      })
+    },
+    outDir: EXPECTED_OUT_DIR,
+    async postbuild() {
+      const {
+        reportPostbuildResult,
+        runPostbuildTransforms,
+      } = await import('./postbuild.mjs')
+      const result = await runPostbuildTransforms({
+        acquireLock: false,
+        nextDir: path.dirname(POSTBUILD_OG_STATE),
+        outDir: EXPECTED_OUT_DIR,
+      })
+      reportPostbuildResult(result, { outDir: EXPECTED_OUT_DIR })
+    },
+    async prepare() {
+      removeStaleExportDetail({
+        exists: () => existsSync(EXPORT_DETAIL),
+        unlink: () => unlinkSync(EXPORT_DETAIL),
+      })
+      try {
+        if (existsSync(POSTBUILD_OG_STATE)) unlinkSync(POSTBUILD_OG_STATE)
+      } catch (error) {
+        throw new Error(
+          `[build-og] cannot invalidate stale OG postbuild state: ${error instanceof Error ? error.message : error}`,
+          { cause: error },
+        )
+      }
+      rmSync(EXPECTED_OUT_DIR, { recursive: true, force: true })
+    },
   })
 } catch (error) {
-  console.error(error instanceof Error ? error.message : error)
-  process.exit(1)
+  reportBuildOgFailure(error)
 }
-rmSync(EXPECTED_OUT_DIR, { recursive: true, force: true })
-const buildStartedAt = Date.now()
-const buildCode = await run(nextBin, ['build', '--turbopack'], env, {
-  acceptSuccessfulExportSignal: true,
-  detached: true,
-  terminateAfterSuccessfulExport: true,
-  startedAt: buildStartedAt,
-})
-if (buildCode !== 0) process.exit(buildCode)
 
-const postbuildCode = await run(process.execPath, ['scripts/postbuild.mjs'], env)
-if (postbuildCode !== 0) process.exit(postbuildCode)
+if (buildCode !== 0) process.exitCode = buildCode
