@@ -22,6 +22,10 @@ const LEGACY_STORAGE_PREFIX = 'offline-locale-phase:v1:'
 const DISMISS_STORAGE_PREFIX = 'offline-banner-dismissed:v1:'
 const SERVICE_WORKER_VERSION_META = 'offline-manifest-version'
 const FALLBACK_APP_VERSION = process.env['NEXT_PUBLIC_APP_VERSION'] ?? 'dev'
+const SSR_OFFLINE_STATE = {
+  phase: 'idle',
+  completeness: 'unknown',
+} satisfies OfflineState
 
 function serviceWorkerUrl(): string {
   const version =
@@ -130,14 +134,9 @@ function OfflineStatusBannerInner({
   pathname,
 }: OfflineStatusBannerInnerProps) {
   const t = useTranslations('Offline.banner')
-  const [offlineState, setOfflineState] = useState<OfflineState>(() => readStoredState(locale))
-  const [isDismissed, setIsDismissed] = useState(() => {
-    if (typeof window !== 'undefined' && window.navigator.onLine) return false
-    return readDismissed(locale)
-  })
-  const [isOnline, setIsOnline] = useState(() =>
-    typeof window === 'undefined' ? true : window.navigator.onLine,
-  )
+  const [offlineState, setOfflineState] = useState<OfflineState>(SSR_OFFLINE_STATE)
+  const [isDismissed, setIsDismissed] = useState(false)
+  const [isOnline, setIsOnline] = useState(true)
   const lastTrackedStatusRef = useRef<string | null>(null)
   const completeness = offlineState.completeness
 
@@ -167,6 +166,17 @@ function OfflineStatusBannerInner({
       report(false)
     }
 
+    const initialOnline = window.navigator.onLine
+    lastTrackedStatusRef.current = initialOnline ? 'online' : 'offline'
+    setOfflineState(readStoredState(locale))
+    setIsOnline(initialOnline)
+    if (initialOnline) {
+      setIsDismissed(false)
+      persistDismissed(locale, false)
+    } else {
+      setIsDismissed(readDismissed(locale))
+    }
+
     window.addEventListener('online', onOnline)
     window.addEventListener('offline', onOffline)
     return () => {
@@ -174,11 +184,6 @@ function OfflineStatusBannerInner({
       window.removeEventListener('offline', onOffline)
     }
   }, [locale])
-
-  useEffect(() => {
-    if (!isOnline) return
-    persistDismissed(locale, false)
-  }, [isOnline, locale])
 
   useEffect(() => {
     if (!('serviceWorker' in navigator)) return

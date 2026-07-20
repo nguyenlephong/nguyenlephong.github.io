@@ -19,6 +19,10 @@ The public header displays the existing 72 px favicon asset at 36 CSS pixels.
 That small asset is loaded eagerly with high fetch priority; the 512 px app
 icon remains unchanged for Next metadata and install/icon consumers.
 
+The above-fold Gallery and Apps page-back links use the same intent boundary.
+A direct visit does not speculate on Home; keyboard focus or pointer hover can
+restore Next's native prefetch for that single localized destination.
+
 ## Why
 
 Content archives can render dozens of links at once. Automatic viewport
@@ -69,3 +73,9 @@ number when later loading boundaries are added.
     deferred counters. Under `Save-Data`, the same query may load only its search
     index. These checks use observable state rather than timeout-based byte
     assertions.
+13. Direct Gallery and Apps loads request neither Home RSC payloads nor
+    Home-owned CSS through their above-fold page-back links. Keyboard focus or
+    pointer hover enables prefetch only for localized Home while preserving the
+    existing crawlable `href`, copy, class, accessibility, analytics, and client
+    navigation contract. AppHeader keeps its intentional per-link intent
+    prefetch behavior unchanged.

@@ -4,9 +4,154 @@ import test from 'node:test'
 
 const workflow = readFileSync(new URL('../.github/workflows/nextjs.yml', import.meta.url), 'utf8')
 const ciWorkflow = readFileSync(new URL('../.github/workflows/ci-frontend.yml', import.meta.url), 'utf8')
+const autoAssignWorkflow = readFileSync(
+  new URL('../.github/workflows/auto-assign-pr.yml', import.meta.url),
+  'utf8',
+)
 const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'))
 const lock = JSON.parse(readFileSync(new URL('../package-lock.json', import.meta.url), 'utf8'))
 const nodeVersion = readFileSync(new URL('../.nvmrc', import.meta.url), 'utf8').trim()
+
+const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor
+
+function extractGithubScript(source) {
+  const lines = source.split('\n')
+  const scriptMarkerIndex = lines.findIndex((line) => /^\s+script: \|\s*$/.test(line))
+  assert.notEqual(scriptMarkerIndex, -1, 'workflow must contain an inline github-script')
+
+  const markerIndent = lines[scriptMarkerIndex].match(/^\s*/)[0].length
+  const scriptLines = []
+  for (const line of lines.slice(scriptMarkerIndex + 1)) {
+    const indent = line.match(/^\s*/)[0].length
+    if (line.trim() && indent <= markerIndent) break
+    scriptLines.push(line.slice(markerIndent + 2))
+  }
+
+  return scriptLines.join('\n').trimEnd()
+}
+
+const autoAssignScript = extractGithubScript(autoAssignWorkflow)
+
+async function runAutoAssignScript({ liveAssigneeResponses, postError } = {}) {
+  const getCalls = []
+  const postCalls = []
+  const responses = [...(liveAssigneeResponses ?? [[]])]
+  const github = {
+    rest: {
+      pulls: {
+        get: async (parameters) => {
+          getCalls.push(parameters)
+          const assignees = responses.shift()
+          assert.notEqual(assignees, undefined, 'test must provide one live response per GET')
+          if (assignees instanceof Error) throw assignees
+          return { data: { assignees: assignees.map((login) => ({ login })) } }
+        },
+      },
+      issues: {
+        addAssignees: async (parameters) => {
+          postCalls.push(parameters)
+          if (postError) throw postError
+        },
+      },
+    },
+  }
+  const context = {
+    repo: { owner: 'site-owner', repo: 'portfolio' },
+    payload: {
+      pull_request: {
+        number: 42,
+        assignees: [],
+        head: { ref: 'untrusted-${{ github.token }}' },
+      },
+    },
+  }
+
+  const execute = new AsyncFunction('github', 'context', autoAssignScript)
+  await execute(github, context)
+  return { getCalls, postCalls }
+}
+
+test('auto-assign workflow keeps pull_request_target privileged execution constrained', () => {
+  assert.match(
+    autoAssignWorkflow,
+    /^on:\n  pull_request_target:\n    types: \[opened, reopened, ready_for_review\]$/m,
+  )
+  assert.match(autoAssignWorkflow, /^permissions:\n  pull-requests: write\n$/m)
+  assert.equal(autoAssignWorkflow.match(/^  [a-z-]+: (?:read|write)$/gm)?.length, 1)
+  assert.match(autoAssignWorkflow, /if: \$\{\{ github\.event\.pull_request\.draft == false \}\}/)
+  assert.equal(autoAssignWorkflow.match(/uses: actions\/github-script@v7/g)?.length, 1)
+  assert.doesNotMatch(autoAssignWorkflow, /actions\/checkout|^\s*run:/m)
+  assert.doesNotMatch(autoAssignScript, /\$\{\{|\.pull_request\.(?:head|base)/)
+  assert.doesNotMatch(autoAssignScript, /context\.payload\.pull_request\.assignees/)
+})
+
+test('auto-assign skips the POST when the live pull request already has the owner', async () => {
+  const calls = await runAutoAssignScript({ liveAssigneeResponses: [['nguyenlephong']] })
+
+  assert.deepEqual(calls.getCalls, [{ owner: 'site-owner', repo: 'portfolio', pull_number: 42 }])
+  assert.equal(calls.postCalls.length, 0)
+})
+
+test('auto-assign adds the owner once when the live pull request is missing it', async () => {
+  const calls = await runAutoAssignScript({ liveAssigneeResponses: [[], ['nguyenlephong']] })
+
+  assert.equal(calls.getCalls.length, 2)
+  assert.deepEqual(calls.postCalls, [
+    {
+      owner: 'site-owner',
+      repo: 'portfolio',
+      issue_number: 42,
+      assignees: ['nguyenlephong'],
+    },
+  ])
+})
+
+test('auto-assign fails explicitly when a resolved POST leaves the owner unassigned', async () => {
+  await assert.rejects(
+    runAutoAssignScript({ liveAssigneeResponses: [[], []] }),
+    {
+      name: 'Error',
+      message: 'Assignment request completed but the repository owner is still unassigned',
+    },
+  )
+})
+
+test('auto-assign accepts a concurrent successful assignment after its POST fails', async () => {
+  const calls = await runAutoAssignScript({
+    liveAssigneeResponses: [[], ['nguyenlephong']],
+    postError: new Error('assignment raced'),
+  })
+
+  assert.equal(calls.getCalls.length, 2)
+  assert.equal(calls.postCalls.length, 1)
+})
+
+test('auto-assign rethrows a POST failure when the owner remains unassigned', async () => {
+  const postError = new Error('assignment rejected')
+
+  await assert.rejects(
+    runAutoAssignScript({ liveAssigneeResponses: [[], []], postError }),
+    (error) => error === postError,
+  )
+})
+
+test('auto-assign preserves POST and verification failures when reconciliation is unavailable', async () => {
+  const postError = new Error('assignment rejected')
+  const verificationError = new Error('live pull request unavailable')
+
+  await assert.rejects(
+    runAutoAssignScript({
+      liveAssigneeResponses: [[], verificationError],
+      postError,
+    }),
+    (error) => {
+      assert.ok(error instanceof AggregateError)
+      assert.equal(error.message, 'Assignment failed and live pull request verification also failed')
+      assert.deepEqual(error.errors, [postError, verificationError])
+      return true
+    },
+  )
+})
 
 test('workflows, package metadata, lockfile, and Node types share the Node 22 runtime contract', () => {
   assert.equal(nodeVersion, '22')

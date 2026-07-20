@@ -260,12 +260,200 @@ async function verifyBrowserFlow(setOriginOffline) {
   const { chromium } = await import('playwright')
   const browser = await chromium.launch({ headless: true })
   const context = await browser.newContext()
+  // Keep the production PostHog loader stub as the observable provider seam.
+  // Blocking only the external SDK prevents it from draining the stub queue.
+  await context.route(
+    /^https:\/\/us-assets\.i\.posthog\.com\/static\/array\.js(?:\?|$)/,
+    (route) => route.abort(),
+  )
   const page = await context.newPage()
+  const browserErrors = []
   const baseUrl = `http://${HOST}:${PORT}`
   const startPath = `/${LOCALE}/blog`
   const warmPath = `/${LOCALE}/notes`
   const fallbackPath = `/${LOCALE}/apps/english`
   const siblingPath = '/dom-pub/offline-probe'
+
+  page.on('pageerror', (error) => {
+    browserErrors.push(`pageerror: ${error.message}`)
+  })
+  page.on('console', (message) => {
+    if (message.type() !== 'error') return
+    const text = message.text()
+    if (/hydration|hydrated|react(?:\.dev\/errors\/| error #)418/i.test(text)) {
+      browserErrors.push(`console: ${text}`)
+    }
+  })
+
+  const assertNoBrowserErrors = () => {
+    assert.deepEqual(browserErrors, [], 'offline navigation must not emit page or hydration errors')
+  }
+
+  const waitForBrowserFrames = () =>
+    page.evaluate(
+      () =>
+        new Promise((resolve) => {
+          requestAnimationFrame(() => requestAnimationFrame(resolve))
+        }),
+    )
+
+  const readOfflineStatusAnalytics = () =>
+    page.evaluate(() => window.__offlineStatusAnalytics ?? [])
+
+  const waitForProductionAnalyticsProvider = () =>
+    page.waitForFunction(
+      () =>
+        Array.isArray(window.posthog) &&
+        window.posthog.__SV === 1 &&
+        typeof window.posthog.capture === 'function',
+      null,
+      { timeout: 10000 },
+    )
+
+  const readQueuedOfflineStatusAnalytics = () =>
+    page.evaluate(() => {
+      const provider = window.posthog
+      if (!Array.isArray(provider)) return null
+
+      return provider
+        .filter(
+          (entry) =>
+            Array.isArray(entry) &&
+            entry[0] === 'capture' &&
+            entry[1] === 'offline_status_change',
+        )
+        .map((entry) => ({
+          event: entry[1],
+          locale: entry[2]?.locale ?? null,
+          status: entry[2]?.status ?? null,
+        }))
+    })
+
+  const assertNoMountOfflineStatusAnalytics = async () => {
+    await waitForProductionAnalyticsProvider()
+    assert.deepEqual(
+      await readQueuedOfflineStatusAnalytics(),
+      [],
+      'hydrated document mount must seed offline status without capturing a transition',
+    )
+  }
+
+  const assertOfflineStatusAnalyticsTransitions = async () => {
+    await waitForProductionAnalyticsProvider()
+    assert.deepEqual(
+      await readQueuedOfflineStatusAnalytics(),
+      [],
+      'initial mount must seed network status without capturing a transition',
+    )
+
+    await page.evaluate(() => {
+      const provider = window.posthog
+      if (!Array.isArray(provider) || typeof provider.capture !== 'function') {
+        throw new Error('production PostHog provider is unavailable')
+      }
+
+      window.__offlineStatusAnalytics = []
+      const originalCapture = provider.capture.bind(provider)
+      provider.capture = (event, properties, options) => {
+        if (event === 'offline_status_change') {
+          window.__offlineStatusAnalytics.push({
+            event,
+            locale: properties?.locale ?? null,
+            status: properties?.status ?? null,
+          })
+        }
+        return originalCapture(event, properties, options)
+      }
+    })
+
+    const waitForCaptureCount = (expected) =>
+      page.waitForFunction(
+        (count) => window.__offlineStatusAnalytics?.length === count,
+        expected,
+        { timeout: 5000 },
+      )
+    const dispatchRepeatedStatus = async (status) => {
+      await page.evaluate((eventName) => {
+        window.dispatchEvent(new Event(eventName))
+        window.dispatchEvent(new Event(eventName))
+      }, status)
+      await waitForBrowserFrames()
+    }
+
+    await context.setOffline(true)
+    await page.waitForFunction(() => navigator.onLine === false)
+    await waitForCaptureCount(1)
+    await dispatchRepeatedStatus('offline')
+    assert.deepEqual(await readOfflineStatusAnalytics(), [
+      { event: 'offline_status_change', locale: LOCALE, status: 'offline' },
+    ])
+
+    await context.setOffline(false)
+    await page.waitForFunction(() => navigator.onLine === true)
+    await waitForCaptureCount(2)
+    await dispatchRepeatedStatus('online')
+    assert.deepEqual(await readOfflineStatusAnalytics(), [
+      { event: 'offline_status_change', locale: LOCALE, status: 'offline' },
+      { event: 'offline_status_change', locale: LOCALE, status: 'online' },
+    ])
+  }
+
+  const readRuntimeVersionState = () =>
+    page.evaluate(async () => {
+      const cachedManifest = await caches
+        .match('/offline-manifest.json')
+        .then((response) => response?.json())
+      const registration = await navigator.serviceWorker.getRegistration('/')
+      const controllerUrl = navigator.serviceWorker.controller?.scriptURL ?? null
+      const workerUrls = [
+        registration?.active?.scriptURL,
+        registration?.waiting?.scriptURL,
+        registration?.installing?.scriptURL,
+      ].filter((value) => typeof value === 'string')
+      const queryVersion = (value) =>
+        value ? new URL(value, window.location.origin).searchParams.get('v') : null
+
+      return {
+        cachedManifestVersion: cachedManifest?.version ?? null,
+        domMetaVersion:
+          document
+            .querySelector('meta[name="offline-manifest-version"]')
+            ?.getAttribute('content')
+            ?.trim() || null,
+        controllerUrl,
+        controllerVersion: queryVersion(controllerUrl),
+        workerUrls,
+        workerVersions: workerUrls.map(queryVersion),
+      }
+    })
+
+  const assertRuntimeVersionContract = async () => {
+    const state = await readRuntimeVersionState()
+    assert.equal(typeof state.cachedManifestVersion, 'string')
+    assert.equal(
+      state.domMetaVersion,
+      state.cachedManifestVersion,
+      `hydration must preserve the offline manifest version meta; received ${JSON.stringify(state)}`,
+    )
+    assert.equal(
+      state.controllerVersion,
+      state.cachedManifestVersion,
+      `the controlling worker must use the cached manifest version; received ${JSON.stringify(state)}`,
+    )
+    assert.ok(
+      state.workerVersions.length > 0 &&
+        state.workerVersions.every((version) => version === state.cachedManifestVersion),
+      `every registered worker must use the cached manifest version; received ${JSON.stringify(state)}`,
+    )
+  }
+
+  const assertHydratedOfflineRuntime = async () => {
+    await page.locator('.offline-banner').waitFor({ state: 'visible', timeout: 10000 })
+    await waitForBrowserFrames()
+    assertNoBrowserErrors()
+    await assertRuntimeVersionContract()
+    await assertNoMountOfflineStatusAnalytics()
+  }
 
   const waitForCachedNavigation = (pathname) =>
     page.waitForFunction(
@@ -308,6 +496,8 @@ async function verifyBrowserFlow(setOriginOffline) {
       timeout: 30000,
     })
     await waitForCachedNavigation(startPath)
+    await assertOfflineStatusAnalyticsTransitions()
+    assertNoBrowserErrors()
 
     const allowlistedRemoteUrl = await page.evaluate(async () => {
       const manifest = await fetch('/offline-manifest.json', { cache: 'no-store' }).then((response) => response.json())
@@ -395,6 +585,11 @@ async function verifyBrowserFlow(setOriginOffline) {
       })
       await page.waitForFunction(() => document.title.length > 0, null, { timeout: 10000 })
     }
+
+    await page.reload({ waitUntil: 'commit', timeout: 15000 })
+    await page.waitForFunction(() => document.title.length > 0, null, { timeout: 10000 })
+    await assertHydratedOfflineRuntime()
+    assert.equal(await page.title(), onlineTitle, 'offline hard reload should retain the cached page')
 
     const siblingAssetAvailableOffline = await page.evaluate(async (siblingAssetPath) => {
       try {
@@ -499,6 +694,7 @@ async function verifyBrowserFlow(setOriginOffline) {
       `expected an owned but uncached page to fall back to the offline route; received ${JSON.stringify(fallbackState)}`,
     )
     assert.match(await page.title(), /offline|ngoại tuyến|hors ligne/i)
+    await assertHydratedOfflineRuntime()
 
     const siblingPage = await context.newPage()
     let siblingNavigationFailed = false

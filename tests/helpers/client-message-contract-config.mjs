@@ -24,7 +24,6 @@ const SCOPED_PROVIDER_PLACEMENTS = {
 const CLIENT_PROVIDER_CONSUMER_ROUTES = {
   "src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx": "site",
   "src/app/[locale]/(site)/blog/[category]/page.tsx": "blog",
-  "src/app/[locale]/(site)/gallery/page.tsx": "gallery",
   "src/app/[locale]/(site)/notes/[slug]/page.tsx": "site",
   "src/app/[locale]/(site)/offline/page.tsx": "site",
   "src/components/AppFooter.tsx": "site",
