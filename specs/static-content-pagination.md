@@ -103,7 +103,7 @@ existing IDs must not be renamed or renumbered.
 - `npm run typecheck`
 - `npm run lint`
 - `npm test`
-- `npm run build:fast`
+- `npm run build`
 - Inspect exported page canonicals, `ItemList`, pagination anchors, search JSON,
   and raw/gzip HTML size for English blog and notes page one.
 

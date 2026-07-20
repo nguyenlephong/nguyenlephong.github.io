@@ -116,7 +116,7 @@ jobs:
         run: echo "SonarQube scan skipped because SONAR_TOKEN is not configured."
 
   build:
-    name: Smoke build
+    name: Build and verify static artifact
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -142,10 +142,8 @@ jobs:
       - name: Verify concurrent development first hits
         run: npm run verify:dev-concurrency
 
-      # Skip OG-image generation for speed; this still runs the full
-      # `next build` and fails on any compile / type / lint error.
-      - name: Build (static export, OG skipped)
-        run: npm run build:fast
+      - name: Build complete static export
+        run: npm run build
 
       - name: Verify architecture and SEO budgets
         run: npm run verify:artifact

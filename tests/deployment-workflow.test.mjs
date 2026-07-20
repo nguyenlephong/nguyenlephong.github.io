@@ -150,8 +150,8 @@ test('CI is read-only, never persists checkout credentials, and scopes SONAR_TOK
   assert.match(sonarScan, /SONAR_TOKEN: \$\{\{ secrets\.SONAR_TOKEN \}\}/)
 })
 
-test('CI verifies Studio and offline behavior after its single smoke build', () => {
-  const buildIndex = ciWorkflow.indexOf('run: npm run build:fast')
+test('CI verifies Studio and offline behavior after its single complete artifact build', () => {
+  const buildIndex = ciWorkflow.indexOf('run: npm run build')
   const publicationReadinessIndex = ciWorkflow.indexOf(
     'run: npm run verify:og-publication:live -- --include-scheduled',
   )
@@ -169,13 +169,17 @@ test('CI verifies Studio and offline behavior after its single smoke build', () 
       studioIndex < runtimeBoundaryIndex &&
       runtimeBoundaryIndex < offlineIndex,
   )
-  assert.equal(ciWorkflow.match(/run: npm run build:fast\s*$/gm)?.length, 1)
+  assert.equal(ciWorkflow.match(/run: npm run build\s*$/gm)?.length, 1)
+  assert.doesNotMatch(ciWorkflow, /run: npm run build:fast\s*$/m)
   assert.equal(ciWorkflow.match(/run: npm run verify:performance-artifact\s*$/gm)?.length, 1)
   assert.equal(ciWorkflow.match(/run: npm run verify:studio-artifact\s*$/gm)?.length, 1)
   assert.equal(ciWorkflow.match(/run: npm run verify:runtime-boundaries\s*$/gm)?.length, 1)
   assert.equal(pkg.scripts['verify:performance-artifact'], 'node scripts/verify-performance-artifact.mjs')
   assert.equal(pkg.scripts['verify:studio-artifact'], 'node scripts/verify-studio-artifact.mjs')
   assert.equal(pkg.scripts['verify:runtime-boundaries'], 'node scripts/verify-runtime-boundaries.mjs')
+  assert.equal(pkg.scripts.build, 'node scripts/build-og.mjs --full')
+  assert.equal(pkg.scripts['build:fast'], 'node scripts/build-og.mjs --skip')
+  assert.doesNotMatch(pkg.scripts.quality, /npm run build:fast/)
   assert.match(ciWorkflow, /npx playwright install --with-deps chromium/)
 })
 

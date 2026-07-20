@@ -16,7 +16,7 @@ Deployment_Node(dev_machine, "Developer Machine", "macOS / Node.js", "Local edit
 Deployment_Node(github, "GitHub", "Repository and automation") {
   Container(source_repo, "Remote Repository", "GitHub", "Stores committed source and content.")
   Deployment_Node(actions, "GitHub Actions Runner", "Ubuntu / Node 22") {
-    Container(ci_quality, "Quality Job", "npm", "Runs typecheck, lint, node tests, fast smoke build, and artifact budgets.")
+    Container(ci_quality, "Frontend CI Jobs", "npm", "Separate quality and build jobs run typecheck, lint, node tests, a full static production build, and artifact/runtime gates.")
     Container(build_job, "Pages Build Job", "Next.js static export", "Runs source checks, one full build, SEO and artifact verification, then uploads the Pages artifact.")
     ContainerDb(actions_cache, "Actions Cache", "GitHub cache", "Caches node dependencies and public/og-cache entries.")
   }

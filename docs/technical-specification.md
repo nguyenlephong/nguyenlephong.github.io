@@ -67,7 +67,7 @@ The locale prefix is always present in public URLs.
 | Engagement storage      | Firebase Firestore                        | Public article counters for views, shares, and reactions.                                                |
 | Static hosting          | GitHub Pages                              | Main deployment target for the `out/` static export.                                                     |
 | Optional hosting config | Firebase Hosting                          | `firebase.json` also points hosting at `out/`.                                                           |
-| Quality gates           | ESLint 9, TypeScript, Node test runner    | CI type-checks, lints, runs tests, and smoke-builds.                                                     |
+| Quality gates           | ESLint 9, TypeScript, Node test runner    | PR CI type-checks, lints, runs tests, then performs a full static production build with artifact and runtime gates. |
 | Package tooling         | npm, Bun scripts                          | npm is used for install and CI. Some deploy scripts call `bun run`.                                      |
 
 ## 4. High-Level Architecture
@@ -679,7 +679,7 @@ npm run verify:og-publication:live -- --include-scheduled
 | Command      | Meaning                                                               |
 |--------------|-----------------------------------------------------------------------|
 | `build`      | Full static export with full OG generation.                           |
-| `build:fast` | Static export with dynamic OG generation skipped/restored from cache. |
+| `build:fast` | Non-deployable compile/smoke export with dynamic OG generation skipped/restored from cache; never use its output for artifact verification or publishing. |
 | `build:og`   | Targeted OG build helper.                                             |
 | `analyze`    | Writes the official Next.js bundle analysis to `.next/diagnostics/analyze` without starting a server. |
 | `verify:artifact` | Verifies output size, route assets, SEO output, and public-secret guardrails without rebuilding. |
@@ -944,7 +944,7 @@ An emergency rollback is an explicit control-plane operation:
 
 | Workflow                            | Trigger                           | Responsibility                                                      |
 |-------------------------------------|-----------------------------------|---------------------------------------------------------------------|
-| `.github/workflows/ci-frontend.yml` | Pull requests and pushes to `dev` | Type-check, lint, tests, public live released-plus-scheduled OG readiness, one fast smoke build, artifact/SEO verification, and offline browser verification. |
+| `.github/workflows/ci-frontend.yml` | Pull requests and pushes to `dev` | Type-check, lint, tests, public live released-plus-scheduled OG readiness, one full production build, artifact/SEO verification, and offline browser verification. |
 | `.github/workflows/nextjs.yml`      | Pushes, daily schedule, or manual dispatch on `main` | Source checks, public live released-plus-scheduled OG readiness, one full build, released-only live OG and artifact/SEO/offline verification, official Pages artifact upload and deployment. |
 
 ## 13. Deployment View

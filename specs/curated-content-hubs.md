@@ -280,7 +280,7 @@ Use the fixed date for the reproducible route and sitemap assertions:
 
 ```bash
 CONTENT_BUILD_DATE=2026-07-19 npm test
-CONTENT_BUILD_DATE=2026-07-19 npm run build:fast
+CONTENT_BUILD_DATE=2026-07-19 npm run build
 npm run verify:pagination
 npm run verify:artifact
 npm run verify:performance-artifact

@@ -2,17 +2,19 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
+// Complete acceptance-label snapshot at this change's HEAD. Comparing it as a
+// prefix preserves every existing label while allowing future append-only IDs.
 const BASELINE_LABELS = {
   "specs/authored-content-static-export.md": Array.from(
-    { length: 15 },
+    { length: 17 },
     (_, index) => `${index + 1}.`
   ),
   "specs/content-list-loading-performance.md": Array.from(
-    { length: 6 },
+    { length: 12 },
     (_, index) => `${index + 1}.`
   ),
   "specs/content-publication-lifecycle.md": Array.from(
-    { length: 9 },
+    { length: 12 },
     (_, index) => `AC-CPL-${String(index + 1).padStart(3, "0")}`
   ),
   "specs/curated-content-hubs.md": Array.from(
@@ -20,19 +22,19 @@ const BASELINE_LABELS = {
     (_, index) => `AC-CCH-${String(index + 1).padStart(3, "0")}`
   ),
   "specs/engagement-provider-boundary.md": Array.from(
-    { length: 8 },
+    { length: 11 },
     (_, index) => `ENG-${String(index + 1).padStart(3, "0")}`
   ),
   "specs/seo-field-data-monitoring.md": Array.from(
-    { length: 9 },
+    { length: 11 },
     (_, index) => `${index + 1}.`
   ),
   "specs/static-content-pagination.md": Array.from(
-    { length: 13 },
+    { length: 17 },
     (_, index) => `AC-SCP-${String(index + 1).padStart(3, "0")}`
   ),
   "specs/static-performance-budgets.md": Array.from(
-    { length: 22 },
+    { length: 51 },
     (_, index) => `AC-SPB-${String(index + 1).padStart(3, "0")}`
   ),
   "specs/static-page-seo-localization.md": Array.from(
@@ -40,7 +42,7 @@ const BASELINE_LABELS = {
     (_, index) => `AC-SPS-${String(index + 1).padStart(3, "0")}`
   ),
   "specs/static-runtime-boundaries.md": Array.from(
-    { length: 11 },
+    { length: 20 },
     (_, index) => `AC-SRB-${String(index + 1).padStart(3, "0")}`
   )
 };
@@ -63,7 +65,7 @@ function acceptanceLabels(source) {
   return labels;
 }
 
-test("modified specs preserve every pre-existing acceptance label as a prefix", async () => {
+test("specs preserve the complete pinned acceptance-label sequence as a prefix", async () => {
   for (const [file, baseline] of Object.entries(BASELINE_LABELS)) {
     const current = acceptanceLabels(await readFile(file, "utf8"));
     assert.deepEqual(
