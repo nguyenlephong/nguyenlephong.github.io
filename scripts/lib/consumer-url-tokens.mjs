@@ -372,6 +372,33 @@ function encodeJsStringFragment(value, quote) {
   return encoded
 }
 
+export function resolveDecodedStringReplacementRange(boundaries, replacement) {
+  const { end, start } = replacement
+  if (
+    !Array.isArray(boundaries) ||
+    boundaries.length === 0 ||
+    !Number.isSafeInteger(start) ||
+    !Number.isSafeInteger(end) ||
+    start < 0 ||
+    end < start ||
+    end >= boundaries.length
+  ) {
+    throw new Error('cannot parse recognized Next Flight script: invalid string offset')
+  }
+
+  const rawStart = boundaries[start]
+  const rawEnd = boundaries[end]
+  if (
+    !Number.isSafeInteger(rawStart) ||
+    !Number.isSafeInteger(rawEnd) ||
+    rawStart < 0 ||
+    rawEnd < rawStart
+  ) {
+    throw new Error('cannot parse recognized Next Flight script: invalid string offset')
+  }
+  return { rawEnd, rawStart }
+}
+
 function nextFlightScriptReplacements(script, transform) {
   if (!script.includes('self.__next_f')) return []
   const source = ts.createSourceFile(
@@ -420,11 +447,10 @@ function nextFlightScriptReplacements(script, transform) {
       throw new Error('cannot parse recognized Next Flight script: string decoding mismatch')
     }
     for (const replacement of planLooseTextReplacements(decoded.decoded, transform)) {
-      const rawStart = decoded.boundaries[replacement.start]
-      const rawEnd = decoded.boundaries[replacement.end]
-      if (rawStart === undefined || rawEnd === undefined) {
-        throw new Error('cannot parse recognized Next Flight script: invalid string offset')
-      }
+      const { rawEnd, rawStart } = resolveDecodedStringReplacementRange(
+        decoded.boundaries,
+        replacement,
+      )
       replacements.push({
         end: tokenStart + 1 + rawEnd,
         start: tokenStart + 1 + rawStart,

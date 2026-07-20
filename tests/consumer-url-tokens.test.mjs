@@ -4,7 +4,10 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import test from 'node:test'
 
-import { transformConsumerUrls } from '../scripts/lib/consumer-url-tokens.mjs'
+import {
+  resolveDecodedStringReplacementRange,
+  transformConsumerUrls,
+} from '../scripts/lib/consumer-url-tokens.mjs'
 
 const ALIAS = '/en/opengraph-image-shared'
 const CANONICAL = '/opengraph-image.png'
@@ -13,6 +16,30 @@ function canonicalize(value) {
   if (!value.startsWith(ALIAS)) return value
   return `${CANONICAL}${value.slice(ALIAS.length)}`
 }
+
+test('validates decoded Next Flight replacement offsets before indexing boundaries', () => {
+  assert.deepEqual(
+    resolveDecodedStringReplacementRange([0, 1, 6], { end: 2, start: 1 }),
+    { rawEnd: 6, rawStart: 1 },
+  )
+
+  const invalidRanges = [
+    { boundaries: [], replacement: { end: 0, start: 0 } },
+    { boundaries: [0, 1], replacement: { end: 1, start: -1 } },
+    { boundaries: [0, 1], replacement: { end: 1, start: 0.5 } },
+    { boundaries: [0, 1], replacement: { end: 0.5, start: 0 } },
+    { boundaries: [0, 1], replacement: { end: 0, start: 1 } },
+    { boundaries: [0, 1], replacement: { end: 2, start: 0 } },
+    { boundaries: [0, Number.NaN], replacement: { end: 1, start: 0 } },
+  ]
+
+  for (const { boundaries, replacement } of invalidRanges) {
+    assert.throws(
+      () => resolveDecodedStringReplacementRange(boundaries, replacement),
+      /invalid string offset/,
+    )
+  }
+})
 
 test('rewrites React-escaped CSS URLs in style attributes without changing URL semantics', () => {
   const markup = renderToStaticMarkup(

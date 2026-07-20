@@ -5,6 +5,10 @@ import ts from "typescript";
 const APP_SOURCE_PATTERN = /\.(?:ts|tsx)$/;
 const CSS_SPECIFIER_PATTERN = /\.css(?:\?[^#]*)?(?:#[^?]*)?$/i;
 
+function compareText(left, right) {
+  return left.localeCompare(right, "en");
+}
+
 function normalizePath(value) {
   return value.split(path.sep).join(path.posix.sep);
 }
@@ -157,15 +161,14 @@ export function inspectCssImports(sources) {
   }
 
   const byLocation = (left, right) =>
-    left.importer.localeCompare(right.importer, "en") ||
-    left.stylesheet.localeCompare(right.stylesheet, "en");
+    compareText(left.importer, right.importer) ||
+    compareText(left.stylesheet, right.stylesheet);
   staticImports.sort(byLocation);
   dynamicImports.sort(byLocation);
   typeOnlyCssImports.sort(byLocation);
   unresolvedDynamicImports.sort(
     (left, right) =>
-      left.importer.localeCompare(right.importer, "en") ||
-      left.start - right.start
+      compareText(left.importer, right.importer) || left.start - right.start
   );
   return {
     dynamicImports,
@@ -210,12 +213,12 @@ export function validateCssImportOwnership(inventory, expectedImporters) {
 
   for (const [stylesheet, expected] of Object.entries(expectedImporters)) {
     const actual = actualImporters.get(stylesheet) ?? new Set();
-    for (const importer of [...expected].sort()) {
+    for (const importer of [...expected].sort(compareText)) {
       if (!actual.has(importer)) {
         violations.push(`Missing CSS importer for ${stylesheet}: ${importer}`);
       }
     }
-    for (const importer of [...actual].sort()) {
+    for (const importer of [...actual].sort(compareText)) {
       if (!expected.includes(importer)) {
         violations.push(
           `Unexpected CSS importer for ${stylesheet}: ${importer}`
@@ -224,7 +227,7 @@ export function validateCssImportOwnership(inventory, expectedImporters) {
     }
   }
 
-  for (const stylesheet of [...actualImporters.keys()].sort()) {
+  for (const stylesheet of [...actualImporters.keys()].sort(compareText)) {
     if (!(stylesheet in expectedImporters)) {
       violations.push(`Unexpected imported stylesheet: ${stylesheet}`);
     }

@@ -971,6 +971,26 @@ test("rejects malformed public CSS route and owner contracts", async (t) => {
   }
 });
 
+test("accepts exact public CSS contracts regardless of key insertion order", async (t) => {
+  const { rootDir, configPath } = createFixture(t);
+  const config = JSON.parse(readFileSync(configPath, "utf8"));
+  const publicInitialCss = config.performance.publicInitialCss;
+  publicInitialCss.ownerSelectors = Object.fromEntries(
+    Object.entries(publicInitialCss.ownerSelectors).reverse()
+  );
+  publicInitialCss.routes = Object.fromEntries(
+    Object.entries(publicInitialCss.routes).reverse()
+  );
+  writeFileSync(configPath, JSON.stringify(config));
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.deepEqual(report.failures, []);
+});
+
 test("keeps total RSC capacity advisory while enforcing average and Studio contracts", async (t) => {
   const { rootDir, outDir, chunksDir } = createFixture(t, {
     maxBrotliBytes: 1,

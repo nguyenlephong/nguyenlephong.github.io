@@ -8,6 +8,10 @@ const LOCK_SCHEMA_VERSION = 1
 const MALFORMED_LOCK_GRACE_MS = 60_000
 const TRANSACTION_PREFIX = '.postbuild-og-transaction-'
 
+function comparePaths(left, right) {
+  return left.localeCompare(right, 'en')
+}
+
 function toPosix(value) {
   return value.split(path.sep).join('/')
 }
@@ -376,11 +380,11 @@ export async function applyOgArtifactTransaction({
         .map(({ path: value }) => value),
       ...plannedRemovals.map(({ path: value }) => value),
     ]),
-  ].sort()
+  ].sort(comparePaths)
   const originalAbsent = plannedWrites
     .filter(({ expectedExisting }) => !expectedExisting)
     .map(({ path: value }) => value)
-    .sort()
+    .sort(comparePaths)
   const journal = {
     version: 1,
     state: 'prepared',

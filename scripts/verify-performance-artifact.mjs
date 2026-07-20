@@ -61,6 +61,10 @@ const REQUIRED_PUBLIC_CSS_ROUTES = Object.freeze({
 const CHUNK_REFERENCE_PATTERN =
   /(?:\/?_next\/)?static\/chunks\/[^"'`\\\s?#]+\.js/g;
 
+function compareText(left, right) {
+  return left.localeCompare(right, "en");
+}
+
 function attributeValue(tag, name) {
   const expression = new RegExp(
     `\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`,
@@ -199,7 +203,7 @@ function thirdPartyConnectionOrigins(html, siteOrigin) {
     if (url.origin !== siteOrigin) origins.add(url.origin);
   }
 
-  return [...origins].sort((left, right) => left.localeCompare(right));
+  return [...origins].sort(compareText);
 }
 
 function isRscTextFile(index, relativePath) {
@@ -218,8 +222,8 @@ function addLimitFailure(failures, label, actual, limit) {
 
 function hasExactKeys(value, expectedKeys) {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
-  const actual = Object.keys(value).sort();
-  const expected = [...expectedKeys].sort();
+  const actual = Object.keys(value).sort(compareText);
+  const expected = [...expectedKeys].sort(compareText);
   return (
     actual.length === expected.length &&
     actual.every((key, index) => key === expected[index])

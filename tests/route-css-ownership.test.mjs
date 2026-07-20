@@ -111,6 +111,51 @@ test("the CSS import contract catches route leakage and dynamic CSS imports", ()
   ]);
 });
 
+test("CSS ownership violations use deterministic text ordering", () => {
+  const inventory = {
+    dynamicImports: [],
+    staticImports: [
+      {
+        importer: "src/app/z/page.tsx",
+        specifier: "../shared.css",
+        stylesheet: "src/app/shared.css"
+      },
+      {
+        importer: "src/app/A/page.tsx",
+        specifier: "../shared.css",
+        stylesheet: "src/app/shared.css"
+      },
+      {
+        importer: "src/app/z/page.tsx",
+        specifier: "../z.css",
+        stylesheet: "src/app/z.css"
+      },
+      {
+        importer: "src/app/A/page.tsx",
+        specifier: "../A.css",
+        stylesheet: "src/app/A.css"
+      }
+    ],
+    typeOnlyCssImports: [],
+    unresolvedDynamicImports: []
+  };
+
+  assert.deepEqual(
+    validateCssImportOwnership(inventory, {
+      "src/app/shared.css": [],
+      "src/app/missing.css": ["src/app/z/page.tsx", "src/app/A/page.tsx"]
+    }),
+    [
+      "Unexpected CSS importer for src/app/shared.css: src/app/A/page.tsx",
+      "Unexpected CSS importer for src/app/shared.css: src/app/z/page.tsx",
+      "Missing CSS importer for src/app/missing.css: src/app/A/page.tsx",
+      "Missing CSS importer for src/app/missing.css: src/app/z/page.tsx",
+      "Unexpected imported stylesheet: src/app/A.css",
+      "Unexpected imported stylesheet: src/app/z.css"
+    ]
+  );
+});
+
 test("type-only CSS imports fail without satisfying runtime ownership", () => {
   const inventory = inspectCssImports({
     "src/app/type-only/page.tsx": `
