@@ -5,8 +5,7 @@ on:
     types: [opened, reopened, ready_for_review]
 
 permissions:
-  issues: write
-  pull-requests: read
+  pull-requests: write
 
 jobs:
   assign:
@@ -20,16 +19,48 @@ jobs:
           script: |
             const defaultAssignee = 'nguyenlephong'
             const { owner, repo } = context.repo
-            const issue_number = context.payload.pull_request.number
-            const existingAssignees = context.payload.pull_request.assignees.map(
-              (assignee) => assignee.login,
-            )
+            const pullNumber = context.payload.pull_request.number
+            const hasDefaultAssignee = async () => {
+              const { data: pullRequest } = await github.rest.pulls.get({
+                owner,
+                repo,
+                pull_number: pullNumber,
+              })
 
-            if (!existingAssignees.includes(defaultAssignee)) {
+              return pullRequest.assignees.some(
+                (assignee) => assignee.login === defaultAssignee,
+              )
+            }
+
+            if (await hasDefaultAssignee()) return
+
+            let assignmentError
+            try {
               await github.rest.issues.addAssignees({
                 owner,
                 repo,
-                issue_number,
+                issue_number: pullNumber,
                 assignees: [defaultAssignee],
               })
+            } catch (error) {
+              assignmentError = error
             }
+
+            let assignmentConfirmed
+            try {
+              assignmentConfirmed = await hasDefaultAssignee()
+            } catch (verificationError) {
+              if (assignmentError) {
+                throw new AggregateError(
+                  [assignmentError, verificationError],
+                  'Assignment failed and live pull request verification also failed',
+                )
+              }
+              throw verificationError
+            }
+
+            if (assignmentConfirmed) return
+            if (assignmentError) throw assignmentError
+            throw new Error(
+              'Assignment request completed but the repository owner is still unassigned',
+            )
