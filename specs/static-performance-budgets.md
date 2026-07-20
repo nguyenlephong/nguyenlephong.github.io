@@ -69,6 +69,11 @@ route-oriented measurements.
   the direct scripts and require Studio route analytics/module markers in the
   reachable chunk graph, so valid route splitting cannot look like a missing
   runtime and an accidental empty or unrelated bundle cannot pass.
+- Require a deferred-stats marker in the Blog and Notes direct scripts, and
+  reject stable Firebase configuration and Firestore loader markers from those
+  same initial graphs. This source-independent artifact check complements the
+  Brotli ceilings: a provider can regress eagerly without first exceeding a
+  byte budget.
 - Enforce the Studio direct-script ceiling at 176,128 bytes Brotli, a narrow
   allowance over the 2026-07-19 measured 169,964-byte entry. Parse emitted
   Turbopack `Promise.all` loader groups as atomic downloads, including every
@@ -91,15 +96,87 @@ route-oriented measurements.
   JavaScript reads. File sizes use metadata reads, and localized RSC bodies are
   checked sequentially outside the content cache, so the complete scope scan
   does not retain the full corpus in Node.js memory.
+- Discover Next.js route social images only from the concrete routes in
+  `.next/prerender-manifest.json`; a matching basename elsewhere in `out/` does
+  not establish ownership. Require one regular artifact form per declared
+  route, canonicalize Unicode and percent-encoded path segments, then group the
+  declared candidates by SHA-256 digest. A byte-identical group keeps
+  `/opengraph-image.png` when present; otherwise it keeps the shortest URL and
+  then the lexical winner.
+- Rewrite exact root-relative or same-origin aliases only as complete,
+  consumer-aware URL values: relevant HTML/HTM attributes, source-set
+  candidates, inline style attributes and style blocks parsed as CSS, JSON/Web
+  Manifest string values, structural RSC/TXT quoted values, and CSS `url(...)`
+  arguments. Source-set candidates support `x` and `w` descriptors and fail
+  closed on malformed descriptors without splitting commas inside `data:` URLs.
+  Preserve query, fragment, slash escaping, quote style, and surrounding source
+  formatting. JavaScript files, arbitrary HTML script bodies, CSS
+  strings/comments, ordinary prose,
+  protocol-relative values, external origins, and aliases embedded inside
+  non-HTTP values are excluded. The sole script-body exception is an AST-proven
+  `self.__next_f.push(...)` payload: decode only its JavaScript string literals,
+  apply the structural RSC/TXT rules, and re-encode only changed source spans.
+  An independent context-aware alias-absence proof must pass before pruning;
+  the artifact verifier independently resolves the same consumer contexts to
+  remaining local files.
+- Apply normalization writes, consumer rewrites, and duplicate removals through
+  an in-output same-filesystem transaction workspace created only after the
+  artifact inventory. Preflight the complete plan before the
+  first mutation, back up every changed file, journal state transitions, roll
+  back handled failures, and recover stale `applying` journals before building
+  the shared artifact inventory. Persist a manifest-bound committed route map
+  bound to the output directory identity before transaction commit so only a
+  same-tree second invocation can prove intentional pruning and remain
+  idempotent. Hold one output-scoped transform lock through OG and offline
+  generation. Run this transform before deriving the offline manifest so page
+  versions describe the final HTML.
 - Expose the official dependency-free Next.js analyzer as
   `npm run analyze`. Its output remains under the ignored
   `.next/diagnostics/analyze` directory.
+- Measure initial document CSS for representative Home, About, Gallery, Apps,
+  English practice, offline, Blog archive, Notes archive, Blog article, and
+  Notes article HTML entries. Each route has an explicit maximum local
+  stylesheet count and total Brotli ceiling based on a fresh complete export;
+  missing samples or stylesheets fail closed.
+- Verify CSS ownership from parsed and normalized emitted selectors rather than
+  hashed chunk names or minifier-specific serialization. A route must contain
+  its declared owner selectors and must not contain selectors owned by unrelated
+  surfaces. PostCSS owns the stylesheet grammar and a selector AST owns exact
+  class-token matching, including nested rules and `@scope` roots and limits;
+  declarations, custom-property value blocks, and keyframe frames are not
+  selectors. The gate reports both raw and Brotli totals, while Brotli bytes and
+  request count are the hard transfer guards.
 
 The first hard ceilings are the 2026-07-18 fixed-date baseline plus a narrow
 route-level tolerance. They are regression guards, not performance goals. The
 total RSC warning has more capacity runway because it includes legitimate
 content growth. Each later optimization commit must lower the relevant hard
 ceiling after its new baseline is verified.
+
+After the deferred engagement boundary, the 2026-07-20 complete export measured
+Blog at 213,534 bytes and Notes at 213,444 bytes Brotli. Their hard ceilings are
+therefore lowered from 219,136 to 217,088 bytes, retaining a small build-variance
+allowance while locking in the verified reduction.
+
+After the route-owned CSS split and dead Notes-chambers cleanup, the 2026-07-20
+complete export measured the following initial document CSS. The prior shared
+bundle cost 19,439 Brotli bytes
+on non-content routes, 27,474 on Blog, and 30,800 on Notes. The new routes remain
+below those transfer baselines even where one route-owned stylesheet adds a
+request. Hard limits retain a narrow deterministic-build allowance:
+
+| Route | Stylesheets | Measured raw | Measured Brotli | Brotli limit |
+|-------|-------------:|-------------:|----------------:|--------------:|
+| Home | 3 | 43,743 | 8,990 | 9,216 |
+| About | 3 | 30,045 | 6,666 | 6,912 |
+| Gallery | 3 | 37,661 | 7,826 | 8,192 |
+| Apps | 3 | 42,422 | 8,812 | 9,216 |
+| English practice | 3 | 36,573 | 7,599 | 7,936 |
+| Offline | 3 | 24,988 | 5,761 | 6,144 |
+| Blog archive | 3 | 73,416 | 13,188 | 13,568 |
+| Notes archive | 4 | 80,874 | 15,144 | 15,616 |
+| Blog article | 4 | 95,826 | 17,632 | 18,176 |
+| Notes article | 5 | 103,284 | 19,588 | 20,096 |
 
 ## Acceptance criteria
 
@@ -168,6 +245,144 @@ ceiling after its new baseline is verified.
 - **AC-SPB-022:** Curated series and topic routes serialize exactly the shared
   `site` message scope, with no Blog/Notes surface provider or full Explorer
   search payload.
+- **AC-SPB-023:** Blog and Notes direct JavaScript contains the declared
+  deferred archive marker and none of the configured Firebase/Firestore
+  provider markers; malformed or empty marker configuration fails closed.
+- **AC-SPB-024:** The complete-export browser gate observes zero same-origin RSC
+  and engagement-provider chunk requests on an untouched Blog archive,
+  permits category hover to prefetch only its destination, and confirms first
+  scroll reaches the deferred stats provider.
+- **AC-SPB-025:** The same browser gate emulates `Save-Data`, requires the Notes
+  archive to report a skipped state, and observes no provider chunk after
+  scrolling.
+- **AC-SPB-026:** The complete export measures the configured ten-route public
+  CSS matrix, fails on missing or duplicate route samples, and enforces each
+  route's maximum local stylesheet count and total Brotli bytes.
+- **AC-SPB-027:** Emitted public CSS is checked with stable owner selectors, so
+  Home, About, Gallery, Apps, English practice, offline, and reader styles
+  cannot leak into unrelated initial routes even when chunk hashes change.
+- **AC-SPB-028:** The source contract rejects client-side dynamic CSS imports,
+  keeps shared selectors in `globals.css`, and requires the reader stylesheet
+  only from both nested article layouts.
+- **AC-SPB-029:** The source contract inventories every CSS import in every
+  `src/app` TypeScript entry and requires the exact importer set for document,
+  global, route, Blog, Notes, and reader stylesheets; an extra importer fails.
+- **AC-SPB-030:** Owner isolation parses normalized selector lists through the
+  nested at-rule contexts used by the emitted CSS. Equivalent whitespace or
+  minifier formatting cannot create false failures, while missing and unrelated
+  owner selectors still fail.
+- **AC-SPB-031:** Notes archive and article budgets use the complete export after
+  removing the unconsumed chambers, entry, and chamber-navigation rules. The
+  dynamically constructed English result-state selectors remain because they
+  have a runtime consumer.
+- **AC-SPB-032:** The CSS import inventory resolves only string literals,
+  no-substitution templates, recursively static template interpolations, and
+  literal `+` concatenations. Any unresolved `import()` or `require()` module
+  specifier fails closed, even when its source text does not contain `.css`.
+- **AC-SPB-033:** Emitted selector ownership uses PostCSS plus a selector AST,
+  includes `@scope` root and limit selectors, matches exact class tokens, and
+  excludes declaration values, custom-property blocks, and standard or
+  vendor-prefixed keyframe frames.
+- **AC-SPB-034:** A type-only CSS import is reported as non-runtime and cannot
+  satisfy a stylesheet's declared importer. Type-only non-CSS imports remain
+  outside the stylesheet inventory.
+- **AC-SPB-035:** Byte-identical emitted OpenGraph/Twitter route images retain
+  one deterministic canonical artifact. Different digests and non-social PNGs
+  are preserved, and a second post-build run performs no further rewrite or
+  deletion.
+- **AC-SPB-036:** Duplicate route social images are removed only after every
+  HTML and RSC/text consumer has been rewritten and validated. The artifact
+  verifier fails on any remaining local social-image URL whose target is
+  missing.
+- **AC-SPB-037:** Offline manifest generation runs after social-image
+  canonicalization, remains sorted and unique, and hashes the final rewritten
+  HTML without owning a removed duplicate URL.
+- **AC-SPB-038:** Social-image candidates come only from valid concrete
+  `prerender-manifest.json` image routes. A missing, ambiguous, non-regular, or
+  inconsistent declared artifact fails before mutation, while a manual
+  lookalike PNG outside that inventory remains untouched.
+- **AC-SPB-039:** Canonicalization rewrites only exact root-relative or exact
+  same-origin Unicode/percent-normalized paths in HTML, HTM, RSC, TXT, JSON,
+  CSS, and Web Manifest files; it preserves query, fragment, and escaped-slash
+  form, does not use suffix matching, and never rewrites JavaScript or an
+  external origin.
+- **AC-SPB-040:** Normalization, consumer promotion, and prune failures restore
+  the byte-identical pre-run tree. A stale applying journal is recovered before
+  inventory creation, path collisions fail during preflight, and a committed
+  manifest-bound route map makes a second run a no-op.
+- **AC-SPB-041:** Consumer planning reads the supported corpus without adding it
+  to the shared content cache, spools only changed bodies into the in-output
+  transaction workspace, and retains a concurrency-bounded working set rather
+  than the complete HTML/RSC/TXT corpus.
+- **AC-SPB-042:** One PID/token-owned transform lock covers stale recovery,
+  inventory, OG commit, and offline derivation. A live owner is never displaced;
+  a dead owner can be retired safely. Committed route state is bound to the
+  output directory identity and invalidated before the official wrapper creates
+  a fresh export.
+- **AC-SPB-043:** The final preflight verifies expected byte length and SHA-256
+  for every existing write/removal immediately before `applying`. A failure in
+  `prepared` state performs no rollback mutation, and URL rewriting ignores
+  protocol-relative and non-HTTP schemes including `data:`, `urn:`, `mailto:`,
+  and `javascript:`.
+- **AC-SPB-044:** Social-image rewriting and missing-target verification operate
+  only on complete URL tokens appropriate to each consumer: HTML metadata/asset
+  attributes, source sets, inline style attributes and style blocks parsed as
+  CSS, JSON/Web Manifest string values, structural RSC/TXT quoted values, and
+  CSS `url(...)` arguments. Aliases embedded in arbitrary script text,
+  JSON/RSC strings whose complete value is non-HTTP or prose,
+  CSS strings/comments/data URLs, or larger path substrings remain byte-identical;
+  surrounding whitespace, quote style, query/fragment text, and escaped-slash
+  form are preserved.
+- **AC-SPB-045:** Inline Next Flight metadata is rewritten only inside an
+  AST-recognized `self.__next_f.push(...)` call. Its JavaScript string literals
+  are decoded, transformed with the structural Flight quoted-value contract,
+  and re-encoded through byte-local source spans; escaped Unicode and
+  query/fragment text remain valid. A recognized malformed payload fails before
+  mutation. Arbitrary inline scripts and external JavaScript
+  remain untouched, and post-build verification finds no removed alias in
+  visible metadata, RSC/TXT consumers, or recognized Flight payloads.
+- **AC-SPB-046:** If an `applying` transaction cannot complete rollback, its
+  journal, backups, and moved files remain in the reported in-output recovery
+  workspace. The next lock owner retries that rollback before inventory; a
+  repeated recovery failure remains fail-closed and preserves the workspace.
+- **AC-SPB-047:** Social-image aliases in CSS `url(...)` values inside HTML
+  `style` attributes and `<style>` bodies are rewritten and independently
+  verified. CSS strings, comments, and non-HTTP/data values remain byte-identical.
+- **AC-SPB-048:** `srcset` and `imagesrcset` parsing accepts comma-adjacent
+  candidates with valid positive `x` or `w` descriptors, treats commas inside a
+  `data:` URL as URL data, and aborts before mutation on malformed, duplicate,
+  or mixed descriptor forms.
+- **AC-SPB-049:** The official build wrapper acquires the output-scoped lock
+  before invalidating export detail or committed OG state and before deleting
+  the prior output. It holds that lock through Next export and the shared
+  postbuild pipeline, avoids nested acquisition for its owned postbuild call,
+  and releases it on build, postbuild, or preparation failure. Direct postbuild
+  invocation still acquires the same lock.
+- **AC-SPB-050:** Every HTML URL-bearing `content`, `href`, `src`, `srcset`,
+  `imagesrcset`, and `style` attribute is interpreted after decoding named
+  `quot`, `apos`, `amp`, `lt`, and `gt` references plus valid decimal and
+  hexadecimal numeric references. An unchanged semantic value remains
+  byte-identical; a changed value is re-encoded only within its original
+  double-quoted, single-quoted, or unquoted attribute context. Unknown or
+  malformed references intersecting a candidate URL fail before mutation.
+  Source-set density descriptors accept every finite positive HTML
+  valid-floating-point form, including exponent notation, while width remains
+  a positive integer; zero, negative, non-finite, malformed, and mixed
+  descriptor kinds fail closed in both transformation and verification.
+- **AC-SPB-051:** AC-SPB-050's enumerated entity set and unknown-reference
+  failure rule are superseded by the HTML parser contract. Before URL,
+  source-set, or CSS parsing, the complete raw attribute is decoded in HTML
+  attribute context by the direct build-only `entities` dependency, including
+  the full named-reference table, numeric replacement rules, multi-code-point
+  references, and legacy semicolon behavior. A reference that the HTML parser
+  does not decode remains literal rather than becoming an error. Unchanged
+  semantic attributes remain byte-identical; a changed attribute is encoded
+  for its original quote or unquoted context and must parse back to the
+  transformed decoded value. Density uses exactly
+  `(?:\d+(?:\.\d+)?|\.\d+)(?:[eE][+-]?\d+)?` before the `x` suffix and must
+  also be finite and greater than zero, so `1`, `1.0`, `.5`, `1e0`, and
+  `1.0e+2` are accepted while `1.`, `1.e2`, zero, negative, non-finite, and
+  mixed descriptor forms fail closed.
 
 ## Verification
 
@@ -183,6 +398,24 @@ ceiling after its new baseline is verified.
 - Run the focused Studio artifact fixtures for direct/default budget overflow,
   complete `Promise.all` sibling accounting, reachable async accounting,
   all-route preload rejection, eager feature markers, and six-locale isolation.
+- Run archive marker fixtures plus the complete-export runtime boundary check
+  for untouched, category-hover, first-scroll, and `Save-Data` paths.
+- Run public-CSS artifact fixtures for request-count overflow, Brotli overflow,
+  missing route stylesheets, normalized selector equivalence through nested
+  at-rules and `@scope`, custom-property block exclusion, keyframe exclusion,
+  missing owners, and unrelated owner leakage. Run source fixtures for static
+  template and binary module specifiers plus unresolved identifier and function
+  expressions.
+- Run social-image fixtures for authoritative inventory failure, Unicode and
+  escaped URLs, external-origin and substring exclusion, every supported
+  consumer extension, JavaScript exclusion, collision preflight, three injected
+  transaction phases, incomplete-rollback workspace preservation and retry,
+  prepared-state and digest drift, live/dead and whole-build lock behavior,
+  concurrent destructive-prepare exclusion, HTML CSS contexts, valid and
+  malformed source sets including exponent density forms, React-escaped and
+  numeric and full named HTML attribute entities, parser-equivalent legacy and
+  non-decoding reference behavior, fresh-output state isolation, bounded
+  planning memory, stale-journal recovery, and idempotence.
 - Run `npm run verify:performance-artifact` against the fixed-date production
   export.
 - Run `npm run analyze` when investigating a bundle regression; the interactive

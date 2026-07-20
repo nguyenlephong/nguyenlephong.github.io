@@ -233,6 +233,33 @@ const GENERIC_SEO_ROUTES = {
   studio: { type: 'CollectionPage', fragment: 'studio' },
 }
 
+const STATIC_PAGE_SEO_POLICY = {
+  about: {
+    type: 'AboutPage',
+    fragment: 'aboutpage',
+    contentLocales: ['en', 'vi'],
+  },
+  apps: {
+    type: 'ItemList',
+    fragment: 'itemlist',
+    contentLocales: ['en', 'vi'],
+  },
+  gallery: {
+    type: 'ImageGallery',
+    fragment: 'gallery',
+    contentLocales: GENERIC_SEO_LOCALES,
+  },
+}
+
+const STATIC_PAGE_OG_LOCALES = {
+  en: 'en_US',
+  vi: 'vi_VN',
+  zh: 'zh_CN',
+  ja: 'ja_JP',
+  ko: 'ko_KR',
+  fr: 'fr_FR',
+}
+
 function writeLocalizedGenericSeoFixtures(outDir) {
   const sitemapEntries = []
 
@@ -299,6 +326,99 @@ function writeLocalizedGenericSeoFixtures(outDir) {
   writeFileSync(
     sitemapPath,
     readFileSync(sitemapPath, 'utf8').replace('</urlset>', `${sitemapEntries.join('')}</urlset>`),
+  )
+}
+
+function writeStaticPageSeoPolicyFixtures(outDir) {
+  const sitemapEntries = []
+
+  for (const [route, policy] of Object.entries(STATIC_PAGE_SEO_POLICY)) {
+    const htmlAlternates = policy.contentLocales
+      .map(
+        (locale) =>
+          `<link rel="alternate" hreflang="${locale}" href="https://example.com/${locale}/${route}">`,
+      )
+      .concat(
+        `<link rel="alternate" hreflang="x-default" href="https://example.com/en/${route}">`,
+      )
+      .join('')
+    const sitemapAlternates = policy.contentLocales
+      .map(
+        (locale) =>
+          `<xhtml:link rel="alternate" hreflang="${locale}" href="https://example.com/${locale}/${route}" />`,
+      )
+      .concat(
+        `<xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/en/${route}" />`,
+      )
+      .join('')
+
+    for (const routeLocale of GENERIC_SEO_LOCALES) {
+      const authored = policy.contentLocales.includes(routeLocale)
+      const contentLocale = authored ? routeLocale : 'en'
+      const canonical = `https://example.com/${contentLocale}/${route}`
+      const title = `${route} title ${contentLocale}`
+      const description = `${route} description ${contentLocale}`
+      const alternateOgLocales = authored
+        ? policy.contentLocales
+            .filter((locale) => locale !== contentLocale)
+            .map(
+              (locale) =>
+                `<meta property="og:locale:alternate" content="${STATIC_PAGE_OG_LOCALES[locale]}">`,
+            )
+            .join('')
+        : ''
+      const pageLd = {
+        '@context': 'https://schema.org',
+        '@type': policy.type,
+        '@id': `${canonical}#${policy.fragment}`,
+        name: title,
+        description,
+        inLanguage: contentLocale,
+        url: canonical,
+        ...(route === 'apps' ? { itemListElement: [] } : {}),
+      }
+
+      mkdirSync(path.join(outDir, routeLocale), { recursive: true })
+      writeFileSync(
+        path.join(outDir, routeLocale, `${route}.html`),
+        [
+          `<!doctype html><html lang="${routeLocale}"><head>`,
+          `<title>${title}</title>`,
+          `<meta name="description" content="${description}">`,
+          `<meta name="robots" content="${authored ? 'index, follow' : 'noindex, follow'}">`,
+          `<meta name="googlebot" content="${authored ? 'index, follow' : 'noindex, follow'}">`,
+          `<meta property="og:title" content="${title}">`,
+          `<meta property="og:description" content="${description}">`,
+          `<meta property="og:url" content="${canonical}">`,
+          `<meta property="og:locale" content="${STATIC_PAGE_OG_LOCALES[contentLocale]}">`,
+          alternateOgLocales,
+          `<meta name="twitter:title" content="${title}">`,
+          `<meta name="twitter:description" content="${description}">`,
+          `<link rel="canonical" href="${canonical}">`,
+          authored ? htmlAlternates : '',
+          '</head><body>',
+          `<main${authored ? '' : ` lang="${contentLocale}"`}>`,
+          `<h1>${title}</h1>`,
+          `<script type="application/ld+json">${JSON.stringify(pageLd)}</script>`,
+          '</main></body></html>',
+        ].join(''),
+      )
+
+      if (authored) {
+        sitemapEntries.push(
+          `<url><loc>https://example.com/${routeLocale}/${route}</loc>${sitemapAlternates}</url>`,
+        )
+      }
+    }
+  }
+
+  const sitemapPath = path.join(outDir, 'sitemap.xml')
+  writeFileSync(
+    sitemapPath,
+    readFileSync(sitemapPath, 'utf8').replace(
+      '</urlset>',
+      `${sitemapEntries.join('')}</urlset>`,
+    ),
   )
 }
 
@@ -754,6 +874,106 @@ test('rejects unlocalized generic page identities and a non-root Studio social i
   assert.match(failures, /fr\/studio\.html canonical must match localized page identity/)
 })
 
+test('verifies authored and fallback SEO policy across all 18 static page URLs', async (t) => {
+  const { rootDir, outDir } = createFixture(t, {
+    limits: { fileCount: 100 },
+    config: {
+      seo: {
+        locales: GENERIC_SEO_LOCALES,
+        requiredLocalizedRoutes: Object.keys(STATIC_PAGE_SEO_POLICY),
+        staticPageLocalization: Object.fromEntries(
+          Object.entries(STATIC_PAGE_SEO_POLICY).map(([route, policy]) => [
+            route,
+            { contentLocales: policy.contentLocales, fallbackLocale: 'en' },
+          ]),
+        ),
+      },
+    },
+  })
+  writeStaticPageSeoPolicyFixtures(outDir)
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.deepEqual(report.failures, [])
+  assert.equal(
+    report.seo.urlCount,
+    1 +
+      Object.values(STATIC_PAGE_SEO_POLICY).reduce(
+        (total, policy) => total + policy.contentLocales.length,
+        0,
+      ),
+  )
+})
+
+test('rejects fallback indexing, language drift, keyword inheritance, and metadata parity drift', async (t) => {
+  const { rootDir, outDir } = createFixture(t, {
+    limits: { fileCount: 100 },
+    config: {
+      seo: {
+        locales: GENERIC_SEO_LOCALES,
+        requiredLocalizedRoutes: Object.keys(STATIC_PAGE_SEO_POLICY),
+        staticPageLocalization: Object.fromEntries(
+          Object.entries(STATIC_PAGE_SEO_POLICY).map(([route, policy]) => [
+            route,
+            { contentLocales: policy.contentLocales, fallbackLocale: 'en' },
+          ]),
+        ),
+      },
+    },
+  })
+  writeStaticPageSeoPolicyFixtures(outDir)
+
+  const replaceInFixture = (relativePath, search, replacement) => {
+    const fixturePath = path.join(outDir, relativePath)
+    writeFileSync(fixturePath, readFileSync(fixturePath, 'utf8').replace(search, replacement))
+  }
+  replaceInFixture(
+    'fr/about.html',
+    '<meta name="robots" content="noindex, follow">',
+    '<meta name="robots" content="index, follow">',
+  )
+  replaceInFixture('ja/apps.html', '<main lang="en">', '<main>')
+  replaceInFixture(
+    'zh/about.html',
+    '<meta name="description" content="about description en">',
+    '<meta name="description" content="about description en"><meta name="keywords" content="">',
+  )
+  replaceInFixture(
+    'ko/gallery.html',
+    '<meta name="twitter:description" content="gallery description ko">',
+    '<meta name="twitter:description" content="drifted description">',
+  )
+  replaceInFixture(
+    'ko/about.html',
+    '<link rel="canonical" href="https://example.com/en/about">',
+    '<link rel="canonical" href="https://example.com/en/about"><link rel="alternate" hreflang="en" href="https://example.com/en/about">',
+  )
+  replaceInFixture(
+    'fr/apps.html',
+    '<meta name="googlebot" content="noindex, follow">',
+    '<meta name="googlebot" content="index, follow">',
+  )
+  const sitemapPath = path.join(outDir, 'sitemap.xml')
+  writeFileSync(
+    sitemapPath,
+    readFileSync(sitemapPath, 'utf8').replace(
+      '</urlset>',
+      '<url><loc>https://example.com/zh/apps</loc></url></urlset>',
+    ),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const failures = report.failures.join('\n')
+
+  assert.match(failures, /fr\/about\.html must be noindex under the static-page locale policy/)
+  assert.match(failures, /ja\/apps\.html fallback content boundary must declare lang=en/)
+  assert.match(failures, /zh\/about\.html focused static page must not emit meta keywords/)
+  assert.match(failures, /ko\/gallery\.html twitter:description must exactly match ImageGallery localized copy/)
+  assert.match(failures, /ko\/about\.html hreflang must contain only authored static-page locales/)
+  assert.match(failures, /zh\/apps\.html fallback static page leaked into sitemap\.xml/)
+  assert.match(failures, /fr\/apps\.html Googlebot robots must match the static-page index\/follow policy/)
+})
+
 test('requires local social images to have an emitted image file and matching signature', async (t) => {
   const { rootDir, outDir } = createFixture(t)
   const htmlPath = path.join(outDir, 'en.html')
@@ -776,6 +996,172 @@ test('requires local social images to have an emitted image file and matching si
   assert.match(failures, /og:image must use a supported image extension/)
   assert.match(failures, /og:image references a missing local image/)
   assert.match(failures, /twitter:image extension does not match its image signature/)
+})
+
+test('rejects dangling route social images in RSC consumers after canonicalization', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeFileSync(
+    path.join(outDir, 'en.txt'),
+    '[\\"https://example.com/removed/opengraph-image.png?flight\\",\\"/twitter-image.png\\"]',
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const failures = report.failures.join('\n')
+
+  assert.match(
+    failures,
+    /en\.txt social image consumer references a missing local image: \/removed\/opengraph-image\.png/,
+  )
+  assert.match(
+    failures,
+    /en\.txt social image consumer references a missing local image: \/twitter-image\.png/,
+  )
+})
+
+test('checks every supported social-image text consumer but excludes JavaScript', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  const consumers = {
+    'dangling.css': '.card{background:url("/removed/opengraph-image.png")}',
+    'dangling.htm': [
+      '<meta content="/removed/opengraph-image.png?one=1&amp;two=2">',
+      '<style>.hero{background:url("/removed/opengraph-image.png")}</style>',
+      '<div style="background:url(&quot;/removed/opengraph-image.png?one=1&amp;two=2&quot;)"></div>',
+      '<img srcset=" , /removed/opengraph-image.png?one=1&amp;two=2 1e0x,/removed/opengraph-image.png 2E+0x,">',
+    ].join(''),
+    'dangling.json': '{"image":"\\/removed\\/opengraph-image.png"}',
+    'dangling.rsc': '["/removed/opengraph-image.png"]',
+    'dangling.txt': '[\\"/removed/opengraph-image.png\\"]',
+    'dangling.webmanifest': '{"src":"/removed/opengraph-image.png"}',
+    'ignored.js': 'const image = "/removed/opengraph-image.png"',
+  }
+  for (const [file, content] of Object.entries(consumers)) {
+    writeFileSync(path.join(outDir, file), content)
+  }
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const failures = report.failures.join('\n')
+
+  for (const file of Object.keys(consumers).filter((value) => !value.endsWith('.js'))) {
+    assert.match(
+      failures,
+      new RegExp(`${file.replace('.', '\\.')} social image consumer references a missing local image`),
+    )
+  }
+  assert.doesNotMatch(failures, /ignored\.js social image consumer/)
+})
+
+test('ignores social-image-looking text outside complete consumer URL tokens', async (t) => {
+  const { rootDir, outDir } = createFixture(t, {
+    limits: { fileCount: 30, totalBytes: 200_000 },
+  })
+  const alias = '/removed/opengraph-image.png'
+  const consumers = {
+    'safe.html': [
+      `<a href="mailto:test@example.com?body=${alias}">mail</a>`,
+      `<a href="javascript:window.value='${alias}'">script URL</a>`,
+      `<a href="//example.com${alias}">protocol relative</a>`,
+      `<meta content="data:text/html,<img src='${alias}'>">`,
+      `<script>const image = "${alias}"</script>`,
+      `<style>.inline{background:url("data:image/svg+xml,<svg>${alias}</svg>")}</style>`,
+      `<div style="background:url('mailto:test@example.com?body=${alias}')"></div>`,
+      `<p>normal prose ${alias} and prefix${alias}</p>`,
+    ].join(''),
+    'safe.json': JSON.stringify({
+      mail: `mailto:test@example.com?body=${alias}`,
+      javascript: `javascript:window.value='${alias}'`,
+      data: `data:text/html,<img src='${alias}'>`,
+      prose: `normal prose ${alias}`,
+      nested: `mailto:test@example.com?body=\"${alias}\"`,
+    }),
+    'safe.webmanifest': JSON.stringify({ note: `data:text/html,<img src='${alias}'>` }),
+    'safe.rsc': `["mailto:test@example.com?body=\\"${alias}\\"","normal prose ${alias}"]`,
+    'safe.txt': `[\\"javascript:window.value=\\\\\\"${alias}\\\\\\"\\"]`,
+    'safe.css': [
+      `.data{background:url("data:image/svg+xml,<svg>${alias}</svg>")}`,
+      `.external{background:url("https://cdn.example.com${alias}")}`,
+      `.text{content:"url('${alias}')"}`,
+      `/* url("${alias}") */`,
+    ].join(''),
+  }
+  for (const [file, content] of Object.entries(consumers)) {
+    writeFileSync(path.join(outDir, file), content)
+  }
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const failures = report.failures.join('\n')
+
+  for (const file of Object.keys(consumers)) {
+    assert.doesNotMatch(
+      failures,
+      new RegExp(`${file.replace('.', '\\.')} social image consumer references a missing local image`),
+    )
+  }
+})
+
+test('enumerates no-whitespace srcset candidates without splitting data URL commas', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeFileSync(
+    path.join(outDir, 'srcset.html'),
+    [
+      '<img srcset=" , data:image/svg+xml,%3Csvg%3E,/ignored/opengraph-image.png%3C/svg%3E 1e0x,',
+      '/removed/opengraph-image.png 2E+0x,https://example.com/second/opengraph-image.png .5e1x, ">',
+    ].join(''),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const failures = report.failures.join('\n')
+
+  assert.match(failures, /srcset\.html social image consumer references a missing local image: \/removed\/opengraph-image\.png/)
+  assert.match(failures, /srcset\.html social image consumer references a missing local image: \/second\/opengraph-image\.png/)
+  assert.doesNotMatch(failures, /\/ignored\/opengraph-image\.png/)
+})
+
+test('fails closed when a srcset descriptor is malformed', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeFileSync(
+    path.join(outDir, 'broken-srcset.html'),
+    '<img srcset="/removed/opengraph-image.png 0e0x,/second/opengraph-image.png 2x">',
+  )
+
+  await assert.rejects(
+    verifyStaticArtifact({ rootDir, configPath: 'budgets.json' }),
+    /invalid srcset/,
+  )
+})
+
+test('checks a consumer URL containing an unknown non-decoding HTML reference', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeFileSync(
+    path.join(outDir, 'broken-entity.html'),
+    '<meta content="/removed/opengraph-image.png?label=&unknown;">',
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+
+  assert.match(
+    report.failures.join('\n'),
+    /broken-entity\.html social image consumer references a missing local image: \/removed\/opengraph-image\.png/,
+  )
+})
+
+test('checks recognized Next Flight string payloads without scanning arbitrary scripts', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writeFileSync(
+    path.join(outDir, 'flight.html'),
+    [
+      '<script>self.__next_f.push([1,"[\\"/removed/opengraph-image.png?flight#card\\"]"])</script>',
+      '<script>const image = "/ignored/opengraph-image.png"</script>',
+    ].join(''),
+  )
+
+  const report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  const failures = report.failures.join('\n')
+
+  assert.match(
+    failures,
+    /flight\.html social image consumer references a missing local image: \/removed\/opengraph-image\.png/,
+  )
+  assert.doesNotMatch(failures, /\/ignored\/opengraph-image\.png/)
 })
 
 test('allows only manifest-declared same-origin remote social image publications', async (t) => {

@@ -9,6 +9,7 @@ import {
   articleOgPublicationInventory,
   loadMediaPublicationContract,
 } from './lib/media-publication-contract.mjs'
+import { visitConsumerUrls } from './lib/consumer-url-tokens.mjs'
 
 const DEFAULT_CONFIG = 'config/static-artifact-budgets.json'
 const DEFAULT_OUTPUT_DIRECTORY = 'out'
@@ -64,12 +65,31 @@ const PRIVATE_QUERY_URL_SCAN_EXTENSIONS = new Set([
   '.rsc',
   '.txt',
 ])
+const SOCIAL_IMAGE_CONSUMER_EXTENSIONS = new Set([
+  '.css',
+  '.htm',
+  '.html',
+  '.json',
+  '.rsc',
+  '.txt',
+  '.webmanifest',
+])
+const ROUTE_SOCIAL_IMAGE_BASENAME_PATTERN =
+  /^(?:opengraph-image|twitter-image)(?:-[a-z0-9]+)?(?:\.png)?$/i
 const ABSOLUTE_HTTP_URL_PATTERN = /https?:\/\/[^\s"'<>]+/gi
 const LOCALIZED_PAGE_SCHEMA_CONTRACTS = new Map([
-  ['about', new Set(['AboutPage'])],
-  ['apps', new Set(['ItemList'])],
-  ['gallery', new Set(['ImageGallery'])],
-  ['studio', new Set(['CollectionPage'])],
+  ['about', { fragment: 'aboutpage', schemaTypes: new Set(['AboutPage']) }],
+  ['apps', { fragment: 'itemlist', schemaTypes: new Set(['ItemList']) }],
+  ['gallery', { fragment: 'gallery', schemaTypes: new Set(['ImageGallery']) }],
+  ['studio', { fragment: 'studio', schemaTypes: new Set(['CollectionPage']) }],
+])
+const SEO_OG_LOCALES = new Map([
+  ['en', 'en_US'],
+  ['vi', 'vi_VN'],
+  ['zh', 'zh_CN'],
+  ['ja', 'ja_JP'],
+  ['ko', 'ko_KR'],
+  ['fr', 'fr_FR'],
 ])
 const PERSON_SCHEMA_TYPES = new Set(['Person'])
 const SITE_OWNER_NAME = 'Nguyen Le Phong'
@@ -575,6 +595,52 @@ function inspectPrivateQueryUrls(content, relativePath, failures, matches) {
   }
 }
 
+function inspectRouteSocialImageTargets(
+  content,
+  extension,
+  relativePath,
+  outDir,
+  siteOrigin,
+  failures,
+) {
+  const seen = new Set()
+
+  visitConsumerUrls(content, extension, (reference) => {
+    const decodedReference = reference.replaceAll('\\/', '/')
+    const absolute = /^https?:\/\//i.test(decodedReference)
+    if (!absolute && (!decodedReference.startsWith('/') || decodedReference.startsWith('//'))) {
+      return
+    }
+    let url
+    try {
+      url = new URL(decodedReference, siteOrigin)
+    } catch {
+      return
+    }
+    let basename
+    try {
+      basename = decodeURIComponent(path.posix.basename(url.pathname)).normalize('NFC')
+    } catch {
+      return
+    }
+    if (
+      url.origin !== siteOrigin ||
+      !ROUTE_SOCIAL_IMAGE_BASENAME_PATTERN.test(basename) ||
+      seen.has(url.pathname)
+    ) {
+      return
+    }
+    seen.add(url.pathname)
+
+    const artifactPath = artifactPathFromUrl(url.href, siteOrigin, outDir)
+    if (!artifactPath || !existsSync(artifactPath) || !statSync(artifactPath).isFile()) {
+      failures.push(
+        `${relativePath} social image consumer references a missing local image: ${url.pathname}`,
+      )
+    }
+  })
+}
+
 function shouldScanSecrets(relativePath, extension, configuredExtensions) {
   const basename = path.posix.basename(relativePath).toLowerCase()
   return (
@@ -711,11 +777,30 @@ function collectHtmlMetadata({ absolutePath, html, outDir }) {
   }
 
   const htmlTag = collectTags(html, 'html')[0]
+  const mainLanguages = collectTags(html, 'main').map(
+    (tag) => attributesFromTag(tag).get('lang')?.trim() ?? '',
+  )
   const headingLanguages = collectTags(html, 'h1').map(
     (tag) => attributesFromTag(tag).get('lang')?.trim() ?? '',
   )
   const headingTexts = collectElementTexts(html, 'h1')
   const metaAttributes = collectTags(html, 'meta').map(attributesFromTag)
+  const metaValues = (attribute, value) =>
+    metaAttributes
+      .filter((attributes) => attributes.get(attribute)?.toLowerCase() === value)
+      .map((attributes) => attributes.get('content')?.trim() ?? '')
+      .filter(Boolean)
+  const descriptions = metaValues('name', 'description')
+  const keywordMetaCount = metaAttributes.filter(
+    (attributes) => attributes.get('name')?.toLowerCase() === 'keywords',
+  ).length
+  const googleBotRobots = findMetaContent(html, 'googlebot')?.toLowerCase() ?? ''
+  const openGraphTitles = metaValues('property', 'og:title')
+  const openGraphDescriptions = metaValues('property', 'og:description')
+  const openGraphLocales = metaValues('property', 'og:locale')
+  const alternateOpenGraphLocales = metaValues('property', 'og:locale:alternate')
+  const twitterTitles = metaValues('name', 'twitter:title')
+  const twitterDescriptions = metaValues('name', 'twitter:description')
   const openGraphImages = metaAttributes
     .filter((attributes) => attributes.get('property')?.toLowerCase() === 'og:image')
     .map((attributes) => attributes.get('content')?.trim() ?? '')
@@ -751,23 +836,38 @@ function collectHtmlMetadata({ absolutePath, html, outDir }) {
     relativePath: relativeArtifactPath(outDir, absolutePath),
     canonicalUrls,
     alternateLanguages,
-    description: findMetaContent(html, 'description')?.trim() ?? '',
+    alternateOpenGraphLocales,
+    description: descriptions[0] ?? '',
+    descriptions,
     hasContentLocaleFallback: /data-content-locale-fallback=["']true["']/i.test(html),
     hasContentLocaleRedirect: /data-content-locale-redirect=["']true["']/i.test(html),
     hasTitle: /<title>\s*[^<][\s\S]*?<\/title>/i.test(html),
+    googleBotNofollow: googleBotRobots.includes('nofollow'),
+    googleBotNoindex: googleBotRobots.includes('noindex'),
+    hasGoogleBotRobots: googleBotRobots.length > 0,
     headingLanguages,
     headingTexts,
     isDocument: Boolean(htmlTag),
     jsonLdErrors: jsonLd.errors,
     jsonLdObjects: flattenJsonLd(jsonLd.values),
     language: htmlTag ? attributesFromTag(htmlTag).get('lang')?.trim() ?? '' : '',
+    mainLanguages,
     metaRefreshTargets,
+    nofollow: findMetaContent(html, 'robots')?.toLowerCase().includes('nofollow') ?? false,
     noindex: findMetaContent(html, 'robots')?.toLowerCase().includes('noindex') ?? false,
+    openGraphDescriptions,
     openGraphImage: openGraphImages[0] ?? '',
     openGraphImages,
+    openGraphLocales,
+    openGraphTitles,
     openGraphUrls,
+    title: collectElementTexts(html, 'title')[0] ?? '',
+    titles: collectElementTexts(html, 'title'),
+    twitterDescriptions,
     twitterImage: twitterImages[0] ?? '',
     twitterImages,
+    twitterTitles,
+    keywordMetaCount,
     studioHeadingCount: collectTags(html, 'h1').length,
     studioModuleLinks,
     hasStudioStaticOverview: /data-studio-static-overview=["']true["']/i.test(html),
@@ -860,12 +960,36 @@ function verifyLocalizedPageIdentityContracts({
   siteOrigin,
   seoConfig,
   failures,
+  locationSet,
+  sitemapLanguagesByLocation,
 }) {
   const configuredRoutes = new Set(seoConfig?.requiredLocalizedRoutes ?? [])
   const contracts = [...LOCALIZED_PAGE_SCHEMA_CONTRACTS].filter(([route]) =>
     configuredRoutes.has(route),
   )
-  if (contracts.length === 0) return
+  if (contracts.length === 0) return 0
+  let focusedStaticPageCount = 0
+
+  const configuredLocales = seoConfig?.locales ?? []
+  const staticPagePolicies = new Map()
+  for (const [route] of contracts) {
+    const policy = seoConfig?.staticPageLocalization?.[route]
+    if (!policy) continue
+    const contentLocales = policy.contentLocales
+    const fallbackLocale = policy.fallbackLocale
+    const valid =
+      Array.isArray(contentLocales) &&
+      contentLocales.length > 0 &&
+      new Set(contentLocales).size === contentLocales.length &&
+      contentLocales.every((locale) => configuredLocales.includes(locale)) &&
+      typeof fallbackLocale === 'string' &&
+      contentLocales.includes(fallbackLocale)
+    if (!valid) {
+      failures.push(`Invalid static-page localization policy for ${route}`)
+      continue
+    }
+    staticPagePolicies.set(route, { contentLocales, fallbackLocale })
+  }
 
   const metadataByPageUrl = new Map()
   for (const metadata of htmlMetadataByPath.values()) {
@@ -873,14 +997,20 @@ function verifyLocalizedPageIdentityContracts({
     if (pageUrl) metadataByPageUrl.set(pageUrl, metadata)
   }
 
-  for (const locale of seoConfig?.locales ?? []) {
-    for (const [route, schemaTypes] of contracts) {
-      const expectedPageUrl = normalizeUrl(`${siteOrigin}/${locale}/${route}`)
-      const metadata = metadataByPageUrl.get(expectedPageUrl)
+  for (const locale of configuredLocales) {
+    for (const [route, contract] of contracts) {
+      const routePageUrl = normalizeUrl(`${siteOrigin}/${locale}/${route}`)
+      const metadata = metadataByPageUrl.get(routePageUrl)
       if (!metadata) {
-        failures.push(`Missing emitted HTML for localized ${route} page: ${expectedPageUrl}`)
+        failures.push(`Missing emitted HTML for localized ${route} page: ${routePageUrl}`)
         continue
       }
+
+      const policy = staticPagePolicies.get(route)
+      if (policy) focusedStaticPageCount += 1
+      const authored = !policy || policy.contentLocales.includes(locale)
+      const contentLocale = authored ? locale : policy.fallbackLocale
+      const expectedPageUrl = normalizeUrl(`${siteOrigin}/${contentLocale}/${route}`)
 
       if (
         metadata.canonicalUrls.length !== 1 ||
@@ -904,20 +1034,141 @@ function verifyLocalizedPageIdentityContracts({
         failures.push(`${metadata.relativePath} contains invalid JSON-LD`)
       }
       const pageObjects = metadata.jsonLdObjects.filter((value) =>
-        schemaHasType(value, schemaTypes),
+        schemaHasType(value, contract.schemaTypes),
       )
-      const schemaLabel = [...schemaTypes].join(' or ')
+      const schemaLabel = [...contract.schemaTypes].join(' or ')
       if (pageObjects.length !== 1) {
         failures.push(
           `${metadata.relativePath} must emit exactly one ${schemaLabel} object; found ${pageObjects.length}`,
         )
       } else {
         const pageObject = pageObjects[0]
-        for (const property of ['@id', 'url']) {
-          if (normalizeAbsolutePageIdentity(pageObject[property]) !== expectedPageUrl) {
+        const expectedId = `${expectedPageUrl}#${contract.fragment}`
+        if (pageObject['@id'] !== expectedId) {
+          failures.push(
+            `${metadata.relativePath} ${schemaLabel} @id must match localized page identity: ${expectedId}`,
+          )
+        }
+        if (normalizeAbsolutePageIdentity(pageObject.url) !== expectedPageUrl) {
+          failures.push(
+            `${metadata.relativePath} ${schemaLabel} url must match localized page identity: ${expectedPageUrl}`,
+          )
+        }
+
+        if (policy) {
+          const parityValues = [
+            ['title', metadata.titles, pageObject.name],
+            ['description', metadata.descriptions, pageObject.description],
+            ['og:title', metadata.openGraphTitles, pageObject.name],
+            ['og:description', metadata.openGraphDescriptions, pageObject.description],
+            ['twitter:title', metadata.twitterTitles, pageObject.name],
+            ['twitter:description', metadata.twitterDescriptions, pageObject.description],
+          ]
+          for (const [label, values, expected] of parityValues) {
+            if (values.length !== 1 || values[0] !== expected) {
+              failures.push(
+                `${metadata.relativePath} ${label} must exactly match ${schemaLabel} localized copy`,
+              )
+            }
+          }
+          if (pageObject.inLanguage !== contentLocale) {
             failures.push(
-              `${metadata.relativePath} ${schemaLabel} ${property} must match localized page identity: ${expectedPageUrl}`,
+              `${metadata.relativePath} ${schemaLabel} inLanguage must be ${contentLocale}`,
             )
+          }
+        }
+      }
+
+      if (policy) {
+        if (metadata.language !== locale) {
+          failures.push(`${metadata.relativePath} document language must remain route locale ${locale}`)
+        }
+        if (!authored && !metadata.mainLanguages.includes(contentLocale)) {
+          failures.push(
+            `${metadata.relativePath} fallback content boundary must declare lang=${contentLocale}`,
+          )
+        }
+        if (metadata.keywordMetaCount > 0) {
+          failures.push(`${metadata.relativePath} focused static page must not emit meta keywords`)
+        }
+        if (metadata.noindex === authored) {
+          failures.push(
+            `${metadata.relativePath} must be ${authored ? 'indexable' : 'noindex'} under the static-page locale policy`,
+          )
+        }
+        if (metadata.nofollow) {
+          failures.push(`${metadata.relativePath} static-page locale policy requires follow`)
+        }
+        if (
+          !metadata.hasGoogleBotRobots ||
+          metadata.googleBotNoindex !== !authored ||
+          metadata.googleBotNofollow
+        ) {
+          failures.push(
+            `${metadata.relativePath} Googlebot robots must match the static-page index/follow policy`,
+          )
+        }
+
+        const expectedHtmlLanguages = authored
+          ? Object.fromEntries([
+              ...policy.contentLocales.map((candidate) => [
+                candidate,
+                `${siteOrigin}/${candidate}/${route}`,
+              ]),
+              ['x-default', `${siteOrigin}/${policy.fallbackLocale}/${route}`],
+            ])
+          : {}
+        if (
+          !sameLanguageMap(
+            normalizedLanguageMap(metadata.alternateLanguages),
+            normalizedLanguageMap(expectedHtmlLanguages),
+          )
+        ) {
+          failures.push(
+            `${metadata.relativePath} hreflang must contain only authored static-page locales`,
+          )
+        }
+
+        const expectedOgLocale = SEO_OG_LOCALES.get(contentLocale)
+        if (
+          metadata.openGraphLocales.length !== 1 ||
+          metadata.openGraphLocales[0] !== expectedOgLocale
+        ) {
+          failures.push(`${metadata.relativePath} og:locale must match content locale ${contentLocale}`)
+        }
+        const expectedAlternateOgLocales = authored
+          ? policy.contentLocales
+              .filter((candidate) => candidate !== contentLocale)
+              .map((candidate) => SEO_OG_LOCALES.get(candidate))
+              .sort()
+          : []
+        if (
+          metadata.alternateOpenGraphLocales.slice().sort().join('\n') !==
+          expectedAlternateOgLocales.join('\n')
+        ) {
+          failures.push(
+            `${metadata.relativePath} alternate Open Graph locales must contain only authored variants`,
+          )
+        }
+
+        if (locationSet && sitemapLanguagesByLocation) {
+          if (authored) {
+            if (!locationSet.has(routePageUrl)) {
+              failures.push(`${metadata.relativePath} authored static page is missing from sitemap.xml`)
+            }
+            const sitemapLanguages = sitemapLanguagesByLocation.get(routePageUrl) ?? new Map()
+            if (
+              !sameLanguageMap(
+                normalizedLanguageMap(expectedHtmlLanguages),
+                sitemapLanguages,
+              )
+            ) {
+              failures.push(
+                `${metadata.relativePath} HTML and sitemap static-page hreflang clusters do not match`,
+              )
+            }
+          } else if (locationSet.has(routePageUrl)) {
+            failures.push(`${metadata.relativePath} fallback static page leaked into sitemap.xml`)
           }
         }
       }
@@ -936,6 +1187,8 @@ function verifyLocalizedPageIdentityContracts({
       }
     }
   }
+
+  return focusedStaticPageCount
 }
 
 async function loadRemoteSocialImageContract(rootDir) {
@@ -1345,8 +1598,12 @@ function verifyRequiredLocalizedRoutes({ locationSet, siteOrigin, seoConfig, fai
   const locales = seoConfig?.locales ?? []
   const routes = seoConfig?.requiredLocalizedRoutes ?? []
 
-  for (const locale of locales) {
-    for (const route of routes) {
+  for (const route of routes) {
+    const policy = seoConfig?.staticPageLocalization?.[route]
+    const requiredLocales = Array.isArray(policy?.contentLocales)
+      ? policy.contentLocales
+      : locales
+    for (const locale of requiredLocales) {
       const normalizedRoute = route ? `/${route.replace(/^\/+|\/+$/g, '')}` : ''
       const requiredUrl = normalizeUrl(`${siteOrigin}/${locale}${normalizedRoute}`)
       if (!locationSet.has(requiredUrl)) {
@@ -1484,6 +1741,14 @@ function verifySitemap({ outDir, siteOrigin, seoConfig, failures, htmlMetadataBy
     verifySitemapPage({ loc, outDir, siteOrigin, failures, htmlMetadataByPath })
   }
   verifyRequiredLocalizedRoutes({ locationSet, siteOrigin, seoConfig, failures })
+  const focusedStaticPageCount = verifyLocalizedPageIdentityContracts({
+    htmlMetadataByPath,
+    siteOrigin,
+    seoConfig,
+    failures,
+    locationSet,
+    sitemapLanguagesByLocation,
+  })
   const canonicalHtmlCount = verifyCanonicalHtmlParity({
     htmlMetadataByPath,
     locationSet,
@@ -1510,7 +1775,7 @@ function verifySitemap({ outDir, siteOrigin, seoConfig, failures, htmlMetadataBy
     siteOrigin,
     failures,
   })
-  return { urlCount: locationSet.size, canonicalHtmlCount }
+  return { urlCount: locationSet.size, canonicalHtmlCount, focusedStaticPageCount }
 }
 
 function loadConfig(rootDir, configPath) {
@@ -1609,6 +1874,16 @@ export async function verifyStaticArtifact({
         privateQueryUrlMatches,
       )
     }
+    if (SOCIAL_IMAGE_CONSUMER_EXTENSIONS.has(entry.extension)) {
+      inspectRouteSocialImageTargets(
+        content,
+        entry.extension,
+        entry.relativePath,
+        outDir,
+        siteOrigin,
+        failures,
+      )
+    }
     if (entry.extension === '.html' || entry.extension === '.htm') {
       htmlMetadataByPath.set(
         entry.relativePath,
@@ -1645,12 +1920,6 @@ export async function verifyStaticArtifact({
   if (largestCss[0]) addLimitFailure(failures, `Largest CSS (${largestCss[0].path})`, largestCss[0].bytes, limits.maxCssBytes)
 
   verifyRobots({ outDir, siteOrigin, failures })
-  verifyLocalizedPageIdentityContracts({
-    htmlMetadataByPath,
-    siteOrigin,
-    seoConfig: config.seo,
-    failures,
-  })
   const localSocialImageCount = verifyLocalSocialImages({
     htmlMetadataByPath,
     outDir,
@@ -1748,6 +2017,9 @@ function printReport(report) {
     if (largest) console.log(`[artifact] largest ${label}: ${formatBytes(largest.bytes)} (${largest.path})`)
   }
   console.log(`[seo] ${seo.urlCount.toLocaleString('en-US')} sitemap URLs verified against exported canonicals`)
+  console.log(
+    `[seo] ${seo.focusedStaticPageCount.toLocaleString('en-US')} focused static-page locale URLs verified`,
+  )
   console.log(
     `[secrets] scanned ${secrets.scannedTextFiles.toLocaleString('en-US')} public text files ` +
       `(concurrency ${secrets.scanConcurrency})`,

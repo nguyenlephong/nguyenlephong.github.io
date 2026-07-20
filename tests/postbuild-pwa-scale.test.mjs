@@ -5,7 +5,7 @@ import path from 'node:path'
 import test from 'node:test'
 
 import { runPostbuildTransforms } from '../scripts/postbuild.mjs'
-import { installRequiredShell } from '../scripts/postbuild-offline.mjs'
+import { installRequiredShell, pageVersionForHtml } from '../scripts/postbuild-offline.mjs'
 
 const LOCALES = ['en', 'vi', 'zh', 'ja', 'ko', 'fr']
 const PNG = Buffer.from(
@@ -16,8 +16,12 @@ const PNG = Buffer.from(
 async function createFixture(t) {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'postbuild-pwa-scale-'))
   const outDir = path.join(root, 'out')
+  const nextDir = path.join(root, '.next')
   const chunksDir = path.join(outDir, '_next/static/chunks')
-  await fs.mkdir(chunksDir, { recursive: true })
+  await Promise.all([
+    fs.mkdir(chunksDir, { recursive: true }),
+    fs.mkdir(nextDir, { recursive: true }),
+  ])
   t.after(() => fs.rm(root, { recursive: true, force: true }))
 
   await Promise.all([
@@ -28,6 +32,9 @@ async function createFixture(t) {
     fs.writeFile(path.join(outDir, 'apple-icon.png'), PNG),
     fs.writeFile(path.join(outDir, 'manifest.webmanifest'), '{}'),
     fs.writeFile(path.join(outDir, 'opengraph-image'), PNG),
+    fs.mkdir(path.join(outDir, 'en'), { recursive: true }).then(() =>
+      fs.writeFile(path.join(outDir, 'en/opengraph-image'), PNG),
+    ),
     fs.writeFile(path.join(chunksDir, 'shared.js'), 'globalThis.shared = true'),
     fs.writeFile(path.join(chunksDir, 'offline.js'), 'globalThis.offline = true'),
     fs.writeFile(path.join(chunksDir, 'studio-reactflow.js'), 'ReactFlowProvider'),
@@ -37,6 +44,24 @@ async function createFixture(t) {
       '<link rel="preload" href="/_next/static/chunks/shared.js"><meta property="og:image" content="/opengraph-image"><main>home</main>',
     ),
   ])
+  await fs.writeFile(
+    path.join(nextDir, 'prerender-manifest.json'),
+    JSON.stringify({
+      version: 4,
+      routes: Object.fromEntries(
+        ['/opengraph-image', '/en/opengraph-image'].map((route) => [
+          route,
+          {
+            initialHeaders: { 'content-type': 'image/png' },
+            srcRoute: route,
+          },
+        ]),
+      ),
+      dynamicRoutes: {},
+      notFoundRoutes: [],
+      preview: {},
+    }),
+  )
 
   for (const locale of LOCALES) {
     await fs.mkdir(path.join(outDir, locale, 'notes'), { recursive: true })
@@ -45,7 +70,12 @@ async function createFixture(t) {
         path.join(outDir, locale, 'offline.html'),
         '<script src="/_next/static/chunks/shared.js"></script><script src="/_next/static/chunks/offline.js"></script><main class="offline-page-shell">offline</main>',
       ),
-      fs.writeFile(path.join(outDir, `${locale}.html`), `<main>${locale} home</main>`),
+      fs.writeFile(
+        path.join(outDir, `${locale}.html`),
+        locale === 'en'
+          ? '<meta property="og:image" content="/en/opengraph-image"><main>en home</main>'
+          : `<main>${locale} home</main>`,
+      ),
       fs.writeFile(path.join(outDir, locale, 'notes/read.html'), `<main>${locale} read</main>`),
       fs.writeFile(
         path.join(outDir, locale, 'studio.html'),
@@ -54,17 +84,26 @@ async function createFixture(t) {
     ])
   }
 
-  return outDir
+  return { nextDir, outDir }
 }
 
 test('one postbuild inventory produces a minimal install shell and on-demand runtime ownership', async (t) => {
-  const outDir = await createFixture(t)
-  const result = await runPostbuildTransforms({ outDir })
+  const { nextDir, outDir } = await createFixture(t)
+  const result = await runPostbuildTransforms({ nextDir, outDir })
   const manifest = result.offline.manifest
   const shell = new Set(manifest.shared.shell)
 
   assert.equal(result.inventory.walks, 1)
   assert.ok(result.inventory.cacheHits > 0, 'offline transform should reuse OG transform reads')
+  assert.equal(result.og.deduplicated.length, 1)
+  await assert.rejects(fs.access(path.join(outDir, 'en/opengraph-image.png')))
+  const finalEnglishHtml = await fs.readFile(path.join(outDir, 'en.html'), 'utf8')
+  assert.match(finalEnglishHtml, /content="\/opengraph-image\.png"/)
+  assert.equal(manifest.shared.pageVersions['/en.html'], pageVersionForHtml('en.html', finalEnglishHtml))
+  assert.equal(JSON.stringify(manifest).includes('/en/opengraph-image'), false)
+  for (const entries of [manifest.shared.shell, ...Object.values(manifest.locales)]) {
+    assert.deepEqual(entries, [...new Set(entries)].sort())
+  }
   assert.ok(shell.has('/index.html'))
   assert.ok(shell.has('/404.html'))
   assert.ok(shell.has('/_not-found.html'))
