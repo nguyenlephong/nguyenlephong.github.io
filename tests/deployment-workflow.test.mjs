@@ -68,22 +68,24 @@ test('Pages workflow configures Pages without rewriting the composed Next config
 
 test('Pages workflow verifies the built out tree before uploading it', () => {
   const buildIndex = workflow.indexOf('run: npm run build')
+  const publicationReadinessIndex = workflow.indexOf(
+    'run: npm run verify:og-publication:live -- --include-scheduled',
+  )
   const verifyIndex = workflow.indexOf('run: npm run verify:artifact')
   const performanceIndex = workflow.indexOf('run: npm run verify:performance-artifact')
   const studioIndex = workflow.indexOf('run: npm run verify:studio-artifact')
   const runtimeBoundaryIndex = workflow.indexOf('run: npm run verify:runtime-boundaries')
-  const publicationTreeIndex = workflow.indexOf('run: npm run verify:og-publication -- --remote-tree')
-  const publicationLiveIndex = workflow.indexOf('run: npm run verify:og-publication:live')
+  const publicationLiveIndex = workflow.lastIndexOf('run: npm run verify:og-publication:live')
   const offlineIndex = workflow.indexOf('run: npm run verify:offline')
   const uploadIndex = workflow.indexOf('uses: actions/upload-pages-artifact@')
 
   assert.ok(
-    buildIndex >= 0 &&
+    publicationReadinessIndex >= 0 &&
+      publicationReadinessIndex < buildIndex &&
       buildIndex < verifyIndex &&
       verifyIndex < performanceIndex &&
       performanceIndex < studioIndex &&
-      studioIndex < publicationTreeIndex &&
-      publicationTreeIndex < publicationLiveIndex &&
+      studioIndex < publicationLiveIndex &&
       publicationLiveIndex < runtimeBoundaryIndex &&
       runtimeBoundaryIndex < offlineIndex &&
       offlineIndex < uploadIndex,
@@ -96,14 +98,34 @@ test('Pages workflow verifies the built out tree before uploading it', () => {
   assert.match(workflow, /cancel-in-progress: false/)
 })
 
-test('Pages upload is gated by read-only tree and live OG publication checks', () => {
+test('PR and Pages use live scheduled readiness before build and released-only live defense after', () => {
   assert.equal(pkg.scripts['verify:og-publication'], 'node scripts/verify-og-publication.mjs')
   assert.equal(
     pkg.scripts['verify:og-publication:live'],
     'node scripts/verify-og-publication.mjs --live',
   )
-  assert.match(workflow, /run: npm run verify:og-publication -- --remote-tree/)
-  assert.match(workflow, /run: npm run verify:og-publication:live/)
+  const readinessCommand = 'run: npm run verify:og-publication:live -- --include-scheduled'
+  assert.match(workflow, new RegExp(readinessCommand))
+  assert.match(ciWorkflow, new RegExp(readinessCommand))
+  assert.match(workflow, /run: npm run verify:og-publication:live\s*$/m)
+  assert.equal(
+    workflow.match(/run: npm run verify:og-publication:live -- --include-scheduled\s*$/gm)?.length,
+    1,
+  )
+  assert.equal(
+    workflow.match(/run: npm run verify:og-publication:live\s*$/gm)?.length,
+    1,
+  )
+  assert.equal(
+    ciWorkflow.match(/run: npm run verify:og-publication:live -- --include-scheduled\s*$/gm)?.length,
+    1,
+  )
+  assert.doesNotMatch(workflow, /--remote-tree[^\n]*--include-scheduled/)
+  assert.doesNotMatch(ciWorkflow, /--remote-tree[^\n]*--include-scheduled/)
+  assert.doesNotMatch(workflow, /OG_PUBLICATION_GITHUB_TOKEN|github\.token/)
+  assert.doesNotMatch(ciWorkflow, /OG_PUBLICATION_GITHUB_TOKEN|github\.token/)
+  assert.doesNotMatch(ciWorkflow, /publish-og-assets|og:publish/)
+  assert.doesNotMatch(workflow, /publish-og-assets|og:publish/)
 })
 
 test('Pages workflow refuses manual or deploy jobs outside refs/heads/main', () => {
@@ -130,13 +152,17 @@ test('CI is read-only, never persists checkout credentials, and scopes SONAR_TOK
 
 test('CI verifies Studio and offline behavior after its single smoke build', () => {
   const buildIndex = ciWorkflow.indexOf('run: npm run build:fast')
+  const publicationReadinessIndex = ciWorkflow.indexOf(
+    'run: npm run verify:og-publication:live -- --include-scheduled',
+  )
   const artifactIndex = ciWorkflow.indexOf('run: npm run verify:artifact')
   const performanceIndex = ciWorkflow.indexOf('run: npm run verify:performance-artifact')
   const studioIndex = ciWorkflow.indexOf('run: npm run verify:studio-artifact')
   const runtimeBoundaryIndex = ciWorkflow.indexOf('run: npm run verify:runtime-boundaries')
   const offlineIndex = ciWorkflow.indexOf('run: npm run verify:offline')
   assert.ok(
-    buildIndex >= 0 &&
+    publicationReadinessIndex >= 0 &&
+      publicationReadinessIndex < buildIndex &&
       buildIndex < artifactIndex &&
       artifactIndex < performanceIndex &&
       performanceIndex < studioIndex &&

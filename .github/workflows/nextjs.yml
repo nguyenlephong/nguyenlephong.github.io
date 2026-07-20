@@ -53,6 +53,9 @@ jobs:
       - name: Run source quality gates
         run: npm run check
 
+      - name: Verify released and scheduled article OG readiness
+        run: npm run verify:og-publication:live -- --include-scheduled
+
       - name: Verify concurrent development first hits
         run: npm run verify:dev-concurrency
 
@@ -67,9 +70,6 @@ jobs:
 
       - name: Verify Studio static artifact
         run: npm run verify:studio-artifact
-
-      - name: Verify article OG publication tree
-        run: npm run verify:og-publication -- --remote-tree
 
       - name: Verify live article OG responses
         run: npm run verify:og-publication:live

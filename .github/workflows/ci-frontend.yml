@@ -124,6 +124,9 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Resolve deterministic content build date
+        run: echo "CONTENT_BUILD_DATE=$(date -u +%F)" >> "$GITHUB_ENV"
+
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
@@ -132,6 +135,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Verify released and scheduled article OG readiness
+        run: npm run verify:og-publication:live -- --include-scheduled
 
       - name: Verify concurrent development first hits
         run: npm run verify:dev-concurrency
