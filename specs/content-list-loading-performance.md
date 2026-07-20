@@ -19,9 +19,11 @@ The public header displays the existing 72 px favicon asset at 36 CSS pixels.
 That small asset is loaded eagerly with high fetch priority; the 512 px app
 icon remains unchanged for Next metadata and install/icon consumers.
 
-The above-fold Gallery and Apps page-back links use the same intent boundary.
-A direct visit does not speculate on Home; keyboard focus or pointer hover can
-restore Next's native prefetch for that single localized destination.
+The above-fold Gallery and Apps page-back links use a stricter boundary than
+content discovery links. They keep Next prefetch disabled through keyboard
+focus and pointer hover, then use normal App Router client navigation only when
+the reader clicks the localized Home link. The shared header and content-card
+intent-prefetch behavior remains unchanged.
 
 ## Why
 
@@ -31,6 +33,13 @@ header also transferred a 512 px image for a 36 px slot, increasing critical
 image bytes without improving visual quality. Loading the Firestore SDK and
 opening provider channels before browsing intent creates a larger avoidable
 network cost than the visible counters themselves.
+
+Production measurement showed that native Home prefetch for either page-back
+link issued a clean-URL probe, six segmented RSC requests, and one stylesheet
+before navigation. Keeping prefetch disabled reduced the chosen navigation to
+one full localized RSC request and one stylesheet while preserving soft client
+navigation. For these low-frequency back links, the request and byte reduction
+outweighs hover or focus warm-up.
 
 ## Acceptance criteria
 
@@ -79,3 +88,13 @@ number when later loading boundaries are added.
     existing crawlable `href`, copy, class, accessibility, analytics, and client
     navigation contract. AppHeader keeps its intentional per-link intent
     prefetch behavior unchanged.
+14. Production request measurement supersedes only the focus/hover prefetch
+    clause of criterion 13 for Gallery and Apps page-back links. Those two links
+    keep `prefetch={false}` during direct load, keyboard focus, and pointer
+    hover, issuing no Home clean-URL probe, RSC payload, or Home-owned CSS. A
+    click remains a soft App Router navigation and requests only the full
+    localized Home RSC payload plus Home-owned styles, with no clean-URL probe
+    or document reload. Runtime verification waits for a request-scoped quiet
+    window so delayed segmented requests cannot escape the intent phase. Shared
+    header, category, article-card, and footer intent-prefetch behavior is
+    unchanged.

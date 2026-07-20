@@ -43,6 +43,7 @@ const CLIENT_PROVIDER_CONSUMER_ROUTES = {
   "src/components/cv/Summary.tsx": "home",
   "src/components/font/FontSwitcher.tsx": "site",
   "src/components/gallery/GalleryGrid.tsx": "gallery",
+  "src/components/gallery/GalleryPageBackLink.tsx": "site",
   "src/components/notes/NotesExplorer.tsx": "notes",
   "src/components/navigation/IntentPrefetchLink.tsx": "site",
   "src/components/offline/OfflineStatusBanner.tsx": "site",

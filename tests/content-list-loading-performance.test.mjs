@@ -61,7 +61,7 @@ test("public navigation and archive links use shared intent prefetch without los
   assert.match(footer, /data-document-navigation="studio"/);
 });
 
-test("Gallery and Apps page-back links wait for navigation intent before prefetching Home", async () => {
+test("Gallery and Apps page-back links keep speculative Home prefetch disabled", async () => {
   const [galleryPage, galleryBackLink, appsConsole, header] = await Promise.all([
     readFile("src/app/[locale]/(site)/gallery/page.tsx", "utf8"),
     readFile("src/components/gallery/GalleryPageBackLink.tsx", "utf8"),
@@ -70,19 +70,23 @@ test("Gallery and Apps page-back links wait for navigation intent before prefetc
   ]);
 
   assert.match(galleryPage, /<GalleryPageBackLink>/);
-  assert.match(galleryBackLink, /<IntentPrefetchLink/);
-  assert.match(galleryBackLink, /href=\{APP_ROUTE\.HOME\}/);
-  assert.match(galleryBackLink, /className="page-back"/);
+  assert.match(galleryBackLink, /import \{ Link \} from ['"]@\/i18n\/navigation['"]/);
+  assert.doesNotMatch(galleryBackLink, /IntentPrefetchLink/);
+  assert.match(
+    galleryBackLink,
+    /<Link\s+href=\{APP_ROUTE\.HOME\}\s+prefetch=\{false\}\s+className="page-back"/
+  );
   assert.match(
     appsConsole,
-    /<IntentPrefetchLink\s+href=\{APP_ROUTE\.HOME\}\s+className="page-back"/
+    /<Link\s+href=\{APP_ROUTE\.HOME\}\s+prefetch=\{false\}\s+className="page-back"/
   );
+  assert.doesNotMatch(appsConsole, /IntentPrefetchLink/);
 
   assert.equal((header.match(/<IntentPrefetchLink/g) ?? []).length, 3);
   assert.match(header, /<IntentPrefetchLink\s+href=\{APP_ROUTE\.HOME\}/);
 });
 
-test("runtime verification rejects eager Home payloads from Gallery and Apps", async () => {
+test("runtime verification rejects Gallery and Apps Home payloads before click", async () => {
   const runtimeVerifier = await readFile(
     "scripts/verify-runtime-boundaries.mjs",
     "utf8"
@@ -90,23 +94,56 @@ test("runtime verification rejects eager Home payloads from Gallery and Apps", a
 
   assert.match(
     runtimeVerifier,
-    /verifyPageBackPrefetchBoundaries\(browser, origin\)/
+    /verifyPageBackNavigationBoundaries\(browser, origin\)/
   );
   assert.match(
     runtimeVerifier,
-    /path: "\/en\/gallery", homePath: "\/en", intent: "focus"/
+    /name: "gallery-focus", surface: "gallery", path: "\/en\/gallery", homePath: "\/en", intent: "focus"/
   );
   assert.match(
     runtimeVerifier,
-    /path: "\/vi\/apps", homePath: "\/vi", intent: "hover"/
+    /name: "gallery-hover", surface: "gallery", path: "\/en\/gallery", homePath: "\/en", intent: "hover"/
+  );
+  assert.match(
+    runtimeVerifier,
+    /name: "apps-focus", surface: "apps", path: "\/vi\/apps", homePath: "\/vi", intent: "focus"/
+  );
+  assert.match(
+    runtimeVerifier,
+    /name: "apps-hover", surface: "apps", path: "\/vi\/apps", homePath: "\/vi", intent: "hover"/
   );
   assert.match(runtimeVerifier, /initialHomeRsc/);
   assert.match(runtimeVerifier, /initialHomeCss/);
-  assert.match(runtimeVerifier, /intentRsc/);
+  assert.match(runtimeVerifier, /initialHomeProbes/);
+  assert.match(runtimeVerifier, /intentHomeRsc/);
+  assert.match(runtimeVerifier, /intentHomeCss/);
+  assert.match(runtimeVerifier, /intentHomeProbes/);
+  assert.match(runtimeVerifier, /navigationRscDestinations/);
+  assert.match(runtimeVerifier, /navigationSegmentedRsc/);
+  assert.match(runtimeVerifier, /navigationStylesheets/);
+  assert.match(runtimeVerifier, /waitForRequestQuietPeriod/);
   assert.match(runtimeVerifier, /accessibleName/);
   assert.match(runtimeVerifier, /__pageBackDocumentIdentity/);
   assert.match(runtimeVerifier, /navigationDocuments/);
-  assert.match(runtimeVerifier, /pageBackPrefetch/);
+  assert.match(runtimeVerifier, /pageBackNavigation/);
+});
+
+test("runtime verification groups full and segmented RSC files by logical destination", async () => {
+  const { rscDestinationFromPath } = await import(
+    "../scripts/verify-runtime-boundaries.mjs"
+  );
+
+  assert.equal(rscDestinationFromPath("en.txt"), "/en");
+  assert.equal(rscDestinationFromPath("en/__next._tree.txt"), "/en");
+  assert.equal(
+    rscDestinationFromPath("vi/__next.$d$locale.!KHNpdGUp.__PAGE__.txt"),
+    "/vi"
+  );
+  assert.equal(
+    rscDestinationFromPath("en/blog/__next.$d$locale.!KHNpdGUp.__PAGE__.txt"),
+    "/en/blog"
+  );
+  assert.equal(rscDestinationFromPath("en.html"), null);
 });
 
 test("archive post stats stay provider-free until browsing intent", async () => {

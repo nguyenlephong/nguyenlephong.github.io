@@ -385,9 +385,10 @@ test("Gallery and Apps page-back links keep the existing CV navigation analytics
     galleryPage,
     /<GalleryPageBackLink>\s*\{t\('back'\)\}\s*<\/GalleryPageBackLink>/
   );
-  assert.match(galleryBackLink, /<IntentPrefetchLink/);
-  assert.match(galleryBackLink, /href=\{APP_ROUTE\.HOME\}/);
-  assert.match(galleryBackLink, /className="page-back"/);
+  assert.match(
+    galleryBackLink,
+    /<Link\s+href=\{APP_ROUTE\.HOME\}\s+prefetch=\{false\}\s+className="page-back"/
+  );
   assert.match(
     galleryBackLink,
     /track\('cv_nav_click',\s*\{\s*target: 'home',\s*source: 'gallery_page_back',?\s*\}\)/
@@ -396,7 +397,7 @@ test("Gallery and Apps page-back links keep the existing CV navigation analytics
   assert.match(appsPage, /<AppsLinkTracker \/>/);
   assert.match(
     appsConsole,
-    /<IntentPrefetchLink\s+href=\{APP_ROUTE\.HOME\}\s+className="page-back"\s+data-track="cv_nav_click"\s+data-track-target="home"\s+data-track-source="apps_page_back"\s*>/
+    /<Link\s+href=\{APP_ROUTE\.HOME\}\s+prefetch=\{false\}\s+className="page-back"\s+data-track="cv_nav_click"\s+data-track-target="home"\s+data-track-source="apps_page_back"\s*>/
   );
   assert.match(appsLinkTracker, /target\.closest<HTMLElement>\('\[data-track\]'\)/);
   assert.match(appsLinkTracker, /track\(name, props\)/);

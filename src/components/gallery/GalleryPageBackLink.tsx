@@ -2,7 +2,7 @@
 
 import type { ReactNode } from 'react'
 import { APP_ROUTE } from '@/app/app.const'
-import IntentPrefetchLink from '@/components/navigation/IntentPrefetchLink'
+import { Link } from '@/i18n/navigation'
 import { track } from '@/lib/analytics'
 
 type Props = {
@@ -11,8 +11,9 @@ type Props = {
 
 export default function GalleryPageBackLink({ children }: Props) {
   return (
-    <IntentPrefetchLink
+    <Link
       href={APP_ROUTE.HOME}
+      prefetch={false}
       className="page-back"
       onClick={() =>
         track('cv_nav_click', {
@@ -22,6 +23,6 @@ export default function GalleryPageBackLink({ children }: Props) {
       }
     >
       {children}
-    </IntentPrefetchLink>
+    </Link>
   )
 }

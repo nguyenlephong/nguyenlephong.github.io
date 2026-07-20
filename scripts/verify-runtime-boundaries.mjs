@@ -57,10 +57,14 @@ const ARTICLE_HUB_CASES = [
     sources: ["notes_article_breadcrumb"]
   }
 ];
-const PAGE_BACK_PREFETCH_CASES = [
-  { name: "gallery", path: "/en/gallery", homePath: "/en", intent: "focus" },
-  { name: "apps", path: "/vi/apps", homePath: "/vi", intent: "hover" }
+const PAGE_BACK_NAVIGATION_CASES = [
+  { name: "gallery-focus", surface: "gallery", path: "/en/gallery", homePath: "/en", intent: "focus" },
+  { name: "gallery-hover", surface: "gallery", path: "/en/gallery", homePath: "/en", intent: "hover" },
+  { name: "apps-focus", surface: "apps", path: "/vi/apps", homePath: "/vi", intent: "focus" },
+  { name: "apps-hover", surface: "apps", path: "/vi/apps", homePath: "/vi", intent: "hover" }
 ];
+const PAGE_BACK_REQUEST_QUIET_MS = 500;
+const PAGE_BACK_REQUEST_TIMEOUT_MS = 10_000;
 const PUBLIC_CSS_RUNTIME_CASES = [
   { name: "home", path: "/en", selector: ".hero", property: "position", value: "relative", stylesheets: 3 },
   { name: "about", path: "/en/about", selector: ".about-page-v2", property: "paddingBottom", notValue: "0px", stylesheets: 3 },
@@ -213,6 +217,64 @@ function localRequestPath(url, origin) {
   return decodeURIComponent(parsed.pathname).replace(/^\/+/, "");
 }
 
+export function rscDestinationFromPath(localPath) {
+  if (!localPath.endsWith(".txt")) return null;
+  const stem = localPath.slice(0, -4);
+  const segmentMarker = stem.indexOf("/__next.");
+  const destinationStem = segmentMarker === -1 ? stem : stem.slice(0, segmentMarker);
+  return destinationStem ? `/${destinationStem}` : "/";
+}
+
+async function waitForRequestQuietPeriod(
+  page,
+  origin,
+  label,
+  trigger,
+  {
+    quietMs = PAGE_BACK_REQUEST_QUIET_MS,
+    timeoutMs = PAGE_BACK_REQUEST_TIMEOUT_MS
+  } = {}
+) {
+  const activeRequests = new Set();
+  let lastActivityAt = Date.now();
+
+  const onRequest = (request) => {
+    if (localRequestPath(request.url(), origin) === null) return;
+    activeRequests.add(request);
+    lastActivityAt = Date.now();
+  };
+  const onRequestSettled = (request) => {
+    if (!activeRequests.delete(request)) return;
+    lastActivityAt = Date.now();
+  };
+
+  page.on("request", onRequest);
+  page.on("requestfinished", onRequestSettled);
+  page.on("requestfailed", onRequestSettled);
+
+  try {
+    await trigger();
+    lastActivityAt = Date.now();
+    const deadline = lastActivityAt + timeoutMs;
+    while (Date.now() < deadline) {
+      if (
+        activeRequests.size === 0 &&
+        Date.now() - lastActivityAt >= quietMs
+      ) {
+        return;
+      }
+      await page.waitForTimeout(Math.min(quietMs, 50));
+    }
+    throw new Error(
+      `${label} did not reach a ${quietMs}ms local-request quiet window within ${timeoutMs}ms`
+    );
+  } finally {
+    page.off("request", onRequest);
+    page.off("requestfinished", onRequestSettled);
+    page.off("requestfailed", onRequestSettled);
+  }
+}
+
 function isRscRequestForDestination(request, origin, destination) {
   const localPath = localRequestPath(request.url(), origin);
   if (!localPath || !localPath.endsWith(".txt")) return false;
@@ -259,10 +321,10 @@ async function routeStylesheetPaths(routePath, origin) {
   return stylesheetPaths;
 }
 
-async function verifyPageBackPrefetchBoundaries(browser, origin) {
+async function verifyPageBackNavigationBoundaries(browser, origin) {
   const results = [];
 
-  for (const scenario of PAGE_BACK_PREFETCH_CASES) {
+  for (const scenario of PAGE_BACK_NAVIGATION_CASES) {
     const homeStylesheets = await routeStylesheetPaths(
       scenario.homePath,
       origin
@@ -283,7 +345,7 @@ async function verifyPageBackPrefetchBoundaries(browser, origin) {
 
     try {
       await installExternalRuntimeStubs(context, {
-        stubGalleryImages: scenario.name === "gallery"
+        stubGalleryImages: scenario.surface === "gallery"
       });
       const page = await context.newPage();
       page.on("pageerror", (error) => pageErrors.push(error.message));
@@ -292,6 +354,7 @@ async function verifyPageBackPrefetchBoundaries(browser, origin) {
         if (!localPath) return;
         requests.push({
           localPath,
+          method: request.method(),
           phase,
           resourceType: request.resourceType()
         });
@@ -328,6 +391,12 @@ async function verifyPageBackPrefetchBoundaries(browser, origin) {
           request.phase === "initial" &&
           homeOnlyStylesheets.has(request.localPath)
       );
+      const initialHomeProbes = requests.filter(
+        (request) =>
+          request.phase === "initial" &&
+          request.method === "HEAD" &&
+          request.localPath === scenario.homePath.replace(/^\/+/, "")
+      );
       assert.deepEqual(
         initialHomeRsc,
         [],
@@ -338,64 +407,132 @@ async function verifyPageBackPrefetchBoundaries(browser, origin) {
         [],
         `${scenario.name} prefetched Home CSS before page-back intent`
       );
+      assert.deepEqual(
+        initialHomeProbes,
+        [],
+        `${scenario.name} probed Home before page-back intent`
+      );
 
       phase = "page-back-intent";
-      const intentRequest = page.waitForRequest((request) => {
-        const localPath = localRequestPath(request.url(), origin);
-        return Boolean(
-          localPath &&
-            isRscPathForExactDestination(localPath, scenario.homePath)
-        );
-      });
-      if (scenario.intent === "focus") {
-        await pageBack.focus();
-      } else {
-        await pageBack.hover();
-      }
-      await intentRequest;
-      await page.waitForLoadState("networkidle");
+      await waitForRequestQuietPeriod(
+        page,
+        origin,
+        `${scenario.name} page-back intent`,
+        async () => {
+          if (scenario.intent === "focus") {
+            await pageBack.focus();
+          } else {
+            await pageBack.hover();
+          }
+        }
+      );
 
-      const intentRsc = requests.filter(
+      const intentLocalRequests = requests.filter(
+        (request) => request.phase === "page-back-intent"
+      );
+      const intentHomeRsc = intentLocalRequests.filter(
         (request) =>
-          request.phase === "page-back-intent" &&
-          request.localPath.endsWith(".txt")
-      );
-      const intentCss = requests.filter(
-        (request) =>
-          request.phase === "page-back-intent" &&
-          request.resourceType === "stylesheet"
-      );
-      assert.ok(
-        intentRsc.length > 0,
-        `${scenario.name} page-back intent did not prefetch Home RSC`
-      );
-      assert.ok(
-        intentRsc.every((request) =>
           isRscPathForExactDestination(request.localPath, scenario.homePath)
-        ),
-        `${scenario.name} page-back intent prefetched another RSC destination: ${JSON.stringify(intentRsc)}`
       );
-      assert.ok(
-        intentCss.every((request) => homeStylesheets.has(request.localPath)),
-        `${scenario.name} page-back intent fetched non-Home CSS: ${JSON.stringify(intentCss)}`
+      const intentHomeCss = intentLocalRequests.filter(
+        (request) =>
+          request.resourceType === "stylesheet" &&
+          homeOnlyStylesheets.has(request.localPath)
       );
+      const intentHomeProbes = intentLocalRequests.filter(
+        (request) =>
+          request.method === "HEAD" &&
+          request.localPath === scenario.homePath.replace(/^\/+/, "")
+      );
+      assert.deepEqual(intentHomeRsc, []);
+      assert.deepEqual(intentHomeCss, []);
+      assert.deepEqual(intentHomeProbes, []);
       assert.deepEqual(pageErrors, []);
 
       phase = "navigation";
-      await Promise.all([
-        page.waitForURL(`${origin}${scenario.homePath}`),
-        pageBack.click()
-      ]);
-      await page.waitForLoadState("networkidle");
+      await waitForRequestQuietPeriod(
+        page,
+        origin,
+        `${scenario.name} page-back navigation`,
+        () =>
+          Promise.all([
+            page.waitForURL(`${origin}${scenario.homePath}`),
+            pageBack.click()
+          ])
+      );
       const navigationDocuments = requests.filter(
         (request) =>
           request.phase === "navigation" &&
           request.resourceType === "document"
       );
+      const navigationRsc = requests.filter(
+        (request) =>
+          request.phase === "navigation" &&
+          request.localPath.endsWith(".txt")
+      );
+      const navigationRscDestinations = [
+        ...new Set(
+          navigationRsc.map((request) =>
+            rscDestinationFromPath(request.localPath)
+          )
+        )
+      ];
+      const navigationCss = requests.filter(
+        (request) =>
+          request.phase === "navigation" &&
+          request.resourceType === "stylesheet"
+      );
+      const navigationHomeCss = navigationCss.filter((request) =>
+        homeOnlyStylesheets.has(request.localPath)
+      );
+      const navigationSegmentedRsc = navigationRsc.filter((request) =>
+        request.localPath.includes("/__next.")
+      );
+      const navigationHomeProbes = requests.filter(
+        (request) =>
+          request.phase === "navigation" &&
+          request.method === "HEAD" &&
+          request.localPath === scenario.homePath.replace(/^\/+/, "")
+      );
       assert.deepEqual(
         navigationDocuments,
         [],
         `${scenario.name} page-back used a full document navigation`
+      );
+      assert.deepEqual(
+        navigationRscDestinations,
+        [scenario.homePath],
+        `${scenario.name} page-back requested another RSC destination`
+      );
+      assert.equal(
+        navigationRsc.length,
+        1,
+        `${scenario.name} page-back navigation must request one full Home RSC payload`
+      );
+      assert.equal(
+        navigationRsc[0].localPath,
+        `${scenario.homePath.replace(/^\/+/, "")}.txt`
+      );
+      assert.equal(navigationRsc[0].method, "GET");
+      assert.deepEqual(
+        navigationSegmentedRsc,
+        [],
+        `${scenario.name} page-back navigation fetched segmented Home RSC payloads`
+      );
+      assert.equal(
+        navigationCss.length,
+        1,
+        `${scenario.name} page-back navigation must load one stylesheet`
+      );
+      assert.equal(
+        navigationHomeCss.length,
+        navigationCss.length,
+        `${scenario.name} page-back navigation loaded CSS outside Home ownership`
+      );
+      assert.deepEqual(
+        navigationHomeProbes,
+        [],
+        `${scenario.name} page-back navigation made a speculative Home probe`
       );
       assert.equal(
         await page.evaluate(() => window.__pageBackDocumentIdentity),
@@ -403,6 +540,7 @@ async function verifyPageBackPrefetchBoundaries(browser, origin) {
         `${scenario.name} page-back replaced the active document`
       );
       assert.equal(new URL(page.url()).pathname, scenario.homePath);
+      assert.deepEqual(pageErrors, []);
 
       results.push({
         accessibleName,
@@ -410,9 +548,18 @@ async function verifyPageBackPrefetchBoundaries(browser, origin) {
         intent: scenario.intent,
         path: scenario.path,
         initialHomeCss: initialHomeCss.length,
+        initialHomeProbes: initialHomeProbes.length,
         initialHomeRsc: initialHomeRsc.length,
-        intentCss: intentCss.length,
-        intentRsc: intentRsc.length,
+        intentHomeCss: intentHomeCss.length,
+        intentHomeProbes: intentHomeProbes.length,
+        intentHomeRsc: intentHomeRsc.length,
+        intentLocalRequests: intentLocalRequests.length,
+        navigationHomeCss: navigationHomeCss.length,
+        navigationHomeProbes: navigationHomeProbes.length,
+        navigationRscDestinations,
+        navigationRscRequests: navigationRsc.length,
+        navigationSegmentedRsc: navigationSegmentedRsc.length,
+        navigationStylesheets: navigationCss.length,
         navigationDocuments: navigationDocuments.length
       });
     } finally {
@@ -1721,7 +1868,7 @@ async function main() {
       browser,
       origin
     );
-    const pageBackPrefetch = await verifyPageBackPrefetchBoundaries(
+    const pageBackNavigation = await verifyPageBackNavigationBoundaries(
       browser,
       origin
     );
@@ -1750,7 +1897,7 @@ async function main() {
           publicToStudio,
           publicCss,
           galleryPreloadAndLcp,
-          pageBackPrefetch,
+          pageBackNavigation,
           persistedReadingFont,
           readerRemount,
           contentHubAnalytics,
