@@ -55,7 +55,9 @@ existing IDs must not be renamed or renumbered.
   only, with positions continuing from the page offset.
 - **AC-SCP-006:** The initial page does not embed the full search corpus. A
   minimal locale-specific JSON index is requested only after search/filter
-  intent or when restoring a search/filter deep link.
+  intent or when restoring a search/filter deep link. Restored state is applied
+  before URL mirroring can replace history, so the incoming query remains
+  visible and starts filtering without another interaction.
 - **AC-SCP-007:** If the search index cannot be loaded, current-page cards and
   static pagination remain usable and an accessible status message explains
   that browsing is still available.
@@ -76,6 +78,25 @@ existing IDs must not be renamed or renumbered.
 - **AC-SCP-013:** Notes pagination is generated only for authored archive
   locales. Other locale landing pages consolidate to English with a canonical
   and canonical article links, without combining canonical and `noindex`.
+- **AC-SCP-014:** Visible-card stats are requested only after first-scroll,
+  search/filter, or restored-query intent. The shared loader runs at most one
+  `CONTENT_PAGE_SIZE` provider batch and retains one replaceable latest-visible
+  queue, so no more than two pages are outstanding during rapid navigation.
+  It deduplicates resolved and active ids, retains at most four visible pages of
+  resolved counters, and starts the final queued view after success or failure.
+- **AC-SCP-015:** `Save-Data` readers and provider failures retain the complete
+  static archive, crawlable pagination, search controls, and card links without
+  waiting for or surfacing engagement counters. A restored search may still
+  request its small static index; it must not load the Firebase provider.
+- **AC-SCP-016:** Archive navigation disables viewport prefetch for shared
+  header/footer links, Blog categories, and content cards. Focus or hover may
+  restore prefetch for only the intended link and cannot trigger engagement
+  loading.
+- **AC-SCP-017:** Blog exports one search index for every supported interface
+  locale. Notes exports search indexes only for the authored `en` and `vi`
+  archive locales; fallback Notes routes, including `/fr/notes`, request the
+  canonical English index. The pagination gate fails on a missing or extra
+  Blog/Notes search artifact.
 
 ## Verification
 

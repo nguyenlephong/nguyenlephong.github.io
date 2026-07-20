@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
 import { routing } from '@/i18n/routing'
-import { listNotes } from '@/lib/notes/data'
+import { listNotes, NOTE_CONTENT_LOCALES } from '@/lib/notes/data'
 import {
   toNoteSearchItem,
   type NotesSearchIndex,
@@ -12,7 +12,7 @@ type Context = { params: Promise<{ locale: string }> }
 
 export function generateStaticParams() {
   if (process.env.NODE_ENV === 'development') return []
-  return routing.locales.map((locale) => ({ locale }))
+  return NOTE_CONTENT_LOCALES.map((locale) => ({ locale }))
 }
 
 export async function GET(_request: Request, { params }: Context) {

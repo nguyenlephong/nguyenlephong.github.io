@@ -2,13 +2,14 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { getPostStatsByIds, postStatsId } from '@/lib/firebase/postStats'
+import { postStatsId } from '@/lib/firebase/postStats'
 import BlogPostCard from './BlogPostCard'
 import {
   useExplorer,
   type ExplorerFilterOption,
 } from '@/components/explorer/useExplorer'
 import { ExplorerShell, type ExplorerLabels } from '@/components/explorer/ExplorerShell'
+import { useDeferredPostStats } from '@/components/explorer/useDeferredPostStats'
 import type { BlogAccent } from '@/lib/blog/types'
 import { CONTENT_PAGE_SIZE } from '@/lib/content/pagination'
 import {
@@ -60,7 +61,6 @@ export default function BlogExplorer({
   viewThreshold = 100,
 }: BlogExplorerProps) {
   const t = useTranslations('Pages.blog')
-  const [viewCounts, setViewCounts] = useState<Record<string, number>>({})
   const [loadedSearch, setLoadedSearch] = useState<{
     cards: CardMeta[]
     url: string
@@ -143,15 +143,6 @@ export default function BlogExplorer({
     searchLoadRef.current = null
   }, [])
 
-  // A bookmarked query/filter is explicit search intent, so restore it without
-  // making every ordinary archive visit download the index.
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    if (params.has('q') || params.has('cat') || params.has('tag')) {
-      void loadSearchIndex()
-    }
-  }, [loadSearchIndex])
-
   const explorer = useExplorer<CardMeta>(
     cards,
     filters,
@@ -177,28 +168,22 @@ export default function BlogExplorer({
     },
   )
 
-  const visibleStatsKey = explorer.pageItems
-    .map((card) => postStatsId(card.post.category, card.post.slug))
-    .join('\u0000')
+  const visibleStatsIds = explorer.pageItems.map((card) =>
+    postStatsId(card.post.category, card.post.slug),
+  )
+  const {
+    signalBrowsingIntent,
+    status: postStatsStatus,
+    viewCounts,
+  } = useDeferredPostStats(visibleStatsIds, viewThreshold)
 
-  // Read only the currently rendered page and make the provider budget explicit.
+  // A bookmarked query/filter is explicit browsing intent, so restore both
+  // progressive enhancements without affecting an ordinary archive visit.
   useEffect(() => {
-    let cancelled = false
-    async function fetchVisible() {
-      const ids = visibleStatsKey ? visibleStatsKey.split('\u0000') : []
-      const visible = await getPostStatsByIds(ids, CONTENT_PAGE_SIZE)
-      if (cancelled) return
-      const counts: Record<string, number> = {}
-      for (const [id, stats] of visible) {
-        if (stats.views >= viewThreshold) counts[id] = stats.views
-      }
-      setViewCounts(counts)
-    }
-    void fetchVisible()
-    return () => {
-      cancelled = true
-    }
-  }, [viewThreshold, visibleStatsKey])
+    if (!explorer.initialSearchIntent) return
+    signalBrowsingIntent()
+    void loadSearchIndex()
+  }, [explorer.initialSearchIntent, loadSearchIndex, signalBrowsingIntent])
 
   const labels: ExplorerLabels = {
     searchPlaceholder: t('controls.searchPlaceholder'),
@@ -227,8 +212,10 @@ export default function BlogExplorer({
       paletteId="blog-command-palette"
       trackingSurface="blog"
       searchStatus={searchStatus}
+      postStatsStatus={postStatsStatus}
       searchUnavailableLabel={t('controls.searchUnavailable')}
       onSearchIntent={() => {
+        signalBrowsingIntent()
         void loadSearchIndex()
       }}
       renderItem={(c) => (

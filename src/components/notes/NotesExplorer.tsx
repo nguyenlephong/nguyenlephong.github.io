@@ -2,13 +2,14 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { getPostStatsByIds, postStatsId } from '@/lib/firebase/postStats'
+import { postStatsId } from '@/lib/firebase/postStats'
 import NoteCard from './NoteCard'
 import {
   useExplorer,
   type ExplorerFilterOption,
 } from '@/components/explorer/useExplorer'
 import { ExplorerShell, type ExplorerLabels } from '@/components/explorer/ExplorerShell'
+import { useDeferredPostStats } from '@/components/explorer/useDeferredPostStats'
 import { CONTENT_PAGE_SIZE } from '@/lib/content/pagination'
 import {
   fetchVersionedSearchIndex,
@@ -64,7 +65,6 @@ export default function NotesExplorer({
   viewThreshold = 100,
 }: NotesExplorerProps) {
   const t = useTranslations('Pages.notes')
-  const [viewCounts, setViewCounts] = useState<Record<string, number>>({})
   const [loadedSearch, setLoadedSearch] = useState<{
     cards: NoteCardMeta[]
     url: string
@@ -147,13 +147,6 @@ export default function NotesExplorer({
     searchLoadRef.current = null
   }, [])
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    if (params.has('q') || params.has('topic') || params.has('tag')) {
-      void loadSearchIndex()
-    }
-  }, [loadSearchIndex])
-
   const explorer = useExplorer<NoteCardMeta>(
     cards,
     filters,
@@ -180,28 +173,20 @@ export default function NotesExplorer({
     },
   )
 
-  const visibleStatsKey = explorer.pageItems
-    .map((card) => postStatsId('notes', card.note.slug))
-    .join('\u0000')
+  const visibleStatsIds = explorer.pageItems.map((card) =>
+    postStatsId('notes', card.note.slug),
+  )
+  const {
+    signalBrowsingIntent,
+    status: postStatsStatus,
+    viewCounts,
+  } = useDeferredPostStats(visibleStatsIds, viewThreshold)
 
-  // Read only the currently rendered page and make the provider budget explicit.
   useEffect(() => {
-    let cancelled = false
-    async function fetchVisible() {
-      const ids = visibleStatsKey ? visibleStatsKey.split('\u0000') : []
-      const visible = await getPostStatsByIds(ids, CONTENT_PAGE_SIZE)
-      if (cancelled) return
-      const counts: Record<string, number> = {}
-      for (const [id, stats] of visible) {
-        if (stats.views >= viewThreshold) counts[id] = stats.views
-      }
-      setViewCounts(counts)
-    }
-    void fetchVisible()
-    return () => {
-      cancelled = true
-    }
-  }, [viewThreshold, visibleStatsKey])
+    if (!explorer.initialSearchIntent) return
+    signalBrowsingIntent()
+    void loadSearchIndex()
+  }, [explorer.initialSearchIntent, loadSearchIndex, signalBrowsingIntent])
 
   const labels: ExplorerLabels = {
     searchPlaceholder: t('controls.searchPlaceholder'),
@@ -231,8 +216,10 @@ export default function NotesExplorer({
       className="notes-explorer"
       trackingSurface="notes"
       searchStatus={searchStatus}
+      postStatsStatus={postStatsStatus}
       searchUnavailableLabel={t('controls.searchUnavailable')}
       onSearchIntent={() => {
+        signalBrowsingIntent()
         void loadSearchIndex()
       }}
       renderItem={(c) => (

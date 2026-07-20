@@ -67,6 +67,7 @@ export interface ExplorerApi<T> {
   activeFilter: ExplorerFilterOption | null
   activeColor: string | undefined
   isStaticBrowsing: boolean
+  initialSearchIntent: boolean
   staticPagination: StaticPagination
   onSearch: (value: string) => void
   openPalette: () => void
@@ -109,7 +110,8 @@ export function useExplorer<T>(
   const debouncedQuery = useDebouncedValue(view.query, 200)
   const commandRef = useRef<HTMLDivElement>(null)
   const listTopRef = useRef<HTMLDivElement>(null)
-  const hydratedFromUrl = useRef(false)
+  const [urlStateRestored, setUrlStateRestored] = useState(false)
+  const [initialSearchIntent, setInitialSearchIntent] = useState(false)
 
   // Restore state from the URL on mount so deep links / bookmarks work.
   useEffect(() => {
@@ -124,11 +126,15 @@ export function useExplorer<T>(
       tag: tg && popularTags.includes(tg) ? tg : null,
       page: hasSearchState && Number.isInteger(pg) && pg > 1 ? pg : 1,
     }
-    hydratedFromUrl.current = true
     if (next.query || next.filter || next.tag || next.page > 1) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setView(next)
     }
+    if (next.query || next.filter || next.tag) setInitialSearchIntent(true)
+    // State readiness must change only after the incoming values have been
+    // queued. A ref flips inside the original effect flush and lets the URL
+    // writer erase a deep link while it still sees INITIAL_VIEW.
+    setUrlStateRestored(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -179,9 +185,10 @@ export function useExplorer<T>(
   const count = isStaticBrowsing ? staticPagination.totalItems : filtered.length
 
   // Keep the URL in sync with the active view (skip first render so we don't
-  // clobber an incoming deep link before it's been read).
+  // clobber an incoming deep link before it's been read). A restored query
+  // also waits for the debounced value to catch up before replacing history.
   useEffect(() => {
-    if (!hydratedFromUrl.current) return
+    if (!urlStateRestored || debouncedQuery !== view.query) return
     const params = new URLSearchParams()
     if (debouncedQuery.trim()) params.set('q', debouncedQuery.trim())
     if (view.filter) params.set(filterParam, view.filter)
@@ -193,7 +200,16 @@ export function useExplorer<T>(
       '',
       qs ? `${window.location.pathname}?${qs}` : window.location.pathname,
     )
-  }, [debouncedQuery, view.filter, view.tag, hasFilters, clientSafePage, filterParam])
+  }, [
+    debouncedQuery,
+    view.query,
+    view.filter,
+    view.tag,
+    hasFilters,
+    clientSafePage,
+    filterParam,
+    urlStateRestored,
+  ])
 
   // Close the palette on outside pointer / Escape.
   useEffect(() => {
@@ -275,6 +291,7 @@ export function useExplorer<T>(
     activeFilter,
     activeColor: activeFilter?.color,
     isStaticBrowsing,
+    initialSearchIntent,
     staticPagination,
     onSearch,
     openPalette,
