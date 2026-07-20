@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { LuAppWindow, LuOrbit } from 'react-icons/lu'
 import { SiLeetcode } from 'react-icons/si'
 import { APP_ROUTE, profileInfo } from '@/app/app.const'
+import IntentPrefetchLink from '@/components/navigation/IntentPrefetchLink'
 import { track } from '@/lib/analytics'
 
 const year = new Date().getFullYear()
@@ -29,14 +30,14 @@ export default function AppFooter() {
         <div className="footer-center">
           <ul className="footer-social" aria-label="Social profiles">
             <li>
-              <Link
+              <IntentPrefetchLink
                 href={APP_ROUTE.APPS}
                 aria-label="Apps"
                 title="Apps"
                 onClick={() => track('cv_nav_click', { target: 'apps_footer' })}
               >
                 <LuAppWindow size={18} />
-              </Link>
+              </IntentPrefetchLink>
             </li>
             <li>
               <a

@@ -20,11 +20,11 @@
       },
       "blog": {
         "html": "en/blog.html",
-        "maxBrotliBytes": 219136
+        "maxBrotliBytes": 217088
       },
       "notes": {
         "html": "en/notes.html",
-        "maxBrotliBytes": 219136
+        "maxBrotliBytes": 217088
       },
       "studio": {
         "html": "en/studio.html",
@@ -100,6 +100,46 @@
         }
       }
     },
+    "archiveInitialRuntime": {
+      "requiredMarkers": ["data-deferred-post-stats"],
+      "forbiddenMarkers": [
+        "firebaseapp.com",
+        "appspot.com",
+        "getFirestore",
+        "initializeFirestore"
+      ]
+    },
+    "publicInitialCss": {
+      "ownerSelectors": {
+        "home": [
+          ".hero",
+          ".cv-section",
+          ".cv-section-head",
+          ".cv-section-eyebrow",
+          ".cv-section-title"
+        ],
+        "about": [".about-page-v2"],
+        "gallery": [".gallery-showcase"],
+        "apps": [".apps-page"],
+        "english": [".english-page"],
+        "offline": [".offline-page-shell"],
+        "blog": [".blog-home"],
+        "notes": [".notes-archive"],
+        "reader": [".blog-reader-tools"]
+      },
+      "routes": {
+        "home": { "html": "en.html", "maxStylesheetCount": 3, "maxBrotliBytes": 9216, "requiredOwners": ["home"], "allowedOwners": ["home"] },
+        "about": { "html": "en/about.html", "maxStylesheetCount": 3, "maxBrotliBytes": 6912, "requiredOwners": ["about"], "allowedOwners": ["about"] },
+        "gallery": { "html": "en/gallery.html", "maxStylesheetCount": 3, "maxBrotliBytes": 8192, "requiredOwners": ["gallery"], "allowedOwners": ["gallery"] },
+        "apps": { "html": "en/apps.html", "maxStylesheetCount": 3, "maxBrotliBytes": 9216, "requiredOwners": ["apps"], "allowedOwners": ["apps"] },
+        "english": { "html": "en/apps/english.html", "maxStylesheetCount": 3, "maxBrotliBytes": 7936, "requiredOwners": ["english"], "allowedOwners": ["english"] },
+        "offline": { "html": "en/offline.html", "maxStylesheetCount": 3, "maxBrotliBytes": 6144, "requiredOwners": ["offline"], "allowedOwners": ["offline"] },
+        "blogArchive": { "html": "en/blog.html", "maxStylesheetCount": 3, "maxBrotliBytes": 13568, "requiredOwners": ["blog"], "allowedOwners": ["blog"] },
+        "notesArchive": { "html": "en/notes.html", "maxStylesheetCount": 4, "maxBrotliBytes": 15616, "requiredOwners": ["blog", "notes"], "allowedOwners": ["blog", "notes"] },
+        "blogArticle": { "html": "en/blog/culture/protecting-attention-in-a-busy-team.html", "maxStylesheetCount": 4, "maxBrotliBytes": 18176, "requiredOwners": ["blog", "reader"], "allowedOwners": ["blog", "reader"] },
+        "notesArticle": { "html": "en/notes/tri-tue-can-duc-hanh.html", "maxStylesheetCount": 5, "maxBrotliBytes": 20096, "requiredOwners": ["blog", "notes", "reader"], "allowedOwners": ["blog", "notes", "reader"] }
+      }
+    },
     "studioInitialRuntime": {
       "requiredMarkers": ["data-studio-shadow-host"],
       "requiredReachableMarkers": ["studio_route_open", "data-studio-module"],
@@ -148,6 +188,20 @@
       "studio",
       "about",
       "gallery"
-    ]
+    ],
+    "staticPageLocalization": {
+      "about": {
+        "contentLocales": ["en", "vi"],
+        "fallbackLocale": "en"
+      },
+      "apps": {
+        "contentLocales": ["en", "vi"],
+        "fallbackLocale": "en"
+      },
+      "gallery": {
+        "contentLocales": ["en", "vi", "zh", "ja", "ko", "fr"],
+        "fallbackLocale": "en"
+      }
+    }
   }
 }

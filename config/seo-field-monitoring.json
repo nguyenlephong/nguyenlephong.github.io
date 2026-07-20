@@ -38,6 +38,7 @@
     "outputDirectory": ".private/seo",
     "rowLimit": 25000,
     "minimumImpressions": 10,
+    "competingPagesMinimumTotalImpressions": 50,
     "lowCtrThreshold": 0.03,
     "strikingDistanceMinimumPosition": 3,
     "strikingDistanceMaximumPosition": 20
@@ -63,6 +64,10 @@
       {
         "label": "notes-index",
         "url": "https://nguyenlephong.github.io/en/notes"
+      },
+      {
+        "label": "gallery",
+        "url": "https://nguyenlephong.github.io/en/gallery"
       },
       {
         "label": "studio",

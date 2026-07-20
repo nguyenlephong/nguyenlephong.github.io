@@ -67,7 +67,7 @@ The locale prefix is always present in public URLs.
 | Engagement storage      | Firebase Firestore                        | Public article counters for views, shares, and reactions.                                                |
 | Static hosting          | GitHub Pages                              | Main deployment target for the `out/` static export.                                                     |
 | Optional hosting config | Firebase Hosting                          | `firebase.json` also points hosting at `out/`.                                                           |
-| Quality gates           | ESLint 9, TypeScript, Node test runner    | CI type-checks, lints, runs tests, and smoke-builds.                                                     |
+| Quality gates           | ESLint 9, TypeScript, Node test runner    | PR CI type-checks, lints, runs tests, then performs a full static production build with artifact and runtime gates. |
 | Package tooling         | npm, Bun scripts                          | npm is used for install and CI. Some deploy scripts call `bun run`.                                      |
 
 ## 4. High-Level Architecture
@@ -101,7 +101,8 @@ It must either be built ahead of time or handled by client-side JavaScript.
 | `src/lib/blog`         | Blog data loading, schema validation, SEO helpers, related-post logic.                      |
 | `src/lib/notes`        | Notes data loading, schema validation, topic URL helpers.                                   |
 | `src/lib/content`      | Shared JSON IO, Zod validation wrapper, locale overlay helpers, search helpers.             |
-| `src/lib/firebase`     | Client-only Firebase initialization and Firestore post engagement access.                   |
+| `src/lib/engagement`   | Provider-neutral counter domain, repository port, id bounding, and Firebase adapter.        |
+| `src/lib/firebase`     | Lazy compatibility facade, client-only Firebase initialization, and App Check bootstrap.    |
 | `src/lib/og`           | OpenGraph image cache and build-target filtering.                                           |
 | `messages`             | Locale message files for UI copy.                                                           |
 | `content/blog-data`    | Build-only canonical blog metadata/posts and locale overrides.                              |
@@ -326,6 +327,26 @@ SEO is a first-class part of the app.
 | OpenGraph image routes | `src/app/**/opengraph-image.tsx`    | Dynamic social images rendered during static export.                                          |
 | Artifact SEO verifier  | `scripts/verify-static-artifact.mjs`| Checks exported sitemap URLs, canonicals, titles, descriptions, language metadata, and robots. |
 
+About, Apps, and Gallery use
+`src/lib/seo/static-page-localization.ts` to separate route locale from authored
+content locale. Their current contract is:
+
+| Page | Authored/indexable locales | Other emitted locale routes |
+|---|---|---|
+| About | `en`, `vi` | English content boundary, `noindex, follow`, canonical `/en/about` |
+| Apps | `en`, `vi` | English content boundary, `noindex, follow`, canonical `/en/apps` |
+| Gallery | `en`, `vi`, `zh`, `ja`, `ko`, `fr` | None; every locale is authored and self-canonical |
+
+Only authored variants enter sitemap and `hreflang`. Each of the 18 emitted
+routes has exact title/description parity across HTML, Open Graph, Twitter, and
+its route-owned JSON-LD object. The JSON-LD language follows the content rather
+than blindly copying the route prefix. These focused pages explicitly clear the
+locale layout's broad keyword meta instead of inheriting it. The artifact
+verifier also requires generic and Googlebot robots directives to agree and
+rejects even an empty keyword tag. A source test keeps policy configuration
+equal to the runtime definition and requires every Gallery locale to own the
+same complete 71-leaf visible message shape.
+
 The artifact verifier works against the generated `out/` directory rather than
 source-code patterns. Its sitemap URL set must exactly equal the exported,
 indexable, self-canonical HTML URL set in both directions after the publication
@@ -339,6 +360,17 @@ fail-closed check scans public text artifacts, including HTML, route payloads,
 manifests, and service workers, so they cannot retain a reference to the removed
 route.
 
+The independent SEO field-data observer reads aggregate Search Console data,
+fixed URL Inspection canaries, and CrUX History for the origin plus Home, Blog,
+Notes, Gallery, and Studio phone targets. A missing page sample remains
+`unknown`; configuration is not evidence of real traffic. Its separate local
+operator report may retain raw `page`/`query` rows only under the ignored
+owner-only `.private/seo/` directory. That report deterministically groups an
+exact query only when at least two distinct pages total at least 50 impressions
+and presents the result as a competing-page review queue, not as proof of a
+canonical conflict. The command is rejected in GitHub Actions and the public
+workflow never invokes it.
+
 Curated Blog series and Notes topic pages are first-class indexable collections.
 They use self-canonicals, localized descriptions, `CollectionPage`, page-local
 `ItemList` entries with global positions, `BreadcrumbList`, and static parent,
@@ -346,8 +378,9 @@ pagination, and article links. Their hreflang clusters contain only `en`, `vi`,
 and an English `x-default`; no other locale exports those routes. With
 `CONTENT_BUILD_DATE=2026-07-19`, the 16 Blog series URLs and 36 Notes hub URLs
 add exactly 52 entries. The valid pre-hub baseline is 895 URLs after removing
-one mislabeled English article variant, so the fixed-date sitemap contains 947
-unique URLs. The former English URL remains only as a `noindex` compatibility
+one mislabeled English article variant. Omitting eight un-authored About and
+Apps fallback variants leaves 887 canonical pre-hub URLs, so the fixed-date
+sitemap contains 939 unique URLs. The former English article URL remains only as a `noindex` compatibility
 artifact that canonical/meta-refreshes to its authored Vietnamese variant and
 is absent from sitemap and hreflang output. This total is a fixed-date
 regression assertion, not a permanent sitemap floor; artifact parity remains
@@ -373,11 +406,58 @@ The flow:
 2. `next build --turbopack` performs a static export.
 3. OpenGraph routes generate images with `ImageResponse`.
 4. `src/lib/og/cache.ts` stores generated PNGs in `public/og-cache`.
-5. `scripts/postbuild-og.mjs` renames extensionless `opengraph-image` files to
-   `opengraph-image.png`.
-6. The post-build script rewrites emitted HTML so social crawlers see `.png`
-   URLs.
-7. In fast or targeted builds, missing dynamic OG files can be restored from the
+5. `scripts/postbuild-og.mjs` reads concrete social-image ownership from
+   `.next/prerender-manifest.json`, requires exactly one regular emitted form
+   for each declared route, and leaves filename lookalikes outside that
+   inventory untouched.
+6. It groups only byte-identical declared images by SHA-256, preferring the root
+   `/opengraph-image.png`, then the shortest and lexical URL. Exact root-relative
+   and same-origin aliases are Unicode/percent-normalized only when they are a
+   complete URL token in a relevant HTML/HTM attribute, source-set candidate,
+   inline style attribute or style block parsed as CSS, JSON/Web Manifest string
+   value, structural RSC/TXT quoted value, or CSS `url(...)` argument. Source
+   sets support positive `x` and `w` descriptors, including comma-adjacent
+   candidates, without splitting commas inside `data:` URLs; malformed
+   descriptors fail before mutation. Density uses the complete positive HTML
+   valid-floating-point grammar, including exponent notation; width remains a
+   positive integer, and descriptor kinds cannot be mixed. Density uses exactly
+   `(?:\d+(?:\.\d+)?|\.\d+)(?:[eE][+-]?\d+)?` before the `x` suffix, followed
+   by a finite, greater-than-zero check; forms such as `1.` and `1.e2` are not
+   accepted. Before parsing any URL-bearing HTML attribute, the build-time
+   transformer uses the direct dev-only `entities` dependency to decode the
+   complete value in HTML attribute context. This covers the full named table,
+   decimal/hexadecimal replacement rules, multi-code-point references, and the
+   browser's legacy semicolon rules. A reference that does not decode in that
+   context remains literal. Unchanged values retain their original bytes;
+   changed values are safely re-encoded only inside the original quote or
+   unquoted context and parse back to the transformed decoded value.
+   Query strings, fragments, escaped slash
+   form, quote style, and surrounding formatting are preserved. JavaScript files,
+   arbitrary HTML script bodies, CSS strings/comments, protocol-relative
+   values, non-HTTP values, prose, substrings, and external origins are not
+   rewritten. The only script-body exception is a TypeScript-AST-recognized
+   `self.__next_f.push(...)` call: its JavaScript string literals are decoded,
+   structurally transformed as Flight data, and re-encoded through byte-local
+   source spans. A malformed recognized payload fails before mutation.
+7. An independent consumer-context alias-absence proof completes before an in-output
+   same-filesystem transaction promotes normalized images and consumers and
+   moves duplicates into its backup tree. Consumers are read uncached and only
+   changed bodies are spooled, so planning memory is bounded by concurrency
+   rather than corpus size. The final preflight rechecks byte length and SHA-256
+   before the journal enters `applying`; prepared failures do not mutate output.
+   An incomplete `applying` rollback retains its reported journal, backup, and
+   moved-file workspace for the next locked recovery attempt. The official build
+   wrapper acquires an exclusive PID/token lock before invalidating state or
+   deleting the prior output and holds it through Next export, recovery, social
+   image normalization, and offline derivation. Its owned postbuild call avoids
+   nested acquisition, while direct postbuild invocations acquire the same lock.
+   A manifest-plus-output-identity committed route map proves intentional
+   missing aliases only on idempotent same-tree reruns. The official build
+   wrapper invalidates that state before deleting the prior export.
+8. Offline manifest generation runs after that canonicalization, so page
+   versions and owned files describe the final export rather than removed
+   social-image paths.
+9. In fast or targeted builds, missing dynamic OG files can be restored from the
    cache.
 
 The wrapper accepts a terminated `next build` only when the same wrapper
@@ -395,7 +475,22 @@ OG_BUILD_TIMEOUT_MS=900000 npm run build:fast
 
 This exists because GitHub Pages can serve extensionless image files with a
 generic content type. Some social scrapers reject those files, so the project
-renames them to explicit PNG paths.
+renames them to explicit PNG paths. The artifact gate independently tokenizes
+the same supported consumer contexts and requires each complete same-origin
+route social-image URL to resolve to a remaining local file. This includes
+AST-recognized inline Next Flight metadata payloads but excludes arbitrary
+script code. Alias-like text inside a non-HTTP value, CSS string/comment,
+arbitrary script, or prose is not interpreted as a deployable URL; only CSS
+`url(...)` tokens in style bodies or attributes are interpreted.
+
+Article OG images use a separate cross-repository flow. Generated PNG inputs
+under ignored `public/og/{blog,notes}` paths are converted to JPEG by
+`scripts/publish-og-assets.mjs` and installed into the exact managed
+`dom-pub/icdn/og/{blogs,notes}` namespaces. Scheduled entries must be generated
+against their effective future `CONTENT_BUILD_DATE` and published before the
+site change is accepted. This makes the reserved JPEG publicly reachable at a
+guessable CDN URL before the article route exists, but avoids a failed daily
+release build. No page links to that JPEG until the article is released.
 
 ## 10. Analytics and Engagement
 
@@ -457,7 +552,17 @@ postStats/{category}__{slug}
 
 Important behavior:
 
-- Firebase is imported dynamically only on the client.
+- The stable `firebase/postStats` facade imports no provider value eagerly. It
+  memoizes a dynamic repository import on the client, and provider import
+  failure resolves to empty reads or failed writes.
+- Blog and Notes archives defer their visible-card reads until first scroll,
+  search/filter interaction, or restoration of a bookmarked query/filter.
+  One `CONTENT_PAGE_SIZE` provider batch can run while one replaceable
+  latest-visible queue waits, keeping no more than two pages outstanding.
+  Resolved and active ids are deduplicated, failure releases the scheduler, the
+  mounted resolved cache is capped at four visible pages, and `Save-Data` skips
+  archive counters. Hovering a card or category is navigation intent only and
+  does not load Firebase.
 - If Firebase environment variables are missing, engagement quietly no-ops.
 - One view is recorded per browser session through `sessionStorage`. The marker
   is committed only after Firestore confirms the increment. A failed write is
@@ -524,7 +629,8 @@ runbook.
 | Reader tools       | `ArticleReaderTools`, `BlogReaderTools`                         | Mounts the floating toolbar only in nested Blog and Notes article layouts.                                             |
 | Route progress     | `RouteProgressBar`                                             | Provides click/popstate-aware progress on every public route.                                                          |
 | Motion             | `MotionProvider`                                               | Mounts `LazyMotion` only on Home and Gallery, not in the shared public-site layout.                                    |
-| Explorer filters   | `ExplorerShell`, `useExplorer`, blog/notes explorers`           | Provides search, filter, tag, and topic/category exploration on content indexes.                                      |
+| Explorer filters   | `ExplorerShell`, `useExplorer`, blog/notes explorers             | Provides search, filter, tag, and topic/category exploration on content indexes.                                      |
+| Archive counters   | `useDeferredPostStats`, deferred stats store, `postStats` facade   | Loads one visible-page batch after intent, retains one latest-view queue, caps its mounted cache, skips on `Save-Data`, and fails soft.          |
 
 ## 12. Build, Test, and Deploy
 
@@ -567,17 +673,18 @@ npm run analyze
 npm run verify:artifact
 npm run verify:performance-artifact
 npm run verify:og-publication
+npm run verify:og-publication:live -- --include-scheduled
 ```
 
 | Command      | Meaning                                                               |
 |--------------|-----------------------------------------------------------------------|
 | `build`      | Full static export with full OG generation.                           |
-| `build:fast` | Static export with dynamic OG generation skipped/restored from cache. |
+| `build:fast` | Non-deployable compile/smoke export with dynamic OG generation skipped/restored from cache; never use its output for artifact verification or publishing. |
 | `build:og`   | Targeted OG build helper.                                             |
 | `analyze`    | Writes the official Next.js bundle analysis to `.next/diagnostics/analyze` without starting a server. |
 | `verify:artifact` | Verifies output size, route assets, SEO output, and public-secret guardrails without rebuilding. |
 | `verify:performance-artifact` | Verifies route Brotli, RSC payload, scoped client messages, Studio runtime, and third-party connection budgets without rebuilding. |
-| `verify:og-publication` | Verifies that every currently published article has its declared managed OG asset. |
+| `verify:og-publication` | Verifies that every currently released article has its declared managed OG asset. `--include-scheduled` expands the required set to released plus non-draft future entries. |
 
 Raw authored JSON is a build input, not a deployable API. The artifact verifier
 fails if `blog-data`, `notes-data`, or `thoughts-data` paths, browser references,
@@ -585,11 +692,34 @@ or scheduled/draft article records appear in `out/`.
 
 `scripts/publish-og-assets.mjs` is the only owner of generated article JPEGs in
 `dom-pub/icdn/og/blogs` and `dom-pub/icdn/og/notes`. Stale pruning requires both
-`--prune-stale` and the explicit `--apply-prune` flag. Only current-index slugs
-with unpublished lifecycle state are managed deletion candidates; unknown files
-and extensions are preserved. Each transaction reports the previous `dom-pub`
-HEAD and enforces the contract's count and percentage deletion caps. The tool
-does not commit or push the cross-repository change.
+`--prune-stale` and the explicit `--apply-prune` flag; `--dry-run` reports the
+same inventory without mutation. Only current-index canonical slugs with
+explicit `status: "draft"` are managed deletion candidates. Scheduled entries
+are reservations, while unknown or removed-source files, manual media, and
+other extensions are preserved. Each local transaction pins and reports the
+previous clean `dom-pub` HEAD, quarantines deletions, rolls the complete tree
+back after partial failure, and enforces the contract's count and percentage
+caps. The tool does not commit or push the cross-repository change.
+
+PR CI and Pages run the live verifier with `--include-scheduled` before
+building. It requests bytes zero through three and uses a BYOB reader in the
+supported Node 22+ runtime to retain and inspect at most four decoded body
+bytes before cancelling the stream. This is not a four-byte network-transfer
+guarantee: a CDN that ignores `Range` and returns `200` may place additional
+bytes in socket or Undici buffers before cancellation. A declared `200`
+`Content-Length` must be a safe integer no larger than 5 MiB; an absent length
+remains compatible with chunked CDN responses. Missing responses, redirects,
+non-BYOB bodies, wrong MIME types, invalid JPEG signatures, timeouts, and
+exhausted retries fail before the expensive export. The Pages post-build live verifier
+intentionally omits that flag and repeats the fail-closed check for released
+entries before artifact upload. Both jobs persist no checkout credentials,
+invoke no publisher, and receive no cross-repository write credential.
+
+`--remote-tree` remains an operator-only inventory mode. It accepts only exact
+expected paths represented as `100644` Git blobs of at least four bytes, but
+does not prove that the public CDN serves those bytes with the required status,
+MIME type, and JPEG signature; workflows therefore never use it as release
+readiness.
 
 `config/static-artifact-budgets.json` contains the static artifact limits. The
 limits deliberately sit close to the measured export so new growth is visible
@@ -633,8 +763,8 @@ per-surface route payloads remain hard gates. The current configured gates are:
 | Surface or payload | Current gate |
 |--------------------|-------------:|
 | Home initial JavaScript, Brotli | Hard limit: 238,592 bytes |
-| Blog initial JavaScript, Brotli | Hard limit: 219,136 bytes |
-| Notes initial JavaScript, Brotli | Hard limit: 219,136 bytes |
+| Blog initial JavaScript, Brotli | Hard limit: 217,088 bytes |
+| Notes initial JavaScript, Brotli | Hard limit: 217,088 bytes |
 | Studio direct initial JavaScript, Brotli | Hard limit: 176,128 bytes |
 | Studio English default route, Brotli | Hard limit: 204,800 bytes |
 | Studio initial document CSS, Brotli | Hard limit: 3,072 bytes |
@@ -646,6 +776,44 @@ per-surface route payloads remain hard gates. The current configured gates are:
 | Largest localized Blog RSC sample | Hard limit: 50,176 bytes |
 | Largest localized Notes RSC sample | Hard limit: 43,008 bytes |
 | Largest localized Studio RSC sample | Hard limit: 30,720 bytes |
+
+The 2026-07-20 complete export measured Blog at 213,534 bytes and Notes at
+213,444 bytes Brotli after the deferred engagement boundary. The 217,088-byte
+limits retain narrow build variance while locking in that verified reduction.
+
+The same complete export records public initial CSS by route. Before the split,
+all non-content routes loaded 122,511 raw / 19,439 Brotli bytes in two files;
+Blog loaded 172,786 / 27,474 in three, and Notes loaded 187,507 / 30,800 in
+four. Route ownership produces the following current measurements and hard
+gates:
+
+| Public route | Stylesheets | Measured raw | Measured Brotli | Brotli gate |
+|--------------|-------------:|-------------:|----------------:|-------------:|
+| Home | 3 | 43,743 | 8,990 | 9,216 |
+| About | 3 | 30,045 | 6,666 | 6,912 |
+| Gallery | 3 | 37,661 | 7,826 | 8,192 |
+| Apps | 3 | 42,422 | 8,812 | 9,216 |
+| English practice | 3 | 36,573 | 7,599 | 7,936 |
+| Offline | 3 | 24,988 | 5,761 | 6,144 |
+| Blog archive | 3 | 73,416 | 13,188 | 13,568 |
+| Notes archive | 4 | 80,874 | 15,144 | 15,616 |
+| Blog article | 4 | 95,826 | 17,632 | 18,176 |
+| Notes article | 5 | 103,284 | 19,588 | 20,096 |
+
+The stylesheet-count column is also the hard per-route maximum. The extra file
+on route-owned pages and articles is accepted only with the measured transfer
+reduction; future request or Brotli growth fails the artifact gate.
+
+The Blog and Notes entry graphs also carry a structural gate. Their direct
+scripts must contain `data-deferred-post-stats` and must not contain configured
+Firebase/Firestore provider markers. The complete-export browser verifier then
+checks behavior rather than bundle size: an untouched Blog archive makes zero
+same-origin RSC or provider-chunk requests; category hover may prefetch only
+its target; first scroll enables deferred stats; direct Blog and Notes queries
+retain URL state while loading their static index and deferred provider; and a
+`Save-Data` Notes query loads its static index without loading that provider.
+This gate uses observable state and requests, not fixed delays or transfer-size
+estimates.
 
 These values are configuration gates, not frozen measurements. The verifier
 prints the observed values from each checked export. The aggregate RSC warning
@@ -666,6 +834,15 @@ eagerly loaded heavy dashboard, ReactFlow, Recharts, and Firebase markers, and
 rejects new third-party connection origins unless they are explicitly reviewed
 in `config/static-artifact-budgets.json`.
 
+Search-index ownership follows authored content rather than interface locale.
+Blog has authored archives in all six supported locales and exports six
+`/[locale]/search/blog.json` files. Notes has authored archives only in English
+and Vietnamese, so it exports only `/en/search/notes.json` and
+`/vi/search/notes.json`; French, Chinese, Japanese, and Korean Notes landing
+pages reuse the English index selected by their existing `archiveLocale`
+fallback. The pagination verifier checks this inventory exactly and fails if a
+fallback duplicate is emitted.
+
 Studio CSS accounting follows actual runtime ownership. Initial document CSS is
 the set of local stylesheets plus combined inline style blocks referenced by
 the Studio HTML. Required Shadow CSS is `studio/studio-shadow.css`, referenced
@@ -674,6 +851,28 @@ CSS combines both measured groups, so Shadow CSS is neither mislabeled as a
 document stylesheet nor omitted from the initial cost. The three Brotli caps
 are 3,072, 16,384, and 18,432 bytes respectively; external stylesheets fail the
 gate unless their origins are explicitly allowlisted.
+
+Public document CSS is route-owned. `src/app/globals.css` keeps the shared
+public base, header, footer, offline banner, accessibility behavior, and shared
+primitives, including the saved reading-font custom properties applied by the
+site-wide prepaint script. Home, About, Gallery, Apps, English practice, and offline fallback
+styles are imported statically by their Server Component pages. The Blog and
+Notes article layouts share `blog/reader.css`; archives do not download reader
+materials or controls. The source gate inventories the complete App Router CSS
+import graph and fixes the reader importer set to the two nested article
+layouts. It resolves only literal module specifiers, statically reducible
+template expressions, and literal `+` concatenations; every unresolved
+`import()` or `require()` specifier fails closed before CSS ownership is
+evaluated. A type-only CSS import is also rejected because TypeScript erases it
+and therefore it cannot satisfy a runtime stylesheet owner. Unconsumed legacy Notes chamber, entry, and
+chamber-navigation rules are absent; English result-state rules remain because
+the practice workspace constructs those classes dynamically. This changes only stylesheet ownership: rendered
+headings, landmarks, metadata, JSON-LD, analytics, locale behavior, and static
+URLs remain unchanged. The artifact verifier uses PostCSS and a selector AST
+instead of matching minifier-specific text or hashed filenames. It includes
+`@scope` roots and limits, ignores keyframe frames and declaration value blocks,
+matches exact owner class tokens, and applies route-specific stylesheet-count
+and Brotli limits from the latest complete export.
 
 The Studio artifact gate additionally reports the Brotli/raw totals for every
 JavaScript chunk transitively reachable from the English Studio entry. Its
@@ -745,8 +944,8 @@ An emergency rollback is an explicit control-plane operation:
 
 | Workflow                            | Trigger                           | Responsibility                                                      |
 |-------------------------------------|-----------------------------------|---------------------------------------------------------------------|
-| `.github/workflows/ci-frontend.yml` | Pull requests and pushes to `dev` | Type-check, lint, tests, one fast smoke build, artifact/SEO verification, and offline browser verification. |
-| `.github/workflows/nextjs.yml`      | Pushes to `main` or manual dispatch from `main` | Source checks, one full build, artifact/SEO/offline verification, official Pages artifact upload and deployment. |
+| `.github/workflows/ci-frontend.yml` | Pull requests and pushes to `dev` | Type-check, lint, tests, public live released-plus-scheduled OG readiness, one full production build, artifact/SEO verification, and offline browser verification. |
+| `.github/workflows/nextjs.yml`      | Pushes, daily schedule, or manual dispatch on `main` | Source checks, public live released-plus-scheduled OG readiness, one full build, released-only live OG and artifact/SEO/offline verification, official Pages artifact upload and deployment. |
 
 ## 13. Deployment View
 
@@ -756,14 +955,17 @@ Main deployment path:
 
 1. Developer commits source and content.
 2. GitHub Actions installs dependencies with Node 22 (minimum 22.18.0).
-3. Source quality checks run before publication.
+3. Source quality checks and public live released-plus-scheduled article OG
+   readiness run before publication.
 4. Next.js performs one full static export into `out/`.
-5. OG images are generated, cached, renamed, and linked as `.png`.
-6. Architecture, SEO, public-secret, compressed JavaScript, RSC, and Studio
+5. Route OG images are generated, cached, renamed, and linked as `.png`.
+6. Released article JPEGs are verified live without including scheduled-only
+   reservations.
+7. Architecture, SEO, public-secret, compressed JavaScript, RSC, and Studio
    runtime budgets verify the generated artifact.
-7. GitHub Actions uploads and deploys that exact artifact to GitHub Pages.
-8. Visitor browsers load static files and optional external scripts.
-9. Browser-side engagement calls go to Firebase Firestore.
+8. GitHub Actions uploads and deploys that exact artifact to GitHub Pages.
+9. Visitor browsers load static files and optional external scripts.
+10. Browser-side engagement calls go to Firebase Firestore.
 
 `firebase.json` also points hosting at `out/`, so Firebase Hosting can serve the
 same static export if used.
@@ -819,8 +1021,11 @@ decision to change them:
 1. Add canonical metadata to `content/blog-data/_index.json`.
 2. Add canonical body to `content/blog-data/posts/<slug>.json`.
 3. Add locale override files only for translated fields that exist.
-4. Run `npm test` to validate schema assumptions.
-5. Run a build or targeted OG build so social images are generated or restored.
+4. For scheduled content, generate its ignored PNG against the effective future
+   `CONTENT_BUILD_DATE`, publish the JPEG to `dom-pub`, and run live verification
+   with `--include-scheduled` before opening the content PR.
+5. Run `npm test` to validate schema assumptions.
+6. Run a build or targeted OG build so route social images are generated or restored.
 
 ### Add a Note
 
@@ -828,7 +1033,9 @@ decision to change them:
 2. Add canonical body to `content/notes-data/posts/<slug>.json`.
 3. Set `locales` intentionally.
 4. Add Vietnamese override under `content/notes-data/vi` if needed.
-5. Check sitemap behavior if the note is Vietnamese-only.
+5. Reserve a scheduled note's article JPEG through the same reviewed
+   `dom-pub` flow before opening the site PR.
+6. Check sitemap behavior if the note is Vietnamese-only.
 
 ### Add a New Public Page
 

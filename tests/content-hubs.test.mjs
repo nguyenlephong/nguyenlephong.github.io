@@ -358,10 +358,10 @@ test("shared hub structured data preserves surface-specific semantics", () => {
   }
 });
 
-test("sitemap contains 947 unique URLs and exactly 52 curated hub URLs", () => {
+test("sitemap contains 939 unique URLs and exactly 52 curated hub URLs", () => {
   const sitemap = sitemapModule.default();
-  assert.equal(sitemap.length, 947);
-  assert.equal(new Set(sitemap.map(({ url }) => url)).size, 947);
+  assert.equal(sitemap.length, 939);
+  assert.equal(new Set(sitemap.map(({ url }) => url)).size, 939);
 
   const hubEntries = sitemap.filter(({ url }) =>
     /\/(?:en|vi)\/(?:blog\/series|notes\/topics)\//.test(url)

@@ -69,6 +69,25 @@ test("localized route groups preserve the complete unique URL inventory", () => 
   }
 });
 
+test("fallback Notes search reuses the canonical English index", () => {
+  const route = readFileSync(
+    `${localeRoot}/(site)/search/notes.json/route.ts`,
+    "utf8"
+  );
+  const collection = readFileSync(
+    "src/components/notes/NotesCollectionPage.tsx",
+    "utf8"
+  );
+  const runtimeVerifier = readFileSync(
+    "scripts/verify-runtime-boundaries.mjs",
+    "utf8"
+  );
+
+  assert.match(route, /NOTE_CONTENT_LOCALES\.map/);
+  assert.match(collection, /versionedSearchIndexUrl\(\s*archiveLocale,\s*'notes'/);
+  assert.match(runtimeVerifier, /path: "\/fr\/notes"[\s\S]*searchPath: "en\/search\/notes\.json"/);
+});
+
 test("public runtime and chrome stay outside the Studio layout boundary", () => {
   const rootLayout = readFileSync(`${localeRoot}/layout.tsx`, "utf8");
   const siteLayout = readFileSync(`${localeRoot}/(site)/layout.tsx`, "utf8");
@@ -150,6 +169,18 @@ test("document CSS, public CSS, and third-party resources follow route ownership
   const siteLayout = readFileSync(`${localeRoot}/(site)/layout.tsx`, "utf8");
   const documentCss = readFileSync("src/app/document.css", "utf8");
   const publicCss = readFileSync("src/app/globals.css", "utf8");
+  const readerCss = readFileSync(
+    `${localeRoot}/(site)/blog/reader.css`,
+    "utf8"
+  );
+  const blogArticleLayout = readFileSync(
+    `${localeRoot}/(site)/blog/[category]/[slug]/layout.tsx`,
+    "utf8"
+  );
+  const notesArticleLayout = readFileSync(
+    `${localeRoot}/(site)/notes/[slug]/layout.tsx`,
+    "utf8"
+  );
   const publicResources = readFileSync(
     "src/components/analytics/PublicThirdPartyResources.tsx",
     "utf8"
@@ -168,8 +199,16 @@ test("document CSS, public CSS, and third-party resources follow route ownership
     /\.app-nav|\.blog-reader-tools|\.route-progress/
   );
   assert.match(publicCss, /\.app-nav/);
-  assert.match(publicCss, /\.blog-reader-tools/);
   assert.match(publicCss, /\.route-progress/);
+  assert.match(publicCss, /html\[data-reading-font='lora'\]/);
+  assert.doesNotMatch(publicCss, /\.blog-reader-tools/);
+  assert.match(readerCss, /\.blog-reader-tools/);
+  assert.doesNotMatch(readerCss, /html\[data-reading-font='lora'\]/);
+  assert.match(blogArticleLayout, /import ['"]\.\.\/\.\.\/reader\.css['"]/);
+  assert.match(
+    notesArticleLayout,
+    /import ['"]\.\.\/\.\.\/blog\/reader\.css['"]/
+  );
 
   assert.match(rootLayout, /<PostHogBootstrap locale=\{locale\} \/>/);
   assert.match(rootLayout, /us\.i\.posthog\.com/);
@@ -195,10 +234,15 @@ test("runtime documentation matches route and artifact ownership", () => {
     "docs/technical-specification.md",
     "utf8"
   );
+  const performanceSpec = readFileSync(
+    "specs/static-performance-budgets.md",
+    "utf8"
+  );
   const budgets = JSON.parse(
     readFileSync("config/static-artifact-budgets.json", "utf8")
   );
   const routeBudgets = budgets.performance.routeInitialJavaScript;
+  const publicCssBudgets = budgets.performance.publicInitialCss.routes;
   const studioBudgets = budgets.performance.studioInitialRuntime;
 
   for (const document of [boundarySpec, technicalSpec]) {
@@ -257,6 +301,30 @@ test("runtime documentation matches route and artifact ownership", () => {
   ]) {
     assert.match(boundarySpec, new RegExp(bytes.toLocaleString("en-US")));
   }
+
+  const publicCssLabels = {
+    home: "Home",
+    about: "About",
+    gallery: "Gallery",
+    apps: "Apps",
+    english: "English practice",
+    offline: "Offline",
+    blogArchive: "Blog archive",
+    notesArchive: "Notes archive",
+    blogArticle: "Blog article",
+    notesArticle: "Notes article"
+  };
+  for (const [surface, budget] of Object.entries(publicCssBudgets)) {
+    const row = `| ${publicCssLabels[surface]} | ${budget.maxStylesheetCount}`;
+    assert.match(technicalSpec, new RegExp(row.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.match(
+      technicalSpec,
+      new RegExp(budget.maxBrotliBytes.toLocaleString("en-US"))
+    );
+  }
+  assert.match(performanceSpec, /route-owned CSS split/);
+  assert.match(performanceSpec, /AC-SPB-031/);
+  assert.match(boundarySpec, /AC-SRB-017/);
 
   assert.doesNotMatch(
     technicalSpec,

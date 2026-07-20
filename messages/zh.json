@@ -253,6 +253,10 @@
     "home": {
       "title": "Nguyen Le Phong — 高级软件工程师与技术负责人",
       "description": "拥有 8+ 年产品构建、交付领导以及微前端、Kubernetes 与发布系统架构经验的高级软件工程师与技术总监。信息技术学士 — 优秀(GPA 3.36)。"
+    },
+    "gallery": {
+      "title": "作品记录 — 工作背后的成长轨迹",
+      "description": "这里整理了证书、认可、项目片段与长期习惯，呈现 Nguyen Le Phong 如何持续学习、构建产品并与团队协作。"
     }
   },
   "Offline": {

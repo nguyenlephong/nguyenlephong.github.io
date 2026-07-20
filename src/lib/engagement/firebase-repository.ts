@@ -12,19 +12,12 @@ import {
   type ReactionKey,
 } from './domain'
 import type { EngagementRepository } from './repository'
+import { boundPostStatsIds } from './post-stats-ids'
 
 const COLLECTION = 'postStats'
 
 function isNavigatorOffline(): boolean {
   return typeof navigator !== 'undefined' && navigator.onLine === false
-}
-
-export function boundPostStatsIds(
-  ids: readonly string[],
-  limit: number,
-): string[] {
-  if (!Number.isSafeInteger(limit) || limit <= 0) return []
-  return [...new Set(ids.filter(Boolean))].slice(0, limit)
 }
 
 function isValidReactionChange(change: ReactionChange): boolean {

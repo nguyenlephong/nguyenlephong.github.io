@@ -31,6 +31,7 @@ interface ExplorerShellProps<T> {
   className?: string
   trackingSurface?: 'blog' | 'notes'
   searchStatus?: 'idle' | 'loading' | 'ready' | 'error'
+  postStatsStatus?: 'waiting' | 'loading' | 'ready' | 'skipped'
   searchUnavailableLabel: string
   onSearchIntent: () => void
   renderItem: (item: T) => ReactNode
@@ -54,6 +55,7 @@ export function ExplorerShell<T>({
   className,
   trackingSurface,
   searchStatus = 'idle',
+  postStatsStatus = 'waiting',
   searchUnavailableLabel,
   onSearchIntent,
   renderItem,
@@ -101,6 +103,9 @@ export function ExplorerShell<T>({
       className={['blog-explorer', className].filter(Boolean).join(' ')}
       style={accentStyle(activeColor)}
       aria-busy={searchStatus === 'loading'}
+      data-deferred-post-stats={postStatsStatus}
+      data-explorer-result-count={count}
+      data-search-status={searchStatus}
     >
       <div className="blog-explorer__controls">
         <div

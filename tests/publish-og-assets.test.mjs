@@ -40,6 +40,7 @@ async function createFixture(
     blogCount = 2,
     notesCount = 1,
     existingBlogSlugs = [],
+    draftBlogSlugs = [],
     futureBlogSlugs = [],
   } = {},
 ) {
@@ -101,6 +102,7 @@ async function createFixture(
   const blogSlugs = Array.from({ length: blogCount }, (_, index) => `blog-post-${index + 1}`)
   const noteSlugs = Array.from({ length: notesCount }, (_, index) => `note-post-${index + 1}`)
   const futureBlogSlugSet = new Set(futureBlogSlugs)
+  const draftBlogSlugSet = new Set(draftBlogSlugs)
   const png = await sharp({
     create: {
       width: 1200,
@@ -123,6 +125,7 @@ async function createFixture(
         posts: blogSlugs.map((slug) => ({
           slug,
           date: futureBlogSlugSet.has(slug) ? '2999-01-01' : '2020-01-01',
+          ...(draftBlogSlugSet.has(slug) ? { status: 'draft' } : {}),
         })),
       }),
     ),
@@ -297,9 +300,10 @@ test('publication ignores future entries without deleting an existing stale dest
 
 test('stale prune dry-run inventories only known generated assets and preserves manual media', async (t) => {
   const { domPubDir, jpeg, siteDir } = await createFixture(t, {
-    blogCount: 3,
-    existingBlogSlugs: ['blog-post-1', 'blog-post-2', 'blog-post-3'],
-    futureBlogSlugs: ['blog-post-2', 'blog-post-3'],
+    blogCount: 4,
+    existingBlogSlugs: ['blog-post-1', 'blog-post-2', 'blog-post-3', 'blog-post-4'],
+    draftBlogSlugs: ['blog-post-2', 'blog-post-3'],
+    futureBlogSlugs: ['blog-post-4'],
   })
   const manualPath = path.join(domPubDir, 'icdn/og/blogs/manual-banner.jpg')
   await fs.writeFile(manualPath, jpeg)
@@ -323,25 +327,32 @@ test('stale prune dry-run inventories only known generated assets and preserves 
     previousHeadSha,
   })
   assert.deepEqual(await fs.readFile(manualPath), jpeg)
+  assert.deepEqual(
+    await fs.readFile(path.join(domPubDir, 'icdn/og/blogs/blog-post-4.jpg')),
+    jpeg,
+  )
   assert.equal((await git(domPubDir, ['status', '--porcelain=v1'])).stdout, '')
 })
 
-test('explicit stale prune is idempotent and a later publication re-adds the released asset', async (t) => {
+test('explicit draft prune is idempotent and a later publication re-adds the released asset', async (t) => {
   const { blogSlugs, domPubDir, siteDir } = await createFixture(t, {
-    blogCount: 2,
-    existingBlogSlugs: ['blog-post-1', 'blog-post-2'],
+    blogCount: 3,
+    existingBlogSlugs: ['blog-post-1', 'blog-post-2', 'blog-post-3'],
   })
   await fs.writeFile(
     path.join(siteDir, 'content/blog-data/_index.json'),
     JSON.stringify({
       posts: [
         { slug: blogSlugs[0], date: '2026-07-19' },
-        { slug: blogSlugs[1], date: '2026-07-20' },
+        { slug: blogSlugs[1], date: '2026-07-20', status: 'draft' },
+        { slug: blogSlugs[2], date: '2026-07-21' },
       ],
     }),
   )
-  await commitAll(siteDir, 'schedule second publication')
+  await commitAll(siteDir, 'draft second publication')
   const stalePath = path.join(domPubDir, 'icdn/og/blogs/blog-post-2.jpg')
+  const scheduledPath = path.join(domPubDir, 'icdn/og/blogs/blog-post-3.jpg')
+  const scheduledBefore = await fs.readFile(scheduledPath)
 
   const pruned = await publishOgAssets({
     rootDir: siteDir,
@@ -355,7 +366,8 @@ test('explicit stale prune is idempotent and a later publication re-adds the rel
   assert.equal(pruned.deleted, 1)
   assert.equal(pruned.prune.applied, true)
   await assertMissing(stalePath)
-  await commitAll(domPubDir, 'prune scheduled asset')
+  assert.deepEqual(await fs.readFile(scheduledPath), scheduledBefore)
+  await commitAll(domPubDir, 'prune draft asset')
 
   const repeated = await publishOgAssets({
     rootDir: siteDir,
@@ -370,6 +382,18 @@ test('explicit stale prune is idempotent and a later publication re-adds the rel
   assert.equal(repeated.prune.candidates, 0)
   assert.equal((await git(domPubDir, ['status', '--porcelain=v1'])).stdout, '')
 
+  await fs.writeFile(
+    path.join(siteDir, 'content/blog-data/_index.json'),
+    JSON.stringify({
+      posts: [
+        { slug: blogSlugs[0], date: '2026-07-19' },
+        { slug: blogSlugs[1], date: '2026-07-20' },
+        { slug: blogSlugs[2], date: '2026-07-21' },
+      ],
+    }),
+  )
+  await commitAll(siteDir, 'release second publication')
+
   const released = await publishOgAssets({
     rootDir: siteDir,
     domPubDir,
@@ -381,14 +405,15 @@ test('explicit stale prune is idempotent and a later publication re-adds the rel
   })
   assert.equal(released.added, 1)
   assert.equal(released.deleted, 0)
-  await validateOgImage(stalePath, { format: 'jpeg', label: 'released scheduled asset' })
+  await validateOgImage(stalePath, { format: 'jpeg', label: 'released draft asset' })
+  assert.deepEqual(await fs.readFile(scheduledPath), scheduledBefore)
 })
 
 test('a partial stale-prune failure restores the complete managed tree', async (t) => {
   const { domPubDir, siteDir } = await createFixture(t, {
     blogCount: 3,
     existingBlogSlugs: ['blog-post-1', 'blog-post-2', 'blog-post-3'],
-    futureBlogSlugs: ['blog-post-2', 'blog-post-3'],
+    draftBlogSlugs: ['blog-post-2', 'blog-post-3'],
   })
   const stalePaths = [
     path.join(domPubDir, 'icdn/og/blogs/blog-post-2.jpg'),
@@ -430,7 +455,7 @@ test('stale prune enforces count and percentage caps before mutation', async (t)
       const { domPubDir, siteDir } = await createFixture(t, {
         blogCount: 3,
         existingBlogSlugs: ['blog-post-1', 'blog-post-2', 'blog-post-3'],
-        futureBlogSlugs: ['blog-post-2', 'blog-post-3'],
+        draftBlogSlugs: ['blog-post-2', 'blog-post-3'],
       })
       const contractPath = path.join(siteDir, 'config/media-publication.json')
       const contract = JSON.parse(await fs.readFile(contractPath, 'utf8'))
@@ -462,7 +487,7 @@ test('stale prune rejects a managed symlink and never follows it', async (t) => 
   const { domPubDir, fixtureRoot, jpeg, siteDir } = await createFixture(t, {
     blogCount: 2,
     existingBlogSlugs: ['blog-post-2'],
-    futureBlogSlugs: ['blog-post-2'],
+    draftBlogSlugs: ['blog-post-2'],
   })
   const externalPath = path.join(fixtureRoot, 'external.jpg')
   const stalePath = path.join(domPubDir, 'icdn/og/blogs/blog-post-2.jpg')
@@ -583,7 +608,7 @@ test('a checkout drift after stale deletion is detected and restores the deleted
   const { domPubDir, jpeg, siteDir } = await createFixture(t, {
     blogCount: 2,
     existingBlogSlugs: ['blog-post-2'],
-    futureBlogSlugs: ['blog-post-2'],
+    draftBlogSlugs: ['blog-post-2'],
   })
   const { alternateHead } = await createAlternateDomPubHead(domPubDir)
   const stalePath = path.join(domPubDir, 'icdn/og/blogs/blog-post-2.jpg')

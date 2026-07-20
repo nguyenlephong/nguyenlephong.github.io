@@ -17,6 +17,7 @@ import test from "node:test";
 import {
   buildOpportunityRequest,
   collectSearchOpportunities,
+  groupCompetingPages,
   writePrivateOpportunityReport
 } from "../scripts/report-search-opportunities.mjs";
 import { ENDPOINTS } from "../scripts/monitor-seo-field-data.mjs";
@@ -173,6 +174,197 @@ test("validates Search Analytics dates and row limits", () => {
         rowLimit: 25_001
       }),
     /row_limit_invalid/
+  );
+});
+
+test("groups exact queries with multiple pages above the configured impression floor", () => {
+  const groups = groupCompetingPages(
+    [
+      { page: "https://example.com/b", query: "same query", clicks: 1, impressions: 12 },
+      { page: "https://example.com/a", query: "same query", clicks: 2, impressions: 8 },
+      { page: "https://example.com/a", query: "same query", clicks: 3, impressions: 5 },
+      { page: "https://example.com/c", query: "other query", clicks: 1, impressions: 25 },
+      { page: "https://example.com/d", query: "Other query", clicks: 1, impressions: 25 },
+      { page: "https://example.com/f", query: "high query", clicks: 1, impressions: 30 },
+      { page: "https://example.com/e", query: "high query", clicks: 1, impressions: 30 }
+    ],
+    { minimumTotalImpressions: 20 }
+  );
+
+  assert.deepEqual(groups, [
+    {
+      query: "high query",
+      pageCount: 2,
+      totalClicks: 2,
+      totalImpressions: 60,
+      pages: [
+        { page: "https://example.com/e", clicks: 1, impressions: 30 },
+        { page: "https://example.com/f", clicks: 1, impressions: 30 }
+      ]
+    },
+    {
+      query: "same query",
+      pageCount: 2,
+      totalClicks: 6,
+      totalImpressions: 25,
+      pages: [
+        { page: "https://example.com/a", clicks: 5, impressions: 13 },
+        { page: "https://example.com/b", clicks: 1, impressions: 12 }
+      ]
+    }
+  ]);
+});
+
+test("private collection applies the configured competing-page threshold", async () => {
+  assert.equal(
+    config.privateOpportunities.competingPagesMinimumTotalImpressions,
+    50
+  );
+  const report = await collectSearchOpportunities(config, {
+    accessToken: "private-access-token",
+    startDate: "2026-06-01",
+    endDate: "2026-06-28",
+    fetchImpl: async () =>
+      jsonResponse({
+        rows: [
+          {
+            keys: [
+              "https://nguyenlephong.github.io/en/blog/one",
+              "exact private query"
+            ],
+            clicks: 2,
+            impressions: 30,
+            ctr: 0.06667,
+            position: 6
+          },
+          {
+            keys: [
+              "https://nguyenlephong.github.io/en/blog/two",
+              "exact private query"
+            ],
+            clicks: 1,
+            impressions: 20,
+            ctr: 0.05,
+            position: 9
+          }
+        ]
+      })
+  });
+
+  assert.deepEqual(report.competingPages, [
+    {
+      query: "exact private query",
+      pageCount: 2,
+      totalClicks: 3,
+      totalImpressions: 50,
+      pages: [
+        {
+          page: "https://nguyenlephong.github.io/en/blog/one",
+          clicks: 2,
+          impressions: 30
+        },
+        {
+          page: "https://nguyenlephong.github.io/en/blog/two",
+          clicks: 1,
+          impressions: 20
+        }
+      ]
+    }
+  ]);
+});
+
+test("rejects over-limit queries instead of truncating them into a competing-pages collision", async () => {
+  const sharedPrefix = "q".repeat(500);
+  const report = await collectSearchOpportunities(config, {
+    accessToken: "private-access-token",
+    startDate: "2026-06-01",
+    endDate: "2026-06-28",
+    fetchImpl: async () =>
+      jsonResponse({
+        rows: [
+          {
+            keys: [
+              "https://nguyenlephong.github.io/en/blog/long-query-a",
+              `${sharedPrefix}a`
+            ],
+            clicks: 1,
+            impressions: 30,
+            ctr: 0.03333,
+            position: 5
+          },
+          {
+            keys: [
+              "https://nguyenlephong.github.io/en/blog/long-query-b",
+              `${sharedPrefix}b`
+            ],
+            clicks: 1,
+            impressions: 30,
+            ctr: 0.03333,
+            position: 5
+          }
+        ]
+      })
+  });
+
+  assert.equal(report.rowCount, 0);
+  assert.deepEqual(report.rows, []);
+  assert.deepEqual(report.competingPages, []);
+});
+
+test("rejects query and page dimensions containing control characters", async () => {
+  const report = await collectSearchOpportunities(config, {
+    accessToken: "private-access-token",
+    startDate: "2026-06-01",
+    endDate: "2026-06-28",
+    fetchImpl: async () =>
+      jsonResponse({
+        rows: [
+          {
+            keys: [
+              "https://nguyenlephong.github.io/en/blog/control-query",
+              "unsafe\u0000query"
+            ],
+            clicks: 1,
+            impressions: 30,
+            ctr: 0.03333,
+            position: 5
+          },
+          {
+            keys: [
+              "https://nguyenlephong.github.io/en/blog/control\npage",
+              "unsafe page"
+            ],
+            clicks: 1,
+            impressions: 30,
+            ctr: 0.03333,
+            position: 5
+          },
+          {
+            keys: [
+              "https://nguyenlephong.github.io/en/blog/safe",
+              "safe query"
+            ],
+            clicks: 1,
+            impressions: 5,
+            ctr: 0.2,
+            position: 2
+          }
+        ]
+      })
+  });
+
+  assert.equal(report.rowCount, 1);
+  assert.equal(report.rows[0].query, "safe query");
+  assert.deepEqual(report.competingPages, []);
+});
+
+test("private opportunity report keeps competing queries out of stdout", () => {
+  const source = readFileSync("scripts/report-search-opportunities.mjs", "utf8");
+  assert.match(source, /competingPages/);
+  assert.doesNotMatch(source, /console\.log\([^\n]*(?:query|competingPages)/);
+  assert.doesNotMatch(
+    readFileSync(".github/workflows/seo-field-monitoring.yml", "utf8"),
+    /seo:opportunities|report-search-opportunities/
   );
 });
 

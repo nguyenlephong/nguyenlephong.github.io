@@ -5,19 +5,28 @@
  * lives behind the EngagementRepository boundary.
  */
 import {
-  firebaseEngagementRepository,
-  boundPostStatsIds,
-} from '@/lib/engagement/firebase-repository'
-import {
   REACTION_KEYS,
   emptyReactions,
   type PostStats,
   type ReactionCounts,
   type ReactionKey,
 } from '@/lib/engagement/domain'
+import type { EngagementRepository } from '@/lib/engagement/repository'
+import { boundPostStatsIds } from '@/lib/engagement/post-stats-ids'
 
 export { REACTION_KEYS, boundPostStatsIds, emptyReactions }
 export type { PostStats, ReactionCounts, ReactionKey }
+
+let repositoryPromise: Promise<EngagementRepository | null> | null = null
+
+function loadEngagementRepository(): Promise<EngagementRepository | null> {
+  if (!repositoryPromise) {
+    repositoryPromise = import('@/lib/engagement/firebase-repository')
+      .then(({ firebaseEngagementRepository }) => firebaseEngagementRepository)
+      .catch(() => null)
+  }
+  return repositoryPromise
+}
 
 /** Stable, locale-agnostic Firestore document id for an article. */
 export function postStatsId(category: string, slug: string): string {
@@ -32,32 +41,41 @@ export function formatCount(value: number): string {
   return String(value)
 }
 
-export function getPostStats(id: string): Promise<PostStats | null> {
-  return firebaseEngagementRepository.getStats(id)
+export async function getPostStats(id: string): Promise<PostStats | null> {
+  const repository = await loadEngagementRepository()
+  return repository ? repository.getStats(id) : null
 }
 
-export function getPostStatsByIds(
+export async function getPostStatsByIds(
   ids: readonly string[],
   limit: number,
 ): Promise<Map<string, PostStats>> {
-  return firebaseEngagementRepository.getStatsByIds(ids, limit)
+  const repository = await loadEngagementRepository()
+  return repository
+    ? repository.getStatsByIds(ids, limit)
+    : new Map<string, PostStats>()
 }
 
-export function incrementView(id: string): Promise<boolean> {
-  return firebaseEngagementRepository.recordView(id)
+export async function incrementView(id: string): Promise<boolean> {
+  const repository = await loadEngagementRepository()
+  return repository ? repository.recordView(id) : false
 }
 
-export function incrementShare(id: string): Promise<boolean> {
-  return firebaseEngagementRepository.recordShare(id)
+export async function incrementShare(id: string): Promise<boolean> {
+  const repository = await loadEngagementRepository()
+  return repository ? repository.recordShare(id) : false
 }
 
 /** Atomically applies a complete reaction transition in one transaction. */
-export function changeReaction(
+export async function changeReaction(
   id: string,
   previous: ReactionKey | null,
   next: ReactionKey | null,
 ): Promise<boolean> {
-  return firebaseEngagementRepository.changeReaction(id, { previous, next })
+  const repository = await loadEngagementRepository()
+  return repository
+    ? repository.changeReaction(id, { previous, next })
+    : false
 }
 
 /**

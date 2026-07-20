@@ -1,6 +1,6 @@
 'use client'
 
-import { Link } from '@/i18n/navigation'
+import IntentPrefetchLink from '@/components/navigation/IntentPrefetchLink'
 import { track } from '@/lib/analytics'
 import type { BlogCategoryMeta } from '@/lib/blog/types'
 
@@ -15,7 +15,7 @@ export default function BlogCategoryCard({
   countLabel,
 }: BlogCategoryCardProps) {
   return (
-    <Link
+    <IntentPrefetchLink
       href={`/blog/${category.slug}`}
       className={`blog-cat-card blog-cat-card--${category.accent}`}
       onClick={() => {
@@ -30,6 +30,6 @@ export default function BlogCategoryCard({
       <h2 className="blog-cat-card__title">{category.title}</h2>
       <p className="blog-cat-card__tagline">{category.tagline}</p>
       <span className="blog-cat-card__count">{countLabel}</span>
-    </Link>
+    </IntentPrefetchLink>
   )
 }

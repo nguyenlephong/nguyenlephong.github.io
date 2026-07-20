@@ -5,15 +5,16 @@ import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { profileInfo, APP_ROUTE } from '@/app/app.const'
-import { PAGE_SEO } from '@/app/seo.config'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import PageTracker from '@/components/analytics/PageTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
-import { localizedPageIdentity } from '@/lib/seo/locale'
+import {
+  buildStaticPageMetadata,
+  resolveStaticPageLocalization,
+} from '@/lib/seo/static-page-localization'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 import MotionProvider from '@/components/motion/MotionProvider'
-
-const seo = PAGE_SEO.gallery
+import './gallery.css'
 
 export function generateStaticParams() {
   if (process.env.NODE_ENV === 'development') return []
@@ -24,33 +25,25 @@ type Props = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const identity = localizedPageIdentity(locale, seo.path)
-  return {
-    title: seo.title,
-    description: seo.description,
-    keywords: seo.keywords,
-    alternates: { canonical: identity.canonical, languages: identity.languages },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url: identity.canonical,
-      type: 'website',
-      locale: identity.ogLocale,
-      alternateLocale: identity.alternateOgLocales,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: seo.title,
-      description: seo.description,
-    },
-  }
+  if (!hasLocale(routing.locales, locale)) notFound()
+  const localization = resolveStaticPageLocalization('gallery', locale)
+  const seo = await getTranslations({ locale, namespace: 'SEO.gallery' })
+  return buildStaticPageMetadata({
+    title: seo('title'),
+    description: seo('description'),
+    localization,
+    openGraphType: 'website',
+  })
 }
 
 export default async function GalleryPage({ params }: Props) {
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
-  const identity = localizedPageIdentity(locale, seo.path)
+  const localization = resolveStaticPageLocalization('gallery', locale)
+  const seo = await getTranslations({ locale, namespace: 'SEO.gallery' })
+  const title = seo('title')
+  const description = seo('description')
   const t = await getTranslations({ locale, namespace: 'Pages.gallery' })
   const categories = [
     { id: 'certificates', label: t('categories.certificates'), items: profileInfo.gallery.certificates },
@@ -62,10 +55,11 @@ export default async function GalleryPage({ params }: Props) {
   const galleryLd = {
     '@context': 'https://schema.org',
     '@type': 'ImageGallery',
-    '@id': `${identity.canonical}#gallery`,
-    name: seo.title,
-    description: seo.description,
-    url: identity.canonical,
+    '@id': `${localization.canonical}#gallery`,
+    name: title,
+    description,
+    inLanguage: localization.contentLocale,
+    url: localization.canonical,
     image: categories.flatMap((c) =>
       c.items.map((it) => ({
         '@type': 'ImageObject',

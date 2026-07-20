@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import {
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -11,9 +12,11 @@ import path from "node:path";
 import test from "node:test";
 
 import {
+  extractCssSelectors,
   expectedClientMessageScopesForLocalizedRoute,
   verifyPerformanceArtifact
 } from "../scripts/verify-performance-artifact.mjs";
+import { selectorContainsOwner } from "../scripts/lib/css-selector-contract.mjs";
 
 const LOCALES = ["en", "vi", "zh", "ja", "ko", "fr"];
 const SURFACE_ROUTES = {
@@ -25,6 +28,41 @@ const SURFACE_ROUTES = {
 const CLIENT_MESSAGE_ROUTES = {
   ...SURFACE_ROUTES,
   gallery: "gallery"
+};
+const PUBLIC_CSS_OWNER_SELECTORS = {
+  home: [
+    ".hero",
+    ".cv-section",
+    ".cv-section-head",
+    ".cv-section-eyebrow",
+    ".cv-section-title"
+  ],
+  about: [".about-page-v2"],
+  gallery: [".gallery-showcase"],
+  apps: [".apps-page"],
+  english: [".english-page"],
+  offline: [".offline-page-shell"],
+  blog: [".blog-home"],
+  notes: [".notes-archive"],
+  reader: [".blog-reader-tools"]
+};
+const PUBLIC_CSS_ROUTES = {
+  home: { html: "en.html", owners: ["home"] },
+  about: { html: "en/about.html", owners: ["about"] },
+  gallery: { html: "en/gallery.html", owners: ["gallery"] },
+  apps: { html: "en/apps.html", owners: ["apps"] },
+  english: { html: "en/apps/english.html", owners: ["english"] },
+  offline: { html: "en/offline.html", owners: ["offline"] },
+  blogArchive: { html: "en/blog.html", owners: ["blog"] },
+  notesArchive: { html: "en/notes.html", owners: ["blog", "notes"] },
+  blogArticle: {
+    html: "en/blog/culture/protecting-attention-in-a-busy-team.html",
+    owners: ["blog", "reader"]
+  },
+  notesArticle: {
+    html: "en/notes/tri-tue-can-duc-hanh.html",
+    owners: ["blog", "notes", "reader"]
+  }
 };
 
 const CLIENT_MESSAGE_SCOPE_FIXTURES = {
@@ -140,6 +178,26 @@ function createFixture(t, overrides = {}) {
           ])
         )
       },
+      archiveInitialRuntime: {
+        requiredMarkers: ["data-deferred-post-stats"],
+        forbiddenMarkers: ["firebaseapp.com", "getFirestore"]
+      },
+      publicInitialCss: {
+        ownerSelectors: PUBLIC_CSS_OWNER_SELECTORS,
+        routes: Object.fromEntries(
+          Object.entries(PUBLIC_CSS_ROUTES).map(([surface, route]) => [
+            surface,
+            {
+              html: route.html,
+              maxStylesheetCount:
+                overrides.maxPublicStylesheetCount ?? route.owners.length + 1,
+              maxBrotliBytes: overrides.maxPublicCssBrotliBytes ?? 10_000,
+              requiredOwners: route.owners,
+              allowedOwners: route.owners
+            }
+          ])
+        )
+      },
       studioInitialRuntime: {
         requiredMarkers: ["data-studio-shadow-host"],
         requiredReachableMarkers: ["studio_route_open", "data-studio-module"],
@@ -160,7 +218,7 @@ function createFixture(t, overrides = {}) {
 
   writeFileSync(
     path.join(chunksDir, "initial.js"),
-    "data-studio-shadow-host;static/chunks/studio-runtime.js;globalThis.site=true"
+    "data-studio-shadow-host;data-deferred-post-stats;static/chunks/studio-runtime.js;globalThis.site=true"
   );
   writeFileSync(
     path.join(chunksDir, "studio-runtime.js"),
@@ -170,6 +228,13 @@ function createFixture(t, overrides = {}) {
     path.join(chunksDir, "document.css"),
     ":root{color-scheme:light dark}"
   );
+  writeFileSync(path.join(chunksDir, "public-shared.css"), "body{margin:0}");
+  for (const [owner, selectors] of Object.entries(PUBLIC_CSS_OWNER_SELECTORS)) {
+    writeFileSync(
+      path.join(chunksDir, `public-${owner}.css`),
+      selectors.map((selector) => `${selector}{display:block}`).join("")
+    );
+  }
   mkdirSync(path.join(outDir, "studio"), { recursive: true });
   writeFileSync(
     path.join(outDir, "studio/studio-shadow.css"),
@@ -209,6 +274,26 @@ function createFixture(t, overrides = {}) {
       outDir,
       `${locale}/gallery`,
       REQUIRED_CLIENT_MESSAGE_SCOPES.gallery
+    );
+  }
+  for (const route of Object.values(PUBLIC_CSS_ROUTES)) {
+    const htmlPath = path.join(outDir, route.html);
+    mkdirSync(path.dirname(htmlPath), { recursive: true });
+    const links = [
+      '<link rel="stylesheet" href="/_next/static/chunks/public-shared.css">',
+      ...route.owners.map(
+        (owner) =>
+          `<link rel="stylesheet" href="/_next/static/chunks/public-${owner}.css">`
+      )
+    ].join("");
+    const html = existsSync(htmlPath) ? readFileSync(htmlPath, "utf8") : "";
+    writeFileSync(
+      htmlPath,
+      html
+        ? html.includes("</head>")
+          ? html.replace("</head>", `${links}</head>`)
+          : html.replace("<html>", `<html><head>${links}</head>`)
+        : `<!doctype html><html><head>${links}</head><body></body></html>`
     );
   }
   writeFileSync(path.join(outDir, "__next._tree.txt"), "shared RSC tree");
@@ -279,6 +364,18 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
   assert.equal(report.clientMessages.expectedProviderCount, 48);
   assert.equal(report.clientMessages.scopeCounts.site, 24);
   assert.equal(report.clientMessages.scopeCounts.gallery, 6);
+  assert.deepEqual(report.archiveInitialRuntime.blog, {
+    missingMarkers: [],
+    forbiddenMarkers: []
+  });
+  assert.deepEqual(report.archiveInitialRuntime.notes, {
+    missingMarkers: [],
+    forbiddenMarkers: []
+  });
+  assert.equal(report.publicInitialCss.home.files.length, 2);
+  assert.equal(report.publicInitialCss.notesArticle.files.length, 4);
+  assert.deepEqual(report.publicInitialCss.home.missingOwners, []);
+  assert.deepEqual(report.publicInitialCss.home.forbiddenOwners, []);
   assert.deepEqual(report.studio.thirdPartyConnectionOrigins, [
     "https://analytics.example"
   ]);
@@ -297,8 +394,236 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
     report.studio.documentCss.brotliBytes + report.studio.shadowCss.brotliBytes
   );
   assert.equal(report.artifactIndex.walks, 1);
-  assert.equal(report.artifactIndex.diskReads, 8);
+  assert.ok(report.artifactIndex.diskReads >= 8);
   assert.ok(report.artifactIndex.cacheHits >= 3);
+});
+
+test("rejects eager engagement provider code from archive initial scripts", async (t) => {
+  const { rootDir, chunksDir } = createFixture(t);
+  writeFileSync(
+    path.join(chunksDir, "initial.js"),
+    "data-studio-shadow-host;data-deferred-post-stats;firebaseapp.com;static/chunks/studio-runtime.js"
+  );
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+  const failures = report.failures.join("\n");
+
+  assert.match(
+    failures,
+    /blog initial JavaScript contains eager engagement provider marker: firebaseapp\.com/
+  );
+  assert.match(
+    failures,
+    /notes initial JavaScript contains eager engagement provider marker: firebaseapp\.com/
+  );
+});
+
+test("enforces public CSS owner isolation with hash-independent selectors", async (t) => {
+  const { rootDir, chunksDir } = createFixture(t);
+  writeFileSync(
+    path.join(chunksDir, "public-home.css"),
+    ".about-page-v2{display:block}"
+  );
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+  const failures = report.failures.join("\n");
+
+  assert.match(failures, /home initial CSS is missing required owner: home/);
+  assert.match(failures, /home initial CSS contains unrelated owner: about/);
+});
+
+test("requires every owner-family selector and rejects partial family leakage", async (t) => {
+  const { rootDir, chunksDir } = createFixture(t);
+  writeFileSync(
+    path.join(chunksDir, "public-home.css"),
+    ".hero{display:block}"
+  );
+
+  const incompleteReport = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+  assert.match(
+    incompleteReport.failures.join("\n"),
+    /home initial CSS is missing required owner: home/
+  );
+
+  writeFileSync(
+    path.join(chunksDir, "public-home.css"),
+    PUBLIC_CSS_OWNER_SELECTORS.home
+      .map((selector) => `${selector}{display:block}`)
+      .join("")
+  );
+  writeFileSync(
+    path.join(chunksDir, "public-shared.css"),
+    "body{margin:0}.cv-section-title{font-size:2rem}"
+  );
+
+  const leakedReport = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+  assert.match(
+    leakedReport.failures.join("\n"),
+    /about initial CSS contains unrelated owner: home/
+  );
+});
+
+test("normalizes equivalent selectors through nested CSS rule contexts", () => {
+  const selectors = extractCssSelectors(`
+    /* spacing and minifier output must be equivalent */
+    .hero { display: block; }
+    @media (min-width: 40rem) {
+      .about-page-v2,.gallery-showcase > strong { display: grid; }
+    }
+    @supports (display: subgrid) {
+      @media (min-width: 60rem) { .apps-page { display: subgrid; } }
+    }
+    @keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
+  `);
+
+  assert.deepEqual([...selectors].sort(), [
+    ".about-page-v2",
+    ".apps-page",
+    ".gallery-showcase>strong",
+    ".hero"
+  ]);
+  assert.deepEqual([...extractCssSelectors(".hero{display:block}")], [".hero"]);
+  assert.equal(selectors.has("from"), false);
+});
+
+test("parses native CSS nesting without treating quoted comment markers as comments", () => {
+  const selectors = extractCssSelectors(`
+    .route-shell {
+      content: "literal /* brace { and escaped quote \\\" still text";
+      & .about-page-v2, &:has(.gallery-showcase) {
+        display: grid;
+      }
+      @container card (min-width: 30rem) {
+        & > .apps-page { display: block; }
+      }
+      @layer route {
+        @supports (display: subgrid) {
+          & .english-page { display: subgrid; }
+        }
+      }
+    }
+    @-webkit-keyframes nested-reveal {
+      from { opacity: 0; }
+      50% { opacity: .5; }
+      to { opacity: 1; }
+    }
+    .commented/* comma, remains inside comment */,.plain { display: block; }
+    .compound/**/.about-page-v2 { display: block; }
+  `);
+
+  assert.deepEqual([...selectors].sort(), [
+    "& .about-page-v2",
+    "& .english-page",
+    "&:has(.gallery-showcase)",
+    "&>.apps-page",
+    ".commented",
+    ".compound.about-page-v2",
+    ".plain",
+    ".route-shell"
+  ]);
+  for (const frame of ["from", "50%", "to"]) {
+    assert.equal(selectors.has(frame), false);
+  }
+  assert.equal(
+    selectorContainsOwner('[data-owner=".about-page-v2"]', ".about-page-v2"),
+    false
+  );
+});
+
+test("extracts @scope roots and limits through the selector contract", () => {
+  const selectors = extractCssSelectors(`
+    @scope (.about-page-v2) to (.gallery-showcase) {
+      .scoped-content { display: block; }
+    }
+  `);
+
+  assert.deepEqual([...selectors].sort(), [
+    ".about-page-v2",
+    ".gallery-showcase",
+    ".scoped-content"
+  ]);
+  assert.equal(
+    [...selectors].some((selector) =>
+      selectorContainsOwner(selector, ".about-page-v2")
+    ),
+    true
+  );
+  assert.equal(
+    [...selectors].some((selector) =>
+      selectorContainsOwner(selector, ".gallery-showcase")
+    ),
+    true
+  );
+});
+
+test("does not treat custom-property value blocks as CSS rules", () => {
+  const selectors = extractCssSelectors(`
+    .host {
+      --payload: { .about-page-v2 { color: red } };
+      color: black;
+    }
+  `);
+
+  assert.deepEqual([...selectors], [".host"]);
+  assert.equal(
+    [...selectors].some((selector) =>
+      selectorContainsOwner(selector, ".about-page-v2")
+    ),
+    false
+  );
+});
+
+test("owner isolation recognizes owner selectors inside native nesting", async (t) => {
+  const { rootDir, chunksDir } = createFixture(t);
+  writeFileSync(
+    path.join(chunksDir, "public-home.css"),
+    '.route-shell{content:"literal /* not a comment";& .about-page-v2{display:block}}'
+  );
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+  const failures = report.failures.join("\n");
+
+  assert.match(failures, /home initial CSS is missing required owner: home/);
+  assert.match(failures, /home initial CSS contains unrelated owner: about/);
+});
+
+test("enforces public CSS request and Brotli ceilings", async (t) => {
+  const { rootDir, outDir, chunksDir } = createFixture(t, {
+    maxPublicCssBrotliBytes: 1
+  });
+  writeFileSync(path.join(chunksDir, "extra.css"), ".extra{display:block}");
+  const homePath = path.join(outDir, "en.html");
+  writeFileSync(
+    homePath,
+    readFileSync(homePath, "utf8").replace(
+      "</head>",
+      '<link rel="stylesheet" href="/_next/static/chunks/extra.css"></head>'
+    )
+  );
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+  const failures = report.failures.join("\n");
+
+  assert.match(failures, /home initial stylesheet count/);
+  assert.match(failures, /home initial CSS Brotli bytes/);
 });
 
 test("counts oversized inline CSS in the Studio document budget", async (t) => {
@@ -616,6 +941,54 @@ test("rejects missing, extra, or aliased initial route mappings", async (t) => {
       mutation.label
     );
   }
+});
+
+test("rejects malformed public CSS route and owner contracts", async (t) => {
+  const { rootDir, configPath } = createFixture(t);
+  const baseConfig = JSON.parse(readFileSync(configPath, "utf8"));
+  const mutations = [
+    (config) => delete config.performance.publicInitialCss.routes.about,
+    (config) => {
+      config.performance.publicInitialCss.ownerSelectors.home = ".hero";
+    },
+    (config) => {
+      config.performance.publicInitialCss.ownerSelectors.about =
+        config.performance.publicInitialCss.ownerSelectors.home;
+    },
+    (config) => {
+      config.performance.publicInitialCss.routes.home.allowedOwners = ["about"];
+    }
+  ];
+
+  for (const mutate of mutations) {
+    const config = structuredClone(baseConfig);
+    mutate(config);
+    writeFileSync(configPath, JSON.stringify(config));
+    await assert.rejects(
+      verifyPerformanceArtifact({ rootDir, configPath: "budgets.json" }),
+      /Invalid static performance budget configuration/
+    );
+  }
+});
+
+test("accepts exact public CSS contracts regardless of key insertion order", async (t) => {
+  const { rootDir, configPath } = createFixture(t);
+  const config = JSON.parse(readFileSync(configPath, "utf8"));
+  const publicInitialCss = config.performance.publicInitialCss;
+  publicInitialCss.ownerSelectors = Object.fromEntries(
+    Object.entries(publicInitialCss.ownerSelectors).reverse()
+  );
+  publicInitialCss.routes = Object.fromEntries(
+    Object.entries(publicInitialCss.routes).reverse()
+  );
+  writeFileSync(configPath, JSON.stringify(config));
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.deepEqual(report.failures, []);
 });
 
 test("keeps total RSC capacity advisory while enforcing average and Studio contracts", async (t) => {

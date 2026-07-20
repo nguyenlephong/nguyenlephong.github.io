@@ -5,7 +5,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import {
-  expectedArticleOgPublications,
+  articleOgPublicationInventory,
   loadMediaPublicationContract,
 } from './lib/media-publication-contract.mjs'
 
@@ -16,6 +16,8 @@ const DEFAULT_LIVE_RETRY_DELAY_MS = 150
 const DEFAULT_LIVE_TIMEOUT_MS = 5_000
 const DEFAULT_REMOTE_TREE_TIMEOUT_MS = 10_000
 const GITHUB_API_ORIGIN = 'https://api.github.com'
+const LIVE_SIGNATURE_BYTES = 4
+const MAX_LIVE_OG_200_CONTENT_LENGTH_BYTES = 5 * 1024 * 1024
 const RELEASED_RESPONSE_BODIES = new WeakSet()
 
 async function isJpeg(filePath) {
@@ -55,7 +57,14 @@ async function localPublicationKeys({ domPubDir, expected, failures }) {
   return keys
 }
 
-async function remotePublicationKeys({ remoteTreeUrl, fetchImpl, timeoutMs, failures }) {
+async function remotePublicationKeys({
+  remoteTreeUrl,
+  remoteTreeToken,
+  expected,
+  fetchImpl,
+  timeoutMs,
+  failures,
+}) {
   const requestedUrl = new URL(remoteTreeUrl)
   if (
     requestedUrl.origin !== GITHUB_API_ORIGIN ||
@@ -81,13 +90,16 @@ async function remotePublicationKeys({ remoteTreeUrl, fetchImpl, timeoutMs, fail
   })
 
   try {
+    const headers = {
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'nguyenlephong-static-og-verifier',
+      'X-GitHub-Api-Version': '2022-11-28',
+    }
+    if (remoteTreeToken) headers.Authorization = `Bearer ${remoteTreeToken}`
+
     response = await Promise.race([
       fetchImpl(requestedUrl.href, {
-        headers: {
-          Accept: 'application/vnd.github+json',
-          'User-Agent': 'nguyenlephong-static-og-verifier',
-          'X-GitHub-Api-Version': '2022-11-28',
-        },
+        headers,
         redirect: 'manual',
         signal: controller.signal,
       }),
@@ -126,13 +138,26 @@ async function remotePublicationKeys({ remoteTreeUrl, fetchImpl, timeoutMs, fail
       throw new Error('[verify-og-publication] remote tree response is missing its tree array')
     }
 
-    return new Set(
+    const entriesByPath = new Map(
       payload.tree
-        .filter((entry) => entry?.type === 'blob' && typeof entry.path === 'string')
-        .map((entry) => entry.path)
-        .filter((entryPath) => entryPath.startsWith('icdn/'))
-        .map((entryPath) => entryPath.slice('icdn/'.length)),
+        .filter((entry) => entry && typeof entry.path === 'string')
+        .map((entry) => [entry.path, entry]),
     )
+    const keys = new Set()
+    for (const expectedEntry of expected) {
+      const treeEntry = entriesByPath.get(`icdn/${expectedEntry.key}`)
+      if (!treeEntry) continue
+      if (treeEntry.type !== 'blob' || treeEntry.mode !== '100644') {
+        failures.push(`Remote OG asset is not a regular file: icdn/${expectedEntry.key}`)
+        continue
+      }
+      if (!Number.isSafeInteger(treeEntry.size) || treeEntry.size < 4) {
+        failures.push(`Remote OG asset has an invalid size: icdn/${expectedEntry.key}`)
+        continue
+      }
+      keys.add(expectedEntry.key)
+    }
+    return keys
   } catch (error) {
     controller.abort(error)
     void releaseResponseBody(response)
@@ -176,12 +201,45 @@ async function releaseResponseBody(response) {
   try {
     if (typeof response.body?.cancel === 'function') {
       await response.body.cancel()
-      return
     }
-    if (typeof response.arrayBuffer === 'function') await response.arrayBuffer()
   } catch {
     // The response may already be aborted or consumed. Releasing it remains
     // best-effort and must not replace the actionable verification failure.
+  }
+}
+
+async function readBoundedResponsePrefix(response, byteLimit) {
+  let reader
+  try {
+    reader = response.body?.getReader?.({ mode: 'byob' })
+  } catch {
+    throw new Error('Live OG response body is not a BYOB byte stream')
+  }
+  if (!reader) {
+    throw new Error('Live OG response body is not a BYOB byte stream')
+  }
+  if (typeof response === 'object') RELEASED_RESPONSE_BODIES.add(response)
+
+  const prefix = new Uint8Array(byteLimit)
+  let bytesRead = 0
+  try {
+    while (bytesRead < byteLimit) {
+      const { done, value } = await reader.read(new Uint8Array(byteLimit - bytesRead))
+      if (done) break
+      if (!(value instanceof Uint8Array) || value.byteLength === 0) {
+        throw new Error('Live OG response stream returned an invalid byte chunk')
+      }
+      const copyLength = Math.min(value.byteLength, byteLimit - bytesRead)
+      prefix.set(value.subarray(0, copyLength), bytesRead)
+      bytesRead += copyLength
+    }
+    return prefix.subarray(0, bytesRead)
+  } finally {
+    try {
+      await reader.cancel()
+    } catch {
+      // The request timeout may already have aborted the stream.
+    }
   }
 }
 
@@ -218,7 +276,7 @@ async function fetchLiveAsset({
           method: 'GET',
           headers: {
             Accept: 'image/jpeg',
-            Range: 'bytes=0-2',
+            Range: `bytes=0-${LIVE_SIGNATURE_BYTES - 1}`,
           },
           redirect: 'manual',
           signal: controller.signal,
@@ -277,7 +335,30 @@ async function inspectLiveResponse({ response, url, expectedFormat, entry }) {
     }
   }
 
-  const bytes = new Uint8Array(await response.arrayBuffer())
+  if (response.status === 200) {
+    const declaredLength = response.headers?.get?.('content-length')?.trim()
+    if (declaredLength) {
+      if (!/^\d+$/.test(declaredLength) || !Number.isSafeInteger(Number(declaredLength))) {
+        await releaseResponseBody(response)
+        return {
+          entry,
+          failure: `Live OG asset has an invalid content-length ${declaredLength}: ${url}`,
+        }
+      }
+      if (Number(declaredLength) > MAX_LIVE_OG_200_CONTENT_LENGTH_BYTES) {
+        await releaseResponseBody(response)
+        return {
+          entry,
+          failure: `Live OG asset content-length ${declaredLength} exceeds the ${MAX_LIVE_OG_200_CONTENT_LENGTH_BYTES}-byte safety cap: ${url}`,
+        }
+      }
+    }
+  }
+
+  const bytes = await readBoundedResponsePrefix(response, LIVE_SIGNATURE_BYTES)
+  if (bytes.byteLength < LIVE_SIGNATURE_BYTES) {
+    return { entry, failure: `Live OG asset is shorter than ${LIVE_SIGNATURE_BYTES} bytes: ${url}` }
+  }
   if (expectedFormat === 'jpeg' && !(bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff)) {
     return { entry, failure: `Live OG asset signature is not JPEG: ${url}` }
   }
@@ -312,7 +393,8 @@ async function livePublicationKeys({
       if (error?.code === 'LIVE_OG_TIMEOUT') {
         return { entry, failure: `Live OG request timed out after ${timeoutMs}ms: ${url}` }
       }
-      return { entry, failure: `Live OG request failed: ${url}` }
+      const detail = error instanceof Error && error.message ? ` (${error.message})` : ''
+      return { entry, failure: `Live OG request failed${detail}: ${url}` }
     }
   })
 
@@ -327,8 +409,10 @@ async function livePublicationKeys({
 export async function verifyOgPublication({
   rootDir = process.cwd(),
   contentBuildDate,
+  includeScheduled = false,
   localDomPubDir,
   remoteTreeUrl,
+  remoteTreeToken,
   liveBaseUrl,
   fetchImpl = globalThis.fetch,
   liveConcurrency = DEFAULT_LIVE_CONCURRENCY,
@@ -343,13 +427,27 @@ export async function verifyOgPublication({
       '[verify-og-publication] select exactly one source: localDomPubDir, remoteTreeUrl, or liveBaseUrl',
     )
   }
+  if (typeof includeScheduled !== 'boolean') {
+    throw new Error('[verify-og-publication] includeScheduled must be a boolean')
+  }
+  if (
+    remoteTreeUrl &&
+    remoteTreeToken !== undefined &&
+    (typeof remoteTreeToken !== 'string' || !remoteTreeToken || /[\r\n]/.test(remoteTreeToken))
+  ) {
+    throw new Error('[verify-og-publication] remoteTreeToken must be a non-empty single-line string')
+  }
 
   const contract = await loadMediaPublicationContract(rootDir)
-  const expected = await expectedArticleOgPublications({
+  const inventory = await articleOgPublicationInventory({
     rootDir,
     contract,
     contentBuildDate,
   })
+  const requiredEntries = includeScheduled
+    ? [...inventory.expected, ...inventory.scheduled]
+    : inventory.expected
+  const expected = requiredEntries.map(({ published: _published, ...entry }) => entry)
   const failures = []
   let publishedKeys
   let source
@@ -375,6 +473,8 @@ export async function verifyOgPublication({
     source = `remote:${remoteTreeUrl}`
     publishedKeys = await remotePublicationKeys({
       remoteTreeUrl,
+      remoteTreeToken,
+      expected,
       fetchImpl,
       timeoutMs: remoteTreeTimeoutMs,
       failures,
@@ -452,12 +552,18 @@ export async function verifyOgPublication({
 }
 
 export function parseVerifierArgs(argv) {
-  const options = { rootDir: null, localDomPubDir: null, remoteTree: false, live: false }
+  const options = {
+    rootDir: null,
+    localDomPubDir: null,
+    remoteTree: false,
+    live: false,
+    includeScheduled: false,
+  }
   const seen = new Set()
 
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index]
-    if (!['--root', '--local', '--remote-tree', '--live'].includes(argument)) {
+    if (!['--root', '--local', '--remote-tree', '--live', '--include-scheduled'].includes(argument)) {
       throw new Error(`[verify-og-publication] unknown argument: ${argument}`)
     }
     if (seen.has(argument)) {
@@ -473,7 +579,12 @@ export function parseVerifierArgs(argv) {
       options[argument === '--root' ? 'rootDir' : 'localDomPubDir'] = value
       index += 1
     } else {
-      options[argument === '--remote-tree' ? 'remoteTree' : 'live'] = true
+      const option = argument === '--remote-tree'
+        ? 'remoteTree'
+        : argument === '--include-scheduled'
+          ? 'includeScheduled'
+          : 'live'
+      options[option] = true
     }
   }
 
@@ -510,8 +621,10 @@ async function main() {
   )
   const report = await verifyOgPublication({
     rootDir,
+    includeScheduled: options.includeScheduled,
     localDomPubDir,
     remoteTreeUrl,
+    remoteTreeToken: process.env.OG_PUBLICATION_GITHUB_TOKEN,
     liveBaseUrl,
     liveTimeoutMs,
     remoteTreeTimeoutMs,

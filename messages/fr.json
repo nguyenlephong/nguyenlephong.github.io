@@ -253,6 +253,10 @@
     "home": {
       "title": "Nguyen Le Phong — Senior Software Engineer & Tech Lead",
       "description": "Senior Software Engineer & Head of Tech avec 8+ ans à construire des produits, diriger la livraison et architecturer des systèmes Micro-Frontend, Kubernetes et de rollout. Licence en TI — Très Bien (GPA 3,36)."
+    },
+    "gallery": {
+      "title": "Galerie — Les repères derrière le travail",
+      "description": "Une sélection de certifications, reconnaissances, aperçus de projets et habitudes régulières qui montre comment Nguyen Le Phong apprend, construit et travaille en équipe."
     }
   },
   "Offline": {

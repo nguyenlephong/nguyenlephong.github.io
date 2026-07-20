@@ -15,14 +15,26 @@ for money, access control, ranking integrity, or any other authoritative state.
 ```text
 React engagement UI
   -> firebase/postStats compatibility facade
-    -> EngagementRepository port
-      -> FirebaseEngagementRepository
-        -> optional App Check -> Firestore
+    -> lazy import on the first engagement operation
+      -> EngagementRepository port
+        -> FirebaseEngagementRepository
+          -> optional App Check -> Firestore
 ```
 
 - Reads are bounded to the visible static page and fail closed to empty data.
 - The caller passes the visible-page read limit explicitly; the Firebase adapter
   has no dependency on content pagination policy.
+- The compatibility facade memoizes a dynamic import of the Firebase adapter.
+  Its stable API and provider-neutral domain types remain in the initial client
+  graph, while provider setup stays in a later chunk.
+- Blog and Notes archives share one deferred loader. It enables reads only on
+  first scroll, search/filter interaction, or restoration of a bookmarked
+  query/filter. It runs one visible-page provider batch at a time and keeps one
+  replaceable latest-visible queue, so no more than two `CONTENT_PAGE_SIZE`
+  pages are outstanding. Resolved and active ids are deduplicated, the mounted
+  cache retains at most four visible pages, failed reads release the scheduler,
+  and a `Save-Data` preference skips the archive read entirely.
+- Card hover can enable only link prefetch. It is not engagement intent.
 - Views and shares remain atomic `increment(1)` writes.
 - The per-session view marker is written only after `recordView` reports a
   successful increment. A small shared coordinator deduplicates concurrent
@@ -63,6 +75,18 @@ React engagement UI
 - **ENG-008:** A failed view increment never commits the session marker. Tests
   cover a transient failure followed by a later-mount bounded retry, retry
   exhaustion, pending-write liveness, and concurrent/sequential idempotency.
+- **ENG-009:** The compatibility facade lazily imports and memoizes the
+  Firebase repository. Import failure keeps reads empty and writes false
+  without changing the public facade or article engagement behavior.
+- **ENG-010:** Archive reads start only after first-scroll, search/filter, or
+  restored-query intent. The scheduler runs one `CONTENT_PAGE_SIZE` provider
+  batch and retains one replaceable latest-visible queue, keeping at most two
+  pages outstanding while deduplicating resolved and active ids. It retains at
+  most four visible pages of resolved ids, advances after provider failure, and
+  keeps that failure invisible to static content; `Save-Data` skips the reads.
+- **ENG-011:** Artifact and browser gates prove the Firebase provider is absent
+  from Blog/Notes initial JavaScript and network activity before intent, while
+  a first scroll can still reach the lazy provider.
 
 ## App Check rollout runbook
 

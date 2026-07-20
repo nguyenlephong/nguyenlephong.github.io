@@ -55,8 +55,29 @@ route group to give public pages and Studio different runtime boundaries.
   Total initial CSS combines both groups and is capped at 18,432 Brotli bytes.
   An external stylesheet is rejected unless its origin is explicitly
   allowlisted.
-- Canonicals, `hreflang`, static parameters, metadata routes, analytics event
-  names, and static export behavior remain unchanged.
+- Public CSS follows the same route ownership principle without changing the
+  rendered document contract. `globals.css` contains only public base styles,
+  shared chrome, accessibility defaults, and intentionally shared primitives.
+  Home, About, Gallery, Apps, English practice, and the offline fallback each
+  import a static route stylesheet from their Server Component page. Blog and
+  Notes article layouts both import the same reader stylesheet; collection
+  routes do not. The saved reading-font custom properties stay in `globals.css`
+  because the public layout runs `FontScript` on every public route. CSS is
+  never loaded through a client-side dynamic import. The source boundary only
+  accepts dynamic module specifiers that can be reduced from literals at review
+  time; unresolved `import()` and `require()` expressions fail closed.
+- Route ownership is a transfer optimization, not permission to alter the
+  current rendered-document policy. Static HTML headings, landmarks, canonical
+  metadata, JSON-LD, locale behavior, and analytics wiring must remain stable
+  while CSS is extracted. Shared selectors such as `eyebrow`, `eyebrow-dot`,
+  `page-back`, and the base `tech-chip` stay global so extracting an owner cannot
+  silently break another route.
+- Static parameters, metadata routes, analytics event names, and static export
+  behavior remain unchanged by CSS extraction. Canonical, `hreflang`, locale
+  fallback, and sitemap behavior must continue to match the current
+  route-specific SEO contracts. `static-page-seo-localization.md` is the
+  authority for About, Apps, and Gallery and supersedes this specification's
+  older blanket description of their historical SEO policy.
 
 ## Measured artifact impact
 
@@ -81,7 +102,8 @@ are missing from the sitemap.
   article reader tools, or Studio.
 - Removing the site-wide theme, font, or reading-background prepaint scripts
   from public routes.
-- Changing URLs, locale fallbacks, sitemap policy, or content schemas.
+- Using CSS ownership work itself to change URLs, route-specific locale
+  fallbacks, sitemap policy, or content schemas.
 - Replacing PostHog, Google Analytics, or AdSense, or changing existing event
   names.
 - Changing Studio's existing feature-level lazy-loading boundaries; those are
@@ -108,8 +130,9 @@ existing IDs must not be renamed or renumbered.
   Studio.
 - **AC-SRB-005:** Studio is outside `(site)` and neither renders nor hides
   public-site chrome through CSS selectors.
-- **AC-SRB-006:** Public pages preserve their canonical paths, metadata, static
-  parameters, localization, and analytics wiring. The public Studio link uses
+- **AC-SRB-006:** Public pages preserve the canonical paths, metadata, static
+  parameters, localization, and analytics wiring required by their current
+  route-specific contracts while CSS is extracted. The public Studio link uses
   full-document navigation and preserves its existing click event through
   `sendBeacon`; the resulting Studio document contains no public Google nodes,
   globals, or additional requests.
@@ -128,6 +151,37 @@ existing IDs must not be renamed or renumbered.
   provider, and Studio cannot reach provider-dependent internationalization
   through alias or relative imports, value re-exports, literal dynamic imports,
   or CommonJS loading.
+- **AC-SRB-012:** Every extracted public stylesheet has its declared static page
+  or nested-layout importers, route-owned selectors are absent from
+  `globals.css`, and shared public chrome and primitives remain global.
+- **AC-SRB-013:** Blog and Notes article layouts statically import the shared
+  reader stylesheet before their page-owned Blog or Notes styles enter the
+  route tree; collection routes do not load reader controls or reader-material
+  rules.
+- **AC-SRB-014:** The CSS split preserves generated semantic HTML, the current
+  route-specific canonical metadata, JSON-LD, locale behavior, analytics, and
+  static-export URLs.
+- **AC-SRB-015:** The complete `src/app/**/*.{ts,tsx}` CSS import graph matches
+  the declared importer sets. Dynamic CSS imports and any additional route that
+  imports an owner stylesheet fail the source contract; reader CSS has exactly
+  the Blog and Notes nested article layouts as importers.
+- **AC-SRB-016:** A persisted non-default reading font has the same computed
+  body font on direct Home, direct article, Article-to-Home client navigation,
+  and reloaded Home. Every first visible frame and sampled navigation frame has
+  the persisted font attribute and computed stack.
+- **AC-SRB-017:** CSS with no source, content, test, or emitted runtime consumer
+  is removed only after literal and dynamic class-construction audit. Confirmed
+  dynamic consumers, including English result states, retain their rules.
+- **AC-SRB-018:** Every `import()` and `require()` module specifier in the App
+  Router source graph must be statically reducible from literals, static
+  template interpolations, or literal `+` concatenations. An unresolved
+  identifier, call, or template interpolation fails the CSS source boundary.
+- **AC-SRB-019:** Public CSS owner detection uses a standards parser and exact
+  selector class tokens. Nested rules and `@scope` roots and limits are visible
+  to the boundary; custom-property values and keyframe frames are not treated as
+  rules owned by a route.
+- **AC-SRB-020:** Type-only CSS imports fail the source boundary and do not count
+  as runtime stylesheet importers; type-only non-CSS imports remain valid.
 
 ## Verification
 
@@ -139,6 +193,9 @@ existing IDs must not be renamed or renumbered.
 - Run `npm run verify:performance-artifact` and confirm the Studio initial
   document, required Shadow, and combined initial CSS stay within 3,072,
   16,384, and 18,432 Brotli bytes respectively.
+- Confirm representative public routes remain within their configured initial
+  stylesheet-request and Brotli budgets and expose only their required
+  normalized route-owner selectors.
 - Run `npm run typecheck` and `npm run lint`.
 - Do not require a runtime backend or server-only route for this boundary.
 
@@ -151,4 +208,7 @@ the existing `cv_nav_click` event with `sendBeacon`, preserved session storage,
 and a reset in-memory marker. The Studio document must expose zero public Google
 scripts, hints, metadata, data-layer nodes, globals, new Google requests, or
 browser errors. The same check also verifies that article reader tools remount
-cleanly across Blog article path changes without forcing a document reload.
+cleanly across Blog article path changes without forcing a document reload. It
+also persists Lora before document execution and checks direct Home, direct
+article, Article-to-Home client navigation, and Home reload across first-visible
+and navigation animation frames so a route transition cannot hide a font flash.

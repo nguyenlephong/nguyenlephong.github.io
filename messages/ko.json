@@ -253,6 +253,10 @@
     "home": {
       "title": "Nguyen Le Phong — 시니어 소프트웨어 엔지니어 & 테크 리드",
       "description": "8년 이상의 제품 구축, 딜리버리 리딩, 마이크로프런트엔드, Kubernetes, 롤아웃 시스템 아키텍처 경험을 갖춘 시니어 소프트웨어 엔지니어이자 Head of Tech. 정보기술 학사 — Very Good (GPA 3.36)."
+    },
+    "gallery": {
+      "title": "갤러리 — 일의 과정이 남긴 기록",
+      "description": "Nguyen Le Phong이 배우고 만들며 팀과 협업하는 방식을 보여 주는 자격증, 수상 기록, 프로젝트 장면과 꾸준한 습관을 모았습니다."
     }
   },
   "Offline": {

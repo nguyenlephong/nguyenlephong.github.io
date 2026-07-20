@@ -4,6 +4,7 @@ import { promises as fs } from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
 import test from 'node:test'
+import ts from 'typescript'
 
 import {
   exportCompletionSignature,
@@ -13,6 +14,11 @@ import {
   removeStaleExportDetail,
   resolveBuildExitCode,
 } from '../scripts/lib/build-export-guard.mjs'
+import {
+  formatBuildOgError,
+  reportBuildOgFailure,
+} from '../scripts/lib/build-og-error.mjs'
+import { runBuildUnderPostbuildLock } from '../scripts/lib/build-og-lock.mjs'
 import { getValidatedExportFallback } from '../scripts/lib/export-completion.mjs'
 
 async function createFixture(t) {
@@ -23,6 +29,55 @@ async function createFixture(t) {
   ])
   t.after(() => fs.rm(rootDir, { recursive: true, force: true }))
   return rootDir
+}
+
+function staticRuntimeModuleNames(sourceFile) {
+  const moduleNames = []
+  for (const statement of sourceFile.statements) {
+    if (ts.isImportDeclaration(statement)) {
+      if (statement.importClause?.isTypeOnly) continue
+      moduleNames.push(statement.moduleSpecifier.text)
+    } else if (
+      ts.isExportDeclaration(statement) &&
+      statement.moduleSpecifier &&
+      !statement.isTypeOnly
+    ) {
+      moduleNames.push(statement.moduleSpecifier.text)
+    }
+  }
+  return moduleNames
+}
+
+async function collectEagerImportGraph(entry) {
+  const files = new Set()
+  const packages = new Set()
+  const queue = [path.resolve(entry)]
+
+  while (queue.length > 0) {
+    const file = queue.shift()
+    if (files.has(file)) continue
+    files.add(file)
+    const source = await fs.readFile(file, 'utf8')
+    const sourceFile = ts.createSourceFile(
+      file,
+      source,
+      ts.ScriptTarget.Latest,
+      true,
+      ts.ScriptKind.JS,
+    )
+    assert.equal(sourceFile.parseDiagnostics.length, 0, `${file} must parse`)
+
+    for (const moduleName of staticRuntimeModuleNames(sourceFile)) {
+      if (moduleName.startsWith('node:')) continue
+      if (!moduleName.startsWith('.')) {
+        packages.add(moduleName)
+        continue
+      }
+      queue.push(path.resolve(path.dirname(file), moduleName))
+    }
+  }
+
+  return { files, packages }
 }
 
 test('fallback diagnostics distinguish partial and complete expected HTML', async (t) => {
@@ -87,6 +142,146 @@ test('build setup fails closed when a stale export detail cannot be removed', ()
       error.message.includes('refusing to build') &&
       error.cause === unlinkError,
   )
+})
+
+test('whole-build lock rejects a concurrent destructive prepare and releases after failure', async (t) => {
+  const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'build-og-lock-'))
+  const outDir = path.join(rootDir, 'out')
+  await fs.mkdir(outDir)
+  t.after(() => fs.rm(rootDir, { recursive: true, force: true }))
+
+  let releaseFirst
+  let firstReachedBuild
+  const release = new Promise((resolve) => {
+    releaseFirst = resolve
+  })
+  const reachedBuild = new Promise((resolve) => {
+    firstReachedBuild = resolve
+  })
+  let concurrentPrepareCalls = 0
+  const first = runBuildUnderPostbuildLock({
+    async build() {
+      firstReachedBuild()
+      await release
+      return 0
+    },
+    outDir,
+    async postbuild() {},
+    async prepare() {
+      await fs.writeFile(path.join(outDir, 'first-prepared'), 'owned by first build')
+    },
+  })
+  await reachedBuild
+
+  await assert.rejects(
+    runBuildUnderPostbuildLock({
+      async build() {
+        return 0
+      },
+      outDir,
+      async postbuild() {},
+      async prepare() {
+        concurrentPrepareCalls += 1
+        await fs.rm(path.join(outDir, 'first-prepared'))
+      },
+    }),
+    /transform lock is already held/,
+  )
+  assert.equal(concurrentPrepareCalls, 0)
+  assert.equal(await fs.readFile(path.join(outDir, 'first-prepared'), 'utf8'), 'owned by first build')
+
+  releaseFirst()
+  assert.equal(await first, 0)
+
+  await assert.rejects(
+    runBuildUnderPostbuildLock({
+      async build() {
+        return 0
+      },
+      outDir,
+      async postbuild() {
+        throw new Error('injected postbuild failure')
+      },
+      async prepare() {},
+    }),
+    /injected postbuild failure/,
+  )
+  const retry = await runBuildUnderPostbuildLock({
+    async build() {
+      return 0
+    },
+    outDir,
+    async postbuild() {},
+    async prepare() {},
+  })
+  assert.equal(retry, 0)
+})
+
+test('whole-build wrapper does not enter postbuild after a failed Next build', async (t) => {
+  const rootDir = await fs.mkdtemp(path.join(os.tmpdir(), 'build-og-failed-build-'))
+  const outDir = path.join(rootDir, 'out')
+  await fs.mkdir(outDir)
+  t.after(() => fs.rm(rootDir, { recursive: true, force: true }))
+
+  let postbuildCalls = 0
+  const result = await runBuildUnderPostbuildLock({
+    async build() {
+      return 7
+    },
+    outDir,
+    async postbuild() {
+      postbuildCalls += 1
+    },
+    async prepare() {},
+  })
+
+  assert.equal(result, 7)
+  assert.equal(postbuildCalls, 0)
+})
+
+test('build failure reporter preserves the error graph without exposing arbitrary properties', () => {
+  const taskCause = new Error('task root cause')
+  const taskError = new Error('postbuild task failed', { cause: taskCause })
+  const releaseError = new Error('postbuild lock release failed')
+  taskCause.cause = taskError
+  taskError.secret = 'DO_NOT_PRINT_BUILD_TOKEN'
+  releaseError.authorization = 'Bearer private-ci-token'
+  const error = new AggregateError(
+    [taskError, releaseError],
+    '[postbuild] task and lock release failed',
+  )
+  let output = ''
+
+  reportBuildOgFailure(error, (message) => {
+    output = message
+  })
+
+  assert.match(output, /AggregateError: \[postbuild\] task and lock release failed/)
+  assert.match(output, /Error: postbuild task failed/)
+  assert.match(output, /Error: task root cause/)
+  assert.match(output, /Error: postbuild lock release failed/)
+  assert.match(output, /\n\s+at /, 'CI diagnostic must retain a useful stack')
+  assert.match(output, /circular error reference/)
+  assert.doesNotMatch(output, /DO_NOT_PRINT_BUILD_TOKEN|private-ci-token|authorization|secret/)
+})
+
+test('build failure formatter bounds deep, wide, and oversized error graphs', () => {
+  let cause = new Error('deepest cause')
+  for (let index = 0; index < 40; index += 1) {
+    cause = new Error(`cause-${index}-${'x'.repeat(20_000)}`, { cause })
+    cause.stack = `${cause.name}: ${cause.message}\n    at oversized-stack-${'y'.repeat(20_000)}`
+  }
+  const error = new AggregateError(
+    Array.from({ length: 100 }, (_, index) =>
+      index === 0 ? cause : new Error(`aggregate child ${index}`),
+    ),
+    'bounded build failure',
+  )
+
+  const output = formatBuildOgError(error)
+
+  assert.ok(output.length <= 64 * 1024, `formatted error is ${output.length} characters`)
+  assert.match(output, /(?:depth|entry|output|string) limit|truncated/)
 })
 
 test('export detail authority rejects the former freshness slop and wrong output tree', async (t) => {
@@ -290,6 +485,51 @@ test('late JavaScript output cannot turn diagnostic HTML fallback into success',
   assert.equal(exportCompletionSignature(stateWithoutExportDetail), '')
 })
 
+test('Next build eager imports exclude the success-only postbuild parser graph', async () => {
+  const buildFile = path.resolve('scripts/build-og.mjs')
+  const postbuildFile = path.resolve('scripts/postbuild.mjs')
+  const source = await fs.readFile(buildFile, 'utf8')
+  const sourceFile = ts.createSourceFile(
+    buildFile,
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.JS,
+  )
+  const postbuildImports = []
+
+  const visit = (node) => {
+    if (
+      ts.isCallExpression(node) &&
+      node.expression.kind === ts.SyntaxKind.ImportKeyword &&
+      ts.isStringLiteral(node.arguments[0]) &&
+      node.arguments[0].text === './postbuild.mjs'
+    ) {
+      postbuildImports.push(node)
+    }
+    ts.forEachChild(node, visit)
+  }
+  visit(sourceFile)
+
+  assert.equal(postbuildImports.length, 1)
+  let callback = postbuildImports[0].parent
+  while (callback && !ts.isMethodDeclaration(callback)) callback = callback.parent
+  assert.ok(callback && ts.isIdentifier(callback.name))
+  assert.equal(callback.name.text, 'postbuild')
+  assert.ok(ts.isObjectLiteralExpression(callback.parent))
+  assert.ok(ts.isCallExpression(callback.parent.parent))
+  assert.equal(callback.parent.parent.expression.getText(sourceFile), 'runBuildUnderPostbuildLock')
+
+  const eagerBuild = await collectEagerImportGraph(buildFile)
+  assert.equal(eagerBuild.files.has(postbuildFile), false)
+  assert.equal(eagerBuild.packages.has('typescript'), false)
+  assert.equal(eagerBuild.packages.has('entities'), false)
+
+  const eagerPostbuild = await collectEagerImportGraph(postbuildFile)
+  assert.equal(eagerPostbuild.packages.has('typescript'), true)
+  assert.equal(eagerPostbuild.packages.has('entities'), true)
+})
+
 test('build wrapper uses one shared postbuild and a stable authoritative success signal', async () => {
   const buildScript = await fs.readFile('scripts/build-og.mjs', 'utf8')
 
@@ -312,11 +552,16 @@ test('build wrapper uses one shared postbuild and a stable authoritative success
       buildScript.indexOf('rmSync(EXPECTED_OUT_DIR'),
     'stale export detail must be removed before the previous out tree is deleted',
   )
+  assert.ok(
+    buildScript.indexOf('unlinkSync(POSTBUILD_OG_STATE)') <
+      buildScript.indexOf('rmSync(EXPECTED_OUT_DIR'),
+    'committed OG state must be invalidated before a fresh output tree is created',
+  )
   assert.match(
     buildScript,
     /child\.on\('close', \(code, signal\) => \{\s+const exportState = getExportState\(startedAt\)/,
   )
-  assert.match(buildScript, /scripts\/postbuild\.mjs/)
+  assert.match(buildScript, /runBuildUnderPostbuildLock\(\{/)
   assert.equal(buildScript.match(/resolveContentBuildDate\(/g)?.length, 1)
   assert.match(
     buildScript,
@@ -324,7 +569,11 @@ test('build wrapper uses one shared postbuild and a stable authoritative success
   )
   assert.match(buildScript, /CONTENT_BUILD_DATE: contentBuildDate/)
   assert.match(buildScript, /run\(nextBin, \['build', '--turbopack'\], env,/)
-  assert.match(buildScript, /run\(process\.execPath, \['scripts\/postbuild\.mjs'\], env\)/)
+  assert.match(
+    buildScript,
+    /runPostbuildTransforms\(\{\s+acquireLock: false,\s+nextDir:/,
+  )
+  assert.doesNotMatch(buildScript, /run\(process\.execPath, \['scripts\/postbuild\.mjs'\]/)
   assert.doesNotMatch(buildScript, /scripts\/postbuild-og\.mjs/)
   assert.doesNotMatch(buildScript, /scripts\/postbuild-offline\.mjs/)
 })

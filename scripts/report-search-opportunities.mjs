@@ -46,9 +46,16 @@ function finiteNumber(value, digits = 3) {
 }
 
 function safeDimension(value, maxLength) {
-  if (typeof value !== "string") return null;
-  const normalized = value.replace(/[\u0000-\u001f\u007f]/g, " ").trim();
-  return normalized ? normalized.slice(0, maxLength) : null;
+  if (
+    typeof value !== "string" ||
+    value.length === 0 ||
+    value.length > maxLength ||
+    /[\u0000-\u001f\u007f]/.test(value) ||
+    value.trim().length === 0
+  ) {
+    return null;
+  }
+  return value;
 }
 
 function validateOpportunityConfig(config) {
@@ -67,6 +74,10 @@ function validateOpportunityConfig(config) {
     opportunities.rowLimit > 25_000 ||
     !Number.isFinite(opportunities.minimumImpressions) ||
     opportunities.minimumImpressions < 0 ||
+    !Number.isFinite(
+      opportunities.competingPagesMinimumTotalImpressions
+    ) ||
+    opportunities.competingPagesMinimumTotalImpressions < 0 ||
     !Number.isFinite(opportunities.lowCtrThreshold) ||
     opportunities.lowCtrThreshold < 0 ||
     opportunities.lowCtrThreshold > 1 ||
@@ -97,6 +108,79 @@ export function buildOpportunityRequest({ startDate, endDate, rowLimit }) {
     rowLimit,
     startRow: 0
   };
+}
+
+export function groupCompetingPages(
+  rows,
+  { minimumTotalImpressions }
+) {
+  if (
+    !Number.isFinite(minimumTotalImpressions) ||
+    minimumTotalImpressions < 0
+  ) {
+    throw new OpportunityError("competing_pages_threshold_invalid");
+  }
+
+  const queries = new Map();
+  for (const row of rows) {
+    if (
+      typeof row?.page !== "string" ||
+      typeof row?.query !== "string" ||
+      !Number.isFinite(row.clicks) ||
+      !Number.isFinite(row.impressions) ||
+      row.clicks < 0 ||
+      row.impressions < 0
+    ) {
+      continue;
+    }
+
+    const pages = queries.get(row.query) ?? new Map();
+    const existing = pages.get(row.page) ?? {
+      page: row.page,
+      clicks: 0,
+      impressions: 0
+    };
+    existing.clicks += row.clicks;
+    existing.impressions += row.impressions;
+    pages.set(row.page, existing);
+    queries.set(row.query, pages);
+  }
+
+  return [...queries]
+    .map(([query, pagesByUrl]) => {
+      const pages = [...pagesByUrl.values()]
+        .map((page) => ({
+          ...page,
+          clicks: finiteNumber(page.clicks),
+          impressions: finiteNumber(page.impressions)
+        }))
+        .sort(
+          (left, right) =>
+            right.impressions - left.impressions ||
+            left.page.localeCompare(right.page, "en")
+        );
+      return {
+        query,
+        pageCount: pages.length,
+        totalClicks: finiteNumber(
+          pages.reduce((total, page) => total + page.clicks, 0)
+        ),
+        totalImpressions: finiteNumber(
+          pages.reduce((total, page) => total + page.impressions, 0)
+        ),
+        pages
+      };
+    })
+    .filter(
+      (group) =>
+        group.pageCount >= 2 &&
+        group.totalImpressions >= minimumTotalImpressions
+    )
+    .sort(
+      (left, right) =>
+        right.totalImpressions - left.totalImpressions ||
+        left.query.localeCompare(right.query, "en")
+    );
 }
 
 async function requestJson(fetchImpl, url, init) {
@@ -218,6 +302,10 @@ export async function collectSearchOpportunities(
   const rows = responseRows
     .map((row) => normalizeOpportunityRow(row, search.property, opportunities))
     .filter(Boolean);
+  const competingPages = groupCompetingPages(rows, {
+    minimumTotalImpressions:
+      opportunities.competingPagesMinimumTotalImpressions
+  });
 
   return {
     schemaVersion: 1,
@@ -233,6 +321,7 @@ export async function collectSearchOpportunities(
     rowCount: rows.length,
     truncated: responseRows.length === request.rowLimit,
     note: "Private local data. Search Console returns top rows and does not guarantee every query/page pair.",
+    competingPages,
     rows
   };
 }

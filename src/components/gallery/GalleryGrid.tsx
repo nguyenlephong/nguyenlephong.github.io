@@ -118,7 +118,9 @@ export default function GalleryGrid({ categories }: Props) {
     const certificateItems =
       categories.find((c) => c.id === 'certificates')?.items ?? []
     const preferred = [
-      projectItems[1] ?? projectItems[0],
+      projectItems.find((photo) =>
+        FEATURED_PHOTO_PATTERNS['projects'].test(photo.alt)
+      ) ?? projectItems[0],
       awardItems[2] ?? awardItems[0],
       certificateItems[3] ?? certificateItems[0],
     ].filter(Boolean) as Photo[]
@@ -179,6 +181,16 @@ export default function GalleryGrid({ categories }: Props) {
 
   return (
     <>
+      {spotlightPhotos[0] ? (
+        <link
+          rel="preload"
+          as="image"
+          href={spotlightPhotos[0].src}
+          media="(min-width: 641px)"
+          fetchPriority="high"
+          data-gallery-desktop-preload="true"
+        />
+      ) : null}
       <section className="gallery-hero" aria-labelledby="gallery-board-title">
         <div className="gallery-hero-copy">
           <span className="gallery-hero-kicker">
@@ -214,6 +226,8 @@ export default function GalleryGrid({ categories }: Props) {
                     photo.height && photo.height > 100 ? photo.height : 640
                   }
                   className="gallery-spotlight-image"
+                  loading="lazy"
+                  fetchPriority={index === 0 ? undefined : 'low'}
                   unoptimized
                 />
               </div>

@@ -235,6 +235,18 @@
     "home": {
       "title": "Nguyen Le Phong — Senior Software Engineer & Technical Lead",
       "description": "Senior full-stack engineer and technical lead with 8+ years shipping product, platform, Micro-Frontend, Kubernetes, secure fintech integration, and rollout systems."
+    },
+    "about": {
+      "title": "About — Backend, Platform & Product Engineering",
+      "description": "How Nguyen Le Phong builds and leads production systems across backend services, secure integrations, Kubernetes infrastructure, observability, and careful rollouts."
+    },
+    "apps": {
+      "title": "Apps — A Showroom of Small, Carefully Built Tools",
+      "description": "A focused collection of open-source utilities and small tools built by Nguyen Le Phong to stay fast, practical, and pleasant to use."
+    },
+    "gallery": {
+      "title": "Gallery — Career Signals Behind the Work",
+      "description": "A curated record of certifications, recognition, project snapshots, and steady practices that show how Nguyen Le Phong learns, builds, and works with teams."
     }
   },
   "Offline": {

@@ -6,6 +6,7 @@ import { createServer } from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { createArtifactIndex } from "./lib/artifact-index.mjs";
 import { resolveFile } from "./verify-offline.mjs";
 
 const ROOT = process.cwd();
@@ -14,6 +15,12 @@ const HOST = "127.0.0.1";
 const REQUESTED_PORT = Number(process.env.RUNTIME_BOUNDARY_VERIFY_PORT ?? "0");
 const PUBLIC_ARTICLE = "/en/blog/culture/how-to-be-a-kind-engineer";
 const SECOND_ARTICLE = "/en/blog/culture/how-to-review-code-kindly";
+const ARCHIVE_PROVIDER_MARKERS = Object.freeze([
+  "firebaseapp.com",
+  "appspot.com",
+  "getFirestore",
+  "initializeFirestore"
+]);
 const CONTENT_HUB_CASES = [
   {
     path: "/en/blog/series/foundations",
@@ -49,6 +56,18 @@ const ARTICLE_HUB_CASES = [
     destination: "/vi/notes/topics/thoughts",
     sources: ["notes_article_breadcrumb"]
   }
+];
+const PUBLIC_CSS_RUNTIME_CASES = [
+  { name: "home", path: "/en", selector: ".hero", property: "position", value: "relative", stylesheets: 3 },
+  { name: "about", path: "/en/about", selector: ".about-page-v2", property: "paddingBottom", notValue: "0px", stylesheets: 3 },
+  { name: "gallery", path: "/en/gallery", selector: ".gallery-showcase", property: "overflowX", value: "clip", stylesheets: 3 },
+  { name: "apps", path: "/en/apps", selector: ".apps-page", property: "position", value: "relative", stylesheets: 3 },
+  { name: "english", path: "/en/apps/english", selector: ".english-page", property: "position", value: "relative", stylesheets: 3 },
+  { name: "offline", path: "/en/offline", selector: ".offline-page-shell", property: "display", value: "grid", stylesheets: 3 },
+  { name: "blogArchive", path: "/en/blog", selector: ".blog-home", property: "paddingBottom", notValue: "0px", stylesheets: 3 },
+  { name: "notesArchive", path: "/en/notes", selector: ".notes-archive", property: "paddingBottom", notValue: "0px", stylesheets: 4 },
+  { name: "blogArticle", path: "/en/blog/culture/protecting-attention-in-a-busy-team", selector: ".blog-article", property: "position", value: "relative", stylesheets: 4 },
+  { name: "notesArticle", path: "/en/notes/tri-tue-can-duc-hanh", selector: ".notes-reading", property: "position", value: "relative", stylesheets: 5 }
 ];
 
 const CONTENT_TYPES = {
@@ -109,9 +128,26 @@ async function closeServer(server) {
   });
 }
 
-async function installExternalRuntimeStubs(context) {
+async function installExternalRuntimeStubs(
+  context,
+  { stubGalleryImages = false } = {}
+) {
+  const galleryImageBody = stubGalleryImages
+    ? await fs.readFile(path.join(OUT_DIR, "opengraph-image.png"))
+    : null;
   await context.route(/^https:\/\//, async (route) => {
     const url = new URL(route.request().url());
+    if (
+      galleryImageBody &&
+      url.pathname.startsWith("/dom-pub/icdn/gallery/")
+    ) {
+      await route.fulfill({
+        body: galleryImageBody,
+        contentType: "image/png",
+        status: 200
+      });
+      return;
+    }
     if (url.hostname === "www.googletagmanager.com") {
       await route.fulfill({
         body: "window.__googleTagRuntimeLoaded=true;",
@@ -132,11 +168,410 @@ async function installExternalRuntimeStubs(context) {
   });
 }
 
+async function installGalleryLcpObserver(context) {
+  await context.addInitScript(() => {
+    window.__galleryLcpEntries = [];
+    new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        const element = entry.element;
+        const className =
+          typeof element?.className === "string"
+            ? element.className
+            : (element?.getAttribute?.("class") ?? "");
+        window.__galleryLcpEntries.push({
+          className,
+          isText: Boolean(
+            element &&
+              element.tagName !== "IMG" &&
+              element.textContent?.trim()
+          ),
+          size: entry.size,
+          startTime: entry.startTime,
+          tagName: element?.tagName ?? "",
+          text: element?.textContent?.trim().slice(0, 120) ?? "",
+          url: entry.url ?? ""
+        });
+      }
+    }).observe({ buffered: true, type: "largest-contentful-paint" });
+  });
+}
+
 function isGoogleRequest(url) {
   return (
     url.includes("googletagmanager.com") ||
     url.includes("googlesyndication.com")
   );
+}
+
+function localRequestPath(url, origin) {
+  const parsed = new URL(url);
+  if (parsed.origin !== origin) return null;
+  return decodeURIComponent(parsed.pathname).replace(/^\/+/, "");
+}
+
+function isRscRequestForDestination(request, origin, destination) {
+  const localPath = localRequestPath(request.url(), origin);
+  if (!localPath || !localPath.endsWith(".txt")) return false;
+  const destinationStem = destination.replace(/^\/+/, "");
+  const requestedStem = localPath.slice(0, -4);
+  return (
+    requestedStem === destinationStem ||
+    requestedStem.startsWith(`${destinationStem}/`)
+  );
+}
+
+async function findEngagementProviderChunks() {
+  const index = await createArtifactIndex(OUT_DIR);
+  const providerChunks = new Set();
+  for (const file of index.files()) {
+    if (!file.endsWith(".js")) continue;
+    const source = await index.readText(file);
+    if (ARCHIVE_PROVIDER_MARKERS.some((marker) => source.includes(marker))) {
+      providerChunks.add(file);
+    }
+  }
+  assert.ok(
+    providerChunks.size > 0,
+    "static artifact exposes no identifiable Firebase engagement provider chunk"
+  );
+  return providerChunks;
+}
+
+function normalizeArchiveSearch(value) {
+  return String(value)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/đ/g, "d");
+}
+
+function archiveSearchText(item) {
+  return normalizeArchiveSearch(
+    [item?.title, item?.summary, ...(Array.isArray(item?.tags) ? item.tags : [])]
+      .filter((value) => typeof value === "string")
+      .join(" ")
+  );
+}
+
+export function deriveArchiveSearchQuery(searchIndex) {
+  const items = Array.isArray(searchIndex?.items) ? searchIndex.items : [];
+  const blobs = items.map(archiveSearchText);
+  const candidates = [
+    ...new Set(
+      blobs.flatMap((blob) =>
+        blob
+          .split(/[^\p{L}\p{N}]+/u)
+          .filter((token) => token.length >= 4)
+      )
+    )
+  ].sort((left, right) => left.localeCompare(right, "en"));
+
+  const strictSubsets = candidates
+    .map((query) => ({
+      matchCount: blobs.filter((blob) => blob.includes(query)).length,
+      query,
+      totalItems: items.length
+    }))
+    .filter(({ matchCount, totalItems }) => matchCount > 0 && matchCount < totalItems)
+    .sort(
+      (left, right) =>
+        left.matchCount - right.matchCount || left.query.localeCompare(right.query, "en")
+    );
+
+  if (!strictSubsets[0]) {
+    throw new Error("Archive search index has no deterministic strict-subset query");
+  }
+  return strictSubsets[0];
+}
+
+async function verifyArchiveLoadingBoundaries(
+  browser,
+  origin,
+  providerChunks
+) {
+  const context = await browser.newContext({ serviceWorkers: "block" });
+  const pageErrors = [];
+  const requests = [];
+  let phase = "initial";
+
+  try {
+    await installExternalRuntimeStubs(context);
+    const page = await context.newPage();
+    page.on("pageerror", (error) => pageErrors.push(error.message));
+    page.on("request", (request) => {
+      const localPath = localRequestPath(request.url(), origin);
+      if (!localPath) return;
+      requests.push({
+        localPath,
+        phase,
+        provider: providerChunks.has(localPath),
+        resourceType: request.resourceType()
+      });
+    });
+
+    const response = await page.goto(`${origin}/en/blog`, {
+      waitUntil: "domcontentloaded"
+    });
+    assert.equal(response?.status(), 200);
+    const explorer = page.locator("[data-deferred-post-stats]");
+    await explorer.waitFor({ state: "visible" });
+    await page.waitForFunction(
+      () =>
+        document.querySelector("[data-deferred-post-stats]")?.getAttribute(
+          "data-deferred-post-stats"
+        ) === "waiting"
+    );
+    await page.waitForLoadState("networkidle");
+
+    const eagerRsc = requests.filter(
+      (request) => request.phase === "initial" && request.localPath.endsWith(".txt")
+    );
+    const eagerProvider = requests.filter(
+      (request) => request.phase === "initial" && request.provider
+    );
+    assert.deepEqual(eagerRsc, [], "archive requested RSC before browsing intent");
+    assert.deepEqual(
+      eagerProvider,
+      [],
+      "archive requested a Firebase provider chunk before browsing intent"
+    );
+
+    const category = page.locator("a.blog-cat-card").first();
+    const categoryHref = await category.getAttribute("href");
+    assert.ok(categoryHref, "blog category card has no crawlable href");
+    const categoryPath = new URL(categoryHref, origin).pathname;
+    phase = "category-hover";
+    const categoryPrefetch = page.waitForRequest((request) =>
+      isRscRequestForDestination(request, origin, categoryPath)
+    );
+    await category.hover();
+    await categoryPrefetch;
+    await page.waitForLoadState("networkidle");
+
+    const hoverRsc = requests.filter(
+      (request) =>
+        request.phase === "category-hover" && request.localPath.endsWith(".txt")
+    );
+    assert.ok(hoverRsc.length > 0, "category hover did not prefetch its RSC target");
+    assert.ok(
+      hoverRsc.every((request) => {
+        const stem = request.localPath.slice(0, -4);
+        const expected = categoryPath.replace(/^\/+/, "");
+        return stem === expected || stem.startsWith(`${expected}/`);
+      }),
+      `category hover prefetched another destination: ${JSON.stringify(hoverRsc)}`
+    );
+    assert.deepEqual(
+      requests.filter(
+        (request) => request.phase === "category-hover" && request.provider
+      ),
+      [],
+      "category hover loaded Firebase instead of only its navigation target"
+    );
+
+    phase = "scroll";
+    const providerRequest = page.waitForRequest((request) => {
+      const localPath = localRequestPath(request.url(), origin);
+      return Boolean(localPath && providerChunks.has(localPath));
+    });
+    await page.mouse.wheel(0, 600);
+    await providerRequest;
+    await page.waitForFunction(
+      () =>
+        document.querySelector("[data-deferred-post-stats]")?.getAttribute(
+          "data-deferred-post-stats"
+        ) === "ready"
+    );
+    assert.ok(
+      requests.some((request) => request.phase === "scroll" && request.provider),
+      "first scroll did not enable deferred Firebase stats"
+    );
+    assert.deepEqual(pageErrors, []);
+
+    return {
+      category: categoryPath,
+      eagerProviderChunks: eagerProvider.length,
+      eagerRscRequests: eagerRsc.length,
+      hoverRscRequests: hoverRsc.length,
+      scrollProviderChunks: requests.filter(
+        (request) => request.phase === "scroll" && request.provider
+      ).length
+    };
+  } finally {
+    await context.close();
+  }
+}
+
+async function verifyRestoredArchiveSearch(browser, origin, providerChunks) {
+  const scenarios = [
+    {
+      path: "/en/blog",
+      searchPath: "en/search/blog.json"
+    },
+    {
+      path: "/en/notes",
+      searchPath: "en/search/notes.json"
+    },
+    {
+      path: "/fr/notes",
+      searchPath: "en/search/notes.json"
+    }
+  ];
+  const results = [];
+
+  for (const scenario of scenarios) {
+    const context = await browser.newContext({ serviceWorkers: "block" });
+    const requests = [];
+    const pageErrors = [];
+    try {
+      await installExternalRuntimeStubs(context);
+      const page = await context.newPage();
+      page.on("pageerror", (error) => pageErrors.push(error.message));
+      page.on("request", (request) => {
+        const localPath = localRequestPath(request.url(), origin);
+        if (localPath) requests.push(localPath);
+      });
+
+      const searchIndex = JSON.parse(
+        await fs.readFile(path.join(OUT_DIR, scenario.searchPath), "utf8")
+      );
+      const { query, totalItems } = deriveArchiveSearchQuery(searchIndex);
+      const pathWithQuery = `${scenario.path}?q=${encodeURIComponent(query)}`;
+      const response = await page.goto(`${origin}${pathWithQuery}`, {
+        waitUntil: "domcontentloaded"
+      });
+      assert.equal(response?.status(), 200);
+      await page.waitForFunction(
+        ({ query, totalItems }) => {
+          const explorer = document.querySelector("[data-search-status]");
+          const input = document.querySelector(".blog-search__input");
+          const count = Number(
+            explorer?.getAttribute("data-explorer-result-count")
+          );
+          return (
+            input?.value === query &&
+            new URL(window.location.href).searchParams.get("q") === query &&
+            explorer?.getAttribute("data-search-status") === "ready" &&
+            explorer?.getAttribute("data-deferred-post-stats") === "ready" &&
+            count > 0 &&
+            count < totalItems
+          );
+        },
+        { query, totalItems }
+      );
+      await page.waitForLoadState("networkidle");
+
+      const resultCount = Number(
+        await page.locator("[data-explorer-result-count]").getAttribute(
+          "data-explorer-result-count"
+        )
+      );
+      assert.ok(
+        requests.includes(scenario.searchPath),
+        `${pathWithQuery} did not request its search index`
+      );
+      assert.ok(
+        requests.some((requestPath) => providerChunks.has(requestPath)),
+        `${pathWithQuery} did not request the deferred Firebase provider`
+      );
+      assert.deepEqual(pageErrors, []);
+      results.push({
+        path: pathWithQuery,
+        providerChunks: requests.filter((requestPath) =>
+          providerChunks.has(requestPath)
+        ).length,
+        resultCount,
+        query,
+        searchRequests: requests.filter(
+          (requestPath) => requestPath === scenario.searchPath
+        ).length,
+        totalItems
+      });
+    } finally {
+      await context.close();
+    }
+  }
+
+  return results;
+}
+
+async function verifySaveDataArchiveBoundary(browser, origin, providerChunks) {
+  const context = await browser.newContext({ serviceWorkers: "block" });
+  const providerRequests = [];
+  const localRequests = [];
+  try {
+    await context.addInitScript(() => {
+      Object.defineProperty(navigator, "connection", {
+        configurable: true,
+        value: { saveData: true }
+      });
+    });
+    await installExternalRuntimeStubs(context);
+    const page = await context.newPage();
+    page.on("request", (request) => {
+      const localPath = localRequestPath(request.url(), origin);
+      if (localPath) localRequests.push(localPath);
+      if (localPath && providerChunks.has(localPath)) {
+        providerRequests.push(localPath);
+      }
+    });
+
+    const searchIndex = JSON.parse(
+      await fs.readFile(path.join(OUT_DIR, "en/search/notes.json"), "utf8")
+    );
+    const { query, totalItems } = deriveArchiveSearchQuery(searchIndex);
+    const response = await page.goto(
+      `${origin}/en/notes?q=${encodeURIComponent(query)}`,
+      {
+      waitUntil: "domcontentloaded"
+      }
+    );
+    assert.equal(response?.status(), 200);
+    await page.waitForFunction(
+      ({ query, totalItems }) => {
+        const explorer = document.querySelector("[data-search-status]");
+        const count = Number(
+          explorer?.getAttribute("data-explorer-result-count")
+        );
+        return (
+          document.querySelector(".blog-search__input")?.value === query &&
+          new URL(window.location.href).searchParams.get("q") === query &&
+          explorer?.getAttribute("data-search-status") === "ready" &&
+          explorer?.getAttribute("data-deferred-post-stats") === "skipped" &&
+          count > 0 &&
+          count < totalItems
+        );
+      },
+      { query, totalItems }
+    );
+    await page.waitForLoadState("networkidle");
+    await page.mouse.wheel(0, 600);
+    await page.evaluate(
+      () =>
+        new Promise((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(resolve))
+        )
+    );
+    assert.deepEqual(
+      providerRequests,
+      [],
+      "Save-Data archive loaded the Firebase engagement provider"
+    );
+    assert.ok(
+      localRequests.includes("en/search/notes.json"),
+      "Save-Data restored search did not request its search index"
+    );
+    return {
+      providerChunks: providerRequests.length,
+      query,
+      searchRequests: localRequests.filter(
+        (requestPath) => requestPath === "en/search/notes.json"
+      ).length,
+      status: "skipped"
+    };
+  } finally {
+    await context.close();
+  }
 }
 
 async function verifyPublicToStudioBoundary(browser, origin) {
@@ -281,6 +716,396 @@ async function verifyPublicToStudioBoundary(browser, origin) {
       googleRequestsMounted: googleRequestCountBeforeNavigation,
       studioGoogleNodes: studioState.googleNodes,
       studioNavigationType: studioState.navigationType
+    };
+  } finally {
+    await context.close();
+  }
+}
+
+async function verifyPublicCssRuntime(browser, origin) {
+  const viewports = [
+    { name: "desktop", width: 1440, height: 900 },
+    { name: "mobile", width: 390, height: 844 }
+  ];
+  const results = [];
+
+  for (const viewport of viewports) {
+    const context = await browser.newContext({
+      serviceWorkers: "block",
+      viewport: { width: viewport.width, height: viewport.height }
+    });
+    try {
+      await installExternalRuntimeStubs(context);
+      for (const scenario of PUBLIC_CSS_RUNTIME_CASES) {
+        const page = await context.newPage();
+        const pageErrors = [];
+        const fatalConsole = [];
+        const failedStylesheets = [];
+        page.on("pageerror", (error) => pageErrors.push(error.message));
+        page.on("console", (message) => {
+          if (
+            message.type() === "error" &&
+            /(?:uncaught|typeerror|referenceerror|syntaxerror)/i.test(message.text())
+          ) {
+            fatalConsole.push(message.text());
+          }
+        });
+        page.on("requestfailed", (request) => {
+          if (request.resourceType() === "stylesheet") {
+            failedStylesheets.push(request.url());
+          }
+        });
+        page.on("response", (response) => {
+          if (
+            response.request().resourceType() === "stylesheet" &&
+            !response.ok()
+          ) {
+            failedStylesheets.push(`${response.status()} ${response.url()}`);
+          }
+        });
+
+        const response = await page.goto(`${origin}${scenario.path}`, {
+          waitUntil: "networkidle"
+        });
+        assert.equal(response?.status(), 200, `${scenario.path} did not load`);
+        const snapshot = await page.evaluate((contract) => {
+          const root = document.querySelector(contract.selector);
+          const heading = document.querySelector("h1");
+          const style = root ? getComputedStyle(root) : null;
+          const rect = root?.getBoundingClientRect();
+          const headingRect = heading?.getBoundingClientRect();
+          return {
+            canonical: document.querySelector('link[rel="canonical"]')?.href ?? "",
+            description:
+              document.querySelector('meta[name="description"]')?.getAttribute("content") ?? "",
+            headingCount: document.querySelectorAll("h1").length,
+            headingVisible: Boolean(
+              headingRect && headingRect.width > 0 && headingRect.height > 0
+            ),
+            rootHeight: rect?.height ?? 0,
+            rootWidth: rect?.width ?? 0,
+            styleValue: style?.[contract.property] ?? "",
+            stylesheetCount: [...document.styleSheets].filter((sheet) => {
+              if (!sheet.href) return false;
+              return new URL(sheet.href).origin === window.location.origin;
+            }).length,
+            title: document.title
+          };
+        }, scenario);
+
+        assert.ok(snapshot.title, `${scenario.path} has no title`);
+        assert.ok(snapshot.description, `${scenario.path} has no description`);
+        assert.ok(snapshot.canonical, `${scenario.path} has no canonical`);
+        assert.equal(snapshot.headingCount, 1, `${scenario.path} must keep one h1`);
+        assert.equal(snapshot.headingVisible, true, `${scenario.path} h1 is hidden`);
+        assert.ok(snapshot.rootWidth > 100 && snapshot.rootHeight > 40);
+        assert.equal(snapshot.stylesheetCount, scenario.stylesheets);
+        if (scenario.value) assert.equal(snapshot.styleValue, scenario.value);
+        if (scenario.notValue) assert.notEqual(snapshot.styleValue, scenario.notValue);
+        assert.deepEqual(pageErrors, []);
+        assert.deepEqual(fatalConsole, []);
+        assert.deepEqual(failedStylesheets, []);
+        results.push({
+          name: scenario.name,
+          viewport: viewport.name,
+          root: [Math.round(snapshot.rootWidth), Math.round(snapshot.rootHeight)],
+          stylesheets: snapshot.stylesheetCount
+        });
+        await page.close();
+      }
+
+      const navigationPage = await context.newPage();
+      await navigationPage.goto(`${origin}/en`, { waitUntil: "networkidle" });
+      const destination = "/en/gallery";
+      await Promise.all([
+        navigationPage.waitForURL(`${origin}${destination}`),
+        navigationPage
+          .locator(`a[href="${destination}"]`)
+          .first()
+          .evaluate((anchor) => anchor.click())
+      ]);
+      await navigationPage.locator(".gallery-showcase").waitFor({ state: "visible" });
+      assert.equal(
+        await navigationPage.locator(".gallery-showcase").evaluate(
+          (element) => getComputedStyle(element).overflowX === "clip"
+        ),
+        true
+      );
+      await navigationPage.close();
+    } finally {
+      await context.close();
+    }
+  }
+
+  return { directRoutes: results, clientNavigations: viewports.length };
+}
+
+async function verifyGalleryPreloadAndLcp(browser, origin) {
+  const scenarios = [
+    { name: "desktop", width: 1440, height: 900, preloadMatches: true },
+    { name: "mobile", width: 390, height: 844, preloadMatches: false }
+  ];
+  const results = [];
+
+  for (const scenario of scenarios) {
+    const context = await browser.newContext({
+      deviceScaleFactor: 1,
+      serviceWorkers: "block",
+      viewport: { width: scenario.width, height: scenario.height }
+    });
+    try {
+      await installGalleryLcpObserver(context);
+      await installExternalRuntimeStubs(context, { stubGalleryImages: true });
+      const page = await context.newPage();
+      const galleryImageRequests = [];
+      const pageErrors = [];
+      const preloadWarnings = [];
+
+      page.on("request", (request) => {
+        const url = new URL(request.url());
+        if (url.pathname.startsWith("/dom-pub/icdn/gallery/")) {
+          galleryImageRequests.push({
+            resourceType: request.resourceType(),
+            url: request.url()
+          });
+        }
+      });
+      page.on("pageerror", (error) => pageErrors.push(error.message));
+      page.on("console", (message) => {
+        if (/preload/i.test(message.text()) && /not used|unused/i.test(message.text())) {
+          preloadWarnings.push(message.text());
+        }
+      });
+
+      const response = await page.goto(`${origin}/en/gallery`, {
+        waitUntil: "networkidle"
+      });
+      assert.equal(response?.status(), 200, "Gallery did not load");
+      await page.waitForFunction(
+        () => window.__galleryLcpEntries?.length > 0,
+        undefined,
+        { timeout: 5_000 }
+      );
+      if (scenario.preloadMatches) {
+        await page.waitForFunction(
+          () => {
+            const image = document.querySelector(
+              ".gallery-spotlight-card-1 img"
+            );
+            return image?.complete && image.naturalWidth > 0;
+          },
+          undefined,
+          { timeout: 5_000 }
+        );
+      }
+      await page.evaluate(
+        () =>
+          new Promise((resolve) =>
+            requestAnimationFrame(() => requestAnimationFrame(resolve))
+          )
+      );
+
+      const snapshot = await page.evaluate(() => {
+        const preload = document.querySelector(
+          'head link[data-gallery-desktop-preload="true"]'
+        );
+        const image = document.querySelector(
+          ".gallery-spotlight-card-1 img"
+        );
+        const preloadHref = preload?.href ?? "";
+        return {
+          firstImageComplete: Boolean(image?.complete && image.naturalWidth > 0),
+          firstImageFetchPriority: image?.getAttribute("fetchpriority") ?? "",
+          firstImageSrc: image?.currentSrc || image?.src || "",
+          lcpEntries: window.__galleryLcpEntries ?? [],
+          media: preload?.media ?? "",
+          mediaMatches: preload ? matchMedia(preload.media).matches : null,
+          preloadFetchPriority: preload?.getAttribute("fetchpriority") ?? "",
+          preloadHref,
+          resourceEntries: preloadHref
+            ? performance
+                .getEntriesByName(preloadHref, "resource")
+                .map((entry) => ({
+                  initiatorType: entry.initiatorType,
+                  name: entry.name
+                }))
+            : []
+        };
+      });
+
+      assert.match(snapshot.preloadHref, /\/gallery\/projects\/wat-overview\.webp$/);
+      assert.equal(snapshot.media, "(min-width: 641px)");
+      assert.equal(snapshot.mediaMatches, scenario.preloadMatches);
+      assert.equal(snapshot.preloadFetchPriority, "high");
+      assert.equal(snapshot.firstImageSrc, snapshot.preloadHref);
+      assert.equal(snapshot.firstImageFetchPriority, "");
+
+      const exactRequests = galleryImageRequests.filter(
+        ({ url }) => url === snapshot.preloadHref
+      );
+      assert.ok(
+        exactRequests.length <= 1,
+        `${scenario.name} fetched the Gallery spotlight more than once`
+      );
+      assert.ok(
+        snapshot.resourceEntries.length <= 1,
+        `${scenario.name} recorded duplicate Gallery spotlight resources`
+      );
+      const finalLcp = snapshot.lcpEntries.at(-1);
+      assert.ok(finalLcp, `${scenario.name} emitted no LCP entry`);
+
+      if (scenario.preloadMatches) {
+        assert.equal(snapshot.firstImageComplete, true);
+        assert.equal(exactRequests.length, 1);
+        assert.equal(snapshot.resourceEntries.length, 1);
+        assert.equal(finalLcp.tagName, "IMG");
+        assert.match(finalLcp.className, /gallery-spotlight-image/);
+        assert.equal(finalLcp.url, snapshot.preloadHref);
+      } else {
+        assert.deepEqual(
+          snapshot.resourceEntries.filter(
+            ({ initiatorType }) => initiatorType === "link"
+          ),
+          [],
+          "mobile must not fetch the desktop-only preload"
+        );
+        assert.notEqual(finalLcp.tagName, "IMG");
+        assert.equal(finalLcp.isText, true);
+      }
+
+      assert.deepEqual(pageErrors, []);
+      assert.deepEqual(preloadWarnings, []);
+      results.push({
+        firstImageRequests: exactRequests.length,
+        finalLcp,
+        mediaMatches: snapshot.mediaMatches,
+        name: scenario.name,
+        resourceInitiators: snapshot.resourceEntries.map(
+          ({ initiatorType }) => initiatorType
+        )
+      });
+    } finally {
+      await context.close();
+    }
+  }
+
+  return { path: "/en/gallery", scenarios: results };
+}
+
+async function verifyPersistedReadingFont(browser, origin) {
+  const context = await browser.newContext({ serviceWorkers: "block" });
+  const persistedFont = "lora";
+  const storageKey = "reading_font_preference";
+
+  try {
+    await installExternalRuntimeStubs(context);
+    await context.addInitScript(
+      ({ font, key }) => {
+        localStorage.setItem(key, font);
+        globalThis.__initialReadingFontFrames = [];
+        let remainingFrames = 8;
+        const capture = () => {
+          const publicRoot = document.querySelector("main, .app-nav");
+          const publicRect = publicRoot?.getBoundingClientRect();
+          if (document.body && publicRect?.width > 0 && publicRect?.height > 0) {
+            globalThis.__initialReadingFontFrames.push({
+              attribute: document.documentElement.getAttribute("data-reading-font"),
+              fontFamily: getComputedStyle(document.body).fontFamily
+            });
+            remainingFrames -= 1;
+          }
+          if (remainingFrames > 0) requestAnimationFrame(capture);
+        };
+        requestAnimationFrame(capture);
+      },
+      { font: persistedFont, key: storageKey }
+    );
+
+    const snapshot = async (page) => {
+      await page.waitForFunction(
+        () => globalThis.__initialReadingFontFrames?.length > 0
+      );
+      return page.evaluate(() => ({
+        attribute: document.documentElement.getAttribute("data-reading-font"),
+        fontFamily: getComputedStyle(document.body).fontFamily,
+        initialFrames: globalThis.__initialReadingFontFrames
+      }));
+    };
+    const assertStableInitialFrames = (label, state, expectedFont) => {
+      assert.equal(state.attribute, persistedFont, `${label} lost persisted font`);
+      assert.ok(state.initialFrames.length > 0, `${label} captured no pre-paint frame`);
+      for (const frame of state.initialFrames) {
+        assert.equal(frame.attribute, persistedFont, `${label} flashed the default font attribute`);
+        assert.equal(frame.fontFamily, expectedFont, `${label} flashed a different computed font`);
+      }
+    };
+
+    const directHomePage = await context.newPage();
+    const homeResponse = await directHomePage.goto(`${origin}/en`, {
+      waitUntil: "networkidle"
+    });
+    assert.equal(homeResponse?.status(), 200);
+    const directHome = await snapshot(directHomePage);
+
+    const articlePage = await context.newPage();
+    const articleResponse = await articlePage.goto(`${origin}${PUBLIC_ARTICLE}`, {
+      waitUntil: "networkidle"
+    });
+    assert.equal(articleResponse?.status(), 200);
+    const directArticle = await snapshot(articlePage);
+
+    await articlePage.evaluate(() => {
+      globalThis.__navigationReadingFontFrames = [];
+      let remainingFrames = 24;
+      const capture = () => {
+        globalThis.__navigationReadingFontFrames.push(
+          getComputedStyle(document.body).fontFamily
+        );
+        remainingFrames -= 1;
+        if (remainingFrames > 0) requestAnimationFrame(capture);
+      };
+      requestAnimationFrame(capture);
+    });
+    await Promise.all([
+      articlePage.waitForURL(`${origin}/en`),
+      articlePage.locator("a.brand").click()
+    ]);
+    await articlePage.waitForLoadState("networkidle");
+    await articlePage.waitForFunction(
+      () => globalThis.__navigationReadingFontFrames?.length >= 2
+    );
+    const clientHome = await articlePage.evaluate(() => ({
+      attribute: document.documentElement.getAttribute("data-reading-font"),
+      fontFamily: getComputedStyle(document.body).fontFamily,
+      navigationFrames: globalThis.__navigationReadingFontFrames
+    }));
+
+    await articlePage.reload({ waitUntil: "networkidle" });
+    const reloadedHome = await snapshot(articlePage);
+
+    assertStableInitialFrames("direct Home", directHome, directHome.fontFamily);
+    assertStableInitialFrames("direct article", directArticle, directHome.fontFamily);
+    assertStableInitialFrames("reloaded Home", reloadedHome, directHome.fontFamily);
+    assert.equal(directArticle.fontFamily, directHome.fontFamily);
+    assert.equal(clientHome.attribute, persistedFont);
+    assert.equal(clientHome.fontFamily, directHome.fontFamily);
+    assert.ok(clientHome.navigationFrames.length > 0);
+    assert.ok(
+      clientHome.navigationFrames.every((fontFamily) => fontFamily === directHome.fontFamily),
+      "Article to Home navigation flashed a different computed font"
+    );
+    assert.equal(reloadedHome.fontFamily, directHome.fontFamily);
+
+    await directHomePage.close();
+    await articlePage.close();
+    return {
+      font: persistedFont,
+      fontFamily: directHome.fontFamily,
+      initialFrameSamples:
+        directHome.initialFrames.length +
+        directArticle.initialFrames.length +
+        reloadedHome.initialFrames.length,
+      navigationFrameSamples: clientHome.navigationFrames.length
     };
   } finally {
     await context.close();
@@ -682,16 +1507,49 @@ async function verifyContentHubAnalytics(browser, origin) {
 
 async function main() {
   await fs.access(OUT_DIR);
+  const providerChunks = await findEngagementProviderChunks();
   const { chromium } = await import("playwright");
   const { server, origin } = await startStaticServer();
   const browser = await chromium.launch({ headless: true });
   try {
     const publicToStudio = await verifyPublicToStudioBoundary(browser, origin);
+    const publicCss = await verifyPublicCssRuntime(browser, origin);
+    const galleryPreloadAndLcp = await verifyGalleryPreloadAndLcp(
+      browser,
+      origin
+    );
+    const persistedReadingFont = await verifyPersistedReadingFont(browser, origin);
     const readerRemount = await verifyReaderPathnameRemount(browser, origin);
     const contentHubAnalytics = await verifyContentHubAnalytics(browser, origin);
+    const archiveLoading = await verifyArchiveLoadingBoundaries(
+      browser,
+      origin,
+      providerChunks
+    );
+    const restoredArchiveSearch = await verifyRestoredArchiveSearch(
+      browser,
+      origin,
+      providerChunks
+    );
+    const saveDataArchive = await verifySaveDataArchiveBoundary(
+      browser,
+      origin,
+      providerChunks
+    );
     console.log(
       JSON.stringify(
-        { status: "ok", publicToStudio, readerRemount, contentHubAnalytics },
+        {
+          status: "ok",
+          publicToStudio,
+          publicCss,
+          galleryPreloadAndLcp,
+          persistedReadingFont,
+          readerRemount,
+          contentHubAnalytics,
+          archiveLoading,
+          restoredArchiveSearch,
+          saveDataArchive
+        },
         null,
         2
       )

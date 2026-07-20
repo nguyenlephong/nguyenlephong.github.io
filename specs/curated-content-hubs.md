@@ -86,7 +86,9 @@ pages. Across English and Vietnamese, that is 16 Blog URLs plus 36 Notes URLs,
 or exactly **52 new URLs**. The pre-hub snapshot contained 896 sitemap URLs,
 but one English URL incorrectly claimed an article whose only authored body is
 Vietnamese. Removing that invalid indexable variant leaves a valid baseline of
-895 URLs. The fixed-date target is therefore exactly **947 unique sitemap
+895 URLs. The static-page localization contract also removes eight un-authored
+About and Apps fallback variants from the sitemap, leaving 887 canonical
+pre-hub URLs. The fixed-date target is therefore exactly **939 unique sitemap
 URLs** at `CONTENT_BUILD_DATE=2026-07-19`.
 
 ## Pagination and navigation
@@ -121,7 +123,7 @@ URLs** at `CONTENT_BUILD_DATE=2026-07-19`.
   no `/page/1` or `mua-xe` hub entry. Existing bidirectional sitemap-to-HTML
   parity remains the deployment gate.
 
-The count of 947 is a fixed-date regression assertion, not a permanent global
+The count of 939 is a fixed-date regression assertion, not a permanent global
 SEO floor. Publication lifecycle changes must still be evaluated through exact
 artifact parity rather than by forcing an outdated total.
 
@@ -246,7 +248,7 @@ Track and the central property sanitizer.
   the existing root Open Graph/Twitter image, and `CollectionPage`, `ItemList`,
   and `BreadcrumbList` structured data.
 - **AC-CCH-007:** At `CONTENT_BUILD_DATE=2026-07-19`, the catalogs add exactly
-  52 hub URLs and the sitemap contains exactly 947 unique URLs: 895 valid
+  52 hub URLs and the sitemap contains exactly 939 unique URLs: 887 canonical
   pre-hub URLs plus the new hubs.
 - **AC-CCH-008:** The sitemap contains no curated `/page/1`, unsupported-locale,
   or `notes/topics/mua-xe` URL and remains in exact parity with exported
@@ -278,7 +280,7 @@ Use the fixed date for the reproducible route and sitemap assertions:
 
 ```bash
 CONTENT_BUILD_DATE=2026-07-19 npm test
-CONTENT_BUILD_DATE=2026-07-19 npm run build:fast
+CONTENT_BUILD_DATE=2026-07-19 npm run build
 npm run verify:pagination
 npm run verify:artifact
 npm run verify:performance-artifact
@@ -289,6 +291,6 @@ npm run lint
 
 The focused hub tests must pin catalog order, content counts, EN/VI static
 params, reserved-route validation, author parity, optional metadata semantics,
-and the 52/947 fixed-date sitemap result. Artifact verification remains the
+and the 52/939 fixed-date sitemap result. Artifact verification remains the
 source of truth for emitted canonicals, language alternates, JSON-LD, inlinks,
 route assets, public-secret scanning, and client-message scope.

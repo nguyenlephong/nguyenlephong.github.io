@@ -214,6 +214,9 @@ export async function articleOgPublicationInventory({
   const resolvedBuildDate = resolveContentBuildDate(
     contentBuildDate ?? process.env.CONTENT_BUILD_DATE,
   )
+  const expected = []
+  const scheduled = []
+  const prunable = []
   const known = []
   const keys = new Set()
   const indexesBySurface = new Map()
@@ -255,20 +258,26 @@ export async function articleOgPublicationInventory({
       const key = `${publication.publicationDirectory}/${slug}${publication.publicationExtension}`
       if (keys.has(key)) throw new Error(`[media-publication] duplicate publication key: ${key}`)
       keys.add(key)
-      known.push({
+      const entry = {
         surface,
         slug,
         key,
         published,
         publicPath: `${publication.publicPathPrefix}/${slug}${publication.publicationExtension}`,
         sourcePath: `${publication.sourceDirectory}/${slug}${publication.sourceExtension}`,
-      })
+      }
+      known.push(entry)
+      if (published) expected.push(entry)
+      else if (post.status === 'draft') prunable.push(entry)
+      else scheduled.push(entry)
     }
   }
 
   return {
-    expected: known.filter((entry) => entry.published),
+    expected,
     known,
+    prunable,
+    scheduled,
   }
 }
 

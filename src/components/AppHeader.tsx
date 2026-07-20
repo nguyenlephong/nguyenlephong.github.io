@@ -1,10 +1,10 @@
 "use client";
-import { Link } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { APP_ROUTE } from "@/app/app.const";
+import IntentPrefetchLink from "@/components/navigation/IntentPrefetchLink";
 import ThemeToggle from "@/components/theme/ThemeToggle";
 import { track } from "@/lib/analytics";
 
@@ -40,7 +40,7 @@ export default function AppHeader() {
     <>
       <header className={`app-nav${scrolled ? " is-scrolled" : ""}`}>
         <div className="app-nav-inner">
-          <Link
+          <IntentPrefetchLink
             href={APP_ROUTE.HOME}
             className="brand"
             onClick={() => track("cv_nav_click", { target: "home" })}
@@ -56,18 +56,18 @@ export default function AppHeader() {
               className="brand-avatar"
             />
             <span className="brand-text">Nguyen Le Phong</span>
-          </Link>
+          </IntentPrefetchLink>
 
           <nav className="nav-links" aria-label="Sections">
             {navItems.map((item) => (
-              <Link
+              <IntentPrefetchLink
                 key={item.trackId}
                 href={item.href}
                 className="nav-link"
                 onClick={() => track("cv_nav_click", { target: item.trackId })}
               >
                 {item.label}
-              </Link>
+              </IntentPrefetchLink>
             ))}
           </nav>
 
@@ -110,7 +110,7 @@ export default function AppHeader() {
       >
         <div className="nav-mobile-inner">
           {navItems.map((item) => (
-            <Link
+            <IntentPrefetchLink
               key={item.trackId}
               href={item.href}
               className="nav-mobile-link"
@@ -120,7 +120,7 @@ export default function AppHeader() {
               }}
             >
               {item.label}
-            </Link>
+            </IntentPrefetchLink>
           ))}
           <div className="nav-mobile-footer">
             <a

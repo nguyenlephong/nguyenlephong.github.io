@@ -16,7 +16,8 @@ Describe the change in 1-3 concise bullets.
 - [ ] `npm run typecheck`
 - [ ] `npm run lint`
 - [ ] `npm test`
-- [ ] `npm run build` or `npm run build:fast`
+- [ ] `npm run build` (required before artifact verification or deployment)
+- [ ] `npm run build:fast` (optional, non-deployable compile smoke only)
 - [ ] Manual browser check
 
 ## Screenshots

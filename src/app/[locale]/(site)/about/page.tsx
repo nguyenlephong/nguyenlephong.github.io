@@ -13,12 +13,13 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import { PAGE_SEO } from '@/app/seo.config'
 import PageTracker from '@/components/analytics/PageTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
-import { localizedPageIdentity } from '@/lib/seo/locale'
-
-const seo = PAGE_SEO.about
+import {
+  buildStaticPageMetadata,
+  resolveStaticPageLocalization,
+} from '@/lib/seo/static-page-localization'
+import './about.css'
 
 export function generateStaticParams() {
   if (process.env.NODE_ENV === 'development') return []
@@ -54,41 +55,40 @@ const stackIcons = [LuCode2, LuShieldCheck, LuBoxes, LuGitBranch]
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const identity = localizedPageIdentity(locale, seo.path)
-  return {
-    title: seo.title,
-    description: seo.description,
-    keywords: seo.keywords,
-    alternates: { canonical: identity.canonical, languages: identity.languages },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url: identity.canonical,
-      type: 'profile',
-      locale: identity.ogLocale,
-      alternateLocale: identity.alternateOgLocales,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: seo.title,
-      description: seo.description,
-    },
-  }
+  if (!hasLocale(routing.locales, locale)) notFound()
+  const localization = resolveStaticPageLocalization('about', locale)
+  const seo = await getTranslations({
+    locale: localization.contentLocale,
+    namespace: 'SEO.about',
+  })
+  return buildStaticPageMetadata({
+    title: seo('title'),
+    description: seo('description'),
+    localization,
+    openGraphType: 'profile',
+  })
 }
 
 export default async function AboutPage({ params }: Props) {
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
-  const identity = localizedPageIdentity(locale, seo.path)
+  const localization = resolveStaticPageLocalization('about', locale)
+  const seo = await getTranslations({
+    locale: localization.contentLocale,
+    namespace: 'SEO.about',
+  })
+  const title = seo('title')
+  const description = seo('description')
   const aboutPageLd = {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
-    '@id': `${identity.canonical}#aboutpage`,
-    name: seo.title,
-    description: seo.description,
+    '@id': `${localization.canonical}#aboutpage`,
+    name: title,
+    description,
+    inLanguage: localization.contentLocale,
     mainEntity: { '@id': 'https://nguyenlephong.github.io/#person' },
-    url: identity.canonical,
+    url: localization.canonical,
   }
 
   const t = await getTranslations('About')
@@ -98,7 +98,10 @@ export default async function AboutPage({ params }: Props) {
   const principles = t.raw('principles.items') as Principle[]
 
   return (
-    <main className="about-page about-page-v2">
+    <main
+      className="about-page about-page-v2"
+      lang={localization.authored ? undefined : localization.contentLocale}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(aboutPageLd) }}

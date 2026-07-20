@@ -9,7 +9,10 @@ import {
   verifyOgPublication,
 } from '../scripts/verify-og-publication.mjs'
 import { validateAuthoredArticleSlugUniqueness } from '../scripts/lib/article-slug-contract.mjs'
-import { expectedArticleOgPublications } from '../scripts/lib/media-publication-contract.mjs'
+import {
+  articleOgPublicationInventory,
+  expectedArticleOgPublications,
+} from '../scripts/lib/media-publication-contract.mjs'
 
 const JPEG_FIXTURE = Buffer.from([0xff, 0xd8, 0xff, 0xd9])
 
@@ -112,13 +115,32 @@ test('expects only published article OG assets and ignores stale unpublished fil
     ),
     fs.writeFile(path.join(domPubDir, 'icdn/og/blogs/static-first.jpg'), JPEG_FIXTURE),
     fs.writeFile(path.join(domPubDir, 'icdn/og/blogs/safe-boundaries.jpg'), JPEG_FIXTURE),
+    fs.writeFile(path.join(domPubDir, 'icdn/og/notes/calm-systems.jpg'), JPEG_FIXTURE),
   ])
+
+  const inventory = await articleOgPublicationInventory({
+    rootDir: siteDir,
+    contentBuildDate: '2026-07-18',
+  })
+  assert.deepEqual(inventory.expected.map(({ slug }) => slug), ['static-first'])
+  assert.deepEqual(inventory.scheduled.map(({ slug }) => slug), [
+    'safe-boundaries',
+    'calm-systems',
+  ])
+  assert.deepEqual(inventory.prunable.map(({ slug }) => slug), ['draft-entry'])
 
   const expected = await expectedArticleOgPublications({
     rootDir: siteDir,
     contentBuildDate: '2026-07-18',
   })
   assert.deepEqual(expected.map(({ slug }) => slug), ['static-first'])
+  assert.deepEqual(Object.keys(expected[0]).sort(), [
+    'key',
+    'publicPath',
+    'slug',
+    'sourcePath',
+    'surface',
+  ])
 
   const report = await verifyOgPublication({
     rootDir: siteDir,
@@ -128,6 +150,36 @@ test('expects only published article OG assets and ignores stale unpublished fil
   assert.equal(report.expected, 1)
   assert.deepEqual(report.expectedBySurface, { blog: 1, notes: 0 })
   assert.deepEqual(report.failures, [])
+
+  const readinessReport = await verifyOgPublication({
+    rootDir: siteDir,
+    contentBuildDate: '2026-07-18',
+    includeScheduled: true,
+    localDomPubDir: domPubDir,
+  })
+  assert.equal(readinessReport.expected, 3)
+  assert.deepEqual(readinessReport.expectedBySurface, { blog: 2, notes: 1 })
+  assert.deepEqual(readinessReport.failures, [])
+
+  const requestedUrls = []
+  const liveReadinessReport = await verifyOgPublication({
+    rootDir: siteDir,
+    contentBuildDate: '2026-07-18',
+    includeScheduled: true,
+    liveBaseUrl: 'https://media.example.test',
+    liveRetries: 0,
+    fetchImpl: async (url) => {
+      requestedUrls.push(url)
+      return liveResponse()
+    },
+  })
+  assert.equal(liveReadinessReport.expected, 3)
+  assert.deepEqual(liveReadinessReport.failures, [])
+  assert.deepEqual(requestedUrls.sort(), [
+    'https://media.example.test/og/blogs/safe-boundaries.jpg',
+    'https://media.example.test/og/blogs/static-first.jpg',
+    'https://media.example.test/og/notes/calm-systems.jpg',
+  ])
   assert.deepEqual(await fs.readFile(path.join(domPubDir, 'icdn/og/blogs/safe-boundaries.jpg')), JPEG_FIXTURE)
 })
 
@@ -254,9 +306,11 @@ test('fails deterministically when a local publication is missing or has the wro
 
 test('proves expected keys against an untruncated remote repository tree', async (t) => {
   const { contract, siteDir } = await createFixture(t)
+  const remoteTreeToken = 'read-only-fixture-token'
   const fetchImpl = async (url, options) => {
     assert.equal(url, contract.remoteTreeUrl)
     assert.equal(options.headers.Accept, 'application/vnd.github+json')
+    assert.equal(options.headers.Authorization, `Bearer ${remoteTreeToken}`)
     assert.equal(options.redirect, 'manual')
     assert.ok(options.signal instanceof AbortSignal)
     return {
@@ -265,9 +319,24 @@ test('proves expected keys against an untruncated remote repository tree', async
         return {
           truncated: false,
           tree: [
-            { type: 'blob', path: 'icdn/og/blogs/static-first.jpg' },
-            { type: 'blob', path: 'icdn/og/blogs/safe-boundaries.jpg' },
-            { type: 'blob', path: 'icdn/og/notes/calm-systems.jpg' },
+            {
+              type: 'blob',
+              mode: '100644',
+              size: 100,
+              path: 'icdn/og/blogs/static-first.jpg',
+            },
+            {
+              type: 'blob',
+              mode: '100644',
+              size: 100,
+              path: 'icdn/og/blogs/safe-boundaries.jpg',
+            },
+            {
+              type: 'blob',
+              mode: '100644',
+              size: 100,
+              path: 'icdn/og/notes/calm-systems.jpg',
+            },
           ],
         }
       },
@@ -277,10 +346,54 @@ test('proves expected keys against an untruncated remote repository tree', async
   const report = await verifyOgPublication({
     rootDir: siteDir,
     remoteTreeUrl: contract.remoteTreeUrl,
+    remoteTreeToken,
     fetchImpl,
   })
 
   assert.deepEqual(report.failures, [])
+})
+
+test('remote-tree operator mode rejects non-regular or empty expected assets', async (t) => {
+  const { contract, siteDir } = await createFixture(t)
+  const fetchImpl = async () => ({
+    ok: true,
+    async json() {
+      return {
+        truncated: false,
+        tree: [
+          {
+            type: 'blob',
+            mode: '120000',
+            size: 100,
+            path: 'icdn/og/blogs/static-first.jpg',
+          },
+          {
+            type: 'blob',
+            mode: '100644',
+            size: 0,
+            path: 'icdn/og/blogs/safe-boundaries.jpg',
+          },
+          {
+            type: 'blob',
+            mode: '100644',
+            size: 100,
+            path: 'icdn/og/notes/calm-systems.jpg',
+          },
+        ],
+      }
+    },
+  })
+
+  const report = await verifyOgPublication({
+    rootDir: siteDir,
+    remoteTreeUrl: contract.remoteTreeUrl,
+    fetchImpl,
+  })
+  const failures = report.failures.join('\n')
+
+  assert.match(failures, /not a regular file: icdn\/og\/blogs\/static-first\.jpg/)
+  assert.match(failures, /invalid size: icdn\/og\/blogs\/safe-boundaries\.jpg/)
+  assert.deepEqual(report.missing.map(({ slug }) => slug), ['static-first', 'safe-boundaries'])
 })
 
 test('fails closed when the remote repository tree is truncated', async (t) => {
@@ -327,6 +440,22 @@ test('bounds remote-tree requests and aborts a never-resolving fetch', async (t)
     /remote tree request timed out after 5ms/,
   )
   assert.equal(aborted, 1)
+})
+
+test('rejects malformed remote-tree credentials before making a request', async (t) => {
+  const { contract, siteDir } = await createFixture(t)
+
+  await assert.rejects(
+    verifyOgPublication({
+      rootDir: siteDir,
+      remoteTreeUrl: contract.remoteTreeUrl,
+      remoteTreeToken: 'unsafe\nheader',
+      fetchImpl: async () => {
+        throw new Error('fetch must not run')
+      },
+    }),
+    /remoteTreeToken must be a non-empty single-line string/,
+  )
 })
 
 test('rejects remote-tree redirects and final URLs outside the exact GitHub API request', async (t) => {
@@ -376,6 +505,14 @@ test('CLI parser rejects unknown, duplicate, and conflicting verification modes'
     localDomPubDir: null,
     remoteTree: true,
     live: false,
+    includeScheduled: false,
+  })
+  assert.deepEqual(parseVerifierArgs(['--remote-tree', '--include-scheduled']), {
+    rootDir: null,
+    localDomPubDir: null,
+    remoteTree: true,
+    live: false,
+    includeScheduled: true,
   })
   assert.throws(() => parseVerifierArgs(['--liv']), /unknown argument: --liv/)
   assert.throws(
@@ -390,6 +527,10 @@ test('CLI parser rejects unknown, duplicate, and conflicting verification modes'
     () => parseVerifierArgs(['--remote-tree', '--live']),
     /mutually exclusive/,
   )
+  assert.throws(
+    () => parseVerifierArgs(['--include-scheduled', '--include-scheduled']),
+    /duplicate flag: --include-scheduled/,
+  )
 })
 
 function liveResponse({
@@ -399,45 +540,90 @@ function liveResponse({
   finalUrl = '',
   redirected = false,
   onCancel,
+  onChunk,
+  chunkSize = body.byteLength,
+  byob = true,
+  contentLength = body.byteLength,
 } = {}) {
+  let offset = 0
+  const source = {
+    ...(byob ? { type: 'bytes' } : {}),
+    pull(controller) {
+      if (offset >= body.byteLength) {
+        controller.close()
+        controller.byobRequest?.respond(0)
+        return
+      }
+      const requestedView = controller.byobRequest?.view
+      if (requestedView) {
+        const length = Math.min(requestedView.byteLength, chunkSize, body.byteLength - offset)
+        requestedView.set(body.subarray(offset, offset + length))
+        offset += length
+        onChunk?.(length)
+        controller.byobRequest.respond(length)
+        return
+      }
+      const end = Math.min(offset + chunkSize, body.byteLength)
+      const chunk = Uint8Array.from(body.subarray(offset, end))
+      offset = end
+      onChunk?.(chunk.byteLength)
+      controller.enqueue(chunk)
+    },
+    cancel() {
+      onCancel?.()
+    },
+  }
+  const stream = new ReadableStream(
+    source,
+    { highWaterMark: 0 },
+  )
+
   return {
     ok: status >= 200 && status < 300,
     status,
     url: finalUrl,
     redirected,
-    body: onCancel
-      ? {
-          async cancel() {
-            onCancel()
-          },
-        }
-      : undefined,
+    body: stream,
     headers: {
       get(name) {
-        return name.toLowerCase() === 'content-type' ? contentType : null
+        if (name.toLowerCase() === 'content-type') return contentType
+        if (name.toLowerCase() === 'content-length' && contentLength !== null) {
+          return String(contentLength)
+        }
+        return null
       },
-    },
-    async arrayBuffer() {
-      return body.buffer.slice(body.byteOffset, body.byteOffset + body.byteLength)
     },
   }
 }
 
-test('proves live publication MIME and JPEG signatures with bounded range requests', async (t) => {
+test('retains only a four-byte BYOB prefix and cancels oversized 200 and 206 streams', async (t) => {
   const { contract, siteDir } = await createFixture(t)
   let active = 0
   let maximumActive = 0
+  let streamedBytes = 0
+  let cancellations = 0
+  const oversizedBody = Buffer.alloc(256 * 1024, 0xaa)
+  JPEG_FIXTURE.copy(oversizedBody, 0)
   const fetchImpl = async (url, options) => {
     assert.match(url, /^https:\/\/media\.example\.test\/og\/(?:blogs|notes)\//)
     assert.equal(options.method, 'GET')
-    assert.equal(options.headers.Range, 'bytes=0-2')
+    assert.equal(options.headers.Range, 'bytes=0-3')
     assert.equal(options.redirect, 'manual')
     assert.ok(options.signal instanceof AbortSignal)
     active += 1
     maximumActive = Math.max(maximumActive, active)
     await new Promise((resolve) => setTimeout(resolve, 2))
     active -= 1
-    return liveResponse()
+    return liveResponse({
+      status: url.endsWith('/static-first.jpg') ? 200 : 206,
+      body: oversizedBody,
+      onChunk: (size) => {
+        streamedBytes += size
+      },
+      onCancel: () => {
+        cancellations += 1
+      },
+    })
   }
 
   const report = await verifyOgPublication({
@@ -450,6 +636,64 @@ test('proves live publication MIME and JPEG signatures with bounded range reques
 
   assert.deepEqual(report.failures, [])
   assert.ok(maximumActive <= 2)
+  assert.equal(streamedBytes, 3 * JPEG_FIXTURE.byteLength)
+  assert.equal(cancellations, 3)
+})
+
+test('fails closed when a live response body does not support BYOB reads', async (t) => {
+  const { contract, siteDir } = await createFixture(t)
+  const report = await verifyOgPublication({
+    rootDir: siteDir,
+    liveBaseUrl: contract.liveBaseUrl,
+    liveRetries: 0,
+    fetchImpl: async (url) =>
+      liveResponse({
+        byob: !url.endsWith('/static-first.jpg'),
+      }),
+  })
+
+  assert.equal(report.failures.length, 1)
+  assert.match(report.failures[0], /BYOB byte stream/)
+})
+
+test('fails closed when a 200 response declares an excessive content length', async (t) => {
+  const { contract, siteDir } = await createFixture(t)
+  let cancellations = 0
+  const report = await verifyOgPublication({
+    rootDir: siteDir,
+    liveBaseUrl: contract.liveBaseUrl,
+    liveRetries: 0,
+    fetchImpl: async (url) =>
+      liveResponse({
+        status: url.endsWith('/static-first.jpg') ? 200 : 206,
+        contentLength: url.endsWith('/static-first.jpg') ? 5 * 1024 * 1024 + 1 : 4,
+        onCancel: () => {
+          cancellations += 1
+        },
+      }),
+  })
+
+  assert.equal(report.failures.length, 1)
+  assert.match(report.failures[0], /content-length .* exceeds the .* safety cap/)
+  assert.equal(cancellations, 3)
+})
+
+test('rejects a live asset shorter than the four-byte publication contract', async (t) => {
+  const { contract, siteDir } = await createFixture(t)
+  const report = await verifyOgPublication({
+    rootDir: siteDir,
+    liveBaseUrl: contract.liveBaseUrl,
+    liveRetries: 0,
+    fetchImpl: async (url) =>
+      liveResponse({
+        body: url.endsWith('/static-first.jpg')
+          ? Buffer.from([0xff, 0xd8, 0xff])
+          : JPEG_FIXTURE,
+      }),
+  })
+
+  assert.equal(report.failures.length, 1)
+  assert.match(report.failures[0], /shorter than 4 bytes/)
 })
 
 test('retries transient live failures and rejects wrong MIME or signature deterministically', async (t) => {
@@ -538,6 +782,61 @@ test('aborts each timed-out live attempt and retries with backoff', async (t) =>
     const times = attemptTimes.get(entry)
     assert.ok(times[1] - times[0] >= timeoutMs + retryDelayMs - 2)
   }
+})
+
+test('aborts and cancels when a body read stalls after the response resolves', async (t) => {
+  const { contract, siteDir } = await createFixture(t)
+  let aborts = 0
+  let cancellations = 0
+  const fetchImpl = async (url, { signal }) => ({
+    ok: true,
+    status: 206,
+    url,
+    redirected: false,
+    headers: {
+      get(name) {
+        if (name.toLowerCase() === 'content-type') return 'image/jpeg'
+        if (name.toLowerCase() === 'content-length') return '4'
+        return null
+      },
+    },
+    body: {
+      getReader(options) {
+        assert.deepEqual(options, { mode: 'byob' })
+        return {
+          read() {
+            return new Promise((_resolve, reject) => {
+              signal.addEventListener(
+                'abort',
+                () => {
+                  aborts += 1
+                  reject(signal.reason)
+                },
+                { once: true },
+              )
+            })
+          },
+          async cancel() {
+            cancellations += 1
+          },
+        }
+      },
+    },
+  })
+
+  const report = await verifyOgPublication({
+    rootDir: siteDir,
+    liveBaseUrl: contract.liveBaseUrl,
+    fetchImpl,
+    liveConcurrency: 1,
+    liveRetries: 0,
+    liveTimeoutMs: 5,
+  })
+
+  assert.equal(report.failures.length, 3)
+  assert.match(report.failures.join('\n'), /timed out after 5ms/)
+  assert.equal(aborts, 3)
+  assert.equal(cancellations, 3)
 })
 
 test('rejects redirects and cancels their response body', async (t) => {

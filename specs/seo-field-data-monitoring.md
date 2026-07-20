@@ -30,6 +30,13 @@ GitHub Actions, writes only below the ignored `.private/seo/` directory with
 owner-only file permissions, and prints only a row count and relative output
 path. It is never called by the public monitoring workflow.
 
+The private report also groups exact query strings that appear for at least two
+distinct pages. Repeated rows for the same page are combined, groups below the
+configured total-impression floor are omitted, and output order is
+deterministic by total impressions then query. This is a review queue for
+competing pages, not a canonical-conflict diagnosis; the report alone cannot
+prove that two pages have the same search intent.
+
 ## Configuration and access
 
 The public targets live in `config/seo-field-monitoring.json`.
@@ -49,6 +56,11 @@ field sample; adding them before traffic exists would produce repeated
 `unknown` observations without improving the release decision. Origin and
 existing representative-page CrUX monitoring remain active, and the two hub
 pages can be promoted to page targets when real traffic is sufficient.
+
+Gallery is already a representative page-level phone target. Its image-heavy
+desktop composition and text-first mobile layout make field LCP, INP, and CLS
+useful independent signals. A missing Gallery sample remains `unknown`; merely
+adding the target does not claim that enough real-user traffic exists.
 
 Two repository secrets are required for live observations:
 
@@ -166,3 +178,9 @@ export.
 9. URL Inspection includes the fixed `blog-series-page` and `notes-topic-page`
    canaries with their exact self-canonical URLs; neither is reported as a
    page-level CrUX target until traffic supports a useful field sample.
+10. Gallery appears exactly once in the page-level phone CrUX targets. Missing
+    Gallery field data remains `unknown` and cannot make overall health healthy.
+11. The private report groups only exact queries with at least two distinct
+    pages and at least 50 total impressions, writes raw query/page values only
+    to the protected local report, and is never described as a canonical
+    conflict detector.

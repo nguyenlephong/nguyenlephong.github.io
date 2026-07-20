@@ -99,6 +99,17 @@ function healthyObservedData() {
   };
 }
 
+test("CrUX page targets include the Gallery performance surface exactly once", () => {
+  assert.equal(
+    config.crux.pages.filter(
+      (target) =>
+        target.label === "gallery" &&
+        target.url === "https://nguyenlephong.github.io/en/gallery"
+    ).length,
+    1
+  );
+});
+
 test("Search Console requests stay aggregate and reports discard sensitive dimensions", async () => {
   const calls = [];
   const fetchImpl = async (input, init = {}) => {

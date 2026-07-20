@@ -206,13 +206,44 @@ async function pageNumbers(locale, surface) {
 }
 
 async function readSearchIndex(locale, surface) {
-  const searchFile = path.join(OUT, locale, 'search', `${surface}.json`)
+  const archiveLocale = surface === 'notes' && !NOTE_ARCHIVE_LOCALES.has(locale) ? 'en' : locale
+  const searchFile = path.join(OUT, archiveLocale, 'search', `${surface}.json`)
   if (!existsSync(searchFile)) fail(`missing ${path.relative(OUT, searchFile)}`)
   const searchIndex = JSON.parse(await readFile(searchFile, 'utf8'))
   if (searchIndex.version !== 1 || !Array.isArray(searchIndex.items)) {
     fail(`${locale}/${surface} search index has an invalid contract`)
   }
   return searchIndex
+}
+
+async function verifySearchArtifactInventory(locales) {
+  const expectedSearchArtifacts = { blog: locales, notes: ['en', 'vi'] }
+  const expected = new Set()
+  for (const surface of ['blog', 'notes']) {
+    for (const locale of expectedSearchArtifacts[surface]) {
+      expected.add(`${locale}/search/${surface}.json`)
+    }
+  }
+
+  const actual = new Set()
+  const pending = ['']
+  while (pending.length > 0) {
+    const relativeDirectory = pending.pop()
+    for (const entry of await readdir(path.join(OUT, relativeDirectory), { withFileTypes: true })) {
+      const relativePath = path.posix.join(relativeDirectory, entry.name)
+      if (entry.isDirectory()) pending.push(relativePath)
+      else if (/(?:^|\/)search\/(?:blog|notes)\.json$/.test(relativePath)) {
+        actual.add(relativePath)
+      }
+    }
+  }
+
+  for (const relativePath of expected) {
+    if (!actual.has(relativePath)) fail(`missing search artifact ${relativePath}`)
+  }
+  for (const relativePath of actual) {
+    if (!expected.has(relativePath)) fail(`unexpected search artifact ${relativePath}`)
+  }
 }
 
 async function readBlogIndex(locale) {
@@ -252,6 +283,7 @@ function expectedPageNumbers(itemCount) {
 if (!existsSync(OUT)) fail('out/ is missing; run the production build first')
 
 const locales = await localesFromRouting()
+await verifySearchArtifactInventory(locales)
 const allArchiveHrefs = new Set()
 const measurements = {}
 

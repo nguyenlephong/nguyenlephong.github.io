@@ -55,12 +55,28 @@ export async function createArtifactIndex(rootDir) {
     files: 0,
     diskReads: 0,
     cacheHits: 0,
+    cachedBytes: 0,
+    peakCachedBytes: 0,
     writes: 0,
     renames: 0,
     removes: 0,
   }
   const files = await scanFiles(root, metrics)
   const contentCache = new Map()
+
+  const cacheContent = (relativePath, content) => {
+    const previous = contentCache.get(relativePath)
+    if (previous) metrics.cachedBytes -= previous.length
+    contentCache.set(relativePath, content)
+    metrics.cachedBytes += content.length
+    metrics.peakCachedBytes = Math.max(metrics.peakCachedBytes, metrics.cachedBytes)
+  }
+
+  const evictContent = (relativePath) => {
+    const previous = contentCache.get(relativePath)
+    if (previous) metrics.cachedBytes -= previous.length
+    contentCache.delete(relativePath)
+  }
 
   const resolve = (relativePath) => path.join(root, normalizeRelativePath(relativePath))
 
@@ -91,12 +107,28 @@ export async function createArtifactIndex(rootDir) {
       }
       const content = await fs.readFile(resolve(normalized))
       metrics.diskReads += 1
-      contentCache.set(normalized, content)
+      cacheContent(normalized, content)
       return content
     },
 
     async readText(relativePath) {
       return (await index.readBuffer(relativePath)).toString('utf8')
+    },
+
+    async readBufferUncached(relativePath) {
+      const normalized = normalizeRelativePath(relativePath)
+      if (!files.has(normalized)) {
+        const error = new Error(`[artifact-index] file is not in the inventory: ${normalized}`)
+        error.code = 'ENOENT'
+        throw error
+      }
+      const content = await fs.readFile(resolve(normalized))
+      metrics.diskReads += 1
+      return content
+    },
+
+    async readTextUncached(relativePath) {
+      return (await index.readBufferUncached(relativePath)).toString('utf8')
     },
 
     async write(relativePath, content) {
@@ -105,7 +137,7 @@ export async function createArtifactIndex(rootDir) {
       await fs.mkdir(path.dirname(resolve(normalized)), { recursive: true })
       await fs.writeFile(resolve(normalized), buffer)
       files.add(normalized)
-      contentCache.set(normalized, buffer)
+      cacheContent(normalized, buffer)
       metrics.files = files.size
       metrics.writes += 1
     },
@@ -124,8 +156,9 @@ export async function createArtifactIndex(rootDir) {
       files.delete(source)
       files.add(target)
       if (contentCache.has(source)) {
-        contentCache.set(target, contentCache.get(source))
-        contentCache.delete(source)
+        const content = contentCache.get(source)
+        evictContent(source)
+        cacheContent(target, content)
       }
       metrics.renames += 1
     },
@@ -138,11 +171,38 @@ export async function createArtifactIndex(rootDir) {
       for (const file of [...files]) {
         if (file !== normalized && !file.startsWith(prefix)) continue
         files.delete(file)
-        contentCache.delete(file)
+        evictContent(file)
         removed += 1
       }
       metrics.files = files.size
       metrics.removes += removed
+    },
+
+    commitExternalChanges({ removals = [], writes = [] }) {
+      const normalizedRemovals = removals.map(normalizeRelativePath)
+      const normalizedWrites = writes.map(({ cache = true, content, path: relativePath }) => ({
+        cache,
+        content:
+          cache && content !== undefined
+            ? Buffer.isBuffer(content)
+              ? content
+              : Buffer.from(content)
+            : null,
+        path: normalizeRelativePath(relativePath),
+      }))
+
+      for (const relativePath of normalizedRemovals) {
+        files.delete(relativePath)
+        evictContent(relativePath)
+      }
+      for (const entry of normalizedWrites) {
+        files.add(entry.path)
+        if (entry.cache && entry.content) cacheContent(entry.path, entry.content)
+        else evictContent(entry.path)
+      }
+      metrics.files = files.size
+      metrics.removes += normalizedRemovals.length
+      metrics.writes += normalizedWrites.length
     },
 
     metrics() {

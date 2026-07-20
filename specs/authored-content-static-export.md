@@ -42,8 +42,10 @@ export without changing those public reader contracts.
 Article OG publication is a separate cross-repository boundary. The publisher
 may prune only `.jpg` files under the exact managed `icdn/og/blogs` and
 `icdn/og/notes` namespaces when the slug is still present in the source index
-but is not published for `CONTENT_BUILD_DATE`. Unknown names and extensions are
-unowned and must remain untouched.
+and its canonical lifecycle state is explicitly `status: "draft"`. Scheduled
+entries remain reserved even before `CONTENT_BUILD_DATE`; unknown names,
+removed-source names, manual media, and other extensions are unowned and must
+remain untouched.
 
 ## Acceptance criteria
 
@@ -66,14 +68,19 @@ unowned and must remain untouched.
 12. OG stale-asset pruning is opt-in, reports exact candidates and the previous
     `dom-pub` HEAD, enforces count and percentage caps, and rolls the complete
     local tree back after a partial failure.
-13. A future asset pruned today is generated and publishable again when its
-    release date becomes current.
+13. **Superseded by AC 16 and AC 17.** A future asset pruned today is generated
+    and publishable again when its release date becomes current.
 14. Blog and Notes slugs are globally unique across published, scheduled, and
     draft canonical entries. Localized indexes may only reuse slugs from their
     own canonical surface, and the build fails before Next.js starts otherwise.
 15. A compatibility locale route requires an exact allowlist entry, a published
     authored target, `noindex`, canonical and meta-refresh agreement, no Article
     JSON-LD, and exclusion from sitemap and hreflang output.
+16. A scheduled asset must pass public live-response readiness before build and
+    is never a prune candidate.
+17. A canonical draft is the only lifecycle state eligible for explicit prune;
+    after its lifecycle changes to released, it can be generated and published
+    again through the normal reviewed flow.
 
 ## OG prune operation
 
@@ -93,9 +100,36 @@ CONTENT_BUILD_DATE=2026-07-19 node scripts/publish-og-assets.mjs \
 
 The operation mutates the clean local checkout transactionally but does not
 commit, push, or update the remote `dom-pub` ref. The site deployment workflow
-has read-only contents permission and no cross-repository credential, so an
-operator must review the resulting diff, commit it in `dom-pub`, and push it
+has read-only contents permission and no cross-repository write credential, so
+an operator must review the resulting diff, commit it in `dom-pub`, and push it
 separately. The reported previous HEAD is the rollback evidence for that review.
+
+Scheduled publication uses the opposite order: generate the ignored local PNG
+source with `CONTENT_BUILD_DATE` set to the entry's effective release date,
+publish and review its JPEG in `dom-pub`, then open or merge the site change.
+Both PR CI and Pages run:
+
+```bash
+npm run verify:og-publication:live -- --include-scheduled
+```
+
+before the static build. This reservation makes the JPEG publicly reachable at
+its guessable CDN key before the article is linked or exported. The trade-off is
+intentional: it prevents the daily release build from failing after the content
+date becomes current. The verifier requests bytes zero through three and uses
+a BYOB reader in the supported Node 22+ runtime to retain and inspect no more
+than four decoded body bytes before cancelling the stream. This is not a
+four-byte network-transfer guarantee: when a CDN ignores `Range` and returns
+`200`, additional bytes can reach the socket or Undici buffers before
+cancellation. A declared `200` `Content-Length` must be a safe integer no larger
+than 5 MiB; an absent length remains compatible with chunked CDN responses. It
+receives no cross-repository write credential. Missing responses, redirects,
+non-BYOB bodies, wrong MIME types, invalid JPEG signatures, timeouts, and
+exhausted retries fail closed. The post-build live check omits
+`--include-scheduled`, so
+only released article assets must be publicly valid before Pages uploads the
+artifact. Remote-tree mode remains available to an operator for repository
+inventory, but it is not a CI or release-readiness gate.
 
 ## Non-goals
 

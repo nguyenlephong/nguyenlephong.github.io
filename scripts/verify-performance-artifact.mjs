@@ -7,13 +7,16 @@ import { fileURLToPath } from "node:url";
 
 import { createArtifactIndex } from "./lib/artifact-index.mjs";
 import {
+  extractCssSelectors,
+  normalizeCssSelector,
+  selectorContainsOwner
+} from "./lib/css-selector-contract.mjs";
+import {
   validateClientMessageConfig,
   verifyClientMessageRoutes
 } from "./lib/client-message-artifact.mjs";
 
-export {
-  expectedClientMessageScopesForLocalizedRoute
-} from "./lib/client-message-artifact.mjs";
+export { expectedClientMessageScopesForLocalizedRoute } from "./lib/client-message-artifact.mjs";
 
 const DEFAULT_CONFIG = "config/static-artifact-budgets.json";
 const DEFAULT_OUTPUT_DIRECTORY = "out";
@@ -31,8 +34,36 @@ const REQUIRED_RSC_SURFACES = Object.freeze([
   "notes",
   "studio"
 ]);
+const REQUIRED_ARCHIVE_SURFACES = Object.freeze(["blog", "notes"]);
+const REQUIRED_PUBLIC_CSS_OWNERS = Object.freeze([
+  "home",
+  "about",
+  "gallery",
+  "apps",
+  "english",
+  "offline",
+  "blog",
+  "notes",
+  "reader"
+]);
+const REQUIRED_PUBLIC_CSS_ROUTES = Object.freeze({
+  home: "en.html",
+  about: "en/about.html",
+  gallery: "en/gallery.html",
+  apps: "en/apps.html",
+  english: "en/apps/english.html",
+  offline: "en/offline.html",
+  blogArchive: "en/blog.html",
+  notesArchive: "en/notes.html",
+  blogArticle: "en/blog/culture/protecting-attention-in-a-busy-team.html",
+  notesArticle: "en/notes/tri-tue-can-duc-hanh.html"
+});
 const CHUNK_REFERENCE_PATTERN =
   /(?:\/?_next\/)?static\/chunks\/[^"'`\\\s?#]+\.js/g;
+
+function compareText(left, right) {
+  return left.localeCompare(right, "en");
+}
 
 function attributeValue(tag, name) {
   const expression = new RegExp(
@@ -96,6 +127,8 @@ function inlineStyleSources(html) {
   );
 }
 
+export { extractCssSelectors } from "./lib/css-selector-contract.mjs";
+
 function summarizeCssResources(resources) {
   const unique = new Map();
   for (const resource of resources) {
@@ -115,7 +148,9 @@ function referencedScriptChunks(source) {
     ...new Set(
       [...source.matchAll(CHUNK_REFERENCE_PATTERN)].map((match) => {
         const reference = match[0].replace(/^\//, "");
-        return reference.startsWith("_next/") ? reference : `_next/${reference}`;
+        return reference.startsWith("_next/")
+          ? reference
+          : `_next/${reference}`;
       })
     )
   ];
@@ -133,7 +168,9 @@ async function collectReachableJavaScript({ index, initialFiles, failures }) {
     for (const reference of referencedScriptChunks(source)) {
       if (seen.has(reference)) continue;
       if (!index.has(reference)) {
-        failures.push(`Studio JavaScript references missing chunk: ${reference}`);
+        failures.push(
+          `Studio JavaScript references missing chunk: ${reference}`
+        );
         continue;
       }
       seen.add(reference);
@@ -166,7 +203,7 @@ function thirdPartyConnectionOrigins(html, siteOrigin) {
     if (url.origin !== siteOrigin) origins.add(url.origin);
   }
 
-  return [...origins].sort((left, right) => left.localeCompare(right));
+  return [...origins].sort(compareText);
 }
 
 function isRscTextFile(index, relativePath) {
@@ -183,6 +220,79 @@ function addLimitFailure(failures, label, actual, limit) {
   }
 }
 
+function hasExactKeys(value, expectedKeys) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const actual = Object.keys(value).sort(compareText);
+  const expected = [...expectedKeys].sort(compareText);
+  return (
+    actual.length === expected.length &&
+    actual.every((key, index) => key === expected[index])
+  );
+}
+
+function validatePublicInitialCss(config) {
+  if (
+    !hasExactKeys(config?.ownerSelectors, REQUIRED_PUBLIC_CSS_OWNERS) ||
+    !hasExactKeys(config?.routes, Object.keys(REQUIRED_PUBLIC_CSS_ROUTES))
+  ) {
+    return false;
+  }
+
+  const selectorFamilies = Object.values(config.ownerSelectors);
+  const selectors = selectorFamilies.flat();
+  if (
+    new Set(selectors).size !== selectors.length ||
+    selectorFamilies.some(
+      (family) =>
+        !Array.isArray(family) ||
+        family.length < 1 ||
+        new Set(family).size !== family.length
+    ) ||
+    selectors.some(
+      (selector) =>
+        typeof selector !== "string" ||
+        selector.length === 0 ||
+        normalizeCssSelector(selector) !== selector ||
+        /[{},@]/.test(selector) ||
+        !selectorContainsOwner(selector, selector)
+    )
+  ) {
+    return false;
+  }
+
+  for (const [surface, expectedHtml] of Object.entries(
+    REQUIRED_PUBLIC_CSS_ROUTES
+  )) {
+    const route = config.routes[surface];
+    if (
+      route?.html !== expectedHtml ||
+      !Number.isInteger(route.maxStylesheetCount) ||
+      route.maxStylesheetCount < 1 ||
+      !Number.isInteger(route.maxBrotliBytes) ||
+      route.maxBrotliBytes < 1
+    ) {
+      return false;
+    }
+    for (const field of ["requiredOwners", "allowedOwners"]) {
+      const owners = route[field];
+      if (
+        !Array.isArray(owners) ||
+        owners.length < 1 ||
+        new Set(owners).size !== owners.length ||
+        owners.some((owner) => !REQUIRED_PUBLIC_CSS_OWNERS.includes(owner))
+      ) {
+        return false;
+      }
+    }
+    if (
+      route.requiredOwners.some((owner) => !route.allowedOwners.includes(owner))
+    ) {
+      return false;
+    }
+  }
+  return true;
+}
+
 function localizedRscPath(locale, surface) {
   return surface === "home" ? `${locale}.txt` : `${locale}/${surface}.txt`;
 }
@@ -196,6 +306,8 @@ function validateConfig(config) {
   const routes = performance?.routeInitialJavaScript;
   const rsc = performance?.rsc;
   const clientMessages = performance?.clientMessages;
+  const archives = performance?.archiveInitialRuntime;
+  const publicCss = performance?.publicInitialCss;
   const studio = performance?.studioInitialRuntime;
   const locales = config?.seo?.locales;
   const requiredRouteEntries = Object.entries(
@@ -237,6 +349,17 @@ function validateConfig(config) {
         rsc.surfaceMaxBytes[surface] < 1
     ) ||
     !validateClientMessageConfig(clientMessages) ||
+    !Array.isArray(archives?.requiredMarkers) ||
+    archives.requiredMarkers.length < 1 ||
+    archives.requiredMarkers.some(
+      (marker) => typeof marker !== "string" || marker.length === 0
+    ) ||
+    !Array.isArray(archives?.forbiddenMarkers) ||
+    archives.forbiddenMarkers.length < 1 ||
+    archives.forbiddenMarkers.some(
+      (marker) => typeof marker !== "string" || marker.length === 0
+    ) ||
+    !validatePublicInitialCss(publicCss) ||
     !Array.isArray(studio?.requiredMarkers) ||
     studio.requiredMarkers.some(
       (marker) => typeof marker !== "string" || marker.length === 0
@@ -376,7 +499,9 @@ async function collectInitialDocumentCss({
     if (seen.has(relativePath)) continue;
     seen.add(relativePath);
     if (!index.has(relativePath)) {
-      failures.push(`Studio references missing local stylesheet: ${relativePath}`);
+      failures.push(
+        `Studio references missing local stylesheet: ${relativePath}`
+      );
       continue;
     }
     const bytes = await index.readBuffer(relativePath);
@@ -438,6 +563,58 @@ async function collectRequiredShadowCss({ index, requiredFiles, failures }) {
   }
 
   return { files, resources, ...summarizeCssResources(resources) };
+}
+
+async function collectPublicRouteCss({
+  index,
+  htmlPath,
+  surface,
+  siteOrigin,
+  failures
+}) {
+  if (!index.has(htmlPath)) {
+    failures.push(`Missing public CSS route sample: ${htmlPath}`);
+    return { files: [], rawBytes: 0, brotliBytes: 0, source: "" };
+  }
+
+  const html = await index.readText(htmlPath);
+  const files = [];
+  const sources = [];
+  let rawBytes = 0;
+  let brotliBytes = 0;
+
+  for (const reference of directStylesheetReferences(html)) {
+    let relativePath;
+    try {
+      relativePath = localArtifactPath(reference, siteOrigin);
+    } catch (error) {
+      failures.push(error instanceof Error ? error.message : String(error));
+      continue;
+    }
+    if (!relativePath) {
+      failures.push(
+        `${surface} declares an external initial stylesheet: ${reference}`
+      );
+      continue;
+    }
+    if (files.includes(relativePath)) continue;
+    if (!index.has(relativePath)) {
+      failures.push(
+        `${surface} references missing local stylesheet: ${relativePath}`
+      );
+      continue;
+    }
+    const bytes = await index.readBuffer(relativePath);
+    files.push(relativePath);
+    rawBytes += bytes.length;
+    brotliBytes += brotliCompressSync(bytes).length;
+    sources.push(bytes.toString("utf8"));
+  }
+
+  if (files.length === 0) {
+    failures.push(`${surface} HTML has no direct local stylesheet`);
+  }
+  return { files, rawBytes, brotliBytes, source: sources.join("\n") };
 }
 
 export async function verifyPerformanceArtifact({
@@ -592,6 +769,104 @@ export async function verifyPerformanceArtifact({
     failures
   });
 
+  const archiveInitialRuntime = {};
+  for (const surface of REQUIRED_ARCHIVE_SURFACES) {
+    const source = routeSources.get(surface) ?? "";
+    const missingMarkers =
+      performance.archiveInitialRuntime.requiredMarkers.filter(
+        (marker) => !source.includes(marker)
+      );
+    const forbiddenMarkers =
+      performance.archiveInitialRuntime.forbiddenMarkers.filter((marker) =>
+        source.includes(marker)
+      );
+    for (const marker of missingMarkers) {
+      failures.push(
+        `${surface} initial JavaScript is missing deferred archive marker: ${marker}`
+      );
+    }
+    for (const marker of forbiddenMarkers) {
+      failures.push(
+        `${surface} initial JavaScript contains eager engagement provider marker: ${marker}`
+      );
+    }
+    archiveInitialRuntime[surface] = {
+      missingMarkers,
+      forbiddenMarkers
+    };
+  }
+
+  const publicInitialCss = {};
+  const publicOwnerEntries = Object.entries(
+    performance.publicInitialCss.ownerSelectors
+  );
+  for (const [surface, budget] of Object.entries(
+    performance.publicInitialCss.routes
+  )) {
+    const measured = await collectPublicRouteCss({
+      index,
+      htmlPath: budget.html,
+      surface,
+      siteOrigin,
+      failures
+    });
+    addLimitFailure(
+      failures,
+      `${surface} initial stylesheet count`,
+      measured.files.length,
+      budget.maxStylesheetCount
+    );
+    addLimitFailure(
+      failures,
+      `${surface} initial CSS Brotli bytes`,
+      measured.brotliBytes,
+      budget.maxBrotliBytes
+    );
+
+    const measuredSelectors = extractCssSelectors(measured.source);
+    const includesOwnerSelector = (ownerSelector) =>
+      [...measuredSelectors].some((selector) =>
+        selectorContainsOwner(selector, ownerSelector)
+      );
+    const includesEveryOwnerSelector = (owner) =>
+      performance.publicInitialCss.ownerSelectors[owner].every(
+        includesOwnerSelector
+      );
+    const includesAnyOwnerSelector = (owner) =>
+      performance.publicInitialCss.ownerSelectors[owner].some(
+        includesOwnerSelector
+      );
+    const missingOwners = budget.requiredOwners.filter(
+      (owner) => !includesEveryOwnerSelector(owner)
+    );
+    const forbiddenOwners = publicOwnerEntries
+      .filter(
+        ([owner]) =>
+          !budget.allowedOwners.includes(owner) && includesAnyOwnerSelector(owner)
+      )
+      .map(([owner]) => owner);
+    for (const owner of missingOwners) {
+      failures.push(
+        `${surface} initial CSS is missing required owner: ${owner}`
+      );
+    }
+    for (const owner of forbiddenOwners) {
+      failures.push(
+        `${surface} initial CSS contains unrelated owner: ${owner}`
+      );
+    }
+    publicInitialCss[surface] = {
+      html: budget.html,
+      files: measured.files,
+      rawBytes: measured.rawBytes,
+      brotliBytes: measured.brotliBytes,
+      maxStylesheetCount: budget.maxStylesheetCount,
+      maxBrotliBytes: budget.maxBrotliBytes,
+      missingOwners,
+      forbiddenOwners
+    };
+  }
+
   const studioSource = routeSources.get("studio") ?? "";
   const allowedExternalStylesheetOrigins = new Set(
     performance.studioInitialRuntime.allowedExternalStylesheetOrigins
@@ -635,7 +910,8 @@ export async function verifyPerformanceArtifact({
     initialFiles: routeInitialJavaScript.studio?.files ?? [],
     failures
   });
-  for (const stylesheet of performance.studioInitialRuntime.requiredShadowCssFiles) {
+  for (const stylesheet of performance.studioInitialRuntime
+    .requiredShadowCssFiles) {
     const reference = `/${stylesheet}`;
     if (!studioReachable.source.includes(reference)) {
       failures.push(
@@ -650,7 +926,8 @@ export async function verifyPerformanceArtifact({
       );
     }
   }
-  for (const marker of performance.studioInitialRuntime.requiredReachableMarkers) {
+  for (const marker of performance.studioInitialRuntime
+    .requiredReachableMarkers) {
     if (!studioReachable.source.includes(marker)) {
       failures.push(
         `Studio reachable JavaScript is missing required marker: ${marker}`
@@ -694,6 +971,8 @@ export async function verifyPerformanceArtifact({
         performance.rsc.maxAverageLocalizedRouteBytes
     },
     clientMessages,
+    archiveInitialRuntime,
+    publicInitialCss,
     studio: {
       thirdPartyConnectionOrigins: studioThirdPartyOrigins,
       documentCss: {
@@ -751,8 +1030,17 @@ function printReport(report) {
   console.log(
     `[performance] RSC text: ${report.rsc.fileCount.toLocaleString("en-US")} files / ${formatBytes(report.rsc.totalBytes)}; localized sample average ${formatBytes(report.rsc.averageLocalizedRouteBytes)}`
   );
+  for (const [surface, measurement] of Object.entries(
+    report.publicInitialCss
+  )) {
+    console.log(
+      `[performance] ${surface} initial CSS: ${formatBytes(measurement.brotliBytes)} Brotli / ${formatBytes(measurement.rawBytes)} raw (${measurement.files.length} stylesheet(s))`
+    );
+  }
   console.log(
-    `[performance] client messages: ${report.clientMessages.routeCount.toLocaleString("en-US")} localized routes / ${report.clientMessages.providerCount.toLocaleString("en-US")} providers; ${Object.entries(report.clientMessages.scopeCounts)
+    `[performance] client messages: ${report.clientMessages.routeCount.toLocaleString("en-US")} localized routes / ${report.clientMessages.providerCount.toLocaleString("en-US")} providers; ${Object.entries(
+      report.clientMessages.scopeCounts
+    )
       .map(([scope, count]) => `${scope}=${count}`)
       .join(", ")}`
   );

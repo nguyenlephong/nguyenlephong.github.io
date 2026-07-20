@@ -24,6 +24,7 @@ import {
 import { collectionPagePath, paginate } from "@/lib/content/pagination";
 import { latestNonFutureDate } from "@/lib/seo/dates";
 import { preferredContentLocale } from "@/lib/seo/locale";
+import { staticPageSitemapLocales } from "@/lib/seo/static-page-localization";
 
 export const dynamic = "force-static";
 
@@ -35,7 +36,12 @@ const PATHS: Array<{
   lastModifiedForLocale?: (locale: string) => Date | undefined;
 }> = [
   { path: "", priority: 1, freq: "weekly" },
-  { path: "/apps", priority: 0.9, freq: "weekly" },
+  {
+    path: "/apps",
+    priority: 0.9,
+    freq: "weekly",
+    locales: staticPageSitemapLocales("apps")
+  },
   {
     path: "/blog",
     priority: 0.9,
@@ -46,8 +52,18 @@ const PATHS: Array<{
       )
   },
   { path: "/studio", priority: 0.85, freq: "weekly" },
-  { path: "/about", priority: 0.8, freq: "monthly" },
-  { path: "/gallery", priority: 0.7, freq: "monthly" },
+  {
+    path: "/about",
+    priority: 0.8,
+    freq: "monthly",
+    locales: staticPageSitemapLocales("about")
+  },
+  {
+    path: "/gallery",
+    priority: 0.7,
+    freq: "monthly",
+    locales: staticPageSitemapLocales("gallery")
+  },
   {
     path: "/notes",
     priority: 0.85,

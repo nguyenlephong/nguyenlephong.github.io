@@ -3,7 +3,10 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const css = await readFile("src/app/[locale]/(site)/blog/blog.css", "utf8");
-const globalCss = await readFile("src/app/globals.css", "utf8");
+const readerCss = await readFile(
+  "src/app/[locale]/(site)/blog/reader.css",
+  "utf8"
+);
 const blogExplorer = await readFile("src/components/blog/BlogExplorer.tsx", "utf8");
 const notesExplorer = await readFile(
   "src/components/notes/NotesExplorer.tsx",
@@ -93,13 +96,13 @@ test("blog and notes explorer controls use a compact command palette contract", 
   assert.match(notesExplorer, /ExplorerShell/);
   assert.match(notesExplorer, /useExplorer/);
 
-  const readerTrigger = blockFor(".blog-reader-tools__trigger", globalCss);
+  const readerTrigger = blockFor(".blog-reader-tools__trigger", readerCss);
   assert.match(readerTrigger, /position:\s*relative/);
   assert.match(readerTrigger, /overflow:\s*visible/);
-  const readerFlicker = blockFor(".blog-reader-tools__trigger::before", globalCss);
+  const readerFlicker = blockFor(".blog-reader-tools__trigger::before", readerCss);
   assert.match(readerFlicker, /reader-tool-aurora-pulse/);
   assert.match(
-    globalCss,
+    readerCss,
     /\.blog-reader-tools__trigger::after\s*\{[\s\S]*?reader-tool-aurora-rim/
   );
 
@@ -107,8 +110,8 @@ test("blog and notes explorer controls use a compact command palette contract", 
   assert.match(css, /@keyframes\s+command-apple-sheen/);
   assert.match(css, /@keyframes\s+command-listening-halo/);
   assert.match(css, /@keyframes\s+command-listening-orbit/);
-  assert.match(globalCss, /@keyframes\s+reader-tool-aurora-pulse/);
-  assert.match(globalCss, /@keyframes\s+reader-tool-aurora-rim/);
+  assert.match(readerCss, /@keyframes\s+reader-tool-aurora-pulse/);
+  assert.match(readerCss, /@keyframes\s+reader-tool-aurora-rim/);
   assert.match(css, /@media\s*\(prefers-reduced-transparency:\s*reduce\)/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
 });

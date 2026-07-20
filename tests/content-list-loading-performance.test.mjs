@@ -24,11 +24,14 @@ test("intent prefetch stays disabled until a link receives intent", async () => 
   assert.equal(resolveIntentPrefetch(true), null);
 });
 
-test("article cards use the shared intent link without losing analytics", async () => {
-  const [link, blogCard, noteCard] = await Promise.all([
+test("public navigation and archive links use shared intent prefetch without losing analytics", async () => {
+  const [link, blogCard, noteCard, header, categoryCard, footer] = await Promise.all([
     readFile("src/components/navigation/IntentPrefetchLink.tsx", "utf8"),
     readFile("src/components/blog/BlogPostCard.tsx", "utf8"),
-    readFile("src/components/notes/NoteCard.tsx", "utf8")
+    readFile("src/components/notes/NoteCard.tsx", "utf8"),
+    readFile("src/components/AppHeader.tsx", "utf8"),
+    readFile("src/components/blog/BlogCategoryCard.tsx", "utf8"),
+    readFile("src/components/AppFooter.tsx", "utf8")
   ]);
 
   assert.match(link, /ComponentProps<typeof Link>/);
@@ -47,6 +50,62 @@ test("article cards use the shared intent link without losing analytics", async 
     assert.match(card, /onClick=\{\(\) =>/);
     assert.match(card, new RegExp(`track\\(["']${eventName}["']`));
   }
+
+  assert.equal((header.match(/<IntentPrefetchLink/g) ?? []).length, 3);
+  assert.doesNotMatch(header, /import\s*\{\s*Link\s*\}/);
+  assert.match(header, /track\("cv_nav_click"/);
+  assert.match(categoryCard, /<IntentPrefetchLink/);
+  assert.match(categoryCard, /track\('blog_category_click'/);
+  assert.match(footer, /<IntentPrefetchLink\s+href=\{APP_ROUTE\.APPS\}/);
+  assert.match(footer, /target: 'apps_footer'/);
+  assert.match(footer, /data-document-navigation="studio"/);
+});
+
+test("archive post stats stay provider-free until browsing intent", async () => {
+  const [hook, store, facade, provider, ids, blogExplorer, notesExplorer, shell] =
+    await Promise.all([
+      readFile("src/components/explorer/useDeferredPostStats.ts", "utf8"),
+      readFile("src/lib/engagement/deferred-post-stats-store.ts", "utf8"),
+      readFile("src/lib/firebase/postStats.ts", "utf8"),
+      readFile("src/lib/engagement/firebase-repository.ts", "utf8"),
+      readFile("src/lib/engagement/post-stats-ids.ts", "utf8"),
+      readFile("src/components/blog/BlogExplorer.tsx", "utf8"),
+      readFile("src/components/notes/NotesExplorer.tsx", "utf8"),
+      readFile("src/components/explorer/ExplorerShell.tsx", "utf8")
+    ]);
+
+  assert.match(facade, /import\(['"]@\/lib\/engagement\/firebase-repository['"]\)/);
+  assert.doesNotMatch(
+    facade,
+    /import\s*\{[^}]*firebaseEngagementRepository[^}]*\}\s*from/
+  );
+  assert.match(facade, /let repositoryPromise:/);
+  assert.match(provider, /from ['"]\.\/post-stats-ids['"]/);
+  assert.doesNotMatch(provider, /export function boundPostStatsIds/);
+  assert.match(ids, /new Set\(ids\.filter\(Boolean\)\)/);
+  assert.match(ids, /Number\.isSafeInteger\(limit\)/);
+
+  assert.match(hook, /window\.addEventListener\(['"]scroll['"]/);
+  assert.match(hook, /connection\?\.saveData === true/);
+  assert.match(hook, /boundPostStatsIds\(ids, CONTENT_PAGE_SIZE\)/);
+  assert.match(hook, /createDeferredPostStatsStore/);
+  assert.match(hook, /store\.request\(boundedIds\)/);
+  assert.match(hook, /batchSize: CONTENT_PAGE_SIZE/);
+  assert.match(hook, /cacheLimit: RESOLVED_STATS_CACHE_LIMIT/);
+  assert.match(hook, /RESOLVED_STATS_CACHE_LIMIT = CONTENT_PAGE_SIZE \* 4/);
+  assert.match(store, /let activeBatch: ActiveBatch \| null = null/);
+  assert.match(store, /let queuedIds: readonly string\[\] = \[\]/);
+  assert.match(store, /queuedIds = latestVisibleIds\.filter/);
+  assert.match(store, /\.catch\(\(\) => new Map<string, DeferredPostStatsValue>\(\)\)/);
+  assert.doesNotMatch(hook, /mouse(?:enter|over)|hover/i);
+
+  for (const explorer of [blogExplorer, notesExplorer]) {
+    assert.match(explorer, /useDeferredPostStats/);
+    assert.match(explorer, /signalBrowsingIntent\(\)/);
+    assert.match(explorer, /postStatsStatus=\{postStatsStatus\}/);
+    assert.doesNotMatch(explorer, /getPostStatsByIds/);
+  }
+  assert.match(shell, /data-deferred-post-stats=\{postStatsStatus\}/);
 });
 
 test("header eagerly loads the small display icon and preserves the app icon", async () => {
