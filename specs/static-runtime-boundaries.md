@@ -182,6 +182,15 @@ existing IDs must not be renamed or renumbered.
   rules owned by a route.
 - **AC-SRB-020:** Type-only CSS imports fail the source boundary and do not count
   as runtime stylesheet importers; type-only non-CSS imports remain valid.
+- **AC-SRB-021:** An offline hard reload and an owned-route fallback hydrate the
+  offline status runtime without page or hydration errors. After hydration, the
+  injected offline-manifest version meta remains in the DOM and equals both the
+  cached manifest version and every controlling or registered service worker's
+  `v` query.
+- **AC-SRB-022:** Mounting the offline status runtime emits no
+  `offline_status_change`. Each real online-to-offline or offline-to-online
+  transition emits the existing event exactly once, while repeated same-state
+  browser signals emit no duplicate.
 
 ## Verification
 
@@ -196,6 +205,13 @@ existing IDs must not be renamed or renumbered.
 - Confirm representative public routes remain within their configured initial
   stylesheet-request and Brotli budgets and expose only their required
   normalized route-owner selectors.
+- Run `npm run verify:offline` against the complete export. The browser gate
+  hard-reloads a warmed route offline and hydrates an owned-route fallback with
+  no page error or React #418, preserves the manifest-version meta, matches it
+  to the cached manifest and controlling/registered worker query, and verifies
+  through the PostHog provider seam that the initial online mount, offline hard
+  reload, and fallback hydration emit no status transition while real
+  transitions remain exact-once and same-state signals remain deduplicated.
 - Run `npm run typecheck` and `npm run lint`.
 - Do not require a runtime backend or server-only route for this boundary.
 
