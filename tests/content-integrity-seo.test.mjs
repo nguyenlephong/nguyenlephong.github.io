@@ -579,24 +579,26 @@ test("localized page identity aligns canonical, alternates, and Open Graph local
   }
 });
 
-test("generic routes use localized identity and Studio uses a published social image", () => {
-  const pagePaths = [
-    "../src/app/[locale]/(site)/about/page.tsx",
-    "../src/app/[locale]/(site)/apps/page.tsx",
-    "../src/app/[locale]/(site)/gallery/page.tsx",
-    "../src/app/[locale]/studio/page.tsx"
-  ];
-  for (const pagePath of pagePaths) {
+test("static pages resolve authored identity and Studio uses a published social image", () => {
+  for (const page of ["about", "apps", "gallery"]) {
+    const pagePath = `../src/app/[locale]/(site)/${page}/page.tsx`;
     const source = readFileSync(new URL(pagePath, import.meta.url), "utf8");
-    assert.match(source, /localizedPageIdentity\(locale, seo\.path\)/, pagePath);
-    assert.match(source, /canonical:\s*identity\.canonical/, pagePath);
-    assert.match(source, /url:\s*identity\.canonical/, pagePath);
+    assert.match(
+      source,
+      new RegExp(`resolveStaticPageLocalization\\('${page}', locale\\)`),
+      pagePath
+    );
+    assert.match(source, /buildStaticPageMetadata\(/, pagePath);
+    assert.match(source, /url:\s*localization\.canonical/, pagePath);
   }
 
   const studio = readFileSync(
     new URL("../src/app/[locale]/studio/page.tsx", import.meta.url),
     "utf8"
   );
+  assert.match(studio, /localizedPageIdentity\(locale, seo\.path\)/);
+  assert.match(studio, /canonical:\s*identity\.canonical/);
+  assert.match(studio, /url:\s*identity\.canonical/);
   assert.match(studio, /absoluteUrl\("\/opengraph-image\.png"\)/);
   assert.doesNotMatch(studio, /blogPostOgImageUrl/);
   assert.doesNotMatch(studio, /\$\{locale\}\/opengraph-image/);

@@ -19,7 +19,7 @@ test("reader background preferences are available from the floating tools", () =
   const notesArticleLayout = read(
     "src/app/[locale]/(site)/notes/[slug]/layout.tsx"
   );
-  const globals = read("src/app/globals.css");
+  const readerCss = read("src/app/[locale]/(site)/blog/reader.css");
   const notesCss = read("src/app/[locale]/(site)/notes/notes.css");
 
   assert.match(script, /READING_BACKGROUND_STORAGE_KEY = 'reading_background_preference'/);
@@ -33,7 +33,7 @@ test("reader background preferences are available from the floating tools", () =
     "night",
   ]) {
     assert.match(script, new RegExp(`'${background}'`));
-    assert.match(globals, new RegExp(`data-reading-background='${background}'`));
+    assert.match(readerCss, new RegExp(`data-reading-background='${background}'`));
   }
 
   assert.match(tools, /ReadingBackgroundSwitcher/);
@@ -48,10 +48,12 @@ test("reader background preferences are available from the floating tools", () =
   assert.match(articleTools, /<BlogReaderTools/);
   assert.match(blogArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
   assert.match(notesArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
+  assert.match(blogArticleLayout, /import ['"]\.\.\/\.\.\/reader\.css['"]/);
+  assert.match(notesArticleLayout, /import ['"]\.\.\/\.\.\/blog\/reader\.css['"]/);
   assert.doesNotMatch(siteLayout, /\bArticleReaderTools\b|\bBlogReaderTools\b/);
   assert.match(siteLayout, /<FontScript \/>/);
   assert.match(siteLayout, /<ReadingBackgroundScript \/>/);
-  assert.match(globals, /\.blog-reader-tools__controls \{[^}]*flex-direction: column/s);
+  assert.match(readerCss, /\.blog-reader-tools__controls \{[^}]*flex-direction: column/s);
   assert.match(notesCss, /html\[data-reading-background\] \.notes-reading/);
 });
 

@@ -3,7 +3,10 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const page = await readFile("src/app/[locale]/(site)/about/page.tsx", "utf8");
-const globals = await readFile("src/app/globals.css", "utf8");
+const aboutCss = await readFile(
+  "src/app/[locale]/(site)/about/about.css",
+  "utf8"
+);
 const seo = await readFile("src/app/seo.config.ts", "utf8");
 const en = JSON.parse(await readFile("messages/en.json", "utf8"));
 const vi = JSON.parse(await readFile("messages/vi.json", "utf8"));
@@ -33,7 +36,8 @@ test("about page presents the current backend and platform profile", () => {
 
   assert.match(seo, /Backend, Platform & Product Engineering/);
   assert.match(seo, /Load balancer/);
-  assert.match(globals, /\.about-hero\s*\{/);
-  assert.match(globals, /\.about-system-card\s*\{/);
-  assert.match(globals, /\.about-principle\s*\{/);
+  assert.match(page, /import ['"]\.\/about\.css['"]/);
+  assert.match(aboutCss, /\.about-hero\s*\{/);
+  assert.match(aboutCss, /\.about-system-card\s*\{/);
+  assert.match(aboutCss, /\.about-principle\s*\{/);
 });

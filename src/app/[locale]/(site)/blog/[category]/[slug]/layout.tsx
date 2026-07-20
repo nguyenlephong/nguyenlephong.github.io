@@ -4,6 +4,7 @@ import { hasLocale } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import ArticleReaderTools from '@/components/blog/ArticleReaderTools'
 import { routing } from '@/i18n/routing'
+import '../../reader.css'
 
 type BlogArticleLayoutProps = {
   children: ReactNode

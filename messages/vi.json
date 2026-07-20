@@ -235,6 +235,18 @@
     "home": {
       "title": "Nguyễn Lê Phong — Senior Software Engineer & Technical Lead",
       "description": "Senior full-stack engineer và technical lead với 8+ năm ship sản phẩm, platform, Micro-Frontend, Kubernetes, integration fintech bảo mật và hệ thống rollout."
+    },
+    "about": {
+      "title": "Giới thiệu — Backend, Platform và Product Engineering",
+      "description": "Cách Nguyễn Lê Phong xây dựng và dẫn dắt hệ thống production, từ backend, integration bảo mật và Kubernetes đến observability cùng các đợt rollout cẩn trọng."
+    },
+    "apps": {
+      "title": "Ứng dụng — Những công cụ nhỏ được làm cẩn thận",
+      "description": "Một bộ sưu tập gọn gồm các tiện ích open-source và công cụ nhỏ do Nguyễn Lê Phong xây dựng, tập trung vào tốc độ, tính thực dụng và trải nghiệm dễ chịu."
+    },
+    "gallery": {
+      "title": "Bộ sưu tập — Những dấu mốc phía sau công việc",
+      "description": "Chứng chỉ, ghi nhận, ảnh dự án và những thói quen bền bỉ cho thấy cách Nguyễn Lê Phong học hỏi, xây dựng sản phẩm và làm việc cùng team."
     }
   },
   "Offline": {

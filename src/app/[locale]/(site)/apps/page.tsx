@@ -1,17 +1,18 @@
 import { Metadata } from 'next'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import { PAGE_SEO } from '@/app/seo.config'
 import { apps } from './apps.data'
 import AppsConsole from '@/components/apps/AppsConsole'
 import PageTracker from '@/components/analytics/PageTracker'
 import AppsLinkTracker from '@/components/analytics/AppsLinkTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
-import { localizedPageIdentity } from '@/lib/seo/locale'
-
-const seo = PAGE_SEO.apps
+import {
+  buildStaticPageMetadata,
+  resolveStaticPageLocalization,
+} from '@/lib/seo/static-page-localization'
+import './apps.css'
 
 export function generateStaticParams() {
   if (process.env.NODE_ENV === 'development') return []
@@ -22,39 +23,39 @@ type Props = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const identity = localizedPageIdentity(locale, seo.path)
-  return {
-    title: seo.title,
-    description: seo.description,
-    keywords: seo.keywords,
-    alternates: { canonical: identity.canonical, languages: identity.languages },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url: identity.canonical,
-      type: 'website',
-      locale: identity.ogLocale,
-      alternateLocale: identity.alternateOgLocales,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: seo.title,
-      description: seo.description,
-    },
-  }
+  if (!hasLocale(routing.locales, locale)) notFound()
+  const localization = resolveStaticPageLocalization('apps', locale)
+  const seo = await getTranslations({
+    locale: localization.contentLocale,
+    namespace: 'SEO.apps',
+  })
+  return buildStaticPageMetadata({
+    title: seo('title'),
+    description: seo('description'),
+    localization,
+    openGraphType: 'website',
+  })
 }
 
 export default async function AppsPage({ params }: Props) {
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
-  const identity = localizedPageIdentity(locale, seo.path)
+  const localization = resolveStaticPageLocalization('apps', locale)
+  const seo = await getTranslations({
+    locale: localization.contentLocale,
+    namespace: 'SEO.apps',
+  })
+  const title = seo('title')
+  const description = seo('description')
   const appsItemListLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    '@id': `${identity.canonical}#itemlist`,
-    name: 'Apps by Nguyen Le Phong',
-    url: identity.canonical,
+    '@id': `${localization.canonical}#itemlist`,
+    name: title,
+    description,
+    inLanguage: localization.contentLocale,
+    url: localization.canonical,
     itemListElement: apps.map((a, i) => ({
       '@type': 'ListItem',
       position: i + 1,
@@ -70,7 +71,10 @@ export default async function AppsPage({ params }: Props) {
     })),
   }
   return (
-    <main className="apps-page">
+    <main
+      className="apps-page"
+      lang={localization.authored ? undefined : localization.contentLocale}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(appsItemListLd) }}

@@ -20,6 +20,7 @@ import {
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 import MotionProvider from '@/components/motion/MotionProvider'
+import './home.css'
 
 type Props = {
   params: Promise<{ locale: string }>

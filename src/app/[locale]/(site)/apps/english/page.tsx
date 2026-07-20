@@ -7,6 +7,7 @@ import { absoluteUrl } from '@/app/seo.config'
 import PageTracker from '@/components/analytics/PageTracker'
 import AppsLinkTracker from '@/components/analytics/AppsLinkTracker'
 import EnglishPracticeApp from '@/components/apps/english/EnglishPracticeApp'
+import './english.css'
 
 type Props = { params: Promise<{ locale: string }> }
 

@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation'
 import { APP_ROUTE } from '@/app/app.const'
 import PageTracker from '@/components/analytics/PageTracker'
 import { routing } from '@/i18n/routing'
+import './offline.css'
 
 type Props = {
   params: Promise<{ locale: string }>
