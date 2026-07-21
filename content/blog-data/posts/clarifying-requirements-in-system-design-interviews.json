@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "System Design Interviews Begin With Clarifying Requirements",
   "summary": "A practical guide to the first minutes of a System Design Interview: clarify users, scale, core flows, constraints, and trade-offs before choosing tools.",
-  "date": "2026-07-24",
+  "date": "2026-07-21",
   "readingMinutes": 5,
   "tags": [
     "Software Architecture",
