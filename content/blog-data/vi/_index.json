@@ -87,6 +87,23 @@
   ],
   "posts": [
     {
+      "slug": "clarifying-requirements-in-system-design-interviews",
+      "category": "architecture",
+      "title": "System Design Interview bắt đầu từ việc làm rõ yêu cầu",
+      "summary": "Một hướng dẫn thực tế cho những phút đầu của System Design Interview: làm rõ người dùng, quy mô, luồng chính, ràng buộc và trade-off trước khi chọn công cụ.",
+      "date": "2026-07-21",
+      "readingMinutes": 6,
+      "tags": [
+        "Software Architecture",
+        "System Design",
+        "Requirements",
+        "Scalability",
+        "Decision Making",
+        "Engineering Judgment"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "turning-review-evidence-into-team-memory",
       "category": "ways-of-working",
       "title": "Biến review evidence thành team memory",
