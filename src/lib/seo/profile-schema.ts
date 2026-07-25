@@ -14,7 +14,7 @@ export function buildPersonSchema(description: string): WithContext<Person> {
     alternateName: ['Nguyễn Lê Phong', 'Phong Nguyen'],
     url: SITE_URL,
     image: PROFILE_AVATAR,
-    jobTitle: 'Senior Software Engineer · Technical Lead · Full-stack Engineer',
+    jobTitle: 'Lead Software Engineer · Technical Lead · Full-stack Engineer',
     description,
     email: `mailto:${profileInfo.contact.email}`,
     telephone: profileInfo.contact.phone,
@@ -24,6 +24,7 @@ export function buildPersonSchema(description: string): WithContext<Person> {
       addressCountry: 'VN',
     },
     knowsAbout: [
+      'Cross-device Message Backup and Restore',
       'React',
       'Next.js',
       'TypeScript',
@@ -41,7 +42,7 @@ export function buildPersonSchema(description: string): WithContext<Person> {
     ],
     worksFor: {
       '@type': 'Organization',
-      name: 'NDSVN JSC',
+      name: 'Zalo - VNG Corporation',
     },
     alumniOf: {
       '@type': 'CollegeOrUniversity',

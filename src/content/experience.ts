@@ -3,12 +3,54 @@
 
 export const experience = [
     {
+      company: "Zalo PC - VNG Corp",
+      location: "VNG Campus - District 7",
+      jobs: [
+        {
+          title: "Lead Software Engineer",
+          duration: "Mar 2, 2026 - Present",
+          contentKey: "lead",
+          summaries: [
+            "Returned to <b>Zalo PC</b> as a Lead Software Engineer, beginning a new chapter focused on cross-device message continuity within the wider Zalo ecosystem, which serves more than <b>80 million monthly users</b>."
+          ],
+          key_contribution: [
+            "Implemented and shipped <b>message backup on Zalo PC with restore on mobile</b>, helping users recover text conversation history when changing devices, losing a phone, or reinstalling the app.",
+            "Connected desktop backup and mobile restore into one recovery journey across device changes, lost phones, and app reinstalls.",
+            "Took the feature from implementation to a phased production rollout in July 2026; the launch was publicly covered by VnExpress as one of Zalo's major cross-device updates.",
+            "Extended the recovery path from PC to mobile, helping text conversations continue with less interruption across device transitions."
+          ],
+          key_techs: ["React", "Node.js", "Electron", "TypeScript", "Kotlin"],
+          evidence: {
+            href: "https://vnexpress.net/ba-tinh-nang-moi-cua-zalo-5097444.html",
+            publisher: "VnExpress",
+            publishedAt: "2026-07-15"
+          }
+        },
+        {
+          title: "Senior Software Engineer",
+          duration: "May 2024 - Aug 2025",
+          summaries: [
+            "Core developer for the cross-platform <b>Zalo PC</b> (Web, macOS, Windows), serving <b>15M+ MAU</b>. Delivered key features such as dark mode, dynamic theming, and user behavior tracking. Spearheaded the development of a promotion flow and a scalable <b>design system</b> for <b>50+ developers</b>. Optimized performance, enhanced maintainability, and contributed to business growth through robust and efficient solutions.",
+            "Actively maintained and improved <b>Zalo’s Android</b> mobile app, ensuring the <b>stability</b> and <b>performance</b> of critical features for nearly <b>80 million users</b>."
+          ],
+          key_contribution: [
+            "Delivered over <b>10 features</b>, including dark mode, a download module, kiki bot, log tracking, and more, improving UX and engagement.",
+            "Developed a <b>promotion flow</b> with integrated tracking and monitoring systems, driving activation success across <b>15M+ MAU</b>.",
+            "Led the development of a scalable <b>design system</b> using Storybook, ensuring UI consistency and efficiency for <b>50+ developers</b>.",
+            "Proactively supported <b>50+ client users</b>, swiftly resolving issues with <b>dedication</b> and <b>effective problem-solving</b>, earning strong positive feedback.",
+            "Maintained and improved <b>3+</b> features in <b>Zalo’s Android</b> app, focusing on <b>stability</b>, <b>performance</b>, and seamless user experience for nearly <b>80 million users</b>."
+          ],
+          key_techs: ["React", "Node.js", "Electron", "TypeScript", "Kotlin"]
+        }
+      ]
+    },
+    {
       company: "NDSVN JSC",
       location: "Ho Chi Minh City, Vietnam",
       jobs: [
         {
           title: "Senior Software Engineer Lead",
-          duration: "Aug 2025 - Present",
+          duration: "Aug 2025 - Mar 2026",
           summaries: [
             "Owned product delivery and technical direction post-CTO transition, leading architecture decisions, rollout systems, enterprise-grade integrations, and cross-team alignment while managing a delivery team of 8 developers (including 4 seniors) and 3 QC engineers."
           ],
@@ -33,28 +75,6 @@ export const experience = [
             ".NET",
             "AKS/FKE/K3S/EKS"
           ]
-        }
-      ]
-    },
-    {
-      company: "Zalo PC - VNG Corp",
-      location: "VNG Campus - District 7",
-      jobs: [
-        {
-          title: "Senior Software Engineer",
-          duration: "May 2024 - Aug 2025",
-          summaries: [
-            "Core developer for the cross-platform <b>Zalo PC</b> (Web, macOS, Windows), serving <b>15M+ MAU</b>. Delivered key features such as dark mode, dynamic theming, and user behavior tracking. Spearheaded the development of a promotion flow and a scalable <b>design system</b> for <b>50+ developers</b>. Optimized performance, enhanced maintainability, and contributed to business growth through robust and efficient solutions.",
-            "Actively maintained and improved <b>Zalo’s Android</b> mobile app, ensuring the <b>stability</b> and <b>performance</b> of critical features for nearly <b>80 million users</b>."
-          ],
-          key_contribution: [
-            "Delivered over <b>10 features</b>, including dark mode, a download module, kiki bot, log tracking, and more, improving UX and engagement.",
-            "Developed a <b>promotion flow</b> with integrated tracking and monitoring systems, driving activation success across <b>15M+ MAU</b>.",
-            "Led the development of a scalable <b>design system</b> using Storybook, ensuring UI consistency and efficiency for <b>50+ developers</b>.",
-            "Proactively supported <b>50+ client users</b>, swiftly resolving issues with <b>dedication</b> and <b>effective problem-solving</b>, earning strong positive feedback.",
-            "Maintained and improved <b>3+</b> features in <b>Zalo’s Android</b> app, focusing on <b>stability</b>, <b>performance</b>, and seamless user experience for nearly <b>80 million users</b>."
-          ],
-          key_techs: ["ReactJs", "Node.js", "Electron", "Typescript", "Kotlin"]
         }
       ]
     },

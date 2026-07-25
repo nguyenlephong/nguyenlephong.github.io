@@ -1,10 +1,15 @@
 'use client'
-import { LuMapPin, LuCalendarDays } from 'react-icons/lu'
+import { LuMapPin, LuCalendarDays, LuExternalLink } from 'react-icons/lu'
 import { useTranslations } from 'next-intl'
 import { ExperienceItemType, JobType } from '@/app/app.type'
 import { Stagger, StaggerItem } from '@/components/motion/Reveal'
+import { track } from '@/lib/analytics'
 
 type Props = { data: ExperienceItemType[] }
+
+type ExperienceTranslator = {
+  raw: (key: string) => unknown
+}
 
 const FEATURED_TECHS = new Set([
   'react',
@@ -51,6 +56,20 @@ function getSummaryKeys(companyKey: string, count: number): string[] {
   return ['summary']
 }
 
+function getLocalizedSummaries(
+  t: ExperienceTranslator,
+  companyKey: string,
+  job: JobType,
+): string[] {
+  if (!companyKey) return job.summaries
+  if (job.contentKey) {
+    return t.raw(`${companyKey}.${job.contentKey}.summaries`) as string[]
+  }
+  return getSummaryKeys(companyKey, job.summaries.length).map(
+    (summaryKey) => t.raw(`${companyKey}.${summaryKey}`) as string,
+  )
+}
+
 export default function Experience({ data }: Props) {
   const t = useTranslations('Experience')
 
@@ -75,12 +94,15 @@ export default function Experience({ data }: Props) {
               </header>
 
               {ex.jobs.map((job: JobType) => {
-                const summaryKeys = getSummaryKeys(companyKey, job.summaries.length)
+                const summaries = getLocalizedSummaries(t, companyKey, job)
+                const contributionKey = job.contentKey
+                  ? `${companyKey}.${job.contentKey}.contributions`
+                  : `${companyKey}.contributions`
                 const contributions = companyKey
-                  ? (t.raw(`${companyKey}.contributions`) as string[])
+                  ? (t.raw(contributionKey) as string[])
                   : job.key_contribution
                 return (
-                  <article key={job.title} className="role">
+                  <article key={`${job.title}-${job.duration}`} className="role">
                     <header className="role-head">
                       <h4 className="role-title">{job.title}</h4>
                       <span className="meta-tag meta-tag-mono" title={t('labels.duration')}>
@@ -89,13 +111,39 @@ export default function Experience({ data }: Props) {
                       </span>
                     </header>
 
-                    {summaryKeys.map((sk) => (
+                    {summaries.map((summary) => (
                       <p
-                        key={sk}
+                        key={summary}
                         className="role-summary"
-                        dangerouslySetInnerHTML={{ __html: t.raw(`${companyKey}.${sk}`) }}
+                        dangerouslySetInnerHTML={{ __html: summary }}
                       />
                     ))}
+
+                    {job.evidence && (
+                      <div className="role-evidence">
+                        <span className="role-evidence-label">{t('labels.publicEvidence')}</span>
+                        <a
+                          href={job.evidence.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() =>
+                            track(
+                              'cv_experience_evidence_click',
+                              {
+                                company: ex.company,
+                                role: job.title,
+                                publisher: job.evidence?.publisher,
+                                published_at: job.evidence?.publishedAt,
+                              },
+                              { beacon: true },
+                            )
+                          }
+                        >
+                          {t('labels.readCoverage', { publisher: job.evidence.publisher })}
+                          <LuExternalLink size={13} aria-hidden="true" />
+                        </a>
+                      </div>
+                    )}
 
                     <p className="role-section-label">{t('labels.keyContributions')}</p>
                     <ul className="role-contrib">

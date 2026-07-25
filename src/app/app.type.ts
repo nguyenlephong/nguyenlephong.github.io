@@ -10,6 +10,12 @@ export type JobType = {
   summaries: string[]
   key_contribution: string[]
   key_techs: string[]
+  contentKey?: string
+  evidence?: {
+    href: string
+    publisher: string
+    publishedAt: string
+  }
 }
 
 export type ProjectType = {

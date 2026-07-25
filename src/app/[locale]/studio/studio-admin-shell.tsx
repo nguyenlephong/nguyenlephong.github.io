@@ -467,7 +467,7 @@ export function StudioAdminShell({ locale, copy }: StudioAdminShellProps) {
             {accountOpen && (
               <section className="account-popover">
                 <strong>Nguyen Le Phong</strong>
-                <span>Senior Software Engineer</span>
+                <span>Lead Software Engineer · Zalo PC</span>
                 <nav className="account-nav" aria-label={copy.profileNavigationTitle}>
                   {localizedProfileItems.map((item) => {
                     const Icon = item.icon;

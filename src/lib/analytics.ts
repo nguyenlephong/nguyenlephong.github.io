@@ -31,6 +31,7 @@ export type AnalyticsEvent =
   | 'cv_theme_toggle'
   | 'cv_nav_click'
   | 'cv_external_link'
+  | 'cv_experience_evidence_click'
   | 'cv_project_view'
   // Page lifecycle
   | 'page_view'
