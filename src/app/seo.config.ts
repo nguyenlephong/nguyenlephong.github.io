@@ -2,11 +2,11 @@ export const SITE_URL = 'https://nguyenlephong.github.io'
 
 export const SITE = {
   url: SITE_URL,
-  name: 'Nguyen Le Phong — Senior Software Engineer',
+  name: 'Nguyen Le Phong — Lead Software Engineer at Zalo PC',
   brandShort: 'Nguyen Le Phong',
   twitter: '@nguyenlephong17',
   locale: 'en_US',
-  defaultOgAlt: 'Nguyen Le Phong — Senior Software Engineer & Technical Lead',
+  defaultOgAlt: 'Nguyen Le Phong — Lead Software Engineer at Zalo PC',
 }
 
 export interface PageSEO {
@@ -22,13 +22,15 @@ export const PAGE_SEO: Record<
   PageSEO
 > = {
   home: {
-    title: 'Nguyen Le Phong — Senior Software Engineer & Technical Lead',
+    title: 'Nguyen Le Phong — Lead Software Engineer at Zalo PC',
     description:
-      'Senior full-stack engineer and technical lead with 8+ years shipping product, platform, Micro-Frontend, Kubernetes, secure fintech integration, and rollout systems.',
+      'Lead Software Engineer at Zalo PC with 8+ years shipping cross-platform products, PC-to-mobile message backup and restore, platform systems, secure integrations, and reliable releases.',
     path: '/',
     keywords: [
       'Nguyen Le Phong',
       'Nguyễn Lê Phong',
+      'Lead Software Engineer',
+      'Zalo PC',
       'Senior Software Engineer',
       'Technical Lead',
       'Tech Lead',
@@ -41,7 +43,7 @@ export const PAGE_SEO: Record<
       'Very Good degree',
     ],
     ogAlt:
-      'Nguyen Le Phong — 8+ years across product, platform, and technical leadership',
+      'Nguyen Le Phong — Lead Software Engineer shipping cross-device products at Zalo PC',
   },
   about: {
     title: 'About — Backend, Platform & Product Engineering',

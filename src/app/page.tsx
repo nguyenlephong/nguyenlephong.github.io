@@ -6,10 +6,10 @@ import { serializeJsonLd } from '@/lib/seo/json-ld'
 
 const DEFAULT = `/${routing.defaultLocale}`
 
-const SEO_TITLE = 'Nguyen Le Phong — Senior Software Engineer & Technical Lead'
+const SEO_TITLE = 'Nguyen Le Phong — Lead Software Engineer at Zalo PC'
 const SEO_DESCRIPTION =
-  'Senior full-stack engineer and technical lead with 8+ years shipping product, platform, Micro-Frontend, Kubernetes, secure fintech integration, and rollout systems.'
-const OG_ALT = 'Nguyen Le Phong — Senior Software Engineer & Technical Lead'
+  'Lead Software Engineer at Zalo PC with 8+ years shipping cross-platform products, PC-to-mobile message backup and restore, platform systems, secure integrations, and reliable releases.'
+const OG_ALT = 'Nguyen Le Phong — Lead Software Engineer at Zalo PC'
 
 const localeLanguages: Record<string, string> = {}
 for (const loc of routing.locales) localeLanguages[loc] = `${SITE_URL}/${loc}`

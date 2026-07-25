@@ -274,7 +274,7 @@ export function OgShell({
         }}
       >
         <div style={{ display: 'flex', color: t.subtext, fontSize: 20 }}>
-          {footer ?? 'Nguyen Le Phong · Senior Software Engineer · Tech Lead'}
+          {footer ?? 'Nguyen Le Phong · Lead Software Engineer · Zalo PC'}
         </div>
         {badge && (
           <div

@@ -27,24 +27,24 @@
     "notes": "Ghi chép"
   },
   "Footer": {
-    "tag": "Senior Software Engineer · Technical Lead",
+    "tag": "Lead Software Engineer · Zalo PC",
     "copy": "© {year} Nguyễn Lê Phong.",
     "language": "Ngôn ngữ"
   },
   "Hero": {
-    "eyebrow": "Sẵn sàng cho vị trí senior / lead engineering",
-    "role": "Senior Software Engineer · Technical Lead",
-    "roleSub": "Product engineering · Platform systems · Delivery leadership",
-    "bio": "Tôi giúp đội sản phẩm biến hệ thống phức tạp thành những lần release ổn định. Hơn 8 năm qua, tôi đã trực tiếp ship sản phẩm React/Next.js, backend service, nền tảng Kubernetes, integration tài chính bảo mật và mô hình vận hành kỹ thuật. Hiện tại đang dẫn dắt đội delivery 11 người xây dựng hệ thống rollout multi-tenant và integration enterprise.",
+    "eyebrow": "Lead Software Engineer tại Zalo PC",
+    "role": "Lead Software Engineer · Technical Lead",
+    "roleSub": "Cross-platform product · Data continuity · Reliable delivery",
+    "bio": "Là Lead Software Engineer tại Zalo PC, tôi xây dựng các hành trình dữ liệu xuyên thiết bị trong hệ sinh thái Zalo có 80M+ MAU. Gần đây nhất, tôi ship backup tin nhắn trên PC và restore về mobile cho các tình huống đổi máy, mất điện thoại hoặc cài lại ứng dụng. Hơn 8 năm qua, tôi làm việc xuyên React/Electron, mobile, backend service, Kubernetes, integration fintech bảo mật và delivery leadership.",
     "location": "TP. Hồ Chí Minh, Việt Nam",
     "downloadResume": "Tải CV",
     "getInTouch": "Liên hệ ngay",
     "careerHighlights": "Điểm nổi bật sự nghiệp",
     "socialProfiles": "Mạng xã hội",
     "proof": {
-      "scale": "80M+ người dùng thông qua Zalo và các nền tảng đã tham gia",
-      "team": "Dẫn dắt đội delivery 11 người gồm dev và QC",
-      "platform": "Nền tảng rollout 30+ tenant với integration bảo mật"
+      "scale": "Làm kỹ thuật trong hệ sinh thái Zalo có 80M+ MAU",
+      "team": "Vai trò Lead cho cross-platform product delivery",
+      "platform": "Backup tin nhắn PC và restore về mobile ra mắt tháng 7/2026"
     },
     "stats": {
       "yearsShipping": "Năm kinh nghiệm",
@@ -53,8 +53,8 @@
       "hoursCodingCaption": "Đo bằng WakaTime từ 2021",
       "usersTouched": "Người dùng phục vụ",
       "usersTouchedCaption": "Zalo · CDP · fintech quy mô lớn",
-      "engineersLed": "Đội delivery",
-      "engineersLedCaption": "Developer · QC · stakeholder",
+      "engineersLed": "Đội lớn nhất đã dẫn dắt",
+      "engineersLedCaption": "Developer · QC · delivery",
       "tenantsPowered": "Tenant đang vận hành",
       "tenantsPoweredCaption": "Hệ thống feature flag multi-tenant",
       "domainsDelivered": "Lĩnh vực đã làm",
@@ -74,7 +74,7 @@
     "projectsTitle": "Dự án tiêu biểu có kết quả đo được"
   },
   "Summary": {
-    "intro1": "Senior full-stack engineer và technical lead, Cử nhân Công nghệ Thông tin (chuyên ngành phụ Kỹ thuật Phần mềm, <b>GPA 3.36</b>) với <b>8+ năm</b> ship phần mềm production trong các domain consumer-scale, CDP, fintech, giáo dục và bất động sản.",
+    "intro1": "Lead Software Engineer tại Zalo PC, Cử nhân Công nghệ Thông tin (chuyên ngành phụ Kỹ thuật Phần mềm, <b>GPA 3.36</b>) với <b>8+ năm</b> ship phần mềm production trong các domain nhắn tin consumer-scale, CDP, fintech, giáo dục và bất động sản.",
     "intro2": "Giá trị mạnh nhất của tôi nằm ở giao điểm giữa delivery sản phẩm và độ ổn định nền tảng: biến mục tiêu kinh doanh còn mơ hồ thành front-end system, backend service, rollout workflow, observability, CI/CD và vận hành production ổn định.",
     "intro3": "<i>Những vùng năng lực gần đây có bằng chứng rõ:</i>",
     "visionEyebrow": "Phạm vi vận hành",
@@ -127,7 +127,9 @@
       "location": "Địa điểm",
       "duration": "Thời gian",
       "keyContributions": "Đóng góp chính",
-      "keyTechnologies": "Công nghệ chính"
+      "keyTechnologies": "Công nghệ chính",
+      "publicEvidence": "Thông tin ra mắt",
+      "readCoverage": "Xem bài trên {publisher}"
     },
     "ndsvn": {
       "summary": "Nhận ownership kỹ thuật sau giai đoạn CTO chuyển giao, dẫn dắt delivery sản phẩm, quyết định kiến trúc, hệ thống rollout, integration enterprise và thực thi liên đội cho đội delivery gồm 8 developer và 3 QC engineer.",
@@ -142,6 +144,17 @@
       ]
     },
     "zalo": {
+      "lead": {
+        "summaries": [
+          "Quay lại <b>Zalo PC</b> ngày <b>02/03/2026</b> với vai trò Lead Software Engineer, mở ra chặng mới tập trung vào tính liên tục của tin nhắn xuyên thiết bị trong hệ sinh thái Zalo có <b>80M+ MAU</b>."
+        ],
+        "contributions": [
+          "Triển khai và ship <b>tính năng backup tin nhắn trên Zalo PC, restore về mobile</b>, giúp người dùng lấy lại lịch sử trò chuyện văn bản khi đổi thiết bị, mất điện thoại hoặc cài lại ứng dụng.",
+          "Kết nối <b>desktop backup và mobile restore</b> thành một recovery journey thống nhất cho các tình huống đổi máy, mất điện thoại và cài lại ứng dụng.",
+          "Đưa feature từ implementation tới <b>phased production rollout tháng 7/2026</b>; lần ra mắt công khai được VnExpress đưa tin như một cập nhật cross-device nổi bật của Zalo.",
+          "Mở rộng recovery path <b>từ PC sang mobile</b>, giúp hội thoại văn bản tiếp tục liền mạch hơn và giảm gián đoạn khi chuyển thiết bị."
+        ]
+      },
       "summary1": "Core engineer của <b>Zalo PC</b> đa nền tảng (Web, macOS, Windows), phục vụ <b>15M+ MAU</b>, tham gia ownership từ feature sản phẩm, tracking, design system đến độ ổn định release.",
       "summary2": "Đồng thời đóng góp cho <b>Zalo Android</b>, cải thiện độ ổn định và hiệu năng feature cho sản phẩm mobile gần <b>80 triệu người dùng</b>.",
       "contributions": [
@@ -233,8 +246,8 @@
   },
   "SEO": {
     "home": {
-      "title": "Nguyễn Lê Phong — Senior Software Engineer & Technical Lead",
-      "description": "Senior full-stack engineer và technical lead với 8+ năm ship sản phẩm, platform, Micro-Frontend, Kubernetes, integration fintech bảo mật và hệ thống rollout."
+      "title": "Nguyễn Lê Phong — Lead Software Engineer tại Zalo PC",
+      "description": "Lead Software Engineer tại Zalo PC với 8+ năm ship sản phẩm cross-platform, backup tin nhắn PC và restore về mobile, platform system, integration bảo mật và release đáng tin cậy."
     },
     "about": {
       "title": "Giới thiệu — Backend, Platform và Product Engineering",

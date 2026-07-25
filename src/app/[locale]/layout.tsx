@@ -59,6 +59,8 @@ export async function generateMetadata({
       'Nguyen Le Phong',
       'Nguyễn Lê Phong',
       'Software Engineer',
+      'Lead Software Engineer',
+      'Zalo PC',
       'Senior Software Engineer',
       'Tech Lead',
       'Full-stack Engineer',

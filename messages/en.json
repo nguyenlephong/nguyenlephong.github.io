@@ -27,24 +27,24 @@
     }
   },
   "Footer": {
-    "tag": "Senior Software Engineer · Technical Lead",
+    "tag": "Lead Software Engineer · Zalo PC",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "Language"
   },
   "Hero": {
-    "eyebrow": "Available for senior / lead engineering roles",
-    "role": "Senior Software Engineer · Technical Lead",
-    "roleSub": "Product engineering · Platform systems · Delivery leadership",
-    "bio": "I help product teams turn complex systems into reliable releases. Over 8 years, I have shipped React/Next.js products, backend services, Kubernetes-based platforms, secure financial integrations, and engineering operating models. Currently leading an 11-person delivery team building multi-tenant rollout systems and enterprise integrations.",
+    "eyebrow": "Lead Software Engineer at Zalo PC",
+    "role": "Lead Software Engineer · Technical Lead",
+    "roleSub": "Cross-platform product · Data continuity · Reliable delivery",
+    "bio": "As a Lead Software Engineer at Zalo PC, I build cross-device data experiences within Zalo's 80M+ MAU ecosystem. Most recently, I shipped PC message backup with mobile restore for device changes, lost phones, and reinstalls. Across 8+ years, I have worked across React/Electron, mobile, backend services, Kubernetes, secure fintech integrations, and delivery leadership.",
     "location": "Ho Chi Minh City, Vietnam",
     "downloadResume": "Download résumé",
     "getInTouch": "Get in touch",
     "careerHighlights": "Career highlights",
     "socialProfiles": "Social profiles",
     "proof": {
-      "scale": "80M+ users reached through Zalo and platform products",
-      "team": "11-person delivery team led across development and QC",
-      "platform": "30+ tenant rollout platform with secure integrations"
+      "scale": "Engineering within Zalo's wider 80M+ MAU ecosystem",
+      "team": "Lead role in cross-platform product delivery",
+      "platform": "PC-to-mobile message backup and restore shipped in July 2026"
     },
     "stats": {
       "yearsShipping": "Years shipping",
@@ -53,8 +53,8 @@
       "hoursCodingCaption": "Tracked via WakaTime since 2021",
       "usersTouched": "Users touched",
       "usersTouchedCaption": "Zalo · CDP · fintech scale",
-      "engineersLed": "Delivery team",
-      "engineersLedCaption": "Developers · QC · stakeholders",
+      "engineersLed": "Largest team led",
+      "engineersLedCaption": "Developers · QC · delivery",
       "tenantsPowered": "Tenants powered",
       "tenantsPoweredCaption": "Multi-tenant feature flags",
       "domainsDelivered": "Domains delivered",
@@ -74,7 +74,7 @@
     "projectsTitle": "Selected work with measurable outcomes"
   },
   "Summary": {
-    "intro1": "Senior full-stack engineer and technical lead with a Bachelor of Information Technology (minor in Software Engineering, <b>GPA 3.36</b>) and <b>8+ years</b> shipping production software across consumer-scale, CDP, fintech, education, and real-estate domains.",
+    "intro1": "Lead Software Engineer at Zalo PC with a Bachelor of Information Technology (minor in Software Engineering, <b>GPA 3.36</b>) and <b>8+ years</b> shipping production software across consumer-scale messaging, CDP, fintech, education, and real-estate domains.",
     "intro2": "My strongest value sits between product delivery and platform reliability: translating ambiguous business goals into front-end systems, backend services, rollout workflows, observability, CI/CD, and stable production operations.",
     "intro3": "<i>Recent areas of depth and evidence:</i>",
     "visionEyebrow": "Operating range",
@@ -127,7 +127,9 @@
       "location": "Location",
       "duration": "Duration",
       "keyContributions": "Key contributions",
-      "keyTechnologies": "Key technologies"
+      "keyTechnologies": "Key technologies",
+      "publicEvidence": "Feature launch",
+      "readCoverage": "Read {publisher} coverage"
     },
     "ndsvn": {
       "summary": "Stepped into technical ownership after a CTO transition, leading product delivery, architecture decisions, rollout systems, enterprise integrations, and cross-team execution for a delivery team of 8 developers and 3 QC engineers.",
@@ -142,6 +144,17 @@
       ]
     },
     "zalo": {
+      "lead": {
+        "summaries": [
+          "Returned to <b>Zalo PC</b> on <b>March 2, 2026</b> as Lead Software Engineer, beginning a new chapter focused on cross-device message continuity within the wider Zalo ecosystem, which serves <b>80M+ MAU</b>."
+        ],
+        "contributions": [
+          "Implemented and shipped <b>message backup on Zalo PC with restore on mobile</b>, helping users recover text conversation history when changing devices, losing a phone, or reinstalling the app.",
+          "Connected <b>desktop backup and mobile restore</b> into one recovery journey across device changes, lost phones, and app reinstalls.",
+          "Took the feature from implementation to a <b>phased production rollout in July 2026</b>; its public launch was covered by VnExpress as one of Zalo's major cross-device updates.",
+          "Extended the recovery path <b>from PC to mobile</b>, helping text conversations continue with less interruption across device transitions."
+        ]
+      },
       "summary1": "Core engineer on cross-platform <b>Zalo PC</b> (Web, macOS, Windows), serving <b>15M+ MAU</b>, with ownership across product features, tracking, design-system work, and release stability.",
       "summary2": "Also contributed to <b>Zalo Android</b>, improving feature stability and performance for a mobile product used by nearly <b>80 million users</b>.",
       "contributions": [
@@ -233,8 +246,8 @@
   },
   "SEO": {
     "home": {
-      "title": "Nguyen Le Phong — Senior Software Engineer & Technical Lead",
-      "description": "Senior full-stack engineer and technical lead with 8+ years shipping product, platform, Micro-Frontend, Kubernetes, secure fintech integration, and rollout systems."
+      "title": "Nguyen Le Phong — Lead Software Engineer at Zalo PC",
+      "description": "Lead Software Engineer at Zalo PC with 8+ years shipping cross-platform products, PC-to-mobile message backup and restore, platform systems, secure integrations, and reliable releases."
     },
     "about": {
       "title": "About — Backend, Platform & Product Engineering",

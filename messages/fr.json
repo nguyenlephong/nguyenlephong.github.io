@@ -26,24 +26,24 @@
     "notes": "Notes"
   },
   "Footer": {
-    "tag": "Senior Software Engineer · Tech Lead",
+    "tag": "Lead Software Engineer · Zalo PC",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "Langue"
   },
   "Hero": {
-    "eyebrow": "Ouvert aux opportunités senior / lead",
-    "role": "Senior Software Engineer · Tech Lead",
-    "roleSub": "Full-stack · Platform engineering · Direction de la livraison",
-    "bio": "Je conçois et exploite des systèmes de bout en bout — applications front-end, services backend, pipelines CI/CD, workflows de release et infrastructure de production. Actuellement, je dirige une équipe de 11 personnes qui livre des plateformes multi-tenant, des intégrations financières sécurisées et des architectures Micro-Frontend.",
+    "eyebrow": "Lead Software Engineer chez Zalo PC",
+    "role": "Lead Software Engineer · Tech Lead",
+    "roleSub": "Produit cross-platform · Continuité des données · Livraison fiable",
+    "bio": "Lead Software Engineer chez Zalo PC, je développe des parcours de données entre appareils dans l'écosystème Zalo à 80M+ MAU. J'ai récemment livré la sauvegarde des messages sur PC avec restauration sur mobile pour les changements d'appareil, les téléphones perdus et les réinstallations. En 8+ ans, j'ai travaillé sur React/Electron, le mobile, les services backend, Kubernetes, les intégrations fintech sécurisées et le leadership de delivery.",
     "location": "Hô Chi Minh-Ville, Vietnam",
     "downloadResume": "Télécharger le CV",
     "getInTouch": "Me contacter",
     "careerHighlights": "Faits marquants de carrière",
     "socialProfiles": "Profils sociaux",
     "proof": {
-      "scale": "80M+ utilisateurs touchés via Zalo et des produits plateforme",
-      "team": "Équipe delivery de 11 personnes dirigée entre développement et QC",
-      "platform": "Plateforme de rollout 30+ tenants avec intégrations sécurisées"
+      "scale": "Ingénierie dans l'écosystème Zalo à 80M+ MAU",
+      "team": "Rôle de Lead dans la livraison de produits cross-platform",
+      "platform": "Sauvegarde PC et restauration mobile livrées en juillet 2026"
     },
     "stats": {
       "yearsShipping": "Années de livraison",
@@ -52,8 +52,8 @@
       "hoursCodingCaption": "Suivi via WakaTime depuis 2021",
       "usersTouched": "Utilisateurs touchés",
       "usersTouchedCaption": "Zalo · CDP · échelle fintech",
-      "engineersLed": "Ingénieurs dirigés",
-      "engineersLedCaption": "Devs · QC · transversal",
+      "engineersLed": "Plus grande équipe dirigée",
+      "engineersLedCaption": "Devs · QC · delivery",
       "tenantsPowered": "Tenants en production",
       "tenantsPoweredCaption": "Feature flags multi-tenant",
       "domainsDelivered": "Domaines livrés",
@@ -73,7 +73,7 @@
     "projectsTitle": "Projets sélectionnés"
   },
   "Summary": {
-    "intro1": "Titulaire d'une Licence en Technologies de l'Information (mineure en Génie Logiciel, <b>GPA 3,36</b>) avec près de <b>8 ans d'expérience</b> en développement logiciel full-stack, dont <b>3+ ans</b> en leadership technique, décisions architecturales et coordination de livraison inter-équipes.",
+    "intro1": "Lead Software Engineer chez Zalo PC, titulaire d'une Licence en Technologies de l'Information (mineure en Génie Logiciel, <b>GPA 3,36</b>) avec <b>8+ ans</b> à livrer des logiciels en production dans la messagerie grand public, le CDP, la fintech, l'éducation et l'immobilier.",
     "intro2": "Expérience concrète dans la conception, la construction et l'exploitation de systèmes de bout en bout — des applications front-end et services backend aux pipelines CI/CD, workflows de release et infrastructure de production — avec un fort accent sur l'automatisation, la clarté opérationnelle et la livraison fiable.",
     "intro3": "<i>Voici mes compétences techniques privilégiées ces dernières années :</i>",
     "visionEyebrow": "Comment je travaille",
@@ -126,7 +126,9 @@
       "location": "Lieu",
       "duration": "Durée",
       "keyContributions": "Contributions clés",
-      "keyTechnologies": "Technologies clés"
+      "keyTechnologies": "Technologies clés",
+      "publicEvidence": "Lancement public",
+      "readCoverage": "Lire l'article de {publisher}"
     },
     "ndsvn": {
       "summary": "Responsable de la livraison produit et de la direction technique après le départ du CTO, pilotant les décisions d'architecture, les systèmes de rollout, les intégrations enterprise et l'alignement inter-équipes, tout en encadrant une équipe de livraison de 8 développeurs (dont 4 seniors) et 3 ingénieurs QC.",
@@ -145,6 +147,17 @@
       ]
     },
     "zalo": {
+      "lead": {
+        "summaries": [
+          "Retour chez <b>Zalo PC</b> le <b>2 mars 2026</b> comme Lead Software Engineer, ouvrant un nouveau chapitre centré sur la continuité des messages entre appareils dans l'écosystème Zalo, qui sert <b>80M+ MAU</b>."
+        ],
+        "contributions": [
+          "Implémentation et livraison de la <b>sauvegarde des messages sur Zalo PC avec restauration sur mobile</b>, permettant de récupérer l'historique texte lors d'un changement d'appareil, d'une perte de téléphone ou d'une réinstallation.",
+          "Réunion de la <b>sauvegarde desktop et de la restauration mobile</b> dans un même parcours de récupération pour les changements d'appareil, téléphones perdus et réinstallations.",
+          "Passage de l'implémentation à un <b>rollout progressif en production en juillet 2026</b> ; le lancement public a été couvert par VnExpress parmi les mises à jour cross-device majeures de Zalo.",
+          "Extension du parcours de récupération <b>du PC vers le mobile</b>, afin de poursuivre les conversations texte avec moins d'interruption lors d'un changement d'appareil."
+        ]
+      },
       "summary1": "Développeur cœur de l'application multi-plateforme <b>Zalo PC</b> (Web, macOS, Windows), servant <b>15M+ MAU</b>. Livraison de fonctionnalités clés comme le dark mode, le thème dynamique et le suivi des comportements utilisateurs. Pilotage du développement d'un flow promotionnel et d'un <b>design system</b> scalable pour <b>50+ développeurs</b>. Optimisation des performances, amélioration de la maintenabilité et contribution à la croissance via des solutions robustes et efficaces.",
       "summary2": "Maintenance active et amélioration de l'application mobile <b>Zalo Android</b>, garantissant la <b>stabilité</b> et la <b>performance</b> des fonctionnalités critiques pour près de <b>80 millions d'utilisateurs</b>.",
       "contributions": [
@@ -251,8 +264,8 @@
   },
   "SEO": {
     "home": {
-      "title": "Nguyen Le Phong — Senior Software Engineer & Tech Lead",
-      "description": "Senior Software Engineer & Head of Tech avec 8+ ans à construire des produits, diriger la livraison et architecturer des systèmes Micro-Frontend, Kubernetes et de rollout. Licence en TI — Très Bien (GPA 3,36)."
+      "title": "Nguyen Le Phong — Lead Software Engineer chez Zalo PC",
+      "description": "Lead Software Engineer chez Zalo PC avec 8+ ans à livrer des produits cross-platform, la sauvegarde PC et restauration mobile des messages, des systèmes plateforme, des intégrations sécurisées et des releases fiables."
     },
     "gallery": {
       "title": "Galerie — Les repères derrière le travail",

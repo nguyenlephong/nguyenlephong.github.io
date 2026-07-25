@@ -9,7 +9,7 @@ export const contentType = OG_CONTENT_TYPE
 export const dynamic = 'force-static'
 
 export default async function OgImage() {
-  const cacheKey = 'static-root-v1'
+  const cacheKey = 'static-root-v2'
   const cached = getCachedOg(cacheKey)
   if (cached) return cachedOgResponse(cached)
 
@@ -18,11 +18,11 @@ export default async function OgImage() {
       <OgShell
         theme="gold"
         eyebrow="Nguyen Le Phong"
-        title="Senior Software Engineer · Technical Lead"
-        subtitle="8+ years shipping product, platform systems, Micro-Frontend architecture, Kubernetes operations, secure fintech integrations, and rollout workflows."
-        chips={['React · Next.js', 'Node · Java · .NET', 'Kubernetes · ArgoCD', 'Micro-Frontend']}
-        badge={{ label: 'Scale', value: '80M+ users' }}
-        footer="nguyenlephong.github.io · Product to platform"
+        title="Lead Software Engineer · Zalo PC"
+        subtitle="Shipping cross-device message continuity, reliable releases, and platform systems for products at national scale."
+        chips={['PC → Mobile Restore', 'React · Electron', 'Node · Kotlin', 'Platform Reliability']}
+        badge={{ label: 'Zalo', value: '80M+ MAU' }}
+        footer="nguyenlephong.github.io · Cross-device product to platform"
       />
     ),
     { ...size }

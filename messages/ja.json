@@ -26,24 +26,24 @@
     "notes": "ノート"
   },
   "Footer": {
-    "tag": "シニアソフトウェアエンジニア · テックリード",
+    "tag": "Lead Software Engineer · Zalo PC",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "言語"
   },
   "Hero": {
-    "eyebrow": "シニア / リードのポジションを募集中",
-    "role": "シニアソフトウェアエンジニア · テックリード",
-    "roleSub": "フルスタック · プラットフォームエンジニアリング · デリバリーリード",
-    "bio": "フロントエンドアプリ、バックエンドサービス、CI/CD パイプライン、リリースワークフロー、本番インフラまでエンドツーエンドでシステムを設計・運用しています。現在は 11 名のチームを率い、マルチテナントプラットフォーム、セキュアな金融連携、マイクロフロントエンドアーキテクチャを構築しています。",
+    "eyebrow": "Zalo PC Lead Software Engineer",
+    "role": "Lead Software Engineer · テックリード",
+    "roleSub": "クロスプラットフォーム製品 · データ継続性 · 安定したデリバリー",
+    "bio": "Zalo PC の Lead Software Engineer として、80M+ MAU の Zalo エコシステムにおけるデバイス間データ体験を構築しています。直近では PC のメッセージバックアップとモバイル復元を提供し、機種変更、端末紛失、再インストール時の復旧を支えました。8+ 年にわたり、React/Electron、モバイル、バックエンド、Kubernetes、セキュアなフィンテック連携、デリバリーリードに携わっています。",
     "location": "ベトナム・ホーチミン市",
     "downloadResume": "履歴書ダウンロード",
     "getInTouch": "お問い合わせ",
     "careerHighlights": "キャリアハイライト",
     "socialProfiles": "ソーシャルプロフィール",
     "proof": {
-      "scale": "Zalo とプラットフォーム製品で 80M+ ユーザーに到達",
-      "team": "開発と QC を含む 11 名のデリバリーチームをリード",
-      "platform": "30+ テナント向けの安全な連携付き rollout platform"
+      "scale": "Zalo の 80M+ MAU エコシステムを支えるエンジニアリング",
+      "team": "クロスプラットフォーム製品デリバリーの Lead role",
+      "platform": "PC バックアップとモバイル復元を 2026 年 7 月に提供"
     },
     "stats": {
       "yearsShipping": "出荷年数",
@@ -52,8 +52,8 @@
       "hoursCodingCaption": "2021 年以降 WakaTime で計測",
       "usersTouched": "関わったユーザー数",
       "usersTouchedCaption": "Zalo · CDP · 金融規模",
-      "engineersLed": "率いたエンジニア",
-      "engineersLedCaption": "開発 · QC · クロスファンクショナル",
+      "engineersLed": "リードした最大チーム",
+      "engineersLedCaption": "開発 · QC · デリバリー",
       "tenantsPowered": "稼働中のテナント",
       "tenantsPoweredCaption": "マルチテナント・フィーチャーフラグ",
       "domainsDelivered": "対応ドメイン",
@@ -73,7 +73,7 @@
     "projectsTitle": "主要プロジェクト"
   },
   "Summary": {
-    "intro1": "情報技術学士(ソフトウェア工学副専攻、<b>GPA 3.36</b>)を取得し、約 <b>8 年間</b>のフルスタックソフトウェア開発経験を持ち、そのうち <b>3 年以上</b>は技術リード、アーキテクチャ意思決定、チーム横断のデリバリー調整に従事しています。",
+    "intro1": "Zalo PC の Lead Software Engineer。情報技術学士（ソフトウェア工学副専攻、<b>GPA 3.36</b>）を取得し、大規模メッセージング、CDP、フィンテック、教育、不動産で <b>8+ 年</b>にわたり本番ソフトウェアを提供しています。",
     "intro2": "フロントエンドアプリやバックエンドサービスから CI/CD パイプライン、リリースワークフロー、本番インフラまで、エンドツーエンドでシステムを設計・構築・運用してきました。自動化、運用の明確化、信頼性のあるデリバリーを重視しています。",
     "intro3": "<i>近年フォーカスしているハードスキルは以下のとおりです:</i>",
     "visionEyebrow": "私の働き方",
@@ -126,7 +126,9 @@
       "location": "勤務地",
       "duration": "期間",
       "keyContributions": "主な貢献",
-      "keyTechnologies": "主な技術"
+      "keyTechnologies": "主な技術",
+      "publicEvidence": "公開リリース",
+      "readCoverage": "{publisher} の記事を読む"
     },
     "ndsvn": {
       "summary": "CTO 交代後にプロダクトデリバリーと技術方針を引き受け、アーキテクチャ決定、ロールアウトシステム、エンタープライズ連携、チーム横断の調整を主導。8 名の開発者(うち 4 名がシニア)と 3 名の QC エンジニアからなるデリバリーチームを管理。",
@@ -145,6 +147,17 @@
       ]
     },
     "zalo": {
+      "lead": {
+        "summaries": [
+          "<b>2026 年 3 月 2 日</b>に <b>Zalo PC</b> へ復帰し Lead Software Engineer に就任。<b>80M+ MAU</b> を持つ Zalo エコシステムで、デバイス間メッセージ継続性に取り組む新しい章を開始。"
+        ],
+        "contributions": [
+          "<b>Zalo PC のメッセージバックアップとモバイル復元</b>を実装・提供し、機種変更、端末紛失、再インストール時にテキスト会話履歴を復旧できるようにした。",
+          "<b>デスクトップバックアップとモバイル復元</b>を一つの復旧体験につなぎ、機種変更、端末紛失、再インストールの場面をカバー。",
+          "実装から <b>2026 年 7 月の段階的な本番 rollout</b> まで推進。公開リリースは Zalo の主要なクロスデバイス更新として VnExpress に掲載。",
+          "復旧経路を<b>PC からモバイルへ</b>広げ、デバイス移行時もテキスト会話をより途切れにくく継続できるようにした。"
+        ]
+      },
       "summary1": "クロスプラットフォーム <b>Zalo PC</b>(Web、macOS、Windows)のコア開発者として <b>15M+ MAU</b> にサービス提供。ダークモード、ダイナミックテーマ、ユーザー行動トラッキングなど主要機能を提供。<b>50+ 開発者</b>向けにプロモーションフローとスケーラブルな<b>デザインシステム</b>を主導。堅牢で効率的なソリューションでパフォーマンスを最適化し、保守性を向上、事業成長に貢献。",
       "summary2": "<b>Zalo Android</b> モバイルアプリを積極的に保守・改善し、約 <b>8000 万ユーザー</b>向けに重要機能の<b>安定性</b>と<b>パフォーマンス</b>を確保。",
       "contributions": [
@@ -251,8 +264,8 @@
   },
   "SEO": {
     "home": {
-      "title": "Nguyen Le Phong — シニアソフトウェアエンジニア & テックリード",
-      "description": "8 年以上の経験を持つシニアソフトウェアエンジニア兼 Head of Tech。プロダクト構築、デリバリーリード、マイクロフロントエンド、Kubernetes、ロールアウトシステムのアーキテクチャ設計を担当。情報技術学士 — Very Good(GPA 3.36)。"
+      "title": "Nguyen Le Phong — Zalo PC Lead Software Engineer",
+      "description": "Zalo PC の Lead Software Engineer。8+ 年にわたりクロスプラットフォーム製品、PC メッセージバックアップとモバイル復元、プラットフォーム、セキュア連携、信頼できるリリースを提供。"
     },
     "gallery": {
       "title": "ギャラリー — 仕事の歩みを伝える記録",

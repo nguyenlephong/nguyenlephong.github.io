@@ -682,6 +682,36 @@
   line-height: 1.7;
 }
 .role-summary b, .role-summary strong { color: var(--fg); font-weight: 600; }
+.role-evidence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.75rem;
+  margin: 0.15rem 0 0.9rem;
+}
+.role-evidence-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+.role-evidence a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent-strong);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+}
+.role-evidence a:hover { text-decoration: underline; }
+.role-evidence a:focus-visible {
+  border-radius: var(--radius-sm);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 .role-section-label {
   font-family: var(--font-mono);
   font-size: var(--text-xs);

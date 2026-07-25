@@ -1,5 +1,5 @@
 <h1 align="center">Nguyen Le Phong</h1>
-<h3 align="center">Senior Software Engineer · Technical Lead</h3>
+<h3 align="center">Lead Software Engineer · Zalo PC</h3>
 
 <p align="center">
   <a href="https://nguyenlephong.github.io"><img src="https://img.shields.io/badge/Portfolio-nguyenlephong.github.io-0E81F7?style=flat&logo=google-chrome&logoColor=white" alt="Portfolio" /></a>
@@ -10,14 +10,14 @@
 
 ## Profile
 
-Senior full-stack engineer and technical lead with 8+ years shipping production software across consumer-scale, CDP, fintech, education, and real-estate domains.
+Lead Software Engineer at Zalo PC with 8+ years shipping production software across consumer-scale messaging, CDP, fintech, education, and real-estate domains.
 
-I work best where product delivery, platform reliability, and team clarity need to move together: front-end systems, backend services, rollout workflows, observability, CI/CD, secure integrations, and production operations.
+I work best where cross-platform product delivery, data safety, platform reliability, and team clarity need to move together: desktop and mobile clients, backend services, rollout workflows, observability, CI/CD, secure integrations, and production operations.
 
 ```text
-Senior Software Engineer Lead @ NDSVN
-ex-Zalo PC (15M+ MAU) · ex-PrimeData CDxP
-React / Next.js / Node.js / Java Spring / .NET Core / Kubernetes
+Lead Software Engineer @ Zalo PC
+PC message backup → mobile restore · 80M+ MAU platform
+React / Electron / Node.js / Kotlin / Kubernetes
 ```
 
 ## Recruiter Snapshot
@@ -25,7 +25,8 @@ React / Next.js / Node.js / Java Spring / .NET Core / Kubernetes
 - Led an 11-person delivery team across development and QC.
 - Engineered a multi-tenant feature-flag platform for 30+ tenants and ~40k users.
 - Built secure Gtel and Napas integrations with RSA-4096, AES-256, mTLS, certificate pinning, idempotent contracts, and retry queues.
-- Contributed to Zalo PC serving 15M+ MAU and Zalo Android at near-80M-user scale.
+- Returned to Zalo PC as Lead Software Engineer on March 2, 2026.
+- Shipped PC message backup with restore on mobile for device-change, lost-phone, and reinstall recovery paths; the July 2026 launch was [covered by VnExpress](https://vnexpress.net/ba-tinh-nang-moi-cua-zalo-5097444.html).
 - Led front-end delivery for PrimeData CDxP, including 360 profiles, campaign builders, SDKs, analytics, and testing coverage.
 
 ## Operating Range
@@ -51,17 +52,17 @@ Core routes:
 
 ## Selected Impact
 
+### Zalo PC, VNG - Lead Software Engineer
+
+- Returned to Zalo PC as Lead Software Engineer on March 2, 2026, beginning a new chapter focused on cross-device message continuity.
+- Shipped message backup on Zalo PC with restoration on mobile.
+- Connected desktop backup and mobile restore into one recovery journey for device changes, lost phones, and app reinstalls.
+
 ### NDSVN - Senior Software Engineer Lead
 
 - Took technical ownership after a CTO transition, aligning architecture, delivery, rollout systems, enterprise integrations, and team execution.
 - Stabilized inherited infrastructure across ArgoCD, CI/CD, domains/SSL, and Kubernetes clusters into systems that were diagnosable and recoverable.
 - Built internal AI-assisted engineering agents for code review, deployment support, service-quota checks, API health monitoring, and release analysis.
-
-### Zalo PC, VNG - Senior Software Engineer
-
-- Delivered 10+ product features including dark mode, download flows, Kiki assistant surfaces, logging, and behavior tracking.
-- Built promotion flow tracking and monitoring for activation across 15M+ MAU.
-- Led Storybook-based design-system work supporting UI consistency for 50+ developers.
 
 ### PrimeData - Senior Full-stack Software Engineer
 
