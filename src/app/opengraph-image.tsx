@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og'
 import { OgShell, OG_SIZE, OG_CONTENT_TYPE } from '@/app/_og/og-shell'
+import { PROFILE_OG_CONTENT } from '@/app/_og/profile-og'
 import { PAGE_SEO } from '@/app/seo.config'
 import { getCachedOg, saveOgCache, cachedOgResponse } from '@/lib/og/cache'
 
@@ -14,17 +15,7 @@ export default async function OgImage() {
   if (cached) return cachedOgResponse(cached)
 
   const response = new ImageResponse(
-    (
-      <OgShell
-        theme="gold"
-        eyebrow="Nguyen Le Phong"
-        title="Lead Software Engineer · Zalo PC"
-        subtitle="Shipping cross-device message continuity, reliable releases, and platform systems for products at national scale."
-        chips={['PC → Mobile Restore', 'React · Electron', 'Node · Kotlin', 'Platform Reliability']}
-        badge={{ label: 'Zalo', value: '80M+ MAU' }}
-        footer="nguyenlephong.github.io · Cross-device product to platform"
-      />
-    ),
+    <OgShell {...PROFILE_OG_CONTENT} />,
     { ...size }
   )
 

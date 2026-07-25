@@ -69,7 +69,7 @@ const THEMES: Record<'dark' | 'light' | 'gold' | 'ocean' | 'violet', Theme> = {
 
 export type OgTheme = keyof typeof THEMES
 
-interface OgShellProps {
+export interface OgShellProps {
   theme?: OgTheme
   eyebrow: string
   title: string

@@ -54,10 +54,13 @@ test("experience data groups both Zalo chapters and links public launch coverage
 });
 
 test("launch evidence is accessible, tracked, and reflected in structured profile data", async () => {
-  const [component, analytics, schema] = await Promise.all([
+  const [component, analytics, schema, rootOg, localizedOg, sharedOg] = await Promise.all([
     read("src/components/cv/Experience.tsx"),
     read("src/lib/analytics.ts"),
-    read("src/lib/seo/profile-schema.ts")
+    read("src/lib/seo/profile-schema.ts"),
+    read("src/app/opengraph-image.tsx"),
+    read("src/app/[locale]/(site)/opengraph-image.tsx"),
+    read("src/app/_og/profile-og.ts")
   ]);
 
   assert.match(component, /job\.contentKey/);
@@ -69,4 +72,7 @@ test("launch evidence is accessible, tracked, and reflected in structured profil
   assert.match(schema, /jobTitle: 'Lead Software Engineer/);
   assert.match(schema, /name: 'Zalo - VNG Corporation'/);
   assert.doesNotMatch(schema, /worksFor:[\s\S]{0,120}NDSVN JSC/);
+  assert.match(rootOg, /PROFILE_OG_CONTENT/);
+  assert.match(localizedOg, /PROFILE_OG_CONTENT/);
+  assert.match(sharedOg, /title: 'Lead Software Engineer · Zalo PC'/);
 });
