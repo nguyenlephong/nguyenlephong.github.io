@@ -223,8 +223,10 @@ then follows the footer's Studio link and requires a new document navigation,
 the existing `cv_nav_click` event with `sendBeacon`, preserved session storage,
 and a reset in-memory marker. The Studio document must expose zero public Google
 scripts, hints, metadata, data-layer nodes, globals, new Google requests, or
-browser errors. The same check also verifies that article reader tools remount
-cleanly across Blog article path changes without forcing a document reload. It
-also persists Lora before document execution and checks direct Home, direct
-article, Article-to-Home client navigation, and Home reload across first-visible
-and navigation animation frames so a route transition cannot hide a font flash.
+browser errors. The same check identifies the emitted workflow-canvas runtime
+and proves that an ordinary article requests none of its chunks. It also
+verifies that article reader tools remount cleanly across Blog article path
+changes without forcing a document reload, persists Lora before document
+execution, and checks direct Home, direct article, Article-to-Home client
+navigation, and Home reload across first-visible and navigation animation frames
+so a route transition cannot hide a font flash.

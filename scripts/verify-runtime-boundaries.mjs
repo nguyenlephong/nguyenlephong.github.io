@@ -21,6 +21,7 @@ const ARCHIVE_PROVIDER_MARKERS = Object.freeze([
   "getFirestore",
   "initializeFirestore"
 ]);
+const WORKFLOW_RUNTIME_MARKERS = Object.freeze(["Small pace, real summit"]);
 const CONTENT_HUB_CASES = [
   {
     path: "/en/blog/series/foundations",
@@ -585,6 +586,23 @@ async function findEngagementProviderChunks() {
     "static artifact exposes no identifiable Firebase engagement provider chunk"
   );
   return providerChunks;
+}
+
+async function findWorkflowRuntimeChunks() {
+  const index = await createArtifactIndex(OUT_DIR);
+  const workflowChunks = new Set();
+  for (const file of index.files()) {
+    if (!file.endsWith(".js")) continue;
+    const source = await index.readText(file);
+    if (WORKFLOW_RUNTIME_MARKERS.some((marker) => source.includes(marker))) {
+      workflowChunks.add(file);
+    }
+  }
+  assert.ok(
+    workflowChunks.size > 0,
+    "static artifact exposes no identifiable workflow-canvas runtime chunk"
+  );
+  return workflowChunks;
 }
 
 function normalizeArchiveSearch(value) {
@@ -1527,6 +1545,47 @@ async function verifyReaderPathnameRemount(browser, origin) {
   }
 }
 
+async function verifyOptionalArticleWorkflowBoundary(
+  browser,
+  origin,
+  workflowChunks
+) {
+  const context = await browser.newContext({ serviceWorkers: "block" });
+  const pageErrors = [];
+  const requestedWorkflowChunks = [];
+  try {
+    await installExternalRuntimeStubs(context);
+    const page = await context.newPage();
+    page.on("pageerror", (error) => pageErrors.push(error.message));
+    page.on("request", (request) => {
+      const localPath = localRequestPath(request.url(), origin);
+      if (localPath && workflowChunks.has(localPath)) {
+        requestedWorkflowChunks.push(localPath);
+      }
+    });
+
+    const response = await page.goto(`${origin}${PUBLIC_ARTICLE}`, {
+      waitUntil: "networkidle"
+    });
+    assert.equal(response?.status(), 200);
+    assert.equal(await page.locator("canvas[data-blog-workflow]").count(), 0);
+    assert.deepEqual(
+      requestedWorkflowChunks,
+      [],
+      "ordinary article downloaded the optional workflow-canvas runtime"
+    );
+    assert.deepEqual(pageErrors, []);
+
+    return {
+      article: PUBLIC_ARTICLE,
+      emittedRuntimeChunks: workflowChunks.size,
+      requestedRuntimeChunks: requestedWorkflowChunks.length
+    };
+  } finally {
+    await context.close();
+  }
+}
+
 async function verifyContentHubAnalytics(browser, origin) {
   const context = await browser.newContext({ serviceWorkers: "block" });
   await context.addInitScript(() => {
@@ -1858,6 +1917,7 @@ async function verifyContentHubAnalytics(browser, origin) {
 async function main() {
   await fs.access(OUT_DIR);
   const providerChunks = await findEngagementProviderChunks();
+  const workflowChunks = await findWorkflowRuntimeChunks();
   const { chromium } = await import("playwright");
   const { server, origin } = await startStaticServer();
   const browser = await chromium.launch({ headless: true });
@@ -1874,6 +1934,11 @@ async function main() {
     );
     const persistedReadingFont = await verifyPersistedReadingFont(browser, origin);
     const readerRemount = await verifyReaderPathnameRemount(browser, origin);
+    const optionalArticleWorkflow = await verifyOptionalArticleWorkflowBoundary(
+      browser,
+      origin,
+      workflowChunks
+    );
     const contentHubAnalytics = await verifyContentHubAnalytics(browser, origin);
     const archiveLoading = await verifyArchiveLoadingBoundaries(
       browser,
@@ -1900,6 +1965,7 @@ async function main() {
           pageBackNavigation,
           persistedReadingFont,
           readerRemount,
+          optionalArticleWorkflow,
           contentHubAnalytics,
           archiveLoading,
           restoredArchiveSearch,

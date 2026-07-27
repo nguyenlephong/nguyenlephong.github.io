@@ -13,6 +13,7 @@ import {
   preferredContentLocale
 } from "@/lib/seo/locale";
 import { serializeJsonLd } from "@/lib/seo/json-ld";
+import { localizeArticleHtmlLinks } from "@/lib/content/article-html";
 import {
   getTopic,
   getNoteHub,
@@ -430,7 +431,7 @@ export default async function NotePage({ params }: Props) {
                 )}
               </header>
 
-              <BlogContent html={note.html} />
+              <BlogContent html={note.html} locale={locale} />
 
               {note.faqs && note.faqs.length > 0 && (
                 <section
@@ -446,7 +447,9 @@ export default async function NotePage({ params }: Props) {
                         <dt className="blog-faq__q">{f.q}</dt>
                         <dd
                           className="blog-faq__a"
-                          dangerouslySetInnerHTML={{ __html: f.a }}
+                          dangerouslySetInnerHTML={{
+                            __html: localizeArticleHtmlLinks(f.a, locale)
+                          }}
                         />
                       </div>
                     ))}

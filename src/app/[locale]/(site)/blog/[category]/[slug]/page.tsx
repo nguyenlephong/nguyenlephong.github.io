@@ -27,6 +27,7 @@ import {
 } from '@/lib/blog/data'
 import { getLegacyBlogLocaleFallback } from '@/lib/blog/legacy-locale-fallbacks'
 import { getRelatedPosts } from '@/lib/blog/related'
+import { localizeArticleHtmlLinks } from '@/lib/content/article-html'
 import { CONTENT_HUB_LOCALES } from '@/lib/content/route-contract'
 import { blogPostOgImageUrl } from '@/lib/og/static-images'
 import BlogContent from '@/components/blog/BlogContent'
@@ -453,7 +454,7 @@ export default async function BlogPostPage({ params }: Props) {
                 )}
               </header>
 
-              <BlogContent html={post.html} />
+              <BlogContent html={post.html} locale={locale} />
 
               <BlogReactions
                 prompt={t('engagement.reactionsPrompt')}
@@ -479,7 +480,9 @@ export default async function BlogPostPage({ params }: Props) {
                         <dt className="blog-faq__q">{f.q}</dt>
                         <dd
                           className="blog-faq__a"
-                          dangerouslySetInnerHTML={{ __html: f.a }}
+                          dangerouslySetInnerHTML={{
+                            __html: localizeArticleHtmlLinks(f.a, locale),
+                          }}
                         />
                       </div>
                     ))}
