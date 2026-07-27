@@ -11,12 +11,21 @@ route-oriented measurements.
 ## Decision
 
 - Keep the existing raw artifact budgets unchanged.
-- Measure direct JavaScript referenced by the English home, Blog, Notes, and
-  Studio HTML entries. Compress each emitted chunk with Brotli and enforce a
-  per-surface ceiling.
-- Pin those four samples to `en.html`, `en/blog.html`, `en/notes.html`, and
-  `en/studio.html`. Missing, extra, or aliased route mappings invalidate the
-  configuration instead of measuring the same route twice.
+- Measure direct JavaScript referenced by the English home, Blog and Notes
+  archives, representative Blog and Notes articles, and Studio HTML entries.
+  Compress each emitted chunk with Gzip and Brotli and enforce both
+  per-surface ceilings. Gzip models the observed GitHub Pages delivery path;
+  Brotli remains a regression guard and the target for a host that negotiates
+  it.
+- Pin those six samples to `en.html`, `en/blog.html`, `en/notes.html`,
+  `en/blog/culture/protecting-attention-in-a-busy-team.html`,
+  `en/notes/tri-tue-can-duc-hanh.html`, and `en/studio.html`. Missing, extra,
+  or aliased route mappings invalidate the configuration instead of measuring
+  the same route twice.
+- Measure raw, Gzip, and Brotli bytes for an exact five-route HTML matrix:
+  English Home, Blog archive, Notes archive, one Blog article, and one Notes
+  article. Gzip is the hard delivery ceiling; missing, extra, or aliased
+  samples fail closed.
 - Classify an exported `.txt` file as RSC when its basename begins with
   `__next.` or when a sibling `.html` route exists. This excludes public files
   such as `robots.txt` and `ads.txt` without relying on a growing exclusion
@@ -36,6 +45,11 @@ route-oriented measurements.
   messages through fail-closed, surface-scoped providers: shared site chrome,
   home, Blog, Notes, Gallery, and the currently dormant Thoughts surface each
   have an explicit namespace allowlist.
+- Keep authored article HTML in a Server Component and localize its internal
+  Blog, Notes, and Thoughts links during static rendering, including authored
+  FAQ fragments. The optional workflow-canvas component mounts only when the
+  exact marker exists, and its drawing implementation remains behind a second
+  dynamic import so an ordinary article does not request that runtime.
 - Inventory every supported Next.js source module (`.js`, `.jsx`, `.ts`,
   `.tsx`, `.mjs`, and `.mts`) with the TypeScript AST. Provider-dependent
   `next-intl` hooks and locale-navigation imports must use direct named imports
@@ -165,18 +179,29 @@ on non-content routes, 27,474 on Blog, and 30,800 on Notes. The new routes remai
 below those transfer baselines even where one route-owned stylesheet adds a
 request. Hard limits retain a narrow deterministic-build allowance:
 
-| Route | Stylesheets | Measured raw | Measured Brotli | Brotli limit |
-|-------|-------------:|-------------:|----------------:|--------------:|
-| Home | 3 | 43,743 | 8,990 | 9,216 |
-| About | 3 | 30,045 | 6,666 | 6,912 |
-| Gallery | 3 | 37,661 | 7,826 | 8,192 |
-| Apps | 3 | 42,422 | 8,812 | 9,216 |
-| English practice | 3 | 36,573 | 7,599 | 7,936 |
-| Offline | 3 | 24,988 | 5,761 | 6,144 |
-| Blog archive | 3 | 73,416 | 13,188 | 13,568 |
-| Notes archive | 4 | 80,874 | 15,144 | 15,616 |
-| Blog article | 4 | 95,826 | 17,632 | 18,176 |
-| Notes article | 5 | 103,284 | 19,588 | 20,096 |
+| Route            | Stylesheets | Measured raw | Measured Brotli | Brotli limit |
+| ---------------- | ----------: | -----------: | --------------: | -----------: |
+| Home             |           3 |       43,743 |           8,990 |        9,216 |
+| About            |           3 |       30,045 |           6,666 |        6,912 |
+| Gallery          |           3 |       37,661 |           7,826 |        8,192 |
+| Apps             |           3 |       42,422 |           8,812 |        9,216 |
+| English practice |           3 |       36,573 |           7,599 |        7,936 |
+| Offline          |           3 |       24,988 |           5,761 |        6,144 |
+| Blog archive     |           3 |       73,416 |          13,188 |       13,568 |
+| Notes archive    |           4 |       80,874 |          15,144 |       15,616 |
+| Blog article     |           4 |       95,826 |          17,632 |       18,176 |
+| Notes article    |           5 |      103,284 |          19,588 |       20,096 |
+
+The 2026-07-27 complete export added delivery-accurate Gzip guards. The values
+below are one deterministic local build, not field performance:
+
+| HTML route    | Measured raw | Measured Gzip | Measured Brotli | Gzip limit |
+| ------------- | -----------: | ------------: | --------------: | ---------: |
+| Home          |      132,221 |        31,570 |          21,083 |     32,768 |
+| Blog archive  |       81,865 |        18,947 |          13,950 |     19,456 |
+| Notes archive |       73,214 |        17,466 |          13,341 |     18,432 |
+| Blog article  |       70,524 |        15,763 |          12,626 |     16,384 |
+| Notes article |       70,391 |        18,487 |          13,050 |     19,456 |
 
 ## Acceptance criteria
 
@@ -200,8 +225,8 @@ request. Hard limits retain a narrow deterministic-build allowance:
 - **AC-SPB-008:** The guarded legacy Pages publisher runs both
   `verify:artifact` and `verify:performance-artifact` after its final `out/`
   mutation and before staging the tree.
-- **AC-SPB-009:** Initial JavaScript configuration contains exactly the four
-  canonical English route samples; missing, extra, or duplicate paths fail
+- **AC-SPB-009:** Initial JavaScript configuration contains exactly the six
+  canonical English entry samples; missing, extra, or duplicate paths fail
   before artifact measurement.
 - **AC-SPB-010:** The locale root injects no client translation catalog and the
   Studio artifact serializes none; a full catalog or an undeclared namespace
@@ -383,6 +408,14 @@ request. Hard limits retain a narrow deterministic-build allowance:
   also be finite and greater than zero, so `1`, `1.0`, `.5`, `1e0`, and
   `1.0e+2` are accepted while `1.`, `1.e2`, zero, negative, non-finite, and
   mixed descriptor forms fail closed.
+- **AC-SPB-052:** The exact Home, Blog and Notes archive, representative Blog
+  and Notes article, and Studio initial-JavaScript matrix reports and
+  hard-gates Gzip as well as Brotli bytes. A missing or malformed Gzip ceiling
+  invalidates the configuration.
+- **AC-SPB-053:** The exact five-route HTML matrix reports raw, Gzip, and
+  Brotli bytes and hard-gates Gzip. Authored article and FAQ internal links are
+  localized in the static HTML, the article body is not a Client Component,
+  and workflow drawing code stays behind a marker-gated dynamic boundary.
 
 ## Verification
 

@@ -25,6 +25,15 @@ const SURFACE_ROUTES = {
   notes: "notes",
   studio: "studio"
 };
+const INITIAL_JAVASCRIPT_ROUTES = {
+  home: "en.html",
+  blog: "en/blog.html",
+  notes: "en/notes.html",
+  studio: "en/studio.html",
+  blogArticle:
+    "en/blog/culture/protecting-attention-in-a-busy-team.html",
+  notesArticle: "en/notes/tri-tue-can-duc-hanh.html"
+};
 const CLIENT_MESSAGE_ROUTES = {
   ...SURFACE_ROUTES,
   gallery: "gallery"
@@ -121,17 +130,12 @@ function createFixture(t, overrides = {}) {
   mkdirSync(chunksDir, { recursive: true });
   t.after(() => rmSync(rootDir, { recursive: true, force: true }));
 
-  const surfaces = Object.fromEntries(
-    Object.keys(SURFACE_ROUTES).map((surface) => [
-      surface,
-      localizedPath("en", surface, "html")
-    ])
-  );
   const maxBrotliBytes = overrides.maxBrotliBytes ?? 10_000;
+  const maxGzipBytes = overrides.maxGzipBytes ?? 10_000;
   const routeInitialJavaScript = Object.fromEntries(
-    Object.entries(surfaces).map(([surface, html]) => [
+    Object.entries(INITIAL_JAVASCRIPT_ROUTES).map(([surface, html]) => [
       surface,
-      { html, maxBrotliBytes }
+      { html, maxGzipBytes, maxBrotliBytes }
     ])
   );
   const localizedRouteSamples = LOCALES.flatMap((locale) =>
@@ -181,6 +185,24 @@ function createFixture(t, overrides = {}) {
       archiveInitialRuntime: {
         requiredMarkers: ["data-deferred-post-stats"],
         forbiddenMarkers: ["firebaseapp.com", "getFirestore"]
+      },
+      htmlTransfer: {
+        routes: Object.fromEntries(
+          Object.entries({
+            home: "en.html",
+            blogArchive: "en/blog.html",
+            notesArchive: "en/notes.html",
+            blogArticle:
+              "en/blog/culture/protecting-attention-in-a-busy-team.html",
+            notesArticle: "en/notes/tri-tue-can-duc-hanh.html"
+          }).map(([surface, html]) => [
+            surface,
+            {
+              html,
+              maxGzipBytes: overrides.maxHtmlGzipBytes ?? 10_000
+            }
+          ])
+        )
       },
       publicInitialCss: {
         ownerSelectors: PUBLIC_CSS_OWNER_SELECTORS,
@@ -287,13 +309,21 @@ function createFixture(t, overrides = {}) {
       )
     ].join("");
     const html = existsSync(htmlPath) ? readFileSync(htmlPath, "utf8") : "";
+    const initialScript = Object.values(INITIAL_JAVASCRIPT_ROUTES).includes(
+      route.html
+    )
+      ? '<script src="/_next/static/chunks/initial.js"></script>'
+      : "";
     writeFileSync(
       htmlPath,
       html
         ? html.includes("</head>")
-          ? html.replace("</head>", `${links}</head>`)
+          ? html.replace(
+              "</head>",
+              `${links}${html.includes(initialScript) ? "" : initialScript}</head>`
+            )
           : html.replace("<html>", `<html><head>${links}</head>`)
-        : `<!doctype html><html><head>${links}</head><body></body></html>`
+        : `<!doctype html><html><head>${links}${initialScript}</head><body></body></html>`
     );
   }
   writeFileSync(path.join(outDir, "__next._tree.txt"), "shared RSC tree");
@@ -353,7 +383,14 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
   });
 
   assert.deepEqual(report.failures, []);
+  assert.ok(report.htmlTransfer.blogArticle.gzipBytes > 0);
+  assert.ok(
+    report.htmlTransfer.blogArticle.gzipBytes <
+      report.htmlTransfer.blogArticle.rawBytes
+  );
   assert.equal(report.routeInitialJavaScript.home.files.length, 1);
+  assert.equal(report.routeInitialJavaScript.blogArticle.files.length, 1);
+  assert.ok(report.routeInitialJavaScript.home.gzipBytes > 0);
   assert.ok(report.routeInitialJavaScript.home.brotliBytes > 0);
   assert.equal(report.rsc.fileCount, 31);
   assert.equal(report.rsc.localizedRouteSampleCount, 24);
@@ -396,6 +433,34 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
   assert.equal(report.artifactIndex.walks, 1);
   assert.ok(report.artifactIndex.diskReads >= 8);
   assert.ok(report.artifactIndex.cacheHits >= 3);
+});
+
+test("rejects initial JavaScript growth against the deployed Gzip encoding", async (t) => {
+  const { rootDir, configPath } = createFixture(t);
+  const config = JSON.parse(readFileSync(configPath, "utf8"));
+  config.performance.routeInitialJavaScript.home.maxGzipBytes = 1;
+  writeFileSync(configPath, JSON.stringify(config));
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.match(
+    report.failures.join("\n"),
+    /home initial JavaScript Gzip bytes/
+  );
+});
+
+test("rejects compressed HTML growth against the delivery encoding budget", async (t) => {
+  const { rootDir } = createFixture(t, { maxHtmlGzipBytes: 1 });
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.match(report.failures.join("\n"), /blogArticle HTML Gzip bytes/);
 });
 
 test("rejects eager engagement provider code from archive initial scripts", async (t) => {
@@ -912,10 +977,17 @@ test("rejects missing, extra, or aliased initial route mappings", async (t) => {
       }
     },
     {
+      label: "missing Gzip budget",
+      apply(config) {
+        delete config.performance.routeInitialJavaScript.home.maxGzipBytes;
+      }
+    },
+    {
       label: "extra route",
       apply(config) {
         config.performance.routeInitialJavaScript.search = {
           html: "en/search.html",
+          maxGzipBytes: 10_000,
           maxBrotliBytes: 10_000
         };
       }

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { brotliCompressSync } from "node:zlib";
+import { brotliCompressSync, gzipSync } from "node:zlib";
 import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -26,7 +26,10 @@ const REQUIRED_ROUTE_INITIAL_JAVASCRIPT = Object.freeze({
   home: "en.html",
   blog: "en/blog.html",
   notes: "en/notes.html",
-  studio: "en/studio.html"
+  studio: "en/studio.html",
+  blogArticle:
+    "en/blog/culture/protecting-attention-in-a-busy-team.html",
+  notesArticle: "en/notes/tri-tue-can-duc-hanh.html"
 });
 const REQUIRED_RSC_SURFACES = Object.freeze([
   "home",
@@ -53,6 +56,13 @@ const REQUIRED_PUBLIC_CSS_ROUTES = Object.freeze({
   apps: "en/apps.html",
   english: "en/apps/english.html",
   offline: "en/offline.html",
+  blogArchive: "en/blog.html",
+  notesArchive: "en/notes.html",
+  blogArticle: "en/blog/culture/protecting-attention-in-a-busy-team.html",
+  notesArticle: "en/notes/tri-tue-can-duc-hanh.html"
+});
+const REQUIRED_HTML_TRANSFER_ROUTES = Object.freeze({
+  home: "en.html",
   blogArchive: "en/blog.html",
   notesArchive: "en/notes.html",
   blogArticle: "en/blog/culture/protecting-attention-in-a-busy-team.html",
@@ -293,6 +303,25 @@ function validatePublicInitialCss(config) {
   return true;
 }
 
+function validateHtmlTransfer(config) {
+  if (
+    !hasExactKeys(config?.routes, Object.keys(REQUIRED_HTML_TRANSFER_ROUTES))
+  ) {
+    return false;
+  }
+
+  return Object.entries(REQUIRED_HTML_TRANSFER_ROUTES).every(
+    ([surface, expectedHtml]) => {
+      const route = config.routes[surface];
+      return (
+        route?.html === expectedHtml &&
+        Number.isInteger(route.maxGzipBytes) &&
+        route.maxGzipBytes > 0
+      );
+    }
+  );
+}
+
 function localizedRscPath(locale, surface) {
   return surface === "home" ? `${locale}.txt` : `${locale}/${surface}.txt`;
 }
@@ -307,6 +336,7 @@ function validateConfig(config) {
   const rsc = performance?.rsc;
   const clientMessages = performance?.clientMessages;
   const archives = performance?.archiveInitialRuntime;
+  const htmlTransfer = performance?.htmlTransfer;
   const publicCss = performance?.publicInitialCss;
   const studio = performance?.studioInitialRuntime;
   const locales = config?.seo?.locales;
@@ -322,6 +352,8 @@ function validateConfig(config) {
     !requiredRouteEntries.every(
       ([surface, html]) =>
         routes[surface]?.html === html &&
+        Number.isInteger(routes[surface]?.maxGzipBytes) &&
+        routes[surface].maxGzipBytes > 0 &&
         Number.isInteger(routes[surface]?.maxBrotliBytes) &&
         routes[surface].maxBrotliBytes > 0
     ) ||
@@ -359,6 +391,7 @@ function validateConfig(config) {
     archives.forbiddenMarkers.some(
       (marker) => typeof marker !== "string" || marker.length === 0
     ) ||
+    !validateHtmlTransfer(htmlTransfer) ||
     !validatePublicInitialCss(publicCss) ||
     !Array.isArray(studio?.requiredMarkers) ||
     studio.requiredMarkers.some(
@@ -419,13 +452,21 @@ async function collectInitialJavaScript({
 }) {
   if (!index.has(htmlPath)) {
     failures.push(`Missing performance route sample: ${htmlPath}`);
-    return { files: [], rawBytes: 0, brotliBytes: 0, source: "", html: "" };
+    return {
+      files: [],
+      rawBytes: 0,
+      gzipBytes: 0,
+      brotliBytes: 0,
+      source: "",
+      html: ""
+    };
   }
 
   const html = await index.readText(htmlPath);
   const files = [];
   const seen = new Set();
   let rawBytes = 0;
+  let gzipBytes = 0;
   let brotliBytes = 0;
   const sources = [];
 
@@ -448,6 +489,7 @@ async function collectInitialJavaScript({
     const bytes = await index.readBuffer(relativePath);
     files.push(relativePath);
     rawBytes += bytes.length;
+    gzipBytes += gzipSync(bytes).length;
     brotliBytes += brotliCompressSync(bytes).length;
     sources.push(bytes.toString("utf8"));
   }
@@ -459,6 +501,7 @@ async function collectInitialJavaScript({
   return {
     files,
     rawBytes,
+    gzipBytes,
     brotliBytes,
     source: sources.join("\n"),
     html
@@ -632,9 +675,42 @@ export async function verifyPerformanceArtifact({
   );
   const failures = [];
   const warnings = [];
+  const htmlTransfer = {};
   const routeInitialJavaScript = {};
   const routeSources = new Map();
   const routeHtml = new Map();
+
+  for (const [surface, budget] of Object.entries(
+    performance.htmlTransfer.routes
+  )) {
+    if (!index.has(budget.html)) {
+      failures.push(`Missing HTML transfer route sample: ${budget.html}`);
+      htmlTransfer[surface] = {
+        html: budget.html,
+        rawBytes: 0,
+        gzipBytes: 0,
+        brotliBytes: 0,
+        maxGzipBytes: budget.maxGzipBytes
+      };
+      continue;
+    }
+
+    const bytes = await index.readBuffer(budget.html);
+    const measurement = {
+      html: budget.html,
+      rawBytes: bytes.length,
+      gzipBytes: gzipSync(bytes).length,
+      brotliBytes: brotliCompressSync(bytes).length,
+      maxGzipBytes: budget.maxGzipBytes
+    };
+    htmlTransfer[surface] = measurement;
+    addLimitFailure(
+      failures,
+      `${surface} HTML Gzip bytes`,
+      measurement.gzipBytes,
+      budget.maxGzipBytes
+    );
+  }
 
   for (const [surface, budget] of Object.entries(
     performance.routeInitialJavaScript
@@ -649,7 +725,9 @@ export async function verifyPerformanceArtifact({
       html: budget.html,
       files: measured.files,
       rawBytes: measured.rawBytes,
+      gzipBytes: measured.gzipBytes,
       brotliBytes: measured.brotliBytes,
+      maxGzipBytes: budget.maxGzipBytes,
       maxBrotliBytes: budget.maxBrotliBytes
     };
     routeSources.set(surface, measured.source);
@@ -659,6 +737,12 @@ export async function verifyPerformanceArtifact({
       `${surface} initial JavaScript Brotli bytes`,
       measured.brotliBytes,
       budget.maxBrotliBytes
+    );
+    addLimitFailure(
+      failures,
+      `${surface} initial JavaScript Gzip bytes`,
+      measured.gzipBytes,
+      budget.maxGzipBytes
     );
   }
 
@@ -842,7 +926,8 @@ export async function verifyPerformanceArtifact({
     const forbiddenOwners = publicOwnerEntries
       .filter(
         ([owner]) =>
-          !budget.allowedOwners.includes(owner) && includesAnyOwnerSelector(owner)
+          !budget.allowedOwners.includes(owner) &&
+          includesAnyOwnerSelector(owner)
       )
       .map(([owner]) => owner);
     for (const owner of missingOwners) {
@@ -958,6 +1043,7 @@ export async function verifyPerformanceArtifact({
   }
 
   return {
+    htmlTransfer,
     routeInitialJavaScript,
     rsc: {
       fileCount: rscFiles.length,
@@ -1020,11 +1106,16 @@ function formatBytes(bytes) {
 }
 
 function printReport(report) {
+  for (const [surface, measurement] of Object.entries(report.htmlTransfer)) {
+    console.log(
+      `[performance] ${surface} HTML: ${formatBytes(measurement.gzipBytes)} Gzip / ${formatBytes(measurement.brotliBytes)} Brotli / ${formatBytes(measurement.rawBytes)} raw`
+    );
+  }
   for (const [surface, measurement] of Object.entries(
     report.routeInitialJavaScript
   )) {
     console.log(
-      `[performance] ${surface} initial JavaScript: ${formatBytes(measurement.brotliBytes)} Brotli / ${formatBytes(measurement.rawBytes)} raw`
+      `[performance] ${surface} initial JavaScript: ${formatBytes(measurement.gzipBytes)} Gzip / ${formatBytes(measurement.brotliBytes)} Brotli / ${formatBytes(measurement.rawBytes)} raw`
     );
   }
   console.log(
