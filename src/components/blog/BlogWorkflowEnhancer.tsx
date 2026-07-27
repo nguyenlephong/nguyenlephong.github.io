@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 interface BlogWorkflowEnhancerProps {
   locale: string;
@@ -14,6 +15,8 @@ interface BlogWorkflowEnhancerProps {
 export default function BlogWorkflowEnhancer({
   locale
 }: BlogWorkflowEnhancerProps) {
+  const pathname = usePathname();
+
   useEffect(() => {
     const root = document.querySelector<HTMLElement>("[data-article-content]");
     if (!root) return;
@@ -34,7 +37,7 @@ export default function BlogWorkflowEnhancer({
       active = false;
       cleanup?.();
     };
-  }, [locale]);
+  }, [locale, pathname]);
 
   return null;
 }

@@ -5,8 +5,8 @@ import {
 import BlogWorkflowEnhancer from "./BlogWorkflowEnhancer";
 
 interface BlogContentProps {
-  html: string;
-  locale: string;
+  readonly html: string;
+  readonly locale: string;
 }
 
 /**

@@ -2,6 +2,7 @@ import { decodeHTMLAttribute, escapeAttribute } from "entities";
 
 const SAFE_LOCALE_SEGMENT = /^[a-z]{2}(?:-[a-z0-9]+)*$/i;
 const LOCALIZABLE_ARTICLE_HREF = /^\/(?:blog|notes|thoughts)(?=\/|[?#]|$)/i;
+const START_TAG_PATTERN = /^<\s*([a-z][^\s/>]*)/i;
 const RAW_TEXT_ELEMENTS = new Set([
   "iframe",
   "noembed",
@@ -13,6 +14,107 @@ const RAW_TEXT_ELEMENTS = new Set([
   "title",
   "xmp"
 ]);
+
+interface StartTagAttributeValue {
+  readonly tokenStart: number;
+  readonly tokenEnd: number;
+  readonly valueStart: number;
+  readonly valueEnd: number;
+}
+
+interface StartTagAttribute {
+  readonly name: string;
+  readonly value: StartTagAttributeValue | null;
+}
+
+interface ScannedAttributeName {
+  readonly name: string;
+  readonly nextCursor: number;
+}
+
+interface ScannedStartTagAttribute {
+  readonly attribute: StartTagAttribute;
+  readonly malformed: boolean;
+  readonly nextCursor: number;
+}
+
+interface ScannedRawTextTail {
+  readonly content: string;
+  readonly nextCursor: number;
+}
+
+function skipWhitespace(value: string, start: number): number {
+  let cursor = start;
+  while (/\s/.test(value[cursor] ?? "")) cursor += 1;
+  return cursor;
+}
+
+function scanAttributeName(tag: string, start: number): ScannedAttributeName {
+  let cursor = start;
+  while (cursor < tag.length && !/[\s="'/>]/.test(tag[cursor] ?? "")) {
+    cursor += 1;
+  }
+  return {
+    name: tag.slice(start, cursor).toLowerCase(),
+    nextCursor: cursor
+  };
+}
+
+function scanStartTagAttribute(
+  tag: string,
+  name: string,
+  start: number
+): ScannedStartTagAttribute {
+  let cursor = skipWhitespace(tag, start);
+  if (tag[cursor] !== "=") {
+    return {
+      attribute: { name, value: null },
+      malformed: false,
+      nextCursor: cursor
+    };
+  }
+
+  cursor = skipWhitespace(tag, cursor + 1);
+  const tokenStart = cursor;
+  const quote = tag[cursor] === '"' || tag[cursor] === "'" ? tag[cursor] : null;
+  if (quote) {
+    const valueStart = cursor + 1;
+    const valueEnd = tag.indexOf(quote, valueStart);
+    if (valueEnd === -1) {
+      return {
+        attribute: { name, value: null },
+        malformed: true,
+        nextCursor: tag.length
+      };
+    }
+    return {
+      attribute: {
+        name,
+        value: {
+          tokenStart,
+          tokenEnd: valueEnd + 1,
+          valueStart,
+          valueEnd
+        }
+      },
+      malformed: false,
+      nextCursor: valueEnd + 1
+    };
+  }
+
+  let valueEnd = cursor;
+  while (valueEnd < tag.length && !/[\s>]/.test(tag[valueEnd] ?? "")) {
+    valueEnd += 1;
+  }
+  return {
+    attribute: {
+      name,
+      value: { tokenStart, tokenEnd: valueEnd, valueStart: cursor, valueEnd }
+    },
+    malformed: false,
+    nextCursor: valueEnd
+  };
+}
 
 function findTagEnd(html: string, start: number): number {
   let quote: '"' | "'" | null = null;
@@ -34,7 +136,11 @@ function findTagEnd(html: string, start: number): number {
 }
 
 function startTagName(tag: string): string | null {
-  return tag.match(/^<\s*([a-z][^\s/>]*)/i)?.[1]?.toLowerCase() ?? null;
+  return START_TAG_PATTERN.exec(tag)?.[1]?.toLowerCase() ?? null;
+}
+
+function isRawTextClosingBoundary(boundary: string | undefined): boolean {
+  return boundary === ">" || boundary === "/" || /\s/.test(boundary ?? "");
 }
 
 function findRawTextElementEnd(
@@ -50,7 +156,7 @@ function findRawTextElementEnd(
     const closingStart = lowerHtml.indexOf(closingPrefix, searchFrom);
     if (closingStart === -1) return html.length;
     const boundary = lowerHtml[closingStart + closingPrefix.length];
-    if (boundary === ">" || /\s/.test(boundary ?? "")) {
+    if (isRawTextClosingBoundary(boundary)) {
       const closingEnd = findTagEnd(html, closingStart);
       return closingEnd === -1 ? html.length : closingEnd + 1;
     }
@@ -60,104 +166,82 @@ function findRawTextElementEnd(
   return html.length;
 }
 
-function localizeAnchorTag(tag: string, locale: string): string {
-  const anchorStart = tag.match(/^<\s*a(?=[\s/>])/i);
-  if (!anchorStart) return tag;
-
-  let cursor = anchorStart[0].length;
-  while (cursor < tag.length) {
-    while (/\s/.test(tag[cursor] ?? "")) cursor += 1;
-    if (tag[cursor] === ">" || tag[cursor] === "/") break;
-
-    const nameStart = cursor;
-    while (cursor < tag.length && !/[\s="'/>]/.test(tag[cursor] ?? "")) {
-      cursor += 1;
-    }
-    const attributeName = tag.slice(nameStart, cursor).toLowerCase();
-    if (!attributeName) {
-      cursor += 1;
-      continue;
-    }
-
-    while (/\s/.test(tag[cursor] ?? "")) cursor += 1;
-    if (tag[cursor] !== "=") {
-      if (attributeName === "href") return tag;
-      continue;
-    }
-
-    cursor += 1;
-    while (/\s/.test(tag[cursor] ?? "")) cursor += 1;
-    const tokenStart = cursor;
-    const quote =
-      tag[cursor] === '"' || tag[cursor] === "'" ? tag[cursor] : null;
-    let valueStart = cursor;
-    let valueEnd = cursor;
-    let tokenEnd = cursor;
-
-    if (quote) {
-      valueStart = cursor + 1;
-      valueEnd = tag.indexOf(quote, valueStart);
-      if (valueEnd === -1) return tag;
-      tokenEnd = valueEnd + 1;
-    } else {
-      while (valueEnd < tag.length && !/[\s>]/.test(tag[valueEnd] ?? "")) {
-        valueEnd += 1;
-      }
-      tokenEnd = valueEnd;
-    }
-
-    if (attributeName === "href") {
-      const href = decodeHTMLAttribute(tag.slice(valueStart, valueEnd));
-      if (!LOCALIZABLE_ARTICLE_HREF.test(href)) return tag;
-      const localized = escapeAttribute(`/${locale}${href}`);
-      return `${tag.slice(0, tokenStart)}"${localized}"${tag.slice(tokenEnd)}`;
-    }
-
-    cursor = tokenEnd;
+function scanRawTextTail(
+  html: string,
+  lowerHtml: string,
+  tagName: string | null,
+  contentStart: number
+): ScannedRawTextTail {
+  if (!tagName || !RAW_TEXT_ELEMENTS.has(tagName)) {
+    return { content: "", nextCursor: contentStart };
   }
-
-  return tag;
+  const nextCursor =
+    tagName === "plaintext"
+      ? html.length
+      : findRawTextElementEnd(html, lowerHtml, tagName, contentStart);
+  return {
+    content: html.slice(contentStart, nextCursor),
+    nextCursor
+  };
 }
 
-function tagHasAttribute(tag: string, targetName: string): boolean {
-  const tagStart = tag.match(/^<\s*[a-z][^\s/>]*/i);
-  if (!tagStart) return false;
+function visitStartTagAttributes(
+  tag: string,
+  visit: (attribute: StartTagAttribute) => boolean | void
+): void {
+  const tagStart = START_TAG_PATTERN.exec(tag);
+  if (!tagStart) return;
 
   let cursor = tagStart[0].length;
   while (cursor < tag.length) {
-    while (/\s/.test(tag[cursor] ?? "")) cursor += 1;
-    if (tag[cursor] === ">" || tag[cursor] === "/") return false;
+    cursor = skipWhitespace(tag, cursor);
+    if (tag[cursor] === ">" || tag[cursor] === "/") break;
 
-    const nameStart = cursor;
-    while (cursor < tag.length && !/[\s="'/>]/.test(tag[cursor] ?? "")) {
-      cursor += 1;
-    }
-    const attributeName = tag.slice(nameStart, cursor).toLowerCase();
-    if (!attributeName) {
+    const scannedName = scanAttributeName(tag, cursor);
+    cursor = scannedName.nextCursor;
+    if (!scannedName.name) {
       cursor += 1;
       continue;
     }
-    if (attributeName === targetName) return true;
 
-    while (/\s/.test(tag[cursor] ?? "")) cursor += 1;
-    if (tag[cursor] !== "=") continue;
-    cursor += 1;
-    while (/\s/.test(tag[cursor] ?? "")) cursor += 1;
-
-    const quote =
-      tag[cursor] === '"' || tag[cursor] === "'" ? tag[cursor] : null;
-    if (quote) {
-      const valueEnd = tag.indexOf(quote, cursor + 1);
-      if (valueEnd === -1) return false;
-      cursor = valueEnd + 1;
-      continue;
-    }
-    while (cursor < tag.length && !/[\s>]/.test(tag[cursor] ?? "")) {
-      cursor += 1;
-    }
+    const scannedAttribute = scanStartTagAttribute(
+      tag,
+      scannedName.name,
+      cursor
+    );
+    if (visit(scannedAttribute.attribute) === false) return;
+    if (scannedAttribute.malformed) return;
+    cursor = scannedAttribute.nextCursor;
   }
+}
 
-  return false;
+function localizeAnchorTag(tag: string, locale: string): string {
+  let localizedTag = tag;
+  visitStartTagAttributes(tag, (attribute) => {
+    if (attribute.name !== "href") return;
+    if (attribute.value) {
+      const { tokenStart, tokenEnd, valueStart, valueEnd } = attribute.value;
+      const href = decodeHTMLAttribute(tag.slice(valueStart, valueEnd));
+      if (LOCALIZABLE_ARTICLE_HREF.test(href)) {
+        const localized = escapeAttribute(`/${locale}${href}`);
+        localizedTag = `${tag.slice(0, tokenStart)}"${localized}"${tag.slice(tokenEnd)}`;
+      }
+    }
+    return false;
+  });
+  return localizedTag;
+}
+
+function tagHasAttribute(tag: string, targetName: string): boolean {
+  let found = false;
+  visitStartTagAttributes(tag, ({ name }) => {
+    if (name === targetName) {
+      found = true;
+      return false;
+    }
+    return;
+  });
+  return found;
 }
 
 function transformArticleStartTags(
@@ -195,21 +279,9 @@ function transformArticleStartTags(
     output.push(transform(tag, tagName));
     cursor = tagEnd + 1;
 
-    if (tagName && RAW_TEXT_ELEMENTS.has(tagName)) {
-      if (tagName === "plaintext") {
-        output.push(html.slice(cursor));
-        cursor = html.length;
-        continue;
-      }
-      const rawTextEnd = findRawTextElementEnd(
-        html,
-        lowerHtml,
-        tagName,
-        cursor
-      );
-      output.push(html.slice(cursor, rawTextEnd));
-      cursor = rawTextEnd;
-    }
+    const rawTextTail = scanRawTextTail(html, lowerHtml, tagName, cursor);
+    output.push(rawTextTail.content);
+    cursor = rawTextTail.nextCursor;
   }
 
   return output.join("");

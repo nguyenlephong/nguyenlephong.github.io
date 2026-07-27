@@ -74,6 +74,25 @@ test("uses HTML attribute semantics without rewriting code, comments, or raw tex
   assert.match(localized, /<script>.*href="\/blog\/not-runtime".*<\/script>/);
 });
 
+test("preserves first-attribute-wins and malformed start-tag semantics", () => {
+  const html = [
+    '<a href href="/blog/ignored">Boolean first</a>',
+    '<a href="/about" href="/blog/ignored">Non-local first</a>',
+    '<a href="/blog/first" href="/notes/ignored">Local first</a>',
+    '<a href="/blog/unterminated'
+  ].join("");
+
+  assert.equal(
+    localizeArticleHtmlLinks(html, "vi"),
+    [
+      '<a href href="/blog/ignored">Boolean first</a>',
+      '<a href="/about" href="/blog/ignored">Non-local first</a>',
+      '<a href="/vi/blog/first" href="/notes/ignored">Local first</a>',
+      '<a href="/blog/unterminated'
+    ].join("")
+  );
+});
+
 test("leaves legacy raw-text containers byte-identical", () => {
   const iframe =
     '<iframe><a href="/blog/not-visible"><canvas data-blog-workflow></canvas></a></iframe>';
@@ -86,6 +105,24 @@ test("leaves legacy raw-text containers byte-identical", () => {
     assert.equal(localizeArticleHtmlLinks(html, "vi"), html);
     assert.equal(hasArticleWorkflowCanvas(html), false);
   }
+});
+
+test("resumes article transforms after a slash-delimited raw-text closing tag", () => {
+  const html = [
+    '<script>const example = `<a href="/blog/not-runtime">`;</script/>',
+    '<a href="/blog/visible">Visible</a>',
+    '<canvas data-blog-workflow="trekking"></canvas>'
+  ].join("");
+
+  assert.equal(
+    localizeArticleHtmlLinks(html, "vi"),
+    [
+      '<script>const example = `<a href="/blog/not-runtime">`;</script/>',
+      '<a href="/vi/blog/visible">Visible</a>',
+      '<canvas data-blog-workflow="trekking"></canvas>'
+    ].join("")
+  );
+  assert.equal(hasArticleWorkflowCanvas(html), true);
 });
 
 test("rejects a locale that cannot be a safe URL path segment", () => {
@@ -158,7 +195,13 @@ test("keeps article HTML server-rendered and canvas drawing behind a second lazy
     /needsWorkflowEnhancer && <BlogWorkflowEnhancer locale=\{locale\} \/>/
   );
   assert.match(enhancer, /^["']use client["']/m);
+  assert.match(
+    enhancer,
+    /import \{ usePathname \} from ["']next\/navigation["']/
+  );
+  assert.match(enhancer, /const pathname = usePathname\(\)/);
   assert.match(enhancer, /import\(["']\.\/blog-workflow-canvas["']\)/);
+  assert.match(enhancer, /\}, \[locale, pathname\]\)/);
   assert.doesNotMatch(enhancer, /Small pace, real summit/);
   assert.match(canvas, /Small pace, real summit/);
   assert.match(

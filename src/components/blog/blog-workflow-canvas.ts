@@ -164,6 +164,8 @@ function drawBlogWorkflowCanvas(canvas: HTMLCanvasElement, locale: string) {
       y: trailTop + Math.sin(t * Math.PI * 1.65 - 0.35) * trailAmplitude
     };
   });
+  const last = points.at(-1);
+  if (!last) return;
 
   ctx.save();
   ctx.lineCap = "round";
@@ -182,7 +184,6 @@ function drawBlogWorkflowCanvas(canvas: HTMLCanvasElement, locale: string) {
     const midY = (prev.y + point.y) / 2;
     ctx.quadraticCurveTo(prev.x, prev.y, midX, midY);
   });
-  const last = points[points.length - 1];
   ctx.lineTo(last.x, last.y);
   ctx.stroke();
 
