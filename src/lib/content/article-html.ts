@@ -235,10 +235,8 @@ function localizeAnchorTag(tag: string, locale: string): string {
 function tagHasAttribute(tag: string, targetName: string): boolean {
   let found = false;
   visitStartTagAttributes(tag, ({ name }) => {
-    if (name === targetName) {
-      found = true;
-      return false;
-    }
+    found = name === targetName;
+    return !found;
   });
   return found;
 }
