@@ -1,6 +1,6 @@
 # Research: tối ưu blog static HTML cho SEO, scale và hiệu năng
 
-Ngày khảo sát: 2026-07-27
+Ngày khảo sát: 2026-07-27; cập nhật artifact gates: 2026-07-28
 Phạm vi: blog/notes được xuất thành static HTML bằng Next.js và phát hành trên
 GitHub Pages; Firebase Hosting và CDN chỉ được xem như phương án triển khai có
 điều kiện.
@@ -22,17 +22,21 @@ tách mobile và desktop: LCP không quá 2,5 giây, INP không quá 200 ms, CLS
 quá 0,1
 ([web.dev: Core Web Vitals thresholds](https://web.dev/articles/defining-core-web-vitals-thresholds)).
 
-Phát hiện quan trọng nhất của đợt khảo sát này là sự lệch giữa CI và đường
-truyền thật:
+Phát hiện quan trọng nhất của đợt khảo sát này là sự lệch ban đầu giữa CI và
+đường truyền thật:
 
-- CI đang tính ngân sách JavaScript/CSS bằng Brotli
+- Trước thay đổi này, CI tính ngân sách JavaScript/CSS bằng Brotli. Artifact
+  verifier hiện hard-gate Gzip cho exact HTML, initial JavaScript và public CSS
+  route matrices; search JSON hard-gate raw và Gzip. Brotli tiếp tục được đo và
+  giữ làm regression/host-target guard ở nơi đã có
   ([`scripts/verify-performance-artifact.mjs`](../scripts/verify-performance-artifact.mjs),
   [`specs/static-performance-budgets.md`](../specs/static-performance-budgets.md)).
 - GitHub Pages tại thời điểm kiểm tra chuyển `/en/blog` bằng gzip khi client
   gửi `Accept-Encoding: gzip`, nhưng trả bản không nén khi client chỉ gửi
   `Accept-Encoding: br`.
 - Vì vậy, Brotli hiện là thước đo so sánh nội bộ, chưa phải số byte người đọc
-  thực nhận. Nếu tiếp tục dùng GitHub Pages, CI nên có thêm ngân sách gzip.
+  thực nhận. Gzip gate đã được thêm để khớp gần hơn với đường truyền hiện tại,
+  nhưng vẫn là phép nén deterministic trong CI chứ không phải field transfer.
   Tạo sẵn file `.br` không giải quyết được việc này: server vẫn phải thương
   lượng `Accept-Encoding`, chọn representation và gửi đúng
   `Content-Encoding`
@@ -528,20 +532,53 @@ structured data và analytics contract hiện có.
    82,5% raw, 82,1% gzip và 80,6% Brotli. App Check và transaction contract
    hiện dùng vẫn được giữ. Đây là mức giảm của deferred provider SDK chunk,
    không phải 82% toàn route: representative Blog article initial JavaScript
-   chỉ giảm từ 249.461 xuống 248.410 gzip bytes (0,4%) và từ 217.252 xuống
-   215.709 Brotli bytes (0,7%) vì provider vốn đã nằm sau lazy boundary.
-3. Artifact verifier hard-gate encoding thực tế của GitHub Pages: Gzip cho
-   exact HTML matrix và cho initial JavaScript của sáu entry points; Brotli
-   vẫn là gate riêng cho regression/host target. Fresh export đo được:
+   chỉ giảm từ 249.461 xuống 248.423 gzip bytes (0,4%) và từ 217.252 xuống
+   215.716 Brotli bytes (0,7%) vì provider vốn đã nằm sau lazy boundary.
+3. Artifact verifier hard-gate encoding quan sát trên GitHub Pages: Gzip cho
+   exact HTML matrix, initial JavaScript của sáu entry points và public CSS của
+   mười route. Exact tám search JSON artifacts hard-gate cả raw và Gzip;
+   inventory cũng từ chối file `*/search/{blog,notes}.json` ngoài matrix.
+   Brotli vẫn được báo cáo và giữ làm gate riêng ở nơi đã có cho
+   regression/host target. Các số dưới đây là artifact measurement từ `out/`,
+   không phải field performance:
 
 | Entry point   | HTML gzip | Initial JS gzip | Initial JS Brotli |
 | ------------- | --------: | --------------: | ----------------: |
 | Home          |    31.570 |         270.275 |           235.330 |
 | Blog archive  |    18.947 |         246.838 |           214.455 |
 | Notes archive |    17.466 |         246.728 |           214.372 |
-| Blog article  |    15.763 |         248.410 |           215.709 |
-| Notes article |    18.487 |         248.070 |           215.381 |
+| Blog article  |    15.762 |         248.423 |           215.716 |
+| Notes article |    18.484 |         248.080 |           215.394 |
 | Studio        |       n/a |         196.146 |           170.131 |
+
+| Public CSS route | Gzip đo được | Gzip limit | Brotli đo được | Brotli limit |
+| ---------------- | -----------: | ---------: | -------------: | -----------: |
+| Home             |       10.417 |     10.752 |          9.058 |        9.216 |
+| About            |        7.637 |      7.936 |          6.578 |        6.912 |
+| Gallery          |        8.939 |      9.216 |          7.738 |        8.192 |
+| Apps             |       10.025 |     10.496 |          8.724 |        9.216 |
+| English practice |        8.713 |      9.216 |          7.511 |        7.936 |
+| Offline          |        6.554 |      6.912 |          5.673 |        6.144 |
+| Blog archive     |       15.120 |     15.616 |         13.100 |       13.568 |
+| Notes archive    |       17.403 |     18.176 |         15.056 |       15.616 |
+| Blog article     |       20.320 |     20.992 |         17.544 |       18.176 |
+| Notes article    |       22.603 |     23.296 |         19.500 |       20.096 |
+
+| Search JSON            | Raw đo được | Raw limit | Gzip đo được | Gzip limit | Brotli đo được |
+| ---------------------- | ----------: | --------: | -----------: | ---------: | -------------: |
+| `en/search/blog.json`  |     105.328 |   111.104 |       30.292 |     32.256 |         25.470 |
+| `en/search/notes.json` |      89.511 |    94.208 |       29.329 |     31.232 |         24.610 |
+| `vi/search/blog.json`  |     118.041 |   124.416 |       33.114 |     34.816 |         28.331 |
+| `vi/search/notes.json` |     116.438 |   122.368 |       33.935 |     35.840 |         29.585 |
+| `zh/search/blog.json`  |      11.128 |    11.776 |        5.143 |      5.632 |          3.996 |
+| `ja/search/blog.json`  |      14.476 |    15.360 |        5.444 |      6.144 |          4.643 |
+| `ko/search/blog.json`  |      13.270 |    14.336 |        5.245 |      5.632 |          4.485 |
+| `fr/search/blog.json`  |      13.237 |    14.336 |        4.943 |      5.632 |          4.435 |
+
+Mỗi linked stylesheet được nén riêng vì browser nhận từng file như một response.
+Inline style vẫn thuộc HTML gate. Search Notes chỉ có EN/VI theo authored
+locale hiện tại; đây là exact artifact contract, không phải giả định mọi locale
+đều có Notes.
 
 4. Runtime Service Worker cache reads/writes đã thành best-effort.
    `caches.open`, `cache.match` hoặc `cache.put` bị từ chối không còn làm mất
@@ -556,9 +593,13 @@ Giới hạn còn lại:
 - Field Core Web Vitals p75 sau thay đổi là `unknown` vì chưa deploy và chưa có
   cửa sổ RUM/CrUX mới. Lighthouse cũ chỉ là một cold synthetic run, không thay
   thế field data.
-- Gzip budget mới bao phủ exact HTML và initial JavaScript; CSS/search JSON
-  gzip gate, responsive image variants, category pagination và third-party
-  loading policy vẫn là work tiếp theo.
+- Gzip budget hiện bao phủ exact HTML, initial JavaScript, public CSS và search
+  JSON matrices. Đây là phép nén bằng `node:zlib` trên artifact local; byte
+  response live có thể khác theo compressor và cấu hình của GitHub Pages, nên
+  header/transfer smoke test sau deploy vẫn cần thiết.
+- Responsive image variants được chủ động deferred khỏi thay đổi này. Category
+  pagination và third-party loading policy cũng chưa được xác minh lại bằng
+  browser trace.
 - GitHub Pages vẫn kiểm soát response compression/cache headers. Checked-in
   `.br` sidecars không tự tạo content negotiation; Brotli/immutable cache cần
   host hoặc CDN có quyền cấu hình header.
@@ -567,17 +608,19 @@ Giới hạn còn lại:
 
 ### P0 — làm số đo khớp production
 
-1. Thêm gzip bytes cho route JS, CSS, HTML và search JSON trong artifact
-   verifier.
-2. Giữ Brotli như advisory hoặc hard gate riêng cho Firebase/CDN target; không
+1. **Đã áp dụng ở artifact gate:** hard-gate Gzip cho exact route JS, CSS và
+   HTML matrices; hard-gate raw + Gzip cho exact search JSON matrix. Thiếu hoặc
+   thừa sample/path/budget cần thiết đều fail closed.
+2. **Đã giữ:** Brotli là observability hoặc hard gate riêng ở nơi đã có; không
    dùng nó làm đại diện duy nhất cho Pages.
-3. Thêm smoke test live cho HTML và một hashed asset:
+3. **Còn lại:** thêm smoke test live cho HTML và một hashed asset:
    `Content-Type`, `Content-Encoding`, `Vary`, `Cache-Control`, status và
    canonical.
-4. Giữ RUM `web_vital`; dashboard dùng p75 mobile/desktop và báo `unknown` khi
-   thiếu sample.
+4. **Còn lại:** giữ RUM `web_vital`; dashboard dùng p75 mobile/desktop và báo
+   `unknown` khi thiếu sample.
 
-Kết quả mong đợi: báo cáo CI tương ứng với bytes thực trên GitHub Pages.
+Kết quả mong đợi: báo cáo CI bám sát encoding quan sát trên GitHub Pages hơn;
+live smoke test vẫn là nguồn xác minh response thực.
 Trade-off: gzip budget có thể cao hơn Brotli và phải baseline lại.
 Xác minh: artifact test, `curl --compressed`, cold browser trace, RUM sau deploy.
 
@@ -585,8 +628,9 @@ Xác minh: artifact test, `curl --compressed`, cold browser trace, RUM sau deplo
 
 1. Giữ article HTML ở static/server boundary; canvas hoặc widget thành client
    island có điều kiện.
-2. Tạo responsive variants cho ảnh bài có kích thước lớn; emit đúng
-   `srcset`/`sizes`, width/height, lazy/priority policy.
+2. **Deferred trong thay đổi này:** tạo responsive variants cho ảnh bài có
+   kích thước lớn; emit đúng `srcset`/`sizes`, width/height,
+   lazy/priority policy.
 3. Dùng Firestore Lite cho one-shot engagement, giữ full SDK ngoài production
    graph và đo chunk delta bằng raw/gzip/Brotli.
 4. Đo và bỏ các PostHog preconnect không cải thiện LCP/analytics requirement.
@@ -637,9 +681,14 @@ validator.
 | Third-party analytics            | field visibility                           | network/main-thread/privacy cost                       | event data có mục đích rõ và được defer            |
 | Chuyển host để có headers/Brotli | kiểm soát cache/compression/security       | DNS, SEO migration, vận hành và rollback               | field/capacity/security evidence đủ mạnh           |
 
-## Acceptance criteria cho “done”
+## Acceptance criteria cho trạng thái đích
 
-Một vòng tối ưu chỉ được xem là hoàn tất khi:
+Đây là checklist end-state cho toàn bộ lộ trình, không phải tuyên bố thay đổi
+artifact gate hiện tại đã hoàn tất cả 11 mục. Thay đổi này đóng phần CI
+compression matrix của mục 4; responsive variants, live response headers và
+field Core Web Vitals vẫn còn mở.
+
+Toàn bộ vòng tối ưu chỉ được xem là hoàn tất khi:
 
 1. HTML ban đầu chứa title, description, canonical, robots, Article JSON-LD,
    visible date, H1 và nội dung chính.
@@ -664,9 +713,11 @@ Một vòng tối ưu chỉ được xem là hoàn tất khi:
 
 ## Phạm vi áp dụng ngay và phạm vi cần quyết định hạ tầng
 
-**Áp dụng ngay trên GitHub Pages:** static article HTML, server/client boundary,
-responsive images, source minification, authored-only locales, pagination,
-SEO/structured-data gates, gzip budgets, RUM và browser trace.
+**Áp dụng được trên GitHub Pages:** static article HTML, server/client boundary,
+source minification, authored-only locales, pagination, SEO/structured-data
+gates, gzip budgets, RUM và browser trace. Responsive image variants cũng khả
+thi trên static hosting nhưng đang deferred, chưa được áp dụng trong thay đổi
+này.
 
 **Chỉ áp dụng sau khi chọn Firebase/CDN/server có quyền header:** custom
 `Cache-Control`, `immutable`, CSP/security headers, Brotli/Zstandard được bảo

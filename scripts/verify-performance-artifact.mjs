@@ -27,8 +27,7 @@ const REQUIRED_ROUTE_INITIAL_JAVASCRIPT = Object.freeze({
   blog: "en/blog.html",
   notes: "en/notes.html",
   studio: "en/studio.html",
-  blogArticle:
-    "en/blog/culture/protecting-attention-in-a-busy-team.html",
+  blogArticle: "en/blog/culture/protecting-attention-in-a-busy-team.html",
   notesArticle: "en/notes/tri-tue-can-duc-hanh.html"
 });
 const REQUIRED_RSC_SURFACES = Object.freeze([
@@ -67,6 +66,16 @@ const REQUIRED_HTML_TRANSFER_ROUTES = Object.freeze({
   notesArchive: "en/notes.html",
   blogArticle: "en/blog/culture/protecting-attention-in-a-busy-team.html",
   notesArticle: "en/notes/tri-tue-can-duc-hanh.html"
+});
+const REQUIRED_SEARCH_JSON_ARTIFACTS = Object.freeze({
+  enBlog: "en/search/blog.json",
+  enNotes: "en/search/notes.json",
+  viBlog: "vi/search/blog.json",
+  viNotes: "vi/search/notes.json",
+  zhBlog: "zh/search/blog.json",
+  jaBlog: "ja/search/blog.json",
+  koBlog: "ko/search/blog.json",
+  frBlog: "fr/search/blog.json"
 });
 const CHUNK_REFERENCE_PATTERN =
   /(?:\/?_next\/)?static\/chunks\/[^"'`\\\s?#]+\.js/g;
@@ -222,6 +231,10 @@ function isRscTextFile(index, relativePath) {
   return index.has(`${relativePath.slice(0, -4)}.html`);
 }
 
+function isSearchJsonArtifact(relativePath) {
+  return /^[^/]+\/search\/(?:blog|notes)\.json$/.test(relativePath);
+}
+
 function addLimitFailure(failures, label, actual, limit) {
   if (actual > limit) {
     failures.push(
@@ -278,6 +291,8 @@ function validatePublicInitialCss(config) {
       route?.html !== expectedHtml ||
       !Number.isInteger(route.maxStylesheetCount) ||
       route.maxStylesheetCount < 1 ||
+      !Number.isInteger(route.maxGzipBytes) ||
+      route.maxGzipBytes < 1 ||
       !Number.isInteger(route.maxBrotliBytes) ||
       route.maxBrotliBytes < 1
     ) {
@@ -322,6 +337,30 @@ function validateHtmlTransfer(config) {
   );
 }
 
+function validateSearchJson(config) {
+  if (
+    !hasExactKeys(
+      config?.artifacts,
+      Object.keys(REQUIRED_SEARCH_JSON_ARTIFACTS)
+    )
+  ) {
+    return false;
+  }
+
+  return Object.entries(REQUIRED_SEARCH_JSON_ARTIFACTS).every(
+    ([sample, expectedPath]) => {
+      const artifact = config.artifacts[sample];
+      return (
+        artifact?.path === expectedPath &&
+        Number.isInteger(artifact.maxRawBytes) &&
+        artifact.maxRawBytes > 0 &&
+        Number.isInteger(artifact.maxGzipBytes) &&
+        artifact.maxGzipBytes > 0
+      );
+    }
+  );
+}
+
 function localizedRscPath(locale, surface) {
   return surface === "home" ? `${locale}.txt` : `${locale}/${surface}.txt`;
 }
@@ -337,6 +376,7 @@ function validateConfig(config) {
   const clientMessages = performance?.clientMessages;
   const archives = performance?.archiveInitialRuntime;
   const htmlTransfer = performance?.htmlTransfer;
+  const searchJson = performance?.searchJson;
   const publicCss = performance?.publicInitialCss;
   const studio = performance?.studioInitialRuntime;
   const locales = config?.seo?.locales;
@@ -392,6 +432,7 @@ function validateConfig(config) {
       (marker) => typeof marker !== "string" || marker.length === 0
     ) ||
     !validateHtmlTransfer(htmlTransfer) ||
+    !validateSearchJson(searchJson) ||
     !validatePublicInitialCss(publicCss) ||
     !Array.isArray(studio?.requiredMarkers) ||
     studio.requiredMarkers.some(
@@ -617,13 +658,20 @@ async function collectPublicRouteCss({
 }) {
   if (!index.has(htmlPath)) {
     failures.push(`Missing public CSS route sample: ${htmlPath}`);
-    return { files: [], rawBytes: 0, brotliBytes: 0, source: "" };
+    return {
+      files: [],
+      rawBytes: 0,
+      gzipBytes: 0,
+      brotliBytes: 0,
+      source: ""
+    };
   }
 
   const html = await index.readText(htmlPath);
   const files = [];
   const sources = [];
   let rawBytes = 0;
+  let gzipBytes = 0;
   let brotliBytes = 0;
 
   for (const reference of directStylesheetReferences(html)) {
@@ -650,6 +698,7 @@ async function collectPublicRouteCss({
     const bytes = await index.readBuffer(relativePath);
     files.push(relativePath);
     rawBytes += bytes.length;
+    gzipBytes += gzipSync(bytes).length;
     brotliBytes += brotliCompressSync(bytes).length;
     sources.push(bytes.toString("utf8"));
   }
@@ -657,7 +706,13 @@ async function collectPublicRouteCss({
   if (files.length === 0) {
     failures.push(`${surface} HTML has no direct local stylesheet`);
   }
-  return { files, rawBytes, brotliBytes, source: sources.join("\n") };
+  return {
+    files,
+    rawBytes,
+    gzipBytes,
+    brotliBytes,
+    source: sources.join("\n")
+  };
 }
 
 export async function verifyPerformanceArtifact({
@@ -676,6 +731,7 @@ export async function verifyPerformanceArtifact({
   const failures = [];
   const warnings = [];
   const htmlTransfer = {};
+  const searchJson = {};
   const routeInitialJavaScript = {};
   const routeSources = new Map();
   const routeHtml = new Map();
@@ -707,6 +763,62 @@ export async function verifyPerformanceArtifact({
     addLimitFailure(
       failures,
       `${surface} HTML Gzip bytes`,
+      measurement.gzipBytes,
+      budget.maxGzipBytes
+    );
+  }
+
+  const expectedSearchJsonPaths = new Set(
+    Object.values(REQUIRED_SEARCH_JSON_ARTIFACTS)
+  );
+  const emittedSearchJsonPaths = new Set(
+    index.files().filter(isSearchJsonArtifact)
+  );
+  for (const artifactPath of expectedSearchJsonPaths) {
+    if (!emittedSearchJsonPaths.has(artifactPath)) {
+      failures.push(`Missing search JSON artifact sample: ${artifactPath}`);
+    }
+  }
+  for (const artifactPath of emittedSearchJsonPaths) {
+    if (!expectedSearchJsonPaths.has(artifactPath)) {
+      failures.push(`Unexpected search JSON artifact: ${artifactPath}`);
+    }
+  }
+
+  for (const [sample, budget] of Object.entries(
+    performance.searchJson.artifacts
+  )) {
+    if (!index.has(budget.path)) {
+      searchJson[sample] = {
+        path: budget.path,
+        rawBytes: 0,
+        gzipBytes: 0,
+        brotliBytes: 0,
+        maxRawBytes: budget.maxRawBytes,
+        maxGzipBytes: budget.maxGzipBytes
+      };
+      continue;
+    }
+
+    const bytes = await index.readBuffer(budget.path);
+    const measurement = {
+      path: budget.path,
+      rawBytes: bytes.length,
+      gzipBytes: gzipSync(bytes).length,
+      brotliBytes: brotliCompressSync(bytes).length,
+      maxRawBytes: budget.maxRawBytes,
+      maxGzipBytes: budget.maxGzipBytes
+    };
+    searchJson[sample] = measurement;
+    addLimitFailure(
+      failures,
+      `${sample} search JSON raw bytes`,
+      measurement.rawBytes,
+      budget.maxRawBytes
+    );
+    addLimitFailure(
+      failures,
+      `${sample} search JSON Gzip bytes`,
       measurement.gzipBytes,
       budget.maxGzipBytes
     );
@@ -902,6 +1014,12 @@ export async function verifyPerformanceArtifact({
     );
     addLimitFailure(
       failures,
+      `${surface} initial CSS Gzip bytes`,
+      measured.gzipBytes,
+      budget.maxGzipBytes
+    );
+    addLimitFailure(
+      failures,
       `${surface} initial CSS Brotli bytes`,
       measured.brotliBytes,
       budget.maxBrotliBytes
@@ -944,8 +1062,10 @@ export async function verifyPerformanceArtifact({
       html: budget.html,
       files: measured.files,
       rawBytes: measured.rawBytes,
+      gzipBytes: measured.gzipBytes,
       brotliBytes: measured.brotliBytes,
       maxStylesheetCount: budget.maxStylesheetCount,
+      maxGzipBytes: budget.maxGzipBytes,
       maxBrotliBytes: budget.maxBrotliBytes,
       missingOwners,
       forbiddenOwners
@@ -1044,6 +1164,7 @@ export async function verifyPerformanceArtifact({
 
   return {
     htmlTransfer,
+    searchJson,
     routeInitialJavaScript,
     rsc: {
       fileCount: rscFiles.length,
@@ -1111,6 +1232,11 @@ function printReport(report) {
       `[performance] ${surface} HTML: ${formatBytes(measurement.gzipBytes)} Gzip / ${formatBytes(measurement.brotliBytes)} Brotli / ${formatBytes(measurement.rawBytes)} raw`
     );
   }
+  for (const [sample, measurement] of Object.entries(report.searchJson)) {
+    console.log(
+      `[performance] ${sample} search JSON: ${formatBytes(measurement.gzipBytes)} Gzip / ${formatBytes(measurement.brotliBytes)} Brotli / ${formatBytes(measurement.rawBytes)} raw`
+    );
+  }
   for (const [surface, measurement] of Object.entries(
     report.routeInitialJavaScript
   )) {
@@ -1125,7 +1251,7 @@ function printReport(report) {
     report.publicInitialCss
   )) {
     console.log(
-      `[performance] ${surface} initial CSS: ${formatBytes(measurement.brotliBytes)} Brotli / ${formatBytes(measurement.rawBytes)} raw (${measurement.files.length} stylesheet(s))`
+      `[performance] ${surface} initial CSS: ${formatBytes(measurement.gzipBytes)} Gzip / ${formatBytes(measurement.brotliBytes)} Brotli / ${formatBytes(measurement.rawBytes)} raw (${measurement.files.length} stylesheet(s))`
     );
   }
   console.log(

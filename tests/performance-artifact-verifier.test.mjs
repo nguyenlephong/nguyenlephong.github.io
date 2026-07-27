@@ -30,9 +30,18 @@ const INITIAL_JAVASCRIPT_ROUTES = {
   blog: "en/blog.html",
   notes: "en/notes.html",
   studio: "en/studio.html",
-  blogArticle:
-    "en/blog/culture/protecting-attention-in-a-busy-team.html",
+  blogArticle: "en/blog/culture/protecting-attention-in-a-busy-team.html",
   notesArticle: "en/notes/tri-tue-can-duc-hanh.html"
+};
+const SEARCH_JSON_ARTIFACTS = {
+  enBlog: "en/search/blog.json",
+  enNotes: "en/search/notes.json",
+  viBlog: "vi/search/blog.json",
+  viNotes: "vi/search/notes.json",
+  zhBlog: "zh/search/blog.json",
+  jaBlog: "ja/search/blog.json",
+  koBlog: "ko/search/blog.json",
+  frBlog: "fr/search/blog.json"
 };
 const CLIENT_MESSAGE_ROUTES = {
   ...SURFACE_ROUTES,
@@ -204,6 +213,20 @@ function createFixture(t, overrides = {}) {
           ])
         )
       },
+      searchJson: {
+        artifacts: Object.fromEntries(
+          Object.entries(SEARCH_JSON_ARTIFACTS).map(
+            ([sample, artifactPath]) => [
+              sample,
+              {
+                path: artifactPath,
+                maxRawBytes: overrides.maxSearchJsonRawBytes ?? 10_000,
+                maxGzipBytes: overrides.maxSearchJsonGzipBytes ?? 10_000
+              }
+            ]
+          )
+        )
+      },
       publicInitialCss: {
         ownerSelectors: PUBLIC_CSS_OWNER_SELECTORS,
         routes: Object.fromEntries(
@@ -213,6 +236,7 @@ function createFixture(t, overrides = {}) {
               html: route.html,
               maxStylesheetCount:
                 overrides.maxPublicStylesheetCount ?? route.owners.length + 1,
+              maxGzipBytes: overrides.maxPublicCssGzipBytes ?? 10_000,
               maxBrotliBytes: overrides.maxPublicCssBrotliBytes ?? 10_000,
               requiredOwners: route.owners,
               allowedOwners: route.owners
@@ -326,6 +350,23 @@ function createFixture(t, overrides = {}) {
         : `<!doctype html><html><head>${links}${initialScript}</head><body></body></html>`
     );
   }
+  for (const [sample, artifactPath] of Object.entries(SEARCH_JSON_ARTIFACTS)) {
+    const absolutePath = path.join(outDir, artifactPath);
+    mkdirSync(path.dirname(absolutePath), { recursive: true });
+    writeFileSync(
+      absolutePath,
+      JSON.stringify({
+        sample,
+        items: [
+          {
+            slug: `${sample}-article`,
+            title: `Search result for ${sample}`,
+            summary: "Static search payload fixture"
+          }
+        ]
+      })
+    );
+  }
   writeFileSync(path.join(outDir, "__next._tree.txt"), "shared RSC tree");
   writeFileSync(path.join(outDir, "robots.txt"), "User-agent: *\nAllow: /");
   writeFileSync(path.join(outDir, "ads.txt"), "example.com, publisher");
@@ -388,6 +429,10 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
     report.htmlTransfer.blogArticle.gzipBytes <
       report.htmlTransfer.blogArticle.rawBytes
   );
+  assert.equal(Object.keys(report.searchJson).length, 8);
+  assert.ok(report.searchJson.enBlog.rawBytes > 0);
+  assert.ok(report.searchJson.enBlog.gzipBytes > 0);
+  assert.ok(report.searchJson.enBlog.brotliBytes > 0);
   assert.equal(report.routeInitialJavaScript.home.files.length, 1);
   assert.equal(report.routeInitialJavaScript.blogArticle.files.length, 1);
   assert.ok(report.routeInitialJavaScript.home.gzipBytes > 0);
@@ -411,6 +456,7 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
   });
   assert.equal(report.publicInitialCss.home.files.length, 2);
   assert.equal(report.publicInitialCss.notesArticle.files.length, 4);
+  assert.ok(report.publicInitialCss.home.gzipBytes > 0);
   assert.deepEqual(report.publicInitialCss.home.missingOwners, []);
   assert.deepEqual(report.publicInitialCss.home.forbiddenOwners, []);
   assert.deepEqual(report.studio.thirdPartyConnectionOrigins, [
@@ -461,6 +507,111 @@ test("rejects compressed HTML growth against the delivery encoding budget", asyn
   });
 
   assert.match(report.failures.join("\n"), /blogArticle HTML Gzip bytes/);
+});
+
+test("rejects search JSON growth against raw and Gzip budgets", async (t) => {
+  const { rootDir } = createFixture(t, {
+    maxSearchJsonRawBytes: 1,
+    maxSearchJsonGzipBytes: 1
+  });
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+  const failures = report.failures.join("\n");
+
+  assert.match(failures, /enBlog search JSON raw bytes/);
+  assert.match(failures, /enBlog search JSON Gzip bytes/);
+});
+
+test("rejects missing, extra, aliased, or incomplete search JSON samples", async (t) => {
+  const { rootDir, configPath } = createFixture(t);
+  const baseConfig = JSON.parse(readFileSync(configPath, "utf8"));
+  const mutations = [
+    {
+      label: "missing sample",
+      apply(config) {
+        delete config.performance.searchJson.artifacts.enBlog;
+      }
+    },
+    {
+      label: "extra sample",
+      apply(config) {
+        config.performance.searchJson.artifacts.frNotes = {
+          path: "fr/search/notes.json",
+          maxRawBytes: 10_000,
+          maxGzipBytes: 10_000
+        };
+      }
+    },
+    {
+      label: "aliased sample",
+      apply(config) {
+        config.performance.searchJson.artifacts.viBlog.path =
+          "en/search/blog.json";
+      }
+    },
+    {
+      label: "missing raw budget",
+      apply(config) {
+        delete config.performance.searchJson.artifacts.enBlog.maxRawBytes;
+      }
+    },
+    {
+      label: "missing Gzip budget",
+      apply(config) {
+        delete config.performance.searchJson.artifacts.enBlog.maxGzipBytes;
+      }
+    }
+  ];
+
+  for (const mutation of mutations) {
+    const config = structuredClone(baseConfig);
+    mutation.apply(config);
+    writeFileSync(configPath, JSON.stringify(config));
+    await assert.rejects(
+      verifyPerformanceArtifact({
+        rootDir,
+        configPath: "budgets.json"
+      }),
+      /Invalid static performance budget configuration/,
+      mutation.label
+    );
+  }
+});
+
+test("rejects an emitted search JSON artifact outside the exact matrix", async (t) => {
+  const { rootDir, outDir } = createFixture(t);
+  writeFileSync(
+    path.join(outDir, "fr/search/notes.json"),
+    JSON.stringify({ items: [] })
+  );
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.match(
+    report.failures.join("\n"),
+    /Unexpected search JSON artifact: fr\/search\/notes\.json/
+  );
+});
+
+test("rejects a missing emitted search JSON artifact from the exact matrix", async (t) => {
+  const { rootDir, outDir } = createFixture(t);
+  rmSync(path.join(outDir, SEARCH_JSON_ARTIFACTS.enBlog));
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.match(
+    report.failures.join("\n"),
+    /Missing search JSON artifact sample: en\/search\/blog\.json/
+  );
 });
 
 test("rejects eager engagement provider code from archive initial scripts", async (t) => {
@@ -689,6 +840,19 @@ test("enforces public CSS request and Brotli ceilings", async (t) => {
 
   assert.match(failures, /home initial stylesheet count/);
   assert.match(failures, /home initial CSS Brotli bytes/);
+});
+
+test("rejects public CSS growth against the deployed Gzip encoding", async (t) => {
+  const { rootDir } = createFixture(t, {
+    maxPublicCssGzipBytes: 1
+  });
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.match(report.failures.join("\n"), /home initial CSS Gzip bytes/);
 });
 
 test("counts oversized inline CSS in the Studio document budget", async (t) => {
@@ -1020,6 +1184,8 @@ test("rejects malformed public CSS route and owner contracts", async (t) => {
   const baseConfig = JSON.parse(readFileSync(configPath, "utf8"));
   const mutations = [
     (config) => delete config.performance.publicInitialCss.routes.about,
+    (config) =>
+      delete config.performance.publicInitialCss.routes.home.maxGzipBytes,
     (config) => {
       config.performance.publicInitialCss.ownerSelectors.home = ".hero";
     },
