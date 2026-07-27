@@ -191,6 +191,11 @@ existing IDs must not be renamed or renumbered.
   `offline_status_change`. Each real online-to-offline or offline-to-online
   transition emits the existing event exactly once, while repeated same-state
   browser signals emit no duplicate.
+- **AC-SRB-023:** Runtime service-worker cache reads and writes are best-effort.
+  A `caches.open`, `cache.match`, or `cache.put` failure cannot replace a valid
+  network response in navigation, cache-first, network-first, or
+  stale-while-revalidate. Required install-shell population remains fail-closed,
+  and executable generated-worker tests cover all four runtime strategies.
 
 ## Verification
 
@@ -212,6 +217,11 @@ existing IDs must not be renamed or renumbered.
   through the PostHog provider seam that the initial online mount, offline hard
   reload, and fallback hydration emit no status transition while real
   transitions remain exact-once and same-state signals remain deduplicated.
+- Run the generated-worker cache regression with forced `caches.open`,
+  `cache.match`, and `cache.put` failures and confirm every runtime strategy
+  still returns the network response. A true network-plus-cache miss must reject
+  for asset/data strategies and return the explicit `503` fallback for
+  navigation.
 - Run `npm run typecheck` and `npm run lint`.
 - Do not require a runtime backend or server-only route for this boundary.
 
