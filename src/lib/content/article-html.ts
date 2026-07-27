@@ -239,7 +239,6 @@ function tagHasAttribute(tag: string, targetName: string): boolean {
       found = true;
       return false;
     }
-    return;
   });
   return found;
 }
