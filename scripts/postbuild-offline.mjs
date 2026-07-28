@@ -604,7 +604,13 @@ async function matchNavigationCache(manifest, pathname) {
 async function matchVersionedCandidates(manifest, candidates) {
   for (const candidate of candidates) {
     const version = pageVersionForUrl(manifest, candidate);
-    const cached = await caches.match(navigationCacheKey(candidate, version));
+    let cached = null;
+    try {
+      cached = await caches.match(navigationCacheKey(candidate, version));
+    } catch {
+      // Cache Storage is optional for runtime navigation. Continue through the
+      // remaining fallbacks and ultimately return a network/503 response.
+    }
     if (cached) return cached;
   }
   return null;
@@ -708,9 +714,14 @@ async function handleNavigation(request, url) {
     const version = pageVersionForUrl(manifest, url.pathname);
     const requestUrl = navigationCacheKey(url.pathname + url.search, version);
     const fresh = await fetchWithTimeout(requestUrl, { cache: 'reload' });
-    const contentCache = await caches.open(CONTENT_CACHE);
     if (fresh?.ok) {
-      await cacheNavigationResponse(contentCache, manifest, url.pathname, fresh);
+      try {
+        const contentCache = await caches.open(CONTENT_CACHE);
+        await cacheNavigationResponse(contentCache, manifest, url.pathname, fresh);
+      } catch {
+        // Runtime navigation caching is best-effort. Preserve the successful
+        // response when Cache Storage is disabled or unavailable.
+      }
       return fresh;
     }
 
@@ -744,16 +755,35 @@ async function handleNavigation(request, url) {
   }
 }
 
+async function matchRuntimeCache(cacheName, cacheKey) {
+  try {
+    const cache = await caches.open(cacheName);
+    return (await cache.match(cacheKey)) ?? null;
+  } catch {
+    // Runtime caching is optional. Storage-disabled or private-mode failures
+    // must fall through to the network path.
+    return null;
+  }
+}
+
 async function matchNamedCaches(cacheName, cacheKey, fallbackCacheNames = []) {
-  const cache = await caches.open(cacheName);
-  const primary = await cache.match(cacheKey);
+  const primary = await matchRuntimeCache(cacheName, cacheKey);
   if (primary) return primary;
   for (const fallbackCacheName of fallbackCacheNames) {
-    const fallbackCache = await caches.open(fallbackCacheName);
-    const fallback = await fallbackCache.match(cacheKey);
+    const fallback = await matchRuntimeCache(fallbackCacheName, cacheKey);
     if (fallback) return fallback;
   }
   return null;
+}
+
+async function putRuntimeResponse(cacheName, cacheKey, response) {
+  try {
+    const cache = await caches.open(cacheName);
+    await cache.put(cacheKey, response.clone());
+  } catch {
+    // Runtime caching is an optimization. Quota limits, private browsing, or
+    // storage failures must not replace a valid network response with an error.
+  }
 }
 
 async function cacheFirst(request, cacheName, cacheKey = request, fallbackCacheNames = []) {
@@ -762,8 +792,7 @@ async function cacheFirst(request, cacheName, cacheKey = request, fallbackCacheN
 
   const response = await fetch(request);
   if (response?.ok) {
-    const cache = await caches.open(cacheName);
-    await cache.put(cacheKey, response.clone());
+    await putRuntimeResponse(cacheName, cacheKey, response);
   }
   return response;
 }
@@ -779,26 +808,24 @@ async function fetchWithTimeout(request, options = {}) {
 }
 
 async function networkFirst(request, cacheName, cacheKey = request) {
-  const cache = await caches.open(cacheName);
   try {
     const response = await fetchWithTimeout(request);
-    if (response?.ok) await cache.put(cacheKey, response.clone());
+    if (response?.ok) await putRuntimeResponse(cacheName, cacheKey, response);
     if (response) return response;
   } catch {
     // Fall through to the current manifest version's offline copy.
   }
-  const cached = await cache.match(cacheKey);
+  const cached = await matchRuntimeCache(cacheName, cacheKey);
   if (cached) return cached;
   throw new Error('network unavailable');
 }
 
 async function staleWhileRevalidate(request, cacheName, cacheKey = request, fallbackCacheNames = []) {
-  const cache = await caches.open(cacheName);
   const cached = await matchNamedCaches(cacheName, cacheKey, fallbackCacheNames);
   const refresh = fetch(request)
     .then(async (response) => {
       if (response?.ok) {
-        await cache.put(cacheKey, response.clone());
+        await putRuntimeResponse(cacheName, cacheKey, response);
       }
       return response;
     })

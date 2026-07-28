@@ -18,7 +18,7 @@ React engagement UI
     -> lazy import on the first engagement operation
       -> EngagementRepository port
         -> FirebaseEngagementRepository
-          -> optional App Check -> Firestore
+          -> optional App Check -> Firestore Lite
 ```
 
 - Reads are bounded to the visible static page and fail closed to empty data.
@@ -36,6 +36,11 @@ React engagement UI
   and a `Save-Data` preference skips the archive read entirely.
 - Card hover can enable only link prefetch. It is not engagement intent.
 - Views and shares remain atomic `increment(1)` writes.
+- Production uses the REST-only Firestore Lite client. The engagement contract
+  needs one-shot reads, writes, and transactions, but not realtime listeners,
+  local persistence, or an offline mutation queue. Offline and provider errors
+  remain fail-soft. Rules emulator tests may continue using the full client
+  supplied by `@firebase/rules-unit-testing`; it is not part of production.
 - The per-session view marker is written only after `recordView` reports a
   successful increment. A small shared coordinator deduplicates concurrent
   mounts and bounds retries to two separate mount attempts per page runtime.
@@ -87,6 +92,9 @@ React engagement UI
 - **ENG-011:** Artifact and browser gates prove the Firebase provider is absent
   from Blog/Notes initial JavaScript and network activity before intent, while
   a first scroll can still reach the lazy provider.
+- **ENG-012:** Production source imports only `firebase/firestore/lite`, and
+  only inside the Firebase adapter boundary. A source contract rejects the full
+  Firestore browser SDK or a provider import outside that boundary.
 
 ## App Check rollout runbook
 

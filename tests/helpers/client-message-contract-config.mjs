@@ -31,7 +31,6 @@ const CLIENT_PROVIDER_CONSUMER_ROUTES = {
   "src/components/LocaleSwitcher.tsx": "site",
   "src/components/apps/AppsConsole.tsx": "site",
   "src/components/apps/english/EnglishPracticeApp.tsx": "site",
-  "src/components/blog/BlogContent.tsx": "site",
   "src/components/blog/BlogExplorer.tsx": "blog",
   "src/components/blog/BlogPagination.tsx": "blog",
   "src/components/blog/BlogRelatedPosts.tsx": "site",

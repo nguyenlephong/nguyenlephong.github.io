@@ -1,16 +1,17 @@
 /**
  * Lazy, client-only Firebase initialiser.
  *
- * The whole Firebase SDK is loaded through dynamic `import()` so it lands in its
- * own code-split chunk — it never touches the main/landing bundle and only
- * downloads when a visitor actually interacts with the blog engagement widgets.
+ * Firebase and Firestore Lite are loaded through dynamic `import()` so they
+ * land in code-split chunks and never touch routes without engagement widgets.
+ * Lite is sufficient here because engagement uses one-shot REST reads/writes
+ * and transactions, not realtime listeners or offline persistence.
  *
  * Everything no-ops gracefully when the `NEXT_PUBLIC_FIREBASE_*` env vars are
  * missing, so the site keeps working before the project is configured. Stats
  * code must never break the reading experience.
  */
 import type { FirebaseApp } from 'firebase/app'
-import type { Firestore } from 'firebase/firestore'
+import type { Firestore } from 'firebase/firestore/lite'
 import { bootstrapAppCheckToken } from './app-check-bootstrap'
 import {
   activateAppCheck,
@@ -112,7 +113,7 @@ export function getDb(): Promise<Firestore | null> {
         : initializeApp(config)
       // Firebase requires App Check to be initialized before Firestore access.
       await initialiseAppCheck(app)
-      const { getFirestore } = await import('firebase/firestore')
+      const { getFirestore } = await import('firebase/firestore/lite')
       return getFirestore(app)
     } catch {
       if (appCheckStatus.state === 'pending') {

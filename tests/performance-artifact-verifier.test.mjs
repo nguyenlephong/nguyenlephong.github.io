@@ -25,6 +25,24 @@ const SURFACE_ROUTES = {
   notes: "notes",
   studio: "studio"
 };
+const INITIAL_JAVASCRIPT_ROUTES = {
+  home: "en.html",
+  blog: "en/blog.html",
+  notes: "en/notes.html",
+  studio: "en/studio.html",
+  blogArticle: "en/blog/culture/protecting-attention-in-a-busy-team.html",
+  notesArticle: "en/notes/tri-tue-can-duc-hanh.html"
+};
+const SEARCH_JSON_ARTIFACTS = {
+  enBlog: "en/search/blog.json",
+  enNotes: "en/search/notes.json",
+  viBlog: "vi/search/blog.json",
+  viNotes: "vi/search/notes.json",
+  zhBlog: "zh/search/blog.json",
+  jaBlog: "ja/search/blog.json",
+  koBlog: "ko/search/blog.json",
+  frBlog: "fr/search/blog.json"
+};
 const CLIENT_MESSAGE_ROUTES = {
   ...SURFACE_ROUTES,
   gallery: "gallery"
@@ -121,17 +139,12 @@ function createFixture(t, overrides = {}) {
   mkdirSync(chunksDir, { recursive: true });
   t.after(() => rmSync(rootDir, { recursive: true, force: true }));
 
-  const surfaces = Object.fromEntries(
-    Object.keys(SURFACE_ROUTES).map((surface) => [
-      surface,
-      localizedPath("en", surface, "html")
-    ])
-  );
   const maxBrotliBytes = overrides.maxBrotliBytes ?? 10_000;
+  const maxGzipBytes = overrides.maxGzipBytes ?? 10_000;
   const routeInitialJavaScript = Object.fromEntries(
-    Object.entries(surfaces).map(([surface, html]) => [
+    Object.entries(INITIAL_JAVASCRIPT_ROUTES).map(([surface, html]) => [
       surface,
-      { html, maxBrotliBytes }
+      { html, maxGzipBytes, maxBrotliBytes }
     ])
   );
   const localizedRouteSamples = LOCALES.flatMap((locale) =>
@@ -182,6 +195,38 @@ function createFixture(t, overrides = {}) {
         requiredMarkers: ["data-deferred-post-stats"],
         forbiddenMarkers: ["firebaseapp.com", "getFirestore"]
       },
+      htmlTransfer: {
+        routes: Object.fromEntries(
+          Object.entries({
+            home: "en.html",
+            blogArchive: "en/blog.html",
+            notesArchive: "en/notes.html",
+            blogArticle:
+              "en/blog/culture/protecting-attention-in-a-busy-team.html",
+            notesArticle: "en/notes/tri-tue-can-duc-hanh.html"
+          }).map(([surface, html]) => [
+            surface,
+            {
+              html,
+              maxGzipBytes: overrides.maxHtmlGzipBytes ?? 10_000
+            }
+          ])
+        )
+      },
+      searchJson: {
+        artifacts: Object.fromEntries(
+          Object.entries(SEARCH_JSON_ARTIFACTS).map(
+            ([sample, artifactPath]) => [
+              sample,
+              {
+                path: artifactPath,
+                maxRawBytes: overrides.maxSearchJsonRawBytes ?? 10_000,
+                maxGzipBytes: overrides.maxSearchJsonGzipBytes ?? 10_000
+              }
+            ]
+          )
+        )
+      },
       publicInitialCss: {
         ownerSelectors: PUBLIC_CSS_OWNER_SELECTORS,
         routes: Object.fromEntries(
@@ -191,6 +236,7 @@ function createFixture(t, overrides = {}) {
               html: route.html,
               maxStylesheetCount:
                 overrides.maxPublicStylesheetCount ?? route.owners.length + 1,
+              maxGzipBytes: overrides.maxPublicCssGzipBytes ?? 10_000,
               maxBrotliBytes: overrides.maxPublicCssBrotliBytes ?? 10_000,
               requiredOwners: route.owners,
               allowedOwners: route.owners
@@ -287,13 +333,38 @@ function createFixture(t, overrides = {}) {
       )
     ].join("");
     const html = existsSync(htmlPath) ? readFileSync(htmlPath, "utf8") : "";
+    const initialScript = Object.values(INITIAL_JAVASCRIPT_ROUTES).includes(
+      route.html
+    )
+      ? '<script src="/_next/static/chunks/initial.js"></script>'
+      : "";
     writeFileSync(
       htmlPath,
       html
         ? html.includes("</head>")
-          ? html.replace("</head>", `${links}</head>`)
+          ? html.replace(
+              "</head>",
+              `${links}${html.includes(initialScript) ? "" : initialScript}</head>`
+            )
           : html.replace("<html>", `<html><head>${links}</head>`)
-        : `<!doctype html><html><head>${links}</head><body></body></html>`
+        : `<!doctype html><html><head>${links}${initialScript}</head><body></body></html>`
+    );
+  }
+  for (const [sample, artifactPath] of Object.entries(SEARCH_JSON_ARTIFACTS)) {
+    const absolutePath = path.join(outDir, artifactPath);
+    mkdirSync(path.dirname(absolutePath), { recursive: true });
+    writeFileSync(
+      absolutePath,
+      JSON.stringify({
+        sample,
+        items: [
+          {
+            slug: `${sample}-article`,
+            title: `Search result for ${sample}`,
+            summary: "Static search payload fixture"
+          }
+        ]
+      })
     );
   }
   writeFileSync(path.join(outDir, "__next._tree.txt"), "shared RSC tree");
@@ -353,7 +424,18 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
   });
 
   assert.deepEqual(report.failures, []);
+  assert.ok(report.htmlTransfer.blogArticle.gzipBytes > 0);
+  assert.ok(
+    report.htmlTransfer.blogArticle.gzipBytes <
+      report.htmlTransfer.blogArticle.rawBytes
+  );
+  assert.equal(Object.keys(report.searchJson).length, 8);
+  assert.ok(report.searchJson.enBlog.rawBytes > 0);
+  assert.ok(report.searchJson.enBlog.gzipBytes > 0);
+  assert.ok(report.searchJson.enBlog.brotliBytes > 0);
   assert.equal(report.routeInitialJavaScript.home.files.length, 1);
+  assert.equal(report.routeInitialJavaScript.blogArticle.files.length, 1);
+  assert.ok(report.routeInitialJavaScript.home.gzipBytes > 0);
   assert.ok(report.routeInitialJavaScript.home.brotliBytes > 0);
   assert.equal(report.rsc.fileCount, 31);
   assert.equal(report.rsc.localizedRouteSampleCount, 24);
@@ -374,6 +456,7 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
   });
   assert.equal(report.publicInitialCss.home.files.length, 2);
   assert.equal(report.publicInitialCss.notesArticle.files.length, 4);
+  assert.ok(report.publicInitialCss.home.gzipBytes > 0);
   assert.deepEqual(report.publicInitialCss.home.missingOwners, []);
   assert.deepEqual(report.publicInitialCss.home.forbiddenOwners, []);
   assert.deepEqual(report.studio.thirdPartyConnectionOrigins, [
@@ -396,6 +479,139 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
   assert.equal(report.artifactIndex.walks, 1);
   assert.ok(report.artifactIndex.diskReads >= 8);
   assert.ok(report.artifactIndex.cacheHits >= 3);
+});
+
+test("rejects initial JavaScript growth against the deployed Gzip encoding", async (t) => {
+  const { rootDir, configPath } = createFixture(t);
+  const config = JSON.parse(readFileSync(configPath, "utf8"));
+  config.performance.routeInitialJavaScript.home.maxGzipBytes = 1;
+  writeFileSync(configPath, JSON.stringify(config));
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.match(
+    report.failures.join("\n"),
+    /home initial JavaScript Gzip bytes/
+  );
+});
+
+test("rejects compressed HTML growth against the delivery encoding budget", async (t) => {
+  const { rootDir } = createFixture(t, { maxHtmlGzipBytes: 1 });
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.match(report.failures.join("\n"), /blogArticle HTML Gzip bytes/);
+});
+
+test("rejects search JSON growth against raw and Gzip budgets", async (t) => {
+  const { rootDir } = createFixture(t, {
+    maxSearchJsonRawBytes: 1,
+    maxSearchJsonGzipBytes: 1
+  });
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+  const failures = report.failures.join("\n");
+
+  assert.match(failures, /enBlog search JSON raw bytes/);
+  assert.match(failures, /enBlog search JSON Gzip bytes/);
+});
+
+test("rejects missing, extra, aliased, or incomplete search JSON samples", async (t) => {
+  const { rootDir, configPath } = createFixture(t);
+  const baseConfig = JSON.parse(readFileSync(configPath, "utf8"));
+  const mutations = [
+    {
+      label: "missing sample",
+      apply(config) {
+        delete config.performance.searchJson.artifacts.enBlog;
+      }
+    },
+    {
+      label: "extra sample",
+      apply(config) {
+        config.performance.searchJson.artifacts.frNotes = {
+          path: "fr/search/notes.json",
+          maxRawBytes: 10_000,
+          maxGzipBytes: 10_000
+        };
+      }
+    },
+    {
+      label: "aliased sample",
+      apply(config) {
+        config.performance.searchJson.artifacts.viBlog.path =
+          "en/search/blog.json";
+      }
+    },
+    {
+      label: "missing raw budget",
+      apply(config) {
+        delete config.performance.searchJson.artifacts.enBlog.maxRawBytes;
+      }
+    },
+    {
+      label: "missing Gzip budget",
+      apply(config) {
+        delete config.performance.searchJson.artifacts.enBlog.maxGzipBytes;
+      }
+    }
+  ];
+
+  for (const mutation of mutations) {
+    const config = structuredClone(baseConfig);
+    mutation.apply(config);
+    writeFileSync(configPath, JSON.stringify(config));
+    await assert.rejects(
+      verifyPerformanceArtifact({
+        rootDir,
+        configPath: "budgets.json"
+      }),
+      /Invalid static performance budget configuration/,
+      mutation.label
+    );
+  }
+});
+
+test("rejects an emitted search JSON artifact outside the exact matrix", async (t) => {
+  const { rootDir, outDir } = createFixture(t);
+  writeFileSync(
+    path.join(outDir, "fr/search/notes.json"),
+    JSON.stringify({ items: [] })
+  );
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.match(
+    report.failures.join("\n"),
+    /Unexpected search JSON artifact: fr\/search\/notes\.json/
+  );
+});
+
+test("rejects a missing emitted search JSON artifact from the exact matrix", async (t) => {
+  const { rootDir, outDir } = createFixture(t);
+  rmSync(path.join(outDir, SEARCH_JSON_ARTIFACTS.enBlog));
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.match(
+    report.failures.join("\n"),
+    /Missing search JSON artifact sample: en\/search\/blog\.json/
+  );
 });
 
 test("rejects eager engagement provider code from archive initial scripts", async (t) => {
@@ -624,6 +840,19 @@ test("enforces public CSS request and Brotli ceilings", async (t) => {
 
   assert.match(failures, /home initial stylesheet count/);
   assert.match(failures, /home initial CSS Brotli bytes/);
+});
+
+test("rejects public CSS growth against the deployed Gzip encoding", async (t) => {
+  const { rootDir } = createFixture(t, {
+    maxPublicCssGzipBytes: 1
+  });
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.match(report.failures.join("\n"), /home initial CSS Gzip bytes/);
 });
 
 test("counts oversized inline CSS in the Studio document budget", async (t) => {
@@ -912,10 +1141,17 @@ test("rejects missing, extra, or aliased initial route mappings", async (t) => {
       }
     },
     {
+      label: "missing Gzip budget",
+      apply(config) {
+        delete config.performance.routeInitialJavaScript.home.maxGzipBytes;
+      }
+    },
+    {
       label: "extra route",
       apply(config) {
         config.performance.routeInitialJavaScript.search = {
           html: "en/search.html",
+          maxGzipBytes: 10_000,
           maxBrotliBytes: 10_000
         };
       }
@@ -948,6 +1184,8 @@ test("rejects malformed public CSS route and owner contracts", async (t) => {
   const baseConfig = JSON.parse(readFileSync(configPath, "utf8"));
   const mutations = [
     (config) => delete config.performance.publicInitialCss.routes.about,
+    (config) =>
+      delete config.performance.publicInitialCss.routes.home.maxGzipBytes,
     (config) => {
       config.performance.publicInitialCss.ownerSelectors.home = ".hero";
     },

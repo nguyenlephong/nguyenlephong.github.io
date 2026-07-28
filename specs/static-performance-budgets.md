@@ -11,12 +11,29 @@ route-oriented measurements.
 ## Decision
 
 - Keep the existing raw artifact budgets unchanged.
-- Measure direct JavaScript referenced by the English home, Blog, Notes, and
-  Studio HTML entries. Compress each emitted chunk with Brotli and enforce a
-  per-surface ceiling.
-- Pin those four samples to `en.html`, `en/blog.html`, `en/notes.html`, and
-  `en/studio.html`. Missing, extra, or aliased route mappings invalidate the
-  configuration instead of measuring the same route twice.
+- Measure direct JavaScript referenced by the English home, Blog and Notes
+  archives, representative Blog and Notes articles, and Studio HTML entries.
+  Compress each emitted chunk with Gzip and Brotli and enforce both
+  per-surface ceilings. Gzip models the observed GitHub Pages delivery path;
+  Brotli remains a regression guard and the target for a host that negotiates
+  it.
+- Pin those six samples to `en.html`, `en/blog.html`, `en/notes.html`,
+  `en/blog/culture/protecting-attention-in-a-busy-team.html`,
+  `en/notes/tri-tue-can-duc-hanh.html`, and `en/studio.html`. Missing, extra,
+  or aliased route mappings invalidate the configuration instead of measuring
+  the same route twice.
+- Measure raw, Gzip, and Brotli bytes for an exact five-route HTML matrix:
+  English Home, Blog archive, Notes archive, one Blog article, and one Notes
+  article. Gzip is the hard delivery ceiling; missing, extra, or aliased
+  samples fail closed.
+- Inventory an exact search JSON matrix:
+  `en/search/{blog,notes}.json`, `vi/search/{blog,notes}.json`, and
+  `{zh,ja,ko,fr}/search/blog.json`. Notes search artifacts exist only for the
+  currently authored English and Vietnamese Notes locales. Raw and Gzip bytes
+  are hard gates, while Brotli remains visible for comparison and a future
+  negotiating host. A missing, extra, or aliased configured sample, an omitted
+  raw/Gzip ceiling, or an emitted `*/search/{blog,notes}.json` outside the
+  matrix fails closed.
 - Classify an exported `.txt` file as RSC when its basename begins with
   `__next.` or when a sibling `.html` route exists. This excludes public files
   such as `robots.txt` and `ads.txt` without relying on a growing exclusion
@@ -36,6 +53,11 @@ route-oriented measurements.
   messages through fail-closed, surface-scoped providers: shared site chrome,
   home, Blog, Notes, Gallery, and the currently dormant Thoughts surface each
   have an explicit namespace allowlist.
+- Keep authored article HTML in a Server Component and localize its internal
+  Blog, Notes, and Thoughts links during static rendering, including authored
+  FAQ fragments. The optional workflow-canvas component mounts only when the
+  exact marker exists, and its drawing implementation remains behind a second
+  dynamic import so an ordinary article does not request that runtime.
 - Inventory every supported Next.js source module (`.js`, `.jsx`, `.ts`,
   `.tsx`, `.mjs`, and `.mts`) with the TypeScript AST. Provider-dependent
   `next-intl` hooks and locale-navigation imports must use direct named imports
@@ -136,16 +158,18 @@ route-oriented measurements.
 - Measure initial document CSS for representative Home, About, Gallery, Apps,
   English practice, offline, Blog archive, Notes archive, Blog article, and
   Notes article HTML entries. Each route has an explicit maximum local
-  stylesheet count and total Brotli ceiling based on a fresh complete export;
-  missing samples or stylesheets fail closed.
+  stylesheet count plus total Gzip and Brotli ceilings based on a complete
+  export; missing samples, stylesheets, or compression ceilings fail closed.
+  Each linked stylesheet is compressed separately because it is a separate
+  response. Inline styles remain part of the HTML transfer measurement.
 - Verify CSS ownership from parsed and normalized emitted selectors rather than
   hashed chunk names or minifier-specific serialization. A route must contain
   its declared owner selectors and must not contain selectors owned by unrelated
   surfaces. PostCSS owns the stylesheet grammar and a selector AST owns exact
   class-token matching, including nested rules and `@scope` roots and limits;
   declarations, custom-property value blocks, and keyframe frames are not
-  selectors. The gate reports both raw and Brotli totals, while Brotli bytes and
-  request count are the hard transfer guards.
+  selectors. The gate reports raw, Gzip, and Brotli totals, while Gzip bytes,
+  Brotli bytes, and request count are the hard transfer guards.
 
 The first hard ceilings are the 2026-07-18 fixed-date baseline plus a narrow
 route-level tolerance. They are regression guards, not performance goals. The
@@ -158,25 +182,48 @@ Blog at 213,534 bytes and Notes at 213,444 bytes Brotli. Their hard ceilings are
 therefore lowered from 219,136 to 217,088 bytes, retaining a small build-variance
 allowance while locking in the verified reduction.
 
-After the route-owned CSS split and dead Notes-chambers cleanup, the 2026-07-20
-complete export measured the following initial document CSS. The prior shared
-bundle cost 19,439 Brotli bytes
-on non-content routes, 27,474 on Blog, and 30,800 on Notes. The new routes remain
-below those transfer baselines even where one route-owned stylesheet adds a
-request. Hard limits retain a narrow deterministic-build allowance:
+After the route-owned CSS split and dead Notes-chambers cleanup, the 2026-07-28
+current complete-export artifact snapshot measured the following initial
+document CSS. Hard limits retain a narrow deterministic-build allowance:
 
-| Route | Stylesheets | Measured raw | Measured Brotli | Brotli limit |
-|-------|-------------:|-------------:|----------------:|--------------:|
-| Home | 3 | 43,743 | 8,990 | 9,216 |
-| About | 3 | 30,045 | 6,666 | 6,912 |
-| Gallery | 3 | 37,661 | 7,826 | 8,192 |
-| Apps | 3 | 42,422 | 8,812 | 9,216 |
-| English practice | 3 | 36,573 | 7,599 | 7,936 |
-| Offline | 3 | 24,988 | 5,761 | 6,144 |
-| Blog archive | 3 | 73,416 | 13,188 | 13,568 |
-| Notes archive | 4 | 80,874 | 15,144 | 15,616 |
-| Blog article | 4 | 95,826 | 17,632 | 18,176 |
-| Notes article | 5 | 103,284 | 19,588 | 20,096 |
+| Route            | Stylesheets | Measured raw | Measured Gzip | Gzip limit | Measured Brotli | Brotli limit |
+| ---------------- | ----------: | -----------: | ------------: | ---------: | --------------: | -----------: |
+| Home             |           3 |       44,360 |        10,417 |     10,752 |           9,058 |        9,216 |
+| About            |           3 |       29,526 |         7,637 |      7,936 |           6,578 |        6,912 |
+| Gallery          |           3 |       37,142 |         8,939 |      9,216 |           7,738 |        8,192 |
+| Apps             |           3 |       41,903 |        10,025 |     10,496 |           8,724 |        9,216 |
+| English practice |           3 |       36,054 |         8,713 |      9,216 |           7,511 |        7,936 |
+| Offline          |           3 |       24,469 |         6,554 |      6,912 |           5,673 |        6,144 |
+| Blog archive     |           3 |       72,897 |        15,120 |     15,616 |          13,100 |       13,568 |
+| Notes archive    |           4 |       80,355 |        17,403 |     18,176 |          15,056 |       15,616 |
+| Blog article     |           4 |       95,307 |        20,320 |     20,992 |          17,544 |       18,176 |
+| Notes article    |           5 |      102,765 |        22,603 |     23,296 |          19,500 |       20,096 |
+
+The same snapshot contains this exact search JSON matrix. Raw and Gzip are
+hard gates; Brotli is reported but is not used as the GitHub Pages delivery
+claim:
+
+| Search artifact        | Measured raw | Raw limit | Measured Gzip | Gzip limit | Measured Brotli |
+| ---------------------- | -----------: | --------: | ------------: | ---------: | --------------: |
+| `en/search/blog.json`  |      105,328 |   111,104 |        30,292 |     32,256 |          25,470 |
+| `en/search/notes.json` |       89,511 |    94,208 |        29,329 |     31,232 |          24,610 |
+| `vi/search/blog.json`  |      118,041 |   124,416 |        33,114 |     34,816 |          28,331 |
+| `vi/search/notes.json` |      116,438 |   122,368 |        33,935 |     35,840 |          29,585 |
+| `zh/search/blog.json`  |       11,128 |    11,776 |         5,143 |      5,632 |           3,996 |
+| `ja/search/blog.json`  |       14,476 |    15,360 |         5,444 |      6,144 |           4,643 |
+| `ko/search/blog.json`  |       13,270 |    14,336 |         5,245 |      5,632 |           4,485 |
+| `fr/search/blog.json`  |       13,237 |    14,336 |         4,943 |      5,632 |           4,435 |
+
+The 2026-07-27 complete export added delivery-accurate Gzip guards. The values
+below are one deterministic local build, not field performance:
+
+| HTML route    | Measured raw | Measured Gzip | Measured Brotli | Gzip limit |
+| ------------- | -----------: | ------------: | --------------: | ---------: |
+| Home          |      132,221 |        31,570 |          21,083 |     32,768 |
+| Blog archive  |       81,865 |        18,947 |          13,950 |     19,456 |
+| Notes archive |       73,214 |        17,466 |          13,341 |     18,432 |
+| Blog article  |       70,524 |        15,763 |          12,626 |     16,384 |
+| Notes article |       70,391 |        18,487 |          13,050 |     19,456 |
 
 ## Acceptance criteria
 
@@ -200,8 +247,8 @@ request. Hard limits retain a narrow deterministic-build allowance:
 - **AC-SPB-008:** The guarded legacy Pages publisher runs both
   `verify:artifact` and `verify:performance-artifact` after its final `out/`
   mutation and before staging the tree.
-- **AC-SPB-009:** Initial JavaScript configuration contains exactly the four
-  canonical English route samples; missing, extra, or duplicate paths fail
+- **AC-SPB-009:** Initial JavaScript configuration contains exactly the six
+  canonical English entry samples; missing, extra, or duplicate paths fail
   before artifact measurement.
 - **AC-SPB-010:** The locale root injects no client translation catalog and the
   Studio artifact serializes none; a full catalog or an undeclared namespace
@@ -383,6 +430,22 @@ request. Hard limits retain a narrow deterministic-build allowance:
   also be finite and greater than zero, so `1`, `1.0`, `.5`, `1e0`, and
   `1.0e+2` are accepted while `1.`, `1.e2`, zero, negative, non-finite, and
   mixed descriptor forms fail closed.
+- **AC-SPB-052:** The exact Home, Blog and Notes archive, representative Blog
+  and Notes article, and Studio initial-JavaScript matrix reports and
+  hard-gates Gzip as well as Brotli bytes. A missing or malformed Gzip ceiling
+  invalidates the configuration.
+- **AC-SPB-053:** The exact five-route HTML matrix reports raw, Gzip, and
+  Brotli bytes and hard-gates Gzip. Authored article and FAQ internal links are
+  localized in the static HTML, the article body is not a Client Component,
+  and workflow drawing code stays behind a marker-gated dynamic boundary.
+- **AC-SPB-054:** Every route in the exact ten-route public initial-CSS matrix
+  reports raw, Gzip, and Brotli bytes and hard-gates Gzip, Brotli, and local
+  stylesheet count. A missing or malformed Gzip ceiling invalidates the
+  configuration.
+- **AC-SPB-055:** The exact eight-artifact search JSON matrix reports raw,
+  Gzip, and Brotli bytes and hard-gates raw and Gzip. Missing, extra, aliased,
+  or incompletely budgeted configuration and missing or unexpected emitted
+  `*/search/{blog,notes}.json` artifacts fail closed.
 
 ## Verification
 
@@ -400,12 +463,14 @@ request. Hard limits retain a narrow deterministic-build allowance:
   all-route preload rejection, eager feature markers, and six-locale isolation.
 - Run archive marker fixtures plus the complete-export runtime boundary check
   for untouched, category-hover, first-scroll, and `Save-Data` paths.
-- Run public-CSS artifact fixtures for request-count overflow, Brotli overflow,
-  missing route stylesheets, normalized selector equivalence through nested
-  at-rules and `@scope`, custom-property block exclusion, keyframe exclusion,
-  missing owners, and unrelated owner leakage. Run source fixtures for static
-  template and binary module specifiers plus unresolved identifier and function
-  expressions.
+- Run public-CSS artifact fixtures for request-count, Gzip, and Brotli
+  overflow, missing compression ceilings, missing route stylesheets, normalized
+  selector equivalence through nested at-rules and `@scope`, custom-property
+  block exclusion, keyframe exclusion, missing owners, and unrelated owner
+  leakage. Run search JSON fixtures for raw and Gzip overflow, exact configured
+  paths and fields, and missing or unexpected emitted matrix artifacts. Run
+  source fixtures for static template and binary module specifiers plus
+  unresolved identifier and function expressions.
 - Run social-image fixtures for authoritative inventory failure, Unicode and
   escaped URLs, external-origin and substring exclusion, every supported
   consumer extension, JavaScript exclusion, collision preflight, three injected

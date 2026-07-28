@@ -16,20 +16,34 @@
     "routeInitialJavaScript": {
       "home": {
         "html": "en.html",
+        "maxGzipBytes": 274432,
         "maxBrotliBytes": 238592
       },
       "blog": {
         "html": "en/blog.html",
+        "maxGzipBytes": 251904,
         "maxBrotliBytes": 217088
       },
       "notes": {
         "html": "en/notes.html",
+        "maxGzipBytes": 251904,
         "maxBrotliBytes": 217088
       },
       "studio": {
         "html": "en/studio.html",
+        "maxGzipBytes": 200704,
         "maxBrotliBytes": 176128,
         "maxDefaultRouteBrotliBytes": 204800
+      },
+      "blogArticle": {
+        "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
+        "maxGzipBytes": 251904,
+        "maxBrotliBytes": 217088
+      },
+      "notesArticle": {
+        "html": "en/notes/tri-tue-can-duc-hanh.html",
+        "maxGzipBytes": 251904,
+        "maxBrotliBytes": 217088
       }
     },
     "rsc": {
@@ -109,6 +123,65 @@
         "initializeFirestore"
       ]
     },
+    "htmlTransfer": {
+      "routes": {
+        "home": { "html": "en.html", "maxGzipBytes": 32768 },
+        "blogArchive": { "html": "en/blog.html", "maxGzipBytes": 19456 },
+        "notesArchive": { "html": "en/notes.html", "maxGzipBytes": 18432 },
+        "blogArticle": {
+          "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
+          "maxGzipBytes": 16384
+        },
+        "notesArticle": {
+          "html": "en/notes/tri-tue-can-duc-hanh.html",
+          "maxGzipBytes": 19456
+        }
+      }
+    },
+    "searchJson": {
+      "artifacts": {
+        "enBlog": {
+          "path": "en/search/blog.json",
+          "maxRawBytes": 111104,
+          "maxGzipBytes": 32256
+        },
+        "enNotes": {
+          "path": "en/search/notes.json",
+          "maxRawBytes": 94208,
+          "maxGzipBytes": 31232
+        },
+        "viBlog": {
+          "path": "vi/search/blog.json",
+          "maxRawBytes": 124416,
+          "maxGzipBytes": 34816
+        },
+        "viNotes": {
+          "path": "vi/search/notes.json",
+          "maxRawBytes": 122368,
+          "maxGzipBytes": 35840
+        },
+        "zhBlog": {
+          "path": "zh/search/blog.json",
+          "maxRawBytes": 11776,
+          "maxGzipBytes": 5632
+        },
+        "jaBlog": {
+          "path": "ja/search/blog.json",
+          "maxRawBytes": 15360,
+          "maxGzipBytes": 6144
+        },
+        "koBlog": {
+          "path": "ko/search/blog.json",
+          "maxRawBytes": 14336,
+          "maxGzipBytes": 5632
+        },
+        "frBlog": {
+          "path": "fr/search/blog.json",
+          "maxRawBytes": 14336,
+          "maxGzipBytes": 5632
+        }
+      }
+    },
     "publicInitialCss": {
       "ownerSelectors": {
         "home": [
@@ -128,16 +201,86 @@
         "reader": [".blog-reader-tools"]
       },
       "routes": {
-        "home": { "html": "en.html", "maxStylesheetCount": 3, "maxBrotliBytes": 9216, "requiredOwners": ["home"], "allowedOwners": ["home"] },
-        "about": { "html": "en/about.html", "maxStylesheetCount": 3, "maxBrotliBytes": 6912, "requiredOwners": ["about"], "allowedOwners": ["about"] },
-        "gallery": { "html": "en/gallery.html", "maxStylesheetCount": 3, "maxBrotliBytes": 8192, "requiredOwners": ["gallery"], "allowedOwners": ["gallery"] },
-        "apps": { "html": "en/apps.html", "maxStylesheetCount": 3, "maxBrotliBytes": 9216, "requiredOwners": ["apps"], "allowedOwners": ["apps"] },
-        "english": { "html": "en/apps/english.html", "maxStylesheetCount": 3, "maxBrotliBytes": 7936, "requiredOwners": ["english"], "allowedOwners": ["english"] },
-        "offline": { "html": "en/offline.html", "maxStylesheetCount": 3, "maxBrotliBytes": 6144, "requiredOwners": ["offline"], "allowedOwners": ["offline"] },
-        "blogArchive": { "html": "en/blog.html", "maxStylesheetCount": 3, "maxBrotliBytes": 13568, "requiredOwners": ["blog"], "allowedOwners": ["blog"] },
-        "notesArchive": { "html": "en/notes.html", "maxStylesheetCount": 4, "maxBrotliBytes": 15616, "requiredOwners": ["blog", "notes"], "allowedOwners": ["blog", "notes"] },
-        "blogArticle": { "html": "en/blog/culture/protecting-attention-in-a-busy-team.html", "maxStylesheetCount": 4, "maxBrotliBytes": 18176, "requiredOwners": ["blog", "reader"], "allowedOwners": ["blog", "reader"] },
-        "notesArticle": { "html": "en/notes/tri-tue-can-duc-hanh.html", "maxStylesheetCount": 5, "maxBrotliBytes": 20096, "requiredOwners": ["blog", "notes", "reader"], "allowedOwners": ["blog", "notes", "reader"] }
+        "home": {
+          "html": "en.html",
+          "maxStylesheetCount": 3,
+          "maxGzipBytes": 10752,
+          "maxBrotliBytes": 9216,
+          "requiredOwners": ["home"],
+          "allowedOwners": ["home"]
+        },
+        "about": {
+          "html": "en/about.html",
+          "maxStylesheetCount": 3,
+          "maxGzipBytes": 7936,
+          "maxBrotliBytes": 6912,
+          "requiredOwners": ["about"],
+          "allowedOwners": ["about"]
+        },
+        "gallery": {
+          "html": "en/gallery.html",
+          "maxStylesheetCount": 3,
+          "maxGzipBytes": 9216,
+          "maxBrotliBytes": 8192,
+          "requiredOwners": ["gallery"],
+          "allowedOwners": ["gallery"]
+        },
+        "apps": {
+          "html": "en/apps.html",
+          "maxStylesheetCount": 3,
+          "maxGzipBytes": 10496,
+          "maxBrotliBytes": 9216,
+          "requiredOwners": ["apps"],
+          "allowedOwners": ["apps"]
+        },
+        "english": {
+          "html": "en/apps/english.html",
+          "maxStylesheetCount": 3,
+          "maxGzipBytes": 9216,
+          "maxBrotliBytes": 7936,
+          "requiredOwners": ["english"],
+          "allowedOwners": ["english"]
+        },
+        "offline": {
+          "html": "en/offline.html",
+          "maxStylesheetCount": 3,
+          "maxGzipBytes": 6912,
+          "maxBrotliBytes": 6144,
+          "requiredOwners": ["offline"],
+          "allowedOwners": ["offline"]
+        },
+        "blogArchive": {
+          "html": "en/blog.html",
+          "maxStylesheetCount": 3,
+          "maxGzipBytes": 15616,
+          "maxBrotliBytes": 13568,
+          "requiredOwners": ["blog"],
+          "allowedOwners": ["blog"]
+        },
+        "notesArchive": {
+          "html": "en/notes.html",
+          "maxStylesheetCount": 4,
+          "maxGzipBytes": 18176,
+          "maxBrotliBytes": 15616,
+          "requiredOwners": ["blog", "notes"],
+          "allowedOwners": ["blog", "notes"]
+        },
+        "blogArticle": {
+          "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
+          "maxStylesheetCount": 4,
+          "maxGzipBytes": 20992,
+          "maxBrotliBytes": 18176,
+          "requiredOwners": ["blog", "reader"],
+          "allowedOwners": ["blog", "reader"]
+        },
+        "notesArticle": {
+          "html": "en/notes/tri-tue-can-duc-hanh.html",
+          "maxStylesheetCount": 5,
+          "maxGzipBytes": 23296,
+          "maxBrotliBytes": 20096,
+          "requiredOwners": ["blog", "notes", "reader"],
+          "allowedOwners": ["blog", "notes", "reader"]
+        }
       }
     },
     "studioInitialRuntime": {

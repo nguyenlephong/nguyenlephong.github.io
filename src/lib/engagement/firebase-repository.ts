@@ -67,7 +67,7 @@ export class FirebaseEngagementRepository implements EngagementRepository {
     const db = await getDb()
     if (!db) return null
     try {
-      const { doc, getDoc } = await import('firebase/firestore')
+      const { doc, getDoc } = await import('firebase/firestore/lite')
       const snapshot = await getDoc(doc(db, COLLECTION, id))
       return normalisePostStats(
         snapshot.exists() ? snapshot.data() : undefined,
@@ -89,7 +89,7 @@ export class FirebaseEngagementRepository implements EngagementRepository {
     if (!db) return result
 
     try {
-      const { doc, getDoc } = await import('firebase/firestore')
+      const { doc, getDoc } = await import('firebase/firestore/lite')
       const snapshots = await Promise.allSettled(
         boundedIds.map(async (id) => ({
           id,
@@ -116,7 +116,7 @@ export class FirebaseEngagementRepository implements EngagementRepository {
     const db = await getDb()
     if (!db || !areFirebaseEngagementWritesEnabled()) return false
     try {
-      const { doc, increment, setDoc } = await import('firebase/firestore')
+      const { doc, increment, setDoc } = await import('firebase/firestore/lite')
       await setDoc(
         doc(db, COLLECTION, id),
         { views: increment(1) },
@@ -133,7 +133,7 @@ export class FirebaseEngagementRepository implements EngagementRepository {
     const db = await getDb()
     if (!db || !areFirebaseEngagementWritesEnabled()) return false
     try {
-      const { doc, increment, setDoc } = await import('firebase/firestore')
+      const { doc, increment, setDoc } = await import('firebase/firestore/lite')
       await setDoc(
         doc(db, COLLECTION, id),
         { shares: increment(1) },
@@ -152,7 +152,7 @@ export class FirebaseEngagementRepository implements EngagementRepository {
     if (!db || !areFirebaseEngagementWritesEnabled()) return false
 
     try {
-      const { doc, runTransaction } = await import('firebase/firestore')
+      const { doc, runTransaction } = await import('firebase/firestore/lite')
       const reference = doc(db, COLLECTION, id)
 
       await runTransaction(db, async (transaction) => {

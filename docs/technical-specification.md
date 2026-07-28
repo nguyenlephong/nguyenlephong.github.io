@@ -15,7 +15,7 @@ Some browser-side features still run after the page loads:
 - article search and filtering
 - page progress and small UI animations
 - analytics events
-- best-effort article engagement counters in Firebase Firestore
+- best-effort article engagement counters in Firebase Firestore Lite
 
 There is no custom backend server in the main deployment path. The closest thing
 to runtime storage is Firestore, which stores public engagement counters such as
@@ -82,8 +82,10 @@ At a high level:
 3. The page was produced by Next.js during build time.
 4. Server components read local JSON content and translated messages while
    building pages.
-5. Client components add interaction after hydration.
-6. Analytics scripts and Firestore engagement calls run only in the browser.
+5. Article HTML and authored internal links are rendered for the active locale
+   before hydration.
+6. Small client components add interaction after hydration.
+7. Analytics scripts and Firestore engagement calls run only in the browser.
 
 This means the important engineering constraint is simple: anything that must be
 known at request time cannot depend on a server in the current deployment model.
@@ -206,6 +208,9 @@ Important behavior:
   and post metadata. Series membership and `seriesOrder` are authored data;
   they are not inferred from tags or dates.
 - `posts/<slug>.json` holds the full HTML article body.
+- `BlogContent` keeps that body in a Server Component and localizes authored
+  Blog, Notes, Thoughts, and FAQ links in the exported HTML. Workflow-canvas
+  drawing code is loaded through a marker-gated dynamic client boundary.
 - `src/lib/blog/data.ts` overlays translated fields on top of canonical entries.
 - Missing translated fields fall back to English instead of creating blank cards
   or missing metadata.
@@ -456,7 +461,9 @@ The flow:
    wrapper invalidates that state before deleting the prior export.
 8. Offline manifest generation runs after that canonicalization, so page
    versions and owned files describe the final export rather than removed
-   social-image paths.
+   social-image paths. Runtime cache reads and writes are best-effort:
+   quota/private-mode storage failure never replaces a valid network response.
+   Required install-shell population stays fail-closed.
 9. In fast or targeted builds, missing dynamic OG files can be restored from the
    cache.
 
@@ -537,7 +544,7 @@ public runtime. The public footer uses a full-document Studio link; its existing
 
 ### Firebase Engagement
 
-Firestore is used for public article counters:
+Firestore Lite is used for public article counters:
 
 ```text
 postStats/{category}__{slug}
@@ -555,6 +562,9 @@ Important behavior:
 - The stable `firebase/postStats` facade imports no provider value eagerly. It
   memoizes a dynamic repository import on the client, and provider import
   failure resolves to empty reads or failed writes.
+- Production imports the REST-only `firebase/firestore/lite` client. The current
+  contract needs one-shot reads, atomic writes, and transactions, but not
+  realtime listeners, local persistence, or an offline mutation queue.
 - Blog and Notes archives defer their visible-card reads until first scroll,
   search/filter interaction, or restoration of a bookmarked query/filter.
   One `CONTENT_PAGE_SIZE` provider batch can run while one replaceable
@@ -572,6 +582,7 @@ Important behavior:
 - Views and shares use Firestore atomic increments. Reaction toggles and
   switches use one transaction so old/new counters cannot partially apply.
 - Failed writes roll back optimistic UI updates where needed.
+- Offline/provider failures remain best-effort and never block article content.
 - UI code targets the provider-neutral `EngagementRepository`; the Firebase
   adapter remains lazy and client-only.
 
@@ -755,16 +766,26 @@ also include the nested curated routes
 `vi/notes/topics/thoughts/page/5.html`. Individual file limits still cover every
 emitted HTML, JavaScript, and CSS file.
 
-`verify:performance-artifact` adds compressed and route-level RSC regression
-budgets without replacing those raw ceilings. Total RSC size is an advisory
-capacity signal because valid content growth increases it; average and
-per-surface route payloads remain hard gates. The current configured gates are:
+`verify:performance-artifact` adds Gzip, Brotli, and route-level RSC regression
+budgets without replacing those raw ceilings. Gzip models the observed GitHub
+Pages delivery path; Brotli remains a hard regression guard and the target for
+hosts that negotiate it. Total RSC size is an advisory capacity signal because
+valid content growth increases it; average and per-surface route payloads
+remain hard gates. The current configured gates are:
 
 | Surface or payload | Current gate |
 |--------------------|-------------:|
+| Home initial JavaScript, Gzip | Hard limit: 274,432 bytes |
 | Home initial JavaScript, Brotli | Hard limit: 238,592 bytes |
+| Blog initial JavaScript, Gzip | Hard limit: 251,904 bytes |
 | Blog initial JavaScript, Brotli | Hard limit: 217,088 bytes |
+| Notes initial JavaScript, Gzip | Hard limit: 251,904 bytes |
 | Notes initial JavaScript, Brotli | Hard limit: 217,088 bytes |
+| Blog article initial JavaScript, Gzip | Hard limit: 251,904 bytes |
+| Blog article initial JavaScript, Brotli | Hard limit: 217,088 bytes |
+| Notes article initial JavaScript, Gzip | Hard limit: 251,904 bytes |
+| Notes article initial JavaScript, Brotli | Hard limit: 217,088 bytes |
+| Studio direct initial JavaScript, Gzip | Hard limit: 200,704 bytes |
 | Studio direct initial JavaScript, Brotli | Hard limit: 176,128 bytes |
 | Studio English default route, Brotli | Hard limit: 204,800 bytes |
 | Studio initial document CSS, Brotli | Hard limit: 3,072 bytes |
@@ -776,6 +797,10 @@ per-surface route payloads remain hard gates. The current configured gates are:
 | Largest localized Blog RSC sample | Hard limit: 50,176 bytes |
 | Largest localized Notes RSC sample | Hard limit: 43,008 bytes |
 | Largest localized Studio RSC sample | Hard limit: 30,720 bytes |
+
+The verifier also hard-gates Gzip HTML for English Home (32,768 bytes), Blog
+archive (19,456), Notes archive (18,432), one Blog article (16,384), and one
+Notes article (19,456), while reporting raw and Brotli bytes for comparison.
 
 The 2026-07-20 complete export measured Blog at 213,534 bytes and Notes at
 213,444 bytes Brotli after the deferred engagement boundary. The 217,088-byte
@@ -965,7 +990,7 @@ Main deployment path:
    runtime budgets verify the generated artifact.
 8. GitHub Actions uploads and deploys that exact artifact to GitHub Pages.
 9. Visitor browsers load static files and optional external scripts.
-10. Browser-side engagement calls go to Firebase Firestore.
+10. Browser-side engagement calls go to Firebase Firestore Lite.
 
 `firebase.json` also points hosting at `out/`, so Firebase Hosting can serve the
 same static export if used.
