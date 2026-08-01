@@ -1,50 +1,59 @@
 // Extracted from app.const.ts — profile content data. Re-assembled into
 // `profileInfo` by app.const.ts so existing imports keep working.
 
+import type { ProjectType } from "@/app/app.type";
+
+function defineProject(
+  name: string,
+  technologies: string[],
+  duration: string,
+  accomplishment: string[]
+): ProjectType {
+  return { name, technologies, duration, description: [], accomplishment };
+}
+
 export const projects = [
-    {
-      name: "LogiUP - Multi-tenant Logistics SaaS",
-      technologies: [
-        "Next.js",
-        "Electron",
-        "NestJS",
-        "TypeScript",
-        "Python",
-        "PostgreSQL",
-        "Redis",
-        "Cloudflare R2",
-        "Docker",
-        "GitHub Actions"
-      ],
-      duration: "Mar 2026 - Present",
-      description: [],
-      accomplishment: [
+  defineProject(
+    "LogiUP - Multi-tenant Logistics SaaS",
+    [
+      "Next.js",
+      "Electron",
+      "NestJS",
+      "TypeScript",
+      "Python",
+      "PostgreSQL",
+      "Redis",
+      "Cloudflare R2",
+      "Docker",
+      "GitHub Actions"
+    ],
+    "Mar 2026 - Present",
+    [
         `Led a <b>4-person engineering team</b> as <b>Tech Lead and system architect</b>, owning technical direction, architecture decisions, review standards, onboarding, and cross-repository delivery across <b>9 split repositories</b>.`,
         `Designed LogiUP as a <b>multi-tenant logistics SaaS</b>: one Next.js UI codebase for web and Electron desktop, a NestJS control plane, FastAPI AI data plane, PostgreSQL, Redis/BullMQ, Cloudflare R2, and isolated staging/production GitOps environments.`,
         `Engineered tenant isolation end to end with customer subdomains, database-backed host resolution, tenant-scoped RBAC and tokens, wildcard/on-demand TLS, and a self-owned OAuth 2.1/OIDC provider using RS256/JWKS plus PKCE/deep-link authentication for Electron.`,
         `Shipped the AI-assisted customs workflow with <b>6 least-privilege runtime roles</b>, resumable private-object uploads, human-confirmed AI suggestions, and <b>31 typed API endpoints</b> across 8 independently confirmed declaration sections.`
-      ]
-    },
-    {
-      name: "BonBon - VETC Mini App & Automotive Platform",
-      technologies: [
-        "Go",
-        "React",
-        "Next.js",
-        "React Native",
-        "PostgreSQL",
-        "Redis",
-        "PostHog",
-        "Playwright"
-      ],
-      duration: "Apr 2026 - Present",
-      description: [],
-      accomplishment: [
+    ]
+  ),
+  defineProject(
+    "BonBon - VETC Mini App & Automotive Platform",
+    [
+      "Go",
+      "React",
+      "Next.js",
+      "React Native",
+      "PostgreSQL",
+      "Redis",
+      "PostHog",
+      "Playwright"
+    ],
+    "Apr 2026 - Present",
+    [
         `Built the product integration that helped BonBon advance from MVP to a live field pilot in <b>3 months</b>, be selected as a <b>Top 3 finalist</b> at Tasco × GenAI Fund's Wash3000 MVP Demo Day, and reach the final pitch for a <b>$500K equity investment</b>.`,
         `Architected and integrated a <b>12-screen Mini App</b> into VETC's <b>4.3M-user app ecosystem</b>, with silent partner-code login, memory-only sessions, deep links, serialized foreground polling, and privacy allow-listed analytics.`,
         `Made releases safe across Go API, Backoffice, web, and mobile using kill-switch feature flags, deterministic rollout, transactional audit, checksum/CSP gates, Playwright flows, and <b>800+ unit tests</b>.`
-      ]
-    },
+    ]
+  ),
     {
       name: "Digital SAT Math",
       technologies: [

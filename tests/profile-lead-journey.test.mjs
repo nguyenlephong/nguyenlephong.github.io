@@ -101,6 +101,9 @@ test("homepage AI particle field is GPU-rendered, bounded, and motion-safe", asy
     /gl\.bufferData\(gl\.ARRAY_BUFFER, particleData, gl\.STATIC_DRAW\)/
   );
   assert.match(backdrop, /gl\.drawArrays\(gl\.POINTS, 0, vertexCount\)/);
+  assert.match(backdrop, /function resolveParticleGrid/);
+  assert.match(backdrop, /function selectParticleColor/);
+  assert.match(backdrop, /function appendParticlePair/);
   assert.match(backdrop, /const TARGET_FRAME_MS = 1000 \/ 24/);
   assert.match(backdrop, /const dprCap = nextWidth < 720 \? 1\.25 : 1\.5/);
   assert.match(backdrop, /requestIdleCallback/);
@@ -110,6 +113,7 @@ test("homepage AI particle field is GPU-rendered, bounded, and motion-safe", asy
   assert.match(backdrop, /new IntersectionObserver/);
   assert.match(css, /\.ai-particle-field/);
   assert.doesNotMatch(backdrop, /Path2D|shadowBlur|CanvasRenderingContext2D/);
+  assert.doesNotMatch(backdrop, /aria-hidden="true"/);
   assert.doesNotMatch(css, /mask-image|filter:\s*saturate/);
   assert.doesNotMatch(backdrop, /<svg|<animateMotion/);
   assert.doesNotMatch(css, /architecture-(?:grid|plane|route|node|seam)/);

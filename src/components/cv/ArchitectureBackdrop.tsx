@@ -205,66 +205,105 @@ function seededRandom(seed: number) {
   };
 }
 
+type ParticleGrid = {
+  rings: number;
+  bands: number;
+  skipRate: number;
+};
+
+function resolveParticleGrid(width: number): ParticleGrid {
+  if (width < 720) return { rings: 92, bands: 96, skipRate: 0.075 };
+  if (width < 1280) return { rings: 136, bands: 132, skipRate: 0.02 };
+  return { rings: 180, bands: 160, skipRate: 0.02 };
+}
+
+function selectParticleColor(
+  theta: number,
+  edge: number,
+  ridge: boolean,
+  colorBand: number,
+  colorRoll: number
+) {
+  if (ridge) {
+    if (Math.sin(theta * 2.1 - 0.3) > 0.25) return 0;
+    if (colorRoll > 0.58) return 3;
+    return 2;
+  }
+  if (colorBand > 0.38) {
+    if (colorRoll > 0.3) return 3;
+    return 4;
+  }
+  if (colorBand < -0.7) {
+    if (colorRoll > 0.84) return 4;
+    return 2;
+  }
+  if (edge > 0.78 && colorRoll < 0.72) return 0;
+  if (colorRoll < 0.5) return 0;
+  if (colorRoll < 0.82) return 1;
+  return 2;
+}
+
+function pushParticle(
+  values: number[],
+  theta: number,
+  band: number,
+  seed: number,
+  layer: number,
+  color: number,
+  size: number,
+  ridge: boolean,
+  fold: number,
+  sparkle: boolean
+) {
+  values.push(
+    theta,
+    band,
+    seed,
+    layer,
+    color,
+    size,
+    ridge ? 1 : 0,
+    fold,
+    sparkle ? 1 : 0
+  );
+}
+
+function appendParticlePair(
+  values: number[],
+  ring: number,
+  strip: number,
+  grid: ParticleGrid,
+  random: () => number
+) {
+  if (random() < grid.skipRate) return;
+
+  const theta = ((ring + random() - 0.5) / grid.rings) * TAU;
+  const band = ((strip + random() - 0.5) / (grid.bands - 1)) * 2 - 1;
+  const edge = Math.abs(band);
+  const ridgePosition = Math.sin(theta * 1.7 + 0.45) * 0.42;
+  const ridge = Math.abs(band - ridgePosition) < 0.045 || edge > 0.965;
+  const colorBand = Math.sin(theta * 2.35 + band * 3.1 + random() * 0.36);
+  const color = selectParticleColor(theta, edge, ridge, colorBand, random());
+  const seed = random();
+  const layer = random() * 2 - 1;
+  const ridgeScale = ridge ? 1.18 : 1;
+  const size = (0.62 + random() * 1.02) * ridgeScale;
+  const fold = random() > 0.5;
+  const sparkleThreshold = ridge ? 0.985 : 0.996;
+  const sparkle = random() > sparkleThreshold;
+
+  pushParticle(values, theta, band, seed, layer, color, size, ridge, 0, sparkle);
+  if (fold) pushParticle(values, theta, band, seed, layer, color, size, ridge, 1, false);
+}
+
 function createParticleData(width: number) {
-  const compact = width < 720;
-  const rings = compact ? 92 : width < 1280 ? 136 : 180;
-  const bands = compact ? 96 : width < 1280 ? 132 : 160;
+  const grid = resolveParticleGrid(width);
   const random = seededRandom(0x1a1f2026);
   const values: number[] = [];
 
-  for (let ring = 0; ring < rings; ring += 1) {
-    for (let strip = 0; strip < bands; strip += 1) {
-      if (random() < (compact ? 0.075 : 0.02)) continue;
-
-      const theta = ((ring + random() - 0.5) / rings) * TAU;
-      const band = ((strip + random() - 0.5) / (bands - 1)) * 2 - 1;
-      const edge = Math.abs(band);
-      const ridgePosition = Math.sin(theta * 1.7 + 0.45) * 0.42;
-      const ridge = Math.abs(band - ridgePosition) < 0.045 || edge > 0.965;
-      const colorBand = Math.sin(theta * 2.35 + band * 3.1 + random() * 0.36);
-      const colorRoll = random();
-      const color = ridge
-        ? Math.sin(theta * 2.1 - 0.3) > 0.25
-          ? 0
-          : colorRoll > 0.58
-            ? 3
-            : 2
-        : colorBand > 0.38
-          ? colorRoll > 0.3
-            ? 3
-            : 4
-          : colorBand < -0.7
-            ? colorRoll > 0.84
-              ? 4
-              : 2
-            : edge > 0.78 && colorRoll < 0.72
-              ? 0
-              : colorRoll < 0.5
-                ? 0
-                : colorRoll < 0.82
-                  ? 1
-                  : 2;
-      const seed = random();
-      const layer = random() * 2 - 1;
-      const size = (0.62 + random() * 1.02) * (ridge ? 1.18 : 1);
-      const fold = random() > 0.5;
-      const sparkle = random() > (ridge ? 0.985 : 0.996);
-
-      values.push(
-        theta,
-        band,
-        seed,
-        layer,
-        color,
-        size,
-        ridge ? 1 : 0,
-        0,
-        sparkle ? 1 : 0
-      );
-
-      if (fold) {
-        values.push(theta, band, seed, layer, color, size, ridge ? 1 : 0, 1, 0);
-      }
+  for (let ring = 0; ring < grid.rings; ring += 1) {
+    for (let strip = 0; strip < grid.bands; strip += 1) {
+      appendParticlePair(values, ring, strip, grid, random);
     }
   }
 
@@ -346,25 +385,29 @@ function mountRenderer(canvas: HTMLCanvasElement) {
   const paletteLocations = [0, 1, 2, 3, 4].map((index) =>
     getUniform(gl, program, `uPalette${index}`)
   );
-  const uniforms = {
+  const uniformCandidates = {
     time: getUniform(gl, program, "uTime"),
     compact: getUniform(gl, program, "uCompact"),
     dpr: getUniform(gl, program, "uDpr"),
     dark: getUniform(gl, program, "uDark"),
     viewport: getUniform(gl, program, "uViewport"),
-    pointer: getUniform(gl, program, "uPointer"),
-    palettes: paletteLocations
-  } as UniformLocations;
+    pointer: getUniform(gl, program, "uPointer")
+  };
 
   if (
-    attributeLocations.some((location) => location < 0) ||
-    Object.values(uniforms).some((location) => location === null) ||
-    paletteLocations.some((location) => location === null)
+    attributeLocations.includes(-1) ||
+    Object.values(uniformCandidates).includes(null) ||
+    paletteLocations.includes(null)
   ) {
     gl.deleteBuffer(buffer);
     gl.deleteProgram(program);
     return () => undefined;
   }
+
+  const uniforms = {
+    ...uniformCandidates,
+    palettes: paletteLocations
+  } as UniformLocations;
 
   gl.useProgram(program);
   gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -596,6 +639,6 @@ export default function ArchitectureBackdrop() {
   }, []);
 
   return (
-    <canvas ref={canvasRef} className="ai-particle-field" aria-hidden="true" />
+    <canvas ref={canvasRef} className="ai-particle-field" role="presentation" />
   );
 }

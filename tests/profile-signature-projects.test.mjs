@@ -51,15 +51,15 @@ test('signature projects lead the homepage and generated resume selection', asyn
   ]);
 
   assert.ok(
-    projects.indexOf('name: "LogiUP - Multi-tenant Logistics SaaS"') <
+    projects.indexOf('defineProject("LogiUP - Multi-tenant Logistics SaaS"') <
       projects.indexOf('name: "Digital SAT Math"')
   );
   assert.ok(
-    projects.indexOf('name: "BonBon - VETC Mini App & Automotive Platform"') <
+    projects.indexOf('defineProject("BonBon - VETC Mini App & Automotive Platform"') <
       projects.indexOf('name: "Digital SAT Math"')
   );
-  assert.match(projects, /duration: "Mar 2026 - Present"/);
-  assert.match(projects, /duration: "Apr 2026 - Present"/);
+  assert.match(projects, /"Mar 2026 - Present"/);
+  assert.match(projects, /"Apr 2026 - Present"/);
   assert.match(
     component,
     /'LogiUP - Multi-tenant Logistics SaaS': 'logiup'/
