@@ -15,6 +15,7 @@
     "assets:icdn": "node scripts/sync-icdn-assets.mjs",
     "seo:monitor": "node scripts/monitor-seo-field-data.mjs",
     "seo:opportunities": "node scripts/report-search-opportunities.mjs",
+    "resume:generate": "python3 scripts/generate-resume-pdf.py",
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",

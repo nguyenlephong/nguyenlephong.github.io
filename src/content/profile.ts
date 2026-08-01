@@ -11,7 +11,7 @@ export const contact = {
     twitter: "https://twitter.com/nguyenlephong17",
     facebook: "https://www.facebook.com/NguyenLePhong0107/",
     instagram: "https://www.instagram.com/anhmap0107/",
-    cv_pdf: "https://www.overleaf.com/read/frxhzzvkgqtk#229227"
+    cv_pdf: "https://nguyenlephong.github.io/NguyenLePhong_Lead_Software_Engineer.pdf"
 }
 
 export const technical_skill = {

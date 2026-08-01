@@ -18,7 +18,7 @@ test("every locale presents the current Zalo PC lead journey", async () => {
     assert.match(messages.SEO.home.title, /Lead Software Engineer/);
     assert.equal(Array.isArray(lead.summaries), true);
     assert.equal(lead.summaries.length, 1);
-    assert.equal(lead.contributions.length, 4);
+    assert.equal(lead.contributions.length, 3);
     assert.match(JSON.stringify(lead), /Zalo PC/);
     assert.match(JSON.stringify(lead), /mobile|モバイル|移动端|모바일/);
     assert.equal(typeof messages.Experience.labels.publicEvidence, "string");
@@ -31,6 +31,26 @@ test("every locale presents the current Zalo PC lead journey", async () => {
   assert.match(vi.Experience.zalo.lead.summaries[0], /02\/03\/2026/);
   assert.match(en.Experience.zalo.lead.contributions[0], /message backup/);
   assert.match(vi.Experience.zalo.lead.contributions[0], /backup tin nhắn/);
+  assert.match(en.Experience.zalo.lead.contributions[1], /zCloud offload/);
+  assert.match(vi.Experience.zalo.lead.contributions[1], /zCloud offload/);
+  assert.match(en.Experience.zalo.lead.contributions[2], /engineering team/);
+  assert.match(vi.Experience.zalo.lead.contributions[2], /team engineering/);
+  assert.match(en.Summary.intro2, /technical leadership/);
+  assert.doesNotMatch(en.Summary.intro1, /GPA/);
+});
+
+test("downloadable resume targets the generated lead-level PDF", async () => {
+  const [appConst, profile, pdf] = await Promise.all([
+    read("src/app/app.const.ts"),
+    read("src/content/profile.ts"),
+    readFile("public/NguyenLePhong_Lead_Software_Engineer.pdf"),
+  ]);
+
+  assert.match(appConst, /CV_PDF: "\/NguyenLePhong_Lead_Software_Engineer\.pdf"/);
+  assert.match(profile, /NguyenLePhong_Lead_Software_Engineer\.pdf/);
+  assert.match(pdf.subarray(0, 8).toString("latin1"), /^%PDF-/);
+  assert.ok(pdf.length > 8_000, "generated resume PDF should not be empty");
+  assert.match(pdf.toString("latin1"), /Lead Software Engineer/);
 });
 
 test("experience data groups both Zalo chapters and links public launch coverage", async () => {

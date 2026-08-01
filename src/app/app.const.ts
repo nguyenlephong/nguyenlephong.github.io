@@ -20,7 +20,7 @@ export const APP_ROUTE = {
   STUDIO: "/studio",
   APPS: "/apps",
   APPS_ENGLISH: "/apps/english",
-  CV_PDF: "/SoftwareEngineer_NguyenLePhong_0985490107_NoRefs.pdf"
+  CV_PDF: "/NguyenLePhong_Lead_Software_Engineer.pdf"
 };
 
 export const SEO = {

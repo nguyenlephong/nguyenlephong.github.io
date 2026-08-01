@@ -74,8 +74,8 @@
     "projectsTitle": "Selected work with measurable outcomes"
   },
   "Summary": {
-    "intro1": "Lead Software Engineer at Zalo PC with a Bachelor of Information Technology (minor in Software Engineering, <b>GPA 3.36</b>) and <b>8+ years</b> shipping production software across consumer-scale messaging, CDP, fintech, education, and real-estate domains.",
-    "intro2": "My strongest value sits between product delivery and platform reliability: translating ambiguous business goals into front-end systems, backend services, rollout workflows, observability, CI/CD, and stable production operations.",
+    "intro1": "Lead Software Engineer at Zalo PC with <b>8+ years</b> delivering production software across consumer-scale messaging, CDP, fintech, education, and real-estate domains.",
+    "intro2": "I combine hands-on engineering with technical leadership: turning ambiguous goals into dependable systems, guiding architecture and code quality, coordinating delivery, and strengthening observability and production operations.",
     "intro3": "<i>Recent areas of depth and evidence:</i>",
     "visionEyebrow": "Operating range",
     "hardSkillsEyebrow": "Technical depth",
@@ -146,13 +146,12 @@
     "zalo": {
       "lead": {
         "summaries": [
-          "Returned to <b>Zalo PC</b> on <b>March 2, 2026</b> as Lead Software Engineer, beginning a new chapter focused on cross-device message continuity within the wider Zalo ecosystem, which serves <b>80M+ MAU</b>."
+          "Returned to <b>Zalo PC</b> on <b>March 2, 2026</b> as Lead Software Engineer, combining hands-on delivery with technical leadership across cross-device messaging and client storage."
         ],
         "contributions": [
-          "Implemented and shipped <b>message backup on Zalo PC with restore on mobile</b>, helping users recover text conversation history when changing devices, losing a phone, or reinstalling the app.",
-          "Connected <b>desktop backup and mobile restore</b> into one recovery journey across device changes, lost phones, and app reinstalls.",
-          "Took the feature from implementation to a <b>phased production rollout in July 2026</b>; its public launch was covered by VnExpress as one of Zalo's major cross-device updates.",
-          "Extended the recovery path <b>from PC to mobile</b>, helping text conversations continue with less interruption across device transitions."
+          "Delivered <b>message backup on Zalo PC with restore on mobile</b>, helping users retain text conversation history across device changes.",
+          "Improved <b>zCloud offload reliability and observability</b>, making client-storage issues easier to detect and diagnose.",
+          "Lead the engineering team through technical decisions, code reviews, and delivery coordination."
         ]
       },
       "summary1": "Core engineer on cross-platform <b>Zalo PC</b> (Web, macOS, Windows), serving <b>15M+ MAU</b>, with ownership across product features, tracking, design-system work, and release stability.",
