@@ -39,14 +39,98 @@ test("every locale presents the current Zalo PC lead journey", async () => {
   assert.doesNotMatch(en.Summary.intro1, /GPA/);
 });
 
+test("homepage copy states capability directly without recruiter-facing meta language", async () => {
+  for (const locale of locales) {
+    const messages = JSON.parse(await read(`messages/${locale}.json`));
+
+    assert.ok(messages.Sections.aboutTitle.length < 80);
+    assert.ok(messages.Sections.experienceTitle.length < 80);
+    assert.ok(messages.Sections.projectsTitle.length < 80);
+    assert.ok(messages.CTA.title.length < 80);
+  }
+
+  const en = JSON.parse(await read("messages/en.json"));
+  const vi = JSON.parse(await read("messages/vi.json"));
+  const canonicalCopy = JSON.stringify({
+    en: { sections: en.Sections, summary: en.Summary, cta: en.CTA },
+    vi: { sections: vi.Sections, summary: vi.Summary, cta: vi.CTA }
+  });
+
+  assert.equal(
+    en.Sections.aboutTitle,
+    "Architect systems. Ship products. Lead teams."
+  );
+  assert.equal(
+    vi.Sections.aboutTitle,
+    "Kiến trúc hệ thống. Ship sản phẩm. Dẫn dắt đội ngũ."
+  );
+  assert.match(en.Summary.intro3, /product, systems, and teams/);
+  assert.match(vi.Summary.intro3, /sản phẩm, hệ thống và đội ngũ/);
+  assert.doesNotMatch(
+    canonicalCopy,
+    /recruiter|job description|nhà tuyển dụng|Cần một người|Need someone/i
+  );
+});
+
+test("homepage AI particle field is GPU-rendered, bounded, and motion-safe", async () => {
+  const [page, hero, backdrop, section, contact, reveal, css] = await Promise.all([
+    read("src/app/[locale]/(site)/page.tsx"),
+    read("src/components/cv/Hero.tsx"),
+    read("src/components/cv/ArchitectureBackdrop.tsx"),
+    read("src/components/cv/Section.tsx"),
+    read("src/components/cv/ContactCTA.tsx"),
+    read("src/components/motion/Reveal.tsx"),
+    read("src/app/[locale]/(site)/home.css")
+  ]);
+
+  assert.match(hero, /<ArchitectureBackdrop \/>/);
+  assert.match(
+    hero,
+    /dynamic\(\s*\(\) => import\(['"]@\/components\/cv\/ArchitectureBackdrop['"]\)/
+  );
+  assert.match(hero, /ssr:\s*false/);
+  assert.doesNotMatch(hero, /useReducedMotion|<m\.|<CountUp/);
+  assert.doesNotMatch(page, /MotionProvider|framer-motion/);
+  assert.doesNotMatch(section, /framer-motion|useReducedMotion|<m\./);
+  assert.doesNotMatch(contact, /framer-motion|useReducedMotion|<m\./);
+  assert.doesNotMatch(reveal, /framer-motion|useReducedMotion|<m\./);
+  assert.match(backdrop, /<canvas[^>]+className="ai-particle-field"/);
+  assert.match(backdrop, /getContext\("webgl"/);
+  assert.match(
+    backdrop,
+    /gl\.bufferData\(gl\.ARRAY_BUFFER, particleData, gl\.STATIC_DRAW\)/
+  );
+  assert.match(backdrop, /gl\.drawArrays\(gl\.POINTS, 0, vertexCount\)/);
+  assert.match(backdrop, /function resolveParticleGrid/);
+  assert.match(backdrop, /function selectParticleColor/);
+  assert.match(backdrop, /function appendParticlePair/);
+  assert.match(backdrop, /const TARGET_FRAME_MS = 1000 \/ 24/);
+  assert.match(backdrop, /const dprCap = nextWidth < 720 \? 1\.25 : 1\.5/);
+  assert.match(backdrop, /requestIdleCallback/);
+  assert.match(backdrop, /window\.requestAnimationFrame\(renderFrame\)/);
+  assert.match(backdrop, /prefers-reduced-motion: reduce/);
+  assert.match(backdrop, /new MutationObserver\(onThemeChange\)/);
+  assert.match(backdrop, /new IntersectionObserver/);
+  assert.match(css, /\.ai-particle-field/);
+  assert.doesNotMatch(backdrop, /Path2D|shadowBlur|CanvasRenderingContext2D/);
+  assert.doesNotMatch(backdrop, /aria-hidden="true"/);
+  assert.doesNotMatch(css, /mask-image|filter:\s*saturate/);
+  assert.doesNotMatch(backdrop, /<svg|<animateMotion/);
+  assert.doesNotMatch(css, /architecture-(?:grid|plane|route|node|seam)/);
+  assert.doesNotMatch(css, /home-architecture-signal-(?:light|dark)\.webp/);
+});
+
 test("downloadable resume targets the generated lead-level PDF", async () => {
   const [appConst, profile, pdf] = await Promise.all([
     read("src/app/app.const.ts"),
     read("src/content/profile.ts"),
-    readFile("public/NguyenLePhong_Lead_Software_Engineer.pdf"),
+    readFile("public/NguyenLePhong_Lead_Software_Engineer.pdf")
   ]);
 
-  assert.match(appConst, /CV_PDF: "\/NguyenLePhong_Lead_Software_Engineer\.pdf"/);
+  assert.match(
+    appConst,
+    /CV_PDF: "\/NguyenLePhong_Lead_Software_Engineer\.pdf"/
+  );
   assert.match(profile, /NguyenLePhong_Lead_Software_Engineer\.pdf/);
   assert.match(pdf.subarray(0, 8).toString("latin1"), /^%PDF-/);
   assert.ok(pdf.length > 8_000, "generated resume PDF should not be empty");
@@ -74,14 +158,15 @@ test("experience data groups both Zalo chapters and links public launch coverage
 });
 
 test("launch evidence is accessible, tracked, and reflected in structured profile data", async () => {
-  const [component, analytics, schema, rootOg, localizedOg, sharedOg] = await Promise.all([
-    read("src/components/cv/Experience.tsx"),
-    read("src/lib/analytics.ts"),
-    read("src/lib/seo/profile-schema.ts"),
-    read("src/app/opengraph-image.tsx"),
-    read("src/app/[locale]/(site)/opengraph-image.tsx"),
-    read("src/app/_og/profile-og.ts")
-  ]);
+  const [component, analytics, schema, rootOg, localizedOg, sharedOg] =
+    await Promise.all([
+      read("src/components/cv/Experience.tsx"),
+      read("src/lib/analytics.ts"),
+      read("src/lib/seo/profile-schema.ts"),
+      read("src/app/opengraph-image.tsx"),
+      read("src/app/[locale]/(site)/opengraph-image.tsx"),
+      read("src/app/_og/profile-og.ts")
+    ]);
 
   assert.match(component, /job\.contentKey/);
   assert.match(component, /target="_blank"/);

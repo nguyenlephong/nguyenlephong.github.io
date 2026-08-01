@@ -1,7 +1,7 @@
 'use client'
+import dynamic from 'next/dynamic'
 import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
-import { m, useReducedMotion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
 import {
@@ -20,7 +20,10 @@ import {
 import type { IconType } from 'react-icons'
 import { profileInfo, APP_ROUTE } from '@/app/app.const'
 import { track } from '@/lib/analytics'
-import CountUp from '@/components/motion/CountUp'
+
+const ArchitectureBackdrop = dynamic(() => import('@/components/cv/ArchitectureBackdrop'), {
+  ssr: false,
+})
 
 type StatTone = 'amber' | 'violet' | 'sky' | 'emerald' | 'rose' | 'cyan' | 'indigo' | 'lime'
 
@@ -57,44 +60,32 @@ const proofs: { icon: IconType; key: ProofKey }[] = [
   { icon: LuLayers, key: 'platform' },
 ]
 
-const ease = [0.16, 1, 0.3, 1] as const
-
 export default function Hero() {
   const t = useTranslations('Hero')
   const c = profileInfo.contact
-  const reduced = useReducedMotion()
-
-  const fade = (delay: number) =>
-    reduced
-      ? {}
-      : {
-          initial: { opacity: 0, y: 12 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.6, delay, ease },
-        }
 
   return (
     <section className="hero" aria-labelledby="hero-heading">
-      <div className="hero-bleed" aria-hidden="true" />
+      <div className="hero-bleed" aria-hidden="true">
+        <ArchitectureBackdrop />
+      </div>
       <div className="hero-grid">
         <div className="hero-meta">
-          <m.span className="eyebrow" {...fade(0)}>
+          <span className="eyebrow">
             <span className="status-dot" aria-hidden="true" /> {t('eyebrow')}
-          </m.span>
-          <m.h1 id="hero-heading" className="hero-name" {...fade(0.08)}>
+          </span>
+          <h1 id="hero-heading" className="hero-name">
             Nguyen <span className="accent">Le Phong</span>
-          </m.h1>
-          <m.p className="hero-role" {...fade(0.16)}>
+          </h1>
+          <p className="hero-role">
             {t('role')}
             <br />
             <span className="hero-role-sub">{t('roleSub')}</span>
-          </m.p>
+          </p>
 
-          <m.p className="hero-bio" {...fade(0.24)}>
-            {t('bio')}
-          </m.p>
+          <p className="hero-bio">{t('bio')}</p>
 
-          <m.ul className="hero-proof" {...fade(0.3)}>
+          <ul className="hero-proof">
             {proofs.map((item) => {
               const Icon = item.icon
               return (
@@ -104,9 +95,9 @@ export default function Hero() {
                 </li>
               )
             })}
-          </m.ul>
+          </ul>
 
-          <m.ul className="hero-contact" {...fade(0.34)}>
+          <ul className="hero-contact">
             <li>
               <LuMapPin size={16} aria-hidden="true" />
               <span>{t('location')}</span>
@@ -129,9 +120,9 @@ export default function Hero() {
                 <span>{c.phone}</span>
               </a>
             </li>
-          </m.ul>
+          </ul>
 
-          <m.div className="hero-cta" {...fade(0.4)}>
+          <div className="hero-cta">
             <a
               href={APP_ROUTE.CV_PDF}
               target="_blank"
@@ -148,9 +139,9 @@ export default function Hero() {
             >
               {t('getInTouch')}
             </a>
-          </m.div>
+          </div>
 
-          <m.ul className="social-row" aria-label={t('socialProfiles')} {...fade(0.46)}>
+          <ul className="social-row" aria-label={t('socialProfiles')}>
             <SocialIcon href={c.linkedin} label="LinkedIn" platform="linkedin">
               <FaLinkedin size={18} />
             </SocialIcon>
@@ -163,33 +154,17 @@ export default function Hero() {
             <SocialIcon href={c.youtube} label="YouTube" platform="youtube">
               <FaYoutube size={18} />
             </SocialIcon>
-          </m.ul>
+          </ul>
         </div>
 
-        <m.aside
-          className="hero-stats"
-          aria-label={t('careerHighlights')}
-          initial={reduced ? false : 'hidden'}
-          animate={reduced ? undefined : 'visible'}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.08, delayChildren: 0.35 } },
-          }}
-        >
+        <aside className="hero-stats" aria-label={t('careerHighlights')}>
           {stats.map((s) => {
             const Icon = s.icon
             const max = Math.max(...s.spark)
             const label = t(`stats.${s.key}`)
             const caption = t(`stats.${s.key}Caption`)
             return (
-              <m.div
-                key={s.key}
-                className={`stat-card stat-tone-${s.tone}`}
-                variants={{
-                  hidden: { opacity: 0, y: 14 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
-                }}
-              >
+              <div key={s.key} className={`stat-card stat-tone-${s.tone}`}>
                 <span className="stat-glow" aria-hidden="true" />
                 <div className="stat-head">
                   <span className="stat-icon" aria-hidden="true">
@@ -201,20 +176,17 @@ export default function Hero() {
                     ))}
                   </span>
                 </div>
-                <div className="stat-value">
-                  <CountUp value={s.value} />
-                </div>
+                <div className="stat-value">{s.value}</div>
                 <div className="stat-label">{label}</div>
                 <div className="stat-caption">{caption}</div>
-              </m.div>
+              </div>
             )
           })}
-        </m.aside>
+        </aside>
       </div>
     </section>
   )
 }
-
 function SocialIcon({
   href,
   label,

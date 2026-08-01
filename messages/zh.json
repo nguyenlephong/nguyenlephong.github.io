@@ -65,19 +65,19 @@
     }
   },
   "Sections": {
-    "aboutEyebrow": "简介",
-    "aboutTitle": "关于我和我的工作方式",
-    "experienceEyebrow": "职业",
-    "experienceTitle": "我交付过的地方",
-    "projectsEyebrow": "作品",
-    "projectsTitle": "精选项目"
+    "aboutEyebrow": "核心能力",
+    "aboutTitle": "设计系统。交付产品。带领团队。",
+    "experienceEyebrow": "经历",
+    "experienceTitle": "各阶段的关键影响",
+    "projectsEyebrow": "项目",
+    "projectsTitle": "代表项目与成果"
   },
   "Summary": {
     "intro1": "Zalo PC Lead Software Engineer，具备 <b>8+ 年</b>生产软件交付经验，覆盖大规模通信、CDP、金融科技、教育与房地产领域。",
     "intro2": "兼顾一线工程实践与技术领导：将模糊目标转化为可靠系统，指导架构与代码质量，协调交付，并持续提升可观测性与生产运维能力。",
-    "intro3": "<i>以下是我近几年专注的硬技能:</i>",
-    "visionEyebrow": "我的工作方式",
-    "hardSkillsEyebrow": "硬技能",
+    "intro3": "<i>聚焦产品、系统与团队三个层面。</i>",
+    "visionEyebrow": "核心能力",
+    "hardSkillsEyebrow": "技术基础",
     "pillars": {
       "endToEnd": {
         "title": "端到端工程师",
@@ -90,8 +90,8 @@
         "chip": "30+ 租户在线"
       },
       "leadership": {
-        "title": "交付领导",
-        "body": "带领 11+ 工程师 — 招聘、组织设计、RFC、Runbook、发布手册、1:1 辅导。",
+        "title": "技术与团队领导力",
+        "body": "通过清晰的 ownership、招聘、RFC、runbook、rollout playbook 和 1:1 coaching 带领开发与 QC 团队。",
         "chip": "11 人团队"
       },
       "fintech": {
@@ -192,6 +192,21 @@
     }
   },
   "Projects": {
+    "logiup": {
+      "accomplishments": [
+        "作为 <b>Tech Lead 和系统架构师</b>带领一支<b>4 人工程团队</b>，负责技术方向、架构决策、评审规范、入职培养及跨<b>9 个独立代码仓库</b>的交付。",
+        "将 LogiUP 设计为<b>多租户物流 SaaS</b>：Web 与 Electron 桌面端共享一套 Next.js UI codebase，采用 NestJS control plane、FastAPI AI data plane、PostgreSQL、Redis/BullMQ、Cloudflare R2，以及相互隔离的 staging/production GitOps 环境。",
+        "构建端到端租户隔离，包括客户专属子域名、数据库驱动的 host resolution、tenant-scoped RBAC 与 token、wildcard/on-demand TLS，以及自主管理的 OAuth 2.1/OIDC provider，使用 RS256/JWKS 和 Electron PKCE/deep-link 认证。",
+        "交付 AI 辅助海关申报 workflow，以<b>6 个最小权限 runtime role</b>隔离职责，并提供可恢复的私有对象上传、人工确认的 AI 建议及覆盖 8 个独立确认区段的<b>31 个强类型 API endpoint</b>。"
+      ]
+    },
+    "bonbon": {
+      "accomplishments": [
+        "在 <b>3 个月</b>内完成支撑 BonBon 从 MVP 进入真实场景试点的产品集成，在 Tasco × GenAI Fund Wash3000 MVP Demo Day 跻身<b>前三名决赛团队</b>，并进入争取<b>50 万美元股权投资</b>的最终路演。",
+        "架构并将 <b>12 屏 Mini App</b>集成到拥有<b>430 万用户</b>的 VETC 应用生态，支持 partner code 静默登录、纯内存 session、deep link、前台串行轮询与基于 PII allow-list 的 analytics。",
+        "通过 kill-switch feature flag、确定性 rollout、事务审计、checksum/CSP 门禁、Playwright 流程和 <b>800+ 单元测试</b>，保障 Go API、Backoffice、Web 与 Mobile 的发布安全。"
+      ]
+    },
     "sat": {
       "accomplishments": [
         "统筹从 UI/UX 设计、产品工程到用户行为分析的产品开发,在两个月内取得超过 <b>10,000</b> 次访问与 <b>3,000</b> 次注册的全球用户基础。",
@@ -254,10 +269,10 @@
     }
   },
   "CTA": {
-    "eyebrow": "一起做点什么",
-    "title": "有值得交付的硬核问题吗?",
-    "body": "我最擅长的是产品快速扩张、团队需要清晰方向、基础设施必须在高负载下稳定运行的场景。请联系我 — 我会阅读每一条消息。",
-    "emailMe": "发邮件",
+    "eyebrow": "联系",
+    "title": "交流产品与系统问题",
+    "body": "我关注同时涉及产品交付、系统可靠性与技术领导力的问题。",
+    "emailMe": "邮件",
     "resumePdf": "简历 (PDF)",
     "linkedin": "LinkedIn"
   },

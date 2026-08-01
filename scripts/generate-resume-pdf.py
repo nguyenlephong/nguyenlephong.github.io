@@ -245,10 +245,10 @@ def footer(canvas, document) -> None:
     canvas.setTitle("Nguyen Le Phong - Lead Software Engineer Resume")
     canvas.setAuthor("Nguyen Le Phong")
     canvas.setSubject(
-        "Lead Software Engineer resume - Zalo PC, message backup, zCloud offload, and technical leadership"
+        "Lead Software Engineer resume - Zalo PC, LogiUP, BonBon, and technical leadership"
     )
     canvas.setKeywords(
-        "Lead Software Engineer, Technical Lead, Zalo PC, Electron, TypeScript, React, System Design"
+        "Lead Software Engineer, Technical Lead, Zalo PC, LogiUP, BonBon, Go, Python, React, System Design"
     )
     canvas.setStrokeColor(RULE)
     canvas.setLineWidth(0.4)
@@ -373,6 +373,7 @@ def generate_pdf(data: dict, output: Path) -> None:
                 Paragraph(f"- {escaped(accomplishment)}", styles["bullet"])
             )
 
+    story.append(Spacer(1, 3))
     story.extend(section_heading("Education", styles))
     for item in data["education"]:
         education_row = Table(
@@ -409,9 +410,20 @@ def verify_pdf(output: Path) -> None:
     normalized_text = re.sub(r"\s+", " ", text)
     required = [
         "Lead Software Engineer",
+        "building production products",
         "Mar 2, 2026 - Present",
         "message backup",
         "zCloud offload",
+        "LogiUP - Multi-tenant Logistics SaaS",
+        "BonBon - VETC Mini App & Automotive Platform",
+        "4-person engineering team",
+        "Tech Lead and system architect",
+        "Electron desktop",
+        "OAuth 2.1/OIDC",
+        "31 typed API endpoints",
+        "Top 3 finalist",
+        "$500K equity investment",
+        "4.3M-user app ecosystem",
         "Aug 2025 - Mar 2026",
         "8+ years",
     ]

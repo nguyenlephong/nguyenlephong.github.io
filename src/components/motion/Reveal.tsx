@@ -1,5 +1,3 @@
-'use client'
-import { m, useReducedMotion, type Variants } from 'framer-motion'
 import React, { type ReactNode } from 'react'
 
 type RevealProps = {
@@ -10,38 +8,13 @@ type RevealProps = {
   as?: 'div' | 'section' | 'article' | 'li' | 'header'
 }
 
-const defaultVariants: Variants = {
-  hidden: { opacity: 0, y: 14 },
-  visible: { opacity: 1, y: 0 },
-}
-
 export default function Reveal({
   children,
-  delay = 0,
-  y = 14,
   className,
   as = 'div',
 }: RevealProps) {
-  const reduced = useReducedMotion()
-  const MotionTag = m[as] as typeof m.div
-
-  if (reduced) {
-    const Tag = as as keyof React.JSX.IntrinsicElements
-    return <Tag className={className}>{children}</Tag>
-  }
-
-  return (
-    <MotionTag
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
-      variants={defaultVariants}
-    >
-      {children}
-    </MotionTag>
-  )
+  const Tag = as as keyof React.JSX.IntrinsicElements
+  return <Tag className={className}>{children}</Tag>
 }
 
 type StaggerProps = {
@@ -53,32 +26,11 @@ type StaggerProps = {
 
 export function Stagger({
   children,
-  stagger = 0.07,
   className,
   as = 'div',
 }: StaggerProps) {
-  const reduced = useReducedMotion()
-  const MotionTag = m[as] as typeof m.div
-
-  if (reduced) {
-    const Tag = as as keyof React.JSX.IntrinsicElements
-    return <Tag className={className}>{children}</Tag>
-  }
-
-  return (
-    <MotionTag
-      className={className}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '0px 0px -60px 0px' }}
-      variants={{
-        hidden: {},
-        visible: { transition: { staggerChildren: stagger, delayChildren: 0.05 } },
-      }}
-    >
-      {children}
-    </MotionTag>
-  )
+  const Tag = as as keyof React.JSX.IntrinsicElements
+  return <Tag className={className}>{children}</Tag>
 }
 
 type StaggerItemProps = {
@@ -94,32 +46,10 @@ export function StaggerItem({
   as = 'div',
   onMouseEnter,
 }: StaggerItemProps) {
-  const reduced = useReducedMotion()
-  const MotionTag = m[as] as typeof m.div
-
-  if (reduced) {
-    const Tag = as as keyof React.JSX.IntrinsicElements
-    return (
-      <Tag className={className} onMouseEnter={onMouseEnter}>
-        {children}
-      </Tag>
-    )
-  }
-
+  const Tag = as as keyof React.JSX.IntrinsicElements
   return (
-    <MotionTag
-      className={className}
-      onMouseEnter={onMouseEnter}
-      variants={{
-        hidden: { opacity: 0, y: 10 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
-        },
-      }}
-    >
+    <Tag className={className} onMouseEnter={onMouseEnter}>
       {children}
-    </MotionTag>
+    </Tag>
   )
 }

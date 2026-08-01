@@ -65,19 +65,19 @@
     }
   },
   "Sections": {
-    "aboutEyebrow": "Profil",
-    "aboutTitle": "Un aperçu de qui je suis et comment je travaille",
-    "experienceEyebrow": "Carrière",
-    "experienceTitle": "Là où j'ai livré",
-    "projectsEyebrow": "Travaux",
-    "projectsTitle": "Projets sélectionnés"
+    "aboutEyebrow": "Compétences clés",
+    "aboutTitle": "Concevoir les systèmes. Livrer les produits. Diriger les équipes.",
+    "experienceEyebrow": "Expérience",
+    "experienceTitle": "Impact dans chaque rôle",
+    "projectsEyebrow": "Projets",
+    "projectsTitle": "Projets sélectionnés et résultats"
   },
   "Summary": {
     "intro1": "Lead Software Engineer chez Zalo PC avec <b>8+ ans</b> de livraison de logiciels en production dans la messagerie grand public, le CDP, la fintech, l'éducation et l'immobilier.",
     "intro2": "Je combine ingénierie hands-on et leadership technique : transformer des objectifs ambigus en systèmes fiables, guider l'architecture et la qualité du code, coordonner la livraison, et renforcer l'observabilité ainsi que les opérations de production.",
-    "intro3": "<i>Voici mes compétences techniques privilégiées ces dernières années :</i>",
-    "visionEyebrow": "Comment je travaille",
-    "hardSkillsEyebrow": "Compétences techniques",
+    "intro3": "<i>Un travail centré sur le produit, les systèmes et les équipes.</i>",
+    "visionEyebrow": "Compétences clés",
+    "hardSkillsEyebrow": "Fondations techniques",
     "pillars": {
       "endToEnd": {
         "title": "Ingénieur end-to-end",
@@ -90,8 +90,8 @@
         "chip": "30+ tenants en prod"
       },
       "leadership": {
-        "title": "Leadership de livraison",
-        "body": "Dirige 11+ ingénieurs — recrutement, organisation, RFC, runbooks, playbooks de rollout, coaching 1:1.",
+        "title": "Leadership technique et d'équipe",
+        "body": "Encadrer les équipes de développement et de QC par un ownership clair, le recrutement, les RFC, runbooks, rollout playbooks et le coaching 1:1.",
         "chip": "Équipe de 11"
       },
       "fintech": {
@@ -192,6 +192,21 @@
     }
   },
   "Projects": {
+    "logiup": {
+      "accomplishments": [
+        "Direction d'une <b>équipe engineering de 4 personnes</b> en tant que <b>Tech Lead et system architect</b>, avec la responsabilité de la direction technique, des décisions d'architecture, des standards de review, de l'onboarding et de la livraison sur <b>9 dépôts indépendants</b>.",
+        "Conception de LogiUP comme un <b>SaaS logistique multi-tenant</b> : un même UI codebase Next.js pour le web et Electron desktop, un control plane NestJS, un AI data plane FastAPI, PostgreSQL, Redis/BullMQ, Cloudflare R2 et des environnements GitOps staging/production isolés.",
+        "Conception de l'isolation tenant de bout en bout avec sous-domaines clients, résolution d'hôte pilotée par la base, RBAC et tokens tenant-scoped, wildcard/on-demand TLS, ainsi qu'un provider OAuth 2.1/OIDC autonome utilisant RS256/JWKS et l'authentification PKCE/deep-link pour Electron.",
+        "Livraison du workflow douanier assisté par IA avec <b>6 rôles runtime à privilèges minimaux</b>, uploads private-object reprenables, suggestions IA confirmées par l'utilisateur et <b>31 endpoints API typés</b> sur 8 sections de déclaration confirmables indépendamment."
+      ]
+    },
+    "bonbon": {
+      "accomplishments": [
+        "Réalisation de l'intégration produit qui a accompagné BonBon du MVP au pilote terrain en <b>3 mois</b>, avec une place parmi les <b>3 finalistes</b> au Wash3000 MVP Demo Day de Tasco × GenAI Fund et un pitch final pour un <b>investissement en capital de 500 k$</b>.",
+        "Architecture et intégration d'une <b>Mini App de 12 écrans</b> dans l'écosystème applicatif VETC de <b>4,3 millions d'utilisateurs</b>, avec silent login par partner code, sessions en mémoire, deep links, polling sérialisé et analytics sur allow-list PII.",
+        "Sécurisation des releases sur l'API Go, le Backoffice, le web et le mobile grâce aux kill-switch feature flags, rollout déterministe, audit transactionnel, gates checksum/CSP, parcours Playwright et <b>800+ tests unitaires</b>."
+      ]
+    },
     "sat": {
       "accomplishments": [
         "Orchestration du développement produit couvrant design UI/UX, ingénierie produit et analyse comportementale, aboutissant à une base utilisateurs globale dépassant <b>10 000</b> visites et <b>3 000</b> inscriptions en deux mois.",
@@ -254,10 +269,10 @@
     }
   },
   "CTA": {
-    "eyebrow": "Construisons quelque chose",
-    "title": "Un problème difficile qui mérite d'être livré ?",
-    "body": "Je suis le plus utile quand les produits scalent vite, quand les équipes ont besoin de clarté et quand l'infra doit tenir sous charge. Contactez-moi — je lis chaque message.",
-    "emailMe": "M'écrire",
+    "eyebrow": "Échanger",
+    "title": "Parlons produit et systèmes",
+    "body": "Je m'intéresse aux problèmes qui réunissent delivery produit, fiabilité des systèmes et leadership technique.",
+    "emailMe": "E-mail",
     "resumePdf": "CV (PDF)",
     "linkedin": "LinkedIn"
   },

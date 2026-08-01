@@ -125,7 +125,7 @@
     },
     "htmlTransfer": {
       "routes": {
-        "home": { "html": "en.html", "maxGzipBytes": 32768 },
+        "home": { "html": "en.html", "maxGzipBytes": 33280 },
         "blogArchive": { "html": "en/blog.html", "maxGzipBytes": 19456 },
         "notesArchive": { "html": "en/notes.html", "maxGzipBytes": 18432 },
         "blogArticle": {

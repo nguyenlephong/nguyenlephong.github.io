@@ -1,7 +1,6 @@
 'use client'
 import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
-import { m, useReducedMotion } from 'framer-motion'
 import { LuMail, LuDownload, LuArrowUpRight } from 'react-icons/lu'
 import { profileInfo, APP_ROUTE } from '@/app/app.const'
 import { track } from '@/lib/analytics'
@@ -9,18 +8,9 @@ import { track } from '@/lib/analytics'
 export default function ContactCTA() {
   const t = useTranslations('CTA')
   const c = profileInfo.contact
-  const reduced = useReducedMotion()
-  const reveal = reduced
-    ? {}
-    : {
-        initial: { opacity: 0, y: 18 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, margin: '0px 0px -80px 0px' },
-        transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
-      }
   return (
     <section className="cta" aria-labelledby="cta-title">
-      <m.div className="cta-inner" {...reveal}>
+      <div className="cta-inner">
         <p className="cta-eyebrow">{t('eyebrow')}</p>
         <h2 id="cta-title" className="cta-title">
           {t('title')}
@@ -54,7 +44,7 @@ export default function ContactCTA() {
             <LuArrowUpRight size={18} aria-hidden="true" /> {t('linkedin')}
           </Link>
         </div>
-      </m.div>
+      </div>
     </section>
   )
 }
