@@ -125,10 +125,8 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
   }
 
   assert.doesNotMatch(siteLayout, /\bMotionProvider\b|\bBlogReaderTools\b/);
-  assert.match(
-    homePage,
-    /<MotionProvider>[\s\S]*<main>[\s\S]*<\/MotionProvider>/
-  );
+  assert.match(homePage, /<main>[\s\S]*<ScopedIntlProvider scope="home">/);
+  assert.doesNotMatch(homePage, /\bMotionProvider\b|\bframer-motion\b/);
   assert.match(
     galleryPage,
     /<MotionProvider>[\s\S]*<main className="gallery-showcase">[\s\S]*<\/MotionProvider>/

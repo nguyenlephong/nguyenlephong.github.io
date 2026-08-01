@@ -25,6 +25,7 @@
     "check": "npm run typecheck && npm run lint && npm test",
     "quality": "npm run check && npm run build && npm run verify:pagination && npm run verify:artifact && npm run verify:performance-artifact && npm run verify:runtime-boundaries && npm run verify:offline",
     "verify:artifact": "node scripts/verify-static-artifact.mjs",
+    "verify:hero-animation": "node scripts/verify-hero-animation-performance.mjs",
     "verify:performance-artifact": "node scripts/verify-performance-artifact.mjs",
     "verify:runtime-boundaries": "node scripts/verify-runtime-boundaries.mjs",
     "verify:studio-artifact": "node scripts/verify-studio-artifact.mjs",

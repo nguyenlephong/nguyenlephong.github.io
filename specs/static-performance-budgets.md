@@ -174,8 +174,11 @@ route-oriented measurements.
 The first hard ceilings are the 2026-07-18 fixed-date baseline plus a narrow
 route-level tolerance. They are regression guards, not performance goals. The
 total RSC warning has more capacity runway because it includes legitimate
-content growth. Each later optimization commit must lower the relevant hard
-ceiling after its new baseline is verified.
+content growth. Later optimization work should lower the relevant hard ceiling
+after its new baseline is verified. Deliberate indexable-content additions may
+rebaseline an HTML route only from a complete measured artifact, with the
+smallest practical transfer allowance and without relaxing its JavaScript or
+CSS budgets.
 
 After the deferred engagement boundary, the 2026-07-20 complete export measured
 Blog at 213,534 bytes and Notes at 213,444 bytes Brotli. Their hard ceilings are
@@ -224,6 +227,16 @@ below are one deterministic local build, not field performance:
 | Notes archive |       73,214 |        17,466 |          13,341 |     18,432 |
 | Blog article  |       70,524 |        15,763 |          12,626 |     16,384 |
 | Notes article |       70,391 |        18,487 |          13,050 |     19,456 |
+
+The 2026-08-01 Home update added the evidence-backed LogiUP and BonBon case
+studies to the indexable CV while moving the decorative AI manifold into an
+asynchronous WebGL chunk. Removing viewport animation from the indexable CV
+content then reduced the complete export to 135,981 raw bytes, 32,900 Gzip
+bytes, and 21,838 Brotli bytes. The Home HTML ceiling is therefore rebaselined
+narrowly to 33,280 Gzip bytes, leaving 380 bytes of measured headroom without
+relaxing the JavaScript or CSS limits. The same export measured Home initial
+JavaScript at 239.3 KiB Gzip and 207.7 KiB Brotli, down from the prior 265.3
+KiB Gzip and 231.0 KiB Brotli snapshot.
 
 ## Acceptance criteria
 

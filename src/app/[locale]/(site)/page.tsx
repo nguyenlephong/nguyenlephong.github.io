@@ -19,7 +19,6 @@ import {
 } from '@/lib/seo/profile-schema'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
-import MotionProvider from '@/components/motion/MotionProvider'
 import './home.css'
 
 type Props = {
@@ -44,48 +43,46 @@ export default async function MainPage({ params }: Props) {
   const profilePageSchema = buildProfilePageSchema(locale as Locale, title, description)
 
   return (
-    <MotionProvider>
-      <main>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(personSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(profilePageSchema) }}
-        />
-        <PageViewTracker />
-        <PageTracker page="home" eventName="page_view" section="cv_main" />
-        <ScopedIntlProvider scope="home">
-          <div className="container">
-            <Hero />
+    <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(profilePageSchema) }}
+      />
+      <PageViewTracker />
+      <PageTracker page="home" eventName="page_view" section="cv_main" />
+      <ScopedIntlProvider scope="home">
+        <div className="container">
+          <Hero />
 
-            <Section id="about" eyebrow={t('aboutEyebrow')} title={t('aboutTitle')}>
-              <Summary />
-            </Section>
+          <Section id="about" eyebrow={t('aboutEyebrow')} title={t('aboutTitle')}>
+            <Summary />
+          </Section>
 
-            <Section
-              id="experience"
-              eyebrow={t('experienceEyebrow')}
-              title={t('experienceTitle')}
-            >
-              <Experience data={profileInfo.experience} />
-            </Section>
+          <Section
+            id="experience"
+            eyebrow={t('experienceEyebrow')}
+            title={t('experienceTitle')}
+          >
+            <Experience data={profileInfo.experience} />
+          </Section>
 
-            <Section
-              id="projects"
-              eyebrow={t('projectsEyebrow')}
-              title={t('projectsTitle')}
-            >
-              <Projects data={profileInfo.projects} />
-            </Section>
+          <Section
+            id="projects"
+            eyebrow={t('projectsEyebrow')}
+            title={t('projectsTitle')}
+          >
+            <Projects data={profileInfo.projects} />
+          </Section>
 
-            <div id="contact">
-              <ContactCTA />
-            </div>
+          <div id="contact">
+            <ContactCTA />
           </div>
-        </ScopedIntlProvider>
-      </main>
-    </MotionProvider>
+        </div>
+      </ScopedIntlProvider>
+    </main>
   )
 }
