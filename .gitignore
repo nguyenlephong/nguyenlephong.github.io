@@ -15,6 +15,7 @@
 
 # testing
 /coverage
+/output/pdf/
 
 # OG image build cache (populated/restored by CI)
 /public/og-cache/*.png

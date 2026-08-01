@@ -73,8 +73,8 @@
     "projectsTitle": "Projets sélectionnés"
   },
   "Summary": {
-    "intro1": "Lead Software Engineer chez Zalo PC, titulaire d'une Licence en Technologies de l'Information (mineure en Génie Logiciel, <b>GPA 3,36</b>) avec <b>8+ ans</b> à livrer des logiciels en production dans la messagerie grand public, le CDP, la fintech, l'éducation et l'immobilier.",
-    "intro2": "Expérience concrète dans la conception, la construction et l'exploitation de systèmes de bout en bout — des applications front-end et services backend aux pipelines CI/CD, workflows de release et infrastructure de production — avec un fort accent sur l'automatisation, la clarté opérationnelle et la livraison fiable.",
+    "intro1": "Lead Software Engineer chez Zalo PC avec <b>8+ ans</b> de livraison de logiciels en production dans la messagerie grand public, le CDP, la fintech, l'éducation et l'immobilier.",
+    "intro2": "Je combine ingénierie hands-on et leadership technique : transformer des objectifs ambigus en systèmes fiables, guider l'architecture et la qualité du code, coordonner la livraison, et renforcer l'observabilité ainsi que les opérations de production.",
     "intro3": "<i>Voici mes compétences techniques privilégiées ces dernières années :</i>",
     "visionEyebrow": "Comment je travaille",
     "hardSkillsEyebrow": "Compétences techniques",
@@ -149,13 +149,12 @@
     "zalo": {
       "lead": {
         "summaries": [
-          "Retour chez <b>Zalo PC</b> le <b>2 mars 2026</b> comme Lead Software Engineer, ouvrant un nouveau chapitre centré sur la continuité des messages entre appareils dans l'écosystème Zalo, qui sert <b>80M+ MAU</b>."
+          "Retour chez <b>Zalo PC</b> le <b>2 mars 2026</b> comme Lead Software Engineer, avec une contribution hands-on et un leadership technique sur la messagerie cross-device et le stockage client."
         ],
         "contributions": [
-          "Implémentation et livraison de la <b>sauvegarde des messages sur Zalo PC avec restauration sur mobile</b>, permettant de récupérer l'historique texte lors d'un changement d'appareil, d'une perte de téléphone ou d'une réinstallation.",
-          "Réunion de la <b>sauvegarde desktop et de la restauration mobile</b> dans un même parcours de récupération pour les changements d'appareil, téléphones perdus et réinstallations.",
-          "Passage de l'implémentation à un <b>rollout progressif en production en juillet 2026</b> ; le lancement public a été couvert par VnExpress parmi les mises à jour cross-device majeures de Zalo.",
-          "Extension du parcours de récupération <b>du PC vers le mobile</b>, afin de poursuivre les conversations texte avec moins d'interruption lors d'un changement d'appareil."
+          "Livraison de la <b>sauvegarde des messages sur Zalo PC avec restauration sur mobile</b>, afin de conserver l'historique texte lors d'un changement d'appareil.",
+          "Amélioration de la <b>fiabilité et de l'observabilité du zCloud offload</b>, rendant les problèmes de stockage client plus faciles à détecter et diagnostiquer.",
+          "Pilotage de l'équipe d'ingénierie à travers les décisions techniques, les revues de code et la coordination de la livraison."
         ]
       },
       "summary1": "Développeur cœur de l'application multi-plateforme <b>Zalo PC</b> (Web, macOS, Windows), servant <b>15M+ MAU</b>. Livraison de fonctionnalités clés comme le dark mode, le thème dynamique et le suivi des comportements utilisateurs. Pilotage du développement d'un flow promotionnel et d'un <b>design system</b> scalable pour <b>50+ développeurs</b>. Optimisation des performances, amélioration de la maintenabilité et contribution à la croissance via des solutions robustes et efficaces.",

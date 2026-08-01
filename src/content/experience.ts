@@ -4,20 +4,19 @@
 export const experience = [
     {
       company: "Zalo PC - VNG Corp",
-      location: "VNG Campus - District 7",
+      location: "Ho Chi Minh City, Vietnam",
       jobs: [
         {
           title: "Lead Software Engineer",
           duration: "Mar 2, 2026 - Present",
           contentKey: "lead",
           summaries: [
-            "Returned to <b>Zalo PC</b> as a Lead Software Engineer, beginning a new chapter focused on cross-device message continuity within the wider Zalo ecosystem, which serves more than <b>80 million monthly users</b>."
+            "Returned to <b>Zalo PC</b> as a Lead Software Engineer, combining hands-on delivery with technical leadership across cross-device messaging and client storage."
           ],
           key_contribution: [
-            "Implemented and shipped <b>message backup on Zalo PC with restore on mobile</b>, helping users recover text conversation history when changing devices, losing a phone, or reinstalling the app.",
-            "Connected desktop backup and mobile restore into one recovery journey across device changes, lost phones, and app reinstalls.",
-            "Took the feature from implementation to a phased production rollout in July 2026; the launch was publicly covered by VnExpress as one of Zalo's major cross-device updates.",
-            "Extended the recovery path from PC to mobile, helping text conversations continue with less interruption across device transitions."
+            "Delivered <b>message backup on Zalo PC with restore on mobile</b>, helping users retain text conversation history across device changes.",
+            "Improved <b>zCloud offload reliability and observability</b>, making client-storage issues easier to detect and diagnose.",
+            "Lead the engineering team through technical decisions, code reviews, and delivery coordination."
           ],
           key_techs: ["React", "Node.js", "Electron", "TypeScript", "Kotlin"],
           evidence: {
