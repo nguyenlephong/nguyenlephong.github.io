@@ -65,19 +65,19 @@
     }
   },
   "Sections": {
-    "aboutEyebrow": "プロフィール",
-    "aboutTitle": "私自身と仕事の進め方について",
-    "experienceEyebrow": "キャリア",
-    "experienceTitle": "これまでの出荷先",
-    "projectsEyebrow": "ワーク",
-    "projectsTitle": "主要プロジェクト"
+    "aboutEyebrow": "強み",
+    "aboutTitle": "システムを設計する。プロダクトを届ける。チームを率いる。",
+    "experienceEyebrow": "経験",
+    "experienceTitle": "役割ごとの成果",
+    "projectsEyebrow": "プロジェクト",
+    "projectsTitle": "主要プロジェクトと成果"
   },
   "Summary": {
     "intro1": "Zalo PC の Lead Software Engineer。大規模メッセージング、CDP、フィンテック、教育、不動産で <b>8+ 年</b>にわたり本番ソフトウェアを提供しています。",
     "intro2": "ハンズオンのエンジニアリングと技術リードを両立し、曖昧な目標を信頼性の高いシステムへ変換しながら、アーキテクチャ、コード品質、デリバリー、可観測性、本番運用を改善しています。",
-    "intro3": "<i>近年フォーカスしているハードスキルは以下のとおりです:</i>",
-    "visionEyebrow": "私の働き方",
-    "hardSkillsEyebrow": "ハードスキル",
+    "intro3": "<i>製品、システム、チームの3つの層に注力しています。</i>",
+    "visionEyebrow": "中核スキル",
+    "hardSkillsEyebrow": "技術基盤",
     "pillars": {
       "endToEnd": {
         "title": "エンドツーエンドエンジニア",
@@ -90,8 +90,8 @@
         "chip": "30+ テナント稼働中"
       },
       "leadership": {
-        "title": "デリバリーリード",
-        "body": "11 名以上のエンジニアを率いる — 採用、組織設計、RFC、Runbook、ロールアウト手順、1:1 コーチング。",
+        "title": "技術・チームリーダーシップ",
+        "body": "明確な ownership、採用、RFC、runbook、rollout playbook、1:1 coaching を通じて developer と QC team をリード。",
         "chip": "11 名チーム"
       },
       "fintech": {
@@ -192,6 +192,21 @@
     }
   },
   "Projects": {
+    "logiup": {
+      "accomplishments": [
+        "<b>Tech Lead兼system architect</b>として<b>4名のengineering team</b>を率い、技術方針、architecture decision、review standard、onboarding、および<b>9つのsplit repository</b>を横断するdeliveryを担当。",
+        "LogiUPを<b>multi-tenant logistics SaaS</b>として設計。WebとElectron desktopで1つのNext.js UI codebaseを共有し、NestJS control plane、FastAPI AI data plane、PostgreSQL、Redis/BullMQ、Cloudflare R2、分離されたstaging/production GitOps環境を構築。",
+        "顧客subdomain、database-backed host resolution、tenant-scoped RBAC/token、wildcard/on-demand TLSによりtenant isolationをend-to-endで設計し、RS256/JWKSとElectron向けPKCE/deep-link認証を備えた自主管理のOAuth 2.1/OIDC providerを構築。",
+        "<b>6つのleast-privilege runtime role</b>、再開可能なprivate-object upload、人が確認するAI提案、独立確認できる8つの申告sectionを横断する<b>31個のtyped API endpoint</b>を備えたAI支援税関workflowを提供。"
+      ]
+    },
+    "bonbon": {
+      "accomplishments": [
+        "BonBon を MVP から実地 pilot へ進める product integration を構築し、<b>3 か月</b>で Tasco × GenAI Fund の Wash3000 MVP Demo Day <b>Top 3 finalist</b> に選出。<b>50 万米ドルの equity investment</b>をかけた final pitch まで到達。",
+        "<b>12 画面の Mini App</b>を設計し、<b>430 万ユーザー</b>を持つ VETC app ecosystem に統合。partner code silent login、memory-only session、deep link、foreground serialized polling、PII allow-list analytics を実装。",
+        "kill-switch feature flag、deterministic rollout、transactional audit、checksum/CSP gate、Playwright flow、<b>800+ unit test</b>により、Go API、Backoffice、web、mobile 全体の release safety を確保。"
+      ]
+    },
     "sat": {
       "accomplishments": [
         "UI/UX デザイン、プロダクトエンジニアリング、ユーザー行動分析にわたる製品開発を統括し、2 か月間で <b>10,000 件</b>を超える訪問と <b>3,000 件</b>のサインアップを獲得。",
@@ -254,10 +269,10 @@
     }
   },
   "CTA": {
-    "eyebrow": "一緒に作りませんか",
-    "title": "出荷する価値のある難題、ありますか?",
-    "body": "プロダクトが急速にスケールし、チームに明瞭さが求められ、インフラが負荷下で安定すべき場面で最も役立てます。お気軽にご連絡を — すべてのメッセージに目を通します。",
-    "emailMe": "メールを送る",
+    "eyebrow": "お問い合わせ",
+    "title": "プロダクトとシステムについて話す",
+    "body": "プロダクトデリバリー、システム信頼性、技術リーダーシップが交差する課題に関心があります。",
+    "emailMe": "メール",
     "resumePdf": "履歴書 (PDF)",
     "linkedin": "LinkedIn"
   },

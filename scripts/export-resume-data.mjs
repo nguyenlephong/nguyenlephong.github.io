@@ -72,8 +72,8 @@ const roles = experience.flatMap((company) =>
 )
 
 const selectedProjectIndexes = new Map([
-  ['Digital SAT Math', [0, 2]],
-  ['Event Tracking - Web SDK', [0, 1]],
+  ['LogiUP - Multi-tenant Logistics SaaS', [0, 1, 2, 3]],
+  ['BonBon - VETC Mini App & Automotive Platform', [0, 1, 2]],
 ])
 
 const selectedProjects = projects
@@ -111,7 +111,7 @@ const data = {
     },
     {
       label: 'Architecture',
-      value: 'System design, multi-tenant platforms, feature flags, Micro-Frontends, and progressive delivery',
+      value: 'Multi-tenant SaaS, Electron desktop, AI-assisted document workflows, partner Mini Apps, feature flags, and progressive delivery',
     },
     {
       label: 'Front-end & Desktop',
@@ -119,15 +119,15 @@ const data = {
     },
     {
       label: 'Back-end & Integration',
-      value: 'Node.js, .NET Core, Java Spring, REST/GraphQL, mTLS, and idempotent APIs',
+      value: 'Go, Python, Node.js, .NET Core, Java Spring, mTLS, and idempotent APIs',
     },
     {
       label: 'Platform & Observability',
-      value: 'Docker, Kubernetes, ArgoCD, CI/CD, PostHog, and production diagnostics',
+      value: 'PostgreSQL, Redis, R2, Docker, Kubernetes, CI/CD, PostHog, and production diagnostics',
     },
     {
       label: 'Quality Engineering',
-      value: 'Jest, Cucumber, Puppeteer, Testing Library, BDD/E2E, and release readiness',
+      value: 'Playwright, Vitest, Pytest, Jest, BDD/E2E, deterministic packaging, and release readiness',
     },
   ],
   experience: roles,

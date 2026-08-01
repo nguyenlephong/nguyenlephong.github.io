@@ -65,19 +65,19 @@
     }
   },
   "Sections": {
-    "aboutEyebrow": "프로필",
-    "aboutTitle": "저와 제 일하는 방식을 간단히 소개합니다",
-    "experienceEyebrow": "경력",
-    "experienceTitle": "제가 출시한 곳",
-    "projectsEyebrow": "작업",
-    "projectsTitle": "주요 프로젝트"
+    "aboutEyebrow": "핵심 역량",
+    "aboutTitle": "시스템을 설계합니다. 제품을 출시합니다. 팀을 이끕니다.",
+    "experienceEyebrow": "경험",
+    "experienceTitle": "역할별 주요 임팩트",
+    "projectsEyebrow": "프로젝트",
+    "projectsTitle": "주요 프로젝트와 성과"
   },
   "Summary": {
     "intro1": "Zalo PC Lead Software Engineer로서 대규모 메시징, CDP, 핀테크, 교육, 부동산 분야에서 <b>8+ 년</b> 동안 프로덕션 소프트웨어를 제공해 왔습니다.",
     "intro2": "실무 엔지니어링과 기술 리더십을 함께 수행하며 모호한 목표를 신뢰할 수 있는 시스템으로 전환하고, 아키텍처와 코드 품질을 이끌며, 딜리버리 조율과 관측 가능성 및 프로덕션 운영을 강화합니다.",
-    "intro3": "<i>최근 몇 년간 집중해온 하드 스킬은 다음과 같습니다:</i>",
-    "visionEyebrow": "제 일하는 방식",
-    "hardSkillsEyebrow": "하드 스킬",
+    "intro3": "<i>제품, 시스템, 팀의 세 축에 집중합니다.</i>",
+    "visionEyebrow": "핵심 역량",
+    "hardSkillsEyebrow": "기술 기반",
     "pillars": {
       "endToEnd": {
         "title": "엔드 투 엔드 엔지니어",
@@ -90,8 +90,8 @@
         "chip": "30+ 테넌트 운영 중"
       },
       "leadership": {
-        "title": "딜리버리 리더십",
-        "body": "11명 이상 엔지니어 리딩 — 채용, 조직 설계, RFC, 런북, 롤아웃 플레이북, 1:1 코칭.",
+        "title": "기술 및 팀 리더십",
+        "body": "명확한 ownership, 채용, RFC, runbook, rollout playbook, 1:1 coaching으로 개발 및 QC 팀을 이끕니다.",
         "chip": "11명 팀"
       },
       "fintech": {
@@ -192,6 +192,21 @@
     }
   },
   "Projects": {
+    "logiup": {
+      "accomplishments": [
+        "<b>Tech Lead이자 system architect</b>로 <b>4명 engineering team</b>을 이끌며 technical direction, architecture decision, review standard, onboarding, <b>9개 split repository</b> 전반의 delivery를 책임졌습니다.",
+        "LogiUP을 <b>multi-tenant logistics SaaS</b>로 설계했습니다. Web과 Electron desktop이 하나의 Next.js UI codebase를 공유하고 NestJS control plane, FastAPI AI data plane, PostgreSQL, Redis/BullMQ, Cloudflare R2, 분리된 staging/production GitOps 환경으로 구성됩니다.",
+        "고객 subdomain, database-backed host resolution, tenant-scoped RBAC/token, wildcard/on-demand TLS로 tenant isolation을 end-to-end로 설계하고 RS256/JWKS와 Electron용 PKCE/deep-link 인증을 갖춘 자체 OAuth 2.1/OIDC provider를 구축했습니다.",
+        "<b>6개의 최소 권한 runtime role</b>, 재개 가능한 private-object upload, 사용자 확인 기반 AI 제안, 독립 확인 가능한 8개 신고 section을 아우르는 <b>31개의 typed API endpoint</b>로 AI 기반 세관 workflow를 제공했습니다."
+      ]
+    },
+    "bonbon": {
+      "accomplishments": [
+        "BonBon이 MVP에서 실제 현장 pilot로 진입하도록 product integration을 구축해 <b>3개월</b> 만에 Tasco × GenAI Fund Wash3000 MVP Demo Day의 <b>Top 3 finalist</b>에 올랐고, <b>$500K equity investment</b>를 위한 final pitch까지 진출했습니다.",
+        "<b>12화면 Mini App</b>을 설계해 <b>430만 사용자</b> 규모의 VETC app ecosystem에 통합하고, partner code silent login, memory-only session, deep link, foreground serialized polling, PII allow-list analytics를 구현했습니다.",
+        "kill-switch feature flag, deterministic rollout, transactional audit, checksum/CSP gate, Playwright flow, <b>800+ unit test</b>로 Go API, Backoffice, web, mobile 전반의 release safety를 확보했습니다."
+      ]
+    },
     "sat": {
       "accomplishments": [
         "UI/UX 디자인, 제품 엔지니어링, 사용자 행동 분석에 걸친 제품 개발을 조율하여 두 달 만에 <b>10,000회</b>를 초과하는 방문과 <b>3,000건</b>의 가입을 달성한 글로벌 사용자 기반 확보.",
@@ -254,10 +269,10 @@
     }
   },
   "CTA": {
-    "eyebrow": "함께 만들어 봅시다",
-    "title": "출시할 가치가 있는 어려운 문제가 있나요?",
-    "body": "제품이 빠르게 성장하고, 팀이 명확함을 필요로 하며, 인프라가 부하 하에서도 잘 작동해야 할 때 가장 유용합니다. 연락 주세요 — 모든 메시지를 읽습니다.",
-    "emailMe": "이메일 보내기",
+    "eyebrow": "연결",
+    "title": "제품과 시스템에 대해 이야기하기",
+    "body": "제품 딜리버리, 시스템 신뢰성, 기술 리더십이 함께 필요한 문제에 관심이 있습니다.",
+    "emailMe": "이메일",
     "resumePdf": "이력서 (PDF)",
     "linkedin": "LinkedIn"
   },

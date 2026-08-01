@@ -7,8 +7,10 @@ import { track } from '@/lib/analytics'
 type Props = { data: ProjectType[] }
 
 const PROJECT_KEY_MAP: Record<string, string> = {
+  'LogiUP - Multi-tenant Logistics SaaS': 'logiup',
+  'BonBon - VETC Mini App & Automotive Platform': 'bonbon',
   'Digital SAT Math': 'sat',
-  'CDP': 'cdp',
+  CDP: 'cdp',
   'Event Tracking - Web SDK': 'sdk',
   'Vietnam Australia Center': 'vac',
   'House Management - Mona House': 'mona',

@@ -66,19 +66,19 @@
     }
   },
   "Sections": {
-    "aboutEyebrow": "Hồ sơ",
-    "aboutTitle": "Hồ sơ nhà tuyển dụng có thể nắm trong một phút",
-    "experienceEyebrow": "Sự nghiệp",
-    "experienceTitle": "Tác động qua sản phẩm, nền tảng và leadership",
-    "projectsEyebrow": "Công việc",
-    "projectsTitle": "Dự án tiêu biểu có kết quả đo được"
+    "aboutEyebrow": "Năng lực",
+    "aboutTitle": "Kiến trúc hệ thống. Ship sản phẩm. Dẫn dắt đội ngũ.",
+    "experienceEyebrow": "Kinh nghiệm",
+    "experienceTitle": "Tác động qua từng vai trò",
+    "projectsEyebrow": "Dự án",
+    "projectsTitle": "Dự án tiêu biểu và kết quả"
   },
   "Summary": {
-    "intro1": "Lead Software Engineer tại Zalo PC với <b>8+ năm</b> phát triển phần mềm production trong các domain nhắn tin consumer-scale, CDP, fintech, giáo dục và bất động sản.",
-    "intro2": "Tôi kết hợp hands-on engineering với technical leadership: chuyển mục tiêu còn mơ hồ thành hệ thống đáng tin cậy, định hướng architecture và code quality, điều phối delivery, đồng thời củng cố observability và vận hành production.",
-    "intro3": "<i>Những vùng năng lực gần đây có bằng chứng rõ:</i>",
-    "visionEyebrow": "Phạm vi vận hành",
-    "hardSkillsEyebrow": "Chiều sâu kỹ thuật",
+    "intro1": "Lead Software Engineer tại Zalo PC với <b>8+ năm</b> xây dựng sản phẩm production trong các domain messaging quy mô lớn, CDP, fintech, giáo dục và bất động sản.",
+    "intro2": "Biến bài toán mơ hồ thành hệ thống đáng tin cậy bằng hands-on engineering, technical leadership và ownership xuyên suốt từ architecture đến production.",
+    "intro3": "<i>Tập trung vào ba lớp: sản phẩm, hệ thống và đội ngũ.</i>",
+    "visionEyebrow": "Năng lực trọng tâm",
+    "hardSkillsEyebrow": "Nền tảng kỹ thuật",
     "pillars": {
       "endToEnd": {
         "title": "Sở hữu từ sản phẩm đến nền tảng",
@@ -91,8 +91,8 @@
         "chip": "30+ tenant"
       },
       "leadership": {
-        "title": "Leadership kỹ thuật điềm tĩnh",
-        "body": "Dẫn dắt dev và QC qua thiết kế ownership, tuyển dụng, RFC, runbook, playbook rollout và coaching 1:1.",
+        "title": "Dẫn dắt kỹ thuật và đội ngũ",
+        "body": "Thiết lập ownership rõ ràng, tuyển dụng, RFC, runbook, rollout playbook và coaching 1:1 cho đội developer và QC.",
         "chip": "Team 11 người"
       },
       "fintech": {
@@ -189,6 +189,21 @@
     }
   },
   "Projects": {
+    "logiup": {
+      "accomplishments": [
+        "Dẫn dắt <b>đội engineering 4 thành viên</b> với vai trò <b>Tech Lead và system architect</b>, chịu trách nhiệm technical direction, quyết định kiến trúc, chuẩn review, onboarding và delivery xuyên <b>9 split repository</b>.",
+        "Thiết kế LogiUP thành một <b>multi-tenant logistics SaaS</b>: dùng chung một Next.js UI codebase cho web và Electron desktop, NestJS control plane, FastAPI AI data plane, PostgreSQL, Redis/BullMQ, Cloudflare R2 và môi trường staging/production tách biệt theo GitOps.",
+        "Thiết kế tenant isolation end-to-end với subdomain riêng cho khách hàng, host resolution dựa trên database, RBAC và token tenant-scoped, wildcard/on-demand TLS, cùng OAuth 2.1/OIDC provider tự chủ dùng RS256/JWKS và PKCE/deep-link cho Electron.",
+        "Ship workflow khai báo hải quan có AI với <b>6 runtime role theo least privilege</b>, upload private object resumable, gợi ý AI có người xác nhận và <b>31 typed API endpoint</b> trên 8 section khai báo xác nhận độc lập."
+      ]
+    },
+    "bonbon": {
+      "accomplishments": [
+        "Xây dựng phần tích hợp sản phẩm giúp BonBon đi từ MVP đến pilot thực địa trong <b>3 tháng</b>, được chọn vào <b>Top 3 finalist</b> tại Wash3000 MVP Demo Day do Tasco × GenAI Fund tổ chức và tới vòng pitch cuối cho khoản <b>đầu tư cổ phần $500K</b>.",
+        "Kiến trúc và tích hợp <b>Mini App 12 màn hình</b> vào hệ sinh thái ứng dụng VETC có <b>4,3 triệu người dùng</b>, với silent login qua partner code, session chỉ trong memory, deep link, polling tuần tự khi foreground và analytics theo PII allow-list.",
+        "Đảm bảo release an toàn xuyên Go API, Backoffice, web và mobile bằng kill-switch feature flag, deterministic rollout, transactional audit, gate checksum/CSP, Playwright flow và <b>800+ unit test</b>."
+      ]
+    },
     "sat": {
       "accomplishments": [
         "Sở hữu product engineering từ UI/UX đến analytics, đạt <b>10,000+ lượt truy cập</b> và <b>3,000+ đăng ký</b> trong hai tháng.",
@@ -236,10 +251,10 @@
     }
   },
   "CTA": {
-    "eyebrow": "Cùng trao đổi",
-    "title": "Cần một người vừa ship được vừa làm hệ thống ổn hơn?",
-    "body": "Tôi mạnh nhất ở nơi delivery sản phẩm, độ tin cậy hệ thống và sự rõ ràng của đội phải đi cùng nhau. Hãy gửi vấn đề, không chỉ gửi job description.",
-    "emailMe": "Gửi email",
+    "eyebrow": "Kết nối",
+    "title": "Trao đổi về sản phẩm và hệ thống",
+    "body": "Tôi quan tâm đến những bài toán cần đồng thời đẩy nhanh delivery, nâng độ tin cậy hệ thống và làm rõ cách đội ngũ vận hành.",
+    "emailMe": "Email",
     "resumePdf": "CV (PDF)",
     "linkedin": "LinkedIn"
   },
