@@ -72,46 +72,131 @@ test("homepage copy states capability directly without recruiter-facing meta lan
   );
 });
 
-test("homepage AI particle field is GPU-rendered, bounded, and motion-safe", async () => {
-  const [page, hero, backdrop, section, contact, reveal, css] = await Promise.all([
+test("homepage AI particle field is GPU-rendered, scroll-synced, and motion-safe", async () => {
+  const [
+    page,
+    hero,
+    homeBackdrop,
+    backdrop,
+    renderer,
+    section,
+    contact,
+    reveal,
+    css
+  ] = await Promise.all([
     read("src/app/[locale]/(site)/page.tsx"),
     read("src/components/cv/Hero.tsx"),
+    read("src/components/cv/HomeBackdrop.tsx"),
     read("src/components/cv/ArchitectureBackdrop.tsx"),
+    read("src/components/webgl/ScrollParticleRenderer.ts"),
     read("src/components/cv/Section.tsx"),
     read("src/components/cv/ContactCTA.tsx"),
     read("src/components/motion/Reveal.tsx"),
     read("src/app/[locale]/(site)/home.css")
   ]);
 
-  assert.match(hero, /<ArchitectureBackdrop \/>/);
+  assert.match(page, /<main className="home-showcase">/);
+  assert.match(page, /<HomeBackdrop \/>/);
+  assert.match(homeBackdrop, /<ArchitectureBackdrop \/>/);
   assert.match(
-    hero,
+    homeBackdrop,
     /dynamic\(\s*\(\) => import\(['"]@\/components\/cv\/ArchitectureBackdrop['"]\)/
   );
-  assert.match(hero, /ssr:\s*false/);
+  assert.match(homeBackdrop, /ssr:\s*false/);
+  assert.match(homeBackdrop, /className="home-architecture"/);
+  assert.match(homeBackdrop, /className="home-architecture-viewport"/);
+  assert.doesNotMatch(hero, /ArchitectureBackdrop|hero-bleed/);
   assert.doesNotMatch(hero, /useReducedMotion|<m\.|<CountUp/);
   assert.doesNotMatch(page, /MotionProvider|framer-motion/);
   assert.doesNotMatch(section, /framer-motion|useReducedMotion|<m\./);
   assert.doesNotMatch(contact, /framer-motion|useReducedMotion|<m\./);
   assert.doesNotMatch(reveal, /framer-motion|useReducedMotion|<m\./);
   assert.match(backdrop, /<canvas[^>]+className="ai-particle-field"/);
-  assert.match(backdrop, /getContext\("webgl"/);
+  assert.match(backdrop, /mountScrollParticleRenderer/);
+  assert.match(renderer, /getContext\("webgl"/);
   assert.match(
-    backdrop,
-    /gl\.bufferData\(gl\.ARRAY_BUFFER, particleData, gl\.STATIC_DRAW\)/
+    renderer,
+    /gl\.bufferData\(gl\.ARRAY_BUFFER, data, gl\.STATIC_DRAW\)/
   );
-  assert.match(backdrop, /gl\.drawArrays\(gl\.POINTS, 0, vertexCount\)/);
+  assert.match(renderer, /gl\.drawArrays\(gl\.POINTS, 0, vertexCount\)/);
   assert.match(backdrop, /function resolveParticleGrid/);
   assert.match(backdrop, /function selectParticleColor/);
   assert.match(backdrop, /function appendParticlePair/);
-  assert.match(backdrop, /const TARGET_FRAME_MS = 1000 \/ 24/);
-  assert.match(backdrop, /const dprCap = nextWidth < 720 \? 1\.25 : 1\.5/);
-  assert.match(backdrop, /requestIdleCallback/);
-  assert.match(backdrop, /window\.requestAnimationFrame\(renderFrame\)/);
-  assert.match(backdrop, /prefers-reduced-motion: reduce/);
-  assert.match(backdrop, /new MutationObserver\(onThemeChange\)/);
-  assert.match(backdrop, /new IntersectionObserver/);
+  assert.match(renderer, /const TARGET_FRAME_MS = 1000 \/ 24/);
+  assert.match(renderer, /const ACTIVE_SCROLL_MS = 180/);
+  assert.match(
+    backdrop,
+    /dprCap: \(width\) => \(width < 720 \? 1\.25 : 1\.5\)/
+  );
+  assert.match(renderer, /requestIdleCallback/);
+  assert.match(renderer, /window\.requestAnimationFrame\(renderFrame\)/);
+  assert.match(renderer, /prefers-reduced-motion: reduce/);
+  assert.match(renderer, /new MutationObserver\(onThemeChange\)/);
+  assert.match(backdrop, /const LIGHT_PALETTE = \[/);
+  assert.match(backdrop, /frame\.dark \? DARK_PALETTE : LIGHT_PALETTE/);
+  const lightPalette = backdrop
+    .match(/const LIGHT_PALETTE = \[([\s\S]*?)\] as const;/)?.[1]
+    .match(/\[([\d., ]+)\]/g)
+    ?.map((color) => color.slice(1, -1).split(",").map(Number));
+  assert.equal(lightPalette?.length, 5);
+  assert.ok(
+    lightPalette?.every(([red, , blue]) => blue > red),
+    "light mode should keep a cold blueprint palette"
+  );
+  const lightAlpha = backdrop.match(
+    /float lightAlpha = mix\(([\d.]+), ([\d.]+),/
+  );
+  assert.ok(lightAlpha, "light mode should define its own alpha curve");
+  assert.ok(Number(lightAlpha[1]) >= 0.18);
+  assert.ok(Number(lightAlpha[1]) <= 0.24);
+  assert.ok(Number(lightAlpha[2]) >= 0.6);
+  assert.ok(Number(lightAlpha[2]) <= 0.72);
+  const lightPointScale = backdrop.match(
+    /float pointSize =[^\n]+mix\(([\d.]+), 1\.0, uDark\)/
+  );
+  assert.ok(lightPointScale, "light mode should define its own point scale");
+  assert.ok(Number(lightPointScale[1]) >= 1.15);
+  assert.match(backdrop, /float foldAlpha = mix\(0\.18, 0\.34, uDark\)/);
+  assert.match(backdrop, /float sparkleScale = mix\(1\.35, 2\.25, uDark\)/);
+  assert.match(backdrop, /float quietStart = mix\(/);
+  assert.match(backdrop, /uniform float uScroll/);
+  assert.match(backdrop, /rootSelector: "\.home-showcase"/);
+  assert.match(
+    renderer,
+    /canvas\.closest<HTMLElement>\(options\.rootSelector\)/
+  );
+  assert.match(renderer, /const updateScrollProgress = \(\) =>/);
+  assert.match(
+    renderer,
+    /scrollProgress = clamp\(-rect\.top \/ scrollableHeight, 0, 1\)/
+  );
+  assert.match(
+    renderer,
+    /gl\.uniform1f\(uniforms\.uScroll, frame\.scrollProgress\)/
+  );
+  assert.match(
+    renderer,
+    /scrollActiveUntil = performance\.now\(\) \+ ACTIVE_SCROLL_MS/
+  );
+  assert.match(
+    renderer,
+    /performance\.now\(\) < scrollActiveUntil \? 0 : TARGET_FRAME_MS/
+  );
+  assert.match(renderer, /window\.addEventListener\("scroll", onScroll/);
+  assert.doesNotMatch(backdrop, /scrollVelocity|scrollTarget/);
+  assert.match(renderer, /new IntersectionObserver/);
   assert.match(css, /\.ai-particle-field/);
+  assert.match(
+    css,
+    /\.home-architecture\s*\{[\s\S]*?position: absolute;[\s\S]*?inset: 0;/
+  );
+  assert.match(
+    css,
+    /\.home-architecture-viewport\s*\{[\s\S]*?position: sticky;/
+  );
+  assert.match(css, /height: 100svh/);
+  assert.match(css, /html\[data-theme='light'\] \.home-architecture-viewport/);
+  assert.match(css, /mix-blend-mode: multiply/);
   assert.doesNotMatch(backdrop, /Path2D|shadowBlur|CanvasRenderingContext2D/);
   assert.doesNotMatch(backdrop, /aria-hidden="true"/);
   assert.doesNotMatch(css, /mask-image|filter:\s*saturate/);

@@ -3,7 +3,7 @@ import { useMemo, useState, type CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { m, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import type { IconType } from 'react-icons'
 import {
   LuActivity,
@@ -447,10 +447,9 @@ function PhotoCard({
   variant: 'lead' | 'compact'
 }) {
   const t = useTranslations('Pages.gallery')
-  const reduced = useReducedMotion()
   const href = photo.refs ?? photo.src
   const external = Boolean(photo.refs)
-  const delay = reduced ? 0 : Math.min(index * 0.04, 0.28)
+  const delay = Math.min(index * 0.04, 0.28)
   const captionKey = getCaptionKey(photo.alt)
   const caption = captionKey
     ? t(`captions.${captionKey}`)
@@ -470,8 +469,8 @@ function PhotoCard({
 
   return (
     <m.div
-      initial={reduced ? false : { opacity: 0, y: 14 }}
-      whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '0px 0px -40px 0px' }}
       transition={{ duration: 0.55, delay, ease: [0.16, 1, 0.3, 1] as const }}
     >

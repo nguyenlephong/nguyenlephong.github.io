@@ -1,5 +1,4 @@
 'use client'
-import dynamic from 'next/dynamic'
 import { Link } from '@/i18n/navigation'
 import { useTranslations } from 'next-intl'
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
@@ -20,10 +19,6 @@ import {
 import type { IconType } from 'react-icons'
 import { profileInfo, APP_ROUTE } from '@/app/app.const'
 import { track } from '@/lib/analytics'
-
-const ArchitectureBackdrop = dynamic(() => import('@/components/cv/ArchitectureBackdrop'), {
-  ssr: false,
-})
 
 type StatTone = 'amber' | 'violet' | 'sky' | 'emerald' | 'rose' | 'cyan' | 'indigo' | 'lime'
 
@@ -66,9 +61,6 @@ export default function Hero() {
 
   return (
     <section className="hero" aria-labelledby="hero-heading">
-      <div className="hero-bleed" aria-hidden="true">
-        <ArchitectureBackdrop />
-      </div>
       <div className="hero-grid">
         <div className="hero-meta">
           <span className="eyebrow">

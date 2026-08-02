@@ -14,6 +14,7 @@ import {
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 import MotionProvider from '@/components/motion/MotionProvider'
 import GalleryPageBackLink from '@/components/gallery/GalleryPageBackLink'
+import GalleryBackdrop from '@/components/gallery/GalleryBackdrop'
 import './gallery.css'
 
 export function generateStaticParams() {
@@ -72,6 +73,7 @@ export default async function GalleryPage({ params }: Props) {
   return (
     <MotionProvider>
       <main className="gallery-showcase">
+        <GalleryBackdrop />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(galleryLd) }}
