@@ -10,6 +10,7 @@ import Summary from '@/components/cv/Summary'
 import Experience from '@/components/cv/Experience'
 import Projects from '@/components/cv/Projects'
 import ContactCTA from '@/components/cv/ContactCTA'
+import HomeBackdrop from '@/components/cv/HomeBackdrop'
 import PageViewTracker from '@/components/PageViewTracker'
 import PageTracker from '@/components/analytics/PageTracker'
 import type { Locale } from '@/i18n/routing'
@@ -43,7 +44,8 @@ export default async function MainPage({ params }: Props) {
   const profilePageSchema = buildProfilePageSchema(locale as Locale, title, description)
 
   return (
-    <main>
+    <main className="home-showcase">
+      <HomeBackdrop />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(personSchema) }}

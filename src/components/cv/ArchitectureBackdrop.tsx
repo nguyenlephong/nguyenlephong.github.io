@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 const TAU = Math.PI * 2;
 const PARTICLE_STRIDE = 9;
 const TARGET_FRAME_MS = 1000 / 24;
+const ACTIVE_SCROLL_MS = 180;
 
 const DARK_PALETTE = [
   [0.141, 0.769, 1],
@@ -39,6 +40,7 @@ uniform float uTime;
 uniform float uCompact;
 uniform float uDpr;
 uniform float uDark;
+uniform float uScroll;
 uniform vec2 uViewport;
 uniform vec2 uPointer;
 uniform vec3 uPalette0;
@@ -61,10 +63,20 @@ vec3 paletteColor(float index) {
 
 void main() {
   float theta = aTheta;
-  float twist = theta * 0.5 + 0.72 + sin(theta * 2.2 - uTime * 0.12) * 0.13;
-  float bandWidth = 0.9 + sin(theta * 3.05 + uTime * 0.15) * 0.13;
-  float ripple = sin(theta * 3.4 + aBand * 5.2 + uTime * 0.21);
-  float secondaryRipple = sin(theta * 1.75 - aBand * 3.4 - uTime * 0.14);
+  float scrollPhase = uScroll * 6.28318530718;
+  float scrollTravel = smoothstep(0.015, 0.985, uScroll);
+  float twist = theta * 0.5
+    + 0.72
+    + scrollPhase * 0.36
+    + sin(theta * 2.2 + scrollPhase * 0.82 - uTime * 0.12) * 0.13;
+  float bandWidth = 0.9
+    + sin(theta * 3.05 + scrollPhase * 0.58 + uTime * 0.15) * 0.13;
+  float ripple = sin(
+    theta * 3.4 + aBand * 5.2 + scrollPhase * 1.08 + uTime * 0.21
+  );
+  float secondaryRipple = sin(
+    theta * 1.75 - aBand * 3.4 - scrollPhase * 0.76 - uTime * 0.14
+  );
   float radius = 0.98 + aBand * bandWidth * cos(twist) + ripple * 0.09;
 
   float modelX = radius * cos(theta);
@@ -76,27 +88,33 @@ void main() {
     + secondaryRipple * 0.065;
   modelY += sin(theta * 2.0 - 0.62) * 0.21
     + cos(theta * 3.0 + 0.35) * 0.09
-    + ripple * 0.045;
-  modelZ += secondaryRipple * 0.2 + sin(theta * 2.0 + aBand * 1.8) * 0.1;
+    + ripple * 0.045
+    + sin(scrollPhase * 0.74 + theta * 0.68) * 0.075 * scrollTravel;
+  modelZ += secondaryRipple * 0.2
+    + sin(theta * 2.0 + aBand * 1.8 + scrollPhase * 0.42) * 0.1;
 
   float thickness = aLayer * (0.026 + abs(aBand) * 0.018);
   modelX += cos(theta) * thickness;
   modelY += sin(theta) * thickness;
   modelZ += aLayer * 0.055;
 
-  float rotateY = -0.57 + sin(uTime * 0.07) * 0.025;
+  float rotateY = -0.57
+    + sin(uTime * 0.07) * 0.025
+    + sin(scrollPhase * 0.72) * 0.22 * scrollTravel;
   float cosY = cos(rotateY);
   float sinY = sin(rotateY);
   float rotatedX = modelX * cosY + modelZ * sinY;
   float rotatedZ = -modelX * sinY + modelZ * cosY;
 
-  float rotateX = 0.46;
+  float rotateX = 0.46
+    + (cos(scrollPhase * 0.54) - 1.0) * 0.11 * scrollTravel;
   float cosX = cos(rotateX);
   float sinX = sin(rotateX);
   float rotatedY = modelY * cosX - rotatedZ * sinX;
   float depthZ = modelY * sinX + rotatedZ * cosX;
 
-  float rotateZ = -0.22;
+  float rotateZ = -0.22
+    + sin(scrollPhase * 0.43) * 0.09 * scrollTravel;
   float cosZ = cos(rotateZ);
   float sinZ = sin(rotateZ);
   float screenX = rotatedX * cosZ - rotatedY * sinZ;
@@ -106,26 +124,33 @@ void main() {
   float pointerDepth = 4.0 + depth * 12.0;
   float microJitter = (aSeed - 0.5) * (0.42 + depth * 0.72);
 
-  float centerX = mix(0.72, 1.08, uCompact);
-  float centerY = 0.43;
+  float centerDrift = sin(scrollPhase * 0.92) * mix(0.075, 0.035, uCompact);
+  float verticalDrift = sin(scrollPhase * 0.78 + 0.24) * 0.11;
+  float scalePulse = 1.0 + sin(scrollPhase * 0.61) * 0.085 * scrollTravel;
+  float contentShift = mix(0.105, 0.035, uCompact) * scrollTravel;
+  float centerX = mix(0.72, 1.08, uCompact)
+    + centerDrift * scrollTravel
+    + contentShift;
+  float centerY = 0.43 + verticalDrift * scrollTravel;
   float x = centerX
-    + screenX * mix(0.365, 0.43, uCompact) * perspective
+    + screenX * mix(0.365, 0.43, uCompact) * perspective * scalePulse
     + microJitter / uViewport.x
     + uPointer.x * pointerDepth / uViewport.x;
   float y = centerY
-    + screenY * mix(0.41, 0.51, uCompact) * perspective
+    + screenY * mix(0.41, 0.51, uCompact) * perspective * scalePulse
     + microJitter * 0.48 / uViewport.y
     + uPointer.y * pointerDepth * 0.55 / uViewport.y;
 
   if (aFold > 0.5) {
-    float foldX = 0.45 + aSeed * 0.12;
-    float foldY = 0.5 + aSeed * 0.12;
+    float foldBreath = sin(scrollPhase * 0.83 + aSeed * 2.4) * 0.08 * scrollTravel;
+    float foldX = 0.45 + aSeed * 0.12 + foldBreath;
+    float foldY = 0.5 + aSeed * 0.12 - foldBreath * 0.7;
     x = centerX
       + (x - centerX) * foldX
-      + sin(aTheta * 2.2 + uTime * 0.08) * 0.018;
+      + sin(aTheta * 2.2 + scrollPhase * 0.46 + uTime * 0.08) * 0.018;
     y = centerY
       + (y - centerY) * foldY
-      + cos(aTheta * 3.1 - uTime * 0.06) * 0.018;
+      + cos(aTheta * 3.1 - scrollPhase * 0.38 - uTime * 0.06) * 0.018;
   }
 
   float quietStart = mix(
@@ -138,6 +163,9 @@ void main() {
     mix(0.6, 0.9, uCompact),
     uDark
   );
+  float contentQuiet = mix(0.08, 0.025, uCompact) * scrollTravel;
+  quietStart += contentQuiet;
+  quietEnd += contentQuiet;
   float quietFade = pow(
     smoothstep(quietStart, quietEnd, x),
     mix(2.35, 2.0, uDark)
@@ -146,7 +174,13 @@ void main() {
   float bottomFade = 1.0 - smoothstep(0.94, 1.08, y);
   float edgeFade = smoothstep(-0.04, 0.08, x) * (1.0 - smoothstep(0.98, 1.08, x));
   float topologyFade = 0.72 + abs(aBand) * 0.16 + pow(sin(theta * 1.5), 2.0) * 0.12;
-  float visibility = quietFade * topFade * bottomFade * edgeFade * topologyFade;
+  float journeyDensity = 0.88 + cos(scrollPhase * 0.7) * 0.12;
+  float visibility = quietFade
+    * topFade
+    * bottomFade
+    * edgeFade
+    * topologyFade
+    * journeyDensity;
   float strength = visibility * (0.2 + depth * 0.8) * mix(1.0, 1.32, aRidge);
 
   if (strength < 0.035) {
@@ -161,6 +195,12 @@ void main() {
   float darkAlpha = mix(0.14, 0.78, pow(clamp(strength, 0.0, 1.0), 0.85));
   float lightAlpha = mix(0.2, 0.68, pow(clamp(strength, 0.0, 1.0), 0.86));
   float alpha = mix(lightAlpha, darkAlpha, uDark);
+  float contentAlpha = mix(0.82, 0.68, uDark);
+  alpha *= mix(
+    1.0,
+    contentAlpha,
+    smoothstep(0.12, 0.3, uScroll)
+  );
   float foldAlpha = mix(0.18, 0.34, uDark);
   float sparkleAlpha = mix(1.02, 1.16, uDark);
   alpha *= mix(1.0, foldAlpha, aFold);
@@ -203,6 +243,7 @@ type UniformLocations = {
   compact: WebGLUniformLocation;
   dpr: WebGLUniformLocation;
   dark: WebGLUniformLocation;
+  scroll: WebGLUniformLocation;
   viewport: WebGLUniformLocation;
   pointer: WebGLUniformLocation;
   palettes: WebGLUniformLocation[];
@@ -364,6 +405,7 @@ function getUniform(
 }
 
 function mountRenderer(canvas: HTMLCanvasElement) {
+  const homeRoot = canvas.closest<HTMLElement>(".home-showcase");
   const gl = canvas.getContext("webgl", {
     alpha: true,
     antialias: false,
@@ -404,6 +446,7 @@ function mountRenderer(canvas: HTMLCanvasElement) {
     compact: getUniform(gl, program, "uCompact"),
     dpr: getUniform(gl, program, "uDpr"),
     dark: getUniform(gl, program, "uDark"),
+    scroll: getUniform(gl, program, "uScroll"),
     viewport: getUniform(gl, program, "uViewport"),
     pointer: getUniform(gl, program, "uPointer")
   };
@@ -449,10 +492,14 @@ function mountRenderer(canvas: HTMLCanvasElement) {
   let vertexCount = 0;
   let frame = 0;
   let frameTimer = 0;
-  let visible = true;
+  let inViewport = true;
+  let pageVisible = !document.hidden;
   let reducedMotion = motionQuery.matches;
   let destroyed = false;
   let contextLost = false;
+  let scrollProgress = 0;
+  let scrollActiveUntil = 0;
+  let lastDrawTime = performance.now();
   const pointer = { x: 0, y: 0 };
   const pointerTarget = { x: 0, y: 0 };
 
@@ -469,13 +516,29 @@ function mountRenderer(canvas: HTMLCanvasElement) {
     });
   };
 
+  const updateScrollTarget = () => {
+    if (!homeRoot) return;
+
+    const rect = homeRoot.getBoundingClientRect();
+    const journeyHeight = Math.max(homeRoot.scrollHeight, homeRoot.offsetHeight);
+    const scrollableHeight = Math.max(1, journeyHeight - window.innerHeight);
+    const nextProgress = Math.min(
+      1,
+      Math.max(0, -rect.top / scrollableHeight)
+    );
+    scrollProgress = nextProgress;
+  };
+
   const draw = (now: number) => {
     if (!width || !height || !vertexCount || contextLost) return;
 
     const dark = isDark();
     const elapsed = reducedMotion ? 12.5 : now / 1000;
-    pointer.x += (pointerTarget.x - pointer.x) * 0.08;
-    pointer.y += (pointerTarget.y - pointer.y) * 0.08;
+    const frameDelta = Math.min(100, Math.max(0, now - lastDrawTime));
+    const settle = reducedMotion ? 1 : 1 - Math.exp(-frameDelta / 78);
+    lastDrawTime = now;
+    pointer.x += (pointerTarget.x - pointer.x) * settle;
+    pointer.y += (pointerTarget.y - pointer.y) * settle;
 
     gl.viewport(0, 0, canvas.width, canvas.height);
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -484,6 +547,7 @@ function mountRenderer(canvas: HTMLCanvasElement) {
     gl.uniform1f(uniforms.compact, width < 720 ? 1 : 0);
     gl.uniform1f(uniforms.dpr, dpr);
     gl.uniform1f(uniforms.dark, dark ? 1 : 0);
+    gl.uniform1f(uniforms.scroll, scrollProgress);
     gl.uniform2f(uniforms.viewport, width, height);
     gl.uniform2f(uniforms.pointer, pointer.x, pointer.y);
     uploadPalette(dark ? DARK_PALETTE : LIGHT_PALETTE);
@@ -502,7 +566,8 @@ function mountRenderer(canvas: HTMLCanvasElement) {
     if (
       destroyed ||
       reducedMotion ||
-      !visible ||
+      !inViewport ||
+      !pageVisible ||
       contextLost ||
       frame ||
       frameTimer
@@ -510,11 +575,21 @@ function mountRenderer(canvas: HTMLCanvasElement) {
       return;
     }
 
+    const frameDelay =
+      performance.now() < scrollActiveUntil ? 0 : TARGET_FRAME_MS;
     frameTimer = window.setTimeout(() => {
       frameTimer = 0;
-      if (destroyed || reducedMotion || !visible || contextLost) return;
+      if (
+        destroyed ||
+        reducedMotion ||
+        !inViewport ||
+        !pageVisible ||
+        contextLost
+      ) {
+        return;
+      }
       frame = window.requestAnimationFrame(renderFrame);
-    }, TARGET_FRAME_MS);
+    }, frameDelay);
   };
 
   const renderFrame = (now: number) => {
@@ -524,6 +599,7 @@ function mountRenderer(canvas: HTMLCanvasElement) {
   };
 
   const resize = () => {
+    updateScrollTarget();
     const rect = canvas.getBoundingClientRect();
     const nextWidth = Math.max(1, Math.round(rect.width));
     const nextHeight = Math.max(1, Math.round(rect.height));
@@ -555,6 +631,22 @@ function mountRenderer(canvas: HTMLCanvasElement) {
     pointerTarget.y = 0;
   };
 
+  const onScroll = () => {
+    updateScrollTarget();
+    scrollActiveUntil = performance.now() + ACTIVE_SCROLL_MS;
+    if (reducedMotion) {
+      draw(performance.now());
+      return;
+    }
+    if (frameTimer) {
+      window.clearTimeout(frameTimer);
+      frameTimer = 0;
+    }
+    if (!frame && inViewport && pageVisible && !contextLost) {
+      frame = window.requestAnimationFrame(renderFrame);
+    }
+  };
+
   const onMotionChange = () => {
     reducedMotion = motionQuery.matches;
     cancelFrame();
@@ -567,6 +659,14 @@ function mountRenderer(canvas: HTMLCanvasElement) {
   };
 
   const onThemeChange = () => draw(performance.now());
+  const onVisibilityChange = () => {
+    pageVisible = !document.hidden;
+    if (!pageVisible) cancelFrame();
+    if (pageVisible) {
+      draw(performance.now());
+      queueFrame();
+    }
+  };
   const onContextLost = (event: Event) => {
     event.preventDefault();
     contextLost = true;
@@ -575,9 +675,9 @@ function mountRenderer(canvas: HTMLCanvasElement) {
   const resizeObserver = new ResizeObserver(resize);
   const themeObserver = new MutationObserver(onThemeChange);
   const intersectionObserver = new IntersectionObserver(([entry]) => {
-    visible = entry?.isIntersecting ?? true;
-    if (!visible) cancelFrame();
-    if (visible) {
+    inViewport = entry?.isIntersecting ?? true;
+    if (!inViewport) cancelFrame();
+    if (inViewport) {
       draw(performance.now());
       queueFrame();
     }
@@ -591,8 +691,10 @@ function mountRenderer(canvas: HTMLCanvasElement) {
   intersectionObserver.observe(canvas);
   motionQuery.addEventListener("change", onMotionChange);
   systemThemeQuery.addEventListener("change", onThemeChange);
+  window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("pointermove", onPointerMove, { passive: true });
   document.documentElement.addEventListener("pointerleave", onPointerLeave);
+  document.addEventListener("visibilitychange", onVisibilityChange);
   canvas.addEventListener("webglcontextlost", onContextLost);
   resize();
   queueFrame();
@@ -605,11 +707,13 @@ function mountRenderer(canvas: HTMLCanvasElement) {
     intersectionObserver.disconnect();
     motionQuery.removeEventListener("change", onMotionChange);
     systemThemeQuery.removeEventListener("change", onThemeChange);
+    window.removeEventListener("scroll", onScroll);
     window.removeEventListener("pointermove", onPointerMove);
     document.documentElement.removeEventListener(
       "pointerleave",
       onPointerLeave
     );
+    document.removeEventListener("visibilitychange", onVisibilityChange);
     canvas.removeEventListener("webglcontextlost", onContextLost);
     gl.deleteBuffer(buffer);
     gl.deleteProgram(program);
