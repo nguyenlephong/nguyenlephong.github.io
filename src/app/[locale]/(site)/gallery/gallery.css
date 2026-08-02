@@ -35,36 +35,41 @@
    ========================================================= */
 .gallery-showcase {
   position: relative;
+  isolation: isolate;
   overflow-x: clip;
   padding-bottom: calc(var(--space-section) + 1rem);
 }
 .gallery-showcase .container {
+  position: relative;
+  z-index: 1;
   width: min(1180px, calc(100vw - var(--layout-container-gutter)));
+}
+.gallery-memory-bloom {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: clip;
+  pointer-events: none;
+}
+.gallery-memory-bloom-viewport {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+.gallery-memory-bloom-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .gallery-page-header {
   padding-block: 4.5rem 2.25rem;
 }
 .gallery-page-header::before {
   height: calc(100% + 8rem);
-  background: repeating-linear-gradient(
-      90deg,
-      color-mix(in oklch, var(--border) 58%, transparent) 0 1px,
-      transparent 1px 54px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      color-mix(in oklch, var(--border) 38%, transparent) 0 1px,
-      transparent 1px 54px
-    ),
-    linear-gradient(
-      180deg,
-      color-mix(in oklab, var(--accent) 8%, transparent),
-      transparent 72%
-    );
-  background-size:
-    52px 52px,
-    52px 52px,
-    auto;
+  background: transparent;
 }
 .gallery-page-header .page-title {
   max-width: 780px;
@@ -90,18 +95,7 @@
   position: absolute;
   inset: 0 calc(50% - 50vw);
   z-index: -1;
-  background: repeating-linear-gradient(
-      135deg,
-      color-mix(in oklch, var(--border) 50%, transparent) 0 1px,
-      transparent 1px 18px
-    ),
-    linear-gradient(
-      90deg,
-      color-mix(in oklch, var(--accent) 10%, transparent),
-      transparent 38%,
-      color-mix(in oklch, oklch(72% 0.16 78) 12%, transparent)
-    );
-  opacity: 0.72;
+  background: color-mix(in oklab, var(--bg) 18%, transparent);
 }
 .gallery-hero-copy {
   min-width: 0;
