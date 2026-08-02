@@ -67,7 +67,7 @@ export const projects = [
         "Google Ads",
         "Stripe"
       ],
-      duration: "Oct 2023 - Present",
+      duration: "Oct 2023 - Apr 2025",
       description: [],
       accomplishment: [
         `Orchestrated product development spanning UI/UX design, product engineering, and user behavior analysis, resulting in a global user base exceeding <b>10,000</b> visits and <b>3,000</b> signups within two months.`,

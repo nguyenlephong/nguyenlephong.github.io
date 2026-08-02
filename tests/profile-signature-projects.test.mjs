@@ -61,6 +61,14 @@ test('signature projects lead the homepage and generated resume selection', asyn
   assert.match(projects, /"Mar 2026 - Present"/);
   assert.match(projects, /"Apr 2026 - Present"/);
   assert.match(
+    projects,
+    /name: "Digital SAT Math"[\s\S]*?duration: "Oct 2023 - Apr 2025"/,
+  );
+  assert.doesNotMatch(
+    projects,
+    /name: "Digital SAT Math"[\s\S]{0,500}?duration: "[^"]*Present"/,
+  );
+  assert.match(
     component,
     /'LogiUP - Multi-tenant Logistics SaaS': 'logiup'/
   );
