@@ -15,11 +15,11 @@ const DARK_PALETTE = [
 ] as const;
 
 const LIGHT_PALETTE = [
-  [0, 0.533, 0.812],
-  [0.259, 0.345, 0.863],
-  [0.506, 0.267, 0.78],
-  [0.863, 0.333, 0.306],
-  [0.663, 0.435, 0.075]
+  [0.035, 0.369, 0.718],
+  [0.184, 0.302, 0.69],
+  [0.337, 0.247, 0.635],
+  [0.106, 0.42, 0.545],
+  [0.282, 0.373, 0.51]
 ] as const;
 
 const VERTEX_SHADER = `
@@ -128,9 +128,19 @@ void main() {
       + cos(aTheta * 3.1 - uTime * 0.06) * 0.018;
   }
 
+  float quietStart = mix(
+    mix(0.43, 0.7, uCompact),
+    mix(0.38, 0.68, uCompact),
+    uDark
+  );
+  float quietEnd = mix(
+    mix(0.65, 0.93, uCompact),
+    mix(0.6, 0.9, uCompact),
+    uDark
+  );
   float quietFade = pow(
-    smoothstep(mix(0.38, 0.68, uCompact), mix(0.6, 0.9, uCompact), x),
-    2.0
+    smoothstep(quietStart, quietEnd, x),
+    mix(2.35, 2.0, uDark)
   );
   float topFade = smoothstep(-0.08, 0.04, y);
   float bottomFade = 1.0 - smoothstep(0.94, 1.08, y);
@@ -149,20 +159,24 @@ void main() {
   }
 
   float darkAlpha = mix(0.14, 0.78, pow(clamp(strength, 0.0, 1.0), 0.85));
-  float lightAlpha = mix(0.14, 0.62, pow(clamp(strength, 0.0, 1.0), 0.9));
+  float lightAlpha = mix(0.2, 0.68, pow(clamp(strength, 0.0, 1.0), 0.86));
   float alpha = mix(lightAlpha, darkAlpha, uDark);
-  alpha *= mix(1.0, 0.34, aFold);
-  alpha *= mix(1.0, 1.16, aSparkle);
+  float foldAlpha = mix(0.18, 0.34, uDark);
+  float sparkleAlpha = mix(1.02, 1.16, uDark);
+  alpha *= mix(1.0, foldAlpha, aFold);
+  alpha *= mix(1.0, sparkleAlpha, aSparkle);
 
-  float pointSize = aSize * (0.7 + depth * 1.38) * mix(0.92, 1.0, uDark);
-  pointSize *= mix(1.0, 0.42, aFold);
-  pointSize *= mix(1.0, 2.25, aSparkle);
+  float pointSize = aSize * (0.7 + depth * 1.38) * mix(1.2, 1.0, uDark);
+  float foldScale = mix(0.32, 0.42, uDark);
+  float sparkleScale = mix(1.35, 2.25, uDark);
+  pointSize *= mix(1.0, foldScale, aFold);
+  pointSize *= mix(1.0, sparkleScale, aSparkle);
 
   gl_Position = vec4(x * 2.0 - 1.0, 1.0 - y * 2.0, 0.0, 1.0);
   gl_PointSize = clamp(pointSize * uDpr, 1.0, 14.0);
   vColor = paletteColor(aColor);
   vAlpha = alpha;
-  vSparkle = aSparkle;
+  vSparkle = aSparkle * mix(0.35, 1.0, uDark);
 }
 `;
 

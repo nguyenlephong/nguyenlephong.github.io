@@ -47,6 +47,15 @@
   z-index: -1;
   overflow: hidden;
   background: var(--bg);
+  isolation: isolate;
+}
+
+html[data-theme='light'] .hero-bleed {
+  background: radial-gradient(
+    ellipse 62% 74% at 80% 42%,
+    color-mix(in oklab, var(--accent) 6%, var(--bg)),
+    var(--bg) 72%
+  );
 }
 
 .ai-particle-field {
@@ -58,7 +67,8 @@
 }
 
 html[data-theme='light'] .ai-particle-field {
-  opacity: 0.92;
+  opacity: 0.86;
+  mix-blend-mode: multiply;
 }
 
 @media (max-width: 880px) {

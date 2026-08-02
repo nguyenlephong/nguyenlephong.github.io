@@ -110,8 +110,37 @@ test("homepage AI particle field is GPU-rendered, bounded, and motion-safe", asy
   assert.match(backdrop, /window\.requestAnimationFrame\(renderFrame\)/);
   assert.match(backdrop, /prefers-reduced-motion: reduce/);
   assert.match(backdrop, /new MutationObserver\(onThemeChange\)/);
+  assert.match(backdrop, /const LIGHT_PALETTE = \[/);
+  assert.match(backdrop, /uploadPalette\(dark \? DARK_PALETTE : LIGHT_PALETTE\)/);
+  const lightPalette = backdrop
+    .match(/const LIGHT_PALETTE = \[([\s\S]*?)\] as const;/)?.[1]
+    .match(/\[([\d., ]+)\]/g)
+    ?.map((color) => color.slice(1, -1).split(",").map(Number));
+  assert.equal(lightPalette?.length, 5);
+  assert.ok(
+    lightPalette?.every(([red, , blue]) => blue > red),
+    "light mode should keep a cold blueprint palette"
+  );
+  const lightAlpha = backdrop.match(
+    /float lightAlpha = mix\(([\d.]+), ([\d.]+),/
+  );
+  assert.ok(lightAlpha, "light mode should define its own alpha curve");
+  assert.ok(Number(lightAlpha[1]) >= 0.18);
+  assert.ok(Number(lightAlpha[1]) <= 0.24);
+  assert.ok(Number(lightAlpha[2]) >= 0.6);
+  assert.ok(Number(lightAlpha[2]) <= 0.72);
+  const lightPointScale = backdrop.match(
+    /float pointSize =[^\n]+mix\(([\d.]+), 1\.0, uDark\)/
+  );
+  assert.ok(lightPointScale, "light mode should define its own point scale");
+  assert.ok(Number(lightPointScale[1]) >= 1.15);
+  assert.match(backdrop, /float foldAlpha = mix\(0\.18, 0\.34, uDark\)/);
+  assert.match(backdrop, /float sparkleScale = mix\(1\.35, 2\.25, uDark\)/);
+  assert.match(backdrop, /float quietStart = mix\(/);
   assert.match(backdrop, /new IntersectionObserver/);
   assert.match(css, /\.ai-particle-field/);
+  assert.match(css, /html\[data-theme='light'\] \.hero-bleed/);
+  assert.match(css, /mix-blend-mode: multiply/);
   assert.doesNotMatch(backdrop, /Path2D|shadowBlur|CanvasRenderingContext2D/);
   assert.doesNotMatch(backdrop, /aria-hidden="true"/);
   assert.doesNotMatch(css, /mask-image|filter:\s*saturate/);
