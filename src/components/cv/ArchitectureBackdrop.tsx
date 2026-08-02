@@ -1,11 +1,16 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import {
+  createParticleProgram,
+  deferRendererMount,
+  drawParticleFrame,
+  mountScrollParticleRenderer,
+  type ScrollParticleScene
+} from "@/components/webgl/ScrollParticleRenderer";
 
 const TAU = Math.PI * 2;
 const PARTICLE_STRIDE = 9;
-const TARGET_FRAME_MS = 1000 / 24;
-const ACTIVE_SCROLL_MS = 180;
 
 const DARK_PALETTE = [
   [0.141, 0.769, 1],
@@ -238,17 +243,6 @@ void main() {
 }
 `;
 
-type UniformLocations = {
-  time: WebGLUniformLocation;
-  compact: WebGLUniformLocation;
-  dpr: WebGLUniformLocation;
-  dark: WebGLUniformLocation;
-  scroll: WebGLUniformLocation;
-  viewport: WebGLUniformLocation;
-  pointer: WebGLUniformLocation;
-  palettes: WebGLUniformLocation[];
-};
-
 function seededRandom(seed: number) {
   let value = seed >>> 0;
   return () => {
@@ -347,8 +341,31 @@ function appendParticlePair(
   const sparkleThreshold = ridge ? 0.985 : 0.996;
   const sparkle = random() > sparkleThreshold;
 
-  pushParticle(values, theta, band, seed, layer, color, size, ridge, 0, sparkle);
-  if (fold) pushParticle(values, theta, band, seed, layer, color, size, ridge, 1, false);
+  pushParticle(
+    values,
+    theta,
+    band,
+    seed,
+    layer,
+    color,
+    size,
+    ridge,
+    0,
+    sparkle
+  );
+  if (fold)
+    pushParticle(
+      values,
+      theta,
+      band,
+      seed,
+      layer,
+      color,
+      size,
+      ridge,
+      1,
+      false
+    );
 }
 
 function createParticleData(width: number) {
@@ -365,359 +382,97 @@ function createParticleData(width: number) {
   return new Float32Array(values);
 }
 
-function createProgram(gl: WebGLRenderingContext) {
-  const vertexShader = gl.createShader(gl.VERTEX_SHADER);
-  const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-  if (!vertexShader || !fragmentShader) return null;
+const ARCHITECTURE_ATTRIBUTES = [
+  "aTheta",
+  "aBand",
+  "aSeed",
+  "aLayer",
+  "aColor",
+  "aSize",
+  "aRidge",
+  "aFold",
+  "aSparkle"
+] as const;
 
-  gl.shaderSource(vertexShader, VERTEX_SHADER);
-  gl.shaderSource(fragmentShader, FRAGMENT_SHADER);
-  gl.compileShader(vertexShader);
-  gl.compileShader(fragmentShader);
+const ARCHITECTURE_UNIFORMS = [
+  "uTime",
+  "uCompact",
+  "uDpr",
+  "uDark",
+  "uScroll",
+  "uViewport",
+  "uPointer",
+  "uPalette0",
+  "uPalette1",
+  "uPalette2",
+  "uPalette3",
+  "uPalette4"
+] as const;
 
-  const program = gl.createProgram();
-  if (!program) {
-    gl.deleteShader(vertexShader);
-    gl.deleteShader(fragmentShader);
-    return null;
-  }
-
-  gl.attachShader(program, vertexShader);
-  gl.attachShader(program, fragmentShader);
-  gl.linkProgram(program);
-  gl.deleteShader(vertexShader);
-  gl.deleteShader(fragmentShader);
-
-  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    gl.deleteProgram(program);
-    return null;
-  }
-
-  return program;
-}
-
-function getUniform(
+function createArchitectureScene(
   gl: WebGLRenderingContext,
-  program: WebGLProgram,
-  name: string
-) {
-  return gl.getUniformLocation(program, name);
-}
-
-function mountRenderer(canvas: HTMLCanvasElement) {
-  const homeRoot = canvas.closest<HTMLElement>(".home-showcase");
-  const gl = canvas.getContext("webgl", {
-    alpha: true,
-    antialias: false,
-    depth: false,
-    stencil: false,
-    preserveDrawingBuffer: false,
-    powerPreference: "low-power"
+  canvas: HTMLCanvasElement
+): ScrollParticleScene | null {
+  const resources = createParticleProgram(gl, {
+    vertexShader: VERTEX_SHADER,
+    fragmentShader: FRAGMENT_SHADER,
+    attributes: ARCHITECTURE_ATTRIBUTES,
+    uniforms: ARCHITECTURE_UNIFORMS,
+    stride: PARTICLE_STRIDE
   });
-  if (!gl) return () => undefined;
+  if (!resources) return null;
 
-  const program = createProgram(gl);
-  const buffer = gl.createBuffer();
-  if (!program || !buffer) {
-    if (program) gl.deleteProgram(program);
-    if (buffer) gl.deleteBuffer(buffer);
-    return () => undefined;
-  }
-
-  const attributeNames = [
-    "aTheta",
-    "aBand",
-    "aSeed",
-    "aLayer",
-    "aColor",
-    "aSize",
-    "aRidge",
-    "aFold",
-    "aSparkle"
-  ];
-  const attributeLocations = attributeNames.map((name) =>
-    gl.getAttribLocation(program, name)
-  );
-  const paletteLocations = [0, 1, 2, 3, 4].map((index) =>
-    getUniform(gl, program, `uPalette${index}`)
-  );
-  const uniformCandidates = {
-    time: getUniform(gl, program, "uTime"),
-    compact: getUniform(gl, program, "uCompact"),
-    dpr: getUniform(gl, program, "uDpr"),
-    dark: getUniform(gl, program, "uDark"),
-    scroll: getUniform(gl, program, "uScroll"),
-    viewport: getUniform(gl, program, "uViewport"),
-    pointer: getUniform(gl, program, "uPointer")
-  };
-
-  if (
-    attributeLocations.includes(-1) ||
-    Object.values(uniformCandidates).includes(null) ||
-    paletteLocations.includes(null)
-  ) {
-    gl.deleteBuffer(buffer);
-    gl.deleteProgram(program);
-    return () => undefined;
-  }
-
-  const uniforms = {
-    ...uniformCandidates,
-    palettes: paletteLocations
-  } as UniformLocations;
-
-  gl.useProgram(program);
-  gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-  const stride = PARTICLE_STRIDE * Float32Array.BYTES_PER_ELEMENT;
-  attributeLocations.forEach((location, index) => {
-    gl.enableVertexAttribArray(location);
-    gl.vertexAttribPointer(
-      location,
-      1,
-      gl.FLOAT,
-      false,
-      stride,
-      index * Float32Array.BYTES_PER_ELEMENT
-    );
-  });
-  gl.clearColor(0, 0, 0, 0);
-  gl.disable(gl.DEPTH_TEST);
-  gl.enable(gl.BLEND);
-
-  const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  let width = 0;
-  let height = 0;
-  let dpr = 1;
   let vertexCount = 0;
-  let frame = 0;
-  let frameTimer = 0;
-  let inViewport = true;
-  let pageVisible = !document.hidden;
-  let reducedMotion = motionQuery.matches;
-  let destroyed = false;
-  let contextLost = false;
-  let scrollProgress = 0;
-  let scrollActiveUntil = 0;
-  let lastDrawTime = performance.now();
   const pointer = { x: 0, y: 0 };
   const pointerTarget = { x: 0, y: 0 };
 
-  const isDark = () => {
-    const theme = document.documentElement.dataset["theme"];
-    return theme ? theme === "dark" : systemThemeQuery.matches;
+  return {
+    resize(width) {
+      vertexCount = resources.uploadParticles(createParticleData(width));
+    },
+    draw(frame) {
+      if (!vertexCount) return;
+
+      const settle = frame.reducedMotion
+        ? 1
+        : 1 - Math.exp(-frame.frameDelta / 78);
+      pointer.x += (pointerTarget.x - pointer.x) * settle;
+      pointer.y += (pointerTarget.y - pointer.y) * settle;
+      drawParticleFrame(
+        gl,
+        canvas,
+        resources,
+        frame,
+        frame.dark ? DARK_PALETTE : LIGHT_PALETTE,
+        pointer,
+        vertexCount
+      );
+    },
+    pointerMove(event) {
+      pointerTarget.x = (event.clientX / window.innerWidth - 0.5) * 2;
+      pointerTarget.y = (event.clientY / window.innerHeight - 0.5) * 2;
+    },
+    pointerLeave() {
+      pointerTarget.x = 0;
+      pointerTarget.y = 0;
+    },
+    resetMotion() {
+      pointer.x = 0;
+      pointer.y = 0;
+      pointerTarget.x = 0;
+      pointerTarget.y = 0;
+    },
+    destroy: resources.destroy
   };
+}
 
-  const uploadPalette = (
-    palette: typeof DARK_PALETTE | typeof LIGHT_PALETTE
-  ) => {
-    palette.forEach((color, index) => {
-      gl.uniform3f(uniforms.palettes[index], color[0], color[1], color[2]);
-    });
-  };
-
-  const updateScrollTarget = () => {
-    if (!homeRoot) return;
-
-    const rect = homeRoot.getBoundingClientRect();
-    const journeyHeight = Math.max(homeRoot.scrollHeight, homeRoot.offsetHeight);
-    const scrollableHeight = Math.max(1, journeyHeight - window.innerHeight);
-    const nextProgress = Math.min(
-      1,
-      Math.max(0, -rect.top / scrollableHeight)
-    );
-    scrollProgress = nextProgress;
-  };
-
-  const draw = (now: number) => {
-    if (!width || !height || !vertexCount || contextLost) return;
-
-    const dark = isDark();
-    const elapsed = reducedMotion ? 12.5 : now / 1000;
-    const frameDelta = Math.min(100, Math.max(0, now - lastDrawTime));
-    const settle = reducedMotion ? 1 : 1 - Math.exp(-frameDelta / 78);
-    lastDrawTime = now;
-    pointer.x += (pointerTarget.x - pointer.x) * settle;
-    pointer.y += (pointerTarget.y - pointer.y) * settle;
-
-    gl.viewport(0, 0, canvas.width, canvas.height);
-    gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.useProgram(program);
-    gl.uniform1f(uniforms.time, elapsed);
-    gl.uniform1f(uniforms.compact, width < 720 ? 1 : 0);
-    gl.uniform1f(uniforms.dpr, dpr);
-    gl.uniform1f(uniforms.dark, dark ? 1 : 0);
-    gl.uniform1f(uniforms.scroll, scrollProgress);
-    gl.uniform2f(uniforms.viewport, width, height);
-    gl.uniform2f(uniforms.pointer, pointer.x, pointer.y);
-    uploadPalette(dark ? DARK_PALETTE : LIGHT_PALETTE);
-    gl.blendFunc(gl.SRC_ALPHA, dark ? gl.ONE : gl.ONE_MINUS_SRC_ALPHA);
-    gl.drawArrays(gl.POINTS, 0, vertexCount);
-  };
-
-  const cancelFrame = () => {
-    if (frame) window.cancelAnimationFrame(frame);
-    if (frameTimer) window.clearTimeout(frameTimer);
-    frame = 0;
-    frameTimer = 0;
-  };
-
-  const queueFrame = () => {
-    if (
-      destroyed ||
-      reducedMotion ||
-      !inViewport ||
-      !pageVisible ||
-      contextLost ||
-      frame ||
-      frameTimer
-    ) {
-      return;
-    }
-
-    const frameDelay =
-      performance.now() < scrollActiveUntil ? 0 : TARGET_FRAME_MS;
-    frameTimer = window.setTimeout(() => {
-      frameTimer = 0;
-      if (
-        destroyed ||
-        reducedMotion ||
-        !inViewport ||
-        !pageVisible ||
-        contextLost
-      ) {
-        return;
-      }
-      frame = window.requestAnimationFrame(renderFrame);
-    }, frameDelay);
-  };
-
-  const renderFrame = (now: number) => {
-    frame = 0;
-    draw(now);
-    queueFrame();
-  };
-
-  const resize = () => {
-    updateScrollTarget();
-    const rect = canvas.getBoundingClientRect();
-    const nextWidth = Math.max(1, Math.round(rect.width));
-    const nextHeight = Math.max(1, Math.round(rect.height));
-    const dprCap = nextWidth < 720 ? 1.25 : 1.5;
-    const nextDpr = Math.min(window.devicePixelRatio || 1, dprCap);
-    if (nextWidth === width && nextHeight === height && nextDpr === dpr) return;
-
-    width = nextWidth;
-    height = nextHeight;
-    dpr = nextDpr;
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
-    const particleData = createParticleData(width);
-    vertexCount = particleData.length / PARTICLE_STRIDE;
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-    gl.bufferData(gl.ARRAY_BUFFER, particleData, gl.STATIC_DRAW);
-    draw(performance.now());
-    queueFrame();
-  };
-
-  const onPointerMove = (event: PointerEvent) => {
-    if (reducedMotion) return;
-    pointerTarget.x = (event.clientX / window.innerWidth - 0.5) * 2;
-    pointerTarget.y = (event.clientY / window.innerHeight - 0.5) * 2;
-  };
-
-  const onPointerLeave = () => {
-    pointerTarget.x = 0;
-    pointerTarget.y = 0;
-  };
-
-  const onScroll = () => {
-    updateScrollTarget();
-    scrollActiveUntil = performance.now() + ACTIVE_SCROLL_MS;
-    if (reducedMotion) {
-      draw(performance.now());
-      return;
-    }
-    if (frameTimer) {
-      window.clearTimeout(frameTimer);
-      frameTimer = 0;
-    }
-    if (!frame && inViewport && pageVisible && !contextLost) {
-      frame = window.requestAnimationFrame(renderFrame);
-    }
-  };
-
-  const onMotionChange = () => {
-    reducedMotion = motionQuery.matches;
-    cancelFrame();
-    pointer.x = 0;
-    pointer.y = 0;
-    pointerTarget.x = 0;
-    pointerTarget.y = 0;
-    draw(performance.now());
-    queueFrame();
-  };
-
-  const onThemeChange = () => draw(performance.now());
-  const onVisibilityChange = () => {
-    pageVisible = !document.hidden;
-    if (!pageVisible) cancelFrame();
-    if (pageVisible) {
-      draw(performance.now());
-      queueFrame();
-    }
-  };
-  const onContextLost = (event: Event) => {
-    event.preventDefault();
-    contextLost = true;
-    cancelFrame();
-  };
-  const resizeObserver = new ResizeObserver(resize);
-  const themeObserver = new MutationObserver(onThemeChange);
-  const intersectionObserver = new IntersectionObserver(([entry]) => {
-    inViewport = entry?.isIntersecting ?? true;
-    if (!inViewport) cancelFrame();
-    if (inViewport) {
-      draw(performance.now());
-      queueFrame();
-    }
+function mountRenderer(canvas: HTMLCanvasElement) {
+  return mountScrollParticleRenderer(canvas, {
+    rootSelector: ".home-showcase",
+    reducedTime: 12.5,
+    dprCap: (width) => (width < 720 ? 1.25 : 1.5),
+    createScene: createArchitectureScene
   });
-
-  resizeObserver.observe(canvas);
-  themeObserver.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["data-theme"]
-  });
-  intersectionObserver.observe(canvas);
-  motionQuery.addEventListener("change", onMotionChange);
-  systemThemeQuery.addEventListener("change", onThemeChange);
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("pointermove", onPointerMove, { passive: true });
-  document.documentElement.addEventListener("pointerleave", onPointerLeave);
-  document.addEventListener("visibilitychange", onVisibilityChange);
-  canvas.addEventListener("webglcontextlost", onContextLost);
-  resize();
-  queueFrame();
-
-  return () => {
-    destroyed = true;
-    cancelFrame();
-    resizeObserver.disconnect();
-    themeObserver.disconnect();
-    intersectionObserver.disconnect();
-    motionQuery.removeEventListener("change", onMotionChange);
-    systemThemeQuery.removeEventListener("change", onThemeChange);
-    window.removeEventListener("scroll", onScroll);
-    window.removeEventListener("pointermove", onPointerMove);
-    document.documentElement.removeEventListener(
-      "pointerleave",
-      onPointerLeave
-    );
-    document.removeEventListener("visibilitychange", onVisibilityChange);
-    canvas.removeEventListener("webglcontextlost", onContextLost);
-    gl.deleteBuffer(buffer);
-    gl.deleteProgram(program);
-  };
 }
 
 export default function ArchitectureBackdrop() {
@@ -726,37 +481,8 @@ export default function ArchitectureBackdrop() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
-    const idleApi = window as unknown as {
-      requestIdleCallback?: (
-        callback: IdleRequestCallback,
-        options?: IdleRequestOptions
-      ) => number;
-      cancelIdleCallback?: (handle: number) => void;
-    };
-    let destroyed = false;
-    let cleanupRenderer: () => void = () => undefined;
-    let fallbackTimer = 0;
-    let idleCallback = 0;
-    const start = () => {
-      if (!destroyed) cleanupRenderer = mountRenderer(canvas);
-    };
-
-    if (idleApi.requestIdleCallback) {
-      idleCallback = idleApi.requestIdleCallback(start, { timeout: 700 });
-    } else {
-      fallbackTimer = window.setTimeout(start, 160);
-    }
-
-    return () => {
-      destroyed = true;
-      if (idleCallback) idleApi.cancelIdleCallback?.(idleCallback);
-      if (fallbackTimer) window.clearTimeout(fallbackTimer);
-      cleanupRenderer();
-    };
+    return deferRendererMount(() => mountRenderer(canvas));
   }, []);
 
-  return (
-    <canvas ref={canvasRef} className="ai-particle-field" role="presentation" />
-  );
+  return <canvas ref={canvasRef} className="ai-particle-field" />;
 }

@@ -7,14 +7,16 @@ async function read(relativePath) {
 }
 
 test("gallery renders a theme-aware particle Memory Bloom in an async WebGL boundary", async () => {
-  const [page, loader, backdrop, grid, motionProvider, css] = await Promise.all([
-    read("src/app/[locale]/(site)/gallery/page.tsx"),
-    read("src/components/gallery/GalleryBackdrop.tsx"),
-    read("src/components/gallery/MemoryBloomBackdrop.tsx"),
-    read("src/components/gallery/GalleryGrid.tsx"),
-    read("src/components/motion/MotionProvider.tsx"),
-    read("src/app/[locale]/(site)/gallery/gallery.css")
-  ]);
+  const [page, loader, backdrop, renderer, grid, motionProvider, css] =
+    await Promise.all([
+      read("src/app/[locale]/(site)/gallery/page.tsx"),
+      read("src/components/gallery/GalleryBackdrop.tsx"),
+      read("src/components/gallery/MemoryBloomBackdrop.tsx"),
+      read("src/components/webgl/ScrollParticleRenderer.ts"),
+      read("src/components/gallery/GalleryGrid.tsx"),
+      read("src/components/motion/MotionProvider.tsx"),
+      read("src/app/[locale]/(site)/gallery/gallery.css")
+    ]);
 
   assert.match(page, /<GalleryBackdrop \/>/);
   assert.match(
@@ -25,8 +27,9 @@ test("gallery renders a theme-aware particle Memory Bloom in an async WebGL boun
   assert.match(loader, /className="gallery-memory-bloom"/);
   assert.match(loader, /className="gallery-memory-bloom-viewport"/);
 
-  assert.match(backdrop, /getContext\("webgl"/);
-  assert.match(backdrop, /gl\.drawArrays\(gl\.POINTS, 0, vertexCount\)/);
+  assert.match(backdrop, /mountScrollParticleRenderer/);
+  assert.match(renderer, /getContext\("webgl"/);
+  assert.match(renderer, /gl\.drawArrays\(gl\.POINTS, 0, vertexCount\)/);
   assert.match(backdrop, /const RIBBON_COUNT = 3/);
   assert.match(backdrop, /attribute float aU/);
   assert.match(backdrop, /attribute float aV/);
@@ -47,35 +50,48 @@ test("gallery renders a theme-aware particle Memory Bloom in an async WebGL boun
     /magneticPush|magneticPull|pointerTangent|swirl|scrollVelocity|scrollBreath|timeDrift/
   );
   assert.doesNotMatch(backdrop, /journey \* scrollPhase/);
-  assert.match(backdrop, /float fold = sin\(aV \* 2\.8 \+ t \* 5\.1 \+ phase\)/);
+  assert.match(
+    backdrop,
+    /float fold = sin\(aV \* 2\.8 \+ t \* 5\.1 \+ phase\)/
+  );
   assert.match(backdrop, /const DARK_PALETTE/);
   assert.match(backdrop, /const LIGHT_PALETTE/);
 
-  assert.match(backdrop, /const TARGET_FRAME_MS = 1000 \/ 24/);
-  assert.match(backdrop, /const ACTIVE_SCROLL_MS = 180/);
-  assert.match(backdrop, /scrollProgress = nextProgress/);
+  assert.match(renderer, /const TARGET_FRAME_MS = 1000 \/ 24/);
+  assert.match(renderer, /const ACTIVE_SCROLL_MS = 180/);
   assert.match(
-    backdrop,
+    renderer,
+    /scrollProgress = clamp\(-rect\.top \/ scrollableHeight, 0, 1\)/
+  );
+  assert.match(
+    renderer,
     /performance\.now\(\) < scrollActiveUntil \? 0 : TARGET_FRAME_MS/
   );
   assert.match(
-    backdrop,
+    renderer,
     /scrollActiveUntil = performance\.now\(\) \+ ACTIVE_SCROLL_MS/
   );
-  assert.match(backdrop, /const dprCap = nextWidth < 720 \? 1 : 1\.25/);
-  assert.match(backdrop, /powerPreference: "low-power"/);
-  assert.match(backdrop, /requestIdleCallback/);
-  assert.match(backdrop, /prefers-reduced-motion: reduce/);
-  assert.match(backdrop, /new IntersectionObserver/);
-  assert.match(backdrop, /new MutationObserver\(onThemeChange\)/);
-  assert.match(backdrop, /visibilitychange/);
-  assert.match(backdrop, /attributeFilter: \["data-theme"\]/);
-  assert.match(backdrop, /reducedMotion \? 18 : now \/ 1000/);
-  assert.match(backdrop, /canvas\.closest<HTMLElement>\("\.gallery-showcase"\)/);
-  assert.match(backdrop, /window\.addEventListener\("scroll", onScroll/);
+  assert.match(backdrop, /dprCap: \(width\) => \(width < 720 \? 1 : 1\.25\)/);
+  assert.match(renderer, /powerPreference: "low-power"/);
+  assert.match(renderer, /requestIdleCallback/);
+  assert.match(renderer, /prefers-reduced-motion: reduce/);
+  assert.match(renderer, /new IntersectionObserver/);
+  assert.match(renderer, /new MutationObserver\(onThemeChange\)/);
+  assert.match(renderer, /visibilitychange/);
+  assert.match(renderer, /attributeFilter: \["data-theme"\]/);
+  assert.match(backdrop, /reducedTime: 18/);
+  assert.match(backdrop, /rootSelector: "\.gallery-showcase"/);
+  assert.match(
+    renderer,
+    /canvas\.closest<HTMLElement>\(options\.rootSelector\)/
+  );
+  assert.match(renderer, /window\.addEventListener\("scroll", onScroll/);
   assert.match(backdrop, /\(hover: hover\) and \(pointer: fine\)/);
-  assert.match(backdrop, /window\.addEventListener\("pointermove", onPointerMove/);
-  assert.match(backdrop, /reducedMotion \? 0 : pointer\.hover/);
+  assert.match(
+    renderer,
+    /window\.addEventListener\("pointermove", onPointerMove/
+  );
+  assert.match(backdrop, /frame\.reducedMotion \? 0 : pointer\.hover/);
   assert.match(motionProvider, /<MotionConfig reducedMotion="user">/);
   assert.doesNotMatch(grid, /useReducedMotion/);
 
@@ -87,7 +103,10 @@ test("gallery renders a theme-aware particle Memory Bloom in an async WebGL boun
   assert.match(css, /\.gallery-memory-bloom-viewport \{[^}]*height: 100svh/);
   assert.match(css, /\.gallery-memory-bloom-canvas \{[\s\S]*?width: 100%/);
   assert.match(css, /\.gallery-showcase \.container \{[\s\S]*?z-index: 1/);
-  assert.doesNotMatch(css, /\.gallery-memory-bloom \{[^}]*height:\s*(?:clamp|1120px)/);
+  assert.doesNotMatch(
+    css,
+    /\.gallery-memory-bloom \{[^}]*height:\s*(?:clamp|1120px)/
+  );
 
   assert.doesNotMatch(backdrop, /ellipseDistance|vanishingPoint|nodeMask/);
   assert.doesNotMatch(backdrop, /getContext\(['"]2d['"]\)/);

@@ -73,11 +73,22 @@ test("homepage copy states capability directly without recruiter-facing meta lan
 });
 
 test("homepage AI particle field is GPU-rendered, scroll-synced, and motion-safe", async () => {
-  const [page, hero, homeBackdrop, backdrop, section, contact, reveal, css] = await Promise.all([
+  const [
+    page,
+    hero,
+    homeBackdrop,
+    backdrop,
+    renderer,
+    section,
+    contact,
+    reveal,
+    css
+  ] = await Promise.all([
     read("src/app/[locale]/(site)/page.tsx"),
     read("src/components/cv/Hero.tsx"),
     read("src/components/cv/HomeBackdrop.tsx"),
     read("src/components/cv/ArchitectureBackdrop.tsx"),
+    read("src/components/webgl/ScrollParticleRenderer.ts"),
     read("src/components/cv/Section.tsx"),
     read("src/components/cv/ContactCTA.tsx"),
     read("src/components/motion/Reveal.tsx"),
@@ -101,24 +112,28 @@ test("homepage AI particle field is GPU-rendered, scroll-synced, and motion-safe
   assert.doesNotMatch(contact, /framer-motion|useReducedMotion|<m\./);
   assert.doesNotMatch(reveal, /framer-motion|useReducedMotion|<m\./);
   assert.match(backdrop, /<canvas[^>]+className="ai-particle-field"/);
-  assert.match(backdrop, /getContext\("webgl"/);
+  assert.match(backdrop, /mountScrollParticleRenderer/);
+  assert.match(renderer, /getContext\("webgl"/);
   assert.match(
-    backdrop,
-    /gl\.bufferData\(gl\.ARRAY_BUFFER, particleData, gl\.STATIC_DRAW\)/
+    renderer,
+    /gl\.bufferData\(gl\.ARRAY_BUFFER, data, gl\.STATIC_DRAW\)/
   );
-  assert.match(backdrop, /gl\.drawArrays\(gl\.POINTS, 0, vertexCount\)/);
+  assert.match(renderer, /gl\.drawArrays\(gl\.POINTS, 0, vertexCount\)/);
   assert.match(backdrop, /function resolveParticleGrid/);
   assert.match(backdrop, /function selectParticleColor/);
   assert.match(backdrop, /function appendParticlePair/);
-  assert.match(backdrop, /const TARGET_FRAME_MS = 1000 \/ 24/);
-  assert.match(backdrop, /const ACTIVE_SCROLL_MS = 180/);
-  assert.match(backdrop, /const dprCap = nextWidth < 720 \? 1\.25 : 1\.5/);
-  assert.match(backdrop, /requestIdleCallback/);
-  assert.match(backdrop, /window\.requestAnimationFrame\(renderFrame\)/);
-  assert.match(backdrop, /prefers-reduced-motion: reduce/);
-  assert.match(backdrop, /new MutationObserver\(onThemeChange\)/);
+  assert.match(renderer, /const TARGET_FRAME_MS = 1000 \/ 24/);
+  assert.match(renderer, /const ACTIVE_SCROLL_MS = 180/);
+  assert.match(
+    backdrop,
+    /dprCap: \(width\) => \(width < 720 \? 1\.25 : 1\.5\)/
+  );
+  assert.match(renderer, /requestIdleCallback/);
+  assert.match(renderer, /window\.requestAnimationFrame\(renderFrame\)/);
+  assert.match(renderer, /prefers-reduced-motion: reduce/);
+  assert.match(renderer, /new MutationObserver\(onThemeChange\)/);
   assert.match(backdrop, /const LIGHT_PALETTE = \[/);
-  assert.match(backdrop, /uploadPalette\(dark \? DARK_PALETTE : LIGHT_PALETTE\)/);
+  assert.match(backdrop, /frame\.dark \? DARK_PALETTE : LIGHT_PALETTE/);
   const lightPalette = backdrop
     .match(/const LIGHT_PALETTE = \[([\s\S]*?)\] as const;/)?.[1]
     .match(/\[([\d., ]+)\]/g)
@@ -145,18 +160,40 @@ test("homepage AI particle field is GPU-rendered, scroll-synced, and motion-safe
   assert.match(backdrop, /float sparkleScale = mix\(1\.35, 2\.25, uDark\)/);
   assert.match(backdrop, /float quietStart = mix\(/);
   assert.match(backdrop, /uniform float uScroll/);
-  assert.match(backdrop, /canvas\.closest<HTMLElement>\("\.home-showcase"\)/);
-  assert.match(backdrop, /const updateScrollTarget = \(\) =>/);
-  assert.match(backdrop, /scrollProgress = nextProgress/);
-  assert.match(backdrop, /gl\.uniform1f\(uniforms\.scroll, scrollProgress\)/);
-  assert.match(backdrop, /scrollActiveUntil = performance\.now\(\) \+ ACTIVE_SCROLL_MS/);
-  assert.match(backdrop, /performance\.now\(\) < scrollActiveUntil \? 0 : TARGET_FRAME_MS/);
-  assert.match(backdrop, /window\.addEventListener\("scroll", onScroll/);
+  assert.match(backdrop, /rootSelector: "\.home-showcase"/);
+  assert.match(
+    renderer,
+    /canvas\.closest<HTMLElement>\(options\.rootSelector\)/
+  );
+  assert.match(renderer, /const updateScrollProgress = \(\) =>/);
+  assert.match(
+    renderer,
+    /scrollProgress = clamp\(-rect\.top \/ scrollableHeight, 0, 1\)/
+  );
+  assert.match(
+    renderer,
+    /gl\.uniform1f\(uniforms\.uScroll, frame\.scrollProgress\)/
+  );
+  assert.match(
+    renderer,
+    /scrollActiveUntil = performance\.now\(\) \+ ACTIVE_SCROLL_MS/
+  );
+  assert.match(
+    renderer,
+    /performance\.now\(\) < scrollActiveUntil \? 0 : TARGET_FRAME_MS/
+  );
+  assert.match(renderer, /window\.addEventListener\("scroll", onScroll/);
   assert.doesNotMatch(backdrop, /scrollVelocity|scrollTarget/);
-  assert.match(backdrop, /new IntersectionObserver/);
+  assert.match(renderer, /new IntersectionObserver/);
   assert.match(css, /\.ai-particle-field/);
-  assert.match(css, /\.home-architecture\s*\{[\s\S]*?position: absolute;[\s\S]*?inset: 0;/);
-  assert.match(css, /\.home-architecture-viewport\s*\{[\s\S]*?position: sticky;/);
+  assert.match(
+    css,
+    /\.home-architecture\s*\{[\s\S]*?position: absolute;[\s\S]*?inset: 0;/
+  );
+  assert.match(
+    css,
+    /\.home-architecture-viewport\s*\{[\s\S]*?position: sticky;/
+  );
   assert.match(css, /height: 100svh/);
   assert.match(css, /html\[data-theme='light'\] \.home-architecture-viewport/);
   assert.match(css, /mix-blend-mode: multiply/);
