@@ -47,12 +47,10 @@ export default function AppHeader() {
           >
             <Image
               src="/favicon/android-icon-72x72.png"
-              alt="Nguyen Le Phong"
+              alt=""
               width={36}
               height={36}
               sizes="36px"
-              loading="eager"
-              fetchPriority="high"
               className="brand-avatar"
             />
             <span className="brand-text">Nguyen Le Phong</span>

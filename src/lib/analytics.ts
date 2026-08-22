@@ -118,6 +118,7 @@ export type AnalyticsEvent =
   // Not found recovery
   | 'not_found_view'
   | 'not_found_recovery_click'
+  | 'not_found_trailing_slash_recovery'
   // Studio
   | 'studio_view'
   | 'studio_route_open'

@@ -49,9 +49,28 @@ export default function NotFoundRecovery() {
 
   useEffect(() => {
     if (!ready) return;
+
+    // Every authored route in this site is slash-less (trailingSlash is off).
+    // GitHub Pages has no server-side redirect, so a trailing-slash link
+    // (bookmarks, other sites, typos) lands here as a hard 404. Recover it
+    // client-side by retrying the canonical slash-less path once.
+    if (pathname.length > 1 && pathname.endsWith("/")) {
+      const target =
+        pathname.replace(/\/+$/, "") +
+        window.location.search +
+        window.location.hash;
+      track(
+        "not_found_trailing_slash_recovery",
+        { from_pathname: pathname, to_pathname: target },
+        { omitLocation: true }
+      );
+      window.location.replace(target || "/");
+      return;
+    }
+
     document.documentElement.lang = context.locale;
     document.title = copy.metaTitle;
-  }, [context.locale, copy.metaTitle, ready]);
+  }, [context.locale, copy.metaTitle, pathname, ready]);
 
   const trackRecovery = (
     target: RecoveryTarget | "language_home",
