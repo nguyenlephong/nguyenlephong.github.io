@@ -214,76 +214,81 @@ export function ExplorerShell<T>({
             </div>
           )}
 
-          {paletteOpen && (
-            <div
-              id={paletteId}
-              className="blog-command__palette"
-              role="region"
-              aria-label={labels.filtersLabel}
-            >
-              <section className="blog-command__section">
-                <p className="blog-command__label">{labels.filtersLabel}</p>
-                <div
-                  className="blog-command__options"
-                  role="group"
-                  aria-label={labels.filtersLabel}
-                >
-                  <button
-                    type="button"
-                    className={`blog-command__option${!view.filter ? ' is-active' : ''}`}
-                    onClick={() => {
-                      onSearchIntent()
-                      trackExplorer('explorer_filter_select', { filter_id: 'all' })
-                      chooseAllFilters()
-                    }}
-                    aria-pressed={!view.filter}
+          {/* Always mounted (even closed) so the triggers' aria-controls
+              keeps pointing at a real element instead of a missing id. */}
+          <div
+            id={paletteId}
+            className="blog-command__palette"
+            role="region"
+            aria-label={labels.filtersLabel}
+            hidden={!paletteOpen}
+          >
+            {paletteOpen && (
+              <>
+                <section className="blog-command__section">
+                  <p className="blog-command__label">{labels.filtersLabel}</p>
+                  <div
+                    className="blog-command__options"
+                    role="group"
+                    aria-label={labels.filtersLabel}
                   >
-                    {labels.allFilters}
-                  </button>
-                  {filters.map((f) => (
                     <button
-                      key={f.id}
                       type="button"
-                      className={`blog-command__option${view.filter === f.id ? ' is-active' : ''}`}
-                      style={accentStyle(f.color)}
+                      className={`blog-command__option${!view.filter ? ' is-active' : ''}`}
                       onClick={() => {
                         onSearchIntent()
-                        trackExplorer('explorer_filter_select', { filter_id: f.id })
-                        chooseFilter(f.id)
+                        trackExplorer('explorer_filter_select', { filter_id: 'all' })
+                        chooseAllFilters()
                       }}
-                      aria-pressed={view.filter === f.id}
+                      aria-pressed={!view.filter}
                     >
-                      {f.label}
+                      {labels.allFilters}
                     </button>
-                  ))}
-                </div>
-              </section>
-
-              {popularTags.length > 0 && (
-                <section className="blog-command__section">
-                  <p className="blog-command__label">{labels.popularTags}</p>
-                  <ul className="blog-command__tag-list">
-                    {popularTags.map((tg) => (
-                      <li key={tg}>
-                        <button
-                          type="button"
-                          className={`blog-command__tag${view.tag === tg ? ' is-active' : ''}`}
-                          onClick={() => {
-                            onSearchIntent()
-                            trackExplorer('explorer_tag_select', { tag: tg })
-                            chooseTag(tg)
-                          }}
-                          aria-pressed={view.tag === tg}
-                        >
-                          {tg}
-                        </button>
-                      </li>
+                    {filters.map((f) => (
+                      <button
+                        key={f.id}
+                        type="button"
+                        className={`blog-command__option${view.filter === f.id ? ' is-active' : ''}`}
+                        style={accentStyle(f.color)}
+                        onClick={() => {
+                          onSearchIntent()
+                          trackExplorer('explorer_filter_select', { filter_id: f.id })
+                          chooseFilter(f.id)
+                        }}
+                        aria-pressed={view.filter === f.id}
+                      >
+                        {f.label}
+                      </button>
                     ))}
-                  </ul>
+                  </div>
                 </section>
-              )}
-            </div>
-          )}
+
+                {popularTags.length > 0 && (
+                  <section className="blog-command__section">
+                    <p className="blog-command__label">{labels.popularTags}</p>
+                    <ul className="blog-command__tag-list">
+                      {popularTags.map((tg) => (
+                        <li key={tg}>
+                          <button
+                            type="button"
+                            className={`blog-command__tag${view.tag === tg ? ' is-active' : ''}`}
+                            onClick={() => {
+                              onSearchIntent()
+                              trackExplorer('explorer_tag_select', { tag: tg })
+                              chooseTag(tg)
+                            }}
+                            aria-pressed={view.tag === tg}
+                          >
+                            {tg}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+              </>
+            )}
+          </div>
         </div>
 
         <noscript>

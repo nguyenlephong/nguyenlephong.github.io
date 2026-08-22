@@ -47,13 +47,14 @@ export default function BlogReactions({
       <div className="blog-reactions__row" role="group">
         {REACTIONS.map(({ key, Icon }) => {
           const active = myReaction === key
+          const count = formatCount(reactions[key])
           return (
             <button
               key={key}
               type="button"
               className={`blog-react${active ? ' blog-react--active' : ''}`}
               aria-pressed={active}
-              aria-label={reactionLabels[key]}
+              aria-label={`${reactionLabels[key]} (${count})`}
               title={reactionLabels[key]}
               onClick={() => {
                 react(key)
@@ -67,8 +68,8 @@ export default function BlogReactions({
               }}
             >
               <Icon aria-hidden="true" className="blog-react__icon" />
-              <span className="blog-react__count">
-                {formatCount(reactions[key])}
+              <span className="blog-react__count" aria-hidden="true">
+                {count}
               </span>
             </button>
           )
