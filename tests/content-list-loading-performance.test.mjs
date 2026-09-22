@@ -193,7 +193,7 @@ test("archive post stats stay provider-free until browsing intent", async () => 
   assert.match(shell, /data-deferred-post-stats=\{postStatsStatus\}/);
 });
 
-test("header eagerly loads the small display icon and preserves the app icon", async () => {
+test("header does not compete with the true LCP element for the small display icon, and preserves the app icon", async () => {
   const [header, appIcon] = await Promise.all([
     readFile("src/components/AppHeader.tsx", "utf8"),
     readFile("src/app/icon.png")
@@ -203,8 +203,9 @@ test("header eagerly loads the small display icon and preserves the app icon", a
   assert.match(header, /width=\{36\}/);
   assert.match(header, /height=\{36\}/);
   assert.match(header, /sizes="36px"/);
-  assert.match(header, /loading="eager"/);
-  assert.match(header, /fetchPriority="high"/);
+  assert.match(header, /alt=""/);
+  assert.doesNotMatch(header, /loading="eager"/);
+  assert.doesNotMatch(header, /fetchPriority="high"/);
   assert.doesNotMatch(header, /src="\/icon\.png"/);
   assert.ok(appIcon.byteLength > 0);
 });
