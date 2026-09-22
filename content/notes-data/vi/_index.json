@@ -2085,6 +2085,22 @@
         "Kinh nghiệm"
       ],
       "topic": "mua-nha"
+    },
+    {
+      "slug": "the-quiet-engineering-behind-bonbons-500k-round",
+      "title": "Khoản đầu tư 500.000 USD của BonBon và phần việc âm thầm phía sau",
+      "summary": "Một ghi chép cá nhân về phần tích hợp sản phẩm âm thầm phía sau vòng gọi vốn 500.000 USD mà Tasco dẫn dắt vào BonBon, và những gì việc làm sản phẩm ở tốc độ venture builder dạy mình về kỷ luật kỹ thuật, lòng biết ơn, và những phần không ai nhìn thấy phía sau một lần ra mắt.",
+      "cardSummary": "Tiêu đề chỉ có một dòng, phần kỹ thuật phía sau nó thì chẳng bao giờ lên báo.",
+      "date": "2026-09-22",
+      "readingMinutes": 6,
+      "tags": [
+        "Sự nghiệp",
+        "Startup",
+        "Software Engineering",
+        "Tích hợp sản phẩm",
+        "Biết ơn",
+        "Venture Building"
+      ]
     }
   ]
 }

@@ -35,10 +35,10 @@ test('every locale presents the evidence-backed LogiUP and BonBon projects', asy
   assert.match(en.Projects.logiup.accomplishments[0], /Tech Lead and system architect/);
   assert.match(en.Projects.logiup.accomplishments[2], /tenant isolation end to end/);
   assert.match(en.Projects.bonbon.accomplishments[0], /Top 3 finalist/);
-  assert.match(en.Projects.bonbon.accomplishments[0], /final pitch/);
+  assert.match(en.Projects.bonbon.accomplishments[0], /\$500K seed round led by Tasco/);
   assert.doesNotMatch(
     en.Projects.bonbon.accomplishments.join(' '),
-    /secured|received|revenue|GMV/,
+    /revenue|GMV/,
   );
 });
 
@@ -83,6 +83,10 @@ test('signature projects lead the homepage and generated resume selection', asyn
   assert.match(
     exporter,
     /\['BonBon - VETC Mini App & Automotive Platform', \[0, 1, 2\]\]/
+  );
+  assert.match(
+    projects,
+    /publisher: "Tasco"/,
   );
   assert.match(schema, /'AI-assisted Document Processing'/);
   assert.match(schema, /'Multi-tenant SaaS Architecture'/);

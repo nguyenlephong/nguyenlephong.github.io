@@ -1,4 +1,5 @@
 'use client'
+import { LuExternalLink } from 'react-icons/lu'
 import { useTranslations } from 'next-intl'
 import { ProjectType } from '@/app/app.type'
 import { Stagger, StaggerItem } from '@/components/motion/Reveal'
@@ -58,6 +59,31 @@ export default function Projects({ data }: Props) {
                   />
                 ))}
               </ul>
+
+              {p.evidence && (
+                <div className="role-evidence">
+                  <span className="role-evidence-label">{t('labels.publicEvidence')}</span>
+                  <a
+                    href={p.evidence.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      track(
+                        'cv_project_evidence_click',
+                        {
+                          project: p.name,
+                          publisher: p.evidence?.publisher,
+                          published_at: p.evidence?.publishedAt,
+                        },
+                        { beacon: true },
+                      )
+                    }
+                  >
+                    {t('labels.readCoverage', { publisher: p.evidence.publisher })}
+                    <LuExternalLink size={13} aria-hidden="true" />
+                  </a>
+                </div>
+              )}
             </>
           </StaggerItem>
         )

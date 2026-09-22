@@ -192,6 +192,10 @@
     }
   },
   "Projects": {
+    "labels": {
+      "publicEvidence": "Couverture de l'investissement",
+      "readCoverage": "Lire l'article sur {publisher}"
+    },
     "logiup": {
       "accomplishments": [
         "Direction d'une <b>équipe engineering de 4 personnes</b> en tant que <b>Tech Lead et system architect</b>, avec la responsabilité de la direction technique, des décisions d'architecture, des standards de review, de l'onboarding et de la livraison sur <b>9 dépôts indépendants</b>.",
@@ -202,7 +206,7 @@
     },
     "bonbon": {
       "accomplishments": [
-        "Réalisation de l'intégration produit qui a accompagné BonBon du MVP au pilote terrain en <b>3 mois</b>, avec une place parmi les <b>3 finalistes</b> au Wash3000 MVP Demo Day de Tasco × GenAI Fund et un pitch final pour un <b>investissement en capital de 500 k$</b>.",
+        "Réalisation de l'intégration produit qui a accompagné BonBon du MVP au pilote terrain en <b>3 mois</b>, avec une place parmi les <b>3 finalistes</b> au Wash3000 MVP Demo Day de Tasco × GenAI Fund, et une contribution à la sécurisation d'un <b>tour de table de 500 k$ mené par Tasco</b>, avec la participation de GenAI Fund.",
         "Architecture et intégration d'une <b>Mini App de 12 écrans</b> dans l'écosystème applicatif VETC de <b>4,3 millions d'utilisateurs</b>, avec silent login par partner code, sessions en mémoire, deep links, polling sérialisé et analytics sur allow-list PII.",
         "Sécurisation des releases sur l'API Go, le Backoffice, le web et le mobile grâce aux kill-switch feature flags, rollout déterministe, audit transactionnel, gates checksum/CSP, parcours Playwright et <b>800+ tests unitaires</b>."
       ]
