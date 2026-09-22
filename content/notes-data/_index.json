@@ -3147,6 +3147,29 @@
         "en",
         "vi"
       ]
+    },
+    {
+      "slug": "the-quiet-engineering-behind-bonbons-500k-round",
+      "title": "The Quiet Engineering Behind BonBon's $500K Round",
+      "summary": "A personal reflection on the invisible integration work behind BonBon's $500,000 seed round led by Tasco, and what building at venture-builder speed teaches about engineering discipline, gratitude, and the parts of a launch nobody sees.",
+      "cardSummary": "The headline is one line; the engineering behind it never makes the press release.",
+      "date": "2026-09-22",
+      "readingMinutes": 6,
+      "tags": [
+        "Career",
+        "Startup",
+        "Software Engineering",
+        "Product Integration",
+        "Gratitude",
+        "Venture Building"
+      ],
+      "author": "Nguyen Le Phong",
+      "topic": "su-nghiep",
+      "baseLocale": "en",
+      "locales": [
+        "en",
+        "vi"
+      ]
     }
   ]
 }

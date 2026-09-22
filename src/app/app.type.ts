@@ -24,6 +24,11 @@ export type ProjectType = {
   duration: string;
   description: string[];
   accomplishment: string[]
+  evidence?: {
+    href: string
+    publisher: string
+    publishedAt: string
+  }
 }
 
 export type AchievementType = {
