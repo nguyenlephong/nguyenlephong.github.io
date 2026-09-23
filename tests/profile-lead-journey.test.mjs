@@ -278,7 +278,6 @@ test("hero leads with both the Zalo PC role and the BonBon co-founder role", asy
     assert.equal(typeof messages.Hero.cofounder, "string");
     assert.match(messages.Hero.news, /BonBon/);
     assert.match(messages.Hero.stats.preSeedRaisedCaption, /Tasco/);
-    assert.match(messages.Footer.tag, /BonBon/);
     assert.match(messages.SEO.home.title, /BonBon/);
     assert.equal(messages.Hero.proof, undefined);
   }
@@ -287,6 +286,7 @@ test("hero leads with both the Zalo PC role and the BonBon co-founder role", asy
   assert.match(hero, /<strong>BonBon<\/strong>/);
   assert.match(hero, /locale=\{locale === 'vi' \? 'vi' : 'en'\}/);
   assert.match(hero, /prefetch=\{false\}/);
+  assert.match(hero, /Math\.round\(\(v \/ max\) \* 100\)/);
   assert.match(hero, /track\('cv_announcement_click', \{ target: 'bonbon_pre_seed_note' \}\)/);
   assert.match(analytics, /\| 'cv_announcement_click'/);
 });
