@@ -206,7 +206,7 @@
     },
     "bonbon": {
       "accomplishments": [
-        "BonBon を MVP から実地 pilot へ進める product integration を構築し、<b>3 か月</b>で Tasco × GenAI Fund の Wash3000 MVP Demo Day <b>Top 3 finalist</b> に選出。Tasco が主導し GenAI Fund も参加した<b>50 万米ドルの資金調達ラウンド</b>の成立に貢献。",
+        "BonBon の共同創業者として、BonBon を MVP から実地 pilot へ進める product integration を構築し、<b>3 か月</b>で Tasco × GenAI Fund の Wash3000 MVP Demo Day <b>Top 3 finalist</b> に選出。Tasco が主導し GenAI Fund も参加した<b>50 万米ドルの pre-seed ラウンド</b>の成立に貢献。",
         "<b>12 画面の Mini App</b>を設計し、<b>430 万ユーザー</b>を持つ VETC app ecosystem に統合。partner code silent login、memory-only session、deep link、foreground serialized polling、PII allow-list analytics を実装。",
         "kill-switch feature flag、deterministic rollout、transactional audit、checksum/CSP gate、Playwright flow、<b>800+ unit test</b>により、Go API、Backoffice、web、mobile 全体の release safety を確保。"
       ]

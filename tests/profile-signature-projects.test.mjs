@@ -35,7 +35,16 @@ test('every locale presents the evidence-backed LogiUP and BonBon projects', asy
   assert.match(en.Projects.logiup.accomplishments[0], /Tech Lead and system architect/);
   assert.match(en.Projects.logiup.accomplishments[2], /tenant isolation end to end/);
   assert.match(en.Projects.bonbon.accomplishments[0], /Top 3 finalist/);
-  assert.match(en.Projects.bonbon.accomplishments[0], /\$500K seed round led by Tasco/);
+  assert.match(en.Projects.bonbon.accomplishments[0], /^Co-founded BonBon/);
+  assert.match(en.Projects.bonbon.accomplishments[0], /\$500K pre-seed round led by Tasco/);
+  for (const locale of locales) {
+    const messages = JSON.parse(await read(`messages/${locale}.json`));
+    assert.match(messages.Projects.bonbon.accomplishments[0], /pre-seed/);
+    assert.doesNotMatch(
+      messages.Projects.bonbon.accomplishments[0],
+      /(?<!pre-)seed round/,
+    );
+  }
   assert.doesNotMatch(
     en.Projects.bonbon.accomplishments.join(' '),
     /revenue|GMV/,
@@ -93,4 +102,11 @@ test('signature projects lead the homepage and generated resume selection', asyn
   assert.match(schema, /'Electron Desktop Architecture'/);
   assert.match(schema, /'OAuth 2.1 and OIDC'/);
   assert.match(schema, /'Feature Flag Platforms'/);
+  assert.match(schema, /'BonBon Mobility'/);
+  assert.match(schema, /Co-founder/);
+  assert.match(schema, /subjectOf/);
+  assert.match(
+    projects,
+    /Co-founded BonBon[\s\S]*?\$500K pre-seed round led by Tasco/,
+  );
 });

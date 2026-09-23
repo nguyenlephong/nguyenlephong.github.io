@@ -206,7 +206,7 @@
     },
     "bonbon": {
       "accomplishments": [
-        "Réalisation de l'intégration produit qui a accompagné BonBon du MVP au pilote terrain en <b>3 mois</b>, avec une place parmi les <b>3 finalistes</b> au Wash3000 MVP Demo Day de Tasco × GenAI Fund, et une contribution à la sécurisation d'un <b>tour de table de 500 k$ mené par Tasco</b>, avec la participation de GenAI Fund.",
+        "Cofondateur de BonBon : réalisation de l'intégration produit qui a accompagné BonBon du MVP au pilote terrain en <b>3 mois</b>, avec une place parmi les <b>3 finalistes</b> au Wash3000 MVP Demo Day de Tasco × GenAI Fund, et contribution à la levée d'un <b>tour pre-seed de 500 k$ mené par Tasco</b>, avec la participation de GenAI Fund.",
         "Architecture et intégration d'une <b>Mini App de 12 écrans</b> dans l'écosystème applicatif VETC de <b>4,3 millions d'utilisateurs</b>, avec silent login par partner code, sessions en mémoire, deep links, polling sérialisé et analytics sur allow-list PII.",
         "Sécurisation des releases sur l'API Go, le Backoffice, le web et le mobile grâce aux kill-switch feature flags, rollout déterministe, audit transactionnel, gates checksum/CSP, parcours Playwright et <b>800+ tests unitaires</b>."
       ]

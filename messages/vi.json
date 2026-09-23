@@ -203,7 +203,7 @@
     },
     "bonbon": {
       "accomplishments": [
-        "Xây dựng phần tích hợp sản phẩm giúp BonBon đi từ MVP đến pilot thực địa trong <b>3 tháng</b>, được chọn vào <b>Top 3 finalist</b> tại Wash3000 MVP Demo Day do Tasco × GenAI Fund tổ chức, và góp phần giúp BonBon gọi vốn thành công <b>vòng đầu tư 500.000 USD do Tasco dẫn dắt</b>, với sự tham gia của GenAI Fund.",
+        "Đồng sáng lập BonBon, xây dựng phần tích hợp sản phẩm giúp BonBon đi từ MVP đến pilot thực địa trong <b>3 tháng</b>, được chọn vào <b>Top 3 finalist</b> tại Wash3000 MVP Demo Day do Tasco × GenAI Fund tổ chức, và góp phần gọi vốn thành công <b>vòng pre-seed 500.000 USD do Tasco dẫn dắt</b>, với sự tham gia của GenAI Fund.",
         "Kiến trúc và tích hợp <b>Mini App 12 màn hình</b> vào hệ sinh thái ứng dụng VETC có <b>4,3 triệu người dùng</b>, với silent login qua partner code, session chỉ trong memory, deep link, polling tuần tự khi foreground và analytics theo PII allow-list.",
         "Đảm bảo release an toàn xuyên Go API, Backoffice, web và mobile bằng kill-switch feature flag, deterministic rollout, transactional audit, gate checksum/CSP, Playwright flow và <b>800+ unit test</b>."
       ]

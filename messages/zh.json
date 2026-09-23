@@ -206,7 +206,7 @@
     },
     "bonbon": {
       "accomplishments": [
-        "在 <b>3 个月</b>内完成支撑 BonBon 从 MVP 进入真实场景试点的产品集成，在 Tasco × GenAI Fund Wash3000 MVP Demo Day 跻身<b>前三名决赛团队</b>，并助力促成由 <b>Tasco 领投、GenAI Fund 参投的 50 万美元投资轮</b>顺利完成。",
+        "作为 BonBon 联合创始人，在 <b>3 个月</b>内完成支撑 BonBon 从 MVP 进入真实场景试点的产品集成，在 Tasco × GenAI Fund Wash3000 MVP Demo Day 跻身<b>前三名决赛团队</b>，并助力促成由 <b>Tasco 领投、GenAI Fund 参投的 50 万美元 pre-seed 轮</b>顺利完成。",
         "架构并将 <b>12 屏 Mini App</b>集成到拥有<b>430 万用户</b>的 VETC 应用生态，支持 partner code 静默登录、纯内存 session、deep link、前台串行轮询与基于 PII allow-list 的 analytics。",
         "通过 kill-switch feature flag、确定性 rollout、事务审计、checksum/CSP 门禁、Playwright 流程和 <b>800+ 单元测试</b>，保障 Go API、Backoffice、Web 与 Mobile 的发布安全。"
       ]
