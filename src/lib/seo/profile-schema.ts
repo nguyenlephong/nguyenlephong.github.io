@@ -110,6 +110,28 @@ export function buildPersonSchema(description: string): WithContext<Person> {
       '@type': 'Organization',
       name: 'Zalo - VNG Corporation',
     },
+    alumniOf: {
+      '@type': 'CollegeOrUniversity',
+      name: 'Information Technology — Bachelor (GPA 3.36)',
+    },
+    sameAs: [
+      profileInfo.contact.linkedin,
+      profileInfo.contact.github,
+      profileInfo.contact.leetcode,
+      profileInfo.contact.youtube,
+      profileInfo.contact.twitter,
+    ],
+  }
+}
+
+// Kept off the homepage Person node on purpose: the home HTML/RSC performance
+// budgets have no headroom, so the venture facts extend the same @id from /about.
+export function buildPersonVentureSchema(): WithContext<Person> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${SITE_URL}/#person`,
+    name: 'Nguyen Le Phong',
     affiliation: BONBON_ORGANIZATION,
     hasOccupation: {
       '@type': 'Occupation',
@@ -126,17 +148,6 @@ export function buildPersonSchema(description: string): WithContext<Person> {
       publisher: { '@type': 'Organization', name: article.publisher },
       about: BONBON_ORGANIZATION,
     })),
-    alumniOf: {
-      '@type': 'CollegeOrUniversity',
-      name: 'Information Technology — Bachelor (GPA 3.36)',
-    },
-    sameAs: [
-      profileInfo.contact.linkedin,
-      profileInfo.contact.github,
-      profileInfo.contact.leetcode,
-      profileInfo.contact.youtube,
-      profileInfo.contact.twitter,
-    ],
   }
 }
 
