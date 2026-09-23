@@ -22,15 +22,16 @@ export const PAGE_SEO: Record<
   PageSEO
 > = {
   home: {
-    title: 'Nguyen Le Phong — Lead Software Engineer at Zalo PC',
+    title: 'Nguyen Le Phong — Lead Software Engineer at Zalo PC, Co-founder of BonBon',
     description:
-      'Lead Software Engineer at Zalo PC with 8+ years shipping cross-platform products, PC-to-mobile message backup and restore, platform systems, secure integrations, and reliable releases.',
+      'Lead Software Engineer at Zalo PC and co-founder of BonBon ($500K pre-seed led by Tasco). 8+ years shipping cross-platform products and reliable releases.',
     path: '/',
     keywords: [
       'Nguyen Le Phong',
       'Nguyễn Lê Phong',
       'Lead Software Engineer',
       'Zalo PC',
+      'BonBon co-founder',
       'Senior Software Engineer',
       'Technical Lead',
       'Tech Lead',
@@ -43,7 +44,7 @@ export const PAGE_SEO: Record<
       'Very Good degree',
     ],
     ogAlt:
-      'Nguyen Le Phong — Lead Software Engineer shipping cross-device products at Zalo PC',
+      'Nguyen Le Phong — Lead Software Engineer at Zalo PC and co-founder of BonBon',
   },
   about: {
     title: 'About — Backend, Platform & Product Engineering',

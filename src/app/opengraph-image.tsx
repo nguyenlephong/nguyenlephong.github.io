@@ -10,7 +10,7 @@ export const contentType = OG_CONTENT_TYPE
 export const dynamic = 'force-static'
 
 export default async function OgImage() {
-  const cacheKey = 'static-root-v2'
+  const cacheKey = 'static-root-v3'
   const cached = getCachedOg(cacheKey)
   if (cached) return cachedOgResponse(cached)
 

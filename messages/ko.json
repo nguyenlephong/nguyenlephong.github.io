@@ -26,38 +26,31 @@
     "notes": "노트"
   },
   "Footer": {
-    "tag": "Lead Software Engineer · Zalo PC",
+    "tag": "Lead Software Engineer · Zalo PC · 공동 창업자 · BonBon",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "언어"
   },
   "Hero": {
-    "eyebrow": "Zalo PC Lead Software Engineer",
-    "role": "Lead Software Engineer · 테크 리드",
-    "roleSub": "크로스플랫폼 제품 · 데이터 연속성 · 안정적인 딜리버리",
-    "bio": "Zalo PC의 Lead Software Engineer로서 80M+ MAU Zalo 생태계의 기기 간 데이터 경험을 구축하고 있습니다. 최근에는 PC 메시지 백업과 모바일 복원을 출시해 기기 변경, 휴대폰 분실, 앱 재설치 상황의 복구를 지원했습니다. 8+ 년 동안 React/Electron, 모바일, 백엔드 서비스, Kubernetes, 보안 핀테크 연동과 딜리버리 리더십을 두루 경험했습니다.",
+    "news": "BonBon, Tasco 주도로 50만 달러 프리시드 투자 유치",
+    "newsCta": "기사 읽기",
+    "role": "Lead Software Engineer",
+    "cofounder": "공동 창업자",
+    "roleSub": "80M+ MAU 규모에서 제품을 출시하고, 창업자로서 0부터 만들어 갑니다.",
+    "bio": "Zalo PC에서는 기기 간 데이터 영역을 리드하며 최근 PC 메시지 백업과 모바일 복원을 출시했습니다. 차량 관리 O2O 플랫폼 BonBon에서는 공동 창업자로서 MVP에서 3개월 만에 현장 파일럿까지 이끈 제품 연동을 구축했습니다.",
     "location": "베트남 호치민시",
     "downloadResume": "이력서 다운로드",
     "getInTouch": "연락하기",
     "careerHighlights": "커리어 하이라이트",
     "socialProfiles": "소셜 프로필",
-    "proof": {
-      "scale": "Zalo의 80M+ MAU 생태계를 위한 엔지니어링",
-      "team": "크로스플랫폼 제품 딜리버리의 Lead 역할",
-      "platform": "PC 메시지 백업과 모바일 복원을 2026년 7월 출시"
-    },
     "stats": {
       "yearsShipping": "출시 경력",
       "yearsShippingCaption": "매일 프로덕션 코드 작성",
-      "hoursCoding": "코딩 시간",
-      "hoursCodingCaption": "2021년부터 WakaTime으로 측정",
       "usersTouched": "도달한 사용자",
       "usersTouchedCaption": "Zalo · CDP · 핀테크 규모",
       "engineersLed": "리드한 최대 팀",
       "engineersLedCaption": "개발 · QC · 딜리버리",
-      "tenantsPowered": "운영 테넌트",
-      "tenantsPoweredCaption": "멀티 테넌트 피처 플래그",
-      "domainsDelivered": "수행 도메인",
-      "domainsDeliveredCaption": "핀테크 · CDP · 부동산 · 교육",
+      "preSeedRaised": "프리시드 투자 유치",
+      "preSeedRaisedCaption": "BonBon · Tasco 리드",
       "projectsLaunched": "출시한 프로젝트",
       "projectsLaunchedCaption": "SDK · 플랫폼 · 모바일 앱",
       "testCasesAuthored": "작성한 테스트 케이스",
@@ -282,8 +275,8 @@
   },
   "SEO": {
     "home": {
-      "title": "Nguyen Le Phong — Zalo PC Lead Software Engineer",
-      "description": "Zalo PC Lead Software Engineer로서 8+ 년 동안 크로스플랫폼 제품, PC 메시지 백업과 모바일 복원, 플랫폼 시스템, 보안 연동과 신뢰할 수 있는 릴리스를 제공했습니다."
+      "title": "Nguyen Le Phong — Zalo PC Lead Software Engineer, BonBon 공동 창업자",
+      "description": "Zalo PC Lead Software Engineer, BonBon 공동 창업자(Tasco 주도 50만 달러 프리시드). 8+ 년간 크로스플랫폼 제품과 신뢰할 수 있는 릴리스를 제공했습니다."
     },
     "gallery": {
       "title": "갤러리 — 일의 과정이 남긴 기록",

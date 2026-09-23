@@ -69,7 +69,7 @@ export function buildPersonSchema(description: string): WithContext<Person> {
     alternateName: ['Nguyễn Lê Phong', 'Phong Nguyen'],
     url: SITE_URL,
     image: PROFILE_AVATAR,
-    jobTitle: 'Lead Software Engineer · Technical Lead · Full-stack Engineer',
+    jobTitle: 'Lead Software Engineer · Co-founder of BonBon · Technical Lead',
     description,
     email: `mailto:${profileInfo.contact.email}`,
     telephone: profileInfo.contact.phone,

@@ -26,38 +26,31 @@
     "notes": "Notes"
   },
   "Footer": {
-    "tag": "Lead Software Engineer · Zalo PC",
+    "tag": "Lead Software Engineer · Zalo PC · Cofondateur · BonBon",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "Langue"
   },
   "Hero": {
-    "eyebrow": "Lead Software Engineer chez Zalo PC",
-    "role": "Lead Software Engineer · Tech Lead",
-    "roleSub": "Produit cross-platform · Continuité des données · Livraison fiable",
-    "bio": "Lead Software Engineer chez Zalo PC, je développe des parcours de données entre appareils dans l'écosystème Zalo à 80M+ MAU. J'ai récemment livré la sauvegarde des messages sur PC avec restauration sur mobile pour les changements d'appareil, les téléphones perdus et les réinstallations. En 8+ ans, j'ai travaillé sur React/Electron, le mobile, les services backend, Kubernetes, les intégrations fintech sécurisées et le leadership de delivery.",
+    "news": "BonBon lève 500 000 $ en pre-seed, menée par Tasco",
+    "newsCta": "Lire l'histoire",
+    "role": "Lead Software Engineer",
+    "cofounder": "Cofondateur",
+    "roleSub": "Livrer à l'échelle de 80M+ MAU. Construire de zéro en tant que fondateur.",
+    "bio": "Chez Zalo PC, je pilote les parcours de données entre appareils, dernièrement la sauvegarde des messages sur PC avec restauration sur mobile. Chez BonBon, plateforme O2O d'entretien automobile, j'ai cofondé l'entreprise et construit l'intégration produit qui l'a menée du MVP à un pilote terrain en 3 mois.",
     "location": "Hô Chi Minh-Ville, Vietnam",
     "downloadResume": "Télécharger le CV",
     "getInTouch": "Me contacter",
     "careerHighlights": "Faits marquants de carrière",
     "socialProfiles": "Profils sociaux",
-    "proof": {
-      "scale": "Ingénierie dans l'écosystème Zalo à 80M+ MAU",
-      "team": "Rôle de Lead dans la livraison de produits cross-platform",
-      "platform": "Sauvegarde PC et restauration mobile livrées en juillet 2026"
-    },
     "stats": {
       "yearsShipping": "Années de livraison",
       "yearsShippingCaption": "Code en production, jour après jour",
-      "hoursCoding": "Heures de code",
-      "hoursCodingCaption": "Suivi via WakaTime depuis 2021",
       "usersTouched": "Utilisateurs touchés",
       "usersTouchedCaption": "Zalo · CDP · échelle fintech",
       "engineersLed": "Plus grande équipe dirigée",
       "engineersLedCaption": "Devs · QC · delivery",
-      "tenantsPowered": "Tenants en production",
-      "tenantsPoweredCaption": "Feature flags multi-tenant",
-      "domainsDelivered": "Domaines livrés",
-      "domainsDeliveredCaption": "Fintech · CDP · immobilier · éducation",
+      "preSeedRaised": "Levée pre-seed",
+      "preSeedRaisedCaption": "BonBon · menée par Tasco",
       "projectsLaunched": "Projets lancés",
       "projectsLaunchedCaption": "SDK · plateformes · apps mobiles",
       "testCasesAuthored": "Cas de test rédigés",
@@ -282,8 +275,8 @@
   },
   "SEO": {
     "home": {
-      "title": "Nguyen Le Phong — Lead Software Engineer chez Zalo PC",
-      "description": "Lead Software Engineer chez Zalo PC avec 8+ ans à livrer des produits cross-platform, la sauvegarde PC et restauration mobile des messages, des systèmes plateforme, des intégrations sécurisées et des releases fiables."
+      "title": "Nguyen Le Phong — Lead Software Engineer chez Zalo PC, cofondateur de BonBon",
+      "description": "Lead Software Engineer chez Zalo PC et cofondateur de BonBon (pre-seed de 500 000 $ menée par Tasco). 8+ ans à livrer des produits cross-platform fiables."
     },
     "gallery": {
       "title": "Galerie — Les repères derrière le travail",

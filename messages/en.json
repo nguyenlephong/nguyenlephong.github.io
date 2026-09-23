@@ -27,38 +27,31 @@
     }
   },
   "Footer": {
-    "tag": "Lead Software Engineer · Zalo PC",
+    "tag": "Lead Software Engineer · Zalo PC · Co-founder · BonBon",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "Language"
   },
   "Hero": {
-    "eyebrow": "Lead Software Engineer at Zalo PC",
-    "role": "Lead Software Engineer · Technical Lead",
-    "roleSub": "Cross-platform product · Data continuity · Reliable delivery",
-    "bio": "As a Lead Software Engineer at Zalo PC, I build cross-device data experiences within Zalo's 80M+ MAU ecosystem. Most recently, I shipped PC message backup with mobile restore for device changes, lost phones, and reinstalls. Across 8+ years, I have worked across React/Electron, mobile, backend services, Kubernetes, secure fintech integrations, and delivery leadership.",
+    "news": "BonBon raised a $500K pre-seed round led by Tasco",
+    "newsCta": "Read the story",
+    "role": "Lead Software Engineer",
+    "cofounder": "Co-founder",
+    "roleSub": "Shipping at 80M+ MAU scale. Building from zero as a founder.",
+    "bio": "At Zalo PC, I lead cross-device data work, most recently PC message backup with mobile restore. At BonBon, a car-care O2O platform I co-founded, I built the product integration that took it from MVP to a live field pilot in 3 months.",
     "location": "Ho Chi Minh City, Vietnam",
     "downloadResume": "Download résumé",
     "getInTouch": "Get in touch",
     "careerHighlights": "Career highlights",
     "socialProfiles": "Social profiles",
-    "proof": {
-      "scale": "Engineering within Zalo's wider 80M+ MAU ecosystem",
-      "team": "Lead role in cross-platform product delivery",
-      "platform": "PC-to-mobile message backup and restore shipped in July 2026"
-    },
     "stats": {
       "yearsShipping": "Years shipping",
       "yearsShippingCaption": "Production code, day in day out",
-      "hoursCoding": "Hours coding",
-      "hoursCodingCaption": "Tracked via WakaTime since 2021",
       "usersTouched": "Users touched",
       "usersTouchedCaption": "Zalo · CDP · fintech scale",
       "engineersLed": "Largest team led",
       "engineersLedCaption": "Developers · QC · delivery",
-      "tenantsPowered": "Tenants powered",
-      "tenantsPoweredCaption": "Multi-tenant feature flags",
-      "domainsDelivered": "Domains delivered",
-      "domainsDeliveredCaption": "Fintech · CDP · realestate · edu",
+      "preSeedRaised": "Pre-seed raised",
+      "preSeedRaisedCaption": "BonBon · led by Tasco",
       "projectsLaunched": "Projects launched",
       "projectsLaunchedCaption": "SDKs · platforms · mobile apps",
       "testCasesAuthored": "Test cases authored",
@@ -264,8 +257,8 @@
   },
   "SEO": {
     "home": {
-      "title": "Nguyen Le Phong — Lead Software Engineer at Zalo PC",
-      "description": "Lead Software Engineer at Zalo PC with 8+ years shipping cross-platform products, PC-to-mobile message backup and restore, platform systems, secure integrations, and reliable releases."
+      "title": "Nguyen Le Phong — Lead Software Engineer at Zalo PC, Co-founder of BonBon",
+      "description": "Lead Software Engineer at Zalo PC and co-founder of BonBon ($500K pre-seed led by Tasco). 8+ years shipping cross-platform products and reliable releases."
     },
     "about": {
       "title": "About — Backend, Platform & Product Engineering",

@@ -26,38 +26,31 @@
     "notes": "笔记"
   },
   "Footer": {
-    "tag": "Lead Software Engineer · Zalo PC",
+    "tag": "Lead Software Engineer · Zalo PC · 联合创始人 · BonBon",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "语言"
   },
   "Hero": {
-    "eyebrow": "Zalo PC Lead Software Engineer",
-    "role": "Lead Software Engineer · 技术负责人",
-    "roleSub": "跨平台产品 · 数据连续性 · 可靠交付",
-    "bio": "作为 Zalo PC 的 Lead Software Engineer，我构建 Zalo 80M+ MAU 生态中的跨设备数据体验。最近交付了 PC 消息备份与移动端恢复，覆盖换机、手机丢失和重装应用等场景。8+ 年来，我的工作横跨 React/Electron、移动端、后端服务、Kubernetes、安全金融集成与交付领导。",
+    "news": "BonBon 完成由 Tasco 领投的 50 万美元 Pre-seed 轮融资",
+    "newsCta": "阅读全文",
+    "role": "Lead Software Engineer",
+    "cofounder": "联合创始人",
+    "roleSub": "在 80M+ MAU 规模上交付产品，以创始人身份从零构建。",
+    "bio": "在 Zalo PC，我负责跨设备数据方向，最近交付了 PC 消息备份与移动端恢复。在汽车养护 O2O 平台 BonBon，我作为联合创始人搭建了产品集成，3 个月内从 MVP 走到实地试点。",
     "location": "越南胡志明市",
     "downloadResume": "下载简历",
     "getInTouch": "联系我",
     "careerHighlights": "职业亮点",
     "socialProfiles": "社交主页",
-    "proof": {
-      "scale": "服务 Zalo 80M+ MAU 生态的工程工作",
-      "team": "负责跨平台产品交付的 Lead 角色",
-      "platform": "PC 消息备份与移动端恢复于 2026 年 7 月上线"
-    },
     "stats": {
       "yearsShipping": "交付年数",
       "yearsShippingCaption": "每天交付生产代码",
-      "hoursCoding": "编码时长",
-      "hoursCodingCaption": "自 2021 年由 WakaTime 追踪",
       "usersTouched": "服务用户数",
       "usersTouchedCaption": "Zalo · CDP · 金融级规模",
       "engineersLed": "带领过的最大团队",
       "engineersLedCaption": "开发 · QC · 交付",
-      "tenantsPowered": "支持租户",
-      "tenantsPoweredCaption": "多租户特性开关",
-      "domainsDelivered": "业务领域",
-      "domainsDeliveredCaption": "金融 · CDP · 房地产 · 教育",
+      "preSeedRaised": "Pre-seed 融资",
+      "preSeedRaisedCaption": "BonBon · Tasco 领投",
       "projectsLaunched": "已上线项目",
       "projectsLaunchedCaption": "SDK · 平台 · 移动应用",
       "testCasesAuthored": "编写测试用例",
@@ -282,8 +275,8 @@
   },
   "SEO": {
     "home": {
-      "title": "Nguyen Le Phong — Zalo PC Lead Software Engineer",
-      "description": "Zalo PC Lead Software Engineer，拥有 8+ 年跨平台产品、PC 消息备份与移动端恢复、平台系统、安全集成与可靠发布经验。"
+      "title": "Nguyen Le Phong — Zalo PC Lead Software Engineer，BonBon 联合创始人",
+      "description": "Zalo PC Lead Software Engineer，BonBon 联合创始人（Tasco 领投 50 万美元 Pre-seed 轮）。8+ 年跨平台产品与可靠发布经验。"
     },
     "gallery": {
       "title": "作品记录 — 工作背后的成长轨迹",

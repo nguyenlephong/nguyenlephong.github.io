@@ -34,6 +34,7 @@ export type AnalyticsEvent =
   | 'cv_experience_evidence_click'
   | 'cv_project_view'
   | 'cv_project_evidence_click'
+  | 'cv_announcement_click'
   // Page lifecycle
   | 'page_view'
   | 'page_scroll_depth'
