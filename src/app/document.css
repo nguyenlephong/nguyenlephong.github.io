@@ -1,3 +1,21 @@
+/* Inter variable, self-hosted subset (Latin + Vietnamese). See src/fonts/README.md.
+   Declared here instead of next/font so it adds no stylesheet or preload tag. */
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/InterVariable-latin-vi.woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+/* Arial scaled to Inter's metrics so the swap does not shift layout. */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  ascent-override: 89.79%;
+  descent-override: 22.36%;
+  line-gap-override: 0%;
+  size-adjust: 107.89%;
+}
+
 /* Shared document tokens required by both the public site and Studio. */
 :root {
   --bg: oklch(98% 0.003 250);
@@ -27,7 +45,7 @@
   --shadow-md: 0 8px 24px -8px rgba(15, 23, 42, 0.10), 0 2px 6px rgba(15, 23, 42, 0.04);
   --shadow-lg: 0 24px 48px -16px rgba(15, 23, 42, 0.14);
 
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'SF Mono', 'Cascadia Mono', 'Roboto Mono', Consolas, monospace;
   --font-reading-source: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
   --font-reading-plex: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
