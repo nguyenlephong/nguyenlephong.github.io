@@ -15,6 +15,7 @@ import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import PageTracker from '@/components/analytics/PageTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
+import { buildPersonVentureSchema } from '@/lib/seo/profile-schema'
 import {
   buildStaticPageMetadata,
   resolveStaticPageLocalization,
@@ -105,6 +106,10 @@ export default async function AboutPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(aboutPageLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildPersonVentureSchema()) }}
       />
       <PageTracker page="about" eventName="about_view" />
 

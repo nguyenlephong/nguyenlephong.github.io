@@ -105,6 +105,13 @@ test('signature projects lead the homepage and generated resume selection', asyn
   assert.match(schema, /'BonBon Mobility'/);
   assert.match(schema, /Co-founder/);
   assert.match(schema, /subjectOf/);
+  const personSchemaBody = schema.slice(
+    schema.indexOf('export function buildPersonSchema'),
+    schema.indexOf('export function buildPersonVentureSchema'),
+  );
+  assert.doesNotMatch(personSchemaBody, /subjectOf|BONBON_/);
+  const aboutPage = await read('src/app/[locale]/(site)/about/page.tsx');
+  assert.match(aboutPage, /buildPersonVentureSchema\(\)/);
   assert.match(
     projects,
     /Co-founded BonBon[\s\S]*?\$500K pre-seed round led by Tasco/,
