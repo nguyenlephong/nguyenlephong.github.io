@@ -1,6 +1,6 @@
 'use client'
 import { Link } from '@/i18n/navigation'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
 import {
@@ -11,26 +11,24 @@ import {
   LuCalendarClock,
   LuUsers,
   LuCrown,
-  LuBuilding2,
-  LuLayers,
+  LuSprout,
   LuShieldCheck,
   LuRocket,
+  LuArrowRight,
 } from 'react-icons/lu'
 import type { IconType } from 'react-icons'
 import { profileInfo, APP_ROUTE } from '@/app/app.const'
 import { track } from '@/lib/analytics'
 
-type StatTone = 'amber' | 'violet' | 'sky' | 'emerald' | 'rose' | 'cyan' | 'indigo' | 'lime'
+type StatTone = 'amber' | 'violet' | 'sky' | 'emerald' | 'indigo' | 'lime'
 
 type StatKey =
   | 'yearsShipping'
   | 'usersTouched'
   | 'engineersLed'
-  | 'tenantsPowered'
+  | 'preSeedRaised'
   | 'projectsLaunched'
   | 'testCasesAuthored'
-
-type ProofKey = 'scale' | 'team' | 'platform'
 
 type Stat = {
   icon: IconType
@@ -43,51 +41,51 @@ type Stat = {
 const stats: Stat[] = [
   { icon: LuCalendarClock, value: '8+', key: 'yearsShipping', tone: 'amber', spark: [3, 4, 5, 6, 7, 8, 9, 10] },
   { icon: LuUsers, value: '80M+', key: 'usersTouched', tone: 'sky', spark: [2, 3, 4, 6, 8, 9, 11, 12] },
+  { icon: LuSprout, value: '$500K', key: 'preSeedRaised', tone: 'violet', spark: [1, 1, 2, 3, 4, 6, 9, 12] },
   { icon: LuCrown, value: '11', key: 'engineersLed', tone: 'emerald', spark: [2, 3, 4, 5, 7, 8, 10, 11] },
-  { icon: LuBuilding2, value: '30+', key: 'tenantsPowered', tone: 'rose', spark: [1, 2, 4, 5, 6, 8, 9, 11] },
   { icon: LuRocket, value: '30+', key: 'projectsLaunched', tone: 'indigo', spark: [2, 3, 4, 5, 6, 7, 9, 10] },
   { icon: LuShieldCheck, value: '1K+', key: 'testCasesAuthored', tone: 'lime', spark: [1, 2, 3, 4, 6, 8, 9, 11] },
 ]
 
-const proofs: { icon: IconType; key: ProofKey }[] = [
-  { icon: LuUsers, key: 'scale' },
-  { icon: LuCrown, key: 'team' },
-  { icon: LuLayers, key: 'platform' },
-]
+// The BonBon story only exists in English and Vietnamese.
+const BONBON_NOTE = '/notes/the-quiet-engineering-behind-bonbons-500k-round'
 
 export default function Hero() {
   const t = useTranslations('Hero')
+  const locale = useLocale()
   const c = profileInfo.contact
 
   return (
     <section className="hero" aria-labelledby="hero-heading">
       <div className="hero-grid">
         <div className="hero-meta">
-          <span className="eyebrow">
-            <span className="status-dot" aria-hidden="true" /> {t('eyebrow')}
-          </span>
+          <Link
+            href={BONBON_NOTE}
+            locale={locale === 'vi' ? 'vi' : 'en'}
+            prefetch={false}
+            className="eyebrow hero-news"
+            onClick={() => track('cv_announcement_click', { target: 'bonbon_pre_seed_note' })}
+          >
+            <span className="status-dot" aria-hidden="true" />
+            <span>{t('news')}</span>
+            <b>
+              {t('newsCta')} <LuArrowRight size={13} aria-hidden="true" />
+            </b>
+          </Link>
           <h1 id="hero-heading" className="hero-name">
             Nguyen <span className="accent">Le Phong</span>
           </h1>
-          <p className="hero-role">
-            {t('role')}
-            <br />
-            <span className="hero-role-sub">{t('roleSub')}</span>
-          </p>
+          <ul className="hero-role">
+            <li>
+              {t('role')} <span>@</span> <strong>Zalo PC</strong>
+            </li>
+            <li>
+              {t('cofounder')} <span>@</span> <strong>BonBon</strong>
+            </li>
+          </ul>
+          <p className="hero-role-sub">{t('roleSub')}</p>
 
           <p className="hero-bio">{t('bio')}</p>
-
-          <ul className="hero-proof">
-            {proofs.map((item) => {
-              const Icon = item.icon
-              return (
-                <li key={item.key}>
-                  <Icon size={15} aria-hidden="true" />
-                  <span>{t(`proof.${item.key}`)}</span>
-                </li>
-              )
-            })}
-          </ul>
 
           <ul className="hero-contact">
             <li>

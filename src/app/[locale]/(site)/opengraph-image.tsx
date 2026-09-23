@@ -16,7 +16,7 @@ export function generateStaticParams() {
 }
 
 export default async function OgImage() {
-  const cacheKey = 'static-locale-root-v2'
+  const cacheKey = 'static-locale-root-v3'
   const cached = getCachedOg(cacheKey)
   if (cached) return cachedOgResponse(cached)
 

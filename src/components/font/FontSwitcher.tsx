@@ -18,7 +18,7 @@ const FONTS: FontMeta[] = [
     id: 'inter',
     label: 'Inter',
     kind: 'sans',
-    sampleStyle: { fontFamily: 'var(--font-sans), system-ui, sans-serif' },
+    sampleStyle: { fontFamily: "'Inter', system-ui, sans-serif" },
   },
   {
     id: 'source',

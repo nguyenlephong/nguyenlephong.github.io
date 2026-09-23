@@ -266,3 +266,27 @@ test("launch evidence is accessible, tracked, and reflected in structured profil
   assert.match(localizedOg, /PROFILE_OG_CONTENT/);
   assert.match(sharedOg, /title: 'Lead Software Engineer · Zalo PC'/);
 });
+
+test("hero leads with both the Zalo PC role and the BonBon co-founder role", async () => {
+  const [hero, analytics] = await Promise.all([
+    read("src/components/cv/Hero.tsx"),
+    read("src/lib/analytics.ts")
+  ]);
+
+  for (const locale of locales) {
+    const messages = JSON.parse(await read(`messages/${locale}.json`));
+    assert.equal(typeof messages.Hero.cofounder, "string");
+    assert.match(messages.Hero.news, /BonBon/);
+    assert.match(messages.Hero.stats.preSeedRaisedCaption, /Tasco/);
+    assert.match(messages.Footer.tag, /BonBon/);
+    assert.match(messages.SEO.home.title, /BonBon/);
+    assert.equal(messages.Hero.proof, undefined);
+  }
+
+  assert.match(hero, /<strong>Zalo PC<\/strong>/);
+  assert.match(hero, /<strong>BonBon<\/strong>/);
+  assert.match(hero, /locale=\{locale === 'vi' \? 'vi' : 'en'\}/);
+  assert.match(hero, /prefetch=\{false\}/);
+  assert.match(hero, /track\('cv_announcement_click', \{ target: 'bonbon_pre_seed_note' \}\)/);
+  assert.match(analytics, /\| 'cv_announcement_click'/);
+});
