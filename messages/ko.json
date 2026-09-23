@@ -206,7 +206,7 @@
     },
     "bonbon": {
       "accomplishments": [
-        "BonBon이 MVP에서 실제 현장 pilot로 진입하도록 product integration을 구축해 <b>3개월</b> 만에 Tasco × GenAI Fund Wash3000 MVP Demo Day의 <b>Top 3 finalist</b>에 올랐고, Tasco가 주도하고 GenAI Fund가 참여한 <b>$500K 투자 라운드</b> 유치에 기여했습니다.",
+        "BonBon 공동 창업자로서 BonBon이 MVP에서 실제 현장 pilot로 진입하도록 product integration을 구축해 <b>3개월</b> 만에 Tasco × GenAI Fund Wash3000 MVP Demo Day의 <b>Top 3 finalist</b>에 올랐고, Tasco가 주도하고 GenAI Fund가 참여한 <b>$500K pre-seed 라운드</b> 유치에 기여했습니다.",
         "<b>12화면 Mini App</b>을 설계해 <b>430만 사용자</b> 규모의 VETC app ecosystem에 통합하고, partner code silent login, memory-only session, deep link, foreground serialized polling, PII allow-list analytics를 구현했습니다.",
         "kill-switch feature flag, deterministic rollout, transactional audit, checksum/CSP gate, Playwright flow, <b>800+ unit test</b>로 Go API, Backoffice, web, mobile 전반의 release safety를 확보했습니다."
       ]

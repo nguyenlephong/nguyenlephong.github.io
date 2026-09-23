@@ -50,7 +50,7 @@ export const projects = [
     ],
     "Apr 2026 - Present",
     [
-        `Built the product integration that helped BonBon advance from MVP to a live field pilot in <b>3 months</b>, get selected as a <b>Top 3 finalist</b> at Tasco × GenAI Fund's Wash3000 MVP Demo Day, and help secure a <b>$500K seed round led by Tasco</b>, with GenAI Fund participating.`,
+        `Co-founded BonBon and built the product integration that took it from MVP to a live field pilot in <b>3 months</b>, earned a <b>Top 3 finalist</b> spot at Tasco × GenAI Fund's Wash3000 MVP Demo Day, and helped secure a <b>$500K pre-seed round led by Tasco</b>, with GenAI Fund participating.`,
         `Architected and integrated a <b>12-screen Mini App</b> into VETC's <b>4.3M-user app ecosystem</b>, with silent partner-code login, memory-only sessions, deep links, serialized foreground polling, and privacy allow-listed analytics.`,
         `Made releases safe across Go API, Backoffice, web, and mobile using kill-switch feature flags, deterministic rollout, transactional audit, checksum/CSP gates, Playwright flows, and <b>800+ unit tests</b>.`
     ],
