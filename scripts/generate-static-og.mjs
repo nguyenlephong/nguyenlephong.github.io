@@ -144,22 +144,41 @@ function renderSvg({ eyebrow, title, summary, tags, date, themeKey }) {
 </svg>`
 }
 
+// Authored photo covers (content/og-covers/{blog,notes}/<slug>.jpg) replace the
+// generated text card so a hand-picked share image survives future regeneration.
+const OG_COVER_ROOT = path.join(process.cwd(), 'content', 'og-covers')
+
+async function findCoverFile(surface, slug) {
+  const candidate = path.join(OG_COVER_ROOT, surface, `${slug}.jpg`)
+  try {
+    await fs.access(candidate)
+    return candidate
+  } catch {
+    return null
+  }
+}
+
 async function writeOgImage(target) {
-  const svg = renderSvg(target)
   await fs.mkdir(path.dirname(target.outfile), { recursive: true })
-  await sharp(Buffer.from(svg)).png({ compressionLevel: 9, adaptiveFiltering: true }).toFile(target.outfile)
-  console.log(`[static-og] ${path.relative(process.cwd(), target.outfile)}`)
+  const source = target.coverFile
+    ? sharp(target.coverFile).resize(WIDTH, HEIGHT, { fit: 'cover', position: 'top' })
+    : sharp(Buffer.from(renderSvg(target)))
+  await source.png({ compressionLevel: 9, adaptiveFiltering: true }).toFile(target.outfile)
+  const origin = target.coverFile ? ' (cover)' : ''
+  console.log(`[static-og] ${path.relative(process.cwd(), target.outfile)}${origin}`)
 }
 
 async function blogTargets(slug, publication) {
   const index = await readJson(path.join(process.cwd(), publication.sourceIndex))
   const categories = new Map(index.categories.map((category) => [category.slug, category]))
-  return index.posts
+  const posts = index.posts
     .filter((post) => isContentPublishedAtBuildDate(post, contentBuildDate))
     .filter((post) => !slug || post.slug === slug)
-    .map((post) => {
+  return Promise.all(
+    posts.map(async (post) => {
       const category = categories.get(post.category)
       return {
+        coverFile: await findCoverFile('blog', post.slug),
         eyebrow: `Blog - ${category?.title ?? post.category}`,
         title: post.title,
         summary: post.summary,
@@ -172,16 +191,19 @@ async function blogTargets(slug, publication) {
           `${post.slug}${publication.sourceExtension}`,
         ),
       }
-    })
+    }),
+  )
 }
 
 async function noteTargets(slug, publication) {
   const index = await readJson(path.join(process.cwd(), publication.sourceIndex))
   const topics = new Map(index.topics.map((topic) => [topic.id, topic]))
-  return index.posts
+  const posts = index.posts
     .filter((post) => isContentPublishedAtBuildDate(post, contentBuildDate))
     .filter((post) => !slug || post.slug === slug)
-    .map((post) => ({
+  return Promise.all(
+    posts.map(async (post) => ({
+      coverFile: await findCoverFile('notes', post.slug),
       eyebrow: `Notes - ${topics.get(post.topic)?.label ?? 'Reflection'}`,
       title: post.title,
       summary: post.cardSummary ?? post.summary,
@@ -193,7 +215,8 @@ async function noteTargets(slug, publication) {
         publication.sourceDirectory,
         `${post.slug}${publication.sourceExtension}`,
       ),
-    }))
+    })),
+  )
 }
 
 const targets = []
