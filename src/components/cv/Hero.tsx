@@ -162,7 +162,7 @@ export default function Hero() {
                   </span>
                   <span className="stat-spark" aria-hidden="true">
                     {s.spark.map((v, i) => (
-                      <span key={i} style={{ height: `${(v / max) * 100}%` }} />
+                      <span key={i} style={{ height: `${Math.round((v / max) * 100)}%` }} />
                     ))}
                   </span>
                 </div>
