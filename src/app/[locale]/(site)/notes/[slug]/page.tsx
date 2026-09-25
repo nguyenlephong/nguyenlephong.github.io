@@ -13,7 +13,10 @@ import {
   preferredContentLocale
 } from "@/lib/seo/locale";
 import { serializeJsonLd } from "@/lib/seo/json-ld";
-import { localizeArticleHtmlLinks } from "@/lib/content/article-html";
+import {
+  extractArticleReferenceCitations,
+  localizeArticleHtmlLinks
+} from "@/lib/content/article-html";
 import {
   getTopic,
   getNoteHub,
@@ -214,6 +217,7 @@ export default async function NotePage({ params }: Props) {
     </aside>
   ) : null;
 
+  const citations = extractArticleReferenceCitations(note.html);
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -240,6 +244,15 @@ export default async function NotePage({ params }: Props) {
               name
             }))
           }
+        }
+      : {}),
+    ...(citations.length > 0
+      ? {
+          citation: citations.map((reference) => ({
+            "@type": "CreativeWork",
+            name: reference.name,
+            url: reference.url
+          }))
         }
       : {}),
     publisher: {
