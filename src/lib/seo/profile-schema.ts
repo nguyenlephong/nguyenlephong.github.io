@@ -12,7 +12,7 @@ const BONBON_ORGANIZATION = {
   url: 'https://bonbon.com.vn',
 } as const
 
-// Press coverage naming Nguyen Le Phong as a BonBon co-founder (Sep 2026 pre-seed round).
+// Press coverage naming or picturing Nguyen Le Phong as a BonBon co-founder (Sep 2026 pre-seed round).
 const BONBON_PRESS_COVERAGE = [
   {
     headline:
@@ -56,6 +56,20 @@ const BONBON_PRESS_COVERAGE = [
     url: 'https://e27.co/bonbon-mobility-raises-us500k-to-digitise-vietnams-car-care-market-20260922/',
     publisher: 'e27',
     datePublished: '2026-09-22',
+    inLanguage: 'en',
+  },
+  {
+    headline: "Building Beyond the Pilot: GenAI Fund Backs Bonbon's $500K Pre-Seed Round",
+    url: 'https://genaifund.ai/2026/09/23/genai-fund-backs-bonbon-500k/',
+    publisher: 'GenAI Fund',
+    datePublished: '2026-09-23',
+    inLanguage: 'en',
+  },
+  {
+    headline: "GenAI Fund backs Bonbon Mobility's $500,000 pre-seed round",
+    url: 'https://vir.com.vn/genai-fund-backs-bonbon-mobilitys-500000-pre-seed-round-161626.html',
+    publisher: 'Vietnam Investment Review',
+    datePublished: '2026-09-25',
     inLanguage: 'en',
   },
 ] as const

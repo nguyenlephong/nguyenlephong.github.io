@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import {
+  extractArticleReferenceCitations,
   hasArticleWorkflowCanvas,
   localizeArticleHtmlLinks
 } from "../src/lib/content/article-html.ts";
@@ -214,4 +215,42 @@ test("keeps article HTML server-rendered and canvas drawing behind a second lazy
     /<BlogContent html=\{note\.html\} locale=\{locale\} \/>/
   );
   assert.match(notesPage, /__html:\s*localizeArticleHtmlLinks\(f\.a, locale\)/);
+});
+
+test("extracts external links from the references section as citations", () => {
+  const html = [
+    '<p>Intro <a href="https://example.com/inline">inline</a>.</p>',
+    '<h2 id="nguon-tham-khao">Nguồn tham khảo</h2>',
+    "<ul>",
+    '<li>Tasco. <a href="https://www.tasco.com.vn/post/a" target="_blank"><em>Tasco &amp; Bonbon</em></a>.</li>',
+    "<li>Local <a href=\"/notes/other\">note</a>.</li>",
+    '<li>Again <a href="https://www.tasco.com.vn/post/a">duplicate</a>.</li>',
+    '<li>VIR <a href="https://vir.com.vn/b">GenAI Fund backs Bonbon</a>.</li>',
+    "</ul>",
+    '<h2 id="after">After</h2>',
+    '<p><a href="https://example.com/after">after</a></p>'
+  ].join("\n");
+
+  assert.deepEqual(extractArticleReferenceCitations(html), [
+    { name: "Tasco & Bonbon", url: "https://www.tasco.com.vn/post/a" },
+    { name: "GenAI Fund backs Bonbon", url: "https://vir.com.vn/b" }
+  ]);
+});
+
+test("returns no citations when an article has no references section", () => {
+  assert.deepEqual(
+    extractArticleReferenceCitations(
+      '<h2 id="intro">Intro</h2><p><a href="https://example.com">x</a></p>'
+    ),
+    []
+  );
+});
+
+test("notes pages publish reference citations in article JSON-LD", () => {
+  const notesPage = readFileSync(
+    "src/app/[locale]/(site)/notes/[slug]/page.tsx",
+    "utf8"
+  );
+  assert.match(notesPage, /extractArticleReferenceCitations\(note\.html\)/);
+  assert.match(notesPage, /citation:/);
 });

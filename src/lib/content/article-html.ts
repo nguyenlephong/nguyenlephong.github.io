@@ -1,4 +1,4 @@
-import { decodeHTMLAttribute, escapeAttribute } from "entities";
+import { decodeHTML, decodeHTMLAttribute, escapeAttribute } from "entities";
 
 const SAFE_LOCALE_SEGMENT = /^[a-z]{2}(?:-[a-z0-9]+)*$/i;
 const LOCALIZABLE_ARTICLE_HREF = /^\/(?:blog|notes|thoughts)(?=\/|[?#]|$)/i;
@@ -311,4 +311,53 @@ export function hasArticleWorkflowCanvas(html: string): boolean {
     return tag;
   });
   return found;
+}
+
+const REFERENCE_SECTION_IDS = new Set([
+  "references",
+  "sources",
+  "nguon-tham-khao",
+  "tham-khao"
+]);
+const H2_WITH_ID_PATTERN = /<h2\b[^>]*\bid\s*=\s*["']([^"']+)["'][^>]*>/gi;
+const ANCHOR_PATTERN = /<a\b([^>]*)>([\s\S]*?)<\/a>/gi;
+const HREF_ATTRIBUTE_PATTERN = /\bhref\s*=\s*(["'])(.*?)\1/i;
+
+export interface ArticleCitation {
+  readonly name: string;
+  readonly url: string;
+}
+
+function findReferenceSection(html: string): string | null {
+  for (const match of html.matchAll(H2_WITH_ID_PATTERN)) {
+    if (!REFERENCE_SECTION_IDS.has(match[1].toLowerCase())) continue;
+    const start = (match.index ?? 0) + match[0].length;
+    const nextHeading = html.slice(start).search(/<h2\b/i);
+    return nextHeading === -1
+      ? html.slice(start)
+      : html.slice(start, start + nextHeading);
+  }
+  return null;
+}
+
+/** Collect the external sources an article lists under its references heading. */
+export function extractArticleReferenceCitations(
+  html: string
+): readonly ArticleCitation[] {
+  const section = findReferenceSection(html);
+  if (!section) return [];
+
+  const citations = [...section.matchAll(ANCHOR_PATTERN)].flatMap((match) => {
+    const href = HREF_ATTRIBUTE_PATTERN.exec(match[1])?.[2];
+    const url = href ? decodeHTMLAttribute(href).trim() : "";
+    const name = decodeHTML(match[2].replace(/<[^>]*>/g, ""))
+      .replace(/\s+/g, " ")
+      .trim();
+    return /^https?:\/\//i.test(url) && name ? [{ name, url }] : [];
+  });
+
+  return citations.filter(
+    (citation, index) =>
+      citations.findIndex((other) => other.url === citation.url) === index
+  );
 }
