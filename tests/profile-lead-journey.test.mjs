@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import {
+  assertWorkerRendering,
+  readAll,
+  readParticleRuntime
+} from "./helpers/particle-runtime.mjs";
 
 const locales = ["en", "vi", "zh", "ja", "ko", "fr"];
 
@@ -87,8 +92,11 @@ test("homepage AI particle field is GPU-rendered, scroll-synced, and motion-safe
     read("src/app/[locale]/(site)/page.tsx"),
     read("src/components/cv/Hero.tsx"),
     read("src/components/cv/HomeBackdrop.tsx"),
-    read("src/components/cv/ArchitectureBackdrop.tsx"),
-    read("src/components/webgl/ScrollParticleRenderer.ts"),
+    readAll(
+      "src/components/cv/ArchitectureBackdrop.tsx",
+      "src/components/webgl/scenes/architecture-scene.ts"
+    ),
+    readParticleRuntime(),
     read("src/components/cv/Section.tsx"),
     read("src/components/cv/ContactCTA.tsx"),
     read("src/components/motion/Reveal.tsx"),
@@ -129,7 +137,7 @@ test("homepage AI particle field is GPU-rendered, scroll-synced, and motion-safe
     /dprCap: \(width\) => \(width < 720 \? 1\.25 : 1\.5\)/
   );
   assert.match(renderer, /requestIdleCallback/);
-  assert.match(renderer, /window\.requestAnimationFrame\(renderFrame\)/);
+  assert.match(renderer, /scheduler\.request\(renderFrame\)/);
   assert.match(renderer, /prefers-reduced-motion: reduce/);
   assert.match(renderer, /new MutationObserver\(onThemeChange\)/);
   assert.match(backdrop, /const LIGHT_PALETTE = \[/);
@@ -165,10 +173,10 @@ test("homepage AI particle field is GPU-rendered, scroll-synced, and motion-safe
     renderer,
     /canvas\.closest<HTMLElement>\(options\.rootSelector\)/
   );
-  assert.match(renderer, /const updateScrollProgress = \(\) =>/);
+  assert.match(renderer, /const readScrollProgress = \(\) =>/);
   assert.match(
     renderer,
-    /scrollProgress = clamp\(-rect\.top \/ scrollableHeight, 0, 1\)/
+    /return clamp\(-rect\.top \/ scrollableHeight, 0, 1\)/
   );
   assert.match(
     renderer,
@@ -185,6 +193,7 @@ test("homepage AI particle field is GPU-rendered, scroll-synced, and motion-safe
   assert.match(renderer, /window\.addEventListener\("scroll", onScroll/);
   assert.doesNotMatch(backdrop, /scrollVelocity|scrollTarget/);
   assert.match(renderer, /new IntersectionObserver/);
+  assertWorkerRendering(backdrop, renderer, "architecture");
   assert.match(css, /\.ai-particle-field/);
   assert.match(
     css,
