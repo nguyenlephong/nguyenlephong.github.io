@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import {
+  assertWorkerRendering,
+  readAll,
+  readParticleRuntime
+} from "./helpers/particle-runtime.mjs";
 
 async function read(relativePath) {
   return readFile(relativePath, "utf8");
@@ -11,8 +16,11 @@ test("gallery renders a theme-aware particle Memory Bloom in an async WebGL boun
     await Promise.all([
       read("src/app/[locale]/(site)/gallery/page.tsx"),
       read("src/components/gallery/GalleryBackdrop.tsx"),
-      read("src/components/gallery/MemoryBloomBackdrop.tsx"),
-      read("src/components/webgl/ScrollParticleRenderer.ts"),
+      readAll(
+        "src/components/gallery/MemoryBloomBackdrop.tsx",
+        "src/components/webgl/scenes/memory-bloom-scene.ts"
+      ),
+      readParticleRuntime(),
       read("src/components/gallery/GalleryGrid.tsx"),
       read("src/components/motion/MotionProvider.tsx"),
       read("src/app/[locale]/(site)/gallery/gallery.css")
@@ -61,7 +69,7 @@ test("gallery renders a theme-aware particle Memory Bloom in an async WebGL boun
   assert.match(renderer, /const ACTIVE_SCROLL_MS = 180/);
   assert.match(
     renderer,
-    /scrollProgress = clamp\(-rect\.top \/ scrollableHeight, 0, 1\)/
+    /return clamp\(-rect\.top \/ scrollableHeight, 0, 1\)/
   );
   assert.match(
     renderer,
@@ -86,12 +94,14 @@ test("gallery renders a theme-aware particle Memory Bloom in an async WebGL boun
     /canvas\.closest<HTMLElement>\(options\.rootSelector\)/
   );
   assert.match(renderer, /window\.addEventListener\("scroll", onScroll/);
-  assert.match(backdrop, /\(hover: hover\) and \(pointer: fine\)/);
+  assert.match(renderer, /\(hover: hover\) and \(pointer: fine\)/);
+  assert.match(backdrop, /if \(!sample\.canHover\) return;/);
   assert.match(
     renderer,
     /window\.addEventListener\("pointermove", onPointerMove/
   );
   assert.match(backdrop, /frame\.reducedMotion \? 0 : pointer\.hover/);
+  assertWorkerRendering(backdrop, renderer, "memory-bloom");
   assert.match(motionProvider, /<MotionConfig reducedMotion="user">/);
   assert.doesNotMatch(grid, /useReducedMotion/);
 

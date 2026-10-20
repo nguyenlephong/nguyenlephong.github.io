@@ -400,7 +400,10 @@
         "watProject": "WAT project - チーム環境でのプロダクト作業の記録。",
         "essay": "エッセイと共有 - アイデアを明確に伝える練習。",
         "teamEssay": "チームでの一場面 - アイデアは一緒に実装されてこそ価値を持つ。",
-        "drone": "Drone applications - アイデアを動くモデルにするまでの探索。"
+        "drone": "Drone applications - アイデアを動くモデルにするまでの探索。",
+        "bonbonTeam": "BonBonの共同創業者 - カーケアのプロダクトを一歩ずつ丁寧に作ることを学ぶ3人。",
+        "bonbonPreSeed": "TascoとGenAI FundによるBonBonの50万ドルpre-seed - 静かな積み重ねがようやく見える形に。",
+        "wash3000DemoDay": "Tasco FoundryでのWash3000 Demo Day - Top 10の他チームと共に学んだ一日。"
       },
       "featured": "注目のシグナル",
       "supporting": "補足シグナル",

@@ -68,6 +68,9 @@ const CAPTION_KEYS: Array<{ pattern: RegExp; key: string }> = [
   { pattern: /my essay/i, key: 'essay' },
   { pattern: /team to implement essay/i, key: 'teamEssay' },
   { pattern: /drone applications/i, key: 'drone' },
+  { pattern: /bonbon co-founders/i, key: 'bonbonTeam' },
+  { pattern: /pre-seed/i, key: 'bonbonPreSeed' },
+  { pattern: /wash3000 demo day/i, key: 'wash3000DemoDay' },
 ]
 
 const FEATURED_PHOTO_PATTERNS: Record<string, RegExp> = {

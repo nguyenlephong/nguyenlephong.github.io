@@ -81,7 +81,8 @@ async function measure(browser, reducedMotion) {
             cssHeight: Math.round(rect.height),
             bitmapWidth: canvas.width,
             bitmapHeight: canvas.height,
-            renderer: canvas.getContext("webgl") ? "webgl" : "unavailable"
+            // The context lives in a worker, so read the mode the page reports.
+            renderer: canvas.dataset.particleRenderer ?? "unavailable"
           }
         : null
     };
@@ -133,10 +134,14 @@ try {
     longTaskMsMaxExclusive: 50,
     activeCallbacksMin: 30
   };
+  // With OffscreenCanvas support the frame loop runs in a worker, so the main
+  // thread should see no particle rAF work at all.
+  const animatesOnMainThread = active.canvas?.renderer === "webgl-main";
   const result = {
     pass:
-      active.canvas?.renderer === "webgl" &&
-      active.raf.callbacks >= budgets.activeCallbacksMin &&
+      active.canvas?.renderer?.startsWith("webgl-") &&
+      (!animatesOnMainThread ||
+        active.raf.callbacks >= budgets.activeCallbacksMin) &&
       reduced.raf.callbacks === 0 &&
       extraBusyPercent <= budgets.extraBusyPercentMax &&
       active.raf.p95Ms <= budgets.rafP95MsMax &&
