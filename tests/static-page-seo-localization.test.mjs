@@ -178,10 +178,10 @@ test("message catalogs contain SEO copy only where the route has real localized 
   }
 });
 
-test("all six Gallery catalogs own the complete visible 71-leaf message shape", () => {
+test("all six Gallery catalogs own the complete visible 74-leaf message shape", () => {
   const englishLeaves = collectStringLeaves(messages.en.Pages.gallery);
   const expectedPaths = [...englishLeaves.keys()].sort();
-  assert.equal(expectedPaths.length, 71);
+  assert.equal(expectedPaths.length, 74);
 
   for (const locale of locales) {
     assert.equal(

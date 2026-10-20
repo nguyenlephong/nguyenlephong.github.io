@@ -50,6 +50,13 @@ export const gallery = {
         alt: "Nguyen Le Phong - Software Engineer - desk working",
         width: 4,
         height: 3
+      },
+      {
+        src: icdnAssetUrl("/notes/the-quiet-engineering-behind-bonbons-500k-round/tasco-foundry-wash3000-demo-day.webp"),
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - BonBon - Wash3000 Demo Day at Tasco Foundry with Tasco, VETC, GenAI Fund and the Top 10 teams",
+        width: 2048,
+        height: 1368
       }
     ],
     awards: [
@@ -96,9 +103,24 @@ export const gallery = {
         alt: "Nguyen Le Phong - Trekking Penang Hill - Malaysia Certificate 11km",
         width: 420,
         height: 279
+      },
+      {
+        src: icdnAssetUrl("/notes/the-quiet-engineering-behind-bonbons-500k-round/bonbon-500k-pre-seed-key-visual.webp"),
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - BonBon, A Member of VETC - $500K pre-seed round led by Tasco and co-invested by GenAI Fund",
+        width: 1536,
+        height: 864
       }
     ],
     projects: [
+      {
+        src: icdnAssetUrl("/notes/the-quiet-engineering-behind-bonbons-500k-round/bonbon-founding-team.webp"),
+        sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
+        alt: "Nguyen Le Phong - BonBon co-founders - Nguyen Chi Dung, Vu Duy Hung and Nguyen Le Phong",
+        width: 1420,
+        height: 941
+      },
+
       {
         src: icdnAssetUrl("/gallery/projects/chess-games.webp"),
         sizes: ["(min-width: 480px) 50vw,(min-width: 1024px) 33.3vw,100vw"],
