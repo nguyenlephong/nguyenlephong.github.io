@@ -23,7 +23,7 @@ test("every locale presents the current Zalo PC lead journey", async () => {
     assert.match(messages.SEO.home.title, /Lead Software Engineer/);
     assert.equal(Array.isArray(lead.summaries), true);
     assert.equal(lead.summaries.length, 1);
-    assert.equal(lead.contributions.length, 3);
+    assert.equal(lead.contributions.length, 5);
     assert.match(JSON.stringify(lead), /Zalo PC/);
     assert.match(JSON.stringify(lead), /mobile|モバイル|移动端|모바일/);
     assert.equal(typeof messages.Experience.labels.publicEvidence, "string");
@@ -36,10 +36,12 @@ test("every locale presents the current Zalo PC lead journey", async () => {
   assert.match(vi.Experience.zalo.lead.summaries[0], /02\/03\/2026/);
   assert.match(en.Experience.zalo.lead.contributions[0], /message backup/);
   assert.match(vi.Experience.zalo.lead.contributions[0], /backup tin nhắn/);
-  assert.match(en.Experience.zalo.lead.contributions[1], /zCloud offload/);
-  assert.match(vi.Experience.zalo.lead.contributions[1], /zCloud offload/);
-  assert.match(en.Experience.zalo.lead.contributions[2], /engineering team/);
-  assert.match(vi.Experience.zalo.lead.contributions[2], /team engineering/);
+  assert.match(en.Experience.zalo.lead.contributions[1], /sync v2/);
+  assert.match(vi.Experience.zalo.lead.contributions[1], /sync v2/);
+  assert.match(en.Experience.zalo.lead.contributions[2], /zCloud offload/);
+  assert.match(vi.Experience.zalo.lead.contributions[2], /zCloud offload/);
+  assert.match(en.Experience.zalo.lead.contributions[4], /engineering team/);
+  assert.match(vi.Experience.zalo.lead.contributions[4], /team engineering/);
   assert.match(en.Summary.intro2, /technical leadership/);
   assert.doesNotMatch(en.Summary.intro1, /GPA/);
 });
@@ -292,10 +294,13 @@ test("hero leads with both the Zalo PC role and the BonBon co-founder role", asy
   }
 
   assert.match(hero, /<strong>Zalo PC<\/strong>/);
-  assert.match(hero, /<strong>BonBon<\/strong>/);
+  assert.match(hero, /<strong>BonBon Mobility<\/strong>/);
+  assert.match(hero, /href="https:\/\/bonbon\.com\.vn\/"/);
+  assert.match(hero, /track\('cv_external_link', \{ target: 'bonbon_website', surface: 'hero' \}/);
   assert.match(hero, /locale=\{locale === 'vi' \? 'vi' : 'en'\}/);
   assert.match(hero, /prefetch=\{false\}/);
   assert.match(hero, /Math\.round\(\(v \/ max\) \* 100\)/);
   assert.match(hero, /track\('cv_announcement_click', \{ target: 'bonbon_pre_seed_note' \}\)/);
   assert.match(analytics, /\| 'cv_announcement_click'/);
+  assert.match(analytics, /\| 'cv_project_website_click'/);
 });

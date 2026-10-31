@@ -9,7 +9,7 @@ type Props = { data: ProjectType[] }
 
 const PROJECT_KEY_MAP: Record<string, string> = {
   'LogiUP - Multi-tenant Logistics SaaS': 'logiup',
-  'BonBon - VETC Mini App & Automotive Platform': 'bonbon',
+  'BonBon Mobility - VETC Mini App & Automotive Platform': 'bonbon',
   'Digital SAT Math': 'sat',
   CDP: 'cdp',
   'Event Tracking - Web SDK': 'sdk',
@@ -38,6 +38,19 @@ export default function Projects({ data }: Props) {
           >
             <>
               <header className="project-head">
+                {p.brand && (
+                  // Static export, fixed 40px mark: next/image optimization is not needed.
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    className="project-logo"
+                    src={p.brand.logo}
+                    width={40}
+                    height={40}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                )}
                 <h3 className="project-name">{p.name}</h3>
                 <span className="project-duration">{p.duration}</span>
               </header>
@@ -59,6 +72,27 @@ export default function Projects({ data }: Props) {
                   />
                 ))}
               </ul>
+
+              {p.brand && (
+                <div className="role-evidence">
+                  <span className="role-evidence-label">{t('labels.website')}</span>
+                  <a
+                    href={p.brand.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() =>
+                      track(
+                        'cv_project_website_click',
+                        { project: p.name, host: p.brand?.label },
+                        { beacon: true },
+                      )
+                    }
+                  >
+                    {p.brand.label}
+                    <LuExternalLink size={13} aria-hidden="true" />
+                  </a>
+                </div>
+              )}
 
               {p.evidence && (
                 <div className="role-evidence">

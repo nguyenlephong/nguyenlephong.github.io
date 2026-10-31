@@ -29,11 +29,14 @@ export default function AppHeader() {
     };
   }, [menuOpen]);
 
+  // Plain section names that link to real pages: crawlers read these anchors
+  // (text plus URL) as the site's main sections.
   const navItems: { href: string; label: string; trackId: string }[] = [
-    { href: "/#about", label: t("aboutMe"), trackId: "about" },
-    { href: APP_ROUTE.GALLERY, label: t("gallery"), trackId: "gallery" },
+    { href: APP_ROUTE.ABOUT, label: t("about"), trackId: "about" },
     { href: APP_ROUTE.BLOG, label: t("blog"), trackId: "blog" },
-    { href: APP_ROUTE.NOTES, label: t("notes"), trackId: "notes" }
+    { href: APP_ROUTE.NOTES, label: t("notes"), trackId: "notes" },
+    { href: APP_ROUTE.GALLERY, label: t("gallery"), trackId: "gallery" },
+    { href: APP_ROUTE.APPS, label: t("apps"), trackId: "apps" }
   ];
 
   return (
@@ -56,7 +59,7 @@ export default function AppHeader() {
             <span className="brand-text">Nguyen Le Phong</span>
           </IntentPrefetchLink>
 
-          <nav className="nav-links" aria-label="Sections">
+          <nav className="nav-links" aria-label="Main navigation">
             {navItems.map((item) => (
               <IntentPrefetchLink
                 key={item.trackId}

@@ -6,6 +6,7 @@
     "projects": "Projects",
     "contact": "Contact",
     "gallery": "Gallery",
+    "apps": "Apps",
     "blog": "Blog",
     "notes": "Notes",
     "studio": "Studio",
@@ -29,15 +30,16 @@
   "Footer": {
     "tag": "Lead Software Engineer · Zalo PC",
     "copy": "© {year} Nguyen Le Phong.",
-    "language": "Language"
+    "language": "Language",
+    "sitemap": "Sitemap"
   },
   "Hero": {
-    "news": "BonBon raised a $500K pre-seed round led by Tasco",
+    "news": "BonBon Mobility raised a $500K pre-seed round led by Tasco",
     "newsCta": "Read the story",
     "role": "Lead Software Engineer",
     "cofounder": "Co-founder",
     "roleSub": "Shipping at 80M+ MAU scale. Building from zero as a founder.",
-    "bio": "At Zalo PC, I lead cross-device data work, most recently PC message backup with mobile restore. At BonBon, a car-care O2O platform I co-founded, I built the product integration that took it from MVP to a live field pilot in 3 months.",
+    "bio": "At Zalo PC, I lead cross-device data work, most recently PC message backup with mobile restore. At BonBon Mobility, a car-care O2O platform I co-founded, I built the product integration that took it from MVP to a live field pilot in 3 months.",
     "location": "Ho Chi Minh City, Vietnam",
     "downloadResume": "Download résumé",
     "getInTouch": "Get in touch",
@@ -51,7 +53,7 @@
       "engineersLed": "Largest team led",
       "engineersLedCaption": "Developers · QC · delivery",
       "preSeedRaised": "Pre-seed raised",
-      "preSeedRaisedCaption": "BonBon · led by Tasco",
+      "preSeedRaisedCaption": "BonBon Mobility · led by Tasco",
       "projectsLaunched": "Projects launched",
       "projectsLaunchedCaption": "SDKs · platforms · mobile apps",
       "testCasesAuthored": "Test cases authored",
@@ -142,8 +144,10 @@
           "Returned to <b>Zalo PC</b> on <b>March 2, 2026</b> as Lead Software Engineer, combining hands-on delivery with technical leadership across cross-device messaging and client storage."
         ],
         "contributions": [
-          "Delivered <b>message backup on Zalo PC with restore on mobile</b>, helping users retain text conversation history across device changes.",
-          "Improved <b>zCloud offload reliability and observability</b>, making client-storage issues easier to detect and diagnose.",
+          "Delivered <b>PC message backup with restore on mobile</b> (payload contract, worker file hardening, upload telemetry, sync mutual exclusion), launched July 2026 and covered by VnExpress.",
+          "Hardened <b>sync v2</b> for unreliable mobile links with retry, grouped re-prepare, and failure accounting; one hot-path lookup fell from <b>1.8 s to 4 ms</b>.",
+          "Improved <b>zCloud offload reliability and observability</b> and added a daily log-health probe with a remote kill switch.",
+          "Shipped <b>700+ commits across 55+ tickets in seven months</b>, with risky changes defaulted off behind kill switches.",
           "Lead the engineering team through technical decisions, code reviews, and delivery coordination."
         ]
       },
@@ -184,6 +188,7 @@
   "Projects": {
     "labels": {
       "publicEvidence": "Investment coverage",
+      "website": "Company website",
       "readCoverage": "Read {publisher} coverage"
     },
     "logiup": {
@@ -191,14 +196,17 @@
         "Led a <b>4-person engineering team</b> as <b>Tech Lead and system architect</b>, owning technical direction, architecture decisions, review standards, onboarding, and cross-repository delivery across <b>9 split repositories</b>.",
         "Designed LogiUP as a <b>multi-tenant logistics SaaS</b>: one Next.js UI codebase for web and Electron desktop, a NestJS control plane, FastAPI AI data plane, PostgreSQL, Redis/BullMQ, Cloudflare R2, and isolated staging/production GitOps environments.",
         "Engineered tenant isolation end to end with customer subdomains, database-backed host resolution, tenant-scoped RBAC and tokens, wildcard/on-demand TLS, and a self-owned OAuth 2.1/OIDC provider using RS256/JWKS plus PKCE/deep-link authentication for Electron.",
-        "Shipped the AI-assisted customs workflow with <b>6 least-privilege runtime roles</b>, resumable private-object uploads, human-confirmed AI suggestions, and <b>31 typed API endpoints</b> across 8 independently confirmed declaration sections."
+        "Shipped the AI-assisted customs workflow with <b>6 least-privilege runtime roles</b>, resumable private-object uploads, human-confirmed AI suggestions, and <b>31 typed API endpoints</b> across 8 independently confirmed declaration sections.",
+        "Extended the customs workflow to <b>export declarations</b> (UAT, Oct 2026) with a <b>rule-based document classification engine</b>, and authored <b>737 of 738 commits</b> in the NestJS platform."
       ]
     },
     "bonbon": {
       "accomplishments": [
-        "Co-founded BonBon and built the product integration that took it from MVP to a live field pilot in <b>3 months</b>, earned a <b>Top 3 finalist</b> spot at Tasco × GenAI Fund's Wash3000 MVP Demo Day, and helped secure a <b>$500K pre-seed round led by Tasco</b>, with GenAI Fund participating.",
+        "Co-founded BonBon Mobility and built the product integration that took it from MVP to a live field pilot in <b>3 months</b>, earned a <b>Top 3 finalist</b> spot at Tasco × GenAI Fund's Wash3000 MVP Demo Day, went on to win the program, and helped secure a <b>$500K pre-seed round led by Tasco</b>, with GenAI Fund participating.",
         "Architected and integrated a <b>12-screen Mini App</b> into VETC's <b>4.3M-user app ecosystem</b>, with silent partner-code login, memory-only sessions, deep links, serialized foreground polling, and privacy allow-listed analytics.",
-        "Made releases safe across Go API, Backoffice, web, and mobile using kill-switch feature flags, deterministic rollout, transactional audit, checksum/CSP gates, Playwright flows, and <b>800+ unit tests</b>."
+        "Made releases safe across Go API, Backoffice, web, and mobile using kill-switch feature flags, deterministic rollout, transactional audit, checksum/CSP gates, Playwright flows, and <b>800+ unit tests</b>.",
+        "Authored <b>4,000+ commits</b> across the Go API and web/Mini App monorepo, with about <b>90 specs</b> and <b>425 Go test files</b>.",
+        "Kept booking and garage search fast and observable: garage board in <b>3 queries</b>, indexed search, cached results, and p95 alerting."
       ]
     },
     "sat": {
@@ -257,19 +265,19 @@
   },
   "SEO": {
     "home": {
-      "title": "Nguyen Le Phong — Lead Software Engineer at Zalo PC, Co-founder of BonBon",
-      "description": "Lead Software Engineer at Zalo PC and co-founder of BonBon ($500K pre-seed led by Tasco). 8+ years shipping cross-platform products and reliable releases."
+      "title": "Nguyen Le Phong | Lead Software Engineer, BonBon Mobility",
+      "description": "Lead Software Engineer at Zalo PC, co-founder of BonBon Mobility ($500K pre-seed led by Tasco) and Tech Lead of LogiUP. PC-to-mobile message backup."
     },
     "about": {
-      "title": "About — Backend, Platform & Product Engineering",
-      "description": "How Nguyen Le Phong builds and leads production systems across backend services, secure integrations, Kubernetes infrastructure, observability, and careful rollouts."
+      "title": "About: Backend, Platform & Product Engineering | Nguyen Le Phong",
+      "description": "How Nguyen Le Phong builds and leads production systems: backend services, secure integrations, Kubernetes infrastructure, observability, and careful rollouts."
     },
     "apps": {
-      "title": "Apps — A Showroom of Small, Carefully Built Tools",
+      "title": "Apps: Small Open-Source Tools | Nguyen Le Phong",
       "description": "A focused collection of open-source utilities and small tools built by Nguyen Le Phong to stay fast, practical, and pleasant to use."
     },
     "gallery": {
-      "title": "Gallery — Career Signals Behind the Work",
+      "title": "Gallery: Certificates, Awards & Projects | Nguyen Le Phong",
       "description": "A curated record of certifications, recognition, project snapshots, and steady practices that show how Nguyen Le Phong learns, builds, and works with teams."
     }
   },
@@ -701,9 +709,49 @@
     "background": "Change reading background",
     "language": "Change language"
   },
+  "ArticleRelated": {
+    "notesHeading": "More notes to read next",
+    "notesIntro": "Nearby notes on the same theme, so you can keep following the thread."
+  },
   "ContentFallback": {
     "eyebrow": "Translation in progress",
     "description": "A complete version is not available in this language yet. You can continue with one of the editions below.",
     "action": "Read in {language}"
+  },
+  "SiteIndex": {
+    "metaTitle": "Sitemap: every article and note",
+    "metaDescription": "A plain list of every blog article, note, series and archive page on this site, grouped by topic so nothing is more than one link away.",
+    "eyebrow": "Site index",
+    "title": "Sitemap",
+    "intro": "Every article and note on this site, grouped by topic. Browse the list, or jump straight to something you remember reading.",
+    "breadcrumbLabel": "Breadcrumb",
+    "sectionsHeading": "Main sections",
+    "sections": {
+      "home": "Home",
+      "about": "About",
+      "apps": "Apps",
+      "gallery": "Gallery",
+      "blog": "Blog",
+      "notes": "Notes",
+      "studio": "Studio"
+    },
+    "blogHeading": "Blog articles",
+    "blogCount": "{count, plural, one {# article} other {# articles}} in {categories, plural, one {# category} other {# categories}}.",
+    "seriesHeading": "Series",
+    "notesHeading": "Notes",
+    "notesCount": "{count, plural, one {# note} other {# notes}}, grouped by topic.",
+    "notesOtherTopic": "Other notes",
+    "notesUnavailable": "Notes are written in English and Vietnamese. Browse them in English.",
+    "archiveHeading": "Archive pages",
+    "pageLabel": "Page {page}",
+    "feedsHeading": "Feeds",
+    "feedBlog": "Blog RSS feed",
+    "feedNotes": "Notes RSS feed"
+  },
+  "Feeds": {
+    "blogTitle": "Nguyen Le Phong: Blog",
+    "blogDescription": "Articles on software architecture, AI and how software teams work.",
+    "notesTitle": "Nguyen Le Phong: Notes",
+    "notesDescription": "Personal notes on life, work and the questions without tidy answers."
   }
 }

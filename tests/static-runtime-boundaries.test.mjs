@@ -13,6 +13,7 @@ const expectedRoutes = [
   "blog/[category]/[slug]/page.tsx",
   "blog/[category]/opengraph-image.tsx",
   "blog/[category]/page.tsx",
+  "blog/feed.xml/route.ts",
   "blog/opengraph-image.tsx",
   "blog/page.tsx",
   "blog/page/[page]/page.tsx",
@@ -21,6 +22,7 @@ const expectedRoutes = [
   "gallery/opengraph-image.tsx",
   "gallery/page.tsx",
   "notes/[slug]/page.tsx",
+  "notes/feed.xml/route.ts",
   "notes/page.tsx",
   "notes/page/[page]/page.tsx",
   "notes/topics/[topic]/page.tsx",
@@ -30,6 +32,7 @@ const expectedRoutes = [
   "page.tsx",
   "search/blog.json/route.ts",
   "search/notes.json/route.ts",
+  "sitemap/page.tsx",
   "studio/page.tsx"
 ].sort();
 

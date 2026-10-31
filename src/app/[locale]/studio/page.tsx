@@ -7,6 +7,7 @@ import PageTracker from "@/components/analytics/PageTracker";
 import { routing, type Locale } from "@/i18n/routing";
 import { serializeJsonLd } from "@/lib/seo/json-ld";
 import { localizedPageIdentity } from "@/lib/seo/locale";
+import { buildSectionBreadcrumb } from "@/lib/seo/section-breadcrumb";
 import StudioStaticOverview from "./StudioStaticOverview";
 import StudioWorkspace from "./StudioWorkspace";
 import {
@@ -18,13 +19,13 @@ const seo = PAGE_SEO.studio;
 
 const studioSeoByLocale: Record<string, { title: string; description: string; keywords: string[] }> = {
   en: {
-    title: "Studio — Engineering Notes, Checklists, and System Flows",
+    title: "Studio: Engineering Notes & System Flows",
     description:
       "A public workspace for the notes, checklists, and visual flows I use to review architecture, prepare releases, set up tools, and work with AI responsibly.",
     keywords: ["engineering notes", "software checklists", "system design flows", "AI-assisted engineering"]
   },
   vi: {
-    title: "Studio — Ghi chú kỹ thuật, Checklists và System Flows",
+    title: "Studio: Ghi chú kỹ thuật và System Flows",
     description:
       "Không gian công khai tập hợp ghi chú, checklists và system flows tôi dùng để review architecture, chuẩn bị release, setup công cụ và làm việc với AI có trách nhiệm.",
     keywords: ["ghi chú kỹ thuật", "engineering checklists", "system design flows", "AI-assisted engineering"]
@@ -90,6 +91,12 @@ export default async function StudioPage({ params }: Props) {
   const localizedSeo = getStudioSeo(locale);
   const staticContent = getStudioStaticContent(locale);
   const identity = localizedPageIdentity(locale, seo.path);
+
+  const breadcrumbLd = buildSectionBreadcrumb({
+    locale,
+    name: "Studio",
+    url: identity.canonical
+  });
 
   const collectionLd = {
     "@context": "https://schema.org",
@@ -212,6 +219,10 @@ export default async function StudioPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
       />
       <PageTracker page="studio" eventName="studio_view" section="notes_admin" />
       <StudioWorkspace

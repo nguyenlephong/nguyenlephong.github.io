@@ -6,6 +6,7 @@
     "projects": "Dự án",
     "contact": "Liên hệ",
     "gallery": "Bộ sưu tập",
+    "apps": "Ứng dụng",
     "resume": "CV",
     "studio": "Studio",
     "font": {
@@ -29,15 +30,16 @@
   "Footer": {
     "tag": "Lead Software Engineer · Zalo PC",
     "copy": "© {year} Nguyễn Lê Phong.",
-    "language": "Ngôn ngữ"
+    "language": "Ngôn ngữ",
+    "sitemap": "Sơ đồ trang"
   },
   "Hero": {
-    "news": "BonBon gọi vốn pre-seed 500.000 USD do Tasco dẫn dắt",
+    "news": "BonBon Mobility gọi vốn pre-seed 500.000 USD do Tasco dẫn dắt",
     "newsCta": "Đọc câu chuyện",
     "role": "Lead Software Engineer",
     "cofounder": "Đồng sáng lập",
     "roleSub": "Ship sản phẩm ở quy mô 80M+ MAU. Xây từ con số 0 với vai trò founder.",
-    "bio": "Ở Zalo PC, tôi dẫn dắt mảng dữ liệu xuyên thiết bị, gần nhất là backup tin nhắn trên PC và restore về mobile. Ở BonBon, nền tảng O2O chăm sóc xe, tôi đồng sáng lập và xây phần tích hợp sản phẩm đưa BonBon từ MVP đến pilot thực địa trong 3 tháng.",
+    "bio": "Ở Zalo PC, tôi dẫn dắt mảng dữ liệu xuyên thiết bị, gần nhất là backup tin nhắn trên PC và restore về mobile. Ở BonBon Mobility, nền tảng O2O chăm sóc xe, tôi đồng sáng lập và xây phần tích hợp sản phẩm đưa BonBon từ MVP đến pilot thực địa trong 3 tháng.",
     "location": "TP. Hồ Chí Minh, Việt Nam",
     "downloadResume": "Tải CV",
     "getInTouch": "Liên hệ ngay",
@@ -51,7 +53,7 @@
       "engineersLed": "Đội lớn nhất đã dẫn dắt",
       "engineersLedCaption": "Developer · QC · delivery",
       "preSeedRaised": "Vốn pre-seed",
-      "preSeedRaisedCaption": "BonBon · Tasco dẫn dắt",
+      "preSeedRaisedCaption": "BonBon Mobility · Tasco dẫn dắt",
       "projectsLaunched": "Dự án đã ra mắt",
       "projectsLaunchedCaption": "SDK · platform · ứng dụng di động",
       "testCasesAuthored": "Test case đã viết",
@@ -142,8 +144,10 @@
           "Quay lại <b>Zalo PC</b> ngày <b>02/03/2026</b> với vai trò Lead Software Engineer, vừa trực tiếp phát triển sản phẩm vừa dẫn dắt kỹ thuật cho messaging xuyên thiết bị và client storage."
         ],
         "contributions": [
-          "Ship <b>tính năng backup tin nhắn trên Zalo PC, restore về mobile</b>, giúp người dùng giữ lại lịch sử trò chuyện văn bản khi chuyển thiết bị.",
-          "Cải thiện <b>độ tin cậy và observability của zCloud offload</b>, giúp các vấn đề client storage dễ phát hiện và chẩn đoán hơn.",
+          "Ship <b>tính năng backup tin nhắn trên Zalo PC, restore về mobile</b>: payload contract, hardening file xuyên Web và Electron worker, upload telemetry, mutual exclusion với sync. Ra mắt 07/2026, được VnExpress đưa tin.",
+          "Gia cố <b>sync v2</b> cho đường truyền mobile không ổn định bằng retry, re-prepare theo nhóm và đếm lỗi; một lookup trên hot path giảm từ <b>1,8 s xuống 4 ms</b>.",
+          "Cải thiện <b>độ tin cậy và observability của zCloud offload</b>, thêm log-health probe hằng ngày có remote kill switch để chẩn đoán lỗi từ dữ liệu QoS.",
+          "Ship <b>700+ commit qua 55+ ticket trong bảy tháng</b>, thay đổi rủi ro mặc định tắt sau kill switch.",
           "Dẫn dắt team engineering qua định hướng kỹ thuật, code review và điều phối delivery."
         ]
       },
@@ -184,6 +188,7 @@
   "Projects": {
     "labels": {
       "publicEvidence": "Tin tức đầu tư",
+      "website": "Website công ty",
       "readCoverage": "Xem bài trên {publisher}"
     },
     "logiup": {
@@ -191,14 +196,17 @@
         "Dẫn dắt <b>đội engineering 4 thành viên</b> với vai trò <b>Tech Lead và system architect</b>, chịu trách nhiệm technical direction, quyết định kiến trúc, chuẩn review, onboarding và delivery xuyên <b>9 split repository</b>.",
         "Thiết kế LogiUP thành một <b>multi-tenant logistics SaaS</b>: dùng chung một Next.js UI codebase cho web và Electron desktop, NestJS control plane, FastAPI AI data plane, PostgreSQL, Redis/BullMQ, Cloudflare R2 và môi trường staging/production tách biệt theo GitOps.",
         "Thiết kế tenant isolation end-to-end với subdomain riêng cho khách hàng, host resolution dựa trên database, RBAC và token tenant-scoped, wildcard/on-demand TLS, cùng OAuth 2.1/OIDC provider tự chủ dùng RS256/JWKS và PKCE/deep-link cho Electron.",
-        "Ship workflow khai báo hải quan có AI với <b>6 runtime role theo least privilege</b>, upload private object resumable, gợi ý AI có người xác nhận và <b>31 typed API endpoint</b> trên 8 section khai báo xác nhận độc lập."
+        "Ship workflow khai báo hải quan có AI với <b>6 runtime role theo least privilege</b>, upload private object resumable, gợi ý AI có người xác nhận và <b>31 typed API endpoint</b> trên 8 section khai báo xác nhận độc lập.",
+        "Mở rộng workflow hải quan sang <b>tờ khai xuất</b> (UAT 10/2026) cùng <b>rule engine phân loại tài liệu</b>, là tác giả của <b>737/738 commit</b> trong NestJS platform."
       ]
     },
     "bonbon": {
       "accomplishments": [
-        "Đồng sáng lập BonBon, xây dựng phần tích hợp sản phẩm giúp BonBon đi từ MVP đến pilot thực địa trong <b>3 tháng</b>, được chọn vào <b>Top 3 finalist</b> tại Wash3000 MVP Demo Day do Tasco × GenAI Fund tổ chức, và góp phần gọi vốn thành công <b>vòng pre-seed 500.000 USD do Tasco dẫn dắt</b>, với sự tham gia của GenAI Fund.",
+        "Đồng sáng lập BonBon Mobility, xây dựng phần tích hợp sản phẩm giúp BonBon đi từ MVP đến pilot thực địa trong <b>3 tháng</b>, được chọn vào <b>Top 3 finalist</b> tại Wash3000 MVP Demo Day do Tasco × GenAI Fund tổ chức, sau đó thắng chương trình và góp phần gọi vốn thành công <b>vòng pre-seed 500.000 USD do Tasco dẫn dắt</b>, với sự tham gia của GenAI Fund.",
         "Kiến trúc và tích hợp <b>Mini App 12 màn hình</b> vào hệ sinh thái ứng dụng VETC có <b>4,3 triệu người dùng</b>, với silent login qua partner code, session chỉ trong memory, deep link, polling tuần tự khi foreground và analytics theo PII allow-list.",
-        "Đảm bảo release an toàn xuyên Go API, Backoffice, web và mobile bằng kill-switch feature flag, deterministic rollout, transactional audit, gate checksum/CSP, Playwright flow và <b>800+ unit test</b>."
+        "Đảm bảo release an toàn xuyên Go API, Backoffice, web và mobile bằng kill-switch feature flag, deterministic rollout, transactional audit, gate checksum/CSP, Playwright flow và <b>800+ unit test</b>.",
+        "Viết <b>4.000+ commit</b> (khoảng hai phần ba đến 85% mỗi repository) trên Go API và monorepo web/Mini App, cùng khoảng <b>90 spec</b> và <b>425 file test Go</b>.",
+        "Giữ booking và tìm garage nhanh, quan sát được: bảng garage dựng bằng <b>3 query</b>, search có index, cache kết quả, cảnh báo p95."
       ]
     },
     "sat": {
@@ -257,19 +265,19 @@
   },
   "SEO": {
     "home": {
-      "title": "Nguyễn Lê Phong — Lead Software Engineer tại Zalo PC, đồng sáng lập BonBon",
-      "description": "Lead Software Engineer tại Zalo PC, đồng sáng lập BonBon (pre-seed 500.000 USD do Tasco dẫn dắt). 8+ năm ship sản phẩm cross-platform và release đáng tin cậy."
+      "title": "Nguyễn Lê Phong | Lead Software Engineer, BonBon Mobility",
+      "description": "Lead Software Engineer tại Zalo PC, đồng sáng lập BonBon Mobility (pre-seed 500.000 USD do Tasco dẫn dắt), Tech Lead LogiUP. Backup tin nhắn PC sang mobile."
     },
     "about": {
-      "title": "Giới thiệu — Backend, Platform và Product Engineering",
+      "title": "Giới thiệu: Backend và Platform Engineering | Nguyễn Lê Phong",
       "description": "Cách Nguyễn Lê Phong xây dựng và dẫn dắt hệ thống production, từ backend, integration bảo mật và Kubernetes đến observability cùng các đợt rollout cẩn trọng."
     },
     "apps": {
-      "title": "Ứng dụng — Những công cụ nhỏ được làm cẩn thận",
+      "title": "Ứng dụng: Công cụ nhỏ mã nguồn mở | Nguyễn Lê Phong",
       "description": "Một bộ sưu tập gọn gồm các tiện ích open-source và công cụ nhỏ do Nguyễn Lê Phong xây dựng, tập trung vào tốc độ, tính thực dụng và trải nghiệm dễ chịu."
     },
     "gallery": {
-      "title": "Bộ sưu tập — Những dấu mốc phía sau công việc",
+      "title": "Bộ sưu tập: Chứng chỉ, giải thưởng, dự án | Nguyễn Lê Phong",
       "description": "Chứng chỉ, ghi nhận, ảnh dự án và những thói quen bền bỉ cho thấy cách Nguyễn Lê Phong học hỏi, xây dựng sản phẩm và làm việc cùng team."
     }
   },
@@ -701,9 +709,49 @@
     "background": "Đổi nền đọc",
     "language": "Đổi ngôn ngữ"
   },
+  "ArticleRelated": {
+    "notesHeading": "Ghi chép liên quan",
+    "notesIntro": "Vài ghi chép gần chủ đề này để bạn đọc tiếp mạch suy nghĩ."
+  },
   "ContentFallback": {
     "eyebrow": "Đang hoàn thiện bản dịch",
     "description": "Phiên bản đầy đủ chưa có ở ngôn ngữ này. Bạn có thể tiếp tục với một trong các bản hiện có bên dưới.",
     "action": "Đọc bằng {language}"
+  },
+  "SiteIndex": {
+    "metaTitle": "Sơ đồ trang: toàn bộ bài viết và ghi chép",
+    "metaDescription": "Danh sách liệt kê mọi bài blog, ghi chép, loạt bài và trang lưu trữ của site, gom theo chủ đề để bài nào cũng chỉ cách một liên kết.",
+    "eyebrow": "Mục lục site",
+    "title": "Sơ đồ trang",
+    "intro": "Mọi bài viết và ghi chép trên site, gom theo chủ đề. Cứ lướt danh sách, hoặc vào thẳng bài mình nhớ đã đọc.",
+    "breadcrumbLabel": "Đường dẫn",
+    "sectionsHeading": "Các mục chính",
+    "sections": {
+      "home": "Trang chủ",
+      "about": "Giới thiệu",
+      "apps": "Ứng dụng",
+      "gallery": "Bộ sưu tập",
+      "blog": "Blog",
+      "notes": "Ghi chép",
+      "studio": "Studio"
+    },
+    "blogHeading": "Bài viết blog",
+    "blogCount": "{count} bài viết trong {categories} chuyên mục.",
+    "seriesHeading": "Loạt bài",
+    "notesHeading": "Ghi chép",
+    "notesCount": "{count} ghi chép, gom theo chủ đề.",
+    "notesOtherTopic": "Ghi chép khác",
+    "notesUnavailable": "Ghi chép được viết bằng tiếng Anh và tiếng Việt. Xem bản tiếng Anh.",
+    "archiveHeading": "Các trang lưu trữ",
+    "pageLabel": "Trang {page}",
+    "feedsHeading": "Nguồn cấp",
+    "feedBlog": "RSS của Blog",
+    "feedNotes": "RSS của Ghi chép"
+  },
+  "Feeds": {
+    "blogTitle": "Nguyễn Lê Phong: Blog",
+    "blogDescription": "Bài viết về software architecture, AI và cách team phần mềm làm việc.",
+    "notesTitle": "Nguyễn Lê Phong: Ghi chép",
+    "notesDescription": "Ghi chép cá nhân về cuộc sống, công việc và những câu hỏi chưa có lời đáp gọn."
   }
 }

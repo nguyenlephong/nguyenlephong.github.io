@@ -16,6 +16,7 @@ import { routing } from '@/i18n/routing'
 import PageTracker from '@/components/analytics/PageTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import { buildPersonVentureSchema } from '@/lib/seo/profile-schema'
+import { buildSectionBreadcrumb } from '@/lib/seo/section-breadcrumb'
 import {
   buildStaticPageMetadata,
   resolveStaticPageLocalization,
@@ -92,6 +93,16 @@ export default async function AboutPage({ params }: Props) {
     url: localization.canonical,
   }
 
+  const navT = await getTranslations({
+    locale: localization.contentLocale,
+    namespace: 'Nav',
+  })
+  const breadcrumbLd = buildSectionBreadcrumb({
+    locale: localization.contentLocale,
+    name: navT('about'),
+    url: localization.canonical,
+  })
+
   const t = await getTranslations('About')
   const metrics = t.raw('hero.metrics') as Metric[]
   const systems = t.raw('systems.items') as SystemLayer[]
@@ -106,6 +117,10 @@ export default async function AboutPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(aboutPageLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
       />
       <script
         type="application/ld+json"

@@ -168,6 +168,7 @@ html[data-theme='light'] .ai-particle-field {
 }
 .hero-role span { color: var(--fg-subtle); }
 .hero-role strong { color: var(--accent); font-weight: 600; }
+.hero-role-link:hover { text-decoration: underline; }
 .hero-role-sub {
   margin: 0 0 1rem;
   font-size: var(--text-lg);
@@ -792,6 +793,8 @@ html[data-theme='light'] .ai-particle-field {
   border-color: var(--border-strong);
   box-shadow: var(--shadow-md);
 }
+.project-logo { align-self: center; border-radius: 10px; background: #fff; }
+.project-logo + h3 { flex: 1; min-width: 12rem; }
 .project-head {
   display: flex; flex-wrap: wrap; align-items: baseline;
   gap: 0.5rem 1rem;

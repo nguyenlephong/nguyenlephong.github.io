@@ -8,9 +8,10 @@ function defineProject(
   technologies: string[],
   duration: string,
   accomplishment: string[],
-  evidence?: ProjectType["evidence"]
+  evidence?: ProjectType["evidence"],
+  brand?: ProjectType["brand"]
 ): ProjectType {
-  return { name, technologies, duration, description: [], accomplishment, evidence };
+  return { name, technologies, duration, description: [], accomplishment, evidence, brand };
 }
 
 export const projects = [
@@ -33,11 +34,12 @@ export const projects = [
         `Led a <b>4-person engineering team</b> as <b>Tech Lead and system architect</b>, owning technical direction, architecture decisions, review standards, onboarding, and cross-repository delivery across <b>9 split repositories</b>.`,
         `Designed LogiUP as a <b>multi-tenant logistics SaaS</b>: one Next.js UI codebase for web and Electron desktop, a NestJS control plane, FastAPI AI data plane, PostgreSQL, Redis/BullMQ, Cloudflare R2, and isolated staging/production GitOps environments.`,
         `Engineered tenant isolation end to end with customer subdomains, database-backed host resolution, tenant-scoped RBAC and tokens, wildcard/on-demand TLS, and a self-owned OAuth 2.1/OIDC provider using RS256/JWKS plus PKCE/deep-link authentication for Electron.`,
-        `Shipped the AI-assisted customs workflow with <b>6 least-privilege runtime roles</b>, resumable private-object uploads, human-confirmed AI suggestions, and <b>31 typed API endpoints</b> across 8 independently confirmed declaration sections.`
+        `Shipped the AI-assisted customs workflow with <b>6 least-privilege runtime roles</b>, resumable private-object uploads, human-confirmed AI suggestions, and <b>31 typed API endpoints</b> across 8 independently confirmed declaration sections.`,
+        `Extended the customs workflow to <b>export declarations</b> (UAT, Oct 2026) with a <b>rule-based document classification engine</b>, and authored <b>737 of 738 commits</b> in the NestJS platform.`
     ]
   ),
   defineProject(
-    "BonBon - VETC Mini App & Automotive Platform",
+    "BonBon Mobility - VETC Mini App & Automotive Platform",
     [
       "Go",
       "React",
@@ -50,14 +52,21 @@ export const projects = [
     ],
     "Apr 2026 - Present",
     [
-        `Co-founded BonBon and built the product integration that took it from MVP to a live field pilot in <b>3 months</b>, earned a <b>Top 3 finalist</b> spot at Tasco × GenAI Fund's Wash3000 MVP Demo Day, and helped secure a <b>$500K pre-seed round led by Tasco</b>, with GenAI Fund participating.`,
+        `Co-founded BonBon Mobility and built the product integration that took it from MVP to a live field pilot in <b>3 months</b>, earned a <b>Top 3 finalist</b> spot at Tasco × GenAI Fund's Wash3000 MVP Demo Day, went on to win the program, and helped secure a <b>$500K pre-seed round led by Tasco</b>, with GenAI Fund participating.`,
         `Architected and integrated a <b>12-screen Mini App</b> into VETC's <b>4.3M-user app ecosystem</b>, with silent partner-code login, memory-only sessions, deep links, serialized foreground polling, and privacy allow-listed analytics.`,
-        `Made releases safe across Go API, Backoffice, web, and mobile using kill-switch feature flags, deterministic rollout, transactional audit, checksum/CSP gates, Playwright flows, and <b>800+ unit tests</b>.`
+        `Made releases safe across Go API, Backoffice, web, and mobile using kill-switch feature flags, deterministic rollout, transactional audit, checksum/CSP gates, Playwright flows, and <b>800+ unit tests</b>.`,
+        `Authored <b>4,000+ commits</b> across the Go API and web/Mini App monorepo, with about <b>90 specs</b> and <b>425 Go test files</b>.`,
+        `Kept booking and garage search fast and observable: garage board in <b>3 queries</b>, indexed search, cached results, and p95 alerting.`
     ],
     {
       href: "https://www.tasco.com.vn/post/tasco-dan-dat-vong-dau-tu-500-000-usd-vao-bonbon-nen-tang-o2o-ket-noi-chu-xe-voi-mang-luoi-garage-va-trung-tam-cham-soc-xe",
       publisher: "Tasco",
       publishedAt: "2026-09-21"
+    },
+    {
+      href: "https://bonbon.com.vn/",
+      label: "bonbon.com.vn",
+      logo: "/brand/bonbon-mark.png"
     }
   ),
     {

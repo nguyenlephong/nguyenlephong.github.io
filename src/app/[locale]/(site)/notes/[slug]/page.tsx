@@ -5,7 +5,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LOCALE_LABELS, routing, type Locale } from "@/i18n/routing";
 import { SITE, SITE_URL } from "@/app/seo.config";
-import { buildDescription, htmlToPlainText } from "@/lib/blog/seo";
+import { htmlToPlainText } from "@/lib/blog/seo";
+import { buildArticleDescription } from "@/lib/seo/article-description";
 import {
   OG_LOCALE_MAP,
   canonicalFor,
@@ -23,9 +24,11 @@ import {
   getNoteContentLocales,
   getTopicReadingContext,
   listNoteParams,
+  listNotes,
   loadNote
 } from "@/lib/notes/data";
 import { buildNotesTopicHref } from "@/lib/notes/urls";
+import { getRelatedNotes } from "@/lib/notes/related";
 import { resolveNoteAuthorIdentity } from "@/lib/notes/authorship";
 import { noteOgImageUrl } from "@/lib/og/static-images";
 import BlogContent from "@/components/blog/BlogContent";
@@ -37,6 +40,7 @@ import BlogReadingTracker from "@/components/blog/BlogReadingTracker";
 import ContentHubReadingTracker from "@/components/blog/ContentHubReadingTracker";
 import { EngagementProvider } from "@/components/blog/EngagementProvider";
 import LocalizedArticleFallback from "@/components/content/LocalizedArticleFallback";
+import ArticleRelatedLinks from "@/components/content/ArticleRelatedLinks";
 import "../notes.css";
 import "../../blog/blog.css";
 
@@ -71,7 +75,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = note.seoTitle ?? note.title;
   const description =
-    note.seoDescription ?? buildDescription(note.summary || note.html);
+    note.seoDescription ??
+    buildArticleDescription(note.summary || note.html);
   const canonical = canonicalFor(canonicalLocale, `/notes/${slug}`);
   const imageUrl = noteOgImageUrl(slug);
   const languages = localeAlternates(`/notes/${slug}`, contentLocales);
@@ -160,12 +165,36 @@ export default async function NotePage({ params }: Props) {
   const canonical = canonicalFor(canonicalLocale, `/notes/${slug}`);
   const imageUrl = noteOgImageUrl(slug);
   const description =
-    note.seoDescription ?? (note.summary || buildDescription(note.html));
+    note.seoDescription ??
+    (note.summary || buildArticleDescription(note.html));
   const authorIdentity = resolveNoteAuthorIdentity(note.author);
 
   const topic = note.topic ? getTopic(note.topic, locale) : null;
   const topicHub = note.topic ? getNoteHub(note.topic, locale) : null;
   const topicReading = getTopicReadingContext(slug, locale);
+  const relatedT = await getTranslations({
+    locale,
+    namespace: "ArticleRelated"
+  });
+  const visibleNotes = listNotes(locale);
+  const currentMeta = visibleNotes.find((entry) => entry.slug === slug);
+  const adjacentSlugs = new Set(
+    [topicReading?.prev?.slug, topicReading?.next?.slug].filter(
+      (value): value is string => Boolean(value)
+    )
+  );
+  const relatedNotes = currentMeta
+    ? getRelatedNotes(currentMeta, visibleNotes, 5, adjacentSlugs)
+    : [];
+  const relatedItems = relatedNotes.map((related) => ({
+    href: `/notes/${related.slug}`,
+    title: related.title,
+    kicker:
+      (related.topic && getTopic(related.topic, locale)?.label) || t("title"),
+    meta: t("readingTime", { minutes: related.readingMinutes }),
+    slug: related.slug,
+    category: "notes"
+  }));
   const topicColor = topic?.color ?? FALLBACK_TOPIC_COLOR;
   const topicHref = topic ? buildNotesTopicHref(topic.id) : null;
   const bookSourceCard = note.book ? (
@@ -229,7 +258,9 @@ export default async function NotePage({ params }: Props) {
     image: imageUrl,
     mainEntityOfPage: canonical,
     datePublished: note.date,
-    ...(note.updated ? { dateModified: note.updated } : {}),
+    dateModified: note.updated ?? note.date,
+    timeRequired: `PT${Math.max(1, Math.round(note.readingMinutes))}M`,
+    ...(topic ? { articleSection: topic.label } : {}),
     ...(note.contentMode ? { genre: note.contentMode } : {}),
     keywords: note.tags.join(", "),
     ...(authorIdentity ? { author: authorIdentity.structuredData } : {}),
@@ -487,6 +518,12 @@ export default async function NotePage({ params }: Props) {
             </div>
           </div>
 
+          <ArticleRelatedLinks
+            heading={relatedT("notesHeading")}
+            intro={relatedT("notesIntro")}
+            items={relatedItems}
+          />
+
           {topicReading && (topicReading.prev || topicReading.next) && (
             <nav
               className="blog-series-nav"
@@ -500,6 +537,9 @@ export default async function NotePage({ params }: Props) {
                 <Link
                   href={`/notes/${topicReading.prev.slug}`}
                   className="blog-series-nav__link blog-series-nav__link--prev"
+                  data-related-link="prev"
+                  data-related-target-category="notes"
+                  data-related-target-slug={topicReading.prev.slug}
                 >
                   <span className="blog-series-nav__dir">
                     ← {t("previously")}
@@ -515,6 +555,9 @@ export default async function NotePage({ params }: Props) {
                 <Link
                   href={`/notes/${topicReading.next.slug}`}
                   className="blog-series-nav__link blog-series-nav__link--next"
+                  data-related-link="next"
+                  data-related-target-category="notes"
+                  data-related-target-slug={topicReading.next.slug}
                 >
                   <span className="blog-series-nav__dir">{t("nextUp")} →</span>
                   <span className="blog-series-nav__title">

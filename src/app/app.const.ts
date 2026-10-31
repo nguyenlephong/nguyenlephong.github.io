@@ -26,7 +26,7 @@ export const APP_ROUTE = {
 export const SEO = {
   title: "Nguyen Le Phong | Lead Software Engineer at Zalo PC",
   description:
-    "Lead Software Engineer at Zalo PC with 8+ years shipping cross-platform products, PC-to-mobile message backup and restore, platform systems, secure integrations, and reliable releases.",
+    "Lead Software Engineer at Zalo PC, co-founder of BonBon Mobility ($500K pre-seed led by Tasco) and Tech Lead of LogiUP. PC-to-mobile message backup.",
   og: {
     title: "Nguyễn Lê Phong | Software Engineer",
     type: "website",

@@ -14,8 +14,8 @@ test('every locale presents the evidence-backed LogiUP and BonBon projects', asy
     const logiup = messages.Projects.logiup.accomplishments;
     const bonbon = messages.Projects.bonbon.accomplishments;
 
-    assert.equal(logiup.length, 4);
-    assert.equal(bonbon.length, 3);
+    assert.equal(logiup.length, 5);
+    assert.equal(bonbon.length, 5);
     assert.match(JSON.stringify(logiup), /Tech Lead/);
     assert.match(JSON.stringify(logiup), /4/);
     assert.match(JSON.stringify(logiup), /9/);
@@ -35,6 +35,9 @@ test('every locale presents the evidence-backed LogiUP and BonBon projects', asy
   assert.match(en.Projects.logiup.accomplishments[0], /Tech Lead and system architect/);
   assert.match(en.Projects.logiup.accomplishments[2], /tenant isolation end to end/);
   assert.match(en.Projects.bonbon.accomplishments[0], /Top 3 finalist/);
+  assert.match(en.Projects.bonbon.accomplishments[0], /went on to win the program/);
+  assert.match(en.Projects.bonbon.accomplishments[3], /4,000\+ commits/);
+  assert.match(en.Projects.logiup.accomplishments[4], /export declarations/);
   assert.match(en.Projects.bonbon.accomplishments[0], /^Co-founded BonBon/);
   assert.match(en.Projects.bonbon.accomplishments[0], /\$500K pre-seed round led by Tasco/);
   for (const locale of locales) {
@@ -64,7 +67,7 @@ test('signature projects lead the homepage and generated resume selection', asyn
       projects.indexOf('name: "Digital SAT Math"')
   );
   assert.ok(
-    projects.indexOf('defineProject("BonBon - VETC Mini App & Automotive Platform"') <
+    projects.indexOf('defineProject("BonBon Mobility - VETC Mini App & Automotive Platform"') <
       projects.indexOf('name: "Digital SAT Math"')
   );
   assert.match(projects, /"Mar 2026 - Present"/);
@@ -83,15 +86,15 @@ test('signature projects lead the homepage and generated resume selection', asyn
   );
   assert.match(
     component,
-    /'BonBon - VETC Mini App & Automotive Platform': 'bonbon'/,
+    /'BonBon Mobility - VETC Mini App & Automotive Platform': 'bonbon'/,
   );
   assert.match(
     exporter,
-    /\['LogiUP - Multi-tenant Logistics SaaS', \[0, 1, 2, 3\]\]/
+    /\['LogiUP - Multi-tenant Logistics SaaS', \[0, 1, 2, 3, 4\]\]/
   );
   assert.match(
     exporter,
-    /\['BonBon - VETC Mini App & Automotive Platform', \[0, 1, 2\]\]/
+    /\['BonBon Mobility - VETC Mini App & Automotive Platform', \[0, 1, 2, 3\]\]/
   );
   assert.match(
     projects,

@@ -443,7 +443,7 @@ test("public content surfaces have explicit posthog page and interaction events"
     readFile("src/components/blog/BlogShareDock.tsx", "utf8"),
     readFile("src/components/blog/BlogReactions.tsx", "utf8"),
     readFile("src/components/blog/BlogToc.tsx", "utf8"),
-    readFile("src/components/blog/BlogRelatedPosts.tsx", "utf8"),
+    readFile("src/components/analytics/useRelatedLinkClickTracking.ts", "utf8"),
     readFile("src/components/blog/BlogPostCard.tsx", "utf8"),
     readFile("src/components/notes/NoteCard.tsx", "utf8"),
     readFile("src/components/blog/BlogCategoryCard.tsx", "utf8"),
@@ -464,6 +464,7 @@ test("public content surfaces have explicit posthog page and interaction events"
     "blog_reaction",
     "blog_nav_jump",
     "blog_related_click",
+    "notes_related_click",
     "notes_view",
     "notes_card_click",
     "notes_share",
@@ -516,6 +517,7 @@ test("public content surfaces have explicit posthog page and interaction events"
   assert.match(toc, /blog_nav_jump/);
   assert.match(toc, /notes_nav_jump/);
   assert.match(related, /blog_related_click/);
+  assert.match(related, /notes_related_click/);
   assert.match(blogCard, /blog_card_click/);
   assert.match(noteCard, /notes_card_click/);
   assert.match(categoryCard, /blog_category_click/);

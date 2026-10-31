@@ -662,6 +662,7 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   opacity: 0.55;
   letter-spacing: 0.04em;
 }
+.footer-sitemap { color: inherit; }
 
 /* =========================================================
    Locale switcher (custom dropdown)

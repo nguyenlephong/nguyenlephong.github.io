@@ -78,6 +78,9 @@ const expectedImporters = {
     "src/app/[locale]/(site)/notes/topics/[topic]/page.tsx",
     "src/app/[locale]/(site)/notes/topics/[topic]/page/[page]/page.tsx"
   ],
+  "src/app/[locale]/(site)/sitemap/sitemap.css": [
+    "src/app/[locale]/(site)/sitemap/page.tsx"
+  ],
   "src/app/[locale]/(site)/blog/reader.css": [
     "src/app/[locale]/(site)/blog/[category]/[slug]/layout.tsx",
     "src/app/[locale]/(site)/notes/[slug]/layout.tsx"

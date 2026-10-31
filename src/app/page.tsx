@@ -1,15 +1,19 @@
 import type { Metadata } from 'next'
 import { routing } from '@/i18n/routing'
-import { SITE_URL } from '@/app/seo.config'
-import { buildWebsiteSchema } from '@/lib/seo/profile-schema'
+import { PAGE_SEO, SITE, SITE_URL } from '@/app/seo.config'
+import {
+  buildSiteNavigationSchema,
+  buildWebsiteSchema,
+} from '@/lib/seo/profile-schema'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
+import { SITE_SECTIONS, sectionUrl } from '@/lib/seo/site-sections'
 
 const DEFAULT = `/${routing.defaultLocale}`
 
-const SEO_TITLE = 'Nguyen Le Phong — Lead Software Engineer at Zalo PC'
-const SEO_DESCRIPTION =
-  'Lead Software Engineer at Zalo PC with 8+ years shipping cross-platform products, PC-to-mobile message backup and restore, platform systems, secure integrations, and reliable releases.'
-const OG_ALT = 'Nguyen Le Phong — Lead Software Engineer at Zalo PC'
+// Same brand title and description as /en (messages SEO.home) so the stub and
+// the page it hands off to never disagree about what the site is called.
+const SEO_TITLE = PAGE_SEO.home.title
+const SEO_DESCRIPTION = PAGE_SEO.home.description
 
 const localeLanguages: Record<string, string> = {}
 for (const loc of routing.locales) localeLanguages[loc] = `${SITE_URL}/${loc}`
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'profile',
-    siteName: 'Nguyen Le Phong — Software Engineer',
+    siteName: SITE.name,
     title: SEO_TITLE,
     description: SEO_DESCRIPTION,
     url: `${SITE_URL}${DEFAULT}`,
@@ -46,6 +50,7 @@ export const metadata: Metadata = {
 
 export default function RootPage() {
   const websiteSchema = buildWebsiteSchema(SEO_DESCRIPTION)
+  const navigationSchema = buildSiteNavigationSchema(routing.defaultLocale)
   return (
     <html lang="en">
       <head>
@@ -61,13 +66,34 @@ export default function RootPage() {
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteSchema) }}
         />
         <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(navigationSchema) }}
+        />
+        <script
           dangerouslySetInnerHTML={{
             __html: `window.location.replace(${JSON.stringify(DEFAULT)});`,
           }}
         />
-        <p style={{ fontFamily: 'system-ui, sans-serif', padding: '2rem' }}>
-          Redirecting to <a href={DEFAULT}>{DEFAULT}</a>…
-        </p>
+        <main style={{ fontFamily: 'system-ui, sans-serif', padding: '2rem' }}>
+          <h1>Nguyen Le Phong</h1>
+          <p>
+            Redirecting to{' '}
+            <a href={DEFAULT}>Nguyen Le Phong, Lead Software Engineer</a>…
+          </p>
+          <nav aria-label="Main sections">
+            <ul>
+              {SITE_SECTIONS.map((section) => (
+                <li key={section.id}>
+                  <a href={sectionUrl(section, routing.defaultLocale)}>
+                    {section.name}
+                  </a>
+                  {': '}
+                  {section.description}
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </main>
       </body>
     </html>
   )

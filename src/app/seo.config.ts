@@ -2,7 +2,9 @@ export const SITE_URL = 'https://nguyenlephong.github.io'
 
 export const SITE = {
   url: SITE_URL,
-  name: 'Nguyen Le Phong — Lead Software Engineer at Zalo PC',
+  // One site name everywhere (og:site_name, WebSite.name) so Google's site-name
+  // and result titles agree on a single brand string.
+  name: 'Nguyen Le Phong',
   brandShort: 'Nguyen Le Phong',
   twitter: '@nguyenlephong17',
   locale: 'en_US',
@@ -22,9 +24,9 @@ export const PAGE_SEO: Record<
   PageSEO
 > = {
   home: {
-    title: 'Nguyen Le Phong — Lead Software Engineer at Zalo PC, Co-founder of BonBon',
+    title: 'Nguyen Le Phong | Lead Software Engineer, BonBon Mobility',
     description:
-      'Lead Software Engineer at Zalo PC and co-founder of BonBon ($500K pre-seed led by Tasco). 8+ years shipping cross-platform products and reliable releases.',
+      'Lead Software Engineer at Zalo PC, co-founder of BonBon Mobility ($500K pre-seed led by Tasco) and Tech Lead of LogiUP. PC-to-mobile message backup.',
     path: '/',
     keywords: [
       'Nguyen Le Phong',
@@ -32,6 +34,7 @@ export const PAGE_SEO: Record<
       'Lead Software Engineer',
       'Zalo PC',
       'BonBon co-founder',
+      'BonBon Mobility',
       'Senior Software Engineer',
       'Technical Lead',
       'Tech Lead',
@@ -44,10 +47,10 @@ export const PAGE_SEO: Record<
       'Very Good degree',
     ],
     ogAlt:
-      'Nguyen Le Phong — Lead Software Engineer at Zalo PC and co-founder of BonBon',
+      'Nguyen Le Phong — Lead Software Engineer at Zalo PC and co-founder of BonBon Mobility',
   },
   about: {
-    title: 'About — Backend, Platform & Product Engineering',
+    title: 'About: Backend, Platform & Product Engineering | Nguyen Le Phong',
     description:
       'How Nguyen Le Phong builds production systems across backend services, secure integrations, Kubernetes infrastructure, load balancer paths, feature-flag rollouts, observability, and technical leadership.',
     path: '/about',
@@ -66,7 +69,7 @@ export const PAGE_SEO: Record<
       'About Nguyen Le Phong — backend, platform, infrastructure, and product engineering',
   },
   gallery: {
-    title: 'Gallery — Career Signals Behind the Work',
+    title: 'Gallery: Certificates, Awards & Projects | Nguyen Le Phong',
     description:
       'A curated gallery of certifications, recognitions, project snapshots, and personal discipline signals that show how Nguyen Le Phong learns, builds, and delivers.',
     path: '/gallery',
@@ -81,7 +84,7 @@ export const PAGE_SEO: Record<
       'Gallery — career signals from certifications, recognitions, projects and steady practice',
   },
   apps: {
-    title: 'Apps — A Showroom of Tiny, Crafted Tools',
+    title: 'Apps: Small Open-Source Tools | Nguyen Le Phong',
     description:
       'A curated showroom of apps built by Nguyen Le Phong — open-source utilities and tools designed to be tiny, fast, and a joy to use.',
     path: '/apps',
@@ -112,7 +115,7 @@ export const PAGE_SEO: Record<
     ogAlt: 'Blog — software architecture and engineering, explained simply',
   },
   studio: {
-    title: 'Studio — Engineering Notes, Checklists, and System Flows',
+    title: 'Studio: Engineering Notes & System Flows',
     description:
       'A public workspace for the notes, checklists, and visual flows I use to review architecture, prepare releases, set up tools, and work with AI responsibly.',
     path: '/studio',

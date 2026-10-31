@@ -5,10 +5,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { LOCALE_LABELS, routing, type Locale } from '@/i18n/routing'
 import { SITE, SITE_URL } from '@/app/seo.config'
-import {
-  buildDescription,
-  htmlToPlainText,
-} from '@/lib/blog/seo'
+import { htmlToPlainText } from '@/lib/blog/seo'
+import { buildArticleDescription } from '@/lib/seo/article-description'
 import {
   OG_LOCALE_MAP,
   canonicalFor,
@@ -27,6 +25,7 @@ import {
 } from '@/lib/blog/data'
 import { getLegacyBlogLocaleFallback } from '@/lib/blog/legacy-locale-fallbacks'
 import { getRelatedPosts } from '@/lib/blog/related'
+import { getCategoryNeighbors } from '@/lib/blog/neighbors'
 import { localizeArticleHtmlLinks } from '@/lib/content/article-html'
 import { CONTENT_HUB_LOCALES } from '@/lib/content/route-contract'
 import { blogPostOgImageUrl } from '@/lib/og/static-images'
@@ -38,7 +37,7 @@ import { EngagementProvider } from '@/components/blog/EngagementProvider'
 import BlogViewCount from '@/components/blog/BlogViewCount'
 import BlogShareDock from '@/components/blog/BlogShareDock'
 import BlogReactions from '@/components/blog/BlogReactions'
-import BlogRelatedPosts from '@/components/blog/BlogRelatedPosts'
+import ArticleRelatedLinks from '@/components/content/ArticleRelatedLinks'
 import LocalizedArticleFallback from '@/components/content/LocalizedArticleFallback'
 import '../../blog.css'
 
@@ -72,7 +71,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post || post.category !== category) return { title: 'Post not found' }
 
   const title = post.seoTitle ?? post.title
-  const description = post.seoDescription ?? buildDescription(post.summary || post.html)
+  const description = post.seoDescription ??
+    buildArticleDescription(post.summary || post.html)
   const canonical = canonicalFor(canonicalLocale, `/blog/${category}/${slug}`)
   const imageUrl = blogPostOgImageUrl(slug)
   const languages = localeAlternates(`/blog/${category}/${slug}`, contentLocales)
@@ -183,18 +183,28 @@ export default async function BlogPostPage({ params }: Props) {
   const canonical = canonicalFor(canonicalLocale, `/blog/${category}/${slug}`)
   const imageUrl = blogPostOgImageUrl(slug)
   const description =
-    post.seoDescription ?? (post.summary || buildDescription(post.html))
-  const relatedPosts = getRelatedPosts(post, listPosts(locale))
-  const relatedItems = relatedPosts.map((relatedPost) => {
-    const categoryTitle =
-      getCategory(relatedPost.category, locale)?.title ?? relatedPost.category
-
-    return {
-      post: relatedPost,
-      categoryTitle,
-      readingLabel: t('readingTime', { minutes: relatedPost.readingMinutes }),
-    }
-  })
+    post.seoDescription ?? (post.summary || buildArticleDescription(post.html))
+  const localePosts = listPosts(locale)
+  // Series posts already link to prev/next through the series order; others get
+  // chronological neighbours inside their category so every article has them.
+  const neighbors = series
+    ? { prev: series.prev, next: series.next }
+    : getCategoryNeighbors(slug, category, localePosts)
+  const adjacentSlugs = new Set(
+    [neighbors.prev?.slug, neighbors.next?.slug].filter((value): value is string =>
+      Boolean(value),
+    ),
+  )
+  const relatedPosts = getRelatedPosts(post, localePosts, 5, adjacentSlugs)
+  const relatedItems = relatedPosts.map((relatedPost) => ({
+    href: `/blog/${relatedPost.category}/${relatedPost.slug}`,
+    title: relatedPost.title,
+    kicker:
+      getCategory(relatedPost.category, locale)?.title ?? relatedPost.category,
+    meta: t('readingTime', { minutes: relatedPost.readingMinutes }),
+    slug: relatedPost.slug,
+    category: relatedPost.category,
+  }))
 
   const articleLd = {
     '@context': 'https://schema.org',
@@ -207,7 +217,8 @@ export default async function BlogPostPage({ params }: Props) {
     image: imageUrl,
     mainEntityOfPage: canonical,
     datePublished: post.date,
-    ...(post.updated ? { dateModified: post.updated } : {}),
+    dateModified: post.updated ?? post.date,
+    timeRequired: `PT${Math.max(1, Math.round(post.readingMinutes))}M`,
     ...(post.contentMode ? { genre: post.contentMode } : {}),
     keywords: post.tags.join(', '),
     articleSection: cat?.title ?? category,
@@ -492,44 +503,48 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </div>
 
-          <BlogRelatedPosts
+          <ArticleRelatedLinks
             heading={t('relatedHeading')}
             intro={t('relatedIntro')}
             items={relatedItems}
-            sourceCategory={category}
-            sourceSlug={slug}
           />
 
-          {series && (series.prev || series.next) && (
+          {(neighbors.prev || neighbors.next) && (
             <nav
               className="blog-series-nav"
-              aria-label={seriesLabel ?? series.series}
+              aria-label={seriesLabel ?? cat?.title ?? category}
             >
-              {series.prev ? (
+              {neighbors.prev ? (
                 <Link
-                  href={`/blog/${series.prev.category}/${series.prev.slug}`}
+                  href={`/blog/${neighbors.prev.category}/${neighbors.prev.slug}`}
                   className="blog-series-nav__link blog-series-nav__link--prev"
+                  data-related-link="prev"
+                  data-related-target-category={neighbors.prev.category}
+                  data-related-target-slug={neighbors.prev.slug}
                 >
                   <span className="blog-series-nav__dir">
                     ← {t('previously')}
                   </span>
                   <span className="blog-series-nav__title">
-                    {series.prev.title}
+                    {neighbors.prev.title}
                   </span>
                 </Link>
               ) : (
                 <span />
               )}
-              {series.next ? (
+              {neighbors.next ? (
                 <Link
-                  href={`/blog/${series.next.category}/${series.next.slug}`}
+                  href={`/blog/${neighbors.next.category}/${neighbors.next.slug}`}
                   className="blog-series-nav__link blog-series-nav__link--next"
+                  data-related-link="next"
+                  data-related-target-category={neighbors.next.category}
+                  data-related-target-slug={neighbors.next.slug}
                 >
                   <span className="blog-series-nav__dir">
                     {t('nextUp')} →
                   </span>
                   <span className="blog-series-nav__title">
-                    {series.next.title}
+                    {neighbors.next.title}
                   </span>
                 </Link>
               ) : (

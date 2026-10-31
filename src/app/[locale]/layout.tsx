@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { SITE_URL } from '@/app/seo.config'
+import { SITE, SITE_URL } from '@/app/seo.config'
 import PostHogBootstrap from '@/components/analytics/PostHogBootstrap'
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
 import { routing, type Locale } from '@/i18n/routing'
@@ -51,7 +51,7 @@ export async function generateMetadata({
     },
     description,
     metadataBase: new URL(SITE_URL),
-    applicationName: 'Nguyen Le Phong — CV',
+    applicationName: SITE.name,
     authors: [{ name: 'Nguyen Le Phong', url: SITE_URL }],
     creator: 'Nguyen Le Phong',
     publisher: 'Nguyen Le Phong',
@@ -90,7 +90,7 @@ export async function generateMetadata({
       googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
     },
     openGraph: {
-      siteName: 'Nguyen Le Phong — Software Engineer',
+      siteName: SITE.name,
       title,
       description,
       url: `${SITE_URL}/${locale}`,

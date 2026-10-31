@@ -6,6 +6,7 @@
     "projects": "Projets",
     "contact": "Contact",
     "gallery": "Galerie",
+    "apps": "Applications",
     "resume": "CV",
     "font": {
       "label": "Police de lecture",
@@ -28,15 +29,16 @@
   "Footer": {
     "tag": "Lead Software Engineer · Zalo PC",
     "copy": "© {year} Nguyen Le Phong.",
-    "language": "Langue"
+    "language": "Langue",
+    "sitemap": "Plan du site"
   },
   "Hero": {
-    "news": "BonBon lève 500 000 $ en pre-seed, menée par Tasco",
+    "news": "BonBon Mobility lève 500 000 $ en pre-seed, menée par Tasco",
     "newsCta": "Lire l'histoire",
     "role": "Lead Software Engineer",
     "cofounder": "Cofondateur",
     "roleSub": "Livrer à l'échelle de 80M+ MAU. Construire de zéro en tant que fondateur.",
-    "bio": "Chez Zalo PC, je pilote les parcours de données entre appareils, dernièrement la sauvegarde des messages sur PC avec restauration sur mobile. Chez BonBon, plateforme O2O d'entretien automobile, j'ai cofondé l'entreprise et construit l'intégration produit qui l'a menée du MVP à un pilote terrain en 3 mois.",
+    "bio": "Chez Zalo PC, je pilote les parcours de données entre appareils, dernièrement la sauvegarde des messages sur PC avec restauration sur mobile. Chez BonBon Mobility, plateforme O2O d'entretien automobile, j'ai cofondé l'entreprise et construit l'intégration produit qui l'a menée du MVP à un pilote terrain en 3 mois.",
     "location": "Hô Chi Minh-Ville, Vietnam",
     "downloadResume": "Télécharger le CV",
     "getInTouch": "Me contacter",
@@ -50,7 +52,7 @@
       "engineersLed": "Plus grande équipe dirigée",
       "engineersLedCaption": "Devs · QC · delivery",
       "preSeedRaised": "Levée pre-seed",
-      "preSeedRaisedCaption": "BonBon · menée par Tasco",
+      "preSeedRaisedCaption": "BonBon Mobility · menée par Tasco",
       "projectsLaunched": "Projets lancés",
       "projectsLaunchedCaption": "SDK · plateformes · apps mobiles",
       "testCasesAuthored": "Cas de test rédigés",
@@ -145,8 +147,10 @@
           "Retour chez <b>Zalo PC</b> le <b>2 mars 2026</b> comme Lead Software Engineer, avec une contribution hands-on et un leadership technique sur la messagerie cross-device et le stockage client."
         ],
         "contributions": [
-          "Livraison de la <b>sauvegarde des messages sur Zalo PC avec restauration sur mobile</b>, afin de conserver l'historique texte lors d'un changement d'appareil.",
-          "Amélioration de la <b>fiabilité et de l'observabilité du zCloud offload</b>, rendant les problèmes de stockage client plus faciles à détecter et diagnostiquer.",
+          "Livraison de la <b>sauvegarde des messages sur PC avec restauration sur mobile</b> : contrat de payload, durcissement des fichiers entre workers Web et Electron, télémétrie d'upload, exclusion mutuelle avec la sync. Lancée en juillet 2026, relayée par VnExpress.",
+          "Renforcement de <b>sync v2</b> pour les liaisons mobiles instables (retry, re-prepare groupé, comptage des échecs) ; une recherche sur le chemin critique passe de <b>1,8 s à 4 ms</b>.",
+          "Amélioration de la <b>fiabilité et de l'observabilité du zCloud offload</b>, avec une sonde quotidienne de santé des logs et un kill switch distant pour diagnostiquer depuis les données QoS.",
+          "Livraison de <b>700+ commits sur 55+ tickets en sept mois</b>, changements risqués désactivés par défaut derrière des kill switches.",
           "Pilotage de l'équipe d'ingénierie à travers les décisions techniques, les revues de code et la coordination de la livraison."
         ]
       },
@@ -187,6 +191,7 @@
   "Projects": {
     "labels": {
       "publicEvidence": "Couverture de l'investissement",
+      "website": "Site de l'entreprise",
       "readCoverage": "Lire l'article sur {publisher}"
     },
     "logiup": {
@@ -194,14 +199,17 @@
         "Direction d'une <b>équipe engineering de 4 personnes</b> en tant que <b>Tech Lead et system architect</b>, avec la responsabilité de la direction technique, des décisions d'architecture, des standards de review, de l'onboarding et de la livraison sur <b>9 dépôts indépendants</b>.",
         "Conception de LogiUP comme un <b>SaaS logistique multi-tenant</b> : un même UI codebase Next.js pour le web et Electron desktop, un control plane NestJS, un AI data plane FastAPI, PostgreSQL, Redis/BullMQ, Cloudflare R2 et des environnements GitOps staging/production isolés.",
         "Conception de l'isolation tenant de bout en bout avec sous-domaines clients, résolution d'hôte pilotée par la base, RBAC et tokens tenant-scoped, wildcard/on-demand TLS, ainsi qu'un provider OAuth 2.1/OIDC autonome utilisant RS256/JWKS et l'authentification PKCE/deep-link pour Electron.",
-        "Livraison du workflow douanier assisté par IA avec <b>6 rôles runtime à privilèges minimaux</b>, uploads private-object reprenables, suggestions IA confirmées par l'utilisateur et <b>31 endpoints API typés</b> sur 8 sections de déclaration confirmables indépendamment."
+        "Livraison du workflow douanier assisté par IA avec <b>6 rôles runtime à privilèges minimaux</b>, uploads private-object reprenables, suggestions IA confirmées par l'utilisateur et <b>31 endpoints API typés</b> sur 8 sections de déclaration confirmables indépendamment.",
+        "Extension du workflow douanier aux <b>déclarations d'export</b> (UAT, oct. 2026) avec un <b>moteur de classification de documents à base de règles</b>, et <b>737 commits sur 738</b> dans la plateforme NestJS."
       ]
     },
     "bonbon": {
       "accomplishments": [
-        "Cofondateur de BonBon : réalisation de l'intégration produit qui a accompagné BonBon du MVP au pilote terrain en <b>3 mois</b>, avec une place parmi les <b>3 finalistes</b> au Wash3000 MVP Demo Day de Tasco × GenAI Fund, et contribution à la levée d'un <b>tour pre-seed de 500 k$ mené par Tasco</b>, avec la participation de GenAI Fund.",
+        "Cofondateur de BonBon Mobility : réalisation de l'intégration produit qui a accompagné BonBon du MVP au pilote terrain en <b>3 mois</b>, avec une place parmi les <b>3 finalistes</b> au Wash3000 MVP Demo Day de Tasco × GenAI Fund, puis la victoire au programme, et contribution à la levée d'un <b>tour pre-seed de 500 k$ mené par Tasco</b>, avec la participation de GenAI Fund.",
         "Architecture et intégration d'une <b>Mini App de 12 écrans</b> dans l'écosystème applicatif VETC de <b>4,3 millions d'utilisateurs</b>, avec silent login par partner code, sessions en mémoire, deep links, polling sérialisé et analytics sur allow-list PII.",
-        "Sécurisation des releases sur l'API Go, le Backoffice, le web et le mobile grâce aux kill-switch feature flags, rollout déterministe, audit transactionnel, gates checksum/CSP, parcours Playwright et <b>800+ tests unitaires</b>."
+        "Sécurisation des releases sur l'API Go, le Backoffice, le web et le mobile grâce aux kill-switch feature flags, rollout déterministe, audit transactionnel, gates checksum/CSP, parcours Playwright et <b>800+ tests unitaires</b>.",
+        "<b>4 000+ commits</b> (environ deux tiers à 85 % de chaque dépôt) sur l'API Go et le monorepo web/Mini App, avec environ <b>90 specs</b> et <b>425 fichiers de test Go</b>.",
+        "Réservation et recherche de garages rapides et observables : tableau en <b>3 requêtes</b>, recherche indexée, résultats en cache, alerte p95."
       ]
     },
     "sat": {
@@ -275,12 +283,12 @@
   },
   "SEO": {
     "home": {
-      "title": "Nguyen Le Phong — Lead Software Engineer chez Zalo PC, cofondateur de BonBon",
-      "description": "Lead Software Engineer chez Zalo PC et cofondateur de BonBon (pre-seed de 500 000 $ menée par Tasco). 8+ ans à livrer des produits cross-platform fiables."
+      "title": "Nguyen Le Phong | Lead Software Engineer, BonBon Mobility",
+      "description": "Lead Software Engineer chez Zalo PC, cofondateur de BonBon Mobility (pre-seed de 500 000 $ menée par Tasco), Tech Lead de LogiUP. Sauvegarde PC vers mobile."
     },
     "gallery": {
-      "title": "Galerie — Les repères derrière le travail",
-      "description": "Une sélection de certifications, reconnaissances, aperçus de projets et habitudes régulières qui montre comment Nguyen Le Phong apprend, construit et travaille en équipe."
+      "title": "Galerie : certificats, prix et projets | Nguyen Le Phong",
+      "description": "Certifications, reconnaissances, aperçus de projets et habitudes régulières qui montrent comment Nguyen Le Phong apprend, construit et travaille en équipe."
     }
   },
   "Offline": {
@@ -565,9 +573,49 @@
       }
     }
   },
+  "ArticleRelated": {
+    "notesHeading": "Notes liées",
+    "notesIntro": "Quelques notes voisines pour poursuivre le même fil de réflexion."
+  },
   "ContentFallback": {
     "eyebrow": "Traduction en cours",
     "description": "La version complète n’est pas encore disponible dans cette langue. Vous pouvez poursuivre avec l’une des versions proposées ci-dessous.",
     "action": "Lire en {language}"
+  },
+  "SiteIndex": {
+    "metaTitle": "Plan du site : tous les articles et notes",
+    "metaDescription": "Liste simple de tous les articles de blog, notes, séries et pages d’archive du site, regroupés par thème pour que tout soit à un lien.",
+    "eyebrow": "Index du site",
+    "title": "Plan du site",
+    "intro": "Tous les articles et notes du site, regroupés par thème. Parcourez la liste ou allez directement à ce que vous vous souvenez avoir lu.",
+    "breadcrumbLabel": "Fil d’Ariane",
+    "sectionsHeading": "Sections principales",
+    "sections": {
+      "home": "Accueil",
+      "about": "À propos",
+      "apps": "Applications",
+      "gallery": "Galerie",
+      "blog": "Blog",
+      "notes": "Notes",
+      "studio": "Studio"
+    },
+    "blogHeading": "Articles du blog",
+    "blogCount": "{count, plural, one {# article} other {# articles}} dans {categories, plural, one {# catégorie} other {# catégories}}.",
+    "seriesHeading": "Séries",
+    "notesHeading": "Notes",
+    "notesCount": "{count, plural, one {# note} other {# notes}}, regroupées par thème.",
+    "notesOtherTopic": "Autres notes",
+    "notesUnavailable": "Les notes sont rédigées en anglais et en vietnamien. Les consulter en anglais.",
+    "archiveHeading": "Pages d’archive",
+    "pageLabel": "Page {page}",
+    "feedsHeading": "Flux",
+    "feedBlog": "Flux RSS du blog",
+    "feedNotes": "Flux RSS des notes"
+  },
+  "Feeds": {
+    "blogTitle": "Nguyen Le Phong : Blog",
+    "blogDescription": "Articles sur l’architecture logicielle, l’IA et la façon dont les équipes travaillent.",
+    "notesTitle": "Nguyen Le Phong : Notes",
+    "notesDescription": "Notes personnelles sur la vie, le travail et les questions sans réponse toute faite."
   }
 }

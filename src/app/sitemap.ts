@@ -24,6 +24,7 @@ import {
 import { collectionPagePath, paginate } from "@/lib/content/pagination";
 import { latestNonFutureDate } from "@/lib/seo/dates";
 import { preferredContentLocale } from "@/lib/seo/locale";
+import { SITE_INDEX_PATH } from "@/lib/seo/site-index";
 import { staticPageSitemapLocales } from "@/lib/seo/static-page-localization";
 
 export const dynamic = "force-static";
@@ -63,6 +64,19 @@ const PATHS: Array<{
     priority: 0.7,
     freq: "monthly",
     locales: staticPageSitemapLocales("gallery")
+  },
+  {
+    // Crawlable HTML index of every article and note, so each is one link away.
+    path: SITE_INDEX_PATH,
+    priority: 0.8,
+    freq: "weekly",
+    lastModifiedForLocale: (locale) =>
+      latestNonFutureDate([
+        ...listPosts(locale).map((post) => post.updated ?? post.date),
+        ...(NOTE_CONTENT_LOCALES as readonly string[]).includes(locale)
+          ? listNotes(locale).map((note) => note.updated ?? note.date)
+          : []
+      ])
   },
   {
     path: "/notes",

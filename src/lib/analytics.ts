@@ -34,6 +34,7 @@ export type AnalyticsEvent =
   | 'cv_experience_evidence_click'
   | 'cv_project_view'
   | 'cv_project_evidence_click'
+  | 'cv_project_website_click'
   | 'cv_announcement_click'
   // Page lifecycle
   | 'page_view'
@@ -67,6 +68,8 @@ export type AnalyticsEvent =
   // About
   | 'about_view'
   | 'about_section_view'
+  // Site index
+  | 'sitemap_view'
   // Thoughts
   | 'thoughts_view_toggle'
   | 'thoughts_share'
@@ -106,6 +109,7 @@ export type AnalyticsEvent =
   | 'notes_share'
   | 'notes_reaction'
   | 'notes_nav_jump'
+  | 'notes_related_click'
   | 'content_fallback_language_click'
   // Reader controls
   | 'reader_tool_scroll'
