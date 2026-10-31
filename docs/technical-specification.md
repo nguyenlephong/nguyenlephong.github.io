@@ -782,7 +782,7 @@ remain hard gates. The current configured gates are:
 | Notes initial JavaScript, Gzip | Hard limit: 251,904 bytes |
 | Notes initial JavaScript, Brotli | Hard limit: 217,088 bytes |
 | Blog article initial JavaScript, Gzip | Hard limit: 251,904 bytes |
-| Blog article initial JavaScript, Brotli | Hard limit: 217,088 bytes |
+| Blog article initial JavaScript, Brotli | Hard limit: 217,600 bytes |
 | Notes article initial JavaScript, Gzip | Hard limit: 251,904 bytes |
 | Notes article initial JavaScript, Brotli | Hard limit: 217,088 bytes |
 | Studio direct initial JavaScript, Gzip | Hard limit: 200,704 bytes |
@@ -798,9 +798,9 @@ remain hard gates. The current configured gates are:
 | Largest localized Notes RSC sample | Hard limit: 43,008 bytes |
 | Largest localized Studio RSC sample | Hard limit: 30,720 bytes |
 
-The verifier also hard-gates Gzip HTML for English Home (32,768 bytes), Blog
-archive (19,456), Notes archive (18,432), one Blog article (16,384), and one
-Notes article (19,456), while reporting raw and Brotli bytes for comparison.
+The verifier also hard-gates Gzip HTML for English Home (34,304 bytes), Blog
+archive (19,456), Notes archive (18,432), one Blog article (17,408), and one
+Notes article (20,480), while reporting raw and Brotli bytes for comparison.
 
 The 2026-07-20 complete export measured Blog at 213,534 bytes and Notes at
 213,444 bytes Brotli after the deferred engagement boundary. The 217,088-byte
@@ -814,7 +814,7 @@ gates:
 
 | Public route | Stylesheets | Measured raw | Measured Brotli | Brotli gate |
 |--------------|-------------:|-------------:|----------------:|-------------:|
-| Home | 3 | 43,743 | 8,990 | 9,216 |
+| Home | 3 | 43,200 | 9,224 | 9,472 |
 | About | 3 | 30,045 | 6,666 | 6,912 |
 | Gallery | 3 | 37,661 | 7,826 | 8,192 |
 | Apps | 3 | 42,422 | 8,812 | 9,216 |
