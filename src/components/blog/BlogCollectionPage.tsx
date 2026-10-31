@@ -12,6 +12,7 @@ import {
 } from '@/lib/blog/data'
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
+import { buildSectionBreadcrumb } from '@/lib/seo/section-breadcrumb'
 import { collectionPagePath, paginate } from '@/lib/content/pagination'
 import { toBlogSearchItem } from '@/lib/content/search-index'
 import {
@@ -59,8 +60,8 @@ export async function blogCollectionMetadata(
   })
   const title =
     page === 1
-      ? `${t('title')} — ${t('eyebrow')}`
-      : `${t('title')} — ${pageLabel}`
+      ? `${t('title')}: ${t('eyebrow')}`
+      : `${t('title')}: ${pageLabel}`
   const description =
     page === 1
       ? t('intro')
@@ -186,6 +187,16 @@ export default async function BlogCollectionPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(blogLd) }}
       />
+      {page === 1 ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(
+              buildSectionBreadcrumb({ locale, name: t('title'), url: canonical }),
+            ),
+          }}
+        />
+      ) : null}
       <header className="blog-home__head">
         <p className="blog-home__eyebrow">{t('eyebrow')}</p>
         <h1 className="blog-home__title">{t('title')}</h1>

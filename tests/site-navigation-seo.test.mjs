@@ -199,3 +199,16 @@ test("no section is accidentally noindexed; only non-authored locale copies are"
     assert.doesNotMatch(read(file), /noindex|index: false/, file);
   }
 });
+
+test("blog and notes index pages emit a breadcrumb and use the colon title pattern", () => {
+  for (const file of [
+    "src/components/blog/BlogCollectionPage.tsx",
+    "src/components/notes/NotesCollectionPage.tsx"
+  ]) {
+    const source = read(file);
+    assert.match(source, /buildSectionBreadcrumb\(/, file);
+    assert.match(source, /page === 1 \? \(/, file);
+    assert.match(source, /`\$\{t\('title'\)\}: \$\{t\('eyebrow'\)\}`/, file);
+    assert.doesNotMatch(source, /`\$\{t\('title'\)\} — \$\{t\('eyebrow'\)\}`\n\s+: /, file);
+  }
+});

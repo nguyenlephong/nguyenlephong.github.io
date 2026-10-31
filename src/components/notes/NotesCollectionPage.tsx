@@ -6,6 +6,7 @@ import { SITE, SITE_URL } from '@/app/seo.config'
 import { routing, type Locale } from '@/i18n/routing'
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
+import { buildSectionBreadcrumb } from '@/lib/seo/section-breadcrumb'
 import { collectionPagePath, paginate } from '@/lib/content/pagination'
 import { toNoteSearchItem } from '@/lib/content/search-index'
 import {
@@ -73,8 +74,8 @@ export async function notesCollectionMetadata(
   })
   const title =
     page === 1
-      ? `${t('title')} — ${t('eyebrow')}`
-      : `${t('title')} — ${pageLabel}`
+      ? `${t('title')}: ${t('eyebrow')}`
+      : `${t('title')}: ${pageLabel}`
   const description =
     page === 1
       ? t('intro')
@@ -203,6 +204,20 @@ export default async function NotesCollectionPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionLd) }}
       />
+      {page === 1 ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(
+              buildSectionBreadcrumb({
+                locale: archiveLocale,
+                name: t('title'),
+                url: canonical,
+              }),
+            ),
+          }}
+        />
+      ) : null}
       <header className="notes-archive__title-page">
         <p className="notes-archive__eyebrow">{t('eyebrow')}</p>
         <h1 className="notes-archive__title">{t('title')}</h1>
