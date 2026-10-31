@@ -6,7 +6,7 @@ import { SITE, SITE_URL } from '@/app/seo.config'
 import { routing, type Locale } from '@/i18n/routing'
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
-import { buildSectionBreadcrumb } from '@/lib/seo/section-breadcrumb'
+import SectionBreadcrumbJsonLd from '@/components/seo/SectionBreadcrumbJsonLd'
 import { collectionPagePath, paginate } from '@/lib/content/pagination'
 import { toNoteSearchItem } from '@/lib/content/search-index'
 import {
@@ -205,17 +205,10 @@ export default async function NotesCollectionPage({
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionLd) }}
       />
       {page === 1 ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd(
-              buildSectionBreadcrumb({
-                locale: archiveLocale,
-                name: t('title'),
-                url: canonical,
-              }),
-            ),
-          }}
+        <SectionBreadcrumbJsonLd
+          locale={archiveLocale}
+          name={t('title')}
+          url={canonical}
         />
       ) : null}
       <header className="notes-archive__title-page">

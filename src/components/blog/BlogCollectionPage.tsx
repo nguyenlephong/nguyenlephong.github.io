@@ -12,7 +12,7 @@ import {
 } from '@/lib/blog/data'
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
-import { buildSectionBreadcrumb } from '@/lib/seo/section-breadcrumb'
+import SectionBreadcrumbJsonLd from '@/components/seo/SectionBreadcrumbJsonLd'
 import { collectionPagePath, paginate } from '@/lib/content/pagination'
 import { toBlogSearchItem } from '@/lib/content/search-index'
 import {
@@ -188,14 +188,7 @@ export default async function BlogCollectionPage({
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(blogLd) }}
       />
       {page === 1 ? (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd(
-              buildSectionBreadcrumb({ locale, name: t('title'), url: canonical }),
-            ),
-          }}
-        />
+        <SectionBreadcrumbJsonLd locale={locale} name={t('title')} url={canonical} />
       ) : null}
       <header className="blog-home__head">
         <p className="blog-home__eyebrow">{t('eyebrow')}</p>

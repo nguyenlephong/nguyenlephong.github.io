@@ -206,7 +206,7 @@ test("blog and notes index pages emit a breadcrumb and use the colon title patte
     "src/components/notes/NotesCollectionPage.tsx"
   ]) {
     const source = read(file);
-    assert.match(source, /buildSectionBreadcrumb\(/, file);
+    assert.match(source, /<SectionBreadcrumbJsonLd/, file);
     assert.match(source, /page === 1 \? \(/, file);
     assert.match(source, /`\$\{t\('title'\)\}: \$\{t\('eyebrow'\)\}`/, file);
     assert.doesNotMatch(source, /`\$\{t\('title'\)\} — \$\{t\('eyebrow'\)\}`\n\s+: /, file);
