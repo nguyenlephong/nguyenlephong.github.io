@@ -14,8 +14,10 @@ export const experience = [
             "Returned to <b>Zalo PC</b> as a Lead Software Engineer, combining hands-on delivery with technical leadership across cross-device messaging and client storage."
           ],
           key_contribution: [
-            "Delivered <b>message backup on Zalo PC with restore on mobile</b>, helping users retain text conversation history across device changes.",
-            "Improved <b>zCloud offload reliability and observability</b>, making client-storage issues easier to detect and diagnose.",
+            "Delivered <b>PC message backup with restore on mobile</b> (payload contract, worker file hardening, upload telemetry, sync mutual exclusion), launched July 2026 and covered by VnExpress.",
+            "Hardened <b>sync v2</b> for unreliable mobile links with retry, grouped re-prepare, and failure accounting; one hot-path lookup fell from <b>1.8 s to 4 ms</b>.",
+            "Improved <b>zCloud offload reliability and observability</b> and added a daily log-health probe with a remote kill switch.",
+            "Shipped <b>700+ commits across 55+ tickets in seven months</b>, with risky changes defaulted off behind kill switches.",
             "Lead the engineering team through technical decisions, code reviews, and delivery coordination."
           ],
           key_techs: ["React", "Node.js", "Electron", "TypeScript", "Kotlin"],

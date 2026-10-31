@@ -29,6 +29,11 @@ export type ProjectType = {
     publisher: string
     publishedAt: string
   }
+  brand?: {
+    href: string
+    label: string
+    logo: string
+  }
 }
 
 export type AchievementType = {

@@ -72,8 +72,8 @@ const roles = experience.flatMap((company) =>
 )
 
 const selectedProjectIndexes = new Map([
-  ['LogiUP - Multi-tenant Logistics SaaS', [0, 1, 2, 3]],
-  ['BonBon - VETC Mini App & Automotive Platform', [0, 1, 2]],
+  ['LogiUP - Multi-tenant Logistics SaaS', [0, 1, 2, 3, 4]],
+  ['BonBon Mobility - VETC Mini App & Automotive Platform', [0, 1, 2, 3]],
 ])
 
 const selectedProjects = projects

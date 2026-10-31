@@ -80,7 +80,18 @@ export default function Hero() {
               {t('role')} <span>@</span> <strong>Zalo PC</strong>
             </li>
             <li>
-              {t('cofounder')} <span>@</span> <strong>BonBon</strong>
+              {t('cofounder')} <span>@</span>{' '}
+              <a
+                className="hero-role-link"
+                href="https://bonbon.com.vn/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() =>
+                  track('cv_external_link', { target: 'bonbon_website', surface: 'hero' }, { beacon: true })
+                }
+              >
+                <strong>BonBon Mobility</strong>
+              </a>
             </li>
           </ul>
           <p className="hero-role-sub">{t('roleSub')}</p>

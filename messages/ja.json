@@ -6,6 +6,7 @@
     "projects": "プロジェクト",
     "contact": "連絡先",
     "gallery": "ギャラリー",
+    "apps": "アプリ",
     "resume": "履歴書",
     "font": {
       "label": "本文フォント",
@@ -28,15 +29,16 @@
   "Footer": {
     "tag": "Lead Software Engineer · Zalo PC",
     "copy": "© {year} Nguyen Le Phong.",
-    "language": "言語"
+    "language": "言語",
+    "sitemap": "サイトマップ"
   },
   "Hero": {
-    "news": "BonBon が Tasco リードで 50 万ドルのプレシード資金を調達",
+    "news": "BonBon Mobility が Tasco リードで 50 万ドルのプレシード資金を調達",
     "newsCta": "記事を読む",
     "role": "Lead Software Engineer",
     "cofounder": "共同創業者",
     "roleSub": "80M+ MAU 規模でプロダクトを届け、創業者としてゼロから築く。",
-    "bio": "Zalo PC ではデバイス間データ領域をリードし、直近では PC のメッセージバックアップとモバイル復元を提供しました。カーケア O2O プラットフォーム BonBon では共同創業者として、MVP から 3 か月で実地パイロットに到達したプロダクト連携を構築しました。",
+    "bio": "Zalo PC ではデバイス間データ領域をリードし、直近では PC のメッセージバックアップとモバイル復元を提供しました。カーケア O2O プラットフォーム BonBon Mobility では共同創業者として、MVP から 3 か月で実地パイロットに到達したプロダクト連携を構築しました。",
     "location": "ベトナム・ホーチミン市",
     "downloadResume": "履歴書ダウンロード",
     "getInTouch": "お問い合わせ",
@@ -50,7 +52,7 @@
       "engineersLed": "リードした最大チーム",
       "engineersLedCaption": "開発 · QC · デリバリー",
       "preSeedRaised": "プレシード調達額",
-      "preSeedRaisedCaption": "BonBon · Tasco がリード",
+      "preSeedRaisedCaption": "BonBon Mobility · Tasco がリード",
       "projectsLaunched": "ローンチ済みプロジェクト",
       "projectsLaunchedCaption": "SDK · プラットフォーム · モバイル",
       "testCasesAuthored": "作成したテストケース",
@@ -145,8 +147,10 @@
           "<b>2026 年 3 月 2 日</b>に <b>Zalo PC</b> へ Lead Software Engineer として復帰し、クロスデバイスメッセージングとクライアントストレージ領域でハンズオン開発と技術リードを担当。"
         ],
         "contributions": [
-          "<b>Zalo PC のメッセージバックアップとモバイル復元</b>を提供し、機種変更時にもテキスト会話履歴を保持できるようにした。",
-          "<b>zCloud offload の信頼性と可観測性</b>を改善し、クライアントストレージの問題を検知・診断しやすくした。",
+          "<b>Zalo PC のメッセージバックアップとモバイル復元</b>を実装（payload contract、Web と Electron worker 間のファイル hardening、アップロード telemetry、sync との排他制御）。2026年7月に公開され VnExpress で紹介。",
+          "不安定なモバイル回線向けに <b>sync v2</b> を強化（retry、grouped re-prepare、失敗集計）。hot path の lookup を <b>1.8 秒から 4 ms</b> に短縮。",
+          "<b>zCloud offload の信頼性と可観測性</b>を改善し、リモート kill switch 付きの log-health probe を毎日実行して QoS データから診断できるようにした。",
+          "7 か月で <b>55 以上のチケット、700 以上の commit</b> を提供。リスクの高い変更は kill switch の背後で既定オフ。",
           "技術方針、コードレビュー、デリバリー調整を通じてエンジニアリングチームをリード。"
         ]
       },
@@ -187,6 +191,7 @@
   "Projects": {
     "labels": {
       "publicEvidence": "資金調達関連報道",
+      "website": "公式サイト",
       "readCoverage": "{publisher} の記事を読む"
     },
     "logiup": {
@@ -194,14 +199,17 @@
         "<b>Tech Lead兼system architect</b>として<b>4名のengineering team</b>を率い、技術方針、architecture decision、review standard、onboarding、および<b>9つのsplit repository</b>を横断するdeliveryを担当。",
         "LogiUPを<b>multi-tenant logistics SaaS</b>として設計。WebとElectron desktopで1つのNext.js UI codebaseを共有し、NestJS control plane、FastAPI AI data plane、PostgreSQL、Redis/BullMQ、Cloudflare R2、分離されたstaging/production GitOps環境を構築。",
         "顧客subdomain、database-backed host resolution、tenant-scoped RBAC/token、wildcard/on-demand TLSによりtenant isolationをend-to-endで設計し、RS256/JWKSとElectron向けPKCE/deep-link認証を備えた自主管理のOAuth 2.1/OIDC providerを構築。",
-        "<b>6つのleast-privilege runtime role</b>、再開可能なprivate-object upload、人が確認するAI提案、独立確認できる8つの申告sectionを横断する<b>31個のtyped API endpoint</b>を備えたAI支援税関workflowを提供。"
+        "<b>6つのleast-privilege runtime role</b>、再開可能なprivate-object upload、人が確認するAI提案、独立確認できる8つの申告sectionを横断する<b>31個のtyped API endpoint</b>を備えたAI支援税関workflowを提供。",
+        "税関 workflow を<b>輸出申告</b>へ拡張（2026年10月 UAT）し、<b>ルールベースの文書分類エンジン</b>を構築。NestJS platform の <b>738 commit 中 737 commit</b>を執筆。"
       ]
     },
     "bonbon": {
       "accomplishments": [
-        "BonBon の共同創業者として、BonBon を MVP から実地 pilot へ進める product integration を構築し、<b>3 か月</b>で Tasco × GenAI Fund の Wash3000 MVP Demo Day <b>Top 3 finalist</b> に選出。Tasco が主導し GenAI Fund も参加した<b>50 万米ドルの pre-seed ラウンド</b>の成立に貢献。",
+        "BonBon Mobility の共同創業者として、BonBon を MVP から実地 pilot へ進める product integration を構築し、<b>3 か月</b>で Tasco × GenAI Fund の Wash3000 MVP Demo Day <b>Top 3 finalist</b> に選出、その後プログラムで優勝。Tasco が主導し GenAI Fund も参加した<b>50 万米ドルの pre-seed ラウンド</b>の成立に貢献。",
         "<b>12 画面の Mini App</b>を設計し、<b>430 万ユーザー</b>を持つ VETC app ecosystem に統合。partner code silent login、memory-only session、deep link、foreground serialized polling、PII allow-list analytics を実装。",
-        "kill-switch feature flag、deterministic rollout、transactional audit、checksum/CSP gate、Playwright flow、<b>800+ unit test</b>により、Go API、Backoffice、web、mobile 全体の release safety を確保。"
+        "kill-switch feature flag、deterministic rollout、transactional audit、checksum/CSP gate、Playwright flow、<b>800+ unit test</b>により、Go API、Backoffice、web、mobile 全体の release safety を確保。",
+        "Go API と web/Mini App monorepo で <b>4,000 以上の commit</b>（各リポジトリの約 3 分の 2 から 85%）、約 <b>90 本の spec</b>、<b>425 の Go テストファイル</b>。",
+        "予約とガレージ検索を高速かつ観測可能に維持：ガレージボードは <b>3 クエリ</b>、インデックス検索、結果キャッシュ、p95 アラート。"
       ]
     },
     "sat": {
@@ -275,11 +283,11 @@
   },
   "SEO": {
     "home": {
-      "title": "Nguyen Le Phong — Zalo PC Lead Software Engineer・BonBon 共同創業者",
-      "description": "Zalo PC の Lead Software Engineer、BonBon 共同創業者（Tasco リードの 50 万ドル プレシード）。8+ 年のクロスプラットフォーム製品と信頼できるリリース。"
+      "title": "Nguyen Le Phong | Lead Software Engineer・BonBon Mobility 共同創業者",
+      "description": "Zalo PC の Lead Software Engineer、BonBon Mobility 共同創業者（Tasco リードの 50 万ドル プレシード）、LogiUP の Tech Lead。PC からモバイルへのバックアップ、マルチテナント SaaS。"
     },
     "gallery": {
-      "title": "ギャラリー — 仕事の歩みを伝える記録",
+      "title": "ギャラリー：認定証・表彰・プロジェクト | Nguyen Le Phong",
       "description": "Nguyen Le Phong の学び方、ものづくり、チームでの働き方を伝える、認定証、表彰、プロジェクトの記録、継続している習慣をまとめています。"
     }
   },
@@ -565,9 +573,49 @@
       }
     }
   },
+  "ArticleRelated": {
+    "notesHeading": "関連するノート",
+    "notesIntro": "同じテーマに近いノートです。続けて読みたいときにどうぞ。"
+  },
   "ContentFallback": {
     "eyebrow": "翻訳を準備しています",
     "description": "この言語の完全版はまだありません。以下の利用可能な言語版をお読みいただけます。",
     "action": "{language}で読む"
+  },
+  "SiteIndex": {
+    "metaTitle": "サイトマップ: すべての記事とノート",
+    "metaDescription": "ブログ記事、ノート、シリーズ、アーカイブページをテーマ別にまとめた一覧です。どのページも1回のリンクで辿れます。",
+    "eyebrow": "サイトインデックス",
+    "title": "サイトマップ",
+    "intro": "サイト内のすべての記事とノートをテーマ別に並べています。一覧から探すか、読んだ記憶のある記事へ直接移動できます。",
+    "breadcrumbLabel": "パンくずリスト",
+    "sectionsHeading": "主なセクション",
+    "sections": {
+      "home": "ホーム",
+      "about": "概要",
+      "apps": "アプリ",
+      "gallery": "ギャラリー",
+      "blog": "ブログ",
+      "notes": "ノート",
+      "studio": "Studio"
+    },
+    "blogHeading": "ブログ記事",
+    "blogCount": "{categories}カテゴリ、{count}件の記事。",
+    "seriesHeading": "シリーズ",
+    "notesHeading": "ノート",
+    "notesCount": "{count}件のノートをテーマ別に掲載。",
+    "notesOtherTopic": "その他のノート",
+    "notesUnavailable": "ノートは英語とベトナム語で書かれています。英語版を見る。",
+    "archiveHeading": "アーカイブページ",
+    "pageLabel": "{page}ページ目",
+    "feedsHeading": "フィード",
+    "feedBlog": "ブログのRSSフィード",
+    "feedNotes": "ノートのRSSフィード"
+  },
+  "Feeds": {
+    "blogTitle": "Nguyen Le Phong: ブログ",
+    "blogDescription": "ソフトウェアアーキテクチャ、AI、チームの働き方についての記事。",
+    "notesTitle": "Nguyen Le Phong: ノート",
+    "notesDescription": "人生や仕事、すっきりした答えのない問いについての個人的なノート。"
   }
 }
