@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SITE } from '@/app/seo.config'
 import { routing, type Locale } from '@/i18n/routing'
 import { canonicalFor, localeAlternates, ogLocaleFor } from '@/lib/seo/locale'
 
@@ -116,6 +117,7 @@ export function buildStaticPageMetadata({
       title,
       description,
       url: localization.canonical,
+      siteName: SITE.name,
       type: openGraphType,
       locale: localization.ogLocale,
       ...alternateLocale,

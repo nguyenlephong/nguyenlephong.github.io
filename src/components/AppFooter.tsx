@@ -8,6 +8,7 @@ import { SiLeetcode } from 'react-icons/si'
 import { APP_ROUTE, profileInfo } from '@/app/app.const'
 import IntentPrefetchLink from '@/components/navigation/IntentPrefetchLink'
 import { track } from '@/lib/analytics'
+import { SITE_INDEX_PATH } from '@/lib/seo/site-index'
 
 const year = new Date().getFullYear()
 
@@ -105,6 +106,14 @@ export default function AppFooter() {
 
         <p className="footer-copy">
           {t('copy', { year })}
+          <Link
+            href={SITE_INDEX_PATH}
+            prefetch={false}
+            className="footer-sitemap"
+            onClick={() => track('cv_nav_click', { target: 'sitemap_footer' })}
+          >
+            {t('sitemap')}
+          </Link>
           {process.env['NEXT_PUBLIC_APP_VERSION'] && (
             <span className="footer-version">
               v{process.env['NEXT_PUBLIC_APP_VERSION']}

@@ -236,8 +236,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
 
   assert.match(page, /generateStaticParams/);
   assert.match(page, /generateMetadata/);
-  assert.match(page, /Studio — Engineering Notes, Checklists, and System Flows/);
-  assert.match(page, /Studio — Ghi chú kỹ thuật, Checklists và System Flows/);
+  assert.match(page, /Studio: Engineering Notes & System Flows/);
+  assert.match(page, /Studio: Ghi chú kỹ thuật và System Flows/);
   assert.match(page, /PageTracker page="studio" eventName="studio_view"/);
   assert.match(page, /"@type":\s*"CollectionPage"/);
   assert.match(page, /hasPart:/);

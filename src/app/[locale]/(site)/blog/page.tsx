@@ -3,6 +3,7 @@ import { routing } from '@/i18n/routing'
 import BlogCollectionPage, {
   blogCollectionMetadata,
 } from '@/components/blog/BlogCollectionPage'
+import { feedAlternateTypes } from '@/lib/seo/content-feeds'
 import './blog.css'
 
 type Props = { params: Promise<{ locale: string }> }
@@ -14,7 +15,14 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  return blogCollectionMetadata(locale, 1)
+  const metadata = await blogCollectionMetadata(locale, 1)
+  return {
+    ...metadata,
+    alternates: {
+      ...metadata.alternates,
+      types: await feedAlternateTypes('blog', locale),
+    },
+  }
 }
 
 export default async function BlogIndexPage({ params }: Props) {

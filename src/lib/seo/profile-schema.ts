@@ -2,6 +2,9 @@ import type { Person, WithContext } from 'schema-dts'
 import { profileInfo } from '@/app/app.const'
 import { SITE_URL } from '@/app/seo.config'
 import type { Locale } from '@/i18n/routing'
+import { SITE_SECTIONS, sectionUrl } from '@/lib/seo/site-sections'
+
+const DEFAULT_LOCALE = 'en'
 
 const PROFILE_AVATAR = `${SITE_URL}/icon.png`
 
@@ -10,6 +13,7 @@ const BONBON_ORGANIZATION = {
   name: 'BonBon Mobility',
   alternateName: 'BonBon',
   url: 'https://bonbon.com.vn',
+  logo: `${SITE_URL}/brand/bonbon-mark.png`,
 } as const
 
 // Press coverage naming or picturing Nguyen Le Phong as a BonBon co-founder (Sep 2026 pre-seed round).
@@ -80,7 +84,7 @@ export function buildPersonSchema(description: string): WithContext<Person> {
     '@type': 'Person',
     '@id': `${SITE_URL}/#person`,
     name: 'Nguyen Le Phong',
-    alternateName: ['Nguyễn Lê Phong', 'Phong Nguyen'],
+    alternateName: ['Nguyễn Lê Phong', 'Phong Nguyen', 'nguyenlephong'],
     url: SITE_URL,
     image: PROFILE_AVATAR,
     jobTitle: 'Lead Software Engineer · Co-founder of BonBon · Technical Lead',
@@ -94,6 +98,8 @@ export function buildPersonSchema(description: string): WithContext<Person> {
     },
     knowsAbout: [
       'Cross-device Message Backup and Restore',
+      'Sync Reliability and Client Observability',
+      'Document Classification Engines',
       'React',
       'Next.js',
       'TypeScript',
@@ -179,19 +185,59 @@ export function buildProfilePageSchema(
     name: title,
     description,
     inLanguage: locale,
+    isPartOf: { '@id': `${SITE_URL}/#website` },
     mainEntity: { '@id': `${SITE_URL}/#person` },
   }
 }
 
+const WEBSITE_ID = `${SITE_URL}/#website`
+
+/** Sections that are real HTML pages, in the order they appear in navigation. */
+const WEBSITE_PART_IDS = ['about', 'blog', 'notes', 'gallery', 'apps', 'studio'] as const
+
+/**
+ * Site-level entity for the domain root. Owned by the root stub (`/`), where
+ * Google reads the site name; `alternateName` carries the brand spellings people
+ * actually search for, and `hasPart` names every top-level section with its URL.
+ */
 export function buildWebsiteSchema(description: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': `${SITE_URL}/#website`,
+    '@id': WEBSITE_ID,
     url: SITE_URL,
     name: 'Nguyen Le Phong',
+    alternateName: ['Nguyễn Lê Phong', 'nguyenlephong', 'Phong Nguyen'],
     description,
     inLanguage: 'en',
     author: { '@id': `${SITE_URL}/#person` },
+    publisher: { '@id': `${SITE_URL}/#person` },
+    hasPart: SITE_SECTIONS.filter((section) =>
+      (WEBSITE_PART_IDS as readonly string[]).includes(section.id),
+    ).map((section) => ({
+      '@type': 'WebPage',
+      name: section.name,
+      description: section.description,
+      url: sectionUrl(section, DEFAULT_LOCALE),
+    })),
+  }
+}
+
+/**
+ * Main-menu description as SiteNavigationElement nodes (name + URL). Google does
+ * not require this markup for sitelinks, but it states the same section list as
+ * the visible navigation in machine-readable form.
+ */
+export function buildSiteNavigationSchema(locale: string = DEFAULT_LOCALE) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': SITE_SECTIONS.map((section) => ({
+      '@type': 'SiteNavigationElement',
+      '@id': `${SITE_URL}/#nav-${section.id}`,
+      name: section.name,
+      description: section.description,
+      url: sectionUrl(section, locale),
+      isPartOf: { '@id': WEBSITE_ID },
+    })),
   }
 }

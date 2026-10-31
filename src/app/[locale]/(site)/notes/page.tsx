@@ -3,6 +3,7 @@ import { routing } from '@/i18n/routing'
 import NotesCollectionPage, {
   notesCollectionMetadata,
 } from '@/components/notes/NotesCollectionPage'
+import { feedAlternateTypes } from '@/lib/seo/content-feeds'
 import './notes.css'
 import '../blog/blog.css'
 
@@ -15,7 +16,14 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  return notesCollectionMetadata(locale, 1)
+  const metadata = await notesCollectionMetadata(locale, 1)
+  return {
+    ...metadata,
+    alternates: {
+      ...metadata.alternates,
+      types: await feedAlternateTypes('notes', locale),
+    },
+  }
 }
 
 export default async function NotesPage({ params }: Props) {

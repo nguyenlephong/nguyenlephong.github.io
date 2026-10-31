@@ -8,6 +8,7 @@ import AppsConsole from '@/components/apps/AppsConsole'
 import PageTracker from '@/components/analytics/PageTracker'
 import AppsLinkTracker from '@/components/analytics/AppsLinkTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
+import { buildSectionBreadcrumb } from '@/lib/seo/section-breadcrumb'
 import {
   buildStaticPageMetadata,
   resolveStaticPageLocalization,
@@ -48,6 +49,15 @@ export default async function AppsPage({ params }: Props) {
   })
   const title = seo('title')
   const description = seo('description')
+  const navT = await getTranslations({
+    locale: localization.contentLocale,
+    namespace: 'Nav',
+  })
+  const breadcrumbLd = buildSectionBreadcrumb({
+    locale: localization.contentLocale,
+    name: navT('apps'),
+    url: localization.canonical,
+  })
   const appsItemListLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -78,6 +88,10 @@ export default async function AppsPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(appsItemListLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
       />
       <PageTracker page="apps" eventName="apps_view" section="showroom" />
       <AppsLinkTracker />

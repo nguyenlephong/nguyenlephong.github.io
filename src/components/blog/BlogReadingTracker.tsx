@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { useRelatedLinkClickTracking } from '@/components/analytics/useRelatedLinkClickTracking'
 import { registerPageContext, track } from '@/lib/analytics'
 
 interface BlogReadingTrackerProps {
@@ -36,6 +37,12 @@ export default function BlogReadingTracker({
   const reportedBucketsRef = useRef<Set<number>>(new Set())
   const completedRef = useRef<boolean>(false)
   const finalSentRef = useRef<boolean>(false)
+
+  useRelatedLinkClickTracking(
+    surface ?? (category === 'notes' ? 'notes' : 'blog'),
+    category,
+    slug,
+  )
 
   useEffect(() => {
     const contentSurface = surface ?? (category === 'notes' ? 'notes' : 'blog')

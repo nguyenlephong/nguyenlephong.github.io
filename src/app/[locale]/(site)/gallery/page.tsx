@@ -7,6 +7,7 @@ import { profileInfo } from '@/app/app.const'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import PageTracker from '@/components/analytics/PageTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
+import { buildSectionBreadcrumb } from '@/lib/seo/section-breadcrumb'
 import {
   buildStaticPageMetadata,
   resolveStaticPageLocalization,
@@ -46,6 +47,15 @@ export default async function GalleryPage({ params }: Props) {
   const title = seo('title')
   const description = seo('description')
   const t = await getTranslations({ locale, namespace: 'Pages.gallery' })
+  const navT = await getTranslations({
+    locale: localization.contentLocale,
+    namespace: 'Nav',
+  })
+  const breadcrumbLd = buildSectionBreadcrumb({
+    locale: localization.contentLocale,
+    name: navT('gallery'),
+    url: localization.canonical,
+  })
   const categories = [
     { id: 'certificates', label: t('categories.certificates'), items: profileInfo.gallery.certificates },
     { id: 'awards', label: t('categories.awards'), items: profileInfo.gallery.awards },
@@ -77,6 +87,10 @@ export default async function GalleryPage({ params }: Props) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(galleryLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
         />
         <PageTracker page="gallery" eventName="gallery_view" />
         <div className="container">
