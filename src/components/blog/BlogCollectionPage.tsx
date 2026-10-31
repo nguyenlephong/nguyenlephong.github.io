@@ -13,6 +13,7 @@ import {
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import SectionBreadcrumbJsonLd from '@/components/seo/SectionBreadcrumbJsonLd'
+import { collectionPageTitle } from '@/lib/seo/collection-title'
 import { collectionPagePath, paginate } from '@/lib/content/pagination'
 import { toBlogSearchItem } from '@/lib/content/search-index'
 import {
@@ -58,10 +59,7 @@ export async function blogCollectionMetadata(
     page,
     total: pageData.totalPages,
   })
-  const title =
-    page === 1
-      ? `${t('title')}: ${t('eyebrow')}`
-      : `${t('title')}: ${pageLabel}`
+  const title = collectionPageTitle(page, t('title'), t('eyebrow'), pageLabel)
   const description =
     page === 1
       ? t('intro')

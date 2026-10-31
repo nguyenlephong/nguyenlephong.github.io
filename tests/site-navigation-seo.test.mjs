@@ -208,7 +208,10 @@ test("blog and notes index pages emit a breadcrumb and use the colon title patte
     const source = read(file);
     assert.match(source, /<SectionBreadcrumbJsonLd/, file);
     assert.match(source, /page === 1 \? \(/, file);
-    assert.match(source, /`\$\{t\('title'\)\}: \$\{t\('eyebrow'\)\}`/, file);
-    assert.doesNotMatch(source, /`\$\{t\('title'\)\} — \$\{t\('eyebrow'\)\}`\n\s+: /, file);
+    assert.match(source, /collectionPageTitle\(page, t\('title'\), t\('eyebrow'\), pageLabel\)/, file);
   }
+  assert.match(
+    read("src/lib/seo/collection-title.ts"),
+    /\$\{title\}: \$\{page === 1 \? eyebrow : pageLabel\}/
+  );
 });
