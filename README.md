@@ -52,7 +52,8 @@ This repository powers [nguyenlephong.github.io](https://nguyenlephong.github.io
 Core routes:
 
 - Main CV: [nguyenlephong.github.io/en](https://nguyenlephong.github.io/en)
-- PDF CV: [nguyenlephong.github.io/en/cv](https://nguyenlephong.github.io/en/cv)
+- PDF CV: [NguyenLePhong_Lead_Software_Engineer.pdf](https://nguyenlephong.github.io/NguyenLePhong_Lead_Software_Engineer.pdf)
+- Sitemap: [nguyenlephong.github.io/en/sitemap](https://nguyenlephong.github.io/en/sitemap) · RSS: [blog](https://nguyenlephong.github.io/en/blog/feed.xml), [notes](https://nguyenlephong.github.io/en/notes/feed.xml)
 - Gallery: [nguyenlephong.github.io/en/gallery](https://nguyenlephong.github.io/en/gallery)
 - Blog: [nguyenlephong.github.io/en/blog](https://nguyenlephong.github.io/en/blog)
 
