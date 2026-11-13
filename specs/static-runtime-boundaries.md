@@ -28,8 +28,8 @@ route group to give public pages and Studio different runtime boundaries.
   reading-background prepaint scripts, theme synchronization, route progress,
   offline navigation and status, header, footer, and the scoped site
   client-message provider. Those prepaint scripts remain site-wide for every
-  public route. `MotionProvider` is not site-wide; only the Home and Gallery
-  page entries mount it. Reader tools are not site-wide either;
+  public route. No route mounts a motion provider; Gallery dropped
+  `framer-motion` entirely. Reader tools are not site-wide;
   `ArticleReaderTools` is mounted only by the nested Blog and Notes article
   layouts.
 - Source inventory permits scoped providers only at the public-site, home,
@@ -126,10 +126,9 @@ existing IDs must not be renamed or renumbered.
   resources or serializing a client message catalog.
 - **AC-SRB-004:** The public-site layout owns header, footer, route progress,
   offline runtime, theme synchronization, and site-wide theme, font, and
-  reading-background prepaint scripts. `MotionProvider` is mounted only by Home
-  and Gallery, while `ArticleReaderTools` is mounted only by nested Blog and
-  Notes article layouts; neither runtime is mounted by the public-site layout or
-  Studio.
+  reading-background prepaint scripts. No route mounts a motion provider, and
+  `ArticleReaderTools` is mounted only by nested Blog and Notes article layouts,
+  never by the public-site layout or Studio.
 - **AC-SRB-005:** Studio is outside `(site)` and neither renders nor hides
   public-site chrome through CSS selectors.
 - **AC-SRB-006:** Public pages preserve the canonical paths, metadata, static

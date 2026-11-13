@@ -78,7 +78,7 @@ function collectStringLeaves(value, prefix = "", leaves = new Map()) {
 }
 
 test("static-page policy distinguishes authored localization from route fallback", () => {
-  assert.deepEqual(STATIC_PAGE_SEO_POLICY.about.contentLocales, ["en", "vi"]);
+  assert.deepEqual(STATIC_PAGE_SEO_POLICY.about.contentLocales, locales);
   assert.deepEqual(STATIC_PAGE_SEO_POLICY.apps.contentLocales, ["en", "vi"]);
   assert.deepEqual(STATIC_PAGE_SEO_POLICY.gallery.contentLocales, locales);
 
@@ -87,17 +87,18 @@ test("static-page policy distinguishes authored localization from route fallback
     for (const locale of locales) {
       const resolved = resolveStaticPageLocalization(page, locale);
       const authored = policy.contentLocales.includes(locale);
-      const canonicalLocale = authored ? locale : "en";
+      const contentLocale = authored ? locale : "en";
 
       assert.equal(resolved.authored, authored, `${locale}/${page} authored`);
       assert.equal(
         resolved.contentLocale,
-        canonicalLocale,
+        contentLocale,
         `${locale}/${page} content locale`
       );
+      // Fallback routes are self-canonical noindex: canonical never disagrees with robots.
       assert.equal(
         resolved.canonical,
-        `https://nguyenlephong.github.io/${canonicalLocale}/${page}`,
+        `https://nguyenlephong.github.io/${locale}/${page}`,
         `${locale}/${page} canonical`
       );
       assert.equal(resolved.index, authored, `${locale}/${page} robots index`);
@@ -115,7 +116,7 @@ test("runtime and exported-artifact localization policies cannot drift", () => {
   assert.deepEqual(
     artifactConfig.seo.staticPageLocalization,
     Object.fromEntries(
-      pageNames.map((page) => [
+      [...pageNames, "studio", "studio/checklists", "studio/system-maps", "studio/ai-setup"].map((page) => [
         page,
         {
           contentLocales: [...STATIC_PAGE_SEO_POLICY[page].contentLocales],
@@ -126,8 +127,42 @@ test("runtime and exported-artifact localization policies cannot drift", () => {
   );
 });
 
+// MEP-54: Studio stays indexable, but only where its prose is authored (en, vi).
+test("Studio hub and module pages are indexed and listed in the sitemap only in en and vi", () => {
+  const studioPages = ["studio", "studio/checklists", "studio/system-maps", "studio/ai-setup"];
+  for (const page of studioPages) {
+    assert.deepEqual(STATIC_PAGE_SEO_POLICY[page].contentLocales, ["en", "vi"], page);
+    for (const locale of locales) {
+      const resolved = resolveStaticPageLocalization(page, locale);
+      const authored = locale === "en" || locale === "vi";
+      assert.equal(resolved.index, authored, `${locale}/${page} robots index`);
+      assert.equal(
+        resolved.canonical,
+        `https://nguyenlephong.github.io/${locale}/${page}`,
+        `${locale}/${page} canonical`
+      );
+      assert.deepEqual(
+        Object.keys(resolved.languages),
+        authored ? ["en", "vi", "x-default"] : [],
+        `${locale}/${page} hreflang`
+      );
+    }
+  }
+
+  const sitemapStudioUrls = buildSitemap()
+    .map((entry) => entry.url)
+    .filter((url) => /\/studio(?:\/|$)/.test(url))
+    .sort();
+  assert.deepEqual(
+    sitemapStudioUrls,
+    ["en", "vi"]
+      .flatMap((locale) => studioPages.map((page) => `https://nguyenlephong.github.io/${locale}/${page}`))
+      .sort()
+  );
+});
+
 test("focused static metadata clears inherited keywords and keeps copy parity", () => {
-  const localization = resolveStaticPageLocalization("about", "fr");
+  const localization = resolveStaticPageLocalization("apps", "fr");
   const metadata = buildStaticPageMetadata({
     title: "About title",
     description: "About description",
@@ -142,15 +177,17 @@ test("focused static metadata clears inherited keywords and keeps copy parity", 
   assert.equal(metadata.openGraph.description, "About description");
   assert.equal(metadata.twitter.title, "About title");
   assert.equal(metadata.twitter.description, "About description");
+  // Self-canonical noindex fallback with no hreflang cluster.
   assert.deepEqual(metadata.alternates, {
-    canonical: "https://nguyenlephong.github.io/en/about"
+    canonical: "https://nguyenlephong.github.io/fr/apps"
   });
+  assert.equal(metadata.openGraph.url, "https://nguyenlephong.github.io/fr/apps");
   assert.equal(metadata.robots.index, false);
   assert.equal(metadata.robots.follow, true);
 });
 
 test("message catalogs contain SEO copy only where the route has real localized content", () => {
-  for (const page of ["about", "apps"]) {
+  for (const page of ["apps"]) {
     for (const locale of locales) {
       const hasOwnCopy = Object.hasOwn(messages[locale].SEO, page);
       assert.equal(
@@ -178,10 +215,10 @@ test("message catalogs contain SEO copy only where the route has real localized 
   }
 });
 
-test("all six Gallery catalogs own the complete visible 74-leaf message shape", () => {
+test("all six Gallery catalogs own the complete visible 32-leaf message shape", () => {
   const englishLeaves = collectStringLeaves(messages.en.Pages.gallery);
   const expectedPaths = [...englishLeaves.keys()].sort();
-  assert.equal(expectedPaths.length, 74);
+  assert.equal(expectedPaths.length, 32);
 
   for (const locale of locales) {
     assert.equal(
@@ -244,31 +281,39 @@ test("all three pages use the shared policy for metadata and route-owned JSON-LD
   }
 });
 
-test("Gallery limits its explicit preload to the desktop WAT spotlight", () => {
+test("Gallery has no explicit preload and only its first photo is eager and high priority", () => {
   const source = readFileSync("src/components/gallery/GalleryGrid.tsx", "utf8");
+  const page = readFileSync("src/app/[locale]/(site)/gallery/page.tsx", "utf8");
   const runtimeVerifier = readFileSync(
     "scripts/verify-runtime-boundaries.mjs",
     "utf8"
   );
 
-  assert.match(
-    source,
-    /FEATURED_PHOTO_PATTERNS\['projects'\]\.test\(photo\.alt\)/
-  );
-  assert.match(source, /rel="preload"/);
-  assert.match(source, /as="image"/);
-  assert.match(source, /href=\{spotlightPhotos\[0\]\.src\}/);
-  assert.match(source, /media="\(min-width: 641px\)"/);
-  assert.match(source, /data-gallery-desktop-preload="true"/);
-  assert.match(
-    source,
-    /fetchPriority=\{index === 0 \? undefined : 'low'\}/
-  );
-  assert.match(source, /loading="lazy"/);
-  assert.doesNotMatch(source, /<Image[\s\S]{0,500}\bpreload\b/);
-  assert.match(runtimeVerifier, /verifyGalleryPreloadAndLcp\(browser, origin\)/);
+  for (const file of [source, page]) {
+    assert.doesNotMatch(file, /rel="preload"/);
+    assert.doesNotMatch(file, /ReactDOM\.preload|\bpreload\(/);
+  }
+  assert.doesNotMatch(source, /<Image[\s\S]{0,500}\b(?:preload|priority)\b/);
+  assert.match(source, /const firstSrc = visible\[0\]\?\.items\[0\]\?\.src/);
+  assert.match(source, /eager=\{photo\.src === firstSrc\}/);
+  assert.match(source, /loading=\{eager \? 'eager' : 'lazy'\}/);
+  assert.match(source, /fetchPriority=\{eager \? 'high' : 'auto'\}/);
+  assert.match(runtimeVerifier, /verifyGalleryLcpCandidate\(browser, origin\)/);
   assert.match(runtimeVerifier, /largest-contentful-paint/);
-  assert.match(runtimeVerifier, /initiatorType === "link"/);
-  assert.match(runtimeVerifier, /finalLcp\.tagName, "IMG"/);
-  assert.match(runtimeVerifier, /assert\.notEqual\(finalLcp\.tagName, "IMG"\)/);
+  assert.match(runtimeVerifier, /link\[rel="preload"\]\[as="image"\]/);
+  assert.match(runtimeVerifier, /firstImageFetchPriority, "high"/);
+  assert.match(runtimeVerifier, /laterImageLoading, \["lazy"\]/);
+});
+
+test("About owns its page and SEO copy in all six locales", () => {
+  for (const locale of locales) {
+    const seo = messages[locale].SEO.about;
+    assert.equal(typeof seo?.title, "string", `${locale} about title`);
+    assert.ok(seo.description.trim().length >= 50, `${locale} about description length`);
+    assert.equal(typeof messages[locale].About?.title, "string", `${locale} About page copy`);
+    if (locale !== "en") {
+      assert.notEqual(seo.title, messages.en.SEO.about.title, `${locale} about title fallback`);
+      assert.notEqual(messages[locale].About.lede, messages.en.About.lede, `${locale} About lede fallback`);
+    }
+  }
 });

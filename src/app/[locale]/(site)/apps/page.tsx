@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import { apps } from './apps.data'
+import { apps, appsCopyLocale, appsPageCopy } from './apps.data'
 import AppsConsole from '@/components/apps/AppsConsole'
 import PageTracker from '@/components/analytics/PageTracker'
 import AppsLinkTracker from '@/components/analytics/AppsLinkTracker'
@@ -58,6 +58,7 @@ export default async function AppsPage({ params }: Props) {
     name: navT('apps'),
     url: localization.canonical,
   })
+  const copyLocale = appsCopyLocale(localization.contentLocale)
   const appsItemListLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -72,10 +73,11 @@ export default async function AppsPage({ params }: Props) {
       item: {
         '@type': 'SoftwareApplication',
         name: a.name,
-        description: a.description,
+        description: a.copy[copyLocale].tagline,
+        softwareVersion: a.version,
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: a.platforms.join(', '),
-        url: a.links.website ?? a.links.repo ?? a.links.docs,
+        url: a.links.repo,
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
       },
     })),
@@ -96,7 +98,11 @@ export default async function AppsPage({ params }: Props) {
       <PageTracker page="apps" eventName="apps_view" section="showroom" />
       <AppsLinkTracker />
       <div className="container">
-        <AppsConsole apps={apps} locale={locale} />
+        <AppsConsole
+          apps={apps}
+          copy={appsPageCopy[copyLocale]}
+          copyLocale={copyLocale}
+        />
       </div>
     </main>
   )

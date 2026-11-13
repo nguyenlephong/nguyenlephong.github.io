@@ -3,7 +3,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import { gallery } from '@/content/gallery'
+import { gallery, GALLERY_GROUP_ORDER } from '@/content/gallery'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import PageTracker from '@/components/analytics/PageTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
@@ -13,7 +13,6 @@ import {
   resolveStaticPageLocalization,
 } from '@/lib/seo/static-page-localization'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
-import MotionProvider from '@/components/motion/MotionProvider'
 import GalleryPageBackLink from '@/components/gallery/GalleryPageBackLink'
 import GalleryBackdrop from '@/components/gallery/GalleryBackdrop'
 import './gallery.css'
@@ -56,12 +55,11 @@ export default async function GalleryPage({ params }: Props) {
     name: navT('gallery'),
     url: localization.canonical,
   })
-  const categories = [
-    { id: 'certificates', label: t('categories.certificates'), items: gallery.certificates },
-    { id: 'awards', label: t('categories.awards'), items: gallery.awards },
-    { id: 'projects', label: t('categories.projects'), items: gallery.projects },
-    { id: 'activities', label: t('categories.activities'), items: gallery.activities },
-  ].filter((c) => c.items.length > 0)
+  const categories = GALLERY_GROUP_ORDER.map((id) => ({
+    id,
+    label: t(`categories.${id}`),
+    items: gallery[id],
+  }))
 
   const galleryLd = {
     '@context': 'https://schema.org',
@@ -76,40 +74,36 @@ export default async function GalleryPage({ params }: Props) {
         '@type': 'ImageObject',
         contentUrl: it.src.startsWith('http') ? it.src : `https://nguyenlephong.github.io${it.src}`,
         name: it.alt,
+        caption: t(`captions.${it.id}`),
       }))
     ),
   }
 
   return (
-    <MotionProvider>
-      <main className="gallery-showcase">
-        <GalleryBackdrop />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(galleryLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
-        />
-        <PageTracker page="gallery" eventName="gallery_view" />
-        <div className="container">
-          <header className="page-header gallery-page-header">
-            <span className="eyebrow">
-              <span className="eyebrow-dot" aria-hidden="true" /> {t('eyebrow')}
-            </span>
-            <h1 className="page-title">{t('title')}</h1>
-            <p className="page-sub">{t('sub')}</p>
-            <GalleryPageBackLink>
-              {t('back')}
-            </GalleryPageBackLink>
-          </header>
+    <main className="gallery-showcase">
+      <GalleryBackdrop />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(galleryLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
+      />
+      <PageTracker page="gallery" eventName="gallery_view" />
+      <div className="container">
+        <header className="page-header gallery-page-header">
+          <h1 className="page-title">{t('title')}</h1>
+          <p className="page-sub">{t('sub')}</p>
+          <GalleryPageBackLink>
+            {t('back')}
+          </GalleryPageBackLink>
+        </header>
 
-          <ScopedIntlProvider scope="gallery">
-            <GalleryGrid categories={categories} />
-          </ScopedIntlProvider>
-        </div>
-      </main>
-    </MotionProvider>
+        <ScopedIntlProvider scope="gallery">
+          <GalleryGrid categories={categories} />
+        </ScopedIntlProvider>
+      </div>
+    </main>
   )
 }

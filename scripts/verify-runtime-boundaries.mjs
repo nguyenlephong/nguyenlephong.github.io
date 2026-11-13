@@ -76,7 +76,7 @@ const PAGE_BACK_REQUEST_QUIET_MS = 500;
 const PAGE_BACK_REQUEST_TIMEOUT_MS = 10_000;
 const PUBLIC_CSS_RUNTIME_CASES = [
   { name: "home", path: "/en", selector: ".hero", property: "position", value: "relative", stylesheets: 3 },
-  { name: "about", path: "/en/about", selector: ".about-page-v2", property: "paddingBottom", notValue: "0px", stylesheets: 3 },
+  { name: "about", path: "/en/about", selector: ".about-intro", property: "paddingTop", notValue: "0px", stylesheets: 3 },
   { name: "gallery", path: "/en/gallery", selector: ".gallery-showcase", property: "overflowX", value: "clip", stylesheets: 3 },
   { name: "apps", path: "/en/apps", selector: ".apps-page", property: "position", value: "relative", stylesheets: 3 },
   { name: "english", path: "/en/apps/english", selector: ".english-page", property: "position", value: "relative", stylesheets: 3 },
@@ -156,7 +156,7 @@ async function installExternalRuntimeStubs(
     const url = new URL(route.request().url());
     if (
       galleryImageBody &&
-      url.pathname.startsWith("/dom-pub/icdn/gallery/")
+      url.pathname.startsWith("/dom-pub/icdn/")
     ) {
       await route.fulfill({
         body: galleryImageBody,
@@ -1225,10 +1225,11 @@ async function verifyPublicCssRuntime(browser, origin) {
   return { directRoutes: results, clientNavigations: viewports.length };
 }
 
-async function verifyGalleryPreloadAndLcp(browser, origin) {
+// Gallery has no explicit preload: the first photo is eager + fetchpriority=high, every other photo is lazy.
+async function verifyGalleryLcpCandidate(browser, origin) {
   const scenarios = [
-    { name: "desktop", width: 1440, height: 900, preloadMatches: true },
-    { name: "mobile", width: 390, height: 844, preloadMatches: false }
+    { name: "desktop", width: 1440, height: 900 },
+    { name: "mobile", width: 390, height: 844 }
   ];
   const results = [];
 
@@ -1248,11 +1249,8 @@ async function verifyGalleryPreloadAndLcp(browser, origin) {
 
       page.on("request", (request) => {
         const url = new URL(request.url());
-        if (url.pathname.startsWith("/dom-pub/icdn/gallery/")) {
-          galleryImageRequests.push({
-            resourceType: request.resourceType(),
-            url: request.url()
-          });
+        if (url.pathname.startsWith("/dom-pub/icdn/")) {
+          galleryImageRequests.push(request.url());
         }
       });
       page.on("pageerror", (error) => pageErrors.push(error.message));
@@ -1267,22 +1265,13 @@ async function verifyGalleryPreloadAndLcp(browser, origin) {
       });
       assert.equal(response?.status(), 200, "Gallery did not load");
       await page.waitForFunction(
-        () => window.__galleryLcpEntries?.length > 0,
+        () => {
+          const image = document.querySelector(".gallery-card img");
+          return window.__galleryLcpEntries?.length > 0 && image?.complete && image.naturalWidth > 0;
+        },
         undefined,
         { timeout: 5_000 }
       );
-      if (scenario.preloadMatches) {
-        await page.waitForFunction(
-          () => {
-            const image = document.querySelector(
-              ".gallery-spotlight-card-1 img"
-            );
-            return image?.complete && image.naturalWidth > 0;
-          },
-          undefined,
-          { timeout: 5_000 }
-        );
-      }
       await page.evaluate(
         () =>
           new Promise((resolve) =>
@@ -1291,83 +1280,49 @@ async function verifyGalleryPreloadAndLcp(browser, origin) {
       );
 
       const snapshot = await page.evaluate(() => {
-        const preload = document.querySelector(
-          'head link[data-gallery-desktop-preload="true"]'
-        );
-        const image = document.querySelector(
-          ".gallery-spotlight-card-1 img"
-        );
-        const preloadHref = preload?.href ?? "";
+        const images = [...document.querySelectorAll(".gallery-card img")];
+        const first = images[0];
         return {
-          firstImageComplete: Boolean(image?.complete && image.naturalWidth > 0),
-          firstImageFetchPriority: image?.getAttribute("fetchpriority") ?? "",
-          firstImageSrc: image?.currentSrc || image?.src || "",
-          lcpEntries: window.__galleryLcpEntries ?? [],
-          media: preload?.media ?? "",
-          mediaMatches: preload ? matchMedia(preload.media).matches : null,
-          preloadFetchPriority: preload?.getAttribute("fetchpriority") ?? "",
-          preloadHref,
-          resourceEntries: preloadHref
-            ? performance
-                .getEntriesByName(preloadHref, "resource")
-                .map((entry) => ({
-                  initiatorType: entry.initiatorType,
-                  name: entry.name
-                }))
-            : []
+          imagePreloads: document.querySelectorAll('link[rel="preload"][as="image"]').length,
+          firstImageFetchPriority: first?.getAttribute("fetchpriority") ?? "",
+          firstImageLoading: first?.getAttribute("loading") ?? "",
+          firstImageSrc: first?.currentSrc || first?.src || "",
+          laterImageLoading: [...new Set(images.slice(1).map((image) => image.getAttribute("loading")))],
+          laterImageHighPriority: images.slice(1).filter(
+            (image) => image.getAttribute("fetchpriority") === "high"
+          ).length,
+          lcpEntries: window.__galleryLcpEntries ?? []
         };
       });
 
-      assert.match(snapshot.preloadHref, /\/gallery\/projects\/wat-overview\.webp$/);
-      assert.equal(snapshot.media, "(min-width: 641px)");
-      assert.equal(snapshot.mediaMatches, scenario.preloadMatches);
-      assert.equal(snapshot.preloadFetchPriority, "high");
-      assert.equal(snapshot.firstImageSrc, snapshot.preloadHref);
-      assert.equal(snapshot.firstImageFetchPriority, "");
+      assert.equal(snapshot.imagePreloads, 0, `${scenario.name} Gallery must not preload images`);
+      assert.equal(snapshot.firstImageLoading, "eager");
+      assert.equal(snapshot.firstImageFetchPriority, "high");
+      assert.deepEqual(snapshot.laterImageLoading, ["lazy"]);
+      assert.equal(snapshot.laterImageHighPriority, 0);
 
-      const exactRequests = galleryImageRequests.filter(
-        ({ url }) => url === snapshot.preloadHref
+      const firstImageRequests = galleryImageRequests.filter(
+        (url) => url === snapshot.firstImageSrc
       );
-      assert.ok(
-        exactRequests.length <= 1,
-        `${scenario.name} fetched the Gallery spotlight more than once`
-      );
-      assert.ok(
-        snapshot.resourceEntries.length <= 1,
-        `${scenario.name} recorded duplicate Gallery spotlight resources`
+      assert.equal(
+        firstImageRequests.length,
+        1,
+        `${scenario.name} must fetch the first Gallery photo exactly once`
       );
       const finalLcp = snapshot.lcpEntries.at(-1);
       assert.ok(finalLcp, `${scenario.name} emitted no LCP entry`);
-
-      if (scenario.preloadMatches) {
-        assert.equal(snapshot.firstImageComplete, true);
-        assert.equal(exactRequests.length, 1);
-        assert.equal(snapshot.resourceEntries.length, 1);
-        assert.equal(finalLcp.tagName, "IMG");
-        assert.match(finalLcp.className, /gallery-spotlight-image/);
-        assert.equal(finalLcp.url, snapshot.preloadHref);
+      if (finalLcp.tagName === "IMG") {
+        assert.equal(finalLcp.url, snapshot.firstImageSrc, `${scenario.name} LCP image is not the eager photo`);
       } else {
-        assert.deepEqual(
-          snapshot.resourceEntries.filter(
-            ({ initiatorType }) => initiatorType === "link"
-          ),
-          [],
-          "mobile must not fetch the desktop-only preload"
-        );
-        assert.notEqual(finalLcp.tagName, "IMG");
         assert.equal(finalLcp.isText, true);
       }
 
       assert.deepEqual(pageErrors, []);
       assert.deepEqual(preloadWarnings, []);
       results.push({
-        firstImageRequests: exactRequests.length,
         finalLcp,
-        mediaMatches: snapshot.mediaMatches,
-        name: scenario.name,
-        resourceInitiators: snapshot.resourceEntries.map(
-          ({ initiatorType }) => initiatorType
-        )
+        firstImageRequests: firstImageRequests.length,
+        name: scenario.name
       });
     } finally {
       await context.close();
@@ -1941,7 +1896,7 @@ async function main() {
   try {
     const publicToStudio = await verifyPublicToStudioBoundary(browser, origin);
     const publicCss = await verifyPublicCssRuntime(browser, origin);
-    const galleryPreloadAndLcp = await verifyGalleryPreloadAndLcp(
+    const galleryLcpCandidate = await verifyGalleryLcpCandidate(
       browser,
       origin
     );
@@ -1978,7 +1933,7 @@ async function main() {
           status: "ok",
           publicToStudio,
           publicCss,
-          galleryPreloadAndLcp,
+          galleryLcpCandidate,
           pageBackNavigation,
           persistedReadingFont,
           readerRemount,

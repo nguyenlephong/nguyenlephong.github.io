@@ -16,12 +16,7 @@ export function generateStaticParams() {
 export const dynamic = 'force-static'
 
 export default async function OgImage() {
-  const counts = {
-    certs: gallery.certificates.length,
-    awards: gallery.awards.length,
-    projects: gallery.projects.length,
-  }
-  const cacheKey = `static-gallery-certs${counts.certs}-awards${counts.awards}-projects${counts.projects}-v2`
+  const cacheKey = `static-gallery-${gallery.bonbon.length}-${gallery.recognition.length}-v3`
   const cached = getCachedOg(cacheKey)
   if (cached) return cachedOgResponse(cached)
 
@@ -30,13 +25,13 @@ export default async function OgImage() {
       <OgShell
         theme="light"
         eyebrow="Gallery"
-        title="Evidence beyond the resume."
-        subtitle="Certifications, awards, project snapshots, and activity signals — visible proof of what I've built, learned, and kept practicing."
+        title="Photos and certificates."
+        subtitle="BonBon Mobility at the Tasco Foundry Wash3000 Demo Day, its $500K pre-seed, and the awards and certificates behind the CV, each linked to its source."
         chips={[
-          `${counts.certs} certifications`,
-          `${counts.awards} awards`,
-          `${counts.projects} projects`,
-          'Best Rookie of the Year',
+          'BonBon Mobility',
+          'Wash3000 Demo Day',
+          '$500K pre-seed',
+          'Best Rookie of the Year 2019',
         ]}
       />
     ),
