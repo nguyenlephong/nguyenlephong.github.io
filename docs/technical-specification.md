@@ -60,7 +60,7 @@ The locale prefix is always present in public URLs.
 | SEO structured data     | `schema-dts` and manual JSON-LD           | Person, WebSite, Blog, BlogPosting, Article, BreadcrumbList, FAQPage, ImageGallery, ItemList.            |
 | Social images           | `next/og`, `ImageResponse`, Node scripts  | Generates and caches OpenGraph images for profile, blog, notes, apps, and gallery pages.                 |
 | Styling                 | Global CSS, CSS variables, `next/font`    | Theme system, reading backgrounds, responsive layout, typography.                                        |
-| Motion                  | `MotionProvider` on Home and Gallery      | Uses `framer-motion` `LazyMotion` only on the two public surfaces that animate.                         |
+| Motion                  | CSS transitions, `useReducedMotion`       | No `LazyMotion` provider; CV sections read `framer-motion`'s `useReducedMotion` hook only.              |
 | Icons                   | `react-icons`                             | Navigation, cards, controls, app visuals.                                                                |
 | Graph/visual tools      | D3 packages                               | Thought graph components exist in the repo, although no active App Router thoughts route is present now. |
 | Analytics               | PostHog, Google Analytics, Google AdSense | Page views, scroll depth, read time, outbound clicks, app interactions, ads script.                      |
@@ -129,7 +129,7 @@ It does not load Google Analytics or AdSense, mount
 theme, font, and reading-background prepaint scripts on every public route,
 then mounts Google Analytics and AdSense resources, the scoped site message
 provider, header, footer, route progress, and offline support.
-`MotionProvider` is narrower: only the Home and Gallery page entries mount it.
+No route mounts a motion provider; Gallery dropped `framer-motion` entirely.
 `ArticleReaderTools` is mounted only by the nested Blog and Notes article
 layouts. Home, Blog, Notes, and Gallery add a second provider only around their
 message-consuming client subtree. The pathless `(site)` segment does not appear
@@ -163,6 +163,7 @@ Google requests left from the public page.
 | `/{en\|vi}/notes/topics/{topic}`             | `src/app/[locale]/(site)/notes/topics/[topic]/page.tsx`             | Curated Notes topic page one with static cards and collection schema.                     |
 | `/{en\|vi}/notes/topics/{topic}/page/{page}` | `src/app/[locale]/(site)/notes/topics/[topic]/page/[page]/page.tsx` | Later curated topic pages; `/page/1` is not generated.                                    |
 | `/{locale}/studio`                 | `src/app/[locale]/studio/page.tsx`                 | Shadow-DOM admin workbench, route-isolated from the main profile shell.                   |
+| `/{locale}/studio/{module}`        | `src/app/[locale]/studio/[module]/page.tsx`        | Crawlable Studio module page (`checklists`, `system-maps`, `ai-setup`) that opens the same shell on that module; in-shell navigation pushes these paths. |
 | `/{locale}/notes/{slug}`           | `src/app/[locale]/(site)/notes/[slug]/page.tsx`           | Note article page, source-book card, topic breadcrumb, FAQ support, engagement widgets.   |
 
 Most routes expose `generateStaticParams()`, which lets Next.js enumerate every
@@ -332,17 +333,18 @@ SEO is a first-class part of the app.
 | OpenGraph image routes | `src/app/**/opengraph-image.tsx`    | Dynamic social images rendered during static export.                                          |
 | Artifact SEO verifier  | `scripts/verify-static-artifact.mjs`| Checks exported sitemap URLs, canonicals, titles, descriptions, language metadata, and robots. |
 
-About, Apps, and Gallery use
+About, Apps, Gallery, and the four Studio pages use
 `src/lib/seo/static-page-localization.ts` to separate route locale from authored
 content locale. Their current contract is:
 
 | Page | Authored/indexable locales | Other emitted locale routes |
 |---|---|---|
-| About | `en`, `vi` | English content boundary, `noindex, follow`, canonical `/en/about` |
-| Apps | `en`, `vi` | English content boundary, `noindex, follow`, canonical `/en/apps` |
+| About | `en`, `vi`, `zh`, `ja`, `ko`, `fr` | None; every locale is authored and self-canonical |
+| Apps | `en`, `vi` | English content boundary, `noindex, follow`, self-canonical, no `hreflang` |
 | Gallery | `en`, `vi`, `zh`, `ja`, `ko`, `fr` | None; every locale is authored and self-canonical |
+| Studio overview and `/studio/{checklists,system-maps,ai-setup}` | `en`, `vi` | English content boundary, `noindex, follow`, self-canonical, no `hreflang` |
 
-Only authored variants enter sitemap and `hreflang`. Each of the 18 emitted
+Only authored variants enter sitemap and `hreflang`. Each of the 42 emitted
 routes has exact title/description parity across HTML, Open Graph, Twitter, and
 its route-owned JSON-LD object. The JSON-LD language follows the content rather
 than blindly copying the route prefix. These focused pages explicitly clear the
@@ -350,7 +352,7 @@ locale layout's broad keyword meta instead of inheriting it. The artifact
 verifier also requires generic and Googlebot robots directives to agree and
 rejects even an empty keyword tag. A source test keeps policy configuration
 equal to the runtime definition and requires every Gallery locale to own the
-same complete 71-leaf visible message shape.
+same complete 32-leaf visible message shape.
 
 The artifact verifier works against the generated `out/` directory rather than
 source-code patterns. Its sitemap URL set must exactly equal the exported,
@@ -382,10 +384,12 @@ They use self-canonicals, localized descriptions, `CollectionPage`, page-local
 pagination, and article links. Their hreflang clusters contain only `en`, `vi`,
 and an English `x-default`; no other locale exports those routes. With
 `CONTENT_BUILD_DATE=2026-07-19`, the 16 Blog series URLs and 36 Notes hub URLs
-add exactly 52 entries. The valid pre-hub baseline is 895 URLs after removing
-one mislabeled English article variant. Omitting eight un-authored About and
-Apps fallback variants leaves 887 canonical pre-hub URLs, so the fixed-date
-sitemap contains 939 unique URLs. The former English article URL remains only as a `noindex` compatibility
+add exactly 52 entries. About is authored in all six locales, so only the four
+un-authored Apps fallbacks are omitted. Studio contributes eight URLs: the
+overview and three module pages in `en` and `vi`; their `zh`, `ja`, `ko`, and
+`fr` routes are noindex fallbacks outside the sitemap. With those rules the
+fixed-date source sitemap (`buildSitemap()` with that date) contains 951 unique
+URLs. The former English article URL remains only as a `noindex` compatibility
 artifact that canonical/meta-refreshes to its authored Vietnamese variant and
 is absent from sitemap and hreflang output. This total is a fixed-date
 regression assertion, not a permanent sitemap floor; artifact parity remains
@@ -648,7 +652,7 @@ runbook.
 | Reading background | `ReadingBackgroundScript`, `ReadingBackgroundSwitcher`         | Applies the saved reading background before paint on every public route.                                               |
 | Reader tools       | `ArticleReaderTools`, `BlogReaderTools`                         | Mounts the floating toolbar only in nested Blog and Notes article layouts.                                             |
 | Route progress     | `RouteProgressBar`                                             | Provides click/popstate-aware progress on every public route.                                                          |
-| Motion             | `MotionProvider`                                               | Mounts `LazyMotion` only on Home and Gallery, not in the shared public-site layout.                                    |
+| Motion             | none                                                           | No `LazyMotion` provider on any route; motion is CSS with reduced-motion guards.                                       |
 | Explorer filters   | `ExplorerShell`, `useExplorer`, blog/notes explorers             | Provides search, filter, tag, and topic/category exploration on content indexes.                                      |
 | Archive counters   | `useDeferredPostStats`, deferred stats store, `postStats` facade   | Loads one visible-page batch after intent, retains one latest-view queue, caps its mounted cache, skips on `Save-Data`, and fails soft.          |
 
@@ -808,7 +812,7 @@ remain hard gates. The current configured gates are:
 | Largest localized Studio RSC sample | Hard limit: 30,720 bytes |
 
 The verifier also hard-gates Gzip HTML for English Home (34,304 bytes), Blog
-archive (19,456), Notes archive (18,432), one Blog article (18,432), and one
+archive (20,352), Notes archive (18,432), one Blog article (18,432), and one
 Notes article (21,248), while reporting raw and Brotli bytes for comparison.
 
 Rebase of 2026-11-13 (homepage CV revamp). Initial JavaScript no longer counts
@@ -842,7 +846,7 @@ four. Route ownership produces the following measurements (refreshed from the
 | Apps | 3 | 44,476 | 9,235 | 9,600 |
 | English practice | 3 | 38,627 | 8,022 | 8,320 |
 | Offline | 3 | 27,042 | 6,184 | 6,400 |
-| Blog archive | 3 | 78,591 | 13,967 | 14,464 |
+| Blog archive | 3 | 82,035 | 14,426 | 14,464 |
 | Notes archive | 4 | 86,418 | 15,969 | 16,512 |
 | Blog article | 4 | 101,003 | 18,406 | 19,072 |
 | Notes article | 5 | 108,830 | 20,408 | 21,120 |

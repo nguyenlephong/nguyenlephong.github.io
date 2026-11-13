@@ -243,16 +243,15 @@
       "period": "2026年3月 – 至今",
       "context": "这是一套物流 SaaS，每个客户有独立子域名，数据绝不能流到其他租户。产品运行在 Web 和 Electron 桌面应用上。我带一个四人团队，并对架构负责。",
       "decisions": [
-        "把租户绑定到每个 token 和 RBAC，而不是信任子域名，因为路由可能出错。",
-        "自建 OAuth 2.1/OIDC，而不是两套登录，因为 Electron 要像 Web 一样登录。",
-        "由人确认全部 8 个部分，而不是 AI 自动填写，因为错一处就损失金钱。"
+        "每个 token 和每次 RBAC 检查都带着租户，只凭子域名无法访问。",
+        "Web 和 Electron 应用都通过自建的 OAuth 2.1/OIDC 服务登录，使用 PKCE。",
+        "AI 给出建议值，申报单的 8 个部分逐一由人确认。"
       ],
       "outcome": [
         "截至 2026年8月，<b>9 个仓库</b>共用一套架构：Web 与 Electron 共用 Next.js UI，NestJS 控制面，FastAPI AI 数据面。",
         "报关流程背后有 <b>6</b> 个最小权限运行时角色和 <b>31</b> 个类型化 API 端点。",
         "出口报关于 2026年10月进入 UAT，配有基于规则的单证分类器。"
-      ],
-      "evidenceNote": "仓库为私有，没有公开链接。"
+      ]
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -261,9 +260,9 @@
       "period": "2026年4月 – 至今",
       "context": "BonBon 连接车主与洗车、养护门店。作为联合创始人，我把产品做成运行在 VETC 应用内的 12 屏 Mini App。据 Tasco 公布，VETC 截至 2026年4月有 <b>430 万</b>用户。每次发布都要经过 VETC 的变更审批和安全流程，其中包括 OWASP 审查和一次独立渗透测试。",
       "decisions": [
-        "用 VETC 会话登录，而不是再加 OTP，因为 VETC 已完成验证。",
-        "会话只在内存中，而不是存储 token，因为 VETC 规则禁止存储。",
-        "默认关闭的 kill switch，而不是一次性发布，因为发布要等 VETC 审批。"
+        "车主用已有的 VETC 会话登录，无需再输 OTP。",
+        "会话只存在内存中，VETC 规则不允许在浏览器里存 token。",
+        "新功能放在默认关闭的 kill switch 后面，不发版就能关掉。"
       ],
       "outcome": [
         "BonBon 赢得 Tasco Foundry Wash3000：约 <b>100</b> 份申请，前 10，3 支决赛队伍，1 个冠军（GenAI Fund，2026年9月）。",
@@ -297,10 +296,104 @@
     "github": "GitHub",
     "resumePdf": "简历 (PDF)"
   },
+  "About": {
+    "title": "我打造能发布、能观测、能恢复的产品系统。",
+    "lede": "我从 2018 年开始交付软件：早期创业公司、外包公司、产品公司、Zalo，以及一家正在交接 CTO 的公司。2026 年我还联合创办了一家创业公司。下面写的是每一次转换如何改变了我的工作方式，以及我留下的习惯。",
+    "arc": {
+      "label": "2018 年以来的路线",
+      "early": "创业、外包",
+      "product": "产品",
+      "scale": "大厂",
+      "handover": "交接",
+      "now": "Lead、联合创始"
+    },
+    "story": {
+      "title": "一路走来",
+      "periods": {
+        "early": {
+          "dates": "2018–2020",
+          "where": "Propman Guru，之后 Splus Software",
+          "env": "早期创业公司，之后外包",
+          "body": "我在早期房地产创业公司 Propman Guru 做前端起步，是最早的几位工程师之一。之后在外包公司 Splus Software 待了 16 个月，做了 8 个以上教育、餐饮、银行和电商客户项目，也第一次带小团队。2019 年获得 Best Rookie of the Year。",
+          "shift": "在这里我走完了项目的完整一圈，从客户的第一份需求到交付交接。"
+        },
+        "product": {
+          "dates": "2020–2024",
+          "where": "PrimeData",
+          "env": "B2B 产品创业公司",
+          "body": "近四年专注一个产品：客户数据平台 CDxP。我带领 4 人前端团队，把追踪 SDK 控制在 <b>200 KB</b> 以内，并做了我的第一套运行时 feature flag。",
+          "shift": "长期做一个产品，就得和自己的决定一起生活。feature flag、体积预算和发布前的测试从此成了习惯。"
+        },
+        "scale": {
+          "dates": "2024–2025",
+          "where": "Zalo PC",
+          "env": "大厂，消费级产品",
+          "body": "<b>15M+ MAU</b> 的桌面客户端。我交付了深色模式、动态主题和下载模块，并主导了 50 多名开发者共用的 Storybook 设计系统。",
+          "shift": "共享组件加上数百万人使用的应用，让稳定排在速度之前。"
+        },
+        "handover": {
+          "dates": "2025–2026",
+          "where": "NDSVN",
+          "env": "企业，支付与电信合作方",
+          "body": "我在 CTO 交接后加入，接手 8 名开发和 3 名 QC 的交付团队的技术负责。我建立了结构化面试，并交付了支持 <b>30+ 租户</b>的 feature flag 平台。",
+          "shift": "带团队意味着把团队的做事方式写下来，让决定不必等某一个人。"
+        },
+        "now": {
+          "dates": "2026–至今",
+          "where": "Zalo PC、BonBon Mobility、LogiUP",
+          "env": "大厂、自己的创业公司、B2B SaaS",
+          "body": "2026 年 3 月，Zalo 重新聘请我担任 Lead。我负责多设备消息与客户端存储，其中包括 PC 端消息备份和移动端恢复。同时，我联合创办了 BonBon Mobility，在约 100 份申请中赢得 Tasco Foundry Wash3000，并完成 Tasco 领投的 <b>50 万美元</b> pre-seed 轮。在多租户物流 SaaS LogiUP，我是 4 人团队的技术负责人兼系统架构师。",
+          "shift": "在这个角色里，我的大部分工作是做决定：架构怎么拆分，什么默认关闭再上线，合作方的安全审查会接受什么。"
+        }
+      }
+    },
+    "habits": {
+      "title": "我的工作方式",
+      "items": {
+        "trace": {
+          "title": "先追踪，再重写",
+          "proof": "在 Zalo PC，sync v2 除了重试和分组重新准备，还配了一个能复现移动网络断连的故障注入 devtool。在 37 个会话的测试中，一次 hot path 查询从 <b>1.8 s 降到 4 ms</b>。",
+          "source": "Zalo PC · 2026"
+        },
+        "contracts": {
+          "title": "先定契约，再写代码",
+          "proof": "NDSVN 的 Gtel 和 Napas 对接建立在幂等契约、重试队列和 ACK 监控之上，消息重放也不会造成损害。",
+          "source": "NDSVN · 2025–2026"
+        },
+        "rollout": {
+          "title": "先灰度，再发布",
+          "proof": "PrimeData 的运行时 flag，NDSVN 支持 <b>30+ 租户</b>的 flag 平台，Zalo PC 和 BonBon 默认关闭的 kill switch。",
+          "source": "PrimeData, NDSVN, Zalo PC, BonBon · 2020–2026"
+        },
+        "writing": {
+          "title": "写下来，让谁都不必等我",
+          "proof": "NDSVN 交接之后，我写了职责地图、发布 playbook 和 runbook。BonBon 建立在 <b>89</b> 份成文的规格之上。",
+          "source": "NDSVN, BonBon · 2025–2026"
+        }
+      },
+      "stack": "目前在用（截至 2026 年 11 月）：TypeScript、React、Next.js、Electron、Go、NestJS、PostgreSQL、Redis、Kubernetes、PostHog。"
+    },
+    "writing": {
+      "title": "我靠写下来学习。",
+      "body": "我在<blog>博客</blog>和<notes>笔记</notes>里记录工作教会我的事：带团队、灰度发布、安全的默认值、与 AI 协作。可以从这两篇开始：<note>BonBon 50 万美元融资背后的工程</note>，以及<post>让部署更安全的 feature flag</post>。",
+      "teaching": "2023 年 5 月，我在 Vietnam Australia Center 讲授前端项目课程：<b>12 名</b>学员，从需求到可运行的 React 应用。"
+    },
+    "closing": {
+      "body": "当<b>雄心勃勃的产品</b>运行在<b>不能出错</b>的后端上时，我最能发挥。我的职责是让这个后端足够平稳，让团队发布时不必屏住呼吸。",
+      "linksLabel": "简历、邮箱和经历",
+      "resume": "简历 (PDF)",
+      "email": "邮箱",
+      "experience": "查看经历"
+    }
+  },
   "SEO": {
     "home": {
       "title": "Nguyen Le Phong | Lead Software Engineer，BonBon Mobility 联合创始人",
       "description": "Zalo PC Lead Software Engineer，BonBon Mobility 联合创始人（Tasco 领投 50 万美元 Pre-seed 轮），LogiUP Tech Lead。PC 到移动端消息备份、多租户 SaaS。"
+    },
+    "about": {
+      "title": "关于 Nguyen Le Phong：Zalo PC Lead，BonBon 联合创始人",
+      "description": "从外包公司到带领 Zalo PC 多设备同步、联合创办 BonBon Mobility，以及我带进每个团队的工作习惯。"
     },
     "gallery": {
       "title": "作品集：证书、奖项与项目 | Nguyen Le Phong",
@@ -336,109 +429,41 @@
       "heading": "应用"
     },
     "gallery": {
-      "eyebrow": "作品集",
-      "title": "工作背后的信号",
-      "sub": "一个小小的合集，记录我学过、做过、被认可过，以及持续练习的东西。如果简历展示角色，这里展示角色背后的工作节奏。",
+      "title": "照片与证书",
+      "sub": "奖项、证书和一些工作中的瞬间。点开每张图，会看到原图或能佐证它的来源。",
       "back": "← 返回简历",
       "all": "全部",
-      "tabsLabel": "职业信号筛选",
-      "hero": {
-        "kicker": "Proof portfolio",
-        "title": "比几行简历更能说明问题的小信号",
-        "lead": "我把证书、认可、项目片段和一些日常瞬间放在这里，让读者能看到我如何学习、如何和团队协作，以及如何长期保持稳定的delivery。",
-        "primaryCta": "查看这些信号",
-        "scanNote": "给快速浏览的recruiter：先读故事，再按需要打开每一组证据。",
-        "proofTitle": "更接近真实工作方式的一面"
-      },
-      "stats": {
-        "label": "作品集信号",
-        "proofs": "信号",
-        "proofsDetail": "可对照的图片、证书和工作瞬间。",
-        "certifications": "证书",
-        "certificationsDetail": "为了更谨慎地工作而持续学习。",
-        "recognitions": "认可",
-        "recognitionsDetail": "来自团队、项目和长期挑战的结果。",
-        "builds": "项目",
-        "buildsDetail": "已经形成具体形态的产品、demo和作品。"
-      },
-      "trust": {
-        "label": "Recruiter lens",
-        "title": "如何阅读这一页",
-        "learning": {
-          "title": "持续学习和更新的习惯",
-          "body": "证书不是孤立的徽章；它们说明我习惯通过学习把工作处理得更稳。"
-        },
-        "delivery": {
-          "title": "对结果负责",
-          "body": "认可和项目片段说明我愿意和团队一起把事情推进到完成。"
-        },
-        "team": {
-          "title": "耐力与协作",
-          "body": "活动瞬间展示的是长期工作需要的能量、纪律和稳定性。"
-        }
-      },
-      "story": {
-        "label": "快速阅读方式",
-        "title": "不是照片墙，而是一条持续进步的痕迹",
-        "body": "每一组都回答一个小问题：我学到了什么，在哪里被信任，做过什么，以及在正式项目之外如何训练长期耐力。"
-      },
-      "categoryNotes": {
-        "all": "从学习到delivery，按一条完整路径阅读。",
-        "certificates": "有目的的学习，让工作更扎实。",
-        "awards": "对主动性、稳定性和责任感的认可。",
-        "projects": "构建、交付、教学或探索留下的痕迹。",
-        "activities": "展示能量、纪律和长期习惯的日常瞬间。"
-      },
-      "categoryIntros": {
-        "certificates": {
-          "body": "这一部分展示我如何继续打基础：更理解系统，也更谨慎地处理compliance、security和产品质量。",
-          "signal": "持续学习会让工作随着时间变得更扎实、更谨慎。"
-        },
-        "awards": {
-          "body": "这些认可不是终点，而是一些小节点：快速进入状态、承担责任，并在较长的挑战中坚持下去。",
-          "signal": "真实团队环境最能看见一个人的稳定性和责任感。"
-        },
-        "projects": {
-          "body": "这里有产品、demo和作品的一些切片。重要的不只是截图，而是把想法变成可运行、可解释、可改进的过程。",
-          "signal": "想法变成可运行、可解释、可持续改进的东西时，才更有意义。"
-        },
-        "activities": {
-          "body": "不是所有职业信号都在ticket或release里。有些个人节奏和习惯，支撑着可持续的工作状态。",
-          "signal": "个人纪律帮助我和团队保持更长期、稳定的节奏。"
-        }
-      },
+      "tabsLabel": "按分组筛选照片",
       "captions": {
-        "veryGood": "以Very Good成绩毕业 - 早期认真打下的学习基础。",
-        "scoreboard": "学习成绩记录 - 稳定积累的一小段痕迹。",
-        "testerCertificate": "Tester certificate - 学会用验证视角看产品质量。",
-        "compliance": "Compliance Refresh Training - 让产品工作更安全、更符合流程。",
-        "cybersecurity": "Cybersecurity Refresh Training - 在delivery中加强security思维。",
-        "bestRookie": "Best Rookie of the Year - 对快速进入状态和持续努力的认可。",
-        "splus": "Splus Certificate - 团队环境中的一个小节点。",
-        "primeAward": "Award at PrimeData - delivery中ownership和主动性的结果。",
-        "upraceMedals": "UpRace medals - 在工作之外训练长期节奏和耐力。",
-        "uprace323": "UpRace 323km - 小小的公里数累积成值得记住的结果。",
-        "penangHill": "Penang Hill 11km - 一段一段坚持，最后到达山顶。",
-        "deskWorking": "一个普通的工作角落 - 纪律每天都在这里重复。",
-        "chessProject": "Chess games project - 从逻辑、UI和游戏体验构建产品。",
-        "watProject": "WAT project - 团队产品工作留下的痕迹。",
-        "essay": "文章与分享 - 练习把想法讲清楚。",
-        "teamEssay": "团队协作的一刻 - 想法只有被一起实现时才更有价值。",
-        "drone": "Drone applications - 把产品想法探索到可运行模型。",
-        "bonbonTeam": "BonBon联合创始人 - 三个人一起学习，一步一步认真打造汽车养护产品。",
-        "bonbonPreSeed": "BonBon获得Tasco与GenAI Fund参与的50万美元pre-seed - 默默积累的准备终于被看见。",
-        "wash3000DemoDay": "Tasco Foundry的Wash3000 Demo Day - 与其他Top 10团队一起学习的一天。"
+        "wash3000DemoDay": "BonBon 在 Tasco Foundry 的 Wash3000 Demo Day，是从约 100 份申请中入选的 10 支团队之一。",
+        "bonbonPreSeed": "BonBon Mobility 的 50 万美元 pre-seed 轮，由 Tasco 领投、GenAI Fund 跟投，于 2026 年 9 月 21 日宣布。",
+        "bonbonTeam": "BonBon Mobility 的联合创始人：Nguyen Chi Dung、Vu Duy Hung 和我。",
+        "bestRookie": "Splus Software 年度最佳新人（Best Rookie of the Year），2019 年。",
+        "primeAward": "PrimeData 最有价值员工（Most Valuable Employee），2020 年 8 月。",
+        "splus": "Splus Software 颁发的 2019 年度最佳新人证书。",
+        "veryGood": "农林大学（Nong Lam University）为优秀（Very Good）毕业颁发的奖状。",
+        "scoreboard": "农林大学成绩单，GPA 3.36。",
+        "testerCertificate": "Global Software Tester 课程结业证书，240 小时，A 级，2019 年 6 月。",
+        "compliance": "Compliance Refresh Training，可在 Coursera 上验证。",
+        "cybersecurity": "Cybersecurity Refresh Training，可在 Coursera 上验证。",
+        "upraceMedals": "UpRace 2024 完赛奖牌：5 公里、10 公里和 21 公里。",
+        "uprace323": "UpRace 323 公里证书。",
+        "penangHill": "马来西亚槟城升旗山徒步，11 公里。",
+        "deskWorking": "在自己的工位上写代码。",
+        "essay": "农林大学信息技术学院的毕业论文答辩。",
+        "teamEssay": "毕业论文答辩时展示的无人机。",
+        "drone": "实验台上正在组装的无人机：机架、电机和控制板。",
+        "chessProject": "带 AI 对手的中国象棋，是我在农林大学读书时做的游戏。",
+        "watProject": "WAT，Splus Software 的客户项目，2019 年。"
       },
-      "featured": "重点信号",
-      "supporting": "补充信号",
-      "openProof": "打开信号",
-      "verified": "已验证来源",
-      "original": "完整图片",
+      "verified": "来源",
+      "original": "原图",
       "categories": {
-        "certificates": "证书",
-        "awards": "奖项",
-        "projects": "项目",
-        "activities": "活动"
+        "bonbon": "BonBon Mobility",
+        "recognition": "荣誉",
+        "education": "学历与证书",
+        "outside": "工作之外",
+        "earlier": "早期项目"
       }
     },
     "thoughts": {
@@ -548,6 +573,8 @@
       "intro": "关于软件架构与源码结构的深度文章，写得让初学者也能读懂，同时对大规模交付的团队同样有用。配有图示、真实案例，绝不空谈。职业与生活方面的思考放在<notes>笔记</notes>里。",
       "categoriesHeading": "按主题浏览",
       "latestHeading": "最新文章",
+      "startHereHeading": "从这里开始",
+      "seriesHeading": "按系列阅读",
       "empty": "暂无文章——第一篇即将发布。",
       "backToBlog": "返回博客",
       "backToCategory": "返回 {category}",

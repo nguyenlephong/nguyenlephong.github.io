@@ -244,16 +244,15 @@
       "period": "03/2026 – nay",
       "context": "Mỗi khách hàng có subdomain riêng. Dữ liệu của họ không được phép lọt sang tenant khác. Sản phẩm chạy trên web và app desktop Electron. Tôi dẫn team bốn người và quyết kiến trúc.",
       "decisions": [
-        "Gắn tenant vào mọi token và RBAC thay vì tin subdomain, vì route có lúc đi sai.",
-        "Tự dựng OAuth 2.1/OIDC thay vì hai luồng login, vì Electron login như web.",
-        "Người xác nhận cả 8 phần thay vì để AI tự điền, vì sai một ô là khách mất tiền."
+        "Mọi token và mọi lần check RBAC đều gắn tenant, nên chỉ có subdomain thì không đủ quyền truy cập.",
+        "Web và app Electron dùng chung một OAuth 2.1/OIDC provider tự dựng, đăng nhập bằng PKCE.",
+        "AI chỉ gợi ý giá trị, người dùng xác nhận lần lượt cả 8 phần của tờ khai."
       ],
       "outcome": [
         "<b>9 repo</b> chung một kiến trúc (số liệu 08/2026): một UI Next.js cho cả web lẫn Electron, control plane NestJS, data plane AI viết bằng FastAPI.",
         "<b>6</b> runtime role theo least privilege và <b>31</b> API endpoint có type rõ ràng cho luồng hải quan.",
         "Tờ khai xuất lên UAT tháng 10/2026, kèm bộ phân loại chứng từ chạy theo rule."
-      ],
-      "evidenceNote": "Repo private nên không có link công khai."
+      ]
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -262,9 +261,9 @@
       "period": "04/2026 – nay",
       "context": "BonBon kết nối chủ xe với garage và tiệm rửa xe. Tôi đồng sáng lập và trực tiếp làm sản phẩm: một Mini App 12 màn hình chạy trong app VETC, nơi có <b>4,3 triệu người dùng</b> theo số Tasco công bố tháng 4/2026. Mỗi lần release đều phải qua quy trình duyệt thay đổi và quy trình bảo mật của VETC, gồm OWASP review và một đợt pentest độc lập.",
       "decisions": [
-        "Đăng nhập bằng phiên VETC thay vì thêm OTP, vì VETC đã xác thực rồi.",
-        "Session chỉ trong memory thay vì lưu token, vì VETC không cho lưu.",
-        "Kill switch mặc định tắt thay vì release dồn, vì release phải chờ VETC duyệt."
+        "Chủ xe đăng nhập bằng phiên VETC sẵn có, không phải nhập thêm OTP.",
+        "Session chỉ nằm trong memory, vì VETC không cho lưu token xuống trình duyệt.",
+        "Tính năng mới nằm sau kill switch, mặc định tắt, có sự cố thì tắt ngay mà không cần release."
       ],
       "outcome": [
         "BonBon thắng Tasco Foundry Wash3000: khoảng <b>100</b> hồ sơ, chọn ra 10 đội, 3 đội vào chung kết, 1 đội thắng (GenAI Fund, 09/2026).",
@@ -304,16 +303,16 @@
       "description": "Lead Software Engineer tại Zalo PC, đồng sáng lập BonBon (pre-seed 500.000 USD do Tasco dẫn dắt). Nhắn tin quy mô lớn, rollout an toàn, SaaS multi-tenant."
     },
     "about": {
-      "title": "Giới thiệu: Backend và Platform Engineering | Nguyễn Lê Phong",
-      "description": "Cách Nguyễn Lê Phong xây dựng và dẫn dắt hệ thống production, từ backend, integration bảo mật và Kubernetes đến observability cùng các đợt rollout cẩn trọng."
+      "title": "Về Nguyễn Lê Phong: Lead ở Zalo PC, đồng sáng lập BonBon",
+      "description": "Từ công ty outsource đến vị trí Lead ở Zalo PC và đồng sáng lập BonBon Mobility, cùng những thói quen làm việc tôi mang theo vào mỗi team."
     },
     "apps": {
       "title": "Ứng dụng: Công cụ nhỏ mã nguồn mở | Nguyễn Lê Phong",
-      "description": "Một bộ sưu tập gọn gồm các tiện ích open-source và công cụ nhỏ do Nguyễn Lê Phong xây dựng, tập trung vào tốc độ, tính thực dụng và trải nghiệm dễ chịu."
+      "description": "Công cụ nhỏ Nguyễn Lê Phong tự làm để dùng trong công việc. Đầu tiên là Glance, app menu bar trên macOS, bấm một phím tắt là dịch đoạn chữ đang chọn."
     },
     "gallery": {
-      "title": "Bộ sưu tập: Chứng chỉ, giải thưởng, dự án | Nguyễn Lê Phong",
-      "description": "Chứng chỉ, ghi nhận, ảnh dự án và những thói quen bền bỉ cho thấy cách Nguyễn Lê Phong học hỏi, xây dựng sản phẩm và làm việc cùng team."
+      "title": "Ảnh và chứng nhận | Nguyễn Lê Phong",
+      "description": "BonBon Mobility ở Demo Day Wash3000 của Tasco Foundry và vòng pre-seed 500.000 USD, Best Rookie of the Year 2019 ở Splus Software, cùng các chứng chỉ có nguồn."
     }
   },
   "Offline": {
@@ -350,109 +349,41 @@
       "intro": "Không gian công khai tập hợp ghi chú, checklists và system flows tôi dùng để review architecture, chuẩn bị release, setup công cụ và làm việc với AI có trách nhiệm."
     },
     "gallery": {
-      "eyebrow": "Bộ sưu tập",
-      "title": "Những mảnh ghép phía sau CV",
-      "sub": "CV thường kể rất nhanh: vai trò, công ty, kỹ năng. Trang này chậm hơn một chút, gom lại vài chứng chỉ, ghi nhận, dự án và khoảnh khắc đời thường để bạn thấy rõ hơn cách mình học, làm việc và đi đường dài.",
+      "title": "Ảnh và chứng nhận",
+      "sub": "Giải thưởng, chứng chỉ và vài khoảnh khắc trong công việc. Bấm vào ảnh để mở bản gốc hoặc nguồn xác nhận.",
       "back": "← Quay lại CV",
       "all": "Tất cả",
-      "tabsLabel": "Bộ lọc dấu ấn nghề nghiệp",
-      "hero": {
-        "kicker": "Một góc nhìn gần hơn",
-        "title": "Không chỉ là ảnh, mà là những chặng mình đã đi qua",
-        "lead": "Mỗi tấm ảnh ở đây gắn với một việc rất thật: học thêm một kỹ năng, hoàn thành một dự án, được team ghi nhận, hoặc tự rèn sức bền bên ngoài công việc. Mình muốn trang này đọc nhẹ như một câu chuyện, nhưng vẫn đủ rõ để người tuyển dụng có thêm niềm tin.",
-        "primaryCta": "Xem từng chặng",
-        "scanNote": "Nếu bạn đang đọc nhanh, hãy lướt phần tóm tắt trước rồi mở nhóm ảnh cần xem kỹ.",
-        "proofTitle": "Những chuyện nhỏ nói thêm về cách mình làm việc"
-      },
-      "stats": {
-        "label": "Một vài con số nhỏ",
-        "proofs": "Mảnh ghép",
-        "proofsDetail": "Chứng chỉ, ảnh dự án và những khoảnh khắc có thật.",
-        "certifications": "Chứng chỉ",
-        "certificationsDetail": "Những lần chủ động học thêm để làm việc chắc hơn.",
-        "recognitions": "Ghi nhận",
-        "recognitionsDetail": "Những ghi nhận đến từ quá trình làm thật, cùng team thật.",
-        "builds": "Dự án",
-        "buildsDetail": "Một vài sản phẩm, demo và bài làm đã thành hình."
-      },
-      "trust": {
-        "label": "Góc nhìn cho người tuyển dụng",
-        "title": "Có thể nhìn thấy gì ở đây?",
-        "learning": {
-          "title": "Biết học thêm khi công việc cần",
-          "body": "Mình không xem chứng chỉ là thứ để trang trí. Với mình, đó là cách nhắc bản thân phải hiểu kỹ hơn trước khi làm."
-        },
-        "delivery": {
-          "title": "Đi cùng công việc tới lúc hoàn thành",
-          "body": "Các dự án và ghi nhận ở đây cho thấy một điều giản dị: khi đã nhận việc, mình cố gắng đi tới cùng với team."
-        },
-        "team": {
-          "title": "Giữ được nhịp bền bỉ",
-          "body": "Những hoạt động ngoài công việc giúp mình rèn sức bền, giữ năng lượng và học cách kiên trì qua từng chặng."
-        }
-      },
-      "story": {
-        "label": "Đọc theo một mạch",
-        "title": "Mỗi tấm ảnh là một đoạn đường nhỏ",
-        "body": "Có ảnh nói về việc học, có ảnh nói về team, có ảnh nói về những dự án từng làm, cũng có ảnh nhắc mình về sức bền. Gom lại, chúng kể một câu chuyện đơn giản hơn: mình vẫn đang cố gắng tốt lên từng chút."
-      },
-      "categoryNotes": {
-        "all": "Xem trọn mạch từ học tập, dự án, ghi nhận tới thói quen đi đường dài.",
-        "certificates": "Những lần học thêm để hiểu việc sâu hơn và làm cẩn thận hơn.",
-        "awards": "Những lời ghi nhận nhỏ cho sự chủ động, trách nhiệm và bền bỉ.",
-        "projects": "Những thứ từng được xây, được thử, được trình bày hoặc đưa vào làm thật.",
-        "activities": "Những khoảnh khắc đời thường giúp mình giữ năng lượng và sức bền."
-      },
-      "categoryIntros": {
-        "certificates": {
-          "body": "Đây là những lần mình chọn ngồi lại học thêm: có khi để hiểu rõ hơn về quality, có khi để cẩn thận hơn với compliance, security và cách sản phẩm vận hành ngoài đời thật.",
-          "signal": "Mình học đều để hiểu việc sâu hơn và làm chắc hơn theo thời gian."
-        },
-        "awards": {
-          "body": "Mỗi ghi nhận ở đây đều gắn với một giai đoạn cụ thể: có lúc mình mới vào việc, có lúc đi cùng team qua một thử thách, có lúc tự đặt mục tiêu dài hơi và hoàn thành nó.",
-          "signal": "Những ghi nhận này đến từ môi trường làm việc thật, nơi sự đều đặn và trách nhiệm được nhìn thấy rõ nhất."
-        },
-        "projects": {
-          "body": "Phần này là vài lát cắt từ sản phẩm, demo và bài làm. Điều mình quý không chỉ là màn hình cuối cùng, mà là quá trình biến một ý tưởng thành thứ có thể chạy, có thể giải thích và tiếp tục cải thiện.",
-          "signal": "Mình thích biến ý tưởng thành thứ cụ thể, chạy được, giải thích được và còn có thể cải thiện tiếp."
-        },
-        "activities": {
-          "body": "Có những thứ không nằm trong Jira ticket hay release note, nhưng vẫn ảnh hưởng trực tiếp tới cách làm việc: góc bàn, thói quen, sức bền và cách mình giữ nhịp qua những ngày dài.",
-          "signal": "Kỷ luật cá nhân giúp mình giữ sức bền để đi xa hơn cùng team."
-        }
-      },
+      "tabsLabel": "Lọc ảnh theo nhóm",
       "captions": {
-        "veryGood": "Tốt nghiệp loại Very Good, một dấu mốc nhắc mình về những năm học nghiêm túc.",
-        "scoreboard": "Bảng điểm và kết quả học tập, phần lặng lẽ phía sau một chặng đường dài.",
-        "testerCertificate": "Tester certificate, bài học về việc nhìn sản phẩm bằng con mắt kiểm chứng.",
-        "compliance": "Compliance Refresh Training, học cách giữ sản phẩm trong chuẩn mực an toàn và đúng quy trình.",
-        "cybersecurity": "Cybersecurity Refresh Training, nhắc mình luôn đặt bảo mật vào quá trình làm sản phẩm.",
-        "bestRookie": "Best Rookie of the Year, một ghi nhận cho giai đoạn vào việc nhanh và chịu khó.",
-        "splus": "Splus Certificate, một dấu mốc nhỏ từ những ngày làm việc cùng team.",
-        "primeAward": "Award at PrimeData, ghi nhận cho sự chủ động và trách nhiệm trong công việc.",
-        "upraceMedals": "UpRace medals, những lần chạy nhỏ giúp mình rèn sức bền ngoài công việc.",
-        "uprace323": "UpRace 323km, từng ki-lô-mét cộng lại thành một kết quả đáng nhớ.",
-        "penangHill": "Penang Hill 11km, một chặng leo núi nhắc mình rằng cứ đi đều rồi sẽ tới đỉnh.",
-        "deskWorking": "Một góc làm việc bình thường, nơi những việc quan trọng thường được lặp lại rất lặng lẽ.",
-        "chessProject": "Chess games project, một bài làm nhỏ từ logic, UI và cảm giác chơi.",
-        "watProject": "WAT project, một lát cắt từ quá trình làm sản phẩm trong môi trường team.",
-        "essay": "Bài luận và chia sẻ, nơi mình tập nói rõ hơn những điều mình nghĩ.",
-        "teamEssay": "Khoảnh khắc làm việc cùng team, vì ý tưởng chỉ thật sự có giá trị khi được triển khai.",
-        "drone": "Drone applications, thử đưa một ý tưởng thành mô hình có thể chạy được.",
-        "bonbonTeam": "Ba người đồng sáng lập BonBon, cùng nhau học cách xây một sản phẩm chăm sóc xe từng bước cẩn thận.",
-        "bonbonPreSeed": "Vòng pre-seed 500.000 USD của BonBon cùng Tasco và GenAI Fund, phần việc lặng lẽ cuối cùng cũng được nhìn thấy.",
-        "wash3000DemoDay": "Wash3000 Demo Day tại Tasco Foundry, một ngày học hỏi cùng các đội Top 10."
+        "wash3000DemoDay": "BonBon tại Demo Day Wash3000 của Tasco Foundry, một trong 10 đội được chọn từ khoảng 100 hồ sơ.",
+        "bonbonPreSeed": "Vòng pre-seed 500.000 USD của BonBon Mobility, do Tasco dẫn dắt, GenAI Fund cùng đầu tư, công bố ngày 21/09/2026.",
+        "bonbonTeam": "Ba nhà đồng sáng lập BonBon Mobility: Nguyen Chi Dung, Vu Duy Hung và tôi.",
+        "bestRookie": "Best Rookie of the Year tại Splus Software, năm 2019.",
+        "primeAward": "Most Valuable Employee tại PrimeData, tháng 8/2020.",
+        "splus": "Giấy chứng nhận Best Rookie of the Year 2019 của Splus Software.",
+        "veryGood": "Giấy khen của Trường Đại học Nông Lâm TP.HCM cho kết quả tốt nghiệp loại Giỏi.",
+        "scoreboard": "Bảng điểm Đại học Nông Lâm TP.HCM, GPA 3.36.",
+        "testerCertificate": "Khoá Global Software Tester 240 giờ, đạt level A, tháng 6/2019.",
+        "compliance": "Compliance Refresh Training, xác minh được trên Coursera.",
+        "cybersecurity": "Cybersecurity Refresh Training, xác minh được trên Coursera.",
+        "upraceMedals": "Huy chương hoàn thành UpRace 2024 ở cự ly 5 km, 10 km và 21 km.",
+        "uprace323": "Chứng nhận UpRace 323 km.",
+        "penangHill": "Trekking Penang Hill ở Malaysia, 11 km.",
+        "deskWorking": "Ngồi code ở bàn làm việc.",
+        "essay": "Buổi bảo vệ luận văn tốt nghiệp ở Khoa Công nghệ Thông tin, Đại học Nông Lâm TP.HCM.",
+        "teamEssay": "Chiếc drone mang ra buổi bảo vệ luận văn.",
+        "drone": "Drone đang lắp trên bàn lab: khung, motor và mạch điều khiển.",
+        "chessProject": "Cờ tướng có AI, game tôi làm khi học ở Đại học Nông Lâm.",
+        "watProject": "WAT, dự án làm cho khách hàng ở Splus Software, năm 2019."
       },
-      "featured": "Mảnh ghép nổi bật",
-      "supporting": "Mảnh ghép liên quan",
-      "openProof": "Mở mảnh ghép",
-      "verified": "Nguồn xác thực",
-      "original": "Xem ảnh đầy đủ",
+      "verified": "Nguồn",
+      "original": "Ảnh gốc",
       "categories": {
-        "certificates": "Chứng chỉ",
-        "awards": "Giải thưởng",
-        "projects": "Dự án",
-        "activities": "Hoạt động"
+        "bonbon": "BonBon Mobility",
+        "recognition": "Ghi nhận",
+        "education": "Học vấn và chứng chỉ",
+        "outside": "Ngoài công việc",
+        "earlier": "Dự án trước đây"
       }
     },
     "thoughts": {
@@ -569,9 +500,11 @@
       },
       "eyebrow": "Bài viết",
       "title": "Blog",
-      "intro": "Một góc đọc dễ vào về software architecture, source code, AI và cách team phần mềm làm việc. Mỗi bài đi từ tình huống thật, giải thích bằng ngôn ngữ gần gũi, giữ lại những thuật ngữ quan trọng để người mới không bị ngợp và người đi làm lâu vẫn tìm được một góc nhìn có thể áp dụng ngay. Chuyện nghề và chuyện đời tôi để riêng bên <notes>Ghi chép</notes>.",
+      "intro": "Viết từ việc làm phần mềm và dẫn team: kiến trúc, AI trong công việc kỹ thuật hằng ngày, và cách một team thật sự ship. Có bài ngắn, có bài hướng dẫn dài. Chuyện nghề và chuyện đời tôi để riêng bên <notes>Ghi chép</notes>.",
       "categoriesHeading": "Chọn mạch đọc bạn quan tâm",
       "latestHeading": "Bài mới để đọc tiếp",
+      "startHereHeading": "Nên đọc trước",
+      "seriesHeading": "Đọc theo loạt bài",
       "empty": "Chưa có bài viết nào — bài đầu tiên sắp ra mắt.",
       "backToBlog": "Về trang Blog",
       "backToCategory": "Về {category}",
@@ -615,149 +548,93 @@
     }
   },
   "About": {
-    "hero": {
-      "eyebrow": "Hồ sơ kỹ thuật",
-      "title": "Tôi xây dựng hệ thống sản phẩm có thể release, quan sát và phục hồi.",
-      "lead": "Công việc hiện tại của tôi nằm giữa <strong>product engineering</strong> và <strong>platform reliability</strong>: giao diện front-end, backend service, integration bảo mật, hệ thống rollout, hạ tầng Kubernetes và mô hình vận hành giúp team release ít phải đoán mò hơn.",
-      "metricsLabel": "Tín hiệu kỹ thuật hiện tại",
-      "metrics": [
-        {
-          "value": "8+",
-          "label": "năm ship phần mềm production"
-        },
-        {
-          "value": "11",
-          "label": "thành viên trong delivery team tôi đang lead"
-        },
-        {
-          "value": "30+",
-          "label": "tenant được phục vụ bởi hệ thống rollout"
-        },
-        {
-          "value": "~40k",
-          "label": "người dùng phía sau nền tảng feature flag"
-        }
-      ]
+    "title": "Tôi xây hệ thống sản phẩm release được, theo dõi được, khôi phục được.",
+    "lede": "Tôi làm phần mềm từ năm 2018: ở một startup còn rất sớm, một công ty outsource, một công ty làm sản phẩm, ở Zalo và ở một công ty đang chuyển giao CTO. Năm 2026 tôi đồng sáng lập thêm một startup. Mỗi lần chuyển việc đều đổi cách tôi làm.",
+    "arc": {
+      "label": "Các chặng từ năm 2018",
+      "early": "Startup, outsource",
+      "product": "Sản phẩm",
+      "scale": "Big tech",
+      "handover": "Chuyển giao",
+      "now": "Lead, đồng sáng lập"
     },
-    "systems": {
-      "eyebrow": "Trọng tâm hiện tại",
-      "title": "Lớp hệ thống tôi đang vận hành",
-      "intro": "Tôi vẫn quan tâm đến giao diện chỉn chu, nhưng giá trị hiện tại rộng hơn: nối quyết định sản phẩm với backend contract, đường đi hạ tầng, kiểm soát release và khả năng chẩn đoán production.",
-      "items": [
-        {
-          "title": "Backend service & integration bảo mật",
-          "body": "Tôi làm việc với <strong>.NET Core</strong>, <strong>Node.js</strong> và <strong>Java Spring</strong>, tập trung vào REST/GraphQL contract, auth, mã hoá, backward compatibility, retry, idempotency và độ bất ổn từ hệ thống đối tác.",
-          "tags": [
-            ".NET Core",
-            "Node.js",
-            "Java Spring",
-            "REST/GraphQL",
-            "mTLS"
-          ]
+    "story": {
+      "title": "Những chặng đã qua",
+      "periods": {
+        "early": {
+          "dates": "2018–2020",
+          "where": "Propman Guru, rồi Splus Software",
+          "env": "Startup giai đoạn đầu, rồi outsource",
+          "body": "Tôi bắt đầu làm front-end ở Propman Guru, một startup bất động sản còn rất sớm. Sau đó là 16 tháng ở Splus Software, công ty outsource: hơn 8 dự án cho khách hàng giáo dục, F&B, ngân hàng và thương mại điện tử, lần đầu dẫn một team nhỏ. Năm 2019 tôi nhận giải Best Rookie of the Year.",
+          "shift": "Ở đây tôi đi trọn một vòng dự án, từ lúc nhận yêu cầu của khách đến lúc bàn giao."
         },
-        {
-          "title": "Platform, infra & traffic path",
-          "body": "Tôi tham gia vào đường đi production quanh <strong>Docker</strong>, <strong>Kubernetes</strong>, <strong>AKS/FKE/K3S/EKS</strong>, <strong>ArgoCD</strong>, CI/CD, domain/SSL, ingress, load balancer routing và các bước phục hồi khi hệ thống đang chịu áp lực.",
-          "tags": [
-            "Kubernetes",
-            "ArgoCD",
-            "CI/CD",
-            "Ingress",
-            "Load balancer"
-          ]
+        "product": {
+          "dates": "2020–2024",
+          "where": "PrimeData",
+          "env": "Startup sản phẩm B2B",
+          "body": "Gần bốn năm với một sản phẩm: CDxP, nền tảng dữ liệu khách hàng. Tôi dẫn team front-end bốn người, giữ tracking SDK dưới <b>200 KB</b> và làm bộ feature flag runtime đầu tiên của mình.",
+          "shift": "Ở lâu với một sản phẩm thì phải sống với quyết định của chính mình. Feature flag, giới hạn dung lượng và bộ test chạy trước mỗi lần release thành thói quen từ đây."
         },
-        {
-          "title": "Progressive delivery",
-          "body": "Tôi đã xây dựng <strong>nền tảng feature flag multi-tenant</strong> với rule ưu tiên, rollout theo tenant/segment/env, JSON-config values và runtime stateless để release đi từng bước thay vì bật toàn bộ cùng lúc.",
-          "tags": [
-            "Feature flags",
-            "30+ tenant",
-            "Rollout rules",
-            "Runtime config"
-          ]
+        "scale": {
+          "dates": "2024–2025",
+          "where": "Zalo PC",
+          "env": "Big tech, sản phẩm đại chúng",
+          "body": "App desktop hơn <b>15 triệu MAU</b>. Tôi làm dark mode, đổi theme động và module tải file. Tôi cũng dẫn dắt design system trên Storybook mà hơn 50 developer dùng chung.",
+          "shift": "Component dùng chung và một app có hàng triệu người dùng buộc tôi đặt độ ổn định lên trước tốc độ."
         },
-        {
-          "title": "Observability & vận hành rõ ràng",
-          "body": "Tôi xây các feedback loop quanh release: PostHog, metrics pipeline, API health check, anomaly review, rollback readiness, RFC, runbook và release criteria để sự cố dễ hiểu hơn.",
-          "tags": [
-            "PostHog",
-            "Metrics",
-            "Runbook",
-            "Rollback",
-            "Release review"
-          ]
+        "handover": {
+          "dates": "2025–2026",
+          "where": "NDSVN",
+          "env": "Doanh nghiệp, đối tác thanh toán và viễn thông",
+          "body": "Tôi vào ngay sau đợt chuyển giao CTO, nhận phụ trách kỹ thuật cho team delivery 8 developer và 3 QC. Tôi dựng quy trình phỏng vấn có cấu trúc để tuyển người, rồi ra nền tảng feature flag cho <b>30+ tenant</b>.",
+          "shift": "Dẫn team lúc đó nghĩa là viết ra cách cả team làm việc, để không quyết định nào phải chờ một người."
+        },
+        "now": {
+          "dates": "2026–nay",
+          "where": "Zalo PC, BonBon Mobility, LogiUP",
+          "env": "Big tech, startup của mình, SaaS B2B",
+          "body": "Zalo nhận tôi quay lại làm Lead từ tháng 3/2026, dẫn mảng tin nhắn đa thiết bị và lưu trữ phía client, trong đó có sao lưu tin nhắn trên PC rồi khôi phục trên điện thoại. Tôi cũng đồng sáng lập BonBon Mobility. BonBon thắng Wash3000 của Tasco Foundry giữa khoảng 100 hồ sơ và nhận vòng pre-seed <b>500.000 USD</b> do Tasco dẫn dắt. Ở LogiUP, một SaaS logistics multi-tenant, tôi là Tech Lead kiêm system architect của team bốn người.",
+          "shift": "Ở vai trò này, phần lớn việc của tôi là ra quyết định: kiến trúc tách ra sao, cái gì ship ở trạng thái mặc định tắt, bài review bảo mật của đối tác sẽ chấp nhận điều gì."
         }
-      ]
+      }
     },
-    "stack": {
-      "eyebrow": "Chiều sâu kỹ thuật",
-      "title": "Những chi tiết kỹ thuật tôi chú ý",
-      "intro": "Hệ thống tốt với tôi không chỉ đủ feature. Nó cần contract rõ, failure mode có thể đoán được và đủ dấu hiệu vận hành để team tìm ra vấn đề trước khi người dùng cảm nhận.",
-      "groups": [
-        {
-          "title": "Kỹ thuật backend",
-          "items": [
-            "<strong>API contract tương thích ngược</strong> cho mobile, web và enterprise client.",
-            "<strong>RSA-4096 handshake, AES-256 payload encryption, mTLS, certificate pinning</strong> và ACK-driven monitoring cho integration tài chính.",
-            "<strong>Retry queue và idempotent API</strong> cho đối tác chậm, bất ổn hoặc xử lý bất đồng bộ.",
-            "<strong>Stateless runtime evaluation</strong> cho rollout rule, JSON config, tenant và segment targeting."
-          ]
+    "habits": {
+      "title": "Cách tôi làm việc",
+      "items": {
+        "trace": {
+          "title": "Trace trước khi viết lại",
+          "proof": "Ở Zalo PC, sync v2 có devtool giả lập rớt kết nối mobile, đi cùng phần retry. Một lookup trên hot path giảm từ <b>1,8 s xuống 4 ms</b> trong bài test 37 phiên.",
+          "source": "Zalo PC · 2026"
         },
-        {
-          "title": "Kỹ thuật hạ tầng",
-          "items": [
-            "<strong>Vận hành Kubernetes cluster</strong> trên các môi trường AKS, FKE, K3S và EKS.",
-            "<strong>Ingress, load balancer, domain và SSL path</strong> được xem là một phần của product delivery flow, không phải hộp đen.",
-            "<strong>ArgoCD và CI/CD pipeline</strong> cho release lặp lại được, kiểm soát môi trường và phục hồi.",
-            "<strong>Chẩn đoán production</strong> qua log, metric, health check và recovery step được tài liệu hoá."
-          ]
+        "contracts": {
+          "title": "Chốt contract trước khi viết nhiều code",
+          "proof": "Tích hợp Gtel và Napas ở NDSVN chạy trên contract idempotent, có retry queue và theo dõi ACK, nên message phát lại từ queue không gây hậu quả.",
+          "source": "NDSVN · 2025–2026"
         },
-        {
-          "title": "Kiến trúc release",
-          "items": [
-            "<strong>Micro-Frontend composition</strong> với Angular host và React module để giảm coupling khi deploy.",
-            "<strong>Feature-flag rollout</strong> theo tenant, segment, environment và percentage.",
-            "<strong>Observability workflow</strong> cho feature adoption, regression tracing và anomaly review.",
-            "<strong>Rollback criteria và release checklist</strong> để delivery vẫn có kiểm soát khi áp lực cao."
-          ]
+        "rollout": {
+          "title": "Rollout trước, release sau",
+          "proof": "Feature flag runtime ở PrimeData, nền tảng flag cho <b>30+ tenant</b> ở NDSVN, kill switch mặc định tắt ở Zalo PC và BonBon.",
+          "source": "PrimeData, NDSVN, Zalo PC, BonBon · 2020–2026"
         },
-        {
-          "title": "Hệ thống cho team",
-          "items": [
-            "<strong>Ownership boundary</strong>, org chart, competency matrix và workload routing sau giai đoạn chuyển giao leadership.",
-            "<strong>RFC, runbook, technical spec</strong> và troubleshooting guide để giảm kiến thức ẩn.",
-            "<strong>Hiring, onboarding, 1:1 coaching</strong> và review loop cho developer và QC engineer.",
-            "<strong>Branch strategy, commit convention, release tagging</strong> và integration rule giúp delivery dễ dự đoán hơn."
-          ]
+        "writing": {
+          "title": "Viết ra để không ai phải chờ tôi",
+          "proof": "Sau đợt chuyển giao ở NDSVN, tôi viết sơ đồ ownership, playbook release và runbook. BonBon chạy trên <b>89</b> spec viết sẵn.",
+          "source": "NDSVN, BonBon · 2025–2026"
         }
-      ]
+      },
+      "stack": "Đang dùng (tháng 11/2026): TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog."
     },
-    "principles": {
-      "eyebrow": "Cách tôi làm việc",
-      "title": "Nguyên tắc tôi mang vào hệ thống production",
-      "intro": "Đây là các thói quen thực tế, không phải khẩu hiệu. Chúng đến từ việc nhìn thấy hệ thống lỗi theo những cách rất đời thường và học cách để lần release sau dễ hiểu hơn.",
-      "items": [
-        {
-          "title": "Trace trước khi rewrite",
-          "body": "Khi hệ thống hành xử lạ, tôi nhìn đường đi trước: request flow, data contract, log, metric, lịch sử release và thay đổi hạ tầng."
-        },
-        {
-          "title": "Contract trước số lượng code",
-          "body": "Backend service dễ vận hành hơn khi API, retry, idempotency, security boundary và compatibility rule rõ ràng."
-        },
-        {
-          "title": "Rollout trước big-bang release",
-          "body": "Feature flag, tenant targeting, staged deployment và rollback criteria giúp sản phẩm đi tiếp đều hơn mà không biến mỗi release thành một canh bạc."
-        },
-        {
-          "title": "Tài liệu phải giảm gián đoạn",
-          "body": "Spec, runbook và checklist hữu ích khi chúng giúp một kỹ sư khác chẩn đoán, phục hồi hoặc tiếp tục công việc mà không phải chờ một người duy nhất."
-        }
-      ]
+    "writing": {
+      "title": "Tôi học bằng cách viết ra.",
+      "body": "Tôi viết <blog>blog</blog> và <notes>ghi chép</notes> về những gì công việc dạy tôi: dẫn team, rollout, mặc định an toàn, làm việc cùng AI. Nếu chỉ đọc hai bài, bạn có thể bắt đầu với <note>phần kỹ thuật phía sau vòng 500.000 USD của BonBon</note> và <post>feature flag để deploy an toàn hơn</post>.",
+      "teaching": "Tháng 5/2023 tôi dạy một khoá front-end theo dự án ở Vietnam Australia Center cho <b>12 học viên</b>, đi từ yêu cầu tới app React chạy được."
     },
     "closing": {
-      "label": "Ghi chú kết About",
-      "body": "Tôi làm tốt nhất ở những team có <strong>sản phẩm nhiều tham vọng</strong> chạy trên một backend <strong>không được phép lỗi</strong>. Việc của tôi là giữ cho backend đó đủ ổn định để team ship mà không phải nín thở."
+      "body": "Tôi làm tốt nhất ở những team có <b>sản phẩm nhiều tham vọng</b> chạy trên một backend <b>không được phép lỗi</b>. Việc của tôi là giữ cho backend đó đủ ổn định để team ship mà không phải nín thở.",
+      "linksLabel": "CV, email và kinh nghiệm",
+      "resume": "CV (PDF)",
+      "email": "Email",
+      "experience": "Xem kinh nghiệm"
     }
   },
   "ReaderTools": {

@@ -244,16 +244,15 @@
       "period": "Mar 2026 – now",
       "context": "Each customer gets its own subdomain, and its data must never reach another tenant. It runs on the web and as an Electron desktop app. I lead a team of four and own the architecture.",
       "decisions": [
-        "Tenant-scoped tokens and RBAC, over subdomain trust, because routes fail.",
-        "Own OAuth 2.1/OIDC, over two logins, because Electron signs in like web.",
-        "A person confirms all 8 sections, over AI autofill, because errors cost money."
+        "Every token and RBAC check carries the tenant, so a subdomain alone never grants access.",
+        "Web and the Electron app sign in through one in-house OAuth 2.1/OIDC provider, with PKCE.",
+        "AI suggests the values and a person confirms each of the 8 declaration sections."
       ],
       "outcome": [
         "<b>9 repos</b> on one architecture as of Aug 2026: one Next.js UI for web and Electron, a NestJS control plane, a FastAPI data plane for AI.",
         "<b>6</b> least-privilege runtime roles and <b>31</b> typed API endpoints behind the customs workflow.",
         "Export declarations reached UAT in Oct 2026, with a rule-based document classifier."
-      ],
-      "evidenceNote": "Private repos, so there is no public link."
+      ]
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -262,9 +261,9 @@
       "period": "Apr 2026 – now",
       "context": "BonBon connects car owners with wash and care garages. As co-founder I built the product as a 12-screen Mini App inside the VETC app, which had <b>4.3M users</b> as of April 2026 (Tasco). Every release goes through VETC's change approval and its security process, which includes an OWASP review and an independent pentest.",
       "decisions": [
-        "VETC session sign-in, over an extra OTP, because VETC verified them.",
-        "Memory-only sessions, over stored tokens, because VETC forbids storage.",
-        "Default-off kill switches, over big releases, because releases wait on approval."
+        "Car owners sign in with the VETC session they already have, with no second OTP.",
+        "Sessions live in memory only, as VETC's rules allow no token in browser storage.",
+        "New features sit behind kill switches, off by default, and can be switched off without a release."
       ],
       "outcome": [
         "BonBon won Tasco Foundry Wash3000: about <b>100</b> applicants, a top 10, three finalists, one winner (GenAI Fund, Sep 2026).",
@@ -304,16 +303,16 @@
       "description": "Lead Software Engineer at Zalo PC and co-founder of BonBon Mobility ($500K pre-seed led by Tasco). Messaging at scale, safe rollouts, multi-tenant SaaS."
     },
     "about": {
-      "title": "About: Backend, Platform & Product Engineering | Nguyen Le Phong",
-      "description": "How Nguyen Le Phong builds and leads production systems: backend services, secure integrations, Kubernetes infrastructure, observability, and careful rollouts."
+      "title": "About Nguyen Le Phong: Lead at Zalo PC, BonBon co-founder",
+      "description": "How I got from an outsourcing agency to leading cross-device sync at Zalo PC and co-founding BonBon Mobility, and the habits I bring to each team."
     },
     "apps": {
       "title": "Apps: Small Open-Source Tools | Nguyen Le Phong",
-      "description": "A focused collection of open-source utilities and small tools built by Nguyen Le Phong to stay fast, practical, and pleasant to use."
+      "description": "Small tools Nguyen Le Phong built for his own work, starting with Glance, a macOS menu-bar app that translates selected text with one hotkey. Source on GitHub."
     },
     "gallery": {
-      "title": "Gallery: Certificates, Awards & Projects | Nguyen Le Phong",
-      "description": "A curated record of certifications, recognition, project snapshots, and steady practices that show how Nguyen Le Phong learns, builds, and works with teams."
+      "title": "Photos and certificates | Nguyen Le Phong",
+      "description": "BonBon Mobility at the Tasco Foundry Wash3000 Demo Day and its $500K pre-seed, Best Rookie of the Year 2019 at Splus Software, and certificates, each sourced."
     }
   },
   "Offline": {
@@ -350,109 +349,41 @@
       "intro": "A public workspace for the notes, checklists, and visual flows I use to review architecture, prepare releases, set up tools, and work with AI responsibly."
     },
     "gallery": {
-      "eyebrow": "Gallery",
-      "title": "Signals behind the work",
-      "sub": "A small collection of what I have learned, built, earned, and kept practicing. If the resume shows the roles, this page shows the working rhythm behind them.",
+      "title": "Photos and certificates",
+      "sub": "Awards, certificates and a few moments from work. Each one opens the original image or the source that confirms it.",
       "back": "← Back to CV",
       "all": "All",
-      "tabsLabel": "Career signal filters",
-      "hero": {
-        "kicker": "Proof portfolio",
-        "title": "Small signals that say more than a few resume lines",
-        "lead": "I keep certificates, recognitions, project snapshots, and a few ordinary moments here so readers can see how I learn, work with teams, and keep delivery steady over time.",
-        "primaryCta": "View the signals",
-        "scanNote": "For recruiters scanning quickly: start with the story, then open each proof group when you need details.",
-        "proofTitle": "A more human slice of how I work"
-      },
-      "stats": {
-        "label": "Gallery signals",
-        "proofs": "Signals",
-        "proofsDetail": "Images, certificates, and moments that can be checked.",
-        "certifications": "Certifications",
-        "certificationsDetail": "Learning done to make the work more careful.",
-        "recognitions": "Recognitions",
-        "recognitionsDetail": "Results from teams, programs, and long-form challenges.",
-        "builds": "Builds",
-        "buildsDetail": "Products, demos, and work that reached a concrete shape."
-      },
-      "trust": {
-        "label": "Recruiter lens",
-        "title": "How to read this page",
-        "learning": {
-          "title": "A habit of learning and updating",
-          "body": "The certificates are not isolated badges; they show a habit of learning to handle work with more care."
-        },
-        "delivery": {
-          "title": "Responsibility for outcomes",
-          "body": "The recognitions and project snapshots point to staying with a team until the work is finished."
-        },
-        "team": {
-          "title": "Endurance and collaboration",
-          "body": "The activity moments show how I keep energy, discipline, and consistency for long-term work."
-        }
-      },
-      "story": {
-        "label": "Quick reading guide",
-        "title": "Not a photo wall, but a trace of steady progress",
-        "body": "Each group answers a small question: what I learned, where the work was trusted, what I built, and how I train endurance outside formal project work."
-      },
-      "categoryNotes": {
-        "all": "Read the full path from learning to delivery in one flow.",
-        "certificates": "Intentional learning that makes the work more grounded.",
-        "awards": "Recognition for ownership, steadiness, and responsibility.",
-        "projects": "Artifacts from things built, shipped, taught, or explored.",
-        "activities": "Ordinary moments that show energy, discipline, and long-game habits."
-      },
-      "categoryIntros": {
-        "certificates": {
-          "body": "This section shows how I keep strengthening the base: learning to understand systems better, and to be more careful with compliance, security, and product quality.",
-          "signal": "Steady learning helps the work become more careful over time."
-        },
-        "awards": {
-          "body": "These recognitions are not endpoints. They are small markers from periods where I picked things up quickly, carried responsibility, and stayed with longer challenges.",
-          "signal": "Real team environments show whether consistency can be trusted."
-        },
-        "projects": {
-          "body": "A few slices from products, demos, and coursework. The point is not only the screenshot, but the process of turning an idea into something runnable, explainable, and improvable.",
-          "signal": "Ideas matter more when they become something people can run, explain, and improve."
-        },
-        "activities": {
-          "body": "Not every career signal lives inside a ticket or release. Some habits, work corners, and personal rhythms help me keep enough energy to work sustainably.",
-          "signal": "Personal discipline helps keep the pace steady for a longer road with the team."
-        }
-      },
+      "tabsLabel": "Filter photos by group",
       "captions": {
-        "veryGood": "Graduated with Very Good classification - an early foundation built with care.",
-        "scoreboard": "Scoreboard and study results - a small trace of consistency.",
-        "testerCertificate": "Tester certificate - learning to see product quality through a verification lens.",
-        "compliance": "Compliance Refresh Training - keeping product work safe and process-aware.",
-        "cybersecurity": "Cybersecurity Refresh Training - reinforcing security thinking in delivery.",
-        "bestRookie": "Best Rookie of the Year - recognition for ramping up quickly and staying diligent.",
-        "splus": "Splus Certificate - a small milestone from a teamwork environment.",
-        "primeAward": "Award at PrimeData - a result of ownership and initiative in delivery.",
-        "upraceMedals": "UpRace medals - building endurance outside work to keep a steady long-term rhythm.",
-        "uprace323": "UpRace 323km - small kilometers adding up to a memorable result.",
-        "penangHill": "Penang Hill 11km - reaching the top one patient section at a time.",
-        "deskWorking": "An ordinary work corner - where discipline repeats day by day.",
-        "chessProject": "Chess games project - building from logic, UI, and the feel of play.",
-        "watProject": "WAT project - a trace from product work in a team environment.",
-        "essay": "Essay and sharing - practicing how to explain ideas clearly.",
-        "teamEssay": "A moment of teamwork - ideas matter more when they are implemented together.",
-        "drone": "Drone applications - exploring a product idea until it becomes a runnable model.",
-        "bonbonTeam": "BonBon co-founders - three people learning to build a car-care product together, one careful step at a time.",
-        "bonbonPreSeed": "BonBon's $500K pre-seed with Tasco and GenAI Fund - quiet groundwork that finally became visible.",
-        "wash3000DemoDay": "Wash3000 Demo Day at Tasco Foundry - a day of learning alongside the other Top 10 teams."
+        "wash3000DemoDay": "BonBon at the Tasco Foundry Wash3000 Demo Day, one of 10 teams picked from about 100 applications.",
+        "bonbonPreSeed": "BonBon Mobility's $500K pre-seed, led by Tasco with GenAI Fund co-investing, announced September 21, 2026.",
+        "bonbonTeam": "The BonBon Mobility co-founders: Nguyen Chi Dung, Vu Duy Hung and me.",
+        "bestRookie": "Best Rookie of the Year, Splus Software, 2019.",
+        "primeAward": "Most Valuable Employee, PrimeData, August 2020.",
+        "splus": "The Best Rookie of the Year 2019 certificate from Splus Software.",
+        "veryGood": "Commendation from Nong Lam University for graduating with a Very Good classification.",
+        "scoreboard": "Nong Lam University transcript, GPA 3.36.",
+        "testerCertificate": "Global Software Tester course, 240 hours, level A, June 2019.",
+        "compliance": "Compliance Refresh Training, verifiable on Coursera.",
+        "cybersecurity": "Cybersecurity Refresh Training, verifiable on Coursera.",
+        "upraceMedals": "UpRace 2024 finisher medals for 5 km, 10 km and 21 km.",
+        "uprace323": "UpRace certificate for 323 km.",
+        "penangHill": "Penang Hill trek in Malaysia, 11 km.",
+        "deskWorking": "At my desk, writing code.",
+        "essay": "Graduation thesis defense at the Faculty of IT, Nong Lam University.",
+        "teamEssay": "The drone shown at the thesis defense.",
+        "drone": "The drone on a lab bench: frame, motors and controller board.",
+        "chessProject": "AI Chinese chess, a game I built at Nong Lam University.",
+        "watProject": "WAT, a client project at Splus Software, 2019."
       },
-      "featured": "Spotlight signal",
-      "supporting": "Supporting signals",
-      "openProof": "Open signal",
-      "verified": "Verified source",
+      "verified": "Source",
       "original": "Full image",
       "categories": {
-        "certificates": "Certifications",
-        "awards": "Awards",
-        "projects": "Projects",
-        "activities": "Activities"
+        "bonbon": "BonBon Mobility",
+        "recognition": "Recognition",
+        "education": "Education and certificates",
+        "outside": "Outside work",
+        "earlier": "Earlier projects"
       }
     },
     "thoughts": {
@@ -569,9 +500,11 @@
       },
       "eyebrow": "Writing",
       "title": "Blog",
-      "intro": "Deep-dives on software architecture and the way source code is structured, written to be understood by beginners yet useful to teams shipping at scale. Diagrams, real examples, no hand-waving. Career and life reflections live in <notes>Notes</notes>.",
+      "intro": "Writing from building software and leading teams: architecture, AI in everyday engineering, and how teams actually ship. Some are short essays, some are long guides. Career and life reflections live in <notes>Notes</notes>.",
       "categoriesHeading": "Browse by topic",
       "latestHeading": "Latest articles",
+      "startHereHeading": "Start here",
+      "seriesHeading": "Read by series",
       "empty": "No articles yet — the first one is on its way.",
       "backToBlog": "Back to blog",
       "backToCategory": "Back to {category}",
@@ -615,149 +548,93 @@
     }
   },
   "About": {
-    "hero": {
-      "eyebrow": "Engineering profile",
-      "title": "I build product systems that can be shipped, observed, and recovered.",
-      "lead": "My work now sits between <strong>product engineering</strong> and <strong>platform reliability</strong>: front-end surfaces, backend services, secure integrations, rollout systems, Kubernetes infrastructure, and the operating model that lets a team release with less guesswork.",
-      "metricsLabel": "Current engineering signals",
-      "metrics": [
-        {
-          "value": "8+",
-          "label": "years shipping production software"
-        },
-        {
-          "value": "11",
-          "label": "people in the delivery team I lead"
-        },
-        {
-          "value": "30+",
-          "label": "tenants served by rollout systems"
-        },
-        {
-          "value": "~40k",
-          "label": "users behind the feature-flag platform"
-        }
-      ]
+    "title": "I build product systems that can be shipped, observed, and recovered.",
+    "lede": "I have shipped software since 2018: at an early startup, an outsourcing agency, a product company, Zalo, and a company in the middle of a CTO transition. In 2026 I also co-founded a startup. Each move changed how I work.",
+    "arc": {
+      "label": "Career route since 2018",
+      "early": "Startup, agency",
+      "product": "Product",
+      "scale": "Big tech",
+      "handover": "Handover",
+      "now": "Lead, co-founder"
     },
-    "systems": {
-      "eyebrow": "Current focus",
-      "title": "The layer I operate in now",
-      "intro": "I still care about polished user interfaces, but my current value is broader: connecting product decisions with backend contracts, infrastructure paths, release control, and production diagnosis.",
-      "items": [
-        {
-          "title": "Backend services & secure integration",
-          "body": "I work with <strong>.NET Core</strong>, <strong>Node.js</strong>, and <strong>Java Spring</strong> services, focusing on REST/GraphQL contracts, auth, encryption, backward compatibility, retry behavior, idempotency, and partner-system instability.",
-          "tags": [
-            ".NET Core",
-            "Node.js",
-            "Java Spring",
-            "REST/GraphQL",
-            "mTLS"
-          ]
+    "story": {
+      "title": "How I got here",
+      "periods": {
+        "early": {
+          "dates": "2018–2020",
+          "where": "Propman Guru, then Splus Software",
+          "env": "Early startup, then outsourcing",
+          "body": "I started in front-end at Propman Guru, an early real-estate startup. Then 16 months at Splus Software, an outsourcing agency: 8+ client projects in education, F&B, banking and e-commerce, and my first small team. Best Rookie of the Year 2019.",
+          "shift": "I learned the whole delivery cycle, from a client's first requirements to the handover."
         },
-        {
-          "title": "Platform, infra & traffic path",
-          "body": "I have been involved in the production path around <strong>Docker</strong>, <strong>Kubernetes</strong>, <strong>AKS/FKE/K3S/EKS</strong>, <strong>ArgoCD</strong>, CI/CD, domains/SSL, ingress and load-balancer routing, and recovery work when the system is already under pressure.",
-          "tags": [
-            "Kubernetes",
-            "ArgoCD",
-            "CI/CD",
-            "Ingress",
-            "Load balancer"
-          ]
+        "product": {
+          "dates": "2020–2024",
+          "where": "PrimeData",
+          "env": "B2B product startup",
+          "body": "Almost four years on one product, CDxP, a customer data platform. I led its front-end team of four, kept the tracking SDK under <b>200 KB</b> and built my first runtime feature flags.",
+          "shift": "Staying with one product meant living with my own decisions. Feature flags, size budgets and a test suite the team released against became habits."
         },
-        {
-          "title": "Progressive delivery",
-          "body": "I engineered a <strong>multi-tenant feature-flag platform</strong> with priority rules, tenant/segment/env rollout, JSON-config values, and stateless runtime evaluation so releases can move gradually instead of all at once.",
-          "tags": [
-            "Feature flags",
-            "30+ tenants",
-            "Rollout rules",
-            "Runtime config"
-          ]
+        "scale": {
+          "dates": "2024–2025",
+          "where": "Zalo PC",
+          "env": "Big tech, consumer",
+          "body": "A desktop client with <b>15M+ MAU</b>. I shipped dark mode, dynamic theming and the download module, and led the Storybook design system used by 50+ developers.",
+          "shift": "Shared components and a client used by millions put stability ahead of speed."
         },
-        {
-          "title": "Observability & operating clarity",
-          "body": "I build the feedback loops around releases: PostHog, metrics pipelines, API health checks, anomaly review, rollback readiness, RFCs, runbooks, and release criteria that make incidents easier to understand.",
-          "tags": [
-            "PostHog",
-            "Metrics",
-            "Runbooks",
-            "Rollback",
-            "Release review"
-          ]
+        "handover": {
+          "dates": "2025–2026",
+          "where": "NDSVN",
+          "env": "Enterprise, payment and telecom partners",
+          "body": "I joined right after a CTO transition and took technical ownership of a delivery team of 8 developers and 3 QC. I set up structured interviews for hiring and shipped a feature-flag platform for <b>30+ tenants</b>.",
+          "shift": "Leading meant writing down how the team works, so decisions did not wait for one person."
+        },
+        "now": {
+          "dates": "2026–now",
+          "where": "Zalo PC, BonBon Mobility, LogiUP",
+          "env": "Big tech, own startup, B2B SaaS",
+          "body": "Zalo hired me back as Lead in March 2026, for cross-device messaging and client storage, including PC message backup with restore on mobile. I also co-founded BonBon Mobility: it won Tasco Foundry's Wash3000 out of about 100 applicants and closed a <b>$500K</b> pre-seed round led by Tasco. At LogiUP, a multi-tenant logistics SaaS, I am Tech Lead and system architect for a team of four.",
+          "shift": "In this role most of my work is decisions: how the architecture splits, what ships default off and what a partner's security review will accept."
         }
-      ]
+      }
     },
-    "stack": {
-      "eyebrow": "Technical depth",
-      "title": "The engineering details I pay attention to",
-      "intro": "The systems I prefer are not only feature-complete. They have clear contracts, known failure modes, and enough operational signs for the team to find the problem before users feel it.",
-      "groups": [
-        {
-          "title": "Backend techniques",
-          "items": [
-            "<strong>Backward-compatible API contracts</strong> for mobile, web, and enterprise clients.",
-            "<strong>RSA-4096 handshake, AES-256 payload encryption, mTLS, certificate pinning</strong>, and ACK-driven monitoring for financial integrations.",
-            "<strong>Retry queues and idempotent APIs</strong> for partners that are slow, unstable, or asynchronous.",
-            "<strong>Stateless runtime evaluation</strong> for rollout rules, JSON config, tenant and segment targeting."
-          ]
-        },
-        {
-          "title": "Infrastructure techniques",
-          "items": [
-            "<strong>Kubernetes cluster operations</strong> across AKS, FKE, K3S, and EKS environments.",
-            "<strong>Ingress, load balancer, domain and SSL paths</strong> treated as part of the product delivery flow, not as a black box.",
-            "<strong>ArgoCD and CI/CD pipelines</strong> for repeatable releases, environment control, and recovery.",
-            "<strong>Production diagnosis</strong> through logs, metrics, health checks, and documented recovery steps."
-          ]
-        },
-        {
-          "title": "Release architecture",
-          "items": [
-            "<strong>Micro-Frontend composition</strong> with Angular host and React modules to reduce deployment coupling.",
-            "<strong>Feature-flag rollout</strong> by tenant, segment, environment, and percentage.",
-            "<strong>Observability workflows</strong> for feature adoption, regression tracing, and anomaly review.",
-            "<strong>Rollback criteria and release checklists</strong> so delivery stays deliberate under pressure."
-          ]
-        },
-        {
-          "title": "Team systems",
-          "items": [
-            "<strong>Ownership boundaries</strong>, org chart, competency matrix, and workload routing after leadership transition.",
-            "<strong>RFCs, runbooks, technical specs</strong>, and troubleshooting guides that reduce hidden knowledge.",
-            "<strong>Hiring, onboarding, 1:1 coaching</strong>, and review loops for developers and QC engineers.",
-            "<strong>Branch strategy, commit convention, release tagging</strong>, and integration rules that keep delivery predictable."
-          ]
-        }
-      ]
-    },
-    "principles": {
-      "eyebrow": "How I work",
-      "title": "Principles I bring into production systems",
-      "intro": "These are practical habits, not slogans. They come from seeing systems fail in ordinary ways and learning how to make the next release easier to reason about.",
-      "items": [
-        {
+    "habits": {
+      "title": "How I work",
+      "items": {
+        "trace": {
           "title": "Trace before rewriting",
-          "body": "When a system behaves strangely, I first look for the path: request flow, data contract, logs, metrics, release history, and infrastructure changes."
+          "proof": "At Zalo PC, sync v2 got a fault-injection devtool for dropped mobile links alongside the retry work. One hot-path lookup fell from <b>1.8 s to 4 ms</b> on a 37-session test.",
+          "source": "Zalo PC · 2026"
         },
-        {
+        "contracts": {
           "title": "Contracts before code volume",
-          "body": "A good backend service is easier to operate when its API, retries, idempotency, security boundary, and compatibility rules are clear."
+          "proof": "The Gtel and Napas integrations at NDSVN ran on idempotent contracts with retry queues and ACK monitoring, so a message replayed from the queue does no harm.",
+          "source": "NDSVN · 2025–2026"
         },
-        {
-          "title": "Rollout before big-bang release",
-          "body": "Feature flags, tenant targeting, staged deployment, and rollback criteria keep product movement steady without making every release a gamble."
+        "rollout": {
+          "title": "Roll out before release",
+          "proof": "Runtime flags at PrimeData, a flag platform for <b>30+ tenants</b> at NDSVN, and kill switches that stay off by default at Zalo PC and BonBon.",
+          "source": "PrimeData, NDSVN, Zalo PC, BonBon · 2020–2026"
         },
-        {
-          "title": "Documentation should reduce interruption",
-          "body": "Specs, runbooks, and checklists are useful when they let another engineer diagnose, recover, or continue the work without waiting for one person."
+        "writing": {
+          "title": "Write it down so nobody waits for me",
+          "proof": "After the NDSVN handover I wrote the ownership map, the release playbook and the runbooks. BonBon runs on <b>89</b> written specs.",
+          "source": "NDSVN, BonBon · 2025–2026"
         }
-      ]
+      },
+      "stack": "Currently using, as of November 2026: TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog."
+    },
+    "writing": {
+      "title": "I learn by writing it down.",
+      "body": "I keep a <blog>blog</blog> and a set of <notes>notes</notes> on what work teaches me: leading a team, rollouts, safe defaults, working with AI. Two places to start: <note>the engineering behind BonBon's $500K round</note> and <post>feature flags for safer deployments</post>.",
+      "teaching": "In May 2023 I taught a front-end project course at Vietnam Australia Center: <b>12 students</b>, from requirements to working React apps."
     },
     "closing": {
-      "label": "About closing note",
-      "body": "I do my best work where an <strong>ambitious product</strong> runs on a backend that <strong>cannot afford to fail</strong>. My part is to make that backend calm enough that the team ships without holding its breath."
+      "body": "I do my best work where an <b>ambitious product</b> runs on a backend that <b>cannot afford to fail</b>. My part is to make that backend calm enough that the team ships without holding its breath.",
+      "linksLabel": "Résumé, email and experience",
+      "resume": "Résumé (PDF)",
+      "email": "Email",
+      "experience": "See experience"
     }
   },
   "ReaderTools": {

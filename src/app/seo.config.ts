@@ -52,43 +52,41 @@ export const PAGE_SEO: Record<
       'Nguyen Le Phong, Lead Software Engineer at Zalo PC and co-founder of BonBon Mobility',
   },
   about: {
-    title: 'About: Backend, Platform & Product Engineering | Nguyen Le Phong',
+    title: 'About Nguyen Le Phong: Lead at Zalo PC, BonBon co-founder',
     description:
-      'How Nguyen Le Phong builds production systems across backend services, secure integrations, Kubernetes infrastructure, load balancer paths, feature-flag rollouts, observability, and technical leadership.',
+      'How I got from an outsourcing agency to leading cross-device sync at Zalo PC and co-founding BonBon Mobility, and the habits I bring to each team.',
     path: '/about',
     keywords: [
       'About Nguyen Le Phong',
-      'Backend engineer',
-      'Platform engineer',
-      'Technical Lead',
-      'Kubernetes',
-      'Load balancer',
+      'Lead Software Engineer',
+      'Zalo PC',
+      'BonBon Mobility co-founder',
+      'LogiUP Tech Lead',
       'Feature flags',
-      'Observability',
-      'Secure integrations',
+      'Engineering leadership',
     ],
     ogAlt:
-      'About Nguyen Le Phong: backend, platform, infrastructure and product engineering',
+      'About Nguyen Le Phong: from an outsourcing agency to Lead at Zalo PC and co-founder of BonBon Mobility',
   },
   gallery: {
-    title: 'Gallery: Certificates, Awards & Projects | Nguyen Le Phong',
+    title: 'Photos and certificates | Nguyen Le Phong',
     description:
-      'A curated gallery of certifications, recognitions, project snapshots, and personal discipline signals that show how Nguyen Le Phong learns, builds, and delivers.',
+      'BonBon Mobility at the Tasco Foundry Wash3000 Demo Day and its $500K pre-seed, Best Rookie of the Year 2019 at Splus Software, and certificates, each sourced.',
     path: '/gallery',
     keywords: [
       'Nguyen Le Phong gallery',
-      'Software Engineer certificates',
+      'BonBon Mobility',
+      'Tasco Foundry Wash3000',
       'Best Rookie of the Year',
-      'Compliance Refresh Training',
-      'Cybersecurity certificate',
+      'Software Engineer certificates',
     ],
     ogAlt:
-      'Gallery — career signals from certifications, recognitions, projects and steady practice',
+      'Photos and certificates: BonBon Mobility at Wash3000, the $500K pre-seed and Best Rookie of the Year 2019',
   },
   apps: {
     title: 'Apps: Small Open-Source Tools | Nguyen Le Phong',
     description:
-      'A curated showroom of apps built by Nguyen Le Phong — open-source utilities and tools designed to be tiny, fast, and a joy to use.',
+      'Small tools Nguyen Le Phong built for his own work, starting with Glance, a macOS menu-bar app that translates selected text with one hotkey.',
     path: '/apps',
     keywords: [
       'Nguyen Le Phong apps',
@@ -97,7 +95,7 @@ export const PAGE_SEO: Record<
       'open source apps',
       'developer tools',
     ],
-    ogAlt: 'Apps Showroom — tiny, crafted open-source tools',
+    ogAlt: 'Apps: small tools Nguyen Le Phong built for his own work, starting with Glance for macOS',
   },
   blog: {
     title: 'Blog — Software Architecture & Engineering, Explained Simply',
@@ -116,38 +114,13 @@ export const PAGE_SEO: Record<
     ],
     ogAlt: 'Blog — software architecture and engineering, explained simply',
   },
+  // Studio metadata lives in src/app/[locale]/studio/studio-static-content.ts (en and vi copy);
+  // this entry mirrors the English copy for shared consumers. No keyword list (SEO-12).
   studio: {
-    title: 'Studio: Engineering Notes & System Flows',
+    title: 'Engineering Studio: delivery checklists and system maps',
     description:
-      'A public workspace for the notes, checklists, and visual flows I use to review architecture, prepare releases, set up tools, and work with AI responsibly.',
+      'The checklists and system maps I use to scope work, ship releases and roll them out safely, plus how I set up AI coding agents.',
     path: '/studio',
-    keywords: [
-      'Nguyen Le Phong studio',
-      'system design flow',
-      'architecture decision flow',
-      'production incident flow',
-      'release readiness flow',
-      'AI-assisted software delivery',
-      'engineering portfolio story',
-      'engineering machine setup',
-      'AI operating system',
-      'AI learning checklist',
-      'AI-driven engineering roadmap',
-      'production readiness checklist',
-      'Event Sourcing',
-      'Circuit Breaker',
-      'OpenTelemetry',
-      'observability checklist',
-      'AI developer setup',
-      'NotebookLM workflow',
-      'ChatGPT Projects',
-      'Codex skills',
-      'Claude skills',
-      'Antigravity skills',
-      'developer checklist',
-    ],
-    ogAlt:
-      'Studio — engineering flows, AI operating notes, learning checklists, and system design practice',
   },
 }
 

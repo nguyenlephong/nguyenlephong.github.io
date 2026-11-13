@@ -243,16 +243,15 @@
       "period": "mars 2026 – auj.",
       "context": "Chaque client a son sous-domaine, et ses données ne doivent jamais fuiter vers un autre tenant. Web et app desktop Electron. Je dirige une équipe de quatre et je porte l'architecture.",
       "decisions": [
-        "Tenant lié à chaque token, pas au sous-domaine, car une route peut errer.",
-        "Notre OAuth 2.1/OIDC, pas deux logins, car Electron suit le web.",
-        "Un humain valide les 8 sections, pas l'IA seule, car une erreur coûte cher."
+        "Chaque token et chaque contrôle RBAC portent le tenant : le sous-domaine seul ne suffit pas.",
+        "Web et app Electron passent par un même fournisseur OAuth 2.1/OIDC maison, avec PKCE.",
+        "L'IA propose les valeurs, une personne valide chacune des 8 sections de la déclaration."
       ],
       "outcome": [
         "<b>9 dépôts</b>, une seule architecture (août 2026) : UI Next.js commune au web et à Electron, control plane NestJS, data plane IA en FastAPI.",
         "<b>6</b> rôles runtime à privilèges minimaux et <b>31</b> endpoints API typés pour le workflow douanier.",
         "Déclarations d'export en UAT en octobre 2026, avec un classifieur de documents par règles."
-      ],
-      "evidenceNote": "Dépôts privés : pas de lien public."
+      ]
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -261,9 +260,9 @@
       "period": "avr. 2026 – auj.",
       "context": "BonBon relie les automobilistes aux garages de lavage et d'entretien. Cofondateur, j'ai construit le produit : une Mini App de 12 écrans dans l'app VETC (<b>4,3 M d'utilisateurs</b> en avril 2026, selon Tasco). Chaque release passe par la validation des changements de VETC et son processus de sécurité : revue OWASP et pentest indépendant.",
       "decisions": [
-        "Session VETC plutôt qu'un OTP de plus, car VETC a déjà vérifié l'utilisateur.",
-        "Sessions en mémoire, sans token stocké, car VETC interdit le stockage.",
-        "Kill switches éteints par défaut, car chaque release attend VETC."
+        "Les automobilistes se connectent avec leur session VETC, sans second OTP.",
+        "Sessions en mémoire seulement : les règles de VETC interdisent tout token dans le navigateur.",
+        "Chaque nouvelle fonction a un kill switch éteint par défaut : on la coupe sans release."
       ],
       "outcome": [
         "Lauréat de Tasco Foundry Wash3000 : environ <b>100</b> candidatures, un top 10, trois finalistes, un gagnant (GenAI Fund, sept. 2026).",
@@ -297,10 +296,104 @@
     "github": "GitHub",
     "resumePdf": "CV (PDF)"
   },
+  "About": {
+    "title": "Je construis des systèmes produit qu'on peut livrer, observer et rétablir.",
+    "lede": "Je livre du logiciel depuis 2018 : dans une startup à ses débuts, une agence de sous-traitance, un éditeur de produit, chez Zalo, puis dans une entreprise en plein changement de CTO. En 2026, j'ai aussi cofondé une startup. Voici ce que chaque étape a changé dans ma façon de travailler, puis les habitudes que j'en ai gardées.",
+    "arc": {
+      "label": "Parcours depuis 2018",
+      "early": "Startup, agence",
+      "product": "Produit",
+      "scale": "Big tech",
+      "handover": "Passation",
+      "now": "Lead, cofondateur"
+    },
+    "story": {
+      "title": "Comment j'en suis arrivé là",
+      "periods": {
+        "early": {
+          "dates": "2018–2020",
+          "where": "Propman Guru, puis Splus Software",
+          "env": "Startup naissante, puis sous-traitance",
+          "body": "J'ai débuté en front-end chez Propman Guru, une jeune startup immobilière, parmi ses premiers ingénieurs. Puis 16 mois chez Splus Software, une agence de sous-traitance : plus de 8 projets clients (éducation, restauration, banque, e-commerce) et ma première petite équipe. Best Rookie of the Year 2019.",
+          "shift": "J'y ai appris le cycle complet d'un projet, des premiers besoins du client jusqu'à la passation."
+        },
+        "product": {
+          "dates": "2020–2024",
+          "where": "PrimeData",
+          "env": "Startup produit B2B",
+          "body": "Près de quatre ans sur un seul produit, CDxP, une plateforme de données clients. J'ai dirigé son équipe front-end de quatre personnes, gardé le SDK de tracking sous <b>200 KB</b> et construit mes premiers feature flags runtime.",
+          "shift": "Rester sur un produit, c'est vivre avec ses propres décisions. Feature flags, budgets de taille et tests avant chaque release sont devenus des réflexes."
+        },
+        "scale": {
+          "dates": "2024–2025",
+          "where": "Zalo PC",
+          "env": "Big tech, grand public",
+          "body": "Un client desktop à <b>15M+ MAU</b>. J'ai livré le mode sombre, les thèmes dynamiques et le module de téléchargement, et dirigé le design system Storybook utilisé par plus de 50 développeurs.",
+          "shift": "Avec des composants partagés et une app utilisée par des millions de personnes, la stabilité passe avant la vitesse."
+        },
+        "handover": {
+          "dates": "2025–2026",
+          "where": "NDSVN",
+          "env": "Entreprise, partenaires paiement et télécom",
+          "body": "Arrivé juste après un changement de CTO, j'ai pris la responsabilité technique d'une équipe delivery de 8 développeurs et 3 QC. J'ai mis en place des entretiens structurés et livré une plateforme de feature flags pour <b>30+ tenants</b>.",
+          "shift": "Diriger, c'était écrire comment l'équipe travaille, pour qu'aucune décision n'attende une seule personne."
+        },
+        "now": {
+          "dates": "2026–aujourd'hui",
+          "where": "Zalo PC, BonBon Mobility, LogiUP",
+          "env": "Big tech, ma startup, SaaS B2B",
+          "body": "Zalo m'a réembauché comme Lead en mars 2026 : je dirige la messagerie multi-appareils et le stockage côté client, dont la sauvegarde des messages sur PC avec restauration sur mobile. En parallèle, j'ai cofondé BonBon Mobility, lauréat de Wash3000 de Tasco Foundry parmi environ 100 candidatures, avec une levée pre-seed de <b>500 k$</b> menée par Tasco. Chez LogiUP, un SaaS logistique multi-tenant, je suis Tech Lead et architecte système d'une équipe de quatre.",
+          "shift": "Dans ce rôle, mon travail consiste surtout à décider : comment découper l'architecture, ce qui part désactivé par défaut, ce qu'acceptera la revue de sécurité d'un partenaire."
+        }
+      }
+    },
+    "habits": {
+      "title": "Ma façon de travailler",
+      "items": {
+        "trace": {
+          "title": "Tracer avant de réécrire",
+          "proof": "Chez Zalo PC, la sync v2 a reçu un devtool d'injection de pannes qui reproduit les coupures mobiles, en plus des retries et de la re-préparation par groupes. Une lookup du hot path est passée de <b>1,8 s à 4 ms</b> sur un test de 37 sessions.",
+          "source": "Zalo PC · 2026"
+        },
+        "contracts": {
+          "title": "Le contrat avant le volume de code",
+          "proof": "Les intégrations Gtel et Napas chez NDSVN reposaient sur des contrats idempotents, des files de retry et un suivi des ACK : rejouer un message ne cause aucun dégât.",
+          "source": "NDSVN · 2025–2026"
+        },
+        "rollout": {
+          "title": "Déployer par étapes avant de livrer",
+          "proof": "Feature flags runtime chez PrimeData, plateforme de flags pour <b>30+ tenants</b> chez NDSVN, kill switches désactivés par défaut chez Zalo PC et BonBon.",
+          "source": "PrimeData, NDSVN, Zalo PC, BonBon · 2020–2026"
+        },
+        "writing": {
+          "title": "Écrire pour que personne ne m'attende",
+          "proof": "Après la passation chez NDSVN, j'ai écrit la carte des responsabilités, le playbook de release et les runbooks. BonBon s'appuie sur <b>89</b> specs écrites.",
+          "source": "NDSVN, BonBon · 2025–2026"
+        }
+      },
+      "stack": "Outils actuels (novembre 2026) : TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog."
+    },
+    "writing": {
+      "title": "J'apprends en écrivant.",
+      "body": "Je tiens un <blog>blog</blog> et des <notes>notes</notes> sur ce que le travail m'apprend : diriger une équipe, les déploiements, les choix sûrs par défaut, travailler avec l'IA. Pour commencer : <note>l'ingénierie derrière la levée de 500 k$ de BonBon</note> et <post>les feature flags pour des déploiements plus sûrs</post>.",
+      "teaching": "En mai 2023, j'ai donné un cours de projet front-end au Vietnam Australia Center : <b>12 étudiants</b>, des besoins à une app React fonctionnelle."
+    },
+    "closing": {
+      "body": "Je donne le meilleur de moi-même là où un <b>produit ambitieux</b> repose sur un backend qui <b>ne peut pas tomber</b>. Mon rôle : rendre ce backend assez calme pour que l'équipe livre sans retenir son souffle.",
+      "linksLabel": "CV, e-mail et expérience",
+      "resume": "CV (PDF)",
+      "email": "E-mail",
+      "experience": "Voir l'expérience"
+    }
+  },
   "SEO": {
     "home": {
       "title": "Nguyen Le Phong | Lead Software Engineer · Cofondateur BonBon",
       "description": "Lead Software Engineer chez Zalo PC et cofondateur de BonBon Mobility (pre-seed de 500 000 $ menée par Tasco). Messagerie à grande échelle, déploiements sûrs, SaaS multi-tenant."
+    },
+    "about": {
+      "title": "À propos de Nguyen Le Phong : Lead Zalo PC, cofondateur BonBon",
+      "description": "D'une agence de sous-traitance à la synchro multi-appareils de Zalo PC et à la cofondation de BonBon Mobility, avec les habitudes que j'apporte à chaque équipe."
     },
     "gallery": {
       "title": "Galerie : certificats, prix et projets | Nguyen Le Phong",
@@ -336,109 +429,41 @@
       "heading": "Applications"
     },
     "gallery": {
-      "eyebrow": "Galerie",
-      "title": "Les signaux derrière le travail",
-      "sub": "Une petite collection de ce que j'ai appris, construit, reçu comme reconnaissance et continué à pratiquer. Si le CV montre les rôles, cette page montre le rythme de travail derrière eux.",
+      "title": "Photos et certificats",
+      "sub": "Prix, certificats et quelques moments de travail. Chaque image ouvre l'original ou la source qui la confirme.",
       "back": "← Retour au CV",
       "all": "Tout",
-      "tabsLabel": "Filtres des signaux de carrière",
-      "hero": {
-        "kicker": "Portfolio de preuves",
-        "title": "De petits signaux qui disent plus que quelques lignes de CV",
-        "lead": "Je rassemble ici certificats, reconnaissances, aperçus de projets et moments ordinaires pour montrer comment j'apprends, travaille avec une équipe et garde un delivery régulier.",
-        "primaryCta": "Voir les signaux",
-        "scanNote": "Pour les recruteurs pressés: commencez par l'histoire, puis ouvrez chaque groupe quand un détail mérite d'être vérifié.",
-        "proofTitle": "Une tranche plus humaine de ma façon de travailler"
-      },
-      "stats": {
-        "label": "Signaux de la galerie",
-        "proofs": "Signaux",
-        "proofsDetail": "Images, certificats et moments que l'on peut vérifier.",
-        "certifications": "Certifications",
-        "certificationsDetail": "Apprentissages faits pour travailler avec plus de soin.",
-        "recognitions": "Reconnaissances",
-        "recognitionsDetail": "Résultats venus des équipes, programmes et défis longs.",
-        "builds": "Réalisations",
-        "buildsDetail": "Produits, démos et travaux arrivés à une forme concrète."
-      },
-      "trust": {
-        "label": "Regard recruteur",
-        "title": "Comment lire cette page",
-        "learning": {
-          "title": "Un rythme d'apprentissage continu",
-          "body": "Les certificats ne sont pas de simples badges; ils montrent l'habitude d'apprendre pour travailler avec plus de précision."
-        },
-        "delivery": {
-          "title": "Responsabilité du résultat",
-          "body": "Les reconnaissances et projets montrent la capacité à rester avec l'équipe jusqu'à ce que le travail soit terminé."
-        },
-        "team": {
-          "title": "Endurance et collaboration",
-          "body": "Les moments d'activité montrent l'énergie, la discipline et la constance nécessaires au travail long terme."
-        }
-      },
-      "story": {
-        "label": "Guide de lecture rapide",
-        "title": "Pas un mur de photos, mais une trace de progrès régulier",
-        "body": "Chaque groupe répond à une petite question: ce que j'ai appris, où le travail a été reconnu, ce que j'ai construit et comment je cultive l'endurance hors des projets formels."
-      },
-      "categoryNotes": {
-        "all": "Lire le chemin complet, de l'apprentissage au delivery.",
-        "certificates": "Apprentissage intentionnel pour rendre le travail plus solide.",
-        "awards": "Reconnaissance de l'ownership, de la constance et de la responsabilité.",
-        "projects": "Traces de choses construites, livrées, enseignées ou explorées.",
-        "activities": "Moments ordinaires qui montrent énergie, discipline et habitudes de long terme."
-      },
-      "categoryIntros": {
-        "certificates": {
-          "body": "Cette partie montre comment je renforce la base: mieux comprendre les systèmes, et travailler plus prudemment avec la compliance, la sécurité et la qualité produit.",
-          "signal": "L'apprentissage régulier rend le travail plus solide avec le temps."
-        },
-        "awards": {
-          "body": "Ces reconnaissances ne sont pas des points d'arrivée. Ce sont de petits jalons de périodes où j'ai appris vite, porté la responsabilité et tenu dans la durée.",
-          "signal": "Les environnements d'équipe réels montrent mieux la constance et la fiabilité."
-        },
-        "projects": {
-          "body": "Quelques extraits de produits, démos et travaux. L'important n'est pas seulement l'image, mais le passage d'une idée à quelque chose qui fonctionne, s'explique et s'améliore.",
-          "signal": "Une idée devient plus utile quand elle peut fonctionner, s'expliquer et continuer à s'améliorer."
-        },
-        "activities": {
-          "body": "Tous les signaux de carrière ne vivent pas dans un ticket ou une release. Certains rythmes personnels aident à garder l'énergie nécessaire pour travailler durablement.",
-          "signal": "La discipline personnelle aide à garder un rythme stable avec l'équipe sur la durée."
-        }
-      },
+      "tabsLabel": "Filtrer les photos par groupe",
       "captions": {
-        "veryGood": "Diplôme avec mention Very Good - une base construite tôt avec sérieux.",
-        "scoreboard": "Résultats d'étude - une petite trace de régularité.",
-        "testerCertificate": "Tester certificate - apprendre à regarder la qualité produit par la vérification.",
-        "compliance": "Compliance Refresh Training - garder le travail produit sûr et conscient des règles.",
-        "cybersecurity": "Cybersecurity Refresh Training - renforcer la pensée sécurité dans le delivery.",
-        "bestRookie": "Best Rookie of the Year - reconnaissance d'une montée en charge rapide et sérieuse.",
-        "splus": "Splus Certificate - un petit jalon dans un environnement d'équipe.",
-        "primeAward": "Award at PrimeData - résultat d'ownership et d'initiative dans le delivery.",
-        "upraceMedals": "Médailles UpRace - entraîner l'endurance hors du travail.",
-        "uprace323": "UpRace 323km - de petits kilomètres qui deviennent un résultat mémorable.",
-        "penangHill": "Penang Hill 11km - atteindre le sommet étape par étape.",
-        "deskWorking": "Un coin de travail ordinaire - là où la discipline se répète chaque jour.",
-        "chessProject": "Chess games project - construire avec logique, UI et sensation de jeu.",
-        "watProject": "WAT project - trace d'un produit en environnement d'équipe.",
-        "essay": "Essai et partage - pratiquer l'explication claire des idées.",
-        "teamEssay": "Moment de teamwork - une idée compte davantage quand elle est mise en œuvre.",
-        "drone": "Drone applications - explorer une idée produit jusqu'à un modèle exécutable.",
-        "bonbonTeam": "Les co-fondateurs de BonBon - trois personnes qui apprennent à construire ensemble un produit d'entretien auto, pas à pas.",
-        "bonbonPreSeed": "Le pre-seed de 500K $ de BonBon avec Tasco et GenAI Fund - un travail discret qui devient enfin visible.",
-        "wash3000DemoDay": "Wash3000 Demo Day à la Tasco Foundry - une journée d'apprentissage aux côtés des autres équipes du Top 10."
+        "wash3000DemoDay": "BonBon au Demo Day Wash3000 de Tasco Foundry, l'une des 10 équipes retenues parmi environ 100 candidatures.",
+        "bonbonPreSeed": "Le tour pre-seed de 500 000 $ de BonBon Mobility, mené par Tasco et co-investi par GenAI Fund, annoncé le 21 septembre 2026.",
+        "bonbonTeam": "Les cofondateurs de BonBon Mobility : Nguyen Chi Dung, Vu Duy Hung et moi.",
+        "bestRookie": "Best Rookie of the Year, Splus Software, 2019.",
+        "primeAward": "Most Valuable Employee, PrimeData, août 2020.",
+        "splus": "Le certificat Best Rookie of the Year 2019 remis par Splus Software.",
+        "veryGood": "Félicitations de l'université Nong Lam pour un diplôme obtenu avec la mention Très bien.",
+        "scoreboard": "Relevé de notes de l'université Nong Lam, GPA 3,36.",
+        "testerCertificate": "Formation Global Software Tester, 240 heures, niveau A, juin 2019.",
+        "compliance": "Compliance Refresh Training, vérifiable sur Coursera.",
+        "cybersecurity": "Cybersecurity Refresh Training, vérifiable sur Coursera.",
+        "upraceMedals": "Médailles finisher UpRace 2024 pour 5 km, 10 km et 21 km.",
+        "uprace323": "Certificat UpRace pour 323 km.",
+        "penangHill": "Randonnée à Penang Hill, en Malaisie, 11 km.",
+        "deskWorking": "À mon bureau, en train de coder.",
+        "essay": "Soutenance du mémoire de fin d'études à la faculté d'informatique de l'université Nong Lam.",
+        "teamEssay": "Le drone présenté lors de la soutenance.",
+        "drone": "Le drone sur un établi de labo : châssis, moteurs et carte de contrôle.",
+        "chessProject": "Échecs chinois avec IA, un jeu que j'ai créé à l'université Nong Lam.",
+        "watProject": "WAT, un projet client chez Splus Software, 2019."
       },
-      "featured": "Signal en avant",
-      "supporting": "Signaux complémentaires",
-      "openProof": "Ouvrir le signal",
-      "verified": "Source vérifiée",
-      "original": "Image complète",
+      "verified": "Source",
+      "original": "Image d'origine",
       "categories": {
-        "certificates": "Certifications",
-        "awards": "Prix",
-        "projects": "Projets",
-        "activities": "Activités"
+        "bonbon": "BonBon Mobility",
+        "recognition": "Distinctions",
+        "education": "Formation et certificats",
+        "outside": "Hors travail",
+        "earlier": "Projets antérieurs"
       }
     },
     "thoughts": {
@@ -548,6 +573,8 @@
       "intro": "Des analyses approfondies sur l'architecture logicielle et la façon de structurer le code source, écrites pour être comprises par les débutants tout en restant utiles aux équipes qui livrent à grande échelle. Des schémas, des exemples concrets, sans bla-bla. Les réflexions sur la carrière et la vie sont dans les <notes>Notes</notes>.",
       "categoriesHeading": "Parcourir par thème",
       "latestHeading": "Derniers articles",
+      "startHereHeading": "Par où commencer",
+      "seriesHeading": "Lire par série",
       "empty": "Aucun article pour l'instant — le premier arrive bientôt.",
       "backToBlog": "Retour au blog",
       "backToCategory": "Retour à {category}",

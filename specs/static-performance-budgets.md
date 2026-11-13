@@ -189,7 +189,9 @@ After the route-owned CSS split and dead Notes-chambers cleanup, the 2026-07-28
 complete-export artifact snapshot set the following initial document CSS gates.
 Measured columns were refreshed from the 2026-11-13 complete export; the
 Gallery Brotli gate moved from 8,192 to 8,448 after the P1 audit work measured
-8,184 bytes. Hard limits retain a narrow deterministic-build allowance:
+8,184 bytes. The wave-3 Blog "Start here" list (MEP-36) moved the Blog archive
+CSS Gzip gate from 16,640 to 17,152 (measured 16,648) and its HTML Gzip gate
+from 19,456 to 20,352 (measured 19,644). Hard limits retain a narrow deterministic-build allowance:
 
 | Route            | Stylesheets | Measured raw | Measured Gzip | Gzip limit | Measured Brotli | Brotli limit |
 | ---------------- | ----------: | -----------: | ------------: | ---------: | --------------: | -----------: |
@@ -199,7 +201,7 @@ Gallery Brotli gate moved from 8,192 to 8,448 after the P1 audit work measured
 | Apps | 3 | 44,476 | 10,606 | 11,008 | 9,235 | 9,600 |
 | English practice | 3 | 38,627 | 9,294 | 9,600 | 8,022 | 8,320 |
 | Offline | 3 | 27,042 | 7,135 | 7,424 | 6,184 | 6,400 |
-| Blog archive | 3 | 78,591 | 16,107 | 16,640 | 13,967 | 14,464 |
+| Blog archive | 3 | 82,035 | 16,648 | 17,152 | 14,426 | 14,464 |
 | Notes archive | 4 | 86,418 | 18,444 | 19,072 | 15,969 | 16,512 |
 | Blog article | 4 | 101,003 | 21,301 | 22,016 | 18,406 | 19,072 |
 | Notes article | 5 | 108,830 | 23,638 | 24,448 | 20,408 | 21,120 |
@@ -224,7 +226,7 @@ below are one deterministic local build, not field performance:
 | HTML route    | Measured raw | Measured Gzip | Measured Brotli | Gzip limit |
 | ------------- | -----------: | ------------: | --------------: | ---------: |
 | Home          |      132,221 |        31,570 |          21,083 |     32,768 |
-| Blog archive  |       81,865 |        18,947 |          13,950 |     19,456 |
+| Blog archive  |       92,441 |        19,644 |          14,832 |     20,352 |
 | Notes archive |       73,214 |        17,466 |          13,341 |     18,432 |
 | Blog article  |       70,524 |        15,763 |          12,626 |     16,384 |
 | Notes article |       70,391 |        18,487 |          13,050 |     19,456 |

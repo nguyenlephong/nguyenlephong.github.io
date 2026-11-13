@@ -243,16 +243,15 @@
       "period": "2026年3月 – 現在",
       "context": "顧客ごとに専用のサブドメインを持ち、データが他テナントに漏れてはならない物流SaaSです。Web と Electron デスクトップアプリで動きます。4人のチームを率い、アーキテクチャに責任を持っています。",
       "decisions": [
-        "サブドメインでなくトークンと RBAC でテナント分離。経路は誤り得るから。",
-        "ログインを分けず自前の OAuth 2.1/OIDC。Electron も Web と同じだから。",
-        "AI の自動入力ではなく 8 セクションを人が確認。誤りは顧客の損失になるから。"
+        "すべてのトークンと RBAC チェックがテナントを持ち、サブドメインだけではアクセスできない。",
+        "Web と Electron アプリは、自前の OAuth 2.1/OIDC プロバイダーに PKCE でサインインする。",
+        "AI が値を提案し、申告書の 8 セクションは人が一つずつ確認する。"
       ],
       "outcome": [
         "2026年8月時点で<b>9リポジトリ</b>を一つのアーキテクチャで運用：Web と Electron 共通の Next.js UI、NestJS のコントロールプレーン、FastAPI の AI データプレーン。",
         "通関ワークフローを支える最小権限の実行ロール<b>6</b>個と型付き API エンドポイント<b>31</b>本。",
         "輸出申告は2026年10月に UAT へ。ルールベースの書類分類を備えています。"
-      ],
-      "evidenceNote": "非公開リポジトリのため、公開リンクなし。"
+      ]
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -261,9 +260,9 @@
       "period": "2026年4月 – 現在",
       "context": "BonBon は車のオーナーと洗車・整備ガレージをつなぐサービスです。共同創業者として、VETC アプリ内で動く12画面の Mini App として製品を作りました。VETC のユーザーは2026年4月時点で<b>430万人</b>（Tasco 発表）。リリースはすべて VETC の変更承認とセキュリティプロセス（OWASP レビュー、独立したペネトレーションテスト）を通ります。",
       "decisions": [
-        "OTP を増やさず VETC セッションでサインイン。VETC が本人確認済みだから。",
-        "トークンを保存せずメモリのみのセッション。VETC が保存を禁じるから。",
-        "一斉リリースでなく既定オフのキルスイッチ。リリースは承認待ちだから。"
+        "車のオーナーは既存の VETC セッションでサインインし、OTP を重ねて入力しない。",
+        "セッションはメモリのみ。VETC の規則でブラウザにトークンを保存できない。",
+        "新機能は既定オフのキルスイッチの後ろに置き、リリースなしで止められる。"
       ],
       "outcome": [
         "BonBon が Tasco Foundry Wash3000 で優勝：応募約<b>100</b>件、上位10、最終3チーム、優勝1（GenAI Fund、2026年9月）。",
@@ -297,10 +296,104 @@
     "github": "GitHub",
     "resumePdf": "履歴書 (PDF)"
   },
+  "About": {
+    "title": "リリースでき、観測でき、復旧できるプロダクトシステムをつくっています。",
+    "lede": "2018年からソフトウェアを出荷してきました。初期のスタートアップ、受託開発会社、プロダクト企業、Zalo、そしてCTO交代の最中の会社です。2026年にはスタートアップを共同創業しました。それぞれの転機で働き方がどう変わったか、そして残った習慣をまとめます。",
+    "arc": {
+      "label": "2018年からの経路",
+      "early": "創業・受託",
+      "product": "製品",
+      "scale": "大手",
+      "handover": "引継ぎ",
+      "now": "Lead・創業"
+    },
+    "story": {
+      "title": "ここまでの道のり",
+      "periods": {
+        "early": {
+          "dates": "2018–2020",
+          "where": "Propman Guru、その後 Splus Software",
+          "env": "初期スタートアップ、その後受託開発",
+          "body": "不動産系の初期スタートアップ Propman Guru で、最初期のエンジニアの一人としてフロントエンドから始めました。その後 Splus Software で16か月、教育・飲食・銀行・EC の8件以上の受託案件を担当し、初めて小さなチームを率いました。2019年 Best Rookie of the Year。",
+          "shift": "要件定義から引き渡しまで、案件を一周する経験を得ました。"
+        },
+        "product": {
+          "dates": "2020–2024",
+          "where": "PrimeData",
+          "env": "B2B プロダクトスタートアップ",
+          "body": "顧客データ基盤 CDxP という一つのプロダクトに約4年。4人のフロントエンドチームを率い、トラッキング SDK を <b>200 KB</b> 未満に保ち、初めてランタイムの feature flag を作りました。",
+          "shift": "一つのプロダクトに長くいると、自分の判断と付き合い続けることになります。feature flag、サイズ予算、リリース前のテストが習慣になりました。"
+        },
+        "scale": {
+          "dates": "2024–2025",
+          "where": "Zalo PC",
+          "env": "ビッグテック、コンシューマー",
+          "body": "<b>15M+ MAU</b> のデスクトップクライアント。ダークモード、動的テーマ、ダウンロードモジュールを出荷し、50人以上の開発者が使う Storybook デザインシステムを主導しました。",
+          "shift": "共有コンポーネントと数百万人が使うアプリでは、速さより安定が先です。"
+        },
+        "handover": {
+          "dates": "2025–2026",
+          "where": "NDSVN",
+          "env": "エンタープライズ、決済・通信パートナー",
+          "body": "CTO 交代の直後に入社し、開発者8名と QC 3名のデリバリーチームの技術責任を引き受けました。構造化面接を整え、<b>30+ テナント</b>向けの feature flag 基盤を出荷しました。",
+          "shift": "率いるとは、チームの進め方を書き出し、判断が一人を待たないようにすることでした。"
+        },
+        "now": {
+          "dates": "2026–現在",
+          "where": "Zalo PC、BonBon Mobility、LogiUP",
+          "env": "ビッグテック、自分のスタートアップ、B2B SaaS",
+          "body": "2026年3月、Zalo に Lead として再雇用されました。マルチデバイスのメッセージングとクライアントストレージを率いており、PC でのメッセージバックアップとモバイルでの復元もその一つです。並行して BonBon Mobility を共同創業し、約100件の応募から Tasco Foundry の Wash3000 で優勝、Tasco リードの <b>50万ドル</b>のプレシードを調達しました。マルチテナントの物流 SaaS である LogiUP では、4人チームのテックリード兼システムアーキテクトです。",
+          "shift": "この役割での仕事の多くは判断です。アーキテクチャをどう分けるか、何を既定オフで出すか、パートナーのセキュリティレビューが何を受け入れるか。"
+        }
+      }
+    },
+    "habits": {
+      "title": "働き方",
+      "items": {
+        "trace": {
+          "title": "書き直す前にトレースする",
+          "proof": "Zalo PC の sync v2 には、リトライとグループ単位の再準備に加えて、モバイル回線の切断を再現するフォールト注入 devtool を用意しました。37セッションのテストで、hot path の lookup が <b>1.8 s から 4 ms</b> に短縮。",
+          "source": "Zalo PC · 2026"
+        },
+        "contracts": {
+          "title": "コード量より先に契約を決める",
+          "proof": "NDSVN での Gtel・Napas 連携は、冪等な契約、リトライキュー、ACK 監視の上で動いていました。メッセージを再送しても害はありません。",
+          "source": "NDSVN · 2025–2026"
+        },
+        "rollout": {
+          "title": "リリースの前に段階的に展開する",
+          "proof": "PrimeData のランタイム flag、NDSVN の <b>30+ テナント</b>向け flag 基盤、Zalo PC と BonBon の既定オフの kill switch。",
+          "source": "PrimeData, NDSVN, Zalo PC, BonBon · 2020–2026"
+        },
+        "writing": {
+          "title": "誰も自分を待たなくていいように書く",
+          "proof": "NDSVN の引き継ぎ後、責任範囲の地図、リリースの playbook、runbook を書きました。BonBon は <b>89</b> 本の仕様書の上で動いています。",
+          "source": "NDSVN, BonBon · 2025–2026"
+        }
+      },
+      "stack": "現在使っているもの（2026年11月時点）：TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog。"
+    },
+    "writing": {
+      "title": "書くことで学んでいます。",
+      "body": "仕事から学んだことを<blog>ブログ</blog>と<notes>ノート</notes>に書いています。チームの率い方、ロールアウト、安全な既定値、AI との協働などです。まずは<note>BonBon の50万ドル調達の裏側のエンジニアリング</note>と<post>安全なデプロイのための feature flag</post>から。",
+      "teaching": "2023年5月、Vietnam Australia Center でフロントエンドのプロジェクト講座を担当しました。受講生 <b>12人</b>、要件から動く React アプリまで。"
+    },
+    "closing": {
+      "body": "<b>野心的なプロダクト</b>が<b>落ちてはいけない</b>バックエンドの上で動く場所で、いちばん力を発揮できます。私の役割は、チームが息を止めずに出荷できるほど、そのバックエンドを落ち着かせることです。",
+      "linksLabel": "履歴書、メール、経歴",
+      "resume": "履歴書 (PDF)",
+      "email": "メール",
+      "experience": "経歴を見る"
+    }
+  },
   "SEO": {
     "home": {
       "title": "Nguyen Le Phong | Lead Software Engineer・BonBon Mobility 共同創業者",
       "description": "Zalo PC の Lead Software Engineer、BonBon Mobility 共同創業者（Tasco リードの 50 万ドル プレシード）、LogiUP の Tech Lead。PC からモバイルへのバックアップ、マルチテナント SaaS。"
+    },
+    "about": {
+      "title": "Nguyen Le Phong について：Zalo PC の Lead、BonBon 共同創業者",
+      "description": "受託開発会社から Zalo PC のマルチデバイス同期のリード、BonBon Mobility の共同創業まで。どのチームにも持ち込む働き方の習慣。"
     },
     "gallery": {
       "title": "ギャラリー：認定証・表彰・プロジェクト | Nguyen Le Phong",
@@ -336,109 +429,41 @@
       "heading": "アプリ"
     },
     "gallery": {
-      "eyebrow": "ギャラリー",
-      "title": "仕事の裏側にあるシグナル",
-      "sub": "学んだこと、作ったもの、受けた評価、そして続けている習慣をまとめた小さなコレクションです。CVが役割を示すなら、このページはその裏にある働き方を見せます。",
+      "title": "写真と証明書",
+      "sub": "受賞、資格、仕事のいくつかの場面です。各画像は元画像か、内容を裏付ける出典を開きます。",
       "back": "← 履歴書へ戻る",
       "all": "すべて",
-      "tabsLabel": "キャリアシグナルのフィルター",
-      "hero": {
-        "kicker": "Proof portfolio",
-        "title": "CVの数行よりも多くを語る小さなシグナル",
-        "lead": "証明書、評価、プロジェクトの記録、そして日常の瞬間をここにまとめています。学び方、チームでの働き方、deliveryを安定させるリズムが見えるようにするためです。",
-        "primaryCta": "シグナルを見る",
-        "scanNote": "急いで確認するrecruiter向け: まずストーリーを読み、必要なグループだけ開いて確認できます。",
-        "proofTitle": "働き方が少し具体的に見える一面"
-      },
-      "stats": {
-        "label": "ギャラリーのシグナル",
-        "proofs": "シグナル",
-        "proofsDetail": "確認できる画像、証明書、仕事の瞬間。",
-        "certifications": "証明書",
-        "certificationsDetail": "より丁寧に働くための学習。",
-        "recognitions": "評価",
-        "recognitionsDetail": "チーム、プログラム、長い挑戦からの結果。",
-        "builds": "制作",
-        "buildsDetail": "具体的な形になったプロダクト、デモ、成果物。"
-      },
-      "trust": {
-        "label": "Recruiter lens",
-        "title": "このページの読み方",
-        "learning": {
-          "title": "学び続ける習慣",
-          "body": "証明書は単なるバッジではなく、より注意深く仕事をするために学び続ける姿勢を示しています。"
-        },
-        "delivery": {
-          "title": "結果への責任",
-          "body": "評価やプロジェクトの記録は、チームと一緒に完了まで進める姿勢を示しています。"
-        },
-        "team": {
-          "title": "継続力とコラボレーション",
-          "body": "活動の瞬間は、長期的に働くためのエネルギー、規律、一貫性を表しています。"
-        }
-      },
-      "story": {
-        "label": "クイックガイド",
-        "title": "写真の壁ではなく、少しずつ進んできた跡",
-        "body": "各グループは小さな問いに答えます。何を学んだか、どこで信頼されたか、何を作ったか、そして正式な仕事以外でどう継続力を育てているか。"
-      },
-      "categoryNotes": {
-        "all": "学習からdeliveryまでの流れをまとめて見る。",
-        "certificates": "仕事をより確かなものにするための意図的な学習。",
-        "awards": "主体性、安定感、責任感への評価。",
-        "projects": "作り、届け、教え、試したものの記録。",
-        "activities": "エネルギー、規律、長く続ける習慣が見える日常の瞬間。"
-      },
-      "categoryIntros": {
-        "certificates": {
-          "body": "このセクションは、システム理解、compliance、security、プロダクト品質をより丁寧に扱うために土台を強くしてきた跡です。",
-          "signal": "継続して学ぶことで、仕事は少しずつ丁寧で確かなものになります。"
-        },
-        "awards": {
-          "body": "これらの評価はゴールではありません。早く立ち上がり、責任を持ち、長い挑戦を進めた時期の小さな節目です。",
-          "signal": "実際のチーム環境では、安定した姿勢と信頼性がよく見えます。"
-        },
-        "projects": {
-          "body": "プロダクト、デモ、課題の一部です。大切なのはスクリーンショットだけでなく、アイデアを動くもの、説明できるもの、改善できるものにする過程です。",
-          "signal": "アイデアは、動かせて、説明できて、改善し続けられる形になった時により意味を持ちます。"
-        },
-        "activities": {
-          "body": "すべてのキャリアシグナルがticketやreleaseの中にあるわけではありません。日々のリズムや習慣が、持続的に働くエネルギーを支えます。",
-          "signal": "個人の規律は、チームと長く安定して進む力を支えてくれます。"
-        }
-      },
+      "tabsLabel": "グループで写真を絞り込む",
       "captions": {
-        "veryGood": "Very Goodで卒業 - 早い段階から丁寧に作った学習の土台。",
-        "scoreboard": "学習結果 - 継続の小さな跡。",
-        "testerCertificate": "Tester certificate - 検証の視点で品質を見る練習。",
-        "compliance": "Compliance Refresh Training - 安全で手順を意識したプロダクト作り。",
-        "cybersecurity": "Cybersecurity Refresh Training - deliveryの中でsecurity思考を強める。",
-        "bestRookie": "Best Rookie of the Year - 早く立ち上がり、丁寧に取り組んだことへの評価。",
-        "splus": "Splus Certificate - チーム環境での小さな節目。",
-        "primeAward": "Award at PrimeData - deliveryにおけるownershipと主体性の結果。",
-        "upraceMedals": "UpRace medals - 仕事の外でも長期的なリズムを鍛える。",
-        "uprace323": "UpRace 323km - 小さな距離の積み重ねが記憶に残る結果になる。",
-        "penangHill": "Penang Hill 11km - 一歩ずつ進んで頂上に届く。",
-        "deskWorking": "普通の作業スペース - 規律が毎日繰り返される場所。",
-        "chessProject": "Chess games project - ロジック、UI、遊び心から作った体験。",
-        "watProject": "WAT project - チーム環境でのプロダクト作業の記録。",
-        "essay": "エッセイと共有 - アイデアを明確に伝える練習。",
-        "teamEssay": "チームでの一場面 - アイデアは一緒に実装されてこそ価値を持つ。",
-        "drone": "Drone applications - アイデアを動くモデルにするまでの探索。",
-        "bonbonTeam": "BonBonの共同創業者 - カーケアのプロダクトを一歩ずつ丁寧に作ることを学ぶ3人。",
-        "bonbonPreSeed": "TascoとGenAI FundによるBonBonの50万ドルpre-seed - 静かな積み重ねがようやく見える形に。",
-        "wash3000DemoDay": "Tasco FoundryでのWash3000 Demo Day - Top 10の他チームと共に学んだ一日。"
+        "wash3000DemoDay": "Tasco Foundry の Wash3000 Demo Day に出た BonBon。約100件の応募から選ばれた10チームの一つ。",
+        "bonbonPreSeed": "BonBon Mobility の50万ドルの pre-seed。Tasco がリードし、GenAI Fund が共同出資。2026年9月21日発表。",
+        "bonbonTeam": "BonBon Mobility の共同創業者。Nguyen Chi Dung、Vu Duy Hung、そして私。",
+        "bestRookie": "Splus Software の Best Rookie of the Year（2019年）。",
+        "primeAward": "PrimeData の Most Valuable Employee（2020年8月）。",
+        "splus": "Splus Software から受けた Best Rookie of the Year 2019 の賞状。",
+        "veryGood": "優秀（Very Good）での卒業に対するノンラム大学の表彰状。",
+        "scoreboard": "ノンラム大学の成績証明書。GPA 3.36。",
+        "testerCertificate": "Global Software Tester 講座の修了証。240時間、レベルA、2019年6月。",
+        "compliance": "Compliance Refresh Training。Coursera で確認できます。",
+        "cybersecurity": "Cybersecurity Refresh Training。Coursera で確認できます。",
+        "upraceMedals": "UpRace 2024 の完走メダル。5 km、10 km、21 km。",
+        "uprace323": "UpRace の 323 km 完走証。",
+        "penangHill": "マレーシア、ペナンヒルのトレッキング。11 km。",
+        "deskWorking": "自分のデスクでコードを書いているところ。",
+        "essay": "ノンラム大学 情報技術学部での卒業論文の審査会。",
+        "teamEssay": "卒業論文の審査会で見せたドローン。",
+        "drone": "ラボの作業台で組み立て中のドローン。フレーム、モーター、制御基板。",
+        "chessProject": "AI と対戦する中国象棋。ノンラム大学在学中に作ったゲーム。",
+        "watProject": "WAT。Splus Software での受託プロジェクト（2019年）。"
       },
-      "featured": "注目のシグナル",
-      "supporting": "補足シグナル",
-      "openProof": "シグナルを開く",
-      "verified": "検証済みソース",
-      "original": "フル画像",
+      "verified": "出典",
+      "original": "元画像",
       "categories": {
-        "certificates": "証明書",
-        "awards": "受賞",
-        "projects": "プロジェクト",
-        "activities": "アクティビティ"
+        "bonbon": "BonBon Mobility",
+        "recognition": "受賞・表彰",
+        "education": "学歴と資格",
+        "outside": "仕事の外で",
+        "earlier": "以前のプロジェクト"
       }
     },
     "thoughts": {
@@ -548,6 +573,8 @@
       "intro": "ソフトウェアアーキテクチャとソースコードの構造についての詳しい解説。初心者にも分かりやすく、それでいて大規模に開発するチームにも役立つように書いています。図解と実例つき、曖昧な説明はしません。キャリアや暮らしについての考えは<notes>ノート</notes>にまとめています。",
       "categoriesHeading": "トピックで探す",
       "latestHeading": "最新の記事",
+      "startHereHeading": "まずはここから",
+      "seriesHeading": "シリーズで読む",
       "empty": "まだ記事がありません——最初の記事をまもなく公開します。",
       "backToBlog": "ブログに戻る",
       "backToCategory": "{category}に戻る",

@@ -126,7 +126,7 @@
     "htmlTransfer": {
       "routes": {
         "home": { "html": "en.html", "maxGzipBytes": 34304 },
-        "blogArchive": { "html": "en/blog.html", "maxGzipBytes": 19456 },
+        "blogArchive": { "html": "en/blog.html", "maxGzipBytes": 20352 },
         "notesArchive": { "html": "en/notes.html", "maxGzipBytes": 18432 },
         "blogArticle": {
           "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
@@ -190,7 +190,7 @@
           ".cv-section-head",
           ".cv-section-title"
         ],
-        "about": [".about-page-v2"],
+        "about": [".about-page-v3"],
         "gallery": [".gallery-showcase"],
         "apps": [".apps-page"],
         "english": [".english-page"],
@@ -251,7 +251,7 @@
         "blogArchive": {
           "html": "en/blog.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 16640,
+          "maxGzipBytes": 17152,
           "maxBrotliBytes": 14464,
           "requiredOwners": ["blog"],
           "allowedOwners": ["blog"]
@@ -327,11 +327,14 @@
       "blog",
       "studio",
       "about",
-      "gallery"
+      "gallery",
+      "studio/checklists",
+      "studio/system-maps",
+      "studio/ai-setup"
     ],
     "staticPageLocalization": {
       "about": {
-        "contentLocales": ["en", "vi"],
+        "contentLocales": ["en", "vi", "zh", "ja", "ko", "fr"],
         "fallbackLocale": "en"
       },
       "apps": {
@@ -340,6 +343,22 @@
       },
       "gallery": {
         "contentLocales": ["en", "vi", "zh", "ja", "ko", "fr"],
+        "fallbackLocale": "en"
+      },
+      "studio": {
+        "contentLocales": ["en", "vi"],
+        "fallbackLocale": "en"
+      },
+      "studio/checklists": {
+        "contentLocales": ["en", "vi"],
+        "fallbackLocale": "en"
+      },
+      "studio/system-maps": {
+        "contentLocales": ["en", "vi"],
+        "fallbackLocale": "en"
+      },
+      "studio/ai-setup": {
+        "contentLocales": ["en", "vi"],
         "fallbackLocale": "en"
       }
     }

@@ -8,7 +8,8 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-export const PROFILE_NAMESPACES = ['Hero', 'Sections', 'Summary', 'Experience', 'Projects', 'CTA', 'About', 'SEO', 'Author']
+// Dotted entries reach a nested namespace, e.g. the gallery copy under Pages.
+export const PROFILE_NAMESPACES = ['Hero', 'Sections', 'Summary', 'Experience', 'Projects', 'CTA', 'About', 'SEO', 'Author', 'Footer', 'Pages.gallery']
 export const LOCALES = ['en', 'vi', 'fr', 'ja', 'ko', 'zh']
 
 const EM_DASH_RULE = { id: 'em-dash', re: /—/, why: 'no em dashes anywhere' }
@@ -37,6 +38,7 @@ export const SOURCE_SURFACES = {
   'src/content/profile.ts': ALL_LOCALE_RULES,
   'scripts/export-resume-data.mjs': ALL_LOCALE_RULES,
   'scripts/generate-resume-pdf.py': ALL_LOCALE_RULES,
+  'src/app/[locale]/(site)/apps/apps.data.ts': ALL_LOCALE_RULES,
   // Non-profile page alts here still use em dashes, so only the claim rules apply.
   'src/app/seo.config.ts': CLAIM_RULES,
 }
@@ -82,8 +84,9 @@ export function findViolations(messagesByLocale) {
   for (const [locale, messages] of Object.entries(messagesByLocale)) {
     const rules = localeRules(locale)
     for (const ns of PROFILE_NAMESPACES) {
-      if (!messages[ns]) continue
-      for (const [key, text] of walk(messages[ns], ns)) {
+      const scope = ns.split('.').reduce((node, part) => node?.[part], messages)
+      if (!scope) continue
+      for (const [key, text] of walk(scope, ns)) {
         for (const rule of rules) {
           const m = text.match(rule.re)
           if (m) out.push({ locale, key, rule: rule.id, match: m[0], why: rule.why })

@@ -51,12 +51,14 @@ export type AnalyticsEvent =
   | 'web_vital'
   // Apps page
   | 'apps_view'
+  // apps_card_view and apps_link_click carry source: 'apps_list' since MEP-57 (was 'apps_console_focus').
   | 'apps_card_view'
-  | 'apps_app_select'
-  | 'apps_filter_click'
   | 'apps_link_click'
-  | 'apps_hotkey_view'
   | 'apps_cta_click'
+  // Unused since MEP-57 removed the app picker; names kept so old dashboards still resolve.
+  // apps_filter_click (search and platform filter) was deleted with those controls.
+  | 'apps_app_select'
+  | 'apps_hotkey_view'
   | 'english_practice_select_slang'
   | 'english_practice_next'
   | 'english_practice_shuffle'
@@ -68,11 +70,14 @@ export type AnalyticsEvent =
   | 'english_practice_tts'
   // Gallery
   | 'gallery_view'
+  // filter: all | bonbon | recognition | education | outside | earlier (MEP-29; was certificates/awards/projects/activities)
   | 'gallery_tab_click'
   | 'gallery_item_click'
   // About
   | 'about_view'
   | 'about_section_view'
+  // target: arc (with period) | blog | notes | note | post
+  | 'about_link_click'
   // Site index
   | 'sitemap_view'
   // Thoughts
@@ -107,6 +112,8 @@ export type AnalyticsEvent =
   | 'blog_reaction'
   | 'blog_nav_jump'
   | 'blog_related_click'
+  // Article tag row linking back into the archive filter or search
+  | 'blog_tag_click'
   // Byline and author box on blog posts and notes (target: byline | cv | resume | email)
   | 'blog_author_click'
   // Notes articles
