@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 import test from "node:test";
 
@@ -33,6 +33,7 @@ const expectedRoutes = [
   "search/blog.json/route.ts",
   "search/notes.json/route.ts",
   "sitemap/page.tsx",
+  "studio/[module]/page.tsx",
   "studio/page.tsx"
 ].sort();
 
@@ -64,8 +65,9 @@ test("localized route groups preserve the complete unique URL inventory", () => 
   assert.equal(new Set(normalizedRoutes).size, normalizedRoutes.length);
 
   for (const entry of sourceEntries) {
-    if (routePath(entry) === "studio/page.tsx") {
-      assert.equal(entry, "studio/page.tsx");
+    if (routePath(entry).startsWith("studio/")) {
+      // Studio lives outside the (site) group so it never inherits the site chrome.
+      assert.equal(entry, routePath(entry));
     } else {
       assert.match(entry, /^\(site\)\//);
     }
@@ -133,10 +135,10 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
     /<main className="home-showcase">[\s\S]*<ScopedIntlProvider scope="home">/
   );
   assert.doesNotMatch(homePage, /\bMotionProvider\b|\bframer-motion\b/);
-  assert.match(
-    galleryPage,
-    /<MotionProvider>[\s\S]*<main className="gallery-showcase">[\s\S]*<\/MotionProvider>/
-  );
+  // MEP-29 removed framer-motion from Gallery, so no route mounts a motion provider.
+  assert.match(galleryPage, /<main className="gallery-showcase">/);
+  assert.doesNotMatch(galleryPage, /\bMotionProvider\b|\bframer-motion\b/);
+  assert.equal(existsSync("src/components/motion/MotionProvider.tsx"), false);
   assert.match(blogArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
   assert.match(notesArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
   assert.doesNotMatch(homePage, /\bBlogReaderTools\b|\bArticleReaderTools\b/);
@@ -259,7 +261,8 @@ test("runtime documentation matches route and artifact ownership", () => {
   const studioBudgets = budgets.performance.studioInitialRuntime;
 
   for (const document of [boundarySpec, technicalSpec]) {
-    assert.match(document, /MotionProvider[\s\S]{0,100}Home and Gallery/);
+    assert.match(document, /No route mounts a motion provider/);
+    assert.doesNotMatch(document, /MotionProvider/);
     assert.match(
       document,
       /ArticleReaderTools[\s\S]{0,120}Blog and Notes article/
