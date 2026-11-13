@@ -301,6 +301,41 @@ export function localizeArticleHtmlLinks(html: string, locale: string): string {
   );
 }
 
+const TABLE_WRAP_PATTERN = /<div class=(["'])blog-table-wrap\1>/g;
+const EMPTY_TABLE_HEADER_PATTERN = /<th(\s[^>]*)?>(?:\s|&nbsp;|&#160;)*<\/th>/gi;
+const TABLE_HEADER_CELL_PATTERN = /<th\b[^>]*>([\s\S]*?)<\/th>/gi;
+const TABLE_WORD: Record<string, string> = {
+  en: "Table",
+  vi: "Bảng",
+  fr: "Tableau",
+  ja: "表",
+  ko: "표",
+  zh: "表格"
+};
+
+/**
+ * Authored tables scroll sideways inside `.blog-table-wrap` on small screens.
+ * Make each wrapper a named, focusable region so keyboard readers can scroll
+ * it, and demote empty header cells (a blank corner) to data cells.
+ */
+export function enhanceArticleTables(html: string, locale: string): string {
+  const word = TABLE_WORD[locale] ?? TABLE_WORD["en"];
+
+  return html
+    .replace(EMPTY_TABLE_HEADER_PATTERN, "<td$1></td>")
+    .replace(TABLE_WRAP_PATTERN, (_match, _quote, offset: number, source: string) => {
+      const rowEnd = source.indexOf("</tr>", offset);
+      const firstRow = rowEnd < 0 ? "" : source.slice(offset, rowEnd);
+      const headers = Array.from(firstRow.matchAll(TABLE_HEADER_CELL_PATTERN), (cell) =>
+        decodeHTML(cell[1].replace(/<[^>]*>/g, "")).replace(/\s+/g, " ").trim()
+      )
+        .filter(Boolean)
+        .slice(0, 3);
+      const label = headers.length > 0 ? `${word}: ${headers.join(", ")}` : word;
+      return `<div class="blog-table-wrap" tabindex="0" role="region" aria-label="${escapeAttribute(label)}">`;
+    });
+}
+
 /** Return true only when an authored article needs the optional canvas runtime. */
 export function hasArticleWorkflowCanvas(html: string): boolean {
   let found = false;

@@ -14,7 +14,8 @@ type RelatedKind = 'related' | 'prev' | 'next'
  * Blog keeps its original `blog_related_click` contract (and properties); notes
  * emit `notes_related_click`. `link_kind` separates related cards from prev/next.
  * Byline and author-box links (`data-author-link`) emit one `blog_author_click`
- * on both surfaces; article tag links (`data-tag-link`) emit `blog_tag_click`.
+ * on both surfaces; article tag links (`data-tag-link`) emit `blog_tag_click`
+ * on blog posts and `notes_tag_click` on notes (MEP-51).
  */
 export function useRelatedLinkClickTracking(
   surface: 'blog' | 'notes',
@@ -43,12 +44,14 @@ export function useRelatedLinkClickTracking(
 
       const tagLink = target.closest<HTMLAnchorElement>('a[data-tag-link]')
       if (tagLink) {
-        track('blog_tag_click', {
+        const properties = {
           content_surface: surface,
           source_category: sourceCategory,
           source_slug: sourceSlug,
           tag: tagLink.dataset['tagLink'] ?? null,
-        })
+        }
+        if (surface === 'notes') track('notes_tag_click', properties)
+        else track('blog_tag_click', properties)
         return
       }
 

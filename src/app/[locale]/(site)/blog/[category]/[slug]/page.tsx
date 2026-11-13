@@ -30,13 +30,15 @@ import { getCategoryNeighbors } from '@/lib/blog/neighbors'
 import {
   articleDek,
   articleTagLinks,
-  popularTags,
 } from '@/lib/blog/article-header'
 import { localizeArticleHtmlLinks } from '@/lib/content/article-html'
+import { buildArticleOutline, MIN_OUTLINE_ITEMS } from '@/lib/content/article-outline'
 import { CONTENT_HUB_LOCALES } from '@/lib/content/route-contract'
 import { blogPostOgImageUrl } from '@/lib/og/static-images'
 import BlogContent from '@/components/blog/BlogContent'
 import BlogToc from '@/components/blog/BlogToc'
+import ArticleReaderTools from '@/components/blog/ArticleReaderTools'
+import IntentPrefetchLink from '@/components/navigation/IntentPrefetchLink'
 import BlogReadingTracker from '@/components/blog/BlogReadingTracker'
 import ContentHubReadingTracker from '@/components/blog/ContentHubReadingTracker'
 import { EngagementProvider } from '@/components/blog/EngagementProvider'
@@ -184,11 +186,28 @@ export default async function BlogPostPage({ params }: Props) {
       ? getBlogSeries(series.series, seriesHubLocale)
       : null
   const t = await getTranslations({ locale, namespace: 'Pages.blog' })
+  const tReader = await getTranslations({ locale, namespace: 'ReaderTools' })
+  const outline = buildArticleOutline(post.html)
+  const hasToc = outline.items.length >= MIN_OUTLINE_ITEMS
   const seriesLabel = series
     ? seriesMeta?.title ?? t(`seriesNames.${series.series}`)
     : null
   const canonical = canonicalFor(canonicalLocale, `/blog/${category}/${slug}`)
   const imageUrl = blogPostOgImageUrl(slug)
+  const share = {
+    url: canonical,
+    title: post.title,
+    surface: 'blog' as const,
+    category,
+    slug,
+    labels: {
+      share: t('engagement.share'),
+      copyLink: t('engagement.copyLink'),
+      copied: t('engagement.copied'),
+      copyFailed: tReader('copyFailed'),
+      nativeShare: tReader('nativeShare'),
+    },
+  }
   // Only the site owner links to the CV; a guest author keeps a plain name.
   const isSiteOwner = Boolean(resolveNoteAuthorIdentity(post.author)?.profileUrl)
   const description =
@@ -210,7 +229,6 @@ export default async function BlogPostPage({ params }: Props) {
     [cat?.title, getCategory(category)?.title].filter(
       (name): name is string => Boolean(name),
     ),
-    popularTags(localePosts),
   )
   const relatedItems = relatedPosts.map((relatedPost) => ({
     href: `/blog/${relatedPost.category}/${relatedPost.slug}`,
@@ -360,33 +378,35 @@ export default async function BlogPostPage({ params }: Props) {
       : null
 
   return (
-    <main
-      className={`blog-article blog-article--${cat?.accent ?? 'ocean'}`}
-      data-content-locales={contentLocales.join(' ')}
-      data-content-locale-fallback="/blog"
-    >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleLd) }}
-      />
-      {reviewedPageLd && (
+    <EngagementProvider category={category} slug={slug}>
+      <main
+        className={`blog-article blog-article--${cat?.accent ?? 'ocean'}${
+          hasToc ? ' blog-article--with-toc' : ''
+        }`}
+        data-content-locales={contentLocales.join(' ')}
+        data-content-locale-fallback="/blog"
+      >
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(reviewedPageLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleLd) }}
         />
-      )}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
-      />
-      {faqLd && (
+        {reviewedPageLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: serializeJsonLd(reviewedPageLd) }}
+          />
+        )}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
         />
-      )}
+        {faqLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqLd) }}
+          />
+        )}
 
-      <EngagementProvider category={category} slug={slug}>
         {seriesMeta && seriesHubLocale ? (
           <ContentHubReadingTracker
             category={category}
@@ -404,22 +424,10 @@ export default async function BlogPostPage({ params }: Props) {
         )}
         <div className="blog-article__main">
           <div className="blog-article__reader">
-            <BlogShareDock
-              url={canonical}
-              title={post.title}
-              surface="blog"
-              category={category}
-              slug={slug}
-              labels={{
-                share: t('engagement.share'),
-                copyLink: t('engagement.copyLink'),
-                copied: t('engagement.copied'),
-                close: t('engagement.close'),
-              }}
-            />
+            <BlogShareDock {...share} />
             <div className="blog-article__reader-content">
               <nav className="blog-breadcrumb" aria-label="Breadcrumb">
-                <Link href="/blog">{t('title')}</Link>
+                <IntentPrefetchLink href="/blog">{t('title')}</IntentPrefetchLink>
                 <span aria-hidden="true">/</span>
                 {seriesMeta && seriesHubLocale ? (
                   <Link
@@ -435,7 +443,9 @@ export default async function BlogPostPage({ params }: Props) {
                     {seriesMeta.title}
                   </Link>
                 ) : (
-                  <Link href={`/blog/${category}`}>{cat?.title ?? category}</Link>
+                  <IntentPrefetchLink href={`/blog/${category}`}>
+                    {cat?.title ?? category}
+                  </IntentPrefetchLink>
                 )}
               </nav>
 
@@ -478,7 +488,17 @@ export default async function BlogPostPage({ params }: Props) {
                 </div>
               </header>
 
-              <BlogContent html={post.html} locale={locale} />
+              {hasToc && (
+                <BlogToc
+                  items={outline.items}
+                  label={t('onThisPage')}
+                  surface="blog"
+                  variant="inline"
+                  jumpLabel={tReader('jumpToContents')}
+                />
+              )}
+
+              <BlogContent html={outline.html} locale={locale} />
 
               {tagLinks.length > 0 && (
                 <ul className="blog-article__tags blog-article__tags--links">
@@ -544,7 +564,7 @@ export default async function BlogPostPage({ params }: Props) {
               aria-label={seriesLabel ?? cat?.title ?? category}
             >
               {neighbors.prev ? (
-                <Link
+                <IntentPrefetchLink
                   href={`/blog/${neighbors.prev.category}/${neighbors.prev.slug}`}
                   className="blog-series-nav__link blog-series-nav__link--prev"
                   data-related-link="prev"
@@ -557,12 +577,12 @@ export default async function BlogPostPage({ params }: Props) {
                   <span className="blog-series-nav__title">
                     {neighbors.prev.title}
                   </span>
-                </Link>
+                </IntentPrefetchLink>
               ) : (
                 <span />
               )}
               {neighbors.next ? (
-                <Link
+                <IntentPrefetchLink
                   href={`/blog/${neighbors.next.category}/${neighbors.next.slug}`}
                   className="blog-series-nav__link blog-series-nav__link--next"
                   data-related-link="next"
@@ -575,7 +595,7 @@ export default async function BlogPostPage({ params }: Props) {
                   <span className="blog-series-nav__title">
                     {neighbors.next.title}
                   </span>
-                </Link>
+                </IntentPrefetchLink>
               ) : (
                 <span />
               )}
@@ -583,16 +603,19 @@ export default async function BlogPostPage({ params }: Props) {
           )}
 
           <footer className="blog-article__footer">
-            <Link href={`/blog/${category}`} className="blog-back">
+            <IntentPrefetchLink href={`/blog/${category}`} className="blog-back">
               ← {t('backToCategory', { category: cat?.title ?? category })}
-            </Link>
+            </IntentPrefetchLink>
           </footer>
         </div>
 
-        <aside className="blog-article__toc">
-          <BlogToc label={t('onThisPage')} surface="blog" />
-        </aside>
-      </EngagementProvider>
-    </main>
+        {hasToc && (
+          <aside className="blog-article__toc">
+            <BlogToc items={outline.items} label={t('onThisPage')} surface="blog" />
+          </aside>
+        )}
+      </main>
+      <ArticleReaderTools locale={locale} share={share} />
+    </EngagementProvider>
   )
 }

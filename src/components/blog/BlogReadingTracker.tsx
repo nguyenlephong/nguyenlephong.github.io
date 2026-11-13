@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { useRelatedLinkClickTracking } from '@/components/analytics/useRelatedLinkClickTracking'
 import { registerPageContext, track } from '@/lib/analytics'
+import { subscribeWindowScroll } from './windowScroll'
 
 interface BlogReadingTrackerProps {
   /** Surface bucket, e.g. a blog category or "notes" — rides along every event. */
@@ -143,16 +144,15 @@ export default function BlogReadingTracker({
 
     const onLeave = (): void => reportTime('page_leave')
 
-    window.addEventListener('scroll', onScroll, { passive: true })
+    // pagehide covers every unload; beforeunload would cost the page its bfcache.
+    const unsubscribeScroll = subscribeWindowScroll(onScroll)
     document.addEventListener('visibilitychange', onVisibility)
     window.addEventListener('pagehide', onLeave)
-    window.addEventListener('beforeunload', onLeave)
 
     return () => {
-      window.removeEventListener('scroll', onScroll)
+      unsubscribeScroll()
       document.removeEventListener('visibilitychange', onVisibility)
       window.removeEventListener('pagehide', onLeave)
-      window.removeEventListener('beforeunload', onLeave)
     }
   }, [category, slug, readingMinutes, surface])
 

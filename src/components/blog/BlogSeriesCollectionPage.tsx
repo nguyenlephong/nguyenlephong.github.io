@@ -22,14 +22,16 @@ const COPY = {
   en: {
     eyebrow: 'Blog series',
     back: 'Blog',
-    suffix: 'Blog series',
+    suffix: 'Series',
     empty: 'No published articles yet.',
+    part: 'Part',
   },
   vi: {
     eyebrow: 'Loạt bài Blog',
     back: 'Blog',
     suffix: 'Loạt bài Blog',
     empty: 'Chưa có bài viết đã xuất bản.',
+    part: 'Phần',
   },
 } as const
 
@@ -57,8 +59,8 @@ export async function blogSeriesMetadata(
   })
   const title =
     page === 1
-      ? `${series.title} — ${COPY[resolvedLocale].suffix}`
-      : `${series.title} — ${pageLabel}`
+      ? `${series.title} | ${COPY[resolvedLocale].suffix}`
+      : `${series.title} | ${pageLabel}`
   const description =
     page === 1 ? series.intro : `${series.intro} ${pageLabel}.`
 
@@ -68,6 +70,7 @@ export async function blogSeriesMetadata(
     path,
     title,
     description,
+    section: 'blog',
   })
 }
 
@@ -154,8 +157,8 @@ export default async function BlogSeriesCollectionPage({
         title: post.title,
         summary: post.summary,
         accent: getCategory(post.category, resolvedLocale)?.accent,
-        kicker:
-          getCategory(post.category, resolvedLocale)?.title ?? post.category,
+        // Cards follow seriesOrder, so the running position is the part number.
+        kicker: `${copy.part} ${pageData.startIndex + index + 1}`,
         contentCategory: post.category,
         href: `/blog/${post.category}/${post.slug}`,
         date: post.date,

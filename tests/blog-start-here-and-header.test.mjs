@@ -33,13 +33,15 @@ test("articleDek keeps the first sentence and survives abbreviations and CJK", (
 test("article tags drop the category name and link into the archive", () => {
   const links = articleTagLinks(
     ["Engineering Culture", "Career", "Team Work"],
-    ["engineering culture"],
-    ["Career"]
+    ["engineering culture"]
   );
+  // MEP-51: the explorer restores any tag, so every tag is a ?tag= filter.
   assert.deepEqual(links, [
     { tag: "Career", href: "/blog?tag=Career" },
-    // Not an archive chip, so the explorer gets it as a search query.
-    { tag: "Team Work", href: "/blog?q=Team%20Work" },
+    { tag: "Team Work", href: "/blog?tag=Team%20Work" },
+  ]);
+  assert.deepEqual(articleTagLinks(["Suy ngẫm"], ["Góc nhìn"], "/notes"), [
+    { tag: "Suy ngẫm", href: "/notes?tag=Suy%20ng%E1%BA%ABm" },
   ]);
 });
 
@@ -116,20 +118,49 @@ test("back to top is one tap and floating controls step aside at the footer", ()
   assert.ok(topAt > 0 && topAt < panelAt, "top button lives outside the collapsed panel");
   assert.match(tools, /track\('reader_tool_scroll', \{ direction: 'top' \}\)/);
   assert.match(tools, /blog-reader-tools--at-footer/);
-  assert.match(read("src/components/blog/BlogShareDock.tsx"), /blog-share-dock--at-footer/);
 
   // Faded-out controls must also leave the tab order, after the fade has played.
   const rule = (css, selector) => css.match(new RegExp(`(?:^|\\n)\\s*${selector.replace(/[.>]/g, "\\$&")} \\{([^}]*)\\}`))?.[1] ?? "";
   const readerCss = read("src/app/[locale]/(site)/blog/reader.css");
   const blogCss = read("src/app/[locale]/(site)/blog/blog.css");
-  for (const [css, hidden, shown, footer] of [
-    [readerCss, ".blog-reader-tools", ".blog-reader-tools--visible", ".blog-reader-tools.blog-reader-tools--at-footer"],
-    [blogCss, ".blog-share-dock", ".blog-share-dock--visible", ".blog-share-dock.blog-share-dock--at-footer"]
+  for (const [css, hidden, shown] of [
+    [readerCss, ".blog-reader-tools", ".blog-reader-tools--visible"],
+    [blogCss, ".blog-share-dock", ".blog-share-dock--visible"]
   ]) {
     // visibility transitions discretely, so one duration keeps the fade in both directions.
     assert.match(rule(css, hidden), /visibility: hidden;[\s\S]*opacity (0\.\d+s)[\s\S]*visibility \1;/);
     assert.match(rule(css, shown), /visibility: visible;/);
-    assert.match(rule(css, footer), /visibility: hidden;/);
   }
-  assert.match(rule(blogCss, ".blog-share-dock--open .blog-share-dock__actions"), /visibility: inherit;/);
+  assert.match(rule(readerCss, ".blog-reader-tools.blog-reader-tools--at-footer"), /visibility: hidden;/);
+});
+
+test("one reader cluster below 1280px: the share rail never floats (MEP-38)", () => {
+  const tools = read("src/components/blog/BlogReaderTools.tsx");
+  const dock = read("src/components/blog/BlogShareDock.tsx");
+  const readerCss = read("src/app/[locale]/(site)/blog/reader.css");
+  const blogCss = read("src/app/[locale]/(site)/blog/blog.css");
+
+  // The sheet carries share, copy and native share; the rail has no FAB.
+  assert.match(tools, /<ShareGroup share=\{share\}/);
+  assert.match(tools, /<aside[\s\S]*aria-label=\{labels\.label\}/);
+  assert.doesNotMatch(dock, /blog-share-dock__fab|setOpen/);
+  assert.match(blogCss, /\.blog-share-dock \{\s*display: none;/);
+  assert.match(readerCss, /@media \(min-width: 1280px\)[\s\S]*\.blog-reader-tools__group--share \{\s*display: none;/);
+
+  // 44px discs on one right edge; progress drawn by stroke offset, not transform.
+  assert.match(readerCss, /--reader-tool-size: 2\.75rem;/);
+  assert.match(readerCss, /right: var\(--reader-tool-edge\);/);
+  assert.match(readerCss, /stroke-dashoffset: calc\(100 - var\(--reader-progress, 0\) \* 100\)/);
+  assert.match(readerCss, /@media \(prefers-reduced-motion: reduce\)[\s\S]*animation: reader-sheet-fade/);
+
+  // Narrow screens tuck the cluster off the text while scrolling down, but it
+  // stays focusable and keyboard focus brings it back.
+  assert.match(readerCss, /@media \(max-width: 899px\)[\s\S]*\.blog-reader-tools--tucked:not\(\.blog-reader-tools--expanded\):not\(:focus-within\)/);
+
+  // One shared window scroll listener for every article widget.
+  for (const file of ["BlogReaderTools.tsx", "BlogShareDock.tsx", "BlogReadingTracker.tsx"]) {
+    const source = read(`src/components/blog/${file}`);
+    assert.match(source, /subscribeWindowScroll/);
+    assert.doesNotMatch(source, /addEventListener\('scroll'/);
+  }
 });

@@ -19,6 +19,11 @@ import {
   localizeArticleHtmlLinks
 } from "@/lib/content/article-html";
 import {
+  buildArticleOutline,
+  MIN_OUTLINE_ITEMS,
+  opensWithPunctuation
+} from "@/lib/content/article-outline";
+import {
   getTopic,
   getNoteHub,
   getNoteContentLocales,
@@ -28,11 +33,14 @@ import {
   loadNote
 } from "@/lib/notes/data";
 import { buildNotesTopicHref } from "@/lib/notes/urls";
+import { articleTagLinks } from "@/lib/blog/article-header";
 import { getRelatedNotes } from "@/lib/notes/related";
 import { resolveNoteAuthorIdentity } from "@/lib/notes/authorship";
 import { noteOgImageUrl } from "@/lib/og/static-images";
 import BlogContent from "@/components/blog/BlogContent";
 import BlogToc from "@/components/blog/BlogToc";
+import ArticleReaderTools from "@/components/blog/ArticleReaderTools";
+import IntentPrefetchLink from "@/components/navigation/IntentPrefetchLink";
 import BlogViewCount from "@/components/blog/BlogViewCount";
 import BlogShareDock from "@/components/blog/BlogShareDock";
 import BlogReactions from "@/components/blog/BlogReactions";
@@ -166,8 +174,25 @@ export default async function NotePage({ params }: Props) {
   }
 
   const t = await getTranslations({ locale, namespace: "Pages.notes" });
+  const tReader = await getTranslations({ locale, namespace: "ReaderTools" });
   const canonical = canonicalFor(canonicalLocale, `/notes/${slug}`);
   const imageUrl = noteOgImageUrl(slug);
+  const outline = buildArticleOutline(note.html);
+  const hasToc = outline.items.length >= MIN_OUTLINE_ITEMS;
+  const share = {
+    url: canonical,
+    title: note.title,
+    surface: "notes" as const,
+    category: "notes",
+    slug,
+    labels: {
+      share: t("engagement.share"),
+      copyLink: t("engagement.copyLink"),
+      copied: t("engagement.copied"),
+      copyFailed: tReader("copyFailed"),
+      nativeShare: tReader("nativeShare")
+    }
+  };
   const description =
     note.seoDescription ??
     (note.summary || buildArticleDescription(note.html));
@@ -200,9 +225,10 @@ export default async function NotePage({ params }: Props) {
     category: "notes"
   }));
   const topicColor = topic?.color ?? FALLBACK_TOPIC_COLOR;
+  const tagLinks = articleTagLinks(note.tags, topic ? [topic.label] : [], "/notes");
   const topicHref = topic ? buildNotesTopicHref(topic.id) : null;
   const bookSourceCard = note.book ? (
-    <aside className="notes-source-card" aria-label={t("source.heading")}>
+    <section className="notes-source-card" aria-label={t("source.heading")}>
       <p className="notes-source-card__eyebrow">{t("source.heading")}</p>
       <dl className="notes-source-card__grid">
         <div>
@@ -247,7 +273,7 @@ export default async function NotePage({ params }: Props) {
       {note.book.note && (
         <p className="notes-source-card__note">{note.book.note}</p>
       )}
-    </aside>
+    </section>
   ) : null;
 
   const citations = extractArticleReferenceCitations(note.html);
@@ -372,34 +398,37 @@ export default async function NotePage({ params }: Props) {
       : null;
 
   return (
-    <main
-      className="blog-article blog-article--ocean notes-accent notes-reading"
-      data-content-locales={contentLocales.join(" ")}
-      data-content-locale-fallback="/notes"
-      style={{ "--topic-color": topicColor } as React.CSSProperties}
-    >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleLd) }}
-      />
-      {reviewedPageLd && (
+    <EngagementProvider category="notes" slug={slug}>
+      <main
+        className={`blog-article blog-article--ocean notes-accent notes-reading${
+          hasToc ? " blog-article--with-toc" : ""
+        }`}
+        data-no-dropcap={opensWithPunctuation(note.html) ? "" : undefined}
+        data-content-locales={contentLocales.join(" ")}
+        data-content-locale-fallback="/notes"
+        style={{ "--topic-color": topicColor } as React.CSSProperties}
+      >
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(reviewedPageLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleLd) }}
         />
-      )}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
-      />
-      {faqLd && (
+        {reviewedPageLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: serializeJsonLd(reviewedPageLd) }}
+          />
+        )}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbLd) }}
         />
-      )}
+        {faqLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqLd) }}
+          />
+        )}
 
-      <EngagementProvider category="notes" slug={slug}>
         {topicHub ? (
           <ContentHubReadingTracker
             category="notes"
@@ -417,22 +446,10 @@ export default async function NotePage({ params }: Props) {
         )}
         <div className="blog-article__main">
           <div className="blog-article__reader">
-            <BlogShareDock
-              url={canonical}
-              title={note.title}
-              surface="notes"
-              category="notes"
-              slug={slug}
-              labels={{
-                share: t("engagement.share"),
-                copyLink: t("engagement.copyLink"),
-                copied: t("engagement.copied"),
-                close: t("engagement.close")
-              }}
-            />
+            <BlogShareDock {...share} />
             <div className="blog-article__reader-content">
               <nav className="blog-breadcrumb" aria-label="Breadcrumb">
-                <Link href="/notes">{t("title")}</Link>
+                <IntentPrefetchLink href="/notes">{t("title")}</IntentPrefetchLink>
                 {topic && (
                   <>
                     <span aria-hidden="true">/</span>
@@ -449,7 +466,9 @@ export default async function NotePage({ params }: Props) {
                         {topic.label}
                       </Link>
                     ) : (
-                      <Link href={topicHref ?? "/notes"}>{topic.label}</Link>
+                      <IntentPrefetchLink href={topicHref ?? "/notes"}>
+                        {topic.label}
+                      </IntentPrefetchLink>
                     )}
                   </>
                 )}
@@ -476,16 +495,29 @@ export default async function NotePage({ params }: Props) {
                   </span>
                   <BlogViewCount label={t("engagement.views")} />
                 </div>
-                {note.tags.length > 0 && (
-                  <ul className="blog-article__tags">
-                    {note.tags.map((tag) => (
-                      <li key={tag}>{tag}</li>
+                {hasToc && (
+                  <BlogToc
+                    items={outline.items}
+                    label={t("onThisPage")}
+                    surface="notes"
+                    variant="inline"
+                    jumpLabel={tReader("jumpToContents")}
+                  />
+                )}
+                {tagLinks.length > 0 && (
+                  <ul className="blog-article__tags blog-article__tags--links">
+                    {tagLinks.map(({ tag, href }) => (
+                      <li key={tag}>
+                        <a href={`/${locale}${href}`} data-tag-link={tag}>
+                          {tag}
+                        </a>
+                      </li>
                     ))}
                   </ul>
                 )}
               </header>
 
-              <BlogContent html={note.html} locale={locale} />
+              <BlogContent html={outline.html} locale={locale} />
 
               {note.faqs && note.faqs.length > 0 && (
                 <section
@@ -548,7 +580,7 @@ export default async function NotePage({ params }: Props) {
               }
             >
               {topicReading.prev ? (
-                <Link
+                <IntentPrefetchLink
                   href={`/notes/${topicReading.prev.slug}`}
                   className="blog-series-nav__link blog-series-nav__link--prev"
                   data-related-link="prev"
@@ -561,12 +593,12 @@ export default async function NotePage({ params }: Props) {
                   <span className="blog-series-nav__title">
                     {topicReading.prev.title}
                   </span>
-                </Link>
+                </IntentPrefetchLink>
               ) : (
                 <span />
               )}
               {topicReading.next ? (
-                <Link
+                <IntentPrefetchLink
                   href={`/notes/${topicReading.next.slug}`}
                   className="blog-series-nav__link blog-series-nav__link--next"
                   data-related-link="next"
@@ -577,7 +609,7 @@ export default async function NotePage({ params }: Props) {
                   <span className="blog-series-nav__title">
                     {topicReading.next.title}
                   </span>
-                </Link>
+                </IntentPrefetchLink>
               ) : (
                 <span />
               )}
@@ -585,16 +617,19 @@ export default async function NotePage({ params }: Props) {
           )}
 
           <footer className="blog-article__footer">
-            <Link href="/notes" className="blog-back">
+            <IntentPrefetchLink href="/notes" className="blog-back">
               ← {t("backToNotes")}
-            </Link>
+            </IntentPrefetchLink>
           </footer>
         </div>
 
-        <aside className="blog-article__toc">
-          <BlogToc label={t("onThisPage")} surface="notes" />
-        </aside>
-      </EngagementProvider>
-    </main>
+        {hasToc && (
+          <aside className="blog-article__toc">
+            <BlogToc items={outline.items} label={t("onThisPage")} surface="notes" />
+          </aside>
+        )}
+      </main>
+      <ArticleReaderTools locale={locale} share={share} />
+    </EngagementProvider>
   );
 }

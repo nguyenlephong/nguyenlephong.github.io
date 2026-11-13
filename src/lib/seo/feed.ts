@@ -60,11 +60,22 @@ function renderItem(item: FeedItem): string {
     `      <guid isPermaLink="true">${escapeXml(item.link)}</guid>`,
     ...(pubDate ? [`      <pubDate>${pubDate}</pubDate>`] : []),
     `      <description>${escapeXml(item.description)}</description>`,
-    ...item.categories
-      .filter(Boolean)
-      .map((category) => `      <category>${escapeXml(category)}</category>`),
+    ...uniqueFeedCategories(item.categories).map(
+      (category) => `      <category>${escapeXml(category)}</category>`,
+    ),
     '    </item>',
   ].join('\n')
+}
+
+/** A tag that repeats the category name would print `<category>` twice. */
+export function uniqueFeedCategories(labels: readonly string[]): string[] {
+  const seen = new Set<string>()
+  return labels.filter((label) => {
+    const key = label.trim().toLocaleLowerCase()
+    if (!key || seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
 }
 
 export function renderRssFeed(channel: FeedChannel): string {

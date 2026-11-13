@@ -1,8 +1,5 @@
-'use client'
-
 import { LuEye } from 'react-icons/lu'
 import IntentPrefetchLink from '@/components/navigation/IntentPrefetchLink'
-import { track } from '@/lib/analytics'
 import type { BlogAccent } from '@/lib/blog/types'
 import type { BlogSearchItem } from '@/lib/content/search-index'
 import { formatCount } from '@/lib/firebase/postStats'
@@ -37,6 +34,10 @@ function formatDate(iso: string, locale: string): string {
   }).format(date)
 }
 
+/**
+ * Server-rendered card. `blog_card_click` is reported by one delegated
+ * listener (`BlogCardClickTracker`) reading the `data-blog-card*` attributes.
+ */
 export default function BlogPostCard({
   post,
   accent,
@@ -54,14 +55,9 @@ export default function BlogPostCard({
         href={`/blog/${post.category}/${post.slug}`}
         locale={contentLocale}
         className="blog-card__link"
-        onClick={() => {
-          track('blog_card_click', {
-            content_surface: 'blog',
-            content_category: post.category,
-            content_slug: post.slug,
-            source,
-          })
-        }}
+        data-blog-card={post.slug}
+        data-blog-card-category={post.category}
+        data-blog-card-source={source}
       >
         <div className="blog-card__body">
           <span className="blog-card__kicker">{categoryTitle}</span>

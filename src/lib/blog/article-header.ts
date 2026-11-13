@@ -38,21 +38,18 @@ export interface ArticleTagLink {
 }
 
 /**
- * Tag links into the archive. The explorer restores `?tag=` only for its
- * popular chips, so any other tag opens as a search query instead. A tag that
- * repeats the category name adds nothing next to the breadcrumb and is dropped.
+ * Tag links into an archive filter (`/blog?tag=` or `/notes?tag=`). The
+ * explorer restores any tag from the URL (MEP-51). A tag that repeats the
+ * category or topic name adds nothing next to the breadcrumb and is dropped.
  */
 export function articleTagLinks(
   tags: readonly string[],
   categoryNames: readonly string[],
-  archiveTags: readonly string[],
+  archive: '/blog' | '/notes' = '/blog',
 ): ArticleTagLink[] {
   const normalize = (value: string) => value.trim().toLocaleLowerCase()
   const categories = new Set(categoryNames.map(normalize))
   return tags
     .filter((tag) => !categories.has(normalize(tag)))
-    .map((tag) => ({
-      tag,
-      href: `/blog?${archiveTags.includes(tag) ? 'tag' : 'q'}=${encodeURIComponent(tag)}`,
-    }))
+    .map((tag) => ({ tag, href: `${archive}?tag=${encodeURIComponent(tag)}` }))
 }

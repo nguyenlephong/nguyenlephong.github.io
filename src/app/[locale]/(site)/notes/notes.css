@@ -112,15 +112,6 @@ html[data-reading-background] .notes-reading {
   position: relative;
 }
 
-.notes-archive__eyebrow {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.72rem;
-  letter-spacing: 0.34em;
-  text-transform: uppercase;
-  color: var(--gilt);
-  margin: 0 0 clamp(1.25rem, 3vw, 2rem);
-}
-
 .notes-archive__title {
   font-family: var(--notes-font);
   font-weight: 600;
@@ -317,8 +308,9 @@ html[data-reading-background] .notes-reading {
   letter-spacing: -0.01em;
 }
 
-/* Encyclopedia drop-cap on the opening paragraph. */
-.notes-reading .blog-content > p:first-of-type::first-letter {
+/* Encyclopedia drop-cap on the opening paragraph. Skipped when the note opens
+   with a quote mark: ::first-letter would enlarge the mark with the letter. */
+.notes-reading:not([data-no-dropcap]) .blog-content > p:first-of-type::first-letter {
   font-family: var(--notes-font);
   font-weight: 600;
   float: left;

@@ -1,4 +1,5 @@
 import {
+  enhanceArticleTables,
   hasArticleWorkflowCanvas,
   localizeArticleHtmlLinks
 } from "@/lib/content/article-html";
@@ -16,7 +17,10 @@ interface BlogContentProps {
  * markup that explicitly needs it.
  */
 export default function BlogContent({ html, locale }: BlogContentProps) {
-  const localizedHtml = localizeArticleHtmlLinks(html, locale);
+  const localizedHtml = enhanceArticleTables(
+    localizeArticleHtmlLinks(html, locale),
+    locale
+  );
   const needsWorkflowEnhancer = hasArticleWorkflowCanvas(localizedHtml);
 
   return (
