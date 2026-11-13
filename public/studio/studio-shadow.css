@@ -2150,6 +2150,18 @@ slot[name="studio-page-heading"] {
   grid-template-columns: minmax(0, 1fr) auto;
 }
 
+/* The example and view selects need their own row; squeezed into one column they ran under the layout presets. */
+@media (min-width: 1181px) {
+  .flow-board-toolbar.has-selectors {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .flow-board-toolbar.has-selectors .flow-example-toolbar {
+    grid-column: 1 / -1;
+    max-width: 44rem;
+  }
+}
+
 .flow-board-actionbar {
   display: inline-flex;
   width: fit-content;

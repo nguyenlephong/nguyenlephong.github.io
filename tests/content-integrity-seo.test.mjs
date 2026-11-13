@@ -596,12 +596,21 @@ test("static pages resolve authored identity and Studio uses a published social 
     new URL("../src/app/[locale]/studio/page.tsx", import.meta.url),
     "utf8"
   );
-  assert.match(studio, /localizedPageIdentity\(locale, seo\.path\)/);
-  assert.match(studio, /canonical:\s*identity\.canonical/);
-  assert.match(studio, /url:\s*identity\.canonical/);
-  assert.match(studio, /absoluteUrl\("\/opengraph-image\.png"\)/);
-  assert.doesNotMatch(studio, /blogPostOgImageUrl/);
-  assert.doesNotMatch(studio, /\$\{locale\}\/opengraph-image/);
+  // Studio is authored in en/vi only; other locales are self-canonical noindex fallbacks via the static-page resolver.
+  assert.match(studio, /resolveStaticPageLocalization\("studio", locale\)/);
+  assert.match(studio, /buildStudioMetadata\(/);
+  assert.match(studio, /url:\s*localization\.canonical/);
+  const studioSeo = readFileSync(
+    new URL("../src/app/[locale]/studio/studio-seo.ts", import.meta.url),
+    "utf8"
+  );
+  assert.match(studioSeo, /buildStaticPageMetadata\(/);
+  assert.match(studioSeo, /STUDIO_SOCIAL_IMAGE = "\/opengraph-image\.png"/);
+  assert.match(studioSeo, /absoluteUrl\(STUDIO_SOCIAL_IMAGE\)/);
+  for (const source of [studio, studioSeo]) {
+    assert.doesNotMatch(source, /blogPostOgImageUrl/);
+    assert.doesNotMatch(source, /\$\{locale\}\/opengraph-image/);
+  }
   assert.equal(
     absoluteUrl("/opengraph-image.png"),
     "https://nguyenlephong.github.io/opengraph-image.png"

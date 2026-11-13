@@ -6,7 +6,7 @@ import { canonicalFor, localeAlternates, ogLocaleFor } from '@/lib/seo/locale'
 export const STATIC_PAGE_SEO_POLICY = {
   about: {
     path: '/about',
-    contentLocales: ['en', 'vi'],
+    contentLocales: routing.locales,
   },
   apps: {
     path: '/apps',
@@ -15,6 +15,23 @@ export const STATIC_PAGE_SEO_POLICY = {
   gallery: {
     path: '/gallery',
     contentLocales: routing.locales,
+  },
+  // Studio prose is written in English and Vietnamese only (MEP-54).
+  studio: {
+    path: '/studio',
+    contentLocales: ['en', 'vi'],
+  },
+  'studio/checklists': {
+    path: '/studio/checklists',
+    contentLocales: ['en', 'vi'],
+  },
+  'studio/system-maps': {
+    path: '/studio/system-maps',
+    contentLocales: ['en', 'vi'],
+  },
+  'studio/ai-setup': {
+    path: '/studio/ai-setup',
+    contentLocales: ['en', 'vi'],
   },
 } as const satisfies Record<
   string,
@@ -42,7 +59,9 @@ function isLocale(value: string): value is Locale {
 
 /**
  * Resolves content identity separately from route identity. Unsupported locale
- * routes stay usable, but point search engines at the authored English page.
+ * routes stay usable and self-canonical but noindex, with no hreflang, so search
+ * engines never see a canonical that disagrees with the robots directive. They
+ * stay out of the sitemap (`staticPageSitemapLocales`).
  */
 export function resolveStaticPageLocalization(
   page: StaticPageName,
@@ -58,7 +77,7 @@ export function resolveStaticPageLocalization(
 
   return {
     authored,
-    canonical: canonicalFor(contentLocale, policy.path),
+    canonical: canonicalFor(routeLocale, policy.path),
     contentLocale,
     follow: true,
     index: authored,

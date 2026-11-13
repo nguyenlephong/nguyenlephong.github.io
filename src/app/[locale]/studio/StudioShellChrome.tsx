@@ -33,6 +33,7 @@ import {
 
 export function SidebarGroup({
   group,
+  locale,
   activeRoute,
   expanded,
   collapsed,
@@ -40,6 +41,7 @@ export function SidebarGroup({
   onToggle
 }: {
   group: StudioNavGroup;
+  locale: string;
   activeRoute: StudioRouteId;
   expanded: Record<string, boolean>;
   collapsed: boolean;
@@ -80,7 +82,7 @@ export function SidebarGroup({
                     {item.subItems.map((subItem) => (
                       <a
                         key={subItem.id}
-                        href={routeHref(subItem.routeId ?? DEFAULT_ROUTE)}
+                        href={routeHref(subItem.routeId ?? DEFAULT_ROUTE, locale)}
                         className={`sidebar-submenu-link${subItem.routeId === activeRoute ? " is-active" : ""}`}
                         onClick={(event) => {
                           event.preventDefault();
@@ -109,7 +111,7 @@ export function SidebarGroup({
           return (
             <a
               key={item.id}
-              href={routeHref(item.routeId)}
+              href={routeHref(item.routeId, locale)}
               className={`sidebar-menu-button${active ? " is-active" : ""}`}
               aria-current={active ? "page" : undefined}
               onClick={(event) => {
@@ -179,7 +181,7 @@ export function CommandDialog({
             return (
               <a
                 key={item.id}
-                href={routeHref(route.id)}
+                href={routeHref(route.id, locale)}
                 className={route.id === activeRoute ? "is-active" : ""}
                 onClick={(event) => {
                   event.preventDefault();

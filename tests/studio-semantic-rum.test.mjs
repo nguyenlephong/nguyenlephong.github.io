@@ -48,7 +48,7 @@ test("Studio keeps one localized light-DOM H1 through the shadow lifecycle", asy
   const staticContent = require("../src/app/[locale]/studio/studio-static-content.ts");
   const [page, workspace, overview, shadowIsland, adminShell, welcomeFeature, shadowStyles] =
     await Promise.all([
-      readFile("src/app/[locale]/studio/page.tsx", "utf8"),
+      readFile("src/app/[locale]/studio/StudioPageFrame.tsx", "utf8"),
       readFile("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8"),
       readFile("src/app/[locale]/studio/StudioStaticOverview.tsx", "utf8"),
       readFile("src/components/studio-kit/shadow-island.tsx", "utf8"),
@@ -60,7 +60,9 @@ test("Studio keeps one localized light-DOM H1 through the shadow lifecycle", asy
   assert.equal(page.match(/<h1\b/g)?.length, 1);
   assert.match(page, /data-studio-page-heading="true"/);
   assert.match(page, /slot="studio-page-heading"/);
-  assert.match(page, /\{staticContent\.title\}<\/h1>/);
+  assert.match(page, /\{title\}<\/h1>/);
+  // MEP-56 / craft floor: the heading carries no eyebrow label above it.
+  assert.doesNotMatch(page, /studio-page-heading__eyebrow/);
   assert.doesNotMatch(page, /studio-page-heading__title[^}]*display:\s*none/);
 
   assert.match(workspace, /heading=\{heading\}/);
@@ -80,6 +82,32 @@ test("Studio keeps one localized light-DOM H1 through the shadow lifecycle", asy
     const content = staticContent.getStudioStaticContent(locale);
     assert.ok(content.title.trim().length > 0, `${locale} Studio title must be localized`);
   }
+});
+
+test("Studio shell keeps <title> and the h1 in step with client-side route changes", () => {
+  const staticContent = require("../src/app/[locale]/studio/studio-static-content.ts");
+  const adminShell = readFileSync("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8");
+
+  for (const locale of ["en", "vi", "fr"]) {
+    const content = staticContent.getStudioStaticContent(locale);
+    const overview = staticContent.getStudioRoutePageTitles(locale, "welcome", "Start here");
+    assert.deepEqual(overview, { heading: content.title, documentTitle: content.seoTitle, lang: content.contentLocale });
+    for (const studioModule of content.modules) {
+      // A pushState navigation must read exactly like a reload of the module URL.
+      const titles = staticContent.getStudioRoutePageTitles(locale, studioModule.id, "shell label");
+      assert.deepEqual(titles, { heading: studioModule.title, documentTitle: studioModule.seoTitle, lang: content.contentLocale });
+    }
+  }
+  assert.deepEqual(
+    staticContent.getStudioRoutePageTitles("fr", "ai-skills", "Skills IA"),
+    { heading: "Skills IA", documentTitle: "Skills IA | Engineering Studio", lang: "fr" }
+  );
+
+  const effect = adminShell.match(/useEffect\(\(\) => \{\s*const titles = getStudioRoutePageTitles[\s\S]*?\}, \[([^\]]*)\]\);/);
+  assert.ok(effect, "shell must sync titles in an effect");
+  assert.match(effect[0], /document\.title = titles\.documentTitle/);
+  assert.match(effect[0], /\[data-studio-page-heading\] h1/);
+  assert.match(effect[1], /activeRoute/);
 });
 
 test("Studio deferred shell keeps the named heading and overview slots projected", () => {

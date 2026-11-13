@@ -130,7 +130,12 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/app/seo.config.ts", "utf8"),
     readFile("src/lib/analytics.ts", "utf8"),
     readFile("src/components/analytics/PageTracker.tsx", "utf8"),
-    readFile("src/app/[locale]/studio/page.tsx", "utf8"),
+    readSources([
+      "src/app/[locale]/studio/page.tsx",
+      "src/app/[locale]/studio/[module]/page.tsx",
+      "src/app/[locale]/studio/StudioPageFrame.tsx",
+      "src/app/[locale]/studio/studio-seo.ts"
+    ]),
     readFile("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioStaticOverview.tsx", "utf8"),
     readFile("src/app/[locale]/studio/studio-static-content.ts", "utf8"),
@@ -164,6 +169,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
       "src/app/[locale]/studio/StudioAiSetupFeature.tsx",
       "src/app/[locale]/studio/StudioAiSetupFeature.en.tsx",
       "src/app/[locale]/studio/StudioAiSetupFeature.vi.tsx",
+      "src/app/[locale]/studio/studio-ai-workflow-steps.ts",
       "src/app/[locale]/studio/StudioAiSkillsFeature.tsx",
       "src/app/[locale]/studio/StudioAiSkillsFeature.en.tsx",
       "src/app/[locale]/studio/StudioAiSkillsFeature.vi.tsx",
@@ -226,8 +232,11 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
 
   assert.match(page, /generateStaticParams/);
   assert.match(page, /generateMetadata/);
-  assert.match(page, /Studio: Engineering Notes & System Flows/);
-  assert.match(page, /Studio: Ghi chú kỹ thuật và System Flows/);
+  assert.match(staticContent, /Engineering Studio: delivery checklists and system maps/);
+  assert.match(staticContent, /Engineering Studio: checklist ra bản và sơ đồ hệ thống/);
+  assert.match(page, /resolveStaticPageLocalization\("studio", locale\)/);
+  assert.match(page, /resolveStaticPageLocalization\(`studio\/\$\{slug as StudioPublicModuleSlug\}`, locale\)/);
+  assert.match(page, /trackerContext=\{\{ studio_module: studioModule\.slug \}\}/);
   assert.match(page, /PageTracker page="studio" eventName="studio_view"/);
   assert.match(page, /"@type":\s*"CollectionPage"/);
   assert.match(page, /hasPart:/);
@@ -239,7 +248,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(page, /getLocalizedStudioNotes|getLocalizedStudioFlows/);
   assert.match(page, /StudioWorkspace/);
   assert.match(page, /data-studio-page-heading="true"/);
-  assert.match(page, /<h1 className="studio-page-heading__title">\{staticContent\.title\}<\/h1>/);
+  assert.match(page, /<h1 className="studio-page-heading__title">\{title\}<\/h1>/);
   assert.match(page, /studio-route-shell/);
   assert.match(page, /<div className="studio-route-shell">/);
   assert.doesNotMatch(page, /<main className="studio-route-shell">/);
@@ -255,7 +264,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(workspace, /STUDIO_STYLESHEET_HREF = "\/studio\/studio-shadow\.css"/);
   assert.match(workspace, /stylesheetHref=\{STUDIO_STYLESHEET_HREF\}/);
   assert.doesNotMatch(workspace, /studioShadowStyles|studio\.shadow-styles/);
-  assert.match(page, /fallback=\{<StudioStaticOverview locale=\{locale\} \/>\}/);
+  assert.match(page, /<StudioStaticOverview locale=\{locale\} \/>/);
+  assert.match(page, /<StudioModuleArticle locale=\{locale\} module=\{studioModule\} \/>/);
+  assert.match(page, /fallback=\{children\}/);
   assert.match(workspace, /fallback=\{fallback\}/);
   assert.match(workspace, /heading=\{heading\}/);
   assert.match(staticOverview, /data-studio-static-overview="true"/);
@@ -263,10 +274,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(staticOverview, /data-studio-module-link=\{module\.id\}/);
   assert.match(staticContent, /en:\s*\{/);
   assert.match(staticContent, /vi:\s*\{/);
-  assert.match(staticContent, /zh:\s*\{/);
-  assert.match(staticContent, /ja:\s*\{/);
-  assert.match(staticContent, /ko:\s*\{/);
-  assert.match(staticContent, /fr:\s*\{/);
+  assert.match(staticContent, /zh:\s*"/);
+  assert.match(staticContent, /ja:\s*"/);
+  assert.match(staticContent, /ko:\s*"/);
+  assert.match(staticContent, /fr:\s*"/);
   assert.match(adminShell, /^"use client"/);
   assert.match(adminShell, /StudioAdminShell/);
   assert.match(adminShell, /const DEFAULT_ROUTE:\s*StudioRouteId = studioCatalog\.defaultRouteId/);
@@ -493,7 +504,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(adminShell, /getLocalizedBlogRoadmap/);
   assert.match(adminShell, /getLocalizedStudioFlowGroups/);
   assert.match(adminShell, /getLocalizedStudioFlows/);
-  assert.match(adminShell, /workflowSteps/);
+  assert.match(adminShell, /studioAiWorkflowStepsByLocale\.(en|vi)/);
   assert.doesNotMatch(adminShell, /function MailChatPage/);
   assert.doesNotMatch(adminShell, /from "recharts"/);
   assert.match(featureBoundary, /getDerivedStateFromError/);

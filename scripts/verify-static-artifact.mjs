@@ -82,6 +82,9 @@ const LOCALIZED_PAGE_SCHEMA_CONTRACTS = new Map([
   ['apps', { fragment: 'itemlist', schemaTypes: new Set(['ItemList']) }],
   ['gallery', { fragment: 'gallery', schemaTypes: new Set(['ImageGallery']) }],
   ['studio', { fragment: 'studio', schemaTypes: new Set(['CollectionPage']) }],
+  ['studio/checklists', { fragment: 'webpage', schemaTypes: new Set(['WebPage']) }],
+  ['studio/system-maps', { fragment: 'webpage', schemaTypes: new Set(['WebPage']) }],
+  ['studio/ai-setup', { fragment: 'webpage', schemaTypes: new Set(['WebPage']) }],
 ])
 const SEO_OG_LOCALES = new Map([
   ['en', 'en_US'],
@@ -183,8 +186,11 @@ const SECRET_PATTERNS = [
   },
 ]
 
-function decodeXml(value) {
+export function decodeXml(value) {
+  // Numeric references first so "&amp;#39;" stays a literal "&#39;"; React escapes ' as &#x27;.
   return value
+    .replace(/&#x([0-9a-f]{1,6});/gi, (entity, hex) => decodeHtmlCodePoint(entity, hex, 16))
+    .replace(/&#([0-9]{1,7});/g, (entity, decimal) => decodeHtmlCodePoint(entity, decimal, 10))
     .replaceAll('&amp;', '&')
     .replaceAll('&quot;', '"')
     .replaceAll('&apos;', "'")
@@ -1013,7 +1019,8 @@ function verifyLocalizedPageIdentityContracts({
       if (policy) focusedStaticPageCount += 1
       const authored = !policy || policy.contentLocales.includes(locale)
       const contentLocale = authored ? locale : policy.fallbackLocale
-      const expectedPageUrl = normalizeUrl(`${siteOrigin}/${contentLocale}/${route}`)
+      // Fallback routes are self-canonical noindex pages, so identity is always the route URL.
+      const expectedPageUrl = routePageUrl
 
       if (
         metadata.canonicalUrls.length !== 1 ||
@@ -1176,7 +1183,13 @@ function verifyLocalizedPageIdentityContracts({
         }
       }
 
-      if (route !== 'studio') continue
+      if (route !== 'studio' && !route.startsWith('studio/')) continue
+      // The overview's single-H1 rule lives in verifyStudioHtmlContracts; module pages need it too.
+      if (route !== 'studio' && metadata.studioHeadingCount !== 1) {
+        failures.push(
+          `${metadata.relativePath} Studio module page must contain exactly one H1; found ${metadata.studioHeadingCount}`,
+        )
+      }
       const expectedSocialImage = normalizeUrl(`${siteOrigin}/opengraph-image.png`)
       for (const [name, value] of [
         ['og:image', metadata.openGraphImage],

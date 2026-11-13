@@ -65,7 +65,7 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
     path: APP_ROUTE.STUDIO,
     name: 'Studio',
     description:
-      'A public workspace of engineering notes, delivery checklists and interactive system design flows.',
+      'Delivery checklists and system maps for scoping work, shipping releases and rolling them out safely.',
   },
   {
     id: 'resume',

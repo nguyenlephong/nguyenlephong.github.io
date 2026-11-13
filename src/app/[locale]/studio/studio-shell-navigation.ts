@@ -7,7 +7,12 @@ import type { StudioRoute } from "./studio-route-contract";
 import { routeDefinitions } from "./studio-route-definitions";
 import type { StudioRouteCopy, StudioUiCopy } from "./studio-shell-copy";
 
-export type StudioRouteActivationSource = "initial_location" | "brand" | "sidebar" | "command" | "route_actions" | "browser_history" | "unknown";
+/**
+ * `studio_route_open.source`. Welcome module shortcuts reported "route_actions" until wave 3 and now
+ * report "studio_module_open"; dashboards must OR both values to keep that history. Flow and AI setup
+ * in-feature links still use "route_actions".
+ */
+export type StudioRouteActivationSource = "initial_location" | "brand" | "sidebar" | "command" | "route_actions" | "studio_module_open" | "browser_history" | "unknown";
 export type StudioNavItem = {
   id: string;
   title: string;
@@ -112,17 +117,30 @@ export function flowIdFromRoute(routeId: StudioRouteId): string | null {
   return routeId.startsWith("flow-") ? routeId.slice("flow-".length) : null;
 }
 
-export function routeHref(routeId: StudioRouteId): string {
+const modulePageByRouteId = new Map<StudioRouteId, string>(
+  studioCatalog.publicModules.map((module) => [module.routeId, module.slug])
+);
+const routeIdByModuleSlug = new Map<string, StudioRouteId>(
+  studioCatalog.publicModules.map((module) => [module.slug, module.routeId])
+);
+
+/** Public modules live on their own crawlable path; every other route stays a query on /studio. */
+export function routeHref(routeId: StudioRouteId, locale: string): string {
+  const studioPath = `/${locale}${APP_ROUTE.STUDIO}`;
+  const slug = modulePageByRouteId.get(routeId);
+  if (slug) return `${studioPath}/${slug}`;
+  if (routeId === DEFAULT_ROUTE) return studioPath;
   const flowId = flowIdFromRoute(routeId);
   const params = new URLSearchParams();
   params.set("route", routeId);
   if (flowId) params.set("flow", flowId);
-  return `?${params.toString()}#${routeId}`;
+  return `${studioPath}?${params.toString()}#${routeId}`;
 }
 
-function normalizeHash(hash: string): StudioRouteId {
-  const candidate = hash.replace(/^#\/?/, "");
-  return isLocationRouteId(candidate) ? candidate : DEFAULT_ROUTE;
+export function routeIdFromStudioPath(pathname: string): StudioRouteId | null {
+  const segments = pathname.split("/").filter(Boolean);
+  if (segments[1] !== "studio" || segments.length !== 3) return null;
+  return routeIdByModuleSlug.get(segments[2].replace(/\.html$/, "")) ?? null;
 }
 
 export function normalizeLocationRoute(): StudioRouteId {
@@ -134,7 +152,9 @@ export function normalizeLocationRoute(): StudioRouteId {
   }
   const routeId = params.get("route");
   if (routeId && isLocationRouteId(routeId)) return routeId;
-  return normalizeHash(window.location.hash);
+  const hashRoute = window.location.hash.replace(/^#\/?/, "");
+  if (isLocationRouteId(hashRoute)) return hashRoute;
+  return routeIdFromStudioPath(window.location.pathname) ?? DEFAULT_ROUTE;
 }
 
 const flowGroupById: Record<string, string> = {

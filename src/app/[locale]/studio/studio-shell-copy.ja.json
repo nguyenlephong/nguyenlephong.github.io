@@ -6,7 +6,7 @@
     "ai-agent-setup": "AI セットアップ",
     "ai-skills": "AI スキル",
     "delivery-checklists": "チェックリスト",
-    "flow-menu": "Flow Menu",
+    "flow-menu": "システムマップ",
     "flow-system-design": "System Design",
     "flow-architecture-decision": "Architecture Decision",
     "flow-incident-response": "Incident Response",
@@ -88,7 +88,7 @@
   "routes": {
     "welcome": {
       "title": "Welcome",
-      "description": "A practical index of my setup notes, reusable workflows, delivery checklists, and visual system maps.",
+      "description": "Delivery checklists first, then system maps, then the AI agent setup I work with.",
       "panels": ["Choose a workspace", "Useful links", "Studio pages"],
       "timeline": [
         "Choose the right workspace",
@@ -128,9 +128,9 @@
     }
   },
   "welcome": {
-    "eyebrow": "Personal workbench",
-    "lead": "I keep the practical parts of my engineering work here: setup notes, reusable AI instructions, delivery checklists, and visual system maps.",
-    "note": "Choose the page that matches the job, check the source material, and finish with a useful decision, checklist, diagram, or verified change.",
+    "eyebrow": "How I work",
+    "lead": "The checklists and system maps I use to scope work, ship releases and roll them out safely. Start with the delivery checklists: Release Readiness and Rollout Plan sit at the top.",
+    "note": "Take what helps your team. Each checklist copies as Markdown, and the system blueprint has a focused view for each zone.",
     "studioLinks": "Studio shortcuts",
     "publicLinks": "Useful profile links",
     "open": "Open",
@@ -145,7 +145,7 @@
       },
       "delivery-checklists": {
         "label": "Checklists",
-        "detail": "Step-by-step checks for task intake, implementation, review, and release."
+        "detail": "Release readiness, rollout plan, ticket intake and module checks."
       },
       "flow-react-flow-architecture-demo": {
         "label": "Flow examples",

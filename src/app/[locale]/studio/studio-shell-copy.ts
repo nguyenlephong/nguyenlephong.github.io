@@ -21,6 +21,8 @@ export type StudioRouteActivationSource =
   | "sidebar"
   | "command"
   | "route_actions"
+  // Welcome module shortcuts reported "route_actions" until wave 3; dashboards must OR both values for that history.
+  | "studio_module_open"
   | "browser_history"
   | "unknown";
 

@@ -57,11 +57,11 @@ export default function StudioWelcomeFeature({
               return (
                 <a
                   key={routeId}
-                  href={routeHref(routeId)}
+                  href={routeHref(routeId, locale)}
                   className="welcome-shortcut"
                   onClick={(event) => {
                     event.preventDefault();
-                    onActivate(routeId, "route_actions");
+                    onActivate(routeId, "studio_module_open");
                   }}
                 >
                   <Icon aria-hidden="true" />

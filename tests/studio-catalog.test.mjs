@@ -149,29 +149,52 @@ test("Studio route, nav, welcome, and static identities share one data-only cata
   assert.deepEqual(studioCatalog.welcomeRouteIds, publicModuleIds);
   publicModuleIds.forEach((routeId) => assert.ok(navRouteIds.includes(routeId), `public module missing from nav: ${routeId}`));
 
-  for (const locale of ["en", "vi", "zh", "ja", "ko", "fr"]) {
+  // MEP-56: checklists lead, then system maps, then AI setup; each public module has its own page.
+  assert.deepEqual(publicModuleIds, ["delivery-checklists", "flow-react-flow-system-blueprint", "ai-agent-setup"]);
+  assert.deepEqual(navRouteIds.slice(0, 3), ["welcome", "delivery-checklists", "flow-react-flow-system-blueprint"]);
+  assert.deepEqual(studioCatalog.publicModules.map((module) => module.slug), ["checklists", "system-maps", "ai-setup"]);
+
+  for (const locale of ["en", "vi"]) {
     const localizedCopy = staticContentModule.studioStaticContentCopyByLocale[locale];
     assert.deepEqual(
       Object.keys(localizedCopy.modules).sort(),
       [...publicModuleIds].sort(),
       `${locale} module copy must have the exact keyed public-module contract`
     );
-    for (const routeId of [...publicModuleIds].reverse()) {
-      assert.ok(localizedCopy.modules[routeId].title.trim(), `${locale}/${routeId} title must be nonempty`);
-      assert.ok(localizedCopy.modules[routeId].description.trim(), `${locale}/${routeId} description must be nonempty`);
-    }
-
-    const resolvedModules = staticContentModule.getStudioStaticContent(locale).modules;
-    assert.deepEqual(
-      resolvedModules.map((module) => module.id),
-      publicModuleIds,
-      `${locale} static modules must follow the shared catalog`
-    );
-    for (const resolvedModule of resolvedModules) {
-      assert.equal(resolvedModule.title, localizedCopy.modules[resolvedModule.id].title);
-      assert.equal(resolvedModule.description, localizedCopy.modules[resolvedModule.id].description);
+    for (const routeId of publicModuleIds) {
+      for (const field of ["title", "seoTitle", "description", "lead", "openLabel"]) {
+        const value = localizedCopy.modules[routeId][field];
+        assert.ok(value.trim(), `${locale}/${routeId} ${field} must be nonempty`);
+        assert.doesNotMatch(value, /\u2014|practice plan/i, `${locale}/${routeId} ${field}`);
+      }
     }
   }
+  assert.doesNotMatch(
+    `${staticContentModule.studioStaticContentCopyByLocale.en.intro} ${staticContentModule.studioStaticContentCopyByLocale.vi.intro}`,
+    /Explore|Khám phá/,
+    "intro must not narrate its own format"
+  );
+
+  for (const locale of ["en", "vi", "zh", "ja", "ko", "fr"]) {
+    const content = staticContentModule.getStudioStaticContent(locale);
+    assert.equal(content.contentLocale, locale === "vi" ? "vi" : "en", `${locale} falls back to English prose`);
+    assert.deepEqual(content.modules.map((module) => module.id), publicModuleIds, `${locale} static modules follow the catalog`);
+    assert.equal(
+      staticContentModule.getStudioStaticModuleHref(locale, content.modules[0]),
+      `/${locale}/studio/checklists`
+    );
+    if (locale !== "en" && locale !== "vi") {
+      assert.ok(staticContentModule.studioFallbackNoticeByLocale[locale], `${locale} marks the English fallback`);
+    }
+  }
+
+  const checklists = ["ninety-day-ai-skill-plan", "rollout-plan", "daily-ai-learning-loop", "release-readiness"]
+    .map((id) => ({ id, title: id, summary: "", whenToUse: "", tags: [], sections: [] }));
+  assert.deepEqual(
+    catalogModule.selectStudioDeliveryChecklists(checklists).map((checklist) => checklist.id),
+    ["release-readiness", "rollout-plan"],
+    "delivery checklists keep reading order and drop personal practice plans"
+  );
 
   assert.doesNotMatch(catalogSource, /from\s+["']react(?:-icons)?|<\w+[\s>]/);
   assert.match(navigationSource, /studioCatalog\.navGroups/);

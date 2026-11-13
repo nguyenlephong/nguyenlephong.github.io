@@ -52,7 +52,19 @@ const PATHS: Array<{
         listPosts(locale).map((post) => post.updated ?? post.date)
       )
   },
-  { path: "/studio", priority: 0.85, freq: "weekly" },
+  // Studio has native prose in en and vi only; other locales are noindex fallbacks (MEP-54).
+  {
+    path: "/studio",
+    priority: 0.7,
+    freq: "monthly",
+    locales: staticPageSitemapLocales("studio")
+  },
+  ...(["checklists", "system-maps", "ai-setup"] as const).map((slug) => ({
+    path: `/studio/${slug}`,
+    priority: 0.6,
+    freq: "monthly" as const,
+    locales: staticPageSitemapLocales(`studio/${slug}`)
+  })),
   {
     path: "/about",
     priority: 0.8,

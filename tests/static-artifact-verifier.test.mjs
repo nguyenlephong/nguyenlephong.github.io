@@ -249,6 +249,11 @@ const STATIC_PAGE_SEO_POLICY = {
     fragment: 'gallery',
     contentLocales: GENERIC_SEO_LOCALES,
   },
+  'studio/checklists': {
+    type: 'WebPage',
+    fragment: 'webpage',
+    contentLocales: ['en', 'vi'],
+  },
 }
 
 const STATIC_PAGE_OG_LOCALES = {
@@ -355,7 +360,9 @@ function writeStaticPageSeoPolicyFixtures(outDir) {
     for (const routeLocale of GENERIC_SEO_LOCALES) {
       const authored = policy.contentLocales.includes(routeLocale)
       const contentLocale = authored ? routeLocale : 'en'
-      const canonical = `https://example.com/${contentLocale}/${route}`
+      // Fallback locales are self-canonical noindex pages.
+      const canonical = `https://example.com/${routeLocale}/${route}`
+      const isStudio = route.startsWith('studio')
       const title = `${route} title ${contentLocale}`
       const description = `${route} description ${contentLocale}`
       const alternateOgLocales = authored
@@ -378,9 +385,10 @@ function writeStaticPageSeoPolicyFixtures(outDir) {
         ...(route === 'apps' ? { itemListElement: [] } : {}),
       }
 
-      mkdirSync(path.join(outDir, routeLocale), { recursive: true })
+      const htmlPath = path.join(outDir, routeLocale, `${route}.html`)
+      mkdirSync(path.dirname(htmlPath), { recursive: true })
       writeFileSync(
-        path.join(outDir, routeLocale, `${route}.html`),
+        htmlPath,
         [
           `<!doctype html><html lang="${routeLocale}"><head>`,
           `<title>${title}</title>`,
@@ -394,6 +402,8 @@ function writeStaticPageSeoPolicyFixtures(outDir) {
           alternateOgLocales,
           `<meta name="twitter:title" content="${title}">`,
           `<meta name="twitter:description" content="${description}">`,
+          isStudio ? '<meta property="og:image" content="https://example.com/opengraph-image.png">' : '',
+          isStudio ? '<meta name="twitter:image" content="https://example.com/opengraph-image.png">' : '',
           `<link rel="canonical" href="${canonical}">`,
           authored ? htmlAlternates : '',
           '</head><body>',
@@ -412,6 +422,7 @@ function writeStaticPageSeoPolicyFixtures(outDir) {
     }
   }
 
+  writeFileSync(path.join(outDir, 'opengraph-image.png'), ONE_PIXEL_PNG)
   const sitemapPath = path.join(outDir, 'sitemap.xml')
   writeFileSync(
     sitemapPath,
@@ -874,7 +885,7 @@ test('rejects unlocalized generic page identities and a non-root Studio social i
   assert.match(failures, /fr\/studio\.html canonical must match localized page identity/)
 })
 
-test('verifies authored and fallback SEO policy across all 18 static page URLs', async (t) => {
+test('verifies authored and fallback SEO policy across every static page URL, Studio modules included', async (t) => {
   const { rootDir, outDir } = createFixture(t, {
     limits: { fileCount: 100 },
     config: {
@@ -945,9 +956,26 @@ test('rejects fallback indexing, language drift, keyword inheritance, and metada
   )
   replaceInFixture(
     'ko/about.html',
-    '<link rel="canonical" href="https://example.com/en/about">',
-    '<link rel="canonical" href="https://example.com/en/about"><link rel="alternate" hreflang="en" href="https://example.com/en/about">',
+    '<link rel="canonical" href="https://example.com/ko/about">',
+    '<link rel="canonical" href="https://example.com/ko/about"><link rel="alternate" hreflang="en" href="https://example.com/en/about">',
   )
+  // Studio module URLs carry the same robots, canonical, hreflang and single-H1 rules.
+  replaceInFixture(
+    'fr/studio/checklists.html',
+    '<meta name="robots" content="noindex, follow">',
+    '<meta name="robots" content="index, follow">',
+  )
+  replaceInFixture(
+    'zh/studio/checklists.html',
+    '<link rel="canonical" href="https://example.com/zh/studio/checklists">',
+    '<link rel="canonical" href="https://example.com/en/studio/checklists">',
+  )
+  replaceInFixture(
+    'ja/studio/checklists.html',
+    '<link rel="canonical"',
+    '<link rel="alternate" hreflang="ja" href="https://example.com/ja/studio/checklists"><link rel="canonical"',
+  )
+  replaceInFixture('vi/studio/checklists.html', '</main>', '<h1>Second heading</h1></main>')
   replaceInFixture(
     'fr/apps.html',
     '<meta name="googlebot" content="noindex, follow">',
@@ -972,6 +1000,10 @@ test('rejects fallback indexing, language drift, keyword inheritance, and metada
   assert.match(failures, /ko\/about\.html hreflang must contain only authored static-page locales/)
   assert.match(failures, /zh\/apps\.html fallback static page leaked into sitemap\.xml/)
   assert.match(failures, /fr\/apps\.html Googlebot robots must match the static-page index\/follow policy/)
+  assert.match(failures, /fr\/studio\/checklists\.html must be noindex under the static-page locale policy/)
+  assert.match(failures, /zh\/studio\/checklists\.html canonical must match localized page identity/)
+  assert.match(failures, /ja\/studio\/checklists\.html hreflang must contain only authored static-page locales/)
+  assert.match(failures, /vi\/studio\/checklists\.html Studio module page must contain exactly one H1; found 2/)
 })
 
 test('requires local social images to have an emitted image file and matching signature', async (t) => {

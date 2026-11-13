@@ -6,7 +6,7 @@
     "ai-agent-setup": "AI Setup",
     "ai-skills": "AI Skills",
     "delivery-checklists": "Checklists",
-    "flow-menu": "Flow",
+    "flow-menu": "Sơ đồ hệ thống",
     "flow-system-design": "System Design",
     "flow-architecture-decision": "Architecture Decision",
     "flow-incident-response": "Incident Response",
@@ -88,7 +88,7 @@
   "routes": {
     "welcome": {
       "title": "Bắt đầu",
-      "description": "Mục lục gọn cho các ghi chú thiết lập, hướng dẫn dùng AI, danh sách kiểm tra và sơ đồ hệ thống tôi thường dùng.",
+      "description": "Checklist đi trước, sau đó là sơ đồ hệ thống, cuối cùng là cách tôi thiết lập AI agent.",
       "panels": [
         "Chọn nơi cần mở",
         "Liên kết hữu ích",
@@ -121,7 +121,7 @@
       ]
     },
     "delivery-checklists": {
-      "title": "Engineering Checklists",
+      "title": "Checklist từ ticket đến rollout",
       "description": "Các bước cần kiểm từ lúc hiểu yêu cầu, sửa code, tự review đến khi release an toàn.",
       "panels": ["Nhận việc", "Thực hiện thay đổi", "Release và theo dõi"],
       "timeline": [
@@ -224,9 +224,9 @@
     }
   },
   "welcome": {
-    "eyebrow": "Bàn làm việc cá nhân",
-    "lead": "Tôi gom ở đây những thứ dùng thường xuyên trong công việc kỹ thuật: ghi chú thiết lập, hướng dẫn làm việc với AI, danh sách kiểm tra và sơ đồ hệ thống.",
-    "note": "Hãy chọn đúng trang cho việc đang làm, kiểm lại tài liệu gốc, rồi kết thúc bằng một quyết định, danh sách, sơ đồ hoặc thay đổi đã được kiểm chứng.",
+    "eyebrow": "Cách tôi làm việc",
+    "lead": "Những checklist và sơ đồ hệ thống tôi dùng để chốt phạm vi, ra bản release và rollout an toàn. Bạn nên bắt đầu từ phần checklist, hai cái đầu là kiểm tra trước khi release và kế hoạch rollout.",
+    "note": "Bạn thấy hợp với team mình thì cứ lấy dùng. Checklist nào cũng copy được dưới dạng Markdown, còn bản blueprint có view riêng cho từng vùng của hệ thống.",
     "studioLinks": "Lối tắt trong Studio",
     "publicLinks": "Liên kết trong hồ sơ",
     "open": "Mở",
@@ -241,7 +241,7 @@
       },
       "delivery-checklists": {
         "label": "Checklists",
-        "detail": "Checklist từ lúc nhận task, code, review đến release."
+        "detail": "Kiểm tra trước khi release, kế hoạch rollout, nhận ticket và tạo module."
       },
       "flow-react-flow-architecture-demo": {
         "label": "React Flow Examples",

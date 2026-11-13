@@ -19,8 +19,26 @@ even when a visitor opened the lightweight welcome route.
   H1.
 - Publish crawlable module links in the overview and mirror those exact URLs in
   the `CollectionPage.hasPart` graph.
-- Keep the existing query/hash Studio navigation contract and analytics event
-  names.
+- Navigation contract: the three public modules (Delivery checklists, System
+  maps, AI setup) live on their own crawlable paths,
+  `/[locale]/studio/{checklists,system-maps,ai-setup}`, and the overview on
+  `/[locale]/studio`. In-shell navigation between them uses
+  `history.pushState` on those paths; every other route (AI Skills, flow deep
+  links) stays a `?route=` query plus matching hash on `/[locale]/studio`.
+  `normalizeLocationRoute` reads query, then hash, then the module path.
+- On every route activation, popstate and the first shell render, the shell
+  sets `document.title` and the slotted light-DOM H1 text from
+  `getStudioRoutePageTitles`. Routes with a server page reuse that page's
+  metadata title and H1 verbatim (fallback locales keep the English content
+  title and `lang`), so a client navigation and a reload of the same URL read
+  the same. Query-only routes use `{localized route title} | Engineering
+  Studio` and the localized route title as H1.
+- Analytics: `studio_view` comes only from the server page's `PageTracker` on a
+  full document load (with `studio_module` context on module pages). Client
+  path or query changes inside the shell never emit `studio_view`; they emit
+  `studio_route_open` with a `source` (`sidebar`, `command`, `brand`,
+  `studio_module_open`, `browser_history`, ...) and `previous_route`. Event
+  names are unchanged.
 - Load optional visualization runtimes only from modules that render them.
   Static text and navigation must not depend on those libraries.
 - Keep XYFlow behind its own dynamic feature boundary. The default/welcome
@@ -53,10 +71,11 @@ even when a visitor opened the lightweight welcome route.
 
 ## Non-goals
 
-- This change does not replace Studio's query/hash router with nested routes.
+- Only the three public modules have their own paths; the remaining routes
+  keep the query/hash router.
 - It does not redesign the interactive flow editor or change its state model.
-- It does not make Studio modules independently canonical or add query URLs to
-  the sitemap; `/[locale]/studio` remains the only canonical collection URL.
+- Query-only routes are not canonical and never enter the sitemap; the
+  overview and the three module paths are the only canonical Studio URLs.
 
 ## Acceptance criteria
 
@@ -117,6 +136,10 @@ even when a visitor opened the lightweight welcome route.
   context and never forwards an error, message, or stack.
 - **AC-STUDIO-STATIC-021:** Retired. The default dashboard and its workstream
   query were removed with the template routes (MEP-13, MEP-83).
+- **AC-STUDIO-STATIC-022:** After any in-shell navigation or popstate,
+  `document.title` and the single light-DOM H1 match the server metadata title
+  and H1 of the URL now in the address bar (or the localized route title for
+  query-only routes), and no client path change emits `studio_view`.
 
 ## Verification
 

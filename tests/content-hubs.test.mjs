@@ -359,10 +359,12 @@ test("shared hub structured data preserves surface-specific semantics", () => {
   }
 });
 
-test("sitemap contains 945 unique URLs and exactly 52 curated hub URLs", () => {
+// 951 = 945 + 4 About locales now authored in all six languages
+// + 2 Studio (MEP-54: hub drops fr/ja/ko/zh, adds en/vi checklists, system-maps, ai-setup).
+test("sitemap contains 951 unique URLs and exactly 52 curated hub URLs", () => {
   const sitemap = sitemapModule.default();
-  assert.equal(sitemap.length, 945);
-  assert.equal(new Set(sitemap.map(({ url }) => url)).size, 945);
+  assert.equal(sitemap.length, 951);
+  assert.equal(new Set(sitemap.map(({ url }) => url)).size, 951);
 
   const hubEntries = sitemap.filter(({ url }) =>
     /\/(?:en|vi)\/(?:blog\/series|notes\/topics)\//.test(url)
