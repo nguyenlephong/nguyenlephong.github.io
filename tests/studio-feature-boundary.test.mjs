@@ -98,15 +98,15 @@ test("every Studio load boundary emits only the allowlisted feature context", ()
     },
     {
       context: {
-        featureId: "auxiliary-dashboard",
-        routeId: "analytics",
-        routeKind: "analytics",
+        featureId: "route-feature",
+        routeId: "ai-skills",
+        routeKind: "ai-skills",
         locale: "ja"
       },
       expected: {
-        feature_id: "auxiliary-dashboard",
-        route_id: "analytics",
-        route_kind: "analytics",
+        feature_id: "route-feature",
+        route_id: "ai-skills",
+        route_kind: "ai-skills",
         locale: "ja"
       }
     }
@@ -162,9 +162,7 @@ test("every Studio load boundary emits only the allowlisted feature context", ()
 test("Studio load telemetry wiring covers every boundary and recovery reloads the document", () => {
   const sources = [
     ["StudioRouteFeatureRegistry.tsx", "route-feature"],
-    ["StudioDeliverySignalFeature.tsx", "delivery-signal"],
     ["StudioFlowCanvasFeature.tsx", "flow-canvas"],
-    ["StudioDashboardRoutesFeature.tsx", "auxiliary-dashboard"],
     ["StudioWorkspace.tsx", "studio-shell"]
   ];
 

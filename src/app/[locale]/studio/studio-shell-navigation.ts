@@ -6,7 +6,6 @@ import { studioCatalog, type StudioNavCatalogItem, type StudioNavIconKey, type S
 import type { StudioRoute } from "./studio-route-contract";
 import { routeDefinitions } from "./studio-route-definitions";
 import type { StudioRouteCopy, StudioUiCopy } from "./studio-shell-copy";
-import { preserveStudioDashboardQueryParams } from "./studio-dashboard-query";
 
 export type StudioRouteActivationSource = "initial_location" | "brand" | "sidebar" | "command" | "route_actions" | "browser_history" | "unknown";
 export type StudioNavItem = {
@@ -113,12 +112,11 @@ export function flowIdFromRoute(routeId: StudioRouteId): string | null {
   return routeId.startsWith("flow-") ? routeId.slice("flow-".length) : null;
 }
 
-export function routeHref(routeId: StudioRouteId, currentSearch = ""): string {
+export function routeHref(routeId: StudioRouteId): string {
   const flowId = flowIdFromRoute(routeId);
   const params = new URLSearchParams();
   params.set("route", routeId);
   if (flowId) params.set("flow", flowId);
-  preserveStudioDashboardQueryParams(params, currentSearch);
   return `?${params.toString()}#${routeId}`;
 }
 

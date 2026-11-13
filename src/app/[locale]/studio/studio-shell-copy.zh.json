@@ -62,7 +62,6 @@
   "openGithubProfile": "Open GitHub profile",
   "openAccountMenu": "Open account menu",
   "routeKicker": {
-    "legacy": "Legacy",
     "studio": "Studio"
   },
   "routeMetricsLabel": "Page summary",
@@ -71,11 +70,6 @@
     "loadErrorTitle": "工作区不可用",
     "loadErrorDetail": "无法加载此工作区。导航和偏好设置仍然可用。",
     "reload": "重新加载 Studio"
-  },
-  "dashboard": {
-    "emptyTitle": "没有匹配的工作流",
-    "emptyDescription": "请调整搜索词或状态筛选条件以查看工作流。",
-    "clearFilters": "清除筛选"
   },
   "status": {
     "ready": "就绪",

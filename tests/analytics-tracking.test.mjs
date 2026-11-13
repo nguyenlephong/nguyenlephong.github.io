@@ -652,9 +652,7 @@ test("studio analytics and agent rules cover new workspace interactions", async 
       "src/app/[locale]/studio/StudioFlowChart.tsx",
       "src/app/[locale]/studio/StudioRouteFeatureRegistry.tsx",
       "src/app/[locale]/studio/StudioWorkspace.tsx",
-      "src/app/[locale]/studio/StudioDeliverySignalFeature.tsx",
       "src/app/[locale]/studio/StudioFlowCanvasFeature.tsx",
-      "src/app/[locale]/studio/StudioDashboardRoutesFeature.tsx",
       "src/app/[locale]/studio/studio-feature-load-error.ts"
     ]),
     readFile("AGENTS.md", "utf8"),

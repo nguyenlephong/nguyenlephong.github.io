@@ -62,7 +62,6 @@
   "openGithubProfile": "Mở hồ sơ GitHub",
   "openAccountMenu": "Mở menu tài khoản",
   "routeKicker": {
-    "legacy": "Bản cũ",
     "studio": "Studio"
   },
   "routeMetricsLabel": "Tóm tắt trang",
@@ -71,11 +70,6 @@
     "loadErrorTitle": "Không thể tải không gian làm việc",
     "loadErrorDetail": "Không gian này chưa tải được. Điều hướng và tùy chỉnh vẫn hoạt động.",
     "reload": "Tải lại Studio"
-  },
-  "dashboard": {
-    "emptyTitle": "Không có luồng công việc phù hợp",
-    "emptyDescription": "Hãy đổi từ khóa hoặc bộ lọc trạng thái để xem các luồng công việc.",
-    "clearFilters": "Xóa bộ lọc"
   },
   "status": {
     "ready": "Dùng được",

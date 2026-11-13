@@ -62,7 +62,6 @@
   "openGithubProfile": "Open GitHub profile",
   "openAccountMenu": "Open account menu",
   "routeKicker": {
-    "legacy": "Legacy",
     "studio": "Studio"
   },
   "routeMetricsLabel": "Page summary",
@@ -71,11 +70,6 @@
     "loadErrorTitle": "Espace indisponible",
     "loadErrorDetail": "Cet espace n’a pas pu être chargé. La navigation et les préférences restent disponibles.",
     "reload": "Recharger Studio"
-  },
-  "dashboard": {
-    "emptyTitle": "Aucun flux de travail correspondant",
-    "emptyDescription": "Ajustez la recherche ou le filtre d’état pour afficher les flux de travail.",
-    "clearFilters": "Effacer les filtres"
   },
   "status": {
     "ready": "Prêt",

@@ -32,51 +32,33 @@ const localeModules = {
 
 const formatterSamples = {
   en: {
-    workstreamCount: ["0 workstreams", "1 workstream", "2 workstreams"],
     trailMore: "+2 more",
     skillCountLabel: "2 skills",
     structureDetail: "2 sections, 3 nested steps, copy-ready as markdown."
   },
   vi: {
-    workstreamCount: [
-      "0 luồng công việc",
-      "1 luồng công việc",
-      "2 luồng công việc"
-    ],
     trailMore: "+2 nữa",
     skillCountLabel: "2 skills",
     structureDetail:
       "2 phần, 3 bước chi tiết, có thể sao chép dưới dạng Markdown."
   },
   zh: {
-    workstreamCount: ["0 个工作流", "1 个工作流", "2 个工作流"],
     trailMore: "+2 more",
     skillCountLabel: "2 skills",
     structureDetail: "2 个部分，3 个嵌套步骤，可复制为 markdown。"
   },
   ja: {
-    workstreamCount: [
-      "0 件のワークストリーム",
-      "1 件のワークストリーム",
-      "2 件のワークストリーム"
-    ],
     trailMore: "+2 more",
     skillCountLabel: "2 skills",
     structureDetail:
       "2 セクション、3 個のネストされたステップ。markdown としてコピーできます。"
   },
   ko: {
-    workstreamCount: ["0개 워크스트림", "1개 워크스트림", "2개 워크스트림"],
     trailMore: "+2 more",
     skillCountLabel: "2 skills",
     structureDetail: "2개 섹션, 3개 중첩 단계, markdown 복사 가능."
   },
   fr: {
-    workstreamCount: [
-      "0 flux de travail",
-      "1 flux de travail",
-      "2 flux de travail"
-    ],
     trailMore: "+2 more",
     skillCountLabel: "2 skills",
     structureDetail: "2 sections, 3 étapes imbriquées, copiables en markdown."
@@ -84,11 +66,10 @@ const formatterSamples = {
 };
 
 function stripFormatters(copy) {
-  const { workstreamCount: _workstreamCount, ...dashboard } = copy.dashboard;
   const { trailMore: _trailMore, ...flows } = copy.flows;
   const { skillCountLabel: _skillCountLabel, ...aiSkills } = copy.aiSkills;
   const { structureDetail: _structureDetail, ...checklists } = copy.checklists;
-  return { ...copy, dashboard, flows, aiSkills, checklists };
+  return { ...copy, flows, aiSkills, checklists };
 }
 
 function collectFunctionPaths(value, prefix = "") {
@@ -133,13 +114,8 @@ test("Studio preserves exact interactive copy modules for every public locale", 
       [
         "aiSkills.skillCountLabel",
         "checklists.structureDetail",
-        "dashboard.workstreamCount",
         "flows.trailMore"
       ]
-    );
-    assert.deepEqual(
-      [0, 1, 2].map(copy.dashboard.workstreamCount),
-      formatterSamples[locale].workstreamCount
     );
     assert.equal(copy.flows.trailMore(2), formatterSamples[locale].trailMore);
     assert.equal(

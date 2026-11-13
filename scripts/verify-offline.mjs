@@ -192,11 +192,10 @@ async function assertArtifacts() {
     'install shell must contain exactly the runtime assets referenced by home and fallback documents',
   )
 
-  const heavyweightChunks = { ReactFlow: [], Recharts: [] }
+  const heavyweightChunks = { ReactFlow: [] }
   for (const asset of runtimeAssets.filter((value) => value.endsWith('.js'))) {
     const source = await fs.readFile(path.join(OUT_DIR, asset.slice(1)), 'utf8')
     if (source.includes('ReactFlowProvider')) heavyweightChunks.ReactFlow.push(asset)
-    if (source.includes('recharts-responsive-container')) heavyweightChunks.Recharts.push(asset)
   }
   for (const [library, assets] of Object.entries(heavyweightChunks)) {
     assert.ok(assets.length > 0, `expected to identify the ${library} runtime chunk`)

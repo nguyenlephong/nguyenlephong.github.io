@@ -62,7 +62,6 @@
   "openGithubProfile": "Open GitHub profile",
   "openAccountMenu": "Open account menu",
   "routeKicker": {
-    "legacy": "Legacy",
     "studio": "Studio"
   },
   "routeMetricsLabel": "Page summary",
@@ -71,11 +70,6 @@
     "loadErrorTitle": "ワークスペースを利用できません",
     "loadErrorDetail": "このワークスペースを読み込めませんでした。ナビゲーションと設定は引き続き利用できます。",
     "reload": "Studio を再読み込み"
-  },
-  "dashboard": {
-    "emptyTitle": "一致するワークストリームがありません",
-    "emptyDescription": "検索語またはステータスフィルターを調整してください。",
-    "clearFilters": "フィルターをクリア"
   },
   "status": {
     "ready": "準備済み",

@@ -152,7 +152,7 @@ export function StudioAdminShell({ locale, copy }: StudioAdminShellProps) {
     setMobileSidebarOpen(false);
     setPreferencesOpen(false);
     setAccountOpen(false);
-    const nextHref = routeHref(routeId, window.location.search);
+    const nextHref = routeHref(routeId);
     const currentHref = `${window.location.search}${window.location.hash}`;
     if (currentHref !== nextHref) {
       window.history.pushState(null, "", nextHref);

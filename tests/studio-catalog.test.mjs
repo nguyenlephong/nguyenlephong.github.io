@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import test from "node:test";
 
@@ -20,6 +20,15 @@ require.extensions[".ts"] = (module, filename) => {
 
 const catalogModule = require("../src/app/[locale]/studio/studio-route-catalog.ts");
 const staticContentModule = require("../src/app/[locale]/studio/studio-static-content.ts");
+
+const STUDIO_DIR = "src/app/[locale]/studio";
+// Old admin-template routes (MEP-13): they rendered a prefilled login and fake owner data.
+const removedTemplateRouteIds = [
+  "default", "crm", "finance", "analytics", "productivity", "ecommerce", "academy",
+  "logistics", "infrastructure", "email", "chat", "calendar", "kanban", "invoice",
+  "users", "roles", "auth-login-v1", "auth-login-v2", "auth-register-v1",
+  "auth-register-v2", "legacy-default", "legacy-crm", "legacy-finance", "legacy-analytics"
+];
 
 function routeDefinitionIds(source) {
   const sourceFile = ts.createSourceFile(
@@ -132,22 +141,8 @@ test("Studio route, nav, welcome, and static identities share one data-only cata
     [],
     "hidden deep-link routes must not leak into navigation"
   );
-  for (const routeId of [
-    "default",
-    "crm",
-    "finance",
-    "analytics",
-    "productivity",
-    "ecommerce",
-    "academy",
-    "logistics",
-    "infrastructure",
-    "legacy-default",
-    "legacy-crm",
-    "legacy-finance",
-    "legacy-analytics"
-  ]) {
-    assert.ok(deepLinkRouteIds.includes(routeId), `${routeId} must remain an intentional typed deep link`);
+  for (const routeId of removedTemplateRouteIds) {
+    assert.ok(!routeIds.includes(routeId), `${routeId} is a removed admin-template route`);
   }
 
   const publicModuleIds = studioCatalog.publicModules.map((module) => module.routeId);
@@ -187,6 +182,26 @@ test("Studio route, nav, welcome, and static identities share one data-only cata
   assert.match(registrySource, /case "ai-skills":/);
   assert.match(registrySource, /case "checklists":/);
   assert.match(registrySource, /case "flows":/);
-  assert.match(registrySource, /return <StudioAuxiliaryRoutesFeatureAdapter/);
+  assert.doesNotMatch(registrySource, /StudioAuxiliaryRoutesFeatureAdapter/);
   assert.match(registrySource, /assertNeverRouteKind/);
+});
+
+test("Studio source carries no credentials, contact emails, or admin-template leftovers", () => {
+  const files = readdirSync(STUDIO_DIR, { recursive: true }).filter((file) => /\.(tsx?|json)$/.test(file));
+  assert.ok(files.length > 0);
+  const leaks = [
+    ["email address", /[\w.%+-]+@[\w-]+(?:\.[\w-]+)*\.[a-z]{2,}/i],
+    ["mailto link", /mailto:/i],
+    ["password field", /type=["']password["']/i],
+    ["password-like default", /(?:password|passwd|pwd|secret)["']?\s*[:=]\s*["'][^"']+["']/i],
+    ["prefilled input", /defaultValue=["'{]/],
+    ["template greeting name", /\b(?:Aiy|Arham)\b/],
+    ["template finance data", /Personal Finances|Net Worth/i]
+  ];
+  for (const file of files) {
+    const source = readFileSync(`${STUDIO_DIR}/${file}`, "utf8");
+    for (const [label, pattern] of leaks) {
+      assert.doesNotMatch(source, pattern, `${file} contains a ${label}`);
+    }
+  }
 });

@@ -62,7 +62,6 @@
   "openGithubProfile": "Open GitHub profile",
   "openAccountMenu": "Open account menu",
   "routeKicker": {
-    "legacy": "Legacy",
     "studio": "Studio"
   },
   "routeMetricsLabel": "Page summary",
@@ -71,11 +70,6 @@
     "loadErrorTitle": "워크스페이스를 사용할 수 없습니다",
     "loadErrorDetail": "이 워크스페이스를 불러오지 못했습니다. 탐색과 환경설정은 계속 사용할 수 있습니다.",
     "reload": "Studio 새로고침"
-  },
-  "dashboard": {
-    "emptyTitle": "일치하는 워크스트림이 없습니다",
-    "emptyDescription": "검색어 또는 상태 필터를 조정하여 워크스트림을 확인하세요.",
-    "clearFilters": "필터 지우기"
   },
   "status": {
     "ready": "준비됨",

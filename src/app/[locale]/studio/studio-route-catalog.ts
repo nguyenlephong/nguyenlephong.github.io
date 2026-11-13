@@ -1,16 +1,5 @@
 export const studioRouteCatalog = [
   { id: "welcome", kind: "welcome" },
-  { id: "default", kind: "default" },
-  { id: "crm", kind: "dashboard" },
-  { id: "finance", kind: "finance" },
-  { id: "analytics", kind: "analytics" },
-  { id: "productivity", kind: "productivity" },
-  { id: "ecommerce", kind: "ecommerce" },
-  { id: "academy", kind: "academy" },
-  { id: "logistics", kind: "logistics" },
-  { id: "infrastructure", kind: "infrastructure" },
-  { id: "email", kind: "mail" },
-  { id: "chat", kind: "chat" },
   { id: "ai-agent-setup", kind: "ai-setup" },
   { id: "ai-skills", kind: "ai-skills" },
   { id: "delivery-checklists", kind: "checklists" },
@@ -21,20 +10,7 @@ export const studioRouteCatalog = [
   { id: "flow-ai-delivery", kind: "flows" },
   { id: "flow-portfolio-story", kind: "flows" },
   { id: "flow-react-flow-architecture-demo", kind: "flows" },
-  { id: "flow-react-flow-system-blueprint", kind: "flows" },
-  { id: "calendar", kind: "calendar" },
-  { id: "kanban", kind: "kanban" },
-  { id: "invoice", kind: "invoice" },
-  { id: "users", kind: "users" },
-  { id: "roles", kind: "roles" },
-  { id: "auth-login-v1", kind: "auth" },
-  { id: "auth-login-v2", kind: "auth" },
-  { id: "auth-register-v1", kind: "auth" },
-  { id: "auth-register-v2", kind: "auth" },
-  { id: "legacy-default", kind: "legacy" },
-  { id: "legacy-crm", kind: "legacy" },
-  { id: "legacy-finance", kind: "legacy" },
-  { id: "legacy-analytics", kind: "legacy" }
+  { id: "flow-react-flow-system-blueprint", kind: "flows" }
 ] as const;
 
 export type StudioRouteId = (typeof studioRouteCatalog)[number]["id"];
@@ -53,36 +29,12 @@ export const studioRouteKindById = Object.fromEntries(
  * links through the `route` query parameter or matching URL hash.
  */
 export const studioDeepLinkRouteIds = [
-  "default",
-  "crm",
-  "finance",
-  "analytics",
-  "productivity",
-  "ecommerce",
-  "academy",
-  "logistics",
-  "infrastructure",
-  "email",
-  "chat",
   "flow-system-design",
   "flow-architecture-decision",
   "flow-incident-response",
   "flow-release-readiness",
   "flow-ai-delivery",
-  "flow-portfolio-story",
-  "calendar",
-  "kanban",
-  "invoice",
-  "users",
-  "roles",
-  "auth-login-v1",
-  "auth-login-v2",
-  "auth-register-v1",
-  "auth-register-v2",
-  "legacy-default",
-  "legacy-crm",
-  "legacy-finance",
-  "legacy-analytics"
+  "flow-portfolio-story"
 ] as const satisfies readonly StudioRouteId[];
 
 export type StudioDeepLinkRouteId = (typeof studioDeepLinkRouteIds)[number];

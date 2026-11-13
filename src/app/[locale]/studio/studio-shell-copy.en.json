@@ -62,7 +62,6 @@
   "openGithubProfile": "Open GitHub profile",
   "openAccountMenu": "Open account menu",
   "routeKicker": {
-    "legacy": "Legacy",
     "studio": "Studio"
   },
   "routeMetricsLabel": "Page summary",
@@ -71,11 +70,6 @@
     "loadErrorTitle": "Workspace unavailable",
     "loadErrorDetail": "This workspace could not be loaded. Navigation and preferences are still available.",
     "reload": "Reload Studio"
-  },
-  "dashboard": {
-    "emptyTitle": "No matching workstreams",
-    "emptyDescription": "Adjust the search or status filter to see workstreams.",
-    "clearFilters": "Clear filters"
   },
   "status": {
     "ready": "Ready",

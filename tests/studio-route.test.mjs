@@ -67,8 +67,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.ok(existsSync("src/app/[locale]/studio/StudioWorkspace.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioStaticOverview.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/studio-static-content.ts"));
-  assert.ok(existsSync("src/app/[locale]/studio/StudioDeliverySignalChart.tsx"));
-  assert.ok(existsSync("src/app/[locale]/studio/StudioDeliverySignalFeature.tsx"));
+  assert.ok(!existsSync("src/app/[locale]/studio/StudioDeliverySignalChart.tsx"));
+  assert.ok(!existsSync("src/app/[locale]/studio/StudioUtilityRoutesFeature.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioFeatureErrorBoundary.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioFlowCanvasRuntime.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioFlowCanvasFeature.tsx"));
@@ -104,8 +104,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     staticContent,
     routeCatalog,
     routePrimitives,
-    deliveryChart,
-    deliveryFeature,
     featureBoundary,
     flowRuntime,
     flowFeature,
@@ -138,8 +136,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/app/[locale]/studio/studio-static-content.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio-route-catalog.ts", "utf8"),
     readFile("src/app/[locale]/studio/StudioRoutePrimitives.tsx", "utf8"),
-    readFile("src/app/[locale]/studio/StudioDeliverySignalChart.tsx", "utf8"),
-    readFile("src/app/[locale]/studio/StudioDeliverySignalFeature.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioFeatureErrorBoundary.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioFlowCanvasRuntime.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioFlowCanvasFeature.tsx", "utf8"),
@@ -180,14 +176,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
       "src/app/[locale]/studio/StudioFlowChart.tsx",
       "src/app/[locale]/studio/StudioFlowToolbar.tsx",
       "src/app/[locale]/studio/StudioFlowTrail.tsx",
-      "src/app/[locale]/studio/studio-flow-model.ts",
-      "src/app/[locale]/studio/StudioAuxiliaryRoutesFeature.tsx",
-      "src/app/[locale]/studio/StudioMailFeature.tsx",
-      "src/app/[locale]/studio/StudioChatFeature.tsx",
-      "src/app/[locale]/studio/StudioDefaultDashboardFeature.tsx",
-      "src/app/[locale]/studio/StudioUtilityRoutesFeature.tsx",
-      "src/app/[locale]/studio/StudioDashboardRoutesFeature.tsx",
-      "src/app/[locale]/studio/studio-auxiliary-route-metrics.ts"
+      "src/app/[locale]/studio/studio-flow-model.ts"
     ]),
     readFile("src/app/[locale]/studio/studio.data.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio.localized-content.ts", "utf8"),
@@ -361,7 +350,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studio-sidebar/);
   assert.match(adminShell, /studio-topbar/);
   assert.match(routePrimitives, /metric-grid/);
-  assert.match(adminShell, /<span>Studio<\/span>/);
   assert.match(adminShell, /Search Studio/);
   assert.match(adminShell, /Profile navigation/);
   assert.match(adminShell, /Profile menu/);
@@ -429,10 +417,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(navGroupsBlock, /Authentication/);
   assert.doesNotMatch(navGroupsBlock, /Legacy/);
   assert.match(adminShell, /studioCatalog\.navGroups\.map/);
-  assert.match(adminShell, /"crm"/);
-  assert.match(adminShell, /"finance"/);
-  assert.match(adminShell, /"analytics"/);
-  assert.match(adminShell, /"email"/);
+  assert.doesNotMatch(adminShell, /"crm"/);
+  assert.doesNotMatch(adminShell, /"finance"/);
+  assert.doesNotMatch(adminShell, /"email"/);
   assert.match(adminShell, /"ai-agent-setup"/);
   assert.match(adminShell, /"ai-skills"/);
   assert.match(adminShell, /"delivery-checklists"/);
@@ -446,9 +433,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /"flow-portfolio-story"/);
   assert.match(adminShell, /"flow-react-flow-architecture-demo"/);
   assert.match(adminShell, /"flow-react-flow-system-blueprint"/);
-  assert.match(adminShell, /"auth-login-v1"/);
-  assert.match(adminShell, /function MailRoutePage/);
-  assert.match(adminShell, /function ChatRoutePage/);
+  assert.doesNotMatch(adminShell, /"auth-login-v1"/);
   assert.match(adminShell, /function StudioAiSetupFeature/);
   assert.match(adminShell, /function StudioAiSkillsFeature/);
   assert.match(adminShell, /className="skill-filter-control"/);
@@ -459,8 +444,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(adminShell, /function BlogRoadmapPage/);
   assert.match(adminShell, /function StudioFlowChart/);
   assert.match(adminShell, /function StudioFlowFeature/);
-  assert.match(adminShell, /title:\s*"Email"/);
-  assert.match(adminShell, /title:\s*"Chat"/);
   assert.match(adminShell, /title:\s*"AI Agent Setup"/);
   assert.match(adminShell, /title:\s*"AI Skills"/);
   assert.match(adminShell, /title:\s*"Delivery Checklists"/);
@@ -473,8 +456,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /Đọc từ trái sang phải/);
   assert.doesNotMatch(adminShell, /Mail preview/);
   assert.doesNotMatch(adminShell, /Chat preview/);
-  assert.match(adminShell, /data-studio-module="mail"/);
-  assert.match(adminShell, /data-studio-module="chat"/);
   assert.match(adminShell, /data-studio-module="ai-agent-setup"/);
   assert.match(adminShell, /data-studio-module="ai-skills"/);
   assert.match(adminShell, /data-studio-module="delivery-checklists"/);
@@ -499,8 +480,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studio_flow_board_fullscreen_toggle/);
   assert.match(adminShell, /studio_flow_focus_toggle/);
   assert.match(adminShell, /studio_flow_share/);
-  assert.match(adminShell, /studioMails/);
-  assert.match(adminShell, /studioConversations/);
   assert.match(adminShell, /studioFolders/);
   assert.match(adminShell, /studioNotes/);
   assert.match(adminShell, /studioAiSkills/);
@@ -514,33 +493,12 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /getLocalizedStudioFlowGroups/);
   assert.match(adminShell, /getLocalizedStudioFlows/);
   assert.match(adminShell, /workflowSteps/);
-  assert.match(adminShell, /Attachments \(\{selectedMail\.attachments\.length\}\)/);
-  assert.match(adminShell, /Internal note/);
   assert.doesNotMatch(adminShell, /function MailChatPage/);
-  assert.match(adminShell, /Engineering Ops/);
-  assert.match(adminShell, /Release Signal/);
-  assert.match(adminShell, /Component Inventory/);
-  assert.match(adminShell, /System Workstreams/);
-  assert.match(adminShell, /StudioDeliverySignalFeature/);
   assert.doesNotMatch(adminShell, /from "recharts"/);
-  assert.match(deliveryFeature, /dynamic\(\(\) => import\("\.\/StudioDeliverySignalChart"\)/);
-  assert.match(deliveryFeature, /StudioFeatureErrorBoundary/);
-  assert.match(deliveryFeature, /Tải lại Studio/);
-  assert.match(deliveryFeature, /onRetry=\{\(\) => window\.location\.reload\(\)\}/);
-  assert.match(deliveryFeature, /onClick=\{retry\}/);
   assert.match(featureBoundary, /getDerivedStateFromError/);
   assert.match(featureBoundary, /this\.props\.onRetry\(\)/);
   assert.doesNotMatch(featureBoundary, /this\.setState\(\{ failed: false/);
   assert.doesNotMatch(featureBoundary, /attempt/);
-  assert.match(deliveryChart, /from "recharts"/);
-  assert.match(deliveryChart, /ResponsiveContainer/);
-  assert.match(deliveryChart, /ComposedChart/);
-  assert.match(deliveryChart, /releaseSignalChartData/);
-  assert.match(deliveryChart, /rolloutVolume/);
-  assert.match(deliveryChart, /platformHealth/);
-  assert.match(deliveryChart, /incidentNoise/);
-  assert.match(adminShell, /distributionSegments/);
-  assert.match(adminShell, /componentInventory/);
   assert.doesNotMatch(adminShell, /Customer Activity/);
   assert.doesNotMatch(adminShell, /18,426 Customers/);
   assert.doesNotMatch(adminShell, /activity-chart/);
