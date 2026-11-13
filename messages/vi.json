@@ -35,10 +35,23 @@
       "night": "Đêm dịu"
     },
     "blog": "Blog",
-    "notes": "Ghi chép"
+    "notes": "Ghi chép",
+    "search": {
+      "label": "Tìm kiếm",
+      "dialogLabel": "Tìm trong blog và ghi chép",
+      "placeholder": "Tìm bài viết và ghi chép…",
+      "hint": "Gõ tên bài, chủ đề hoặc thẻ để tìm.",
+      "blog": "Blog",
+      "notes": "Ghi chép",
+      "loading": "Đang tải dữ liệu tìm kiếm…",
+      "error": "Chưa tải được dữ liệu tìm kiếm. Bạn thử lại sau ít phút nhé.",
+      "empty": "Chưa có bài nào khớp với “{query}”.",
+      "results": "{count, plural, =0 {Không có kết quả} other {# kết quả}}",
+      "close": "Đóng tìm kiếm"
+    }
   },
   "Footer": {
-    "tag": "Lead Software Engineer tại Zalo PC · Đồng sáng lập BonBon Mobility",
+    "tag": "Lead Software Engineer tại Zalo PC · Đồng sáng lập BonBon Mobility (bán thời gian)",
     "copy": "© {year} Nguyễn Lê Phong.",
     "language": "Ngôn ngữ",
     "sitemap": "Sơ đồ trang",
@@ -54,6 +67,7 @@
     "newsCta": "Đọc bài",
     "role": "Lead Software Engineer",
     "cofounder": "Đồng sáng lập",
+    "partTime": "(bán thời gian)",
     "claim": "Tôi dẫn team và vẫn tự viết những phần code quan trọng. Thay đổi rủi ro thì ship từng bước nhỏ, có sự cố là rollback được.",
     "bio": "Làm phần mềm từ 2018, qua công ty outsource, công ty sản phẩm CDP, Zalo, rồi tự đồng sáng lập một startup.",
     "location": "TP. Hồ Chí Minh, Việt Nam",
@@ -65,8 +79,8 @@
       "zaloNote": "app desktop · hơn 15 triệu MAU",
       "bonbonNote": "pre-seed 500.000 USD, Tasco dẫn dắt",
       "previousNote": "dẫn team delivery · 8 dev + 3 QC",
-      "zaloMeta": "Lead · từ <date>03/2026</date>",
-      "bonbonMeta": "Đồng sáng lập · từ <date>04/2026</date>",
+      "zaloMeta": "Lead · toàn thời gian · từ <date>03/2026</date>",
+      "bonbonMeta": "Đồng sáng lập · bán thời gian · từ <date>04/2026</date>",
       "previousMeta": "trước đó · <date>08/2025 – 03/2026</date>"
     }
   },
@@ -77,6 +91,8 @@
   },
   "Summary": {
     "mapTabsLabel": "Năng lực chính",
+    "mapPause": "Tạm dừng",
+    "mapPlay": "Tiếp tục",
     "stackTitle": "Công nghệ tôi hay dùng",
     "pillars": {
       "crossDevice": {
@@ -89,7 +105,7 @@
       },
       "zeroToPilot": {
         "tab": "Từ 0 tới pilot",
-        "meta": "BonBon Mobility · Đồng sáng lập",
+        "meta": "BonBon Mobility · Đồng sáng lập, bán thời gian",
         "figure": "3 tháng",
         "figureLabel": "từ MVP đến pilot thực địa",
         "title": "Làm sản phẩm từ con số không, chạy ngay trong app của đối tác",
@@ -97,7 +113,7 @@
       },
       "multiTenant": {
         "tab": "SaaS multi-tenant",
-        "meta": "LogiUP · Tech Lead",
+        "meta": "LogiUP · Tech Lead, bán thời gian",
         "figure": "9 repo",
         "figureLabel": "một kiến trúc multi-tenant, team bốn người",
         "title": "SaaS logistics mà dữ liệu mỗi khách hàng nằm riêng",
@@ -240,7 +256,7 @@
     "logiup": {
       "name": "LogiUP",
       "kind": "SaaS logistics multi-tenant",
-      "role": "Tech Lead kiêm system architect",
+      "role": "Tech Lead kiêm system architect (bán thời gian)",
       "period": "03/2026 – nay",
       "context": "Mỗi khách hàng có subdomain riêng. Dữ liệu của họ không được phép lọt sang tenant khác. Sản phẩm chạy trên web và app desktop Electron. Tôi dẫn team bốn người và quyết kiến trúc.",
       "decisions": [
@@ -257,7 +273,7 @@
     "bonbon": {
       "name": "BonBon Mobility",
       "kind": "Đặt lịch chăm sóc xe ngay trong app VETC",
-      "role": "Đồng sáng lập",
+      "role": "Đồng sáng lập (bán thời gian)",
       "period": "04/2026 – nay",
       "context": "BonBon kết nối chủ xe với garage và tiệm rửa xe. Tôi đồng sáng lập và trực tiếp làm sản phẩm: một Mini App 12 màn hình chạy trong app VETC, nơi có <b>4,3 triệu người dùng</b> theo số Tasco công bố tháng 4/2026. Mỗi lần release đều phải qua quy trình duyệt thay đổi và quy trình bảo mật của VETC, gồm OWASP review và một đợt pentest độc lập.",
       "decisions": [
@@ -300,7 +316,7 @@
   "SEO": {
     "home": {
       "title": "Nguyễn Lê Phong | Lead Software Engineer · Đồng sáng lập BonBon",
-      "description": "Lead Software Engineer tại Zalo PC, đồng sáng lập BonBon (pre-seed 500.000 USD do Tasco dẫn dắt). Nhắn tin quy mô lớn, rollout an toàn, SaaS multi-tenant."
+      "description": "Lead Software Engineer tại Zalo PC, đồng sáng lập BonBon (bán thời gian), pre-seed 500.000 USD do Tasco dẫn dắt. Nhắn tin quy mô lớn, rollout an toàn."
     },
     "about": {
       "title": "Về Nguyễn Lê Phong: Lead ở Zalo PC, đồng sáng lập BonBon",
@@ -310,9 +326,17 @@
       "title": "Ứng dụng: Công cụ nhỏ mã nguồn mở | Nguyễn Lê Phong",
       "description": "Công cụ nhỏ Nguyễn Lê Phong tự làm để dùng trong công việc. Đầu tiên là Glance, app menu bar trên macOS, bấm một phím tắt là dịch đoạn chữ đang chọn."
     },
+    "blog": {
+      "title": "Blog kiến trúc phần mềm, AI và làm việc nhóm | Nguyễn Lê Phong",
+      "description": "Kiến trúc phần mềm, dùng AI trong công việc kỹ thuật và chuyện team kỹ sư làm việc với nhau, viết từ kinh nghiệm của một Lead Software Engineer ở Zalo PC."
+    },
+    "notes": {
+      "title": "Ghi chép về công việc, học tập và cuộc sống | Nguyễn Lê Phong",
+      "description": "Ghi chép ngắn về nghề, về sách, chuyện tiền bạc và những quyết định thường ngày của một Lead Software Engineer ở Zalo PC. Bài kỹ thuật chuyên sâu nằm bên Blog."
+    },
     "gallery": {
       "title": "Ảnh và chứng nhận | Nguyễn Lê Phong",
-      "description": "BonBon Mobility ở Demo Day Wash3000 của Tasco Foundry và vòng pre-seed 500.000 USD, Best Rookie of the Year 2019 ở Splus Software, cùng các chứng chỉ có nguồn."
+      "description": "BonBon Mobility thắng Wash3000 của Tasco Foundry và gọi vốn pre-seed 500.000 USD, Best Rookie of the Year 2019 ở Splus Software, cùng các chứng chỉ có nguồn."
     }
   },
   "Offline": {
@@ -322,7 +346,10 @@
       "partial": "Gói đọc offline vẫn mới được lưu một phần. Hãy giữ trang này online thêm một lúc nữa.",
       "offlineReady": "Bạn đang offline, nhưng các trang và bài đã lưu vẫn đọc tiếp được.",
       "offlinePartial": "Bạn đang offline. Một vài trang cần được mở online một lần trước khi được lưu.",
-      "dismiss": "Ẩn thông báo offline"
+      "dismiss": "Ẩn thông báo offline",
+      "updateReady": "Trang vừa có bản mới.",
+      "reload": "Tải lại",
+      "dismissUpdate": "Ẩn thông báo cập nhật"
     },
     "page": {
       "eyebrow": "Mất kết nối",
@@ -355,7 +382,7 @@
       "all": "Tất cả",
       "tabsLabel": "Lọc ảnh theo nhóm",
       "captions": {
-        "wash3000DemoDay": "BonBon tại Demo Day Wash3000 của Tasco Foundry, một trong 10 đội được chọn từ khoảng 100 hồ sơ.",
+        "wash3000DemoDay": "Demo Day Wash3000 của Tasco Foundry. Từ khoảng 100 hồ sơ, BonBon vào top 10 rồi thắng chương trình.",
         "bonbonPreSeed": "Vòng pre-seed 500.000 USD của BonBon Mobility, do Tasco dẫn dắt, GenAI Fund cùng đầu tư, công bố ngày 21/09/2026.",
         "bonbonTeam": "Ba nhà đồng sáng lập BonBon Mobility: Nguyen Chi Dung, Vu Duy Hung và tôi.",
         "bestRookie": "Best Rookie of the Year tại Splus Software, năm 2019.",
@@ -370,9 +397,9 @@
         "uprace323": "Chứng nhận UpRace 323 km.",
         "penangHill": "Trekking Penang Hill ở Malaysia, 11 km.",
         "deskWorking": "Ngồi code ở bàn làm việc.",
-        "essay": "Buổi bảo vệ luận văn tốt nghiệp ở Khoa Công nghệ Thông tin, Đại học Nông Lâm TP.HCM.",
-        "teamEssay": "Chiếc drone mang ra buổi bảo vệ luận văn.",
-        "drone": "Drone đang lắp trên bàn lab: khung, motor và mạch điều khiển.",
+        "essay": "Buổi bảo vệ luận văn tốt nghiệp, đề tài drone, ở Khoa Công nghệ Thông tin, Đại học Nông Lâm TP.HCM.",
+        "teamEssay": "Chiếc drone của đề tài luận văn, mang ra buổi bảo vệ.",
+        "drone": "Drone của luận văn lúc đang lắp trên bàn lab: khung, motor và mạch điều khiển.",
         "chessProject": "Cờ tướng có AI, game tôi làm khi học ở Đại học Nông Lâm.",
         "watProject": "WAT, dự án làm cho khách hàng ở Splus Software, năm 2019."
       },
@@ -411,12 +438,19 @@
       "title": "Ghi chép",
       "intro": "Những ghi chép ngắn hơn về nghề, về sách, chuyện tiền bạc và những quyết định thường ngày. Nếu bạn tìm bài kỹ thuật chuyên sâu thì nên bắt đầu từ <blog>Blog</blog>.",
       "stats": {
-        "topics": "Chuyên mục",
-        "articles": "Bài viết",
+        "topics": "Chủ đề",
+        "articles": "Ghi chép",
         "updated": "Cập nhật"
       },
       "readingTime": "{minutes} phút đọc",
-      "empty": "Chưa có bài nào — bài đầu tiên đang trên đường tới.",
+      "empty": "Chưa có ghi chép nào. Ghi chép đầu tiên đang được viết.",
+      "hubs": {
+        "heading": "Đọc theo chủ đề",
+        "eyebrow": "Chủ đề ghi chép",
+        "back": "Ghi chép",
+        "suffix": "Chủ đề ghi chép",
+        "empty": "Chủ đề này chưa có ghi chép nào."
+      },
       "backToNotes": "Quay lại Ghi chép",
       "onThisPage": "Trong bài này",
       "readerTools": {
@@ -441,15 +475,15 @@
         "isbn": "ISBN"
       },
       "controls": {
-        "searchPlaceholder": "Tìm bài viết…",
-        "searchLabel": "Tìm bài viết",
+        "searchPlaceholder": "Tìm ghi chép…",
+        "searchLabel": "Tìm trong ghi chép",
         "clearSearch": "Xóa tìm kiếm",
-        "filtersLabel": "Lọc theo chuyên mục",
+        "filtersLabel": "Lọc theo chủ đề",
         "allTopics": "Tất cả",
         "popularTags": "Thẻ phổ biến",
         "clear": "Xóa bộ lọc",
-        "results": "{count, plural, =0 {Không có bài viết} other {# bài viết}}",
-        "noResults": "Không có bài viết nào khớp với tìm kiếm của bạn.",
+        "results": "{count, plural, =0 {Chưa có ghi chép nào} other {# ghi chép}}",
+        "noResults": "Không có ghi chép nào khớp. Thử một từ ngắn hơn, hoặc tìm bên Blog nếu bạn cần bài kỹ thuật.",
         "searchUnavailable": "Hiện chưa thể tải tìm kiếm. Bạn vẫn có thể tiếp tục đọc các trang bên dưới.",
         "searching": "Đang tìm…",
         "pagination": {
@@ -556,7 +590,7 @@
       "product": "Sản phẩm",
       "scale": "Big tech",
       "handover": "Chuyển giao",
-      "now": "Lead, đồng sáng lập"
+      "now": "Lead, đồng sáng lập bán thời gian"
     },
     "story": {
       "title": "Những chặng đã qua",
@@ -593,7 +627,7 @@
           "dates": "2026–nay",
           "where": "Zalo PC, BonBon Mobility, LogiUP",
           "env": "Big tech, startup của mình, SaaS B2B",
-          "body": "Zalo nhận tôi quay lại làm Lead từ tháng 3/2026, dẫn mảng tin nhắn đa thiết bị và lưu trữ phía client, trong đó có sao lưu tin nhắn trên PC rồi khôi phục trên điện thoại. Tôi cũng đồng sáng lập BonBon Mobility. BonBon thắng Wash3000 của Tasco Foundry giữa khoảng 100 hồ sơ và nhận vòng pre-seed <b>500.000 USD</b> do Tasco dẫn dắt. Ở LogiUP, một SaaS logistics multi-tenant, tôi là Tech Lead kiêm system architect của team bốn người.",
+          "body": "Zalo nhận tôi quay lại làm Lead toàn thời gian từ tháng 3/2026, dẫn mảng tin nhắn đa thiết bị và lưu trữ phía client, trong đó có sao lưu tin nhắn trên PC rồi khôi phục trên điện thoại. Ngoài Zalo, tôi làm bán thời gian ở hai nơi. Tôi đồng sáng lập BonBon Mobility. BonBon thắng Wash3000 của Tasco Foundry giữa khoảng 100 hồ sơ và nhận vòng pre-seed <b>500.000 USD</b> do Tasco dẫn dắt. Ở LogiUP, một SaaS logistics multi-tenant, tôi là Tech Lead kiêm system architect của team bốn người.",
           "shift": "Ở vai trò này, phần lớn việc của tôi là ra quyết định: kiến trúc tách ra sao, cái gì ship ở trạng thái mặc định tắt, bài review bảo mật của đối tác sẽ chấp nhận điều gì."
         }
       }
@@ -643,7 +677,11 @@
     "scrollBottom": "Xuống cuối trang",
     "font": "Đổi font đọc",
     "background": "Đổi nền đọc",
-    "language": "Đổi ngôn ngữ"
+    "language": "Đổi ngôn ngữ",
+    "reading": "Đọc",
+    "nativeShare": "Chia sẻ qua ứng dụng khác",
+    "copyFailed": "Chưa sao chép được. Liên kết đã được bôi đen sẵn.",
+    "jumpToContents": "Tới mục lục"
   },
   "Author": {
     "byline": "<author>{name}</author>, {role}",
@@ -660,8 +698,8 @@
     "action": "Đọc bằng {language}"
   },
   "SiteIndex": {
-    "metaTitle": "Sơ đồ trang: toàn bộ bài viết và ghi chép",
-    "metaDescription": "Danh sách liệt kê mọi bài blog, ghi chép, loạt bài và trang lưu trữ của site, gom theo chủ đề để bài nào cũng chỉ cách một liên kết.",
+    "metaTitle": "Sơ đồ trang: hồ sơ, bài viết và ghi chép",
+    "metaDescription": "Mọi trang của site trong một danh sách: hồ sơ và CV trước, rồi từng bài blog, ghi chép, loạt bài và trang lưu trữ, gom theo chủ đề.",
     "eyebrow": "Mục lục site",
     "title": "Sơ đồ trang",
     "intro": "Mọi bài viết và ghi chép trên site, gom theo chủ đề. Cứ lướt danh sách, hoặc vào thẳng bài mình nhớ đã đọc.",
@@ -687,7 +725,8 @@
     "pageLabel": "Trang {page}",
     "feedsHeading": "Nguồn cấp",
     "feedBlog": "RSS của Blog",
-    "feedNotes": "RSS của Ghi chép"
+    "feedNotes": "RSS của Ghi chép",
+    "backToTop": "Lên đầu trang"
   },
   "Feeds": {
     "blogTitle": "Nguyễn Lê Phong: Blog",

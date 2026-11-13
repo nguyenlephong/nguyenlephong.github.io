@@ -34,10 +34,23 @@
       "night": "夜读"
     },
     "blog": "博客",
-    "notes": "笔记"
+    "notes": "笔记",
+    "search": {
+      "label": "搜索",
+      "dialogLabel": "搜索博客和笔记",
+      "placeholder": "搜索文章和笔记…",
+      "hint": "可按标题、专题或标签搜索。文章为英文。",
+      "blog": "博客",
+      "notes": "笔记",
+      "loading": "正在加载搜索数据…",
+      "error": "搜索暂时无法加载，请稍后再试。",
+      "empty": "暂时没有与“{query}”匹配的内容。",
+      "results": "{count, plural, =0 {没有结果} other {# 个结果}}",
+      "close": "关闭搜索"
+    }
   },
   "Footer": {
-    "tag": "Zalo PC Lead Software Engineer · BonBon Mobility 联合创始人",
+    "tag": "Zalo PC Lead Software Engineer · BonBon Mobility 联合创始人（兼职）",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "语言",
     "sitemap": "站点地图",
@@ -53,6 +66,7 @@
     "newsCta": "阅读全文",
     "role": "Lead Software Engineer",
     "cofounder": "联合创始人",
+    "partTime": "（兼职）",
     "claim": "亲自写代码的工程负责人。关键代码我自己写，有风险的改动拆成可回滚的小步发布。",
     "bio": "2018 年起做软件交付：外包公司、CDP 产品公司、Zalo，再到我联合创办的创业公司。",
     "location": "越南胡志明市",
@@ -64,8 +78,8 @@
       "zaloNote": "桌面客户端 · 15M+ MAU",
       "bonbonNote": "Tasco 领投 50 万美元 Pre-seed",
       "previousNote": "交付负责人 · 8 开发 + 3 QC",
-      "zaloMeta": "Lead · <date>2026年3月</date>起",
-      "bonbonMeta": "联合创始人 · <date>2026年4月</date>起",
+      "zaloMeta": "Lead · 全职 · <date>2026年3月</date>起",
+      "bonbonMeta": "联合创始人 · 兼职 · <date>2026年4月</date>起",
       "previousMeta": "上一段 · <date>2025年8月 – 2026年3月</date>"
     }
   },
@@ -76,6 +90,8 @@
   },
   "Summary": {
     "mapTabsLabel": "核心能力",
+    "mapPause": "暂停",
+    "mapPlay": "播放",
     "stackTitle": "我用来开发的技术",
     "pillars": {
       "crossDevice": {
@@ -88,7 +104,7 @@
       },
       "zeroToPilot": {
         "tab": "从零到试点",
-        "meta": "BonBon Mobility · 联合创始人",
+        "meta": "BonBon Mobility · 联合创始人（兼职）",
         "figure": "3 个月",
         "figureLabel": "从 MVP 到实地试点",
         "title": "在合作方的 App 里，从零做出一个产品",
@@ -96,7 +112,7 @@
       },
       "multiTenant": {
         "tab": "多租户 SaaS",
-        "meta": "LogiUP · Tech Lead",
+        "meta": "LogiUP · Tech Lead（兼职）",
         "figure": "9 个仓库",
         "figureLabel": "一套多租户架构，四人团队",
         "title": "每个客户的数据各自独立的物流 SaaS",
@@ -239,7 +255,7 @@
     "logiup": {
       "name": "LogiUP",
       "kind": "多租户物流 SaaS",
-      "role": "技术负责人兼系统架构师",
+      "role": "技术负责人兼系统架构师（兼职）",
       "period": "2026年3月 – 至今",
       "context": "这是一套物流 SaaS，每个客户有独立子域名，数据绝不能流到其他租户。产品运行在 Web 和 Electron 桌面应用上。我带一个四人团队，并对架构负责。",
       "decisions": [
@@ -256,7 +272,7 @@
     "bonbon": {
       "name": "BonBon Mobility",
       "kind": "VETC 应用内的洗车与养护预约",
-      "role": "联合创始人",
+      "role": "联合创始人（兼职）",
       "period": "2026年4月 – 至今",
       "context": "BonBon 连接车主与洗车、养护门店。作为联合创始人，我把产品做成运行在 VETC 应用内的 12 屏 Mini App。据 Tasco 公布，VETC 截至 2026年4月有 <b>430 万</b>用户。每次发布都要经过 VETC 的变更审批和安全流程，其中包括 OWASP 审查和一次独立渗透测试。",
       "decisions": [
@@ -305,7 +321,7 @@
       "product": "产品",
       "scale": "大厂",
       "handover": "交接",
-      "now": "Lead、联合创始"
+      "now": "Lead、联合创始（兼职）"
     },
     "story": {
       "title": "一路走来",
@@ -342,7 +358,7 @@
           "dates": "2026–至今",
           "where": "Zalo PC、BonBon Mobility、LogiUP",
           "env": "大厂、自己的创业公司、B2B SaaS",
-          "body": "2026 年 3 月，Zalo 重新聘请我担任 Lead。我负责多设备消息与客户端存储，其中包括 PC 端消息备份和移动端恢复。同时，我联合创办了 BonBon Mobility，在约 100 份申请中赢得 Tasco Foundry Wash3000，并完成 Tasco 领投的 <b>50 万美元</b> pre-seed 轮。在多租户物流 SaaS LogiUP，我是 4 人团队的技术负责人兼系统架构师。",
+          "body": "2026 年 3 月，Zalo 重新聘请我担任全职 Lead。我负责多设备消息与客户端存储，其中包括 PC 端消息备份和移动端恢复。在 Zalo 之外，我兼职做两件事。我联合创办了 BonBon Mobility，在约 100 份申请中赢得 Tasco Foundry Wash3000，并完成 Tasco 领投的 <b>50 万美元</b> pre-seed 轮。在多租户物流 SaaS LogiUP，我是 4 人团队的技术负责人兼系统架构师。",
           "shift": "在这个角色里，我的大部分工作是做决定：架构怎么拆分，什么默认关闭再上线，合作方的安全审查会接受什么。"
         }
       }
@@ -386,14 +402,34 @@
       "experience": "查看经历"
     }
   },
+  "ReaderTools": {
+    "label": "阅读工具",
+    "scrollTop": "回到顶部",
+    "scrollBottom": "前往底部",
+    "font": "更改阅读字体",
+    "background": "更改阅读背景",
+    "language": "切换语言",
+    "reading": "阅读",
+    "nativeShare": "更多分享方式",
+    "copyFailed": "复制失败，链接已选中。",
+    "jumpToContents": "跳到目录"
+  },
   "SEO": {
     "home": {
       "title": "Nguyen Le Phong | Lead Software Engineer，BonBon Mobility 联合创始人",
-      "description": "Zalo PC Lead Software Engineer，BonBon Mobility 联合创始人（Tasco 领投 50 万美元 Pre-seed 轮），LogiUP Tech Lead。PC 到移动端消息备份、多租户 SaaS。"
+      "description": "Zalo PC Lead Software Engineer；兼职担任 BonBon Mobility 联合创始人（Tasco 领投 50 万美元 Pre-seed 轮）和 LogiUP Tech Lead。PC 到移动端消息备份、多租户 SaaS。"
     },
     "about": {
       "title": "关于 Nguyen Le Phong：Zalo PC Lead，BonBon 联合创始人",
       "description": "从外包公司到带领 Zalo PC 多设备同步、联合创办 BonBon Mobility，以及我带进每个团队的工作习惯。"
+    },
+    "blog": {
+      "title": "软件架构、AI 与团队协作博客 | Nguyen Le Phong",
+      "description": "Zalo PC 的 Lead Software Engineer 从实际工作出发，写软件架构、AI 辅助开发，以及工程团队如何协作。"
+    },
+    "notes": {
+      "title": "工作、学习与生活笔记 | Nguyen Le Phong",
+      "description": "关于职业、读书、理财和日常决定的短篇笔记，作者是 Zalo PC 的 Lead Software Engineer。深入的技术文章在博客。"
     },
     "gallery": {
       "title": "作品集：证书、奖项与项目 | Nguyen Le Phong",
@@ -407,7 +443,10 @@
       "partial": "offline 阅读缓存目前只完成了一部分。请让这个语言页面再保持在线一会儿。",
       "offlineReady": "你当前处于 offline 状态，但已保存的页面和文章仍可继续阅读。",
       "offlinePartial": "你当前处于 offline 状态。有些页面可能需要先在线打开一次，之后才会被保存。",
-      "dismiss": "隐藏 offline 提醒"
+      "dismiss": "隐藏 offline 提醒",
+      "updateReady": "网站有新版本了。",
+      "reload": "刷新",
+      "dismissUpdate": "隐藏更新提醒"
     },
     "page": {
       "eyebrow": "连接已断开",
@@ -435,7 +474,7 @@
       "all": "全部",
       "tabsLabel": "按分组筛选照片",
       "captions": {
-        "wash3000DemoDay": "BonBon 在 Tasco Foundry 的 Wash3000 Demo Day，是从约 100 份申请中入选的 10 支团队之一。",
+        "wash3000DemoDay": "Tasco Foundry 的 Wash3000 Demo Day。BonBon 从约 100 份申请中进入前 10，最终赢得该项目。",
         "bonbonPreSeed": "BonBon Mobility 的 50 万美元 pre-seed 轮，由 Tasco 领投、GenAI Fund 跟投，于 2026 年 9 月 21 日宣布。",
         "bonbonTeam": "BonBon Mobility 的联合创始人：Nguyen Chi Dung、Vu Duy Hung 和我。",
         "bestRookie": "Splus Software 年度最佳新人（Best Rookie of the Year），2019 年。",
@@ -450,9 +489,9 @@
         "uprace323": "UpRace 323 公里证书。",
         "penangHill": "马来西亚槟城升旗山徒步，11 公里。",
         "deskWorking": "在自己的工位上写代码。",
-        "essay": "农林大学信息技术学院的毕业论文答辩。",
-        "teamEssay": "毕业论文答辩时展示的无人机。",
-        "drone": "实验台上正在组装的无人机：机架、电机和控制板。",
+        "essay": "农林大学信息技术学院的毕业论文答辩，课题是无人机。",
+        "teamEssay": "毕业论文课题的无人机，在答辩时展示。",
+        "drone": "实验台上正在组装的毕业论文无人机：机架、电机和控制板。",
         "chessProject": "带 AI 对手的中国象棋，是我在农林大学读书时做的游戏。",
         "watProject": "WAT，Splus Software 的客户项目，2019 年。"
       },
@@ -632,8 +671,8 @@
     "action": "阅读{language}版本"
   },
   "SiteIndex": {
-    "metaTitle": "站点地图：所有文章与笔记",
-    "metaDescription": "按主题整理的博客文章、笔记、系列和归档页面列表，每个页面都只隔一个链接。",
+    "metaTitle": "站点地图：个人简介、文章与笔记",
+    "metaDescription": "本站所有页面的列表：先是个人简介和简历，再按主题列出博客文章、笔记、系列和归档页面。",
     "eyebrow": "站点索引",
     "title": "站点地图",
     "intro": "本站所有文章与笔记，按主题分组。可以逐条浏览，也可以直接跳到记得读过的那篇。",
@@ -659,7 +698,8 @@
     "pageLabel": "第 {page} 页",
     "feedsHeading": "订阅源",
     "feedBlog": "博客 RSS 订阅",
-    "feedNotes": "笔记 RSS 订阅"
+    "feedNotes": "笔记 RSS 订阅",
+    "backToTop": "返回顶部"
   },
   "Feeds": {
     "blogTitle": "Nguyen Le Phong：博客",

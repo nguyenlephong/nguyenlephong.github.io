@@ -123,10 +123,14 @@
         "initializeFirestore"
       ]
     },
+    "offlineShell": {
+      "locale": "en",
+      "maxGzipBytes": 204800
+    },
     "htmlTransfer": {
       "routes": {
         "home": { "html": "en.html", "maxGzipBytes": 34304 },
-        "blogArchive": { "html": "en/blog.html", "maxGzipBytes": 20352 },
+        "blogArchive": { "html": "en/blog.html", "maxGzipBytes": 21120 },
         "notesArchive": { "html": "en/notes.html", "maxGzipBytes": 18432 },
         "blogArticle": {
           "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
@@ -134,7 +138,7 @@
         },
         "notesArticle": {
           "html": "en/notes/tri-tue-can-duc-hanh.html",
-          "maxGzipBytes": 21248
+          "maxGzipBytes": 22528
         }
       }
     },
@@ -147,8 +151,8 @@
         },
         "enNotes": {
           "path": "en/search/notes.json",
-          "maxRawBytes": 94208,
-          "maxGzipBytes": 31232
+          "maxRawBytes": 51200,
+          "maxGzipBytes": 16384
         },
         "viBlog": {
           "path": "vi/search/blog.json",
@@ -157,8 +161,8 @@
         },
         "viNotes": {
           "path": "vi/search/notes.json",
-          "maxRawBytes": 122368,
-          "maxGzipBytes": 35840
+          "maxRawBytes": 60416,
+          "maxGzipBytes": 17408
         },
         "zhBlog": {
           "path": "zh/search/blog.json",

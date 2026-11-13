@@ -447,7 +447,7 @@ test("public content surfaces have explicit posthog page and interaction events"
     readFile("src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx", "utf8"),
     readFile("src/app/[locale]/(site)/notes/[slug]/page.tsx", "utf8"),
     readFile("src/components/blog/BlogReadingTracker.tsx", "utf8"),
-    readFile("src/components/blog/BlogShareDock.tsx", "utf8"),
+    readFile("src/components/blog/useArticleShare.ts", "utf8"),
     readFile("src/components/blog/BlogReactions.tsx", "utf8"),
     readFile("src/components/blog/BlogToc.tsx", "utf8"),
     readFile("src/components/analytics/useRelatedLinkClickTracking.ts", "utf8"),
@@ -523,9 +523,17 @@ test("public content surfaces have explicit posthog page and interaction events"
   assert.match(reactions, /\$\{surface\}_reaction/);
   assert.match(toc, /blog_nav_jump/);
   assert.match(toc, /notes_nav_jump/);
+  // MEP-37: the collapsed outline reports opens, and every jump names its source.
+  assert.match(analytics, /'blog_toc_open'/);
+  assert.match(analytics, /'notes_toc_open'/);
+  assert.match(toc, /\$\{eventPrefix\}_toc_open/);
+  assert.match(toc, /source: variant === 'inline' \? 'mobile' : 'rail'/);
+  // MEP-38: a refused clipboard is still a reported share attempt.
+  assert.match(shareDock, /trackShare\('copy_failed'\)/);
+  assert.doesNotMatch(readingTracker, /addEventListener\('beforeunload'/);
   assert.match(related, /blog_related_click/);
   assert.match(related, /notes_related_click/);
-  assert.match(blogCard, /blog_card_click/);
+  assert.match(blogCard, /data-blog-card=/);
   assert.match(noteCard, /notes_card_click/);
   assert.match(categoryCard, /blog_category_click/);
 

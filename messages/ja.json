@@ -34,10 +34,23 @@
       "night": "ナイト"
     },
     "blog": "ブログ",
-    "notes": "ノート"
+    "notes": "ノート",
+    "search": {
+      "label": "検索",
+      "dialogLabel": "ブログとノートを検索",
+      "placeholder": "記事とノートを検索…",
+      "hint": "タイトル、トピック、タグで検索できます。記事は英語です。",
+      "blog": "ブログ",
+      "notes": "ノート",
+      "loading": "検索データを読み込み中…",
+      "error": "検索を読み込めませんでした。少し待ってから再度お試しください。",
+      "empty": "「{query}」に一致するものはまだありません。",
+      "results": "{count, plural, =0 {結果なし} other {# 件}}",
+      "close": "検索を閉じる"
+    }
   },
   "Footer": {
-    "tag": "Zalo PC Lead Software Engineer・BonBon Mobility 共同創業者",
+    "tag": "Zalo PC Lead Software Engineer・BonBon Mobility 共同創業者（パートタイム）",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "言語",
     "sitemap": "サイトマップ",
@@ -53,6 +66,7 @@
     "newsCta": "記事を読む",
     "role": "Lead Software Engineer",
     "cofounder": "共同創業者",
+    "partTime": "（パートタイム）",
     "claim": "自分でもコードを書くエンジニアリングリード。重要なコードは自分で書き、リスクのある変更は戻せる小さな単位でリリースします。",
     "bio": "2018 年からソフトウェアを届けてきました。受託開発会社、CDP プロダクト企業、Zalo を経て、共同創業したスタートアップへ。",
     "location": "ベトナム・ホーチミン市",
@@ -64,8 +78,8 @@
       "zaloNote": "デスクトップクライアント · 15M+ MAU",
       "bonbonNote": "Tasco リードの 50 万ドル プレシード",
       "previousNote": "デリバリーリード · 開発 8 + QC 3",
-      "zaloMeta": "Lead · <date>2026年3月</date>から",
-      "bonbonMeta": "共同創業者 · <date>2026年4月</date>から",
+      "zaloMeta": "Lead · フルタイム · <date>2026年3月</date>から",
+      "bonbonMeta": "共同創業者 · パートタイム · <date>2026年4月</date>から",
       "previousMeta": "前職 · <date>2025年8月 – 2026年3月</date>"
     }
   },
@@ -76,6 +90,8 @@
   },
   "Summary": {
     "mapTabsLabel": "得意領域",
+    "mapPause": "一時停止",
+    "mapPlay": "再生",
     "stackTitle": "開発で使う技術",
     "pillars": {
       "crossDevice": {
@@ -88,7 +104,7 @@
       },
       "zeroToPilot": {
         "tab": "ゼロからパイロットへ",
-        "meta": "BonBon Mobility · 共同創業者",
+        "meta": "BonBon Mobility · 共同創業者（パートタイム）",
         "figure": "3 か月",
         "figureLabel": "MVP から実地パイロットまで",
         "title": "ゼロからのプロダクトを、パートナーのアプリの中で",
@@ -96,7 +112,7 @@
       },
       "multiTenant": {
         "tab": "マルチテナント SaaS",
-        "meta": "LogiUP · Tech Lead",
+        "meta": "LogiUP · Tech Lead（パートタイム）",
         "figure": "9 リポジトリ",
         "figureLabel": "1 つのマルチテナント設計、4 人のチーム",
         "title": "顧客ごとのデータがきちんと分かれた物流 SaaS",
@@ -239,7 +255,7 @@
     "logiup": {
       "name": "LogiUP",
       "kind": "マルチテナント型の物流SaaS",
-      "role": "テックリード兼システムアーキテクト",
+      "role": "テックリード兼システムアーキテクト（パートタイム）",
       "period": "2026年3月 – 現在",
       "context": "顧客ごとに専用のサブドメインを持ち、データが他テナントに漏れてはならない物流SaaSです。Web と Electron デスクトップアプリで動きます。4人のチームを率い、アーキテクチャに責任を持っています。",
       "decisions": [
@@ -256,7 +272,7 @@
     "bonbon": {
       "name": "BonBon Mobility",
       "kind": "VETC アプリ内の洗車・整備予約",
-      "role": "共同創業者",
+      "role": "共同創業者（パートタイム）",
       "period": "2026年4月 – 現在",
       "context": "BonBon は車のオーナーと洗車・整備ガレージをつなぐサービスです。共同創業者として、VETC アプリ内で動く12画面の Mini App として製品を作りました。VETC のユーザーは2026年4月時点で<b>430万人</b>（Tasco 発表）。リリースはすべて VETC の変更承認とセキュリティプロセス（OWASP レビュー、独立したペネトレーションテスト）を通ります。",
       "decisions": [
@@ -305,7 +321,7 @@
       "product": "製品",
       "scale": "大手",
       "handover": "引継ぎ",
-      "now": "Lead・創業"
+      "now": "Lead・創業（パートタイム）"
     },
     "story": {
       "title": "ここまでの道のり",
@@ -342,7 +358,7 @@
           "dates": "2026–現在",
           "where": "Zalo PC、BonBon Mobility、LogiUP",
           "env": "ビッグテック、自分のスタートアップ、B2B SaaS",
-          "body": "2026年3月、Zalo に Lead として再雇用されました。マルチデバイスのメッセージングとクライアントストレージを率いており、PC でのメッセージバックアップとモバイルでの復元もその一つです。並行して BonBon Mobility を共同創業し、約100件の応募から Tasco Foundry の Wash3000 で優勝、Tasco リードの <b>50万ドル</b>のプレシードを調達しました。マルチテナントの物流 SaaS である LogiUP では、4人チームのテックリード兼システムアーキテクトです。",
+          "body": "2026年3月、Zalo にフルタイムの Lead として再雇用されました。マルチデバイスのメッセージングとクライアントストレージを率いており、PC でのメッセージバックアップとモバイルでの復元もその一つです。Zalo の外では、パートタイムで2つの仕事をしています。BonBon Mobility を共同創業し、約100件の応募から Tasco Foundry の Wash3000 で優勝、Tasco リードの <b>50万ドル</b>のプレシードを調達しました。マルチテナントの物流 SaaS である LogiUP では、4人チームのテックリード兼システムアーキテクトです。",
           "shift": "この役割での仕事の多くは判断です。アーキテクチャをどう分けるか、何を既定オフで出すか、パートナーのセキュリティレビューが何を受け入れるか。"
         }
       }
@@ -386,14 +402,34 @@
       "experience": "経歴を見る"
     }
   },
+  "ReaderTools": {
+    "label": "読書ツール",
+    "scrollTop": "先頭へ移動",
+    "scrollBottom": "末尾へ移動",
+    "font": "読書フォントを変更",
+    "background": "読書背景を変更",
+    "language": "言語を変更",
+    "reading": "読書",
+    "nativeShare": "ほかの方法で共有",
+    "copyFailed": "コピーできませんでした。リンクを選択してあります。",
+    "jumpToContents": "目次へ移動"
+  },
   "SEO": {
     "home": {
       "title": "Nguyen Le Phong | Lead Software Engineer・BonBon Mobility 共同創業者",
-      "description": "Zalo PC の Lead Software Engineer、BonBon Mobility 共同創業者（Tasco リードの 50 万ドル プレシード）、LogiUP の Tech Lead。PC からモバイルへのバックアップ、マルチテナント SaaS。"
+      "description": "Zalo PC の Lead Software Engineer。パートタイムで BonBon Mobility 共同創業者（Tasco リードの 50 万ドル プレシード）、LogiUP の Tech Lead。PC からモバイルへのバックアップ、マルチテナント SaaS。"
     },
     "about": {
       "title": "Nguyen Le Phong について：Zalo PC の Lead、BonBon 共同創業者",
       "description": "受託開発会社から Zalo PC のマルチデバイス同期のリード、BonBon Mobility の共同創業まで。どのチームにも持ち込む働き方の習慣。"
+    },
+    "blog": {
+      "title": "ソフトウェアアーキテクチャ、AI、チームの働き方のブログ | Nguyen Le Phong",
+      "description": "ソフトウェアアーキテクチャ、AI を使った開発、エンジニアチームの働き方について、Zalo PC の Lead Software Engineer が実務から書いています。"
+    },
+    "notes": {
+      "title": "仕事、学び、暮らしのノート | Nguyen Le Phong",
+      "description": "キャリア、本、お金、日々の判断についての短いノートです。Zalo PC の Lead Software Engineer が書いています。技術の詳しい記事はブログにあります。"
     },
     "gallery": {
       "title": "ギャラリー：認定証・表彰・プロジェクト | Nguyen Le Phong",
@@ -407,7 +443,10 @@
       "partial": "offline読書の保存はまだ一部だけです。もう少しだけonlineのままにしてください。",
       "offlineReady": "現在offlineですが、保存済みのページと記事はそのまま読めます。",
       "offlinePartial": "現在offlineです。保存するには一度onlineで開く必要があるページがあります。",
-      "dismiss": "offline通知を隠す"
+      "dismiss": "offline通知を隠す",
+      "updateReady": "サイトの新しいバージョンがあります。",
+      "reload": "再読み込み",
+      "dismissUpdate": "更新通知を隠す"
     },
     "page": {
       "eyebrow": "接続が切れました",
@@ -435,7 +474,7 @@
       "all": "すべて",
       "tabsLabel": "グループで写真を絞り込む",
       "captions": {
-        "wash3000DemoDay": "Tasco Foundry の Wash3000 Demo Day に出た BonBon。約100件の応募から選ばれた10チームの一つ。",
+        "wash3000DemoDay": "Tasco Foundry の Wash3000 Demo Day。約100件の応募から BonBon はトップ10に選ばれ、プログラムで優勝しました。",
         "bonbonPreSeed": "BonBon Mobility の50万ドルの pre-seed。Tasco がリードし、GenAI Fund が共同出資。2026年9月21日発表。",
         "bonbonTeam": "BonBon Mobility の共同創業者。Nguyen Chi Dung、Vu Duy Hung、そして私。",
         "bestRookie": "Splus Software の Best Rookie of the Year（2019年）。",
@@ -450,9 +489,9 @@
         "uprace323": "UpRace の 323 km 完走証。",
         "penangHill": "マレーシア、ペナンヒルのトレッキング。11 km。",
         "deskWorking": "自分のデスクでコードを書いているところ。",
-        "essay": "ノンラム大学 情報技術学部での卒業論文の審査会。",
-        "teamEssay": "卒業論文の審査会で見せたドローン。",
-        "drone": "ラボの作業台で組み立て中のドローン。フレーム、モーター、制御基板。",
+        "essay": "ノンラム大学 情報技術学部での卒業論文の審査会。テーマはドローンでした。",
+        "teamEssay": "卒業論文のドローン。審査会で披露しました。",
+        "drone": "ラボの作業台で組み立て中の卒業論文のドローン。フレーム、モーター、制御基板。",
         "chessProject": "AI と対戦する中国象棋。ノンラム大学在学中に作ったゲーム。",
         "watProject": "WAT。Splus Software での受託プロジェクト（2019年）。"
       },
@@ -632,8 +671,8 @@
     "action": "{language}で読む"
   },
   "SiteIndex": {
-    "metaTitle": "サイトマップ: すべての記事とノート",
-    "metaDescription": "ブログ記事、ノート、シリーズ、アーカイブページをテーマ別にまとめた一覧です。どのページも1回のリンクで辿れます。",
+    "metaTitle": "サイトマップ: プロフィール、記事、ノート",
+    "metaDescription": "サイトの全ページの一覧です。まずプロフィールと履歴書、続いてブログ記事、ノート、シリーズ、アーカイブページをテーマ別にまとめています。",
     "eyebrow": "サイトインデックス",
     "title": "サイトマップ",
     "intro": "サイト内のすべての記事とノートをテーマ別に並べています。一覧から探すか、読んだ記憶のある記事へ直接移動できます。",
@@ -659,7 +698,8 @@
     "pageLabel": "{page}ページ目",
     "feedsHeading": "フィード",
     "feedBlog": "ブログのRSSフィード",
-    "feedNotes": "ノートのRSSフィード"
+    "feedNotes": "ノートのRSSフィード",
+    "backToTop": "ページの先頭へ"
   },
   "Feeds": {
     "blogTitle": "Nguyen Le Phong: ブログ",

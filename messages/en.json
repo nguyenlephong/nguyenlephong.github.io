@@ -15,6 +15,19 @@
     "mainNav": "Main navigation",
     "menuOpen": "Open menu",
     "menuClose": "Close menu",
+    "search": {
+      "label": "Search",
+      "dialogLabel": "Search the blog and notes",
+      "placeholder": "Search posts and notes…",
+      "hint": "Search by title, topic or tag.",
+      "blog": "Blog",
+      "notes": "Notes",
+      "loading": "Loading the index…",
+      "error": "Search could not load. Try again in a moment.",
+      "empty": "Nothing matches “{query}” yet.",
+      "results": "{count, plural, =0 {No results} one {# result} other {# results}}",
+      "close": "Close search"
+    },
     "theme": {
       "label": "Theme",
       "light": "Light theme",
@@ -38,7 +51,7 @@
     }
   },
   "Footer": {
-    "tag": "Lead Software Engineer, Zalo PC · Co-founder, BonBon Mobility",
+    "tag": "Lead Software Engineer, Zalo PC · Co-founder, BonBon Mobility (part-time)",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "Language",
     "sitemap": "Sitemap",
@@ -54,6 +67,7 @@
     "newsCta": "Read the story",
     "role": "Lead Software Engineer",
     "cofounder": "Co-founder",
+    "partTime": "(part-time)",
     "claim": "Hands-on engineering lead. I write the critical code myself and ship risky changes in small steps that can be rolled back.",
     "bio": "Shipping since 2018 across an outsourcing agency, a CDP product company, Zalo, and a startup I co-founded.",
     "location": "Ho Chi Minh City, Vietnam",
@@ -65,8 +79,8 @@
       "zaloNote": "desktop client · 15M+ MAU",
       "bonbonNote": "$500K pre-seed, led by Tasco",
       "previousNote": "delivery lead · 8 dev + 3 QC",
-      "zaloMeta": "Lead · since <date>Mar 2026</date>",
-      "bonbonMeta": "Co-founder · since <date>Apr 2026</date>",
+      "zaloMeta": "Lead · full-time · since <date>Mar 2026</date>",
+      "bonbonMeta": "Co-founder · part-time · since <date>Apr 2026</date>",
       "previousMeta": "previous · <date>Aug 2025 – Mar 2026</date>"
     }
   },
@@ -77,6 +91,8 @@
   },
   "Summary": {
     "mapTabsLabel": "Capabilities",
+    "mapPause": "Pause",
+    "mapPlay": "Play",
     "stackTitle": "What I build with",
     "pillars": {
       "crossDevice": {
@@ -89,7 +105,7 @@
       },
       "zeroToPilot": {
         "tab": "Zero to pilot",
-        "meta": "BonBon Mobility · Co-founder",
+        "meta": "BonBon Mobility · Co-founder, part-time",
         "figure": "3 months",
         "figureLabel": "from MVP to a live field pilot",
         "title": "Building a product from nothing, inside someone else's app",
@@ -97,7 +113,7 @@
       },
       "multiTenant": {
         "tab": "Multi-tenant SaaS",
-        "meta": "LogiUP · Tech Lead",
+        "meta": "LogiUP · Tech Lead, part-time",
         "figure": "9 repos",
         "figureLabel": "one multi-tenant architecture, a team of four",
         "title": "A logistics SaaS where each customer's data stays its own",
@@ -240,7 +256,7 @@
     "logiup": {
       "name": "LogiUP",
       "kind": "Multi-tenant logistics SaaS",
-      "role": "Tech Lead and system architect",
+      "role": "Tech Lead and system architect, part-time",
       "period": "Mar 2026 – now",
       "context": "Each customer gets its own subdomain, and its data must never reach another tenant. It runs on the web and as an Electron desktop app. I lead a team of four and own the architecture.",
       "decisions": [
@@ -257,7 +273,7 @@
     "bonbon": {
       "name": "BonBon Mobility",
       "kind": "Car-care booking inside the VETC app",
-      "role": "Co-founder",
+      "role": "Co-founder, part-time",
       "period": "Apr 2026 – now",
       "context": "BonBon connects car owners with wash and care garages. As co-founder I built the product as a 12-screen Mini App inside the VETC app, which had <b>4.3M users</b> as of April 2026 (Tasco). Every release goes through VETC's change approval and its security process, which includes an OWASP review and an independent pentest.",
       "decisions": [
@@ -300,7 +316,7 @@
   "SEO": {
     "home": {
       "title": "Nguyen Le Phong | Lead Software Engineer · BonBon co-founder",
-      "description": "Lead Software Engineer at Zalo PC and co-founder of BonBon Mobility ($500K pre-seed led by Tasco). Messaging at scale, safe rollouts, multi-tenant SaaS."
+      "description": "Lead Software Engineer at Zalo PC, part-time co-founder of BonBon Mobility ($500K pre-seed led by Tasco). Messaging at scale, safe rollouts, multi-tenant SaaS."
     },
     "about": {
       "title": "About Nguyen Le Phong: Lead at Zalo PC, BonBon co-founder",
@@ -310,9 +326,17 @@
       "title": "Apps: Small Open-Source Tools | Nguyen Le Phong",
       "description": "Small tools Nguyen Le Phong built for his own work, starting with Glance, a macOS menu-bar app that translates selected text with one hotkey. Source on GitHub."
     },
+    "blog": {
+      "title": "Blog on software architecture, AI and teams | Nguyen Le Phong",
+      "description": "Practical writing on software architecture, AI-assisted delivery and how engineering teams work, from a Lead Software Engineer at Zalo PC."
+    },
+    "notes": {
+      "title": "Notes on work, learning and life | Nguyen Le Phong",
+      "description": "Shorter notes on career, books, money and the everyday decisions behind them, from a Lead Software Engineer at Zalo PC. Engineering deep-dives are on the blog."
+    },
     "gallery": {
       "title": "Photos and certificates | Nguyen Le Phong",
-      "description": "BonBon Mobility at the Tasco Foundry Wash3000 Demo Day and its $500K pre-seed, Best Rookie of the Year 2019 at Splus Software, and certificates, each sourced."
+      "description": "BonBon Mobility winning Tasco Foundry Wash3000 and raising a $500K pre-seed, Best Rookie of the Year 2019 at Splus Software, and certificates, each sourced."
     }
   },
   "Offline": {
@@ -322,7 +346,10 @@
       "partial": "Offline reading is only partially cached. Keep this language online a little longer.",
       "offlineReady": "You’re offline, but saved pages and articles are still ready to read.",
       "offlinePartial": "You’re offline. Some pages may need one online visit before they’re saved.",
-      "dismiss": "Hide offline notice"
+      "dismiss": "Hide offline notice",
+      "updateReady": "A newer version of this site is ready.",
+      "reload": "Reload",
+      "dismissUpdate": "Hide update notice"
     },
     "page": {
       "eyebrow": "Connection lost",
@@ -355,7 +382,7 @@
       "all": "All",
       "tabsLabel": "Filter photos by group",
       "captions": {
-        "wash3000DemoDay": "BonBon at the Tasco Foundry Wash3000 Demo Day, one of 10 teams picked from about 100 applications.",
+        "wash3000DemoDay": "Tasco Foundry Wash3000 Demo Day. Out of about 100 applications, BonBon made the top 10 and won the program.",
         "bonbonPreSeed": "BonBon Mobility's $500K pre-seed, led by Tasco with GenAI Fund co-investing, announced September 21, 2026.",
         "bonbonTeam": "The BonBon Mobility co-founders: Nguyen Chi Dung, Vu Duy Hung and me.",
         "bestRookie": "Best Rookie of the Year, Splus Software, 2019.",
@@ -370,9 +397,9 @@
         "uprace323": "UpRace certificate for 323 km.",
         "penangHill": "Penang Hill trek in Malaysia, 11 km.",
         "deskWorking": "At my desk, writing code.",
-        "essay": "Graduation thesis defense at the Faculty of IT, Nong Lam University.",
-        "teamEssay": "The drone shown at the thesis defense.",
-        "drone": "The drone on a lab bench: frame, motors and controller board.",
+        "essay": "Defending my graduation thesis, a drone project, at the Faculty of IT, Nong Lam University.",
+        "teamEssay": "Our thesis drone, shown at the defense.",
+        "drone": "The thesis drone during the build: frame, motors and controller board.",
         "chessProject": "AI Chinese chess, a game I built at Nong Lam University.",
         "watProject": "WAT, a client project at Splus Software, 2019."
       },
@@ -416,7 +443,14 @@
         "updated": "Updated"
       },
       "readingTime": "{minutes} min read",
-      "empty": "No notes yet — the first one is on its way.",
+      "empty": "No notes yet. The first one is on its way.",
+      "hubs": {
+        "heading": "Read by topic",
+        "eyebrow": "Notes topic",
+        "back": "Notes",
+        "suffix": "Notes topic",
+        "empty": "No published notes yet."
+      },
       "backToNotes": "Back to notes",
       "onThisPage": "On this page",
       "readerTools": {
@@ -449,7 +483,7 @@
         "popularTags": "Popular tags",
         "clear": "Clear filters",
         "results": "{count, plural, =0 {No notes} one {# note} other {# notes}}",
-        "noResults": "No notes match your search.",
+        "noResults": "No notes match. Try a shorter word, or search the Blog for engineering posts.",
         "searchUnavailable": "Search is temporarily unavailable. You can continue browsing the pages below.",
         "searching": "Searching…",
         "pagination": {
@@ -556,7 +590,7 @@
       "product": "Product",
       "scale": "Big tech",
       "handover": "Handover",
-      "now": "Lead, co-founder"
+      "now": "Lead, part-time co-founder"
     },
     "story": {
       "title": "How I got here",
@@ -593,7 +627,7 @@
           "dates": "2026–now",
           "where": "Zalo PC, BonBon Mobility, LogiUP",
           "env": "Big tech, own startup, B2B SaaS",
-          "body": "Zalo hired me back as Lead in March 2026, for cross-device messaging and client storage, including PC message backup with restore on mobile. I also co-founded BonBon Mobility: it won Tasco Foundry's Wash3000 out of about 100 applicants and closed a <b>$500K</b> pre-seed round led by Tasco. At LogiUP, a multi-tenant logistics SaaS, I am Tech Lead and system architect for a team of four.",
+          "body": "Zalo hired me back full-time as Lead in March 2026, for cross-device messaging and client storage, including PC message backup with restore on mobile. Outside Zalo I work part-time on two things. I co-founded BonBon Mobility: it won Tasco Foundry's Wash3000 out of about 100 applicants and closed a <b>$500K</b> pre-seed round led by Tasco. At LogiUP, a multi-tenant logistics SaaS, I am Tech Lead and system architect for a team of four.",
           "shift": "In this role most of my work is decisions: how the architecture splits, what ships default off and what a partner's security review will accept."
         }
       }
@@ -643,7 +677,11 @@
     "scrollBottom": "Scroll to bottom",
     "font": "Change reading font",
     "background": "Change reading background",
-    "language": "Change language"
+    "language": "Change language",
+    "reading": "Reading",
+    "nativeShare": "More ways to share",
+    "copyFailed": "Copy failed. The link is selected.",
+    "jumpToContents": "Jump to contents"
   },
   "Author": {
     "byline": "By <author>{name}</author>, {role}",
@@ -660,8 +698,8 @@
     "action": "Read in {language}"
   },
   "SiteIndex": {
-    "metaTitle": "Sitemap: every article and note",
-    "metaDescription": "A plain list of every blog article, note, series and archive page on this site, grouped by topic so nothing is more than one link away.",
+    "metaTitle": "Sitemap: profile, articles and notes",
+    "metaDescription": "Every page on this site in one list: the profile and résumé first, then each blog article, note, series and archive page, grouped by topic.",
     "eyebrow": "Site index",
     "title": "Sitemap",
     "intro": "Every article and note on this site, grouped by topic. Browse the list, or jump straight to something you remember reading.",
@@ -687,7 +725,8 @@
     "pageLabel": "Page {page}",
     "feedsHeading": "Feeds",
     "feedBlog": "Blog RSS feed",
-    "feedNotes": "Notes RSS feed"
+    "feedNotes": "Notes RSS feed",
+    "backToTop": "Back to top"
   },
   "Feeds": {
     "blogTitle": "Nguyen Le Phong: Blog",

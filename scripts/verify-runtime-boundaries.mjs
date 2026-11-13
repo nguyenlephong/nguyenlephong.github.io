@@ -620,7 +620,7 @@ function normalizeArchiveSearch(value) {
 
 function archiveSearchText(item) {
   return normalizeArchiveSearch(
-    [item?.title, item?.summary, ...(Array.isArray(item?.tags) ? item.tags : [])]
+    [item?.title, item?.summary ?? item?.cardSummary, ...(Array.isArray(item?.tags) ? item.tags : [])]
       .filter((value) => typeof value === "string")
       .join(" ")
   );

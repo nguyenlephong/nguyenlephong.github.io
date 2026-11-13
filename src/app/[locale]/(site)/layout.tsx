@@ -13,6 +13,7 @@ import ReadingBackgroundScript from '@/components/reading/ReadingBackgroundScrip
 import ThemeScript from '@/components/theme/ThemeScript'
 import ThemeSync from '@/components/theme/ThemeSync'
 import { routing } from '@/i18n/routing'
+import { globalSearchConfig } from '@/lib/content/global-search.server'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 import { publicThirdPartyMetadata } from '@/lib/public-third-party'
 import '../../globals.css'
@@ -55,7 +56,7 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
         <RouteProgressBar />
         <OfflineNavigationCapture />
         <OfflineStatusBanner />
-        <AppHeader />
+        <AppHeader search={globalSearchConfig(locale)} />
         {/* Skip-link target: every route renders its own <main> right after this. */}
         <div id="main-content" className="skip-target" tabIndex={-1} />
         {children}

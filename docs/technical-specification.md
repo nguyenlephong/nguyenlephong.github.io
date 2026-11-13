@@ -812,8 +812,8 @@ remain hard gates. The current configured gates are:
 | Largest localized Studio RSC sample | Hard limit: 30,720 bytes |
 
 The verifier also hard-gates Gzip HTML for English Home (34,304 bytes), Blog
-archive (20,352), Notes archive (18,432), one Blog article (18,432), and one
-Notes article (21,248), while reporting raw and Brotli bytes for comparison.
+archive (21,120), Notes archive (18,432), one Blog article (18,432), and one
+Notes article (22,528), while reporting raw and Brotli bytes for comparison.
 
 Rebase of 2026-11-13 (homepage CV revamp). Initial JavaScript no longer counts
 `<script nomodule>` tags: the Next legacy polyfill (about 39.5 KiB Gzip) is never

@@ -40,6 +40,8 @@ export type AnalyticsEvent =
   | 'cv_case_file_open'
   | 'cv_announcement_click'
   | 'cv_capability_select'
+  // state: playing | paused, from the capability map's visible toggle (MEP-78)
+  | 'cv_capability_autoplay_toggle'
   | 'cv_hero_node_select'
   // Page lifecycle
   | 'page_view'
@@ -95,6 +97,11 @@ export type AnalyticsEvent =
   | 'explorer_page_change'
   | 'explorer_clear'
   | 'explorer_palette_toggle'
+  // Site-wide search dialog (MEP-48). Only lengths and counts, never the query text.
+  | 'global_search_open'
+  | 'global_search_query'
+  | 'global_search_no_results'
+  | 'global_search_result_click'
   // Curated static content hubs
   | 'content_hub_view'
   | 'content_hub_click'
@@ -111,6 +118,8 @@ export type AnalyticsEvent =
   | 'blog_share'
   | 'blog_reaction'
   | 'blog_nav_jump'
+  // Collapsed outline under the header (<1080px); jumps report source: 'mobile' | 'rail'
+  | 'blog_toc_open'
   | 'blog_related_click'
   // Article tag row linking back into the archive filter or search
   | 'blog_tag_click'
@@ -125,7 +134,10 @@ export type AnalyticsEvent =
   | 'notes_share'
   | 'notes_reaction'
   | 'notes_nav_jump'
+  | 'notes_toc_open'
   | 'notes_related_click'
+  // Article tag row on notes linking into the notes archive filter (MEP-51)
+  | 'notes_tag_click'
   | 'content_fallback_language_click'
   // Reader controls
   | 'reader_tool_scroll'
@@ -137,6 +149,9 @@ export type AnalyticsEvent =
   | 'offline_mode_ready'
   | 'offline_status_change'
   | 'offline_banner_dismiss'
+  // Service worker update notice (a new build took over an open tab)
+  | 'app_update_reload'
+  | 'app_update_dismiss'
   // Not found recovery
   | 'not_found_view'
   | 'not_found_recovery_click'
@@ -168,6 +183,8 @@ export type AnalyticsEvent =
   | 'studio_flow_history_action'
   | 'studio_flow_group_visibility_toggle'
   | 'studio_flow_board_fullscreen_toggle'
+  // open_next: the mobile "Diagram options" disclosure under the canvas (MEP-59)
+  | 'studio_flow_options_toggle'
   | 'studio_flow_focus_toggle'
   | 'studio_flow_share'
   // Outbound

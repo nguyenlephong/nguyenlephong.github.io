@@ -23,6 +23,7 @@ const expectedRoutes = [
   "gallery/page.tsx",
   "notes/[slug]/page.tsx",
   "notes/feed.xml/route.ts",
+  "notes/opengraph-image.tsx",
   "notes/page.tsx",
   "notes/page/[page]/page.tsx",
   "notes/topics/[topic]/page.tsx",
@@ -34,6 +35,7 @@ const expectedRoutes = [
   "search/notes.json/route.ts",
   "sitemap/page.tsx",
   "studio/[module]/page.tsx",
+  "studio/opengraph-image.tsx",
   "studio/page.tsx"
 ].sort();
 
@@ -109,6 +111,14 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
     `${localeRoot}/(site)/notes/[slug]/layout.tsx`,
     "utf8"
   );
+  const blogArticlePage = readFileSync(
+    `${localeRoot}/(site)/blog/[category]/[slug]/page.tsx`,
+    "utf8"
+  );
+  const notesArticlePage = readFileSync(
+    `${localeRoot}/(site)/notes/[slug]/page.tsx`,
+    "utf8"
+  );
   const studioPage = readFileSync(`${localeRoot}/studio/page.tsx`, "utf8");
   const scopedIntlProvider = readFileSync(
     "src/i18n/ScopedIntlProvider.tsx",
@@ -139,8 +149,13 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
   assert.match(galleryPage, /<main className="gallery-showcase">/);
   assert.doesNotMatch(galleryPage, /\bMotionProvider\b|\bframer-motion\b/);
   assert.equal(existsSync("src/components/motion/MotionProvider.tsx"), false);
-  assert.match(blogArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
-  assert.match(notesArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
+  // The reader cluster is page-owned (it carries the article's share data)
+  // and sits after <main> as its own complementary landmark.
+  for (const articlePage of [blogArticlePage, notesArticlePage]) {
+    assert.match(articlePage, /<\/main>\s*<ArticleReaderTools locale=\{locale\} share=\{share\} \/>/);
+  }
+  assert.doesNotMatch(blogArticleLayout, /\bArticleReaderTools\b/);
+  assert.doesNotMatch(notesArticleLayout, /\bArticleReaderTools\b/);
   assert.doesNotMatch(homePage, /\bBlogReaderTools\b|\bArticleReaderTools\b/);
   assert.doesNotMatch(
     galleryPage,

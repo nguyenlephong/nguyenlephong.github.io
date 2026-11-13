@@ -5,11 +5,13 @@ import { useTranslations } from "next-intl";
 import { APP_ROUTE } from "@/app/app.const";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 import IntentPrefetchLink from "@/components/navigation/IntentPrefetchLink";
+import GlobalSearch from "@/components/search/GlobalSearch";
 import ThemeToggle from "@/components/theme/ThemeToggle";
 import { usePathname } from "@/i18n/navigation";
 import { track } from "@/lib/analytics";
+import type { GlobalSearchConfig } from "@/lib/content/search-index";
 
-export default function AppHeader() {
+export default function AppHeader({ search }: { search: GlobalSearchConfig }) {
   const t = useTranslations("Nav");
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -50,7 +52,7 @@ export default function AppHeader() {
     );
     muted.forEach((el) => (el.inert = true));
     const onKey = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") return;
+      if (event.key !== "Escape" || event.defaultPrevented) return;
       // An open language list inside the panel takes the first Escape.
       if (document.querySelector("#mobile-nav .locale-menu.is-open")) return;
       setMenuState({ pathname, open: false });
@@ -98,7 +100,7 @@ export default function AppHeader() {
             onClick={() => track("cv_nav_click", { target: "home" })}
           >
             <Image
-              src="/favicon/android-icon-72x72.png"
+              src="/favicon/avatar-72x72.webp"
               alt=""
               width={36}
               height={36}
@@ -123,6 +125,7 @@ export default function AppHeader() {
           </nav>
 
           <div className="nav-actions">
+            <GlobalSearch config={search} muted={menuOpen} />
             <div className="nav-desktop-controls">
               <LocaleSwitcher placement="down" compact source="header" />
               <ThemeToggle />

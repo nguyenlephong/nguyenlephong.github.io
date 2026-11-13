@@ -34,10 +34,23 @@
       "night": "Nuit"
     },
     "blog": "Blog",
-    "notes": "Notes"
+    "notes": "Notes",
+    "search": {
+      "label": "Rechercher",
+      "dialogLabel": "Rechercher dans le blog et les notes",
+      "placeholder": "Rechercher articles et notes…",
+      "hint": "Cherchez par titre, thème ou tag. Les articles sont en anglais.",
+      "blog": "Blog",
+      "notes": "Notes",
+      "loading": "Chargement de l’index…",
+      "error": "La recherche n’a pas pu se charger. Réessayez dans un instant.",
+      "empty": "Rien ne correspond à « {query} » pour l’instant.",
+      "results": "{count, plural, =0 {Aucun résultat} one {# résultat} other {# résultats}}",
+      "close": "Fermer la recherche"
+    }
   },
   "Footer": {
-    "tag": "Lead Software Engineer chez Zalo PC · Cofondateur de BonBon Mobility",
+    "tag": "Lead Software Engineer chez Zalo PC · Cofondateur de BonBon Mobility (temps partiel)",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "Langue",
     "sitemap": "Plan du site",
@@ -53,6 +66,7 @@
     "newsCta": "Lire l’article",
     "role": "Lead Software Engineer",
     "cofounder": "Cofondateur",
+    "partTime": "(temps partiel)",
     "claim": "Lead technique qui code encore. J'écris moi-même le code critique et je livre les changements risqués par petites étapes réversibles.",
     "bio": "Je livre du logiciel depuis 2018 : une agence d'outsourcing, un éditeur de CDP, Zalo, puis une startup que j'ai cofondée.",
     "location": "Hô Chi Minh-Ville, Vietnam",
@@ -64,8 +78,8 @@
       "zaloNote": "client desktop · 15M+ MAU",
       "bonbonNote": "pre-seed de 500 000 $, menée par Tasco",
       "previousNote": "lead delivery · 8 dev + 3 QC",
-      "zaloMeta": "Lead · depuis <date>mars 2026</date>",
-      "bonbonMeta": "Cofondateur · depuis <date>avr. 2026</date>",
+      "zaloMeta": "Lead · temps plein · depuis <date>mars 2026</date>",
+      "bonbonMeta": "Cofondateur · temps partiel · depuis <date>avr. 2026</date>",
       "previousMeta": "précédent · <date>août 2025 – mars 2026</date>"
     }
   },
@@ -76,6 +90,8 @@
   },
   "Summary": {
     "mapTabsLabel": "Compétences",
+    "mapPause": "Pause",
+    "mapPlay": "Lecture",
     "stackTitle": "Avec quoi je construis",
     "pillars": {
       "crossDevice": {
@@ -88,7 +104,7 @@
       },
       "zeroToPilot": {
         "tab": "De zéro au pilote",
-        "meta": "BonBon Mobility · Cofondateur",
+        "meta": "BonBon Mobility · Cofondateur, temps partiel",
         "figure": "3 mois",
         "figureLabel": "du MVP à un pilote terrain",
         "title": "Construire un produit de zéro, dans l'application d'un partenaire",
@@ -96,7 +112,7 @@
       },
       "multiTenant": {
         "tab": "SaaS multi-tenant",
-        "meta": "LogiUP · Tech Lead",
+        "meta": "LogiUP · Tech Lead, temps partiel",
         "figure": "9 dépôts",
         "figureLabel": "une architecture multi-tenant, une équipe de quatre",
         "title": "Un SaaS logistique où les données de chaque client restent à part",
@@ -239,7 +255,7 @@
     "logiup": {
       "name": "LogiUP",
       "kind": "SaaS logistique multi-tenant",
-      "role": "Tech Lead, architecte système",
+      "role": "Tech Lead, architecte système (temps partiel)",
       "period": "mars 2026 – auj.",
       "context": "Chaque client a son sous-domaine, et ses données ne doivent jamais fuiter vers un autre tenant. Web et app desktop Electron. Je dirige une équipe de quatre et je porte l'architecture.",
       "decisions": [
@@ -256,7 +272,7 @@
     "bonbon": {
       "name": "BonBon Mobility",
       "kind": "Réservation d'entretien auto dans l'app VETC",
-      "role": "Cofondateur",
+      "role": "Cofondateur (temps partiel)",
       "period": "avr. 2026 – auj.",
       "context": "BonBon relie les automobilistes aux garages de lavage et d'entretien. Cofondateur, j'ai construit le produit : une Mini App de 12 écrans dans l'app VETC (<b>4,3 M d'utilisateurs</b> en avril 2026, selon Tasco). Chaque release passe par la validation des changements de VETC et son processus de sécurité : revue OWASP et pentest indépendant.",
       "decisions": [
@@ -305,7 +321,7 @@
       "product": "Produit",
       "scale": "Big tech",
       "handover": "Passation",
-      "now": "Lead, cofondateur"
+      "now": "Lead, cofondateur à temps partiel"
     },
     "story": {
       "title": "Comment j'en suis arrivé là",
@@ -342,7 +358,7 @@
           "dates": "2026–aujourd'hui",
           "where": "Zalo PC, BonBon Mobility, LogiUP",
           "env": "Big tech, ma startup, SaaS B2B",
-          "body": "Zalo m'a réembauché comme Lead en mars 2026 : je dirige la messagerie multi-appareils et le stockage côté client, dont la sauvegarde des messages sur PC avec restauration sur mobile. En parallèle, j'ai cofondé BonBon Mobility, lauréat de Wash3000 de Tasco Foundry parmi environ 100 candidatures, avec une levée pre-seed de <b>500 k$</b> menée par Tasco. Chez LogiUP, un SaaS logistique multi-tenant, je suis Tech Lead et architecte système d'une équipe de quatre.",
+          "body": "Zalo m'a réembauché à temps plein comme Lead en mars 2026 : je dirige la messagerie multi-appareils et le stockage côté client, dont la sauvegarde des messages sur PC avec restauration sur mobile. En dehors de Zalo, je travaille à temps partiel sur deux projets. J'ai cofondé BonBon Mobility, lauréat de Wash3000 de Tasco Foundry parmi environ 100 candidatures, avec une levée pre-seed de <b>500 k$</b> menée par Tasco. Chez LogiUP, un SaaS logistique multi-tenant, je suis Tech Lead et architecte système d'une équipe de quatre.",
           "shift": "Dans ce rôle, mon travail consiste surtout à décider : comment découper l'architecture, ce qui part désactivé par défaut, ce qu'acceptera la revue de sécurité d'un partenaire."
         }
       }
@@ -386,14 +402,34 @@
       "experience": "Voir l'expérience"
     }
   },
+  "ReaderTools": {
+    "label": "Outils de lecture",
+    "scrollTop": "Remonter en haut",
+    "scrollBottom": "Aller en bas",
+    "font": "Changer la police de lecture",
+    "background": "Changer le fond de lecture",
+    "language": "Changer de langue",
+    "reading": "Lecture",
+    "nativeShare": "Autres moyens de partager",
+    "copyFailed": "Copie impossible. Le lien est sélectionné.",
+    "jumpToContents": "Aller au sommaire"
+  },
   "SEO": {
     "home": {
       "title": "Nguyen Le Phong | Lead Software Engineer · Cofondateur BonBon",
-      "description": "Lead Software Engineer chez Zalo PC et cofondateur de BonBon Mobility (pre-seed de 500 000 $ menée par Tasco). Messagerie à grande échelle, déploiements sûrs, SaaS multi-tenant."
+      "description": "Lead Software Engineer chez Zalo PC et cofondateur à temps partiel de BonBon Mobility (pre-seed de 500 000 $ menée par Tasco). Messagerie à grande échelle, déploiements sûrs, SaaS multi-tenant."
     },
     "about": {
       "title": "À propos de Nguyen Le Phong : Lead Zalo PC, cofondateur BonBon",
       "description": "D'une agence de sous-traitance à la synchro multi-appareils de Zalo PC et à la cofondation de BonBon Mobility, avec les habitudes que j'apporte à chaque équipe."
+    },
+    "blog": {
+      "title": "Blog : architecture, IA et travail en équipe | Nguyen Le Phong",
+      "description": "Des articles concrets sur l'architecture logicielle, le développement avec l'IA et le travail en équipe, par un Lead Software Engineer chez Zalo PC."
+    },
+    "notes": {
+      "title": "Notes : travail, apprentissage et vie | Nguyen Le Phong",
+      "description": "Des notes courtes sur la carrière, les livres, l'argent et les décisions du quotidien, par un Lead Software Engineer chez Zalo PC. La technique est sur le blog."
     },
     "gallery": {
       "title": "Galerie : certificats, prix et projets | Nguyen Le Phong",
@@ -407,7 +443,10 @@
       "partial": "Le mode hors ligne n’est encore mis en cache qu’en partie. Laissez cette langue en ligne un peu plus longtemps.",
       "offlineReady": "Vous êtes hors ligne, mais les pages et articles enregistrés restent lisibles.",
       "offlinePartial": "Vous êtes hors ligne. Certaines pages devront peut-être être ouvertes une fois en ligne avant d’être enregistrées.",
-      "dismiss": "Masquer l’avis hors ligne"
+      "dismiss": "Masquer l’avis hors ligne",
+      "updateReady": "Une nouvelle version du site est prête.",
+      "reload": "Recharger",
+      "dismissUpdate": "Masquer l’avis de mise à jour"
     },
     "page": {
       "eyebrow": "Connexion perdue",
@@ -435,7 +474,7 @@
       "all": "Tout",
       "tabsLabel": "Filtrer les photos par groupe",
       "captions": {
-        "wash3000DemoDay": "BonBon au Demo Day Wash3000 de Tasco Foundry, l'une des 10 équipes retenues parmi environ 100 candidatures.",
+        "wash3000DemoDay": "Demo Day Wash3000 de Tasco Foundry. Parmi environ 100 candidatures, BonBon est entré dans le top 10, puis a remporté le programme.",
         "bonbonPreSeed": "Le tour pre-seed de 500 000 $ de BonBon Mobility, mené par Tasco et co-investi par GenAI Fund, annoncé le 21 septembre 2026.",
         "bonbonTeam": "Les cofondateurs de BonBon Mobility : Nguyen Chi Dung, Vu Duy Hung et moi.",
         "bestRookie": "Best Rookie of the Year, Splus Software, 2019.",
@@ -450,9 +489,9 @@
         "uprace323": "Certificat UpRace pour 323 km.",
         "penangHill": "Randonnée à Penang Hill, en Malaisie, 11 km.",
         "deskWorking": "À mon bureau, en train de coder.",
-        "essay": "Soutenance du mémoire de fin d'études à la faculté d'informatique de l'université Nong Lam.",
-        "teamEssay": "Le drone présenté lors de la soutenance.",
-        "drone": "Le drone sur un établi de labo : châssis, moteurs et carte de contrôle.",
+        "essay": "Soutenance de mon mémoire de fin d'études, un projet de drone, à la faculté d'informatique de l'université Nong Lam.",
+        "teamEssay": "Le drone du mémoire, présenté lors de la soutenance.",
+        "drone": "Le drone du mémoire en cours de montage sur un établi de labo : châssis, moteurs et carte de contrôle.",
         "chessProject": "Échecs chinois avec IA, un jeu que j'ai créé à l'université Nong Lam.",
         "watProject": "WAT, un projet client chez Splus Software, 2019."
       },
@@ -632,8 +671,8 @@
     "action": "Lire en {language}"
   },
   "SiteIndex": {
-    "metaTitle": "Plan du site : tous les articles et notes",
-    "metaDescription": "Liste simple de tous les articles de blog, notes, séries et pages d’archive du site, regroupés par thème pour que tout soit à un lien.",
+    "metaTitle": "Plan du site : profil, articles et notes",
+    "metaDescription": "Toutes les pages du site dans une seule liste : le profil et le CV d’abord, puis chaque article de blog, note, série et page d’archive, par thème.",
     "eyebrow": "Index du site",
     "title": "Plan du site",
     "intro": "Tous les articles et notes du site, regroupés par thème. Parcourez la liste ou allez directement à ce que vous vous souvenez avoir lu.",
@@ -659,7 +698,8 @@
     "pageLabel": "Page {page}",
     "feedsHeading": "Flux",
     "feedBlog": "Flux RSS du blog",
-    "feedNotes": "Flux RSS des notes"
+    "feedNotes": "Flux RSS des notes",
+    "backToTop": "Retour en haut"
   },
   "Feeds": {
     "blogTitle": "Nguyen Le Phong : Blog",
