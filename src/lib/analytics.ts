@@ -96,6 +96,8 @@ export type AnalyticsEvent =
   | 'content_hub_archive_click'
   | 'content_hub_article_click'
   | 'content_hub_page_change'
+  // Blog and Notes index intros linking to each other
+  | 'content_cross_link_click'
   // Blog articles
   | 'blog_article_view'
   | 'blog_scroll_depth'
@@ -105,6 +107,8 @@ export type AnalyticsEvent =
   | 'blog_reaction'
   | 'blog_nav_jump'
   | 'blog_related_click'
+  // Byline and author box on blog posts and notes (target: byline | cv | resume | email)
+  | 'blog_author_click'
   // Notes articles
   | 'notes_view'
   | 'notes_article_view'

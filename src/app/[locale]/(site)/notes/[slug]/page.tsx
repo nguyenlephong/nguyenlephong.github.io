@@ -41,6 +41,10 @@ import ContentHubReadingTracker from "@/components/blog/ContentHubReadingTracker
 import { EngagementProvider } from "@/components/blog/EngagementProvider";
 import LocalizedArticleFallback from "@/components/content/LocalizedArticleFallback";
 import ArticleRelatedLinks from "@/components/content/ArticleRelatedLinks";
+import {
+  ArticleAuthorBox,
+  ArticleByline
+} from "@/components/content/ArticleAuthor";
 import "../notes.css";
 import "../../blog/blog.css";
 
@@ -457,6 +461,12 @@ export default async function NotePage({ params }: Props) {
                 <h1 className="blog-article__title">{note.title}</h1>
                 <p className="blog-article__summary">{note.summary}</p>
                 <div className="blog-article__meta">
+                  {authorIdentity?.profileUrl && (
+                    <>
+                      <ArticleByline locale={locale} name={authorIdentity.name} />
+                      <span aria-hidden="true">·</span>
+                    </>
+                  )}
                   <time dateTime={note.date}>
                     {formatDate(note.date, locale)}
                   </time>
@@ -515,6 +525,10 @@ export default async function NotePage({ params }: Props) {
                   clap: t("engagement.reactions.clap")
                 }}
               />
+
+              {authorIdentity?.profileUrl && (
+                <ArticleAuthorBox locale={locale} name={authorIdentity.name} />
+              )}
             </div>
           </div>
 

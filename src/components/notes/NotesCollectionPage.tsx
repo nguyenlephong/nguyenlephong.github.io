@@ -76,7 +76,7 @@ export async function notesCollectionMetadata(
   const title = collectionPageTitle(page, t('title'), t('eyebrow'), pageLabel)
   const description =
     page === 1
-      ? t('intro')
+      ? t.markup('intro', { blog: (chunks) => chunks })
       : t('controls.pagination.pageDescription', {
           page,
           total: pageData.totalPages,
@@ -153,7 +153,7 @@ export default async function NotesCollectionPage({
     '@type': 'CollectionPage',
     '@id': `${canonical}#notes`,
     name: `${t('title')} — ${t('eyebrow')}`,
-    description: t('intro'),
+    description: t.markup('intro', { blog: (chunks) => chunks }),
     url: canonical,
     inLanguage: archiveLocale,
     isPartOf: { '@type': 'WebSite', '@id': `${SITE_URL}/#website` },
@@ -184,7 +184,12 @@ export default async function NotesCollectionPage({
   }
 
   return (
-    <main className="notes-archive notes-home">
+    // Page 1 exists in every locale; deeper pages only where the corpus reaches.
+    <main
+      className="notes-archive notes-home"
+      data-content-locales={page > 1 ? listNotesArchiveLocales(page).join(' ') : undefined}
+      data-content-locale-fallback={page > 1 ? '/notes' : undefined}
+    >
       {page === 1 && hasCuratedHubs ? (
         <ContentHubPageTracker
           page="notes"
@@ -212,7 +217,15 @@ export default async function NotesCollectionPage({
       <header className="notes-archive__title-page">
         <p className="notes-archive__eyebrow">{t('eyebrow')}</p>
         <h1 className="notes-archive__title">{t('title')}</h1>
-        <p className="notes-archive__subtitle">{t('intro')}</p>
+        <p className="notes-archive__subtitle">
+          {t.rich('intro', {
+            blog: (chunks) => (
+              <a href={`/${locale}/blog`} className="content-cross-link" data-cross-link data-source="notes_intro">
+                {chunks}
+              </a>
+            ),
+          })}
+        </p>
         {page > 1 && <p className="content-page-label">{pageLabel}</p>}
         <div className="notes-archive__rule" aria-hidden="true" />
         <dl className="notes-archive__stats">

@@ -23,6 +23,7 @@ import {
   listPosts,
   loadPost,
 } from '@/lib/blog/data'
+import { resolveNoteAuthorIdentity } from '@/lib/notes/authorship'
 import { getLegacyBlogLocaleFallback } from '@/lib/blog/legacy-locale-fallbacks'
 import { getRelatedPosts } from '@/lib/blog/related'
 import { getCategoryNeighbors } from '@/lib/blog/neighbors'
@@ -38,6 +39,7 @@ import BlogViewCount from '@/components/blog/BlogViewCount'
 import BlogShareDock from '@/components/blog/BlogShareDock'
 import BlogReactions from '@/components/blog/BlogReactions'
 import ArticleRelatedLinks from '@/components/content/ArticleRelatedLinks'
+import { ArticleAuthorBox, ArticleByline } from '@/components/content/ArticleAuthor'
 import LocalizedArticleFallback from '@/components/content/LocalizedArticleFallback'
 import '../../blog.css'
 
@@ -182,6 +184,8 @@ export default async function BlogPostPage({ params }: Props) {
     : null
   const canonical = canonicalFor(canonicalLocale, `/blog/${category}/${slug}`)
   const imageUrl = blogPostOgImageUrl(slug)
+  // Only the site owner links to the CV; a guest author keeps a plain name.
+  const isSiteOwner = Boolean(resolveNoteAuthorIdentity(post.author)?.profileUrl)
   const description =
     post.seoDescription ?? (post.summary || buildArticleDescription(post.html))
   const localePosts = listPosts(locale)
@@ -449,7 +453,11 @@ export default async function BlogPostPage({ params }: Props) {
                 <h1 className="blog-article__title">{post.title}</h1>
                 <p className="blog-article__summary">{post.summary}</p>
                 <div className="blog-article__meta">
-                  <span>{t('writtenBy', { author: post.author })}</span>
+                  {isSiteOwner ? (
+                    <ArticleByline locale={locale} name={post.author} />
+                  ) : (
+                    <span>{post.author}</span>
+                  )}
                   <span aria-hidden="true">·</span>
                   <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
                   <span aria-hidden="true">·</span>
@@ -499,6 +507,10 @@ export default async function BlogPostPage({ params }: Props) {
                     ))}
                   </dl>
                 </section>
+              )}
+
+              {isSiteOwner && (
+                <ArticleAuthorBox locale={locale} name={post.author} />
               )}
             </div>
           </div>

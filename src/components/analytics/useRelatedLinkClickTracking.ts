@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { track } from '@/lib/analytics'
+import { authorClickProperties } from '@/components/analytics/article-author-click'
 
 type RelatedKind = 'related' | 'prev' | 'next'
 
@@ -12,6 +13,8 @@ type RelatedKind = 'related' | 'prev' | 'next'
  *
  * Blog keeps its original `blog_related_click` contract (and properties); notes
  * emit `notes_related_click`. `link_kind` separates related cards from prev/next.
+ * Byline and author-box links (`data-author-link`) emit one `blog_author_click`
+ * on both surfaces.
  */
 export function useRelatedLinkClickTracking(
   surface: 'blog' | 'notes',
@@ -25,6 +28,19 @@ export function useRelatedLinkClickTracking(
     const onClick = (event: MouseEvent): void => {
       const target = event.target
       if (!(target instanceof Element)) return
+
+      const authorLink = target.closest<HTMLAnchorElement>('a[data-author-link]')
+      if (authorLink) {
+        const properties = authorClickProperties(
+          surface,
+          sourceCategory,
+          sourceSlug,
+          authorLink.dataset['authorLink'],
+        )
+        if (properties) track('blog_author_click', { ...properties })
+        return
+      }
+
       const link = target.closest<HTMLAnchorElement>('a[data-related-link]')
       if (!link) return
 

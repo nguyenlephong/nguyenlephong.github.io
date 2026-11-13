@@ -62,7 +62,7 @@ export async function blogCollectionMetadata(
   const title = collectionPageTitle(page, t('title'), t('eyebrow'), pageLabel)
   const description =
     page === 1
-      ? t('intro')
+      ? t.markup('intro', { notes: (chunks) => chunks })
       : t('controls.pagination.pageDescription', {
           page,
           total: pageData.totalPages,
@@ -167,7 +167,12 @@ export default async function BlogCollectionPage({
   }
 
   return (
-    <main className="blog-home">
+    // Page 1 exists in every locale; deeper pages only where the corpus reaches.
+    <main
+      className="blog-home"
+      data-content-locales={page > 1 ? listBlogArchiveLocales(page).join(' ') : undefined}
+      data-content-locale-fallback={page > 1 ? '/blog' : undefined}
+    >
       {page === 1 && hasCuratedHubs ? (
         <ContentHubPageTracker
           page="blog"
@@ -191,7 +196,15 @@ export default async function BlogCollectionPage({
       <header className="blog-home__head">
         <p className="blog-home__eyebrow">{t('eyebrow')}</p>
         <h1 className="blog-home__title">{t('title')}</h1>
-        <p className="blog-home__intro">{t('intro')}</p>
+        <p className="blog-home__intro">
+          {t.rich('intro', {
+            notes: (chunks) => (
+              <a href={`/${locale}/notes`} className="content-cross-link" data-cross-link data-source="blog_intro">
+                {chunks}
+              </a>
+            ),
+          })}
+        </p>
       </header>
 
       {page === 1 && (

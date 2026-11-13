@@ -4,37 +4,37 @@
       "topic": "mua-nha",
       "title": "Home Buying",
       "intro": "Practical notes on buying a home: money, legal checks, location, process, build quality, and decisions that are easier to make calmly.",
-      "order": 1
+      "order": 6
     },
     {
       "topic": "tiet-kiem",
       "title": "Personal Finance & Saving",
       "intro": "How to manage personal cash flow, keep more money available, and build healthy financial habits for everyday working life.",
-      "order": 2
+      "order": 5
     },
     {
       "topic": "su-nghiep",
       "title": "Career & Growth",
       "intro": "Owning a career path with clearer skills, market value, income negotiation, and sustainable self-development.",
-      "order": 3
+      "order": 1
     },
     {
       "topic": "sach",
       "title": "Book Notes",
       "intro": "Reading notes and reflections from books, translated into practical ideas for work, study, and personal growth.",
-      "order": 4
+      "order": 2
     },
     {
       "topic": "goc-nhin",
       "title": "Perspectives & Reflections",
       "intro": "Personal reflections on life, work, and the questions that do not have tidy answers.",
-      "order": 5
+      "order": 3
     },
     {
       "topic": "thoughts",
       "title": "Thought Garden",
       "intro": "Short, living notes—small observations and half-formed ideas from work and life, written down before they slip away. They grow a little every time I return to them.",
-      "order": 6
+      "order": 4
     }
   ],
   "topics": [

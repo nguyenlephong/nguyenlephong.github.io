@@ -58,6 +58,13 @@ test("posthog initialization uses the current sdk host contract", async () => {
   assert.match(bootstrap, /autocapture:\s*false/);
   assert.match(bootstrap, /disable_session_recording:\s*true/);
   assert.match(bootstrap, /respect_dnt:\s*true/);
+  // MEP-66: no /flags call, no surveys.js, no cookies or storage, no person profiles.
+  assert.match(bootstrap, /disable_surveys:\s*true/);
+  assert.match(bootstrap, /advanced_disable_flags:\s*true/);
+  assert.match(bootstrap, /cookieless_mode:\s*'always'/);
+  assert.match(bootstrap, /person_profiles:\s*'never'/);
+  assert.match(bootstrap, /persistence:\s*'memory'/);
+  assert.doesNotMatch(bootstrap, /localStorage\+cookie/);
   assert.match(bootstrap, /before_send:/);
   assert.match(
     bootstrap,
@@ -746,4 +753,23 @@ test("Studio emits one initial-location route event and ignores same-route histo
     adminShell,
     /routeOpenDeduperRef\.current\.isHistoryTransition\(currentRoute, nextRoute\)/
   );
+});
+
+// MEP-25, MEP-27, MEP-28: site chrome reuses the existing event names.
+test("site chrome tracks nav targets, locale source and footer contacts", async () => {
+  const [header, footer, switcher] = await Promise.all([
+    readFile("src/components/AppHeader.tsx", "utf8"),
+    readFile("src/components/AppFooter.tsx", "utf8"),
+    readFile("src/components/LocaleSwitcher.tsx", "utf8")
+  ]);
+  for (const target of ["experience", "projects"]) {
+    assert.match(header, new RegExp(`trackId: "${target}"`), target);
+  }
+  assert.match(header, /track\("cv_nav_click", \{ target: item\.trackId \}\)/);
+  assert.match(switcher, /track\('locale_change', \{ from: currentLocale, to: nextLocale, source \}\)/);
+  assert.match(header, /source="header"/);
+  assert.match(footer, /track\('cv_nav_click', \{ target: 'apps_footer' \}\)/);
+  assert.match(footer, /track\('cv_resume_download', \{ source: 'footer' \}\)/);
+  assert.match(footer, /track\('cv_contact_click', \{ channel: 'email', source: 'footer' \}\)/);
+  assert.match(footer, /track\('cv_social_click', \{ platform, source: 'footer' \}\)/);
 });

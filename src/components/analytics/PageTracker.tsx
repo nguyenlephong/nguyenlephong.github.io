@@ -148,7 +148,25 @@ export default function PageTracker({
       )
     })
 
+    // Static `a[data-cross-link]` links (Blog and Notes intros) need no client component of their own.
+    const onCrossLinkClick = (event: MouseEvent): void => {
+      const target = event.target
+      if (!(target instanceof Element)) return
+      const link = target.closest<HTMLAnchorElement>('a[data-cross-link]')
+      if (!link) return
+      track(
+        'content_cross_link_click',
+        {
+          page_type: page,
+          source: link.dataset['source'] ?? null,
+          destination: link.pathname,
+        },
+        trackOptions,
+      )
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true })
+    document.addEventListener('click', onCrossLinkClick)
     document.addEventListener('visibilitychange', onVisibility)
     window.addEventListener('pagehide', reportTime)
     window.addEventListener('beforeunload', reportTime)
@@ -156,6 +174,7 @@ export default function PageTracker({
     return () => {
       reportTime()
       window.removeEventListener('scroll', onScroll)
+      document.removeEventListener('click', onCrossLinkClick)
       document.removeEventListener('visibilitychange', onVisibility)
       window.removeEventListener('pagehide', reportTime)
       window.removeEventListener('beforeunload', reportTime)

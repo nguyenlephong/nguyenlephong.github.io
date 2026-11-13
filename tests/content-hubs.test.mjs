@@ -83,13 +83,14 @@ const BLOG_IDS = [
   "leadership-and-management"
 ];
 
+// Hub catalog display order: Career leads (MEP-46).
 const NOTE_HUB_IDS = [
-  "mua-nha",
-  "tiet-kiem",
   "su-nghiep",
   "sach",
   "goc-nhin",
-  "thoughts"
+  "thoughts",
+  "tiet-kiem",
+  "mua-nha"
 ];
 
 function readJson(relativePath) {

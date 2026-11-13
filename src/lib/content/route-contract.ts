@@ -23,13 +23,14 @@ export const BLOG_SERIES_IDS = [
   'leadership-and-management',
 ] as const
 
+// Display order of the Notes hub catalog (MEP-46: Career leads, finance and home buying last).
 export const NOTE_HUB_TOPIC_IDS = [
-  'mua-nha',
-  'tiet-kiem',
   'su-nghiep',
   'sach',
   'goc-nhin',
   'thoughts',
+  'tiet-kiem',
+  'mua-nha',
 ] as const
 
 export const CONTENT_HUB_LOCALES = ['en', 'vi'] as const
