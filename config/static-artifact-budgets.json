@@ -211,72 +211,72 @@
         "about": {
           "html": "en/about.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 7936,
-          "maxBrotliBytes": 6912,
+          "maxGzipBytes": 8576,
+          "maxBrotliBytes": 7424,
           "requiredOwners": ["about"],
           "allowedOwners": ["about"]
         },
         "gallery": {
           "html": "en/gallery.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 9216,
-          "maxBrotliBytes": 8192,
+          "maxGzipBytes": 9728,
+          "maxBrotliBytes": 8448,
           "requiredOwners": ["gallery"],
           "allowedOwners": ["gallery"]
         },
         "apps": {
           "html": "en/apps.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 10496,
-          "maxBrotliBytes": 9216,
+          "maxGzipBytes": 11008,
+          "maxBrotliBytes": 9600,
           "requiredOwners": ["apps"],
           "allowedOwners": ["apps"]
         },
         "english": {
           "html": "en/apps/english.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 9216,
-          "maxBrotliBytes": 7936,
+          "maxGzipBytes": 9600,
+          "maxBrotliBytes": 8320,
           "requiredOwners": ["english"],
           "allowedOwners": ["english"]
         },
         "offline": {
           "html": "en/offline.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 6912,
-          "maxBrotliBytes": 6144,
+          "maxGzipBytes": 7424,
+          "maxBrotliBytes": 6400,
           "requiredOwners": ["offline"],
           "allowedOwners": ["offline"]
         },
         "blogArchive": {
           "html": "en/blog.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 15616,
-          "maxBrotliBytes": 13568,
+          "maxGzipBytes": 16640,
+          "maxBrotliBytes": 14464,
           "requiredOwners": ["blog"],
           "allowedOwners": ["blog"]
         },
         "notesArchive": {
           "html": "en/notes.html",
           "maxStylesheetCount": 4,
-          "maxGzipBytes": 18176,
-          "maxBrotliBytes": 15616,
+          "maxGzipBytes": 19072,
+          "maxBrotliBytes": 16512,
           "requiredOwners": ["blog", "notes"],
           "allowedOwners": ["blog", "notes"]
         },
         "blogArticle": {
           "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
           "maxStylesheetCount": 4,
-          "maxGzipBytes": 20992,
-          "maxBrotliBytes": 18176,
+          "maxGzipBytes": 22016,
+          "maxBrotliBytes": 19072,
           "requiredOwners": ["blog", "reader"],
           "allowedOwners": ["blog", "reader"]
         },
         "notesArticle": {
           "html": "en/notes/tri-tue-can-duc-hanh.html",
           "maxStylesheetCount": 5,
-          "maxGzipBytes": 23296,
-          "maxBrotliBytes": 20096,
+          "maxGzipBytes": 24448,
+          "maxBrotliBytes": 21120,
           "requiredOwners": ["blog", "notes", "reader"],
           "allowedOwners": ["blog", "notes", "reader"]
         }

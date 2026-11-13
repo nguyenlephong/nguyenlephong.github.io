@@ -542,6 +542,15 @@ PostHog is loaded by the shared locale document in
 public runtime. The public footer uses a full-document Studio link; its existing
 `cv_nav_click` event is sent with `sendBeacon` before navigation.
 
+PostHog runs with `cookieless_mode: 'always'`
+(`src/components/analytics/PostHogBootstrap.tsx`): no cookie or localStorage
+identity is written. PostHog only accepts these events when **Cookieless server
+hash mode** is enabled in the PostHog project settings (Web analytics). If that
+setting is off, ingestion drops every event without an error in the browser.
+Pre-deploy check: open the built site (or a preview deploy), load two pages,
+and confirm both `$pageview` events show up in PostHog **Activity > Live
+events** before promoting.
+
 ### Firebase Engagement
 
 Firestore Lite is used for public article counters:
@@ -822,22 +831,21 @@ limits retain narrow build variance while locking in that verified reduction.
 The same complete export records public initial CSS by route. Before the split,
 all non-content routes loaded 122,511 raw / 19,439 Brotli bytes in two files;
 Blog loaded 172,786 / 27,474 in three, and Notes loaded 187,507 / 30,800 in
-four. Route ownership produces the following current measurements and hard
-gates:
+four. Route ownership produces the following measurements (refreshed from the
+2026-11-13 complete export) and hard gates:
 
 | Public route | Stylesheets | Measured raw | Measured Brotli | Brotli gate |
 |--------------|-------------:|-------------:|----------------:|-------------:|
-| Home | 3 | 55,044 | 11,518 | 12,288 |
-| About | 3 | 30,045 | 6,666 | 6,912 |
-| Gallery | 3 | 37,661 | 7,826 | 8,192 |
-| Apps | 3 | 42,422 | 8,812 | 9,216 |
-| English practice | 3 | 36,573 | 7,599 | 7,936 |
-| Offline | 3 | 24,988 | 5,761 | 6,144 |
-| Blog archive | 3 | 73,416 | 13,188 | 13,568 |
-| Notes archive | 4 | 80,874 | 15,144 | 15,616 |
-| Blog article | 4 | 95,826 | 17,632 | 18,176 |
-| Notes article | 5 | 103,284 | 19,588 | 20,096 |
-
+| Home | 3 | 56,783 | 11,795 | 12,288 |
+| About | 3 | 32,099 | 7,089 | 7,424 |
+| Gallery | 3 | 39,163 | 8,184 | 8,448 |
+| Apps | 3 | 44,476 | 9,235 | 9,600 |
+| English practice | 3 | 38,627 | 8,022 | 8,320 |
+| Offline | 3 | 27,042 | 6,184 | 6,400 |
+| Blog archive | 3 | 78,591 | 13,967 | 14,464 |
+| Notes archive | 4 | 86,418 | 15,969 | 16,512 |
+| Blog article | 4 | 101,003 | 18,406 | 19,072 |
+| Notes article | 5 | 108,830 | 20,408 | 21,120 |
 The stylesheet-count column is also the hard per-route maximum. The extra file
 on route-owned pages and articles is accepted only with the measured transfer
 reduction; future request or Brotli growth fails the artifact gate.

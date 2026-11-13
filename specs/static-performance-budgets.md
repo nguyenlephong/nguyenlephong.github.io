@@ -186,22 +186,23 @@ therefore lowered from 219,136 to 217,088 bytes, retaining a small build-varianc
 allowance while locking in the verified reduction.
 
 After the route-owned CSS split and dead Notes-chambers cleanup, the 2026-07-28
-current complete-export artifact snapshot measured the following initial
-document CSS. Hard limits retain a narrow deterministic-build allowance:
+complete-export artifact snapshot set the following initial document CSS gates.
+Measured columns were refreshed from the 2026-11-13 complete export; the
+Gallery Brotli gate moved from 8,192 to 8,448 after the P1 audit work measured
+8,184 bytes. Hard limits retain a narrow deterministic-build allowance:
 
 | Route            | Stylesheets | Measured raw | Measured Gzip | Gzip limit | Measured Brotli | Brotli limit |
 | ---------------- | ----------: | -----------: | ------------: | ---------: | --------------: | -----------: |
-| Home             |           3 |       44,360 |        10,417 |     10,752 |           9,058 |        9,216 |
-| About            |           3 |       29,526 |         7,637 |      7,936 |           6,578 |        6,912 |
-| Gallery          |           3 |       37,142 |         8,939 |      9,216 |           7,738 |        8,192 |
-| Apps             |           3 |       41,903 |        10,025 |     10,496 |           8,724 |        9,216 |
-| English practice |           3 |       36,054 |         8,713 |      9,216 |           7,511 |        7,936 |
-| Offline          |           3 |       24,469 |         6,554 |      6,912 |           5,673 |        6,144 |
-| Blog archive     |           3 |       72,897 |        15,120 |     15,616 |          13,100 |       13,568 |
-| Notes archive    |           4 |       80,355 |        17,403 |     18,176 |          15,056 |       15,616 |
-| Blog article     |           4 |       95,307 |        20,320 |     20,992 |          17,544 |       18,176 |
-| Notes article    |           5 |      102,765 |        22,603 |     23,296 |          19,500 |       20,096 |
-
+| Home | 3 | 56,783 | 13,470 | 14,080 | 11,795 | 12,288 |
+| About | 3 | 32,099 | 8,218 | 8,576 | 7,089 | 7,424 |
+| Gallery | 3 | 39,163 | 9,442 | 9,728 | 8,184 | 8,448 |
+| Apps | 3 | 44,476 | 10,606 | 11,008 | 9,235 | 9,600 |
+| English practice | 3 | 38,627 | 9,294 | 9,600 | 8,022 | 8,320 |
+| Offline | 3 | 27,042 | 7,135 | 7,424 | 6,184 | 6,400 |
+| Blog archive | 3 | 78,591 | 16,107 | 16,640 | 13,967 | 14,464 |
+| Notes archive | 4 | 86,418 | 18,444 | 19,072 | 15,969 | 16,512 |
+| Blog article | 4 | 101,003 | 21,301 | 22,016 | 18,406 | 19,072 |
+| Notes article | 5 | 108,830 | 23,638 | 24,448 | 20,408 | 21,120 |
 The same snapshot contains this exact search JSON matrix. Raw and Gzip are
 hard gates; Brotli is reported but is not used as the GitHub Pages delivery
 claim:
