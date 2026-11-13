@@ -40,11 +40,20 @@ function buildIco(pngBuffers, sizes) {
   return Buffer.concat([dir, ...pngBuffers])
 }
 
+function resized(srcBuf, size) {
+  return sharp(srcBuf, { density: 600 }).resize(size, size, { fit: 'cover', kernel: sharp.kernel.lanczos3 })
+}
+
 async function makePng(srcBuf, size) {
-  return sharp(srcBuf, { density: 600 })
-    .resize(size, size, { fit: 'cover', kernel: sharp.kernel.lanczos3 })
+  return resized(srcBuf, size)
     .png({ compressionLevel: 9, adaptiveFiltering: true, palette: false })
     .toBuffer()
+}
+
+// The install shell downloads icon.png and apple-icon.png on every first visit;
+// a palette PNG is about a third of the size and looks the same at 100%.
+async function makePalettePng(srcBuf, size) {
+  return resized(srcBuf, size).png({ palette: true, quality: 90, effort: 10, compressionLevel: 9 }).toBuffer()
 }
 
 async function main() {
@@ -62,12 +71,12 @@ async function main() {
 
   // Next.js App Router picks this up automatically and serves a sharp
   // PNG link in <head> alongside .ico. 512 = crisp on any device.
-  const iconPng = await makePng(src, 512)
+  const iconPng = await makePalettePng(src, 512)
   writeFileSync(join(APP, 'icon.png'), iconPng)
   console.log(`✓ src/app/icon.png (512, ${iconPng.length} bytes)`)
 
   // Apple touch icon — spec recommends 180x180.
-  const applePng = await makePng(src, 180)
+  const applePng = await makePalettePng(src, 180)
   writeFileSync(join(APP, 'apple-icon.png'), applePng)
   console.log(`✓ src/app/apple-icon.png (180, ${applePng.length} bytes)`)
 
@@ -104,6 +113,11 @@ async function main() {
     writeFileSync(join(FAV_DIR, name), out)
   }
   console.log(`✓ public/favicon/* (${pubSizes.length} variants)`)
+
+  // Header avatar: shown at 36px on every page, 72px covers DPR 2.
+  const avatar = await resized(src, 72).webp({ quality: 82 }).toBuffer()
+  writeFileSync(join(FAV_DIR, 'avatar-72x72.webp'), avatar)
+  console.log(`✓ public/favicon/avatar-72x72.webp (${avatar.length} bytes)`)
 }
 
 main().catch((err) => {

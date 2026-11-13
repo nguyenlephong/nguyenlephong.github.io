@@ -107,9 +107,17 @@ test('one postbuild inventory produces a minimal install shell and on-demand run
   assert.ok(shell.has('/index.html'))
   assert.ok(shell.has('/404.html'))
   assert.ok(shell.has('/_not-found.html'))
-  assert.ok(shell.has('/en/offline.html'))
   assert.ok(shell.has('/_next/static/chunks/shared.js'))
-  assert.ok(shell.has('/_next/static/chunks/offline.js'))
+  // Locale home and offline pages install only for the locale a visitor uses.
+  for (const locale of LOCALES) {
+    assert.equal(shell.has(`/${locale}.html`), false)
+    assert.equal(shell.has(`/${locale}/offline.html`), false)
+    assert.deepEqual(manifest.localeShells[locale], [...new Set(manifest.localeShells[locale])].sort())
+  }
+  const enShell = new Set(manifest.localeShells.en)
+  assert.ok(enShell.has('/en.html'))
+  assert.ok(enShell.has('/en/offline.html'))
+  assert.ok(enShell.has('/_next/static/chunks/offline.js'))
   assert.equal(shell.has('/_next/static/chunks/studio-reactflow.js'), false)
   assert.equal(shell.has('/_next/static/chunks/studio-recharts.js'), false)
   assert.ok(manifest.shared.runtimeAssets.includes('/_next/static/chunks/studio-reactflow.js'))

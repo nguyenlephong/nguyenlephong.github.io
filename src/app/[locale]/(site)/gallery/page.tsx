@@ -4,6 +4,8 @@ import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { gallery, GALLERY_GROUP_ORDER } from '@/content/gallery'
+import { responsiveSrcSet } from '@/lib/assets/responsive-images'
+import { mediaUrlResolver } from '@/lib/media/url-resolver'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import PageTracker from '@/components/analytics/PageTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
@@ -58,7 +60,11 @@ export default async function GalleryPage({ params }: Props) {
   const categories = GALLERY_GROUP_ORDER.map((id) => ({
     id,
     label: t(`categories.${id}`),
-    items: gallery[id],
+    // srcSet is resolved here so the variant manifest never ships to the client.
+    items: gallery[id].map((photo) => ({
+      ...photo,
+      srcSet: responsiveSrcSet(photo.src, mediaUrlResolver.baseUrl) ?? undefined,
+    })),
   }))
 
   const galleryLd = {

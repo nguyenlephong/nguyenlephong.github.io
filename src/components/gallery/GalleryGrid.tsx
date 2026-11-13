@@ -1,6 +1,5 @@
 'use client'
 import { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { LuArrowUpRight, LuExternalLink } from 'react-icons/lu'
@@ -19,6 +18,9 @@ type Props = {
 
 // Filter ids sent with `gallery_tab_click`: 'all' plus each group id, in page order.
 const GALLERY_FILTER_ALL = 'all'
+// Mirrors gallery.css: one column to 640px, two to 1040px, then three (the BonBon lead spans two).
+const CARD_SIZES = '(max-width: 640px) 100vw, (max-width: 1040px) 50vw, 400px'
+const LEAD_SIZES = '(max-width: 1040px) 100vw, 800px'
 
 export default function GalleryGrid({ categories }: Props) {
   const t = useTranslations('Pages.gallery')
@@ -78,6 +80,7 @@ export default function GalleryGrid({ categories }: Props) {
                   category={cat.id}
                   index={index}
                   eager={photo.src === firstSrc}
+                  lead={cat.id === 'bonbon' && index === 0}
                 />
               ))}
             </div>
@@ -93,11 +96,13 @@ function PhotoCard({
   category,
   index,
   eager,
+  lead,
 }: {
   photo: GalleryPhoto
   category: string
   index: number
   eager: boolean
+  lead: boolean
 }) {
   const t = useTranslations('Pages.gallery')
   const href = photo.refs ?? photo.src
@@ -126,15 +131,19 @@ function PhotoCard({
     >
       <figure className="gallery-figure">
         <div className="gallery-frame">
-          <Image
+          {/* A plain img: with images.unoptimized, next/image drops any srcSet. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={photo.src}
+            srcSet={photo.srcSet}
+            sizes={photo.srcSet ? (lead ? LEAD_SIZES : CARD_SIZES) : undefined}
             alt={photo.alt}
             width={photo.width}
             height={photo.height}
             className="gallery-image"
             loading={eager ? 'eager' : 'lazy'}
             fetchPriority={eager ? 'high' : 'auto'}
-            unoptimized
+            decoding="async"
           />
         </div>
         <figcaption className="gallery-caption">

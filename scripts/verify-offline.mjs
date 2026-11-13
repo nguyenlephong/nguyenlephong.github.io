@@ -4,6 +4,7 @@ import { createServer } from 'node:http'
 import { promises as fs, statSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { measureOfflineShell } from './lib/offline-shell-budget.mjs'
 
 const ROOT = process.cwd()
 const OUT_DIR = path.join(ROOT, 'out')
@@ -82,6 +83,7 @@ function contentTypeFor(filePath) {
 
 async function startStaticServer() {
   let originOffline = false
+  const requestLog = []
   const server = createServer(async (req, res) => {
     if (originOffline) {
       req.socket.destroy()
@@ -113,11 +115,14 @@ async function startStaticServer() {
     }
 
     const body = await fs.readFile(filePath)
+    requestLog.push(req.url ?? '/')
     res.writeHead(200, {
       'Content-Type': contentTypeFor(filePath),
       'Content-Length': String(body.byteLength),
-      // Browser HTTP cache must not mask service-worker cache behavior.
-      'Cache-Control': 'no-store',
+      // Documents and data stay uncached so the HTTP cache cannot mask
+      // service-worker behavior. Static files get GitHub Pages' max-age, which
+      // is what lets the worker's install reuse what the page downloaded.
+      'Cache-Control': /\.(?:html|json|txt)$/.test(filePath) ? 'no-store' : 'max-age=600',
     })
 
     if (method === 'HEAD') {
@@ -135,6 +140,7 @@ async function startStaticServer() {
 
   return {
     server,
+    requestLog,
     setOriginOffline(value) {
       originOffline = value
     },
@@ -170,27 +176,34 @@ async function assertArtifacts() {
     'route runtime assets must be cached on demand instead of all being install-preloaded',
   )
 
-  const shellDocuments = [
-    'index.html',
-    '404.html',
-    '_not-found.html',
-    ...LOCALES.map((locale) => `${locale}.html`),
-    ...LOCALES.map((locale) => `${locale}/offline.html`),
-  ]
-  const referencedRuntimeAssets = new Set()
-  for (const relativePath of shellDocuments) {
-    const html = await fs.readFile(path.join(OUT_DIR, relativePath), 'utf8')
-    for (const match of html.matchAll(/\b(?:src|href)=["']([^"'<>]+)["']/gi)) {
-      const raw = match[1].replaceAll('&amp;', '&')
-      if (!raw.startsWith('/_next/')) continue
-      referencedRuntimeAssets.add(new URL(raw, 'https://artifact.invalid').pathname)
+  const runtimeAssetsReferencedBy = async (documents) => {
+    const referenced = new Set()
+    for (const relativePath of documents) {
+      const html = await fs.readFile(path.join(OUT_DIR, relativePath), 'utf8')
+      for (const match of html.matchAll(/\b(?:src|href)=["']([^"'<>]+)["']/gi)) {
+        const raw = match[1].replaceAll('&amp;', '&')
+        if (!raw.startsWith('/_next/')) continue
+        referenced.add(new URL(raw, 'https://artifact.invalid').pathname)
+      }
     }
+    return [...referenced].sort()
   }
   assert.deepEqual(
     shell.filter((asset) => asset.startsWith('/_next/')).sort(),
-    [...referencedRuntimeAssets].sort(),
-    'install shell must contain exactly the runtime assets referenced by home and fallback documents',
+    await runtimeAssetsReferencedBy(['index.html', '404.html', '_not-found.html']),
+    'shared install shell must contain exactly the runtime assets referenced by the root fallback documents',
   )
+  for (const locale of LOCALES) {
+    const localeShell = manifest.localeShells?.[locale] ?? []
+    assert.ok(localeShell.includes(`/${locale}.html`), `locale shell for ${locale} must include its home`)
+    assert.ok(localeShell.includes(`/${locale}/offline.html`), `locale shell for ${locale} must include its offline page`)
+    assert.equal(shell.includes(`/${locale}.html`), false, `${locale} home must install only for visitors of that locale`)
+    assert.deepEqual(
+      localeShell.filter((asset) => asset.startsWith('/_next/')).sort(),
+      await runtimeAssetsReferencedBy([`${locale}.html`, `${locale}/offline.html`]),
+      `locale shell for ${locale} must contain exactly the runtime assets its home and offline page reference`,
+    )
+  }
 
   const heavyweightChunks = { ReactFlow: [] }
   for (const asset of runtimeAssets.filter((value) => value.endsWith('.js'))) {
@@ -217,8 +230,8 @@ async function assertArtifacts() {
     swSource.includes('const CONTENT_CACHE = `${CONTENT_CACHE_PREFIX}${OFFLINE_VERSION}`;'),
     'content cache should be isolated by manifest version',
   )
-  assert.match(swSource, /key\.startsWith\(CONTENT_CACHE_PREFIX\) && key !== CONTENT_CACHE/)
-  assert.match(swSource, /key\.startsWith\(REMOTE_CACHE_PREFIX\) && key !== REMOTE_CACHE/)
+  assert.match(swSource, /keepVersions\.has\(key\.slice\(prefix\.length\)\)/)
+  assert.match(swSource, /installLocales\(manifest\)/)
   assert.match(swSource, /const REMOTE_CACHE = `\$\{REMOTE_CACHE_PREFIX\}\$\{OFFLINE_VERSION\}`/)
   assert.match(swSource, /isExplicitlyVersionedRemoteUrl/)
   assert.match(swSource, /networkFirst\(request, REMOTE_CACHE, url\.href\)/)
@@ -253,9 +266,26 @@ async function assertArtifacts() {
     `[verify-offline] install shell ${shell.length} files / ${(shellRawBytes / 1048576).toFixed(2)} MiB; ` +
       `${runtimeAssets.length} runtime assets owned on demand`,
   )
+
+  const budgets = JSON.parse(await fs.readFile(path.join(ROOT, 'config/static-artifact-budgets.json'), 'utf8'))
+  const offlineShellBudget = budgets.performance?.offlineShell
+  assert.ok(
+    Number.isInteger(offlineShellBudget?.maxGzipBytes) && typeof offlineShellBudget?.locale === 'string',
+    'config/static-artifact-budgets.json must define performance.offlineShell { locale, maxGzipBytes }',
+  )
+  const offlineShell = await measureOfflineShell(OUT_DIR, offlineShellBudget.locale)
+  console.log(
+    `[verify-offline] first-visit worker download for /${offlineShellBudget.locale}: ` +
+      `${(offlineShell.gzipBytes / 1024).toFixed(1)} KiB gzip (budget ${(offlineShellBudget.maxGzipBytes / 1024).toFixed(0)} KiB)`,
+  )
+  assert.ok(
+    offlineShell.gzipBytes <= offlineShellBudget.maxGzipBytes,
+    `offline shell ${offlineShell.gzipBytes} B gzip exceeds ${offlineShellBudget.maxGzipBytes} B: ` +
+      JSON.stringify(offlineShell.files.slice(0, 8)),
+  )
 }
 
-async function verifyBrowserFlow(setOriginOffline) {
+async function verifyBrowserFlow(setOriginOffline, requestLog = []) {
   const { chromium } = await import('playwright')
   const browser = await chromium.launch({ headless: true })
   const context = await browser.newContext()
@@ -490,6 +520,14 @@ async function verifyBrowserFlow(setOriginOffline) {
       { timeout: 30000 },
     )
 
+    // Wait for the warm of the current page, then check the first visit
+    // (page plus worker install) never downloaded the same URL twice.
+    await waitForCachedNavigation(startPath)
+    // The manifest is polled by this verifier; RSC prefetches belong to the router.
+    const firstVisitRequests = requestLog.filter((url) => url !== '/offline-manifest.json' && !url.includes('_rsc='))
+    const duplicateRequests = firstVisitRequests.filter((url, index) => firstVisitRequests.indexOf(url) !== index)
+    assert.deepEqual(duplicateRequests, [], 'first visit with the service worker must not fetch a same-origin URL twice')
+
     await page.reload({ waitUntil: 'domcontentloaded' })
     await page.waitForFunction(() => Boolean(navigator.serviceWorker.controller), {
       timeout: 30000,
@@ -723,9 +761,9 @@ async function main() {
   await fs.access(OUT_DIR)
   await assertArtifacts()
 
-  const { server, setOriginOffline } = await startStaticServer()
+  const { server, setOriginOffline, requestLog } = await startStaticServer()
   try {
-    await verifyBrowserFlow(setOriginOffline)
+    await verifyBrowserFlow(setOriginOffline, requestLog)
   } finally {
     await new Promise((resolve, reject) => {
       server.close((error) => {

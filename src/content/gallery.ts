@@ -13,6 +13,8 @@ export type GalleryPhoto = {
   height: number
   refs?: string
   fit?: "contain"
+  /** Published 480w/800w variants, filled in by the gallery page. */
+  srcSet?: string
 }
 
 export type GalleryGroupId = "bonbon" | "recognition" | "education" | "outside" | "earlier"
