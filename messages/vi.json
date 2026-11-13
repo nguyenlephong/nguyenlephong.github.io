@@ -29,10 +29,16 @@
     "notes": "Ghi chép"
   },
   "Footer": {
-    "tag": "Lead Software Engineer · Zalo PC",
+    "tag": "Lead Software Engineer tại Zalo PC · Đồng sáng lập BonBon Mobility",
     "copy": "© {year} Nguyễn Lê Phong.",
     "language": "Ngôn ngữ",
-    "sitemap": "Sơ đồ trang"
+    "sitemap": "Sơ đồ trang",
+    "email": "Email",
+    "photos": "Ảnh",
+    "sideProjects": "Dự án cá nhân",
+    "studioHint": "Studio: checklist và sơ đồ hệ thống",
+    "contactLabel": "CV và hồ sơ",
+    "siteLabel": "Các trang khác"
   },
   "Hero": {
     "news": "BonBon Mobility gọi vốn pre-seed 500.000 USD do Tasco dẫn dắt",
@@ -62,7 +68,6 @@
   },
   "Summary": {
     "mapTabsLabel": "Năng lực chính",
-    "lede": "Trước Zalo, tôi làm hơn một năm ở công ty outsource, gần bốn năm ở một startup CDP, rồi giữa hai lần làm ở Zalo thì dẫn một team delivery qua giai đoạn chuyển giao CTO. Sơ đồ dưới đây là sáu phần việc tôi chọn ra, mỗi phần vẽ rõ nó chạy thế nào.",
     "stackTitle": "Công nghệ tôi hay dùng",
     "pillars": {
       "crossDevice": {
@@ -220,11 +225,7 @@
       "outcome": "Kết quả",
       "evidence": "Kiểm chứng",
       "caseFile": "Xem hồ sơ dự án",
-      "indexTitle": "Dự án tiêu biểu",
-      "year": "Năm",
-      "project": "Dự án",
-      "role": "Vai trò",
-      "result": "Kết quả",
+      "moreTitle": "Sớm hơn và nhỏ hơn: một sản phẩm của riêng tôi, một khoá tôi đứng lớp.",
       "note": "Ghi chép của tôi về vòng gọi vốn"
     },
     "logiup": {
@@ -243,8 +244,7 @@
         "<b>6</b> runtime role theo least privilege và <b>31</b> API endpoint có type rõ ràng cho luồng hải quan.",
         "Tờ khai xuất lên UAT tháng 10/2026, kèm bộ phân loại chứng từ chạy theo rule."
       ],
-      "evidenceNote": "Repo private nên không có link công khai.",
-      "index": "Tách tenant tới tận token, một OIDC provider cho cả web lẫn Electron"
+      "evidenceNote": "Repo private nên không có link công khai."
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -261,18 +261,15 @@
         "BonBon thắng Tasco Foundry Wash3000: khoảng <b>100</b> hồ sơ, chọn ra 10 đội, 3 đội vào chung kết, 1 đội thắng (GenAI Fund, 09/2026).",
         "Vòng pre-seed <b>500.000 USD</b> do Tasco dẫn dắt, GenAI Fund cùng đầu tư (09/2026).",
         "<b>3 tháng</b> từ MVP đến pilot thực địa, đúng bằng thời gian chương trình Wash3000."
-      ],
-      "index": "Mini App trong VETC; thắng Wash3000, pre-seed 500.000 USD do Tasco dẫn dắt"
+      ]
     },
     "sat": {
       "name": "Digital SAT Math",
-      "role": "Sản phẩm riêng",
-      "index": "Lo từ đầu đến cuối: <b>10.000+</b> lượt truy cập và <b>3.000+</b> đăng ký trong hai tháng đầu."
+      "proof": "Tự làm và tự vận hành từ đầu đến cuối. Hai tháng đầu có <b>10.000+ lượt truy cập và 3.000+ đăng ký</b>."
     },
     "vac": {
       "name": "Vietnam Australia Center",
-      "role": "Giảng viên",
-      "index": "Dạy khoá front-end project cho <b>12 học viên</b>, từ yêu cầu đến app React chạy được."
+      "proof": "Dạy một khoá front-end theo dự án cho <b>12 học viên</b>, đi từ yêu cầu tới app React chạy được."
     }
   },
   "CTA": {
@@ -470,9 +467,9 @@
       "close": "Đóng"
     },
     "notes": {
-      "eyebrow": "Bách khoa cá nhân",
+      "eyebrow": "Chuyện nghề, chuyện đời",
       "title": "Ghi chép",
-      "intro": "Một kho lưu trữ riêng — nơi tôi cất giữ những gì đã học, đã trải và muốn nhớ. Những chiêm nghiệm về cuộc sống, công việc, và những câu hỏi không có lời đáp gọn gàng. Mời bạn đọc theo nhịp của riêng mình.",
+      "intro": "Những ghi chép ngắn hơn về nghề, về sách, chuyện tiền bạc và những quyết định thường ngày. Nếu bạn tìm bài kỹ thuật chuyên sâu thì nên bắt đầu từ <blog>Blog</blog>.",
       "stats": {
         "topics": "Chuyên mục",
         "articles": "Bài viết",
@@ -514,6 +511,7 @@
         "results": "{count, plural, =0 {Không có bài viết} other {# bài viết}}",
         "noResults": "Không có bài viết nào khớp với tìm kiếm của bạn.",
         "searchUnavailable": "Hiện chưa thể tải tìm kiếm. Bạn vẫn có thể tiếp tục đọc các trang bên dưới.",
+        "searching": "Đang tìm…",
         "pagination": {
           "label": "Trang ghi chép",
           "prev": "Trước",
@@ -550,6 +548,7 @@
         "results": "{count, plural, =0 {Không có bài viết} other {# bài viết}}",
         "noResults": "Không có bài viết nào khớp với tìm kiếm của bạn.",
         "searchUnavailable": "Hiện chưa thể tải tìm kiếm. Bạn vẫn có thể tiếp tục đọc các trang bên dưới.",
+        "searching": "Đang tìm…",
         "pagination": {
           "label": "Trang blog",
           "prev": "Trước",
@@ -561,7 +560,7 @@
       },
       "eyebrow": "Bài viết",
       "title": "Blog",
-      "intro": "Một góc đọc dễ vào về software architecture, source code, AI và cách team phần mềm làm việc. Mỗi bài đi từ tình huống thật, giải thích bằng ngôn ngữ gần gũi, giữ lại những thuật ngữ quan trọng để người mới không bị ngợp và người đi làm lâu vẫn tìm được một góc nhìn có thể áp dụng ngay.",
+      "intro": "Một góc đọc dễ vào về software architecture, source code, AI và cách team phần mềm làm việc. Mỗi bài đi từ tình huống thật, giải thích bằng ngôn ngữ gần gũi, giữ lại những thuật ngữ quan trọng để người mới không bị ngợp và người đi làm lâu vẫn tìm được một góc nhìn có thể áp dụng ngay. Chuyện nghề và chuyện đời tôi để riêng bên <notes>Ghi chép</notes>.",
       "categoriesHeading": "Chọn mạch đọc bạn quan tâm",
       "latestHeading": "Bài mới để đọc tiếp",
       "empty": "Chưa có bài viết nào — bài đầu tiên sắp ra mắt.",
@@ -569,7 +568,6 @@
       "backToCategory": "Về {category}",
       "readingTime": "{minutes} phút đọc",
       "articleCount": "{count, plural, other {# bài viết}}",
-      "writtenBy": "Bởi {author}",
       "onThisPage": "Trong bài này",
       "readerTools": {
         "label": "Công cụ đọc",
@@ -760,6 +758,11 @@
     "font": "Đổi font đọc",
     "background": "Đổi nền đọc",
     "language": "Đổi ngôn ngữ"
+  },
+  "Author": {
+    "byline": "<author>{name}</author>, {role}",
+    "heading": "Người viết",
+    "cvLink": "Xem kinh nghiệm và CV"
   },
   "ArticleRelated": {
     "notesHeading": "Ghi chép liên quan",

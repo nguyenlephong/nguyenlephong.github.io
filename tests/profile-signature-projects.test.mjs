@@ -14,16 +14,25 @@ test('every locale carries the LogiUP and BonBon case files with the same facts'
     assert.ok(Sections.projectsTitle.trim(), locale);
     for (const key of ['logiup', 'bonbon']) {
       const c = Projects[key];
-      for (const field of ['name', 'kind', 'role', 'period', 'context', 'index']) {
+      for (const field of ['name', 'kind', 'role', 'period', 'context']) {
         assert.ok(c[field]?.trim(), `${locale} ${key}.${field}`);
       }
       assert.equal(c.decisions.length, 3, `${locale} ${key}.decisions`);
       assert.equal(c.accomplishments, undefined, `${locale} ${key} legacy bullets`);
       assert.equal(c.figureCaption, undefined, `${locale} ${key} caption repeats Context`);
+      assert.equal(c.index, undefined, `${locale} ${key} index row repeated the case file`);
     }
-    for (const label of ['context', 'decisions', 'outcome', 'evidence', 'caseFile', 'indexTitle']) {
+    for (const label of ['context', 'decisions', 'outcome', 'evidence', 'caseFile', 'moreTitle']) {
       assert.ok(Projects.labels[label]?.trim(), `${locale} labels.${label}`);
     }
+    for (const label of ['indexTitle', 'year', 'project', 'role', 'result']) {
+      assert.equal(Projects.labels[label], undefined, `${locale} table label ${label}`);
+    }
+    // SAT and VAC keep their ledger-backed proof (E5, E6) under their own heading.
+    assert.deepEqual(Object.keys(Projects.sat).sort(), ['name', 'proof'], locale);
+    assert.deepEqual(Object.keys(Projects.vac).sort(), ['name', 'proof'], locale);
+    assert.match(Projects.sat.proof, /10[.,\s]?000\+[\s\S]*3[.,\s]?000\+/, `${locale} sat proof`);
+    assert.match(Projects.vac.proof, /12/, `${locale} vac proof`);
 
     const logiup = JSON.stringify(Projects.logiup);
     assert.equal(Projects.logiup.outcome.length, 3);
@@ -63,7 +72,7 @@ test('every locale carries the LogiUP and BonBon case files with the same facts'
   assert.doesNotMatch(JSON.stringify(en.Projects), /revenue|GMV|live pilot/);
 });
 
-test('case files and the index are wired to the map and tracked on view, not hover', async () => {
+test('case files and the smaller entries are wired to the map and tracked on view, not hover', async () => {
   const [projects, component, caseFile, map, diagram, exporter, analytics, pdf, schema] =
     await Promise.all([
       read('src/content/projects.ts'),
@@ -95,7 +104,11 @@ test('case files and the index are wired to the map and tracked on view, not hov
 
   assert.match(component, /'LogiUP - Multi-tenant Logistics SaaS': 'logiup'/);
   assert.match(component, /'BonBon Mobility - VETC Mini App & Automotive Platform': 'bonbon'/);
-  assert.match(component, /openCaseFile\(caseKey, 'index'\)/);
+  // No table: the earlier, smaller work sits under its own heading, below the two case files.
+  assert.doesNotMatch(component, /<table|project-index|openCaseFile/);
+  assert.match(component, /t\('labels\.moreTitle'\)/);
+  assert.match(component, /'Digital SAT Math': 'sat'/);
+  assert.match(component, /'Vietnam Australia Center': 'vac'/);
   assert.doesNotMatch(component + caseFile, /onMouseEnter|project-card/);
 
   // cv_project_view fires once from an IntersectionObserver at 50%.
@@ -103,9 +116,10 @@ test('case files and the index are wired to the map and tracked on view, not hov
   assert.match(caseFile, /intersectionRatio >= 0\.5/);
   assert.match(caseFile, /track\('cv_project_view', \{ project \}\)/);
   assert.match(caseFile, /trackProjectView\(project\.name\)/);
-  // Index rows report views too (once per project), so every project keeps the event.
+  // The smaller entries report views too (once per project, at 50%), so every project keeps the event.
   assert.match(component, /trackProjectView\(e\.target\.getAttribute\('data-project'\)/);
-  assert.match(component, /data-project=\{p\.name\}/);
+  assert.match(component, /intersectionRatio < 0\.5/);
+  assert.match(component, /className="pm-item" data-project=\{p\.name\}/);
   assert.match(caseFile, /track\('cv_case_file_open', \{ project, source \}\)/);
   assert.match(caseFile, /'cv_project_evidence_click'/);
   assert.match(caseFile, /'cv_project_website_click'/);
@@ -122,7 +136,7 @@ test('case files and the index are wired to the map and tracked on view, not hov
   assert.match(map, /multiTenant: "logiup"/);
   assert.match(map, /zeroToPilot: "bonbon"/);
   assert.match(map, /openCaseFile\(caseFile, "map"\)/);
-  assert.match(caseFile, /CaseFileSource = 'map' \| 'index' \| 'hero'/);
+  assert.match(caseFile, /CaseFileSource = 'map' \| 'hero'/);
   const [hero, topology] = await Promise.all([
     read('src/components/cv/Hero.tsx'),
     read('src/components/cv/HeroTopology.tsx'),

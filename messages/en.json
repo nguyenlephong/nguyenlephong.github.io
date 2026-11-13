@@ -29,10 +29,16 @@
     }
   },
   "Footer": {
-    "tag": "Lead Software Engineer · Zalo PC",
+    "tag": "Lead Software Engineer, Zalo PC · Co-founder, BonBon Mobility",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "Language",
-    "sitemap": "Sitemap"
+    "sitemap": "Sitemap",
+    "email": "Email",
+    "photos": "Photos",
+    "sideProjects": "Side projects",
+    "studioHint": "Studio: checklists and system maps",
+    "contactLabel": "Résumé and profiles",
+    "siteLabel": "More on this site"
   },
   "Hero": {
     "news": "BonBon Mobility raised a $500K pre-seed round led by Tasco",
@@ -62,7 +68,6 @@
   },
   "Summary": {
     "mapTabsLabel": "Capabilities",
-    "lede": "Before Zalo I spent over a year at an outsourcing agency and nearly four at a CDP startup, and between my two stints there I led a delivery team through a CTO transition. The map below picks six pieces of work and draws the mechanism behind each.",
     "stackTitle": "What I build with",
     "pillars": {
       "crossDevice": {
@@ -220,11 +225,7 @@
       "outcome": "Outcome",
       "evidence": "Evidence",
       "caseFile": "Read the case file",
-      "indexTitle": "Selected projects",
-      "year": "Year",
-      "project": "Project",
-      "role": "Role",
-      "result": "Outcome",
+      "moreTitle": "Earlier and smaller: one product of my own, one course I taught.",
       "note": "My note on the round"
     },
     "logiup": {
@@ -243,8 +244,7 @@
         "<b>6</b> least-privilege runtime roles and <b>31</b> typed API endpoints behind the customs workflow.",
         "Export declarations reached UAT in Oct 2026, with a rule-based document classifier."
       ],
-      "evidenceNote": "Private repos, so there is no public link.",
-      "index": "Tenant isolation down to the token, one OIDC provider for web and Electron"
+      "evidenceNote": "Private repos, so there is no public link."
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -261,18 +261,15 @@
         "BonBon won Tasco Foundry Wash3000: about <b>100</b> applicants, a top 10, three finalists, one winner (GenAI Fund, Sep 2026).",
         "<b>$500K</b> pre-seed round led by Tasco, with GenAI Fund co-investing (Sep 2026).",
         "<b>3 months</b> from MVP to a field pilot, the length of the Wash3000 program."
-      ],
-      "index": "Mini App inside VETC; won Wash3000, $500K pre-seed led by Tasco"
+      ]
     },
     "sat": {
       "name": "Digital SAT Math",
-      "role": "Own product",
-      "index": "Owned it end to end: <b>10,000+</b> visits and <b>3,000+</b> signups in the first two months."
+      "proof": "Built and ran it end to end. <b>10,000+ visits and 3,000+ signups</b> in the first two months."
     },
     "vac": {
       "name": "Vietnam Australia Center",
-      "role": "Instructor",
-      "index": "Taught a front-end project course to <b>12 students</b>, from requirements to working React apps."
+      "proof": "Taught a front-end project course to <b>12 students</b>, from requirements to working React apps."
     }
   },
   "CTA": {
@@ -470,9 +467,9 @@
       "close": "Close"
     },
     "notes": {
-      "eyebrow": "Personal encyclopedia",
+      "eyebrow": "On work and life",
       "title": "Notes",
-      "intro": "A personal archive — where I keep what I've learned, lived, and want to remember. Reflections on life, work, and the questions that don't have tidy answers.",
+      "intro": "Shorter notes on career, books, money and the everyday decisions behind them. For engineering deep-dives, the <blog>Blog</blog> is the better place to start.",
       "stats": {
         "topics": "Topics",
         "articles": "Notes",
@@ -514,6 +511,7 @@
         "results": "{count, plural, =0 {No notes} one {# note} other {# notes}}",
         "noResults": "No notes match your search.",
         "searchUnavailable": "Search is temporarily unavailable. You can continue browsing the pages below.",
+        "searching": "Searching…",
         "pagination": {
           "label": "Notes pages",
           "prev": "Previous",
@@ -550,6 +548,7 @@
         "results": "{count, plural, =0 {No articles} one {# article} other {# articles}}",
         "noResults": "No articles match your search.",
         "searchUnavailable": "Search is temporarily unavailable. You can continue browsing the pages below.",
+        "searching": "Searching…",
         "pagination": {
           "label": "Blog pages",
           "prev": "Previous",
@@ -561,7 +560,7 @@
       },
       "eyebrow": "Writing",
       "title": "Blog",
-      "intro": "Deep-dives on software architecture and the way source code is structured — written to be understood by beginners, yet useful to teams shipping at scale. Diagrams, real examples, no hand-waving.",
+      "intro": "Deep-dives on software architecture and the way source code is structured, written to be understood by beginners yet useful to teams shipping at scale. Diagrams, real examples, no hand-waving. Career and life reflections live in <notes>Notes</notes>.",
       "categoriesHeading": "Browse by topic",
       "latestHeading": "Latest articles",
       "empty": "No articles yet — the first one is on its way.",
@@ -569,7 +568,6 @@
       "backToCategory": "Back to {category}",
       "readingTime": "{minutes} min read",
       "articleCount": "{count, plural, =0 {No articles} one {# article} other {# articles}}",
-      "writtenBy": "By {author}",
       "onThisPage": "On this page",
       "readerTools": {
         "label": "Reader tools",
@@ -760,6 +758,11 @@
     "font": "Change reading font",
     "background": "Change reading background",
     "language": "Change language"
+  },
+  "Author": {
+    "byline": "By <author>{name}</author>, {role}",
+    "heading": "About the author",
+    "cvLink": "See my work and résumé"
   },
   "ArticleRelated": {
     "notesHeading": "More notes to read next",

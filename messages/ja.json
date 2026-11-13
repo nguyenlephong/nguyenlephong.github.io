@@ -28,10 +28,16 @@
     "notes": "ノート"
   },
   "Footer": {
-    "tag": "Lead Software Engineer · Zalo PC",
+    "tag": "Zalo PC Lead Software Engineer・BonBon Mobility 共同創業者",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "言語",
-    "sitemap": "サイトマップ"
+    "sitemap": "サイトマップ",
+    "email": "メール",
+    "photos": "写真",
+    "sideProjects": "個人プロジェクト",
+    "studioHint": "Studio：チェックリストとシステムマップ",
+    "contactLabel": "履歴書とプロフィール",
+    "siteLabel": "サイト内のその他のページ"
   },
   "Hero": {
     "news": "BonBon Mobility が Tasco リードで 50 万ドルのプレシード資金を調達",
@@ -61,7 +67,6 @@
   },
   "Summary": {
     "mapTabsLabel": "得意領域",
-    "lede": "Zalo の前は受託開発会社で1年余り、CDP スタートアップで4年近く働き、2度の Zalo 在籍の間には CTO 交代期のデリバリーチームを率いました。下のマップでは6つの仕事を選び、それぞれの仕組みを図にしています。",
     "stackTitle": "開発で使う技術",
     "pillars": {
       "crossDevice": {
@@ -219,11 +224,7 @@
       "outcome": "成果",
       "evidence": "根拠",
       "caseFile": "ケースファイルを読む",
-      "indexTitle": "主なプロジェクト",
-      "year": "年",
-      "project": "プロジェクト",
-      "role": "役割",
-      "result": "成果",
+      "moreTitle": "それ以前の小さな仕事：自分のプロダクトと、教えた講座。",
       "note": "資金調達についての私のノート"
     },
     "logiup": {
@@ -242,8 +243,7 @@
         "通関ワークフローを支える最小権限の実行ロール<b>6</b>個と型付き API エンドポイント<b>31</b>本。",
         "輸出申告は2026年10月に UAT へ。ルールベースの書類分類を備えています。"
       ],
-      "evidenceNote": "リポジトリは非公開のため、公開リンクはありません。",
-      "index": "トークンまで貫くテナント分離、Web と Electron 共通の OIDC プロバイダー"
+      "evidenceNote": "リポジトリは非公開のため、公開リンクはありません。"
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -260,18 +260,15 @@
         "BonBon が Tasco Foundry Wash3000 で優勝：応募約<b>100</b>件、上位10、最終3チーム、優勝1（GenAI Fund、2026年9月）。",
         "Tasco がリードし GenAI Fund が共同出資した<b>50万ドル</b>のプレシードラウンド（2026年9月）。",
         "MVP からフィールドパイロットまで<b>3か月</b>。Wash3000 プログラムの期間と同じです。"
-      ],
-      "index": "VETC 内の Mini App。Wash3000 優勝、Tasco リードの50万ドルのプレシード"
+      ]
     },
     "sat": {
       "name": "Digital SAT Math",
-      "role": "個人プロダクト",
-      "index": "企画から運用まで担当：最初の2か月で<b>10,000+</b>訪問、<b>3,000+</b>登録。"
+      "proof": "開発から運用まで一人で担当。最初の2か月で<b>10,000+訪問、3,000+登録</b>。"
     },
     "vac": {
       "name": "Vietnam Australia Center",
-      "role": "講師",
-      "index": "<b>12人</b>の受講生にフロントエンドのプロジェクト講座を担当。要件から動く React アプリまで。"
+      "proof": "<b>12人</b>の受講生にフロントエンドのプロジェクト講座を担当。要件から動く React アプリまで。"
     }
   },
   "CTA": {
@@ -456,9 +453,9 @@
       "close": "閉じる"
     },
     "notes": {
-      "eyebrow": "個人事典",
+      "eyebrow": "仕事と暮らしのこと",
       "title": "ノート",
-      "intro": "個人的なアーカイブ——学んだこと、経験したこと、覚えておきたいことを収めた場所。人生や仕事、そしてすっきりした答えのない問いについての考察。",
+      "intro": "キャリア、本、お金、そして日々の判断について書いた短めのノートです。技術を深く掘り下げた記事を読みたい方は<blog>ブログ</blog>からどうぞ。",
       "stats": {
         "topics": "トピック",
         "articles": "ノート",
@@ -490,6 +487,7 @@
         "results": "{count, plural, =0 {ノートがありません} other {# 件のノート}}",
         "noResults": "検索に一致するノートがありません。",
         "searchUnavailable": "検索を一時的に利用できません。下のページから引き続き記事を読めます。",
+        "searching": "検索中…",
         "pagination": {
           "label": "ノートのページ",
           "prev": "前へ",
@@ -526,6 +524,7 @@
         "results": "{count, plural, =0 {記事がありません} other {# 件の記事}}",
         "noResults": "検索に一致する記事がありません。",
         "searchUnavailable": "検索を一時的に利用できません。下のページから引き続き記事を読めます。",
+        "searching": "検索中…",
         "pagination": {
           "label": "ブログのページ",
           "prev": "前へ",
@@ -537,7 +536,7 @@
       },
       "eyebrow": "記事",
       "title": "ブログ",
-      "intro": "ソフトウェアアーキテクチャとソースコードの構造についての詳しい解説。初心者にも分かりやすく、それでいて大規模に開発するチームにも役立つように書いています。図解と実例つき、曖昧な説明はしません。",
+      "intro": "ソフトウェアアーキテクチャとソースコードの構造についての詳しい解説。初心者にも分かりやすく、それでいて大規模に開発するチームにも役立つように書いています。図解と実例つき、曖昧な説明はしません。キャリアや暮らしについての考えは<notes>ノート</notes>にまとめています。",
       "categoriesHeading": "トピックで探す",
       "latestHeading": "最新の記事",
       "empty": "まだ記事がありません——最初の記事をまもなく公開します。",
@@ -545,7 +544,6 @@
       "backToCategory": "{category}に戻る",
       "readingTime": "{minutes} 分で読めます",
       "articleCount": "{count, plural, other {# 件の記事}}",
-      "writtenBy": "著者：{author}",
       "onThisPage": "目次",
       "readerTools": {
         "label": "読書ツール",
@@ -582,6 +580,11 @@
         "close": "閉じる"
       }
     }
+  },
+  "Author": {
+    "byline": "著者：<author>{name}</author>（{role}）",
+    "heading": "著者について",
+    "cvLink": "経歴と履歴書を見る"
   },
   "ArticleRelated": {
     "notesHeading": "関連するノート",

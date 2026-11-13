@@ -8,7 +8,8 @@ import CareerGraph, { type NodeKind } from "./CareerGraph";
 
 type Props = { data: ExperienceRole[] };
 
-const TOP_COUNT = 3;
+// The current role shows three contributions, past roles two; the rest sit behind "All contributions".
+const topCount = (role: ExperienceRole): number => (role.end ? 2 : 3);
 // The boomerang: Zalo PC forks to NDSVN and merges back as Lead.
 const NODE: Record<string, NodeKind> = {
   zaloLead: "merge",
@@ -103,7 +104,8 @@ export default function Experience({ data }: Props) {
       <ol ref={listRef} className="xp">
         {main.map((role) => {
           const items = t.raw(`roles.${role.id}.contributions`) as string[];
-          const rest = items.slice(TOP_COUNT);
+          const top = topCount(role);
+          const rest = items.slice(top);
           return (
             <li key={role.id} className="xp-row" id={`xp-${role.id}`}>
               <Dates
@@ -120,7 +122,7 @@ export default function Experience({ data }: Props) {
                 </p>
                 <p className="xp-scope">{t(`roles.${role.id}.scope`)}</p>
                 <ul className="xp-list">
-                  {items.slice(0, TOP_COUNT).map((item, i) => (
+                  {items.slice(0, top).map((item, i) => (
                     <li key={i}>
                       <span dangerouslySetInnerHTML={{ __html: item }} />
                       {i === 0 && role.evidence && (

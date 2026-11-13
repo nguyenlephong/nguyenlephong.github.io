@@ -28,10 +28,16 @@
     "notes": "노트"
   },
   "Footer": {
-    "tag": "Lead Software Engineer · Zalo PC",
+    "tag": "Zalo PC Lead Software Engineer · BonBon Mobility 공동 창업자",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "언어",
-    "sitemap": "사이트맵"
+    "sitemap": "사이트맵",
+    "email": "이메일",
+    "photos": "사진",
+    "sideProjects": "개인 프로젝트",
+    "studioHint": "Studio: 체크리스트와 시스템 맵",
+    "contactLabel": "이력서와 프로필",
+    "siteLabel": "사이트의 다른 페이지"
   },
   "Hero": {
     "news": "BonBon Mobility, Tasco 주도로 50만 달러 프리시드 투자 유치",
@@ -61,7 +67,6 @@
   },
   "Summary": {
     "mapTabsLabel": "핵심 역량",
-    "lede": "Zalo 이전에는 아웃소싱 회사에서 1년 넘게, CDP 스타트업에서 4년 가까이 일했고, 두 번의 Zalo 근무 사이에는 CTO 교체기의 딜리버리 팀을 이끌었습니다. 아래 맵은 여섯 가지 작업을 골라 각각의 작동 방식을 그린 것입니다.",
     "stackTitle": "개발에 쓰는 기술",
     "pillars": {
       "crossDevice": {
@@ -219,11 +224,7 @@
       "outcome": "결과",
       "evidence": "근거",
       "caseFile": "케이스 파일 보기",
-      "indexTitle": "주요 프로젝트",
-      "year": "연도",
-      "project": "프로젝트",
-      "role": "역할",
-      "result": "결과",
+      "moreTitle": "그보다 앞선 작은 일: 내 프로덕트 하나, 직접 가르친 강의 하나.",
       "note": "투자 라운드에 대한 제 노트"
     },
     "logiup": {
@@ -242,8 +243,7 @@
         "통관 워크플로를 받치는 최소 권한 런타임 역할 <b>6</b>개와 타입이 지정된 API 엔드포인트 <b>31</b>개.",
         "수출 신고는 2026년 10월 UAT에 들어갔고, 규칙 기반 문서 분류기를 갖췄습니다."
       ],
-      "evidenceNote": "저장소가 비공개라 공개 링크는 없습니다.",
-      "index": "토큰까지 이어지는 테넌트 분리, 웹과 Electron 공통 OIDC 프로바이더"
+      "evidenceNote": "저장소가 비공개라 공개 링크는 없습니다."
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -260,18 +260,15 @@
         "BonBon이 Tasco Foundry Wash3000 우승: 지원 약 <b>100</b>팀, 상위 10팀, 결선 3팀, 우승 1팀(GenAI Fund, 2026년 9월).",
         "Tasco가 리드하고 GenAI Fund가 공동 투자한 <b>50만 달러</b> 프리시드 라운드(2026년 9월).",
         "MVP에서 현장 파일럿까지 <b>3개월</b>, Wash3000 프로그램 기간과 같습니다."
-      ],
-      "index": "VETC 안의 Mini App. Wash3000 우승, Tasco 리드 50만 달러 프리시드"
+      ]
     },
     "sat": {
       "name": "Digital SAT Math",
-      "role": "개인 프로덕트",
-      "index": "처음부터 끝까지 직접 맡음: 첫 두 달간 방문 <b>10,000+</b>, 가입 <b>3,000+</b>."
+      "proof": "개발부터 운영까지 혼자 맡음. 첫 두 달간 <b>방문 10,000+, 가입 3,000+</b>."
     },
     "vac": {
       "name": "Vietnam Australia Center",
-      "role": "강사",
-      "index": "수강생 <b>12명</b>에게 프런트엔드 프로젝트 과정을 가르침. 요구사항부터 동작하는 React 앱까지."
+      "proof": "수강생 <b>12명</b>에게 프런트엔드 프로젝트 과정을 가르침. 요구사항부터 동작하는 React 앱까지."
     }
   },
   "CTA": {
@@ -456,9 +453,9 @@
       "close": "닫기"
     },
     "notes": {
-      "eyebrow": "개인 백과",
+      "eyebrow": "일과 삶에 대하여",
       "title": "노트",
-      "intro": "개인적인 아카이브 — 배우고, 겪고, 기억하고 싶은 것들을 모아두는 곳. 삶과 일, 그리고 깔끔한 답이 없는 질문들에 대한 사색.",
+      "intro": "커리어, 책, 돈, 그리고 일상의 결정들에 대한 짧은 기록입니다. 깊이 있는 기술 글을 찾는다면 <blog>블로그</blog>에서 시작하는 편이 좋습니다.",
       "stats": {
         "topics": "주제",
         "articles": "노트",
@@ -490,6 +487,7 @@
         "results": "{count, plural, =0 {노트가 없습니다} other {# 개의 노트}}",
         "noResults": "검색과 일치하는 노트가 없습니다.",
         "searchUnavailable": "검색을 일시적으로 사용할 수 없습니다. 아래 페이지를 계속 둘러볼 수 있습니다.",
+        "searching": "검색 중…",
         "pagination": {
           "label": "노트 페이지",
           "prev": "이전",
@@ -526,6 +524,7 @@
         "results": "{count, plural, =0 {글이 없습니다} other {# 개의 글}}",
         "noResults": "검색과 일치하는 글이 없습니다.",
         "searchUnavailable": "검색을 일시적으로 사용할 수 없습니다. 아래 페이지를 계속 둘러볼 수 있습니다.",
+        "searching": "검색 중…",
         "pagination": {
           "label": "블로그 페이지",
           "prev": "이전",
@@ -537,7 +536,7 @@
       },
       "eyebrow": "글",
       "title": "블로그",
-      "intro": "소프트웨어 아키텍처와 소스 코드 구조에 대한 깊이 있는 글입니다. 입문자도 이해할 수 있으면서, 대규모로 개발하는 팀에도 유용하도록 썼습니다. 다이어그램과 실제 사례를 곁들였고, 두루뭉술한 설명은 없습니다.",
+      "intro": "소프트웨어 아키텍처와 소스 코드 구조에 대한 깊이 있는 글입니다. 입문자도 이해할 수 있으면서, 대규모로 개발하는 팀에도 유용하도록 썼습니다. 다이어그램과 실제 사례를 곁들였고, 두루뭉술한 설명은 없습니다. 커리어와 삶에 대한 생각은 <notes>노트</notes>에 있습니다.",
       "categoriesHeading": "주제별로 보기",
       "latestHeading": "최신 글",
       "empty": "아직 글이 없습니다 — 첫 번째 글이 곧 올라옵니다.",
@@ -545,7 +544,6 @@
       "backToCategory": "{category}(으)로 돌아가기",
       "readingTime": "{minutes}분 읽기",
       "articleCount": "{count, plural, other {# 개의 글}}",
-      "writtenBy": "작성자: {author}",
       "onThisPage": "목차",
       "readerTools": {
         "label": "읽기 도구",
@@ -582,6 +580,11 @@
         "close": "닫기"
       }
     }
+  },
+  "Author": {
+    "byline": "작성자: <author>{name}</author>, {role}",
+    "heading": "글쓴이 소개",
+    "cvLink": "경력과 이력서 보기"
   },
   "ArticleRelated": {
     "notesHeading": "함께 읽으면 좋은 노트",

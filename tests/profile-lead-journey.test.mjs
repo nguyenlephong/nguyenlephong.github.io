@@ -44,8 +44,13 @@ test("every locale presents the current Zalo PC lead journey", async () => {
   assert.match(en.Experience.roles.zaloLead.contributions[2], /default off/);
   assert.match(en.Experience.roles.zaloLead.contributions[3], /zCloud offload/);
   assert.match(vi.Experience.roles.zaloLead.contributions[3], /zCloud offload/);
-  assert.match(en.Summary.lede, /CTO transition/);
-  assert.doesNotMatch(en.Summary.lede, /GPA/);
+  // The Summary lede retold the career arc that the hero and Experience already tell (MEP-21).
+  for (const locale of locales) {
+    const messages = JSON.parse(await read(`messages/${locale}.json`));
+    assert.equal(messages.Summary.lede, undefined, `${locale} Summary.lede`);
+  }
+  const summary = await read("src/components/cv/Summary.tsx");
+  assert.doesNotMatch(summary, /summary-lede|t\('lede'\)/);
 });
 
 test("homepage copy states capability directly without recruiter-facing meta language", async () => {
@@ -307,6 +312,13 @@ test("launch evidence is accessible, tracked, and reflected in structured profil
   assert.match(component, /<details/);
   assert.match(component, /track\(["']cv_experience_expand["'], \{ role: role\.id \}\)/);
   assert.match(analytics, /\| 'cv_experience_expand'/);
+  // The current role (no end date) shows three contributions, past roles two; the rest stay in <details> (MEP-22).
+  assert.match(component, /const topCount = \(role: ExperienceRole\): number => \(role\.end \? 2 : 3\)/);
+  assert.match(component, /items\.slice\(top\)/);
+  assert.match(component, /items\.slice\(0, top\)/);
+  // On phones the map stage draws the figure; the panel keeps it for screen readers and keeps its condition visible.
+  const mapCss = await read("src/components/cv/capability-map.css");
+  assert.match(mapCss, /@container cm \(max-width: 719px\) \{[\s\S]*\.cm-proof strong \{[\s\S]*clip-path: inset\(50%\)/);
   // Career rail: complete by default, scroll-drawn only when supported and motion is allowed.
   const [rail, xpCss] = await Promise.all([
     read("src/components/cv/CareerGraph.tsx"),

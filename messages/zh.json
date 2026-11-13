@@ -28,10 +28,16 @@
     "notes": "笔记"
   },
   "Footer": {
-    "tag": "Lead Software Engineer · Zalo PC",
+    "tag": "Zalo PC Lead Software Engineer · BonBon Mobility 联合创始人",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "语言",
-    "sitemap": "站点地图"
+    "sitemap": "站点地图",
+    "email": "邮箱",
+    "photos": "照片",
+    "sideProjects": "个人项目",
+    "studioHint": "Studio：清单与系统图",
+    "contactLabel": "简历与个人主页",
+    "siteLabel": "站内其他页面"
   },
   "Hero": {
     "news": "BonBon Mobility 完成由 Tasco 领投的 50 万美元 Pre-seed 轮融资",
@@ -61,7 +67,6 @@
   },
   "Summary": {
     "mapTabsLabel": "核心能力",
-    "lede": "加入 Zalo 之前，我在外包公司工作了一年多，又在一家 CDP 创业公司工作了近四年；两次在 Zalo 任职之间，我带领一支交付团队度过了 CTO 交接期。下面的地图选了六项工作，画出每一项背后的机制。",
     "stackTitle": "我用来开发的技术",
     "pillars": {
       "crossDevice": {
@@ -219,11 +224,7 @@
       "outcome": "结果",
       "evidence": "证据",
       "caseFile": "查看案例",
-      "indexTitle": "代表项目",
-      "year": "年份",
-      "project": "项目",
-      "role": "角色",
-      "result": "结果",
+      "moreTitle": "更早、规模更小：一个自己的产品，一门我讲过的课。",
       "note": "我关于这轮融资的笔记"
     },
     "logiup": {
@@ -242,8 +243,7 @@
         "报关流程背后有 <b>6</b> 个最小权限运行时角色和 <b>31</b> 个类型化 API 端点。",
         "出口报关于 2026年10月进入 UAT，配有基于规则的单证分类器。"
       ],
-      "evidenceNote": "仓库为私有，没有公开链接。",
-      "index": "租户隔离贯穿到 token，Web 与 Electron 共用一个 OIDC 提供方"
+      "evidenceNote": "仓库为私有，没有公开链接。"
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -260,18 +260,15 @@
         "BonBon 赢得 Tasco Foundry Wash3000：约 <b>100</b> 份申请，前 10，3 支决赛队伍，1 个冠军（GenAI Fund，2026年9月）。",
         "由 Tasco 领投、GenAI Fund 跟投的 <b>50 万美元</b> pre-seed 轮（2026年9月）。",
         "从 MVP 到实地试点用了 <b>3 个月</b>，正好是 Wash3000 项目的周期。"
-      ],
-      "index": "VETC 内的 Mini App；赢得 Wash3000，Tasco 领投 50 万美元 pre-seed"
+      ]
     },
     "sat": {
       "name": "Digital SAT Math",
-      "role": "个人产品",
-      "index": "端到端负责：头两个月 <b>10,000+</b> 访问、<b>3,000+</b> 注册。"
+      "proof": "从开发到运营一人负责。头两个月 <b>10,000+ 访问、3,000+ 注册</b>。"
     },
     "vac": {
       "name": "Vietnam Australia Center",
-      "role": "讲师",
-      "index": "为 <b>12 名</b>学员讲授前端项目课程，从需求到可运行的 React 应用。"
+      "proof": "为 <b>12 名</b>学员讲授前端项目课程，从需求到可运行的 React 应用。"
     }
   },
   "CTA": {
@@ -456,9 +453,9 @@
       "close": "关闭"
     },
     "notes": {
-      "eyebrow": "个人百科",
+      "eyebrow": "关于工作与生活",
       "title": "笔记",
-      "intro": "一处私人档案——存放我学到、经历过、想要记住的一切。关于生活、工作，以及那些没有简单答案的问题的思考。",
+      "intro": "关于职业、读书、理财，以及日常各种决定的短篇笔记。想看深入的技术文章，建议从<blog>博客</blog>开始。",
       "stats": {
         "topics": "专题",
         "articles": "笔记",
@@ -490,6 +487,7 @@
         "results": "{count, plural, =0 {暂无笔记} other {# 篇笔记}}",
         "noResults": "没有符合搜索条件的笔记。",
         "searchUnavailable": "搜索暂时不可用。你仍可以继续浏览下方页面。",
+        "searching": "搜索中…",
         "pagination": {
           "label": "笔记分页",
           "prev": "上一页",
@@ -526,6 +524,7 @@
         "results": "{count, plural, =0 {暂无文章} other {# 篇文章}}",
         "noResults": "没有符合搜索条件的文章。",
         "searchUnavailable": "搜索暂时不可用。你仍可以继续浏览下方页面。",
+        "searching": "搜索中…",
         "pagination": {
           "label": "博客分页",
           "prev": "上一页",
@@ -537,7 +536,7 @@
       },
       "eyebrow": "文章",
       "title": "博客",
-      "intro": "关于软件架构与源码结构的深度文章——写得让初学者也能读懂，同时对大规模交付的团队同样有用。配有图示、真实案例，绝不空谈。",
+      "intro": "关于软件架构与源码结构的深度文章，写得让初学者也能读懂，同时对大规模交付的团队同样有用。配有图示、真实案例，绝不空谈。职业与生活方面的思考放在<notes>笔记</notes>里。",
       "categoriesHeading": "按主题浏览",
       "latestHeading": "最新文章",
       "empty": "暂无文章——第一篇即将发布。",
@@ -545,7 +544,6 @@
       "backToCategory": "返回 {category}",
       "readingTime": "{minutes} 分钟阅读",
       "articleCount": "{count, plural, other {# 篇文章}}",
-      "writtenBy": "作者：{author}",
       "onThisPage": "本页内容",
       "readerTools": {
         "label": "阅读工具",
@@ -582,6 +580,11 @@
         "close": "关闭"
       }
     }
+  },
+  "Author": {
+    "byline": "作者：<author>{name}</author>，{role}",
+    "heading": "关于作者",
+    "cvLink": "查看经历与简历"
   },
   "ArticleRelated": {
     "notesHeading": "相关笔记",

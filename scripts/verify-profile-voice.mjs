@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-export const PROFILE_NAMESPACES = ['Hero', 'Sections', 'Summary', 'Experience', 'Projects', 'CTA', 'About', 'SEO']
+export const PROFILE_NAMESPACES = ['Hero', 'Sections', 'Summary', 'Experience', 'Projects', 'CTA', 'About', 'SEO', 'Author']
 export const LOCALES = ['en', 'vi', 'fr', 'ja', 'ko', 'zh']
 
 const EM_DASH_RULE = { id: 'em-dash', re: /—/, why: 'no em dashes anywhere' }

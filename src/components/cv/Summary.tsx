@@ -17,8 +17,6 @@ export default function Summary() {
 
   return (
     <>
-      <p className="summary-lede">{t('lede')}</p>
-
       <CapabilityMap />
 
       <div className="stack">

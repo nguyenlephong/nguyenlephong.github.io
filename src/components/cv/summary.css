@@ -1,16 +1,6 @@
 /* =========================================================
-   About: lede above the capability map, stack manifest below it
+   About: the capability map, stack manifest below it
    ========================================================= */
-/* Inter's ch is wide: 56ch lands near 72 real characters per line. */
-.summary-lede {
-  max-width: 56ch;
-  margin: 0 0 3rem;
-  font-size: var(--text-lg);
-  line-height: 1.65;
-  color: var(--fg-muted);
-  text-wrap: pretty;
-}
-
 /* Stack manifest: a borderless definition list, hairlines between rows. */
 .stack { margin-top: clamp(3rem, 2rem + 4vw, 6rem); max-width: 60rem; }
 .stack-title {
@@ -34,7 +24,6 @@
 .stack-row dd { margin: 0; color: var(--fg-muted); text-wrap: pretty; }
 
 @media (max-width: 560px) {
-  .summary-lede { font-size: var(--text-base); margin-bottom: 2rem; }
   .stack-title { font-size: var(--text-xl); }
   .stack-row {
     grid-template-columns: minmax(0, 1fr);

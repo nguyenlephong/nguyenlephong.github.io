@@ -186,6 +186,15 @@
   .cm-tab::before { inset: auto 0 -1px 0; width: auto; height: 2px; transform: scaleX(0); transform-origin: left; }
   .cm-tab[aria-selected='true']::before { transform: scaleX(1); }
   .cm-tab.is-cycling::before { animation-name: cm-progress-x; }
+  /* The stage already draws this figure large; keep it for screen readers (the SVG is aria-hidden) and keep its condition visible. */
+  .cm-proof strong {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

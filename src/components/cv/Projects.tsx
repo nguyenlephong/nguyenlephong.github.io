@@ -1,19 +1,20 @@
 'use client'
 import { useEffect, useRef } from 'react'
-import { LuArrowUp } from 'react-icons/lu'
 import { useTranslations } from 'next-intl'
 import { ProjectType } from '@/app/app.type'
-import CaseFile, { caseFileId, openCaseFile, trackProjectView, type CaseFileKey } from './CaseFile'
+import CaseFile, { trackProjectView, type CaseFileKey } from './CaseFile'
 
 type Props = { data: ProjectType[] }
 
-const PROJECT_KEY_MAP: Record<string, string> = {
+const CASE_FILES: Record<string, CaseFileKey> = {
   'LogiUP - Multi-tenant Logistics SaaS': 'logiup',
   'BonBon Mobility - VETC Mini App & Automotive Platform': 'bonbon',
+}
+// Smaller, earlier work: kept on the page under its own heading, never as a third "system".
+const MORE: Record<string, string> = {
   'Digital SAT Math': 'sat',
   'Vietnam Australia Center': 'vac',
 }
-const CASE_FILES: readonly string[] = ['logiup', 'bonbon'] satisfies CaseFileKey[]
 
 /** "Oct 2023 - Apr 2025" → "2023–2025", "Mar 2026 - Present" → "2026–", "May 2023" → "2023". */
 function yearSpan(duration: string): string {
@@ -24,13 +25,13 @@ function yearSpan(duration: string): string {
 
 export default function Projects({ data }: Props) {
   const t = useTranslations('Projects')
-  const rows = data.filter((p) => PROJECT_KEY_MAP[p.name])
-  const tbodyRef = useRef<HTMLTableSectionElement>(null)
+  const more = data.filter((p) => MORE[p.name])
+  const listRef = useRef<HTMLUListElement>(null)
 
-  // Index rows count as a project view at 50% too, so every project keeps `cv_project_view`.
+  // The smaller entries count as a project view at 50% too, so every project keeps `cv_project_view`.
   useEffect(() => {
-    const rowEls = tbodyRef.current?.querySelectorAll<HTMLElement>('tr[data-project]')
-    if (!rowEls?.length) return
+    const items = listRef.current?.querySelectorAll<HTMLElement>('[data-project]')
+    if (!items?.length) return
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
@@ -41,59 +42,38 @@ export default function Projects({ data }: Props) {
       },
       { threshold: 0.5 },
     )
-    rowEls.forEach((el) => io.observe(el))
+    items.forEach((el) => io.observe(el))
     return () => io.disconnect()
   }, [])
 
   return (
     <>
       <div className="case-files">
-        {rows
-          .filter((p) => CASE_FILES.includes(PROJECT_KEY_MAP[p.name]))
+        {data
+          .filter((p) => CASE_FILES[p.name])
           .map((p) => (
-            <CaseFile key={p.name} id={PROJECT_KEY_MAP[p.name] as CaseFileKey} project={p} />
+            <CaseFile key={p.name} id={CASE_FILES[p.name]} project={p} />
           ))}
       </div>
 
-      <div className="project-index">
-        <h3 className="project-index-title">{t('labels.indexTitle')}</h3>
-        <table className="pi-table">
-          <thead>
-            <tr>
-              <th scope="col">{t('labels.year')}</th>
-              <th scope="col">{t('labels.project')}</th>
-              <th scope="col">{t('labels.role')}</th>
-              <th scope="col">{t('labels.result')}</th>
-            </tr>
-          </thead>
-          <tbody ref={tbodyRef}>
-            {rows.map((p) => {
-              const key = PROJECT_KEY_MAP[p.name]
-              const caseKey = CASE_FILES.includes(key) ? (key as CaseFileKey) : null
-              return (
-                <tr key={p.name} data-project={p.name}>
-                  <td className="pi-year">{yearSpan(p.duration)}</td>
-                  <td className="pi-name">
-                    {caseKey ? (
-                      <a href={`#${caseFileId(caseKey)}`} onClick={() => openCaseFile(caseKey, 'index')}>
-                        {t(`${key}.name`)}
-                        <LuArrowUp size={13} aria-hidden="true" />
-                      </a>
-                    ) : (
-                      t(`${key}.name`)
-                    )}
-                  </td>
-                  <td className="pi-role">{t(`${key}.role`)}</td>
-                  <td
-                    className="pi-outcome"
-                    dangerouslySetInnerHTML={{ __html: t.raw(`${key}.index`) as string }}
-                  />
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      </div>
+      <section className="project-more" aria-labelledby="project-more-title">
+        <h3 id="project-more-title" className="project-more-title">
+          {t('labels.moreTitle')}
+        </h3>
+        <ul ref={listRef} className="pm-list">
+          {more.map((p) => {
+            const key = MORE[p.name]
+            return (
+              <li key={p.name} className="pm-item" data-project={p.name}>
+                <h4 className="pm-name">
+                  {t(`${key}.name`)} <span className="pm-period">{yearSpan(p.duration)}</span>
+                </h4>
+                <p className="pm-proof" dangerouslySetInnerHTML={{ __html: t.raw(`${key}.proof`) as string }} />
+              </li>
+            )
+          })}
+        </ul>
+      </section>
     </>
   )
 }

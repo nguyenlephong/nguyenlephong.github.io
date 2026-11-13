@@ -14,7 +14,7 @@ import {
 } from './CapabilityMapDiagram'
 
 export type CaseFileKey = 'logiup' | 'bonbon'
-export type CaseFileSource = 'map' | 'index' | 'hero'
+export type CaseFileSource = 'map' | 'hero'
 
 const OPEN_EVENT = 'casefile:open'
 // The BonBon story only exists in English and Vietnamese.
@@ -24,7 +24,7 @@ export const caseFileId = (key: CaseFileKey): string => `case-${key}`
 
 // shortcut: module-level, so a client-side return to the page does not re-send views.
 const viewedProjects = new Set<string>()
-/** `cv_project_view` once per project per page load, shared by case files and index rows. */
+/** `cv_project_view` once per project per page load, shared by case files and the smaller entries. */
 export function trackProjectView(project: string): void {
   if (viewedProjects.has(project)) return
   viewedProjects.add(project)
@@ -86,7 +86,7 @@ export default function CaseFile({ id, project }: Props) {
   const b = zoneBounds[zone]
 
   // One observer: the first 50% view counts as a project view and plays the figure;
-  // a later "open" from the map or the index replays it on arrival.
+  // a later "open" from the map or the hero replays it on arrival.
   useEffect(() => {
     const el = figureRef.current
     if (!el) return

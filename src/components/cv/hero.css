@@ -63,7 +63,7 @@
 .hero-news b {
   display: inline-flex; align-items: center; gap: 0.25rem;
   margin-left: 0.5rem;
-  color: var(--accent);
+  color: var(--accent-strong);
   font-weight: 600;
   white-space: nowrap;
 }
