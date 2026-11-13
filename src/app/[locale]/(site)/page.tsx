@@ -1,3 +1,4 @@
+import type { Metadata, ResolvingMetadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { getTranslations } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
@@ -22,6 +23,7 @@ import {
   buildWebsiteIdentitySchema,
 } from '@/lib/seo/profile-schema'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
+import { sectionOgImages } from '@/lib/seo/section-og-image'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 // Cascade order: page shell first, then sections in page order. Only this route uses them.
 import './home.css'
@@ -39,6 +41,24 @@ type Props = {
 export function generateStaticParams() {
   if (process.env.NODE_ENV === 'development') return []
   return routing.locales.map((locale) => ({ locale }))
+}
+
+// The locale layout owns the home metadata. This only swaps the profile card's English file
+// alt for one in the page's language (MEP-64); the rest of openGraph is inherited as is.
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const { locale } = await params
+  if (!hasLocale(routing.locales, locale)) notFound()
+  const seoT = await getTranslations({ locale, namespace: 'SEO.home' })
+  const { openGraph } = await parent
+  return {
+    openGraph: {
+      ...(openGraph as Metadata['openGraph']),
+      images: sectionOgImages('/[locale]/(site)', { locale }, seoT('title')),
+    },
+  }
 }
 
 export default async function MainPage({ params }: Props) {

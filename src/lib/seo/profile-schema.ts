@@ -151,9 +151,9 @@ export function buildPersonVentureSchema(): WithContext<Person> {
     affiliation: BONBON_ORGANIZATION,
     hasOccupation: {
       '@type': 'Occupation',
-      name: 'Co-founder, BonBon Mobility',
+      name: 'Co-founder (part-time), BonBon Mobility',
       description:
-        'Co-founder of BonBon, an O2O platform connecting car owners with garages and car care centers in Vietnam.',
+        'Part-time co-founder of BonBon, an O2O platform connecting car owners with garages and car care centers in Vietnam.',
     },
     subjectOf: BONBON_PRESS_COVERAGE.map((article) => ({
       '@type': 'NewsArticle',

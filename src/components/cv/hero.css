@@ -108,6 +108,8 @@
   color: var(--fg-muted);
 }
 .hero-role span { color: var(--fg-subtle); }
+/* The engagement label wraps as one unit, so a narrow locale never splits it mid-phrase. */
+.hero-role-type { font-size: var(--text-sm); white-space: nowrap; }
 /* Both companies are links of equal rank; the 44px tap box is pulled back into the 1.6 line box. */
 .hero-role-link {
   display: inline-flex; align-items: center;

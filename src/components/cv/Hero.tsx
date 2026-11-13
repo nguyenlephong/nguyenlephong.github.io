@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { LuDownload, LuArrowRight, LuMail } from 'react-icons/lu'
 import { APP_ROUTE } from '@/app/app.const'
+import { displayName } from '@/app/seo.config'
 import { email, social } from '@/content/social'
 import { track } from '@/lib/analytics'
 import HeroTopology from './HeroTopology'
@@ -40,7 +41,7 @@ export default function Hero() {
             </span>
           </Link>
           <h1 id="hero-heading" className="hero-name">
-            Nguyen Le Phong
+            {displayName(locale)}
           </h1>
           <p className="hero-claim">{t('claim')}</p>
           <ul className="hero-role">
@@ -65,7 +66,8 @@ export default function Hero() {
                 }}
               >
                 BonBon Mobility
-              </a>
+              </a>{' '}
+              <span className="hero-role-type">{t('partTime')}</span>
             </li>
           </ul>
           <p className="hero-bio">{t('bio')}</p>

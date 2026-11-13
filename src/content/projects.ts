@@ -32,7 +32,7 @@ export const projects = [
     ],
     "Mar 2026 - Present",
     [
-      `Lead a <b>4-person engineering team</b> as <b>Tech Lead and system architect</b> across 9 repos: one Next.js UI for web and Electron desktop, a NestJS control plane, a FastAPI data plane for AI.`,
+      `As part-time <b>Tech Lead and system architect</b>, lead a <b>4-person engineering team</b> across 9 repos: one Next.js UI for web and Electron desktop, a NestJS control plane, a FastAPI data plane for AI.`,
       `Scoped every token and RBAC check to the tenant, over trusting the subdomain alone, so one mis-routed request cannot read another customer's data.`,
       `Built our own OAuth 2.1/OIDC provider (RS256, JWKS, PKCE) so the Electron desktop app signs in the same way as the web, through a logiup:// deep link.`,
       `Shipped the AI-assisted customs workflow: AI suggests values and a person confirms each of the 8 declaration sections, with <b>6 least-privilege runtime roles</b> and <b>31 typed API endpoints</b>.`,
@@ -53,7 +53,7 @@ export const projects = [
     ],
     "Apr 2026 - Present",
     [
-      `Co-founded BonBon Mobility, which won Tasco Foundry Wash3000 out of about 100 applicants and closed a <b>$500K pre-seed round led by Tasco</b>, with GenAI Fund co-investing (Sep 2026).`,
+      `Co-founded BonBon Mobility (part-time, alongside Zalo PC), which won Tasco Foundry Wash3000 out of about 100 applicants and closed a <b>$500K pre-seed round led by Tasco</b>, with GenAI Fund co-investing (Sep 2026).`,
       `Built the product as a <b>12-screen Mini App</b> inside the VETC app (<b>4.3M users</b> as of Apr 2026, per Tasco) and shipped through VETC's change approval and security process (OWASP review, independent pentest).`,
       `Signed car owners in silently with their VETC session instead of a second OTP, and kept sessions in memory only, with no browser token storage.`,
       `Shipped new features behind default-off kill-switch flags, and went from MVP to a field pilot in 3 months, the length of the Wash3000 program.`

@@ -16,7 +16,7 @@ import CapabilityMapDiagram, {
   zoneBounds,
   type CapabilityKey
 } from "./CapabilityMapDiagram";
-import { LuArrowDown } from "react-icons/lu";
+import { LuArrowDown, LuPause, LuPlay } from "react-icons/lu";
 import { caseFileId, openCaseFile, type CaseFileKey } from "./CaseFile";
 
 // Zones with a case file in Projects: the panel links down to it.
@@ -160,6 +160,15 @@ export default function CapabilityMap() {
     track("cv_capability_select", { capability: key, source });
   }, []);
 
+  // WCAG 2.2.2: a visible control for content that changes on its own (MEP-78).
+  const toggleAutoplay = () => {
+    const next = !autoplay;
+    setAutoplay(next);
+    track("cv_capability_autoplay_toggle", {
+      state: next ? "playing" : "paused"
+    });
+  };
+
   const onTabKeyDown = (
     event: KeyboardEvent<HTMLButtonElement>,
     index: number
@@ -213,35 +222,50 @@ export default function CapabilityMap() {
           </svg>
         </div>
 
-        <div
-          className="cm-tabs"
-          role="tablist"
-          aria-label={summary("mapTabsLabel")}
-          aria-orientation={compact ? "horizontal" : "vertical"}
-        >
-          {capabilityKeys.map((key, i) => {
-            const selected = key === active;
-            return (
-              <button
-                key={key}
-                ref={(el) => {
-                  tabRefs.current[i] = el;
-                }}
-                id={`cm-tab-${key}`}
-                type="button"
-                role="tab"
-                aria-selected={selected}
-                aria-controls="cm-panel"
-                tabIndex={selected ? 0 : -1}
-                className={selected && cycling ? "cm-tab is-cycling" : "cm-tab"}
-                onClick={() => select(key, "tab")}
-                onKeyDown={(e) => onTabKeyDown(e, i)}
-              >
-                <span className="cm-tab-label">{t(`${key}.tab`)}</span>
-                <span className="cm-tab-meta">{t(`${key}.meta`)}</span>
-              </button>
-            );
-          })}
+        <div className="cm-nav">
+          <div
+            className="cm-tabs"
+            role="tablist"
+            aria-label={summary("mapTabsLabel")}
+            aria-orientation={compact ? "horizontal" : "vertical"}
+          >
+            {capabilityKeys.map((key, i) => {
+              const selected = key === active;
+              return (
+                <button
+                  key={key}
+                  ref={(el) => {
+                    tabRefs.current[i] = el;
+                  }}
+                  id={`cm-tab-${key}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={selected}
+                  aria-controls="cm-panel"
+                  tabIndex={selected ? 0 : -1}
+                  className={selected && cycling ? "cm-tab is-cycling" : "cm-tab"}
+                  onClick={() => select(key, "tab")}
+                  onKeyDown={(e) => onTabKeyDown(e, i)}
+                >
+                  <span className="cm-tab-label">{t(`${key}.tab`)}</span>
+                  <span className="cm-tab-meta">{t(`${key}.meta`)}</span>
+                </button>
+              );
+            })}
+          </div>
+          <button
+            type="button"
+            className="cm-autoplay"
+            aria-controls="cm-panel"
+            onClick={toggleAutoplay}
+          >
+            {autoplay ? (
+              <LuPause size={14} aria-hidden="true" />
+            ) : (
+              <LuPlay size={14} aria-hidden="true" />
+            )}
+            {summary(autoplay ? "mapPause" : "mapPlay")}
+          </button>
         </div>
 
         <div
@@ -250,6 +274,8 @@ export default function CapabilityMap() {
           role="tabpanel"
           tabIndex={0}
           aria-labelledby={`cm-tab-${active}`}
+          // Touching the story means someone is reading it: stop advancing for good.
+          onPointerDown={() => setAutoplay(false)}
         >
           <div key={active} className="cm-panel-inner">
             <h3 className="cm-title">{t(`${active}.title`)}</h3>

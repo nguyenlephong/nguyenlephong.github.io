@@ -181,6 +181,7 @@ test('case files and the smaller entries are wired to the map and tracked on vie
   assert.match(schema, /'Feature Flag Platforms'/);
   assert.match(schema, /'BonBon Mobility'/);
   assert.match(schema, /Co-founder/);
+  assert.match(schema, /'Co-founder \(part-time\), BonBon Mobility'/);
   assert.match(schema, /subjectOf/);
   const personSchemaBody = schema.slice(
     schema.indexOf('export function buildPersonSchema'),

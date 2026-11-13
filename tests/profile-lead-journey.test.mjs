@@ -405,6 +405,14 @@ test("capability map tracks selection and every locale carries each capability",
     /track\(["']cv_capability_select["'], \{ capability: key, source \}\)/
   );
   assert.match(analytics, /\| 'cv_capability_select'/);
+  // MEP-78: reduced motion never auto-advances, a visible toggle pauses it, touching the panel stops it.
+  assert.match(map, /const cycling = autoplay && !paused && inView && !reduced;/);
+  assert.match(map, /track\("cv_capability_autoplay_toggle", \{\s*state: next \? "playing" : "paused"\s*\}\)/);
+  assert.match(map, /className="cm-autoplay"[\s\S]*?onClick=\{toggleAutoplay\}/);
+  assert.match(map, /onPointerDown=\{\(\) => setAutoplay\(false\)\}/);
+  assert.match(analytics, /\| 'cv_capability_autoplay_toggle'/);
+  const css = await read("src/components/cv/capability-map.css");
+  assert.match(css, /prefers-reduced-motion: reduce[\s\S]*\.cm-autoplay \{ display: none; \}/);
 
   const keys = [
     ...diagram
@@ -413,8 +421,9 @@ test("capability map tracks selection and every locale carries each capability",
   ].map((m) => m[1]);
   assert.equal(keys.length, 6);
   for (const locale of locales) {
-    const pillars = JSON.parse(await read(`messages/${locale}.json`)).Summary
-      .pillars;
+    const summaryMessages = JSON.parse(await read(`messages/${locale}.json`)).Summary;
+    assert.ok(summaryMessages.mapPause?.trim() && summaryMessages.mapPlay?.trim(), `${locale} autoplay toggle`);
+    const pillars = summaryMessages.pillars;
     assert.deepEqual(Object.keys(pillars).sort(), [...keys].sort(), locale);
     for (const key of keys) {
       for (const field of [
