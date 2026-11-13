@@ -633,27 +633,27 @@
       }
     },
     "habits": {
-      "title": "Cách tôi làm việc",
+      "title": "Team nào sẽ cần tôi",
       "items": {
-        "trace": {
-          "title": "Trace trước khi viết lại",
-          "proof": "Ở Zalo PC, sync v2 có devtool giả lập rớt kết nối mobile, đi cùng phần retry. Một lookup trên hot path giảm từ <b>1,8 s xuống 4 ms</b> trong bài test 37 phiên.",
+        "scale": {
+          "title": "Team có hệ thống lớn, cần thay đổi mà không làm người dùng đau",
+          "proof": "Zalo PC là app desktop <b>hơn 15 triệu MAU</b>. Tôi đưa tính năng sao lưu tin nhắn trên máy tính, khôi phục trên điện thoại ra mắt từ 7/2026. Thay đổi rủi ro luôn có công tắc tắt sẵn; chỗ nào chậm thì đo ra đúng nguyên nhân rồi mới sửa, như một bước tra cứu giảm từ <b>1,8 s xuống 4 ms</b> trong bài test 37 phiên.",
           "source": "Zalo PC · 2026"
         },
-        "contracts": {
-          "title": "Chốt contract trước khi viết nhiều code",
-          "proof": "Tích hợp Gtel và Napas ở NDSVN chạy trên contract idempotent, có retry queue và theo dõi ACK, nên message phát lại từ queue không gây hậu quả.",
+        "handover": {
+          "title": "Team vừa mất người dẫn dắt kỹ thuật",
+          "proof": "Ở NDSVN, tôi vào ngay sau đợt chuyển giao CTO và nhận phụ trách kỹ thuật cho <b>8 developer và 3 QC</b>. Tôi viết lại ai lo phần nào, quy trình release, runbook và cách phỏng vấn, để team chạy được mà không phải chờ một người.",
           "source": "NDSVN · 2025–2026"
         },
-        "rollout": {
-          "title": "Rollout trước, release sau",
-          "proof": "Feature flag runtime ở PrimeData, nền tảng flag cho <b>30+ tenant</b> ở NDSVN, kill switch mặc định tắt ở Zalo PC và BonBon.",
-          "source": "PrimeData, NDSVN, Zalo PC, BonBon · 2020–2026"
+        "zeroToOne": {
+          "title": "Team cần đi từ ý tưởng tới sản phẩm thật, nhanh",
+          "proof": "BonBon là startup tôi đồng sáng lập, làm bán thời gian. Đội có sản phẩm chạy được sau 4 tuần, chạy thử thực tế một tháng, rồi thắng chương trình Wash3000 của Tasco Foundry trong khoảng 100 hồ sơ và gọi vốn pre-seed <b>500.000 USD</b> do Tasco dẫn dắt.",
+          "source": "BonBon · 2026"
         },
-        "writing": {
-          "title": "Viết ra để không ai phải chờ tôi",
-          "proof": "Sau đợt chuyển giao ở NDSVN, tôi viết sơ đồ ownership, playbook release và runbook. BonBon chạy trên <b>89</b> spec viết sẵn.",
-          "source": "NDSVN, BonBon · 2025–2026"
+        "platform": {
+          "title": "Sản phẩm B2B, nhiều khách hàng trên một nền tảng",
+          "proof": "Ở LogiUP, tôi là Tech Lead bán thời gian, quyết kiến trúc cho một SaaS logistics multi-tenant: dữ liệu khách nào chỉ khách đó thấy, từ token tới từng lần kiểm tra quyền, web và app Electron dùng chung một hệ thống đăng nhập. Ở NDSVN, nền tảng feature flag phục vụ <b>30+ tenant</b>, bật dần theo từng khách.",
+          "source": "LogiUP, NDSVN · 2025–2026"
         }
       },
       "stack": "Đang dùng (tháng 11/2026): TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog."

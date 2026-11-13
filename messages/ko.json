@@ -364,27 +364,27 @@
       }
     },
     "habits": {
-      "title": "일하는 방식",
+      "title": "저를 필요로 할 팀",
       "items": {
-        "trace": {
-          "title": "다시 쓰기 전에 추적한다",
-          "proof": "Zalo PC sync v2에는 재시도와 그룹 단위 재준비 작업과 함께, 모바일 연결 끊김을 재현하는 장애 주입 devtool을 붙였습니다. 37세션 테스트에서 hot path lookup이 <b>1.8 s에서 4 ms</b>로 줄었습니다.",
+        "scale": {
+          "title": "사용자를 불편하게 하지 않고 큰 시스템을 바꿔야 하는 팀",
+          "proof": "Zalo PC는 <b>MAU 1,500만 이상</b>의 데스크톱 앱입니다. PC 메시지 백업과 모바일 복원을 맡아 2026년 7월부터 배포하고 있습니다. 위험한 변경에는 항상 끄는 스위치를 두고, 느린 부분은 고치기 전에 측정합니다. 한 조회는 37세션 테스트에서 <b>1.8초에서 4ms</b>로 줄었습니다.",
           "source": "Zalo PC · 2026"
         },
-        "contracts": {
-          "title": "코드 양보다 계약 먼저",
-          "proof": "NDSVN의 Gtel·Napas 연동은 멱등 계약, 재시도 큐, ACK 모니터링 위에서 돌아갔습니다. 메시지를 다시 보내도 문제가 생기지 않습니다.",
+        "handover": {
+          "title": "기술 리더가 막 떠난 팀",
+          "proof": "NDSVN에서는 CTO 교체 직후 합류해 <b>개발자 8명과 QC 3명</b>의 기술을 맡았습니다. 누가 무엇을 맡는지, 릴리스 절차, 장애 대응 문서, 채용 면접 방식을 정리해 한 사람을 기다리지 않고 돌아가게 했습니다.",
           "source": "NDSVN · 2025–2026"
         },
-        "rollout": {
-          "title": "릴리스 전에 단계적으로 배포한다",
-          "proof": "PrimeData의 런타임 flag, NDSVN의 <b>30+ 테넌트</b> flag 플랫폼, Zalo PC와 BonBon의 기본 꺼짐 kill switch.",
-          "source": "PrimeData, NDSVN, Zalo PC, BonBon · 2020–2026"
+        "zeroToOne": {
+          "title": "아이디어에서 실제 제품까지 빨리 가야 하는 팀",
+          "proof": "BonBon은 제가 파트타임으로 공동 창업한 스타트업입니다. 4주 만에 동작하는 제품을 만들고 한 달간 현장 파일럿을 거쳐, 약 100개 지원 가운데 Tasco Foundry Wash3000에서 우승했고 Tasco 주도로 <b>50만 달러</b> 프리시드를 유치했습니다.",
+          "source": "BonBon · 2026"
         },
-        "writing": {
-          "title": "아무도 나를 기다리지 않도록 적는다",
-          "proof": "NDSVN 인수인계 후 책임 범위 지도, 릴리스 playbook, runbook을 썼습니다. BonBon은 <b>89</b>개의 작성된 스펙 위에서 돌아갑니다.",
-          "source": "NDSVN, BonBon · 2025–2026"
+        "platform": {
+          "title": "여러 기업 고객을 한 플랫폼에서 받는 B2B 제품",
+          "proof": "LogiUP에서는 파트타임 Tech Lead로 멀티테넌트 물류 SaaS를 설계합니다. 고객마다 자기 데이터만 보이도록 토큰부터 권한 검사까지 분리했고, 웹과 Electron 앱은 하나의 로그인을 씁니다. NDSVN에서는 <b>30개 이상의 테넌트</b>에 고객별 단계 배포가 되는 플래그 플랫폼을 만들었습니다.",
+          "source": "LogiUP, NDSVN · 2025–2026"
         }
       },
       "stack": "현재 사용 중(2026년 11월 기준): TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog."

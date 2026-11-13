@@ -364,27 +364,27 @@
       }
     },
     "habits": {
-      "title": "働き方",
+      "title": "私が力になれるチーム",
       "items": {
-        "trace": {
-          "title": "書き直す前にトレースする",
-          "proof": "Zalo PC の sync v2 には、リトライとグループ単位の再準備に加えて、モバイル回線の切断を再現するフォールト注入 devtool を用意しました。37セッションのテストで、hot path の lookup が <b>1.8 s から 4 ms</b> に短縮。",
+        "scale": {
+          "title": "大きなシステムを、ユーザーを困らせずに変えたいチーム",
+          "proof": "Zalo PC は <b>MAU 1,500万以上</b>のデスクトップアプリです。PC でのメッセージバックアップとモバイルでの復元を担当し、2026年7月から順次リリースしています。リスクのある変更には必ず停止スイッチを用意し、遅い処理は直す前に測ります。ある検索処理は37セッションのテストで<b>1.8秒から4ミリ秒</b>になりました。",
           "source": "Zalo PC · 2026"
         },
-        "contracts": {
-          "title": "コード量より先に契約を決める",
-          "proof": "NDSVN での Gtel・Napas 連携は、冪等な契約、リトライキュー、ACK 監視の上で動いていました。メッセージを再送しても害はありません。",
+        "handover": {
+          "title": "技術リーダーが抜けたばかりのチーム",
+          "proof": "NDSVN では CTO 交代の直後に参加し、<b>開発者8名と QC 3名</b>の技術面を引き受けました。担当範囲、リリース手順、障害対応手順、採用面接の進め方を書き残し、一人を待たずに回るチームにしました。",
           "source": "NDSVN · 2025–2026"
         },
-        "rollout": {
-          "title": "リリースの前に段階的に展開する",
-          "proof": "PrimeData のランタイム flag、NDSVN の <b>30+ テナント</b>向け flag 基盤、Zalo PC と BonBon の既定オフの kill switch。",
-          "source": "PrimeData, NDSVN, Zalo PC, BonBon · 2020–2026"
+        "zeroToOne": {
+          "title": "アイデアから実際のプロダクトまで速く進みたいチーム",
+          "proof": "BonBon はパートタイムで共同創業したスタートアップです。4週間で動くプロダクトを作り、1か月の実地パイロットを経て、約100件の応募の中から Tasco Foundry の Wash3000 で優勝し、Tasco 主導で <b>50万ドル</b>のプレシードを調達しました。",
+          "source": "BonBon · 2026"
         },
-        "writing": {
-          "title": "誰も自分を待たなくていいように書く",
-          "proof": "NDSVN の引き継ぎ後、責任範囲の地図、リリースの playbook、runbook を書きました。BonBon は <b>89</b> 本の仕様書の上で動いています。",
-          "source": "NDSVN, BonBon · 2025–2026"
+        "platform": {
+          "title": "多くの企業顧客を一つの基盤で支える B2B プロダクト",
+          "proof": "LogiUP ではパートタイムの Tech Lead として、マルチテナントの物流 SaaS を設計しています。各顧客は自社のデータしか見えず、トークンから権限チェックまで分離し、Web と Electron アプリは一つのログインを共有します。NDSVN では <b>30以上のテナント</b>に、顧客ごとに段階リリースできるフラグ基盤を提供しました。",
+          "source": "LogiUP, NDSVN · 2025–2026"
         }
       },
       "stack": "現在使っているもの（2026年11月時点）：TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog。"

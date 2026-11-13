@@ -35,7 +35,7 @@ const PERIODS = [
   { id: 'now', year: 2026 },
 ] as const
 
-const HABITS = ['trace', 'contracts', 'rollout', 'writing'] as const
+const HABITS = ['scale', 'handover', 'zeroToOne', 'platform'] as const
 
 const WRITING_LINKS = {
   blog: APP_ROUTE.BLOG,

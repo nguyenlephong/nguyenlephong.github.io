@@ -364,27 +364,27 @@
       }
     },
     "habits": {
-      "title": "我的工作方式",
+      "title": "哪些团队会需要我",
       "items": {
-        "trace": {
-          "title": "先追踪，再重写",
-          "proof": "在 Zalo PC，sync v2 除了重试和分组重新准备，还配了一个能复现移动网络断连的故障注入 devtool。在 37 个会话的测试中，一次 hot path 查询从 <b>1.8 s 降到 4 ms</b>。",
+        "scale": {
+          "title": "系统很大，要改又不能伤到用户",
+          "proof": "Zalo PC 是<b>月活超过 1500 万</b>的桌面应用。我负责电脑端消息备份、手机端恢复，2026 年 7 月起逐步上线。有风险的改动都带关闭开关，慢的地方先测量再修：一次查询在 37 个会话的测试中从 <b>1.8 秒降到 4 毫秒</b>。",
           "source": "Zalo PC · 2026"
         },
-        "contracts": {
-          "title": "先定契约，再写代码",
-          "proof": "NDSVN 的 Gtel 和 Napas 对接建立在幂等契约、重试队列和 ACK 监控之上，消息重放也不会造成损害。",
+        "handover": {
+          "title": "刚失去技术带头人的团队",
+          "proof": "在 NDSVN，我在 CTO 交接后加入，接手 <b>8 名开发和 3 名 QC</b> 的技术工作。我写下了谁负责什么、发布流程、故障手册和面试流程，让团队不必等某一个人。",
           "source": "NDSVN · 2025–2026"
         },
-        "rollout": {
-          "title": "先灰度，再发布",
-          "proof": "PrimeData 的运行时 flag，NDSVN 支持 <b>30+ 租户</b>的 flag 平台，Zalo PC 和 BonBon 默认关闭的 kill switch。",
-          "source": "PrimeData, NDSVN, Zalo PC, BonBon · 2020–2026"
+        "zeroToOne": {
+          "title": "需要从想法快速走到真实产品的团队",
+          "proof": "BonBon 是我兼职联合创办的创业公司。四周做出可用的产品，一个月实地试点，随后在约 100 份申请中赢得 Tasco Foundry 的 Wash3000 项目，并完成由 Tasco 领投的 <b>50 万美元</b>种子前轮融资。",
+          "source": "BonBon · 2026"
         },
-        "writing": {
-          "title": "写下来，让谁都不必等我",
-          "proof": "NDSVN 交接之后，我写了职责地图、发布 playbook 和 runbook。BonBon 建立在 <b>89</b> 份成文的规格之上。",
-          "source": "NDSVN, BonBon · 2025–2026"
+        "platform": {
+          "title": "一个平台服务众多企业客户的 B2B 产品",
+          "proof": "在 LogiUP，我是兼职技术负责人，设计多租户物流 SaaS：每个客户只看得到自己的数据，从令牌到每次权限检查都隔离，网页和 Electron 应用共用一套登录。在 NDSVN，功能开关平台服务 <b>30 多个租户</b>，可按客户逐步放量。",
+          "source": "LogiUP, NDSVN · 2025–2026"
         }
       },
       "stack": "目前在用（截至 2026 年 11 月）：TypeScript、React、Next.js、Electron、Go、NestJS、PostgreSQL、Redis、Kubernetes、PostHog。"

@@ -20,7 +20,7 @@ const messages = Object.fromEntries(
 const en = messages.en.About;
 const vi = messages.vi.About;
 const periods = ["early", "product", "scale", "handover", "now"];
-const habits = ["trace", "contracts", "rollout", "writing"];
+const habits = ["scale", "handover", "zeroToOne", "platform"];
 
 test("about tells the career arc, one period per move, in every locale", () => {
   assert.match(page, /const PERIODS = \[/);

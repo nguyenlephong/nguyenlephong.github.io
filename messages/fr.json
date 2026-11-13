@@ -364,27 +364,27 @@
       }
     },
     "habits": {
-      "title": "Ma façon de travailler",
+      "title": "Les équipes qui ont besoin de moi",
       "items": {
-        "trace": {
-          "title": "Tracer avant de réécrire",
-          "proof": "Chez Zalo PC, la sync v2 a reçu un devtool d'injection de pannes qui reproduit les coupures mobiles, en plus des retries et de la re-préparation par groupes. Une lookup du hot path est passée de <b>1,8 s à 4 ms</b> sur un test de 37 sessions.",
+        "scale": {
+          "title": "Un grand système à faire évoluer sans gêner ses utilisateurs",
+          "proof": "Zalo PC est un client desktop de <b>15M+ MAU</b>. J'ai livré la sauvegarde des messages sur PC avec restauration sur mobile, déployée depuis juillet 2026. Les changements risqués partent avec un interrupteur d'arrêt, et les lenteurs sont mesurées avant d'être corrigées : une recherche est passée de <b>1,8 s à 4 ms</b> sur un test de 37 sessions.",
           "source": "Zalo PC · 2026"
         },
-        "contracts": {
-          "title": "Le contrat avant le volume de code",
-          "proof": "Les intégrations Gtel et Napas chez NDSVN reposaient sur des contrats idempotents, des files de retry et un suivi des ACK : rejouer un message ne cause aucun dégât.",
+        "handover": {
+          "title": "Une équipe qui vient de perdre son lead technique",
+          "proof": "Chez NDSVN, je suis arrivé juste après une passation de CTO et j'ai pris la responsabilité technique de <b>8 développeurs et 3 QC</b>. J'ai écrit qui fait quoi, le processus de release, les runbooks et le processus d'entretien, pour que l'équipe n'attende personne.",
           "source": "NDSVN · 2025–2026"
         },
-        "rollout": {
-          "title": "Déployer par étapes avant de livrer",
-          "proof": "Feature flags runtime chez PrimeData, plateforme de flags pour <b>30+ tenants</b> chez NDSVN, kill switches désactivés par défaut chez Zalo PC et BonBon.",
-          "source": "PrimeData, NDSVN, Zalo PC, BonBon · 2020–2026"
+        "zeroToOne": {
+          "title": "Passer vite d'une idée à un vrai produit",
+          "proof": "BonBon est une startup que j'ai cofondée, à temps partiel. Produit fonctionnel en quatre semaines, un mois de pilote terrain, puis victoire au programme Wash3000 de Tasco Foundry parmi une centaine de candidatures et une levée pre-seed de <b>500 k$</b> menée par Tasco.",
+          "source": "BonBon · 2026"
         },
-        "writing": {
-          "title": "Écrire pour que personne ne m'attende",
-          "proof": "Après la passation chez NDSVN, j'ai écrit la carte des responsabilités, le playbook de release et les runbooks. BonBon s'appuie sur <b>89</b> specs écrites.",
-          "source": "NDSVN, BonBon · 2025–2026"
+        "platform": {
+          "title": "Un produit B2B, de nombreux clients sur une plateforme",
+          "proof": "Chez LogiUP, je suis Tech Lead à temps partiel et architecte d'un SaaS logistique multi-tenant : chaque client ne voit que ses données, du token à chaque contrôle de droits, et le web comme l'app Electron partagent une seule connexion. Chez NDSVN, la plateforme de feature flags servait <b>30+ tenants</b> avec un déploiement client par client.",
+          "source": "LogiUP, NDSVN · 2025–2026"
         }
       },
       "stack": "Outils actuels (novembre 2026) : TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog."
