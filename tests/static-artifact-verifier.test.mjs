@@ -1535,7 +1535,7 @@ test('requires the site owner author to use the exact owner identity', async (t)
   })
   assert.match(
     missingIdentity.failures.join('\n'),
-    /site owner Article author must use https:\/\/example\.com\/#person and https:\/\/example\.com/,
+    /site owner Article author must use https:\/\/example\.com\/#person and https:\/\/example\.com\/en/,
   )
 
   writeLocalizedArticleFixture(outDir, {
@@ -1552,7 +1552,7 @@ test('requires the site owner author to use the exact owner identity', async (t)
   })
   assert.match(
     wrongIdentity.failures.join('\n'),
-    /site owner Article author must use https:\/\/example\.com\/#person and https:\/\/example\.com/,
+    /site owner Article author must use https:\/\/example\.com\/#person and https:\/\/example\.com\/en/,
   )
 })
 

@@ -914,6 +914,8 @@ function verifyArticleAuthorContracts({ article, metadata, siteOrigin, failures 
   }
 
   const expectedOwnerId = `${siteOrigin}/#person`
+  // The CV page (ProfilePage); `/` is only a redirect stub.
+  const expectedOwnerUrl = `${siteOrigin}/en`
   for (const author of authors) {
     const name = typeof author?.name === 'string' ? author.name.trim() : ''
     if (!author || !schemaHasType(author, PERSON_SCHEMA_TYPES) || !name) {
@@ -934,9 +936,9 @@ function verifyArticleAuthorContracts({ article, metadata, siteOrigin, failures 
     }
 
     if (name === SITE_OWNER_NAME) {
-      if (author['@id'] !== expectedOwnerId || author.url !== siteOrigin) {
+      if (author['@id'] !== expectedOwnerId || author.url !== expectedOwnerUrl) {
         failures.push(
-          `${metadata.relativePath} site owner Article author must use ${expectedOwnerId} and ${siteOrigin}`,
+          `${metadata.relativePath} site owner Article author must use ${expectedOwnerId} and ${expectedOwnerUrl}`,
         )
       }
       continue
@@ -946,7 +948,8 @@ function verifyArticleAuthorContracts({ article, metadata, siteOrigin, failures 
     const authorUrl = identities.get('url')
     const claimsOwnerId =
       authorId?.origin === siteOrigin && authorId.pathname === '/' && authorId.hash === '#person'
-    const claimsOwnerUrl = authorUrl?.origin === siteOrigin && authorUrl.pathname === '/'
+    const claimsOwnerUrl =
+      authorUrl?.origin === siteOrigin && ['/', '/en'].includes(authorUrl.pathname)
     if (claimsOwnerId || claimsOwnerUrl) {
       failures.push(
         `${metadata.relativePath} Article author must not claim the site owner identity with another name`,

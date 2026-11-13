@@ -4,7 +4,7 @@ import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { LOCALE_LABELS, routing, type Locale } from '@/i18n/routing'
-import { SITE, SITE_URL } from '@/app/seo.config'
+import { PROFILE_URL, SITE, SITE_URL } from '@/app/seo.config'
 import { htmlToPlainText } from '@/lib/blog/seo'
 import { buildArticleDescription } from '@/lib/seo/article-description'
 import {
@@ -265,13 +265,13 @@ export default async function BlogPostPage({ params }: Props) {
       '@type': 'Person',
       '@id': `${SITE_URL}/#person`,
       name: post.author,
-      url: SITE_URL,
+      url: PROFILE_URL,
     },
     publisher: {
       '@type': 'Person',
       '@id': `${SITE_URL}/#person`,
       name: 'Nguyen Le Phong',
-      url: SITE_URL,
+      url: PROFILE_URL,
     },
   }
 

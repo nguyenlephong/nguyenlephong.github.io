@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { SITE, SITE_URL } from '@/app/seo.config'
+import { PROFILE_URL, SITE, SITE_URL } from '@/app/seo.config'
 import PostHogBootstrap from '@/components/analytics/PostHogBootstrap'
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
 import { routing, type Locale } from '@/i18n/routing'
@@ -52,7 +52,7 @@ export async function generateMetadata({
     description,
     metadataBase: new URL(SITE_URL),
     applicationName: SITE.name,
-    authors: [{ name: 'Nguyen Le Phong', url: SITE_URL }],
+    authors: [{ name: 'Nguyen Le Phong', url: PROFILE_URL }],
     creator: 'Nguyen Le Phong',
     publisher: 'Nguyen Le Phong',
     keywords: [

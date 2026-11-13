@@ -628,7 +628,7 @@ test("notes author quality has one exact unresolved slug and consistent explicit
   });
   assert.equal(
     notesAuthorship.resolveNoteAuthorIdentity("Nguyen Le Phong").profileUrl,
-    "https://nguyenlephong.github.io"
+    "https://nguyenlephong.github.io/en"
   );
 });
 

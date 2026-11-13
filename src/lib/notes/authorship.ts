@@ -1,4 +1,4 @@
-import { SITE, SITE_URL } from '@/app/seo.config'
+import { PROFILE_URL, SITE, SITE_URL } from '@/app/seo.config'
 
 export interface NoteAuthorIdentity {
   name: string
@@ -23,12 +23,12 @@ export function resolveNoteAuthorIdentity(
 
   return {
     name,
-    profileUrl: SITE_URL,
+    profileUrl: PROFILE_URL,
     structuredData: {
       '@type': 'Person',
       '@id': `${SITE_URL}/#person`,
       name,
-      url: SITE_URL,
+      url: PROFILE_URL,
     },
   }
 }

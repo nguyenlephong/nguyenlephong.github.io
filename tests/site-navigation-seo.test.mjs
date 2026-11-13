@@ -97,6 +97,18 @@ test("home profile graph links to the WebSite and Person entities without a seco
   assert.deepEqual(profilePage.mainEntity, { "@id": SITE_URL + "/#person" });
 });
 
+test("home Person JSON-LD matches the evidence ledger and publishes no contact details", () => {
+  const person = buildPersonSchema("desc");
+  assert.equal(person.url, SITE_URL + "/en");
+  assert.equal(person.jobTitle, "Lead Software Engineer");
+  assert.equal(person.worksFor.name, "Zalo");
+  assert.equal(person.affiliation.name, "BonBon Mobility");
+  assert.deepEqual(person.alumniOf, { "@type": "CollegeOrUniversity", name: "Nong Lam University" });
+  const serialized = JSON.stringify(person);
+  assert.doesNotMatch(serialized, /telephone|"email"|mailto:|@gmail\.com/);
+  assert.doesNotMatch(serialized, /GPA|\d+[KM]\+?\s*MAU/);
+});
+
 test("section breadcrumb is a two-step brand then section list", () => {
   const crumb = buildSectionBreadcrumb({
     locale: "vi",
