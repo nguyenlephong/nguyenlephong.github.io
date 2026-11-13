@@ -9,6 +9,15 @@
     "gallery": "Galerie",
     "apps": "Applications",
     "resume": "CV",
+    "mainNav": "Navigation principale",
+    "menuOpen": "Ouvrir le menu",
+    "menuClose": "Fermer le menu",
+    "theme": {
+      "label": "Thème",
+      "light": "Thème clair",
+      "system": "Thème du système",
+      "dark": "Thème sombre"
+    },
     "font": {
       "label": "Police de lecture",
       "sans": "Sans-serif",
@@ -61,7 +70,7 @@
     }
   },
   "Sections": {
-    "aboutTitle": "Je travaille sur des systèmes où une erreur coûte de l'argent ou la confiance.",
+    "aboutTitle": "Je travaille là où une erreur coûte de l'argent ou la confiance.",
     "experienceTitle": "J'ai tenu une équipe lors d'un changement de CTO, puis Zalo m'a repris en Lead.",
     "projectsTitle": "Deux systèmes dont j'ai décidé l'architecture, et assumé les suites."
   },
@@ -75,7 +84,7 @@
         "figure": "1,8 s → 4 ms",
         "figureLabel": "une recherche sur le chemin critique de sync v2",
         "title": "Garder les messages alignés entre ordinateur et téléphone",
-        "body": "Je dirige le travail sur les données multi-appareils de Zalo PC. Sync v2 relance et re-prépare désormais par groupes quand la connexion mobile décroche, et la sauvegarde des messages sur PC avec restauration sur mobile a commencé son déploiement en juillet 2026, relayée par VnExpress."
+        "body": "Je dirige les données multi-appareils de Zalo PC. Sync v2 relance et re-prépare par groupes quand le mobile décroche. La sauvegarde des messages PC, restaurable sur mobile, se déploie depuis juillet 2026 (VnExpress en a parlé)."
       },
       "zeroToPilot": {
         "tab": "De zéro au pilote",
@@ -145,7 +154,7 @@
       },
       "team": {
         "label": "Pratiques d'équipe",
-        "items": "Code review, RFC, runbooks, entretiens structurés, agents IA pour la revue de code et les vérifications de release"
+        "items": "Code review, RFC, runbooks, entretiens structurés, agents IA de revue et de contrôle des releases"
       }
     }
   },
@@ -161,15 +170,15 @@
       "zaloLead": {
         "scope": "Réembauché comme Lead en mars 2026, sept mois après mon départ pour NDSVN. Je dirige la messagerie multi-appareils et le stockage côté client de l'app desktop (15M+ MAU).",
         "contributions": [
-          "Livraison de la <b>sauvegarde des messages sur PC</b> avec restauration sur mobile : contrat de payload, fichiers durcis dans le worker, télémétrie d'upload, exclusion mutuelle avec la synchro. Déploiement lancé en juillet 2026.",
-          "Sync v2 renforcée pour les liaisons mobiles instables : retries, re-préparation par groupes, comptage des échecs. Une lookup du hot path est passée de <b>1,8 s à 4 ms</b> sur un test de 37 sessions.",
-          "Les changements risqués partent <b>désactivés par défaut</b>, derrière des kill switches et une config distante.",
+          "<b>Sauvegarde des messages PC</b> et restauration sur mobile : contrat de payload, fichiers du worker durcis, télémétrie d'upload, exclusion mutuelle avec la synchro. Lancée en juillet 2026.",
+          "Sync v2 renforcée face aux coupures mobiles : retries, re-préparation par groupes, comptage des échecs. Sur un test de 37 sessions, une lookup du hot path est passée de <b>1,8 s à 4 ms</b>.",
+          "Changements risqués <b>off par défaut</b>, derrière kill switches et config distante.",
           "<b>zCloud offload</b> plus fiable et observable, avec une sonde quotidienne de santé des logs, désactivable à distance.",
           "Outil d'injection de fautes qui reproduit les coupures mobiles pendant les tests de synchro."
         ]
       },
       "ndsvn": {
-        "scope": "Responsable technique après un changement de CTO, avec une équipe de livraison de 8 développeurs et 3 QC.",
+        "scope": "Responsable technique après un changement de CTO ; équipe delivery de 8 développeurs et 3 QC.",
         "contributions": [
           "Fonctionnement de l'équipe mis par écrit : qui possède quoi, matrice de compétences, <b>playbook de release</b> (branches, tags, RFC, runbooks) et entretiens structurés.",
           "Plateforme de feature flags en .NET Core pour <b>30+ tenants</b> (environ 40k utilisateurs), avec règles de priorité et rollout en pourcentage par tenant, segment ou environnement.",
@@ -184,7 +193,7 @@
         "scope": "Ingénieur clé du client Zalo PC (Web, macOS, Windows ; 15M+ MAU), plus des fonctionnalités pour Zalo Android (~80M d'utilisateurs).",
         "contributions": [
           "Pilotage du design system Storybook utilisé par <b>50+ développeurs</b>.",
-          "<b>10+ fonctionnalités</b> livrées côté client, dont le mode sombre, les thèmes dynamiques, le module de téléchargement et le bot Kiki.",
+          "<b>10+ fonctionnalités client</b> livrées, dont mode sombre, thèmes dynamiques, module de téléchargement et bot Kiki.",
           "Maintenance de 3+ fonctionnalités de Zalo Android, axée sur la stabilité et la performance.",
           "Parcours promotionnel avec son propre suivi et monitoring.",
           "Logs et suivi comportemental ajoutés au client desktop."
@@ -201,7 +210,7 @@
         ]
       },
       "splus": {
-        "line": "8+ projets clients (éducation, restauration, banque, e-commerce) et une petite équipe dirigée. Best Rookie of the Year 2019."
+        "line": "8+ projets clients (éducation, F&B, banque, e-commerce), lead d'une petite équipe. Best Rookie of the Year 2019."
       },
       "propman": {
         "line": "Un des premiers ingénieurs. Application web principale construite en React."
@@ -230,18 +239,18 @@
     "logiup": {
       "name": "LogiUP",
       "kind": "SaaS logistique multi-tenant",
-      "role": "Tech Lead et architecte système",
+      "role": "Tech Lead, architecte système",
       "period": "mars 2026 – auj.",
-      "context": "Chaque client a son propre sous-domaine, et ses données ne doivent jamais atteindre un autre tenant. Le produit tourne sur le web et en application desktop Electron. Je dirige une équipe de quatre personnes et je porte l'architecture.",
+      "context": "Chaque client a son sous-domaine, et ses données ne doivent jamais fuiter vers un autre tenant. Web et app desktop Electron. Je dirige une équipe de quatre et je porte l'architecture.",
       "decisions": [
         "Tenant lié à chaque token, pas au sous-domaine, car une route peut errer.",
         "Notre OAuth 2.1/OIDC, pas deux logins, car Electron suit le web.",
         "Un humain valide les 8 sections, pas l'IA seule, car une erreur coûte cher."
       ],
       "outcome": [
-        "<b>9 dépôts</b> sur une seule architecture (août 2026) : une UI Next.js pour le web et Electron, un control plane NestJS, un data plane IA en FastAPI.",
+        "<b>9 dépôts</b>, une seule architecture (août 2026) : UI Next.js commune au web et à Electron, control plane NestJS, data plane IA en FastAPI.",
         "<b>6</b> rôles runtime à privilèges minimaux et <b>31</b> endpoints API typés pour le workflow douanier.",
-        "Déclarations d'export passées en UAT en octobre 2026, avec un classificateur de documents à base de règles."
+        "Déclarations d'export en UAT en octobre 2026, avec un classifieur de documents par règles."
       ],
       "evidenceNote": "Dépôts privés : pas de lien public."
     },
@@ -250,21 +259,21 @@
       "kind": "Réservation d'entretien auto dans l'app VETC",
       "role": "Cofondateur",
       "period": "avr. 2026 – auj.",
-      "context": "BonBon met en relation les automobilistes et les garages de lavage et d'entretien. En tant que cofondateur, j'ai construit le produit sous forme de Mini App de 12 écrans dans l'app VETC, qui comptait <b>4,3 millions d'utilisateurs</b> en avril 2026 (Tasco). Chaque release passe par la validation des changements et le processus de sécurité de VETC, qui comprend une revue OWASP et un pentest indépendant.",
+      "context": "BonBon relie les automobilistes aux garages de lavage et d'entretien. Cofondateur, j'ai construit le produit : une Mini App de 12 écrans dans l'app VETC (<b>4,3 M d'utilisateurs</b> en avril 2026, selon Tasco). Chaque release passe par la validation des changements de VETC et son processus de sécurité : revue OWASP et pentest indépendant.",
       "decisions": [
         "Session VETC plutôt qu'un OTP de plus, car VETC a déjà vérifié l'utilisateur.",
         "Sessions en mémoire, sans token stocké, car VETC interdit le stockage.",
         "Kill switches éteints par défaut, car chaque release attend VETC."
       ],
       "outcome": [
-        "BonBon a remporté Tasco Foundry Wash3000 : environ <b>100</b> candidatures, un top 10, trois finalistes, un gagnant (GenAI Fund, sept. 2026).",
-        "Tour pre-seed de <b>500 k$</b> mené par Tasco, avec GenAI Fund en co-investisseur (sept. 2026).",
+        "Lauréat de Tasco Foundry Wash3000 : environ <b>100</b> candidatures, un top 10, trois finalistes, un gagnant (GenAI Fund, sept. 2026).",
+        "Levée pre-seed de <b>500 k$</b> menée par Tasco, co-investie par GenAI Fund (sept. 2026).",
         "<b>3 mois</b> du MVP au pilote terrain, la durée du programme Wash3000."
       ]
     },
     "sat": {
       "name": "Digital SAT Math",
-      "proof": "Construit et exploité de bout en bout. <b>10 000+ visites et 3 000+ inscriptions</b> les deux premiers mois."
+      "proof": "Construit et exploité de bout en bout. <b>10 000+ visites et 3 000+ inscriptions</b> en deux mois."
     },
     "vac": {
       "name": "Vietnam Australia Center",

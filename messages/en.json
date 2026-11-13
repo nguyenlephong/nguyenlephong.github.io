@@ -12,6 +12,15 @@
     "notes": "Notes",
     "studio": "Studio",
     "resume": "Résumé",
+    "mainNav": "Main navigation",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "theme": {
+      "label": "Theme",
+      "light": "Light theme",
+      "system": "System theme",
+      "dark": "Dark theme"
+    },
     "font": {
       "label": "Reading font",
       "sans": "Sans-serif",

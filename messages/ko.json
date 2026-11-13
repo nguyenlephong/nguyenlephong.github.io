@@ -9,6 +9,15 @@
     "gallery": "갤러리",
     "apps": "앱",
     "resume": "이력서",
+    "mainNav": "주요 탐색",
+    "menuOpen": "메뉴 열기",
+    "menuClose": "메뉴 닫기",
+    "theme": {
+      "label": "테마",
+      "light": "라이트 테마",
+      "system": "시스템 설정 따르기",
+      "dark": "다크 테마"
+    },
     "font": {
       "label": "본문 글꼴",
       "sans": "산세리프",

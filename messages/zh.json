@@ -9,6 +9,15 @@
     "gallery": "作品集",
     "apps": "应用",
     "resume": "简历",
+    "mainNav": "主导航",
+    "menuOpen": "打开菜单",
+    "menuClose": "关闭菜单",
+    "theme": {
+      "label": "主题",
+      "light": "浅色主题",
+      "system": "跟随系统",
+      "dark": "深色主题"
+    },
     "font": {
       "label": "阅读字体",
       "sans": "无衬线",

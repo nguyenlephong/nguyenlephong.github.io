@@ -9,6 +9,15 @@
     "gallery": "Bộ sưu tập",
     "apps": "Ứng dụng",
     "resume": "CV",
+    "mainNav": "Điều hướng chính",
+    "menuOpen": "Mở menu",
+    "menuClose": "Đóng menu",
+    "theme": {
+      "label": "Giao diện",
+      "light": "Giao diện sáng",
+      "system": "Theo hệ thống",
+      "dark": "Giao diện tối"
+    },
     "studio": "Studio",
     "font": {
       "label": "Font đọc",
