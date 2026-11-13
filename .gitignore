@@ -29,6 +29,8 @@
 .DS_Store
 .superpowers/
 .cache/
+# .env is local-only; public build config lives in the committed .env.production
+.env
 .env.local
 .env.development.local
 .env.test.local

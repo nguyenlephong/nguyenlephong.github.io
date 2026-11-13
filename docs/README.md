@@ -10,6 +10,9 @@ the system does.
 - [Technical Specification](./technical-specification.md) explains the product
   purpose, tech stack, routing, content model, analytics, deployment, and
   operational rules.
+- [Content Security Policy](../specs/content-security-policy.md) explains the
+  per-page hashed meta CSP, every inline script it hashes, and the response headers
+  GitHub Pages cannot send (custom domain or another host is the only fix).
 - [Diagrams](./diagrams/) contains PlantUML files written in a C4-style view of
   the system.
 

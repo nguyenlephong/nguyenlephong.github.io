@@ -13,6 +13,7 @@
     "build:force": "node scripts/build-og.mjs --full",
     "analyze": "next experimental-analyze --output",
     "assets:icdn": "node scripts/sync-icdn-assets.mjs",
+    "assets:icdn-variants": "node scripts/generate-icdn-variants.mjs",
     "seo:monitor": "node scripts/monitor-seo-field-data.mjs",
     "seo:opportunities": "node scripts/report-search-opportunities.mjs",
     "resume:generate": "python3 scripts/generate-resume-pdf.py",
@@ -70,6 +71,7 @@
   },
   "devDependencies": {
     "@firebase/rules-unit-testing": "5.0.1",
+    "@next/env": "16.2.10",
     "@types/d3-drag": "3.0.7",
     "@types/d3-force": "3.0.10",
     "@types/d3-selection": "3.0.11",
