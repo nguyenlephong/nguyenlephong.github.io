@@ -17,9 +17,9 @@ test('every locale carries the LogiUP and BonBon case files with the same facts'
       for (const field of ['name', 'kind', 'role', 'period', 'context']) {
         assert.ok(c[field]?.trim(), `${locale} ${key}.${field}`);
       }
-      assert.equal(c.decisions.length, 3, `${locale} ${key}.decisions`);
+      assert.equal(Object.keys(c.decisions).length, 3, `${locale} ${key}.decisions`);
       // Plain sentences, not the "X, over Y, because Z" formula (MEP-23).
-      for (const line of c.decisions) {
+      for (const line of Object.values(c.decisions)) {
         assert.doesNotMatch(line, /, over .*, because | thay vì .*, vì /, `${locale} ${key}: ${line}`);
       }
       assert.equal(c.accomplishments, undefined, `${locale} ${key} legacy bullets`);
@@ -39,7 +39,7 @@ test('every locale carries the LogiUP and BonBon case files with the same facts'
     assert.match(Projects.vac.proof, /12/, `${locale} vac proof`);
 
     const logiup = JSON.stringify(Projects.logiup);
-    assert.equal(Projects.logiup.outcome.length, 3);
+    assert.equal(Object.keys(Projects.logiup.outcome).length, 3);
     // A row whose only content is "no public link" is not evidence (MEP-23).
     assert.equal(Projects.logiup.evidenceNote, undefined, `${locale} logiup evidenceNote`);
     for (const fact of [/9/, /\b6\b|>6</, /31/, /\b8\b/, /OAuth 2\.1\/OIDC/, /Electron/, /2026/]) {
@@ -47,7 +47,7 @@ test('every locale carries the LogiUP and BonBon case files with the same facts'
     }
 
     const bonbon = JSON.stringify(Projects.bonbon);
-    assert.equal(Projects.bonbon.outcome.length, 3);
+    assert.equal(Object.keys(Projects.bonbon.outcome).length, 3);
     for (const fact of [/12/, /100/, /Wash3000/, /Tasco/, /GenAI Fund/, /500|50 ?万|50만/, /4[.,]3|430/, /OWASP/]) {
       assert.match(bonbon, fact, `${locale} bonbon ${fact}`);
     }
@@ -66,7 +66,7 @@ test('every locale carries the LogiUP and BonBon case files with the same facts'
     'Two systems where I made the architecture calls and lived with them.',
   );
   assert.equal(vi.Sections.projectsTitle, 'Hai hệ thống tôi quyết kiến trúc, đúng sai đều do tôi gánh.');
-  for (const line of [...en.Projects.logiup.decisions, ...en.Projects.bonbon.decisions]) {
+  for (const line of [...Object.values(en.Projects.logiup.decisions), ...Object.values(en.Projects.bonbon.decisions)]) {
     assert.doesNotMatch(line, /\bbecause\b/, line);
     assert.ok(line.length <= 100, `one line at 1440: ${line}`);
   }

@@ -186,45 +186,45 @@
     "roles": {
       "zaloLead": {
         "scope": "Rehired as Lead in March 2026, seven months after leaving for NDSVN. I lead cross-device messaging and client storage on the desktop client (15M+ MAU).",
-        "contributions": [
-          "Delivered <b>PC message backup</b> with restore on mobile: payload contract, worker file hardening, upload telemetry and mutual exclusion with sync. Rollout began in July 2026.",
-          "Hardened sync v2 for unreliable mobile links with retries, grouped re-prepare and failure accounting. One hot-path lookup fell from <b>1.8 s to 4 ms</b> on a 37-session test.",
-          "Risky changes ship <b>default off</b>, behind kill switches and remote config.",
-          "Made <b>zCloud offload</b> more reliable and observable, with a daily log-health probe that a remote kill switch can turn off.",
-          "Built a fault-injection devtool that reproduces dropped mobile links during sync testing."
-        ]
+        "contributions": {
+          "0": "Delivered <b>PC message backup</b> with restore on mobile: payload contract, worker file hardening, upload telemetry and mutual exclusion with sync. Rollout began in July 2026.",
+          "1": "Hardened sync v2 for unreliable mobile links with retries, grouped re-prepare and failure accounting. One hot-path lookup fell from <b>1.8 s to 4 ms</b> on a 37-session test.",
+          "2": "Risky changes ship <b>default off</b>, behind kill switches and remote config.",
+          "3": "Made <b>zCloud offload</b> more reliable and observable, with a daily log-health probe that a remote kill switch can turn off.",
+          "4": "Built a fault-injection devtool that reproduces dropped mobile links during sync testing."
+        }
       },
       "ndsvn": {
         "scope": "Took technical ownership after a CTO transition, with a delivery team of 8 developers and 3 QC.",
-        "contributions": [
-          "Wrote down how the team works: who owns which part, a competency matrix, a <b>release playbook</b> (branching, tagging, RFCs, runbooks) and structured interviews for hiring.",
-          "Built a .NET Core feature-flag platform for <b>30+ tenants</b> (about 40k users), with priority rules and percentage rollout by tenant, segment or environment.",
-          "Integrated <b>Gtel and Napas</b> over mTLS with pinned certificates and idempotent contracts, so a message replayed from the retry queue does no harm.",
-          "Split the web app into micro-frontends (an Angular host with React modules), so each module deploys on its own.",
-          "Took over the inherited infrastructure (ArgoCD, CI/CD, domains and SSL, AKS, FKE, K3S and EKS clusters) and made its failures diagnosable and recoverable.",
-          "Added PostHog tracking to see what each rollout did to adoption and errors.",
-          "Built internal AI agents for code review, deploy checks, service-quota validation, API health and release analysis."
-        ]
+        "contributions": {
+          "0": "Wrote down how the team works: who owns which part, a competency matrix, a <b>release playbook</b> (branching, tagging, RFCs, runbooks) and structured interviews for hiring.",
+          "1": "Built a .NET Core feature-flag platform for <b>30+ tenants</b> (about 40k users), with priority rules and percentage rollout by tenant, segment or environment.",
+          "2": "Integrated <b>Gtel and Napas</b> over mTLS with pinned certificates and idempotent contracts, so a message replayed from the retry queue does no harm.",
+          "3": "Split the web app into micro-frontends (an Angular host with React modules), so each module deploys on its own.",
+          "4": "Took over the inherited infrastructure (ArgoCD, CI/CD, domains and SSL, AKS, FKE, K3S and EKS clusters) and made its failures diagnosable and recoverable.",
+          "5": "Added PostHog tracking to see what each rollout did to adoption and errors.",
+          "6": "Built internal AI agents for code review, deploy checks, service-quota validation, API health and release analysis."
+        }
       },
       "zaloSenior": {
         "scope": "Core engineer on the Zalo PC client (Web, macOS, Windows) with 15M+ MAU, plus features for Zalo Android (~80M users).",
-        "contributions": [
-          "Led the Storybook design system used by <b>50+ developers</b>.",
-          "Shipped <b>10+ client features</b>, including dark mode, dynamic theming, the download module and the Kiki bot.",
-          "Maintained 3+ features in Zalo Android, with a focus on stability and performance.",
-          "Built a promotion flow with its own tracking and monitoring.",
-          "Added log and behavior tracking to the desktop client."
-        ]
+        "contributions": {
+          "0": "Led the Storybook design system used by <b>50+ developers</b>.",
+          "1": "Shipped <b>10+ client features</b>, including dark mode, dynamic theming, the download module and the Kiki bot.",
+          "2": "Maintained 3+ features in Zalo Android, with a focus on stability and performance.",
+          "3": "Built a promotion flow with its own tracking and monitoring.",
+          "4": "Added log and behavior tracking to the desktop client."
+        }
       },
       "primedata": {
         "scope": "CDxP, a customer data platform that merges customer profiles from disconnected systems. I led its front-end team of 4.",
-        "contributions": [
-          "Delivered the CDxP app and <b>10+ related projects</b>: JS and mobile SDKs, Magento and WordPress demos.",
-          "Wrote a JS tracking SDK under <b>200 KB</b> that loads in under 150 ms, with web and service workers coordinating across browser tabs.",
-          "Added runtime <b>feature flags</b> for A/B tests and segment groups.",
-          "Shipped 360-degree customer profiles and a campaign builder in the CDxP app.",
-          "Set up the BDD and E2E suite the team released against."
-        ]
+        "contributions": {
+          "0": "Delivered the CDxP app and <b>10+ related projects</b>: JS and mobile SDKs, Magento and WordPress demos.",
+          "1": "Wrote a JS tracking SDK under <b>200 KB</b> that loads in under 150 ms, with web and service workers coordinating across browser tabs.",
+          "2": "Added runtime <b>feature flags</b> for A/B tests and segment groups.",
+          "3": "Shipped 360-degree customer profiles and a campaign builder in the CDxP app.",
+          "4": "Set up the BDD and E2E suite the team released against."
+        }
       },
       "splus": {
         "line": "Delivered 8+ client projects in education, F&B, banking and e-commerce, and led a small team. Best Rookie of the Year 2019."
@@ -259,16 +259,16 @@
       "role": "Tech Lead and system architect, part-time",
       "period": "Mar 2026 – now",
       "context": "Each customer gets its own subdomain, and its data must never reach another tenant. It runs on the web and as an Electron desktop app. I lead a team of four and own the architecture.",
-      "decisions": [
-        "Every token and RBAC check carries the tenant, so a subdomain alone never grants access.",
-        "Web and the Electron app sign in through one in-house OAuth 2.1/OIDC provider, with PKCE.",
-        "AI suggests the values and a person confirms each of the 8 declaration sections."
-      ],
-      "outcome": [
-        "<b>9 repos</b> on one architecture as of Aug 2026: one Next.js UI for web and Electron, a NestJS control plane, a FastAPI data plane for AI.",
-        "<b>6</b> least-privilege runtime roles and <b>31</b> typed API endpoints behind the customs workflow.",
-        "Export declarations reached UAT in Oct 2026, with a rule-based document classifier."
-      ]
+      "decisions": {
+        "0": "Every token and RBAC check carries the tenant, so a subdomain alone never grants access.",
+        "1": "Web and the Electron app sign in through one in-house OAuth 2.1/OIDC provider, with PKCE.",
+        "2": "AI suggests the values and a person confirms each of the 8 declaration sections."
+      },
+      "outcome": {
+        "0": "<b>9 repos</b> on one architecture as of Aug 2026: one Next.js UI for web and Electron, a NestJS control plane, a FastAPI data plane for AI.",
+        "1": "<b>6</b> least-privilege runtime roles and <b>31</b> typed API endpoints behind the customs workflow.",
+        "2": "Export declarations reached UAT in Oct 2026, with a rule-based document classifier."
+      }
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -276,16 +276,16 @@
       "role": "Co-founder, part-time",
       "period": "Apr 2026 – now",
       "context": "BonBon connects car owners with wash and care garages. As co-founder I built the product as a 12-screen Mini App inside the VETC app, which had <b>4.3M users</b> as of April 2026 (Tasco). Every release goes through VETC's change approval and its security process, which includes an OWASP review and an independent pentest.",
-      "decisions": [
-        "Car owners sign in with the VETC session they already have, with no second OTP.",
-        "Sessions live in memory only, as VETC's rules allow no token in browser storage.",
-        "New features sit behind kill switches, off by default, and can be switched off without a release."
-      ],
-      "outcome": [
-        "BonBon won Tasco Foundry Wash3000: about <b>100</b> applicants, a top 10, three finalists, one winner (GenAI Fund, Sep 2026).",
-        "<b>$500K</b> pre-seed round led by Tasco, with GenAI Fund co-investing (Sep 2026).",
-        "<b>3 months</b> from MVP to a field pilot, the length of the Wash3000 program."
-      ]
+      "decisions": {
+        "0": "Car owners sign in with the VETC session they already have, with no second OTP.",
+        "1": "Sessions live in memory only, as VETC's rules allow no token in browser storage.",
+        "2": "New features sit behind kill switches, off by default, and can be switched off without a release."
+      },
+      "outcome": {
+        "0": "BonBon won Tasco Foundry Wash3000: about <b>100</b> applicants, a top 10, three finalists, one winner (GenAI Fund, Sep 2026).",
+        "1": "<b>$500K</b> pre-seed round led by Tasco, with GenAI Fund co-investing (Sep 2026).",
+        "2": "<b>3 months</b> from MVP to a field pilot, the length of the Wash3000 program."
+      }
     },
     "sat": {
       "name": "Digital SAT Math",

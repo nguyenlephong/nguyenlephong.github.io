@@ -6,7 +6,14 @@ const { version: appVersion } = JSON.parse(
   readFileSync(new URL('./app-version.json', import.meta.url), 'utf-8'),
 )
 
-const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
+// Precompile catalogs at build time so the ICU parser (intl-messageformat) stays out of the
+// client bundle (MEP-71). Catalogs must stay plain ICU strings: no arrays, no t.raw.
+const withNextIntl = createNextIntlPlugin({
+  requestConfig: './src/i18n/request.ts',
+  experimental: {
+    messages: { path: './messages', format: 'json', precompile: true },
+  },
+})
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 /** @type {import('next').NextConfig} */

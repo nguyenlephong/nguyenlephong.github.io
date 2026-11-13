@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef, useState, type ComponentType } from 'react'
+import { useEffect, useRef, useState, type ComponentType, type ReactNode } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { useReducedMotion } from 'framer-motion'
 import { LuExternalLink } from 'react-icons/lu'
@@ -69,12 +69,21 @@ function PacketsOnce({ paths }: { paths: string[] }) {
   )
 }
 
+/** `<b>` in CV messages, rendered by t.rich now that precompiled messages have no t.raw (MEP-71). */
+export const bold = (chunks: ReactNode) => <b>{chunks}</b>
+
 type Props = { id: CaseFileKey; project: ProjectType }
 
 export default function CaseFile({ id, project }: Props) {
   const projects = useTranslations('Projects')
   const t = (key: string) => projects(`${id}.${key}`)
-  const raw = (key: string) => projects.raw(`${id}.${key}`)
+  const rich = (key: string) => projects.rich(`${id}.${key}`, { b: bold })
+  // Precompiled messages have no arrays: list lines are keyed "0", "1", … (MEP-71).
+  const lines = (key: string) => {
+    const out: string[] = []
+    while (projects.has(`${id}.${key}.${out.length}`)) out.push(`${key}.${out.length}`)
+    return out
+  }
   const labels = useTranslations('Projects.labels')
   const pillars = useTranslations('Summary.pillars')
   const locale = useLocale()
@@ -122,8 +131,8 @@ export default function CaseFile({ id, project }: Props) {
     }
   }, [id, project.name, reduced])
 
-  const decisions = raw('decisions') as string[]
-  const outcome = raw('outcome') as string[]
+  const decisions = lines('decisions').map(t)
+  const outcome = lines('outcome')
 
   return (
     <article id={caseFileId(id)} className="case-file" aria-labelledby={`${caseFileId(id)}-title`}>
@@ -155,7 +164,7 @@ export default function CaseFile({ id, project }: Props) {
         <dl className="case-spec">
           <div className="case-row">
             <dt>{labels('context')}</dt>
-            <dd dangerouslySetInnerHTML={{ __html: raw('context') as string }} />
+            <dd>{rich('context')}</dd>
           </div>
           <div className="case-row">
             <dt>{labels('decisions')}</dt>
@@ -171,8 +180,8 @@ export default function CaseFile({ id, project }: Props) {
             <dt>{labels('outcome')}</dt>
             <dd>
               <ul className="case-list case-outcome">
-                {outcome.map((line) => (
-                  <li key={line} dangerouslySetInnerHTML={{ __html: line }} />
+                {outcome.map((key) => (
+                  <li key={key}>{rich(key)}</li>
                 ))}
               </ul>
             </dd>

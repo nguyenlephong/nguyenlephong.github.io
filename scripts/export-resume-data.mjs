@@ -61,7 +61,7 @@ const roles = experience.map((role) => {
     title: plainText(role.title),
     duration: `${formatMonth(role.start)} - ${role.end ? formatMonth(role.end) : 'Present'}`,
     summary: role.earlier ? '' : plainText(copy.scope),
-    contributions: (role.earlier ? [copy.line] : copy.contributions.slice(0, 3)).map(plainText),
+    contributions: (role.earlier ? [copy.line] : Object.values(copy.contributions).slice(0, 3)).map(plainText),
     technologies: role.techs.map(plainText),
   }
 })

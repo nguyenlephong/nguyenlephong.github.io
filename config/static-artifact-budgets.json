@@ -16,18 +16,18 @@
     "routeInitialJavaScript": {
       "home": {
         "html": "en.html",
-        "maxGzipBytes": 221184,
-        "maxBrotliBytes": 191488
+        "maxGzipBytes": 214016,
+        "maxBrotliBytes": 185344
       },
       "blog": {
         "html": "en/blog.html",
-        "maxGzipBytes": 217088,
-        "maxBrotliBytes": 188416
+        "maxGzipBytes": 210944,
+        "maxBrotliBytes": 183296
       },
       "notes": {
         "html": "en/notes.html",
-        "maxGzipBytes": 217088,
-        "maxBrotliBytes": 188416
+        "maxGzipBytes": 210944,
+        "maxBrotliBytes": 182272
       },
       "studio": {
         "html": "en/studio.html",
@@ -37,13 +37,13 @@
       },
       "blogArticle": {
         "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
-        "maxGzipBytes": 218112,
-        "maxBrotliBytes": 189440
+        "maxGzipBytes": 211968,
+        "maxBrotliBytes": 183296
       },
       "notesArticle": {
         "html": "en/notes/tri-tue-can-duc-hanh.html",
-        "maxGzipBytes": 218112,
-        "maxBrotliBytes": 189440
+        "maxGzipBytes": 211968,
+        "maxBrotliBytes": 183296
       }
     },
     "rsc": {

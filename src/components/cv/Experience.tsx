@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { LuArrowUpRight } from "react-icons/lu";
 import type { ExperienceRole } from "@/app/app.type";
@@ -7,6 +7,8 @@ import { track } from "@/lib/analytics";
 import CareerGraph, { type NodeKind } from "./CareerGraph";
 
 type Props = { data: ExperienceRole[] };
+
+const bold = (chunks: ReactNode) => <b>{chunks}</b>;
 
 // The current role shows three contributions, past roles two; the rest sit behind "All contributions".
 const topCount = (role: ExperienceRole): number => (role.end ? 2 : 3);
@@ -103,7 +105,14 @@ export default function Experience({ data }: Props) {
       />
       <ol ref={listRef} className="xp">
         {main.map((role) => {
-          const items = t.raw(`roles.${role.id}.contributions`) as string[];
+          // Precompiled messages have no arrays or t.raw: contributions are keyed "0", "1", … (MEP-71).
+          const items: ReactNode[] = [];
+          while (t.has(`roles.${role.id}.contributions.${items.length}`))
+            items.push(
+              t.rich(`roles.${role.id}.contributions.${items.length}`, {
+                b: bold
+              })
+            );
           const top = topCount(role);
           const rest = items.slice(top);
           return (
@@ -124,7 +133,7 @@ export default function Experience({ data }: Props) {
                 <ul className="xp-list">
                   {items.slice(0, top).map((item, i) => (
                     <li key={i}>
-                      <span dangerouslySetInnerHTML={{ __html: item }} />
+                      <span>{item}</span>
                       {i === 0 && role.evidence && (
                         <Evidence
                           role={role}
@@ -150,10 +159,7 @@ export default function Experience({ data }: Props) {
                       </summary>
                       <ul className="xp-list">
                         {rest.map((item, i) => (
-                          <li
-                            key={i}
-                            dangerouslySetInnerHTML={{ __html: item }}
-                          />
+                          <li key={i}>{item}</li>
                         ))}
                       </ul>
                     </details>

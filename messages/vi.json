@@ -186,45 +186,45 @@
     "roles": {
       "zaloLead": {
         "scope": "Zalo nhận tôi quay lại làm Lead từ tháng 3/2026, bảy tháng sau khi tôi sang NDSVN. Tôi dẫn mảng tin nhắn đa thiết bị và lưu trữ phía client của app desktop (hơn 15 triệu MAU).",
-        "contributions": [
-          "Ship tính năng <b>sao lưu tin nhắn trên PC</b>, khôi phục trên điện thoại: chốt payload contract, gia cố xử lý file trong worker, thêm telemetry khi upload, chặn chạy chồng với sync. Rollout từ tháng 7/2026.",
-          "Gia cố sync v2 cho đường truyền mobile chập chờn: retry, re-prepare theo nhóm, đếm lỗi. Một lookup trên hot path giảm từ <b>1,8 s xuống 4 ms</b> trong bài test 37 phiên.",
-          "Thay đổi rủi ro luôn ship ở trạng thái <b>mặc định tắt</b>, nằm sau kill switch và remote config.",
-          "Làm <b>zCloud offload</b> chạy ổn hơn, dễ quan sát hơn, thêm log-health probe chạy hằng ngày có kill switch để tắt từ xa.",
-          "Viết devtool giả lập lỗi mạng để tái hiện cảnh mất kết nối mobile khi test sync."
-        ]
+        "contributions": {
+          "0": "Ship tính năng <b>sao lưu tin nhắn trên PC</b>, khôi phục trên điện thoại: chốt payload contract, gia cố xử lý file trong worker, thêm telemetry khi upload, chặn chạy chồng với sync. Rollout từ tháng 7/2026.",
+          "1": "Gia cố sync v2 cho đường truyền mobile chập chờn: retry, re-prepare theo nhóm, đếm lỗi. Một lookup trên hot path giảm từ <b>1,8 s xuống 4 ms</b> trong bài test 37 phiên.",
+          "2": "Thay đổi rủi ro luôn ship ở trạng thái <b>mặc định tắt</b>, nằm sau kill switch và remote config.",
+          "3": "Làm <b>zCloud offload</b> chạy ổn hơn, dễ quan sát hơn, thêm log-health probe chạy hằng ngày có kill switch để tắt từ xa.",
+          "4": "Viết devtool giả lập lỗi mạng để tái hiện cảnh mất kết nối mobile khi test sync."
+        }
       },
       "ndsvn": {
         "scope": "Phụ trách kỹ thuật sau đợt chuyển giao CTO, dẫn team delivery 8 developer và 3 QC.",
-        "contributions": [
-          "Viết ra cách team vận hành: ai own phần nào, ma trận năng lực, <b>playbook release</b> (branch, tag, RFC, runbook) và quy trình phỏng vấn có cấu trúc.",
-          "Xây nền tảng feature flag bằng .NET Core cho <b>30+ tenant</b> (khoảng 40.000 người dùng), có rule ưu tiên, rollout theo phần trăm, theo tenant, segment hoặc môi trường.",
-          "Tích hợp <b>Gtel và Napas</b> qua mTLS, có certificate pinning và contract idempotent, nên message phát lại từ retry queue không gây hậu quả.",
-          "Tách web app thành micro-frontend (Angular làm host, các module React), mỗi module deploy riêng.",
-          "Tiếp quản hạ tầng cũ (ArgoCD, CI/CD, domain và SSL, cluster AKS, FKE, K3S, EKS), sửa tới mức lỗi truy được nguyên nhân và khôi phục được.",
-          "Gắn PostHog để xem mỗi đợt rollout tác động thế nào tới adoption và lỗi.",
-          "Viết các AI agent nội bộ cho code review, kiểm tra trước khi deploy, kiểm tra service quota, theo dõi API và phân tích release."
-        ]
+        "contributions": {
+          "0": "Viết ra cách team vận hành: ai own phần nào, ma trận năng lực, <b>playbook release</b> (branch, tag, RFC, runbook) và quy trình phỏng vấn có cấu trúc.",
+          "1": "Xây nền tảng feature flag bằng .NET Core cho <b>30+ tenant</b> (khoảng 40.000 người dùng), có rule ưu tiên, rollout theo phần trăm, theo tenant, segment hoặc môi trường.",
+          "2": "Tích hợp <b>Gtel và Napas</b> qua mTLS, có certificate pinning và contract idempotent, nên message phát lại từ retry queue không gây hậu quả.",
+          "3": "Tách web app thành micro-frontend (Angular làm host, các module React), mỗi module deploy riêng.",
+          "4": "Tiếp quản hạ tầng cũ (ArgoCD, CI/CD, domain và SSL, cluster AKS, FKE, K3S, EKS), sửa tới mức lỗi truy được nguyên nhân và khôi phục được.",
+          "5": "Gắn PostHog để xem mỗi đợt rollout tác động thế nào tới adoption và lỗi.",
+          "6": "Viết các AI agent nội bộ cho code review, kiểm tra trước khi deploy, kiểm tra service quota, theo dõi API và phân tích release."
+        }
       },
       "zaloSenior": {
         "scope": "Core engineer của Zalo PC (Web, macOS, Windows; hơn 15 triệu MAU), làm thêm vài tính năng cho Zalo Android (khoảng 80 triệu người dùng).",
-        "contributions": [
-          "Dẫn dắt design system trên Storybook, <b>hơn 50 developer</b> dùng chung.",
-          "Ship <b>hơn 10 tính năng</b> cho client: dark mode, đổi theme động, module tải file, Kiki bot.",
-          "Bảo trì 3+ tính năng của Zalo Android, ưu tiên độ ổn định và hiệu năng.",
-          "Làm promotion flow có sẵn tracking và monitoring.",
-          "Thêm log và tracking hành vi người dùng cho app desktop."
-        ]
+        "contributions": {
+          "0": "Dẫn dắt design system trên Storybook, <b>hơn 50 developer</b> dùng chung.",
+          "1": "Ship <b>hơn 10 tính năng</b> cho client: dark mode, đổi theme động, module tải file, Kiki bot.",
+          "2": "Bảo trì 3+ tính năng của Zalo Android, ưu tiên độ ổn định và hiệu năng.",
+          "3": "Làm promotion flow có sẵn tracking và monitoring.",
+          "4": "Thêm log và tracking hành vi người dùng cho app desktop."
+        }
       },
       "primedata": {
         "scope": "CDxP là nền tảng dữ liệu khách hàng, gom hồ sơ từ nhiều hệ thống rời rạc về một chỗ. Tôi dẫn team front-end 4 người.",
-        "contributions": [
-          "Ra app CDxP và <b>hơn 10 dự án</b> đi kèm: JS SDK, mobile SDK, demo Magento và WordPress.",
-          "Viết JS SDK tracking dưới <b>200 KB</b>, tải xong dưới 150 ms, dùng web worker và service worker để phối hợp giữa các tab.",
-          "Thêm <b>feature flag</b> lúc runtime cho A/B test và nhóm segment.",
-          "Làm hồ sơ khách hàng 360 độ và campaign builder trong app CDxP.",
-          "Dựng bộ test BDD và E2E làm chốt chặn trước mỗi lần release."
-        ]
+        "contributions": {
+          "0": "Ra app CDxP và <b>hơn 10 dự án</b> đi kèm: JS SDK, mobile SDK, demo Magento và WordPress.",
+          "1": "Viết JS SDK tracking dưới <b>200 KB</b>, tải xong dưới 150 ms, dùng web worker và service worker để phối hợp giữa các tab.",
+          "2": "Thêm <b>feature flag</b> lúc runtime cho A/B test và nhóm segment.",
+          "3": "Làm hồ sơ khách hàng 360 độ và campaign builder trong app CDxP.",
+          "4": "Dựng bộ test BDD và E2E làm chốt chặn trước mỗi lần release."
+        }
       },
       "splus": {
         "line": "Làm 8+ dự án outsource về giáo dục, F&B, ngân hàng, thương mại điện tử, dẫn một team nhỏ. Best Rookie of the Year 2019."
@@ -259,16 +259,16 @@
       "role": "Tech Lead kiêm system architect (bán thời gian)",
       "period": "03/2026 – nay",
       "context": "Mỗi khách hàng có subdomain riêng. Dữ liệu của họ không được phép lọt sang tenant khác. Sản phẩm chạy trên web và app desktop Electron. Tôi dẫn team bốn người và quyết kiến trúc.",
-      "decisions": [
-        "Mọi token và mọi lần check RBAC đều gắn tenant, nên chỉ có subdomain thì không đủ quyền truy cập.",
-        "Web và app Electron dùng chung một OAuth 2.1/OIDC provider tự dựng, đăng nhập bằng PKCE.",
-        "AI chỉ gợi ý giá trị, người dùng xác nhận lần lượt cả 8 phần của tờ khai."
-      ],
-      "outcome": [
-        "<b>9 repo</b> chung một kiến trúc (số liệu 08/2026): một UI Next.js cho cả web lẫn Electron, control plane NestJS, data plane AI viết bằng FastAPI.",
-        "<b>6</b> runtime role theo least privilege và <b>31</b> API endpoint có type rõ ràng cho luồng hải quan.",
-        "Tờ khai xuất lên UAT tháng 10/2026, kèm bộ phân loại chứng từ chạy theo rule."
-      ]
+      "decisions": {
+        "0": "Mọi token và mọi lần check RBAC đều gắn tenant, nên chỉ có subdomain thì không đủ quyền truy cập.",
+        "1": "Web và app Electron dùng chung một OAuth 2.1/OIDC provider tự dựng, đăng nhập bằng PKCE.",
+        "2": "AI chỉ gợi ý giá trị, người dùng xác nhận lần lượt cả 8 phần của tờ khai."
+      },
+      "outcome": {
+        "0": "<b>9 repo</b> chung một kiến trúc (số liệu 08/2026): một UI Next.js cho cả web lẫn Electron, control plane NestJS, data plane AI viết bằng FastAPI.",
+        "1": "<b>6</b> runtime role theo least privilege và <b>31</b> API endpoint có type rõ ràng cho luồng hải quan.",
+        "2": "Tờ khai xuất lên UAT tháng 10/2026, kèm bộ phân loại chứng từ chạy theo rule."
+      }
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -276,16 +276,16 @@
       "role": "Đồng sáng lập (bán thời gian)",
       "period": "04/2026 – nay",
       "context": "BonBon kết nối chủ xe với garage và tiệm rửa xe. Tôi đồng sáng lập và trực tiếp làm sản phẩm: một Mini App 12 màn hình chạy trong app VETC, nơi có <b>4,3 triệu người dùng</b> theo số Tasco công bố tháng 4/2026. Mỗi lần release đều phải qua quy trình duyệt thay đổi và quy trình bảo mật của VETC, gồm OWASP review và một đợt pentest độc lập.",
-      "decisions": [
-        "Chủ xe đăng nhập bằng phiên VETC sẵn có, không phải nhập thêm OTP.",
-        "Session chỉ nằm trong memory, vì VETC không cho lưu token xuống trình duyệt.",
-        "Tính năng mới nằm sau kill switch, mặc định tắt, có sự cố thì tắt ngay mà không cần release."
-      ],
-      "outcome": [
-        "BonBon thắng Tasco Foundry Wash3000: khoảng <b>100</b> hồ sơ, chọn ra 10 đội, 3 đội vào chung kết, 1 đội thắng (GenAI Fund, 09/2026).",
-        "Vòng pre-seed <b>500.000 USD</b> do Tasco dẫn dắt, GenAI Fund cùng đầu tư (09/2026).",
-        "<b>3 tháng</b> từ MVP đến pilot thực địa, đúng bằng thời gian chương trình Wash3000."
-      ]
+      "decisions": {
+        "0": "Chủ xe đăng nhập bằng phiên VETC sẵn có, không phải nhập thêm OTP.",
+        "1": "Session chỉ nằm trong memory, vì VETC không cho lưu token xuống trình duyệt.",
+        "2": "Tính năng mới nằm sau kill switch, mặc định tắt, có sự cố thì tắt ngay mà không cần release."
+      },
+      "outcome": {
+        "0": "BonBon thắng Tasco Foundry Wash3000: khoảng <b>100</b> hồ sơ, chọn ra 10 đội, 3 đội vào chung kết, 1 đội thắng (GenAI Fund, 09/2026).",
+        "1": "Vòng pre-seed <b>500.000 USD</b> do Tasco dẫn dắt, GenAI Fund cùng đầu tư (09/2026).",
+        "2": "<b>3 tháng</b> từ MVP đến pilot thực địa, đúng bằng thời gian chương trình Wash3000."
+      }
     },
     "sat": {
       "name": "Digital SAT Math",

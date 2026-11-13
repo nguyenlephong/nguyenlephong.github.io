@@ -788,16 +788,16 @@ remain hard gates. The current configured gates are:
 
 | Surface or payload | Current gate |
 |--------------------|-------------:|
-| Home initial JavaScript, Gzip | Hard limit: 221,184 bytes |
-| Home initial JavaScript, Brotli | Hard limit: 191,488 bytes |
-| Blog initial JavaScript, Gzip | Hard limit: 217,088 bytes |
-| Blog initial JavaScript, Brotli | Hard limit: 188,416 bytes |
-| Notes initial JavaScript, Gzip | Hard limit: 217,088 bytes |
-| Notes initial JavaScript, Brotli | Hard limit: 188,416 bytes |
-| Blog article initial JavaScript, Gzip | Hard limit: 218,112 bytes |
-| Blog article initial JavaScript, Brotli | Hard limit: 189,440 bytes |
-| Notes article initial JavaScript, Gzip | Hard limit: 218,112 bytes |
-| Notes article initial JavaScript, Brotli | Hard limit: 189,440 bytes |
+| Home initial JavaScript, Gzip | Hard limit: 214,016 bytes |
+| Home initial JavaScript, Brotli | Hard limit: 185,344 bytes |
+| Blog initial JavaScript, Gzip | Hard limit: 210,944 bytes |
+| Blog initial JavaScript, Brotli | Hard limit: 183,296 bytes |
+| Notes initial JavaScript, Gzip | Hard limit: 210,944 bytes |
+| Notes initial JavaScript, Brotli | Hard limit: 182,272 bytes |
+| Blog article initial JavaScript, Gzip | Hard limit: 211,968 bytes |
+| Blog article initial JavaScript, Brotli | Hard limit: 183,296 bytes |
+| Notes article initial JavaScript, Gzip | Hard limit: 211,968 bytes |
+| Notes article initial JavaScript, Brotli | Hard limit: 183,296 bytes |
 | Studio direct initial JavaScript, Gzip | Hard limit: 173,056 bytes |
 | Studio direct initial JavaScript, Brotli | Hard limit: 149,504 bytes |
 | Studio English default route, Brotli | Hard limit: 204,800 bytes |
@@ -831,6 +831,13 @@ HTML measured 17,419 Gzip, gated at 18,432 (about 6 percent).
 The 2026-07-20 complete export measured Blog at 213,534 bytes and Notes at
 213,444 bytes Brotli after the deferred engagement boundary. The 217,088-byte
 limits retain narrow build variance while locking in that verified reduction.
+
+MEP-71 (2026-11-13) precompiles the next-intl catalogs at build time, so the ICU
+parser (`intl-messageformat`) no longer ships to the client: about 9 KiB Gzip
+off every public route. The public JavaScript gates above were lowered to the
+new measurement plus about 10 percent, rounded up to 1 KiB (Home 193,982 Gzip /
+167,863 Brotli; Blog 191,692 / 166,040; Notes 191,296 / 165,696; articles
+192,204 / 166,266). Studio has no client messages and is unchanged.
 
 The same complete export records public initial CSS by route. Before the split,
 all non-content routes loaded 122,511 raw / 19,439 Brotli bytes in two files;

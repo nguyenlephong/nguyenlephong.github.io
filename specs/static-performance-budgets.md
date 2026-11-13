@@ -185,6 +185,15 @@ Blog at 213,534 bytes and Notes at 213,444 bytes Brotli. Their hard ceilings are
 therefore lowered from 219,136 to 217,088 bytes, retaining a small build-variance
 allowance while locking in the verified reduction.
 
+MEP-71 precompiles next-intl messages at build time, dropping the ICU parser from
+the client bundle. The 2026-11-13 export measured Home at 193,982 Gzip / 167,863
+Brotli bytes, Blog 191,692 / 166,040, Notes 191,296 / 165,696 and articles
+192,204 / 166,266, about 9 KiB Gzip below the previous export. Their hard
+ceilings are lowered to measurement plus about 10 percent, rounded up to 1 KiB:
+Home 214,016 / 185,344, Blog 210,944 / 183,296, Notes 210,944 / 182,272 and
+articles 211,968 / 183,296. Catalogs must therefore stay plain ICU strings: no
+arrays and no `t.raw`.
+
 After the route-owned CSS split and dead Notes-chambers cleanup, the 2026-07-28
 complete-export artifact snapshot set the following initial document CSS gates.
 Measured columns were refreshed from the 2026-11-13 complete export; the

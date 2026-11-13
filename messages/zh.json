@@ -185,45 +185,45 @@
     "roles": {
       "zaloLead": {
         "scope": "2026 年 3 月以 Lead 身份重新加入，距离离开去 NDSVN 七个月。我负责桌面客户端（15M+ MAU）的多设备消息与客户端存储。",
-        "contributions": [
-          "交付 <b>PC 消息备份</b>与移动端恢复：payload 契约、worker 文件处理加固、上传遥测、与 sync 互斥。2026 年 7 月开始灰度。",
-          "为不稳定的移动网络加固 sync v2：重试、分组重新准备、失败统计。在 37 个会话的测试中，一次 hot path 查询从 <b>1.8 s 降到 4 ms</b>。",
-          "有风险的改动放在 kill switch 和远程配置之后，<b>默认关闭</b>发布。",
-          "提升 <b>zCloud offload</b> 的可靠性与可观测性，新增可远程关闭的每日日志健康探针。",
-          "编写故障注入 devtool，在测试 sync 时复现移动网络断连。"
-        ]
+        "contributions": {
+          "0": "交付 <b>PC 消息备份</b>与移动端恢复：payload 契约、worker 文件处理加固、上传遥测、与 sync 互斥。2026 年 7 月开始灰度。",
+          "1": "为不稳定的移动网络加固 sync v2：重试、分组重新准备、失败统计。在 37 个会话的测试中，一次 hot path 查询从 <b>1.8 s 降到 4 ms</b>。",
+          "2": "有风险的改动放在 kill switch 和远程配置之后，<b>默认关闭</b>发布。",
+          "3": "提升 <b>zCloud offload</b> 的可靠性与可观测性，新增可远程关闭的每日日志健康探针。",
+          "4": "编写故障注入 devtool，在测试 sync 时复现移动网络断连。"
+        }
       },
       "ndsvn": {
         "scope": "CTO 交接后接手技术负责，带领 8 名开发和 3 名 QC 的交付团队。",
-        "contributions": [
-          "把团队运作方式写成文档：谁负责哪部分、能力矩阵、<b>发布 playbook</b>（分支、标签、RFC、runbook）以及结构化面试。",
-          "为 <b>30+ 租户</b>（约 4 万用户）构建 .NET Core 功能开关平台，支持优先级规则，以及按租户、用户分群或环境的百分比发布。",
-          "通过 mTLS、证书固定和幂等契约对接 <b>Gtel 与 Napas</b>，从重试队列重放的消息不会造成副作用。",
-          "将 Web 应用拆分为微前端（Angular 宿主加 React 模块），每个模块独立部署。",
-          "接手遗留基础设施（ArgoCD、CI/CD、域名与 SSL、AKS/FKE/K3S/EKS 集群），让故障可诊断、可恢复。",
-          "接入 PostHog，查看每次发布对使用率和错误的影响。",
-          "构建内部 AI 代理，用于代码评审、部署前检查、服务配额校验、API 健康监控和发布分析。"
-        ]
+        "contributions": {
+          "0": "把团队运作方式写成文档：谁负责哪部分、能力矩阵、<b>发布 playbook</b>（分支、标签、RFC、runbook）以及结构化面试。",
+          "1": "为 <b>30+ 租户</b>（约 4 万用户）构建 .NET Core 功能开关平台，支持优先级规则，以及按租户、用户分群或环境的百分比发布。",
+          "2": "通过 mTLS、证书固定和幂等契约对接 <b>Gtel 与 Napas</b>，从重试队列重放的消息不会造成副作用。",
+          "3": "将 Web 应用拆分为微前端（Angular 宿主加 React 模块），每个模块独立部署。",
+          "4": "接手遗留基础设施（ArgoCD、CI/CD、域名与 SSL、AKS/FKE/K3S/EKS 集群），让故障可诊断、可恢复。",
+          "5": "接入 PostHog，查看每次发布对使用率和错误的影响。",
+          "6": "构建内部 AI 代理，用于代码评审、部署前检查、服务配额校验、API 健康监控和发布分析。"
+        }
       },
       "zaloSenior": {
         "scope": "Zalo PC 客户端（Web、macOS、Windows，15M+ MAU）核心工程师，同时负责 Zalo Android（约 8000 万用户）的部分功能。",
-        "contributions": [
-          "主导 Storybook 设计系统，供 <b>50+ 名开发者</b>使用。",
-          "上线 <b>10+ 个客户端功能</b>，包括深色模式、动态主题、下载模块和 Kiki 机器人。",
-          "维护 Zalo Android 的 3+ 个功能，侧重稳定性与性能。",
-          "构建自带追踪与监控的推广流程。",
-          "为桌面客户端加入日志与行为追踪。"
-        ]
+        "contributions": {
+          "0": "主导 Storybook 设计系统，供 <b>50+ 名开发者</b>使用。",
+          "1": "上线 <b>10+ 个客户端功能</b>，包括深色模式、动态主题、下载模块和 Kiki 机器人。",
+          "2": "维护 Zalo Android 的 3+ 个功能，侧重稳定性与性能。",
+          "3": "构建自带追踪与监控的推广流程。",
+          "4": "为桌面客户端加入日志与行为追踪。"
+        }
       },
       "primedata": {
         "scope": "CDxP 是一个客户数据平台，把分散系统中的客户档案统一起来。我带领其 4 人前端团队。",
-        "contributions": [
-          "交付 CDxP 应用和 <b>10+ 个相关项目</b>：JS 与移动端 SDK、Magento 与 WordPress 演示。",
-          "编写小于 <b>200 KB</b>、150 ms 内加载的 JS 追踪 SDK，用 web worker 和 service worker 协调多个标签页。",
-          "为 A/B 测试和用户分群引入运行时<b>功能开关</b>。",
-          "在 CDxP 应用中实现 360 度客户档案和活动编排器。",
-          "搭建团队发布前依赖的 BDD 与 E2E 测试套件。"
-        ]
+        "contributions": {
+          "0": "交付 CDxP 应用和 <b>10+ 个相关项目</b>：JS 与移动端 SDK、Magento 与 WordPress 演示。",
+          "1": "编写小于 <b>200 KB</b>、150 ms 内加载的 JS 追踪 SDK，用 web worker 和 service worker 协调多个标签页。",
+          "2": "为 A/B 测试和用户分群引入运行时<b>功能开关</b>。",
+          "3": "在 CDxP 应用中实现 360 度客户档案和活动编排器。",
+          "4": "搭建团队发布前依赖的 BDD 与 E2E 测试套件。"
+        }
       },
       "splus": {
         "line": "参与教育、餐饮、银行、电商等领域 8+ 个外包项目，并带领一个小团队。2019 年 Best Rookie of the Year。"
@@ -258,16 +258,16 @@
       "role": "技术负责人兼系统架构师（兼职）",
       "period": "2026年3月 – 至今",
       "context": "这是一套物流 SaaS，每个客户有独立子域名，数据绝不能流到其他租户。产品运行在 Web 和 Electron 桌面应用上。我带一个四人团队，并对架构负责。",
-      "decisions": [
-        "每个 token 和每次 RBAC 检查都带着租户，只凭子域名无法访问。",
-        "Web 和 Electron 应用都通过自建的 OAuth 2.1/OIDC 服务登录，使用 PKCE。",
-        "AI 给出建议值，申报单的 8 个部分逐一由人确认。"
-      ],
-      "outcome": [
-        "截至 2026年8月，<b>9 个仓库</b>共用一套架构：Web 与 Electron 共用 Next.js UI，NestJS 控制面，FastAPI AI 数据面。",
-        "报关流程背后有 <b>6</b> 个最小权限运行时角色和 <b>31</b> 个类型化 API 端点。",
-        "出口报关于 2026年10月进入 UAT，配有基于规则的单证分类器。"
-      ]
+      "decisions": {
+        "0": "每个 token 和每次 RBAC 检查都带着租户，只凭子域名无法访问。",
+        "1": "Web 和 Electron 应用都通过自建的 OAuth 2.1/OIDC 服务登录，使用 PKCE。",
+        "2": "AI 给出建议值，申报单的 8 个部分逐一由人确认。"
+      },
+      "outcome": {
+        "0": "截至 2026年8月，<b>9 个仓库</b>共用一套架构：Web 与 Electron 共用 Next.js UI，NestJS 控制面，FastAPI AI 数据面。",
+        "1": "报关流程背后有 <b>6</b> 个最小权限运行时角色和 <b>31</b> 个类型化 API 端点。",
+        "2": "出口报关于 2026年10月进入 UAT，配有基于规则的单证分类器。"
+      }
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -275,16 +275,16 @@
       "role": "联合创始人（兼职）",
       "period": "2026年4月 – 至今",
       "context": "BonBon 连接车主与洗车、养护门店。作为联合创始人，我把产品做成运行在 VETC 应用内的 12 屏 Mini App。据 Tasco 公布，VETC 截至 2026年4月有 <b>430 万</b>用户。每次发布都要经过 VETC 的变更审批和安全流程，其中包括 OWASP 审查和一次独立渗透测试。",
-      "decisions": [
-        "车主用已有的 VETC 会话登录，无需再输 OTP。",
-        "会话只存在内存中，VETC 规则不允许在浏览器里存 token。",
-        "新功能放在默认关闭的 kill switch 后面，不发版就能关掉。"
-      ],
-      "outcome": [
-        "BonBon 赢得 Tasco Foundry Wash3000：约 <b>100</b> 份申请，前 10，3 支决赛队伍，1 个冠军（GenAI Fund，2026年9月）。",
-        "由 Tasco 领投、GenAI Fund 跟投的 <b>50 万美元</b> pre-seed 轮（2026年9月）。",
-        "从 MVP 到实地试点用了 <b>3 个月</b>，正好是 Wash3000 项目的周期。"
-      ]
+      "decisions": {
+        "0": "车主用已有的 VETC 会话登录，无需再输 OTP。",
+        "1": "会话只存在内存中，VETC 规则不允许在浏览器里存 token。",
+        "2": "新功能放在默认关闭的 kill switch 后面，不发版就能关掉。"
+      },
+      "outcome": {
+        "0": "BonBon 赢得 Tasco Foundry Wash3000：约 <b>100</b> 份申请，前 10，3 支决赛队伍，1 个冠军（GenAI Fund，2026年9月）。",
+        "1": "由 Tasco 领投、GenAI Fund 跟投的 <b>50 万美元</b> pre-seed 轮（2026年9月）。",
+        "2": "从 MVP 到实地试点用了 <b>3 个月</b>，正好是 Wash3000 项目的周期。"
+      }
     },
     "sat": {
       "name": "Digital SAT Math",

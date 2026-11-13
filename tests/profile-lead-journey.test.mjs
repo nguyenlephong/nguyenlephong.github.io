@@ -22,7 +22,7 @@ test("every locale presents the current Zalo PC lead journey", async () => {
     assert.match(messages.Footer.tag, /Lead Software Engineer/);
     assert.match(messages.SEO.home.title, /Lead Software Engineer/);
     assert.equal(typeof lead.scope, "string");
-    assert.equal(lead.contributions.length, 5);
+    assert.equal(Object.keys(lead.contributions).length, 5);
     // The return to Zalo reads as a rehire with its date, in every locale.
     assert.match(lead.scope, /NDSVN/);
     assert.match(lead.scope, /2026/);
@@ -289,7 +289,7 @@ test("experience data is one reverse-chronological role list that every locale c
         assert.ok(copy.line?.trim(), `${locale} ${role.id}.line`);
       } else {
         assert.ok(copy.scope?.trim(), `${locale} ${role.id}.scope`);
-        assert.ok(copy.contributions.length > 3, `${locale} ${role.id} has a <details> remainder`);
+        assert.ok(Object.keys(copy.contributions).length > 3, `${locale} ${role.id} has a <details> remainder`);
       }
     }
     assert.ok(xp.labels.now.trim() && xp.labels.earlier.trim(), locale);

@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { ProjectType } from '@/app/app.type'
-import CaseFile, { trackProjectView, type CaseFileKey } from './CaseFile'
+import CaseFile, { bold, trackProjectView, type CaseFileKey } from './CaseFile'
 
 type Props = { data: ProjectType[] }
 
@@ -68,7 +68,7 @@ export default function Projects({ data }: Props) {
                 <h4 className="pm-name">
                   {t(`${key}.name`)} <span className="pm-period">{yearSpan(p.duration)}</span>
                 </h4>
-                <p className="pm-proof" dangerouslySetInnerHTML={{ __html: t.raw(`${key}.proof`) as string }} />
+                <p className="pm-proof">{t.rich(`${key}.proof`, { b: bold })}</p>
               </li>
             )
           })}

@@ -185,45 +185,45 @@
     "roles": {
       "zaloLead": {
         "scope": "Réembauché comme Lead en mars 2026, sept mois après mon départ pour NDSVN. Je dirige la messagerie multi-appareils et le stockage côté client de l'app desktop (15M+ MAU).",
-        "contributions": [
-          "<b>Sauvegarde des messages PC</b> et restauration sur mobile : contrat de payload, fichiers du worker durcis, télémétrie d'upload, exclusion mutuelle avec la synchro. Lancée en juillet 2026.",
-          "Sync v2 renforcée face aux coupures mobiles : retries, re-préparation par groupes, comptage des échecs. Sur un test de 37 sessions, une lookup du hot path est passée de <b>1,8 s à 4 ms</b>.",
-          "Changements risqués <b>off par défaut</b>, derrière kill switches et config distante.",
-          "<b>zCloud offload</b> plus fiable et observable, avec une sonde quotidienne de santé des logs, désactivable à distance.",
-          "Outil d'injection de fautes qui reproduit les coupures mobiles pendant les tests de synchro."
-        ]
+        "contributions": {
+          "0": "<b>Sauvegarde des messages PC</b> et restauration sur mobile : contrat de payload, fichiers du worker durcis, télémétrie d'upload, exclusion mutuelle avec la synchro. Lancée en juillet 2026.",
+          "1": "Sync v2 renforcée face aux coupures mobiles : retries, re-préparation par groupes, comptage des échecs. Sur un test de 37 sessions, une lookup du hot path est passée de <b>1,8 s à 4 ms</b>.",
+          "2": "Changements risqués <b>off par défaut</b>, derrière kill switches et config distante.",
+          "3": "<b>zCloud offload</b> plus fiable et observable, avec une sonde quotidienne de santé des logs, désactivable à distance.",
+          "4": "Outil d'injection de fautes qui reproduit les coupures mobiles pendant les tests de synchro."
+        }
       },
       "ndsvn": {
         "scope": "Responsable technique après un changement de CTO ; équipe delivery de 8 développeurs et 3 QC.",
-        "contributions": [
-          "Fonctionnement de l'équipe mis par écrit : qui possède quoi, matrice de compétences, <b>playbook de release</b> (branches, tags, RFC, runbooks) et entretiens structurés.",
-          "Plateforme de feature flags en .NET Core pour <b>30+ tenants</b> (environ 40k utilisateurs), avec règles de priorité et rollout en pourcentage par tenant, segment ou environnement.",
-          "Intégrations <b>Gtel et Napas</b> en mTLS, avec certificats épinglés et contrats idempotents : un message rejoué depuis la file de retry ne fait aucun dégât.",
-          "App web découpée en micro-frontends (hôte Angular, modules React), chaque module déployé séparément.",
-          "Reprise de l'infrastructure héritée (ArgoCD, CI/CD, domaines et SSL, clusters AKS, FKE, K3S et EKS) : pannes diagnosticables et récupérables.",
-          "Suivi PostHog pour voir l'effet de chaque rollout sur l'adoption et les erreurs.",
-          "Agents IA internes pour la revue de code, les vérifications de déploiement, les quotas de service, la santé des API et l'analyse des releases."
-        ]
+        "contributions": {
+          "0": "Fonctionnement de l'équipe mis par écrit : qui possède quoi, matrice de compétences, <b>playbook de release</b> (branches, tags, RFC, runbooks) et entretiens structurés.",
+          "1": "Plateforme de feature flags en .NET Core pour <b>30+ tenants</b> (environ 40k utilisateurs), avec règles de priorité et rollout en pourcentage par tenant, segment ou environnement.",
+          "2": "Intégrations <b>Gtel et Napas</b> en mTLS, avec certificats épinglés et contrats idempotents : un message rejoué depuis la file de retry ne fait aucun dégât.",
+          "3": "App web découpée en micro-frontends (hôte Angular, modules React), chaque module déployé séparément.",
+          "4": "Reprise de l'infrastructure héritée (ArgoCD, CI/CD, domaines et SSL, clusters AKS, FKE, K3S et EKS) : pannes diagnosticables et récupérables.",
+          "5": "Suivi PostHog pour voir l'effet de chaque rollout sur l'adoption et les erreurs.",
+          "6": "Agents IA internes pour la revue de code, les vérifications de déploiement, les quotas de service, la santé des API et l'analyse des releases."
+        }
       },
       "zaloSenior": {
         "scope": "Ingénieur clé du client Zalo PC (Web, macOS, Windows ; 15M+ MAU), plus des fonctionnalités pour Zalo Android (~80M d'utilisateurs).",
-        "contributions": [
-          "Pilotage du design system Storybook utilisé par <b>50+ développeurs</b>.",
-          "<b>10+ fonctionnalités client</b> livrées, dont mode sombre, thèmes dynamiques, module de téléchargement et bot Kiki.",
-          "Maintenance de 3+ fonctionnalités de Zalo Android, axée sur la stabilité et la performance.",
-          "Parcours promotionnel avec son propre suivi et monitoring.",
-          "Logs et suivi comportemental ajoutés au client desktop."
-        ]
+        "contributions": {
+          "0": "Pilotage du design system Storybook utilisé par <b>50+ développeurs</b>.",
+          "1": "<b>10+ fonctionnalités client</b> livrées, dont mode sombre, thèmes dynamiques, module de téléchargement et bot Kiki.",
+          "2": "Maintenance de 3+ fonctionnalités de Zalo Android, axée sur la stabilité et la performance.",
+          "3": "Parcours promotionnel avec son propre suivi et monitoring.",
+          "4": "Logs et suivi comportemental ajoutés au client desktop."
+        }
       },
       "primedata": {
         "scope": "CDxP, une plateforme de données clients qui unifie les profils issus de systèmes déconnectés. J'ai dirigé son équipe front-end de 4 personnes.",
-        "contributions": [
-          "Livraison de l'app CDxP et de <b>10+ projets associés</b> : SDK JS et mobile, démos Magento et WordPress.",
-          "SDK JS de tracking sous <b>200 KB</b>, chargé en moins de 150 ms, avec web et service workers qui coordonnent les onglets.",
-          "<b>Feature flags</b> à l'exécution pour les tests A/B et les groupes de segments.",
-          "Profils clients 360° et campaign builder dans l'app CDxP.",
-          "Suite BDD et E2E sur laquelle l'équipe validait ses releases."
-        ]
+        "contributions": {
+          "0": "Livraison de l'app CDxP et de <b>10+ projets associés</b> : SDK JS et mobile, démos Magento et WordPress.",
+          "1": "SDK JS de tracking sous <b>200 KB</b>, chargé en moins de 150 ms, avec web et service workers qui coordonnent les onglets.",
+          "2": "<b>Feature flags</b> à l'exécution pour les tests A/B et les groupes de segments.",
+          "3": "Profils clients 360° et campaign builder dans l'app CDxP.",
+          "4": "Suite BDD et E2E sur laquelle l'équipe validait ses releases."
+        }
       },
       "splus": {
         "line": "8+ projets clients (éducation, F&B, banque, e-commerce), lead d'une petite équipe. Best Rookie of the Year 2019."
@@ -258,16 +258,16 @@
       "role": "Tech Lead, architecte système (temps partiel)",
       "period": "mars 2026 – auj.",
       "context": "Chaque client a son sous-domaine, et ses données ne doivent jamais fuiter vers un autre tenant. Web et app desktop Electron. Je dirige une équipe de quatre et je porte l'architecture.",
-      "decisions": [
-        "Chaque token et chaque contrôle RBAC portent le tenant : le sous-domaine seul ne suffit pas.",
-        "Web et app Electron passent par un même fournisseur OAuth 2.1/OIDC maison, avec PKCE.",
-        "L'IA propose les valeurs, une personne valide chacune des 8 sections de la déclaration."
-      ],
-      "outcome": [
-        "<b>9 dépôts</b>, une seule architecture (août 2026) : UI Next.js commune au web et à Electron, control plane NestJS, data plane IA en FastAPI.",
-        "<b>6</b> rôles runtime à privilèges minimaux et <b>31</b> endpoints API typés pour le workflow douanier.",
-        "Déclarations d'export en UAT en octobre 2026, avec un classifieur de documents par règles."
-      ]
+      "decisions": {
+        "0": "Chaque token et chaque contrôle RBAC portent le tenant : le sous-domaine seul ne suffit pas.",
+        "1": "Web et app Electron passent par un même fournisseur OAuth 2.1/OIDC maison, avec PKCE.",
+        "2": "L'IA propose les valeurs, une personne valide chacune des 8 sections de la déclaration."
+      },
+      "outcome": {
+        "0": "<b>9 dépôts</b>, une seule architecture (août 2026) : UI Next.js commune au web et à Electron, control plane NestJS, data plane IA en FastAPI.",
+        "1": "<b>6</b> rôles runtime à privilèges minimaux et <b>31</b> endpoints API typés pour le workflow douanier.",
+        "2": "Déclarations d'export en UAT en octobre 2026, avec un classifieur de documents par règles."
+      }
     },
     "bonbon": {
       "name": "BonBon Mobility",
@@ -275,16 +275,16 @@
       "role": "Cofondateur (temps partiel)",
       "period": "avr. 2026 – auj.",
       "context": "BonBon relie les automobilistes aux garages de lavage et d'entretien. Cofondateur, j'ai construit le produit : une Mini App de 12 écrans dans l'app VETC (<b>4,3 M d'utilisateurs</b> en avril 2026, selon Tasco). Chaque release passe par la validation des changements de VETC et son processus de sécurité : revue OWASP et pentest indépendant.",
-      "decisions": [
-        "Les automobilistes se connectent avec leur session VETC, sans second OTP.",
-        "Sessions en mémoire seulement : les règles de VETC interdisent tout token dans le navigateur.",
-        "Chaque nouvelle fonction a un kill switch éteint par défaut : on la coupe sans release."
-      ],
-      "outcome": [
-        "Lauréat de Tasco Foundry Wash3000 : environ <b>100</b> candidatures, un top 10, trois finalistes, un gagnant (GenAI Fund, sept. 2026).",
-        "Levée pre-seed de <b>500 k$</b> menée par Tasco, co-investie par GenAI Fund (sept. 2026).",
-        "<b>3 mois</b> du MVP au pilote terrain, la durée du programme Wash3000."
-      ]
+      "decisions": {
+        "0": "Les automobilistes se connectent avec leur session VETC, sans second OTP.",
+        "1": "Sessions en mémoire seulement : les règles de VETC interdisent tout token dans le navigateur.",
+        "2": "Chaque nouvelle fonction a un kill switch éteint par défaut : on la coupe sans release."
+      },
+      "outcome": {
+        "0": "Lauréat de Tasco Foundry Wash3000 : environ <b>100</b> candidatures, un top 10, trois finalistes, un gagnant (GenAI Fund, sept. 2026).",
+        "1": "Levée pre-seed de <b>500 k$</b> menée par Tasco, co-investie par GenAI Fund (sept. 2026).",
+        "2": "<b>3 mois</b> du MVP au pilote terrain, la durée du programme Wash3000."
+      }
     },
     "sat": {
       "name": "Digital SAT Math",
