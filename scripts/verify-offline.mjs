@@ -287,14 +287,15 @@ async function assertArtifacts() {
 
 async function verifyBrowserFlow(setOriginOffline, requestLog = []) {
   const { chromium } = await import('playwright')
-  const browser = await chromium.launch({ headless: true })
-  const context = await browser.newContext()
   // Keep the production PostHog loader stub as the observable provider seam.
-  // Blocking only the external SDK prevents it from draining the stub queue.
-  await context.route(
-    /^https:\/\/us-assets\.i\.posthog\.com\/static\/array\.js(?:\?|$)/,
-    (route) => route.abort(),
-  )
+  // Blocking the external SDK host prevents it from draining the stub queue.
+  // Block it by DNS, not context.route(): Playwright routing disables the HTTP
+  // cache, which would make the worker install refetch everything the page loaded.
+  const browser = await chromium.launch({
+    headless: true,
+    args: ['--host-resolver-rules=MAP us-assets.i.posthog.com ~NOTFOUND'],
+  })
+  const context = await browser.newContext()
   const page = await context.newPage()
   const browserErrors = []
   const baseUrl = `http://${HOST}:${PORT}`
@@ -541,7 +542,15 @@ async function verifyBrowserFlow(setOriginOffline, requestLog = []) {
       return manifest.shared?.remoteAssets?.[0] ?? null
     })
     assert.equal(typeof allowlistedRemoteUrl, 'string')
-    const allowlistedRemoteOnline = await page.evaluate(async (assetUrl) => {
+    // In production dom-pub is same-origin, so the page CSP (connect-src 'self')
+    // allows this fetch; on 127.0.0.1 it is cross-origin and the CSP blocks it.
+    // Probe from a worker-controlled same-origin document that has no page CSP.
+    const remoteProbePage = await context.newPage()
+    await remoteProbePage.goto(`${baseUrl}${SIBLING_ASSET_PATH}`, { waitUntil: 'domcontentloaded' })
+    await remoteProbePage.waitForFunction(() => Boolean(navigator.serviceWorker.controller), null, {
+      timeout: 10000,
+    })
+    const allowlistedRemoteOnline = await remoteProbePage.evaluate(async (assetUrl) => {
       const response = await fetch(assetUrl, { cache: 'no-store' })
       const body = await response.arrayBuffer()
       return {
@@ -642,11 +651,12 @@ async function verifyBrowserFlow(setOriginOffline, requestLog = []) {
       'same-origin sibling assets must not be served from this site offline cache',
     )
 
-    const allowlistedRemoteOffline = await page.evaluate(async (assetUrl) => {
+    const allowlistedRemoteOffline = await remoteProbePage.evaluate(async (assetUrl) => {
       const response = await fetch(assetUrl, { cache: 'no-store' })
       const body = await response.arrayBuffer()
       return { ok: response.ok, bytes: body.byteLength }
     }, allowlistedRemoteUrl)
+    await remoteProbePage.close()
     assert.equal(allowlistedRemoteOffline.ok, true)
     assert.equal(
       allowlistedRemoteOffline.bytes,

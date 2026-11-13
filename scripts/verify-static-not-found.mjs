@@ -86,11 +86,11 @@ async function assertRawArtifact() {
     fs.readFile(path.join(OUT_DIR, "en.html"), "utf8")
   ]);
   assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
-  assert.match(html, /This page is no longer here/);
+  assert.match(html, /This page doesn’t exist/);
   assert.match(html, /data-not-found-locale="en"/);
   assert.match(html, /href="\/en"/);
-  assert.match(html, /href="\/en\/blog"/);
-  assert.match(html, /href="\/en\/notes"/);
+  assert.match(html, /href="\/NguyenLePhong_Lead_Software_Engineer\.pdf"/);
+  assert.match(html, /href="\/en#contact"/);
   for (const locale of ["en", "vi", "zh", "ja", "ko", "fr"]) {
     assert.match(html, new RegExp(`href="/${locale}"`));
   }
@@ -445,7 +445,7 @@ async function verifyBrowserBehavior(origin) {
       assert.equal(await noScriptPage.locator("h1").count(), 1);
       assert.equal(
         await noScriptPage.locator("h1").innerText(),
-        "This page is no longer here"
+        "This page doesn’t exist"
       );
       assert.equal(
         await noScriptPage.locator("html").getAttribute("lang"),
@@ -453,8 +453,8 @@ async function verifyBrowserBehavior(origin) {
       );
       for (const href of [
         "/en",
-        "/en/blog",
-        "/en/notes",
+        "/NguyenLePhong_Lead_Software_Engineer.pdf",
+        "/en#contact",
         "/vi",
         "/zh",
         "/ja",

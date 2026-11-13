@@ -713,12 +713,28 @@ async function verifyArchiveLoadingBoundaries(
     const categoryHref = await category.getAttribute("href");
     assert.ok(categoryHref, "blog category card has no crawlable href");
     const categoryPath = new URL(categoryHref, origin).pathname;
+    // The category cards sit below the fold, and hover() would scroll to them; the
+    // first scroll is deliberate browsing intent that enables stats by design. Grow
+    // the viewport to reach the card so this phase measures hover prefetch alone.
+    const categoryBox = await category.boundingBox();
+    assert.ok(categoryBox, "blog category card is not rendered");
+    const viewport = page.viewportSize();
+    await page.setViewportSize({
+      width: viewport.width,
+      height: Math.max(viewport.height, Math.ceil(categoryBox.y + categoryBox.height) + 1)
+    });
+    await page.waitForLoadState("networkidle");
     phase = "category-hover";
     const categoryPrefetch = page.waitForRequest((request) =>
       isRscRequestForDestination(request, origin, categoryPath)
     );
     await category.hover();
     await categoryPrefetch;
+    assert.equal(
+      await page.evaluate(() => window.scrollY),
+      0,
+      "category hover must not scroll, or it measures scroll intent instead of hover"
+    );
     await page.waitForLoadState("networkidle");
 
     const hoverRsc = requests.filter(
@@ -1283,7 +1299,16 @@ async function verifyGalleryLcpCandidate(browser, origin) {
         const images = [...document.querySelectorAll(".gallery-card img")];
         const first = images[0];
         return {
-          imagePreloads: document.querySelectorAll('link[rel="preload"][as="image"]').length,
+          imagePreloads: [...document.querySelectorAll('link[rel="preload"][as="image"]')].map((link) => ({
+            href: link.getAttribute("href") ?? "",
+            imageSrcset: link.getAttribute("imagesrcset") ?? "",
+            fetchPriority: link.getAttribute("fetchpriority") ?? ""
+          })),
+          firstImageAttributes: {
+            href: first?.getAttribute("src") ?? "",
+            imageSrcset: first?.getAttribute("srcset") ?? "",
+            fetchPriority: "high"
+          },
           firstImageFetchPriority: first?.getAttribute("fetchpriority") ?? "",
           firstImageLoading: first?.getAttribute("loading") ?? "",
           firstImageSrc: first?.currentSrc || first?.src || "",
@@ -1295,7 +1320,13 @@ async function verifyGalleryLcpCandidate(browser, origin) {
         };
       });
 
-      assert.equal(snapshot.imagePreloads, 0, `${scenario.name} Gallery must not preload images`);
+      // React DOM's SSR emits one preload for an eager fetchpriority=high <img> (the MEP-29
+      // first-photo hint); it is the same request, so allow exactly that one and no other.
+      assert.deepEqual(
+        snapshot.imagePreloads,
+        [snapshot.firstImageAttributes],
+        `${scenario.name} Gallery may preload only the first photo, as React's hint for its eager high-priority <img>`
+      );
       assert.equal(snapshot.firstImageLoading, "eager");
       assert.equal(snapshot.firstImageFetchPriority, "high");
       assert.deepEqual(snapshot.laterImageLoading, ["lazy"]);

@@ -552,7 +552,10 @@ for (const [basePath, pages] of hubGroups) {
     if (positions.join(',') !== expectedPositions.join(',')) {
       fail(`${pathname} ItemList positions are not absolute across pagination`)
     }
-    if (/search\/(?:blog|notes)\.json|firebaseapp\.com|BlogExplorer|NotesExplorer/i.test(html)) {
+    // The header's Cmd/Ctrl K search only carries the lazy index URLs in its config; that is not an
+    // explorer or an inlined index, so those two fields are ignored here.
+    const payload = html.replace(/\\?"(?:blog|notes)IndexUrl\\?":\\?"[^"\\]*\\?"/g, '')
+    if (/search\/(?:blog|notes)\.json|firebaseapp\.com|BlogExplorer|NotesExplorer/i.test(payload)) {
       fail(`${pathname} includes Explorer, search-index, or Firebase payload`)
     }
 
