@@ -16,34 +16,34 @@
     "routeInitialJavaScript": {
       "home": {
         "html": "en.html",
-        "maxGzipBytes": 274432,
-        "maxBrotliBytes": 238592
+        "maxGzipBytes": 221184,
+        "maxBrotliBytes": 191488
       },
       "blog": {
         "html": "en/blog.html",
-        "maxGzipBytes": 251904,
-        "maxBrotliBytes": 217088
+        "maxGzipBytes": 217088,
+        "maxBrotliBytes": 188416
       },
       "notes": {
         "html": "en/notes.html",
-        "maxGzipBytes": 251904,
-        "maxBrotliBytes": 217088
+        "maxGzipBytes": 217088,
+        "maxBrotliBytes": 188416
       },
       "studio": {
         "html": "en/studio.html",
-        "maxGzipBytes": 200704,
-        "maxBrotliBytes": 176128,
+        "maxGzipBytes": 173056,
+        "maxBrotliBytes": 149504,
         "maxDefaultRouteBrotliBytes": 204800
       },
       "blogArticle": {
         "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
-        "maxGzipBytes": 251904,
-        "maxBrotliBytes": 217600
+        "maxGzipBytes": 218112,
+        "maxBrotliBytes": 189440
       },
       "notesArticle": {
         "html": "en/notes/tri-tue-can-duc-hanh.html",
-        "maxGzipBytes": 251904,
-        "maxBrotliBytes": 217088
+        "maxGzipBytes": 218112,
+        "maxBrotliBytes": 189440
       }
     },
     "rsc": {
@@ -130,7 +130,7 @@
         "notesArchive": { "html": "en/notes.html", "maxGzipBytes": 18432 },
         "blogArticle": {
           "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
-          "maxGzipBytes": 17408
+          "maxGzipBytes": 18432
         },
         "notesArticle": {
           "html": "en/notes/tri-tue-can-duc-hanh.html",
@@ -188,7 +188,6 @@
           ".hero",
           ".cv-section",
           ".cv-section-head",
-          ".cv-section-eyebrow",
           ".cv-section-title"
         ],
         "about": [".about-page-v2"],
@@ -204,8 +203,8 @@
         "home": {
           "html": "en.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 10752,
-          "maxBrotliBytes": 9472,
+          "maxGzipBytes": 14080,
+          "maxBrotliBytes": 12288,
           "requiredOwners": ["home"],
           "allowedOwners": ["home"]
         },

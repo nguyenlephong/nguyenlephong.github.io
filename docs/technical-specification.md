@@ -147,9 +147,9 @@ Google requests left from the public page.
 | Route                              | File                                               | Rendering notes                                                                           |
 |------------------------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------|
 | `/`                                | `src/app/page.tsx`                                 | Static redirect to `/en` with crawler-readable metadata.                                  |
-| `/{locale}`                        | `src/app/[locale]/(site)/page.tsx`                        | Main CV/profile page, built from `profileInfo` and translated section labels.             |
+| `/{locale}`                        | `src/app/[locale]/(site)/page.tsx`                        | Main CV/profile page, built from `src/content/*` and translated section labels.             |
 | `/{locale}/about`                  | `src/app/[locale]/(site)/about/page.tsx`                  | Translated about sections from `messages`.                                                |
-| `/{locale}/gallery`                | `src/app/[locale]/(site)/gallery/page.tsx`                | Gallery from `profileInfo.gallery`, with ImageGallery JSON-LD.                            |
+| `/{locale}/gallery`                | `src/app/[locale]/(site)/gallery/page.tsx`                | Gallery from `src/content/gallery.ts`, with ImageGallery JSON-LD.                            |
 | `/{locale}/apps`                   | `src/app/[locale]/(site)/apps/page.tsx`                   | Static app showcase from `apps.data.ts`.                                                  |
 | `/{locale}/apps/english`           | `src/app/[locale]/(site)/apps/english/page.tsx`           | Private/noindex E-Slang practice app.                                                     |
 | `/{locale}/blog`                   | `src/app/[locale]/(site)/blog/page.tsx`                   | Blog index with categories, quick filters, and Blog JSON-LD.                              |
@@ -176,14 +176,14 @@ See [C4 Content Component Diagram](./diagrams/c4-component-content.puml).
 
 Profile-style pages use TypeScript modules under `src/content`:
 
-- `profile.ts` for contact, skills, achievements, education, and references
+- `profile.ts` for contact, social links, skills, achievements, and education
 - `experience.ts` for career experience
 - `projects.ts` for selected project history
 - `gallery.ts` for certificates, awards, projects, and activities
 - `media.ts` for video/media data
 
-`src/app/app.const.ts` reassembles those modules into `profileInfo`, preserving
-existing imports across the app.
+Pages import these modules directly. Client components import only what they
+render (`social` or `contact`), so no profile data object ships to the browser.
 
 ### Blog Content
 
@@ -775,18 +775,18 @@ remain hard gates. The current configured gates are:
 
 | Surface or payload | Current gate |
 |--------------------|-------------:|
-| Home initial JavaScript, Gzip | Hard limit: 274,432 bytes |
-| Home initial JavaScript, Brotli | Hard limit: 238,592 bytes |
-| Blog initial JavaScript, Gzip | Hard limit: 251,904 bytes |
-| Blog initial JavaScript, Brotli | Hard limit: 217,088 bytes |
-| Notes initial JavaScript, Gzip | Hard limit: 251,904 bytes |
-| Notes initial JavaScript, Brotli | Hard limit: 217,088 bytes |
-| Blog article initial JavaScript, Gzip | Hard limit: 251,904 bytes |
-| Blog article initial JavaScript, Brotli | Hard limit: 217,600 bytes |
-| Notes article initial JavaScript, Gzip | Hard limit: 251,904 bytes |
-| Notes article initial JavaScript, Brotli | Hard limit: 217,088 bytes |
-| Studio direct initial JavaScript, Gzip | Hard limit: 200,704 bytes |
-| Studio direct initial JavaScript, Brotli | Hard limit: 176,128 bytes |
+| Home initial JavaScript, Gzip | Hard limit: 221,184 bytes |
+| Home initial JavaScript, Brotli | Hard limit: 191,488 bytes |
+| Blog initial JavaScript, Gzip | Hard limit: 217,088 bytes |
+| Blog initial JavaScript, Brotli | Hard limit: 188,416 bytes |
+| Notes initial JavaScript, Gzip | Hard limit: 217,088 bytes |
+| Notes initial JavaScript, Brotli | Hard limit: 188,416 bytes |
+| Blog article initial JavaScript, Gzip | Hard limit: 218,112 bytes |
+| Blog article initial JavaScript, Brotli | Hard limit: 189,440 bytes |
+| Notes article initial JavaScript, Gzip | Hard limit: 218,112 bytes |
+| Notes article initial JavaScript, Brotli | Hard limit: 189,440 bytes |
+| Studio direct initial JavaScript, Gzip | Hard limit: 173,056 bytes |
+| Studio direct initial JavaScript, Brotli | Hard limit: 149,504 bytes |
 | Studio English default route, Brotli | Hard limit: 204,800 bytes |
 | Studio initial document CSS, Brotli | Hard limit: 3,072 bytes |
 | Studio required Shadow CSS, Brotli | Hard limit: 16,384 bytes |
@@ -799,8 +799,21 @@ remain hard gates. The current configured gates are:
 | Largest localized Studio RSC sample | Hard limit: 30,720 bytes |
 
 The verifier also hard-gates Gzip HTML for English Home (34,304 bytes), Blog
-archive (19,456), Notes archive (18,432), one Blog article (17,408), and one
+archive (19,456), Notes archive (18,432), one Blog article (18,432), and one
 Notes article (20,480), while reporting raw and Brotli bytes for comparison.
+
+Rebase of 2026-11-13 (homepage CV revamp). Initial JavaScript no longer counts
+`<script nomodule>` tags: the Next legacy polyfill (about 39.5 KiB Gzip) is never
+downloaded by module-capable browsers. The JavaScript gates above are the
+polyfill-free measurement plus about 10 percent, rounded up to 1 KiB (Home
+200,915 Gzip / 174,061 Brotli; Blog 196,642 / 170,466; Notes 196,532 / 170,382;
+articles 198,065 / 171,572; Studio 152.8 KiB / 131.8 KiB, gated at 173,056 /
+149,504). Both verifiers skip `<script nomodule>`; Studio's
+`maxDefaultRouteBrotliBytes` is unchanged. Home initial CSS grew with
+real revamp content (every home class selector is used by the en, vi or ja HTML
+or a JS chunk; Lighthouse reports 0 unused rules): measured 13,170 Gzip /
+11,518 Brotli, gated at 14,080 / 12,288 (about 7 percent headroom). Blog article
+HTML measured 17,419 Gzip, gated at 18,432 (about 6 percent).
 
 The 2026-07-20 complete export measured Blog at 213,534 bytes and Notes at
 213,444 bytes Brotli after the deferred engagement boundary. The 217,088-byte
@@ -814,7 +827,7 @@ gates:
 
 | Public route | Stylesheets | Measured raw | Measured Brotli | Brotli gate |
 |--------------|-------------:|-------------:|----------------:|-------------:|
-| Home | 3 | 43,200 | 9,224 | 9,472 |
+| Home | 3 | 55,044 | 11,518 | 12,288 |
 | About | 3 | 30,045 | 6,666 | 6,912 |
 | Gallery | 3 | 37,661 | 7,826 | 8,192 |
 | Apps | 3 | 42,422 | 8,812 | 9,216 |
@@ -901,7 +914,7 @@ and Brotli limits from the latest complete export.
 
 The Studio artifact gate additionally reports the Brotli/raw totals for every
 JavaScript chunk transitively reachable from the English Studio entry. Its
-direct entry retains the 176,128-byte ceiling. The default-route hard gate
+direct entry retains the 149,504-byte ceiling (polyfill excluded). The default-route hard gate
 parses Turbopack `Promise.all` loaders and counts every sibling chunk needed by
 the selected English locale and Welcome route; the full reachable async total
 remains visible separately. Mail, AI Skills, Delivery Checklists, auxiliary

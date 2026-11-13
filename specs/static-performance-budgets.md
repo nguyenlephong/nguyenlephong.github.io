@@ -96,7 +96,7 @@ route-oriented measurements.
   same initial graphs. This source-independent artifact check complements the
   Brotli ceilings: a provider can regress eagerly without first exceeding a
   byte budget.
-- Enforce the Studio direct-script ceiling at 176,128 bytes Brotli, a narrow
+- Enforce the Studio direct-script ceiling at 149,504 bytes Brotli (excluding `<script nomodule>`), a narrow
   allowance over the 2026-07-19 measured 169,964-byte entry. Parse emitted
   Turbopack `Promise.all` loader groups as atomic downloads, including every
   sibling chunk needed by the selected locale and Welcome route. Hard-gate the

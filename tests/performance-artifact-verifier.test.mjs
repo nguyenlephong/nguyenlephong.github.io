@@ -52,7 +52,6 @@ const PUBLIC_CSS_OWNER_SELECTORS = {
     ".hero",
     ".cv-section",
     ".cv-section-head",
-    ".cv-section-eyebrow",
     ".cv-section-title"
   ],
   about: [".about-page-v2"],
@@ -496,6 +495,33 @@ test("rejects initial JavaScript growth against the deployed Gzip encoding", asy
     report.failures.join("\n"),
     /home initial JavaScript Gzip bytes/
   );
+});
+
+test("does not count the nomodule legacy polyfill as initial JavaScript", async (t) => {
+  const { rootDir, outDir, chunksDir } = createFixture(t);
+  const homeHtml = path.join(outDir, "en.html");
+  // Random bytes so the polyfill alone would blow the 10,000 B Gzip ceiling if counted.
+  writeFileSync(
+    path.join(chunksDir, "polyfill.js"),
+    Array.from({ length: 4000 }, (_, i) => Math.random().toString(36) + i).join(";")
+  );
+  writeFileSync(
+    homeHtml,
+    readFileSync(homeHtml, "utf8").replace(
+      "</head>",
+      '<script src="/_next/static/chunks/polyfill.js" noModule=""></script></head>'
+    )
+  );
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.deepEqual(report.failures, []);
+  assert.deepEqual(report.routeInitialJavaScript.home.files, [
+    "_next/static/chunks/initial.js"
+  ]);
 });
 
 test("rejects compressed HTML growth against the delivery encoding budget", async (t) => {

@@ -114,10 +114,13 @@ function localArtifactPath(reference, siteOrigin) {
   return normalized;
 }
 
-function directScriptReferences(html) {
+// skipNoModule: `<script nomodule>` (the Next legacy polyfill) is never downloaded by
+// module-capable browsers, so it is not part of the initial JavaScript a visitor pays for.
+function directScriptReferences(html, { skipNoModule = false } = {}) {
   return [
     ...new Set(
       collectTags(html, "script")
+        .filter((tag) => !skipNoModule || !/\snomodule(?=[\s=/>])/i.test(tag))
         .map((tag) => attributeValue(tag, "src"))
         .filter(Boolean)
     )
@@ -511,7 +514,7 @@ async function collectInitialJavaScript({
   let brotliBytes = 0;
   const sources = [];
 
-  for (const reference of directScriptReferences(html)) {
+  for (const reference of directScriptReferences(html, { skipNoModule: true })) {
     let relativePath;
     try {
       relativePath = localArtifactPath(reference, siteOrigin);
