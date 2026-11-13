@@ -4574,3 +4574,86 @@ tbody tr:hover {
     padding: 0.75rem;
   }
 }
+
+/* MEP-59: on phones the diagram is the point. Canvas first, controls folded behind one disclosure under it. */
+.flow-board-options-toggle {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .flow-chart-surface:not(.is-fullscreen) .flow-canvas-shell {
+    display: contents;
+  }
+
+  .flow-chart-surface:not(.is-fullscreen) > *,
+  .flow-chart-surface:not(.is-fullscreen) .flow-canvas-shell > * {
+    order: 3;
+  }
+
+  .flow-chart-surface:not(.is-fullscreen) > .flow-chart-head {
+    order: 0;
+  }
+
+  .flow-chart-surface:not(.is-fullscreen) .flow-canvas-shell > .flow-react-surface {
+    order: 1;
+  }
+
+  .flow-chart-surface:not(.is-fullscreen) > .flow-board-toolbar {
+    order: 2;
+  }
+
+  .flow-board-toolbar:not(.is-options-open) > .flow-example-toolbar,
+  .flow-board-toolbar:not(.is-options-open) > .flow-canvas-toolbar {
+    display: none;
+  }
+
+  .flow-board-options-toggle {
+    display: flex;
+    width: 100%;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 0.65rem;
+    background: var(--card);
+    color: var(--foreground);
+    padding: 0 0.75rem;
+    font: inherit;
+    font-size: 0.86rem;
+    font-weight: 650;
+    cursor: pointer;
+  }
+
+  .flow-board-options-toggle:hover {
+    border-color: color-mix(in srgb, var(--primary) 40%, var(--border));
+  }
+
+  .flow-board-options-toggle:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--ring) 72%, transparent);
+    outline-offset: 3px;
+  }
+
+  .flow-board-options-toggle svg {
+    width: 1rem;
+    height: 1rem;
+    flex: none;
+    color: var(--primary);
+  }
+
+  .flow-board-options-toggle .flow-board-options-chevron {
+    margin-left: auto;
+    color: var(--muted-foreground);
+    transition: transform 0.2s ease;
+  }
+
+  .flow-board-toolbar.is-options-open .flow-board-options-chevron {
+    transform: rotate(180deg);
+  }
+}
+
+/* Editing history and clipboard are desk work; a touch visitor inspects the diagram instead. */
+@media (hover: none) and (pointer: coarse) {
+  .flow-canvas-toolbar .flow-touch-hidden {
+    display: none;
+  }
+}

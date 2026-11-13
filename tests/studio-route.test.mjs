@@ -241,8 +241,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(page, /"@type":\s*"CollectionPage"/);
   assert.match(page, /hasPart:/);
   assert.match(page, /getStudioStaticModuleHref/);
-  assert.match(page, /images:\s*\[\{ url: socialImage, width: 1200, height: 630/);
-  assert.match(page, /images:\s*\[socialImage\]/);
+  // MEP-64: Studio's own card, attached with a localized alt through the static-page policy.
+  assert.match(page, /buildStaticPageMetadata\(/);
+  assert.doesNotMatch(page, /opengraph-image\.png/);
   assert.doesNotMatch(page, /"@type":\s*"HowTo"/);
   assert.doesNotMatch(page, /"@type":\s*"TechArticle"/);
   assert.doesNotMatch(page, /getLocalizedStudioNotes|getLocalizedStudioFlows/);

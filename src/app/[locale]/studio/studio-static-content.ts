@@ -55,7 +55,7 @@ export const studioStaticContentCopyByLocale: Record<StudioContentLocale, Studio
     modules: {
       "delivery-checklists": {
         title: "Delivery checklists",
-        seoTitle: "Delivery checklists: release readiness, rollout and ticket intake",
+        seoTitle: "Delivery checklists: ticket intake, release readiness, rollout",
         description:
           "Release Readiness, Rollout Plan and the other checklists I walk through from ticket intake to the first days after a release.",
         lead:
@@ -96,7 +96,7 @@ export const studioStaticContentCopyByLocale: Record<StudioContentLocale, Studio
     modules: {
       "delivery-checklists": {
         title: "Checklist từ ticket đến rollout",
-        seoTitle: "Checklist từ ticket đến rollout: kiểm tra release, kế hoạch rollout, nhận việc",
+        seoTitle: "Checklist ra bản: nhận ticket, kiểm tra release và rollout",
         description:
           "Kiểm tra trước khi release, kế hoạch rollout và các checklist tôi dùng từ lúc nhận ticket đến mấy ngày đầu sau khi ra bản.",
         lead:
@@ -105,7 +105,7 @@ export const studioStaticContentCopyByLocale: Record<StudioContentLocale, Studio
       },
       "flow-react-flow-system-blueprint": {
         title: "Sơ đồ hệ thống",
-        seoTitle: "Sơ đồ hệ thống: đường đi của request từ DNS đến các service fan-out",
+        seoTitle: "Sơ đồ hệ thống: đường đi của request từ DNS đến service fan-out",
         description:
           "Bản blueprint tôi dùng khi review thiết kế, đi từ DNS và edge policy qua load balancing, storage, queue đến các service fan-out.",
         lead:

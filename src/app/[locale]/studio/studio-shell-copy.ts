@@ -100,6 +100,7 @@ export type StudioUiCopy = {
     exampleView: string;
     exampleSelectorLabel: string;
     boardTools: string;
+    diagramOptions: string;
     viewNotes: string;
     useWhen: string;
     outcome: string;
