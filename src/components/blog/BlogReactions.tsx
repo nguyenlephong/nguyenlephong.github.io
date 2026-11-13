@@ -26,6 +26,9 @@ const REACTIONS: { key: ReactionKey; Icon: IconType }[] = [
   { key: 'clap', Icon: LuPartyPopper },
 ]
 
+// A row of zeros reads as an empty room; counts appear once they mean something (MEP-40).
+const MIN_VISIBLE_COUNT = 3
+
 /** Bottom-of-article "What did you think?" reaction bar. */
 export default function BlogReactions({
   prompt,
@@ -47,14 +50,17 @@ export default function BlogReactions({
       <div className="blog-reactions__row" role="group">
         {REACTIONS.map(({ key, Icon }) => {
           const active = myReaction === key
-          const count = formatCount(reactions[key])
+          const count =
+            reactions[key] >= MIN_VISIBLE_COUNT ? formatCount(reactions[key]) : null
           return (
             <button
               key={key}
               type="button"
               className={`blog-react${active ? ' blog-react--active' : ''}`}
               aria-pressed={active}
-              aria-label={`${reactionLabels[key]} (${count})`}
+              aria-label={
+                count ? `${reactionLabels[key]} (${count})` : reactionLabels[key]
+              }
               title={reactionLabels[key]}
               onClick={() => {
                 react(key)
@@ -68,9 +74,11 @@ export default function BlogReactions({
               }}
             >
               <Icon aria-hidden="true" className="blog-react__icon" />
-              <span className="blog-react__count" aria-hidden="true">
-                {count}
-              </span>
+              {count && (
+                <span className="blog-react__count" aria-hidden="true">
+                  {count}
+                </span>
+              )}
             </button>
           )
         })}

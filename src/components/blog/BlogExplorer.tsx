@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import { postStatsId } from '@/lib/firebase/postStats'
 import BlogPostCard from './BlogPostCard'
@@ -43,6 +43,8 @@ interface BlogExplorerProps {
   searchIndexUrl: string
   /** Threshold below which the view badge is hidden (default 100). */
   viewThreshold?: number
+  /** Unfiltered-only content above the list (Start here, list heading). */
+  lead?: ReactNode
 }
 
 /**
@@ -59,6 +61,7 @@ export default function BlogExplorer({
   totalItems,
   searchIndexUrl,
   viewThreshold = 100,
+  lead,
 }: BlogExplorerProps) {
   const t = useTranslations('Pages.blog')
   const [loadedSearch, setLoadedSearch] = useState<{
@@ -218,6 +221,7 @@ export default function BlogExplorer({
       searchStatus={searchStatus}
       postStatsStatus={postStatsStatus}
       searchUnavailableLabel={t('controls.searchUnavailable')}
+      lead={lead}
       onSearchIntent={() => {
         signalBrowsingIntent()
         void loadSearchIndex()

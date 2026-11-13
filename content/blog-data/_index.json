@@ -85,6 +85,32 @@
       "order": 5
     }
   ],
+  "startHere": [
+    {
+      "slug": "monolith-to-microservices",
+      "reason": "The signals that tell you a split is worth its operating cost, and the ones that say not yet."
+    },
+    {
+      "slug": "the-outbox-pattern",
+      "reason": "Keeping the database and published events in step when one service has to write both."
+    },
+    {
+      "slug": "observability-at-scale",
+      "reason": "Logs, metrics, traces and SLOs, and how an error budget keeps on-call sustainable."
+    },
+    {
+      "slug": "working-in-a-big-corp",
+      "reason": "How work moves through planning, review and alignment when many teams share one system."
+    },
+    {
+      "slug": "navigating-office-politics",
+      "reason": "Getting a sound proposal decided when incentives, timing and ownership pull different ways."
+    },
+    {
+      "slug": "cognitive-debt-ai-assisted-development",
+      "reason": "What a team can do when AI writes code faster than people can review and run it."
+    }
+  ],
   "posts": [
     {
       "slug": "clarifying-requirements-in-system-design-interviews",

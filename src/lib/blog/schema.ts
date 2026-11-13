@@ -85,13 +85,32 @@ const book = z.object({
 
 const faq = z.object({ q: z.string(), a: z.string() }).strict()
 
+/** Hand-picked "Start here" entry: one post plus a one-line reason, per locale. */
+const startHereEntry = z.object({
+  slug: contentSlugSchema,
+  reason: z.string().trim().min(1).max(160),
+}).strict()
+const startHere = z.array(startHereEntry).max(8)
+
 export const blogIndexSchema = z
   .object({
     series: z.array(series).default([]),
     categories: z.array(category),
     posts: z.array(indexedPostMeta),
+    startHere: startHere.default([]),
   })
   .superRefine((index, ctx) => {
+    reportDuplicateValues(index.startHere, (entry) => entry.slug, ctx, 'startHere')
+    const postSlugs = new Set(index.posts.map((entry) => entry.slug))
+    index.startHere.forEach((entry, entryIndex) => {
+      if (!postSlugs.has(entry.slug)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['startHere', entryIndex, 'slug'],
+          message: `Start here slug "${entry.slug}" is not a known post`,
+        })
+      }
+    })
     reportDuplicateValues(index.series, (entry) => entry.id, ctx, 'series')
     reportDuplicateValues(
       index.series,
@@ -257,6 +276,7 @@ export const blogIndexOverrideSchema = z
     series: z.array(seriesOverride).optional(),
     categories: z.array(categoryOverride).optional(),
     posts: z.array(postMetaOverride).optional(),
+    startHere: startHere.optional(),
   })
   .strict()
 

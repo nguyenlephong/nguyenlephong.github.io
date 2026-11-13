@@ -27,6 +27,11 @@ import { resolveNoteAuthorIdentity } from '@/lib/notes/authorship'
 import { getLegacyBlogLocaleFallback } from '@/lib/blog/legacy-locale-fallbacks'
 import { getRelatedPosts } from '@/lib/blog/related'
 import { getCategoryNeighbors } from '@/lib/blog/neighbors'
+import {
+  articleDek,
+  articleTagLinks,
+  popularTags,
+} from '@/lib/blog/article-header'
 import { localizeArticleHtmlLinks } from '@/lib/content/article-html'
 import { CONTENT_HUB_LOCALES } from '@/lib/content/route-contract'
 import { blogPostOgImageUrl } from '@/lib/og/static-images'
@@ -200,6 +205,13 @@ export default async function BlogPostPage({ params }: Props) {
     ),
   )
   const relatedPosts = getRelatedPosts(post, localePosts, 5, adjacentSlugs)
+  const tagLinks = articleTagLinks(
+    post.tags,
+    [cat?.title, getCategory(category)?.title].filter(
+      (name): name is string => Boolean(name),
+    ),
+    popularTags(localePosts),
+  )
   const relatedItems = relatedPosts.map((relatedPost) => ({
     href: `/blog/${relatedPost.category}/${relatedPost.slug}`,
     title: relatedPost.title,
@@ -451,7 +463,7 @@ export default async function BlogPostPage({ params }: Props) {
                   </p>
                 )}
                 <h1 className="blog-article__title">{post.title}</h1>
-                <p className="blog-article__summary">{post.summary}</p>
+                <p className="blog-article__summary">{articleDek(post.summary)}</p>
                 <div className="blog-article__meta">
                   {isSiteOwner ? (
                     <ArticleByline locale={locale} name={post.author} />
@@ -464,16 +476,21 @@ export default async function BlogPostPage({ params }: Props) {
                   <span>{t('readingTime', { minutes: post.readingMinutes })}</span>
                   <BlogViewCount label={t('engagement.views')} />
                 </div>
-                {post.tags.length > 0 && (
-                  <ul className="blog-article__tags">
-                    {post.tags.map((tag) => (
-                      <li key={tag}>{tag}</li>
-                    ))}
-                  </ul>
-                )}
               </header>
 
               <BlogContent html={post.html} locale={locale} />
+
+              {tagLinks.length > 0 && (
+                <ul className="blog-article__tags blog-article__tags--links">
+                  {tagLinks.map(({ tag, href }) => (
+                    <li key={tag}>
+                      <a href={`/${locale}${href}`} data-tag-link={tag}>
+                        {tag}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
 
               <BlogReactions
                 prompt={t('engagement.reactionsPrompt')}

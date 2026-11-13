@@ -6,6 +6,7 @@ import { FaXTwitter, FaFacebookF, FaLinkedinIn } from 'react-icons/fa6'
 import type { IconType } from 'react-icons'
 import { track } from '@/lib/analytics'
 import { useEngagement } from './EngagementProvider'
+import { useFooterInView } from './useFooterInView'
 
 interface ShareLabels {
   share: string
@@ -41,6 +42,7 @@ export default function BlogShareDock({
   const [visible, setVisible] = useState(false)
   const [open, setOpen] = useState(false)
   const [copied, setCopied] = useState(false)
+  const atFooter = useFooterInView()
   const ref = useRef<HTMLDivElement>(null)
 
   // Reveal after scrolling past the masthead.
@@ -135,6 +137,7 @@ export default function BlogShareDock({
         'blog-share-dock',
         visible ? 'blog-share-dock--visible' : '',
         open ? 'blog-share-dock--open' : '',
+        atFooter ? 'blog-share-dock--at-footer' : '',
       ]
         .filter(Boolean)
         .join(' ')}

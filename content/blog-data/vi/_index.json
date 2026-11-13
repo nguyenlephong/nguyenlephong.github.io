@@ -85,6 +85,32 @@
       "order": 5
     }
   ],
+  "startHere": [
+    {
+      "slug": "monolith-to-microservices",
+      "reason": "Dấu hiệu nào cho thấy tách service đáng với chi phí vận hành, và khi nào thì chưa nên tách."
+    },
+    {
+      "slug": "the-outbox-pattern",
+      "reason": "Giữ database và event khớp nhau khi một service phải ghi cả hai."
+    },
+    {
+      "slug": "observability-at-scale",
+      "reason": "Logs, metrics, traces, SLO, và cách dùng error budget để on-call không vắt kiệt team."
+    },
+    {
+      "slug": "working-in-a-big-corp",
+      "reason": "Một việc đi qua planning, review và align ra sao khi nhiều team cùng đụng vào một hệ thống."
+    },
+    {
+      "slug": "navigating-office-politics",
+      "reason": "Đưa một đề xuất tốt tới được quyết định khi mỗi bên có áp lực và lợi ích riêng."
+    },
+    {
+      "slug": "cognitive-debt-ai-assisted-development",
+      "reason": "Team nên làm gì khi AI viết code nhanh hơn tốc độ mọi người kịp review và vận hành."
+    }
+  ],
   "posts": [
     {
       "slug": "clarifying-requirements-in-system-design-interviews",

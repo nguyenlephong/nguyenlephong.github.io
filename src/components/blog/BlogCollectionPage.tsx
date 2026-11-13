@@ -9,6 +9,7 @@ import {
   listBlogSeries,
   listCategories,
   listPosts,
+  listStartHere,
 } from '@/lib/blog/data'
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
@@ -25,21 +26,11 @@ import ContentHubPageTracker from '@/components/analytics/ContentHubPageTracker'
 import PageTracker from '@/components/analytics/PageTracker'
 import BlogCategoryCard from '@/components/blog/BlogCategoryCard'
 import BlogExplorer from '@/components/blog/BlogExplorer'
+import BlogStartHere from '@/components/blog/BlogStartHere'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
+import { popularTags } from '@/lib/blog/article-header'
 
-const POPULAR_TAG_LIMIT = 12
 const seo = PAGE_SEO.blog
-
-function popularTags(posts: { tags: string[] }[]): string[] {
-  const counts = new Map<string, number>()
-  for (const post of posts) {
-    for (const tag of post.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1)
-  }
-  return [...counts.entries()]
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-    .slice(0, POPULAR_TAG_LIMIT)
-    .map(([tag]) => tag)
-}
 
 export function blogPageCount(locale: string): number {
   return paginate(listPosts(locale), 1)?.totalPages ?? 1
@@ -137,6 +128,19 @@ export default async function BlogCollectionPage({
     page,
     total: pageData.totalPages,
   })
+  const startHere =
+    page === 1 && hasCuratedHubs
+      ? listStartHere(locale).map(({ post, reason }) => ({
+          slug: post.slug,
+          category: post.category,
+          title: post.title,
+          reason,
+          meta: `${categoryBySlug.get(post.category)?.title ?? post.category} · ${t(
+            'readingTime',
+            { minutes: post.readingMinutes },
+          )}`,
+        }))
+      : []
 
   const blogLd = {
     '@context': 'https://schema.org',
@@ -207,64 +211,7 @@ export default async function BlogCollectionPage({
         </p>
       </header>
 
-      {page === 1 && (
-        <section
-          className="blog-home__section"
-          aria-labelledby="blog-categories-heading"
-        >
-          <h2 id="blog-categories-heading" className="blog-home__section-title">
-            {t('categoriesHeading')}
-          </h2>
-          <div className="blog-cat-grid">
-            {categories.map((category) => (
-              <BlogCategoryCard
-                key={category.slug}
-                category={category}
-                countLabel={countFor(category.slug)}
-              />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {page === 1 && seriesCatalog.length > 0 && (
-        <section
-          className="blog-home__section"
-          aria-labelledby="blog-series-heading"
-        >
-          <h2 id="blog-series-heading" className="blog-home__section-title">
-            {locale === 'vi' ? 'Đọc theo loạt bài' : 'Read by series'}
-          </h2>
-          <div className="content-hub-catalog">
-            {seriesCatalog.map((series) => (
-              <a
-                key={series.id}
-                href={`/${locale}/blog/series/${series.id}`}
-                className="content-hub-catalog__link"
-                data-content-hub-action="catalog"
-                data-content-hub-kind="blog_series"
-                data-content-hub-id={series.id}
-                data-content-hub-page="1"
-                data-source="blog_index"
-              >
-                <h3 className="content-hub-catalog__title">{series.title}</h3>
-                <p className="content-hub-catalog__intro">{series.intro}</p>
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
-
-      <section
-        className="blog-home__section"
-        aria-labelledby="blog-latest-heading"
-      >
-        <h2 id="blog-latest-heading" className="blog-home__section-title">
-          {t('latestHeading')}
-          {page > 1 && (
-            <span className="content-page-label"> — {pageLabel}</span>
-          )}
-        </h2>
+      <div className="blog-home__archive">
         <ScopedIntlProvider scope="blog">
           {pageData.items.length > 0 ? (
             <BlogExplorer
@@ -294,12 +241,75 @@ export default async function BlogCollectionPage({
                 'blog',
                 searchRevision,
               )}
+              lead={
+                <>
+                  <BlogStartHere
+                    heading={t('startHereHeading')}
+                    items={startHere}
+                    locale={locale}
+                  />
+                  <h2 className="blog-home__section-title blog-home__latest-title">
+                    {t('latestHeading')}
+                    {page > 1 && (
+                      <span className="content-page-label"> · {pageLabel}</span>
+                    )}
+                  </h2>
+                </>
+              }
             />
           ) : (
             <p className="blog-empty">{t('empty')}</p>
           )}
         </ScopedIntlProvider>
-      </section>
+      </div>
+
+      {page === 1 && seriesCatalog.length > 0 && (
+        <section
+          className="blog-home__section"
+          aria-labelledby="blog-series-heading"
+        >
+          <h2 id="blog-series-heading" className="blog-home__section-title">
+            {t('seriesHeading')}
+          </h2>
+          <div className="content-hub-catalog">
+            {seriesCatalog.map((series) => (
+              <a
+                key={series.id}
+                href={`/${locale}/blog/series/${series.id}`}
+                className="content-hub-catalog__link"
+                data-content-hub-action="catalog"
+                data-content-hub-kind="blog_series"
+                data-content-hub-id={series.id}
+                data-content-hub-page="1"
+                data-source="blog_index"
+              >
+                <h3 className="content-hub-catalog__title">{series.title}</h3>
+                <p className="content-hub-catalog__intro">{series.intro}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {page === 1 && (
+        <section
+          className="blog-home__section"
+          aria-labelledby="blog-categories-heading"
+        >
+          <h2 id="blog-categories-heading" className="blog-home__section-title">
+            {t('categoriesHeading')}
+          </h2>
+          <div className="blog-cat-grid">
+            {categories.map((category) => (
+              <BlogCategoryCard
+                key={category.slug}
+                category={category}
+                countLabel={countFor(category.slug)}
+              />
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   )
 }

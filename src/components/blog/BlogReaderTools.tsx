@@ -11,6 +11,7 @@ import LocaleSwitcher from '@/components/LocaleSwitcher'
 import FontSwitcher from '@/components/font/FontSwitcher'
 import ReadingBackgroundSwitcher from '@/components/reading/ReadingBackgroundSwitcher'
 import { track } from '@/lib/analytics'
+import { useFooterInView } from './useFooterInView'
 
 interface BlogReaderToolsLabels {
   label: string
@@ -37,8 +38,9 @@ function scrollToY(top: number) {
 function ReaderTools({ labels }: BlogReaderToolsProps) {
   const [visible, setVisible] = useState(false)
   const [expanded, setExpanded] = useState(false)
-  const [nearTop, setNearTop] = useState(true)
+  const [pastFirstScreen, setPastFirstScreen] = useState(false)
   const [nearBottom, setNearBottom] = useState(false)
+  const atFooter = useFooterInView()
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -50,7 +52,7 @@ function ReaderTools({ labels }: BlogReaderToolsProps) {
 
       setVisible(nextVisible)
       if (!nextVisible) setExpanded(false)
-      setNearTop(current < 120)
+      setPastFirstScreen(current > window.innerHeight)
       setNearBottom(maxScroll - current < 160)
     }
 
@@ -106,12 +108,25 @@ function ReaderTools({ labels }: BlogReaderToolsProps) {
         'blog-reader-tools',
         visible ? 'blog-reader-tools--visible' : '',
         expanded ? 'blog-reader-tools--expanded' : '',
+        atFooter ? 'blog-reader-tools--at-footer' : '',
       ]
         .filter(Boolean)
         .join(' ')}
       role="toolbar"
       aria-label={labels.label}
     >
+      {pastFirstScreen && (
+        <button
+          type="button"
+          className="blog-reader-tools__top"
+          aria-label={labels.scrollTop}
+          title={labels.scrollTop}
+          onClick={handleTop}
+        >
+          <LuArrowUpToLine size={18} aria-hidden="true" />
+        </button>
+      )}
+
       <button
         type="button"
         className="blog-reader-tools__trigger"
@@ -126,16 +141,6 @@ function ReaderTools({ labels }: BlogReaderToolsProps) {
 
       {expanded && (
         <div id="blog-reader-tools-panel" className="blog-reader-tools__controls">
-          <button
-            type="button"
-            className="blog-reader-tools__btn"
-            aria-label={labels.scrollTop}
-            title={labels.scrollTop}
-            disabled={nearTop}
-            onClick={handleTop}
-          >
-            <LuArrowUpToLine size={17} aria-hidden="true" />
-          </button>
           <button
             type="button"
             className="blog-reader-tools__btn"

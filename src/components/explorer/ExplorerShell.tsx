@@ -37,6 +37,8 @@ interface ExplorerShellProps<T> {
   searchUnavailableLabel: string
   onSearchIntent: () => void
   renderItem: (item: T) => ReactNode
+  /** Shown between the controls and the list only while no search or filter is active. */
+  lead?: ReactNode
 }
 
 function accentStyle(color?: string): CSSProperties | undefined {
@@ -61,6 +63,7 @@ export function ExplorerShell<T>({
   searchUnavailableLabel,
   onSearchIntent,
   renderItem,
+  lead,
 }: ExplorerShellProps<T>) {
   const {
     view,
@@ -330,6 +333,8 @@ export function ExplorerShell<T>({
           </p>
         )}
       </div>
+
+      {hasFilters ? null : lead}
 
       <div ref={listTopRef} className="blog-explorer__scroll-anchor" />
 

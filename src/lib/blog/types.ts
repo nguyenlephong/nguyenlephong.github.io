@@ -70,8 +70,16 @@ export interface BlogPost extends BlogPostMeta {
   faqs?: BlogFaq[]
 }
 
+/** Curated reading entry point shown above the blog archive. */
+export interface BlogStartHereEntry {
+  slug: string
+  /** One line, written natively per locale: why this post is worth reading first. */
+  reason: string
+}
+
 export interface BlogIndexFile {
   series: BlogSeriesMeta[]
   categories: BlogCategoryMeta[]
   posts: BlogPostMeta[]
+  startHere: BlogStartHereEntry[]
 }
