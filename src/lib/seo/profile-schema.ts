@@ -1,6 +1,6 @@
 import type { Person, WithContext } from 'schema-dts'
 import { PROFILE_URL, SITE_URL } from '@/app/seo.config'
-import { contact } from '@/content/profile'
+import { social } from '@/content/social'
 import type { Locale } from '@/i18n/routing'
 import { SITE_SECTIONS, sectionUrl } from '@/lib/seo/site-sections'
 
@@ -136,7 +136,7 @@ export function buildPersonSchema(description: string): WithContext<Person> {
       '@type': 'CollegeOrUniversity',
       name: 'Nong Lam University',
     },
-    sameAs: [contact.linkedin, contact.github, contact.leetcode, contact.youtube, contact.twitter],
+    sameAs: [social.linkedin, social.github, social.leetcode, social.youtube, social.twitter],
   }
 }
 
@@ -192,22 +192,33 @@ const WEBSITE_ID = `${SITE_URL}/#website`
 const WEBSITE_PART_IDS = ['about', 'blog', 'notes', 'gallery', 'apps', 'studio'] as const
 
 /**
- * Site-level entity for the domain root. Owned by the root stub (`/`), where
- * Google reads the site name; `alternateName` carries the brand spellings people
- * actually search for, and `hasPart` names every top-level section with its URL.
+ * Compact WebSite node for every locale home. `/` redirects to `/en`, so Google
+ * reads the site name from the locale homes; the same node on each page resolves
+ * ProfilePage.isPartOf there. Identical across locales on purpose: Google wants the
+ * same site-name markup on every duplicate.
  */
-export function buildWebsiteSchema(description: string) {
+export function buildWebsiteIdentitySchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     name: 'Nguyen Le Phong',
     alternateName: ['Nguyễn Lê Phong', 'nguyenlephong', 'Phong Nguyen'],
+    publisher: { '@id': `${SITE_URL}/#person` },
+  }
+}
+
+/**
+ * Full site-level entity for the domain root stub (`/`): the compact identity plus
+ * a description and `hasPart`, which names every top-level section with its URL.
+ */
+export function buildWebsiteSchema(description: string) {
+  return {
+    ...buildWebsiteIdentitySchema(),
     description,
     inLanguage: 'en',
     author: { '@id': `${SITE_URL}/#person` },
-    publisher: { '@id': `${SITE_URL}/#person` },
     hasPart: SITE_SECTIONS.filter((section) =>
       (WEBSITE_PART_IDS as readonly string[]).includes(section.id),
     ).map((section) => ({

@@ -27,6 +27,7 @@ export async function runPostbuildTransforms({
     }
 
     await recoverStaleOgTransactions(outDir)
+    await gateAdsTxt(outDir)
     const artifactIndex = await createArtifactIndex(outDir)
     const og = await normalizeStaticOgArtifacts({
       acquireLock: false,
@@ -47,6 +48,15 @@ export async function runPostbuildTransforms({
 
   if (!acquireLock) return transform()
   return withPostbuildTransformLock(outDir, transform)
+}
+
+// MEP-66: public/ads.txt is kept in the repo but ships only while AdSense is on,
+// using the same GOOGLE_THIRD_PARTY flag as src/lib/public-third-party.ts.
+export async function gateAdsTxt(
+  outDir,
+  enabled = process.env.GOOGLE_THIRD_PARTY === 'on',
+) {
+  if (!enabled) await fs.rm(path.join(outDir, 'ads.txt'), { force: true })
 }
 
 export function reportPostbuildResult(result, { outDir = OUT_DIR } = {}) {

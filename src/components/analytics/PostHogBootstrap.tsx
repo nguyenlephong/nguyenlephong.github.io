@@ -28,7 +28,11 @@ export default function PostHogBootstrap({
             autocapture: false,
             disable_session_recording: true,
             respect_dnt: true,
-            persistence: 'localStorage+cookie',
+            disable_surveys: true,
+            advanced_disable_flags: true,
+            cookieless_mode: 'always',
+            person_profiles: 'never',
+            persistence: 'memory',
             before_send: ${beforeSend}
           });
           posthog.register({ site: 'nguyenlephong.github.io', surface: ${JSON.stringify(surface)}, locale: ${JSON.stringify(locale)} });

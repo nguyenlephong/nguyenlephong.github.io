@@ -49,6 +49,8 @@ const nextConfig = {
   images: {unoptimized: true},
   env: {
     NEXT_PUBLIC_APP_VERSION: appVersion,
+    // Inlined at build time so the off branch in the site layout is tree-shaken (MEP-66).
+    GOOGLE_THIRD_PARTY: process.env.GOOGLE_THIRD_PARTY === 'on' ? 'on' : 'off',
   },
 };
 

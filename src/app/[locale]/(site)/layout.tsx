@@ -5,7 +5,6 @@ import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import AppFooter from '@/components/AppFooter'
 import AppHeader from '@/components/AppHeader'
-import PublicThirdPartyResources from '@/components/analytics/PublicThirdPartyResources'
 import FontScript from '@/components/font/FontScript'
 import RouteProgressBar from '@/components/motion/RouteProgressBar'
 import OfflineNavigationCapture from '@/components/offline/OfflineNavigationCapture'
@@ -15,14 +14,10 @@ import ThemeScript from '@/components/theme/ThemeScript'
 import ThemeSync from '@/components/theme/ThemeSync'
 import { routing } from '@/i18n/routing'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
-import { PUBLIC_THIRD_PARTY } from '@/lib/public-third-party'
+import { publicThirdPartyMetadata } from '@/lib/public-third-party'
 import '../../globals.css'
 
-export const metadata: Metadata = {
-  other: {
-    'google-adsense-account': PUBLIC_THIRD_PARTY.adsenseClientId,
-  },
-}
+export const metadata: Metadata = publicThirdPartyMetadata()
 
 type SiteLayoutProps = {
   children: ReactNode
@@ -36,12 +31,22 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: 'Nav' })
 
+  // MEP-66: next.config inlines GOOGLE_THIRD_PARTY, so with the flag off this
+  // branch is dead code and the GA/AdSense client module never reaches a chunk.
+  let thirdPartyResources: ReactNode = null
+  if (process.env['GOOGLE_THIRD_PARTY'] === 'on') {
+    const { default: PublicThirdPartyResources } = await import(
+      '@/components/analytics/PublicThirdPartyResources'
+    )
+    thirdPartyResources = <PublicThirdPartyResources />
+  }
+
   return (
     <>
       <a className="skip-link" href="#main-content">
         {t('skipToContent')}
       </a>
-      <PublicThirdPartyResources />
+      {thirdPartyResources}
       <ScopedIntlProvider scope="site">
         <ThemeScript />
         <FontScript />

@@ -156,7 +156,8 @@ test("not-found analytics shares the existing privacy-safe bootstrap", async () 
   assert.match(bootstrap, /autocapture:\s*false/);
   assert.match(bootstrap, /disable_session_recording:\s*true/);
   assert.match(bootstrap, /respect_dnt:\s*true/);
-  assert.match(bootstrap, /persistence:\s*'localStorage\+cookie'/);
+  assert.match(bootstrap, /cookieless_mode:\s*'always'/);
+  assert.match(bootstrap, /persistence:\s*'memory'/);
   assert.match(
     bootstrap,
     /captureAutomaticPageLifecycle = surface !== "not_found"/

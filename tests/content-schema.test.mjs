@@ -301,7 +301,11 @@ test("root and localized homes split WebSite and profile schema ownership", () =
   );
 
   assert.match(rootPage, /buildWebsiteSchema/);
-  assert.doesNotMatch(localizedPage, /buildWebsiteSchema/);
+  assert.doesNotMatch(localizedPage, /buildWebsiteSchema\b/);
+  assert.equal(
+    (localizedPage.match(/buildWebsiteIdentitySchema\(\)/g) ?? []).length,
+    1
+  );
   assert.match(localizedPage, /buildPersonSchema/);
   assert.match(localizedPage, /buildProfilePageSchema/);
   assert.match(localizedLayout, /languages\['x-default'\]/);

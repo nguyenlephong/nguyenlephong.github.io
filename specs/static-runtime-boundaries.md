@@ -22,7 +22,9 @@ route group to give public pages and Studio different runtime boundaries.
 - All localized routes except Studio live under
   `src/app/[locale]/(site)`. Route groups are omitted from generated URLs.
 - `src/app/[locale]/(site)/layout.tsx` owns shared public-only chrome and
-  runtime: Google Analytics and AdSense resources, the theme, font, and
+  runtime: Google Analytics and AdSense resources (rendered only when the build
+  runs with `GOOGLE_THIRD_PARTY=on`; paused and off by default since MEP-66),
+  the theme, font, and
   reading-background prepaint scripts, theme synchronization, route progress,
   offline navigation and status, header, footer, and the scoped site
   client-message provider. Those prepaint scripts remain site-wide for every
@@ -228,7 +230,9 @@ existing IDs must not be renamed or renumbered.
 ### Browser verification
 
 Run `npm run verify:runtime-boundaries` against the complete export. The browser
-check first proves that Google Analytics and AdSense mount on a public page. It
+check first proves that a public page loads no Google Analytics or AdSense
+scripts, hints, metadata, requests, or `_ga`/`_gcl_*` cookies (with
+`GOOGLE_THIRD_PARTY=on` it instead proves that they mount). It
 then follows the footer's Studio link and requires a new document navigation,
 the existing `cv_nav_click` event with `sendBeacon`, preserved session storage,
 and a reset in-memory marker. The Studio document must expose zero public Google

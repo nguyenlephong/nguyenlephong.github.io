@@ -220,8 +220,17 @@ test("document CSS, public CSS, and third-party resources follow route ownership
     rootLayout,
     /google-adsense-account|googletagmanager|googlesyndication|GTM_datalayer/
   );
-  assert.match(siteLayout, /<PublicThirdPartyResources \/>/);
-  assert.match(siteLayout, /google-adsense-account/);
+  // Literal env check + dynamic import: dead code (no client chunk) when off.
+  assert.match(
+    siteLayout,
+    /if \(process\.env\['GOOGLE_THIRD_PARTY'\] === 'on'\) \{\s*const \{ default: PublicThirdPartyResources \} = await import\(/
+  );
+  assert.doesNotMatch(siteLayout, /^import PublicThirdPartyResources/m);
+  assert.match(
+    readFileSync("next.config.mjs", "utf8"),
+    /GOOGLE_THIRD_PARTY: process\.env\.GOOGLE_THIRD_PARTY === 'on' \? 'on' : 'off'/
+  );
+  assert.match(siteLayout, /metadata: Metadata = publicThirdPartyMetadata\(\)/);
   assert.match(publicResources, /ReactDOM\.preconnect/);
   assert.match(publicResources, /ReactDOM\.prefetchDNS/);
   assert.match(publicResources, /id="GTM"/);

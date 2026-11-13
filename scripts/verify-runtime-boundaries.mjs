@@ -14,6 +14,14 @@ const OUT_DIR = path.join(ROOT, "out");
 const HOST = "127.0.0.1";
 const REQUESTED_PORT = Number(process.env.RUNTIME_BOUNDARY_VERIFY_PORT ?? "0");
 const PUBLIC_ARTICLE = "/en/blog/culture/how-to-be-a-kind-engineer";
+// Same flag as src/lib/public-third-party.ts (MEP-66); off by default.
+const GOOGLE_THIRD_PARTY_ENABLED = process.env.GOOGLE_THIRD_PARTY === "on";
+const GOOGLE_AD_ANALYTICS_HOSTS = Object.freeze([
+  "googletagmanager.com",
+  "googlesyndication.com",
+  "doubleclick.net",
+  "google-analytics.com"
+]);
 const SECOND_ARTICLE = "/en/blog/culture/how-to-review-code-kindly";
 const ARCHIVE_PROVIDER_MARKERS = Object.freeze([
   "firebaseapp.com",
@@ -206,10 +214,7 @@ async function installGalleryLcpObserver(context) {
 }
 
 function isGoogleRequest(url) {
-  return (
-    url.includes("googletagmanager.com") ||
-    url.includes("googlesyndication.com")
-  );
+  return GOOGLE_AD_ANALYTICS_HOSTS.some((host) => url.includes(host));
 }
 
 function localRequestPath(url, origin) {
@@ -959,55 +964,67 @@ async function verifyPublicToStudioBoundary(browser, origin) {
     });
     assert.equal(homeResponse?.status(), 200);
     await page.waitForLoadState("networkidle");
-    await page.waitForFunction(
-      () =>
-        typeof window.gtag === "function" &&
-        Array.isArray(window.adsbygoogle) &&
-        window.__googleTagRuntimeLoaded === true &&
-        window.__adsenseRuntimeLoaded === true
-    );
-    const googleReadiness = await page.evaluate(() => ({
-      adsbygoogleIsArray: Array.isArray(window.adsbygoogle),
-      adsenseRuntime: window.__adsenseRuntimeLoaded,
-      gtagType: typeof window.gtag,
-      googleRuntime: window.__googleTagRuntimeLoaded,
-      readyState: document.readyState,
-      scriptSources: [...document.querySelectorAll("script[src]")]
-        .map((script) => script.src)
-        .filter(
-          (source) =>
-            source.includes("googletagmanager.com") ||
-            source.includes("googlesyndication.com")
-        ),
-      dataLayerScript: Boolean(document.querySelector("#GTM_datalayer"))
-    }));
-    assert.deepEqual(
-      {
-        adsbygoogleIsArray: googleReadiness.adsbygoogleIsArray,
-        adsenseRuntime: googleReadiness.adsenseRuntime,
-        gtagType: googleReadiness.gtagType,
-        googleRuntime: googleReadiness.googleRuntime
-      },
-      {
-        adsbygoogleIsArray: true,
-        adsenseRuntime: true,
-        gtagType: "function",
-        googleRuntime: true
-      },
-      `public Google runtime did not mount: ${JSON.stringify(googleReadiness)}`
-    );
+    if (GOOGLE_THIRD_PARTY_ENABLED) {
+      await page.waitForFunction(
+        () =>
+          typeof window.gtag === "function" &&
+          Array.isArray(window.adsbygoogle) &&
+          window.__googleTagRuntimeLoaded === true &&
+          window.__adsenseRuntimeLoaded === true
+      );
+      const googleReadiness = await page.evaluate(() => ({
+        adsbygoogleIsArray: Array.isArray(window.adsbygoogle),
+        adsenseRuntime: window.__adsenseRuntimeLoaded,
+        gtagType: typeof window.gtag,
+        googleRuntime: window.__googleTagRuntimeLoaded,
+        readyState: document.readyState,
+        scriptSources: [...document.querySelectorAll("script[src]")]
+          .map((script) => script.src)
+          .filter(
+            (source) =>
+              source.includes("googletagmanager.com") ||
+              source.includes("googlesyndication.com")
+          ),
+        dataLayerScript: Boolean(document.querySelector("#GTM_datalayer"))
+      }));
+      assert.deepEqual(
+        {
+          adsbygoogleIsArray: googleReadiness.adsbygoogleIsArray,
+          adsenseRuntime: googleReadiness.adsenseRuntime,
+          gtagType: googleReadiness.gtagType,
+          googleRuntime: googleReadiness.googleRuntime
+        },
+        {
+          adsbygoogleIsArray: true,
+          adsenseRuntime: true,
+          gtagType: "function",
+          googleRuntime: true
+        },
+        `public Google runtime did not mount: ${JSON.stringify(googleReadiness)}`
+      );
+    }
 
     const publicState = await page.evaluate(() => ({
       googleNodes: document.querySelectorAll(
-        'script[src*="googletagmanager.com"],script[src*="googlesyndication.com"],#GTM_datalayer'
+        'script[src*="googletagmanager.com"],script[src*="googlesyndication.com"],link[href*="googletagmanager.com"],link[href*="googlesyndication.com"],meta[name="google-adsense-account"],#GTM_datalayer'
       ).length,
       studioHref: document
         .querySelector('[data-document-navigation="studio"]')
         ?.getAttribute("href")
     }));
-    assert.ok(publicState.googleNodes >= 3);
     assert.equal(publicState.studioHref, "/en/studio");
-    assert.ok(googleRequests.length >= 2);
+    if (GOOGLE_THIRD_PARTY_ENABLED) {
+      assert.ok(publicState.googleNodes >= 3);
+      assert.ok(googleRequests.length >= 2);
+    } else {
+      // MEP-66: AdSense and GA4 are paused, so the public home loads none of it.
+      assert.equal(publicState.googleNodes, 0);
+      assert.deepEqual(googleRequests, []);
+      const adCookies = (await context.cookies())
+        .map((cookie) => cookie.name)
+        .filter((name) => /^_ga|^_gcl_/.test(name));
+      assert.deepEqual(adCookies, []);
+    }
 
     const documentMarker = `public-${Date.now()}`;
     await page.evaluate((marker) => {
