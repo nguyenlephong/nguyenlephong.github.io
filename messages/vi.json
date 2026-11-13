@@ -1,5 +1,6 @@
 {
   "Nav": {
+    "skipToContent": "Bỏ qua đến nội dung",
     "about": "Giới thiệu",
     "aboutMe": "Về tôi",
     "experience": "Kinh nghiệm",
@@ -35,238 +36,266 @@
   },
   "Hero": {
     "news": "BonBon Mobility gọi vốn pre-seed 500.000 USD do Tasco dẫn dắt",
-    "newsCta": "Đọc câu chuyện",
+    "newsCta": "Đọc bài",
     "role": "Lead Software Engineer",
     "cofounder": "Đồng sáng lập",
-    "roleSub": "Ship sản phẩm ở quy mô 80M+ MAU. Xây từ con số 0 với vai trò founder.",
-    "bio": "Ở Zalo PC, tôi dẫn dắt mảng dữ liệu xuyên thiết bị, gần nhất là backup tin nhắn trên PC và restore về mobile. Ở BonBon Mobility, nền tảng O2O chăm sóc xe, tôi đồng sáng lập và xây phần tích hợp sản phẩm đưa BonBon từ MVP đến pilot thực địa trong 3 tháng.",
+    "claim": "Tôi dẫn team và vẫn tự viết những phần code quan trọng. Thay đổi rủi ro thì ship từng bước nhỏ, có sự cố là rollback được.",
+    "bio": "Làm phần mềm từ 2018, qua công ty outsource, công ty sản phẩm CDP, Zalo, rồi tự đồng sáng lập một startup.",
     "location": "TP. Hồ Chí Minh, Việt Nam",
     "downloadResume": "Tải CV",
-    "getInTouch": "Liên hệ ngay",
-    "careerHighlights": "Điểm nổi bật sự nghiệp",
+    "getInTouch": "Gửi email",
     "socialProfiles": "Mạng xã hội",
-    "stats": {
-      "yearsShipping": "Năm kinh nghiệm",
-      "yearsShippingCaption": "Code production mỗi ngày",
-      "usersTouched": "Người dùng phục vụ",
-      "usersTouchedCaption": "Zalo · CDP · fintech quy mô lớn",
-      "engineersLed": "Đội lớn nhất đã dẫn dắt",
-      "engineersLedCaption": "Developer · QC · delivery",
-      "preSeedRaised": "Vốn pre-seed",
-      "preSeedRaisedCaption": "BonBon Mobility · Tasco dẫn dắt",
-      "projectsLaunched": "Dự án đã ra mắt",
-      "projectsLaunchedCaption": "SDK · platform · ứng dụng di động",
-      "testCasesAuthored": "Test case đã viết",
-      "testCasesAuthoredCaption": "BDD · E2E · đảm bảo chống regression"
+    "topology": {
+      "label": "Vai trò hiện tại và vai trò trước đó",
+      "zaloNote": "app desktop · hơn 15 triệu MAU",
+      "bonbonNote": "pre-seed 500.000 USD, Tasco dẫn dắt",
+      "previousNote": "dẫn team delivery · 8 dev + 3 QC",
+      "zaloMeta": "Lead · từ <date>03/2026</date>",
+      "bonbonMeta": "Đồng sáng lập · từ <date>04/2026</date>",
+      "previousMeta": "trước đó · <date>08/2025 – 03/2026</date>"
     }
   },
   "Sections": {
-    "aboutEyebrow": "Năng lực",
-    "aboutTitle": "Kiến trúc hệ thống. Ship sản phẩm. Dẫn dắt đội ngũ.",
-    "experienceEyebrow": "Kinh nghiệm",
-    "experienceTitle": "Tác động qua từng vai trò",
-    "projectsEyebrow": "Dự án",
-    "projectsTitle": "Dự án tiêu biểu và kết quả"
+    "aboutTitle": "Tôi làm những hệ thống mà sai một bước là mất tiền hoặc mất lòng tin.",
+    "experienceTitle": "Tôi dẫn team qua một đợt chuyển giao CTO, rồi Zalo nhận tôi quay lại làm Lead.",
+    "projectsTitle": "Hai hệ thống tôi quyết kiến trúc, đúng sai đều do tôi gánh."
   },
   "Summary": {
-    "intro1": "Lead Software Engineer tại Zalo PC với <b>8+ năm</b> xây dựng sản phẩm production trong các domain messaging quy mô lớn, CDP, fintech, giáo dục và bất động sản.",
-    "intro2": "Biến bài toán mơ hồ thành hệ thống đáng tin cậy bằng hands-on engineering, technical leadership và ownership xuyên suốt từ architecture đến production.",
-    "intro3": "<i>Tập trung vào ba lớp: sản phẩm, hệ thống và đội ngũ.</i>",
-    "visionEyebrow": "Năng lực trọng tâm",
-    "hardSkillsEyebrow": "Nền tảng kỹ thuật",
+    "mapTabsLabel": "Năng lực chính",
+    "lede": "Trước Zalo, tôi làm hơn một năm ở công ty outsource, gần bốn năm ở một startup CDP, rồi giữa hai lần làm ở Zalo thì dẫn một team delivery qua giai đoạn chuyển giao CTO. Sơ đồ dưới đây là sáu phần việc tôi chọn ra, mỗi phần vẽ rõ nó chạy thế nào.",
+    "stackTitle": "Công nghệ tôi hay dùng",
     "pillars": {
-      "endToEnd": {
-        "title": "Sở hữu từ sản phẩm đến nền tảng",
-        "body": "Đưa nhu cầu sản phẩm từ UI, API, release, observability đến theo dõi incident sau production.",
-        "chip": "Ý tưởng tới prod"
+      "crossDevice": {
+        "tab": "Đồng bộ đa thiết bị",
+        "meta": "Zalo PC · 2026",
+        "figure": "1,8 s → 4 ms",
+        "figureLabel": "một lookup trên hot path của sync v2",
+        "title": "Giữ tin nhắn khớp nhau giữa máy tính và điện thoại",
+        "body": "Tôi đang dẫn dắt mảng dữ liệu xuyên thiết bị của Zalo PC. Sync v2 giờ tự retry và re-prepare theo nhóm khi đường truyền mobile chập chờn. Tính năng sao lưu tin nhắn trên PC, khôi phục trên điện thoại bắt đầu rollout từ tháng 7/2026 và được VnExpress đưa tin."
+      },
+      "zeroToPilot": {
+        "tab": "Từ 0 tới pilot",
+        "meta": "BonBon Mobility · Đồng sáng lập",
+        "figure": "3 tháng",
+        "figureLabel": "từ MVP đến pilot thực địa",
+        "title": "Làm sản phẩm từ con số không, chạy ngay trong app của đối tác",
+        "body": "BonBon chạy dưới dạng Mini App 12 màn hình trong hệ sinh thái VETC có 4,3 triệu người dùng. Chủ xe đăng nhập ngầm bằng phiên VETC sẵn có, khỏi nhập thêm một lần OTP. Sau đó team thắng Wash3000 và gọi được vòng pre-seed 500.000 USD do Tasco dẫn dắt."
       },
       "multiTenant": {
-        "title": "Hệ thống progressive delivery",
-        "body": "Feature flag, rollout theo segment, JSON-config values, runtime stateless và release production có kiểm soát.",
-        "chip": "30+ tenant"
+        "tab": "SaaS multi-tenant",
+        "meta": "LogiUP · Tech Lead",
+        "figure": "9 repo",
+        "figureLabel": "một kiến trúc multi-tenant, team bốn người",
+        "title": "SaaS logistics mà dữ liệu mỗi khách hàng nằm riêng",
+        "body": "Ở vai trò system architect, tôi kéo tenant isolation từ subdomain của khách hàng xuống tận token, và tự dựng OAuth 2.1/OIDC provider dùng chung cho web lẫn app desktop Electron. Trong luồng tờ khai hải quan, AI gợi ý giá trị, còn 8 phần của tờ khai đều do người xác nhận từng phần."
+      },
+      "rollouts": {
+        "tab": "Rollout từng bước",
+        "meta": "NDSVN · 2025–2026",
+        "figure": "30+ tenant",
+        "figureLabel": "khoảng 40k người dùng trên một nền tảng flag",
+        "title": "Release từng bước nhỏ, lúc nào cũng rút lại được",
+        "body": "Ở NDSVN tôi xây nền tảng feature flag bằng .NET Core, rollout theo tenant, segment hoặc môi trường, có PostHog để xem mỗi đợt rollout thực sự tác động ra sao. Thói quen đó tôi giữ tới giờ: BonBon release sau kill-switch flag, còn thay đổi rủi ro trên Zalo PC luôn mặc định tắt."
       },
       "leadership": {
-        "title": "Dẫn dắt kỹ thuật và đội ngũ",
-        "body": "Thiết lập ownership rõ ràng, tuyển dụng, RFC, runbook, rollout playbook và coaching 1:1 cho đội developer và QC.",
-        "chip": "Team 11 người"
+        "tab": "Giữ team qua bàn giao",
+        "meta": "NDSVN · Team delivery",
+        "figure": "8 + 3",
+        "figureLabel": "developer và QC sau đợt chuyển giao CTO",
+        "title": "Giữ team vững qua một lần bàn giao",
+        "body": "Sau đợt chuyển giao CTO ở NDSVN, tôi nhận technical ownership cho team delivery. Phần lớn việc là viết ra những thứ trước giờ chỉ nằm trong đầu mọi người, kiểu ai own phần nào, release được tag ra sao, rồi tuyển người qua phỏng vấn có cấu trúc."
       },
       "fintech": {
-        "title": "Integration bảo mật",
-        "body": "RSA-4096 handshake, AES-256 payload, mTLS, certificate pinning, contract idempotent và retry queue.",
-        "chip": "Gtel · Napas"
-      },
-      "mfe": {
-        "title": "Kiến trúc front-end mở rộng",
-        "body": "React/Next.js, design system, Micro-Frontend Angular host + React module và SDK nhẹ dưới budget hiệu năng chặt.",
-        "chip": "MFE · SDK"
-      },
-      "ai": {
-        "title": "AI hỗ trợ vận hành kỹ thuật",
-        "body": "Xây dựng internal agent cho code review, hỗ trợ deploy, kiểm tra quota dịch vụ, giám sát API và phân tích release.",
-        "chip": "Agent đang chạy"
+        "tab": "Tích hợp đối tác",
+        "meta": "NDSVN · Đối tác",
+        "figure": "Gtel · Napas",
+        "figureLabel": "tích hợp đối tác qua mTLS",
+        "title": "Tích hợp đối tác, retry lại vẫn an toàn",
+        "body": "Kết nối với Gtel và Napas dùng handshake RSA-4096, payload mã hoá AES-256 và certificate pinning. Contract được thiết kế idempotent nên message phát lại từ retry queue không gây hậu quả gì, còn monitoring bám theo ACK."
       }
     },
-    "skills": {
-      "backend": "<b>Back-end</b>: Node.js, Java Spring và .NET Core cho REST/GraphQL service, auth, mã hoá, contract tương thích ngược và integration enterprise/bên thứ ba.",
-      "frontend": "<b>Front-end</b>: React, Next.js, TypeScript, React Native, Micro-Frontend host Angular, design system Storybook, state management và kiến trúc UI nhạy với hiệu năng.",
-      "databases": "<b>Cơ sở dữ liệu</b>: MySQL schema design, indexing, tối ưu query, ranh giới transaction, kế hoạch migration và đánh đổi consistency trong hệ thống throughput cao.",
-      "infra": "<b>Hạ tầng & Platform</b>: Docker, Kubernetes, AKS, EKS, FKE, K3S, ArgoCD, CI/CD, cấu hình môi trường, domain/SSL và xử lý phục hồi production.",
-      "architecture": "<b>Kiến trúc & Delivery</b>: Multi-tenant architecture, feature-flag rollout, Micro-Frontend composition, progressive delivery, observability, RFC và runbook.",
-      "testing": "<b>Testing & Quality</b>: Jest, Cucumber, Puppeteer, Testing Library, BDD/E2E coverage, release checklist, rollback readiness và phòng chống regression.",
-      "libraries": "<b>Thư viện & Platform</b>: Firebase, Strapi, Directus, React Flow, Webpack, Redux, React Query, G2plot, PostHog, Electron và mobile tooling.",
-      "other": "<b>Cách làm việc</b>: Tuyển dụng, onboarding, coaching, documentation-first delivery, phối hợp liên đội, giao tiếp stakeholder và AI-assisted engineering thực dụng."
+    "stack": {
+      "frontend": {
+        "label": "Front-end và desktop",
+        "items": "TypeScript, React, Next.js, Electron, React Native, Storybook"
+      },
+      "backend": {
+        "label": "Back-end",
+        "items": "Go, NestJS, Node.js, Python (FastAPI), .NET Core, Java Spring"
+      },
+      "data": {
+        "label": "Dữ liệu",
+        "items": "PostgreSQL, Redis, BullMQ, Cloudflare R2, MySQL"
+      },
+      "platform": {
+        "label": "Hạ tầng",
+        "items": "Docker, Kubernetes (AKS, EKS, K3S), ArgoCD, CI/CD, PostHog"
+      },
+      "architecture": {
+        "label": "Kiến trúc",
+        "items": "Multi-tenant SaaS, OAuth 2.1 và OIDC, mTLS, feature flag và kill switch, Micro-Frontend"
+      },
+      "testing": {
+        "label": "Kiểm thử",
+        "items": "Playwright, Vitest, Go test, Jest, Cucumber"
+      },
+      "team": {
+        "label": "Cách làm việc trong team",
+        "items": "Code review, RFC, runbook, phỏng vấn có cấu trúc, AI agent hỗ trợ review và kiểm tra release"
+      }
     }
   },
   "Experience": {
-    "labels": {
-      "location": "Địa điểm",
-      "duration": "Thời gian",
-      "keyContributions": "Đóng góp chính",
-      "keyTechnologies": "Công nghệ chính",
-      "publicEvidence": "Thông tin ra mắt",
-      "readCoverage": "Xem bài trên {publisher}"
+    "env": {
+      "bigTech": "Big tech, sản phẩm đại chúng",
+      "enterprise": "Doanh nghiệp, đối tác thanh toán và viễn thông",
+      "b2b": "Startup sản phẩm B2B",
+      "outsourcing": "Outsource",
+      "startup": "Startup giai đoạn đầu"
     },
-    "ndsvn": {
-      "summary": "Nhận ownership kỹ thuật sau giai đoạn CTO chuyển giao, dẫn dắt delivery sản phẩm, quyết định kiến trúc, hệ thống rollout, integration enterprise và thực thi liên đội cho đội delivery gồm 8 developer và 3 QC engineer.",
-      "contributions": [
-        "Thiết kế <b>nền tảng feature flag multi-tenant .NET Core</b> cho <b>30+ tenant</b> và <b>~40k người dùng</b>, gồm rule ưu tiên, rollout theo tenant/segment/env, JSON-config values và runtime stateless.",
-        "Xây dựng integration bảo mật với <b>Gtel & Napas</b> bằng RSA-4096 handshake, mã hoá AES-256, <b>mTLS</b>, certificate pinning, contract idempotent, retry queue và monitoring theo ACK.",
-        "Triển khai kiến trúc <b>Micro-Frontend</b> với Angular host và React module, cho phép deploy độc lập, cô lập feature và giảm bề mặt regression.",
-        "Ổn định hạ tầng kế thừa gồm <b>ArgoCD</b>, CI/CD, domain/SSL và <b>AKS/FKE/K3S/EKS</b>, biến các ẩn số lặp lại thành hệ thống chẩn đoán và phục hồi được.",
-        "Đưa PostHog-based observability vào rollout impact, adoption, anomaly detection và regression tracing qua các chu kỳ release.",
-        "Xây dựng AI-assisted engineering agent cho code review, hỗ trợ deploy, kiểm tra service-quota, giám sát API và phân tích release.",
-        "Thiết lập lại vận hành kỹ thuật: org chart, ma trận năng lực, ranh giới ownership, branch strategy, release tagging, RFC, runbook, onboarding và phỏng vấn có cấu trúc."
-      ]
-    },
-    "zalo": {
-      "lead": {
-        "summaries": [
-          "Quay lại <b>Zalo PC</b> ngày <b>02/03/2026</b> với vai trò Lead Software Engineer, vừa trực tiếp phát triển sản phẩm vừa dẫn dắt kỹ thuật cho messaging xuyên thiết bị và client storage."
-        ],
+    "roles": {
+      "zaloLead": {
+        "scope": "Zalo nhận tôi quay lại làm Lead từ tháng 3/2026, bảy tháng sau khi tôi sang NDSVN. Tôi dẫn mảng tin nhắn đa thiết bị và lưu trữ phía client của app desktop (hơn 15 triệu MAU).",
         "contributions": [
-          "Ship <b>tính năng backup tin nhắn trên Zalo PC, restore về mobile</b>: payload contract, hardening file xuyên Web và Electron worker, upload telemetry, mutual exclusion với sync. Ra mắt 07/2026, được VnExpress đưa tin.",
-          "Gia cố <b>sync v2</b> cho đường truyền mobile không ổn định bằng retry, re-prepare theo nhóm và đếm lỗi; một lookup trên hot path giảm từ <b>1,8 s xuống 4 ms</b>.",
-          "Cải thiện <b>độ tin cậy và observability của zCloud offload</b>, thêm log-health probe hằng ngày có remote kill switch để chẩn đoán lỗi từ dữ liệu QoS.",
-          "Ship <b>700+ commit qua 55+ ticket trong bảy tháng</b>, thay đổi rủi ro mặc định tắt sau kill switch.",
-          "Dẫn dắt team engineering qua định hướng kỹ thuật, code review và điều phối delivery."
+          "Ship tính năng <b>sao lưu tin nhắn trên PC</b>, khôi phục trên điện thoại: chốt payload contract, gia cố xử lý file trong worker, thêm telemetry khi upload, chặn chạy chồng với sync. Rollout từ tháng 7/2026.",
+          "Gia cố sync v2 cho đường truyền mobile chập chờn: retry, re-prepare theo nhóm, đếm lỗi. Một lookup trên hot path giảm từ <b>1,8 s xuống 4 ms</b> trong bài test 37 phiên.",
+          "Thay đổi rủi ro luôn ship ở trạng thái <b>mặc định tắt</b>, nằm sau kill switch và remote config.",
+          "Làm <b>zCloud offload</b> chạy ổn hơn, dễ quan sát hơn, thêm log-health probe chạy hằng ngày có kill switch để tắt từ xa.",
+          "Viết devtool giả lập lỗi mạng để tái hiện cảnh mất kết nối mobile khi test sync."
         ]
       },
-      "summary1": "Core engineer của <b>Zalo PC</b> đa nền tảng (Web, macOS, Windows), phục vụ <b>15M+ MAU</b>, tham gia ownership từ feature sản phẩm, tracking, design system đến độ ổn định release.",
-      "summary2": "Đồng thời đóng góp cho <b>Zalo Android</b>, cải thiện độ ổn định và hiệu năng feature cho sản phẩm mobile gần <b>80 triệu người dùng</b>.",
-      "contributions": [
-        "Ra mắt <b>10+ feature sản phẩm</b>, gồm dark mode, download flow, bề mặt Kiki assistant, logging và behavior tracking.",
-        "Xây dựng promotion flow tích hợp tracking và monitoring, hỗ trợ activation trên <b>15M+ MAU</b>.",
-        "Dẫn dắt design-system work bằng Storybook, cải thiện tính nhất quán UI và khả năng tái sử dụng cho <b>50+ developer</b>.",
-        "Xử lý support/rollout issue cho <b>50+ client user</b> trong khi vẫn giữ chất lượng feature và release confidence.",
-        "Bảo trì <b>3+ Android feature</b>, tập trung vào stability, performance và UX ở quy mô gần 80M người dùng."
-      ]
+      "ndsvn": {
+        "scope": "Phụ trách kỹ thuật sau đợt chuyển giao CTO, dẫn team delivery 8 developer và 3 QC.",
+        "contributions": [
+          "Viết ra cách team vận hành: ai own phần nào, ma trận năng lực, <b>playbook release</b> (branch, tag, RFC, runbook) và quy trình phỏng vấn có cấu trúc.",
+          "Xây nền tảng feature flag bằng .NET Core cho <b>30+ tenant</b> (khoảng 40.000 người dùng), có rule ưu tiên, rollout theo phần trăm, theo tenant, segment hoặc môi trường.",
+          "Tích hợp <b>Gtel và Napas</b> qua mTLS, có certificate pinning và contract idempotent, nên message phát lại từ retry queue không gây hậu quả.",
+          "Tách web app thành micro-frontend (Angular làm host, các module React), mỗi module deploy riêng.",
+          "Tiếp quản hạ tầng cũ (ArgoCD, CI/CD, domain và SSL, cluster AKS, FKE, K3S, EKS), sửa tới mức lỗi truy được nguyên nhân và khôi phục được.",
+          "Gắn PostHog để xem mỗi đợt rollout tác động thế nào tới adoption và lỗi.",
+          "Viết các AI agent nội bộ cho code review, kiểm tra trước khi deploy, kiểm tra service quota, theo dõi API và phân tích release."
+        ]
+      },
+      "zaloSenior": {
+        "scope": "Core engineer của Zalo PC (Web, macOS, Windows; hơn 15 triệu MAU), làm thêm vài tính năng cho Zalo Android (khoảng 80 triệu người dùng).",
+        "contributions": [
+          "Dẫn dắt design system trên Storybook, <b>hơn 50 developer</b> dùng chung.",
+          "Ship <b>hơn 10 tính năng</b> cho client: dark mode, đổi theme động, module tải file, Kiki bot.",
+          "Bảo trì 3+ tính năng của Zalo Android, ưu tiên độ ổn định và hiệu năng.",
+          "Làm promotion flow có sẵn tracking và monitoring.",
+          "Thêm log và tracking hành vi người dùng cho app desktop."
+        ]
+      },
+      "primedata": {
+        "scope": "CDxP là nền tảng dữ liệu khách hàng, gom hồ sơ từ nhiều hệ thống rời rạc về một chỗ. Tôi dẫn team front-end 4 người.",
+        "contributions": [
+          "Ra app CDxP và <b>hơn 10 dự án</b> đi kèm: JS SDK, mobile SDK, demo Magento và WordPress.",
+          "Viết JS SDK tracking dưới <b>200 KB</b>, tải xong dưới 150 ms, dùng web worker và service worker để phối hợp giữa các tab.",
+          "Thêm <b>feature flag</b> lúc runtime cho A/B test và nhóm segment.",
+          "Làm hồ sơ khách hàng 360 độ và campaign builder trong app CDxP.",
+          "Dựng bộ test BDD và E2E làm chốt chặn trước mỗi lần release."
+        ]
+      },
+      "splus": {
+        "line": "Làm 8+ dự án outsource về giáo dục, F&B, ngân hàng, thương mại điện tử, dẫn một team nhỏ. Best Rookie of the Year 2019."
+      },
+      "propman": {
+        "line": "Một trong những kỹ sư đầu tiên, làm web app chính bằng React."
+      }
     },
-    "primedata": {
-      "summary": "Xây dựng CDxP, nền tảng customer data giúp nhận diện, hợp nhất và kích hoạt customer profile từ nhiều schema rời rạc qua các hệ thống khác nhau.",
-      "contributions": [
-        "Dẫn dắt đội front-end <b>4 người</b>, ra mắt <b>10+ dự án</b> gồm CDxP app, demo Magento/WordPress, JS SDK và mobile SDK.",
-        "Ship các bề mặt sản phẩm nâng cao như 360 customer profile, campaign builder, analytics, segmentation và demo cho partner.",
-        "Phát triển JS SDK nhẹ với tracking/engagement capability dưới <b>200KB</b> và thời gian tải <b><150ms</b>.",
-        "Xây dựng reusable UI utilities, RBAC hooks, data-visualization flow và testing coverage giúp tăng tốc delivery và maintainability."
-      ]
-    },
-    "splus": {
-      "summary": "Công ty out-sourcing. Hầu hết dự án xoay quanh <b>ứng dụng mobile và web</b>.",
-      "contributions": [
-        "Với chuyên môn về <b>quy trình sản xuất phần mềm end-to-end</b>, tôi đã <b>dẫn dắt một đội nhỏ</b>, làm chủ các giai đoạn từ thu thập yêu cầu đến bảo mật dự án, đặt nền tảng cho các vai trò leadership sau này.",
-        "Tham gia <b>8+</b> dự án đa dạng thuộc các lĩnh vực <b>giáo dục, F&B, ngân hàng</b> và <b>thương mại điện tử</b>, tôi đã thu được những hiểu biết quý giá về phát triển ứng dụng web lẫn mobile.",
-        "Góp phần chốt và delivery các dự án quan trọng như Savyu và Bank Tool, tạo hơn <b>$20,000</b> doanh thu và được ghi nhận <b>Best Rookie of the Year</b>."
-      ]
-    },
-    "propman": {
-      "summary": "Startup trong <b>lĩnh vực bất động sản</b>. Tôi là một trong những kỹ sư sáng lập.",
-      "contributions": [
-        "Bắt đầu tham gia phát triển web app chính với vai trò Front-end Developer. Đạt được các kỹ năng phát triển web nền tảng, chuyên sâu <b>React JS</b> và các công nghệ liên quan. Cộng tác trong các dự án responsive design, ưu tiên nâng cao trải nghiệm người dùng."
-      ]
+    "labels": {
+      "now": "nay",
+      "allContributions": "Xem đủ {count} việc",
+      "earlier": "Trước đó",
+      "forkNote": "rời · 08/2025",
+      "mergeNote": "quay lại · 03/2026",
+      "readCoverage": "Xem bài trên {publisher}"
     }
   },
   "Projects": {
     "labels": {
-      "publicEvidence": "Tin tức đầu tư",
-      "website": "Website công ty",
-      "readCoverage": "Xem bài trên {publisher}"
+      "readCoverage": "Xem bài trên {publisher}",
+      "context": "Bối cảnh",
+      "decisions": "Quyết định",
+      "outcome": "Kết quả",
+      "evidence": "Kiểm chứng",
+      "caseFile": "Xem hồ sơ dự án",
+      "indexTitle": "Dự án tiêu biểu",
+      "year": "Năm",
+      "project": "Dự án",
+      "role": "Vai trò",
+      "result": "Kết quả",
+      "note": "Ghi chép của tôi về vòng gọi vốn"
     },
     "logiup": {
-      "accomplishments": [
-        "Dẫn dắt <b>đội engineering 4 thành viên</b> với vai trò <b>Tech Lead và system architect</b>, chịu trách nhiệm technical direction, quyết định kiến trúc, chuẩn review, onboarding và delivery xuyên <b>9 split repository</b>.",
-        "Thiết kế LogiUP thành một <b>multi-tenant logistics SaaS</b>: dùng chung một Next.js UI codebase cho web và Electron desktop, NestJS control plane, FastAPI AI data plane, PostgreSQL, Redis/BullMQ, Cloudflare R2 và môi trường staging/production tách biệt theo GitOps.",
-        "Thiết kế tenant isolation end-to-end với subdomain riêng cho khách hàng, host resolution dựa trên database, RBAC và token tenant-scoped, wildcard/on-demand TLS, cùng OAuth 2.1/OIDC provider tự chủ dùng RS256/JWKS và PKCE/deep-link cho Electron.",
-        "Ship workflow khai báo hải quan có AI với <b>6 runtime role theo least privilege</b>, upload private object resumable, gợi ý AI có người xác nhận và <b>31 typed API endpoint</b> trên 8 section khai báo xác nhận độc lập.",
-        "Mở rộng workflow hải quan sang <b>tờ khai xuất</b> (UAT 10/2026) cùng <b>rule engine phân loại tài liệu</b>, là tác giả của <b>737/738 commit</b> trong NestJS platform."
-      ]
+      "name": "LogiUP",
+      "kind": "SaaS logistics multi-tenant",
+      "role": "Tech Lead kiêm system architect",
+      "period": "03/2026 – nay",
+      "context": "Mỗi khách hàng có subdomain riêng. Dữ liệu của họ không được phép lọt sang tenant khác. Sản phẩm chạy trên web và app desktop Electron. Tôi dẫn team bốn người và quyết kiến trúc.",
+      "decisions": [
+        "Gắn tenant vào mọi token và RBAC thay vì tin subdomain, vì route có lúc đi sai.",
+        "Tự dựng OAuth 2.1/OIDC thay vì hai luồng login, vì Electron login như web.",
+        "Người xác nhận cả 8 phần thay vì để AI tự điền, vì sai một ô là khách mất tiền."
+      ],
+      "outcome": [
+        "<b>9 repo</b> chung một kiến trúc (số liệu 08/2026): một UI Next.js cho cả web lẫn Electron, control plane NestJS, data plane AI viết bằng FastAPI.",
+        "<b>6</b> runtime role theo least privilege và <b>31</b> API endpoint có type rõ ràng cho luồng hải quan.",
+        "Tờ khai xuất lên UAT tháng 10/2026, kèm bộ phân loại chứng từ chạy theo rule."
+      ],
+      "evidenceNote": "Repo private nên không có link công khai.",
+      "index": "Tách tenant tới tận token, một OIDC provider cho cả web lẫn Electron"
     },
     "bonbon": {
-      "accomplishments": [
-        "Đồng sáng lập BonBon Mobility, xây dựng phần tích hợp sản phẩm giúp BonBon đi từ MVP đến pilot thực địa trong <b>3 tháng</b>, được chọn vào <b>Top 3 finalist</b> tại Wash3000 MVP Demo Day do Tasco × GenAI Fund tổ chức, sau đó thắng chương trình và góp phần gọi vốn thành công <b>vòng pre-seed 500.000 USD do Tasco dẫn dắt</b>, với sự tham gia của GenAI Fund.",
-        "Kiến trúc và tích hợp <b>Mini App 12 màn hình</b> vào hệ sinh thái ứng dụng VETC có <b>4,3 triệu người dùng</b>, với silent login qua partner code, session chỉ trong memory, deep link, polling tuần tự khi foreground và analytics theo PII allow-list.",
-        "Đảm bảo release an toàn xuyên Go API, Backoffice, web và mobile bằng kill-switch feature flag, deterministic rollout, transactional audit, gate checksum/CSP, Playwright flow và <b>800+ unit test</b>.",
-        "Viết <b>4.000+ commit</b> (khoảng hai phần ba đến 85% mỗi repository) trên Go API và monorepo web/Mini App, cùng khoảng <b>90 spec</b> và <b>425 file test Go</b>.",
-        "Giữ booking và tìm garage nhanh, quan sát được: bảng garage dựng bằng <b>3 query</b>, search có index, cache kết quả, cảnh báo p95."
-      ]
+      "name": "BonBon Mobility",
+      "kind": "Đặt lịch chăm sóc xe ngay trong app VETC",
+      "role": "Đồng sáng lập",
+      "period": "04/2026 – nay",
+      "context": "BonBon kết nối chủ xe với garage và tiệm rửa xe. Tôi đồng sáng lập và trực tiếp làm sản phẩm: một Mini App 12 màn hình chạy trong app VETC, nơi có <b>4,3 triệu người dùng</b> theo số Tasco công bố tháng 4/2026. Mỗi lần release đều phải qua quy trình duyệt thay đổi và quy trình bảo mật của VETC, gồm OWASP review và một đợt pentest độc lập.",
+      "decisions": [
+        "Đăng nhập bằng phiên VETC thay vì thêm OTP, vì VETC đã xác thực rồi.",
+        "Session chỉ trong memory thay vì lưu token, vì VETC không cho lưu.",
+        "Kill switch mặc định tắt thay vì release dồn, vì release phải chờ VETC duyệt."
+      ],
+      "outcome": [
+        "BonBon thắng Tasco Foundry Wash3000: khoảng <b>100</b> hồ sơ, chọn ra 10 đội, 3 đội vào chung kết, 1 đội thắng (GenAI Fund, 09/2026).",
+        "Vòng pre-seed <b>500.000 USD</b> do Tasco dẫn dắt, GenAI Fund cùng đầu tư (09/2026).",
+        "<b>3 tháng</b> từ MVP đến pilot thực địa, đúng bằng thời gian chương trình Wash3000."
+      ],
+      "index": "Mini App trong VETC; thắng Wash3000, pre-seed 500.000 USD do Tasco dẫn dắt"
     },
     "sat": {
-      "accomplishments": [
-        "Sở hữu product engineering từ UI/UX đến analytics, đạt <b>10,000+ lượt truy cập</b> và <b>3,000+ đăng ký</b> trong hai tháng.",
-        "Cải thiện acquisition bằng technical SEO, PWA installability và lộ trình release mobile-first.",
-        "Giữ hạ tầng gọn trên một Cloud Run instance (<b>1 CPU, 256 MiB</b>) trong khi bổ sung Google Ads và Stripe monetization."
-      ]
-    },
-    "cdp": {
-      "accomplishments": [
-        "Dẫn dắt front-end architecture cho CDxP, ship profile, campaign, analytics, segmentation và giao diện cho partner.",
-        "Xây dựng RBAC hooks, nested routing, shared utilities và modular UI patterns giúp tăng maintainability qua nhiều sản phẩm.",
-        "Thiết lập BDD/E2E coverage với <b>100+ scenario</b> và <b>1,000+ test case</b>, giảm regression risk và production defect."
-      ]
-    },
-    "sdk": {
-      "accomplishments": [
-        "Xây dựng <b>5+ vanilla JS module</b> cho tracking, web popup, push notification, WebSocket messaging và embedded web component.",
-        "Dùng web worker, service worker và multi-tab coordination để background work bền hơn trong điều kiện browser thực tế.",
-        "Giữ footprint tích hợp nhẹ dưới <b>200KB</b> và thời gian tải <b><150ms</b> trước cả các bước tối ưu bundle sâu hơn."
-      ]
+      "name": "Digital SAT Math",
+      "role": "Sản phẩm riêng",
+      "index": "Lo từ đầu đến cuối: <b>10.000+</b> lượt truy cập và <b>3.000+</b> đăng ký trong hai tháng đầu."
     },
     "vac": {
-      "accomplishments": [
-        "Thiết kế và giảng dạy khoá front-end project cho <b>12 sinh viên</b>, hướng dẫn đội từ requirement đến sản phẩm React/Next.js chạy được.",
-        "Review, mentoring và đưa thói quen delivery thực tế vào quá trình học."
-      ]
-    },
-    "mona": {
-      "accomplishments": [
-        "Xây dựng ứng dụng quản lý nhà bằng React Native và Realm DB với component tái sử dụng, interaction mượt và tích hợp native module.",
-        "Xử lý debugging và performance profiling trên ràng buộc mobile, đồng thời thích nghi nhanh với yêu cầu triển khai mới."
-      ]
-    },
-    "mobivi": {
-      "accomplishments": [
-        "Xây dựng banking tool full-stack để ingest và xử lý <b>20+ file Excel</b>, mỗi file có <b>20,000+ bản ghi</b>.",
-        "Thiết kế workflow tính toán giao dịch tăng dần và báo cáo vận hành đáng tin cậy."
-      ]
-    },
-    "savyu": {
-      "accomplishments": [
-        "Phát triển feature cho app merchant và consumer bằng React Native, cùng admin web flow để quản lý người dùng.",
-        "Làm việc xuyên mobile, web và backend integration để ship trải nghiệm marketplace nhất quán."
-      ]
+      "name": "Vietnam Australia Center",
+      "role": "Giảng viên",
+      "index": "Dạy khoá front-end project cho <b>12 học viên</b>, từ yêu cầu đến app React chạy được."
     }
   },
   "CTA": {
-    "eyebrow": "Kết nối",
-    "title": "Trao đổi về sản phẩm và hệ thống",
-    "body": "Tôi quan tâm đến những bài toán cần đồng thời đẩy nhanh delivery, nâng độ tin cậy hệ thống và làm rõ cách đội ngũ vận hành.",
-    "emailMe": "Email",
-    "resumePdf": "CV (PDF)",
-    "linkedin": "LinkedIn"
+    "title": "Nếu vai trò phù hợp, bạn cứ gửi email cho tôi.",
+    "openToLabel": "Vị trí mong muốn",
+    "openTo": "Staff/Principal Engineer, Lead Fullstack / Product Engineer, Engineering Manager",
+    "whereLabel": "Nơi làm việc",
+    "where": "TP. Hồ Chí Minh hoặc remote (UTC+7)",
+    "emailLabel": "Email",
+    "copyEmail": "Sao chép email",
+    "copied": "Đã sao chép",
+    "copiedStatus": "Đã sao chép địa chỉ email.",
+    "copyFailed": "Trình duyệt không cho sao chép tự động. Địa chỉ đã được chọn sẵn, bạn bấm Ctrl+C (⌘C trên Mac) để sao chép.",
+    "phoneLabel": "Điện thoại",
+    "linksLabel": "Liên kết",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "resumePdf": "CV (PDF)"
   },
   "SEO": {
     "home": {
-      "title": "Nguyễn Lê Phong | Lead Software Engineer, BonBon Mobility",
-      "description": "Lead Software Engineer tại Zalo PC, đồng sáng lập BonBon Mobility (pre-seed 500.000 USD do Tasco dẫn dắt), Tech Lead LogiUP. Backup tin nhắn PC sang mobile."
+      "title": "Nguyễn Lê Phong | Lead Software Engineer · Đồng sáng lập BonBon",
+      "description": "Lead Software Engineer tại Zalo PC, đồng sáng lập BonBon (pre-seed 500.000 USD do Tasco dẫn dắt). Nhắn tin quy mô lớn, rollout an toàn, SaaS multi-tenant."
     },
     "about": {
       "title": "Giới thiệu: Backend và Platform Engineering | Nguyễn Lê Phong",
@@ -611,22 +640,45 @@
         {
           "title": "Backend service & integration bảo mật",
           "body": "Tôi làm việc với <strong>.NET Core</strong>, <strong>Node.js</strong> và <strong>Java Spring</strong>, tập trung vào REST/GraphQL contract, auth, mã hoá, backward compatibility, retry, idempotency và độ bất ổn từ hệ thống đối tác.",
-          "tags": [".NET Core", "Node.js", "Java Spring", "REST/GraphQL", "mTLS"]
+          "tags": [
+            ".NET Core",
+            "Node.js",
+            "Java Spring",
+            "REST/GraphQL",
+            "mTLS"
+          ]
         },
         {
           "title": "Platform, infra & traffic path",
           "body": "Tôi tham gia vào đường đi production quanh <strong>Docker</strong>, <strong>Kubernetes</strong>, <strong>AKS/FKE/K3S/EKS</strong>, <strong>ArgoCD</strong>, CI/CD, domain/SSL, ingress, load balancer routing và các bước phục hồi khi hệ thống đang chịu áp lực.",
-          "tags": ["Kubernetes", "ArgoCD", "CI/CD", "Ingress", "Load balancer"]
+          "tags": [
+            "Kubernetes",
+            "ArgoCD",
+            "CI/CD",
+            "Ingress",
+            "Load balancer"
+          ]
         },
         {
           "title": "Progressive delivery",
           "body": "Tôi đã xây dựng <strong>nền tảng feature flag multi-tenant</strong> với rule ưu tiên, rollout theo tenant/segment/env, JSON-config values và runtime stateless để release đi từng bước thay vì bật toàn bộ cùng lúc.",
-          "tags": ["Feature flags", "30+ tenant", "Rollout rules", "Runtime config"]
+          "tags": [
+            "Feature flags",
+            "30+ tenant",
+            "Rollout rules",
+            "Runtime config"
+          ]
         },
         {
           "title": "Observability & vận hành rõ ràng",
           "body": "Tôi xây các feedback loop quanh release: PostHog, metrics pipeline, API health check, anomaly review, rollback readiness, RFC, runbook và release criteria để sự cố dễ hiểu hơn.",
-          "tags": ["PostHog", "Metrics", "Runbook", "Rollback", "Release review"]
+          "tags": [
+            "PostHog",
+            "Metrics",
+            "Runbook",
+            "Rollback",
+            "Release review"
+          ]
         }
       ]
     },
@@ -698,7 +750,7 @@
     },
     "closing": {
       "label": "Ghi chú kết About",
-      "body": "Tôi hữu ích nhất ở những team nơi <strong>tham vọng sản phẩm</strong>, <strong>độ phức tạp backend</strong> và <strong>độ ổn định production</strong> gặp nhau. Đó là nơi engineering cẩn thận biến hệ thống mơ hồ thành thứ team có thể ship, quan sát và cải tiến."
+      "body": "Tôi làm tốt nhất ở những team có <strong>sản phẩm nhiều tham vọng</strong> chạy trên một backend <strong>không được phép lỗi</strong>. Việc của tôi là giữ cho backend đó đủ ổn định để team ship mà không phải nín thở."
     }
   },
   "ReaderTools": {

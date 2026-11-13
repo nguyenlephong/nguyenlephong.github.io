@@ -3,7 +3,8 @@ import { getTranslations } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import { profileInfo } from '@/app/app.const'
+import { experience } from '@/content/experience'
+import { projects } from '@/content/projects'
 import Hero from '@/components/cv/Hero'
 import Section from '@/components/cv/Section'
 import Summary from '@/components/cv/Summary'
@@ -20,7 +21,14 @@ import {
 } from '@/lib/seo/profile-schema'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
+// Cascade order: page shell first, then sections in page order. Only this route uses them.
 import './home.css'
+import '@/components/cv/hero.css'
+import '@/components/cv/summary.css'
+import '@/components/cv/capability-map.css'
+import '@/components/cv/experience.css'
+import '@/components/cv/projects.css'
+import '@/components/cv/contact.css'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -60,24 +68,16 @@ export default async function MainPage({ params }: Props) {
         <div className="container">
           <Hero />
 
-          <Section id="about" eyebrow={t('aboutEyebrow')} title={t('aboutTitle')}>
+          <Section id="about" title={t('aboutTitle')}>
             <Summary />
           </Section>
 
-          <Section
-            id="experience"
-            eyebrow={t('experienceEyebrow')}
-            title={t('experienceTitle')}
-          >
-            <Experience data={profileInfo.experience} />
+          <Section id="experience" title={t('experienceTitle')}>
+            <Experience data={experience} />
           </Section>
 
-          <Section
-            id="projects"
-            eyebrow={t('projectsEyebrow')}
-            title={t('projectsTitle')}
-          >
-            <Projects data={profileInfo.projects} />
+          <Section id="projects" title={t('projectsTitle')}>
+            <Projects data={projects} />
           </Section>
 
           <div id="contact">

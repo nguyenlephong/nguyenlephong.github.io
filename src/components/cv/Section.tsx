@@ -4,12 +4,11 @@ import { track } from '@/lib/analytics'
 
 type SectionProps = {
   id: string
-  eyebrow: string
   title: string
   children: React.ReactNode
 }
 
-export default function Section({ id, eyebrow, title, children }: SectionProps) {
+export default function Section({ id, title, children }: SectionProps) {
   const ref = useRef<HTMLElement | null>(null)
   const seenRef = useRef(false)
 
@@ -34,7 +33,6 @@ export default function Section({ id, eyebrow, title, children }: SectionProps) 
   return (
     <section ref={ref} id={id} className="cv-section" aria-labelledby={`${id}-title`}>
       <header className="cv-section-head">
-        <span className="cv-section-eyebrow">{eyebrow}</span>
         <h2 id={`${id}-title`} className="cv-section-title">
           {title}
         </h2>

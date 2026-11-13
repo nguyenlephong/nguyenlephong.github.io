@@ -15,6 +15,10 @@ const nextConfig = {
   // during `next dev` makes concurrent first-route compilation race while
   // updating prerender-manifest.json in Next 16.
   output: isDevelopment ? undefined : "export",
+  // Dev only: lets one named tunnel host (e.g. a Cloudflare quick tunnel) load dev
+  // chunks and the HMR socket for live phone previews. Pinned to the exact host,
+  // never a wildcard. No effect on the static export.
+  allowedDevOrigins: process.env.DEV_TUNNEL_HOST ? [process.env.DEV_TUNNEL_HOST] : [],
   turbopack: {},
   // Tree-shake icon + animation libraries with deep barrel exports so we
   // only ship the few we actually use. Saves tens of KB and reduces TBT.

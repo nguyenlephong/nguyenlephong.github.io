@@ -16,6 +16,10 @@ test("Inter is the self-hosted default font and notes follow the reader's choice
   assert.match(documentCss, /--font-sans: 'Inter', 'Inter Fallback', system-ui/);
   assert.doesNotMatch(documentCss, /fonts\.googleapis|fonts\.gstatic/);
   assert.ok(font.size < 64 * 1024, "Inter subset should stay under 64 KiB");
+  const mono = await stat("src/fonts/JetBrainsMono-latin-vi.woff2");
+  assert.match(documentCss, /font-family: 'JetBrains Mono';\s*src: url\('\.\.\/fonts\/JetBrainsMono-latin-vi\.woff2'\)/);
+  assert.match(documentCss, /--font-mono: 'JetBrains Mono',/);
+  assert.ok(mono.size < 24 * 1024, "JetBrains Mono subset should stay under 24 KiB");
 
   assert.match(notesCss, /--notes-font: var\(--font-sans\);/);
   assert.doesNotMatch(notesCss, /var\(--serif\)/);

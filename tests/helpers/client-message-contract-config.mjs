@@ -37,6 +37,8 @@ const CLIENT_PROVIDER_CONSUMER_ROUTES = {
   "src/components/content/LocalizedArticleFallback.tsx": "site",
   "src/components/cv/ContactCTA.tsx": "home",
   "src/components/cv/Experience.tsx": "home",
+  "src/components/cv/CapabilityMap.tsx": "home",
+  "src/components/cv/CaseFile.tsx": "home",
   "src/components/cv/Hero.tsx": "home",
   "src/components/cv/Projects.tsx": "home",
   "src/components/cv/Summary.tsx": "home",

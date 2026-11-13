@@ -31,9 +31,23 @@ html[data-reading-font='lora'] {
 }
 html[data-reading-font='be-vietnam'] {
   --font-sans: var(--font-reading-be-vietnam), system-ui, sans-serif;
-  --font-mono: var(--font-reading-ibm-plex-mono), 'SF Mono', 'Cascadia Mono', 'Roboto Mono', monospace;
 }
 img { max-width: 100%; height: auto; display: block; }
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-inverse);
+  color: var(--bg);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: none; }
+.skip-target:focus { outline: none; }
 a { color: inherit; text-decoration: none; }
 a:focus-visible, button:focus-visible {
   outline: 2px solid var(--accent);
@@ -506,6 +520,9 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   border-radius: var(--radius-pill);
   transition: color var(--d-fast), background var(--d-fast);
 }
+/* 28px tall visually, 44px to a thumb: the hit area grows up and down, never into a neighbour. */
+.theme-toggle-btn { position: relative; }
+.theme-toggle-btn::before { content: ''; position: absolute; inset: -8px 0; }
 .theme-toggle-btn:hover { color: var(--fg); }
 .theme-toggle-btn.is-active {
   background: var(--bg-elevated);

@@ -1,4 +1,6 @@
 export const SITE_URL = 'https://nguyenlephong.github.io'
+// The CV page (ProfilePage). `/` is only a redirect stub, so Person.url and author.url point here.
+export const PROFILE_URL = `${SITE_URL}/en`
 
 export const SITE = {
   url: SITE_URL,
@@ -8,7 +10,7 @@ export const SITE = {
   brandShort: 'Nguyen Le Phong',
   twitter: '@nguyenlephong17',
   locale: 'en_US',
-  defaultOgAlt: 'Nguyen Le Phong — Lead Software Engineer at Zalo PC',
+  defaultOgAlt: 'Nguyen Le Phong, Lead Software Engineer at Zalo PC',
 }
 
 export interface PageSEO {
@@ -24,9 +26,9 @@ export const PAGE_SEO: Record<
   PageSEO
 > = {
   home: {
-    title: 'Nguyen Le Phong | Lead Software Engineer, BonBon Mobility',
+    title: 'Nguyen Le Phong | Lead Software Engineer · BonBon co-founder',
     description:
-      'Lead Software Engineer at Zalo PC, co-founder of BonBon Mobility ($500K pre-seed led by Tasco) and Tech Lead of LogiUP. PC-to-mobile message backup.',
+      'Lead Software Engineer at Zalo PC and co-founder of BonBon Mobility ($500K pre-seed led by Tasco). Messaging at scale, safe rollouts, multi-tenant SaaS.',
     path: '/',
     keywords: [
       'Nguyen Le Phong',
@@ -47,7 +49,7 @@ export const PAGE_SEO: Record<
       'Very Good degree',
     ],
     ogAlt:
-      'Nguyen Le Phong — Lead Software Engineer at Zalo PC and co-founder of BonBon Mobility',
+      'Nguyen Le Phong, Lead Software Engineer at Zalo PC and co-founder of BonBon Mobility',
   },
   about: {
     title: 'About: Backend, Platform & Product Engineering | Nguyen Le Phong',
@@ -66,7 +68,7 @@ export const PAGE_SEO: Record<
       'Secure integrations',
     ],
     ogAlt:
-      'About Nguyen Le Phong — backend, platform, infrastructure, and product engineering',
+      'About Nguyen Le Phong: backend, platform, infrastructure and product engineering',
   },
   gallery: {
     title: 'Gallery: Certificates, Awards & Projects | Nguyen Le Phong',

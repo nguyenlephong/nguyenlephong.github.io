@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
-import { setRequestLocale } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import AppFooter from '@/components/AppFooter'
 import AppHeader from '@/components/AppHeader'
 import PublicThirdPartyResources from '@/components/analytics/PublicThirdPartyResources'
@@ -34,9 +34,13 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
   if (!hasLocale(routing.locales, locale)) notFound()
 
   setRequestLocale(locale)
+  const t = await getTranslations({ locale, namespace: 'Nav' })
 
   return (
     <>
+      <a className="skip-link" href="#main-content">
+        {t('skipToContent')}
+      </a>
       <PublicThirdPartyResources />
       <ScopedIntlProvider scope="site">
         <ThemeScript />
@@ -47,6 +51,8 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
         <OfflineNavigationCapture />
         <OfflineStatusBanner />
         <AppHeader />
+        {/* Skip-link target: every route renders its own <main> right after this. */}
+        <div id="main-content" className="skip-target" tabIndex={-1} />
         {children}
         <AppFooter />
       </ScopedIntlProvider>

@@ -4,6 +4,10 @@ For content and copywriting tasks in this repository, use the project skill at `
 
 Apply it before drafting or editing blog posts, notes, book reflections, technical explainers, life-experience essays, SEO summaries, and article metadata.
 
+## Profile and CV copy
+
+For anything that presents Nguyen Le Phong as a candidate (homepage CV sections, /about, SEO title/description, JSON-LD, OG images, README profile lines, `src/content/{experience,projects,profile}.ts`, the resume PDF generator, and the `Hero`, `Sections`, `Summary`, `Experience`, `Projects`, `CTA`, `About`, `SEO` message namespaces), read and follow `AI/skills/profile-voice/SKILL.md` in addition to the calm-content-writer skill. Its non-negotiables are binding: every claim must exist in the evidence ledger, one fact keeps one number across all surfaces and locales, EN and VI are written natively (VI is never a translation), and `node scripts/verify-profile-voice.mjs` must pass. Do not weaken that script or its test to make copy pass; fix the copy.
+
 ## Analytics and Event Tracking
 
 - Keep PostHog initialization current with official JavaScript/Next.js SDK guidance while preserving the repository privacy choices.

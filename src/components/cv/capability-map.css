@@ -1,0 +1,199 @@
+/* Capability map: one living system diagram of the work, a tablist that drives it,
+   and a panel with the story. Each zone draws the real mechanism behind a claim. */
+.cm { container: cm / inline-size; }
+.cm-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  grid-template-areas: "stage stage" "tabs panel";
+  gap: 1.75rem clamp(1.5rem, 1rem + 2vw, 3.5rem);
+  margin-top: 0.25rem;
+}
+.cm-stage {
+  grid-area: stage;
+  aspect-ratio: 1200 / 660;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--fg) 8%, transparent) 1px, transparent 0) 0 0 / 24px 24px,
+    color-mix(in oklab, var(--bg-elevated) 90%, transparent);
+  box-shadow: 0 24px 60px -36px color-mix(in oklab, var(--fg) 35%, transparent);
+  overflow: hidden;
+}
+.cm-svg { display: block; width: 100%; height: 100%; }
+/* The page's particle canvas runs behind this section; a feathered plate keeps
+   the tabs and story legible without drawing another box. */
+.cm-grid { position: relative; isolation: isolate; }
+.cm-grid::before {
+  content: '';
+  position: absolute;
+  inset: -1rem -1.5rem;
+  z-index: -1;
+  background: color-mix(in oklab, var(--bg) 86%, transparent);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+/* --- diagram --- */
+.cm-zone { cursor: pointer; opacity: 0.4; transition: opacity 0.45s var(--ease); }
+.cm-zone:hover { opacity: 0.75; }
+.cm-zone.is-active { opacity: 1; }
+.cm-zone-hit {
+  fill: transparent;
+  stroke: transparent;
+  stroke-dasharray: 4 6;
+  transition: fill 0.45s var(--ease), stroke 0.45s var(--ease);
+}
+.cm-zone.is-active .cm-zone-hit {
+  fill: color-mix(in oklab, var(--accent) 5%, transparent);
+  stroke: color-mix(in oklab, var(--accent) 32%, transparent);
+}
+.cm-node { fill: var(--bg-elevated); stroke: var(--border-strong); stroke-width: 1.25; }
+.cm-node.is-key { stroke: var(--accent); stroke-width: 1.5; }
+.cm-node.is-host { fill: color-mix(in oklab, var(--fg) 3%, var(--bg-elevated)); }
+.cm-screen { fill: color-mix(in oklab, var(--accent) 12%, var(--bg)); }
+.cm-stroke { fill: none; stroke: var(--border-strong); stroke-width: 2; stroke-linecap: round; }
+.cm-edge {
+  fill: none;
+  stroke: var(--fg-subtle);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 2 7;
+}
+.cm-zone.is-active .cm-edge {
+  stroke: var(--accent);
+  stroke-dasharray: 7 7;
+  animation: cm-flow 0.9s linear infinite;
+}
+.cm-zone.is-active .cm-edge.lane-1 { stroke: oklch(70% 0.16 158); }
+.cm-zone.is-active .cm-edge.lane-2 { stroke: oklch(74% 0.16 65); }
+@keyframes cm-flow { to { stroke-dashoffset: -14; } }
+/* Off screen: keep the frame, stop the loops (SMIL is paused from CapabilityMap). */
+.cm[data-inview='false'] .cm-svg * { animation-play-state: paused; }
+
+.cm-links path { fill: none; stroke: var(--border-strong); stroke-width: 1.25; stroke-dasharray: 3 5; }
+.cm-links text { font-family: var(--font-sans); font-size: 12px; font-style: italic; fill: var(--fg-subtle); }
+
+.cm-label { font-family: var(--font-sans); font-size: 15px; font-weight: 600; fill: var(--fg); }
+.cm-note { font-family: var(--font-sans); font-size: 12.5px; fill: var(--fg-muted); }
+.cm-figure {
+  font-family: var(--font-sans);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  fill: var(--fg);
+  transition: fill 0.45s var(--ease);
+}
+.cm-zone.is-active .cm-figure { fill: var(--accent); }
+
+.cm-packets circle { fill: var(--accent); stroke: var(--bg); stroke-width: 2; }
+.cm-switch { fill: var(--accent); }
+.cm-switch-knob { fill: var(--bg); }
+.cm-lock rect { fill: var(--bg-elevated); stroke: var(--accent); stroke-width: 1.6; }
+.cm-lock path { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+.cm-key { fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; }
+
+.cm-tenant, .cm-tile { fill: color-mix(in oklab, var(--fg) 10%, transparent); }
+.cm-zone.is-active .cm-tenant { animation: cm-rollout 4.2s var(--ease) infinite calc(var(--i) * 70ms); }
+.cm-zone.is-active .cm-tile { animation: cm-rollout 3.6s var(--ease) infinite calc(var(--i) * 110ms); }
+@keyframes cm-rollout {
+  0%, 18% { fill: color-mix(in oklab, var(--fg) 10%, transparent); }
+  28%, 82% { fill: color-mix(in oklab, var(--accent) 80%, var(--bg)); }
+  100% { fill: color-mix(in oklab, var(--fg) 10%, transparent); }
+}
+.cm-person { fill: color-mix(in oklab, var(--accent) 70%, var(--bg)); }
+.cm-person.is-qc, .cm-note.is-qc { fill: oklch(74% 0.16 65); }
+
+/* --- tabs --- */
+.cm-tabs {
+  grid-area: tabs;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--border);
+  scrollbar-width: none;
+}
+.cm-tab {
+  position: relative;
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.7rem 0 0.7rem 1.1rem;
+  font: inherit;
+  text-align: left;
+  color: var(--fg-muted);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color var(--d-fast);
+}
+.cm-tab::before {
+  content: '';
+  position: absolute;
+  left: -1px; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s var(--ease);
+}
+.cm-tab:hover, .cm-tab[aria-selected='true'] { color: var(--fg); }
+.cm-tab[aria-selected='true']::before { transform: scaleY(1); }
+.cm-tab.is-cycling::before { animation: cm-progress-y 7s linear forwards; }
+.cm-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.cm-tab-label { font-size: var(--text-sm); font-weight: 600; }
+.cm-tab-meta { font-size: var(--text-xs); color: var(--fg-subtle); }
+@keyframes cm-progress-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes cm-progress-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* --- panel --- */
+.cm-panel { grid-area: panel; max-width: 64ch; padding-top: 0.35rem; }
+.cm-panel-inner { animation: cm-in 0.5s var(--ease); }
+@keyframes cm-in { from { opacity: 0; transform: translateY(8px); } }
+.cm-title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.cm-body { margin: 0 0 1.1rem; color: var(--fg-muted); line-height: 1.7; }
+.cm-proof {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.6rem;
+  margin: 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+}
+.cm-proof strong { font-size: var(--text-lg); font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+
+/* Phone and narrow columns: tabs become a swipeable strip, the camera follows one zone. */
+@container cm (max-width: 719px) {
+  .cm-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "tabs" "stage" "panel"; gap: 1rem; }
+  .cm-stage { aspect-ratio: 3 / 2; }
+  .cm-tabs {
+    flex-direction: row;
+    gap: 1.25rem;
+    overflow-x: auto;
+    border-left: 0;
+    border-bottom: 1px solid var(--border);
+    /* Edge fade says the strip scrolls; end padding lets the last tab clear the fade. */
+    padding-inline-end: 2rem;
+    mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
+  }
+  .cm-tab { flex: none; padding: 0.5rem 0 0.75rem; }
+  .cm-tab-meta { display: none; }
+  .cm-tab::before { inset: auto 0 -1px 0; width: auto; height: 2px; transform: scaleX(0); transform-origin: left; }
+  .cm-tab[aria-selected='true']::before { transform: scaleX(1); }
+  .cm-tab.is-cycling::before { animation-name: cm-progress-x; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cm-zone.is-active .cm-edge,
+  .cm-zone.is-active .cm-tenant,
+  .cm-zone.is-active .cm-tile,
+  .cm-panel-inner { animation: none; }
+  .cm-packets { display: none; }
+  .cm-zone.is-active .cm-tenant,
+  .cm-zone.is-active .cm-tile { fill: color-mix(in oklab, var(--accent) 80%, var(--bg)); }
+}

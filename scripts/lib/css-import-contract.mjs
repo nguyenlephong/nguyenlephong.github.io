@@ -15,6 +15,7 @@ function normalizePath(value) {
 
 function resolveStylesheet(importer, specifier) {
   const cleanSpecifier = specifier.split(/[?#]/, 1)[0];
+  if (cleanSpecifier.startsWith("@/")) return `src/${cleanSpecifier.slice(2)}`;
   if (!cleanSpecifier.startsWith(".")) return cleanSpecifier;
   return path.posix.normalize(
     path.posix.join(path.posix.dirname(importer), cleanSpecifier)

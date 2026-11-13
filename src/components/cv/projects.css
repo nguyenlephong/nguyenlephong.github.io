@@ -1,0 +1,257 @@
+/* =========================================================
+   Projects: two case files (figure + spec) and a one-line index.
+   The figures reuse the capability map's zone drawings and classes
+   (capability-map.css loads on the same page).
+   ========================================================= */
+.case-files {
+  display: grid;
+  gap: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+}
+.case-file {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+@media (min-width: 1024px) {
+  .case-file {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "figure head" "figure text";
+    gap: 1.25rem 3rem;
+    align-items: start;
+  }
+  .case-head { grid-area: head; }
+  .case-figure { grid-area: figure; position: sticky; top: 6rem; }
+  .case-text { grid-area: text; }
+}
+
+/* Tablet: one column, so cap the figure before it outgrows the text. */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .case-figure { max-width: 30rem; }
+}
+
+/* --- figure --- */
+.case-figure { margin: 0; }
+.case-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--fg) 8%, transparent) 1px, transparent 0) 0 0 / 24px 24px,
+    color-mix(in oklab, var(--bg-elevated) 92%, transparent);
+  box-shadow: 0 24px 60px -36px color-mix(in oklab, var(--fg) 35%, transparent);
+}
+
+/* Final state is the default: lit edges and tiles, switch on. Playing only adds motion. */
+.case-figure .cm-edge { stroke: var(--accent); stroke-dasharray: 7 7; }
+.case-figure .cm-edge.lane-1 { stroke: oklch(70% 0.16 158); }
+.case-figure .cm-edge.lane-2 { stroke: oklch(74% 0.16 65); }
+.case-figure .cm-figure { fill: var(--accent); }
+.case-figure .cm-tile { fill: color-mix(in oklab, var(--accent) 80%, var(--bg)); }
+
+.case-figure.is-playing .cm-edge { animation: cm-flow 0.9s linear 3; }
+.case-figure.is-playing .cm-tile {
+  animation: case-tile 0.5s var(--ease) both;
+  animation-delay: calc(var(--i) * 70ms + 200ms);
+}
+.case-figure.is-playing .case-switch { animation: case-switch 0.45s var(--ease) 1.3s both; }
+.case-figure.is-playing .case-knob { animation: case-knob 0.45s var(--ease) 1.3s both; }
+@keyframes case-tile { from { fill: color-mix(in oklab, var(--fg) 10%, transparent); } }
+@keyframes case-switch { from { fill: color-mix(in oklab, var(--fg) 22%, transparent); } }
+@keyframes case-knob { from { transform: translateX(-10px); } }
+
+/* --- text --- */
+.case-name {
+  margin: 0;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 1.875rem);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.case-kind {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: var(--text-base);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--fg-muted);
+}
+.case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  margin: 0.75rem 0 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+.case-period {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-subtle);
+}
+
+.case-spec { margin: 0; }
+.case-row {
+  display: grid;
+  gap: 0.375rem;
+  padding-block: 0.875rem;
+  border-top: 1px solid var(--border);
+}
+.case-row:first-child { padding-top: 0; border-top: 0; }
+.case-row dt { font-size: var(--text-sm); font-weight: 600; line-height: 1.65; }
+.case-row dd {
+  margin: 0;
+  max-width: 64ch;
+  line-height: 1.65;
+  color: var(--fg-muted);
+  text-wrap: pretty;
+}
+.case-row b { color: var(--fg); font-weight: 650; font-variant-numeric: tabular-nums; }
+
+.case-list { display: grid; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+.case-list li { position: relative; padding-left: 1.125rem; }
+/* Markers borrow the figure's grammar: an open node for a choice, a filled one for a result. */
+.case-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.case-decisions li::before { border: 1.5px solid var(--accent); }
+.case-row dd:has(.case-decisions) { max-width: none; }
+.case-outcome li::before { background: var(--accent); }
+
+.case-muted { margin: 0; }
+.case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Text links in the case files, the index and the map panel share one treatment. */
+.case-links a,
+.pi-name a,
+.cm-case-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 500;
+  color: var(--accent-strong);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, currentColor 35%, transparent);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--d-fast);
+}
+.case-links a:hover,
+.pi-name a:hover,
+.cm-case-link:hover { text-decoration-color: currentColor; }
+.case-links a:focus-visible,
+.pi-name a:focus-visible,
+.cm-case-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+/* 44px tap targets; negative margins keep the visual rhythm of a text line. */
+.cm-case-link { margin-top: 1rem; font-size: var(--text-sm); }
+@media (pointer: coarse) {
+  .case-links a,
+  .pi-name a,
+  .cm-case-link { min-height: 44px; }
+  .pi-name a { margin-block: -11px; }
+  .cm-case-link { margin-top: 0.25rem; }
+  .case-links { row-gap: 0; margin-block: -0.625rem; }
+}
+
+/* --- index --- */
+.project-index { margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem); }
+.project-index-title {
+  margin: 0 0 1rem;
+  font-size: var(--text-xl);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.pi-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.pi-table th {
+  padding: 0 1.25rem 0.5rem 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--fg-subtle);
+  border-bottom: 1px solid var(--border-strong);
+}
+.pi-table td {
+  padding: 0.875rem 1.25rem 0.875rem 0;
+  vertical-align: baseline;
+  line-height: 1.55;
+  color: var(--fg-muted);
+  border-bottom: 1px solid var(--border);
+}
+.pi-table th:last-child, .pi-table td:last-child { padding-right: 0; }
+.pi-year {
+  width: 6.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--fg-subtle);
+}
+.pi-table .pi-name { width: 12rem; font-weight: 600; color: var(--fg); }
+.pi-name a { color: var(--fg); }
+.pi-name a svg { color: var(--accent); }
+.pi-table .pi-role { width: 15rem; }
+.pi-outcome b { color: var(--fg); font-weight: 650; font-variant-numeric: tabular-nums; }
+
+/* Phone: each row becomes a two-line entry, year as the gutter. */
+@media (max-width: 767px) {
+  .pi-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .pi-table tr {
+    display: grid;
+    grid-template-columns: 4.75rem minmax(0, 1fr);
+    column-gap: 0.75rem;
+    row-gap: 0.125rem;
+    padding-block: 0.875rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pi-table td { padding: 0; border: 0; width: auto; }
+  .pi-table .pi-name, .pi-table .pi-role, .pi-table .pi-outcome { grid-column: 2; }
+  .pi-table .pi-year { grid-row: 1; padding-top: 0.1rem; }
+  .pi-table .pi-name { grid-row: 1; width: auto; }
+}
+
+/* Phone: tighter type and rhythm. */
+@media (max-width: 639px) {
+  .case-file { gap: 1rem; }
+  .case-row { padding-block: 0.75rem; }
+  .case-text .case-row:first-child { padding-top: 0.75rem; border-top: 1px solid var(--border); }
+  .case-row dd { font-size: 0.9375rem; line-height: 1.5; }
+  .case-files { gap: 2.5rem; }
+  .project-index { margin-top: 2.5rem; }
+  .case-list { gap: 0.375rem; }
+  .case-meta { margin-top: 0.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-figure.is-playing .cm-edge,
+  .case-figure.is-playing .cm-tile,
+  .case-figure.is-playing .case-switch,
+  .case-figure.is-playing .case-knob { animation: none; }
+}

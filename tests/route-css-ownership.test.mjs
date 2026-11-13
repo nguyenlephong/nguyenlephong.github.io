@@ -43,6 +43,12 @@ const expectedImporters = {
   "src/app/document.css": ["src/app/[locale]/layout.tsx"],
   "src/app/globals.css": ["src/app/[locale]/(site)/layout.tsx"],
   "src/app/[locale]/(site)/home.css": ["src/app/[locale]/(site)/page.tsx"],
+  "src/components/cv/hero.css": ["src/app/[locale]/(site)/page.tsx"],
+  "src/components/cv/summary.css": ["src/app/[locale]/(site)/page.tsx"],
+  "src/components/cv/capability-map.css": ["src/app/[locale]/(site)/page.tsx"],
+  "src/components/cv/experience.css": ["src/app/[locale]/(site)/page.tsx"],
+  "src/components/cv/projects.css": ["src/app/[locale]/(site)/page.tsx"],
+  "src/components/cv/contact.css": ["src/app/[locale]/(site)/page.tsx"],
   "src/app/[locale]/(site)/about/about.css": [
     "src/app/[locale]/(site)/about/page.tsx"
   ],
@@ -309,7 +315,6 @@ test("globals keeps shared chrome and excludes route-owned rules", async () => {
     ".cv-section {",
     ".cv-section + .cv-section {",
     ".cv-section-head {",
-    ".cv-section-eyebrow {",
     ".cv-section-title {"
   ];
 

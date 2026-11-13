@@ -15,7 +15,7 @@ Lead Software Engineer at Zalo PC with 8+ years shipping production software acr
 I work best where cross-platform product delivery, data safety, platform reliability, and team clarity need to move together: desktop and mobile clients, backend services, rollout workflows, observability, CI/CD, secure integrations, and production operations.
 
 ```text
-Lead Software Engineer @ Zalo PC   PC message backup → mobile restore · 80M+ MAU platform
+Lead Software Engineer @ Zalo PC   PC message backup → mobile restore · 15M+ MAU desktop client
 Co-founder @ BonBon Mobility      $500K pre-seed led by Tasco · VETC Mini App (4.3M-user ecosystem)
 Tech Lead @ LogiUP                 Multi-tenant logistics SaaS · 9 repos · team of 4
 React / Electron / Node.js / Go / NestJS / Kotlin / Kubernetes

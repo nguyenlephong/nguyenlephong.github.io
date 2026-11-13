@@ -6,6 +6,13 @@
   font-weight: 100 900;
   font-display: swap;
 }
+/* JetBrains Mono variable, wght 400-700, self-hosted subset (Latin + Vietnamese). */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../fonts/JetBrainsMono-latin-vi.woff2') format('woff2');
+  font-weight: 400 700;
+  font-display: swap;
+}
 /* Arial scaled to Inter's metrics so the swap does not shift layout. */
 @font-face {
   font-family: 'Inter Fallback';
@@ -25,7 +32,7 @@
 
   --fg: oklch(20% 0.02 260);
   --fg-muted: oklch(45% 0.015 260);
-  --fg-subtle: oklch(58% 0.012 260);
+  --fg-subtle: oklch(52% 0.012 260); /* 5.2:1 on --bg, 4.76:1 on --bg-muted */
   --fg-on-accent: oklch(99% 0 0);
 
   --accent: oklch(58% 0.18 252);
@@ -46,14 +53,13 @@
   --shadow-lg: 0 24px 48px -16px rgba(15, 23, 42, 0.14);
 
   --font-sans: 'Inter', 'Inter Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: 'SF Mono', 'Cascadia Mono', 'Roboto Mono', Consolas, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --font-reading-source: 'Source Sans 3', 'Segoe UI', system-ui, sans-serif;
   --font-reading-plex: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
   --font-reading-atkinson: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, sans-serif;
   --font-reading-lora: 'Iowan Old Style', Georgia, 'Times New Roman', serif;
   --font-reading-be-vietnam: 'Be Vietnam Pro', 'Segoe UI', system-ui, sans-serif;
   --font-reading-fraunces: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-reading-ibm-plex-mono: 'IBM Plex Mono', 'SF Mono', 'Cascadia Mono', 'Roboto Mono', monospace;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -85,8 +91,8 @@
 
   --fg: oklch(95% 0.005 250);
   --fg-muted: oklch(72% 0.015 260);
-  --fg-subtle: oklch(58% 0.015 260);
-  --fg-on-accent: oklch(99% 0 0);
+  --fg-subtle: oklch(62% 0.015 260); /* 5.2:1 on --bg-elevated, 4.9:1 on --bg-muted */
+  --fg-on-accent: oklch(14% 0.012 260); /* dark accents are light: 6.8:1 on --accent, 9.4:1 on --accent-strong */
 
   --accent: oklch(68% 0.18 252);
   --accent-soft: oklch(28% 0.06 252);

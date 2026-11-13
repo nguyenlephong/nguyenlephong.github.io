@@ -1,9 +1,9 @@
 'use client'
-import { LuExternalLink } from 'react-icons/lu'
+import { useEffect, useRef } from 'react'
+import { LuArrowUp } from 'react-icons/lu'
 import { useTranslations } from 'next-intl'
 import { ProjectType } from '@/app/app.type'
-import { Stagger, StaggerItem } from '@/components/motion/Reveal'
-import { track } from '@/lib/analytics'
+import CaseFile, { caseFileId, openCaseFile, trackProjectView, type CaseFileKey } from './CaseFile'
 
 type Props = { data: ProjectType[] }
 
@@ -11,117 +11,89 @@ const PROJECT_KEY_MAP: Record<string, string> = {
   'LogiUP - Multi-tenant Logistics SaaS': 'logiup',
   'BonBon Mobility - VETC Mini App & Automotive Platform': 'bonbon',
   'Digital SAT Math': 'sat',
-  CDP: 'cdp',
-  'Event Tracking - Web SDK': 'sdk',
   'Vietnam Australia Center': 'vac',
-  'House Management - Mona House': 'mona',
-  'Bank tool - Mobivi': 'mobivi',
-  'Savyu - Synova Solutions': 'savyu',
+}
+const CASE_FILES: readonly string[] = ['logiup', 'bonbon'] satisfies CaseFileKey[]
+
+/** "Oct 2023 - Apr 2025" → "2023–2025", "Mar 2026 - Present" → "2026–", "May 2023" → "2023". */
+function yearSpan(duration: string): string {
+  const [from, to] = duration.match(/\d{4}/g) ?? []
+  if (/present/i.test(duration)) return `${from}–`
+  return to && to !== from ? `${from}–${to}` : (from ?? '')
 }
 
 export default function Projects({ data }: Props) {
   const t = useTranslations('Projects')
+  const rows = data.filter((p) => PROJECT_KEY_MAP[p.name])
+  const tbodyRef = useRef<HTMLTableSectionElement>(null)
+
+  // Index rows count as a project view at 50% too, so every project keeps `cv_project_view`.
+  useEffect(() => {
+    const rowEls = tbodyRef.current?.querySelectorAll<HTMLElement>('tr[data-project]')
+    if (!rowEls?.length) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.intersectionRatio < 0.5) continue
+          trackProjectView(e.target.getAttribute('data-project') ?? '')
+          io.unobserve(e.target)
+        }
+      },
+      { threshold: 0.5 },
+    )
+    rowEls.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [])
 
   return (
-    <Stagger className="project-grid" stagger={0.08}>
-      {data.map((p) => {
-        const key = PROJECT_KEY_MAP[p.name]
-        const items = key
-          ? (t.raw(`${key}.accomplishments`) as string[])
-          : p.accomplishment
-        return (
-          <StaggerItem
-            as="article"
-            key={p.name}
-            className="project-card"
-            onMouseEnter={() => track('cv_project_view', { project: p.name })}
-          >
-            <>
-              <header className="project-head">
-                {p.brand && (
-                  // Static export, fixed 40px mark: next/image optimization is not needed.
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    className="project-logo"
-                    src={p.brand.logo}
-                    width={40}
-                    height={40}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
+    <>
+      <div className="case-files">
+        {rows
+          .filter((p) => CASE_FILES.includes(PROJECT_KEY_MAP[p.name]))
+          .map((p) => (
+            <CaseFile key={p.name} id={PROJECT_KEY_MAP[p.name] as CaseFileKey} project={p} />
+          ))}
+      </div>
+
+      <div className="project-index">
+        <h3 className="project-index-title">{t('labels.indexTitle')}</h3>
+        <table className="pi-table">
+          <thead>
+            <tr>
+              <th scope="col">{t('labels.year')}</th>
+              <th scope="col">{t('labels.project')}</th>
+              <th scope="col">{t('labels.role')}</th>
+              <th scope="col">{t('labels.result')}</th>
+            </tr>
+          </thead>
+          <tbody ref={tbodyRef}>
+            {rows.map((p) => {
+              const key = PROJECT_KEY_MAP[p.name]
+              const caseKey = CASE_FILES.includes(key) ? (key as CaseFileKey) : null
+              return (
+                <tr key={p.name} data-project={p.name}>
+                  <td className="pi-year">{yearSpan(p.duration)}</td>
+                  <td className="pi-name">
+                    {caseKey ? (
+                      <a href={`#${caseFileId(caseKey)}`} onClick={() => openCaseFile(caseKey, 'index')}>
+                        {t(`${key}.name`)}
+                        <LuArrowUp size={13} aria-hidden="true" />
+                      </a>
+                    ) : (
+                      t(`${key}.name`)
+                    )}
+                  </td>
+                  <td className="pi-role">{t(`${key}.role`)}</td>
+                  <td
+                    className="pi-outcome"
+                    dangerouslySetInnerHTML={{ __html: t.raw(`${key}.index`) as string }}
                   />
-                )}
-                <h3 className="project-name">{p.name}</h3>
-                <span className="project-duration">{p.duration}</span>
-              </header>
-
-              <div className="tech-row">
-                {p.technologies.map((tech) => (
-                  <span key={tech} className="tech-chip tech-chip-soft">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <ul className="project-bullets">
-                {items.map((item, i) => (
-                  <li
-                    key={i}
-                    className="project-bullet"
-                    dangerouslySetInnerHTML={{ __html: item }}
-                  />
-                ))}
-              </ul>
-
-              {p.brand && (
-                <div className="role-evidence">
-                  <span className="role-evidence-label">{t('labels.website')}</span>
-                  <a
-                    href={p.brand.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() =>
-                      track(
-                        'cv_project_website_click',
-                        { project: p.name, host: p.brand?.label },
-                        { beacon: true },
-                      )
-                    }
-                  >
-                    {p.brand.label}
-                    <LuExternalLink size={13} aria-hidden="true" />
-                  </a>
-                </div>
-              )}
-
-              {p.evidence && (
-                <div className="role-evidence">
-                  <span className="role-evidence-label">{t('labels.publicEvidence')}</span>
-                  <a
-                    href={p.evidence.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() =>
-                      track(
-                        'cv_project_evidence_click',
-                        {
-                          project: p.name,
-                          publisher: p.evidence?.publisher,
-                          published_at: p.evidence?.publishedAt,
-                        },
-                        { beacon: true },
-                      )
-                    }
-                  >
-                    {t('labels.readCoverage', { publisher: p.evidence.publisher })}
-                    <LuExternalLink size={13} aria-hidden="true" />
-                  </a>
-                </div>
-              )}
-            </>
-          </StaggerItem>
-        )
-      })}
-    </Stagger>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    </>
   )
 }

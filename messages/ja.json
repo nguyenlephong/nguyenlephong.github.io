@@ -1,5 +1,6 @@
 {
   "Nav": {
+    "skipToContent": "本文へスキップ",
     "about": "概要",
     "aboutMe": "私について",
     "experience": "経歴",
@@ -37,249 +38,258 @@
     "newsCta": "記事を読む",
     "role": "Lead Software Engineer",
     "cofounder": "共同創業者",
-    "roleSub": "80M+ MAU 規模でプロダクトを届け、創業者としてゼロから築く。",
-    "bio": "Zalo PC ではデバイス間データ領域をリードし、直近では PC のメッセージバックアップとモバイル復元を提供しました。カーケア O2O プラットフォーム BonBon Mobility では共同創業者として、MVP から 3 か月で実地パイロットに到達したプロダクト連携を構築しました。",
+    "claim": "自分でもコードを書くエンジニアリングリード。重要なコードは自分で書き、リスクのある変更は戻せる小さな単位でリリースします。",
+    "bio": "2018 年からソフトウェアを届けてきました。受託開発会社、CDP プロダクト企業、Zalo を経て、共同創業したスタートアップへ。",
     "location": "ベトナム・ホーチミン市",
     "downloadResume": "履歴書ダウンロード",
-    "getInTouch": "お問い合わせ",
-    "careerHighlights": "キャリアハイライト",
+    "getInTouch": "メールを送る",
     "socialProfiles": "ソーシャルプロフィール",
-    "stats": {
-      "yearsShipping": "出荷年数",
-      "yearsShippingCaption": "毎日プロダクションコードを",
-      "usersTouched": "関わったユーザー数",
-      "usersTouchedCaption": "Zalo · CDP · 金融規模",
-      "engineersLed": "リードした最大チーム",
-      "engineersLedCaption": "開発 · QC · デリバリー",
-      "preSeedRaised": "プレシード調達額",
-      "preSeedRaisedCaption": "BonBon Mobility · Tasco がリード",
-      "projectsLaunched": "ローンチ済みプロジェクト",
-      "projectsLaunchedCaption": "SDK · プラットフォーム · モバイル",
-      "testCasesAuthored": "作成したテストケース",
-      "testCasesAuthoredCaption": "BDD · E2E · 回帰防止"
+    "topology": {
+      "label": "現在の役割と直前の役割",
+      "zaloNote": "デスクトップクライアント · 15M+ MAU",
+      "bonbonNote": "Tasco リードの 50 万ドル プレシード",
+      "previousNote": "デリバリーリード · 開発 8 + QC 3",
+      "zaloMeta": "Lead · <date>2026年3月</date>から",
+      "bonbonMeta": "共同創業者 · <date>2026年4月</date>から",
+      "previousMeta": "前職 · <date>2025年8月 – 2026年3月</date>"
     }
   },
   "Sections": {
-    "aboutEyebrow": "強み",
-    "aboutTitle": "システムを設計する。プロダクトを届ける。チームを率いる。",
-    "experienceEyebrow": "経験",
-    "experienceTitle": "役割ごとの成果",
-    "projectsEyebrow": "プロジェクト",
-    "projectsTitle": "主要プロジェクトと成果"
+    "aboutTitle": "一歩の誤りがお金や信頼の損失につながるシステムを手がけています。",
+    "experienceTitle": "CTO交代の時期にチームを率い、その後ZaloにLeadとして再雇用されました。",
+    "projectsTitle": "アーキテクチャを自分で決め、その結果も引き受けた二つのシステム。"
   },
   "Summary": {
-    "intro1": "Zalo PC の Lead Software Engineer。大規模メッセージング、CDP、フィンテック、教育、不動産で <b>8+ 年</b>にわたり本番ソフトウェアを提供しています。",
-    "intro2": "ハンズオンのエンジニアリングと技術リードを両立し、曖昧な目標を信頼性の高いシステムへ変換しながら、アーキテクチャ、コード品質、デリバリー、可観測性、本番運用を改善しています。",
-    "intro3": "<i>製品、システム、チームの3つの層に注力しています。</i>",
-    "visionEyebrow": "中核スキル",
-    "hardSkillsEyebrow": "技術基盤",
+    "mapTabsLabel": "得意領域",
+    "lede": "Zalo の前は受託開発会社で1年余り、CDP スタートアップで4年近く働き、2度の Zalo 在籍の間には CTO 交代期のデリバリーチームを率いました。下のマップでは6つの仕事を選び、それぞれの仕組みを図にしています。",
+    "stackTitle": "開発で使う技術",
     "pillars": {
-      "endToEnd": {
-        "title": "エンドツーエンドエンジニア",
-        "body": "フロントエンド、バックエンド、CI/CD、リリース、本番インフラまで全ライフサイクルを 1 人で担当。",
-        "chip": "FE · BE · インフラ"
+      "crossDevice": {
+        "tab": "デバイス間同期",
+        "meta": "Zalo PC · 2026",
+        "figure": "1.8 s → 4 ms",
+        "figureLabel": "sync v2 のホットパス上の lookup 1 件",
+        "title": "PC とスマホのメッセージを食い違わせない",
+        "body": "Zalo PC でデバイス間データまわりをリードしています。sync v2 はモバイル回線が不安定なときにリトライとグループ単位の再準備を行うようになり、PC のメッセージバックアップとモバイルでの復元は 2026 年 7 月から段階的に提供が始まり、VnExpress でも取り上げられました。"
+      },
+      "zeroToPilot": {
+        "tab": "ゼロからパイロットへ",
+        "meta": "BonBon Mobility · 共同創業者",
+        "figure": "3 か月",
+        "figureLabel": "MVP から実地パイロットまで",
+        "title": "ゼロからのプロダクトを、パートナーのアプリの中で",
+        "body": "BonBon は 430 万ユーザーを抱える VETC のアプリエコシステム内で、12 画面の Mini App として動いています。車のオーナーは VETC のセッションでそのままサイレントログインでき、OTP をもう一度入力する必要はありません。チームはその後 Wash3000 で優勝し、Tasco リードで 50 万ドルのプレシード資金を調達しました。"
       },
       "multiTenant": {
-        "title": "マルチテナント基盤",
-        "body": "フィーチャーフラグ、RBAC、パーセンテージ/セグメントロールアウト、JSON 設定値、ステートレス実行時評価。",
-        "chip": "30+ テナント稼働中"
+        "tab": "マルチテナント SaaS",
+        "meta": "LogiUP · Tech Lead",
+        "figure": "9 リポジトリ",
+        "figureLabel": "1 つのマルチテナント設計、4 人のチーム",
+        "title": "顧客ごとのデータがきちんと分かれた物流 SaaS",
+        "body": "システムアーキテクトとして、テナント分離を顧客のサブドメインからトークンまで一貫させ、Web と Electron デスクトップアプリ向けに自前の OAuth 2.1/OIDC プロバイダーを構築しました。通関ワークフローでは AI が値を提案し、申告書の 8 セクションそれぞれを人が確認します。"
+      },
+      "rollouts": {
+        "tab": "段階的ロールアウト",
+        "meta": "NDSVN · 2025–2026",
+        "figure": "30+ テナント",
+        "figureLabel": "約 4 万ユーザーが使う 1 つのフラグ基盤",
+        "title": "小さく出して、いつでも戻せるように",
+        "body": "NDSVN では .NET Core でフィーチャーフラグ基盤を作り、テナント・セグメント・環境ごとに段階リリースし、PostHog で各ロールアウトの実際の影響を見られるようにしました。この習慣は今も続いていて、BonBon は kill switch 付きのフラグの裏でリリースし、Zalo PC のリスクのある変更は既定でオフから始めます。"
       },
       "leadership": {
-        "title": "技術・チームリーダーシップ",
-        "body": "明確な ownership、採用、RFC、runbook、rollout playbook、1:1 coaching を通じて developer と QC team をリード。",
-        "chip": "11 名チーム"
+        "tab": "引き継ぎ期のチーム",
+        "meta": "NDSVN · デリバリーチーム",
+        "figure": "8 + 3",
+        "figureLabel": "CTO 交代後の開発者と QC",
+        "title": "引き継ぎの時期にチームを安定させる",
+        "body": "NDSVN で CTO が交代した後、デリバリーチームの技術的なオーナーシップを引き受けました。仕事の多くは、それまで各自の頭の中にしかなかったこと、たとえば誰がどこを担当するかやリリースのタグの付け方を文書にすることと、構造化面接による採用でした。"
       },
       "fintech": {
-        "title": "セキュアな金融連携",
-        "body": "RSA-4096 ハンドシェイク、AES-256 ペイロード、mTLS、証明書ピンニング、冪等契約、リトライキュー。",
-        "chip": "Gtel · Napas"
-      },
-      "mfe": {
-        "title": "マイクロフロントエンドと SDK",
-        "body": "Angular ホスト + React モジュールで独立デプロイ。JS SDK は <200KB、<150ms。",
-        "chip": "MFE · <150ms"
-      },
-      "ai": {
-        "title": "AI ファーストなエンジニアリング",
-        "body": "コードレビュー、デプロイ支援、サービスクォータ、API ヘルス、リリース分析向けの AI エージェントを構築。",
-        "chip": "本番稼働中"
+        "tab": "パートナー連携",
+        "meta": "NDSVN · 連携",
+        "figure": "Gtel · Napas",
+        "figureLabel": "mTLS によるパートナー連携",
+        "title": "何度リトライしても安全なパートナー連携",
+        "body": "Gtel と Napas との接続には RSA-4096 ハンドシェイク、AES-256 のペイロード暗号化、証明書ピンニングを使っています。契約は冪等なので、リトライキューから再送されたメッセージも害がなく、監視は ACK に基づいて行います。"
       }
     },
-    "skills": {
-      "backend": "<b>バックエンド</b>:<b>Node.js</b>、<b>Java (Spring)</b> に深い実務経験。REST/GraphQL API を明確な契約、認証・暗号化機構、後方互換性、エンタープライズおよびサードパーティ連携の堅牢性を持って設計。",
-      "frontend": "<b>フロントエンド</b>:<b>React</b>(TypeScript、Next.js)、<b>React Native</b>、Angular ベースのマイクロフロントエンドホストを使った複雑なクライアントアプリの構築・保守経験。パフォーマンス最適化、状態管理、スケール可能な UI 設計を実践。",
-      "databases": "<b>データベース</b>:<b>MySQL</b> に深い実務経験。スキーマ/データモデル設計、インデックス戦略、クエリ最適化、トランザクション境界、マイグレーション計画、分散・高スループット環境での整合性のトレードオフに精通。",
-      "infra": "<b>インフラ & プラットフォームエンジニアリング</b>:<b>Docker</b> と <b>Kubernetes</b> を複数環境で実運用。<b>AKS</b>、<b>EKS</b>、<b>FKE</b>、<b>K3S</b> のマネージドクラスタ、<b>ArgoCD</b> による GitOps デプロイ、CI/CD パイプライン、環境設定、ドメイン/SSL 管理を経験。",
-      "architecture": "<b>アーキテクチャ & デリバリー</b>:マイクロフロントエンドおよびマルチテナントアーキテクチャ、フィーチャーフラグ駆動のロールアウト、プログレッシブデリバリー、可観測性を活用し、安全なリリースと本番診断を支援。",
-      "testing": "<b>テスト</b>:Jest、Cucumber、Puppeteer、Testing Library を実務で活用し、回帰の安全性、リリースの信頼性、本番準備状況を担保。",
-      "libraries": "<b>ライブラリ</b>:<b>Firebase</b>、Strapi、Directus、React Flow、Webpack、<b>Redux</b>、React Query、G2plot に習熟。",
-      "other": "<b>その他</b>:<b>マイクロフロントエンド</b>アーキテクチャ、レスポンシブデザイン、クロスブラウザ対応、<b>SEO</b>、GraphQL、Electron に精通。"
+    "stack": {
+      "frontend": {
+        "label": "フロントエンド・デスクトップ",
+        "items": "TypeScript、React、Next.js、Electron、React Native、Storybook"
+      },
+      "backend": {
+        "label": "バックエンド",
+        "items": "Go、NestJS、Node.js、Python (FastAPI)、.NET Core、Java Spring"
+      },
+      "data": {
+        "label": "データ",
+        "items": "PostgreSQL、Redis、BullMQ、Cloudflare R2、MySQL"
+      },
+      "platform": {
+        "label": "プラットフォーム",
+        "items": "Docker、Kubernetes (AKS、EKS、K3S)、ArgoCD、CI/CD、PostHog"
+      },
+      "architecture": {
+        "label": "アーキテクチャ",
+        "items": "マルチテナント SaaS、OAuth 2.1 / OIDC、mTLS、フィーチャーフラグとキルスイッチ、マイクロフロントエンド"
+      },
+      "testing": {
+        "label": "テスト",
+        "items": "Playwright、Vitest、Go のテスト、Jest、Cucumber"
+      },
+      "team": {
+        "label": "チームの進め方",
+        "items": "コードレビュー、RFC、ランブック、構造化面接、レビューとリリース確認用の AI エージェント"
+      }
     }
   },
   "Experience": {
-    "labels": {
-      "location": "勤務地",
-      "duration": "期間",
-      "keyContributions": "主な貢献",
-      "keyTechnologies": "主な技術",
-      "publicEvidence": "公開リリース",
-      "readCoverage": "{publisher} の記事を読む"
+    "env": {
+      "bigTech": "大手テック、コンシューマー向け",
+      "enterprise": "エンタープライズ、決済・通信パートナー",
+      "b2b": "B2Bプロダクトのスタートアップ",
+      "outsourcing": "受託開発",
+      "startup": "アーリーステージのスタートアップ"
     },
-    "ndsvn": {
-      "summary": "CTO 交代後にプロダクトデリバリーと技術方針を引き受け、アーキテクチャ決定、ロールアウトシステム、エンタープライズ連携、チーム横断の調整を主導。8 名の開発者(うち 4 名がシニア)と 3 名の QC エンジニアからなるデリバリーチームを管理。",
-      "contributions": [
-        ".NET Core 製のマルチテナント・フィーチャーフラグシステム <b>(30+ テナント、約 40k ユーザー)</b> を設計。優先度ルールエンジン、パーセンテージロールアウト(テナント/セグメント/環境)、JSON 設定値、ステートレス実行時評価を備え、モバイル/Web アプリを駆動し、高トラフィックテナントでの制御されたプログレッシブリリースを実現。",
-        "<b>Gtel と Napas</b> とのセキュア連携を構築:RSA-4096 ハンドシェイク、AES-256 ペイロード暗号化、<b>mTLS</b> 相互認証、証明書ピンニング、リトライキュー、冪等 API 契約、不安定なサードパーティ向けの ACK 駆動モニタリング。",
-        "<b>マイクロフロントエンド</b>アーキテクチャ(Angular ホスト + React モジュール)を導入し、独立したデプロイサイクルと機能分離を実現 — チーム間の回帰範囲とデプロイ結合を削減。",
-        "可観測性スタック(PostHog + メトリクスパイプライン + ワークフロー)を導入し、ロールアウト影響、機能採用、異常検知、回帰追跡を可能に — リリースサイクル全体でデバッグ/分析時間を大幅に削減。",
-        "引き継いだインフラのオーナーシップを担い、組織を止めない — 本番障害、パイプライン失敗、クラスタの癖、連携の不安定さを静かに吸収し、プロダクトとチームを停滞させない。ArgoCD、CI/CD、ドメイン/SSL、<b>AKS/FKE/K3S/EKS</b> クラスタを<b>診断可能、復旧可能、安定したシステム</b>へと整備。",
-        "コードレビュー、デプロイ支援、サービスクォータ検証、API ヘルス監視、リリース分析を支援する <b>AI エージェント</b>を構築 — 意思決定とデリバリーのループを短縮。",
-        "連携シミュレーションや sandbox/demo モジュールを開発し、不安定なパートナー対応と契約前検証を実現。",
-        "リーダーシップ移行後に<b>エンジニアリング組織を再構築</b>:組織図、能力マトリクス、業務ルーティング、オーナーシップ境界を定義 — 自律性を解放し、技術意思決定のリードタイムを短縮。",
-        "統一されたエンジニアリングプレイブックを策定:ブランチ戦略、コミット規約、リリースタグ付け、ロールアウト基準、API/連携ルール、技術仕様リポジトリ(RFC、Runbook、トラブルシューティングガイド)。",
-        "採用と育成のループを主導:構造化面接(QC/Fullstack)、オンボーディング、1:1 コーチング、評価サイクル、チーム間の対立解消で、協調的かつ成果志向のデリバリーを維持。",
-        "ドキュメント優先文化とプロセスガードレール(チェックリスト、引き継ぎルール、ロールバック準備)でデリバリー品質を維持し、スケール期にも予測可能なリリース頻度を実現。"
-      ]
-    },
-    "zalo": {
-      "lead": {
-        "summaries": [
-          "<b>2026 年 3 月 2 日</b>に <b>Zalo PC</b> へ Lead Software Engineer として復帰し、クロスデバイスメッセージングとクライアントストレージ領域でハンズオン開発と技術リードを担当。"
-        ],
+    "roles": {
+      "zaloLead": {
+        "scope": "2026年3月、NDSVNへ移ってから7か月後にLeadとして再雇用。デスクトップクライアント（15M+ MAU）のマルチデバイスメッセージングとクライアントストレージを率いています。",
         "contributions": [
-          "<b>Zalo PC のメッセージバックアップとモバイル復元</b>を実装（payload contract、Web と Electron worker 間のファイル hardening、アップロード telemetry、sync との排他制御）。2026年7月に公開され VnExpress で紹介。",
-          "不安定なモバイル回線向けに <b>sync v2</b> を強化（retry、grouped re-prepare、失敗集計）。hot path の lookup を <b>1.8 秒から 4 ms</b> に短縮。",
-          "<b>zCloud offload の信頼性と可観測性</b>を改善し、リモート kill switch 付きの log-health probe を毎日実行して QoS データから診断できるようにした。",
-          "7 か月で <b>55 以上のチケット、700 以上の commit</b> を提供。リスクの高い変更は kill switch の背後で既定オフ。",
-          "技術方針、コードレビュー、デリバリー調整を通じてエンジニアリングチームをリード。"
+          "<b>PCメッセージバックアップ</b>とモバイルでの復元を提供：payload契約、workerでのファイル処理強化、アップロードのテレメトリ、syncとの排他制御。2026年7月に展開開始。",
+          "不安定なモバイル回線向けにsync v2を強化（リトライ、グループ単位の再準備、失敗の集計）。37セッションのテストで、hot pathのlookupが<b>1.8 sから4 ms</b>に短縮。",
+          "リスクのある変更はkill switchとリモート設定の背後に置き、<b>デフォルトオフ</b>でリリース。",
+          "<b>zCloud offload</b>の信頼性と可観測性を改善し、リモートkill switchで止められる日次のログヘルスチェックを追加。",
+          "sync検証中にモバイル回線の切断を再現するフォールトインジェクション用devtoolを作成。"
         ]
       },
-      "summary1": "クロスプラットフォーム <b>Zalo PC</b>(Web、macOS、Windows)のコア開発者として <b>15M+ MAU</b> にサービス提供。ダークモード、ダイナミックテーマ、ユーザー行動トラッキングなど主要機能を提供。<b>50+ 開発者</b>向けにプロモーションフローとスケーラブルな<b>デザインシステム</b>を主導。堅牢で効率的なソリューションでパフォーマンスを最適化し、保守性を向上、事業成長に貢献。",
-      "summary2": "<b>Zalo Android</b> モバイルアプリを積極的に保守・改善し、約 <b>8000 万ユーザー</b>向けに重要機能の<b>安定性</b>と<b>パフォーマンス</b>を確保。",
-      "contributions": [
-        "ダークモード、ダウンロードモジュール、Kiki Bot、ログトラッキングなど <b>10 機能以上</b>を提供し、UX とエンゲージメントを向上。",
-        "トラッキングとモニタリングシステムを統合した<b>プロモーションフロー</b>を開発し、<b>15M+ MAU</b> での活性化成功を牽引。",
-        "Storybook を用いてスケーラブルな<b>デザインシステム</b>の開発をリードし、<b>50+ 開発者</b>向けに UI 一貫性と効率を確保。",
-        "<b>50+ クライアントユーザー</b>を積極的にサポートし、<b>献身</b>と<b>効果的な問題解決</b>で迅速に問題を解消し、強いポジティブな評価を獲得。",
-        "<b>Zalo Android</b> アプリで <b>3 機能以上</b>を保守・改善し、約 <b>8000 万ユーザー</b>向けの<b>安定性</b>、<b>パフォーマンス</b>、シームレスな UX に注力。"
-      ]
+      "ndsvn": {
+        "scope": "CTO交代後に技術面の責任者に就任。開発者8名とQC 3名のデリバリーチーム。",
+        "contributions": [
+          "チームの動き方を文書化：担当範囲、コンピテンシーマトリクス、<b>リリースplaybook</b>（ブランチ、タグ、RFC、runbook）、構造化面接。",
+          "<b>30+テナント</b>（約4万ユーザー）向けの.NET Core製feature flag基盤を構築。優先度ルールと、テナント・セグメント・環境別の割合ロールアウトに対応。",
+          "<b>GtelとNapas</b>をmTLS、証明書ピンニング、冪等な契約で連携。retryキューから再送されても副作用が出ない設計。",
+          "WebアプリをAngularホストとReactモジュールのマイクロフロントエンドに分割し、モジュールごとに個別デプロイ。",
+          "引き継いだインフラ（ArgoCD、CI/CD、ドメインとSSL、AKS・FKE・K3S・EKSクラスタ）を、障害の原因を追えて復旧できる状態に整備。",
+          "PostHogで各ロールアウトが利用率とエラーに与えた影響を可視化。",
+          "コードレビュー、デプロイ前チェック、サービスクォータ確認、API監視、リリース分析のための社内AIエージェントを構築。"
+        ]
+      },
+      "zaloSenior": {
+        "scope": "Zalo PCクライアント（Web、macOS、Windows、15M+ MAU）のコアエンジニア。Zalo Android（約8,000万ユーザー）の機能も担当。",
+        "contributions": [
+          "<b>50名以上の開発者</b>が使うStorybookのデザインシステムを主導。",
+          "ダークモード、動的テーマ、ダウンロードモジュール、Kiki botなど、<b>10以上のクライアント機能</b>をリリース。",
+          "Zalo Androidの3つ以上の機能を保守し、安定性とパフォーマンスを改善。",
+          "トラッキングとモニタリングを組み込んだプロモーションフローを構築。",
+          "デスクトップクライアントにログと行動トラッキングを追加。"
+        ]
+      },
+      "primedata": {
+        "scope": "CDxPは、分断されたシステムの顧客プロファイルを統合するカスタマーデータプラットフォーム。4名のフロントエンドチームを率いました。",
+        "contributions": [
+          "CDxPアプリと<b>10以上の関連プロジェクト</b>（JS・モバイルSDK、Magento・WordPressデモ）を提供。",
+          "<b>200 KB</b>未満、150 ms未満で読み込めるJSトラッキングSDKを開発。web workerとservice workerで複数タブを調整。",
+          "A/Bテストとセグメント向けに実行時の<b>feature flag</b>を導入。",
+          "CDxPアプリに360度顧客プロファイルとキャンペーンビルダーを実装。",
+          "チームがリリース判断に使うBDD・E2Eテストスイートを整備。"
+        ]
+      },
+      "splus": {
+        "line": "教育、飲食、銀行、EC分野で8件以上の受託案件を担当し、小規模チームを率いた。2019年Best Rookie of the Year。"
+      },
+      "propman": {
+        "line": "創業期のエンジニアの一人として、メインのWebアプリをReactで構築。"
+      }
     },
-    "primedata": {
-      "summary": "同社は CDxP と呼ばれる製品を構築。簡潔に言えば、顧客プロファイルをホスト・処理するためのカスタムメイドデータプラットフォームで、異なるサービスやシステムから来る異種スキーマと形式の顧客データを識別し統一する点が肝となるソリューション。",
-      "contributions": [
-        "フロントエンドチームを率い、CDxP アプリ、Magento と WordPress のデモ、JS SDK、モバイル SDK など <b>10 件以上のプロジェクト</b>を提供。",
-        "<b>4 名のチーム</b>を管理し、複数の主要パートナーを満足させる製品ロードマップに合わせ、UI/UX を強化、360 プロファイルやキャンペーンビルダーなどの高度な機能を実装。",
-        "フル機能の軽量 JS SDK(<b><200kb、<150ms</b> ロード時間)を開発し、プロジェクト横断でのシームレスな連携を実現。",
-        "迅速な<b>問題解決</b>を発揮し、クライアントと投資家を魅了するための機能デモを素早く完了。"
-      ]
-    },
-    "splus": {
-      "summary": "アウトソーシング企業。大半のプロジェクトは<b>モバイルおよび Web アプリ</b>を中心に展開。",
-      "contributions": [
-        "<b>エンドツーエンドのソフトウェア生産プロセス</b>に精通し、<b>小規模チームを率い</b>、要件収集からプロジェクトセキュリティまでの各フェーズを習得し、将来のリーダーシップの基盤を築いた。",
-        "<b>教育、F&B、銀行</b>、<b>EC</b> など多様な領域の <b>8 件以上</b>のプロジェクトに参画し、Web とモバイル双方の開発に対する貴重な洞察を獲得。",
-        "プロジェクト傭兵として Savyu や Bank Tool などの重要プロジェクトを獲得し、<b>$20,000</b> 以上の収益を生み出し、貢献により<b>Best Rookie of the Year</b> を受賞。"
-      ]
-    },
-    "propman": {
-      "summary": "<b>不動産領域</b>のスタートアップ。創業エンジニアの一人。",
-      "contributions": [
-        "フロントエンド開発者として主要 Web アプリ開発に参画。基本的な Web 開発スキル、特に <b>React JS</b> と関連技術に習熟。レスポンシブデザインのプロジェクトでも協業し、ユーザー体験の向上を最優先。"
-      ]
+    "labels": {
+      "now": "現在",
+      "allContributions": "全{count}件を見る",
+      "earlier": "それ以前",
+      "forkNote": "退職 · 2025年8月",
+      "mergeNote": "再雇用 · 2026年3月",
+      "readCoverage": "{publisher} の記事を読む"
     }
   },
   "Projects": {
     "labels": {
-      "publicEvidence": "資金調達関連報道",
-      "website": "公式サイト",
-      "readCoverage": "{publisher} の記事を読む"
+      "readCoverage": "{publisher} の記事を読む",
+      "context": "背景",
+      "decisions": "判断",
+      "outcome": "成果",
+      "evidence": "根拠",
+      "caseFile": "ケースファイルを読む",
+      "indexTitle": "主なプロジェクト",
+      "year": "年",
+      "project": "プロジェクト",
+      "role": "役割",
+      "result": "成果",
+      "note": "資金調達についての私のノート"
     },
     "logiup": {
-      "accomplishments": [
-        "<b>Tech Lead兼system architect</b>として<b>4名のengineering team</b>を率い、技術方針、architecture decision、review standard、onboarding、および<b>9つのsplit repository</b>を横断するdeliveryを担当。",
-        "LogiUPを<b>multi-tenant logistics SaaS</b>として設計。WebとElectron desktopで1つのNext.js UI codebaseを共有し、NestJS control plane、FastAPI AI data plane、PostgreSQL、Redis/BullMQ、Cloudflare R2、分離されたstaging/production GitOps環境を構築。",
-        "顧客subdomain、database-backed host resolution、tenant-scoped RBAC/token、wildcard/on-demand TLSによりtenant isolationをend-to-endで設計し、RS256/JWKSとElectron向けPKCE/deep-link認証を備えた自主管理のOAuth 2.1/OIDC providerを構築。",
-        "<b>6つのleast-privilege runtime role</b>、再開可能なprivate-object upload、人が確認するAI提案、独立確認できる8つの申告sectionを横断する<b>31個のtyped API endpoint</b>を備えたAI支援税関workflowを提供。",
-        "税関 workflow を<b>輸出申告</b>へ拡張（2026年10月 UAT）し、<b>ルールベースの文書分類エンジン</b>を構築。NestJS platform の <b>738 commit 中 737 commit</b>を執筆。"
-      ]
+      "name": "LogiUP",
+      "kind": "マルチテナント型の物流SaaS",
+      "role": "テックリード兼システムアーキテクト",
+      "period": "2026年3月 – 現在",
+      "context": "顧客ごとに専用のサブドメインを持ち、データが他のテナントに漏れてはならない物流SaaSです。Web と Electron デスクトップアプリで動きます。4人のチームを率い、アーキテクチャに責任を持っています。",
+      "decisions": [
+        "サブドメインでなくトークンと RBAC でテナント分離。経路は誤り得るから。",
+        "ログインを分けず自前の OAuth 2.1/OIDC。Electron も Web と同じだから。",
+        "AI の自動入力ではなく 8 セクションを人が確認。誤りは顧客の損失になるから。"
+      ],
+      "outcome": [
+        "2026年8月時点で<b>9リポジトリ</b>を一つのアーキテクチャで運用：Web と Electron 共通の Next.js UI、NestJS のコントロールプレーン、FastAPI の AI データプレーン。",
+        "通関ワークフローを支える最小権限の実行ロール<b>6</b>個と型付き API エンドポイント<b>31</b>本。",
+        "輸出申告は2026年10月に UAT へ。ルールベースの書類分類を備えています。"
+      ],
+      "evidenceNote": "リポジトリは非公開のため、公開リンクはありません。",
+      "index": "トークンまで貫くテナント分離、Web と Electron 共通の OIDC プロバイダー"
     },
     "bonbon": {
-      "accomplishments": [
-        "BonBon Mobility の共同創業者として、BonBon を MVP から実地 pilot へ進める product integration を構築し、<b>3 か月</b>で Tasco × GenAI Fund の Wash3000 MVP Demo Day <b>Top 3 finalist</b> に選出、その後プログラムで優勝。Tasco が主導し GenAI Fund も参加した<b>50 万米ドルの pre-seed ラウンド</b>の成立に貢献。",
-        "<b>12 画面の Mini App</b>を設計し、<b>430 万ユーザー</b>を持つ VETC app ecosystem に統合。partner code silent login、memory-only session、deep link、foreground serialized polling、PII allow-list analytics を実装。",
-        "kill-switch feature flag、deterministic rollout、transactional audit、checksum/CSP gate、Playwright flow、<b>800+ unit test</b>により、Go API、Backoffice、web、mobile 全体の release safety を確保。",
-        "Go API と web/Mini App monorepo で <b>4,000 以上の commit</b>（各リポジトリの約 3 分の 2 から 85%）、約 <b>90 本の spec</b>、<b>425 の Go テストファイル</b>。",
-        "予約とガレージ検索を高速かつ観測可能に維持：ガレージボードは <b>3 クエリ</b>、インデックス検索、結果キャッシュ、p95 アラート。"
-      ]
+      "name": "BonBon Mobility",
+      "kind": "VETC アプリ内の洗車・整備予約",
+      "role": "共同創業者",
+      "period": "2026年4月 – 現在",
+      "context": "BonBon は車のオーナーと洗車・整備ガレージをつなぐサービスです。共同創業者として、VETC アプリ内で動く12画面の Mini App として製品を作りました。VETC のユーザーは2026年4月時点で<b>430万人</b>です（Tasco 発表）。リリースはすべて VETC の変更承認とセキュリティプロセスを通ります。このプロセスには OWASP レビューと独立したペネトレーションテストが含まれます。",
+      "decisions": [
+        "OTP を増やさず VETC セッションでサインイン。VETC が本人確認済みだから。",
+        "トークンを保存せずメモリのみのセッション。VETC が保存を禁じるから。",
+        "一斉リリースでなく既定オフのキルスイッチ。リリースは承認待ちだから。"
+      ],
+      "outcome": [
+        "BonBon が Tasco Foundry Wash3000 で優勝：応募約<b>100</b>件、上位10、最終3チーム、優勝1（GenAI Fund、2026年9月）。",
+        "Tasco がリードし GenAI Fund が共同出資した<b>50万ドル</b>のプレシードラウンド（2026年9月）。",
+        "MVP からフィールドパイロットまで<b>3か月</b>。Wash3000 プログラムの期間と同じです。"
+      ],
+      "index": "VETC 内の Mini App。Wash3000 優勝、Tasco リードの50万ドルのプレシード"
     },
     "sat": {
-      "accomplishments": [
-        "UI/UX デザイン、プロダクトエンジニアリング、ユーザー行動分析にわたる製品開発を統括し、2 か月間で <b>10,000 件</b>を超える訪問と <b>3,000 件</b>のサインアップを獲得。",
-        "<b>parasite SEO</b> を含む戦略的 SEO 施策により Google 検索順位を向上。これによりパフォーマンスを大幅に強化し、業界内での製品ポジショニングを効果的に実現。",
-        "<b>1 CPU</b> および <b>256 MiB</b> のメモリ上限を持つ単一の Cloud Run インスタンスでフロントエンドアプリ開発を行い、効率性とリソース最適化を実現。",
-        "<b>モバイルファースト</b>のアプローチでモバイルアプリ開発を主導し、<b>2 日以内</b>にアプリストアへ迅速にデプロイ。さらにすべてのデバイスで <b>PWA</b> インストールをシームレスに実現し、アクセシビリティと UX を向上。",
-        "<b>Google Ads</b> 連携と <b>Stripe</b> 決済フローを含む<b>マネタイズ機能</b>を開発し、収益創出を強化。"
-      ]
-    },
-    "cdp": {
-      "accomplishments": [
-        "CDxP プロジェクトのアーキテクチャと実装を主導し、<b>UI/UX</b> 機能に注力することで全体的な UX とエンゲージメントを向上。",
-        "ネストルータを構成し、<b>スケーラブル</b>なプロジェクト構造を維持。ES6、Typescript、データ型への深い知識を発揮し、<b>コードの保守性を向上</b>させ、コード関連の問題を削減。",
-        "<b>エラーや改善点</b>を効果的にトラッキングし、バグ修正を支援。プロジェクトの<b>安定性</b>を確保し、システム信頼性を向上、ダウンタイムを削減。",
-        "アダプティブなクライアント構成でのコンポーネントアクセス認可を検証する <b>RBAC</b> フックを実装。さらにモジュラー設計により、複数プロジェクト間で共有可能な <b>20 以上の再利用ユーティリティ</b>を構築。",
-        "プロファイル、キャンペーン、分析など <b>10 以上の高度な機能</b>を開発。",
-        "<b>100 以上のシナリオ</b>と <b>1000 以上のテストケース</b>で CDP コア機能をカバーする堅牢なテストフローを確立。",
-        "BDD、ユニットテスト、<b>E2E テスト</b>などのテスト手法に精通し、テストカバレッジを向上、ソフトウェアバグを <b>30%</b> 削減。",
-        "実行時切り替え用の<b>フィーチャーフラグ</b>を開発し、A/B テストと顧客セグメント別の機能グルーピングを実現。機能配信を最適化し、採用率を向上。",
-        "コンポーネントを明確かつ保守しやすい形で<b>文書化</b>し、コードの可読性を向上、保守時間を短縮。"
-      ]
-    },
-    "sdk": {
-      "accomplishments": [
-        "<b>vanilla JS</b> を使い <b>5 以上のモジュール</b>を成功裏に開発し、<b>10 以上の高度な機能</b>を組み込み。<b><200kb のバンドルサイズと <150ms</b> のロード時間を達成(バンドルへの全最適化前の計測)。",
-        "バックグラウンドのマルチタスクのために <b>Web Worker と Service Worker</b> を活用し、複雑な機能を効果的に管理。複数タブ同時使用などの<b>エッジケース</b>に対応。",
-        "さらに <b>マイクロフロントエンド</b>アーキテクチャで<b>パーソナライズドレコメンド機能</b>を設計・実装。ユーザーが好みそうな商品を表示するカルーセルブロックにより、UX とエンゲージメントを向上。",
-        "構築した高度機能には Web ポップアップ、Web プッシュ通知、<b>Web コンポーネント埋め込み</b>、WebSocket 連携、複数タブ間の煩わしいポップアップ管理を含む。",
-        "さらに <b>JS Closure</b> を活用してモジュール構造を整理し、シームレスな機能エクスポートや<b>データカプセル化</b>を実現。グローバルスコープでの<b>競合を回避</b>。"
-      ]
+      "name": "Digital SAT Math",
+      "role": "個人プロダクト",
+      "index": "企画から運用まで担当：最初の2か月で<b>10,000+</b>訪問、<b>3,000+</b>登録。"
     },
     "vac": {
-      "accomplishments": [
-        "Vietnam Australia Center で <b>Front-end Project</b> 講座を<b>教える</b>役割を担当。",
-        "<b>魅力的な講義</b>を設計・実施し、学生に対しフロントエンド開発プロジェクトの実践指導を提供。",
-        "<b>協調的な</b>学習環境を育み、<b>12 名の学生</b>に<b>チームワーク</b>を促し、業界のベストプラクティスとカリキュラムを整合。",
-        "個別の<b>フィードバック</b>と<b>メンタリング</b>を提供し、学生が<b>課題を克服</b>し、教材の全体理解を確実にできるよう支援。"
-      ]
-    },
-    "mona": {
-      "accomplishments": [
-        "<b>React Native</b> と Realm DB を用いた包括的なモバイルアプリ Mona House を開発し、効率的な住居管理を実現。",
-        "<b>再利用可能なコンポーネント</b>、滑らかなアニメーション、ネイティブモジュールとのシームレスな連携を重視したクロスプラットフォームアプリ開発に特化。",
-        "高度なデバッグツールとパフォーマンスプロファイリングで複雑な問題を迅速に特定・解決する強い<b>問題解決</b>と<b>トラブルシュート</b>能力を発揮。",
-        "新しい技術への<b>適応力</b>と<b>素早い学習曲線</b>を示し、新フレームワーク、プログラミング言語、ツールの実装をシームレスに行い、プロジェクトを完了。"
-      ]
-    },
-    "mobivi": {
-      "accomplishments": [
-        "Mobivi で <b>20 個以上の Excel ファイル</b>(各 <b>20,000 件以上のレコード</b>)を取り込み・処理する<b>フルスタック Web アプリ</b>を開発。",
-        "ユーザーからの累積的に計算される取引データを効率的に処理し、<b>正確で信頼性のあるレポート</b>を保証するよう設計。"
-      ]
-    },
-    "savyu": {
-      "accomplishments": [
-        "Synova で<b>2 つのモバイル</b>アプリ開発で重要な役割を果たした — 1 つは加盟店向け、もう 1 つは消費者向け。",
-        "管理者がユーザーデータを効率的に管理できる<b>Web アプリ</b>の作成に貢献。",
-        "<b>モバイルアプリ開発</b>に精通し、クロスファンクショナルチームと協力して<b>直感的</b>かつ<b>高性能</b>なアプリを成功裏に提供。"
-      ]
+      "name": "Vietnam Australia Center",
+      "role": "講師",
+      "index": "<b>12人</b>の受講生にフロントエンドのプロジェクト講座を担当。要件から動く React アプリまで。"
     }
   },
   "CTA": {
-    "eyebrow": "お問い合わせ",
-    "title": "プロダクトとシステムについて話す",
-    "body": "プロダクトデリバリー、システム信頼性、技術リーダーシップが交差する課題に関心があります。",
-    "emailMe": "メール",
-    "resumePdf": "履歴書 (PDF)",
-    "linkedin": "LinkedIn"
+    "title": "ポジションが合えば、メールでご連絡ください。",
+    "openToLabel": "希望ポジション",
+    "openTo": "Staff/Principal Engineer, Lead Fullstack / Product Engineer, Engineering Manager",
+    "whereLabel": "勤務地",
+    "where": "ホーチミン市またはリモート (UTC+7)",
+    "emailLabel": "メール",
+    "copyEmail": "メールをコピー",
+    "copied": "コピーしました",
+    "copiedStatus": "メールアドレスをコピーしました。",
+    "copyFailed": "ブラウザがコピーをブロックしました。アドレスを選択したので、Ctrl+C (Mac は ⌘C) でコピーしてください。",
+    "phoneLabel": "電話",
+    "linksLabel": "リンク",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "resumePdf": "履歴書 (PDF)"
   },
   "SEO": {
     "home": {

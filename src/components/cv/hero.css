@@ -1,0 +1,391 @@
+/* =========================================================
+   Hero: who, what I claim, where I run now (topology), how to reach me
+   ========================================================= */
+.hero {
+  position: relative;
+  padding-block: 5rem var(--space-section);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(2rem, 1rem + 4vw, 4rem);
+  align-items: center;
+  min-width: 0;
+}
+@media (max-width: 880px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+}
+.hero-meta { min-width: 0; }
+.status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--status-online);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--status-online) 25%, transparent);
+  /* A few beats on load to say "new", then still: the page keeps one loop at most (the map). */
+  animation: pulse 2.4s var(--ease) 3;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(0.9); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .status-dot { animation: none; }
+}
+/* Display cut of Inter is pinned to the text optical size, so tighten it by hand. */
+.hero-name {
+  margin: 1.5rem 0 1rem;
+  font-size: var(--text-hero);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--fg);
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+/* One-line pill; every spacing comes from its 17px end-cap radius
+   (1px border + 7px pad + 18px line + 7px pad + 1px border = 34px tall):
+   the dot sits on the cap's centre, the dot ring has equal air on both sides,
+   and the right padding equals the cap so text ends where the curve starts. */
+.hero-meta { container-type: inline-size; }
+.eyebrow.hero-news {
+  --cap: 17px;
+  gap: calc(var(--cap) - 4.5px);
+  padding: 7px calc(var(--cap) - 1px) 7px calc(var(--cap) - 4.5px);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  line-height: 18px;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: var(--fg);
+  transition: border-color var(--d-fast), background var(--d-fast);
+}
+.hero-news:hover { border-color: var(--accent); background: var(--accent-soft); }
+.hero-news b {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  margin-left: 0.5rem;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.hero-news:hover b { text-decoration: underline; text-underline-offset: 3px; }
+/* Too narrow for one line (longest locale ~540px): drop the box and set it as a
+   plain kicker, wrapped lines hanging under the headline instead of the dot. */
+@container (max-width: 559px) {
+  .eyebrow.hero-news {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    column-gap: 0.75rem;
+    padding: 0;
+    font-size: var(--text-sm);
+    line-height: 1.55;
+    white-space: normal;
+    background: none;
+    border: 0;
+    border-radius: 0;
+  }
+  .hero-news:hover { background: none; }
+  .hero-news .status-dot { margin: calc(0.775em - 3.5px) 3px 0; }
+  .hero-news b { margin-left: 0; }
+}
+
+.hero-claim {
+  max-width: 32ch;
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.25rem, 1.05rem + 0.55vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.012em;
+  color: var(--fg);
+  text-wrap: balance;
+}
+.hero-role {
+  list-style: none; padding: 0;
+  margin: 0 0 0.75rem;
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+.hero-role span { color: var(--fg-subtle); }
+/* Both companies are links of equal rank; the 44px tap box is pulled back into the 1.6 line box. */
+.hero-role-link {
+  display: inline-flex; align-items: center;
+  min-height: 44px;
+  margin-block: calc((1.6em - 44px) / 2);
+  vertical-align: middle;
+  font-weight: 600;
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--fg) 30%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color var(--d-fast), text-decoration-color var(--d-fast);
+}
+.hero-role-link:hover { color: var(--accent); text-decoration-color: currentColor; }
+.hero-bio {
+  max-width: 58ch;
+  margin: 0 0 2rem;
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--fg-muted);
+  text-wrap: pretty;
+}
+.hero-cta {
+  display: flex; flex-wrap: wrap; gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+/* Socials are the quiet tier under the two real actions: text links, one stroke weight. */
+.social-row {
+  list-style: none; padding: 0; margin: -7px 0;
+  display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem;
+}
+.social-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  min-height: 44px; /* tap target; the row's negative margin keeps the visual rhythm */
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color var(--d-fast);
+}
+.social-link svg { color: var(--fg-subtle); transition: color var(--d-fast); }
+.social-link:hover { color: var(--fg); text-decoration: underline; }
+.social-link:hover svg { color: var(--fg); }
+.social-link:focus-visible,
+.hero-role-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 0;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------
+   Topology: root node, live edges to current roles, a faded
+   dashed edge to the previous one. Geometry comes from a few
+   constants so the junction (--jy) always meets the node's
+   title line, whatever the copy wraps to.
+   --------------------------------------------------------- */
+.ht {
+  --gutter: 28px;
+  --pad: 8px;            /* row padding-block */
+  --node-py: 10px;
+  --name-lh: 20px;
+  --edge-lh: 16px;
+  --stroke: 1.5px;
+  --live: var(--accent);
+  --idle: var(--fg-subtle);
+  --jy: calc(var(--pad) + var(--stroke) + var(--node-py) + var(--name-lh) / 2);
+  container: ht / inline-size;
+  width: 100%;
+  max-width: 32rem; /* past this the wires only get longer, not clearer */
+  margin: 0;
+  min-width: 0;
+}
+.ht-mono { font-family: var(--font-mono); font-size: 0.92em; }
+/* Same apparatus as the Experience dates (.xp-dates): mono, tabular. */
+.ht-date {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  color: var(--fg-muted);
+}
+.ht-row.is-previous .ht-date { color: var(--fg-subtle); }
+.ht-root {
+  position: relative;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 0.6rem;
+  margin: 0;
+  padding: 0 0 var(--pad) var(--gutter);
+  line-height: var(--name-lh);
+}
+/* Root port: the map's packet dot (accent, ringed in the page colour). */
+.ht-root::before {
+  content: '';
+  position: absolute;
+  left: calc(var(--gutter) / 2 - 6px);
+  top: calc(var(--name-lh) / 2 - 6px);
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--live);
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px color-mix(in oklab, var(--live) 45%, transparent);
+}
+.ht-root::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--gutter) / 2 - var(--stroke) / 2);
+  top: calc(var(--name-lh) / 2 + 9px);
+  bottom: 0;
+  width: var(--stroke);
+  background: var(--live);
+}
+.ht-root-name { font-size: 15px; font-weight: 650; color: var(--fg); letter-spacing: -0.005em; }
+.ht-root-meta { font-size: var(--text-xs); color: var(--fg-subtle); }
+
+/* Rows share one column grid (subgrid) so every node starts on the same x. */
+.ht-list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: var(--gutter) minmax(max-content, 1fr) max-content;
+}
+.ht-row {
+  --c: var(--live);
+  position: relative;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: start;
+  padding-block: var(--pad);
+}
+.ht-row.is-previous { --c: var(--idle); }
+/* Trunk: the half above the junction belongs to this edge, the half below to the next one. */
+.ht-row::before,
+.ht-row::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--gutter) / 2 - var(--stroke) / 2);
+  width: var(--stroke);
+}
+.ht-row::before { top: 0; height: var(--jy); background: var(--c); }
+.ht-row::after { top: var(--jy); bottom: 0; background: var(--live); }
+.ht-row:has(+ .is-previous)::after,
+.ht-row.is-previous::before {
+  background: radial-gradient(circle, var(--idle) 0.9px, transparent 1.3px) 50% 0 / 3px 8px repeat-y;
+  width: 3px;
+  left: calc(var(--gutter) / 2 - 1.5px);
+}
+.ht-row:last-child::after { content: none; }
+
+.ht-wire {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  align-self: start;
+  height: var(--stroke);
+  margin-top: calc(var(--jy) - var(--stroke) / 2);
+  margin-left: calc(var(--gutter) / 2);
+  background: linear-gradient(90deg, var(--c) 7px, transparent 0) 0 0 / 12px 100% repeat-x; /* map edge: 7 on, 5 off */
+  position: relative;
+}
+.ht-row.is-previous .ht-wire {
+  height: 3px;
+  margin-top: calc(var(--jy) - 1.5px);
+  background: radial-gradient(circle, var(--idle) 0.9px, transparent 1.3px) 0 50% / 8px 3px repeat-x;
+}
+/* Junction port on the trunk. */
+.ht-wire::before {
+  content: '';
+  position: absolute;
+  left: -4px; top: 50%;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  translate: 0 -50%;
+  background: var(--bg);
+  box-shadow: inset 0 0 0 1.5px var(--c);
+}
+
+/* The annotation rides the edge: baseline 4px above the wire. */
+.ht-edge {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  margin-top: calc(var(--jy) - var(--edge-lh) - 4px);
+  padding-inline: 0.75rem;
+  font-size: var(--text-xs);
+  line-height: var(--edge-lh);
+  color: var(--fg-muted);
+  white-space: nowrap;
+  text-align: center;
+  pointer-events: none;
+}
+.ht-row.is-previous .ht-edge { color: var(--fg-subtle); }
+
+.ht-node {
+  grid-column: 3;
+  grid-row: 1;
+  display: grid;
+  gap: 2px;
+  padding: var(--node-py) 0.875rem;
+  border: var(--stroke) solid var(--c);
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 10px 24px -18px color-mix(in oklab, var(--fg) 45%, transparent);
+  transition:
+    border-color var(--d-fast),
+    background var(--d-fast),
+    box-shadow var(--d-base) var(--ease),
+    translate var(--d-base) var(--ease);
+}
+.ht-row.is-previous .ht-node {
+  border-style: dashed;
+  border-color: var(--border-strong);
+  background: color-mix(in oklab, var(--bg-elevated) 55%, transparent);
+  box-shadow: none;
+}
+.ht-node-name {
+  font-size: 15px;
+  font-weight: 650;
+  line-height: var(--name-lh);
+  letter-spacing: -0.005em;
+  color: var(--fg);
+}
+.ht-node-note {
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--fg-muted);
+}
+.ht-row.is-previous .ht-node-name { color: var(--fg-muted); }
+.ht-row.is-previous .ht-node-note { color: var(--fg-subtle); }
+.ht-node:hover {
+  background: color-mix(in oklab, var(--c) 7%, var(--bg-elevated));
+  box-shadow: 0 14px 28px -18px color-mix(in oklab, var(--c) 60%, transparent);
+  translate: 2px 0;
+}
+.ht-row.is-previous .ht-node:hover { border-color: var(--fg-subtle); }
+.ht-node:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.ht-row:has(.ht-node:hover) .ht-edge,
+.ht-row:has(.ht-node:focus-visible) .ht-edge { color: var(--fg); }
+
+/* Narrow column or phone: the annotation moves above its node, the wire becomes a stub. */
+@container ht (max-width: 459px) {
+  /* Overrides live on descendants: a container query cannot restyle its own container. */
+  .ht-root, .ht-list {
+    --pad: 3px;
+    --node-py: 11px; /* one-line node reaches the 44px tap height */
+    --jy: calc(var(--pad) + var(--edge-lh) + 4px + var(--stroke) + var(--node-py) + var(--name-lh) / 2);
+  }
+  .ht-root { padding-bottom: 6px; }
+  .ht-list { grid-template-columns: var(--gutter) minmax(0, 1fr); }
+  .ht-row { row-gap: 4px; }
+  .ht-wire { grid-column: 1; grid-row: 1 / span 2; }
+  .ht-edge { grid-column: 2; grid-row: 1; margin-top: 0; padding-inline: 0.875rem 0; text-align: left; }
+  .ht-node {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 0.625rem;
+  }
+}
+
+/* Authored moment: the edges draw in once, root first, from a figure that is already complete. */
+@media (prefers-reduced-motion: no-preference) {
+  .ht-root::after { animation: ht-draw-y 220ms linear both; }
+  .ht-row::before { animation: ht-draw-y 200ms linear calc(160ms + var(--i) * 180ms) backwards; }
+  .ht-row::after { animation: ht-draw-y 200ms linear calc(360ms + var(--i) * 180ms) backwards; }
+  .ht-wire { animation: ht-draw-x 700ms var(--ease) calc(300ms + var(--i) * 180ms) backwards; }
+  .ht-edge { animation: ht-fade 500ms var(--ease) calc(520ms + var(--i) * 180ms) backwards; }
+}
+@keyframes ht-draw-y { from { clip-path: inset(0 0 100% 0); } }
+@keyframes ht-draw-x { from { clip-path: inset(-6px 100% -6px -6px); } to { clip-path: inset(-6px 0 -6px -6px); } }
+@keyframes ht-fade { from { opacity: 0; } }
+
+@media (max-width: 520px) {
+  .hero { padding-block: 2rem 3rem; }
+  .hero-grid { gap: 2rem; }
+  .hero-name { margin: 1rem 0 0.75rem; line-height: 1.04; }
+  .hero-claim { max-width: none; margin-bottom: 1rem; font-size: 1.125rem; }
+  .hero-role { margin-bottom: 0.5rem; }
+  .social-row { gap: 0.25rem 1rem; }
+  .social-link { font-size: 13px; }
+  .hero-bio { font-size: var(--text-sm); margin-bottom: 1.5rem; }
+  .hero-cta .btn { flex: 1 1 0; white-space: nowrap; }
+}
