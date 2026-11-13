@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { APP_ROUTE } from "@/app/app.const";
@@ -15,6 +15,11 @@ export default function AppHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [menuState, setMenuState] = useState({ pathname, open: false });
   const menuOpen = menuState.pathname === pathname && menuState.open;
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const closeMenu = () => {
+    setMenuState({ pathname, open: false });
+    toggleRef.current?.focus();
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -29,6 +34,42 @@ export default function AppHeader() {
       document.body.style.overflow = "";
     };
   }, [menuOpen]);
+
+  // Open menu acts as a modal: everything outside the header, panel and backdrop
+  // goes inert, and Escape from anywhere closes it and returns focus to the toggle.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const header = toggleRef.current?.closest("header");
+    const keep = new Set([header, document.getElementById("mobile-nav")]);
+    const muted = [...(header?.parentElement?.children ?? [])].filter(
+      (el): el is HTMLElement =>
+        el instanceof HTMLElement &&
+        !keep.has(el) &&
+        !el.classList.contains("nav-mobile-backdrop") &&
+        !el.inert
+    );
+    muted.forEach((el) => (el.inert = true));
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      // An open language list inside the panel takes the first Escape.
+      if (document.querySelector("#mobile-nav .locale-menu.is-open")) return;
+      setMenuState({ pathname, open: false });
+      toggleRef.current?.focus();
+    };
+    document.addEventListener("keydown", onKey);
+    // The panel only exists below 1024px: crossing it (resize, tablet rotation)
+    // must close the menu, or the page stays inert behind a hidden toggle.
+    const wide = window.matchMedia("(min-width: 1024px)");
+    const onWide = () => {
+      if (wide.matches) setMenuState({ pathname, open: false });
+    };
+    wide.addEventListener("change", onWide);
+    return () => {
+      muted.forEach((el) => (el.inert = false));
+      document.removeEventListener("keydown", onKey);
+      wide.removeEventListener("change", onWide);
+    };
+  }, [menuOpen, pathname]);
 
   // Recruiter order: the two CV sections first, then the pages. Crawlers read
   // these anchors (text plus URL) as the site's main sections.
@@ -53,6 +94,7 @@ export default function AppHeader() {
           <IntentPrefetchLink
             href={APP_ROUTE.HOME}
             className="brand"
+            inert={menuOpen}
             onClick={() => track("cv_nav_click", { target: "home" })}
           >
             <Image
@@ -66,7 +108,7 @@ export default function AppHeader() {
             <span className="brand-text">Nguyen Le Phong</span>
           </IntentPrefetchLink>
 
-          <nav className="nav-links" aria-label="Main navigation">
+          <nav className="nav-links" aria-label={t("mainNav")}>
             {navItems.map((item) => (
               <IntentPrefetchLink
                 key={item.trackId}
@@ -90,13 +132,16 @@ export default function AppHeader() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary btn-sm nav-resume-btn"
+              inert={menuOpen}
               onClick={() => track("cv_resume_download", { source: "nav" })}
             >
               {t("resume")}
             </a>
             <button
+              ref={toggleRef}
+              type="button"
               className="nav-mobile-toggle"
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-label={menuOpen ? t("menuClose") : t("menuOpen")}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
               onClick={() => setMenuState({ pathname, open: !menuOpen })}
@@ -117,7 +162,7 @@ export default function AppHeader() {
       <nav
         id="mobile-nav"
         className={`nav-mobile-panel${menuOpen ? " is-open" : ""}`}
-        aria-label="Mobile navigation"
+        aria-label={t("mainNav")}
         aria-hidden={!menuOpen}
       >
         <div className="nav-mobile-inner">
@@ -129,7 +174,9 @@ export default function AppHeader() {
               aria-current={currentPage(item.href)}
               onClick={() => {
                 track("cv_nav_click", { target: item.trackId });
-                setMenuState({ pathname, open: false });
+                // Same-page hash links remount nothing, so hand focus back to the toggle.
+                if (item.href.includes("#")) closeMenu();
+                else setMenuState({ pathname, open: false });
               }}
             >
               {item.label}
@@ -146,7 +193,7 @@ export default function AppHeader() {
       {menuOpen && (
         <div
           className="nav-mobile-backdrop"
-          onClick={() => setMenuState({ pathname, open: false })}
+          onClick={closeMenu}
           aria-hidden="true"
         />
       )}

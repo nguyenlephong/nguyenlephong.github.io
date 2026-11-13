@@ -50,6 +50,7 @@ const CLIENT_PROVIDER_CONSUMER_ROUTES = {
   "src/components/offline/OfflineStatusBanner.tsx": "site",
   "src/components/reading/ReadingBackgroundSwitcher.tsx": "site",
   "src/components/theme/ThemeSync.tsx": "site",
+  "src/components/theme/ThemeToggle.tsx": "site",
   "src/components/thoughts/Backlinks.tsx": "thoughts",
   "src/components/thoughts/ThoughtContent.tsx": "thoughts",
   "src/components/thoughts/ThoughtGraph.tsx": "thoughts",

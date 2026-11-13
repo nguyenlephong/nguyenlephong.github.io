@@ -206,8 +206,7 @@ test("root stub and /en share the brand title, description and site name", () =>
 
 test("header is a labelled nav with crawlable section links and tracked clicks", () => {
   const header = read("src/components/AppHeader.tsx");
-  assert.match(header, /<nav className="nav-links" aria-label="Main navigation">/);
-  assert.match(header, /aria-label="Mobile navigation"/);
+  assert.match(header, /<nav className="nav-links" aria-label=\{t\("mainNav"\)\}>/);
   assert.doesNotMatch(header, /"\/#about"/);
   for (const route of ["ABOUT", "BLOG", "NOTES", "APPS"]) {
     assert.match(header, new RegExp("href: APP_ROUTE\\." + route), route);
@@ -246,6 +245,46 @@ test("header carries the language switcher on desktop and in the mobile panel", 
   const closed = css.match(/\n\.locale-menu-list \{[^}]*\}/)?.[0] ?? "";
   assert.match(closed, /visibility: hidden;/);
   assert.match(css, /\.locale-menu\.is-open \.locale-menu-list \{[^}]*visibility: visible;/);
+});
+
+// MEP-30: the open menu is a modal in every locale; the theme control is one tab stop.
+test("mobile menu is opaque, traps focus, closes on Escape and speaks the page language", () => {
+  const header = read("src/components/AppHeader.tsx");
+  assert.doesNotMatch(header, /"(Open menu|Close menu|Main navigation|Mobile navigation)"/);
+  assert.match(header, /aria-label=\{menuOpen \? t\("menuClose"\) : t\("menuOpen"\)\}/);
+  assert.equal((header.match(/aria-label=\{t\("mainNav"\)\}/g) ?? []).length, 2);
+  // Everything outside header and panel goes inert; brand and Résumé inside the header too.
+  assert.match(header, /muted\.forEach\(\(el\) => \(el\.inert = true\)\)/);
+  assert.match(header, /muted\.forEach\(\(el\) => \(el\.inert = false\)\)/);
+  assert.equal((header.match(/inert=\{menuOpen\}/g) ?? []).length, 2);
+  // Crossing the desktop breakpoint closes the menu so the page never stays inert.
+  assert.match(header, /matchMedia\("\(min-width: 1024px\)"\)/);
+  assert.match(header, /removeEventListener\("change", onWide\)/);
+  assert.match(header, /event\.key !== "Escape"/);
+  assert.match(header, /toggleRef\.current\?\.focus\(\)/);
+  assert.match(header, /track\("cv_nav_click", \{ target: "home" \}\)/);
+  for (const locale of locales) {
+    for (const key of ["mainNav", "menuOpen", "menuClose"]) {
+      assert.equal(typeof messages[locale].Nav[key], "string", `${locale} Nav.${key}`);
+    }
+    for (const key of ["label", "light", "system", "dark"]) {
+      assert.equal(typeof messages[locale].Nav.theme?.[key], "string", `${locale} Nav.theme.${key}`);
+    }
+  }
+  assert.notEqual(messages.vi.Nav.menuOpen, messages.en.Nav.menuOpen);
+
+  const css = read("src/app/globals.css");
+  const panel = css.match(/\n\.nav-mobile-panel \{[^}]*\}/)?.[0] ?? "";
+  assert.match(panel, /background: var\(--bg\);/);
+  assert.doesNotMatch(panel, /backdrop-filter|color-mix/);
+  // The brand name is the link's accessible name at phone width, so it is clipped, never display:none.
+  assert.doesNotMatch(css, /\.brand-text \{ display: none; \}/);
+  assert.match(css, /\.brand-text \{[^}]*clip-path: inset\(50%\);/);
+
+  const toggle = read("src/components/theme/ThemeToggle.tsx");
+  assert.match(toggle, /tabIndex=\{setting === opt\.value \? 0 : -1\}/);
+  assert.match(toggle, /ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1/);
+  assert.match(toggle, /aria-label=\{t\('label'\)\}/);
 });
 
 // MEP-28: both roles, résumé and email, labelled internal links outside the profiles list.

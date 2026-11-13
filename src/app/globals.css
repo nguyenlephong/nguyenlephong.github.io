@@ -239,7 +239,16 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   font-size: var(--text-sm);
   letter-spacing: 0;
 }
-@media (max-width: 640px) { .brand-text { display: none; } }
+/* Hidden from sight only: the text stays the link's accessible name. */
+@media (max-width: 640px) {
+  .brand-text {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
 
 .nav-links { display: flex; gap: 0.25rem; }
 .nav-link {
@@ -332,9 +341,8 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   position: fixed;
   top: 72px; left: 0; right: 0;
   z-index: 48;
-  background: color-mix(in oklab, var(--bg) 97%, transparent);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  /* Solid: large hero type showed through any translucency. */
+  background: var(--bg);
   border-bottom: 1px solid var(--divider);
   transform: translateY(-6px);
   opacity: 0;
@@ -400,6 +408,12 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   inset: 0;
   z-index: 47;
   background: color-mix(in oklab, var(--bg-inverse) 15%, transparent);
+}
+
+/* Desktop never shows the mobile panel, even if it was left open across the breakpoint. */
+@media (min-width: 1024px) {
+  .nav-mobile-panel,
+  .nav-mobile-backdrop { display: none; }
 }
 
 /* =========================================================
