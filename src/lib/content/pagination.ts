@@ -43,3 +43,11 @@ export function collectionPagePath(basePath: string, page: number): string {
   const normalizedBase = basePath.endsWith('/') ? basePath.slice(0, -1) : basePath
   return page <= 1 ? normalizedBase : `${normalizedBase}/page/${page}`
 }
+
+/**
+ * Page 2+ of a collection lists different items in each locale, so it is not a translation of
+ * its sibling locales and must not declare hreflang alternates (MEP-65). Page 1 keeps them.
+ */
+export function isPagedArchivePath(path: string): boolean {
+  return /\/page\/\d+\/?$/.test(path)
+}

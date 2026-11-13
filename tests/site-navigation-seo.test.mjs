@@ -198,9 +198,17 @@ test("english and vietnamese section descriptions stay within snippet length", (
 });
 
 test("root stub and /en share the brand title, description and site name", () => {
-  assert.equal(PAGE_SEO.home.title, messages.en.SEO.home.title);
-  assert.equal(PAGE_SEO.home.description, messages.en.SEO.home.description);
+  // MEP-61: one source. The root stub reads messages/en.json, so `/` and `/en` titles are the
+  // same bytes, and seo.config.ts holds no page titles or descriptions to drift.
   const root = read("src/app/page.tsx");
+  assert.match(root, /import enMessages from '\.\.\/\.\.\/messages\/en\.json'/);
+  assert.match(root, /const SEO_TITLE = enMessages\.SEO\.home\.title/);
+  assert.match(root, /const SEO_DESCRIPTION = enMessages\.SEO\.home\.description/);
+  assert.match(read("src/app/[locale]/layout.tsx"), /namespace: 'SEO\.home'/);
+  assert.doesNotMatch(read("src/app/seo.config.ts"), /^\s*(title|description):/m);
+  for (const entry of Object.values(PAGE_SEO)) {
+    assert.equal("title" in entry || "description" in entry, false);
+  }
   assert.match(root, /title: SEO_TITLE/);
   assert.match(root, /buildSiteNavigationSchema/);
   assert.match(root, /<nav aria-label="Main sections">/);

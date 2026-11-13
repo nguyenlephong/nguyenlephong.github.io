@@ -5,7 +5,7 @@ import { PAGE_SEO } from '@/app/seo.config'
 import { apps } from '@/app/[locale]/(site)/apps/apps.data'
 import { getCachedOg, saveOgCache, cachedOgResponse } from '@/lib/og/cache'
 
-export const alt = PAGE_SEO.apps.ogAlt ?? PAGE_SEO.apps.title
+export const alt = PAGE_SEO.apps.ogAlt
 export const size = OG_SIZE
 export const contentType = OG_CONTENT_TYPE
 

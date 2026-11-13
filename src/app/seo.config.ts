@@ -13,95 +13,33 @@ export const SITE = {
   defaultOgAlt: 'Nguyen Le Phong, Lead Software Engineer at Zalo PC',
 }
 
-export interface PageSEO {
-  title: string
-  description: string
-  path: string
-  keywords?: string[]
-  ogAlt?: string
+// MEP-63: Vietnamese pages show the name with diacritics (h1, title suffix). Person.name and
+// SITE.name stay Latin; the diacritic form lives in JSON-LD alternateName.
+export function displayName(locale: string): string {
+  return locale === 'vi' ? 'Nguyễn Lê Phong' : SITE.brandShort
 }
 
-export const PAGE_SEO: Record<
-  'home' | 'about' | 'gallery' | 'apps' | 'blog' | 'studio',
-  PageSEO
-> = {
+// Titles and descriptions live only in messages/<locale>.json (SEO namespace), so the root stub,
+// /en and every locale read one source (MEP-61). Studio metadata lives in
+// src/app/[locale]/studio/studio-static-content.ts. What stays here has no per-locale copy:
+// the English fallback alt baked into each opengraph-image route, and keyword lists.
+export const PAGE_SEO = {
   home: {
-    title: 'Nguyen Le Phong | Lead Software Engineer · BonBon co-founder',
-    description:
-      'Lead Software Engineer at Zalo PC and co-founder of BonBon Mobility ($500K pre-seed led by Tasco). Messaging at scale, safe rollouts, multi-tenant SaaS.',
-    path: '/',
-    keywords: [
-      'Nguyen Le Phong',
-      'Nguyễn Lê Phong',
-      'Lead Software Engineer',
-      'Zalo PC',
-      'BonBon co-founder',
-      'BonBon Mobility',
-      'Senior Software Engineer',
-      'Technical Lead',
-      'Tech Lead',
-      'Full-stack',
-      'React',
-      'Next.js',
-      'Kubernetes',
-      'Micro-Frontend',
-      'GPA 3.36',
-      'Very Good degree',
-    ],
     ogAlt:
-      'Nguyen Le Phong, Lead Software Engineer at Zalo PC and co-founder of BonBon Mobility',
+      'Nguyen Le Phong, Lead Software Engineer at Zalo PC and part-time co-founder of BonBon Mobility',
   },
   about: {
-    title: 'About Nguyen Le Phong: Lead at Zalo PC, BonBon co-founder',
-    description:
-      'How I got from an outsourcing agency to leading cross-device sync at Zalo PC and co-founding BonBon Mobility, and the habits I bring to each team.',
-    path: '/about',
-    keywords: [
-      'About Nguyen Le Phong',
-      'Lead Software Engineer',
-      'Zalo PC',
-      'BonBon Mobility co-founder',
-      'LogiUP Tech Lead',
-      'Feature flags',
-      'Engineering leadership',
-    ],
     ogAlt:
       'About Nguyen Le Phong: from an outsourcing agency to Lead at Zalo PC and co-founder of BonBon Mobility',
   },
   gallery: {
-    title: 'Photos and certificates | Nguyen Le Phong',
-    description:
-      'BonBon Mobility at the Tasco Foundry Wash3000 Demo Day and its $500K pre-seed, Best Rookie of the Year 2019 at Splus Software, and certificates, each sourced.',
-    path: '/gallery',
-    keywords: [
-      'Nguyen Le Phong gallery',
-      'BonBon Mobility',
-      'Tasco Foundry Wash3000',
-      'Best Rookie of the Year',
-      'Software Engineer certificates',
-    ],
     ogAlt:
-      'Photos and certificates: BonBon Mobility at Wash3000, the $500K pre-seed and Best Rookie of the Year 2019',
+      'Photos and certificates: BonBon Mobility winning Wash3000, the $500K pre-seed and Best Rookie of the Year 2019',
   },
   apps: {
-    title: 'Apps: Small Open-Source Tools | Nguyen Le Phong',
-    description:
-      'Small tools Nguyen Le Phong built for his own work, starting with Glance, a macOS menu-bar app that translates selected text with one hotkey.',
-    path: '/apps',
-    keywords: [
-      'Nguyen Le Phong apps',
-      'macOS utilities',
-      'Glance translation',
-      'open source apps',
-      'developer tools',
-    ],
     ogAlt: 'Apps: small tools Nguyen Le Phong built for his own work, starting with Glance for macOS',
   },
   blog: {
-    title: 'Blog — Software Architecture & Engineering, Explained Simply',
-    description:
-      'Beginner-friendly, deeply practical writing on software architecture and source-code structure — from Ports & Adapters to system design — with diagrams, real-world examples, and lessons that scale from startups to enterprise.',
-    path: '/blog',
     keywords: [
       'software architecture blog',
       'source code structure',
@@ -112,17 +50,15 @@ export const PAGE_SEO: Record<
       'software engineering tutorials',
       'Nguyen Le Phong blog',
     ],
-    ogAlt: 'Blog — software architecture and engineering, explained simply',
+    ogAlt: 'Blog: software architecture, AI and team practice by Nguyen Le Phong',
   },
-  // Studio metadata lives in src/app/[locale]/studio/studio-static-content.ts (en and vi copy);
-  // this entry mirrors the English copy for shared consumers. No keyword list (SEO-12).
+  notes: {
+    ogAlt: 'Notes on work, learning and life by Nguyen Le Phong',
+  },
   studio: {
-    title: 'Engineering Studio: delivery checklists and system maps',
-    description:
-      'The checklists and system maps I use to scope work, ship releases and roll them out safely, plus how I set up AI coding agents.',
-    path: '/studio',
+    ogAlt: 'Engineering Studio: delivery checklists and system maps by Nguyen Le Phong',
   },
-}
+} as const
 
 export function absoluteUrl(path: string): string {
   if (!path.startsWith('/')) return path

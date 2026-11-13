@@ -2,40 +2,49 @@ import type { Metadata } from 'next'
 import { SITE } from '@/app/seo.config'
 import { routing, type Locale } from '@/i18n/routing'
 import { canonicalFor, localeAlternates, ogLocaleFor } from '@/lib/seo/locale'
+import { sectionOgImages } from '@/lib/seo/section-og-image'
 
 export const STATIC_PAGE_SEO_POLICY = {
   about: {
     path: '/about',
+    ogSegment: '/[locale]/(site)/about',
     contentLocales: routing.locales,
   },
   apps: {
     path: '/apps',
+    ogSegment: '/[locale]/(site)/apps',
     contentLocales: ['en', 'vi'],
   },
   gallery: {
     path: '/gallery',
+    ogSegment: '/[locale]/(site)/gallery',
     contentLocales: routing.locales,
   },
   // Studio prose is written in English and Vietnamese only (MEP-54).
   studio: {
     path: '/studio',
+    ogSegment: '/[locale]/studio',
     contentLocales: ['en', 'vi'],
   },
   'studio/checklists': {
     path: '/studio/checklists',
+    ogSegment: '/[locale]/studio',
     contentLocales: ['en', 'vi'],
   },
   'studio/system-maps': {
     path: '/studio/system-maps',
+    ogSegment: '/[locale]/studio',
     contentLocales: ['en', 'vi'],
   },
   'studio/ai-setup': {
     path: '/studio/ai-setup',
+    ogSegment: '/[locale]/studio',
     contentLocales: ['en', 'vi'],
   },
 } as const satisfies Record<
   string,
-  { path: `/${string}`; contentLocales: readonly Locale[] }
+  // ogSegment: the app segment whose opengraph-image is this page's social card (MEP-64).
+  { path: `/${string}`; ogSegment: string; contentLocales: readonly Locale[] }
 >
 
 export type StaticPageName = keyof typeof STATIC_PAGE_SEO_POLICY
@@ -47,6 +56,7 @@ export type StaticPageLocalization = {
   follow: true
   index: boolean
   languages: Record<string, string>
+  ogImageSegment: string
   ogLocale: string
   alternateOgLocales: string[]
   path: `/${string}`
@@ -82,6 +92,7 @@ export function resolveStaticPageLocalization(
     follow: true,
     index: authored,
     languages: authored ? localeAlternates(policy.path, policy.contentLocales) : {},
+    ogImageSegment: policy.ogSegment,
     ogLocale: ogLocaleFor(contentLocale),
     alternateOgLocales: authored
       ? policy.contentLocales
@@ -140,6 +151,12 @@ export function buildStaticPageMetadata({
       type: openGraphType,
       locale: localization.ogLocale,
       ...alternateLocale,
+      // The title is in the page's language, so it doubles as a localized alt for the card.
+      images: sectionOgImages(
+        localization.ogImageSegment,
+        { locale: localization.routeLocale },
+        title,
+      ),
     },
     twitter: {
       card: 'summary_large_image',

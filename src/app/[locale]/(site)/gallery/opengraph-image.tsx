@@ -5,7 +5,7 @@ import { PAGE_SEO } from '@/app/seo.config'
 import { gallery } from '@/content/gallery'
 import { getCachedOg, saveOgCache, cachedOgResponse } from '@/lib/og/cache'
 
-export const alt = PAGE_SEO.gallery.ogAlt ?? PAGE_SEO.gallery.title
+export const alt = PAGE_SEO.gallery.ogAlt
 export const size = OG_SIZE
 export const contentType = OG_CONTENT_TYPE
 
@@ -26,10 +26,10 @@ export default async function OgImage() {
         theme="light"
         eyebrow="Gallery"
         title="Photos and certificates."
-        subtitle="BonBon Mobility at the Tasco Foundry Wash3000 Demo Day, its $500K pre-seed, and the awards and certificates behind the CV, each linked to its source."
+        subtitle="BonBon Mobility winning Tasco Foundry Wash3000, its $500K pre-seed, and the awards and certificates behind the CV, each linked to its source."
         chips={[
           'BonBon Mobility',
-          'Wash3000 Demo Day',
+          'Wash3000 winner',
           '$500K pre-seed',
           'Best Rookie of the Year 2019',
         ]}

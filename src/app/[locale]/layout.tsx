@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
-import { PROFILE_URL, SITE, SITE_URL } from '@/app/seo.config'
+import { PROFILE_URL, SITE, SITE_URL, displayName } from '@/app/seo.config'
 import PostHogBootstrap from '@/components/analytics/PostHogBootstrap'
 import WebVitalsReporter from '@/components/analytics/WebVitalsReporter'
 import { routing, type Locale } from '@/i18n/routing'
@@ -46,7 +46,7 @@ export async function generateMetadata({
 
   return {
     title: {
-      template: '%s | Nguyen Le Phong',
+      template: `%s | ${displayName(locale)}`,
       default: title,
     },
     description,

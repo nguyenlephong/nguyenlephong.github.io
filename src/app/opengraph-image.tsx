@@ -4,7 +4,7 @@ import { PROFILE_OG_CONTENT } from '@/app/_og/profile-og'
 import { PAGE_SEO } from '@/app/seo.config'
 import { hashOgParams, getCachedOg, saveOgCache, cachedOgResponse } from '@/lib/og/cache'
 
-export const alt = PAGE_SEO.home.ogAlt ?? PAGE_SEO.home.title
+export const alt = PAGE_SEO.home.ogAlt
 export const size = OG_SIZE
 export const contentType = OG_CONTENT_TYPE
 export const dynamic = 'force-static'

@@ -287,24 +287,34 @@ test("one page-aware hub inventory prevents asymmetric 404 alternates", () => {
       availableLocales: pageTwo.locales,
       path: "/blog/series/boundary/page/2",
       title: "Boundary page",
-      description: "A page-aware locale boundary."
+      description: "A page-aware locale boundary.",
+      section: "blog"
     });
-    assert.deepEqual(Object.keys(metadata.alternates.languages).sort(), [
+    // MEP-65: page 2+ lists different posts per locale, so it declares no hreflang at all.
+    assert.equal(metadata.alternates.languages, undefined);
+    assert.equal(
+      metadata.alternates.canonical,
+      `https://nguyenlephong.github.io/${locale}/blog/series/boundary/page/2`
+    );
+    assert.deepEqual(metadata.openGraph.alternateLocale, []);
+    const pageOne = hubPage.buildContentHubMetadata({
+      locale,
+      availableLocales: pageTwo.locales,
+      path: "/blog/series/boundary",
+      title: "Boundary",
+      description: "A page-aware locale boundary.",
+      section: "blog"
+    });
+    assert.deepEqual(Object.keys(pageOne.alternates.languages).sort(), [
       locale,
       "x-default"
     ]);
-    assert.equal(
-      metadata.alternates.languages["x-default"],
-      metadata.alternates.languages[locale]
-    );
-    assert.deepEqual(metadata.openGraph.alternateLocale, []);
-    assert.equal(
+    // MEP-64: a series hub shares the blog card, with its own title as the alt.
+    assert.match(
       metadata.openGraph.images[0].url,
-      "https://nguyenlephong.github.io/opengraph-image.png"
+      new RegExp(`^https://nguyenlephong\\.github\\.io/${locale}/blog/opengraph-image-[a-z0-9]{6}$`)
     );
-    assert.deepEqual(metadata.twitter.images, [
-      "https://nguyenlephong.github.io/opengraph-image.png"
-    ]);
+    assert.equal(metadata.openGraph.images[0].alt, "Boundary page");
   }
 });
 
@@ -379,7 +389,14 @@ test("sitemap contains 951 unique URLs and exactly 52 curated hub URLs", () => {
     false
   );
 
-  for (const entry of hubEntries) {
+  // MEP-65: no paged archive (blog, notes, series, topics) declares hreflang in the sitemap.
+  const pagedEntries = sitemap.filter(({ url }) => /\/page\/\d+$/.test(url));
+  assert.ok(pagedEntries.length > 10);
+  for (const entry of pagedEntries) {
+    assert.equal(entry.alternates, undefined, entry.url);
+  }
+
+  for (const entry of hubEntries.filter(({ url }) => !/\/page\/\d+$/.test(url))) {
     assert.deepEqual(Object.keys(entry.alternates.languages).sort(), [
       "en",
       "vi",
@@ -656,7 +673,7 @@ test("hub implementation stays static-first and reviewedAt never becomes dateMod
   assert.match(sharedContract, /'@type': 'CollectionPage'/);
   assert.match(sharedContract, /'@type': 'ItemList'/);
   assert.match(sharedContract, /'@type': 'BreadcrumbList'/);
-  assert.match(sharedContract, /CONTENT_HUB_SOCIAL_IMAGE/);
+  assert.match(sharedContract, /sectionOgImages\(HUB_OG_SEGMENT\[section\]/);
   assert.match(collectionSources, /buildContentHubMetadata/);
   assert.match(collectionSources, /buildContentHubStructuredData/);
   assert.match(collectionSources, /pageData\.startIndex \+ index \+ 1/);

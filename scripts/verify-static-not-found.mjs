@@ -399,7 +399,7 @@ async function verifyBrowserBehavior(origin) {
         path: `/zh/blog/${SENSITIVE_PATH_SENTINEL}?email=${encodeURIComponent(SENSITIVE_EMAIL_SENTINEL)}&token=${SENSITIVE_PATH_SENTINEL}`,
         locale: "zh",
         surface: "blog",
-        heading: "这个页面目前不在这里",
+        heading: "你要找的页面不存在",
         primaryHref: "/zh/blog",
         sensitiveValues: [
           {
@@ -416,14 +416,14 @@ async function verifyBrowserBehavior(origin) {
         path: "/fr/notes/ancienne-note",
         locale: "fr",
         surface: "notes",
-        heading: "Cette page n’est plus disponible ici",
+        heading: "Cette page n’existe pas",
         primaryHref: "/fr/notes"
       },
       {
         path: "/missing-without-locale",
         locale: "en",
         surface: "other",
-        heading: "This page is no longer here",
+        heading: "This page doesn’t exist",
         primaryHref: "/en"
       }
     ]) {

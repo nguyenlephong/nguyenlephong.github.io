@@ -9,7 +9,7 @@
     {
       "id": "ways-of-working",
       "title": "Cách đội ngũ phần mềm vận hành",
-      "intro": "Những ghi chép thực tế về cách công việc phần mềm thay đổi giữa công ty lớn, startup và đội ngũ outsourcing—từ ownership, quy trình và nhịp độ đến cách giao tiếp.",
+      "intro": "Ghi chép thực tế về cách công việc phần mềm thay đổi giữa công ty lớn, startup và outsourcing: ownership, quy trình, nhịp độ và cách giao tiếp.",
       "order": 2
     },
     {
@@ -27,19 +27,19 @@
     {
       "id": "lean-business-analysis",
       "title": "Business Analysis tinh gọn",
-      "intro": "Một lộ trình gọn từ giá trị, stakeholders và elicitation đến mô hình, requirements, traceability, rollout và việc kiểm tra giải pháp có thật sự hữu ích hay không.",
+      "intro": "Lộ trình gọn từ giá trị, stakeholders và elicitation đến mô hình, requirements, traceability, rollout và kiểm tra giải pháp có thật sự hữu ích.",
       "order": 5
     },
     {
       "id": "data-eos-operating-system",
       "title": "Dữ liệu trong hệ điều hành EOS",
-      "intro": "Bốn ghi chép về cách dùng một nhóm chỉ số nhỏ, rõ người sở hữu để nhìn sức khỏe vận hành sớm hơn—từ Scorecard và role-level measurables đến doanh thu, lợi nhuận và dòng tiền.",
+      "intro": "Bốn ghi chép về cách dùng một nhóm chỉ số nhỏ, rõ người sở hữu để thấy sức khỏe vận hành sớm hơn, từ Scorecard đến doanh thu, lợi nhuận và dòng tiền.",
       "order": 6
     },
     {
       "id": "leadership-and-management",
       "title": "Lãnh đạo và quản lý",
-      "intro": "Những suy ngẫm về định hướng, craft, thông điệp rõ ràng, khả năng ở lại với điều chưa chắc chắn, và khác biệt giữa thúc ép với tạo ra ý nghĩa để mọi người cùng tiến.",
+      "intro": "Suy ngẫm về định hướng, craft, thông điệp rõ ràng, việc ở lại với điều chưa chắc, và khác biệt giữa thúc ép với tạo ý nghĩa để mọi người cùng tiến.",
       "order": 7
     }
   ],
@@ -48,7 +48,7 @@
       "slug": "architecture",
       "title": "Source Code & Software Architecture",
       "tagline": "Cách tổ chức codebase để hệ thống dễ hiểu, dễ sửa và vẫn đứng vững khi team lớn lên.",
-      "description": "Những bài viết thực tế về software architecture và source code structure: từ Ports & Adapters, Clean Architecture đến dependency, module boundary, scaling và trade-off. Mỗi bài cố gắng giải thích bằng sơ đồ, ví dụ gần với đời làm việc, để người mới không bị ngợp và người đã đi làm vẫn có thứ mang về áp dụng.",
+      "description": "Software architecture và cách tổ chức source code, giải thích bằng sơ đồ: Ports & Adapters, Clean Architecture, dependency, module boundary và trade-off.",
       "accent": "ocean",
       "order": 1
     },
@@ -56,7 +56,7 @@
       "slug": "culture",
       "title": "Engineering Culture",
       "tagline": "Code review, feedback, mentoring và những thói quen giúp team làm việc tử tế mà vẫn hiệu quả.",
-      "description": "Các bài viết về phần con người trong software engineering: viết pull request rõ ràng, review code không làm nhau mệt, feedback thẳng mà ấm, mentoring engineer và xây trust trong team. Không phải lý thuyết HR; đây là những tình huống rất đời trong một ngày làm sản phẩm, release, họp, sửa bug và cùng nhau trưởng thành.",
+      "description": "Phần con người trong software engineering: viết pull request rõ ràng, review code không làm nhau mệt, feedback thẳng mà ấm, mentoring và xây trust trong team.",
       "accent": "violet",
       "order": 2
     },
@@ -64,7 +64,7 @@
       "slug": "ai",
       "title": "AI & Future of Work",
       "tagline": "Hiểu AI đủ rõ để dùng tốt hơn, build chắc hơn và không bị cuốn theo hype.",
-      "description": "Những bài viết dành cho engineer và người làm sản phẩm muốn làm việc thông minh hơn với AI: prompt, context engineering, LLM, AI agent, workflow và rủi ro khi đưa AI vào production. Giọng viết đi theo hướng thực tế: AI giúp gì, giới hạn ở đâu, và mình nên thay đổi cách học, cách làm thế nào để đi nhanh hơn mà vẫn giữ được phán đoán của con người.",
+      "description": "Làm việc với AI cho engineer và người làm sản phẩm: prompt, context engineering, LLM, AI agent, workflow và rủi ro khi đưa AI vào production.",
       "accent": "gold",
       "order": 3
     },
@@ -72,7 +72,7 @@
       "slug": "perspectives",
       "title": "Góc nhìn & Trải nghiệm",
       "tagline": "Những câu chuyện từ công việc, học tập, con người và các khoảnh khắc nhỏ làm mình lớn lên từng chút.",
-      "description": "Các bài reflection nhẹ nhàng hơn về hành trình đi làm, học hỏi, vượt giới hạn bản thân và nhìn lại những điều rất đời trong công việc. Đây là nơi một chuyến trek, một cuộc trò chuyện, một lần vấp, hoặc một ngày bình thường có thể trở thành một góc nhìn hữu ích để quay lại làm việc bình tĩnh hơn, vui hơn và có năng lượng hơn.",
+      "description": "Những bài reflection nhẹ nhàng về đi làm, học hỏi và vượt giới hạn bản thân, bắt đầu từ một chuyến trek, một cuộc trò chuyện hay một lần vấp.",
       "accent": "dark",
       "order": 4
     },
@@ -80,7 +80,7 @@
       "slug": "ways-of-working",
       "title": "Ways of Working",
       "tagline": "Cách team phần mềm thật sự vận hành: Agile, Scrum, delivery, ownership, communication và nhịp làm việc ở từng môi trường.",
-      "description": "Những bài viết giúp bạn đọc môi trường làm việc của mình rõ hơn: team đang ra quyết định thế nào, ai owns việc gì, vì sao delivery bị kẹt, Agile/Scrum nên dùng ra sao cho bớt hình thức, và mỗi mô hình công ty có nhịp vận hành riêng thế nào. Viết cho BA, PO, PM, developer, QA và người mới để đi làm đỡ mơ hồ, phối hợp vui hơn và hiệu quả hơn.",
+      "description": "Đọc rõ môi trường mình đang làm: team ra quyết định thế nào, ai owns việc gì, vì sao delivery bị kẹt, và Agile/Scrum dùng sao cho bớt hình thức.",
       "accent": "light",
       "order": 5
     }

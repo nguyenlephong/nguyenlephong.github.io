@@ -4,7 +4,8 @@ import { OgShell, OG_SIZE, OG_CONTENT_TYPE } from '@/app/_og/og-shell'
 import { PAGE_SEO } from '@/app/seo.config'
 import { getCachedOg, saveOgCache, cachedOgResponse } from '@/lib/og/cache'
 
-export const alt = PAGE_SEO.blog.ogAlt ?? PAGE_SEO.blog.title
+// Fallback alt only: blog pages attach this card with a localized alt (sectionOgImages).
+export const alt = PAGE_SEO.blog.ogAlt
 export const size = OG_SIZE
 export const contentType = OG_CONTENT_TYPE
 
@@ -15,7 +16,7 @@ export function generateStaticParams() {
 export const dynamic = 'force-static'
 
 export default async function OgImage() {
-  const cacheKey = 'static-blog-list-v1'
+  const cacheKey = 'static-blog-list-v2'
   const cached = getCachedOg(cacheKey)
   if (cached) return cachedOgResponse(cached)
 
@@ -24,9 +25,9 @@ export default async function OgImage() {
       <OgShell
         theme="violet"
         eyebrow="Blog"
-        title="Engineering, explained simply."
-        subtitle="Deep-dives on software architecture, source structure, and the craft of building systems that last — written for beginners and battle-tested teams alike."
-        chips={['Architecture', 'Source structure', 'System design', 'Beginner-friendly']}
+        title="Software architecture, AI and team practice."
+        subtitle="Practical writing on architecture, AI-assisted delivery and how engineering teams work, from a Lead Software Engineer at Zalo PC."
+        chips={['Architecture', 'AI in practice', 'System design', 'Team practice']}
         badge={{ label: 'Format', value: 'Long-form' }}
       />
     ),

@@ -50,6 +50,13 @@ test("global not-found uses one static document with safe SEO metadata", async (
   assert.match(recovery, /eventName="not_found_view"/);
   assert.match(recovery, /omitLocation/);
   assert.match(recovery, /track\(\s*"not_found_recovery_click"/);
+  // The résumé and contact targets go through the same tracked recovery links.
+  assert.match(recovery, /onClick=\{\(\) => trackRecovery\(target\)\}/);
+  // MEP-31: a stored Light/Dark choice wins over the OS before paint.
+  assert.match(globalNotFound, /<ThemeScript \/>/);
+  assert.match(globalNotFound, /:root\[data-theme="dark"\] \{/);
+  assert.match(globalNotFound, /:root:not\(\[data-theme\]\) \{/);
+  assert.doesNotMatch(globalNotFound, /@media \(prefers-color-scheme: dark\) \{\s*body/);
   assert.match(recovery, /routing\.locales\.map/);
   assert.match(recovery, /aria-label=\{copy\.recoveryLabel\}/);
   assert.doesNotMatch(recovery, /from ["']next\/link["']|prefetch=/);
@@ -97,6 +104,19 @@ test("not-found route detection keeps locale and surface recovery bounded", asyn
     "blog",
     "home"
   ]);
+  assert.equal(routingModule.orderedRecoveryTargets("blog")[0], "blog");
+  // MEP-31: an unknown path is most often an old résumé or profile link.
+  assert.deepEqual(routingModule.orderedRecoveryTargets("other"), [
+    "home",
+    "resume",
+    "contact"
+  ]);
+  const appConst = await readFile("src/app/app.const.ts", "utf8");
+  assert.match(
+    appConst,
+    new RegExp(`CV_PDF: "${routingModule.RESUME_PDF_PATH}"`),
+    "the 404 résumé link must match APP_ROUTE.CV_PDF"
+  );
 
   for (const locale of ["en", "vi", "zh", "ja", "ko", "fr"]) {
     assert.equal(routingModule.recoveryHref(locale, "home"), `/${locale}`);
@@ -104,6 +124,14 @@ test("not-found route detection keeps locale and surface recovery bounded", asyn
     assert.equal(
       routingModule.recoveryHref(locale, "notes"),
       `/${locale}/notes`
+    );
+    assert.equal(
+      routingModule.recoveryHref(locale, "resume"),
+      "/NguyenLePhong_Lead_Software_Engineer.pdf"
+    );
+    assert.equal(
+      routingModule.recoveryHref(locale, "contact"),
+      `/${locale}#contact`
     );
   }
 });
@@ -125,9 +153,11 @@ test("every supported locale has calm and complete recovery copy", async () => {
     for (const surface of ["blog", "notes", "other"]) {
       assert.ok(copy.descriptions[surface].length > 24);
     }
-    for (const target of ["home", "blog", "notes"]) {
-      assert.ok(copy.actions[target].length > 3);
+    for (const target of ["home", "blog", "notes", "resume", "contact"]) {
+      assert.ok(copy.actions[target].length > 3, `${locale} ${target}`);
     }
+    // The headline must not assume the page once existed (a typo never did).
+    assert.doesNotMatch(copy.title, /no longer|không còn|不在这里|ありません|여기에 없습니다|plus disponible/);
   }
 
   assert.doesNotMatch(source, /oops|uh[- ]oh|you entered|your mistake/i);

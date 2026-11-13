@@ -21,7 +21,7 @@ import {
   loadNote,
   NOTE_CONTENT_LOCALES
 } from "@/lib/notes/data";
-import { collectionPagePath, paginate } from "@/lib/content/pagination";
+import { collectionPagePath, isPagedArchivePath, paginate } from "@/lib/content/pagination";
 import { latestNonFutureDate } from "@/lib/seo/dates";
 import { preferredContentLocale } from "@/lib/seo/locale";
 import { SITE_INDEX_PATH } from "@/lib/seo/site-index";
@@ -118,6 +118,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
     languages["x-default"] = `${SITE_URL}/${preferredContentLocale(locales)}${path}`;
 
+    const paged = isPagedArchivePath(path);
     for (const locale of locales) {
       const lastModified = lastModifiedForLocale?.(locale);
       entries.push({
@@ -125,7 +126,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...(lastModified ? { lastModified } : {}),
         changeFrequency: freq,
         priority,
-        alternates: { languages }
+        ...(paged ? {} : { alternates: { languages } })
       });
     }
   };

@@ -7,7 +7,7 @@ import { filterOgStaticParams } from '@/lib/og/build-targets'
 
 export const size = OG_SIZE
 export const contentType = OG_CONTENT_TYPE
-export const alt = 'Blog category — Nguyen Le Phong'
+export const alt = 'Blog category by Nguyen Le Phong'
 
 export function generateStaticParams() {
   if (process.env.NODE_ENV === 'development') return []

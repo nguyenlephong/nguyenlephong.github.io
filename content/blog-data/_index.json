@@ -9,7 +9,7 @@
     {
       "id": "ways-of-working",
       "title": "Ways of Working",
-      "intro": "A field guide to how software work changes across large companies, startups, and outsourcing teams—and how ownership, process, pace, and communication change with it.",
+      "intro": "A field guide to how software work changes across large companies, startups and outsourcing teams, and how ownership, process and pace change with it.",
       "order": 2
     },
     {
@@ -33,7 +33,7 @@
     {
       "id": "data-eos-operating-system",
       "title": "Data in the EOS Operating System",
-      "intro": "Four reflections on using a small, owned set of numbers to see operating health earlier—from the Scorecard and role measurables to revenue, profit, and cash.",
+      "intro": "Four reflections on using a small, owned set of numbers to see operating health earlier, from the Scorecard and role measurables to revenue, profit and cash.",
       "order": 6
     },
     {
@@ -48,7 +48,7 @@
       "slug": "architecture",
       "title": "Source & Architecture",
       "tagline": "How to structure source code so it survives growth, teams, and change.",
-      "description": "Practical, beginner-friendly deep-dives on software architecture and how source code is organised — from Ports & Adapters and Clean Architecture to dependency management, module boundaries, and the trade-offs behind each. Built on diagrams, real examples, and lessons that scale from solo projects to enterprise systems.",
+      "description": "Software architecture and source-code structure, explained with diagrams: Ports & Adapters, Clean Architecture, dependencies, module boundaries and trade-offs.",
       "accent": "ocean",
       "order": 1
     },
@@ -56,7 +56,7 @@
       "slug": "culture",
       "title": "Engineering Culture",
       "tagline": "The human side of building software — reviews, feedback, mentorship, and teams that grow people instead of burning them out.",
-      "description": "Practical, people-first writing on engineering culture: how to run code reviews that make code and people better, give and receive feedback well, write pull requests reviewers love, mentor engineers into seniors, and build kind, high-trust teams. Real scripts, examples, and lessons that scale from a two-person startup to a thousand-engineer org.",
+      "description": "The people side of engineering: code reviews that help, feedback given and received well, clear pull requests, mentoring, and teams built on trust.",
       "accent": "violet",
       "order": 2
     },
@@ -64,7 +64,7 @@
       "slug": "ai",
       "title": "AI & The Future",
       "tagline": "Making sense of AI — from context engineering to building reliable, production-ready AI products.",
-      "description": "Practical, developer-focused writing on artificial intelligence: how to get great results from AI tools, understand how language models actually work, build reliable AI-powered products, and navigate the fast-moving landscape of LLMs, agents, and context engineering. Written for engineers who want to work smarter with AI — not just follow the hype.",
+      "description": "Working with AI as an engineer: useful results from AI tools, how language models work, reliable AI features, agents and context engineering.",
       "accent": "gold",
       "order": 3
     },
@@ -72,7 +72,7 @@
       "slug": "perspectives",
       "title": "Perspectives & Field Notes",
       "tagline": "Personal reflections from work, learning, people, and the quiet moments that shape a career.",
-      "description": "Reflective, grounded essays that connect everyday experiences with career growth, learning, teamwork, and personal development. Written with a calm, practical voice for readers across technical and non-technical backgrounds.",
+      "description": "Calm essays that connect everyday moments with career growth, learning, teamwork and personal development, for technical and non-technical readers.",
       "accent": "dark",
       "order": 4
     },
@@ -80,7 +80,7 @@
       "slug": "ways-of-working",
       "title": "Ways of Working",
       "tagline": "How software teams actually operate and work together — from Agile and Scrum to how delivery really happens in big corps, startups, and outsourcing.",
-      "description": "Practical, no-nonsense writing on how software teams actually work and collaborate: Agile and Scrum in practice, the \"-Driven Development\" family, and — crucially — how delivery, ownership, communication and decision-making really differ across company types, from enterprises to small and mid-size startups to outsourcing and software services. Written so anyone on the team — BA, PO, PM, developer, QA or newcomer — can read the environment they're in and operate well in it.",
+      "description": "How software teams really work: Agile and Scrum in practice, and how ownership, delivery and decisions differ across enterprises, startups and outsourcing.",
       "accent": "light",
       "order": 5
     }
