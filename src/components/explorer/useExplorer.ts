@@ -16,6 +16,8 @@ export interface ExplorerFilterOption {
   id: string
   label: string
   color?: string
+  /** Static page for this filter; the no-JS fallback links to it (MEP-53). */
+  href?: string
 }
 
 /** How to read filter/search/tag data off an arbitrary card item. */
@@ -47,6 +49,8 @@ export interface UseExplorerOptions {
   searchItems?: readonly unknown[] | null
   /** Keeps static browsing usable when the optional search index fails. */
   searchFailed?: boolean
+  /** Reader's UI locale; only 'vi' treats a typed tone mark as a whole syllable. */
+  locale: string
 }
 
 export interface StaticPagination {
@@ -97,7 +101,6 @@ const INITIAL_VIEW: ExplorerView = { query: '', filter: null, tag: null, page: 1
 export function useExplorer<T>(
   items: T[],
   filters: ExplorerFilterOption[],
-  popularTags: string[],
   accessors: ExplorerAccessors<T>,
   {
     filterParam,
@@ -105,6 +108,7 @@ export function useExplorer<T>(
     staticPagination,
     searchItems: untypedSearchItems,
     searchFailed = false,
+    locale,
   }: UseExplorerOptions,
 ): ExplorerApi<T> {
   const [view, setView] = useState<ExplorerView>(INITIAL_VIEW)
@@ -129,7 +133,9 @@ export function useExplorer<T>(
     const next: ExplorerView = {
       query: q,
       filter: f && filters.some((x) => x.id === f) ? f : null,
-      tag: tg && popularTags.includes(tg) ? tg : null,
+      // Any tag deep-links (article tag rows), not just the popular chips;
+      // an unknown tag simply filters to the empty state (MEP-51).
+      tag: tg?.trim() || null,
       page: hasSearchState && Number.isInteger(pg) && pg > 1 ? pg : 1,
     }
     if (next.query || next.filter || next.tag || next.page > 1) {
@@ -144,7 +150,10 @@ export function useExplorer<T>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const queryTerms = useMemo(() => parseSearchQuery(debouncedQuery), [debouncedQuery])
+  const queryTerms = useMemo(
+    () => parseSearchQuery(debouncedQuery, locale),
+    [debouncedQuery, locale],
+  )
 
   const hasFilters = Boolean(view.query || view.filter || view.tag)
   const searchItems = untypedSearchItems as readonly T[] | null | undefined

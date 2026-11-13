@@ -25,6 +25,8 @@ export type SearchTerm = SearchWord & {
   shapes: string[]
   /** Tone marks anywhere in the term; placement varies ("hoà" / "hòa"). */
   tones: string
+  /** Vietnamese reader: a typed tone mark closes the syllable. */
+  vietnamese: boolean
 }
 
 export type SearchFieldIndex = Record<keyof SearchFields, SearchWord[]>
@@ -63,11 +65,13 @@ function splitWords(value: string): SearchWord[] {
   return value.normalize('NFC').toLowerCase().split(WORD_SEPARATOR).filter(Boolean).map(analyzeWord)
 }
 
-export function parseSearchQuery(query: string): SearchTerm[] {
+/** `locale` is the reader's UI locale; only 'vi' treats a typed tone as a whole syllable. */
+export function parseSearchQuery(query: string, locale?: string): SearchTerm[] {
   return splitWords(query).map((word) => ({
     ...word,
     shapes: word.marks.map((mark) => mark.replace(TONE_MARK, '')),
     tones: tonesOf(word.marks),
+    vietnamese: locale === 'vi',
   }))
 }
 
@@ -88,6 +92,9 @@ export function indexSearchFields(fields: SearchFields): SearchFieldIndex {
  */
 function matchWord(word: SearchWord, term: SearchTerm): number {
   if (!word.base.startsWith(term.base)) return 0
+  // A typed tone mark ends a Vietnamese syllable, so "nhà" must not match "nhàm".
+  // French and other Latin accents share these marks and stay prefixes ("dévelop").
+  if (term.vietnamese && term.tones.length && word.base.length !== term.base.length) return 0
   const prefix = word.marks.slice(0, term.base.length)
   if (!term.shapes.every((shape, i) => [...shape].every((mark) => prefix[i].includes(mark)))) return 0
   const wordTones = tonesOf(prefix)
@@ -114,4 +121,18 @@ export function scoreSearch(index: SearchFieldIndex, terms: SearchTerm[]): numbe
     score += best
   }
   return allInTitle ? score + ALL_IN_TITLE_BONUS : score
+}
+
+/** The `limit` best entries for the terms, best first; ties keep input order. */
+export function topMatches<T extends { index: SearchFieldIndex }>(
+  entries: readonly T[],
+  terms: SearchTerm[],
+  limit: number,
+): T[] {
+  return entries
+    .map((entry) => ({ entry, score: scoreSearch(entry.index, terms) }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(({ entry }) => entry)
 }

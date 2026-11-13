@@ -8,7 +8,7 @@ import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import SectionBreadcrumbJsonLd from '@/components/seo/SectionBreadcrumbJsonLd'
 import { collectionPageTitle } from '@/lib/seo/collection-title'
-import { collectionPagePath, paginate } from '@/lib/content/pagination'
+import { collectionPagePath, isPagedArchivePath, paginate } from '@/lib/content/pagination'
 import { toNoteSearchItem } from '@/lib/content/search-index'
 import {
   createSearchIndex,
@@ -23,6 +23,7 @@ import {
   NOTE_CONTENT_LOCALES,
 } from '@/lib/notes/data'
 import { noteOgImageUrl } from '@/lib/og/static-images'
+import { sectionOgImages } from '@/lib/seo/section-og-image'
 import ContentHubPageTracker from '@/components/analytics/ContentHubPageTracker'
 import PageTracker from '@/components/analytics/PageTracker'
 import NotesExplorer from '@/components/notes/NotesExplorer'
@@ -68,15 +69,20 @@ export async function notesCollectionMetadata(
   if (!pageData) notFound()
 
   const t = await getTranslations({ locale, namespace: 'Pages.notes' })
+  const seoT = await getTranslations({ locale, namespace: 'SEO.notes' })
   const path = collectionPagePath('/notes', page)
   const pageLabel = t('controls.pagination.pageLabel', {
     page,
     total: pageData.totalPages,
   })
-  const title = collectionPageTitle(page, t('title'), t('eyebrow'), pageLabel)
+  // Page 1 carries the full SEO title (brand included); later pages get the layout's name suffix.
+  const title =
+    page === 1
+      ? seoT('title')
+      : collectionPageTitle(page, t('title'), t('eyebrow'), pageLabel)
   const description =
     page === 1
-      ? t.markup('intro', { blog: (chunks) => chunks })
+      ? seoT('description')
       : t('controls.pagination.pageDescription', {
           page,
           total: pageData.totalPages,
@@ -84,11 +90,13 @@ export async function notesCollectionMetadata(
   const canonical = canonicalFor(archiveLocale, path)
 
   return {
-    title,
+    title: page === 1 ? { absolute: title } : title,
     description,
     alternates: {
       canonical,
-      languages: localeAlternates(path, listNotesArchiveLocales(page)),
+      ...(isPagedArchivePath(path)
+        ? {}
+        : { languages: localeAlternates(path, listNotesArchiveLocales(page)) }),
     },
     openGraph: {
       type: 'website',
@@ -97,6 +105,7 @@ export async function notesCollectionMetadata(
       description,
       siteName: SITE.name,
       locale: OG_LOCALE_MAP[archiveLocale as Locale] ?? OG_LOCALE_MAP.en,
+      images: sectionOgImages('/[locale]/(site)/notes', { locale }, seoT('title')),
     },
     twitter: {
       card: 'summary_large_image',
@@ -135,6 +144,7 @@ export default async function NotesCollectionPage({
   const topics = listTopics(archiveLocale)
   const hasCuratedHubs = locale === 'en' || locale === 'vi'
   const hubCatalog = hasCuratedHubs ? listNoteHubs(archiveLocale) : []
+  const hubTopicIds = new Set(listNoteHubs(archiveLocale).map((hub) => hub.topic))
   const pageData = paginate(notes, page)
   if (!pageData) notFound()
   const searchRevision = createSearchIndex(notes.map(toNoteSearchItem)).revision
@@ -152,7 +162,7 @@ export default async function NotesCollectionPage({
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     '@id': `${canonical}#notes`,
-    name: `${t('title')} — ${t('eyebrow')}`,
+    name: `${t('title')} | ${t('eyebrow')}`,
     description: t.markup('intro', { blog: (chunks) => chunks }),
     url: canonical,
     inLanguage: archiveLocale,
@@ -215,7 +225,6 @@ export default async function NotesCollectionPage({
         />
       ) : null}
       <header className="notes-archive__title-page">
-        <p className="notes-archive__eyebrow">{t('eyebrow')}</p>
         <h1 className="notes-archive__title">{t('title')}</h1>
         <p className="notes-archive__subtitle">
           {t.rich('intro', {
@@ -252,7 +261,7 @@ export default async function NotesCollectionPage({
           aria-labelledby="notes-hubs-heading"
         >
           <h2 id="notes-hubs-heading" className="blog-home__section-title">
-            {locale === 'vi' ? 'Đọc theo chủ đề' : 'Read by topic'}
+            {t('hubs.heading')}
           </h2>
           <div className="content-hub-catalog">
             {hubCatalog.map((hub) => (
@@ -280,7 +289,7 @@ export default async function NotesCollectionPage({
             cards={pageData.items.map((note) => {
               const topic = note.topic ? topicBySlug.get(note.topic) : undefined
               return {
-                note,
+                note: toNoteSearchItem(note),
                 topicLabel: topic?.label ?? note.topic ?? '',
                 topicColor: topic?.color ?? FALLBACK_TOPIC_COLOR,
                 readingLabel: t('readingTime', {
@@ -292,6 +301,9 @@ export default async function NotesCollectionPage({
               id: topic.id,
               label: topic.label,
               color: topic.color,
+              ...(hubTopicIds.has(topic.id)
+                ? { href: `/${archiveLocale}/notes/topics/${topic.id}` }
+                : {}),
             }))}
             popularTags={popularTags(notes)}
             locale={locale}

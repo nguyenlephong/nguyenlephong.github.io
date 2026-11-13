@@ -15,7 +15,7 @@
     {
       "topic": "su-nghiep",
       "title": "Career & Growth",
-      "intro": "Owning a career path with clearer skills, market value, income negotiation, and sustainable self-development.",
+      "intro": "Owning a career path with clearer skills, market value, income negotiation, and steady, sustainable self-development.",
       "order": 1
     },
     {
@@ -27,13 +27,13 @@
     {
       "topic": "goc-nhin",
       "title": "Perspectives & Reflections",
-      "intro": "Personal reflections on life, work, and the questions that do not have tidy answers.",
+      "intro": "Personal reflections on life, work, and the questions that do not have tidy answers, written slowly and without a formula.",
       "order": 3
     },
     {
       "topic": "thoughts",
       "title": "Thought Garden",
-      "intro": "Short, living notes—small observations and half-formed ideas from work and life, written down before they slip away. They grow a little every time I return to them.",
+      "intro": "Short, living notes: small observations and half-formed ideas from work and life, written down before they slip away. They grow a little each time.",
       "order": 4
     }
   ],
@@ -59,7 +59,7 @@
     {
       "id": "su-nghiep",
       "label": "Career & Growth",
-      "description": "Owning a career path with clearer skills, market value, income negotiation, and sustainable self-development.",
+      "description": "Owning a career path with clearer skills, market value, income negotiation, and steady, sustainable self-development.",
       "color": "#7c3aed"
     },
     {
@@ -363,12 +363,11 @@
       "date": "2026-05-02",
       "readingMinutes": 7,
       "tags": [
-        "Book Notes",
         "Systems Thinking",
         "Decision Making",
         "Workplace",
         "Feedback Loops",
-        "Personal Growth"
+        "Self Development"
       ],
       "author": "Nguyen Le Phong",
       "featured": false,
@@ -387,10 +386,9 @@
       "date": "2026-05-01",
       "readingMinutes": 7,
       "tags": [
-        "Book Notes",
         "The 7 Habits",
         "Stephen Covey",
-        "Personal Development",
+        "Self Development",
         "Career",
         "Discipline"
       ],
@@ -411,12 +409,11 @@
       "date": "2026-04-30",
       "readingMinutes": 7,
       "tags": [
-        "Book Notes",
         "Atomic Habits",
         "James Clear",
         "Habits",
         "Learning",
-        "Personal Development"
+        "Self Development"
       ],
       "author": "Nguyen Le Phong",
       "featured": false,
@@ -435,7 +432,6 @@
       "date": "2026-04-29",
       "readingMinutes": 7,
       "tags": [
-        "Book Notes",
         "How to Win Friends and Influence People",
         "Dale Carnegie",
         "Communication",
@@ -459,7 +455,6 @@
       "date": "2026-04-28",
       "readingMinutes": 7,
       "tags": [
-        "Book Notes",
         "The World Is Flat",
         "Thomas Friedman",
         "Globalization",
@@ -483,7 +478,6 @@
       "date": "2026-04-27",
       "readingMinutes": 12,
       "tags": [
-        "Book Notes",
         "The 360° Leader",
         "Leadership",
         "Career",
@@ -507,7 +501,6 @@
       "date": "2026-04-26",
       "readingMinutes": 10,
       "tags": [
-        "Book Notes",
         "The 360° Leader",
         "Lead Up",
         "Leadership",
@@ -531,7 +524,6 @@
       "date": "2026-04-25",
       "readingMinutes": 10,
       "tags": [
-        "Book Notes",
         "The 360° Leader",
         "Lead Across",
         "Leadership",
@@ -555,7 +547,6 @@
       "date": "2026-04-24",
       "readingMinutes": 11,
       "tags": [
-        "Book Notes",
         "The 360° Leader",
         "Lead Down",
         "Leadership",
@@ -579,13 +570,13 @@
       "date": "2026-04-23",
       "readingMinutes": 10,
       "tags": [
-        "Career Growth",
+        "Career",
         "Self Improvement",
         "Sincerity",
         "Mentorship",
         "Gratitude",
         "Relationships",
-        "Personal Growth"
+        "Self Development"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
@@ -676,7 +667,6 @@
       "date": "2026-04-19",
       "readingMinutes": 4,
       "tags": [
-        "Book Notes",
         "The Visual MBA",
         "Jason Barron",
         "Business",
@@ -700,7 +690,6 @@
       "date": "2026-04-18",
       "readingMinutes": 4,
       "tags": [
-        "Book Notes",
         "Thinking Fast and Slow",
         "Daniel Kahneman",
         "Thinking",
@@ -842,7 +831,6 @@
       "date": "2026-04-12",
       "readingMinutes": 4,
       "tags": [
-        "Book Notes",
         "Game Theory",
         "Pareto Efficiency",
         "Prisoners Dilemma",
@@ -865,7 +853,6 @@
       "date": "2026-04-11",
       "readingMinutes": 13,
       "tags": [
-        "Book Notes",
         "Paulo Coelho",
         "The Alchemist",
         "Self Development",
@@ -889,7 +876,6 @@
       "date": "2026-04-10",
       "readingMinutes": 14,
       "tags": [
-        "Book Notes",
         "Criminal Psychology",
         "Behavioral Profiling",
         "Observation",
@@ -913,7 +899,6 @@
       "date": "2026-04-09",
       "readingMinutes": 15,
       "tags": [
-        "Book Notes",
         "Napoleon Hill",
         "Think and Grow Rich",
         "Planning",
@@ -937,7 +922,6 @@
       "date": "2026-04-08",
       "readingMinutes": 15,
       "tags": [
-        "Book Notes",
         "Robert Greene",
         "Power",
         "Career",
@@ -961,7 +945,6 @@
       "date": "2026-04-07",
       "readingMinutes": 13,
       "tags": [
-        "Book Notes",
         "Neuroscience",
         "David Eagleman",
         "Neuroplasticity",
@@ -985,11 +968,10 @@
       "date": "2026-04-06",
       "readingMinutes": 11,
       "tags": [
-        "Book Notes",
         "Behavior Change",
         "Katy Milkman",
         "Habits",
-        "Personal Development",
+        "Self Development",
         "Workplace"
       ],
       "author": "Nguyen Le Phong",
@@ -1009,11 +991,10 @@
       "date": "2026-04-05",
       "readingMinutes": 12,
       "tags": [
-        "Book Notes",
         "Networking",
         "Keith Ferrazzi",
         "Relationships",
-        "Career Growth",
+        "Career",
         "Communication"
       ],
       "author": "Nguyen Le Phong",
@@ -1057,8 +1038,8 @@
       "date": "2026-04-03",
       "readingMinutes": 12,
       "tags": [
-        "Personal Development",
-        "Career Growth",
+        "Self Development",
+        "Career",
         "Long-term Thinking",
         "Delayed Gratification",
         "Compounding",
@@ -1085,7 +1066,7 @@
         "Deductive Reasoning",
         "First Principles Thinking",
         "Decision Making",
-        "Career Growth",
+        "Career",
         "Personal Reflection"
       ],
       "author": "Nguyen Le Phong",
@@ -1416,7 +1397,6 @@
       "date": "2026-03-18",
       "readingMinutes": 4,
       "tags": [
-        "Home Buying",
         "Real Estate",
         "Loans",
         "Personal Finance",
@@ -1438,7 +1418,6 @@
       "date": "2026-03-17",
       "readingMinutes": 4,
       "tags": [
-        "Home Buying",
         "Real Estate",
         "Negotiation",
         "Valuation",
@@ -1460,7 +1439,6 @@
       "date": "2026-03-16",
       "readingMinutes": 4,
       "tags": [
-        "Home Buying",
         "Real Estate",
         "Urban Planning",
         "Location",
@@ -1482,7 +1460,6 @@
       "date": "2026-03-15",
       "readingMinutes": 4,
       "tags": [
-        "Home Buying",
         "Real Estate",
         "Process",
         "Paperwork",
@@ -1504,7 +1481,6 @@
       "date": "2026-03-14",
       "readingMinutes": 4,
       "tags": [
-        "Home Buying",
         "Real Estate",
         "Apartment",
         "Project Home",
@@ -1526,7 +1502,6 @@
       "date": "2026-03-13",
       "readingMinutes": 4,
       "tags": [
-        "Home Buying",
         "Real Estate",
         "Construction",
         "Design",
@@ -1548,7 +1523,6 @@
       "date": "2026-03-12",
       "readingMinutes": 4,
       "tags": [
-        "Home Buying",
         "Real Estate",
         "Psychology",
         "Warning Signs",
@@ -1569,7 +1543,6 @@
       "date": "2026-03-11",
       "readingMinutes": 4,
       "tags": [
-        "Home Buying",
         "Real Estate",
         "Personal Finance",
         "Cost",
@@ -1591,7 +1564,6 @@
       "date": "2026-03-10",
       "readingMinutes": 4,
       "tags": [
-        "Home Buying",
         "Real Estate",
         "Warning Signs",
         "Legal",
@@ -1614,7 +1586,6 @@
       "readingMinutes": 4,
       "tags": [
         "Legal",
-        "Home Buying",
         "Real Estate",
         "Experience",
         "Risk"
@@ -1636,7 +1607,6 @@
       "readingMinutes": 4,
       "tags": [
         "Feng Shui",
-        "Home Buying",
         "Real Estate",
         "Experience"
       ],
@@ -1656,7 +1626,6 @@
       "date": "2026-03-07",
       "readingMinutes": 4,
       "tags": [
-        "Home Buying",
         "Real Estate",
         "Experience",
         "Investing"
@@ -2012,7 +1981,7 @@
       "date": "2026-02-20",
       "readingMinutes": 13,
       "tags": [
-        "Personal Growth",
+        "Self Development",
         "Perspective",
         "Communication",
         "Reframing",
@@ -2039,7 +2008,7 @@
         "Motivation",
         "Grit",
         "Perseverance",
-        "Personal Growth",
+        "Self Development",
         "Goals",
         "Personal Reflection"
       ],
@@ -2060,7 +2029,7 @@
       "date": "2026-02-18",
       "readingMinutes": 14,
       "tags": [
-        "Personal Growth",
+        "Self Development",
         "Letting Go",
         "Maturity",
         "Mindfulness",
@@ -2084,12 +2053,12 @@
       "date": "2026-02-17",
       "readingMinutes": 17,
       "tags": [
-        "Career Growth",
+        "Career",
         "Leadership",
         "C-Level",
         "Executive Career",
         "MBA",
-        "Personal Development"
+        "Self Development"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
@@ -2111,7 +2080,7 @@
         "Solitude",
         "Self-Worth",
         "Independence",
-        "Personal Growth",
+        "Self Development",
         "Emotional Resilience",
         "Personal Reflection"
       ],
@@ -2156,10 +2125,10 @@
       "date": "2026-02-14",
       "readingMinutes": 19,
       "tags": [
-        "Career Growth",
+        "Career",
         "Software Engineering",
         "Career Path",
-        "Personal Development",
+        "Self Development",
         "Leadership",
         "Mentorship"
       ],
@@ -2276,7 +2245,6 @@
       "date": "2026-02-09",
       "readingMinutes": 3,
       "tags": [
-        "Thoughts",
         "Reading",
         "Learning Systems",
         "Note-taking"
@@ -2298,7 +2266,6 @@
       "date": "2026-02-08",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Tools",
         "Thinking",
         "First Principles Thinking"
@@ -2320,7 +2287,6 @@
       "date": "2026-02-07",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Attention",
         "Information Diet",
         "Habits"
@@ -2342,7 +2308,6 @@
       "date": "2026-02-06",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Software Engineering",
         "AI",
         "Code Readability"
@@ -2364,7 +2329,6 @@
       "date": "2026-02-05",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Learning",
         "Bias",
         "Books"
@@ -2386,7 +2350,6 @@
       "date": "2026-02-04",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Writing",
         "Attention",
         "Knowledge Sharing"
@@ -2408,7 +2371,6 @@
       "date": "2026-02-03",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Self-Awareness",
         "Motivation",
         "Inner Compass"
@@ -2430,7 +2392,6 @@
       "date": "2026-02-02",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Teamwork",
         "Communication",
         "Decision Making"
@@ -2452,7 +2413,6 @@
       "date": "2026-02-01",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Note-taking",
         "Obsidian",
         "Knowledge Management"
@@ -2474,7 +2434,6 @@
       "date": "2026-01-31",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "AI",
         "Brain",
         "Learning"
@@ -2496,7 +2455,6 @@
       "date": "2026-01-30",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Decision Making",
         "Overthinking",
         "Action"
@@ -2518,9 +2476,8 @@
       "date": "2026-01-29",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Life Lessons",
-        "Personal Growth",
+        "Self Development",
         "Younger Self"
       ],
       "author": "Nguyen Le Phong",
@@ -2540,7 +2497,6 @@
       "date": "2026-01-28",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Productivity",
         "Systems",
         "Habits"
@@ -2562,7 +2518,6 @@
       "date": "2026-01-27",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Decision Making",
         "Focus",
         "Discipline"
@@ -2584,7 +2539,6 @@
       "date": "2026-01-26",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Action",
         "Learning by Doing",
         "Experience"
@@ -2606,7 +2560,6 @@
       "date": "2026-01-25",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Systems",
         "Productivity",
         "Mental Models"
@@ -2628,7 +2581,6 @@
       "date": "2026-01-24",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Software Engineering",
         "Abstraction",
         "Code Design"
@@ -2650,7 +2602,6 @@
       "date": "2026-01-23",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Software Engineering",
         "Code Readability",
         "Naming"
@@ -2672,7 +2623,6 @@
       "date": "2026-01-22",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Reading",
         "Note-taking",
         "Learning"
@@ -2694,7 +2644,6 @@
       "date": "2026-01-21",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Reading",
         "Writing",
         "Communication"
@@ -2716,7 +2665,6 @@
       "date": "2026-01-20",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Thinking",
         "Self-Awareness",
         "Mindfulness"
@@ -2738,7 +2686,6 @@
       "date": "2026-01-19",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Intuition",
         "Experience",
         "Self-Awareness"
@@ -2760,7 +2707,6 @@
       "date": "2026-01-18",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Software Engineering",
         "Career",
         "Learning"
@@ -2782,10 +2728,9 @@
       "date": "2026-01-17",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Habits",
         "Consistency",
-        "Personal Growth"
+        "Self Development"
       ],
       "author": "Nguyen Le Phong",
       "featured": false,
@@ -2804,7 +2749,6 @@
       "date": "2026-01-16",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Procrastination",
         "Productivity",
         "Action"
@@ -2826,7 +2770,6 @@
       "date": "2026-01-15",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Direction",
         "Self-Awareness",
         "Decision Making"
@@ -2848,7 +2791,6 @@
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Learning",
         "Procrastination",
         "Information Diet"
@@ -2870,7 +2812,6 @@
       "date": "2026-01-13",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Action",
         "Productivity",
         "Agency"
@@ -2892,7 +2833,6 @@
       "date": "2026-01-12",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Procrastination",
         "Action",
         "Self-Awareness"
@@ -2914,7 +2854,6 @@
       "date": "2026-01-11",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Trust",
         "Heuristics",
         "Philosophy"
@@ -2936,7 +2875,6 @@
       "date": "2026-01-10",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Knowledge Management",
         "Vocabulary",
         "Note-taking"
@@ -2958,7 +2896,6 @@
       "date": "2026-01-09",
       "readingMinutes": 3,
       "tags": [
-        "Thoughts",
         "Startup",
         "Culture",
         "Hiring"
@@ -2980,7 +2917,6 @@
       "date": "2026-05-27",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Communication",
         "Remote Work",
         "Teamwork"
@@ -3002,7 +2938,6 @@
       "date": "2026-01-07",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Writing",
         "Attention",
         "Mindfulness"
@@ -3024,7 +2959,6 @@
       "date": "2026-01-06",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Writing",
         "Understanding",
         "Knowledge Sharing"
@@ -3046,7 +2980,6 @@
       "date": "2026-01-05",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "AI",
         "Learning",
         "Asking Questions"
@@ -3068,7 +3001,6 @@
       "date": "2026-01-04",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Note-taking",
         "Memory",
         "Knowledge Management"
@@ -3090,7 +3022,6 @@
       "date": "2026-01-03",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Tools",
         "Productivity",
         "Focus"
@@ -3112,7 +3043,6 @@
       "date": "2026-01-02",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Writing",
         "Thinking",
         "Communication"
@@ -3134,7 +3064,6 @@
       "date": "2026-01-01",
       "readingMinutes": 2,
       "tags": [
-        "Thoughts",
         "Mental Models",
         "Habits",
         "Life Lessons"

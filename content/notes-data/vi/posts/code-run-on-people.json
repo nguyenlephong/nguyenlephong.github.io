@@ -3,7 +3,6 @@
   "title": "Code vẫn cần con người hiểu",
   "summary": "AI agent có thể viết và đọc nhiều phần code hơn trước, nhưng điều đó không làm con người biến mất khỏi hệ thống. Ghi chú này nhìn lại câu nói “code viết cho người đọc”: có lẽ phần cần rõ ràng đang dịch lên một tầng cao hơn, từ từng dòng implementation sang prompt, spec, context và quyết định kiến trúc.",
   "tags": [
-    "Thoughts",
     "Kỹ thuật phần mềm",
     "AI",
     "Code dễ đọc"

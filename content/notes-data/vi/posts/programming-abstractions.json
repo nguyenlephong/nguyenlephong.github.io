@@ -3,7 +3,6 @@
   "title": "Các tầng trừu tượng trong lập trình",
   "summary": "Mỗi tầng trừu tượng là một giả định: nếu đúng chỗ, các thay đổi sau này xếp lên sạch hơn; nếu đến quá sớm, mọi thay đổi đặt lên nó đều khó gánh hơn. Cảm giác thỏa mãn khi đặt tên được mọi thứ là có thật — và chính điều đó khiến nó cần sự tiết chế. Khái quát hóa code chuyên biệt về sau thường dễ hơn gỡ rối một thiết kế trừu tượng quá đà.",
   "tags": [
-    "Thoughts",
     "Kỹ thuật phần mềm",
     "Trừu tượng hóa",
     "Thiết kế code"

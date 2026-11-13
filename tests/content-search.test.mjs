@@ -19,7 +19,7 @@ const notes = [
 const indexed = notes.map((note) => ({ slug: note.slug, index: indexSearchFields(note) }))
 
 function search(query) {
-  const terms = parseSearchQuery(query)
+  const terms = parseSearchQuery(query, 'vi')
   return indexed
     .map(({ slug, index }) => ({ slug, score: scoreSearch(index, terms) }))
     .filter(({ score }) => score > 0)
@@ -60,8 +60,8 @@ test('every term must match and an empty query matches nothing', () => {
   assert.equal(scoreSearch(indexed[0].index, []), 0)
 })
 
-function matches(query, text) {
-  return scoreSearch(indexSearchFields({ title: text, meta: '', summary: '' }), parseSearchQuery(query)) > 0
+function matches(query, text, locale = 'vi') {
+  return scoreSearch(indexSearchFields({ title: text, meta: '', summary: '' }), parseSearchQuery(query, locale)) > 0
 }
 
 test('typed marks must be present, extra marks in the word are allowed', () => {
@@ -71,9 +71,25 @@ test('typed marks must be present, extra marks in the word are allowed', () => {
   assert.equal(matches('tấm', 'tâm sự'), false)
   assert.equal(matches('nhà', 'nhắn tin'), false)
   assert.equal(matches('nhà', 'nhanh'), false)
+  // A typed tone ends the syllable: no prefix match into a longer one.
+  assert.equal(matches('nhà', 'nhàm chán'), false)
+  assert.equal(matches('nhà', 'Nhà lãnh đạo'), true)
+  assert.equal(matches('nha', 'nhàm chán'), true)
   assert.equal(matches('hoà', 'hòa nhã'), true)
   assert.equal(matches('hòa', 'hoà nhã'), true)
   assert.equal(matches('ơ', 'ô tô'), false)
+})
+
+test('the whole-syllable tone rule is Vietnamese only; French accents stay prefixes', () => {
+  for (const locale of ['fr', 'en']) {
+    assert.equal(matches('dévelop', 'Développement durable', locale), true)
+    assert.equal(matches('développ', 'Développement durable', locale), true)
+    assert.equal(matches('résil', 'Résilience des systèmes', locale), true)
+    assert.equal(matches('dévelop', 'Developer notes', locale), false)
+  }
+  assert.equal(matches('nhà', 'nhàm chán', 'vi'), false)
+  assert.equal(matches('nhà', 'Nhà lãnh đạo', 'vi'), true)
+  assert.equal(matches('nha', 'nhàm chán', 'vi'), true)
 })
 
 test('the explorer shell never opens the filter palette from the search field', () => {

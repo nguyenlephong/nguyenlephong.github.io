@@ -8,17 +8,14 @@ export type BlogSearchItem = Pick<
   'slug' | 'category' | 'title' | 'summary' | 'date' | 'readingMinutes' | 'tags'
 >
 
+/**
+ * Cards show `cardSummary` and search reads it too; the long `summary` stays
+ * out of the index so the notes payload is about half the size (MEP-50).
+ */
 export type NoteSearchItem = Pick<
   NoteMeta,
-  | 'slug'
-  | 'title'
-  | 'summary'
-  | 'cardSummary'
-  | 'date'
-  | 'readingMinutes'
-  | 'tags'
-  | 'topic'
->
+  'slug' | 'title' | 'date' | 'readingMinutes' | 'tags' | 'topic'
+> & { cardSummary: string }
 
 export interface SearchIndex<T> {
   version: typeof SEARCH_INDEX_VERSION
@@ -45,8 +42,7 @@ export function toNoteSearchItem(note: NoteMeta): NoteSearchItem {
   return {
     slug: note.slug,
     title: note.title,
-    summary: note.summary,
-    ...(note.cardSummary ? { cardSummary: note.cardSummary } : {}),
+    cardSummary: note.cardSummary ?? note.summary,
     date: note.date,
     readingMinutes: note.readingMinutes,
     tags: note.tags,
@@ -72,7 +68,6 @@ function isSharedSearchItem(value: unknown): value is Record<string, unknown> {
   return (
     hasString(value, 'slug') &&
     hasString(value, 'title') &&
-    hasString(value, 'summary') &&
     hasString(value, 'date') &&
     typeof value['readingMinutes'] === 'number' &&
     hasStringArray(value, 'tags')
@@ -100,7 +95,11 @@ export function isBlogSearchIndex(
   expectedRevision?: string,
 ): value is BlogSearchIndex {
   return isSearchIndex(value, (item): item is BlogSearchItem => {
-    return isSharedSearchItem(item) && hasString(item, 'category')
+    return (
+      isSharedSearchItem(item) &&
+      hasString(item, 'category') &&
+      hasString(item, 'summary')
+    )
   }, expectedRevision)
 }
 
@@ -112,7 +111,7 @@ export function isNotesSearchIndex(
     if (!isSharedSearchItem(item)) return false
     return (
       (item['topic'] === undefined || typeof item['topic'] === 'string') &&
-      (item['cardSummary'] === undefined || typeof item['cardSummary'] === 'string')
+      hasString(item, 'cardSummary')
     )
   }, expectedRevision)
 }
@@ -145,4 +144,15 @@ export async function fetchVersionedSearchIndex<T>(
   } catch {
     return null
   }
+}
+
+/** What the site header needs to open the site-wide search (MEP-48). */
+export interface GlobalSearchConfig {
+  /** Content locale of both indexes and the result links; fr/ja/ko/zh read English. */
+  locale: 'en' | 'vi'
+  blogIndexUrl: string
+  notesIndexUrl: string
+  /** Category and topic display names keyed by slug/id. */
+  blogSections: Record<string, string>
+  notesSections: Record<string, string>
 }

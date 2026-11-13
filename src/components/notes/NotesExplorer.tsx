@@ -29,6 +29,8 @@ interface TopicOption {
   id: string
   label: string
   color: string
+  /** Topic hub page, when the topic has one. */
+  href?: string
 }
 
 interface NotesExplorerProps {
@@ -80,7 +82,8 @@ export default function NotesExplorer({
   } | null>(null)
 
   const filters: ExplorerFilterOption[] = useMemo(
-    () => topics.map((tp) => ({ id: tp.id, label: tp.label, color: tp.color })),
+    () =>
+      topics.map((tp) => ({ id: tp.id, label: tp.label, color: tp.color, href: tp.href })),
     [topics],
   )
 
@@ -150,7 +153,6 @@ export default function NotesExplorer({
   const explorer = useExplorer<NoteCardMeta>(
     cards,
     filters,
-    popularTags,
     {
       key: (c) => c.note.slug,
       filterId: (c) => c.note.topic,
@@ -158,11 +160,12 @@ export default function NotesExplorer({
       searchFields: (c) => ({
         title: c.note.title,
         meta: [c.topicLabel, ...c.note.tags].join(' '),
-        summary: c.note.summary,
+        summary: c.note.cardSummary,
       }),
     },
     {
       filterParam: 'topic',
+      locale,
       pageSize: CONTENT_PAGE_SIZE,
       staticPagination: {
         current: currentPage,

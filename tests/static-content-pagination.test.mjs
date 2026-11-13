@@ -183,7 +183,7 @@ test('search index guards reject malformed or oversized-card contracts', () => {
   const noteItem = {
     slug: 'steady-work',
     title: 'Steady work',
-    summary: 'A note about patient progress.',
+    cardSummary: 'A note about patient progress.',
     date: '2026-01-02',
     readingMinutes: 4,
     tags: ['work'],

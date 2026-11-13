@@ -299,32 +299,18 @@ export function ExplorerShell<T>({
           </div>
         </div>
 
+        {/* Without JS only real pages help: topics and categories that have a
+            static page become links; tags need the script, so they are left out. */}
         <noscript>
-          <div className="blog-filters" role="group" aria-label={labels.filtersLabel}>
-            <button type="button" className="blog-chip is-active">
-              {labels.allFilters}
-            </button>
-            {filters.map((f) => (
-              <button key={f.id} type="button" className="blog-chip" style={accentStyle(f.color)}>
-                {f.label}
-              </button>
-            ))}
-          </div>
-
-          {popularTags.length > 0 && (
-            <div className="blog-tags">
-              <span className="blog-tags__label">{labels.popularTags}</span>
-              <ul className="blog-tags__list">
-                {popularTags.map((tg) => (
-                  <li key={tg}>
-                    <button type="button" className="blog-tag">
-                      {tg}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <nav className="blog-filters" aria-label={labels.filtersLabel}>
+            {filters.map((f) =>
+              f.href ? (
+                <a key={f.id} href={f.href} className="blog-chip" style={accentStyle(f.color)}>
+                  {f.label}
+                </a>
+              ) : null,
+            )}
+          </nav>
         </noscript>
 
         {searchStatus === 'error' && (

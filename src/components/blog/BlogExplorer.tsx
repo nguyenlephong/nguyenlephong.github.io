@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } fro
 import { useTranslations } from 'next-intl'
 import { postStatsId } from '@/lib/firebase/postStats'
 import BlogPostCard from './BlogPostCard'
+import { useBlogCardClickTracking } from './BlogCardClickTracker'
 import {
   useExplorer,
   type ExplorerFilterOption,
@@ -64,6 +65,7 @@ export default function BlogExplorer({
   lead,
 }: BlogExplorerProps) {
   const t = useTranslations('Pages.blog')
+  useBlogCardClickTracking()
   const [loadedSearch, setLoadedSearch] = useState<{
     cards: CardMeta[]
     url: string
@@ -79,8 +81,13 @@ export default function BlogExplorer({
   } | null>(null)
 
   const filters: ExplorerFilterOption[] = useMemo(
-    () => categories.map((c) => ({ id: c.slug, label: c.title })),
-    [categories],
+    () =>
+      categories.map((c) => ({
+        id: c.slug,
+        label: c.title,
+        href: `/${locale}/blog/${c.slug}`,
+      })),
+    [categories, locale],
   )
 
   const categoryBySlug = useMemo(
@@ -149,7 +156,6 @@ export default function BlogExplorer({
   const explorer = useExplorer<CardMeta>(
     cards,
     filters,
-    popularTags,
     {
       key: (c) => c.post.slug,
       filterId: (c) => c.post.category,
@@ -162,6 +168,7 @@ export default function BlogExplorer({
     },
     {
       filterParam: 'cat',
+      locale,
       pageSize: CONTENT_PAGE_SIZE,
       staticPagination: {
         current: currentPage,

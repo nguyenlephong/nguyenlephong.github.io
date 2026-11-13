@@ -19,21 +19,6 @@ import {
 } from '@/lib/content/hub-page'
 import { canonicalFor } from '@/lib/seo/locale'
 
-const COPY = {
-  en: {
-    eyebrow: 'Notes topic',
-    back: 'Notes',
-    suffix: 'Notes topic',
-    empty: 'No published notes yet.',
-  },
-  vi: {
-    eyebrow: 'Chủ đề ghi chép',
-    back: 'Ghi chép',
-    suffix: 'Chủ đề ghi chép',
-    empty: 'Chưa có ghi chép đã xuất bản.',
-  },
-} as const
-
 export async function notesTopicMetadata(
   locale: string,
   topic: string,
@@ -58,8 +43,8 @@ export async function notesTopicMetadata(
   })
   const title =
     page === 1
-      ? `${hub.title} — ${COPY[resolvedLocale].suffix}`
-      : `${hub.title} — ${pageLabel}`
+      ? `${hub.title} | ${t('hubs.suffix')}`
+      : `${hub.title} | ${pageLabel}`
   const description = page === 1 ? hub.intro : `${hub.intro} ${pageLabel}.`
 
   return buildContentHubMetadata({
@@ -68,6 +53,7 @@ export async function notesTopicMetadata(
     path,
     title,
     description,
+    section: 'notes',
   })
 }
 
@@ -92,7 +78,6 @@ export default async function NotesTopicCollectionPage({
     locale: resolvedLocale,
     namespace: 'Pages.notes',
   })
-  const copy = COPY[resolvedLocale]
   const basePath = `/notes/topics/${topic}`
   const path = collectionPagePath(basePath, page)
   const canonical = canonicalFor(resolvedLocale, path)
@@ -119,7 +104,7 @@ export default async function NotesTopicCollectionPage({
         position: pageData.startIndex + index + 1,
       })),
       breadcrumb: {
-        rootName: copy.back,
+        rootName: t('hubs.back'),
         rootUrl: canonicalFor(resolvedLocale, '/notes'),
         hubName: hub.title,
         hubUrl: canonicalFor(resolvedLocale, basePath),
@@ -133,9 +118,9 @@ export default async function NotesTopicCollectionPage({
       hubId={topic}
       title={hub.title}
       intro={hub.intro}
-      eyebrow={copy.eyebrow}
+      eyebrow={t('hubs.eyebrow')}
       backHref="/notes"
-      backLabel={copy.back}
+      backLabel={t('hubs.back')}
       pageLabel={pageLabel}
       currentPage={page}
       totalPages={pageData.totalPages}
@@ -152,7 +137,7 @@ export default async function NotesTopicCollectionPage({
         readingLabel: t('readingTime', { minutes: note.readingMinutes }),
         position: pageData.startIndex + index + 1,
       }))}
-      emptyLabel={copy.empty}
+      emptyLabel={t('hubs.empty')}
       pagination={{
         label: t('controls.pagination.label'),
         previous: t('controls.pagination.prev'),

@@ -9,13 +9,13 @@
     {
       "topic": "tiet-kiem",
       "title": "Tài chính & Tiết kiệm",
-      "intro": "Cách quản lý dòng tiền cá nhân, giữ tiền trong túi và xây thói quen tài chính lành mạnh—viết cho người đi làm bình thường.",
+      "intro": "Cách quản lý dòng tiền cá nhân, giữ tiền trong túi và xây thói quen tài chính lành mạnh, viết cho người đi làm bình thường.",
       "order": 5
     },
     {
       "topic": "su-nghiep",
       "title": "Sự nghiệp & phát triển",
-      "intro": "Làm chủ con đường sự nghiệp của chính mình—xây kỹ năng, nâng giá trị thị trường, đàm phán thu nhập và phát triển bản thân bền vững cho người đi làm.",
+      "intro": "Làm chủ con đường sự nghiệp của chính mình: xây kỹ năng, nâng giá trị thị trường, đàm phán thu nhập và phát triển bản thân bền vững cho người đi làm.",
       "order": 1
     },
     {
@@ -27,13 +27,13 @@
     {
       "topic": "goc-nhin",
       "title": "Góc nhìn & Chiêm nghiệm",
-      "intro": "Những chiêm nghiệm cá nhân về cuộc sống, công việc và những câu hỏi không có lời đáp gọn gàng.",
+      "intro": "Những chiêm nghiệm cá nhân về cuộc sống, công việc và những câu hỏi không có lời đáp gọn gàng, viết chậm và không theo công thức nào.",
       "order": 3
     },
     {
       "topic": "thoughts",
       "title": "Vườn suy nghĩ",
-      "intro": "Những ghi chú ngắn còn đang lớn—quan sát nhỏ và ý nghĩ chưa tròn từ công việc và đời sống, được ghi lại trước khi chúng kịp trôi đi. Mỗi lần quay lại, chúng lại lớn thêm một chút.",
+      "intro": "Những ghi chú ngắn còn đang lớn: quan sát nhỏ và ý nghĩ chưa tròn từ công việc, đời sống, ghi lại trước khi trôi đi. Mỗi lần quay lại, chúng lớn thêm một chút.",
       "order": 4
     }
   ],
@@ -88,7 +88,6 @@
       "summary": "Mình từng đọc xong một cuốn sách rồi nhận ra mình gần như không kể lại được nó nói gì. Qua nhiều năm, nỗi khó chịu ấy thành một hệ thống đọc nhỏ: buông cảm giác tội lỗi với sách đọc dở, coi tủ sách như khu vườn thay vì hàng đợi, và một đường ống highlight-ôn tập giữ lại điều quan trọng mà không phải đọc lại điều không cần.",
       "cardSummary": "Ba vấn đề nhỏ người đọc nào cũng gặp, và hệ thống đọc giúp mình giữ lại điều thật sự cần.",
       "tags": [
-        "Thoughts",
         "Đọc sách",
         "Hệ thống học",
         "Ghi chú"
@@ -101,7 +100,6 @@
       "summary": "Suốt phần lớn lịch sử, biết nhiều tạo ra một lợi thế bị giới hạn bởi học vấn, địa lý, ngôn ngữ và quan hệ. AI lặng lẽ hạ thấp rào cản ấy: thông tin bớt khan hiếm, và thứ trở nên giá trị hơn là mọi điều xung quanh nó — tư duy trừu tượng, câu hỏi tốt hơn, và năng lực thẩm định câu trả lời. Dữ kiện giờ dễ tiếp cận hơn; cách đóng khung vấn đề mới là kỹ năng quan trọng.",
       "cardSummary": "Điểm nghẽn chuyển từ “có thông tin không” sang “đặt đúng câu hỏi chưa”.",
       "tags": [
-        "Thoughts",
         "AI",
         "Học tập",
         "Đặt câu hỏi"
@@ -114,10 +112,9 @@
       "summary": "Một app nhanh hơn hay một framework sắc hơn chỉ giúp được khi nó phục vụ đúng phần tư duy bên dưới. Ghi chú này nhắc mình cầm công cụ lỏng tay hơn: dùng như một thử nghiệm, bóc về first principles khi cần, và rời đi khi công cụ bắt đầu biến thành cái trần của cách mình nghĩ.",
       "cardSummary": "Công cụ tốt nên mở rộng cách mình nghĩ, không nên trở thành cái trần mới.",
       "tags": [
-        "Thoughts",
         "Công cụ",
         "Tư duy",
-        "First Principles Thinking"
+        "Tư duy nguyên lý gốc"
       ],
       "date": "2026-02-08"
     },
@@ -127,7 +124,6 @@
       "summary": "Diễn đạt là sự kiểm chứng tối hậu của tư duy: nếu bạn không đặt được một ý tưởng thành lời — khi viết, khi nói, hay trong một prompt — thì hoặc ý nghĩ chưa từng được kết luận, hoặc bạn chưa thật sự hiểu nó. Cảm giác dễ chịu 'mình hiểu rồi' sống vô hạn trong đầu, vì cái đầu không bao giờ đòi các mảnh phải khớp nhau. Trang giấy thì có.",
       "cardSummary": "Diễn đạt không chỉ ghi lại suy nghĩ; nó giúp suy nghĩ đi tới đoạn kết rõ hơn.",
       "tags": [
-        "Thoughts",
         "Viết",
         "Tư duy",
         "Giao tiếp"
@@ -140,7 +136,6 @@
       "summary": "Một ghi chú đọc Atomic Habits của James Clear về cách thói quen được xây bằng tín hiệu, ham muốn, phản hồi, phần thưởng, môi trường, identity và các cải thiện nhỏ lặp lại đủ lâu. Bài viết nhìn thói quen như một hệ thống gần gũi cho học tập, công việc và đời sống.",
       "cardSummary": "Một thói quen nhỏ có thể không đổi đời trong một ngày, nhưng nó đổi hướng hệ thống mỗi ngày một chút.",
       "tags": [
-        "Ghi chú sách",
         "Atomic Habits",
         "James Clear",
         "Thói quen",
@@ -160,7 +155,7 @@
         "Bát Giới",
         "Sa Tăng",
         "Bạch Long Mã",
-        "Teamwork",
+        "Làm việc nhóm",
         "Sự nghiệp"
       ],
       "date": "2026-05-07"
@@ -171,7 +166,6 @@
       "summary": "Một ghi chú đọc The 7 Habits of Highly Effective People của Stephen R. Covey, nhìn bảy thói quen như cách chọn điều đáng làm, giữ lời với chính mình, hợp tác cho đàng hoàng và biết nghỉ để đi đường dài — chứ không phải bảy mẹo nhồi thêm việc vào lịch.",
       "cardSummary": "Hiệu quả không nằm ở một ngày làm được bao nhiêu việc, mà ở việc mình còn tôn trọng cách mình đã sống và làm việc sau ngày đó.",
       "tags": [
-        "Ghi chú sách",
         "7 Habits",
         "Stephen Covey",
         "Phát triển bản thân",
@@ -187,7 +181,6 @@
       "summary": "Mỗi ngày mình đều múc vào đầu rất nhiều thứ: tin tức, cuộc trò chuyện, ý tưởng, hình ảnh, lời than phiền, một đoạn sách hay một cuộc họp dài. Ghi chú này dùng hình ảnh chiếc xô nhỏ để nhắc rằng sự chú ý có dung lượng hữu hạn; thứ mình nạp vào đều đặn sẽ quyết định cái cây bên trong được nuôi hay bị làm đục.",
       "cardSummary": "Sự chú ý có dung lượng hữu hạn; đầu vào mỗi ngày sẽ nuôi hoặc làm đục điều mình đang xây.",
       "tags": [
-        "Thoughts",
         "Sự chú ý",
         "Khẩu phần thông tin",
         "Thói quen"
@@ -200,12 +193,12 @@
       "summary": "Ta có lựa chọn, nhưng cũng bị định hình bởi thời điểm, bối cảnh, con người và những điều kiện mình không tự thiết kế. Bài viết bỏ khung xa vời để nhìn câu hỏi thực tế hơn: điều gì thuộc về mình, điều gì không, và làm sao một phản hồi vững vàng tạo ra tự do bên trong khi toàn bộ bức tranh chưa hiện rõ.",
       "cardSummary": "Đời sống vừa có lựa chọn vừa có hoàn cảnh; phản hồi là phần mình có thể luyện.",
       "tags": [
-        "Personal Reflection",
-        "Life Philosophy",
-        "Choice and Circumstance",
-        "Equanimity",
-        "Self-Mastery",
-        "Inner Freedom"
+        "Suy ngẫm",
+        "Triết lý sống",
+        "Lựa chọn và hoàn cảnh",
+        "Bình thản",
+        "Làm chủ bản thân",
+        "Tự do nội tâm"
       ],
       "date": "2026-02-23"
     },
@@ -215,7 +208,6 @@
       "summary": "AI agent có thể viết và đọc nhiều phần code hơn trước, nhưng điều đó không làm con người biến mất khỏi hệ thống. Ghi chú này nhìn lại câu nói “code viết cho người đọc”: có lẽ phần cần rõ ràng đang dịch lên một tầng cao hơn, từ từng dòng implementation sang prompt, spec, context và quyết định kiến trúc.",
       "cardSummary": "AI có thể viết code, nhưng con người vẫn cần viết rõ bối cảnh, ý định và trade-off.",
       "tags": [
-        "Thoughts",
         "Kỹ thuật phần mềm",
         "AI",
         "Code dễ đọc"
@@ -228,7 +220,6 @@
       "summary": "Cảm giác phải học cho đủ dễ biến mục lục thành checklist và khiến mình đọc lại những phần không còn cần thiết. Ghi chú này nhắc rằng ý tưởng lớn hơn một chương sách hay một khóa học cụ thể; điều quan trọng là biết mình đang cần hiểu gì, rồi để tri thức xuất hiện qua sách, dự án, cuộc trò chuyện và lần va chạm thật.",
       "cardSummary": "Học đủ không phải đọc hết; đôi khi là biết phần nào cần đi qua và phần nào có thể gặp lại sau.",
       "tags": [
-        "Thoughts",
         "Học tập",
         "Thiên kiến",
         "Sách"
@@ -244,7 +235,7 @@
         "Thiết kế hệ thống",
         "Kiến trúc phần mềm",
         "Sự đơn giản",
-        "Technical Debt",
+        "Nợ kỹ thuật",
         "Triết lý kỹ thuật",
         "Suy ngẫm"
       ],
@@ -256,7 +247,6 @@
       "summary": "Một ghi chú đọc How to Win Friends and Influence People của Dale Carnegie qua lăng kính công sở và đời sống: lắng nghe thật, nhớ tên người khác, khen chân thành, tránh tranh thắng thua, nói về điều người kia quan tâm, và giữ sự tử tế khỏi biến thành kỹ thuật thao túng.",
       "cardSummary": "Đắc Nhân Tâm đáng đọc nhất khi nó giúp mình quan tâm thật hơn, không phải khéo điều khiển người khác hơn.",
       "tags": [
-        "Ghi chú sách",
         "Đắc Nhân Tâm",
         "Dale Carnegie",
         "Giao tiếp",
@@ -271,12 +261,12 @@
       "summary": "Với người mình thấy khó gần, ta không cần lật mặt, hơn thua hay lớn tiếng. Bài viết giữ bốn ý thực tế: khi giá trị không hợp, dùng ít lời hơn; khi ai đó phản ứng từ so sánh, đừng biến nó thành bản sắc của mình; giữ khoảng cách với sự nhỏ nhen mà không trở nên nhỏ nhen; và hiểu điều đang xảy ra mà không cần phơi bày tất cả. Mục tiêu không phải hơn người, mà là bình an và tự chủ.",
       "cardSummary": "Người khó gần không cần kịch tính; họ cần ranh giới, sự rõ ràng và tự chủ.",
       "tags": [
-        "Personal Reflection",
-        "Emotional Maturity",
-        "Boundaries",
-        "Workplace Relationships",
-        "Self-Mastery",
-        "Life Philosophy"
+        "Suy ngẫm",
+        "Trưởng thành cảm xúc",
+        "Ranh giới",
+        "Quan hệ công sở",
+        "Làm chủ bản thân",
+        "Triết lý sống"
       ],
       "date": "2026-03-04"
     },
@@ -286,7 +276,6 @@
       "summary": "“Viết nhiều hơn” là lời khuyên tốt, nhưng chưa đủ. Mỗi kiểu viết có một nhiệm vụ khác nhau: viết để chú tâm, viết để hiểu, viết để nhớ, viết để truyền đạt hoặc để chuyển giao điều mình biết cho người khác. Ghi chú này giúp gọi tên đúng chế độ viết, để câu hỏi “mình viết tốt chưa?” có điểm tựa rõ hơn.",
       "cardSummary": "Viết tốt hơn bắt đầu từ việc biết mình đang viết để nghĩ, để nhớ, để chia sẻ hay để chuyển giao.",
       "tags": [
-        "Thoughts",
         "Viết",
         "Chú tâm",
         "Chia sẻ tri thức"
@@ -314,11 +303,10 @@
       "summary": "Đọc Đừng bao giờ đi ăn một mình của Keith Ferrazzi và Tahl Raz làm mình nghĩ lại về networking: không phải đi gom danh thiếp, cũng không phải tiếp cận người khác bằng sự thực dụng. Quan hệ tốt bắt đầu từ việc có mặt ở đúng sân chơi, làm việc đủ tốt để người khác nhớ, cho đi không ghi nợ, chuẩn bị trước mỗi cuộc gặp, follow up tử tế, và trở thành một người đủ hữu ích để cuộc trò chuyện có lý do tiếp tục.",
       "cardSummary": "Quan hệ tốt được xây trước khi cần, rồi được giữ ấm bằng sự tử tế và cụ thể.",
       "tags": [
-        "Ghi chú sách",
-        "Networking",
+        "Kết nối",
         "Keith Ferrazzi",
         "Mối quan hệ",
-        "Phát triển sự nghiệp",
+        "Sự nghiệp",
         "Giao tiếp"
       ],
       "date": "2026-04-05"
@@ -332,9 +320,9 @@
       "tags": [
         "Tây Du Ký",
         "Đường Tăng",
-        "Leadership",
+        "Lãnh đạo",
         "Trao quyền",
-        "Vision",
+        "Tầm nhìn",
         "Sự nghiệp"
       ],
       "date": "2026-05-09"
@@ -345,7 +333,6 @@
       "summary": "Đằng sau nhiều mục tiêu nghe rất lớn đôi khi là một cảm giác rất người: được tiến về phía trước, được yên ổn, được chạm vào khoảnh khắc “đúng rồi, là nó”. Ghi chú này rủ mình bóc bớt lớp câu chuyện quanh tham vọng để nhận ra cảm giác nào thật sự đang kéo mình đi, rồi chọn đường rõ hơn thay vì trôi theo mục tiêu mượn từ người khác.",
       "cardSummary": "Khi gọi tên được cảm giác mình thật sự tìm kiếm, mục tiêu trở nên thật và gần hơn.",
       "tags": [
-        "Thoughts",
         "Tự nhận thức",
         "Động lực",
         "La bàn nội tâm"
@@ -358,12 +345,12 @@
       "summary": "Tha thứ thường bị hiểu nhầm là chấp nhận hoặc làm hòa. Bài viết nhìn nó theo hướng khác: một cách để không cho vết thương cũ tiếp tục chiếm chỗ trong hiện tại. Tha thứ không xóa ranh giới; nó giúp mình buông đầu dây đang làm chính mình mỏi.",
       "cardSummary": "Tha thứ không xóa ranh giới; nó giúp mình đặt xuống phần nặng không cần giữ tiếp.",
       "tags": [
-        "Personal Reflection",
-        "Forgiveness",
-        "Letting Go",
-        "Emotional Healing",
-        "Self-Mastery",
-        "Life Philosophy"
+        "Suy ngẫm",
+        "Tha thứ",
+        "Buông bỏ",
+        "Chữa lành cảm xúc",
+        "Làm chủ bản thân",
+        "Triết lý sống"
       ],
       "date": "2026-03-03"
     },
@@ -373,11 +360,10 @@
       "summary": "Đọc Giải mã tâm trí kiểm soát cảm xúc của David Eagleman làm mình nghĩ về não bộ như một hệ thống sống luôn học tín hiệu mới: bản đồ cơ thể trên vỏ não có thể thay đổi, vùng ít dùng có thể bị vùng lân cận lấn vào, giấc mơ REM giữ vùng thị giác hoạt động trong lúc ngủ, giác quan có thể được thay thế qua thiết bị, công cụ có thể trở thành phần mở rộng của cơ thể, và trí nhớ không giống một ổ cứng hữu hạn. Bài ghi chú này nối các ý đó với học tập, AI, interface, và cách ta rèn một phản ứng cảm xúc bình tĩnh hơn bằng những vòng feedback nhỏ mỗi ngày.",
       "cardSummary": "Não không phải kho dữ liệu cố định; nó là giao diện thích nghi được huấn luyện bằng tín hiệu lặp lại.",
       "tags": [
-        "Ghi chú sách",
         "Khoa học não bộ",
         "David Eagleman",
-        "Neuroplasticity",
-        "Artificial Intelligence",
+        "Tính dẻo thần kinh",
+        "AI",
         "Phát triển bản thân"
       ],
       "date": "2026-04-07"
@@ -390,7 +376,7 @@
       "readingMinutes": 7,
       "tags": [
         "Tam Quốc",
-        "Leadership",
+        "Lãnh đạo",
         "Quản trị",
         "Công sở",
         "Startup",
@@ -404,12 +390,12 @@
       "summary": "Có người không tranh chỗ trong căn phòng, nhưng sự hiện diện của họ làm căn phòng tự điều chỉnh. Bài viết nhìn sự vững vàng lặng lẽ theo hướng thực tế: vì sao chỉ mềm có thể bị lấn, chỉ sắc có thể gây tổn thương, và sự trưởng thành nằm ở việc giữ được cả ấm áp lẫn ranh giới bằng phán đoán rõ.",
       "cardSummary": "Sự vững vàng thật giữ được cả ấm áp và ranh giới mà không nghiêng về cực đoan.",
       "tags": [
-        "Personal Reflection",
-        "Life Philosophy",
-        "Quiet Strength",
-        "Shadow Integration",
-        "Self-Mastery",
-        "Equanimity"
+        "Suy ngẫm",
+        "Triết lý sống",
+        "Sức mạnh thầm lặng",
+        "Phần bóng tối",
+        "Làm chủ bản thân",
+        "Bình thản"
       ],
       "date": "2026-02-25"
     },
@@ -420,8 +406,8 @@
       "cardSummary": "Quan hệ tốt làm công việc dễ thở hơn, nhưng kết quả có ý nghĩa mới thường làm người đi làm thấy mình đang thật sự đóng góp.",
       "tags": [
         "Sự nghiệp",
-        "Employee Happiness",
-        "Leadership",
+        "Hạnh phúc nhân viên",
+        "Lãnh đạo",
         "Kết quả",
         "Mục tiêu",
         "Công sở"
@@ -435,7 +421,6 @@
       "summary": "Khi cả phòng đồng ý với bạn tuyệt đối, hãy khựng lại trước khi coi đó là sự tán thành — sự nhất trí không sứt mẻ thường báo hiệu sự vắng mặt của những cái đầu độc lập hơn là sự hiện diện của một ý tưởng tốt. Chẳng cực nào là đích: một chút bất đồng là chất liệu của những con người đang thật sự suy nghĩ, thứ nên chào đón thay vì vuốt phẳng.",
       "cardSummary": "Bất đồng lành mạnh giúp ý tưởng đứng vững hơn trước khi bước ra khỏi căn phòng.",
       "tags": [
-        "Thoughts",
         "Làm việc nhóm",
         "Giao tiếp",
         "Ra quyết định"
@@ -448,7 +433,6 @@
       "summary": "Vài năm duy trì một vault tri thức cá nhân trong Obsidian, chưng cất thành những thói quen sống sót qua va chạm với thực tế: viết thẳng vào vault, viết ở chất lượng sẵn sàng cho người khác xem với từ khóa in đậm, liên kết không ngừng, và đừng sợ xóa. Vault không phải bãi rác — nó là cung điện nơi ý tưởng được củng cố.",
       "cardSummary": "Không phải hệ thống hoàn hảo từ đầu, chỉ là những thói quen ghi chú sống sót qua thực tế.",
       "tags": [
-        "Thoughts",
         "Ghi chú",
         "Obsidian",
         "Quản lý tri thức"
@@ -461,12 +445,12 @@
       "summary": "Con người hiếm khi phản ứng chỉ bằng dữ kiện. Họ phản ứng bằng cảm xúc, niềm tin và những câu chuyện đã có sẵn trong đầu. Bài viết gom mười lăm quan sát về ký ức, kiểm soát, giận dữ, kỳ vọng, niềm tin và hồi phục, với ví dụ công sở và đời sống để mình rõ hơn với người khác và dịu hơn với chính mình.",
       "cardSummary": "Con người được dẫn bởi dữ kiện, cảm xúc, niềm tin và câu chuyện cùng một lúc.",
       "tags": [
-        "Personal Reflection",
-        "Psychology",
-        "Human Behavior",
-        "Emotional Intelligence",
-        "Self-Awareness",
-        "Life Philosophy"
+        "Suy ngẫm",
+        "Tâm lý học",
+        "Hành vi con người",
+        "Trí tuệ cảm xúc",
+        "Tự nhận thức",
+        "Triết lý sống"
       ],
       "date": "2026-02-24"
     },
@@ -476,7 +460,6 @@
       "summary": "AI hiện đại có thể nhanh và rộng, nhưng bộ não người vẫn có một lợi thế nền tảng: nó tự tinh chỉnh qua từng lần sống, học, nhớ và kết nối ý tưởng. Ghi chú này so sánh weights đóng băng sau huấn luyện với tâm trí luôn mềm dẻo, để nhắc mình rằng khả năng học tiếp vẫn là phần rất đáng quý của con người.",
       "cardSummary": "AI giữ weights sau huấn luyện; con người vẫn tự chỉnh mình qua từng lần sống và học.",
       "tags": [
-        "Thoughts",
         "AI",
         "Bộ não",
         "Học tập"
@@ -489,7 +472,6 @@
       "summary": "Có lúc bảng pros-cons không giúp mình rõ hơn, mà chỉ thêm nhiều cách để các lựa chọn trông ngang nhau. Ghi chú này nói về những khoảnh khắc chọn một hướng đủ tốt còn nhẹ hơn việc tiếp tục tối ưu trong đầu, và vì sao cam kết đôi khi là cách duy nhất để có thêm dữ kiện thật.",
       "cardSummary": "Có lúc chọn một hướng đủ tốt dạy mình nhiều hơn việc đứng yên để tìm lựa chọn hoàn hảo.",
       "tags": [
-        "Thoughts",
         "Ra quyết định",
         "Nghĩ quá nhiều",
         "Hành động"
@@ -504,9 +486,9 @@
       "tags": [
         "Tư duy quy nạp",
         "Tư duy diễn dịch",
-        "First Principles Thinking",
+        "Tư duy nguyên lý gốc",
         "Ra quyết định",
-        "Phát triển sự nghiệp",
+        "Sự nghiệp",
         "Suy ngẫm"
       ],
       "date": "2026-04-02"
@@ -534,7 +516,7 @@
       "tags": [
         "Sự nghiệp",
         "Thái độ làm việc",
-        "Ownership",
+        "Tinh thần làm chủ",
         "Phát triển bản thân",
         "Kỷ luật",
         "Đi làm"
@@ -547,7 +529,6 @@
       "summary": "Nếu có thể gửi một mẩu thư ngắn về cho tuổi hai mươi của mình, nó sẽ không phải một chiến lược — chỉ một nhúm điều học được theo cách chậm rãi: xây hệ thống thay vì dựa vào ý chí, cứ ra mắt thứ chưa hoàn hảo, để ý những ngày bình thường, nhớ rằng bản ngã chỉ là hành khách, và nhân cách được chứng minh dưới áp lực, không phải trong êm ấm.",
       "cardSummary": "Không phải chiến lược sống, chỉ là vài điều học chậm rồi mới thấy đáng giữ.",
       "tags": [
-        "Thoughts",
         "Bài học cuộc sống",
         "Trưởng thành",
         "Tuổi trẻ"
@@ -560,7 +541,6 @@
       "summary": "Một vài quyết định lặp lại trong đời sống không cần được tranh luận lại mỗi ngày. Ghi chú này nhìn calendar, todo, trách nhiệm và nhịp reflection như các hệ con của một cỗ máy nhỏ: thứ giúp mình bớt tiêu hao vào những lựa chọn quen thuộc, để còn năng lượng cho phần cần phán đoán thật.",
       "cardSummary": "Việc lặp lại nên có rule đủ rõ, để mình không phải quyết lại từ đầu mỗi ngày.",
       "tags": [
-        "Thoughts",
         "Năng suất",
         "Hệ thống",
         "Thói quen"
@@ -576,7 +556,7 @@
       "tags": [
         "Tam Quốc",
         "Lưu Bị",
-        "Leadership",
+        "Lãnh đạo",
         "Quản trị",
         "Nhân sự",
         "Sự nghiệp"
@@ -604,7 +584,6 @@
       "summary": "Giữ việc quyết định và việc thực thi trong hai chế độ tách biệt, và đừng bao giờ để chúng chạy cùng lúc. Trong chế độ quyết định, dựa vào lịch sử của chính mình và nhớ rằng một lựa chọn tùy ý vẫn hơn một lựa chọn bốc đồng. Trong chế độ thực thi, không còn gì để cân nhắc — phán xét nước đi là việc của chế độ quyết định, sau này, với cái đầu nguội.",
       "cardSummary": "Tách quyết định khỏi thực thi giúp mình bớt kéo một việc theo hai hướng cùng lúc.",
       "tags": [
-        "Thoughts",
         "Ra quyết định",
         "Tập trung",
         "Kỷ luật"
@@ -617,7 +596,6 @@
       "summary": "Đọc Nhà Giả Kim của Paulo Coelho như một câu chuyện rất đời về ước mơ, mất mát, lao động, tình yêu, nỗi sợ và hành trình quay lại chính mình. Bài viết giữ các điểm chính từ ghi chú: cậu bé chăn cừu, giấc mơ Ai Cập, hai viên đá quyết định, cú mất tiền đầu đời, cửa hàng pha lê, Fatima, sa mạc, nhà giả kim và kho báu nằm gần nơi bắt đầu.",
       "cardSummary": "Một cách đọc grounded về ước mơ, dấu hiệu, lao động, tình yêu và kho báu quay về nơi bắt đầu.",
       "tags": [
-        "Ghi chú sách",
         "Paulo Coelho",
         "Nhà Giả Kim",
         "Phát triển bản thân",
@@ -632,9 +610,8 @@
       "summary": "Một ghi chú đọc Nhà Lãnh Đạo 360 về các ngộ nhận phổ biến của người ở vị trí cấp trung: chờ chức danh mới dám lãnh đạo, tưởng lên cao sẽ tự do hơn, nghĩ quyền lực chính thức sẽ khiến người khác đi theo, hoặc xem vị trí giữa chỉ là nơi tạm trú. Bài viết nhìn leadership như một quá trình tích lũy ảnh hưởng qua công việc thật, quan hệ thật, trách nhiệm thật và khả năng tạo giá trị từ đúng vị trí hiện tại.",
       "cardSummary": "Lãnh đạo không bắt đầu ở chiếc ghế cao hơn; nó bắt đầu từ ảnh hưởng tích cực mình tạo ra ở vị trí hiện tại.",
       "tags": [
-        "Ghi chú sách",
         "Nhà Lãnh Đạo 360",
-        "Leadership",
+        "Lãnh đạo",
         "Sự nghiệp",
         "Ảnh hưởng",
         "Công sở"
@@ -647,10 +624,9 @@
       "summary": "Một ghi chú đọc Nhà Lãnh Đạo 360 về lead across: cách tạo ảnh hưởng với đồng cấp khi không có quyền ra lệnh. Bài viết nhìn vào chu trình quan tâm, học hỏi, đánh giá cao, đóng góp và cùng thắng; đồng thời bàn về cạnh tranh lành mạnh, tránh đấu đá chính trị, mở rộng vòng tròn quan hệ, bảo vệ ý tưởng tốt nhất và không cần tỏ ra hoàn hảo trong công sở.",
       "cardSummary": "Lãnh đạo ngang bắt đầu khi mình giúp đồng cấp mạnh hơn, thay vì xem họ như đối thủ cần vượt qua.",
       "tags": [
-        "Ghi chú sách",
         "Nhà Lãnh Đạo 360",
-        "Lead Across",
-        "Leadership",
+        "Dẫn dắt đồng cấp",
+        "Lãnh đạo",
         "Đồng cấp",
         "Công sở"
       ],
@@ -662,10 +638,9 @@
       "summary": "Một ghi chú đọc Nhà Lãnh Đạo 360 về lead up: cách tạo ảnh hưởng với cấp trên bằng năng lực tự quản, chuẩn bị kỹ trước mỗi lần gặp, nói sự thật đúng lúc, mang giải pháp thay vì chỉ mang vấn đề, biết khi nào nên tiến hay lùi, và trở thành người chia sẻ gánh nặng cho tổ chức mà không đánh mất ranh giới cá nhân.",
       "cardSummary": "Lead up không phải nịnh sếp; đó là năng lực làm cho người phía trên và tổ chức ra quyết định tốt hơn.",
       "tags": [
-        "Ghi chú sách",
         "Nhà Lãnh Đạo 360",
-        "Lead Up",
-        "Leadership",
+        "Dẫn dắt cấp trên",
+        "Lãnh đạo",
         "Sự nghiệp",
         "Công sở"
       ],
@@ -677,10 +652,9 @@
       "summary": "Một ghi chú đọc Nhà Lãnh Đạo 360 về lead down: cách lãnh đạo cấp dưới không chỉ bằng giao việc và kiểm soát, mà bằng kết nối trực tiếp, nhìn thấy tiềm năng của từng người, cho họ vay niềm tin khi cần, phát triển con người dài hạn, đặt người vào đúng sở trường, làm gương, truyền tải tầm nhìn rõ ràng và tưởng thưởng đúng hành vi muốn lặp lại.",
       "cardSummary": "Lead down không chỉ là giao việc; đó là làm cho người phía dưới lớn lên trong lúc công việc được hoàn thành.",
       "tags": [
-        "Ghi chú sách",
         "Nhà Lãnh Đạo 360",
-        "Lead Down",
-        "Leadership",
+        "Dẫn dắt cấp dưới",
+        "Lãnh đạo",
         "Quản lý con người",
         "Công sở"
       ],
@@ -708,7 +682,6 @@
       "summary": "Có một nỗi mệt chẳng liên quan gì tới công việc: cuộc truy tìm bất tận chiếc app đúng, những buổi tối mất vào một bộ setup có thể bị bỏ trong vòng một tháng. Mẫu hình này cho cảm giác năng suất vì chọn công cụ cụ thể hơn nhiều so với đối diện vấn đề thật. Một câu để đổi hướng: ngừng cố chọn công cụ tốt nhất, bắt đầu dùng công cụ đang có tốt hơn.",
       "cardSummary": "Ngừng cố chọn công cụ tốt nhất; bắt đầu dùng công cụ đang có tốt hơn.",
       "tags": [
-        "Thoughts",
         "Công cụ",
         "Năng suất",
         "Tập trung"
@@ -721,7 +694,6 @@
       "summary": "Đứng ngoài quan sát, đọc luật hay diễn tập trong đầu đều có ích, nhưng không thay được cảm giác thật khi mình đang ở trong cuộc. Ghi chú này nhắc rằng chiến lược chỉ sống dậy khi va vào áp lực, phản hồi và những chỉnh sửa nhỏ chỉ xuất hiện sau khi mình thật sự chơi.",
       "cardSummary": "Muốn hiểu cuộc chơi, cuối cùng vẫn phải bước vào sân và chạm bóng thật.",
       "tags": [
-        "Thoughts",
         "Hành động",
         "Học qua làm",
         "Trải nghiệm"
@@ -734,10 +706,9 @@
       "summary": "Nếu xem tâm trí như một hệ điều hành nhỏ, calendar, todo và mental model không còn là công cụ rời rạc mà là cách mình lập lịch, xếp hàng đợi và chạy các framework sống. Ghi chú này nói về phần có thể “lập trình” trong chính mình: thiết kế hệ thống tốt hơn, reflection đều hơn và kỷ luật đủ tin cậy để bản vẽ thành đời sống.",
       "cardSummary": "Calendar, todo và mental model có thể trở thành một hệ vận hành nhỏ cho đời sống.",
       "tags": [
-        "Thoughts",
         "Hệ thống",
         "Năng suất",
-        "Mental Models"
+        "Mô hình tư duy"
       ],
       "date": "2026-01-25"
     },
@@ -747,7 +718,6 @@
       "summary": "Mỗi tầng trừu tượng là một giả định: nếu đúng chỗ, các thay đổi sau này xếp lên sạch hơn; nếu đến quá sớm, mọi thay đổi đặt lên nó đều khó gánh hơn. Cảm giác thỏa mãn khi đặt tên được mọi thứ là có thật — và chính điều đó khiến nó cần sự tiết chế. Khái quát hóa code chuyên biệt về sau thường dễ hơn gỡ rối một thiết kế trừu tượng quá đà.",
       "cardSummary": "Mỗi abstraction là một giả định; càng sớm càng cần khiêm tốn với giả định đó.",
       "tags": [
-        "Thoughts",
         "Kỹ thuật phần mềm",
         "Trừu tượng hóa",
         "Thiết kế code"
@@ -760,7 +730,6 @@
       "summary": "Code dễ đọc không chỉ nhờ comment dài hay tài liệu đầy đủ. Nhiều khi nó đến từ những tín hiệu rất nhỏ: tên biến, cấu trúc, cách đặt hàm, những dấu hiệu giúp người sau đoán đúng bối cảnh trước khi truy vết chi tiết. Ghi chú này gọi chúng là những ngọn hải đăng trong code.",
       "cardSummary": "Tên gọi và cấu trúc tốt là những ngọn đèn nhỏ giúp người đọc code đi đúng hướng.",
       "tags": [
-        "Thoughts",
         "Kỹ thuật phần mềm",
         "Code dễ đọc",
         "Đặt tên"
@@ -773,7 +742,6 @@
       "summary": "Highlight dễ cho cảm giác mình đang học, nhưng nếu không quay lại dùng, nó chỉ là một lớp màu đẹp trên trang. Ghi chú này hỏi lại ba điều đơn giản: vì sao mình highlight, highlight loại ý nào, và đoạn đó sẽ dẫn tới hành động, câu hỏi hay lần dùng lại nào sau này.",
       "cardSummary": "Highlight chỉ có giá trị khi nó còn dẫn tới một hành động, một câu hỏi hoặc một lần dùng lại.",
       "tags": [
-        "Thoughts",
         "Đọc sách",
         "Ghi chú",
         "Học tập"
@@ -832,7 +800,6 @@
       "summary": "Từ How to Read a Book: quan hệ giữa người viết và người đọc giống hệt giữa pitcher và catcher trong bóng chày. Cả ném-viết lẫn bắt-đọc đều là nỗ lực chủ động, đòi hỏi sức — không có chuyện bắt bóng thụ động, và ý nghĩa không tự bay vào tâm trí. Thành công của cả hoạt động nằm ở việc hai bên phối hợp tốt tới đâu.",
       "cardSummary": "Đọc không phải nhận nghĩa sẵn; nó là một động tác chủ động cần sức và sự chú tâm.",
       "tags": [
-        "Thoughts",
         "Đọc sách",
         "Viết",
         "Giao tiếp"
@@ -845,7 +812,6 @@
       "summary": "Định nghĩa một suy nghĩ giá trị không dễ, nhưng mình có thể nhận ra những vòng nghĩ không đưa tới đâu: tua lại quá khứ chỉ để tua, tự tô vẽ bản thân, hoặc xoay quanh vấn đề không có hành động khả thi. Ghi chú này tìm những dấu vết ngược lại: một bước tiếp theo, một câu hỏi rõ hơn, hoặc một hiểu biết mới.",
       "cardSummary": "Suy nghĩ có giá trị thường để lại một bước tiếp theo, một câu hỏi rõ hơn hoặc một hiểu biết mới.",
       "tags": [
-        "Thoughts",
         "Tư duy",
         "Tự nhận thức",
         "Chú tâm"
@@ -858,7 +824,7 @@
       "summary": "Ở tầng lãnh đạo, tiềm năng chưa đủ; người ta cần bằng chứng. Bạn đã quản lý P&L, chịu trách nhiệm doanh thu, quyết định khi dữ liệu chưa đủ, dẫn dắt liên phòng ban và quản trị rủi ro chưa? Bài viết đi qua năm con đường quen thuộc tới C-level trong tập đoàn lớn — FMCG, Tech, Finance, Consulting và Legal/Risk — cùng vai trò thật của MBA/Master và bước chuyển từ chuyên môn sang tư duy chủ doanh nghiệp.",
       "cardSummary": "Năng lực lãnh đạo được xây bằng bằng chứng, phạm vi và business judgement, không chỉ chức danh.",
       "tags": [
-        "Phát triển sự nghiệp",
+        "Sự nghiệp",
         "Lãnh đạo",
         "C-Level",
         "Sự nghiệp điều hành",
@@ -873,12 +839,12 @@
       "summary": "Tiền lương có thể chỉ là vòng lặp nhận, chi và chờ kỳ sau. Nó cũng có thể trở thành vốn mồi: nhiên liệu đầu tiên cho tài sản, dòng tiền và những lựa chọn tương lai. Bài viết nói về cách biến lương thành tài sản, tài sản thành dòng tiền, nâng cấp lối sống đúng thời điểm, thử một việc kinh doanh nhỏ bằng kỷ luật, và tự do tài chính thật sự mua được gì: không phải lười biếng, mà là nhiều quyền lựa chọn hơn.",
       "cardSummary": "Tiền lương mạnh hơn khi được dùng như vốn mồi cho những lựa chọn tương lai.",
       "tags": [
-        "Personal Reflection",
-        "Personal Finance",
-        "Financial Freedom",
-        "Wealth Building",
-        "Entrepreneurship",
-        "Life Philosophy"
+        "Suy ngẫm",
+        "Tài chính cá nhân",
+        "Tự do tài chính",
+        "Tích lũy tài sản",
+        "Khởi nghiệp",
+        "Triết lý sống"
       ],
       "date": "2026-03-02"
     },
@@ -903,7 +869,6 @@
       "summary": "Ngoài năm giác quan còn một tín hiệu bên trong bừng lên khi bộ não tự cảm nhận chính nó — một chớp lóe phi ngôn từ, đến trước khi bạn kịp có lời cho nó. Những trực giác ấy là nhiều năm kinh nghiệm được nén lại: suy luận thì đắt như inference với đầy đủ ngữ cảnh, trực giác thì rẻ như một mô hình đã luyện trả lời từ trọng số. Nhưng hành động luôn đi trước trực giác, không bao giờ ngược lại.",
       "cardSummary": "Trực giác là tín hiệu nén từ trải nghiệm; đáng nghe, nhưng vẫn cần được kiểm chứng.",
       "tags": [
-        "Thoughts",
         "Trực giác",
         "Kinh nghiệm",
         "Tự nhận thức"
@@ -931,9 +896,9 @@
       "summary": "Nhiều engineer đi từng đợt thăng chức và hy vọng chỉ cần nỗ lực là đủ. Người đi có chủ đích thường làm một việc trước: hiểu bản đồ. Bài viết dùng career ladder software engineering — nhánh IC, nhánh technical, nhánh managerial — để nhìn mỗi nấc thưởng điều gì, chọn hướng ra sao và cải thiện theo ngày, tháng, quý, năm mà không bị so sánh kéo đi.",
       "cardSummary": "Career map biến tham vọng mơ hồ thành các bước kế tiếp rõ hơn.",
       "tags": [
-        "Phát triển sự nghiệp",
-        "Software Engineering",
-        "Career Path",
+        "Sự nghiệp",
+        "Kỹ thuật phần mềm",
+        "Lộ trình sự nghiệp",
         "Phát triển bản thân",
         "Lãnh đạo",
         "Cố vấn"
@@ -946,7 +911,6 @@
       "summary": "Làm phần mềm có thể giống xếp Lego qua nhiều tầng abstraction: học viên gạch nền, rồi khối ghép sẵn, rồi những khối được xây từ khối khác. Đến một lúc, mình biết dùng rất nhiều thứ nhưng không còn thấy rõ bên dưới thật sự vận hành ra sao. Ghi chú này gọi tên kiểu mệt đó: mệt vì học quá nhiều lớp nhân tạo mà không còn chạm được nền.",
       "cardSummary": "Mệt mỏi kỹ thuật thường đến từ việc đi qua quá nhiều abstraction mà không còn thấy nền bên dưới.",
       "tags": [
-        "Thoughts",
         "Kỹ thuật phần mềm",
         "Nghề nghiệp",
         "Học tập"
@@ -974,7 +938,6 @@
       "summary": "Cơn hứng ban đầu đánh lừa bạn xem nhẹ ma sát của một thói quen mới khi ánh hào quang phai đi. Cách sửa ngược đời: nhắm thấp xuống — mười phút luyện tập, mười thẻ flashcard, một ghi chú mỗi ngày — nhỏ đủ để đạt được kể cả ngày tồi tệ. Và hãy dừng khi còn đang muốn thêm: cơn thèm chưa tiêu hết ấy chính là thứ kéo bạn quay lại ngày mai.",
       "cardSummary": "Bắt đầu nhỏ đến mức hơi chán giúp thói quen còn đủ lực để quay lại ngày mai.",
       "tags": [
-        "Thoughts",
         "Thói quen",
         "Sự đều đặn",
         "Trưởng thành"
@@ -987,7 +950,6 @@
       "summary": "Đọc Tâm lý học hành vi của Katy Milkman làm mình nghĩ lại về thay đổi: không phải lời hứa thật lớn, mà là cách thiết kế những khoảnh khắc rất nhỏ quanh mình. Từ fresh start effect, temptation bundling, commitment device, implementation intention, friction, sự tự tin đến social proof, bài ghi chú này giữ lại những điều có thể áp dụng trong công việc, học tập và đời sống: bình tĩnh, thực tế, và đủ gần để bắt đầu bằng một tín hiệu nhỏ hôm nay.",
       "cardSummary": "Thay đổi bền thường bắt đầu từ một khoảnh khắc được thiết kế tốt hơn, không phải một lời hứa lớn hơn.",
       "tags": [
-        "Ghi chú sách",
         "Tâm lý học hành vi",
         "Katy Milkman",
         "Thói quen",
@@ -1002,7 +964,6 @@
       "summary": "Một bài ghi chú cẩn trọng về Tâm Lý Học Tội Phạm: Phác Thảo Chân Dung Kẻ Phạm Tội của Diệp Hồng Vũ. Bài viết không giật gân hóa các vụ án, mà tập trung vào profiling, cách hiện trường và hành vi để lại manh mối, việc thu hẹp scope điều tra, ảnh hưởng của môi trường tuổi thơ, và bài học quan sát chi tiết trong công việc lẫn đời sống.",
       "cardSummary": "Một cách đọc tỉnh táo về profiling, manh mối nhỏ, môi trường tuổi thơ và kỷ luật quan sát.",
       "tags": [
-        "Ghi chú sách",
         "Tâm lý học tội phạm",
         "Profiling",
         "Quan sát",
@@ -1020,7 +981,7 @@
       "tags": [
         "Tam Quốc",
         "Tào Tháo",
-        "Leadership",
+        "Lãnh đạo",
         "Quản trị",
         "Hệ thống",
         "Sự nghiệp"
@@ -1035,10 +996,10 @@
       "readingMinutes": 7,
       "tags": [
         "Tây Du Ký",
-        "Project Management",
-        "Teamwork",
+        "Quản lý dự án",
+        "Làm việc nhóm",
         "Agile",
-        "Incident",
+        "Sự cố",
         "Sự nghiệp"
       ],
       "date": "2026-05-06"
@@ -1051,10 +1012,10 @@
       "readingMinutes": 6,
       "tags": [
         "Sự nghiệp",
-        "Mindset",
-        "Teamwork",
+        "Tư duy",
+        "Làm việc nhóm",
         "Bao dung",
-        "Leadership",
+        "Lãnh đạo",
         "Phát triển bản thân"
       ],
       "date": "2026-05-10"
@@ -1065,11 +1026,10 @@
       "summary": "Đọc The 48 Laws of Power của Robert Greene như một bản đồ phòng vệ hơn là cẩm nang thao túng: quyền lực hiện ra qua authority, reputation, attention, timing, dependence, options, tiền, kế hoạch, chiến thắng biết dừng, đổi mới có nhịp chuyển, và khả năng linh hoạt mà vẫn giữ ranh giới đạo đức.",
       "cardSummary": "Một cách đọc quyền lực qua tín hiệu, timing, options và đạo đức thay vì thao túng.",
       "tags": [
-        "Ghi chú sách",
         "Robert Greene",
         "Quyền lực",
         "Sự nghiệp",
-        "Leadership",
+        "Lãnh đạo",
         "Đạo đức"
       ],
       "date": "2026-04-08"
@@ -1080,12 +1040,12 @@
       "summary": "Nhiều mệt mỏi đến từ việc cố làm mọi người hài lòng. Sự công nhận, lời khen và ánh nhìn của người khác có thể thành một vòng lặp không có điểm dừng. Bài viết gợi ý năm thực hành nhỏ để quay về với mình: nhìn vào trong, làm vì giá trị hơn là lời khen, đo bằng đường của mình, giữ một kỷ luật nhỏ và chăm các mối quan hệ mà không đánh mất bản thân.",
       "cardSummary": "Sự công nhận rất dễ đổi chiều; đời sống yên hơn khi tâm điểm quay lại bên trong.",
       "tags": [
-        "Personal Reflection",
-        "Self-Worth",
-        "Healthy Habits",
-        "Mental Wellbeing",
-        "Self-Mastery",
-        "Life Philosophy"
+        "Suy ngẫm",
+        "Giá trị bản thân",
+        "Thói quen lành mạnh",
+        "Sức khỏe tinh thần",
+        "Làm chủ bản thân",
+        "Triết lý sống"
       ],
       "date": "2026-02-27"
     },
@@ -1095,7 +1055,6 @@
       "summary": "Khoảnh khắc một ý tưởng nảy ra là lúc động lực hữu cơ của nó cao nhất — từ đó nó phân rã, thường nhanh hơn ta tưởng. Trì hoãn không ướp một việc trong hổ phách; nó để điện tích rò rỉ dần. Cách giảm thiểu: một hành động tượng trưng, bước nhỏ nhất phá vỡ ma sát tĩnh và cho động lực một chỗ bám.",
       "cardSummary": "Trì hoãn không giữ nguyên động lực; nó để điện tích của ý tưởng rò đi từng chút.",
       "tags": [
-        "Thoughts",
         "Trì hoãn",
         "Năng suất",
         "Hành động"
@@ -1109,7 +1068,7 @@
       "cardSummary": "Tiến bộ nhìn thấy được thường là phần nổi lên của một quá trình tích lũy âm thầm.",
       "tags": [
         "Phát triển bản thân",
-        "Phát triển sự nghiệp",
+        "Sự nghiệp",
         "Tư duy dài hạn",
         "Trì hoãn hưởng thụ",
         "Tích lũy",
@@ -1123,7 +1082,6 @@
       "summary": "Có lúc câu trả lời đã ở trong mình, chỉ là nó bất tiện nên mình không muốn nghe. Ghi chú này gợi ý ba tín hiệu để chọn việc tiếp theo: việc mình đang né, việc phá vỡ cảm giác đủ đầy giả tạo, và giấc mơ mình hay gạt đi là viển vông. Chúng thường không dễ chịu, nhưng lại chỉ đúng nơi cần nhìn.",
       "cardSummary": "Khi không biết làm gì, hãy nhìn vào việc mình né tránh, điều làm mình không yên và ước mơ bị gạt đi.",
       "tags": [
-        "Thoughts",
         "Phương hướng",
         "Tự nhận thức",
         "Ra quyết định"
@@ -1136,12 +1094,12 @@
       "summary": "Có những người không vội cho bạn thấy tất cả những gì họ biết. Họ nghe nhiều hơn giải thích, đứng chậm hơn tiếng ồn một chút và hành động rõ khi thời điểm cần. Bài viết giữ tinh thần của 大智若愚, nhưng đọc theo hướng thực tế: không phải chuyện xa vời, mà là tự chủ, biết thời điểm và không cần thắng trong mọi căn phòng.",
       "cardSummary": "Sức mạnh lặng lẽ thường là sự tự chủ, đúng thời điểm và không cần biểu diễn.",
       "tags": [
-        "Personal Reflection",
-        "Life Philosophy",
-        "Quiet Strength",
-        "Self-Mastery",
-        "Strategy",
-        "Taoism"
+        "Suy ngẫm",
+        "Triết lý sống",
+        "Sức mạnh thầm lặng",
+        "Làm chủ bản thân",
+        "Chiến lược",
+        "Đạo giáo"
       ],
       "date": "2026-02-26"
     },
@@ -1166,12 +1124,12 @@
       "summary": "Câu chuyện cũ về người mất ngựa thường được kể như bài học về may rủi đổi chiều. Bài viết đọc nó theo hướng đời thường hơn: phán đoán đầu tiên của ta về một sự kiện thường chưa đủ dữ kiện. Thực hành không phải là bớt quan tâm, mà là khoan vội kết luận, ở lại với hiện tại và phản hồi rộng hơn cảm xúc đầu tiên.",
       "cardSummary": "Kết luận đầu tiên thường chưa đủ; giữ nó nhẹ giúp hiện tại có thêm khoảng thở.",
       "tags": [
-        "Personal Reflection",
-        "Life Philosophy",
-        "Equanimity",
-        "Gratitude",
-        "Taoism",
-        "Letting Go"
+        "Suy ngẫm",
+        "Triết lý sống",
+        "Bình thản",
+        "Biết ơn",
+        "Đạo giáo",
+        "Buông bỏ"
       ],
       "date": "2026-02-22"
     },
@@ -1181,8 +1139,7 @@
       "summary": "Vài khuôn mẫu lặp lại đáng tin tới mức chúng giống định luật vật lý hơn lời khuyên: quán tính (khởi động tốn hơn duy trì), trọng lực (nhắm nhỉnh hơn năng lực hiện tại một chút), entropy (bỏ mặc là mọi thứ rã ra — trật tự cần năng lượng liên tục), và sóng (đáy thấp chính là thứ làm nên đỉnh cao).",
       "cardSummary": "Một vài quy luật của thói quen và công việc lặp lại chắc đến mức giống vật lý đời thường.",
       "tags": [
-        "Thoughts",
-        "Mental Models",
+        "Mô hình tư duy",
         "Thói quen",
         "Bài học cuộc sống"
       ],
@@ -1224,7 +1181,6 @@
       "summary": "Đọc thêm tạo cảm giác đang tiến lên, nhưng năng lực chỉ hình thành khi kiến thức đi qua một lần thử cụ thể. Lối ra không phải ngừng đọc, mà là chọn đầu ra trước khi chọn đầu vào, học đúng lúc cần và đếm những việc đã làm thay vì số thứ đã lưu.",
       "cardSummary": "Chọn đầu ra trước khi chọn đầu vào, để điều đã đọc có một chỗ biến thành việc làm.",
       "tags": [
-        "Thoughts",
         "Học tập",
         "Trì hoãn",
         "Khẩu phần thông tin"
@@ -1238,7 +1194,6 @@
       "summary": "Ghi chú đọc The Visual MBA của Jason Barron qua các mảng lãnh đạo, tài chính, kế toán quản trị, marketing, vận hành, nhân sự, thương lượng, chiến lược, đạo đức, startup, đổi mới, hiệu suất và quản trị toàn cầu. Bài viết giữ lại tinh thần ghi chú gốc: thực tế, hơi vui, ưu tiên công thức có thể áp dụng, và xem kinh doanh như một hệ thống gồm con người, tiền, sản phẩm, thị trường và năng lực triển khai.",
       "cardSummary": "Một ghi chú gọn về business basics: tiền, người, sản phẩm, vận hành, chiến lược và khả năng triển khai.",
       "tags": [
-        "Ghi chú sách",
         "The Visual MBA",
         "Jason Barron",
         "Kinh doanh",
@@ -1254,7 +1209,6 @@
       "summary": "Một ghi chú đọc The World Is Flat của Thomas L. Friedman với góc nhìn hiện đại: toàn cầu hóa, outsourcing, phần mềm, Internet và cộng tác xuyên biên giới làm cơ hội mở rộng hơn, nhưng cũng làm cạnh tranh, kỹ năng, tiếng Anh, kỷ luật tự học và khả năng thích nghi trở nên quan trọng hơn.",
       "cardSummary": "Thế giới phẳng hơn mở thêm cửa, nhưng người đi qua cửa vẫn cần kỹ năng, ngôn ngữ, kỷ luật và khả năng thích nghi.",
       "tags": [
-        "Ghi chú sách",
         "The World Is Flat",
         "Thomas Friedman",
         "Toàn cầu hóa",
@@ -1269,12 +1223,12 @@
       "summary": "Có những bài học khó truyền qua lời khuyên. Chúng đến từ các mẫu hình mình nhận ra theo thời gian: đọc hành vi thay vì một khoảnh khắc, giữ ranh giới, giúp đúng lúc, hứa ít hơn và làm nhiều hơn, giữ lại một phần như sự tự trọng chứ không phải lạnh lùng. Đây không phải hoài nghi; đó là cách bình tĩnh hơn để sống với người khác, giới hạn và chính mình.",
       "cardSummary": "Trải nghiệm dạy chậm: đọc mẫu hình, giữ ranh giới và tử tế mà không tùy tiện.",
       "tags": [
-        "Personal Reflection",
-        "Life Philosophy",
-        "Life Lessons",
-        "Boundaries",
-        "Wisdom",
-        "Self-Mastery"
+        "Suy ngẫm",
+        "Triết lý sống",
+        "Bài học cuộc sống",
+        "Ranh giới",
+        "Trí tuệ",
+        "Làm chủ bản thân"
       ],
       "date": "2026-02-28"
     },
@@ -1284,7 +1238,6 @@
       "summary": "Một cách đọc bình tĩnh về Think and Grow Rich của Napoleon Hill: khát vọng, niềm tin, tự kỷ ám thị, kiến thức chuyên môn, óc tưởng tượng, kế hoạch rõ ràng và bộ câu hỏi tự kiểm điểm giúp tham vọng bớt là cảm xúc nhất thời, trở thành một hệ thống có thể soi lại mỗi ngày.",
       "cardSummary": "Một ghi chú grounded về khát vọng, niềm tin, kế hoạch, kiến thức chuyên môn và self-audit.",
       "tags": [
-        "Ghi chú sách",
         "Napoleon Hill",
         "Think and Grow Rich",
         "Nghĩ giàu làm giàu",
@@ -1299,7 +1252,6 @@
       "summary": "Ta nghĩ nhanh hơn ta làm — tâm trí phóng trước ba nước trong khi đôi tay còn ở bước một, và khoảng hở ấy có thể khiến ta tưởng mọi thứ đang sai dù chưa chắc vậy. Nhịp thực dụng: nghĩ vừa đủ để làm, làm, rồi nghĩ tiếp với những gì vừa học được. Nghĩ mà không làm là tưởng tượng; làm mà không nghĩ là bốc đồng; năng lực hành động là sự hợp nhất của cả hai.",
       "cardSummary": "Một vòng nghĩ-làm dạy nhiều hơn nhiều vòng chỉ nghĩ trong đầu.",
       "tags": [
-        "Thoughts",
         "Hành động",
         "Năng suất",
         "Chủ động"
@@ -1312,7 +1264,6 @@
       "summary": "Mình từng tin quá mạnh rằng suy nghĩ có thể giải quyết mọi thứ. Nó trở thành cái cớ để mình né hành động, khoác lên mình vẻ chuyên cần. Phép tính khó chịu: những ý tưởng mới mất dần trọng lượng trong khi ý tưởng hiện tại còn nằm đó chưa được thử — và suy nghĩ quyến rũ chính vì, trong đầu bạn, ý tưởng chưa phải va vào ma sát thật.",
       "cardSummary": "Suy nghĩ có thể là nơi trú ẩn dễ chịu nếu nó không chạm vào hành động.",
       "tags": [
-        "Thoughts",
         "Trì hoãn",
         "Hành động",
         "Tự nhận thức"
@@ -1325,7 +1276,6 @@
       "summary": "Ghi chú đọc Thinking Fast and Slow - Tư duy nhanh và chậm của Daniel Kahneman qua các chương 1-9, 21-23 và 25: System 1/System 2, nỗ lực chú ý, System 2 lười, priming, nhận thức lỏng, framing, halo effect, checklist, trực giác chuyên gia, góc nhìn bên ngoài, Bernoulli, tâm lý sợ mất mát, lý thuyết triển vọng và biến cố hiếm có.",
       "cardSummary": "Một ghi chú về những lúc cái đầu tự trả lời quá nhanh, rồi mình phải học cách bắt nó chậm lại.",
       "tags": [
-        "Ghi chú sách",
         "Thinking Fast and Slow",
         "Tư duy nhanh và chậm",
         "Daniel Kahneman",
@@ -1344,8 +1294,8 @@
       "tags": [
         "Tây Du Ký",
         "Tôn Ngộ Không",
-        "10x Talent",
-        "Leadership",
+        "Nhân tài 10x",
+        "Lãnh đạo",
         "Ranh giới",
         "Sự nghiệp"
       ],
@@ -1373,9 +1323,8 @@
       "summary": "Mặc định nghi ngờ mọi thứ làm tâm trí rất mệt, nhưng tin mà không có ranh giới cũng dễ khiến mình tự đánh mất dữ kiện. Ghi chú này nhìn niềm tin như một heuristic để đời sống nhẹ hơn: bắt đầu bằng thiện chí, quan sát bằng sự tỉnh táo và để ranh giới giữ cho niềm tin không thành ngây thơ.",
       "cardSummary": "Mặc định tin giúp tâm trí nhẹ hơn; ranh giới giúp niềm tin vẫn có dữ kiện.",
       "tags": [
-        "Thoughts",
         "Niềm tin",
-        "Heuristic",
+        "Lối tắt tư duy",
         "Triết lý sống"
       ],
       "date": "2026-01-11"
@@ -1386,8 +1335,6 @@
       "summary": "Một ghi chú đọc The Art of Thinking in Systems qua chuyện đi làm: vấn đề lặp lại thường không nằm ở một người hay một sự cố riêng lẻ, mà ở nút nghẽn, độ trễ, cơ chế khuyến khích và vòng phản hồi vẫn đang âm thầm tạo ra cùng một kết quả.",
       "cardSummary": "Khi một lỗi cứ quay lại, đừng chỉ nhìn chỗ đang ồn nhất; hãy nhìn vòng lặp vẫn đều đặn sản xuất ra nó.",
       "tags": [
-        "Ghi chú sách",
-        "Systems Thinking",
         "Tư duy hệ thống",
         "Ra quyết định",
         "Công việc",
@@ -1401,7 +1348,6 @@
       "summary": "Một vault ghi chú có thể là đồ thị rất giàu, nhưng mình vẫn đi qua nó bằng từ ngữ. Nếu cùng một ý hôm nay gọi là “information overload”, hôm sau lại gọi là “consumption pattern”, hai ghi chú có thể không bao giờ gặp nhau. Ghi chú này nhắc rằng vốn từ nhất quán không chỉ giúp tìm lại ý tưởng; nó còn định hình những gì mình nghĩ được.",
       "cardSummary": "Đổi tên endpoint làm client gãy; đổi từ trong second brain cũng làm ý tưởng lạc nhau.",
       "tags": [
-        "Thoughts",
         "Quản lý tri thức",
         "Vốn từ",
         "Ghi chú"
@@ -1429,7 +1375,6 @@
       "summary": "Nếu ngày mai mình lập một công ty phần mềm, đây là những nguyên tắc mình sẽ mã hóa vào DNA của nó trước khi viết một dòng code: mặc định cởi mở, quan điểm mạnh nhưng giữ lỏng, không có 'thiên tài khó ở', tuyển dụng builder-first qua contract-to-hire, các pod nhỏ thay cho quản lý cấp trung, một 'glory list' thay cho OKR, và một giao thức giao tiếp coi mention như hộp thư.",
       "cardSummary": "Một công ty giả định, nhưng các nguyên tắc thì đủ thật để tự soi lại cách làm việc.",
       "tags": [
-        "Thoughts",
         "Khởi nghiệp",
         "Văn hóa",
         "Tuyển dụng"
@@ -1442,7 +1387,6 @@
       "summary": "Một chồng ghi chú bạn không bao giờ quay lại chỉ là một kiểu bừa bộn gọn gàng hơn. Ghi chú xứng đáng tồn tại vì một lý do khiêm tốn hơn: tâm trí tuyệt vời ở việc nghĩ và tệ hại ở việc lưu. Một ghi chú tốt lập trình cho phiên bản tương lai của bạn và mang tiếp những gì bạn từng hiểu — và tay nghề của ghi chú quyết định bao nhiêu phần bị mất trong cú chuyển giao ấy.",
       "cardSummary": "Tâm trí giỏi suy nghĩ hơn lưu trữ; ghi chú tốt là một cách đỡ tải khiêm tốn.",
       "tags": [
-        "Thoughts",
         "Ghi chú",
         "Trí nhớ",
         "Quản lý tri thức"
@@ -1455,7 +1399,6 @@
       "summary": "Khi nét mặt, giọng nói và hoàn cảnh biến mất khỏi khung chat, người đọc phải tự điền phần còn thiếu — thường bằng cách hiểu căng hơn dự định của người gửi. Có thể bù lại từ hai phía: người viết thêm bối cảnh vừa đủ, người đọc chừa một nhịp trước khi kết luận.",
       "cardSummary": "Khung chat làm mất giọng nói và nét mặt; thêm bối cảnh khi viết, thêm khoảng thở khi đọc.",
       "tags": [
-        "Thoughts",
         "Giao tiếp",
         "Làm việc từ xa",
         "Làm việc nhóm"
@@ -1469,7 +1412,6 @@
       "summary": "Một kiểu viết mà trang giấy không phải đích đến — chính việc viết mới là. Ghi chú thoáng qua, nét vẽ nguệch ngoạc, chữ viết trên tablet: cốt lõi là sự hiện diện, để một phần trong bạn chủ động vươn về phía ý nghĩ. Bắt đầu không ma sát, dùng xong là bỏ — xử lý chúng, rồi vứt đi.",
       "cardSummary": "Trang giấy không phải đích đến; hành động viết mới là cách kéo sự chú ý trở về.",
       "tags": [
-        "Thoughts",
         "Viết",
         "Chú tâm",
         "Hiện diện"
@@ -1482,7 +1424,6 @@
       "summary": "Viết thành câu hoàn chỉnh là cách rất thật để thấy các khoảng trống trong hiểu biết của bạn — trong đầu bạn có thể gật gù với một ý tưởng, nhưng trên trang giấy mọi khoảng trống đều tự hiện ra. Nhọc công mà cũng đầy vui thú, đó là cách permanent notes ra đời; và nếu một ghi chú đọc lại thấy nhạt, có thể ý nghĩ chưa được ghim đủ rõ.",
       "cardSummary": "Trang viết cho thấy lỗ hổng hiểu biết mà trong đầu mình dễ bỏ qua.",
       "tags": [
-        "Thoughts",
         "Viết",
         "Thấu hiểu",
         "Chia sẻ tri thức"
@@ -1495,12 +1436,12 @@
       "summary": "Công việc hiện đại dễ khiến nghỉ ngơi trông như điều đáng nghi, như thể dừng lại là tụt lại. Bài viết nhìn lại vì sao bận rộn hay bị nhầm với giá trị, nghỉ thật khác với lướt điện thoại ra sao, lịch quá kín làm hao người lớn và trẻ em thế nào, và vì sao hồi phục là điều kiện để tiến bộ tiếp tục.",
       "cardSummary": "Nghỉ ngơi không phải phần thưởng sau khi tạo giá trị; nó là một phần giúp giá trị còn bền.",
       "tags": [
-        "Personal Reflection",
-        "Mental Wellbeing",
-        "Rest and Recovery",
-        "Burnout",
-        "Work-Life Balance",
-        "Life Philosophy"
+        "Suy ngẫm",
+        "Sức khỏe tinh thần",
+        "Nghỉ ngơi và hồi phục",
+        "Kiệt sức",
+        "Cân bằng công việc và cuộc sống",
+        "Triết lý sống"
       ],
       "date": "2026-03-01"
     },
@@ -1532,7 +1473,7 @@
         "Niềm tin",
         "Chiến lược",
         "Đạo đức",
-        "Leadership",
+        "Lãnh đạo",
         "Khởi nghiệp"
       ],
       "author": "Nguyen Le Phong",
@@ -1582,7 +1523,6 @@
       "date": "2026-04-22",
       "readingMinutes": 8,
       "tags": [
-        "Echology check",
         "Tư duy hệ thống",
         "AI",
         "Công việc",
@@ -1601,11 +1541,10 @@
       "date": "2026-04-12",
       "readingMinutes": 10,
       "tags": [
-        "Ghi chú sách",
         "Lý thuyết trò chơi",
         "Trần Phách Hàm",
-        "Pareto Efficiency",
-        "Prisoner's Dilemma",
+        "Hiệu quả Pareto",
+        "Thế lưỡng nan của người tù",
         "Tâm lý học"
       ],
       "author": "Nguyen Le Phong",
@@ -1661,9 +1600,9 @@
         "Học tập",
         "Tư duy",
         "AI",
-        "Phát triển sự nghiệp",
+        "Sự nghiệp",
         "Niềm tin",
-        "PAIR framework"
+        "Khung PAIR"
       ],
       "author": "Nguyen Le Phong",
       "featured": true,
@@ -1679,8 +1618,8 @@
       "tags": [
         "Tôn trọng",
         "Suy ngẫm",
-        "Feedback",
-        "Leadership",
+        "Phản hồi",
+        "Lãnh đạo",
         "Công sở",
         "Phát triển bản thân"
       ],
@@ -1732,7 +1671,7 @@
         "Phát triển bản thân",
         "Kỹ năng",
         "Thu nhập",
-        "Mindset"
+        "Tư duy"
       ],
       "topic": "su-nghiep"
     },
@@ -1776,7 +1715,6 @@
       "date": "2026-04-01",
       "readingMinutes": 17,
       "tags": [
-        "Mua xe",
         "Tài chính cá nhân",
         "Quyết định mua sắm",
         "Chi phí",
@@ -1828,7 +1766,7 @@
         "Tự do tài chính",
         "Đầu tư",
         "Lãi kép",
-        "Mindset"
+        "Tư duy"
       ],
       "topic": "tiet-kiem"
     },
@@ -1888,7 +1826,6 @@
       "date": "2026-03-16",
       "readingMinutes": 12,
       "tags": [
-        "Mua nhà",
         "Bất động sản",
         "Quy hoạch",
         "Vị trí",
@@ -1904,7 +1841,6 @@
       "date": "2026-03-14",
       "readingMinutes": 13,
       "tags": [
-        "Mua nhà",
         "Bất động sản",
         "Chung cư",
         "Nhà dự án",
@@ -1920,7 +1856,6 @@
       "date": "2026-03-17",
       "readingMinutes": 13,
       "tags": [
-        "Mua nhà",
         "Bất động sản",
         "Thương lượng",
         "Định giá",
@@ -1936,7 +1871,6 @@
       "date": "2026-03-13",
       "readingMinutes": 20,
       "tags": [
-        "Mua nhà",
         "Bất động sản",
         "Xây dựng",
         "Thiết kế",
@@ -1956,7 +1890,7 @@
         "Tiết kiệm",
         "Quản lý chi tiêu",
         "Thói quen",
-        "Mindset"
+        "Tư duy"
       ],
       "topic": "tiet-kiem"
     },
@@ -1968,7 +1902,6 @@
       "date": "2026-03-15",
       "readingMinutes": 13,
       "tags": [
-        "Mua nhà",
         "Bất động sản",
         "Quy trình",
         "Thủ tục",
@@ -1984,7 +1917,6 @@
       "date": "2026-03-12",
       "readingMinutes": 18,
       "tags": [
-        "Mua nhà",
         "Bất động sản",
         "Tâm lý",
         "Cảnh báo",
@@ -2000,7 +1932,6 @@
       "date": "2026-03-18",
       "readingMinutes": 15,
       "tags": [
-        "Mua nhà",
         "Bất động sản",
         "Vay vốn",
         "Tài chính",
@@ -2016,7 +1947,6 @@
       "date": "2026-03-10",
       "readingMinutes": 16,
       "tags": [
-        "Mua nhà",
         "Bất động sản",
         "Cảnh báo",
         "Pháp lý",
@@ -2032,7 +1962,6 @@
       "date": "2026-03-11",
       "readingMinutes": 11,
       "tags": [
-        "Mua nhà",
         "Bất động sản",
         "Tài chính",
         "Chi phí",
@@ -2048,7 +1977,6 @@
       "date": "2026-03-07",
       "readingMinutes": 7,
       "tags": [
-        "Mua nhà",
         "Bất động sản",
         "Kinh nghiệm",
         "Đầu tư"
@@ -2064,7 +1992,6 @@
       "readingMinutes": 12,
       "tags": [
         "Pháp lý",
-        "Mua nhà",
         "Bất động sản",
         "Kinh nghiệm",
         "Rủi ro"
@@ -2080,7 +2007,6 @@
       "readingMinutes": 9,
       "tags": [
         "Phong thủy",
-        "Mua nhà",
         "Bất động sản",
         "Kinh nghiệm"
       ],
@@ -2097,7 +2023,7 @@
       "tags": [
         "Sự nghiệp",
         "Startup",
-        "Venture Building",
+        "Xây dựng startup",
         "Đồng sáng lập",
         "Bài học",
         "Biết ơn"

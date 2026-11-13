@@ -23,7 +23,7 @@ export async function GET(_request: Request, { params }: Context) {
     listPosts(locale).map(toBlogSearchItem),
   )
 
-  return Response.json(index, {
-    headers: { 'Cache-Control': 'public, max-age=0, must-revalidate' },
-  })
+  // No Cache-Control here: the static export drops route headers and the host
+  // sets its own. Freshness comes from the `?v=<revision>` URL instead.
+  return Response.json(index)
 }

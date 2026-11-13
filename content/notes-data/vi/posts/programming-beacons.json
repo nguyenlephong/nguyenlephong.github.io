@@ -3,7 +3,6 @@
   "title": "Những tín hiệu nhỏ giúp code dễ đọc hơn",
   "summary": "Code dễ đọc không chỉ nhờ comment dài hay tài liệu đầy đủ. Nhiều khi nó đến từ những tín hiệu rất nhỏ: tên biến, cấu trúc, cách đặt hàm, những dấu hiệu giúp người sau đoán đúng bối cảnh trước khi truy vết chi tiết. Ghi chú này gọi chúng là những ngọn hải đăng trong code.",
   "tags": [
-    "Thoughts",
     "Kỹ thuật phần mềm",
     "Code dễ đọc",
     "Đặt tên"
