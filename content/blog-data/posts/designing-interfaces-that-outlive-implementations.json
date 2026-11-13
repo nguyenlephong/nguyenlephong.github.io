@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Designing Interfaces That Outlive Implementations",
   "summary": "A practical reflection on designing software interfaces that keep product behavior stable while implementations change underneath.",
-  "date": "2026-06-09",
+  "date": "2026-10-12",
   "readingMinutes": 5,
   "tags": [
     "Software Architecture",

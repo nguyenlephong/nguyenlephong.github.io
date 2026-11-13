@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Observability as a Design Choice",
   "summary": "A practical explanation of observability as an architecture decision: why teams should design logs, metrics, traces, dashboards, and alerts into the system before production asks hard questions.",
-  "date": "2026-05-20",
+  "date": "2026-09-24",
   "readingMinutes": 6,
   "tags": [
     "Software Architecture",

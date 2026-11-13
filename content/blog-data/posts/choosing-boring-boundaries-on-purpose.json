@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Choosing Boring Boundaries on Purpose",
   "summary": "A practical reflection on choosing simple software boundaries that make ownership, testing, and future change easier to reason about.",
-  "date": "2026-07-09",
+  "date": "2026-11-03",
   "readingMinutes": 5,
   "tags": [
     "Software Architecture",

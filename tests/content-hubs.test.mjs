@@ -5,7 +5,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-process.env.CONTENT_BUILD_DATE = "2026-07-19";
+// MEP-80: pinned to the day publish dates were redistributed so the whole corpus is live.
+process.env.CONTENT_BUILD_DATE = "2026-11-13";
 
 const extensionCandidates = [".ts", ".tsx", ".js", ".mjs"];
 
@@ -161,7 +162,7 @@ test("curated hub catalogs are exact, explicitly ordered, localized, and fall ba
   }
 });
 
-test("hub static params produce exactly 52 EN/VI routes with nine cards per page", () => {
+test("hub static params produce exactly 54 EN/VI routes with nine cards per page", () => {
   const expectedBlogCounts = new Map([
     ["foundations", { en: 15, vi: 15 }],
     ["ways-of-working", { en: 4, vi: 4 }],
@@ -174,7 +175,7 @@ test("hub static params produce exactly 52 EN/VI routes with nine cards per page
   const expectedNoteCounts = new Map([
     ["mua-nha", 12],
     ["tiet-kiem", 11],
-    ["su-nghiep", 18],
+    ["su-nghiep", 19],
     ["sach", 19],
     ["goc-nhin", 33],
     ["thoughts", 40]
@@ -224,7 +225,7 @@ test("hub static params produce exactly 52 EN/VI routes with nine cards per page
     { locale: "vi", series: "foundations", page: "2" }
   ]);
   assert.equal(noteRoots.length, 12);
-  assert.equal(notePages.length, 24);
+  assert.equal(notePages.length, 26);
   assert.equal(
     [...blogRoots, ...blogPages, ...noteRoots, ...notePages].some(
       (entry) => entry.page === "1"
@@ -233,7 +234,7 @@ test("hub static params produce exactly 52 EN/VI routes with nine cards per page
   );
   assert.equal(
     blogRoots.length + blogPages.length + noteRoots.length + notePages.length,
-    52
+    54
   );
 
   for (const locale of routeContract.CONTENT_HUB_LOCALES) {
@@ -369,17 +370,18 @@ test("shared hub structured data preserves surface-specific semantics", () => {
   }
 });
 
+// 965 = 951 + 14 from MEP-80 (5 blog posts and 1 note x en/vi, plus su-nghiep page 3 x en/vi)
 // 951 = 945 + 4 About locales now authored in all six languages
 // + 2 Studio (MEP-54: hub drops fr/ja/ko/zh, adds en/vi checklists, system-maps, ai-setup).
-test("sitemap contains 951 unique URLs and exactly 52 curated hub URLs", () => {
+test("sitemap contains 965 unique URLs and exactly 54 curated hub URLs", () => {
   const sitemap = sitemapModule.default();
-  assert.equal(sitemap.length, 951);
-  assert.equal(new Set(sitemap.map(({ url }) => url)).size, 951);
+  assert.equal(sitemap.length, 965);
+  assert.equal(new Set(sitemap.map(({ url }) => url)).size, 965);
 
   const hubEntries = sitemap.filter(({ url }) =>
     /\/(?:en|vi)\/(?:blog\/series|notes\/topics)\//.test(url)
   );
-  assert.equal(hubEntries.length, 52);
+  assert.equal(hubEntries.length, 54);
   assert.equal(
     hubEntries.some(({ url }) => url.endsWith("/page/1")),
     false

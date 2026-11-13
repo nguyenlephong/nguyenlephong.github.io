@@ -357,27 +357,27 @@ test("scoped notes keep filename slug and localized index dates aligned", () => 
   const scopedNotes = [
     {
       slug: "the-trap-of-information-consumption",
-      date: "2026-05-27",
+      date: "2026-09-22",
       readingMinutes: { en: 2 },
     },
     {
       slug: "work-messages-aggressive-bias",
-      date: "2026-05-27",
+      date: "2026-09-23",
       readingMinutes: { en: 2 },
     },
     {
       slug: "tao-niem-tin-khong-phai-tao-ao-giac",
-      date: "2026-05-12",
+      date: "2026-11-11",
       readingMinutes: { en: 4, vi: 7 },
     },
     {
       slug: "su-ro-rang-la-mot-dang-noi-luc",
-      date: "2026-05-13",
+      date: "2026-11-12",
       readingMinutes: { en: 4, vi: 6 },
     },
     {
       slug: "tri-tue-can-duc-hanh",
-      date: "2026-05-14",
+      date: "2026-11-12",
       readingMinutes: { en: 4, vi: 6 },
     },
   ];

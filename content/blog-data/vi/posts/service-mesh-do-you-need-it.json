@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Có cần service mesh không? Hãy nhìn vào lỗi trước",
   "summary": "Service mesh chỉ đáng thêm khi lỗi giữa các dịch vụ đã lặp lại và đo được. Đây là cách đọc số liệu, nhìn trước điểm hỏng, thử trên phạm vi nhỏ và chuẩn bị đường rút.",
-  "date": "2026-05-10",
+  "date": "2026-09-16",
   "readingMinutes": 10,
   "tags": [
     "Software Architecture",

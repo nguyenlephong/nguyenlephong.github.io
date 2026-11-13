@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Designing Defaults That Fail Safely",
   "summary": "A practical reflection on choosing defaults that protect users and systems when configuration, rollout, or external dependency behavior is uncertain.",
-  "date": "2026-07-19",
+  "date": "2026-11-10",
   "readingMinutes": 5,
   "tags": [
     "Software Architecture",

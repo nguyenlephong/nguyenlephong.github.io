@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Keeping Data Contracts Small Enough to Trust",
   "summary": "A practical reflection on designing data contracts that are narrow, testable, and stable enough for teams to rely on.",
-  "date": "2026-07-14",
+  "date": "2026-11-07",
   "readingMinutes": 5,
   "tags": [
     "Software Architecture",

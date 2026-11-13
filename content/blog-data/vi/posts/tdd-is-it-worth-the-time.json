@@ -3,7 +3,7 @@
   "category": "ways-of-working",
   "title": "TDD có đáng công không?",
   "summary": "TDD đáng giá khi logic quan trọng và một thay đổi nhỏ có thể gây hậu quả, nhưng không phải nghi thức cho mọi dòng code. Điều cần cân là rủi ro, khả năng bảo trì và loại test phù hợp.",
-  "date": "2026-05-04",
+  "date": "2026-08-07",
   "readingMinutes": 7,
   "tags": [
     "TDD",

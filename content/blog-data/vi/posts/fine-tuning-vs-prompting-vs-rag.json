@@ -3,7 +3,7 @@
   "category": "ai",
   "title": "Prompting, RAG hay fine-tuning: sửa đúng chỗ mới đỡ tốn",
   "summary": "Prompting làm rõ việc cần làm, RAG đưa kiến thức hiện hành vào câu trả lời, còn fine-tuning giúp model giữ ổn định một kiểu phản hồi. Cần gọi đúng lỗi trước khi chọn công cụ.",
-  "date": "2026-05-02",
+  "date": "2026-08-05",
   "readingMinutes": 7,
   "tags": [
     "AI",

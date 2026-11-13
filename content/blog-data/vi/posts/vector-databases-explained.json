@@ -3,7 +3,7 @@
   "category": "ai",
   "title": "Cơ sở dữ liệu vector: hiểu từ chuyện tìm theo nghĩa",
   "summary": "Cơ sở dữ liệu vector giúp tìm nội dung gần nhau về nghĩa dù không dùng cùng từ. Để khả năng ấy thành một sản phẩm AI đáng tin, đội ngũ vẫn phải làm tốt embedding, chunking, metadata, cập nhật dữ liệu, đánh giá chất lượng và kiểm soát chi phí.",
-  "date": "2026-05-17",
+  "date": "2026-09-22",
   "readingMinutes": 7,
   "tags": [
     "AI",

@@ -3,7 +3,7 @@
   "category": "ai",
   "title": "Đánh giá hiệu năng của LLM",
   "summary": "Một hướng dẫn thực tế về cách đánh giá LLM bằng dataset theo task, rubric, human review, regression check, latency, cost, safety và production feedback thay vì chỉ tin demo ấn tượng.",
-  "date": "2026-01-03",
+  "date": "2026-08-10",
   "readingMinutes": 7,
   "tags": [
     "AI",
