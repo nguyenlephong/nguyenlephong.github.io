@@ -200,7 +200,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(header, /APP_ROUTE\.STUDIO/);
   assert.doesNotMatch(header, /trackId:\s*"studio"/);
   assert.match(footer, /APP_ROUTE\.STUDIO/);
-  assert.match(footer, /LuOrbit/);
+  // MEP-28: Studio is a labelled text link with a localized hint, not a bare icon.
+  assert.match(footer, /title=\{t\('studioHint'\)\}/);
   assert.match(footer, /studio_footer/);
   assert.match(footer, /data-document-navigation="studio"/);
   assert.match(footer, /href=\{studioHref\}/);

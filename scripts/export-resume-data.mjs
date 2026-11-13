@@ -5,9 +5,10 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 const scriptDir = path.dirname(fileURLToPath(import.meta.url))
 const projectRoot = path.resolve(scriptDir, '..')
 
-const [{ experience }, { contact, education }, { projects }] = await Promise.all([
+const [{ experience }, { contact, education }, { email, social }, { projects }] = await Promise.all([
   import(pathToFileURL(path.join(projectRoot, 'src/content/experience.ts'))),
   import(pathToFileURL(path.join(projectRoot, 'src/content/profile.ts'))),
+  import(pathToFileURL(path.join(projectRoot, 'src/content/social.ts'))),
   import(pathToFileURL(path.join(projectRoot, 'src/content/projects.ts'))),
 ])
 
@@ -89,9 +90,9 @@ const data = {
   location: messages.Hero.location,
   contact: {
     phone: plainText(contact.phone),
-    email: plainText(contact.email),
-    github: plainText(contact.github),
-    linkedin: plainText(contact.linkedin),
+    email: plainText(email),
+    github: plainText(social.github),
+    linkedin: plainText(social.linkedin),
     portfolio: 'https://nguyenlephong.github.io',
   },
   // The homepage lede now sets up the capability map and no longer reads as a résumé summary.

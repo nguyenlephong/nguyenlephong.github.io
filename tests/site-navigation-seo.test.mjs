@@ -35,6 +35,7 @@ const messages = Object.fromEntries(
 const { SITE_SECTIONS, sectionUrl } = await import("../src/lib/seo/site-sections.ts");
 const {
   buildWebsiteSchema,
+  buildWebsiteIdentitySchema,
   buildSiteNavigationSchema,
   buildPersonSchema,
   buildProfilePageSchema
@@ -87,6 +88,26 @@ test("SiteNavigationElement list is unique, absolute, and covers the resume", ()
   const resume = graph.find((node) => node.name === "Résumé");
   assert.equal(resume.url, SITE_URL + "/NguyenLePhong_Lead_Software_Engineer.pdf");
   assert.equal(sectionUrl(SITE_SECTIONS[0], "vi"), SITE_URL + "/vi");
+});
+
+test("every locale home carries the compact WebSite node the root stub extends (MEP-60)", () => {
+  const identity = buildWebsiteIdentitySchema();
+  assert.equal(identity["@type"], "WebSite");
+  assert.equal(identity["@id"], SITE_URL + "/#website");
+  assert.equal(identity.url, SITE_URL + "/");
+  assert.equal(identity.name, SITE.name);
+  assert.equal(identity.alternateName[0], "Nguyễn Lê Phong");
+  assert.deepEqual(identity.publisher, { "@id": SITE_URL + "/#person" });
+  assert.equal("hasPart" in identity, false);
+  // Kept small for the home HTML budget, and identical to the root node's identity fields.
+  assert.ok(JSON.stringify(identity).length < 400);
+  const root = buildWebsiteSchema("desc");
+  for (const [key, value] of Object.entries(identity)) {
+    assert.deepEqual(root[key], value, key);
+  }
+  // The ids the ProfilePage and Person reference resolve on the same page.
+  assert.equal(buildProfilePageSchema("vi", "t", "d").isPartOf["@id"], identity["@id"]);
+  assert.equal(buildPersonSchema("d")["@id"], identity.publisher["@id"]);
 });
 
 test("home profile graph links to the WebSite and Person entities without a second WebSite", () => {
@@ -188,13 +209,68 @@ test("header is a labelled nav with crawlable section links and tracked clicks",
   assert.match(header, /<nav className="nav-links" aria-label="Main navigation">/);
   assert.match(header, /aria-label="Mobile navigation"/);
   assert.doesNotMatch(header, /"\/#about"/);
-  for (const route of ["ABOUT", "BLOG", "NOTES", "GALLERY", "APPS"]) {
+  for (const route of ["ABOUT", "BLOG", "NOTES", "APPS"]) {
     assert.match(header, new RegExp("href: APP_ROUTE\\." + route), route);
   }
   assert.match(header, /track\("cv_nav_click", \{ target: item\.trackId \}\)/);
+  for (const key of ["apps", "about", "experience", "projects", "notes", "blog"]) {
+    for (const locale of locales) {
+      assert.equal(typeof messages[locale].Nav[key], "string", `${locale} Nav.${key}`);
+    }
+  }
+});
+
+// MEP-27: recruiter order, CV sections first; Gallery lives in the footer.
+test("header nav leads with Experience and Projects and marks the current page", () => {
+  const header = read("src/components/AppHeader.tsx");
+  const order = [...header.matchAll(/trackId: "([a-z]+)"/g)].map((match) => match[1]);
+  assert.deepEqual(order, ["experience", "projects", "about", "blog", "notes", "apps"]);
+  assert.match(header, /href: `\$\{APP_ROUTE\.HOME\}#experience`/);
+  assert.match(header, /href: `\$\{APP_ROUTE\.HOME\}#projects`/);
+  assert.doesNotMatch(header, /APP_ROUTE\.GALLERY/);
+  assert.equal((header.match(/aria-current=\{currentPage\(item\.href\)\}/g) ?? []).length, 2);
+  const css = read("src/app/globals.css");
+  // The active link is marked by an underline too, not by colour alone.
+  assert.match(css, /\.nav-link\[aria-current="page"\]::after \{ transform: scaleX\(1\); \}/);
+  assert.match(css, /\.nav-mobile-link\[aria-current="page"\] \{[^}]*text-decoration: underline/);
+});
+
+test("header carries the language switcher on desktop and in the mobile panel", () => {
+  const header = read("src/components/AppHeader.tsx");
+  assert.match(header, /<LocaleSwitcher placement="down" compact source="header" \/>/);
+  assert.match(header, /<div className="nav-mobile-footer">\s*<LocaleSwitcher placement="down" source="mobile-nav" \/>/);
+  const switcher = read("src/components/LocaleSwitcher.tsx");
+  assert.match(switcher, /track\('locale_change', \{ from: currentLocale, to: nextLocale, source \}\)/);
+  // Closed options must leave the tab order, not just turn transparent.
+  const css = read("src/app/globals.css");
+  const closed = css.match(/\n\.locale-menu-list \{[^}]*\}/)?.[0] ?? "";
+  assert.match(closed, /visibility: hidden;/);
+  assert.match(css, /\.locale-menu\.is-open \.locale-menu-list \{[^}]*visibility: visible;/);
+});
+
+// MEP-28: both roles, résumé and email, labelled internal links outside the profiles list.
+test("footer names both roles and keeps internal pages out of the profiles list", async () => {
+  const footer = read("src/components/AppFooter.tsx");
+  assert.match(footer, /import \{ email, social as c \} from '@\/content\/social'/);
+  const [profiles, site] = footer
+    .slice(footer.indexOf("aria-label={t('contactLabel')}"))
+    .split("footer-links--site");
+  assert.doesNotMatch(profiles, /APP_ROUTE\.(APPS|STUDIO|GALLERY)|studioHref/);
+  assert.match(profiles, /track\('cv_resume_download', \{ source: 'footer' \}\)/);
+  assert.match(profiles, /track\('cv_contact_click', \{ channel: 'email', source: 'footer' \}\)/);
+  assert.match(profiles, /href=\{`mailto:\$\{email\}`\}/);
+  for (const target of ["gallery_footer", "apps_footer", "studio_footer", "sitemap_footer"]) {
+    assert.match(site, new RegExp(`target: '${target}'`), target);
+  }
+  assert.doesNotMatch(footer, /aria-label="(Social profiles|Apps|Studio)"/);
   for (const locale of locales) {
-    assert.equal(typeof messages[locale].Nav.apps, "string", locale + " Nav.apps");
-    assert.equal(typeof messages[locale].Nav.about, "string", locale + " Nav.about");
+    const f = messages[locale].Footer;
+    assert.match(f.tag, /Zalo PC/, locale);
+    assert.match(f.tag, /BonBon Mobility/, locale);
+    assert.doesNotMatch(f.tag, /\u2014/, locale);
+    for (const key of ["email", "photos", "sideProjects", "studioHint", "contactLabel", "siteLabel"]) {
+      assert.equal(typeof f[key], "string", `${locale} Footer.${key}`);
+    }
   }
 });
 

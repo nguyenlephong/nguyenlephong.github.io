@@ -17,7 +17,7 @@ test("contact endpoint tracks email copy and keeps existing contact events", asy
     contact,
     /track\(\s*['"]cv_email_copy['"],\s*\{\s*source:\s*['"]cta['"],\s*result:\s*next\s*\}\s*\)/
   );
-  assert.match(contact, /navigator\.clipboard\.writeText\(c\.email\)/);
+  assert.match(contact, /navigator\.clipboard\.writeText\(email\)/);
   assert.match(contact, /selection\.addRange\(range\)/, "clipboard failure selects the address");
   // Both outcomes reset; the timer is replaced after the await so overlapping clicks leave no orphan.
   const resetMs = contact.match(/RESET_MS = \{\s*copied:\s*(\d+),\s*failed:\s*(\d+)\s*\}/);
@@ -26,19 +26,19 @@ test("contact endpoint tracks email copy and keeps existing contact events", asy
   assert.ok(Number(resetMs[2]) >= 3000, "failed state stays long enough to read");
   assert.match(
     contact,
-    /await navigator\.clipboard\.writeText\(c\.email\)[\s\S]*?\}\s*catch[\s\S]*?\}\s*[\s\S]*?window\.clearTimeout\(resetTimer\.current\)\s*resetTimer\.current = window\.setTimeout\(\(\) => setCopyState\(['"]idle['"]\), RESET_MS\[next\]\)/
+    /await navigator\.clipboard\.writeText\(email\)[\s\S]*?\}\s*catch[\s\S]*?\}\s*[\s\S]*?window\.clearTimeout\(resetTimer\.current\)\s*resetTimer\.current = window\.setTimeout\(\(\) => setCopyState\(['"]idle['"]\), RESET_MS\[next\]\)/
   );
   assert.equal(
     (contact.match(/resetTimer\.current = window\.setTimeout/g) || []).length,
     1,
     "one reset timer path for both outcomes"
   );
-  assert.match(contact, /href=\{`tel:\+\$\{c\.phone\.replace\(/, "tel: href is E.164 with a leading +");
+  assert.match(contact, /href=\{`tel:\+\$\{phone\.replace\(/, "tel: href is E.164 with a leading +");
   assert.match(css, /\.cta-link,\s*\.cta-address\s*\{[^}]*min-height: 44px/);
   assert.match(css, /\.cta-copy::before\s*\{[^}]*inset: -6px 0/);
   assert.match(contact, /aria-live=['"]polite['"]/);
   assert.match(contact, /type=['"]button['"]/);
-  assert.match(contact, /href=\{`mailto:\$\{c\.email\}`\}/);
+  assert.match(contact, /href=\{`mailto:\$\{email\}`\}/);
   assert.match(
     contact,
     /track\(\s*['"]cv_contact_click['"],\s*\{\s*channel:\s*['"]email['"],\s*source:\s*['"]cta['"]\s*\}/

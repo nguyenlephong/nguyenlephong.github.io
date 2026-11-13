@@ -2,19 +2,30 @@
 import { getPathname, Link } from '@/i18n/navigation'
 import type { Locale } from '@/i18n/routing'
 import { useLocale, useTranslations } from 'next-intl'
-import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
-import { LuAppWindow, LuOrbit } from 'react-icons/lu'
+import { FaYoutube } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
 import { APP_ROUTE } from '@/app/app.const'
-import { social as c } from '@/content/profile'
+import { email, social as c } from '@/content/social'
 import IntentPrefetchLink from '@/components/navigation/IntentPrefetchLink'
 import { track } from '@/lib/analytics'
 import { SITE_INDEX_PATH } from '@/lib/seo/site-index'
 
 const year = new Date().getFullYear()
 
+const profileLinks = [
+  { platform: 'linkedin', label: 'LinkedIn', href: c.linkedin },
+  { platform: 'github', label: 'GitHub', href: c.github },
+] as const
+
+// Secondary profiles stay icon-only so they read lighter than LinkedIn and GitHub.
+const minorProfiles = [
+  { platform: 'leetcode', label: 'LeetCode', href: c.leetcode, Icon: SiLeetcode },
+  { platform: 'youtube', label: 'YouTube', href: c.youtube, Icon: FaYoutube },
+] as const
+
 export default function AppFooter() {
   const t = useTranslations('Footer')
+  const tNav = useTranslations('Nav')
   const locale = useLocale()
   const studioHref = getPathname({
     href: APP_ROUTE.STUDIO,
@@ -25,95 +36,113 @@ export default function AppFooter() {
       <div className="app-footer-inner">
         <div className="footer-meta">
           <p className="footer-name">Nguyen Le Phong</p>
-          <p className="footer-tag">{t('tag')}</p>
+          <p className="footer-tag">
+            {/* Each role stays whole; a wrap lands after the separator, never before it. */}
+            {t('tag')
+              .split(' · ')
+              .map((role, i) => (
+                <span key={role}>
+                  {i > 0 && '\u00a0· '}
+                  <span className="footer-role">{role}</span>
+                </span>
+              ))}
+          </p>
         </div>
 
-        <div className="footer-center">
-          <ul className="footer-social" aria-label="Social profiles">
-            <li>
-              <IntentPrefetchLink
-                href={APP_ROUTE.APPS}
-                aria-label="Apps"
-                title="Apps"
-                onClick={() => track('cv_nav_click', { target: 'apps_footer' })}
-              >
-                <LuAppWindow size={18} />
-              </IntentPrefetchLink>
-            </li>
-            <li>
+        <ul className="footer-links" aria-label={t('contactLabel')}>
+          <li>
+            <a
+              href={APP_ROUTE.CV_PDF}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => track('cv_resume_download', { source: 'footer' })}
+            >
+              {tNav('resume')}
+            </a>
+          </li>
+          <li>
+            <a
+              href={`mailto:${email}`}
+              onClick={() => track('cv_contact_click', { channel: 'email', source: 'footer' })}
+            >
+              {t('email')}
+            </a>
+          </li>
+          {profileLinks.map(({ platform, label, href }) => (
+            <li key={platform}>
               <a
-                href={studioHref}
-                aria-label="Studio"
-                title="Studio"
-                data-document-navigation="studio"
-                onClick={() =>
-                  track(
-                    'cv_nav_click',
-                    { target: 'studio_footer' },
-                    { beacon: true },
-                  )
-                }
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer me"
+                onClick={() => track('cv_social_click', { platform, source: 'footer' })}
               >
-                <LuOrbit size={18} />
+                {label}
               </a>
             </li>
-            <li>
-              <Link
-                href={c.linkedin}
+          ))}
+          {minorProfiles.map(({ platform, label, href, Icon }) => (
+            <li key={platform}>
+              <a
+                href={href}
                 target="_blank"
                 rel="noopener noreferrer me"
-                aria-label="LinkedIn"
-                onClick={() => track('cv_social_click', { platform: 'linkedin', source: 'footer' })}
+                className="footer-icon-link"
+                aria-label={label}
+                title={label}
+                onClick={() => track('cv_social_click', { platform, source: 'footer' })}
               >
-                <FaLinkedin size={18} />
-              </Link>
+                <Icon size={16} aria-hidden="true" />
+              </a>
             </li>
-            <li>
-              <Link
-                href={c.github}
-                target="_blank"
-                rel="noopener noreferrer me"
-                aria-label="GitHub"
-                onClick={() => track('cv_social_click', { platform: 'github', source: 'footer' })}
-              >
-                <FaGithub size={18} />
-              </Link>
-            </li>
-            <li>
-              <Link
-                href={c.leetcode}
-                target="_blank"
-                rel="noopener noreferrer me"
-                aria-label="LeetCode"
-                onClick={() => track('cv_social_click', { platform: 'leetcode', source: 'footer' })}
-              >
-                <SiLeetcode size={18} />
-              </Link>
-            </li>
-            <li>
-              <Link
-                href={c.youtube}
-                target="_blank"
-                rel="noopener noreferrer me"
-                aria-label="YouTube"
-                onClick={() => track('cv_social_click', { platform: 'youtube', source: 'footer' })}
-              >
-                <FaYoutube size={18} />
-              </Link>
-            </li>
-          </ul>
-        </div>
+          ))}
+        </ul>
+
+        <ul className="footer-links footer-links--site" aria-label={t('siteLabel')}>
+          <li>
+            <IntentPrefetchLink
+              href={APP_ROUTE.GALLERY}
+              onClick={() => track('cv_nav_click', { target: 'gallery_footer' })}
+            >
+              {t('photos')}
+            </IntentPrefetchLink>
+          </li>
+          <li>
+            <IntentPrefetchLink
+              href={APP_ROUTE.APPS}
+              onClick={() => track('cv_nav_click', { target: 'apps_footer' })}
+            >
+              {t('sideProjects')}
+            </IntentPrefetchLink>
+          </li>
+          <li>
+            <a
+              href={studioHref}
+              title={t('studioHint')}
+              data-document-navigation="studio"
+              onClick={() =>
+                track(
+                  'cv_nav_click',
+                  { target: 'studio_footer' },
+                  { beacon: true },
+                )
+              }
+            >
+              Studio
+            </a>
+          </li>
+          <li>
+            <Link
+              href={SITE_INDEX_PATH}
+              prefetch={false}
+              onClick={() => track('cv_nav_click', { target: 'sitemap_footer' })}
+            >
+              {t('sitemap')}
+            </Link>
+          </li>
+        </ul>
 
         <p className="footer-copy">
           {t('copy', { year })}
-          <Link
-            href={SITE_INDEX_PATH}
-            prefetch={false}
-            className="footer-sitemap"
-            onClick={() => track('cv_nav_click', { target: 'sitemap_footer' })}
-          >
-            {t('sitemap')}
-          </Link>
           {process.env['NEXT_PUBLIC_APP_VERSION'] && (
             <span className="footer-version">
               v{process.env['NEXT_PUBLIC_APP_VERSION']}

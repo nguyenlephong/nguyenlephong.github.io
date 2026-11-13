@@ -45,7 +45,7 @@ test("no client-reachable module ships profileInfo or referee data", () => {
   const sources = readSourceTree("src");
   const reachable = clientReachableFiles(sources);
   assert.ok(reachable.has("src/components/AppFooter.tsx"));
-  assert.ok(reachable.has("src/content/profile.ts"));
+  assert.ok(reachable.has("src/content/social.ts"));
 
   for (const file of reachable) {
     assert.doesNotMatch(sources.get(file), /\bprofileInfo\b/, file);
@@ -58,4 +58,17 @@ test("no client-reachable module ships profileInfo or referee data", () => {
 test("public/ ships only the current résumé PDF at the root", () => {
   const pdfs = readdirSync("public").filter((name) => name.toLowerCase().endsWith(".pdf"));
   assert.deepEqual(pdfs, ["NguyenLePhong_Lead_Software_Engineer.pdf"]);
+});
+
+test("no client-reachable module carries the phone number", async () => {
+  const { contact } = await import("../src/content/profile.ts");
+  const sources = readSourceTree("src");
+  const reachable = clientReachableFiles(sources);
+  // MEP-74 review: the phone may render in server HTML, never in a client chunk.
+  assert.equal(reachable.has("src/content/profile.ts"), false);
+  for (const file of reachable) {
+    const source = sources.get(file);
+    assert.equal(source.includes(contact.phone), false, file);
+    assert.doesNotMatch(source, /\bphone\s*:\s*["'`]/, file);
+  }
 });

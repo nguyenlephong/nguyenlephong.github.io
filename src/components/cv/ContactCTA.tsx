@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { LuCheck, LuCopy } from 'react-icons/lu'
 import { APP_ROUTE } from '@/app/app.const'
-import { contact as c } from '@/content/profile'
+import { email, social } from '@/content/social'
 import { track } from '@/lib/analytics'
 
 type CopyState = 'idle' | 'copied' | 'failed'
@@ -11,7 +11,12 @@ type CopyState = 'idle' | 'copied' | 'failed'
 // Failed stays longer so the manual-copy instruction can be read.
 const RESET_MS = { copied: 2000, failed: 4000 } as const
 
-export default function ContactCTA() {
+interface ContactCTAProps {
+  /** Passed from the server page so the number never ships in a client chunk. */
+  phone: string
+}
+
+export default function ContactCTA({ phone }: ContactCTAProps) {
   const t = useTranslations('CTA')
   const [copyState, setCopyState] = useState<CopyState>('idle')
   const addressRef = useRef<HTMLAnchorElement>(null)
@@ -33,7 +38,7 @@ export default function ContactCTA() {
   const copyEmail = async () => {
     let next: keyof typeof RESET_MS = 'copied'
     try {
-      await navigator.clipboard.writeText(c.email)
+      await navigator.clipboard.writeText(email)
     } catch {
       next = 'failed'
       selectAddress()
@@ -69,11 +74,11 @@ export default function ContactCTA() {
             </svg>
             <a
               ref={addressRef}
-              href={`mailto:${c.email}`}
+              href={`mailto:${email}`}
               className="cta-address"
               onClick={() => track('cv_contact_click', { channel: 'email', source: 'cta' })}
             >
-              {c.email}
+              {email}
             </a>
             <button type="button" className="btn btn-primary btn-sm cta-copy" onClick={copyEmail}>
               <span className="cta-copy-label" aria-hidden={copyState === 'copied'}>
@@ -93,11 +98,11 @@ export default function ContactCTA() {
           <dt>{t('phoneLabel')}</dt>
           <dd>
             <a
-              href={`tel:+${c.phone.replace(/\D/g, '')}`}
+              href={`tel:+${phone.replace(/\D/g, '')}`}
               className="cta-link"
               onClick={() => track('cv_contact_click', { channel: 'phone', source: 'cta' })}
             >
-              {c.phone}
+              {phone}
             </a>
           </dd>
         </div>
@@ -105,7 +110,7 @@ export default function ContactCTA() {
           <dt>{t('linksLabel')}</dt>
           <dd className="cta-links">
             <a
-              href={c.linkedin}
+              href={social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="cta-link"
@@ -114,7 +119,7 @@ export default function ContactCTA() {
               {t('linkedin')}
             </a>
             <a
-              href={c.github}
+              href={social.github}
               target="_blank"
               rel="noopener noreferrer"
               className="cta-link"

@@ -6,7 +6,7 @@ import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
 import { LuDownload, LuArrowRight, LuMail } from 'react-icons/lu'
 import { APP_ROUTE } from '@/app/app.const'
-import { contact as c } from '@/content/profile'
+import { email, social } from '@/content/social'
 import { track } from '@/lib/analytics'
 import HeroTopology from './HeroTopology'
 import { openCaseFile } from './CaseFile'
@@ -82,7 +82,7 @@ export default function Hero() {
               <LuDownload size={16} aria-hidden="true" /> {t('downloadResume')}
             </a>
             <a
-              href={`mailto:${c.email}`}
+              href={`mailto:${email}`}
               className="btn btn-secondary"
               onClick={() => track('cv_contact_click', { channel: 'email', source: 'hero_cta' })}
             >
@@ -91,16 +91,16 @@ export default function Hero() {
           </div>
 
           <ul className="social-row" aria-label={t('socialProfiles')}>
-            <SocialLink href={c.linkedin} label="LinkedIn" platform="linkedin">
+            <SocialLink href={social.linkedin} label="LinkedIn" platform="linkedin">
               <FaLinkedin size={15} aria-hidden="true" />
             </SocialLink>
-            <SocialLink href={c.github} label="GitHub" platform="github">
+            <SocialLink href={social.github} label="GitHub" platform="github">
               <FaGithub size={15} aria-hidden="true" />
             </SocialLink>
-            <SocialLink href={c.leetcode} label="LeetCode" platform="leetcode">
+            <SocialLink href={social.leetcode} label="LeetCode" platform="leetcode">
               <SiLeetcode size={15} aria-hidden="true" />
             </SocialLink>
-            <SocialLink href={c.youtube} label="YouTube" platform="youtube">
+            <SocialLink href={social.youtube} label="YouTube" platform="youtube">
               <FaYoutube size={15} aria-hidden="true" />
             </SocialLink>
           </ul>

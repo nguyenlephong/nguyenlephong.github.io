@@ -11,6 +11,7 @@ import Summary from '@/components/cv/Summary'
 import Experience from '@/components/cv/Experience'
 import Projects from '@/components/cv/Projects'
 import ContactCTA from '@/components/cv/ContactCTA'
+import { contact } from '@/content/profile'
 import HomeBackdrop from '@/components/cv/HomeBackdrop'
 import PageViewTracker from '@/components/PageViewTracker'
 import PageTracker from '@/components/analytics/PageTracker'
@@ -18,6 +19,7 @@ import type { Locale } from '@/i18n/routing'
 import {
   buildPersonSchema,
   buildProfilePageSchema,
+  buildWebsiteIdentitySchema,
 } from '@/lib/seo/profile-schema'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
@@ -62,6 +64,10 @@ export default async function MainPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(profilePageSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildWebsiteIdentitySchema()) }}
+      />
       <PageViewTracker />
       <PageTracker page="home" eventName="page_view" section="cv_main" />
       <ScopedIntlProvider scope="home">
@@ -81,7 +87,7 @@ export default async function MainPage({ params }: Props) {
           </Section>
 
           <div id="contact">
-            <ContactCTA />
+            <ContactCTA phone={contact.phone} />
           </div>
         </div>
       </ScopedIntlProvider>

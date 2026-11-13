@@ -1,11 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { APP_ROUTE } from "@/app/app.const";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 import IntentPrefetchLink from "@/components/navigation/IntentPrefetchLink";
 import ThemeToggle from "@/components/theme/ThemeToggle";
+import { usePathname } from "@/i18n/navigation";
 import { track } from "@/lib/analytics";
 
 export default function AppHeader() {
@@ -29,15 +30,21 @@ export default function AppHeader() {
     };
   }, [menuOpen]);
 
-  // Plain section names that link to real pages: crawlers read these anchors
-  // (text plus URL) as the site's main sections.
+  // Recruiter order: the two CV sections first, then the pages. Crawlers read
+  // these anchors (text plus URL) as the site's main sections.
   const navItems: { href: string; label: string; trackId: string }[] = [
+    { href: `${APP_ROUTE.HOME}#experience`, label: t("experience"), trackId: "experience" },
+    { href: `${APP_ROUTE.HOME}#projects`, label: t("projects"), trackId: "projects" },
     { href: APP_ROUTE.ABOUT, label: t("about"), trackId: "about" },
     { href: APP_ROUTE.BLOG, label: t("blog"), trackId: "blog" },
     { href: APP_ROUTE.NOTES, label: t("notes"), trackId: "notes" },
-    { href: APP_ROUTE.GALLERY, label: t("gallery"), trackId: "gallery" },
     { href: APP_ROUTE.APPS, label: t("apps"), trackId: "apps" }
   ];
+  // Hash links never count as the current page: the whole homepage would match.
+  const currentPage = (href: string) =>
+    !href.includes("#") && (pathname === href || pathname.startsWith(`${href}/`))
+      ? ("page" as const)
+      : undefined;
 
   return (
     <>
@@ -65,6 +72,7 @@ export default function AppHeader() {
                 key={item.trackId}
                 href={item.href}
                 className="nav-link"
+                aria-current={currentPage(item.href)}
                 onClick={() => track("cv_nav_click", { target: item.trackId })}
               >
                 {item.label}
@@ -73,7 +81,10 @@ export default function AppHeader() {
           </nav>
 
           <div className="nav-actions">
-            <ThemeToggle />
+            <div className="nav-desktop-controls">
+              <LocaleSwitcher placement="down" compact source="header" />
+              <ThemeToggle />
+            </div>
             <a
               href={APP_ROUTE.CV_PDF}
               target="_blank"
@@ -115,6 +126,7 @@ export default function AppHeader() {
               key={item.trackId}
               href={item.href}
               className="nav-mobile-link"
+              aria-current={currentPage(item.href)}
               onClick={() => {
                 track("cv_nav_click", { target: item.trackId });
                 setMenuState({ pathname, open: false });
@@ -123,18 +135,10 @@ export default function AppHeader() {
               {item.label}
             </IntentPrefetchLink>
           ))}
+          {/* Résumé stays in the header at this width; the panel carries the controls it displaced. */}
           <div className="nav-mobile-footer">
-            <a
-              href={APP_ROUTE.CV_PDF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary btn-sm nav-mobile-cta"
-              onClick={() =>
-                track("cv_resume_download", { source: "mobile-nav" })
-              }
-            >
-              {t("resume")}
-            </a>
+            <LocaleSwitcher placement="down" source="mobile-nav" />
+            <ThemeToggle />
           </div>
         </div>
       </nav>

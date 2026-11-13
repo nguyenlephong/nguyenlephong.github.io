@@ -1,20 +1,9 @@
 // Profile content data, imported directly by the pages that render it.
 
-// Public profile links only; the site-wide footer imports this, not `contact`.
-export const social = {
-    github: "https://github.com/nguyenlephong",
-    youtube: "https://www.youtube.com/@NguyenLePhong",
-    leetcode: "https://leetcode.com/nguyenlephong/",
-    linkedin: "https://www.linkedin.com/in/phongnguyen-it/",
-    twitter: "https://twitter.com/nguyenlephong17",
-    facebook: "https://www.facebook.com/NguyenLePhong0107/",
-    instagram: "https://www.instagram.com/anhmap0107/",
-}
-
+// Server-only: the phone number. Email and profile links live in ./social, the
+// only contact module client components may import (tests/client-profile-privacy.test.mjs).
 export const contact = {
-    email: "phongnguyen.itengineer@gmail.com",
     phone: "(+84)98-549-0107",
-    ...social,
     cv_pdf: "https://nguyenlephong.github.io/NguyenLePhong_Lead_Software_Engineer.pdf"
 }
 

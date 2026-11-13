@@ -13,7 +13,13 @@ import {
 interface LocaleSwitcherProps {
   placement?: 'up' | 'down'
   compact?: boolean
+  /** Which instance changed the locale, for `locale_change`. */
+  source?: 'header' | 'mobile-nav' | 'reader'
 }
+
+// Kept on <html> so it survives the [locale] layout remount after a switch.
+const FOCUS_FLAG = 'localeSwitchFocus'
+const root = () => document.documentElement.dataset
 
 function readContentLocaleRoute(): ContentLocaleRoute | null {
   const element = document.querySelector<HTMLElement>('[data-content-locales]')
@@ -32,6 +38,7 @@ function readContentLocaleRoute(): ContentLocaleRoute | null {
 export default function LocaleSwitcher({
   placement = 'up',
   compact = false,
+  source = 'reader',
 }: LocaleSwitcherProps) {
   const t = useTranslations('Footer')
   const router = useRouter()
@@ -41,6 +48,24 @@ export default function LocaleSwitcher({
   const [isPending, startTransition] = useTransition()
   const rootRef = useRef<HTMLDivElement | null>(null)
   const triggerRef = useRef<HTMLButtonElement | null>(null)
+
+  useEffect(() => {
+    if (!root()[FOCUS_FLAG]) return
+    const trigger = triggerRef.current
+    // Only a visible instance takes focus (the mobile-nav copy closes on navigation).
+    if (trigger && trigger.getClientRects().length > 0) {
+      delete root()[FOCUS_FLAG]
+      trigger.focus()
+      return
+    }
+    // No visible switcher this commit: fall back to the skip-link target.
+    const frame = requestAnimationFrame(() => {
+      if (!root()[FOCUS_FLAG]) return
+      delete root()[FOCUS_FLAG]
+      document.getElementById('main-content')?.focus()
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [currentLocale])
 
   useEffect(() => {
     if (!open) return
@@ -67,13 +92,17 @@ export default function LocaleSwitcher({
       setOpen(false)
       return
     }
-    track('locale_change', { from: currentLocale, to: nextLocale })
+    track('locale_change', { from: currentLocale, to: nextLocale, source })
     setOpen(false)
+    const target = localeSwitchPath(pathname, nextLocale, readContentLocaleRoute())
+    // Same page in another locale: keep the reader's filters and anchor.
+    const href =
+      target === pathname
+        ? `${target}${window.location.search}${window.location.hash}`
+        : target
+    root()[FOCUS_FLAG] = 'true'
     startTransition(() => {
-      router.replace(
-        localeSwitchPath(pathname, nextLocale, readContentLocaleRoute()),
-        { locale: nextLocale },
-      )
+      router.replace(href, { locale: nextLocale })
     })
   }
 
