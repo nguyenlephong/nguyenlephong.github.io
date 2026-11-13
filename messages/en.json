@@ -637,7 +637,7 @@
       "items": {
         "scale": {
           "title": "A large system that has to change without hurting its users",
-          "proof": "Zalo PC is a desktop client with <b>15M+ MAU</b>. I shipped message backup on PC with restore on mobile, rolling out since July 2026. Risky changes ship with an off switch, and slow paths get measured before they get fixed: one lookup went from <b>1.8 s to 4 ms</b> on a 37-session test.",
+          "proof": "Zalo PC is a desktop client with <b>15M+ MAU</b>. I shipped message backup on PC with restore on mobile, rolling out since July 2026. Risky changes ship behind an off switch, so a bad one can be turned off without a new release.",
           "source": "Zalo PC · 2026"
         },
         "handover": {

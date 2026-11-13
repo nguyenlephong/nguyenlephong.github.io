@@ -368,7 +368,7 @@
       "items": {
         "scale": {
           "title": "Un grand système à faire évoluer sans gêner ses utilisateurs",
-          "proof": "Zalo PC est un client desktop de <b>15M+ MAU</b>. J'ai livré la sauvegarde des messages sur PC avec restauration sur mobile, déployée depuis juillet 2026. Les changements risqués partent avec un interrupteur d'arrêt, et les lenteurs sont mesurées avant d'être corrigées : une recherche est passée de <b>1,8 s à 4 ms</b> sur un test de 37 sessions.",
+          "proof": "Zalo PC est un client desktop de <b>15M+ MAU</b>. J'ai livré la sauvegarde des messages sur PC avec restauration sur mobile, déployée depuis juillet 2026. Les changements risqués partent derrière un interrupteur d'arrêt, pour couper un problème sans nouvelle version.",
           "source": "Zalo PC · 2026"
         },
         "handover": {

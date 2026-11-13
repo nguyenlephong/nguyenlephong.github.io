@@ -637,7 +637,7 @@
       "items": {
         "scale": {
           "title": "Team có hệ thống lớn, cần thay đổi mà không làm người dùng đau",
-          "proof": "Zalo PC là app desktop <b>hơn 15 triệu MAU</b>. Tôi đưa tính năng sao lưu tin nhắn trên máy tính, khôi phục trên điện thoại ra mắt từ 7/2026. Thay đổi rủi ro luôn có công tắc tắt sẵn; chỗ nào chậm thì đo ra đúng nguyên nhân rồi mới sửa, như một bước tra cứu giảm từ <b>1,8 s xuống 4 ms</b> trong bài test 37 phiên.",
+          "proof": "Zalo PC là app desktop <b>hơn 15 triệu MAU</b>. Tôi đưa tính năng sao lưu tin nhắn trên máy tính, khôi phục trên điện thoại ra mắt từ 7/2026. Thay đổi rủi ro luôn có công tắc tắt sẵn, có sự cố là tắt được ngay mà không cần ra bản mới.",
           "source": "Zalo PC · 2026"
         },
         "handover": {

@@ -52,11 +52,11 @@ test("every habit carries one proof with a source, and numbers match the homepag
     }
   }
   const enText = JSON.stringify(en);
-  for (const fact of ["15M+ MAU", "8 developers and 3 QC", "30+ tenants", "$500K", "1.8 s to 4 ms", "37-session test"]) {
+  for (const fact of ["15M+ MAU", "8 developers and 3 QC", "30+ tenants", "$500K"]) {
     assert.ok(enText.includes(fact), `en fact: ${fact}`);
   }
   const viText = JSON.stringify(vi);
-  for (const fact of ["15 triệu MAU", "8 developer và 3 QC", "30+ tenant", "500.000 USD", "1,8 s xuống 4 ms", "37 phiên"]) {
+  for (const fact of ["15 triệu MAU", "8 developer và 3 QC", "30+ tenant", "500.000 USD"]) {
     assert.ok(viText.includes(fact), `vi fact: ${fact}`);
   }
   assert.doesNotMatch(viText, /, và /, "no comma before và");
