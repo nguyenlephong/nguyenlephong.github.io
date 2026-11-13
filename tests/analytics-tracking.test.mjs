@@ -773,3 +773,18 @@ test("site chrome tracks nav targets, locale source and footer contacts", async 
   assert.match(footer, /track\('cv_contact_click', \{ channel: 'email', source: 'footer' \}\)/);
   assert.match(footer, /track\('cv_social_click', \{ platform, source: 'footer' \}\)/);
 });
+
+// MEP-24: the hero keeps LinkedIn and GitHub; LeetCode and YouTube stay in the footer.
+test("hero social row has only LinkedIn and GitHub, footer keeps the rest", async () => {
+  const [hero, footer] = await Promise.all([
+    readFile("src/components/cv/Hero.tsx", "utf8"),
+    readFile("src/components/AppFooter.tsx", "utf8")
+  ]);
+  const platforms = [...hero.matchAll(/<SocialLink [^>]*platform="([a-z]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(platforms, ["linkedin", "github"]);
+  assert.doesNotMatch(hero, /leetcode|youtube/i);
+  assert.match(hero, /track\('cv_social_click', \{ platform \}\)/);
+  for (const platform of ["leetcode", "youtube"]) {
+    assert.match(footer, new RegExp(`platform: '${platform}'`), platform);
+  }
+});

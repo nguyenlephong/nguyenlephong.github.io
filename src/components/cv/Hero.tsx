@@ -2,8 +2,7 @@
 import type { ReactNode } from 'react'
 import { Link } from '@/i18n/navigation'
 import { useLocale, useTranslations } from 'next-intl'
-import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
-import { SiLeetcode } from 'react-icons/si'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { LuDownload, LuArrowRight, LuMail } from 'react-icons/lu'
 import { APP_ROUTE } from '@/app/app.const'
 import { email, social } from '@/content/social'
@@ -96,12 +95,6 @@ export default function Hero() {
             </SocialLink>
             <SocialLink href={social.github} label="GitHub" platform="github">
               <FaGithub size={15} aria-hidden="true" />
-            </SocialLink>
-            <SocialLink href={social.leetcode} label="LeetCode" platform="leetcode">
-              <SiLeetcode size={15} aria-hidden="true" />
-            </SocialLink>
-            <SocialLink href={social.youtube} label="YouTube" platform="youtube">
-              <FaYoutube size={15} aria-hidden="true" />
             </SocialLink>
           </ul>
         </div>

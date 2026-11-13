@@ -130,7 +130,6 @@
 .case-row dd:has(.case-decisions) { max-width: none; }
 .case-outcome li::before { background: var(--accent); }
 
-.case-muted { margin: 0; }
 .case-links {
   display: flex;
   flex-wrap: wrap;

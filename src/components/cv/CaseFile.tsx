@@ -177,12 +177,11 @@ export default function CaseFile({ id, project }: Props) {
               </ul>
             </dd>
           </div>
-          <div className="case-row">
-            <dt>{labels('evidence')}</dt>
-            <dd>
-              {id === 'logiup' ? (
-                <p className="case-muted">{t('evidenceNote')}</p>
-              ) : (
+          {/* Only BonBon has public links; a row that says "no link" is not evidence. */}
+          {id === 'bonbon' && (
+            <div className="case-row">
+              <dt>{labels('evidence')}</dt>
+              <dd>
                 <ul className="case-links">
                   {project.brand && (
                     <li>
@@ -235,9 +234,9 @@ export default function CaseFile({ id, project }: Props) {
                     </Link>
                   </li>
                 </ul>
-              )}
-            </dd>
-          </div>
+              </dd>
+            </div>
+          )}
         </dl>
       </div>
     </article>

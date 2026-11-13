@@ -18,6 +18,10 @@ test('every locale carries the LogiUP and BonBon case files with the same facts'
         assert.ok(c[field]?.trim(), `${locale} ${key}.${field}`);
       }
       assert.equal(c.decisions.length, 3, `${locale} ${key}.decisions`);
+      // Plain sentences, not the "X, over Y, because Z" formula (MEP-23).
+      for (const line of c.decisions) {
+        assert.doesNotMatch(line, /, over .*, because | thay vì .*, vì /, `${locale} ${key}: ${line}`);
+      }
       assert.equal(c.accomplishments, undefined, `${locale} ${key} legacy bullets`);
       assert.equal(c.figureCaption, undefined, `${locale} ${key} caption repeats Context`);
       assert.equal(c.index, undefined, `${locale} ${key} index row repeated the case file`);
@@ -36,7 +40,8 @@ test('every locale carries the LogiUP and BonBon case files with the same facts'
 
     const logiup = JSON.stringify(Projects.logiup);
     assert.equal(Projects.logiup.outcome.length, 3);
-    assert.ok(Projects.logiup.evidenceNote.trim());
+    // A row whose only content is "no public link" is not evidence (MEP-23).
+    assert.equal(Projects.logiup.evidenceNote, undefined, `${locale} logiup evidenceNote`);
     for (const fact of [/9/, /\b6\b|>6</, /31/, /\b8\b/, /OAuth 2\.1\/OIDC/, /Electron/, /2026/]) {
       assert.match(logiup, fact, `${locale} logiup ${fact}`);
     }
@@ -62,8 +67,8 @@ test('every locale carries the LogiUP and BonBon case files with the same facts'
   );
   assert.equal(vi.Sections.projectsTitle, 'Hai hệ thống tôi quyết kiến trúc, đúng sai đều do tôi gánh.');
   for (const line of [...en.Projects.logiup.decisions, ...en.Projects.bonbon.decisions]) {
-    assert.match(line, /\bover\b[\s\S]*\bbecause\b/, line);
-    assert.ok(line.length <= 90, `one line at 1440: ${line}`);
+    assert.doesNotMatch(line, /\bbecause\b/, line);
+    assert.ok(line.length <= 100, `one line at 1440: ${line}`);
   }
   assert.match(en.Projects.bonbon.outcome[0], /^BonBon won Tasco Foundry Wash3000/);
   assert.match(en.Projects.bonbon.outcome[1], /\$500K<\/b> pre-seed round led by Tasco/);
@@ -123,6 +128,9 @@ test('case files and the smaller entries are wired to the map and tracked on vie
   assert.match(caseFile, /track\('cv_case_file_open', \{ project, source \}\)/);
   assert.match(caseFile, /'cv_project_evidence_click'/);
   assert.match(caseFile, /'cv_project_website_click'/);
+  // The Evidence row renders only where links exist.
+  assert.match(caseFile, /\{id === 'bonbon' && \(\s*<div className="case-row">\s*<dt>\{labels\('evidence'\)\}/);
+  assert.doesNotMatch(caseFile, /evidenceNote/);
   for (const event of ['cv_project_view', 'cv_project_evidence_click', 'cv_project_website_click', 'cv_case_file_open']) {
     assert.match(analytics, new RegExp(`\\| '${event}'`));
   }
