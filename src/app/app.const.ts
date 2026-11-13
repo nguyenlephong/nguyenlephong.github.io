@@ -1,15 +1,3 @@
-import { gallery } from "@/content/gallery";
-import { videos } from "@/content/media";
-import { experience } from "@/content/experience";
-import { projects } from "@/content/projects";
-import {
-  contact,
-  technical_skill,
-  achievements,
-  education,
-  references,
-} from "@/content/profile";
-
 export const APP_ROUTE = {
   HOME: "/",
   ABOUT: "/about",
@@ -33,16 +21,4 @@ export const SEO = {
     url: "https://nguyenlephong.github.io"
   },
   title_tail: "Nguyen Le Phong | Lead Software Engineer"
-};
-
-export const profileInfo = {
-  gallery,
-  videos,
-  contact,
-  technical_skill,
-  experience,
-  projects,
-  achievements,
-  education,
-  references,
 };

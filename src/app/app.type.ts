@@ -1,16 +1,18 @@
-export type ExperienceItemType = {
-  company: string;
-  location: string;
-  jobs: JobType[]
-}
-
-export type JobType = {
-  title: string;
-  duration: string;
-  summaries: string[]
-  key_contribution: string[]
-  key_techs: string[]
-  contentKey?: string
+/** One role on the career graph. Copy lives in messages `Experience.roles.<id>`. */
+export type ExperienceRole = {
+  id: string
+  company: string
+  title: string
+  /** YYYY-MM */
+  start: string
+  /** YYYY-MM; omitted while the role is current */
+  end?: string
+  /** key into messages `Experience.env` */
+  env: string
+  location: string
+  techs: string[]
+  /** 2018-2020 roles render as one line in the "Earlier" group */
+  earlier?: boolean
   evidence?: {
     href: string
     publisher: string
@@ -28,7 +30,7 @@ export type ProjectType = {
     href: string
     publisher: string
     publishedAt: string
-  }
+  }[]
   brand?: {
     href: string
     label: string
@@ -47,13 +49,6 @@ export type EducationType = {
   duration: string;
   GPA: number;
   description: string[]
-}
-
-export type ReferenceType = {
-  name: string;
-  email: string;
-  phone: string;
-  roles: string[]
 }
 
 export type ContactType = {

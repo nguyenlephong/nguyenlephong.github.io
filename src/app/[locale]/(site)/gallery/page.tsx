@@ -3,7 +3,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import { profileInfo } from '@/app/app.const'
+import { gallery } from '@/content/gallery'
 import GalleryGrid from '@/components/gallery/GalleryGrid'
 import PageTracker from '@/components/analytics/PageTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
@@ -57,10 +57,10 @@ export default async function GalleryPage({ params }: Props) {
     url: localization.canonical,
   })
   const categories = [
-    { id: 'certificates', label: t('categories.certificates'), items: profileInfo.gallery.certificates },
-    { id: 'awards', label: t('categories.awards'), items: profileInfo.gallery.awards },
-    { id: 'projects', label: t('categories.projects'), items: profileInfo.gallery.projects },
-    { id: 'activities', label: t('categories.activities'), items: profileInfo.gallery.activities },
+    { id: 'certificates', label: t('categories.certificates'), items: gallery.certificates },
+    { id: 'awards', label: t('categories.awards'), items: gallery.awards },
+    { id: 'projects', label: t('categories.projects'), items: gallery.projects },
+    { id: 'activities', label: t('categories.activities'), items: gallery.activities },
   ].filter((c) => c.items.length > 0)
 
   const galleryLd = {

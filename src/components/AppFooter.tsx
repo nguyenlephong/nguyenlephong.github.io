@@ -5,7 +5,8 @@ import { useLocale, useTranslations } from 'next-intl'
 import { FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { LuAppWindow, LuOrbit } from 'react-icons/lu'
 import { SiLeetcode } from 'react-icons/si'
-import { APP_ROUTE, profileInfo } from '@/app/app.const'
+import { APP_ROUTE } from '@/app/app.const'
+import { social as c } from '@/content/profile'
 import IntentPrefetchLink from '@/components/navigation/IntentPrefetchLink'
 import { track } from '@/lib/analytics'
 import { SITE_INDEX_PATH } from '@/lib/seo/site-index'
@@ -15,7 +16,6 @@ const year = new Date().getFullYear()
 export default function AppFooter() {
   const t = useTranslations('Footer')
   const locale = useLocale()
-  const c = profileInfo.contact
   const studioHref = getPathname({
     href: APP_ROUTE.STUDIO,
     locale: locale as Locale,
