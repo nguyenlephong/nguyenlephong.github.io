@@ -642,7 +642,7 @@
         },
         "handover": {
           "title": "A team that just lost its technical lead",
-          "proof": "At NDSVN I joined right after a CTO handover and took technical ownership of <b>8 developers and 3 QC</b>. I wrote down who owns what, the release process, the runbooks and the interview loop, so the team runs without waiting on one person.",
+          "proof": "At NDSVN I joined right after a CTO handover and took technical ownership of <b>8 developers and 3 QC</b>. The first step was writing down, with the team, what already worked: who owns what, how releases go out, how incidents are handled, what interviews look for. Then we adjusted one piece at a time, so the team kept its pace without waiting on one person.",
           "source": "NDSVN · 2025–2026"
         },
         "zeroToOne": {

@@ -642,7 +642,7 @@
         },
         "handover": {
           "title": "Team vừa mất người dẫn dắt kỹ thuật",
-          "proof": "Ở NDSVN, tôi vào ngay sau đợt chuyển giao CTO và nhận phụ trách kỹ thuật cho <b>8 developer và 3 QC</b>. Tôi viết lại ai lo phần nào, quy trình release, runbook và cách phỏng vấn, để team chạy được mà không phải chờ một người.",
+          "proof": "Ở NDSVN, tôi vào ngay sau đợt chuyển giao CTO và nhận phụ trách kỹ thuật cho <b>8 developer và 3 QC</b>. Việc đầu tiên là cùng team ghi lại những gì đang chạy: ai lo phần nào, release ra sao, sự cố xử lý thế nào, phỏng vấn theo tiêu chí gì. Sau đó mới chỉnh dần từng chỗ, để team vẫn giữ nhịp mà không phải chờ một người.",
           "source": "NDSVN · 2025–2026"
         },
         "zeroToOne": {

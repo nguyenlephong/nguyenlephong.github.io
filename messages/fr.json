@@ -373,7 +373,7 @@
         },
         "handover": {
           "title": "Une équipe qui vient de perdre son lead technique",
-          "proof": "Chez NDSVN, je suis arrivé juste après une passation de CTO et j'ai pris la responsabilité technique de <b>8 développeurs et 3 QC</b>. J'ai écrit qui fait quoi, le processus de release, les runbooks et le processus d'entretien, pour que l'équipe n'attende personne.",
+          "proof": "Chez NDSVN, je suis arrivé juste après une passation de CTO et j'ai pris la responsabilité technique de <b>8 développeurs et 3 QC</b>. D'abord, avec l'équipe, nous avons mis par écrit ce qui fonctionnait déjà : qui s'occupe de quoi, comment partent les releases, comment on gère un incident, ce que cherchent les entretiens. Ensuite, nous avons ajusté une chose à la fois, pour que l'équipe garde son rythme sans attendre une seule personne.",
           "source": "NDSVN · 2025–2026"
         },
         "zeroToOne": {
