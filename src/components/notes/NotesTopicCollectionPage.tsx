@@ -6,6 +6,7 @@ import ContentHubPage from '@/components/content/ContentHubPage'
 import {
   getNoteHub,
   getNotesByHub,
+  getTopic,
   listNoteHubPageLocales,
 } from '@/lib/notes/data'
 import { noteOgImageUrl } from '@/lib/og/static-images'
@@ -139,6 +140,7 @@ export default async function NotesTopicCollectionPage({
       currentPage={page}
       totalPages={pageData.totalPages}
       basePath={basePath}
+      accentColor={getTopic(topic, resolvedLocale)?.color}
       cards={pageData.items.map((note, index) => ({
         slug: note.slug,
         title: note.title,
@@ -159,6 +161,7 @@ export default async function NotesTopicCollectionPage({
       }}
       collectionJsonLd={collectionJsonLd}
       breadcrumbJsonLd={breadcrumbJsonLd}
+      availableLocales={listNoteHubPageLocales(topic, page)}
     />
   )
 }

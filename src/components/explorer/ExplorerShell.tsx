@@ -18,6 +18,8 @@ export interface ExplorerLabels {
   popularTags: string
   noResults: string
   results: (count: number) => string
+  /** Shown instead of the static total while the search index loads. */
+  searching: string
   pagination: { label: string; prev: string; next: string; goToPage: string }
 }
 
@@ -76,7 +78,7 @@ export function ExplorerShell<T>({
     isStaticBrowsing,
     staticPagination,
     onSearch,
-    openPalette,
+    closePalette,
     togglePaletteVisibility,
     clearAll,
     clearTag,
@@ -120,11 +122,12 @@ export function ExplorerShell<T>({
               value={view.query}
               onChange={(e) => {
                 onSearchIntent()
+                // Search and filter are separate intents; typing must never sit under the palette.
+                closePalette()
                 onSearch(e.target.value)
               }}
               onFocus={() => {
                 onSearchIntent()
-                openPalette()
               }}
               onBlur={() => {
                 const query = view.query.trim()
@@ -133,11 +136,13 @@ export function ExplorerShell<T>({
               }}
               placeholder={labels.searchPlaceholder}
               aria-label={labels.searchLabel}
-              aria-controls={paletteId}
               autoComplete="off"
             />
             <p className="blog-command__count" aria-live="polite">
-              {labels.results(count)}
+              {/* The static total is not an answer to a query; never show it as one. */}
+              {hasFilters && isStaticBrowsing && searchStatus !== 'error'
+                ? labels.searching
+                : labels.results(count)}
             </p>
             {view.query && (
               <button

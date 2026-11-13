@@ -146,10 +146,14 @@ export default async function BlogSeriesCollectionPage({
       currentPage={page}
       totalPages={pageData.totalPages}
       basePath={basePath}
+      accentFamily={
+        getCategory(pageData.items[0]?.category ?? '', resolvedLocale)?.accent
+      }
       cards={pageData.items.map((post, index) => ({
         slug: post.slug,
         title: post.title,
         summary: post.summary,
+        accent: getCategory(post.category, resolvedLocale)?.accent,
         kicker:
           getCategory(post.category, resolvedLocale)?.title ?? post.category,
         contentCategory: post.category,
@@ -167,6 +171,7 @@ export default async function BlogSeriesCollectionPage({
       }}
       collectionJsonLd={collectionJsonLd}
       breadcrumbJsonLd={breadcrumbJsonLd}
+      availableLocales={listBlogSeriesPageLocales(seriesId, page)}
     />
   )
 }

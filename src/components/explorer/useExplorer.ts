@@ -3,7 +3,13 @@
 import { type RefObject, useEffect, useMemo, useRef, useState } from 'react'
 import { useDebouncedValue } from '@/components/blog/useDebouncedValue'
 import type { Locale } from '@/i18n/routing'
-import { normalizeSearch, readUrlParam } from '@/lib/content/search'
+import {
+  indexSearchFields,
+  parseSearchQuery,
+  readUrlParam,
+  scoreSearch,
+  type SearchFields,
+} from '@/lib/content/search'
 
 /** A selectable filter (blog category / notes topic). `color` drives `--blog-accent`. */
 export interface ExplorerFilterOption {
@@ -20,8 +26,8 @@ export interface ExplorerAccessors<T> {
   filterId: (item: T) => string | null | undefined
   /** Tags used by the tag filter. */
   tags: (item: T) => string[]
-  /** Raw text joined for search; normalised internally. */
-  searchText: (item: T) => string
+  /** Title, topic/tags and summary; matched by word prefix and ranked by field. */
+  searchFields: (item: T) => SearchFields
 }
 
 export interface ExplorerView {
@@ -70,7 +76,7 @@ export interface ExplorerApi<T> {
   initialSearchIntent: boolean
   staticPagination: StaticPagination
   onSearch: (value: string) => void
-  openPalette: () => void
+  closePalette: () => void
   togglePaletteVisibility: () => void
   clearAll: () => void
   clearTag: () => void
@@ -138,10 +144,7 @@ export function useExplorer<T>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const queryTerms = useMemo(
-    () => normalizeSearch(debouncedQuery).split(/\s+/).filter(Boolean),
-    [debouncedQuery],
-  )
+  const queryTerms = useMemo(() => parseSearchQuery(debouncedQuery), [debouncedQuery])
 
   const hasFilters = Boolean(view.query || view.filter || view.tag)
   const searchItems = untypedSearchItems as readonly T[] | null | undefined
@@ -149,13 +152,13 @@ export function useExplorer<T>(
   const isStaticBrowsing = !hasFilters || !hasSearchIndex || searchFailed
   const activeItems = isStaticBrowsing ? items : searchItems
 
-  // Precompute a normalised blob only for the active data source. The full
+  // Precompute word indexes only for the active data source. The full
   // corpus does not exist in memory until the optional search index resolves.
   const searchable = useMemo(
     () =>
       activeItems.map((item) => ({
         item,
-        blob: normalizeSearch(accessors.searchText(item)),
+        index: indexSearchFields(accessors.searchFields(item)),
       })),
     // accessors are pure/static; recompute only when the active source changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -165,10 +168,15 @@ export function useExplorer<T>(
   const filtered = useMemo(
     () => {
       if (isStaticBrowsing) return [...items]
-      return searchable
+      const narrowed = searchable
         .filter(({ item }) => !view.filter || accessors.filterId(item) === view.filter)
         .filter(({ item }) => !view.tag || accessors.tags(item).includes(view.tag as string))
-        .filter(({ blob }) => queryTerms.every((term) => blob.includes(term)))
+      if (!queryTerms.length) return narrowed.map(({ item }) => item)
+      // Stable sort: equal scores keep the incoming newest-first order.
+      return narrowed
+        .map(({ item, index }) => ({ item, score: scoreSearch(index, queryTerms) }))
+        .filter(({ score }) => score > 0)
+        .sort((a, b) => b.score - a.score)
         .map(({ item }) => item)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -241,10 +249,7 @@ export function useExplorer<T>(
   }
 
   const onSearch = (value: string) => setView((v) => ({ ...v, query: value, page: 1 }))
-  const openPalette = () => {
-    updatePalettePlacement()
-    setPaletteOpen(true)
-  }
+  const closePalette = () => setPaletteOpen(false)
   const togglePaletteVisibility = () => {
     if (!paletteOpen) updatePalettePlacement()
     setPaletteOpen((open) => !open)
@@ -294,7 +299,7 @@ export function useExplorer<T>(
     initialSearchIntent,
     staticPagination,
     onSearch,
-    openPalette,
+    closePalette,
     togglePaletteVisibility,
     clearAll,
     clearTag,

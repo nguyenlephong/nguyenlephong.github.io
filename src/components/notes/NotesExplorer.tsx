@@ -155,8 +155,11 @@ export default function NotesExplorer({
       key: (c) => c.note.slug,
       filterId: (c) => c.note.topic,
       tags: (c) => c.note.tags,
-      searchText: (c) =>
-        [c.note.title, c.note.summary, c.topicLabel, c.note.tags.join(' ')].join(' '),
+      searchFields: (c) => ({
+        title: c.note.title,
+        meta: [c.topicLabel, ...c.note.tags].join(' '),
+        summary: c.note.summary,
+      }),
     },
     {
       filterParam: 'topic',
@@ -198,6 +201,7 @@ export default function NotesExplorer({
     popularTags: t('controls.popularTags'),
     noResults: t('controls.noResults'),
     results: (count) => t('controls.results', { count }),
+    searching: t('controls.searching'),
     pagination: {
       label: t('controls.pagination.label'),
       prev: t('controls.pagination.prev'),

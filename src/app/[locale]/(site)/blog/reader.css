@@ -1,5 +1,7 @@
 /* Reader background materials. These variables are consumed by article pages,
-   keeping the rest of the site on the active light/dark theme. */
+   keeping the rest of the site on the active light/dark theme. Each
+   --reader-fg-subtle holds 4.5:1 on its own --reader-bg and --reader-bg-muted
+   (tests/reader-contrast.test.mjs). */
 :root,
 html[data-reading-background='plain'] {
   --reader-bg: oklch(98% 0.003 250);
@@ -7,7 +9,7 @@ html[data-reading-background='plain'] {
   --reader-bg-muted: oklch(95% 0.005 250);
   --reader-fg: oklch(20% 0.02 260);
   --reader-fg-muted: oklch(45% 0.015 260);
-  --reader-fg-subtle: oklch(58% 0.012 260);
+  --reader-fg-subtle: oklch(52% 0.012 260);
   --reader-border: oklch(90% 0.008 260);
   --reader-border-strong: oklch(82% 0.01 260);
   --reader-texture:
@@ -24,7 +26,7 @@ html[data-reading-background='plain'] {
   --reader-bg-muted: oklch(20% 0.015 260);
   --reader-fg: oklch(95% 0.005 250);
   --reader-fg-muted: oklch(72% 0.015 260);
-  --reader-fg-subtle: oklch(58% 0.015 260);
+  --reader-fg-subtle: oklch(61% 0.015 260);
   --reader-border: oklch(28% 0.01 260);
   --reader-border-strong: oklch(36% 0.012 260);
   --reader-texture:
@@ -41,7 +43,7 @@ html[data-reading-background='parchment'] {
   --reader-bg-muted: oklch(91.6% 0.041 80);
   --reader-fg: oklch(24% 0.028 62);
   --reader-fg-muted: oklch(42% 0.032 64);
-  --reader-fg-subtle: oklch(55% 0.03 66);
+  --reader-fg-subtle: oklch(49.5% 0.03 66);
   --reader-border: oklch(84% 0.034 76);
   --reader-border-strong: oklch(74% 0.04 76);
   --reader-texture:
@@ -58,7 +60,7 @@ html[data-reading-background='linen'] {
   --reader-bg-muted: oklch(92.8% 0.018 92);
   --reader-fg: oklch(24% 0.022 70);
   --reader-fg-muted: oklch(43% 0.018 72);
-  --reader-fg-subtle: oklch(57% 0.016 74);
+  --reader-fg-subtle: oklch(50.5% 0.016 74);
   --reader-border: oklch(85% 0.018 82);
   --reader-border-strong: oklch(76% 0.022 80);
   --reader-texture:
@@ -75,7 +77,7 @@ html[data-reading-background='sepia'] {
   --reader-bg-muted: oklch(86.5% 0.052 72);
   --reader-fg: oklch(22% 0.034 54);
   --reader-fg-muted: oklch(39% 0.034 56);
-  --reader-fg-subtle: oklch(53% 0.032 58);
+  --reader-fg-subtle: oklch(46% 0.032 58);
   --reader-border: oklch(78% 0.044 70);
   --reader-border-strong: oklch(68% 0.05 68);
   --reader-texture:
@@ -90,7 +92,7 @@ html[data-reading-background='sage'] {
   --reader-bg-muted: oklch(89.8% 0.034 132);
   --reader-fg: oklch(23% 0.028 145);
   --reader-fg-muted: oklch(40% 0.03 145);
-  --reader-fg-subtle: oklch(54% 0.028 145);
+  --reader-fg-subtle: oklch(48.5% 0.028 145);
   --reader-border: oklch(80% 0.038 132);
   --reader-border-strong: oklch(70% 0.044 132);
   --reader-texture:
@@ -106,7 +108,7 @@ html[data-reading-background='mist'] {
   --reader-bg-muted: oklch(90.8% 0.024 225);
   --reader-fg: oklch(23% 0.024 244);
   --reader-fg-muted: oklch(42% 0.024 240);
-  --reader-fg-subtle: oklch(56% 0.022 238);
+  --reader-fg-subtle: oklch(49% 0.022 238);
   --reader-border: oklch(82% 0.028 224);
   --reader-border-strong: oklch(72% 0.034 224);
   --reader-texture:
@@ -123,7 +125,7 @@ html[data-reading-background='night'] {
   --reader-bg-muted: oklch(23% 0.022 74);
   --reader-fg: oklch(91% 0.024 86);
   --reader-fg-muted: oklch(74% 0.024 84);
-  --reader-fg-subtle: oklch(60% 0.022 82);
+  --reader-fg-subtle: oklch(62.5% 0.022 82);
   --reader-border: oklch(32% 0.026 74);
   --reader-border-strong: oklch(42% 0.03 74);
   --reader-texture:

@@ -151,8 +151,11 @@ export default function BlogExplorer({
       key: (c) => c.post.slug,
       filterId: (c) => c.post.category,
       tags: (c) => c.post.tags,
-      searchText: (c) =>
-        [c.post.title, c.post.summary, c.categoryTitle, c.post.tags.join(' ')].join(' '),
+      searchFields: (c) => ({
+        title: c.post.title,
+        meta: [c.categoryTitle, ...c.post.tags].join(' '),
+        summary: c.post.summary,
+      }),
     },
     {
       filterParam: 'cat',
@@ -195,6 +198,7 @@ export default function BlogExplorer({
     popularTags: t('controls.popularTags'),
     noResults: t('controls.noResults'),
     results: (count) => t('controls.results', { count }),
+    searching: t('controls.searching'),
     pagination: {
       label: t('controls.pagination.label'),
       prev: t('controls.pagination.prev'),

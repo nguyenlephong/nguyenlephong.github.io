@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import ContentHubPageTracker from '@/components/analytics/ContentHubPageTracker'
 import { collectionPagePath } from '@/lib/content/pagination'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
@@ -14,6 +15,8 @@ interface HubCard {
   date: string
   readingLabel: string
   position: number
+  /** Blog accent family (`ocean`, `gold`...); notes cards inherit the hub colour. */
+  accent?: string
 }
 
 interface ContentHubPageProps {
@@ -39,6 +42,20 @@ interface ContentHubPageProps {
   }
   collectionJsonLd: Record<string, unknown>
   breadcrumbJsonLd: Record<string, unknown>
+  /** Hub accent: a blog accent family class, or a notes topic colour. */
+  accentFamily?: string
+  accentColor?: string
+  /** Locales that export this exact hub page; read by LocaleSwitcher. */
+  availableLocales: readonly string[]
+}
+
+// Same format as the archive cards (NoteCard / BlogPostCard).
+function formatDate(iso: string, locale: string): string {
+  const date = new Date(iso)
+  if (Number.isNaN(date.getTime())) return iso
+  return new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'short', day: 'numeric' }).format(
+    date,
+  )
 }
 
 function localizedHref(locale: string, path: string): string {
@@ -91,12 +108,26 @@ export default function ContentHubPage({
   pagination,
   collectionJsonLd,
   breadcrumbJsonLd,
+  accentFamily,
+  accentColor,
+  availableLocales,
 }: ContentHubPageProps) {
   const previousPage = currentPage - 1
   const nextPage = currentPage + 1
 
   return (
-    <main className={`content-hub content-hub--${kind}`}>
+    <main
+      className={[
+        'content-hub',
+        `content-hub--${kind}`,
+        accentFamily && `blog-category--${accentFamily}`,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      style={accentColor ? ({ '--blog-accent': accentColor } as CSSProperties) : undefined}
+      data-content-locales={availableLocales.join(' ')}
+      data-content-locale-fallback={backHref}
+    >
       <ContentHubPageTracker
         page={kind}
         eventName="content_hub_view"
@@ -143,7 +174,10 @@ export default function ContentHubPage({
       {cards.length > 0 ? (
         <div className="blog-post-list content-hub__cards">
           {cards.map((card) => (
-            <article className="blog-card blog-card--ocean" key={card.slug}>
+            <article
+              className={card.accent ? `blog-card blog-card--${card.accent}` : 'blog-card'}
+              key={card.slug}
+            >
               <a
                 className="blog-card__link"
                 href={localizedHref(locale, card.href)}
@@ -160,7 +194,7 @@ export default function ContentHubPage({
                   <h2 className="blog-card__title">{card.title}</h2>
                   <p className="blog-card__summary">{card.summary}</p>
                   <div className="blog-card__meta">
-                    <time dateTime={card.date}>{card.date}</time>
+                    <time dateTime={card.date}>{formatDate(card.date, locale)}</time>
                     <span aria-hidden="true">·</span>
                     <span>{card.readingLabel}</span>
                   </div>

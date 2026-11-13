@@ -15,10 +15,10 @@
   --paper-3: oklch(93% 0.02 83);
   --ink: oklch(25% 0.022 58);
   --ink-soft: oklch(43% 0.022 60);
-  --ink-faint: oklch(56% 0.016 62);
+  --ink-faint: oklch(53% 0.016 62); /* 4.6:1 on --paper-2 */
   --rule: oklch(84% 0.02 72);
   --rule-strong: oklch(74% 0.028 70);
-  --gilt: oklch(56% 0.092 70);
+  --gilt: oklch(53.5% 0.092 70); /* 4.6:1 on --paper-2 */
   /* Follows the reader's font choice (Inter by default). Italic accents only
      read well with a real serif italic, so sans stays upright. */
   --notes-font: var(--font-sans);
@@ -43,7 +43,7 @@ html[data-reading-font='be-vietnam'] .notes-reading {
   --paper-3: oklch(23.5% 0.018 64);
   --ink: oklch(92% 0.016 82);
   --ink-soft: oklch(74% 0.018 76);
-  --ink-faint: oklch(60% 0.016 70);
+  --ink-faint: oklch(61% 0.016 70);
   --rule: oklch(34% 0.016 66);
   --rule-strong: oklch(44% 0.02 68);
   --gilt: oklch(74% 0.085 80);
@@ -208,6 +208,7 @@ html[data-reading-background] .notes-reading {
   --blog-accent: var(--topic-color, #b45309);
   --blog-accent-soft: color-mix(in oklab, var(--blog-accent) 14%, transparent);
   --blog-accent-line: color-mix(in oklab, var(--blog-accent) 30%, transparent);
+  --blog-accent-ink: color-mix(in oklab, var(--blog-accent) 55%, var(--fg));
   color: var(--ink);
 }
 
@@ -362,6 +363,7 @@ html[data-reading-background] .notes-reading {
   --blog-accent: #b45309;
   --blog-accent-soft: color-mix(in oklab, var(--blog-accent) 14%, transparent);
   --blog-accent-line: color-mix(in oklab, var(--blog-accent) 32%, transparent);
+  --blog-accent-ink: color-mix(in oklab, var(--blog-accent) 55%, var(--fg));
   margin-top: clamp(1.5rem, 4vw, 2.5rem);
 }
 
