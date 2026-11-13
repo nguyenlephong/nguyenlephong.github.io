@@ -53,7 +53,7 @@ route group to give public pages and Studio different runtime boundaries.
   CSS contains the local stylesheets and combined inline styles referenced
   directly by the Studio HTML and is capped at 3,072 Brotli bytes. Required
   Shadow CSS contains `studio/studio-shadow.css`, which the reachable Studio
-  runtime applies inside the Shadow root, and is capped at 16,384 Brotli bytes.
+  runtime applies inside the Shadow root, and is capped at 12,288 Brotli bytes.
   Total initial CSS combines both groups and is capped at 18,432 Brotli bytes.
   An external stylesheet is rejected unless its origin is explicitly
   allowlisted.
@@ -208,7 +208,7 @@ existing IDs must not be renamed or renumbered.
   bidirectional sitemap-to-published-HTML parity.
 - Run `npm run verify:performance-artifact` and confirm the Studio initial
   document, required Shadow, and combined initial CSS stay within 3,072,
-  16,384, and 18,432 Brotli bytes respectively.
+  12,288, and 18,432 Brotli bytes respectively.
 - Confirm representative public routes remain within their configured initial
   stylesheet-request and Brotli budgets and expose only their required
   normalized route-owner selectors.

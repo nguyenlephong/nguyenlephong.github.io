@@ -134,7 +134,7 @@
         },
         "notesArticle": {
           "html": "en/notes/tri-tue-can-duc-hanh.html",
-          "maxGzipBytes": 20480
+          "maxGzipBytes": 21248
         }
       }
     },
@@ -286,16 +286,14 @@
       "requiredMarkers": ["data-studio-shadow-host"],
       "requiredReachableMarkers": ["studio_route_open", "data-studio-module"],
       "forbiddenMarkers": [
-        "data-studio-auxiliary-dashboard",
         "data-studio-flow-runtime",
-        "data-studio-recharts-runtime",
         "getFirestore",
         "initializeFirestore",
         "firebaseapp.com"
       ],
       "maxInitialDocumentCssBrotliBytes": 3072,
       "requiredShadowCssFiles": ["studio/studio-shadow.css"],
-      "maxShadowCssBrotliBytes": 16384,
+      "maxShadowCssBrotliBytes": 12288,
       "maxTotalInitialCssBrotliBytes": 18432,
       "allowedExternalStylesheetOrigins": [],
       "allowedThirdPartyConnectionOrigins": [

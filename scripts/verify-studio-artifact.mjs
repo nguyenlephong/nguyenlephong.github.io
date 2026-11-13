@@ -5,7 +5,8 @@ import { fileURLToPath } from "node:url";
 
 const STYLESHEET_RELATIVE_PATH = "studio/studio-shadow.css";
 const SHADOW_CSS_SENTINEL = '.studio-admin[data-navbar-style="scroll"]';
-const MIN_SHADOW_CSS_BYTES = 100_000;
+// Floor against a truncated payload; the pruned sheet is about 91 KB raw (MEP-83).
+const MIN_SHADOW_CSS_BYTES = 80_000;
 const DEFAULT_BUDGET_CONFIG = "config/static-artifact-budgets.json";
 const REPOSITORY_ROOT = realpathSync(
   fileURLToPath(new URL("..", import.meta.url))

@@ -528,17 +528,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "studio-sidebar",
     "studio-topbar",
     "metric-grid",
-    "activity-card",
-    "studio-chart",
-    "studio-chart-tooltip",
-    "workstreams-card",
-    "ops-kpi-strip",
-    "component-inventory",
-    "donut-chart",
-    "table-shell",
-    "mail-workbench",
-    "chat-workbench",
-    "chat-profile-pane",
     "ai-setup-container",
     "ai-setup-index",
     "ai-setup-reader",
@@ -576,7 +565,27 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   ]) {
     assert.match(shadowCss, new RegExp(`\\.${expectedClass}\\b`));
   }
-  assert.match(shadowCss, /\.chart-legend\.interactive\b/);
+  // MEP-83: the template dashboards, mail, chat, auth and Recharts routes are gone, so is their CSS.
+  for (const removedClass of [
+    "activity-card",
+    "studio-chart",
+    "workstreams-card",
+    "ops-kpi-strip",
+    "component-inventory",
+    "donut-chart",
+    "table-shell",
+    "mail-workbench",
+    "chat-workbench",
+    "chat-profile-pane",
+    "auth-card",
+    "kanban-board",
+    "calendar-grid",
+    "invoice-paper",
+    "chart-legend",
+    "recharts-wrapper"
+  ]) {
+    assert.doesNotMatch(shadowCss, new RegExp(`\\.${removedClass}\\b`));
+  }
   assert.match(shadowCss, /\.react-flow__container\b/);
   assert.match(shadowCss, /\.react-flow__controls\b/);
   assert.match(shadowCss, /\.react-flow__minimap\b/);
@@ -626,9 +635,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.flow-chart-surface\s*\{[^}]*flex:\s*0 0 auto/s);
   assert.doesNotMatch(shadowCss, /\.activity-chart\b/);
   assert.doesNotMatch(shadowCss, /\.chart-bar\b/);
-  assert.match(packageJson, /"recharts":/);
+  assert.doesNotMatch(packageJson, /"recharts":/);
   assert.match(packageJson, /"@xyflow\/react":/);
-  assert.match(shadowCss, /\.mail-workbench\.card,\s*\.chat-workbench\.card\s*\{[^}]*display:\s*grid/s);
   assert.match(shadowCss, /grid-template-columns:\s*18\.5rem minmax\(0, 1fr\)/);
   assert.match(shadowCss, /\.studio-admin\s*\{[^}]*gap:\s*0\.75rem/s);
   assert.match(shadowCss, /\.studio-admin\.is-sidebar-hidden\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/s);
@@ -651,7 +659,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /@media \(max-width: 1480px\)\s*\{[\s\S]*?\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card,[\s\S]*?\.flow-workbench\.card\s*\{[^}]*grid-template-columns:\s*minmax\(15rem,\s*0\.34fr\) minmax\(0,\s*1fr\)/s);
   assert.match(shadowCss, /\.route-heading \.outline-button,[\s\S]*?\.skill-reader-head \.outline-button\s*\{[^}]*min-width:\s*max-content/s);
   assert.match(shadowCss, /@media \(max-width: 1080px\)/);
-  assert.match(shadowCss, /@media \(max-width: 1080px\)\s*\{[\s\S]*?\.skill-side-pane,[\s\S]*?\.checklist-side-pane,[\s\S]*?\.flow-side-pane\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(shadowCss, /@media \(max-width: 1080px\)\s*\{[\s\S]*?\.checklist-side-pane,[\s\S]*?\.flow-side-pane\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.match(shadowCss, /\.flow-step-node dl\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/s);
   assert.match(shadowCss, /\.studio-flow-route \.flow-reader-pane\s*\{[^}]*order:\s*1/s);
   assert.match(shadowCss, /\.studio-flow-route \.flow-index-pane\s*\{[^}]*order:\s*3/s);
@@ -667,7 +675,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.studio-admin\.is-mobile-open \.quick-create\s*\{[^}]*width:\s*100%/s);
   assert.match(shadowCss, /@media \(max-width: 520px\)/);
   assert.match(shadowCss, /\.metric-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/s);
-  assert.match(shadowCss, /\.route-actions,\s*\.calendar-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(shadowCss, /@media \(max-width: 520px\)\s*\{[\s\S]*?\.route-actions\s*\{[^}]*grid-template-columns:\s*1fr/s);
 
   for (const expected of [
     "Machine bootstrap",

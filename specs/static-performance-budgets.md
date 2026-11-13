@@ -86,7 +86,7 @@ route-oriented measurements.
   scope. Every valid non-empty message structure must match exactly one declared
   scope, and each route must contain exactly one instance of every required
   scope with no extras or duplicates.
-- Keep heavy Studio dashboards, ReactFlow, Recharts, and Firebase/Firestore
+- Keep ReactFlow and Firebase/Firestore
   markers out of the initial Studio scripts. Require the Shadow host marker in
   the direct scripts and require Studio route analytics/module markers in the
   reachable chunk graph, so valid route splitting cannot look like a missing
@@ -104,9 +104,9 @@ route-oriented measurements.
   199,659-byte baseline. Continue to report the complete reachable asynchronous
   and combined totals as observability signals because feature growth and
   entry-route latency are separate concerns.
-- Require representative lazy markers for Mail, AI Skills, Delivery
-  Checklists, auxiliary dashboards, ReactFlow, and Recharts in reachable async
-  chunks, and reject any of them from the default-route loader path. Locate all
+- Require representative lazy markers for AI Skills, Delivery Checklists, and
+  ReactFlow in reachable async chunks, and reject any of them from the
+  default-route loader path. Locate all
   six locale loaders with stable, locale-specific sentinels, require an isolated
   Turbopack loader group for each one, and reject cross-locale copy from the
   selected English entry/default set.

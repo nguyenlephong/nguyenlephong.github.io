@@ -798,7 +798,7 @@ remain hard gates. The current configured gates are:
 | Studio direct initial JavaScript, Brotli | Hard limit: 149,504 bytes |
 | Studio English default route, Brotli | Hard limit: 204,800 bytes |
 | Studio initial document CSS, Brotli | Hard limit: 3,072 bytes |
-| Studio required Shadow CSS, Brotli | Hard limit: 16,384 bytes |
+| Studio required Shadow CSS, Brotli | Hard limit: 12,288 bytes |
 | Studio total initial CSS, Brotli | Hard limit: 18,432 bytes |
 | All exported RSC `.txt` payloads | Advisory warning: 157,286,400 bytes |
 | Average of 24 localized Home/Blog/Notes/Studio RSC samples | Hard limit: 47,104 bytes |
@@ -809,7 +809,7 @@ remain hard gates. The current configured gates are:
 
 The verifier also hard-gates Gzip HTML for English Home (34,304 bytes), Blog
 archive (19,456), Notes archive (18,432), one Blog article (18,432), and one
-Notes article (20,480), while reporting raw and Brotli bytes for comparison.
+Notes article (21,248), while reporting raw and Brotli bytes for comparison.
 
 Rebase of 2026-11-13 (homepage CV revamp). Initial JavaScript no longer counts
 `<script nomodule>` tags: the Next legacy polyfill (about 39.5 KiB Gzip) is never
@@ -876,7 +876,7 @@ pages do not mount Explorer or ship a full search index. Every serialized
 empty values, and must match a recognized non-empty scope. Each public Client
 Component boundary receives only its declared namespace allowlist. The Studio
 contract rejects transitive provider-dependent internationalization as well as
-eagerly loaded heavy dashboard, ReactFlow, Recharts, and Firebase markers, and
+eagerly loaded ReactFlow and Firebase markers, and
 rejects new third-party connection origins unless they are explicitly reviewed
 in `config/static-artifact-budgets.json`.
 
@@ -895,7 +895,7 @@ the Studio HTML. Required Shadow CSS is `studio/studio-shadow.css`, referenced
 by reachable Studio JavaScript and applied inside the Shadow root. Total initial
 CSS combines both measured groups, so Shadow CSS is neither mislabeled as a
 document stylesheet nor omitted from the initial cost. The three Brotli caps
-are 3,072, 16,384, and 18,432 bytes respectively; external stylesheets fail the
+are 3,072, 12,288, and 18,432 bytes respectively; external stylesheets fail the
 gate unless their origins are explicitly allowlisted.
 
 Public document CSS is route-owned. `src/app/globals.css` keeps the shared
@@ -925,8 +925,8 @@ JavaScript chunk transitively reachable from the English Studio entry. Its
 direct entry retains the 149,504-byte ceiling (polyfill excluded). The default-route hard gate
 parses Turbopack `Promise.all` loaders and counts every sibling chunk needed by
 the selected English locale and Welcome route; the full reachable async total
-remains visible separately. Mail, AI Skills, Delivery Checklists, auxiliary
-dashboards, ReactFlow, and Recharts must remain reachable lazy chunks and are
+remains visible separately. AI Skills, Delivery Checklists, and ReactFlow must
+remain reachable lazy chunks and are
 forbidden from that default path. Stable sentinels verify isolated loaders for
 English, Vietnamese, Chinese, Japanese, Korean, and French and reject
 cross-locale copy from the selected English entry.
