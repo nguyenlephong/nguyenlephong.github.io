@@ -55,3 +55,7 @@ thread.json
 
 
 plan/
+
+# Private research notes and session context (kept local, repo is public)
+AI/research/
+AI/context/
