@@ -107,7 +107,7 @@ export default function GlobalSearchDialog({ open, onClose, config }: GlobalSear
 
   useEffect(() => {
     const controller = new AbortController()
-    loadEntries(config, controller.signal)
+    void loadEntries(config, controller.signal)
       .catch(() => null)
       .then((loaded) => {
         if (controller.signal.aborted) return

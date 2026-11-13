@@ -74,7 +74,7 @@ export default function CareerGraph({ listRef, forkNote, mergeNote }: Props) {
     // Height changes cover resize, font swap and <details> toggles.
     const ro = new ResizeObserver(update);
     ro.observe(list);
-    document.fonts?.ready.then(update);
+    void document.fonts?.ready.then(update);
     update();
     return () => {
       cancelAnimationFrame(frame);

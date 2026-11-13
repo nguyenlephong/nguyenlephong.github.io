@@ -81,6 +81,10 @@ function normalizeNewlines(source) {
   return source.replace(/\r\n?/g, '\n')
 }
 
+
+// Plain code-unit order: deterministic, and identical to Array#sort's default.
+const byCodeUnit = (a, b) => (a < b ? -1 : a > b ? 1 : 0)
+
 export function hashSource(source) {
   const digest = createHash('sha256').update(normalizeNewlines(source), 'utf8').digest('base64')
   return `'sha256-${digest}'`
@@ -163,7 +167,7 @@ export function buildCspPolicy({
   appCheck = false,
   googleThirdParty = false,
 }) {
-  const scriptSrc = ["'self'", ...unique(hashes).sort(), POSTHOG_ASSETS_ORIGIN]
+  const scriptSrc = ["'self'", ...unique(hashes).sort(byCodeUnit), POSTHOG_ASSETS_ORIGIN]
   const connectSrc = ["'self'", POSTHOG_API_ORIGIN, POSTHOG_ASSETS_ORIGIN]
   const frameSrc = []
   if (firestore) connectSrc.push(FIRESTORE_ORIGIN)
@@ -279,7 +283,7 @@ export async function applyContentSecurityPolicy(artifactIndex, options = {}) {
   const htmlFiles = artifactIndex
     .files()
     .filter((file) => file.endsWith('.html'))
-    .sort()
+    .sort(byCodeUnit)
   const pages = []
   const prepare = async (file) => mergeFlightScripts(stripCspMeta(await artifactIndex.readText(file)))
   for (const file of htmlFiles) {
@@ -300,5 +304,5 @@ export async function applyContentSecurityPolicy(artifactIndex, options = {}) {
     if (problems.length) throw new Error(`[csp] ${page.file}: ${problems.join('; ')}`)
     await artifactIndex.write(page.file, html)
   }
-  return { pages: pages.length, maxHashes: hashes, runtimeIds: [...runtimeById.keys()].sort() }
+  return { pages: pages.length, maxHashes: hashes, runtimeIds: [...runtimeById.keys()].sort(byCodeUnit) }
 }

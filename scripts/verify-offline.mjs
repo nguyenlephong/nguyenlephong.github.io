@@ -186,7 +186,7 @@ async function assertArtifacts() {
         referenced.add(new URL(raw, 'https://artifact.invalid').pathname)
       }
     }
-    return [...referenced].sort()
+    return [...referenced].sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
   }
   assert.deepEqual(
     shell.filter((asset) => asset.startsWith('/_next/')).sort(),
