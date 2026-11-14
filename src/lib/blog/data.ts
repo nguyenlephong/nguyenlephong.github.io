@@ -272,6 +272,8 @@ export function loadIndex(locale?: string): BlogIndexFile {
         (c) => c.slug,
       ),
       posts: overlayByKey(catalog.index.posts, override.posts, (p) => p.slug),
+      // Reasons are authored per locale, so a locale without its own list shows none.
+      startHere: override.startHere ?? [],
     }))
 
     const expectedSlugs = catalog.index.posts
@@ -457,6 +459,17 @@ export function listPosts(locale?: string): BlogPostMeta[] {
         isContentPublished(post) && post.locales.includes(contentLocale),
     )
     .sort(byDateDesc)
+}
+
+/** Curated "Start here" posts that are published in this locale, in authored order. */
+export function listStartHere(
+  locale?: string,
+): Array<{ post: BlogPostMeta; reason: string }> {
+  const published = new Map(listPosts(locale).map((post) => [post.slug, post]))
+  return loadIndex(locale).startHere.flatMap(({ slug, reason }) => {
+    const post = published.get(slug)
+    return post ? [{ post, reason }] : []
+  })
 }
 
 /** Locales whose authored corpus reaches a given static archive page. */

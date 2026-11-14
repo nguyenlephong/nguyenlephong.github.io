@@ -43,6 +43,12 @@ const expectedImporters = {
   "src/app/document.css": ["src/app/[locale]/layout.tsx"],
   "src/app/globals.css": ["src/app/[locale]/(site)/layout.tsx"],
   "src/app/[locale]/(site)/home.css": ["src/app/[locale]/(site)/page.tsx"],
+  "src/components/cv/hero.css": ["src/app/[locale]/(site)/page.tsx"],
+  "src/components/cv/summary.css": ["src/app/[locale]/(site)/page.tsx"],
+  "src/components/cv/capability-map.css": ["src/app/[locale]/(site)/page.tsx"],
+  "src/components/cv/experience.css": ["src/app/[locale]/(site)/page.tsx"],
+  "src/components/cv/projects.css": ["src/app/[locale]/(site)/page.tsx"],
+  "src/components/cv/contact.css": ["src/app/[locale]/(site)/page.tsx"],
   "src/app/[locale]/(site)/about/about.css": [
     "src/app/[locale]/(site)/about/page.tsx"
   ],
@@ -309,7 +315,6 @@ test("globals keeps shared chrome and excludes route-owned rules", async () => {
     ".cv-section {",
     ".cv-section + .cv-section {",
     ".cv-section-head {",
-    ".cv-section-eyebrow {",
     ".cv-section-title {"
   ];
 
@@ -335,7 +340,7 @@ test("globals keeps shared chrome and excludes route-owned rules", async () => {
     ".gallery-showcase {",
     ".apps-page {",
     ".english-page {",
-    ".about-page-v2 {",
+    ".about-page-v3 {",
     ".blog-reader-tools {",
     "data-reading-background='parchment'"
   ]) {
@@ -359,15 +364,11 @@ test("Apps preview and English workspace responsive rules keep their real owner"
     read("src/app/[locale]/(site)/apps/english/english.css")
   ]);
 
-  for (const previewSelector of [
-    ".english-app-visual",
-    ".english-visual-card strong"
-  ]) {
-    const expression = new RegExp(
-      previewSelector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
-    );
-    assert.match(appsCss, expression);
-    assert.doesNotMatch(englishCss, expression);
+  // The showroom preview (GlanceVisual) is owned by apps.css; the English preview card was retired in MEP-57.
+  assert.match(appsCss, /\.app-visual\s*\{/);
+  assert.doesNotMatch(englishCss, /\.app-visual/);
+  for (const css of [appsCss, englishCss]) {
+    assert.doesNotMatch(css, /\.english-app-visual|\.english-visual-card/);
   }
   assert.match(englishCss, /\.english-workbench\s*\{/);
   assert.doesNotMatch(appsCss, /\.english-workbench\s*\{/);

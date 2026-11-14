@@ -29,57 +29,50 @@ function blockFor(selector, source = css) {
 }
 
 test("blog and notes explorer controls use a compact command palette contract", () => {
-  const controls = blockFor(".blog-explorer__controls");
-  assert.match(controls, /--blog-control-glass:/);
-  assert.match(controls, /--blog-control-border:/);
-  assert.match(controls, /--blog-control-shadow:/);
-  assert.match(controls, /--blog-search-field-fill:/);
-  assert.match(controls, /--blog-search-text:/);
-  assert.match(controls, /--blog-search-placeholder:/);
+  // Owner request (2026-11-13): a calm field on site tokens. No gradient glow,
+  // blur or orange accent; sentence-case count; a neutral filter button.
+  const explorerVars = blockFor(".blog-explorer");
+  assert.match(explorerVars, /--blog-control-border:\s*var\(--border\)/);
+  assert.match(explorerVars, /--blog-control-focus:\s*var\(--accent-strong\)/);
+  const commandCss = css
+    .split("\n")
+    .filter((line) => /blog-command|blog-search/.test(line))
+    .join("\n");
+  assert.doesNotMatch(commandCss, /::(before|after)\s*\{[^}]*gradient/);
+  assert.doesNotMatch(css, /command-listening|command-apple|--blog-ai-/);
 
   const command = blockFor(".blog-command");
   assert.match(command, /position:\s*relative/);
 
-  const commandOuterHalo = blockFor(".blog-command::before");
-  assert.match(commandOuterHalo, /command-listening-halo/);
-  assert.match(commandOuterHalo, /filter:\s*blur/);
-
-  assert.match(css, /\.blog-command::after\s*\{[\s\S]*?command-listening-orbit/);
-  assert.match(css, /\.blog-command::after\s*\{[\s\S]*?conic-gradient/);
-  assert.match(css, /\.blog-command::after\s*\{[\s\S]*?filter:\s*blur/);
-
   const bar = blockFor(".blog-command__bar");
-  assert.match(bar, /--blog-search-field-fill-current:/);
-  assert.match(bar, /var\(--blog-search-field-fill-current\)/);
-  assert.match(bar, /--blog-search-field-tint-strength:\s*2%/);
-  assert.match(bar, /backdrop-filter:/);
-  assert.match(bar, /saturate/);
-
-  const commandField = blockFor(".blog-command__bar::before");
-  assert.match(commandField, /command-apple-field/);
-  assert.match(commandField, /radial-gradient/);
-  assert.match(commandField, /background-blend-mode:\s*screen/);
-
-  const commandHalo = blockFor(".blog-command__bar::after");
-  assert.match(commandHalo, /command-apple-sheen/);
-  assert.match(commandHalo, /radial-gradient/);
-  assert.match(commandHalo, /opacity:\s*0\.05/);
-  assert.doesNotMatch(commandHalo, /mask-composite/);
-
-  assert.match(
-    css,
-    /\.blog-command\.is-open \.blog-command__bar,[\s\S]*?--blog-search-field-fill-current:\s*var\(--blog-search-field-fill-focus\)/
-  );
+  assert.match(bar, /border:\s*1px solid var\(--blog-control-border\)/);
+  assert.match(bar, /background:\s*var\(--blog-control-fill\)/);
+  assert.doesNotMatch(bar, /gradient|backdrop-filter|blur/);
+  assert.match(css, /\.blog-command__bar:has\(\.blog-search__input:focus-visible\)/);
 
   const searchInput = blockFor(".blog-search__input");
-  assert.match(searchInput, /color:\s*var\(--blog-search-text\)/);
+  assert.match(searchInput, /color:\s*var\(--fg\)/);
   const searchPlaceholder = blockFor(".blog-search__input::placeholder");
-  assert.match(searchPlaceholder, /color:\s*var\(--blog-search-placeholder\)/);
+  assert.match(searchPlaceholder, /color:\s*var\(--fg-subtle\)/);
+
+  const count = blockFor(".blog-command__count");
+  assert.match(count, /tabular-nums/);
+  assert.doesNotMatch(count, /uppercase|font-mono/);
+
+  // The standalone rule, not the shared clear/toggle reset above it.
+  const toggle = blockFor("}\n.blog-command__toggle");
+  assert.match(toggle, /width:\s*2\.75rem/);
+  assert.match(toggle, /height:\s*2\.75rem/);
+  assert.doesNotMatch(toggle, /accent/);
+  assert.match(explorerShell, /aria-expanded=\{paletteOpen\}/);
+
+  const label = blockFor(".blog-command__label");
+  assert.doesNotMatch(label, /uppercase|font-mono/);
 
   const palette = blockFor(".blog-command__palette");
   assert.match(palette, /position:\s*absolute/);
   assert.match(palette, /width:\s*100%/);
-  assert.match(palette, /backdrop-filter:/);
+  assert.doesNotMatch(palette, /backdrop-filter|gradient/);
   assert.match(css, /\.blog-command\.is-dropup\s+\.blog-command__palette/);
 
   const tokens = blockFor(".blog-command__tokens");
@@ -96,22 +89,11 @@ test("blog and notes explorer controls use a compact command palette contract", 
   assert.match(notesExplorer, /ExplorerShell/);
   assert.match(notesExplorer, /useExplorer/);
 
-  const readerTrigger = blockFor(".blog-reader-tools__trigger", readerCss);
-  assert.match(readerTrigger, /position:\s*relative/);
-  assert.match(readerTrigger, /overflow:\s*visible/);
-  const readerFlicker = blockFor(".blog-reader-tools__trigger::before", readerCss);
-  assert.match(readerFlicker, /reader-tool-aurora-pulse/);
-  assert.match(
-    readerCss,
-    /\.blog-reader-tools__trigger::after\s*\{[\s\S]*?reader-tool-aurora-rim/
-  );
+  // MEP-38: both reader discs share one glass token set (no aurora rim on one).
+  const readerDiscs = blockFor(".blog-reader-tools__top,\n.blog-reader-tools__trigger", readerCss);
+  assert.match(readerDiscs, /background:\s*var\(--reader-tool-surface\)/);
+  assert.match(readerDiscs, /backdrop-filter:/);
+  assert.doesNotMatch(readerCss, /reader-tool-aurora/);
 
-  assert.match(css, /@keyframes\s+command-apple-field/);
-  assert.match(css, /@keyframes\s+command-apple-sheen/);
-  assert.match(css, /@keyframes\s+command-listening-halo/);
-  assert.match(css, /@keyframes\s+command-listening-orbit/);
-  assert.match(readerCss, /@keyframes\s+reader-tool-aurora-pulse/);
-  assert.match(readerCss, /@keyframes\s+reader-tool-aurora-rim/);
-  assert.match(css, /@media\s*\(prefers-reduced-transparency:\s*reduce\)/);
   assert.match(css, /@media\s*\(prefers-reduced-motion:\s*reduce\)/);
 });

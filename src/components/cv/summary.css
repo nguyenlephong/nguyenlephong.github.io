@@ -1,0 +1,35 @@
+/* =========================================================
+   About: the capability map, stack manifest below it
+   ========================================================= */
+/* Stack manifest: a borderless definition list, hairlines between rows. */
+.stack { margin-top: clamp(3rem, 2rem + 4vw, 6rem); max-width: 60rem; }
+.stack-title {
+  margin: 0 0 1rem;
+  font-size: var(--text-2xl);
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.stack-list { margin: 0; }
+.stack-row {
+  display: grid;
+  grid-template-columns: minmax(0, 13rem) minmax(0, 1fr);
+  gap: 0.25rem 1.5rem;
+  padding-block: 0.75rem;
+  line-height: 1.6;
+}
+.stack-row + .stack-row { border-top: 1px solid var(--divider); }
+.stack-row dt { font-weight: 600; color: var(--fg); }
+.stack-row dd { margin: 0; color: var(--fg-muted); text-wrap: pretty; }
+
+@media (max-width: 560px) {
+  .stack-title { font-size: var(--text-xl); }
+  .stack-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding-block: 0.5rem;
+    font-size: var(--text-sm);
+    line-height: 1.55;
+  }
+}

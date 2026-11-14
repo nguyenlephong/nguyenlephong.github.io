@@ -22,12 +22,14 @@ route group to give public pages and Studio different runtime boundaries.
 - All localized routes except Studio live under
   `src/app/[locale]/(site)`. Route groups are omitted from generated URLs.
 - `src/app/[locale]/(site)/layout.tsx` owns shared public-only chrome and
-  runtime: Google Analytics and AdSense resources, the theme, font, and
+  runtime: Google Analytics and AdSense resources (rendered only when the build
+  runs with `GOOGLE_THIRD_PARTY=on`; paused and off by default since MEP-66),
+  the theme, font, and
   reading-background prepaint scripts, theme synchronization, route progress,
   offline navigation and status, header, footer, and the scoped site
   client-message provider. Those prepaint scripts remain site-wide for every
-  public route. `MotionProvider` is not site-wide; only the Home and Gallery
-  page entries mount it. Reader tools are not site-wide either;
+  public route. No route mounts a motion provider; Gallery dropped
+  `framer-motion` entirely. Reader tools are not site-wide;
   `ArticleReaderTools` is mounted only by the nested Blog and Notes article
   layouts.
 - Source inventory permits scoped providers only at the public-site, home,
@@ -51,7 +53,7 @@ route group to give public pages and Studio different runtime boundaries.
   CSS contains the local stylesheets and combined inline styles referenced
   directly by the Studio HTML and is capped at 3,072 Brotli bytes. Required
   Shadow CSS contains `studio/studio-shadow.css`, which the reachable Studio
-  runtime applies inside the Shadow root, and is capped at 16,384 Brotli bytes.
+  runtime applies inside the Shadow root, and is capped at 12,288 Brotli bytes.
   Total initial CSS combines both groups and is capped at 18,432 Brotli bytes.
   An external stylesheet is rejected unless its origin is explicitly
   allowlisted.
@@ -124,10 +126,9 @@ existing IDs must not be renamed or renumbered.
   resources or serializing a client message catalog.
 - **AC-SRB-004:** The public-site layout owns header, footer, route progress,
   offline runtime, theme synchronization, and site-wide theme, font, and
-  reading-background prepaint scripts. `MotionProvider` is mounted only by Home
-  and Gallery, while `ArticleReaderTools` is mounted only by nested Blog and
-  Notes article layouts; neither runtime is mounted by the public-site layout or
-  Studio.
+  reading-background prepaint scripts. No route mounts a motion provider, and
+  `ArticleReaderTools` is mounted only by nested Blog and Notes article layouts,
+  never by the public-site layout or Studio.
 - **AC-SRB-005:** Studio is outside `(site)` and neither renders nor hides
   public-site chrome through CSS selectors.
 - **AC-SRB-006:** Public pages preserve the canonical paths, metadata, static
@@ -206,7 +207,7 @@ existing IDs must not be renamed or renumbered.
   bidirectional sitemap-to-published-HTML parity.
 - Run `npm run verify:performance-artifact` and confirm the Studio initial
   document, required Shadow, and combined initial CSS stay within 3,072,
-  16,384, and 18,432 Brotli bytes respectively.
+  12,288, and 18,432 Brotli bytes respectively.
 - Confirm representative public routes remain within their configured initial
   stylesheet-request and Brotli budgets and expose only their required
   normalized route-owner selectors.
@@ -228,7 +229,9 @@ existing IDs must not be renamed or renumbered.
 ### Browser verification
 
 Run `npm run verify:runtime-boundaries` against the complete export. The browser
-check first proves that Google Analytics and AdSense mount on a public page. It
+check first proves that a public page loads no Google Analytics or AdSense
+scripts, hints, metadata, requests, or `_ga`/`_gcl_*` cookies (with
+`GOOGLE_THIRD_PARTY=on` it instead proves that they mount). It
 then follows the footer's Studio link and requires a new document navigation,
 the existing `cv_nav_click` event with `sendBeacon`, preserved session storage,
 and a reset in-memory marker. The Studio document must expose zero public Google

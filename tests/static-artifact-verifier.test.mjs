@@ -1,10 +1,24 @@
 import assert from 'node:assert/strict'
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync as writeRawFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
 import test from 'node:test'
 
 import { verifyStaticArtifact } from '../scripts/verify-static-artifact.mjs'
+import {
+  buildCspPolicy,
+  hashSource,
+  inlineScriptBodies,
+  injectCspMeta,
+} from '../scripts/lib/content-security-policy.mjs'
+
+// Fixture pages get the policy the postbuild step would inject, so the gate's CSP check passes.
+function writeFileSync(file, content, ...rest) {
+  const page = typeof content === 'string' && file.endsWith('.html') && /<head[\s>]/i.test(content)
+  if (!page || /http-equiv="Content-Security-Policy"/i.test(content)) return writeRawFileSync(file, content, ...rest)
+  const policy = buildCspPolicy({ hashes: inlineScriptBodies(content).map(hashSource) })
+  return writeRawFileSync(file, injectCspMeta(content, policy) ?? content, ...rest)
+}
 
 const ONE_PIXEL_PNG = Buffer.from(
   'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=',
@@ -249,6 +263,11 @@ const STATIC_PAGE_SEO_POLICY = {
     fragment: 'gallery',
     contentLocales: GENERIC_SEO_LOCALES,
   },
+  'studio/checklists': {
+    type: 'WebPage',
+    fragment: 'webpage',
+    contentLocales: ['en', 'vi'],
+  },
 }
 
 const STATIC_PAGE_OG_LOCALES = {
@@ -295,10 +314,10 @@ function writeLocalizedGenericSeoFixtures(outDir) {
           `<meta name="description" content="Localized ${route} page for ${locale}.">`,
           `<meta property="og:url" content="${pageUrl}">`,
           isStudio
-            ? '<meta property="og:image" content="https://example.com/opengraph-image.png">'
+            ? '<meta property="og:image" content="https://example.com/en/studio/opengraph-image.png">'
             : '',
           isStudio
-            ? '<meta name="twitter:image" content="https://example.com/opengraph-image.png">'
+            ? '<meta name="twitter:image" content="https://example.com/en/studio/opengraph-image.png">'
             : '',
           `<link rel="canonical" href="${pageUrl}">`,
           '</head><body>',
@@ -322,6 +341,8 @@ function writeLocalizedGenericSeoFixtures(outDir) {
   }
 
   writeFileSync(path.join(outDir, 'opengraph-image.png'), ONE_PIXEL_PNG)
+  mkdirSync(path.join(outDir, 'en/studio'), { recursive: true })
+  writeFileSync(path.join(outDir, 'en/studio/opengraph-image.png'), ONE_PIXEL_PNG)
   const sitemapPath = path.join(outDir, 'sitemap.xml')
   writeFileSync(
     sitemapPath,
@@ -355,7 +376,9 @@ function writeStaticPageSeoPolicyFixtures(outDir) {
     for (const routeLocale of GENERIC_SEO_LOCALES) {
       const authored = policy.contentLocales.includes(routeLocale)
       const contentLocale = authored ? routeLocale : 'en'
-      const canonical = `https://example.com/${contentLocale}/${route}`
+      // Fallback locales are self-canonical noindex pages.
+      const canonical = `https://example.com/${routeLocale}/${route}`
+      const isStudio = route.startsWith('studio')
       const title = `${route} title ${contentLocale}`
       const description = `${route} description ${contentLocale}`
       const alternateOgLocales = authored
@@ -378,9 +401,10 @@ function writeStaticPageSeoPolicyFixtures(outDir) {
         ...(route === 'apps' ? { itemListElement: [] } : {}),
       }
 
-      mkdirSync(path.join(outDir, routeLocale), { recursive: true })
+      const htmlPath = path.join(outDir, routeLocale, `${route}.html`)
+      mkdirSync(path.dirname(htmlPath), { recursive: true })
       writeFileSync(
-        path.join(outDir, routeLocale, `${route}.html`),
+        htmlPath,
         [
           `<!doctype html><html lang="${routeLocale}"><head>`,
           `<title>${title}</title>`,
@@ -394,6 +418,8 @@ function writeStaticPageSeoPolicyFixtures(outDir) {
           alternateOgLocales,
           `<meta name="twitter:title" content="${title}">`,
           `<meta name="twitter:description" content="${description}">`,
+          isStudio ? '<meta property="og:image" content="https://example.com/en/studio/opengraph-image.png">' : '',
+          isStudio ? '<meta name="twitter:image" content="https://example.com/en/studio/opengraph-image.png">' : '',
           `<link rel="canonical" href="${canonical}">`,
           authored ? htmlAlternates : '',
           '</head><body>',
@@ -412,6 +438,9 @@ function writeStaticPageSeoPolicyFixtures(outDir) {
     }
   }
 
+  writeFileSync(path.join(outDir, 'opengraph-image.png'), ONE_PIXEL_PNG)
+  mkdirSync(path.join(outDir, 'en/studio'), { recursive: true })
+  writeFileSync(path.join(outDir, 'en/studio/opengraph-image.png'), ONE_PIXEL_PNG)
   const sitemapPath = path.join(outDir, 'sitemap.xml')
   writeFileSync(
     sitemapPath,
@@ -491,6 +520,18 @@ test('verifies artifact budgets, sitemap canonicals, robots, and public secrets'
   assert.equal(report.secrets.privateQueryUrlMatches.length, 0)
   assert.equal(report.secrets.scanConcurrency, 2)
   assert.equal(report.artifact.largestRouteJavaScript[0].path, 'en.html')
+})
+
+test('fails the deploy gate when a page has no CSP meta or an unhashed inline script', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  const page = readFileSync(path.join(outDir, 'en.html'), 'utf8')
+  writeRawFileSync(path.join(outDir, 'en.html'), page.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, ''))
+  let report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  assert.ok(report.failures.includes('CSP en.html: expected exactly one CSP meta, found 0'), report.failures.join('\n'))
+
+  writeRawFileSync(path.join(outDir, 'en.html'), page.replace('</body>', '<script>alert(1)</script></body>'))
+  report = await verifyStaticArtifact({ rootDir, configPath: 'budgets.json' })
+  assert.ok(report.failures.some((failure) => /^CSP en\.html: inline script 'sha256-.*' is not in script-src/.test(failure)))
 })
 
 test('fails closed when any emitted path contains a Heartbeats route segment', async (t) => {
@@ -855,7 +896,7 @@ test('rejects unlocalized generic page identities and a non-root Studio social i
   )
   replaceInFixture(
     'ko/studio.html',
-    'https://example.com/opengraph-image.png',
+    'https://example.com/en/studio/opengraph-image.png',
     'https://example.com/ko/opengraph-image.png',
   )
   replaceInFixture(
@@ -870,11 +911,11 @@ test('rejects unlocalized generic page identities and a non-root Studio social i
   assert.match(failures, /vi\/about\.html og:url must match localized page identity/)
   assert.match(failures, /zh\/apps\.html ItemList @id must match localized page identity/)
   assert.match(failures, /ja\/gallery\.html ImageGallery url must match localized page identity/)
-  assert.match(failures, /ko\/studio\.html Studio og:image must resolve to the root opengraph-image\.png/)
+  assert.match(failures, /ko\/studio\.html Studio og:image must resolve to the Studio opengraph-image/)
   assert.match(failures, /fr\/studio\.html canonical must match localized page identity/)
 })
 
-test('verifies authored and fallback SEO policy across all 18 static page URLs', async (t) => {
+test('verifies authored and fallback SEO policy across every static page URL, Studio modules included', async (t) => {
   const { rootDir, outDir } = createFixture(t, {
     limits: { fileCount: 100 },
     config: {
@@ -945,9 +986,26 @@ test('rejects fallback indexing, language drift, keyword inheritance, and metada
   )
   replaceInFixture(
     'ko/about.html',
-    '<link rel="canonical" href="https://example.com/en/about">',
-    '<link rel="canonical" href="https://example.com/en/about"><link rel="alternate" hreflang="en" href="https://example.com/en/about">',
+    '<link rel="canonical" href="https://example.com/ko/about">',
+    '<link rel="canonical" href="https://example.com/ko/about"><link rel="alternate" hreflang="en" href="https://example.com/en/about">',
   )
+  // Studio module URLs carry the same robots, canonical, hreflang and single-H1 rules.
+  replaceInFixture(
+    'fr/studio/checklists.html',
+    '<meta name="robots" content="noindex, follow">',
+    '<meta name="robots" content="index, follow">',
+  )
+  replaceInFixture(
+    'zh/studio/checklists.html',
+    '<link rel="canonical" href="https://example.com/zh/studio/checklists">',
+    '<link rel="canonical" href="https://example.com/en/studio/checklists">',
+  )
+  replaceInFixture(
+    'ja/studio/checklists.html',
+    '<link rel="canonical"',
+    '<link rel="alternate" hreflang="ja" href="https://example.com/ja/studio/checklists"><link rel="canonical"',
+  )
+  replaceInFixture('vi/studio/checklists.html', '</main>', '<h1>Second heading</h1></main>')
   replaceInFixture(
     'fr/apps.html',
     '<meta name="googlebot" content="noindex, follow">',
@@ -972,6 +1030,10 @@ test('rejects fallback indexing, language drift, keyword inheritance, and metada
   assert.match(failures, /ko\/about\.html hreflang must contain only authored static-page locales/)
   assert.match(failures, /zh\/apps\.html fallback static page leaked into sitemap\.xml/)
   assert.match(failures, /fr\/apps\.html Googlebot robots must match the static-page index\/follow policy/)
+  assert.match(failures, /fr\/studio\/checklists\.html must be noindex under the static-page locale policy/)
+  assert.match(failures, /zh\/studio\/checklists\.html canonical must match localized page identity/)
+  assert.match(failures, /ja\/studio\/checklists\.html hreflang must contain only authored static-page locales/)
+  assert.match(failures, /vi\/studio\/checklists\.html Studio module page must contain exactly one H1; found 2/)
 })
 
 test('requires local social images to have an emitted image file and matching signature', async (t) => {
@@ -1535,7 +1597,7 @@ test('requires the site owner author to use the exact owner identity', async (t)
   })
   assert.match(
     missingIdentity.failures.join('\n'),
-    /site owner Article author must use https:\/\/example\.com\/#person and https:\/\/example\.com/,
+    /site owner Article author must use https:\/\/example\.com\/#person and https:\/\/example\.com\/en/,
   )
 
   writeLocalizedArticleFixture(outDir, {
@@ -1552,7 +1614,7 @@ test('requires the site owner author to use the exact owner identity', async (t)
   })
   assert.match(
     wrongIdentity.failures.join('\n'),
-    /site owner Article author must use https:\/\/example\.com\/#person and https:\/\/example\.com/,
+    /site owner Article author must use https:\/\/example\.com\/#person and https:\/\/example\.com\/en/,
   )
 })
 
@@ -1669,8 +1731,7 @@ test('rejects noindex, hreflang, and Article schema on a locale fallback route',
   assert.match(failures, /fallback notice must not emit Article structured data/)
 })
 
-test('does not classify paginated blog or notes archives as articles', async (t) => {
-  const { rootDir, outDir } = createFixture(t)
+function writePaginatedArchiveFixture(outDir, { pagedHreflang = false } = {}) {
   const routes = [
     'en/blog/page/2',
     'en/notes/page/2',
@@ -1679,12 +1740,15 @@ test('does not classify paginated blog or notes archives as articles', async (t)
     'en/notes/topics/thoughts',
     'en/notes/topics/thoughts/page/2',
   ]
+  // MEP-65: page 2+ is not a translation of its sibling locales, so it carries no hreflang.
+  const withAlternates = (route) => pagedHreflang || !/\/page\/\d+$/.test(route)
 
   for (const route of routes) {
     const directory = path.join(outDir, path.dirname(route))
     mkdirSync(directory, { recursive: true })
     const url = `https://example.com/${route}`
-    const isHub = /\/(?:series|topics)\//.test(`/${route}`)
+    const hubSection = /\/series\//.test(`/${route}`) ? 'blog' : /\/topics\//.test(`/${route}`) ? 'notes' : null
+    const card = `https://example.com/en/${hubSection}/opengraph-image.png`
     writeFileSync(
       path.join(outDir, `${route}.html`),
       [
@@ -1692,10 +1756,10 @@ test('does not classify paginated blog or notes archives as articles', async (t)
         '<title>Archive page two</title>',
         '<meta name="description" content="A crawlable archive page.">',
         `<link rel="canonical" href="${url}">`,
-        `<link rel="alternate" hreflang="en" href="${url}">`,
-        `<link rel="alternate" hreflang="x-default" href="${url}">`,
-        isHub ? '<meta property="og:image" content="https://example.com/opengraph-image.png">' : '',
-        isHub ? '<meta name="twitter:image" content="https://example.com/opengraph-image.png">' : '',
+        withAlternates(route) ? `<link rel="alternate" hreflang="en" href="${url}">` : '',
+        withAlternates(route) ? `<link rel="alternate" hreflang="x-default" href="${url}">` : '',
+        hubSection ? `<meta property="og:image" content="${card}">` : '',
+        hubSection ? `<meta name="twitter:image" content="${card}">` : '',
         '</head><body><main><h1>Archive</h1></main></body></html>',
       ].join(''),
     )
@@ -1706,23 +1770,47 @@ test('does not classify paginated blog or notes archives as articles', async (t)
     [
       '<?xml version="1.0" encoding="UTF-8"?>',
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
-      ...['https://example.com/en', ...routes.map((route) => `https://example.com/${route}`)].map(
-        (url) =>
-          `<url><loc>${url}</loc>` +
-          `<xhtml:link rel="alternate" hreflang="en" href="${url}" />` +
-          `<xhtml:link rel="alternate" hreflang="x-default" href="${url}" />` +
+      ...['en', ...routes].map(
+        (route) =>
+          `<url><loc>https://example.com/${route}</loc>` +
+          (withAlternates(route)
+            ? `<xhtml:link rel="alternate" hreflang="en" href="https://example.com/${route}" />` +
+              `<xhtml:link rel="alternate" hreflang="x-default" href="https://example.com/${route}" />`
+            : '') +
           '</url>',
       ),
       '</urlset>',
     ].join(''),
   )
   writeFileSync(path.join(outDir, 'opengraph-image.png'), ONE_PIXEL_PNG)
+  for (const section of ['blog', 'notes']) {
+    mkdirSync(path.join(outDir, 'en', section), { recursive: true })
+    writeFileSync(path.join(outDir, 'en', section, 'opengraph-image.png'), ONE_PIXEL_PNG)
+  }
+}
+
+test('does not classify paginated blog or notes archives as articles', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writePaginatedArchiveFixture(outDir)
 
   const report = await verifyStaticArtifact({
     rootDir,
     configPath: 'budgets.json',
   })
   assert.deepEqual(report.failures, [])
+})
+
+test('rejects hreflang on paged archives in HTML and the sitemap (MEP-65)', async (t) => {
+  const { rootDir, outDir } = createFixture(t)
+  writePaginatedArchiveFixture(outDir, { pagedHreflang: true })
+
+  const report = await verifyStaticArtifact({
+    rootDir,
+    configPath: 'budgets.json',
+  })
+  const failures = report.failures.join('\n')
+  assert.match(failures, /Sitemap paged archive URL must not carry hreflang alternates: https:\/\/example\.com\/en\/blog\/page\/2/)
+  assert.match(failures, /en\/blog\/series\/foundations\/page\/2\.html paged content hub must not emit hreflang alternates/)
 })
 
 test('requires deterministic Open Graph and Twitter images on content hubs', async (t) => {

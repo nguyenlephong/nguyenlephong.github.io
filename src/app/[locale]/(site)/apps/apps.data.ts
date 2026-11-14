@@ -1,102 +1,109 @@
-import { APP_ROUTE } from '@/app/app.const'
+// Public apps listed on /apps, with copy per authored locale (en, vi). Other locales read the en copy,
+// matching STATIC_PAGE_SEO_POLICY.apps. E-Slang is unlisted on purpose (private, Vietnamese-only);
+// its route /apps/english keeps working but nothing public links to it.
 
+export type AppsCopyLocale = 'en' | 'vi'
 export type AppStatus = 'shipped' | 'beta' | 'wip'
+
+export interface AppCopy {
+  tagline: string
+  hardware: string
+  facts: string[]
+}
 
 export interface AppShowcaseItem {
   id: string
   name: string
-  tagline: string
-  description: string
-  longDescription?: string
   status: AppStatus
+  version: string
+  // JSON-LD operatingSystem and the meta line.
   platforms: string[]
-  hotkey?: { keys: string[]; label: string }[]
-  features: string[]
-  stats?: { label: string; value: string }[]
-  tech: string[]
-  links: {
-    app?: string
-    repo?: string
-    download?: string
-    website?: string
-    docs?: string
-  }
-  accent?: 'blue' | 'violet' | 'amber' | 'emerald'
-  visual: 'glance' | 'english' | 'placeholder'
+  stack: string[]
+  license: string
+  hotkeys: { keys: string[]; action: Record<AppsCopyLocale, string> }[]
+  links: { repo: string; download?: string; docs?: string }
+  visual: 'glance'
+  copy: Record<AppsCopyLocale, AppCopy>
+}
+
+export interface AppsPageCopy {
+  title: string
+  sub: string
+  back: string
+  status: Record<AppStatus, string>
+  hotkeys: string
+  links: { repo: string; download: string; docs: string }
+  labNote: string
+  github: string
+}
+
+export const appsPageCopy: Record<AppsCopyLocale, AppsPageCopy> = {
+  en: {
+    title: 'Small tools I built for my own work',
+    sub: 'Each one started from a problem I kept hitting. The source is on GitHub.',
+    back: '← Back to CV',
+    status: { shipped: 'Shipped', beta: 'Beta', wip: 'In progress' },
+    hotkeys: 'Shortcuts',
+    links: { repo: 'Source', download: 'Download', docs: 'Docs' },
+    labNote: 'I add an app here only after I have used it for real.',
+    github: 'All repositories on GitHub',
+  },
+  vi: {
+    title: 'Công cụ nhỏ tôi tự làm để dùng khi làm việc',
+    sub: 'Mỗi công cụ bắt đầu từ một việc tôi gặp lặp lại nhiều lần. Source code để trên GitHub.',
+    back: '← Quay lại CV',
+    status: { shipped: 'Đã phát hành', beta: 'Beta', wip: 'Đang làm' },
+    hotkeys: 'Phím tắt',
+    links: { repo: 'Source code', download: 'Tải về', docs: 'Hướng dẫn' },
+    labNote: 'Tôi chỉ đưa app lên đây sau khi đã dùng thật một thời gian.',
+    github: 'Các repo khác trên GitHub',
+  },
 }
 
 export const apps: AppShowcaseItem[] = [
   {
     id: 'glance',
     name: 'Glance',
-    tagline: 'Một cái liếc — hiểu mọi ngôn ngữ.',
-    description:
-      'Instant macOS translation via a global hotkey. Highlight text in any app, hit ⌃⌥T, and read the translation right next to your cursor — without ever leaving what you were doing.',
-    longDescription:
-      'Glance is a tiny menu-bar utility for macOS that turns translation into muscle memory. Works in Safari, Mail, Slack, Zalo, Chrome, VS Code, Notion — anywhere text can be selected.',
     status: 'shipped',
-    platforms: ['macOS 13+', 'Apple Silicon', 'Intel'],
-    hotkey: [
-      { keys: ['⌃', '⌥', 'T'], label: 'Translate selection' },
-      { keys: ['⌃', '⌥', '⏎'], label: 'Replace with translation' },
-      { keys: ['Esc'], label: 'Dismiss panel' },
+    version: 'v0.1.0',
+    platforms: ['macOS 13+'],
+    stack: ['Swift', 'SwiftUI'],
+    license: 'MIT',
+    hotkeys: [
+      { keys: ['⌃', '⌥', 'T'], action: { en: 'Translate the selection', vi: 'Dịch đoạn đang chọn' } },
+      { keys: ['⌃', '⌥', '⏎'], action: { en: 'Replace it with the translation', vi: 'Thay bằng bản dịch' } },
     ],
-    features: [
-      'Global hotkey works in every app — Safari, Mail, Slack, Zalo, VS Code, Chrome.',
-      'Floating panel beside the cursor — never steals focus, never covers your work.',
-      'Auto-direction: EN → VI and VI → EN, configurable in Settings.',
-      'Free engine (Google Translate) — no API key, no signup, no quota anxiety.',
-      'Electron-app safe: clipboard snapshot + restore for Slack, Discord, Notion.',
-      'Menu bar only, no Dock icon, < 1 MB binary.',
-    ],
-    stats: [
-      { label: 'Binary size', value: '< 1 MB' },
-      { label: 'License', value: 'MIT' },
-      { label: 'Platform', value: 'macOS 13+' },
-      { label: 'Language', value: 'Swift' },
-    ],
-    tech: ['Swift', 'SwiftUI', 'AppKit', 'XcodeGen', 'Google Translate'],
     links: {
       repo: 'https://github.com/nguyenlephong/glance',
       download: 'https://github.com/nguyenlephong/glance/releases',
       docs: 'https://github.com/nguyenlephong/glance#readme',
     },
-    accent: 'blue',
     visual: 'glance',
-  },
-  {
-    id: 'e-slang',
-    name: 'E-Slang',
-    tagline: 'Static English practice, mỗi lần học một nhịp khác.',
-    description:
-      'A private slang practice console for learning real conversational English through flashcards, fill-in-the-blank prompts, quick quizzes, and browser text-to-speech.',
-    longDescription:
-      'E-Slang turns a small static lesson into repeatable active recall. The content stays simple and editable, while the practice flow shuffles examples, answer choices, listening prompts, and review states on the client.',
-    status: 'beta',
-    platforms: ['Web', 'Static content', 'TTS'],
-    hotkey: [
-      { keys: ['S'], label: 'Shuffle session' },
-      { keys: ['Space'], label: 'Reveal answer' },
-      { keys: ['N'], label: 'Next slang' },
-    ],
-    features: [
-      'Flashcards for meaning, examples, and quick recall.',
-      'Fill-in-the-blank practice generated from real example sentences.',
-      'Multiple-choice and listening prompts with randomized answer order.',
-      'Browser speech synthesis for repeating sentences out loud.',
-      'Hard-card marking for a short personal review loop.',
-    ],
-    stats: [
-      { label: 'Lesson type', value: 'Slang' },
-      { label: 'Entries', value: '5' },
-      { label: 'Storage', value: 'Static' },
-      { label: 'Mode', value: 'Practice' },
-    ],
-    tech: ['Next.js', 'React', 'TypeScript', 'Web Speech API', 'Static data'],
-    links: {
-      app: APP_ROUTE.APPS_ENGLISH,
+    copy: {
+      en: {
+        tagline: 'Translate selected text in any macOS app with one hotkey.',
+        hardware: 'Apple Silicon and Intel',
+        facts: [
+          'Select text in Safari, Mail, Slack, VS Code or any other app and the translation appears next to the cursor.',
+          'Translates between English and Vietnamese in both directions; the direction is set in Settings.',
+          'Runs from the menu bar with no Dock icon. The download is under 1\u00a0MB.',
+          'Selected text goes only to the translation engine, Google Translate by default. Glance has no server of its own.',
+        ],
+      },
+      vi: {
+        tagline: 'Dịch đoạn chữ đang chọn trong mọi app macOS chỉ với một phím tắt.',
+        hardware: 'Apple Silicon và Intel',
+        facts: [
+          'Bôi đen chữ trong Safari, Mail, Slack, VS Code hay app nào cũng được, bản dịch hiện ngay cạnh con trỏ.',
+          'Dịch hai chiều Anh và Việt, chọn chiều dịch trong phần Settings.',
+          'Chạy trên menu bar, không có icon ở Dock. File tải về dưới 1\u00a0MB.',
+          'Chữ đang chọn chỉ được gửi tới engine dịch, mặc định là Google Translate. Glance không có server riêng.',
+        ],
+      },
     },
-    accent: 'emerald',
-    visual: 'english',
   },
 ]
+
+export function appsCopyLocale(contentLocale: string): AppsCopyLocale {
+  return contentLocale === 'vi' ? 'vi' : 'en'
+}

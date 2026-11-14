@@ -67,8 +67,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.ok(existsSync("src/app/[locale]/studio/StudioWorkspace.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioStaticOverview.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/studio-static-content.ts"));
-  assert.ok(existsSync("src/app/[locale]/studio/StudioDeliverySignalChart.tsx"));
-  assert.ok(existsSync("src/app/[locale]/studio/StudioDeliverySignalFeature.tsx"));
+  assert.ok(!existsSync("src/app/[locale]/studio/StudioDeliverySignalChart.tsx"));
+  assert.ok(!existsSync("src/app/[locale]/studio/StudioUtilityRoutesFeature.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioFeatureErrorBoundary.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioFlowCanvasRuntime.tsx"));
   assert.ok(existsSync("src/app/[locale]/studio/StudioFlowCanvasFeature.tsx"));
@@ -104,8 +104,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     staticContent,
     routeCatalog,
     routePrimitives,
-    deliveryChart,
-    deliveryFeature,
     featureBoundary,
     flowRuntime,
     flowFeature,
@@ -132,14 +130,17 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     readFile("src/app/seo.config.ts", "utf8"),
     readFile("src/lib/analytics.ts", "utf8"),
     readFile("src/components/analytics/PageTracker.tsx", "utf8"),
-    readFile("src/app/[locale]/studio/page.tsx", "utf8"),
+    readSources([
+      "src/app/[locale]/studio/page.tsx",
+      "src/app/[locale]/studio/[module]/page.tsx",
+      "src/app/[locale]/studio/StudioPageFrame.tsx",
+      "src/app/[locale]/studio/studio-seo.ts"
+    ]),
     readFile("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioStaticOverview.tsx", "utf8"),
     readFile("src/app/[locale]/studio/studio-static-content.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio-route-catalog.ts", "utf8"),
     readFile("src/app/[locale]/studio/StudioRoutePrimitives.tsx", "utf8"),
-    readFile("src/app/[locale]/studio/StudioDeliverySignalChart.tsx", "utf8"),
-    readFile("src/app/[locale]/studio/StudioDeliverySignalFeature.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioFeatureErrorBoundary.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioFlowCanvasRuntime.tsx", "utf8"),
     readFile("src/app/[locale]/studio/StudioFlowCanvasFeature.tsx", "utf8"),
@@ -168,6 +169,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
       "src/app/[locale]/studio/StudioAiSetupFeature.tsx",
       "src/app/[locale]/studio/StudioAiSetupFeature.en.tsx",
       "src/app/[locale]/studio/StudioAiSetupFeature.vi.tsx",
+      "src/app/[locale]/studio/studio-ai-workflow-steps.ts",
       "src/app/[locale]/studio/StudioAiSkillsFeature.tsx",
       "src/app/[locale]/studio/StudioAiSkillsFeature.en.tsx",
       "src/app/[locale]/studio/StudioAiSkillsFeature.vi.tsx",
@@ -180,14 +182,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
       "src/app/[locale]/studio/StudioFlowChart.tsx",
       "src/app/[locale]/studio/StudioFlowToolbar.tsx",
       "src/app/[locale]/studio/StudioFlowTrail.tsx",
-      "src/app/[locale]/studio/studio-flow-model.ts",
-      "src/app/[locale]/studio/StudioAuxiliaryRoutesFeature.tsx",
-      "src/app/[locale]/studio/StudioMailFeature.tsx",
-      "src/app/[locale]/studio/StudioChatFeature.tsx",
-      "src/app/[locale]/studio/StudioDefaultDashboardFeature.tsx",
-      "src/app/[locale]/studio/StudioUtilityRoutesFeature.tsx",
-      "src/app/[locale]/studio/StudioDashboardRoutesFeature.tsx",
-      "src/app/[locale]/studio/studio-auxiliary-route-metrics.ts"
+      "src/app/[locale]/studio/studio-flow-model.ts"
     ]),
     readFile("src/app/[locale]/studio/studio.data.ts", "utf8"),
     readFile("src/app/[locale]/studio/studio.localized-content.ts", "utf8"),
@@ -211,7 +206,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(header, /APP_ROUTE\.STUDIO/);
   assert.doesNotMatch(header, /trackId:\s*"studio"/);
   assert.match(footer, /APP_ROUTE\.STUDIO/);
-  assert.match(footer, /LuOrbit/);
+  // MEP-28: Studio is a labelled text link with a localized hint, not a bare icon.
+  assert.match(footer, /title=\{t\('studioHint'\)\}/);
   assert.match(footer, /studio_footer/);
   assert.match(footer, /data-document-navigation="studio"/);
   assert.match(footer, /href=\{studioHref\}/);
@@ -236,20 +232,24 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
 
   assert.match(page, /generateStaticParams/);
   assert.match(page, /generateMetadata/);
-  assert.match(page, /Studio: Engineering Notes & System Flows/);
-  assert.match(page, /Studio: Ghi chú kỹ thuật và System Flows/);
+  assert.match(staticContent, /Engineering Studio: delivery checklists and system maps/);
+  assert.match(staticContent, /Engineering Studio: checklist ra bản và sơ đồ hệ thống/);
+  assert.match(page, /resolveStaticPageLocalization\("studio", locale\)/);
+  assert.match(page, /resolveStaticPageLocalization\(`studio\/\$\{slug as StudioPublicModuleSlug\}`, locale\)/);
+  assert.match(page, /trackerContext=\{\{ studio_module: studioModule\.slug \}\}/);
   assert.match(page, /PageTracker page="studio" eventName="studio_view"/);
   assert.match(page, /"@type":\s*"CollectionPage"/);
   assert.match(page, /hasPart:/);
   assert.match(page, /getStudioStaticModuleHref/);
-  assert.match(page, /images:\s*\[\{ url: socialImage, width: 1200, height: 630/);
-  assert.match(page, /images:\s*\[socialImage\]/);
+  // MEP-64: Studio's own card, attached with a localized alt through the static-page policy.
+  assert.match(page, /buildStaticPageMetadata\(/);
+  assert.doesNotMatch(page, /opengraph-image\.png/);
   assert.doesNotMatch(page, /"@type":\s*"HowTo"/);
   assert.doesNotMatch(page, /"@type":\s*"TechArticle"/);
   assert.doesNotMatch(page, /getLocalizedStudioNotes|getLocalizedStudioFlows/);
   assert.match(page, /StudioWorkspace/);
   assert.match(page, /data-studio-page-heading="true"/);
-  assert.match(page, /<h1 className="studio-page-heading__title">\{staticContent\.title\}<\/h1>/);
+  assert.match(page, /<h1 className="studio-page-heading__title">\{title\}<\/h1>/);
   assert.match(page, /studio-route-shell/);
   assert.match(page, /<div className="studio-route-shell">/);
   assert.doesNotMatch(page, /<main className="studio-route-shell">/);
@@ -265,7 +265,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(workspace, /STUDIO_STYLESHEET_HREF = "\/studio\/studio-shadow\.css"/);
   assert.match(workspace, /stylesheetHref=\{STUDIO_STYLESHEET_HREF\}/);
   assert.doesNotMatch(workspace, /studioShadowStyles|studio\.shadow-styles/);
-  assert.match(page, /fallback=\{<StudioStaticOverview locale=\{locale\} \/>\}/);
+  assert.match(page, /<StudioStaticOverview locale=\{locale\} \/>/);
+  assert.match(page, /<StudioModuleArticle locale=\{locale\} module=\{studioModule\} \/>/);
+  assert.match(page, /fallback=\{children\}/);
   assert.match(workspace, /fallback=\{fallback\}/);
   assert.match(workspace, /heading=\{heading\}/);
   assert.match(staticOverview, /data-studio-static-overview="true"/);
@@ -273,10 +275,10 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(staticOverview, /data-studio-module-link=\{module\.id\}/);
   assert.match(staticContent, /en:\s*\{/);
   assert.match(staticContent, /vi:\s*\{/);
-  assert.match(staticContent, /zh:\s*\{/);
-  assert.match(staticContent, /ja:\s*\{/);
-  assert.match(staticContent, /ko:\s*\{/);
-  assert.match(staticContent, /fr:\s*\{/);
+  assert.match(staticContent, /zh:\s*"/);
+  assert.match(staticContent, /ja:\s*"/);
+  assert.match(staticContent, /ko:\s*"/);
+  assert.match(staticContent, /fr:\s*"/);
   assert.match(adminShell, /^"use client"/);
   assert.match(adminShell, /StudioAdminShell/);
   assert.match(adminShell, /const DEFAULT_ROUTE:\s*StudioRouteId = studioCatalog\.defaultRouteId/);
@@ -361,7 +363,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studio-sidebar/);
   assert.match(adminShell, /studio-topbar/);
   assert.match(routePrimitives, /metric-grid/);
-  assert.match(adminShell, /<span>Studio<\/span>/);
   assert.match(adminShell, /Search Studio/);
   assert.match(adminShell, /Profile navigation/);
   assert.match(adminShell, /Profile menu/);
@@ -429,10 +430,9 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(navGroupsBlock, /Authentication/);
   assert.doesNotMatch(navGroupsBlock, /Legacy/);
   assert.match(adminShell, /studioCatalog\.navGroups\.map/);
-  assert.match(adminShell, /"crm"/);
-  assert.match(adminShell, /"finance"/);
-  assert.match(adminShell, /"analytics"/);
-  assert.match(adminShell, /"email"/);
+  assert.doesNotMatch(adminShell, /"crm"/);
+  assert.doesNotMatch(adminShell, /"finance"/);
+  assert.doesNotMatch(adminShell, /"email"/);
   assert.match(adminShell, /"ai-agent-setup"/);
   assert.match(adminShell, /"ai-skills"/);
   assert.match(adminShell, /"delivery-checklists"/);
@@ -446,9 +446,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /"flow-portfolio-story"/);
   assert.match(adminShell, /"flow-react-flow-architecture-demo"/);
   assert.match(adminShell, /"flow-react-flow-system-blueprint"/);
-  assert.match(adminShell, /"auth-login-v1"/);
-  assert.match(adminShell, /function MailRoutePage/);
-  assert.match(adminShell, /function ChatRoutePage/);
+  assert.doesNotMatch(adminShell, /"auth-login-v1"/);
   assert.match(adminShell, /function StudioAiSetupFeature/);
   assert.match(adminShell, /function StudioAiSkillsFeature/);
   assert.match(adminShell, /className="skill-filter-control"/);
@@ -459,8 +457,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(adminShell, /function BlogRoadmapPage/);
   assert.match(adminShell, /function StudioFlowChart/);
   assert.match(adminShell, /function StudioFlowFeature/);
-  assert.match(adminShell, /title:\s*"Email"/);
-  assert.match(adminShell, /title:\s*"Chat"/);
   assert.match(adminShell, /title:\s*"AI Agent Setup"/);
   assert.match(adminShell, /title:\s*"AI Skills"/);
   assert.match(adminShell, /title:\s*"Delivery Checklists"/);
@@ -473,8 +469,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /Đọc từ trái sang phải/);
   assert.doesNotMatch(adminShell, /Mail preview/);
   assert.doesNotMatch(adminShell, /Chat preview/);
-  assert.match(adminShell, /data-studio-module="mail"/);
-  assert.match(adminShell, /data-studio-module="chat"/);
   assert.match(adminShell, /data-studio-module="ai-agent-setup"/);
   assert.match(adminShell, /data-studio-module="ai-skills"/);
   assert.match(adminShell, /data-studio-module="delivery-checklists"/);
@@ -499,8 +493,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(adminShell, /studio_flow_board_fullscreen_toggle/);
   assert.match(adminShell, /studio_flow_focus_toggle/);
   assert.match(adminShell, /studio_flow_share/);
-  assert.match(adminShell, /studioMails/);
-  assert.match(adminShell, /studioConversations/);
   assert.match(adminShell, /studioFolders/);
   assert.match(adminShell, /studioNotes/);
   assert.match(adminShell, /studioAiSkills/);
@@ -513,34 +505,13 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.doesNotMatch(adminShell, /getLocalizedBlogRoadmap/);
   assert.match(adminShell, /getLocalizedStudioFlowGroups/);
   assert.match(adminShell, /getLocalizedStudioFlows/);
-  assert.match(adminShell, /workflowSteps/);
-  assert.match(adminShell, /Attachments \(\{selectedMail\.attachments\.length\}\)/);
-  assert.match(adminShell, /Internal note/);
+  assert.match(adminShell, /studioAiWorkflowStepsByLocale\.(en|vi)/);
   assert.doesNotMatch(adminShell, /function MailChatPage/);
-  assert.match(adminShell, /Engineering Ops/);
-  assert.match(adminShell, /Release Signal/);
-  assert.match(adminShell, /Component Inventory/);
-  assert.match(adminShell, /System Workstreams/);
-  assert.match(adminShell, /StudioDeliverySignalFeature/);
   assert.doesNotMatch(adminShell, /from "recharts"/);
-  assert.match(deliveryFeature, /dynamic\(\(\) => import\("\.\/StudioDeliverySignalChart"\)/);
-  assert.match(deliveryFeature, /StudioFeatureErrorBoundary/);
-  assert.match(deliveryFeature, /Tải lại Studio/);
-  assert.match(deliveryFeature, /onRetry=\{\(\) => window\.location\.reload\(\)\}/);
-  assert.match(deliveryFeature, /onClick=\{retry\}/);
   assert.match(featureBoundary, /getDerivedStateFromError/);
   assert.match(featureBoundary, /this\.props\.onRetry\(\)/);
   assert.doesNotMatch(featureBoundary, /this\.setState\(\{ failed: false/);
   assert.doesNotMatch(featureBoundary, /attempt/);
-  assert.match(deliveryChart, /from "recharts"/);
-  assert.match(deliveryChart, /ResponsiveContainer/);
-  assert.match(deliveryChart, /ComposedChart/);
-  assert.match(deliveryChart, /releaseSignalChartData/);
-  assert.match(deliveryChart, /rolloutVolume/);
-  assert.match(deliveryChart, /platformHealth/);
-  assert.match(deliveryChart, /incidentNoise/);
-  assert.match(adminShell, /distributionSegments/);
-  assert.match(adminShell, /componentInventory/);
   assert.doesNotMatch(adminShell, /Customer Activity/);
   assert.doesNotMatch(adminShell, /18,426 Customers/);
   assert.doesNotMatch(adminShell, /activity-chart/);
@@ -569,17 +540,6 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
     "studio-sidebar",
     "studio-topbar",
     "metric-grid",
-    "activity-card",
-    "studio-chart",
-    "studio-chart-tooltip",
-    "workstreams-card",
-    "ops-kpi-strip",
-    "component-inventory",
-    "donut-chart",
-    "table-shell",
-    "mail-workbench",
-    "chat-workbench",
-    "chat-profile-pane",
     "ai-setup-container",
     "ai-setup-index",
     "ai-setup-reader",
@@ -617,7 +577,27 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   ]) {
     assert.match(shadowCss, new RegExp(`\\.${expectedClass}\\b`));
   }
-  assert.match(shadowCss, /\.chart-legend\.interactive\b/);
+  // MEP-83: the template dashboards, mail, chat, auth and Recharts routes are gone, so is their CSS.
+  for (const removedClass of [
+    "activity-card",
+    "studio-chart",
+    "workstreams-card",
+    "ops-kpi-strip",
+    "component-inventory",
+    "donut-chart",
+    "table-shell",
+    "mail-workbench",
+    "chat-workbench",
+    "chat-profile-pane",
+    "auth-card",
+    "kanban-board",
+    "calendar-grid",
+    "invoice-paper",
+    "chart-legend",
+    "recharts-wrapper"
+  ]) {
+    assert.doesNotMatch(shadowCss, new RegExp(`\\.${removedClass}\\b`));
+  }
   assert.match(shadowCss, /\.react-flow__container\b/);
   assert.match(shadowCss, /\.react-flow__controls\b/);
   assert.match(shadowCss, /\.react-flow__minimap\b/);
@@ -667,9 +647,8 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.flow-chart-surface\s*\{[^}]*flex:\s*0 0 auto/s);
   assert.doesNotMatch(shadowCss, /\.activity-chart\b/);
   assert.doesNotMatch(shadowCss, /\.chart-bar\b/);
-  assert.match(packageJson, /"recharts":/);
+  assert.doesNotMatch(packageJson, /"recharts":/);
   assert.match(packageJson, /"@xyflow\/react":/);
-  assert.match(shadowCss, /\.mail-workbench\.card,\s*\.chat-workbench\.card\s*\{[^}]*display:\s*grid/s);
   assert.match(shadowCss, /grid-template-columns:\s*18\.5rem minmax\(0, 1fr\)/);
   assert.match(shadowCss, /\.studio-admin\s*\{[^}]*gap:\s*0\.75rem/s);
   assert.match(shadowCss, /\.studio-admin\.is-sidebar-hidden\s*\{[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\)/s);
@@ -692,7 +671,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /@media \(max-width: 1480px\)\s*\{[\s\S]*?\.skill-library-workbench\.card,[\s\S]*?\.checklist-workbench\.card,[\s\S]*?\.flow-workbench\.card\s*\{[^}]*grid-template-columns:\s*minmax\(15rem,\s*0\.34fr\) minmax\(0,\s*1fr\)/s);
   assert.match(shadowCss, /\.route-heading \.outline-button,[\s\S]*?\.skill-reader-head \.outline-button\s*\{[^}]*min-width:\s*max-content/s);
   assert.match(shadowCss, /@media \(max-width: 1080px\)/);
-  assert.match(shadowCss, /@media \(max-width: 1080px\)\s*\{[\s\S]*?\.skill-side-pane,[\s\S]*?\.checklist-side-pane,[\s\S]*?\.flow-side-pane\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(shadowCss, /@media \(max-width: 1080px\)\s*\{[\s\S]*?\.checklist-side-pane,[\s\S]*?\.flow-side-pane\s*\{[^}]*grid-template-columns:\s*1fr/s);
   assert.match(shadowCss, /\.flow-step-node dl\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/s);
   assert.match(shadowCss, /\.studio-flow-route \.flow-reader-pane\s*\{[^}]*order:\s*1/s);
   assert.match(shadowCss, /\.studio-flow-route \.flow-index-pane\s*\{[^}]*order:\s*3/s);
@@ -708,7 +687,7 @@ test("studio route is wired into routing, seo, navigation, analytics, and invent
   assert.match(shadowCss, /\.studio-admin\.is-mobile-open \.quick-create\s*\{[^}]*width:\s*100%/s);
   assert.match(shadowCss, /@media \(max-width: 520px\)/);
   assert.match(shadowCss, /\.metric-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/s);
-  assert.match(shadowCss, /\.route-actions,\s*\.calendar-grid\s*\{[^}]*grid-template-columns:\s*1fr/s);
+  assert.match(shadowCss, /@media \(max-width: 520px\)\s*\{[\s\S]*?\.route-actions\s*\{[^}]*grid-template-columns:\s*1fr/s);
 
   for (const expected of [
     "Machine bootstrap",

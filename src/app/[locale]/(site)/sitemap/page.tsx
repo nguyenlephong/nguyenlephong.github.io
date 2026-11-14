@@ -2,7 +2,10 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { LuArrowUp } from 'react-icons/lu'
+import { APP_ROUTE } from '@/app/app.const'
 import { SITE, SITE_URL } from '@/app/seo.config'
+import AppsLinkTracker from '@/components/analytics/AppsLinkTracker'
 import PageTracker from '@/components/analytics/PageTracker'
 import { routing, type Locale } from '@/i18n/routing'
 import {
@@ -22,6 +25,7 @@ import {
 import { feedLocales, feedPath } from '@/lib/seo/content-feeds'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
+import { sectionOgImages } from '@/lib/seo/section-og-image'
 import {
   SITE_INDEX_PATH,
   archivePageNumbers,
@@ -43,6 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!hasLocale(routing.locales, locale)) notFound()
 
   const t = await getTranslations({ locale, namespace: 'SiteIndex' })
+  const home = await getTranslations({ locale, namespace: 'SEO.home' })
   const title = t('metaTitle')
   const description = t('metaDescription')
   const canonical = canonicalFor(locale, SITE_INDEX_PATH)
@@ -64,9 +69,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       alternateLocale: routing.locales
         .filter((candidate) => candidate !== locale)
         .map((candidate) => OG_LOCALE_MAP[candidate]),
+      // A site-wide page shares the locale's profile card (MEP-64).
+      images: sectionOgImages('/[locale]/(site)', { locale }, home('title')),
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title,
       description,
       site: SITE.twitter,
@@ -83,6 +90,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 interface HubLink {
   href: string
   label: string
+  /** The résumé PDF: opens in a new tab and is tracked like every other résumé link. */
+  resume?: boolean
+}
+
+function BackToTop({ label }: { label: string }) {
+  // "#top" scrolls to the start of the document without needing an anchor element.
+  return (
+    <a href="#top" className="site-index__top">
+      <LuArrowUp size={14} aria-hidden="true" />
+      {label}
+    </a>
+  )
 }
 
 export default async function SiteIndexPage({ params }: Props) {
@@ -91,6 +110,8 @@ export default async function SiteIndexPage({ params }: Props) {
   setRequestLocale(locale)
 
   const t = await getTranslations({ locale, namespace: 'SiteIndex' })
+  const nav = await getTranslations({ locale, namespace: 'Nav' })
+  const cta = await getTranslations({ locale, namespace: 'CTA' })
   const base = `/${locale}`
   const hasCuratedHubs = locale === 'en' || locale === 'vi'
   const hasNotes = (NOTE_CONTENT_LOCALES as readonly string[]).includes(locale)
@@ -102,16 +123,20 @@ export default async function SiteIndexPage({ params }: Props) {
     const authored = staticPageSitemapLocales(page).includes(locale as Locale)
     return `/${authored ? locale : routing.defaultLocale}${path}`
   }
+  // MEP-33: the profile surfaces a recruiter looks for come first, then the writing and the rest.
   const sections: HubLink[] = [
     { href: base, label: t('sections.home') },
+    { href: `${base}#experience`, label: nav('experience') },
+    { href: `${base}#projects`, label: nav('projects') },
     { href: staticHref('about', '/about'), label: t('sections.about') },
-    { href: staticHref('apps', '/apps'), label: t('sections.apps') },
-    { href: staticHref('gallery', '/gallery'), label: t('sections.gallery') },
+    { href: APP_ROUTE.CV_PDF, label: cta('resumePdf'), resume: true },
     { href: `${base}/blog`, label: t('sections.blog') },
     {
       href: hasNotes ? `${base}/notes` : `/${routing.defaultLocale}/notes`,
       label: t('sections.notes'),
     },
+    { href: staticHref('gallery', '/gallery'), label: t('sections.gallery') },
+    { href: staticHref('apps', '/apps'), label: t('sections.apps') },
     { href: `${base}/studio`, label: t('sections.studio') },
   ]
 
@@ -216,6 +241,7 @@ export default async function SiteIndexPage({ params }: Props) {
   return (
     <main className="site-index">
       <PageTracker page="sitemap" eventName="sitemap_view" />
+      <AppsLinkTracker />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(pageLd) }}
@@ -268,10 +294,23 @@ export default async function SiteIndexPage({ params }: Props) {
         <ul className="site-index__list site-index__list--inline">
           {sections.map((link) => (
             <li key={link.href}>
-              <a href={link.href}>{link.label}</a>
+              {link.resume ? (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-track="cv_resume_download"
+                  data-track-source="sitemap"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <a href={link.href}>{link.label}</a>
+              )}
             </li>
           ))}
         </ul>
+        <BackToTop label={t('backToTop')} />
       </section>
 
       <section
@@ -321,6 +360,7 @@ export default async function SiteIndexPage({ params }: Props) {
             </ul>
           </div>
         ))}
+        <BackToTop label={t('backToTop')} />
       </section>
 
       <section
@@ -367,6 +407,7 @@ export default async function SiteIndexPage({ params }: Props) {
             </a>
           </p>
         )}
+        <BackToTop label={t('backToTop')} />
       </section>
 
       {archiveLinks.length > 0 && (
@@ -385,6 +426,7 @@ export default async function SiteIndexPage({ params }: Props) {
               </li>
             ))}
           </ul>
+          <BackToTop label={t('backToTop')} />
         </section>
       )}
 
@@ -406,6 +448,7 @@ export default async function SiteIndexPage({ params }: Props) {
               </li>
             ))}
           </ul>
+          <BackToTop label={t('backToTop')} />
         </section>
       )}
     </main>

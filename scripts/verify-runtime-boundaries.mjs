@@ -14,6 +14,14 @@ const OUT_DIR = path.join(ROOT, "out");
 const HOST = "127.0.0.1";
 const REQUESTED_PORT = Number(process.env.RUNTIME_BOUNDARY_VERIFY_PORT ?? "0");
 const PUBLIC_ARTICLE = "/en/blog/culture/how-to-be-a-kind-engineer";
+// Same flag as src/lib/public-third-party.ts (MEP-66); off by default.
+const GOOGLE_THIRD_PARTY_ENABLED = process.env.GOOGLE_THIRD_PARTY === "on";
+const GOOGLE_AD_ANALYTICS_HOSTS = Object.freeze([
+  "googletagmanager.com",
+  "googlesyndication.com",
+  "doubleclick.net",
+  "google-analytics.com"
+]);
 const SECOND_ARTICLE = "/en/blog/culture/how-to-review-code-kindly";
 const ARCHIVE_PROVIDER_MARKERS = Object.freeze([
   "firebaseapp.com",
@@ -68,7 +76,7 @@ const PAGE_BACK_REQUEST_QUIET_MS = 500;
 const PAGE_BACK_REQUEST_TIMEOUT_MS = 10_000;
 const PUBLIC_CSS_RUNTIME_CASES = [
   { name: "home", path: "/en", selector: ".hero", property: "position", value: "relative", stylesheets: 3 },
-  { name: "about", path: "/en/about", selector: ".about-page-v2", property: "paddingBottom", notValue: "0px", stylesheets: 3 },
+  { name: "about", path: "/en/about", selector: ".about-intro", property: "paddingTop", notValue: "0px", stylesheets: 3 },
   { name: "gallery", path: "/en/gallery", selector: ".gallery-showcase", property: "overflowX", value: "clip", stylesheets: 3 },
   { name: "apps", path: "/en/apps", selector: ".apps-page", property: "position", value: "relative", stylesheets: 3 },
   { name: "english", path: "/en/apps/english", selector: ".english-page", property: "position", value: "relative", stylesheets: 3 },
@@ -148,7 +156,7 @@ async function installExternalRuntimeStubs(
     const url = new URL(route.request().url());
     if (
       galleryImageBody &&
-      url.pathname.startsWith("/dom-pub/icdn/gallery/")
+      url.pathname.startsWith("/dom-pub/icdn/")
     ) {
       await route.fulfill({
         body: galleryImageBody,
@@ -206,10 +214,7 @@ async function installGalleryLcpObserver(context) {
 }
 
 function isGoogleRequest(url) {
-  return (
-    url.includes("googletagmanager.com") ||
-    url.includes("googlesyndication.com")
-  );
+  return GOOGLE_AD_ANALYTICS_HOSTS.some((host) => url.includes(host));
 }
 
 function localRequestPath(url, origin) {
@@ -615,7 +620,7 @@ function normalizeArchiveSearch(value) {
 
 function archiveSearchText(item) {
   return normalizeArchiveSearch(
-    [item?.title, item?.summary, ...(Array.isArray(item?.tags) ? item.tags : [])]
+    [item?.title, item?.summary ?? item?.cardSummary, ...(Array.isArray(item?.tags) ? item.tags : [])]
       .filter((value) => typeof value === "string")
       .join(" ")
   );
@@ -708,12 +713,28 @@ async function verifyArchiveLoadingBoundaries(
     const categoryHref = await category.getAttribute("href");
     assert.ok(categoryHref, "blog category card has no crawlable href");
     const categoryPath = new URL(categoryHref, origin).pathname;
+    // The category cards sit below the fold, and hover() would scroll to them; the
+    // first scroll is deliberate browsing intent that enables stats by design. Grow
+    // the viewport to reach the card so this phase measures hover prefetch alone.
+    const categoryBox = await category.boundingBox();
+    assert.ok(categoryBox, "blog category card is not rendered");
+    const viewport = page.viewportSize();
+    await page.setViewportSize({
+      width: viewport.width,
+      height: Math.max(viewport.height, Math.ceil(categoryBox.y + categoryBox.height) + 1)
+    });
+    await page.waitForLoadState("networkidle");
     phase = "category-hover";
     const categoryPrefetch = page.waitForRequest((request) =>
       isRscRequestForDestination(request, origin, categoryPath)
     );
     await category.hover();
     await categoryPrefetch;
+    assert.equal(
+      await page.evaluate(() => window.scrollY),
+      0,
+      "category hover must not scroll, or it measures scroll intent instead of hover"
+    );
     await page.waitForLoadState("networkidle");
 
     const hoverRsc = requests.filter(
@@ -959,55 +980,67 @@ async function verifyPublicToStudioBoundary(browser, origin) {
     });
     assert.equal(homeResponse?.status(), 200);
     await page.waitForLoadState("networkidle");
-    await page.waitForFunction(
-      () =>
-        typeof window.gtag === "function" &&
-        Array.isArray(window.adsbygoogle) &&
-        window.__googleTagRuntimeLoaded === true &&
-        window.__adsenseRuntimeLoaded === true
-    );
-    const googleReadiness = await page.evaluate(() => ({
-      adsbygoogleIsArray: Array.isArray(window.adsbygoogle),
-      adsenseRuntime: window.__adsenseRuntimeLoaded,
-      gtagType: typeof window.gtag,
-      googleRuntime: window.__googleTagRuntimeLoaded,
-      readyState: document.readyState,
-      scriptSources: [...document.querySelectorAll("script[src]")]
-        .map((script) => script.src)
-        .filter(
-          (source) =>
-            source.includes("googletagmanager.com") ||
-            source.includes("googlesyndication.com")
-        ),
-      dataLayerScript: Boolean(document.querySelector("#GTM_datalayer"))
-    }));
-    assert.deepEqual(
-      {
-        adsbygoogleIsArray: googleReadiness.adsbygoogleIsArray,
-        adsenseRuntime: googleReadiness.adsenseRuntime,
-        gtagType: googleReadiness.gtagType,
-        googleRuntime: googleReadiness.googleRuntime
-      },
-      {
-        adsbygoogleIsArray: true,
-        adsenseRuntime: true,
-        gtagType: "function",
-        googleRuntime: true
-      },
-      `public Google runtime did not mount: ${JSON.stringify(googleReadiness)}`
-    );
+    if (GOOGLE_THIRD_PARTY_ENABLED) {
+      await page.waitForFunction(
+        () =>
+          typeof window.gtag === "function" &&
+          Array.isArray(window.adsbygoogle) &&
+          window.__googleTagRuntimeLoaded === true &&
+          window.__adsenseRuntimeLoaded === true
+      );
+      const googleReadiness = await page.evaluate(() => ({
+        adsbygoogleIsArray: Array.isArray(window.adsbygoogle),
+        adsenseRuntime: window.__adsenseRuntimeLoaded,
+        gtagType: typeof window.gtag,
+        googleRuntime: window.__googleTagRuntimeLoaded,
+        readyState: document.readyState,
+        scriptSources: [...document.querySelectorAll("script[src]")]
+          .map((script) => script.src)
+          .filter(
+            (source) =>
+              source.includes("googletagmanager.com") ||
+              source.includes("googlesyndication.com")
+          ),
+        dataLayerScript: Boolean(document.querySelector("#GTM_datalayer"))
+      }));
+      assert.deepEqual(
+        {
+          adsbygoogleIsArray: googleReadiness.adsbygoogleIsArray,
+          adsenseRuntime: googleReadiness.adsenseRuntime,
+          gtagType: googleReadiness.gtagType,
+          googleRuntime: googleReadiness.googleRuntime
+        },
+        {
+          adsbygoogleIsArray: true,
+          adsenseRuntime: true,
+          gtagType: "function",
+          googleRuntime: true
+        },
+        `public Google runtime did not mount: ${JSON.stringify(googleReadiness)}`
+      );
+    }
 
     const publicState = await page.evaluate(() => ({
       googleNodes: document.querySelectorAll(
-        'script[src*="googletagmanager.com"],script[src*="googlesyndication.com"],#GTM_datalayer'
+        'script[src*="googletagmanager.com"],script[src*="googlesyndication.com"],link[href*="googletagmanager.com"],link[href*="googlesyndication.com"],meta[name="google-adsense-account"],#GTM_datalayer'
       ).length,
       studioHref: document
         .querySelector('[data-document-navigation="studio"]')
         ?.getAttribute("href")
     }));
-    assert.ok(publicState.googleNodes >= 3);
     assert.equal(publicState.studioHref, "/en/studio");
-    assert.ok(googleRequests.length >= 2);
+    if (GOOGLE_THIRD_PARTY_ENABLED) {
+      assert.ok(publicState.googleNodes >= 3);
+      assert.ok(googleRequests.length >= 2);
+    } else {
+      // MEP-66: AdSense and GA4 are paused, so the public home loads none of it.
+      assert.equal(publicState.googleNodes, 0);
+      assert.deepEqual(googleRequests, []);
+      const adCookies = (await context.cookies())
+        .map((cookie) => cookie.name)
+        .filter((name) => /^_ga|^_gcl_/.test(name));
+      assert.deepEqual(adCookies, []);
+    }
 
     const documentMarker = `public-${Date.now()}`;
     await page.evaluate((marker) => {
@@ -1208,10 +1241,11 @@ async function verifyPublicCssRuntime(browser, origin) {
   return { directRoutes: results, clientNavigations: viewports.length };
 }
 
-async function verifyGalleryPreloadAndLcp(browser, origin) {
+// Gallery has no explicit preload: the first photo is eager + fetchpriority=high, every other photo is lazy.
+async function verifyGalleryLcpCandidate(browser, origin) {
   const scenarios = [
-    { name: "desktop", width: 1440, height: 900, preloadMatches: true },
-    { name: "mobile", width: 390, height: 844, preloadMatches: false }
+    { name: "desktop", width: 1440, height: 900 },
+    { name: "mobile", width: 390, height: 844 }
   ];
   const results = [];
 
@@ -1231,11 +1265,8 @@ async function verifyGalleryPreloadAndLcp(browser, origin) {
 
       page.on("request", (request) => {
         const url = new URL(request.url());
-        if (url.pathname.startsWith("/dom-pub/icdn/gallery/")) {
-          galleryImageRequests.push({
-            resourceType: request.resourceType(),
-            url: request.url()
-          });
+        if (url.pathname.startsWith("/dom-pub/icdn/")) {
+          galleryImageRequests.push(request.url());
         }
       });
       page.on("pageerror", (error) => pageErrors.push(error.message));
@@ -1250,22 +1281,13 @@ async function verifyGalleryPreloadAndLcp(browser, origin) {
       });
       assert.equal(response?.status(), 200, "Gallery did not load");
       await page.waitForFunction(
-        () => window.__galleryLcpEntries?.length > 0,
+        () => {
+          const image = document.querySelector(".gallery-card img");
+          return window.__galleryLcpEntries?.length > 0 && image?.complete && image.naturalWidth > 0;
+        },
         undefined,
         { timeout: 5_000 }
       );
-      if (scenario.preloadMatches) {
-        await page.waitForFunction(
-          () => {
-            const image = document.querySelector(
-              ".gallery-spotlight-card-1 img"
-            );
-            return image?.complete && image.naturalWidth > 0;
-          },
-          undefined,
-          { timeout: 5_000 }
-        );
-      }
       await page.evaluate(
         () =>
           new Promise((resolve) =>
@@ -1274,83 +1296,64 @@ async function verifyGalleryPreloadAndLcp(browser, origin) {
       );
 
       const snapshot = await page.evaluate(() => {
-        const preload = document.querySelector(
-          'head link[data-gallery-desktop-preload="true"]'
-        );
-        const image = document.querySelector(
-          ".gallery-spotlight-card-1 img"
-        );
-        const preloadHref = preload?.href ?? "";
+        const images = [...document.querySelectorAll(".gallery-card img")];
+        const first = images[0];
         return {
-          firstImageComplete: Boolean(image?.complete && image.naturalWidth > 0),
-          firstImageFetchPriority: image?.getAttribute("fetchpriority") ?? "",
-          firstImageSrc: image?.currentSrc || image?.src || "",
-          lcpEntries: window.__galleryLcpEntries ?? [],
-          media: preload?.media ?? "",
-          mediaMatches: preload ? matchMedia(preload.media).matches : null,
-          preloadFetchPriority: preload?.getAttribute("fetchpriority") ?? "",
-          preloadHref,
-          resourceEntries: preloadHref
-            ? performance
-                .getEntriesByName(preloadHref, "resource")
-                .map((entry) => ({
-                  initiatorType: entry.initiatorType,
-                  name: entry.name
-                }))
-            : []
+          imagePreloads: [...document.querySelectorAll('link[rel="preload"][as="image"]')].map((link) => ({
+            href: link.getAttribute("href") ?? "",
+            imageSrcset: link.getAttribute("imagesrcset") ?? "",
+            fetchPriority: link.getAttribute("fetchpriority") ?? ""
+          })),
+          firstImageAttributes: {
+            href: first?.getAttribute("src") ?? "",
+            imageSrcset: first?.getAttribute("srcset") ?? "",
+            fetchPriority: "high"
+          },
+          firstImageFetchPriority: first?.getAttribute("fetchpriority") ?? "",
+          firstImageLoading: first?.getAttribute("loading") ?? "",
+          firstImageSrc: first?.currentSrc || first?.src || "",
+          laterImageLoading: [...new Set(images.slice(1).map((image) => image.getAttribute("loading")))],
+          laterImageHighPriority: images.slice(1).filter(
+            (image) => image.getAttribute("fetchpriority") === "high"
+          ).length,
+          lcpEntries: window.__galleryLcpEntries ?? []
         };
       });
 
-      assert.match(snapshot.preloadHref, /\/gallery\/projects\/wat-overview\.webp$/);
-      assert.equal(snapshot.media, "(min-width: 641px)");
-      assert.equal(snapshot.mediaMatches, scenario.preloadMatches);
-      assert.equal(snapshot.preloadFetchPriority, "high");
-      assert.equal(snapshot.firstImageSrc, snapshot.preloadHref);
-      assert.equal(snapshot.firstImageFetchPriority, "");
+      // React DOM's SSR emits one preload for an eager fetchpriority=high <img> (the MEP-29
+      // first-photo hint); it is the same request, so allow exactly that one and no other.
+      assert.deepEqual(
+        snapshot.imagePreloads,
+        [snapshot.firstImageAttributes],
+        `${scenario.name} Gallery may preload only the first photo, as React's hint for its eager high-priority <img>`
+      );
+      assert.equal(snapshot.firstImageLoading, "eager");
+      assert.equal(snapshot.firstImageFetchPriority, "high");
+      assert.deepEqual(snapshot.laterImageLoading, ["lazy"]);
+      assert.equal(snapshot.laterImageHighPriority, 0);
 
-      const exactRequests = galleryImageRequests.filter(
-        ({ url }) => url === snapshot.preloadHref
+      const firstImageRequests = galleryImageRequests.filter(
+        (url) => url === snapshot.firstImageSrc
       );
-      assert.ok(
-        exactRequests.length <= 1,
-        `${scenario.name} fetched the Gallery spotlight more than once`
-      );
-      assert.ok(
-        snapshot.resourceEntries.length <= 1,
-        `${scenario.name} recorded duplicate Gallery spotlight resources`
+      assert.equal(
+        firstImageRequests.length,
+        1,
+        `${scenario.name} must fetch the first Gallery photo exactly once`
       );
       const finalLcp = snapshot.lcpEntries.at(-1);
       assert.ok(finalLcp, `${scenario.name} emitted no LCP entry`);
-
-      if (scenario.preloadMatches) {
-        assert.equal(snapshot.firstImageComplete, true);
-        assert.equal(exactRequests.length, 1);
-        assert.equal(snapshot.resourceEntries.length, 1);
-        assert.equal(finalLcp.tagName, "IMG");
-        assert.match(finalLcp.className, /gallery-spotlight-image/);
-        assert.equal(finalLcp.url, snapshot.preloadHref);
+      if (finalLcp.tagName === "IMG") {
+        assert.equal(finalLcp.url, snapshot.firstImageSrc, `${scenario.name} LCP image is not the eager photo`);
       } else {
-        assert.deepEqual(
-          snapshot.resourceEntries.filter(
-            ({ initiatorType }) => initiatorType === "link"
-          ),
-          [],
-          "mobile must not fetch the desktop-only preload"
-        );
-        assert.notEqual(finalLcp.tagName, "IMG");
         assert.equal(finalLcp.isText, true);
       }
 
       assert.deepEqual(pageErrors, []);
       assert.deepEqual(preloadWarnings, []);
       results.push({
-        firstImageRequests: exactRequests.length,
         finalLcp,
-        mediaMatches: snapshot.mediaMatches,
-        name: scenario.name,
-        resourceInitiators: snapshot.resourceEntries.map(
-          ({ initiatorType }) => initiatorType
-        )
+        firstImageRequests: firstImageRequests.length,
+        name: scenario.name
       });
     } finally {
       await context.close();
@@ -1924,7 +1927,7 @@ async function main() {
   try {
     const publicToStudio = await verifyPublicToStudioBoundary(browser, origin);
     const publicCss = await verifyPublicCssRuntime(browser, origin);
-    const galleryPreloadAndLcp = await verifyGalleryPreloadAndLcp(
+    const galleryLcpCandidate = await verifyGalleryLcpCandidate(
       browser,
       origin
     );
@@ -1961,7 +1964,7 @@ async function main() {
           status: "ok",
           publicToStudio,
           publicCss,
-          galleryPreloadAndLcp,
+          galleryLcpCandidate,
           pageBackNavigation,
           persistedReadingFont,
           readerRemount,

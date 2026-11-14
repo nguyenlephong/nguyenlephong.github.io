@@ -5,7 +5,8 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-process.env.CONTENT_BUILD_DATE = "2026-07-19";
+// MEP-80: pinned to the day publish dates were redistributed so the whole corpus is live.
+process.env.CONTENT_BUILD_DATE = "2026-11-13";
 
 const extensionCandidates = [".ts", ".tsx", ".js", ".mjs"];
 
@@ -83,13 +84,14 @@ const BLOG_IDS = [
   "leadership-and-management"
 ];
 
+// Hub catalog display order: Career leads (MEP-46).
 const NOTE_HUB_IDS = [
-  "mua-nha",
-  "tiet-kiem",
   "su-nghiep",
   "sach",
   "goc-nhin",
-  "thoughts"
+  "thoughts",
+  "tiet-kiem",
+  "mua-nha"
 ];
 
 function readJson(relativePath) {
@@ -160,7 +162,7 @@ test("curated hub catalogs are exact, explicitly ordered, localized, and fall ba
   }
 });
 
-test("hub static params produce exactly 52 EN/VI routes with nine cards per page", () => {
+test("hub static params produce exactly 54 EN/VI routes with nine cards per page", () => {
   const expectedBlogCounts = new Map([
     ["foundations", { en: 15, vi: 15 }],
     ["ways-of-working", { en: 4, vi: 4 }],
@@ -173,7 +175,7 @@ test("hub static params produce exactly 52 EN/VI routes with nine cards per page
   const expectedNoteCounts = new Map([
     ["mua-nha", 12],
     ["tiet-kiem", 11],
-    ["su-nghiep", 18],
+    ["su-nghiep", 19],
     ["sach", 19],
     ["goc-nhin", 33],
     ["thoughts", 40]
@@ -223,7 +225,7 @@ test("hub static params produce exactly 52 EN/VI routes with nine cards per page
     { locale: "vi", series: "foundations", page: "2" }
   ]);
   assert.equal(noteRoots.length, 12);
-  assert.equal(notePages.length, 24);
+  assert.equal(notePages.length, 26);
   assert.equal(
     [...blogRoots, ...blogPages, ...noteRoots, ...notePages].some(
       (entry) => entry.page === "1"
@@ -232,7 +234,7 @@ test("hub static params produce exactly 52 EN/VI routes with nine cards per page
   );
   assert.equal(
     blogRoots.length + blogPages.length + noteRoots.length + notePages.length,
-    52
+    54
   );
 
   for (const locale of routeContract.CONTENT_HUB_LOCALES) {
@@ -286,24 +288,34 @@ test("one page-aware hub inventory prevents asymmetric 404 alternates", () => {
       availableLocales: pageTwo.locales,
       path: "/blog/series/boundary/page/2",
       title: "Boundary page",
-      description: "A page-aware locale boundary."
+      description: "A page-aware locale boundary.",
+      section: "blog"
     });
-    assert.deepEqual(Object.keys(metadata.alternates.languages).sort(), [
+    // MEP-65: page 2+ lists different posts per locale, so it declares no hreflang at all.
+    assert.equal(metadata.alternates.languages, undefined);
+    assert.equal(
+      metadata.alternates.canonical,
+      `https://nguyenlephong.github.io/${locale}/blog/series/boundary/page/2`
+    );
+    assert.deepEqual(metadata.openGraph.alternateLocale, []);
+    const pageOne = hubPage.buildContentHubMetadata({
+      locale,
+      availableLocales: pageTwo.locales,
+      path: "/blog/series/boundary",
+      title: "Boundary",
+      description: "A page-aware locale boundary.",
+      section: "blog"
+    });
+    assert.deepEqual(Object.keys(pageOne.alternates.languages).sort(), [
       locale,
       "x-default"
     ]);
-    assert.equal(
-      metadata.alternates.languages["x-default"],
-      metadata.alternates.languages[locale]
-    );
-    assert.deepEqual(metadata.openGraph.alternateLocale, []);
-    assert.equal(
+    // MEP-64: a series hub shares the blog card, with its own title as the alt.
+    assert.match(
       metadata.openGraph.images[0].url,
-      "https://nguyenlephong.github.io/opengraph-image.png"
+      new RegExp(`^https://nguyenlephong\\.github\\.io/${locale}/blog/opengraph-image-[a-z0-9]{6}$`)
     );
-    assert.deepEqual(metadata.twitter.images, [
-      "https://nguyenlephong.github.io/opengraph-image.png"
-    ]);
+    assert.equal(metadata.openGraph.images[0].alt, "Boundary page");
   }
 });
 
@@ -358,15 +370,18 @@ test("shared hub structured data preserves surface-specific semantics", () => {
   }
 });
 
-test("sitemap contains 945 unique URLs and exactly 52 curated hub URLs", () => {
+// 965 = 951 + 14 from MEP-80 (5 blog posts and 1 note x en/vi, plus su-nghiep page 3 x en/vi)
+// 951 = 945 + 4 About locales now authored in all six languages
+// + 2 Studio (MEP-54: hub drops fr/ja/ko/zh, adds en/vi checklists, system-maps, ai-setup).
+test("sitemap contains 965 unique URLs and exactly 54 curated hub URLs", () => {
   const sitemap = sitemapModule.default();
-  assert.equal(sitemap.length, 945);
-  assert.equal(new Set(sitemap.map(({ url }) => url)).size, 945);
+  assert.equal(sitemap.length, 965);
+  assert.equal(new Set(sitemap.map(({ url }) => url)).size, 965);
 
   const hubEntries = sitemap.filter(({ url }) =>
     /\/(?:en|vi)\/(?:blog\/series|notes\/topics)\//.test(url)
   );
-  assert.equal(hubEntries.length, 52);
+  assert.equal(hubEntries.length, 54);
   assert.equal(
     hubEntries.some(({ url }) => url.endsWith("/page/1")),
     false
@@ -376,7 +391,14 @@ test("sitemap contains 945 unique URLs and exactly 52 curated hub URLs", () => {
     false
   );
 
-  for (const entry of hubEntries) {
+  // MEP-65: no paged archive (blog, notes, series, topics) declares hreflang in the sitemap.
+  const pagedEntries = sitemap.filter(({ url }) => /\/page\/\d+$/.test(url));
+  assert.ok(pagedEntries.length > 10);
+  for (const entry of pagedEntries) {
+    assert.equal(entry.alternates, undefined, entry.url);
+  }
+
+  for (const entry of hubEntries.filter(({ url }) => !/\/page\/\d+$/.test(url))) {
     assert.deepEqual(Object.keys(entry.alternates.languages).sort(), [
       "en",
       "vi",
@@ -628,7 +650,7 @@ test("notes author quality has one exact unresolved slug and consistent explicit
   });
   assert.equal(
     notesAuthorship.resolveNoteAuthorIdentity("Nguyen Le Phong").profileUrl,
-    "https://nguyenlephong.github.io"
+    "https://nguyenlephong.github.io/en"
   );
 });
 
@@ -653,7 +675,7 @@ test("hub implementation stays static-first and reviewedAt never becomes dateMod
   assert.match(sharedContract, /'@type': 'CollectionPage'/);
   assert.match(sharedContract, /'@type': 'ItemList'/);
   assert.match(sharedContract, /'@type': 'BreadcrumbList'/);
-  assert.match(sharedContract, /CONTENT_HUB_SOCIAL_IMAGE/);
+  assert.match(sharedContract, /sectionOgImages\(HUB_OG_SEGMENT\[section\]/);
   assert.match(collectionSources, /buildContentHubMetadata/);
   assert.match(collectionSources, /buildContentHubStructuredData/);
   assert.match(collectionSources, /pageData\.startIndex \+ index \+ 1/);

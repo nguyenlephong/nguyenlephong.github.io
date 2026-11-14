@@ -16,34 +16,41 @@ async function read(relativePath) {
 test("every locale presents the current Zalo PC lead journey", async () => {
   for (const locale of locales) {
     const messages = JSON.parse(await read(`messages/${locale}.json`));
-    const lead = messages.Experience.zalo.lead;
+    const lead = messages.Experience.roles.zaloLead;
 
     assert.match(messages.Hero.role, /Lead Software Engineer/);
     assert.match(messages.Footer.tag, /Lead Software Engineer/);
     assert.match(messages.SEO.home.title, /Lead Software Engineer/);
-    assert.equal(Array.isArray(lead.summaries), true);
-    assert.equal(lead.summaries.length, 1);
-    assert.equal(lead.contributions.length, 5);
-    assert.match(JSON.stringify(lead), /Zalo PC/);
-    assert.match(JSON.stringify(lead), /mobile|モバイル|移动端|모바일/);
-    assert.equal(typeof messages.Experience.labels.publicEvidence, "string");
+    assert.equal(typeof lead.scope, "string");
+    assert.equal(Object.keys(lead.contributions).length, 5);
+    // The return to Zalo reads as a rehire with its date, in every locale.
+    assert.match(lead.scope, /NDSVN/);
+    assert.match(lead.scope, /2026/);
+    assert.match(JSON.stringify(lead), /mobile|モバイル|移动端|모바일|điện thoại/);
     assert.match(messages.Experience.labels.readCoverage, /\{publisher\}/);
+    assert.match(messages.Experience.labels.allContributions, /\{count\}/);
   }
 
   const en = JSON.parse(await read("messages/en.json"));
   const vi = JSON.parse(await read("messages/vi.json"));
-  assert.match(en.Experience.zalo.lead.summaries[0], /March 2, 2026/);
-  assert.match(vi.Experience.zalo.lead.summaries[0], /02\/03\/2026/);
-  assert.match(en.Experience.zalo.lead.contributions[0], /message backup/);
-  assert.match(vi.Experience.zalo.lead.contributions[0], /backup tin nhắn/);
-  assert.match(en.Experience.zalo.lead.contributions[1], /sync v2/);
-  assert.match(vi.Experience.zalo.lead.contributions[1], /sync v2/);
-  assert.match(en.Experience.zalo.lead.contributions[2], /zCloud offload/);
-  assert.match(vi.Experience.zalo.lead.contributions[2], /zCloud offload/);
-  assert.match(en.Experience.zalo.lead.contributions[4], /engineering team/);
-  assert.match(vi.Experience.zalo.lead.contributions[4], /team engineering/);
-  assert.match(en.Summary.intro2, /technical leadership/);
-  assert.doesNotMatch(en.Summary.intro1, /GPA/);
+  assert.match(en.Experience.roles.zaloLead.scope, /Rehired as Lead in March 2026/);
+  assert.match(vi.Experience.roles.zaloLead.scope, /quay lại làm Lead từ tháng 3\/2026/);
+  assert.match(en.Experience.roles.zaloLead.contributions[0], /message backup/);
+  assert.match(vi.Experience.roles.zaloLead.contributions[0], /sao lưu tin nhắn/);
+  assert.match(en.Experience.roles.zaloLead.contributions[1], /sync v2/);
+  assert.match(vi.Experience.roles.zaloLead.contributions[1], /sync v2/);
+  assert.match(en.Experience.roles.zaloLead.contributions[1], /1\.8 s to 4 ms/);
+  assert.match(vi.Experience.roles.zaloLead.contributions[1], /1,8 s xuống 4 ms/);
+  assert.match(en.Experience.roles.zaloLead.contributions[2], /default off/);
+  assert.match(en.Experience.roles.zaloLead.contributions[3], /zCloud offload/);
+  assert.match(vi.Experience.roles.zaloLead.contributions[3], /zCloud offload/);
+  // The Summary lede retold the career arc that the hero and Experience already tell (MEP-21).
+  for (const locale of locales) {
+    const messages = JSON.parse(await read(`messages/${locale}.json`));
+    assert.equal(messages.Summary.lede, undefined, `${locale} Summary.lede`);
+  }
+  const summary = await read("src/components/cv/Summary.tsx");
+  assert.doesNotMatch(summary, /summary-lede|t\('lede'\)/);
 });
 
 test("homepage copy states capability directly without recruiter-facing meta language", async () => {
@@ -65,14 +72,24 @@ test("homepage copy states capability directly without recruiter-facing meta lan
 
   assert.equal(
     en.Sections.aboutTitle,
-    "Architect systems. Ship products. Lead teams."
+    "I work on systems where a wrong step costs money or trust."
   );
   assert.equal(
     vi.Sections.aboutTitle,
-    "Kiến trúc hệ thống. Ship sản phẩm. Dẫn dắt đội ngũ."
+    "Tôi làm những hệ thống mà sai một bước là mất tiền hoặc mất lòng tin."
   );
-  assert.match(en.Summary.intro3, /product, systems, and teams/);
-  assert.match(vi.Summary.intro3, /sản phẩm, hệ thống và đội ngũ/);
+  for (const locale of locales) {
+    const messages = JSON.parse(await read(`messages/${locale}.json`));
+    // Headings carry their own weight: no eyebrow keys above them.
+    assert.deepEqual(Object.keys(messages.Sections).filter((k) => /Eyebrow$/.test(k)), [], locale);
+    assert.equal(messages.Summary.visionEyebrow, undefined, locale);
+    assert.equal(messages.Summary.hardSkillsEyebrow, undefined, locale);
+    assert.ok(messages.Summary.stackTitle.trim(), locale);
+    for (const row of Object.values(messages.Summary.stack)) {
+      assert.ok(row.label.trim() && row.items.trim(), locale);
+      assert.doesNotMatch(row.items, /<b>/, locale);
+    }
+  }
   assert.doesNotMatch(
     canonicalCopy,
     /recruiter|job description|nhà tuyển dụng|Cần một người|Need someone/i
@@ -233,24 +250,51 @@ test("downloadable resume targets the generated lead-level PDF", async () => {
   assert.match(pdf.toString("latin1"), /Lead Software Engineer/);
 });
 
-test("experience data groups both Zalo chapters and links public launch coverage", async () => {
-  const experience = await read("src/content/experience.ts");
+test("experience data is one reverse-chronological role list that every locale can render", async () => {
+  const { experience } = await import("../src/content/experience.ts");
 
-  assert.ok(
-    experience.indexOf('company: "Zalo PC - VNG Corp"') <
-      experience.indexOf('company: "NDSVN JSC"'),
-    "current Zalo role should be the first company in the timeline"
+  assert.deepEqual(
+    experience.map((role) => role.id),
+    ["zaloLead", "ndsvn", "zaloSenior", "primedata", "splus", "propman"],
+    "roles run newest first so the NDSVN branch sits between the two Zalo PC roles"
   );
-  assert.match(experience, /title: "Lead Software Engineer"/);
-  assert.match(experience, /duration: "Mar 2, 2026 - Present"/);
-  assert.match(experience, /contentKey: "lead"/);
-  assert.match(experience, /title: "Senior Software Engineer"/);
-  assert.match(experience, /duration: "May 2024 - Aug 2025"/);
-  assert.match(experience, /duration: "Aug 2025 - Mar 2026"/);
-  assert.match(
-    experience,
-    /https:\/\/vnexpress\.net\/ba-tinh-nang-moi-cua-zalo-5097444\.html/
+  const starts = experience.map((role) => role.start);
+  assert.deepEqual(starts, [...starts].sort().reverse());
+  assert.equal(experience[0].end, undefined, "the current role has no end date");
+  assert.deepEqual(
+    experience.map((role) => [role.start, role.end ?? null]).slice(0, 3),
+    [["2026-03", null], ["2025-08", "2026-03"], ["2024-05", "2025-08"]]
   );
+  assert.deepEqual(
+    experience.filter((role) => role.earlier).map((role) => role.id),
+    ["splus", "propman"]
+  );
+  for (const role of experience) {
+    assert.match(role.start, /^\d{4}-\d{2}$/, role.id);
+    assert.equal(role.location, "Ho Chi Minh City", role.id);
+    assert.ok(role.techs.length > 0 && role.techs.length <= 5, role.id);
+  }
+  assert.equal(
+    experience[0].evidence.href,
+    "https://vnexpress.net/ba-tinh-nang-moi-cua-zalo-5097444.html"
+  );
+
+  for (const locale of locales) {
+    const xp = JSON.parse(await read(`messages/${locale}.json`)).Experience;
+    for (const role of experience) {
+      const copy = xp.roles[role.id];
+      assert.ok(copy, `${locale} Experience.roles.${role.id}`);
+      assert.ok(xp.env[role.env]?.trim(), `${locale} Experience.env.${role.env}`);
+      if (role.earlier) {
+        assert.ok(copy.line?.trim(), `${locale} ${role.id}.line`);
+      } else {
+        assert.ok(copy.scope?.trim(), `${locale} ${role.id}.scope`);
+        assert.ok(Object.keys(copy.contributions).length > 3, `${locale} ${role.id} has a <details> remainder`);
+      }
+    }
+    assert.ok(xp.labels.now.trim() && xp.labels.earlier.trim(), locale);
+    assert.doesNotMatch(JSON.stringify(xp), /parasite|<b>[^<]*<\/b>[^"]*<b>[^<]*<\/b>[^"]*<b>/i, locale);
+  }
 });
 
 test("launch evidence is accessible, tracked, and reflected in structured profile data", async () => {
@@ -264,14 +308,43 @@ test("launch evidence is accessible, tracked, and reflected in structured profil
       read("src/app/_og/profile-og.ts")
     ]);
 
-  assert.match(component, /job\.contentKey/);
+  assert.match(component, /role\.evidence/);
+  assert.match(component, /<details/);
+  assert.match(component, /track\(["']cv_experience_expand["'], \{ role: role\.id \}\)/);
+  assert.match(analytics, /\| 'cv_experience_expand'/);
+  // The current role (no end date) shows three contributions, past roles two; the rest stay in <details> (MEP-22).
+  assert.match(component, /const topCount = \(role: ExperienceRole\): number => \(role\.end \? 2 : 3\)/);
+  assert.match(component, /items\.slice\(top\)/);
+  assert.match(component, /items\.slice\(0, top\)/);
+  // On phones the map stage draws the figure; the panel keeps it for screen readers and keeps its condition visible.
+  const mapCss = await read("src/components/cv/capability-map.css");
+  assert.match(mapCss, /@container cm \(max-width: 719px\) \{[\s\S]*\.cm-proof strong \{[\s\S]*clip-path: inset\(50%\)/);
+  // Career rail: complete by default, scroll-drawn only when supported and motion is allowed.
+  const [rail, xpCss] = await Promise.all([
+    read("src/components/cv/CareerGraph.tsx"),
+    read("src/components/cv/experience.css")
+  ]);
+  assert.match(rail, /aria-hidden="true"/);
+  assert.match(rail, /new ResizeObserver/, "graph re-measures on resize and <details> toggles");
+  assert.match(xpCss, /--c-branch: oklch\(74% 0\.16 65\)/, "NDSVN lane uses the map's amber lane");
+  assert.equal((xpCss.match(/animation-timeline: view\(\);/g) || []).length, 1, "one view() timeline");
+  for (const locale of locales) {
+    const labels = JSON.parse(await read(`messages/${locale}.json`)).Experience.labels;
+    assert.match(labels.forkNote, /2025/, locale);
+    assert.match(labels.mergeNote, /2026/, locale);
+  }
+  assert.match(
+    xpCss,
+    /@media \(prefers-reduced-motion: no-preference\) \{[\s\S]*@supports \(animation-timeline: view\(\)\)/
+  );
   assert.match(component, /target="_blank"/);
   assert.match(component, /rel="noopener noreferrer"/);
   assert.match(component, /cv_experience_evidence_click/);
   assert.match(component, /\{ beacon: true \}/);
   assert.match(analytics, /\| 'cv_experience_evidence_click'/);
   assert.match(schema, /jobTitle: 'Lead Software Engineer/);
-  assert.match(schema, /name: 'Zalo - VNG Corporation'/);
+  assert.match(schema, /name: 'Zalo',/);
+  assert.match(schema, /name: 'VNG Corporation'/);
   assert.doesNotMatch(schema, /worksFor:[\s\S]{0,120}NDSVN JSC/);
   assert.match(rootOg, /PROFILE_OG_CONTENT/);
   assert.match(localizedOg, /PROFILE_OG_CONTENT/);
@@ -279,28 +352,90 @@ test("launch evidence is accessible, tracked, and reflected in structured profil
 });
 
 test("hero leads with both the Zalo PC role and the BonBon co-founder role", async () => {
-  const [hero, analytics] = await Promise.all([
+  const [hero, topology, analytics] = await Promise.all([
     read("src/components/cv/Hero.tsx"),
+    read("src/components/cv/HeroTopology.tsx"),
     read("src/lib/analytics.ts")
   ]);
 
   for (const locale of locales) {
     const messages = JSON.parse(await read(`messages/${locale}.json`));
     assert.equal(typeof messages.Hero.cofounder, "string");
+    assert.equal(typeof messages.Hero.claim, "string");
     assert.match(messages.Hero.news, /BonBon/);
-    assert.match(messages.Hero.stats.preSeedRaisedCaption, /Tasco/);
+    assert.match(messages.Hero.topology.bonbonNote, /Tasco/);
+    assert.match(messages.Hero.topology.zaloNote, /18/);
     assert.match(messages.SEO.home.title, /BonBon/);
     assert.equal(messages.Hero.proof, undefined);
+    // The stat grid is gone, and the contradicted 80M+ figure must not come back to the hero.
+    assert.equal(messages.Hero.stats, undefined);
+    assert.doesNotMatch(JSON.stringify(messages.Hero), /80M|80 triệu|30\+/);
   }
 
-  assert.match(hero, /<strong>Zalo PC<\/strong>/);
-  assert.match(hero, /<strong>BonBon Mobility<\/strong>/);
-  assert.match(hero, /href="https:\/\/bonbon\.com\.vn\/"/);
-  assert.match(hero, /track\('cv_external_link', \{ target: 'bonbon_website', surface: 'hero' \}/);
+  // Both role lines are equal-rank in-page links, tracked like the topology nodes.
+  assert.match(hero, /href="#experience"[\s\S]{0,160}cv_hero_node_select', \{ node: 'zalo_pc', surface: 'role' \}/);
+  assert.match(hero, /href="#case-bonbon"[\s\S]{0,160}cv_hero_node_select', \{ node: 'bonbon', surface: 'role' \}/);
+  assert.match(hero, />\s*Zalo PC\s*<\/a>/);
+  assert.match(hero, />\s*BonBon Mobility\s*<\/a>/);
   assert.match(hero, /locale=\{locale === 'vi' \? 'vi' : 'en'\}/);
   assert.match(hero, /prefetch=\{false\}/);
-  assert.match(hero, /Math\.round\(\(v \/ max\) \* 100\)/);
+  assert.doesNotMatch(hero, /stat-card|spark/);
+  assert.doesNotMatch(hero, /tel:/);
+  assert.match(hero, /<HeroTopology/);
+  assert.match(topology, /track\('cv_hero_node_select', \{ node: e\.id, surface: 'topology' \}\)/);
+  assert.match(topology, /href: '#experience'/);
+  assert.match(topology, /href: '#case-bonbon'/);
+  // Topology dates are mono date tokens in every locale.
+  for (const locale of locales) {
+    const topo = JSON.parse(await read(`messages/${locale}.json`)).Hero.topology;
+    for (const key of ["zaloMeta", "bonbonMeta", "previousMeta"]) assert.match(topo[key], /<date>.+<\/date>/);
+  }
+  assert.match(analytics, /\| 'cv_hero_node_select'/);
   assert.match(hero, /track\('cv_announcement_click', \{ target: 'bonbon_pre_seed_note' \}\)/);
   assert.match(analytics, /\| 'cv_announcement_click'/);
   assert.match(analytics, /\| 'cv_project_website_click'/);
+});
+
+test("capability map tracks selection and every locale carries each capability", async () => {
+  const map = await read("src/components/cv/CapabilityMap.tsx");
+  const diagram = await read("src/components/cv/CapabilityMapDiagram.tsx");
+  const analytics = await read("src/lib/analytics.ts");
+  assert.match(
+    map,
+    /track\(["']cv_capability_select["'], \{ capability: key, source \}\)/
+  );
+  assert.match(analytics, /\| 'cv_capability_select'/);
+  // MEP-78: reduced motion never auto-advances, a visible toggle pauses it, touching the panel stops it.
+  assert.match(map, /const cycling = autoplay && !paused && inView && !reduced;/);
+  assert.match(map, /track\("cv_capability_autoplay_toggle", \{\s*state: next \? "playing" : "paused"\s*\}\)/);
+  assert.match(map, /className="cm-autoplay"[\s\S]*?onClick=\{toggleAutoplay\}/);
+  assert.match(map, /onPointerDown=\{\(\) => setAutoplay\(false\)\}/);
+  assert.match(analytics, /\| 'cv_capability_autoplay_toggle'/);
+  const css = await read("src/components/cv/capability-map.css");
+  assert.match(css, /prefers-reduced-motion: reduce[\s\S]*\.cm-autoplay \{ display: none; \}/);
+
+  const keys = [
+    ...diagram
+      .match(/capabilityKeys = \[([^\]]+)\]/)[1]
+      .matchAll(/["'](\w+)["']/g)
+  ].map((m) => m[1]);
+  assert.equal(keys.length, 6);
+  for (const locale of locales) {
+    const summaryMessages = JSON.parse(await read(`messages/${locale}.json`)).Summary;
+    assert.ok(summaryMessages.mapPause?.trim() && summaryMessages.mapPlay?.trim(), `${locale} autoplay toggle`);
+    const pillars = summaryMessages.pillars;
+    assert.deepEqual(Object.keys(pillars).sort(), [...keys].sort(), locale);
+    for (const key of keys) {
+      for (const field of [
+        "tab",
+        "meta",
+        "title",
+        "body",
+        "figure",
+        "figureLabel"
+      ]) {
+        assert.ok(pillars[key][field]?.trim(), `${locale} ${key}.${field}`);
+      }
+    }
+  }
 });

@@ -7,7 +7,7 @@ export default function GlanceVisual() {
             <span className="app-visual-dot app-visual-dot--red" />
             <span className="app-visual-dot app-visual-dot--amber" />
             <span className="app-visual-dot app-visual-dot--green" />
-            <span className="app-visual-window-title">Safari — Wikipedia</span>
+            <span className="app-visual-window-title">Safari · Wikipedia</span>
           </div>
           <div className="app-visual-window-body">
             <p className="app-visual-text">

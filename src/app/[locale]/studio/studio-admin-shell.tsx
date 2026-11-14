@@ -19,6 +19,7 @@ import {
 } from "./studio-shell-preferences";
 import StudioRouteFeatureRegistry from "./StudioRouteFeatureRegistry";
 import { studioCatalog } from "./studio-route-catalog";
+import { getStudioRoutePageTitles } from "./studio-static-content";
 import { StudioRouteOpenDeduper } from "./studio-route-open-deduper";
 
 type StudioAdminShellProps = { locale: string; copy: StudioUiCopy };
@@ -61,6 +62,17 @@ export function StudioAdminShell({ locale, copy }: StudioAdminShellProps) {
       source: "initial_location"
     });
   }, []);
+
+  // Every route change (initial, in-shell click, popstate) re-syncs <title> and the slotted light-DOM h1.
+  useEffect(() => {
+    const titles = getStudioRoutePageTitles(locale, activeRoute, route.title);
+    document.title = titles.documentTitle;
+    const heading = document.querySelector<HTMLElement>("[data-studio-page-heading] h1");
+    if (heading) {
+      heading.textContent = titles.heading;
+      heading.lang = titles.lang;
+    }
+  }, [activeRoute, locale, route.title]);
 
   useEffect(() => {
     const syncRoute = () => {
@@ -152,12 +164,12 @@ export function StudioAdminShell({ locale, copy }: StudioAdminShellProps) {
     setMobileSidebarOpen(false);
     setPreferencesOpen(false);
     setAccountOpen(false);
-    const nextHref = routeHref(routeId, window.location.search);
-    const currentHref = `${window.location.search}${window.location.hash}`;
+    const nextHref = routeHref(routeId, locale);
+    const currentHref = `${window.location.pathname}${window.location.search}${window.location.hash}`;
     if (currentHref !== nextHref) {
       window.history.pushState(null, "", nextHref);
     }
-  }, [activeRoute]);
+  }, [activeRoute, locale]);
 
   const handleBrandClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -265,7 +277,7 @@ export function StudioAdminShell({ locale, copy }: StudioAdminShellProps) {
     >
       <aside className="studio-sidebar" aria-label={copy.navLabel}>
         <div className="sidebar-header">
-          <a className="sidebar-brand" href={routeHref(DEFAULT_ROUTE)} aria-label={copy.openStudio} onClick={handleBrandClick}>
+          <a className="sidebar-brand" href={routeHref(DEFAULT_ROUTE, locale)} aria-label={copy.openStudio} onClick={handleBrandClick}>
             <span className="sidebar-brand-mark" aria-hidden="true">N</span>
             <span>{copy.brand}</span>
           </a>
@@ -305,6 +317,7 @@ export function StudioAdminShell({ locale, copy }: StudioAdminShellProps) {
             <SidebarGroup
               key={group.id}
               group={group}
+              locale={locale}
               activeRoute={activeRoute}
               expanded={expanded}
               collapsed={isIconCollapsed}

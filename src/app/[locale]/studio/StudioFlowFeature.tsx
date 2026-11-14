@@ -2,7 +2,6 @@
 "use client";
 
 import { useState } from "react";
-import { APP_ROUTE } from "@/app/app.const";
 import { track } from "@/lib/analytics";
 import { LuCheck, LuLink, LuShare2, LuWorkflow } from "react-icons/lu";
 import StudioFlowChart from "./StudioFlowChart";
@@ -25,8 +24,7 @@ function flowIdFromRoute(routeId: StudioRouteId): StudioFlowId | null {
 }
 
 function studioFlowHref(locale: string, flowId: StudioFlowId): string {
-  const prefix = locale ? "/" + locale : "";
-  return prefix + APP_ROUTE.STUDIO + routeHref(flowRouteId(flowId));
+  return routeHref(flowRouteId(flowId), locale);
 }
 
 export default function StudioFlowFeature({

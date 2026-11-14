@@ -1,16 +1,9 @@
-// Extracted from app.const.ts — profile content data. Re-assembled into
-// `profileInfo` by app.const.ts so existing imports keep working.
+// Profile content data, imported directly by the pages that render it.
 
+// Server-only: the phone number. Email and profile links live in ./social, the
+// only contact module client components may import (tests/client-profile-privacy.test.mjs).
 export const contact = {
-    email: "phongnguyen.itengineer@gmail.com",
     phone: "(+84)98-549-0107",
-    github: "https://github.com/nguyenlephong",
-    youtube: "https://www.youtube.com/@NguyenLePhong",
-    leetcode: "https://leetcode.com/nguyenlephong/",
-    linkedin: "https://www.linkedin.com/in/phongnguyen-it/",
-    twitter: "https://twitter.com/nguyenlephong17",
-    facebook: "https://www.facebook.com/NguyenLePhong0107/",
-    instagram: "https://www.instagram.com/anhmap0107/",
     cv_pdf: "https://nguyenlephong.github.io/NguyenLePhong_Lead_Software_Engineer.pdf"
 }
 
@@ -66,17 +59,5 @@ export const education = [
       ],
       GPA: 3.36,
       duration: "Sep. 2015 - Dec 2019"
-    }
-]
-
-export const references = [
-    {
-      name: "Mr. NGO VAN KIM KHANH",
-      roles: [
-        "Co-founder & Developer & CEO, Algae",
-        "SRE & Cloud/OnPrem Infrastructure, PrimeData VN"
-      ],
-      email: "khanh.ngo@algae.vn",
-      phone: "(+84) 907-709-380"
     }
 ]

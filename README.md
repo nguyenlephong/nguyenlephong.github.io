@@ -15,8 +15,8 @@ Lead Software Engineer at Zalo PC with 8+ years shipping production software acr
 I work best where cross-platform product delivery, data safety, platform reliability, and team clarity need to move together: desktop and mobile clients, backend services, rollout workflows, observability, CI/CD, secure integrations, and production operations.
 
 ```text
-Lead Software Engineer @ Zalo PC   PC message backup → mobile restore · 80M+ MAU platform
-Co-founder @ BonBon Mobility      $500K pre-seed led by Tasco · VETC Mini App (4.3M-user ecosystem)
+Lead Software Engineer @ Zalo PC   full-time · PC message backup → mobile restore · 18M+ MAU desktop client
+Co-founder @ BonBon Mobility       $500K pre-seed led by Tasco · VETC Mini App (4.3M-user ecosystem)
 Tech Lead @ LogiUP                 Multi-tenant logistics SaaS · 9 repos · team of 4
 React / Electron / Node.js / Go / NestJS / Kotlin / Kubernetes
 ```
@@ -103,3 +103,5 @@ Build and static export:
 ```bash
 npm run build
 ```
+
+Responsive image variants: `npm run assets:icdn-variants` writes 480w and 800w WebP copies into the sibling `dom-pub` checkout (`DOM_PUB_DIR` overrides the path) and records them in `config/icdn-responsive-variants.json`. Publish the dom-pub variants first, then commit the manifest.

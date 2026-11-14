@@ -1,178 +1,226 @@
-'use client'
-import { LuMapPin, LuCalendarDays, LuExternalLink } from 'react-icons/lu'
-import { useTranslations } from 'next-intl'
-import { ExperienceItemType, JobType } from '@/app/app.type'
-import { Stagger, StaggerItem } from '@/components/motion/Reveal'
-import { track } from '@/lib/analytics'
+"use client";
+import { useRef, type ReactNode } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { LuArrowUpRight } from "react-icons/lu";
+import type { ExperienceRole } from "@/app/app.type";
+import { track } from "@/lib/analytics";
+import CareerGraph, { type NodeKind } from "./CareerGraph";
 
-type Props = { data: ExperienceItemType[] }
+type Props = { data: ExperienceRole[] };
 
-type ExperienceTranslator = {
-  raw: (key: string) => unknown
-}
+const bold = (chunks: ReactNode) => <b>{chunks}</b>;
 
-const FEATURED_TECHS = new Set([
-  'react',
-  'reactjs',
-  'react.js',
-  'react native',
-  'next.js',
-  'nextjs',
-  'node.js',
-  'nodejs',
-  'node',
-  'typescript',
-  'javascript',
-  'java',
-  'spring framework',
-  'spring boot',
-  'angular',
-  'kotlin',
-  'flutter',
-  'docker',
-  '.net',
-  'electron',
-  'aks/fke/k3s/eks',
-  'kubernetes',
-])
+// The current role shows three contributions, past roles two; the rest sit behind "All contributions".
+const topCount = (role: ExperienceRole): number => (role.end ? 2 : 3);
+// The boomerang: Zalo PC forks to NDSVN and merges back as Lead.
+const NODE: Record<string, NodeKind> = {
+  zaloLead: "merge",
+  ndsvn: "branch",
+  zaloSenior: "fork"
+};
 
-function isFeatured(tech: string): boolean {
-  return FEATURED_TECHS.has(tech.trim().toLowerCase())
-}
+// Fixed tables, not Intl: build-time Node ICU and visitor browsers disagree on short months
+// (e.g. fr "sept."), which would break hydration of the <time> text.
+const MONTHS: Record<string, string[]> = {
+  en: [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ],
+  fr: [
+    "janv.",
+    "févr.",
+    "mars",
+    "avr.",
+    "mai",
+    "juin",
+    "juil.",
+    "août",
+    "sept.",
+    "oct.",
+    "nov.",
+    "déc."
+  ]
+};
 
-const COMPANY_KEY_MAP: Record<string, string> = {
-  'NDSVN JSC': 'ndsvn',
-  'Zalo PC - VNG Corp': 'zalo',
-  'PrimeData VN': 'primedata',
-  'Splus-Software JSC': 'splus',
-  'Propman Guru': 'propman',
-}
-
-const ZALO_SUMMARY_KEYS = ['summary1', 'summary2'] as const
-
-function getSummaryKeys(companyKey: string, count: number): string[] {
-  if (companyKey === 'zalo') return ZALO_SUMMARY_KEYS.slice(0, count) as unknown as string[]
-  if (count === 0) return []
-  return ['summary']
-}
-
-function getLocalizedSummaries(
-  t: ExperienceTranslator,
-  companyKey: string,
-  job: JobType,
-): string[] {
-  if (!companyKey) return job.summaries
-  if (job.contentKey) {
-    return t.raw(`${companyKey}.${job.contentKey}.summaries`) as string[]
+function formatMonth(ym: string, locale: string): string {
+  const [year, month] = ym.split("-").map(Number);
+  switch (locale) {
+    case "vi":
+      return `${String(month).padStart(2, "0")}/${year}`;
+    case "ja":
+    case "zh":
+      return `${year}年${month}月`;
+    case "ko":
+      return `${year}년 ${month}월`;
+    default:
+      return `${(MONTHS[locale] ?? MONTHS["en"])[month - 1]} ${year}`;
   }
-  return getSummaryKeys(companyKey, job.summaries.length).map(
-    (summaryKey) => t.raw(`${companyKey}.${summaryKey}`) as string,
-  )
+}
+
+type DatesProps = {
+  role: ExperienceRole;
+  locale: string;
+  now: string;
+  node: NodeKind;
+};
+
+function Dates({ role, locale, now, node }: DatesProps) {
+  return (
+    <p className="xp-dates" data-node={node}>
+      <time dateTime={role.start}>{formatMonth(role.start, locale)}</time>
+      {" – "}
+      {role.end ? (
+        <time dateTime={role.end}>{formatMonth(role.end, locale)}</time>
+      ) : (
+        now
+      )}
+    </p>
+  );
 }
 
 export default function Experience({ data }: Props) {
-  const t = useTranslations('Experience')
+  const t = useTranslations("Experience");
+  const locale = useLocale();
+  const listRef = useRef<HTMLOListElement>(null);
+  const now = t("labels.now");
+  const main = data.filter((r) => !r.earlier);
+  const earlier = data.filter((r) => r.earlier);
 
   return (
-    <Stagger as="ol" className="timeline" stagger={0.1}>
-      {data.map((ex, idx) => {
-        const companyKey = COMPANY_KEY_MAP[ex.company]
-        return (
-          <StaggerItem as="li" key={ex.company} className="timeline-item">
-            <div className="timeline-marker" aria-hidden="true">
-              <span className="timeline-dot" />
-              {idx < data.length - 1 && <span className="timeline-line" />}
-            </div>
-
-            <div className="timeline-content">
-              <header className="timeline-head">
-                <h3 className="timeline-company">{ex.company}</h3>
-                <span className="meta-tag" title={t('labels.location')}>
-                  <LuMapPin size={12} aria-hidden="true" />
-                  <span>{ex.location}</span>
-                </span>
-              </header>
-
-              {ex.jobs.map((job: JobType) => {
-                const summaries = getLocalizedSummaries(t, companyKey, job)
-                const contributionKey = job.contentKey
-                  ? `${companyKey}.${job.contentKey}.contributions`
-                  : `${companyKey}.contributions`
-                const contributions = companyKey
-                  ? (t.raw(contributionKey) as string[])
-                  : job.key_contribution
-                return (
-                  <article key={`${job.title}-${job.duration}`} className="role">
-                    <header className="role-head">
-                      <h4 className="role-title">{job.title}</h4>
-                      <span className="meta-tag meta-tag-mono" title={t('labels.duration')}>
-                        <LuCalendarDays size={12} aria-hidden="true" />
-                        <span>{job.duration}</span>
-                      </span>
-                    </header>
-
-                    {summaries.map((summary) => (
-                      <p
-                        key={summary}
-                        className="role-summary"
-                        dangerouslySetInnerHTML={{ __html: summary }}
-                      />
-                    ))}
-
-                    {job.evidence && (
-                      <div className="role-evidence">
-                        <span className="role-evidence-label">{t('labels.publicEvidence')}</span>
-                        <a
-                          href={job.evidence.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() =>
-                            track(
-                              'cv_experience_evidence_click',
-                              {
-                                company: ex.company,
-                                role: job.title,
-                                publisher: job.evidence?.publisher,
-                                published_at: job.evidence?.publishedAt,
-                              },
-                              { beacon: true },
-                            )
-                          }
-                        >
-                          {t('labels.readCoverage', { publisher: job.evidence.publisher })}
-                          <LuExternalLink size={13} aria-hidden="true" />
-                        </a>
-                      </div>
-                    )}
-
-                    <p className="role-section-label">{t('labels.keyContributions')}</p>
-                    <ul className="role-contrib">
-                      {contributions.map((item, i) => (
-                        <li
-                          key={i}
-                          className="role-contrib-item"
-                          dangerouslySetInnerHTML={{ __html: item }}
+    <div className="xp-wrap">
+      <CareerGraph
+        listRef={listRef}
+        forkNote={t("labels.forkNote")}
+        mergeNote={t("labels.mergeNote")}
+      />
+      <ol ref={listRef} className="xp">
+        {main.map((role) => {
+          // Precompiled messages have no arrays or t.raw: contributions are keyed "0", "1", … (MEP-71).
+          const items: ReactNode[] = [];
+          while (t.has(`roles.${role.id}.contributions.${items.length}`))
+            items.push(
+              t.rich(`roles.${role.id}.contributions.${items.length}`, {
+                b: bold
+              })
+            );
+          const top = topCount(role);
+          const rest = items.slice(top);
+          return (
+            <li key={role.id} className="xp-row" id={`xp-${role.id}`}>
+              <Dates
+                role={role}
+                locale={locale}
+                now={now}
+                node={NODE[role.id] ?? "commit"}
+              />
+              <div className="xp-body">
+                <h3 className="xp-title">{role.title}</h3>
+                <p className="xp-org">
+                  <span className="xp-company">{role.company}</span>
+                  <span className="xp-env">{t(`env.${role.env}`)}</span>
+                </p>
+                <p className="xp-scope">{t(`roles.${role.id}.scope`)}</p>
+                <ul className="xp-list">
+                  {items.slice(0, top).map((item, i) => (
+                    <li key={i}>
+                      <span>{item}</span>
+                      {i === 0 && role.evidence && (
+                        <Evidence
+                          role={role}
+                          label={t("labels.readCoverage", {
+                            publisher: role.evidence.publisher
+                          })}
                         />
-                      ))}
-                    </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+                <div className="xp-foot">
+                  {rest.length > 0 && (
+                    <details
+                      className="xp-more"
+                      onToggle={(e) => {
+                        if (e.currentTarget.open)
+                          track("cv_experience_expand", { role: role.id });
+                      }}
+                    >
+                      <summary>
+                        {t("labels.allContributions", { count: items.length })}
+                      </summary>
+                      <ul className="xp-list">
+                        {rest.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
+                  <p className="xp-tech">{role.techs.join(" · ")}</p>
+                </div>
+              </div>
+            </li>
+          );
+        })}
 
-                    <div className="tech-row" aria-label={t('labels.keyTechnologies')}>
-                      {job.key_techs.map((tech) => (
-                        <span
-                          key={tech}
-                          className={`tech-chip${isFeatured(tech) ? ' tech-chip-featured' : ''}`}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </article>
-                )
-              })}
+        {earlier.length > 0 && (
+          <li className="xp-row is-group">
+            <h3 className="xp-group">{t("labels.earlier")}</h3>
+          </li>
+        )}
+        {earlier.map((role) => (
+          <li key={role.id} className="xp-row is-earlier" id={`xp-${role.id}`}>
+            <Dates role={role} locale={locale} now={now} node="leaf" />
+            <div className="xp-body">
+              <h4 className="xp-title">{role.title}</h4>
+              <p className="xp-org">
+                <span className="xp-company">{role.company}</span>
+                <span className="xp-env">{t(`env.${role.env}`)}</span>
+              </p>
+              <p className="xp-scope">{t(`roles.${role.id}.line`)}</p>
             </div>
-          </StaggerItem>
-        )
-      })}
-    </Stagger>
-  )
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+function Evidence({ role, label }: { role: ExperienceRole; label: string }) {
+  const evidence = role.evidence;
+  if (!evidence) return null;
+  return (
+    <>
+      {" "}
+      <a
+        className="xp-evidence"
+        href={evidence.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() =>
+          track(
+            "cv_experience_evidence_click",
+            {
+              company: role.company,
+              role: role.title,
+              publisher: evidence.publisher,
+              published_at: evidence.publishedAt
+            },
+            { beacon: true }
+          )
+        }
+      >
+        {label}
+        <LuArrowUpRight size={13} aria-hidden="true" />
+      </a>
+    </>
+  );
 }

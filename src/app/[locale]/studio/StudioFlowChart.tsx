@@ -598,6 +598,13 @@ export default function StudioFlowChart({
         onDeleteNode={handleDeleteSelectedNode}
         onToggleFocusMode={() => handleToggleFocusMode()}
         onToggleFullscreen={toggleFullscreen}
+        onOptionsToggle={(openNext) =>
+          track("studio_flow_options_toggle", {
+            flow_id: flow.id,
+            view_id: selectedView?.id,
+            open_next: openNext
+          })
+        }
       />
 
       <div className="flow-canvas-shell">

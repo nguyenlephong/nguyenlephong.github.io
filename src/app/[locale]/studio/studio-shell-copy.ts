@@ -21,6 +21,8 @@ export type StudioRouteActivationSource =
   | "sidebar"
   | "command"
   | "route_actions"
+  // Welcome module shortcuts reported "route_actions" until wave 3; dashboards must OR both values for that history.
+  | "studio_module_open"
   | "browser_history"
   | "unknown";
 
@@ -59,7 +61,6 @@ export type StudioUiCopy = {
   openGithubProfile: string;
   openAccountMenu: string;
   routeKicker: {
-    legacy: string;
     studio: string;
   };
   routeMetricsLabel: string;
@@ -68,12 +69,6 @@ export type StudioUiCopy = {
     loadErrorTitle: string;
     loadErrorDetail: string;
     reload: string;
-  };
-  dashboard: {
-    workstreamCount: (count: number) => string;
-    emptyTitle: string;
-    emptyDescription: string;
-    clearFilters: string;
   };
   status: Record<StudioNoteStatus, string>;
   categories: Record<StudioAiSkill["category"] | "all", string>;
@@ -105,6 +100,7 @@ export type StudioUiCopy = {
     exampleView: string;
     exampleSelectorLabel: string;
     boardTools: string;
+    diagramOptions: string;
     viewNotes: string;
     useWhen: string;
     outcome: string;
@@ -251,16 +247,14 @@ export type StudioUiCopy = {
 
 export type StudioUiCopyData = Omit<
   StudioUiCopy,
-  "dashboard" | "flows" | "aiSkills" | "checklists"
+  "flows" | "aiSkills" | "checklists"
 > & {
-  dashboard: Omit<StudioUiCopy["dashboard"], "workstreamCount">;
   flows: Omit<StudioUiCopy["flows"], "trailMore">;
   aiSkills: Omit<StudioUiCopy["aiSkills"], "skillCountLabel">;
   checklists: Omit<StudioUiCopy["checklists"], "structureDetail">;
 };
 
 export type StudioUiCopyFormatters = {
-  workstreamCount: StudioUiCopy["dashboard"]["workstreamCount"];
   trailMore: StudioUiCopy["flows"]["trailMore"];
   skillCountLabel: StudioUiCopy["aiSkills"]["skillCountLabel"];
   structureDetail: StudioUiCopy["checklists"]["structureDetail"];
@@ -272,10 +266,6 @@ export function createStudioUiCopy(
 ): StudioUiCopy {
   return {
     ...data,
-    dashboard: {
-      ...data.dashboard,
-      workstreamCount: formatters.workstreamCount
-    },
     flows: {
       ...data.flows,
       trailMore: formatters.trailMore

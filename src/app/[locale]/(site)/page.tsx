@@ -1,15 +1,18 @@
+import type { Metadata, ResolvingMetadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
 import { getTranslations } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
-import { profileInfo } from '@/app/app.const'
+import { experience } from '@/content/experience'
+import { projects } from '@/content/projects'
 import Hero from '@/components/cv/Hero'
 import Section from '@/components/cv/Section'
 import Summary from '@/components/cv/Summary'
 import Experience from '@/components/cv/Experience'
 import Projects from '@/components/cv/Projects'
 import ContactCTA from '@/components/cv/ContactCTA'
+import { contact } from '@/content/profile'
 import HomeBackdrop from '@/components/cv/HomeBackdrop'
 import PageViewTracker from '@/components/PageViewTracker'
 import PageTracker from '@/components/analytics/PageTracker'
@@ -17,10 +20,19 @@ import type { Locale } from '@/i18n/routing'
 import {
   buildPersonSchema,
   buildProfilePageSchema,
+  buildWebsiteIdentitySchema,
 } from '@/lib/seo/profile-schema'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
+import { sectionOgImages } from '@/lib/seo/section-og-image'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
+// Cascade order: page shell first, then sections in page order. Only this route uses them.
 import './home.css'
+import '@/components/cv/hero.css'
+import '@/components/cv/summary.css'
+import '@/components/cv/capability-map.css'
+import '@/components/cv/experience.css'
+import '@/components/cv/projects.css'
+import '@/components/cv/contact.css'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -29,6 +41,24 @@ type Props = {
 export function generateStaticParams() {
   if (process.env.NODE_ENV === 'development') return []
   return routing.locales.map((locale) => ({ locale }))
+}
+
+// The locale layout owns the home metadata. This only swaps the profile card's English file
+// alt for one in the page's language (MEP-64); the rest of openGraph is inherited as is.
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const { locale } = await params
+  if (!hasLocale(routing.locales, locale)) notFound()
+  const seoT = await getTranslations({ locale, namespace: 'SEO.home' })
+  const { openGraph } = await parent
+  return {
+    openGraph: {
+      ...(openGraph as Metadata['openGraph']),
+      images: sectionOgImages('/[locale]/(site)', { locale }, seoT('title')),
+    },
+  }
 }
 
 export default async function MainPage({ params }: Props) {
@@ -54,34 +84,30 @@ export default async function MainPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(profilePageSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildWebsiteIdentitySchema()) }}
+      />
       <PageViewTracker />
       <PageTracker page="home" eventName="page_view" section="cv_main" />
       <ScopedIntlProvider scope="home">
         <div className="container">
           <Hero />
 
-          <Section id="about" eyebrow={t('aboutEyebrow')} title={t('aboutTitle')}>
+          <Section id="about" title={t('aboutTitle')}>
             <Summary />
           </Section>
 
-          <Section
-            id="experience"
-            eyebrow={t('experienceEyebrow')}
-            title={t('experienceTitle')}
-          >
-            <Experience data={profileInfo.experience} />
+          <Section id="experience" title={t('experienceTitle')}>
+            <Experience data={experience} />
           </Section>
 
-          <Section
-            id="projects"
-            eyebrow={t('projectsEyebrow')}
-            title={t('projectsTitle')}
-          >
-            <Projects data={profileInfo.projects} />
+          <Section id="projects" title={t('projectsTitle')}>
+            <Projects data={projects} />
           </Section>
 
           <div id="contact">
-            <ContactCTA />
+            <ContactCTA phone={contact.phone} />
           </div>
         </div>
       </ScopedIntlProvider>

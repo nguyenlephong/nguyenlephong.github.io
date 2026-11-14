@@ -730,3 +730,28 @@ test("Studio dependency graph rejects transitive navigation and approved public 
     );
   }
 });
+
+test("message catalogs stay precompilable: plugin on, no arrays, no t.raw (MEP-71)", async () => {
+  const { readdirSync } = await import("node:fs");
+  const config = readFileSync("next.config.mjs", "utf8");
+  assert.match(
+    config,
+    /messages: \{ path: '\.\/messages', format: 'json', precompile: true \}/
+  );
+  // The catalog loader rejects arrays; a list is keyed "0", "1", … and read with t.has.
+  const arrays = [];
+  const walk = (value, path) => {
+    if (Array.isArray(value)) arrays.push(path);
+    else if (value && typeof value === "object")
+      for (const [key, nested] of Object.entries(value)) walk(nested, `${path}.${key}`);
+  };
+  for (const locale of ["en", "vi", "zh", "ja", "ko", "fr"]) {
+    walk(JSON.parse(readFileSync(`messages/${locale}.json`, "utf8")), locale);
+  }
+  assert.deepEqual(arrays, []);
+  // Precompiled messages make t.raw return the compiled form, not the source string.
+  const rawCalls = readdirSync("src", { recursive: true })
+    .filter((file) => /\.(ts|tsx)$/.test(file))
+    .filter((file) => /\b\w+\.raw\(/.test(readFileSync(`src/${file}`, "utf8")));
+  assert.deepEqual(rawCalls, []);
+});

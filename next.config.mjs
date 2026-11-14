@@ -6,7 +6,14 @@ const { version: appVersion } = JSON.parse(
   readFileSync(new URL('./app-version.json', import.meta.url), 'utf-8'),
 )
 
-const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
+// Precompile catalogs at build time so the ICU parser (intl-messageformat) stays out of the
+// client bundle (MEP-71). Catalogs must stay plain ICU strings: no arrays, no t.raw.
+const withNextIntl = createNextIntlPlugin({
+  requestConfig: './src/i18n/request.ts',
+  experimental: {
+    messages: { path: './messages', format: 'json', precompile: true },
+  },
+})
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 /** @type {import('next').NextConfig} */
@@ -15,6 +22,10 @@ const nextConfig = {
   // during `next dev` makes concurrent first-route compilation race while
   // updating prerender-manifest.json in Next 16.
   output: isDevelopment ? undefined : "export",
+  // Dev only: lets one named tunnel host (e.g. a Cloudflare quick tunnel) load dev
+  // chunks and the HMR socket for live phone previews. Pinned to the exact host,
+  // never a wildcard. No effect on the static export.
+  allowedDevOrigins: process.env.DEV_TUNNEL_HOST ? [process.env.DEV_TUNNEL_HOST] : [],
   turbopack: {},
   // Tree-shake icon + animation libraries with deep barrel exports so we
   // only ship the few we actually use. Saves tens of KB and reduces TBT.
@@ -45,6 +56,8 @@ const nextConfig = {
   images: {unoptimized: true},
   env: {
     NEXT_PUBLIC_APP_VERSION: appVersion,
+    // Inlined at build time so the off branch in the site layout is tree-shaken (MEP-66).
+    GOOGLE_THIRD_PARTY: process.env.GOOGLE_THIRD_PARTY === 'on' ? 'on' : 'off',
   },
 };
 

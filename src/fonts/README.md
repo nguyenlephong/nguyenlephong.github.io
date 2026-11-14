@@ -17,3 +17,13 @@ pyftsubset inter-wght.ttf --flavor=woff2 --layout-features+=tnum,case \
 
 The `Inter Fallback` metric overrides in `document.css` were measured against Arial.
 Recompute them if the font file changes.
+
+`JetBrainsMono-latin-vi.woff2` is JetBrains Mono 2.211 (SIL OFL 1.1, see `JetBrainsMono-OFL.txt`)
+from `google/fonts` `ofl/jetbrainsmono/JetBrainsMono[wght].ttf`, with `wght` limited to 400-700
+(the weights mono labels use) and the same glyph set as Inter:
+
+```sh
+fonttools varLib.instancer 'JetBrainsMono[wght].ttf' wght=400:700 -o jbm-wght.ttf
+pyftsubset jbm-wght.ttf --flavor=woff2 --layout-features='kern,mark,mkmk,ccmp,locl,tnum,case' \
+  --unicodes="<same list as Inter above>" --output-file=JetBrainsMono-latin-vi.woff2
+```

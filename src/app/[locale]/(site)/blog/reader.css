@@ -1,5 +1,7 @@
 /* Reader background materials. These variables are consumed by article pages,
-   keeping the rest of the site on the active light/dark theme. */
+   keeping the rest of the site on the active light/dark theme. Each
+   --reader-fg-subtle holds 4.5:1 on its own --reader-bg and --reader-bg-muted
+   (tests/reader-contrast.test.mjs). */
 :root,
 html[data-reading-background='plain'] {
   --reader-bg: oklch(98% 0.003 250);
@@ -7,7 +9,7 @@ html[data-reading-background='plain'] {
   --reader-bg-muted: oklch(95% 0.005 250);
   --reader-fg: oklch(20% 0.02 260);
   --reader-fg-muted: oklch(45% 0.015 260);
-  --reader-fg-subtle: oklch(58% 0.012 260);
+  --reader-fg-subtle: oklch(52% 0.012 260);
   --reader-border: oklch(90% 0.008 260);
   --reader-border-strong: oklch(82% 0.01 260);
   --reader-texture:
@@ -24,7 +26,7 @@ html[data-reading-background='plain'] {
   --reader-bg-muted: oklch(20% 0.015 260);
   --reader-fg: oklch(95% 0.005 250);
   --reader-fg-muted: oklch(72% 0.015 260);
-  --reader-fg-subtle: oklch(58% 0.015 260);
+  --reader-fg-subtle: oklch(61% 0.015 260);
   --reader-border: oklch(28% 0.01 260);
   --reader-border-strong: oklch(36% 0.012 260);
   --reader-texture:
@@ -41,7 +43,7 @@ html[data-reading-background='parchment'] {
   --reader-bg-muted: oklch(91.6% 0.041 80);
   --reader-fg: oklch(24% 0.028 62);
   --reader-fg-muted: oklch(42% 0.032 64);
-  --reader-fg-subtle: oklch(55% 0.03 66);
+  --reader-fg-subtle: oklch(49.5% 0.03 66);
   --reader-border: oklch(84% 0.034 76);
   --reader-border-strong: oklch(74% 0.04 76);
   --reader-texture:
@@ -58,7 +60,7 @@ html[data-reading-background='linen'] {
   --reader-bg-muted: oklch(92.8% 0.018 92);
   --reader-fg: oklch(24% 0.022 70);
   --reader-fg-muted: oklch(43% 0.018 72);
-  --reader-fg-subtle: oklch(57% 0.016 74);
+  --reader-fg-subtle: oklch(50.5% 0.016 74);
   --reader-border: oklch(85% 0.018 82);
   --reader-border-strong: oklch(76% 0.022 80);
   --reader-texture:
@@ -75,7 +77,7 @@ html[data-reading-background='sepia'] {
   --reader-bg-muted: oklch(86.5% 0.052 72);
   --reader-fg: oklch(22% 0.034 54);
   --reader-fg-muted: oklch(39% 0.034 56);
-  --reader-fg-subtle: oklch(53% 0.032 58);
+  --reader-fg-subtle: oklch(46% 0.032 58);
   --reader-border: oklch(78% 0.044 70);
   --reader-border-strong: oklch(68% 0.05 68);
   --reader-texture:
@@ -90,7 +92,7 @@ html[data-reading-background='sage'] {
   --reader-bg-muted: oklch(89.8% 0.034 132);
   --reader-fg: oklch(23% 0.028 145);
   --reader-fg-muted: oklch(40% 0.03 145);
-  --reader-fg-subtle: oklch(54% 0.028 145);
+  --reader-fg-subtle: oklch(48.5% 0.028 145);
   --reader-border: oklch(80% 0.038 132);
   --reader-border-strong: oklch(70% 0.044 132);
   --reader-texture:
@@ -106,7 +108,7 @@ html[data-reading-background='mist'] {
   --reader-bg-muted: oklch(90.8% 0.024 225);
   --reader-fg: oklch(23% 0.024 244);
   --reader-fg-muted: oklch(42% 0.024 240);
-  --reader-fg-subtle: oklch(56% 0.022 238);
+  --reader-fg-subtle: oklch(49% 0.022 238);
   --reader-border: oklch(82% 0.028 224);
   --reader-border-strong: oklch(72% 0.034 224);
   --reader-texture:
@@ -123,7 +125,7 @@ html[data-reading-background='night'] {
   --reader-bg-muted: oklch(23% 0.022 74);
   --reader-fg: oklch(91% 0.024 86);
   --reader-fg-muted: oklch(74% 0.024 84);
-  --reader-fg-subtle: oklch(60% 0.022 82);
+  --reader-fg-subtle: oklch(62.5% 0.022 82);
   --reader-border: oklch(32% 0.026 74);
   --reader-border-strong: oklch(42% 0.03 74);
   --reader-texture:
@@ -135,119 +137,88 @@ html[data-reading-background='night'] {
   --reader-grain-blend: screen;
 }
 
-/* Reader controls are route-owned by Blog and Notes article layouts. */
+/* Reader cluster, owned by the Blog and Notes article pages: one column of
+   44px discs on one right edge. Back to top (with reading progress) sits above
+   the "more" button, which opens one sheet for share and reading options. */
 .blog-reader-tools {
   --reader-tool-accent: var(--blog-accent, var(--accent));
   --reader-tool-accent-soft: var(
     --blog-accent-soft,
     color-mix(in oklab, var(--reader-tool-accent) 14%, transparent)
   );
+  --reader-tool-size: 2.75rem;
+  --reader-tool-edge: 1rem;
+  --reader-tool-surface: color-mix(in oklab, var(--bg) 88%, transparent);
+  --reader-tool-border: color-mix(in oklab, var(--border) 82%, transparent);
+  --reader-tool-shadow: 0 14px 34px -24px rgba(0, 0, 0, 0.38);
   position: fixed;
-  right: 1.1rem;
-  bottom: 4.55rem;
+  right: var(--reader-tool-edge);
+  bottom: var(--reader-tool-edge);
   z-index: 61;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.45rem;
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
+  /* Hidden controls leave the tab order. visibility is discrete: it flips to
+     visible at the start of a fade in and to hidden at the end of a fade out. */
+  visibility: hidden;
   transition:
     opacity 0.25s ease,
-    transform 0.25s ease;
+    transform 0.25s ease,
+    visibility 0.25s;
 }
 .blog-reader-tools--visible {
   opacity: 1;
   transform: none;
   pointer-events: auto;
+  visibility: visible;
 }
+/* Step aside while the site footer is on screen so nothing sits on its links. */
+.blog-reader-tools.blog-reader-tools--at-footer {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+/* Where the discs would sit on the text column (<900px), they tuck away while
+   the reader scrolls down and return on scroll up. They stay focusable, and
+   keyboard focus brings them back. */
+@media (max-width: 899px) {
+  .blog-reader-tools--tucked:not(.blog-reader-tools--expanded):not(:focus-within) {
+    opacity: 0;
+    transform: translateY(calc(100% + var(--reader-tool-edge)));
+    pointer-events: none;
+  }
+}
+
+.blog-reader-tools__dock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.blog-reader-tools__top,
 .blog-reader-tools__trigger {
   position: relative;
-  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.45rem;
-  height: 2.45rem;
+  width: var(--reader-tool-size);
+  height: var(--reader-tool-size);
   padding: 0;
-  border: 1px solid color-mix(in oklab, var(--border) 82%, transparent);
+  border: 1px solid var(--reader-tool-border);
   border-radius: 999px;
-  overflow: visible;
-  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  background: var(--reader-tool-surface);
   color: var(--fg-muted);
-  box-shadow: 0 14px 34px -24px rgba(0, 0, 0, 0.38);
+  box-shadow: var(--reader-tool-shadow);
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
   cursor: pointer;
   transition:
     background 0.16s ease,
     border-color 0.16s ease,
-    color 0.16s ease,
-    transform 0.16s ease;
+    color 0.16s ease;
 }
-.blog-reader-tools__trigger::before,
-.blog-reader-tools__trigger::after {
-  content: "";
-  position: absolute;
-  border-radius: inherit;
-  pointer-events: none;
-}
-.blog-reader-tools__trigger::before {
-  inset: -0.68rem;
-  z-index: -2;
-  background:
-    radial-gradient(
-      circle at 24% 18%,
-      color-mix(in oklab, #ff5ac8 56%, transparent) 0 0.34rem,
-      transparent 0.86rem
-    ),
-    radial-gradient(
-      circle at 76% 24%,
-      color-mix(in oklab, #f9c74f 48%, transparent) 0 0.28rem,
-      transparent 0.78rem
-    ),
-    radial-gradient(
-      circle at 84% 78%,
-      color-mix(in oklab, #37d5ff 55%, transparent) 0 0.32rem,
-      transparent 0.86rem
-    ),
-    radial-gradient(
-      circle at 20% 82%,
-      color-mix(in oklab, #9b7cff 52%, transparent) 0 0.3rem,
-      transparent 0.82rem
-    );
-  filter: blur(10px) saturate(1.35);
-  opacity: 0.42;
-  transform: scale(0.92);
-  animation: reader-tool-aurora-pulse 4.8s ease-in-out infinite;
-}
-.blog-reader-tools__trigger::after {
-  inset: -0.18rem;
-  z-index: -1;
-  padding: 1px;
-  background:
-    conic-gradient(
-      from var(--apple-rim-angle, 120deg),
-      #ff5ac8,
-      #f9c74f 22%,
-      #37d5ff 46%,
-      #9b7cff 68%,
-      #ff5ac8 100%
-    );
-  filter: saturate(1.32);
-  opacity: 0.48;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: reader-tool-aurora-rim 5.4s linear infinite;
-}
-.blog-reader-tools__trigger svg {
-  position: relative;
-  z-index: 1;
-}
+.blog-reader-tools__top:hover,
+.blog-reader-tools__top:focus-visible,
 .blog-reader-tools__trigger:hover,
 .blog-reader-tools__trigger:focus-visible,
 .blog-reader-tools--expanded .blog-reader-tools__trigger {
@@ -255,71 +226,106 @@ html[data-reading-background='night'] {
   background: color-mix(in oklab, var(--reader-tool-accent-soft) 64%, var(--bg));
   color: var(--reader-tool-accent);
 }
-.blog-reader-tools__trigger:hover::before,
-.blog-reader-tools__trigger:focus-visible::before,
-.blog-reader-tools--expanded .blog-reader-tools__trigger::before {
-  opacity: 0.72;
-}
-.blog-reader-tools__trigger:hover::after,
-.blog-reader-tools__trigger:focus-visible::after,
-.blog-reader-tools--expanded .blog-reader-tools__trigger::after {
-  opacity: 0.82;
-}
+.blog-reader-tools__top:focus-visible,
 .blog-reader-tools__trigger:focus-visible {
   outline: 2px solid var(--reader-tool-accent);
   outline-offset: 2px;
 }
+.blog-reader-tools__top:active,
+.blog-reader-tools__trigger:active {
+  background: color-mix(in oklab, var(--reader-tool-accent-soft) 90%, var(--bg));
+}
+
+/* Reading progress drawn around back to top (stroke offset, not transform). */
+.blog-reader-tools__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  rotate: -90deg;
+  pointer-events: none;
+}
+.blog-reader-tools__ring circle {
+  fill: none;
+  stroke-width: 2;
+}
+.blog-reader-tools__ring-track {
+  stroke: color-mix(in oklab, var(--reader-tool-accent) 14%, transparent);
+}
+.blog-reader-tools__ring-fill {
+  stroke: var(--reader-tool-accent);
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: calc(100 - var(--reader-progress, 0) * 100);
+}
+
+/* The sheet opens above the column, right edges aligned. */
 .blog-reader-tools__controls {
   position: absolute;
   right: 0;
-  bottom: calc(100% + 0.55rem);
-  display: inline-flex;
+  bottom: calc(100% + 0.6rem);
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.35rem;
-  border: 1px solid color-mix(in oklab, var(--border) 82%, transparent);
-  border-radius: 999px;
-  background: color-mix(in oklab, var(--bg) 88%, transparent);
-  box-shadow: 0 14px 34px -24px rgba(0, 0, 0, 0.38);
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  animation: reader-tools-pop 0.16s ease-out;
+  gap: 0.7rem;
+  width: max-content;
+  max-width: calc(100vw - 2 * var(--reader-tool-edge));
+  padding: 0.7rem;
+  border: 1px solid var(--reader-tool-border);
+  border-radius: 1.15rem;
+  /* Solid: body text must not show through the options. */
+  background: var(--bg);
+  box-shadow: 0 22px 44px -26px rgba(0, 0, 0, 0.45);
+  animation: reader-sheet-in 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   transform-origin: bottom right;
+}
+/* The divider belongs to the share group, so it leaves with it at ≥1280px. */
+.blog-reader-tools__group--share {
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--reader-tool-border);
+}
+.blog-reader-tools__heading {
+  margin: 0 0 0.35rem 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+.blog-reader-tools__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
 }
 .blog-reader-tools__btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: var(--reader-tool-size);
+  height: var(--reader-tool-size);
   padding: 0;
   border: 0;
   border-radius: 999px;
   background: transparent;
   color: var(--fg-muted);
+  text-decoration: none;
   cursor: pointer;
   transition:
     background 0.16s ease,
-    color 0.16s ease,
-    transform 0.16s ease;
+    color 0.16s ease;
 }
 .blog-reader-tools__btn:hover:not(:disabled),
 .blog-reader-tools__btn:focus-visible:not(:disabled) {
   background: var(--reader-tool-accent-soft);
   color: var(--reader-tool-accent);
-  transform: translateX(-1px);
+}
+.blog-reader-tools__btn:focus-visible {
+  outline: 2px solid var(--reader-tool-accent);
+  outline-offset: 1px;
 }
 .blog-reader-tools__btn:disabled {
   color: var(--fg-subtle);
   cursor: default;
   opacity: 0.42;
-}
-.blog-reader-tools__divider {
-  width: 1.25rem;
-  height: 1px;
-  margin: 0.1rem 0;
-  background: var(--border);
 }
 .blog-reader-tools__item {
   display: inline-flex;
@@ -327,8 +333,8 @@ html[data-reading-background='night'] {
 .blog-reader-tools .font-switcher__trigger,
 .blog-reader-tools .reading-background-switcher__trigger,
 .blog-reader-tools .locale-menu-trigger {
-  width: 2rem;
-  height: 2rem;
+  width: var(--reader-tool-size);
+  height: var(--reader-tool-size);
   justify-content: center;
   padding: 0;
   border-color: transparent;
@@ -363,77 +369,49 @@ html[data-reading-background='night'] {
 .blog-reader-tools .locale-menu.is-open .locale-menu-list {
   transform: translateY(0) scale(1);
 }
+.blog-reader-tools .blog-share-fallback {
+  max-width: 15.5rem;
+  margin-top: 0.5rem;
+}
 
-@keyframes reader-tools-pop {
+@keyframes reader-sheet-in {
   from {
     opacity: 0;
-    transform: translateY(8px) scale(0.96);
+    transform: translateY(8px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: none;
   }
 }
-
-@property --apple-rim-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 170deg;
-}
-
-@keyframes reader-tool-aurora-pulse {
-  0%,
-  100% {
-    opacity: 0.34;
-    transform: translate3d(0, 0, 0) scale(0.9) rotate(0deg);
-  }
-  18% {
-    opacity: 0.68;
-    transform: translate3d(-2px, 1px, 0) scale(1.08) rotate(16deg);
-  }
-  44% {
-    opacity: 0.46;
-    transform: translate3d(2px, -1px, 0) scale(0.98) rotate(84deg);
-  }
-  68% {
-    opacity: 0.76;
-    transform: translate3d(1px, 2px, 0) scale(1.12) rotate(152deg);
-  }
-}
-
-@keyframes reader-tool-aurora-rim {
-  0% {
-    --apple-rim-angle: 120deg;
-    filter: saturate(1.18);
-  }
-  50% {
-    filter: saturate(1.46);
+@keyframes reader-sheet-fade {
+  from {
+    opacity: 0;
   }
   to {
-    --apple-rim-angle: 480deg;
-    filter: saturate(1.18);
+    opacity: 1;
   }
 }
 
+/* Wide screens: the share rail sits in the left margin, so the sheet keeps
+   only the reading options. */
 @media (min-width: 1280px) {
   .blog-reader-tools {
-    right: max(
+    --reader-tool-edge: max(
       1.4rem,
       calc((100vw - var(--layout-container-max)) / 2 - 1.2rem)
     );
     bottom: 1.4rem;
   }
+  .blog-reader-tools__group--share {
+    display: none;
+  }
+  .blog-reader-tools__controls {
+    max-width: none;
+  }
 }
 
 @media (max-width: 640px) {
-  .blog-reader-tools {
-    right: 0.75rem;
-    bottom: 4.8rem;
-  }
-  .blog-reader-tools__controls {
-    gap: 0.25rem;
-    padding: 0.3rem;
-  }
   .blog-reader-tools .font-switcher__menu,
   .blog-reader-tools .reading-background-switcher__menu {
     right: -2.4rem;
@@ -443,12 +421,16 @@ html[data-reading-background='night'] {
 
 @media (prefers-reduced-motion: reduce) {
   .blog-reader-tools,
+  .blog-reader-tools__top,
   .blog-reader-tools__trigger,
-  .blog-reader-tools__trigger::before,
-  .blog-reader-tools__trigger::after,
-  .blog-reader-tools__controls {
+  .blog-reader-tools__btn {
     transition: none;
-    animation: none;
+  }
+  .blog-reader-tools--tucked:not(.blog-reader-tools--expanded):not(:focus-within) {
+    transform: none;
+  }
+  .blog-reader-tools__controls {
+    animation: reader-sheet-fade 0.12s linear;
   }
 }
 

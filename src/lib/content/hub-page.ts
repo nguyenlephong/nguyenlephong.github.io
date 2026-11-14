@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
-import { SITE, SITE_URL, absoluteUrl } from '@/app/seo.config'
-import { pageCount } from '@/lib/content/pagination'
+import { SITE, SITE_URL } from '@/app/seo.config'
+import { isPagedArchivePath, pageCount } from '@/lib/content/pagination'
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
+import { sectionOgImages } from '@/lib/seo/section-og-image'
 
 export interface ContentHubRoute<Locale extends string, HubId extends string> {
   hubId: HubId
@@ -96,7 +97,11 @@ export function contentHubPageLocales<
   ]
 }
 
-export const CONTENT_HUB_SOCIAL_IMAGE = absoluteUrl('/opengraph-image.png')
+// A hub shares its section's card: series hubs the blog card, topic hubs the notes card (MEP-64).
+const HUB_OG_SEGMENT = {
+  blog: '/[locale]/(site)/blog',
+  notes: '/[locale]/(site)/notes',
+} as const
 
 interface ContentHubMetadataOptions<Locale extends keyof typeof OG_LOCALE_MAP> {
   locale: Locale
@@ -104,6 +109,7 @@ interface ContentHubMetadataOptions<Locale extends keyof typeof OG_LOCALE_MAP> {
   path: string
   title: string
   description: string
+  section: keyof typeof HUB_OG_SEGMENT
 }
 
 export function buildContentHubMetadata<
@@ -114,15 +120,18 @@ export function buildContentHubMetadata<
   path,
   title,
   description,
+  section,
 }: ContentHubMetadataOptions<Locale>): Metadata {
   const canonical = canonicalFor(locale, path)
+  const images = sectionOgImages(HUB_OG_SEGMENT[section], { locale }, title)
+  const paged = isPagedArchivePath(path)
 
   return {
     title,
     description,
     alternates: {
       canonical,
-      languages: localeAlternates(path, availableLocales),
+      ...(paged ? {} : { languages: localeAlternates(path, availableLocales) }),
     },
     openGraph: {
       type: 'website',
@@ -131,17 +140,12 @@ export function buildContentHubMetadata<
       description,
       siteName: SITE.name,
       locale: OG_LOCALE_MAP[locale],
-      alternateLocale: availableLocales
-        .filter((candidate) => candidate !== locale)
-        .map((candidate) => OG_LOCALE_MAP[candidate]),
-      images: [
-        {
-          url: CONTENT_HUB_SOCIAL_IMAGE,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
+      alternateLocale: paged
+        ? []
+        : availableLocales
+            .filter((candidate) => candidate !== locale)
+            .map((candidate) => OG_LOCALE_MAP[candidate]),
+      images,
     },
     twitter: {
       card: 'summary_large_image',
@@ -149,7 +153,6 @@ export function buildContentHubMetadata<
       description,
       site: SITE.twitter,
       creator: SITE.twitter,
-      images: [CONTENT_HUB_SOCIAL_IMAGE],
     },
     robots: {
       index: true,

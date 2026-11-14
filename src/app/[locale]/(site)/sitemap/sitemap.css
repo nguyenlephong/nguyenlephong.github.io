@@ -136,3 +136,22 @@
   font-weight: 600;
   color: var(--fg-muted);
 }
+
+/* MEP-33: a way back up after each long section (the page runs ~17,000 px at 375). */
+.site-index a.site-index__top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  margin-top: 1rem;
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+  text-decoration: none;
+}
+
+.site-index a.site-index__top:hover,
+.site-index a.site-index__top:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}

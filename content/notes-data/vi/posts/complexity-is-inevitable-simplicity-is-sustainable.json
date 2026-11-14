@@ -6,7 +6,7 @@
     "Thiết kế hệ thống",
     "Kiến trúc phần mềm",
     "Sự đơn giản",
-    "Technical Debt",
+    "Nợ kỹ thuật",
     "Triết lý kỹ thuật",
     "Suy ngẫm"
   ],
@@ -34,5 +34,5 @@
     }
   ],
   "cardSummary": "Phức tạp tự lớn lên; đơn giản cần được thiết kế và bảo vệ.",
-  "date": "2026-02-21"
+  "date": "2026-07-20"
 }

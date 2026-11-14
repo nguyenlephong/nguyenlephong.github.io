@@ -5,9 +5,10 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 const scriptDir = path.dirname(fileURLToPath(import.meta.url))
 const projectRoot = path.resolve(scriptDir, '..')
 
-const [{ experience }, { contact, education }, { projects }] = await Promise.all([
+const [{ experience }, { contact, education }, { email, social }, { projects }] = await Promise.all([
   import(pathToFileURL(path.join(projectRoot, 'src/content/experience.ts'))),
   import(pathToFileURL(path.join(projectRoot, 'src/content/profile.ts'))),
+  import(pathToFileURL(path.join(projectRoot, 'src/content/social.ts'))),
   import(pathToFileURL(path.join(projectRoot, 'src/content/projects.ts'))),
 ])
 
@@ -42,34 +43,28 @@ const plainText = (value) =>
     .replace(/\s+/g, ' ')
     .trim()
 
-const contributionSelection = new Map([
-  ['Zalo PC - VNG Corp|Lead Software Engineer', [0, 1, 2]],
-  ['Zalo PC - VNG Corp|Senior Software Engineer', [0, 1, 2]],
-  ['NDSVN JSC|Senior Software Engineer Lead', [0, 1, 2, 7]],
-  ['PrimeData VN|Senior Full-stack Software Engineer', [0, 1, 2]],
-  ['Splus-Software JSC|Java Developer', [0, 2]],
-  ['Propman Guru|Fresher Front-end Developer', [0]],
-])
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const formatMonth = (ym) => {
+  const [year, month] = ym.split('-').map(Number)
+  return `${MONTHS[month - 1]} ${year}`
+}
 
-const roles = experience.flatMap((company) =>
-  company.jobs.map((job) => {
-    const key = `${company.company}|${job.title}`
-    const indexes = contributionSelection.get(key) ?? [0, 1, 2]
-
-    return {
-      company: plainText(company.company),
-      location: plainText(company.location),
-      title: plainText(job.title),
-      duration: plainText(job.duration),
-      summary: job.summaries.map(plainText).join(' '),
-      contributions: indexes
-        .map((index) => job.key_contribution[index])
-        .filter(Boolean)
-        .map(plainText),
-      technologies: job.key_techs.map(plainText),
-    }
-  }),
-)
+// Copy comes from the same messages the site renders (Experience.roles.<id>),
+// so the PDF and the page cannot drift. Top three contributions per role, as on the site.
+const roleCopy = messages.Experience.roles
+const roles = experience.map((role) => {
+  const copy = roleCopy[role.id]
+  if (!copy) throw new Error(`messages/en.json is missing Experience.roles.${role.id}`)
+  return {
+    company: plainText(role.company),
+    location: plainText(role.location),
+    title: plainText(role.title),
+    duration: `${formatMonth(role.start)} - ${role.end ? formatMonth(role.end) : 'Present'}`,
+    summary: role.earlier ? '' : plainText(copy.scope),
+    contributions: (role.earlier ? [copy.line] : Object.values(copy.contributions).slice(0, 3)).map(plainText),
+    technologies: role.techs.map(plainText),
+  }
+})
 
 const selectedProjectIndexes = new Map([
   ['LogiUP - Multi-tenant Logistics SaaS', [0, 1, 2, 3, 4]],
@@ -95,14 +90,15 @@ const data = {
   location: messages.Hero.location,
   contact: {
     phone: plainText(contact.phone),
-    email: plainText(contact.email),
-    github: plainText(contact.github),
-    linkedin: plainText(contact.linkedin),
+    email: plainText(email),
+    github: plainText(social.github),
+    linkedin: plainText(social.linkedin),
     portfolio: 'https://nguyenlephong.github.io',
   },
+  // The homepage lede now sets up the capability map and no longer reads as a résumé summary.
   summary: [
-    plainText(messages.Summary.intro1),
-    plainText(messages.Summary.intro2),
+    'Lead Software Engineer at Zalo PC with 8+ years building production products across large-scale messaging, CDP, fintech, education, and real estate.',
+    'I turn ambiguous problems into dependable systems through hands-on engineering, technical leadership, and end-to-end ownership from architecture to production.',
   ],
   strengths: [
     {

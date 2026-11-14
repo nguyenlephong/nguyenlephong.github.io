@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Keeping Architecture Decisions Small Enough to Revisit",
   "summary": "A practical reflection on making architecture decisions small, explicit, and revisitable so teams can learn without turning every choice into a permanent monument.",
-  "date": "2026-06-14",
+  "date": "2026-10-14",
   "readingMinutes": 5,
   "tags": [
     "Software Architecture",

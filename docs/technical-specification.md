@@ -60,7 +60,7 @@ The locale prefix is always present in public URLs.
 | SEO structured data     | `schema-dts` and manual JSON-LD           | Person, WebSite, Blog, BlogPosting, Article, BreadcrumbList, FAQPage, ImageGallery, ItemList.            |
 | Social images           | `next/og`, `ImageResponse`, Node scripts  | Generates and caches OpenGraph images for profile, blog, notes, apps, and gallery pages.                 |
 | Styling                 | Global CSS, CSS variables, `next/font`    | Theme system, reading backgrounds, responsive layout, typography.                                        |
-| Motion                  | `MotionProvider` on Home and Gallery      | Uses `framer-motion` `LazyMotion` only on the two public surfaces that animate.                         |
+| Motion                  | CSS transitions, `useReducedMotion`       | No `LazyMotion` provider; CV sections read `framer-motion`'s `useReducedMotion` hook only.              |
 | Icons                   | `react-icons`                             | Navigation, cards, controls, app visuals.                                                                |
 | Graph/visual tools      | D3 packages                               | Thought graph components exist in the repo, although no active App Router thoughts route is present now. |
 | Analytics               | PostHog, Google Analytics, Google AdSense | Page views, scroll depth, read time, outbound clicks, app interactions, ads script.                      |
@@ -129,7 +129,7 @@ It does not load Google Analytics or AdSense, mount
 theme, font, and reading-background prepaint scripts on every public route,
 then mounts Google Analytics and AdSense resources, the scoped site message
 provider, header, footer, route progress, and offline support.
-`MotionProvider` is narrower: only the Home and Gallery page entries mount it.
+No route mounts a motion provider; Gallery dropped `framer-motion` entirely.
 `ArticleReaderTools` is mounted only by the nested Blog and Notes article
 layouts. Home, Blog, Notes, and Gallery add a second provider only around their
 message-consuming client subtree. The pathless `(site)` segment does not appear
@@ -147,9 +147,9 @@ Google requests left from the public page.
 | Route                              | File                                               | Rendering notes                                                                           |
 |------------------------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------|
 | `/`                                | `src/app/page.tsx`                                 | Static redirect to `/en` with crawler-readable metadata.                                  |
-| `/{locale}`                        | `src/app/[locale]/(site)/page.tsx`                        | Main CV/profile page, built from `profileInfo` and translated section labels.             |
+| `/{locale}`                        | `src/app/[locale]/(site)/page.tsx`                        | Main CV/profile page, built from `src/content/*` and translated section labels.             |
 | `/{locale}/about`                  | `src/app/[locale]/(site)/about/page.tsx`                  | Translated about sections from `messages`.                                                |
-| `/{locale}/gallery`                | `src/app/[locale]/(site)/gallery/page.tsx`                | Gallery from `profileInfo.gallery`, with ImageGallery JSON-LD.                            |
+| `/{locale}/gallery`                | `src/app/[locale]/(site)/gallery/page.tsx`                | Gallery from `src/content/gallery.ts`, with ImageGallery JSON-LD.                            |
 | `/{locale}/apps`                   | `src/app/[locale]/(site)/apps/page.tsx`                   | Static app showcase from `apps.data.ts`.                                                  |
 | `/{locale}/apps/english`           | `src/app/[locale]/(site)/apps/english/page.tsx`           | Private/noindex E-Slang practice app.                                                     |
 | `/{locale}/blog`                   | `src/app/[locale]/(site)/blog/page.tsx`                   | Blog index with categories, quick filters, and Blog JSON-LD.                              |
@@ -163,6 +163,7 @@ Google requests left from the public page.
 | `/{en\|vi}/notes/topics/{topic}`             | `src/app/[locale]/(site)/notes/topics/[topic]/page.tsx`             | Curated Notes topic page one with static cards and collection schema.                     |
 | `/{en\|vi}/notes/topics/{topic}/page/{page}` | `src/app/[locale]/(site)/notes/topics/[topic]/page/[page]/page.tsx` | Later curated topic pages; `/page/1` is not generated.                                    |
 | `/{locale}/studio`                 | `src/app/[locale]/studio/page.tsx`                 | Shadow-DOM admin workbench, route-isolated from the main profile shell.                   |
+| `/{locale}/studio/{module}`        | `src/app/[locale]/studio/[module]/page.tsx`        | Crawlable Studio module page (`checklists`, `system-maps`, `ai-setup`) that opens the same shell on that module; in-shell navigation pushes these paths. |
 | `/{locale}/notes/{slug}`           | `src/app/[locale]/(site)/notes/[slug]/page.tsx`           | Note article page, source-book card, topic breadcrumb, FAQ support, engagement widgets.   |
 
 Most routes expose `generateStaticParams()`, which lets Next.js enumerate every
@@ -176,14 +177,14 @@ See [C4 Content Component Diagram](./diagrams/c4-component-content.puml).
 
 Profile-style pages use TypeScript modules under `src/content`:
 
-- `profile.ts` for contact, skills, achievements, education, and references
+- `profile.ts` for contact, social links, skills, achievements, and education
 - `experience.ts` for career experience
 - `projects.ts` for selected project history
 - `gallery.ts` for certificates, awards, projects, and activities
 - `media.ts` for video/media data
 
-`src/app/app.const.ts` reassembles those modules into `profileInfo`, preserving
-existing imports across the app.
+Pages import these modules directly. Client components import only what they
+render (`social` or `contact`), so no profile data object ships to the browser.
 
 ### Blog Content
 
@@ -332,17 +333,18 @@ SEO is a first-class part of the app.
 | OpenGraph image routes | `src/app/**/opengraph-image.tsx`    | Dynamic social images rendered during static export.                                          |
 | Artifact SEO verifier  | `scripts/verify-static-artifact.mjs`| Checks exported sitemap URLs, canonicals, titles, descriptions, language metadata, and robots. |
 
-About, Apps, and Gallery use
+About, Apps, Gallery, and the four Studio pages use
 `src/lib/seo/static-page-localization.ts` to separate route locale from authored
 content locale. Their current contract is:
 
 | Page | Authored/indexable locales | Other emitted locale routes |
 |---|---|---|
-| About | `en`, `vi` | English content boundary, `noindex, follow`, canonical `/en/about` |
-| Apps | `en`, `vi` | English content boundary, `noindex, follow`, canonical `/en/apps` |
+| About | `en`, `vi`, `zh`, `ja`, `ko`, `fr` | None; every locale is authored and self-canonical |
+| Apps | `en`, `vi` | English content boundary, `noindex, follow`, self-canonical, no `hreflang` |
 | Gallery | `en`, `vi`, `zh`, `ja`, `ko`, `fr` | None; every locale is authored and self-canonical |
+| Studio overview and `/studio/{checklists,system-maps,ai-setup}` | `en`, `vi` | English content boundary, `noindex, follow`, self-canonical, no `hreflang` |
 
-Only authored variants enter sitemap and `hreflang`. Each of the 18 emitted
+Only authored variants enter sitemap and `hreflang`. Each of the 42 emitted
 routes has exact title/description parity across HTML, Open Graph, Twitter, and
 its route-owned JSON-LD object. The JSON-LD language follows the content rather
 than blindly copying the route prefix. These focused pages explicitly clear the
@@ -350,7 +352,7 @@ locale layout's broad keyword meta instead of inheriting it. The artifact
 verifier also requires generic and Googlebot robots directives to agree and
 rejects even an empty keyword tag. A source test keeps policy configuration
 equal to the runtime definition and requires every Gallery locale to own the
-same complete 71-leaf visible message shape.
+same complete 32-leaf visible message shape.
 
 The artifact verifier works against the generated `out/` directory rather than
 source-code patterns. Its sitemap URL set must exactly equal the exported,
@@ -382,10 +384,12 @@ They use self-canonicals, localized descriptions, `CollectionPage`, page-local
 pagination, and article links. Their hreflang clusters contain only `en`, `vi`,
 and an English `x-default`; no other locale exports those routes. With
 `CONTENT_BUILD_DATE=2026-07-19`, the 16 Blog series URLs and 36 Notes hub URLs
-add exactly 52 entries. The valid pre-hub baseline is 895 URLs after removing
-one mislabeled English article variant. Omitting eight un-authored About and
-Apps fallback variants leaves 887 canonical pre-hub URLs, so the fixed-date
-sitemap contains 939 unique URLs. The former English article URL remains only as a `noindex` compatibility
+add exactly 52 entries. About is authored in all six locales, so only the four
+un-authored Apps fallbacks are omitted. Studio contributes eight URLs: the
+overview and three module pages in `en` and `vi`; their `zh`, `ja`, `ko`, and
+`fr` routes are noindex fallbacks outside the sitemap. With those rules the
+fixed-date source sitemap (`buildSitemap()` with that date) contains 951 unique
+URLs. The former English article URL remains only as a `noindex` compatibility
 artifact that canonical/meta-refreshes to its authored Vietnamese variant and
 is absent from sitemap and hreflang output. This total is a fixed-date
 regression assertion, not a permanent sitemap floor; artifact parity remains
@@ -542,6 +546,15 @@ PostHog is loaded by the shared locale document in
 public runtime. The public footer uses a full-document Studio link; its existing
 `cv_nav_click` event is sent with `sendBeacon` before navigation.
 
+PostHog runs with `cookieless_mode: 'always'`
+(`src/components/analytics/PostHogBootstrap.tsx`): no cookie or localStorage
+identity is written. PostHog only accepts these events when **Cookieless server
+hash mode** is enabled in the PostHog project settings (Web analytics). If that
+setting is off, ingestion drops every event without an error in the browser.
+Pre-deploy check: open the built site (or a preview deploy), load two pages,
+and confirm both `$pageview` events show up in PostHog **Activity > Live
+events** before promoting.
+
 ### Firebase Engagement
 
 Firestore Lite is used for public article counters:
@@ -639,7 +652,7 @@ runbook.
 | Reading background | `ReadingBackgroundScript`, `ReadingBackgroundSwitcher`         | Applies the saved reading background before paint on every public route.                                               |
 | Reader tools       | `ArticleReaderTools`, `BlogReaderTools`                         | Mounts the floating toolbar only in nested Blog and Notes article layouts.                                             |
 | Route progress     | `RouteProgressBar`                                             | Provides click/popstate-aware progress on every public route.                                                          |
-| Motion             | `MotionProvider`                                               | Mounts `LazyMotion` only on Home and Gallery, not in the shared public-site layout.                                    |
+| Motion             | none                                                           | No `LazyMotion` provider on any route; motion is CSS with reduced-motion guards.                                       |
 | Explorer filters   | `ExplorerShell`, `useExplorer`, blog/notes explorers             | Provides search, filter, tag, and topic/category exploration on content indexes.                                      |
 | Archive counters   | `useDeferredPostStats`, deferred stats store, `postStats` facade   | Loads one visible-page batch after intent, retains one latest-view queue, caps its mounted cache, skips on `Save-Data`, and fails soft.          |
 
@@ -775,21 +788,21 @@ remain hard gates. The current configured gates are:
 
 | Surface or payload | Current gate |
 |--------------------|-------------:|
-| Home initial JavaScript, Gzip | Hard limit: 274,432 bytes |
-| Home initial JavaScript, Brotli | Hard limit: 238,592 bytes |
-| Blog initial JavaScript, Gzip | Hard limit: 251,904 bytes |
-| Blog initial JavaScript, Brotli | Hard limit: 217,088 bytes |
-| Notes initial JavaScript, Gzip | Hard limit: 251,904 bytes |
-| Notes initial JavaScript, Brotli | Hard limit: 217,088 bytes |
-| Blog article initial JavaScript, Gzip | Hard limit: 251,904 bytes |
-| Blog article initial JavaScript, Brotli | Hard limit: 217,600 bytes |
-| Notes article initial JavaScript, Gzip | Hard limit: 251,904 bytes |
-| Notes article initial JavaScript, Brotli | Hard limit: 217,088 bytes |
-| Studio direct initial JavaScript, Gzip | Hard limit: 200,704 bytes |
-| Studio direct initial JavaScript, Brotli | Hard limit: 176,128 bytes |
+| Home initial JavaScript, Gzip | Hard limit: 214,016 bytes |
+| Home initial JavaScript, Brotli | Hard limit: 185,344 bytes |
+| Blog initial JavaScript, Gzip | Hard limit: 210,944 bytes |
+| Blog initial JavaScript, Brotli | Hard limit: 183,296 bytes |
+| Notes initial JavaScript, Gzip | Hard limit: 210,944 bytes |
+| Notes initial JavaScript, Brotli | Hard limit: 182,272 bytes |
+| Blog article initial JavaScript, Gzip | Hard limit: 211,968 bytes |
+| Blog article initial JavaScript, Brotli | Hard limit: 183,296 bytes |
+| Notes article initial JavaScript, Gzip | Hard limit: 211,968 bytes |
+| Notes article initial JavaScript, Brotli | Hard limit: 183,296 bytes |
+| Studio direct initial JavaScript, Gzip | Hard limit: 173,056 bytes |
+| Studio direct initial JavaScript, Brotli | Hard limit: 149,504 bytes |
 | Studio English default route, Brotli | Hard limit: 204,800 bytes |
 | Studio initial document CSS, Brotli | Hard limit: 3,072 bytes |
-| Studio required Shadow CSS, Brotli | Hard limit: 16,384 bytes |
+| Studio required Shadow CSS, Brotli | Hard limit: 12,288 bytes |
 | Studio total initial CSS, Brotli | Hard limit: 18,432 bytes |
 | All exported RSC `.txt` payloads | Advisory warning: 157,286,400 bytes |
 | Average of 24 localized Home/Blog/Notes/Studio RSC samples | Hard limit: 47,104 bytes |
@@ -799,32 +812,51 @@ remain hard gates. The current configured gates are:
 | Largest localized Studio RSC sample | Hard limit: 30,720 bytes |
 
 The verifier also hard-gates Gzip HTML for English Home (34,304 bytes), Blog
-archive (19,456), Notes archive (18,432), one Blog article (17,408), and one
-Notes article (20,480), while reporting raw and Brotli bytes for comparison.
+archive (21,120), Notes archive (18,432), one Blog article (18,432), and one
+Notes article (22,528), while reporting raw and Brotli bytes for comparison.
+
+Rebase of 2026-11-13 (homepage CV revamp). Initial JavaScript no longer counts
+`<script nomodule>` tags: the Next legacy polyfill (about 39.5 KiB Gzip) is never
+downloaded by module-capable browsers. The JavaScript gates above are the
+polyfill-free measurement plus about 10 percent, rounded up to 1 KiB (Home
+200,915 Gzip / 174,061 Brotli; Blog 196,642 / 170,466; Notes 196,532 / 170,382;
+articles 198,065 / 171,572; Studio 152.8 KiB / 131.8 KiB, gated at 173,056 /
+149,504). Both verifiers skip `<script nomodule>`; Studio's
+`maxDefaultRouteBrotliBytes` is unchanged. Home initial CSS grew with
+real revamp content (every home class selector is used by the en, vi or ja HTML
+or a JS chunk; Lighthouse reports 0 unused rules): measured 13,170 Gzip /
+11,518 Brotli, gated at 14,080 / 12,288 (about 7 percent headroom). Blog article
+HTML measured 17,419 Gzip, gated at 18,432 (about 6 percent).
 
 The 2026-07-20 complete export measured Blog at 213,534 bytes and Notes at
 213,444 bytes Brotli after the deferred engagement boundary. The 217,088-byte
 limits retain narrow build variance while locking in that verified reduction.
 
+MEP-71 (2026-11-13) precompiles the next-intl catalogs at build time, so the ICU
+parser (`intl-messageformat`) no longer ships to the client: about 9 KiB Gzip
+off every public route. The public JavaScript gates above were lowered to the
+new measurement plus about 10 percent, rounded up to 1 KiB (Home 193,982 Gzip /
+167,863 Brotli; Blog 191,692 / 166,040; Notes 191,296 / 165,696; articles
+192,204 / 166,266). Studio has no client messages and is unchanged.
+
 The same complete export records public initial CSS by route. Before the split,
 all non-content routes loaded 122,511 raw / 19,439 Brotli bytes in two files;
 Blog loaded 172,786 / 27,474 in three, and Notes loaded 187,507 / 30,800 in
-four. Route ownership produces the following current measurements and hard
-gates:
+four. Route ownership produces the following measurements (refreshed from the
+2026-11-13 complete export) and hard gates:
 
 | Public route | Stylesheets | Measured raw | Measured Brotli | Brotli gate |
 |--------------|-------------:|-------------:|----------------:|-------------:|
-| Home | 3 | 43,200 | 9,224 | 9,472 |
-| About | 3 | 30,045 | 6,666 | 6,912 |
-| Gallery | 3 | 37,661 | 7,826 | 8,192 |
-| Apps | 3 | 42,422 | 8,812 | 9,216 |
-| English practice | 3 | 36,573 | 7,599 | 7,936 |
-| Offline | 3 | 24,988 | 5,761 | 6,144 |
-| Blog archive | 3 | 73,416 | 13,188 | 13,568 |
-| Notes archive | 4 | 80,874 | 15,144 | 15,616 |
-| Blog article | 4 | 95,826 | 17,632 | 18,176 |
-| Notes article | 5 | 103,284 | 19,588 | 20,096 |
-
+| Home | 3 | 56,783 | 11,795 | 12,288 |
+| About | 3 | 32,099 | 7,089 | 7,424 |
+| Gallery | 3 | 39,163 | 8,184 | 8,448 |
+| Apps | 3 | 44,476 | 9,235 | 9,600 |
+| English practice | 3 | 38,627 | 8,022 | 8,320 |
+| Offline | 3 | 27,042 | 6,410 | 6,656 |
+| Blog archive | 3 | 82,035 | 14,426 | 14,464 |
+| Notes archive | 4 | 86,418 | 15,969 | 16,512 |
+| Blog article | 4 | 101,003 | 18,406 | 19,072 |
+| Notes article | 5 | 108,830 | 20,408 | 21,120 |
 The stylesheet-count column is also the hard per-route maximum. The extra file
 on route-owned pages and articles is accepted only with the measured transfer
 reduction; future request or Brotli growth fails the artifact gate.
@@ -855,7 +887,7 @@ pages do not mount Explorer or ship a full search index. Every serialized
 empty values, and must match a recognized non-empty scope. Each public Client
 Component boundary receives only its declared namespace allowlist. The Studio
 contract rejects transitive provider-dependent internationalization as well as
-eagerly loaded heavy dashboard, ReactFlow, Recharts, and Firebase markers, and
+eagerly loaded ReactFlow and Firebase markers, and
 rejects new third-party connection origins unless they are explicitly reviewed
 in `config/static-artifact-budgets.json`.
 
@@ -874,7 +906,7 @@ the Studio HTML. Required Shadow CSS is `studio/studio-shadow.css`, referenced
 by reachable Studio JavaScript and applied inside the Shadow root. Total initial
 CSS combines both measured groups, so Shadow CSS is neither mislabeled as a
 document stylesheet nor omitted from the initial cost. The three Brotli caps
-are 3,072, 16,384, and 18,432 bytes respectively; external stylesheets fail the
+are 3,072, 12,288, and 18,432 bytes respectively; external stylesheets fail the
 gate unless their origins are explicitly allowlisted.
 
 Public document CSS is route-owned. `src/app/globals.css` keeps the shared
@@ -901,11 +933,11 @@ and Brotli limits from the latest complete export.
 
 The Studio artifact gate additionally reports the Brotli/raw totals for every
 JavaScript chunk transitively reachable from the English Studio entry. Its
-direct entry retains the 176,128-byte ceiling. The default-route hard gate
+direct entry retains the 149,504-byte ceiling (polyfill excluded). The default-route hard gate
 parses Turbopack `Promise.all` loaders and counts every sibling chunk needed by
 the selected English locale and Welcome route; the full reachable async total
-remains visible separately. Mail, AI Skills, Delivery Checklists, auxiliary
-dashboards, ReactFlow, and Recharts must remain reachable lazy chunks and are
+remains visible separately. AI Skills, Delivery Checklists, and ReactFlow must
+remain reachable lazy chunks and are
 forbidden from that default path. Stable sentinels verify isolated loaders for
 English, Vietnamese, Chinese, Japanese, Korean, and French and reject
 cross-locale copy from the selected English entry.

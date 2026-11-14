@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Choosing Boundaries Before Choosing Tools",
   "summary": "A practical reflection on architecture boundaries: why teams should name ownership, data, and change patterns before reaching for frameworks, services, queues, or databases.",
-  "date": "2026-05-25",
+  "date": "2026-09-29",
   "readingMinutes": 5,
   "tags": [
     "Software Architecture",

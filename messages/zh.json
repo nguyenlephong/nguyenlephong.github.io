@@ -1,5 +1,6 @@
 {
   "Nav": {
+    "skipToContent": "跳到正文",
     "about": "关于",
     "aboutMe": "关于我",
     "experience": "经验",
@@ -8,6 +9,15 @@
     "gallery": "作品集",
     "apps": "应用",
     "resume": "简历",
+    "mainNav": "主导航",
+    "menuOpen": "打开菜单",
+    "menuClose": "关闭菜单",
+    "theme": {
+      "label": "主题",
+      "light": "浅色主题",
+      "system": "跟随系统",
+      "dark": "深色主题"
+    },
     "font": {
       "label": "阅读字体",
       "sans": "无衬线",
@@ -24,267 +34,401 @@
       "night": "夜读"
     },
     "blog": "博客",
-    "notes": "笔记"
+    "notes": "笔记",
+    "search": {
+      "label": "搜索",
+      "dialogLabel": "搜索博客和笔记",
+      "placeholder": "搜索文章和笔记…",
+      "hint": "可按标题、专题或标签搜索。文章为英文。",
+      "blog": "博客",
+      "notes": "笔记",
+      "loading": "正在加载搜索数据…",
+      "error": "搜索暂时无法加载，请稍后再试。",
+      "empty": "暂时没有与“{query}”匹配的内容。",
+      "results": "{count, plural, =0 {没有结果} other {# 个结果}}",
+      "close": "关闭搜索"
+    }
   },
   "Footer": {
-    "tag": "Lead Software Engineer · Zalo PC",
+    "tag": "Zalo PC Lead Software Engineer · BonBon Mobility 联合创始人",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "语言",
-    "sitemap": "站点地图"
+    "sitemap": "站点地图",
+    "email": "邮箱",
+    "photos": "照片",
+    "sideProjects": "个人项目",
+    "studioHint": "Studio：清单与系统图",
+    "contactLabel": "简历与个人主页",
+    "siteLabel": "站内其他页面"
   },
   "Hero": {
     "news": "BonBon Mobility 完成由 Tasco 领投的 50 万美元 Pre-seed 轮融资",
     "newsCta": "阅读全文",
     "role": "Lead Software Engineer",
     "cofounder": "联合创始人",
-    "roleSub": "在 80M+ MAU 规模上交付产品，以创始人身份从零构建。",
-    "bio": "在 Zalo PC，我负责跨设备数据方向，最近交付了 PC 消息备份与移动端恢复。在汽车养护 O2O 平台 BonBon Mobility，我作为联合创始人搭建了产品集成，3 个月内从 MVP 走到实地试点。",
+    "claim": "亲自写代码的工程负责人。关键代码我自己写，有风险的改动拆成可回滚的小步发布。",
+    "bio": "2018 年起做软件交付：外包公司、CDP 产品公司、Zalo，再到我联合创办的创业公司。",
     "location": "越南胡志明市",
     "downloadResume": "下载简历",
-    "getInTouch": "联系我",
-    "careerHighlights": "职业亮点",
+    "getInTouch": "发邮件",
     "socialProfiles": "社交主页",
-    "stats": {
-      "yearsShipping": "交付年数",
-      "yearsShippingCaption": "每天交付生产代码",
-      "usersTouched": "服务用户数",
-      "usersTouchedCaption": "Zalo · CDP · 金融级规模",
-      "engineersLed": "带领过的最大团队",
-      "engineersLedCaption": "开发 · QC · 交付",
-      "preSeedRaised": "Pre-seed 融资",
-      "preSeedRaisedCaption": "BonBon Mobility · Tasco 领投",
-      "projectsLaunched": "已上线项目",
-      "projectsLaunchedCaption": "SDK · 平台 · 移动应用",
-      "testCasesAuthored": "编写测试用例",
-      "testCasesAuthoredCaption": "BDD · E2E · 回归保障"
+    "topology": {
+      "label": "当前角色与上一段角色",
+      "zaloNote": "桌面客户端 · 18M+ MAU",
+      "bonbonNote": "Tasco 领投 50 万美元 Pre-seed",
+      "previousNote": "交付负责人 · 8 开发 + 3 QC",
+      "zaloMeta": "Lead · 全职 · <date>2026年3月</date>起",
+      "bonbonMeta": "联合创始人 · <date>2026年4月</date>起",
+      "previousMeta": "上一段 · <date>2025年8月 – 2026年3月</date>"
     }
   },
   "Sections": {
-    "aboutEyebrow": "核心能力",
-    "aboutTitle": "设计系统。交付产品。带领团队。",
-    "experienceEyebrow": "经历",
-    "experienceTitle": "各阶段的关键影响",
-    "projectsEyebrow": "项目",
-    "projectsTitle": "代表项目与成果"
+    "aboutTitle": "我做的系统，走错一步就会损失金钱或信任。",
+    "experienceTitle": "我在 CTO 交接期间带领团队，之后 Zalo 重新聘我担任 Lead。",
+    "projectsTitle": "两个由我拍板架构、也由我承担后果的系统。"
   },
   "Summary": {
-    "intro1": "Zalo PC Lead Software Engineer，具备 <b>8+ 年</b>生产软件交付经验，覆盖大规模通信、CDP、金融科技、教育与房地产领域。",
-    "intro2": "兼顾一线工程实践与技术领导：将模糊目标转化为可靠系统，指导架构与代码质量，协调交付，并持续提升可观测性与生产运维能力。",
-    "intro3": "<i>聚焦产品、系统与团队三个层面。</i>",
-    "visionEyebrow": "核心能力",
-    "hardSkillsEyebrow": "技术基础",
+    "mapTabsLabel": "核心能力",
+    "mapPause": "暂停",
+    "mapPlay": "播放",
+    "stackTitle": "我用来开发的技术",
     "pillars": {
-      "endToEnd": {
-        "title": "端到端工程师",
-        "body": "前端、后端、CI/CD、发布与生产基础设施 — 一人贯穿整个生命周期。",
-        "chip": "FE · BE · 基础设施"
+      "crossDevice": {
+        "tab": "跨设备同步",
+        "meta": "Zalo PC · 2026",
+        "figure": "1.8 s → 4 ms",
+        "figureLabel": "sync v2 热路径上的一次查找",
+        "title": "让电脑和手机上的消息保持一致",
+        "body": "我在 Zalo PC 负责跨设备数据相关工作。sync v2 现在会在移动网络不稳时重试并分组重新准备；PC 消息备份并在手机端恢复的功能于 2026 年 7 月开始逐步上线，VnExpress 也做了报道。"
+      },
+      "zeroToPilot": {
+        "tab": "从零到试点",
+        "meta": "BonBon Mobility · 联合创始人",
+        "figure": "3 个月",
+        "figureLabel": "从 MVP 到实地试点",
+        "title": "在合作方的 App 里，从零做出一个产品",
+        "body": "BonBon 以 12 个页面的 Mini App 形式运行在拥有 430 万用户的 VETC 应用生态中，车主用现有的 VETC 会话静默登录，不必再输一次 OTP。团队随后赢得了 Wash3000，并完成由 Tasco 领投的 50 万美元 Pre-seed 轮融资。"
       },
       "multiTenant": {
-        "title": "多租户平台",
-        "body": "特性开关、RBAC、按比例/分群发布、JSON 配置值、无状态运行时评估。",
-        "chip": "30+ 租户在线"
+        "tab": "多租户 SaaS",
+        "meta": "LogiUP · Tech Lead",
+        "figure": "9 个仓库",
+        "figureLabel": "一套多租户架构，四人团队",
+        "title": "每个客户的数据各自独立的物流 SaaS",
+        "body": "作为系统架构师，我把租户隔离从客户子域名一路贯彻到 token，并为 Web 和 Electron 桌面端自建了 OAuth 2.1/OIDC 提供方。在报关流程里，AI 给出建议值，申报单的 8 个部分逐一由人确认。"
+      },
+      "rollouts": {
+        "tab": "渐进式发布",
+        "meta": "NDSVN · 2025–2026",
+        "figure": "30+ 租户",
+        "figureLabel": "约 4 万用户共用一个开关平台",
+        "title": "小步发布，随时可以撤回",
+        "body": "在 NDSVN，我用 .NET Core 做了一个功能开关平台，按租户、用户分群或环境逐步放量，并用 PostHog 看每次放量的实际影响。这个习惯一直保留下来：BonBon 的发布都挂在 kill switch 开关之后，Zalo PC 上有风险的改动默认关闭。"
       },
       "leadership": {
-        "title": "技术与团队领导力",
-        "body": "通过清晰的 ownership、招聘、RFC、runbook、rollout playbook 和 1:1 coaching 带领开发与 QC 团队。",
-        "chip": "11 人团队"
+        "tab": "交接期的团队",
+        "meta": "NDSVN · 交付团队",
+        "figure": "8 + 3",
+        "figureLabel": "CTO 交接后的开发与 QC",
+        "title": "在交接期让团队稳住",
+        "body": "NDSVN 经历 CTO 交接后，我接手了交付团队的技术负责。大部分工作是把原本只在大家脑子里的东西写下来，比如谁负责哪一块、release 怎么打 tag，再加上用结构化面试来招人。"
       },
       "fintech": {
-        "title": "安全金融集成",
-        "body": "RSA-4096 握手、AES-256 负载、mTLS、证书锁定、幂等契约、重试队列。",
-        "chip": "Gtel · Napas"
-      },
-      "mfe": {
-        "title": "微前端与 SDK",
-        "body": "Angular 宿主 + React 模块独立部署。JS SDK 小于 200KB,加载小于 150ms。",
-        "chip": "MFE · <150ms"
-      },
-      "ai": {
-        "title": "AI 优先工程",
-        "body": "构建 AI 代理用于代码审查、部署辅助、服务配额、API 健康监控与发布分析。",
-        "chip": "生产环境代理"
+        "tab": "合作方集成",
+        "meta": "NDSVN · 对接",
+        "figure": "Gtel · Napas",
+        "figureLabel": "基于 mTLS 的合作方对接",
+        "title": "可以放心重试的合作方对接",
+        "body": "与 Gtel、Napas 的对接使用 RSA-4096 握手、AES-256 载荷加密和证书固定。接口契约是幂等的，从重试队列重放的消息不会造成影响，监控以 ACK 为依据。"
       }
     },
-    "skills": {
-      "backend": "<b>后端</b>:<b>Node.js</b> 与 <b>Java (Spring)</b> 深度实战经验;设计 REST/GraphQL API,提供清晰契约、身份验证与加密机制、向后兼容性,并为企业级和第三方集成提供韧性。",
-      "frontend": "<b>前端</b>:使用 <b>React</b>(TypeScript、Next.js)、<b>React Native</b> 以及基于 Angular 的微前端宿主构建并维护复杂客户端应用;应用性能优化、状态管理与可扩展的 UI 架构模式。",
-      "databases": "<b>数据库</b>:在 <b>MySQL</b> 上有深厚实战经验,专注于 schema 与数据模型设计、索引策略、查询优化、事务边界、迁移规划以及分布式与高吞吐系统的一致性权衡。",
-      "infra": "<b>基础设施与平台工程</b>:在多个环境中实际使用 <b>Docker</b> 与 <b>Kubernetes</b>;运维托管集群(<b>AKS</b>、<b>EKS</b>、<b>FKE</b>、<b>K3S</b>)、<b>ArgoCD</b> GitOps 部署、CI/CD 流水线、环境配置以及域名/SSL 管理。",
-      "architecture": "<b>架构与交付实践</b>:应用微前端与多租户架构、特性开关驱动的发布、渐进式交付策略以及可观测性实践以支持安全发布和生产诊断。",
-      "testing": "<b>测试</b>:实际使用 Jest、Cucumber、Puppeteer 与 Testing Library,确保跨服务和应用的回归安全、发布信心和生产就绪。",
-      "libraries": "<b>类库</b>:熟练运用 <b>Firebase</b>、Strapi、Directus、React Flow、Webpack、<b>Redux</b>、React Query 与 G2plot。",
-      "other": "<b>其他</b>:熟悉 <b>微前端</b>架构、响应式设计、跨浏览器兼容性、<b>SEO</b>、GraphQL 与 Electron。"
+    "stack": {
+      "frontend": {
+        "label": "前端与桌面",
+        "items": "TypeScript、React、Next.js、Electron、React Native、Storybook"
+      },
+      "backend": {
+        "label": "后端",
+        "items": "Go、NestJS、Node.js、Python (FastAPI)、.NET Core、Java Spring"
+      },
+      "data": {
+        "label": "数据",
+        "items": "PostgreSQL、Redis、BullMQ、Cloudflare R2、MySQL"
+      },
+      "platform": {
+        "label": "平台",
+        "items": "Docker、Kubernetes (AKS、EKS、K3S)、ArgoCD、CI/CD、PostHog"
+      },
+      "architecture": {
+        "label": "架构",
+        "items": "多租户 SaaS、OAuth 2.1 与 OIDC、mTLS、特性开关与熔断开关、微前端"
+      },
+      "testing": {
+        "label": "测试",
+        "items": "Playwright、Vitest、Go 测试、Jest、Cucumber"
+      },
+      "team": {
+        "label": "团队实践",
+        "items": "代码评审、RFC、运行手册、结构化面试、用于评审和发布检查的 AI 智能体"
+      }
     }
   },
   "Experience": {
-    "labels": {
-      "location": "地点",
-      "duration": "时长",
-      "keyContributions": "关键贡献",
-      "keyTechnologies": "关键技术",
-      "publicEvidence": "公开发布",
-      "readCoverage": "阅读 {publisher} 报道"
+    "env": {
+      "bigTech": "大型科技公司，面向消费者",
+      "enterprise": "企业软件，支付与电信合作方",
+      "b2b": "B2B 产品创业公司",
+      "outsourcing": "外包",
+      "startup": "早期创业公司"
     },
-    "ndsvn": {
-      "summary": "在 CTO 交接后承担产品交付与技术方向,主导架构决策、发布系统、企业级集成与跨团队协同,管理由 8 名开发(含 4 名 senior)与 3 名 QC 工程师组成的交付团队。",
-      "contributions": [
-        "设计 .NET Core 多租户特性开关系统 <b>(30+ 租户,~40k 用户)</b>,具备优先级规则引擎、百分比发布(租户/分群/环境)、JSON 配置值与无状态运行时评估 — 驱动移动/Web 应用,并在高流量租户上实现可控的渐进式生产发布。",
-        "与 <b>Gtel 和 Napas</b> 建立安全集成:RSA-4096 握手、AES-256 负载加密、<b>mTLS</b> 双向认证、证书锁定、重试队列、幂等 API 契约和 ACK 驱动的不稳定第三方服务监控。",
-        "实现 <b>微前端</b> 架构(Angular 宿主 + React 模块),实现独立部署周期与特性隔离 — 减少回归面与跨团队的部署耦合。",
-        "引入可观测性栈(PostHog + 指标管道 + 工作流)用于发布影响、特性采用、异常检测与回归追踪 — 显著缩短调试/分析时间。",
-        "接手继承的基础设施并保持组织运转 — 默默处理生产事故、流水线故障、集群异常与集成不稳定,使产品和团队不停滞;将 ArgoCD、CI/CD、域名/SSL 与 <b>AKS/FKE/K3S/EKS</b> 集群塑造为<b>可诊断、可恢复、稳定的系统,而不是反复出现的未知问题</b>。",
-        "构建 <b>AI 代理</b>,支持代码审查、部署助手、服务配额校验、API 健康监控和发布分析;缩短产品团队的决策与交付循环。",
-        "开发集成模拟与 sandbox/demo 模块,处理不稳定合作伙伴并确保与第三方生态的合同前安全验证。",
-        "在领导层交接后<b>重组工程组织</b>:定义组织架构、能力矩阵、工作路由与所有权边界 — 释放自主性并缩短技术决策的交付时间。",
-        "建立统一的工程手册:分支策略、提交规范、发布打标签、发布标准、API/集成规则与技术规范库(RFC、Runbook、故障排查指南)。",
-        "主导招聘与能力增长循环:结构化面试(QC/Fullstack)、入职路径、1:1 辅导、绩效评审与跨团队冲突解决,使交付保持协作与产出导向。",
-        "通过文档优先文化和流程护栏(检查表、交接规则、回滚就绪)维持交付质量,在扩张期间保持可预测的发布节奏。"
-      ]
-    },
-    "zalo": {
-      "lead": {
-        "summaries": [
-          "于 <b>2026 年 3 月 2 日</b>回归 <b>Zalo PC</b>，担任 Lead Software Engineer，在跨设备消息与客户端存储领域兼顾一线交付和技术领导。"
-        ],
-        "contributions": [
-          "交付 <b>Zalo PC 消息备份与移动端恢复</b>：payload contract、Web 与 Electron worker 的文件加固、上传 telemetry、与同步的互斥控制。2026 年 7 月上线，VnExpress 有报道。",
-          "为不稳定的移动网络加固 <b>sync v2</b>（重试、分组 re-prepare、失败统计），热点路径查找从 <b>1.8 秒降到 4 毫秒</b>。",
-          "提升 <b>zCloud offload 的可靠性与可观测性</b>，并加入带远程 kill switch 的每日 log-health 探针，用 QoS 数据诊断问题。",
-          "七个月交付 <b>55+ 张工单、700+ 次 commit</b>，高风险改动默认关闭并由 kill switch 控制。",
-          "通过技术方向、代码审查和交付协调带领工程团队。"
-        ]
+    "roles": {
+      "zaloLead": {
+        "scope": "2026 年 3 月以 Lead 身份重新加入，距离离开去 NDSVN 七个月。我负责桌面客户端（18M+ MAU）的多设备消息与客户端存储。",
+        "contributions": {
+          "0": "交付 <b>PC 消息备份</b>与移动端恢复：payload 契约、worker 文件处理加固、上传遥测、与 sync 互斥。2026 年 7 月开始灰度。",
+          "1": "为不稳定的移动网络加固 sync v2：重试、分组重新准备、失败统计。在 37 个会话的测试中，一次 hot path 查询从 <b>1.8 s 降到 4 ms</b>。",
+          "2": "有风险的改动放在 kill switch 和远程配置之后，<b>默认关闭</b>发布。",
+          "3": "提升 <b>zCloud offload</b> 的可靠性与可观测性，新增可远程关闭的每日日志健康探针。",
+          "4": "编写故障注入 devtool，在测试 sync 时复现移动网络断连。"
+        }
       },
-      "summary1": "跨平台 <b>Zalo PC</b>(Web、macOS、Windows)的核心开发者,服务 <b>15M+ MAU</b>。交付了暗黑模式、动态主题、用户行为追踪等关键功能。主导开发了促销流程和面向 <b>50+ 开发者</b>的可扩展<b>设计系统</b>。通过稳健高效的方案,优化性能、提升可维护性,并推动业务增长。",
-      "summary2": "积极维护并改进 <b>Zalo Android</b> 移动端,为近 <b>8000 万用户</b>确保关键功能的<b>稳定性</b>与<b>性能</b>。",
-      "contributions": [
-        "交付了 <b>10+ 个功能</b>,包括暗黑模式、下载模块、Kiki Bot、日志追踪等,改善 UX 与用户活跃度。",
-        "开发了带有集成追踪与监控系统的<b>促销流程</b>,在 <b>15M+ MAU</b> 上推动激活成功。",
-        "使用 Storybook 主导构建可扩展的<b>设计系统</b>,为 <b>50+ 开发者</b>确保 UI 一致性与效率。",
-        "主动支持 <b>50+ 客户端用户</b>,以<b>专注</b>和<b>有效的问题解决</b>能力迅速处理问题,获得强烈的正面反馈。",
-        "在 <b>Zalo Android</b> 应用中维护并改进了 <b>3+</b> 个功能,聚焦<b>稳定性</b>、<b>性能</b>以及近 <b>8000 万用户</b>的无缝体验。"
-      ]
+      "ndsvn": {
+        "scope": "CTO 交接后接手技术负责，带领 8 名开发和 3 名 QC 的交付团队。",
+        "contributions": {
+          "0": "把团队运作方式写成文档：谁负责哪部分、能力矩阵、<b>发布 playbook</b>（分支、标签、RFC、runbook）以及结构化面试。",
+          "1": "为 <b>30+ 租户</b>（约 4 万用户）构建 .NET Core 功能开关平台，支持优先级规则，以及按租户、用户分群或环境的百分比发布。",
+          "2": "通过 mTLS、证书固定和幂等契约对接 <b>Gtel 与 Napas</b>，从重试队列重放的消息不会造成副作用。",
+          "3": "将 Web 应用拆分为微前端（Angular 宿主加 React 模块），每个模块独立部署。",
+          "4": "接手遗留基础设施（ArgoCD、CI/CD、域名与 SSL、AKS/FKE/K3S/EKS 集群），让故障可诊断、可恢复。",
+          "5": "接入 PostHog，查看每次发布对使用率和错误的影响。",
+          "6": "构建内部 AI 代理，用于代码评审、部署前检查、服务配额校验、API 健康监控和发布分析。"
+        }
+      },
+      "zaloSenior": {
+        "scope": "Zalo PC 客户端（Web、macOS、Windows，18M+ MAU）核心工程师，同时负责 Zalo Android（约 8000 万用户）的部分功能。",
+        "contributions": {
+          "0": "主导 Storybook 设计系统，供 <b>50+ 名开发者</b>使用。",
+          "1": "上线 <b>10+ 个客户端功能</b>，包括深色模式、动态主题、下载模块和 Kiki 机器人。",
+          "2": "维护 Zalo Android 的 3+ 个功能，侧重稳定性与性能。",
+          "3": "构建自带追踪与监控的推广流程。",
+          "4": "为桌面客户端加入日志与行为追踪。"
+        }
+      },
+      "primedata": {
+        "scope": "CDxP 是一个客户数据平台，把分散系统中的客户档案统一起来。我带领其 4 人前端团队。",
+        "contributions": {
+          "0": "交付 CDxP 应用和 <b>10+ 个相关项目</b>：JS 与移动端 SDK、Magento 与 WordPress 演示。",
+          "1": "编写小于 <b>200 KB</b>、150 ms 内加载的 JS 追踪 SDK，用 web worker 和 service worker 协调多个标签页。",
+          "2": "为 A/B 测试和用户分群引入运行时<b>功能开关</b>。",
+          "3": "在 CDxP 应用中实现 360 度客户档案和活动编排器。",
+          "4": "搭建团队发布前依赖的 BDD 与 E2E 测试套件。"
+        }
+      },
+      "splus": {
+        "line": "参与教育、餐饮、银行、电商等领域 8+ 个外包项目，并带领一个小团队。2019 年 Best Rookie of the Year。"
+      },
+      "propman": {
+        "line": "早期创始工程师之一，用 React 构建主 Web 应用。"
+      }
     },
-    "primedata": {
-      "summary": "公司构建了所谓的 CDxP 产品。简而言之,这是一个定制化的数据平台,用于托管和处理客户档案(关键解决方案是如何从不同服务和系统的异构 schema 与格式中识别并统一客户数据)。",
-      "contributions": [
-        "带领前端团队交付 <b>10+ 个项目</b>,包括 CDxP 应用、Magento 与 WordPress 演示、JS SDK、移动 SDK 等。",
-        "管理 <b>4 人团队</b>,与产品路线图保持一致以满足多个主要合作伙伴,提升 UI/UX 并实现 360 档案与 campaign builder 等高级功能。",
-        "开发轻量级 JS SDK,功能完整(<b><200kb,<150ms</b> 加载时间),促进跨项目的无缝集成。",
-        "展现快速<b>解决问题</b>的能力,确保迅速完成功能演示以打动客户和投资人。"
-      ]
-    },
-    "splus": {
-      "summary": "一家外包公司。多数项目围绕<b>移动端与 Web 应用</b>。",
-      "contributions": [
-        "凭借<b>软件端到端生产流程</b>的专业能力,我<b>带领一支小团队</b>,精通从需求收集到项目安全的各个阶段,为后续的领导角色奠定基础。",
-        "在<b>教育、餐饮、银行</b>与<b>电商</b>等领域参与了 <b>8+</b> 个多元化项目,获得了关于 Web 与移动应用开发的宝贵洞察。",
-        "作为项目佣兵,我赢得了 Savyu 与 Bank Tool 等重要项目,创造了超过 <b>$20,000</b> 的收入,并因卓越贡献被评为<b>年度最佳新人</b>。"
-      ]
-    },
-    "propman": {
-      "summary": "一家<b>房地产领域</b>创业公司。我是创始工程师之一。",
-      "contributions": [
-        "作为前端开发者首次参与主要 Web 应用开发。获得了基础的 Web 开发技能,专注 <b>React JS</b> 及相关技术。在响应式设计项目上协作,优先提升用户体验。"
-      ]
+    "labels": {
+      "now": "至今",
+      "allContributions": "查看全部 {count} 项",
+      "earlier": "更早经历",
+      "forkNote": "离开 · 2025年8月",
+      "mergeNote": "重新加入 · 2026年3月",
+      "readCoverage": "阅读 {publisher} 报道"
     }
   },
   "Projects": {
     "labels": {
-      "publicEvidence": "投资相关报道",
-      "website": "公司官网",
-      "readCoverage": "阅读 {publisher} 报道"
+      "readCoverage": "阅读 {publisher} 报道",
+      "context": "背景",
+      "decisions": "决策",
+      "outcome": "结果",
+      "evidence": "证据",
+      "caseFile": "查看案例",
+      "moreTitle": "个人项目与教学",
+      "note": "我关于这轮融资的笔记"
     },
     "logiup": {
-      "accomplishments": [
-        "作为 <b>Tech Lead 和系统架构师</b>带领一支<b>4 人工程团队</b>，负责技术方向、架构决策、评审规范、入职培养及跨<b>9 个独立代码仓库</b>的交付。",
-        "将 LogiUP 设计为<b>多租户物流 SaaS</b>：Web 与 Electron 桌面端共享一套 Next.js UI codebase，采用 NestJS control plane、FastAPI AI data plane、PostgreSQL、Redis/BullMQ、Cloudflare R2，以及相互隔离的 staging/production GitOps 环境。",
-        "构建端到端租户隔离，包括客户专属子域名、数据库驱动的 host resolution、tenant-scoped RBAC 与 token、wildcard/on-demand TLS，以及自主管理的 OAuth 2.1/OIDC provider，使用 RS256/JWKS 和 Electron PKCE/deep-link 认证。",
-        "交付 AI 辅助海关申报 workflow，以<b>6 个最小权限 runtime role</b>隔离职责，并提供可恢复的私有对象上传、人工确认的 AI 建议及覆盖 8 个独立确认区段的<b>31 个强类型 API endpoint</b>。",
-        "将海关 workflow 扩展到<b>出口申报</b>（2026 年 10 月进入 UAT），构建<b>基于规则的文档分类引擎</b>；NestJS platform 的 <b>738 次 commit 中有 737 次</b>由本人完成。"
-      ]
+      "name": "LogiUP",
+      "kind": "多租户物流 SaaS",
+      "role": "技术负责人兼系统架构师",
+      "period": "2026年3月 – 至今",
+      "context": "这是一套物流 SaaS，每个客户有独立子域名，数据绝不能流到其他租户。产品运行在 Web 和 Electron 桌面应用上。我带一个四人团队，并对架构负责。",
+      "decisions": {
+        "0": "每个 token 和每次 RBAC 检查都带着租户，只凭子域名无法访问。",
+        "1": "Web 和 Electron 应用都通过自建的 OAuth 2.1/OIDC 服务登录，使用 PKCE。",
+        "2": "AI 给出建议值，申报单的 8 个部分逐一由人确认。"
+      },
+      "outcome": {
+        "0": "截至 2026年8月，<b>9 个仓库</b>共用一套架构：Web 与 Electron 共用 Next.js UI，NestJS 控制面，FastAPI AI 数据面。",
+        "1": "报关流程背后有 <b>6</b> 个最小权限运行时角色和 <b>31</b> 个类型化 API 端点。",
+        "2": "出口报关于 2026年10月进入 UAT，配有基于规则的单证分类器。"
+      }
     },
     "bonbon": {
-      "accomplishments": [
-        "作为 BonBon Mobility 联合创始人，在 <b>3 个月</b>内完成支撑 BonBon 从 MVP 进入真实场景试点的产品集成，在 Tasco × GenAI Fund Wash3000 MVP Demo Day 跻身<b>前三名决赛团队</b>，随后赢得该项目，并助力促成由 <b>Tasco 领投、GenAI Fund 参投的 50 万美元 pre-seed 轮</b>顺利完成。",
-        "架构并将 <b>12 屏 Mini App</b>集成到拥有<b>430 万用户</b>的 VETC 应用生态，支持 partner code 静默登录、纯内存 session、deep link、前台串行轮询与基于 PII allow-list 的 analytics。",
-        "通过 kill-switch feature flag、确定性 rollout、事务审计、checksum/CSP 门禁、Playwright 流程和 <b>800+ 单元测试</b>，保障 Go API、Backoffice、Web 与 Mobile 的发布安全。",
-        "在 Go API 与 web/Mini App monorepo 中完成 <b>4,000+ 次 commit</b>（约占各仓库的三分之二到 85%），约 <b>90 份 spec</b>，<b>425 个 Go 测试文件</b>。",
-        "让预约与车厂搜索又快又可观测：车厂看板 <b>3 次查询</b>、索引搜索、结果缓存、p95 告警。"
-      ]
+      "name": "BonBon Mobility",
+      "kind": "VETC 应用内的洗车与养护预约",
+      "role": "联合创始人",
+      "period": "2026年4月 – 至今",
+      "context": "BonBon 连接车主与洗车、养护门店。作为联合创始人，我把产品做成运行在 VETC 应用内的 12 屏 Mini App。据 Tasco 公布，VETC 截至 2026年4月有 <b>430 万</b>用户。每次发布都要经过 VETC 的变更审批和安全流程，其中包括 OWASP 审查和一次独立渗透测试。",
+      "decisions": {
+        "0": "车主用已有的 VETC 会话登录，无需再输 OTP。",
+        "1": "会话只存在内存中，VETC 规则不允许在浏览器里存 token。",
+        "2": "新功能放在默认关闭的 kill switch 后面，不发版就能关掉。"
+      },
+      "outcome": {
+        "0": "BonBon 赢得 Tasco Foundry Wash3000：约 <b>100</b> 份申请，前 10，3 支决赛队伍，1 个冠军（GenAI Fund，2026年9月）。",
+        "1": "由 Tasco 领投、GenAI Fund 跟投的 <b>50 万美元</b> pre-seed 轮（2026年9月）。",
+        "2": "从 MVP 到实地试点用了 <b>3 个月</b>，正好是 Wash3000 项目的周期。"
+      }
     },
     "sat": {
-      "accomplishments": [
-        "统筹从 UI/UX 设计、产品工程到用户行为分析的产品开发,在两个月内取得超过 <b>10,000</b> 次访问与 <b>3,000</b> 次注册的全球用户基础。",
-        "通过战略性 SEO 举措(包括 <b>parasite SEO</b> 技术)提升 Google 搜索排名。这些努力带来了显著的性能提升,并使产品在行业中得到有效定位。",
-        "通过仅使用一个具有 <b>1 CPU</b> 与 <b>256 MiB</b> 内存上限的 Cloud Run 实例,展示前端应用开发中的效率与资源优化。",
-        "以<b>移动优先</b>方式主导开发移动应用,在<b>两天内</b>快速上架应用商店。同时确保所有设备上的 <b>PWA</b> 安装无缝,提升可达性与用户体验。",
-        "开发<b>变现功能</b>,包括 <b>Google Ads</b> 集成与 <b>Stripe</b> 支付流程,增强营收能力。"
-      ]
-    },
-    "cdp": {
-      "accomplishments": [
-        "主导 CDxP 项目的架构与实现,专注于 <b>UI/UX</b> 功能,从而提升了整体用户体验与用户参与度。",
-        "配置嵌套路由,维持<b>可扩展</b>的项目结构,展示对 ES6、Typescript 与数据类型的深厚知识,从而<b>提升代码可维护性</b>并减少代码相关问题。",
-        "有效<b>追踪错误</b>与改进,支持 bug 修复,确保项目的<b>稳定性</b>,从而提升系统可靠性并减少停机时间。",
-        "实现 <b>RBAC</b> Hook 用于验证自适应客户端配置中组件访问的授权。此外,基于模块化设计,构建了超过 <b>20 个可重用的工具功能</b>。",
-        "构建 <b>10+ 高级功能</b>,例如档案、活动、分析等。",
-        "建立健壮的测试流程,覆盖核心 CDP 功能,包含 <b>100+ 场景</b>与 <b>1000+ 测试用例</b>。",
-        "掌握领域专业并精通测试方法,包括 BDD、单元测试与 <b>E2E 测试</b>,提升测试覆盖率,减少软件 bug <b>30%</b>。",
-        "开发用于运行时切换的<b>特性开关</b>,支持 A/B 测试与基于客户分群的功能分组,优化功能交付并提升采用率。",
-        "为清晰与易于维护对组件进行<b>文档化</b>,提升代码可读性并减少维护时间。"
-      ]
-    },
-    "sdk": {
-      "accomplishments": [
-        "使用 <b>vanilla JS</b> 成功开发了超过 <b>5 个模块</b>,集成超过 <b>10 个高级功能</b>。实现了 <b><200kb 的 bundle 大小与 <150ms</b> 的加载时间(在采用全部 bundle 优化技术之前测得的数据)。",
-        "利用 <b>web worker 与 service worker</b> 在后台进行多任务处理,有效管理复杂功能并处理<b>多种边界情况</b>,例如同时多标签使用。",
-        "此外,使用<b>微前端</b>架构设计并实现了<b>个性化推荐功能</b>,具体是展示用户可能喜欢产品的轮播块,从而提升体验与参与度。",
-        "构建的高级功能包括 Web 弹窗、Web 推送通知、<b>Web 组件嵌入</b>、WebSocket 集成,以及多标签下烦人弹窗的管理。",
-        "进一步利用 <b>JS Closure</b> 组织模块结构,实现无缝功能导出或<b>数据封装</b>,从而<b>避免</b>在全局作用域内的冲突。"
-      ]
+      "name": "Digital SAT Math",
+      "proof": "从开发到运营一人负责。头两个月 <b>10,000+ 访问、3,000+ 注册</b>。"
     },
     "vac": {
-      "accomplishments": [
-        "在 Vietnam Australia Center 承担<b>教授</b> <b>Front-end Project</b> 课程的责任。",
-        "设计并交付<b>引人入胜的讲座</b>,为学生提供前端开发项目的实践指导。",
-        "聚焦营造<b>协作</b>学习环境,鼓励 <b>12 名学生</b><b>团队合作</b>,并使课程与行业最佳实践对齐。",
-        "提供个性化<b>反馈</b>与<b>指导</b>,支持学生<b>克服挑战</b>并确保对课程内容的全面理解。"
-      ]
-    },
-    "mona": {
-      "accomplishments": [
-        "使用 <b>React Native</b> 与 Realm DB 开发了一款全面的移动应用 Mona House,用于高效的住所管理。",
-        "专注于创建跨平台应用,重点是<b>可重用组件</b>、流畅动画以及与原生模块的无缝集成。",
-        "展示出强大的<b>问题解决</b>与<b>故障排查</b>能力,通过高级调试工具与性能剖析迅速识别并解决复杂问题。",
-        "展示出对新技术的<b>适应性</b>与<b>快速学习曲线</b>,使新框架、编程语言或工具的无缝实现成为可能,以确保项目完成。"
-      ]
-    },
-    "mobivi": {
-      "accomplishments": [
-        "在 Mobivi 开发了一个<b>全栈 Web 应用</b>,专注于摄取并处理超过 <b>20 个 Excel 文件</b>,每个文件包含超过 <b>20,000 条记录</b>。",
-        "应用旨在高效处理用户的渐进式计算事务数据,<b>确保准确可靠的报表</b>。"
-      ]
-    },
-    "savyu": {
-      "accomplishments": [
-        "在 Synova 开发<b>两款移动</b>应用中发挥关键作用 - 一款面向商户,另一款面向消费者。",
-        "参与创建一个<b>Web 应用</b>,使管理员能高效管理用户数据。",
-        "展示<b>移动应用开发</b>的精通,与跨职能团队协作,确保成功交付<b>直观</b>且<b>高性能</b>的应用。"
-      ]
+      "name": "Vietnam Australia Center",
+      "proof": "为 <b>12 名</b>学员讲授前端项目课程，从需求到可运行的 React 应用。"
     }
   },
   "CTA": {
-    "eyebrow": "联系",
-    "title": "交流产品与系统问题",
-    "body": "我关注同时涉及产品交付、系统可靠性与技术领导力的问题。",
-    "emailMe": "邮件",
-    "resumePdf": "简历 (PDF)",
-    "linkedin": "LinkedIn"
+    "title": "如果职位合适，欢迎发邮件给我。",
+    "openToLabel": "意向职位",
+    "openTo": "Staff/Principal Engineer, Lead Fullstack / Product Engineer, Engineering Manager",
+    "whereLabel": "工作地点",
+    "where": "胡志明市或远程 (UTC+7)",
+    "emailLabel": "邮箱",
+    "copyEmail": "复制邮箱",
+    "copied": "已复制",
+    "copiedStatus": "邮箱地址已复制。",
+    "copyFailed": "浏览器阻止了复制。地址已选中，请按 Ctrl+C（Mac 上按 ⌘C）复制。",
+    "phoneLabel": "电话",
+    "linksLabel": "链接",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "resumePdf": "简历 (PDF)"
+  },
+  "About": {
+    "title": "最难的部分我仍然亲自写，同时把团队搭好，让决策不必等我。",
+    "lede": "我从 2018 年开始交付软件：早期创业公司、外包公司、产品公司、Zalo，以及一家正在交接 CTO 的公司。2026 年 3 月 Zalo 请我回去做 Lead，同一年我还联合创办了一家创业公司。每换一次环境，我的工作方式都会变。有两个习惯一直没变：小步发布，每一步都能回滚；默认信任团队。",
+    "arc": {
+      "label": "2018 年以来的路线",
+      "early": "创业、外包",
+      "product": "产品",
+      "scale": "大厂",
+      "handover": "交接",
+      "now": "Lead、联合创始"
+    },
+    "story": {
+      "title": "一路走来",
+      "periods": {
+        "early": {
+          "dates": "2018–2020",
+          "where": "Propman Guru，之后 Splus Software",
+          "env": "早期创业公司，之后外包",
+          "body": "我在早期房地产创业公司 Propman Guru 做前端起步，是最早的几位工程师之一。之后在外包公司 Splus Software 待了 16 个月，做了 8 个以上教育、餐饮、银行和电商客户项目，也第一次带小团队。2019 年获得 Best Rookie of the Year。",
+          "shift": "在这里我走完了项目的完整一圈，从客户的第一份需求到交付交接。"
+        },
+        "product": {
+          "dates": "2020–2024",
+          "where": "PrimeData",
+          "env": "B2B 产品创业公司",
+          "body": "近四年专注一个产品：客户数据平台 CDxP。我带领 4 人前端团队，把追踪 SDK 控制在 <b>200 KB</b> 以内，并做了我的第一套运行时 feature flag。",
+          "shift": "长期做一个产品，就得和自己的决定一起生活。feature flag、体积预算和发布前的测试从此成了习惯。"
+        },
+        "scale": {
+          "dates": "2024–2025",
+          "where": "Zalo PC",
+          "env": "大厂，消费级产品",
+          "body": "<b>18M+ MAU</b> 的桌面客户端。我交付了深色模式、动态主题和下载模块，并主导了 50 多名开发者共用的 Storybook 设计系统。",
+          "shift": "共享组件加上数百万人使用的应用，让稳定排在速度之前。"
+        },
+        "handover": {
+          "dates": "2025–2026",
+          "where": "NDSVN",
+          "env": "企业，支付与电信合作方",
+          "body": "我在 CTO 交接后加入，接手 8 名开发和 3 名 QC 的交付团队的技术负责。我建立了结构化面试，并交付了支持 <b>30+ 租户</b>的 feature flag 平台。",
+          "shift": "带团队意味着把团队的做事方式写下来，让决定不必等某一个人。"
+        },
+        "now": {
+          "dates": "2026–至今",
+          "where": "Zalo PC、BonBon Mobility、LogiUP",
+          "env": "大厂、自己的创业公司、B2B SaaS",
+          "body": "2026 年 3 月，Zalo 重新聘请我担任 Lead。我负责多设备消息与客户端存储，其中包括 PC 端消息备份和移动端恢复。在 Zalo 之外，我联合创办了 BonBon Mobility，在约 100 份申请中赢得 Tasco Foundry Wash3000，并完成 Tasco 领投的 <b>50 万美元</b> pre-seed 轮。在多租户物流 SaaS LogiUP，我是 4 人团队的技术负责人兼系统架构师。",
+          "shift": "在这个角色里，我的大部分工作是做决定：架构怎么拆分，什么默认关闭再上线，合作方的安全审查会接受什么。"
+        }
+      }
+    },
+    "habits": {
+      "title": "我适合什么样的团队",
+      "items": {
+        "scale": {
+          "title": "要把大功能交到真实用户手里，又不能出事故的团队",
+          "proof": "第一批放量时，<b>80%</b> 的用户完整走完了备份和恢复流程。这是电脑端消息备份、手机端恢复功能，跑在月活超过 1800 万的桌面客户端上，<b>2 个 Sprint</b> 就交到了真实用户手里。当时 Zalo PC 刚把我请回去做 Lead，我还在试用期。我们分批放量，每一批都盯得足够紧，有问题能马上修。",
+          "source": "Zalo PC · 2026"
+        },
+        "handover": {
+          "title": "刚失去技术带头人的团队",
+          "proof": "NDSVN 交接 CTO 后 <b>2 周</b>，团队就回到了正常的 Sprint 节奏。当时我接手了这支团队 8 名开发和 3 名 QC 的技术工作。这种时候，大家最想知道的是自己处在什么位置，所以我先从 1:1 和每个人的日常工作入手，再和每个人一起写下 3 个月、6 个月、12 个月的成长计划。认可看清楚的数据，比如每个人的 Sprint 速率，功劳归到真正做出来的人。",
+          "source": "NDSVN · 2025–2026"
+        },
+        "zeroToOne": {
+          "title": "有了想法、需要尽快做出可用产品的团队",
+          "proof": "我们从想法到可用的产品用了四周，接着做了一个月的实地试点。这就是我联合创办的创业公司 BonBon。它在约 100 份申请中赢得 Tasco Foundry 的 Wash3000，随后完成由 Tasco 领投的 <b>50 万美元</b>种子前轮融资。",
+          "source": "BonBon · 2026"
+        },
+        "platform": {
+          "title": "许多客户共用一个平台的 B2B 产品",
+          "proof": "做 B2B SaaS，代价最大的 bug 是一个客户看到了另一个客户的数据。在 LogiUP，我把按客户隔离做进了地基，从令牌到每一次权限检查，每一层都隔离，这样四个人的团队可以放心持续交付。AI 辅助报关流程也守同样的规矩：AI 给建议，每一部分由人确认，因为填错一个字段，客户就要赔钱。出口报关单自 2026 年 10 月起进入 UAT。",
+          "source": "LogiUP, NDSVN · 2025–2026"
+        }
+      },
+      "stack": "目前在用（截至 2026 年 11 月）：TypeScript、React、Next.js、Electron、Go、NestJS、PostgreSQL、Redis、Kubernetes、PostHog。"
+    },
+    "writing": {
+      "title": "我靠写下来学习。",
+      "body": "我在<blog>博客</blog>和<notes>笔记</notes>里记录工作教会我的事：带团队、灰度发布、安全的默认值、与 AI 协作。可以从这两篇开始：<note>BonBon 50 万美元融资背后的工程</note>，以及<post>让部署更安全的 feature flag</post>。",
+      "teaching": "2023 年 5 月，我在 Vietnam Australia Center 讲授前端项目课程：<b>12 名</b>学员，从需求到可运行的 React 应用。"
+    },
+    "closing": {
+      "body": "我最能发挥的地方，是有真实用户依赖的产品，加上一支想持续交付的团队。我的职责是让有风险的改动随时可以撤回，让方向保持清楚，这样没有人需要等我拍板。",
+      "linksLabel": "简历、邮箱和经历",
+      "resume": "简历 (PDF)",
+      "email": "邮箱",
+      "experience": "查看经历"
+    }
+  },
+  "ReaderTools": {
+    "label": "阅读工具",
+    "scrollTop": "回到顶部",
+    "scrollBottom": "前往底部",
+    "font": "更改阅读字体",
+    "background": "更改阅读背景",
+    "language": "切换语言",
+    "reading": "阅读",
+    "nativeShare": "更多分享方式",
+    "copyFailed": "复制失败，链接已选中。",
+    "jumpToContents": "跳到目录"
   },
   "SEO": {
     "home": {
       "title": "Nguyen Le Phong | Lead Software Engineer，BonBon Mobility 联合创始人",
-      "description": "Zalo PC Lead Software Engineer，BonBon Mobility 联合创始人（Tasco 领投 50 万美元 Pre-seed 轮），LogiUP Tech Lead。PC 到移动端消息备份、多租户 SaaS。"
+      "description": "Zalo PC Lead Software Engineer；同时担任 BonBon Mobility 联合创始人（Tasco 领投 50 万美元 Pre-seed 轮）和 LogiUP Tech Lead。PC 到移动端消息备份、多租户 SaaS。"
+    },
+    "about": {
+      "title": "关于 Nguyen Le Phong：Zalo PC Lead，BonBon 联合创始人",
+      "description": "从外包公司到带领 Zalo PC 多设备同步、联合创办 BonBon Mobility，以及我最能帮上忙的团队。"
+    },
+    "blog": {
+      "title": "软件架构、AI 与团队协作博客 | Nguyen Le Phong",
+      "description": "Zalo PC 的 Lead Software Engineer 从实际工作出发，写软件架构、AI 辅助开发，以及工程团队如何协作。"
+    },
+    "notes": {
+      "title": "工作、学习与生活笔记 | Nguyen Le Phong",
+      "description": "关于职业、读书、理财和日常决定的短篇笔记，作者是 Zalo PC 的 Lead Software Engineer。深入的技术文章在博客。"
     },
     "gallery": {
       "title": "作品集：证书、奖项与项目 | Nguyen Le Phong",
@@ -298,7 +442,10 @@
       "partial": "offline 阅读缓存目前只完成了一部分。请让这个语言页面再保持在线一会儿。",
       "offlineReady": "你当前处于 offline 状态，但已保存的页面和文章仍可继续阅读。",
       "offlinePartial": "你当前处于 offline 状态。有些页面可能需要先在线打开一次，之后才会被保存。",
-      "dismiss": "隐藏 offline 提醒"
+      "dismiss": "隐藏 offline 提醒",
+      "updateReady": "网站有新版本了。",
+      "reload": "刷新",
+      "dismissUpdate": "隐藏更新提醒"
     },
     "page": {
       "eyebrow": "连接已断开",
@@ -320,109 +467,41 @@
       "heading": "应用"
     },
     "gallery": {
-      "eyebrow": "作品集",
-      "title": "工作背后的信号",
-      "sub": "一个小小的合集，记录我学过、做过、被认可过，以及持续练习的东西。如果简历展示角色，这里展示角色背后的工作节奏。",
+      "title": "照片与证书",
+      "sub": "奖项、证书和一些工作中的瞬间。点开每张图，会看到原图或能佐证它的来源。",
       "back": "← 返回简历",
       "all": "全部",
-      "tabsLabel": "职业信号筛选",
-      "hero": {
-        "kicker": "Proof portfolio",
-        "title": "比几行简历更能说明问题的小信号",
-        "lead": "我把证书、认可、项目片段和一些日常瞬间放在这里，让读者能看到我如何学习、如何和团队协作，以及如何长期保持稳定的delivery。",
-        "primaryCta": "查看这些信号",
-        "scanNote": "给快速浏览的recruiter：先读故事，再按需要打开每一组证据。",
-        "proofTitle": "更接近真实工作方式的一面"
-      },
-      "stats": {
-        "label": "作品集信号",
-        "proofs": "信号",
-        "proofsDetail": "可对照的图片、证书和工作瞬间。",
-        "certifications": "证书",
-        "certificationsDetail": "为了更谨慎地工作而持续学习。",
-        "recognitions": "认可",
-        "recognitionsDetail": "来自团队、项目和长期挑战的结果。",
-        "builds": "项目",
-        "buildsDetail": "已经形成具体形态的产品、demo和作品。"
-      },
-      "trust": {
-        "label": "Recruiter lens",
-        "title": "如何阅读这一页",
-        "learning": {
-          "title": "持续学习和更新的习惯",
-          "body": "证书不是孤立的徽章；它们说明我习惯通过学习把工作处理得更稳。"
-        },
-        "delivery": {
-          "title": "对结果负责",
-          "body": "认可和项目片段说明我愿意和团队一起把事情推进到完成。"
-        },
-        "team": {
-          "title": "耐力与协作",
-          "body": "活动瞬间展示的是长期工作需要的能量、纪律和稳定性。"
-        }
-      },
-      "story": {
-        "label": "快速阅读方式",
-        "title": "不是照片墙，而是一条持续进步的痕迹",
-        "body": "每一组都回答一个小问题：我学到了什么，在哪里被信任，做过什么，以及在正式项目之外如何训练长期耐力。"
-      },
-      "categoryNotes": {
-        "all": "从学习到delivery，按一条完整路径阅读。",
-        "certificates": "有目的的学习，让工作更扎实。",
-        "awards": "对主动性、稳定性和责任感的认可。",
-        "projects": "构建、交付、教学或探索留下的痕迹。",
-        "activities": "展示能量、纪律和长期习惯的日常瞬间。"
-      },
-      "categoryIntros": {
-        "certificates": {
-          "body": "这一部分展示我如何继续打基础：更理解系统，也更谨慎地处理compliance、security和产品质量。",
-          "signal": "持续学习会让工作随着时间变得更扎实、更谨慎。"
-        },
-        "awards": {
-          "body": "这些认可不是终点，而是一些小节点：快速进入状态、承担责任，并在较长的挑战中坚持下去。",
-          "signal": "真实团队环境最能看见一个人的稳定性和责任感。"
-        },
-        "projects": {
-          "body": "这里有产品、demo和作品的一些切片。重要的不只是截图，而是把想法变成可运行、可解释、可改进的过程。",
-          "signal": "想法变成可运行、可解释、可持续改进的东西时，才更有意义。"
-        },
-        "activities": {
-          "body": "不是所有职业信号都在ticket或release里。有些个人节奏和习惯，支撑着可持续的工作状态。",
-          "signal": "个人纪律帮助我和团队保持更长期、稳定的节奏。"
-        }
-      },
+      "tabsLabel": "按分组筛选照片",
       "captions": {
-        "veryGood": "以Very Good成绩毕业 - 早期认真打下的学习基础。",
-        "scoreboard": "学习成绩记录 - 稳定积累的一小段痕迹。",
-        "testerCertificate": "Tester certificate - 学会用验证视角看产品质量。",
-        "compliance": "Compliance Refresh Training - 让产品工作更安全、更符合流程。",
-        "cybersecurity": "Cybersecurity Refresh Training - 在delivery中加强security思维。",
-        "bestRookie": "Best Rookie of the Year - 对快速进入状态和持续努力的认可。",
-        "splus": "Splus Certificate - 团队环境中的一个小节点。",
-        "primeAward": "Award at PrimeData - delivery中ownership和主动性的结果。",
-        "upraceMedals": "UpRace medals - 在工作之外训练长期节奏和耐力。",
-        "uprace323": "UpRace 323km - 小小的公里数累积成值得记住的结果。",
-        "penangHill": "Penang Hill 11km - 一段一段坚持，最后到达山顶。",
-        "deskWorking": "一个普通的工作角落 - 纪律每天都在这里重复。",
-        "chessProject": "Chess games project - 从逻辑、UI和游戏体验构建产品。",
-        "watProject": "WAT project - 团队产品工作留下的痕迹。",
-        "essay": "文章与分享 - 练习把想法讲清楚。",
-        "teamEssay": "团队协作的一刻 - 想法只有被一起实现时才更有价值。",
-        "drone": "Drone applications - 把产品想法探索到可运行模型。",
-        "bonbonTeam": "BonBon联合创始人 - 三个人一起学习，一步一步认真打造汽车养护产品。",
-        "bonbonPreSeed": "BonBon获得Tasco与GenAI Fund参与的50万美元pre-seed - 默默积累的准备终于被看见。",
-        "wash3000DemoDay": "Tasco Foundry的Wash3000 Demo Day - 与其他Top 10团队一起学习的一天。"
+        "wash3000DemoDay": "Tasco Foundry 的 Wash3000 Demo Day。BonBon 从约 100 份申请中进入前 10，最终赢得该项目。",
+        "bonbonPreSeed": "BonBon Mobility 的 50 万美元 pre-seed 轮，由 Tasco 领投、GenAI Fund 跟投，于 2026 年 9 月 21 日宣布。",
+        "bonbonTeam": "BonBon Mobility 的联合创始人：Nguyen Chi Dung、Vu Duy Hung 和我。",
+        "bestRookie": "Splus Software 年度最佳新人（Best Rookie of the Year），2019 年。",
+        "primeAward": "PrimeData 最有价值员工（Most Valuable Employee），2020 年 8 月。",
+        "splus": "Splus Software 颁发的 2019 年度最佳新人证书。",
+        "veryGood": "农林大学（Nong Lam University）为优秀（Very Good）毕业颁发的奖状。",
+        "scoreboard": "农林大学成绩单，GPA 3.36。",
+        "testerCertificate": "Global Software Tester 课程结业证书，240 小时，A 级，2019 年 6 月。",
+        "compliance": "Compliance Refresh Training，可在 Coursera 上验证。",
+        "cybersecurity": "Cybersecurity Refresh Training，可在 Coursera 上验证。",
+        "upraceMedals": "UpRace 2024 完赛奖牌：5 公里、10 公里和 21 公里。",
+        "uprace323": "UpRace 323 公里证书。",
+        "penangHill": "马来西亚槟城升旗山徒步，11 公里。",
+        "deskWorking": "在自己的工位上写代码。",
+        "essay": "农林大学信息技术学院的毕业论文答辩，课题是无人机。",
+        "teamEssay": "毕业论文课题的无人机，在答辩时展示。",
+        "drone": "实验台上正在组装的毕业论文无人机：机架、电机和控制板。",
+        "chessProject": "带 AI 对手的中国象棋，是我在农林大学读书时做的游戏。",
+        "watProject": "WAT，Splus Software 的客户项目，2019 年。"
       },
-      "featured": "重点信号",
-      "supporting": "补充信号",
-      "openProof": "打开信号",
-      "verified": "已验证来源",
-      "original": "完整图片",
+      "verified": "来源",
+      "original": "原图",
       "categories": {
-        "certificates": "证书",
-        "awards": "奖项",
-        "projects": "项目",
-        "activities": "活动"
+        "bonbon": "BonBon Mobility",
+        "recognition": "荣誉",
+        "education": "学历与证书",
+        "outside": "工作之外",
+        "earlier": "早期项目"
       }
     },
     "thoughts": {
@@ -446,9 +525,9 @@
       "close": "关闭"
     },
     "notes": {
-      "eyebrow": "个人百科",
+      "eyebrow": "关于工作与生活",
       "title": "笔记",
-      "intro": "一处私人档案——存放我学到、经历过、想要记住的一切。关于生活、工作，以及那些没有简单答案的问题的思考。",
+      "intro": "关于职业、读书、理财，以及日常各种决定的短篇笔记。想看深入的技术文章，建议从<blog>博客</blog>开始。",
       "stats": {
         "topics": "专题",
         "articles": "笔记",
@@ -480,6 +559,7 @@
         "results": "{count, plural, =0 {暂无笔记} other {# 篇笔记}}",
         "noResults": "没有符合搜索条件的笔记。",
         "searchUnavailable": "搜索暂时不可用。你仍可以继续浏览下方页面。",
+        "searching": "搜索中…",
         "pagination": {
           "label": "笔记分页",
           "prev": "上一页",
@@ -516,6 +596,7 @@
         "results": "{count, plural, =0 {暂无文章} other {# 篇文章}}",
         "noResults": "没有符合搜索条件的文章。",
         "searchUnavailable": "搜索暂时不可用。你仍可以继续浏览下方页面。",
+        "searching": "搜索中…",
         "pagination": {
           "label": "博客分页",
           "prev": "上一页",
@@ -527,15 +608,16 @@
       },
       "eyebrow": "文章",
       "title": "博客",
-      "intro": "关于软件架构与源码结构的深度文章——写得让初学者也能读懂，同时对大规模交付的团队同样有用。配有图示、真实案例，绝不空谈。",
+      "intro": "关于软件架构与源码结构的深度文章，写得让初学者也能读懂，同时对大规模交付的团队同样有用。配有图示、真实案例，绝不空谈。职业与生活方面的思考放在<notes>笔记</notes>里。",
       "categoriesHeading": "按主题浏览",
       "latestHeading": "最新文章",
+      "startHereHeading": "从这里开始",
+      "seriesHeading": "按系列阅读",
       "empty": "暂无文章——第一篇即将发布。",
       "backToBlog": "返回博客",
       "backToCategory": "返回 {category}",
       "readingTime": "{minutes} 分钟阅读",
       "articleCount": "{count, plural, other {# 篇文章}}",
-      "writtenBy": "作者：{author}",
       "onThisPage": "本页内容",
       "readerTools": {
         "label": "阅读工具",
@@ -573,6 +655,11 @@
       }
     }
   },
+  "Author": {
+    "byline": "作者：<author>{name}</author>，{role}",
+    "heading": "关于作者",
+    "cvLink": "查看经历与简历"
+  },
   "ArticleRelated": {
     "notesHeading": "相关笔记",
     "notesIntro": "与这篇主题相近的几篇笔记，方便你顺着同一条思路继续读。"
@@ -583,8 +670,8 @@
     "action": "阅读{language}版本"
   },
   "SiteIndex": {
-    "metaTitle": "站点地图：所有文章与笔记",
-    "metaDescription": "按主题整理的博客文章、笔记、系列和归档页面列表，每个页面都只隔一个链接。",
+    "metaTitle": "站点地图：个人简介、文章与笔记",
+    "metaDescription": "本站所有页面的列表：先是个人简介和简历，再按主题列出博客文章、笔记、系列和归档页面。",
     "eyebrow": "站点索引",
     "title": "站点地图",
     "intro": "本站所有文章与笔记，按主题分组。可以逐条浏览，也可以直接跳到记得读过的那篇。",
@@ -610,7 +697,8 @@
     "pageLabel": "第 {page} 页",
     "feedsHeading": "订阅源",
     "feedBlog": "博客 RSS 订阅",
-    "feedNotes": "笔记 RSS 订阅"
+    "feedNotes": "笔记 RSS 订阅",
+    "backToTop": "返回顶部"
   },
   "Feeds": {
     "blogTitle": "Nguyen Le Phong：博客",

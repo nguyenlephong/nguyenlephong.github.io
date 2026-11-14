@@ -1,151 +1,178 @@
 import type { Locale } from "@/i18n/routing";
 import {
+  STUDIO_DEFAULT_ROUTE,
   studioCatalog,
-  type StudioPublicModuleRouteId
+  type StudioPublicModuleRouteId,
+  type StudioRouteId,
+  type StudioPublicModuleSlug
 } from "./studio-route-catalog";
 
-export type StudioStaticModule = {
-  id: StudioPublicModuleRouteId;
+/** Studio prose is written natively in English and Vietnamese; other locales fall back to English. */
+export type StudioContentLocale = "en" | "vi";
+
+export type StudioStaticModuleCopy = {
   title: string;
+  seoTitle: string;
   description: string;
-  flowId?: "react-flow-architecture-demo";
-};
-
-export type StudioStaticContent = {
-  eyebrow: string;
-  title: string;
-  intro: string;
-  moduleHeading: string;
+  lead: string;
   openLabel: string;
-  modules: StudioStaticModule[];
 };
 
-export type StudioStaticModuleCopy = Pick<StudioStaticModule, "title" | "description">;
+export type StudioStaticModule = StudioStaticModuleCopy & {
+  id: StudioPublicModuleRouteId;
+  slug: StudioPublicModuleSlug;
+};
 
-type StudioStaticContentCopy = Omit<StudioStaticContent, "modules"> & {
+type StudioStaticContentCopy = {
+  title: string;
+  seoTitle: string;
+  description: string;
+  intro: string;
+  breadcrumbLabel: string;
+  aiWorkflowHeading: string;
+  aiNotesHeading: string;
+  aiSkillsLink: string;
   modules: Record<StudioPublicModuleRouteId, StudioStaticModuleCopy>;
 };
 
-export const studioStaticContentCopyByLocale: Record<Locale, StudioStaticContentCopy> = {
+export type StudioStaticContent = Omit<StudioStaticContentCopy, "modules"> & {
+  contentLocale: StudioContentLocale;
+  modules: StudioStaticModule[];
+};
+
+export const studioStaticContentCopyByLocale: Record<StudioContentLocale, StudioStaticContentCopy> = {
   en: {
-    eyebrow: "Public engineering workspace",
     title: "Engineering Studio",
+    seoTitle: "Engineering Studio: delivery checklists and system maps",
+    description:
+      "The checklists and system maps I use to scope work, ship releases and roll them out safely, plus how I set up AI coding agents.",
     intro:
-      "Explore practical notes, reusable checklists, AI operating guides, and interactive system-design flows built from real software delivery work.",
-    moduleHeading: "Explore the Studio modules",
-    openLabel: "Open module",
+      "The checklists and system maps I use to scope work, ship releases and roll them out safely. Take what helps your team.",
+    breadcrumbLabel: "Engineering Studio",
+    aiWorkflowHeading: "How I split the work",
+    aiNotesHeading: "Setup notes",
+    aiSkillsLink: "Browse the reusable AI skills",
     modules: {
+      "delivery-checklists": {
+        title: "Delivery checklists",
+        seoTitle: "Delivery checklists: ticket intake, release readiness, rollout",
+        description:
+          "Release Readiness, Rollout Plan and the other checklists I walk through from ticket intake to the first days after a release.",
+        lead:
+          "The first two lists gate a release: Release Readiness before code leaves the branch, and Rollout Plan before the change reaches users. The rest cover the work before that: reading the ticket, planning the module, and asking the questions that surface hidden risk.",
+        openLabel: "Read the delivery checklists"
+      },
+      "flow-react-flow-system-blueprint": {
+        title: "System maps",
+        seoTitle: "System maps: a request path from DNS to fan-out services",
+        description:
+          "The system blueprint I use in design reviews, from DNS and edge policy through load balancing, storage and queues to fan-out services.",
+        lead:
+          "One blueprint covers the full path of a request. When a review needs depth on one zone, I open its focused view: DNS and the edge, runtime and load balancing, storage and coordination, or media processing and fan-out.",
+        openLabel: "Open the system maps"
+      },
       "ai-agent-setup": {
         title: "AI agent setup",
-        description: "Repeatable setup notes for capable, secure, and reviewable AI-assisted engineering workflows."
-      },
-      "ai-skills": {
-        title: "AI engineering skills",
-        description: "Reusable skills for architecture reviews, implementation planning, debugging, testing, and delivery."
-      },
-      "delivery-checklists": {
-        title: "Software delivery checklists",
-        description: "Concrete quality gates for design, implementation, release readiness, rollout, and post-release review."
-      },
-      "flow-react-flow-architecture-demo": {
-        title: "System architecture flows",
-        description: "Visual, interactive maps for understanding boundaries, dependencies, failure paths, and operational ownership."
+        seoTitle: "AI agent setup: how I work with coding agents",
+        description:
+          "How I split research, planning, review and coding between AI tools, and what I install on a new machine for agent work.",
+        lead:
+          "These notes record which AI tool does which job, the order I use them in, and how I set up a new machine for agent work.",
+        openLabel: "Read the AI setup notes"
       }
     }
   },
   vi: {
-    eyebrow: "Không gian kỹ thuật công khai",
     title: "Engineering Studio",
+    seoTitle: "Engineering Studio: checklist ra bản và sơ đồ hệ thống",
+    description:
+      "Những checklist và sơ đồ hệ thống tôi dùng để chốt phạm vi, ra bản release và rollout an toàn, cùng cách tôi thiết lập AI agent để làm việc.",
     intro:
-      "Khám phá ghi chú thực tiễn, checklist tái sử dụng, hướng dẫn vận hành AI và system-design flows được đúc kết từ quá trình phát triển phần mềm thực tế.",
-    moduleHeading: "Khám phá các module trong Studio",
-    openLabel: "Mở module",
+      "Những checklist và sơ đồ hệ thống tôi dùng để chốt phạm vi, ra bản release và rollout an toàn. Bạn thấy hợp với team mình thì cứ lấy dùng.",
+    breadcrumbLabel: "Engineering Studio",
+    aiWorkflowHeading: "Cách tôi chia việc",
+    aiNotesHeading: "Ghi chú thiết lập",
+    aiSkillsLink: "Xem các AI skill dùng lại được",
     modules: {
+      "delivery-checklists": {
+        title: "Checklist từ ticket đến rollout",
+        seoTitle: "Checklist ra bản: nhận ticket, kiểm tra release và rollout",
+        description:
+          "Kiểm tra trước khi release, kế hoạch rollout và các checklist tôi dùng từ lúc nhận ticket đến mấy ngày đầu sau khi ra bản.",
+        lead:
+          "Hai checklist đầu chặn cửa mỗi lần ra bản: một cái rà trước khi code rời branch, một cái lên kế hoạch trước khi thay đổi đến tay người dùng. Các checklist còn lại lo phần việc trước đó: đọc ticket, lên kế hoạch cho module và hỏi những câu làm lộ ra rủi ro còn ẩn.",
+        openLabel: "Đọc các checklist"
+      },
+      "flow-react-flow-system-blueprint": {
+        title: "Sơ đồ hệ thống",
+        seoTitle: "Sơ đồ hệ thống: đường đi của request từ DNS đến service fan-out",
+        description:
+          "Bản blueprint tôi dùng khi review thiết kế, đi từ DNS và edge policy qua load balancing, storage, queue đến các service fan-out.",
+        lead:
+          "Một bản blueprint vẽ trọn đường đi của request. Khi buổi review cần đào sâu một vùng, tôi mở view riêng của vùng đó: DNS và edge, runtime và load balancing, storage và điều phối, hoặc xử lý media và fan-out.",
+        openLabel: "Mở sơ đồ hệ thống"
+      },
       "ai-agent-setup": {
         title: "Thiết lập AI agent",
-        description: "Ghi chú thiết lập có thể lặp lại cho quy trình AI-assisted engineering an toàn và dễ review."
-      },
-      "ai-skills": {
-        title: "Kỹ năng AI cho kỹ sư",
-        description: "Các kỹ năng tái sử dụng cho architecture review, lập kế hoạch, debugging, testing và delivery."
-      },
-      "delivery-checklists": {
-        title: "Checklist phát triển phần mềm",
-        description: "Quality gates cụ thể cho thiết kế, triển khai, release readiness, rollout và review sau release."
-      },
-      "flow-react-flow-architecture-demo": {
-        title: "System architecture flows",
-        description: "Bản đồ trực quan giúp hiểu boundaries, dependencies, failure paths và operational ownership."
+        seoTitle: "Thiết lập AI agent: cách tôi làm việc với coding agent",
+        description:
+          "Cách tôi chia việc tìm hiểu, lên kế hoạch, review và viết code giữa các công cụ AI, cùng những thứ tôi cài trên máy mới để làm việc với agent.",
+        lead:
+          "Các ghi chú này ghi lại công cụ AI nào làm việc gì, tôi dùng chúng theo thứ tự nào và cách tôi chuẩn bị một máy mới để làm việc với agent.",
+        openLabel: "Đọc ghi chú thiết lập"
       }
-    }
-  },
-  zh: {
-    eyebrow: "公开工程工作空间",
-    title: "工程 Studio",
-    intro: "探索来自真实软件交付经验的实践笔记、可复用清单、AI 工作指南和交互式系统设计流程。",
-    moduleHeading: "探索 Studio 模块",
-    openLabel: "打开模块",
-    modules: {
-      "ai-agent-setup": { title: "AI Agent 设置", description: "用于安全、可审查的 AI 辅助工程流程的可复用设置指南。" },
-      "ai-skills": { title: "AI 工程技能", description: "面向架构评审、规划、调试、测试和交付的可复用技能。" },
-      "delivery-checklists": { title: "软件交付清单", description: "覆盖设计、开发、发布准备、上线和发布后复盘的质量门槛。" },
-      "flow-react-flow-architecture-demo": { title: "系统架构流程", description: "用于理解边界、依赖、故障路径和运维责任的交互式图谱。" }
-    }
-  },
-  ja: {
-    eyebrow: "公開エンジニアリング・ワークスペース",
-    title: "エンジニアリング Studio",
-    intro: "実際のソフトウェア開発から得た実践ノート、再利用可能なチェックリスト、AI 運用ガイド、システム設計フローを公開しています。",
-    moduleHeading: "Studio のモジュールを見る",
-    openLabel: "モジュールを開く",
-    modules: {
-      "ai-agent-setup": { title: "AI Agent セットアップ", description: "安全でレビュー可能な AI 支援開発のための再現可能なセットアップノート。" },
-      "ai-skills": { title: "AI エンジニアリングスキル", description: "設計レビュー、計画、デバッグ、テスト、デリバリーに使えるスキル集。" },
-      "delivery-checklists": { title: "ソフトウェアデリバリー・チェックリスト", description: "設計からリリース後レビューまでを支える具体的な品質ゲート。" },
-      "flow-react-flow-architecture-demo": { title: "システムアーキテクチャ・フロー", description: "境界、依存関係、障害経路、運用責任を理解するためのインタラクティブな図。" }
-    }
-  },
-  ko: {
-    eyebrow: "공개 엔지니어링 워크스페이스",
-    title: "엔지니어링 Studio",
-    intro: "실제 소프트웨어 딜리버리에서 얻은 실용적인 노트, 재사용 가능한 체크리스트, AI 운영 가이드와 시스템 설계 흐름을 살펴보세요.",
-    moduleHeading: "Studio 모듈 살펴보기",
-    openLabel: "모듈 열기",
-    modules: {
-      "ai-agent-setup": { title: "AI Agent 설정", description: "안전하고 검토 가능한 AI 보조 엔지니어링을 위한 반복 가능한 설정 가이드입니다." },
-      "ai-skills": { title: "AI 엔지니어링 스킬", description: "아키텍처 리뷰, 계획, 디버깅, 테스트와 딜리버리를 위한 재사용 가능한 스킬입니다." },
-      "delivery-checklists": { title: "소프트웨어 딜리버리 체크리스트", description: "설계부터 출시 후 리뷰까지 적용하는 구체적인 품질 기준입니다." },
-      "flow-react-flow-architecture-demo": { title: "시스템 아키텍처 플로우", description: "경계, 의존성, 장애 경로와 운영 책임을 이해하기 위한 인터랙티브 맵입니다." }
-    }
-  },
-  fr: {
-    eyebrow: "Espace d’ingénierie public",
-    title: "Studio d’ingénierie",
-    intro: "Explorez des notes pratiques, des checklists réutilisables, des guides d’usage de l’IA et des flux de conception issus de projets logiciels réels.",
-    moduleHeading: "Explorer les modules du Studio",
-    openLabel: "Ouvrir le module",
-    modules: {
-      "ai-agent-setup": { title: "Configuration des agents IA", description: "Des procédures reproductibles pour une ingénierie assistée par IA sûre et révisable." },
-      "ai-skills": { title: "Compétences d’ingénierie IA", description: "Des compétences réutilisables pour l’architecture, la planification, le débogage, les tests et la livraison." },
-      "delivery-checklists": { title: "Checklists de livraison logicielle", description: "Des critères de qualité concrets, de la conception jusqu’à la revue après mise en production." },
-      "flow-react-flow-architecture-demo": { title: "Flux d’architecture système", description: "Des cartes interactives pour comprendre les frontières, dépendances, pannes et responsabilités opérationnelles." }
     }
   }
 };
 
+/** Shown above English fallback content on locales without native Studio prose. */
+export const studioFallbackNoticeByLocale: Partial<Record<Locale, string>> = {
+  zh: "此页面目前只有英文版。",
+  ja: "このページは英語版のみです。",
+  ko: "이 페이지는 영어로만 제공됩니다.",
+  fr: "Cette page est disponible en anglais uniquement."
+};
+
+export function studioContentLocale(locale: string): StudioContentLocale {
+  return locale === "vi" ? "vi" : "en";
+}
+
 export function getStudioStaticContent(locale: string): StudioStaticContent {
-  const copy = studioStaticContentCopyByLocale[locale as Locale] ?? studioStaticContentCopyByLocale.en;
+  const contentLocale = studioContentLocale(locale);
+  const copy = studioStaticContentCopyByLocale[contentLocale];
   return {
     ...copy,
+    contentLocale,
     modules: studioCatalog.publicModules.map((module) => ({
       id: module.routeId,
-      ...copy.modules[module.routeId],
-      ...("flowId" in module ? { flowId: module.flowId } : {})
+      slug: module.slug,
+      ...copy.modules[module.routeId]
     }))
   };
 }
 
-export function getStudioStaticModuleHref(locale: string, module: StudioStaticModule): string {
-  const flowQuery = module.flowId ? `&flow=${encodeURIComponent(module.flowId)}` : "";
-  return `/${locale}/studio?route=${encodeURIComponent(module.id)}${flowQuery}#${module.id}`;
+export function getStudioStaticModule(locale: string, slug: string): StudioStaticModule | undefined {
+  return getStudioStaticContent(locale).modules.find((module) => module.slug === slug);
+}
+
+/** Visible links stay on the route locale so the shell keeps the reader's language. */
+export function getStudioStaticModuleHref(locale: string, module: Pick<StudioStaticModule, "slug">): string {
+  return `/${locale}/studio/${module.slug}`;
+}
+
+export type StudioRoutePageTitles = { heading: string; documentTitle: string; lang: string };
+
+/**
+ * Heading and <title> for a route the shell opens client-side. Routes with a
+ * server page reuse that page's h1 and metadata title verbatim, so a pushState
+ * navigation and a reload of the same URL read the same. Query-only routes use
+ * the shell's localized route title.
+ */
+export function getStudioRoutePageTitles(locale: string, routeId: StudioRouteId, routeTitle: string): StudioRoutePageTitles {
+  const contentLocale = studioContentLocale(locale);
+  const copy = studioStaticContentCopyByLocale[contentLocale];
+  const modules: Partial<Record<StudioRouteId, StudioStaticModuleCopy>> = copy.modules;
+  const page = routeId === STUDIO_DEFAULT_ROUTE ? copy : modules[routeId];
+  if (page) return { heading: page.title, documentTitle: page.seoTitle, lang: contentLocale };
+  return { heading: routeTitle, documentTitle: `${routeTitle} | ${copy.title}`, lang: locale };
 }

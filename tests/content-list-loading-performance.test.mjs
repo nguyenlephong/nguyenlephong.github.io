@@ -42,13 +42,23 @@ test("public navigation and archive links use shared intent prefetch without los
   assert.doesNotMatch(link, /onClick=/);
   assert.doesNotMatch(link, /onTouchStart=/);
 
-  for (const [card, eventName] of [
-    [blogCard, "blog_card_click"],
-    [noteCard, "notes_card_click"]
-  ]) {
-    assert.match(card, /IntentPrefetchLink/);
-    assert.match(card, /onClick=\{\(\) =>/);
-    assert.match(card, new RegExp(`track\\(["']${eventName}["']`));
+  assert.match(noteCard, /IntentPrefetchLink/);
+  assert.match(noteCard, /onClick=\{\(\) =>/);
+  assert.match(noteCard, /track\(["']notes_card_click["']/);
+
+  // The blog card is server-rendered (MEP-72): one delegated listener reports
+  // blog_card_click from its data attributes, so the card ships no client code.
+  const cardTracker = await readFile("src/components/blog/BlogCardClickTracker.tsx", "utf8");
+  assert.match(blogCard, /IntentPrefetchLink/);
+  assert.doesNotMatch(blogCard, /^['"]use client['"]/m);
+  assert.doesNotMatch(blogCard, /onClick=/);
+  assert.match(blogCard, /data-blog-card=\{post\.slug\}/);
+  assert.match(blogCard, /data-blog-card-category=\{post\.category\}/);
+  assert.match(blogCard, /data-blog-card-source=\{source\}/);
+  assert.match(cardTracker, /closest<HTMLAnchorElement>\('a\[data-blog-card\]'\)/);
+  assert.match(cardTracker, /track\('blog_card_click'/);
+  for (const property of ["content_surface", "content_category", "content_slug", "source"]) {
+    assert.match(cardTracker, new RegExp(`${property}:`));
   }
 
   assert.equal((header.match(/<IntentPrefetchLink/g) ?? []).length, 3);
@@ -199,7 +209,7 @@ test("header does not compete with the true LCP element for the small display ic
     readFile("src/app/icon.png")
   ]);
 
-  assert.match(header, /src="\/favicon\/android-icon-72x72\.png"/);
+  assert.match(header, /src="\/favicon\/avatar-72x72\.webp"/);
   assert.match(header, /width=\{36\}/);
   assert.match(header, /height=\{36\}/);
   assert.match(header, /sizes="36px"/);

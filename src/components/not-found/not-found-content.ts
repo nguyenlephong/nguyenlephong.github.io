@@ -16,7 +16,7 @@ const contentByLocale: Record<Locale, NotFoundCopy> = {
   en: {
     metaTitle: "Page not found | Nguyen Le Phong",
     eyebrow: "Page not found",
-    title: "This page is no longer here",
+    title: "This page doesn’t exist",
     descriptions: {
       blog: "This article may not be available in the language you chose. The blog archive is a quiet place to continue browsing.",
       notes:
@@ -28,16 +28,18 @@ const contentByLocale: Record<Locale, NotFoundCopy> = {
     actions: {
       home: "Go to the home page",
       blog: "Browse the blog",
-      notes: "Browse the notes"
+      notes: "Browse the notes",
+      resume: "Download résumé (PDF)",
+      contact: "Contact"
     },
     languageTitle: "Choose another language",
     languageDescription:
       "Each language link returns to a stable home page, so you can continue without another broken path."
   },
   vi: {
-    metaTitle: "Không tìm thấy trang | Nguyen Le Phong",
+    metaTitle: "Không tìm thấy trang | Nguyễn Lê Phong",
     eyebrow: "Không tìm thấy trang",
-    title: "Trang này hiện không còn ở đây",
+    title: "Không có trang này",
     descriptions: {
       blog: "Bài viết này có thể chưa có ở ngôn ngữ bạn đã chọn. Bạn có thể quay lại trang blog để tiếp tục đọc.",
       notes:
@@ -49,7 +51,9 @@ const contentByLocale: Record<Locale, NotFoundCopy> = {
     actions: {
       home: "Về trang chủ",
       blog: "Xem các bài blog",
-      notes: "Xem các ghi chú"
+      notes: "Xem các ghi chú",
+      resume: "Tải CV (PDF)",
+      contact: "Liên hệ"
     },
     languageTitle: "Chọn ngôn ngữ khác",
     languageDescription:
@@ -58,7 +62,7 @@ const contentByLocale: Record<Locale, NotFoundCopy> = {
   zh: {
     metaTitle: "找不到页面 | Nguyen Le Phong",
     eyebrow: "找不到页面",
-    title: "这个页面目前不在这里",
+    title: "你要找的页面不存在",
     descriptions: {
       blog: "这篇文章可能还没有你所选择的语言版本。你可以回到博客归档，继续浏览其他内容。",
       notes:
@@ -70,7 +74,9 @@ const contentByLocale: Record<Locale, NotFoundCopy> = {
     actions: {
       home: "返回首页",
       blog: "浏览博客",
-      notes: "浏览笔记"
+      notes: "浏览笔记",
+      resume: "下载简历 (PDF)",
+      contact: "与我联系"
     },
     languageTitle: "选择其他语言",
     languageDescription:
@@ -79,7 +85,7 @@ const contentByLocale: Record<Locale, NotFoundCopy> = {
   ja: {
     metaTitle: "ページが見つかりません | Nguyen Le Phong",
     eyebrow: "ページが見つかりません",
-    title: "このページは現在ここにありません",
+    title: "このページは存在しません",
     descriptions: {
       blog: "この記事は、選択した言語ではまだ公開されていない可能性があります。ブログ一覧から、ほかの記事を落ち着いて探せます。",
       notes:
@@ -91,7 +97,9 @@ const contentByLocale: Record<Locale, NotFoundCopy> = {
     actions: {
       home: "ホームへ戻る",
       blog: "ブログを見る",
-      notes: "ノートを見る"
+      notes: "ノートを見る",
+      resume: "履歴書をダウンロード (PDF)",
+      contact: "連絡する"
     },
     languageTitle: "別の言語を選ぶ",
     languageDescription:
@@ -100,7 +108,7 @@ const contentByLocale: Record<Locale, NotFoundCopy> = {
   ko: {
     metaTitle: "페이지를 찾을 수 없습니다 | Nguyen Le Phong",
     eyebrow: "페이지를 찾을 수 없습니다",
-    title: "이 페이지는 현재 여기에 없습니다",
+    title: "이 페이지는 존재하지 않습니다",
     descriptions: {
       blog: "이 글은 선택한 언어로 아직 제공되지 않을 수 있습니다. 블로그 목록으로 돌아가 다른 글을 천천히 살펴볼 수 있습니다.",
       notes:
@@ -112,7 +120,9 @@ const contentByLocale: Record<Locale, NotFoundCopy> = {
     actions: {
       home: "홈으로 돌아가기",
       blog: "블로그 보기",
-      notes: "노트 보기"
+      notes: "노트 보기",
+      resume: "이력서 다운로드 (PDF)",
+      contact: "연락하기"
     },
     languageTitle: "다른 언어 선택",
     languageDescription:
@@ -121,7 +131,7 @@ const contentByLocale: Record<Locale, NotFoundCopy> = {
   fr: {
     metaTitle: "Page introuvable | Nguyen Le Phong",
     eyebrow: "Page introuvable",
-    title: "Cette page n’est plus disponible ici",
+    title: "Cette page n’existe pas",
     descriptions: {
       blog: "Cet article n’est peut-être pas encore disponible dans la langue choisie. Les archives du blog permettent de poursuivre la lecture simplement.",
       notes:
@@ -133,7 +143,9 @@ const contentByLocale: Record<Locale, NotFoundCopy> = {
     actions: {
       home: "Revenir à l’accueil",
       blog: "Parcourir le blog",
-      notes: "Parcourir les notes"
+      notes: "Parcourir les notes",
+      resume: "Télécharger le CV (PDF)",
+      contact: "Contact"
     },
     languageTitle: "Choisir une autre langue",
     languageDescription:

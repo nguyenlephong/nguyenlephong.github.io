@@ -52,10 +52,9 @@ const PUBLIC_CSS_OWNER_SELECTORS = {
     ".hero",
     ".cv-section",
     ".cv-section-head",
-    ".cv-section-eyebrow",
     ".cv-section-title"
   ],
-  about: [".about-page-v2"],
+  about: [".about-page-v3"],
   gallery: [".gallery-showcase"],
   apps: [".apps-page"],
   english: [".english-page"],
@@ -498,6 +497,33 @@ test("rejects initial JavaScript growth against the deployed Gzip encoding", asy
   );
 });
 
+test("does not count the nomodule legacy polyfill as initial JavaScript", async (t) => {
+  const { rootDir, outDir, chunksDir } = createFixture(t);
+  const homeHtml = path.join(outDir, "en.html");
+  // Random bytes so the polyfill alone would blow the 10,000 B Gzip ceiling if counted.
+  writeFileSync(
+    path.join(chunksDir, "polyfill.js"),
+    Array.from({ length: 4000 }, (_, i) => Math.random().toString(36) + i).join(";")
+  );
+  writeFileSync(
+    homeHtml,
+    readFileSync(homeHtml, "utf8").replace(
+      "</head>",
+      '<script src="/_next/static/chunks/polyfill.js" noModule=""></script></head>'
+    )
+  );
+
+  const report = await verifyPerformanceArtifact({
+    rootDir,
+    configPath: "budgets.json"
+  });
+
+  assert.deepEqual(report.failures, []);
+  assert.deepEqual(report.routeInitialJavaScript.home.files, [
+    "_next/static/chunks/initial.js"
+  ]);
+});
+
 test("rejects compressed HTML growth against the delivery encoding budget", async (t) => {
   const { rootDir } = createFixture(t, { maxHtmlGzipBytes: 1 });
 
@@ -641,7 +667,7 @@ test("enforces public CSS owner isolation with hash-independent selectors", asyn
   const { rootDir, chunksDir } = createFixture(t);
   writeFileSync(
     path.join(chunksDir, "public-home.css"),
-    ".about-page-v2{display:block}"
+    ".about-page-v3{display:block}"
   );
 
   const report = await verifyPerformanceArtifact({
@@ -696,7 +722,7 @@ test("normalizes equivalent selectors through nested CSS rule contexts", () => {
     /* spacing and minifier output must be equivalent */
     .hero { display: block; }
     @media (min-width: 40rem) {
-      .about-page-v2,.gallery-showcase > strong { display: grid; }
+      .about-page-v3,.gallery-showcase > strong { display: grid; }
     }
     @supports (display: subgrid) {
       @media (min-width: 60rem) { .apps-page { display: subgrid; } }
@@ -705,7 +731,7 @@ test("normalizes equivalent selectors through nested CSS rule contexts", () => {
   `);
 
   assert.deepEqual([...selectors].sort(), [
-    ".about-page-v2",
+    ".about-page-v3",
     ".apps-page",
     ".gallery-showcase>strong",
     ".hero"
@@ -718,7 +744,7 @@ test("parses native CSS nesting without treating quoted comment markers as comme
   const selectors = extractCssSelectors(`
     .route-shell {
       content: "literal /* brace { and escaped quote \\\" still text";
-      & .about-page-v2, &:has(.gallery-showcase) {
+      & .about-page-v3, &:has(.gallery-showcase) {
         display: grid;
       }
       @container card (min-width: 30rem) {
@@ -736,16 +762,16 @@ test("parses native CSS nesting without treating quoted comment markers as comme
       to { opacity: 1; }
     }
     .commented/* comma, remains inside comment */,.plain { display: block; }
-    .compound/**/.about-page-v2 { display: block; }
+    .compound/**/.about-page-v3 { display: block; }
   `);
 
   assert.deepEqual([...selectors].sort(), [
-    "& .about-page-v2",
+    "& .about-page-v3",
     "& .english-page",
     "&:has(.gallery-showcase)",
     "&>.apps-page",
     ".commented",
-    ".compound.about-page-v2",
+    ".compound.about-page-v3",
     ".plain",
     ".route-shell"
   ]);
@@ -753,26 +779,26 @@ test("parses native CSS nesting without treating quoted comment markers as comme
     assert.equal(selectors.has(frame), false);
   }
   assert.equal(
-    selectorContainsOwner('[data-owner=".about-page-v2"]', ".about-page-v2"),
+    selectorContainsOwner('[data-owner=".about-page-v3"]', ".about-page-v3"),
     false
   );
 });
 
 test("extracts @scope roots and limits through the selector contract", () => {
   const selectors = extractCssSelectors(`
-    @scope (.about-page-v2) to (.gallery-showcase) {
+    @scope (.about-page-v3) to (.gallery-showcase) {
       .scoped-content { display: block; }
     }
   `);
 
   assert.deepEqual([...selectors].sort(), [
-    ".about-page-v2",
+    ".about-page-v3",
     ".gallery-showcase",
     ".scoped-content"
   ]);
   assert.equal(
     [...selectors].some((selector) =>
-      selectorContainsOwner(selector, ".about-page-v2")
+      selectorContainsOwner(selector, ".about-page-v3")
     ),
     true
   );
@@ -787,7 +813,7 @@ test("extracts @scope roots and limits through the selector contract", () => {
 test("does not treat custom-property value blocks as CSS rules", () => {
   const selectors = extractCssSelectors(`
     .host {
-      --payload: { .about-page-v2 { color: red } };
+      --payload: { .about-page-v3 { color: red } };
       color: black;
     }
   `);
@@ -795,7 +821,7 @@ test("does not treat custom-property value blocks as CSS rules", () => {
   assert.deepEqual([...selectors], [".host"]);
   assert.equal(
     [...selectors].some((selector) =>
-      selectorContainsOwner(selector, ".about-page-v2")
+      selectorContainsOwner(selector, ".about-page-v3")
     ),
     false
   );
@@ -805,7 +831,7 @@ test("owner isolation recognizes owner selectors inside native nesting", async (
   const { rootDir, chunksDir } = createFixture(t);
   writeFileSync(
     path.join(chunksDir, "public-home.css"),
-    '.route-shell{content:"literal /* not a comment";& .about-page-v2{display:block}}'
+    '.route-shell{content:"literal /* not a comment";& .about-page-v3{display:block}}'
   );
 
   const report = await verifyPerformanceArtifact({

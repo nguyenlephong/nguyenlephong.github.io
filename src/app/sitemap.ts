@@ -21,7 +21,7 @@ import {
   loadNote,
   NOTE_CONTENT_LOCALES
 } from "@/lib/notes/data";
-import { collectionPagePath, paginate } from "@/lib/content/pagination";
+import { collectionPagePath, isPagedArchivePath, paginate } from "@/lib/content/pagination";
 import { latestNonFutureDate } from "@/lib/seo/dates";
 import { preferredContentLocale } from "@/lib/seo/locale";
 import { SITE_INDEX_PATH } from "@/lib/seo/site-index";
@@ -52,7 +52,19 @@ const PATHS: Array<{
         listPosts(locale).map((post) => post.updated ?? post.date)
       )
   },
-  { path: "/studio", priority: 0.85, freq: "weekly" },
+  // Studio has native prose in en and vi only; other locales are noindex fallbacks (MEP-54).
+  {
+    path: "/studio",
+    priority: 0.7,
+    freq: "monthly",
+    locales: staticPageSitemapLocales("studio")
+  },
+  ...(["checklists", "system-maps", "ai-setup"] as const).map((slug) => ({
+    path: `/studio/${slug}`,
+    priority: 0.6,
+    freq: "monthly" as const,
+    locales: staticPageSitemapLocales(`studio/${slug}`)
+  })),
   {
     path: "/about",
     priority: 0.8,
@@ -106,6 +118,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
     languages["x-default"] = `${SITE_URL}/${preferredContentLocale(locales)}${path}`;
 
+    const paged = isPagedArchivePath(path);
     for (const locale of locales) {
       const lastModified = lastModifiedForLocale?.(locale);
       entries.push({
@@ -113,7 +126,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...(lastModified ? { lastModified } : {}),
         changeFrequency: freq,
         priority,
-        alternates: { languages }
+        ...(paged ? {} : { alternates: { languages } })
       });
     }
   };

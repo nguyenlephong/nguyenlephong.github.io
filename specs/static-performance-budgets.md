@@ -86,7 +86,7 @@ route-oriented measurements.
   scope. Every valid non-empty message structure must match exactly one declared
   scope, and each route must contain exactly one instance of every required
   scope with no extras or duplicates.
-- Keep heavy Studio dashboards, ReactFlow, Recharts, and Firebase/Firestore
+- Keep ReactFlow and Firebase/Firestore
   markers out of the initial Studio scripts. Require the Shadow host marker in
   the direct scripts and require Studio route analytics/module markers in the
   reachable chunk graph, so valid route splitting cannot look like a missing
@@ -96,7 +96,7 @@ route-oriented measurements.
   same initial graphs. This source-independent artifact check complements the
   Brotli ceilings: a provider can regress eagerly without first exceeding a
   byte budget.
-- Enforce the Studio direct-script ceiling at 176,128 bytes Brotli, a narrow
+- Enforce the Studio direct-script ceiling at 149,504 bytes Brotli (excluding `<script nomodule>`), a narrow
   allowance over the 2026-07-19 measured 169,964-byte entry. Parse emitted
   Turbopack `Promise.all` loader groups as atomic downloads, including every
   sibling chunk needed by the selected locale and Welcome route. Hard-gate the
@@ -104,9 +104,9 @@ route-oriented measurements.
   199,659-byte baseline. Continue to report the complete reachable asynchronous
   and combined totals as observability signals because feature growth and
   entry-route latency are separate concerns.
-- Require representative lazy markers for Mail, AI Skills, Delivery
-  Checklists, auxiliary dashboards, ReactFlow, and Recharts in reachable async
-  chunks, and reject any of them from the default-route loader path. Locate all
+- Require representative lazy markers for AI Skills, Delivery Checklists, and
+  ReactFlow in reachable async chunks, and reject any of them from the
+  default-route loader path. Locate all
   six locale loaders with stable, locale-specific sentinels, require an isolated
   Turbopack loader group for each one, and reject cross-locale copy from the
   selected English entry/default set.
@@ -185,23 +185,35 @@ Blog at 213,534 bytes and Notes at 213,444 bytes Brotli. Their hard ceilings are
 therefore lowered from 219,136 to 217,088 bytes, retaining a small build-variance
 allowance while locking in the verified reduction.
 
+MEP-71 precompiles next-intl messages at build time, dropping the ICU parser from
+the client bundle. The 2026-11-13 export measured Home at 193,982 Gzip / 167,863
+Brotli bytes, Blog 191,692 / 166,040, Notes 191,296 / 165,696 and articles
+192,204 / 166,266, about 9 KiB Gzip below the previous export. Their hard
+ceilings are lowered to measurement plus about 10 percent, rounded up to 1 KiB:
+Home 214,016 / 185,344, Blog 210,944 / 183,296, Notes 210,944 / 182,272 and
+articles 211,968 / 183,296. Catalogs must therefore stay plain ICU strings: no
+arrays and no `t.raw`.
+
 After the route-owned CSS split and dead Notes-chambers cleanup, the 2026-07-28
-current complete-export artifact snapshot measured the following initial
-document CSS. Hard limits retain a narrow deterministic-build allowance:
+complete-export artifact snapshot set the following initial document CSS gates.
+Measured columns were refreshed from the 2026-11-13 complete export; the
+Gallery Brotli gate moved from 8,192 to 8,448 after the P1 audit work measured
+8,184 bytes. The wave-3 Blog "Start here" list (MEP-36) moved the Blog archive
+CSS Gzip gate from 16,640 to 17,152 (measured 16,648) and its HTML Gzip gate
+from 19,456 to 20,352 (measured 19,644). Wave 4 adds a per-page CSP meta (about 430 B gzip) and the article TOC: Blog archive HTML gate 21,120 (measured 20,413), Notes article HTML gate 22,528 (measured 21,781). Hard limits retain a narrow deterministic-build allowance:
 
 | Route            | Stylesheets | Measured raw | Measured Gzip | Gzip limit | Measured Brotli | Brotli limit |
 | ---------------- | ----------: | -----------: | ------------: | ---------: | --------------: | -----------: |
-| Home             |           3 |       44,360 |        10,417 |     10,752 |           9,058 |        9,216 |
-| About            |           3 |       29,526 |         7,637 |      7,936 |           6,578 |        6,912 |
-| Gallery          |           3 |       37,142 |         8,939 |      9,216 |           7,738 |        8,192 |
-| Apps             |           3 |       41,903 |        10,025 |     10,496 |           8,724 |        9,216 |
-| English practice |           3 |       36,054 |         8,713 |      9,216 |           7,511 |        7,936 |
-| Offline          |           3 |       24,469 |         6,554 |      6,912 |           5,673 |        6,144 |
-| Blog archive     |           3 |       72,897 |        15,120 |     15,616 |          13,100 |       13,568 |
-| Notes archive    |           4 |       80,355 |        17,403 |     18,176 |          15,056 |       15,616 |
-| Blog article     |           4 |       95,307 |        20,320 |     20,992 |          17,544 |       18,176 |
-| Notes article    |           5 |      102,765 |        22,603 |     23,296 |          19,500 |       20,096 |
-
+| Home | 3 | 56,783 | 13,470 | 14,080 | 11,795 | 12,288 |
+| About | 3 | 32,099 | 8,218 | 8,576 | 7,089 | 7,424 |
+| Gallery | 3 | 39,163 | 9,442 | 9,728 | 8,184 | 8,448 |
+| Apps | 3 | 44,476 | 10,606 | 11,008 | 9,235 | 9,600 |
+| English practice | 3 | 38,627 | 9,294 | 9,600 | 8,022 | 8,320 |
+| Offline | 3 | 27,042 | 7,135 | 7,424 | 6,410 | 6,656 |
+| Blog archive | 3 | 82,035 | 16,648 | 17,152 | 14,426 | 14,464 |
+| Notes archive | 4 | 86,418 | 18,444 | 19,072 | 15,969 | 16,512 |
+| Blog article | 4 | 101,003 | 21,301 | 22,016 | 18,406 | 19,072 |
+| Notes article | 5 | 108,830 | 23,638 | 24,448 | 20,408 | 21,120 |
 The same snapshot contains this exact search JSON matrix. Raw and Gzip are
 hard gates; Brotli is reported but is not used as the GitHub Pages delivery
 claim:
@@ -223,7 +235,7 @@ below are one deterministic local build, not field performance:
 | HTML route    | Measured raw | Measured Gzip | Measured Brotli | Gzip limit |
 | ------------- | -----------: | ------------: | --------------: | ---------: |
 | Home          |      132,221 |        31,570 |          21,083 |     32,768 |
-| Blog archive  |       81,865 |        18,947 |          13,950 |     19,456 |
+| Blog archive  |       92,441 |        20,413 |          14,832 |     21,120 |
 | Notes archive |       73,214 |        17,466 |          13,341 |     18,432 |
 | Blog article  |       70,524 |        15,763 |          12,626 |     16,384 |
 | Notes article |       70,391 |        18,487 |          13,050 |     19,456 |

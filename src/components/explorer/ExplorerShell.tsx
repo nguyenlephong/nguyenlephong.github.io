@@ -18,6 +18,8 @@ export interface ExplorerLabels {
   popularTags: string
   noResults: string
   results: (count: number) => string
+  /** Shown instead of the static total while the search index loads. */
+  searching: string
   pagination: { label: string; prev: string; next: string; goToPage: string }
 }
 
@@ -35,6 +37,8 @@ interface ExplorerShellProps<T> {
   searchUnavailableLabel: string
   onSearchIntent: () => void
   renderItem: (item: T) => ReactNode
+  /** Shown between the controls and the list only while no search or filter is active. */
+  lead?: ReactNode
 }
 
 function accentStyle(color?: string): CSSProperties | undefined {
@@ -59,6 +63,7 @@ export function ExplorerShell<T>({
   searchUnavailableLabel,
   onSearchIntent,
   renderItem,
+  lead,
 }: ExplorerShellProps<T>) {
   const {
     view,
@@ -76,7 +81,7 @@ export function ExplorerShell<T>({
     isStaticBrowsing,
     staticPagination,
     onSearch,
-    openPalette,
+    closePalette,
     togglePaletteVisibility,
     clearAll,
     clearTag,
@@ -120,11 +125,12 @@ export function ExplorerShell<T>({
               value={view.query}
               onChange={(e) => {
                 onSearchIntent()
+                // Search and filter are separate intents; typing must never sit under the palette.
+                closePalette()
                 onSearch(e.target.value)
               }}
               onFocus={() => {
                 onSearchIntent()
-                openPalette()
               }}
               onBlur={() => {
                 const query = view.query.trim()
@@ -133,11 +139,13 @@ export function ExplorerShell<T>({
               }}
               placeholder={labels.searchPlaceholder}
               aria-label={labels.searchLabel}
-              aria-controls={paletteId}
               autoComplete="off"
             />
             <p className="blog-command__count" aria-live="polite">
-              {labels.results(count)}
+              {/* The static total is not an answer to a query; never show it as one. */}
+              {hasFilters && isStaticBrowsing && searchStatus !== 'error'
+                ? labels.searching
+                : labels.results(count)}
             </p>
             {view.query && (
               <button
@@ -291,32 +299,18 @@ export function ExplorerShell<T>({
           </div>
         </div>
 
+        {/* Without JS only real pages help: topics and categories that have a
+            static page become links; tags need the script, so they are left out. */}
         <noscript>
-          <div className="blog-filters" role="group" aria-label={labels.filtersLabel}>
-            <button type="button" className="blog-chip is-active">
-              {labels.allFilters}
-            </button>
-            {filters.map((f) => (
-              <button key={f.id} type="button" className="blog-chip" style={accentStyle(f.color)}>
-                {f.label}
-              </button>
-            ))}
-          </div>
-
-          {popularTags.length > 0 && (
-            <div className="blog-tags">
-              <span className="blog-tags__label">{labels.popularTags}</span>
-              <ul className="blog-tags__list">
-                {popularTags.map((tg) => (
-                  <li key={tg}>
-                    <button type="button" className="blog-tag">
-                      {tg}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <nav className="blog-filters" aria-label={labels.filtersLabel}>
+            {filters.map((f) =>
+              f.href ? (
+                <a key={f.id} href={f.href} className="blog-chip" style={accentStyle(f.color)}>
+                  {f.label}
+                </a>
+              ) : null,
+            )}
+          </nav>
         </noscript>
 
         {searchStatus === 'error' && (
@@ -325,6 +319,8 @@ export function ExplorerShell<T>({
           </p>
         )}
       </div>
+
+      {hasFilters ? null : lead}
 
       <div ref={listTopRef} className="blog-explorer__scroll-anchor" />
 

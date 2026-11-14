@@ -22,14 +22,16 @@ const COPY = {
   en: {
     eyebrow: 'Blog series',
     back: 'Blog',
-    suffix: 'Blog series',
+    suffix: 'Series',
     empty: 'No published articles yet.',
+    part: 'Part',
   },
   vi: {
     eyebrow: 'Loạt bài Blog',
     back: 'Blog',
     suffix: 'Loạt bài Blog',
     empty: 'Chưa có bài viết đã xuất bản.',
+    part: 'Phần',
   },
 } as const
 
@@ -57,8 +59,8 @@ export async function blogSeriesMetadata(
   })
   const title =
     page === 1
-      ? `${series.title} — ${COPY[resolvedLocale].suffix}`
-      : `${series.title} — ${pageLabel}`
+      ? `${series.title} | ${COPY[resolvedLocale].suffix}`
+      : `${series.title} | ${pageLabel}`
   const description =
     page === 1 ? series.intro : `${series.intro} ${pageLabel}.`
 
@@ -68,6 +70,7 @@ export async function blogSeriesMetadata(
     path,
     title,
     description,
+    section: 'blog',
   })
 }
 
@@ -146,12 +149,16 @@ export default async function BlogSeriesCollectionPage({
       currentPage={page}
       totalPages={pageData.totalPages}
       basePath={basePath}
+      accentFamily={
+        getCategory(pageData.items[0]?.category ?? '', resolvedLocale)?.accent
+      }
       cards={pageData.items.map((post, index) => ({
         slug: post.slug,
         title: post.title,
         summary: post.summary,
-        kicker:
-          getCategory(post.category, resolvedLocale)?.title ?? post.category,
+        accent: getCategory(post.category, resolvedLocale)?.accent,
+        // Cards follow seriesOrder, so the running position is the part number.
+        kicker: `${copy.part} ${pageData.startIndex + index + 1}`,
         contentCategory: post.category,
         href: `/blog/${post.category}/${post.slug}`,
         date: post.date,
@@ -167,6 +174,7 @@ export default async function BlogSeriesCollectionPage({
       }}
       collectionJsonLd={collectionJsonLd}
       breadcrumbJsonLd={breadcrumbJsonLd}
+      availableLocales={listBlogSeriesPageLocales(seriesId, page)}
     />
   )
 }

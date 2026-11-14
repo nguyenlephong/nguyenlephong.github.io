@@ -30,7 +30,7 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
     path: APP_ROUTE.ABOUT,
     name: 'About',
     description:
-      'How Nguyen Le Phong builds backend, platform and product systems that can be shipped, observed and recovered.',
+      'How Nguyen Le Phong still writes the hard parts himself and sets up the team so decisions do not wait on him.',
   },
   {
     id: 'blog',
@@ -65,7 +65,7 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
     path: APP_ROUTE.STUDIO,
     name: 'Studio',
     description:
-      'A public workspace of engineering notes, delivery checklists and interactive system design flows.',
+      'Delivery checklists and system maps for scoping work, shipping releases and rolling them out safely.',
   },
   {
     id: 'resume',

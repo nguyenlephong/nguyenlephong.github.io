@@ -58,6 +58,13 @@ test("posthog initialization uses the current sdk host contract", async () => {
   assert.match(bootstrap, /autocapture:\s*false/);
   assert.match(bootstrap, /disable_session_recording:\s*true/);
   assert.match(bootstrap, /respect_dnt:\s*true/);
+  // MEP-66: no /flags call, no surveys.js, no cookies or storage, no person profiles.
+  assert.match(bootstrap, /disable_surveys:\s*true/);
+  assert.match(bootstrap, /advanced_disable_flags:\s*true/);
+  assert.match(bootstrap, /cookieless_mode:\s*'always'/);
+  assert.match(bootstrap, /person_profiles:\s*'never'/);
+  assert.match(bootstrap, /persistence:\s*'memory'/);
+  assert.doesNotMatch(bootstrap, /localStorage\+cookie/);
   assert.match(bootstrap, /before_send:/);
   assert.match(
     bootstrap,
@@ -440,7 +447,7 @@ test("public content surfaces have explicit posthog page and interaction events"
     readFile("src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx", "utf8"),
     readFile("src/app/[locale]/(site)/notes/[slug]/page.tsx", "utf8"),
     readFile("src/components/blog/BlogReadingTracker.tsx", "utf8"),
-    readFile("src/components/blog/BlogShareDock.tsx", "utf8"),
+    readFile("src/components/blog/useArticleShare.ts", "utf8"),
     readFile("src/components/blog/BlogReactions.tsx", "utf8"),
     readFile("src/components/blog/BlogToc.tsx", "utf8"),
     readFile("src/components/analytics/useRelatedLinkClickTracking.ts", "utf8"),
@@ -516,9 +523,17 @@ test("public content surfaces have explicit posthog page and interaction events"
   assert.match(reactions, /\$\{surface\}_reaction/);
   assert.match(toc, /blog_nav_jump/);
   assert.match(toc, /notes_nav_jump/);
+  // MEP-37: the collapsed outline reports opens, and every jump names its source.
+  assert.match(analytics, /'blog_toc_open'/);
+  assert.match(analytics, /'notes_toc_open'/);
+  assert.match(toc, /\$\{eventPrefix\}_toc_open/);
+  assert.match(toc, /source: variant === 'inline' \? 'mobile' : 'rail'/);
+  // MEP-38: a refused clipboard is still a reported share attempt.
+  assert.match(shareDock, /trackShare\('copy_failed'\)/);
+  assert.doesNotMatch(readingTracker, /addEventListener\('beforeunload'/);
   assert.match(related, /blog_related_click/);
   assert.match(related, /notes_related_click/);
-  assert.match(blogCard, /blog_card_click/);
+  assert.match(blogCard, /data-blog-card=/);
   assert.match(noteCard, /notes_card_click/);
   assert.match(categoryCard, /blog_category_click/);
 
@@ -652,9 +667,7 @@ test("studio analytics and agent rules cover new workspace interactions", async 
       "src/app/[locale]/studio/StudioFlowChart.tsx",
       "src/app/[locale]/studio/StudioRouteFeatureRegistry.tsx",
       "src/app/[locale]/studio/StudioWorkspace.tsx",
-      "src/app/[locale]/studio/StudioDeliverySignalFeature.tsx",
       "src/app/[locale]/studio/StudioFlowCanvasFeature.tsx",
-      "src/app/[locale]/studio/StudioDashboardRoutesFeature.tsx",
       "src/app/[locale]/studio/studio-feature-load-error.ts"
     ]),
     readFile("AGENTS.md", "utf8"),
@@ -748,4 +761,38 @@ test("Studio emits one initial-location route event and ignores same-route histo
     adminShell,
     /routeOpenDeduperRef\.current\.isHistoryTransition\(currentRoute, nextRoute\)/
   );
+});
+
+// MEP-25, MEP-27, MEP-28: site chrome reuses the existing event names.
+test("site chrome tracks nav targets, locale source and footer contacts", async () => {
+  const [header, footer, switcher] = await Promise.all([
+    readFile("src/components/AppHeader.tsx", "utf8"),
+    readFile("src/components/AppFooter.tsx", "utf8"),
+    readFile("src/components/LocaleSwitcher.tsx", "utf8")
+  ]);
+  for (const target of ["experience", "projects"]) {
+    assert.match(header, new RegExp(`trackId: "${target}"`), target);
+  }
+  assert.match(header, /track\("cv_nav_click", \{ target: item\.trackId \}\)/);
+  assert.match(switcher, /track\('locale_change', \{ from: currentLocale, to: nextLocale, source \}\)/);
+  assert.match(header, /source="header"/);
+  assert.match(footer, /track\('cv_nav_click', \{ target: 'apps_footer' \}\)/);
+  assert.match(footer, /track\('cv_resume_download', \{ source: 'footer' \}\)/);
+  assert.match(footer, /track\('cv_contact_click', \{ channel: 'email', source: 'footer' \}\)/);
+  assert.match(footer, /track\('cv_social_click', \{ platform, source: 'footer' \}\)/);
+});
+
+// MEP-24: the hero keeps LinkedIn and GitHub; LeetCode and YouTube stay in the footer.
+test("hero social row has only LinkedIn and GitHub, footer keeps the rest", async () => {
+  const [hero, footer] = await Promise.all([
+    readFile("src/components/cv/Hero.tsx", "utf8"),
+    readFile("src/components/AppFooter.tsx", "utf8")
+  ]);
+  const platforms = [...hero.matchAll(/<SocialLink [^>]*platform="([a-z]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(platforms, ["linkedin", "github"]);
+  assert.doesNotMatch(hero, /leetcode|youtube/i);
+  assert.match(hero, /track\('cv_social_click', \{ platform \}\)/);
+  for (const platform of ["leetcode", "youtube"]) {
+    assert.match(footer, new RegExp(`platform: '${platform}'`), platform);
+  }
 });

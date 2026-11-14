@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import type { IconType } from "react-icons";
 import {
   LuArrowUpDown,
+  LuChevronDown,
   LuClipboardList,
   LuCopy,
   LuMaximize2,
@@ -11,6 +13,7 @@ import {
   LuRedo2,
   LuRotateCw,
   LuScanLine,
+  LuSlidersHorizontal,
   LuUndo2,
   LuX
 } from "react-icons/lu";
@@ -62,6 +65,7 @@ type StudioFlowToolbarProps = {
   onDeleteNode: () => void;
   onToggleFocusMode: () => void;
   onToggleFullscreen: () => void;
+  onOptionsToggle: (openNext: boolean) => void;
 };
 
 export default function StudioFlowToolbar({
@@ -95,12 +99,30 @@ export default function StudioFlowToolbar({
   onAddNote,
   onDeleteNode,
   onToggleFocusMode,
-  onToggleFullscreen
+  onToggleFullscreen,
+  onOptionsToggle
 }: StudioFlowToolbarProps) {
+  // Below 768px the canvas comes first and these controls fold behind one disclosure (MEP-59); CSS shows them always on wider screens.
+  const [optionsOpen, setOptionsOpen] = useState(false);
+  const hasSelectors = Boolean(demo && selectedView);
   return (
-    <div className={`flow-board-toolbar${demo && selectedView ? " has-selectors" : ""}`} aria-label={copy.boardTools}>
+    <div className={`flow-board-toolbar${hasSelectors ? " has-selectors" : ""}${optionsOpen ? " is-options-open" : ""}`} aria-label={copy.boardTools}>
+      <button
+        type="button"
+        className="flow-board-options-toggle"
+        aria-expanded={optionsOpen}
+        aria-controls={hasSelectors ? "flow-example-options flow-canvas-options" : "flow-canvas-options"}
+        onClick={() => {
+          setOptionsOpen(!optionsOpen);
+          onOptionsToggle(!optionsOpen);
+        }}
+      >
+        <LuSlidersHorizontal aria-hidden="true" />
+        <span>{copy.diagramOptions}</span>
+        <LuChevronDown className="flow-board-options-chevron" aria-hidden="true" />
+      </button>
       {demo && selectedView && (
-        <div className="flow-example-toolbar" aria-label={copy.exampleSelectorLabel}>
+        <div id="flow-example-options" className="flow-example-toolbar" aria-label={copy.exampleSelectorLabel}>
           <label>
             <span>{copy.exampleFamily}</span>
             <select value={selectedFamily} onChange={(event) => onFamilySelect(event.target.value)}>
@@ -119,7 +141,7 @@ export default function StudioFlowToolbar({
           </label>
         </div>
       )}
-      <div className="flow-canvas-toolbar" aria-label={copy.boardTools}>
+      <div id="flow-canvas-options" className="flow-canvas-toolbar" aria-label={copy.boardTools}>
         <div className="flow-layout-presets" aria-label={copy.layoutPreset}>
           {layoutPresetOptions.map((preset) => {
             const PresetIcon = preset.icon;
@@ -165,16 +187,16 @@ export default function StudioFlowToolbar({
         <button type="button" aria-label={copy.resetBoard} title={copy.resetBoard} onClick={onResetBoard}>
           <LuRotateCw aria-hidden="true" /><span>{copy.resetBoard}</span>
         </button>
-        <button type="button" aria-label={copy.undo} title={copy.undo} onClick={onUndo} disabled={historyCount === 0}>
+        <button type="button" className="flow-touch-hidden" aria-label={copy.undo} title={copy.undo} onClick={onUndo} disabled={historyCount === 0}>
           <LuUndo2 aria-hidden="true" /><span>{copy.undo}</span>
         </button>
-        <button type="button" aria-label={copy.redo} title={copy.redo} onClick={onRedo} disabled={futureCount === 0}>
+        <button type="button" className="flow-touch-hidden" aria-label={copy.redo} title={copy.redo} onClick={onRedo} disabled={futureCount === 0}>
           <LuRedo2 aria-hidden="true" /><span>{copy.redo}</span>
         </button>
-        <button type="button" aria-label={copy.copyNode} title={copy.copyNode} onClick={onCopyNode} disabled={!canCopySelected}>
+        <button type="button" className="flow-touch-hidden" aria-label={copy.copyNode} title={copy.copyNode} onClick={onCopyNode} disabled={!canCopySelected}>
           <LuCopy aria-hidden="true" /><span>{copy.copyNode}</span>
         </button>
-        <button type="button" aria-label={copy.pasteNode} title={copy.pasteNode} onClick={onPasteNode} disabled={!canPasteSelected}>
+        <button type="button" className="flow-touch-hidden" aria-label={copy.pasteNode} title={copy.pasteNode} onClick={onPasteNode} disabled={!canPasteSelected}>
           <LuClipboardList aria-hidden="true" /><span>{copy.pasteNode}</span>
         </button>
         <button type="button" aria-label={copy.addNote} title={copy.addNote} onClick={onAddNote}>

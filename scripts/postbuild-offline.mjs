@@ -15,6 +15,10 @@ const OFFLINE_MANIFEST_VERSION_META = 'offline-manifest-version'
 const CDN_BACKED_EXPORT_PATHS = ['og', 'assets/blog', 'assets/notes', 'assets/photos']
 const BUILD_ONLY_EXPORT_PATHS = ['og-cache']
 const DEFAULT_HTML_FILE_CONCURRENCY = 16
+// Bump when worker logic changes so every visitor gets a fresh cache generation.
+const SW_SCHEMA_VERSION = 2
+// Locale-agnostic install shell. Each locale's home and offline page live in
+// localeShells and are installed only for the locale a visitor actually uses.
 const ESSENTIAL_SHELL_FILES = [
   'index.html',
   '404.html',
@@ -23,9 +27,11 @@ const ESSENTIAL_SHELL_FILES = [
   'icon.png',
   'apple-icon.png',
   'manifest.webmanifest',
-  ...LOCALES.map((locale) => `${locale}.html`),
-  ...LOCALES.map((locale) => `${locale}/offline.html`),
 ]
+
+function localeShellFiles(locale) {
+  return [`${locale}.html`, `${locale}/offline.html`]
+}
 
 async function removeCdnBackedExportAssets(outDir, artifactIndex) {
   await Promise.all(
@@ -145,9 +151,17 @@ export function hasPrivateOrSignedRemoteMediaQuery(input) {
 export function extractResolvedRemoteMediaAssets(html) {
   const remoteAssets = []
   const sourcePattern = /\b(?:src|poster)=["'](https?:\/\/[^"'<>]+)["']/gi
-  for (const match of html.matchAll(sourcePattern)) {
+  const candidates = [...html.matchAll(sourcePattern)].map((match) => match[1])
+  // Gallery cards list 480w/800w variants; the browser may pick any of them.
+  for (const match of html.matchAll(/\bsrcset=["']([^"'<>]+)["']/gi)) {
+    for (const candidate of match[1].split(',')) {
+      const url = candidate.trim().split(/\s+/)[0]
+      if (/^https?:\/\//i.test(url)) candidates.push(url)
+    }
+  }
+  for (const candidate of candidates) {
     try {
-      const url = new URL(match[1])
+      const url = new URL(candidate)
       if (
         !url.username &&
         !url.password &&
@@ -175,10 +189,12 @@ async function readRemoteGalleryAssets(artifactIndex) {
 
 export function extractDocumentAssetReferences(html) {
   const references = []
-  const attributePattern = /\b(?:src|href)=["']([^"'<>]+)["']/gi
+  const attributePattern = /<([a-z][\w-]*)\b[^>]*?\s(?:src|href)=["']([^"'<>]+)["']/gi
 
   for (const match of html.matchAll(attributePattern)) {
-    const raw = match[1].replaceAll('&amp;', '&')
+    // <a href> is a link the reader may never follow (the resume PDF), not a subresource.
+    if (match[1].toLowerCase() === 'a') continue
+    const raw = match[2].replaceAll('&amp;', '&')
     if (!raw.startsWith('/')) continue
     try {
       const url = new URL(raw, 'https://artifact.invalid')
@@ -193,26 +209,38 @@ export function extractDocumentAssetReferences(html) {
   return uniqueSorted(references)
 }
 
-export async function deriveInstallShell(artifactIndex) {
-  const missing = ESSENTIAL_SHELL_FILES.filter((relativePath) => !artifactIndex.has(relativePath))
+async function collectShellEntries(artifactIndex, files) {
+  const missing = files.filter((relativePath) => !artifactIndex.has(relativePath))
   if (missing.length > 0) {
     throw new Error(`[postbuild-offline] missing essential shell file(s): ${missing.join(', ')}`)
   }
 
   const referencedAssets = []
-  const shellDocuments = ESSENTIAL_SHELL_FILES.filter((relativePath) => relativePath.endsWith('.html'))
-  for (const relativePath of shellDocuments) {
+  for (const relativePath of files.filter((file) => file.endsWith('.html'))) {
     const html = await artifactIndex.readText(relativePath)
     referencedAssets.push(
       ...extractDocumentAssetReferences(html).filter((assetPath) => artifactIndex.has(assetPath)),
     )
   }
 
+  return uniqueSorted([...files, ...referencedAssets].map(routeUrlFromOutFile))
+}
+
+export async function deriveInstallShell(artifactIndex) {
   return uniqueSorted([
     '/offline-manifest.json',
-    ...ESSENTIAL_SHELL_FILES.map(routeUrlFromOutFile),
-    ...referencedAssets.map(routeUrlFromOutFile),
+    ...(await collectShellEntries(artifactIndex, ESSENTIAL_SHELL_FILES)),
   ])
+}
+
+export async function deriveLocaleShells(artifactIndex) {
+  const entries = await Promise.all(
+    LOCALES.map(async (locale) => [
+      locale,
+      await collectShellEntries(artifactIndex, localeShellFiles(locale)),
+    ]),
+  )
+  return Object.fromEntries(entries)
 }
 
 function stripOfflineManifestVersion(html) {
@@ -259,6 +287,7 @@ export async function buildPageVersions(relativeFiles, artifactIndex) {
 function buildManifestVersion({
   appVersion,
   shell,
+  localeShells,
   readingData,
   readingAssets,
   extendedAssets,
@@ -267,8 +296,10 @@ function buildManifestVersion({
   pageVersions,
 }) {
   return hashRecord({
+    swSchemaVersion: SW_SCHEMA_VERSION,
     appVersion,
     shell,
+    localeShells,
     readingData,
     readingAssets,
     extendedAssets,
@@ -314,6 +345,7 @@ function buildOwnedSameOriginPaths(manifest) {
     ...(manifest.shared?.readingAssets ?? []),
     ...(manifest.shared?.extendedAssets ?? []),
     ...(manifest.shared?.runtimeAssets ?? []),
+    ...Object.values(manifest.localeShells ?? {}).flat(),
     ...Object.values(manifest.locales ?? {}).flat(),
   ]
   return uniqueSorted(paths.filter((url) => url.startsWith('/')))
@@ -321,6 +353,7 @@ function buildOwnedSameOriginPaths(manifest) {
 
 export async function installRequiredShell({
   manifest,
+  locales = [],
   shellCacheName,
   shellCachePreexisted,
   openCache,
@@ -328,10 +361,14 @@ export async function installRequiredShell({
   cacheFiles,
   skipWaiting,
 }) {
-  const shellUrls = manifest?.shared?.shell
-  if (!Array.isArray(shellUrls) || shellUrls.length === 0) {
+  const sharedShell = manifest?.shared?.shell
+  if (!Array.isArray(sharedShell) || sharedShell.length === 0) {
     throw new Error('[offline] required shell manifest is empty')
   }
+  const shellUrls = [
+    ...sharedShell,
+    ...locales.flatMap((locale) => manifest.localeShells?.[locale] ?? []),
+  ]
 
   const expectedCount = [...new Set(shellUrls)].filter(Boolean).length
   try {
@@ -387,6 +424,8 @@ const REMOTE_CACHE_PREFIX = 'offline-remote-';
 const REMOTE_CACHE = \`\${REMOTE_CACHE_PREFIX}\${OFFLINE_VERSION}\`;
 const LEGACY_CONTENT_CACHES = new Set(['offline-content']);
 const LEGACY_REMOTE_CACHES = new Set(['offline-remote', 'offline-remote-v2']);
+const GENERATION_CACHE = 'offline-generation';
+const GENERATION_KEY = '/__offline-generation';
 const OWNED_SAME_ORIGIN_PATHS = new Set(${JSON.stringify(ownedSameOriginPaths)});
 const OWNED_REMOTE_URLS = new Set(${JSON.stringify(ownedRemoteUrls)});
 const PAGE_VERSION_PARAM = ${JSON.stringify(PAGE_VERSION_PARAM)};
@@ -402,6 +441,7 @@ self.addEventListener('install', (event) => {
     const manifest = await loadManifest();
     await installRequiredShell({
       manifest,
+      locales: await installLocales(manifest),
       shellCacheName: SHELL_CACHE,
       shellCachePreexisted,
       openCache: (cacheName) => caches.open(cacheName),
@@ -414,25 +454,56 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
+    // Keep the previous build's caches for one generation so a tab still open
+    // on that build can load its lazy chunks after the deploy removed them.
+    const keepVersions = await rotateGenerations();
     const keys = await caches.keys();
     await Promise.all(
       keys.map((key) => {
         if (LEGACY_CONTENT_CACHES.has(key)) return caches.delete(key);
         if (LEGACY_REMOTE_CACHES.has(key)) return caches.delete(key);
-        if (key.startsWith(CONTENT_CACHE_PREFIX) && key !== CONTENT_CACHE) {
-          return caches.delete(key);
-        }
-        if (key.startsWith(REMOTE_CACHE_PREFIX) && key !== REMOTE_CACHE) {
-          return caches.delete(key);
-        }
-        if (!key.startsWith(SHELL_CACHE_PREFIX)) return Promise.resolve();
-        if (key === SHELL_CACHE) return Promise.resolve();
+        const prefix = [SHELL_CACHE_PREFIX, CONTENT_CACHE_PREFIX, REMOTE_CACHE_PREFIX]
+          .find((candidate) => key.startsWith(candidate));
+        if (!prefix || keepVersions.has(key.slice(prefix.length))) return Promise.resolve();
         return caches.delete(key);
       }),
     );
     await self.clients.claim();
   })());
 });
+
+async function rotateGenerations() {
+  let previous = null;
+  try {
+    const generationCache = await caches.open(GENERATION_CACHE);
+    const stored = await generationCache.match(GENERATION_KEY);
+    const record = stored ? await stored.json() : {};
+    previous = record.current && record.current !== OFFLINE_VERSION ? record.current : record.previous ?? null;
+    await generationCache.put(
+      GENERATION_KEY,
+      new Response(JSON.stringify({ current: OFFLINE_VERSION, previous })),
+    );
+  } catch {
+    // Without a generation record, fall back to keeping only this version.
+  }
+  return new Set([OFFLINE_VERSION, previous].filter(Boolean));
+}
+
+async function installLocales(manifest) {
+  // Install the offline shell only for locales a visitor has open, not all six.
+  const known = new Set(Object.keys(manifest.localeShells ?? {}));
+  let windows = [];
+  try {
+    windows = await self.clients.matchAll({ includeUncontrolled: true, type: 'window' });
+  } catch {
+    // Fall back to the default locale below.
+  }
+  const open = windows
+    .map((client) => localeFromPath(new URL(client.url).pathname))
+    .filter((locale) => known.has(locale));
+  if (open.length > 0) return [...new Set(open)];
+  return known.has(manifest.defaultLocale) ? [manifest.defaultLocale] : [];
+}
 
 self.addEventListener('message', (event) => {
   const data = event.data ?? {};
@@ -472,6 +543,11 @@ self.addEventListener('fetch', (event) => {
     // This worker is root-scoped on GitHub Pages. Never intercept a sibling
     // project: only paths materialized in this build's manifest are owned.
     const cacheKey = ownedSameOriginCacheKey(url);
+    if (!cacheKey && !url.search && url.pathname.startsWith('/_next/static/')) {
+      // A tab still on the previous build asks for chunks this build no longer owns.
+      event.respondWith(previousGenerationOrNetwork(request, url));
+      return;
+    }
     if (!cacheKey) return;
     if (isContentData(url.pathname)) {
       event.respondWith(staleWhileRevalidate(request, CONTENT_CACHE, cacheKey, [SHELL_CACHE]));
@@ -531,6 +607,11 @@ async function loadManifest() {
 async function warmPath(pathname) {
   const manifest = await loadManifest();
   if (!isOwnedNavigation(manifest, pathname)) return;
+  const localeShell = manifest.localeShells?.[localeFromPath(pathname)];
+  if (localeShell) {
+    // Other locales' home and offline pages are cached lazily, on first visit there.
+    await cacheFiles(await caches.open(SHELL_CACHE), localeShell, manifest.shared?.pageVersions);
+  }
   const contentCache = await caches.open(CONTENT_CACHE);
   const stats = await cacheNavigationCandidates(contentCache, manifest, pathname);
   await broadcast({
@@ -562,7 +643,8 @@ async function cacheNavigationCandidates(cache, manifest, pathname) {
     const version = pageVersionForUrl(manifest, candidate);
     const cacheKey = navigationCacheKey(candidate, version);
     try {
-      const cached = await cache.match(cacheKey);
+      // The install shell already holds the locale home; do not download it twice.
+      const cached = await matchNamedCaches(CONTENT_CACHE, cacheKey, [SHELL_CACHE]);
       if (cached) {
         stats.fulfilled += 1;
         continue;
@@ -595,6 +677,13 @@ async function cacheNavigationResponse(cache, manifest, pathname, response) {
     }
   }
   return stats;
+}
+
+// Pages carry the build's manifest version; a page from another deploy (CDN lag,
+// a newer build behind this worker) must not be cached under this build's keys.
+async function isCurrentBuildPage(response, manifest) {
+  const html = await response.clone().text();
+  return html.includes('<meta name="${OFFLINE_MANIFEST_VERSION_META}" content="' + manifest.version + '"');
 }
 
 async function matchNavigationCache(manifest, pathname) {
@@ -710,23 +799,28 @@ async function handleNavigation(request, url) {
     // those navigations entirely to their own origin response/error handling.
     return fetch(request);
   }
+  // Build-scoped stale-while-revalidate: a hit is this build's exact HTML
+  // (keys carry the page hash), so serve it at once. The browser's update check
+  // after every navigation installs a newer worker when a deploy lands, so a
+  // stale view lasts at most one navigation.
+  const cachedPage = await matchNavigationCache(manifest, url.pathname);
+  if (cachedPage) return cachedPage;
   try {
     const version = pageVersionForUrl(manifest, url.pathname);
     const requestUrl = navigationCacheKey(url.pathname + url.search, version);
     const fresh = await fetchWithTimeout(requestUrl, { cache: 'reload' });
     if (fresh?.ok) {
       try {
-        const contentCache = await caches.open(CONTENT_CACHE);
-        await cacheNavigationResponse(contentCache, manifest, url.pathname, fresh);
+        if (await isCurrentBuildPage(fresh, manifest)) {
+          const contentCache = await caches.open(CONTENT_CACHE);
+          await cacheNavigationResponse(contentCache, manifest, url.pathname, fresh);
+        }
       } catch {
         // Runtime navigation caching is best-effort. Preserve the successful
         // response when Cache Storage is disabled or unavailable.
       }
       return fresh;
     }
-
-    const cached = await matchNavigationCache(manifest, url.pathname);
-    if (cached) return cached;
 
     const fallback = await matchVersionedCandidates(manifest, offlineFallbackCandidates(url.pathname));
     if (fallback) return fallback;
@@ -739,9 +833,6 @@ async function handleNavigation(request, url) {
       headers: { 'Content-Type': 'text/plain; charset=utf-8' },
     });
   } catch {
-    const cached = await matchNavigationCache(manifest, url.pathname);
-    if (cached) return cached;
-
     const fallback = await matchVersionedCandidates(manifest, offlineFallbackCandidates(url.pathname));
     if (fallback) return fallback;
 
@@ -753,6 +844,16 @@ async function handleNavigation(request, url) {
       headers: { 'Content-Type': 'text/plain; charset=utf-8' },
     });
   }
+}
+
+async function previousGenerationOrNetwork(request, url) {
+  try {
+    const cached = await caches.match(decodedPathname(url.pathname));
+    if (cached) return cached;
+  } catch {
+    // Cache Storage is optional; fall through to the network.
+  }
+  return fetch(request);
 }
 
 async function matchRuntimeCache(cacheName, cacheKey) {
@@ -878,10 +979,11 @@ async function cacheFiles(cache, urls, pageVersions = null) {
           stats.fulfilled += 1;
           return;
         }
-        const response = await fetch(cacheKey, {
-          mode: 'cors',
-          cache: 'reload',
-        });
+        // Shell URLs are content-hashed (/_next/static), carry the page hash
+        // (__offlineVersion), or are icons where a copy within max-age is fine.
+        // The default cache mode reuses what the page just downloaded instead
+        // of fetching it a second time.
+        const response = await fetch(cacheKey, { mode: 'cors' });
         if (!response) {
           stats.failed += 1;
           return;
@@ -925,11 +1027,12 @@ export async function generateOfflineArtifacts({ outDir = OUT_DIR, artifactIndex
     pruneBuildOnlyExportAssets(outDir, index),
   ])
   const relativeFiles = index.files()
-  const [appVersion, remoteAssets, pageVersions, shell] = await Promise.all([
+  const [appVersion, remoteAssets, pageVersions, shell, localeShells] = await Promise.all([
     readAppVersion(),
     readRemoteGalleryAssets(index),
     buildPageVersions(relativeFiles, index),
     deriveInstallShell(index),
+    deriveLocaleShells(index),
   ])
   // Reading routes already ship their content in static HTML, so warming the
   // document set is enough for offline reading without fetching auxiliary data.
@@ -948,6 +1051,7 @@ export async function generateOfflineArtifacts({ outDir = OUT_DIR, artifactIndex
   const manifestVersion = buildManifestVersion({
     appVersion,
     shell,
+    localeShells,
     readingData,
     readingAssets,
     extendedAssets,
@@ -960,6 +1064,7 @@ export async function generateOfflineArtifacts({ outDir = OUT_DIR, artifactIndex
     version: manifestVersion,
     defaultLocale: DEFAULT_LOCALE,
     locales,
+    localeShells,
     shared: {
       shell,
       readingData,
@@ -971,7 +1076,7 @@ export async function generateOfflineArtifacts({ outDir = OUT_DIR, artifactIndex
     },
   }
 
-  await index.write('offline-manifest.json', `${JSON.stringify(manifest, null, 2)}\n`)
+  await index.write('offline-manifest.json', `${JSON.stringify(manifest)}\n`)
   await writeOfflineManifestVersion(relativeFiles, manifest.version, index)
   await index.write('sw.js', buildServiceWorkerSource(manifest))
 

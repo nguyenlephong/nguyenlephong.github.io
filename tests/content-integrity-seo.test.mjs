@@ -53,11 +53,17 @@ const { blogIndexSchema, blogPostSchema } = await import(
 const { notesIndexSchema } = await import(
   new URL("../src/lib/notes/schema.ts", import.meta.url)
 );
-const { listPosts } = await import(
+const { listBlogSeries, listCategories, listPosts } = await import(
   new URL("../src/lib/blog/data.ts", import.meta.url)
 );
-const { listNotes, loadNote, loadNotesIndex } = await import(
+const { listNoteHubs, listNotes, loadNote, loadNotesIndex } = await import(
   new URL("../src/lib/notes/data.ts", import.meta.url)
+);
+const { getStudioStaticModule } = await import(
+  new URL("../src/app/[locale]/studio/studio-static-content.ts", import.meta.url)
+);
+const { studioCatalog } = await import(
+  new URL("../src/app/[locale]/studio/studio-route-catalog.ts", import.meta.url)
 );
 const { assertProvidedMetadataParity } = await import(
   new URL("../src/lib/content/catalog.ts", import.meta.url)
@@ -541,13 +547,70 @@ test("localized indexes cannot override canonical publication lifecycle fields",
 });
 
 test("choice-or-fate metadata stays aligned across indexes and localized bodies", () => {
-  const expectedTag = "Choice and Circumstance";
+  // Tags are localized per locale (MEP-51); index and body must agree within a locale.
+  const expected = { en: "Choice and Circumstance", vi: "Lựa chọn và hoàn cảnh" };
   const enIndex = readJson("../content/notes-data/_index.json");
   const viIndex = readJson("../content/notes-data/vi/_index.json");
-  assert.ok(enIndex.posts.find((post) => post.slug === "choice-or-fate").tags.includes(expectedTag));
-  assert.ok(viIndex.posts.find((post) => post.slug === "choice-or-fate").tags.includes(expectedTag));
-  assert.ok(loadNote("choice-or-fate", "en")?.tags.includes(expectedTag));
-  assert.ok(loadNote("choice-or-fate", "vi")?.tags.includes(expectedTag));
+  assert.ok(enIndex.posts.find((post) => post.slug === "choice-or-fate").tags.includes(expected.en));
+  assert.ok(viIndex.posts.find((post) => post.slug === "choice-or-fate").tags.includes(expected.vi));
+  assert.ok(loadNote("choice-or-fate", "en")?.tags.includes(expected.en));
+  assert.ok(loadNote("choice-or-fate", "vi")?.tags.includes(expected.vi));
+});
+
+test("every note keeps index tags equal to body tags in each locale", () => {
+  for (const [locale, file] of [["en", "../content/notes-data/_index.json"], ["vi", "../content/notes-data/vi/_index.json"]]) {
+    for (const indexedNote of readJson(file).posts) {
+      const body = loadNote(indexedNote.slug, locale);
+      assert.ok(body, `${locale} ${indexedNote.slug} body`);
+      assert.deepEqual(indexedNote.tags, body.tags, `${locale} ${indexedNote.slug} tags`);
+    }
+  }
+});
+
+test("category, series, topic hub and Studio subpage metadata fit snippet limits without dashes", () => {
+  const messages = (locale) => readJson(`../messages/${locale}.json`);
+  const brand = " | Nguyen Le Phong"; // the [locale] layout title template; "Nguyễn Lê Phong" has the same length
+  const seriesSuffix = Object.fromEntries(
+    [...readFileSync(new URL("../src/components/blog/BlogSeriesCollectionPage.tsx", import.meta.url), "utf8")
+      .matchAll(/\n  (en|vi): \{[^}]*?suffix: '([^']+)'/g)].map((match) => [match[1], match[2]])
+  );
+  assert.deepEqual(Object.keys(seriesSuffix).sort(), ["en", "vi"]);
+  const pages = [];
+  for (const locale of ["en", "vi", "fr", "ja", "ko", "zh"]) {
+    for (const category of listCategories(locale)) {
+      pages.push([`${locale} category ${category.slug}`, `${category.title} | ${messages(locale).Pages.blog.title}${brand}`, category.description]);
+    }
+  }
+  for (const locale of ["en", "vi"]) {
+    for (const series of listBlogSeries(locale)) {
+      pages.push([`${locale} series ${series.id}`, `${series.title} | ${seriesSuffix[locale]}${brand}`, series.intro]);
+    }
+    for (const hub of listNoteHubs(locale)) {
+      pages.push([`${locale} hub ${hub.topic}`, `${hub.title} | ${messages(locale).Pages.notes.hubs.suffix}${brand}`, hub.intro]);
+    }
+    for (const { slug } of studioCatalog.publicModules) {
+      const studioModule = getStudioStaticModule(locale, slug);
+      pages.push([`${locale} studio ${slug}`, studioModule.seoTitle, studioModule.description]);
+    }
+  }
+  for (const [label, title, description] of pages) {
+    assert.ok(title.length <= 64, `${label} title ${title.length}: ${title}`);
+    assert.doesNotMatch(title + description, /[—–]/, label);
+    if (/[぀-ヿ㐀-鿿가-힯]/.test(description)) {
+      assert.ok(description.length <= 88, `${label} description ${description.length}`);
+    } else {
+      assert.ok(description.length >= 110 && description.length <= 160, `${label} description ${description.length}`);
+    }
+  }
+  for (const file of [
+    "src/app/[locale]/(site)/blog/[category]/page.tsx",
+    "src/components/blog/BlogSeriesCollectionPage.tsx",
+    "src/components/notes/NotesTopicCollectionPage.tsx",
+    "src/components/blog/BlogCollectionPage.tsx",
+    "src/components/notes/NotesCollectionPage.tsx"
+  ]) {
+    assert.doesNotMatch(readFileSync(new URL(`../${file}`, import.meta.url), "utf8"), /\$\{[^}]+\} — /, file);
+  }
 });
 
 test("note card summaries and topics have one shared index-body value", () => {
@@ -596,12 +659,25 @@ test("static pages resolve authored identity and Studio uses a published social 
     new URL("../src/app/[locale]/studio/page.tsx", import.meta.url),
     "utf8"
   );
-  assert.match(studio, /localizedPageIdentity\(locale, seo\.path\)/);
-  assert.match(studio, /canonical:\s*identity\.canonical/);
-  assert.match(studio, /url:\s*identity\.canonical/);
-  assert.match(studio, /absoluteUrl\("\/opengraph-image\.png"\)/);
-  assert.doesNotMatch(studio, /blogPostOgImageUrl/);
-  assert.doesNotMatch(studio, /\$\{locale\}\/opengraph-image/);
+  // Studio is authored in en/vi only; other locales are self-canonical noindex fallbacks via the static-page resolver.
+  assert.match(studio, /resolveStaticPageLocalization\("studio", locale\)/);
+  assert.match(studio, /buildStudioMetadata\(/);
+  assert.match(studio, /url:\s*localization\.canonical/);
+  const studioSeo = readFileSync(
+    new URL("../src/app/[locale]/studio/studio-seo.ts", import.meta.url),
+    "utf8"
+  );
+  assert.match(studioSeo, /buildStaticPageMetadata\(/);
+  // MEP-64: Studio has its own card, attached by the static-page policy with a localized alt.
+  assert.doesNotMatch(studioSeo, /opengraph-image\.png/);
+  assert.equal(
+    existsSync(new URL("../src/app/[locale]/studio/opengraph-image.tsx", import.meta.url)),
+    true
+  );
+  for (const source of [studio, studioSeo]) {
+    assert.doesNotMatch(source, /blogPostOgImageUrl/);
+    assert.doesNotMatch(source, /\$\{locale\}\/opengraph-image/);
+  }
   assert.equal(
     absoluteUrl("/opengraph-image.png"),
     "https://nguyenlephong.github.io/opengraph-image.png"

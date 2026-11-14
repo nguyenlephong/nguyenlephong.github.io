@@ -46,8 +46,10 @@ test("reader background preferences are available from the floating tools", () =
   assert.match(articleTools, /namespace: 'ReaderTools'/);
   assert.match(articleTools, /background: t\('background'\)/);
   assert.match(articleTools, /<BlogReaderTools/);
-  assert.match(blogArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
-  assert.match(notesArticleLayout, /<ArticleReaderTools locale=\{locale\} \/>/);
+  const blogArticlePage = read("src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx");
+  const notesArticlePage = read("src/app/[locale]/(site)/notes/[slug]/page.tsx");
+  assert.match(blogArticlePage, /<ArticleReaderTools locale=\{locale\} share=\{share\} \/>/);
+  assert.match(notesArticlePage, /<ArticleReaderTools locale=\{locale\} share=\{share\} \/>/);
   assert.match(blogArticleLayout, /import ['"]\.\.\/\.\.\/reader\.css['"]/);
   assert.match(notesArticleLayout, /import ['"]\.\.\/\.\.\/blog\/reader\.css['"]/);
   assert.doesNotMatch(siteLayout, /\bArticleReaderTools\b|\bBlogReaderTools\b/);

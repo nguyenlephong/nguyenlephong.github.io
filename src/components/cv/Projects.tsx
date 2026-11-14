@@ -1,127 +1,79 @@
 'use client'
-import { LuExternalLink } from 'react-icons/lu'
+import { useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { ProjectType } from '@/app/app.type'
-import { Stagger, StaggerItem } from '@/components/motion/Reveal'
-import { track } from '@/lib/analytics'
+import CaseFile, { bold, trackProjectView, type CaseFileKey } from './CaseFile'
 
 type Props = { data: ProjectType[] }
 
-const PROJECT_KEY_MAP: Record<string, string> = {
+const CASE_FILES: Record<string, CaseFileKey> = {
   'LogiUP - Multi-tenant Logistics SaaS': 'logiup',
   'BonBon Mobility - VETC Mini App & Automotive Platform': 'bonbon',
+}
+// Smaller, earlier work: kept on the page under its own heading, never as a third "system".
+const MORE: Record<string, string> = {
   'Digital SAT Math': 'sat',
-  CDP: 'cdp',
-  'Event Tracking - Web SDK': 'sdk',
   'Vietnam Australia Center': 'vac',
-  'House Management - Mona House': 'mona',
-  'Bank tool - Mobivi': 'mobivi',
-  'Savyu - Synova Solutions': 'savyu',
+}
+
+/** "Oct 2023 - Apr 2025" → "2023–2025", "Mar 2026 - Present" → "2026–", "May 2023" → "2023". */
+function yearSpan(duration: string): string {
+  const [from, to] = duration.match(/\d{4}/g) ?? []
+  if (/present/i.test(duration)) return `${from}–`
+  return to && to !== from ? `${from}–${to}` : (from ?? '')
 }
 
 export default function Projects({ data }: Props) {
   const t = useTranslations('Projects')
+  const more = data.filter((p) => MORE[p.name])
+  const listRef = useRef<HTMLUListElement>(null)
+
+  // The smaller entries count as a project view at 50% too, so every project keeps `cv_project_view`.
+  useEffect(() => {
+    const items = listRef.current?.querySelectorAll<HTMLElement>('[data-project]')
+    if (!items?.length) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.intersectionRatio < 0.5) continue
+          trackProjectView(e.target.getAttribute('data-project') ?? '')
+          io.unobserve(e.target)
+        }
+      },
+      { threshold: 0.5 },
+    )
+    items.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [])
 
   return (
-    <Stagger className="project-grid" stagger={0.08}>
-      {data.map((p) => {
-        const key = PROJECT_KEY_MAP[p.name]
-        const items = key
-          ? (t.raw(`${key}.accomplishments`) as string[])
-          : p.accomplishment
-        return (
-          <StaggerItem
-            as="article"
-            key={p.name}
-            className="project-card"
-            onMouseEnter={() => track('cv_project_view', { project: p.name })}
-          >
-            <>
-              <header className="project-head">
-                {p.brand && (
-                  // Static export, fixed 40px mark: next/image optimization is not needed.
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    className="project-logo"
-                    src={p.brand.logo}
-                    width={40}
-                    height={40}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                  />
-                )}
-                <h3 className="project-name">{p.name}</h3>
-                <span className="project-duration">{p.duration}</span>
-              </header>
+    <>
+      <div className="case-files">
+        {data
+          .filter((p) => CASE_FILES[p.name])
+          .map((p) => (
+            <CaseFile key={p.name} id={CASE_FILES[p.name]} project={p} />
+          ))}
+      </div>
 
-              <div className="tech-row">
-                {p.technologies.map((tech) => (
-                  <span key={tech} className="tech-chip tech-chip-soft">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <ul className="project-bullets">
-                {items.map((item, i) => (
-                  <li
-                    key={i}
-                    className="project-bullet"
-                    dangerouslySetInnerHTML={{ __html: item }}
-                  />
-                ))}
-              </ul>
-
-              {p.brand && (
-                <div className="role-evidence">
-                  <span className="role-evidence-label">{t('labels.website')}</span>
-                  <a
-                    href={p.brand.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() =>
-                      track(
-                        'cv_project_website_click',
-                        { project: p.name, host: p.brand?.label },
-                        { beacon: true },
-                      )
-                    }
-                  >
-                    {p.brand.label}
-                    <LuExternalLink size={13} aria-hidden="true" />
-                  </a>
-                </div>
-              )}
-
-              {p.evidence && (
-                <div className="role-evidence">
-                  <span className="role-evidence-label">{t('labels.publicEvidence')}</span>
-                  <a
-                    href={p.evidence.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() =>
-                      track(
-                        'cv_project_evidence_click',
-                        {
-                          project: p.name,
-                          publisher: p.evidence?.publisher,
-                          published_at: p.evidence?.publishedAt,
-                        },
-                        { beacon: true },
-                      )
-                    }
-                  >
-                    {t('labels.readCoverage', { publisher: p.evidence.publisher })}
-                    <LuExternalLink size={13} aria-hidden="true" />
-                  </a>
-                </div>
-              )}
-            </>
-          </StaggerItem>
-        )
-      })}
-    </Stagger>
+      <section className="project-more" aria-labelledby="project-more-title">
+        <h3 id="project-more-title" className="project-more-title">
+          {t('labels.moreTitle')}
+        </h3>
+        <ul ref={listRef} className="pm-list">
+          {more.map((p) => {
+            const key = MORE[p.name]
+            return (
+              <li key={p.name} className="pm-item" data-project={p.name}>
+                <h4 className="pm-name">
+                  {t(`${key}.name`)} <span className="pm-period">{yearSpan(p.duration)}</span>
+                </h4>
+                <p className="pm-proof">{t.rich(`${key}.proof`, { b: bold })}</p>
+              </li>
+            )
+          })}
+        </ul>
+      </section>
+    </>
   )
 }

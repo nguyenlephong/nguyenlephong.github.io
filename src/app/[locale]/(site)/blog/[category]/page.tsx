@@ -14,8 +14,10 @@ import {
   listCategorySlugs,
 } from '@/lib/blog/data'
 import { blogPostOgImageUrl } from '@/lib/og/static-images'
+import { sectionOgImages } from '@/lib/seo/section-og-image'
 import PageTracker from '@/components/analytics/PageTracker'
 import BlogPostCard from '@/components/blog/BlogPostCard'
+import BlogCardClickTracker from '@/components/blog/BlogCardClickTracker'
 import '../blog.css'
 
 type Props = { params: Promise<{ locale: string; category: string }> }
@@ -34,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!cat) return { title: 'Category not found' }
 
   const t = await getTranslations({ locale, namespace: 'Pages.blog' })
-  const title = `${cat.title} — ${t('title')}`
+  const title = `${cat.title} | ${t('title')}`
   const description = cat.description
   const canonical = canonicalFor(locale, `/blog/${category}`)
   const languages = localeAlternates(`/blog/${category}`)
@@ -53,6 +55,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       alternateLocale: routing.locales
         .filter((l) => l !== locale)
         .map((l) => OG_LOCALE_MAP[l]),
+      // The category card with a localized alt; the file route's own alt is English (MEP-64).
+      images: sectionOgImages('/[locale]/(site)/blog/[category]', { locale, category }, cat.title),
     },
     twitter: {
       card: 'summary_large_image',
@@ -84,7 +88,7 @@ export default async function BlogCategoryPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     '@id': canonicalFor(locale, `/blog/${category}`) + '#collection',
-    name: `${cat.title} — ${t('title')}`,
+    name: `${cat.title} | ${t('title')}`,
     description: cat.description,
     url: canonicalFor(locale, `/blog/${category}`),
     inLanguage: locale,
@@ -101,6 +105,7 @@ export default async function BlogCategoryPage({ params }: Props) {
   return (
     <main className={`blog-category blog-category--${cat.accent}`}>
       <PageTracker page="blog_category" eventName="blog_category_view" section={category} />
+      <BlogCardClickTracker />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(collectionLd) }}

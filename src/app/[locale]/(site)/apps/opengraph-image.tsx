@@ -5,7 +5,7 @@ import { PAGE_SEO } from '@/app/seo.config'
 import { apps } from '@/app/[locale]/(site)/apps/apps.data'
 import { getCachedOg, saveOgCache, cachedOgResponse } from '@/lib/og/cache'
 
-export const alt = PAGE_SEO.apps.ogAlt ?? PAGE_SEO.apps.title
+export const alt = PAGE_SEO.apps.ogAlt
 export const size = OG_SIZE
 export const contentType = OG_CONTENT_TYPE
 
@@ -16,9 +16,8 @@ export function generateStaticParams() {
 export const dynamic = 'force-static'
 
 export default async function OgImage() {
-  const live = apps.filter((a) => a.status === 'shipped').length
-  const featured = apps.slice(0, 3).map((a) => a.name)
-  const cacheKey = `static-apps-live${live}-v1`
+  const names = apps.map((a) => a.name)
+  const cacheKey = `static-apps-${names.join('-')}-v2`
   const cached = getCachedOg(cacheKey)
   if (cached) return cachedOgResponse(cached)
 
@@ -26,12 +25,11 @@ export default async function OgImage() {
     (
       <OgShell
         theme="ocean"
-        eyebrow="Apps · Showroom"
-        title="Tiny apps, crafted with care."
-        subtitle="A personal showroom of utilities I've shipped — each one open-source, opinionated about what to leave out, and designed to disappear into your workflow."
-        chips={featured.length ? featured.concat(['Open-source', 'MIT']) : ['Open-source', 'MIT', 'macOS · Web']}
-        badge={{ label: 'Apps live', value: String(live || apps.length) }}
-        footer="nguyenlephong.github.io/apps · Open-source"
+        eyebrow="Apps"
+        title="Small tools I built for my own work."
+        subtitle={apps[0]?.copy.en.tagline ?? 'Source on GitHub.'}
+        chips={[...names, 'macOS 13+', 'Swift', 'MIT']}
+        footer="nguyenlephong.github.io/apps · Source on GitHub"
       />
     ),
     { ...size }

@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Do You Need a Service Mesh? Let Production Evidence Decide",
   "summary": "A practical decision guide for service mesh adoption: which production signals justify it, where the extra layer can fail, and how to pilot and roll back without betting the whole platform.",
-  "date": "2026-05-10",
+  "date": "2026-09-16",
   "readingMinutes": 7,
   "tags": [
     "Software Architecture",

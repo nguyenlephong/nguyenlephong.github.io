@@ -9,37 +9,29 @@ import {
   listBlogSeries,
   listCategories,
   listPosts,
+  listStartHere,
 } from '@/lib/blog/data'
 import { OG_LOCALE_MAP, canonicalFor, localeAlternates } from '@/lib/seo/locale'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import SectionBreadcrumbJsonLd from '@/components/seo/SectionBreadcrumbJsonLd'
 import { collectionPageTitle } from '@/lib/seo/collection-title'
-import { collectionPagePath, paginate } from '@/lib/content/pagination'
+import { collectionPagePath, isPagedArchivePath, paginate } from '@/lib/content/pagination'
 import { toBlogSearchItem } from '@/lib/content/search-index'
 import {
   createSearchIndex,
   versionedSearchIndexUrl,
 } from '@/lib/content/search-index.server'
 import { blogPostOgImageUrl } from '@/lib/og/static-images'
+import { sectionOgImages } from '@/lib/seo/section-og-image'
 import ContentHubPageTracker from '@/components/analytics/ContentHubPageTracker'
 import PageTracker from '@/components/analytics/PageTracker'
 import BlogCategoryCard from '@/components/blog/BlogCategoryCard'
 import BlogExplorer from '@/components/blog/BlogExplorer'
+import BlogStartHere from '@/components/blog/BlogStartHere'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
+import { popularTags } from '@/lib/blog/article-header'
 
-const POPULAR_TAG_LIMIT = 12
 const seo = PAGE_SEO.blog
-
-function popularTags(posts: { tags: string[] }[]): string[] {
-  const counts = new Map<string, number>()
-  for (const post of posts) {
-    for (const tag of post.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1)
-  }
-  return [...counts.entries()]
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-    .slice(0, POPULAR_TAG_LIMIT)
-    .map(([tag]) => tag)
-}
 
 export function blogPageCount(locale: string): number {
   return paginate(listPosts(locale), 1)?.totalPages ?? 1
@@ -54,28 +46,36 @@ export async function blogCollectionMetadata(
   if (!pageData) notFound()
 
   const t = await getTranslations({ locale, namespace: 'Pages.blog' })
+  const seoT = await getTranslations({ locale, namespace: 'SEO.blog' })
   const path = collectionPagePath('/blog', page)
   const pageLabel = t('controls.pagination.pageLabel', {
     page,
     total: pageData.totalPages,
   })
-  const title = collectionPageTitle(page, t('title'), t('eyebrow'), pageLabel)
+  // Page 1 carries the full SEO title (brand included); later pages get the layout's name suffix.
+  const title =
+    page === 1
+      ? seoT('title')
+      : collectionPageTitle(page, t('title'), t('eyebrow'), pageLabel)
   const description =
     page === 1
-      ? t('intro')
+      ? seoT('description')
       : t('controls.pagination.pageDescription', {
           page,
           total: pageData.totalPages,
         })
   const canonical = canonicalFor(locale, path)
+  const paged = isPagedArchivePath(path)
 
   return {
-    title,
+    title: page === 1 ? { absolute: title } : title,
     description,
-    keywords: seo.keywords,
+    keywords: [...seo.keywords],
     alternates: {
       canonical,
-      languages: localeAlternates(path, listBlogArchiveLocales(page)),
+      ...(paged
+        ? {}
+        : { languages: localeAlternates(path, listBlogArchiveLocales(page)) }),
     },
     openGraph: {
       type: 'website',
@@ -84,9 +84,12 @@ export async function blogCollectionMetadata(
       description,
       siteName: SITE.name,
       locale: OG_LOCALE_MAP[locale as Locale] ?? OG_LOCALE_MAP.en,
-      alternateLocale: listBlogArchiveLocales(page)
-        .filter((candidate) => candidate !== locale)
-        .map((candidate) => OG_LOCALE_MAP[candidate]),
+      alternateLocale: paged
+        ? []
+        : listBlogArchiveLocales(page)
+            .filter((candidate) => candidate !== locale)
+            .map((candidate) => OG_LOCALE_MAP[candidate]),
+      images: sectionOgImages('/[locale]/(site)/blog', { locale }, seoT('title')),
     },
     twitter: {
       card: 'summary_large_image',
@@ -116,6 +119,7 @@ export default async function BlogCollectionPage({
   setRequestLocale(locale)
 
   const t = await getTranslations({ locale, namespace: 'Pages.blog' })
+  const seoT = await getTranslations({ locale, namespace: 'SEO.blog' })
   const categories = listCategories(locale)
   const hasCuratedHubs = locale === 'en' || locale === 'vi'
   const seriesCatalog = hasCuratedHubs ? listBlogSeries(locale) : []
@@ -137,13 +141,26 @@ export default async function BlogCollectionPage({
     page,
     total: pageData.totalPages,
   })
+  const startHere =
+    page === 1 && hasCuratedHubs
+      ? listStartHere(locale).map(({ post, reason }) => ({
+          slug: post.slug,
+          category: post.category,
+          title: post.title,
+          reason,
+          meta: `${categoryBySlug.get(post.category)?.title ?? post.category} · ${t(
+            'readingTime',
+            { minutes: post.readingMinutes },
+          )}`,
+        }))
+      : []
 
   const blogLd = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
     '@id': `${canonical}#blog`,
-    name: `${t('title')} — ${t('eyebrow')}`,
-    description: seo.description,
+    name: `${t('title')} | ${t('eyebrow')}`,
+    description: seoT('description'),
     url: canonical,
     inLanguage: locale,
     isPartOf: { '@type': 'WebSite', '@id': `${SITE_URL}/#website` },
@@ -167,7 +184,12 @@ export default async function BlogCollectionPage({
   }
 
   return (
-    <main className="blog-home">
+    // Page 1 exists in every locale; deeper pages only where the corpus reaches.
+    <main
+      className="blog-home"
+      data-content-locales={page > 1 ? listBlogArchiveLocales(page).join(' ') : undefined}
+      data-content-locale-fallback={page > 1 ? '/blog' : undefined}
+    >
       {page === 1 && hasCuratedHubs ? (
         <ContentHubPageTracker
           page="blog"
@@ -189,69 +211,19 @@ export default async function BlogCollectionPage({
         <SectionBreadcrumbJsonLd locale={locale} name={t('title')} url={canonical} />
       ) : null}
       <header className="blog-home__head">
-        <p className="blog-home__eyebrow">{t('eyebrow')}</p>
         <h1 className="blog-home__title">{t('title')}</h1>
-        <p className="blog-home__intro">{t('intro')}</p>
+        <p className="blog-home__intro">
+          {t.rich('intro', {
+            notes: (chunks) => (
+              <a href={`/${locale}/notes`} className="content-cross-link" data-cross-link data-source="blog_intro">
+                {chunks}
+              </a>
+            ),
+          })}
+        </p>
       </header>
 
-      {page === 1 && (
-        <section
-          className="blog-home__section"
-          aria-labelledby="blog-categories-heading"
-        >
-          <h2 id="blog-categories-heading" className="blog-home__section-title">
-            {t('categoriesHeading')}
-          </h2>
-          <div className="blog-cat-grid">
-            {categories.map((category) => (
-              <BlogCategoryCard
-                key={category.slug}
-                category={category}
-                countLabel={countFor(category.slug)}
-              />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {page === 1 && seriesCatalog.length > 0 && (
-        <section
-          className="blog-home__section"
-          aria-labelledby="blog-series-heading"
-        >
-          <h2 id="blog-series-heading" className="blog-home__section-title">
-            {locale === 'vi' ? 'Đọc theo loạt bài' : 'Read by series'}
-          </h2>
-          <div className="content-hub-catalog">
-            {seriesCatalog.map((series) => (
-              <a
-                key={series.id}
-                href={`/${locale}/blog/series/${series.id}`}
-                className="content-hub-catalog__link"
-                data-content-hub-action="catalog"
-                data-content-hub-kind="blog_series"
-                data-content-hub-id={series.id}
-                data-content-hub-page="1"
-                data-source="blog_index"
-              >
-                <h3 className="content-hub-catalog__title">{series.title}</h3>
-                <p className="content-hub-catalog__intro">{series.intro}</p>
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
-
-      <section
-        className="blog-home__section"
-        aria-labelledby="blog-latest-heading"
-      >
-        <h2 id="blog-latest-heading" className="blog-home__section-title">
-          {t('latestHeading')}
-          {page > 1 && (
-            <span className="content-page-label"> — {pageLabel}</span>
-          )}
-        </h2>
+      <div className="blog-home__archive">
         <ScopedIntlProvider scope="blog">
           {pageData.items.length > 0 ? (
             <BlogExplorer
@@ -281,12 +253,75 @@ export default async function BlogCollectionPage({
                 'blog',
                 searchRevision,
               )}
+              lead={
+                <>
+                  <BlogStartHere
+                    heading={t('startHereHeading')}
+                    items={startHere}
+                    locale={locale}
+                  />
+                  <h2 className="blog-home__section-title blog-home__latest-title">
+                    {t('latestHeading')}
+                    {page > 1 && (
+                      <span className="content-page-label"> · {pageLabel}</span>
+                    )}
+                  </h2>
+                </>
+              }
             />
           ) : (
             <p className="blog-empty">{t('empty')}</p>
           )}
         </ScopedIntlProvider>
-      </section>
+      </div>
+
+      {page === 1 && seriesCatalog.length > 0 && (
+        <section
+          className="blog-home__section"
+          aria-labelledby="blog-series-heading"
+        >
+          <h2 id="blog-series-heading" className="blog-home__section-title">
+            {t('seriesHeading')}
+          </h2>
+          <div className="content-hub-catalog">
+            {seriesCatalog.map((series) => (
+              <a
+                key={series.id}
+                href={`/${locale}/blog/series/${series.id}`}
+                className="content-hub-catalog__link"
+                data-content-hub-action="catalog"
+                data-content-hub-kind="blog_series"
+                data-content-hub-id={series.id}
+                data-content-hub-page="1"
+                data-source="blog_index"
+              >
+                <h3 className="content-hub-catalog__title">{series.title}</h3>
+                <p className="content-hub-catalog__intro">{series.intro}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {page === 1 && (
+        <section
+          className="blog-home__section"
+          aria-labelledby="blog-categories-heading"
+        >
+          <h2 id="blog-categories-heading" className="blog-home__section-title">
+            {t('categoriesHeading')}
+          </h2>
+          <div className="blog-cat-grid">
+            {categories.map((category) => (
+              <BlogCategoryCard
+                key={category.slug}
+                category={category}
+                countLabel={countFor(category.slug)}
+              />
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   )
 }

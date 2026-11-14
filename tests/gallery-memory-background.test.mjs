@@ -12,7 +12,7 @@ async function read(relativePath) {
 }
 
 test("gallery renders a theme-aware particle Memory Bloom in an async WebGL boundary", async () => {
-  const [page, loader, backdrop, renderer, grid, motionProvider, css] =
+  const [page, loader, backdrop, renderer, grid, css] =
     await Promise.all([
       read("src/app/[locale]/(site)/gallery/page.tsx"),
       read("src/components/gallery/GalleryBackdrop.tsx"),
@@ -22,7 +22,6 @@ test("gallery renders a theme-aware particle Memory Bloom in an async WebGL boun
       ),
       readParticleRuntime(),
       read("src/components/gallery/GalleryGrid.tsx"),
-      read("src/components/motion/MotionProvider.tsx"),
       read("src/app/[locale]/(site)/gallery/gallery.css")
     ]);
 
@@ -102,7 +101,8 @@ test("gallery renders a theme-aware particle Memory Bloom in an async WebGL boun
   );
   assert.match(backdrop, /frame\.reducedMotion \? 0 : pointer\.hover/);
   assertWorkerRendering(backdrop, renderer, "memory-bloom");
-  assert.match(motionProvider, /<MotionConfig reducedMotion="user">/);
+  // The grid has no JS motion at all, so it needs no reduced-motion provider.
+  assert.doesNotMatch(grid, /framer-motion|MotionConfig/);
   assert.doesNotMatch(grid, /useReducedMotion/);
 
   assert.match(css, /\.gallery-showcase \{[\s\S]*?isolation: isolate/);

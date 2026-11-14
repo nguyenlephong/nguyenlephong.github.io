@@ -137,6 +137,7 @@ function OfflineStatusBannerInner({
   const [offlineState, setOfflineState] = useState<OfflineState>(SSR_OFFLINE_STATE)
   const [isDismissed, setIsDismissed] = useState(false)
   const [isOnline, setIsOnline] = useState(true)
+  const [updateReady, setUpdateReady] = useState(false)
   const lastTrackedStatusRef = useRef<string | null>(null)
   const completeness = offlineState.completeness
 
@@ -240,11 +241,37 @@ function OfflineStatusBannerInner({
       }
     }
 
+    // Register after load and an idle slot so the install never competes with
+    // hydration or the page's own downloads.
+    // Idle and timeout ids are separate number spaces; cancel only the kind we created.
+    let cancelScheduled: (() => void) | null = null
+    const scheduleRegister = () => {
+      if (typeof window.requestIdleCallback === 'function') {
+        const handle = window.requestIdleCallback(() => void registerWorker(), { timeout: 5000 })
+        cancelScheduled = () => window.cancelIdleCallback(handle)
+      } else {
+        const handle = window.setTimeout(() => void registerWorker(), 1)
+        cancelScheduled = () => window.clearTimeout(handle)
+      }
+    }
+
+    let hadController = Boolean(navigator.serviceWorker.controller)
+    const onControllerChange = () => {
+      // The first claim after a fresh install is not an update.
+      if (hadController) setUpdateReady(true)
+      hadController = true
+    }
+
     navigator.serviceWorker.addEventListener('message', onMessage)
-    registerWorker()
+    navigator.serviceWorker.addEventListener('controllerchange', onControllerChange)
+    if (document.readyState === 'complete') scheduleRegister()
+    else window.addEventListener('load', scheduleRegister, { once: true })
 
     return () => {
       navigator.serviceWorker.removeEventListener('message', onMessage)
+      navigator.serviceWorker.removeEventListener('controllerchange', onControllerChange)
+      window.removeEventListener('load', scheduleRegister)
+      cancelScheduled?.()
     }
   }, [locale])
 
@@ -262,6 +289,38 @@ function OfflineStatusBannerInner({
         // Ignore registration readiness failures.
       })
   }, [pathname])
+
+  if (updateReady && isOnline) {
+    const hideUpdateLabel = t('dismissUpdate')
+    return (
+      <div className="offline-banner offline-banner--ready" role="status" aria-live="polite">
+        <span className="offline-banner__dot" aria-hidden="true" />
+        <span className="offline-banner__message">{t('updateReady')}</span>
+        <button
+          type="button"
+          className="offline-banner__action"
+          onClick={() => {
+            track('app_update_reload', { locale })
+            window.location.reload()
+          }}
+        >
+          {t('reload')}
+        </button>
+        <button
+          type="button"
+          className="offline-banner__dismiss"
+          aria-label={hideUpdateLabel}
+          title={hideUpdateLabel}
+          onClick={() => {
+            setUpdateReady(false)
+            track('app_update_dismiss', { locale })
+          }}
+        >
+          <LuX aria-hidden="true" />
+        </button>
+      </div>
+    )
+  }
 
   if (isOnline || isDismissed) return null
 

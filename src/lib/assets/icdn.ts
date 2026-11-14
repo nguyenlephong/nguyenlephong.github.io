@@ -4,6 +4,7 @@ import {
   type MediaUrlResolver,
 } from "@/lib/media/url-resolver";
 import mediaPublication from "../../../config/media-publication-public.json" with { type: "json" };
+import { addResponsiveImageAttributes } from "@/lib/assets/responsive-images";
 
 type ContentAssetMapping = {
   from: string;
@@ -85,7 +86,10 @@ export function rewriteContentAssetUrls(
       `${prefix}${localContentAssetToIcdn(`/${assetPath}`, resolver)}`
   );
 
-  return rewriteOwnedLegacyMediaUrls(withMappedLocalAssets, resolver);
+  return addResponsiveImageAttributes(
+    rewriteOwnedLegacyMediaUrls(withMappedLocalAssets, resolver),
+    resolver.baseUrl,
+  );
 }
 
 /** Rewrites media references in article bodies and every metadata/search field. */

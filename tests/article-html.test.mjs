@@ -207,13 +207,15 @@ test("keeps article HTML server-rendered and canvas drawing behind a second lazy
   assert.match(canvas, /Small pace, real summit/);
   assert.match(
     blogPage,
-    /<BlogContent html=\{post\.html\} locale=\{locale\} \/>/
+    /<BlogContent html=\{outline\.html\} locale=\{locale\} \/>/
   );
+  assert.match(blogPage, /const outline = buildArticleOutline\(post\.html\)/);
   assert.match(blogPage, /__html:\s*localizeArticleHtmlLinks\(f\.a, locale\)/);
   assert.match(
     notesPage,
-    /<BlogContent html=\{note\.html\} locale=\{locale\} \/>/
+    /<BlogContent html=\{outline\.html\} locale=\{locale\} \/>/
   );
+  assert.match(notesPage, /const outline = buildArticleOutline\(note\.html\)/);
   assert.match(notesPage, /__html:\s*localizeArticleHtmlLinks\(f\.a, locale\)/);
 });
 

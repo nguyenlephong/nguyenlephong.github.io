@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Outbox Pattern: để dữ liệu và sự kiện không lạc nhau",
   "summary": "Outbox Pattern xử lý một lỗi rất đời của hệ thống phân tán: dữ liệu đã ghi vào database nhưng event lại không được gửi đi. Mẫu này khép khoảng hở của dual write, nhưng vẫn đòi hỏi retry, idempotency, ordering, dọn dữ liệu và observability nghiêm túc.",
-  "date": "2026-05-15",
+  "date": "2026-09-21",
   "readingMinutes": 7,
   "tags": [
     "Software Architecture",

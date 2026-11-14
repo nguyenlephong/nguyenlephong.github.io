@@ -5,7 +5,8 @@ import { fileURLToPath } from "node:url";
 
 const STYLESHEET_RELATIVE_PATH = "studio/studio-shadow.css";
 const SHADOW_CSS_SENTINEL = '.studio-admin[data-navbar-style="scroll"]';
-const MIN_SHADOW_CSS_BYTES = 100_000;
+// Floor against a truncated payload; the pruned sheet is about 91 KB raw (MEP-83).
+const MIN_SHADOW_CSS_BYTES = 80_000;
 const DEFAULT_BUDGET_CONFIG = "config/static-artifact-budgets.json";
 const REPOSITORY_ROOT = realpathSync(
   fileURLToPath(new URL("..", import.meta.url))
@@ -27,12 +28,9 @@ const ENGLISH_DEFAULT_SENTINEL = STUDIO_LOCALE_SENTINELS.en;
 const VIETNAMESE_ONLY_SENTINEL = STUDIO_LOCALE_SENTINELS.vi;
 
 const runtimeMarkers = [
-  { name: "mail workbench", marker: "mail-workbench" },
   { name: "AI skills workbench", marker: "skill-library-workbench" },
   { name: "delivery checklist workbench", marker: "checklist-workbench" },
-  { name: "auxiliary dashboards", marker: "data-studio-auxiliary-dashboard" },
-  { name: "ReactFlow", marker: "data-studio-flow-runtime" },
-  { name: "Recharts", marker: "data-studio-recharts-runtime" }
+  { name: "ReactFlow", marker: "data-studio-flow-runtime" }
 ];
 
 const chunkReferencePattern =
@@ -78,9 +76,13 @@ function directStudioScripts(outDir, locale) {
     throw new Error(`Missing Studio HTML: ${htmlCandidate}`);
   const htmlPath = canonicalArtifactPath(outDir, htmlCandidate);
   const html = readFileSync(htmlPath, "utf8");
+  // `<script nomodule>` (the Next legacy polyfill) is never downloaded by module-capable
+  // browsers; same rule as verify-performance-artifact.
   const refs = [
     ...html.matchAll(/<script\b[^>]*\bsrc="([^"]+\.js(?:\?[^"]*)?)"[^>]*>/g)
-  ].map((match) => match[1]);
+  ]
+    .filter((match) => !/\snomodule(?=[\s=/>])/i.test(match[0]))
+    .map((match) => match[1]);
   return [...new Set(refs)].map((ref) => assetPath(outDir, ref));
 }
 
@@ -474,34 +476,6 @@ export function verifyStudioArtifact({
   const localeEntryScripts = new Set();
   addLoaderGroups(localeEntryScripts, localeLoaderPaths[locale]);
   addLoaderGroups(localeEntryScripts, [localeLoaderGroups[locale]]);
-  const auxiliaryDashboardScripts = reachableScripts.filter((file) =>
-    sourceFor(file).includes("data-studio-auxiliary-dashboard")
-  );
-  const auxiliaryDashboardLoaderPath = shortestLoaderPath(
-    dependencyGraph,
-    localeEntryScripts,
-    auxiliaryDashboardScripts
-  );
-  if (
-    !auxiliaryDashboardLoaderPath ||
-    auxiliaryDashboardLoaderPath.length !== 1 ||
-    auxiliaryDashboardLoaderPath[0].kind !== "promise-all"
-  ) {
-    const loaderDepth = auxiliaryDashboardLoaderPath?.length ?? "unreachable";
-    throw new Error(
-      `Studio auxiliary dashboard runtime must be loaded atomically by its outer route loader; found loader depth ${loaderDepth}`
-    );
-  }
-  const auxiliaryDashboardLoader = auxiliaryDashboardLoaderPath[0];
-  const eagerDashboardCapability = auxiliaryDashboardLoader.chunks.find(
-    (file) => sourceFor(file).includes("data-studio-recharts-runtime")
-  );
-  if (eagerDashboardCapability) {
-    throw new Error(
-      `Recharts runtime is preloaded by the Studio auxiliary dashboard route: ${relative(absoluteOutDir, eagerDashboardCapability)}`
-    );
-  }
-
   const lazyChunks = {};
   for (const runtime of runtimeMarkers) {
     const matches = allScripts.filter((file) =>
@@ -646,14 +620,6 @@ export function verifyStudioArtifact({
       file: relative(absoluteOutDir, stylesheetPath)
     },
     lazyChunks,
-    lazyBoundaries: {
-      auxiliaryDashboard: {
-        loaderDepth: auxiliaryDashboardLoaderPath.length,
-        loaderChunks: auxiliaryDashboardLoader.chunks.map((file) =>
-          relative(absoluteOutDir, file)
-        )
-      }
-    },
     localeIsolation: {
       englishSentinel: ENGLISH_DEFAULT_SENTINEL,
       vietnameseSentinel: VIETNAMESE_ONLY_SENTINEL,

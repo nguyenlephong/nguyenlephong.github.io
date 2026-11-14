@@ -1,19 +1,15 @@
 import { Metadata } from 'next'
-import {
-  LuActivity,
-  LuBoxes,
-  LuCode2,
-  LuGitBranch,
-  LuNetwork,
-  LuRouter,
-  LuServerCog,
-  LuShieldCheck,
-} from 'react-icons/lu'
+import type { ReactNode } from 'react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { hasLocale } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
+import { Link } from '@/i18n/navigation'
+import { APP_ROUTE } from '@/app/app.const'
+import { SITE_URL } from '@/app/seo.config'
+import { email } from '@/content/social'
 import PageTracker from '@/components/analytics/PageTracker'
+import AppsLinkTracker from '@/components/analytics/AppsLinkTracker'
 import { serializeJsonLd } from '@/lib/seo/json-ld'
 import { buildPersonVentureSchema } from '@/lib/seo/profile-schema'
 import { buildSectionBreadcrumb } from '@/lib/seo/section-breadcrumb'
@@ -30,30 +26,41 @@ export function generateStaticParams() {
 
 type Props = { params: Promise<{ locale: string }> }
 
-type Metric = {
-  value: string
-  label: string
-}
+// The career arc, oldest first. Keys index About.arc and About.story.periods.
+const PERIODS = [
+  { id: 'early', year: 2018 },
+  { id: 'product', year: 2020 },
+  { id: 'scale', year: 2024 },
+  { id: 'handover', year: 2025 },
+  { id: 'now', year: 2026 },
+] as const
 
-type SystemLayer = {
-  title: string
-  body: string
-  tags: string[]
-}
+const HABITS = ['scale', 'handover', 'zeroToOne', 'platform'] as const
 
-type StackGroup = {
-  title: string
-  items: string[]
-}
+const WRITING_LINKS = {
+  blog: APP_ROUTE.BLOG,
+  notes: APP_ROUTE.NOTES,
+  note: `${APP_ROUTE.NOTES}/the-quiet-engineering-behind-bonbons-500k-round`,
+  post: `${APP_ROUTE.BLOG}/ways-of-working/feature-flags-for-safer-deployments`,
+} as const
 
-type Principle = {
-  title: string
-  body: string
-}
+const bold = (chunks: ReactNode) => <b>{chunks}</b>
 
-const systemIcons = [LuServerCog, LuNetwork, LuRouter, LuActivity]
-const systemTones = ['sky', 'emerald', 'violet', 'amber'] as const
-const stackIcons = [LuCode2, LuShieldCheck, LuBoxes, LuGitBranch]
+function writingLink(target: keyof typeof WRITING_LINKS) {
+  function WritingLink(chunks: ReactNode) {
+    return (
+      <Link
+        href={WRITING_LINKS[target]}
+        prefetch={false}
+        data-track="about_link_click"
+        data-track-target={target}
+      >
+        {chunks}
+      </Link>
+    )
+  }
+  return WritingLink
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
@@ -89,8 +96,12 @@ export default async function AboutPage({ params }: Props) {
     name: title,
     description,
     inLanguage: localization.contentLocale,
-    mainEntity: { '@id': 'https://nguyenlephong.github.io/#person' },
+    mainEntity: { '@id': `${SITE_URL}/#person` },
     url: localization.canonical,
+    significantLink: [
+      `${SITE_URL}${APP_ROUTE.CV_PDF}`,
+      `${SITE_URL}/${localization.contentLocale}#experience`,
+    ],
   }
 
   const navT = await getTranslations({
@@ -104,14 +115,10 @@ export default async function AboutPage({ params }: Props) {
   })
 
   const t = await getTranslations('About')
-  const metrics = t.raw('hero.metrics') as Metric[]
-  const systems = t.raw('systems.items') as SystemLayer[]
-  const stackGroups = t.raw('stack.groups') as StackGroup[]
-  const principles = t.raw('principles.items') as Principle[]
 
   return (
     <main
-      className="about-page about-page-v2"
+      className="about-page about-page-v3"
       lang={localization.authored ? undefined : localization.contentLocale}
     >
       <script
@@ -127,107 +134,125 @@ export default async function AboutPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildPersonVentureSchema()) }}
       />
       <PageTracker page="about" eventName="about_view" />
+      <AppsLinkTracker />
 
-      <section className="about-hero">
-        <div className="about-hero__copy">
-          <p className="about-eyebrow">{t('hero.eyebrow')}</p>
-          <h1 className="about-hero__title">{t('hero.title')}</h1>
-          <p
-            className="about-hero__lead"
-            dangerouslySetInnerHTML={{ __html: t.raw('hero.lead') }}
-          />
-        </div>
+      <header className="about-intro">
+        <h1 className="about-title">{t('title')}</h1>
+        <p className="about-lede">{t('lede')}</p>
 
-        <dl className="about-metrics" aria-label={t('hero.metricsLabel')}>
-          {metrics.map((metric) => (
-            <div key={metric.label} className="about-metric">
-              <dt>{metric.value}</dt>
-              <dd>{metric.label}</dd>
+        {/* The route figure: one node per move, each a jump to its period below. */}
+        <ol className="about-arc" aria-label={t('arc.label')}>
+          {PERIODS.map(({ id, year }) => (
+            <li key={id} className={id === 'now' ? 'is-now' : undefined}>
+              <a
+                href={`#period-${id}`}
+                data-track="about_link_click"
+                data-track-target="arc"
+                data-track-period={id}
+              >
+                <span className="about-arc-year">{year}</span>
+                <span className="about-arc-node" aria-hidden="true" />
+                <span className="about-arc-env">{t(`arc.${id}`)}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </header>
+
+      <section className="about-block" aria-labelledby="about-story-title">
+        <h2 id="about-story-title" className="about-heading">
+          {t('story.title')}
+        </h2>
+        <ol className="about-story">
+          {PERIODS.map(({ id }) => (
+            <li
+              key={id}
+              id={`period-${id}`}
+              className={`about-period${id === 'now' ? ' is-now' : ''}`}
+            >
+              <p className="about-period-dates">{t(`story.periods.${id}.dates`)}</p>
+              <div className="about-period-body">
+                <h3>{t(`story.periods.${id}.where`)}</h3>
+                <p className="about-period-env">{t(`story.periods.${id}.env`)}</p>
+                <p>{t.rich(`story.periods.${id}.body`, { b: bold })}</p>
+              </div>
+              {/* What the move changed: a margin annotation on wide screens. */}
+              <p className="about-period-shift">{t(`story.periods.${id}.shift`)}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="about-block" aria-labelledby="about-habits-title">
+        <h2 id="about-habits-title" className="about-heading">
+          {t('habits.title')}
+        </h2>
+        <dl className="about-habits">
+          {HABITS.map((id) => (
+            <div key={id} className="about-habit">
+              <dt>{t(`habits.items.${id}.title`)}</dt>
+              <dd>
+                <p>{t.rich(`habits.items.${id}.proof`, { b: bold })}</p>
+                <p className="about-habit-source">{t(`habits.items.${id}.source`)}</p>
+              </dd>
             </div>
           ))}
         </dl>
+        <p className="about-stack">{t('habits.stack')}</p>
       </section>
 
-      <section className="about-section" aria-labelledby="about-systems-title">
-        <div className="about-section__header">
-          <p className="about-eyebrow">{t('systems.eyebrow')}</p>
-          <h2 id="about-systems-title">{t('systems.title')}</h2>
-          <p>{t('systems.intro')}</p>
-        </div>
-
-        <div className="about-system-grid">
-          {systems.map((item, index) => {
-            const Icon = systemIcons[index % systemIcons.length]
-            const tone = systemTones[index % systemTones.length]
-            return (
-              <article key={item.title} className={`about-system-card about-tone-${tone}`}>
-                <span className="about-system-card__icon" aria-hidden="true">
-                  <Icon size={20} />
-                </span>
-                <h3>{item.title}</h3>
-                <p dangerouslySetInnerHTML={{ __html: item.body }} />
-                <ul aria-label={item.title}>
-                  {item.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
-                  ))}
-                </ul>
-              </article>
-            )
+      <section className="about-block about-writing" aria-labelledby="about-writing-title">
+        <h2 id="about-writing-title" className="about-heading">
+          {t('writing.title')}
+        </h2>
+        <p>
+          {t.rich('writing.body', {
+            blog: writingLink('blog'),
+            notes: writingLink('notes'),
+            note: writingLink('note'),
+            post: writingLink('post'),
           })}
-        </div>
+        </p>
+        <p>{t.rich('writing.teaching', { b: bold })}</p>
       </section>
 
-      <section className="about-section" aria-labelledby="about-stack-title">
-        <div className="about-section__header">
-          <p className="about-eyebrow">{t('stack.eyebrow')}</p>
-          <h2 id="about-stack-title">{t('stack.title')}</h2>
-          <p>{t('stack.intro')}</p>
-        </div>
-
-        <div className="about-stack-grid">
-          {stackGroups.map((group, index) => {
-            const Icon = stackIcons[index % stackIcons.length]
-            return (
-              <section key={group.title} className="about-stack-group">
-                <div className="about-stack-group__head">
-                  <span aria-hidden="true">
-                    <Icon size={18} />
-                  </span>
-                  <h3>{group.title}</h3>
-                </div>
-                <ul>
-                  {group.items.map((item) => (
-                    <li key={item} dangerouslySetInnerHTML={{ __html: item }} />
-                  ))}
-                </ul>
-              </section>
-            )
-          })}
-        </div>
-      </section>
-
-      <section className="about-section about-principles" aria-labelledby="about-principles-title">
-        <div className="about-section__header">
-          <p className="about-eyebrow">{t('principles.eyebrow')}</p>
-          <h2 id="about-principles-title">{t('principles.title')}</h2>
-          <p>{t('principles.intro')}</p>
-        </div>
-
-        <div className="about-principle-list">
-          {principles.map((principle, index) => (
-            <article key={principle.title} className="about-principle">
-              <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-              <div>
-                <h3>{principle.title}</h3>
-                <p>{principle.body}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="about-closing" aria-label={t('closing.label')}>
-        <p dangerouslySetInnerHTML={{ __html: t.raw('closing.body') }} />
+      <section className="about-block about-closing" aria-labelledby="about-closing-line">
+        <p id="about-closing-line" className="about-closing-line">
+          {t.rich('closing.body', { b: bold })}
+        </p>
+        <ul className="about-closing-links" aria-label={t('closing.linksLabel')}>
+          <li>
+            <a
+              href={APP_ROUTE.CV_PDF}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-track="cv_resume_download"
+              data-track-source="about"
+            >
+              {t('closing.resume')}
+            </a>
+          </li>
+          <li>
+            <a
+              href={`mailto:${email}`}
+              data-track="cv_contact_click"
+              data-track-channel="email"
+              data-track-source="about"
+            >
+              {t('closing.email')}
+            </a>
+          </li>
+          <li>
+            <Link
+              href={`${APP_ROUTE.HOME}#experience`}
+              data-track="cv_nav_click"
+              data-track-target="experience"
+              data-track-source="about"
+            >
+              {t('closing.experience')}
+            </Link>
+          </li>
+        </ul>
       </section>
     </main>
   )

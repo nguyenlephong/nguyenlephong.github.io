@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Making Interfaces Honest About System Limits",
   "summary": "A practical reflection on designing interfaces that show real system limits before users and operators have to discover them through failure.",
-  "date": "2026-06-29",
+  "date": "2026-10-26",
   "readingMinutes": 5,
   "tags": [
     "Software Architecture",

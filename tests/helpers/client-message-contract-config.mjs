@@ -22,6 +22,7 @@ const SCOPED_PROVIDER_PLACEMENTS = {
 };
 
 const CLIENT_PROVIDER_CONSUMER_ROUTES = {
+  "src/app/[locale]/(site)/about/page.tsx": "site",
   "src/app/[locale]/(site)/blog/[category]/[slug]/page.tsx": "site",
   "src/app/[locale]/(site)/blog/[category]/page.tsx": "blog",
   "src/app/[locale]/(site)/notes/[slug]/page.tsx": "site",
@@ -37,6 +38,8 @@ const CLIENT_PROVIDER_CONSUMER_ROUTES = {
   "src/components/content/LocalizedArticleFallback.tsx": "site",
   "src/components/cv/ContactCTA.tsx": "home",
   "src/components/cv/Experience.tsx": "home",
+  "src/components/cv/CapabilityMap.tsx": "home",
+  "src/components/cv/CaseFile.tsx": "home",
   "src/components/cv/Hero.tsx": "home",
   "src/components/cv/Projects.tsx": "home",
   "src/components/cv/Summary.tsx": "home",
@@ -47,9 +50,10 @@ const CLIENT_PROVIDER_CONSUMER_ROUTES = {
   "src/components/navigation/IntentPrefetchLink.tsx": "site",
   "src/components/offline/OfflineStatusBanner.tsx": "site",
   "src/components/reading/ReadingBackgroundSwitcher.tsx": "site",
+  "src/components/search/GlobalSearch.tsx": "site",
+  "src/components/search/GlobalSearchDialog.tsx": "site",
   "src/components/theme/ThemeSync.tsx": "site",
-  "src/components/thoughts/Backlinks.tsx": "thoughts",
-  "src/components/thoughts/ThoughtContent.tsx": "thoughts",
+  "src/components/theme/ThemeToggle.tsx": "site",
   "src/components/thoughts/ThoughtGraph.tsx": "thoughts",
   "src/components/thoughts/ThoughtList.tsx": "thoughts",
   "src/components/thoughts/ThoughtsViewClient.tsx": "thoughts"

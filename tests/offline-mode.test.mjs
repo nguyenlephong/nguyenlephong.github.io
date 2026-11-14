@@ -88,14 +88,15 @@ test("offline mode wires bounded cache warming and owned-route fallbacks", async
   assert.match(offlineScript, /REMOTE_CACHE_PREFIX.*OFFLINE_VERSION/);
   assert.match(
     offlineScript,
-    /key\.startsWith\(CONTENT_CACHE_PREFIX\) && key !== CONTENT_CACHE/
+    /\[SHELL_CACHE_PREFIX, CONTENT_CACHE_PREFIX, REMOTE_CACHE_PREFIX\]/
   );
+  assert.match(offlineScript, /keepVersions\.has\(key\.slice\(prefix\.length\)\)/);
+  assert.match(offlineScript, /rotateGenerations/);
+  assert.match(offlineScript, /installLocales/);
+  assert.match(offlineScript, /localeShells/);
+  assert.match(offlineScript, /SW_SCHEMA_VERSION/);
   assert.match(offlineScript, /LEGACY_CONTENT_CACHES\.has\(key\)/);
   assert.match(offlineScript, /LEGACY_REMOTE_CACHES\.has\(key\)/);
-  assert.match(
-    offlineScript,
-    /key\.startsWith\(REMOTE_CACHE_PREFIX\) && key !== REMOTE_CACHE/
-  );
   assert.match(offlineScript, /OWNED_SAME_ORIGIN_PATHS/);
   assert.match(offlineScript, /OWNED_REMOTE_URLS/);
   assert.match(offlineScript, /OWNED_REMOTE_URLS\.has\(url\.href\)/);
@@ -194,6 +195,11 @@ test("offline mode wires bounded cache warming and owned-route fallbacks", async
     offlineBanner,
     /navigator\.serviceWorker\.register\(serviceWorkerUrl\(\)\)/
   );
+  assert.match(offlineBanner, /requestIdleCallback/);
+  assert.match(offlineBanner, /addEventListener\('load', scheduleRegister/);
+  assert.match(offlineBanner, /controllerchange/);
+  assert.match(offlineBanner, /app_update_reload/);
+  assert.match(offlineBanner, /app_update_dismiss/);
   assert.doesNotMatch(offlineBanner, /OFFLINE_WARM_LOCALE/);
   assert.match(offlineBanner, /OFFLINE_WARM_PATH/);
   assert.match(offlineBanner, /offline-locale-state:v2:/);
@@ -209,6 +215,11 @@ test("offline mode wires bounded cache warming and owned-route fallbacks", async
 
   assert.ok(en.Offline?.banner?.partial);
   assert.ok(en.Offline?.banner?.dismiss);
+  for (const messages of [en, vi]) {
+    assert.ok(messages.Offline?.banner?.updateReady);
+    assert.ok(messages.Offline?.banner?.reload);
+    assert.ok(messages.Offline?.banner?.dismissUpdate);
+  }
   assert.ok(en.Offline?.banner?.syncing);
   assert.ok(en.Offline?.page?.title);
   assert.ok(vi.Offline?.banner?.partial);

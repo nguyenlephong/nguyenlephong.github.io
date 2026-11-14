@@ -10,6 +10,7 @@ import {
   loadMediaPublicationContract,
 } from './lib/media-publication-contract.mjs'
 import { visitConsumerUrls } from './lib/consumer-url-tokens.mjs'
+import { verifyPageCsp } from './lib/content-security-policy.mjs'
 
 const DEFAULT_CONFIG = 'config/static-artifact-budgets.json'
 const DEFAULT_OUTPUT_DIRECTORY = 'out'
@@ -82,6 +83,9 @@ const LOCALIZED_PAGE_SCHEMA_CONTRACTS = new Map([
   ['apps', { fragment: 'itemlist', schemaTypes: new Set(['ItemList']) }],
   ['gallery', { fragment: 'gallery', schemaTypes: new Set(['ImageGallery']) }],
   ['studio', { fragment: 'studio', schemaTypes: new Set(['CollectionPage']) }],
+  ['studio/checklists', { fragment: 'webpage', schemaTypes: new Set(['WebPage']) }],
+  ['studio/system-maps', { fragment: 'webpage', schemaTypes: new Set(['WebPage']) }],
+  ['studio/ai-setup', { fragment: 'webpage', schemaTypes: new Set(['WebPage']) }],
 ])
 const SEO_OG_LOCALES = new Map([
   ['en', 'en_US'],
@@ -93,6 +97,14 @@ const SEO_OG_LOCALES = new Map([
 ])
 const PERSON_SCHEMA_TYPES = new Set(['Person'])
 const SITE_OWNER_NAME = 'Nguyen Le Phong'
+
+function isPagedArchiveUrl(value) {
+  try {
+    return /\/page\/\d+\/?$/.test(new URL(value).pathname)
+  } catch {
+    return false
+  }
+}
 const SOCIAL_IMAGE_SIGNATURES = new Map([
   ['.png', (bytes) => bytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))],
   ['.jpg', (bytes) => bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff],
@@ -183,8 +195,11 @@ const SECRET_PATTERNS = [
   },
 ]
 
-function decodeXml(value) {
+export function decodeXml(value) {
+  // Numeric references first so "&amp;#39;" stays a literal "&#39;"; React escapes ' as &#x27;.
   return value
+    .replace(/&#x([0-9a-f]{1,6});/gi, (entity, hex) => decodeHtmlCodePoint(entity, hex, 16))
+    .replace(/&#([0-9]{1,7});/g, (entity, decimal) => decodeHtmlCodePoint(entity, decimal, 10))
     .replaceAll('&amp;', '&')
     .replaceAll('&quot;', '"')
     .replaceAll('&apos;', "'")
@@ -914,6 +929,8 @@ function verifyArticleAuthorContracts({ article, metadata, siteOrigin, failures 
   }
 
   const expectedOwnerId = `${siteOrigin}/#person`
+  // The CV page (ProfilePage); `/` is only a redirect stub.
+  const expectedOwnerUrl = `${siteOrigin}/en`
   for (const author of authors) {
     const name = typeof author?.name === 'string' ? author.name.trim() : ''
     if (!author || !schemaHasType(author, PERSON_SCHEMA_TYPES) || !name) {
@@ -934,9 +951,9 @@ function verifyArticleAuthorContracts({ article, metadata, siteOrigin, failures 
     }
 
     if (name === SITE_OWNER_NAME) {
-      if (author['@id'] !== expectedOwnerId || author.url !== siteOrigin) {
+      if (author['@id'] !== expectedOwnerId || author.url !== expectedOwnerUrl) {
         failures.push(
-          `${metadata.relativePath} site owner Article author must use ${expectedOwnerId} and ${siteOrigin}`,
+          `${metadata.relativePath} site owner Article author must use ${expectedOwnerId} and ${expectedOwnerUrl}`,
         )
       }
       continue
@@ -946,7 +963,8 @@ function verifyArticleAuthorContracts({ article, metadata, siteOrigin, failures 
     const authorUrl = identities.get('url')
     const claimsOwnerId =
       authorId?.origin === siteOrigin && authorId.pathname === '/' && authorId.hash === '#person'
-    const claimsOwnerUrl = authorUrl?.origin === siteOrigin && authorUrl.pathname === '/'
+    const claimsOwnerUrl =
+      authorUrl?.origin === siteOrigin && ['/', '/en'].includes(authorUrl.pathname)
     if (claimsOwnerId || claimsOwnerUrl) {
       failures.push(
         `${metadata.relativePath} Article author must not claim the site owner identity with another name`,
@@ -1010,7 +1028,8 @@ function verifyLocalizedPageIdentityContracts({
       if (policy) focusedStaticPageCount += 1
       const authored = !policy || policy.contentLocales.includes(locale)
       const contentLocale = authored ? locale : policy.fallbackLocale
-      const expectedPageUrl = normalizeUrl(`${siteOrigin}/${contentLocale}/${route}`)
+      // Fallback routes are self-canonical noindex pages, so identity is always the route URL.
+      const expectedPageUrl = routePageUrl
 
       if (
         metadata.canonicalUrls.length !== 1 ||
@@ -1173,15 +1192,21 @@ function verifyLocalizedPageIdentityContracts({
         }
       }
 
-      if (route !== 'studio') continue
-      const expectedSocialImage = normalizeUrl(`${siteOrigin}/opengraph-image.png`)
+      if (route !== 'studio' && !route.startsWith('studio/')) continue
+      // The overview's single-H1 rule lives in verifyStudioHtmlContracts; module pages need it too.
+      if (route !== 'studio' && metadata.studioHeadingCount !== 1) {
+        failures.push(
+          `${metadata.relativePath} Studio module page must contain exactly one H1; found ${metadata.studioHeadingCount}`,
+        )
+      }
+      // Studio has its own card (MEP-64); postbuild-og may dedupe it to any locale's copy.
       for (const [name, value] of [
         ['og:image', metadata.openGraphImage],
         ['twitter:image', metadata.twitterImage],
       ]) {
-        if (normalizeAbsolutePageIdentity(value) !== expectedSocialImage) {
+        if (!isSectionSocialImage(value, siteOrigin, 'studio')) {
           failures.push(
-            `${metadata.relativePath} Studio ${name} must resolve to the root opengraph-image.png`,
+            `${metadata.relativePath} Studio ${name} must resolve to the Studio opengraph-image`,
           )
         }
       }
@@ -1290,22 +1315,36 @@ function verifyLocalSocialImages({
 }
 
 function verifyContentHubSocialMetadata({ htmlMetadataByPath, siteOrigin, failures }) {
-  const expectedImage = normalizeUrl(`${siteOrigin}/opengraph-image.png`)
-
   for (const metadata of htmlMetadataByPath.values()) {
     const pageUrl = pageUrlFromArtifactPath(metadata.relativePath, siteOrigin)
     if (!pageUrl || !isContentHubPageUrl(pageUrl)) continue
+    // Series hubs share the blog card, topic hubs the notes card (MEP-64).
+    const section = new URL(pageUrl).pathname.split('/').filter(Boolean)[1]
 
     for (const [name, values] of [
       ['og:image', metadata.openGraphImages],
       ['twitter:image', metadata.twitterImages],
     ]) {
-      if (values.length !== 1 || normalizeAbsolutePageIdentity(values[0]) !== expectedImage) {
+      if (values.length !== 1 || !isSectionSocialImage(values[0], siteOrigin, section)) {
         failures.push(
-          `${metadata.relativePath} content hub must emit exactly one ${name} using the root opengraph-image.png`,
+          `${metadata.relativePath} content hub must emit exactly one ${name} using the ${section} opengraph-image`,
         )
       }
     }
+  }
+}
+
+/** `/<locale>/<section>/opengraph-image[-hash].png` on this site, the card a section's pages share. */
+function isSectionSocialImage(value, siteOrigin, section) {
+  if (!value) return false
+  try {
+    const url = new URL(value, siteOrigin)
+    return (
+      url.origin === siteOrigin &&
+      new RegExp(`^/[a-z]{2}/${section}/opengraph-image(?:-[a-z0-9]+)?\\.png$`).test(url.pathname)
+    )
+  } catch {
+    return false
   }
 }
 
@@ -1330,6 +1369,12 @@ function verifyContentHubLanguageContracts({
       failures.push(`${metadata.relativePath} content hub HTML and sitemap hreflang clusters do not match`)
     }
 
+    if (isPagedArchiveUrl(pageUrl)) {
+      if (htmlLanguages.size > 0) {
+        failures.push(`${metadata.relativePath} paged content hub must not emit hreflang alternates`)
+      }
+      continue
+    }
     const xDefault = htmlLanguages.get('x-default')
     if (!xDefault || !locationSet.has(xDefault)) {
       failures.push(`${metadata.relativePath} content hub x-default must point to an exported indexable page`)
@@ -1677,7 +1722,12 @@ function verifySitemap({ outDir, siteOrigin, seoConfig, failures, htmlMetadataBy
 
     const alternateTags = block.match(/<xhtml:link\b[^>]*>/gi) ?? []
     const alternateAttributes = alternateTags.map(attributesFromTag)
-    if (!alternateAttributes.some((attributes) => attributes.get('hreflang') === 'x-default')) {
+    // Paged archives (page >= 2) are not translations of each other, so they carry no hreflang (MEP-65).
+    if (isPagedArchiveUrl(loc)) {
+      if (alternateAttributes.length > 0) {
+        failures.push(`Sitemap paged archive URL must not carry hreflang alternates: ${loc}`)
+      }
+    } else if (!alternateAttributes.some((attributes) => attributes.get('hreflang') === 'x-default')) {
       failures.push(`Sitemap URL is missing an x-default alternate: ${loc}`)
     }
     for (const attributes of alternateAttributes) {
@@ -1885,6 +1935,10 @@ export async function verifyStaticArtifact({
       )
     }
     if (entry.extension === '.html' || entry.extension === '.htm') {
+      // Plain files such as the Search Console token have no <head> and carry no policy.
+      if (/<head[\s>]/i.test(content)) {
+        for (const problem of verifyPageCsp(content)) failures.push(`CSP ${entry.relativePath}: ${problem}`)
+      }
       htmlMetadataByPath.set(
         entry.relativePath,
         collectHtmlMetadata({ absolutePath: entry.absolutePath, html: content, outDir }),

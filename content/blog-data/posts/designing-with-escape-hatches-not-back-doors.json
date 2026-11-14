@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Designing With Escape Hatches, Not Back Doors",
   "summary": "A practical reflection on building safe operational escape hatches that are explicit, audited, and bounded instead of hidden back doors.",
-  "date": "2026-07-04",
+  "date": "2026-10-30",
   "readingMinutes": 5,
   "tags": [
     "Software Architecture",

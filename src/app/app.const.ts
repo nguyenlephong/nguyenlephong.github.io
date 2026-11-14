@@ -1,15 +1,3 @@
-import { gallery } from "@/content/gallery";
-import { videos } from "@/content/media";
-import { experience } from "@/content/experience";
-import { projects } from "@/content/projects";
-import {
-  contact,
-  technical_skill,
-  achievements,
-  education,
-  references,
-} from "@/content/profile";
-
 export const APP_ROUTE = {
   HOME: "/",
   ABOUT: "/about",
@@ -26,23 +14,11 @@ export const APP_ROUTE = {
 export const SEO = {
   title: "Nguyen Le Phong | Lead Software Engineer at Zalo PC",
   description:
-    "Lead Software Engineer at Zalo PC, co-founder of BonBon Mobility ($500K pre-seed led by Tasco) and Tech Lead of LogiUP. PC-to-mobile message backup.",
+    "Lead Software Engineer at Zalo PC; co-founder of BonBon Mobility ($500K pre-seed led by Tasco) and Tech Lead of LogiUP. PC-to-mobile message backup.",
   og: {
     title: "Nguyễn Lê Phong | Software Engineer",
     type: "website",
     url: "https://nguyenlephong.github.io"
   },
   title_tail: "Nguyen Le Phong | Lead Software Engineer"
-};
-
-export const profileInfo = {
-  gallery,
-  videos,
-  contact,
-  technical_skill,
-  experience,
-  projects,
-  achievements,
-  education,
-  references,
 };

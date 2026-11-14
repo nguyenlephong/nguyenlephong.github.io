@@ -16,34 +16,34 @@
     "routeInitialJavaScript": {
       "home": {
         "html": "en.html",
-        "maxGzipBytes": 274432,
-        "maxBrotliBytes": 238592
+        "maxGzipBytes": 214016,
+        "maxBrotliBytes": 185344
       },
       "blog": {
         "html": "en/blog.html",
-        "maxGzipBytes": 251904,
-        "maxBrotliBytes": 217088
+        "maxGzipBytes": 210944,
+        "maxBrotliBytes": 183296
       },
       "notes": {
         "html": "en/notes.html",
-        "maxGzipBytes": 251904,
-        "maxBrotliBytes": 217088
+        "maxGzipBytes": 210944,
+        "maxBrotliBytes": 182272
       },
       "studio": {
         "html": "en/studio.html",
-        "maxGzipBytes": 200704,
-        "maxBrotliBytes": 176128,
+        "maxGzipBytes": 173056,
+        "maxBrotliBytes": 149504,
         "maxDefaultRouteBrotliBytes": 204800
       },
       "blogArticle": {
         "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
-        "maxGzipBytes": 251904,
-        "maxBrotliBytes": 217600
+        "maxGzipBytes": 211968,
+        "maxBrotliBytes": 183296
       },
       "notesArticle": {
         "html": "en/notes/tri-tue-can-duc-hanh.html",
-        "maxGzipBytes": 251904,
-        "maxBrotliBytes": 217088
+        "maxGzipBytes": 211968,
+        "maxBrotliBytes": 183296
       }
     },
     "rsc": {
@@ -123,18 +123,22 @@
         "initializeFirestore"
       ]
     },
+    "offlineShell": {
+      "locale": "en",
+      "maxGzipBytes": 204800
+    },
     "htmlTransfer": {
       "routes": {
         "home": { "html": "en.html", "maxGzipBytes": 34304 },
-        "blogArchive": { "html": "en/blog.html", "maxGzipBytes": 19456 },
+        "blogArchive": { "html": "en/blog.html", "maxGzipBytes": 21120 },
         "notesArchive": { "html": "en/notes.html", "maxGzipBytes": 18432 },
         "blogArticle": {
           "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
-          "maxGzipBytes": 17408
+          "maxGzipBytes": 18432
         },
         "notesArticle": {
           "html": "en/notes/tri-tue-can-duc-hanh.html",
-          "maxGzipBytes": 20480
+          "maxGzipBytes": 22528
         }
       }
     },
@@ -147,8 +151,8 @@
         },
         "enNotes": {
           "path": "en/search/notes.json",
-          "maxRawBytes": 94208,
-          "maxGzipBytes": 31232
+          "maxRawBytes": 51200,
+          "maxGzipBytes": 16384
         },
         "viBlog": {
           "path": "vi/search/blog.json",
@@ -157,8 +161,8 @@
         },
         "viNotes": {
           "path": "vi/search/notes.json",
-          "maxRawBytes": 122368,
-          "maxGzipBytes": 35840
+          "maxRawBytes": 60416,
+          "maxGzipBytes": 17408
         },
         "zhBlog": {
           "path": "zh/search/blog.json",
@@ -188,10 +192,9 @@
           ".hero",
           ".cv-section",
           ".cv-section-head",
-          ".cv-section-eyebrow",
           ".cv-section-title"
         ],
-        "about": [".about-page-v2"],
+        "about": [".about-page-v3"],
         "gallery": [".gallery-showcase"],
         "apps": [".apps-page"],
         "english": [".english-page"],
@@ -204,80 +207,80 @@
         "home": {
           "html": "en.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 10752,
-          "maxBrotliBytes": 9472,
+          "maxGzipBytes": 14080,
+          "maxBrotliBytes": 12288,
           "requiredOwners": ["home"],
           "allowedOwners": ["home"]
         },
         "about": {
           "html": "en/about.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 7936,
-          "maxBrotliBytes": 6912,
+          "maxGzipBytes": 8576,
+          "maxBrotliBytes": 7424,
           "requiredOwners": ["about"],
           "allowedOwners": ["about"]
         },
         "gallery": {
           "html": "en/gallery.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 9216,
-          "maxBrotliBytes": 8192,
+          "maxGzipBytes": 9728,
+          "maxBrotliBytes": 8448,
           "requiredOwners": ["gallery"],
           "allowedOwners": ["gallery"]
         },
         "apps": {
           "html": "en/apps.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 10496,
-          "maxBrotliBytes": 9216,
+          "maxGzipBytes": 11008,
+          "maxBrotliBytes": 9600,
           "requiredOwners": ["apps"],
           "allowedOwners": ["apps"]
         },
         "english": {
           "html": "en/apps/english.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 9216,
-          "maxBrotliBytes": 7936,
+          "maxGzipBytes": 9600,
+          "maxBrotliBytes": 8320,
           "requiredOwners": ["english"],
           "allowedOwners": ["english"]
         },
         "offline": {
           "html": "en/offline.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 6912,
-          "maxBrotliBytes": 6144,
+          "maxGzipBytes": 7424,
+          "maxBrotliBytes": 6656,
           "requiredOwners": ["offline"],
           "allowedOwners": ["offline"]
         },
         "blogArchive": {
           "html": "en/blog.html",
           "maxStylesheetCount": 3,
-          "maxGzipBytes": 15616,
-          "maxBrotliBytes": 13568,
+          "maxGzipBytes": 17152,
+          "maxBrotliBytes": 14464,
           "requiredOwners": ["blog"],
           "allowedOwners": ["blog"]
         },
         "notesArchive": {
           "html": "en/notes.html",
           "maxStylesheetCount": 4,
-          "maxGzipBytes": 18176,
-          "maxBrotliBytes": 15616,
+          "maxGzipBytes": 19072,
+          "maxBrotliBytes": 16512,
           "requiredOwners": ["blog", "notes"],
           "allowedOwners": ["blog", "notes"]
         },
         "blogArticle": {
           "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
           "maxStylesheetCount": 4,
-          "maxGzipBytes": 20992,
-          "maxBrotliBytes": 18176,
+          "maxGzipBytes": 22016,
+          "maxBrotliBytes": 19072,
           "requiredOwners": ["blog", "reader"],
           "allowedOwners": ["blog", "reader"]
         },
         "notesArticle": {
           "html": "en/notes/tri-tue-can-duc-hanh.html",
           "maxStylesheetCount": 5,
-          "maxGzipBytes": 23296,
-          "maxBrotliBytes": 20096,
+          "maxGzipBytes": 24448,
+          "maxBrotliBytes": 21120,
           "requiredOwners": ["blog", "notes", "reader"],
           "allowedOwners": ["blog", "notes", "reader"]
         }
@@ -287,16 +290,14 @@
       "requiredMarkers": ["data-studio-shadow-host"],
       "requiredReachableMarkers": ["studio_route_open", "data-studio-module"],
       "forbiddenMarkers": [
-        "data-studio-auxiliary-dashboard",
         "data-studio-flow-runtime",
-        "data-studio-recharts-runtime",
         "getFirestore",
         "initializeFirestore",
         "firebaseapp.com"
       ],
       "maxInitialDocumentCssBrotliBytes": 3072,
       "requiredShadowCssFiles": ["studio/studio-shadow.css"],
-      "maxShadowCssBrotliBytes": 16384,
+      "maxShadowCssBrotliBytes": 12288,
       "maxTotalInitialCssBrotliBytes": 18432,
       "allowedExternalStylesheetOrigins": [],
       "allowedThirdPartyConnectionOrigins": [
@@ -330,11 +331,14 @@
       "blog",
       "studio",
       "about",
-      "gallery"
+      "gallery",
+      "studio/checklists",
+      "studio/system-maps",
+      "studio/ai-setup"
     ],
     "staticPageLocalization": {
       "about": {
-        "contentLocales": ["en", "vi"],
+        "contentLocales": ["en", "vi", "zh", "ja", "ko", "fr"],
         "fallbackLocale": "en"
       },
       "apps": {
@@ -343,6 +347,22 @@
       },
       "gallery": {
         "contentLocales": ["en", "vi", "zh", "ja", "ko", "fr"],
+        "fallbackLocale": "en"
+      },
+      "studio": {
+        "contentLocales": ["en", "vi"],
+        "fallbackLocale": "en"
+      },
+      "studio/checklists": {
+        "contentLocales": ["en", "vi"],
+        "fallbackLocale": "en"
+      },
+      "studio/system-maps": {
+        "contentLocales": ["en", "vi"],
+        "fallbackLocale": "en"
+      },
+      "studio/ai-setup": {
+        "contentLocales": ["en", "vi"],
         "fallbackLocale": "en"
       }
     }

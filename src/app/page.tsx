@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { routing } from '@/i18n/routing'
-import { PAGE_SEO, SITE, SITE_URL } from '@/app/seo.config'
+import { SITE, SITE_URL } from '@/app/seo.config'
+import enMessages from '../../messages/en.json'
 import {
   buildSiteNavigationSchema,
   buildWebsiteSchema,
@@ -10,10 +11,10 @@ import { SITE_SECTIONS, sectionUrl } from '@/lib/seo/site-sections'
 
 const DEFAULT = `/${routing.defaultLocale}`
 
-// Same brand title and description as /en (messages SEO.home) so the stub and
-// the page it hands off to never disagree about what the site is called.
-const SEO_TITLE = PAGE_SEO.home.title
-const SEO_DESCRIPTION = PAGE_SEO.home.description
+// Read from the same messages SEO.home as /en, so the stub and the page it hands
+// off to never disagree about what the site is called (MEP-61).
+const SEO_TITLE = enMessages.SEO.home.title
+const SEO_DESCRIPTION = enMessages.SEO.home.description
 
 const localeLanguages: Record<string, string> = {}
 for (const loc of routing.locales) localeLanguages[loc] = `${SITE_URL}/${loc}`

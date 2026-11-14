@@ -1,9 +1,10 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { useTranslations } from 'next-intl'
 import { postStatsId } from '@/lib/firebase/postStats'
 import BlogPostCard from './BlogPostCard'
+import { useBlogCardClickTracking } from './BlogCardClickTracker'
 import {
   useExplorer,
   type ExplorerFilterOption,
@@ -43,6 +44,8 @@ interface BlogExplorerProps {
   searchIndexUrl: string
   /** Threshold below which the view badge is hidden (default 100). */
   viewThreshold?: number
+  /** Unfiltered-only content above the list (Start here, list heading). */
+  lead?: ReactNode
 }
 
 /**
@@ -59,8 +62,10 @@ export default function BlogExplorer({
   totalItems,
   searchIndexUrl,
   viewThreshold = 100,
+  lead,
 }: BlogExplorerProps) {
   const t = useTranslations('Pages.blog')
+  useBlogCardClickTracking()
   const [loadedSearch, setLoadedSearch] = useState<{
     cards: CardMeta[]
     url: string
@@ -76,8 +81,13 @@ export default function BlogExplorer({
   } | null>(null)
 
   const filters: ExplorerFilterOption[] = useMemo(
-    () => categories.map((c) => ({ id: c.slug, label: c.title })),
-    [categories],
+    () =>
+      categories.map((c) => ({
+        id: c.slug,
+        label: c.title,
+        href: `/${locale}/blog/${c.slug}`,
+      })),
+    [categories, locale],
   )
 
   const categoryBySlug = useMemo(
@@ -146,16 +156,19 @@ export default function BlogExplorer({
   const explorer = useExplorer<CardMeta>(
     cards,
     filters,
-    popularTags,
     {
       key: (c) => c.post.slug,
       filterId: (c) => c.post.category,
       tags: (c) => c.post.tags,
-      searchText: (c) =>
-        [c.post.title, c.post.summary, c.categoryTitle, c.post.tags.join(' ')].join(' '),
+      searchFields: (c) => ({
+        title: c.post.title,
+        meta: [c.categoryTitle, ...c.post.tags].join(' '),
+        summary: c.post.summary,
+      }),
     },
     {
       filterParam: 'cat',
+      locale,
       pageSize: CONTENT_PAGE_SIZE,
       staticPagination: {
         current: currentPage,
@@ -195,6 +208,7 @@ export default function BlogExplorer({
     popularTags: t('controls.popularTags'),
     noResults: t('controls.noResults'),
     results: (count) => t('controls.results', { count }),
+    searching: t('controls.searching'),
     pagination: {
       label: t('controls.pagination.label'),
       prev: t('controls.pagination.prev'),
@@ -214,6 +228,7 @@ export default function BlogExplorer({
       searchStatus={searchStatus}
       postStatsStatus={postStatsStatus}
       searchUnavailableLabel={t('controls.searchUnavailable')}
+      lead={lead}
       onSearchIntent={() => {
         signalBrowsingIntent()
         void loadSearchIndex()

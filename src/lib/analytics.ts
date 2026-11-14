@@ -26,16 +26,23 @@ export type AnalyticsEvent =
   | 'cv_view'
   | 'cv_resume_download'
   | 'cv_contact_click'
+  | 'cv_email_copy'
   | 'cv_social_click'
   | 'cv_section_view'
   | 'cv_theme_toggle'
   | 'cv_nav_click'
   | 'cv_external_link'
   | 'cv_experience_evidence_click'
+  | 'cv_experience_expand'
   | 'cv_project_view'
   | 'cv_project_evidence_click'
   | 'cv_project_website_click'
+  | 'cv_case_file_open'
   | 'cv_announcement_click'
+  | 'cv_capability_select'
+  // state: playing | paused, from the capability map's visible toggle (MEP-78)
+  | 'cv_capability_autoplay_toggle'
+  | 'cv_hero_node_select'
   // Page lifecycle
   | 'page_view'
   | 'page_scroll_depth'
@@ -46,12 +53,14 @@ export type AnalyticsEvent =
   | 'web_vital'
   // Apps page
   | 'apps_view'
+  // apps_card_view and apps_link_click carry source: 'apps_list' since MEP-57 (was 'apps_console_focus').
   | 'apps_card_view'
-  | 'apps_app_select'
-  | 'apps_filter_click'
   | 'apps_link_click'
-  | 'apps_hotkey_view'
   | 'apps_cta_click'
+  // Unused since MEP-57 removed the app picker; names kept so old dashboards still resolve.
+  // apps_filter_click (search and platform filter) was deleted with those controls.
+  | 'apps_app_select'
+  | 'apps_hotkey_view'
   | 'english_practice_select_slang'
   | 'english_practice_next'
   | 'english_practice_shuffle'
@@ -63,11 +72,14 @@ export type AnalyticsEvent =
   | 'english_practice_tts'
   // Gallery
   | 'gallery_view'
+  // filter: all | bonbon | recognition | education | outside | earlier (MEP-29; was certificates/awards/projects/activities)
   | 'gallery_tab_click'
   | 'gallery_item_click'
   // About
   | 'about_view'
   | 'about_section_view'
+  // target: arc (with period) | blog | notes | note | post
+  | 'about_link_click'
   // Site index
   | 'sitemap_view'
   // Thoughts
@@ -85,12 +97,19 @@ export type AnalyticsEvent =
   | 'explorer_page_change'
   | 'explorer_clear'
   | 'explorer_palette_toggle'
+  // Site-wide search dialog (MEP-48). Only lengths and counts, never the query text.
+  | 'global_search_open'
+  | 'global_search_query'
+  | 'global_search_no_results'
+  | 'global_search_result_click'
   // Curated static content hubs
   | 'content_hub_view'
   | 'content_hub_click'
   | 'content_hub_archive_click'
   | 'content_hub_article_click'
   | 'content_hub_page_change'
+  // Blog and Notes index intros linking to each other
+  | 'content_cross_link_click'
   // Blog articles
   | 'blog_article_view'
   | 'blog_scroll_depth'
@@ -99,7 +118,13 @@ export type AnalyticsEvent =
   | 'blog_share'
   | 'blog_reaction'
   | 'blog_nav_jump'
+  // Collapsed outline under the header (<1080px); jumps report source: 'mobile' | 'rail'
+  | 'blog_toc_open'
   | 'blog_related_click'
+  // Article tag row linking back into the archive filter or search
+  | 'blog_tag_click'
+  // Byline and author box on blog posts and notes (target: byline | cv | resume | email)
+  | 'blog_author_click'
   // Notes articles
   | 'notes_view'
   | 'notes_article_view'
@@ -109,7 +134,10 @@ export type AnalyticsEvent =
   | 'notes_share'
   | 'notes_reaction'
   | 'notes_nav_jump'
+  | 'notes_toc_open'
   | 'notes_related_click'
+  // Article tag row on notes linking into the notes archive filter (MEP-51)
+  | 'notes_tag_click'
   | 'content_fallback_language_click'
   // Reader controls
   | 'reader_tool_scroll'
@@ -121,6 +149,9 @@ export type AnalyticsEvent =
   | 'offline_mode_ready'
   | 'offline_status_change'
   | 'offline_banner_dismiss'
+  // Service worker update notice (a new build took over an open tab)
+  | 'app_update_reload'
+  | 'app_update_dismiss'
   // Not found recovery
   | 'not_found_view'
   | 'not_found_recovery_click'
@@ -152,6 +183,8 @@ export type AnalyticsEvent =
   | 'studio_flow_history_action'
   | 'studio_flow_group_visibility_toggle'
   | 'studio_flow_board_fullscreen_toggle'
+  // open_next: the mobile "Diagram options" disclosure under the canvas (MEP-59)
+  | 'studio_flow_options_toggle'
   | 'studio_flow_focus_toggle'
   | 'studio_flow_share'
   // Outbound

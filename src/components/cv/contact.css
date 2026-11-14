@@ -1,0 +1,177 @@
+/* =========================================================
+   Contact: "endpoint". Left-aligned spec block, no container.
+   ========================================================= */
+.cta {
+  margin-block: var(--space-section);
+  max-width: 48rem;
+}
+.cta-title {
+  margin-bottom: 2rem;
+  text-wrap: balance;
+}
+
+.cta-spec {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  column-gap: 1.5rem;
+  margin: 0;
+}
+.cta-row {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: baseline;
+  padding-block: 0.5rem;
+}
+.cta-row dt {
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+}
+.cta-row dd {
+  margin: 0;
+  color: var(--fg);
+  text-wrap: pretty;
+}
+
+/* Email row: the open port where the page ends. */
+.cta-row-email {
+  padding-block: 1rem;
+}
+.cta-row-email dd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+.cta-port {
+  width: 40px;
+  height: 12px;
+  flex: none;
+  overflow: visible;
+}
+.cta-port path {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-width: 1.25;
+  stroke-dasharray: 3 5;
+}
+.cta-port circle {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  transition: fill var(--d-base) var(--ease);
+}
+.cta[data-copy='copied'] .cta-port circle {
+  fill: var(--accent);
+}
+.cta-address {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.25em;
+  transition: text-decoration-color var(--d-fast);
+}
+.cta-address:hover {
+  text-decoration-color: var(--accent);
+}
+
+/* Both labels share one cell so the button keeps its width when the label swaps. */
+.cta-copy {
+  display: inline-grid;
+  position: relative;
+}
+/* 44px hit area around the 32px button without changing how it looks. */
+.cta-copy::before {
+  content: '';
+  position: absolute;
+  inset: -6px 0;
+}
+.cta-copy-label {
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  transition: opacity var(--d-fast) var(--ease);
+}
+.cta-copy-label[aria-hidden='true'] {
+  opacity: 0;
+}
+/* Global .btn-primary:hover is ~2:1 in dark; keep the fg/bg pair, state shows in the label and the port dot. */
+.cta-copy:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+.cta-copy:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.cta-copy-status {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--fg-muted);
+}
+/* Success is already visible on the button; the status line only speaks to screen readers. */
+.cta[data-copy='copied'] .cta-copy-status,
+.cta[data-copy='idle'] .cta-copy-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.cta-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+}
+/* Rows holding links take their height from the 44px link boxes. */
+.cta-row:has(.cta-link) {
+  padding-block: 0;
+}
+.cta-link,
+.cta-address {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.cta-link {
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 0.25em;
+  transition: text-decoration-color var(--d-fast), color var(--d-fast);
+}
+.cta-link:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+@media (max-width: 560px) {
+  .cta-spec {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cta-row {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.25rem;
+  }
+  /* Pull the 44px link box up so its text sits as close to the label as plain-text rows. */
+  .cta-row:has(.cta-link) dd {
+    margin-top: -0.5rem;
+  }
+  .cta-address {
+    font-size: var(--text-base);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-port circle,
+  .cta-copy-label {
+    transition: none;
+  }
+}

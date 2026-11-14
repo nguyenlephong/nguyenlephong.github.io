@@ -19,24 +19,41 @@ even when a visitor opened the lightweight welcome route.
   H1.
 - Publish crawlable module links in the overview and mirror those exact URLs in
   the `CollectionPage.hasPart` graph.
-- Keep the existing query/hash Studio navigation contract and analytics event
-  names.
+- Navigation contract: the three public modules (Delivery checklists, System
+  maps, AI setup) live on their own crawlable paths,
+  `/[locale]/studio/{checklists,system-maps,ai-setup}`, and the overview on
+  `/[locale]/studio`. In-shell navigation between them uses
+  `history.pushState` on those paths; every other route (AI Skills, flow deep
+  links) stays a `?route=` query plus matching hash on `/[locale]/studio`.
+  `normalizeLocationRoute` reads query, then hash, then the module path.
+- On every route activation, popstate and the first shell render, the shell
+  sets `document.title` and the slotted light-DOM H1 text from
+  `getStudioRoutePageTitles`. Routes with a server page reuse that page's
+  metadata title and H1 verbatim (fallback locales keep the English content
+  title and `lang`), so a client navigation and a reload of the same URL read
+  the same. Query-only routes use `{localized route title} | Engineering
+  Studio` and the localized route title as H1.
+- Analytics: `studio_view` comes only from the server page's `PageTracker` on a
+  full document load (with `studio_module` context on module pages). Client
+  path or query changes inside the shell never emit `studio_view`; they emit
+  `studio_route_open` with a `source` (`sidebar`, `command`, `brand`,
+  `studio_module_open`, `browser_history`, ...) and `previous_route`. Event
+  names are unchanged.
 - Load optional visualization runtimes only from modules that render them.
   Static text and navigation must not depend on those libraries.
-- Keep Recharts and XYFlow behind separate dynamic feature boundaries. The
-  default/welcome module imports neither runtime; flow state and analytics stay
-  in the shell while the canvas uses a narrow typed adapter.
-- Load an auxiliary dashboard and its route runtime through one outer lazy
-  loader. The outer entry statically owns the dashboard runtime; only genuinely
-  heavy capabilities such as Recharts remain behind a nested lazy boundary.
+- Keep XYFlow behind its own dynamic feature boundary. The default/welcome
+  module does not import it; flow state and analytics stay in the shell while
+  the canvas uses a narrow typed adapter. Studio ships no chart library: the
+  template dashboards and their Recharts dependency were removed (MEP-13,
+  MEP-83).
 - Keep the direct English Studio entry below 250 KiB Brotli. The artifact gate
   follows emitted Turbopack chunk references, treats every `Promise.all` loader
   group as one atomic download, and hard-gates the English default route at
   204,800 bytes Brotli. It also reports the complete reachable asynchronous
   total, so moving bytes behind `import()` remains visible rather than appearing
   as a bundle reduction.
-- Treat Mail, AI Skills, Delivery Checklists, auxiliary dashboards, Recharts,
-  and XYFlow as representative lazy features. Stable emitted markers for each
+- Treat AI Skills, Delivery Checklists, and XYFlow as representative lazy
+  features. Stable emitted markers for each
   feature must exist in a reachable asynchronous chunk and must not occur in a
   directly referenced Studio script.
 - Keep each of the six Studio locale entries isolated. Stable preferences
@@ -46,21 +63,19 @@ even when a visitor opened the lightweight welcome route.
 - A visualization chunk failure renders localized text without unmounting the
   Studio workspace. Its recovery control reloads Studio, because retrying the
   same cached rejected lazy module is not reliable.
-- Report shell, route, dashboard, Recharts, and XYFlow boundary failures through
+- Report shell, route, and XYFlow boundary failures through
   `studio_feature_load_error`. Its boundary callback accepts no error object and
   emits only `feature_id`, `locale`, and optional `route_id`/`route_kind`.
-- The default dashboard derives its displayed workstream count from the filtered
-  result. A zero-result query exposes a localized status and clear action; clear
-  uses the same canonical query serializer as every other dashboard filter.
 - Every localized Studio metadata object explicitly publishes Open Graph and
   Twitter images through the locale root OG image route.
 
 ## Non-goals
 
-- This change does not replace Studio's query/hash router with nested routes.
+- Only the three public modules have their own paths; the remaining routes
+  keep the query/hash router.
 - It does not redesign the interactive flow editor or change its state model.
-- It does not make Studio modules independently canonical or add query URLs to
-  the sitemap; `/[locale]/studio` remains the only canonical collection URL.
+- Query-only routes are not canonical and never enter the sitemap; the
+  overview and the three module paths are the only canonical Studio URLs.
 
 ## Acceptance criteria
 
@@ -78,8 +93,8 @@ even when a visitor opened the lightweight welcome route.
   indexable, localized with reciprocal alternates, and present in the sitemap.
 - **AC-STUDIO-STATIC-006:** Hydrated Studio preserves existing route parsing,
   state, interaction behavior, and analytics event names.
-- **AC-STUDIO-STATIC-007:** The welcome route does not statically import the
-  Recharts runtime; chart code is loaded as a separate dynamic module.
+- **AC-STUDIO-STATIC-007:** The welcome route does not statically import any
+  visualization runtime, and `package.json` does not depend on Recharts.
 - **AC-STUDIO-STATIC-008:** The static artifact verifier rejects a Studio page
   with no fallback, multiple H1 elements, missing module links, invalid
   CollectionPage data, or `hasPart`/anchor URL drift.
@@ -90,10 +105,9 @@ even when a visitor opened the lightweight welcome route.
 - **AC-STUDIO-STATIC-010:** Flow canvas changes, connections, selection,
   history, layout, focus, fullscreen and analytics retain their existing shell
   state and event contracts through typed runtime callbacks.
-- **AC-STUDIO-STATIC-011:** Recharts is loaded only by the delivery-signal
-  feature. Recharts and XYFlow failures have localized fallbacks whose recovery
-  action calls `window.location.reload()` rather than remounting a cached
-  rejected dynamic module.
+- **AC-STUDIO-STATIC-011:** XYFlow failures have a localized fallback whose
+  recovery action calls `window.location.reload()` rather than remounting a
+  cached rejected dynamic module.
 - **AC-STUDIO-STATIC-012:** All Studio locales emit explicit `og:image` and
   `twitter:image` metadata; artifact verification rejects either omission.
 - **AC-STUDIO-STATIC-013:** Server HTML, first hydration, and the interactive
@@ -104,9 +118,8 @@ even when a visitor opened the lightweight welcome route.
   below 250 KiB Brotli. Verification also reports raw and Brotli bytes for all
   asynchronous chunks reachable from those scripts and for their combined
   graph.
-- **AC-STUDIO-STATIC-015:** Mail, AI Skills, Delivery Checklists, auxiliary
-  dashboards, Recharts, and XYFlow remain reachable lazy chunks and cannot move
-  into the direct Studio scripts.
+- **AC-STUDIO-STATIC-015:** AI Skills, Delivery Checklists, and XYFlow remain
+  reachable lazy chunks and cannot move into the direct Studio scripts.
 - **AC-STUDIO-STATIC-016:** The Vietnamese-only preferences sentinel is present
   in the emitted artifact but absent from English direct scripts, the Welcome
   feature chunk, and the English core-locale chunk.
@@ -116,16 +129,17 @@ even when a visitor opened the lightweight welcome route.
 - **AC-STUDIO-STATIC-018:** All six locale sentinels are emitted in distinct,
   reachable loader groups; selecting English cannot download Vietnamese,
   Chinese, Japanese, Korean, or French core copy.
-- **AC-STUDIO-STATIC-019:** The auxiliary dashboard runtime is loaded atomically
-  by one outer route loader with no wrapper-to-runtime waterfall, and that
-  loader does not preload the Recharts runtime.
+- **AC-STUDIO-STATIC-019:** Retired. The auxiliary dashboard runtime it covered
+  was removed with the template routes (MEP-13, MEP-83).
 - **AC-STUDIO-STATIC-020:** Every Studio boundary that can intercept a lazy or
   shell failure emits `studio_feature_load_error` with an allowlisted feature
   context and never forwards an error, message, or stack.
-- **AC-STUDIO-STATIC-021:** The default dashboard displays the filtered
-  workstream count. A zero-result state and clear action are localized in all six
-  Studio locales, and clearing removes dashboard query keys through
-  `writeStudioDashboardQuery()` while preserving the active route.
+- **AC-STUDIO-STATIC-021:** Retired. The default dashboard and its workstream
+  query were removed with the template routes (MEP-13, MEP-83).
+- **AC-STUDIO-STATIC-022:** After any in-shell navigation or popstate,
+  `document.title` and the single light-DOM H1 match the server metadata title
+  and H1 of the URL now in the address bar (or the localized route title for
+  query-only routes), and no client path change emits `studio_view`.
 
 ## Verification
 
@@ -134,16 +148,12 @@ even when a visitor opened the lightweight welcome route.
 - Artifact fixtures verify no-JavaScript HTML and structured-data parity.
 - Artifact fixtures also prove the exclusive 250 KiB direct-script ceiling,
   the 204,800-byte default-route ceiling, complete loader-sibling and reachable
-  async accounting, the single-hop auxiliary dashboard loader, Recharts
-  exclusion from that loader, representative lazy markers, and six-locale
-  isolation.
-- Source contracts verify that Recharts and XYFlow occur only behind their
-  dynamic feature entry points while flow analytics remain in the shell.
+  async accounting, representative lazy markers, and six-locale isolation.
+- Source contracts verify that XYFlow occurs only behind its dynamic feature
+  entry point, that no Studio source imports Recharts, and that the Shadow
+  stylesheet carries no selectors for the removed template routes while flow analytics remain in the shell.
 - A boundary behavior test verifies that Retry invokes the supplied reload
   callback and does not claim recovery by merely resetting boundary state. It
   invokes every failure reporter and verifies the exact telemetry allowlist.
-- Dashboard query tests verify zero-result serialization and canonical clearing;
-  a browser smoke should exercise the same deep link and clear action when a
-  browser runtime is available.
 - A production export is required before release to measure route JS bytes and
   confirm the emitted HTML contract.

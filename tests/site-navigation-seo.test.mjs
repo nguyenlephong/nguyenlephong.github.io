@@ -35,6 +35,7 @@ const messages = Object.fromEntries(
 const { SITE_SECTIONS, sectionUrl } = await import("../src/lib/seo/site-sections.ts");
 const {
   buildWebsiteSchema,
+  buildWebsiteIdentitySchema,
   buildSiteNavigationSchema,
   buildPersonSchema,
   buildProfilePageSchema
@@ -89,12 +90,44 @@ test("SiteNavigationElement list is unique, absolute, and covers the resume", ()
   assert.equal(sectionUrl(SITE_SECTIONS[0], "vi"), SITE_URL + "/vi");
 });
 
+test("every locale home carries the compact WebSite node the root stub extends (MEP-60)", () => {
+  const identity = buildWebsiteIdentitySchema();
+  assert.equal(identity["@type"], "WebSite");
+  assert.equal(identity["@id"], SITE_URL + "/#website");
+  assert.equal(identity.url, SITE_URL + "/");
+  assert.equal(identity.name, SITE.name);
+  assert.equal(identity.alternateName[0], "Nguyễn Lê Phong");
+  assert.deepEqual(identity.publisher, { "@id": SITE_URL + "/#person" });
+  assert.equal("hasPart" in identity, false);
+  // Kept small for the home HTML budget, and identical to the root node's identity fields.
+  assert.ok(JSON.stringify(identity).length < 400);
+  const root = buildWebsiteSchema("desc");
+  for (const [key, value] of Object.entries(identity)) {
+    assert.deepEqual(root[key], value, key);
+  }
+  // The ids the ProfilePage and Person reference resolve on the same page.
+  assert.equal(buildProfilePageSchema("vi", "t", "d").isPartOf["@id"], identity["@id"]);
+  assert.equal(buildPersonSchema("d")["@id"], identity.publisher["@id"]);
+});
+
 test("home profile graph links to the WebSite and Person entities without a second WebSite", () => {
   const person = buildPersonSchema("desc");
   assert.ok(person.alternateName.includes("nguyenlephong"));
   const profilePage = buildProfilePageSchema("en", "title", "desc");
   assert.deepEqual(profilePage.isPartOf, { "@id": SITE_URL + "/#website" });
   assert.deepEqual(profilePage.mainEntity, { "@id": SITE_URL + "/#person" });
+});
+
+test("home Person JSON-LD matches the evidence ledger and publishes no contact details", () => {
+  const person = buildPersonSchema("desc");
+  assert.equal(person.url, SITE_URL + "/en");
+  assert.equal(person.jobTitle, "Lead Software Engineer");
+  assert.equal(person.worksFor.name, "Zalo");
+  assert.equal(person.affiliation.name, "BonBon Mobility");
+  assert.deepEqual(person.alumniOf, { "@type": "CollegeOrUniversity", name: "Nong Lam University" });
+  const serialized = JSON.stringify(person);
+  assert.doesNotMatch(serialized, /telephone|"email"|mailto:|@gmail\.com/);
+  assert.doesNotMatch(serialized, /GPA|\d+[KM]\+?\s*MAU/);
 });
 
 test("section breadcrumb is a two-step brand then section list", () => {
@@ -117,13 +150,17 @@ test("about, apps, gallery and studio emit a section breadcrumb", () => {
   for (const file of [
     "src/app/[locale]/(site)/about/page.tsx",
     "src/app/[locale]/(site)/apps/page.tsx",
-    "src/app/[locale]/(site)/gallery/page.tsx",
-    "src/app/[locale]/studio/page.tsx"
+    "src/app/[locale]/(site)/gallery/page.tsx"
   ]) {
     const source = read(file);
     assert.match(source, /buildSectionBreadcrumb\(/, file);
     assert.match(source, /serializeJsonLd\(breadcrumbLd\)/, file);
   }
+  // Studio hands its JSON-LD to the shared frame, which serializes every entry.
+  const studio = read("src/app/[locale]/studio/page.tsx");
+  assert.match(studio, /buildSectionBreadcrumb\(/);
+  assert.match(studio, /jsonLd=\{\[collectionLd, breadcrumbLd\]\}/);
+  assert.match(read("src/app/[locale]/studio/StudioPageFrame.tsx"), /serializeJsonLd\(value\)/);
 });
 
 test("section titles are distinct, branded, short, and free of dashes in every locale", () => {
@@ -161,9 +198,17 @@ test("english and vietnamese section descriptions stay within snippet length", (
 });
 
 test("root stub and /en share the brand title, description and site name", () => {
-  assert.equal(PAGE_SEO.home.title, messages.en.SEO.home.title);
-  assert.equal(PAGE_SEO.home.description, messages.en.SEO.home.description);
+  // MEP-61: one source. The root stub reads messages/en.json, so `/` and `/en` titles are the
+  // same bytes, and seo.config.ts holds no page titles or descriptions to drift.
   const root = read("src/app/page.tsx");
+  assert.match(root, /import enMessages from '\.\.\/\.\.\/messages\/en\.json'/);
+  assert.match(root, /const SEO_TITLE = enMessages\.SEO\.home\.title/);
+  assert.match(root, /const SEO_DESCRIPTION = enMessages\.SEO\.home\.description/);
+  assert.match(read("src/app/[locale]/layout.tsx"), /namespace: 'SEO\.home'/);
+  assert.doesNotMatch(read("src/app/seo.config.ts"), /^\s*(title|description):/m);
+  for (const entry of Object.values(PAGE_SEO)) {
+    assert.equal("title" in entry || "description" in entry, false);
+  }
   assert.match(root, /title: SEO_TITLE/);
   assert.match(root, /buildSiteNavigationSchema/);
   assert.match(root, /<nav aria-label="Main sections">/);
@@ -173,22 +218,117 @@ test("root stub and /en share the brand title, description and site name", () =>
 
 test("header is a labelled nav with crawlable section links and tracked clicks", () => {
   const header = read("src/components/AppHeader.tsx");
-  assert.match(header, /<nav className="nav-links" aria-label="Main navigation">/);
-  assert.match(header, /aria-label="Mobile navigation"/);
+  assert.match(header, /<nav className="nav-links" aria-label=\{t\("mainNav"\)\}>/);
   assert.doesNotMatch(header, /"\/#about"/);
-  for (const route of ["ABOUT", "BLOG", "NOTES", "GALLERY", "APPS"]) {
+  for (const route of ["ABOUT", "BLOG", "NOTES", "APPS"]) {
     assert.match(header, new RegExp("href: APP_ROUTE\\." + route), route);
   }
   assert.match(header, /track\("cv_nav_click", \{ target: item\.trackId \}\)/);
+  for (const key of ["apps", "about", "experience", "projects", "notes", "blog"]) {
+    for (const locale of locales) {
+      assert.equal(typeof messages[locale].Nav[key], "string", `${locale} Nav.${key}`);
+    }
+  }
+});
+
+// MEP-27: recruiter order, CV sections first; Gallery lives in the footer.
+test("header nav leads with Experience and Projects and marks the current page", () => {
+  const header = read("src/components/AppHeader.tsx");
+  const order = [...header.matchAll(/trackId: "([a-z]+)"/g)].map((match) => match[1]);
+  assert.deepEqual(order, ["experience", "projects", "about", "blog", "notes", "apps"]);
+  assert.match(header, /href: `\$\{APP_ROUTE\.HOME\}#experience`/);
+  assert.match(header, /href: `\$\{APP_ROUTE\.HOME\}#projects`/);
+  assert.doesNotMatch(header, /APP_ROUTE\.GALLERY/);
+  assert.equal((header.match(/aria-current=\{currentPage\(item\.href\)\}/g) ?? []).length, 2);
+  const css = read("src/app/globals.css");
+  // The active link is marked by an underline too, not by colour alone.
+  assert.match(css, /\.nav-link\[aria-current="page"\]::after \{ transform: scaleX\(1\); \}/);
+  assert.match(css, /\.nav-mobile-link\[aria-current="page"\] \{[^}]*text-decoration: underline/);
+});
+
+test("header carries the language switcher on desktop and in the mobile panel", () => {
+  const header = read("src/components/AppHeader.tsx");
+  assert.match(header, /<LocaleSwitcher placement="down" compact source="header" \/>/);
+  assert.match(header, /<div className="nav-mobile-footer">\s*<LocaleSwitcher placement="down" source="mobile-nav" \/>/);
+  const switcher = read("src/components/LocaleSwitcher.tsx");
+  assert.match(switcher, /track\('locale_change', \{ from: currentLocale, to: nextLocale, source \}\)/);
+  // Closed options must leave the tab order, not just turn transparent.
+  const css = read("src/app/globals.css");
+  const closed = css.match(/\n\.locale-menu-list \{[^}]*\}/)?.[0] ?? "";
+  assert.match(closed, /visibility: hidden;/);
+  assert.match(css, /\.locale-menu\.is-open \.locale-menu-list \{[^}]*visibility: visible;/);
+});
+
+// MEP-30: the open menu is a modal in every locale; the theme control is one tab stop.
+test("mobile menu is opaque, traps focus, closes on Escape and speaks the page language", () => {
+  const header = read("src/components/AppHeader.tsx");
+  assert.doesNotMatch(header, /"(Open menu|Close menu|Main navigation|Mobile navigation)"/);
+  assert.match(header, /aria-label=\{menuOpen \? t\("menuClose"\) : t\("menuOpen"\)\}/);
+  assert.equal((header.match(/aria-label=\{t\("mainNav"\)\}/g) ?? []).length, 2);
+  // Everything outside header and panel goes inert; brand and Résumé inside the header too.
+  assert.match(header, /muted\.forEach\(\(el\) => \(el\.inert = true\)\)/);
+  assert.match(header, /muted\.forEach\(\(el\) => \(el\.inert = false\)\)/);
+  assert.equal((header.match(/inert=\{menuOpen\}/g) ?? []).length, 2);
+  // Crossing the desktop breakpoint closes the menu so the page never stays inert.
+  assert.match(header, /matchMedia\("\(min-width: 1024px\)"\)/);
+  assert.match(header, /removeEventListener\("change", onWide\)/);
+  assert.match(header, /event\.key !== "Escape"/);
+  assert.match(header, /toggleRef\.current\?\.focus\(\)/);
+  assert.match(header, /track\("cv_nav_click", \{ target: "home" \}\)/);
   for (const locale of locales) {
-    assert.equal(typeof messages[locale].Nav.apps, "string", locale + " Nav.apps");
-    assert.equal(typeof messages[locale].Nav.about, "string", locale + " Nav.about");
+    for (const key of ["mainNav", "menuOpen", "menuClose"]) {
+      assert.equal(typeof messages[locale].Nav[key], "string", `${locale} Nav.${key}`);
+    }
+    for (const key of ["label", "light", "system", "dark"]) {
+      assert.equal(typeof messages[locale].Nav.theme?.[key], "string", `${locale} Nav.theme.${key}`);
+    }
+  }
+  assert.notEqual(messages.vi.Nav.menuOpen, messages.en.Nav.menuOpen);
+
+  const css = read("src/app/globals.css");
+  const panel = css.match(/\n\.nav-mobile-panel \{[^}]*\}/)?.[0] ?? "";
+  assert.match(panel, /background: var\(--bg\);/);
+  assert.doesNotMatch(panel, /backdrop-filter|color-mix/);
+  // The brand name is the link's accessible name at phone width, so it is clipped, never display:none.
+  assert.doesNotMatch(css, /\.brand-text \{ display: none; \}/);
+  assert.match(css, /\.brand-text \{[^}]*clip-path: inset\(50%\);/);
+
+  const toggle = read("src/components/theme/ThemeToggle.tsx");
+  assert.match(toggle, /tabIndex=\{setting === opt\.value \? 0 : -1\}/);
+  assert.match(toggle, /ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1/);
+  assert.match(toggle, /aria-label=\{t\('label'\)\}/);
+});
+
+// MEP-28: both roles, résumé and email, labelled internal links outside the profiles list.
+test("footer names both roles and keeps internal pages out of the profiles list", async () => {
+  const footer = read("src/components/AppFooter.tsx");
+  assert.match(footer, /import \{ email, social as c \} from '@\/content\/social'/);
+  const [profiles, site] = footer
+    .slice(footer.indexOf("aria-label={t('contactLabel')}"))
+    .split("footer-links--site");
+  assert.doesNotMatch(profiles, /APP_ROUTE\.(APPS|STUDIO|GALLERY)|studioHref/);
+  assert.match(profiles, /track\('cv_resume_download', \{ source: 'footer' \}\)/);
+  assert.match(profiles, /track\('cv_contact_click', \{ channel: 'email', source: 'footer' \}\)/);
+  assert.match(profiles, /href=\{`mailto:\$\{email\}`\}/);
+  for (const target of ["gallery_footer", "apps_footer", "studio_footer", "sitemap_footer"]) {
+    assert.match(site, new RegExp(`target: '${target}'`), target);
+  }
+  assert.doesNotMatch(footer, /aria-label="(Social profiles|Apps|Studio)"/);
+  for (const locale of locales) {
+    const f = messages[locale].Footer;
+    assert.match(f.tag, /Zalo PC/, locale);
+    assert.match(f.tag, /BonBon Mobility/, locale);
+    assert.doesNotMatch(f.tag, /\u2014/, locale);
+    for (const key of ["email", "photos", "sideProjects", "studioHint", "contactLabel", "siteLabel"]) {
+      assert.equal(typeof f[key], "string", `${locale} Footer.${key}`);
+    }
   }
 });
 
 test("no section is accidentally noindexed; only non-authored locale copies are", () => {
+  // MEP-54: Studio stays indexable in its authored locales (en, vi) through the static-page policy.
   const studio = read("src/app/[locale]/studio/page.tsx");
-  assert.match(studio, /robots: \{\s*index: true,\s*follow: true/);
+  assert.match(studio, /resolveStaticPageLocalization\("studio", locale\)/);
   const policy = read("src/lib/seo/static-page-localization.ts");
   assert.match(policy, /index: authored/);
   for (const file of [

@@ -1,94 +1,87 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState, type MouseEvent } from 'react'
 import { track } from '@/lib/analytics'
+import type { ArticleOutlineItem } from '@/lib/content/article-outline'
 
-interface TocItem {
-  id: string
-  text: string
-  level: number
-}
+export const ARTICLE_TOC_ID = 'article-toc'
 
 interface BlogTocProps {
+  items: ArticleOutlineItem[]
   label: string
   surface?: 'blog' | 'notes'
+  /**
+   * `rail`: sticky outline beside the text (≥1080px).
+   * `inline`: collapsed outline under the article header (<1080px), plus a
+   * skip link to the rail for keyboard readers on wide screens.
+   */
+  variant?: 'rail' | 'inline'
+  /** Inline only: the skip link text. */
+  jumpLabel?: string
 }
 
-function slugifyHeading(text: string, fallback: string): string {
-  const slug = text
-    .trim()
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/&/g, ' and ')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-
-  return slug || fallback
+/** Move focus to the heading the reader jumped to, without a second scroll. */
+function focusHeading(id: string) {
+  window.requestAnimationFrame(() => {
+    const heading = document.getElementById(id)
+    if (!heading) return
+    if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1')
+    heading.focus({ preventScroll: true })
+  })
 }
 
-function uniqueHeadingId(base: string, usedIds: Set<string>): string {
-  let id = base
-  let suffix = 2
-
-  while (usedIds.has(id)) {
-    id = `${base}-${suffix}`
-    suffix += 1
-  }
-
-  usedIds.add(id)
-  return id
+function TocList({
+  items,
+  activeId,
+  onJump,
+}: {
+  items: ArticleOutlineItem[]
+  activeId?: string
+  onJump: (item: ArticleOutlineItem) => void
+}) {
+  return (
+    <ul className="blog-toc__list">
+      {items.map((item) => (
+        <li
+          key={item.id}
+          className={`blog-toc__item blog-toc__item--l${item.level}${
+            activeId === item.id ? ' is-active' : ''
+          }`}
+        >
+          <a
+            href={`#${item.id}`}
+            aria-current={activeId === item.id ? 'location' : undefined}
+            onClick={() => onJump(item)}
+          >
+            {item.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
 }
 
 /**
- * Builds an "On this page" outline from article `h2`/`h3` headings, assigning
- * stable anchor ids client-side when older authored HTML omitted them.
+ * "On this page" outline. Items come from the server (`buildArticleOutline`),
+ * so the list is in the static HTML; the client only tracks the active section,
+ * reports jumps and moves focus to the target heading.
  */
-export default function BlogToc({ label, surface = 'blog' }: BlogTocProps) {
-  const [items, setItems] = useState<TocItem[]>([])
-  const [activeId, setActiveId] = useState<string>('')
+export default function BlogToc({
+  items,
+  label,
+  surface = 'blog',
+  variant = 'rail',
+  jumpLabel,
+}: BlogTocProps) {
+  const [activeId, setActiveId] = useState('')
+  const detailsRef = useRef<HTMLDetailsElement>(null)
+  const eventPrefix = surface === 'notes' ? 'notes' : 'blog'
 
   useEffect(() => {
-    const article = document.querySelector('.blog-content')
-    if (!article) return
-
-    const headings = Array.from(
-      article.querySelectorAll<HTMLHeadingElement>('h2, h3'),
-    )
-    const usedIds = new Set(
-      Array.from(document.querySelectorAll<HTMLElement>('[id]')).map(
-        (node) => node.id,
-      ),
-    )
-    const next = headings
-      .map((h, index) => {
-        const text = h.textContent?.trim() ?? ''
-        if (!text) return null
-
-        const id =
-          h.id ||
-          uniqueHeadingId(slugifyHeading(text, `section-${index + 1}`), usedIds)
-        h.id = id
-
-        return {
-          id,
-          text,
-          level: h.tagName === 'H3' ? 3 : 2,
-        }
-      })
-      .filter((item): item is TocItem => item !== null)
-
-    let cancelled = false
-    const frame = window.requestAnimationFrame(() => {
-      if (!cancelled) setItems(next)
-    })
-
-    if (next.length === 0) {
-      return () => {
-        cancelled = true
-        window.cancelAnimationFrame(frame)
-      }
-    }
+    if (variant !== 'rail' || items.length === 0) return
+    const headings = items
+      .map((item) => document.getElementById(item.id))
+      .filter((node): node is HTMLElement => node !== null)
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -100,41 +93,66 @@ export default function BlogToc({ label, surface = 'blog' }: BlogTocProps) {
       { rootMargin: '-15% 0px -70% 0px', threshold: 0 },
     )
     headings.forEach((h) => observer.observe(h))
-    return () => {
-      cancelled = true
-      window.cancelAnimationFrame(frame)
-      observer.disconnect()
-    }
-  }, [])
+    return () => observer.disconnect()
+  }, [items, variant])
 
-  if (items.length < 2) return null
+  const onJump = (item: ArticleOutlineItem) => {
+    track(surface === 'notes' ? 'notes_nav_jump' : 'blog_nav_jump', {
+      content_surface: surface,
+      target_id: item.id,
+      heading_level: item.level,
+      source: variant === 'inline' ? 'mobile' : 'rail',
+    })
+    // Collapse before the browser scrolls, so the target lands where it should.
+    if (detailsRef.current) detailsRef.current.open = false
+    focusHeading(item.id)
+  }
+
+  if (variant === 'rail') {
+    return (
+      <nav id={ARTICLE_TOC_ID} className="blog-toc" aria-label={label}>
+        <p className="blog-toc__label" aria-hidden="true">
+          {label}
+        </p>
+        <TocList items={items} activeId={activeId} onJump={onJump} />
+      </nav>
+    )
+  }
+
+  const jumpToRail = (event: MouseEvent<HTMLAnchorElement>) => {
+    const firstLink = document.querySelector<HTMLAnchorElement>(`#${ARTICLE_TOC_ID} a`)
+    if (!firstLink) return
+    event.preventDefault()
+    firstLink.focus()
+  }
 
   return (
-    <nav className="blog-toc" aria-label={label}>
-      <p className="blog-toc__label">{label}</p>
-      <ul className="blog-toc__list">
-        {items.map((item) => (
-          <li
-            key={item.id}
-            className={`blog-toc__item blog-toc__item--l${item.level}${
-              activeId === item.id ? ' is-active' : ''
-            }`}
-          >
-            <a
-              href={`#${item.id}`}
-              onClick={() => {
-                track(surface === 'notes' ? 'notes_nav_jump' : 'blog_nav_jump', {
-                  content_surface: surface,
-                  target_id: item.id,
-                  heading_level: item.level,
-                })
-              }}
-            >
-              {item.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div className="blog-toc-inline">
+      {jumpLabel && (
+        <a className="blog-toc-inline__skip" href={`#${ARTICLE_TOC_ID}`} onClick={jumpToRail}>
+          {jumpLabel}
+        </a>
+      )}
+      <details
+        ref={detailsRef}
+        className="blog-toc-inline__details"
+        onToggle={(event) => {
+          if (event.currentTarget.open) {
+            track(`${eventPrefix}_toc_open`, {
+              content_surface: surface,
+              item_count: items.length,
+            })
+          }
+        }}
+      >
+        <summary className="blog-toc-inline__summary">
+          <span>{label}</span>
+          <span className="blog-toc-inline__count">{items.length}</span>
+        </summary>
+        <nav className="blog-toc blog-toc--inline" aria-label={label}>
+          <TocList items={items} onJump={onJump} />
+        </nav>
+      </details>
+    </div>
   )
 }

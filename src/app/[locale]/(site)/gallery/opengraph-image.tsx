@@ -2,10 +2,10 @@ import { ImageResponse } from 'next/og'
 import { routing } from '@/i18n/routing'
 import { OgShell, OG_SIZE, OG_CONTENT_TYPE } from '@/app/_og/og-shell'
 import { PAGE_SEO } from '@/app/seo.config'
-import { profileInfo } from '@/app/app.const'
+import { gallery } from '@/content/gallery'
 import { getCachedOg, saveOgCache, cachedOgResponse } from '@/lib/og/cache'
 
-export const alt = PAGE_SEO.gallery.ogAlt ?? PAGE_SEO.gallery.title
+export const alt = PAGE_SEO.gallery.ogAlt
 export const size = OG_SIZE
 export const contentType = OG_CONTENT_TYPE
 
@@ -16,12 +16,7 @@ export function generateStaticParams() {
 export const dynamic = 'force-static'
 
 export default async function OgImage() {
-  const counts = {
-    certs: profileInfo.gallery.certificates.length,
-    awards: profileInfo.gallery.awards.length,
-    projects: profileInfo.gallery.projects.length,
-  }
-  const cacheKey = `static-gallery-certs${counts.certs}-awards${counts.awards}-projects${counts.projects}-v2`
+  const cacheKey = `static-gallery-${gallery.bonbon.length}-${gallery.recognition.length}-v3`
   const cached = getCachedOg(cacheKey)
   if (cached) return cachedOgResponse(cached)
 
@@ -30,13 +25,13 @@ export default async function OgImage() {
       <OgShell
         theme="light"
         eyebrow="Gallery"
-        title="Evidence beyond the resume."
-        subtitle="Certifications, awards, project snapshots, and activity signals — visible proof of what I've built, learned, and kept practicing."
+        title="Photos and certificates."
+        subtitle="BonBon Mobility winning Tasco Foundry Wash3000, its $500K pre-seed, and the awards and certificates behind the CV, each linked to its source."
         chips={[
-          `${counts.certs} certifications`,
-          `${counts.awards} awards`,
-          `${counts.projects} projects`,
-          'Best Rookie of the Year',
+          'BonBon Mobility',
+          'Wash3000 winner',
+          '$500K pre-seed',
+          'Best Rookie of the Year 2019',
         ]}
       />
     ),

@@ -4,14 +4,13 @@ import type { StudioMetric, StudioRoute } from "./studio-route-contract";
 
 type StudioRouteSurfaceCopy = {
   routeKicker: {
-    legacy: string;
     studio: string;
   };
   routeMetricsLabel: string;
 };
 
 const defaultSurfaceCopy: StudioRouteSurfaceCopy = {
-  routeKicker: { legacy: "Legacy templates", studio: "Studio" },
+  routeKicker: { studio: "Studio" },
   routeMetricsLabel: "Route metrics"
 };
 
@@ -51,7 +50,7 @@ export function RouteHeading({
       <div>
         <div className="route-kicker">
           <Icon aria-hidden="true" />
-          <span>{route.kind === "legacy" ? copy.routeKicker.legacy : copy.routeKicker.studio}</span>
+          <span>{copy.routeKicker.studio}</span>
         </div>
         <h2>{route.title}</h2>
         <p>{route.description}</p>

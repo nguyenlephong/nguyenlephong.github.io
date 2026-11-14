@@ -6,7 +6,7 @@
     "ai-agent-setup": "AI Setup",
     "ai-skills": "AI Skills",
     "delivery-checklists": "Checklists",
-    "flow-menu": "Flow Menu",
+    "flow-menu": "System maps",
     "flow-system-design": "System Design",
     "flow-architecture-decision": "Architecture Decision",
     "flow-incident-response": "Incident Response",
@@ -62,7 +62,6 @@
   "openGithubProfile": "Open GitHub profile",
   "openAccountMenu": "Open account menu",
   "routeKicker": {
-    "legacy": "Legacy",
     "studio": "Studio"
   },
   "routeMetricsLabel": "Page summary",
@@ -71,11 +70,6 @@
     "loadErrorTitle": "Workspace unavailable",
     "loadErrorDetail": "This workspace could not be loaded. Navigation and preferences are still available.",
     "reload": "Reload Studio"
-  },
-  "dashboard": {
-    "emptyTitle": "No matching workstreams",
-    "emptyDescription": "Adjust the search or status filter to see workstreams.",
-    "clearFilters": "Clear filters"
   },
   "status": {
     "ready": "Ready",
@@ -94,7 +88,7 @@
   "routes": {
     "welcome": {
       "title": "Start here",
-      "description": "A practical index of my setup notes, reusable workflows, delivery checklists, and visual system maps.",
+      "description": "Delivery checklists first, then system maps, then the AI agent setup I work with.",
       "panels": ["Choose a workspace", "Useful links", "Studio pages"],
       "timeline": [
         "Choose the right workspace",
@@ -123,7 +117,7 @@
       ]
     },
     "delivery-checklists": {
-      "title": "Engineering Checklists",
+      "title": "Delivery checklists",
       "description": "Practical checklists for understanding a task, making a change, reviewing it, and releasing it safely.",
       "panels": ["Task intake", "Module creation", "Release and rollout"],
       "timeline": [
@@ -218,9 +212,9 @@
     }
   },
   "welcome": {
-    "eyebrow": "Personal workbench",
-    "lead": "I keep the practical parts of my engineering work here: setup notes, reusable AI instructions, delivery checklists, and visual system maps.",
-    "note": "Choose the page that matches the job, check the source material, and finish with a useful decision, checklist, diagram, or verified change.",
+    "eyebrow": "How I work",
+    "lead": "The checklists and system maps I use to scope work, ship releases and roll them out safely. Start with the delivery checklists: Release Readiness and Rollout Plan sit at the top.",
+    "note": "Take what helps your team. Each checklist copies as Markdown, and the system blueprint has a focused view for each zone.",
     "studioLinks": "Studio shortcuts",
     "publicLinks": "Useful profile links",
     "open": "Open",
@@ -235,7 +229,7 @@
       },
       "delivery-checklists": {
         "label": "Checklists",
-        "detail": "Step-by-step checks for task intake, implementation, review, and release."
+        "detail": "Release readiness, rollout plan, ticket intake and module checks."
       },
       "flow-react-flow-architecture-demo": {
         "label": "Flow examples",
@@ -284,6 +278,7 @@
     "exampleView": "View",
     "exampleSelectorLabel": "React Flow example selector",
     "boardTools": "Board tools",
+    "diagramOptions": "Diagram options",
     "viewNotes": "View notes",
     "useWhen": "Use when",
     "outcome": "Outcome",

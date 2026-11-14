@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { createContext, useContext } from "react";
 import { track } from "@/lib/analytics";
 import StudioFeatureErrorBoundary from "./StudioFeatureErrorBoundary";
-import StudioAuxiliaryRoutesFeatureAdapter from "./StudioAuxiliaryRoutesFeatureAdapter";
 import StudioWelcomeFeatureAdapter from "./StudioWelcomeFeatureAdapter";
 import type { StudioFeatureProps } from "./studio-feature-contract";
 import { createStudioFeatureLoadErrorCallback } from "./studio-feature-load-error";
@@ -86,25 +85,6 @@ function StudioResolvedFeature(props: StudioFeatureProps) {
       );
     case "flows":
       return locale === "vi" ? <FlowsVi {...props} /> : <FlowsEn {...props} />;
-    case "default":
-    case "dashboard":
-    case "finance":
-    case "analytics":
-    case "productivity":
-    case "ecommerce":
-    case "academy":
-    case "logistics":
-    case "infrastructure":
-    case "mail":
-    case "chat":
-    case "calendar":
-    case "kanban":
-    case "invoice":
-    case "users":
-    case "roles":
-    case "auth":
-    case "legacy":
-      return <StudioAuxiliaryRoutesFeatureAdapter {...props} />;
     default:
       return assertNeverRouteKind(kind satisfies never);
   }

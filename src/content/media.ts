@@ -1,5 +1,4 @@
-// Extracted from app.const.ts — profile content data. Re-assembled into
-// `profileInfo` by app.const.ts so existing imports keep working.
+// Profile content data, imported directly by the pages that render it.
 
 export const videos = [
     {

@@ -3,7 +3,7 @@
   "category": "architecture",
   "title": "Architecture Decisions for Future Teammates",
   "summary": "A practical reflection on architecture decisions as team memory: how small ADR-style notes help future teammates understand trade-offs, rejected paths, and when to revisit a choice.",
-  "date": "2026-05-30",
+  "date": "2026-10-05",
   "readingMinutes": 5,
   "tags": [
     "Software Architecture",

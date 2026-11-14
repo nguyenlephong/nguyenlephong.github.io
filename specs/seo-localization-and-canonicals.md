@@ -40,6 +40,11 @@ and [Article structured data](https://developers.google.com/search/docs/appearan
 - This change does not create machine translations or infer missing editorial
   metadata.
 - This change does not create a translated article without an authored body.
+- Focused static pages (About, Apps, Gallery, Studio) follow
+  `static-page-seo-localization.md`, not the article rule above: their
+  fallback locale routes are self-canonical `noindex, follow` pages with no
+  `hreflang`, because a canonical pointing at the English page would
+  contradict the `noindex`.
 
 ## Acceptance criteria
 

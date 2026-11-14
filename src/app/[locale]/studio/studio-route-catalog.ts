@@ -1,16 +1,7 @@
+import type { StudioWorkflowChecklist } from "./studio.data";
+
 export const studioRouteCatalog = [
   { id: "welcome", kind: "welcome" },
-  { id: "default", kind: "default" },
-  { id: "crm", kind: "dashboard" },
-  { id: "finance", kind: "finance" },
-  { id: "analytics", kind: "analytics" },
-  { id: "productivity", kind: "productivity" },
-  { id: "ecommerce", kind: "ecommerce" },
-  { id: "academy", kind: "academy" },
-  { id: "logistics", kind: "logistics" },
-  { id: "infrastructure", kind: "infrastructure" },
-  { id: "email", kind: "mail" },
-  { id: "chat", kind: "chat" },
   { id: "ai-agent-setup", kind: "ai-setup" },
   { id: "ai-skills", kind: "ai-skills" },
   { id: "delivery-checklists", kind: "checklists" },
@@ -21,20 +12,7 @@ export const studioRouteCatalog = [
   { id: "flow-ai-delivery", kind: "flows" },
   { id: "flow-portfolio-story", kind: "flows" },
   { id: "flow-react-flow-architecture-demo", kind: "flows" },
-  { id: "flow-react-flow-system-blueprint", kind: "flows" },
-  { id: "calendar", kind: "calendar" },
-  { id: "kanban", kind: "kanban" },
-  { id: "invoice", kind: "invoice" },
-  { id: "users", kind: "users" },
-  { id: "roles", kind: "roles" },
-  { id: "auth-login-v1", kind: "auth" },
-  { id: "auth-login-v2", kind: "auth" },
-  { id: "auth-register-v1", kind: "auth" },
-  { id: "auth-register-v2", kind: "auth" },
-  { id: "legacy-default", kind: "legacy" },
-  { id: "legacy-crm", kind: "legacy" },
-  { id: "legacy-finance", kind: "legacy" },
-  { id: "legacy-analytics", kind: "legacy" }
+  { id: "flow-react-flow-system-blueprint", kind: "flows" }
 ] as const;
 
 export type StudioRouteId = (typeof studioRouteCatalog)[number]["id"];
@@ -53,36 +31,12 @@ export const studioRouteKindById = Object.fromEntries(
  * links through the `route` query parameter or matching URL hash.
  */
 export const studioDeepLinkRouteIds = [
-  "default",
-  "crm",
-  "finance",
-  "analytics",
-  "productivity",
-  "ecommerce",
-  "academy",
-  "logistics",
-  "infrastructure",
-  "email",
-  "chat",
   "flow-system-design",
   "flow-architecture-decision",
   "flow-incident-response",
   "flow-release-readiness",
   "flow-ai-delivery",
-  "flow-portfolio-story",
-  "calendar",
-  "kanban",
-  "invoice",
-  "users",
-  "roles",
-  "auth-login-v1",
-  "auth-login-v2",
-  "auth-register-v1",
-  "auth-register-v2",
-  "legacy-default",
-  "legacy-crm",
-  "legacy-finance",
-  "legacy-analytics"
+  "flow-portfolio-story"
 ] as const satisfies readonly StudioRouteId[];
 
 export type StudioDeepLinkRouteId = (typeof studioDeepLinkRouteIds)[number];
@@ -108,47 +62,67 @@ export const studioNavCatalog = [
   {
     id: 1,
     label: "Personal Studio",
+    // MEP-56: delivery checklists lead, then system maps, then the AI setup notes.
     items: [
       { id: "welcome", title: "Welcome", routeId: "welcome", icon: "smile" },
-      { id: "ai-agent-setup", title: "AI Setup", routeId: "ai-agent-setup", icon: "sparkles", badge: "new" },
-      { id: "ai-skills", title: "AI Skills", routeId: "ai-skills", icon: "command", badge: "new" },
-      { id: "delivery-checklists", title: "Checklists", routeId: "delivery-checklists", icon: "clipboard-list", badge: "new" },
+      { id: "delivery-checklists", title: "Checklists", routeId: "delivery-checklists", icon: "clipboard-list" },
       {
         id: "flow-menu",
         title: "Flow Menu",
-        routeId: "flow-react-flow-architecture-demo",
+        routeId: "flow-react-flow-system-blueprint",
         icon: "workflow",
-        badge: "new",
         subItems: [
-          { id: "flow-react-flow-architecture-demo", title: "Example", routeId: "flow-react-flow-architecture-demo" },
-          { id: "flow-react-flow-system-blueprint", title: "Blueprint", routeId: "flow-react-flow-system-blueprint" }
+          { id: "flow-react-flow-system-blueprint", title: "Blueprint", routeId: "flow-react-flow-system-blueprint" },
+          { id: "flow-react-flow-architecture-demo", title: "Example", routeId: "flow-react-flow-architecture-demo" }
         ]
-      }
+      },
+      { id: "ai-agent-setup", title: "AI Setup", routeId: "ai-agent-setup", icon: "sparkles" },
+      { id: "ai-skills", title: "AI Skills", routeId: "ai-skills", icon: "command" }
     ]
   }
 ] as const satisfies readonly StudioNavCatalogGroup[];
 
 export type StudioPublicModuleRouteId =
-  | "ai-agent-setup"
-  | "ai-skills"
   | "delivery-checklists"
-  | "flow-react-flow-architecture-demo";
+  | "flow-react-flow-system-blueprint"
+  | "ai-agent-setup";
+
+export type StudioPublicModuleSlug = "checklists" | "system-maps" | "ai-setup";
 
 export type StudioPublicModuleCatalogEntry = {
   routeId: StudioPublicModuleRouteId;
-  flowId?: "react-flow-architecture-demo";
+  /** Crawlable page /[locale]/studio/{slug} that opens the shell on this route. */
+  slug: StudioPublicModuleSlug;
 };
 
 export const studioPublicModuleCatalog = [
-  { routeId: "ai-agent-setup" },
-  { routeId: "ai-skills" },
-  { routeId: "delivery-checklists" },
-  { routeId: "flow-react-flow-architecture-demo", flowId: "react-flow-architecture-demo" }
+  { routeId: "delivery-checklists", slug: "checklists" },
+  { routeId: "flow-react-flow-system-blueprint", slug: "system-maps" },
+  { routeId: "ai-agent-setup", slug: "ai-setup" }
 ] as const satisfies readonly StudioPublicModuleCatalogEntry[];
 
 export const studioWelcomeRouteIds = studioPublicModuleCatalog.map(
   (module) => module.routeId
 ) as StudioPublicModuleRouteId[];
+
+/**
+ * Delivery checklists shown in Studio, in reading order. Personal study plans
+ * (roadmaps, daily and weekly AI practice, the 90-day plan) stay in the data
+ * file but are not published here (MEP-56).
+ */
+export const studioDeliveryChecklistIds = [
+  "release-readiness",
+  "rollout-plan",
+  "ticket-intake-to-start",
+  "engineering-delivery-checklist",
+  "module-creation",
+  "senior-engineer-reflex",
+  "ai-assisted-feature-workflow"
+] as const;
+
+export function selectStudioDeliveryChecklists(checklists: readonly StudioWorkflowChecklist[]): StudioWorkflowChecklist[] {
+  return studioDeliveryChecklistIds.flatMap((id) => checklists.filter((checklist) => checklist.id === id));
+}
 
 export const studioCatalog = {
   defaultRouteId: STUDIO_DEFAULT_ROUTE,
@@ -158,5 +132,6 @@ export const studioCatalog = {
   deepLinkRouteIds: studioDeepLinkRouteIds,
   navGroups: studioNavCatalog,
   publicModules: studioPublicModuleCatalog,
-  welcomeRouteIds: studioWelcomeRouteIds
+  welcomeRouteIds: studioWelcomeRouteIds,
+  deliveryChecklistIds: studioDeliveryChecklistIds
 } as const;

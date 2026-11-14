@@ -50,7 +50,8 @@ function createFixture() {
   );
   writeFileSync(
     join(root, "en/studio.html"),
-    '<script src="/_next/static/chunks/initial.js"></script>'
+    '<script src="/_next/static/chunks/initial.js"></script>' +
+      '<script src="/_next/static/chunks/polyfill.js" noModule=""></script>'
   );
   writeFileSync(
     join(chunks, "initial.js"),
@@ -68,12 +69,9 @@ function createFixture() {
     join(chunks, "shell-en.js"),
     [
       loaderGroup("default", "default-shared"),
-      loaderGroup("mail"),
       loaderGroup("skills"),
       loaderGroup("checklists"),
-      loaderGroup("auxiliary"),
-      loaderGroup("flow"),
-      loaderGroup("chart")
+      loaderGroup("flow")
     ].join(";")
   );
   for (const locale of ["vi", "zh", "ja", "ko", "fr"]) {
@@ -85,15 +83,9 @@ function createFixture() {
     join(chunks, "default-shared.js"),
     `default-route-sibling${"s".repeat(1_000)}`
   );
-  writeFileSync(join(chunks, "mail.js"), "mail-workbench");
   writeFileSync(join(chunks, "skills.js"), "skill-library-workbench");
   writeFileSync(join(chunks, "checklists.js"), "checklist-workbench");
-  writeFileSync(
-    join(chunks, "auxiliary.js"),
-    "data-studio-auxiliary-dashboard"
-  );
   writeFileSync(join(chunks, "flow.js"), "data-studio-flow-runtime");
-  writeFileSync(join(chunks, "chart.js"), "data-studio-recharts-runtime");
   for (const [locale, sentinel] of Object.entries(LOCALE_SENTINELS)) {
     writeFileSync(
       join(chunks, `${locale}.js`),
@@ -108,7 +100,7 @@ test("Studio artifact verifier counts complete Turbopack loader groups and reach
   try {
     const summary = verifyStudioArtifact({ outDir: root });
     assert.equal(summary.initialScripts.length, 1);
-    assert.equal(summary.js.initial.maxBrotli, 176_128);
+    assert.equal(summary.js.initial.maxBrotli, 149_504);
     assert.equal(summary.js.defaultRoute.total.maxBrotli, 204_800);
     assert.equal(summary.defaultScripts.length, 5);
     assert.ok(
@@ -123,10 +115,7 @@ test("Studio artifact verifier counts complete Turbopack loader groups and reach
       [
         "AI skills workbench",
         "ReactFlow",
-        "Recharts",
-        "auxiliary dashboards",
-        "delivery checklist workbench",
-        "mail workbench"
+        "delivery checklist workbench"
       ].sort()
     );
     assert.ok(summary.asyncScripts.length > summary.defaultScripts.length);
@@ -144,14 +133,6 @@ test("Studio artifact verifier counts complete Turbopack loader groups and reach
     assert.deepEqual(summary.localeIsolation.vietnameseChunks, [
       "_next/static/chunks/vi.js"
     ]);
-    assert.equal(
-      summary.lazyBoundaries.auxiliaryDashboard.loaderDepth,
-      1
-    );
-    assert.deepEqual(
-      summary.lazyBoundaries.auxiliaryDashboard.loaderChunks,
-      ["_next/static/chunks/auxiliary.js"]
-    );
     assert.deepEqual(
       Object.keys(summary.localeIsolation.locales),
       Object.keys(LOCALE_SENTINELS)
@@ -184,11 +165,11 @@ test("Studio artifact verifier rejects representative feature code in direct scr
     const initialPath = join(root, "_next/static/chunks/initial.js");
     writeFileSync(
       initialPath,
-      `${readFileSync(initialPath, "utf8")};mail-workbench`
+      `${readFileSync(initialPath, "utf8")};skill-library-workbench`
     );
     assert.throws(
       () => verifyStudioArtifact({ outDir: root }),
-      /mail workbench runtime is eagerly loaded/
+      /AI skills workbench runtime is eagerly loaded/
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
@@ -287,54 +268,12 @@ test("Studio artifact verifier rejects an all-route preload in the default loade
     const shellPath = join(root, "_next/static/chunks/shell-en.js");
     const source = readFileSync(shellPath, "utf8").replace(
       loaderGroup("default", "default-shared"),
-      loaderGroup("default", "default-shared", "mail")
+      loaderGroup("default", "default-shared", "skills")
     );
     writeFileSync(shellPath, source);
     assert.throws(
       () => verifyStudioArtifact({ outDir: root }),
-      /mail workbench runtime is preloaded by the Studio default route/
-    );
-  } finally {
-    rmSync(root, { recursive: true, force: true });
-  }
-});
-
-test("Studio artifact verifier rejects a sequential auxiliary dashboard lazy-loader waterfall", () => {
-  const root = createFixture();
-  try {
-    const shellPath = join(root, "_next/static/chunks/shell-en.js");
-    const source = readFileSync(shellPath, "utf8").replace(
-      loaderGroup("auxiliary"),
-      loaderGroup("auxiliary-wrapper")
-    );
-    writeFileSync(shellPath, source);
-    writeFileSync(
-      join(root, "_next/static/chunks/auxiliary-wrapper.js"),
-      loaderGroup("auxiliary")
-    );
-
-    assert.throws(
-      () => verifyStudioArtifact({ outDir: root }),
-      /auxiliary dashboard runtime must be loaded atomically by its outer route loader; found loader depth 2/
-    );
-  } finally {
-    rmSync(root, { recursive: true, force: true });
-  }
-});
-
-test("Studio artifact verifier keeps Recharts out of the auxiliary dashboard route loader", () => {
-  const root = createFixture();
-  try {
-    const shellPath = join(root, "_next/static/chunks/shell-en.js");
-    const source = readFileSync(shellPath, "utf8").replace(
-      loaderGroup("auxiliary"),
-      loaderGroup("auxiliary", "chart")
-    );
-    writeFileSync(shellPath, source);
-
-    assert.throws(
-      () => verifyStudioArtifact({ outDir: root }),
-      /Recharts runtime is preloaded by the Studio auxiliary dashboard route/
+      /AI skills workbench runtime is preloaded by the Studio default route/
     );
   } finally {
     rmSync(root, { recursive: true, force: true });

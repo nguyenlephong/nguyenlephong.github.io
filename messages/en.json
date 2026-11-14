@@ -1,5 +1,6 @@
 {
   "Nav": {
+    "skipToContent": "Skip to content",
     "about": "About",
     "aboutMe": "About me",
     "experience": "Experience",
@@ -11,6 +12,28 @@
     "notes": "Notes",
     "studio": "Studio",
     "resume": "Résumé",
+    "mainNav": "Main navigation",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "search": {
+      "label": "Search",
+      "dialogLabel": "Search the blog and notes",
+      "placeholder": "Search posts and notes…",
+      "hint": "Search by title, topic or tag.",
+      "blog": "Blog",
+      "notes": "Notes",
+      "loading": "Loading the index…",
+      "error": "Search could not load. Try again in a moment.",
+      "empty": "Nothing matches “{query}” yet.",
+      "results": "{count, plural, =0 {No results} one {# result} other {# results}}",
+      "close": "Close search"
+    },
+    "theme": {
+      "label": "Theme",
+      "light": "Light theme",
+      "system": "System theme",
+      "dark": "Dark theme"
+    },
     "font": {
       "label": "Reading font",
       "sans": "Sans-serif",
@@ -28,257 +51,291 @@
     }
   },
   "Footer": {
-    "tag": "Lead Software Engineer · Zalo PC",
+    "tag": "Lead Software Engineer, Zalo PC · Co-founder, BonBon Mobility",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "Language",
-    "sitemap": "Sitemap"
+    "sitemap": "Sitemap",
+    "email": "Email",
+    "photos": "Photos",
+    "sideProjects": "Side projects",
+    "studioHint": "Studio: checklists and system maps",
+    "contactLabel": "Résumé and profiles",
+    "siteLabel": "More on this site"
   },
   "Hero": {
     "news": "BonBon Mobility raised a $500K pre-seed round led by Tasco",
     "newsCta": "Read the story",
     "role": "Lead Software Engineer",
     "cofounder": "Co-founder",
-    "roleSub": "Shipping at 80M+ MAU scale. Building from zero as a founder.",
-    "bio": "At Zalo PC, I lead cross-device data work, most recently PC message backup with mobile restore. At BonBon Mobility, a car-care O2O platform I co-founded, I built the product integration that took it from MVP to a live field pilot in 3 months.",
+    "claim": "Hands-on engineering lead. I write the critical code myself and ship risky changes in small steps that can be rolled back.",
+    "bio": "Shipping since 2018 across an outsourcing agency, a CDP product company, Zalo, and a startup I co-founded.",
     "location": "Ho Chi Minh City, Vietnam",
     "downloadResume": "Download résumé",
-    "getInTouch": "Get in touch",
-    "careerHighlights": "Career highlights",
+    "getInTouch": "Email me",
     "socialProfiles": "Social profiles",
-    "stats": {
-      "yearsShipping": "Years shipping",
-      "yearsShippingCaption": "Production code, day in day out",
-      "usersTouched": "Users touched",
-      "usersTouchedCaption": "Zalo · CDP · fintech scale",
-      "engineersLed": "Largest team led",
-      "engineersLedCaption": "Developers · QC · delivery",
-      "preSeedRaised": "Pre-seed raised",
-      "preSeedRaisedCaption": "BonBon Mobility · led by Tasco",
-      "projectsLaunched": "Projects launched",
-      "projectsLaunchedCaption": "SDKs · platforms · mobile apps",
-      "testCasesAuthored": "Test cases authored",
-      "testCasesAuthoredCaption": "BDD · E2E · regression safety"
+    "topology": {
+      "label": "Current roles and the one before",
+      "zaloNote": "desktop client · 18M+ MAU",
+      "bonbonNote": "$500K pre-seed, led by Tasco",
+      "previousNote": "delivery lead · 8 dev + 3 QC",
+      "zaloMeta": "Lead · full-time · since <date>Mar 2026</date>",
+      "bonbonMeta": "Co-founder · since <date>Apr 2026</date>",
+      "previousMeta": "previous · <date>Aug 2025 – Mar 2026</date>"
     }
   },
   "Sections": {
-    "aboutEyebrow": "Core strengths",
-    "aboutTitle": "Architect systems. Ship products. Lead teams.",
-    "experienceEyebrow": "Experience",
-    "experienceTitle": "Impact across roles",
-    "projectsEyebrow": "Projects",
-    "projectsTitle": "Selected projects and outcomes"
+    "aboutTitle": "I work on systems where a wrong step costs money or trust.",
+    "experienceTitle": "I led a team through a CTO handover, then Zalo hired me back as Lead.",
+    "projectsTitle": "Two systems where I made the architecture calls and lived with them."
   },
   "Summary": {
-    "intro1": "Lead Software Engineer at Zalo PC with <b>8+ years</b> building production products across large-scale messaging, CDP, fintech, education, and real estate.",
-    "intro2": "I turn ambiguous problems into dependable systems through hands-on engineering, technical leadership, and end-to-end ownership from architecture to production.",
-    "intro3": "<i>Focused across product, systems, and teams.</i>",
-    "visionEyebrow": "Core capabilities",
-    "hardSkillsEyebrow": "Technical foundation",
+    "mapTabsLabel": "Capabilities",
+    "mapPause": "Pause",
+    "mapPlay": "Play",
+    "stackTitle": "What I build with",
     "pillars": {
-      "endToEnd": {
-        "title": "Product-to-platform ownership",
-        "body": "Take ambiguous product needs through UI, API, release, observability, and incident follow-up.",
-        "chip": "Idea to prod"
+      "crossDevice": {
+        "tab": "Cross-device sync",
+        "meta": "Zalo PC · 2026",
+        "figure": "1.8 s → 4 ms",
+        "figureLabel": "one hot-path lookup in sync v2",
+        "title": "Keeping messages in step between desktop and phone",
+        "body": "I lead cross-device data work on Zalo PC. Sync v2 now retries and re-prepares in groups when a mobile link drops, and PC message backup with restore on mobile began rolling out in July 2026, with coverage in VnExpress."
+      },
+      "zeroToPilot": {
+        "tab": "Zero to pilot",
+        "meta": "BonBon Mobility · Co-founder",
+        "figure": "3 months",
+        "figureLabel": "from MVP to a live field pilot",
+        "title": "Building a product from nothing, inside someone else's app",
+        "body": "BonBon runs as a 12-screen Mini App inside VETC's 4.3M-user app ecosystem, and car owners sign in silently with their VETC session rather than through one more OTP. The team went on to win Wash3000 and close a $500K pre-seed round led by Tasco."
       },
       "multiTenant": {
-        "title": "Progressive delivery systems",
-        "body": "Feature flags, segment rollouts, JSON-config values, stateless evaluation, and safe production releases.",
-        "chip": "30+ tenants"
+        "tab": "Multi-tenant SaaS",
+        "meta": "LogiUP · Tech Lead",
+        "figure": "9 repos",
+        "figureLabel": "one multi-tenant architecture, a team of four",
+        "title": "A logistics SaaS where each customer's data stays its own",
+        "body": "As system architect, I carried tenant isolation from the customer subdomain down to the token and built our own OAuth 2.1/OIDC provider for web and the Electron desktop app. In the customs workflow, AI suggests the values and a person confirms each of the 8 declaration sections."
+      },
+      "rollouts": {
+        "tab": "Progressive rollouts",
+        "meta": "NDSVN · 2025–2026",
+        "figure": "30+ tenants",
+        "figureLabel": "about 40k users on one flag platform",
+        "title": "Shipping in small steps you can take back",
+        "body": "At NDSVN I built a .NET Core feature-flag platform that rolls a change out by tenant, segment or environment, with PostHog showing what each rollout actually did. The habit stayed with me: BonBon ships behind kill-switch flags, and risky changes on Zalo PC start switched off."
       },
       "leadership": {
-        "title": "Technical and team leadership",
-        "body": "Lead developer and QC teams through clear ownership, hiring, RFCs, runbooks, rollout playbooks, and 1:1 coaching.",
-        "chip": "Team of 11"
+        "tab": "Team through a handover",
+        "meta": "NDSVN · Delivery team",
+        "figure": "8 + 3",
+        "figureLabel": "developers and QC after a CTO transition",
+        "title": "Holding a team steady through a handover",
+        "body": "After the CTO transition at NDSVN, I took technical ownership of the delivery team. Much of the work was writing down what had only lived in people's heads, like who owns which part and how a release gets tagged, and hiring through structured interviews."
       },
       "fintech": {
-        "title": "Secure integration work",
-        "body": "RSA-4096 handshake, AES-256 payloads, mTLS, certificate pinning, idempotent contracts, and retry queues.",
-        "chip": "Gtel · Napas"
-      },
-      "mfe": {
-        "title": "Scalable front-end architecture",
-        "body": "React/Next.js, design systems, Angular-hosted Micro-Frontends, and lightweight SDKs under tight performance budgets.",
-        "chip": "MFE · SDK"
-      },
-      "ai": {
-        "title": "AI-assisted engineering ops",
-        "body": "Built internal agents for code review, deployment assistance, service quotas, API health, and release analysis.",
-        "chip": "Agents at work"
+        "tab": "Partner integrations",
+        "meta": "NDSVN · Integrations",
+        "figure": "Gtel · Napas",
+        "figureLabel": "partner integrations over mTLS",
+        "title": "Partner integrations that are safe to retry",
+        "body": "The Gtel and Napas links use an RSA-4096 handshake, AES-256 payloads and pinned certificates. Contracts are idempotent, so a message replayed from the retry queue does no harm, and ACKs drive the monitoring."
       }
     },
-    "skills": {
-      "backend": "<b>Back-end</b>: Node.js, Java Spring, and .NET Core for REST/GraphQL services, auth, encryption, backward-compatible contracts, and third-party enterprise integrations.",
-      "frontend": "<b>Front-end</b>: React, Next.js, TypeScript, React Native, Angular-hosted Micro-Frontends, Storybook design systems, state management, and performance-sensitive UI architecture.",
-      "databases": "<b>Databases</b>: MySQL schema design, indexing, query optimization, transaction boundaries, migration planning, and consistency trade-offs in higher-throughput systems.",
-      "infra": "<b>Infrastructure & Platform</b>: Docker, Kubernetes, AKS, EKS, FKE, K3S, ArgoCD, CI/CD, environment configuration, domain/SSL operations, and production recovery work.",
-      "architecture": "<b>Architecture & Delivery</b>: Multi-tenant architecture, feature-flag-driven rollout, Micro-Frontend composition, progressive delivery, observability, RFCs, and runbooks.",
-      "testing": "<b>Testing & Quality</b>: Jest, Cucumber, Puppeteer, Testing Library, BDD/E2E coverage, release checklists, rollback readiness, and regression prevention.",
-      "libraries": "<b>Libraries & Platforms</b>: Firebase, Strapi, Directus, React Flow, Webpack, Redux, React Query, G2plot, PostHog, Electron, and mobile app tooling.",
-      "other": "<b>Ways of working</b>: Hiring, onboarding, coaching, documentation-first delivery, cross-team alignment, stakeholder communication, and practical AI-assisted engineering."
+    "stack": {
+      "frontend": {
+        "label": "Front-end and desktop",
+        "items": "TypeScript, React, Next.js, Electron, React Native, Storybook"
+      },
+      "backend": {
+        "label": "Back-end",
+        "items": "Go, NestJS, Node.js, Python (FastAPI), .NET Core, Java Spring"
+      },
+      "data": {
+        "label": "Data",
+        "items": "PostgreSQL, Redis, BullMQ, Cloudflare R2, MySQL"
+      },
+      "platform": {
+        "label": "Platform",
+        "items": "Docker, Kubernetes (AKS, EKS, K3S), ArgoCD, CI/CD, PostHog"
+      },
+      "architecture": {
+        "label": "Architecture",
+        "items": "Multi-tenant SaaS, OAuth 2.1 and OIDC, mTLS, feature flags and kill switches, Micro-Frontends"
+      },
+      "testing": {
+        "label": "Testing",
+        "items": "Playwright, Vitest, Go tests, Jest, Cucumber"
+      },
+      "team": {
+        "label": "Team practice",
+        "items": "Code review, RFCs, runbooks, structured interviews, AI agents for review and release checks"
+      }
     }
   },
   "Experience": {
-    "labels": {
-      "location": "Location",
-      "duration": "Duration",
-      "keyContributions": "Key contributions",
-      "keyTechnologies": "Key technologies",
-      "publicEvidence": "Feature launch",
-      "readCoverage": "Read {publisher} coverage"
+    "env": {
+      "bigTech": "Big tech, consumer",
+      "enterprise": "Enterprise, payment and telecom partners",
+      "b2b": "B2B product startup",
+      "outsourcing": "Outsourcing",
+      "startup": "Early-stage startup"
     },
-    "ndsvn": {
-      "summary": "Stepped into technical ownership after a CTO transition, leading product delivery, architecture decisions, rollout systems, enterprise integrations, and cross-team execution for a delivery team of 8 developers and 3 QC engineers.",
-      "contributions": [
-        "Engineered a <b>.NET Core multi-tenant feature-flag platform</b> for <b>30+ tenants</b> and <b>~40k users</b>, with priority rules, tenant/segment/env rollouts, JSON-config values, and stateless runtime evaluation.",
-        "Built secure <b>Gtel & Napas</b> integrations using RSA-4096 handshakes, AES-256 payload encryption, <b>mTLS</b>, certificate pinning, idempotent contracts, retry queues, and ACK-driven monitoring.",
-        "Implemented <b>Micro-Frontend</b> architecture with an Angular host and React modules, enabling independent deploy cycles, feature isolation, and a smaller regression surface.",
-        "Stabilized inherited infrastructure across <b>ArgoCD</b>, CI/CD, domains/SSL, and <b>AKS/FKE/K3S/EKS</b>, turning recurring unknowns into diagnosable and recoverable systems.",
-        "Introduced PostHog-based observability for rollout impact, feature adoption, anomaly detection, and regression tracing across release cycles.",
-        "Built AI-assisted engineering agents for code review, deployment support, service-quota checks, API health monitoring, and release analysis.",
-        "Rebuilt engineering operations: org chart, competency matrix, ownership boundaries, branch strategy, release tagging, RFCs, runbooks, onboarding, and structured interviews."
-      ]
-    },
-    "zalo": {
-      "lead": {
-        "summaries": [
-          "Returned to <b>Zalo PC</b> on <b>March 2, 2026</b> as Lead Software Engineer, combining hands-on delivery with technical leadership across cross-device messaging and client storage."
-        ],
-        "contributions": [
-          "Delivered <b>PC message backup with restore on mobile</b> (payload contract, worker file hardening, upload telemetry, sync mutual exclusion), launched July 2026 and covered by VnExpress.",
-          "Hardened <b>sync v2</b> for unreliable mobile links with retry, grouped re-prepare, and failure accounting; one hot-path lookup fell from <b>1.8 s to 4 ms</b>.",
-          "Improved <b>zCloud offload reliability and observability</b> and added a daily log-health probe with a remote kill switch.",
-          "Shipped <b>700+ commits across 55+ tickets in seven months</b>, with risky changes defaulted off behind kill switches.",
-          "Lead the engineering team through technical decisions, code reviews, and delivery coordination."
-        ]
+    "roles": {
+      "zaloLead": {
+        "scope": "Rehired as Lead in March 2026, seven months after leaving for NDSVN. I lead cross-device messaging and client storage on the desktop client (18M+ MAU).",
+        "contributions": {
+          "0": "Delivered <b>PC message backup</b> with restore on mobile: payload contract, worker file hardening, upload telemetry and mutual exclusion with sync. Rollout began in July 2026.",
+          "1": "Hardened sync v2 for unreliable mobile links with retries, grouped re-prepare and failure accounting. One hot-path lookup fell from <b>1.8 s to 4 ms</b> on a 37-session test.",
+          "2": "Risky changes ship <b>default off</b>, behind kill switches and remote config.",
+          "3": "Made <b>zCloud offload</b> more reliable and observable, with a daily log-health probe that a remote kill switch can turn off.",
+          "4": "Built a fault-injection devtool that reproduces dropped mobile links during sync testing."
+        }
       },
-      "summary1": "Core engineer on cross-platform <b>Zalo PC</b> (Web, macOS, Windows), serving <b>15M+ MAU</b>, with ownership across product features, tracking, design-system work, and release stability.",
-      "summary2": "Also contributed to <b>Zalo Android</b>, improving feature stability and performance for a mobile product used by nearly <b>80 million users</b>.",
-      "contributions": [
-        "Delivered <b>10+ product features</b>, including dark mode, download flows, Kiki assistant surfaces, logging, and behavior tracking.",
-        "Built a promotion flow with integrated tracking and monitoring, supporting activation across <b>15M+ MAU</b>.",
-        "Led Storybook-based design-system work that improved UI consistency and reuse for <b>50+ developers</b>.",
-        "Resolved support and rollout issues for <b>50+ client users</b> while keeping feature quality and release confidence high.",
-        "Maintained <b>3+ Android features</b>, focusing on stability, performance, and user experience at near-80M-user scale."
-      ]
+      "ndsvn": {
+        "scope": "Took technical ownership after a CTO transition, with a delivery team of 8 developers and 3 QC.",
+        "contributions": {
+          "0": "Wrote down how the team works: who owns which part, a competency matrix, a <b>release playbook</b> (branching, tagging, RFCs, runbooks) and structured interviews for hiring.",
+          "1": "Built a .NET Core feature-flag platform for <b>30+ tenants</b> (about 40k users), with priority rules and percentage rollout by tenant, segment or environment.",
+          "2": "Integrated <b>Gtel and Napas</b> over mTLS with pinned certificates and idempotent contracts, so a message replayed from the retry queue does no harm.",
+          "3": "Split the web app into micro-frontends (an Angular host with React modules), so each module deploys on its own.",
+          "4": "Took over the inherited infrastructure (ArgoCD, CI/CD, domains and SSL, AKS, FKE, K3S and EKS clusters) and made its failures diagnosable and recoverable.",
+          "5": "Added PostHog tracking to see what each rollout did to adoption and errors.",
+          "6": "Built internal AI agents for code review, deploy checks, service-quota validation, API health and release analysis."
+        }
+      },
+      "zaloSenior": {
+        "scope": "Core engineer on the Zalo PC client (Web, macOS, Windows) with 18M+ MAU, plus features for Zalo Android (~80M users).",
+        "contributions": {
+          "0": "Led the Storybook design system used by <b>50+ developers</b>.",
+          "1": "Shipped <b>10+ client features</b>, including dark mode, dynamic theming, the download module and the Kiki bot.",
+          "2": "Maintained 3+ features in Zalo Android, with a focus on stability and performance.",
+          "3": "Built a promotion flow with its own tracking and monitoring.",
+          "4": "Added log and behavior tracking to the desktop client."
+        }
+      },
+      "primedata": {
+        "scope": "CDxP, a customer data platform that merges customer profiles from disconnected systems. I led its front-end team of 4.",
+        "contributions": {
+          "0": "Delivered the CDxP app and <b>10+ related projects</b>: JS and mobile SDKs, Magento and WordPress demos.",
+          "1": "Wrote a JS tracking SDK under <b>200 KB</b> that loads in under 150 ms, with web and service workers coordinating across browser tabs.",
+          "2": "Added runtime <b>feature flags</b> for A/B tests and segment groups.",
+          "3": "Shipped 360-degree customer profiles and a campaign builder in the CDxP app.",
+          "4": "Set up the BDD and E2E suite the team released against."
+        }
+      },
+      "splus": {
+        "line": "Delivered 8+ client projects in education, F&B, banking and e-commerce, and led a small team. Best Rookie of the Year 2019."
+      },
+      "propman": {
+        "line": "One of the founding engineers. Built the main web app in React."
+      }
     },
-    "primedata": {
-      "summary": "Built CDxP, a customer data platform for identifying, unifying, and activating customer profiles from heterogeneous schemas across disconnected systems.",
-      "contributions": [
-        "Led a front-end team of <b>4</b>, delivering <b>10+ projects</b> across the CDxP app, Magento/WordPress demos, JS SDKs, and mobile SDKs.",
-        "Shipped advanced product surfaces including 360 customer profiles, campaign builders, analytics, segmentation, and partner-facing demos.",
-        "Developed a lightweight JS SDK with full tracking/engagement capabilities under <b>200KB</b> and <b><150ms</b> load time.",
-        "Built reusable UI utilities, RBAC hooks, data-visualization flows, and testing coverage that improved delivery speed and maintainability."
-      ]
-    },
-    "splus": {
-      "summary": "An out-sourcing company. Most projects revolve around <b>mobile and web apps</b>.",
-      "contributions": [
-        "With expertise in the <b>end-to-end software production process</b>, I <b>led a small team</b>, mastering the phases from requirements gathering to project security, laying the groundwork for future leadership roles.",
-        "Engaging in <b>8+</b> diverse projects across <b>education, food and drink, banking,</b> and <b>e-commerce</b> domains, I gained invaluable insights into both web and mobile application development.",
-        "Helped secure and deliver key projects such as Savyu and Bank Tool, generating over <b>$20,000</b> in revenue and earning <b>Best Rookie of the Year</b> recognition."
-      ]
-    },
-    "propman": {
-      "summary": "A <b>real estate-domain</b> startup. I was one of the founding engineers.",
-      "contributions": [
-        "Initiated involvement in primary web app development as a Front-end Developer. Obtained foundational web development skills, with a specialization in <b>React JS</b> and related technologies. Collaborated on responsive design projects, prioritizing enhancements for user experience."
-      ]
+    "labels": {
+      "now": "now",
+      "allContributions": "Show all {count}",
+      "earlier": "Earlier",
+      "forkNote": "left · Aug 2025",
+      "mergeNote": "rehired · Mar 2026",
+      "readCoverage": "Read {publisher} coverage"
     }
   },
   "Projects": {
     "labels": {
-      "publicEvidence": "Investment coverage",
-      "website": "Company website",
-      "readCoverage": "Read {publisher} coverage"
+      "readCoverage": "Read {publisher} coverage",
+      "context": "Context",
+      "decisions": "Decisions",
+      "outcome": "Outcome",
+      "evidence": "Evidence",
+      "caseFile": "Read the case file",
+      "moreTitle": "Side project and teaching",
+      "note": "My note on the round"
     },
     "logiup": {
-      "accomplishments": [
-        "Led a <b>4-person engineering team</b> as <b>Tech Lead and system architect</b>, owning technical direction, architecture decisions, review standards, onboarding, and cross-repository delivery across <b>9 split repositories</b>.",
-        "Designed LogiUP as a <b>multi-tenant logistics SaaS</b>: one Next.js UI codebase for web and Electron desktop, a NestJS control plane, FastAPI AI data plane, PostgreSQL, Redis/BullMQ, Cloudflare R2, and isolated staging/production GitOps environments.",
-        "Engineered tenant isolation end to end with customer subdomains, database-backed host resolution, tenant-scoped RBAC and tokens, wildcard/on-demand TLS, and a self-owned OAuth 2.1/OIDC provider using RS256/JWKS plus PKCE/deep-link authentication for Electron.",
-        "Shipped the AI-assisted customs workflow with <b>6 least-privilege runtime roles</b>, resumable private-object uploads, human-confirmed AI suggestions, and <b>31 typed API endpoints</b> across 8 independently confirmed declaration sections.",
-        "Extended the customs workflow to <b>export declarations</b> (UAT, Oct 2026) with a <b>rule-based document classification engine</b>, and authored <b>737 of 738 commits</b> in the NestJS platform."
-      ]
+      "name": "LogiUP",
+      "kind": "Multi-tenant logistics SaaS",
+      "role": "Tech Lead and system architect",
+      "period": "Mar 2026 – now",
+      "context": "Each customer gets its own subdomain, and its data must never reach another tenant. It runs on the web and as an Electron desktop app. I lead a team of four and own the architecture.",
+      "decisions": {
+        "0": "Every token and RBAC check carries the tenant, so a subdomain alone never grants access.",
+        "1": "Web and the Electron app sign in through one in-house OAuth 2.1/OIDC provider, with PKCE.",
+        "2": "AI suggests the values and a person confirms each of the 8 declaration sections."
+      },
+      "outcome": {
+        "0": "<b>9 repos</b> on one architecture as of Aug 2026: one Next.js UI for web and Electron, a NestJS control plane, a FastAPI data plane for AI.",
+        "1": "<b>6</b> least-privilege runtime roles and <b>31</b> typed API endpoints behind the customs workflow.",
+        "2": "Export declarations reached UAT in Oct 2026, with a rule-based document classifier."
+      }
     },
     "bonbon": {
-      "accomplishments": [
-        "Co-founded BonBon Mobility and built the product integration that took it from MVP to a live field pilot in <b>3 months</b>, earned a <b>Top 3 finalist</b> spot at Tasco × GenAI Fund's Wash3000 MVP Demo Day, went on to win the program, and helped secure a <b>$500K pre-seed round led by Tasco</b>, with GenAI Fund participating.",
-        "Architected and integrated a <b>12-screen Mini App</b> into VETC's <b>4.3M-user app ecosystem</b>, with silent partner-code login, memory-only sessions, deep links, serialized foreground polling, and privacy allow-listed analytics.",
-        "Made releases safe across Go API, Backoffice, web, and mobile using kill-switch feature flags, deterministic rollout, transactional audit, checksum/CSP gates, Playwright flows, and <b>800+ unit tests</b>.",
-        "Authored <b>4,000+ commits</b> across the Go API and web/Mini App monorepo, with about <b>90 specs</b> and <b>425 Go test files</b>.",
-        "Kept booking and garage search fast and observable: garage board in <b>3 queries</b>, indexed search, cached results, and p95 alerting."
-      ]
+      "name": "BonBon Mobility",
+      "kind": "Car-care booking inside the VETC app",
+      "role": "Co-founder",
+      "period": "Apr 2026 – now",
+      "context": "BonBon connects car owners with wash and care garages. As co-founder I built the product as a 12-screen Mini App inside the VETC app, which had <b>4.3M users</b> as of April 2026 (Tasco). Every release goes through VETC's change approval and its security process, which includes an OWASP review and an independent pentest.",
+      "decisions": {
+        "0": "Car owners sign in with the VETC session they already have, with no second OTP.",
+        "1": "Sessions live in memory only, as VETC's rules allow no token in browser storage.",
+        "2": "New features sit behind kill switches, off by default, and can be switched off without a release."
+      },
+      "outcome": {
+        "0": "BonBon won Tasco Foundry Wash3000: about <b>100</b> applicants, a top 10, three finalists, one winner (GenAI Fund, Sep 2026).",
+        "1": "<b>$500K</b> pre-seed round led by Tasco, with GenAI Fund co-investing (Sep 2026).",
+        "2": "<b>3 months</b> from MVP to a field pilot, the length of the Wash3000 program."
+      }
     },
     "sat": {
-      "accomplishments": [
-        "Owned product engineering from UI/UX to analytics, reaching <b>10,000+ visits</b> and <b>3,000+ signups</b> within two months.",
-        "Improved acquisition with technical SEO, PWA installability, and a mobile-first app release path.",
-        "Kept infrastructure lean on a single Cloud Run instance (<b>1 CPU, 256 MiB</b>) while adding Google Ads and Stripe monetization."
-      ]
-    },
-    "cdp": {
-      "accomplishments": [
-        "Led front-end architecture for CDxP, delivering profiles, campaigns, analytics, segmentation, and partner-facing interfaces.",
-        "Built RBAC hooks, nested routing, shared utilities, and modular UI patterns that improved maintainability across products.",
-        "Established BDD/E2E coverage with <b>100+ scenarios</b> and <b>1,000+ test cases</b>, helping reduce regression risk and production defects."
-      ]
-    },
-    "sdk": {
-      "accomplishments": [
-        "Built <b>5+ vanilla JS modules</b> for tracking, web popups, push notifications, WebSocket messaging, and embedded web components.",
-        "Used web workers, service workers, and multi-tab coordination to keep background work resilient under real browser constraints.",
-        "Delivered a lightweight integration footprint under <b>200KB</b> and <b><150ms</b> load time before deeper bundle optimizations."
-      ]
+      "name": "Digital SAT Math",
+      "proof": "Built and ran it end to end. <b>10,000+ visits and 3,000+ signups</b> in the first two months."
     },
     "vac": {
-      "accomplishments": [
-        "Designed and taught a front-end project course for <b>12 students</b>, guiding teams from requirements to working React/Next.js projects.",
-        "Provided review, mentoring, and practical delivery habits aligned with real industry workflows."
-      ]
-    },
-    "mona": {
-      "accomplishments": [
-        "Built a React Native house-management app with Realm DB, reusable components, smooth interactions, and native-module integration.",
-        "Handled debugging and performance profiling across mobile constraints while adapting quickly to new implementation requirements."
-      ]
-    },
-    "mobivi": {
-      "accomplishments": [
-        "Built a full-stack banking tool to ingest and process <b>20+ Excel files</b>, each with <b>20,000+ records</b>.",
-        "Designed the workflow for progressive transaction calculations and reliable operational reporting."
-      ]
-    },
-    "savyu": {
-      "accomplishments": [
-        "Delivered merchant and consumer mobile app features with React Native, plus admin web flows for user management.",
-        "Worked across mobile, web, and backend integration to ship a coherent marketplace experience."
-      ]
+      "name": "Vietnam Australia Center",
+      "proof": "Taught a front-end project course to <b>12 students</b>, from requirements to working React apps."
     }
   },
   "CTA": {
-    "eyebrow": "Connect",
-    "title": "Discuss product and systems",
-    "body": "I am interested in problems that bring product delivery, system reliability, and technical leadership together.",
-    "emailMe": "Email",
-    "resumePdf": "Résumé (PDF)",
-    "linkedin": "LinkedIn"
+    "title": "If the role fits, email me.",
+    "openToLabel": "Open to",
+    "openTo": "Staff/Principal Engineer, Lead Fullstack / Product Engineer, Engineering Manager",
+    "whereLabel": "Where",
+    "where": "Ho Chi Minh City or remote (UTC+7)",
+    "emailLabel": "Email",
+    "copyEmail": "Copy email",
+    "copied": "Copied",
+    "copiedStatus": "Email address copied.",
+    "copyFailed": "Your browser blocked copying. The address is selected, so press Ctrl+C (⌘C on Mac).",
+    "phoneLabel": "Phone",
+    "linksLabel": "Links",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "resumePdf": "Résumé (PDF)"
   },
   "SEO": {
     "home": {
-      "title": "Nguyen Le Phong | Lead Software Engineer, BonBon Mobility",
-      "description": "Lead Software Engineer at Zalo PC, co-founder of BonBon Mobility ($500K pre-seed led by Tasco) and Tech Lead of LogiUP. PC-to-mobile message backup."
+      "title": "Nguyen Le Phong | Lead Software Engineer · BonBon co-founder",
+      "description": "Lead Software Engineer at Zalo PC, co-founder of BonBon Mobility ($500K pre-seed led by Tasco). Messaging at scale, safe rollouts, multi-tenant SaaS."
     },
     "about": {
-      "title": "About: Backend, Platform & Product Engineering | Nguyen Le Phong",
-      "description": "How Nguyen Le Phong builds and leads production systems: backend services, secure integrations, Kubernetes infrastructure, observability, and careful rollouts."
+      "title": "About Nguyen Le Phong: Lead at Zalo PC, BonBon co-founder",
+      "description": "How I got from an outsourcing agency to leading cross-device sync at Zalo PC and co-founding BonBon Mobility, and the kind of team I help most."
     },
     "apps": {
       "title": "Apps: Small Open-Source Tools | Nguyen Le Phong",
-      "description": "A focused collection of open-source utilities and small tools built by Nguyen Le Phong to stay fast, practical, and pleasant to use."
+      "description": "Small tools Nguyen Le Phong built for his own work, starting with Glance, a macOS menu-bar app that translates selected text with one hotkey. Source on GitHub."
+    },
+    "blog": {
+      "title": "Blog on software architecture, AI and teams | Nguyen Le Phong",
+      "description": "Practical writing on software architecture, AI-assisted delivery and how engineering teams work, from a Lead Software Engineer at Zalo PC."
+    },
+    "notes": {
+      "title": "Notes on work, learning and life | Nguyen Le Phong",
+      "description": "Shorter notes on career, books, money and the everyday decisions behind them, from a Lead Software Engineer at Zalo PC. Engineering deep-dives are on the blog."
     },
     "gallery": {
-      "title": "Gallery: Certificates, Awards & Projects | Nguyen Le Phong",
-      "description": "A curated record of certifications, recognition, project snapshots, and steady practices that show how Nguyen Le Phong learns, builds, and works with teams."
+      "title": "Photos and certificates | Nguyen Le Phong",
+      "description": "BonBon Mobility winning Tasco Foundry Wash3000 and raising a $500K pre-seed, Best Rookie of the Year 2019 at Splus Software, and certificates, each sourced."
     }
   },
   "Offline": {
@@ -288,7 +345,10 @@
       "partial": "Offline reading is only partially cached. Keep this language online a little longer.",
       "offlineReady": "You’re offline, but saved pages and articles are still ready to read.",
       "offlinePartial": "You’re offline. Some pages may need one online visit before they’re saved.",
-      "dismiss": "Hide offline notice"
+      "dismiss": "Hide offline notice",
+      "updateReady": "A newer version of this site is ready.",
+      "reload": "Reload",
+      "dismissUpdate": "Hide update notice"
     },
     "page": {
       "eyebrow": "Connection lost",
@@ -315,109 +375,41 @@
       "intro": "A public workspace for the notes, checklists, and visual flows I use to review architecture, prepare releases, set up tools, and work with AI responsibly."
     },
     "gallery": {
-      "eyebrow": "Gallery",
-      "title": "Signals behind the work",
-      "sub": "A small collection of what I have learned, built, earned, and kept practicing. If the resume shows the roles, this page shows the working rhythm behind them.",
+      "title": "Photos and certificates",
+      "sub": "Awards, certificates and a few moments from work. Each one opens the original image or the source that confirms it.",
       "back": "← Back to CV",
       "all": "All",
-      "tabsLabel": "Career signal filters",
-      "hero": {
-        "kicker": "Proof portfolio",
-        "title": "Small signals that say more than a few resume lines",
-        "lead": "I keep certificates, recognitions, project snapshots, and a few ordinary moments here so readers can see how I learn, work with teams, and keep delivery steady over time.",
-        "primaryCta": "View the signals",
-        "scanNote": "For recruiters scanning quickly: start with the story, then open each proof group when you need details.",
-        "proofTitle": "A more human slice of how I work"
-      },
-      "stats": {
-        "label": "Gallery signals",
-        "proofs": "Signals",
-        "proofsDetail": "Images, certificates, and moments that can be checked.",
-        "certifications": "Certifications",
-        "certificationsDetail": "Learning done to make the work more careful.",
-        "recognitions": "Recognitions",
-        "recognitionsDetail": "Results from teams, programs, and long-form challenges.",
-        "builds": "Builds",
-        "buildsDetail": "Products, demos, and work that reached a concrete shape."
-      },
-      "trust": {
-        "label": "Recruiter lens",
-        "title": "How to read this page",
-        "learning": {
-          "title": "A habit of learning and updating",
-          "body": "The certificates are not isolated badges; they show a habit of learning to handle work with more care."
-        },
-        "delivery": {
-          "title": "Responsibility for outcomes",
-          "body": "The recognitions and project snapshots point to staying with a team until the work is finished."
-        },
-        "team": {
-          "title": "Endurance and collaboration",
-          "body": "The activity moments show how I keep energy, discipline, and consistency for long-term work."
-        }
-      },
-      "story": {
-        "label": "Quick reading guide",
-        "title": "Not a photo wall, but a trace of steady progress",
-        "body": "Each group answers a small question: what I learned, where the work was trusted, what I built, and how I train endurance outside formal project work."
-      },
-      "categoryNotes": {
-        "all": "Read the full path from learning to delivery in one flow.",
-        "certificates": "Intentional learning that makes the work more grounded.",
-        "awards": "Recognition for ownership, steadiness, and responsibility.",
-        "projects": "Artifacts from things built, shipped, taught, or explored.",
-        "activities": "Ordinary moments that show energy, discipline, and long-game habits."
-      },
-      "categoryIntros": {
-        "certificates": {
-          "body": "This section shows how I keep strengthening the base: learning to understand systems better, and to be more careful with compliance, security, and product quality.",
-          "signal": "Steady learning helps the work become more careful over time."
-        },
-        "awards": {
-          "body": "These recognitions are not endpoints. They are small markers from periods where I picked things up quickly, carried responsibility, and stayed with longer challenges.",
-          "signal": "Real team environments show whether consistency can be trusted."
-        },
-        "projects": {
-          "body": "A few slices from products, demos, and coursework. The point is not only the screenshot, but the process of turning an idea into something runnable, explainable, and improvable.",
-          "signal": "Ideas matter more when they become something people can run, explain, and improve."
-        },
-        "activities": {
-          "body": "Not every career signal lives inside a ticket or release. Some habits, work corners, and personal rhythms help me keep enough energy to work sustainably.",
-          "signal": "Personal discipline helps keep the pace steady for a longer road with the team."
-        }
-      },
+      "tabsLabel": "Filter photos by group",
       "captions": {
-        "veryGood": "Graduated with Very Good classification - an early foundation built with care.",
-        "scoreboard": "Scoreboard and study results - a small trace of consistency.",
-        "testerCertificate": "Tester certificate - learning to see product quality through a verification lens.",
-        "compliance": "Compliance Refresh Training - keeping product work safe and process-aware.",
-        "cybersecurity": "Cybersecurity Refresh Training - reinforcing security thinking in delivery.",
-        "bestRookie": "Best Rookie of the Year - recognition for ramping up quickly and staying diligent.",
-        "splus": "Splus Certificate - a small milestone from a teamwork environment.",
-        "primeAward": "Award at PrimeData - a result of ownership and initiative in delivery.",
-        "upraceMedals": "UpRace medals - building endurance outside work to keep a steady long-term rhythm.",
-        "uprace323": "UpRace 323km - small kilometers adding up to a memorable result.",
-        "penangHill": "Penang Hill 11km - reaching the top one patient section at a time.",
-        "deskWorking": "An ordinary work corner - where discipline repeats day by day.",
-        "chessProject": "Chess games project - building from logic, UI, and the feel of play.",
-        "watProject": "WAT project - a trace from product work in a team environment.",
-        "essay": "Essay and sharing - practicing how to explain ideas clearly.",
-        "teamEssay": "A moment of teamwork - ideas matter more when they are implemented together.",
-        "drone": "Drone applications - exploring a product idea until it becomes a runnable model.",
-        "bonbonTeam": "BonBon co-founders - three people learning to build a car-care product together, one careful step at a time.",
-        "bonbonPreSeed": "BonBon's $500K pre-seed with Tasco and GenAI Fund - quiet groundwork that finally became visible.",
-        "wash3000DemoDay": "Wash3000 Demo Day at Tasco Foundry - a day of learning alongside the other Top 10 teams."
+        "wash3000DemoDay": "Tasco Foundry Wash3000 Demo Day. Out of about 100 applications, BonBon made the top 10 and won the program.",
+        "bonbonPreSeed": "BonBon Mobility's $500K pre-seed, led by Tasco with GenAI Fund co-investing, announced September 21, 2026.",
+        "bonbonTeam": "The BonBon Mobility co-founders: Nguyen Chi Dung, Vu Duy Hung and me.",
+        "bestRookie": "Best Rookie of the Year, Splus Software, 2019.",
+        "primeAward": "Most Valuable Employee, PrimeData, August 2020.",
+        "splus": "The Best Rookie of the Year 2019 certificate from Splus Software.",
+        "veryGood": "Commendation from Nong Lam University for graduating with a Very Good classification.",
+        "scoreboard": "Nong Lam University transcript, GPA 3.36.",
+        "testerCertificate": "Global Software Tester course, 240 hours, level A, June 2019.",
+        "compliance": "Compliance Refresh Training, verifiable on Coursera.",
+        "cybersecurity": "Cybersecurity Refresh Training, verifiable on Coursera.",
+        "upraceMedals": "UpRace 2024 finisher medals for 5 km, 10 km and 21 km.",
+        "uprace323": "UpRace certificate for 323 km.",
+        "penangHill": "Penang Hill trek in Malaysia, 11 km.",
+        "deskWorking": "At my desk, writing code.",
+        "essay": "Defending my graduation thesis, a drone project, at the Faculty of IT, Nong Lam University.",
+        "teamEssay": "Our thesis drone, shown at the defense.",
+        "drone": "The thesis drone during the build: frame, motors and controller board.",
+        "chessProject": "AI Chinese chess, a game I built at Nong Lam University.",
+        "watProject": "WAT, a client project at Splus Software, 2019."
       },
-      "featured": "Spotlight signal",
-      "supporting": "Supporting signals",
-      "openProof": "Open signal",
-      "verified": "Verified source",
+      "verified": "Source",
       "original": "Full image",
       "categories": {
-        "certificates": "Certifications",
-        "awards": "Awards",
-        "projects": "Projects",
-        "activities": "Activities"
+        "bonbon": "BonBon Mobility",
+        "recognition": "Recognition",
+        "education": "Education and certificates",
+        "outside": "Outside work",
+        "earlier": "Earlier projects"
       }
     },
     "thoughts": {
@@ -441,16 +433,23 @@
       "close": "Close"
     },
     "notes": {
-      "eyebrow": "Personal encyclopedia",
+      "eyebrow": "On work and life",
       "title": "Notes",
-      "intro": "A personal archive — where I keep what I've learned, lived, and want to remember. Reflections on life, work, and the questions that don't have tidy answers.",
+      "intro": "Shorter notes on career, books, money and the everyday decisions behind them. For engineering deep-dives, the <blog>Blog</blog> is the better place to start.",
       "stats": {
         "topics": "Topics",
         "articles": "Notes",
         "updated": "Updated"
       },
       "readingTime": "{minutes} min read",
-      "empty": "No notes yet — the first one is on its way.",
+      "empty": "No notes yet. The first one is on its way.",
+      "hubs": {
+        "heading": "Read by topic",
+        "eyebrow": "Notes topic",
+        "back": "Notes",
+        "suffix": "Notes topic",
+        "empty": "No published notes yet."
+      },
       "backToNotes": "Back to notes",
       "onThisPage": "On this page",
       "readerTools": {
@@ -483,8 +482,9 @@
         "popularTags": "Popular tags",
         "clear": "Clear filters",
         "results": "{count, plural, =0 {No notes} one {# note} other {# notes}}",
-        "noResults": "No notes match your search.",
+        "noResults": "No notes match. Try a shorter word, or search the Blog for engineering posts.",
         "searchUnavailable": "Search is temporarily unavailable. You can continue browsing the pages below.",
+        "searching": "Searching…",
         "pagination": {
           "label": "Notes pages",
           "prev": "Previous",
@@ -521,6 +521,7 @@
         "results": "{count, plural, =0 {No articles} one {# article} other {# articles}}",
         "noResults": "No articles match your search.",
         "searchUnavailable": "Search is temporarily unavailable. You can continue browsing the pages below.",
+        "searching": "Searching…",
         "pagination": {
           "label": "Blog pages",
           "prev": "Previous",
@@ -532,15 +533,16 @@
       },
       "eyebrow": "Writing",
       "title": "Blog",
-      "intro": "Deep-dives on software architecture and the way source code is structured — written to be understood by beginners, yet useful to teams shipping at scale. Diagrams, real examples, no hand-waving.",
+      "intro": "Writing from building software and leading teams: architecture, AI in everyday engineering, and how teams actually ship. Some are short essays, some are long guides. Career and life reflections live in <notes>Notes</notes>.",
       "categoriesHeading": "Browse by topic",
       "latestHeading": "Latest articles",
+      "startHereHeading": "Start here",
+      "seriesHeading": "Read by series",
       "empty": "No articles yet — the first one is on its way.",
       "backToBlog": "Back to blog",
       "backToCategory": "Back to {category}",
       "readingTime": "{minutes} min read",
       "articleCount": "{count, plural, =0 {No articles} one {# article} other {# articles}}",
-      "writtenBy": "By {author}",
       "onThisPage": "On this page",
       "readerTools": {
         "label": "Reader tools",
@@ -579,126 +581,93 @@
     }
   },
   "About": {
-    "hero": {
-      "eyebrow": "Engineering profile",
-      "title": "I build product systems that can be shipped, observed, and recovered.",
-      "lead": "My work now sits between <strong>product engineering</strong> and <strong>platform reliability</strong>: front-end surfaces, backend services, secure integrations, rollout systems, Kubernetes infrastructure, and the operating model that lets a team release with less guesswork.",
-      "metricsLabel": "Current engineering signals",
-      "metrics": [
-        {
-          "value": "8+",
-          "label": "years shipping production software"
-        },
-        {
-          "value": "11",
-          "label": "people in the delivery team I lead"
-        },
-        {
-          "value": "30+",
-          "label": "tenants served by rollout systems"
-        },
-        {
-          "value": "~40k",
-          "label": "users behind the feature-flag platform"
-        }
-      ]
+    "title": "I still write the hard parts, and I set up the team so decisions do not wait on me.",
+    "lede": "I have shipped software since 2018: at an early startup, an outsourcing agency, a product company, Zalo, and a company in the middle of a CTO transition. In March 2026 Zalo hired me back as Lead, and the same year I co-founded a startup. Every move changed how I work. Two habits stayed: ship in small steps that can be rolled back, and trust the team by default.",
+    "arc": {
+      "label": "Career route since 2018",
+      "early": "Startup, agency",
+      "product": "Product",
+      "scale": "Big tech",
+      "handover": "Handover",
+      "now": "Lead, co-founder"
     },
-    "systems": {
-      "eyebrow": "Current focus",
-      "title": "The layer I operate in now",
-      "intro": "I still care about polished user interfaces, but my current value is broader: connecting product decisions with backend contracts, infrastructure paths, release control, and production diagnosis.",
-      "items": [
-        {
-          "title": "Backend services & secure integration",
-          "body": "I work with <strong>.NET Core</strong>, <strong>Node.js</strong>, and <strong>Java Spring</strong> services, focusing on REST/GraphQL contracts, auth, encryption, backward compatibility, retry behavior, idempotency, and partner-system instability.",
-          "tags": [".NET Core", "Node.js", "Java Spring", "REST/GraphQL", "mTLS"]
+    "story": {
+      "title": "How I got here",
+      "periods": {
+        "early": {
+          "dates": "2018–2020",
+          "where": "Propman Guru, then Splus Software",
+          "env": "Early startup, then outsourcing",
+          "body": "I started in front-end at Propman Guru, an early real-estate startup. Then 16 months at Splus Software, an outsourcing agency: 8+ client projects in education, F&B, banking and e-commerce, and my first small team. Best Rookie of the Year 2019.",
+          "shift": "I learned the whole delivery cycle, from a client's first requirements to the handover."
         },
-        {
-          "title": "Platform, infra & traffic path",
-          "body": "I have been involved in the production path around <strong>Docker</strong>, <strong>Kubernetes</strong>, <strong>AKS/FKE/K3S/EKS</strong>, <strong>ArgoCD</strong>, CI/CD, domains/SSL, ingress and load-balancer routing, and recovery work when the system is already under pressure.",
-          "tags": ["Kubernetes", "ArgoCD", "CI/CD", "Ingress", "Load balancer"]
+        "product": {
+          "dates": "2020–2024",
+          "where": "PrimeData",
+          "env": "B2B product startup",
+          "body": "Almost four years on one product, CDxP, a customer data platform. I led its front-end team of four, kept the tracking SDK under <b>200 KB</b> and built my first runtime feature flags.",
+          "shift": "Staying with one product meant living with my own decisions. Feature flags, size budgets and a test suite the team released against became habits."
         },
-        {
-          "title": "Progressive delivery",
-          "body": "I engineered a <strong>multi-tenant feature-flag platform</strong> with priority rules, tenant/segment/env rollout, JSON-config values, and stateless runtime evaluation so releases can move gradually instead of all at once.",
-          "tags": ["Feature flags", "30+ tenants", "Rollout rules", "Runtime config"]
+        "scale": {
+          "dates": "2024–2025",
+          "where": "Zalo PC",
+          "env": "Big tech, consumer",
+          "body": "A desktop client with <b>18M+ MAU</b>. I shipped dark mode, dynamic theming and the download module, and led the Storybook design system used by 50+ developers.",
+          "shift": "Shared components and a client used by millions put stability ahead of speed."
         },
-        {
-          "title": "Observability & operating clarity",
-          "body": "I build the feedback loops around releases: PostHog, metrics pipelines, API health checks, anomaly review, rollback readiness, RFCs, runbooks, and release criteria that make incidents easier to understand.",
-          "tags": ["PostHog", "Metrics", "Runbooks", "Rollback", "Release review"]
+        "handover": {
+          "dates": "2025–2026",
+          "where": "NDSVN",
+          "env": "Enterprise, payment and telecom partners",
+          "body": "I joined right after a CTO transition and took technical ownership of a delivery team of 8 developers and 3 QC. I set up structured interviews for hiring and shipped a feature-flag platform for <b>30+ tenants</b>.",
+          "shift": "Leading meant writing down how the team works, so decisions did not wait for one person."
+        },
+        "now": {
+          "dates": "2026–now",
+          "where": "Zalo PC, BonBon Mobility, LogiUP",
+          "env": "Big tech, own startup, B2B SaaS",
+          "body": "Zalo hired me back as Lead in March 2026, for cross-device messaging and client storage, including PC message backup with restore on mobile. Outside Zalo, I co-founded BonBon Mobility: it won Tasco Foundry's Wash3000 out of about 100 applicants and closed a <b>$500K</b> pre-seed round led by Tasco. At LogiUP, a multi-tenant logistics SaaS, I am Tech Lead and system architect for a team of four.",
+          "shift": "In this role most of my work is decisions: how the architecture splits, what ships default off and what a partner's security review will accept."
         }
-      ]
+      }
     },
-    "stack": {
-      "eyebrow": "Technical depth",
-      "title": "The engineering details I pay attention to",
-      "intro": "The systems I prefer are not only feature-complete. They have clear contracts, known failure modes, and enough operational signs for the team to find the problem before users feel it.",
-      "groups": [
-        {
-          "title": "Backend techniques",
-          "items": [
-            "<strong>Backward-compatible API contracts</strong> for mobile, web, and enterprise clients.",
-            "<strong>RSA-4096 handshake, AES-256 payload encryption, mTLS, certificate pinning</strong>, and ACK-driven monitoring for financial integrations.",
-            "<strong>Retry queues and idempotent APIs</strong> for partners that are slow, unstable, or asynchronous.",
-            "<strong>Stateless runtime evaluation</strong> for rollout rules, JSON config, tenant and segment targeting."
-          ]
+    "habits": {
+      "title": "Teams I am a good fit for",
+      "items": {
+        "scale": {
+          "title": "A team that has to ship a big feature to real users without a bad release",
+          "proof": "In the first rollout wave, <b>80%</b> of users completed the full backup and restore flow. That was PC message backup with restore on mobile, on an 18M+ MAU desktop client, live for real users in <b>2 sprints</b>. Zalo PC had just hired me back as Lead and I was still on probation. We shipped in waves and watched each wave closely enough to fix issues fast.",
+          "source": "Zalo PC · 2026"
         },
-        {
-          "title": "Infrastructure techniques",
-          "items": [
-            "<strong>Kubernetes cluster operations</strong> across AKS, FKE, K3S, and EKS environments.",
-            "<strong>Ingress, load balancer, domain and SSL paths</strong> treated as part of the product delivery flow, not as a black box.",
-            "<strong>ArgoCD and CI/CD pipelines</strong> for repeatable releases, environment control, and recovery.",
-            "<strong>Production diagnosis</strong> through logs, metrics, health checks, and documented recovery steps."
-          ]
+        "handover": {
+          "title": "A team that just lost its technical lead",
+          "proof": "Within <b>2 weeks</b> of the CTO transition at NDSVN, the team was back on sprint pace. I had taken technical ownership of its 8 developers and 3 QC. In that moment people mostly want to know where they stand, so I started with 1:1s and their daily work, then wrote a 3, 6 and 12-month growth plan with each person. Credit followed clear numbers, such as each person's sprint velocity, so it went to the people who earned it.",
+          "source": "NDSVN · 2025–2026"
         },
-        {
-          "title": "Release architecture",
-          "items": [
-            "<strong>Micro-Frontend composition</strong> with Angular host and React modules to reduce deployment coupling.",
-            "<strong>Feature-flag rollout</strong> by tenant, segment, environment, and percentage.",
-            "<strong>Observability workflows</strong> for feature adoption, regression tracing, and anomaly review.",
-            "<strong>Rollback criteria and release checklists</strong> so delivery stays deliberate under pressure."
-          ]
+        "zeroToOne": {
+          "title": "A team with an idea that needs a working product, fast",
+          "proof": "We went from idea to a working product in four weeks, then ran a one-month field pilot. That is BonBon, the startup I co-founded. It won Tasco Foundry's Wash3000 out of about 100 applications, then raised a <b>$500K</b> pre-seed led by Tasco.",
+          "source": "BonBon · 2026"
         },
-        {
-          "title": "Team systems",
-          "items": [
-            "<strong>Ownership boundaries</strong>, org chart, competency matrix, and workload routing after leadership transition.",
-            "<strong>RFCs, runbooks, technical specs</strong>, and troubleshooting guides that reduce hidden knowledge.",
-            "<strong>Hiring, onboarding, 1:1 coaching</strong>, and review loops for developers and QC engineers.",
-            "<strong>Branch strategy, commit convention, release tagging</strong>, and integration rules that keep delivery predictable."
-          ]
+        "platform": {
+          "title": "A B2B product where many customers share one platform",
+          "proof": "In B2B SaaS the most expensive bug is one customer seeing another's data. At LogiUP I made per-customer isolation part of the foundation, at every layer from the token to each permission check, so a team of four can keep shipping without worrying about it. The AI-assisted customs flow follows the same rule: the AI suggests, a person confirms each section, because one wrong field costs the customer money. Export declarations have been in UAT since October 2026.",
+          "source": "LogiUP, NDSVN · 2025–2026"
         }
-      ]
+      },
+      "stack": "Currently using, as of November 2026: TypeScript, React, Next.js, Electron, Go, NestJS, PostgreSQL, Redis, Kubernetes, PostHog."
     },
-    "principles": {
-      "eyebrow": "How I work",
-      "title": "Principles I bring into production systems",
-      "intro": "These are practical habits, not slogans. They come from seeing systems fail in ordinary ways and learning how to make the next release easier to reason about.",
-      "items": [
-        {
-          "title": "Trace before rewriting",
-          "body": "When a system behaves strangely, I first look for the path: request flow, data contract, logs, metrics, release history, and infrastructure changes."
-        },
-        {
-          "title": "Contracts before code volume",
-          "body": "A good backend service is easier to operate when its API, retries, idempotency, security boundary, and compatibility rules are clear."
-        },
-        {
-          "title": "Rollout before big-bang release",
-          "body": "Feature flags, tenant targeting, staged deployment, and rollback criteria keep product movement steady without making every release a gamble."
-        },
-        {
-          "title": "Documentation should reduce interruption",
-          "body": "Specs, runbooks, and checklists are useful when they let another engineer diagnose, recover, or continue the work without waiting for one person."
-        }
-      ]
+    "writing": {
+      "title": "I learn by writing it down.",
+      "body": "I keep a <blog>blog</blog> and a set of <notes>notes</notes> on what work teaches me: leading a team, rollouts, safe defaults, working with AI. Two places to start: <note>the engineering behind BonBon's $500K round</note> and <post>feature flags for safer deployments</post>.",
+      "teaching": "In May 2023 I taught a front-end project course at Vietnam Australia Center: <b>12 students</b>, from requirements to working React apps."
     },
     "closing": {
-      "label": "About closing note",
-      "body": "I am most useful in teams where <strong>product ambition</strong>, <strong>backend complexity</strong>, and <strong>production reliability</strong> meet. That is where careful engineering turns unclear systems into something the team can ship, observe, and improve."
+      "body": "I do my best work on a product real users depend on, with a team that wants to keep shipping. My part is to keep risky changes reversible and the direction clear, so nobody has to wait for me to decide.",
+      "linksLabel": "Résumé, email and experience",
+      "resume": "Résumé (PDF)",
+      "email": "Email",
+      "experience": "See experience"
     }
   },
   "ReaderTools": {
@@ -707,7 +676,16 @@
     "scrollBottom": "Scroll to bottom",
     "font": "Change reading font",
     "background": "Change reading background",
-    "language": "Change language"
+    "language": "Change language",
+    "reading": "Reading",
+    "nativeShare": "More ways to share",
+    "copyFailed": "Copy failed. The link is selected.",
+    "jumpToContents": "Jump to contents"
+  },
+  "Author": {
+    "byline": "By <author>{name}</author>, {role}",
+    "heading": "About the author",
+    "cvLink": "See my work and résumé"
   },
   "ArticleRelated": {
     "notesHeading": "More notes to read next",
@@ -719,8 +697,8 @@
     "action": "Read in {language}"
   },
   "SiteIndex": {
-    "metaTitle": "Sitemap: every article and note",
-    "metaDescription": "A plain list of every blog article, note, series and archive page on this site, grouped by topic so nothing is more than one link away.",
+    "metaTitle": "Sitemap: profile, articles and notes",
+    "metaDescription": "Every page on this site in one list: the profile and résumé first, then each blog article, note, series and archive page, grouped by topic.",
     "eyebrow": "Site index",
     "title": "Sitemap",
     "intro": "Every article and note on this site, grouped by topic. Browse the list, or jump straight to something you remember reading.",
@@ -746,7 +724,8 @@
     "pageLabel": "Page {page}",
     "feedsHeading": "Feeds",
     "feedBlog": "Blog RSS feed",
-    "feedNotes": "Notes RSS feed"
+    "feedNotes": "Notes RSS feed",
+    "backToTop": "Back to top"
   },
   "Feeds": {
     "blogTitle": "Nguyen Le Phong: Blog",

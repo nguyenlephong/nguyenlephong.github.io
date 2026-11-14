@@ -1,6 +1,6 @@
 import type { Person, WithContext } from 'schema-dts'
-import { profileInfo } from '@/app/app.const'
-import { SITE_URL } from '@/app/seo.config'
+import { PROFILE_URL, SITE_URL } from '@/app/seo.config'
+import { social } from '@/content/social'
 import type { Locale } from '@/i18n/routing'
 import { SITE_SECTIONS, sectionUrl } from '@/lib/seo/site-sections'
 
@@ -85,12 +85,10 @@ export function buildPersonSchema(description: string): WithContext<Person> {
     '@id': `${SITE_URL}/#person`,
     name: 'Nguyen Le Phong',
     alternateName: ['Nguyễn Lê Phong', 'Phong Nguyen', 'nguyenlephong'],
-    url: SITE_URL,
+    url: PROFILE_URL,
     image: PROFILE_AVATAR,
-    jobTitle: 'Lead Software Engineer · Co-founder of BonBon · Technical Lead',
+    jobTitle: 'Lead Software Engineer',
     description,
-    email: `mailto:${profileInfo.contact.email}`,
-    telephone: profileInfo.contact.phone,
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Ho Chi Minh City',
@@ -128,24 +126,22 @@ export function buildPersonSchema(description: string): WithContext<Person> {
     ],
     worksFor: {
       '@type': 'Organization',
-      name: 'Zalo - VNG Corporation',
+      name: 'Zalo',
+      url: 'https://zalo.me',
+      parentOrganization: { '@type': 'Organization', name: 'VNG Corporation' },
     },
+    // Name and URL only; the press list and occupation stay on /about (home budget).
+    affiliation: { '@type': 'Organization', name: 'BonBon Mobility', url: 'https://bonbon.com.vn' },
     alumniOf: {
       '@type': 'CollegeOrUniversity',
-      name: 'Information Technology — Bachelor (GPA 3.36)',
+      name: 'Nong Lam University',
     },
-    sameAs: [
-      profileInfo.contact.linkedin,
-      profileInfo.contact.github,
-      profileInfo.contact.leetcode,
-      profileInfo.contact.youtube,
-      profileInfo.contact.twitter,
-    ],
+    sameAs: [social.linkedin, social.github, social.leetcode, social.youtube, social.twitter],
   }
 }
 
 // Kept off the homepage Person node on purpose: the home HTML/RSC performance
-// budgets have no headroom, so the venture facts extend the same @id from /about.
+// budgets have no headroom, so the press list and occupation extend the same @id from /about.
 export function buildPersonVentureSchema(): WithContext<Person> {
   return {
     '@context': 'https://schema.org',
@@ -196,22 +192,33 @@ const WEBSITE_ID = `${SITE_URL}/#website`
 const WEBSITE_PART_IDS = ['about', 'blog', 'notes', 'gallery', 'apps', 'studio'] as const
 
 /**
- * Site-level entity for the domain root. Owned by the root stub (`/`), where
- * Google reads the site name; `alternateName` carries the brand spellings people
- * actually search for, and `hasPart` names every top-level section with its URL.
+ * Compact WebSite node for every locale home. `/` redirects to `/en`, so Google
+ * reads the site name from the locale homes; the same node on each page resolves
+ * ProfilePage.isPartOf there. Identical across locales on purpose: Google wants the
+ * same site-name markup on every duplicate.
  */
-export function buildWebsiteSchema(description: string) {
+export function buildWebsiteIdentitySchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     name: 'Nguyen Le Phong',
     alternateName: ['Nguyễn Lê Phong', 'nguyenlephong', 'Phong Nguyen'],
+    publisher: { '@id': `${SITE_URL}/#person` },
+  }
+}
+
+/**
+ * Full site-level entity for the domain root stub (`/`): the compact identity plus
+ * a description and `hasPart`, which names every top-level section with its URL.
+ */
+export function buildWebsiteSchema(description: string) {
+  return {
+    ...buildWebsiteIdentitySchema(),
     description,
     inLanguage: 'en',
     author: { '@id': `${SITE_URL}/#person` },
-    publisher: { '@id': `${SITE_URL}/#person` },
     hasPart: SITE_SECTIONS.filter((section) =>
       (WEBSITE_PART_IDS as readonly string[]).includes(section.id),
     ).map((section) => ({
