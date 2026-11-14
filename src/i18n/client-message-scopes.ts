@@ -20,7 +20,7 @@ export const CLIENT_MESSAGE_ROUTE_SCOPES = {
   notes: ["site", "notes"],
   gallery: ["site", "gallery"],
   thoughts: ["site", "thoughts"],
-  studio: []
+  studio: ["site"]
 } as const satisfies Record<string, readonly ClientMessageScope[]>;
 
 type MessageRecord = Record<string, unknown>;

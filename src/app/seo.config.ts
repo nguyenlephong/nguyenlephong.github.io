@@ -21,7 +21,7 @@ export function displayName(locale: string): string {
 
 // Titles and descriptions live only in messages/<locale>.json (SEO namespace), so the root stub,
 // /en and every locale read one source (MEP-61). Studio metadata lives in
-// src/app/[locale]/studio/studio-static-content.ts. What stays here has no per-locale copy:
+// src/app/[locale]/(site)/studio/studio-static-content.ts. What stays here has no per-locale copy:
 // the English fallback alt baked into each opengraph-image route, and keyword lists.
 export const PAGE_SEO = {
   home: {

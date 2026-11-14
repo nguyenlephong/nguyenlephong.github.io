@@ -23,22 +23,22 @@ export const STATIC_PAGE_SEO_POLICY = {
   // Studio prose is written in English and Vietnamese only (MEP-54).
   studio: {
     path: '/studio',
-    ogSegment: '/[locale]/studio',
+    ogSegment: '/[locale]/(site)/studio',
     contentLocales: ['en', 'vi'],
   },
   'studio/checklists': {
     path: '/studio/checklists',
-    ogSegment: '/[locale]/studio',
+    ogSegment: '/[locale]/(site)/studio',
     contentLocales: ['en', 'vi'],
   },
   'studio/system-maps': {
     path: '/studio/system-maps',
-    ogSegment: '/[locale]/studio',
+    ogSegment: '/[locale]/(site)/studio',
     contentLocales: ['en', 'vi'],
   },
   'studio/ai-setup': {
     path: '/studio/ai-setup',
-    ogSegment: '/[locale]/studio',
+    ogSegment: '/[locale]/(site)/studio',
     contentLocales: ['en', 'vi'],
   },
 } as const satisfies Record<
