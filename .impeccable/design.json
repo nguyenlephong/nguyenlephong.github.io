@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T00:00:00Z",
+  "title": "Design System: Nguyen Le Phong",
+  "extensions": {
+    "colorMeta": {
+      "ground": { "role": "neutral", "displayName": "Cool Paper", "canonical": "oklch(98% 0.003 250)", "tonalRamp": ["oklch(15% 0.012 255)", "oklch(26% 0.012 255)", "oklch(38% 0.012 255)", "oklch(50% 0.01 255)", "oklch(62% 0.008 255)", "oklch(74% 0.006 255)", "oklch(86% 0.004 255)", "oklch(95% 0.003 255)"] },
+      "surface": { "role": "neutral", "displayName": "White Sheet", "canonical": "oklch(100% 0 0)" },
+      "surface-muted": { "role": "neutral", "displayName": "Grey Wash", "canonical": "oklch(95% 0.005 250)" },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "oklch(20% 0.02 260)", "tonalRamp": ["oklch(15% 0.02 260)", "oklch(20% 0.02 260)", "oklch(32% 0.018 260)", "oklch(45% 0.015 260)", "oklch(52% 0.012 260)", "oklch(68% 0.01 260)", "oklch(82% 0.01 260)", "oklch(92% 0.006 260)"] },
+      "ink-muted": { "role": "neutral", "displayName": "Muted Ink", "canonical": "oklch(45% 0.015 260)" },
+      "ink-subtle": { "role": "neutral", "displayName": "Subtle Ink", "canonical": "oklch(52% 0.012 260)" },
+      "signal-blue": { "role": "primary", "displayName": "Signal Blue", "canonical": "oklch(58% 0.18 252)", "tonalRamp": ["oklch(18% 0.06 252)", "oklch(28% 0.1 252)", "oklch(38% 0.15 252)", "oklch(48% 0.2 252)", "oklch(58% 0.18 252)", "oklch(68% 0.18 252)", "oklch(80% 0.1 252)", "oklch(94% 0.04 252)"] },
+      "signal-blue-strong": { "role": "primary", "displayName": "Deep Signal Blue", "canonical": "oklch(48% 0.20 252)" },
+      "signal-blue-soft": { "role": "primary", "displayName": "Blue Wash", "canonical": "oklch(94% 0.04 252)" },
+      "on-accent": { "role": "neutral", "displayName": "On Accent", "canonical": "oklch(99% 0 0)" },
+      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "oklch(92% 0.006 260)" },
+      "border": { "role": "neutral", "displayName": "Border", "canonical": "oklch(90% 0.008 260)" },
+      "border-strong": { "role": "neutral", "displayName": "Strong Border", "canonical": "oklch(82% 0.01 260)" },
+      "status-online": { "role": "status", "displayName": "Online Green", "canonical": "oklch(70% 0.18 145)" },
+      "status-offline": { "role": "status", "displayName": "Offline Red", "canonical": "oklch(66% 0.18 24)" },
+      "ground-dark": { "role": "neutral", "displayName": "Night Ground", "canonical": "oklch(14% 0.012 260)" },
+      "surface-dark": { "role": "neutral", "displayName": "Night Sheet", "canonical": "oklch(18% 0.015 260)" },
+      "ink-dark": { "role": "neutral", "displayName": "Night Ink", "canonical": "oklch(95% 0.005 250)" },
+      "ink-muted-dark": { "role": "neutral", "displayName": "Night Muted Ink", "canonical": "oklch(72% 0.015 260)" },
+      "signal-blue-dark": { "role": "primary", "displayName": "Night Signal Blue", "canonical": "oklch(68% 0.18 252)" },
+      "signal-blue-strong-dark": { "role": "primary", "displayName": "Night Deep Signal Blue", "canonical": "oklch(78% 0.18 252)" },
+      "hairline-dark": { "role": "neutral", "displayName": "Night Hairline", "canonical": "oklch(24% 0.01 260)" }
+    },
+    "typographyMeta": {
+      "hero": { "displayName": "Hero", "purpose": "The owner's name on the homepage only." },
+      "display": { "displayName": "Display", "purpose": "Page titles on About and Studio chapter openers." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles written as claims." },
+      "title": { "displayName": "Title", "purpose": "Part and block headings inside a page." },
+      "lede": { "displayName": "Lede", "purpose": "The reader's question beside a title; the hero claim." },
+      "body": { "displayName": "Body", "purpose": "Prose, capped at 62 to 64ch." },
+      "label": { "displayName": "Label", "purpose": "Node titles, crumbs, small figure headings." },
+      "meta-mono": { "displayName": "Meta Mono", "purpose": "Dates, counts, stage labels, measurements, code. Apparatus only." }
+    },
+    "shadows": [
+      { "name": "shadow-sm", "value": "0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 1px rgba(15, 23, 42, 0.03)", "purpose": "Small floating controls." },
+      { "name": "shadow-md", "value": "0 8px 24px -8px rgba(15, 23, 42, 0.10), 0 2px 6px rgba(15, 23, 42, 0.04)", "purpose": "Menus." },
+      { "name": "shadow-lg", "value": "0 24px 48px -16px rgba(15, 23, 42, 0.14)", "purpose": "Dialogs and the offline banner. Never content." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Expo-out easing for every transition and figure draw." },
+      { "name": "d-fast", "value": "150ms", "purpose": "Color and border changes on hover." },
+      { "name": "d-base", "value": "250ms", "purpose": "Node scale, dimming, arrow nudge, theme change." },
+      { "name": "figure-draw", "value": "500ms to 800ms", "purpose": "One-time edge draws in figures, guarded by prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "phone", "value": "560px" },
+      { "name": "line-vertical", "value": "720px" },
+      { "name": "single-column", "value": "860px" },
+      { "name": "nav-collapse", "value": "1023px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one solid action per view: Résumé, Download résumé.",
+      "html": "<button class=\"ds-btn-primary\">Download résumé</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; font-family: var(--font-sans); font-size: 0.875rem; font-weight: 600; background: var(--fg); color: var(--bg); border: 1px solid transparent; border-radius: 8px; cursor: pointer; transition: transform 150ms cubic-bezier(0.16,1,0.3,1), background 150ms, color 150ms; } .ds-btn-primary:hover { transform: translateY(-1px); background: var(--accent-strong); color: var(--fg-on-accent); } .ds-btn-primary:active { transform: none; } .ds-btn-primary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outlined companion action: Email me.",
+      "html": "<button class=\"ds-btn-secondary\">Email me</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; font-family: var(--font-sans); font-size: 0.875rem; font-weight: 600; background: transparent; color: var(--fg); border: 1px solid var(--border-strong); border-radius: 8px; cursor: pointer; transition: transform 150ms cubic-bezier(0.16,1,0.3,1), background 150ms, border-color 150ms; } .ds-btn-secondary:hover { transform: translateY(-1px); border-color: var(--fg); background: var(--bg-muted); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Tool action beside content: Copy as Markdown, map zoom.",
+      "html": "<button class=\"ds-btn-quiet\"><svg viewBox=\"0 0 24 24\" width=\"15\" height=\"15\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\"/><path d=\"M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1\"/></svg>Copy as Markdown</button>",
+      "css": ".ds-btn-quiet { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 40px; padding: 0.5rem 0.875rem; font-family: var(--font-sans); font-size: 0.875rem; font-weight: 600; background: var(--bg-elevated); color: var(--fg); border: 1px solid var(--border-strong); border-radius: 6px; cursor: pointer; transition: border-color 150ms cubic-bezier(0.16,1,0.3,1), color 150ms; } .ds-btn-quiet:hover { border-color: var(--fg); } .ds-btn-quiet:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; } .ds-btn-quiet[data-state='copied'] { border-color: var(--accent); color: var(--accent-strong); }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "link",
+      "description": "Inline and next-chapter links: muted underline that turns blue on hover.",
+      "html": "<a href=\"#\" class=\"ds-link\">Open the checklists <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-link { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; color: var(--fg); font-family: var(--font-sans); font-weight: 650; text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 0.3em; transition: color 150ms cubic-bezier(0.16,1,0.3,1), text-decoration-color 150ms; } .ds-link svg { transition: transform 250ms cubic-bezier(0.16,1,0.3,1); } .ds-link:hover { color: var(--accent-strong); text-decoration-color: currentColor; } .ds-link:hover svg { transform: translateX(3px); } .ds-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header text link with an underline that grows on hover and stays for the current page.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-link\" aria-current=\"page\">Experience</a><a href=\"#\" class=\"ds-nav-link\">Projects</a><a href=\"#\" class=\"ds-nav-link\">Blog</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 0.25rem; } .ds-nav-link { position: relative; padding: 0.5rem 0.875rem; font-family: var(--font-sans); font-size: 0.875rem; font-weight: 500; color: var(--fg-muted); text-decoration: none; transition: color 150ms; } .ds-nav-link::after { content: ''; position: absolute; left: 0.875rem; right: 0.875rem; bottom: 0.25rem; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 250ms cubic-bezier(0.16,1,0.3,1); } .ds-nav-link:hover, .ds-nav-link[aria-current='page'] { color: var(--fg); } .ds-nav-link:hover::after, .ds-nav-link[aria-current='page']::after { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
+    },
+    {
+      "name": "Figure Node",
+      "kind": "card",
+      "refersTo": "figure-node",
+      "description": "The only boxed container: a node inside a figure, mono badge over a title.",
+      "html": "<button class=\"ds-node\"><span class=\"ds-node-badge\">since Mar 2026</span><span class=\"ds-node-title\">Zalo PC</span></button>",
+      "css": ".ds-node { display: grid; gap: 6px; width: 220px; padding: 12px 14px; text-align: left; background: var(--bg-elevated); color: var(--fg); border: 1.5px solid var(--border-strong); border-radius: 10px; font-family: var(--font-sans); cursor: pointer; transition: border-color 150ms cubic-bezier(0.16,1,0.3,1); } .ds-node:hover { border-color: var(--accent); } .ds-node:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; } .ds-node[data-active] { border: 3px solid var(--accent); } .ds-node-badge { color: var(--fg-muted); font-family: var(--font-mono); font-size: 0.8125rem; font-variant-numeric: tabular-nums; } .ds-node-title { font-size: 1rem; font-weight: 650; line-height: 1.2; }"
+    },
+    {
+      "name": "Lifecycle Line",
+      "kind": "custom",
+      "refersTo": "line-node",
+      "description": "Signature: parts as nodes on one dashed blue edge, in work order; the active node fills.",
+      "html": "<ol class=\"ds-line\"><li><button class=\"ds-stop\" aria-current=\"true\"><span class=\"ds-dot\"></span><span class=\"ds-stage\">before branch</span><span class=\"ds-stop-title\">Release Readiness</span></button></li><li><button class=\"ds-stop\"><span class=\"ds-dot\"></span><span class=\"ds-stage\">during rollout</span><span class=\"ds-stop-title\">Rollout Plan</span></button></li><li><button class=\"ds-stop\"><span class=\"ds-dot\"></span><span class=\"ds-stage\">after release</span><span class=\"ds-stop-title\">Post-release Review</span></button></li></ol>",
+      "css": ".ds-line { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 0; padding: 0; list-style: none; font-family: var(--font-sans); } .ds-line::before { content: ''; position: absolute; top: calc(7px + 0.375rem - 0.75px); left: 7px; right: calc(33.3% - 7px); border-top: 1.5px dashed var(--accent); } .ds-stop { position: relative; display: grid; justify-items: start; row-gap: 0.375rem; width: 100%; min-height: 44px; padding: 0.375rem 0; border: 0; background: none; color: var(--fg); font: inherit; text-align: left; cursor: pointer; } .ds-dot { width: 14px; height: 14px; margin-bottom: 0.5rem; border: 2px solid var(--accent); border-radius: 50%; background: var(--bg); transition: background 150ms, transform 250ms cubic-bezier(0.16,1,0.3,1); } .ds-stage { color: var(--fg-muted); font-family: var(--font-mono); font-size: 0.75rem; } .ds-stop-title { font-size: 0.875rem; font-weight: 550; line-height: 1.35; } .ds-stop:hover .ds-stop-title { color: var(--accent-strong); } .ds-stop[aria-current] .ds-dot { background: var(--accent); transform: scale(1.15); } .ds-stop[aria-current] .ds-stop-title { font-weight: 700; } .ds-stop:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 6px; }"
+    },
+    {
+      "name": "Checklist Step",
+      "kind": "input",
+      "refersTo": "checklist-step",
+      "description": "A step on a hairline with a square tick that fills ink when done.",
+      "html": "<label class=\"ds-step\"><input type=\"checkbox\" checked><span>Confirm the PR scope matches the ticket</span></label><label class=\"ds-step\"><input type=\"checkbox\"><span>Attach screenshots for UI changes</span></label>",
+      "css": ".ds-step { display: flex; gap: 0.875rem; padding: 0.55rem 0; border-bottom: 1px solid var(--divider); font-family: var(--font-sans); font-size: 1rem; line-height: 1.55; color: var(--fg); cursor: pointer; } .ds-step input { flex: none; width: 15px; height: 15px; margin: 0.25rem 0 0; border: 1.5px solid var(--fg-subtle); border-radius: 3px; background: var(--bg); appearance: none; cursor: pointer; transition: background 150ms, border-color 150ms; } .ds-step input:checked { border-color: var(--fg); background: var(--fg); box-shadow: inset 0 0 0 2.5px var(--bg); } .ds-step input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; } .ds-step:has(input:checked) > span { color: var(--fg-muted); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The System Spec",
+    "overview": "Every page is drawn the way its owner would present a system he runs. A section is a figure of that system with an annotation layer on top: nodes, dashed edges between them, hairline rules between rows of text, and numbers attached to the thing they measure. The ground is a cool, near-white grey (deep blue-black in dark mode); Inter at heavy display weights carries the claims, and JetBrains Mono appears only where a technical drawing would put small print: dates, durations, stage labels, counts, code.\n\nDensity follows the work. The hero and lists are dense; figures (the capability map, the career route, the Studio lifecycle line, the system map) get the most air and are the visual peaks. One blue does all the signalling: the active node, the live edge, a hovered link. Everything else is ink at three strengths. Depth is almost absent; structure comes from rules, alignment and the line that threads the parts in order.\n\nMotion is authored once per section and always additive: the default state is the final state, so a reader with reduced motion or no JavaScript sees the complete page. The homepage carries one ambient layer (a WebGL particle field behind the hero and map); no other surface has a backdrop.",
+    "keyCharacteristics": [
+      "Nodes and dashed edges in place of cards; a boxed container exists only as a node inside a figure.",
+      "One accent hue (blue, hue 252) for state and direction, never for decoration.",
+      "Heavy Inter headings with tight negative tracking; mono reserved for apparatus.",
+      "Hairline dividers (1px) between rows and parts; no borders or backgrounds on lists of text.",
+      "Light and dark are both first-class, toggled by `data-theme`, with a system option."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Blue marks state or direction (active, live, hovered, next). If removing the blue would lose no information, it should not be blue.", "section": "colors" },
+      { "name": "The Three Inks Rule", "body": "Text hierarchy comes from `ink`, `ink-muted` and `ink-subtle`, not from new greys or opacity on text.", "section": "colors" },
+      { "name": "The Apparatus Rule", "body": "Mono is for dates, measurements, stage labels and code. Never for section labels, prose, buttons or pills, and never uppercase-tracked.", "section": "typography" },
+      { "name": "The Diacritic Rule", "body": "Vietnamese headings open up to line-height 1.12 (`:lang(vi)`); stacked diacritics must never touch the line above.", "section": "typography" },
+      { "name": "The Floating-Only Shadow Rule", "body": "A shadow means the element sits above the page (menu, dialog, toast). Content, figures and nodes never cast one.", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** draw relationships as nodes and dashed edges in `signal-blue`; keep the edge in work order.",
+      "**Do** put every number on the node, edge or sentence it measures, with its condition (p95, in 3 months, 18M+ MAU).",
+      "**Do** separate rows and parts with 1px `hairline` rules and leave lists of text unboxed.",
+      "**Do** cap prose at 62 to 64ch and balance headings.",
+      "**Do** give each section one authored moment, use `--ease` (expo out) at 150 or 250ms for UI and 500 to 800ms for figure draws, and guard every keyframe with `prefers-reduced-motion`.",
+      "**Do** design light and dark together; dark accents are lighter and text on them is dark (`--fg-on-accent`).",
+      "**Do** keep tap targets at 44px and focus rings at 2px blue."
+    ],
+    "donts": [
+      "**Don't** use cards: no bordered or shaded box around text that is not a node in a figure, and no card inside a card.",
+      "**Don't** put eyebrows, kickers or category labels above headings; headings speak for themselves as claims.",
+      "**Don't** number sections.",
+      "**Don't** use gradient text or gradient fills on surfaces, borders or buttons. The dot grid and the hero's faint backdrop halo are the only gradients, and they are texture, not fill.",
+      "**Don't** use chips or pills for tags, tech lists or labels; write them as a muted line.",
+      "**Don't** set mono in uppercase with wide tracking, or use it for anything but apparatus.",
+      "**Don't** add hero-metric grids, stat cards or fake sparklines.",
+      "**Don't** cast shadows on content."
+    ]
+  }
+}
