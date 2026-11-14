@@ -31,9 +31,9 @@
       },
       "studio": {
         "html": "en/studio.html",
-        "maxGzipBytes": 173056,
-        "maxBrotliBytes": 149504,
-        "maxDefaultRouteBrotliBytes": 204800
+        "maxGzipBytes": 187392,
+        "maxBrotliBytes": 162816,
+        "maxModuleBrotliBytes": 164864
       },
       "blogArticle": {
         "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
@@ -79,7 +79,7 @@
         "home": 67584,
         "blog": 50176,
         "notes": 43008,
-        "studio": 30720
+        "studio": 36864
       }
     },
     "clientMessages": {
@@ -110,7 +110,7 @@
         },
         "studio": {
           "path": "{locale}/studio.txt",
-          "requiredScopes": []
+          "requiredScopes": ["site"]
         }
       }
     },
@@ -287,18 +287,16 @@
       }
     },
     "studioInitialRuntime": {
-      "requiredMarkers": ["data-studio-shadow-host"],
-      "requiredReachableMarkers": ["studio_route_open", "data-studio-module"],
       "forbiddenMarkers": [
+        "data-studio-shadow-host",
+        "studio-shadow.css",
         "data-studio-flow-runtime",
+        "react-flow__",
         "getFirestore",
         "initializeFirestore",
         "firebaseapp.com"
       ],
-      "maxInitialDocumentCssBrotliBytes": 3072,
-      "requiredShadowCssFiles": ["studio/studio-shadow.css"],
-      "maxShadowCssBrotliBytes": 12288,
-      "maxTotalInitialCssBrotliBytes": 18432,
+      "maxInitialDocumentCssBrotliBytes": 8832,
       "allowedExternalStylesheetOrigins": [],
       "allowedThirdPartyConnectionOrigins": [
         "https://us.i.posthog.com",

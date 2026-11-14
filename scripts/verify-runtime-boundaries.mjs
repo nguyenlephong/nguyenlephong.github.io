@@ -1071,8 +1071,12 @@ async function verifyPublicToStudioBoundary(browser, origin) {
     const navigationResponse = await studioDocumentResponse;
     assert.equal(navigationResponse.status(), 200);
 
-    const studioHost = page.locator('[data-studio-shadow-host]');
-    await studioHost.locator(".studio-admin").waitFor({ state: "visible" });
+    // Studio is a static page inside the site layout: site chrome around it, no shadow host.
+    await page
+      .locator('main[data-studio-static-overview="true"]')
+      .waitFor({ state: "visible" });
+    assert.equal(await page.locator("header.app-nav").count(), 1);
+    assert.equal(await page.locator("[data-studio-shadow-host]").count(), 0);
     const studioState = await page.evaluate(() => {
       const navigation = performance.getEntriesByType("navigation").at(-1);
       return {

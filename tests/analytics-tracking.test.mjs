@@ -653,74 +653,37 @@ test("content hub hierarchy links reuse existing client boundaries without eager
   );
 });
 
-test("studio analytics and agent rules cover new workspace interactions", async () => {
-  const [analytics, adminShell, agents, claude, gemini] = await Promise.all([
+test("studio analytics and agent rules cover the static Studio interactions", async () => {
+  const studioDir = "src/app/[locale]/(site)/studio";
+  const [analytics, studio, agents, claude, gemini] = await Promise.all([
     readFile("src/lib/analytics.ts", "utf8"),
-    readSources([
-      "src/app/[locale]/studio/studio-admin-shell.tsx",
-      "src/app/[locale]/studio/StudioShellChrome.tsx",
-      "src/app/[locale]/studio/studio-shell-navigation.ts",
-      "src/app/[locale]/studio/StudioWelcomeFeature.tsx",
-      "src/app/[locale]/studio/StudioAiSkillsFeature.tsx",
-      "src/app/[locale]/studio/StudioChecklistsFeature.tsx",
-      "src/app/[locale]/studio/StudioFlowFeature.tsx",
-      "src/app/[locale]/studio/StudioFlowChart.tsx",
-      "src/app/[locale]/studio/StudioRouteFeatureRegistry.tsx",
-      "src/app/[locale]/studio/StudioWorkspace.tsx",
-      "src/app/[locale]/studio/StudioFlowCanvasFeature.tsx",
-      "src/app/[locale]/studio/studio-feature-load-error.ts"
-    ]),
+    readSources(
+      [
+        "StudioPageFrame.tsx",
+        "StudioOpener.tsx",
+        "StudioStaticOverview.tsx",
+        "StudioModuleArticle.tsx",
+        "StudioChecklistTicks.tsx",
+        "StudioSystemMapViewer.tsx"
+      ].map((file) => `${studioDir}/${file}`)
+    ),
     readFile("AGENTS.md", "utf8"),
     readFile("CLAUDE.md", "utf8"),
     readFile("GEMINI.md", "utf8")
   ]);
 
-  for (const eventName of [
-    "studio_route_open",
-    "studio_command_open",
-    "studio_command_result_click",
-    "studio_profile_nav_click",
-    "studio_preferences_panel_toggle",
-    "studio_preference_change",
-    "studio_preference_restore",
-    "studio_sidebar_toggle",
-    "studio_feature_load_error",
-    "studio_ai_skill_filter",
-    "studio_ai_skill_select",
+  const declared = [...analytics.matchAll(/'(studio_[a-z_]+)'/g)].map((match) => match[1]);
+  assert.deepEqual(declared.sort(), [
     "studio_ai_skill_copy",
-    "studio_checklist_select",
     "studio_checklist_copy",
     "studio_checklist_item_toggle",
-    "studio_flow_group_select",
-    "studio_flow_select",
-    "studio_flow_example_select",
-    "studio_flow_canvas_mode_change",
-    "studio_flow_layout_apply",
-    "studio_flow_node_select",
-    "studio_flow_node_action",
-    "studio_flow_history_action",
-    "studio_flow_group_visibility_toggle",
-    "studio_flow_board_fullscreen_toggle",
-    "studio_flow_focus_toggle",
-    "studio_flow_share"
-  ]) {
-    assert.match(analytics, new RegExp(`'${eventName}'`));
-    assert.match(adminShell, new RegExp(`"${eventName}"`));
+    "studio_module_open",
+    "studio_part_select",
+    "studio_view"
+  ]);
+  for (const eventName of declared) {
+    assert.match(studio, new RegExp(`"${eventName}"`), `${eventName} must be emitted by Studio`);
   }
-
-  assert.match(
-    adminShell,
-    /onActivate\(subItem\.routeId \?\? DEFAULT_ROUTE, "sidebar"\)/
-  );
-  assert.match(
-    adminShell,
-    /onActivate\(item\.routeId \?\? DEFAULT_ROUTE, "sidebar"\)/
-  );
-  assert.match(adminShell, /onActivate\(route\.id, "command"\)/);
-  assert.match(adminShell, /onActivate\([^\n]+, "route_actions"\)/);
-  assert.match(adminShell, /source:\s*"sidebar_profile_grid"/);
-  assert.match(adminShell, /source:\s*"account_menu"/);
-  assert.match(adminShell, /source:\s*"topbar"/);
 
   for (const rules of [agents, claude, gemini]) {
     assert.match(rules, /Analytics/i);
@@ -729,38 +692,6 @@ test("studio analytics and agent rules cover new workspace interactions", async 
     assert.match(rules, /PageTracker/);
     assert.match(rules, /Studio/);
   }
-});
-
-test("Studio emits one initial-location route event and ignores same-route history", async () => {
-  const [deduperSource, adminShell] = await Promise.all([
-    readFile("src/app/[locale]/studio/studio-route-open-deduper.ts", "utf8"),
-    readFile("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8")
-  ]);
-  const { StudioRouteOpenDeduper } = await importTypeScript(deduperSource);
-  const deduper = new StudioRouteOpenDeduper();
-
-  assert.equal(deduper.claimInitialLocation(), true);
-  assert.equal(
-    deduper.claimInitialLocation(),
-    false,
-    "hydration/effect replay must not emit twice"
-  );
-  assert.equal(deduper.isHistoryTransition("welcome", "welcome"), false);
-  assert.equal(deduper.isHistoryTransition("welcome", "ai-skills"), true);
-
-  assert.equal(
-    adminShell.match(/source:\s*"initial_location"/g)?.length,
-    1,
-    "the shell must contain one initial-location studio_route_open emission"
-  );
-  assert.match(
-    adminShell,
-    /routeOpenDeduperRef\.current\.claimInitialLocation\(\)/
-  );
-  assert.match(
-    adminShell,
-    /routeOpenDeduperRef\.current\.isHistoryTransition\(currentRoute, nextRoute\)/
-  );
 });
 
 // MEP-25, MEP-27, MEP-28: site chrome reuses the existing event names.

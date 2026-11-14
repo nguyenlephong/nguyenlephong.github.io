@@ -45,9 +45,9 @@ test("source graph inventories supported runtime module edges only", () => {
 });
 
 test("Studio graph traverses relative, alias, re-export, dynamic, and CommonJS edges", () => {
-  const studioPage = "src/app/[locale]/studio/page.tsx";
-  const studioClient = "src/app/[locale]/studio/ClientRoot.jsx";
-  const bridge = "src/app/[locale]/studio/bridge.mts";
+  const studioPage = "src/app/[locale]/(site)/studio/page.tsx";
+  const studioClient = "src/app/[locale]/(site)/studio/ClientRoot.jsx";
+  const bridge = "src/app/[locale]/(site)/studio/bridge.mts";
   const feature = "src/feature/index.jsx";
   const runtime = "src/runtime/index.mjs";
   const hazard = "src/runtime/hazard.js";

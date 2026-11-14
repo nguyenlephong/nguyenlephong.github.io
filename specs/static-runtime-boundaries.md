@@ -19,8 +19,8 @@ route group to give public pages and Studio different runtime boundaries.
   reporter for both public pages and Studio. It does not mount Google Analytics
   or AdSense, a client internationalization provider, or the full message
   catalog.
-- All localized routes except Studio live under
-  `src/app/[locale]/(site)`. Route groups are omitted from generated URLs.
+- All localized routes, Studio included since the 2026-11-14 redesign, live
+  under `src/app/[locale]/(site)`. Route groups are omitted from generated URLs.
 - `src/app/[locale]/(site)/layout.tsx` owns shared public-only chrome and
   runtime: Google Analytics and AdSense resources (rendered only when the build
   runs with `GOOGLE_THIRD_PARTY=on`; paused and off by default since MEP-66),
@@ -38,25 +38,24 @@ route group to give public pages and Studio different runtime boundaries.
   scoped adapter, and provider-dependent locale navigation must resolve to a
   non-empty public scope. Collection providers wrap both populated and empty
   branches so the route contract does not depend on content cardinality.
-- Studio remains at `src/app/[locale]/studio`, outside the public route group.
-  It must not render, hydrate, or hide public-only chrome. A static local
-  dependency graph starts from the Studio page and each Studio Client Component
-  root, then rejects any transitive path to public providers, provider-dependent
-  hooks, or locale-navigation runtime.
+- Studio lives at `src/app/[locale]/(site)/studio` (2026-11-14 redesign). It
+  renders inside the public-site layout, so the shared header, footer, global
+  search, and site client-message scope come from that layout, never from Studio
+  itself. The shadow-DOM admin shell and React Flow canvas were removed. A static
+  local dependency graph still starts from the Studio page and each Studio Client
+  Component root and rejects any transitive path to provider-dependent hooks or
+  locale-navigation runtime, so Studio copy stays in server-rendered content.
 - The public footer enters Studio through a full-document navigation. The new
-  Studio document replaces the public DOM and JavaScript realm, so it must not
-  retain public Google Analytics or AdSense scripts, resource hints, account
-  metadata, data-layer nodes, browser globals, or follow-up Google requests.
-  Session storage may survive that document transition; in-memory public
-  markers must not.
-- Studio CSS ownership is measured in three explicit groups. Initial document
-  CSS contains the local stylesheets and combined inline styles referenced
-  directly by the Studio HTML and is capped at 3,072 Brotli bytes. Required
-  Shadow CSS contains `studio/studio-shadow.css`, which the reachable Studio
-  runtime applies inside the Shadow root, and is capped at 12,288 Brotli bytes.
-  Total initial CSS combines both groups and is capped at 18,432 Brotli bytes.
-  An external stylesheet is rejected unless its origin is explicitly
-  allowlisted.
+  Studio document replaces the public DOM and JavaScript realm. While Google
+  resources are paused (`GOOGLE_THIRD_PARTY` off), it has no public Google
+  Analytics or AdSense scripts, resource hints, account metadata, data-layer
+  nodes, browser globals, or follow-up Google requests. Session storage may
+  survive that document transition; in-memory public markers must not.
+- Studio initial document CSS contains the local stylesheets and combined
+  inline styles referenced directly by the Studio HTML (document base, site
+  base, and the route-owned `studio.css`) and is capped at 8,832 Brotli bytes.
+  The shadow stylesheet group no longer exists. An external stylesheet is
+  rejected unless its origin is explicitly allowlisted.
 - Public CSS follows the same route ownership principle without changing the
   rendered document contract. `globals.css` contains only public base styles,
   shared chrome, accessibility defaults, and intentionally shared primitives.
@@ -108,8 +107,7 @@ are missing from the sitemap.
   fallbacks, sitemap policy, or content schemas.
 - Replacing PostHog, Google Analytics, or AdSense, or changing existing event
   names.
-- Changing Studio's existing feature-level lazy-loading boundaries; those are
-  governed by the Studio static runtime and performance-budget specifications.
+- Changing Studio's page design; that is owned by the Studio redesign.
 
 ## Acceptance criteria
 
@@ -129,8 +127,8 @@ existing IDs must not be renamed or renumbered.
   reading-background prepaint scripts. No route mounts a motion provider, and
   `ArticleReaderTools` is mounted only by nested Blog and Notes article layouts,
   never by the public-site layout or Studio.
-- **AC-SRB-005:** Studio is outside `(site)` and neither renders nor hides
-  public-site chrome through CSS selectors.
+- **AC-SRB-005:** Superseded by AC-SRB-024 (2026-11-14). Studio was outside
+  `(site)` and neither rendered nor hid public-site chrome through CSS selectors.
 - **AC-SRB-006:** Public pages preserve the canonical paths, metadata, static
   parameters, localization, and analytics wiring required by their current
   route-specific contracts while CSS is extracted. The public Studio link uses
@@ -143,7 +141,7 @@ existing IDs must not be renamed or renumbered.
   locale and route context. Public routes and Studio share this reporter
   without pulling public-only chrome into Studio.
 - **AC-SRB-009:** Public route artifacts contain only the declared scoped site
-  and surface client-message providers; Studio contains none.
+  and surface client-message providers; Studio contains only the site provider.
 - **AC-SRB-010:** Every localized RSC route with a sibling HTML page is checked
   against its derived provider contract, including article and pagination paths;
   source-level provider placement and locale-navigation imports cannot bypass
@@ -197,6 +195,10 @@ existing IDs must not be renamed or renumbered.
   network response in navigation, cache-first, network-first, or
   stale-while-revalidate. Required install-shell population remains fail-closed,
   and executable generated-worker tests cover all four runtime strategies.
+- **AC-SRB-024:** Studio's index and three module pages live under `(site)`,
+  render the site header and footer, export exactly one H1 and their JSON-LD,
+  and contain no shadow host, shadow stylesheet, or reachable React Flow
+  runtime.
 
 ## Verification
 
@@ -206,8 +208,8 @@ existing IDs must not be renamed or renumbered.
   20,000-file and 600 MiB limits, 75-percent warning threshold, and exact
   bidirectional sitemap-to-published-HTML parity.
 - Run `npm run verify:performance-artifact` and confirm the Studio initial
-  document, required Shadow, and combined initial CSS stay within 3,072,
-  12,288, and 18,432 Brotli bytes respectively.
+  document CSS stays within 8,832 Brotli bytes, then `npm run
+  verify:studio-artifact` for the per-page Studio contract.
 - Confirm representative public routes remain within their configured initial
   stylesheet-request and Brotli budgets and expose only their required
   normalized route-owner selectors.

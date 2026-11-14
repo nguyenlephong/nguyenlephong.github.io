@@ -157,10 +157,10 @@ test("about, apps, gallery and studio emit a section breadcrumb", () => {
     assert.match(source, /serializeJsonLd\(breadcrumbLd\)/, file);
   }
   // Studio hands its JSON-LD to the shared frame, which serializes every entry.
-  const studio = read("src/app/[locale]/studio/page.tsx");
+  const studio = read("src/app/[locale]/(site)/studio/page.tsx");
   assert.match(studio, /buildSectionBreadcrumb\(/);
   assert.match(studio, /jsonLd=\{\[collectionLd, breadcrumbLd\]\}/);
-  assert.match(read("src/app/[locale]/studio/StudioPageFrame.tsx"), /serializeJsonLd\(value\)/);
+  assert.match(read("src/app/[locale]/(site)/studio/StudioPageFrame.tsx"), /serializeJsonLd\(value\)/);
 });
 
 test("section titles are distinct, branded, short, and free of dashes in every locale", () => {
@@ -327,7 +327,7 @@ test("footer names both roles and keeps internal pages out of the profiles list"
 
 test("no section is accidentally noindexed; only non-authored locale copies are", () => {
   // MEP-54: Studio stays indexable in its authored locales (en, vi) through the static-page policy.
-  const studio = read("src/app/[locale]/studio/page.tsx");
+  const studio = read("src/app/[locale]/(site)/studio/page.tsx");
   assert.match(studio, /resolveStaticPageLocalization\("studio", locale\)/);
   const policy = read("src/lib/seo/static-page-localization.ts");
   assert.match(policy, /index: authored/);

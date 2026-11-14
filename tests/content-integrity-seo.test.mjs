@@ -60,10 +60,10 @@ const { listNoteHubs, listNotes, loadNote, loadNotesIndex } = await import(
   new URL("../src/lib/notes/data.ts", import.meta.url)
 );
 const { getStudioStaticModule } = await import(
-  new URL("../src/app/[locale]/studio/studio-static-content.ts", import.meta.url)
+  new URL("../src/app/[locale]/(site)/studio/studio-static-content.ts", import.meta.url)
 );
 const { studioCatalog } = await import(
-  new URL("../src/app/[locale]/studio/studio-route-catalog.ts", import.meta.url)
+  new URL("../src/app/[locale]/(site)/studio/studio-route-catalog.ts", import.meta.url)
 );
 const { assertProvidedMetadataParity } = await import(
   new URL("../src/lib/content/catalog.ts", import.meta.url)
@@ -656,7 +656,7 @@ test("static pages resolve authored identity and Studio uses a published social 
   }
 
   const studio = readFileSync(
-    new URL("../src/app/[locale]/studio/page.tsx", import.meta.url),
+    new URL("../src/app/[locale]/(site)/studio/page.tsx", import.meta.url),
     "utf8"
   );
   // Studio is authored in en/vi only; other locales are self-canonical noindex fallbacks via the static-page resolver.
@@ -664,14 +664,14 @@ test("static pages resolve authored identity and Studio uses a published social 
   assert.match(studio, /buildStudioMetadata\(/);
   assert.match(studio, /url:\s*localization\.canonical/);
   const studioSeo = readFileSync(
-    new URL("../src/app/[locale]/studio/studio-seo.ts", import.meta.url),
+    new URL("../src/app/[locale]/(site)/studio/studio-seo.ts", import.meta.url),
     "utf8"
   );
   assert.match(studioSeo, /buildStaticPageMetadata\(/);
   // MEP-64: Studio has its own card, attached by the static-page policy with a localized alt.
   assert.doesNotMatch(studioSeo, /opengraph-image\.png/);
   assert.equal(
-    existsSync(new URL("../src/app/[locale]/studio/opengraph-image.tsx", import.meta.url)),
+    existsSync(new URL("../src/app/[locale]/(site)/studio/opengraph-image.tsx", import.meta.url)),
     true
   );
   for (const source of [studio, studioSeo]) {

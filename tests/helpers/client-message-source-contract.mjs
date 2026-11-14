@@ -723,7 +723,7 @@ function validateClientProviderConsumer(file, inspection) {
     inspection.dependencyCount ?? inspection.callCount ?? 0;
   if (dependencyCount === 0) return null;
   const normalizedFile = normalizeFileName(file);
-  if (normalizedFile.startsWith("src/app/[locale]/studio/")) {
+  if (normalizedFile.startsWith("src/app/[locale]/(site)/studio/")) {
     throw new Error(
       `${normalizedFile} must not use provider-dependent internationalization client APIs`
     );

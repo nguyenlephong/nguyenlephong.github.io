@@ -18,9 +18,10 @@ const REQUIRED_CLIENT_MESSAGE_ROUTES = Object.freeze({
     path: "{locale}/gallery.txt",
     requiredScopes: Object.freeze(["site", "gallery"])
   }),
+  // Studio renders inside the (site) layout, so it carries the site chrome scope only.
   studio: Object.freeze({
     path: "{locale}/studio.txt",
-    requiredScopes: Object.freeze([])
+    requiredScopes: Object.freeze(["site"])
   })
 });
 const SERIALIZED_MESSAGES_PROPERTY_SOURCE = '"messages"\\s*:';
@@ -45,7 +46,6 @@ export function expectedClientMessageScopesForLocalizedRoute(relativePath) {
 
   const [first, second, third] = route.routeSegments;
   if (!first) return ["site", "home"];
-  if (first === "studio") return [];
   if (first === "gallery" && route.routeSegments.length === 1) {
     return ["site", "gallery"];
   }

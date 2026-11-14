@@ -18,10 +18,10 @@ require.extensions[".ts"] = (module, filename) => {
   module._compile(output, filename);
 };
 
-const catalogModule = require("../src/app/[locale]/studio/studio-route-catalog.ts");
-const staticContentModule = require("../src/app/[locale]/studio/studio-static-content.ts");
+const catalogModule = require("../src/app/[locale]/(site)/studio/studio-route-catalog.ts");
+const staticContentModule = require("../src/app/[locale]/(site)/studio/studio-static-content.ts");
 
-const STUDIO_DIR = "src/app/[locale]/studio";
+const STUDIO_DIR = "src/app/[locale]/(site)/studio";
 // Old admin-template routes (MEP-13): they rendered a prefilled login and fake owner data.
 const removedTemplateRouteIds = [
   "default", "crm", "finance", "analytics", "productivity", "ecommerce", "academy",
@@ -30,128 +30,18 @@ const removedTemplateRouteIds = [
   "auth-register-v2", "legacy-default", "legacy-crm", "legacy-finance", "legacy-analytics"
 ];
 
-function routeDefinitionIds(source) {
-  const sourceFile = ts.createSourceFile(
-    "studio-admin-shell.tsx",
-    source,
-    ts.ScriptTarget.Latest,
-    true,
-    ts.ScriptKind.TSX
-  );
-
-  let ids = [];
-  sourceFile.forEachChild((node) => {
-    if (!ts.isVariableStatement(node)) return;
-    for (const declaration of node.declarationList.declarations) {
-      if (declaration.name.getText(sourceFile) !== "routeDefinitions") continue;
-      if (!declaration.initializer || !ts.isObjectLiteralExpression(declaration.initializer)) continue;
-      ids = declaration.initializer.properties.flatMap((property) => {
-        if (!ts.isPropertyAssignment(property)) return [];
-        return [property.name.getText(sourceFile).replace(/^['"]|['"]$/g, "")];
-      });
-    }
-  });
-  return ids;
-}
-
-function routeDefinitionKinds(source) {
-  const sourceFile = ts.createSourceFile(
-    "studio-admin-shell.tsx",
-    source,
-    ts.ScriptTarget.Latest,
-    true,
-    ts.ScriptKind.TSX
-  );
-  const kinds = new Map();
-
-  sourceFile.forEachChild((node) => {
-    if (!ts.isVariableStatement(node)) return;
-    for (const declaration of node.declarationList.declarations) {
-      if (declaration.name.getText(sourceFile) !== "routeDefinitions") continue;
-      if (!declaration.initializer || !ts.isObjectLiteralExpression(declaration.initializer)) continue;
-
-      for (const property of declaration.initializer.properties) {
-        if (!ts.isPropertyAssignment(property)) continue;
-        const routeId = property.name.getText(sourceFile).replace(/^['"]|['"]$/g, "");
-        if (ts.isObjectLiteralExpression(property.initializer)) {
-          const kindProperty = property.initializer.properties.find(
-            (candidate) => ts.isPropertyAssignment(candidate) && candidate.name.getText(sourceFile) === "kind"
-          );
-          if (kindProperty && ts.isPropertyAssignment(kindProperty)) {
-            kinds.set(routeId, kindProperty.initializer.getText(sourceFile).replace(/^['"]|['"]$/g, ""));
-          }
-          continue;
-        }
-
-        if (ts.isCallExpression(property.initializer)) {
-          const factory = property.initializer.expression.getText(sourceFile);
-          if (factory === "createFlowRouteDefinition") kinds.set(routeId, "flows");
-          if (factory === "createAuthRouteDefinition") kinds.set(routeId, "auth");
-        }
-      }
-    }
-  });
-  return kinds;
-}
-
-function flattenNavRouteIds(groups) {
-  return groups.flatMap((group) => group.items.flatMap((item) => [
-    item.routeId,
-    ...(item.subItems ?? []).map((subItem) => subItem.routeId)
-  ]));
-}
-
-test("Studio route, nav, welcome, and static identities share one data-only catalog", () => {
+test("Studio module pages, copy, and checklist order share one data-only catalog", () => {
   const { studioCatalog } = catalogModule;
-  const catalogSource = readFileSync("src/app/[locale]/studio/studio-route-catalog.ts", "utf8");
-  const routeDefinitionSource = readFileSync("src/app/[locale]/studio/studio-route-definitions.ts", "utf8");
-  const navigationSource = readFileSync("src/app/[locale]/studio/studio-shell-navigation.ts", "utf8");
-  const registrySource = readFileSync("src/app/[locale]/studio/StudioRouteFeatureRegistry.tsx", "utf8");
-  const routeIds = studioCatalog.routeIds;
-
-  assert.equal(new Set(routeIds).size, routeIds.length, "catalog route IDs must be unique");
-  assert.ok(routeIds.includes(studioCatalog.defaultRouteId));
-  assert.deepEqual(
-    [...routeDefinitionIds(routeDefinitionSource)].sort(),
-    [...routeIds].sort(),
-    "hydrated route definitions must cover the catalog exactly"
-  );
-  const hydratedKinds = routeDefinitionKinds(routeDefinitionSource);
-  studioCatalog.routes.forEach((route) => {
-    assert.equal(
-      hydratedKinds.get(route.id),
-      route.kind,
-      `hydrated route kind must match the catalog: ${route.id}`
-    );
-  });
-
-  const navRouteIds = flattenNavRouteIds(studioCatalog.navGroups);
-  navRouteIds.forEach((routeId) => assert.ok(routeIds.includes(routeId), `unknown nav route: ${routeId}`));
-
-  const deepLinkRouteIds = studioCatalog.deepLinkRouteIds;
-  assert.equal(new Set(deepLinkRouteIds).size, deepLinkRouteIds.length);
-  deepLinkRouteIds.forEach((routeId) => assert.ok(routeIds.includes(routeId), `unknown deep-link route: ${routeId}`));
-  assert.deepEqual(
-    [...new Set([...navRouteIds, ...deepLinkRouteIds])].sort(),
-    [...routeIds].sort(),
-    "navigation and explicit deep links must cover every hydrated route"
-  );
-  assert.deepEqual(
-    navRouteIds.filter((routeId) => deepLinkRouteIds.includes(routeId)),
-    [],
-    "hidden deep-link routes must not leak into navigation"
-  );
+  const catalogSource = readFileSync(`${STUDIO_DIR}/studio-route-catalog.ts`, "utf8");
+  assert.deepEqual(Object.keys(studioCatalog).sort(), ["deliveryChecklistIds", "publicModules"]);
   for (const routeId of removedTemplateRouteIds) {
-    assert.ok(!routeIds.includes(routeId), `${routeId} is a removed admin-template route`);
+    assert.ok(!catalogSource.includes(`"${routeId}"`), `${routeId} is a removed admin-template route`);
   }
 
   const publicModuleIds = studioCatalog.publicModules.map((module) => module.routeId);
-  assert.deepEqual(studioCatalog.welcomeRouteIds, publicModuleIds);
-  publicModuleIds.forEach((routeId) => assert.ok(navRouteIds.includes(routeId), `public module missing from nav: ${routeId}`));
 
   // MEP-56: checklists lead, then system maps, then AI setup; each public module has its own page.
   assert.deepEqual(publicModuleIds, ["delivery-checklists", "flow-react-flow-system-blueprint", "ai-agent-setup"]);
-  assert.deepEqual(navRouteIds.slice(0, 3), ["welcome", "delivery-checklists", "flow-react-flow-system-blueprint"]);
   assert.deepEqual(studioCatalog.publicModules.map((module) => module.slug), ["checklists", "system-maps", "ai-setup"]);
 
   for (const locale of ["en", "vi"]) {
@@ -197,16 +87,6 @@ test("Studio route, nav, welcome, and static identities share one data-only cata
   );
 
   assert.doesNotMatch(catalogSource, /from\s+["']react(?:-icons)?|<\w+[\s>]/);
-  assert.match(navigationSource, /studioCatalog\.navGroups/);
-  assert.match(navigationSource, /studioCatalog\.deepLinkRouteIds/);
-  assert.match(navigationSource, /isLocationRouteId/);
-  assert.match(registrySource, /case "welcome":/);
-  assert.match(registrySource, /case "ai-setup":/);
-  assert.match(registrySource, /case "ai-skills":/);
-  assert.match(registrySource, /case "checklists":/);
-  assert.match(registrySource, /case "flows":/);
-  assert.doesNotMatch(registrySource, /StudioAuxiliaryRoutesFeatureAdapter/);
-  assert.match(registrySource, /assertNeverRouteKind/);
 });
 
 test("Studio source carries no credentials, contact emails, or admin-template leftovers", () => {

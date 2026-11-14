@@ -1,36 +1,7 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
-import { createRequire } from "node:module";
 import test from "node:test";
 import ts from "typescript";
-
-const require = createRequire(import.meta.url);
-
-require.extensions[".ts"] = (module, filename) => {
-  const source = readFileSync(filename, "utf8");
-  const output = ts.transpileModule(source, {
-    compilerOptions: {
-      esModuleInterop: true,
-      module: ts.ModuleKind.CommonJS,
-      target: ts.ScriptTarget.ES2022
-    }
-  }).outputText;
-  module._compile(output, filename);
-};
-
-require.extensions[".tsx"] = (module, filename) => {
-  const source = readFileSync(filename, "utf8");
-  const output = ts.transpileModule(source, {
-    compilerOptions: {
-      esModuleInterop: true,
-      jsx: ts.JsxEmit.ReactJSX,
-      module: ts.ModuleKind.CommonJS,
-      target: ts.ScriptTarget.ES2022
-    }
-  }).outputText;
-  module._compile(output, filename);
-};
 
 async function importTypeScriptModule(path) {
   const source = await readFile(path, "utf8");
@@ -43,98 +14,6 @@ async function importTypeScriptModule(path) {
   const encoded = Buffer.from(outputText).toString("base64");
   return import(`data:text/javascript;base64,${encoded}`);
 }
-
-test("Studio keeps one localized light-DOM H1 through the shadow lifecycle", async () => {
-  const staticContent = require("../src/app/[locale]/studio/studio-static-content.ts");
-  const [page, workspace, overview, shadowIsland, adminShell, welcomeFeature, shadowStyles] =
-    await Promise.all([
-      readFile("src/app/[locale]/studio/StudioPageFrame.tsx", "utf8"),
-      readFile("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8"),
-      readFile("src/app/[locale]/studio/StudioStaticOverview.tsx", "utf8"),
-      readFile("src/components/studio-kit/shadow-island.tsx", "utf8"),
-      readFile("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8"),
-      readFile("src/app/[locale]/studio/StudioWelcomeFeature.tsx", "utf8"),
-      readFile("public/studio/studio-shadow.css", "utf8")
-    ]);
-
-  assert.equal(page.match(/<h1\b/g)?.length, 1);
-  assert.match(page, /data-studio-page-heading="true"/);
-  assert.match(page, /slot="studio-page-heading"/);
-  assert.match(page, /\{title\}<\/h1>/);
-  // MEP-56 / craft floor: the heading carries no eyebrow label above it.
-  assert.doesNotMatch(page, /studio-page-heading__eyebrow/);
-  assert.doesNotMatch(page, /studio-page-heading__title[^}]*display:\s*none/);
-
-  assert.match(workspace, /heading=\{heading\}/);
-  assert.match(shadowIsland, /data-shadow-ready=\{root && stylesheetReady \? "true" : "false"\}/);
-  assert.match(shadowIsland, /\{heading\}[\s\S]*\{root[\s\S]*createPortal/);
-  assert.match(shadowIsland, /<slot name="studio-page-heading" \/>/);
-  assert.match(shadowIsland, /<slot name="studio-loading-fallback" \/>/);
-  assert.match(adminShell, /<slot name="studio-page-heading" \/>/);
-  assert.match(welcomeFeature, /<h2>\{route\.title\}<\/h2>/);
-
-  for (const shadowSource of [overview, shadowIsland, adminShell, welcomeFeature]) {
-    assert.doesNotMatch(shadowSource, /<h1\b/);
-  }
-  assert.doesNotMatch(shadowStyles, /route-heading h1|welcome-intro h1|auth-card h1/);
-
-  for (const locale of ["en", "vi", "zh", "ja", "ko", "fr"]) {
-    const content = staticContent.getStudioStaticContent(locale);
-    assert.ok(content.title.trim().length > 0, `${locale} Studio title must be localized`);
-  }
-});
-
-test("Studio shell keeps <title> and the h1 in step with client-side route changes", () => {
-  const staticContent = require("../src/app/[locale]/studio/studio-static-content.ts");
-  const adminShell = readFileSync("src/app/[locale]/studio/studio-admin-shell.tsx", "utf8");
-
-  for (const locale of ["en", "vi", "fr"]) {
-    const content = staticContent.getStudioStaticContent(locale);
-    const overview = staticContent.getStudioRoutePageTitles(locale, "welcome", "Start here");
-    assert.deepEqual(overview, { heading: content.title, documentTitle: content.seoTitle, lang: content.contentLocale });
-    for (const studioModule of content.modules) {
-      // A pushState navigation must read exactly like a reload of the module URL.
-      const titles = staticContent.getStudioRoutePageTitles(locale, studioModule.id, "shell label");
-      assert.deepEqual(titles, { heading: studioModule.title, documentTitle: studioModule.seoTitle, lang: content.contentLocale });
-    }
-  }
-  assert.deepEqual(
-    staticContent.getStudioRoutePageTitles("fr", "ai-skills", "Skills IA"),
-    { heading: "Skills IA", documentTitle: "Skills IA | Engineering Studio", lang: "fr" }
-  );
-
-  const effect = adminShell.match(/useEffect\(\(\) => \{\s*const titles = getStudioRoutePageTitles[\s\S]*?\}, \[([^\]]*)\]\);/);
-  assert.ok(effect, "shell must sync titles in an effect");
-  assert.match(effect[0], /document\.title = titles\.documentTitle/);
-  assert.match(effect[0], /\[data-studio-page-heading\] h1/);
-  assert.match(effect[1], /activeRoute/);
-});
-
-test("Studio deferred shell keeps the named heading and overview slots projected", () => {
-  const React = require("react");
-  const { renderToStaticMarkup } = require("react-dom/server");
-  const shellBoundaryModule = require(
-    "../src/app/[locale]/studio/StudioShellErrorBoundary.tsx"
-  );
-  const workspace = readFileSync("src/app/[locale]/studio/StudioWorkspace.tsx", "utf8");
-  const markup = renderToStaticMarkup(React.createElement(shellBoundaryModule.StudioDeferredShellFallback));
-
-  assert.match(markup, /<slot name="studio-page-heading"><\/slot>/);
-  assert.match(markup, /<slot name="studio-loading-fallback"><\/slot>/);
-  assert.doesNotMatch(workspace, /loading:\s*\(\) => null/);
-  assert.equal(workspace.match(/loading:\s*StudioDeferredShellFallback/g)?.length, 6);
-  assert.match(workspace, /StudioShellErrorBoundary/);
-
-  const boundary = new shellBoundaryModule.default({
-    children: "shell",
-    copy: { title: "Unavailable", detail: "Reload required", reload: "Reload Studio" }
-  });
-  boundary.state = { failed: true };
-  const errorMarkup = renderToStaticMarkup(boundary.render());
-  assert.match(errorMarkup, /<slot name="studio-page-heading"><\/slot>/);
-  assert.match(errorMarkup, /<slot name="studio-loading-fallback"><\/slot>/);
-  assert.match(errorMarkup, /Reload Studio/);
-});
 
 test("one root RUM reporter covers site and Studio without losing metric precision", async () => {
   const [reporter, contextModule, rootLayout, siteLayout, analytics] = await Promise.all([

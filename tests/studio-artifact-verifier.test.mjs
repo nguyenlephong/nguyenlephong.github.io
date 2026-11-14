@@ -6,206 +6,181 @@ import {
   mkdtempSync,
   readFileSync,
   realpathSync,
-  renameSync,
   rmSync,
   symlinkSync,
   writeFileSync
 } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { tmpdir } from "node:os";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-import { verifyStudioArtifact } from "../scripts/verify-studio-artifact.mjs";
+import {
+  STUDIO_LOCALES,
+  STUDIO_MODULE_SLUGS,
+  verifyStudioArtifact
+} from "../scripts/verify-studio-artifact.mjs";
 
 const VERIFIER_SCRIPT = fileURLToPath(
   new URL("../scripts/verify-studio-artifact.mjs", import.meta.url)
 );
+const BUDGETS = { maxIndexBrotliBytes: 10_000, maxModuleBrotliBytes: 10_000 };
 
-const VIETNAMESE_ONLY_SENTINEL = "Khôi phục cách trình bày mặc định";
-const LOCALE_SENTINELS = {
-  en: "Restore layout defaults",
-  vi: VIETNAMESE_ONLY_SENTINEL,
-  zh: "恢复默认布局",
-  ja: "レイアウト既定値に戻す",
-  ko: "레이아웃 기본값 복원",
-  fr: "Restaurer les valeurs par défaut"
-};
+function jsonLd(value) {
+  return `<script type="application/ld+json">${JSON.stringify(value)}</script>`;
+}
 
-function loaderGroup(...names) {
-  const references = names
-    .map((name) => `"static/chunks/${name}.js"`)
-    .join(",");
-  return `Promise.all([${references}].map(chunk=>runtime.l(chunk)))`;
+function page({ marker, types }) {
+  return [
+    "<!doctype html><html><head>",
+    '<script src="/_next/static/chunks/initial.js" async=""></script>',
+    '<script src="/_next/static/chunks/polyfill.js" noModule=""></script>',
+    ...types.map((type) => jsonLd({ "@context": "https://schema.org", "@type": type })),
+    '</head><body><header class="app-nav"><nav></nav></header>',
+    `<main id="main-content" ${marker}><header class="studio-opener"><h1>Studio</h1></header></main>`,
+    '<footer class="app-footer"></footer></body></html>'
+  ].join("");
 }
 
 function createFixture() {
   const root = mkdtempSync(join(tmpdir(), "studio-artifact-"));
   const chunks = join(root, "_next/static/chunks");
-  mkdirSync(join(root, "en"), { recursive: true });
-  mkdirSync(join(root, "studio"), { recursive: true });
   mkdirSync(chunks, { recursive: true });
-  writeFileSync(
-    join(root, "studio/studio-shadow.css"),
-    `${'.studio-admin[data-navbar-style="scroll"]'} .studio-main { overflow: auto; }${"x".repeat(100_000)}`
-  );
-  writeFileSync(
-    join(root, "en/studio.html"),
-    '<script src="/_next/static/chunks/initial.js"></script>' +
-      '<script src="/_next/static/chunks/polyfill.js" noModule=""></script>'
-  );
-  writeFileSync(
-    join(chunks, "initial.js"),
-    [
-      "console.log('studio shell')",
-      loaderGroup("shell-en", "shell-shared", "en"),
-      loaderGroup("shell-vi", "shell-shared", "vi"),
-      loaderGroup("shell-zh", "shell-shared", "zh"),
-      loaderGroup("shell-ja", "shell-shared", "ja"),
-      loaderGroup("shell-ko", "shell-shared", "ko"),
-      loaderGroup("shell-fr", "shell-shared", "fr")
-    ].join(";")
-  );
-  writeFileSync(
-    join(chunks, "shell-en.js"),
-    [
-      loaderGroup("default", "default-shared"),
-      loaderGroup("skills"),
-      loaderGroup("checklists"),
-      loaderGroup("flow")
-    ].join(";")
-  );
-  for (const locale of ["vi", "zh", "ja", "ko", "fr"]) {
-    writeFileSync(join(chunks, `shell-${locale}.js`), `shell-${locale}`);
-  }
-  writeFileSync(join(chunks, "shell-shared.js"), "shared-shell-runtime");
-  writeFileSync(join(chunks, "default.js"), "welcome-route");
-  writeFileSync(
-    join(chunks, "default-shared.js"),
-    `default-route-sibling${"s".repeat(1_000)}`
-  );
-  writeFileSync(join(chunks, "skills.js"), "skill-library-workbench");
-  writeFileSync(join(chunks, "checklists.js"), "checklist-workbench");
-  writeFileSync(join(chunks, "flow.js"), "data-studio-flow-runtime");
-  for (const [locale, sentinel] of Object.entries(LOCALE_SENTINELS)) {
+  writeFileSync(join(chunks, "initial.js"), 'console.log("site");import("/_next/static/chunks/lazy.js")');
+  writeFileSync(join(chunks, "lazy.js"), "studio:ticks:v1");
+  writeFileSync(join(chunks, "polyfill.js"), "react-flow__ is ignored in nomodule scripts");
+  for (const locale of STUDIO_LOCALES) {
+    mkdirSync(join(root, locale, "studio"), { recursive: true });
     writeFileSync(
-      join(chunks, `${locale}.js`),
-      `${sentinel}${locale === "vi" ? "n".repeat(2_000) : ""}`
+      join(root, locale, "studio.html"),
+      page({ marker: 'data-studio-static-overview="true"', types: ["CollectionPage", "BreadcrumbList"] })
     );
+    for (const slug of STUDIO_MODULE_SLUGS) {
+      writeFileSync(
+        join(root, locale, "studio", `${slug}.html`),
+        page({ marker: `data-studio-module-page="${slug}"`, types: ["WebPage", "BreadcrumbList"] })
+      );
+    }
   }
   return root;
 }
 
-test("Studio artifact verifier counts complete Turbopack loader groups and reachable async JavaScript", () => {
+function withFixture(run) {
   const root = createFixture();
   try {
-    const summary = verifyStudioArtifact({ outDir: root });
-    assert.equal(summary.initialScripts.length, 1);
-    assert.equal(summary.js.initial.maxBrotli, 149_504);
-    assert.equal(summary.js.defaultRoute.total.maxBrotli, 204_800);
-    assert.equal(summary.defaultScripts.length, 5);
-    assert.ok(
-      summary.defaultScripts.includes("_next/static/chunks/default-shared.js")
-    );
-    assert.ok(
-      summary.defaultScripts.includes("_next/static/chunks/shell-shared.js")
-    );
-    assert.equal(summary.css.file, "studio/studio-shadow.css");
-    assert.deepEqual(
-      Object.keys(summary.lazyChunks).sort(),
-      [
-        "AI skills workbench",
-        "ReactFlow",
-        "delivery checklist workbench"
-      ].sort()
-    );
-    assert.ok(summary.asyncScripts.length > summary.defaultScripts.length);
-    assert.ok(summary.js.async.raw > summary.js.initial.raw);
-    assert.deepEqual(summary.js.reachableAsync, summary.js.async);
-    assert.equal(
-      summary.js.reachable.raw,
-      summary.js.initial.raw + summary.js.async.raw
-    );
-    assert.ok(summary.js.defaultRoute.async.raw > 0);
-    assert.equal(
-      summary.js.defaultRoute.total.raw,
-      summary.js.initial.raw + summary.js.defaultRoute.async.raw
-    );
-    assert.deepEqual(summary.localeIsolation.vietnameseChunks, [
-      "_next/static/chunks/vi.js"
-    ]);
-    assert.deepEqual(
-      Object.keys(summary.localeIsolation.locales),
-      Object.keys(LOCALE_SENTINELS)
-    );
-    assert.deepEqual(
-      summary.localeIsolation.locales.en.loaderChunks.sort(),
-      [
-        "_next/static/chunks/en.js",
-        "_next/static/chunks/shell-en.js",
-        "_next/static/chunks/shell-shared.js"
-      ].sort()
-    );
-
-    writeFileSync(
-      join(root, "_next/static/chunks/initial.js"),
-      'data-studio-flow-runtime;.studio-admin[data-navbar-style="scroll"]'
-    );
-    assert.throws(
-      () => verifyStudioArtifact({ outDir: root }),
-      /client JavaScript still embeds the full Shadow stylesheet/
-    );
+    run(root);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
+}
+
+function edit(root, relativePath, change) {
+  const file = join(root, relativePath);
+  writeFileSync(file, change(readFileSync(file, "utf8")));
+}
+
+test("Studio artifact verifier checks every locale's index and three module pages", () => {
+  withFixture((root) => {
+    const summary = verifyStudioArtifact({ outDir: root, ...BUDGETS });
+    assert.equal(summary.pageCount, 24);
+    assert.deepEqual(
+      summary.pages.slice(0, 4).map((entry) => entry.path),
+      ["en/studio.html", "en/studio/checklists.html", "en/studio/system-maps.html", "en/studio/ai-setup.html"]
+    );
+    assert.deepEqual(summary.pages[0].initialScripts, ["_next/static/chunks/initial.js"]);
+    assert.equal(summary.pages[0].reachableScripts, 2);
+    assert.ok(summary.js.index.maxMeasuredBrotli > 0);
+    assert.equal(summary.js.module.maxBrotli, 10_000);
+  });
 });
 
-test("Studio artifact verifier rejects representative feature code in direct scripts", () => {
-  const root = createFixture();
-  try {
-    const initialPath = join(root, "_next/static/chunks/initial.js");
+test("Studio artifact verifier reads both budgets from the shared config", () => {
+  withFixture((root) => {
+    const configPath = join(root, "budgets.json");
     writeFileSync(
-      initialPath,
-      `${readFileSync(initialPath, "utf8")};skill-library-workbench`
+      configPath,
+      JSON.stringify({
+        performance: { routeInitialJavaScript: { studio: { maxBrotliBytes: 9_000, maxModuleBrotliBytes: 9_500 } } }
+      })
+    );
+    const summary = verifyStudioArtifact({ outDir: root, configPath });
+    assert.equal(summary.js.index.maxBrotli, 9_000);
+    assert.equal(summary.js.module.maxBrotli, 9_500);
+  });
+});
+
+test("Studio artifact verifier rejects a missing module page and broken page structure", () => {
+  withFixture((root) => {
+    rmSync(join(root, "vi/studio/system-maps.html"));
+    edit(root, "fr/studio.html", (html) => html.replace("</main>", "<h1>Again</h1></main>"));
+    edit(root, "ja/studio/checklists.html", (html) => html.replace('class="app-nav"', 'class="studio-topbar"'));
+    edit(root, "ko/studio/ai-setup.html", (html) => html.replace('"WebPage"', '"Thing"'));
+    edit(root, "zh/studio.html", (html) => html.replace('data-studio-static-overview="true"', ""));
+    assert.throws(
+      () => verifyStudioArtifact({ outDir: root, ...BUDGETS }),
+      (error) => {
+        assert.match(error.message, /Missing Studio page: vi\/studio\/system-maps\.html/);
+        assert.match(error.message, /fr\/studio\.html must contain exactly one H1; found 2/);
+        assert.match(error.message, /ja\/studio\/checklists\.html must render inside the site header and footer/);
+        assert.match(error.message, /ko\/studio\/ai-setup\.html JSON-LD is missing WebPage/);
+        assert.match(error.message, /zh\/studio\.html is missing its static index marker/);
+        return true;
+      }
+    );
+  });
+});
+
+test("Studio artifact verifier rejects the removed shadow shell and a lazy React Flow chunk", () => {
+  withFixture((root) => {
+    edit(root, "en/studio.html", (html) =>
+      html.replace("<main", '<div data-studio-shadow-host="true"></div><link rel="stylesheet" href="/studio/studio-shadow.css"><main')
+    );
+    writeFileSync(join(root, "_next/static/chunks/lazy.js"), 'class="react-flow__renderer"');
+    assert.throws(
+      () => verifyStudioArtifact({ outDir: root, ...BUDGETS }),
+      (error) => {
+        assert.match(error.message, /en\/studio\.html still references the removed Studio shell: data-studio-shadow-host/);
+        assert.match(error.message, /en\/studio\.html still references the removed Studio shell: studio-shadow\.css/);
+        assert.match(error.message, /reachable JavaScript contains react-flow__: _next\/static\/chunks\/lazy\.js/);
+        return true;
+      }
+    );
+  });
+});
+
+test("Studio artifact verifier enforces the initial JavaScript budgets and their ceiling", () => {
+  withFixture((root) => {
+    assert.throws(
+      () => verifyStudioArtifact({ outDir: root, maxIndexBrotliBytes: 1, maxModuleBrotliBytes: 10_000 }),
+      /en\/studio\.html initial JavaScript Brotli bytes \d+ exceed 1/
     );
     assert.throws(
-      () => verifyStudioArtifact({ outDir: root }),
-      /AI skills workbench runtime is eagerly loaded/
+      () => verifyStudioArtifact({ outDir: root, maxIndexBrotliBytes: 10_000, maxModuleBrotliBytes: 1 }),
+      /en\/studio\/checklists\.html initial JavaScript Brotli bytes \d+ exceed 1/
     );
-  } finally {
-    rmSync(root, { recursive: true, force: true });
-  }
+    assert.throws(
+      () => verifyStudioArtifact({ outDir: root, maxIndexBrotliBytes: 256_000, maxModuleBrotliBytes: 10_000 }),
+      /index initial JavaScript Brotli budget must stay below 250 KiB/
+    );
+  });
 });
 
 test("Studio artifact verifier rejects scripts symlinked outside the artifact root", () => {
-  const root = createFixture();
-  const outsideRoot = mkdtempSync(join(tmpdir(), "studio-artifact-outside-"));
-  try {
-    const initialPath = join(root, "_next/static/chunks/initial.js");
-    const outsidePath = join(outsideRoot, "initial.js");
-    writeFileSync(outsidePath, readFileSync(initialPath));
-    rmSync(initialPath);
-    symlinkSync(outsidePath, initialPath);
-
-    assert.throws(
-      () => verifyStudioArtifact({ outDir: root }),
-      /artifact path resolves outside its root/
-    );
-  } finally {
-    rmSync(root, { recursive: true, force: true });
-    rmSync(outsideRoot, { recursive: true, force: true });
-  }
-});
-
-test("Studio artifact verifier rejects unsupported locales before reading HTML", () => {
-  const root = createFixture();
-  try {
-    assert.throws(
-      () => verifyStudioArtifact({ outDir: root, locale: "../../outside" }),
-      /Unsupported Studio artifact locale/
-    );
-  } finally {
-    rmSync(root, { recursive: true, force: true });
-  }
+  withFixture((root) => {
+    const outsideRoot = mkdtempSync(join(tmpdir(), "studio-artifact-outside-"));
+    try {
+      const initialPath = join(root, "_next/static/chunks/initial.js");
+      const outsidePath = join(outsideRoot, "initial.js");
+      writeFileSync(outsidePath, readFileSync(initialPath));
+      rmSync(initialPath);
+      symlinkSync(outsidePath, initialPath);
+      assert.throws(
+        () => verifyStudioArtifact({ outDir: root, ...BUDGETS }),
+        /artifact path resolves outside its root/
+      );
+    } finally {
+      rmSync(outsideRoot, { recursive: true, force: true });
+    }
+  });
 });
 
 test("Studio artifact verifier CLI rejects caller-controlled artifact roots", () => {
@@ -222,7 +197,7 @@ test("Studio artifact verifier CLI rejects a fixed out path symlinked outside it
   const cliRoot = mkdtempSync(join(tmpdir(), "studio-artifact-cli-"));
   try {
     const copiedScript = join(cliRoot, "scripts/verify-studio-artifact.mjs");
-    mkdirSync(join(cliRoot, "scripts"), { recursive: true });
+    mkdirSync(dirname(copiedScript), { recursive: true });
     copyFileSync(VERIFIER_SCRIPT, copiedScript);
     symlinkSync(artifactRoot, join(cliRoot, "out"), "dir");
 
@@ -235,122 +210,5 @@ test("Studio artifact verifier CLI rejects a fixed out path symlinked outside it
   } finally {
     rmSync(cliRoot, { recursive: true, force: true });
     rmSync(artifactRoot, { recursive: true, force: true });
-  }
-});
-
-test("Studio artifact verifier validates the chunks directory before enumeration", () => {
-  const root = createFixture();
-  const outsideRoot = mkdtempSync(join(tmpdir(), "studio-chunks-outside-"));
-  try {
-    const chunksPath = join(root, "_next/static/chunks");
-    const outsideChunks = join(outsideRoot, "chunks");
-    copyFileSync(join(chunksPath, "initial.js"), join(root, "initial.js"));
-    writeFileSync(
-      join(root, "en/studio.html"),
-      '<script src="/initial.js"></script>'
-    );
-    renameSync(chunksPath, outsideChunks);
-    symlinkSync(outsideChunks, chunksPath, "dir");
-
-    assert.throws(
-      () => verifyStudioArtifact({ outDir: root }),
-      /artifact path resolves outside its root/
-    );
-  } finally {
-    rmSync(root, { recursive: true, force: true });
-    rmSync(outsideRoot, { recursive: true, force: true });
-  }
-});
-
-test("Studio artifact verifier rejects an all-route preload in the default loader group", () => {
-  const root = createFixture();
-  try {
-    const shellPath = join(root, "_next/static/chunks/shell-en.js");
-    const source = readFileSync(shellPath, "utf8").replace(
-      loaderGroup("default", "default-shared"),
-      loaderGroup("default", "default-shared", "skills")
-    );
-    writeFileSync(shellPath, source);
-    assert.throws(
-      () => verifyStudioArtifact({ outDir: root }),
-      /AI skills workbench runtime is preloaded by the Studio default route/
-    );
-  } finally {
-    rmSync(root, { recursive: true, force: true });
-  }
-});
-
-test("Studio artifact verifier rejects Vietnamese copy in English initial or default chunks", () => {
-  const root = createFixture();
-  try {
-    writeFileSync(
-      join(root, "_next/static/chunks/default.js"),
-      `welcome-route;${VIETNAMESE_ONLY_SENTINEL}`
-    );
-    assert.throws(
-      () => verifyStudioArtifact({ outDir: root }),
-      /Vietnamese-only Studio copy leaked into the English initial\/default chunks/
-    );
-  } finally {
-    rmSync(root, { recursive: true, force: true });
-  }
-});
-
-test("Studio artifact verifier requires an isolated loader for every locale", () => {
-  const root = createFixture();
-  try {
-    const initialPath = join(root, "_next/static/chunks/initial.js");
-    const source = readFileSync(initialPath, "utf8").replace(
-      loaderGroup("shell-zh", "shell-shared", "zh"),
-      loaderGroup("shell-zh", "shell-shared", "zh", "en")
-    );
-    writeFileSync(initialPath, source);
-    assert.throws(
-      () => verifyStudioArtifact({ outDir: root }),
-      /Studio zh locale loader includes other locale chunks: en, zh/
-    );
-  } finally {
-    rmSync(root, { recursive: true, force: true });
-  }
-});
-
-test("Studio artifact verifier fails a direct Brotli budget at or above 250 KiB", () => {
-  const root = createFixture();
-  try {
-    assert.throws(
-      () =>
-        verifyStudioArtifact({ outDir: root, maxInitialBrotliBytes: 256_000 }),
-      /budget must stay below 250 KiB/
-    );
-    assert.throws(
-      () => verifyStudioArtifact({ outDir: root, maxInitialBrotliBytes: 1 }),
-      /initial JavaScript Brotli bytes .* exceed 1/
-    );
-  } finally {
-    rmSync(root, { recursive: true, force: true });
-  }
-});
-
-test("Studio artifact verifier hard-gates the complete default loader group", () => {
-  const root = createFixture();
-  try {
-    assert.throws(
-      () =>
-        verifyStudioArtifact({
-          outDir: root,
-          maxDefaultRouteBrotliBytes: 225_280
-        }),
-      /default-route JavaScript Brotli budget must stay below 220 KiB/
-    );
-    assert.throws(
-      () =>
-        verifyStudioArtifact({
-          outDir: root,
-          maxDefaultRouteBrotliBytes: 1
-        }),
-      /default-route JavaScript Brotli bytes .* exceed 1/
-    );
-  } finally {
-    rmSync(root, { recursive: true, force: true });
   }
 });
