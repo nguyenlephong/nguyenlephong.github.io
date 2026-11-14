@@ -50,7 +50,7 @@
     }
   },
   "Footer": {
-    "tag": "Zalo PC Lead Software Engineer・BonBon Mobility 共同創業者（パートタイム）",
+    "tag": "Zalo PC Lead Software Engineer・BonBon Mobility 共同創業者",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "言語",
     "sitemap": "サイトマップ",
@@ -66,7 +66,6 @@
     "newsCta": "記事を読む",
     "role": "Lead Software Engineer",
     "cofounder": "共同創業者",
-    "partTime": "（パートタイム）",
     "claim": "自分でもコードを書くエンジニアリングリード。重要なコードは自分で書き、リスクのある変更は戻せる小さな単位でリリースします。",
     "bio": "2018 年からソフトウェアを届けてきました。受託開発会社、CDP プロダクト企業、Zalo を経て、共同創業したスタートアップへ。",
     "location": "ベトナム・ホーチミン市",
@@ -79,7 +78,7 @@
       "bonbonNote": "Tasco リードの 50 万ドル プレシード",
       "previousNote": "デリバリーリード · 開発 8 + QC 3",
       "zaloMeta": "Lead · フルタイム · <date>2026年3月</date>から",
-      "bonbonMeta": "共同創業者 · パートタイム · <date>2026年4月</date>から",
+      "bonbonMeta": "共同創業者 · <date>2026年4月</date>から",
       "previousMeta": "前職 · <date>2025年8月 – 2026年3月</date>"
     }
   },
@@ -104,7 +103,7 @@
       },
       "zeroToPilot": {
         "tab": "ゼロからパイロットへ",
-        "meta": "BonBon Mobility · 共同創業者（パートタイム）",
+        "meta": "BonBon Mobility · 共同創業者",
         "figure": "3 か月",
         "figureLabel": "MVP から実地パイロットまで",
         "title": "ゼロからのプロダクトを、パートナーのアプリの中で",
@@ -112,7 +111,7 @@
       },
       "multiTenant": {
         "tab": "マルチテナント SaaS",
-        "meta": "LogiUP · Tech Lead（パートタイム）",
+        "meta": "LogiUP · Tech Lead",
         "figure": "9 リポジトリ",
         "figureLabel": "1 つのマルチテナント設計、4 人のチーム",
         "title": "顧客ごとのデータがきちんと分かれた物流 SaaS",
@@ -255,7 +254,7 @@
     "logiup": {
       "name": "LogiUP",
       "kind": "マルチテナント型の物流SaaS",
-      "role": "テックリード兼システムアーキテクト（パートタイム）",
+      "role": "テックリード兼システムアーキテクト",
       "period": "2026年3月 – 現在",
       "context": "顧客ごとに専用のサブドメインを持ち、データが他テナントに漏れてはならない物流SaaSです。Web と Electron デスクトップアプリで動きます。4人のチームを率い、アーキテクチャに責任を持っています。",
       "decisions": {
@@ -272,7 +271,7 @@
     "bonbon": {
       "name": "BonBon Mobility",
       "kind": "VETC アプリ内の洗車・整備予約",
-      "role": "共同創業者（パートタイム）",
+      "role": "共同創業者",
       "period": "2026年4月 – 現在",
       "context": "BonBon は車のオーナーと洗車・整備ガレージをつなぐサービスです。共同創業者として、VETC アプリ内で動く12画面の Mini App として製品を作りました。VETC のユーザーは2026年4月時点で<b>430万人</b>（Tasco 発表）。リリースはすべて VETC の変更承認とセキュリティプロセス（OWASP レビュー、独立したペネトレーションテスト）を通ります。",
       "decisions": {
@@ -417,7 +416,7 @@
   "SEO": {
     "home": {
       "title": "Nguyen Le Phong | Lead Software Engineer・BonBon Mobility 共同創業者",
-      "description": "Zalo PC の Lead Software Engineer。パートタイムで BonBon Mobility 共同創業者（Tasco リードの 50 万ドル プレシード）、LogiUP の Tech Lead。PC からモバイルへのバックアップ、マルチテナント SaaS。"
+      "description": "Zalo PC の Lead Software Engineer。BonBon Mobility 共同創業者（Tasco リードの 50 万ドル プレシード）、LogiUP の Tech Lead。PC からモバイルへのバックアップ、マルチテナント SaaS。"
     },
     "about": {
       "title": "Nguyen Le Phong について：Zalo PC の Lead、BonBon 共同創業者",

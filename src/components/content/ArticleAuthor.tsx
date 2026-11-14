@@ -54,7 +54,7 @@ export async function ArticleAuthorBox({ locale, name }: ArticleAuthorProps) {
       <ul className="article-author__roles">
         <li>{hero('role')} @ Zalo PC</li>
         <li>
-          {hero('cofounder')} @ BonBon Mobility {hero('partTime')}
+          {hero('cofounder')} @ BonBon Mobility
         </li>
       </ul>
       <p className="article-author__claim">{hero('claim')}</p>

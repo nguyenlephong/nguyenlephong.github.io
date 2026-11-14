@@ -23,7 +23,7 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
     path: '',
     name: 'Home',
     description:
-      'Lead Software Engineer at Zalo PC and part-time co-founder of BonBon Mobility: profile, experience and signature projects.',
+      'Lead Software Engineer at Zalo PC and co-founder of BonBon Mobility: profile, experience and signature projects.',
   },
   {
     id: 'about',

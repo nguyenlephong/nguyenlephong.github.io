@@ -50,7 +50,7 @@
     }
   },
   "Footer": {
-    "tag": "Zalo PC Lead Software Engineer · BonBon Mobility 联合创始人（兼职）",
+    "tag": "Zalo PC Lead Software Engineer · BonBon Mobility 联合创始人",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "语言",
     "sitemap": "站点地图",
@@ -66,7 +66,6 @@
     "newsCta": "阅读全文",
     "role": "Lead Software Engineer",
     "cofounder": "联合创始人",
-    "partTime": "（兼职）",
     "claim": "亲自写代码的工程负责人。关键代码我自己写，有风险的改动拆成可回滚的小步发布。",
     "bio": "2018 年起做软件交付：外包公司、CDP 产品公司、Zalo，再到我联合创办的创业公司。",
     "location": "越南胡志明市",
@@ -79,7 +78,7 @@
       "bonbonNote": "Tasco 领投 50 万美元 Pre-seed",
       "previousNote": "交付负责人 · 8 开发 + 3 QC",
       "zaloMeta": "Lead · 全职 · <date>2026年3月</date>起",
-      "bonbonMeta": "联合创始人 · 兼职 · <date>2026年4月</date>起",
+      "bonbonMeta": "联合创始人 · <date>2026年4月</date>起",
       "previousMeta": "上一段 · <date>2025年8月 – 2026年3月</date>"
     }
   },
@@ -104,7 +103,7 @@
       },
       "zeroToPilot": {
         "tab": "从零到试点",
-        "meta": "BonBon Mobility · 联合创始人（兼职）",
+        "meta": "BonBon Mobility · 联合创始人",
         "figure": "3 个月",
         "figureLabel": "从 MVP 到实地试点",
         "title": "在合作方的 App 里，从零做出一个产品",
@@ -112,7 +111,7 @@
       },
       "multiTenant": {
         "tab": "多租户 SaaS",
-        "meta": "LogiUP · Tech Lead（兼职）",
+        "meta": "LogiUP · Tech Lead",
         "figure": "9 个仓库",
         "figureLabel": "一套多租户架构，四人团队",
         "title": "每个客户的数据各自独立的物流 SaaS",
@@ -255,7 +254,7 @@
     "logiup": {
       "name": "LogiUP",
       "kind": "多租户物流 SaaS",
-      "role": "技术负责人兼系统架构师（兼职）",
+      "role": "技术负责人兼系统架构师",
       "period": "2026年3月 – 至今",
       "context": "这是一套物流 SaaS，每个客户有独立子域名，数据绝不能流到其他租户。产品运行在 Web 和 Electron 桌面应用上。我带一个四人团队，并对架构负责。",
       "decisions": {
@@ -272,7 +271,7 @@
     "bonbon": {
       "name": "BonBon Mobility",
       "kind": "VETC 应用内的洗车与养护预约",
-      "role": "联合创始人（兼职）",
+      "role": "联合创始人",
       "period": "2026年4月 – 至今",
       "context": "BonBon 连接车主与洗车、养护门店。作为联合创始人，我把产品做成运行在 VETC 应用内的 12 屏 Mini App。据 Tasco 公布，VETC 截至 2026年4月有 <b>430 万</b>用户。每次发布都要经过 VETC 的变更审批和安全流程，其中包括 OWASP 审查和一次独立渗透测试。",
       "decisions": {
@@ -417,7 +416,7 @@
   "SEO": {
     "home": {
       "title": "Nguyen Le Phong | Lead Software Engineer，BonBon Mobility 联合创始人",
-      "description": "Zalo PC Lead Software Engineer；兼职担任 BonBon Mobility 联合创始人（Tasco 领投 50 万美元 Pre-seed 轮）和 LogiUP Tech Lead。PC 到移动端消息备份、多租户 SaaS。"
+      "description": "Zalo PC Lead Software Engineer；同时担任 BonBon Mobility 联合创始人（Tasco 领投 50 万美元 Pre-seed 轮）和 LogiUP Tech Lead。PC 到移动端消息备份、多租户 SaaS。"
     },
     "about": {
       "title": "关于 Nguyen Le Phong：Zalo PC Lead，BonBon 联合创始人",

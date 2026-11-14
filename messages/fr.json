@@ -50,7 +50,7 @@
     }
   },
   "Footer": {
-    "tag": "Lead Software Engineer chez Zalo PC · Cofondateur de BonBon Mobility (temps partiel)",
+    "tag": "Lead Software Engineer chez Zalo PC · Cofondateur de BonBon Mobility",
     "copy": "© {year} Nguyen Le Phong.",
     "language": "Langue",
     "sitemap": "Plan du site",
@@ -66,7 +66,6 @@
     "newsCta": "Lire l’article",
     "role": "Lead Software Engineer",
     "cofounder": "Cofondateur",
-    "partTime": "(temps partiel)",
     "claim": "Lead technique qui code encore. J'écris moi-même le code critique et je livre les changements risqués par petites étapes réversibles.",
     "bio": "Je livre du logiciel depuis 2018 : une agence d'outsourcing, un éditeur de CDP, Zalo, puis une startup que j'ai cofondée.",
     "location": "Hô Chi Minh-Ville, Vietnam",
@@ -79,7 +78,7 @@
       "bonbonNote": "pre-seed de 500 000 $, menée par Tasco",
       "previousNote": "lead delivery · 8 dev + 3 QC",
       "zaloMeta": "Lead · temps plein · depuis <date>mars 2026</date>",
-      "bonbonMeta": "Cofondateur · temps partiel · depuis <date>avr. 2026</date>",
+      "bonbonMeta": "Cofondateur · depuis <date>avr. 2026</date>",
       "previousMeta": "précédent · <date>août 2025 – mars 2026</date>"
     }
   },
@@ -104,7 +103,7 @@
       },
       "zeroToPilot": {
         "tab": "De zéro au pilote",
-        "meta": "BonBon Mobility · Cofondateur, temps partiel",
+        "meta": "BonBon Mobility · Cofondateur",
         "figure": "3 mois",
         "figureLabel": "du MVP à un pilote terrain",
         "title": "Construire un produit de zéro, dans l'application d'un partenaire",
@@ -112,7 +111,7 @@
       },
       "multiTenant": {
         "tab": "SaaS multi-tenant",
-        "meta": "LogiUP · Tech Lead, temps partiel",
+        "meta": "LogiUP · Tech Lead",
         "figure": "9 dépôts",
         "figureLabel": "une architecture multi-tenant, une équipe de quatre",
         "title": "Un SaaS logistique où les données de chaque client restent à part",
@@ -255,7 +254,7 @@
     "logiup": {
       "name": "LogiUP",
       "kind": "SaaS logistique multi-tenant",
-      "role": "Tech Lead, architecte système (temps partiel)",
+      "role": "Tech Lead, architecte système",
       "period": "mars 2026 – auj.",
       "context": "Chaque client a son sous-domaine, et ses données ne doivent jamais fuiter vers un autre tenant. Web et app desktop Electron. Je dirige une équipe de quatre et je porte l'architecture.",
       "decisions": {
@@ -272,7 +271,7 @@
     "bonbon": {
       "name": "BonBon Mobility",
       "kind": "Réservation d'entretien auto dans l'app VETC",
-      "role": "Cofondateur (temps partiel)",
+      "role": "Cofondateur",
       "period": "avr. 2026 – auj.",
       "context": "BonBon relie les automobilistes aux garages de lavage et d'entretien. Cofondateur, j'ai construit le produit : une Mini App de 12 écrans dans l'app VETC (<b>4,3 M d'utilisateurs</b> en avril 2026, selon Tasco). Chaque release passe par la validation des changements de VETC et son processus de sécurité : revue OWASP et pentest indépendant.",
       "decisions": {
@@ -417,7 +416,7 @@
   "SEO": {
     "home": {
       "title": "Nguyen Le Phong | Lead Software Engineer · Cofondateur BonBon",
-      "description": "Lead Software Engineer chez Zalo PC et cofondateur à temps partiel de BonBon Mobility (pre-seed de 500 000 $ menée par Tasco). Messagerie à grande échelle, déploiements sûrs, SaaS multi-tenant."
+      "description": "Lead Software Engineer chez Zalo PC et cofondateur de BonBon Mobility (pre-seed de 500 000 $ menée par Tasco). Messagerie à grande échelle, déploiements sûrs, SaaS multi-tenant."
     },
     "about": {
       "title": "À propos de Nguyen Le Phong : Lead Zalo PC, cofondateur BonBon",

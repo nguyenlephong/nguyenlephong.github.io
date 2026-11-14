@@ -51,7 +51,7 @@
     }
   },
   "Footer": {
-    "tag": "Lead Software Engineer tại Zalo PC · Đồng sáng lập BonBon Mobility (bán thời gian)",
+    "tag": "Lead Software Engineer tại Zalo PC · Đồng sáng lập BonBon Mobility",
     "copy": "© {year} Nguyễn Lê Phong.",
     "language": "Ngôn ngữ",
     "sitemap": "Sơ đồ trang",
@@ -67,7 +67,6 @@
     "newsCta": "Đọc bài",
     "role": "Lead Software Engineer",
     "cofounder": "Đồng sáng lập",
-    "partTime": "(bán thời gian)",
     "claim": "Tôi dẫn team và vẫn tự viết những phần code quan trọng. Thay đổi rủi ro thì ship từng bước nhỏ, có sự cố là rollback được.",
     "bio": "Làm phần mềm từ 2018, qua công ty outsource, công ty sản phẩm CDP, Zalo, rồi tự đồng sáng lập một startup.",
     "location": "TP. Hồ Chí Minh, Việt Nam",
@@ -80,7 +79,7 @@
       "bonbonNote": "pre-seed 500.000 USD, Tasco dẫn dắt",
       "previousNote": "dẫn team delivery · 8 dev + 3 QC",
       "zaloMeta": "Lead · toàn thời gian · từ <date>03/2026</date>",
-      "bonbonMeta": "Đồng sáng lập · bán thời gian · từ <date>04/2026</date>",
+      "bonbonMeta": "Đồng sáng lập · từ <date>04/2026</date>",
       "previousMeta": "trước đó · <date>08/2025 – 03/2026</date>"
     }
   },
@@ -105,7 +104,7 @@
       },
       "zeroToPilot": {
         "tab": "Từ 0 tới pilot",
-        "meta": "BonBon Mobility · Đồng sáng lập, bán thời gian",
+        "meta": "BonBon Mobility · Đồng sáng lập",
         "figure": "3 tháng",
         "figureLabel": "từ MVP đến pilot thực địa",
         "title": "Làm sản phẩm từ con số không, chạy ngay trong app của đối tác",
@@ -113,7 +112,7 @@
       },
       "multiTenant": {
         "tab": "SaaS multi-tenant",
-        "meta": "LogiUP · Tech Lead, bán thời gian",
+        "meta": "LogiUP · Tech Lead",
         "figure": "9 repo",
         "figureLabel": "một kiến trúc multi-tenant, team bốn người",
         "title": "SaaS logistics mà dữ liệu mỗi khách hàng nằm riêng",
@@ -256,7 +255,7 @@
     "logiup": {
       "name": "LogiUP",
       "kind": "SaaS logistics multi-tenant",
-      "role": "Tech Lead kiêm system architect (bán thời gian)",
+      "role": "Tech Lead kiêm system architect",
       "period": "03/2026 – nay",
       "context": "Mỗi khách hàng có subdomain riêng. Dữ liệu của họ không được phép lọt sang tenant khác. Sản phẩm chạy trên web và app desktop Electron. Tôi dẫn team bốn người và quyết kiến trúc.",
       "decisions": {
@@ -273,7 +272,7 @@
     "bonbon": {
       "name": "BonBon Mobility",
       "kind": "Đặt lịch chăm sóc xe ngay trong app VETC",
-      "role": "Đồng sáng lập (bán thời gian)",
+      "role": "Đồng sáng lập",
       "period": "04/2026 – nay",
       "context": "BonBon kết nối chủ xe với garage và tiệm rửa xe. Tôi đồng sáng lập và trực tiếp làm sản phẩm: một Mini App 12 màn hình chạy trong app VETC, nơi có <b>4,3 triệu người dùng</b> theo số Tasco công bố tháng 4/2026. Mỗi lần release đều phải qua quy trình duyệt thay đổi và quy trình bảo mật của VETC, gồm OWASP review và một đợt pentest độc lập.",
       "decisions": {
@@ -316,7 +315,7 @@
   "SEO": {
     "home": {
       "title": "Nguyễn Lê Phong | Lead Software Engineer · Đồng sáng lập BonBon",
-      "description": "Lead Software Engineer tại Zalo PC, đồng sáng lập BonBon (bán thời gian), pre-seed 500.000 USD do Tasco dẫn dắt. Nhắn tin quy mô lớn, rollout an toàn."
+      "description": "Lead Software Engineer tại Zalo PC, đồng sáng lập BonBon Mobility, pre-seed 500.000 USD do Tasco dẫn dắt. Nhắn tin quy mô lớn, rollout an toàn."
     },
     "about": {
       "title": "Về Nguyễn Lê Phong: Lead ở Zalo PC, đồng sáng lập BonBon",

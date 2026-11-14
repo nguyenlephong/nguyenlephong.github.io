@@ -8,7 +8,7 @@ export const PROFILE_OG_CONTENT = {
   title: 'Lead Software Engineer · Zalo PC',
   titleSize: 64,
   subtitle:
-    'Part-time co-founder of BonBon Mobility ($500K pre-seed led by Tasco). Messaging at scale, safe rollouts, multi-tenant SaaS.',
+    'Co-founder of BonBon Mobility ($500K pre-seed led by Tasco). Messaging at scale, safe rollouts, multi-tenant SaaS.',
   chips: ['Co-founder · BonBon', 'PC backup → mobile restore', 'React · Electron', 'Platform reliability'],
   badge: { label: 'Zalo PC', value: '18M+ MAU' },
   footer: 'Lead since Mar 2026 · Ho Chi Minh City, Vietnam',
@@ -18,7 +18,7 @@ export const PROFILE_OG_CONTENT_VI = {
   ...PROFILE_OG_CONTENT,
   eyebrow: 'Nguyễn Lê Phong',
   subtitle:
-    'Đồng sáng lập BonBon (bán thời gian), pre-seed 500.000 USD do Tasco dẫn dắt. Nhắn tin quy mô lớn, rollout an toàn, SaaS multi-tenant.',
+    'Đồng sáng lập BonBon Mobility, pre-seed 500.000 USD do Tasco dẫn dắt. Nhắn tin quy mô lớn, rollout an toàn, SaaS multi-tenant.',
   chips: ['Đồng sáng lập · BonBon', 'Backup PC → khôi phục trên mobile', 'React · Electron', 'Platform reliability'],
   badge: { label: 'Zalo PC · hơn', value: '18 triệu MAU' },
   footer: 'Lead từ 03/2026 · TP. Hồ Chí Minh',

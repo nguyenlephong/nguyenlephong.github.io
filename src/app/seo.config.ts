@@ -26,7 +26,7 @@ export function displayName(locale: string): string {
 export const PAGE_SEO = {
   home: {
     ogAlt:
-      'Nguyen Le Phong, Lead Software Engineer at Zalo PC and part-time co-founder of BonBon Mobility',
+      'Nguyen Le Phong, Lead Software Engineer at Zalo PC and co-founder of BonBon Mobility',
   },
   about: {
     ogAlt:

@@ -66,8 +66,7 @@ export default function Hero() {
                 }}
               >
                 BonBon Mobility
-              </a>{' '}
-              <span className="hero-role-type">{t('partTime')}</span>
+              </a>
             </li>
           </ul>
           <p className="hero-bio">{t('bio')}</p>
