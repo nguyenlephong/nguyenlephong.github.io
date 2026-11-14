@@ -205,19 +205,14 @@ async function assertArtifacts() {
     )
   }
 
-  const heavyweightChunks = { ReactFlow: [] }
+  // The Studio canvas was React Flow's only consumer; its runtime must not return to the
+  // export at all, let alone to the install precache.
+  const reactFlowChunks = []
   for (const asset of runtimeAssets.filter((value) => value.endsWith('.js'))) {
     const source = await fs.readFile(path.join(OUT_DIR, asset.slice(1)), 'utf8')
-    if (source.includes('ReactFlowProvider')) heavyweightChunks.ReactFlow.push(asset)
+    if (source.includes('ReactFlowProvider')) reactFlowChunks.push(asset)
   }
-  for (const [library, assets] of Object.entries(heavyweightChunks)) {
-    assert.ok(assets.length > 0, `expected to identify the ${library} runtime chunk`)
-    assert.equal(
-      assets.some((asset) => shell.includes(asset)),
-      false,
-      `${library} chunks must not enter the install precache`,
-    )
-  }
+  assert.deepEqual(reactFlowChunks, [], 'the export must not ship a ReactFlow runtime chunk')
   assert.equal(typeof manifest.shared?.pageVersions?.[`/${LOCALE}.html`], 'string')
   assert.match(swSource, /offline-shell-/)
   assert.match(swSource, /OFFLINE_CACHE_READY/)

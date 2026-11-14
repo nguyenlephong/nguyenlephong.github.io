@@ -105,7 +105,7 @@ const REQUIRED_CLIENT_MESSAGE_SCOPES = {
   blog: ["site", "blog"],
   notes: ["site", "notes"],
   gallery: ["site", "gallery"],
-  studio: []
+  studio: ["site"]
 };
 
 function localizedPath(locale, surface, extension) {
@@ -244,15 +244,13 @@ function createFixture(t, overrides = {}) {
         )
       },
       studioInitialRuntime: {
-        requiredMarkers: ["data-studio-shadow-host"],
-        requiredReachableMarkers: ["studio_route_open", "data-studio-module"],
-        forbiddenMarkers: ["data-studio-flow-runtime", "getFirestore"],
+        forbiddenMarkers: [
+          "data-studio-shadow-host",
+          "data-studio-flow-runtime",
+          "getFirestore"
+        ],
         maxInitialDocumentCssBrotliBytes:
           overrides.maxInitialDocumentCssBrotliBytes ?? 10_000,
-        requiredShadowCssFiles: ["studio/studio-shadow.css"],
-        maxShadowCssBrotliBytes: overrides.maxShadowCssBrotliBytes ?? 10_000,
-        maxTotalInitialCssBrotliBytes:
-          overrides.maxTotalInitialCssBrotliBytes ?? 20_000,
         allowedExternalStylesheetOrigins:
           overrides.allowedExternalStylesheetOrigins ?? [],
         allowedThirdPartyConnectionOrigins: ["https://analytics.example"]
@@ -263,11 +261,11 @@ function createFixture(t, overrides = {}) {
 
   writeFileSync(
     path.join(chunksDir, "initial.js"),
-    "data-studio-shadow-host;data-deferred-post-stats;static/chunks/studio-runtime.js;globalThis.site=true"
+    "data-deferred-post-stats;static/chunks/studio-runtime.js;globalThis.site=true"
   );
   writeFileSync(
     path.join(chunksDir, "studio-runtime.js"),
-    "studio_route_open;data-studio-module;/studio/studio-shadow.css"
+    "studio_checklist_item_toggle;studio:ticks:v1"
   );
   writeFileSync(
     path.join(chunksDir, "document.css"),
@@ -280,11 +278,6 @@ function createFixture(t, overrides = {}) {
       selectors.map((selector) => `${selector}{display:block}`).join("")
     );
   }
-  mkdirSync(path.join(outDir, "studio"), { recursive: true });
-  writeFileSync(
-    path.join(outDir, "studio/studio-shadow.css"),
-    ".studio-admin{display:block}"
-  );
   for (const locale of LOCALES) {
     for (const surface of Object.keys(SURFACE_ROUTES)) {
       const html = localizedPath(locale, surface, "html");
@@ -381,8 +374,8 @@ function createFixture(t, overrides = {}) {
 test("derives future-safe client message scopes from localized route shape", () => {
   const cases = [
     ["en.txt", ["site", "home"]],
-    ["vi/studio.txt", []],
-    ["fr/studio/settings.txt", []],
+    ["vi/studio.txt", ["site"]],
+    ["fr/studio/settings.txt", ["site"]],
     ["ja/gallery.txt", ["site", "gallery"]],
     ["ja/gallery/archive.txt", ["site"]],
     ["en/blog.txt", ["site", "blog"]],
@@ -441,9 +434,9 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
   assert.equal(report.rsc.localizedSurfaceMetrics.blog.sampleCount, 6);
   assert.equal(report.clientMessages.routeCount, 30);
   assert.equal(report.clientMessages.routes.length, 30);
-  assert.equal(report.clientMessages.providerCount, 48);
-  assert.equal(report.clientMessages.expectedProviderCount, 48);
-  assert.equal(report.clientMessages.scopeCounts.site, 24);
+  assert.equal(report.clientMessages.providerCount, 54);
+  assert.equal(report.clientMessages.expectedProviderCount, 54);
+  assert.equal(report.clientMessages.scopeCounts.site, 30);
   assert.equal(report.clientMessages.scopeCounts.gallery, 6);
   assert.deepEqual(report.archiveInitialRuntime.blog, {
     missingMarkers: [],
@@ -466,15 +459,10 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
   ]);
   assert.equal(report.studio.documentCss.inlineStyles.length, 1);
   assert.deepEqual(report.studio.documentCss.externalStylesheets, []);
-  assert.deepEqual(report.studio.shadowCss.files, ["studio/studio-shadow.css"]);
-  assert.equal(
-    report.studio.totalInitialCss.rawBytes,
-    report.studio.documentCss.rawBytes + report.studio.shadowCss.rawBytes
-  );
-  assert.equal(
-    report.studio.totalInitialCss.brotliBytes,
-    report.studio.documentCss.brotliBytes + report.studio.shadowCss.brotliBytes
-  );
+  assert.deepEqual(report.studio.reachableJavaScriptFiles, [
+    "_next/static/chunks/initial.js",
+    "_next/static/chunks/studio-runtime.js"
+  ]);
   assert.equal(report.artifactIndex.walks, 1);
   assert.ok(report.artifactIndex.diskReads >= 8);
   assert.ok(report.artifactIndex.cacheHits >= 3);
@@ -644,7 +632,7 @@ test("rejects eager engagement provider code from archive initial scripts", asyn
   const { rootDir, chunksDir } = createFixture(t);
   writeFileSync(
     path.join(chunksDir, "initial.js"),
-    "data-studio-shadow-host;data-deferred-post-stats;firebaseapp.com;static/chunks/studio-runtime.js"
+    "data-deferred-post-stats;firebaseapp.com;static/chunks/studio-runtime.js"
   );
 
   const report = await verifyPerformanceArtifact({
@@ -883,8 +871,7 @@ test("rejects public CSS growth against the deployed Gzip encoding", async (t) =
 
 test("counts oversized inline CSS in the Studio document budget", async (t) => {
   const { rootDir, outDir, chunksDir } = createFixture(t, {
-    maxInitialDocumentCssBrotliBytes: 20,
-    maxTotalInitialCssBrotliBytes: 100_000
+    maxInitialDocumentCssBrotliBytes: 20
   });
   writeFileSync(path.join(chunksDir, "document.css"), "");
   const studioHtmlPath = path.join(outDir, "en/studio.html");
@@ -909,32 +896,6 @@ test("counts oversized inline CSS in the Studio document budget", async (t) => {
   assert.match(
     report.failures.join("\n"),
     /Studio initial document CSS Brotli bytes/
-  );
-});
-
-test("enforces the required Studio Shadow stylesheet and its budget", async (t) => {
-  const oversized = createFixture(t, {
-    maxShadowCssBrotliBytes: 1,
-    maxTotalInitialCssBrotliBytes: 100_000
-  });
-  const oversizedReport = await verifyPerformanceArtifact({
-    rootDir: oversized.rootDir,
-    configPath: "budgets.json"
-  });
-  assert.match(
-    oversizedReport.failures.join("\n"),
-    /Studio required Shadow CSS Brotli bytes/
-  );
-
-  const missing = createFixture(t);
-  rmSync(path.join(missing.outDir, "studio/studio-shadow.css"));
-  const missingReport = await verifyPerformanceArtifact({
-    rootDir: missing.rootDir,
-    configPath: "budgets.json"
-  });
-  assert.match(
-    missingReport.failures.join("\n"),
-    /Studio required Shadow stylesheet is missing: studio\/studio-shadow\.css/
   );
 });
 
@@ -963,21 +924,26 @@ test("rejects a pure external Studio stylesheet without an explicit allowlist", 
   );
 });
 
-test("requires the budgeted Shadow stylesheet to match the runtime reference", async (t) => {
+test("rejects a shadow workspace or flow canvas behind a lazy Studio chunk", async (t) => {
   const { rootDir, chunksDir } = createFixture(t);
   writeFileSync(
     path.join(chunksDir, "studio-runtime.js"),
-    "studio_route_open;data-studio-module"
+    "data-studio-shadow-host;data-studio-flow-runtime"
   );
 
   const report = await verifyPerformanceArtifact({
     rootDir,
     configPath: "budgets.json"
   });
+  const failures = report.failures.join("\n");
 
   assert.match(
-    report.failures.join("\n"),
-    /missing required Shadow stylesheet reference: \/studio\/studio-shadow\.css/
+    failures,
+    /Studio reachable JavaScript contains forbidden marker: data-studio-shadow-host/
+  );
+  assert.match(
+    failures,
+    /Studio reachable JavaScript contains forbidden marker: data-studio-flow-runtime/
   );
 });
 
@@ -1018,11 +984,7 @@ test("counts and rejects a null Studio messages provider", async (t) => {
   });
   const failures = report.failures.join("\n");
 
-  assert.equal(report.clientMessages.providerCount, 49);
-  assert.match(
-    failures,
-    /en\/studio\.txt serializes 1 client message provider occurrence\(s\); expected 0/
-  );
+  assert.equal(report.clientMessages.providerCount, 54);
   assert.match(
     failures,
     /en\/studio\.txt serializes an unrecognized or overlapping client message scope/
@@ -1043,7 +1005,7 @@ test("scans an unsampled article and rejects its extra surface provider", async 
   const failures = report.failures.join("\n");
 
   assert.equal(report.clientMessages.routeCount, 31);
-  assert.equal(report.clientMessages.providerCount, 50);
+  assert.equal(report.clientMessages.providerCount, 56);
   assert.match(
     failures,
     /en\/blog\/architecture\/unsampled-post\.txt serializes unexpected client message scope: blog/
@@ -1259,14 +1221,12 @@ test("keeps total RSC capacity advisory while enforcing average and Studio contr
   const { rootDir, outDir, chunksDir } = createFixture(t, {
     maxBrotliBytes: 1,
     maxInitialDocumentCssBrotliBytes: 1,
-    maxShadowCssBrotliBytes: 1,
-    maxTotalInitialCssBrotliBytes: 1,
     warnTotalBytes: 1,
     maxAverageLocalizedRouteBytes: 1
   });
   writeFileSync(
     path.join(chunksDir, "initial.js"),
-    "studio_route_open;data-studio-flow-runtime;getFirestore"
+    "data-studio-flow-runtime;getFirestore"
   );
   const studioHtmlPath = path.join(outDir, "en/studio.html");
   writeFileSync(
@@ -1285,15 +1245,9 @@ test("keeps total RSC capacity advisory while enforcing average and Studio contr
 
   assert.match(failures, /home initial JavaScript Brotli bytes/);
   assert.match(failures, /Studio initial document CSS Brotli bytes/);
-  assert.match(failures, /Studio required Shadow CSS Brotli bytes/);
-  assert.match(failures, /Studio total initial CSS Brotli bytes/);
   assert.doesNotMatch(failures, /Total RSC text bytes/);
   assert.match(report.warnings.join("\n"), /Total RSC text bytes/);
   assert.match(failures, /Average localized RSC route bytes/);
-  assert.match(
-    failures,
-    /reachable JavaScript is missing required marker: data-studio-module/
-  );
   assert.match(failures, /contains forbidden marker: data-studio-flow-runtime/);
   assert.match(failures, /contains forbidden marker: getFirestore/);
   assert.match(

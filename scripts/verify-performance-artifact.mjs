@@ -437,35 +437,13 @@ function validateConfig(config) {
     !validateHtmlTransfer(htmlTransfer) ||
     !validateSearchJson(searchJson) ||
     !validatePublicInitialCss(publicCss) ||
-    !Array.isArray(studio?.requiredMarkers) ||
-    studio.requiredMarkers.some(
-      (marker) => typeof marker !== "string" || marker.length === 0
-    ) ||
-    !Array.isArray(studio?.requiredReachableMarkers) ||
-    studio.requiredReachableMarkers.some(
-      (marker) => typeof marker !== "string" || marker.length === 0
-    ) ||
     !Array.isArray(studio?.forbiddenMarkers) ||
+    studio.forbiddenMarkers.length < 1 ||
     studio.forbiddenMarkers.some(
       (marker) => typeof marker !== "string" || marker.length === 0
     ) ||
     !Number.isInteger(studio?.maxInitialDocumentCssBrotliBytes) ||
     studio.maxInitialDocumentCssBrotliBytes < 1 ||
-    !Array.isArray(studio?.requiredShadowCssFiles) ||
-    studio.requiredShadowCssFiles.length < 1 ||
-    studio.requiredShadowCssFiles.some((file) => {
-      if (typeof file !== "string" || !file.endsWith(".css")) return true;
-      const normalized = path.posix.normalize(file);
-      return (
-        normalized !== file ||
-        normalized.startsWith("../") ||
-        path.posix.isAbsolute(normalized)
-      );
-    }) ||
-    !Number.isInteger(studio?.maxShadowCssBrotliBytes) ||
-    studio.maxShadowCssBrotliBytes < 1 ||
-    !Number.isInteger(studio?.maxTotalInitialCssBrotliBytes) ||
-    studio.maxTotalInitialCssBrotliBytes < 1 ||
     !Array.isArray(studio?.allowedExternalStylesheetOrigins) ||
     studio.allowedExternalStylesheetOrigins.some((origin) => {
       try {
@@ -627,29 +605,6 @@ async function collectInitialDocumentCss({
     resources,
     ...summarizeCssResources(resources)
   };
-}
-
-async function collectRequiredShadowCss({ index, requiredFiles, failures }) {
-  const files = [];
-  const resources = [];
-
-  for (const relativePath of requiredFiles) {
-    if (!index.has(relativePath)) {
-      failures.push(
-        `Studio required Shadow stylesheet is missing: ${relativePath}`
-      );
-      continue;
-    }
-    const bytes = await index.readBuffer(relativePath);
-    files.push(relativePath);
-    resources.push({
-      key: `file:${relativePath}`,
-      rawBytes: bytes.length,
-      brotliBytes: brotliCompressSync(bytes).length
-    });
-  }
-
-  return { files, resources, ...summarizeCssResources(resources) };
 }
 
 async function collectPublicRouteCss({
@@ -1075,7 +1030,6 @@ export async function verifyPerformanceArtifact({
     };
   }
 
-  const studioSource = routeSources.get("studio") ?? "";
   const allowedExternalStylesheetOrigins = new Set(
     performance.studioInitialRuntime.allowedExternalStylesheetOrigins
   );
@@ -1086,66 +1040,23 @@ export async function verifyPerformanceArtifact({
     allowedExternalStylesheetOrigins,
     failures
   });
-  const studioShadowCss = await collectRequiredShadowCss({
-    index,
-    requiredFiles: performance.studioInitialRuntime.requiredShadowCssFiles,
-    failures
-  });
-  const studioTotalInitialCss = summarizeCssResources([
-    ...studioDocumentCss.resources,
-    ...studioShadowCss.resources
-  ]);
   addLimitFailure(
     failures,
     "Studio initial document CSS Brotli bytes",
     studioDocumentCss.brotliBytes,
     performance.studioInitialRuntime.maxInitialDocumentCssBrotliBytes
   );
-  addLimitFailure(
-    failures,
-    "Studio required Shadow CSS Brotli bytes",
-    studioShadowCss.brotliBytes,
-    performance.studioInitialRuntime.maxShadowCssBrotliBytes
-  );
-  addLimitFailure(
-    failures,
-    "Studio total initial CSS Brotli bytes",
-    studioTotalInitialCss.brotliBytes,
-    performance.studioInitialRuntime.maxTotalInitialCssBrotliBytes
-  );
+  // Studio is a static reading surface: no shadow workspace, flow canvas or Firestore,
+  // not even behind a lazy chunk the initial scripts can reach.
   const studioReachable = await collectReachableJavaScript({
     index,
     initialFiles: routeInitialJavaScript.studio?.files ?? [],
     failures
   });
-  for (const stylesheet of performance.studioInitialRuntime
-    .requiredShadowCssFiles) {
-    const reference = `/${stylesheet}`;
-    if (!studioReachable.source.includes(reference)) {
-      failures.push(
-        `Studio reachable JavaScript is missing required Shadow stylesheet reference: ${reference}`
-      );
-    }
-  }
-  for (const marker of performance.studioInitialRuntime.requiredMarkers) {
-    if (!studioSource.includes(marker)) {
-      failures.push(
-        `Studio initial JavaScript is missing required marker: ${marker}`
-      );
-    }
-  }
-  for (const marker of performance.studioInitialRuntime
-    .requiredReachableMarkers) {
-    if (!studioReachable.source.includes(marker)) {
-      failures.push(
-        `Studio reachable JavaScript is missing required marker: ${marker}`
-      );
-    }
-  }
   for (const marker of performance.studioInitialRuntime.forbiddenMarkers) {
-    if (studioSource.includes(marker)) {
+    if (studioReachable.source.includes(marker)) {
       failures.push(
-        `Studio initial JavaScript contains forbidden marker: ${marker}`
+        `Studio reachable JavaScript contains forbidden marker: ${marker}`
       );
     }
   }
@@ -1194,22 +1105,8 @@ export async function verifyPerformanceArtifact({
         maxBrotliBytes:
           performance.studioInitialRuntime.maxInitialDocumentCssBrotliBytes
       },
-      shadowCss: {
-        files: studioShadowCss.files,
-        rawBytes: studioShadowCss.rawBytes,
-        brotliBytes: studioShadowCss.brotliBytes,
-        maxBrotliBytes: performance.studioInitialRuntime.maxShadowCssBrotliBytes
-      },
-      totalInitialCss: {
-        ...studioTotalInitialCss,
-        maxBrotliBytes:
-          performance.studioInitialRuntime.maxTotalInitialCssBrotliBytes
-      },
-      requiredInitialMarkers: performance.studioInitialRuntime.requiredMarkers,
-      requiredReachableMarkers:
-        performance.studioInitialRuntime.requiredReachableMarkers,
       reachableJavaScriptFiles: studioReachable.files,
-      forbiddenInitialMarkers: performance.studioInitialRuntime.forbiddenMarkers
+      forbiddenMarkers: performance.studioInitialRuntime.forbiddenMarkers
     },
     artifactIndex: index.metrics(),
     failures,
@@ -1269,12 +1166,6 @@ function printReport(report) {
   );
   console.log(
     `[performance] Studio initial document CSS: ${formatBytes(report.studio.documentCss.brotliBytes)} Brotli / ${formatBytes(report.studio.documentCss.rawBytes)} raw (${report.studio.documentCss.localFiles.length} local file(s), ${report.studio.documentCss.inlineStyles.length} inline block(s))`
-  );
-  console.log(
-    `[performance] Studio required Shadow CSS: ${formatBytes(report.studio.shadowCss.brotliBytes)} Brotli / ${formatBytes(report.studio.shadowCss.rawBytes)} raw`
-  );
-  console.log(
-    `[performance] Studio total initial CSS: ${formatBytes(report.studio.totalInitialCss.brotliBytes)} Brotli / ${formatBytes(report.studio.totalInitialCss.rawBytes)} raw`
   );
   for (const warning of report.warnings) console.warn(`[warning] ${warning}`);
 

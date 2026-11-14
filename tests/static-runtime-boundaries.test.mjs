@@ -66,13 +66,9 @@ test("localized route groups preserve the complete unique URL inventory", () => 
   assert.deepEqual(normalizedRoutes, expectedRoutes);
   assert.equal(new Set(normalizedRoutes).size, normalizedRoutes.length);
 
+  // Every localized route, Studio included, renders inside the (site) layout.
   for (const entry of sourceEntries) {
-    if (routePath(entry).startsWith("studio/")) {
-      // Studio lives outside the (site) group so it never inherits the site chrome.
-      assert.equal(entry, routePath(entry));
-    } else {
-      assert.match(entry, /^\(site\)\//);
-    }
+    assert.match(entry, /^\(site\)\//);
   }
 });
 
@@ -95,7 +91,7 @@ test("fallback Notes search reuses the canonical English index", () => {
   assert.match(runtimeVerifier, /path: "\/fr\/notes"[\s\S]*searchPath: "en\/search\/notes\.json"/);
 });
 
-test("public runtime and chrome stay outside the Studio layout boundary", () => {
+test("public runtime and chrome stay in the site layout, outside the root layout", () => {
   const rootLayout = readFileSync(`${localeRoot}/layout.tsx`, "utf8");
   const siteLayout = readFileSync(`${localeRoot}/(site)/layout.tsx`, "utf8");
   const homePage = readFileSync(`${localeRoot}/(site)/page.tsx`, "utf8");
@@ -119,7 +115,6 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
     `${localeRoot}/(site)/notes/[slug]/page.tsx`,
     "utf8"
   );
-  const studioPage = readFileSync(`${localeRoot}/studio/page.tsx`, "utf8");
   const scopedIntlProvider = readFileSync(
     "src/i18n/ScopedIntlProvider.tsx",
     "utf8"
@@ -136,7 +131,6 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
   for (const component of sharedPublicRuntime) {
     assert.match(siteLayout, new RegExp(`<${component}(?:[\\s/>])`));
     assert.doesNotMatch(rootLayout, new RegExp(`\\b${component}\\b`));
-    assert.doesNotMatch(studioPage, new RegExp(`\\b${component}\\b`));
   }
 
   assert.doesNotMatch(siteLayout, /\bMotionProvider\b|\bBlogReaderTools\b/);
@@ -164,7 +158,6 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
 
   assert.match(rootLayout, /<WebVitalsReporter locale=\{locale\} \/>/);
   assert.doesNotMatch(siteLayout, /\bWebVitalsReporter\b/);
-  assert.doesNotMatch(studioPage, /\bWebVitalsReporter\b/);
   assert.doesNotMatch(rootLayout, /\bNextIntlClientProvider\b/);
   assert.match(
     siteLayout,
@@ -178,11 +171,6 @@ test("public runtime and chrome stay outside the Studio layout boundary", () => 
     scopedIntlProvider,
     /<NextIntlClientProvider\s+messages=\{toSerializableClientMessages\(selectedMessages\)\}\s*>/
   );
-  assert.doesNotMatch(
-    studioPage,
-    /\bScopedIntlProvider\b|\bNextIntlClientProvider\b/
-  );
-  assert.doesNotMatch(studioPage, /\.app-nav|\.app-footer|\.blog-reader-tools/);
 });
 
 test("document CSS, public CSS, and third-party resources follow route ownership", () => {
@@ -295,24 +283,20 @@ test("runtime documentation matches route and artifact ownership", () => {
     ["Blog initial JavaScript, Brotli", routeBudgets.blog.maxBrotliBytes],
     ["Notes initial JavaScript, Brotli", routeBudgets.notes.maxBrotliBytes],
     [
-      "Studio direct initial JavaScript, Brotli",
+      "Studio index initial JavaScript, Gzip",
+      routeBudgets.studio.maxGzipBytes
+    ],
+    [
+      "Studio index initial JavaScript, Brotli",
       routeBudgets.studio.maxBrotliBytes
     ],
     [
-      "Studio English default route, Brotli",
-      routeBudgets.studio.maxDefaultRouteBrotliBytes
+      "Studio module initial JavaScript, Brotli",
+      routeBudgets.studio.maxModuleBrotliBytes
     ],
     [
       "Studio initial document CSS, Brotli",
       studioBudgets.maxInitialDocumentCssBrotliBytes
-    ],
-    [
-      "Studio required Shadow CSS, Brotli",
-      studioBudgets.maxShadowCssBrotliBytes
-    ],
-    [
-      "Studio total initial CSS, Brotli",
-      studioBudgets.maxTotalInitialCssBrotliBytes
     ]
   ];
   for (const [label, bytes] of expectedRows) {
@@ -325,13 +309,11 @@ test("runtime documentation matches route and artifact ownership", () => {
     );
   }
 
-  for (const bytes of [
-    studioBudgets.maxInitialDocumentCssBrotliBytes,
-    studioBudgets.maxShadowCssBrotliBytes,
-    studioBudgets.maxTotalInitialCssBrotliBytes
-  ]) {
-    assert.match(boundarySpec, new RegExp(bytes.toLocaleString("en-US")));
-  }
+  assert.match(
+    boundarySpec,
+    new RegExp(studioBudgets.maxInitialDocumentCssBrotliBytes.toLocaleString("en-US"))
+  );
+  assert.equal("maxShadowCssBrotliBytes" in studioBudgets, false);
 
   const publicCssLabels = {
     home: "Home",

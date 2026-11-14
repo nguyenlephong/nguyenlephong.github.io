@@ -35,7 +35,7 @@ Pages artifact.
 | Apps              | `/{locale}/apps`                         | Showcase for small tools such as Glance and E-Slang.                                                                |
 | Blog              | `/{locale}/blog` and nested post routes  | Engineering articles with SEO metadata, categories, related posts, and engagement widgets.                          |
 | Notes             | `/{locale}/notes` and nested note routes | Personal notes and book reflections with bilingual content behavior.                                                |
-| Studio            | `/{locale}/studio`                       | Shadow-DOM admin-style workbench for learning notes and engineering setup.                                          |
+| Studio            | `/{locale}/studio` and three module pages | Server-rendered reading pages: delivery checklists, system maps, and AI setup, inside the site layout.              |
 
 `/` is a static redirect page to `/en`. It still includes metadata so crawlers
 can read the canonical profile information before following the redirect.
@@ -133,14 +133,19 @@ No route mounts a motion provider; Gallery dropped `framer-motion` entirely.
 `ArticleReaderTools` is mounted only by the nested Blog and Notes article
 layouts. Home, Blog, Notes, and Gallery add a second provider only around their
 message-consuming client subtree. The pathless `(site)` segment does not appear
-in public URLs. Studio remains outside this route group, so it does not render
-or hydrate the public-site shell and receives no client message catalog.
+in public URLs. Studio (redesigned 2026-11-14) lives inside this route group at
+`src/app/[locale]/(site)/studio`, so it renders the shared header, footer, and
+global search and carries the site client-message scope like /about and /blog.
+The old shadow-DOM admin shell, command palette, sidebar, preferences, and
+React Flow canvas are gone.
 
-The footer's public-to-Studio link deliberately performs a full-document
+The footer's public-to-Studio link still performs a full-document
 navigation. Session storage survives, but the public DOM and JavaScript realm
-do not: the Studio document has no Google Analytics or AdSense scripts,
+do not. While Google resources are paused (`GOOGLE_THIRD_PARTY` off, MEP-66),
+the Studio document has no Google Analytics or AdSense scripts,
 resource hints, account metadata, data-layer node, browser globals, or new
-Google requests left from the public page.
+Google requests left from the public page. Because Studio now shares the site
+layout, turning that flag on would mount them on Studio too.
 
 ### Route Table
 
@@ -162,8 +167,8 @@ Google requests left from the public page.
 | `/{locale}/notes/page/{page}`                | `src/app/[locale]/(site)/notes/page/[page]/page.tsx`                | Static Notes archive pagination; page one remains at `/notes`.                            |
 | `/{en\|vi}/notes/topics/{topic}`             | `src/app/[locale]/(site)/notes/topics/[topic]/page.tsx`             | Curated Notes topic page one with static cards and collection schema.                     |
 | `/{en\|vi}/notes/topics/{topic}/page/{page}` | `src/app/[locale]/(site)/notes/topics/[topic]/page/[page]/page.tsx` | Later curated topic pages; `/page/1` is not generated.                                    |
-| `/{locale}/studio`                 | `src/app/[locale]/studio/page.tsx`                 | Shadow-DOM admin workbench, route-isolated from the main profile shell.                   |
-| `/{locale}/studio/{module}`        | `src/app/[locale]/studio/[module]/page.tsx`        | Crawlable Studio module page (`checklists`, `system-maps`, `ai-setup`) that opens the same shell on that module; in-shell navigation pushes these paths. |
+| `/{locale}/studio`                 | `src/app/[locale]/(site)/studio/page.tsx`          | Studio index: one chapter per module with crawlable module links and CollectionPage JSON-LD. |
+| `/{locale}/studio/{module}`        | `src/app/[locale]/(site)/studio/[module]/page.tsx` | Server-rendered Studio module page (`checklists`, `system-maps`, `ai-setup`) with small client islands for ticks, copy, reading state, and the SVG map. |
 | `/{locale}/notes/{slug}`           | `src/app/[locale]/(site)/notes/[slug]/page.tsx`           | Note article page, source-book card, topic breadcrumb, FAQ support, engagement widgets.   |
 
 Most routes expose `generateStaticParams()`, which lets Next.js enumerate every
@@ -542,9 +547,12 @@ their current taxonomy.
 
 PostHog is loaded by the shared locale document in
 `src/app/[locale]/layout.tsx`. Google Analytics and AdSense belong to
-`src/app/[locale]/(site)/layout.tsx`, so Studio does not request or retain their
-public runtime. The public footer uses a full-document Studio link; its existing
-`cv_nav_click` event is sent with `sendBeacon` before navigation.
+`src/app/[locale]/(site)/layout.tsx`; Studio shares that layout, so it follows the
+same `GOOGLE_THIRD_PARTY` switch as every public page. The public footer uses a
+full-document Studio link; its existing `cv_nav_click` event is sent with
+`sendBeacon` before navigation. Studio's own events are `studio_view`,
+`studio_module_open`, `studio_part_select`, `studio_checklist_copy`,
+`studio_checklist_item_toggle`, and `studio_ai_skill_copy`.
 
 PostHog runs with `cookieless_mode: 'always'`
 (`src/components/analytics/PostHogBootstrap.tsx`): no cookie or localStorage
@@ -798,18 +806,16 @@ remain hard gates. The current configured gates are:
 | Blog article initial JavaScript, Brotli | Hard limit: 183,296 bytes |
 | Notes article initial JavaScript, Gzip | Hard limit: 211,968 bytes |
 | Notes article initial JavaScript, Brotli | Hard limit: 183,296 bytes |
-| Studio direct initial JavaScript, Gzip | Hard limit: 173,056 bytes |
-| Studio direct initial JavaScript, Brotli | Hard limit: 149,504 bytes |
-| Studio English default route, Brotli | Hard limit: 204,800 bytes |
-| Studio initial document CSS, Brotli | Hard limit: 3,072 bytes |
-| Studio required Shadow CSS, Brotli | Hard limit: 12,288 bytes |
-| Studio total initial CSS, Brotli | Hard limit: 18,432 bytes |
+| Studio index initial JavaScript, Gzip | Hard limit: 187,392 bytes |
+| Studio index initial JavaScript, Brotli | Hard limit: 162,816 bytes |
+| Studio module initial JavaScript, Brotli | Hard limit: 164,864 bytes |
+| Studio initial document CSS, Brotli | Hard limit: 8,832 bytes |
 | All exported RSC `.txt` payloads | Advisory warning: 157,286,400 bytes |
 | Average of 24 localized Home/Blog/Notes/Studio RSC samples | Hard limit: 47,104 bytes |
 | Largest localized Home RSC sample | Hard limit: 67,584 bytes |
 | Largest localized Blog RSC sample | Hard limit: 50,176 bytes |
 | Largest localized Notes RSC sample | Hard limit: 43,008 bytes |
-| Largest localized Studio RSC sample | Hard limit: 30,720 bytes |
+| Largest localized Studio RSC sample | Hard limit: 36,864 bytes |
 
 The verifier also hard-gates Gzip HTML for English Home (34,304 bytes), Blog
 archive (21,120), Notes archive (18,432), one Blog article (18,432), and one
@@ -820,9 +826,7 @@ Rebase of 2026-11-13 (homepage CV revamp). Initial JavaScript no longer counts
 downloaded by module-capable browsers. The JavaScript gates above are the
 polyfill-free measurement plus about 10 percent, rounded up to 1 KiB (Home
 200,915 Gzip / 174,061 Brotli; Blog 196,642 / 170,466; Notes 196,532 / 170,382;
-articles 198,065 / 171,572; Studio 152.8 KiB / 131.8 KiB, gated at 173,056 /
-149,504). Both verifiers skip `<script nomodule>`; Studio's
-`maxDefaultRouteBrotliBytes` is unchanged. Home initial CSS grew with
+articles 198,065 / 171,572). Both verifiers skip `<script nomodule>`. Home initial CSS grew with
 real revamp content (every home class selector is used by the en, vi or ja HTML
 or a JS chunk; Lighthouse reports 0 unused rules): measured 13,170 Gzip /
 11,518 Brotli, gated at 14,080 / 12,288 (about 7 percent headroom). Blog article
@@ -837,7 +841,15 @@ parser (`intl-messageformat`) no longer ships to the client: about 9 KiB Gzip
 off every public route. The public JavaScript gates above were lowered to the
 new measurement plus about 10 percent, rounded up to 1 KiB (Home 193,982 Gzip /
 167,863 Brotli; Blog 191,692 / 166,040; Notes 191,296 / 165,696; articles
-192,204 / 166,266). Studio has no client messages and is unchanged.
+192,204 / 166,266).
+
+The Studio redesign (2026-11-14) moved Studio into the site layout and removed
+the shadow shell. Its gates are the 2026-11-14 measurement plus about 3 percent:
+index initial JavaScript 181,908 Gzip / 157,286 Brotli (gated at 187,392 /
+162,816), module pages 159,536 Brotli (gated at 164,864), initial document CSS
+8,452 Brotli (gated at 8,832), and the largest localized Studio RSC sample
+35,701 bytes (`vi/studio.txt`, gated at 36,864). The shadow stylesheet budget
+and the default-route loader budget no longer exist.
 
 The same complete export records public initial CSS by route. Before the split,
 all non-content routes loaded 122,511 raw / 19,439 Brotli bytes in two files;
@@ -880,14 +892,15 @@ page. The locale root layout injects no global catalog. Every public route
 contains exactly one scoped site provider; only home, Gallery, Blog
 collection/category/pagination, and Notes collection/pagination add their
 surface provider. Article and other static pages keep the site provider only,
-as do curated series and topic hubs, while Studio serializes zero client
-message providers. Hub grouping and nine-card slicing stay server-side; those
+as do curated series and topic hubs, and Studio, which keeps its own copy in
+server-rendered TypeScript content. Hub grouping and nine-card slicing stay server-side; those
 pages do not mount Explorer or ship a full search index. Every serialized
 `messages` occurrence is counted, including null, malformed, primitive, or
 empty values, and must match a recognized non-empty scope. Each public Client
 Component boundary receives only its declared namespace allowlist. The Studio
-contract rejects transitive provider-dependent internationalization as well as
-eagerly loaded ReactFlow and Firebase markers, and
+contract rejects transitive provider-dependent internationalization from Studio
+sources, any shadow-shell, flow-canvas, or Firebase marker in JavaScript
+reachable from the Studio entry, and
 rejects new third-party connection origins unless they are explicitly reviewed
 in `config/static-artifact-budgets.json`.
 
@@ -902,12 +915,9 @@ fallback duplicate is emitted.
 
 Studio CSS accounting follows actual runtime ownership. Initial document CSS is
 the set of local stylesheets plus combined inline style blocks referenced by
-the Studio HTML. Required Shadow CSS is `studio/studio-shadow.css`, referenced
-by reachable Studio JavaScript and applied inside the Shadow root. Total initial
-CSS combines both measured groups, so Shadow CSS is neither mislabeled as a
-document stylesheet nor omitted from the initial cost. The three Brotli caps
-are 3,072, 12,288, and 18,432 bytes respectively; external stylesheets fail the
-gate unless their origins are explicitly allowlisted.
+the Studio HTML: the document and site base plus the route-owned `studio.css`
+imported by `StudioPageFrame`. Its Brotli cap is 8,832 bytes; external
+stylesheets fail the gate unless their origins are explicitly allowlisted.
 
 Public document CSS is route-owned. `src/app/globals.css` keeps the shared
 public base, header, footer, offline banner, accessibility behavior, and shared
@@ -931,16 +941,14 @@ instead of matching minifier-specific text or hashed filenames. It includes
 matches exact owner class tokens, and applies route-specific stylesheet-count
 and Brotli limits from the latest complete export.
 
-The Studio artifact gate additionally reports the Brotli/raw totals for every
-JavaScript chunk transitively reachable from the English Studio entry. Its
-direct entry retains the 149,504-byte ceiling (polyfill excluded). The default-route hard gate
-parses Turbopack `Promise.all` loaders and counts every sibling chunk needed by
-the selected English locale and Welcome route; the full reachable async total
-remains visible separately. AI Skills, Delivery Checklists, and ReactFlow must
-remain reachable lazy chunks and are
-forbidden from that default path. Stable sentinels verify isolated loaders for
-English, Vietnamese, Chinese, Japanese, Korean, and French and reject
-cross-locale copy from the selected English entry.
+The Studio artifact gate (`verify:studio-artifact`) checks the index and the
+three module pages for all six locales: each exists, has exactly one H1, sits
+inside the site header and footer, carries its static marker and JSON-LD
+(CollectionPage or WebPage plus BreadcrumbList), and has no shadow host or
+shadow stylesheet reference. Direct initial JavaScript (polyfill excluded) is
+capped at 162,816 Brotli bytes for the index and 164,864 for module pages, and
+no reachable chunk may contain the shadow host, flow-canvas runtime, or React
+Flow markers.
 
 `npm run analyze` uses the official Next.js 16
 `next experimental-analyze --output` command and adds no package. The generated

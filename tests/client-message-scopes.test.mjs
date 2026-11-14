@@ -464,7 +464,7 @@ test("raw next-intl provider and use-intl imports fail outside the adapter", () 
 });
 
 test("Studio rejects every provider-dependent next-intl client hook", () => {
-  const file = "src/app/[locale]/studio/fixture.tsx";
+  const file = "src/app/[locale]/(site)/studio/fixture.tsx";
   const inspection = inspectNextIntlClientHooks(
     `"use client";\nimport { useLocale } from "next-intl";\nexport default function Fixture() { return useLocale(); }`,
     file
@@ -479,7 +479,7 @@ test("Studio rejects provider-dependent locale navigation imports", () => {
   const navigationExports = inspectNavigationRuntimeExports(
     readFileSync("src/i18n/navigation.ts", "utf8")
   );
-  const file = "src/app/[locale]/studio/fixture.tsx";
+  const file = "src/app/[locale]/(site)/studio/fixture.tsx";
   const inspection = inspectNavigationImports(
     `"use client";\nimport { useRouter as routerHook } from "@/i18n/navigation";\nexport default function Fixture() { return routerHook().push("/studio"); }`,
     navigationExports,
@@ -641,15 +641,16 @@ test("source inventory locks providers and client dependencies to public scopes"
   }
 
   const studioConsumers = [...consumers.keys()].filter((file) =>
-    file.startsWith("src/app/[locale]/studio/")
+    file.startsWith("src/app/[locale]/(site)/studio/")
   );
-  assert.deepEqual(CLIENT_MESSAGE_ROUTE_SCOPES.studio, []);
+  // Studio inherits the site layout's provider and keeps its own copy out of the client catalog.
+  assert.deepEqual(CLIENT_MESSAGE_ROUTE_SCOPES.studio, ["site"]);
   assert.deepEqual(studioConsumers, []);
   const studioBoundary = validateStudioDependencyBoundary(sourceMap, {
     classifyHazard: classifyStudioIntlHazard
   });
   assert.equal(
-    studioBoundary.roots.includes("src/app/[locale]/studio/page.tsx"),
+    studioBoundary.roots.includes("src/app/[locale]/(site)/studio/page.tsx"),
     true
   );
 
@@ -670,9 +671,9 @@ test("source inventory locks providers and client dependencies to public scopes"
 });
 
 test("Studio dependency graph rejects transitive navigation and approved public consumers", () => {
-  const studioPage = "src/app/[locale]/studio/page.tsx";
+  const studioPage = "src/app/[locale]/(site)/studio/page.tsx";
   const navigationFile = "src/i18n/navigation.ts";
-  const helperFile = "src/app/[locale]/studio/helper.tsx";
+  const helperFile = "src/app/[locale]/(site)/studio/helper.tsx";
   const navigationSource = readFileSync(navigationFile, "utf8");
   const helperGraph = new Map([
     [

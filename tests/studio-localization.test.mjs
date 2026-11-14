@@ -18,10 +18,10 @@ require.extensions[".ts"] = (module, filename) => {
   module._compile(output, filename);
 };
 
-const data = require("../src/app/[locale]/studio/studio.data.ts");
-const localizedContent = require("../src/app/[locale]/studio/studio.localized-content.ts");
-const localizedDemos = require("../src/app/[locale]/studio/studio.localized-demos.ts");
-const localizedWorkspace = require("../src/app/[locale]/studio/studio.localized-workspace.ts");
+const data = require("../src/app/[locale]/(site)/studio/studio.data.ts");
+const localizedContent = require("../src/app/[locale]/(site)/studio/studio.localized-content.ts");
+const localizedDemos = require("../src/app/[locale]/(site)/studio/studio.localized-demos.ts");
+const localizedWorkspace = require("../src/app/[locale]/(site)/studio/studio.localized-workspace.ts");
 
 function flattenChecklistSteps(checklist) {
   const flattened = [];

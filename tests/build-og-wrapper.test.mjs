@@ -87,7 +87,7 @@ test('fallback diagnostics distinguish partial and complete expected HTML', asyn
     routes: {
       '/': { dataRoute: '/index.rsc', srcRoute: '/' },
       '/en': { dataRoute: '/en.rsc', srcRoute: '/[locale]' },
-      '/en/studio': { dataRoute: '/en/studio.rsc', srcRoute: '/[locale]/studio' },
+      '/en/studio': { dataRoute: '/en/studio.rsc', srcRoute: '/[locale]/(site)/studio' },
       '/icon.png': { dataRoute: null, srcRoute: '/icon.png' },
       '/_global-error': { dataRoute: '/_global-error.rsc', srcRoute: '/_global-error' },
     },

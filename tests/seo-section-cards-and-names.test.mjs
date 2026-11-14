@@ -41,7 +41,7 @@ test("section card URLs match the routes Next emits for each opengraph-image", (
     ["/[locale]/(site)/gallery", { locale: "ja" }],
     ["/[locale]/(site)/apps", { locale: "en" }],
     ["/[locale]/(site)/blog/[category]", { locale: "vi", category: "architecture" }],
-    ["/[locale]/studio", { locale: "ko" }]
+    ["/[locale]/(site)/studio", { locale: "ko" }]
   ];
   for (const [segment, params] of cases) {
     assert.equal(

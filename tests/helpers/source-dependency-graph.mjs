@@ -11,7 +11,7 @@ export const SUPPORTED_SOURCE_EXTENSIONS = Object.freeze([
 ]);
 
 const SUPPORTED_SOURCE_EXTENSION_SET = new Set(SUPPORTED_SOURCE_EXTENSIONS);
-const DEFAULT_STUDIO_DIRECTORY = "src/app/[locale]/studio";
+const DEFAULT_STUDIO_DIRECTORY = "src/app/[locale]/(site)/studio";
 const DEFAULT_STUDIO_PAGE = `${DEFAULT_STUDIO_DIRECTORY}/page.tsx`;
 
 export class DependencyBoundaryError extends Error {

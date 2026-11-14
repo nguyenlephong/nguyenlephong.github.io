@@ -30,26 +30,21 @@ registerHooks({
   }
 });
 
-const { routeHref, routeIdFromStudioPath } = await import(
-  new URL("../src/app/[locale]/studio/studio-shell-navigation.ts", import.meta.url)
+const { getStudioStaticContent, getStudioStaticModule, getStudioStaticModuleHref } = await import(
+  new URL("../src/app/[locale]/(site)/studio/studio-static-content.ts", import.meta.url)
 );
 
-// MEP-54: public modules get their own crawlable path; other routes and the six flow deep links keep the query form.
-test("Studio routes map to module paths and back", () => {
-  assert.equal(routeHref("welcome", "en"), "/en/studio");
-  assert.equal(routeHref("delivery-checklists", "vi"), "/vi/studio/checklists");
-  assert.equal(routeHref("flow-react-flow-system-blueprint", "en"), "/en/studio/system-maps");
-  assert.equal(routeHref("ai-agent-setup", "fr"), "/fr/studio/ai-setup");
-  assert.equal(routeHref("ai-skills", "en"), "/en/studio?route=ai-skills#ai-skills");
-  assert.equal(
-    routeHref("flow-incident-response", "en"),
-    "/en/studio?route=flow-incident-response&flow=incident-response#flow-incident-response"
-  );
+// MEP-54: each public module is its own crawlable page; there are no query-string routes any more.
+test("Studio module slugs map to their pages and back", () => {
+  const hrefs = getStudioStaticContent("en").modules.map((module) => getStudioStaticModuleHref("en", module));
+  assert.deepEqual(hrefs, ["/en/studio/checklists", "/en/studio/system-maps", "/en/studio/ai-setup"]);
+  assert.equal(getStudioStaticModuleHref("vi", { slug: "checklists" }), "/vi/studio/checklists");
+  assert.equal(getStudioStaticModuleHref("fr", { slug: "ai-setup" }), "/fr/studio/ai-setup");
 
-  assert.equal(routeIdFromStudioPath("/en/studio/checklists"), "delivery-checklists");
-  assert.equal(routeIdFromStudioPath("/vi/studio/system-maps.html"), "flow-react-flow-system-blueprint");
-  assert.equal(routeIdFromStudioPath("/ja/studio/ai-setup/"), "ai-agent-setup");
-  assert.equal(routeIdFromStudioPath("/en/studio"), null);
-  assert.equal(routeIdFromStudioPath("/en/studio/unknown"), null);
-  assert.equal(routeIdFromStudioPath("/en/blog/checklists"), null);
+  assert.equal(getStudioStaticModule("en", "checklists")?.id, "delivery-checklists");
+  assert.equal(getStudioStaticModule("vi", "system-maps")?.id, "flow-react-flow-system-blueprint");
+  assert.equal(getStudioStaticModule("ja", "ai-setup")?.id, "ai-agent-setup");
+  for (const removed of ["ai-skills", "welcome", "flow-incident-response", "unknown"]) {
+    assert.equal(getStudioStaticModule("en", removed), undefined, removed);
+  }
 });
