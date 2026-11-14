@@ -107,7 +107,7 @@ Words he would never use about himself: visionary, rockstar, 10x, guru, "redefin
 - **Impact first:** the line opens with what users or the team got (back on sprint pace, 80% finished the flow, a working product in four weeks), then how.
 - **People first:** the team is in the sentence. He names what people needed (to know where they stand, to be credited fairly), not the ceremony he ran.
 - **No ego:** he holds direction and lets capable people own the route (`duong-tang-giu-vision-va-trao-quyen`). He is the one who should not become the bottleneck. Never "I rewrote", "I redefined", "I saved the team".
-- **Honest about scope:** part-time is part-time, "led" when shared, "wrote" only for his own code, and limits are stated before someone asks.
+- **Honest about scope:** "led" when shared, "wrote" only for his own code, and limits are stated before someone asks.
 
 ## Checklist for profile copy in his voice
 
