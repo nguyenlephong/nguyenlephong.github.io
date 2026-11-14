@@ -54,7 +54,7 @@ test("guard catches the patterns it promises to catch", () => {
 
 test("profile OG cards and source surfaces pass the same guard", async () => {
   const cards = await loadProfileOgCards();
-  assert.equal(cards.en.badge.value, "15M+ MAU");
+  assert.equal(cards.en.badge.value, "18M+ MAU");
   assert.match(cards.vi.subtitle, /500\.000 USD/);
   const violations = [
     ...findCardViolations(cards),

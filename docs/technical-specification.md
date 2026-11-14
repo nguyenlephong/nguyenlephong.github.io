@@ -852,7 +852,7 @@ four. Route ownership produces the following measurements (refreshed from the
 | Gallery | 3 | 39,163 | 8,184 | 8,448 |
 | Apps | 3 | 44,476 | 9,235 | 9,600 |
 | English practice | 3 | 38,627 | 8,022 | 8,320 |
-| Offline | 3 | 27,042 | 6,184 | 6,400 |
+| Offline | 3 | 27,042 | 6,410 | 6,656 |
 | Blog archive | 3 | 82,035 | 14,426 | 14,464 |
 | Notes archive | 4 | 86,418 | 15,969 | 16,512 |
 | Blog article | 4 | 101,003 | 18,406 | 19,072 |

@@ -757,6 +757,8 @@ main { padding-top: 80px; padding-bottom: var(--space-section); }
   margin: 0.125rem 0 0;
 }
 .footer-role { white-space: nowrap; }
+/* Long role lines (ja, fr) must wrap on phones instead of pushing the page sideways. */
+@media (max-width: 480px) { .footer-role { white-space: normal; } }
 .footer-links {
   list-style: none; padding: 0; margin: 0;
   display: flex; flex-wrap: wrap; align-items: center;

@@ -76,7 +76,7 @@
     "socialProfiles": "Social profiles",
     "topology": {
       "label": "Current roles and the one before",
-      "zaloNote": "desktop client · 15M+ MAU",
+      "zaloNote": "desktop client · 18M+ MAU",
       "bonbonNote": "$500K pre-seed, led by Tasco",
       "previousNote": "delivery lead · 8 dev + 3 QC",
       "zaloMeta": "Lead · full-time · since <date>Mar 2026</date>",
@@ -185,7 +185,7 @@
     },
     "roles": {
       "zaloLead": {
-        "scope": "Rehired as Lead in March 2026, seven months after leaving for NDSVN. I lead cross-device messaging and client storage on the desktop client (15M+ MAU).",
+        "scope": "Rehired as Lead in March 2026, seven months after leaving for NDSVN. I lead cross-device messaging and client storage on the desktop client (18M+ MAU).",
         "contributions": {
           "0": "Delivered <b>PC message backup</b> with restore on mobile: payload contract, worker file hardening, upload telemetry and mutual exclusion with sync. Rollout began in July 2026.",
           "1": "Hardened sync v2 for unreliable mobile links with retries, grouped re-prepare and failure accounting. One hot-path lookup fell from <b>1.8 s to 4 ms</b> on a 37-session test.",
@@ -207,7 +207,7 @@
         }
       },
       "zaloSenior": {
-        "scope": "Core engineer on the Zalo PC client (Web, macOS, Windows) with 15M+ MAU, plus features for Zalo Android (~80M users).",
+        "scope": "Core engineer on the Zalo PC client (Web, macOS, Windows) with 18M+ MAU, plus features for Zalo Android (~80M users).",
         "contributions": {
           "0": "Led the Storybook design system used by <b>50+ developers</b>.",
           "1": "Shipped <b>10+ client features</b>, including dark mode, dynamic theming, the download module and the Kiki bot.",
@@ -320,7 +320,7 @@
     },
     "about": {
       "title": "About Nguyen Le Phong: Lead at Zalo PC, BonBon co-founder",
-      "description": "How I got from an outsourcing agency to leading cross-device sync at Zalo PC and co-founding BonBon Mobility, and the habits I bring to each team."
+      "description": "How I got from an outsourcing agency to leading cross-device sync at Zalo PC and co-founding BonBon Mobility, and the kind of team I help most."
     },
     "apps": {
       "title": "Apps: Small Open-Source Tools | Nguyen Le Phong",
@@ -582,15 +582,15 @@
     }
   },
   "About": {
-    "title": "I build product systems that can be shipped, observed, and recovered.",
-    "lede": "I have shipped software since 2018: at an early startup, an outsourcing agency, a product company, Zalo, and a company in the middle of a CTO transition. In 2026 I also co-founded a startup. Each move changed how I work.",
+    "title": "I still write the hard parts, and I set up the team so decisions do not wait on me.",
+    "lede": "I have shipped software since 2018: at an early startup, an outsourcing agency, a product company, Zalo, and a company in the middle of a CTO transition. In March 2026 Zalo hired me back as Lead, and the same year I co-founded a startup. Every move changed how I work. Two habits stayed: ship in small steps that can be rolled back, and trust the team by default.",
     "arc": {
       "label": "Career route since 2018",
       "early": "Startup, agency",
       "product": "Product",
       "scale": "Big tech",
       "handover": "Handover",
-      "now": "Lead, part-time co-founder"
+      "now": "Lead, co-founder"
     },
     "story": {
       "title": "How I got here",
@@ -613,7 +613,7 @@
           "dates": "2024–2025",
           "where": "Zalo PC",
           "env": "Big tech, consumer",
-          "body": "A desktop client with <b>15M+ MAU</b>. I shipped dark mode, dynamic theming and the download module, and led the Storybook design system used by 50+ developers.",
+          "body": "A desktop client with <b>18M+ MAU</b>. I shipped dark mode, dynamic theming and the download module, and led the Storybook design system used by 50+ developers.",
           "shift": "Shared components and a client used by millions put stability ahead of speed."
         },
         "handover": {
@@ -627,7 +627,7 @@
           "dates": "2026–now",
           "where": "Zalo PC, BonBon Mobility, LogiUP",
           "env": "Big tech, own startup, B2B SaaS",
-          "body": "Zalo hired me back full-time as Lead in March 2026, for cross-device messaging and client storage, including PC message backup with restore on mobile. Outside Zalo I work part-time on two things. I co-founded BonBon Mobility: it won Tasco Foundry's Wash3000 out of about 100 applicants and closed a <b>$500K</b> pre-seed round led by Tasco. At LogiUP, a multi-tenant logistics SaaS, I am Tech Lead and system architect for a team of four.",
+          "body": "Zalo hired me back as Lead in March 2026, for cross-device messaging and client storage, including PC message backup with restore on mobile. Outside Zalo, I co-founded BonBon Mobility: it won Tasco Foundry's Wash3000 out of about 100 applicants and closed a <b>$500K</b> pre-seed round led by Tasco. At LogiUP, a multi-tenant logistics SaaS, I am Tech Lead and system architect for a team of four.",
           "shift": "In this role most of my work is decisions: how the architecture splits, what ships default off and what a partner's security review will accept."
         }
       }
@@ -636,23 +636,23 @@
       "title": "Teams I am a good fit for",
       "items": {
         "scale": {
-          "title": "A large system that has to change without hurting its users",
-          "proof": "Zalo PC is a desktop client with <b>15M+ MAU</b>. I shipped message backup on PC with restore on mobile, rolling out since July 2026. Risky changes ship behind an off switch, so a bad one can be turned off without a new release.",
+          "title": "A team that has to ship a big feature to real users without a bad release",
+          "proof": "In the first rollout wave, <b>80%</b> of users completed the full backup and restore flow. That was PC message backup with restore on mobile, on an 18M+ MAU desktop client, live for real users in <b>2 sprints</b>. Zalo PC had just hired me back as Lead and I was still on probation. We shipped in waves and watched each wave closely enough to fix issues fast.",
           "source": "Zalo PC · 2026"
         },
         "handover": {
           "title": "A team that just lost its technical lead",
-          "proof": "At NDSVN I joined right after a CTO handover and took technical ownership of <b>8 developers and 3 QC</b>. The first step was writing down, with the team, what already worked: who owns what, how releases go out, how incidents are handled, what interviews look for. Then we adjusted one piece at a time, so the team kept its pace without waiting on one person.",
+          "proof": "Within <b>2 weeks</b> of the CTO transition at NDSVN, the team was back on sprint pace. I had taken technical ownership of its 8 developers and 3 QC. In that moment people mostly want to know where they stand, so I started with 1:1s and their daily work, then wrote a 3, 6 and 12-month growth plan with each person. Credit followed clear numbers, such as each person's sprint velocity, so it went to the people who earned it.",
           "source": "NDSVN · 2025–2026"
         },
         "zeroToOne": {
-          "title": "A team that needs to go from idea to a real product, fast",
-          "proof": "BonBon is a startup I co-founded, part-time. We had a working product in four weeks and a one-month field pilot, then won Tasco Foundry's Wash3000 program out of about 100 applications and raised a <b>$500K</b> pre-seed led by Tasco.",
+          "title": "A team with an idea that needs a working product, fast",
+          "proof": "We went from idea to a working product in four weeks, then ran a one-month field pilot. That is BonBon, the startup I co-founded. It won Tasco Foundry's Wash3000 out of about 100 applications, then raised a <b>$500K</b> pre-seed led by Tasco.",
           "source": "BonBon · 2026"
         },
         "platform": {
-          "title": "A B2B product serving many customers on one platform",
-          "proof": "At LogiUP I am the part-time Tech Lead and architect of a multi-tenant logistics SaaS: each customer sees only its own data, from the token to every permission check, and the web and Electron apps share one sign-in. At NDSVN the feature-flag platform served <b>30+ tenants</b> with per-tenant rollout.",
+          "title": "A B2B product where many customers share one platform",
+          "proof": "In B2B SaaS the most expensive bug is one customer seeing another's data. At LogiUP I made per-customer isolation part of the foundation, at every layer from the token to each permission check, so a team of four can keep shipping without worrying about it. The AI-assisted customs flow follows the same rule: the AI suggests, a person confirms each section, because one wrong field costs the customer money. Export declarations have been in UAT since October 2026.",
           "source": "LogiUP, NDSVN · 2025–2026"
         }
       },
@@ -664,7 +664,7 @@
       "teaching": "In May 2023 I taught a front-end project course at Vietnam Australia Center: <b>12 students</b>, from requirements to working React apps."
     },
     "closing": {
-      "body": "I do my best work where an <b>ambitious product</b> runs on a backend that <b>cannot afford to fail</b>. My part is to make that backend calm enough that the team ships without holding its breath.",
+      "body": "I do my best work on a product real users depend on, with a team that wants to keep shipping. My part is to keep risky changes reversible and the direction clear, so nobody has to wait for me to decide.",
       "linksLabel": "Résumé, email and experience",
       "resume": "Résumé (PDF)",
       "email": "Email",

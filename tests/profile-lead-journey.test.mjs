@@ -364,7 +364,7 @@ test("hero leads with both the Zalo PC role and the BonBon co-founder role", asy
     assert.equal(typeof messages.Hero.claim, "string");
     assert.match(messages.Hero.news, /BonBon/);
     assert.match(messages.Hero.topology.bonbonNote, /Tasco/);
-    assert.match(messages.Hero.topology.zaloNote, /15/);
+    assert.match(messages.Hero.topology.zaloNote, /18/);
     assert.match(messages.SEO.home.title, /BonBon/);
     assert.equal(messages.Hero.proof, undefined);
     // The stat grid is gone, and the contradicted 80M+ figure must not come back to the hero.

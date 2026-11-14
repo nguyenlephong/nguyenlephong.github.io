@@ -248,7 +248,7 @@
           "html": "en/offline.html",
           "maxStylesheetCount": 3,
           "maxGzipBytes": 7424,
-          "maxBrotliBytes": 6400,
+          "maxBrotliBytes": 6656,
           "requiredOwners": ["offline"],
           "allowedOwners": ["offline"]
         },

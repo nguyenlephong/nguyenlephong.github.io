@@ -91,6 +91,8 @@
 }
 .about-arc-env {
   max-width: 14ch;
+  /* Long single words (fr "cofondateur") hyphenate instead of widening the page at 375px. */
+  hyphens: auto;
   padding-inline: 0.25rem;
   color: var(--fg);
   font-size: var(--text-sm);

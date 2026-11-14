@@ -117,7 +117,7 @@ Rule of thumb: keep English when (a) it is a name, acronym or protocol, (b) VN e
 | Term | Policy | Example in VI copy |
 |---|---|---|
 | Product, company, tool, protocol names: Zalo PC, VETC, PostHog, ArgoCD, OAuth 2.1, OIDC, mTLS, RSA-4096 | Keep | "dùng chung OAuth 2.1/OIDC provider cho web và Electron" |
-| Metrics, acronyms: MAU, DAU, p95, API, SDK, RBAC, PII, QC, UAT, MVP | Keep | "cảnh báo p95", "hơn 15 triệu MAU" |
+| Metrics, acronyms: MAU, DAU, p95, API, SDK, RBAC, PII, QC, UAT, MVP | Keep | "cảnh báo p95", "hơn 18 triệu MAU" |
 | feature flag, kill switch, rollout, release, deploy, commit, repo, merge, code review, hot path, retry, idempotent, tenant, multi-tenant, sync, payload, token, monorepo, pilot, pre-seed | Keep (no settled VN term, or VN term is longer) | "thay đổi rủi ro nằm sau kill switch, mặc định tắt" |
 | backup / restore when naming the Zalo feature | Prefer the product's own VN label ("sao lưu", "khôi phục"); verify against the Zalo UI string | "sao lưu tin nhắn trên PC, khôi phục trên điện thoại" |
 | deploy (in a sentence for general readers) | "triển khai" or "đưa lên production" | "triển khai độc lập từng module" |

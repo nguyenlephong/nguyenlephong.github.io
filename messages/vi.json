@@ -76,7 +76,7 @@
     "socialProfiles": "Mạng xã hội",
     "topology": {
       "label": "Vai trò hiện tại và vai trò trước đó",
-      "zaloNote": "app desktop · hơn 15 triệu MAU",
+      "zaloNote": "app desktop · hơn 18 triệu MAU",
       "bonbonNote": "pre-seed 500.000 USD, Tasco dẫn dắt",
       "previousNote": "dẫn team delivery · 8 dev + 3 QC",
       "zaloMeta": "Lead · toàn thời gian · từ <date>03/2026</date>",
@@ -185,7 +185,7 @@
     },
     "roles": {
       "zaloLead": {
-        "scope": "Zalo nhận tôi quay lại làm Lead từ tháng 3/2026, bảy tháng sau khi tôi sang NDSVN. Tôi dẫn mảng tin nhắn đa thiết bị và lưu trữ phía client của app desktop (hơn 15 triệu MAU).",
+        "scope": "Zalo nhận tôi quay lại làm Lead từ tháng 3/2026, bảy tháng sau khi tôi sang NDSVN. Tôi dẫn mảng tin nhắn đa thiết bị và lưu trữ phía client của app desktop (hơn 18 triệu MAU).",
         "contributions": {
           "0": "Ship tính năng <b>sao lưu tin nhắn trên PC</b>, khôi phục trên điện thoại: chốt payload contract, gia cố xử lý file trong worker, thêm telemetry khi upload, chặn chạy chồng với sync. Rollout từ tháng 7/2026.",
           "1": "Gia cố sync v2 cho đường truyền mobile chập chờn: retry, re-prepare theo nhóm, đếm lỗi. Một lookup trên hot path giảm từ <b>1,8 s xuống 4 ms</b> trong bài test 37 phiên.",
@@ -207,7 +207,7 @@
         }
       },
       "zaloSenior": {
-        "scope": "Core engineer của Zalo PC (Web, macOS, Windows; hơn 15 triệu MAU), làm thêm vài tính năng cho Zalo Android (khoảng 80 triệu người dùng).",
+        "scope": "Core engineer của Zalo PC (Web, macOS, Windows; hơn 18 triệu MAU), làm thêm vài tính năng cho Zalo Android (khoảng 80 triệu người dùng).",
         "contributions": {
           "0": "Dẫn dắt design system trên Storybook, <b>hơn 50 developer</b> dùng chung.",
           "1": "Ship <b>hơn 10 tính năng</b> cho client: dark mode, đổi theme động, module tải file, Kiki bot.",
@@ -320,7 +320,7 @@
     },
     "about": {
       "title": "Về Nguyễn Lê Phong: Lead ở Zalo PC, đồng sáng lập BonBon",
-      "description": "Từ công ty outsource đến vị trí Lead ở Zalo PC và đồng sáng lập BonBon Mobility, cùng những thói quen làm việc tôi mang theo vào mỗi team."
+      "description": "Từ công ty outsource đến vị trí Lead ở Zalo PC và đồng sáng lập BonBon Mobility, cùng những kiểu team mà tôi giúp được nhiều nhất."
     },
     "apps": {
       "title": "Ứng dụng: Công cụ nhỏ mã nguồn mở | Nguyễn Lê Phong",
@@ -582,15 +582,15 @@
     }
   },
   "About": {
-    "title": "Tôi xây hệ thống sản phẩm release được, theo dõi được, khôi phục được.",
-    "lede": "Tôi làm phần mềm từ năm 2018: ở một startup còn rất sớm, một công ty outsource, một công ty làm sản phẩm, ở Zalo và ở một công ty đang chuyển giao CTO. Năm 2026 tôi đồng sáng lập thêm một startup. Mỗi lần chuyển việc đều đổi cách tôi làm.",
+    "title": "Tôi vẫn tự viết những phần khó nhất và không để team phải đứng chờ tôi.",
+    "lede": "Tôi làm phần mềm từ năm 2018: ở một startup còn rất sớm, một công ty outsource, một công ty làm sản phẩm, ở Zalo và ở một công ty đang chuyển giao CTO. Tháng 3/2026 Zalo nhận tôi quay lại làm Lead, cũng năm đó tôi đồng sáng lập một startup. Mỗi lần chuyển việc, cách làm của tôi lại đổi. Có hai thói quen tôi giữ nguyên. Thay đổi thì ship từng bước nhỏ, lỗi là rollback được. Với team thì mặc định tin trước.",
     "arc": {
       "label": "Các chặng từ năm 2018",
       "early": "Startup, outsource",
       "product": "Sản phẩm",
       "scale": "Big tech",
       "handover": "Chuyển giao",
-      "now": "Lead, đồng sáng lập bán thời gian"
+      "now": "Lead, đồng sáng lập"
     },
     "story": {
       "title": "Những chặng đã qua",
@@ -613,7 +613,7 @@
           "dates": "2024–2025",
           "where": "Zalo PC",
           "env": "Big tech, sản phẩm đại chúng",
-          "body": "App desktop hơn <b>15 triệu MAU</b>. Tôi làm dark mode, đổi theme động và module tải file. Tôi cũng dẫn dắt design system trên Storybook mà hơn 50 developer dùng chung.",
+          "body": "App desktop hơn <b>18 triệu MAU</b>. Tôi làm dark mode, đổi theme động và module tải file. Tôi cũng dẫn dắt design system trên Storybook mà hơn 50 developer dùng chung.",
           "shift": "Component dùng chung và một app có hàng triệu người dùng buộc tôi đặt độ ổn định lên trước tốc độ."
         },
         "handover": {
@@ -627,32 +627,32 @@
           "dates": "2026–nay",
           "where": "Zalo PC, BonBon Mobility, LogiUP",
           "env": "Big tech, startup của mình, SaaS B2B",
-          "body": "Zalo nhận tôi quay lại làm Lead toàn thời gian từ tháng 3/2026, dẫn mảng tin nhắn đa thiết bị và lưu trữ phía client, trong đó có sao lưu tin nhắn trên PC rồi khôi phục trên điện thoại. Ngoài Zalo, tôi làm bán thời gian ở hai nơi. Tôi đồng sáng lập BonBon Mobility. BonBon thắng Wash3000 của Tasco Foundry giữa khoảng 100 hồ sơ và nhận vòng pre-seed <b>500.000 USD</b> do Tasco dẫn dắt. Ở LogiUP, một SaaS logistics multi-tenant, tôi là Tech Lead kiêm system architect của team bốn người.",
+          "body": "Zalo nhận tôi quay lại làm Lead từ tháng 3/2026, dẫn mảng tin nhắn đa thiết bị và lưu trữ phía client, trong đó có sao lưu tin nhắn trên PC rồi khôi phục trên điện thoại. Ngoài Zalo, tôi đồng sáng lập BonBon Mobility. BonBon thắng Wash3000 của Tasco Foundry giữa khoảng 100 hồ sơ và nhận vòng pre-seed <b>500.000 USD</b> do Tasco dẫn dắt. Ở LogiUP, một SaaS logistics multi-tenant, tôi là Tech Lead kiêm system architect của team bốn người.",
           "shift": "Ở vai trò này, phần lớn việc của tôi là ra quyết định: kiến trúc tách ra sao, cái gì ship ở trạng thái mặc định tắt, bài review bảo mật của đối tác sẽ chấp nhận điều gì."
         }
       }
     },
     "habits": {
-      "title": "Team nào sẽ cần tôi",
+      "title": "Tôi hợp với team nào",
       "items": {
         "scale": {
-          "title": "Team có hệ thống lớn, cần thay đổi mà không làm người dùng đau",
-          "proof": "Zalo PC là app desktop <b>hơn 15 triệu MAU</b>. Tôi đưa tính năng sao lưu tin nhắn trên máy tính, khôi phục trên điện thoại ra mắt từ 7/2026. Thay đổi rủi ro luôn có công tắc tắt sẵn, có sự cố là tắt được ngay mà không cần ra bản mới.",
+          "title": "Team cần đưa tính năng lớn tới người dùng thật, nhanh mà không đổ vỡ",
+          "proof": "Ngay đợt rollout đầu, <b>80%</b> người dùng đi hết trọn luồng sao lưu và khôi phục. Đó là tính năng sao lưu tin nhắn trên PC, khôi phục trên điện thoại, của một app desktop hơn 18 triệu MAU. Tôi cùng team đưa nó tới người dùng thật sau <b>2 sprint</b>, lúc vừa quay lại Zalo PC làm Lead và còn đang thử việc. Team rollout theo từng đợt, đợt nào cũng theo dõi đủ kỹ để thấy lỗi là sửa ngay.",
           "source": "Zalo PC · 2026"
         },
         "handover": {
           "title": "Team vừa mất người dẫn dắt kỹ thuật",
-          "proof": "Ở NDSVN, tôi vào ngay sau đợt chuyển giao CTO và nhận phụ trách kỹ thuật cho <b>8 developer và 3 QC</b>. Việc đầu tiên là cùng team ghi lại những gì đang chạy: ai lo phần nào, release ra sao, sự cố xử lý thế nào, phỏng vấn theo tiêu chí gì. Sau đó mới chỉnh dần từng chỗ, để team vẫn giữ nhịp mà không phải chờ một người.",
+          "proof": "Chỉ sau <b>2 tuần</b> kể từ đợt chuyển giao CTO ở NDSVN, team đã theo kịp nhịp sprint. Tôi nhận phụ trách kỹ thuật cho 8 developer và 3 QC của team. Lúc đó điều mọi người cần nhất là biết mình đang đứng ở đâu, nên tôi bắt đầu từ 1:1 và từ việc hằng ngày của từng bạn, rồi cùng mỗi bạn lên lộ trình phát triển 3, 6 và 12 tháng. Ghi nhận dựa trên số liệu rõ ràng, như velocity của từng người qua mỗi sprint, để công của ai thì người đó được nhận.",
           "source": "NDSVN · 2025–2026"
         },
         "zeroToOne": {
           "title": "Team cần đi từ ý tưởng tới sản phẩm thật, nhanh",
-          "proof": "BonBon là startup tôi đồng sáng lập, làm bán thời gian. Đội có sản phẩm chạy được sau 4 tuần, chạy thử thực tế một tháng, rồi thắng chương trình Wash3000 của Tasco Foundry trong khoảng 100 hồ sơ và gọi vốn pre-seed <b>500.000 USD</b> do Tasco dẫn dắt.",
+          "proof": "Chúng tôi đi từ ý tưởng tới sản phẩm chạy được trong 4 tuần, sau đó chạy thử thực tế một tháng. Đó là BonBon, startup tôi đồng sáng lập. BonBon thắng Wash3000 của Tasco Foundry giữa khoảng 100 hồ sơ, rồi gọi được vòng pre-seed <b>500.000 USD</b> do Tasco dẫn dắt.",
           "source": "BonBon · 2026"
         },
         "platform": {
-          "title": "Sản phẩm B2B, nhiều khách hàng trên một nền tảng",
-          "proof": "Ở LogiUP, tôi là Tech Lead bán thời gian, quyết kiến trúc cho một SaaS logistics multi-tenant: dữ liệu khách nào chỉ khách đó thấy, từ token tới từng lần kiểm tra quyền, web và app Electron dùng chung một hệ thống đăng nhập. Ở NDSVN, nền tảng feature flag phục vụ <b>30+ tenant</b>, bật dần theo từng khách.",
+          "title": "Sản phẩm B2B, nhiều khách hàng dùng chung một nền tảng",
+          "proof": "Với SaaS cho doanh nghiệp, lỗi đắt nhất là để khách này thấy dữ liệu của khách kia. Ở LogiUP, tôi đặt việc tách dữ liệu theo từng khách làm nền móng, ở mọi lớp từ token tới từng lần kiểm tra quyền, để team 4 người cứ thế ship tính năng mà không phải lo chuyện đó. Phần AI điền tờ khai hải quan cũng theo cùng tinh thần: AI gợi ý, người dùng xác nhận từng phần, vì sai một ô là khách mất tiền. Luồng tờ khai xuất khẩu đã vào UAT từ 10/2026.",
           "source": "LogiUP, NDSVN · 2025–2026"
         }
       },
@@ -664,7 +664,7 @@
       "teaching": "Tháng 5/2023 tôi dạy một khoá front-end theo dự án ở Vietnam Australia Center cho <b>12 học viên</b>, đi từ yêu cầu tới app React chạy được."
     },
     "closing": {
-      "body": "Tôi làm tốt nhất ở những team có <b>sản phẩm nhiều tham vọng</b> chạy trên một backend <b>không được phép lỗi</b>. Việc của tôi là giữ cho backend đó đủ ổn định để team ship mà không phải nín thở.",
+      "body": "Tôi làm tốt nhất ở những sản phẩm có người dùng thật đang trông vào, cùng một team muốn ship đều tay. Phần của tôi là giữ cho thay đổi rủi ro luôn rollback được, giữ hướng đi rõ, để không ai phải ngồi chờ tôi quyết.",
       "linksLabel": "CV, email và kinh nghiệm",
       "resume": "CV (PDF)",
       "email": "Email",

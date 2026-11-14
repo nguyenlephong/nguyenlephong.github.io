@@ -14,20 +14,20 @@ export const LOCALES = ['en', 'vi', 'fr', 'ja', 'ko', 'zh']
 
 const EM_DASH_RULE = { id: 'em-dash', re: /—/, why: 'no em dashes anywhere' }
 
-// Ledger (cv-evidence-inventory section 5): Zalo PC is 15M+ MAU; "80M+ MAU" is contradicted.
+// Ledger (cv-evidence-inventory section 5): Zalo PC is 18M+ MAU; "80M+ MAU" is contradicted.
 // The qualified "Zalo Android (~80M users)" experience line stays allowed.
 const CLAIM_RULES = [
   {
     id: 'claim-80m-mau',
     re: /\b80\s?M\s?\+|\b80\s?M\s+MAU|\b80\s+(million|triệu)\+?\s+MAU/i,
-    why: 'contradicted by the ledger; Zalo PC is 15M+ MAU',
+    why: 'contradicted by the ledger; Zalo PC is 18M+ MAU',
   },
 ]
 
 const ALL_LOCALE_RULES = [EM_DASH_RULE, ...CLAIM_RULES]
 
 // The OG card has no room for a qualifier, so any 80M figure is out.
-const OG_RULES = [{ id: 'og-80m', re: /\b80\s?(M\b|million|triệu)/i, why: 'OG card: use the Zalo PC 15M+ MAU figure' }]
+const OG_RULES = [{ id: 'og-80m', re: /\b80\s?(M\b|million|triệu)/i, why: 'OG card: use the Zalo PC 18M+ MAU figure' }]
 
 // Profile surfaces outside messages/*.json: file -> rules on the raw text.
 export const SOURCE_SURFACES = {

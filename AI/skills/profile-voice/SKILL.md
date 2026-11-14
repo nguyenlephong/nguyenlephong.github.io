@@ -12,6 +12,7 @@ Read the references you need before editing:
 - `references/positioning.md`: who the reader is, what each level screens for, the five pillars, above-the-fold rules, keywords, AI framing.
 - `references/language.md`: EN and VI principles, AI-tell ban lists, term policy, number/date formats, pre-ship checklist.
 - `references/design-grammar.md`: the "CV as a system spec" visual grammar, per-section concepts, type, spacing and motion rules.
+- `references/owner-voice.md`: Phong's own beliefs, leadership style and natural EN/VI voice distilled from his notes, the AI-template tics to strip, and a checklist for writing profile copy that sounds like him.
 - `AI/research/cv-evidence-inventory-2026-11-12.md`: the evidence ledger (claims, numbers, sources, confidence). Update it first when a fact changes.
 
 ## Who reads this

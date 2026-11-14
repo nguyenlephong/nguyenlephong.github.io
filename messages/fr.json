@@ -75,7 +75,7 @@
     "socialProfiles": "Profils sociaux",
     "topology": {
       "label": "Rôles actuels et rôle précédent",
-      "zaloNote": "client desktop · 15M+ MAU",
+      "zaloNote": "client desktop · 18M+ MAU",
       "bonbonNote": "pre-seed de 500 000 $, menée par Tasco",
       "previousNote": "lead delivery · 8 dev + 3 QC",
       "zaloMeta": "Lead · temps plein · depuis <date>mars 2026</date>",
@@ -184,7 +184,7 @@
     },
     "roles": {
       "zaloLead": {
-        "scope": "Réembauché comme Lead en mars 2026, sept mois après mon départ pour NDSVN. Je dirige la messagerie multi-appareils et le stockage côté client de l'app desktop (15M+ MAU).",
+        "scope": "Réembauché comme Lead en mars 2026, sept mois après mon départ pour NDSVN. Je dirige la messagerie multi-appareils et le stockage côté client de l'app desktop (18M+ MAU).",
         "contributions": {
           "0": "<b>Sauvegarde des messages PC</b> et restauration sur mobile : contrat de payload, fichiers du worker durcis, télémétrie d'upload, exclusion mutuelle avec la synchro. Lancée en juillet 2026.",
           "1": "Sync v2 renforcée face aux coupures mobiles : retries, re-préparation par groupes, comptage des échecs. Sur un test de 37 sessions, une lookup du hot path est passée de <b>1,8 s à 4 ms</b>.",
@@ -206,7 +206,7 @@
         }
       },
       "zaloSenior": {
-        "scope": "Ingénieur clé du client Zalo PC (Web, macOS, Windows ; 15M+ MAU), plus des fonctionnalités pour Zalo Android (~80M d'utilisateurs).",
+        "scope": "Ingénieur clé du client Zalo PC (Web, macOS, Windows ; 18M+ MAU), plus des fonctionnalités pour Zalo Android (~80M d'utilisateurs).",
         "contributions": {
           "0": "Pilotage du design system Storybook utilisé par <b>50+ développeurs</b>.",
           "1": "<b>10+ fonctionnalités client</b> livrées, dont mode sombre, thèmes dynamiques, module de téléchargement et bot Kiki.",
@@ -313,15 +313,15 @@
     "resumePdf": "CV (PDF)"
   },
   "About": {
-    "title": "Je construis des systèmes produit qu'on peut livrer, observer et rétablir.",
-    "lede": "Je livre du logiciel depuis 2018 : dans une startup à ses débuts, une agence de sous-traitance, un éditeur de produit, chez Zalo, puis dans une entreprise en plein changement de CTO. En 2026, j'ai aussi cofondé une startup. Voici ce que chaque étape a changé dans ma façon de travailler, puis les habitudes que j'en ai gardées.",
+    "title": "J'écris encore les parties difficiles, et j'organise l'équipe pour que les décisions ne m'attendent pas.",
+    "lede": "Je livre du logiciel depuis 2018 : dans une startup à ses débuts, une agence de sous-traitance, un éditeur de produit, chez Zalo, puis dans une entreprise en plein changement de CTO. En mars 2026, Zalo m'a réembauché comme Lead, et la même année j'ai cofondé une startup. Chaque étape a changé ma façon de travailler. Deux habitudes sont restées : livrer par petites étapes, chacune réversible, et faire confiance à l'équipe par défaut.",
     "arc": {
       "label": "Parcours depuis 2018",
       "early": "Startup, agence",
       "product": "Produit",
       "scale": "Big tech",
       "handover": "Passation",
-      "now": "Lead, cofondateur à temps partiel"
+      "now": "Lead, cofondateur"
     },
     "story": {
       "title": "Comment j'en suis arrivé là",
@@ -344,7 +344,7 @@
           "dates": "2024–2025",
           "where": "Zalo PC",
           "env": "Big tech, grand public",
-          "body": "Un client desktop à <b>15M+ MAU</b>. J'ai livré le mode sombre, les thèmes dynamiques et le module de téléchargement, et dirigé le design system Storybook utilisé par plus de 50 développeurs.",
+          "body": "Un client desktop à <b>18M+ MAU</b>. J'ai livré le mode sombre, les thèmes dynamiques et le module de téléchargement, et dirigé le design system Storybook utilisé par plus de 50 développeurs.",
           "shift": "Avec des composants partagés et une app utilisée par des millions de personnes, la stabilité passe avant la vitesse."
         },
         "handover": {
@@ -358,32 +358,32 @@
           "dates": "2026–aujourd'hui",
           "where": "Zalo PC, BonBon Mobility, LogiUP",
           "env": "Big tech, ma startup, SaaS B2B",
-          "body": "Zalo m'a réembauché à temps plein comme Lead en mars 2026 : je dirige la messagerie multi-appareils et le stockage côté client, dont la sauvegarde des messages sur PC avec restauration sur mobile. En dehors de Zalo, je travaille à temps partiel sur deux projets. J'ai cofondé BonBon Mobility, lauréat de Wash3000 de Tasco Foundry parmi environ 100 candidatures, avec une levée pre-seed de <b>500 k$</b> menée par Tasco. Chez LogiUP, un SaaS logistique multi-tenant, je suis Tech Lead et architecte système d'une équipe de quatre.",
+          "body": "Zalo m'a réembauché comme Lead en mars 2026 : je dirige la messagerie multi-appareils et le stockage côté client, dont la sauvegarde des messages sur PC avec restauration sur mobile. En dehors de Zalo, j'ai cofondé BonBon Mobility, lauréat de Wash3000 de Tasco Foundry parmi environ 100 candidatures, avec une levée pre-seed de <b>500 k$</b> menée par Tasco. Chez LogiUP, un SaaS logistique multi-tenant, je suis Tech Lead et architecte système d'une équipe de quatre.",
           "shift": "Dans ce rôle, mon travail consiste surtout à décider : comment découper l'architecture, ce qui part désactivé par défaut, ce qu'acceptera la revue de sécurité d'un partenaire."
         }
       }
     },
     "habits": {
-      "title": "Les équipes qui ont besoin de moi",
+      "title": "Les équipes où je suis à ma place",
       "items": {
         "scale": {
-          "title": "Un grand système à faire évoluer sans gêner ses utilisateurs",
-          "proof": "Zalo PC est un client desktop de <b>15M+ MAU</b>. J'ai livré la sauvegarde des messages sur PC avec restauration sur mobile, déployée depuis juillet 2026. Les changements risqués partent derrière un interrupteur d'arrêt, pour couper un problème sans nouvelle version.",
+          "title": "Une équipe qui doit livrer une grosse fonctionnalité à de vrais utilisateurs, sans mise en production ratée",
+          "proof": "Dès la première vague de déploiement, <b>80 %</b> des utilisateurs sont allés au bout du parcours complet de sauvegarde et de restauration. Il s'agit de la sauvegarde des messages sur PC avec restauration sur mobile, dans un client desktop de 18M+ MAU, en production pour de vrais utilisateurs en <b>2 sprints</b>. Zalo PC venait de me réembaucher comme Lead et j'étais encore en période d'essai. Nous avons déployé par vagues, en suivant chacune d'assez près pour corriger vite.",
           "source": "Zalo PC · 2026"
         },
         "handover": {
           "title": "Une équipe qui vient de perdre son lead technique",
-          "proof": "Chez NDSVN, je suis arrivé juste après une passation de CTO et j'ai pris la responsabilité technique de <b>8 développeurs et 3 QC</b>. D'abord, avec l'équipe, nous avons mis par écrit ce qui fonctionnait déjà : qui s'occupe de quoi, comment partent les releases, comment on gère un incident, ce que cherchent les entretiens. Ensuite, nous avons ajusté une chose à la fois, pour que l'équipe garde son rythme sans attendre une seule personne.",
+          "proof": "<b>2 semaines</b> après le changement de CTO chez NDSVN, l'équipe avait retrouvé son rythme de sprint. J'avais pris la responsabilité technique de ses 8 développeurs et 3 QC. Dans ces moments-là, chacun veut surtout savoir où il en est : j'ai donc commencé par des 1:1 et par le travail quotidien de chacun, puis j'ai écrit avec chaque personne un plan de progression à 3, 6 et 12 mois. La reconnaissance suivait des chiffres clairs, comme la vélocité de sprint de chacun, pour revenir à ceux qui l'avaient méritée.",
           "source": "NDSVN · 2025–2026"
         },
         "zeroToOne": {
-          "title": "Passer vite d'une idée à un vrai produit",
-          "proof": "BonBon est une startup que j'ai cofondée, à temps partiel. Produit fonctionnel en quatre semaines, un mois de pilote terrain, puis victoire au programme Wash3000 de Tasco Foundry parmi une centaine de candidatures et une levée pre-seed de <b>500 k$</b> menée par Tasco.",
+          "title": "Une équipe qui a une idée et a besoin vite d'un produit qui marche",
+          "proof": "Nous sommes passés de l'idée à un produit fonctionnel en quatre semaines, puis nous avons mené un pilote terrain d'un mois. C'est BonBon, la startup que j'ai cofondée. Elle a remporté le Wash3000 de Tasco Foundry parmi une centaine de candidatures, puis levé un pre-seed de <b>500 k$</b> mené par Tasco.",
           "source": "BonBon · 2026"
         },
         "platform": {
-          "title": "Un produit B2B, de nombreux clients sur une plateforme",
-          "proof": "Chez LogiUP, je suis Tech Lead à temps partiel et architecte d'un SaaS logistique multi-tenant : chaque client ne voit que ses données, du token à chaque contrôle de droits, et le web comme l'app Electron partagent une seule connexion. Chez NDSVN, la plateforme de feature flags servait <b>30+ tenants</b> avec un déploiement client par client.",
+          "title": "Un produit B2B où de nombreux clients partagent une même plateforme",
+          "proof": "En SaaS B2B, le bug le plus coûteux, c'est un client qui voit les données d'un autre. Chez LogiUP, j'ai mis l'isolation par client dans les fondations, à chaque couche, du token à chaque contrôle de droits, pour qu'une équipe de quatre continue à livrer sans s'en soucier. Le parcours douanier assisté par IA suit la même règle : l'IA propose, une personne valide chaque section, car un seul champ faux coûte de l'argent au client. Les déclarations d'export sont en UAT depuis octobre 2026.",
           "source": "LogiUP, NDSVN · 2025–2026"
         }
       },
@@ -395,7 +395,7 @@
       "teaching": "En mai 2023, j'ai donné un cours de projet front-end au Vietnam Australia Center : <b>12 étudiants</b>, des besoins à une app React fonctionnelle."
     },
     "closing": {
-      "body": "Je donne le meilleur de moi-même là où un <b>produit ambitieux</b> repose sur un backend qui <b>ne peut pas tomber</b>. Mon rôle : rendre ce backend assez calme pour que l'équipe livre sans retenir son souffle.",
+      "body": "Je travaille le mieux sur un produit dont de vrais utilisateurs dépendent, avec une équipe qui veut continuer à livrer. Mon rôle : garder les changements risqués réversibles et le cap clair, pour que personne n'ait à attendre ma décision.",
       "linksLabel": "CV, e-mail et expérience",
       "resume": "CV (PDF)",
       "email": "E-mail",
@@ -421,7 +421,7 @@
     },
     "about": {
       "title": "À propos de Nguyen Le Phong : Lead Zalo PC, cofondateur BonBon",
-      "description": "D'une agence de sous-traitance à la synchro multi-appareils de Zalo PC et à la cofondation de BonBon Mobility, avec les habitudes que j'apporte à chaque équipe."
+      "description": "D'une agence de sous-traitance à la synchro multi-appareils de Zalo PC et à la cofondation de BonBon Mobility, et les équipes que j'aide le plus."
     },
     "blog": {
       "title": "Blog : architecture, IA et travail en équipe | Nguyen Le Phong",

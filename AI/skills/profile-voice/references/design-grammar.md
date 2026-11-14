@@ -17,7 +17,7 @@ One idea for the whole page: Phong is presented the way he would present a syste
 
 **Hero: "current deployment"**
 - Left: name (solid color, no gradient), one claim line borrowed from `/about` ("I build product systems that can be shipped, observed, and recovered."), the two roles, a two-line bio, Résumé + Email. Phone moves to Contact.
-- Right (replaces the stat grid): a small SVG topology in the map's style. A node "Phong" with two live edges: Zalo PC (Lead, since Mar 2026, 15M+ MAU desktop, Android product used by ~80M) and BonBon Mobility (Co-founder, $500K pre-seed led by Tasco, live in VETC's 4.3M-user app). Each edge carries its annotation. A third dashed, faded edge for "previous: NDSVN delivery lead, 8 dev + 3 QC" links down to Experience.
+- Right (replaces the stat grid): a small SVG topology in the map's style. A node "Phong" with two live edges: Zalo PC (Lead, since Mar 2026, 18M+ MAU desktop, Android product used by ~80M) and BonBon Mobility (Co-founder, $500K pre-seed led by Tasco, live in VETC's 4.3M-user app). Each edge carries its annotation. A third dashed, faded edge for "previous: NDSVN delivery lead, 8 dev + 3 QC" links down to Experience.
 - Authored moment: on first load the two edges draw in once (stroke-dashoffset, exponential ease-out, about 700ms), starting from an already-visible static state so nothing is hidden if JS or motion is off. Hovering an edge highlights the matching role line on the left.
 - Interaction: edge nodes are real links (Zalo role → `#experience` anchor, BonBon → case file). Track `cv_hero_node_select`.
 - Mobile: topology goes below the CTAs at a fixed small height (about 220px) or collapses to two annotated rows; hero target at 375 is under 900px.
