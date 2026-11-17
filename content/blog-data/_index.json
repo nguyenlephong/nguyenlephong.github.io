@@ -113,6 +113,27 @@
   ],
   "posts": [
     {
+      "slug": "an-gi-hom-nay-an-gi-o-dau",
+      "category": "perspectives",
+      "title": "Where to Eat in Vietnam: I Built an App That Picks One Place",
+      "summary": "Where to eat in Vietnam? Ăn Gì is a free web app that picks one place near you or where you are heading, with directions and a food-by-province guide.",
+      "date": "2026-11-17",
+      "readingMinutes": 11,
+      "tags": [
+        "Side Projects",
+        "Product Engineering",
+        "Web App",
+        "System Design",
+        "Privacy",
+        "Open Data"
+      ],
+      "author": "Nguyen Le Phong",
+      "locales": [
+        "en",
+        "vi"
+      ]
+    },
+    {
       "slug": "clarifying-requirements-in-system-design-interviews",
       "category": "architecture",
       "title": "System Design Interviews Begin With Clarifying Requirements",
