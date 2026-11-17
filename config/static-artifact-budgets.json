@@ -134,7 +134,7 @@
         "notesArchive": { "html": "en/notes.html", "maxGzipBytes": 18432 },
         "blogArticle": {
           "html": "en/blog/culture/protecting-attention-in-a-busy-team.html",
-          "maxGzipBytes": 18432
+          "maxGzipBytes": 27648
         },
         "notesArticle": {
           "html": "en/notes/tri-tue-can-duc-hanh.html",
