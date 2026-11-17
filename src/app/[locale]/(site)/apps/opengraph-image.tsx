@@ -17,7 +17,7 @@ export const dynamic = 'force-static'
 
 export default async function OgImage() {
   const names = apps.map((a) => a.name)
-  const cacheKey = `static-apps-${names.join('-')}-v2`
+  const cacheKey = `static-apps-${names.join('-')}-v3`
   const cached = getCachedOg(cacheKey)
   if (cached) return cachedOgResponse(cached)
 
@@ -26,10 +26,10 @@ export default async function OgImage() {
       <OgShell
         theme="ocean"
         eyebrow="Apps"
-        title="Small tools I built for my own work."
-        subtitle={apps[0]?.copy.en.tagline ?? 'Source on GitHub.'}
-        chips={[...names, 'macOS 13+', 'Swift', 'MIT']}
-        footer="nguyenlephong.github.io/apps · Source on GitHub"
+        title="Useful apps I built."
+        subtitle={apps[0]?.copy.en.tagline ?? ''}
+        chips={[...names, ...new Set(apps.flatMap((a) => a.platforms))]}
+        footer="nguyenlephong.github.io/apps"
       />
     ),
     { ...size }

@@ -55,6 +55,15 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
+.apps-item-visual:has(> img) {
+  padding: 0;
+  overflow: hidden;
+}
+.apps-item-visual > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .apps-item-name {
   margin: 0;
   font-size: var(--text-3xl);

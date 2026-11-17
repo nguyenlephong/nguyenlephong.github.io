@@ -113,6 +113,23 @@
   ],
   "posts": [
     {
+      "slug": "an-gi-hom-nay-an-gi-o-dau",
+      "category": "perspectives",
+      "title": "Hôm nay ăn gì, ở đâu? Mình làm app chọn quán ăn gần bạn",
+      "summary": "Hôm nay ăn gì, ở đâu? Ăn Gì là app miễn phí chọn giùm một quán ăn gần bạn hoặc nơi sắp tới, kèm chỉ đường. Dữ liệu lấy từ đâu và vì sao mình làm.",
+      "date": "2026-11-17",
+      "readingMinutes": 13,
+      "tags": [
+        "Side Projects",
+        "Product Engineering",
+        "Web App",
+        "System Design",
+        "Privacy",
+        "Open Data"
+      ],
+      "author": "Nguyen Le Phong"
+    },
+    {
       "slug": "clarifying-requirements-in-system-design-interviews",
       "category": "architecture",
       "title": "System Design Interview bắt đầu từ việc làm rõ yêu cầu",

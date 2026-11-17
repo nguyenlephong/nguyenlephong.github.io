@@ -64,7 +64,13 @@ test("/apps lists shipped apps only, with localized copy and no console controls
   const { apps, appsPageCopy, appsCopyLocale } = await import(
     "../src/app/[locale]/(site)/apps/apps.data.ts"
   );
-  assert.deepEqual(apps.map((a) => a.id), ["glance"]);
+  assert.deepEqual(apps.map((a) => a.id), ["an-gi", "glance"]);
+  // Outbound app links carry UTM tags so the app's analytics can attribute the visit.
+  const anGi = apps.find((a) => a.id === "an-gi");
+  for (const site of [anGi.links.site, anGi.copy.en.links.site]) {
+    assert.match(site, /[?&]utm_source=nguyenlephong\.github\.io&utm_medium=apps_page&utm_campaign=an_gi_launch&utm_content=apps_card_(?:vi|en)$/);
+  }
+  assert.doesNotMatch(anGi.homepage, /utm_/);
   assert.equal(appsCopyLocale("fr"), "en");
   assert.equal(appsCopyLocale("vi"), "vi");
   const vietnamese = /[ăâđêôơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ]/i;
