@@ -52,7 +52,11 @@ const {
   getPostContentLocales,
   listBlogArticleRouteParams,
   listBlogPostParams,
+  listPosts,
 } = await import(new URL('../src/lib/blog/data.ts', import.meta.url))
+const { BLOG_CONTENT_LOCALES, HIDDEN_BLOG_LOCALES } = await import(
+  new URL('../src/lib/blog/locale-visibility.ts', import.meta.url)
+)
 const { LEGACY_BLOG_LOCALE_FALLBACKS } = await import(
   new URL('../src/lib/blog/legacy-locale-fallbacks.ts', import.meta.url)
 )
@@ -121,7 +125,13 @@ test('article static params contain authored locale routes only', () => {
   const noteParams = listNoteParams()
   const expectedBlogRoutes = blogIndex.posts
     .filter((post) => isContentPublished(post))
-    .reduce((total, post) => total + post.locales.length, 0)
+    .reduce(
+      (total, post) =>
+        total +
+        post.locales.filter((locale) => !HIDDEN_BLOG_LOCALES.includes(locale))
+          .length,
+      0,
+    )
   const expectedNoteRoutes = notesIndex.posts
     .filter((note) => isContentPublished(note))
     .reduce((total, note) => total + note.locales.length, 0)
@@ -156,7 +166,10 @@ test('one proven locale mistake keeps a non-authored compatibility route outside
   assert.deepEqual(LEGACY_BLOG_LOCALE_FALLBACKS, [
     { locale: 'en', category: 'ai', slug, targetLocale: 'vi' },
   ])
-  assert.equal(routes.length, authored.length + 1)
+  const hiddenRoutes = routes.filter((entry) =>
+    HIDDEN_BLOG_LOCALES.includes(entry.locale),
+  )
+  assert.equal(routes.length, authored.length + 1 + hiddenRoutes.length)
   assert.equal(
     authored.some((entry) => entry.locale === 'en' && entry.slug === slug),
     false,
@@ -181,6 +194,68 @@ test('one proven locale mistake keeps a non-authored compatibility route outside
     sitemapUrls.has(`https://nguyenlephong.github.io/vi/blog/ai/${slug}`),
     true,
   )
+})
+
+test('hidden blog locales keep old article URLs as fallbacks and publish nothing else', async () => {
+  const blogIndex = readJson('../content/blog-data/_index.json')
+  const routes = listBlogArticleRouteParams()
+  const authored = listBlogPostParams()
+  const expectedHidden = blogIndex.posts
+    .filter((post) => isContentPublished(post))
+    .flatMap((post) =>
+      post.locales
+        .filter((locale) => HIDDEN_BLOG_LOCALES.includes(locale))
+        .map((locale) => `${locale}/${post.category}/${post.slug}`),
+    )
+  const hiddenRoutes = routes
+    .filter((entry) => HIDDEN_BLOG_LOCALES.includes(entry.locale))
+    .map((entry) => `${entry.locale}/${entry.category}/${entry.slug}`)
+
+  assert.deepEqual(['fr', 'ja', 'ko', 'zh'], [...HIDDEN_BLOG_LOCALES].sort())
+  assert.deepEqual([...BLOG_CONTENT_LOCALES], ['en', 'vi'])
+  const { HIDDEN_BLOG_LOCALES: scriptHiddenLocales } = await import(
+    new URL('../scripts/lib/hidden-blog-locales.mjs', import.meta.url)
+  )
+  assert.deepEqual([...scriptHiddenLocales].sort(), [...HIDDEN_BLOG_LOCALES].sort())
+  // Feeds import next/navigation, so check the wiring rather than the module.
+  assert.match(
+    readFileSync('src/lib/seo/content-feeds.ts', 'utf8'),
+    /kind === 'notes' \? NOTE_CONTENT_LOCALES : BLOG_CONTENT_LOCALES/,
+  )
+  assert.ok(expectedHidden.length > 0)
+  assert.deepEqual(hiddenRoutes.sort(), expectedHidden.sort())
+  assert.equal(
+    authored.some((entry) => HIDDEN_BLOG_LOCALES.includes(entry.locale)),
+    false,
+  )
+
+  const sitemap = buildSitemap()
+  for (const locale of HIDDEN_BLOG_LOCALES) {
+    assert.deepEqual(listPosts(locale), [], `${locale} listing`)
+    assert.equal(
+      sitemap.some((entry) => entry.url.includes(`/${locale}/blog`)),
+      false,
+      `${locale} sitemap`,
+    )
+  }
+  for (const entry of sitemap) {
+    if (!/\/(?:en|vi)\/blog\//.test(entry.url)) continue
+    const hreflangs = Object.keys(entry.alternates?.languages ?? {})
+    assert.equal(
+      hreflangs.some((locale) => HIDDEN_BLOG_LOCALES.includes(locale)),
+      false,
+      entry.url,
+    )
+  }
+  for (const { slug } of authored) {
+    assert.equal(
+      getPostContentLocales(slug).some((locale) =>
+        HIDDEN_BLOG_LOCALES.includes(locale),
+      ),
+      false,
+      slug,
+    )
+  }
 })
 
 test('sitemap article URLs equal generated authored routes', () => {

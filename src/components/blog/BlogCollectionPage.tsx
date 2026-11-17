@@ -30,6 +30,8 @@ import BlogExplorer from '@/components/blog/BlogExplorer'
 import BlogStartHere from '@/components/blog/BlogStartHere'
 import ScopedIntlProvider from '@/i18n/ScopedIntlProvider'
 import { popularTags } from '@/lib/blog/article-header'
+import { isBlogLocaleHidden } from '@/lib/blog/locale-visibility'
+import HiddenBlogLocaleNotice from '@/components/blog/HiddenBlogLocaleNotice'
 
 const seo = PAGE_SEO.blog
 
@@ -66,6 +68,7 @@ export async function blogCollectionMetadata(
         })
   const canonical = canonicalFor(locale, path)
   const paged = isPagedArchivePath(path)
+  const indexable = !isBlogLocaleHidden(locale)
 
   return {
     title: page === 1 ? { absolute: title } : title,
@@ -73,7 +76,7 @@ export async function blogCollectionMetadata(
     keywords: [...seo.keywords],
     alternates: {
       canonical,
-      ...(paged
+      ...(paged || !indexable
         ? {}
         : { languages: localeAlternates(path, listBlogArchiveLocales(page)) }),
     },
@@ -99,9 +102,9 @@ export async function blogCollectionMetadata(
       creator: SITE.twitter,
     },
     robots: {
-      index: true,
+      index: indexable,
       follow: true,
-      googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+      googleBot: { index: indexable, follow: true, 'max-image-preview': 'large' },
     },
   }
 }
@@ -117,6 +120,9 @@ export default async function BlogCollectionPage({
 }: BlogCollectionPageProps) {
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+  if (isBlogLocaleHidden(locale)) {
+    return <HiddenBlogLocaleNotice locale={locale} path="/blog" />
+  }
 
   const t = await getTranslations({ locale, namespace: 'Pages.blog' })
   const seoT = await getTranslations({ locale, namespace: 'SEO.blog' })

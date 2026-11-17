@@ -53,7 +53,7 @@ const { blogIndexSchema, blogPostSchema } = await import(
 const { notesIndexSchema } = await import(
   new URL("../src/lib/notes/schema.ts", import.meta.url)
 );
-const { listBlogSeries, listCategories, listPosts } = await import(
+const { listBlogSeries, listCategories, listPosts, loadIndex } = await import(
   new URL("../src/lib/blog/data.ts", import.meta.url)
 );
 const { listNoteHubs, listNotes, loadNote, loadNotesIndex } = await import(
@@ -163,8 +163,12 @@ test("canonical indexes are required rather than failing open to an empty corpus
 });
 
 test("all authored catalogs satisfy index-body parity and declared references", () => {
-  for (const locale of ["en", "vi", "zh", "ja", "ko", "fr"]) {
+  for (const locale of ["en", "vi"]) {
     assert.ok(listPosts(locale).length > 0, `blog ${locale}`);
+  }
+  // Hidden translations (MEP-91) are unpublished but still parsed, so MEP-92 starts from valid files.
+  for (const locale of ["zh", "ja", "ko", "fr"]) {
+    assert.ok(loadIndex(locale).posts.length > 0, `blog ${locale} catalog`);
   }
   assert.ok(listNotes("en").length > 0);
   assert.ok(listNotes("vi").length > 0);

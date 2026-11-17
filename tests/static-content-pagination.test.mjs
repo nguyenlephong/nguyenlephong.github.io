@@ -373,11 +373,13 @@ test('archive routes and explorers keep pagination crawlable and search progress
   )
   assert.match(paginationVerifier, /pagination href \$\{pagerLink\} has no exported HTML/)
   assert.match(paginationVerifier, /policy: fullArchive \? 'full' : 'landing-only'/)
-  assert.match(paginationVerifier, /\{ locale: 'fr', expectsHub: false \}/)
-  assert.match(paginationVerifier, /\{ locale: 'ja', expectsHub: false \}/)
+  // MEP-91: ja/fr series articles are hidden noindex fallbacks, and hidden blog archives are notices.
+  assert.match(paginationVerifier, /\{ locale: 'fr', hiddenFallback: true \}/)
+  assert.match(paginationVerifier, /\{ locale: 'ja', hiddenFallback: true \}/)
   assert.match(paginationVerifier, /\{ locale: 'en', expectsHub: true \}/)
   assert.match(paginationVerifier, /\{ locale: 'vi', expectsHub: true \}/)
-  assert.match(paginationVerifier, /Article isPartOf must remain the localized Blog/)
+  assert.match(paginationVerifier, /is hidden but listed in sitemap\.xml/)
+  assert.match(paginationVerifier, /must be a noindex locale notice/)
   assert.match(paginationVerifier, /Article isPartOf must reference its localized series hub/)
 
   for (const workflow of [frontendWorkflow, pagesWorkflow]) {

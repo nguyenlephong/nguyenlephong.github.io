@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { HIDDEN_BLOG_LOCALES } from "./hidden-blog-locales.mjs";
 
 const REQUIRED_LOCALES = Object.freeze(["en", "vi", "zh", "ja", "ko", "fr"]);
 const REQUIRED_CLIENT_MESSAGE_ROUTES = Object.freeze({
@@ -50,6 +51,8 @@ export function expectedClientMessageScopesForLocalizedRoute(relativePath) {
     return ["site", "gallery"];
   }
   if (first === "blog") {
+    // Hidden blog locales render a notice without the blog explorer (MEP-91).
+    if (HIDDEN_BLOG_LOCALES.has(route.locale)) return ["site"];
     if (route.routeSegments.length <= 2) return ["site", "blog"];
     if (
       route.routeSegments.length === 3 &&

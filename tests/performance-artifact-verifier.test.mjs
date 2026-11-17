@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { HIDDEN_BLOG_LOCALES } from "../scripts/lib/hidden-blog-locales.mjs";
 import {
   existsSync,
   mkdirSync,
@@ -302,9 +303,11 @@ function createFixture(t, overrides = {}) {
         path.join(outDir, localizedPath(locale, surface, "txt")),
         [
           `route payload for ${html}`,
-          ...REQUIRED_CLIENT_MESSAGE_SCOPES[surface].map((scope) =>
-            serializedProvider(locale, scope)
-          )
+          // Hidden blog locales render a notice without the blog scope (MEP-91).
+          ...(surface === "blog" && HIDDEN_BLOG_LOCALES.has(locale)
+            ? ["site"]
+            : REQUIRED_CLIENT_MESSAGE_SCOPES[surface]
+          ).map((scope) => serializedProvider(locale, scope))
         ].join("\n")
       );
     }
@@ -379,6 +382,8 @@ test("derives future-safe client message scopes from localized route shape", () 
     ["ja/gallery.txt", ["site", "gallery"]],
     ["ja/gallery/archive.txt", ["site"]],
     ["en/blog.txt", ["site", "blog"]],
+    ["fr/blog.txt", ["site"]],
+    ["ja/blog/architecture.txt", ["site"]],
     ["en/blog/architecture.txt", ["site", "blog"]],
     ["en/blog/page/1.txt", ["site", "blog"]],
     ["en/blog/page/23.txt", ["site", "blog"]],
@@ -434,8 +439,9 @@ test("measures compressed route JavaScript and RSC payloads in one artifact inve
   assert.equal(report.rsc.localizedSurfaceMetrics.blog.sampleCount, 6);
   assert.equal(report.clientMessages.routeCount, 30);
   assert.equal(report.clientMessages.routes.length, 30);
-  assert.equal(report.clientMessages.providerCount, 54);
-  assert.equal(report.clientMessages.expectedProviderCount, 54);
+  // 4 fewer than before MEP-91: hidden ja/zh/ko/fr blog pages carry no blog scope.
+  assert.equal(report.clientMessages.providerCount, 50);
+  assert.equal(report.clientMessages.expectedProviderCount, 50);
   assert.equal(report.clientMessages.scopeCounts.site, 30);
   assert.equal(report.clientMessages.scopeCounts.gallery, 6);
   assert.deepEqual(report.archiveInitialRuntime.blog, {
@@ -984,7 +990,7 @@ test("counts and rejects a null Studio messages provider", async (t) => {
   });
   const failures = report.failures.join("\n");
 
-  assert.equal(report.clientMessages.providerCount, 54);
+  assert.equal(report.clientMessages.providerCount, 50);
   assert.match(
     failures,
     /en\/studio\.txt serializes an unrecognized or overlapping client message scope/
@@ -1005,7 +1011,7 @@ test("scans an unsampled article and rejects its extra surface provider", async 
   const failures = report.failures.join("\n");
 
   assert.equal(report.clientMessages.routeCount, 31);
-  assert.equal(report.clientMessages.providerCount, 56);
+  assert.equal(report.clientMessages.providerCount, 52);
   assert.match(
     failures,
     /en\/blog\/architecture\/unsampled-post\.txt serializes unexpected client message scope: blog/

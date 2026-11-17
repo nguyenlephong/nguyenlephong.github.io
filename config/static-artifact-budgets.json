@@ -315,7 +315,7 @@
     "en/studio.html",
     "vi.html",
     "zh/blog.html",
-    "zh/blog/page/3.html",
+    "vi/blog/page/3.html",
     "ja/studio.html",
     "ko/about.html",
     "fr/gallery.html"
@@ -340,6 +340,10 @@
         "fallbackLocale": "en"
       },
       "apps": {
+        "contentLocales": ["en", "vi"],
+        "fallbackLocale": "en"
+      },
+      "blog": {
         "contentLocales": ["en", "vi"],
         "fallbackLocale": "en"
       },

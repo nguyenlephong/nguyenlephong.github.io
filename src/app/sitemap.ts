@@ -23,6 +23,7 @@ import {
 } from "@/lib/notes/data";
 import { collectionPagePath, isPagedArchivePath, paginate } from "@/lib/content/pagination";
 import { latestNonFutureDate } from "@/lib/seo/dates";
+import { BLOG_CONTENT_LOCALES } from "@/lib/blog/locale-visibility";
 import { preferredContentLocale } from "@/lib/seo/locale";
 import { SITE_INDEX_PATH } from "@/lib/seo/site-index";
 import { staticPageSitemapLocales } from "@/lib/seo/static-page-localization";
@@ -47,6 +48,7 @@ const PATHS: Array<{
     path: "/blog",
     priority: 0.9,
     freq: "weekly",
+    locales: BLOG_CONTENT_LOCALES,
     lastModifiedForLocale: (locale) =>
       latestNonFutureDate(
         listPosts(locale).map((post) => post.updated ?? post.date)
@@ -214,7 +216,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   for (const category of listCategorySlugs()) {
-    pushPath(`/blog/${category}`, 0.7, "weekly", undefined, (locale) =>
+    pushPath(`/blog/${category}`, 0.7, "weekly", BLOG_CONTENT_LOCALES, (locale) =>
       latestNonFutureDate(
         getPostsByCategory(category, locale).map(
           (post) => post.updated ?? post.date

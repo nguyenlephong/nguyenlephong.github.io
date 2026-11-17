@@ -3,12 +3,15 @@
 import { existsSync } from 'node:fs'
 import { readFile, readdir } from 'node:fs/promises'
 import path from 'node:path'
+import { HIDDEN_BLOG_LOCALES } from './lib/hidden-blog-locales.mjs'
 
 const ROOT = process.cwd()
 const OUT = path.join(ROOT, 'out')
 const PAGE_SIZE = 9
 const SITE_ORIGIN = 'https://nguyenlephong.github.io'
 const NOTE_ARCHIVE_LOCALES = new Set(['en', 'vi'])
+const FALLBACK_MARKER = 'data-content-locale-fallback="true"'
+const NOINDEX = /<meta name="robots" content="noindex/
 const SERIES_ARTICLE_CONTRACT = {
   category: 'architecture',
   series: 'foundations',
@@ -17,8 +20,8 @@ const SERIES_ARTICLE_CONTRACT = {
 const SERIES_ARTICLE_LOCALE_CASES = [
   { locale: 'en', expectsHub: true },
   { locale: 'vi', expectsHub: true },
-  { locale: 'fr', expectsHub: false },
-  { locale: 'ja', expectsHub: false },
+  { locale: 'fr', hiddenFallback: true },
+  { locale: 'ja', hiddenFallback: true },
 ]
 
 function fail(message) {
@@ -255,19 +258,6 @@ async function readBlogIndex(locale) {
   return JSON.parse(await readFile(file, 'utf8'))
 }
 
-async function localizedSeriesLabel(locale, seriesId) {
-  const messagesFile = path.join(ROOT, `messages/${locale}.json`)
-  if (!existsSync(messagesFile)) {
-    fail(`missing ${path.relative(ROOT, messagesFile)}`)
-  }
-  const messages = JSON.parse(await readFile(messagesFile, 'utf8'))
-  const label = messages?.Pages?.blog?.seriesNames?.[seriesId]
-  if (typeof label !== 'string' || label.trim() === '') {
-    fail(`${locale} is missing Pages.blog.seriesNames.${seriesId}`)
-  }
-  return label.trim()
-}
-
 async function readSitemapPaths() {
   const xml = await readFile(path.join(OUT, 'sitemap.xml'), 'utf8')
   return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
@@ -291,6 +281,19 @@ for (const locale of locales) {
   measurements[locale] = {}
   for (const surface of ['blog', 'notes']) {
     const searchIndex = await readSearchIndex(locale, surface)
+    if (surface === 'blog' && HIDDEN_BLOG_LOCALES.has(locale)) {
+      // Hidden locales export one noindex notice page and nothing to search.
+      const hiddenPages = await pageNumbers(locale, surface)
+      const html = await readFile(archiveFile(locale, surface, 1), 'utf8')
+      if (hiddenPages.join(',') !== '1' || searchIndex.items.length !== 0) {
+        fail(`${locale}/blog must export only a notice page with an empty search index`)
+      }
+      if (!html.includes(FALLBACK_MARKER) || !NOINDEX.test(html)) {
+        fail(`${archivePath(locale, surface, 1)} must be a noindex locale notice`)
+      }
+      measurements[locale][surface] = { policy: 'hidden', pages: 1, linkedArticles: 0, searchItems: 0 }
+      continue
+    }
     const fullArchive = surface === 'blog' || NOTE_ARCHIVE_LOCALES.has(locale)
     const expectedPages = fullArchive ? expectedPageNumbers(searchIndex.items.length) : [1]
     const actualPages = await pageNumbers(locale, surface)
@@ -403,12 +406,23 @@ if (!canonicalSeriesTitle) {
 }
 
 let linkedSeriesArticles = 0
-let localizedSeriesArticles = 0
-for (const { locale, expectsHub } of SERIES_ARTICLE_LOCALE_CASES) {
+let hiddenSeriesFallbacks = 0
+for (const { locale, expectsHub, hiddenFallback } of SERIES_ARTICLE_LOCALE_CASES) {
   const articlePath =
     `/${locale}/blog/${SERIES_ARTICLE_CONTRACT.category}/` + SERIES_ARTICLE_CONTRACT.slug
   const articleFile = exportedHtmlFile(articlePath)
   if (!articleFile) fail(`${articlePath} has no exported HTML`)
+  if (hiddenFallback) {
+    const html = await readFile(articleFile, 'utf8')
+    if (sitemapPathSet.has(articlePath)) fail(`${articlePath} is hidden but listed in sitemap.xml`)
+    // Article fallbacks consolidate to the English article through rel=canonical, without noindex.
+    const englishUrl = `${SITE_ORIGIN}/en/blog/${SERIES_ARTICLE_CONTRACT.category}/${SERIES_ARTICLE_CONTRACT.slug}`
+    if (!html.includes(FALLBACK_MARKER) || !html.includes(`<link rel="canonical" href="${englishUrl}"`)) {
+      fail(`${articlePath} must be a fallback notice canonical to ${englishUrl}`)
+    }
+    hiddenSeriesFallbacks += 1
+    continue
+  }
   if (!sitemapPathSet.has(articlePath)) {
     fail(`${articlePath} is missing from sitemap.xml`)
   }
@@ -453,37 +467,6 @@ for (const { locale, expectsHub } of SERIES_ARTICLE_LOCALE_CASES) {
     linkedSeriesArticles += 1
     continue
   }
-
-  const expectedLabel = await localizedSeriesLabel(locale, SERIES_ARTICLE_CONTRACT.series)
-  const articleLinks = internalHrefs(html)
-  const serializedJsonLd = JSON.stringify(jsonLd)
-  const localizedBlogUrl = `${SITE_ORIGIN}/${locale}/blog`
-  const localizedCategoryUrl = `${localizedBlogUrl}/${SERIES_ARTICLE_CONTRACT.category}`
-  if (!renderedSeriesText.includes(expectedLabel)) {
-    fail(`${articlePath} lost its localized non-hub series label`)
-  }
-  if (renderedSeriesText.includes(canonicalSeriesTitle)) {
-    fail(`${articlePath} visible series context leaked the English hub title`)
-  }
-  if (articleLinks.some((href) => href.includes('/blog/series/'))) {
-    fail(`${articlePath} must not link a series hub outside its locale contract`)
-  }
-  if (
-    serializedJsonLd.includes('/blog/series/') ||
-    serializedJsonLd.includes(canonicalSeriesTitle)
-  ) {
-    fail(`${articlePath} JSON-LD leaked English series hub metadata`)
-  }
-  if (
-    article.isPartOf?.['@type'] !== 'Blog' ||
-    article.isPartOf?.['@id'] !== `${localizedBlogUrl}#blog`
-  ) {
-    fail(`${articlePath} Article isPartOf must remain the localized Blog`)
-  }
-  if (breadcrumbParent.item !== localizedCategoryUrl) {
-    fail(`${articlePath} parent breadcrumb must remain its localized category`)
-  }
-  localizedSeriesArticles += 1
 }
 
 const hubGroups = new Map()
@@ -597,7 +580,7 @@ console.log(
       },
       seriesArticleLocaleContracts: {
         hubLinked: linkedSeriesArticles,
-        localizedWithoutHub: localizedSeriesArticles,
+        hiddenFallbacks: hiddenSeriesFallbacks,
       },
       locales: measurements,
     },

@@ -18,6 +18,8 @@ import { sectionOgImages } from '@/lib/seo/section-og-image'
 import PageTracker from '@/components/analytics/PageTracker'
 import BlogPostCard from '@/components/blog/BlogPostCard'
 import BlogCardClickTracker from '@/components/blog/BlogCardClickTracker'
+import HiddenBlogLocaleNotice from '@/components/blog/HiddenBlogLocaleNotice'
+import { BLOG_CONTENT_LOCALES, isBlogLocaleHidden } from '@/lib/blog/locale-visibility'
 import '../blog.css'
 
 type Props = { params: Promise<{ locale: string; category: string }> }
@@ -39,12 +41,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = `${cat.title} | ${t('title')}`
   const description = cat.description
   const canonical = canonicalFor(locale, `/blog/${category}`)
-  const languages = localeAlternates(`/blog/${category}`)
+  const indexable = !isBlogLocaleHidden(locale)
+  const languages = localeAlternates(`/blog/${category}`, BLOG_CONTENT_LOCALES)
 
   return {
     title,
     description,
-    alternates: { canonical, languages },
+    alternates: { canonical, ...(indexable ? { languages } : {}) },
     openGraph: {
       type: 'website',
       url: canonical,
@@ -52,11 +55,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       siteName: SITE.name,
       locale: OG_LOCALE_MAP[locale as Locale] ?? OG_LOCALE_MAP.en,
-      alternateLocale: routing.locales
+      alternateLocale: BLOG_CONTENT_LOCALES
         .filter((l) => l !== locale)
         .map((l) => OG_LOCALE_MAP[l]),
       // The category card with a localized alt; the file route's own alt is English (MEP-64).
-      images: sectionOgImages('/[locale]/(site)/blog/[category]', { locale, category }, cat.title),
+      // A hidden locale's own card would count zero articles; reuse the English card.
+      images: sectionOgImages(
+        '/[locale]/(site)/blog/[category]',
+        { locale: indexable ? locale : routing.defaultLocale, category },
+        cat.title,
+      ),
     },
     twitter: {
       card: 'summary_large_image',
@@ -66,9 +74,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       creator: SITE.twitter,
     },
     robots: {
-      index: true,
+      index: indexable,
       follow: true,
-      googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+      googleBot: { index: indexable, follow: true, 'max-image-preview': 'large' },
     },
   }
 }
@@ -80,6 +88,16 @@ export default async function BlogCategoryPage({ params }: Props) {
 
   const cat = getCategory(category, locale)
   if (!cat) notFound()
+  if (isBlogLocaleHidden(locale)) {
+    return (
+      <HiddenBlogLocaleNotice
+        accent={cat.accent}
+        locale={locale}
+        path={`/blog/${category}`}
+        title={cat.title}
+      />
+    )
+  }
 
   const t = await getTranslations({ locale, namespace: 'Pages.blog' })
   const posts = getPostsByCategory(category, locale)

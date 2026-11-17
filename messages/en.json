@@ -719,6 +719,7 @@
     "notesHeading": "Notes",
     "notesCount": "{count, plural, one {# note} other {# notes}}, grouped by topic.",
     "notesOtherTopic": "Other notes",
+    "blogUnavailable": "Blog posts are being rewritten in English and Vietnamese first. Read them in English.",
     "notesUnavailable": "Notes are written in English and Vietnamese. Browse them in English.",
     "archiveHeading": "Archive pages",
     "pageLabel": "Page {page}",
