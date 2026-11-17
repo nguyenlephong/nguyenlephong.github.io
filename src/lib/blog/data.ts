@@ -42,6 +42,7 @@ import type {
 } from './types'
 import { compareSeriesPosts } from './series'
 import { LEGACY_BLOG_LOCALE_FALLBACKS } from './legacy-locale-fallbacks'
+import { HIDDEN_BLOG_LOCALES, isBlogLocaleHidden, visibleBlogLocales } from './locale-visibility'
 
 const DATA_DIR = path.join(process.cwd(), 'content', 'blog-data')
 const contentVersionTracker =
@@ -406,6 +407,7 @@ export function getPostsByCategory(
   locale?: string,
 ): BlogPostMeta[] {
   const contentLocale = locale ?? routing.defaultLocale
+  if (isBlogLocaleHidden(contentLocale)) return []
   return loadIndex(locale)
     .posts.filter(
       (post) =>
@@ -453,6 +455,7 @@ export function getSeriesContext(
 
 export function listPosts(locale?: string): BlogPostMeta[] {
   const contentLocale = (locale ?? routing.defaultLocale) as Locale
+  if (isBlogLocaleHidden(contentLocale)) return []
   return loadIndex(locale)
     .posts.filter(
       (post) =>
@@ -475,7 +478,7 @@ export function listStartHere(
 /** Locales whose authored corpus reaches a given static archive page. */
 export function listBlogArchiveLocales(page: number): Locale[] {
   if (!Number.isInteger(page) || page < 1) return []
-  return routing.locales.filter(
+  return visibleBlogLocales(routing.locales).filter(
     (locale) => page <= pageCount(listPosts(locale).length),
   )
 }
@@ -543,7 +546,7 @@ function loadPostBody(
 
 export function getPostContentLocales(slug: string): BlogPostMeta['locales'] {
   const post = baseIndex().posts.find((entry) => entry.slug === slug)
-  return post && isContentPublished(post) ? [...post.locales] : []
+  return post && isContentPublished(post) ? visibleBlogLocales(post.locales) : []
 }
 
 /** Authored article routes only; untranslated locale paths must not be exported. */
@@ -555,7 +558,7 @@ export function listBlogPostParams(): Array<{
   return baseIndex().posts
     .filter((post) => isContentPublished(post))
     .flatMap((post) =>
-      post.locales.map((locale) => ({
+      visibleBlogLocales(post.locales).map((locale) => ({
         locale,
         category: post.category,
         slug: post.slug,
@@ -606,6 +609,15 @@ export function listBlogArticleRouteParams(): Array<{
     }
   }
 
+  // Hidden translations keep their old URLs alive as noindex fallbacks (MEP-91).
+  const hidden = baseIndex().posts
+    .filter((post) => isContentPublished(post))
+    .flatMap((post) =>
+      post.locales
+        .filter((locale) => HIDDEN_BLOG_LOCALES.includes(locale))
+        .map((locale) => ({ locale, category: post.category, slug: post.slug })),
+    )
+
   return [
     ...authored,
     ...LEGACY_BLOG_LOCALE_FALLBACKS.map(({ locale, category, slug }) => ({
@@ -613,6 +625,7 @@ export function listBlogArticleRouteParams(): Array<{
       category,
       slug,
     })),
+    ...hidden,
   ]
 }
 

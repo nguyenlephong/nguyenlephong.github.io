@@ -370,13 +370,14 @@ test("shared hub structured data preserves surface-specific semantics", () => {
   }
 });
 
+// 853 = 965 - 112 from MEP-91: ja/zh/ko/fr blog hidden (80 articles, 4 x /blog + 5 categories, 4 x archive pages 2-3)
 // 965 = 951 + 14 from MEP-80 (5 blog posts and 1 note x en/vi, plus su-nghiep page 3 x en/vi)
 // 951 = 945 + 4 About locales now authored in all six languages
 // + 2 Studio (MEP-54: hub drops fr/ja/ko/zh, adds en/vi checklists, system-maps, ai-setup).
-test("sitemap contains 965 unique URLs and exactly 54 curated hub URLs", () => {
+test("sitemap contains 853 unique URLs and exactly 54 curated hub URLs", () => {
   const sitemap = sitemapModule.default();
-  assert.equal(sitemap.length, 965);
-  assert.equal(new Set(sitemap.map(({ url }) => url)).size, 965);
+  assert.equal(sitemap.length, 853);
+  assert.equal(new Set(sitemap.map(({ url }) => url)).size, 853);
 
   const hubEntries = sitemap.filter(({ url }) =>
     /\/(?:en|vi)\/(?:blog\/series|notes\/topics)\//.test(url)

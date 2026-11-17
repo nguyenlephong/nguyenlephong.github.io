@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import { listCategories, listPosts } from '@/lib/blog/data'
+import { BLOG_CONTENT_LOCALES } from '@/lib/blog/locale-visibility'
 import { listNotes, listTopics, NOTE_CONTENT_LOCALES } from '@/lib/notes/data'
 import { FEED_ITEM_LIMIT, renderRssFeed, type FeedItem } from '@/lib/seo/feed'
 import { canonicalFor } from '@/lib/seo/locale'
@@ -17,7 +18,7 @@ export function feedPath(kind: FeedKind): string {
 
 /** Locales that publish a feed for the collection. */
 export function feedLocales(kind: FeedKind): readonly string[] {
-  return kind === 'notes' ? NOTE_CONTENT_LOCALES : routing.locales
+  return kind === 'notes' ? NOTE_CONTENT_LOCALES : BLOG_CONTENT_LOCALES
 }
 
 /** `alternates.types` entry that advertises the feed to browsers and crawlers. */

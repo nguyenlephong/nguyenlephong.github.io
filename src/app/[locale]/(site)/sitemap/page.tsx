@@ -14,6 +14,7 @@ import {
   listCategories,
   listPosts,
 } from '@/lib/blog/data'
+import { isBlogLocaleHidden } from '@/lib/blog/locale-visibility'
 import { collectionPagePath, paginate } from '@/lib/content/pagination'
 import {
   getNotesByHub,
@@ -115,6 +116,7 @@ export default async function SiteIndexPage({ params }: Props) {
   const base = `/${locale}`
   const hasCuratedHubs = locale === 'en' || locale === 'vi'
   const hasNotes = (NOTE_CONTENT_LOCALES as readonly string[]).includes(locale)
+  const hasBlog = !isBlogLocaleHidden(locale)
   const pageLabel = (page: number) => t('pageLabel', { page })
 
   // Static pages only exist as authored content in some locales; the others
@@ -130,7 +132,10 @@ export default async function SiteIndexPage({ params }: Props) {
     { href: `${base}#projects`, label: nav('projects') },
     { href: staticHref('about', '/about'), label: t('sections.about') },
     { href: APP_ROUTE.CV_PDF, label: cta('resumePdf'), resume: true },
-    { href: `${base}/blog`, label: t('sections.blog') },
+    {
+      href: hasBlog ? `${base}/blog` : `/${routing.defaultLocale}/blog`,
+      label: t('sections.blog'),
+    },
     {
       href: hasNotes ? `${base}/notes` : `/${routing.defaultLocale}/notes`,
       label: t('sections.notes'),
@@ -322,10 +327,14 @@ export default async function SiteIndexPage({ params }: Props) {
           {t('blogHeading')}
         </h2>
         <p className="site-index__lede">
-          {t('blogCount', {
-            count: posts.length,
-            categories: postGroups.length,
-          })}
+          {hasBlog ? (
+            t('blogCount', {
+              count: posts.length,
+              categories: postGroups.length,
+            })
+          ) : (
+            <a href={`/${routing.defaultLocale}/blog`}>{t('blogUnavailable')}</a>
+          )}
         </p>
 
         {series.length > 0 && (

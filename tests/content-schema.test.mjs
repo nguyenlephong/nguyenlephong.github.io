@@ -247,10 +247,12 @@ test("archive corpora and sitemap pages follow authored locale availability", ()
       ).length
     ])
   );
+  // ja/zh/ko/fr blog translations are hidden until MEP-92 (MEP-91).
+  for (const locale of ["zh", "ja", "ko", "fr"]) expectedBlogCounts[locale] = 0;
   for (const [locale, count] of Object.entries(expectedBlogCounts)) {
     assert.equal(listPosts(locale).length, count, `${locale} blog archive count`);
   }
-  assert.deepEqual(listBlogArchiveLocales(3), ["en", "vi", "zh", "ja", "ko", "fr"]);
+  assert.deepEqual(listBlogArchiveLocales(3), ["en", "vi"]);
   assert.deepEqual(listBlogArchiveLocales(4), ["en", "vi"]);
   assert.deepEqual(listNotesArchiveLocales(15), ["en", "vi"]);
   assert.deepEqual(listNotesArchiveLocales(16), []);
@@ -456,7 +458,7 @@ test("notes expose one canonical slug set across English and Vietnamese", () => 
   assert.match(blogDataSource, /getPostContentLocales/);
   assert.match(
     blogDataSource,
-    /post && isContentPublished\(post\) \? \[\.\.\.post\.locales\] : \[\]/
+    /post && isContentPublished\(post\) \? visibleBlogLocales\(post\.locales\) : \[\]/
   );
   assert.match(sitemapSource, /for \(const note of listNotes\("en"\)\)/);
   assert.match(sitemapSource, /locales:\s*NOTE_CONTENT_LOCALES/);
@@ -508,9 +510,12 @@ test("declared article locales match authored blog and notes files", () => {
       )
     ];
     assert.deepEqual(post.locales, expected, `${post.slug} blog locales`);
+    // Declared locales keep the hidden ja/zh/ko/fr files; only en/vi are published (MEP-91).
     assert.deepEqual(
       getPostContentLocales(post.slug),
-      isContentPublished(post) ? expected : []
+      isContentPublished(post)
+        ? expected.filter((locale) => locale === "en" || locale === "vi")
+        : []
     );
 
     if (legacyFallback) {
@@ -544,7 +549,8 @@ test("article locale clusters cover translated and untranslated variants", () =>
   );
   const translatedNote = getNoteContentLocales("tri-tue-can-duc-hanh");
 
-  assert.deepEqual(fullyTranslatedBlog, ["en", "vi", "zh", "ja", "ko", "fr"]);
+  // ports-and-adapters still has zh/ja/ko/fr files, hidden until MEP-92 (MEP-91).
+  assert.deepEqual(fullyTranslatedBlog, ["en", "vi"]);
   assert.deepEqual(partiallyTranslatedBlog, ["en", "vi"]);
   assert.deepEqual(translatedNote, ["en", "vi"]);
   assert.equal(partiallyTranslatedBlog.includes("zh"), false);
@@ -554,15 +560,7 @@ test("article locale clusters cover translated and untranslated variants", () =>
     "/blog/architecture/ports-and-adapters",
     fullyTranslatedBlog
   );
-  assert.deepEqual(Object.keys(alternates), [
-    "en",
-    "vi",
-    "zh",
-    "ja",
-    "ko",
-    "fr",
-    "x-default"
-  ]);
+  assert.deepEqual(Object.keys(alternates), ["en", "vi", "x-default"]);
   assert.equal(alternates["x-default"], alternates.en);
   assert.equal(preferredContentLocale(["vi"]), "vi");
 });

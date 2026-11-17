@@ -692,6 +692,7 @@
     "notesHeading": "Notes",
     "notesCount": "{count, plural, one {# note} other {# notes}}, regroupées par thème.",
     "notesOtherTopic": "Autres notes",
+    "blogUnavailable": "Les articles du blog sont d'abord réécrits en anglais et en vietnamien. Les lire en anglais.",
     "notesUnavailable": "Les notes sont rédigées en anglais et en vietnamien. Les consulter en anglais.",
     "archiveHeading": "Pages d’archive",
     "pageLabel": "Page {page}",

@@ -119,6 +119,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       creator: SITE.twitter,
       images: [imageUrl],
     },
+    // Only meta-refresh redirects are noindex. Other fallbacks, including hidden
+    // translations (MEP-91), consolidate through the canonical to the authored URL.
     ...(legacyFallback
       ? {
           robots: {

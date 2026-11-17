@@ -48,6 +48,9 @@ const {
 const { default: buildSitemap } = await import(
   new URL("../src/app/sitemap.ts", import.meta.url)
 );
+const { BLOG_CONTENT_LOCALES } = await import(
+  new URL("../src/lib/blog/locale-visibility.ts", import.meta.url)
+);
 
 const locales = ["en", "vi", "zh", "ja", "ko", "fr"];
 const pageNames = ["about", "apps", "gallery"];
@@ -115,15 +118,17 @@ test("static-page policy distinguishes authored localization from route fallback
 test("runtime and exported-artifact localization policies cannot drift", () => {
   assert.deepEqual(
     artifactConfig.seo.staticPageLocalization,
-    Object.fromEntries(
-      [...pageNames, "studio", "studio/checklists", "studio/system-maps", "studio/ai-setup"].map((page) => [
+    Object.fromEntries([
+      ...[...pageNames, "studio", "studio/checklists", "studio/system-maps", "studio/ai-setup"].map((page) => [
         page,
         {
           contentLocales: [...STATIC_PAGE_SEO_POLICY[page].contentLocales],
           fallbackLocale: "en"
         }
-      ])
-    )
+      ]),
+      // MEP-91: the blog collection is published in BLOG_CONTENT_LOCALES only.
+      ["blog", { contentLocales: [...BLOG_CONTENT_LOCALES], fallbackLocale: "en" }]
+    ])
   );
 });
 
