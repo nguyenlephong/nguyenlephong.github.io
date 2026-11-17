@@ -118,6 +118,15 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    // MEP-90: /admin insight snapshots. The document id is a PBKDF2-derived
+    // vault id, so only someone who knows the password can name it. Clients may
+    // only fetch a single well-formed id; the GitHub Action writes with the
+    // Admin SDK, which bypasses these rules.
+    match /adminVault/{vaultId} {
+      allow get: if vaultId.matches('^[0-9a-f]{64}$');
+      allow list, create, update, delete: if false;
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }
