@@ -139,7 +139,8 @@ function AppArticle({
               width={app.screenshot.width}
               height={app.screenshot.height}
               alt={text.screenshotAlt ?? ''}
-              loading="lazy"
+              loading={position === 1 ? 'eager' : 'lazy'}
+              fetchPriority={position === 1 ? 'high' : undefined}
               decoding="async"
             />
           )}
